@@ -21,6 +21,7 @@
 #include "Cursor.h"
 #include "CutAndPaste.h"
 #include "Language.h"
+#include "LyX.h"
 #include "LyXRC.h"
 #include "Paragraph.h"
 
@@ -75,7 +76,6 @@ GuiSpellchecker::GuiSpellchecker(GuiView & lv)
 
 GuiSpellchecker::~GuiSpellchecker()
 {
-	delete speller_;
 }
 
 
@@ -193,24 +193,11 @@ void GuiSpellchecker::partialUpdate(int state)
 }
 
 
-static SpellChecker * createSpeller(BufferParams const & bp)
-{
-	string lang = lyxrc.spellchecker_use_alt_lang
-		      ? lyxrc.spellchecker_alt_lang
-		      : bp.language->code();
-
-#if defined(USE_ASPELL)
-	return new ASpell(bp, lang);
-#endif
-	return 0;
-}
-
-
 bool GuiSpellchecker::initialiseParams(string const &)
 {
 	LYXERR(Debug::GUI, "Spellchecker::initialiseParams");
 
-	speller_ = createSpeller(buffer().params());
+	speller_ = theSpellChecker();
 	if (!speller_)
 		return false;
 
@@ -225,7 +212,6 @@ bool GuiSpellchecker::initialiseParams(string const &)
 		Alert::error(_("Spellchecker error"),
 			     _("The spellchecker could not be started\n")
 			     + speller_->error());
-		delete speller_;
 		speller_ = 0;
 	}
 
@@ -236,7 +222,6 @@ bool GuiSpellchecker::initialiseParams(string const &)
 void GuiSpellchecker::clearParams()
 {
 	LYXERR(Debug::GUI, "Spellchecker::clearParams");
-	delete speller_;
 	speller_ = 0;
 }
 
@@ -255,7 +240,9 @@ static WordLangTuple nextWord(Cursor & cur, ptrdiff_t & progress)
 	cur.resetAnchor();
 	cur.setCursor(to);
 	cur.setSelection();
-	string lang_code = from.paragraph().getFontSettings(buf.params(), cur.pos()).language()->code();
+	string lang_code = lyxrc.spellchecker_use_alt_lang
+		      ? lyxrc.spellchecker_alt_lang
+		      : from.paragraph().getFontSettings(buf.params(), cur.pos()).language()->code();
 	++progress;
 	return WordLangTuple(word, lang_code);
 }
@@ -304,15 +291,15 @@ void GuiSpellchecker::check()
 			partialUpdate(SPELL_PROGRESSED);
 		}
 
-		// speller might be dead ...
-		if (!checkAlive())
-			return;
-
 		res = speller_->check(word_);
 
-		// ... or it might just be reporting an error
-		if (!checkAlive())
+		// ... just bail out if the spellchecker reports an error.
+		if (!speller_->error().empty()) {
+			docstring const message =
+				_("The spellchecker has failed.\n") + speller_->error();
+			slotClose();
 			return;
+		}	
 	}
 
 	LYXERR(Debug::GUI, "Found word \"" << to_utf8(getWord()) << "\"");
@@ -334,28 +321,9 @@ void GuiSpellchecker::check()
 }
 
 
-bool GuiSpellchecker::checkAlive()
-{
-	if (speller_->error().empty())
-		return true;
-
-	docstring message;
-	if (speller_->error().empty())
-		message = _("The spellchecker has died for some reason.\n"
-					 "Maybe it has been killed.");
-	else
-		message = _("The spellchecker has failed.\n") + speller_->error();
-
-	slotClose();
-
-	Alert::error(_("The spellchecker has failed"), message);
-	return false;
-}
-
-
 void GuiSpellchecker::showSummary()
 {
-	if (!checkAlive() || count_ == 0) {
+	if (count_ == 0) {
 		slotClose();
 		return;
 	}

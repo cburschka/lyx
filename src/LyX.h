@@ -32,6 +32,7 @@ class Movers;
 class Server;
 class ServerSocket;
 class Session;
+class SpellChecker;
 
 extern bool use_gui;
 
@@ -137,6 +138,7 @@ private:
 	friend graphics::Previews & thePreviews();
 	friend Session & theSession();
 	friend CmdDef & theTopLevelCmdDef();
+	friend SpellChecker * theSpellChecker();
 	friend void setRcGuiLanguage();
 	friend void emergencyCleanup();
 	friend void execBatchCommands();
@@ -158,3 +160,4 @@ void execBatchCommands();
 } // namespace lyx
 
 #endif // LYX_H
+

@@ -17,7 +17,7 @@
 
 #include "LyX.h"
 
-#include "LayoutFile.h"
+#include "ASpell_local.h"
 #include "Buffer.h"
 #include "BufferList.h"
 #include "CmdDef.h"
@@ -31,6 +31,7 @@
 #include "FuncStatus.h"
 #include "KeyMap.h"
 #include "Language.h"
+#include "LayoutFile.h"
 #include "Lexer.h"
 #include "LyXAction.h"
 #include "LyXFunc.h"
@@ -127,7 +128,19 @@ struct LyX::Impl
 		// The language used will be derived from the environment
 		// variables.
 		messages_["GUI"] = Messages();
+
+#if defined(USE_ASPELL)
+		spell_checker_ = new ASpell();
+#else
+		spell_checker_ = 0;
+#endif
 	}
+
+	~Impl()
+	{
+		delete spell_checker_;
+	}
+
 	/// our function handler
 	LyXFunc lyxfunc_;
 	///
@@ -169,6 +182,8 @@ struct LyX::Impl
 
 	///
 	graphics::Previews preview_;
+	///
+	SpellChecker * spell_checker_;
 };
 
 ///
@@ -1243,6 +1258,12 @@ CmdDef & theTopLevelCmdDef()
 {
 	LASSERT(singleton_, /**/);
 	return singleton_->pimpl_->toplevel_cmddef_;
+}
+
+
+SpellChecker * theSpellChecker()
+{
+	return singleton_->pimpl_->spell_checker_;
 }
 
 } // namespace lyx
