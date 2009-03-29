@@ -163,6 +163,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\show_banner", LyXRC::RC_SHOW_BANNER },
 	{ "\\sort_layouts", LyXRC::RC_SORT_LAYOUTS },
 	{ "\\spell_command", LyXRC::RC_SPELL_COMMAND },
+	{ "\\spellcheck_continuously", LyXRC::RC_SPELLCHECK_CONTINUOUSLY },
 	{ "\\tempdir_path", LyXRC::RC_TEMPDIRPATH },
 	{ "\\template_path", LyXRC::RC_TEMPLATEPATH },
 	{ "\\tex_allows_spaces", LyXRC::RC_TEX_ALLOWS_SPACES },
@@ -268,6 +269,7 @@ void LyXRC::setDefaults()
 	spellchecker_use_alt_lang = false;
 	spellchecker_use_pers_dict = false;
 	spellchecker_use_esc_chars = false;
+	spellcheck_continuously = false;
 	use_kbmap = false;
 	rtl_support = true;
 	visual_cursor = false;
@@ -882,6 +884,9 @@ int LyXRC::read(Lexer & lexrc)
 			break;
 		case RC_ESC_CHARS:
 			lexrc >> spellchecker_esc_chars;
+			break;
+		case RC_SPELLCHECK_CONTINUOUSLY:
+			lexrc >> spellcheck_continuously;
 			break;
 		case RC_MAKE_BACKUP:
 			lexrc >> make_backup;
@@ -2121,6 +2126,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		os << "\n#\n"
 		   << "# SPELLCHECKER SECTION ##############################\n"
 		   << "#\n\n";
+
 	case RC_SPELL_COMMAND:
 	case RC_USE_SPELL_LIB:
 		// Obsoleted in 2.0
@@ -2209,6 +2215,15 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		os << "\n#\n"
 		   << "# LANGUAGE SUPPORT SECTION ##########################\n"
 		   << "#\n\n";
+
+	case RC_SPELLCHECK_CONTINUOUSLY:
+		if (ignore_system_lyxrc ||
+		    spellcheck_continuously != system_lyxrc.spellcheck_continuously) {
+			os << "\\spellcheck_continuously " << convert<string>(spellcheck_continuously)
+			   << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
 
 	case RC_RTL_SUPPORT:
 		if (ignore_system_lyxrc ||

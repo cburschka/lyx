@@ -108,7 +108,7 @@ char const * LaTeXSizeNames[14] =
 
 
 Font::Font(FontInfo bits, Language const * l)
-	: bits_(bits), lang_(l), open_encoding_(false)
+	: bits_(bits), lang_(l), misspelled_(false), open_encoding_(false)
 {
 	if (!lang_)
 		lang_ = default_language;

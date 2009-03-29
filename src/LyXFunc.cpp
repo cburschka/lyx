@@ -2026,6 +2026,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_SHOW_BANNER:
 	case LyXRC::RC_OPEN_BUFFERS_IN_TABS:
 	case LyXRC::RC_SPELL_COMMAND:
+	case LyXRC::RC_SPELLCHECK_CONTINUOUSLY:
 	case LyXRC::RC_TEMPDIRPATH:
 	case LyXRC::RC_TEMPLATEPATH:
 	case LyXRC::RC_TEX_ALLOWS_SPACES:

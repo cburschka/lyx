@@ -47,6 +47,10 @@ public:
 	///
 	Language const * language() const { return lang_; }
 	///
+	void setMisspelled(bool misspelled) { misspelled_ = misspelled; }
+	///
+	bool isMisspelled() const { return misspelled_; }
+	///
 	bool isRightToLeft() const;
 	///
 	bool isVisibleRightToLeft() const;
@@ -121,6 +125,8 @@ private:
 	FontInfo bits_;
 	///
 	Language const * lang_;
+	///
+	bool misspelled_;
 
 	/// Did latexWriteStartChanges open an encoding environment?
 	mutable bool open_encoding_;
@@ -131,7 +137,8 @@ private:
 inline
 bool operator==(Font const & font1, Font const & font2)
 {
-	return font1.bits_ == font2.bits_ && font1.lang_ == font2.lang_;
+	return font1.bits_ == font2.bits_ && font1.lang_ == font2.lang_
+	    && font1.misspelled_ == font2.misspelled_;
 }
 
 ///

@@ -58,6 +58,7 @@ public:
 
 private:
 	void paintForeignMark(double orig_x, Language const * lang, int desc = 0);
+	void paintMisspelledMark(double orig_x, int desc);
 	void paintHebrewComposeChar(pos_type & vpos, FontInfo const & font);
 	void paintArabicComposeChar(pos_type & vpos, FontInfo const & font);
 	void paintChars(pos_type & vpos, FontInfo const & font,

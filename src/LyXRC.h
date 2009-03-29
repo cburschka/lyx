@@ -147,6 +147,7 @@ public:
 		RC_OPEN_BUFFERS_IN_TABS,
 		RC_SORT_LAYOUTS,
 		RC_SPELL_COMMAND,
+		RC_SPELLCHECK_CONTINUOUSLY,
 		RC_TEMPDIRPATH,
 		RC_TEMPLATEPATH,
 		RC_TEX_ALLOWS_SPACES,
@@ -329,6 +330,8 @@ public:
 	std::string spellchecker_pers_dict;
 	/// Escape characters
 	std::string spellchecker_esc_chars;
+	/// spellcheck continuously?
+	bool spellcheck_continuously;
 	///
 	bool use_kbmap;
 	///

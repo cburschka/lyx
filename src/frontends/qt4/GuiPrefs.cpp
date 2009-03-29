@@ -1102,6 +1102,8 @@ PrefSpellchecker::PrefSpellchecker(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(inputEncodingCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
+	connect(spellcheckContinuouslyCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
 }
 
 
@@ -1118,6 +1120,7 @@ void PrefSpellchecker::apply(LyXRC & rc) const
 	rc.spellchecker_use_pers_dict = !rc.spellchecker_pers_dict.empty();
 	rc.spellchecker_accept_compound = compoundWordCB->isChecked();
 	rc.spellchecker_use_input_encoding = inputEncodingCB->isChecked();
+	rc.spellcheck_continuously = spellcheckContinuouslyCB->isChecked();
 }
 
 
@@ -1131,6 +1134,7 @@ void PrefSpellchecker::update(LyXRC const & rc)
 	persDictionaryED->setText(toqstr(external_path(rc.spellchecker_pers_dict)));
 	compoundWordCB->setChecked(rc.spellchecker_accept_compound);
 	inputEncodingCB->setChecked(rc.spellchecker_use_input_encoding);
+	spellcheckContinuouslyCB->setChecked(rc.spellcheck_continuously);
 }
 
 
