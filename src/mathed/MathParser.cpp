@@ -1639,9 +1639,6 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 		else if (t.cs() == "lyxmathsym") {
 			skipSpaces();
-			if (nextToken().character() == '*')
-				getToken();
-			skipSpaces();
 			if (getToken().cat() != catBegin) {
 				error("'{' expected in \\" + t.cs());
 				return success_;

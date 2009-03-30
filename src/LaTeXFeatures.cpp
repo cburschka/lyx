@@ -202,9 +202,8 @@ static string const textcyr_def =
 	"\\AtBeginDocument{\\DeclareFontEncoding{T2A}{}{}}\n";
 
 static string const lyxmathsym_def =
-	"\\newcommand{\\lyxmathsym}{\\@ifstar{\\lyxm@thsym\\textit}{\\lyxm@thsym\\textrm}}\n"
-	"\\newcommand{\\lyxm@thsym}[2]{\\ifmmode\\begingroup\\def\\b@ld{bold}\n"
-	"  #1{\\ifx\\math@version\\b@ld\\bfseries\\fi#2}\\endgroup\\else#2\\fi}\n";
+	"\\newcommand{\\lyxmathsym}[1]{\\ifmmode\\begingroup\\def\\b@ld{bold}\n"
+	"  \\text{\\ifx\\math@version\\b@ld\\bfseries\\fi#1}\\endgroup\\else#1\\fi}\n";
 
 static string const papersizedvi_def =
 	"\\special{papersize=\\the\\paperwidth,\\the\\paperheight}\n";
