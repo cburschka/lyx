@@ -282,7 +282,7 @@ Thesaurus::Meanings Thesaurus::lookup(docstring const &, docstring const &)
 }
 
 
-bool Thesaurus::thesaurusAvailable(docstring const & lang) const
+bool Thesaurus::thesaurusAvailable(docstring const &) const
 {
 	return false;
 }
