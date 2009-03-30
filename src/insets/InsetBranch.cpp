@@ -144,20 +144,8 @@ void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_INSET_TOGGLE:
-		if (cmd.argument() == "assign") {
-			// The branch inset uses "assign".
-			if (isBranchSelected()) {
-				if (status(cur.bv()) != Open)
-					setStatus(cur, Open);
-				else
-					cur.undispatched();
-			} else {
-				if (status(cur.bv()) != Collapsed)
-					setStatus(cur, Collapsed);
-				else
-					cur.undispatched();
-			}
-		}
+		if (cmd.argument() == "assign")
+			setStatus(cur, isBranchSelected() ? Open : Collapsed);
 		else
 			InsetCollapsable::doDispatch(cur, cmd);
 		break;
@@ -179,17 +167,11 @@ bool InsetBranch::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 
 	case LFUN_INSET_TOGGLE:
-		if (cmd.argument() == "open" || cmd.argument() == "close" ||
-		    cmd.argument() == "toggle")
+		if (cmd.argument() == "assign") {
 			flag.setEnabled(true);
-		else if (cmd.argument() == "assign" || cmd.argument().empty()) {
-			if (isBranchSelected())
-				flag.setEnabled(status(cur.bv()) != Open);
-			else
-				flag.setEnabled(status(cur.bv()) != Collapsed);
-		} else
-			flag.setEnabled(true);
-		break;
+			break;
+		}
+		//fall through to generic InsetCollapsable implmementation
 
 	default:
 		return InsetCollapsable::getStatus(cur, cmd, flag);
