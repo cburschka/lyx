@@ -148,6 +148,7 @@ dist_frdoc_DATA = \
 	fr/Formula-numbering.lyx \
 	fr/Intro.lyx \
 	fr/Math.lyx \
+	fr/Shortcuts.lyx \
 	fr/Tutorial.lyx \
 	fr/UserGuide.lyx
 

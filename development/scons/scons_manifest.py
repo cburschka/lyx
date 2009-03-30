@@ -2191,6 +2191,7 @@ lib_doc_fr_files = Split('''
     Formula-numbering.lyx
     Intro.lyx
     Math.lyx
+    Shortcuts.lyx
     Tutorial.lyx
     UserGuide.lyx
 ''')

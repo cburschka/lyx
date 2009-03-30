@@ -35,6 +35,7 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources\doc\fr"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\EmbeddedObjects.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\Intro.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\Shortcuts.lyx"
  #SetOutPath "$INSTDIR\Resources\examples"
  SetOutPath "$INSTDIR\Resources\images"
  File "${PRODUCT_SOURCEDIR}\Resources\images\bookmark-goto_0.png"
