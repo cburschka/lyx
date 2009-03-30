@@ -2239,32 +2239,17 @@ void LyXAction::init()
  */
 		{ LFUN_INSET_SETTINGS, "inset-settings", ReadOnly, Edit },
 /*!
- * \var lyx::FuncCode lyx::LFUN_NEXT_INSET_TOGGLE
- * \li Action: Toggles the inset at cursor position. For collapsables, this means it will
-               be (un-)collapsed, in case of other insets, the editing widget (dialog) will
-               be entered. Also cf. #LFUN_INSET_SETTINGS.
- * \li Notion: Used for bibitem, bibtex, box, branch, command, ert, external,
-                        floats, graphics, include, label, listings, note,
-                        phantom, ref, space, tabular, vspace, wrap insets.
- * \li Syntax: next-inset-toggle <ARG>
- * \li Params: <ARG>: these are passed as arguments to #LFUN_INSET_TOGGLE .
- * \li Origin: leeming, 30 Mar 2004
- * \endvar
- */
-		{ LFUN_NEXT_INSET_TOGGLE, "next-inset-toggle", ReadOnly, Edit },
-/*!
  * \var lyx::FuncCode lyx::LFUN_INSET_TOGGLE
  * \li Action: Toggles the collapsable inset we are currently in.
  * \li Syntax: inset-toggle [<ARG>]
  * \li Params: <ARG>: <open|close|toggle|assign>. \n
-               open/close/toggle are for collapsable insets. close can be currently used
-               by #LFUN_NEXT_INSET_TOGGLE. toggle is used when no argument is given.\n
+               open/close/toggle are for collapsable insets. toggle is used when no argument is given.\n
                assign synchronize the branch-inset with activation status of the branch.
 	       Used for global toggling when changed activation.
  * \li Origin: lasgouttes, 19 Jul 2001
  * \endvar
  */
-		{ LFUN_INSET_TOGGLE, "inset-toggle", ReadOnly, Hidden },
+		{ LFUN_INSET_TOGGLE, "inset-toggle", ReadOnly | AtPoint, Hidden },
 /*!
  * \var lyx::FuncCode lyx::LFUN_ALL_INSETS_TOGGLE
  * \li Action: Toggles (open/closes) all collapsable insets (of a given type) in the document.

@@ -80,7 +80,7 @@ Menuset
 		Item "<reference> on page <page>|f" "next-inset-modify changetype vref"
 		Item "Formatted reference|t" "next-inset-modify changetype prettyref"
 		Separator
-		Item "Settings...|S" "next-inset-toggle"
+		Item "Settings...|S" "inset-toggle"
 	End
 
 #
@@ -92,7 +92,7 @@ Menuset
 		Separator
 		Item "Copy as Reference|C" "copy-label-as-reference"
 		Separator
-		Item "Settings...|S" "next-inset-toggle"
+		Item "Settings...|S" "inset-toggle"
 	End
 
 
@@ -102,7 +102,7 @@ Menuset
 	Menu "context-citation"
 		CiteStyles
 		Separator
-		Item "Settings...|S" "next-inset-toggle"
+		Item "Settings...|S" "inset-toggle"
 	End
 
 
@@ -110,7 +110,7 @@ Menuset
 # InsetBibtex context menu
 #
 	Menu "context-bibtex"
-		Item "Settings...|S" "next-inset-toggle"
+		Item "Settings...|S" "inset-toggle"
 		Separator
 		Item "Edit Database(s) externally...|x" "inset-edit"
 	End
@@ -120,15 +120,15 @@ Menuset
 # InsetCollapsable context menu
 #
 	Menu "context-collapsable"
-		OptItem "Open Inset|O" "next-inset-toggle open"
-		OptItem "Close Inset|C" "next-inset-toggle close"
+		OptItem "Open Inset|O" "inset-toggle open"
+		OptItem "Close Inset|C" "inset-toggle close"
 		Separator
 		Item "Dissolve Inset|D" "inset-dissolve"
 		OptItem "Settings...|S" "inset-settings"
 	End
 
 	Menu "context-conglomerate"
-		Item "Toggle Label|L" "next-inset-toggle"
+		Item "Toggle Label|L" "inset-toggle"
 		Item "Dissolve Inset|D" "inset-dissolve charstyle"
 		Separator
 		OptItem "Settings...|S" "inset-settings"
@@ -148,8 +148,8 @@ Menuset
 		Item "Shaded background|b" "next-inset-modify changetype Shaded"
 		Item "Double frame|u" "next-inset-modify changetype Doublebox"
 		Separator
-		OptItem "Open Inset|O" "next-inset-toggle open"
-		OptItem "Close Inset|C" "next-inset-toggle close"
+		OptItem "Open Inset|O" "inset-toggle open"
+		OptItem "Close Inset|C" "inset-toggle close"
 		Separator
 		Item "Dissolve Inset|D" "inset-dissolve"
 		Item "Settings...|S" "inset-settings box"
@@ -164,8 +164,8 @@ Menuset
 		Item "Comment|m" "next-inset-modify note Note Comment"
 		Item "Greyed Out|G" "next-inset-modify note Note Greyedout"
 		Separator
-		OptItem "Open Inset|O" "next-inset-toggle open"
-		OptItem "Close Inset|C" "next-inset-toggle close"
+		OptItem "Open Inset|O" "inset-toggle open"
+		OptItem "Close Inset|C" "inset-toggle close"
 		Separator
 		Item "Dissolve Inset|D" "inset-dissolve"
 	End
@@ -202,9 +202,9 @@ Menuset
 		Item "Horizontal Fill (Right Arrow)|g" "next-inset-modify space \rightarrowfill{}"
 		Item "Horizontal Fill (Up Brace)|p" "next-inset-modify space \upbracefill{}"
 		Item "Horizontal Fill (Down Brace)|B" "next-inset-modify space \downbracefill{}"
-		Item "Custom Length|C" "command-sequence next-inset-modify space \hspace{} \length 1in; next-inset-toggle"
+		Item "Custom Length|C" "command-sequence next-inset-modify space \hspace{} \length 1in; inset-toggle"
 		Separator
-		Item "Settings...|S" "next-inset-toggle"
+		Item "Settings...|S" "inset-toggle"
 	End
 
 #
@@ -220,9 +220,9 @@ Menuset
 		Item "Half Quad Space (Enskip)|k" "next-inset-modify mathspace \enskip{}"
 		Item "Quad Space|Q" "next-inset-modify mathspace \quad{}"
 		Item "Double Quad Space|u" "next-inset-modify mathspace \qquad{}"
-		Item "Custom Length|C" "command-sequence next-inset-modify mathspace \hspace{} \length 1in; next-inset-toggle"
+		Item "Custom Length|C" "command-sequence next-inset-modify mathspace \hspace{} \length 1in; inset-toggle"
 		Separator
-		Item "Settings...|S" "next-inset-toggle"
+		Item "Settings...|S" "inset-toggle"
 	End
 
 #
@@ -234,9 +234,9 @@ Menuset
 		Item "MedSkip|M" "next-inset-modify vspace medskip"
 		Item "BigSkip|B" "next-inset-modify vspace bigskip"
 		Item "VFill|F" "next-inset-modify vspace vfill"
-		Item "Custom|C" "command-sequence next-inset-modify vspace 1in; next-inset-toggle"
+		Item "Custom|C" "command-sequence next-inset-modify vspace 1in; inset-toggle"
 		Separator
-		Item "Settings...|e" "next-inset-toggle"
+		Item "Settings...|e" "inset-toggle"
 	End
 
 #
@@ -249,7 +249,7 @@ Menuset
 		Item "Verbatim (marked blanks)|b" "next-inset-modify changetype verbatiminput*"
 		Item "Listing|L" "next-inset-modify changetype lstinputlisting"
 		Separator
-		Item "Settings...|S" "next-inset-toggle"
+		Item "Settings...|S" "inset-toggle"
 		Separator
 		Item "Edit included file...|E" "inset-edit"
 	End
@@ -327,8 +327,8 @@ Menuset
 		Item "Paste" "paste"
 		Submenu "Paste Recent|e" "edit_pasterecent"
 		Separator
-		OptItem "Open Inset|O" "next-inset-toggle open"
-		OptItem "Close Inset|C" "next-inset-toggle close"
+		OptItem "Open Inset|O" "inset-toggle open"
+		OptItem "Close Inset|C" "inset-toggle close"
 		Separator
 		Item "Dissolve Inset|D" "inset-dissolve"
 		Item "Settings...|S" "inset-settings listings"
@@ -339,7 +339,7 @@ Menuset
 #
 
 	Menu "context-graphics"
-		Item "Settings...|S" "next-inset-toggle"
+		Item "Settings...|S" "inset-toggle"
 		Separator
 		Item "Edit externally...|x" "inset-edit"
 		Separator
@@ -351,7 +351,7 @@ Menuset
 #
 
 	Menu "context-external"
-		Item "Settings...|S" "next-inset-toggle"
+		Item "Settings...|S" "inset-toggle"
 		Separator
 		Item "Edit externally...|x" "inset-edit"
 	End

@@ -953,12 +953,10 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 		break;
 	}
 
-	case LFUN_NEXT_INSET_TOGGLE: 
 	case LFUN_NEXT_INSET_MODIFY: {
 		// this is the real function we want to invoke
 		FuncRequest tmpcmd = cmd;
-		tmpcmd.action = (cmd.action == LFUN_NEXT_INSET_TOGGLE) 
-			? LFUN_INSET_TOGGLE : LFUN_INSET_MODIFY;
+		tmpcmd.action = LFUN_INSET_MODIFY;
 		// if there is an inset at cursor, see whether it
 		// handles the lfun, other start from scratch
 		Inset * inset = cur.nextInset();
@@ -1411,35 +1409,6 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		processUpdateFlags(Update::SinglePar | Update::FitCursor);
 		break;
 	}
-	case LFUN_NEXT_INSET_TOGGLE: {
-		// create the the real function we want to invoke
-		FuncRequest tmpcmd = cmd;
-		tmpcmd.action = LFUN_INSET_TOGGLE;
-		// if there is an inset at cursor, see whether it
-		// wants to toggle.
-		Inset * inset = cur.nextInset();
-		if (inset) {
-			if (inset->isActive()) {
-				Cursor tmpcur = cur;
-				tmpcur.pushBackward(*inset);
-				inset->dispatch(tmpcur, tmpcmd);
-				if (tmpcur.result().dispatched())
-					cur.dispatched();
-			} else 
-				inset->dispatch(cur, tmpcmd);
-		}
-		// if it did not work, try the underlying inset.
-		if (!inset || !cur.result().dispatched())
-			cur.dispatch(tmpcmd);
-
-		if (!cur.result().dispatched())
-			// It did not work too; no action needed.
-			break;
-		cur.clearSelection();
-		processUpdateFlags(Update::SinglePar | Update::FitCursor);
-		break;
-	}
-
 	case LFUN_NEXT_INSET_MODIFY: {
 		// create the the real function we want to invoke
 		FuncRequest tmpcmd = cmd;

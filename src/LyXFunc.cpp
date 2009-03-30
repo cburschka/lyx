@@ -659,6 +659,13 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 			enable = false;
 			break;
 		}
+
+		// Is this a function that acts on inset at point?
+		Inset * inset = view()->cursor().nextInset();
+		if (lyxaction.funcHasFlag(cmd.action, LyXAction::AtPoint)
+		    && inset && inset->getStatus(view()->cursor(), cmd, flag))
+			break;
+
 		if (!getLocalStatus(view()->cursor(), cmd, flag))
 			flag = view()->getStatus(cmd);
 	}
@@ -1703,6 +1710,20 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				if (theBufferList().isLoaded(buffer))
 					buffer->undo().endUndoGroup();
 				break;
+			}
+
+			// Is this a function that acts on inset at point?
+			Inset * inset = view()->cursor().nextInset();
+			if (lyxaction.funcHasFlag(action, LyXAction::AtPoint)
+			    && inset) {
+				view()->cursor().result().dispatched(true);
+				view()->cursor().result().update(Update::FitCursor | Update::Force);
+				FuncRequest tmpcmd = cmd;
+				inset->dispatch(view()->cursor(), tmpcmd);
+				if (view()->cursor().result().dispatched()) {
+					updateFlags = view()->cursor().result().update();
+					break;
+				}
 			}
 
 			// Let the current Cursor dispatch its own actions.

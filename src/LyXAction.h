@@ -68,7 +68,8 @@ public:
 		NoBuffer = 2, //< Can be used when there is no document open
 		Argument = 4, //< Requires argument
 		NoUpdate = 8, //< Does not (usually) require update
-		SingleParUpdate = 16 //< Usually only requires this par updated
+		SingleParUpdate = 16, //< Usually only requires this par updated
+		AtPoint = 32, //< dispatch first to inset at cursor if there is one
 	};
 
 	LyXAction();

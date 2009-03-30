@@ -16,11 +16,15 @@ The following variables are obsoleted in 2.0
 
 The following new LyX functions have been introduced:
 
-- LFUN_WORD_FINDAD, "word-findadv".
+- LFUN_WORD_FINDAD ("word-findadv").
 
-- LFUN_REGEXP_MODE, "regexp-mode".
+- LFUN_REGEXP_MODE ("regexp-mode").
 
-- LFUN_COPY_LABEL_AS_REF, "copy-label-as-reference"
+- LFUN_COPY_LABEL_AS_REF ("copy-label-as-reference").
+
+The following LyX functions have been removed:
+
+- LFUN_NEXT_INSET_TOGGLE (next-inset-toggle): use "inset-toggle" instead.
 
 Known issues in version 2.0.0
 -----------------------------
