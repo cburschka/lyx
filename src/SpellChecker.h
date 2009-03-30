@@ -63,6 +63,9 @@ public:
 	virtual docstring const error() = 0;
 };
 
+/// Access to the singleton SpellChecker.
+/// Implemented in LyX.cpp
+SpellChecker * theSpellChecker();
 
 } // namespace lyx
 
