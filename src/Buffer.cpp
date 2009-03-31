@@ -1497,6 +1497,11 @@ bool Buffer::dispatch(FuncRequest const & func, bool * result)
 		case LFUN_BRANCH_DEACTIVATE: {
 			BranchList & branchList = params().branchlist();
 			docstring const branchName = func.argument();
+			// the case without a branch name is handled elsewhere
+			if (branchName.empty()) {
+				dispatched = false;
+				break;
+			}
 			Branch * branch = branchList.find(branchName);
 			if (!branch)
 				LYXERR0("Branch " << branchName << " does not exist.");

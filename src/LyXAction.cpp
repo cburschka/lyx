@@ -3184,7 +3184,7 @@ void LyXAction::init()
  * \li Origin: rgh, 27 May 2008
  * \endvar
  */
-		{ LFUN_BRANCH_ACTIVATE, "branch-activate", Argument, Buffer },
+		{ LFUN_BRANCH_ACTIVATE, "branch-activate", AtPoint, Buffer },
 /*!
  * \var lyx::FuncCode lyx::LFUN_BRANCH_DEACTIVATE
  * \li Action: De-activate the branch
@@ -3193,7 +3193,7 @@ void LyXAction::init()
  * \li Origin: rgh, 27 May 2008
  * \endvar
  */
-		{ LFUN_BRANCH_DEACTIVATE, "branch-deactivate", Argument, Buffer },
+		{ LFUN_BRANCH_DEACTIVATE, "branch-deactivate", AtPoint, Buffer },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_COPY_LABEL_AS_REF

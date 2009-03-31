@@ -398,4 +398,19 @@ Menuset
 		Item "Settings...|S" "inset-settings info"
 	End
 
+#
+# InsetBranch context menu
+#
+
+	Menu "context-branch"
+		OptItem "Open Inset|O" "inset-toggle open"
+		OptItem "Close Inset|C" "inset-toggle close"
+		Separator
+		OptItem "Activate Branch|A" "branch-activate"
+		OptItem "Deactivate Branch|e" "branch-deactivate"
+		Separator
+		Item "Dissolve Inset|D" "inset-dissolve"
+		OptItem "Settings...|S" "inset-settings"
+	End
+
 End

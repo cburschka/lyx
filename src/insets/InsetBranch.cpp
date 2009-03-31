@@ -143,6 +143,18 @@ void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.bv().updateDialog("branch", params2string(params()));
 		break;
 
+	case LFUN_BRANCH_ACTIVATE:
+	case LFUN_BRANCH_DEACTIVATE: {
+		// FIXME: I do not like this cast, but have no other idea...
+		Buffer * realbuffer = const_cast<Buffer *>(buffer().masterBuffer());
+		BranchList & branchlist = realbuffer->params().branchlist();
+		Branch * ourBranch = branchlist.find(params_.branch);
+		if (!ourBranch)
+			break;
+		ourBranch->setSelected(cmd.action == LFUN_BRANCH_ACTIVATE);
+		break;
+	}
+
 	case LFUN_INSET_TOGGLE:
 		if (cmd.argument() == "assign")
 			setStatus(cur, isBranchSelected() ? Open : Collapsed);
@@ -166,12 +178,19 @@ bool InsetBranch::getStatus(Cursor & cur, FuncRequest const & cmd,
 		flag.setEnabled(true);
 		break;
 
+	case LFUN_BRANCH_ACTIVATE:
+		flag.setEnabled(!isBranchSelected());
+		break;
+
+	case LFUN_BRANCH_DEACTIVATE:
+		flag.setEnabled(isBranchSelected());
+		break;
+
 	case LFUN_INSET_TOGGLE:
-		if (cmd.argument() == "assign") {
+		if (cmd.argument() == "assign")
 			flag.setEnabled(true);
-			break;
-		}
-		//fall through to generic InsetCollapsable implmementation
+		else
+			return InsetCollapsable::getStatus(cur, cmd, flag);	
 
 	default:
 		return InsetCollapsable::getStatus(cur, cmd, flag);
@@ -229,6 +248,12 @@ void InsetBranch::validate(LaTeXFeatures & features) const
 {
 	if (isBranchSelected())
 		InsetCollapsable::validate(features);
+}
+
+
+docstring InsetBranch::contextMenu(BufferView const &, int, int) const
+{
+	return from_ascii("context-branch");
 }
 
 

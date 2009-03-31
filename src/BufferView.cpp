@@ -1059,11 +1059,10 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 
 	case LFUN_BRANCH_ACTIVATE: 
 	case LFUN_BRANCH_DEACTIVATE: {
-		bool enable = false;
+		BranchList const & branchList = buffer_.params().branchlist();
 		docstring const branchName = cmd.argument();
-		if (!branchName.empty())
-			enable = buffer_.params().branchlist().find(branchName);
-		flag.setEnabled(enable);
+		flag.setEnabled(!branchName.empty()
+				&& branchList.find(branchName));
 		break;
 	}
 
@@ -1502,6 +1501,8 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 
 	case LFUN_BRANCH_ACTIVATE:
 	case LFUN_BRANCH_DEACTIVATE:
+		if (cmd.argument().empty())
+			return false;
 		buffer_.dispatch(cmd);
 		processUpdateFlags(Update::Force);
 		break;
