@@ -169,7 +169,7 @@ GuiViewSource::~GuiViewSource()
 
 void GuiViewSource::updateView()
 {
-	if (widget_->autoUpdateCB->isChecked()) {
+	if (!widget_->isEnabled() || widget_->autoUpdateCB->isChecked()) {
 		widget_->setBufferView(bufferview());
 		widget_->updateView();
 	}
