@@ -233,7 +233,7 @@ msgstr "Pøidat bibliografii k O&bsahu"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:225
 msgid "Move the selected database downwards in the list"
-msgstr "Pøesuò vybranou databázi v seznamu nahoru"
+msgstr "Pøesuò vybranou databázi v seznamu dolù"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:228 src/frontends/qt4/ui/ModulesUi.ui:129
 msgid "Do&wn"
@@ -10398,9 +10398,8 @@ msgid "Settings...|S"
 msgstr "Nastavení...|N"
 
 #: lib/ui/stdcontext.inc:91
-#, fuzzy
 msgid "Go back|G"
-msgstr "&Jdi zpìt"
+msgstr "Jdi zpìt|J"
 
 #: lib/ui/stdcontext.inc:93
 msgid "Copy as Reference|C"
@@ -10443,7 +10442,6 @@ msgid "Simple frame, page breaks|p"
 msgstr "Jednoduchý rám, více stran|v"
 
 #: lib/ui/stdcontext.inc:145
-#, fuzzy
 msgid "Oval, thin|a"
 msgstr "Oválný tenký rám|O"
 
@@ -10460,16 +10458,14 @@ msgid "Shaded background|b"
 msgstr "Pozadí s odstínem|P"
 
 #: lib/ui/stdcontext.inc:149
-#, fuzzy
 msgid "Double frame|u"
-msgstr "Dvojitý rám"
+msgstr "Dvojitý rám|D"
 
 #: lib/ui/stdcontext.inc:163 lib/ui/stdmenus.inc:432
 msgid "LyX Note|N"
 msgstr "Poznámka LyX-u|X"
 
 #: lib/ui/stdcontext.inc:164
-#, fuzzy
 msgid "Comment|m"
 msgstr "Komentáø|K"
 
@@ -10658,9 +10654,8 @@ msgid "Paste Recent|e"
 msgstr "Vlo¾it poslední|p"
 
 #: lib/ui/stdcontext.inc:273
-#, fuzzy
 msgid "Jump Back to Saved Bookmark|B"
-msgstr "Skok na ulo¾enou zálo¾ku|k"
+msgstr "Skok zpìt na ulo¾enou zálo¾ku|k"
 
 #: lib/ui/stdcontext.inc:275 lib/ui/stdmenus.inc:98
 msgid "Move Paragraph Up|o"
@@ -11285,9 +11280,8 @@ msgid "Find and replace"
 msgstr "Najít a zamìnit"
 
 #: lib/ui/stdtoolbars.inc:70
-#, fuzzy
 msgid "Navigate back"
-msgstr "Navigace|g"
+msgstr "Navigovat zpìt"
 
 #: lib/ui/stdtoolbars.inc:72
 msgid "Toggle emphasis"
@@ -15166,9 +15160,8 @@ msgid "changed text 5th author"
 msgstr "revize - 5. autor"
 
 #: src/Color.cpp:206
-#, fuzzy
 msgid "deleted text modifier"
-msgstr "smazaný text"
+msgstr "modifikátor pro smazaný text"
 
 #: src/Color.cpp:207
 msgid "added space markers"
@@ -16716,7 +16709,6 @@ msgid "Error: Could not generate logfile."
 msgstr "Chyba: Nepodaøilo se zalo¾it soubor pro log."
 
 #: src/VCBackend.cpp:536
-#, fuzzy
 msgid ""
 "Error when committing to repository.\n"
 "You have to manually resolve the problem.\n"
@@ -16733,12 +16725,19 @@ msgid ""
 "the current document now!\n"
 "Also check the access to the repository."
 msgstr ""
+"Nelze obdr¾et zámek pro zápis.\n"
+"Pravdìpodobnì je tento dokument\n
+" právì editován jiným u¾ivatelem.\n"
+"Zkontrolujte rovnì¾ pøístup k repozitáøi."
 
 #: src/VCBackend.cpp:604
 msgid ""
 "Error when releasing write lock.\n"
 "Check the access to the repository."
 msgstr ""
+"Nepodaøilo se uvolnit zámek pro zápis tohoto dokumentu.\n"
+"Zkontrolujte pøístup k repozitáøi."
+
 
 #: src/VCBackend.cpp:625
 #, c-format
@@ -17264,9 +17263,8 @@ msgid "File %1$s already exists, do you want to overwrite it?"
 msgstr "Soubor %1$s ji¾ existuje. Chcete tento soubor pøepsat?"
 
 #: src/frontends/qt4/GuiCommandBuffer.cpp:97
-#, fuzzy
 msgid "List of previous commands"
-msgstr "Pøedchozí pøíkaz"
+msgstr "Seznam pøedchozích pøíkazù"
 
 #: src/frontends/qt4/GuiCommandBuffer.cpp:100
 msgid "Next command"
@@ -19350,14 +19348,12 @@ msgid "not cited"
 msgstr "necitováno"
 
 #: src/insets/InsetCitation.cpp:396
-#, fuzzy
 msgid "No bibliography defined!"
-msgstr "Klíè bibliografie"
+msgstr "Není definována ¾ádná bibliografie!"
 
 #: src/insets/InsetCitation.cpp:400
-#, fuzzy
 msgid "No citations selected!"
-msgstr "®ádná citace v dosahu!"
+msgstr "Není vybrána ¾ádná citace!"
 
 #: src/insets/InsetCommand.cpp:102
 msgid "LaTeX Command: "
@@ -20121,9 +20117,9 @@ msgid "No vertical grid lines in 'cases': feature %1$s"
 msgstr "®ádné vertikální linky møí¾ky v 'cases' : pøíkaz %1$s'"
 
 #: src/mathed/InsetMathCases.cpp:106
-#, fuzzy, c-format
+#, c-format
 msgid "Changing number of columns not allowed in 'cases': feature %1$s"
-msgstr "Nelze zmìnit poèet sloupcù v '%1$s'"
+msgstr "Nelze zmìnit poèet sloupcù v prostøedí 'cases': vlastnost '%1$s'"
 
 #: src/mathed/InsetMathGrid.cpp:1372
 msgid "Only one row"
