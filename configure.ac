@@ -385,6 +385,16 @@ char * strerror(int n);
 #endif
 ])
 
+m4_define([ALLPARTS],boost client insets mathed core tex2lyx frontend_qt4)
+AC_ARG_ENABLE(monolithic-build,
+  AC_HELP_STRING([--enable-monolithic-build<=LIST>],
+		[Use monolithic build for modules in LIST (default: ALLPARTS)]),
+  [test "$enable_monolithic_build" = yes && enable_monolithic_build="ALLPARTS"
+   test "$enable_monolithic_build" = no && enable_monolithic_build=
+   for i in $enable_monolithic_build ; do
+       eval "enable_monolithic_$i=yes"
+   done],
+  [enable_monolithic_build=])
 
 AC_ARG_ENABLE(monolithic-boost,
   AC_HELP_STRING([--enable-monolithic-boost],
