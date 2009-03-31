@@ -601,7 +601,7 @@ void Encodings::validate(char_type c, LaTeXFeatures & features, bool for_mathed)
 		}
 	}
 	if (for_mathed && isMathSym(c)) {
-		features.require("relsize");
+		features.require("amstext");
 		features.require("lyxmathsym");
 	}
 #endif

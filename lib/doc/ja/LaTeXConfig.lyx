@@ -3277,14 +3277,14 @@ longtable
 \end_layout
 
 \begin_layout Subsection
-relsize
+amstext
 \end_layout
 
 \begin_layout Description
 検出: 
 \begin_inset Info
 type  "package"
-arg   "relsize"
+arg   "amstext"
 \end_inset
 
 
@@ -3293,13 +3293,13 @@ arg   "relsize"
 \begin_layout Description
 CTAN: 
 \family typewriter
-macros/latex/contrib/misc/
+macros/latex/required/amslatex/math/
 \end_layout
 
 \begin_layout Description
 備考: 
 \family sans
-relsize
+amstext
 \family default
 パッケージは、unicodeシンボルを数式内で上付きや下付き文字にする際、LyXが正しい寸法に調整するのに必要とします。
 \end_layout
