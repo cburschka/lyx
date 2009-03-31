@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-03-27 14:25+0100\n"
+"POT-Creation-Date: 2009-03-29 12:07+0200\n"
 "PO-Revision-Date: 2008-11-05 02:01+0100\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -40,7 +40,7 @@ msgstr "Autorská práva"
 #: src/frontends/qt4/ui/HyperlinkUi.ui:153
 #: src/frontends/qt4/ui/IncludeUi.ui:250 src/frontends/qt4/ui/InfoUi.ui:71
 #: src/frontends/qt4/ui/LogUi.ui:54 src/frontends/qt4/ui/ParagraphUi.ui:102
-#: src/frontends/qt4/ui/PrefsUi.ui:93 src/frontends/qt4/ui/RefUi.ui:97
+#: src/frontends/qt4/ui/PrefsUi.ui:93 src/frontends/qt4/ui/RefUi.ui:103
 #: src/frontends/qt4/ui/SearchUi.ui:207 src/frontends/qt4/ui/ShowFileUi.ui:55
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:28
 #: src/frontends/qt4/ui/SymbolsUi.ui:66 src/frontends/qt4/ui/TexinfoUi.ui:58
@@ -103,7 +103,7 @@ msgid "The label as it appears in the document"
 msgstr "Znaèka tak, jak se objeví v dokumentu"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:64 src/frontends/qt4/ui/LabelUi.ui:39
-#: src/frontends/qt4/ui/RefUi.ui:142
+#: src/frontends/qt4/ui/RefUi.ui:151
 msgid "&Label:"
 msgstr "Z&naèka:"
 
@@ -367,7 +367,7 @@ msgstr "O&bnovit"
 #: src/frontends/qt4/ui/GraphicsUi.ui:742 src/frontends/qt4/ui/HSpaceUi.ui:164
 #: src/frontends/qt4/ui/ListingsUi.ui:549
 #: src/frontends/qt4/ui/ParagraphUi.ui:92 src/frontends/qt4/ui/PrefsUi.ui:83
-#: src/frontends/qt4/ui/RefUi.ui:87 src/frontends/qt4/ui/SendtoUi.ui:85
+#: src/frontends/qt4/ui/RefUi.ui:90 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/VSpaceUi.ui:49
 #: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1337
 #: src/frontends/qt4/GuiDocument.cpp:2235
@@ -1428,7 +1428,7 @@ msgid "&Target:"
 msgstr "&Cíl:"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:106
-#: src/frontends/qt4/ui/PrefIdentityUi.ui:50 src/frontends/qt4/ui/RefUi.ui:116
+#: src/frontends/qt4/ui/PrefIdentityUi.ui:50 src/frontends/qt4/ui/RefUi.ui:125
 msgid "&Name:"
 msgstr "J&méno:"
 
@@ -1778,7 +1778,7 @@ msgstr "&Zkopírovat do schránky"
 msgid "Update the display"
 msgstr "Aktualizuj zobrazení"
 
-#: src/frontends/qt4/ui/LogUi.ui:64 src/frontends/qt4/ui/RefUi.ui:232
+#: src/frontends/qt4/ui/LogUi.ui:64 src/frontends/qt4/ui/RefUi.ui:241
 #: src/frontends/qt4/ui/ViewSourceUi.ui:56
 msgid "&Update"
 msgstr "&Aktualizace"
@@ -2084,7 +2084,7 @@ msgstr "&Na vý¹ku"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:191
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:92
-#: src/frontends/qt4/ui/RefUi.ui:129
+#: src/frontends/qt4/ui/RefUi.ui:138
 msgid "&Format:"
 msgstr "&Formát:"
 
@@ -3185,51 +3185,51 @@ msgstr "Poslat výstup do souboru"
 msgid "La&bels in:"
 msgstr "&Znaèky v:"
 
-#: src/frontends/qt4/ui/RefUi.ui:163
+#: src/frontends/qt4/ui/RefUi.ui:172
 msgid "Cross-reference as it appears in output"
 msgstr "Køí¾ový odkaz tak, jak se objeví na výstupu"
 
-#: src/frontends/qt4/ui/RefUi.ui:167
+#: src/frontends/qt4/ui/RefUi.ui:176
 msgid "<reference>"
 msgstr "<reference>"
 
-#: src/frontends/qt4/ui/RefUi.ui:172
+#: src/frontends/qt4/ui/RefUi.ui:181
 msgid "(<reference>)"
 msgstr "(<reference>)"
 
-#: src/frontends/qt4/ui/RefUi.ui:177
+#: src/frontends/qt4/ui/RefUi.ui:186
 msgid "<page>"
 msgstr "<strana>"
 
-#: src/frontends/qt4/ui/RefUi.ui:182
+#: src/frontends/qt4/ui/RefUi.ui:191
 msgid "on page <page>"
 msgstr "na stranì <strana>"
 
-#: src/frontends/qt4/ui/RefUi.ui:187
+#: src/frontends/qt4/ui/RefUi.ui:196
 msgid "<reference> on page <page>"
 msgstr "<reference> na stranì <strana>"
 
-#: src/frontends/qt4/ui/RefUi.ui:192
+#: src/frontends/qt4/ui/RefUi.ui:201
 msgid "Formatted reference"
 msgstr "Formátovaná reference"
 
-#: src/frontends/qt4/ui/RefUi.ui:203
+#: src/frontends/qt4/ui/RefUi.ui:212
 msgid "Sort labels in alphabetical order"
 msgstr "Setøídit znaèky v abecedním poøádku"
 
-#: src/frontends/qt4/ui/RefUi.ui:206
+#: src/frontends/qt4/ui/RefUi.ui:215
 msgid "&Sort"
 msgstr "&Setøídit"
 
-#: src/frontends/qt4/ui/RefUi.ui:229
+#: src/frontends/qt4/ui/RefUi.ui:238
 msgid "Update the label list"
 msgstr "Aktualizuj seznam znaèek"
 
-#: src/frontends/qt4/ui/RefUi.ui:247
+#: src/frontends/qt4/ui/RefUi.ui:256
 msgid "Jump to the label"
 msgstr "Pøeskoè na znaèku"
 
-#: src/frontends/qt4/ui/RefUi.ui:250 src/frontends/qt4/GuiRef.cpp:291
+#: src/frontends/qt4/ui/RefUi.ui:259 src/frontends/qt4/GuiRef.cpp:291
 msgid "&Go to Label"
 msgstr "&Jdi na znaèku"
 
@@ -16726,7 +16726,7 @@ msgid ""
 "Also check the access to the repository."
 msgstr ""
 "Nelze obdr¾et zámek pro zápis.\n"
-"Pravdìpodobnì je tento dokument\n
+"Pravdìpodobnì je tento dokument\n"
 " právì editován jiným u¾ivatelem.\n"
 "Zkontrolujte rovnì¾ pøístup k repozitáøi."
 
