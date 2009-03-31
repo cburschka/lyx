@@ -1,4 +1,4 @@
-#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -129,6 +129,14 @@
  {\usepackage[gennarrow]{eurosym}
   \setboolean{eurosym}{true}}
  {\setboolean{eurosym}{false}}
+
+% wird für Mathe-Makros benötigt
+% testen ob Paket xargs installiert ist
+\newboolean{xargs}
+\IfFileExists{xargs.sty}
+ {\usepackage{xargs}
+  \setboolean{xargs}{true}}
+ {\setboolean{xargs}{false}}
 
 % benutzt in Kap. 22.4
 % testen ob Paket braket installiert ist
@@ -31885,6 +31893,36 @@ newcommand
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ifxargs 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Die folgende Tabelle erscheint nur im Ausdruck wenn das LaTeX-Paket 
+\series bold
+xargs
+\series default
+ installiert ist:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Ein Mathe-Makro wird erstellt, indem man das Menü 
 \family sans
 Einfügen\SpecialChar \menuseparator
@@ -32666,6 +32704,60 @@ hinzufügen
 </cell>
 </row>
 </lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+else 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Folgendes erscheint im Ausdruck wenn das LaTeX-Paket 
+\series bold
+xargs
+\series default
+ nicht installiert ist:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das LaTeX-Paket 
+\series bold
+xargs 
+\series default
+muss installiert sein, um den Rest dieses Abschnitts im Ausdruck zu sehen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fi 
+\end_layout
 
 \end_inset
 
