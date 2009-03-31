@@ -1,4 +1,4 @@
-#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -124,6 +124,14 @@
  {\usepackage[gennarrow]{eurosym}
   \setboolean{eurosym}{true}}
  {\setboolean{eurosym}{false}}
+
+% needed for math macros
+% check for package xargs
+\newboolean{xargs}
+\IfFileExists{xargs.sty}
+ {\usepackage{xargs}
+  \setboolean{xargs}{true}}
+ {\setboolean{xargs}{false}}
 
 % needed in sec. 22.4
 % check for package braket
@@ -32279,6 +32287,36 @@ newcommand
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ifxargs 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+La tabla siguiente sólo se mostrará en la salida si el paquete LaTeX 
+\series bold
+xargs
+\series default
+ está instalado.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Una macro de ecuación se crea con el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
@@ -33066,6 +33104,60 @@ comiendo desde la derecha
 </cell>
 </row>
 </lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+else
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Lo que sigue se verá en la salida si el paquete LaTeX 
+\series bold
+xargs
+\series default
+ no está instalado:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Debes instalar el paquete LaTeX 
+\series bold
+xargs
+\series default
+ para ver en la salida el resto de esta subsección.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fi
+\end_layout
 
 \end_inset
 
