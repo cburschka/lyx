@@ -12,7 +12,7 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\man\man1"
- #File "${PRODUCT_SOURCEDIR}\Resources\chkconfig.ltx"
+ File "${PRODUCT_SOURCEDIR}\Resources\chkconfig.ltx"
  File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
  File "${PRODUCT_SOURCEDIR}\Resources\CREDITS"
  #File "${PRODUCT_SOURCEDIR}\Resources\external_templates"
@@ -23,6 +23,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Extended.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Intro.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\LaTeXConfig.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Math.lyx"
  SetOutPath "$INSTDIR\Resources\doc\de"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\de\EmbeddedObjects.lyx"
@@ -40,6 +41,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\Intro.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\Math.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\Shortcuts.lyx"
+ SetOutPath "$INSTDIR\Resources\doc\ja"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\ja\LaTeXConfig.lyx"
  #SetOutPath "$INSTDIR\Resources\examples"
  SetOutPath "$INSTDIR\Resources\images"
  File "${PRODUCT_SOURCEDIR}\Resources\images\bookmark-goto_0.png"
