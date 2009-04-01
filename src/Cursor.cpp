@@ -1786,8 +1786,17 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 	else
 		row = pm.pos2row(pos());
 		
-	if (atFirstOrLastRow(up))
+	if (atFirstOrLastRow(up)) {
+		Cursor dummy = *this;
+		// The cursor hasn't changed yet. This happens when
+		// you e.g. move out of an inset. And to give the 
+		// DEPM the possibility of doing something we must
+		// provide it with two different cursors. (Lgb, vfr)
+		dummy.pos() = dummy.pos() == 0 ? dummy.lastpos() : 0;
+		dummy.pit() = dummy.pit() == 0 ? dummy.lastpit() : 0;
+		updateNeeded |= bv().checkDepm(dummy, *this);
 		return false;
+	}
 
 	// with and without selection are handled differently
 	if (!selection()) {
@@ -1799,19 +1808,6 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 		else
 			tm.editXY(*this, xo, yo + textRow().descent() + 1);
 		clearSelection();
-		
-		// This happens when you move out of an inset.
-		// And to give the DEPM the possibility of doing
-		// something we must provide it with two different
-		// cursors. (Lgb)
-		Cursor dummy = *this;
-		if (dummy == old)
-			++dummy.pos();
-		if (bv().checkDepm(dummy, old)) {
-			updateNeeded = true;
-			// Make sure that cur gets back whatever happened to dummy(Lgb)
-			operator=(dummy);
-		}
 	} else {
 		// if there is a selection, we stay out of any inset, and just jump to the right position:
 		Cursor old = *this;
