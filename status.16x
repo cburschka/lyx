@@ -117,6 +117,9 @@ What's new
 
 - Adjust the color of deletions slightly when using change tracking. It
   is now easier to distinguish between added and deleted text (bug 5629).
+  
+- Fix the bug that the view source window remained disabled forever when 
+  the window got disabled while the autoUpdate checkbox was unchecked.
 
 - Fix the loss of clipboard contents on exit (bug 5769).
 

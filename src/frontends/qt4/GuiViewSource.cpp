@@ -50,6 +50,8 @@ ViewSourceWidget::ViewSourceWidget()
 		this, SLOT(updateView()));
 	connect(autoUpdateCB, SIGNAL(toggled(bool)),
 		updatePB, SLOT(setDisabled(bool)));
+	connect(autoUpdateCB, SIGNAL(toggled(bool)),
+		this, SLOT(updateView()));
 	connect(updatePB, SIGNAL(clicked()),
 		this, SLOT(updateView()));
 
@@ -115,6 +117,7 @@ static bool getContent(BufferView const * view, bool fullSource, QString & qstr)
 void ViewSourceWidget::setBufferView(BufferView const * bv)
 {
 	bv_ = bv;
+	setEnabled(bv ?  true : false);
 }
 
 
