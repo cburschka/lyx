@@ -12412,7 +12412,7 @@ Marcos
 status collapsed
 
 \begin_layout Plain Layout
-Marcos | see 
+Marcos|see
 \begin_inset ERT
 status collapsed
 
@@ -28530,7 +28530,7 @@ El signo menos al principio de la segunda línea normalmente no aparece como
 \begin_inset space \thinspace{}
 \end_inset
 
-pt espacio detrás del menos con el comando 
+pt de espacio detrás del menos con el comando 
 \series bold
 
 \backslash
@@ -29479,31 +29479,8 @@ Ecuación ! multilínea ! partes de
 \end_layout
 
 \begin_layout Standard
-Para mostrar sólo partes de una ecuación multilínea se
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-
-\backslash
-left.
-\backslash
-right
-\backslash
-}
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
- usa uno de los siguientes métodos: 
+Para mostrar sólo partes de una ecuación multilínea usa uno de los siguientes
+ entornos: 
 \series bold
 aligned
 \series default
