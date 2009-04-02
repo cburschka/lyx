@@ -262,8 +262,7 @@ FuncRequest const & KeyMap::lookup(KeySymbol const &key,
 		  KeyModifier mod, KeySequence * seq) const
 {
 	if (table.empty()) {
-		seq->curmap = seq->stdmap;
-		seq->mark_deleted();
+		seq->reset();
 		return FuncRequest::unknown;
 	}
 
@@ -281,16 +280,14 @@ FuncRequest const & KeyMap::lookup(KeySymbol const &key,
 				return prefix;
 			} else {
 				// final key - reset map
-				seq->curmap = seq->stdmap;
-				seq->mark_deleted();
+				seq->reset();
 				return cit->func;
 			}
 		}
 	}
 
 	// error - key not found:
-	seq->curmap = seq->stdmap;
-	seq->mark_deleted();
+	seq->reset();
 
 	return FuncRequest::unknown;
 }

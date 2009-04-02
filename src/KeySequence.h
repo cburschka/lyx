@@ -82,9 +82,6 @@ public:
 	 */
 	docstring const printOptions(bool forgui) const;
 
-	/// Mark the sequence as deleted.
-	void mark_deleted();
-
 	/// Reset sequence to become "deleted"
 	void reset();
 

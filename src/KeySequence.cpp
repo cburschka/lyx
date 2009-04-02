@@ -169,15 +169,9 @@ docstring const KeySequence::printOptions(bool forgui) const
 }
 
 
-void KeySequence::mark_deleted()
-{
-	deleted_ = true;
-}
-
-
 void KeySequence::reset()
 {
-	mark_deleted();
+	deleted_ = true;
 	curmap = stdmap;
 }
 
