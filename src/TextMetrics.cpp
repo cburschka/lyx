@@ -1850,11 +1850,11 @@ int TextMetrics::leftMargin(int max_width,
 
 	case MARGIN_FIRST_DYNAMIC:
 		if (layout.labeltype == LABEL_MANUAL) {
-			if (pos >= par.beginOfBody()) {
+			// if we are at position 0, we are never in the body
+			if (pos > 0 && pos >= par.beginOfBody())
 				l_margin += labelfont_metrics.signedWidth(layout.leftmargin);
-			} else {
+			else
 				l_margin += labelfont_metrics.signedWidth(layout.labelindent);
-			}
 		} else if (pos != 0
 			   // Special case to fix problems with
 			   // theorems (JMarc)
