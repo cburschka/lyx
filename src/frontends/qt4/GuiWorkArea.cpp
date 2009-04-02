@@ -273,11 +273,7 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & lv)
 	setAcceptDrops(true);
 	setMouseTracking(true);
 	setMinimumSize(100, 70);
-#ifdef Q_WS_MACX
 	setFrameStyle(QFrame::NoFrame);
-#else
-	setFrameStyle(QFrame::Box);
-#endif
 	updateWindowTitle();
 
 	viewport()->setAutoFillBackground(false);
