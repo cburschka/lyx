@@ -415,6 +415,7 @@ enum FuncCode
 	LFUN_VC_COMMAND,
 	// 320
 	LFUN_MATH_FONT_STYLE,
+	LFUN_SCREEN_SHOW_CURSOR,        // vfr, 20090325
 
 	LFUN_LASTACTION                  // end of the table
 };
