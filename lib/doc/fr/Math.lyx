@@ -126,14 +126,6 @@
   \setboolean{eurosym}{true}}
  {\setboolean{eurosym}{false}}
 
-% needed for math macros
-% check for package xargs
-\newboolean{xargs}
-\IfFileExists{xargs.sty}
- {\usepackage{xargs}
-  \setboolean{xargs}{true}}
- {\setboolean{xargs}{false}}
-
 % needed in sec. 22.4
 % check for package braket
 \newboolean{braket}
@@ -31696,36 +31688,6 @@ newcommand
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-ifxargs 
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Ce qui suit ne sera affiché que si le paquetage LaTeX 
-\series bold
-xargs
-\series default
- est installé
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Une macro est créée en utilisant le menu 
 \family sans
 Insérer\SpecialChar \menuseparator
@@ -32750,60 +32712,6 @@ droite
 </cell>
 </row>
 </lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-else 
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Ce qui suit sera affiché si la paquetage LaTeX 
-\series bold
-xargs
-\series default
- n'est pas installé:
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Vous avez besoin du paquetage LaTeX 
-\series bold
-xargs
-\series default
- pour voir le reste de cette sous section dans la sortie finale.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-fi 
-\end_layout
 
 \end_inset
 
