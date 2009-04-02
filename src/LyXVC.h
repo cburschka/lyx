@@ -65,7 +65,7 @@ public:
 	void setBuffer(Buffer *);
 
 	/// Register the document as an VC file.
-	void registrer();
+	bool registrer();
 
 	/// Unlock and commit changes. Returns log.
 	std::string checkIn();

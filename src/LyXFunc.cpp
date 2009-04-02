@@ -470,7 +470,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 
 	case LFUN_VC_REGISTER:
-		enable = !buf->lyxvc().inUse() && !buf->isUnnamed();
+		enable = !buf->lyxvc().inUse();
 		break;
 	case LFUN_VC_CHECK_IN:
 		enable = buf->lyxvc().checkInEnabled();
@@ -692,21 +692,30 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 bool LyXFunc::ensureBufferClean(BufferView * bv)
 {
 	Buffer & buf = bv->buffer();
-	if (buf.isClean())
+	if (buf.isClean() && !buf.isUnnamed())
 		return true;
 
 	docstring const file = buf.fileName().displayName(30);
-	docstring text = bformat(_("The document %1$s has unsaved "
+	docstring title;
+	docstring text;
+	if (!buf.isUnnamed()) {
+		text = bformat(_("The document %1$s has unsaved "
 					     "changes.\n\nDo you want to save "
 					     "the document?"), file);
-	int const ret = Alert::prompt(_("Save changed document?"),
-				      text, 0, 1, _("&Save"),
-				      _("&Cancel"));
+		title = _("Save changed document?");
+		
+	} else {
+		text = bformat(_("The document %1$s has not been "
+					     "saved yet.\n\nDo you want to save "
+					     "the document?"), file);
+		title = _("Save new document?");
+	}
+	int const ret = Alert::prompt(title, text, 0, 1, _("&Save"), _("&Cancel"));
 
 	if (ret == 0)
 		lyx_view_->dispatch(FuncRequest(LFUN_BUFFER_WRITE));
 
-	return buf.isClean();
+	return buf.isClean() && !buf.isUnnamed();
 }
 
 
@@ -1078,11 +1087,11 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		// --- version control -------------------------------
 		case LFUN_VC_REGISTER:
 			LASSERT(lyx_view_ && buffer, /**/);
-			if (!ensureBufferClean(view()) || buffer->isUnnamed())
+			if (!ensureBufferClean(view()))
 				break;
 			if (!buffer->lyxvc().inUse()) {
-				buffer->lyxvc().registrer();
-				reloadBuffer();
+				if (buffer->lyxvc().registrer())
+					reloadBuffer();
 			}
 			updateFlags = Update::Force;
 			break;
