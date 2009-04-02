@@ -2175,7 +2175,6 @@ msgid "Custom"
 msgstr "Vlastní"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
-#, fuzzy
 msgid "A&lter..."
 msgstr "Z&mìnit..."
 
@@ -2324,7 +2323,6 @@ msgid "&Enabled"
 msgstr "&Zapnuto"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:292
-#, fuzzy
 msgid "Maximum A&ge (in days):"
 msgstr "®ivo&tnost (ve dnech):"
 
@@ -2362,7 +2360,6 @@ msgid "Editing"
 msgstr "Editace"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:51
-#, fuzzy
 msgid "Cursor &follows scrollbar"
 msgstr "&Kurzor následuje posuvník"
 
@@ -2395,12 +2392,10 @@ msgid "&Limit text width"
 msgstr "&Omezit ¹íøku textu"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:143
-#, fuzzy
 msgid "Screen used (&pixels):"
 msgstr "©íøka v pi&xelech:"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:169
-#, fuzzy
 msgid "Hide &tabbar"
 msgstr "&Skrýt li¹tu s dokumenty"
 
@@ -2417,7 +2412,6 @@ msgid "&New..."
 msgstr "&Nový..."
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:38
-#, fuzzy
 msgid "Re&move"
 msgstr "O&dstranit"
 
@@ -2426,7 +2420,6 @@ msgid "S&hort Name:"
 msgstr "&Zkratka:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:85
-#, fuzzy
 msgid "Vector &graphics format"
 msgstr "&Vektorový formát obrázku"
 
@@ -2443,7 +2436,6 @@ msgid "Ed&itor:"
 msgstr "&Editor:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:132
-#, fuzzy
 msgid "Shortc&ut:"
 msgstr "&Zkratka:"
 
@@ -2504,7 +2496,6 @@ msgid ""
 msgstr "1.0 je standardní rychlost. Vy¹¹í hodnoty zrychlí, ni¾¹í zpomalí."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:25
-#, fuzzy
 msgid "User &interface language:"
 msgstr "&Jazyk u¾ivatelského rozhraní:"
 
@@ -2546,7 +2537,6 @@ msgid "Use the babel package for multilingual support"
 msgstr "Pou¾ít balíèek babel pro vícejazyènou podporu"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:119
-#, fuzzy
 msgid "&Use babel"
 msgstr "Pou¾ít b&abel"
 
@@ -2604,7 +2594,6 @@ msgstr ""
 "arab¹tina)."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:206
-#, fuzzy
 msgid "Enable RTL su&pport"
 msgstr "&Zapnout podporu psaní zprava-doleva"
 
@@ -2663,7 +2652,6 @@ msgid "Set class options to default on class change"
 msgstr "Zvolit standardní nastavení pøi zmìnì tøídy"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:98
-#, fuzzy
 msgid "R&eset class options when document class changes"
 msgstr "&Obnovit nastavení, kdy¾ se zmìní tøída dokumentu"
 
@@ -2810,7 +2798,6 @@ msgid "Option used to print to non-default printer."
 msgstr "Volba pro tisk na tiskárnu, je¾ není nastavena implicitnì."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:101
-#, fuzzy
 msgid "Set &printer:"
 msgstr "Nastavit &tiskárnu:"
 
@@ -2819,7 +2806,6 @@ msgid "Option used with spool command to set printer."
 msgstr "Volba pou¾itá spool-em k nastavení tiskátny."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:117
-#, fuzzy
 msgid "Spool &printer:"
 msgstr "&Spool pro tiskárnu:"
 
@@ -2830,7 +2816,6 @@ msgid ""
 msgstr "Zpùsobí tisk do souboru a tento pak ke skuteènému tisku."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:136
-#, fuzzy
 msgid "Spool co&mmand:"
 msgstr "Pøíka&z do spool-u:"
 
@@ -2847,9 +2832,8 @@ msgid "Lan&dscape:"
 msgstr "Na ¹íø&ku:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:182
-#, fuzzy
 msgid "&Number of copies:"
-msgstr "Poèet kopií"
+msgstr "Poèet &kopií"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:192
 msgid "Option used to set number of copies."
@@ -2910,9 +2894,8 @@ msgstr ""
 "nainstalovány pro v¹echny va¹e tiskárny."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:304
-#, fuzzy
 msgid "Adapt &output to printer"
-msgstr "Pøizpùsobit výstup na tiskárnu"
+msgstr "Pøizpùsobit &výstup na tiskárnu"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:311
 msgid "Name of the default printer"
@@ -2927,7 +2910,6 @@ msgid "Printer co&mmand:"
 msgstr "Pøíkaz pro &tiskárnu:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:69
-#, fuzzy
 msgid "Sans Seri&f:"
 msgstr ""
 "&Bezpatkové\n"
@@ -2938,7 +2920,6 @@ msgid "T&ypewriter:"
 msgstr "&Strojopisné:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:117
-#, fuzzy
 msgid "R&oman:"
 msgstr ""
 "&Antikva\n"
@@ -2957,52 +2938,42 @@ msgid "Font Sizes"
 msgstr "Velikost Písma"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:262
-#, fuzzy
 msgid "&Large:"
 msgstr "Velké:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:272
-#, fuzzy
 msgid "&Larger:"
 msgstr "Vìt¹í:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:282
-#, fuzzy
 msgid "&Largest:"
 msgstr "Nejvìt¹í:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:295
-#, fuzzy
 msgid "&Huge:"
 msgstr "Obrovské:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:305
-#, fuzzy
 msgid "&Hugest:"
 msgstr "Obrovité:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:315
-#, fuzzy
 msgid "S&mallest:"
 msgstr "Nejmen¹í:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:325
-#, fuzzy
 msgid "S&maller:"
 msgstr "Men¹í:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:335
-#, fuzzy
 msgid "S&mall:"
 msgstr "Malé:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:345
-#, fuzzy
 msgid "&Normal:"
 msgstr "Normální:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:355
-#, fuzzy
 msgid "&Tiny:"
 msgstr "Drobné:"
 
@@ -3014,9 +2985,8 @@ msgstr ""
 "Zlep¹í rychlost vykreslování, ale mù¾e zhor¹it zobrazení fontù na obrazovce."
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:371
-#, fuzzy
 msgid "&Use pixmap cache to speed up font rendering"
-msgstr "Pou¾ít Vyrovnávací pamì» pro rychlej¹í vykreslování fontù"
+msgstr "Pou¾ít &vyrovnávací pamì» pro rychlej¹í vykreslování fontù"
 
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:90
 msgid "&Bind file:"
@@ -3039,7 +3009,6 @@ msgid "Personal &dictionary:"
 msgstr "&Vlastní slovník:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:97
-#, fuzzy
 msgid "&Escape characters:"
 msgstr "&Escape znaky:"
 
@@ -3068,29 +3037,24 @@ msgid "Session"
 msgstr "Relace"
 
 #: src/frontends/qt4/ui/PrefUi.ui:51
-#, fuzzy
 msgid "Restore window layouts and &geometries"
-msgstr "Povolit naètení/zápisu rozvr¾ení oken a jejich geometrie"
+msgstr "Povolit naètení/zápisu rozvr¾ení oken a jejich &geometrie"
 
 #: src/frontends/qt4/ui/PrefUi.ui:58
-#, fuzzy
 msgid "Restore to the cursor position when the file was last closed"
-msgstr "Obnovit pozici kurzoru v místì, kde byl pøi posledním zavøení souboru"
+msgstr "&Obnovit pozici kurzoru v místì, kde byl pøi posledním zavøení souboru"
 
 #: src/frontends/qt4/ui/PrefUi.ui:61
-#, fuzzy
 msgid "Restore cursor &positions"
-msgstr "Obnovit pozici kurzorù"
+msgstr "Obnovit &pozici kurzorù"
 
 #: src/frontends/qt4/ui/PrefUi.ui:68
-#, fuzzy
 msgid "&Load opened files from last session"
-msgstr "Naèíst soubory otevøené v pøedchozí relaci"
+msgstr "&Naèíst soubory otevøené v pøedchozí relaci"
 
 #: src/frontends/qt4/ui/PrefUi.ui:75
-#, fuzzy
 msgid "Clear all session &information"
-msgstr "Smazat ve¹kerá nastavení rozvrhu oken"
+msgstr "Smazat ve¹kerá nastavení &rozvrhu oken"
 
 #: src/frontends/qt4/ui/PrefUi.ui:85
 msgid "Documents"
@@ -3105,12 +3069,10 @@ msgid "minutes"
 msgstr "minut"
 
 #: src/frontends/qt4/ui/PrefUi.ui:170
-#, fuzzy
 msgid "&Backup documents, every"
 msgstr "Zá&lohovat dokumenty, ka¾dých"
 
 #: src/frontends/qt4/ui/PrefUi.ui:177
-#, fuzzy
 msgid "&Open documents in tabs"
 msgstr "Otevírat dokumenty v &panelech"
 
@@ -3125,7 +3087,6 @@ msgid ""
 msgstr "Zobrazuje komentáøe s nápovìdou pro vlo¾ky v editovaném dokumentu"
 
 #: src/frontends/qt4/ui/PrefUi.ui:221
-#, fuzzy
 msgid "&Enable tool tips in main work area"
 msgstr "Zapnout &bublinovou nápovìdu na pracovní plo¹e"
 
@@ -15860,20 +15821,19 @@ msgid "Save changed document?"
 msgstr "Ulo¾it zmìnìný soubor?"
 
 #: src/LyXFunc.cpp:708
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The document %1$s has not been saved yet.\n"
 "\n"
 "Do you want to save the document?"
 msgstr ""
-"Dokument %1$s obsahuje neulo¾ené zmìny.\n"
+"Dokument %1$s zatím nebyl ulo¾en.\n"
 "\n"
 "Chcete jej ulo¾it ?"
 
 #: src/LyXFunc.cpp:711
-#, fuzzy
 msgid "Save new document?"
-msgstr "Ulo¾it zmìnìný soubor?"
+msgstr "Ulo¾it nový dokument ?"
 
 #: src/LyXFunc.cpp:726
 #, c-format
@@ -19060,7 +19020,6 @@ msgid "&Discard"
 msgstr "&Neukládat"
 
 #: src/frontends/qt4/GuiView.cpp:1895
-#, fuzzy
 msgid "Document not loaded"
 msgstr "Dokument nenaèten"
 
