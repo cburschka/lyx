@@ -117,6 +117,9 @@ What's new
   of the date-insert function. This fixes a crash on Windows with invalid/
   unsupported date specifiers (bug 5827).
 
+- Fix crash when issuing the command "buffer-switch <buffer>" and there
+  is no buffer called <buffer>.
+
 - Adjust the color of deletions slightly when using change tracking. It
   is now easier to distinguish between added and deleted text (bug 5629).
   
