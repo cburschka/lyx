@@ -1,0 +1,2395 @@
+#LyX 1.6.3svn created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+%This preamble is designed to ensure that the document prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \cleardoublepage
+  \pagenumbering{arabic} }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX}}
+
+
+% === WAS==
+%This additional command  is for Indonesian translation
+%to replace Contents with Daftar Isi
+\AtBeginDocument{\renewcommand{\contentsname}{Daftar Isi}}
+\end_preamble
+\use_default_options false
+\language english
+\inputencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Introduction to LyX"
+\pdf_author "LyX Team"
+\pdf_subject "LyX-documentation Intro"
+\pdf_keywords "LyX, documentation"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 2
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 2
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Pengantar LyX
+\end_layout
+
+\begin_layout Author
+oleh LyX Team
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\noindent
+Apabila anda mempunyai komentar atau menemukan kesalahan, silahkan kirimkan
+ koreksi dan komentar ke mailing list tim dokumentasi LyX: 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+.
+ Versi Bahasa Indonesia disunting oleh: Waluyo Adi Siswanto, dan Wahyu Latpursa
+ Kurniasih.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Filosofi LyX
+\end_layout
+
+\begin_layout Subsection
+Apakah LyX?
+\end_layout
+
+\begin_layout Standard
+LyX adalah suatu sistem penyuntingan dokumen yang mampu mempersiapkan artikel-ar
+tikel teknik atau sains yang rumit dan mengandung persamaan matematika,
+ referensi silang, bibliografi, indeks, dll.
+ Program ini sesuai untuk menulis dokumen yang pendek maupun panjang dengan
+ kemampuan pemrosesan yang diperlukan seperti: pengaturan bab dan halaman
+ secara otomatis, cek ejaan, serta hal umum lainnya yang biasa digunakan
+ dalam penyuntingan dokumen.
+ Selain penulisan dokumen, LyX dapat juga digunakan untuk keperluan surat
+ menyurat, yang umumnya menggunakan program lain yang lebih sederhana.
+ Program ini bukan program terbaik untuk menyiapkan berbagai dokumen khusus
+ seperti 
+\emph on
+banner
+\emph default
+, 
+\emph on
+flyer
+\emph default
+, atau model iklan lain (kami akan jelaskan kemudian), walaupun bisa juga
+ dikerjakan.
+ Bebarapa contoh yang sangat sesuai adalah: makalah seminar, desertasi dan
+ tesis, nota kuliah, nota seminar, makalah untuk konferensi, dokumentasi
+ dan buku petunjuk perangkat lunak, buku, artikel untuk jurnal internasional
+ berwasit, skrip drama dan filem, proposal bisnis, presentasi \SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Standard
+LyX adalah perangkat lunak yang menggunakan pendekatan modern untuk menulis
+ dokumen dengan bantuan komputer menggunakan paradigma 
+\emph on
+markup language
+\emph default
+, yaitu suatu metoda yang memungkinkan penulis keluar dari tradisi 
+\begin_inset Quotes eld
+\end_inset
+
+mengetik dengan mesin ketik
+\begin_inset Quotes erd
+\end_inset
+
+.
+ LyX dirancang untuk para penulis yang menginginkan hasil profesional dengan
+ tidak perlu menguasai atau menjadi ahli terlebih dahulu dalam 
+\emph on
+typesetting
+\emph default
+.
+ Pekerjaan pengaturan tulisan akan dilakukan oleh komputer, bukan oleh penulis;
+ dengan bantuan LyX, penulis dapat berkonsentrasi sepenuhnya pada isi dan
+ kandungan tulisan.
+\end_layout
+
+\begin_layout Standard
+Salah satu kesulitan yang mungkin dirasakan ketika pertama kali menggunakan
+ LyX adalah merubah paradigma bahwa penulis harus merancang sendiri tampilan
+ hasil.
+ Pada masa lalu ketika masih menggunakan mesin ketik, penulis harus mempelajari
+ berbagai teknik dan trik menulis untuk mengatasi keterbatasan mesin ketik.
+ Apabila penulis ingin memberikan penekanan makna pada kata-kata tertentu,
+ biasanya dilakukan dengan cara menindihnya dengan karakter 
+\begin_inset Quotes eld
+\end_inset
+
+_
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Untuk menyiapkan tabel, penulis perlu mengatur lebar kolom yang diperlukan
+ dan mengatur pergerakan spasi menggunakan tombol
+\emph on
+ tab
+\emph default
+.
+ Demikian halnya apabila penulis ingin mengatur model penulisan rata kanan
+ berbagai trik perlu dilakukan.
+ Pemenggalan suku kata diakhir baris teks perlu dilihat dengan teliti.
+\end_layout
+
+\begin_layout Standard
+Aktivitas penyuntingan dokumen tadi kemungkinan masih dilestarikan dan kita
+ masih selalu kawatir tentang setiap karakter yang kita ketik akan lari
+ kemana.
+ Kebanyakan program pengolah kata masih memiliki mentalitas ini.
+ Mereka masih menggunakan hentian tab untuk menambahkan spasi kosong.
+ Andapun masih kawatir di halaman mana gambar atau teks akan muncul.
+ Untuk memberi perhatian pada suatu kata tertentu anda harus mengganti jenis
+ huruf, atau dalam mesin ketik biasa anda harus memutar roda huruf.
+ Hal-hal yang diungkapkan tadi, masih terjadi dan digunakan pada pengolah
+ kata dengan filosofi WYSIWYG, yaitu 
+\begin_inset Quotes eld
+\end_inset
+
+What You See Is What You Get
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Namun sayangnya paradigma tersebut memberi hasil 
+\begin_inset Quotes eld
+\end_inset
+
+What You See Is All You Get
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Pengolah kata LyX berbeda dari pengolah kata biasa.
+ Anda tidak perlu kawatir dengan pemilihan huruf yang sesuai serta bagaimana
+ penempatannya.
+ Yang anda perlukan adalah mengatakan ke LyX 
+\emph on
+apa yang akan anda kerjakan 
+\emph default
+selanjutnya LyX akan menyesuaikan mengikuti aturan-aturan yang didefinisikan
+ di berkas style.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Secara jujur, sebagian besar versi mutakhir dari perangkat lunak perkantoran
+ sudah memiliki berkas mirip 
+\emph on
+style
+\emph default
+ dengan metoda program yang mirip bahasa 
+\emph on
+markup
+\emph default
+.
+ Namun demikian, dari pengamatan kami masih jarang yang memanfaatkannya.
+\end_layout
+
+\end_inset
+
+ Mari kita lihat pada satu contoh sederhana:
+\end_layout
+
+\begin_layout Standard
+Misalnya anda akan menulis laporan.
+ Untuk menulis laporan, anda ingin menuliskan bab 
+\begin_inset Quotes eld
+\end_inset
+
+Pengantar\SpecialChar \@.
+
+\begin_inset Quotes erd
+\end_inset
+
+ Pada pengolah kata biasa yang anda lakukan adalah memilih menu untuk mengubah
+ model huruf serta ukuran, kemudian diubah menjadi huruf tebal.
+ Setelah itu anda menulis 
+\begin_inset Quotes eld
+\end_inset
+
+1.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+Pengantar
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Tentu saja, apabila anda ingin merubah menjadi bab lain, atau ingin menyisipkan
+ bab lain sebelumnya, anda perlu menyesuaikan nomor yang anda tulis secara
+ manual.
+ Apabila anda mempunyai Daftar Isi, nomor bab dan nomor halaman perlu disesuaika
+n juga.
+ 
+\end_layout
+
+\begin_layout Standard
+Apabila menggunakan LyX, anda hanya perlu menekan tombol lingkungan yang
+ berada di kiri atas kemudian memilih 
+\family sans
+Bab
+\family default
+, kemudian menulis 
+\begin_inset Quotes eld
+\end_inset
+
+Pengantar\SpecialChar \@.
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Anda bisa lihat, akan sesederhana itu.
+ Apabila anda melakukan salin, potong dan tempel, nomor akan disesuaikan
+ secara otomatis.
+ Demikian pula jika anda mendefinisikan acuan di bab tersebut (dengan menyisipka
+n label untuk referensi silang), LyX akan secara otomatis selalu memperbarui
+ walau tempatnya dipindah kemanapun.
+ Anda tidak akan pernah perlu menuliskan nomor bab, subbab atau bagian bernomor
+ lainnya.
+\end_layout
+
+\begin_layout Standard
+Sekarang kita lihat dengan masalah konsistensi.
+ Misalnya, lima hari kemudian anda membuka berkas laporan yang anda buat
+ dengan program pengolah kata biasa.
+ Anda akan mulai meneruskan pada Bab
+\begin_inset space ~
+\end_inset
+
+4.
+ Karena anda lupa huruf yang digunakan 5 hari sebelumnya (seharusnya huruf
+ tebal 18pt, tetapi yang digunakan huruf tebal 16pt), sehingga hasilnya
+ huruf di Bab
+\begin_inset space ~
+\end_inset
+
+4, berbeda dengan yang digunakan di Bab
+\begin_inset space ~
+\end_inset
+
+1.
+ Permasalahan tidak konsisten ini tidak akan pernah terjadi di LyX.
+ Komputer akan menyimpan aturan-aturan tentang ukuran huruf dan format lainnya,
+ bukannya anda yang harus setiap saat mengaturnya.
+ Demikianlah seharusnya keunggulan komputer dapat mempermudah pekerjaan
+ kita.
+\end_layout
+
+\begin_layout Standard
+Ada contoh lainnya.
+ Misalnya anda akan membuat daftar (
+\emph on
+list
+\emph default
+).
+ Pada pengolah kata yang biasa, membuat daftar merupakan pengaturan menggunakan
+ kombinasi tab dan pengaturan baris baru.
+ Anda perlu memikirkan dimana akan menuliskan label pada tiap-tiap item,
+ model apakah labelnya, seberapa banyak spasi baris kosong untuk memisahkan
+ antara item, dan banyak hal lain.
+ Apabila menggunakan LyX, anda hanya perlu menentukan dua hal: apakah tipe
+ daftar yang diinginkan, dan apa yang anda ingin masukkan dalam daftar.
+ Itu saja.
+\end_layout
+
+\begin_layout Standard
+Dengan demikian, ide dasar dibalik LyX adalah: nyatakan 
+\emph on
+apa
+\emph default
+ yang ingin anda kerjakan, bukan bagaimana mengerjakannya.
+ Sebagai ganti dari 
+\begin_inset Quotes eld
+\end_inset
+
+What You See Is What You Get,
+\begin_inset Quotes erd
+\end_inset
+
+ yang berlaku di LyX adalah 
+\begin_inset Quotes eld
+\end_inset
+
+What You See Is What You 
+\emph on
+Mean
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+WYSIWYM.
+\begin_inset Quotes erd
+\end_inset
+
+ Hal ini adalah suatu ide besar yang akan mengubah dan menyederhanakan cara-cara
+ penulisan dan penyuntingan dokumen.
+ Hal ini juga yang menyebabkan LyX tidak akan sesuai untuk membuat poster
+ atau jenis-jenis lembaran iklan.
+ Pada jenis ini tidak memerlukan fungsi-fungsi seperti paragraf, bab, subbab
+ atau sejenisnya.
+ Disini bukan berarti LyX tidak mampu mengerjakan, tetapi bisa dikatakan
+ bukan alat yang tepat untuk pekerjaan tersebut - anda jangan menggunakan
+ pisau untuk memukul paku.
+\end_layout
+
+\begin_layout Subsection
+Perbedaan LyX dan Pengolah Kata Lain
+\begin_inset OptArg
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+texorpdfstring{
+\end_layout
+
+\end_inset
+
+LyX
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{LyX}
+\end_layout
+
+\end_inset
+
+ dan Pengolah Kata Lain
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Berikut ini adalah beberapa hal yang tidak akan ditemui di LyX:
+\end_layout
+
+\begin_layout Itemize
+Tampilan mistar garis
+\end_layout
+
+\begin_layout Itemize
+Pengaturan spasi menggunakan 
+\emph on
+tab
+\end_layout
+
+\begin_layout Itemize
+Spasi tambahan (misalnya dengan menekan 
+\family sans
+Enter
+\family default
+ atau 
+\family sans
+Spasi
+\family default
+ dua kali atau bahkan lebih)
+\end_layout
+
+\begin_layout Standard
+Penggunaan 
+\emph on
+Tab
+\emph default
+ untuk lompatan spasi serta tampilan mistar yang menunjukkan tempat berhenti
+ 
+\emph on
+tab
+\emph default
+ yang ada di halaman kerja, tidak akan ditemui dan tidak berlaku di LyX.
+ Demikian pula penambahan spasi kosong tidak diperlukan; LyX akan menambahkan
+ sendiri apabila diperlukan, tergantung pada kondisi.
+ Tidak berlakunya penambahan baris kosong menggunakan 
+\family sans
+Enter
+\family default
+ akan membingungkan penulis pada awalnya, namun demikian setelah memahami
+ filosofi WYSIWYM, hal ini justru akan menjamin konsistensi dan memudahkan
+ penyuntingan dokumen.
+\end_layout
+
+\begin_layout Standard
+Beberapa fasilitas pengaturan sebenarnya ada juga di LyX, tetapi kemungkinan
+ penggunaannya tidak seperti pada pengolah kata lain:
+\end_layout
+
+\begin_layout Itemize
+Kontrol indentasi
+\end_layout
+
+\begin_layout Itemize
+Pemisah halaman
+\end_layout
+
+\begin_layout Itemize
+Spasi baris (misal
+\begin_inset space \space{}
+\end_inset
+
+satu spasi, satu setengah spasi, dua spasi, dst.)
+\end_layout
+
+\begin_layout Itemize
+Spasi kosong antara kata, spasi horisontal dan spasi vertikal
+\end_layout
+
+\begin_layout Itemize
+Jenis huruf serta ukuran huruf
+\end_layout
+
+\begin_layout Itemize
+Tipe huruf (huruf tebal, huruf miring, huruf bergaris bawah, dll.)
+\end_layout
+
+\begin_layout Standard
+Walaupun ada di LyX, anda tidak akan terlalu sering melakukan perubahan.
+ LyX akan mengatur penggunaannya, tergantung konteks penyuntingan yang sedang
+ dilakukan.
+ Pada bagian tertentu dalam dokumen, ukuran dan tipe huruf akan ditentukan
+ secara otomatis oleh LyX.
+ Indentasi paragraf menyesuaikan dengan tipe paragraf yang mempunyai defenisi
+ indentasi sendiri.
+ Pemisah halaman akan diatur dengan sendirinya secara otomatis.
+ Secara umum, spasi antara baris, antara kata, antara paragraf adalah variabel
+ yang bisa diatur oleh LyX.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Ada berbagai cara (beberapa memerlukan pengetahuan LaTeX) untuk mengatur
+ secara keseluruhan yang berlaku umum atau hanya untuk lokasi tertentu saja
+ dalam dokumen.
+ Pembahasan terperinci dapat dilihat di buku 
+\emph on
+Petunjuk Penggunaan
+\emph default
+ dan/atau di buku petunjuk 
+\emph on
+Fitur Tambahan.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Akhirnya, secara umum kami percaya bahwa LyX (juga LaTeX) mempunyai keunggulan
+ dari program pengolah kata lainnya, meliputi:
+\end_layout
+
+\begin_layout Itemize
+Pemenggalan suku kata (
+\emph on
+Hyphenation
+\emph default
+)
+\end_layout
+
+\begin_layout Itemize
+Penampilan berbagai Daftar
+\end_layout
+
+\begin_layout Itemize
+Penulisan rumus Matematika
+\end_layout
+
+\begin_layout Itemize
+Penyuntingan Tabel
+\end_layout
+
+\begin_layout Itemize
+Penggunaan referensi-silang
+\end_layout
+
+\begin_layout Standard
+Berbagai pengolah kata modern dapat menyunting dan menampilkan simbol dan
+ rumus matematika, mengatur pemenggalan suku kata, mendefiniskan berbagai
+ model dokumen, serta menggunakan konsep WYSIWYM.
+ Namun demikian kebanyakan mereka baru saja menggunakannya, sementara LyX
+ dirancang menggunakan sistem penyuntingan dokumen LaTeX, suatu program
+ yang sudah ada lebih dari 20 tahun dan pemanfaatannya sudah teruji.
+\end_layout
+
+\begin_layout Subsection
+Apakah LaTeX?
+\end_layout
+
+\begin_layout Standard
+LaTeX adalah sistem penyuntingan dokumen yang dirancang oleh Leslie Lamport
+ pada tahun 1985.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Sumber informasi untuk penulisan disini diperoleh dari buku 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+A Guide to LaTeX2e
+\emph default
+,
+\begin_inset Quotes erd
+\end_inset
+
+ yang ditulis oleh Helmut Kopka dan Patrick Daly.
+ Buku ini dicantumkan sebagai salah satu referensi di 
+\emph on
+Petunjuk Penggunaan 
+\emph default
+LyX\SpecialChar \@.
+
+\end_layout
+
+\end_inset
+
+ Program ini menggunakan bahasa penyuntingan TeX rancangan Donald Knuth
+ tahun 1984.
+ TeX merupakan kumpulan perintah pengaturan dokumen yang disusun menjadi
+ skrip dalam berkas ASCII, kemudian dijalankan untuk memperoleh tampilan
+ hasil penyuntingan.
+ Berbagai macam 
+\begin_inset Quotes eld
+\end_inset
+
+trik
+\begin_inset Quotes erd
+\end_inset
+
+ disusun oleh Knuth dalam bentuk algoritma dan dimasukkan dalam TeX sehingga
+ mampu memberikan hasil cetak yang sangat bagus.
+ Hasil keluaran langsung yang diperoleh dari TeX adalah berkas dengan format
+ dokumen portabel 
+\emph on
+pdf
+\emph default
+ (portable document format) atau format 
+\begin_inset Quotes eld
+\end_inset
+
+device independent
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\emph on
+dvi
+\emph default
+.
+ Format 
+\emph on
+dvi
+\emph default
+ ini sering digunakan sebagai pratampilan hasil penyuntingan sebelum dikonversi
+ ke format lain seperti PostScript yang digunakan mesin cetak.
+\end_layout
+
+\begin_layout Standard
+TeX bukan hanya mesin untuk mengatur format penulisan, tetapi juga memungkinkan
+ anda untuk mendefinisikan perintah makro.
+ Sebagian orang yang menggunakan TeX biasanya menggunakan paket perintah
+ makro yang dibuat Knuth untuk menyembunyikan berbagai detail perintah pemformat
+an penulisan.
+ Dari sinilah Leslie masuk dalam cerita kita.
+ Dia menciptakan paket makro yang berorientasi kepada membantu pengguna
+ dan mengurangi pekerjaan pengaturan penyuntingan, melalui kumpulan perintah
+ yang secara konsisten akan mengatur tampilan bab, tabel, rumus matematika
+ yang rapi, dengan tampilan yang selalu seragam dan konsisten.
+ Inilah yang kemudian dikenal sebagai LaTeX.
+\end_layout
+
+\begin_layout Standard
+Pada masa sekarang, seiring dengan pengembangan dan perkembangan LaTeX,
+ banyak orang yang sudah membuat berbagai paket makro untuk TeX, sebagian
+ untuk membuat tayangan presentasi, sebagian lagi untuk penulisan jurnal
+ matematika, dan berbagai aplikasi penulisan.
+ Ada juga yang menggunakan fasilitas TeX asli untuk tujuan berbagai penulisan,
+ dan tentu saja ada yang mulai memodifikasi LaTeX.
+ Untuk menjawab perkembangan yang kacau tadi, tim teknisi LaTeX kemudian
+ mendefinisikan LaTeX2e, yaitu versi yang sampai sekarang digunakan sejak
+ akhir 1980an.
+ Versi baru dari LaTeX ini mempunyai perintah-perintah yang memberikan keleluasa
+an untuk mengkaitkan dengan perintah makro TeX, sehingga sangat membantu
+ dalam menggunakan huruf yang baru serta banyak hal.
+ Pada kenyataannya, LaTeX merupakan bahasa yang sangat luas! Banyak sekali
+ pemakai di berbagai penjuru dunia menciptakan berbagai tambahan untuk LaTeX
+ yang melebihi standar aslinya.
+\end_layout
+
+\begin_layout Standard
+Ada dua jenis media berkas yang bisa digunakan untuk memperluas kemampuan
+ LaTeX: 
+\emph on
+class
+\emph default
+ dan 
+\emph on
+style
+\emph default
+.
+ Berkas 
+\emph on
+class
+\emph default
+ adalah suatu kumpulan makro LaTeX yang menjelaskan tipe dari dokumen, misalnya
+ 
+\emph on
+book
+\emph default
+, atau 
+\emph on
+article
+\emph default
+.
+ Ada berbagai jenis 
+\emph on
+class
+\emph default
+ untuk penggunaan yang berbeda-beda, untuk tayangan presentasi, untuk jurnal
+ sains dan matematika\SpecialChar \ldots{}
+banyak juga berbagai universitas mendefinisikan 
+\emph on
+class
+\emph default
+ untuk format penulisan tesis! 
+\end_layout
+
+\begin_layout Standard
+Berkas 
+\emph on
+style
+\emph default
+ berbeda dari berkas 
+\emph on
+class
+\emph default
+ karena tidak mendefinisikan tipe dokumen, tetapi menentukan perilaku dokumen,
+ sehingga bisa digunakan di semua dokumen.
+ Sebagai contoh, LyX menggunakan dua 
+\emph on
+style
+\emph default
+ LaTeX yang berbeda untuk mengontrol batas halaman dan spasi baris.
+ Ada berbagai 
+\emph on
+style
+\emph default
+ digunakan untuk pengaturan lainnya: mencetak label dan amplop, merubah
+ perilaku indentasi, menambah huruf baru, pengaturan grafik, pengaturan
+ heading dokumen, menggunakan bibliografi, merubah dan mengatur tampilan
+ catatan kaki, tabel, gambar, penulisan daftar, dan berbagai macam pengaturan
+ lain.
+\end_layout
+
+\begin_layout Standard
+Berikut ini adalah ringkasan penjelasan diatas:
+\end_layout
+
+\begin_layout Description
+TeX: Bahasa pengaturan penulisan (
+\emph on
+typesetting
+\emph default
+) menggunakan makro.
+\end_layout
+
+\begin_layout Description
+LaTeX: Paket Makro yang dibuat berdasarkan TeX\SpecialChar \@.
+
+\end_layout
+
+\begin_layout Description
+class: Definisi tipe dokumen, menggunakan LaTeX\SpecialChar \@.
+
+\end_layout
+
+\begin_layout Description
+style: Merubah perilaku default dari LaTeX dengan cara tertentu.
+\end_layout
+
+\begin_layout Description
+LyX: Pengolah kata interaktif, WYSIWYM, yang menggunakan LaTeX untuk mengatur
+ format penulisan.
+\end_layout
+
+\begin_layout Standard
+Pada bab ini sudah dijelaskan perbedaan antara LyX dan pengolah kata lainnya.
+ Secara ringkas bisa dikatakan LaTeX berbeda dengan pengolah kata lain.
+ Dengan menggunakan kekuatan LaTeX, LyX membantu anda berkonsentrasi tentang
+ 
+\emph on
+apa
+\emph default
+ yang anda tulis.
+ Kemudian komputer akan mengatur 
+\emph on
+bagaimana
+\emph default
+ tampilan hasilnya.
+\end_layout
+
+\begin_layout Section
+Bagaimana Memahami Sistem Dokumentasi Buku Petunjuk
+\end_layout
+
+\begin_layout Standard
+Agar dapat menjawab pertanyaan anda dan menjelaskan fitur yang ada di LyX,
+ perlu kami jelaskan bahwa buku petunjuk dipisah-pisah menjadi beberapa
+ berkas dokumen.
+ Masing-masing mempunyai tujuan sendiri-sendiri.
+ Sebelum membaca secara detail buku petunjuk lain, anda perlu membaca bab
+ ini dengan teliti karena disini memuat berbagai informasi penting bagaimana
+ memahami buku petunjuk.
+\end_layout
+
+\begin_layout Standard
+Pada dasarnya pengembangan LyX tidak pernah berhenti tetapi berkembang dari
+ waktu ke waktu, sehingga buku petunjuk kemungkinan menjadi tidak lengkap
+ dan kedaluarsa.
+ Agar buku petunjuk sesuai dengan perkembangan yang ada, tentunya semua
+ buku petunjuk yang ada harus selalu diperbaiki.
+ Buku petunjuk merupakan hasil kerja para sukarelawan/wati yang mempunyai
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Pekerjaan Tetap
+\begin_inset Quotes erd
+\end_inset
+
+, keluarga, perlu mengerjakan perkerjaan rumah tangga, membuang sampah,
+ dan banyak hal lainnya.
+ Apabila anda ingin berperan serta, perlu membaca dengan teliti bab 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Kontrib"
+
+\end_inset
+
+ selain bab lainnya.
+\end_layout
+
+\begin_layout Standard
+Bentuk peran serta dapat dilakukan dengan cara lain – apabila anda me-nemukan
+ hal-hal dalam buku panduan yang dianggap membingungkan, kurang jelas, tidak
+ akurat atau bahkan salah, jangan segan-segan untuk memberitahukan kepada
+ kami! Anda dapat mengirimkan laporan ke perawat dokumen lewat email 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+.
+ Apabila anda mempunyai pertanyaan yang tidak terjawab dalam buku panduan
+ yang ada dan menginginkan jawaban segera, silahkan mengirim email ke mailing
+ list pengguna kami 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-users@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+.
+ Banyak sesama pemakai LyX bisa membantu anda serta berbagi pengalaman.
+\end_layout
+
+\begin_layout Subsection
+Format Penulisan di Buku Petunjuk
+\end_layout
+
+\begin_layout Standard
+Dalam memanfaatkan buku petunjuk ada dua kelompok yang berbeda.
+ Yang pertama lebih menyukai membaca buku petunjuk dari hasil cetakan.
+ Kelompok yang kedua lebih suka membaca langsung dari LyX.
+ Perlu diketahui bahwa ada perbedaan antara berkas LyX yang asli dengan
+ versi yang di-cetak.
+ Apabila membaca langsung dari berkas LyX, judul hanya tampak paling atas
+ dokumen, tidak terformat dan tidak terpisah dari halaman berikutnya.
+ Demikian pula, catatan kaki dan Daftar Isi tidak akan tampak terperinci.
+ Untuk melihat isi catatan kaki, yang akan terlihat hanya seperti ini: 
+\begin_inset Graphics
+	filename clipart/id-footnote.png
+	scale 75
+
+\end_inset
+
+, dilakukan dengan klik tombol kiri dari tetikus.
+ Untuk melihat lengkap Daftar Isi, klik di kotak kelabu daftar isi atau
+ dari menu 
+\family sans
+Navigasi.
+\end_layout
+
+\begin_layout Standard
+Pada versi cetakan, buku panduan akan terformat lengkap mulai Judul, Daftar
+ Isi, dan catatan kaki, semuanya muncul rapi dan terperinci.
+ Selain itu, semua referensi silang akan muncul dalam bentuk angka sesuai
+ dengan yang diacu, seperti Bab, SubBab, SubSubBab dan lainnya.
+ Apabila membaca langsung dari berkas LyX, semua referensi silang hanya
+ akan tampak kotak kelabu dengan nama label yang diacu, misalnya akan tampak
+ seperti ini 
+\begin_inset Graphics
+	filename clipart/id-contrib.png
+	scale 75
+
+\end_inset
+
+.
+ Apabila anda klik menggunakan tombol kiri tetikus, kotak dialog akan muncul
+ dengan daftar semua referensi silang yang ada di dokumen.
+ Anda bisa langsung ke tempat acuan dengan nama label yang anda pilih dengan
+ cara klik tombol kanan tetikus, atau tekan tombol dialog 
+\family sans
+Ke
+\begin_inset space ~
+\end_inset
+
+Label
+\family default
+.
+ Untuk kembali ke tempat semula anda hanya perlu menekan tombol 
+\family sans
+Kembali.
+\end_layout
+
+\begin_layout Standard
+Dengan memahami penjelasan diatas, anda pasti sudah paham akan perbedaan
+ antara versi yang dicetak dan versi online (dari menu 
+\family sans
+Bantuan
+\family default
+) yang dibaca langsung dari berkas.
+ Sekarang kita akan lihat mengenai format penulisan di buku panduan.
+ Anda akan sering menemukan kata-kata yang ditulis dengan tipe dan corak
+ huruf berbeda:
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Huruf Condong
+\emph default
+ biasanya digunakan untuk menunjukkan kata yang penting, argumen program,
+ judul buku acuan, nama bab di beberapa buku petunjuk, nota dari penulis
+ buku petunjuk, atau untuk versi Bahasa Indonesia menunjukkan kata Bahasa
+ Inggris yang tidak ditemui padanan kata Indonesianya.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+Huruf Mesinketik
+\family default
+ digunakan untuk nama berkas, program dan fungsi dalam LyX.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Huruf Sans Serif
+\family default
+ digunakan untuk menu, nama tombol, atau nama kotak dialog, juga nama-nama
+ dari tombol di papan ketik.
+\end_layout
+
+\begin_layout Itemize
+
+\noun on
+Huruf Noun 
+\noun default
+digunakan untuk nama orang atau kelompok.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Huruf Tebal
+\series default
+ digunakan untuk menuliskan program LaTeX .
+\end_layout
+
+\begin_layout Standard
+Untuk kunci pemercepat menu dan kunci ikatan, anda bisa mempelajari lebih
+ terperinci pada bab 
+\emph on
+Kunci Ikatan
+\emph default
+ pada buku panduan 
+\emph on
+Fitur Tambahan
+\emph default
+ (nama berkas 
+\family typewriter
+Extended.lyx
+\family default
+).
+ Sebagai sarana untuk mengacu ke kunci tertentu, kami menggunakan konvensi
+ penulisan sebagai berikut:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+C-
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ mempunyai makna tekan tombol
+\family sans
+ Control
+\family default
+ (
+\family sans
+Ctrl
+\family default
+).
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+S-
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ mempunyai makna tekan tombol 
+\family sans
+Shift.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+M-
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ berarti tekan tombol 
+\family sans
+Meta
+\family default
+, atau berupa tombol 
+\family sans
+Alt
+\family default
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+F1
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ \SpecialChar \ldots{}
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+F12
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ adalah tombol fungsi di bagian atas papan ketik.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Esc
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ adalah tombol 
+\emph on
+escape
+\emph default
+ atau paling sering berupa tombol 
+\family sans
+Esc
+\family default
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Left
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Right
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Up
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Down
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+: untuk memerintahkan pergerakan kursor kekiri, kekanan, naik dan turun.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\begin_inset Quotes eld
+\end_inset
+
+Insert
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Delete
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Home
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+End
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+PageUp
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+PageDown
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+: keenam tombol ini biasanya ada di papan ketik.
+ Beberapa papan ketik ada yang menggunakan 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Prior
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ dan 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Next
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ sebagai ganti dari 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+PageUp
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ dan 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+PageDown
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Return
+\family default
+ dan 
+\family sans
+Enter
+\family default
+ keduanya bermakna sama.
+ Beberapa papan ketik ada yang menggunakan 
+\begin_inset Quotes eld
+\end_inset
+
+Return,
+\begin_inset Quotes erd
+\end_inset
+
+ sebagian lainnya 
+\begin_inset Quotes eld
+\end_inset
+
+Enter,
+\begin_inset Quotes erd
+\end_inset
+
+ bahkan ada yang mempunyai keduanya.
+ LyX menggunakan kedua tombol untuk makna yang sama, sehingga kami terkadang
+ menggunakan 
+\family sans
+Return
+\family default
+ atau 
+\family sans
+Enter
+\family default
+ tanpa kawatir bermakna ganda.
+\end_layout
+
+\begin_layout Standard
+Kami sudah membuat daftar kunci ikatan default dan cara pintas yang bisa
+ anda temukan di buku panduan 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+Cara Pintas
+\emph default
+,
+\begin_inset Quotes erd
+\end_inset
+
+ silahkan untuk membacanya.
+ Perlu dipahami ada dua peta kunci ikatan yang biasa digunakan oleh para
+ pemakai LyX, yaitu: gaya 
+\begin_inset Quotes eld
+\end_inset
+
+CUA
+\begin_inset Quotes erd
+\end_inset
+
+ yang digunakan sebagai default; berasal dari PC world, sedangkan yang kedua
+ adalah gaya 
+\begin_inset Quotes eld
+\end_inset
+
+emacs
+\begin_inset Quotes erd
+\end_inset
+
+ yang sangat umum di sistem Unix dimana menggunakan editor Emacs.
+ Apabila tidak dinyatakan secara explisit, maka definisi kunci ikatan dalam
+ dokumentasi berasal dari peta CUA.
+ Apabila ingin menggunakan emacs, anda perlu membaca buku petunjuknya dan
+ perlu menemukan sendiri kunci ikatan yang didefiniskan.
+\end_layout
+
+\begin_layout Subsection
+Satuan Yang Digunakan di Buku Petunjuk
+\end_layout
+
+\begin_layout Standard
+Agar memudahkan dalam memahami satuan yang digunakan dalam buku petunjuk
+ LyX, disini akan dipaparkan terlebih dahulu semua satuan yang dipakai di
+ LyX.
+ Tabel
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cap:Units-for-image"
+
+\end_inset
+
+ merupakan daftar semua satuan yang dipakai di LyX.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement t
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "cap:Units-for-image"
+
+\end_inset
+
+Satuan
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="20" columns="2">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Satuan
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nama/Deskripsi
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+millimeter
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+centimeter
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+in
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+inchi
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pt
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+poin (72.27
+\begin_inset space \thinspace{}
+\end_inset
+
+pt = 1
+\begin_inset space \thinspace{}
+\end_inset
+
+in)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pc
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pika (1
+\begin_inset space \thinspace{}
+\end_inset
+
+pc = 12
+\begin_inset space \thinspace{}
+\end_inset
+
+pt)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+sp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+poin terskala (65536
+\begin_inset space \thinspace{}
+\end_inset
+
+sp = 1
+\begin_inset space \thinspace{}
+\end_inset
+
+pt)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+poin besar (72
+\begin_inset space \thinspace{}
+\end_inset
+
+bp = 1
+\begin_inset space \thinspace{}
+\end_inset
+
+in)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+dd
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+didot (72
+\begin_inset space \thinspace{}
+\end_inset
+
+dd 
+\begin_inset Formula $\approx$
+\end_inset
+
+ 37.6
+\begin_inset space \thinspace{}
+\end_inset
+
+mm)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cc
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cicero (1
+\begin_inset space \thinspace{}
+\end_inset
+
+cc = 12
+\begin_inset space \thinspace{}
+\end_inset
+
+dd)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Scale%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% dari lebar gambar asli
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% dari lebar teks
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+col%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% dari lebar kolom
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+page%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% dari lebar kertas
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+line%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% dari lebar garis
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+theight%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% dari tinggi teks
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pheight%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% dari tinggi kertas
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ex
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+tinggi huruf 
+\emph on
+x
+\emph default
+ dari huruf yang dipakai
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+em
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+lebar huruf 
+\emph on
+M
+\emph default
+ dari huruf yang dipakai
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mu
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+satuan matematika (1
+\begin_inset space \thinspace{}
+\end_inset
+
+mu = 1/18
+\begin_inset space \thinspace{}
+\end_inset
+
+em)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Buku Panduan Penggunaan LyX
+\end_layout
+
+\begin_layout Standard
+LyX menyediakan beberapa Buku Panduan Penggunaan yang bisa dibaca melalui
+ menu 
+\family sans
+Bantuan
+\family default
+.
+ Berikut ini adalah Buku Panduan yang tersedia:
+\end_layout
+
+\begin_layout Description
+Pengantar Dokumen ini merupakan buku Pengantar LyX
+\end_layout
+
+\begin_layout Description
+Tutorial Apabila anda baru saja menggunakan LyX dan belum pernah mengenal
+ dan menggunakan LaTeX, anda perlu mulai belajar dari dokumen Tutorial.
+ Apabila anda sudah menggunakan LaTeX sebelumnya, anda tidak perlu membaca
+ Tutorial dari awal tetapi langsung ke bab 
+\begin_inset Quotes eld
+\end_inset
+
+LyX untuk pemakai LaTeX
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Petunjuk
+\begin_inset space ~
+\end_inset
+
+Penggunaan Dokumen ini adalah buku petunjuk utama.
+ Dokumen ini menjelaskan sebagian besar cara menggunakan LyX bagi pemula
+ serta memaparkan fitur-fitur yang ada.
+ Buku Petunjuk utama ini menganggap bahwa pembaca sudah memahami apa yang
+ tertulis di Tutorial.
+\end_layout
+
+\begin_layout Description
+Obyek
+\begin_inset space ~
+\end_inset
+
+Tambahan Buku petunjuk ini merupakan bahan tambahan dari buku 
+\emph on
+Petunjuk Penggunaan
+\emph default
+.
+ Dalam dokumen ini, penggunaan tabel, gambar, 
+\emph on
+float
+\emph default
+, nota, dan kotak dibahas secara terperinci.
+ Berbagai perintah tambahan dari LaTeX yang terkait juga diberikan.
+\end_layout
+
+\begin_layout Description
+Fitur
+\begin_inset space ~
+\end_inset
+
+Tambahan Buku ini juga merupakan tambahan terperinci dari buku 
+\emph on
+Petunjuk Penggunaan
+\emph default
+.
+ Disini dijelaskan dengan terperinci bagaimana menerapkan perintah dari
+ LaTeX, penambahan dan pendefinisian layout, serta berbagai fitur penyuntingan
+ untuk hal-hal yang khusus.
+ Pada buku ini juga dipaparkan berbagai trik dari para pakar LaTeX.
+\end_layout
+
+\begin_layout Description
+Pengaturan
+\begin_inset space ~
+\end_inset
+
+Mandiri Menjelaskan pemakaian lanjut fitur LyX, termasuk bagaimana mengatur
+ perilaku LyX secara keseluruhan.
+ Pengaturan fitur termasuk pengaturan kunci ikatan untuk cara pintas, internasio
+nalisasi bahasa, dan pengaturan berkas konfigurasi.
+\end_layout
+
+\begin_layout Description
+Konfigurasi
+\begin_inset space ~
+\end_inset
+
+LaTeX LyX akan memeriksa sistem komputer anda setelah instalasi.
+ Dokumen ini memberikan informasi lengkap tentang berkas penting yang dikenal
+ oleh LyX di sistem yang diinstal.
+ Periksa dokumen ini untuk melihat apakah ada yang tidak lengkap atau belum
+ terinstal dengan sempurna.
+\end_layout
+
+\begin_layout Description
+Buku
+\begin_inset space ~
+\end_inset
+
+Petunjuk
+\begin_inset space ~
+\end_inset
+
+Khusus Ada beberapa buku petunjuk yang sangat spesifik, meliputi Petunjuk
+ Penggunaan Lingustik, Petunjuk Penggunaan Braille, Petunjuk Penggunaan
+ x-y pic, serta Petunjuk Penggunaan Multikolom.
+\end_layout
+
+\begin_layout Standard
+Dokumen yang ada diatas akan mempunyai tautan dari buku satu ke lainnya
+ tergantung keperluan.
+ Sebagai contoh, dalam buku 
+\emph on
+Petunjuk Penggunaan 
+\emph default
+memberikan informasi tentang instalasi dan pengaturan mandiri yang mengacu
+ dan mempunyai tautan di buku petunjuk lainnya, yaitu buku 
+\emph on
+Pe-ngaturan Mandiri
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Untuk melanjutkan, terlebih dahulu perlu memahami tahapan ini:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+Apabila anda baru mengenal LyX, silahkan anda membaca 
+\emph on
+Tutorial
+\emph default
+\SpecialChar \@.
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Apabila belum membaca, anda kemungkinan mendapatkan kesulitan.
+ LyX dapat melakukan hal-hal yang anda harapkan dari program pengolah kata,
+ namun mempunyai cara pandang yang sedikit berbeda.
+ Oleh karena itu perlu mengenal dan membiasakan dengan membaca dan mengikuti
+ 
+\emph on
+Tutorial
+\emph default
+.
+\end_layout
+
+\begin_layout Section
+Bagaimana Berperan  di LyX
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Kontrib"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Kontribusi ke LyX
+\end_layout
+
+\begin_layout Standard
+Sebagian besar program dalam LyX ditulis menggunakan bahasa C++ (program
+ memanggil fungsi LaTeX ditulis dalam Python).
+ Proyek LyX adalah suatu pekerjaan yang besar dan rumit, oleh karena itu
+ belum terbebas dari kutu program (
+\emph on
+bugs
+\emph default
+) atau masih selalu ada perbaikan di tingkat sumber program (
+\emph on
+source code
+\emph default
+).
+\end_layout
+
+\begin_layout Subsubsection
+Melaporkan apabila menemukan kutu program (
+\emph on
+bug
+\emph default
+)
+\end_layout
+
+\begin_layout Standard
+Ketika menggunakan LyX, kemungkinan anda menemukan perilaku program yang
+ tidak seperti yang diharapkan; hal ini merupakan tanda adanya tidak kesempurnaa
+n program karena kutu program.
+ Ada kemungkinan terjadi, walaupun jarang, LyX berhenti dan keluar dengan
+ sendirinya (
+\emph on
+crash
+\emph default
+) atau beku (
+\emph on
+hang, freeze
+\emph default
+) sehingga tidak bisa dikontrol sama sekali.
+ Bagi Tim LyX, permasalahan dengan antarmuka pengguna dapat dikatagorikan
+ sebagai kutu-kutu yang serius dan perlu diatasi.
+ 
+\end_layout
+
+\begin_layout Standard
+LyX mempunyai sistem pelacak kutu di 
+\family typewriter
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://bugzilla.lyx.org/
+\end_layout
+
+\end_inset
+
+
+\family default
+.
+ Sebelum melaporkan adanya kutu program, anda perlu memeriksa apakah sudah
+ ada yang melaporkan dengan kasus serupa.
+ Apabila anda mempunyai komentar tentang kutu program sebelumnya, atau melaporka
+n adanya kutu program yang baru, anda bisa menggunakan sistem pelacak kutu
+ program, atau mengirim email langsung ke mailing list, 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-devel@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+.
+ Arsipnya akan ditautkan ke halaman web LyX, 
+\family typewriter
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/
+\end_layout
+
+\end_inset
+
+
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Laporan kutu program hendaknya dilengkapi dengan versi LyX yang digunakan
+ ketika menemui masalah.
+ Laporan yang akurat serta terperinci de-ngan penjelasan akan sangat membantu
+ agar mempercepat menemukan dan membersihkan dari kutu program.
+ Waktu dari para pemrogram untuk mengatasi kutu program akan mengurangi
+ waktu mereka untuk pengembangan lain di LyX.
+ Anda juga perlu memberikan informasi sistem operasi dan versi yang digunakan
+ menjalankan LyX.
+ Apabila memungkinkan, berikan juga daftar versi 
+\emph on
+library
+\emph default
+ yang diinstall dalam sistem operasi anda, juga program eksternal yang digunakan
+ LyX ketika menemui masalah.
+ Apabila permasalahan terkait dengan kompilasi dan konfigurasi, sebutkan
+ nama kompiler yang dipakai.
+ Ada baiknya apabila melampirkan berkas 
+\family typewriter
+config.log
+\family default
+ bersama dengan laporan anda.
+\end_layout
+
+\begin_layout Subsubsection
+Peran serta mengatasi masalah dan pengembangan baru
+\end_layout
+
+\begin_layout Standard
+Apabila anda melakukan perubahan di sumber program LyX dan menurut anda
+ seharusnya menjadi bagian sumber program LyX, silahkan kirim perubahan
+ dalam berkas diff (
+\emph on
+unified format
+\emph default
+) ke alamat pengembangan yang sudah disebutkan sebelumnya, dilengkapi dengan
+ catatan perubahan, serta gambaran ringkas mengenai tempelan program anda.
+\end_layout
+
+\begin_layout Subsection
+Peran Serta Membuat Buku Petunjuk
+\end_layout
+
+\begin_layout Standard
+Dokumentasi buku petunjuk yang dimiliki LyX sudah sangat lengkap.
+ Namun demikian, karena pengembangan LyX terus-menerus dilakukan, dan setiap
+ rilis baru pasti mempunyai fitur baru, dokumentasi buku petunjuk perlu
+ disesuaikan setiap saat mengikuti perkembangan LyX.
+ Pada bab ini dijelaskan apakah yang perlu anda lakukan ketika menemui kesalahan
+ di buku petunjuk, atau saran perbaikan buku petunjuk.
+\end_layout
+
+\begin_layout Subsubsection
+Melaporkan kesalahan di Buku Petunjuk
+\end_layout
+
+\begin_layout Standard
+Apabila anda menemukan kesalahan atau ketidak akuratan di Buku Petunjuk,
+ silahkan mengirim pesan ke alamat email 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+.
+ Tim dokumentasi akan melakukan koreksi dan perubahan.
+\end_layout
+
+\begin_layout Subsubsection
+Bergabung dengan Tim Dokumentasi
+\end_layout
+
+\begin_layout Standard
+Pekerjaan Tim Dokumentasi, seperti pekerjaan lainnya di LyX, akan selalu
+ memerlukan bantuan! Apabila anda ingin berperan serta aktif dan ingin andil
+ dalam Tim Dokumentasi, anda perlu mengikuti langkah-langkah sebagai berikut:
+\end_layout
+
+\begin_layout Enumerate
+Muat turun dokumentasi terkini dari LyX dari
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/doc
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+Selanjutnya, anda perlu membaca buku 
+\emph on
+Petunjuk Penggunaan
+\emph default
+ dan 
+\emph on
+Tutorial
+\emph default
+
+\begin_inset Newline newline
+\end_inset
+
+Tujuan membaca dokumen tersebut adalah untuk memberikan pemahaman dan ide
+ kepada anda.
+ Buku 
+\emph on
+Tutorial
+\emph default
+ dan 
+\emph on
+Petunjuk Penggunaan
+\emph default
+ selalu yang paling mutakhir dibanding buku petunjuk lainnya.
+ Anda perlu mengambil contoh bagaimana model buku petunjuk yang kami harapkan.
+\end_layout
+
+\begin_layout Enumerate
+Menghubungi Tim Dokumentasi:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+untuk membahas tentang perubahan yang akan dilakukan, serta untuk memperoleh
+ masukan dari mereka.
+\end_layout
+
+\begin_layout Standard
+Perubahan yang anda usulkan mungkin berupa perubahan untuk meningkat-kan
+ kejelasan yang sudah ada, atau bisa berupa perombakan besar dan pengaturan
+ ulang dari buku petunjuk sebelumnya.
+ Pada dasarnya semua perbaikan akan kami terima dengan terbuka agar lebih
+ bermanfaat bagi masyarakat pemakai LyX.
+\end_layout
+
+\end_body
+\end_document

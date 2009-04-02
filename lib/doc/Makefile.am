@@ -178,6 +178,10 @@ dist_hudoc_DATA = \
 	hu/Intro.lyx \
 	hu/Tutorial.lyx
 
+iddocdir = $(docdir)/id
+dist_iddoc_DATA = \
+	id/Intro.lyx
+
 itdocdir = $(docdir)/it
 dist_itdoc_DATA = \
 	it/Customization.lyx \

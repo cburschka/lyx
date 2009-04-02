@@ -2236,6 +2236,11 @@ lib_doc_hu_files = Split('''
 ''')
 
 
+lib_doc_id_files = Split('''
+    Intro.lyx
+''')
+
+
 lib_doc_it_files = Split('''
     Customization.lyx
     Intro.lyx
