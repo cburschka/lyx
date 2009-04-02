@@ -96,13 +96,13 @@ public:
 	/// length of sequence
 	size_t length() const { return sequence.size(); }
 
+private:
 	/// Keymap to use if a new sequence is starting
 	KeyMap * stdmap;
 
 	/// Keymap to use for the next key
 	KeyMap * curmap;
 
-private:
 	/**
 	 * Array holding the current key sequence as KeySyms.
 	 * If sequence[length - 1] < 0xff it can be used as ISO8859 char
