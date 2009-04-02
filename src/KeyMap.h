@@ -151,7 +151,7 @@ private:
 		/// Modifier masks
 		ModifierPair mod;
 		/// Keymap for prefix keys
-		boost::shared_ptr<KeyMap> table;
+		boost::shared_ptr<KeyMap> prefixes;
 		/// Action for !prefix keys
 		FuncRequest func;
 	};
