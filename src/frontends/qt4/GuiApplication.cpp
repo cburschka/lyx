@@ -362,12 +362,36 @@ QString iconName(FuncRequest const & f, bool unknown)
 			   << lyxaction.getActionName(f.action)
 			   << '(' << to_utf8(f.argument()) << ")\"");
 
-	if (unknown)
+	if (unknown) {
+		fname = libFileSearch("images/", "unknown", "png");
+		if (fname.exists())
+			return toqstr(fname.absFilename());
 		return QString(":/images/unknown.png");
+	}
 
 	return QString();
 }
 
+QPixmap getPixmap(QString const & path, QString const & name, QString const & ext)
+{
+	QPixmap pixmap;
+	FileName fname = libFileSearch(path, name, ext);
+	QString path1 = toqstr(fname.absFilename());
+	QString path2 = ":/" + path + name + "." + ext;
+
+	if (pixmap.load(path1)) {
+		return pixmap;
+	}
+	else if (pixmap.load(path2)) {
+		return pixmap;
+	}
+
+	LYXERR0("Cannot load pixmap \""
+		<< path << name << '.' << ext
+		<< "\", please verify resource system!");
+
+	return QPixmap();
+}
 
 QIcon getIcon(FuncRequest const & f, bool unknown)
 {

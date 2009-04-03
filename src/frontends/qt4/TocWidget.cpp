@@ -13,6 +13,7 @@
 
 #include "TocWidget.h"
 
+#include "GuiApplication.h"
 #include "GuiView.h"
 #include "qt_helpers.h"
 #include "TocModel.h"
@@ -39,11 +40,11 @@ TocWidget::TocWidget(GuiView & gui_view, QWidget * parent)
 {
 	setupUi(this);
 
-	moveOutTB->setIcon(QIcon(":/images/promote.png"));
-	moveInTB->setIcon(QIcon(":/images/demote.png"));
-	moveUpTB->setIcon(QIcon(":/images/up.png"));
-	moveDownTB->setIcon(QIcon(":/images/down.png"));
-	updateTB->setIcon(QIcon(":/images/reload.png"));
+	moveOutTB->setIcon(QIcon(getPixmap("images/", "promote", "png")));
+	moveInTB->setIcon(QIcon(getPixmap("images/", "demote", "png")));
+	moveUpTB->setIcon(QIcon(getPixmap("images/", "up", "png")));
+	moveDownTB->setIcon(QIcon(getPixmap("images/", "down", "png")));
+	updateTB->setIcon(QIcon(getPixmap("images/", "reload", "png")));
 
 	// avoid flickering
 	tocTV->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);

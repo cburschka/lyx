@@ -159,6 +159,10 @@ extern GuiApplication * guiApp;
 /// \return the icon file name for the given action.
 QString iconName(FuncRequest const & f, bool unknown);
 
+
+/// \return the pixmap for the given path, name and extension.
+QPixmap getPixmap(QString const & path, QString const & name, QString const & ext);
+
 /// \return an icon for the given action.
 QIcon getIcon(FuncRequest const & f, bool unknown);
 

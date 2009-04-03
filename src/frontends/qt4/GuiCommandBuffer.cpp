@@ -14,6 +14,7 @@
 
 #include "GuiCommandBuffer.h"
 
+#include "GuiApplication.h"
 #include "GuiCommandEdit.h"
 #include "GuiView.h"
 #include "qt_helpers.h"
@@ -87,8 +88,8 @@ GuiCommandBuffer::GuiCommandBuffer(GuiView * view)
 	transform(lyxaction.func_begin(), lyxaction.func_end(),
 		back_inserter(commands_), firster());
 
-	QPixmap qpup(":/images/up.png");
-	QPixmap qpdown(":/images/down.png");
+	QPixmap qpup = getPixmap("images/", "up", "png");
+	QPixmap qpdown = getPixmap("images/", "down", "png");
 
 	QVBoxLayout * top = new QVBoxLayout(this);
 	QHBoxLayout * layout = new QHBoxLayout(0);
