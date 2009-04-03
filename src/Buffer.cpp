@@ -2436,12 +2436,11 @@ void Buffer::autoSave() const
 	message(_("Autosaving current document..."));
 
 	// create autosave filename
-	string fname = filePath();
-	fname += '#';
-	fname += d->filename.onlyFileName();
-	fname += '#';
+	string fpath = isUnnamed() ? lyxrc.document_path : filePath();
+	string fname = "#" + d->filename.onlyFileName() + "#";
+	FileName file_name = makeAbsPath(fname, fpath);
 
-	AutoSaveBuffer autosave(*this, FileName(fname));
+	AutoSaveBuffer autosave(*this, file_name);
 	autosave.start();
 
 	markBakClean();
