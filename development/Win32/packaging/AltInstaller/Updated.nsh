@@ -4,8 +4,8 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\bin" # always here
  File "${PRODUCT_SOURCEDIR}\bin\lyx.exe" # always here
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
- #File "${PRODUCT_SOURCEDIR}\bin\python26.dll"
- #File "${PRODUCT_SOURCEDIR}\bin\python.exe"
+ File "${PRODUCT_SOURCEDIR}\bin\dt2dv.exe"
+ File "${PRODUCT_SOURCEDIR}\bin\dv2dt.exe"
  #File /r "${PRODUCT_SOURCEDIR}\bin\DLLs"
  #SetOutPath "$INSTDIR\bin\Lib"
  #File "${PRODUCT_SOURCEDIR}\bin\Lib\optparse.py"
