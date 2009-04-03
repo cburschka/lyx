@@ -1619,7 +1619,7 @@ msgstr "&Uvnitø øádku"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:45
 msgid "Check for floating listings"
-msgstr "Dal¹í nastavení písma"
+msgstr "Plovoucí výpisy"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:48
 msgid "&Float"
@@ -10505,7 +10505,7 @@ msgstr "Em mezera|r"
 
 #: lib/ui/stdcontext.inc:185 lib/ui/stdcontext.inc:211
 msgid "Double Quad Space|u"
-msgstr "Polovièní em mezera|l"
+msgstr "Dvojitá em mezera|l"
 
 #: lib/ui/stdcontext.inc:186
 msgid "Horizontal Fill|F"
@@ -10869,9 +10869,8 @@ msgid "Box Settings...|x"
 msgstr "Nastavení rámeèku...|r"
 
 #: lib/ui/stdmenus.inc:124
-#, fuzzy
 msgid "Listings Settings...|g"
-msgstr "Nastavení výpisù"
+msgstr "Nastavení výpisù...|N"
 
 #: lib/ui/stdmenus.inc:128
 msgid "Table Settings...|a"
@@ -19357,7 +19356,7 @@ msgstr "Vìtev: "
 
 #: src/insets/InsetBranch.cpp:90
 msgid "Branch (child only): "
-msgstr ""
+msgstr "Vìtev (pouze potomek): "
 
 #: src/insets/InsetBranch.cpp:95
 msgid "Undef: "
