@@ -145,7 +145,6 @@ public:
 	LyXVC lyxvc;
 	FileName temppath;
 	mutable TexRow texrow;
-	Buffer const * parent_buffer;
 
 	/// need to regenerate .tex?
 	DepClean dep_clean;
@@ -225,6 +224,19 @@ public:
 
 	/// our Text that should be wrapped in an InsetText
 	InsetText * inset;
+
+	/// This is here to force the test to be done whenever parent_buffer
+	/// is accessed.
+	Buffer const * parent() const { 
+		if (!theBufferList().isLoaded(parent_buffer))
+			parent_buffer = 0;
+		return parent_buffer; 
+	}
+	///
+	void setParent(Buffer const * pb) { parent_buffer = pb; }
+private:
+	/// So we can force access via the accessors.
+	mutable Buffer const * parent_buffer;
 };
 
 
@@ -248,10 +260,11 @@ static FileName createBufferTmpDir()
 
 
 Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_)
-	: parent_buffer(0), lyx_clean(true), bak_clean(true), unnamed(false),
+	: lyx_clean(true), bak_clean(true), unnamed(false),
 	  read_only(readonly_), filename(file), file_fully_loaded(false),
 	  toc_backend(&parent), macro_lock(false), timestamp_(0),
-	  checksum_(0), wa_(0), undo_(parent), bibinfoCacheValid_(false)
+	  checksum_(0), wa_(0), undo_(parent), bibinfoCacheValid_(false),
+	  parent_buffer(0)
 {
 	temppath = createBufferTmpDir();
 	lyxvc.setBuffer(&parent);
@@ -1150,8 +1163,8 @@ void Buffer::writeLaTeXSource(odocstream & os,
 	// This happens for example if only a child document is printed.
 	Buffer const * save_parent = 0;
 	if (output_preamble) {
-		save_parent = d->parent_buffer;
-		d->parent_buffer = 0;
+		save_parent = d->parent();
+		d->setParent(0);
 	}
 
 	// the real stuff
@@ -1159,7 +1172,7 @@ void Buffer::writeLaTeXSource(odocstream & os,
 
 	// Restore the parenthood if needed
 	if (output_preamble)
-		d->parent_buffer = save_parent;
+		d->setParent(save_parent);
 
 	// add this just in case after all the paragraphs
 	os << endl;
@@ -1352,8 +1365,9 @@ void Buffer::validate(LaTeXFeatures & features) const
 void Buffer::getLabelList(vector<docstring> & list) const
 {
 	// If this is a child document, use the parent's list instead.
-	if (d->parent_buffer) {
-		d->parent_buffer->getLabelList(list);
+	Buffer const * const pbuf = d->parent();
+	if (pbuf) {
+		pbuf->getLabelList(list);
 		return;
 	}
 
@@ -1371,8 +1385,9 @@ void Buffer::getLabelList(vector<docstring> & list) const
 void Buffer::updateBibfilesCache(UpdateScope scope) const
 {
 	// If this is a child document, use the parent's cache instead.
-	if (d->parent_buffer && scope != UpdateChildOnly) {
-		d->parent_buffer->updateBibfilesCache();
+	Buffer const * const pbuf = d->parent();
+	if (pbuf && scope != UpdateChildOnly) {
+		pbuf->updateBibfilesCache();
 		return;
 	}
 
@@ -1410,8 +1425,9 @@ void Buffer::invalidateBibinfoCache()
 support::FileNameList const & Buffer::getBibfilesCache(UpdateScope scope) const
 {
 	// If this is a child document, use the parent's cache instead.
-	if (d->parent_buffer && scope != UpdateChildOnly)
-		return d->parent_buffer->getBibfilesCache();
+	Buffer const * const pbuf = d->parent();
+	if (pbuf && scope != UpdateChildOnly)
+		return pbuf->getBibfilesCache();
 
 	// We update the cache when first used instead of at loading time.
 	if (d->bibfilesCache_.empty())
@@ -1708,14 +1724,14 @@ bool Buffer::isReadonly() const
 void Buffer::setParent(Buffer const * buffer)
 {
 	// Avoids recursive include.
-	d->parent_buffer = buffer == this ? 0 : buffer;
+	d->setParent(buffer == this ? 0 : buffer);
 	updateMacros();
 }
 
 
 Buffer const * Buffer::parent() const
 {
-	return d->parent_buffer;
+	return d->parent();
 }
 
 
@@ -1747,10 +1763,11 @@ std::vector<Buffer const *> Buffer::allRelatives() const
 
 Buffer const * Buffer::masterBuffer() const
 {
-	if (!d->parent_buffer)
+	Buffer const * const pbuf = d->parent();
+	if (!pbuf)
 		return this;
 
-	return d->parent_buffer->masterBuffer();
+	return pbuf->masterBuffer();
 }
 
 
@@ -1893,9 +1910,10 @@ MacroData const * Buffer::getMacro(docstring const & name,
 		return data;
 
 	// If there is a master buffer, query that
-	if (d->parent_buffer) {
+	Buffer const * const pbuf = d->parent();
+	if (pbuf) {
 		d->macro_lock = true;
-		MacroData const * macro	= d->parent_buffer->getMacro(
+		MacroData const * macro	= pbuf->getMacro(
 			name, *this, false);
 		d->macro_lock = false;
 		if (macro)
@@ -2088,8 +2106,9 @@ void Buffer::listMacroNames(MacroNameSet & macros) const
 		it->first->listMacroNames(macros);
 
 	// call parent
-	if (d->parent_buffer)
-		d->parent_buffer->listMacroNames(macros);
+	Buffer const * const pbuf = d->parent();
+	if (pbuf)
+		pbuf->listMacroNames(macros);
 
 	d->macro_lock = false;
 }
@@ -2097,11 +2116,12 @@ void Buffer::listMacroNames(MacroNameSet & macros) const
 
 void Buffer::listParentMacros(MacroSet & macros, LaTeXFeatures & features) const
 {
-	if (!d->parent_buffer)
+	Buffer const * const pbuf = d->parent();
+	if (!pbuf)
 		return;
 
 	MacroNameSet names;
-	d->parent_buffer->listMacroNames(names);
+	pbuf->listMacroNames(names);
 
 	// resolve macros
 	MacroNameSet::iterator it = names.begin();
@@ -2109,7 +2129,7 @@ void Buffer::listParentMacros(MacroSet & macros, LaTeXFeatures & features) const
 	for (; it != end; ++it) {
 		// defined?
 		MacroData const * data =
-		d->parent_buffer->getMacro(*it, *this, false);
+		pbuf->getMacro(*it, *this, false);
 		if (data) {
 			macros.insert(data);
 
@@ -2125,7 +2145,7 @@ void Buffer::listParentMacros(MacroSet & macros, LaTeXFeatures & features) const
 
 Buffer::References & Buffer::references(docstring const & label)
 {
-	if (d->parent_buffer)
+	if (d->parent())
 		return const_cast<Buffer *>(masterBuffer())->references(label);
 
 	RefCache::iterator it = d->ref_cache_.find(label);
@@ -2160,7 +2180,7 @@ InsetLabel const * Buffer::insetLabel(docstring const & label) const
 
 void Buffer::clearReferenceCache() const
 {
-	if (!d->parent_buffer)
+	if (!d->parent())
 		d->ref_cache_.clear();
 }
 
