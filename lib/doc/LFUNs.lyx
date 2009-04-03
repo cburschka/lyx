@@ -1,4 +1,4 @@
-#LyX 1.6.1 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -49,7 +49,7 @@ theorems-ams
 \begin_body
 
 \begin_layout Section*
-LFUNs documentation automatically generated 06.02.2009.
+LFUNs documentation automatically generated 03.04.2009.
 \end_layout
 
 \begin_layout Standard
@@ -1260,6 +1260,23 @@ Syntax screen-recenter
 \end_layout
 
 \begin_layout Subsection*
+LFUN_SCREEN_SHOW_CURSOR 
+\end_layout
+
+\begin_layout Description
+Action Repositions the screen such that the cursor is visible.
+  
+\end_layout
+
+\begin_layout Description
+Syntax screen-show-cursor 
+\end_layout
+
+\begin_layout Description
+Origin vfr, 25 Mar 2009 
+\end_layout
+
+\begin_layout Subsection*
 LFUN_CHAR_BACKWARD 
 \end_layout
 
@@ -1923,6 +1940,78 @@ Syntax buffer-end-select
 \end_layout
 
 \begin_layout Subsection*
+LFUN_INSET_BEGIN 
+\end_layout
+
+\begin_layout Description
+Action Move the cursor to the beginning of the current inset if it is not
+ already there, or at the beginning of the enclosing inset otherwise  
+\end_layout
+
+\begin_layout Description
+Syntax inset-begin 
+\end_layout
+
+\begin_layout Description
+Origin JMarc, 2009/03/16 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_INSET_BEGIN_SELECT 
+\end_layout
+
+\begin_layout Description
+Action Move the cursor to the beginning of the current inset if it is not
+ already there, or at the beginning of the enclosing inset otherwise (adding
+ the traversed text to the selection).
+  
+\end_layout
+
+\begin_layout Description
+Syntax inset-begin-select 
+\end_layout
+
+\begin_layout Description
+Origin JMarc, 2009/03/16 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_INSET_END 
+\end_layout
+
+\begin_layout Description
+Action Move the cursor to the end of the current inset if it is not already
+ there, or at the end of the enclosing inset otherwise  
+\end_layout
+
+\begin_layout Description
+Syntax inset-end 
+\end_layout
+
+\begin_layout Description
+Origin JMarc, 2009/03/16 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_INSET_END_SELECT 
+\end_layout
+
+\begin_layout Description
+Action Move the cursor to the end of the current inset if it is not already
+ there, or at the end of the enclosing inset otherwise (adding the traversed
+ text to the selection).
+  
+\end_layout
+
+\begin_layout Description
+Syntax inset-end-select 
+\end_layout
+
+\begin_layout Description
+Origin JMarc, 2009/03/16 
+\end_layout
+
+\begin_layout Subsection*
 LFUN_LINE_BEGIN 
 \end_layout
 
@@ -2133,7 +2222,7 @@ Syntax repeat <COUNT> <LFUN-COMMAND>
 \end_layout
 
 \begin_layout Description
-Origin Andre, , 27 Oct 2003 
+Origin Andre, 27 Oct 2003 
 \end_layout
 
 \begin_layout Subsection*
@@ -3942,7 +4031,7 @@ Action Sets various features to the table/cell on the current cursor position.
 
 \begin_layout Description
 Notion Various math-environment features are handled here as well, e.g.
- add-vline-left/right for Grid/Cases environment  
+ add-vline-left/right for the Grid/Array environment  
 \end_layout
 
 \begin_layout Description
@@ -4410,11 +4499,8 @@ Syntax inset-insert <INSET> <ARGS>
 \end_layout
 
 \begin_layout Description
-Params <INSET>: <bibitem|bibtex|cite|ert|listings|external|graphics| 
-\begin_inset Newline newline
-\end_inset
-
- hyperlink|include|index|label|nomencl|vspace|ref|toc> 
+Params <INSET>: <bibitem|bibtex|cite|ert|listings|external|graphics| hyperlink|i
+nclude|index|label|nomencl|vspace|ref|toc> 
 \begin_inset Newline newline
 \end_inset
 
@@ -4562,39 +4648,6 @@ Params <INSET>: <box|branch|ert|float|listings|note|phantom|tabular|wrap>
 \end_layout
 
 \begin_layout Subsection*
-LFUN_NEXT_INSET_TOGGLE 
-\end_layout
-
-\begin_layout Description
-Action Toggles the inset at cursor position.
- For collapsables, this means it will be (un-)collapsed, in case of other
- insets, the editing widget (dialog) will be entered.
- Also cf.
- LFUN_INSET_SETTINGS.
-  
-\end_layout
-
-\begin_layout Description
-Notion Used for bibitem, bibtex, box, branch, command, ert, external, floats,
- graphics, include, label, listings, note, phantom, ref, space, tabular,
- vspace, wrap insets.
-  
-\end_layout
-
-\begin_layout Description
-Syntax next-inset-toggle <ARG> 
-\end_layout
-
-\begin_layout Description
-Params <ARG>: these are passed as arguments to LFUN_INSET_TOGGLE .
-  
-\end_layout
-
-\begin_layout Description
-Origin leeming, 30 Mar 2004 
-\end_layout
-
-\begin_layout Subsection*
 LFUN_INSET_TOGGLE 
 \end_layout
 
@@ -4614,13 +4667,13 @@ Params <ARG>: <open|close|toggle|assign>.
 \end_inset
 
  open/close/toggle are for collapsable insets.
- close can be currently used by LFUN_NEXT_INSET_TOGGLE.
  toggle is used when no argument is given.
  
 \begin_inset Newline newline
 \end_inset
 
- assign is for branch inset.
+ assign synchronize the branch-inset with activation status of the branch.
+ Used for global toggling when changed activation.
   
 \end_layout
 
@@ -4782,7 +4835,7 @@ Syntax label-goto [<LABEL>]
 
 \begin_layout Description
 Params <LABEL>: Requested label.
- If no label is given and refernce is on cursor position, Bookmark 0 is
+ If no label is given and reference is on cursor position, Bookmark 0 is
  saved and cursor moves to the position of referenced label.
   
 \end_layout
@@ -4832,13 +4885,30 @@ LFUN_BOOKMARK_GOTO
 \end_layout
 
 \begin_layout Description
-Action Goto a bookmark.
+Action Moves the cursor to the numbered bookmark, opening the file if necessary.
+ Note that bookmarsk are saved per-session, not per file.
   
 \end_layout
 
 \begin_layout Description
-Notion Moves the cursor to the numbered bookmark, opening the file if necessary.
- Note that bookmarsk are saved per-session, not per file.
+Notion Bookmark 0 has a special purpose.
+ It is automatically set  
+\begin_inset Newline newline
+\end_inset
+
+ 1.
+ to the paragraph you are currently editing  
+\begin_inset Newline newline
+\end_inset
+
+ 2.
+ to the paragraph from where you are jumping to the last-edited position
+ (jump-back feature)  
+\begin_inset Newline newline
+\end_inset
+
+ 3.
+ when jumping from crossreference to the requested label by LFUN_LABEL_GOTO.
   
 \end_layout
 
@@ -6710,7 +6780,7 @@ Params <BRANCH>: The branch to activate
 \end_layout
 
 \begin_layout Description
-Sample lyx -e pdf2 -x "branch-activate answers" finalexam.lyx  
+Sample lyx -x "branch-activate answers" -e pdf2 finalexam.lyx  
 \begin_inset Newline newline
 \end_inset
 
@@ -6723,7 +6793,7 @@ Origin rgh, 27 May 2008
 \end_layout
 
 \begin_layout Subsection*
-LFUN_BRANCH_ACTIVATE 
+LFUN_BRANCH_DEACTIVATE 
 \end_layout
 
 \begin_layout Description
