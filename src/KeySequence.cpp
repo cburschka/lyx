@@ -195,6 +195,8 @@ void KeySequence::removeKey()
 		return;
 	sequence.pop_back();
 	modifiers.pop_back();
+	if (sequence.empty())
+		deleted_ = true;
 }
 
 
