@@ -385,58 +385,26 @@ char * strerror(int n);
 #endif
 ])
 
-m4_define([ALLPARTS],boost client insets mathed core tex2lyx frontend_qt4)
+m4_define([ALLPARTS],[boost,client,insets,mathed,core,tex2lyx,frontend_qt4])
 AC_ARG_ENABLE(monolithic-build,
-  AC_HELP_STRING([--enable-monolithic-build<=LIST>],
+  AC_HELP_STRING([--enable-monolithic-build@<:@=LIST@:>@],
 		[Use monolithic build for modules in LIST (default: ALLPARTS)]),
   [test "$enable_monolithic_build" = yes && enable_monolithic_build="ALLPARTS"
    test "$enable_monolithic_build" = no && enable_monolithic_build=
+   IFS="${IFS=	}"; ac_save_ifs="$IFS"; IFS=" ,"
    for i in $enable_monolithic_build ; do
        eval "enable_monolithic_$i=yes"
-   done],
+   done
+   IFS="$ac_save_ifs"],
   [enable_monolithic_build=])
 
-AC_ARG_ENABLE(monolithic-boost,
-  AC_HELP_STRING([--enable-monolithic-boost],
-		[Use monolithic boost compilations]),,
-  [enable_monolithic_boost=no])
-AM_CONDITIONAL(MONOLITHIC_BOOST, test "$enable_monolithic_boost" = "yes")
-
-AC_ARG_ENABLE(monolithic-client,
-  AC_HELP_STRING([--enable-monolithic-client],
-		[Use monolithic client compilations]),,
-  [enable_monolithic_client=no])
-AM_CONDITIONAL(MONOLITHIC_CLIENT, test "$enable_monolithic_client" = "yes")
-
-AC_ARG_ENABLE(monolithic-insets,
-  AC_HELP_STRING([--enable-monolithic-insets],
-		[Use monolithic insets compilations]),,
-  [enable_monolithic_insets=no])
-AM_CONDITIONAL(MONOLITHIC_INSETS, test "$enable_monolithic_insets" = "yes")
-
-AC_ARG_ENABLE(monolithic-mathed,
-  AC_HELP_STRING([--enable-monolithic-mathed],
-		[Use monolithic mathed compilations]),,
-  [enable_monolithic_mathed=no])
-AM_CONDITIONAL(MONOLITHIC_MATHED, test "$enable_monolithic_mathed" = "yes")
-
-AC_ARG_ENABLE(monolithic-core,
-  AC_HELP_STRING([--enable-monolithic-core],
-		[Use monolithic core files compilations]),,
-  [enable_monolithic_core=no])
-AM_CONDITIONAL(MONOLITHIC_CORE, test "$enable_monolithic_core" = "yes")
-
-AC_ARG_ENABLE(monolithic-tex2lyx,
-  AC_HELP_STRING([--enable-monolithic-tex2lyx],
-		[Use monolithic tex2lyx compilations]),,
-  [enable_monolithic_tex2lyx=no])
-AM_CONDITIONAL(MONOLITHIC_TEX2LYX, test "$enable_monolithic_tex2lyx" = "yes")
-
-AC_ARG_ENABLE(monolithic-frontend-qt4,
-  AC_HELP_STRING([--enable-monolithic-frontend-qt4],
-		[Use monolithic compilation of the Qt 4 frontend. Only recommended with > 512 MB of RAM]),,
-  [enable_monolithic_frontend_qt4=no])
-AM_CONDITIONAL(MONOLITHIC_FRONTEND_QT4, test "$enable_monolithic_frontend_qt4" = "yes")
+AM_CONDITIONAL(MONOLITHIC_BOOST, test -n "$enable_monolithic_boost")
+AM_CONDITIONAL(MONOLITHIC_CLIENT, test -n "$enable_monolithic_client")
+AM_CONDITIONAL(MONOLITHIC_INSETS, test -n "$enable_monolithic_insets")
+AM_CONDITIONAL(MONOLITHIC_MATHED, test -n "$enable_monolithic_mathed")
+AM_CONDITIONAL(MONOLITHIC_CORE, test -n "$enable_monolithic_core")
+AM_CONDITIONAL(MONOLITHIC_TEX2LYX, test -n "$enable_monolithic_tex2lyx")
+AM_CONDITIONAL(MONOLITHIC_FRONTEND_QT4, test -n "$enable_monolithic_frontend_qt4")
 
 MSYS_AC_CANONICAL_PATH(lyx_abs_top_srcdir, ${srcdir})
 MSYS_AC_CANONICAL_PATH(lyx_abs_installed_localedir, ${real_localedir})
