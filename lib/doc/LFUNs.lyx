@@ -1,4 +1,4 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -49,7 +49,7 @@ theorems-ams
 \begin_body
 
 \begin_layout Section*
-LFUNs documentation automatically generated 23.01.2009.
+LFUNs documentation automatically generated 03.04.2009.
 \end_layout
 
 \begin_layout Standard
@@ -1230,6 +1230,19 @@ Action Recenters the screen on the current cursor position.
 
 \begin_layout Description
 Syntax screen-recenter 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_SCREEN_SHOW_CURSOR 
+\end_layout
+
+\begin_layout Description
+Action Repositions the screen such that the cursor is visible.
+  
+\end_layout
+
+\begin_layout Description
+Syntax screen-show-cursor 
 \end_layout
 
 \begin_layout Subsection*
@@ -3109,6 +3122,28 @@ Origin Alejandro, 15 Aug 1996; ps, 14 Jun 2008
 \end_layout
 
 \begin_layout Subsection*
+LFUN_MATH_FONT_STYLE 
+\end_layout
+
+\begin_layout Description
+Action Changes the text style used in math.
+  
+\end_layout
+
+\begin_layout Description
+Syntax math-font-style <STYLE> 
+\end_layout
+
+\begin_layout Description
+Params <STYLE>: mathnormal|mathcal|mathfrak|mathrm|mathsf|mathbf |textnormal|tex
+trm|textsf|texttt|textbf|textmd|textit |textsc|textsl|textup  
+\end_layout
+
+\begin_layout Description
+Origin vfr, 9 jan 2009 
+\end_layout
+
+\begin_layout Subsection*
 LFUN_MATH_MACRO_UNFOLD 
 \end_layout
 
@@ -3837,7 +3872,7 @@ Action Sets various features to the table/cell on the current cursor position.
 
 \begin_layout Description
 Notion Various math-environment features are handled here as well, e.g.
- add-vline-left/right for Grid/Cases environment  
+ add-vline-left/right for the Grid/Array environment  
 \end_layout
 
 \begin_layout Description
@@ -4509,7 +4544,8 @@ Params <ARG>: <open|close|toggle|assign>.
 \begin_inset Newline newline
 \end_inset
 
- assign is for branch inset.
+ assign synchronize the branch-inset with activation status of the branch.
+ Used for global toggling when changed activation.
   
 \end_layout
 
@@ -4671,7 +4707,7 @@ Syntax label-goto [<LABEL>]
 
 \begin_layout Description
 Params <LABEL>: Requested label.
- If no label is given and refernce is on cursor position, Bookmark 0 is
+ If no label is given and reference is on cursor position, Bookmark 0 is
  saved and cursor moves to the position of referenced label.
   
 \end_layout
@@ -4721,13 +4757,30 @@ LFUN_BOOKMARK_GOTO
 \end_layout
 
 \begin_layout Description
-Action Goto a bookmark.
+Action Moves the cursor to the numbered bookmark, opening the file if necessary.
+ Note that bookmarsk are saved per-session, not per file.
   
 \end_layout
 
 \begin_layout Description
-Notion Moves the cursor to the numbered bookmark, opening the file if necessary.
- Note that bookmarsk are saved per-session, not per file.
+Notion Bookmark 0 has a special purpose.
+ It is automatically set  
+\begin_inset Newline newline
+\end_inset
+
+ 1.
+ to the paragraph you are currently editing  
+\begin_inset Newline newline
+\end_inset
+
+ 2.
+ to the paragraph from where you are jumping to the last-edited position
+ (jump-back feature)  
+\begin_inset Newline newline
+\end_inset
+
+ 3.
+ when jumping from crossreference to the requested label by LFUN_LABEL_GOTO.
   
 \end_layout
 
@@ -6611,7 +6664,7 @@ Origin rgh, 27 May 2008
 \end_layout
 
 \begin_layout Subsection*
-LFUN_BRANCH_ACTIVATE 
+LFUN_BRANCH_DEACTIVATE 
 \end_layout
 
 \begin_layout Description
