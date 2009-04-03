@@ -608,6 +608,11 @@ bool Buffer::readDocument(Lexer & lex)
 			Buffer * master = 
 				checkAndLoadLyXFile(master_file, true);
 			if (master) {
+				// necessary e.g. after a reload
+				// to re-register the child (bug 5873)
+				// FIXME: clean up updateMacros (here, only
+				// child registering is needed).
+				master->updateMacros();
 				// set master as master buffer, but only
 				// if we are a real child
 				if (master->isChild(this))
@@ -618,9 +623,9 @@ bool Buffer::readDocument(Lexer & lex)
 				else if (master->isFullyLoaded())
 					LYXERR0("The master '"
 						<< params().master
-						<< "' assigned to this document '"
+						<< "' assigned to this document ("
 						<< absFileName()
-						<< "' does not include "
+						<< ") does not include "
 						"this document. Ignoring the master assignment.");
 			}
 		}
