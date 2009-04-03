@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-03-29 12:07+0200\n"
+"POT-Creation-Date: 2009-04-03 12:10+0200\n"
 "PO-Revision-Date: 2009-03-29 18:16+0730\n"
 "Last-Translator: Waluyo Adi Siswanto <was.uthm@gmail.com>\n"
 "Language-Team: Waluyo Adi Siswanto <was.uthm@gmail.com>\n"
@@ -39,7 +39,7 @@ msgstr "Hak cipta"
 #: src/frontends/qt4/ui/BoxUi.ui:260 src/frontends/qt4/ui/BranchUi.ui:41
 #: src/frontends/qt4/ui/DelimiterUi.ui:286
 #: src/frontends/qt4/ui/ErrorListUi.ui:75
-#: src/frontends/qt4/ui/ExternalUi.ui:631 src/frontends/qt4/ui/FloatUi.ui:85
+#: src/frontends/qt4/ui/ExternalUi.ui:72 src/frontends/qt4/ui/FloatUi.ui:85
 #: src/frontends/qt4/ui/HSpaceUi.ui:174
 #: src/frontends/qt4/ui/HyperlinkUi.ui:153
 #: src/frontends/qt4/ui/IncludeUi.ui:250 src/frontends/qt4/ui/InfoUi.ui:71
@@ -67,7 +67,7 @@ msgstr "&Dummy"
 #: src/frontends/qt4/ui/CharacterUi.ui:370
 #: src/frontends/qt4/ui/CitationUi.ui:438
 #: src/frontends/qt4/ui/DocumentUi.ui:135 src/frontends/qt4/ui/ERTUi.ui:90
-#: src/frontends/qt4/ui/ExternalUi.ui:611 src/frontends/qt4/ui/FloatUi.ui:68
+#: src/frontends/qt4/ui/ExternalUi.ui:52 src/frontends/qt4/ui/FloatUi.ui:68
 #: src/frontends/qt4/ui/GraphicsUi.ui:721 src/frontends/qt4/ui/HSpaceUi.ui:151
 #: src/frontends/qt4/ui/HyperlinkUi.ui:140
 #: src/frontends/qt4/ui/IncludeUi.ui:237 src/frontends/qt4/ui/LabelUi.ui:82
@@ -87,8 +87,8 @@ msgstr "&Setuju"
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:862
 #: src/Buffer.cpp:2582 src/Buffer.cpp:2606 src/Buffer.cpp:2641
-#: src/LyXFunc.cpp:704 src/LyXFunc.cpp:843 src/LyXFunc.cpp:1017
-#: src/LyXVC.cpp:181 src/frontends/qt4/GuiClipboard.cpp:208
+#: src/LyXFunc.cpp:713 src/LyXFunc.cpp:852 src/LyXFunc.cpp:1026
+#: src/LyXVC.cpp:182 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1262
 #: src/frontends/qt4/GuiParagraph.cpp:69
 #: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1531
@@ -169,8 +169,9 @@ msgid "&Rescan"
 msgstr "&Rescan"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:46 src/frontends/qt4/ui/BibtexUi.ui:97
-#: src/frontends/qt4/ui/ExternalUi.ui:78 src/frontends/qt4/ui/GraphicsUi.ui:58
-#: src/frontends/qt4/ui/IncludeUi.ui:335 src/frontends/qt4/ui/LaTeXUi.ui:184
+#: src/frontends/qt4/ui/ExternalUi.ui:129
+#: src/frontends/qt4/ui/GraphicsUi.ui:58 src/frontends/qt4/ui/IncludeUi.ui:335
+#: src/frontends/qt4/ui/LaTeXUi.ui:184 src/frontends/qt4/ui/PrefInputUi.ui:109
 #: src/frontends/qt4/ui/PrintUi.ui:313
 msgid "&Browse..."
 msgstr "&Cari..."
@@ -189,7 +190,7 @@ msgstr "&Gabung"
 #: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:78
 #: src/frontends/qt4/ui/LabelUi.ui:92 src/frontends/qt4/ui/NomenclUi.ui:105
 #: src/frontends/qt4/ui/SendtoUi.ui:92 src/frontends/qt4/ui/ShortcutUi.ui:65
-#: src/LyXFunc.cpp:813 src/buffer_funcs.cpp:107
+#: src/LyXFunc.cpp:822 src/buffer_funcs.cpp:107
 #: src/frontends/qt4/ButtonController.cpp:231
 msgid "Cancel"
 msgstr "Tidak jadi"
@@ -367,7 +368,7 @@ msgstr "&Panggil Ulang"
 
 #: src/frontends/qt4/ui/BoxUi.ui:247 src/frontends/qt4/ui/CharacterUi.ui:380
 #: src/frontends/qt4/ui/DocumentUi.ui:145
-#: src/frontends/qt4/ui/ExternalUi.ui:621 src/frontends/qt4/ui/FloatUi.ui:78
+#: src/frontends/qt4/ui/ExternalUi.ui:62 src/frontends/qt4/ui/FloatUi.ui:78
 #: src/frontends/qt4/ui/GraphicsUi.ui:742 src/frontends/qt4/ui/HSpaceUi.ui:164
 #: src/frontends/qt4/ui/ListingsUi.ui:549
 #: src/frontends/qt4/ui/ParagraphUi.ui:92 src/frontends/qt4/ui/PrefsUi.ui:83
@@ -378,7 +379,7 @@ msgstr "&Panggil Ulang"
 msgid "&Apply"
 msgstr "&Terapkan"
 
-#: src/frontends/qt4/ui/BoxUi.ui:285 src/frontends/qt4/ui/ExternalUi.ui:469
+#: src/frontends/qt4/ui/BoxUi.ui:285 src/frontends/qt4/ui/ExternalUi.ui:498
 #: src/frontends/qt4/ui/PageLayoutUi.ui:204
 msgid "&Height:"
 msgstr "Pan&jang:"
@@ -391,7 +392,7 @@ msgstr "Kota&k dalam:"
 msgid "&Decoration:"
 msgstr "&Dekorasi:"
 
-#: src/frontends/qt4/ui/BoxUi.ui:330 src/frontends/qt4/ui/ExternalUi.ui:443
+#: src/frontends/qt4/ui/BoxUi.ui:330 src/frontends/qt4/ui/ExternalUi.ui:472
 #: src/frontends/qt4/ui/PageLayoutUi.ui:217
 #: src/frontends/qt4/ui/TabularUi.ui:100 src/frontends/qt4/ui/WrapUi.ui:85
 msgid "&Width:"
@@ -458,7 +459,6 @@ msgid "Remove the selected branch"
 msgstr "Hapus branch yang sudah dipilih"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:83
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:38
 msgid "&Remove"
 msgstr "&Hapus"
 
@@ -500,7 +500,7 @@ msgstr "Uku&ran:"
 #: src/frontends/qt4/GuiDocument.cpp:1217
 #: src/frontends/qt4/GuiDocument.cpp:2276 src/frontends/qt4/GuiExternal.cpp:75
 #: src/frontends/qt4/GuiGraphics.cpp:71 src/frontends/qt4/GuiListings.cpp:152
-#: src/frontends/qt4/GuiListings.cpp:159 src/frontends/qt4/GuiPrefs.cpp:1753
+#: src/frontends/qt4/GuiListings.cpp:159 src/frontends/qt4/GuiPrefs.cpp:1754
 msgid "Default"
 msgstr "Default"
 
@@ -618,7 +618,7 @@ msgstr "Seri huruf"
 #: src/frontends/qt4/ui/CharacterUi.ui:160
 #: src/frontends/qt4/ui/ListingsUi.ui:339 lib/layouts/europecv.layout:118
 #: lib/layouts/moderncv.layout:114 src/frontends/qt4/GuiDocument.cpp:987
-#: src/frontends/qt4/GuiPrefs.cpp:1711
+#: src/frontends/qt4/GuiPrefs.cpp:1712
 msgid "Language"
 msgstr "Bahasa"
 
@@ -888,162 +888,164 @@ msgstr "&Error:"
 msgid "Description:"
 msgstr "Diskripsi:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:43
+#: src/frontends/qt4/ui/ExternalUi.ui:94
 msgid "F&ile"
 msgstr "B&erkas"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:55 src/frontends/qt4/ui/ExternalUi.ui:62
-#: lib/layouts/agu_stdclass.inc:80 lib/layouts/db_stdcharstyles.inc:8
+#: src/frontends/qt4/ui/ExternalUi.ui:106
+#: src/frontends/qt4/ui/ExternalUi.ui:113 lib/layouts/agu_stdclass.inc:80
+#: lib/layouts/db_stdcharstyles.inc:8
 msgid "Filename"
 msgstr "Namaberkas"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:65
+#: src/frontends/qt4/ui/ExternalUi.ui:116
 #: src/frontends/qt4/ui/GraphicsUi.ui:266
 #: src/frontends/qt4/ui/IncludeUi.ui:265 src/frontends/qt4/ui/PrintUi.ui:293
 msgid "&File:"
 msgstr "&Berkas:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:75 src/frontends/qt4/ui/IncludeUi.ui:332
+#: src/frontends/qt4/ui/ExternalUi.ui:126
+#: src/frontends/qt4/ui/IncludeUi.ui:332
 msgid "Select a file"
 msgstr "Pilih satu berkas"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:85
+#: src/frontends/qt4/ui/ExternalUi.ui:136
 msgid "&Draft"
 msgstr "&Draf"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:92
+#: src/frontends/qt4/ui/ExternalUi.ui:143
 msgid "&Template"
 msgstr "&Templet"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:131
+#: src/frontends/qt4/ui/ExternalUi.ui:180
 msgid "Available templates"
 msgstr "Templet yang tersedia"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:150
+#: src/frontends/qt4/ui/ExternalUi.ui:191
 #: src/frontends/qt4/ui/GraphicsUi.ui:448
 msgid "LaTe&X and LyX options"
 msgstr "Opsi LaTe&X dan LyX"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:156
+#: src/frontends/qt4/ui/ExternalUi.ui:197
 msgid "LaTeX Options"
 msgstr "Opsi LaTeX"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:174
+#: src/frontends/qt4/ui/ExternalUi.ui:215
 msgid "O&ption:"
 msgstr "O&psi:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:187
+#: src/frontends/qt4/ui/ExternalUi.ui:228
 msgid "Forma&t:"
 msgstr "Forma&t:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:211
+#: src/frontends/qt4/ui/ExternalUi.ui:252
 msgid "&Show in LyX"
 msgstr "&Bentangkan dalam LyX"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:223
-#: src/frontends/qt4/ui/ExternalUi.ui:247
+#: src/frontends/qt4/ui/ExternalUi.ui:264
+#: src/frontends/qt4/ui/ExternalUi.ui:286
 #: src/frontends/qt4/ui/GraphicsUi.ui:559
 #: src/frontends/qt4/ui/GraphicsUi.ui:566
 msgid "Percentage to scale by in LyX"
 msgstr "Presentasi skala di LyX"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:226
+#: src/frontends/qt4/ui/ExternalUi.ui:267
 #: src/frontends/qt4/ui/GraphicsUi.ui:569
 msgid "Sca&le on Screen (%):"
 msgstr "Sca&la di Layar (%):"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:292
+#: src/frontends/qt4/ui/ExternalUi.ui:323
 msgid "Si&ze and Rotation"
 msgstr "Ukuran dan &Rotasi"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:304
+#: src/frontends/qt4/ui/ExternalUi.ui:335
 msgid "Rotate"
 msgstr "Putar"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:351
-#: src/frontends/qt4/ui/ExternalUi.ui:381
+#: src/frontends/qt4/ui/ExternalUi.ui:380
+#: src/frontends/qt4/ui/ExternalUi.ui:410
 #: src/frontends/qt4/ui/GraphicsUi.ui:240
 #: src/frontends/qt4/ui/GraphicsUi.ui:247
 msgid "Angle to rotate image by"
 msgstr "Sudut putaran gambar"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:361
-#: src/frontends/qt4/ui/ExternalUi.ui:374
+#: src/frontends/qt4/ui/ExternalUi.ui:390
+#: src/frontends/qt4/ui/ExternalUi.ui:403
 #: src/frontends/qt4/ui/GraphicsUi.ui:212
 #: src/frontends/qt4/ui/GraphicsUi.ui:219
 msgid "The origin of the rotation"
 msgstr "Sumbu putaran"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:364
+#: src/frontends/qt4/ui/ExternalUi.ui:393
 msgid "Ori&gin:"
 msgstr "Sum&bu"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:384
+#: src/frontends/qt4/ui/ExternalUi.ui:413
 msgid "A&ngle:"
 msgstr "S&udut:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:399
+#: src/frontends/qt4/ui/ExternalUi.ui:428
 msgid "Scale"
 msgstr "Skala"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:423
+#: src/frontends/qt4/ui/ExternalUi.ui:452
 #: src/frontends/qt4/ui/GraphicsUi.ui:131
 msgid "Height of image in output"
 msgstr "Ukuran tinggi gambar di output"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:433
+#: src/frontends/qt4/ui/ExternalUi.ui:462
 #: src/frontends/qt4/ui/GraphicsUi.ui:97
 msgid "Width of image in output"
 msgstr "Ukuran lebar gambar di output"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:456
+#: src/frontends/qt4/ui/ExternalUi.ui:485
 msgid "Maintain aspect ratio with largest dimension"
 msgstr "Pertahankan aspek rasio dengan dimensi terbesar"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:459
+#: src/frontends/qt4/ui/ExternalUi.ui:488
 #: src/frontends/qt4/ui/GraphicsUi.ui:177
 msgid "&Maintain aspect ratio"
 msgstr "Pertahankan rasi&o panjang dan lebar"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:482
+#: src/frontends/qt4/ui/ExternalUi.ui:511
 msgid "Crop"
 msgstr "Pemotongan"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:497
+#: src/frontends/qt4/ui/ExternalUi.ui:526
 #: src/frontends/qt4/ui/GraphicsUi.ui:309
 msgid "Clip to bounding box values"
 msgstr "Klip ke ukuran kotak batas"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:500
+#: src/frontends/qt4/ui/ExternalUi.ui:529
 #: src/frontends/qt4/ui/GraphicsUi.ui:312
 msgid "Clip to &bounding box"
 msgstr "Klip ke kot&ak batas"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:507
+#: src/frontends/qt4/ui/ExternalUi.ui:536
 #: src/frontends/qt4/ui/GraphicsUi.ui:345
 msgid "&Left bottom:"
 msgstr "Kiri ba&wah:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:520
+#: src/frontends/qt4/ui/ExternalUi.ui:549
 msgid "x"
 msgstr "x"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:527
+#: src/frontends/qt4/ui/ExternalUi.ui:556
 #: src/frontends/qt4/ui/GraphicsUi.ui:383
 msgid "Right &top:"
 msgstr "&Kanan atas:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:537
+#: src/frontends/qt4/ui/ExternalUi.ui:566
 #: src/frontends/qt4/ui/GraphicsUi.ui:437
 msgid "Get bounding box from the (EPS) file"
 msgstr "Ambil kotak batas dari berkas EPS"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:540
+#: src/frontends/qt4/ui/ExternalUi.ui:569
 #: src/frontends/qt4/ui/GraphicsUi.ui:440
 msgid "&Get from File"
 msgstr "Ambil &dari berkas"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:570
+#: src/frontends/qt4/ui/ExternalUi.ui:599
 msgid "y"
 msgstr "y"
 
@@ -1149,7 +1151,6 @@ msgid "Scale the Sans Serif font to match the base font's dimensions"
 msgstr "Ubah ukuran huruf Sans Serif agar sesuai dengan ukuran huruf utama"
 
 #: src/frontends/qt4/ui/FontUi.ui:178
-#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:117
 msgid "&Roman:"
 msgstr "&Roman:"
 
@@ -1403,7 +1404,7 @@ msgstr "&Berkas"
 #: src/frontends/qt4/ui/HyperlinkUi.ui:90 lib/layouts/scrlttr2.layout:205
 #: lib/layouts/amsdefs.inc:158 lib/layouts/stdinsets.inc:247
 #: lib/layouts/stdinsets.inc:252 lib/layouts/minimalistic.module:24
-#: lib/layouts/minimalistic.module:26 lib/ui/stdmenus.inc:340
+#: lib/layouts/minimalistic.module:26 lib/ui/stdmenus.inc:341
 msgid "URL"
 msgstr "URL"
 
@@ -1505,6 +1506,7 @@ msgid "Information Name:"
 msgstr "Nama Informasi:"
 
 #: src/frontends/qt4/ui/InfoUi.ui:64
+#: src/frontends/qt4/ui/PrefShortcutsUi.ui:68
 msgid "&New"
 msgstr "&Baru"
 
@@ -2161,7 +2163,8 @@ msgid "Custom"
 msgstr "AturSendiri"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
-msgid "&Alter..."
+#, fuzzy
+msgid "A&lter..."
 msgstr "&Alternatif..."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:25
@@ -2296,7 +2299,7 @@ msgstr "&Ubah"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:209
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:61
-#: src/frontends/qt4/GuiPrefs.cpp:2312 src/frontends/qt4/GuiPrefs.cpp:2376
+#: src/frontends/qt4/GuiPrefs.cpp:2313 src/frontends/qt4/GuiPrefs.cpp:2377
 msgid "Remo&ve"
 msgstr "&Hapus"
 
@@ -2313,7 +2316,8 @@ msgid "&Enabled"
 msgstr "Di&bolehkan"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:292
-msgid "&Maximum Age (in days):"
+#, fuzzy
+msgid "Maximum A&ge (in days):"
 msgstr "&Umur Maksimum (dalam hari):"
 
 #: src/frontends/qt4/ui/PrefDateUi.ui:33
@@ -2350,7 +2354,8 @@ msgid "Editing"
 msgstr "Penyuntingan"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:51
-msgid "Cursor follows &scrollbar"
+#, fuzzy
+msgid "Cursor &follows scrollbar"
 msgstr "Kursor mengikuti s&crollbar"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:58
@@ -2382,11 +2387,13 @@ msgid "&Limit text width"
 msgstr "&Batasi area teks"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:143
-msgid "Screen us&ed (pixels):"
+#, fuzzy
+msgid "Screen used (&pixels):"
 msgstr "&Layar menggunakan (pixels):"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:169
-msgid "Hide tabba&r"
+#, fuzzy
+msgid "Hide &tabbar"
 msgstr "Sembunyikan t&ab"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:176
@@ -2401,12 +2408,18 @@ msgstr "Semb&unyikan kotakbantuan"
 msgid "&New..."
 msgstr "&Baru..."
 
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:38
+#, fuzzy
+msgid "Re&move"
+msgstr "&Hapus"
+
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:51
 msgid "S&hort Name:"
 msgstr "Nama Sin&gkat:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:85
-msgid "Vector graphi&cs format"
+#, fuzzy
+msgid "Vector &graphics format"
 msgstr "Format vector grap&hics"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:102
@@ -2422,7 +2435,8 @@ msgid "Ed&itor:"
 msgstr "Pen&yunting:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:132
-msgid "S&hortcut:"
+#, fuzzy
+msgid "Shortc&ut:"
 msgstr "&Cara pintas:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:142
@@ -2467,10 +2481,6 @@ msgstr "&Cari..."
 msgid "S&econd:"
 msgstr "Ke&dua:"
 
-#: src/frontends/qt4/ui/PrefInputUi.ui:109
-msgid "B&rowse..."
-msgstr "C&ari..."
-
 #: src/frontends/qt4/ui/PrefInputUi.ui:122
 msgid "Mouse"
 msgstr "Tetikus"
@@ -2488,7 +2498,8 @@ msgstr ""
 "lebih tinggi akan mempercepat, dan angka rendah memperlambat."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:25
-msgid "&User Interface language:"
+#, fuzzy
+msgid "User &interface language:"
 msgstr "Bahasa Antarmuka &User:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:35
@@ -2529,7 +2540,8 @@ msgid "Use the babel package for multilingual support"
 msgstr "Gunakan paket babel untuk mendukung multibahasa"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:119
-msgid "Use b&abel"
+#, fuzzy
+msgid "&Use babel"
 msgstr "Gunakan b&abel"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:126
@@ -2588,7 +2600,8 @@ msgstr ""
 "Hibrani)."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:206
-msgid "Enable &RTL support"
+#, fuzzy
+msgid "Enable RTL su&pport"
 msgstr "Penulisan kanan ke ki&ri"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:234
@@ -2646,7 +2659,8 @@ msgid "Set class options to default on class change"
 msgstr "Mengubah opsi class ke default jika class berubah"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:98
-msgid "&Reset class options when document class changes"
+#, fuzzy
+msgid "R&eset class options when document class changes"
 msgstr "&Atur ulang opsi class bila dokumen class berubah"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:127
@@ -2789,7 +2803,8 @@ msgid "Option used to print to non-default printer."
 msgstr "Opsi yang digunakan untuk mencetak ke mesin cetak bukan default."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:101
-msgid "Set p&rinter:"
+#, fuzzy
+msgid "Set &printer:"
 msgstr "Set &mesin cetak:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:114
@@ -2797,7 +2812,8 @@ msgid "Option used with spool command to set printer."
 msgstr "Opsi yang digunaka dengan perintah spool ke mesin cetak."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:117
-msgid "Spool pr&inter:"
+#, fuzzy
+msgid "Spool &printer:"
 msgstr "Mesin cetak sp&ool:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:130
@@ -2807,7 +2823,8 @@ msgid ""
 msgstr "Perintah untuk mencetak ke berkas kemudian dikirim ke mesin cetak."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:136
-msgid "Spool &command:"
+#, fuzzy
+msgid "Spool co&mmand:"
 msgstr "Perintah spoo&l:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:153
@@ -2823,8 +2840,9 @@ msgid "Lan&dscape:"
 msgstr "Lanse&kap:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:182
-msgid "Number of Co&pies:"
-msgstr "&Jumlah salinan:"
+#, fuzzy
+msgid "&Number of copies:"
+msgstr "Jumlah salinan"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:192
 msgid "Option used to set number of copies."
@@ -2887,7 +2905,8 @@ msgstr ""
 "untuk semua mesin cetak yang ada."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:304
-msgid "Adapt output to printer"
+#, fuzzy
+msgid "Adapt &output to printer"
 msgstr "Adaptasi keluaran di layar ke mesin cetak"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:311
@@ -2903,12 +2922,18 @@ msgid "Printer co&mmand:"
 msgstr "P&erintah mesin cetak:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:69
-msgid "Sa&ns Serif:"
-msgstr "Sa&ns Serif:"
+#, fuzzy
+msgid "Sans Seri&f:"
+msgstr "&Sans Serif:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:107
 msgid "T&ypewriter:"
 msgstr "Mesin&ketik:"
+
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:117
+#, fuzzy
+msgid "R&oman:"
+msgstr "&Roman:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:169
 msgid "Screen &DPI:"
@@ -2923,44 +2948,54 @@ msgid "Font Sizes"
 msgstr "Ukuran Huruf"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:262
-msgid "Larger:"
-msgstr "Lebih Besar:"
+#, fuzzy
+msgid "&Large:"
+msgstr "Besar:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:272
-msgid "Largest:"
+#, fuzzy
+msgid "&Larger:"
+msgstr "Lebih Besar:"
+
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:282
+#, fuzzy
+msgid "&Largest:"
 msgstr "Lebih Besar Lagi:"
 
-#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:285
-msgid "Huge:"
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:295
+#, fuzzy
+msgid "&Huge:"
 msgstr "Sangat Besar:"
 
-#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:295
-msgid "Hugest:"
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:305
+#, fuzzy
+msgid "&Hugest:"
 msgstr "Paling Besar:"
 
-#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:305
-msgid "Smallest:"
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:315
+#, fuzzy
+msgid "S&mallest:"
 msgstr "Sangat Kecil:"
 
-#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:315
-msgid "Smaller:"
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:325
+#, fuzzy
+msgid "S&maller:"
 msgstr "Lebih Kecil:"
 
-#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:325
-msgid "Small:"
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:335
+#, fuzzy
+msgid "S&mall:"
 msgstr "Kecil:"
 
-#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:335
-msgid "Normal:"
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:345
+#, fuzzy
+msgid "&Normal:"
 msgstr "Normal:"
 
-#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:345
-msgid "Tiny:"
-msgstr "Paling kecil:"
-
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:355
-msgid "Large:"
-msgstr "Besar:"
+#, fuzzy
+msgid "&Tiny:"
+msgstr "Paling kecil:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:368
 msgid ""
@@ -2971,12 +3006,9 @@ msgstr ""
 "layar"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:371
-msgid "Use Pixmap Cache to speed up font rendering"
+#, fuzzy
+msgid "&Use pixmap cache to speed up font rendering"
 msgstr "Menggunakan Pixmap Cache untuk mempercepat perubahan huruf"
-
-#: src/frontends/qt4/ui/PrefShortcutsUi.ui:68
-msgid "Ne&w"
-msgstr "Bar&u"
 
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:90
 msgid "&Bind file:"
@@ -2999,7 +3031,8 @@ msgid "Personal &dictionary:"
 msgstr "&Kamus pribadi:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:97
-msgid "Escape cha&racters:"
+#, fuzzy
+msgid "&Escape characters:"
 msgstr "Ka&rakter escape:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:107
@@ -3027,23 +3060,28 @@ msgid "Session"
 msgstr "Sesi Kerja"
 
 #: src/frontends/qt4/ui/PrefUi.ui:51
-msgid "Restore to cursor position when the file was last closed"
-msgstr "Menempatkan posisi kursor semula ketika berkas ditutup"
-
-#: src/frontends/qt4/ui/PrefUi.ui:54
-msgid "Allow saving/restoring of window layouts and geometries"
+#, fuzzy
+msgid "Restore window layouts and &geometries"
 msgstr "Diijinkan mengatur tata letak dan ukuran jendela"
 
+#: src/frontends/qt4/ui/PrefUi.ui:58
+#, fuzzy
+msgid "Restore to the cursor position when the file was last closed"
+msgstr "Menempatkan posisi kursor semula ketika berkas ditutup"
+
 #: src/frontends/qt4/ui/PrefUi.ui:61
-msgid "Restore cursor positions"
+#, fuzzy
+msgid "Restore cursor &positions"
 msgstr "Menempatkan kembali posisi kursor"
 
 #: src/frontends/qt4/ui/PrefUi.ui:68
-msgid "Load opened files from last session"
+#, fuzzy
+msgid "&Load opened files from last session"
 msgstr "Memuat berkas yang pernah dibuka pada sesi yang terakhir"
 
 #: src/frontends/qt4/ui/PrefUi.ui:75
-msgid "Clear All Session Information"
+#, fuzzy
+msgid "Clear all session &information"
 msgstr "Hapus Semua Informasi Sesi"
 
 #: src/frontends/qt4/ui/PrefUi.ui:85
@@ -3059,11 +3097,13 @@ msgid "minutes"
 msgstr "menit"
 
 #: src/frontends/qt4/ui/PrefUi.ui:170
-msgid "B&ackup documents, every"
+#, fuzzy
+msgid "&Backup documents, every"
 msgstr "Simp&an dokumen, setiap"
 
 #: src/frontends/qt4/ui/PrefUi.ui:177
-msgid "Open documents in &tabs"
+#, fuzzy
+msgid "&Open documents in tabs"
 msgstr "Buka dokumen dalam ta&b"
 
 #: src/frontends/qt4/ui/PrefUi.ui:200
@@ -3079,7 +3119,8 @@ msgstr ""
 "pada area kerja dokumen yang sedang disunting"
 
 #: src/frontends/qt4/ui/PrefUi.ui:221
-msgid "Enable &tool tips in main work area"
+#, fuzzy
+msgid "&Enable tool tips in main work area"
 msgstr "Diberikan petunjuk di area kerja utama"
 
 #: src/frontends/qt4/ui/PrefUi.ui:231
@@ -3090,7 +3131,7 @@ msgstr "Ca&ri..."
 msgid "&User interface file:"
 msgstr "Berkas Antarmuka &User:"
 
-#: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:703
+#: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:713
 #: src/frontends/qt4/GuiView.cpp:1823
 msgid "&Save"
 msgstr "&Simpan"
@@ -4445,7 +4486,7 @@ msgstr "Surat"
 #: lib/layouts/siamltex.layout:223 lib/layouts/agu_stdtitle.inc:238
 #: lib/layouts/amsdefs.inc:72 lib/layouts/db_stdtitle.inc:35
 #: lib/layouts/scrclass.inc:162 lib/layouts/stdtitle.inc:50
-#: lib/layouts/svjour.inc:227 lib/ui/stdmenus.inc:347
+#: lib/layouts/svjour.inc:227 lib/ui/stdmenus.inc:348
 #: lib/external_templates:300 lib/external_templates:301
 #: lib/external_templates:305
 msgid "Date"
@@ -9549,11 +9590,11 @@ msgstr "Cari & Ganti...|G"
 msgid "Tabular|T"
 msgstr "Tabular"
 
-#: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:106 lib/ui/stdmenus.inc:522
+#: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:106 lib/ui/stdmenus.inc:523
 msgid "Math|M"
 msgstr "Rumus Matematika|M"
 
-#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:500
+#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:501
 msgid "Spellchecker...|S"
 msgstr "Periksa Ejaan|E"
 
@@ -9565,7 +9606,7 @@ msgstr "Padanan Kata..."
 msgid "Statistics...|i"
 msgstr "Statistik..."
 
-#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:503
+#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:504
 msgid "Check TeX|h"
 msgstr "Cek TeX|X"
 
@@ -9573,11 +9614,11 @@ msgstr "Cek TeX|X"
 msgid "Change Tracking|g"
 msgstr "Pelacakan Perubahan|r"
 
-#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:510
+#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:511
 msgid "Preferences...|P"
 msgstr "Preferensi...|P"
 
-#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:509
+#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:510
 msgid "Reconfigure|R"
 msgstr "Konfigurasi Ulang|U"
 
@@ -9589,7 +9630,7 @@ msgstr "Sebagai Baris|b"
 msgid "Selection as Paragraphs|P"
 msgstr "Sebagai Paragraf|P"
 
-#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:353 lib/ui/stdmenus.inc:161
+#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:353 lib/ui/stdmenus.inc:162
 msgid "Multicolumn|M"
 msgstr "Multikolom|M"
 
@@ -9613,7 +9654,7 @@ msgstr "Garis Kanan|G"
 msgid "Alignment|i"
 msgstr "Pelurusan|P"
 
-#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:368 lib/ui/stdmenus.inc:179
+#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:368 lib/ui/stdmenus.inc:180
 msgid "Add Row|A"
 msgstr "Tambah Baris|s"
 
@@ -9629,7 +9670,7 @@ msgstr "Salin Baris"
 msgid "Swap Rows"
 msgstr "Tukar Baris"
 
-#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:373 lib/ui/stdmenus.inc:184
+#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:373 lib/ui/stdmenus.inc:185
 msgid "Add Column|u"
 msgstr "Tambah Kolom|l"
 
@@ -9645,27 +9686,27 @@ msgstr "Salin Kolom"
 msgid "Swap Columns"
 msgstr "Tukar Kolom"
 
-#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:360 lib/ui/stdmenus.inc:171
+#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:360 lib/ui/stdmenus.inc:172
 msgid "Left|L"
 msgstr "Rata kiri|r"
 
-#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:361 lib/ui/stdmenus.inc:172
+#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:361 lib/ui/stdmenus.inc:173
 msgid "Center|C"
 msgstr "Tengah Antara|T"
 
-#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:362 lib/ui/stdmenus.inc:173
+#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:362 lib/ui/stdmenus.inc:174
 msgid "Right|R"
 msgstr "Kanan|K"
 
-#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:364 lib/ui/stdmenus.inc:175
+#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:364 lib/ui/stdmenus.inc:176
 msgid "Top|T"
 msgstr "Rata Atas"
 
-#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:365 lib/ui/stdmenus.inc:176
+#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:365 lib/ui/stdmenus.inc:177
 msgid "Middle|M"
 msgstr "Tengah Garis"
 
-#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:366 lib/ui/stdmenus.inc:177
+#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:366 lib/ui/stdmenus.inc:178
 msgid "Bottom|B"
 msgstr "Rata Bawah|w"
 
@@ -9677,15 +9718,15 @@ msgstr "Pilih Bernomor|n"
 msgid "Toggle Numbering of Line|u"
 msgstr "Pilih Nomor Baris|r"
 
-#: lib/ui/classic.ui:162 lib/ui/stdmenus.inc:193
+#: lib/ui/classic.ui:162 lib/ui/stdmenus.inc:194
 msgid "Change Limits Type|L"
 msgstr "Ubah Tipe Limit|L"
 
-#: lib/ui/classic.ui:164 lib/ui/stdmenus.inc:196
+#: lib/ui/classic.ui:164 lib/ui/stdmenus.inc:197
 msgid "Change Formula Type|F"
 msgstr "Ubah Tipe Rumus|R"
 
-#: lib/ui/classic.ui:166 lib/ui/stdmenus.inc:200
+#: lib/ui/classic.ui:166 lib/ui/stdmenus.inc:201
 msgid "Use Computer Algebra System|S"
 msgstr "Gunakan Sistem Komputer Aljabar|S"
 
@@ -9697,7 +9738,7 @@ msgstr "Pelurusan|a"
 msgid "Add Row|R"
 msgstr "Tambah Baris|B"
 
-#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:369 lib/ui/stdmenus.inc:180
+#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:369 lib/ui/stdmenus.inc:181
 msgid "Delete Row|D"
 msgstr "Hapus Baris|H"
 
@@ -9705,19 +9746,19 @@ msgstr "Hapus Baris|H"
 msgid "Add Column|C"
 msgstr "Tambah Kolom|o"
 
-#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:374 lib/ui/stdmenus.inc:185
+#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:374 lib/ui/stdmenus.inc:186
 msgid "Delete Column|e"
 msgstr "Hapus Kolom|p"
 
-#: lib/ui/classic.ui:182 lib/ui/stdmenus.inc:230
+#: lib/ui/classic.ui:182 lib/ui/stdmenus.inc:231
 msgid "Default|t"
 msgstr "Default|t"
 
-#: lib/ui/classic.ui:183 lib/ui/stdmenus.inc:231
+#: lib/ui/classic.ui:183 lib/ui/stdmenus.inc:232
 msgid "Display|D"
 msgstr "Rumus Display|D"
 
-#: lib/ui/classic.ui:184 lib/ui/stdmenus.inc:232
+#: lib/ui/classic.ui:184 lib/ui/stdmenus.inc:233
 msgid "Inline|I"
 msgstr "Rumus Inline|I"
 
@@ -9750,11 +9791,11 @@ msgid "Maple, evalf"
 msgstr "Maple, evalf"
 
 #: lib/ui/classic.ui:199 lib/ui/classic.ui:265 lib/ui/stdcontext.inc:41
-#: lib/ui/stdmenus.inc:272 lib/ui/stdmenus.inc:385
+#: lib/ui/stdmenus.inc:273 lib/ui/stdmenus.inc:386
 msgid "Inline Formula|I"
 msgstr "Rumus Inline|I"
 
-#: lib/ui/classic.ui:200 lib/ui/stdcontext.inc:42 lib/ui/stdmenus.inc:273
+#: lib/ui/classic.ui:200 lib/ui/stdcontext.inc:42 lib/ui/stdmenus.inc:274
 msgid "Displayed Formula|D"
 msgstr "Rumus Displayed|D"
 
@@ -9782,7 +9823,7 @@ msgstr "Lingkungan Gather"
 msgid "Multline Environment"
 msgstr "Lingkungan Multline"
 
-#: lib/ui/classic.ui:214 lib/ui/stdmenus.inc:320
+#: lib/ui/classic.ui:214 lib/ui/stdmenus.inc:321
 msgid "Math|h"
 msgstr "Rumus Matematika|M"
 
@@ -9790,7 +9831,7 @@ msgstr "Rumus Matematika|M"
 msgid "Special Character|S"
 msgstr "Karakter Spesial|K"
 
-#: lib/ui/classic.ui:217 lib/ui/stdmenus.inc:331
+#: lib/ui/classic.ui:217 lib/ui/stdmenus.inc:332
 msgid "Citation...|C"
 msgstr "Acuan...|A"
 
@@ -9798,15 +9839,15 @@ msgstr "Acuan...|A"
 msgid "Cross-reference...|r"
 msgstr "Referensi-silang...|s"
 
-#: lib/ui/classic.ui:219 lib/ui/stdmenus.inc:333
+#: lib/ui/classic.ui:219 lib/ui/stdmenus.inc:334
 msgid "Label...|L"
 msgstr "Label...|L"
 
-#: lib/ui/classic.ui:220 lib/ui/stdmenus.inc:342
+#: lib/ui/classic.ui:220 lib/ui/stdmenus.inc:343
 msgid "Footnote|F"
 msgstr "Catatan kaki|C"
 
-#: lib/ui/classic.ui:221 lib/ui/stdmenus.inc:343
+#: lib/ui/classic.ui:221 lib/ui/stdmenus.inc:344
 msgid "Marginal Note|M"
 msgstr "Catatan tepi|p"
 
@@ -9826,7 +9867,7 @@ msgstr "Catatkan Nomenklatur"
 msgid "URL...|U"
 msgstr "URL...|U"
 
-#: lib/ui/classic.ui:226 lib/ui/stdmenus.inc:325
+#: lib/ui/classic.ui:226 lib/ui/stdmenus.inc:326
 msgid "Note|N"
 msgstr "Nota|N"
 
@@ -9842,7 +9883,7 @@ msgstr "Program TeX|T"
 msgid "Minipage|p"
 msgstr "Halaman kecil|k"
 
-#: lib/ui/classic.ui:231 lib/ui/stdmenus.inc:339
+#: lib/ui/classic.ui:231 lib/ui/stdmenus.inc:340
 msgid "Graphics...|G"
 msgstr "Gambar...|G"
 
@@ -9866,15 +9907,15 @@ msgstr "Sisipan Berkas|e"
 msgid "External Material...|x"
 msgstr "Bahan Eksternal...|k"
 
-#: lib/ui/classic.ui:241 lib/ui/stdmenus.inc:351
+#: lib/ui/classic.ui:241 lib/ui/stdmenus.inc:352
 msgid "Symbols...|b"
 msgstr "Simbol...|b"
 
-#: lib/ui/classic.ui:242 lib/ui/stdmenus.inc:363
+#: lib/ui/classic.ui:242 lib/ui/stdmenus.inc:364
 msgid "Superscript|S"
 msgstr "Sisipan Atas Garis|A"
 
-#: lib/ui/classic.ui:243 lib/ui/stdmenus.inc:364
+#: lib/ui/classic.ui:243 lib/ui/stdmenus.inc:365
 msgid "Subscript|u"
 msgstr "Sisipan Bawah Garis|i"
 
@@ -9882,11 +9923,11 @@ msgstr "Sisipan Bawah Garis|i"
 msgid "Hyphenation Point|P"
 msgstr "Pemenggalan kata|P"
 
-#: lib/ui/classic.ui:245 lib/ui/stdmenus.inc:356
+#: lib/ui/classic.ui:245 lib/ui/stdmenus.inc:357
 msgid "Protected Hyphen|y"
 msgstr "Pemisah Kata|h"
 
-#: lib/ui/classic.ui:246 lib/ui/stdmenus.inc:374
+#: lib/ui/classic.ui:246 lib/ui/stdmenus.inc:375
 msgid "Ligature Break|k"
 msgstr "Pemisah Ligatur|L"
 
@@ -9894,16 +9935,16 @@ msgstr "Pemisah Ligatur|L"
 msgid "Protected Space|r"
 msgstr "Spasi Protected|r"
 
-#: lib/ui/classic.ui:248 lib/ui/stdmenus.inc:367
+#: lib/ui/classic.ui:248 lib/ui/stdmenus.inc:368
 msgid "Inter-word Space|w"
 msgstr "Spasi Antara Kata|p"
 
 #: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:180 lib/ui/stdcontext.inc:203
-#: lib/ui/stdmenus.inc:368
+#: lib/ui/stdmenus.inc:369
 msgid "Thin Space|T"
 msgstr "Spasi Tipis|T"
 
-#: lib/ui/classic.ui:250 lib/ui/stdmenus.inc:369
+#: lib/ui/classic.ui:250 lib/ui/stdmenus.inc:370
 msgid "Horizontal Space...|o"
 msgstr "Spasi Horisontal...|H"
 
@@ -9915,11 +9956,11 @@ msgstr "Spasi Vertikal..."
 msgid "Line Break|L"
 msgstr "Pemisah Garis|i"
 
-#: lib/ui/classic.ui:253 lib/ui/stdmenus.inc:352
+#: lib/ui/classic.ui:253 lib/ui/stdmenus.inc:353
 msgid "Ellipsis|i"
 msgstr "Elipsis (tiga titik)|i"
 
-#: lib/ui/classic.ui:254 lib/ui/stdmenus.inc:353
+#: lib/ui/classic.ui:254 lib/ui/stdmenus.inc:354
 msgid "End of Sentence|E"
 msgstr "Akhir Kalimat|A"
 
@@ -9927,7 +9968,7 @@ msgstr "Akhir Kalimat|A"
 msgid "Protected Dash|D"
 msgstr "Pemisah kata|i"
 
-#: lib/ui/classic.ui:256 lib/ui/stdmenus.inc:357
+#: lib/ui/classic.ui:256 lib/ui/stdmenus.inc:358
 msgid "Breakable Slash|a"
 msgstr "Pemisah Garis Miring|G"
 
@@ -9939,7 +9980,7 @@ msgstr "Tanda Petik Tunggal|T"
 msgid "Ordinary Quote|O"
 msgstr "Tanda Petik Biasa|P"
 
-#: lib/ui/classic.ui:259 lib/ui/stdmenus.inc:358
+#: lib/ui/classic.ui:259 lib/ui/stdmenus.inc:359
 msgid "Menu Separator|M"
 msgstr "Pemisah Menu|M"
 
@@ -9951,49 +9992,49 @@ msgstr "Garis Horisontal"
 msgid "Page Break"
 msgstr "Pemisah halaman"
 
-#: lib/ui/classic.ui:266 lib/ui/stdmenus.inc:386
+#: lib/ui/classic.ui:266 lib/ui/stdmenus.inc:387
 msgid "Display Formula|D"
 msgstr "Rumus Display|D"
 
-#: lib/ui/classic.ui:267 lib/ui/stdcontext.inc:43 lib/ui/stdmenus.inc:274
-#: lib/ui/stdmenus.inc:388
+#: lib/ui/classic.ui:267 lib/ui/stdcontext.inc:43 lib/ui/stdmenus.inc:275
+#: lib/ui/stdmenus.inc:389
 msgid "Eqnarray Environment|E"
 msgstr "Rumus Eqnarray|E"
 
-#: lib/ui/classic.ui:268 lib/ui/stdcontext.inc:33 lib/ui/stdmenus.inc:275
-#: lib/ui/stdmenus.inc:389
+#: lib/ui/classic.ui:268 lib/ui/stdcontext.inc:33 lib/ui/stdmenus.inc:276
+#: lib/ui/stdmenus.inc:390
 msgid "AMS align Environment|a"
 msgstr "Rumus AMS align|a"
 
-#: lib/ui/classic.ui:269 lib/ui/stdcontext.inc:34 lib/ui/stdmenus.inc:276
-#: lib/ui/stdmenus.inc:390
+#: lib/ui/classic.ui:269 lib/ui/stdcontext.inc:34 lib/ui/stdmenus.inc:277
+#: lib/ui/stdmenus.inc:391
 msgid "AMS alignat Environment|t"
 msgstr "Rumus AMS alignat|t"
 
-#: lib/ui/classic.ui:270 lib/ui/stdcontext.inc:35 lib/ui/stdmenus.inc:277
-#: lib/ui/stdmenus.inc:391
+#: lib/ui/classic.ui:270 lib/ui/stdcontext.inc:35 lib/ui/stdmenus.inc:278
+#: lib/ui/stdmenus.inc:392
 msgid "AMS flalign Environment|f"
 msgstr "Rumus AMS flalign|f"
 
-#: lib/ui/classic.ui:273 lib/ui/stdcontext.inc:36 lib/ui/stdmenus.inc:278
-#: lib/ui/stdmenus.inc:392
+#: lib/ui/classic.ui:273 lib/ui/stdcontext.inc:36 lib/ui/stdmenus.inc:279
+#: lib/ui/stdmenus.inc:393
 msgid "AMS gather Environment|g"
 msgstr "Rumus AMS gather|g"
 
-#: lib/ui/classic.ui:274 lib/ui/stdcontext.inc:37 lib/ui/stdmenus.inc:279
-#: lib/ui/stdmenus.inc:393
+#: lib/ui/classic.ui:274 lib/ui/stdcontext.inc:37 lib/ui/stdmenus.inc:280
+#: lib/ui/stdmenus.inc:394
 msgid "AMS multline Environment|m"
 msgstr "Rumus AMS multline|m"
 
-#: lib/ui/classic.ui:276 lib/ui/stdcontext.inc:20 lib/ui/stdmenus.inc:395
+#: lib/ui/classic.ui:276 lib/ui/stdcontext.inc:20 lib/ui/stdmenus.inc:396
 msgid "Array Environment|y"
 msgstr "Lingkungan Array|y"
 
-#: lib/ui/classic.ui:277 lib/ui/stdcontext.inc:21 lib/ui/stdmenus.inc:396
+#: lib/ui/classic.ui:277 lib/ui/stdcontext.inc:21 lib/ui/stdmenus.inc:397
 msgid "Cases Environment|C"
 msgstr "Lingkungan Cases|C"
 
-#: lib/ui/classic.ui:278 lib/ui/stdcontext.inc:25 lib/ui/stdmenus.inc:400
+#: lib/ui/classic.ui:278 lib/ui/stdcontext.inc:25 lib/ui/stdmenus.inc:401
 msgid "Split Environment|S"
 msgstr "Lingkungan Split|S"
 
@@ -10029,39 +10070,39 @@ msgstr "Matematika Tebal"
 msgid "Text Normal Font"
 msgstr "Teks Normal"
 
-#: lib/ui/classic.ui:295 lib/ui/stdmenus.inc:247
+#: lib/ui/classic.ui:295 lib/ui/stdmenus.inc:248
 msgid "Text Roman Family"
 msgstr "Teks Roman"
 
-#: lib/ui/classic.ui:296 lib/ui/stdmenus.inc:248
+#: lib/ui/classic.ui:296 lib/ui/stdmenus.inc:249
 msgid "Text Sans Serif Family"
 msgstr "Teks Sans Serif"
 
-#: lib/ui/classic.ui:297 lib/ui/stdmenus.inc:249
+#: lib/ui/classic.ui:297 lib/ui/stdmenus.inc:250
 msgid "Text Typewriter Family"
 msgstr "Teks Mesinketik"
 
-#: lib/ui/classic.ui:299 lib/ui/stdmenus.inc:251
+#: lib/ui/classic.ui:299 lib/ui/stdmenus.inc:252
 msgid "Text Bold Series"
 msgstr "Teks Tebal"
 
-#: lib/ui/classic.ui:300 lib/ui/stdmenus.inc:252
+#: lib/ui/classic.ui:300 lib/ui/stdmenus.inc:253
 msgid "Text Medium Series"
 msgstr "Teks medium"
 
-#: lib/ui/classic.ui:302 lib/ui/stdmenus.inc:254
+#: lib/ui/classic.ui:302 lib/ui/stdmenus.inc:255
 msgid "Text Italic Shape"
 msgstr "Teks Miring"
 
-#: lib/ui/classic.ui:303 lib/ui/stdmenus.inc:255
+#: lib/ui/classic.ui:303 lib/ui/stdmenus.inc:256
 msgid "Text Small Caps Shape"
 msgstr "Teks Small Caps"
 
-#: lib/ui/classic.ui:304 lib/ui/stdmenus.inc:256
+#: lib/ui/classic.ui:304 lib/ui/stdmenus.inc:257
 msgid "Text Slanted Shape"
 msgstr "Teks Condong"
 
-#: lib/ui/classic.ui:305 lib/ui/stdmenus.inc:257
+#: lib/ui/classic.ui:305 lib/ui/stdmenus.inc:258
 msgid "Text Upright Shape"
 msgstr "Teks Tegak"
 
@@ -10069,39 +10110,39 @@ msgstr "Teks Tegak"
 msgid "Floatflt Figure"
 msgstr "Obyek Float"
 
-#: lib/ui/classic.ui:314 lib/ui/stdmenus.inc:415
+#: lib/ui/classic.ui:314 lib/ui/stdmenus.inc:416
 msgid "Table of Contents|C"
 msgstr "Daftar Isi|D"
 
-#: lib/ui/classic.ui:316 lib/ui/stdmenus.inc:417
+#: lib/ui/classic.ui:316 lib/ui/stdmenus.inc:418
 msgid "Index List|I"
 msgstr "Indeks|I"
 
-#: lib/ui/classic.ui:317 lib/ui/stdmenus.inc:418
+#: lib/ui/classic.ui:317 lib/ui/stdmenus.inc:419
 msgid "Nomenclature|N"
 msgstr "Nomenklatur|N"
 
-#: lib/ui/classic.ui:318 lib/ui/stdmenus.inc:419
+#: lib/ui/classic.ui:318 lib/ui/stdmenus.inc:420
 msgid "BibTeX Bibliography...|B"
 msgstr "Bibliografi BibTeX...|B"
 
-#: lib/ui/classic.ui:322 lib/ui/stdmenus.inc:423
+#: lib/ui/classic.ui:322 lib/ui/stdmenus.inc:424
 msgid "LyX Document...|X"
 msgstr "Dokumen LyX...|X"
 
-#: lib/ui/classic.ui:323 lib/ui/stdmenus.inc:424
+#: lib/ui/classic.ui:323 lib/ui/stdmenus.inc:425
 msgid "Plain Text...|T"
 msgstr "Teks Biasa...|B"
 
-#: lib/ui/classic.ui:324 lib/ui/stdmenus.inc:425
+#: lib/ui/classic.ui:324 lib/ui/stdmenus.inc:426
 msgid "Plain Text, Join Lines...|J"
 msgstr "Teks Biasa, disambung...|d"
 
-#: lib/ui/classic.ui:328 lib/ui/stdmenus.inc:462
+#: lib/ui/classic.ui:328 lib/ui/stdmenus.inc:463
 msgid "Track Changes|T"
 msgstr "Jejak Perubahan|J"
 
-#: lib/ui/classic.ui:329 lib/ui/stdmenus.inc:463
+#: lib/ui/classic.ui:329 lib/ui/stdmenus.inc:464
 msgid "Merge Changes...|M"
 msgstr "Gabung Perubahan...|G"
 
@@ -10113,7 +10154,7 @@ msgstr "Terima Semua Perubahan|a"
 msgid "Reject All Changes|R"
 msgstr "Tolak Semua Perubahan|r"
 
-#: lib/ui/classic.ui:332 lib/ui/stdmenus.inc:468
+#: lib/ui/classic.ui:332 lib/ui/stdmenus.inc:469
 msgid "Show Changes in Output|S"
 msgstr "Tampilkan Semua Perubahan |P"
 
@@ -10157,19 +10198,19 @@ msgstr "Tambahkan Masuk Dalam|u"
 msgid "Start Appendix Here|S"
 msgstr "Lampiran Mulai Dari Sini|S"
 
-#: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:451
+#: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:452
 msgid "Build Program|B"
 msgstr "Build Program|B"
 
-#: lib/ui/classic.ui:361 lib/ui/stdmenus.inc:294
+#: lib/ui/classic.ui:361 lib/ui/stdmenus.inc:295
 msgid "Update|U"
 msgstr "Perbarui|u"
 
-#: lib/ui/classic.ui:363 lib/ui/stdmenus.inc:452
+#: lib/ui/classic.ui:363 lib/ui/stdmenus.inc:453
 msgid "LaTeX Log|L"
 msgstr "Catatan LaTeX|C"
 
-#: lib/ui/classic.ui:364 lib/ui/stdmenus.inc:453
+#: lib/ui/classic.ui:364 lib/ui/stdmenus.inc:454
 msgid "Outline|O"
 msgstr "Paparan Isi|P"
 
@@ -10177,35 +10218,35 @@ msgstr "Paparan Isi|P"
 msgid "TeX Information|X"
 msgstr "Informasi TeX|X"
 
-#: lib/ui/classic.ui:378 lib/ui/stdmenus.inc:476
+#: lib/ui/classic.ui:378 lib/ui/stdmenus.inc:477
 msgid "Next Note|N"
 msgstr "Nota Selanjutnya|N"
 
-#: lib/ui/classic.ui:379 lib/ui/stdmenus.inc:479
+#: lib/ui/classic.ui:379 lib/ui/stdmenus.inc:480
 msgid "Go to Label|L"
 msgstr "Ke Label|L"
 
-#: lib/ui/classic.ui:380 lib/ui/stdmenus.inc:475
+#: lib/ui/classic.ui:380 lib/ui/stdmenus.inc:476
 msgid "Bookmarks|B"
 msgstr "Batas Buku|B"
 
-#: lib/ui/classic.ui:384 lib/ui/stdmenus.inc:485
+#: lib/ui/classic.ui:384 lib/ui/stdmenus.inc:486
 msgid "Save Bookmark 1|S"
 msgstr "Simpan Batas Buku 1|S"
 
-#: lib/ui/classic.ui:385 lib/ui/stdmenus.inc:486
+#: lib/ui/classic.ui:385 lib/ui/stdmenus.inc:487
 msgid "Save Bookmark 2"
 msgstr "Simpan Batas Buku 2"
 
-#: lib/ui/classic.ui:386 lib/ui/stdmenus.inc:487
+#: lib/ui/classic.ui:386 lib/ui/stdmenus.inc:488
 msgid "Save Bookmark 3"
 msgstr "Simpan Batas Buku 3"
 
-#: lib/ui/classic.ui:387 lib/ui/stdmenus.inc:488
+#: lib/ui/classic.ui:387 lib/ui/stdmenus.inc:489
 msgid "Save Bookmark 4"
 msgstr "Simpan Batas Buku 4"
 
-#: lib/ui/classic.ui:388 lib/ui/stdmenus.inc:489
+#: lib/ui/classic.ui:388 lib/ui/stdmenus.inc:490
 msgid "Save Bookmark 5"
 msgstr "Simpan Batas Buku 5"
 
@@ -10229,15 +10270,15 @@ msgstr "Ke Batas Buku 4|4"
 msgid "Go to Bookmark 5|5"
 msgstr "Ke Batas Buku 5|5"
 
-#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:517
+#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:518
 msgid "Introduction|I"
 msgstr "Pengantar|P"
 
-#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:518
+#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:519
 msgid "Tutorial|T"
 msgstr "Tutorial|T"
 
-#: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:519
+#: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:520
 msgid "User's Guide|U"
 msgstr "Petunjuk Penggunaan|u"
 
@@ -10249,15 +10290,15 @@ msgstr "Fitur Tambahan|F"
 msgid "Embedded Objects|m"
 msgstr "Obyek tambahan|m"
 
-#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:523
+#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:524
 msgid "Customization|C"
 msgstr "Perubahan dan Pengaturan|h"
 
-#: lib/ui/classic.ui:415 lib/ui/stdmenus.inc:526
+#: lib/ui/classic.ui:415 lib/ui/stdmenus.inc:527
 msgid "LaTeX Configuration|L"
 msgstr "Konfigurasi LaTeX|L"
 
-#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:529
+#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:530
 msgid "About LyX|X"
 msgstr "Tentang LyX|X"
 
@@ -10273,27 +10314,27 @@ msgstr "Preferensi..."
 msgid "Quit LyX"
 msgstr "Keluar dari LyX"
 
-#: lib/ui/stdcontext.inc:22 lib/ui/stdmenus.inc:397
+#: lib/ui/stdcontext.inc:22 lib/ui/stdmenus.inc:398
 msgid "Aligned Environment|l"
 msgstr "Lingkungan Aligned|l"
 
-#: lib/ui/stdcontext.inc:23 lib/ui/stdmenus.inc:398
+#: lib/ui/stdcontext.inc:23 lib/ui/stdmenus.inc:399
 msgid "AlignedAt Environment|v"
 msgstr "Lingkungan AlignedAt"
 
-#: lib/ui/stdcontext.inc:24 lib/ui/stdmenus.inc:399
+#: lib/ui/stdcontext.inc:24 lib/ui/stdmenus.inc:400
 msgid "Gathered Environment|h"
 msgstr "Lingkungan Gathered|h"
 
-#: lib/ui/stdcontext.inc:27 lib/ui/stdmenus.inc:402
+#: lib/ui/stdcontext.inc:27 lib/ui/stdmenus.inc:403
 msgid "Delimiters...|r"
 msgstr "Tanda Kurung...|r"
 
-#: lib/ui/stdcontext.inc:28 lib/ui/stdmenus.inc:403
+#: lib/ui/stdcontext.inc:28 lib/ui/stdmenus.inc:404
 msgid "Matrix...|x"
 msgstr "Matriks..."
 
-#: lib/ui/stdcontext.inc:29 lib/ui/stdmenus.inc:404
+#: lib/ui/stdcontext.inc:29 lib/ui/stdmenus.inc:405
 msgid "Macro|o"
 msgstr "Makro|o"
 
@@ -10309,7 +10350,7 @@ msgstr "Label Rumus|L"
 msgid "Toggle Labeling/Numbering|T"
 msgstr "Pilihan Label/Nomor|o"
 
-#: lib/ui/stdcontext.inc:49 lib/ui/stdmenus.inc:202
+#: lib/ui/stdcontext.inc:49 lib/ui/stdmenus.inc:203
 msgid "Split Cell|C"
 msgstr "Memisah Sel|h"
 
@@ -10321,31 +10362,31 @@ msgstr "Sisipan|n"
 msgid "Add Line Above|o"
 msgstr "Tambah Garis Diatas|a"
 
-#: lib/ui/stdcontext.inc:54 lib/ui/stdmenus.inc:205
+#: lib/ui/stdcontext.inc:54 lib/ui/stdmenus.inc:206
 msgid "Add Line Below|B"
 msgstr "Tambah Garis Dibawah|b"
 
-#: lib/ui/stdcontext.inc:55 lib/ui/stdmenus.inc:206
+#: lib/ui/stdcontext.inc:55 lib/ui/stdmenus.inc:207
 msgid "Delete Line Above|D"
 msgstr "Hapus Garis Diatas|D"
 
-#: lib/ui/stdcontext.inc:56 lib/ui/stdmenus.inc:207
+#: lib/ui/stdcontext.inc:56 lib/ui/stdmenus.inc:208
 msgid "Delete Line Below|e"
 msgstr "Hapus Garis Dibawah|w"
 
-#: lib/ui/stdcontext.inc:58 lib/ui/stdmenus.inc:209
+#: lib/ui/stdcontext.inc:58 lib/ui/stdmenus.inc:210
 msgid "Add Line to Left"
 msgstr "Tambah Garis ke Kiri"
 
-#: lib/ui/stdcontext.inc:59 lib/ui/stdmenus.inc:210
+#: lib/ui/stdcontext.inc:59 lib/ui/stdmenus.inc:211
 msgid "Add Line to Right"
 msgstr "Tambah Garis ke Kanan"
 
-#: lib/ui/stdcontext.inc:60 lib/ui/stdmenus.inc:211
+#: lib/ui/stdcontext.inc:60 lib/ui/stdmenus.inc:212
 msgid "Delete Line to Left"
 msgstr "Hapus Garis ke Kiri"
 
-#: lib/ui/stdcontext.inc:61 lib/ui/stdmenus.inc:212
+#: lib/ui/stdcontext.inc:61 lib/ui/stdmenus.inc:213
 msgid "Delete Line to Right"
 msgstr "Hapus Garis ke Kanan"
 
@@ -10399,7 +10440,7 @@ msgstr "Referensi format lain|t"
 #: lib/ui/stdcontext.inc:196 lib/ui/stdcontext.inc:214
 #: lib/ui/stdcontext.inc:241 lib/ui/stdcontext.inc:323
 #: lib/ui/stdcontext.inc:331 lib/ui/stdcontext.inc:343
-#: lib/ui/stdcontext.inc:378 lib/ui/stdcontext.inc:387 lib/ui/stdmenus.inc:458
+#: lib/ui/stdcontext.inc:378 lib/ui/stdcontext.inc:387 lib/ui/stdmenus.inc:459
 msgid "Settings...|S"
 msgstr "Pengaturan...|a"
 
@@ -10467,7 +10508,7 @@ msgstr "Latar berwarna|w"
 msgid "Double frame|u"
 msgstr "Bingkai dua garis|s"
 
-#: lib/ui/stdcontext.inc:163 lib/ui/stdmenus.inc:432
+#: lib/ui/stdcontext.inc:163 lib/ui/stdmenus.inc:433
 msgid "LyX Note|N"
 msgstr "Nota LyX|N"
 
@@ -10475,7 +10516,7 @@ msgstr "Nota LyX|N"
 msgid "Comment|m"
 msgstr "Komentar|K"
 
-#: lib/ui/stdcontext.inc:165 lib/ui/stdmenus.inc:434
+#: lib/ui/stdcontext.inc:165 lib/ui/stdmenus.inc:435
 msgid "Greyed Out|G"
 msgstr "Nota Kelabu|b"
 
@@ -10611,27 +10652,27 @@ msgstr "Tipe Pemrograman|r"
 msgid "Edit included file...|E"
 msgstr "Sunting berkas ikutan...|b"
 
-#: lib/ui/stdcontext.inc:250 lib/ui/stdmenus.inc:378
+#: lib/ui/stdcontext.inc:250 lib/ui/stdmenus.inc:379
 msgid "New Page|N"
 msgstr "Halaman Baru|B"
 
-#: lib/ui/stdcontext.inc:251 lib/ui/stdmenus.inc:379
+#: lib/ui/stdcontext.inc:251 lib/ui/stdmenus.inc:380
 msgid "Page Break|a"
 msgstr "Pemisah Halaman|m"
 
-#: lib/ui/stdcontext.inc:252 lib/ui/stdmenus.inc:380
+#: lib/ui/stdcontext.inc:252 lib/ui/stdmenus.inc:381
 msgid "Clear Page|C"
 msgstr "Halaman Kosong|K"
 
-#: lib/ui/stdcontext.inc:253 lib/ui/stdmenus.inc:381
+#: lib/ui/stdcontext.inc:253 lib/ui/stdmenus.inc:382
 msgid "Clear Double Page|D"
 msgstr "Dua Halaman Kosong|D"
 
-#: lib/ui/stdcontext.inc:260 lib/ui/stdmenus.inc:375
+#: lib/ui/stdcontext.inc:260 lib/ui/stdmenus.inc:376
 msgid "Ragged Line Break|R"
 msgstr "Pemisah Ragged Line|e"
 
-#: lib/ui/stdcontext.inc:261 lib/ui/stdmenus.inc:376
+#: lib/ui/stdcontext.inc:261 lib/ui/stdmenus.inc:377
 msgid "Justified Line Break|J"
 msgstr "Pemisah Justified Line|J"
 
@@ -10705,47 +10746,47 @@ msgstr "Pengaturan Paragraf...|f"
 msgid "Fullscreen Mode"
 msgstr "Tampilan layar penuh"
 
-#: lib/ui/stdcontext.inc:296 lib/ui/stdmenus.inc:216
+#: lib/ui/stdcontext.inc:296 lib/ui/stdmenus.inc:217
 #: lib/ui/stdtoolbars.inc:172
 msgid "Append Argument"
 msgstr "Tambahkan argumen"
 
-#: lib/ui/stdcontext.inc:297 lib/ui/stdmenus.inc:217
+#: lib/ui/stdcontext.inc:297 lib/ui/stdmenus.inc:218
 #: lib/ui/stdtoolbars.inc:171
 msgid "Remove Last Argument"
 msgstr "Hapus argumen terakhir"
 
-#: lib/ui/stdcontext.inc:299 lib/ui/stdmenus.inc:219
+#: lib/ui/stdcontext.inc:299 lib/ui/stdmenus.inc:220
 #: lib/ui/stdtoolbars.inc:174
 msgid "Make First Non-Optional into Optional Argument"
 msgstr "Ubah Argumen Non-Optional Pertama menjadi Argumen Optional"
 
-#: lib/ui/stdcontext.inc:300 lib/ui/stdmenus.inc:220
+#: lib/ui/stdcontext.inc:300 lib/ui/stdmenus.inc:221
 #: lib/ui/stdtoolbars.inc:175
 msgid "Make Last Optional into Non-Optional Argument"
 msgstr "Ubah Argumen Optional Terakhir menjadi Argumen Non-Optional"
 
-#: lib/ui/stdcontext.inc:301 lib/ui/stdmenus.inc:221
+#: lib/ui/stdcontext.inc:301 lib/ui/stdmenus.inc:222
 #: lib/ui/stdtoolbars.inc:178
 msgid "Insert Optional Argument"
 msgstr "Sisipkan Argumen Optional"
 
-#: lib/ui/stdcontext.inc:302 lib/ui/stdmenus.inc:222
+#: lib/ui/stdcontext.inc:302 lib/ui/stdmenus.inc:223
 #: lib/ui/stdtoolbars.inc:177
 msgid "Remove Optional Argument"
 msgstr "Hapus Argumen Optional"
 
-#: lib/ui/stdcontext.inc:304 lib/ui/stdmenus.inc:224
+#: lib/ui/stdcontext.inc:304 lib/ui/stdmenus.inc:225
 #: lib/ui/stdtoolbars.inc:181
 msgid "Append Argument Eating From The Right"
 msgstr "Tambahkan Argumen yang diambil Dari Kanan"
 
-#: lib/ui/stdcontext.inc:305 lib/ui/stdmenus.inc:225
+#: lib/ui/stdcontext.inc:305 lib/ui/stdmenus.inc:226
 #: lib/ui/stdtoolbars.inc:182
 msgid "Append Optional Argument Eating From The Right"
 msgstr "Tambahkan Argumen Optional Yang Diambil Dari Kanan"
 
-#: lib/ui/stdcontext.inc:306 lib/ui/stdmenus.inc:226
+#: lib/ui/stdcontext.inc:306 lib/ui/stdmenus.inc:227
 #: lib/ui/stdtoolbars.inc:180
 msgid "Remove Last Argument Spitting Out To The Right"
 msgstr "Hapus Argumen Terakhir Yang Dikeluarkan Ke Kanan"
@@ -10754,27 +10795,27 @@ msgstr "Hapus Argumen Terakhir Yang Dikeluarkan Ke Kanan"
 msgid "Edit externally...|x"
 msgstr "Buka dengan program lain...|B"
 
-#: lib/ui/stdcontext.inc:355 lib/ui/stdmenus.inc:163
+#: lib/ui/stdcontext.inc:355 lib/ui/stdmenus.inc:164
 msgid "Top Line|T"
 msgstr "Garis Atas"
 
-#: lib/ui/stdcontext.inc:356 lib/ui/stdmenus.inc:164
+#: lib/ui/stdcontext.inc:356 lib/ui/stdmenus.inc:165
 msgid "Bottom Line|B"
 msgstr "Garis Bawah|B"
 
-#: lib/ui/stdcontext.inc:357 lib/ui/stdmenus.inc:165
+#: lib/ui/stdcontext.inc:357 lib/ui/stdmenus.inc:166
 msgid "Left Line|L"
 msgstr "Garis Kiri|i"
 
-#: lib/ui/stdcontext.inc:358 lib/ui/stdmenus.inc:166
+#: lib/ui/stdcontext.inc:358 lib/ui/stdmenus.inc:167
 msgid "Right Line|R"
 msgstr "Garis Kanan"
 
-#: lib/ui/stdcontext.inc:370 lib/ui/stdmenus.inc:181
+#: lib/ui/stdcontext.inc:370 lib/ui/stdmenus.inc:182
 msgid "Copy Row|o"
 msgstr "Salin Baris"
 
-#: lib/ui/stdcontext.inc:375 lib/ui/stdmenus.inc:186
+#: lib/ui/stdcontext.inc:375 lib/ui/stdmenus.inc:187
 msgid "Copy Column|p"
 msgstr "Salin kolom|o"
 
@@ -10866,387 +10907,392 @@ msgstr "Pengaturan Branch...|B"
 msgid "Box Settings...|x"
 msgstr "Pengaturan Box...|x"
 
-#: lib/ui/stdmenus.inc:127
+#: lib/ui/stdmenus.inc:124
+#, fuzzy
+msgid "Listings Settings...|g"
+msgstr "Pengaturan Listing"
+
+#: lib/ui/stdmenus.inc:128
 msgid "Table Settings...|a"
 msgstr "Pengaturan Tabel...|a"
 
-#: lib/ui/stdmenus.inc:131
+#: lib/ui/stdmenus.inc:132
 msgid "Plain Text|T"
 msgstr "Teks Biasa|T"
 
-#: lib/ui/stdmenus.inc:132
+#: lib/ui/stdmenus.inc:133
 msgid "Plain Text, Join Lines|J"
 msgstr "Teks Biasa, disambungkan|B"
 
-#: lib/ui/stdmenus.inc:134
+#: lib/ui/stdmenus.inc:135
 msgid "Selection|S"
 msgstr "Pilihan|P"
 
-#: lib/ui/stdmenus.inc:135
+#: lib/ui/stdmenus.inc:136
 msgid "Selection, Join Lines|i"
 msgstr "Pilihan, disambungkan|d"
 
-#: lib/ui/stdmenus.inc:137
+#: lib/ui/stdmenus.inc:138
 msgid "Paste As LinkBack PDF"
 msgstr "Tempel sebagai LinkBack PDF"
 
-#: lib/ui/stdmenus.inc:138
+#: lib/ui/stdmenus.inc:139
 msgid "Paste As PDF"
 msgstr "Tempel sebagai PDF"
 
-#: lib/ui/stdmenus.inc:139
+#: lib/ui/stdmenus.inc:140
 msgid "Paste As PNG"
 msgstr "Tempel sebagai PNG"
 
-#: lib/ui/stdmenus.inc:140
+#: lib/ui/stdmenus.inc:141
 msgid "Paste As JPEG"
 msgstr "Tempel sebagai JPEG"
 
-#: lib/ui/stdmenus.inc:148
+#: lib/ui/stdmenus.inc:149
 msgid "Dissolve CharStyle"
 msgstr "Hilangkan Corak Karakter"
 
-#: lib/ui/stdmenus.inc:152
+#: lib/ui/stdmenus.inc:153
 msgid "Customized...|C"
 msgstr "Pengaturan...|P"
 
-#: lib/ui/stdmenus.inc:154
+#: lib/ui/stdmenus.inc:155
 msgid "Capitalize|a"
 msgstr "Hurufbesar pertama|a"
 
-#: lib/ui/stdmenus.inc:155
+#: lib/ui/stdmenus.inc:156
 msgid "Uppercase|U"
 msgstr "Hurufbesar Semua|u"
 
-#: lib/ui/stdmenus.inc:156
+#: lib/ui/stdmenus.inc:157
 msgid "Lowercase|L"
 msgstr "Hurufkecil semua|l"
 
-#: lib/ui/stdmenus.inc:191
+#: lib/ui/stdmenus.inc:192
 msgid "Number whole Formula|N"
 msgstr "Rumus bernomor seluruhnya|n"
 
-#: lib/ui/stdmenus.inc:192
+#: lib/ui/stdmenus.inc:193
 msgid "Number this Line|u"
 msgstr "Rumus bernomor dibaris ini|u"
 
-#: lib/ui/stdmenus.inc:194
+#: lib/ui/stdmenus.inc:195
 msgid "Macro Definition"
 msgstr "Definisi Makro"
 
-#: lib/ui/stdmenus.inc:198
+#: lib/ui/stdmenus.inc:199
 msgid "Text Style|T"
 msgstr "Ubah ke Mode Teks|T"
 
-#: lib/ui/stdmenus.inc:204
+#: lib/ui/stdmenus.inc:205
 msgid "Add Line Above|A"
 msgstr "Tambah Garis Diatas|a"
 
-#: lib/ui/stdmenus.inc:236
+#: lib/ui/stdmenus.inc:237
 msgid "Math Normal Font|N"
 msgstr "Matematika Normal|N"
 
-#: lib/ui/stdmenus.inc:238
+#: lib/ui/stdmenus.inc:239
 msgid "Math Calligraphic Family|C"
 msgstr "Matematika Kaligrafi|K"
 
-#: lib/ui/stdmenus.inc:239
+#: lib/ui/stdmenus.inc:240
 msgid "Math Fraktur Family|F"
 msgstr "Matematika Fraktur|F"
 
-#: lib/ui/stdmenus.inc:240
+#: lib/ui/stdmenus.inc:241
 msgid "Math Roman Family|R"
 msgstr "Matematika Roman|R"
 
-#: lib/ui/stdmenus.inc:241
+#: lib/ui/stdmenus.inc:242
 msgid "Math Sans Serif Family|S"
 msgstr "Matematika Sans Serif|S"
 
-#: lib/ui/stdmenus.inc:243
+#: lib/ui/stdmenus.inc:244
 msgid "Math Bold Series|B"
 msgstr "Matematika Huruf Tebal|b"
 
-#: lib/ui/stdmenus.inc:245
+#: lib/ui/stdmenus.inc:246
 msgid "Text Normal Font|T"
 msgstr "Teks Normal|T"
 
-#: lib/ui/stdmenus.inc:261
+#: lib/ui/stdmenus.inc:262
 msgid "Octave|O"
 msgstr "Octave|O"
 
-#: lib/ui/stdmenus.inc:262
+#: lib/ui/stdmenus.inc:263
 msgid "Maxima|M"
 msgstr "Maxima|M"
 
-#: lib/ui/stdmenus.inc:263
+#: lib/ui/stdmenus.inc:264
 msgid "Mathematica|a"
 msgstr "Mathematica|a"
 
-#: lib/ui/stdmenus.inc:265
+#: lib/ui/stdmenus.inc:266
 msgid "Maple, simplify|s"
 msgstr "Maple, simplify|s"
 
-#: lib/ui/stdmenus.inc:266
+#: lib/ui/stdmenus.inc:267
 msgid "Maple, factor|f"
 msgstr "Maple, factor|f"
 
-#: lib/ui/stdmenus.inc:267
+#: lib/ui/stdmenus.inc:268
 msgid "Maple, evalm|e"
 msgstr "Maple, evalm|e"
 
-#: lib/ui/stdmenus.inc:268
+#: lib/ui/stdmenus.inc:269
 msgid "Maple, evalf|v"
 msgstr "Maple, evalf|v"
 
-#: lib/ui/stdmenus.inc:287
+#: lib/ui/stdmenus.inc:288
 msgid "Open All Insets|O"
 msgstr "Buka Semua Sisipan|B"
 
-#: lib/ui/stdmenus.inc:288
+#: lib/ui/stdmenus.inc:289
 msgid "Close All Insets|C"
 msgstr "Tutup Semua Sisipan|T"
 
-#: lib/ui/stdmenus.inc:290
+#: lib/ui/stdmenus.inc:291
 msgid "Unfold Math Macro"
 msgstr "Tampilkan Makro Matematika"
 
-#: lib/ui/stdmenus.inc:291
+#: lib/ui/stdmenus.inc:292
 msgid "Fold Math Macro"
 msgstr "Tutup Makro Matematika"
 
-#: lib/ui/stdmenus.inc:293
+#: lib/ui/stdmenus.inc:294
 msgid "View Source|S"
 msgstr "Tampilkan program LaTeX|X"
 
-#: lib/ui/stdmenus.inc:297
+#: lib/ui/stdmenus.inc:298
 msgid "Split View Into Left And Right Half|i"
 msgstr "Layar terpisah - Kiri dan Kanan|r"
 
-#: lib/ui/stdmenus.inc:298
+#: lib/ui/stdmenus.inc:299
 msgid "Split View Into Upper And Lower Half|V"
 msgstr "Layar terpisah - Atas dan Bawah|w"
 
-#: lib/ui/stdmenus.inc:299
+#: lib/ui/stdmenus.inc:300
 msgid "Close Tab Group|G"
 msgstr "Tutup Grup Tab|G"
 
-#: lib/ui/stdmenus.inc:300
+#: lib/ui/stdmenus.inc:301
 msgid "Fullscreen|l"
 msgstr "Layar Penuh|L"
 
-#: lib/ui/stdmenus.inc:301
+#: lib/ui/stdmenus.inc:302
 msgid "Toolbars|b"
 msgstr "Kotak alat bantu|K"
 
-#: lib/ui/stdmenus.inc:321
+#: lib/ui/stdmenus.inc:322
 msgid "Special Character|p"
 msgstr "Simbol/Karakter khusus|u"
 
-#: lib/ui/stdmenus.inc:322
+#: lib/ui/stdmenus.inc:323
 msgid "Formatting|o"
 msgstr "Hal-ihwal Format|o"
 
-#: lib/ui/stdmenus.inc:323
+#: lib/ui/stdmenus.inc:324
 msgid "List / TOC|i"
 msgstr "Daftar Isi|i"
 
-#: lib/ui/stdmenus.inc:324
+#: lib/ui/stdmenus.inc:325
 msgid "Float|a"
 msgstr "Obyek Float|F"
 
-#: lib/ui/stdmenus.inc:326
+#: lib/ui/stdmenus.inc:327
 msgid "Branch|B"
 msgstr "Branch|B"
 
-#: lib/ui/stdmenus.inc:327
+#: lib/ui/stdmenus.inc:328
 msgid "Custom insets"
 msgstr "Sisipan AturSendiri"
 
-#: lib/ui/stdmenus.inc:328
+#: lib/ui/stdmenus.inc:329
 msgid "File|e"
 msgstr "Berkas|e"
 
-#: lib/ui/stdmenus.inc:329
+#: lib/ui/stdmenus.inc:330
 msgid "Box[[Menu]]"
 msgstr "Kotak[[Menu]]"
 
-#: lib/ui/stdmenus.inc:332
+#: lib/ui/stdmenus.inc:333
 msgid "Cross-Reference...|R"
 msgstr "Referensi-Silang...|R"
 
-#: lib/ui/stdmenus.inc:334
+#: lib/ui/stdmenus.inc:335
 msgid "Caption"
 msgstr "Nama Gambar/Tabel"
 
-#: lib/ui/stdmenus.inc:335
+#: lib/ui/stdmenus.inc:336
 msgid "Index Entry|d"
 msgstr "Catat dalam Index|d"
 
-#: lib/ui/stdmenus.inc:336
+#: lib/ui/stdmenus.inc:337
 msgid "Nomenclature Entry...|y"
 msgstr "Catat dalam Nomenklatur..."
 
-#: lib/ui/stdmenus.inc:338
+#: lib/ui/stdmenus.inc:339
 msgid "Table...|T"
 msgstr "Tabel...|T"
 
-#: lib/ui/stdmenus.inc:341
+#: lib/ui/stdmenus.inc:342
 msgid "Hyperlink|k"
 msgstr "Hyperlink|y"
 
-#: lib/ui/stdmenus.inc:344
+#: lib/ui/stdmenus.inc:345
 msgid "Short Title|S"
 msgstr "Judul Singkat|J"
 
-#: lib/ui/stdmenus.inc:345
+#: lib/ui/stdmenus.inc:346
 msgid "TeX Code|X"
 msgstr "Perintah TeX|X"
 
-#: lib/ui/stdmenus.inc:346
+#: lib/ui/stdmenus.inc:347
 msgid "Program Listing[[Menu]]"
 msgstr "Pemrograman[[Menu]]"
 
-#: lib/ui/stdmenus.inc:354
+#: lib/ui/stdmenus.inc:355
 msgid "Ordinary Quote|Q"
 msgstr "Tanda Petik Biasa|P"
 
-#: lib/ui/stdmenus.inc:355
+#: lib/ui/stdmenus.inc:356
 msgid "Single Quote|S"
 msgstr "Tanda Petik Tunggal|T"
 
-#: lib/ui/stdmenus.inc:359
+#: lib/ui/stdmenus.inc:360
 msgid "Phonetic Symbols|P"
 msgstr "Simbol Fonetik|F"
 
-#: lib/ui/stdmenus.inc:366
+#: lib/ui/stdmenus.inc:367
 msgid "Protected Space|P"
 msgstr "Spasi Protected|r"
 
-#: lib/ui/stdmenus.inc:370
+#: lib/ui/stdmenus.inc:371
 msgid "Horizontal Line|L"
 msgstr "Garis Horisontal|G"
 
-#: lib/ui/stdmenus.inc:371
+#: lib/ui/stdmenus.inc:372
 msgid "Vertical Space...|V"
 msgstr "Spasi Vertikal...|V"
 
-#: lib/ui/stdmenus.inc:373
+#: lib/ui/stdmenus.inc:374
 msgid "Hyphenation Point|H"
 msgstr "Pemisah Sukukata|u"
 
-#: lib/ui/stdmenus.inc:387
+#: lib/ui/stdmenus.inc:388
 msgid "Numbered Formula|N"
 msgstr "Rumus Numbered|N"
 
-#: lib/ui/stdmenus.inc:410
+#: lib/ui/stdmenus.inc:411
 msgid "Figure Wrap Float|F"
 msgstr "Wrap Float - Gambar|G"
 
-#: lib/ui/stdmenus.inc:411
+#: lib/ui/stdmenus.inc:412
 msgid "Table Wrap Float|T"
 msgstr "Wrap Float - Tabel|T"
 
-#: lib/ui/stdmenus.inc:427
+#: lib/ui/stdmenus.inc:428
 msgid "External Material...|M"
 msgstr "Material Eksternal...|M"
 
-#: lib/ui/stdmenus.inc:428
+#: lib/ui/stdmenus.inc:429
 msgid "Child Document...|d"
 msgstr "Anak Dokumen...|A"
 
-#: lib/ui/stdmenus.inc:433
+#: lib/ui/stdmenus.inc:434
 msgid "Comment|C"
 msgstr "Komentar|K"
 
-#: lib/ui/stdmenus.inc:450
+#: lib/ui/stdmenus.inc:451
 msgid "Change Tracking|C"
 msgstr "Lacak Perubahan|u"
 
-#: lib/ui/stdmenus.inc:454
+#: lib/ui/stdmenus.inc:455
 msgid "Start Appendix Here|A"
 msgstr "Lampiran Mulai Disini|L"
 
-#: lib/ui/stdmenus.inc:456
+#: lib/ui/stdmenus.inc:457
 msgid "Save in Bundled Format|F"
 msgstr "Menyimpan Bundled Format|F"
 
-#: lib/ui/stdmenus.inc:457
+#: lib/ui/stdmenus.inc:458
 msgid "Compressed|m"
 msgstr "Pemampatan|m"
 
-#: lib/ui/stdmenus.inc:464
+#: lib/ui/stdmenus.inc:465
 msgid "Accept Change|A"
 msgstr "Terima Perubahan|T"
 
-#: lib/ui/stdmenus.inc:465
+#: lib/ui/stdmenus.inc:466
 msgid "Reject Change|R"
 msgstr "Tolak Perubahan|l"
 
-#: lib/ui/stdmenus.inc:466
+#: lib/ui/stdmenus.inc:467
 msgid "Accept All Changes|c"
 msgstr "Terima Semua Perubahan|S"
 
-#: lib/ui/stdmenus.inc:467
+#: lib/ui/stdmenus.inc:468
 msgid "Reject All Changes|e"
 msgstr "Tolak Semua Perubahan|k"
 
-#: lib/ui/stdmenus.inc:477
+#: lib/ui/stdmenus.inc:478
 msgid "Next Change|C"
 msgstr "Perubahan Selanjutnya|P"
 
-#: lib/ui/stdmenus.inc:478
+#: lib/ui/stdmenus.inc:479
 msgid "Next Cross-Reference|R"
 msgstr "Referensi-Silang Selanjutnya|R"
 
-#: lib/ui/stdmenus.inc:490
+#: lib/ui/stdmenus.inc:491
 msgid "Clear Bookmarks|C"
 msgstr "Hapus Semua Batas Buku|H"
 
-#: lib/ui/stdmenus.inc:501
+#: lib/ui/stdmenus.inc:502
 msgid "Thesaurus...|T"
 msgstr "Padanan Kata...|K"
 
-#: lib/ui/stdmenus.inc:502
+#: lib/ui/stdmenus.inc:503
 msgid "Statistics...|a"
 msgstr "Statistik...|a"
 
-#: lib/ui/stdmenus.inc:504
+#: lib/ui/stdmenus.inc:505
 msgid "TeX Information|I"
 msgstr "Informasi TeX|I"
 
-#: lib/ui/stdmenus.inc:520
+#: lib/ui/stdmenus.inc:521
 msgid "Additional Features|F"
 msgstr "Fitur Tambahan|F"
 
-#: lib/ui/stdmenus.inc:521
+#: lib/ui/stdmenus.inc:522
 msgid "Embedded Objects|O"
 msgstr "Obyek Tempelan|O"
 
-#: lib/ui/stdmenus.inc:524
+#: lib/ui/stdmenus.inc:525
 msgid "Shortcuts|S"
 msgstr "Cara Pintas|C"
 
-#: lib/ui/stdmenus.inc:525
+#: lib/ui/stdmenus.inc:526
 msgid "LyX Functions|y"
 msgstr "Fungsi di LyX|y"
 
-#: lib/ui/stdmenus.inc:527
+#: lib/ui/stdmenus.inc:528
 msgid "Specific Manuals|p"
 msgstr "Petunjuk Penggunaan Khusus|K"
 
-#: lib/ui/stdmenus.inc:533
+#: lib/ui/stdmenus.inc:534
 msgid "Linguistics Manual|L"
 msgstr "Petunjuk Penggunaan  Linguistik|L"
 
-#: lib/ui/stdmenus.inc:534
+#: lib/ui/stdmenus.inc:535
 msgid "Braille Manual|B"
 msgstr "Petunjuk Penggunaan Braille|B"
 
-#: lib/ui/stdmenus.inc:535
+#: lib/ui/stdmenus.inc:536
 msgid "XY-pic Manual|X"
 msgstr "Petunjuk Penggunaan XY-pic|X"
 
-#: lib/ui/stdmenus.inc:536
+#: lib/ui/stdmenus.inc:537
 msgid "Multicolumn Manual|M"
 msgstr "Petunjuk Penggunaan Multikolom|M"
 
@@ -11270,11 +11316,11 @@ msgstr "Cetak dokumen"
 msgid "Check spelling"
 msgstr "Periksa ejaan"
 
-#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:1050
+#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:1061
 msgid "Undo"
 msgstr "Batalkan"
 
-#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:1059
+#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:1070
 msgid "Redo"
 msgstr "Kembalikan"
 
@@ -14328,12 +14374,12 @@ msgstr "\\begin_header tidak ada"
 msgid "\\begin_document is missing"
 msgstr "\\begin_document tidak ada"
 
-#: src/Buffer.cpp:568 src/Buffer.cpp:574 src/BufferView.cpp:1169
-#: src/BufferView.cpp:1175
+#: src/Buffer.cpp:568 src/Buffer.cpp:574 src/BufferView.cpp:1180
+#: src/BufferView.cpp:1186
 msgid "Changes not shown in LaTeX output"
 msgstr "Perubahan tidak dimunculkan di output LaTeX"
 
-#: src/Buffer.cpp:569 src/BufferView.cpp:1170
+#: src/Buffer.cpp:569 src/BufferView.cpp:1181
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -14345,7 +14391,7 @@ msgstr ""
 "Silahkan paket tersebut diinstal terlebih dahulu atau definisikan \\lyxadded "
 "dan \\lyxdeleted dalam LaTeX preamble."
 
-#: src/Buffer.cpp:575 src/BufferView.cpp:1176
+#: src/Buffer.cpp:575 src/BufferView.cpp:1187
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -14437,7 +14483,7 @@ msgstr ""
 msgid "Overwrite modified file?"
 msgstr "Tindih berkas yang diubah?"
 
-#: src/Buffer.cpp:862 src/Exporter.cpp:49 src/LyXFunc.cpp:1017
+#: src/Buffer.cpp:862 src/Exporter.cpp:49 src/LyXFunc.cpp:1026
 #: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1531
 #: src/frontends/qt4/GuiView.cpp:1718
 msgid "&Overwrite"
@@ -14695,12 +14741,12 @@ msgstr ""
 msgid "Document class not found"
 msgstr "Dokumen class tidak ditemukan"
 
-#: src/BufferParams.cpp:1659 src/LyXFunc.cpp:735
+#: src/BufferParams.cpp:1659 src/LyXFunc.cpp:744
 #, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr "Dokumen class  %1$s tidak bisa dimuat."
 
-#: src/BufferParams.cpp:1661 src/LyXFunc.cpp:737
+#: src/BufferParams.cpp:1661 src/LyXFunc.cpp:746
 msgid "Could not load class"
 msgstr "Tidak bisa memuat dokumen class"
 
@@ -14761,89 +14807,89 @@ msgstr "Tidak ada lagi sisipan"
 msgid "Save bookmark"
 msgstr "Simpan batas buku"
 
-#: src/BufferView.cpp:1053
+#: src/BufferView.cpp:1064
 msgid "No further undo information"
 msgstr "Sudah tidak ada lagi informasi Batalkan"
 
-#: src/BufferView.cpp:1062
+#: src/BufferView.cpp:1073
 msgid "No further redo information"
 msgstr "Sudah tidak ada lagi informasi Kembalikan"
 
-#: src/BufferView.cpp:1231 src/lyxfind.cpp:295 src/lyxfind.cpp:313
+#: src/BufferView.cpp:1242 src/lyxfind.cpp:295 src/lyxfind.cpp:313
 msgid "String not found!"
 msgstr "String tidak ditemukan!"
 
-#: src/BufferView.cpp:1255
+#: src/BufferView.cpp:1266
 msgid "Mark off"
 msgstr "Tanda hilang"
 
-#: src/BufferView.cpp:1262
+#: src/BufferView.cpp:1273
 msgid "Mark on"
 msgstr "Tanda on"
 
-#: src/BufferView.cpp:1269
+#: src/BufferView.cpp:1280
 msgid "Mark removed"
 msgstr "Tanda dihilangkan"
 
-#: src/BufferView.cpp:1272
+#: src/BufferView.cpp:1283
 msgid "Mark set"
 msgstr "Beri Tanda"
 
-#: src/BufferView.cpp:1319
+#: src/BufferView.cpp:1334
 msgid "Statistics for the selection:"
 msgstr "Data statistik pilihan:"
 
-#: src/BufferView.cpp:1321
+#: src/BufferView.cpp:1336
 msgid "Statistics for the document:"
 msgstr "Data statistik dokumen:"
 
-#: src/BufferView.cpp:1324
+#: src/BufferView.cpp:1339
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d kata"
 
-#: src/BufferView.cpp:1326
+#: src/BufferView.cpp:1341
 msgid "One word"
 msgstr "Satu kata"
 
-#: src/BufferView.cpp:1329
+#: src/BufferView.cpp:1344
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d karakter (termasuk spasi)"
 
-#: src/BufferView.cpp:1332
+#: src/BufferView.cpp:1347
 msgid "One character (including blanks)"
 msgstr "Satu karakter (termasuk spasi)"
 
-#: src/BufferView.cpp:1335
+#: src/BufferView.cpp:1350
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d karakter (tidak termasuk spasi)"
 
-#: src/BufferView.cpp:1338
+#: src/BufferView.cpp:1353
 msgid "One character (excluding blanks)"
 msgstr "Satu karakter (tidak termasuk spasi)"
 
-#: src/BufferView.cpp:1340
+#: src/BufferView.cpp:1355
 msgid "Statistics"
 msgstr "Statistik"
 
-#: src/BufferView.cpp:2107
+#: src/BufferView.cpp:2129
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Memasukkan dokumen %1$s..."
 
-#: src/BufferView.cpp:2118
+#: src/BufferView.cpp:2140
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Documen %1$s dimasukkan."
 
-#: src/BufferView.cpp:2120
+#: src/BufferView.cpp:2142
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Tidak dapat memasukkan dokumen %1$s"
 
-#: src/BufferView.cpp:2359
+#: src/BufferView.cpp:2381
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -14854,11 +14900,11 @@ msgstr ""
 "%1$s\n"
 "karena kesalahan: %2$s"
 
-#: src/BufferView.cpp:2361
+#: src/BufferView.cpp:2383
 msgid "Could not read file"
 msgstr "Tidak dapat membaca berkas"
 
-#: src/BufferView.cpp:2368
+#: src/BufferView.cpp:2390
 #, c-format
 msgid ""
 "%1$s\n"
@@ -14867,15 +14913,15 @@ msgstr ""
 "%1$s\n"
 "tidak bisa dibaca."
 
-#: src/BufferView.cpp:2369 src/output.cpp:39
+#: src/BufferView.cpp:2391 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Tidak bisa membuka berkas"
 
-#: src/BufferView.cpp:2376
+#: src/BufferView.cpp:2398
 msgid "Reading not UTF-8 encoded file"
 msgstr "Membaca berkas not UTF-8 encoded"
 
-#: src/BufferView.cpp:2377
+#: src/BufferView.cpp:2399
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -15303,7 +15349,7 @@ msgstr ""
 msgid "Undefined flex inset"
 msgstr "Sisipan flex tidak terdefinisi"
 
-#: src/Exporter.cpp:44 src/LyXFunc.cpp:1013
+#: src/Exporter.cpp:44 src/LyXFunc.cpp:1022
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -15314,7 +15360,7 @@ msgstr ""
 "\n"
 "Apakah berkas tersebut akan ditindih?"
 
-#: src/Exporter.cpp:47 src/LyXFunc.cpp:1016
+#: src/Exporter.cpp:47 src/LyXFunc.cpp:1025
 msgid "Overwrite file?"
 msgstr "Berkas ditindih?"
 
@@ -15813,7 +15859,7 @@ msgstr "Dokumen hanya boleh dibaca"
 msgid "This portion of the document is deleted."
 msgstr "Bagian ini dari dokumen dihapus."
 
-#: src/LyXFunc.cpp:699
+#: src/LyXFunc.cpp:702
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -15824,11 +15870,27 @@ msgstr ""
 "\n"
 "Apakah ingin menyimpan terlebih dahulu?"
 
-#: src/LyXFunc.cpp:702 src/frontends/qt4/GuiView.cpp:1822
+#: src/LyXFunc.cpp:705 src/frontends/qt4/GuiView.cpp:1822
 msgid "Save changed document?"
 msgstr "Perubahan dokumen disimpan?"
 
-#: src/LyXFunc.cpp:717
+#: src/LyXFunc.cpp:708
+#, fuzzy, c-format
+msgid ""
+"The document %1$s has not been saved yet.\n"
+"\n"
+"Do you want to save the document?"
+msgstr ""
+"Dokumen %1$s ada perubahan.\n"
+"\n"
+"Apakah ingin menyimpan terlebih dahulu?"
+
+#: src/LyXFunc.cpp:711
+#, fuzzy
+msgid "Save new document?"
+msgstr "Perubahan dokumen disimpan?"
+
+#: src/LyXFunc.cpp:726
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
@@ -15837,11 +15899,11 @@ msgstr ""
 "Tidak bisa mencetak dokumen %1$s.\n"
 "Periksa mesin cetak di set secara benar."
 
-#: src/LyXFunc.cpp:720
+#: src/LyXFunc.cpp:729
 msgid "Print document failed"
 msgstr "Tidak berhasil mencetak dokumen"
 
-#: src/LyXFunc.cpp:840
+#: src/LyXFunc.cpp:849
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -15850,60 +15912,60 @@ msgstr ""
 "Semua peruubahan akan hilang. Apakah anda yakin untuk mengembalikan ke versi "
 "dokumen yang disimpan sebelumnya %1$s?"
 
-#: src/LyXFunc.cpp:842
+#: src/LyXFunc.cpp:851
 msgid "Revert to saved document?"
 msgstr "Mengembalikan ke dokumen yang disimpan"
 
-#: src/LyXFunc.cpp:843 src/LyXVC.cpp:181
+#: src/LyXFunc.cpp:852 src/LyXVC.cpp:182
 msgid "&Revert"
 msgstr "&Kembalikan"
 
-#: src/LyXFunc.cpp:1054 src/Text3.cpp:1546
+#: src/LyXFunc.cpp:1063 src/Text3.cpp:1546
 msgid "Missing argument"
 msgstr "Argumen kurang"
 
-#: src/LyXFunc.cpp:1066
+#: src/LyXFunc.cpp:1075
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Membuka berkas bantuan %1$s..."
 
-#: src/LyXFunc.cpp:1310
+#: src/LyXFunc.cpp:1319
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "Membuka anak dokumen  %1$s..."
 
-#: src/LyXFunc.cpp:1472
+#: src/LyXFunc.cpp:1481
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Default dokumen disimpan di %1$s"
 
-#: src/LyXFunc.cpp:1475
+#: src/LyXFunc.cpp:1484
 msgid "Unable to save document defaults"
 msgstr "Tidak dapat menyimpan dokumen default"
 
-#: src/LyXFunc.cpp:1619 src/LyXVC.cpp:150
+#: src/LyXFunc.cpp:1628 src/LyXVC.cpp:151
 msgid "LyX VC: Log Message"
 msgstr "LyX KV: Catatan Pesan"
 
-#: src/LyXFunc.cpp:1628
+#: src/LyXFunc.cpp:1637
 msgid "Directory is not accessible."
 msgstr "Direktori ditak bisa diakses"
 
-#: src/LyXFunc.cpp:1813
+#: src/LyXFunc.cpp:1822
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokumen %1$s dimuat ulang."
 
-#: src/LyXFunc.cpp:1815
+#: src/LyXFunc.cpp:1824
 #, c-format
 msgid "Could not reload document %1$s"
 msgstr "Tidak bisa memuat ulang dokumen %1$s"
 
-#: src/LyXFunc.cpp:1852
+#: src/LyXFunc.cpp:1861
 msgid "Welcome to LyX!"
 msgstr "Selamat Datang di LyX!"
 
-#: src/LyXFunc.cpp:1873
+#: src/LyXFunc.cpp:1882
 msgid "Converting document to new document class..."
 msgstr "Mengkonversi dokumen ke class dokumen baru..."
 
@@ -16497,11 +16559,11 @@ msgstr "KV: Deskripsi awal"
 msgid "(no initial description)"
 msgstr "(tidak ada deskripsi awal)"
 
-#: src/LyXVC.cpp:153
+#: src/LyXVC.cpp:154
 msgid "(no log message)"
 msgstr "(tidak ada catatan log)"
 
-#: src/LyXVC.cpp:177
+#: src/LyXVC.cpp:178
 #, c-format
 msgid ""
 "Reverting to the stored version of the document %1$s will lose all current "
@@ -16514,7 +16576,7 @@ msgstr ""
 "\n"
 "Apakah ingin memanggil versi terdahulu?"
 
-#: src/LyXVC.cpp:180
+#: src/LyXVC.cpp:181
 msgid "Revert to stored version of document?"
 msgstr "Memanggil versi yang disimpan dari dokumen?"
 
@@ -17011,7 +17073,7 @@ msgid "About %1"
 msgstr "Tentang %1"
 
 #: src/frontends/qt4/GuiApplication.cpp:416
-#: src/frontends/qt4/GuiPrefs.cpp:2581
+#: src/frontends/qt4/GuiPrefs.cpp:2582
 msgid "Preferences"
 msgstr "Preferensi"
 
@@ -17815,7 +17877,7 @@ msgstr "Pilih berkas eksternal"
 msgid "Float Settings"
 msgstr "Pengaturan Float"
 
-#: src/frontends/qt4/GuiGraphics.cpp:154 src/frontends/qt4/GuiPrefs.cpp:911
+#: src/frontends/qt4/GuiGraphics.cpp:154 src/frontends/qt4/GuiPrefs.cpp:912
 msgid "Graphics"
 msgstr "Gambar"
 
@@ -18139,155 +18201,155 @@ msgstr "Cara Melengkapi"
 msgid "Screen fonts"
 msgstr "Huruf di layar"
 
-#: src/frontends/qt4/GuiPrefs.cpp:812
+#: src/frontends/qt4/GuiPrefs.cpp:813
 msgid "Colors"
 msgstr "Warna"
 
-#: src/frontends/qt4/GuiPrefs.cpp:965
+#: src/frontends/qt4/GuiPrefs.cpp:966
 msgid "Paths"
 msgstr "Direktori dan Folder"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1020
+#: src/frontends/qt4/GuiPrefs.cpp:1021
 msgid "Select directory for example files"
 msgstr "Pilih direktori untuk berkas contoh"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1029
+#: src/frontends/qt4/GuiPrefs.cpp:1030
 msgid "Select a document templates directory"
 msgstr "Pilih direktori untuk templet dokumen"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1038
+#: src/frontends/qt4/GuiPrefs.cpp:1039
 msgid "Select a temporary directory"
 msgstr "Pilih direktori sementara"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1047
+#: src/frontends/qt4/GuiPrefs.cpp:1048
 msgid "Select a backups directory"
 msgstr "Pilih direktori untuk berkas backup"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1056
+#: src/frontends/qt4/GuiPrefs.cpp:1057
 msgid "Select a document directory"
 msgstr "Pilih direktori untuk menyimpan dokumen"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1065
+#: src/frontends/qt4/GuiPrefs.cpp:1066
 msgid "Give a filename for the LyX server pipe"
 msgstr "Berilah nama berkas untuk pipa LyX server"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1078
+#: src/frontends/qt4/GuiPrefs.cpp:1079
 #: src/frontends/qt4/GuiSpellchecker.cpp:57
 msgid "Spellchecker"
 msgstr "Koreksi ejaan"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1100
+#: src/frontends/qt4/GuiPrefs.cpp:1101
 msgid "ispell"
 msgstr "ispell"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1101
+#: src/frontends/qt4/GuiPrefs.cpp:1102
 msgid "aspell"
 msgstr "aspell"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1102
+#: src/frontends/qt4/GuiPrefs.cpp:1103
 msgid "hspell"
 msgstr "hspell"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1104
+#: src/frontends/qt4/GuiPrefs.cpp:1105
 msgid "pspell (library)"
 msgstr "pspell (perpustakaan)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1107
+#: src/frontends/qt4/GuiPrefs.cpp:1108
 msgid "aspell (library)"
 msgstr "aspell (perpustakaan)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1187
+#: src/frontends/qt4/GuiPrefs.cpp:1188
 msgid "Converters"
 msgstr "Pengkonversi"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1492
+#: src/frontends/qt4/GuiPrefs.cpp:1493
 msgid "File formats"
 msgstr "Berbagai format berkas"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1690
+#: src/frontends/qt4/GuiPrefs.cpp:1691
 msgid "Format in use"
 msgstr "Format yang digunakan"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1691
+#: src/frontends/qt4/GuiPrefs.cpp:1692
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 "Tidak bisa menghapus Format yang dibuat oleh suatu konverter. Hapus "
 "konverternya dahulu."
 
-#: src/frontends/qt4/GuiPrefs.cpp:1765
+#: src/frontends/qt4/GuiPrefs.cpp:1766
 msgid "LyX needs to be restarted!"
 msgstr "LyX perlu di restart"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1766
+#: src/frontends/qt4/GuiPrefs.cpp:1767
 msgid ""
 "The change of user interface language will be fully effective only after a "
 "restart."
 msgstr ""
 "Perubahan bahsa antarmuka user (UI) akan efektif sepenuhnya setelah restart."
 
-#: src/frontends/qt4/GuiPrefs.cpp:1824
+#: src/frontends/qt4/GuiPrefs.cpp:1825
 msgid "Printer"
 msgstr "Mesin Cetak"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1922 src/frontends/qt4/GuiPrefs.cpp:2621
+#: src/frontends/qt4/GuiPrefs.cpp:1923 src/frontends/qt4/GuiPrefs.cpp:2622
 msgid "User interface"
 msgstr "Sistem Antarmuka"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2008
+#: src/frontends/qt4/GuiPrefs.cpp:2009
 msgid "Control"
 msgstr "Kontrol"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2080
+#: src/frontends/qt4/GuiPrefs.cpp:2081
 msgid "Shortcuts"
 msgstr "Cara pintas"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2085
+#: src/frontends/qt4/GuiPrefs.cpp:2086
 msgid "Function"
 msgstr "Fungsi"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2086
+#: src/frontends/qt4/GuiPrefs.cpp:2087
 msgid "Shortcut"
 msgstr "Cara Pintas"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2167
+#: src/frontends/qt4/GuiPrefs.cpp:2168
 msgid "Cursor, Mouse and Editing functions"
 msgstr "Kursor, Tetikus dan fungsi-fungsi untuk mengedit"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2171
+#: src/frontends/qt4/GuiPrefs.cpp:2172
 msgid "Mathematical Symbols"
 msgstr "Simbol-simbol matematika"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2175
+#: src/frontends/qt4/GuiPrefs.cpp:2176
 msgid "Document and Window"
 msgstr "Dokumen dan Jendela"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2179
+#: src/frontends/qt4/GuiPrefs.cpp:2180
 msgid "Font, Layouts and Textclasses"
 msgstr "Huruf, Layout dan Class Teks"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2183
+#: src/frontends/qt4/GuiPrefs.cpp:2184
 msgid "System and Miscellaneous"
 msgstr "Sistem dan Ruparupa"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2310 src/frontends/qt4/GuiPrefs.cpp:2356
+#: src/frontends/qt4/GuiPrefs.cpp:2311 src/frontends/qt4/GuiPrefs.cpp:2357
 msgid "Res&tore"
 msgstr "Res&tore"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2466 src/frontends/qt4/GuiPrefs.cpp:2473
-#: src/frontends/qt4/GuiPrefs.cpp:2484 src/frontends/qt4/GuiPrefs.cpp:2497
-#: src/frontends/qt4/GuiPrefs.cpp:2516
+#: src/frontends/qt4/GuiPrefs.cpp:2467 src/frontends/qt4/GuiPrefs.cpp:2474
+#: src/frontends/qt4/GuiPrefs.cpp:2485 src/frontends/qt4/GuiPrefs.cpp:2498
+#: src/frontends/qt4/GuiPrefs.cpp:2517
 msgid "Failed to create shortcut"
 msgstr "Gagal membuat cara pintas baru"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2467
+#: src/frontends/qt4/GuiPrefs.cpp:2468
 msgid "Unknown or invalid LyX function"
 msgstr "Fungsi LyX tidak dikenal atai tidak valid"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2474
+#: src/frontends/qt4/GuiPrefs.cpp:2475
 msgid "Invalid or empty key sequence"
 msgstr "Tidak valid atau menggunakan kunci yang kosong"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2485
+#: src/frontends/qt4/GuiPrefs.cpp:2486
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to:\n"
@@ -18296,7 +18358,7 @@ msgstr ""
 "Cara pintas `%1$s' sudah digunakan untuk:\n"
 "%2$s"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2498
+#: src/frontends/qt4/GuiPrefs.cpp:2499
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to:\n"
@@ -18307,47 +18369,47 @@ msgstr ""
 "%2$s\n"
 "Anda perlu menghabus berkas kaitan sebelum membuat baru."
 
-#: src/frontends/qt4/GuiPrefs.cpp:2517
+#: src/frontends/qt4/GuiPrefs.cpp:2518
 msgid "Can not insert shortcut to the list"
 msgstr "Tidak bisa memasukkan cara pintas dalam daftar"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2548
+#: src/frontends/qt4/GuiPrefs.cpp:2549
 msgid "Identity"
 msgstr "Identitas"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2745
+#: src/frontends/qt4/GuiPrefs.cpp:2746
 msgid "Choose bind file"
 msgstr "Pilih berkas kaitan"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2746
+#: src/frontends/qt4/GuiPrefs.cpp:2747
 msgid "LyX bind files (*.bind)"
 msgstr "Berkas kaitan LyX (*.bind)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2752
+#: src/frontends/qt4/GuiPrefs.cpp:2753
 msgid "Choose UI file"
 msgstr "Pilih berkas UI"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2753
+#: src/frontends/qt4/GuiPrefs.cpp:2754
 msgid "LyX UI files (*.ui)"
 msgstr "Berkas LyX UI (*.ui)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2759
+#: src/frontends/qt4/GuiPrefs.cpp:2760
 msgid "Choose keyboard map"
 msgstr "Pilih peta papanketik"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2760
+#: src/frontends/qt4/GuiPrefs.cpp:2761
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "Peta papanketik LyX (*.kmap)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2766
+#: src/frontends/qt4/GuiPrefs.cpp:2767
 msgid "Choose personal dictionary"
 msgstr "Pilihlah kamus pribadi"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2767
+#: src/frontends/qt4/GuiPrefs.cpp:2768
 msgid "*.pws"
 msgstr "*.pws"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2767
+#: src/frontends/qt4/GuiPrefs.cpp:2768
 msgid "*.ispell"
 msgstr "*.ispell"
 
@@ -19045,57 +19107,62 @@ msgstr ""
 msgid "&Discard"
 msgstr "&Tidak Perlu"
 
-#: src/frontends/qt4/GuiView.cpp:1947
+#: src/frontends/qt4/GuiView.cpp:1895
+#, fuzzy
+msgid "Document not loaded"
+msgstr "Dokumen belum diunduh"
+
+#: src/frontends/qt4/GuiView.cpp:1953
 msgid "Saving all documents..."
 msgstr "Sedang menyimpan semua dokumen..."
 
-#: src/frontends/qt4/GuiView.cpp:1957
+#: src/frontends/qt4/GuiView.cpp:1963
 msgid "All documents saved."
 msgstr "Semua dokumen sudah tersimpan."
 
-#: src/frontends/qt4/GuiView.cpp:2185
+#: src/frontends/qt4/GuiView.cpp:2191
 #, c-format
 msgid "%1$s unknown command!"
 msgstr "%1$s perintah tidak dikenal!"
 
-#: src/frontends/qt4/GuiViewSource.cpp:157
-#: src/frontends/qt4/GuiViewSource.cpp:199
+#: src/frontends/qt4/GuiViewSource.cpp:160
+#: src/frontends/qt4/GuiViewSource.cpp:202
 msgid "LaTeX Source"
 msgstr "Program LaTeX"
 
-#: src/frontends/qt4/GuiViewSource.cpp:201
+#: src/frontends/qt4/GuiViewSource.cpp:204
 msgid "DocBook Source"
 msgstr "Sumber DocBook"
 
-#: src/frontends/qt4/GuiViewSource.cpp:203
+#: src/frontends/qt4/GuiViewSource.cpp:206
 msgid "Literate Source"
 msgstr "Sumber Literate"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1134
+#: src/frontends/qt4/GuiWorkArea.cpp:1130
 msgid " (version control)"
 msgstr " (kontrol versil)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1136
+#: src/frontends/qt4/GuiWorkArea.cpp:1132
 msgid " (version control, locking)"
 msgstr " (kontrol versi, terkunci)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1139
+#: src/frontends/qt4/GuiWorkArea.cpp:1135
 msgid " (changed)"
 msgstr " (ada perubahan)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1143
+#: src/frontends/qt4/GuiWorkArea.cpp:1139
 msgid " (read only)"
 msgstr " (hanya bisa dibaca)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1230
+#: src/frontends/qt4/GuiWorkArea.cpp:1226
 msgid "Close File"
 msgstr "Tutup Berkas"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1629
+#: src/frontends/qt4/GuiWorkArea.cpp:1625
 msgid "Hide tab"
 msgstr "Sembunyikan Tab"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1631
+#: src/frontends/qt4/GuiWorkArea.cpp:1627
 msgid "Close tab"
 msgstr "Tutup Tab"
 
@@ -19107,54 +19174,54 @@ msgstr "Pengaturan Wrap Float"
 msgid "Click to detach"
 msgstr "Klik untuk melepaskan"
 
-#: src/frontends/qt4/Menus.cpp:649
+#: src/frontends/qt4/Menus.cpp:647
 msgid "No Group"
 msgstr "Tidak Ada Grup"
 
-#: src/frontends/qt4/Menus.cpp:694
+#: src/frontends/qt4/Menus.cpp:692
 msgid "No Documents Open!"
 msgstr "Tidak ada dokumen dibuka !"
 
-#: src/frontends/qt4/Menus.cpp:720 src/frontends/qt4/Menus.cpp:799
-#: src/frontends/qt4/Menus.cpp:819 src/frontends/qt4/Menus.cpp:841
-#: src/frontends/qt4/Menus.cpp:929 src/frontends/qt4/Menus.cpp:1035
-#: src/frontends/qt4/Menus.cpp:1068
+#: src/frontends/qt4/Menus.cpp:718 src/frontends/qt4/Menus.cpp:797
+#: src/frontends/qt4/Menus.cpp:817 src/frontends/qt4/Menus.cpp:839
+#: src/frontends/qt4/Menus.cpp:927 src/frontends/qt4/Menus.cpp:1033
+#: src/frontends/qt4/Menus.cpp:1066
 msgid "No Document Open!"
 msgstr "Tidak ada berkas !"
 
-#: src/frontends/qt4/Menus.cpp:860
+#: src/frontends/qt4/Menus.cpp:858
 msgid "No custom insets defined!"
 msgstr "Tidak ada sisipan yang didefinisikan!"
 
-#: src/frontends/qt4/Menus.cpp:940
+#: src/frontends/qt4/Menus.cpp:938
 msgid "Master Document"
 msgstr "Dokumen Utama"
 
-#: src/frontends/qt4/Menus.cpp:957
+#: src/frontends/qt4/Menus.cpp:955
 msgid "Open Navigator..."
 msgstr "Buka Navigator..."
 
-#: src/frontends/qt4/Menus.cpp:978
+#: src/frontends/qt4/Menus.cpp:976
 msgid "Other Lists"
 msgstr "Daftar Lainnya"
 
-#: src/frontends/qt4/Menus.cpp:987
+#: src/frontends/qt4/Menus.cpp:985
 msgid "No Table of contents"
 msgstr "Tidak ada Daftar Isi"
 
-#: src/frontends/qt4/Menus.cpp:1024
+#: src/frontends/qt4/Menus.cpp:1022
 msgid "Other Toolbars"
 msgstr "Kotak Bantuan Lain"
 
-#: src/frontends/qt4/Menus.cpp:1043
+#: src/frontends/qt4/Menus.cpp:1041
 msgid "No Branch in Document!"
 msgstr "Tidak ada Branch dalam Dokumen!"
 
-#: src/frontends/qt4/Menus.cpp:1076
+#: src/frontends/qt4/Menus.cpp:1074
 msgid "No Citation in Scope!"
 msgstr "Tidak Ada Acuan di Scope!"
 
-#: src/frontends/qt4/Menus.cpp:1617
+#: src/frontends/qt4/Menus.cpp:1616
 msgid "No action defined!"
 msgstr "Tidak ada pengaturan disini!"
 
@@ -20417,6 +20484,18 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Pemakai tidak dikenal"
+
+#~ msgid "B&rowse..."
+#~ msgstr "C&ari..."
+
+#~ msgid "Number of Co&pies:"
+#~ msgstr "&Jumlah salinan:"
+
+#~ msgid "Sa&ns Serif:"
+#~ msgstr "Sa&ns Serif:"
+
+#~ msgid "Ne&w"
+#~ msgstr "Bar&u"
 
 #~ msgid "Add row "
 #~ msgstr "Sisipkan Baris"
