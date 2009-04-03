@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-04-03 12:10+0200\n"
+"POT-Creation-Date: 2009-04-03 13:11+0200\n"
 "PO-Revision-Date: 2009-03-28 01:39+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@lyx.org>\n"
 "Language-Team: italiano <it@li.org>\n"
@@ -18058,7 +18058,7 @@ msgstr "Riempimento orizzontale"
 msgid "Hyperlink"
 msgstr "Ipercollegamento"
 
-#: src/frontends/qt4/GuiInclude.cpp:48
+#: src/frontends/qt4/GuiInclude.cpp:48 src/frontends/qt4/Menus.cpp:1082
 msgid "Child Document"
 msgstr "Documento figlio"
 
@@ -19236,7 +19236,7 @@ msgstr "Nessun documento aperto!"
 #: src/frontends/qt4/Menus.cpp:718 src/frontends/qt4/Menus.cpp:797
 #: src/frontends/qt4/Menus.cpp:817 src/frontends/qt4/Menus.cpp:839
 #: src/frontends/qt4/Menus.cpp:927 src/frontends/qt4/Menus.cpp:1033
-#: src/frontends/qt4/Menus.cpp:1066
+#: src/frontends/qt4/Menus.cpp:1093
 msgid "No Document Open!"
 msgstr "Nessun documento aperto!"
 
@@ -19264,15 +19264,15 @@ msgstr "Nessun indice generale"
 msgid "Other Toolbars"
 msgstr "Altre barre strumenti"
 
-#: src/frontends/qt4/Menus.cpp:1041
+#: src/frontends/qt4/Menus.cpp:1042
 msgid "No Branch in Document!"
 msgstr "Nessun ramo nel documento!"
 
-#: src/frontends/qt4/Menus.cpp:1074
+#: src/frontends/qt4/Menus.cpp:1101
 msgid "No Citation in Scope!"
 msgstr "Nessuna citazione in questo contesto!"
 
-#: src/frontends/qt4/Menus.cpp:1616
+#: src/frontends/qt4/Menus.cpp:1643
 msgid "No action defined!"
 msgstr "Nessuna azione definita!"
 
@@ -19490,11 +19490,15 @@ msgstr "È stato aperto l'inserto Ramo"
 msgid "Branch: "
 msgstr "Ramo:"
 
-#: src/insets/InsetBranch.cpp:91
+#: src/insets/InsetBranch.cpp:90
+msgid "Branch (child only): "
+msgstr ""
+
+#: src/insets/InsetBranch.cpp:95
 msgid "Undef: "
 msgstr "Non definito: "
 
-#: src/insets/InsetBranch.cpp:220
+#: src/insets/InsetBranch.cpp:224
 msgid "branch"
 msgstr "ramo"
 

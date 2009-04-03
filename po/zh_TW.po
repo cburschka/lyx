@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-04-03 12:10+0200\n"
+"POT-Creation-Date: 2009-04-03 13:11+0200\n"
 "PO-Revision-Date: 2008-08-04 22:57+0100\n"
 "Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -18401,7 +18401,7 @@ msgstr "水平填充"
 msgid "Hyperlink"
 msgstr "產生超連結(&G)"
 
-#: src/frontends/qt4/GuiInclude.cpp:48
+#: src/frontends/qt4/GuiInclude.cpp:48 src/frontends/qt4/Menus.cpp:1082
 msgid "Child Document"
 msgstr "子文件"
 
@@ -19658,7 +19658,7 @@ msgstr "沒有文件開啟！"
 #: src/frontends/qt4/Menus.cpp:718 src/frontends/qt4/Menus.cpp:797
 #: src/frontends/qt4/Menus.cpp:817 src/frontends/qt4/Menus.cpp:839
 #: src/frontends/qt4/Menus.cpp:927 src/frontends/qt4/Menus.cpp:1033
-#: src/frontends/qt4/Menus.cpp:1066
+#: src/frontends/qt4/Menus.cpp:1093
 msgid "No Document Open!"
 msgstr "沒有文件開啟！"
 
@@ -19689,16 +19689,16 @@ msgstr "沒有內容表"
 msgid "Other Toolbars"
 msgstr "工具列|b"
 
-#: src/frontends/qt4/Menus.cpp:1041
+#: src/frontends/qt4/Menus.cpp:1042
 msgid "No Branch in Document!"
 msgstr "文件中沒有分支！"
 
-#: src/frontends/qt4/Menus.cpp:1074
+#: src/frontends/qt4/Menus.cpp:1101
 #, fuzzy
 msgid "No Citation in Scope!"
 msgstr "沒有字型變更定義。"
 
-#: src/frontends/qt4/Menus.cpp:1616
+#: src/frontends/qt4/Menus.cpp:1643
 #, fuzzy
 msgid "No action defined!"
 msgstr "沒有字型變更定義。"
@@ -19933,11 +19933,15 @@ msgstr "開啟的分支內欄"
 msgid "Branch: "
 msgstr "分支："
 
-#: src/insets/InsetBranch.cpp:91
+#: src/insets/InsetBranch.cpp:90
+msgid "Branch (child only): "
+msgstr ""
+
+#: src/insets/InsetBranch.cpp:95
 msgid "Undef: "
 msgstr "未定義："
 
-#: src/insets/InsetBranch.cpp:220
+#: src/insets/InsetBranch.cpp:224
 msgid "branch"
 msgstr "分支"
 

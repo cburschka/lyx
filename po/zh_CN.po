@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.5.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-04-03 12:10+0200\n"
+"POT-Creation-Date: 2009-04-03 13:11+0200\n"
 "PO-Revision-Date: 2008-08-04 23:00+0100\n"
 "Last-Translator: Bo Peng <ben.bob@gmail.com>\n"
 "Language-Team: English <en@translate.freefriends.org>\n"
@@ -18482,7 +18482,7 @@ msgstr "Horizontal Fill"
 msgid "Hyperlink"
 msgstr "产生链接(&G)"
 
-#: src/frontends/qt4/GuiInclude.cpp:48
+#: src/frontends/qt4/GuiInclude.cpp:48 src/frontends/qt4/Menus.cpp:1082
 msgid "Child Document"
 msgstr "子文档"
 
@@ -19742,7 +19742,7 @@ msgstr "无打开文档!"
 #: src/frontends/qt4/Menus.cpp:718 src/frontends/qt4/Menus.cpp:797
 #: src/frontends/qt4/Menus.cpp:817 src/frontends/qt4/Menus.cpp:839
 #: src/frontends/qt4/Menus.cpp:927 src/frontends/qt4/Menus.cpp:1033
-#: src/frontends/qt4/Menus.cpp:1066
+#: src/frontends/qt4/Menus.cpp:1093
 msgid "No Document Open!"
 msgstr "无打开文档!"
 
@@ -19773,16 +19773,16 @@ msgstr "无目录"
 msgid "Other Toolbars"
 msgstr "工具条(b)|b"
 
-#: src/frontends/qt4/Menus.cpp:1041
+#: src/frontends/qt4/Menus.cpp:1042
 msgid "No Branch in Document!"
 msgstr "文档中无分支!"
 
-#: src/frontends/qt4/Menus.cpp:1074
+#: src/frontends/qt4/Menus.cpp:1101
 #, fuzzy
 msgid "No Citation in Scope!"
 msgstr "No font change defined."
 
-#: src/frontends/qt4/Menus.cpp:1616
+#: src/frontends/qt4/Menus.cpp:1643
 #, fuzzy
 msgid "No action defined!"
 msgstr "No font change defined."
@@ -20017,11 +20017,15 @@ msgstr "Opened Branch Inset"
 msgid "Branch: "
 msgstr "分支:"
 
-#: src/insets/InsetBranch.cpp:91
+#: src/insets/InsetBranch.cpp:90
+msgid "Branch (child only): "
+msgstr ""
+
+#: src/insets/InsetBranch.cpp:95
 msgid "Undef: "
 msgstr "Undef: "
 
-#: src/insets/InsetBranch.cpp:220
+#: src/insets/InsetBranch.cpp:224
 msgid "branch"
 msgstr "branch"
 

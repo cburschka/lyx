@@ -223,7 +223,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-04-03 12:10+0200\n"
+"POT-Creation-Date: 2009-04-03 13:11+0200\n"
 "PO-Revision-Date: 2009-03-01 11:37+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
@@ -18325,7 +18325,7 @@ msgstr "Ressort horizontal"
 msgid "Hyperlink"
 msgstr "Hyperlien"
 
-#: src/frontends/qt4/GuiInclude.cpp:48
+#: src/frontends/qt4/GuiInclude.cpp:48 src/frontends/qt4/Menus.cpp:1082
 msgid "Child Document"
 msgstr "Sous-document"
 
@@ -19506,7 +19506,7 @@ msgstr "Aucun document ouvert !"
 #: src/frontends/qt4/Menus.cpp:718 src/frontends/qt4/Menus.cpp:797
 #: src/frontends/qt4/Menus.cpp:817 src/frontends/qt4/Menus.cpp:839
 #: src/frontends/qt4/Menus.cpp:927 src/frontends/qt4/Menus.cpp:1033
-#: src/frontends/qt4/Menus.cpp:1066
+#: src/frontends/qt4/Menus.cpp:1093
 msgid "No Document Open!"
 msgstr "Aucun document ouvert !"
 
@@ -19534,15 +19534,15 @@ msgstr "Pas de table des matières"
 msgid "Other Toolbars"
 msgstr "Autres barres d'outils"
 
-#: src/frontends/qt4/Menus.cpp:1041
+#: src/frontends/qt4/Menus.cpp:1042
 msgid "No Branch in Document!"
 msgstr "Pas de branche dans le document"
 
-#: src/frontends/qt4/Menus.cpp:1074
+#: src/frontends/qt4/Menus.cpp:1101
 msgid "No Citation in Scope!"
 msgstr "Aucune citation accessible !"
 
-#: src/frontends/qt4/Menus.cpp:1616
+#: src/frontends/qt4/Menus.cpp:1643
 msgid "No action defined!"
 msgstr "Aucune action définie !"
 
@@ -19760,11 +19760,15 @@ msgstr "Insert de branche ouvert"
 msgid "Branch: "
 msgstr "Branche : "
 
-#: src/insets/InsetBranch.cpp:91
+#: src/insets/InsetBranch.cpp:90
+msgid "Branch (child only): "
+msgstr ""
+
+#: src/insets/InsetBranch.cpp:95
 msgid "Undef: "
 msgstr "Undef : "
 
-#: src/insets/InsetBranch.cpp:220
+#: src/insets/InsetBranch.cpp:224
 msgid "branch"
 msgstr "branche"
 

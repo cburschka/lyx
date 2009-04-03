@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: uk-162\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-04-03 12:10+0200\n"
+"POT-Creation-Date: 2009-04-03 13:11+0200\n"
 "PO-Revision-Date: 2009-03-03 18:01+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
@@ -18022,7 +18022,7 @@ msgstr "Горизонтальне заповнення"
 msgid "Hyperlink"
 msgstr "Гіперпосилання"
 
-#: src/frontends/qt4/GuiInclude.cpp:48
+#: src/frontends/qt4/GuiInclude.cpp:48 src/frontends/qt4/Menus.cpp:1082
 msgid "Child Document"
 msgstr "Спадковий документ"
 
@@ -19198,7 +19198,7 @@ msgstr "Не відкрито жодних документів!"
 #: src/frontends/qt4/Menus.cpp:718 src/frontends/qt4/Menus.cpp:797
 #: src/frontends/qt4/Menus.cpp:817 src/frontends/qt4/Menus.cpp:839
 #: src/frontends/qt4/Menus.cpp:927 src/frontends/qt4/Menus.cpp:1033
-#: src/frontends/qt4/Menus.cpp:1066
+#: src/frontends/qt4/Menus.cpp:1093
 msgid "No Document Open!"
 msgstr "Не відкрито жодного документа!"
 
@@ -19226,15 +19226,15 @@ msgstr "Змісту немає"
 msgid "Other Toolbars"
 msgstr "Інші панелі інструментів"
 
-#: src/frontends/qt4/Menus.cpp:1041
+#: src/frontends/qt4/Menus.cpp:1042
 msgid "No Branch in Document!"
 msgstr "Немає жодної версії документа!"
 
-#: src/frontends/qt4/Menus.cpp:1074
+#: src/frontends/qt4/Menus.cpp:1101
 msgid "No Citation in Scope!"
 msgstr "У області видимості немає цитат!"
 
-#: src/frontends/qt4/Menus.cpp:1616
+#: src/frontends/qt4/Menus.cpp:1643
 msgid "No action defined!"
 msgstr "Дію не визначено!"
 
@@ -19452,11 +19452,15 @@ msgstr "Розгорнута вкладка версії"
 msgid "Branch: "
 msgstr "Версія: "
 
-#: src/insets/InsetBranch.cpp:91
+#: src/insets/InsetBranch.cpp:90
+msgid "Branch (child only): "
+msgstr ""
+
+#: src/insets/InsetBranch.cpp:95
 msgid "Undef: "
 msgstr "Undef: "
 
-#: src/insets/InsetBranch.cpp:220
+#: src/insets/InsetBranch.cpp:224
 msgid "branch"
 msgstr "версія"
 

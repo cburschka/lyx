@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx_1.5.0_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-04-03 12:10+0200\n"
+"POT-Creation-Date: 2009-04-03 13:11+0200\n"
 "PO-Revision-Date: 2008-08-04 23:16+0100\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -18716,7 +18716,7 @@ msgstr "Betegarri horizontala"
 msgid "Hyperlink"
 msgstr "&Sortu hiperesteka"
 
-#: src/frontends/qt4/GuiInclude.cpp:48
+#: src/frontends/qt4/GuiInclude.cpp:48 src/frontends/qt4/Menus.cpp:1082
 msgid "Child Document"
 msgstr "Ume-dokumentua"
 
@@ -19983,7 +19983,7 @@ msgstr "Ez da dokumenturik ireki!"
 #: src/frontends/qt4/Menus.cpp:718 src/frontends/qt4/Menus.cpp:797
 #: src/frontends/qt4/Menus.cpp:817 src/frontends/qt4/Menus.cpp:839
 #: src/frontends/qt4/Menus.cpp:927 src/frontends/qt4/Menus.cpp:1033
-#: src/frontends/qt4/Menus.cpp:1066
+#: src/frontends/qt4/Menus.cpp:1093
 #, fuzzy
 msgid "No Document Open!"
 msgstr "Ez da dokumenturik ireki!"
@@ -20016,17 +20016,17 @@ msgstr "Ez dago gaien aurkibiderik"
 msgid "Other Toolbars"
 msgstr "Tresna-barrak"
 
-#: src/frontends/qt4/Menus.cpp:1041
+#: src/frontends/qt4/Menus.cpp:1042
 #, fuzzy
 msgid "No Branch in Document!"
 msgstr "Inprimatua dokumentua"
 
-#: src/frontends/qt4/Menus.cpp:1074
+#: src/frontends/qt4/Menus.cpp:1101
 #, fuzzy
 msgid "No Citation in Scope!"
 msgstr "Joan hurrengo aldaketara"
 
-#: src/frontends/qt4/Menus.cpp:1616
+#: src/frontends/qt4/Menus.cpp:1643
 #, fuzzy
 msgid "No action defined!"
 msgstr "Joan hurrengo aldaketara"
@@ -20264,11 +20264,15 @@ msgstr "Barneko adarra irekita"
 msgid "Branch: "
 msgstr "Adarra: "
 
-#: src/insets/InsetBranch.cpp:91
+#: src/insets/InsetBranch.cpp:90
+msgid "Branch (child only): "
+msgstr ""
+
+#: src/insets/InsetBranch.cpp:95
 msgid "Undef: "
 msgstr "DefGabe: "
 
-#: src/insets/InsetBranch.cpp:220
+#: src/insets/InsetBranch.cpp:224
 #, fuzzy
 msgid "branch"
 msgstr "Adarra"
