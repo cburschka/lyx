@@ -184,7 +184,7 @@ What's new
 
 - Fix the status messages displayed by graphics.
 
-- Fix the enabling and disabling of submenus that are empty or of 
+- Fix the enabling and disabling of submenus that are empty or of
   which all children are disabled.
 
 - Fix the enabling and disabling of the version control submenu.
@@ -200,6 +200,9 @@ What's new
 - Add Listings Settings to the Edit menu.
 
 - Add child-exclusive branches to the Insert>Branch submenu (bug 5851).
+
+- Fix crash in shortcut editor: Pressing delete again after deleting
+  a key binding causes segfault.
 
 
 * DOCUMENTATION AND LOCALIZATION
