@@ -228,6 +228,9 @@ public:
 	/// This is here to force the test to be done whenever parent_buffer
 	/// is accessed.
 	Buffer const * parent() const { 
+		// if parent_buffer is not loaded, then it has been unloaded,
+		// which means that parent_buffer is an invalid pointer. So we
+		// set it to null in that case.
 		if (!theBufferList().isLoaded(parent_buffer))
 			parent_buffer = 0;
 		return parent_buffer; 
