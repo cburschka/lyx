@@ -2278,6 +2278,29 @@ bool BufferView::paragraphVisible(DocIterator const & dit) const
 }
 
 
+void BufferView::cursorPosAndHeight(Point & p, int & h) const
+{
+	Cursor const & cur = cursor();
+	Font const font = cur.getFont();
+	frontend::FontMetrics const & fm = theFontMetrics(font);
+	int const asc = fm.maxAscent();
+	int const des = fm.maxDescent();
+	h = asc + des;
+	p = getPos(cur, cur.boundary());
+	p.y_ -= asc;
+}
+
+
+bool BufferView::cursorInView(Point const & p, int h) const
+{
+	Cursor const & cur = cursor();
+	// does the cursor touch the screen ?
+	if (p.y_ + h < 0 || p.y_ >= workHeight() || !paragraphVisible(cur))
+		return false;
+	return true;
+}
+
+
 void BufferView::draw(frontend::Painter & pain)
 {
 	if (height_ == 0 || width_ == 0)

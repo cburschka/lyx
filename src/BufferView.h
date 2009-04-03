@@ -261,6 +261,10 @@ public:
 	Point getPos(DocIterator const & dit, bool boundary) const;
 	/// is the paragraph of the cursor visible ?
 	bool paragraphVisible(DocIterator const & dit) const;
+	/// is the cursor currently visible in the view
+	bool cursorInView(Point const & p, int h) const;
+	/// get the position and height of the cursor
+	void cursorPosAndHeight(Point & p, int & h) const;
 
 
 	///
