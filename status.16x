@@ -120,6 +120,9 @@ What's new
 
 - Fix crash when issuing the command "buffer-switch <buffer>" and there
   is no buffer called <buffer>.
+  
+- After reloading a child document, correctly re-assign the master
+  (bug 5873).
 
 - Adjust the color of deletions slightly when using change tracking. It
   is now easier to distinguish between added and deleted text (bug 5629).
