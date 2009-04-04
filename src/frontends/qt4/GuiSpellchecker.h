@@ -56,13 +56,11 @@ private:
 	///
 	bool initialiseParams(std::string const & data);
 	///
-	void clearParams();
+	void clearParams() {}
 	/// Not needed here
 	void dispatchParams() {}
 	///
 	bool isBufferDependent() const { return true; }
-	///
-	bool exitEarly() const { return exitEarly_; }
 
 	/// replace word with replacement
 	void replace(docstring const &);
@@ -77,8 +75,6 @@ private:
 	/// show count of checked words at normal exit
 	void showSummary();
 
-	/// set to true when spellchecking is finished
-	bool exitEarly_;
 	/// current word being checked and lang code
 	WordLangTuple word_;
 	/// values for progress

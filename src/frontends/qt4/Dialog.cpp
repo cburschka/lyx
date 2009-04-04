@@ -158,8 +158,6 @@ void Dialog::showView()
 	// Make sure the dialog controls are correctly enabled/disabled with
 	// readonly status.
 	checkStatus();
-	if (exitEarly())
-		return;
 
 	QWidget * w = asQWidget();
 	w->setWindowTitle(title_);

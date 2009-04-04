@@ -195,11 +195,6 @@ public:
 	 */
 	virtual bool disconnectOnApply() const { return false; }
 
-	/** \return true if Dialog::View::show() should not display the dialog
-	 *   after running update. Currently, only ControlSpellchecker
-	 *   makes use of that.
-	*/
-	virtual bool exitEarly() const { return false; }
 	//@}
 
 	/** \c Kernel part: a wrapper making the LyX kernel available to the dialog.

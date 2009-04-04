@@ -3091,8 +3091,12 @@ bool Buffer::nextWord(DocIterator & from, DocIterator & to,
 	bool inword = false;
 	bool ignoreword = false;
 	string lang_code;
+	// Go backward a bit if needed in order to return the word currently
+	// pointed by 'from'.
+	while (from && from.pos() && isLetter(from))
+		from.backwardPos();
+	// OK, we start from here.
 	to = from;
-
 	while (to.depth()) {
 		if (isLetter(to)) {
 			if (!inword) {

@@ -48,7 +48,7 @@ namespace frontend {
 
 
 GuiSpellchecker::GuiSpellchecker(GuiView & lv)
-	: GuiDialog(lv, "spellchecker", qt_("Spellchecker")), exitEarly_(false),
+	: GuiDialog(lv, "spellchecker", qt_("Spellchecker")),
 	  progress_(0), count_(0)
 {
 	setupUi(this);
@@ -108,31 +108,8 @@ void GuiSpellchecker::reject()
 
 void GuiSpellchecker::updateContents()
 {
-	// The clauses below are needed because the spellchecker
-	// has many flaws (see bugs 1950, 2218).
-	// Basically, we have to distinguish the case where a
-	// spellcheck has already been performed for the whole
-	// document (exitEarly() == true, isVisible() == false) 
-	// from the rest (exitEarly() == false, isVisible() == true).
-	// FIXME: rewrite the whole beast!
-	static bool check_after_early_exit;
-	if (exitEarly()) {
-		// a spellcheck has already been performed,
+	if (hasFocus())
 		check();
-		check_after_early_exit = true;
-	}
-	else if (isVisible()) {
-		// the above check triggers a second update,
-		// and isVisible() is true then. Prevent a
-		// second check that skips the first word
-		if (check_after_early_exit)
-			// don't check, but reset the bool.
-			// business as usual after this.
-			check_after_early_exit = false;
-		else
-			// perform spellcheck (default case)
-			check();
-	}
 }
 
 
@@ -195,21 +172,12 @@ bool GuiSpellchecker::initialiseParams(string const &)
 }
 
 
-void GuiSpellchecker::clearParams()
-{
-	LYXERR(Debug::GUI, "Spellchecker::clearParams");
-}
-
-
 void GuiSpellchecker::check()
 {
 	LYXERR(Debug::GUI, "Check the spelling of a word");
 
 	DocIterator from = bufferview()->cursor();
-	while (from && from.pos() && isLetter(from))
-		from.backwardPos();
 	DocIterator to;
-	exitEarly_ = false;
 	WordLangTuple word_lang;
 	docstring_list suggestions;
 
@@ -231,9 +199,11 @@ void GuiSpellchecker::check()
 	// end of document
 	if (from == to) {
 		showSummary();
-		exitEarly_ = true;
 		return;
 	}
+	if (!isVisible())
+		show();
+
 	word_ = word_lang;
 
 	int const progress_bar = total_
