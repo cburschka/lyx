@@ -930,7 +930,7 @@ bool Buffer::writeFile(FileName const & fname) const
 		return false;
 	}
 
-	removeAutosaveFile(d->filename.absFilename());
+	removeAutosaveFile();
 
 	saveCheckSum(d->filename);
 	message(str + _(" done."));
@@ -2423,6 +2423,22 @@ int AutoSaveBuffer::generateChild()
 } // namespace anon
 
 
+FileName Buffer::getAutosaveFilename() const
+{
+	string const fpath = isUnnamed() ? lyxrc.document_path : filePath();
+	string const fname = "#" + d->filename.onlyFileName() + "#";
+	return makeAbsPath(fname, fpath);
+}
+
+
+void Buffer::removeAutosaveFile() const
+{
+	FileName const f = getAutosaveFilename();
+	if (f.exists())
+		f.removeFile();
+}
+
+
 // Perfect target for a thread...
 void Buffer::autoSave() const
 {
@@ -2434,13 +2450,7 @@ void Buffer::autoSave() const
 
 	// emit message signal.
 	message(_("Autosaving current document..."));
-
-	// create autosave filename
-	string fpath = isUnnamed() ? lyxrc.document_path : filePath();
-	string fname = "#" + d->filename.onlyFileName() + "#";
-	FileName file_name = makeAbsPath(fname, fpath);
-
-	AutoSaveBuffer autosave(*this, file_name);
+	AutoSaveBuffer autosave(*this, getAutosaveFilename());
 	autosave.start();
 
 	markBakClean();

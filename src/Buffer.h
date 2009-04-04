@@ -456,6 +456,8 @@ public:
 
 	///
 	void autoSave() const;
+	///
+	void removeAutosaveFile() const;
 
 	/// return the format of the buffer on a string
 	std::string bufferFormat() const;
@@ -520,6 +522,8 @@ private:
 	*/
 	ReadStatus readFile(Lexer &, support::FileName const & filename,
 			    bool fromString = false);
+	///
+	support::FileName getAutosaveFilename() const;
 
 	/// Use the Pimpl idiom to hide the internals.
 	class Impl;

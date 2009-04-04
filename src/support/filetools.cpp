@@ -837,18 +837,6 @@ FileName const findtexfile(string const & fil, string const & /*format*/)
 }
 
 
-void removeAutosaveFile(string const & filename)
-{
-	string a = onlyPath(filename);
-	a += '#';
-	a += onlyFilename(filename);
-	a += '#';
-	FileName const autosave(a);
-	if (autosave.exists())
-		autosave.removeFile();
-}
-
-
 void readBB_lyxerrMessage(FileName const & file, bool & zipped,
 	string const & message)
 {
