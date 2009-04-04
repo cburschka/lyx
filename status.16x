@@ -124,6 +124,9 @@ What's new
 - Fix crash when issuing the command "buffer-switch <buffer>" and there
   is no buffer called <buffer>.
   
+- Fix crash in shortcut editor: Pressing delete again after deleting
+  a key binding causes segfault.
+
 - After reloading a child document, correctly re-assign the master
   (bug 5873).
 
@@ -203,9 +206,6 @@ What's new
 - Add Listings Settings to the Edit menu.
 
 - Add child-exclusive branches to the Insert>Branch submenu (bug 5851).
-
-- Fix crash in shortcut editor: Pressing delete again after deleting
-  a key binding causes segfault.
 
 - Correct placement of the cursor in description styles (bug 4067).
 
