@@ -6,6 +6,7 @@
  *
  * \author Alejandro Aguilar Sierra
  * \author André Pönitz
+ * \author Uwe Stöhr
  *
  * Full author contact details are available in file CREDITS.
  */
