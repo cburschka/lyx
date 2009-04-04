@@ -107,10 +107,10 @@ What's new
 - Disable page size, orientation and margin settings with beamer and
   powerdot, since those values are hardcoded by the class. Thus, a 
   geometry option clash is avoided (bug 5863).
-  
+
 - Perform extra LaTeX run when requested by the French lettre class
   (bug 5818).
-  
+
 - Support LATIN CAPITAL LETTER SHARP S. Note that only selected fonts
   provide this character. Others output <SS>.
 
@@ -123,16 +123,19 @@ What's new
 
 - Fix crash when issuing the command "buffer-switch <buffer>" and there
   is no buffer called <buffer>.
-  
+
 - Fix crash in shortcut editor: Pressing delete again after deleting
   a key binding causes segfault.
+
+- Fix crash when closing a child after it has been unincluded from its
+  master (bug 5859).
 
 - After reloading a child document, correctly re-assign the master
   (bug 5873).
 
 - Adjust the color of deletions slightly when using change tracking. It
   is now easier to distinguish between added and deleted text (bug 5629).
-  
+
 - Fix the bug that the view source window remained disabled forever when 
   the window got disabled while the autoUpdate checkbox was unchecked.
 
