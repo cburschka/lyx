@@ -81,6 +81,7 @@
 #include <QMenuBar>
 #include <QPainter>
 #include <QPixmap>
+#include <QPixmapCache>
 #include <QPoint>
 #include <QPushButton>
 #include <QSettings>
