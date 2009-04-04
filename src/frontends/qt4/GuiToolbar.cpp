@@ -805,7 +805,7 @@ public:
 		setToolTip(label);
 		setStatusTip(label);
 		setText(label);
-		setIcon(QPixmap(":images/math/" + toqstr(tbitem_.name_) + ".png"));
+		setIcon(QIcon(getPixmap("images/math/", toqstr(tbitem_.name_), "png")));
 		connect(bar, SIGNAL(iconSizeChanged(QSize)),
 			this, SLOT(setIconSize(QSize)));
 	}

@@ -1212,7 +1212,7 @@ TabWorkArea::TabWorkArea(QWidget * parent)
 	closeBufferButton = new QToolButton(this);
 	closeBufferButton->setPalette(pal);
 	// FIXME: rename the icon to closebuffer.png
-	closeBufferButton->setIcon(QIcon(":/images/closetab.png"));
+	closeBufferButton->setIcon(QIcon(getPixmap("images/", "closetab", "png")));
 	closeBufferButton->setText("Close File");
 	closeBufferButton->setAutoRaise(true);
 	closeBufferButton->setCursor(Qt::ArrowCursor);
@@ -1614,9 +1614,9 @@ void TabWorkArea::showContextMenu(const QPoint & pos)
 
 	// show tab popup
 	QMenu popup;
-	popup.addAction(QIcon(":/images/hidetab.png"),
+	popup.addAction(QIcon(getPixmap("images/", "hidetab", "png")),
 		qt_("Hide tab"), this, SLOT(closeCurrentTab()));
-	popup.addAction(QIcon(":/images/closetab.png"),
+	popup.addAction(QIcon(getPixmap("images/", "closetab", "png")),
 		qt_("Close tab"), this, SLOT(closeCurrentBuffer()));
 	popup.exec(tabBar()->mapToGlobal(pos));
 

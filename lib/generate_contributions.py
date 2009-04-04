@@ -1528,6 +1528,14 @@ contributers = [
                  "Mar 2 2009",
                  u"Indonesian translation"),
 
+     contributer(u"Martin Engbers",
+                 "martin.engbers () gmx ! de",
+                 "GPL",
+                 "Re: [patch] Icon replacement",
+                 "m=123877725311464",
+                 "Apr 3 2009",
+                 u"icon loading tweaks"),
+
      contributer(u"Xiaokun Zhu",
                  "xiaokun () aero ! gla ! ac ! uk",
                  "",
