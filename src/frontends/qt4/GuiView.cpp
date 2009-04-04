@@ -17,6 +17,7 @@
 
 #include "Dialog.h"
 #include "FileDialog.h"
+#include "FontLoader.h"
 #include "GuiApplication.h"
 #include "GuiCommandBuffer.h"
 #include "GuiCompleter.h"
@@ -55,13 +56,14 @@
 #include "Toolbars.h"
 #include "version.h"
 
-#include "support/lassert.h"
+#include "support/convert.h"
 #include "support/debug.h"
 #include "support/ExceptionMessage.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/ForkedCalls.h"
+#include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/os.h"
 #include "support/Package.h"
@@ -1326,11 +1328,19 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 			enable = false;
 		break;
 
-		case LFUN_COMPLETION_CANCEL:
+	case LFUN_COMPLETION_CANCEL:
 		if (!d.current_work_area_
 		    || (!d.current_work_area_->completer().popupVisible()
 			&& !d.current_work_area_->completer().inlineVisible()))
 			enable = false;
+		break;
+
+	case LFUN_BUFFER_ZOOM_OUT:
+		enable = buf && lyxrc.zoom > 10;
+		break;
+
+	case LFUN_BUFFER_ZOOM_IN:
+		enable = buf;
 		break;
 
 	default:
@@ -2202,6 +2212,25 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 				d.current_work_area_->completer().activate();
 			break;
 
+		case LFUN_BUFFER_ZOOM_IN:
+		case LFUN_BUFFER_ZOOM_OUT:
+			if (cmd.argument().empty()) {
+				if (cmd.action == LFUN_BUFFER_ZOOM_IN)
+					lyxrc.zoom += 20;
+				else
+					lyxrc.zoom -= 20;
+			} else
+				lyxrc.zoom += convert<int>(cmd.argument());
+
+			if (lyxrc.zoom < 10)
+				lyxrc.zoom = 10;
+				
+			// The global QPixmapCache is used in GuiPainter to cache text
+			// painting so we must reset it.
+			QPixmapCache::clear();
+			guiApp->fontLoader().update();
+			lyx::dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
+			break;
 
 		default:
 			dispatched = false;

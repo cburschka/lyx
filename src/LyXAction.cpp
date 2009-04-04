@@ -3204,6 +3204,24 @@ void LyXAction::init()
  */
 		{ LFUN_COPY_LABEL_AS_REF, "copy-label-as-reference", ReadOnly | NoUpdate, Edit },
 
+/*!
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_ZOOM_IN
+ * \li Action: Increases the zoom of the screen fonts.
+ * \li Syntax: buffer-zoom-in
+ * \li Origin: vfr, 30 Mar 2009
+ * \endvar
+ */
+		{ LFUN_BUFFER_ZOOM_IN, "buffer-zoom-in", ReadOnly, Buffer },
+
+/*!
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_ZOOM_OUT
+ * \li Action: Decreases the zoom of the screen fonts.
+ * \li Syntax: buffer-zoom-out
+ * \li Origin: vfr, 30 Mar 2009
+ * \endvar
+ */
+		{ LFUN_BUFFER_ZOOM_OUT, "buffer-zoom-out", ReadOnly, Buffer },
+
 		{ LFUN_NOACTION, "", Noop, Hidden }
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
 	};
