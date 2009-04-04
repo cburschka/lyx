@@ -165,21 +165,17 @@ docstring const BibTeXInfo::getAbbreviatedAuthor() const
 
 docstring const BibTeXInfo::getYear() const
 {
-	if (!is_bibtex_) {
-		docstring const opt = trim(operator[]("label"));
-		if (opt.empty())
-			return docstring();
+	if (is_bibtex_) 
+		return operator[]("year");
 
-		docstring authors;
-		docstring const tmp = split(opt, authors, '(');
-		docstring year;
-		split(tmp, year, ')');
-		return year;
-	}
+	docstring const opt = trim(operator[]("label"));
+	if (opt.empty())
+		return docstring();
 
-	docstring year = operator[]("year");
-	if (year.empty())
-		year = _("No year");
+	docstring authors;
+	docstring const tmp = split(opt, authors, '(');
+	docstring year;
+	split(tmp, year, ')');
 	return year;
 }
 
