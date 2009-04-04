@@ -163,11 +163,6 @@ dist_frclipartdoc_DATA = \
 	fr/clipart/footnoteQt4.png \
 	fr/clipart/labelQt4.png
 
-idclipartdocdir = $(iddocdir)/clipart
-dist_idclipartdoc_DATA = \
-	id/clipart/id-contrib.png \
-	id/clipart/id-footnote.png
-
 gldocdir = $(docdir)/gl
 dist_gldoc_DATA = \
 	gl/Intro.lyx \
@@ -186,6 +181,11 @@ dist_hudoc_DATA = \
 iddocdir = $(docdir)/id
 dist_iddoc_DATA = \
 	id/Intro.lyx
+
+idclipartdocdir = $(iddocdir)/clipart
+dist_idclipartdoc_DATA = \
+	id/clipart/id-contrib.png \
+	id/clipart/id-footnote.png
 
 itdocdir = $(docdir)/it
 dist_itdoc_DATA = \
