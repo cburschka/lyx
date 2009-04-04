@@ -429,10 +429,10 @@ docstring const BiblioInfo::getYear(docstring const & key) const
 	// let's try the crossref
 	docstring const xref = data.getXRef();
 	if (xref.empty())
-		return year; // no luck
+		return _("No year"); // no luck
 	BiblioInfo::const_iterator const xrefit = find(xref);
 	if (xrefit == end())
-		return year; // no luck again
+		return _("No year"); // no luck again
 	BibTeXInfo const & xref_data = xrefit->second;
 	return xref_data.getYear();
 	return data.getYear();
