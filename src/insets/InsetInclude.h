@@ -86,6 +86,8 @@ public:
 	///
 	void addToToc(DocIterator const &);
 	///
+	void updateCommand();
+	///
 	void updateLabels(ParIterator const &);
 	///
 	static ParamInfo const & findInfo(std::string const &);

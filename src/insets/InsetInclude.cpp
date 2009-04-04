@@ -240,24 +240,28 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 				InsetListingsParams new_params(to_utf8(p["lstparams"]));
 				docstring const new_label =
 					from_utf8(new_params.getParamValue("label"));
-				docstring old_label;
-				if (label_)
-					old_label = label_->getParam("name");
+				
 				if (new_label.empty()) {
 					delete label_;
 					label_ = 0;
-				} else if (label_ && old_label != new_label) {
-					label_->updateCommand(new_label);
-					// the label might have been adapted (duplicate)
-					if (new_label != label_->getParam("name")) {
-						new_params.addParam("label",
-							"{" + to_utf8(label_->getParam("name")) + "}");
-						p["lstparams"] = from_utf8(new_params.params());
+				} else {
+					docstring old_label;
+					if (label_) 
+						old_label = label_->getParam("name");
+					else {
+						label_ = createLabel(new_label);
+						label_->setBuffer(buffer());
+					}					
+
+					if (new_label != old_label) {
+						label_->updateCommand(new_label);
+						// the label might have been adapted (duplicate)
+						if (new_label != label_->getParam("name")) {
+							new_params.addParam("label", "{" + 
+								to_utf8(label_->getParam("name")) + "}", true);
+							p["lstparams"] = from_utf8(new_params.params());
+						}
 					}
-				} else if (old_label != new_label) {
-					label_ = createLabel(new_label);
-					label_->setBuffer(buffer());
-					label_->initView();
 				}
 			}
 			setParams(p);
@@ -920,6 +924,27 @@ void InsetInclude::addToToc(DocIterator const & cpit)
 			it->second.begin(), it->second.end());
 }
 
+
+void InsetInclude::updateCommand()
+{
+	if (!label_)
+		return;
+
+	docstring old_label = label_->getParam("name");
+	label_->updateCommand(old_label, false);
+	// the label might have been adapted (duplicate)
+	docstring new_label = label_->getParam("name");
+	if (old_label == new_label)
+		return;
+
+	// update listings parameters...
+	InsetCommandParams p(INCLUDE_CODE);
+	p = params();
+	InsetListingsParams par(to_utf8(params()["lstparams"]));
+	par.addParam("label", "{" + to_utf8(new_label) + "}", true);
+	p["lstparams"] = from_utf8(par.params());
+	setParams(p);	
+}
 
 void InsetInclude::updateLabels(ParIterator const & it)
 {
