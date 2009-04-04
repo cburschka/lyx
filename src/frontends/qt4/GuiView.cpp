@@ -1754,7 +1754,7 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
 		// Switch to this Buffer.
 		setBuffer(&b);
 
-		/// No argument? Ask user through dialog.
+		// No argument? Ask user through dialog.
 		// FIXME UNICODE
 		FileDialog dlg(qt_("Choose a filename to save document as"),
 				   LFUN_BUFFER_WRITE_AS);
