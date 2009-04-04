@@ -486,7 +486,13 @@ void GuiWorkArea::resizeBufferView()
 	// WARNING: Please don't put any code that will trigger a repaint here!
 	// We are already inside a paint event.
 	lyx_view_->setBusy(true);
+	Point p;
+	int h = 0;
+	buffer_view_->cursorPosAndHeight(p, h);
+	bool const cursor_in_view = buffer_view_->cursorInView(p, h);
 	buffer_view_->resize(viewport()->width(), viewport()->height());
+	if (cursor_in_view)
+		buffer_view_->scrollToCursor();
 	updateScreen();
 
 	// Update scrollbars which might have changed due different
@@ -520,31 +526,18 @@ void GuiWorkArea::showCursor()
 	if (realfont.language() == latex_language)
 		l_shape = false;
 
-	Font const font = buffer_view_->cursor().getFont();
-	FontMetrics const & fm = theFontMetrics(font);
-	int const asc = fm.maxAscent();
-	int const des = fm.maxDescent();
-	int h = asc + des;
-	int x = 0;
-	int y = 0;
-	Cursor & cur = buffer_view_->cursor();
-	cur.getPos(x, y);
-	y -= asc;
-
-	// if it doesn't touch the screen, don't try to show it
-	bool cursorInView = true;
-	if (y + h < 0 || y >= viewport()->height()
-		|| !cur.bv().paragraphVisible(cur))
-		cursorInView = false;
-
+	Point p;
+	int h = 0;
+	buffer_view_->cursorPosAndHeight(p, h);
 	// show cursor on screen
+	Cursor & cur = buffer_view_->cursor();
 	bool completable = cur.inset().showCompletionCursor()
 		&& completer_->completionAvailable()
 		&& !completer_->popupVisible()
 		&& !completer_->inlineVisible();
-	if (cursorInView) {
+	if (buffer_view_->cursorInView(p, h)) {
 		cursor_visible_ = true;
-		showCursor(x, y, h, l_shape, isrtl, completable);
+		showCursor(p.x_, p.y_, h, l_shape, isrtl, completable);
 	}
 }
 

@@ -138,6 +138,9 @@ What's new
 
 - Fix the loss of clipboard contents on exit (bug 5769).
 
+- Fix the annoying behaviour that the cursor got hidden by auto-toggling
+  of the math or table toolbar(s) (bug 4733).
+
 - Fix the LFUN_SCREEN_RECENTER (bug 5526).
 
 - Improve the selection of table cells with the keyboard (bug 1802).
@@ -208,6 +211,9 @@ What's new
 - Add child-exclusive branches to the Insert>Branch submenu (bug 5851).
 
 - Correct placement of the cursor in description styles (bug 4067).
+
+- Prevent the document from scrolling to the cursor when the view is
+  resized (e.g. when the tabbar is toggled) (part of bug 4174).
 
 
 * DOCUMENTATION AND LOCALIZATION

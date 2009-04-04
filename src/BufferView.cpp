@@ -790,10 +790,23 @@ void BufferView::showCursor()
 
 void BufferView::showCursor(DocIterator const & dit, bool recenter)
 {
+	if (scrollToCursor(dit, recenter))
+		buffer_.changed();
+}
+
+
+void BufferView::scrollToCursor()
+{
+	scrollToCursor(d->cursor_, false);
+}
+
+
+bool BufferView::scrollToCursor(DocIterator const & dit, bool recenter)
+{
 	// We are not properly started yet, delay until resizing is
 	// done.
 	if (height_ == 0)
-		return;
+		return false;
 
 	LYXERR(Debug::SCROLLING, "recentering!");
 
@@ -833,9 +846,9 @@ void BufferView::showCursor(DocIterator const & dit, bool recenter)
 		// else, nothing to do, the cursor is already visible so we just return.
 		if (scrolled != 0) {
 			updateMetrics();
-			buffer_.changed();
+			return true;
 		}
-		return;
+		return false;
 	}
 
 	// fix inline completion position
@@ -863,7 +876,7 @@ void BufferView::showCursor(DocIterator const & dit, bool recenter)
 		d->anchor_ypos_ = defaultRowHeight() * 2;
 
 	updateMetrics();
-	buffer_.changed();
+	return true;
 }
 
 
@@ -2260,6 +2273,29 @@ bool BufferView::paragraphVisible(DocIterator const & dit) const
 	TextMetrics const & tm = textMetrics(bot.text());
 
 	return tm.contains(bot.pit());
+}
+
+
+void BufferView::cursorPosAndHeight(Point & p, int & h) const
+{
+	Cursor const & cur = cursor();
+	Font const font = cur.getFont();
+	frontend::FontMetrics const & fm = theFontMetrics(font);
+	int const asc = fm.maxAscent();
+	int const des = fm.maxDescent();
+	h = asc + des;
+	p = getPos(cur, cur.boundary());
+	p.y_ -= asc;
+}
+
+
+bool BufferView::cursorInView(Point const & p, int h) const
+{
+	Cursor const & cur = cursor();
+	// does the cursor touch the screen ?
+	if (p.y_ + h < 0 || p.y_ >= workHeight() || !paragraphVisible(cur))
+		return false;
+	return true;
 }
 
 
