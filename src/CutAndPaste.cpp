@@ -221,8 +221,12 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 
 	InsetIterator const i_end = inset_iterator_end(in);
 	for (InsetIterator it = inset_iterator_begin(in); it != i_end; ++it) {
+		// Even though this will also be done later, it has to be done here 
+		// since, e.g., InsetLabel::updateCommand() is going to try to access
+		// the buffer() member.
+		it->setBuffer(const_cast<Buffer &>(buffer));
 		switch (it->lyxCode()) {
- 
+
 		case LABEL_CODE: {
 			// check for duplicates
 			InsetCommand & lab = static_cast<InsetCommand &>(*it);
