@@ -50,6 +50,7 @@
 #include "ParagraphParameters.h"
 #include "ParIterator.h"
 #include "PDFOptions.h"
+#include "SpellChecker.h"
 #include "sgml.h"
 #include "TexRow.h"
 #include "TexStream.h"
@@ -59,6 +60,7 @@
 #include "Undo.h"
 #include "VCBackend.h"
 #include "version.h"
+#include "WordLangTuple.h"
 #include "WordList.h"
 
 #include "insets/InsetBibitem.h"
@@ -79,6 +81,7 @@
 #include "support/lassert.h"
 #include "support/convert.h"
 #include "support/debug.h"
+#include "support/docstring_list.h"
 #include "support/ExceptionMessage.h"
 #include "support/FileName.h"
 #include "support/FileNameList.h"
@@ -3115,8 +3118,41 @@ bool Buffer::nextWord(DocIterator & from, DocIterator & to,
 		}
 		to.forwardPos();
 	}
-
+	from = to;
+	word.clear();
 	return false;
+}
+
+
+int Buffer::spellCheck(DocIterator & from, DocIterator & to,
+	WordLangTuple & word_lang, docstring_list & suggestions) const
+{
+	int progress = 0;
+	SpellChecker::Result res = SpellChecker::OK;
+	SpellChecker * speller = theSpellChecker();
+	suggestions.clear();
+	docstring word;
+	while (nextWord(from, to, word)) {
+		++progress;
+		string lang_code = lyxrc.spellchecker_use_alt_lang
+		      ? lyxrc.spellchecker_alt_lang
+		      : from.paragraph().getFontSettings(params(), from.pos()).language()->code();
+		WordLangTuple wl(word, lang_code);
+		res = speller->check(wl);
+		// ... just bail out if the spellchecker reports an error.
+		if (!speller->error().empty()) {
+			throw ExceptionMessage(WarningException,
+				_("The spellchecker has failed."), speller->error());
+		}
+		if (res != SpellChecker::OK && res != SpellChecker::IGNORED_WORD) {
+			word_lang = wl;
+			break;
+		}
+		from = to;
+	}
+	while (!(word = speller->nextMiss()).empty())
+		suggestions.push_back(word);
+	return progress;
 }
 
 } // namespace lyx

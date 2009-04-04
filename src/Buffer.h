@@ -28,6 +28,7 @@ class BiblioInfo;
 class BufferParams;
 class BufferSet;
 class DocIterator;
+class docstring_list;
 class ErrorItem;
 class ErrorList;
 class FuncRequest;
@@ -54,6 +55,7 @@ class TeXErrors;
 class TexRow;
 class TocBackend;
 class Undo;
+class WordLangTuple;
 
 namespace frontend {
 class GuiBufferDelegate;
@@ -499,6 +501,9 @@ public:
 	/// \return true if a new word was found.
 	bool nextWord(DocIterator & from, DocIterator & to,
 		docstring & word) const;
+
+	int spellCheck(DocIterator & from, DocIterator & to,
+		WordLangTuple & word_lang, docstring_list & suggestions) const;
 
 private:
 	/// search for macro in local (buffer) table or in children

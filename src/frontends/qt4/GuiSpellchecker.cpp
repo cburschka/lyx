@@ -18,6 +18,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
+#include "buffer_funcs.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
 #include "Language.h"
@@ -27,15 +28,13 @@
 
 #include "support/debug.h"
 #include "support/docstring.h"
+#include "support/docstring_list.h"
+#include "support/ExceptionMessage.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/textutils.h"
 
 #include <QListWidgetItem>
-
-#if defined(USE_ASPELL)
-# include "ASpell_local.h"
-#endif
 
 #include "SpellChecker.h"
 
@@ -50,7 +49,7 @@ namespace frontend {
 
 GuiSpellchecker::GuiSpellchecker(GuiView & lv)
 	: GuiDialog(lv, "spellchecker", qt_("Spellchecker")), exitEarly_(false),
-	  oldprogress_(0), newprogress_(0), count_(0), speller_(0)
+	  progress_(0), count_(0)
 {
 	setupUi(this);
 
@@ -139,13 +138,15 @@ void GuiSpellchecker::updateContents()
 
 void GuiSpellchecker::accept()
 {
-	ignoreAll();
+	theSpellChecker()->accept(word_);
+	check();
 }
 
 
 void GuiSpellchecker::add()
 {
-	insert();
+	theSpellChecker()->insert(word_);
+	check();
 }
 
 
@@ -161,30 +162,20 @@ void GuiSpellchecker::replace()
 }
 
 
-void GuiSpellchecker::partialUpdate(int state)
+void GuiSpellchecker::updateSuggestions(docstring_list & words)
 {
-	switch (state) {
-		case SPELL_PROGRESSED:
-			spellcheckPR->setValue(oldprogress_);
-			break;
+	wordED->setText(toqstr(word_.word()));
+	suggestionsLW->clear();
 
-		case SPELL_FOUND_WORD: {
-			wordED->setText(toqstr(word_.word()));
-			suggestionsLW->clear();
-
-			docstring w;
-			while (!(w = speller_->nextMiss()).empty())
-				suggestionsLW->addItem(toqstr(w));
-
-			if (suggestionsLW->count() == 0)
-				suggestionChanged(new QListWidgetItem(wordED->text()));
-			else
-				suggestionChanged(suggestionsLW->item(0));
-
-			suggestionsLW->setCurrentRow(0);
-			break;
-		}
+	if (words.empty() == 0) {
+		suggestionChanged(new QListWidgetItem(wordED->text()));
+		return;
 	}
+	for (size_t i = 0; i != words.size(); ++i)
+		suggestionsLW->addItem(toqstr(words[i]));
+
+	suggestionChanged(suggestionsLW->item(0));
+	suggestionsLW->setCurrentRow(0);
 }
 
 
@@ -192,54 +183,21 @@ bool GuiSpellchecker::initialiseParams(string const &)
 {
 	LYXERR(Debug::GUI, "Spellchecker::initialiseParams");
 
-	speller_ = theSpellChecker();
-	if (!speller_)
+	if (!theSpellChecker())
 		return false;
 
-	// reset values to initial
-	oldprogress_ = 0;
-	newprogress_ = 0;
+	DocIterator const begin = doc_iterator_begin(&buffer());
+	Cursor const & cur = bufferview()->cursor();
+	progress_ = countWords(begin, cur);
+	total_ = progress_ + countWords(cur, doc_iterator_end(&buffer()));
 	count_ = 0;
-
-	bool const success = speller_->error().empty();
-
-	if (!success) {
-		Alert::error(_("Spellchecker error"),
-			     _("The spellchecker could not be started\n")
-			     + speller_->error());
-		speller_ = 0;
-	}
-
-	return success;
+	return true;
 }
 
 
 void GuiSpellchecker::clearParams()
 {
 	LYXERR(Debug::GUI, "Spellchecker::clearParams");
-	speller_ = 0;
-}
-
-
-static WordLangTuple nextWord(Cursor & cur, ptrdiff_t & progress)
-{
-	Buffer const & buf = cur.bv().buffer();
-	cur.resetAnchor();
-	docstring word;
-	DocIterator from = cur;
-	DocIterator to;
-	if (!buf.nextWord(from, to, word))
-		return WordLangTuple(docstring(), string());
-
-	cur.setCursor(from);
-	cur.resetAnchor();
-	cur.setCursor(to);
-	cur.setSelection();
-	string lang_code = lyxrc.spellchecker_use_alt_lang
-		      ? lyxrc.spellchecker_alt_lang
-		      : from.paragraph().getFontSettings(buf.params(), cur.pos()).language()->code();
-	++progress;
-	return WordLangTuple(word, lang_code);
 }
 
 
@@ -247,72 +205,50 @@ void GuiSpellchecker::check()
 {
 	LYXERR(Debug::GUI, "Check the spelling of a word");
 
-	SpellChecker::Result res = SpellChecker::OK;
-
-	Cursor cur = bufferview()->cursor();
-	while (cur && cur.pos() && isLetter(cur))
-		cur.backwardPos();
-
-	ptrdiff_t start = 0;
-	ptrdiff_t total = 0;
-	DocIterator it = doc_iterator_begin(&buffer());
-	for (start = 1; it != cur; it.forwardPos())
-		++start;
-
-	for (total = start; it; it.forwardPos())
-		++total;
-
+	DocIterator from = bufferview()->cursor();
+	while (from && from.pos() && isLetter(from))
+		from.backwardPos();
+	DocIterator to;
 	exitEarly_ = false;
+	WordLangTuple word_lang;
+	docstring_list suggestions;
 
-	while (res == SpellChecker::OK || res == SpellChecker::IGNORED_WORD) {
-		word_ = nextWord(cur, start);
-
-		// end of document
-		if (word_.word().empty()) {
-			showSummary();
-			exitEarly_ = true;
-			return;
-		}
-
-		++count_;
-
-		// Update slider if and only if value has changed
-		float progress = total ? float(start)/total : 1;
-		newprogress_ = int(100.0 * progress);
-		if (newprogress_!= oldprogress_) {
-			LYXERR(Debug::GUI, "Updating spell progress.");
-			oldprogress_ = newprogress_;
-			// set progress bar
-			partialUpdate(SPELL_PROGRESSED);
-		}
-
-		res = speller_->check(word_);
-
-		// ... just bail out if the spellchecker reports an error.
-		if (!speller_->error().empty()) {
-			docstring const message =
-				_("The spellchecker has failed.\n") + speller_->error();
+	int progress;
+	try {
+		progress = buffer().spellCheck(from, to, word_lang, suggestions);
+	} catch (ExceptionMessage const & message) {
+		if (message.type_ == WarningException) {
+			Alert::warning(message.title_, message.details_);
 			slotClose();
 			return;
-		}	
+		}
+		throw message;
 	}
+	LYXERR(Debug::GUI, "Found word \"" << word_lang.word() << "\"");
+	count_ += progress;
+	progress_ += progress;
 
-	LYXERR(Debug::GUI, "Found word \"" << to_utf8(word_.word()) << "\"");
+	// end of document
+	if (from == to) {
+		showSummary();
+		exitEarly_ = true;
+		return;
+	}
+	word_ = word_lang;
 
-	int const size = cur.selEnd().pos() - cur.selBegin().pos();
-	cur.pos() -= size;
-	BufferView * bv = const_cast<BufferView *>(bufferview());
-	bv->putSelectionAt(cur, size, false);
+	int const progress_bar = total_
+		? int(100.0 * float(progress_)/total_) : 100;
+	LYXERR(Debug::GUI, "Updating spell progress.");
+	// set progress bar
+	spellcheckPR->setValue(progress_bar);
+	// set suggestions
+	updateSuggestions(suggestions);
+
 	// FIXME: if we used a lfun like in find/replace, dispatch would do
 	// that for us
-	// FIXME: this Controller is very badly designed...
-	bv->processUpdateFlags(Update::Force | Update::FitCursor);
-
-	// set suggestions
-	if (res != SpellChecker::OK && res != SpellChecker::IGNORED_WORD) {
-		LYXERR(Debug::GUI, "Found a word needing checking.");
-		partialUpdate(SPELL_FOUND_WORD);
-	}
+	int const size = to.pos() - from.pos();
+	BufferView * bv = const_cast<BufferView *>(bufferview());
+	bv->putSelectionAt(from, size, false);
 }
 
 
@@ -353,20 +289,6 @@ void GuiSpellchecker::replaceAll(docstring const & replacement)
 {
 	// TODO: add to list
 	replace(replacement);
-}
-
-
-void GuiSpellchecker::insert()
-{
-	speller_->insert(word_);
-	check();
-}
-
-
-void GuiSpellchecker::ignoreAll()
-{
-	speller_->accept(word_);
-	check();
 }
 
 

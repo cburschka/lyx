@@ -23,6 +23,7 @@ class QListWidgetItem;
 
 namespace lyx {
 
+class docstring_list;
 class SpellChecker;
 
 namespace frontend {
@@ -38,6 +39,7 @@ public Q_SLOTS:
 	void suggestionChanged(QListWidgetItem *);
 
 private Q_SLOTS:
+	/// ignore all occurances of word
 	void accept();
 	void add();
 	void ignore();
@@ -47,15 +49,9 @@ private Q_SLOTS:
 
 private:
 	/// update from controller
-	void partialUpdate(int id);
+	void updateSuggestions(docstring_list & words);
 	///
 	void updateContents();
-
-	///
-	enum State {
-		SPELL_PROGRESSED, //< update progress bar
-		SPELL_FOUND_WORD //< found a bad word
-	};
 
 	///
 	bool initialiseParams(std::string const & data);
@@ -75,8 +71,6 @@ private:
 	void replaceAll(docstring const &);
 	/// insert word in personal dictionary
 	void insert();
-	/// ignore all occurances of word
-	void ignoreAll();
 	/// check text until next misspelled/unknown word
 	/// returns true when finished
 	void check();
@@ -88,12 +82,10 @@ private:
 	/// current word being checked and lang code
 	WordLangTuple word_;
 	/// values for progress
-	int oldprogress_;
-	int newprogress_;
+	int total_;
+	int progress_;
 	/// word count
 	int count_;
-	/// The actual spellchecker object
-	SpellChecker * speller_;
 };
 
 } // namespace frontend
