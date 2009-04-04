@@ -490,7 +490,6 @@ Tabular::CellData::CellData(Buffer & buf)
 	  inset(new InsetTableCell(buf))
 {
 	inset->setBuffer(const_cast<Buffer &>(buf));
-	inset->paragraphs().back().setLayout(buf.params().documentClass().plainLayout());
 }
 
 
@@ -2841,7 +2840,7 @@ Tabular::BoxType Tabular::useParbox(idx_type cell) const
 /////////////////////////////////////////////////////////////////////
 
 InsetTableCell::InsetTableCell(Buffer & buf)
-	: InsetText(buf), isFixedWidth(false),
+	: InsetText(buf, InsetText::PlainLayout), isFixedWidth(false),
 	  contentAlign(LYX_ALIGN_CENTER)
 {}
 

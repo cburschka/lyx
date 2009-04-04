@@ -71,11 +71,11 @@ using graphics::PreviewLoader;
 
 /////////////////////////////////////////////////////////////////////
 
-InsetText::InsetText(Buffer const & buf)
+InsetText::InsetText(Buffer const & buf, UsePlain type)
 	: drawFrame_(false), frame_color_(Color_insetframe)
 {
 	setBuffer(const_cast<Buffer &>(buf));
-	initParagraphs();
+	initParagraphs(type);
 }
 
 
@@ -99,13 +99,17 @@ void InsetText::setBuffer(Buffer & buf)
 }
 
 
-void InsetText::initParagraphs()
+void InsetText::initParagraphs(UsePlain type)
 {
 	LASSERT(paragraphs().empty(), /**/);
 	paragraphs().push_back(Paragraph());
 	Paragraph & ourpar = paragraphs().back();
 	ourpar.setInsetOwner(this);
-	ourpar.setDefaultLayout(buffer_->params().documentClass());
+	DocumentClass const & dc = buffer_->params().documentClass();
+	if (type == DefaultLayout)
+		ourpar.setDefaultLayout(dc);
+	else
+		ourpar.setPlainLayout(dc);
 }
 
 

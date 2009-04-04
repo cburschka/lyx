@@ -40,13 +40,8 @@ using namespace std;
 namespace lyx {
 
 InsetBranch::InsetBranch(Buffer const & buf, InsetBranchParams const & params)
-	: InsetCollapsable(buf), params_(params)
-{
-	// override the default for InsetCollapsable, which is to
-	// use the plain layout.
-	DocumentClass const & dc = buf.params().documentClass();
-	paragraphs().back().setDefaultLayout(dc);
-}
+	: InsetCollapsable(buf, InsetText::DefaultLayout), params_(params)
+{}
 
 
 InsetBranch::~InsetBranch()

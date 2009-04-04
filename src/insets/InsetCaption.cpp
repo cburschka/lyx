@@ -48,13 +48,11 @@ namespace lyx {
 
 
 InsetCaption::InsetCaption(Buffer const & buf)
-	: InsetText(buf)
+	: InsetText(buf, InsetText::PlainLayout)
 {
 	setAutoBreakRows(true);
 	setDrawFrame(true);
 	setFrameColor(Color_captionframe);
-	// caption insets should use the plain layout
-	paragraphs().back().setPlainLayout(buf.params().documentClass());
 }
 
 
