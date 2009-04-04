@@ -167,7 +167,7 @@ void GuiSpellchecker::updateSuggestions(docstring_list & words)
 	wordED->setText(toqstr(word_.word()));
 	suggestionsLW->clear();
 
-	if (words.empty() == 0) {
+	if (words.empty()) {
 		suggestionChanged(new QListWidgetItem(wordED->text()));
 		return;
 	}
