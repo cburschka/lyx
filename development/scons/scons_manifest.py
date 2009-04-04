@@ -2232,6 +2232,12 @@ lib_doc_id_files = Split('''
 ''')
 
 
+lib_doc_id_clipart_files = Split('''
+    id-contrib.png
+    id-footnote.png
+''')
+
+
 lib_doc_it_files = Split('''
     Customization.lyx
     Intro.lyx
