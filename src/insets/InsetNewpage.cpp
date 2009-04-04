@@ -79,8 +79,6 @@ void InsetNewpageParams::read(Lexer & lex)
 		kind = InsetNewpageParams::CLEARDOUBLEPAGE;
 	else
 		lex.printError("Unknown kind");
-
-	lex >> "\\end_inset";
 }
 
 
@@ -94,6 +92,7 @@ void InsetNewpage::write(ostream & os) const
 void InsetNewpage::read(Lexer & lex)
 {
 	params_.read(lex);
+	lex >> "\\end_inset";
 }
 
 
