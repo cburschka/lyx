@@ -40,13 +40,15 @@ public:
 	///
 	enum Kind {
 		FRAC,
+		CFRAC,
+		DFRAC,
+		TFRAC,
 		OVER,
 		ATOP,
 		NICEFRAC,
 		UNITFRAC,
 		UNIT
 	};
-
 	///
 	explicit InsetMathFrac(Kind kind = FRAC, idx_type ncells = 2);
 	///
@@ -69,7 +71,6 @@ public:
 	docstring name() const;
 	///
 	bool extraBraces() const;
-
 	///
 	void write(WriteStream & os) const;
 	///
@@ -89,65 +90,6 @@ public:
 };
 
 
-/// \dfrac support
-class InsetMathDFrac : public InsetMathFrac {
-public:
-	///
-	InsetMathDFrac() {}
-	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
-	///
-	void draw(PainterInfo &, int x, int y) const;
-	///
-	docstring name() const;
-	///
-	void mathmlize(MathStream &) const;
-	///
-	void validate(LaTeXFeatures & features) const;
-private:
-	Inset * clone() const;
-};
-
-
-/// \tfrac support
-class InsetMathTFrac : public InsetMathFrac {
-public:
-	///
-	InsetMathTFrac() {}
-	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
-	///
-	void draw(PainterInfo &, int x, int y) const;
-	///
-	docstring name() const;
-	///
-	void mathmlize(MathStream &) const;
-	///
-	void validate(LaTeXFeatures & features) const;
-private:
-	Inset * clone() const;
-};
-
-
-/// \cfrac support
-class InsetMathCFrac : public InsetMathFrac {
-public:
-	///
-	InsetMathCFrac() {}
-	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
-	///
-	void draw(PainterInfo &, int x, int y) const;
-	///
-	docstring name() const;
-	///
-	void mathmlize(MathStream &) const;
-	///
-	void validate(LaTeXFeatures & features) const;
-private:
-	Inset * clone() const;
-};
-
 
 /// Binom like objects
 class InsetMathBinom : public InsetMathFracBase {
@@ -155,11 +97,12 @@ public:
 	///
 	enum Kind {
 		BINOM,
+		DBINOM,
+		TBINOM,
 		CHOOSE,
 		BRACE,
 		BRACK
 	};
-
 	///
 	explicit InsetMathBinom(Kind kind = BINOM);
 	///
@@ -176,6 +119,8 @@ public:
 	///
 	bool extraBraces() const;
 	///
+	void mathmlize(MathStream &) const;
+	///
 	void validate(LaTeXFeatures & features) const;
 private:
 	Inset * clone() const;
@@ -185,49 +130,6 @@ private:
 	Kind kind_;
 };
 
-
-/// \dbinom support
-class InsetMathDBinom : public InsetMathFracBase {
-public:
-	///
-	InsetMathDBinom() {}
-	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
-	///
-	void draw(PainterInfo &, int x, int y) const;
-	///
-	docstring name() const;
-	///
-	void mathmlize(MathStream &) const;
-	///
-	void validate(LaTeXFeatures & features) const;
-private:
-	Inset * clone() const;
-	///
-	int dw(int height) const;
-};
-
-
-/// \tbinom support
-class InsetMathTBinom : public InsetMathFracBase {
-public:
-	///
-	InsetMathTBinom() {}
-	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
-	///
-	void draw(PainterInfo &, int x, int y) const;
-	///
-	docstring name() const;
-	///
-	void mathmlize(MathStream &) const;
-	///
-	void validate(LaTeXFeatures & features) const;
-private:
-	Inset * clone() const;
-	///
-	int dw(int height) const;
-};
 
 
 } // namespace lyx

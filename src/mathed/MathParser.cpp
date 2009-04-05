@@ -1302,6 +1302,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
 			}
 		}
+
 		else if (t.cs() == "unitfrac") {
 			// Here allowed formats are \unitfrac[val]{num}{denom}
 			MathData ar;
@@ -1311,6 +1312,20 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				cell->back().nucleus()->cell(2) = ar;
 			} else {
 				cell->push_back(MathAtom(new InsetMathFrac(InsetMathFrac::UNITFRAC)));
+			}
+			parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
+			parse(cell->back().nucleus()->cell(1), FLAG_ITEM, mode);
+		}
+
+		else if (t.cs() == "cfrac") {
+			// Here allowed formats are \cfrac[pos]{num}{denom}
+			MathData ar;
+			parse(ar, FLAG_OPTION, mode);
+			if (ar.size()) {
+				cell->push_back(MathAtom(new InsetMathFrac(InsetMathFrac::CFRAC, 3)));
+				cell->back().nucleus()->cell(2) = ar;
+			} else {
+				cell->push_back(MathAtom(new InsetMathFrac(InsetMathFrac::CFRAC)));
 			}
 			parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
 			parse(cell->back().nucleus()->cell(1), FLAG_ITEM, mode);

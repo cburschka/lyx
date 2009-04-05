@@ -410,6 +410,10 @@ MathAtom createInsetMath(docstring const & s)
 		return MathAtom(new InsetMathStackrel);
 	if (s == "binom")
 		return MathAtom(new InsetMathBinom(InsetMathBinom::BINOM));
+	if (s == "dbinom")
+		return MathAtom(new InsetMathBinom(InsetMathBinom::DBINOM));
+	if (s == "tbinom")
+		return MathAtom(new InsetMathBinom(InsetMathBinom::TBINOM));
 	if (s == "choose")
 		return MathAtom(new InsetMathBinom(InsetMathBinom::CHOOSE));
 	if (s == "brace")
@@ -418,19 +422,27 @@ MathAtom createInsetMath(docstring const & s)
 		return MathAtom(new InsetMathBinom(InsetMathBinom::BRACK));
 	if (s == "frac")
 		return MathAtom(new InsetMathFrac);
+	if (s == "cfrac")
+		return MathAtom(new InsetMathFrac(InsetMathFrac::CFRAC));
+	if (s == "dfrac")
+		return MathAtom(new InsetMathFrac(InsetMathFrac::DFRAC));
+	if (s == "tfrac")
+		return MathAtom(new InsetMathFrac(InsetMathFrac::TFRAC));
 	if (s == "over")
 		return MathAtom(new InsetMathFrac(InsetMathFrac::OVER));
 	if (s == "nicefrac")
 		return MathAtom(new InsetMathFrac(InsetMathFrac::NICEFRAC));
 	if (s == "unitfrac")
 		return MathAtom(new InsetMathFrac(InsetMathFrac::UNITFRAC));
-	// This string value is only for math toolbar use. Not a LaTeX name
+	// These string values are only for math toolbar use, no LaTeX names
 	if (s == "unitfracthree")
 		return MathAtom(new InsetMathFrac(InsetMathFrac::UNITFRAC, 3));
 	if (s == "unitone")
 		return MathAtom(new InsetMathFrac(InsetMathFrac::UNIT, 1));
 	if (s == "unittwo")
 		return MathAtom(new InsetMathFrac(InsetMathFrac::UNIT));
+	if (s == "cfracthree")
+		return MathAtom(new InsetMathFrac(InsetMathFrac::CFRAC, 3));
 	//if (s == "infer")
 	//	return MathAtom(new MathInferInset);
 	if (s == "atop")
@@ -447,16 +459,6 @@ MathAtom createInsetMath(docstring const & s)
 		return MathAtom(new InsetMathColor(true));
 	if (s == "textcolor")
 		return MathAtom(new InsetMathColor(false));
-	if (s == "cfrac")
-		return MathAtom(new InsetMathCFrac);
-	if (s == "dfrac")
-		return MathAtom(new InsetMathDFrac);
-	if (s == "tfrac")
-		return MathAtom(new InsetMathTFrac);
-	if (s == "dbinom")
-		return MathAtom(new InsetMathDBinom);
-	if (s == "tbinom")
-		return MathAtom(new InsetMathTBinom);
 	if (s == "hphantom")
 		return MathAtom(new InsetMathPhantom(InsetMathPhantom::hphantom));
 	if (s == "phantom")
