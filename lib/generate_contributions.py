@@ -400,6 +400,14 @@ contributers = [
                  "2 April 2005",
                  '"case insensitive" and "complete word" search'),
 
+     contributer(u"Kornel Benko",
+                 "Kornel.Benko () berlin ! de",
+                 "GPL",
+                 "The LyX licence",
+                 "m=123100818303101",
+                 "3 January 2009",
+                 u"small bugfixes, CMake build system, Slovak translation"),
+
      contributer(u"Graham Biswell",
                  "graham () gbiswell ! com",
                  "GPL",
