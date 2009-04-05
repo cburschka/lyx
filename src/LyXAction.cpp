@@ -2109,6 +2109,15 @@ void LyXAction::init()
  */
 		{ LFUN_CHANGE_NEXT, "change-next", ReadOnly, Edit },
 /*!
+ * \var lyx::FuncCode lyx::LFUN_CHANGE_PREVIOUS
+ * \li Action: Moves the cursor to the position of the previous change
+               of the change tracking records.
+ * \li Syntax: change-previous
+ * \li Origin: vfr, 4 Apr 2009
+ * \endvar
+ */
+		{ LFUN_CHANGE_PREVIOUS, "change-previous", ReadOnly, Edit },
+/*!
  * \var lyx::FuncCode lyx::LFUN_CHANGES_MERGE
  * \li Action: Open change tracking dialog for merging and moves the cursor
                to the position of the next change.

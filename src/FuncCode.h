@@ -348,10 +348,10 @@ enum FuncCode
 	LFUN_PARAGRAPH_MOVE_UP,
 	LFUN_BUFFER_TOGGLE_COMPRESSION, // bpeng 20060427
 	// 265
-	LFUN_MATH_BIGDELIM,
 	LFUN_CLIPBOARD_PASTE,
 	LFUN_INSET_DISSOLVE,            // jspitzm 20060807
 	LFUN_CHANGE_NEXT,
+	LFUN_CHANGE_PREVIOUS,           // vfr 20090404
 	LFUN_WINDOW_NEW,                // Abdel 20061021
 	// 270
 	LFUN_WINDOW_CLOSE,              // Abdel 20061023
@@ -425,6 +425,8 @@ enum FuncCode
 	LFUN_SCREEN_SHOW_CURSOR,        // vfr, 20090325
 	LFUN_BUFFER_ZOOM_IN,            // vfr, 20090330
 	LFUN_BUFFER_ZOOM_OUT,           // vfr, 20090330
+	// 330
+	LFUN_MATH_BIGDELIM,
 
 
 	LFUN_LASTACTION                 // end of the table
