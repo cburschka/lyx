@@ -42,6 +42,7 @@ GuiChanges::GuiChanges(GuiView & lv)
 
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 	connect(nextPB, SIGNAL(clicked()), this, SLOT(nextChange()));
+	connect(previousPB, SIGNAL(clicked()), this, SLOT(previousChange()));
 	connect(rejectPB, SIGNAL(clicked()), this, SLOT(rejectChange()));
 	connect(acceptPB, SIGNAL(clicked()), this, SLOT(acceptChange()));
 
@@ -70,6 +71,12 @@ void GuiChanges::updateContents()
 void GuiChanges::nextChange()
 {
 	dispatch(FuncRequest(LFUN_CHANGE_NEXT));
+}
+
+
+void GuiChanges::previousChange()
+{
+	dispatch(FuncRequest(LFUN_CHANGE_PREVIOUS));
 }
 
 
