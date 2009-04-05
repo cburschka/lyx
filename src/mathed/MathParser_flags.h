@@ -24,7 +24,9 @@ enum flags {
 	/// Parse verbatim.
 	VERBATIM = 0x02,
 	/// Quiet operation (no warnigs or errors).
-	QUIET = 0x04
+	QUIET = 0x04,
+	/// Wrap unicode symbols in \text{}.
+	USETEXT = 0x08
 };
 
 

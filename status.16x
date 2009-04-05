@@ -74,6 +74,10 @@ What's new
 
 - Added tooltips for citation insets.
 
+- Non-ascii characters entered or pasted in math are now by default
+  wrapped in a text-in-math environment. If desired, this can be avoided
+  by verbatim pasting (Ctrl+Shift+V) or by dissolving the text inset.
+
 
 * WINDOWS INSTALLER
 

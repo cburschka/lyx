@@ -16,6 +16,7 @@
 #include "InsetMathBig.h"
 #include "InsetMathBox.h"
 #include "InsetMathBrace.h"
+#include "InsetMathChar.h"
 #include "InsetMathColor.h"
 #include "InsetMathComment.h"
 #include "InsetMathDelim.h"
@@ -41,6 +42,7 @@
 #include "Cursor.h"
 #include "CutAndPaste.h"
 #include "DispatchResult.h"
+#include "Encoding.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "LyXFunc.h"
@@ -513,7 +515,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "InsetMathNest: request: " << cmd << endl;
 
-	Parse::flags parseflg = Parse::QUIET;
+	Parse::flags parseflg = Parse::QUIET | Parse::USETEXT;
 
 	switch (cmd.action) {
 
@@ -1594,6 +1596,13 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type c)
 		}
 		if (c == '~') {
 			cur.niceInsert(createInsetMath("sim"));
+			return true;
+		}
+		if (c >= 0x80 && !Encodings::isMathAlpha(c)) {
+			MathAtom at = createInsetMath("text");
+			at.nucleus()->cell(0).push_back(MathAtom(new InsetMathChar(c)));
+			cur.niceInsert(at);
+			cur.posForward();
 			return true;
 		}
 	} else {
