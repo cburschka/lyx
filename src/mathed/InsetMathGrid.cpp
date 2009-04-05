@@ -1073,7 +1073,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "*** InsetMathGrid: request: " << cmd << endl;
 
-	Parse::flags parseflg = Parse::QUIET;
+	Parse::flags parseflg = Parse::QUIET | Parse::USETEXT;
 
 	switch (cmd.action) {
 
@@ -1274,7 +1274,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		InsetMathGrid grid(1, 1);
 		if (!topaste.empty())
-			if (topaste.size() == 1
+			if ((topaste.size() == 1 && topaste.at(0) < 0x80)
 			    || !mathed_parse_normal(grid, topaste, parseflg)) {
 				resetGrid(grid);
 				mathed_parse_normal(grid, topaste,
