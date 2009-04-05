@@ -426,6 +426,12 @@ void Cursor::resetAnchor()
 }
 
 
+void Cursor::setCursorToAnchor()
+{
+	if (selection())
+		setCursor(anchor_);
+}
+
 
 bool Cursor::posBackward()
 {

@@ -63,6 +63,8 @@ public:
 	void leaveInset(Inset const & inset);
 	/// sets cursor part
 	void setCursor(DocIterator const & it);
+	/// sets the cursor to the anchor
+	void setCursorToAnchor();
 
 	///
 	void setCurrentFont();

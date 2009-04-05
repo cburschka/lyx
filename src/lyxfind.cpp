@@ -352,6 +352,13 @@ bool findPreviousChange(BufferView * bv)
 
 bool findChange(BufferView * bv, bool next)
 {
+	if (bv->cursor().selection()) {
+		// set the cursor at the beginning or at the end of the selection
+		// before searching. Otherwise, the current change will be found.
+		if (next != bv->cursor().top() > bv->cursor().anchor())
+			bv->cursor().setCursorToAnchor();
+	}
+
 	DocIterator cur = bv->cursor();
 	if (!findChange(cur, next))
 		return false;
