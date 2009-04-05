@@ -55,6 +55,11 @@ What's new
 - Improved re-import from LaTeX of documents containing unadorned unicode
   symbols in math.
 
+- Using the AMS \text macro now only requires the amstext package and not
+  the full amsmath package. The amstext package is also loaded when using
+  other text-in-math environments in order to get the correct size for
+  text super and subscripts.
+
 
 * USER INTERFACE
 
