@@ -82,6 +82,10 @@ What's new
 - Non-ascii characters entered or pasted in math are now by default
   wrapped in a text-in-math environment. If desired, this can be avoided
   by verbatim pasting (Ctrl+Shift+V) or by dissolving the text inset.
+  
+- Zooming is bound to LFUN_BUFFER_ZOOM_IN and LFUN_BUFFER_ZOOM_OUT
+  (next to ctrl+mousewheel), such that it is possible to assign keyboard
+  shortcuts to them (bug 3038).
 
 
 * WINDOWS INSTALLER
