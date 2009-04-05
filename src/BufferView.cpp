@@ -1236,7 +1236,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_CHANGES_MERGE:
-		if (findNextChange(this)) {
+		if (findNextChange(this) || findPreviousChange(this)) {
 			processUpdateFlags(Update::Force | Update::FitCursor);
 			showDialog("changes");
 		}
