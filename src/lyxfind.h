@@ -66,6 +66,13 @@ void replace(BufferView * bv, FuncRequest const &, bool has_deleted = false);
 /// find the next change in the buffer
 bool findNextChange(BufferView * bv);
 
+/// find the previous change in the buffer
+bool findPreviousChange(BufferView * bv);
+
+/// find the change in the buffer
+/// \param next true to find the next change, otherwise the previous
+bool findChange(BufferView * bv, bool next);
+
 // Hopefully, nobody will ever replace with something like this
 #define LYX_FR_NULL_STRING "__LYX__F&R__NULL__STRING__"
 

@@ -115,11 +115,19 @@ bool findBackwards(DocIterator & cur, MatchString const & match,
 }
 
 
-bool findChange(DocIterator & cur)
+bool findChange(DocIterator & cur, bool next)
 {
-	for (; cur; cur.forwardPos())
-		if (cur.inTexted() && !cur.paragraph().isUnchanged(cur.pos()))
+	if (!next) 
+		cur.backwardPos();
+	for (; cur; next ? cur.forwardPos() : cur.backwardPos())
+		if (cur.inTexted() && !cur.paragraph().isUnchanged(cur.pos())) {
+			if (!next)
+				// if we search backwards, take a step forward
+				// to correctly set the anchor
+				cur.forwardPos();
 			return true;
+		}
+
 	return false;
 }
 
@@ -332,21 +340,47 @@ void replace(BufferView * bv, FuncRequest const & ev, bool has_deleted)
 
 bool findNextChange(BufferView * bv)
 {
-	DocIterator cur = bv->cursor();
+	return findChange(bv, true);
+}
 
-	if (!findChange(cur))
+
+bool findPreviousChange(BufferView * bv)
+{
+	return findChange(bv, false);
+}
+
+
+bool findChange(BufferView * bv, bool next)
+{
+	DocIterator cur = bv->cursor();
+	if (!findChange(cur, next))
 		return false;
 
 	bv->cursor().setCursor(cur);
 	bv->cursor().resetAnchor();
 
+	if (!next)
+		// take a step into the change
+		cur.backwardPos();
+
 	Change orig_change = cur.paragraph().lookupChange(cur.pos());
 
 	CursorSlice & tip = cur.top();
-	for (; !tip.at_end(); tip.forwardPos()) {
-		Change change = tip.paragraph().lookupChange(tip.pos());
-		if (change != orig_change)
-			break;
+	if (next) {
+		for (; !tip.at_end(); tip.forwardPos()) {
+			Change change = tip.paragraph().lookupChange(tip.pos());
+			if (change != orig_change)
+				break;
+		}
+	} else {
+		for (; !tip.at_begin(); tip.backwardPos()) {
+			Change change = tip.paragraph().lookupChange(tip.pos());
+			if (change != orig_change) {
+				// take a step forward to correctly set the selection
+				tip.forwardPos();
+				break;
+			}
+		}
 	}
 
 	// Now put cursor to end of selection:
