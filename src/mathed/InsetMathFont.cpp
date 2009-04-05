@@ -88,8 +88,9 @@ void InsetMathFont::validate(LaTeXFeatures & features) const
 	// Fraktur used:
 	if (key_->name == "mathfrak" || key_->name == "mathbb")
 		features.require("amssymb");
-	if (key_->name == "text")
-		features.require("amsmath");
+	if (key_->name == "text" || key_->name == "textnormal"
+	    || (key_->name.length() == 6 && key_->name.substr(0, 4) == "text"))
+		features.require("amstext");
 	if (key_->name == "textipa")
 		features.require("tipa");
 }
