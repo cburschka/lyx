@@ -910,7 +910,8 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		else if (t.cat() == catOther) {
 			char_type c = t.character();
 			if (c < 0x80 || mode_ & Parse::VERBATIM
-			    || !(mode_ & Parse::USETEXT)) {
+			    || !(mode_ & Parse::USETEXT)
+			    || mode == InsetMath::TEXT_MODE) {
 				cell->push_back(MathAtom(new InsetMathChar(c)));
 			} else {
 				MathAtom at = createInsetMath("text");
