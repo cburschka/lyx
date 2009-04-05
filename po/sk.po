@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-04-05 21:26+0200\n"
-"PO-Revision-Date: 2009-04-05 21:14+0200\n"
+"PO-Revision-Date: 2009-04-06 00:27+0200\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
 "Language-Team: German <kde-i18n-de@lists.kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -1933,11 +1933,11 @@ msgstr "&Komentár"
 
 #: src/frontends/qt4/ui/NoteUi.ui:80
 msgid "Print as grey text"
-msgstr "Tlačiť ako šedý text"
+msgstr "Tlač ako sivý text"
 
 #: src/frontends/qt4/ui/NoteUi.ui:83
 msgid "&Greyed out"
-msgstr "&Stienené"
+msgstr "Zosivelé"
 
 #: src/frontends/qt4/ui/NumberingUi.ui:60
 msgid "&List in Table of Contents"
@@ -2183,7 +2183,7 @@ msgstr "Vo vzorcoch"
 msgid ""
 "Show the grey inline completion behind the cursor in math mode after the "
 "delay."
-msgstr "Zobrazovať doplnenie za kurzorom na danom vzorku po zdržaní."
+msgstr "Zobrazovať sivé doplnenie za kurzorom na danom vzorku po zdržaní."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:43
 msgid "Automatic in&line completion"
@@ -2205,7 +2205,7 @@ msgstr "V texte"
 msgid ""
 "Show the grey inline completion behind the cursor in text mode after the "
 "delay."
-msgstr "Zobrazovať šedé doplnenie za kurzorom na danom riadku po zdržaní."
+msgstr "Zobrazovať sivé doplnenie za kurzorom na danom riadku po zdržaní."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:81
 msgid "Automatic &inline completion"
@@ -4858,15 +4858,15 @@ msgstr "Pričlenenie:"
 
 #: lib/layouts/apa.layout:170
 msgid "TwoAffiliations"
-msgstr "TwoAffiliations"
+msgstr "DvePričlenenia"
 
 #: lib/layouts/apa.layout:177
 msgid "ThreeAffiliations"
-msgstr "ThreeAffiliations"
+msgstr "TriPričlenenia"
 
 #: lib/layouts/apa.layout:184
 msgid "FourAffiliations"
-msgstr "FourAffiliations"
+msgstr "ŠtyriPričlenenia"
 
 #: lib/layouts/apa.layout:191 lib/layouts/egs.layout:332
 msgid "Journal"
@@ -5092,7 +5092,7 @@ msgstr "Uncover"
 
 #: lib/layouts/beamer.layout:608
 msgid "Uncovered on slides"
-msgstr "Uncovered on slides"
+msgstr "Odkryté na fóliách"
 
 #: lib/layouts/beamer.layout:623
 msgid "Only"
@@ -5637,7 +5637,7 @@ msgstr "PS:"
 
 #: lib/layouts/dinbrief.layout:232 lib/layouts/scrlttr2.layout:173
 msgid "SenderAddress"
-msgstr "SenderAddress"
+msgstr "AdresaOdosilateľa"
 
 #: lib/layouts/dinbrief.layout:237 lib/layouts/scrlettr.layout:167
 #: lib/layouts/scrlttr2.layout:245
@@ -5842,7 +5842,7 @@ msgstr "Poďakovanie."
 
 #: lib/layouts/elsart.layout:130
 msgid "Author Address"
-msgstr "Adresa autorov"
+msgstr "Autorova Adresa"
 
 #: lib/layouts/elsart.layout:138 lib/layouts/g-brief-en.layout:185
 #: lib/layouts/g-brief2.layout:727 lib/layouts/revtex.layout:128
@@ -6380,7 +6380,7 @@ msgstr "Návratová adresa"
 
 #: lib/layouts/g-brief-en.layout:92 lib/layouts/g-brief2.layout:686
 msgid "ReturnAddress:"
-msgstr "ReturnAddress:"
+msgstr "NávratováAdresa:"
 
 #: lib/layouts/g-brief-en.layout:99 lib/layouts/g-brief2.layout:748
 msgid "MyRef:"
@@ -6864,9 +6864,8 @@ msgid "Paper"
 msgstr "Papier"
 
 #: lib/layouts/iopart.layout:105
-#, fuzzy
 msgid "Prelim"
-msgstr "Tvrdenie"
+msgstr "Predbežné"
 
 #: lib/layouts/iopart.layout:111
 msgid "Rapid"
@@ -6977,14 +6976,12 @@ msgid "Author Running:"
 msgstr "Stĺpec autor:"
 
 #: lib/layouts/llncs.layout:203
-#, fuzzy
 msgid "TOC Author"
-msgstr "Obsah_Autor"
+msgstr "Obsah Autor"
 
 #: lib/layouts/llncs.layout:207
-#, fuzzy
 msgid "TOC Author:"
-msgstr "Obsah_Autor"
+msgstr "Obsah Autor:"
 
 #: lib/layouts/llncs.layout:295 lib/layouts/theorems-ams.inc:223
 #: lib/layouts/theorems.inc:207
@@ -6997,41 +6994,36 @@ msgid "Claim."
 msgstr "Nárok."
 
 #: lib/layouts/llncs.layout:312 lib/layouts/svjour.inc:369
-#, fuzzy
 msgid "Conjecture #."
-msgstr "Dohad"
+msgstr "Dohad #."
 
 #: lib/layouts/llncs.layout:340 lib/layouts/svjour.inc:397
 msgid "Example #."
 msgstr "Príklad #."
 
 #: lib/layouts/llncs.layout:347 lib/layouts/svjour.inc:404
-#, fuzzy
 msgid "Exercise #."
-msgstr "Cvičenie"
+msgstr "Úloha #:"
 
 #: lib/layouts/llncs.layout:360 lib/layouts/svjour.inc:422
 msgid "Note #."
 msgstr "Poznámka #."
 
 #: lib/layouts/llncs.layout:367 lib/layouts/svjour.inc:429
-#, fuzzy
 msgid "Problem #."
-msgstr "Problém"
+msgstr "Problém #."
 
 #: lib/layouts/llncs.layout:378 lib/layouts/svjour.inc:440
 msgid "Property"
 msgstr "Vlastníctvo"
 
 #: lib/layouts/llncs.layout:381 lib/layouts/svjour.inc:443
-#, fuzzy
 msgid "Property #."
-msgstr "Vlastníctvo"
+msgstr "Vlastnosť #."
 
 #: lib/layouts/llncs.layout:394 lib/layouts/svjour.inc:457
-#, fuzzy
 msgid "Question #."
-msgstr "Otázka"
+msgstr "Otázka #."
 
 #: lib/layouts/llncs.layout:401 lib/layouts/svjour.inc:464
 msgid "Remark #."
@@ -7042,9 +7034,8 @@ msgid "Solution"
 msgstr "Riešenie"
 
 #: lib/layouts/llncs.layout:408 lib/layouts/svjour.inc:471
-#, fuzzy
 msgid "Solution #."
-msgstr "Riešenie"
+msgstr "Riešenie #."
 
 #: lib/layouts/manpage.layout:143 lib/layouts/agu_stdtitle.inc:382
 #: lib/layouts/db_lyxmacros.inc:11
@@ -7056,33 +7047,28 @@ msgid "SGML"
 msgstr "SGML"
 
 #: lib/layouts/memoir.layout:81
-#, fuzzy
 msgid "Chapterprecis"
-msgstr "Kapitola"
+msgstr "KapitolaSúhrn"
 
 #: lib/layouts/memoir.layout:101
-#, fuzzy
 msgid "Epigraph"
-msgstr "Životopis"
+msgstr "Epigraph"
 
 #: lib/layouts/memoir.layout:112
-#, fuzzy
 msgid "Poemtitle"
-msgstr "Skrátenýnadpis"
+msgstr "TitulBásne"
 
 #: lib/layouts/memoir.layout:129
-#, fuzzy
 msgid "Poemtitle*"
-msgstr "Skrátenýnadpis"
+msgstr "TitulBásne*"
 
 #: lib/layouts/memoir.layout:153
 msgid "Legend"
 msgstr "Legenda"
 
 #: lib/layouts/moderncv.layout:73
-#, fuzzy
 msgid "Entry:"
-msgstr "Záznam"
+msgstr "Záznam:"
 
 #: lib/layouts/moderncv.layout:96
 msgid "ListItem"
@@ -7109,34 +7095,28 @@ msgid "Space:"
 msgstr "Space:"
 
 #: lib/layouts/moderncv.layout:120
-#, fuzzy
 msgid "Computer"
-msgstr "Kópie"
+msgstr "Počítač"
 
 #: lib/layouts/moderncv.layout:123
-#, fuzzy
 msgid "Computer:"
-msgstr "V&onkajší:"
+msgstr "Počítač:"
 
 #: lib/layouts/moderncv.layout:126
-#, fuzzy
 msgid "EmptySection"
-msgstr "Oddiel"
+msgstr "PrázdnaSekcia"
 
 #: lib/layouts/moderncv.layout:135
-#, fuzzy
 msgid "Empty Section"
-msgstr "Oddiel"
+msgstr "Prázdna Sekcia"
 
 #: lib/layouts/moderncv.layout:142
-#, fuzzy
 msgid "CloseSection"
-msgstr "Výber"
+msgstr "ZavriSekciu"
 
 #: lib/layouts/moderncv.layout:145
-#, fuzzy
 msgid "Close Section"
-msgstr "Výber"
+msgstr "Zacri Sekciu"
 
 #: lib/layouts/paper.layout:141
 msgid "SubTitle"
@@ -7149,16 +7129,15 @@ msgstr "Inštitúcia"
 #: lib/layouts/powerdot.layout:120 lib/layouts/seminar.layout:36
 #: lib/layouts/slides.layout:89 src/frontends/qt4/GuiDocument.cpp:146
 msgid "Slide"
-msgstr "Slide"
+msgstr "Fólia"
 
 #: lib/layouts/powerdot.layout:133
 msgid "    "
 msgstr "    "
 
 #: lib/layouts/powerdot.layout:143
-#, fuzzy
 msgid "EndSlide"
-msgstr "Na ší&rku"
+msgstr "KoniecFólie"
 
 #: lib/layouts/powerdot.layout:157
 msgid "~=~"
@@ -7166,26 +7145,23 @@ msgstr "~=~"
 
 #: lib/layouts/powerdot.layout:170
 msgid "WideSlide"
-msgstr "WideSlide"
+msgstr "ŠirokáFólia"
 
 #: lib/layouts/powerdot.layout:182
-#, fuzzy
 msgid "EmptySlide"
-msgstr "Oddiel"
+msgstr "PrázdnaFólia"
 
 #: lib/layouts/powerdot.layout:186
-#, fuzzy
 msgid "Empty slide:"
-msgstr "prázdne"
+msgstr "Prázdna fólia:"
 
 #: lib/layouts/powerdot.layout:259
 msgid "ItemizeType1"
 msgstr "VýpisPoložiekTyp1"
 
 #: lib/layouts/powerdot.layout:284
-#, fuzzy
 msgid "EnumerateType1"
-msgstr "Zoznam-čísla"
+msgstr "EnumerateType1"
 
 #: lib/layouts/powerdot.layout:402 lib/layouts/stdfloats.inc:39
 msgid "List of Algorithms"
@@ -7196,43 +7172,36 @@ msgid "\\thechapter"
 msgstr "\\thechapter"
 
 #: lib/layouts/recipebook.layout:84
-#, fuzzy
 msgid "Recipe"
-msgstr "Prijaté"
+msgstr "Recept"
 
 #: lib/layouts/recipebook.layout:91
-#, fuzzy
 msgid "Recipe:"
-msgstr "Odmietnuté:"
+msgstr "Recept:"
 
 #: lib/layouts/recipebook.layout:118
-#, fuzzy
 msgid "Ingredients"
-msgstr "Kredity"
+msgstr "Prísady"
 
 #: lib/layouts/recipebook.layout:128
-#, fuzzy
 msgid "Ingredients:"
-msgstr "Kredity"
+msgstr "Prísady:"
 
 #: lib/layouts/revtex4.layout:109
 msgid "Preprint"
 msgstr "Predtlač"
 
 #: lib/layouts/revtex4.layout:167 lib/layouts/revtex4.layout:172
-#, fuzzy
 msgid "AltAffiliation"
-msgstr "Pričlenenie"
+msgstr "DruhéPričlenenie"
 
 #: lib/layouts/revtex4.layout:188 lib/layouts/amsdefs.inc:176
-#, fuzzy
 msgid "Thanks:"
-msgstr "Vďaka"
+msgstr "Vďaka:"
 
 #: lib/layouts/revtex4.layout:197
-#, fuzzy
 msgid "Electronic Address:"
-msgstr "Návratová adresa"
+msgstr "Elektronická adresa"
 
 #: lib/layouts/revtex4.layout:234
 #, fuzzy
@@ -7338,22 +7307,19 @@ msgstr "Zákazník"
 
 #: lib/layouts/scrlettr.layout:237 lib/layouts/scrlttr2.layout:325
 msgid "Invoice"
-msgstr "Faktúra"
+msgstr "Účet"
 
 #: lib/layouts/scrlettr.layout:240 lib/layouts/scrlttr2.layout:329
-#, fuzzy
 msgid "Invoice no.:"
-msgstr "Faktúra"
+msgstr "Účet č.:"
 
 #: lib/layouts/scrlttr2.layout:71
-#, fuzzy
 msgid "NextAddress"
-msgstr "Adresa"
+msgstr "ĎalšiaAdresa"
 
 #: lib/layouts/scrlttr2.layout:82
-#, fuzzy
 msgid "Next Address:"
-msgstr "Adresa"
+msgstr "Ďalšia Adresa:"
 
 #: lib/layouts/scrlttr2.layout:124
 #, fuzzy
@@ -7366,9 +7332,8 @@ msgid "Sender Name:"
 msgstr "&Názov tlačiarne:"
 
 #: lib/layouts/scrlttr2.layout:177
-#, fuzzy
 msgid "Sender Address:"
-msgstr "Poslať_na_adresu"
+msgstr "Adresa Odosielateľa:"
 
 #: lib/layouts/scrlttr2.layout:185
 msgid "Sender Phone:"
@@ -7418,38 +7383,35 @@ msgstr "Koniec vety|K"
 
 #: lib/layouts/seminar.layout:24
 msgid "LandscapeSlide"
-msgstr "LandscapeSlide"
+msgstr "FóliaNaŠírku"
 
 #: lib/layouts/seminar.layout:34
-#, fuzzy
 msgid "Landscape Slide:"
-msgstr "Na ší&rku"
+msgstr "Fólia na šírku:"
 
 #: lib/layouts/seminar.layout:40
 msgid "PortraitSlide"
-msgstr "PortraitSlide"
+msgstr "FóliaNaVýšku"
 
 #: lib/layouts/seminar.layout:43
-#, fuzzy
 msgid "Portrait Slide:"
-msgstr "Na &výšku"
+msgstr "Fólia na výšku:"
 
 #: lib/layouts/seminar.layout:45
 msgid "Slide*"
-msgstr "Slide*"
+msgstr "Fólia*"
 
 #: lib/layouts/seminar.layout:52
-#, fuzzy
 msgid "EndOfSlide"
-msgstr "Na ší&rku"
+msgstr "KoniecFólie"
 
 #: lib/layouts/seminar.layout:57
 msgid "SlideHeading"
-msgstr "SlideHeading"
+msgstr "HlavičkaFólie"
 
 #: lib/layouts/seminar.layout:64
 msgid "SlideSubHeading"
-msgstr "SlideSubHeading"
+msgstr "PodHlavičkaFólie"
 
 #: lib/layouts/seminar.layout:70
 msgid "ListOfSlides"
@@ -7461,12 +7423,11 @@ msgstr "[Zoznam Fólií]"
 
 #: lib/layouts/seminar.layout:81
 msgid "SlideContents"
-msgstr "SlideContents"
+msgstr "ObsahFólie"
 
 #: lib/layouts/seminar.layout:84
-#, fuzzy
 msgid "[Slide Contents]"
-msgstr "Obsah"
+msgstr "[Obsah fólie]"
 
 #: lib/layouts/seminar.layout:87
 msgid "ProgressContents"
@@ -7550,7 +7511,7 @@ msgstr "MMMMM"
 
 #: lib/layouts/slides.layout:105
 msgid "New Slide:"
-msgstr "New Slide:"
+msgstr "Nová Fólia:"
 
 #: lib/layouts/slides.layout:127
 msgid "Overlay"
@@ -7601,18 +7562,16 @@ msgid "ACKNOWLEDGMENTS"
 msgstr "ACKNOWLEDGMENTS"
 
 #: lib/layouts/aapaper.inc:54
-#, fuzzy
 msgid "email:"
-msgstr "E-mail"
+msgstr "email:"
 
 #: lib/layouts/aapaper.inc:114
 msgid "Thesaurus not supported in recent A&A:"
 msgstr "Thesaurus not supported in recent A&A:"
 
 #: lib/layouts/agu_stdclass.inc:34 lib/layouts/db_stdcharstyles.inc:35
-#, fuzzy
 msgid "Element:Firstname"
-msgstr "Prvé_meno"
+msgstr "Element:KrstnéMeno"
 
 #: lib/layouts/agu_stdclass.inc:36 lib/layouts/db_stdcharstyles.inc:37
 #, fuzzy
@@ -7620,9 +7579,8 @@ msgid "Firstname"
 msgstr "Prvé_meno"
 
 #: lib/layouts/agu_stdclass.inc:48
-#, fuzzy
 msgid "Element:Fname"
-msgstr "&Umiestnenie:"
+msgstr "Element:KMeno"
 
 #: lib/layouts/agu_stdclass.inc:50
 #, fuzzy
@@ -7630,9 +7588,8 @@ msgid "Fname"
 msgstr "Parametre"
 
 #: lib/layouts/agu_stdclass.inc:63 lib/layouts/db_stdcharstyles.inc:46
-#, fuzzy
 msgid "Element:Surname"
-msgstr "Priezvisko"
+msgstr "Element:Priezvisko"
 
 #: lib/layouts/agu_stdclass.inc:65 lib/layouts/db_stdcharstyles.inc:48
 #: lib/layouts/db_stdtitle.inc:98
@@ -7640,14 +7597,12 @@ msgid "Surname"
 msgstr "Priezvisko"
 
 #: lib/layouts/agu_stdclass.inc:78 lib/layouts/db_stdcharstyles.inc:6
-#, fuzzy
 msgid "Element:Filename"
-msgstr "Názov súboru"
+msgstr "Element:NázovSúboru"
 
 #: lib/layouts/agu_stdclass.inc:93 lib/layouts/db_stdcharstyles.inc:57
-#, fuzzy
 msgid "Element:Literal"
-msgstr "Doslovné"
+msgstr "Element:Doslovne"
 
 #: lib/layouts/agu_stdclass.inc:95 lib/layouts/db_stdcharstyles.inc:59
 #: lib/layouts/db_stdlayouts.inc:11
@@ -7655,18 +7610,16 @@ msgid "Literal"
 msgstr "Doslovné"
 
 #: lib/layouts/agu_stdclass.inc:108
-#, fuzzy
 msgid "Element:Emph"
-msgstr "&Umiestnenie:"
+msgstr "Element:Dôraz"
 
 #: lib/layouts/agu_stdclass.inc:110 src/frontends/qt4/GuiCharacter.cpp:77
 msgid "Emph"
 msgstr "Zvýrazniť"
 
 #: lib/layouts/agu_stdclass.inc:124
-#, fuzzy
 msgid "Element:Abbrev"
-msgstr "Náhľad"
+msgstr "Element:Skratka"
 
 #: lib/layouts/agu_stdclass.inc:126
 #, fuzzy
@@ -7674,9 +7627,8 @@ msgid "Abbrev"
 msgstr "Náhľad"
 
 #: lib/layouts/agu_stdclass.inc:135
-#, fuzzy
 msgid "Element:Citation-number"
-msgstr "Citácia"
+msgstr "Element:ČísloCitácie"
 
 #: lib/layouts/agu_stdclass.inc:137 lib/layouts/agu_stdtitle.inc:56
 #, fuzzy
@@ -7684,9 +7636,8 @@ msgid "Citation-number"
 msgstr "Citácia"
 
 #: lib/layouts/agu_stdclass.inc:146
-#, fuzzy
 msgid "Element:Volume"
-msgstr "Stĺpce"
+msgstr "Element:Volume"
 
 #: lib/layouts/agu_stdclass.inc:148
 #, fuzzy
@@ -7694,9 +7645,8 @@ msgid "Volume"
 msgstr "Stĺpce"
 
 #: lib/layouts/agu_stdclass.inc:157
-#, fuzzy
 msgid "Element:Day"
-msgstr "Súhrn"
+msgstr "Element:Deň"
 
 #: lib/layouts/agu_stdclass.inc:159
 #, fuzzy
@@ -7704,9 +7654,8 @@ msgid "Day"
 msgstr "Zobrazenie"
 
 #: lib/layouts/agu_stdclass.inc:168
-#, fuzzy
 msgid "Element:Month"
-msgstr "&Umiestnenie:"
+msgstr "Element:Mesiac"
 
 #: lib/layouts/agu_stdclass.inc:170
 #, fuzzy
@@ -7714,9 +7663,8 @@ msgid "Month"
 msgstr "Cesty"
 
 #: lib/layouts/agu_stdclass.inc:179
-#, fuzzy
 msgid "Element:Year"
-msgstr "Súhrn"
+msgstr "Element:Rok"
 
 #: lib/layouts/agu_stdclass.inc:181
 #, fuzzy
@@ -7958,18 +7906,16 @@ msgid "Datasets:"
 msgstr "Databá&zy"
 
 #: lib/layouts/agu_stdtitle.inc:321
-#, fuzzy
 msgid "Element:ISSN"
-msgstr "&Umiestnenie:"
+msgstr "Element:SSN"
 
 #: lib/layouts/agu_stdtitle.inc:323
 msgid "ISSN"
 msgstr "ISSN"
 
 #: lib/layouts/agu_stdtitle.inc:332
-#, fuzzy
 msgid "Element:CODEN"
-msgstr "&Umiestnenie:"
+msgstr "Element:CODEN"
 
 #: lib/layouts/agu_stdtitle.inc:334
 #, fuzzy
@@ -7977,9 +7923,8 @@ msgid "CODEN"
 msgstr "SCÉNA"
 
 #: lib/layouts/agu_stdtitle.inc:344
-#, fuzzy
 msgid "Element:SS-Code"
-msgstr "Kód"
+msgstr "Element:SS-Code"
 
 #: lib/layouts/agu_stdtitle.inc:346
 #, fuzzy
@@ -7995,9 +7940,8 @@ msgid "SS-Title"
 msgstr "SS-Title"
 
 #: lib/layouts/agu_stdtitle.inc:367
-#, fuzzy
 msgid "Element:CCC-Code"
-msgstr "Kód"
+msgstr "Element:CCC-Code"
 
 #: lib/layouts/agu_stdtitle.inc:369
 #, fuzzy
@@ -8005,14 +7949,12 @@ msgid "CCC-Code"
 msgstr "Kód"
 
 #: lib/layouts/agu_stdtitle.inc:380
-#, fuzzy
 msgid "Element:Code"
-msgstr "&Umiestnenie:"
+msgstr "Element:Code"
 
 #: lib/layouts/agu_stdtitle.inc:391
-#, fuzzy
 msgid "Element:Dscr"
-msgstr "&Umiestnenie:"
+msgstr "Element:Dscr"
 
 #: lib/layouts/agu_stdtitle.inc:393
 msgid "Dscr"
@@ -8031,9 +7973,8 @@ msgid "Orgdiv"
 msgstr "Orgdiv"
 
 #: lib/layouts/agu_stdtitle.inc:426
-#, fuzzy
 msgid "Element:Orgname"
-msgstr "Priezvisko"
+msgstr "ElementOrgname"
 
 #: lib/layouts/agu_stdtitle.inc:428
 #, fuzzy
@@ -8041,14 +7982,12 @@ msgid "Orgname"
 msgstr "Priezvisko"
 
 #: lib/layouts/agu_stdtitle.inc:437
-#, fuzzy
 msgid "Element:Street"
-msgstr "Ulica"
+msgstr "Element:Ulica"
 
 #: lib/layouts/agu_stdtitle.inc:448
-#, fuzzy
 msgid "Element:City"
-msgstr "&Umiestnenie:"
+msgstr "Element:Mesto"
 
 #: lib/layouts/agu_stdtitle.inc:450
 #, fuzzy
@@ -8056,14 +7995,12 @@ msgid "City"
 msgstr "Drobné"
 
 #: lib/layouts/agu_stdtitle.inc:459
-#, fuzzy
 msgid "Element:State"
-msgstr "&Umiestnenie:"
+msgstr "Element:Štát"
 
 #: lib/layouts/agu_stdtitle.inc:470
-#, fuzzy
 msgid "Element:Postcode"
-msgstr "Vložiť"
+msgstr "Element:SmerovacieČíslo"
 
 #: lib/layouts/agu_stdtitle.inc:472
 #, fuzzy
@@ -8071,9 +8008,8 @@ msgid "Postcode"
 msgstr "Vložiť"
 
 #: lib/layouts/agu_stdtitle.inc:481
-#, fuzzy
 msgid "Element:Country"
-msgstr "Záznam"
+msgstr "Element:Krajina"
 
 #: lib/layouts/agu_stdtitle.inc:483
 #, fuzzy
@@ -8108,9 +8044,8 @@ msgid "AuthorAddr"
 msgstr "AuthorAddr"
 
 #: lib/layouts/aguplus.inc:155
-#, fuzzy
 msgid "Author Address:"
-msgstr "Návratová adresa"
+msgstr "Autorova Adresa:"
 
 #: lib/layouts/aguplus.inc:159
 msgid "SlugComment"
@@ -8138,19 +8073,16 @@ msgid "TableCaption"
 msgstr "Popis_tabuľky"
 
 #: lib/layouts/amsdefs.inc:143
-#, fuzzy
 msgid "Current Address"
-msgstr "Aktuálna_Adresa"
+msgstr "Súčasná Adresa"
 
 #: lib/layouts/amsdefs.inc:146
-#, fuzzy
 msgid "Current address:"
-msgstr "Aktuálna_Adresa"
+msgstr "Súčasná adresa"
 
 #: lib/layouts/amsdefs.inc:154
-#, fuzzy
 msgid "E-mail address:"
-msgstr "Adresa odosielateľa"
+msgstr "E-mail adresa:"
 
 #: lib/layouts/amsdefs.inc:169
 msgid "Key words and phrases:"
@@ -8187,14 +8119,12 @@ msgid "Directory"
 msgstr "Adresár"
 
 #: lib/layouts/db_stdcharstyles.inc:71
-#, fuzzy
 msgid "Element:Email"
-msgstr "&Umiestnenie:"
+msgstr "Element:Email"
 
 #: lib/layouts/db_stdcharstyles.inc:85
-#, fuzzy
 msgid "Element:KeyCombo"
-msgstr "Klávesnica"
+msgstr "Element:KeyCombo"
 
 #: lib/layouts/db_stdcharstyles.inc:87
 #, fuzzy
@@ -8202,9 +8132,8 @@ msgid "KeyCombo"
 msgstr "Klávesnica"
 
 #: lib/layouts/db_stdcharstyles.inc:99
-#, fuzzy
 msgid "Element:KeyCap"
-msgstr "Názov"
+msgstr "Element:KeyCap"
 
 #: lib/layouts/db_stdcharstyles.inc:101
 #, fuzzy
@@ -8434,12 +8363,11 @@ msgstr "poznámka"
 
 #: lib/layouts/stdinsets.inc:127
 msgid "Note:Greyedout"
-msgstr "Poznámka:stienená"
+msgstr "Poznámka:Zosivelá"
 
 #: lib/layouts/stdinsets.inc:128
-#, fuzzy
 msgid "greyedout"
-msgstr "Otvorená príloha"
+msgstr "zosivelé"
 
 #: lib/layouts/stdinsets.inc:139 lib/layouts/stdinsets.inc:140
 #: src/insets/InsetERT.cpp:162 src/insets/InsetERT.cpp:164
@@ -8470,9 +8398,8 @@ msgid "Box"
 msgstr "Rámeček"
 
 #: lib/layouts/stdinsets.inc:222
-#, fuzzy
 msgid "Box:Shaded"
-msgstr "&Tvar:"
+msgstr "Rámok:Stienený"
 
 #: lib/layouts/stdinsets.inc:231
 #, fuzzy
@@ -8603,9 +8530,8 @@ msgid "Example*"
 msgstr "Príklad*"
 
 #: lib/layouts/theorems-order.inc:52 lib/layouts/theorems-starred.inc:149
-#, fuzzy
 msgid "Problem*"
-msgstr "Problém"
+msgstr "Problém*"
 
 #: lib/layouts/theorems-order.inc:58 lib/layouts/theorems-starred.inc:161
 #, fuzzy
@@ -8630,9 +8556,8 @@ msgid "Fact*"
 msgstr "Fakt*"
 
 #: lib/layouts/theorems-starred.inc:152
-#, fuzzy
 msgid "Problem."
-msgstr "Problém"
+msgstr "Problém."
 
 #: lib/layouts/theorems-starred.inc:164
 #, fuzzy
@@ -9130,7 +9055,7 @@ msgstr "Arabsky (ArabTeX)"
 
 #: lib/languages:11
 msgid "Arabic (Arabi)"
-msgstr "Arabsky"
+msgstr "Arabsky (Arabi)"
 
 #: lib/languages:12 src/frontends/qt4/GuiSymbols.cpp:63
 msgid "Armenian"
@@ -9146,7 +9071,7 @@ msgstr "Nemecky (Rakúsko)"
 
 #: lib/languages:15
 msgid "Indonesian"
-msgstr "Indonésky"
+msgstr "Indonézsky"
 
 #: lib/languages:16
 msgid "Malay"
@@ -9158,11 +9083,11 @@ msgstr "Baskitsky"
 
 #: lib/languages:18
 msgid "Belarusian"
-msgstr "Belorusky"
+msgstr "Bielorusky"
 
 #: lib/languages:19
 msgid "Portuguese (Brazil)"
-msgstr "Portugalsky"
+msgstr "Portugalsky (Brazil)"
 
 #: lib/languages:20
 msgid "Breton"
@@ -9881,7 +9806,7 @@ msgstr "Změnit typ vzorce|v"
 
 #: lib/ui/classic.ui:166 lib/ui/stdmenus.inc:201
 msgid "Use Computer Algebra System|S"
-msgstr "Použít algebraické programy|a"
+msgstr "Použiť algebraické programy"
 
 #: lib/ui/classic.ui:168
 msgid "Alignment|A"
@@ -10694,9 +10619,8 @@ msgid "Drop Shadow|w"
 msgstr "Se stínem|S"
 
 #: lib/ui/stdcontext.inc:148
-#, fuzzy
 msgid "Shaded background|b"
-msgstr "poznámka na pozadí"
+msgstr "Stienené pozadie"
 
 #: lib/ui/stdcontext.inc:149
 msgid "Double frame|u"
@@ -10713,7 +10637,7 @@ msgstr "Komentár"
 
 #: lib/ui/stdcontext.inc:165 lib/ui/stdmenus.inc:435
 msgid "Greyed Out|G"
-msgstr "Stienené|S"
+msgstr "Zosivelé"
 
 #: lib/ui/stdcontext.inc:178
 msgid "Interword Space|w"
@@ -15565,18 +15489,16 @@ msgid "comment background"
 msgstr "pozadie matematiky"
 
 #: src/Color.cpp:160
-#, fuzzy
 msgid "greyedout inset label"
-msgstr "Otvorená príloha"
+msgstr "zosivelá vložka označenia"
 
 #: src/Color.cpp:161
-#, fuzzy
 msgid "greyedout inset background"
-msgstr "poznámka na pozadí"
+msgstr "zosivelé pozadie vložky"
 
 #: src/Color.cpp:162
 msgid "shaded box"
-msgstr "stínovaný rámeček"
+msgstr "stienený rámok"
 
 #: src/Color.cpp:163
 msgid "listings background"
@@ -17376,17 +17298,14 @@ msgid "Error: Could not generate logfile."
 msgstr "Nemôžem pracovať so súborom:"
 
 #: src/VCBackend.cpp:536
-#, fuzzy
 msgid ""
 "Error when committing to repository.\n"
 "You have to manually resolve the problem.\n"
 "After pressing OK, LyX will reopen the document."
 msgstr ""
-"Chyba při provádění aktualizace z repositáře.\n"
-"Musíte opravit konflikty NYNÍ!\n"
-"'%1$s'.\n"
-"\n"
-"Po stisknutí tlačítka OK se LyX pokusí znovu načíst opravený dokument."
+"Chyba pri aktualizovaní repositu.\n"
+"Treba vyriešiť problém manuálne.\n"
+"Po stisknutí tlačidla OK sa LyX pokúsi dokument znovu otvoriť."
 
 #: src/VCBackend.cpp:598
 msgid ""
@@ -17772,9 +17691,8 @@ msgid "Drop shadow"
 msgstr "Se stínem"
 
 #: src/frontends/qt4/GuiBox.cpp:58
-#, fuzzy
 msgid "Shaded background"
-msgstr "poznámka na pozadí"
+msgstr "Stienené pozadie"
 
 #: src/frontends/qt4/GuiBox.cpp:59
 msgid "Double rectangular frame"
@@ -20146,9 +20064,8 @@ msgid "drop shadow"
 msgstr "se stínem"
 
 #: src/insets/InsetBox.cpp:70
-#, fuzzy
 msgid "shaded background"
-msgstr "poznámka na pozadí"
+msgstr "stienené pozadie"
 
 #: src/insets/InsetBox.cpp:71
 msgid "double frame"
@@ -20382,10 +20299,10 @@ msgid ""
 "Please specify the sorting of this entry manually, as\n"
 "explained in the User Guide."
 msgstr ""
-"Algoritmus pro automatické třídění rejstříku narazil na problém\n"
+"Algoritmus pre automatické triedenie narazil na problém\n"
 "s položkou:'%1$s'.\n"
-"Prosím nastavte třídění této položky ručně podle\n"
-"popisu v uživatelské příručce."
+"Prosím nastavte triedenie tejto položky ručne, ako\n"
+"vysvetlené v uživatelskej príručke."
 
 #: src/insets/InsetInfo.cpp:115
 #, fuzzy, c-format
@@ -20655,7 +20572,7 @@ msgstr "Pozn.[[InsetNote]]"
 
 #: src/insets/InsetNote.cpp:68
 msgid "Greyed out"
-msgstr "Stienené"
+msgstr "Zosivelé"
 
 #: src/insets/InsetNote.cpp:133
 msgid "Opened Note Inset"
