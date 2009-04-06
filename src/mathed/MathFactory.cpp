@@ -441,8 +441,10 @@ MathAtom createInsetMath(docstring const & s)
 		return MathAtom(new InsetMathFrac(InsetMathFrac::UNIT, 1));
 	if (s == "unittwo")
 		return MathAtom(new InsetMathFrac(InsetMathFrac::UNIT));
-	if (s == "cfracthree")
-		return MathAtom(new InsetMathFrac(InsetMathFrac::CFRAC, 3));
+	if (s == "cfracleft")
+		return MathAtom(new InsetMathFrac(InsetMathFrac::CFRACLEFT));
+	if (s == "cfracright")
+		return MathAtom(new InsetMathFrac(InsetMathFrac::CFRACRIGHT));
 	//if (s == "infer")
 	//	return MathAtom(new MathInferInset);
 	if (s == "atop")

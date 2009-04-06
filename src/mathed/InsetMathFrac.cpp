@@ -85,8 +85,7 @@ InsetMathFrac const * InsetMathFrac::asFracInset() const
 bool InsetMathFrac::idxForward(Cursor & cur) const
 {
 	InsetMath::idx_type target = 0;
-	if (kind_ == UNIT || (kind_ == UNITFRAC && nargs() == 3)
-		|| (kind_ == CFRAC && nargs() == 3)) {
+	if (kind_ == UNIT || (kind_ == UNITFRAC && nargs() == 3)) {
 		if (nargs() == 3)
 			target = 0;
 		else if (nargs() == 2)
@@ -104,8 +103,7 @@ bool InsetMathFrac::idxForward(Cursor & cur) const
 bool InsetMathFrac::idxBackward(Cursor & cur) const
 {
 	InsetMath::idx_type target = 0;
-	if (kind_ == UNIT || (kind_ == UNITFRAC && nargs() == 3)
-		|| (kind_ == CFRAC && nargs() == 3)) {
+	if (kind_ == UNIT || (kind_ == UNITFRAC && nargs() == 3)) {
 		if (nargs() == 3)
 			target = 2;
 		else if (nargs() == 2)
@@ -159,29 +157,15 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 			dim.wid = dim0.width() + dim1.wid + 5;
 			dim.asc = dim0.height() + 5;
 			dim.des = dim1.height() - 5;
-		} else if (kind_ == CFRAC) {
-			if (nargs() == 2) {
-				// cfrac is always in display size
-				StyleChanger dummy2(mi.base, LM_ST_DISPLAY);
-				cell(0).metrics(mi, dim0);
-				cell(1).metrics(mi, dim1);
-				dim.wid = max(dim0.wid, dim1.wid) + 2;
-				dim.asc = dim0.height() + 2 + 5;
-				dim.des = dim1.height() + 2 - 5;
-			} else {
-				// cfrac is always in display size
-				StyleChanger dummy2(mi.base, LM_ST_DISPLAY);
-				// use text font for the optional argument
-				FontSetChanger dummy3(mi.base, "textnormal");
-				cell(2).metrics(mi, dim2);
-				// return to math font
-				FontSetChanger dummy4(mi.base, "mathnormal");
-				cell(0).metrics(mi, dim0);
-				cell(1).metrics(mi, dim1);
-				dim.wid = 2 + max(dim0.wid, dim1.wid);
-				dim.asc = dim0.height() + 2 + 5;
-				dim.des = dim1.height() + 2 - 5;
-			}
+		} else if (kind_ == CFRAC || kind_ == CFRACLEFT
+			|| kind_ == CFRACRIGHT) {
+			// cfrac is always in display size
+			StyleChanger dummy2(mi.base, LM_ST_DISPLAY);
+			cell(0).metrics(mi, dim0);
+			cell(1).metrics(mi, dim1);
+			dim.wid = max(dim0.wid, dim1.wid) + 2;
+			dim.asc = dim0.height() + 2 + 5;
+			dim.des = dim1.height() + 2 - 5;
 		} else if (kind_ == UNITFRAC) {
 			ShapeChanger dummy2(mi.base.font, UP_SHAPE);
 			dim.wid = dim0.width() + dim1.wid + 5;
@@ -254,36 +238,21 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 					y - dim0.des - 5);
 			cell(1).draw(pi, x + dim0.width() + 5,
 					y + dim1.asc / 2);
-		} else if (kind_ == CFRAC) {
-			if (nargs() == 2) {
-				// cfrac is always in display size
-				StyleChanger dummy2(pi.base, LM_ST_DISPLAY);
-				Dimension const dim0 = cell(0).dimension(*pi.base.bv);
-				Dimension const dim1 = cell(1).dimension(*pi.base.bv);
-				int m = x + dim.wid / 2;
+		} else if (kind_ == CFRAC || kind_ == CFRACLEFT
+			|| kind_ == CFRACRIGHT) {
+			// cfrac is always in display size
+			StyleChanger dummy2(pi.base, LM_ST_DISPLAY);
+			Dimension const dim0 = cell(0).dimension(*pi.base.bv);
+			Dimension const dim1 = cell(1).dimension(*pi.base.bv);
+			int m = x + dim.wid / 2;
+			if (kind_ == CFRAC)
 				cell(0).draw(pi, m - dim0.wid / 2, y - dim0.des - 2 - 5);
-				cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc + 2 - 5);
-			} else {
-				// cfrac is always in display size
-				StyleChanger dummy2(pi.base, LM_ST_DISPLAY);
-				// use text font for the optional argument
-				FontSetChanger dummy3(pi.base, "textnormal");
-				Dimension const dim2 = cell(2).dimension(*pi.base.bv);
-				int w = mathed_char_width(pi.base.font, '[');
-				drawStrBlack(pi, x, y, from_ascii("["));
-				x += w;
-				cell(2).draw(pi, x + 1, y);
-				x += dim2.wid;
-				drawStrBlack(pi, x, y, from_ascii("]"));
-				x += w;
-				// return to math font
-				FontSetChanger dummy4(pi.base, "mathnormal");
-				Dimension const dim0 = cell(0).dimension(*pi.base.bv);
-				Dimension const dim1 = cell(1).dimension(*pi.base.bv);
-				int m = x + dim.wid / 2;
-				cell(0).draw(pi, m - dim0.wid / 2, y - dim0.des - 2 - 5);
-				cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc + 2 - 5);
-			}
+			else if (kind_ == CFRACLEFT)
+				cell(0).draw(pi, x + 2, y - dim0.des - 2 - 5);
+			else if (kind_ == CFRACRIGHT)
+				cell(0).draw(pi, x + dim.wid - dim0.wid - 2,
+				y - dim0.des - 2 - 5);
+			cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc + 2 - 5);
 		} else if (kind_ == DFRAC) {
 			// dfrac is in always in display size
 			StyleChanger dummy2(pi.base, LM_ST_DISPLAY);
@@ -317,7 +286,8 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 				xx + dim0.wid + 5,
 				y - dim.asc + 2, Color_math);
 	}
-	if (kind_ == FRAC || kind_ == CFRAC || kind_ == DFRAC
+	if (kind_ == FRAC || kind_ == CFRAC || kind_ == CFRACLEFT
+		|| kind_ == CFRACRIGHT || kind_ == DFRAC
 		|| kind_ == TFRAC || kind_ == OVER)
 		pi.pain.line(x + 1, y - 5,
 				x + dim.wid - 2, y - 5, Color_math);
@@ -356,6 +326,8 @@ void InsetMathFrac::write(WriteStream & os) const
 	MathEnsurer ensurer(os);
 	switch (kind_) {
 	case ATOP:
+		// \\atop is only for compatibility, \\binom is the
+		// LaTeX2e successor
 		os << '{' << cell(0) << "\\atop " << cell(1) << '}';
 		break;
 	case OVER:
@@ -367,11 +339,6 @@ void InsetMathFrac::write(WriteStream & os) const
 	case TFRAC:
 	case NICEFRAC:
 	case CFRAC:
-		if (nargs() == 2)
-			InsetMathNest::write(os);
-		else
-			os << "\\cfrac[" << cell(2) << "]{" << cell(0) << "}{" << cell(1) << '}';
-		break;
 	case UNITFRAC:
 		if (nargs() == 2)
 			InsetMathNest::write(os);
@@ -384,6 +351,12 @@ void InsetMathFrac::write(WriteStream & os) const
 		else
 			os << "\\unit{" << cell(0) << '}';
 		break;
+	case CFRACLEFT:
+		os << "\\cfrac[l]{" << cell(0) << "}{" << cell(1) << '}';
+		break;
+	case CFRACRIGHT:
+		os << "\\cfrac[r]{" << cell(0) << "}{" << cell(1) << '}';
+		break;
 	}
 }
 
@@ -394,6 +367,8 @@ docstring InsetMathFrac::name() const
 	case FRAC:
 		return from_ascii("frac");
 	case CFRAC:
+	case CFRACLEFT:
+	case CFRACRIGHT:
 		return from_ascii("cfrac");
 	case DFRAC:
 		return from_ascii("dfrac");
@@ -459,7 +434,8 @@ void InsetMathFrac::validate(LaTeXFeatures & features) const
 {
 	if (kind_ == NICEFRAC || kind_ == UNITFRAC || kind_ == UNIT)
 		features.require("units");
-	if (kind_ == CFRAC || kind_ == DFRAC || kind_ == TFRAC)
+	if (kind_ == CFRAC || kind_ == CFRACLEFT || kind_ == CFRACRIGHT
+		|| kind_ == DFRAC || kind_ == TFRAC)
 		features.require("amsmath");
 	InsetMathNest::validate(features);
 }

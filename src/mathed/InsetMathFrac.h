@@ -41,6 +41,8 @@ public:
 	enum Kind {
 		FRAC,
 		CFRAC,
+		CFRACLEFT,
+		CFRACRIGHT,
 		DFRAC,
 		TFRAC,
 		OVER,
