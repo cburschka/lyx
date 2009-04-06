@@ -1309,6 +1309,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 			cur.setMark(true);
 			cur.message(from_utf8(N_("Mark set")));
 		}
+		cur.resetAnchor();
 		break;
 
 	case LFUN_SCREEN_SHOW_CURSOR:
