@@ -8,6 +8,15 @@ been applied because of incomplete testing.
 Interface changes
 -----------------
 
+There have been some changes to the LyX command line. There is a new option 
+"--batch" that causes LyX to run the given commands without opening a GUI 
+window. Thus, something like:
+    lyx --batch -x "buffer-print printer default dvips" myfile.lyx
+will cause LyX to print myfile.lyx to the default printer, using dvips and 
+the default print settings (which, of course, have to have been configured 
+already). At present, not many commands can be used this way, but there will
+be more eventually.
+
 The following variables are obsoleted in 2.0
 
 - \plaintext_roff_command (was not used anymore)

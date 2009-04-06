@@ -985,6 +985,7 @@ int parse_help(string const &, string const &, string &)
 		  "\t-i [--import] fmt file.xxx\n"
 		  "                  where fmt is the import format of choice\n"
 		  "                  and file.xxx is the file to be imported.\n"
+		  "\t--batch         execute commands and exit\n"
 		  "\t-version        summarize version and build info\n"
 			       "Check the LyX man page for more details.")) << endl;
 	exit(0);
@@ -1079,6 +1080,13 @@ int parse_geometry(string const & arg1, string const &, string &)
 }
 
 
+int parse_batch(string const &, string const &, string &) 
+{
+	use_gui = false;
+	return 0;
+}
+
+
 } // namespace anon
 
 
@@ -1100,6 +1108,7 @@ void LyX::easyParse(int & argc, char * argv[])
 	cmdmap["-i"] = parse_import;
 	cmdmap["--import"] = parse_import;
 	cmdmap["-geometry"] = parse_geometry;
+	cmdmap["--batch"] = parse_batch;
 
 	for (int i = 1; i < argc; ++i) {
 		map<string, cmd_helper>::const_iterator it
