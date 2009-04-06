@@ -1108,7 +1108,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		docstring label = cmd.argument();
 		if (label.empty()) {
 			InsetRef * inset =
-				getInsetByCode<InsetRef>(d->cursor_, REF_CODE);
+				getInsetByCode<InsetRef>(cur, REF_CODE);
 			if (inset) {
 				label = inset->getParam("reference");
 				// persistent=false: use temp_bookmark
@@ -1232,23 +1232,23 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 
 	case LFUN_ALL_CHANGES_ACCEPT:
 		// select complete document
-		d->cursor_.reset(buffer_.inset());
-		d->cursor_.selHandle(true);
-		buffer_.text().cursorBottom(d->cursor_);
+		cur.reset(buffer_.inset());
+		cur.selHandle(true);
+		buffer_.text().cursorBottom(cur);
 		// accept everything in a single step to support atomic undo
-		buffer_.text().acceptOrRejectChanges(d->cursor_, Text::ACCEPT);
+		buffer_.text().acceptOrRejectChanges(cur, Text::ACCEPT);
 		// FIXME: Move this LFUN to Buffer so that we don't have to do this:
 		processUpdateFlags(Update::Force | Update::FitCursor);
 		break;
 
 	case LFUN_ALL_CHANGES_REJECT:
 		// select complete document
-		d->cursor_.reset(buffer_.inset());
-		d->cursor_.selHandle(true);
-		buffer_.text().cursorBottom(d->cursor_);
+		cur.reset(buffer_.inset());
+		cur.selHandle(true);
+		buffer_.text().cursorBottom(cur);
 		// reject everything in a single step to support atomic undo
 		// Note: reject does not work recursively; the user may have to repeat the operation
-		buffer_.text().acceptOrRejectChanges(d->cursor_, Text::REJECT);
+		buffer_.text().acceptOrRejectChanges(cur, Text::REJECT);
 		// FIXME: Move this LFUN to Buffer so that we don't have to do this:
 		processUpdateFlags(Update::Force | Update::FitCursor);
 		break;
@@ -1291,19 +1291,17 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 
 	case LFUN_MARK_OFF:
 		cur.clearSelection();
-		cur.resetAnchor();
 		cur.message(from_utf8(N_("Mark off")));
 		break;
 
 	case LFUN_MARK_ON:
 		cur.clearSelection();
 		cur.setMark(true);
-		cur.resetAnchor();
 		cur.message(from_utf8(N_("Mark on")));
 		break;
 
 	case LFUN_MARK_TOGGLE:
-		cur.clearSelection();
+		cur.setSelection(false);
 		if (cur.mark()) {
 			cur.setMark(false);
 			cur.message(from_utf8(N_("Mark removed")));
@@ -1311,7 +1309,6 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 			cur.setMark(true);
 			cur.message(from_utf8(N_("Mark set")));
 		}
-		cur.resetAnchor();
 		break;
 
 	case LFUN_SCREEN_SHOW_CURSOR:
@@ -1323,7 +1320,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_BIBTEX_DATABASE_ADD: {
-		Cursor tmpcur = d->cursor_;
+		Cursor tmpcur = cur;
 		findInset(tmpcur, BIBTEX_CODE, false);
 		InsetBibtex * inset = getInsetByCode<InsetBibtex>(tmpcur,
 						BIBTEX_CODE);
@@ -1335,7 +1332,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_BIBTEX_DATABASE_DEL: {
-		Cursor tmpcur = d->cursor_;
+		Cursor tmpcur = cur;
 		findInset(tmpcur, BIBTEX_CODE, false);
 		InsetBibtex * inset = getInsetByCode<InsetBibtex>(tmpcur,
 						BIBTEX_CODE);
