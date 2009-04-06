@@ -12,6 +12,8 @@
 #ifndef BUFFER_H
 #define BUFFER_H
 
+#include "update_flags.h"
+
 #include "insets/InsetCode.h"
 
 #include "support/strfwd.h"
@@ -27,11 +29,13 @@ namespace lyx {
 class BiblioInfo;
 class BufferParams;
 class BufferSet;
+class DispatchResult;
 class DocIterator;
 class docstring_list;
 class ErrorItem;
 class ErrorList;
 class FuncRequest;
+class FuncStatus;
 class Inset;
 class InsetRef;
 class InsetLabel;
@@ -125,12 +129,16 @@ public:
 	~Buffer();
 
 	/** High-level interface to buffer functionality.
-	    This function parses a command string and executes it
+	    This function parses a command string and executes it.
 	*/
-	bool dispatch(std::string const & command, bool * result = 0);
+	void dispatch(std::string const & command, DispatchResult & result);
 
 	/// Maybe we know the function already by number...
-	bool dispatch(FuncRequest const & func, bool * result = 0);
+	void dispatch(FuncRequest const & func, DispatchResult & result);
+
+	/// Can this function be exectued?
+	/// \return true if we made a decision
+	bool getStatus(FuncRequest const & cmd, FuncStatus & flag);
 
 	/// read a new document from a string
 	bool readString(std::string const &);

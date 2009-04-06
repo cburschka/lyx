@@ -24,12 +24,14 @@
 #include "Chktex.h"
 #include "Converter.h"
 #include "Counters.h"
+#include "DispatchResult.h"
 #include "DocIterator.h"
 #include "Encoding.h"
 #include "ErrorList.h"
 #include "Exporter.h"
 #include "Format.h"
 #include "FuncRequest.h"
+#include "FuncStatus.h"
 #include "InsetIterator.h"
 #include "InsetList.h"
 #include "Language.h"
@@ -94,6 +96,7 @@
 #include "support/os.h"
 #include "support/Package.h"
 #include "support/Path.h"
+#include "support/Systemcall.h"
 #include "support/textutils.h"
 #include "support/types.h"
 
@@ -125,6 +128,14 @@ int const LYX_FORMAT = 349;  // jspitzm: initial XeTeX support
 
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;
+
+void showPrintError(string const & name)
+{
+	docstring str = bformat(_("Could not print the document %1$s.\n"
+					    "Check that your printer is set up correctly."),
+			     makeDisplayPath(name, 50));
+	Alert::error(_("Print document failed"), str);
+}
 
 } // namespace anon
 
@@ -1506,21 +1517,61 @@ void Buffer::markDepClean(string const & name)
 }
 
 
-bool Buffer::dispatch(string const & command, bool * result)
+bool Buffer::getStatus(FuncRequest const & cmd, FuncStatus & flag)
+{
+	switch (cmd.action) {
+		case LFUN_BUFFER_EXPORT: {
+			docstring const arg = cmd.argument();
+			bool enable = arg == "custom" || isExportable(to_utf8(arg));
+			if (!enable)
+				flag.message(bformat(
+					_("Don't know how to export to format: %1$s"), arg));
+			flag.setEnabled(enable);
+			break;
+		}
+
+		case LFUN_BRANCH_ACTIVATE: 
+		case LFUN_BRANCH_DEACTIVATE: {
+		BranchList const & branchList = params().branchlist();
+		docstring const branchName = cmd.argument();
+		flag.setEnabled(!branchName.empty()
+				&& branchList.find(branchName));
+			break;
+		}
+
+		case LFUN_BUFFER_PRINT:
+			// if no Buffer is present, then of course we won't be called!
+			flag.setEnabled(true);
+			break;
+
+		default:
+			return false;
+	}
+	return true;
+}
+
+
+void Buffer::dispatch(string const & command, DispatchResult & result)
 {
 	return dispatch(lyxaction.lookupFunc(command), result);
 }
 
 
-bool Buffer::dispatch(FuncRequest const & func, bool * result)
+// NOTE We can end up here even if we have no GUI, because we are called
+// by LyX::exec to handled command-line requests. So we may need to check 
+// whether we have a GUI or not. The boolean use_gui holds this information.
+void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 {
+	// We'll set this back to false if need be.
 	bool dispatched = true;
 
 	switch (func.action) {
 		case LFUN_BUFFER_EXPORT: {
-			bool const tmp = doExport(to_utf8(func.argument()), false);
-			if (result)
-				*result = tmp;
+			bool success = doExport(to_utf8(func.argument()), false);
+			dr.setError(success);
+			if (!success)
+				dr.setMessage(bformat(_("Error exporting to format: %1$s."), 
+				                      func.argument()));
 			break;
 		}
 
@@ -1534,18 +1585,139 @@ bool Buffer::dispatch(FuncRequest const & func, bool * result)
 				break;
 			}
 			Branch * branch = branchList.find(branchName);
-			if (!branch)
+			if (!branch) {
 				LYXERR0("Branch " << branchName << " does not exist.");
-			else
+				dr.setError(true);
+				docstring const msg = 
+					bformat(_("Branch \%1$s\" does not exist."), branchName);
+				dr.setMessage(msg);
+			} else {
 				branch->setSelected(func.action == LFUN_BRANCH_ACTIVATE);
-			if (result)
-				*result = true;
+				dr.setError(false);
+				dr.update(Update::Force);
+			}
+			break;
+		}
+
+		case LFUN_BUFFER_PRINT: {
+			// we'll assume there's a problem until we succeed
+			dr.setError(true); 
+			string target = func.getArg(0);
+			string target_name = func.getArg(1);
+			string command = func.getArg(2);
+
+			if (target.empty()
+			    || target_name.empty()
+			    || command.empty()) {
+				LYXERR0("Unable to parse " << func.argument());
+				docstring const msg = 
+					bformat(_("Unable to parse \"%1$s\""), func.argument());
+				dr.setMessage(msg);
+				break;
+			}
+			if (target != "printer" && target != "file") {
+				LYXERR0("Unrecognized target \"" << target << '"');
+				docstring const msg = 
+					bformat(_("Unrecognized target \"%1$s\""), from_utf8(target));
+				dr.setMessage(msg);
+				break;
+			}
+
+			if (!doExport("dvi", true)) {
+				showPrintError(absFileName());
+				dr.setMessage(_("Error exporting to DVI."));
+				break;
+			}
+
+			// Push directory path.
+			string const path = temppath();
+			// Prevent the compiler from optimizing away p
+			FileName pp(path);
+			PathChanger p(pp);
+
+			// there are three cases here:
+			// 1. we print to a file
+			// 2. we print directly to a printer
+			// 3. we print using a spool command (print to file first)
+			Systemcall one;
+			int res = 0;
+			string const dviname = changeExtension(latexName(true), "dvi");
+
+			if (target == "printer") {
+				if (!lyxrc.print_spool_command.empty()) {
+					// case 3: print using a spool
+					string const psname = changeExtension(dviname,".ps");
+					command += ' ' + lyxrc.print_to_file
+						+ quoteName(psname)
+						+ ' '
+						+ quoteName(dviname);
+
+					string command2 = lyxrc.print_spool_command + ' ';
+					if (target_name != "default") {
+						command2 += lyxrc.print_spool_printerprefix
+							+ target_name
+							+ ' ';
+					}
+					command2 += quoteName(psname);
+					// First run dvips.
+					// If successful, then spool command
+					res = one.startscript(Systemcall::Wait, command);
+
+					if (res == 0) {
+						// If there's no GUI, we have to wait on this command. Otherwise,
+						// LyX deletes the temporary directory, and with it the spooled
+						// file, before it can be printed!!
+						Systemcall::Starttype stype = use_gui ?
+							Systemcall::DontWait : Systemcall::Wait;
+						res = one.startscript(stype, command2);
+					}
+				} else {
+					// case 2: print directly to a printer
+					if (target_name != "default")
+						command += ' ' + lyxrc.print_to_printer + target_name + ' ';
+					// as above....
+					Systemcall::Starttype stype = use_gui ?
+						Systemcall::DontWait : Systemcall::Wait;
+					res = one.startscript(stype, command + quoteName(dviname));
+				}
+
+			} else {
+				// case 1: print to a file
+				FileName const filename(makeAbsPath(target_name, filePath()));
+				FileName const dvifile(makeAbsPath(dviname, path));
+				if (filename.exists()) {
+					docstring text = bformat(
+						_("The file %1$s already exists.\n\n"
+						  "Do you want to overwrite that file?"),
+						makeDisplayPath(filename.absFilename()));
+					if (Alert::prompt(_("Overwrite file?"),
+					    text, 0, 1, _("&Overwrite"), _("&Cancel")) != 0)
+						break;
+				}
+				command += ' ' + lyxrc.print_to_file
+					+ quoteName(filename.toFilesystemEncoding())
+					+ ' '
+					+ quoteName(dvifile.toFilesystemEncoding());
+				// as above....
+				Systemcall::Starttype stype = use_gui ?
+					Systemcall::DontWait : Systemcall::Wait;
+				res = one.startscript(stype, command);
+			}
+
+			if (res == 0) 
+				dr.setError(false);
+			else {
+				dr.setMessage(_("Error running external commands."));
+				showPrintError(absFileName());
+			}
+			break;
 		}
 
 		default:
 			dispatched = false;
+			break;
 	}
-	return dispatched;
+	dr.dispatched(dispatched);
 }
 
 

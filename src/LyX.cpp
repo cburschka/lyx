@@ -311,13 +311,13 @@ int LyX::exec(int & argc, char * argv[])
 			Buffer * buf = *I;
 			if (buf != buf->masterBuffer())
 				continue;
-			bool success = false;
 			vector<string>::const_iterator bcit  = pimpl_->batch_commands.begin();
 			vector<string>::const_iterator bcend = pimpl_->batch_commands.end();
+			DispatchResult dr;
 			for (; bcit != bcend; bcit++) {
 				LYXERR(Debug::ACTION, "Buffer::dispatch: cmd: " << *bcit);
-				buf->dispatch(*bcit, &success);
-				final_success |= success;
+				buf->dispatch(*bcit, dr);
+				final_success |= !dr.error();
 			}
 		}
 		prepareExit();

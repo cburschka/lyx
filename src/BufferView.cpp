@@ -895,10 +895,8 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool recenter)
 }
 
 
-FuncStatus BufferView::getStatus(FuncRequest const & cmd)
+bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 {
-	FuncStatus flag;
-
 	Cursor & cur = d->cursor_;
 
 	switch (cmd.action) {
@@ -916,6 +914,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 		// FIXME: Actually, these LFUNS should be moved to Text
 		flag.setEnabled(cur.inTexted());
 		break;
+
 	case LFUN_FONT_STATE:
 	case LFUN_LABEL_INSERT:
 	case LFUN_INFO_INSERT:
@@ -1049,29 +1048,18 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 	}
 
 	case LFUN_DIALOG_SHOW_NEW_INSET:
+		if (cur.inset().lyxCode() == CAPTION_CODE)
+			return cur.inset().getStatus(cur, cmd, flag);
 		flag.setEnabled(cur.inset().lyxCode() != ERT_CODE &&
 			cur.inset().lyxCode() != LISTINGS_CODE);
-		if (cur.inset().lyxCode() == CAPTION_CODE) {
-			FuncStatus flag;
-			if (cur.inset().getStatus(cur, cmd, flag))
-				return flag;
-		}
 		break;
-
-	case LFUN_BRANCH_ACTIVATE: 
-	case LFUN_BRANCH_DEACTIVATE: {
-		BranchList const & branchList = buffer_.params().branchlist();
-		docstring const branchName = cmd.argument();
-		flag.setEnabled(!branchName.empty()
-				&& branchList.find(branchName));
-		break;
-	}
 
 	default:
 		flag.setEnabled(false);
+		return false;
 	}
 
-	return flag;
+	return true;
 }
 
 
@@ -1505,14 +1493,6 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		processUpdateFlags(Update::SinglePar | Update::FitCursor);
 		break;
 	}
-
-	case LFUN_BRANCH_ACTIVATE:
-	case LFUN_BRANCH_DEACTIVATE:
-		if (cmd.argument().empty())
-			return false;
-		buffer_.dispatch(cmd);
-		processUpdateFlags(Update::Force);
-		break;
 
 	// This could be rewriten using some command like forall <insetname> <command>
 	// once the insets refactoring is done.

@@ -457,11 +457,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 			flag.setOnOff(true);
 		break;
 
-	case LFUN_BUFFER_EXPORT:
-		enable = cmd.argument() == "custom"
-			|| buf->isExportable(to_utf8(cmd.argument()));
-		break;
-
 	case LFUN_BUFFER_CHKTEX:
 		enable = buf->isLatex() && !lyxrc.chktex_command.empty();
 		break;
@@ -632,7 +627,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_KEYMAP_TOGGLE:
 	case LFUN_REPEAT:
 	case LFUN_BUFFER_EXPORT_CUSTOM:
-	case LFUN_BUFFER_PRINT:
 	case LFUN_PREFERENCES_SAVE:
 	case LFUN_MESSAGE:
 	case LFUN_INSET_EDIT:
@@ -666,8 +660,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		if (lyx_view_->getStatus(cmd, flag))
 			break;
 
-		// If we have a BufferView, try cursor position and
-		// then the BufferView.
+		// If we do not have a BufferView, then other functions are disabled
 		if (!view()) {
 			enable = false;
 			break;
@@ -679,8 +672,13 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		    && inset && inset->getStatus(view()->cursor(), cmd, flag))
 			break;
 
-		if (!getLocalStatus(view()->cursor(), cmd, flag))
-			flag = view()->getStatus(cmd);
+		bool decided = getLocalStatus(view()->cursor(), cmd, flag);
+		if (!decided)
+			// try the BufferView
+			decided = view()->getStatus(cmd, flag);
+		if (!decided)
+			// try the Buffer
+			view()->buffer().getStatus(cmd, flag);
 	}
 
 	if (!enable)
@@ -742,15 +740,6 @@ bool LyXFunc::ensureBufferClean(BufferView * bv)
 
 
 namespace {
-
-void showPrintError(string const & name)
-{
-	docstring str = bformat(_("Could not print the document %1$s.\n"
-					    "Check that your printer is set up correctly."),
-			     makeDisplayPath(name, 50));
-	Alert::error(_("Print document failed"), str);
-}
-
 
 bool loadLayoutFile(string const & name, string const & buf_path)
 {
@@ -953,111 +942,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			// Execute the command in the background
 			Systemcall call;
 			call.startscript(Systemcall::DontWait, command);
-			break;
-		}
-
-		case LFUN_BUFFER_PRINT: {
-			LASSERT(lyx_view_ && buffer, /**/);
-			// FIXME: cmd.getArg() might fail if one of the arguments
-			// contains double quotes
-			string target = cmd.getArg(0);
-			string target_name = cmd.getArg(1);
-			string command = cmd.getArg(2);
-
-			if (target.empty()
-			    || target_name.empty()
-			    || command.empty()) {
-				lyxerr << "Unable to parse \""
-				       << argument << '"' << endl;
-				break;
-			}
-			if (target != "printer" && target != "file") {
-				lyxerr << "Unrecognized target \""
-				       << target << '"' << endl;
-				break;
-			}
-
-			if (!buffer->doExport("dvi", true)) {
-				showPrintError(buffer->absFileName());
-				break;
-			}
-
-			// Push directory path.
-			string const path = buffer->temppath();
-			// Prevent the compiler from optimizing away p
-			FileName pp(path);
-			PathChanger p(pp);
-
-			// there are three cases here:
-			// 1. we print to a file
-			// 2. we print directly to a printer
-			// 3. we print using a spool command (print to file first)
-			Systemcall one;
-			int res = 0;
-			string const dviname =
-				changeExtension(buffer->latexName(true), "dvi");
-
-			if (target == "printer") {
-				if (!lyxrc.print_spool_command.empty()) {
-					// case 3: print using a spool
-					string const psname =
-						changeExtension(dviname,".ps");
-					command += ' ' + lyxrc.print_to_file
-						+ quoteName(psname)
-						+ ' '
-						+ quoteName(dviname);
-
-					string command2 =
-						lyxrc.print_spool_command + ' ';
-					if (target_name != "default") {
-						command2 += lyxrc.print_spool_printerprefix
-							+ target_name
-							+ ' ';
-					}
-					command2 += quoteName(psname);
-					// First run dvips.
-					// If successful, then spool command
-					res = one.startscript(
-						Systemcall::Wait,
-						command);
-
-					if (res == 0)
-						res = one.startscript(
-							Systemcall::DontWait,
-							command2);
-				} else {
-					// case 2: print directly to a printer
-					if (target_name != "default")
-						command += ' ' + lyxrc.print_to_printer + target_name + ' ';
-					res = one.startscript(
-						Systemcall::DontWait,
-						command + quoteName(dviname));
-				}
-
-			} else {
-				// case 1: print to a file
-				FileName const filename(makeAbsPath(target_name,
-							buffer->filePath()));
-				FileName const dvifile(makeAbsPath(dviname, path));
-				if (filename.exists()) {
-					docstring text = bformat(
-						_("The file %1$s already exists.\n\n"
-						  "Do you want to overwrite that file?"),
-						makeDisplayPath(filename.absFilename()));
-					if (Alert::prompt(_("Overwrite file?"),
-					    text, 0, 1, _("&Overwrite"), _("&Cancel")) != 0)
-						break;
-				}
-				command += ' ' + lyxrc.print_to_file
-					+ quoteName(filename.toFilesystemEncoding())
-					+ ' '
-					+ quoteName(dvifile.toFilesystemEncoding());
-				res = one.startscript(Systemcall::DontWait,
-						      command);
-			}
-
-			if (res != 0)
-				showPrintError(buffer->absFileName());
 			break;
 		}
 
@@ -1722,6 +1606,14 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				updateFlags = Update::None;
 				if (theBufferList().isLoaded(buffer))
 					buffer->undo().endUndoGroup();
+				break;
+			}
+
+			// OK, so try the Buffer itself
+			DispatchResult dr;
+			view()->buffer().dispatch(cmd, dr);
+			if (dr.dispatched()) {
+				updateFlags = dr.update();
 				break;
 			}
 

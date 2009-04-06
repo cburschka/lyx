@@ -195,8 +195,8 @@ public:
 	/// translate and insert a character, using the correct keymap.
 	void translateAndInsert(char_type c, Text * t, Cursor & cur);
 
-	/// return true for events that will handle.
-	FuncStatus getStatus(FuncRequest const & cmd);
+	/// \return true if we've made a decision
+	bool getStatus(FuncRequest const & cmd, FuncStatus & flag);
 	/// execute the given function.
 	/// \return true if the function has been processed.
 	bool dispatch(FuncRequest const & argument);

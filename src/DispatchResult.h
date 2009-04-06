@@ -15,6 +15,8 @@
 
 #include "update_flags.h"
 
+#include "support/docstring.h"
+
 namespace lyx {
 
 /// Maybe this can go entirely
@@ -24,10 +26,18 @@ public:
 	DispatchResult() : dispatched_(false), update_(Update::None) {}
 	///
 	DispatchResult(bool disp, Update::flags f) : dispatched_(disp), update_(f) {}
-	//
+	///
 	bool dispatched() const { return dispatched_; }
 	///
 	void dispatched(bool disp) { dispatched_ = disp; }
+	///
+	bool error() const { return error_; }
+	///
+	void setError(bool e) { error_ = e; }
+	///
+	docstring message() { return message_; }
+	///
+	void setMessage(docstring m) { message_ = m; }
 	///
 	Update::flags update() const { return update_; }
 	///
@@ -35,8 +45,12 @@ public:
 private:
 	/// was the event fully dispatched?
 	bool dispatched_;
+	/// was there an error?
+	bool error_;
 	/// do we need to redraw the screen afterwards?
 	Update::flags update_;
+	///
+	docstring message_;
 };
 
 
