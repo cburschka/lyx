@@ -189,6 +189,8 @@ public:
 	std::string fontsTypewriter;
 	/// the default family (rm, sf, tt)
 	std::string fontsDefaultFamily;
+	/// use the XeTeX processor
+	bool useXetex;
 	/// use expert Small Caps
 	bool fontsSC;
 	/// use Old Style Figures
@@ -313,11 +315,14 @@ public:
 	/// handle inputenc etc.
 	void writeEncodingPreamble(odocstream & os, LaTeXFeatures & features,
 					      TexRow & texrow) const;
+	///
+	std::string const parseFontName(std::string const & name) const;
 	/// set up the document fonts
 	std::string const loadFonts(std::string const & rm,
 				     std::string const & sf, std::string const & tt,
 				     bool const & sc, bool const & osf,
-				     int const & sfscale, int const & ttscale) const;
+				     int const & sfscale, int const & ttscale,
+				     bool const & xetex) const;
 
 	/// get the appropriate cite engine (natbib handling)
 	CiteEngine citeEngine() const;

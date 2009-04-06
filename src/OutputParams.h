@@ -32,6 +32,7 @@ public:
 	enum FLAVOR {
 		LATEX,
 		PDFLATEX,
+		XETEX,
 		XML
 	};
 

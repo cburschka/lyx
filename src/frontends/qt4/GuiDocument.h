@@ -69,6 +69,7 @@ public:
 
 	void paramsToDialog();
 	void updateFontsize(std::string const &, std::string const &);
+	void updateFontlist();
 	void updatePagestyle(std::string const &, std::string const &);
 
 	void showPreamble();
@@ -97,7 +98,7 @@ private Q_SLOTS:
 	void classChanged();
 	void updateModuleInfo();
 	void modulesChanged();
-
+	void xetexChanged(bool);
 private:
 	/// validate listings parameters and return an error message, if any
 	QString validateListingsParameters();
@@ -185,7 +186,7 @@ private:
 	std::list<modInfoStruct> const & getModuleInfo();
 	/// Modules in use in current buffer
 	std::list<modInfoStruct> const getSelectedModules();
- 	///
+	///
 	std::list<modInfoStruct> const getProvidedModules();
 	///
 	std::list<modInfoStruct> const 

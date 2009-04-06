@@ -93,6 +93,7 @@ static char const * const tex_graphics[] = {
 };
 
 
+
 namespace lyx {
 
 // Local translators
@@ -270,7 +271,6 @@ SpaceTranslator const & spacetranslator()
 	return translator;
 }
 
-
 } // anon namespace
 
 
@@ -344,6 +344,7 @@ BufferParams::BufferParams()
 	fontsSans = "default";
 	fontsTypewriter = "default";
 	fontsDefaultFamily = "default";
+	useXetex = false;
 	fontsSC = false;
 	fontsOSF = false;
 	fontsSansScale = 100;
@@ -509,13 +510,18 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 	} else if (token == "\\graphics") {
 		readGraphicsDriver(lex);
 	} else if (token == "\\font_roman") {
-		lex >> fontsRoman;
+		lex.eatLine();
+		fontsRoman = lex.getString();
 	} else if (token == "\\font_sans") {
-		lex >> fontsSans;
+		lex.eatLine();
+		fontsSans = lex.getString();
 	} else if (token == "\\font_typewriter") {
-		lex >> fontsTypewriter;
+		lex.eatLine();
+		fontsTypewriter = lex.getString();
 	} else if (token == "\\font_default_family") {
 		lex >> fontsDefaultFamily;
+	} else if (token == "\\use_xetex") {
+		lex >> useXetex;
 	} else if (token == "\\font_sc") {
 		lex >> fontsSC;
 	} else if (token == "\\font_osf") {
@@ -742,6 +748,7 @@ void BufferParams::writeFile(ostream & os) const
 	   << "\n\\font_sans " << fontsSans
 	   << "\n\\font_typewriter " << fontsTypewriter
 	   << "\n\\font_default_family " << fontsDefaultFamily
+	   << "\n\\use_xetex " << convert<string>(useXetex)
 	   << "\n\\font_sc " << convert<string>(fontsSC)
 	   << "\n\\font_osf " << convert<string>(fontsOSF)
 	   << "\n\\font_sf_scale " << fontsSansScale
@@ -876,6 +883,7 @@ void BufferParams::validate(LaTeXFeatures & features) const
 			}
 			break;
 		case OutputParams::PDFLATEX:
+		case OutputParams::XETEX:
 			if (xcolorulem) {
 				features.require("ct-xcolor-ulem");
 				features.require("ulem");
@@ -936,6 +944,9 @@ void BufferParams::validate(LaTeXFeatures & features) const
 		if (pdfoptions().colorlinks)
 			features.require("color");
 	}
+
+	if (useXetex)
+		features.require("xetex");
 
 	if (language->lang() == "vietnamese")
 		features.require("vietnamese");
@@ -1075,11 +1086,20 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	texrow.newline();
 	// end of \documentclass defs
 
+	if (useXetex) {
+		os << "\\usepackage{fontspec}\n";
+		texrow.newline();
+		os << "\\usepackage{xunicode}\n";
+		texrow.newline();
+		os << "\\usepackage{xltxtra}\n";
+		texrow.newline();
+	}
+
 	// font selection must be done before loading fontenc.sty
 	string const fonts =
 		loadFonts(fontsRoman, fontsSans,
 			  fontsTypewriter, fontsSC, fontsOSF,
-			  fontsSansScale, fontsTypewriterScale);
+			  fontsSansScale, fontsTypewriterScale, useXetex);
 	if (!fonts.empty()) {
 		os << from_ascii(fonts);
 		texrow.newline();
@@ -1092,7 +1112,9 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// this one is not per buffer
 	// for arabic_arabi and farsi we also need to load the LAE and
 	// LFE encoding
-	if (lyxrc.fontenc != "default" && language->lang() != "japanese") {
+	// XeteX works without fontenc
+	if (lyxrc.fontenc != "default" && language->lang() != "japanese"
+	    && !useXetex) {
 		if (language->lang() == "arabic_arabi"
 		    || language->lang() == "farsi") {
 			os << "\\usepackage[" << from_ascii(lyxrc.fontenc)
@@ -1863,6 +1885,8 @@ docstring BufferParams::getGraphicsDriver(string const & package) const
 void BufferParams::writeEncodingPreamble(odocstream & os,
 		LaTeXFeatures & features, TexRow & texrow) const
 {
+	if (useXetex)
+		return;
 	if (inputenc == "auto") {
 		string const doc_encoding =
 			language->encoding()->latexName();
@@ -1941,10 +1965,22 @@ void BufferParams::writeEncodingPreamble(odocstream & os,
 }
 
 
+string const BufferParams::parseFontName(string const & name) const
+{
+	string mangled = name;
+	size_t const idx = mangled.find('[');
+	if (idx == string::npos || idx == 0)
+		return mangled;
+	else
+		return mangled.substr(0, idx - 1);
+}
+
+
 string const BufferParams::loadFonts(string const & rm,
 				     string const & sf, string const & tt,
 				     bool const & sc, bool const & osf,
-				     int const & sfscale, int const & ttscale) const
+				     int const & sfscale, int const & ttscale,
+				     bool const & xetex) const
 {
 	/* The LaTeX font world is in a flux. In the PSNFSS font interface,
 	   several packages have been replaced by others, that might not
@@ -1963,6 +1999,37 @@ string const BufferParams::loadFonts(string const & rm,
 		return string();
 
 	ostringstream os;
+
+	if (xetex) {
+		if (rm != "default")
+			os << "\\setmainfont[Mapping=tex-text]{"
+			   << parseFontName(rm) << "}\n";
+		if (sf != "default") {
+			string const sans = parseFontName(sf);
+			if (sfscale != 100)
+				os << "\\setsansfont[Scale=" 
+				   << float(sfscale) / 100 
+				   << ",Mapping=tex-text]{"
+				   << sans << "}\n";
+			else
+				os << "\\setsansfont[Mapping=tex-text]{"
+				   << sans << "}\n";
+		}
+		if (tt != "default") {
+			string const mono = parseFontName(tt);
+			if (ttscale != 100)
+				os << "\\setmonofont[Scale=" 
+				   << float(sfscale) / 100 
+				   << "]{"
+				   << mono << "}\n";
+			else
+				os << "\\setmonofont[Mapping=tex-text]{"
+				   << mono << "}\n";
+		}
+		if (osf)
+			os << "\\defaultfontfeatures{Numbers=OldStyle}\n";
+		return os.str();
+	}
 
 	// ROMAN FONTS
 	// Computer Modern (must be explicitely selectable -- there might be classes
@@ -2080,6 +2147,8 @@ string const BufferParams::loadFonts(string const & rm,
 
 Encoding const & BufferParams::encoding() const
 {
+	if (useXetex)
+		return *(encodings.fromLaTeXName("utf8-plain"));
 	if (inputenc == "auto" || inputenc == "default")
 		return *language->encoding();
 	Encoding const * const enc = encodings.fromLaTeXName(inputenc);

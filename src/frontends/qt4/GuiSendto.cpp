@@ -15,6 +15,7 @@
 #include "qt_helpers.h"
 
 #include "Buffer.h"
+#include "BufferParams.h"
 #include "Converter.h"
 #include "Format.h"
 #include "FuncRequest.h"
@@ -174,8 +175,12 @@ vector<Format const *> GuiSendTo::allFormats() const
 	exports.push_back("text");
 
 	if (buffer().isLatex()) {
-		exports.push_back("latex");
-		exports.push_back("pdflatex");
+		if (buffer().params().useXetex)
+			exports.push_back("xetex");
+		else {
+			exports.push_back("latex");
+			exports.push_back("pdflatex");
+		}
 	}
 	else if (buffer().isDocBook())
 		exports.push_back("docbook");

@@ -54,6 +54,7 @@
 
 #include <QAbstractItemModel>
 #include <QCloseEvent>
+#include <QFontDatabase>
 #include <QScrollBar>
 #include <QTextCursor>
 
@@ -610,25 +611,12 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(fontModule->fontOsfCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
+	connect(fontModule->xetexCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(fontModule->xetexCB, SIGNAL(toggled(bool)),
+		this, SLOT(xetexChanged(bool)));
 
-	for (int n = 0; tex_fonts_roman[n][0]; ++n) {
-		QString font = qt_(tex_fonts_roman_gui[n]);
-		if (!isFontAvailable(tex_fonts_roman[n]))
-			font += qt_(" (not installed)");
-		fontModule->fontsRomanCO->addItem(font);
-	}
-	for (int n = 0; tex_fonts_sans[n][0]; ++n) {
-		QString font = qt_(tex_fonts_sans_gui[n]);
-		if (!isFontAvailable(tex_fonts_sans[n]))
-			font += qt_(" (not installed)");
-		fontModule->fontsSansCO->addItem(font);
-	}
-	for (int n = 0; tex_fonts_monospaced[n][0]; ++n) {
-		QString font = qt_(tex_fonts_monospaced_gui[n]);
-		if (!isFontAvailable(tex_fonts_monospaced[n]))
-			font += qt_(" (not installed)");
-		fontModule->fontsTypewriterCO->addItem(font);
-	}
+	updateFontlist();
 
 	fontModule->fontsizeCO->addItem(qt_("Default"));
 	fontModule->fontsizeCO->addItem(qt_("10"));
@@ -1090,10 +1078,12 @@ void GuiDocument::enableSkip(bool skip)
 		setSkip(textLayoutModule->skipCO->currentIndex());
 }
 
+
 void GuiDocument::portraitChanged()
 {
 	setMargins(pageLayoutModule->papersizeCO->currentIndex());
 }
+
 
 void GuiDocument::setMargins(bool custom)
 {
@@ -1168,6 +1158,16 @@ void GuiDocument::setCustomMargins(bool custom)
 }
 
 
+void GuiDocument::xetexChanged(bool xetex)
+{
+	updateFontlist();
+	langModule->encodingCO->setEnabled(!xetex &&
+		!langModule->defaultencodingRB->isChecked());
+	langModule->defaultencodingRB->setEnabled(!xetex);
+	langModule->otherencodingRB->setEnabled(!xetex);
+}
+
+
 void GuiDocument::updateFontsize(string const & items, string const & sel)
 {
 	fontModule->fontsizeCO->clear();
@@ -1186,8 +1186,55 @@ void GuiDocument::updateFontsize(string const & items, string const & sel)
 }
 
 
+void GuiDocument::updateFontlist()
+{
+	fontModule->fontsRomanCO->clear();
+	fontModule->fontsSansCO->clear();
+	fontModule->fontsTypewriterCO->clear();
+
+	// With XeTeX, we have access to all system fonts, but not the LaTeX fonts
+	if (fontModule->xetexCB->isChecked()) {
+		fontModule->fontsRomanCO->addItem(qt_("Default"));
+		fontModule->fontsSansCO->addItem(qt_("Default"));
+		fontModule->fontsTypewriterCO->addItem(qt_("Default"));
+	
+		QFontDatabase fontdb;
+		QStringList families(fontdb.families());
+		for (QStringList::Iterator it = families.begin(); it != families.end(); ++it) {
+			fontModule->fontsRomanCO->addItem(*it);
+			fontModule->fontsSansCO->addItem(*it);
+			fontModule->fontsTypewriterCO->addItem(*it);
+		}
+		return;
+	}
+
+	for (int n = 0; tex_fonts_roman[n][0]; ++n) {
+		QString font = qt_(tex_fonts_roman_gui[n]);
+		if (!isFontAvailable(tex_fonts_roman[n]))
+			font += qt_(" (not installed)");
+		fontModule->fontsRomanCO->addItem(font);
+	}
+	for (int n = 0; tex_fonts_sans[n][0]; ++n) {
+		QString font = qt_(tex_fonts_sans_gui[n]);
+		if (!isFontAvailable(tex_fonts_sans[n]))
+			font += qt_(" (not installed)");
+		fontModule->fontsSansCO->addItem(font);
+	}
+	for (int n = 0; tex_fonts_monospaced[n][0]; ++n) {
+		QString font = qt_(tex_fonts_monospaced_gui[n]);
+		if (!isFontAvailable(tex_fonts_monospaced[n]))
+			font += qt_(" (not installed)");
+		fontModule->fontsTypewriterCO->addItem(font);
+	}
+}
+
+
 void GuiDocument::romanChanged(int item)
 {
+	if (fontModule->xetexCB->isChecked()) {
+		fontModule->fontScCB->setEnabled(false);
+		return;
+	}
 	string const font = tex_fonts_roman[item];
 	fontModule->fontScCB->setEnabled(providesSC(font));
 	fontModule->fontOsfCB->setEnabled(providesOSF(font));
@@ -1196,6 +1243,10 @@ void GuiDocument::romanChanged(int item)
 
 void GuiDocument::sansChanged(int item)
 {
+	if (fontModule->xetexCB->isChecked()) {
+		fontModule->fontScCB->setEnabled(false);
+		return;
+	}
 	string const font = tex_fonts_sans[item];
 	bool scaleable = providesScale(font);
 	fontModule->scaleSansSB->setEnabled(scaleable);
@@ -1205,6 +1256,10 @@ void GuiDocument::sansChanged(int item)
 
 void GuiDocument::ttChanged(int item)
 {
+	if (fontModule->xetexCB->isChecked()) {
+		fontModule->fontScCB->setEnabled(false);
+		return;
+	}
 	string const font = tex_fonts_monospaced[item];
 	bool scaleable = providesScale(font);
 	fontModule->scaleTypewriterSB->setEnabled(scaleable);
@@ -1741,14 +1796,37 @@ void GuiDocument::applyView()
 	bp_.float_placement = floatModule->get();
 
 	// fonts
-	bp_.fontsRoman =
-		tex_fonts_roman[fontModule->fontsRomanCO->currentIndex()];
+	bool const xetex = fontModule->xetexCB->isChecked();
+	bp_.useXetex = xetex;
 
-	bp_.fontsSans =
-		tex_fonts_sans[fontModule->fontsSansCO->currentIndex()];
-
-	bp_.fontsTypewriter =
-		tex_fonts_monospaced[fontModule->fontsTypewriterCO->currentIndex()];
+	if (xetex) {
+		if (fontModule->fontsRomanCO->currentIndex() == 0)
+			bp_.fontsRoman = "default";
+		else
+			bp_.fontsRoman =
+				fromqstr(fontModule->fontsRomanCO->currentText());
+	
+		if (fontModule->fontsSansCO->currentIndex() == 0)
+			bp_.fontsSans = "default";
+		else
+			bp_.fontsSans =
+				fromqstr(fontModule->fontsSansCO->currentText());
+	
+		if (fontModule->fontsTypewriterCO->currentIndex() == 0)
+			bp_.fontsTypewriter = "default";
+		else
+			bp_.fontsTypewriter =
+				fromqstr(fontModule->fontsTypewriterCO->currentText());
+	} else {
+		bp_.fontsRoman =
+			tex_fonts_roman[fontModule->fontsRomanCO->currentIndex()];
+	
+		bp_.fontsSans =
+			tex_fonts_sans[fontModule->fontsSansCO->currentIndex()];
+	
+		bp_.fontsTypewriter =
+			tex_fonts_monospaced[fontModule->fontsTypewriterCO->currentIndex()];
+	}
 
 	bp_.fontsCJK =
 		fromqstr(fontModule->cjkFontLE->text());
@@ -2046,22 +2124,47 @@ void GuiDocument::paramsToDialog()
 	updateFontsize(documentClass().opt_fontsize(),
 			bp_.fontsize);
 
-	int n = findToken(tex_fonts_roman, bp_.fontsRoman);
-	if (n >= 0) {
-		fontModule->fontsRomanCO->setCurrentIndex(n);
-		romanChanged(n);
-	}
+	fontModule->xetexCB->setChecked(bp_.useXetex);
 
-	n = findToken(tex_fonts_sans, bp_.fontsSans);
-	if (n >= 0)	{
-		fontModule->fontsSansCO->setCurrentIndex(n);
-		sansChanged(n);
-	}
-
-	n = findToken(tex_fonts_monospaced, bp_.fontsTypewriter);
-	if (n >= 0) {
-		fontModule->fontsTypewriterCO->setCurrentIndex(n);
-		ttChanged(n);
+	if (bp_.useXetex) {
+		for (int i = 0; i < fontModule->fontsRomanCO->count(); ++i) {
+			if (fontModule->fontsRomanCO->itemText(i) == toqstr(bp_.fontsRoman)) {
+				fontModule->fontsRomanCO->setCurrentIndex(i);
+				return;
+			}
+		}
+		
+		for (int i = 0; i < fontModule->fontsSansCO->count(); ++i) {
+			if (fontModule->fontsSansCO->itemText(i) == toqstr(bp_.fontsSans)) {
+				fontModule->fontsSansCO->setCurrentIndex(i);
+				return;
+			}
+		}
+		for (int i = 0; i < fontModule->fontsTypewriterCO->count(); ++i) {
+			if (fontModule->fontsTypewriterCO->itemText(i) == 
+				toqstr(bp_.fontsTypewriter)) {
+				fontModule->fontsTypewriterCO->setCurrentIndex(i);
+				return;
+			}
+		}
+	} else {
+		int n = findToken(tex_fonts_roman, bp_.fontsRoman);
+		if (n >= 0) {
+			fontModule->fontsRomanCO->setCurrentIndex(n);
+			romanChanged(n);
+		}
+	
+		n = findToken(tex_fonts_sans, bp_.fontsSans);
+		if (n >= 0) {
+			fontModule->fontsSansCO->setCurrentIndex(n);
+			sansChanged(n);
+		}
+	
+		n = findToken(tex_fonts_monospaced, bp_.fontsTypewriter);
+		if (n >= 0) {
+			fontModule->fontsTypewriterCO->setCurrentIndex(n);
+			ttChanged(n);
+		}
 	}
 
 	if (!bp_.fontsCJK.empty())
@@ -2074,9 +2177,10 @@ void GuiDocument::paramsToDialog()
 	fontModule->fontOsfCB->setChecked(bp_.fontsOSF);
 	fontModule->scaleSansSB->setValue(bp_.fontsSansScale);
 	fontModule->scaleTypewriterSB->setValue(bp_.fontsTypewriterScale);
-	n = findToken(GuiDocument::fontfamilies, bp_.fontsDefaultFamily);
-	if (n >= 0)
-		fontModule->fontsDefaultCO->setCurrentIndex(n);
+
+	int nn = findToken(GuiDocument::fontfamilies, bp_.fontsDefaultFamily);
+	if (nn >= 0)
+		fontModule->fontsDefaultCO->setCurrentIndex(nn);
 
 	// paper
 	bool const extern_geometry =
@@ -2153,9 +2257,9 @@ void GuiDocument::paramsToDialog()
 	pdfSupportModule->pdfusetitleCB->setChecked(pdf.pdfusetitle);
 	pdfSupportModule->colorlinksCB->setChecked(pdf.colorlinks);
 
-	n = findToken(backref_opts, pdf.backref);
-	if (n >= 0)
-		pdfSupportModule->backrefCO->setCurrentIndex(n);
+	nn = findToken(backref_opts, pdf.backref);
+	if (nn >= 0)
+		pdfSupportModule->backrefCO->setCurrentIndex(nn);
 
 	pdfSupportModule->fullscreenCB->setChecked
 		(pdf.pagemode == pdf.pagemode_fullscreen);

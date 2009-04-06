@@ -121,7 +121,7 @@ namespace {
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-int const LYX_FORMAT = 348;  // uwestoehr: add support for \*phantom
+int const LYX_FORMAT = 349;  // jspitzm: initial XeTeX support
 
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;
@@ -1005,9 +1005,13 @@ bool Buffer::write(ostream & ofs) const
 
 bool Buffer::makeLaTeXFile(FileName const & fname,
 			   string const & original_path,
-			   OutputParams const & runparams,
+			   OutputParams const & runparams_in,
 			   bool output_preamble, bool output_body) const
 {
+	OutputParams runparams = runparams_in;
+	if (params().useXetex)
+		runparams.flavor = OutputParams::XETEX;
+
 	string const encoding = runparams.encoding->iconvName();
 	LYXERR(Debug::LATEX, "makeLaTeXFile encoding: " << encoding << "...");
 
@@ -2232,7 +2236,8 @@ void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
 {
 	OutputParams runparams(&params().encoding());
 	runparams.nice = true;
-	runparams.flavor = OutputParams::LATEX;
+	runparams.flavor = params().useXetex ? 
+		OutputParams::XETEX : OutputParams::LATEX;
 	runparams.linelen = lyxrc.plaintext_linelen;
 	// No side effect of file copying and image conversion
 	runparams.dryrun = true;
@@ -2467,6 +2472,8 @@ string Buffer::bufferFormat() const
 		return "docbook";
 	if (isLiterate())
 		return "literate";
+	if (params().useXetex)
+		return "xetex";
 	if (params().encoding().package() == Encoding::japanese)
 		return "platex";
 	return "latex";

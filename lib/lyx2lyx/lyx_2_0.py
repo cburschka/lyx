@@ -186,10 +186,12 @@ def revert_vphantom(document):
 supported_versions = ["2.0.0","2.0"]
 convert = [[346, []],
            [347, []],
-           [348, []]
+           [348, []],
+           [349, []]
           ]
 
-revert =  [[347, [revert_phantom, revert_hphantom, revert_vphantom]],
+revert =  [[348, []],
+           [347, [revert_phantom, revert_hphantom, revert_vphantom]],
            [346, [revert_tabularvalign]],
            [345, [revert_swiss]]
           ]

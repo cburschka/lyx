@@ -254,6 +254,8 @@ OutputParams::FLAVOR Converters::getFlavor(Graph::EdgePath const & path)
 	     cit != path.end(); ++cit) {
 		Converter const & conv = converterlist_[*cit];
 		if (conv.latex)
+			if (contains(conv.from, "xetex"))
+				return OutputParams::XETEX;
 			if (contains(conv.to, "pdf"))
 				return OutputParams::PDFLATEX;
 		if (conv.xml)

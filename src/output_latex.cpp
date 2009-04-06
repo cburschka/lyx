@@ -697,9 +697,11 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 	// If this is the last paragraph, and a local_font was set upon entering
 	// the inset, and we're using "auto" or "default" encoding, the encoding
 	// should be set back to that local_font's encoding.
+	// However, do not change the encoding when XeTeX is used.
 	if (nextpit == paragraphs.end() && runparams_in.local_font != 0
 	    && runparams_in.encoding != runparams_in.local_font->language()->encoding()
-	    && (bparams.inputenc == "auto" || bparams.inputenc == "default")) {
+	    && (bparams.inputenc == "auto" || bparams.inputenc == "default")
+	    && (!bparams.useXetex)) {
 		runparams_in.encoding = runparams_in.local_font->language()->encoding();
 		os << setEncoding(runparams_in.encoding->iconvName());
 	}

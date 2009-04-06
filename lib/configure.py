@@ -291,6 +291,7 @@ def checkFormatEntries(dtl_tools):
 \Format lilypond   ly     "LilyPond music"        "" ""	"%%"	"vector"
 \Format latex      tex    "LaTeX (plain)"         L  ""	"%%"	"document"
 \Format pdflatex   tex    "LaTeX (pdflatex)"      "" ""	"%%"	"document"
+\Format xetex      tex    "LaTeX (XeTeX)"         "" ""	"%%"	"document"
 \Format text       txt    "Plain text"            a  ""	"%%"	"document"
 \Format text2      txt    "Plain text (pstotext)" "" ""	"%%"	"document"
 \Format text3      txt    "Plain text (ps2ascii)" "" ""	"%%"	"document"
@@ -314,7 +315,8 @@ def checkFormatEntries(dtl_tools):
 		    'gv', 'ghostview'],
         rc_entry = [r'''\Format pdf        pdf    "PDF (ps2pdf)"          P  "%%"	""	"document,vector"
 \Format pdf2       pdf    "PDF (pdflatex)"        F  "%%"	""	"document,vector"
-\Format pdf3       pdf    "PDF (dvipdfm)"         m  "%%"	""	"document,vector"'''])
+\Format pdf3       pdf    "PDF (dvipdfm)"         m  "%%"	""	"document,vector"
+\Format pdf4       pdf    "PDF (XeTeX)"           X  "%%"	""	"document,vector"'''])
     #
     checkViewer('a DVI previewer', ['xdvi', 'kdvi'],
         rc_entry = [r'\Format dvi        dvi     DVI                    D  "%%"	""	"document,vector"'])
@@ -361,6 +363,9 @@ def checkConverterEntries():
     ''' Check all converters (\converter entries) '''
     checkProg('the pdflatex program', ['pdflatex $$i'],
         rc_entry = [ r'\converter pdflatex   pdf2       "%%"	"latex"' ])
+
+    checkProg('XeTeX', ['xelatex $$i'],
+        rc_entry = [ r'\converter xetex      pdf4       "%%"	"latex"' ])
     
     ''' If we're running LyX in-place then tex2lyx will be found in
             ../src/tex2lyx. Add this directory to the PATH temporarily and
