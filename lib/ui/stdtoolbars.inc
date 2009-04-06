@@ -205,8 +205,8 @@ ToolbarSet
 	Toolbar "view/update" "View/Update"
 		Item "View DVI" "buffer-view dvi"
 		Item "Update DVI" "buffer-update dvi"
-		Item "View PDF (pdflatex)" "buffer-view pdf2"
-		Item "Update PDF (pdflatex)" "buffer-update pdf2"
+		Item "View PDF (pdflatex)" "command-alternatives buffer-view pdf2;buffer-view pdf4"
+		Item "Update PDF (pdflatex)" "command-alternatives buffer-update pdf2;buffer-view pdf4"
 		Item "View PostScript" "buffer-view ps"
 		Item "Update PostScript" "buffer-update ps"
 	End

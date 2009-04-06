@@ -588,6 +588,23 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 	}
 
+	case LFUN_BUFFER_UPDATE:
+	case LFUN_BUFFER_VIEW:
+	case LFUN_MASTER_BUFFER_UPDATE:
+	case LFUN_MASTER_BUFFER_VIEW: {
+		typedef vector<Format const *> Formats;
+		Formats formats;
+		formats = buf->exportableFormats(true);
+		Formats::const_iterator fit = formats.begin();
+		Formats::const_iterator end = formats.end();
+		enable = false;
+		for (; fit != end ; ++fit) {
+			if ((*fit)->name() == to_utf8(cmd.argument()))
+				enable = true;
+		}
+		break;
+	}
+
 	case LFUN_WORD_FIND_FORWARD:
 	case LFUN_WORD_FIND_BACKWARD:
 	case LFUN_WORD_FINDADV:
@@ -596,10 +613,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_CANCEL:
 	case LFUN_META_PREFIX:
 	case LFUN_BUFFER_CLOSE:
-	case LFUN_BUFFER_UPDATE:
-	case LFUN_BUFFER_VIEW:
-	case LFUN_MASTER_BUFFER_UPDATE:
-	case LFUN_MASTER_BUFFER_VIEW:
 	case LFUN_BUFFER_IMPORT:
 	case LFUN_BUFFER_AUTO_SAVE:
 	case LFUN_RECONFIGURE:
