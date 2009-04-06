@@ -1089,10 +1089,6 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	if (useXetex) {
 		os << "\\usepackage{fontspec}\n";
 		texrow.newline();
-		os << "\\usepackage{xunicode}\n";
-		texrow.newline();
-		os << "\\usepackage{xltxtra}\n";
-		texrow.newline();
 	}
 
 	// font selection must be done before loading fontenc.sty
@@ -1453,6 +1449,16 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	}
 
 	os << lyxpreamble;
+
+	// these packages (xunicode, for that matter) need to be loaded at least
+	// after amsmath, amssymb, esint and the other packages that provide 
+	// special glyphs
+	if (useXetex) {
+		os << "\\usepackage{xunicode}\n";
+		texrow.newline();
+		os << "\\usepackage{xltxtra}\n";
+		texrow.newline();
+	}
 	return use_babel;
 }
 
