@@ -157,38 +157,24 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 			dim.wid = dim0.width() + dim1.wid + 5;
 			dim.asc = dim0.height() + 5;
 			dim.des = dim1.height() - 5;
-		} else if (kind_ == CFRAC || kind_ == CFRACLEFT
-			|| kind_ == CFRACRIGHT) {
-			// cfrac is always in display size
-			StyleChanger dummy2(mi.base, LM_ST_DISPLAY);
-			cell(0).metrics(mi, dim0);
-			cell(1).metrics(mi, dim1);
-			dim.wid = max(dim0.wid, dim1.wid) + 2;
-			dim.asc = dim0.height() + 2 + 5;
-			dim.des = dim1.height() + 2 - 5;
 		} else if (kind_ == UNITFRAC) {
 			ShapeChanger dummy2(mi.base.font, UP_SHAPE);
 			dim.wid = dim0.width() + dim1.wid + 5;
 			dim.asc = dim0.height() + 5;
 			dim.des = dim1.height() - 5;
-		} else if (kind_ == DFRAC) {
-			// dfrac is in always in display size
-			StyleChanger dummy2(mi.base, LM_ST_DISPLAY);
-			cell(0).metrics(mi, dim0);
-			cell(1).metrics(mi, dim1);
-			dim.wid = max(dim0.wid, dim1.wid) + 2;
-			dim.asc = dim0.height() + 2 + 5;
-			dim.des = dim1.height() + 2 - 5;
-		} else if (kind_ == TFRAC) {
-			// tfrac is in always in text size
-			StyleChanger dummy2(mi.base, LM_ST_SCRIPT);
-			cell(0).metrics(mi, dim0);
-			cell(1).metrics(mi, dim1);
-			dim.wid = max(dim0.wid, dim1.wid) + 2;
-			dim.asc = dim0.height() + 2 + 5;
-			dim.des = dim1.height() + 2 - 5;
 		} else {
-			// FRAC
+			if (kind_ == CFRAC || kind_ == CFRACLEFT
+			|| kind_ == CFRACRIGHT || kind_ == DFRAC) {
+				// \cfrac and \dfrac are in always in display size
+				StyleChanger dummy2(mi.base, LM_ST_DISPLAY);
+				cell(0).metrics(mi, dim0);
+				cell(1).metrics(mi, dim1);
+			} else if (kind_ == TFRAC) {
+				// tfrac is in always in text size
+				StyleChanger dummy2(mi.base, LM_ST_SCRIPT);
+				cell(0).metrics(mi, dim0);
+				cell(1).metrics(mi, dim1);
+			}
 			dim.wid = max(dim0.wid, dim1.wid) + 2;
 			dim.asc = dim0.height() + 2 + 5;
 			dim.des = dim1.height() + 2 - 5;
@@ -227,6 +213,7 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 	} else {
 		FracChanger dummy(pi.base);
 		Dimension const dim1 = cell(1).dimension(*pi.base.bv);
+		int m = x + dim.wid / 2;
 		if (kind_ == NICEFRAC) {
 			cell(0).draw(pi, x + 2,
 					y - dim0.des - 5);
@@ -234,45 +221,26 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 					y + dim1.asc / 2);
 		} else if (kind_ == UNITFRAC) {
 			ShapeChanger dummy2(pi.base.font, UP_SHAPE);
-			cell(0).draw(pi, x + 2,
-					y - dim0.des - 5);
-			cell(1).draw(pi, x + dim0.width() + 5,
-					y + dim1.asc / 2);
-		} else if (kind_ == CFRAC || kind_ == CFRACLEFT
-			|| kind_ == CFRACRIGHT) {
-			// cfrac is always in display size
-			StyleChanger dummy2(pi.base, LM_ST_DISPLAY);
-			Dimension const dim0 = cell(0).dimension(*pi.base.bv);
-			Dimension const dim1 = cell(1).dimension(*pi.base.bv);
-			int m = x + dim.wid / 2;
-			if (kind_ == CFRAC)
-				cell(0).draw(pi, m - dim0.wid / 2, y - dim0.des - 2 - 5);
-			else if (kind_ == CFRACLEFT)
-				cell(0).draw(pi, x + 2, y - dim0.des - 2 - 5);
-			else if (kind_ == CFRACRIGHT)
-				cell(0).draw(pi, x + dim.wid - dim0.wid - 2,
-				y - dim0.des - 2 - 5);
-			cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc + 2 - 5);
-		} else if (kind_ == DFRAC) {
-			// dfrac is in always in display size
-			StyleChanger dummy2(pi.base, LM_ST_DISPLAY);
-			//Dimension const dim = dimension(*pi.base.bv);
-			Dimension const dim0 = cell(0).dimension(*pi.base.bv);
-			Dimension const dim1 = cell(1).dimension(*pi.base.bv);
-			int m = x + dim.wid / 2;
+			cell(0).draw(pi, x + 2,	y - dim0.des - 5);
+			cell(1).draw(pi, x + dim0.width() + 5, y + dim1.asc / 2);
+		} else if (kind_ == FRAC) {
 			cell(0).draw(pi, m - dim0.wid / 2, y - dim0.des - 2 - 5);
 			cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc + 2 - 5);
 		} else if (kind_ == TFRAC) {
 			// tfrac is in always in text size
 			StyleChanger dummy2(pi.base, LM_ST_SCRIPT);
-			Dimension const dim0 = cell(0).dimension(*pi.base.bv);
-			Dimension const dim1 = cell(1).dimension(*pi.base.bv);
-			int m = x + dim.wid / 2;
 			cell(0).draw(pi, m - dim0.wid / 2, y - dim0.des - 2 - 5);
 			cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc + 2 - 5);
 		} else {
-			// FRAC
-			cell(0).draw(pi, m - dim0.wid / 2, y - dim0.des - 2 - 5);
+			// \cfrac and \dfrac are always in display size
+			StyleChanger dummy2(pi.base, LM_ST_DISPLAY);
+			if (kind_ == CFRAC || kind_ == DFRAC)
+				cell(0).draw(pi, m - dim0.wid / 2, y - dim0.des - 2 - 5);
+			else if (kind_ == CFRACLEFT)
+				cell(0).draw(pi, x + 2, y - dim0.des - 2 - 5);
+			else if (kind_ == CFRACRIGHT)
+				cell(0).draw(pi, x + dim.wid - dim0.wid - 2,
+					y - dim0.des - 2 - 5);
 			cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc + 2 - 5);
 		}
 	}
