@@ -2659,9 +2659,12 @@ string Buffer::getDefaultOutputFormat() const
 	if (isDocBook()
 	    || isLiterate()
 	    || params().useXetex
-	    || params().encoding().package() == Encoding::japanese)
+	    || params().encoding().package() == Encoding::japanese) {
+		if (formats.empty())
+			return string();
 		// return the first we find
 		return formats.front()->name();
+	}
 	return lyxrc.default_view_format;
 }
 
