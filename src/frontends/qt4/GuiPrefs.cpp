@@ -1519,10 +1519,11 @@ void PrefFileformats::updateView()
 	QString const current = formatsCB->currentText();
 	QString const current_def = defaultFormatCB->currentText();
 
-	// update combobox with formats
+	// update comboboxes with formats
 	formatsCB->blockSignals(true);
 	defaultFormatCB->blockSignals(true);
 	formatsCB->clear();
+	defaultFormatCB->clear();
 	form_->formats().sort();
 	Formats::const_iterator cit = form_->formats().begin();
 	Formats::const_iterator end = form_->formats().end();
