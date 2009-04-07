@@ -29,11 +29,28 @@ def find_end_of_inset(lines, i):
     " Find end of inset, where lines[i] is included."
     return find_end_of(lines, i, "\\begin_inset", "\\end_inset")
 
+
+def add_to_preamble(document, text):
+    """ Add text to the preamble if it is not already there.
+    Only the first line is checked!"""
+
+    if find_token(document.preamble, text[0], 0) != -1:
+        return
+
+    document.preamble.extend(text)
+
+
+def insert_to_preamble(index, document, text):
+    """ Insert text to the preamble at a given line"""
+
+    document.preamble.insert(index, text)
+
+
 ####################################################################
 
 
 def revert_swiss(document):
-    "Set language german-ch to ngerman"
+    " Set language german-ch to ngerman "
     i = 0
     if document.language == "german-ch":
         document.language = "ngerman"
@@ -50,7 +67,7 @@ def revert_swiss(document):
 
 
 def revert_tabularvalign(document):
-   "Revert the tabular valign option"
+   " Revert the tabular valign option "
    i = 0
    while True:
        i = find_token(document.body, "\\begin_inset Tabular", i)
@@ -96,7 +113,7 @@ def revert_tabularvalign(document):
 
 
 def revert_phantom(document):
-    'Reverts phantom to ERT'
+    " Reverts phantom to ERT "
     i = 0
     j = 0
     while True:
@@ -124,7 +141,7 @@ def revert_phantom(document):
 
 
 def revert_hphantom(document):
-    'Reverts hphantom to ERT'
+    " Reverts hphantom to ERT "
     i = 0
     j = 0
     while True:
@@ -152,7 +169,7 @@ def revert_hphantom(document):
 
 
 def revert_vphantom(document):
-    'Reverts vphantom to ERT'
+    " Reverts vphantom to ERT "
     i = 0
     j = 0
     while True:
@@ -179,6 +196,88 @@ def revert_vphantom(document):
       i += len(substj)
 
 
+def revert_xetex(document):
+    " Reverts documents that use XeTeX "
+    i = find_token(document.header, '\\use_xetex', 0)
+    if i == -1:
+        return
+    del document.header[i]
+    # 1.) set doc encoding to utf8-plain
+    i = find_token(document.header, "\\inputencoding", 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\inputencoding.")
+    document.header[i] = "\\inputencoding utf8-plain"
+    # 2.) check font settings
+    l = find_token(document.header, "\\font_roman", 0)
+    if l == -1:
+        document.warning("Malformed LyX document: Missing \\font_roman.")
+    line = document.header[l]
+    l = re.compile(r'\\font_roman (.*)$')
+    m = l.match(line)
+    roman = m.group(1)
+    l = find_token(document.header, "\\font_sans", 0)
+    if l == -1:
+        document.warning("Malformed LyX document: Missing \\font_sans.")
+    line = document.header[l]
+    l = re.compile(r'\\font_sans (.*)$')
+    m = l.match(line)
+    sans = m.group(1)
+    l = find_token(document.header, "\\font_typewriter", 0)
+    if l == -1:
+        document.warning("Malformed LyX document: Missing \\font_typewriter.")
+    line = document.header[l]
+    l = re.compile(r'\\font_typewriter (.*)$')
+    m = l.match(line)
+    typewriter = m.group(1)
+    osf = get_value(document.header, '\\font_osf', 0) == "true"
+    sf_scale = float(get_value(document.header, '\\font_sf_scale', 0))
+    tt_scale = float(get_value(document.header, '\\font_tt_scale', 0))
+    # 3.) set preamble stuff
+    pretext = '%% This document must be processed with xelatex!\n'
+    pretext += '\\usepackage{fontspec}\n'
+    pretext += '\\setmainfont[Mapping=tex-text]{' + roman + '}\n'
+    pretext += '\\setsansfont['
+    if sf_scale != 100:
+        pretext += 'Scale=' + str(sf_scale / 100) + ','
+    pretext += 'Mapping=tex-text]{' + sans + '}\n'
+    pretext += '\\setmonofont'
+    if tt_scale != 100:
+        pretext += '[Scale=' + str(tt_scale / 100) + ']'
+    pretext += '{' + typewriter + '}\n'
+    if osf:
+        pretext += '\\defaultfontfeatures{Numbers=OldStyle}\n'
+    insert_to_preamble(0, document, pretext)
+    # 4.) reset font settings
+    i = find_token(document.header, "\\font_roman", 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\font_roman.")
+    document.header[i] = "\\font_roman default"
+    i = find_token(document.header, "\\font_sans", 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\font_sans.")
+    document.header[i] = "\\font_sans default"
+    i = find_token(document.header, "\\font_typewriter", 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\font_typewriter.")
+    document.header[i] = "\\font_typewriter default"
+    i = find_token(document.header, "\\font_osf", 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\font_osf.")
+    document.header[i] = "\\font_osf false"
+    i = find_token(document.header, "\\font_sc", 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\font_sc.")
+    document.header[i] = "\\font_sc false"
+    i = find_token(document.header, "\\font_sf_scale", 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\font_sf_scale.")
+    document.header[i] = "\\font_sf_scale 100"
+    i = find_token(document.header, "\\font_tt_scale", 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\font_tt_scale.")
+    document.header[i] = "\\font_tt_scale 100"
+
+
 ##
 # Conversion hub
 #
@@ -190,7 +289,7 @@ convert = [[346, []],
            [349, []]
           ]
 
-revert =  [[348, []],
+revert =  [[348, [revert_xetex]],
            [347, [revert_phantom, revert_hphantom, revert_vphantom]],
            [346, [revert_tabularvalign]],
            [345, [revert_swiss]]
