@@ -1938,6 +1938,8 @@ MathCompletionList::MathCompletionList(Cursor const & cur)
 	globals.push_back(from_ascii("\\normalcolor"));
 	globals.push_back(from_ascii("\\textcolor"));
 	globals.push_back(from_ascii("\\cfrac"));
+	globals.push_back(from_ascii("\\cfracleft"));
+	globals.push_back(from_ascii("\\cfracright"));
 	globals.push_back(from_ascii("\\dfrac"));
 	globals.push_back(from_ascii("\\tfrac"));
 	globals.push_back(from_ascii("\\dbinom"));
