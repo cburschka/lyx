@@ -1153,7 +1153,7 @@ contributers = [
                  u"documentation maintainer, AASTeX support"),
 
      contributer(u"Christian Ridderström",
-                 "christian.ridderstrom () home ! se",
+                 "christian.ridderstrom () gmail ! com",
                  "GPL",
                  "Re: The LyX licence",
                  "m=110910933124056",
