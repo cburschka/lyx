@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>414</width>
-    <height>322</height>
+    <width>427</width>
+    <height>413</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -19,6 +19,53 @@
    <property name="spacing" >
     <number>6</number>
    </property>
+   <item row="10" column="0" colspan="4" >
+    <widget class="QGroupBox" name="defaultFormatGB" >
+     <property name="toolTip" >
+      <string>Specify the default output format when using (PDF)LaTeX</string>
+     </property>
+     <property name="title" >
+      <string>Default Format</string>
+     </property>
+     <property name="flat" >
+      <bool>true</bool>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="defaultFormatLA" >
+        <property name="text" >
+         <string>De&amp;fault Output Format:</string>
+        </property>
+        <property name="buddy" >
+         <cstring>defaultFormatCB</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <widget class="QComboBox" name="defaultFormatCB" />
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="9" column="1" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>124</width>
+       <height>21</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
    <item row="8" column="1" colspan="3" >
     <widget class="QLineEdit" name="copierED" />
    </item>
@@ -148,19 +195,6 @@
    </item>
    <item row="4" column="1" >
     <widget class="QLineEdit" name="extensionED" />
-   </item>
-   <item row="9" column="1" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>168</width>
-       <height>21</height>
-      </size>
-     </property>
-    </spacer>
    </item>
    <item row="8" column="0" >
     <widget class="QLabel" name="label" >

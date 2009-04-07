@@ -69,6 +69,7 @@ public:
 		RC_DATE_INSERT_FORMAT,
 		RC_DEFFILE,
 		RC_DEFAULT_LANGUAGE,
+		RC_DEFAULT_VIEW_FORMAT,
 		RC_GUI_LANGUAGE,
 		RC_DEFAULT_PAPERSIZE,
 		RC_DIALOGS_ICONIFY_WITH_MAIN,
@@ -370,6 +371,8 @@ public:
 	std::string default_language;
 	///
 	std::string gui_language;
+	///
+	std::string default_view_format;
 	///
 	bool mac_like_word_movement;
 	///

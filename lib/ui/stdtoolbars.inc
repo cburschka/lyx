@@ -203,11 +203,24 @@ ToolbarSet
 	End
 	
 	Toolbar "view/update" "View/Update"
+		Item "View" "buffer-view"
+		Item "Update" "buffer-update"
+		Item "View Master Document" "master-buffer-view"
+		Item "Update Master Document" "master-buffer-update"
+		Separator
+		PopupMenu "view-others" "View Other Formats"
+		PopupMenu "update-others" "Update Other Formats"
+	End
+	
+	Toolbar "view-others" "View Other Formats"
 		Item "View DVI" "buffer-view dvi"
-		Item "Update DVI" "buffer-update dvi"
-		Item "View PDF (pdflatex)" "command-alternatives buffer-view pdf2;buffer-view pdf4"
-		Item "Update PDF (pdflatex)" "command-alternatives buffer-update pdf2;buffer-view pdf4"
+		Item "View PDF (pdflatex)" "buffer-view pdf2"
 		Item "View PostScript" "buffer-view ps"
+	End
+	
+	Toolbar "update-others" "Update Other Formats"
+		Item "Update DVI" "buffer-update dvi"
+		Item "Update PDF (pdflatex)" "buffer-update pdf2"
 		Item "Update PostScript" "buffer-update ps"
 	End
 

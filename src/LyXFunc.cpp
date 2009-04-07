@@ -583,10 +583,17 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 	}
 
-	case LFUN_BUFFER_UPDATE:
-	case LFUN_BUFFER_VIEW:
 	case LFUN_MASTER_BUFFER_UPDATE:
-	case LFUN_MASTER_BUFFER_VIEW: {
+	case LFUN_MASTER_BUFFER_VIEW: 
+		if (!buf->parent()) {
+			enable = false;
+			break;
+		}
+	case LFUN_BUFFER_UPDATE:
+	case LFUN_BUFFER_VIEW: {
+		string format = to_utf8(cmd.argument());
+		if (cmd.argument().empty())
+			format = buf->getDefaultOutputFormat();
 		typedef vector<Format const *> Formats;
 		Formats formats;
 		formats = buf->exportableFormats(true);
@@ -594,7 +601,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		Formats::const_iterator end = formats.end();
 		enable = false;
 		for (; fit != end ; ++fit) {
-			if ((*fit)->name() == to_utf8(cmd.argument()))
+			if ((*fit)->name() == format)
 				enable = true;
 		}
 		break;
@@ -867,25 +874,41 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 		}
 
-		case LFUN_BUFFER_UPDATE:
+		case LFUN_BUFFER_UPDATE: {
 			LASSERT(lyx_view_ && buffer, /**/);
-			buffer->doExport(argument, true);
+			string format = argument;
+			if (argument.empty())
+				format = buffer->getDefaultOutputFormat();
+			buffer->doExport(format, true);
 			break;
+		}
 
-		case LFUN_BUFFER_VIEW:
+		case LFUN_BUFFER_VIEW: {
 			LASSERT(lyx_view_ && buffer, /**/);
-			buffer->preview(argument);
+			string format = argument;
+			if (argument.empty())
+				format = buffer->getDefaultOutputFormat();
+			buffer->preview(format);
 			break;
+		}
 
-		case LFUN_MASTER_BUFFER_UPDATE:
+		case LFUN_MASTER_BUFFER_UPDATE: {
 			LASSERT(lyx_view_ && buffer && buffer->masterBuffer(), /**/);
-			buffer->masterBuffer()->doExport(argument, true);
+			string format = argument;
+			if (argument.empty())
+				format = buffer->masterBuffer()->getDefaultOutputFormat();
+			buffer->masterBuffer()->doExport(format, true);
 			break;
+		}
 
-		case LFUN_MASTER_BUFFER_VIEW:
+		case LFUN_MASTER_BUFFER_VIEW: {
 			LASSERT(lyx_view_ && buffer && buffer->masterBuffer(), /**/);
-			buffer->masterBuffer()->preview(argument);
+			string format = argument;
+			if (argument.empty())
+				format = buffer->masterBuffer()->getDefaultOutputFormat();
+			buffer->masterBuffer()->preview(format);
 			break;
+		}
 
 		case LFUN_BUILD_PROGRAM:
 			LASSERT(lyx_view_ && buffer, /**/);
@@ -1874,6 +1897,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_DEFAULT_LANGUAGE:
 	case LyXRC::RC_GUI_LANGUAGE:
 	case LyXRC::RC_DEFAULT_PAPERSIZE:
+	case LyXRC::RC_DEFAULT_VIEW_FORMAT:
 	case LyXRC::RC_DEFFILE:
 	case LyXRC::RC_DIALOGS_ICONIFY_WITH_MAIN:
 	case LyXRC::RC_DISPLAY_GRAPHICS:

@@ -84,6 +84,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\def_file", LyXRC::RC_DEFFILE },
 	{ "\\default_language", LyXRC::RC_DEFAULT_LANGUAGE },
 	{ "\\default_papersize", LyXRC::RC_DEFAULT_PAPERSIZE },
+	{ "\\default_view_format", LyXRC::RC_DEFAULT_VIEW_FORMAT },
 	{ "\\dialogs_iconify_with_main", LyXRC::RC_DIALOGS_ICONIFY_WITH_MAIN },
 	{ "\\display_graphics", LyXRC::RC_DISPLAY_GRAPHICS },
 	{ "\\document_path", LyXRC::RC_DOCUMENTPATH },
@@ -227,6 +228,7 @@ void LyXRC::setDefaults()
 	view_dvi_paper_option.erase();
 	default_papersize = PAPER_DEFAULT;
 	custom_export_format = "ps";
+	default_view_format = "pdf2";
 	chktex_command = "chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38";
 	bibtex_command = "bibtex";
 	fontenc = "default";
@@ -1017,6 +1019,10 @@ int LyXRC::read(Lexer & lexrc)
 			}
 			break;
 		}
+		case RC_DEFAULT_VIEW_FORMAT:
+			lexrc >> default_view_format;
+			break;
+			
 		case RC_DEFAULT_LANGUAGE:
 			lexrc >> default_language;
 			break;
@@ -2389,6 +2395,13 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 				   << "\" \"\" \"\" \"\" \"\" \"\" \"\"\n";
 		if (tag != RC_LAST)
 			break;
+	case RC_DEFAULT_VIEW_FORMAT:
+		if (ignore_system_lyxrc ||
+		    default_view_format != system_lyxrc.default_view_format) {
+			os << "\\default_view_format " << default_view_format << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
 	case RC_VIEWER:
 		// Ignore it
 		if (tag != RC_LAST)
@@ -2422,7 +2435,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 				   << "\" \"" << cit->to << "\" \"\" \"\"\n";
 		if (tag != RC_LAST)
 			break;
-
+	
 	case RC_COPIER:
 		if (tag == RC_LAST)
 			os << "\n#\n"
@@ -2552,6 +2565,10 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_DEFFILE:
 		str = _("Command definition file. Can either specify an absolute path, or LyX will look in its global and local commands/ directories.");
+		break;
+
+	case RC_DEFAULT_VIEW_FORMAT:
+		str = _("The default format used with LFUN_BUFFER_[VIEW|UPDATE].");
 		break;
 
 	case RC_DEFAULT_LANGUAGE:

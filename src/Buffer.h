@@ -471,6 +471,8 @@ public:
 
 	/// return the format of the buffer on a string
 	std::string bufferFormat() const;
+	/// return the default output format of the current backend
+	std::string getDefaultOutputFormat() const;
 
 	///
 	bool doExport(std::string const & format, bool put_in_tempdir,

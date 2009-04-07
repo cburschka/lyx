@@ -791,8 +791,10 @@ void MenuDefinition::expandFormats(MenuItem::Kind kind, Buffer const * buf)
 			label += "...";
 			break;
 		case MenuItem::ViewFormats:
-		case MenuItem::ExportFormats:
 		case MenuItem::UpdateFormats:
+			if ((*fit)->name() == buf->getDefaultOutputFormat())
+				continue;
+		case MenuItem::ExportFormats:
 			if (!(*fit)->documentFormat())
 				continue;
 			break;

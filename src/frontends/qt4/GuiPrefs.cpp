@@ -1474,6 +1474,8 @@ PrefFileformats::PrefFileformats(GuiPreferences * form)
 		this, SLOT(updatePrettyname()));
 	connect(formatsCB->lineEdit(), SIGNAL(textEdited(QString)),
 		this, SIGNAL(changed()));
+	connect(defaultFormatCB, SIGNAL(activated(QString)),
+		this, SIGNAL(changed()));
 }
 
 
@@ -1492,36 +1494,55 @@ string const l10n_shortcut(string const prettyname, string const shortcut)
 }; // namespace anon
 
 
-void PrefFileformats::apply(LyXRC & /*rc*/) const
+void PrefFileformats::apply(LyXRC & rc) const
 {
+	QString const default_format = defaultFormatCB->itemData(
+		defaultFormatCB->currentIndex()).toString();
+	rc.default_view_format = fromqstr(default_format);
 }
 
 
-void PrefFileformats::update(LyXRC const & /*rc*/)
+void PrefFileformats::update(LyXRC const & rc)
 {
+	bool const init = defaultFormatCB->currentText().isEmpty();
 	updateView();
+	if (init) {
+		int const pos = defaultFormatCB->findData(toqstr(
+		rc.default_view_format));
+		defaultFormatCB->setCurrentIndex(pos);
+	}
 }
 
 
 void PrefFileformats::updateView()
 {
 	QString const current = formatsCB->currentText();
+	QString const current_def = defaultFormatCB->currentText();
 
 	// update combobox with formats
 	formatsCB->blockSignals(true);
+	defaultFormatCB->blockSignals(true);
 	formatsCB->clear();
 	form_->formats().sort();
 	Formats::const_iterator cit = form_->formats().begin();
 	Formats::const_iterator end = form_->formats().end();
-	for (; cit != end; ++cit)
+	for (; cit != end; ++cit) {
 		formatsCB->addItem(qt_(cit->prettyname()),
-				   QVariant(form_->formats().getNumber(cit->name())));
+				QVariant(form_->formats().getNumber(cit->name())));
+		if (form_->converters().isReachable("latex", cit->name())
+		    || form_->converters().isReachable("pdflatex", cit->name()))
+			defaultFormatCB->addItem(qt_(cit->prettyname()),
+					QVariant(toqstr(cit->name())));
+	}
 
 	// restore selection
-	int const item = formatsCB->findText(current, Qt::MatchExactly);
+	int item = formatsCB->findText(current, Qt::MatchExactly);
 	formatsCB->setCurrentIndex(item < 0 ? 0 : item);
 	on_formatsCB_currentIndexChanged(item < 0 ? 0 : item);
+	item = defaultFormatCB->findText(current_def, Qt::MatchExactly);
+	defaultFormatCB->setCurrentIndex(item < 0 ? 0 : item);
 	formatsCB->blockSignals(false);
+	defaultFormatCB->blockSignals(false);
 }
 
 

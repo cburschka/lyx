@@ -2652,6 +2652,21 @@ string Buffer::bufferFormat() const
 }
 
 
+string Buffer::getDefaultOutputFormat() const
+{
+	typedef vector<Format const *> Formats;
+	Formats formats = exportableFormats(true);
+	if (isDocBook()
+	    || isLiterate()
+	    || params().useXetex
+	    || params().encoding().package() == Encoding::japanese)
+		// return the first we find
+		return formats.front()->name();
+	return lyxrc.default_view_format;
+}
+
+
+
 bool Buffer::doExport(string const & format, bool put_in_tempdir,
 	string & result_file) const
 {

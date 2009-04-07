@@ -282,9 +282,11 @@ dist_images_DATA = \
 	images/buffer-export_text.png \
 	images/buffer-new.png \
 	images/buffer-reload.png \
+	images/buffer-update.png \
 	images/buffer-update_dvi.png \
 	images/buffer-update_pdf2.png \
 	images/buffer-update_ps.png \
+	images/buffer-view.png \
 	images/buffer-view_dvi.png \
 	images/buffer-view_pdf2.png \
 	images/buffer-view_ps.png \
@@ -349,6 +351,8 @@ dist_images_DATA = \
 	images/vc-register.png \
 	images/vc-revert.png \
 	images/marginalnote-insert.png \
+	images/master-buffer-update.png \
+	images/master-buffer-view.png \
 	images/math-display.png \
 	images/math-macro-add-greedy-optional-param.png \
 	images/math-macro-add-optional-param.png \
@@ -868,6 +872,7 @@ dist_imagesmath_DATA = \
 	images/math/underset.png \
 	images/math/uparrow.png \
 	images/math/uparrow2.png \
+	images/math/update-others.png \
 	images/math/updownarrow.png \
 	images/math/updownarrow2.png \
 	images/math/upharpoonleft.png \
@@ -902,6 +907,7 @@ dist_imagesmath_DATA = \
 	images/math/veebar.png \
 	images/math/vert.png \
 	images/math/vert2.png \
+	images/math/view-others.png \
 	images/math/vphantom.png \
 	images/math/wedge.png \
 	images/math/widehat.png \

@@ -1358,9 +1358,11 @@ lib_images_files = Split('''
     buffer-export_text.png
     buffer-new.png
     buffer-reload.png
+    buffer-update.png
     buffer-update_dvi.png
     buffer-update_pdf2.png
     buffer-update_ps.png
+    buffer-view.png
     buffer-view_dvi.png
     buffer-view_pdf2.png
     buffer-view_ps.png
@@ -1425,6 +1427,8 @@ lib_images_files = Split('''
     vc-register.png
     vc-revert.png
     marginalnote-insert.png
+    master-buffer-update.png
+    master-buffer-view.png
     math-display.png
     math-macro-add-greedy-optional-param.png
     math-macro-add-optional-param.png
@@ -1951,6 +1955,7 @@ lib_images_math_files = Split('''
     underset.png
     uparrow.png
     uparrow2.png
+    update-others.png
     updownarrow.png
     updownarrow2.png
     upharpoonleft.png
@@ -1985,6 +1990,7 @@ lib_images_math_files = Split('''
     veebar.png
     vert.png
     vert2.png
+    view-others.png
     vphantom.png
     wedge.png
     widehat.png
