@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-04-05 21:26+0200\n"
-"PO-Revision-Date: 2009-04-06 00:27+0200\n"
+"PO-Revision-Date: 2009-04-07 14:48+0200\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
 "Language-Team: German <kde-i18n-de@lists.kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -236,7 +236,7 @@ msgstr "Pridať literatúru do o&bsahu"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:225
 msgid "Move the selected database downwards in the list"
-msgstr "Presuň označenú databázu v zozname dole"
+msgstr "Presuň označenú databázu v listine dole"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:228 src/frontends/qt4/ui/ModulesUi.ui:129
 msgid "Do&wn"
@@ -244,7 +244,7 @@ msgstr "&Dole"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:235
 msgid "Move the selected database upwards in the list"
-msgstr "Presuň označenú databázu v zozname hore"
+msgstr "Presuň označenú databázu v listine hore"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:238 src/frontends/qt4/ui/CitationUi.ui:597
 #: src/frontends/qt4/ui/ModulesUi.ui:122
@@ -442,7 +442,7 @@ msgstr "Vyber svoju vetvu"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:47
 msgid "Add a new branch to the list"
-msgstr "Pridať novú vetvu do zoznamu"
+msgstr "Pridať novú vetvu do listiny"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:57
 msgid "A&vailable Branches:"
@@ -746,7 +746,7 @@ msgstr "Zoznam všetkých autorov"
 
 #: src/frontends/qt4/ui/CitationUi.ui:247
 msgid "Full aut&hor list"
-msgstr "Zoznam všetkých autorov"
+msgstr "Plný zoznam autorov"
 
 #: src/frontends/qt4/ui/CitationUi.ui:254
 msgid "Force upper case in citation"
@@ -1530,7 +1530,7 @@ msgstr "Klikni na výber súboru pre lokálne definície dokumentovej triedy"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:55
 msgid "&Local Layout..."
-msgstr "&Lokálne rozloženie..."
+msgstr "&Lokálny formát..."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:65
 msgid "Class options"
@@ -1541,12 +1541,12 @@ msgid ""
 "The options that are predefined in the layout file. Click to the left to "
 "select/deselect."
 msgstr ""
-"Možnosti, ktoré sú preddefinované v súbore rozmiestnenia. Kliknite vľavo pre "
+"Možnosti, ktoré sú preddefinované vo formátovom súbore. Kliknite vľavo pre "
 "aktiváciu/deaktiváciu."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:100
 msgid "Enable to use the options that are predefined in the layout file"
-msgstr "Umožni nastavenia preddefinované v súbore s rozmiestnením."
+msgstr "Umožni nastavenia preddefinované vo formátovom súbore."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:103
 msgid "P&redefined:"
@@ -1611,7 +1611,7 @@ msgstr "Zistiť výpisy vnútry riadku"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:38
 msgid "&Inline listing"
-msgstr "Výpis &vnútry riadku"
+msgstr "Výpis vnútry riadku"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:45
 msgid "Check for floating listings"
@@ -1712,7 +1712,7 @@ msgstr "Použiť rozšírenú tabuľku znakov"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:326
 msgid "&Extended character table"
-msgstr "&Rozšírená tabuľka znakov"
+msgstr "Rozšírená tabuľka znakov"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:345
 msgid "Lan&guage:"
@@ -2053,7 +2053,7 @@ msgstr "napr.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 #: src/frontends/qt4/ui/PageLayoutUi.ui:33
 #: src/frontends/qt4/GuiDocument.cpp:985
 msgid "Page Layout"
-msgstr "Rozloženie Stránky"
+msgstr "Formát Stránky"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:68
 msgid "Paper Format"
@@ -3031,7 +3031,7 @@ msgstr "Sedenie"
 
 #: src/frontends/qt4/ui/PrefUi.ui:51
 msgid "Restore window layouts and &geometries"
-msgstr "Obnoviť rozmiestnenie okien a ich geometrie"
+msgstr "Obnoviť formáty okien a ich geometrie"
 
 #: src/frontends/qt4/ui/PrefUi.ui:58
 msgid "Restore to the cursor position when the file was last closed"
@@ -3223,7 +3223,7 @@ msgstr "Triedenie"
 
 #: src/frontends/qt4/ui/RefUi.ui:238
 msgid "Update the label list"
-msgstr "Aktualizovať zoznam označení"
+msgstr "Aktualizovať listinu označení"
 
 #: src/frontends/qt4/ui/RefUi.ui:256
 msgid "Jump to the label"
@@ -3378,7 +3378,7 @@ msgstr "Kategoria:"
 
 #: src/frontends/qt4/ui/SymbolsUi.ui:116
 msgid "Select this to display all available characters at once"
-msgstr "Zaškrtnite pre zobrazenie všetkých symbolov súčasne"
+msgstr "Zaškrtnite pre zobrazenie všetkých znakov súčasne"
 
 #: src/frontends/qt4/ui/SymbolsUi.ui:119
 msgid "&Display all"
@@ -3639,7 +3639,7 @@ msgstr "Zatvorí tento dialóg"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:91
 msgid "Rebuild the file lists"
-msgstr "Obnoviť zoznam súborov"
+msgstr "Obnoviť listinu súborov"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:104
 msgid ""
@@ -3669,7 +3669,7 @@ msgstr "BibTeX štýly"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:162
 msgid "Toggles view of the file list"
-msgstr "Prepni zobrazenie zoznamu súborov"
+msgstr "Prepni zobrazenie listiny súborov"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:165
 msgid "Show &path"
@@ -3741,7 +3741,7 @@ msgid ""
 "Switch between available lists (table of contents, list of figures, list of "
 "tables, and others)"
 msgstr ""
-"Prepni medzi dostupnými zoznammy (obsah, zoznam obrázkov, zoznam tabuliek a "
+"Prepni medzi dostupnými listinamy (obsah, zoznam obrázkov, zoznam tabuliek a "
 "iné)"
 
 #: src/frontends/qt4/ui/TocUi.ui:57
@@ -4153,7 +4153,7 @@ msgstr "Prípad #:"
 #: lib/layouts/stdsections.inc:62 lib/layouts/svjour.inc:53
 #: src/frontends/qt4/GuiDocument.cpp:146
 msgid "Section"
-msgstr "Oddiel"
+msgstr "Sekcia"
 
 #: lib/layouts/IEEEtran.layout:282 lib/layouts/aa.layout:45
 #: lib/layouts/aa.layout:232 lib/layouts/aapaper.layout:67
@@ -4173,7 +4173,7 @@ msgstr "Oddiel"
 #: lib/layouts/scrclass.inc:69 lib/layouts/stdsections.inc:85
 #: lib/layouts/svjour.inc:62
 msgid "Subsection"
-msgstr "Pododdiel"
+msgstr "Podsekcia"
 
 #: lib/layouts/IEEEtran.layout:290 lib/layouts/aa.layout:48
 #: lib/layouts/aa.layout:244 lib/layouts/aapaper.layout:70
@@ -4190,7 +4190,7 @@ msgstr "Pododdiel"
 #: lib/layouts/numrevtex.inc:24 lib/layouts/scrclass.inc:76
 #: lib/layouts/stdsections.inc:100 lib/layouts/svjour.inc:71
 msgid "Subsubsection"
-msgstr "Podpododdiel"
+msgstr "Podpodsekcia"
 
 #: lib/layouts/IEEEtran.layout:298 lib/layouts/beamer.layout:171
 #: lib/layouts/egs.layout:576 lib/layouts/ijmpc.layout:102
@@ -4198,19 +4198,19 @@ msgstr "Podpododdiel"
 #: lib/layouts/spie.layout:29 lib/layouts/aguplus.inc:34
 #: lib/layouts/db_stdstarsections.inc:36 lib/layouts/stdstarsections.inc:34
 msgid "Section*"
-msgstr "Oddiel*"
+msgstr "Sekcia*"
 
 #: lib/layouts/IEEEtran.layout:308 lib/layouts/beamer.layout:214
 #: lib/layouts/egs.layout:596 lib/layouts/isprs.layout:195
 #: lib/layouts/aguplus.inc:48 lib/layouts/db_stdstarsections.inc:48
 #: lib/layouts/stdstarsections.inc:45
 msgid "Subsection*"
-msgstr "Pododdiel*"
+msgstr "Podsekcia*"
 
 #: lib/layouts/IEEEtran.layout:316 lib/layouts/isprs.layout:204
 #: lib/layouts/db_stdstarsections.inc:60 lib/layouts/stdstarsections.inc:56
 msgid "Subsubsection*"
-msgstr "Podpododdiel*"
+msgstr "Podpodsekcia*"
 
 #: lib/layouts/IEEEtran.layout:331 lib/layouts/aa.layout:85
 #: lib/layouts/aa.layout:312 lib/layouts/aa.layout:328
@@ -4320,7 +4320,7 @@ msgstr "Označenie_oboch"
 #: lib/layouts/simplecv.layout:77 lib/layouts/agu_stdlists.inc:13
 #: lib/layouts/db_stdlists.inc:12 lib/layouts/stdlists.inc:11
 msgid "Itemize"
-msgstr "Vykázať"
+msgstr "Položky"
 
 #: lib/layouts/aa.layout:54 lib/layouts/aapaper.layout:51
 #: lib/layouts/aastex.layout:82 lib/layouts/apa.layout:372
@@ -4329,7 +4329,7 @@ msgstr "Vykázať"
 #: lib/layouts/agu_stdlists.inc:21 lib/layouts/db_stdlists.inc:19
 #: lib/layouts/stdlists.inc:30
 msgid "Enumerate"
-msgstr "Vypočítať"
+msgstr "Výpočet"
 
 #: lib/layouts/aa.layout:57 lib/layouts/aapaper.layout:54
 #: lib/layouts/aastex.layout:85 lib/layouts/beamer.layout:83
@@ -4351,7 +4351,7 @@ msgstr "Popis"
 #: lib/layouts/stdlists.inc:50 lib/layouts/stdlists.inc:72
 #: lib/layouts/stdlists.inc:73 lib/ui/stdtoolbars.inc:89
 msgid "List"
-msgstr "Zoznam"
+msgstr "Listina"
 
 #: lib/layouts/aa.layout:64 lib/layouts/aa.layout:254
 #: lib/layouts/aapaper.layout:73 lib/layouts/aapaper.layout:160
@@ -4454,7 +4454,7 @@ msgstr "Dátum"
 #: lib/layouts/elsart.layout:421 lib/layouts/aapaper.inc:80
 #: lib/layouts/svjour.inc:316 lib/layouts/theorems-ams-extended.module:189
 msgid "Acknowledgement"
-msgstr "Poďakovanie"
+msgstr "Poďakovania"
 
 #: lib/layouts/aa.layout:117 lib/layouts/aa.layout:140
 #: lib/layouts/aa.layout:155 lib/layouts/aa.layout:179
@@ -4499,7 +4499,7 @@ msgstr "BackMatter"
 #: lib/layouts/aa.layout:210 lib/layouts/egs.layout:516
 #: lib/layouts/svjour.inc:305
 msgid "Acknowledgements."
-msgstr "Ocenenia."
+msgstr "Poďakovania."
 
 #: lib/layouts/aa.layout:289
 msgid "institutemark"
@@ -4573,7 +4573,7 @@ msgstr "A"
 #: lib/layouts/kluwer.layout:293 lib/layouts/kluwer.layout:304
 #: lib/layouts/aapaper.inc:91 lib/layouts/svjour.inc:291
 msgid "Acknowledgements"
-msgstr "Ocenenia"
+msgstr "Poďakovania"
 
 #: lib/layouts/aastex.layout:121 lib/layouts/aastex.layout:475
 #: lib/layouts/aastex.layout:488 lib/layouts/achemso.layout:181
@@ -4646,7 +4646,7 @@ msgstr "Subject headings:"
 
 #: lib/layouts/aastex.layout:373
 msgid "[Acknowledgements]"
-msgstr "[Ocenenia]"
+msgstr "[Poďakovania]"
 
 #: lib/layouts/aastex.layout:394 src/frontends/qt4/GuiDocument.cpp:1378
 #: src/frontends/qt4/GuiDocument.cpp:1389
@@ -4878,7 +4878,7 @@ msgstr "CopNum"
 
 #: lib/layouts/apa.layout:233
 msgid "Acknowledgements:"
-msgstr "Ocenenia:"
+msgstr "Poďakovania:"
 
 #: lib/layouts/apa.layout:247
 msgid "ThickLine"
@@ -5158,13 +5158,13 @@ msgstr "Institute mark"
 #: lib/layouts/powerdot.layout:313 lib/layouts/db_stdlayouts.inc:18
 #: lib/layouts/stdlayouts.inc:11
 msgid "Quotation"
-msgstr "Kvotácia"
+msgstr "Citácia"
 
 #: lib/layouts/beamer.layout:926 lib/layouts/egs.layout:112
 #: lib/layouts/manpage.layout:29 lib/layouts/powerdot.layout:333
 #: lib/layouts/stdlayouts.inc:30
 msgid "Quote"
-msgstr "Citovanie (krátke)"
+msgstr "Citát (krátky)"
 
 #: lib/layouts/beamer.layout:943 lib/layouts/egs.layout:203
 #: lib/layouts/powerdot.layout:351 lib/layouts/stdlayouts.inc:47
@@ -5236,7 +5236,7 @@ msgstr "___"
 #: lib/layouts/beamer.layout:1089 lib/layouts/egs.layout:630
 #: lib/layouts/db_lyxmacros.inc:18 lib/layouts/lyxmacros.inc:12
 msgid "LyX-Code"
-msgstr "LyX-Code"
+msgstr "LyX-Kód"
 
 #: lib/layouts/beamer.layout:1127
 msgid "NoteItem"
@@ -7072,11 +7072,11 @@ msgstr "Záznam:"
 
 #: lib/layouts/moderncv.layout:96
 msgid "ListItem"
-msgstr "Zoznamná položka"
+msgstr "ZáznamVListine"
 
 #: lib/layouts/moderncv.layout:99
 msgid "List Item:"
-msgstr "Zoznamná položka:"
+msgstr "Záznam v listine:"
 
 #: lib/layouts/moderncv.layout:102
 msgid "DoubleItem"
@@ -7116,7 +7116,7 @@ msgstr "ZavriSekciu"
 
 #: lib/layouts/moderncv.layout:145
 msgid "Close Section"
-msgstr "Zacri Sekciu"
+msgstr "Zavri Sekciu"
 
 #: lib/layouts/paper.layout:141
 msgid "SubTitle"
@@ -7204,9 +7204,8 @@ msgid "Electronic Address:"
 msgstr "Elektronická adresa"
 
 #: lib/layouts/revtex4.layout:234
-#, fuzzy
 msgid "acknowledgments"
-msgstr "Poďakovanie"
+msgstr "poďakovania"
 
 #: lib/layouts/revtex4.layout:251
 #, fuzzy
@@ -7253,24 +7252,21 @@ msgid "Specialmail"
 msgstr "Zvláštna pošta"
 
 #: lib/layouts/scrlettr.layout:177 lib/layouts/scrlttr2.layout:257
-#, fuzzy
 msgid "Specialmail:"
-msgstr "Zvláštna pošta"
+msgstr "Zvláštny spôsob odoslania:"
 
 #: lib/layouts/scrlettr.layout:184 lib/layouts/scrlttr2.layout:265
 #: lib/layouts/stdletter.inc:122
-#, fuzzy
 msgid "Location:"
-msgstr "Umiestnenie"
+msgstr "Umiestnenie:"
 
 #: lib/layouts/scrlettr.layout:191 lib/layouts/scrlttr2.layout:273
 msgid "Title:"
 msgstr "Title:"
 
 #: lib/layouts/scrlettr.layout:198 lib/layouts/scrlttr2.layout:281
-#, fuzzy
 msgid "Subject:"
-msgstr "Predmet"
+msgstr "Predmet:"
 
 #: lib/layouts/scrlettr.layout:202 lib/layouts/scrlttr2.layout:285
 msgid "Yourref"
@@ -7301,9 +7297,8 @@ msgid "Customer"
 msgstr "Zákazník"
 
 #: lib/layouts/scrlettr.layout:233 lib/layouts/scrlttr2.layout:321
-#, fuzzy
 msgid "Customer no.:"
-msgstr "Zákazník"
+msgstr "Zákazník č.:"
 
 #: lib/layouts/scrlettr.layout:237 lib/layouts/scrlttr2.layout:325
 msgid "Invoice"
@@ -7322,14 +7317,12 @@ msgid "Next Address:"
 msgstr "Ďalšia Adresa:"
 
 #: lib/layouts/scrlttr2.layout:124
-#, fuzzy
 msgid "Post Scriptum:"
-msgstr "skript"
+msgstr "Post Scriptum:"
 
 #: lib/layouts/scrlttr2.layout:155
-#, fuzzy
 msgid "Sender Name:"
-msgstr "&Názov tlačiarne:"
+msgstr "Názov odosielateľa:"
 
 #: lib/layouts/scrlttr2.layout:177
 msgid "Sender Address:"
@@ -7348,7 +7341,6 @@ msgid "Sender Fax:"
 msgstr "Sender Fax:"
 
 #: lib/layouts/scrlttr2.layout:197
-#, fuzzy
 msgid "E-Mail"
 msgstr "E-mail"
 
@@ -7357,29 +7349,24 @@ msgid "Sender E-Mail:"
 msgstr "Sender E-Mail:"
 
 #: lib/layouts/scrlttr2.layout:209
-#, fuzzy
 msgid "Sender URL:"
-msgstr "Vložiť URL"
+msgstr "URL odosielateľa:"
 
 #: lib/layouts/scrlttr2.layout:221
-#, fuzzy
 msgid "Logo"
-msgstr "Záznam"
+msgstr "Logo"
 
 #: lib/layouts/scrlttr2.layout:225
-#, fuzzy
 msgid "Logo:"
-msgstr "Záznam"
+msgstr "Logo:"
 
 #: lib/layouts/scrlttr2.layout:333
-#, fuzzy
 msgid "EndLetter"
-msgstr "List"
+msgstr "KoniecDopisu"
 
 #: lib/layouts/scrlttr2.layout:346
-#, fuzzy
 msgid "End of letter"
-msgstr "Koniec vety|K"
+msgstr "Koniec dopisu"
 
 #: lib/layouts/seminar.layout:24
 msgid "LandscapeSlide"
@@ -7434,9 +7421,8 @@ msgid "ProgressContents"
 msgstr "ProgressContents"
 
 #: lib/layouts/seminar.layout:90
-#, fuzzy
 msgid "[Progress Contents]"
-msgstr "Obsah"
+msgstr "[Pokrok Obsahy]"
 
 #: lib/layouts/siamltex.layout:107 lib/layouts/theorems-order.inc:34
 #: lib/layouts/theorems-starred.inc:93
@@ -7444,9 +7430,8 @@ msgid "Conjecture*"
 msgstr "Dohad*"
 
 #: lib/layouts/siamltex.layout:117 lib/layouts/theorems-ams-extended.module:67
-#, fuzzy
 msgid "Algorithm*"
-msgstr "Algoritmus"
+msgstr "Algoritmus*"
 
 #: lib/layouts/siamltex.layout:131
 msgid "AMS"
@@ -7457,49 +7442,40 @@ msgid "Subjectclass"
 msgstr "Subjectclass"
 
 #: lib/layouts/siamltex.layout:308
-#, fuzzy
 msgid "AMS subject classifications:"
-msgstr "aktualizované špecifikácie tried dokumentov."
+msgstr "AMS tematické klasifikácie."
 
 #: lib/layouts/sigplanconf.layout:64
-#, fuzzy
 msgid "Conference"
-msgstr "Referencia"
+msgstr "Konferencia"
 
 #: lib/layouts/sigplanconf.layout:75
-#, fuzzy
 msgid "Conference:"
-msgstr "&Referencia:"
+msgstr "Konferencia:"
 
 #: lib/layouts/sigplanconf.layout:83
-#, fuzzy
 msgid "CopyrightYear"
-msgstr "Autorské práva"
+msgstr "AutorskéPrávaRok"
 
 #: lib/layouts/sigplanconf.layout:86
-#, fuzzy
 msgid "Copyright year:"
-msgstr "Autorské práva"
+msgstr "Autorské práva rok:"
 
 #: lib/layouts/sigplanconf.layout:90
-#, fuzzy
 msgid "Copyrightdata"
-msgstr "Autorské práva"
+msgstr "AutorskéPrávaDáta"
 
 #: lib/layouts/sigplanconf.layout:93
-#, fuzzy
 msgid "Copyright data:"
-msgstr "Autorské práva"
+msgstr "Autorské práva dáta:"
 
 #: lib/layouts/sigplanconf.layout:136
-#, fuzzy
 msgid "Terms"
-msgstr "Teoréma"
+msgstr "Pojmy"
 
 #: lib/layouts/sigplanconf.layout:139
-#, fuzzy
 msgid "Terms:"
-msgstr "Teoréma"
+msgstr "Pojmy:"
 
 #: lib/layouts/simplecv.layout:55
 msgid "Topic"
@@ -7518,9 +7494,8 @@ msgid "Overlay"
 msgstr "Prekrytie"
 
 #: lib/layouts/slides.layout:142
-#, fuzzy
 msgid "New Overlay:"
-msgstr "Prekrytie"
+msgstr "Nové Prekrytie:"
 
 #: lib/layouts/slides.layout:182
 msgid "New Note:"
@@ -7531,27 +7506,24 @@ msgid "InvisibleText"
 msgstr "Neviditeľný text"
 
 #: lib/layouts/slides.layout:214
-#, fuzzy
 msgid "<Invisible Text Follows>"
-msgstr "Neviditeľný text"
+msgstr "<Neviditeľný text nasleduje>"
 
 #: lib/layouts/slides.layout:231
 msgid "VisibleText"
 msgstr "Viditeľný text"
 
 #: lib/layouts/slides.layout:238
-#, fuzzy
 msgid "<Visible Text Follows>"
-msgstr "Viditeľný text"
+msgstr "<Viditeľný text nasleduje>"
 
 #: lib/layouts/spie.layout:53
 msgid "Authorinfo"
 msgstr "Info_o_autorovi"
 
 #: lib/layouts/spie.layout:65
-#, fuzzy
 msgid "Authorinfo:"
-msgstr "Info_o_autorovi"
+msgstr "Info_o_autorovi:"
 
 #: lib/layouts/spie.layout:78
 msgid "ABSTRACT"
@@ -7574,18 +7546,16 @@ msgid "Element:Firstname"
 msgstr "Element:KrstnéMeno"
 
 #: lib/layouts/agu_stdclass.inc:36 lib/layouts/db_stdcharstyles.inc:37
-#, fuzzy
 msgid "Firstname"
-msgstr "Prvé_meno"
+msgstr "Krstné_meno"
 
 #: lib/layouts/agu_stdclass.inc:48
 msgid "Element:Fname"
 msgstr "Element:KMeno"
 
 #: lib/layouts/agu_stdclass.inc:50
-#, fuzzy
 msgid "Fname"
-msgstr "Parametre"
+msgstr "Kmeno"
 
 #: lib/layouts/agu_stdclass.inc:63 lib/layouts/db_stdcharstyles.inc:46
 msgid "Element:Surname"
@@ -7622,54 +7592,48 @@ msgid "Element:Abbrev"
 msgstr "Element:Skratka"
 
 #: lib/layouts/agu_stdclass.inc:126
-#, fuzzy
 msgid "Abbrev"
-msgstr "Náhľad"
+msgstr "Skratka"
 
 #: lib/layouts/agu_stdclass.inc:135
 msgid "Element:Citation-number"
 msgstr "Element:ČísloCitácie"
 
 #: lib/layouts/agu_stdclass.inc:137 lib/layouts/agu_stdtitle.inc:56
-#, fuzzy
 msgid "Citation-number"
-msgstr "Citácia"
+msgstr "ČísloCitácie"
 
 #: lib/layouts/agu_stdclass.inc:146
 msgid "Element:Volume"
 msgstr "Element:Volume"
 
 #: lib/layouts/agu_stdclass.inc:148
-#, fuzzy
 msgid "Volume"
-msgstr "Stĺpce"
+msgstr "Volume"
 
 #: lib/layouts/agu_stdclass.inc:157
 msgid "Element:Day"
 msgstr "Element:Deň"
 
 #: lib/layouts/agu_stdclass.inc:159
-#, fuzzy
 msgid "Day"
-msgstr "Zobrazenie"
+msgstr "Deň"
 
 #: lib/layouts/agu_stdclass.inc:168
 msgid "Element:Month"
 msgstr "Element:Mesiac"
 
 #: lib/layouts/agu_stdclass.inc:170
-#, fuzzy
 msgid "Month"
-msgstr "Cesty"
+msgstr "Mesiac"
 
 #: lib/layouts/agu_stdclass.inc:179
 msgid "Element:Year"
 msgstr "Element:Rok"
 
 #: lib/layouts/agu_stdclass.inc:181
-#, fuzzy
 msgid "Year"
-msgstr "&Zmazať"
+msgstr "Rok"
 
 #: lib/layouts/agu_stdclass.inc:190
 msgid "Element:Issue-number"
@@ -7696,43 +7660,36 @@ msgid "Issue-months"
 msgstr "Issue-months"
 
 #: lib/layouts/agu_stdsections.inc:79
-#, fuzzy
 msgid "Subsubparagraph"
-msgstr "Pododstavec"
+msgstr "Podpododstavec"
 
 #: lib/layouts/agu_stdtitle.inc:13
 msgid "Header"
 msgstr "Hlavička"
 
 #: lib/layouts/agu_stdtitle.inc:19
-#, fuzzy
 msgid "-- Header --"
-msgstr "Hlavička"
+msgstr "--Hlavička--"
 
 #: lib/layouts/agu_stdtitle.inc:31
-#, fuzzy
 msgid "Special-section"
-msgstr "Výber"
+msgstr "Špeciána-sekcia"
 
 #: lib/layouts/agu_stdtitle.inc:37
-#, fuzzy
 msgid "Special-section:"
-msgstr "&Výber:"
+msgstr "Špeciána-sekcia:"
 
 #: lib/layouts/agu_stdtitle.inc:47
-#, fuzzy
 msgid "AGU-journal"
-msgstr "Denník"
+msgstr "AGU-journal"
 
 #: lib/layouts/agu_stdtitle.inc:51
-#, fuzzy
 msgid "AGU-journal:"
-msgstr "Denník"
+msgstr "AGU-journal:"
 
 #: lib/layouts/agu_stdtitle.inc:59
-#, fuzzy
 msgid "Citation-number:"
-msgstr "Položka citácií"
+msgstr "ČísloCitácie:"
 
 #: lib/layouts/agu_stdtitle.inc:65
 msgid "AGU-volume"
@@ -7751,29 +7708,24 @@ msgid "AGU-issue:"
 msgstr "AGU-issue:"
 
 #: lib/layouts/agu_stdtitle.inc:84
-#, fuzzy
 msgid "Copyright:"
-msgstr "Autorské práva"
+msgstr "Autorské práva:"
 
 #: lib/layouts/agu_stdtitle.inc:89
-#, fuzzy
 msgid "Index-terms"
-msgstr "Položka indexu"
+msgstr "Pojmy indexu"
 
 #: lib/layouts/agu_stdtitle.inc:93
-#, fuzzy
 msgid "Index-terms..."
-msgstr "Položka indexu|i"
+msgstr "Pojmy indexu..."
 
 #: lib/layouts/agu_stdtitle.inc:102
-#, fuzzy
 msgid "Index-term"
-msgstr "Položka indexu"
+msgstr "Pojem indexu"
 
 #: lib/layouts/agu_stdtitle.inc:106
-#, fuzzy
 msgid "Index-term:"
-msgstr "Položka indexu"
+msgstr "Pojem indexu:"
 
 #: lib/layouts/agu_stdtitle.inc:111
 msgid "Cross-term"
@@ -7784,9 +7736,8 @@ msgid "Cross-term:"
 msgstr "Cross-term:"
 
 #: lib/layouts/agu_stdtitle.inc:136
-#, fuzzy
 msgid "Supplementary"
-msgstr "Súhrn"
+msgstr "Dodatkove"
 
 #: lib/layouts/agu_stdtitle.inc:140
 msgid "Supplementary..."
@@ -8789,7 +8740,7 @@ msgid ""
 "Defines some character styles for logical markup: noun, emph, strong, and "
 "code."
 msgstr ""
-"Definuje niektoré logické znakové štýly (logical markup): meno (noun), dôraz "
+"Definuje niektoré logické štýly znakov (logical markup): meno (noun), dôraz "
 "(emph), (silný dôraz) strong, kód (code)."
 
 #: lib/layouts/logicalmkup.module:10
@@ -8826,7 +8777,7 @@ msgstr "kód"
 
 #: lib/layouts/minimalistic.module:2
 msgid "Minimalistic"
-msgstr "Minimalistický"
+msgstr "Minimalistické"
 
 #: lib/layouts/minimalistic.module:5
 msgid "Redefines several insets (Index, Branch, URL) as being Minimalistic."
@@ -8994,7 +8945,7 @@ msgid ""
 "Numbers theorems and the like by chapter. Use this module only with layouts "
 "that provide a chapter environment."
 msgstr ""
-"Očísluje vety apod. podľa kapitoly. Použite tento modul len s rozmiestnením, "
+"Očísluje vety apod. podľa kapitoly. Použite tento modul len s formátom, "
 "ktoré podporuje prostredie Vety."
 
 #: lib/layouts/theorems-sec.module:2
@@ -9528,7 +9479,7 @@ msgstr "Vložiť|I"
 
 #: lib/ui/classic.ui:35
 msgid "Layout|L"
-msgstr "Rozloženie|R"
+msgstr "Formát"
 
 #: lib/ui/classic.ui:36 lib/ui/stdmenus.inc:22
 msgid "View|V"
@@ -9907,7 +9858,7 @@ msgstr "Matematika|M"
 
 #: lib/ui/classic.ui:216
 msgid "Special Character|S"
-msgstr "Špeciálny znak|p"
+msgstr "Špeciálny znak"
 
 #: lib/ui/classic.ui:217 lib/ui/stdmenus.inc:332
 msgid "Citation...|C"
@@ -9952,7 +9903,7 @@ msgstr "Poznámka"
 
 #: lib/ui/classic.ui:227
 msgid "Lists & TOC|O"
-msgstr "Zoznamy a Obsah|O"
+msgstr "Listiny a Obsah"
 
 #: lib/ui/classic.ui:229
 #, fuzzy
@@ -10061,7 +10012,7 @@ msgstr "Jednoduché úvodzovky"
 
 #: lib/ui/classic.ui:258
 msgid "Ordinary Quote|O"
-msgstr "Obyčajné úvodzovky|O"
+msgstr "Obyčajné úvodzovky"
 
 #: lib/ui/classic.ui:259 lib/ui/stdmenus.inc:359
 msgid "Menu Separator|M"
@@ -10202,7 +10153,7 @@ msgstr "Obsah|O"
 
 #: lib/ui/classic.ui:316 lib/ui/stdmenus.inc:418
 msgid "Index List|I"
-msgstr "Indexovaný zoznam"
+msgstr "Indexovaná listina"
 
 #: lib/ui/classic.ui:317 lib/ui/stdmenus.inc:419
 msgid "Nomenclature|N"
@@ -10246,7 +10197,7 @@ msgstr "Zobraziť zmeny vo výstupe|Z"
 
 #: lib/ui/classic.ui:339
 msgid "Character...|C"
-msgstr "Znak...|Z"
+msgstr "Znak..."
 
 #: lib/ui/classic.ui:340
 msgid "Paragraph...|P"
@@ -10855,24 +10806,20 @@ msgid "Move Paragraph Down|v"
 msgstr "Presunúť odstavec dolu"
 
 #: lib/ui/stdcontext.inc:278
-#, fuzzy
 msgid "Promote Section|r"
-msgstr "Oddiel"
+msgstr "Zvýšiť úroveň Sekcie"
 
 #: lib/ui/stdcontext.inc:279
-#, fuzzy
 msgid "Demote Section|m"
-msgstr "Oddiel"
+msgstr "Znížiť úroveň sekcie"
 
 #: lib/ui/stdcontext.inc:280
-#, fuzzy
 msgid "Move Section down|d"
-msgstr "Presunúť označenú citáciu dole"
+msgstr "Presunúť sekciu dole"
 
 #: lib/ui/stdcontext.inc:281
-#, fuzzy
 msgid "Move Section up|u"
-msgstr "Výber"
+msgstr "Presunúť sekciu nahor"
 
 #: lib/ui/stdcontext.inc:282
 msgid "Insert Short Title|T"
@@ -11035,11 +10982,11 @@ msgstr "Riadky & Stĺpce|y"
 
 #: lib/ui/stdmenus.inc:114
 msgid "Increase List Depth|I"
-msgstr "Zvýšiť hĺbku vnorenia"
+msgstr "Zvýšiť hĺbku listiny"
 
 #: lib/ui/stdmenus.inc:115
 msgid "Decrease List Depth|D"
-msgstr "Znížiť hĺbku vnorenia"
+msgstr "Znížiť hĺbku listiny"
 
 #: lib/ui/stdmenus.inc:116
 msgid "Dissolve Inset|l"
@@ -11254,9 +11201,8 @@ msgid "Toolbars|b"
 msgstr "Nástrojové panely"
 
 #: lib/ui/stdmenus.inc:322
-#, fuzzy
 msgid "Special Character|p"
-msgstr "Špeciálny znak|p"
+msgstr "Špeciálny znak"
 
 #: lib/ui/stdmenus.inc:323
 #, fuzzy
@@ -11265,7 +11211,7 @@ msgstr "Formáty"
 
 #: lib/ui/stdmenus.inc:324
 msgid "List / TOC|i"
-msgstr "Zoznamy / Obsah|O"
+msgstr "Listiny / Obsah"
 
 #: lib/ui/stdmenus.inc:325
 #, fuzzy
@@ -11331,7 +11277,7 @@ msgstr "Výpis programu[[Menu]]"
 
 #: lib/ui/stdmenus.inc:355
 msgid "Ordinary Quote|Q"
-msgstr "Obyčajné úvodzovky|O"
+msgstr "Obyčajné úvodzovky"
 
 #: lib/ui/stdmenus.inc:356
 msgid "Single Quote|S"
@@ -11563,11 +11509,11 @@ msgstr "extra"
 
 #: lib/ui/stdtoolbars.inc:87
 msgid "Numbered list"
-msgstr "Číslovaný zoznam"
+msgstr "Číslovaná listina"
 
 #: lib/ui/stdtoolbars.inc:88
 msgid "Itemized list"
-msgstr "Zoznam položiek"
+msgstr "Položková listina"
 
 #: lib/ui/stdtoolbars.inc:91
 msgid "Increase depth"
@@ -14944,7 +14890,7 @@ msgstr ""
 #: src/Buffer.cpp:1028
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
-msgstr "Nepodařilo se najít příkaz LaTeX-u pro znak '%1$s' (hodnota %2$s)"
+msgstr "Nedá sa nájsť LaTeXov príkaz pre znak '%1$s' (hodnota %2$s)"
 
 #: src/Buffer.cpp:1031
 msgid ""
@@ -14952,9 +14898,9 @@ msgid ""
 "chosen encoding.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
-"Některé znaky vašeho dokumentu pravděpodobně nejsou reprezentovatelné ve "
-"zvoleném kódování.\n"
-"Mohla by pomoci změna kódování dokumentu na utf8."
+"Niektoré znaky vášho dokumentu sú pravdepodobne nereprezentovatelné vo "
+"zvolenom kódovaní.\n"
+"Pomôcť by môhla zmena kódovania dokumentu na utf8."
 
 #: src/Buffer.cpp:1038
 #, fuzzy
@@ -15152,7 +15098,7 @@ msgid ""
 "available. See the Customization documentation\n"
 "for more information.\n"
 msgstr ""
-"Súbor s rozmiestnením požadovaný tímto dokumentom,\n"
+"Formátový súbor požadovaný tímto dokumentom,\n"
 "%1$s.layout,\n"
 "nie je použitelný. To je pravdepodobne zpôsobené tým,\n"
 "že LaTeX-ová trieda alebo požadovaný súbor štýlu\n"
@@ -15176,9 +15122,9 @@ msgid ""
 "layouts will be used. LyX might not be able to produce output unless a "
 "correct textclass is selected from the document settings dialog."
 msgstr ""
-"Trieda dokumentu %1$s nenájdena. Bude použitá štandardná trieda a "
-"rozmiestnenie.LyX možno nebude schopný urobiť výstup kým nezvolíte správnu "
-"triedu v nastaveniach dokumentu."
+"Trieda dokumentu %1$s sa nedá nájsť. Bude použitá štandardná trieda a "
+"formát. LyX možno nebude schopný zrobiť výstup kým nezvolíte správnu triedu "
+"v nastaveniach dokumentu."
 
 #: src/BufferParams.cpp:1652
 #, fuzzy
@@ -15204,7 +15150,7 @@ msgid ""
 "probably need to reconfigure LyX.\n"
 msgstr ""
 "Tento dokument vyžaduje Modul %1$s\n"
-"ale nenašiel sa v zozname dostupných modulov.\n"
+"ale nenašiel sa v listine dostupných modulov.\n"
 "Keď ste ho len nedávno inštalovali, treba\n"
 "vám asi  LyX rekonfigurovať.\n"
 
@@ -15215,7 +15161,7 @@ msgstr "Dokument nie je možné uložiť!"
 
 #: src/BufferParams.cpp:1728
 msgid "Some layouts may not be available."
-msgstr "Niektoré rozmiestnenia by môhli byť nedostupné"
+msgstr "Niektoré formáty sú asi nedostupné."
 
 #: src/BufferParams.cpp:1735
 #, c-format
@@ -15244,7 +15190,7 @@ msgstr "Hľadať"
 
 #: src/BufferParams.cpp:1749
 msgid "Error reading internal layout information"
-msgstr "Chyba pri čítaní vnútorných informácií o rozmiestnení"
+msgstr "Chyba pri čítaní vnútorných formátnych informácií"
 
 #: src/BufferView.cpp:178
 msgid "No more insets"
@@ -15305,20 +15251,20 @@ msgstr "Kľúčové slovo"
 #: src/BufferView.cpp:1357
 #, c-format
 msgid "%1$d characters (including blanks)"
-msgstr "%1$d znaků (včetně mezer)"
+msgstr "%1$d znakov (spolu s medzerami)"
 
 #: src/BufferView.cpp:1360
 msgid "One character (including blanks)"
-msgstr "Jeden znak (včetně mezer)"
+msgstr "Jeden znak (aj medzere)"
 
 #: src/BufferView.cpp:1363
 #, c-format
 msgid "%1$d characters (excluding blanks)"
-msgstr "%1$d znaků (kromě mezer)"
+msgstr "%1$d znakov (bez medzier)"
 
 #: src/BufferView.cpp:1366
 msgid "One character (excluding blanks)"
-msgstr "Jeden znak (kromě mezer)"
+msgstr "Jeden znak (bez medzier)"
 
 #: src/BufferView.cpp:1368
 #, fuzzy
@@ -15502,7 +15448,7 @@ msgstr "stienený rámok"
 
 #: src/Color.cpp:163
 msgid "listings background"
-msgstr "pozadie zoznamov"
+msgstr "pozadie výpisov"
 
 #: src/Color.cpp:164
 msgid "branch label"
@@ -16848,8 +16794,7 @@ msgstr "Nastavenie, či tlačiť iba nepárne strany."
 #: src/LyXRC.cpp:2720
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr ""
-"Nastavenie pre špecifikáciu zoznamu strán oddelených čiarkou, ktoré sa majú "
-"vytlačiť."
+"Nastavenie pre špecifikáciu zoznamu čiarkou oddelených strán na vytlačenie."
 
 #: src/LyXRC.cpp:2724
 msgid "Option to specify the dimensions of the print paper."
@@ -17055,7 +17000,7 @@ msgstr "Vyberať po koniec dokumentu"
 
 #: src/Paragraph.cpp:1585 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
-msgstr "V tomto rozmiestnení nemá zmysel!"
+msgstr "S týmto formátom to nemá zmysel!"
 
 #: src/Paragraph.cpp:1651
 msgid "Alignment not permitted"
@@ -17066,7 +17011,7 @@ msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
-"Nové rozmiestnenie nepovoľuje používané zarovnanie.\n"
+"Nový formát nepovoľuje používané zarovnanie.\n"
 "Prepnuté na štandardné."
 
 #: src/Paragraph.cpp:2129 src/frontends/qt4/LaTeXHighlighter.cpp:108
@@ -17078,9 +17023,8 @@ msgstr "LyX verzia "
 
 #: src/Paragraph.cpp:2130 src/insets/InsetListings.cpp:186
 #: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:166
-#, fuzzy
 msgid "uncodable character"
-msgstr "Špeciálny znak"
+msgstr "Nekódovatelný znak"
 
 #: src/Paragraph.cpp:2493
 msgid "Memory problem"
@@ -17234,12 +17178,11 @@ msgstr "Znaková sada"
 
 #: src/Text3.cpp:1823 src/Text3.cpp:1834
 msgid "Paragraph layout set"
-msgstr "Rozmiestnenie odstavca je nastavené."
+msgstr "Formát odstavca je nastavený"
 
 #: src/TextClass.cpp:140
-#, fuzzy
 msgid "Plain Layout"
-msgstr "Formát odstavca"
+msgstr "Prostý Formát"
 
 #: src/TextClass.cpp:638
 #, fuzzy
@@ -18039,7 +17982,7 @@ msgstr "Nastavenia dokumentu"
 msgid ""
 "Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
-"Parametry výpisov zadávajte napravo. Na zoznam parametrov vložte znak '?'."
+"Parametry výpisov zadávajte napravo. Na listinu parametrov vložte znak '?'."
 
 #: src/frontends/qt4/GuiDocument.cpp:568
 msgid "Length"
@@ -18149,9 +18092,8 @@ msgid "Modules"
 msgstr "Stred"
 
 #: src/frontends/qt4/GuiDocument.cpp:984
-#, fuzzy
 msgid "Text Layout"
-msgstr "Rozloženie"
+msgstr "Formát Textu"
 
 #: src/frontends/qt4/GuiDocument.cpp:986
 #, fuzzy
@@ -18191,18 +18133,17 @@ msgid "LaTeX Preamble"
 msgstr "Preambula LaTeXu"
 
 #: src/frontends/qt4/GuiDocument.cpp:1244
-#, fuzzy
 msgid "Layouts|#o#O"
-msgstr "Rozloženie|R"
+msgstr "Formáty"
 
 #: src/frontends/qt4/GuiDocument.cpp:1246
 msgid "LyX Layout (*.layout)"
-msgstr "Rozmiestnenie dokumentov LyX-u (*.layout)"
+msgstr "Formáty dokumentov LyX-u (*.layout)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1248
 #: src/frontends/qt4/GuiDocument.cpp:1257
 msgid "Local layout file"
-msgstr "Lokálny súbor s rozmiestnením"
+msgstr "Lokálny súbor formátov"
 
 #: src/frontends/qt4/GuiDocument.cpp:1258
 msgid ""
@@ -18211,15 +18152,14 @@ msgid ""
 "document may not work with this layout if you do not\n"
 "keep the layout file in the document directory."
 msgstr ""
-"Súbor s  rozmiestnením dokumentu, ktorý ste zvolili je lokálnym\n"
-"súborom, a nie je v systémovom alebo uživateľskom adresáre.\n"
-"Váš dokument môže mať problémy kým súbor s rozmiestnením\n"
-"nenecháte v stejnom adresáre."
+"Súbor formátov, ktorý ste zvolili je lokálnym\n"
+"súborom, a nie je ani v systémovom ani v uživateľskom adresáre.\n"
+"Váš dokument môže mať problémy kým súbor formátov\n"
+"nedržíte v adresáre dokumenta."
 
 #: src/frontends/qt4/GuiDocument.cpp:1262
-#, fuzzy
 msgid "&Set Layout"
-msgstr "Rozloženie"
+msgstr "Použiť format"
 
 #: src/frontends/qt4/GuiDocument.cpp:1275
 #: src/frontends/qt4/GuiDocument.cpp:1349
@@ -18230,7 +18170,7 @@ msgstr "Šípka"
 
 #: src/frontends/qt4/GuiDocument.cpp:1276
 msgid "Unable to read local layout file."
-msgstr "Nepodarilo sa čítať lokálny súbor s rozmiestnením."
+msgstr "Nepodarilo sa čítať lokálny súbor formátov."
 
 #: src/frontends/qt4/GuiDocument.cpp:1298
 #, fuzzy
@@ -18313,12 +18253,12 @@ msgstr "Prejsť na ďalšiu zmenu"
 
 #: src/frontends/qt4/GuiDocument.cpp:2255
 msgid "Can't set layout!"
-msgstr "Nedá sa nastaviť rozmiestnenie!"
+msgstr "Formát sa nedá sa nastaviť!"
 
 #: src/frontends/qt4/GuiDocument.cpp:2256
 #, c-format
 msgid "Unable to set layout for ID: %1$s"
-msgstr "Nedá sa nastaviť rozmiestnenie pre ID: %1$s"
+msgstr "Nedá sa nastaviť formát pre ID: %1$s"
 
 #: src/frontends/qt4/GuiDocument.cpp:2333
 #, fuzzy
@@ -18358,7 +18298,7 @@ msgstr "LaTeX nastavenia"
 
 #: src/frontends/qt4/GuiErrorList.cpp:38
 msgid "Error List"
-msgstr "Zoznam chýb"
+msgstr "Listina chýb"
 
 #: src/frontends/qt4/GuiErrorList.cpp:95
 #, c-format
@@ -18564,7 +18504,7 @@ msgstr "Dokument"
 msgid ""
 "Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr ""
-"Parametry výpisu zadávajte napravo. Na zoznam parametrov vložte znak '?'."
+"Parametry výpisu zadávajte napravo. Na listinu parametrov vložte znak '?'."
 
 #: src/frontends/qt4/GuiInclude.cpp:308
 msgid "Select document to include"
@@ -18713,9 +18653,9 @@ msgid ""
 "the items is used."
 msgstr ""
 "Ako popísané v uživateľskej príručke, šírka tohto textu určuje šírku "
-"označenia v prostrediach typu Zoznam a Popis.\n"
+"označenia v prostrediach typu Listina a Popis.\n"
 "\n"
-"Toto obvykle netreba nastavovať, lebo je štandardne vybraná nejdlhším "
+"Toto obvykle netreba nastavovať, lebo je štandardne vybraná najdlhším "
 "označením všetkých použitých položiek."
 
 #: src/frontends/qt4/GuiPrefs.cpp:136
@@ -18894,7 +18834,7 @@ msgstr "Dokument je premenovaný na '"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2180
 msgid "Font, Layouts and Textclasses"
-msgstr "Font, Rozvržení, "
+msgstr "Font, Formáty a Triedy textu"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2184
 #, fuzzy
@@ -18944,7 +18884,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiPrefs.cpp:2518
 msgid "Can not insert shortcut to the list"
-msgstr "Nemôžem pridať skratku do zoznamu"
+msgstr "Nemôžem pridať skratku do listiny"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2549
 #, fuzzy
@@ -19082,9 +19022,8 @@ msgid "Basic Latin"
 msgstr "BibTeX štýly"
 
 #: src/frontends/qt4/GuiSymbols.cpp:55
-#, fuzzy
 msgid "Latin-1 Supplement"
-msgstr "Súhrn"
+msgstr "Latin-1 Dodatok"
 
 #: src/frontends/qt4/GuiSymbols.cpp:56
 msgid "Latin Extended-A"
@@ -19230,7 +19169,7 @@ msgstr "Dohad"
 
 #: src/frontends/qt4/GuiSymbols.cpp:93
 msgid "Optical Character Recognition"
-msgstr "OCR"
+msgstr "Optické rozpoznávanie textu"
 
 #: src/frontends/qt4/GuiSymbols.cpp:94
 msgid "Enclosed Alphanumerics"
@@ -19441,7 +19380,7 @@ msgstr "CJK unifikovaný ideograf. extenze B"
 
 #: src/frontends/qt4/GuiSymbols.cpp:143
 msgid "CJK Compatibility Ideographs Supplement"
-msgstr "CJK kompat. iedograf. přídavné"
+msgstr "CJK kompat. iedograf. dodatkové"
 
 #: src/frontends/qt4/GuiSymbols.cpp:144
 #, fuzzy
@@ -19450,20 +19389,19 @@ msgstr "Strany"
 
 #: src/frontends/qt4/GuiSymbols.cpp:145
 msgid "Variation Selectors Supplement"
-msgstr "Variation Selectors Supplement"
+msgstr "Dodatok pre Selectory Variantov"
 
 #: src/frontends/qt4/GuiSymbols.cpp:146
 msgid "Supplementary Private Use Area-A"
-msgstr "Dodatek, priv. oblast A"
+msgstr "Dodatok, priv. oblasť A"
 
 #: src/frontends/qt4/GuiSymbols.cpp:147
 msgid "Supplementary Private Use Area-B"
-msgstr "Dodatek, priv. oblast B"
+msgstr "Dodatok, priv. oblasť B"
 
 #: src/frontends/qt4/GuiSymbols.cpp:226
-#, fuzzy
 msgid "Character: "
-msgstr "Znaková sada"
+msgstr "Znak:"
 
 #: src/frontends/qt4/GuiSymbols.cpp:227
 msgid "Code Point: "
@@ -19494,12 +19432,11 @@ msgstr "Členenie"
 #, c-format
 msgid "Filtering layouts with \"%1$s\". Press ESC to remove filter."
 msgstr ""
-"Filtrovanie rozmiestnenia pomocou \"%1$s\". Použite ESC na odstránenie "
-"filtru."
+"Filtrovanie formátov pomocou \"%1$s\". Použite ESC na odstránenie filtru."
 
 #: src/frontends/qt4/GuiToolbar.cpp:372 src/frontends/qt4/GuiToolbar.cpp:421
 msgid "Enter characters to filter the layout list."
-msgstr "Zadajte znaky na výber zo zoznamu."
+msgstr "Zadajte znaky na výber z listiny formátov."
 
 #: src/frontends/qt4/GuiToolbar.cpp:543
 #, fuzzy
@@ -19580,24 +19517,20 @@ msgid "Examples|#E#e"
 msgstr "Príklady"
 
 #: src/frontends/qt4/GuiView.cpp:1350
-#, fuzzy
 msgid "LyX-1.3.x Documents (*.lyx13)"
-msgstr "LyX dokumenty (*.lyx)"
+msgstr "LyX-1.3.x dokumenty (*.lyx13)"
 
 #: src/frontends/qt4/GuiView.cpp:1351
-#, fuzzy
 msgid "LyX-1.4.x Documents (*.lyx14)"
-msgstr "LyX dokumenty (*.lyx)"
+msgstr "LyX-1.4.x dokumenty (*.lyx14)"
 
 #: src/frontends/qt4/GuiView.cpp:1352
-#, fuzzy
 msgid "LyX-1.5.x Documents (*.lyx15)"
-msgstr "LyX dokumenty (*.lyx)"
+msgstr "LyX-1.5.x dokumenty (*.lyx15)"
 
 #: src/frontends/qt4/GuiView.cpp:1353
-#, fuzzy
 msgid "LyX-1.6.x Documents (*.lyx16)"
-msgstr "LyX dokumenty (*.lyx)"
+msgstr "LyX-1.6.x dokumenty (*.lyx16)"
 
 #: src/frontends/qt4/GuiView.cpp:1378 src/frontends/qt4/Validator.cpp:174
 #: src/insets/ExternalSupport.cpp:365 src/insets/InsetBibtex.cpp:286
@@ -19846,7 +19779,7 @@ msgstr "Otevřít navigátor..."
 
 #: src/frontends/qt4/Menus.cpp:976
 msgid "Other Lists"
-msgstr "Iné Zoznamy"
+msgstr "Iné Listiny"
 
 #: src/frontends/qt4/Menus.cpp:985
 msgid "No Table of contents"
@@ -19876,11 +19809,12 @@ msgid "space"
 msgstr "medzera"
 
 #: src/frontends/qt4/Validator.cpp:175
-#, fuzzy
 msgid ""
 "LyX does not provide LaTeX support for file names containing any of these "
 "characters:\n"
-msgstr "názov priečinku nemôže obsahovať tieto znaky:"
+msgstr ""
+"LyX neposkytuje podporu pre LaTeX pri menách súborov obsahujúce niektoré z "
+"týchto znakov:\n"
 
 #: src/frontends/qt4/qt_helpers.cpp:180
 #, fuzzy
@@ -20365,13 +20299,13 @@ msgid ""
 msgstr ""
 "Pre výpisy zdrojového kódu vkladané priamo do textu, musí zostať aspoň jedno "
 "miesto volné pre oddělovač.\n"
-"Jeden z výpisov však používa všetky dostupné znaky, takže nezostáva miesto "
+"Jeden z výpisov však používa všetky dostupné znaky, takže nezostalo miesto "
 "pre oddělovač.\n"
-"Zatiaľ som znak '!' nahradil varovaním, ale je musíte to vyšetriť."
+"Zatiaľ som znak '!' nahradil varovaním, ale musíte to vyšetriť."
 
 #: src/insets/InsetListings.cpp:267
 msgid "Uncodable characters in listings inset"
-msgstr "Nekódovatelné znaky v výpise zdrojového kódu"
+msgstr "Nekódovatelné znaky vo výpise zdrojového kódu"
 
 #: src/insets/InsetListings.cpp:268
 #, c-format
@@ -20380,7 +20314,7 @@ msgid ""
 "not representable in the current encoding and have been omitted:\n"
 "%1$s."
 msgstr ""
-"Nasledujúcí znaky v výpisoch zdrojových kódov nie sú reprezentovatelné\n"
+"Nasledujúce znaky vo výpisoch zdrojových kódov sú nereprezentovatelné\n"
 "vo zvolenom kódovaní a boly vynechané:\n"
 "%1$s."
 
