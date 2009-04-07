@@ -909,17 +909,16 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 		else if (t.cat() == catOther) {
 			char_type c = t.character();
-			if (c < 0x80 || mode_ & Parse::VERBATIM
+			if (isAsciiOrMathAlpha(c)
+			    || mode_ & Parse::VERBATIM
 			    || !(mode_ & Parse::USETEXT)
-			    || mode == InsetMath::TEXT_MODE
-			    || Encodings::isMathAlpha(c)) {
+			    || mode == InsetMath::TEXT_MODE) {
 				cell->push_back(MathAtom(new InsetMathChar(c)));
 			} else {
 				MathAtom at = createInsetMath("text");
 				at.nucleus()->cell(0).push_back(MathAtom(new InsetMathChar(c)));
 				while (nextToken().cat() == catOther
-				       && nextToken().character() >= 0x80
-				       && !Encodings::isMathAlpha(nextToken().character())) {
+				       && !isAsciiOrMathAlpha(nextToken().character())) {
 					c = getToken().character();
 					at.nucleus()->cell(0).push_back(MathAtom(new InsetMathChar(c)));
 				}

@@ -33,6 +33,11 @@ MathAtom createInsetMath(char const * const);
  */
 bool createInsetMath_fromDialogStr(docstring const &, MathData &);
 
+/** Tells whether the argument is an ascii character or is marked as
+  * mathalpha in the unicodesymbols file.
+  */
+bool isAsciiOrMathAlpha(char_type);
+
 typedef std::map<docstring, latexkeys> MathWordList;
 MathWordList const & mathedWordList();
 

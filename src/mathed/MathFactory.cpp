@@ -505,4 +505,10 @@ bool createInsetMath_fromDialogStr(docstring const & str, MathData & ar)
 }
 
 
+bool isAsciiOrMathAlpha(char_type c)
+{
+	return c < 0x80 || Encodings::isMathAlpha(c);
+}
+
+
 } // namespace lyx
