@@ -1165,6 +1165,10 @@ void GuiDocument::xetexChanged(bool xetex)
 		!langModule->defaultencodingRB->isChecked());
 	langModule->defaultencodingRB->setEnabled(!xetex);
 	langModule->otherencodingRB->setEnabled(!xetex);
+	
+	fontModule->fontsDefaultCO->setEnabled(!xetex);
+	if (xetex)
+		fontModule->fontScCB->setEnabled(false);
 }
 
 
@@ -1839,8 +1843,11 @@ void GuiDocument::applyView()
 
 	bp_.fontsOSF = fontModule->fontOsfCB->isChecked();
 
-	bp_.fontsDefaultFamily = GuiDocument::fontfamilies[
-		fontModule->fontsDefaultCO->currentIndex()];
+	if (xetex)
+		bp_.fontsDefaultFamily = "default";
+	else
+		bp_.fontsDefaultFamily = GuiDocument::fontfamilies[
+			fontModule->fontsDefaultCO->currentIndex()];
 
 	if (fontModule->fontsizeCO->currentIndex() == 0)
 		bp_.fontsize = "default";
