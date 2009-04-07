@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-04-05 21:26+0200\n"
-"PO-Revision-Date: 2009-04-07 14:48+0200\n"
+"PO-Revision-Date: 2009-04-07 17:54+0200\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
 "Language-Team: German <kde-i18n-de@lists.kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -750,7 +750,7 @@ msgstr "Plný zoznam autorov"
 
 #: src/frontends/qt4/ui/CitationUi.ui:254
 msgid "Force upper case in citation"
-msgstr "Vnútiť veľké písmená pri citovaní"
+msgstr "Vnútiť veľké písmená do citácie"
 
 #: src/frontends/qt4/ui/CitationUi.ui:257
 msgid "Force u&pper case"
@@ -758,7 +758,7 @@ msgstr "Vnútiť &veľké písmená"
 
 #: src/frontends/qt4/ui/CitationUi.ui:295
 msgid "Citation st&yle:"
-msgstr "Štýl c&itovania:"
+msgstr "Štýl citácie:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:305
 msgid "Text &before:"
@@ -766,7 +766,7 @@ msgstr "Te&xt pred:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:341
 msgid "Natbib citation style to use"
-msgstr "Ktorý natbib štýl citovania použiť"
+msgstr "Ktorý natbib štýl citátov použiť"
 
 #: src/frontends/qt4/ui/CitationUi.ui:366
 msgid "Text to place before citation"
@@ -790,7 +790,7 @@ msgstr "Dostupné citácie:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:512
 msgid "&Selected Citations:"
-msgstr "&Vybrané citácie:"
+msgstr "Vybrané citácie:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:547
 msgid "The Enter key works, too"
@@ -806,11 +806,11 @@ msgstr "Z&mazať"
 
 #: src/frontends/qt4/ui/CitationUi.ui:594
 msgid "Move the selected citation up (try Ctrl-Up)"
-msgstr "Presunúť označenú citáciu hore"
+msgstr "Presunúť označenú citáciu nahor (skús Ctrl-Up)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:618
 msgid "Move the selected citation down (try Ctrl-Down)"
-msgstr "Presunúť označenú citáciu dole"
+msgstr "Presunúť označenú citáciu dole (skús Ctrl-Down)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:621
 msgid "&Down"
@@ -819,7 +819,7 @@ msgstr "&Dole"
 #: src/frontends/qt4/ui/DelimiterUi.ui:143
 #: src/frontends/qt4/GuiDelimiter.cpp:275
 msgid "TeX Code: "
-msgstr "Kód TeXu:"
+msgstr "TeX Kód:"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:167
 msgid "Match delimiter types"
@@ -900,7 +900,7 @@ msgstr "Názov súboru"
 #: src/frontends/qt4/ui/GraphicsUi.ui:266
 #: src/frontends/qt4/ui/IncludeUi.ui:265 src/frontends/qt4/ui/PrintUi.ui:293
 msgid "&File:"
-msgstr "&Súbor:"
+msgstr "Súbor:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:126
 #: src/frontends/qt4/ui/IncludeUi.ui:332
@@ -1041,7 +1041,7 @@ msgstr "Získať ohraničujúci rámok z (EPS) súboru"
 #: src/frontends/qt4/ui/ExternalUi.ui:575
 #: src/frontends/qt4/ui/GraphicsUi.ui:440
 msgid "&Get from File"
-msgstr "&Získať zo súboru"
+msgstr "Získať zo súboru"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:605
 msgid "y"
@@ -1408,7 +1408,7 @@ msgstr "Odkaz na súbor"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:66
 msgid "&File"
-msgstr "&Súbor"
+msgstr "Súbor"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:76
 #: src/frontends/qt4/ui/HyperlinkUi.ui:90 lib/layouts/scrlttr2.layout:205
@@ -1639,7 +1639,7 @@ msgstr "&Strana:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:94
 msgid "On which side should line numbers be printed?"
-msgstr "Na ktorej strane by maly byť vytlačené čísla riadkov ?"
+msgstr "Na ktorej strane by mali byť vytlačené čísla riadkov ?"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:119
 msgid "S&tep:"
@@ -2020,7 +2020,7 @@ msgstr "Bibliografické spätné referencie"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:252
 msgid "B&ackreferences:"
-msgstr "Spä&tné referencie:"
+msgstr "Spätné referencie:"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:281
 msgid "&Bookmarks"
@@ -2092,7 +2092,7 @@ msgstr "&Orientácia:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:253
 msgid "Lay out the page for double-sided printing"
-msgstr "Rozlož stránku na dvojstrannú tlač"
+msgstr "Rozlož stránku na obojstrannú tlač"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:256
 msgid "&Two-sided document"
@@ -2644,7 +2644,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:88
 msgid "&Use Windows-style paths in LaTeX files"
-msgstr "&Používať  Windows-štýl na zápis ciest v súboroch LaTeX-u"
+msgstr "Používať  Windows-štýl na zápis ciest v súboroch LaTeX-u"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:95
 msgid "Set class options to default on class change"
@@ -2740,7 +2740,7 @@ msgstr "Adresár pre zálohy:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:117
 msgid "Ly&XServer pipe:"
-msgstr "Napojenie na Ly&XServer (pipe):"
+msgstr "Zreťazenie na LyXServer (pipe):"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:140
 msgid "&Temporary directory:"
@@ -2778,7 +2778,7 @@ msgstr "Nastavenia príkazu pre tlačiareň"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:69
 msgid "Extension to be used when printing to file."
-msgstr "Rozšírenie, ktoré má byť použité pri tlačí do súboru"
+msgstr "Prípona na použitie pri tlačí do súboru"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:72
 msgid "File ex&tension:"
@@ -3127,7 +3127,7 @@ msgstr "Všetko"
 
 #: src/frontends/qt4/ui/PrintUi.ui:116
 msgid "Print &odd-numbered pages"
-msgstr "Tlačiť nepárno číslované strany"
+msgstr "Tlačiť nepárno očíslované strany"
 
 #: src/frontends/qt4/ui/PrintUi.ui:126
 msgid "Print &even-numbered pages"
@@ -5552,7 +5552,7 @@ msgstr "Fusszeile(n):"
 
 #: lib/layouts/dinbrief.layout:126
 msgid "Area code"
-msgstr "Area code"
+msgstr "Predvoľba"
 
 #: lib/layouts/dinbrief.layout:128
 msgid "Vorwahl:"
@@ -6400,11 +6400,11 @@ msgstr "Phone:"
 
 #: lib/layouts/g-brief-en.layout:159
 msgid "BankCode"
-msgstr "Bankový_kód"
+msgstr "BankovýKód"
 
 #: lib/layouts/g-brief-en.layout:162
 msgid "BankCode:"
-msgstr "BankCode:"
+msgstr "BankovýKód:"
 
 #: lib/layouts/g-brief-en.layout:166
 msgid "BankAccount"
@@ -6921,7 +6921,7 @@ msgstr "ACKNOWLEDGEMENTS"
 
 #: lib/layouts/kluwer.layout:190
 msgid "AddressForOffprints"
-msgstr "Adresa_pre_odtlačky"
+msgstr "Adresa_pre_osobitné_výtlačky:"
 
 #: lib/layouts/kluwer.layout:198
 msgid "Address for Offprints:"
@@ -7208,9 +7208,8 @@ msgid "acknowledgments"
 msgstr "poďakovania"
 
 #: lib/layouts/revtex4.layout:251
-#, fuzzy
 msgid "PACS number:"
-msgstr "Číslo strany"
+msgstr "PACS-číslo:"
 
 #: lib/layouts/scrlettr.layout:24 lib/layouts/scrlttr2.layout:26
 #: lib/layouts/scrclass.inc:33
@@ -7222,9 +7221,8 @@ msgid "L"
 msgstr "L"
 
 #: lib/layouts/scrlettr.layout:63
-#, fuzzy
 msgid "O"
-msgstr "Zapnuté"
+msgstr "O"
 
 #: lib/layouts/scrlettr.layout:105 lib/layouts/scrlttr2.layout:136
 msgid "Encl"
@@ -7752,37 +7750,32 @@ msgid "Sup-mat-note:"
 msgstr "Sup-mat-note:"
 
 #: lib/layouts/agu_stdtitle.inc:158
-#, fuzzy
 msgid "Cite-other"
-msgstr "Na stred"
+msgstr "Citát (iný)"
 
 #: lib/layouts/agu_stdtitle.inc:162
-#, fuzzy
 msgid "Cite-other:"
-msgstr "Š&týl citácie:"
+msgstr "Citát (iný):"
 
 #: lib/layouts/agu_stdtitle.inc:206 lib/layouts/aguplus.inc:114
 msgid "Revised"
 msgstr "Revidované"
 
 #: lib/layouts/agu_stdtitle.inc:209 lib/layouts/aguplus.inc:118
-#, fuzzy
 msgid "Revised:"
-msgstr "Revidované"
+msgstr "Revidované:"
 
 #: lib/layouts/agu_stdtitle.inc:222
-#, fuzzy
 msgid "Ident-line"
-msgstr "Podčiarknuť "
+msgstr "Posunutý-riadok"
 
 #: lib/layouts/agu_stdtitle.inc:225
 msgid "Ident-line:"
-msgstr "Ident-line:"
+msgstr "Posunutý-riadok:"
 
 #: lib/layouts/agu_stdtitle.inc:230
-#, fuzzy
 msgid "Runhead"
-msgstr "Červená"
+msgstr "HlavičkaStĺpcu"
 
 #: lib/layouts/agu_stdtitle.inc:233
 msgid "Runhead:"
@@ -7797,9 +7790,8 @@ msgid "Citation"
 msgstr "Citácia"
 
 #: lib/layouts/agu_stdtitle.inc:266
-#, fuzzy
 msgid "Citation:"
-msgstr "Citácia"
+msgstr "Citácia:"
 
 #: lib/layouts/agu_stdtitle.inc:271
 msgid "Posting-order"
@@ -7878,9 +7870,8 @@ msgid "Element:SS-Code"
 msgstr "Element:SS-Code"
 
 #: lib/layouts/agu_stdtitle.inc:346
-#, fuzzy
 msgid "SS-Code"
-msgstr "Kód"
+msgstr "SS-Kód"
 
 #: lib/layouts/agu_stdtitle.inc:355
 msgid "Element:SS-Title"
@@ -7892,7 +7883,7 @@ msgstr "SS-Title"
 
 #: lib/layouts/agu_stdtitle.inc:367
 msgid "Element:CCC-Code"
-msgstr "Element:CCC-Code"
+msgstr "Element:CCC-Kód"
 
 #: lib/layouts/agu_stdtitle.inc:369
 #, fuzzy
@@ -7901,7 +7892,7 @@ msgstr "Kód"
 
 #: lib/layouts/agu_stdtitle.inc:380
 msgid "Element:Code"
-msgstr "Element:Code"
+msgstr "Element:Kód"
 
 #: lib/layouts/agu_stdtitle.inc:391
 msgid "Element:Dscr"
@@ -7954,9 +7945,8 @@ msgid "Element:Postcode"
 msgstr "Element:SmerovacieČíslo"
 
 #: lib/layouts/agu_stdtitle.inc:472
-#, fuzzy
 msgid "Postcode"
-msgstr "Vložiť"
+msgstr "PoštovéSmerovacieČíslo"
 
 #: lib/layouts/agu_stdtitle.inc:481
 msgid "Element:Country"
@@ -7977,9 +7967,8 @@ msgid "CCC"
 msgstr "CCC"
 
 #: lib/layouts/aguplus.inc:134
-#, fuzzy
 msgid "CCC code:"
-msgstr "Kód"
+msgstr "CCC Kód:"
 
 #: lib/layouts/aguplus.inc:143
 msgid "PaperId"
@@ -8394,9 +8383,8 @@ msgid "--Separator--"
 msgstr "--Oddeľovač--"
 
 #: lib/layouts/stdlayouts.inc:76
-#, fuzzy
 msgid "--- Separate Environment ---"
-msgstr "Rozdeliť prostredie|#R"
+msgstr "-- Oddeliť prostredie --"
 
 #: lib/layouts/stdsections.inc:14
 msgid "Part \\thepart"
@@ -8425,12 +8413,11 @@ msgstr "Autor"
 
 #: lib/layouts/svjour.inc:241
 msgid "Offprints"
-msgstr "Separáty"
+msgstr "Osobitné výtlačky"
 
 #: lib/layouts/svjour.inc:245
-#, fuzzy
 msgid "Offprints:"
-msgstr "Separáty"
+msgstr "osobitné výtlačky:"
 
 #: lib/layouts/theorems-ams.inc:63 lib/layouts/theorems.inc:62
 msgid "Corollary \\thetheorem."
@@ -9283,7 +9270,7 @@ msgstr "Unicode (utf8)"
 
 #: lib/encodings:19
 msgid "Unicode (ucs-extended) (utf8x)"
-msgstr "Unicode (ucs-rozšíření) (utf8x)"
+msgstr "Unicode (ucs-rozšírenie) (utf8x)"
 
 #: lib/encodings:23
 msgid "Armenian (ArmSCII8)"
@@ -9467,7 +9454,7 @@ msgstr "ASCII"
 
 #: lib/ui/classic.ui:32 lib/ui/stdmenus.inc:20
 msgid "File|F"
-msgstr "Súbor|S"
+msgstr "Súbor"
 
 #: lib/ui/classic.ui:33 lib/ui/stdmenus.inc:21
 msgid "Edit|E"
@@ -9539,7 +9526,7 @@ msgstr "Exportovať|E"
 
 #: lib/ui/classic.ui:59 lib/ui/stdmenus.inc:49
 msgid "Print...|P"
-msgstr "Tlač...|T"
+msgstr "Tlač..."
 
 #: lib/ui/classic.ui:60 lib/ui/stdmenus.inc:50
 msgid "Fax...|F"
@@ -9638,7 +9625,7 @@ msgstr "Zmeniť Sledovanie|s"
 
 #: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:511
 msgid "Preferences...|P"
-msgstr "Nastavenia...|N"
+msgstr "Nastavenia..."
 
 #: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:510
 msgid "Reconfigure|R"
@@ -9862,7 +9849,7 @@ msgstr "Špeciálny znak"
 
 #: lib/ui/classic.ui:217 lib/ui/stdmenus.inc:332
 msgid "Citation...|C"
-msgstr "Citácia...|C"
+msgstr "Citácia..."
 
 #: lib/ui/classic.ui:218
 msgid "Cross-reference...|r"
@@ -9906,9 +9893,8 @@ msgid "Lists & TOC|O"
 msgstr "Listiny a Obsah"
 
 #: lib/ui/classic.ui:229
-#, fuzzy
 msgid "TeX Code|T"
-msgstr "TeX|#T"
+msgstr "TeX Kód"
 
 #: lib/ui/classic.ui:230
 msgid "Minipage|p"
@@ -9928,11 +9914,11 @@ msgstr "Objekty|j"
 
 #: lib/ui/classic.ui:235
 msgid "Include File...|d"
-msgstr "Zahrnúť súbor...|a"
+msgstr "Zahrnúť súbor..."
 
 #: lib/ui/classic.ui:236
 msgid "Insert File|e"
-msgstr "Vložiť súbor|V"
+msgstr "Vložiť súbor"
 
 #: lib/ui/classic.ui:237
 msgid "External Material...|x"
@@ -10016,7 +10002,7 @@ msgstr "Obyčajné úvodzovky"
 
 #: lib/ui/classic.ui:259 lib/ui/stdmenus.inc:359
 msgid "Menu Separator|M"
-msgstr "Oddeľovač výberu"
+msgstr "Oddeľovač v menu"
 
 #: lib/ui/classic.ui:260
 msgid "Horizontal Line"
@@ -10344,9 +10330,8 @@ msgid "About LyX"
 msgstr "O programe LyX"
 
 #: lib/ui/classic.ui:426
-#, fuzzy
 msgid "Preferences..."
-msgstr "Nastavenia...|N"
+msgstr "Nastavenia..."
 
 #: lib/ui/classic.ui:427
 msgid "Quit LyX"
@@ -10738,9 +10723,8 @@ msgid "Listing|L"
 msgstr "Výpis"
 
 #: lib/ui/stdcontext.inc:243
-#, fuzzy
 msgid "Edit included file...|E"
-msgstr "Zahrnúť súbor...|a"
+msgstr "Edituj zahrnútý súbor..."
 
 #: lib/ui/stdcontext.inc:250 lib/ui/stdmenus.inc:379
 msgid "New Page|N"
@@ -10993,9 +10977,8 @@ msgid "Dissolve Inset|l"
 msgstr "Rozpustit vložku do textu|R"
 
 #: lib/ui/stdmenus.inc:117
-#, fuzzy
 msgid "TeX Code Settings...|C"
-msgstr "LaTeX nastavenia"
+msgstr "TeX Kód nastavenia..."
 
 #: lib/ui/stdmenus.inc:119
 #, fuzzy
@@ -11228,9 +11211,8 @@ msgid "Custom insets"
 msgstr "Zákazník"
 
 #: lib/ui/stdmenus.inc:329
-#, fuzzy
 msgid "File|e"
-msgstr "Súbor|S"
+msgstr "Súbor"
 
 #: lib/ui/stdmenus.inc:330
 msgid "Box[[Menu]]"
@@ -11267,9 +11249,8 @@ msgid "Short Title|S"
 msgstr "Krátky Nadpis|K"
 
 #: lib/ui/stdmenus.inc:346
-#, fuzzy
 msgid "TeX Code|X"
-msgstr "TeX štýl|X"
+msgstr "TeX Kód"
 
 #: lib/ui/stdmenus.inc:347
 msgid "Program Listing[[Menu]]"
@@ -11450,7 +11431,7 @@ msgstr "Uložiť dokument"
 
 #: lib/ui/stdtoolbars.inc:60
 msgid "Print document"
-msgstr "Tlačiť dokument"
+msgstr "Tlač dokument"
 
 #: lib/ui/stdtoolbars.inc:62
 #, fuzzy
@@ -11541,7 +11522,7 @@ msgstr "Vložiť krížovú referenciu"
 
 #: lib/ui/stdtoolbars.inc:98
 msgid "Insert citation"
-msgstr "Vloženie citácie"
+msgstr "Vložiť citácie"
 
 #: lib/ui/stdtoolbars.inc:99
 msgid "Insert index entry"
@@ -11575,9 +11556,8 @@ msgid "Insert Hyperlink"
 msgstr "&Generovať hyperlinky"
 
 #: lib/ui/stdtoolbars.inc:107
-#, fuzzy
 msgid "Insert TeX code"
-msgstr "Vloženie BibTeXu"
+msgstr "Vložiť TeX kód"
 
 #: lib/ui/stdtoolbars.inc:108
 #, fuzzy
@@ -14643,9 +14623,8 @@ msgid "OpenOffice.Org (sxw)"
 msgstr "OpenOffice.Org (sxw)"
 
 #: lib/configure.py:353 src/frontends/qt4/GuiClipboard.cpp:134
-#, fuzzy
 msgid "Windows Metafile"
-msgstr "Tlačiť do súboru"
+msgstr "Windows Metafile"
 
 #: lib/configure.py:354 src/frontends/qt4/GuiClipboard.cpp:133
 msgid "Enhanced Metafile"
@@ -14794,8 +14773,8 @@ msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr ""
-"%1$s je z odlišné verze LyX-u, ale pomocný soubor pro jeho konverzi nemůže "
-"být vytvořen."
+"%1$s je z inej verzie LyX-u, ale pomocný súbor pre jeho konverziu nemôhol "
+"byť vytvorený."
 
 #: src/Buffer.cpp:800
 #, fuzzy
@@ -14845,13 +14824,11 @@ msgstr ""
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
 "overwrite this file?"
-msgstr ""
-"Dokument %1$s byl externě modifikován. Opravdu chcete tento soubor přepsat?"
+msgstr "Dokument %1$s bol externe modyfikovaný. Naozaj ho chcete prepísať?"
 
 #: src/Buffer.cpp:882
-#, fuzzy
 msgid "Overwrite modified file?"
-msgstr "Zobraziť súbor"
+msgstr "Prepísať modyfikovaný súbor?"
 
 #: src/Buffer.cpp:883 src/Exporter.cpp:49 src/LyXFunc.cpp:1026
 #: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1542
@@ -14866,9 +14843,8 @@ msgid "Saving document %1$s..."
 msgstr "Ukladám dokument %1$s..."
 
 #: src/Buffer.cpp:920
-#, fuzzy
 msgid " could not write file!"
-msgstr "Nemôžem pracovať so súborom:"
+msgstr "Nemôžem písať do súbora!"
 
 #: src/Buffer.cpp:927
 msgid " done."
@@ -14926,19 +14902,18 @@ msgid "Could not run chktex successfully."
 msgstr "Chktex úspešne skončil."
 
 #: src/Buffer.cpp:2189
-#, fuzzy
 msgid "Preview source code"
-msgstr "Náhľad|#N"
+msgstr "Náhľad na zdrojový text"
 
 #: src/Buffer.cpp:2202
-#, fuzzy, c-format
+#, c-format
 msgid "Preview source code for paragraph %1$d"
-msgstr "Náhľad|#N"
+msgstr "Náhľad na zdrojový text odstavca %1$d"
 
 #: src/Buffer.cpp:2206
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
-msgstr "Náhled zdrojového kódu pro odstavce %1$s - %2$s"
+msgstr "Náhľad zdrojového kódu pre odstavce %1$s - %2$s"
 
 #: src/Buffer.cpp:2313
 #, c-format
@@ -14954,9 +14929,8 @@ msgid "Autosaving current document..."
 msgstr "Automatické ukladanie dokumentu..."
 
 #: src/Buffer.cpp:2430
-#, fuzzy
 msgid "Couldn't export file"
-msgstr "Nie je možné exportovať súbor"
+msgstr "Nemôzem exportovať súbor"
 
 #: src/Buffer.cpp:2431
 #, fuzzy, c-format
@@ -14964,9 +14938,8 @@ msgid "No information for exporting the format %1$s."
 msgstr "Žiadne informácie o importe z %1$s"
 
 #: src/Buffer.cpp:2468
-#, fuzzy
 msgid "File name error"
-msgstr "Názov súboru"
+msgstr "Chyba v názve súboru"
 
 #: src/Buffer.cpp:2469
 msgid "The directory path to the document cannot contain spaces."
@@ -14978,9 +14951,9 @@ msgid "Document export cancelled."
 msgstr "Dokument exportovaný ako "
 
 #: src/Buffer.cpp:2517
-#, fuzzy, c-format
+#, c-format
 msgid "Document exported as %1$s to file `%2$s'"
-msgstr "Dokument exportovaný ako "
+msgstr "Dokument exportovaný ako %1$s na súbor `%2$s'"
 
 #: src/Buffer.cpp:2523
 #, fuzzy, c-format
@@ -15065,9 +15038,8 @@ msgid "&Retrieve"
 msgstr "O&bnoviť"
 
 #: src/BufferList.cpp:233
-#, fuzzy
 msgid "No file open!"
-msgstr "Súbor nenájdený!"
+msgstr "Žiadny súbor nie je otvorený!"
 
 #: src/BufferList.cpp:243
 #, fuzzy, c-format
@@ -15102,7 +15074,7 @@ msgstr ""
 "%1$s.layout,\n"
 "nie je použitelný. To je pravdepodobne zpôsobené tým,\n"
 "že LaTeX-ová trieda alebo požadovaný súbor štýlu\n"
-"nie je dostupný. Pre viac informácie pozrite si\n"
+"nie sú dostupné. Pre viac informácie pozrite si\n"
 "dokumentáciu (Prispôsobenie LyXu).\n"
 
 #: src/BufferParams.cpp:486
@@ -15181,7 +15153,7 @@ msgstr "Dokument nie je možné uložiť!"
 #: src/BufferParams.cpp:1743
 #, c-format
 msgid "Error reading module %1$s\n"
-msgstr "Chyba při čtení modulu %1$s\n"
+msgstr "Chyba pri čítaní modulu %1$s\n"
 
 #: src/BufferParams.cpp:1744 src/BufferParams.cpp:1750
 #, fuzzy
@@ -15298,9 +15270,8 @@ msgstr ""
 "způsobeno chybou: %2$s"
 
 #: src/BufferView.cpp:2419
-#, fuzzy
 msgid "Could not read file"
-msgstr "Nemôžem pracovať so súborom:"
+msgstr "Nemôžem čítať súbor"
 
 #: src/BufferView.cpp:2426
 #, fuzzy, c-format
@@ -15310,13 +15281,12 @@ msgid ""
 msgstr "%1$s odstavce nie je možné skonvertovať"
 
 #: src/BufferView.cpp:2427 src/output.cpp:39
-#, fuzzy
 msgid "Could not open file"
-msgstr "Nie je možné otvoriť súbor"
+msgstr "Nemôžem otvoriť súbor"
 
 #: src/BufferView.cpp:2434
 msgid "Reading not UTF-8 encoded file"
-msgstr "Načítání souboru v jiném kódování nežli je UTF-8"
+msgstr "Čítaný súbor nie je kódovaný v UTF-8"
 
 #: src/BufferView.cpp:2435
 msgid ""
@@ -15326,11 +15296,11 @@ msgid ""
 "then please change the encoding of the file\n"
 "to UTF-8 with a program other than LyX.\n"
 msgstr ""
-"Soubor není v kódování UTF-8.\n"
-"Bude načten jako by byl kódován v 8mi bitech.\n"
-"Pokud toto nedá správný výsledek,\n"
-"změnte prosím kódování souboru na\n"
-"UTF-8 jiným programem.\n"
+"Súbor nie je v kódovaní UTF-8.\n"
+"Bude načítaný ako keby bol kódovaný v 8 bitoch.\n"
+"Keď to nedá správny výsledok,\n"
+"zmente prosím kódovanie súboru na\n"
+"UTF-8 iným programom.\n"
 
 #: src/Chktex.cpp:63
 #, c-format
@@ -15689,11 +15659,13 @@ msgid "Cannot convert file"
 msgstr "Nie je možné konvertovať súbor"
 
 #: src/Converter.cpp:307
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "No information for converting %1$s format files to %2$s.\n"
 "Define a converter in the preferences."
-msgstr "Žiadne informácie pre konverziu z %1$s do %2$s"
+msgstr ""
+"Žiadne informácie pre konverziu %1$s formátnych súborov do %2$s.\n"
+"Definujte konvertor v nastaveniach."
 
 #: src/Converter.cpp:406 src/Format.cpp:305 src/Format.cpp:377
 #, fuzzy
@@ -15723,12 +15695,12 @@ msgstr "Pomocný adresár %1$s sa nedal presunúť na %2$s."
 #: src/Converter.cpp:519
 #, c-format
 msgid "Could not copy a temporary file from %1$s to %2$s."
-msgstr "Nelze zkopírovat pomocný soubor z %1$s do %2$s."
+msgstr "Nedá sa skopírovať pomocný súbor z %1$s do %2$s."
 
 #: src/Converter.cpp:520
 #, c-format
 msgid "Could not move a temporary file from %1$s to %2$s."
-msgstr "Nelze přesunout pomocný soubor z %1$s do %2$s."
+msgstr "Nedá sa presunúť pomocný súbor z %1$s do %2$s."
 
 #: src/Converter.cpp:576
 msgid "Running LaTeX..."
@@ -15754,7 +15726,7 @@ msgstr "je prázdny"
 
 #: src/Converter.cpp:600
 msgid "An empty output file was generated."
-msgstr "Byl vygenerován prázdný výstupní soubor."
+msgstr "Bol vygenerovaný prázdny výstupny súbor."
 
 #: src/CutAndPaste.cpp:564
 #, c-format
@@ -15777,14 +15749,13 @@ msgid ""
 "\n"
 "Do you want to overwrite that file?"
 msgstr ""
-"Soubor %1$s již existuje.\n"
+"Súbor %1$s už existuje.\n"
 "\n"
-"Chcete tento soubor přepsat?"
+"Chcete tento súbor prepísať?"
 
 #: src/Exporter.cpp:47 src/LyXFunc.cpp:1025
-#, fuzzy
 msgid "Overwrite file?"
-msgstr "Zobraziť súbor"
+msgstr "Prepísať súbor?"
 
 #: src/Exporter.cpp:49
 #, fuzzy
@@ -15797,9 +15768,8 @@ msgid "&Cancel export"
 msgstr "&Zrušiť"
 
 #: src/Exporter.cpp:90
-#, fuzzy
 msgid "Couldn't copy file"
-msgstr "Nie je možné kopírovať súbor"
+msgstr "Nemožné kopírovať súbor"
 
 #: src/Exporter.cpp:91
 #, c-format
@@ -15899,9 +15869,9 @@ msgid "Cannot view file"
 msgstr "Nemôžem zobraziť súbor"
 
 #: src/Format.cpp:254 src/Format.cpp:325
-#, fuzzy, c-format
+#, c-format
 msgid "File does not exist: %1$s"
-msgstr "Súbor neexistuje."
+msgstr "Súbor neexistuje: %1$s"
 
 #: src/Format.cpp:267
 #, c-format
@@ -15909,19 +15879,18 @@ msgid "No information for viewing %1$s"
 msgstr "Žiadne informácie pre prezeranie %1$s"
 
 #: src/Format.cpp:277
-#, fuzzy, c-format
+#, c-format
 msgid "Auto-view file %1$s failed"
-msgstr "Automatické ukladanie sa nepodarilo!"
+msgstr "Automatický prehľad súboru %1$s sa nepodaril"
 
 #: src/Format.cpp:324 src/Format.cpp:336 src/Format.cpp:349 src/Format.cpp:360
 #: src/Format.cpp:383
-#, fuzzy
 msgid "Cannot edit file"
-msgstr "Nemôžem zapísať súbor"
+msgstr "Nemôžem editovať súbor"
 
 #: src/Format.cpp:337
 msgid "LinkBack files can only be edited on Apple Mac OSX."
-msgstr "Soubory LinkBack-u mohou být editovány pouze na Apple Mac OSX."
+msgstr "Súbory LinkBack je možné editovať len na Apple Mac OSX."
 
 #: src/Format.cpp:350
 #, fuzzy, c-format
@@ -15931,17 +15900,15 @@ msgstr "Žiadne informácie pre prezeranie %1$s"
 #: src/Format.cpp:361
 #, c-format
 msgid "Auto-edit file %1$s failed"
-msgstr "Automatická editace souboru %1$s selhala"
+msgstr "Automatická editácia súboru %1$s zlyhala"
 
 #: src/ISpell.cpp:227 src/ISpell.cpp:234 src/ISpell.cpp:243
-#, fuzzy
 msgid "Can't create pipe for spellchecker."
-msgstr "Začať kontrolu pravopisu."
+msgstr "Nemôžem vytvoriť zreťazenie pre kontrolu pravopisu."
 
 #: src/ISpell.cpp:248 src/ISpell.cpp:253 src/ISpell.cpp:258
-#, fuzzy
 msgid "Can't open pipe for spellchecker."
-msgstr "Zastaviť kontrolu pravopisu."
+msgstr "Nemôžem otvoriť zreťazenie pre kontrolu pravopisu."
 
 #: src/ISpell.cpp:267
 msgid ""
@@ -16009,9 +15976,8 @@ msgid "Running MakeIndex for nomencl."
 msgstr "MakeIndex spustený pre nomencl."
 
 #: src/LyX.cpp:101
-#, fuzzy
 msgid "Could not read configuration file"
-msgstr "Nemôžem pracovať so súborom:"
+msgstr "Nemôžem čítať konfiguračný súbor"
 
 #: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1453
 #, c-format
@@ -16020,7 +15986,7 @@ msgid ""
 "%1$s.\n"
 "Please check your installation."
 msgstr ""
-"Chyba při čítaní konfiguračného súboru\n"
+"Chyba pri čítaní konfiguračného súboru\n"
 "%1$s.\n"
 "Zkontrolujte prosím vašu inštaláciu."
 
@@ -16325,13 +16291,12 @@ msgid ""
 "Could not print the document %1$s.\n"
 "Check that your printer is set up correctly."
 msgstr ""
-"Nelze vytisknout dokument %1$s.\n"
-"Zkontrolujte nastavení vaší tiskárny."
+"Nedal sa vytlačiť dokument %1$s.\n"
+"Zkontrolujte nastavenie vašej tlačiarne."
 
 #: src/LyXFunc.cpp:729
-#, fuzzy
 msgid "Print document failed"
-msgstr "Tlačiť do súboru"
+msgstr "Tlač dokumentu zlyhala"
 
 #: src/LyXFunc.cpp:849
 #, c-format
@@ -16359,7 +16324,7 @@ msgstr "Chýbajúci parameter"
 #: src/LyXFunc.cpp:1075
 #, c-format
 msgid "Opening help file %1$s..."
-msgstr "Otváram súbor s Pomocníkom %1$s..."
+msgstr "Otváram súbor s pomocníkom %1$s..."
 
 #: src/LyXFunc.cpp:1319
 #, fuzzy, c-format
@@ -16417,7 +16382,6 @@ msgstr ""
 "Nastavenie alternatívneho jazyka. Implicitne sa použije jazyk dokumentu."
 
 #: src/LyXRC.cpp:2438
-#, fuzzy
 msgid ""
 "Use to define an external program to render tables in plain text output. E."
 "g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"\" is "
@@ -16425,7 +16389,7 @@ msgid ""
 msgstr ""
 "Použite toto na definovanie externého príkazu na vytvorenie tabuliek v ASCII "
 "výstupe. Napr.\"groff -t -Tlatin2 $$FName\", kde $$FName je názov vstupného "
-"súboru. Ak je špecifikované \"none\", použije sa interná funkcia."
+"súboru. Ak je špecifikované \"\", použije sa interná funkcia."
 
 #: src/LyXRC.cpp:2446
 msgid ""
@@ -16471,7 +16435,7 @@ msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
 msgstr ""
-"Súbor s klávesovými skratkami. Môžete použiť absolútnu cestu, ináč bude LyX "
+"Súbor s klávesnými skratkami. Môžete použiť absolútnu cestu, ináč bude LyX "
 "hľadať v globálnych a lokálnych bind adresároch."
 
 #: src/LyXRC.cpp:2473
@@ -16720,9 +16684,9 @@ msgid "Use \"...\" to shorten long completions."
 msgstr "Použít \"...\" pro zkrácení dlouhých doplnění."
 
 #: src/LyXRC.cpp:2660
-#, fuzzy, c-format
+#, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
-msgstr "Maximálny počet posledných súborov. Až 9 ich môže byť v ponuke."
+msgstr "Maximálny počet posledných súborov. Až %1$d ich môže byť v ponuke."
 
 #: src/LyXRC.cpp:2665
 msgid ""
@@ -16776,7 +16740,7 @@ msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
 msgstr ""
-"Extra nastavenia pre program tlače, ktoré sa použije tesne pred tlačou DVI "
+"Extra možnosti pre program tlače, ktoré sa použije tesne pred tlačou DVI "
 "súboru."
 
 #: src/LyXRC.cpp:2708
@@ -16794,7 +16758,7 @@ msgstr "Nastavenie, či tlačiť iba nepárne strany."
 #: src/LyXRC.cpp:2720
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr ""
-"Nastavenie pre špecifikáciu zoznamu čiarkou oddelených strán na vytlačenie."
+"Nastavenie pre špecifikáciu listiny čiarkou oddelených strán na vytlačenie."
 
 #: src/LyXRC.cpp:2724
 msgid "Option to specify the dimensions of the print paper."
@@ -16815,7 +16779,7 @@ msgid ""
 "arguments."
 msgstr ""
 "Keď je toto nastavené, tak tlačiareň automaticky tlačí do súboru a potom "
-"volá oddelený spool program pre tlač toho súboru s parametrami."
+"volá oddelený spool program pre tlač tohto súboru s parametrami."
 
 #: src/LyXRC.cpp:2740
 msgid ""
@@ -16838,7 +16802,7 @@ msgstr ""
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
-msgstr "Nastavenie, či má LyX poslať názov tlačiarne príkazu pre tlač."
+msgstr "Vyber, keď má LyX poslať názov tlačiarne príkazu pre tlač."
 
 #: src/LyXRC.cpp:2756
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
@@ -16895,7 +16859,7 @@ msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
 msgstr ""
-"Toto spúšťa lyxserver. Rúry sú rozšírené o \".in\" a \".out\". Iba pre "
+"Toto spúšťa lyxserver. Reťazenia sú rozšírené o \".in\" a \".out\". Iba pre "
 "pokročilých užívateľov."
 
 #: src/LyXRC.cpp:2807
@@ -17185,9 +17149,8 @@ msgid "Plain Layout"
 msgstr "Prostý Formát"
 
 #: src/TextClass.cpp:638
-#, fuzzy
 msgid "Missing File"
-msgstr "Chýbajúci parameter"
+msgstr "Chýbajúci Súbor"
 
 #: src/TextClass.cpp:639
 msgid "Could not find stdinsets.inc! This may lead to data loss!"
@@ -17195,9 +17158,8 @@ msgstr ""
 "Nepodařilo se najít soubor stdinsets.inc! Toto může vést ke ztrátě dat!"
 
 #: src/TextClass.cpp:642
-#, fuzzy
 msgid "Corrupt File"
-msgstr "Krátky nadpis"
+msgstr "Skazený Súbor"
 
 #: src/TextClass.cpp:643
 msgid "Could not read stdinsets.inc! This may lead to data loss!"
@@ -17236,9 +17198,8 @@ msgstr ""
 "'%1$s'."
 
 #: src/VCBackend.cpp:477 src/VCBackend.cpp:524 src/VCBackend.cpp:614
-#, fuzzy
 msgid "Error: Could not generate logfile."
-msgstr "Nemôžem pracovať so súborom:"
+msgstr "Chyba: Nemôžem generovať protokolový súbor."
 
 #: src/VCBackend.cpp:536
 msgid ""
@@ -17336,12 +17297,11 @@ msgstr "Spojiť bunky"
 #: src/buffer_funcs.cpp:86
 #, c-format
 msgid "The file %1$s exists but is not readable by the current user."
-msgstr "Soubor %1$s existuje, ale není přístupný pro aktuálního uživatele."
+msgstr "Súbor %1$s existuje, ale nie je přrstupný pre aktuálneho použivateľa."
 
 #: src/buffer_funcs.cpp:89
-#, fuzzy
 msgid "File not readable!"
-msgstr "Nemôžem pracovať so súborom:"
+msgstr "Súbor sa nedá čítať!"
 
 #: src/buffer_funcs.cpp:103
 #, c-format
@@ -17798,12 +17758,11 @@ msgstr "Vložiť"
 #: src/frontends/qt4/GuiClipboard.cpp:156
 #, c-format
 msgid "%1$s Files"
-msgstr "%1$s souborů"
+msgstr "%1$s súborov"
 
 #: src/frontends/qt4/GuiClipboard.cpp:166
-#, fuzzy
 msgid "Choose a filename to save the pasted graphic as"
-msgstr "Zvoliť názov súboru, pod ktorým sa má dokument uložiť"
+msgstr "Zvoliť názov súboru, pod ktorým sa vsunutá grafika má uložit"
 
 #: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1364
 #: src/frontends/qt4/GuiView.cpp:1512 src/frontends/qt4/GuiView.cpp:1528
@@ -17813,14 +17772,13 @@ msgid "Canceled."
 msgstr "Zrušené."
 
 #: src/frontends/qt4/GuiClipboard.cpp:206
-#, fuzzy
 msgid "Overwrite external file?"
-msgstr "Zobraziť súbor"
+msgstr "Prepísať externý súbor?"
 
 #: src/frontends/qt4/GuiClipboard.cpp:207
 #, c-format
 msgid "File %1$s already exists, do you want to overwrite it?"
-msgstr "Soubor %1$s již existuje. Chcete tento soubor přepsat?"
+msgstr "Súbor %1$s už existuje. Chcete tento súbor prepísať?"
 
 #: src/frontends/qt4/GuiCommandBuffer.cpp:98
 msgid "List of previous commands"
@@ -18178,9 +18136,8 @@ msgid "Select master document"
 msgstr "Uložiť dokument"
 
 #: src/frontends/qt4/GuiDocument.cpp:1302
-#, fuzzy
 msgid "LyX Files (*.lyx)"
-msgstr "LyX dokumenty (*.lyx)"
+msgstr "LyX súbory (*.lyx)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1334
 #: src/frontends/qt4/GuiDocument.cpp:2232
@@ -18276,8 +18233,8 @@ msgid ""
 "'%1$s' in order to use the master document\n"
 "feature."
 msgstr ""
-"Musíte zahrnout tento soubor do dokumentu\n"
-"'%1$s' pokud chcete používat vlasností hlavního dokumentu."
+"Musíte zahrnúť tento súbor do dokumentu\n"
+"'%1$s' keď chcete používať vlasností hlavného dokumentu."
 
 #: src/frontends/qt4/GuiDocument.cpp:2392
 #, fuzzy
@@ -18292,9 +18249,8 @@ msgid ""
 msgstr "Dokument nie je možné uložiť!"
 
 #: src/frontends/qt4/GuiERT.cpp:29
-#, fuzzy
 msgid "TeX Code Settings"
-msgstr "LaTeX nastavenia"
+msgstr "TeX Kód nastavenia"
 
 #: src/frontends/qt4/GuiErrorList.cpp:38
 msgid "Error List"
@@ -18615,14 +18571,12 @@ msgid "No LaTeX log file found."
 msgstr "Logovací súbor LaTeXu nebol nájdený"
 
 #: src/frontends/qt4/GuiLog.cpp:215
-#, fuzzy
 msgid "No literate programming build log file found."
-msgstr "Logovací súbor kontroly verzií nebol nájdený."
+msgstr "Žiadny logovací súbor pre \"Literate Programming\" sa nenašiel."
 
 #: src/frontends/qt4/GuiLog.cpp:218
-#, fuzzy
 msgid "No lyx2lyx error log file found."
-msgstr "Logovací súbor LaTeXu nebol nájdený"
+msgstr "Žiadny logovací súbor chýb  lyx2lyx sa nenašiel."
 
 #: src/frontends/qt4/GuiLog.cpp:221
 msgid "No version control log file found."
@@ -18659,14 +18613,12 @@ msgstr ""
 "označením všetkých použitých položiek."
 
 #: src/frontends/qt4/GuiPrefs.cpp:136
-#, fuzzy
 msgid "System files|#S#s"
-msgstr "Systémové rozhranie|#S#s"
+msgstr "Systémové súbory|#S#s"
 
 #: src/frontends/qt4/GuiPrefs.cpp:140
-#, fuzzy
 msgid "User files|#U#u"
-msgstr "Použ. viazanie|#u"
+msgstr "Použ. súbory|#U#u"
 
 #: src/frontends/qt4/GuiPrefs.cpp:224
 msgid "Look & Feel"
@@ -18683,9 +18635,8 @@ msgid "Output"
 msgstr "Výstup"
 
 #: src/frontends/qt4/GuiPrefs.cpp:228
-#, fuzzy
 msgid "File Handling"
-msgstr "Manipulácia s písmom"
+msgstr "Obsluha súborov"
 
 #: src/frontends/qt4/GuiPrefs.cpp:394
 msgid "Date format"
@@ -18735,7 +18686,7 @@ msgstr "Zvoliť adresár pre dokumenty"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1066
 msgid "Give a filename for the LyX server pipe"
-msgstr "Jméno souboru pro rouru (pipe) LyX serveru"
+msgstr "Zadajte súborové meno pre zreťazenie LyX serveru"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1079
 #: src/frontends/qt4/GuiSpellchecker.cpp:57
@@ -18887,26 +18838,24 @@ msgid "Can not insert shortcut to the list"
 msgstr "Nemôžem pridať skratku do listiny"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2549
-#, fuzzy
 msgid "Identity"
-msgstr "&Odsadiť"
+msgstr "Totožnosť"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2746
 msgid "Choose bind file"
-msgstr "Vybrat soubor klávesových zkratek"
+msgstr "Vybrat soubor klávesných zkratek"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2747
 msgid "LyX bind files (*.bind)"
-msgstr "Klávesové zkratky LyX-u (*.bind)"
+msgstr "Klávesné zkratky LyX-u (*.bind)"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2753
 msgid "Choose UI file"
-msgstr "Vybrat soubor uživatelského rozhraní"
+msgstr "Vybrať súbor uživatelského rozhrania"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2754
-#, fuzzy
 msgid "LyX UI files (*.ui)"
-msgstr "*| Všetky súbory (*)"
+msgstr "LyX UI súbory (*.ui)"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2760
 msgid "Choose keyboard map"
@@ -18971,9 +18920,8 @@ msgid "Show File"
 msgstr "Zobraziť súbor"
 
 #: src/frontends/qt4/GuiShowFile.cpp:47
-#, fuzzy
 msgid "Error -> Cannot load file!"
-msgstr "Nemôžem zapísať súbor"
+msgstr "Chyba -> Nemôžem nahrať súbor!"
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:243
 #, fuzzy
@@ -19034,9 +18982,8 @@ msgid "Latin Extended-B"
 msgstr "Latinka rozšíření-B"
 
 #: src/frontends/qt4/GuiSymbols.cpp:58
-#, fuzzy
 msgid "IPA Extensions"
-msgstr "Príp&ona:"
+msgstr "IPA Prípony"
 
 #: src/frontends/qt4/GuiSymbols.cpp:59
 msgid "Spacing Modifier Letters"
@@ -19114,9 +19061,8 @@ msgid "Hangul Jamo"
 msgstr "Hangul jamo"
 
 #: src/frontends/qt4/GuiSymbols.cpp:80
-#, fuzzy
 msgid "Phonetic Extensions"
-msgstr "Príp&ona:"
+msgstr "Fonetické prípony"
 
 #: src/frontends/qt4/GuiSymbols.cpp:81
 msgid "Latin Extended Additional"
@@ -19376,7 +19322,7 @@ msgstr "Matematické alfanumerické symboly"
 
 #: src/frontends/qt4/GuiSymbols.cpp:142
 msgid "CJK Unified Ideographs Extension B"
-msgstr "CJK unifikovaný ideograf. extenze B"
+msgstr "CJK unifikovaná ideograf. extenzia B"
 
 #: src/frontends/qt4/GuiSymbols.cpp:143
 msgid "CJK Compatibility Ideographs Supplement"
@@ -19405,7 +19351,7 @@ msgstr "Znak:"
 
 #: src/frontends/qt4/GuiSymbols.cpp:227
 msgid "Code Point: "
-msgstr "Kód: "
+msgstr "Kódový bod: "
 
 #: src/frontends/qt4/GuiSymbols.cpp:270
 #, fuzzy
@@ -19491,7 +19437,7 @@ msgstr "Vlastnosti tabuľky"
 
 #: src/frontends/qt4/GuiView.cpp:1286
 msgid "Select template file"
-msgstr "Zvoliť názov šablóny"
+msgstr "Zvoliť súbor šablóny"
 
 #: src/frontends/qt4/GuiView.cpp:1288 src/frontends/qt4/GuiView.cpp:1700
 msgid "Templates|#T#t"
@@ -19535,9 +19481,8 @@ msgstr "LyX-1.6.x dokumenty (*.lyx16)"
 #: src/frontends/qt4/GuiView.cpp:1378 src/frontends/qt4/Validator.cpp:174
 #: src/insets/ExternalSupport.cpp:365 src/insets/InsetBibtex.cpp:286
 #: src/insets/InsetGraphics.cpp:592 src/insets/InsetInclude.cpp:471
-#, fuzzy
 msgid "Invalid filename"
-msgstr "Inštalované súbory"
+msgstr "Neplatné meno súboru"
 
 #: src/frontends/qt4/GuiView.cpp:1379
 #, c-format
@@ -19571,7 +19516,6 @@ msgid "Could not open document %1$s"
 msgstr "Nedá sa otvoriť dokument %1$s"
 
 #: src/frontends/qt4/GuiView.cpp:1436
-#, fuzzy
 msgid "Couldn't import file"
 msgstr "Nie je možné importovať súbor"
 
@@ -19611,9 +19555,8 @@ msgid "imported."
 msgstr "importované."
 
 #: src/frontends/qt4/GuiView.cpp:1555
-#, fuzzy
 msgid "file not imported!"
-msgstr "Reťazec nebol nájdený!"
+msgstr "Súbor nie je importovaný!"
 
 #: src/frontends/qt4/GuiView.cpp:1619
 msgid "Select LyX document to insert"
@@ -19624,7 +19567,6 @@ msgid "Select file to insert"
 msgstr "Vyberte súbor na vloženie"
 
 #: src/frontends/qt4/GuiView.cpp:1664
-#, fuzzy
 msgid "All Files (*)"
 msgstr "Všetky súbory (*)"
 
@@ -19726,9 +19668,8 @@ msgid " (read only)"
 msgstr " (iba pre čítanie)"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:1213
-#, fuzzy
 msgid "Close File"
-msgstr "Zavrieť"
+msgstr "Zavrieť Súbor"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:1612
 #, fuzzy
@@ -19795,9 +19736,8 @@ msgid "No Branch in Document!"
 msgstr "Dokument neobsahuje vetvenie!"
 
 #: src/frontends/qt4/Menus.cpp:1101
-#, fuzzy
 msgid "No Citation in Scope!"
-msgstr "Prejsť na ďalšiu zmenu"
+msgstr "Žiadna citácia nablízku!"
 
 #: src/frontends/qt4/Menus.cpp:1643
 #, fuzzy
@@ -19827,9 +19767,8 @@ msgid "The script `%s' failed."
 msgstr "Skript `%s' selhal."
 
 #: src/frontends/qt4/qt_helpers.cpp:433
-#, fuzzy
 msgid "All Files "
-msgstr "Všetky súbory (*)"
+msgstr "Všetky súbory"
 
 #: src/frontends/qt4/qt_helpers.cpp:506 src/insets/InsetTOC.cpp:49
 msgid "Table of Contents"
@@ -19940,9 +19879,8 @@ msgid "Databases:"
 msgstr "Databá&zy"
 
 #: src/insets/InsetBibtex.cpp:193
-#, fuzzy
 msgid "Style File:"
-msgstr "Zavrieť"
+msgstr "Súbor so štýlom:"
 
 #: src/insets/InsetBibtex.cpp:200
 msgid "Lists:"
@@ -19950,7 +19888,7 @@ msgstr "Zoznamy:"
 
 #: src/insets/InsetBibtex.cpp:211
 msgid "included in TOC"
-msgstr "zahrnuto v Obsahu"
+msgstr "zahrnuté do Obsahu"
 
 #: src/insets/InsetBibtex.cpp:307 src/insets/InsetBibtex.cpp:358
 #, fuzzy
@@ -20051,9 +19989,8 @@ msgid "Sub-%1$s"
 msgstr "Sub-%1$s"
 
 #: src/insets/InsetCitation.cpp:191
-#, fuzzy
 msgid "not cited"
-msgstr "Chránená medzera|m"
+msgstr "necitované"
 
 #: src/insets/InsetCitation.cpp:396
 #, fuzzy
@@ -20061,9 +19998,8 @@ msgid "No bibliography defined!"
 msgstr "Kľúč literatúry"
 
 #: src/insets/InsetCitation.cpp:400
-#, fuzzy
 msgid "No citations selected!"
-msgstr "Prejsť na ďalšiu zmenu"
+msgstr "Žiadna citácia nie je vybraná!"
 
 #: src/insets/InsetCommand.cpp:102
 #, fuzzy
@@ -20157,7 +20093,7 @@ msgid ""
 "%1$s\n"
 "into the temporary directory."
 msgstr ""
-"Nepodaril sa zkopírovať súbor\n"
+"Nepodaril sa skopírovať súbor\n"
 "%1$s\n"
 "do pomocného adresára."
 
@@ -20186,8 +20122,7 @@ msgstr "Rekurzivní vstup"
 #: src/insets/InsetInclude.cpp:439 src/insets/InsetInclude.cpp:638
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
-msgstr ""
-"Došlo k pokusu vložit soubor %1$s rekurzivně do sebe! Ignoruji toto vložení."
+msgstr "Došlo k pokusu vložiť súbor %1$s do seba! Ignoruji toto vloženie."
 
 #: src/insets/InsetInclude.cpp:494
 #, c-format
@@ -20196,9 +20131,9 @@ msgid ""
 "has textclass `%2$s'\n"
 "while parent file has textclass `%3$s'."
 msgstr ""
-"Zahrnutý soubor `%1$s'\n"
-"je třídy (textclass) `%2$s'\n"
-"zatímco rodičovský soubor má třídu `%3$s'."
+"Zahrnutý súbor `%1$s'\n"
+"má triedy (textclass) `%2$s'\n"
+"zatiaľ čo  rodičovský súbor má triedu `%3$s'."
 
 #: src/insets/InsetInclude.cpp:500
 msgid "Different textclasses"
@@ -20211,9 +20146,9 @@ msgid ""
 "uses module `%2$s'\n"
 "which is not used in parent file."
 msgstr ""
-"Zahrnutý soubor `%1$s'\n"
-"používá modul `%2$s',\n"
-"který není použit v rodičovském dokumentu."
+"Zahrnutý súbor `%1$s'\n"
+"používa modul `%2$s',\n"
+"ktorý sa nepoužíva v rodičovskom dokumente."
 
 #: src/insets/InsetInclude.cpp:519
 #, fuzzy
@@ -20721,7 +20656,7 @@ msgstr "Pripravený na zobrazenie"
 
 #: src/insets/RenderGraphic.cpp:101
 msgid "No file found!"
-msgstr "Súbor nenájdený!"
+msgstr "Žiadny súbor nenájdený!"
 
 #: src/insets/RenderGraphic.cpp:104
 msgid "Error converting to loadable format"
@@ -20729,7 +20664,7 @@ msgstr "Chyba pri konverzií do čitateľného formátu"
 
 #: src/insets/RenderGraphic.cpp:107
 msgid "Error loading file into memory"
-msgstr "Chyba načítání souboru do paměti"
+msgstr "Chyba pri nahraní súboru do pamäti"
 
 #: src/insets/RenderGraphic.cpp:110
 msgid "Error generating the pixmap"
@@ -20982,7 +20917,7 @@ msgstr "Analyzátor gramatiky Lyxlex"
 
 #: src/support/debug.cpp:44
 msgid "Configuration files reading"
-msgstr "Načítavanie konfiguračných súborov"
+msgstr "Čítanie konfiguračných súborov"
 
 #: src/support/debug.cpp:45
 msgid "Custom keyboard definition"
@@ -21002,7 +20937,7 @@ msgstr "Manipulácia s písmom"
 
 #: src/support/debug.cpp:49
 msgid "Textclass files reading"
-msgstr "Načítavanie súborov s textovými triedami"
+msgstr "Čítanie súborov s textovými triedami"
 
 #: src/support/debug.cpp:50
 msgid "Version control"
@@ -21100,9 +21035,8 @@ msgid "[[Replace with the code of your language]]"
 msgstr "sk"
 
 #: src/support/os_win32.cpp:324
-#, fuzzy
 msgid "System file not found"
-msgstr "Reťazec nebol nájdený!"
+msgstr "Systémový súbor nenájdený"
 
 #: src/support/os_win32.cpp:325
 msgid ""
