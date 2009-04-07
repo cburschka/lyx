@@ -2850,10 +2850,12 @@ void LyXAction::init()
  * \li Notion: Displays the contents of the current buffer in the chosen
                format, for example, PDF or DVI. This runs the necessary
                converter, calls the defined viewer, and so forth.
- * \li Syntax: buffer-view <FORMAT>
+ * \li Syntax: buffer-view [<FORMAT>]
  * \li Params: <FORMAT>: The format to display, where this is one of the
                          formats defined (in the current GUI) in the
                          Tools>Preferences>File Formats dialog.
+                         If no format is given, the default format as
+                         specified in the same dialog is used.
  * \endvar
  */
 		{ LFUN_BUFFER_VIEW, "buffer-view", ReadOnly, Buffer },
@@ -2864,10 +2866,12 @@ void LyXAction::init()
  * \li Notion: In case you are already viewing the exported document (see #LFUN_BUFFER_VIEW)
                the output will be rewriten - updated. This is useful in case your viewer
 	       is able to detect such changes (e.g. ghostview for postscript).
- * \li Syntax: buffer-update <FORMAT>
+ * \li Syntax: buffer-update [<FORMAT>]
  * \li Params: <FORMAT>: The format to display, where this is one of the
                          formats defined (in the current GUI) in the
                          Tools>Preferences>File Formats dialog.
+                         If no format is given, the default format as
+                         specified in the same dialog is used.
  * \li Origin: Dekel, 5 Aug 2000
  * \endvar
  */
@@ -2919,9 +2923,13 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_MASTER_BUFFER_UPDATE
  * \li Action: When run from a child document, this updates (exports) document built
-                from the master buffer. If a master is not found, it updates the
-                current buffer.
- * \li Syntax: master-buffer-update
+               from the master buffer, if available.
+ * \li Syntax: master-buffer-update [<FORMAT>]
+ * \li Params: <FORMAT>: The format to display, where this is one of the
+                         formats defined (in the current GUI) in the
+                         Tools>Preferences>File Formats dialog.
+                         If no format is given, the default format as
+                         specified in the same dialog is used.
  * \li Origin: Tommaso, 20 Sep 2007
  * \endvar
  */
@@ -2929,9 +2937,13 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_MASTER_BUFFER_VIEW
  * \li Action: When run from a child document, this command shows a preview built
-               from the master buffer. If a master is not found, it previews the
-	       current buffer.
- * \li Syntax: master-buffer-view
+               from the master buffer, if available.
+ * \li Syntax: master-buffer-view [<FORMAT>]
+ * \li Params: <FORMAT>: The format to display, where this is one of the
+                         formats defined (in the current GUI) in the
+                         Tools>Preferences>File Formats dialog.
+                         If no format is given, the default format as
+                         specified in the same dialog is used.
  * \li Origin: Tommaso, 20 Sep 2007
  * \endvar
  */
