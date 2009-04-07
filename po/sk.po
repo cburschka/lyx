@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-04-05 21:26+0200\n"
-"PO-Revision-Date: 2009-04-07 17:54+0200\n"
+"PO-Revision-Date: 2009-04-07 20:14+0200\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
 "Language-Team: German <kde-i18n-de@lists.kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -172,7 +172,7 @@ msgstr "&Znovu prehľadať"
 #: src/frontends/qt4/ui/LaTeXUi.ui:184 src/frontends/qt4/ui/PrefInputUi.ui:109
 #: src/frontends/qt4/ui/PrintUi.ui:313
 msgid "&Browse..."
-msgstr "&Prechádzať..."
+msgstr "Prechádzať..."
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83
 msgid "Enter BibTeX database name"
@@ -730,7 +730,7 @@ msgstr "Všetkyy typy záznamov"
 
 #: src/frontends/qt4/ui/CitationUi.ui:191
 msgid "Case Se&nsitive"
-msgstr "&Rozlišovať veľkosť písmen"
+msgstr "Rozlišovať veľkosť písmen"
 
 #: src/frontends/qt4/ui/CitationUi.ui:211
 msgid "Search As You &Type"
@@ -754,7 +754,7 @@ msgstr "Vnútiť veľké písmená do citácie"
 
 #: src/frontends/qt4/ui/CitationUi.ui:257
 msgid "Force u&pper case"
-msgstr "Vnútiť &veľké písmená"
+msgstr "Vnútiť veľké písmená"
 
 #: src/frontends/qt4/ui/CitationUi.ui:295
 msgid "Citation st&yle:"
@@ -1464,7 +1464,7 @@ msgstr "Podčiarknuť medzery v generovanom výstupe"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:186
 msgid "&Mark spaces in output"
-msgstr "&Označiť medzery vo výstupe"
+msgstr "Označiť medzery vo výstupe"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:201
 msgid "Show LaTeX preview"
@@ -1700,7 +1700,7 @@ msgstr "Zobraz medzery v reťazcoch špeciálnym symbolom"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:297
 msgid "Space i&n string as symbol"
-msgstr "&Medzera v reťazci ako symbol"
+msgstr "Medzera v reťazci ako symbol"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:307
 msgid "Tab&ulator size:"
@@ -1988,7 +1988,7 @@ msgstr "&Autor:"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:159
 msgid "&Subject:"
-msgstr "&Predmet:"
+msgstr "Predmet:"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:172
 msgid "&Keywords:"
@@ -2062,7 +2062,7 @@ msgstr "Formát Stránky"
 #: src/frontends/qt4/ui/PageLayoutUi.ui:103
 msgid "Choose a particular paper size, or set your own with \"Custom\""
 msgstr ""
-"Vyberte si kontkrénu veľkosť papiera, alebo nastavte si svoju vo \"Vlastné\""
+"Vyberte si kontkrénu veľkosť stránky, alebo nastavte si svoju vo \"Vlastné\""
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:121
 msgid "Style used for the page header and footer"
@@ -2070,7 +2070,7 @@ msgstr "Štýl použitý pre hlavičku a pätu stránky"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:128
 msgid "Headings &style:"
-msgstr "Štýl &hlavičky:"
+msgstr "Štýl hlavičky:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:138
 msgid "&Landscape"
@@ -2426,7 +2426,7 @@ msgstr "Formát dokumentu"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:109
 msgid "&Viewer:"
-msgstr "&Zobrazovač:"
+msgstr "Prehliadač:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:122
 msgid "Ed&itor:"
@@ -2711,7 +2711,7 @@ msgstr "Te&X kódovanie:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:228
 msgid "Default paper si&ze:"
-msgstr "Štandardné rozmery papiera:"
+msgstr "Štandardné rozmery stránky:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:25
 msgid "&Working directory:"
@@ -2864,11 +2864,11 @@ msgstr "Párne strany:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:256
 msgid "Paper t&ype:"
-msgstr "Typ papiera:"
+msgstr "Typ stránky:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:266
 msgid "Paper si&ze:"
-msgstr "Rozmery papiera:"
+msgstr "Rozmery stránky:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:279
 msgid "Any other options you'd like to use with the printer command."
@@ -4384,7 +4384,7 @@ msgstr "Nadpis"
 #: lib/layouts/sigplanconf.layout:107 lib/layouts/svprobth.layout:44
 #: lib/layouts/aapaper.inc:9 lib/layouts/svjour.inc:152
 msgid "Subtitle"
-msgstr "Podnadpis"
+msgstr "Podtitul"
 
 #: lib/layouts/aa.layout:70 lib/layouts/aa.layout:266
 #: lib/layouts/aapaper.layout:79 lib/layouts/aapaper.layout:171
@@ -5028,7 +5028,7 @@ msgstr "________________________________"
 
 #: lib/layouts/beamer.layout:378
 msgid "FrameSubtitle"
-msgstr "FrameSubtitle"
+msgstr "RámokPodTitul"
 
 #: lib/layouts/beamer.layout:401
 msgid "Column"
@@ -5561,7 +5561,7 @@ msgstr "Vorwahl:"
 #: lib/layouts/dinbrief.layout:132 lib/layouts/scrlettr.layout:146
 #: lib/layouts/scrlttr2.layout:181 lib/layouts/stdletter.inc:126
 msgid "Telephone"
-msgstr "Telephone"
+msgstr "Telefon"
 
 #: lib/layouts/dinbrief.layout:134 lib/layouts/g-brief-de.layout:120
 msgid "Telefon:"
@@ -5583,7 +5583,7 @@ msgstr "Datum:"
 #: lib/layouts/dinbrief.layout:156 lib/layouts/scrlettr.layout:195
 #: lib/layouts/scrlttr2.layout:277 lib/layouts/scrclass.inc:169
 msgid "Subject"
-msgstr "Subject"
+msgstr "Predmet"
 
 #: lib/layouts/dinbrief.layout:158 lib/layouts/g-brief-de.layout:201
 msgid "Betreff:"
@@ -6559,147 +6559,147 @@ msgstr "AddressRowF:"
 
 #: lib/layouts/g-brief2.layout:328
 msgid "TelephoneRowA"
-msgstr "TelephoneRowA"
+msgstr "Telefón Riadok A"
 
 #: lib/layouts/g-brief2.layout:339
 msgid "TelephoneRowA:"
-msgstr "TelephoneRowA:"
+msgstr "Telefón Riadok A:"
 
 #: lib/layouts/g-brief2.layout:348
 msgid "TelephoneRowB"
-msgstr "TelephoneRowB"
+msgstr "Telefón Riadok B"
 
 #: lib/layouts/g-brief2.layout:358
 msgid "TelephoneRowB:"
-msgstr "TelephoneRowB:"
+msgstr "Telefón Riadok B:"
 
 #: lib/layouts/g-brief2.layout:367
 msgid "TelephoneRowC"
-msgstr "TelephoneRowC"
+msgstr "Telefón Riadok C"
 
 #: lib/layouts/g-brief2.layout:377
 msgid "TelephoneRowC:"
-msgstr "TelephoneRowC:"
+msgstr "Telefón Riadok C:"
 
 #: lib/layouts/g-brief2.layout:386
 msgid "TelephoneRowD"
-msgstr "TelephoneRowD"
+msgstr "Telefón Riadok D"
 
 #: lib/layouts/g-brief2.layout:396
 msgid "TelephoneRowD:"
-msgstr "TelephoneRowD:"
+msgstr "Telefón Riadok D:"
 
 #: lib/layouts/g-brief2.layout:405
 msgid "TelephoneRowE"
-msgstr "TelephoneRowE"
+msgstr "Telefón Riadok E"
 
 #: lib/layouts/g-brief2.layout:415
 msgid "TelephoneRowE:"
-msgstr "TelephoneRowE:"
+msgstr "Telefón Riadok E:"
 
 #: lib/layouts/g-brief2.layout:424
 msgid "TelephoneRowF"
-msgstr "TelephoneRowF"
+msgstr "Telefón Riadok F"
 
 #: lib/layouts/g-brief2.layout:434
 msgid "TelephoneRowF:"
-msgstr "TelephoneRowF:"
+msgstr "Telefón Riadok F:"
 
 #: lib/layouts/g-brief2.layout:443
 msgid "InternetRowA"
-msgstr "InternetRowA"
+msgstr "Internet Riadok A"
 
 #: lib/layouts/g-brief2.layout:454
 msgid "InternetRowA:"
-msgstr "InternetRowA:"
+msgstr "Internet Riadok A:"
 
 #: lib/layouts/g-brief2.layout:463
 msgid "InternetRowB"
-msgstr "InternetRowB"
+msgstr "Internet Riadok B"
 
 #: lib/layouts/g-brief2.layout:473
 msgid "InternetRowB:"
-msgstr "InternetRowB:"
+msgstr "Internet Riadok B:"
 
 #: lib/layouts/g-brief2.layout:482
 msgid "InternetRowC"
-msgstr "InternetRowC"
+msgstr "Internet Riadok C"
 
 #: lib/layouts/g-brief2.layout:492
 msgid "InternetRowC:"
-msgstr "InternetRowC:"
+msgstr "Internet Riadok C:"
 
 #: lib/layouts/g-brief2.layout:501
 msgid "InternetRowD"
-msgstr "InternetRowD"
+msgstr "Internet Riadok D"
 
 #: lib/layouts/g-brief2.layout:511
 msgid "InternetRowD:"
-msgstr "InternetRowD:"
+msgstr "Internet Riadok D:"
 
 #: lib/layouts/g-brief2.layout:520
 msgid "InternetRowE"
-msgstr "InternetRowE"
+msgstr "Internet Riadok E"
 
 #: lib/layouts/g-brief2.layout:530
 msgid "InternetRowE:"
-msgstr "InternetRowE:"
+msgstr "Internet Riadok E:"
 
 #: lib/layouts/g-brief2.layout:539
 msgid "InternetRowF"
-msgstr "InternetRowF"
+msgstr "Internet Riadok F"
 
 #: lib/layouts/g-brief2.layout:549
 msgid "InternetRowF:"
-msgstr "InternetRowF:"
+msgstr "Internet Riadok F:"
 
 #: lib/layouts/g-brief2.layout:558
 msgid "BankRowA"
-msgstr "BankRowA"
+msgstr "Banka Riadok A"
 
 #: lib/layouts/g-brief2.layout:569
 msgid "BankRowA:"
-msgstr "BankRowA:"
+msgstr "Banka Riadok A:"
 
 #: lib/layouts/g-brief2.layout:578
 msgid "BankRowB"
-msgstr "BankRowB"
+msgstr "Banka Riadok B"
 
 #: lib/layouts/g-brief2.layout:588
 msgid "BankRowB:"
-msgstr "BankRowB:"
+msgstr "Banka Riadok B:"
 
 #: lib/layouts/g-brief2.layout:597
 msgid "BankRowC"
-msgstr "BankRowC"
+msgstr "Banka Riadok C"
 
 #: lib/layouts/g-brief2.layout:607
 msgid "BankRowC:"
-msgstr "BankRowC:"
+msgstr "Banka Riadok C:"
 
 #: lib/layouts/g-brief2.layout:616
 msgid "BankRowD"
-msgstr "BankRowD"
+msgstr "Banka Riadok D"
 
 #: lib/layouts/g-brief2.layout:626
 msgid "BankRowD:"
-msgstr "BankRowD:"
+msgstr "Banka Riadok D:"
 
 #: lib/layouts/g-brief2.layout:635
 msgid "BankRowE"
-msgstr "BankRowE"
+msgstr "Banka Riadok E"
 
 #: lib/layouts/g-brief2.layout:645
 msgid "BankRowE:"
-msgstr "BankRowE:"
+msgstr "Banka Riadok E:"
 
 #: lib/layouts/g-brief2.layout:654
 msgid "BankRowF"
-msgstr "BankRowF"
+msgstr "Banka Riadok F"
 
 #: lib/layouts/g-brief2.layout:664
 msgid "BankRowF:"
-msgstr "BankRowF:"
+msgstr "Banka Riadok F:"
 
 #: lib/layouts/heb-article.layout:68
 msgid "Claim #."
@@ -6861,7 +6861,7 @@ msgstr "Komentár"
 
 #: lib/layouts/iopart.layout:99
 msgid "Paper"
-msgstr "Papier"
+msgstr "Stránka"
 
 #: lib/layouts/iopart.layout:105
 msgid "Prelim"
@@ -6889,11 +6889,11 @@ msgstr "Mathematics Subject Classification number:"
 
 #: lib/layouts/iopart.layout:230
 msgid "submitto"
-msgstr "submitto"
+msgstr "podaťDo"
 
 #: lib/layouts/iopart.layout:233
 msgid "submit to paper:"
-msgstr "submit to paper:"
+msgstr "podať do Journal:"
 
 #: lib/layouts/iopart.layout:259
 msgid "Bibliography (plain)"
@@ -6901,11 +6901,11 @@ msgstr "Bibliografia (prostá) "
 
 #: lib/layouts/iopart.layout:283
 msgid "Bibliography heading"
-msgstr "Titul bibliografie"
+msgstr "Nadpis bibliografie"
 
 #: lib/layouts/isprs.layout:37
 msgid "ABSTRACT:"
-msgstr "ABSTRACT:"
+msgstr "SÚHRN:"
 
 #: lib/layouts/isprs.layout:65
 msgid "KEY WORDS:"
@@ -6917,7 +6917,7 @@ msgstr "Komisia"
 
 #: lib/layouts/isprs.layout:223
 msgid "ACKNOWLEDGEMENTS"
-msgstr "ACKNOWLEDGEMENTS"
+msgstr "POĎAKOVANIA"
 
 #: lib/layouts/kluwer.layout:190
 msgid "AddressForOffprints"
@@ -6929,7 +6929,7 @@ msgstr "Adresa pre osobitné výtlačky:"
 
 #: lib/layouts/kluwer.layout:208
 msgid "RunningTitle"
-msgstr "RunningTitle"
+msgstr "StĺpecNadpis"
 
 #: lib/layouts/kluwer.layout:216 lib/layouts/llncs.layout:158
 #: lib/layouts/svjour.inc:177
@@ -6938,11 +6938,11 @@ msgstr "Stĺpec nadpis:"
 
 #: lib/layouts/kluwer.layout:230
 msgid "RunningAuthor"
-msgstr "RunningAuthor"
+msgstr "StĺpecAutor"
 
 #: lib/layouts/kluwer.layout:237
 msgid "Running author:"
-msgstr "Running author:"
+msgstr "Stĺpec autor:"
 
 #: lib/layouts/latex8.layout:70
 msgid "E-mail:"
@@ -6957,15 +6957,15 @@ msgstr "Kapitola"
 
 #: lib/layouts/llncs.layout:144 lib/layouts/svjour.inc:173
 msgid "Running LaTeX Title"
-msgstr "Running LaTeX Title"
+msgstr "LaTeX- Stĺpcový Titul"
 
 #: lib/layouts/llncs.layout:167
 msgid "TOC Title"
-msgstr "TOC Title"
+msgstr "Obsah Titul"
 
 #: lib/layouts/llncs.layout:171
 msgid "TOC title:"
-msgstr "Obsah nadpis:"
+msgstr "Obsah titul:"
 
 #: lib/layouts/llncs.layout:195 lib/layouts/svjour.inc:201
 msgid "Author Running"
@@ -6986,7 +6986,7 @@ msgstr "Obsah Autor:"
 #: lib/layouts/llncs.layout:295 lib/layouts/theorems-ams.inc:223
 #: lib/layouts/theorems.inc:207
 msgid "Case #."
-msgstr "Case #."
+msgstr "Prípad #."
 
 #: lib/layouts/llncs.layout:305 lib/layouts/svjour.inc:359
 #: lib/layouts/theorems-starred.inc:196
@@ -7088,11 +7088,11 @@ msgstr "Dvojitá položka:"
 
 #: lib/layouts/moderncv.layout:108
 msgid "Space"
-msgstr "Space"
+msgstr "Medzera"
 
 #: lib/layouts/moderncv.layout:111
 msgid "Space:"
-msgstr "Space:"
+msgstr "Medzera:"
 
 #: lib/layouts/moderncv.layout:120
 msgid "Computer"
@@ -7120,7 +7120,7 @@ msgstr "Zavri Sekciu"
 
 #: lib/layouts/paper.layout:141
 msgid "SubTitle"
-msgstr "SubTitle"
+msgstr "PodTitul"
 
 #: lib/layouts/paper.layout:152
 msgid "Institution"
@@ -7392,11 +7392,11 @@ msgstr "KoniecFólie"
 
 #: lib/layouts/seminar.layout:57
 msgid "SlideHeading"
-msgstr "HlavičkaFólie"
+msgstr "NadpisFólie"
 
 #: lib/layouts/seminar.layout:64
 msgid "SlideSubHeading"
-msgstr "PodHlavičkaFólie"
+msgstr "PodnadpisFólie"
 
 #: lib/layouts/seminar.layout:70
 msgid "ListOfSlides"
@@ -7437,7 +7437,7 @@ msgstr "AMS"
 
 #: lib/layouts/siamltex.layout:305 lib/layouts/amsdefs.inc:194
 msgid "Subjectclass"
-msgstr "Subjectclass"
+msgstr "TematickáTrieda"
 
 #: lib/layouts/siamltex.layout:308
 msgid "AMS subject classifications:"
@@ -7975,9 +7975,8 @@ msgid "PaperId"
 msgstr "PaperId"
 
 #: lib/layouts/aguplus.inc:147
-#, fuzzy
 msgid "Paper Id:"
-msgstr "Papier"
+msgstr "Paper Id:"
 
 #: lib/layouts/aguplus.inc:151
 msgid "AuthorAddr"
@@ -9666,7 +9665,7 @@ msgstr "Zarovnanie|Z"
 
 #: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:368 lib/ui/stdmenus.inc:180
 msgid "Add Row|A"
-msgstr "Pridať riadok|P"
+msgstr "Pridať riadok"
 
 #: lib/ui/classic.ui:130
 msgid "Delete Row|w"
@@ -9678,7 +9677,7 @@ msgstr "Kopírovať riadok"
 
 #: lib/ui/classic.ui:132 lib/ui/classic.ui:173
 msgid "Swap Rows"
-msgstr "Přehodit řádky|h"
+msgstr "Prehodit riadky"
 
 #: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:373 lib/ui/stdmenus.inc:185
 msgid "Add Column|u"
@@ -9752,11 +9751,11 @@ msgstr "Zarovnanie|Z"
 
 #: lib/ui/classic.ui:170
 msgid "Add Row|R"
-msgstr "Pridať riadok|R"
+msgstr "Pridať riadok"
 
 #: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:369 lib/ui/stdmenus.inc:181
 msgid "Delete Row|D"
-msgstr "Zmazať riadok|d"
+msgstr "Zmazať riadok"
 
 #: lib/ui/classic.ui:175
 msgid "Add Column|C"
@@ -9952,20 +9951,20 @@ msgstr "Zlom ligatúry|Z"
 
 #: lib/ui/classic.ui:247
 msgid "Protected Space|r"
-msgstr "Chránená medzera|m"
+msgstr "Chránená medzera"
 
 #: lib/ui/classic.ui:248 lib/ui/stdmenus.inc:368
 msgid "Inter-word Space|w"
-msgstr "Medzislovná medzera|s"
+msgstr "Medzislovná medzera"
 
 #: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:180 lib/ui/stdcontext.inc:203
 #: lib/ui/stdmenus.inc:369
 msgid "Thin Space|T"
-msgstr "Úzka medzera|k"
+msgstr "Úzka medzera"
 
 #: lib/ui/classic.ui:250 lib/ui/stdmenus.inc:370
 msgid "Horizontal Space...|o"
-msgstr "Horizontálna medzera...|i"
+msgstr "Horizontálna medzera..."
 
 #: lib/ui/classic.ui:251
 msgid "Vertical Space..."
@@ -10055,7 +10054,7 @@ msgstr "Pole prostredia|e"
 
 #: lib/ui/classic.ui:277 lib/ui/stdcontext.inc:21 lib/ui/stdmenus.inc:397
 msgid "Cases Environment|C"
-msgstr "Cases prostředí|o"
+msgstr "Cases prostredie"
 
 #: lib/ui/classic.ui:278 lib/ui/stdcontext.inc:25 lib/ui/stdmenus.inc:401
 msgid "Split Environment|S"
@@ -10307,7 +10306,7 @@ msgstr "Používateľov sprievodca|s"
 
 #: lib/ui/classic.ui:412
 msgid "Extended Features|E"
-msgstr "Rozšírené vlastnosti|R"
+msgstr "Rozšírené vlastnosti"
 
 #: lib/ui/classic.ui:413
 msgid "Embedded Objects|m"
@@ -10577,19 +10576,19 @@ msgstr "Zosivelé"
 
 #: lib/ui/stdcontext.inc:178
 msgid "Interword Space|w"
-msgstr "Medzislovná medzera|M"
+msgstr "Medzislovná medzera"
 
 #: lib/ui/stdcontext.inc:179
 msgid "Protected Space|o"
-msgstr "Chránená medzera|h"
+msgstr "Chránená medzera"
 
 #: lib/ui/stdcontext.inc:181 lib/ui/stdcontext.inc:206
 msgid "Negative Thin Space|N"
-msgstr "Záporná úzka medzera|z"
+msgstr "Záporná úzka medzera"
 
 #: lib/ui/stdcontext.inc:182 lib/ui/stdcontext.inc:209
 msgid "Half Quad Space (Enskip)|k"
-msgstr "Polovička Quad medzery (Enskip)|e"
+msgstr "Polovička Quad medzery (Enskip)"
 
 #: lib/ui/stdcontext.inc:183
 msgid "Protected Half Quad Space (Enspace)|E"
@@ -10597,7 +10596,7 @@ msgstr "Chránená polovička Quad medzery (Enspace)"
 
 #: lib/ui/stdcontext.inc:184 lib/ui/stdcontext.inc:210
 msgid "Quad Space|Q"
-msgstr "Quad medzera|r"
+msgstr "Quad medzera"
 
 #: lib/ui/stdcontext.inc:185 lib/ui/stdcontext.inc:211
 msgid "Double Quad Space|u"
@@ -10624,14 +10623,12 @@ msgid "Horizontal Fill (Rule)|R"
 msgstr "Horizontálne zarovnanie:|#H"
 
 #: lib/ui/stdcontext.inc:190
-#, fuzzy
 msgid "Horizontal Fill (Left Arrow)|L"
-msgstr "Horizontálne zarovnanie:|#H"
+msgstr "Horizontálne zarovnanie (šípka doľava)"
 
 #: lib/ui/stdcontext.inc:191
-#, fuzzy
 msgid "Horizontal Fill (Right Arrow)|g"
-msgstr "Horizontálne zarovnanie:|#H"
+msgstr "Horizontálne zarovnanie (šípka doprava)"
 
 #: lib/ui/stdcontext.inc:192
 #, fuzzy
@@ -10650,15 +10647,15 @@ msgstr "Komentár"
 
 #: lib/ui/stdcontext.inc:204
 msgid "Medium Space|M"
-msgstr "Stredná Medzera|S"
+msgstr "Stredná Medzera"
 
 #: lib/ui/stdcontext.inc:205
 msgid "Thick Space|h"
-msgstr "Tučná medzera|k"
+msgstr "Tučná medzera"
 
 #: lib/ui/stdcontext.inc:207
 msgid "Negative Medium Space|u"
-msgstr "Záporná Stredná Medzera|e"
+msgstr "Záporná Stredná Medzera"
 
 #: lib/ui/stdcontext.inc:208
 msgid "Negative Thick Space|i"
@@ -10901,7 +10898,6 @@ msgid "Right Line|R"
 msgstr "Vpravo|#r"
 
 #: lib/ui/stdcontext.inc:370 lib/ui/stdmenus.inc:182
-#, fuzzy
 msgid "Copy Row|o"
 msgstr "Kopírovať riadok"
 
@@ -10962,7 +10958,7 @@ msgstr "Tabuľka|T"
 
 #: lib/ui/stdmenus.inc:107
 msgid "Rows & Columns|C"
-msgstr "Riadky & Stĺpce|y"
+msgstr "Riadky & Stĺpce"
 
 #: lib/ui/stdmenus.inc:114
 msgid "Increase List Depth|I"
@@ -11270,7 +11266,7 @@ msgstr "Fonetické symboly|F"
 
 #: lib/ui/stdmenus.inc:367
 msgid "Protected Space|P"
-msgstr "Chránená medzera|r"
+msgstr "Chránená medzera"
 
 #: lib/ui/stdmenus.inc:371
 #, fuzzy
@@ -11279,7 +11275,7 @@ msgstr "Horizontálna čiara"
 
 #: lib/ui/stdmenus.inc:372
 msgid "Vertical Space...|V"
-msgstr "Vertikálna medzera...|V"
+msgstr "Vertikálna medzera..."
 
 #: lib/ui/stdmenus.inc:374
 #, fuzzy
@@ -11376,9 +11372,8 @@ msgid "TeX Information|I"
 msgstr "TeX informácie|i"
 
 #: lib/ui/stdmenus.inc:521
-#, fuzzy
 msgid "Additional Features|F"
-msgstr "Dodatočné LaTeX nastavenia"
+msgstr "Dodatočné Vlastnosti"
 
 #: lib/ui/stdmenus.inc:522
 msgid "Embedded Objects|O"
@@ -11577,16 +11572,14 @@ msgid "Paragraph settings"
 msgstr "Nastavenie odstavca"
 
 #: lib/ui/stdtoolbars.inc:117 lib/ui/stdtoolbars.inc:162
-#, fuzzy
 msgid "Add row"
-msgstr "Pridať riadok|P"
+msgstr "Pridať riadok"
 
 #: lib/ui/stdtoolbars.inc:118 lib/ui/stdtoolbars.inc:163
 msgid "Add column"
 msgstr "Pridať stĺpec"
 
 #: lib/ui/stdtoolbars.inc:119 lib/ui/stdtoolbars.inc:164
-#, fuzzy
 msgid "Delete row"
 msgstr "Zmazať riadok"
 
@@ -11744,9 +11737,8 @@ msgid "Insert matrix"
 msgstr "Vložiť maticu"
 
 #: lib/ui/stdtoolbars.inc:161
-#, fuzzy
 msgid "Insert cases environment"
-msgstr "Zvýšiť hĺbky vnorenia|i"
+msgstr "Vložiť cases prostredie"
 
 #: lib/ui/stdtoolbars.inc:167
 msgid "Toggle Math Panels"
@@ -12302,9 +12294,8 @@ msgid "overbrace"
 msgstr "overbrace"
 
 #: lib/ui/stdtoolbars.inc:353
-#, fuzzy
 msgid "overleftarrow"
-msgstr "Zmazať riadok"
+msgstr "overleftarrow"
 
 #: lib/ui/stdtoolbars.inc:354
 msgid "overrightarrow"
@@ -12350,9 +12341,8 @@ msgid "Arrows"
 msgstr "Šípky"
 
 #: lib/ui/stdtoolbars.inc:366
-#, fuzzy
 msgid "leftarrow"
-msgstr "Zmazať riadok"
+msgstr "leftarrow"
 
 #: lib/ui/stdtoolbars.inc:367
 msgid "rightarrow"
@@ -12363,9 +12353,8 @@ msgid "downarrow"
 msgstr "downarrow"
 
 #: lib/ui/stdtoolbars.inc:369
-#, fuzzy
 msgid "uparrow"
-msgstr "Šípka"
+msgstr "uparrow"
 
 #: lib/ui/stdtoolbars.inc:370
 msgid "updownarrow"
@@ -12376,9 +12365,8 @@ msgid "leftrightarrow"
 msgstr "leftrightarrow"
 
 #: lib/ui/stdtoolbars.inc:372
-#, fuzzy
 msgid "Leftarrow"
-msgstr "Vľavo"
+msgstr "Leftarrow"
 
 #: lib/ui/stdtoolbars.inc:373
 msgid "Rightarrow"
@@ -12389,9 +12377,8 @@ msgid "Downarrow"
 msgstr "Downarrow"
 
 #: lib/ui/stdtoolbars.inc:375
-#, fuzzy
 msgid "Uparrow"
-msgstr "Šípka"
+msgstr "Uparrow"
 
 #: lib/ui/stdtoolbars.inc:376
 msgid "Updownarrow"
@@ -12443,14 +12430,12 @@ msgid "longmapsto"
 msgstr "longmapsto"
 
 #: lib/ui/stdtoolbars.inc:388
-#, fuzzy
 msgid "nwarrow"
-msgstr "Šípka"
+msgstr "nwarrow"
 
 #: lib/ui/stdtoolbars.inc:389
-#, fuzzy
 msgid "nearrow"
-msgstr "Šípka"
+msgstr "nearrow"
 
 #: lib/ui/stdtoolbars.inc:390
 msgid "leftharpoonup"
@@ -12469,14 +12454,12 @@ msgid "hookrightarrow"
 msgstr "hookrightarrow"
 
 #: lib/ui/stdtoolbars.inc:394
-#, fuzzy
 msgid "swarrow"
-msgstr "Šípka"
+msgstr "swarrow"
 
 #: lib/ui/stdtoolbars.inc:395
-#, fuzzy
 msgid "searrow"
-msgstr "Šípka"
+msgstr "searrow"
 
 #: lib/ui/stdtoolbars.inc:396 lib/ui/stdtoolbars.inc:664
 msgid "rightleftharpoons"
@@ -12728,9 +12711,8 @@ msgid "cong"
 msgstr "na"
 
 #: lib/ui/stdtoolbars.inc:457
-#, fuzzy
 msgid "frown"
-msgstr "Mesto"
+msgstr "frown"
 
 #: lib/ui/stdtoolbars.inc:458
 msgid "sqsubseteq"
@@ -13428,7 +13410,6 @@ msgid "diagdown"
 msgstr "diagdown"
 
 #: lib/ui/stdtoolbars.inc:636
-#, fuzzy
 msgid "AMS Arrows"
 msgstr "AMS šípky"
 
@@ -13457,9 +13438,8 @@ msgid "rightleftarrows"
 msgstr "rightleftarrows"
 
 #: lib/ui/stdtoolbars.inc:643
-#, fuzzy
 msgid "Lleftarrow"
-msgstr "Zmazať riadok"
+msgstr "Lleftarrow"
 
 #: lib/ui/stdtoolbars.inc:644
 msgid "Rrightarrow"
@@ -13486,9 +13466,8 @@ msgid "looparrowleft"
 msgstr "looparrowleft"
 
 #: lib/ui/stdtoolbars.inc:650
-#, fuzzy
 msgid "looparrowright"
-msgstr "Autorské práva"
+msgstr "looparrowright"
 
 #: lib/ui/stdtoolbars.inc:651
 msgid "curvearrowleft"
@@ -13515,9 +13494,8 @@ msgid "Rsh"
 msgstr "Rsh"
 
 #: lib/ui/stdtoolbars.inc:657
-#, fuzzy
 msgid "upuparrows"
-msgstr "Šípky"
+msgstr "upuparrows"
 
 #: lib/ui/stdtoolbars.inc:658
 msgid "downdownarrows"
@@ -15604,7 +15582,7 @@ msgstr "latex príloha"
 
 #: src/Color.cpp:207
 msgid "added space markers"
-msgstr "znaky vložených medzier"
+msgstr "vložené znaky medzier"
 
 #: src/Color.cpp:208
 msgid "top/bottom line"
@@ -16493,7 +16471,7 @@ msgstr "Novému dokumentu bude priradený tento jazyk."
 
 #: src/LyXRC.cpp:2518
 msgid "Specify the default paper size."
-msgstr "Určenie prednastavenej veľkosti papiera"
+msgstr "Určenie štandardnej veľkosti stránky"
 
 #: src/LyXRC.cpp:2522
 msgid ""
@@ -16762,11 +16740,11 @@ msgstr ""
 
 #: src/LyXRC.cpp:2724
 msgid "Option to specify the dimensions of the print paper."
-msgstr "Špecifikácia veľkosti papiera, na ktorý sa bude tlačiť."
+msgstr "Špecifikácia veľkosti tlačenej stránky."
 
 #: src/LyXRC.cpp:2728
 msgid "The option to specify paper type."
-msgstr "Špecifikácia typu papiera."
+msgstr "Špecifikácia typu stránky."
 
 #: src/LyXRC.cpp:2732
 msgid "The option to reverse the order of the pages printed."
@@ -16920,7 +16898,7 @@ msgstr ""
 #: src/LyXRC.cpp:2857
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
-"Určete volbu nastavující papír v prohlížeči DVI(nechte prázdné nebo použijte "
+"Určite čo nastavuje papier v prehliadači DVI (nechajte prázdne alebo použite "
 "\"-paper\")."
 
 #: src/LyXVC.cpp:100
@@ -17973,7 +17951,7 @@ msgstr "prostý"
 
 #: src/frontends/qt4/GuiDocument.cpp:671
 msgid "headings"
-msgstr "nadpisy(headings)"
+msgstr "s nadpismy (headings)"
 
 #: src/frontends/qt4/GuiDocument.cpp:672
 msgid "fancy"
@@ -18234,7 +18212,7 @@ msgid ""
 "feature."
 msgstr ""
 "Musíte zahrnúť tento súbor do dokumentu\n"
-"'%1$s' keď chcete používať vlasností hlavného dokumentu."
+"'%1$s' keď chcete používať vlasnosti hlavného dokumentu."
 
 #: src/frontends/qt4/GuiDocument.cpp:2392
 #, fuzzy
@@ -20566,14 +20544,12 @@ msgid "Horizontal Fill (Rule)"
 msgstr "Horizontálne zarovnanie:|#H"
 
 #: src/insets/InsetSpace.cpp:120
-#, fuzzy
 msgid "Horizontal Fill (Left Arrow)"
-msgstr "Horizontálne zarovnanie:|#H"
+msgstr "Horizontálne zarovnanie (šípka doľava)"
 
 #: src/insets/InsetSpace.cpp:123
-#, fuzzy
 msgid "Horizontal Fill (Right Arrow)"
-msgstr "Horizontálne zarovnanie:|#H"
+msgstr "Horizontálne zarovnanie (šípka doprava)"
 
 #: src/insets/InsetSpace.cpp:126
 #, fuzzy
@@ -20794,16 +20770,16 @@ msgstr "Nelze přidat vertikální linku mřížky '%1$s'"
 #: src/mathed/InsetMathCases.cpp:99
 #, c-format
 msgid "No vertical grid lines in 'cases': feature %1$s"
-msgstr "Žádné vertikální linky mřížky v 'cases' : příkaz %1$s'"
+msgstr "Žiadne vertikálne linky v 'cases' : vlastnosť %1$s'"
 
 #: src/mathed/InsetMathCases.cpp:106
-#, fuzzy, c-format
+#, c-format
 msgid "Changing number of columns not allowed in 'cases': feature %1$s"
-msgstr "Počet stĺpcov sa nedá zmeniť v '%1$s'"
+msgstr "Počet stĺpcov sa nedá zmeniť v  'cases':vlastnosť '%1$s'"
 
 #: src/mathed/InsetMathGrid.cpp:1372
 msgid "Only one row"
-msgstr "Pouze jeden řádek"
+msgstr "Len jeden riadok"
 
 #: src/mathed/InsetMathGrid.cpp:1378
 msgid "Only one column"
@@ -20819,9 +20795,9 @@ msgid "No vline to delete"
 msgstr "Žádná vertikální linka (vline) ke smazání"
 
 #: src/mathed/InsetMathGrid.cpp:1423
-#, fuzzy, c-format
+#, c-format
 msgid "Unknown tabular feature '%1$s'"
-msgstr "Vlastnosti tabuľky"
+msgstr "Neznáme vlastnosti tabuľky  '%1$s'"
 
 #: src/mathed/InsetMathHull.cpp:1190 src/mathed/InsetMathHull.cpp:1198
 #, fuzzy
@@ -20836,7 +20812,7 @@ msgstr "Číslovanie"
 #: src/mathed/InsetMathHull.cpp:1367
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
-msgstr "Nelze změnit počet řádků v '%1$s'"
+msgstr "Nedá sa zmeniť počet riadkov v '%1$s'"
 
 #: src/mathed/InsetMathHull.cpp:1377
 #, c-format
@@ -20994,7 +20970,7 @@ msgstr "Externé aplikácie"
 
 #: src/support/debug.cpp:63
 msgid "RowPainter profiling"
-msgstr "Profilování RowPainter-u"
+msgstr "Profilovanie RowPainter-u"
 
 #: src/support/debug.cpp:64
 msgid "scrolling debugging"
