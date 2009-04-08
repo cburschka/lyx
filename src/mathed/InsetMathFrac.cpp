@@ -147,12 +147,13 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 			dim.des = max(dim2.des, dim1.height() - 5);
 		}
 	} else {
+		// general cell metrics used for \frac
 		FracChanger dummy(mi.base);
 		cell(0).metrics(mi, dim0);
 		cell(1).metrics(mi, dim1);
 		if (nargs() == 3)
 			cell(2).metrics(mi, dim2);
-
+		// metrics for special fraction types
 		if (kind_ == NICEFRAC) {
 			dim.wid = dim0.width() + dim1.wid + 5;
 			dim.asc = dim0.height() + 5;
@@ -165,7 +166,7 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 		} else {
 			if (kind_ == CFRAC || kind_ == CFRACLEFT
 			|| kind_ == CFRACRIGHT || kind_ == DFRAC) {
-				// \cfrac and \dfrac are in always in display size
+				// \cfrac and \dfrac are always in display size
 				StyleChanger dummy2(mi.base, LM_ST_DISPLAY);
 				cell(0).metrics(mi, dim0);
 				cell(1).metrics(mi, dim1);
@@ -189,7 +190,6 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 	setPosCache(pi, x, y);
 	Dimension const dim = dimension(*pi.base.bv);
 	Dimension const dim0 = cell(0).dimension(*pi.base.bv);
-	int m = x + dim.wid / 2;
 	if (kind_ == UNIT || (kind_ == UNITFRAC && nargs() == 3)) {
 		if (nargs() == 1) {
 			ShapeChanger dummy2(pi.base.font, UP_SHAPE);
