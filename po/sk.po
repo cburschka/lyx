@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-04-05 21:26+0200\n"
-"PO-Revision-Date: 2009-04-07 20:14+0200\n"
+"POT-Creation-Date: 2009-04-08 19:13+0200\n"
+"PO-Revision-Date: 2009-04-08 19:11+0200\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
 "Language-Team: German <kde-i18n-de@lists.kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -1078,7 +1078,7 @@ msgstr "Pokiaľ možno &tu"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:72
 msgid "&Page of floats"
-msgstr "Strana &plávajúcich objektov"
+msgstr "Strana plávajúcich objektov"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:79
 msgid "&Bottom of page"
@@ -1619,7 +1619,7 @@ msgstr "Vybrať pre plávajúce výpisy"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:48
 msgid "&Float"
-msgstr "P&lávajúce"
+msgstr "Plávajúci objekt"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:55 src/frontends/qt4/ui/WrapUi.ui:185
 msgid "&Placement:"
@@ -2626,7 +2626,7 @@ msgstr "Príkaz a možnosti pre indexovanie (makeindex, xindi)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:59
 msgid "Optional paper size flag (-paper) for some DVI viewers"
-msgstr "Volitelný príznak veľkosti (-paper) pre niektoré DVI prehliadače"
+msgstr "Nepovinný príznak veľkosti (-paper) pre niektoré DVI prehliadače"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:66
 msgid "&DVI viewer paper size options:"
@@ -3229,7 +3229,7 @@ msgstr "Aktualizovať listinu označení"
 msgid "Jump to the label"
 msgstr "Presuň sa na označenie"
 
-#: src/frontends/qt4/ui/RefUi.ui:259 src/frontends/qt4/GuiRef.cpp:291
+#: src/frontends/qt4/ui/RefUi.ui:259 src/frontends/qt4/GuiRef.cpp:284
 msgid "&Go to Label"
 msgstr "Prejsť na označenie"
 
@@ -4238,7 +4238,7 @@ msgstr "Podpodsekcia*"
 #: lib/layouts/stdstruct.inc:12 lib/layouts/stdstruct.inc:27
 #: lib/layouts/svjour.inc:249 src/output_plaintext.cpp:133
 msgid "Abstract"
-msgstr "Abstrakt"
+msgstr "Abstract"
 
 #: lib/layouts/IEEEtran.layout:337
 msgid "Abstract---"
@@ -5488,7 +5488,7 @@ msgstr "Return address"
 
 #: lib/layouts/dinbrief.layout:69
 msgid "Absender:"
-msgstr "Absender:"
+msgstr "Odosielateľ:"
 
 #: lib/layouts/dinbrief.layout:77
 msgid "Postal comment"
@@ -6352,7 +6352,7 @@ msgstr "Ulica"
 
 #: lib/layouts/g-brief-en.layout:64
 msgid "Street:"
-msgstr "Street:"
+msgstr "Ulica:"
 
 #: lib/layouts/g-brief-en.layout:68
 msgid "Addition"
@@ -7260,7 +7260,7 @@ msgstr "Umiestnenie:"
 
 #: lib/layouts/scrlettr.layout:191 lib/layouts/scrlttr2.layout:273
 msgid "Title:"
-msgstr "Title:"
+msgstr "Titul:"
 
 #: lib/layouts/scrlettr.layout:198 lib/layouts/scrlttr2.layout:281
 msgid "Subject:"
@@ -7268,11 +7268,11 @@ msgstr "Predmet:"
 
 #: lib/layouts/scrlettr.layout:202 lib/layouts/scrlttr2.layout:285
 msgid "Yourref"
-msgstr "Yourref"
+msgstr "Vaša značka"
 
 #: lib/layouts/scrlettr.layout:205 lib/layouts/scrlttr2.layout:289
 msgid "Your ref.:"
-msgstr "Your ref.:"
+msgstr "Vaša značka:"
 
 #: lib/layouts/scrlettr.layout:216 lib/layouts/scrlttr2.layout:301
 msgid "Yourmail"
@@ -7280,15 +7280,15 @@ msgstr "Vaša_pošta"
 
 #: lib/layouts/scrlettr.layout:219 lib/layouts/scrlttr2.layout:305
 msgid "Your letter of:"
-msgstr "Your letter of:"
+msgstr "Vás dopis od:"
 
 #: lib/layouts/scrlettr.layout:223 lib/layouts/scrlttr2.layout:309
 msgid "Myref"
-msgstr "Myref"
+msgstr "Moja značka"
 
 #: lib/layouts/scrlettr.layout:226 lib/layouts/scrlttr2.layout:313
 msgid "Our ref.:"
-msgstr "Our ref.:"
+msgstr "Naša značka:"
 
 #: lib/layouts/scrlettr.layout:230 lib/layouts/scrlttr2.layout:317
 msgid "Customer"
@@ -7328,7 +7328,7 @@ msgstr "Adresa Odosielateľa:"
 
 #: lib/layouts/scrlttr2.layout:185
 msgid "Sender Phone:"
-msgstr "Sender Phone:"
+msgstr "Odosielateľ Telefón:"
 
 #: lib/layouts/scrlttr2.layout:189 lib/configure.py:338
 msgid "Fax"
@@ -7336,7 +7336,7 @@ msgstr "Fax"
 
 #: lib/layouts/scrlttr2.layout:193
 msgid "Sender Fax:"
-msgstr "Sender Fax:"
+msgstr "Odosielateľ Fax:"
 
 #: lib/layouts/scrlttr2.layout:197
 msgid "E-Mail"
@@ -7344,7 +7344,7 @@ msgstr "E-mail"
 
 #: lib/layouts/scrlttr2.layout:201
 msgid "Sender E-Mail:"
-msgstr "Sender E-Mail:"
+msgstr "Odosielateľ E-Mail:"
 
 #: lib/layouts/scrlttr2.layout:209
 msgid "Sender URL:"
@@ -7416,7 +7416,7 @@ msgstr "[Obsah fólie]"
 
 #: lib/layouts/seminar.layout:87
 msgid "ProgressContents"
-msgstr "ProgressContents"
+msgstr "Pokrok Obsahy"
 
 #: lib/layouts/seminar.layout:90
 msgid "[Progress Contents]"
@@ -7525,11 +7525,11 @@ msgstr "Info_o_autorovi:"
 
 #: lib/layouts/spie.layout:78
 msgid "ABSTRACT"
-msgstr "ABSTRACT"
+msgstr "SÚHRN"
 
 #: lib/layouts/spie.layout:93
 msgid "ACKNOWLEDGMENTS"
-msgstr "ACKNOWLEDGMENTS"
+msgstr "POĎAKOVANIA"
 
 #: lib/layouts/aapaper.inc:54
 msgid "email:"
@@ -7537,7 +7537,7 @@ msgstr "email:"
 
 #: lib/layouts/aapaper.inc:114
 msgid "Thesaurus not supported in recent A&A:"
-msgstr "Thesaurus not supported in recent A&A:"
+msgstr "Thesaurus nepodporované v recentnom A&A:"
 
 #: lib/layouts/agu_stdclass.inc:34 lib/layouts/db_stdcharstyles.inc:35
 msgid "Element:Firstname"
@@ -7739,7 +7739,7 @@ msgstr "Dodatkove"
 
 #: lib/layouts/agu_stdtitle.inc:140
 msgid "Supplementary..."
-msgstr "Supplementary..."
+msgstr "Dodatkove..."
 
 #: lib/layouts/agu_stdtitle.inc:149
 msgid "Supp-note"
@@ -7779,11 +7779,11 @@ msgstr "HlavičkaStĺpcu"
 
 #: lib/layouts/agu_stdtitle.inc:233
 msgid "Runhead:"
-msgstr "Runhead:"
+msgstr "HlavičkaStĺpcu:"
 
 #: lib/layouts/agu_stdtitle.inc:241
 msgid "Published-online:"
-msgstr "Published-online:"
+msgstr "Vydané-online:"
 
 #: lib/layouts/agu_stdtitle.inc:263 src/frontends/qt4/GuiCitation.cpp:86
 msgid "Citation"
@@ -7803,32 +7803,27 @@ msgstr "Posting-order:"
 
 #: lib/layouts/agu_stdtitle.inc:279
 msgid "AGU-pages"
-msgstr "AGU-pages"
+msgstr "AGU-stránky"
 
 #: lib/layouts/agu_stdtitle.inc:282
-#, fuzzy
 msgid "AGU-pages:"
-msgstr "Nepárne strany:"
+msgstr "AGU-stránky:"
 
 #: lib/layouts/agu_stdtitle.inc:287
-#, fuzzy
 msgid "Words"
-msgstr "Okraje"
+msgstr "Slová"
 
 #: lib/layouts/agu_stdtitle.inc:290
-#, fuzzy
 msgid "Words:"
-msgstr "Okraje"
+msgstr "Slová:"
 
 #: lib/layouts/agu_stdtitle.inc:295
-#, fuzzy
 msgid "Figures"
-msgstr "Obrázok"
+msgstr "Obrázky"
 
 #: lib/layouts/agu_stdtitle.inc:298
-#, fuzzy
 msgid "Figures:"
-msgstr "Obrázok"
+msgstr "Obrázky:"
 
 #: lib/layouts/agu_stdtitle.inc:303
 msgid "Tables"
@@ -7839,14 +7834,12 @@ msgid "Tables:"
 msgstr "Tabuľky:"
 
 #: lib/layouts/agu_stdtitle.inc:311
-#, fuzzy
 msgid "Datasets"
-msgstr "Databá&zy"
+msgstr "Datasets"
 
 #: lib/layouts/agu_stdtitle.inc:314
-#, fuzzy
 msgid "Datasets:"
-msgstr "Databá&zy"
+msgstr "Datasets:"
 
 #: lib/layouts/agu_stdtitle.inc:321
 msgid "Element:ISSN"
@@ -7861,13 +7854,12 @@ msgid "Element:CODEN"
 msgstr "Element:CODEN"
 
 #: lib/layouts/agu_stdtitle.inc:334
-#, fuzzy
 msgid "CODEN"
-msgstr "SCÉNA"
+msgstr "CODEN"
 
 #: lib/layouts/agu_stdtitle.inc:344
 msgid "Element:SS-Code"
-msgstr "Element:SS-Code"
+msgstr "Element:SS-Kód"
 
 #: lib/layouts/agu_stdtitle.inc:346
 msgid "SS-Code"
@@ -7875,20 +7867,19 @@ msgstr "SS-Kód"
 
 #: lib/layouts/agu_stdtitle.inc:355
 msgid "Element:SS-Title"
-msgstr "Element:SS-Title"
+msgstr "Element:SS-Titul"
 
 #: lib/layouts/agu_stdtitle.inc:357
 msgid "SS-Title"
-msgstr "SS-Title"
+msgstr "SS-Titul"
 
 #: lib/layouts/agu_stdtitle.inc:367
 msgid "Element:CCC-Code"
 msgstr "Element:CCC-Kód"
 
 #: lib/layouts/agu_stdtitle.inc:369
-#, fuzzy
 msgid "CCC-Code"
-msgstr "Kód"
+msgstr "CCC-Kód"
 
 #: lib/layouts/agu_stdtitle.inc:380
 msgid "Element:Code"
@@ -7916,12 +7907,11 @@ msgstr "Orgdiv"
 
 #: lib/layouts/agu_stdtitle.inc:426
 msgid "Element:Orgname"
-msgstr "ElementOrgname"
+msgstr "Element:Orgname"
 
 #: lib/layouts/agu_stdtitle.inc:428
-#, fuzzy
 msgid "Orgname"
-msgstr "Priezvisko"
+msgstr "Orgname"
 
 #: lib/layouts/agu_stdtitle.inc:437
 msgid "Element:Street"
@@ -7932,9 +7922,8 @@ msgid "Element:City"
 msgstr "Element:Mesto"
 
 #: lib/layouts/agu_stdtitle.inc:450
-#, fuzzy
 msgid "City"
-msgstr "Drobné"
+msgstr "Mesto"
 
 #: lib/layouts/agu_stdtitle.inc:459
 msgid "Element:State"
@@ -7953,9 +7942,8 @@ msgid "Element:Country"
 msgstr "Element:Krajina"
 
 #: lib/layouts/agu_stdtitle.inc:483
-#, fuzzy
 msgid "Country"
-msgstr "Záznam"
+msgstr "Krajina"
 
 #: lib/layouts/aguplus.inc:66 lib/layouts/db_stdstarsections.inc:72
 #: lib/layouts/stdstarsections.inc:67
@@ -7980,7 +7968,7 @@ msgstr "Paper Id:"
 
 #: lib/layouts/aguplus.inc:151
 msgid "AuthorAddr"
-msgstr "AuthorAddr"
+msgstr "AutorovaAdresa"
 
 #: lib/layouts/aguplus.inc:155
 msgid "Author Address:"
@@ -7991,9 +7979,8 @@ msgid "SlugComment"
 msgstr "SlugComment"
 
 #: lib/layouts/aguplus.inc:163
-#, fuzzy
 msgid "Slug Comment:"
-msgstr "Komentár"
+msgstr "Slug Comment:"
 
 #: lib/layouts/aguplus.inc:179
 msgid "Plate"
@@ -8032,18 +8019,16 @@ msgid "Dedicatory"
 msgstr "Venovací"
 
 #: lib/layouts/amsdefs.inc:183 lib/layouts/svjour.inc:125
-#, fuzzy
 msgid "Dedication:"
-msgstr "Venovanie"
+msgstr "Venovanie:"
 
 #: lib/layouts/amsdefs.inc:187
 msgid "Translator"
 msgstr "Prekladateľ"
 
 #: lib/layouts/amsdefs.inc:190
-#, fuzzy
 msgid "Translator:"
-msgstr "Prekladateľ"
+msgstr "Prekladateľ:"
 
 #: lib/layouts/amsdefs.inc:197
 msgid "2000 Mathematics Subject Classification:"
@@ -8066,18 +8051,16 @@ msgid "Element:KeyCombo"
 msgstr "Element:KeyCombo"
 
 #: lib/layouts/db_stdcharstyles.inc:87
-#, fuzzy
 msgid "KeyCombo"
-msgstr "Klávesnica"
+msgstr "KeyCombo"
 
 #: lib/layouts/db_stdcharstyles.inc:99
 msgid "Element:KeyCap"
 msgstr "Element:KeyCap"
 
 #: lib/layouts/db_stdcharstyles.inc:101
-#, fuzzy
 msgid "KeyCap"
-msgstr "Názov"
+msgstr "KeyCap"
 
 #: lib/layouts/db_stdcharstyles.inc:113
 msgid "Element:GuiMenu"
@@ -8128,9 +8111,8 @@ msgid "RevisionHistory"
 msgstr "RevisionHistory"
 
 #: lib/layouts/db_stdtitle.inc:58
-#, fuzzy
 msgid "Revision History"
-msgstr "Revízia"
+msgstr "Revision History"
 
 #: lib/layouts/db_stdtitle.inc:63
 msgid "Revision"
@@ -8142,7 +8124,7 @@ msgstr "RevíznaPripomienka"
 
 #: lib/layouts/db_stdtitle.inc:94
 msgid "FirstName"
-msgstr "Prvé_meno"
+msgstr "Krstné_meno"
 
 #: lib/layouts/literate-scrap.inc:12
 msgid "Scrap"
@@ -8189,9 +8171,8 @@ msgid "\\alph{paragraph}."
 msgstr "\\alph{paragraph}."
 
 #: lib/layouts/scrclass.inc:99
-#, fuzzy
 msgid "Addpart"
-msgstr "Pridať"
+msgstr "Addpart"
 
 #: lib/layouts/scrclass.inc:105
 msgid "Addchap"
@@ -8238,19 +8219,16 @@ msgid "Extratitle"
 msgstr "Extra_nadpis"
 
 #: lib/layouts/scrclass.inc:231
-#, fuzzy
 msgid "Captionabove"
-msgstr "Názov"
+msgstr "Popisok hore"
 
 #: lib/layouts/scrclass.inc:250
-#, fuzzy
 msgid "Captionbelow"
-msgstr "Názov"
+msgstr "Popisok dole"
 
 #: lib/layouts/scrclass.inc:269
-#, fuzzy
 msgid "Dictum"
-msgstr "Dátum"
+msgstr "Výrok"
 
 #: lib/layouts/stdcharstyles.inc:8
 msgid "CharStyle"
@@ -8266,18 +8244,16 @@ msgid "\\Roman{part}"
 msgstr "\\Roman{part}"
 
 #: lib/layouts/stdinsets.inc:60
-#, fuzzy
 msgid "Marginal"
-msgstr "okraje"
+msgstr "Okrajné"
 
 #: lib/layouts/stdinsets.inc:61 src/insets/InsetMarginal.cpp:53
 msgid "margin"
 msgstr "okraje"
 
 #: lib/layouts/stdinsets.inc:81
-#, fuzzy
 msgid "Foot"
-msgstr "päta"
+msgstr "Päta"
 
 #: lib/layouts/stdinsets.inc:82
 msgid "foot"
@@ -8288,9 +8264,8 @@ msgid "Note:Comment"
 msgstr "Poznámka:Komentár"
 
 #: lib/layouts/stdinsets.inc:103
-#, fuzzy
 msgid "comment"
-msgstr "Komentár"
+msgstr "komentár"
 
 #: lib/layouts/stdinsets.inc:115
 msgid "Note:Note"
@@ -8328,26 +8303,24 @@ msgid "Index"
 msgstr "Index"
 
 #: lib/layouts/stdinsets.inc:190
-#, fuzzy
 msgid "Idx"
 msgstr "Idx"
 
 #: lib/layouts/stdinsets.inc:214 src/insets/InsetBox.cpp:143
 msgid "Box"
-msgstr "Rámeček"
+msgstr "Rámok"
 
 #: lib/layouts/stdinsets.inc:222
 msgid "Box:Shaded"
 msgstr "Rámok:Stienený"
 
 #: lib/layouts/stdinsets.inc:231
-#, fuzzy
 msgid "Float"
-msgstr "Objekty|j"
+msgstr "Plávajúci objekt"
 
 #: lib/layouts/stdinsets.inc:239
 msgid "Wrap"
-msgstr "Zalomenie"
+msgstr "Obtekanie"
 
 #: lib/layouts/stdinsets.inc:267
 msgid "OptArg"
@@ -8358,24 +8331,20 @@ msgid "opt"
 msgstr "opt"
 
 #: lib/layouts/stdinsets.inc:276 src/frontends/qt4/GuiInfo.cpp:51
-#, fuzzy
 msgid "Info"
-msgstr "Späť"
+msgstr "Info"
 
 #: lib/layouts/stdinsets.inc:280
-#, fuzzy
 msgid "Info:menu"
-msgstr "min."
+msgstr "Info:menu"
 
 #: lib/layouts/stdinsets.inc:292
-#, fuzzy
 msgid "Info:shortcut"
-msgstr "Klávesová s&kratka:"
+msgstr "Info:skratka"
 
 #: lib/layouts/stdinsets.inc:304
-#, fuzzy
 msgid "Info:shortcuts"
-msgstr "Klávesová s&kratka:"
+msgstr "Info:skratky"
 
 #: lib/layouts/stdlayouts.inc:67
 msgid "--Separator--"
@@ -8383,7 +8352,7 @@ msgstr "--Oddeľovač--"
 
 #: lib/layouts/stdlayouts.inc:76
 msgid "--- Separate Environment ---"
-msgstr "-- Oddeliť prostredie --"
+msgstr "-- Oddeliť Prostredie --"
 
 #: lib/layouts/stdsections.inc:14
 msgid "Part \\thepart"
@@ -8403,12 +8372,11 @@ msgstr "Hlavičková poznámka"
 
 #: lib/layouts/svjour.inc:112
 msgid "Headnote (optional):"
-msgstr "Hlavičková poznámka (optional):"
+msgstr "Hlavičková poznámka (nepovinná):"
 
 #: lib/layouts/svjour.inc:237
-#, fuzzy
 msgid "Corr Author:"
-msgstr "Autor"
+msgstr "Zodpovedný Autor:"
 
 #: lib/layouts/svjour.inc:241
 msgid "Offprints"
@@ -8471,9 +8439,8 @@ msgid "Problem*"
 msgstr "Problém*"
 
 #: lib/layouts/theorems-order.inc:58 lib/layouts/theorems-starred.inc:161
-#, fuzzy
 msgid "Exercise*"
-msgstr "Cvičenie"
+msgstr "Úloha*"
 
 #: lib/layouts/theorems-order.inc:64 lib/layouts/theorems-starred.inc:173
 msgid "Remark*"
@@ -8484,9 +8451,8 @@ msgid "Claim*"
 msgstr "Nárok*"
 
 #: lib/layouts/theorems-starred.inc:96
-#, fuzzy
 msgid "Conjecture."
-msgstr "Dohad"
+msgstr "Dohad."
 
 #: lib/layouts/theorems-starred.inc:105
 msgid "Fact*"
@@ -8497,18 +8463,16 @@ msgid "Problem."
 msgstr "Problém."
 
 #: lib/layouts/theorems-starred.inc:164
-#, fuzzy
 msgid "Exercise."
-msgstr "Cvičenie"
+msgstr "Úloha."
 
 #: lib/layouts/theorems-starred.inc:176
 msgid "Remark."
 msgstr "Pripomienka."
 
 #: lib/layouts/braille.module:2
-#, fuzzy
 msgid "Braille"
-msgstr "Variabilná veľkosť"
+msgstr "Braille"
 
 #: lib/layouts/braille.module:6
 msgid ""
@@ -8519,60 +8483,56 @@ msgstr ""
 "v súbore Braille.lyx v príkladoch."
 
 #: lib/layouts/braille.module:22
-#, fuzzy
 msgid "Braille (default)"
-msgstr "Log súbor LaTeXu|L"
+msgstr "Braille (štandard)"
 
 #: lib/layouts/braille.module:36 lib/layouts/braille.module:59
-#, fuzzy
 msgid "Braille:"
-msgstr "Menší:"
+msgstr "Braille:"
 
 #: lib/layouts/braille.module:45
 msgid "Braille (textsize)"
-msgstr "Braille (velikost textu)"
+msgstr "Braille (veľkosť textu)"
 
 #: lib/layouts/braille.module:68
 msgid "Braille (dots on)"
-msgstr "Braille (tečky zap.)"
+msgstr "Braille (bodky zap.)"
 
 #: lib/layouts/braille.module:83
 msgid "Braille_dots_on"
-msgstr "Braille_tečky_zap"
+msgstr "Braille_bodky_zap"
 
 #: lib/layouts/braille.module:92
 msgid "Braille (dots off)"
-msgstr "Braille (tečky vyp.)"
+msgstr "Braille (bodky vyp.)"
 
 #: lib/layouts/braille.module:107
 msgid "Braille_dots_off"
-msgstr "Braille_tečky_vyp"
+msgstr "Braille_bodky_vyp"
 
 #: lib/layouts/braille.module:116
 msgid "Braille (mirror on)"
-msgstr "Braille (zrcadlení zap.)"
+msgstr "Braille (zrkadlenie zap.)"
 
 #: lib/layouts/braille.module:131
 msgid "Braille_mirror_on"
-msgstr "Braille_zrcadlení_zap"
+msgstr "Braille_zrkadlenie_zap"
 
 #: lib/layouts/braille.module:140
 msgid "Braille (mirror off)"
-msgstr "Braille (zrcadlení vyp.)"
+msgstr "Braille (zrkadlenie vyp.)"
 
 #: lib/layouts/braille.module:155
 msgid "Braille_mirror_off"
-msgstr "Braille_zrcadlení_vyp"
+msgstr "Braille_zrkadlenie_vyp"
 
 #: lib/layouts/braille.module:163
-#, fuzzy
 msgid "Braillebox"
-msgstr "Variabilná veľkosť"
+msgstr "BrailleRámok"
 
 #: lib/layouts/braille.module:167
-#, fuzzy
 msgid "Braille box"
-msgstr "Variabilná veľkosť"
+msgstr "Braille rámok"
 
 #: lib/layouts/endnotes.module:2
 msgid "Endnote"
@@ -8584,7 +8544,7 @@ msgid ""
 "\\theendnotes in ERT where you want the endnotes to appear."
 msgstr ""
 "Pridáva vložku pre koncové poznámky (Endnote) (okrem už existujúcích "
-"poznámok pod čiarou). Nutne je pridať \\theendnotes do vložky TeX-ového kódu "
+"poznámok pod čiarou). Nutné je pridať \\theendnotes do vložky TeX-ového kódu "
 "tam, kde sa koncové poznámky majú objaviť."
 
 #: lib/layouts/endnotes.module:9
@@ -8596,9 +8556,8 @@ msgid "endnote"
 msgstr "koncová poznámka"
 
 #: lib/layouts/foottoend.module:2
-#, fuzzy
 msgid "Foot to End"
-msgstr "Nie je čo robiť."
+msgstr "Pätky na koncové"
 
 #: lib/layouts/foottoend.module:6
 msgid ""
@@ -8610,9 +8569,8 @@ msgstr ""
 "objaviť."
 
 #: lib/layouts/hanging.module:2 lib/layouts/hanging.module:16
-#, fuzzy
 msgid "Hanging"
-msgstr "okraje"
+msgstr "Vysiace"
 
 #: lib/layouts/hanging.module:6
 msgid ""
@@ -8620,13 +8578,12 @@ msgid ""
 "in which the first line is set to the left margin, but all subsequent lines "
 "are indented."
 msgstr ""
-"Přidává prostředí pro \"zavěšené\" odstavce. Zavěšený odstavec začíná na "
-"prvním řádku bez odsazení, následující řádky jsou naopak s odsazením."
+"Pridáva prostredí pro \"vysiace\" odstavce. Vysiacy odstavec začína na prvom "
+"riadku bez zasunutia, následujúce riadky sú naopak zasunuté."
 
 #: lib/layouts/linguistics.module:2
-#, fuzzy
 msgid "Linguistics"
-msgstr "Zoznam"
+msgstr "Lingvistiky"
 
 #: lib/layouts/linguistics.module:7
 msgid ""
@@ -8634,7 +8591,7 @@ msgid ""
 "glosses, semantic markup, tableau floats). See linguistics.lyx file in "
 "examples."
 msgstr ""
-"Definuje špeciálne prostredie užitočné pre linguistiku (číslované príklady, "
+"Definuje špeciálne prostredie užitočné pre lingvistiku (číslované príklady, "
 "glosy, semantické štýly znakov (markup), plávajúce tabuľky). Pozri na súbor "
 "linguistics.lyx v príkladoch."
 
@@ -8663,50 +8620,44 @@ msgid "Subexample:"
 msgstr "Podpríklad:"
 
 #: lib/layouts/linguistics.module:69
-#, fuzzy
 msgid "Custom:Glosse"
-msgstr "Zákazník"
+msgstr "Glosse"
 
 #: lib/layouts/linguistics.module:71
-#, fuzzy
 msgid "Glosse"
-msgstr "Zavrieť"
+msgstr "Glosse"
 
 #: lib/layouts/linguistics.module:95
-#, fuzzy
 msgid "Custom:Tri-Glosse"
-msgstr "Zákazník"
+msgstr "Tri-Glosse"
 
 #: lib/layouts/linguistics.module:97
 msgid "Tri-Glosse"
-msgstr "Tri-Glosa"
+msgstr "Tri-Glosse"
 
 #: lib/layouts/linguistics.module:120
 msgid "CharStyle:Expression"
 msgstr "Štýl znaku: Výraz"
 
 #: lib/layouts/linguistics.module:122
-#, fuzzy
 msgid "expr."
-msgstr "ex"
+msgstr "výraz"
 
 #: lib/layouts/linguistics.module:134
 msgid "CharStyle:Concepts"
 msgstr "Štýl znaku:Concepts"
 
 #: lib/layouts/linguistics.module:136
-#, fuzzy
 msgid "concept"
-msgstr "&Akceptovať"
+msgstr "concept"
 
 #: lib/layouts/linguistics.module:148
 msgid "CharStyle:Meaning"
 msgstr "Štýl znaku: Význam"
 
 #: lib/layouts/linguistics.module:150
-#, fuzzy
 msgid "meaning"
-msgstr "Otvorenie"
+msgstr "význam"
 
 #: lib/layouts/linguistics.module:163
 msgid "Tableau"
@@ -9909,7 +9860,7 @@ msgstr "Tabulka...|T"
 
 #: lib/ui/classic.ui:233
 msgid "Floats|a"
-msgstr "Objekty|j"
+msgstr "Plávajúce objekty"
 
 #: lib/ui/classic.ui:235
 msgid "Include File...|d"
@@ -10130,7 +10081,7 @@ msgstr "Text. řez stojatý"
 
 #: lib/ui/classic.ui:310
 msgid "Floatflt Figure"
-msgstr "Plávajúci objekt"
+msgstr "Obtekaný obrázok"
 
 #: lib/ui/classic.ui:314 lib/ui/stdmenus.inc:416
 msgid "Table of Contents|C"
@@ -10507,21 +10458,19 @@ msgstr "Externe upraviť súbor"
 
 #: lib/ui/stdcontext.inc:123 lib/ui/stdcontext.inc:151
 #: lib/ui/stdcontext.inc:167 lib/ui/stdcontext.inc:319
-#, fuzzy
 msgid "Open Inset|O"
-msgstr "Otvorený objekt prílohy"
+msgstr "Otvorená vložka"
 
 #: lib/ui/stdcontext.inc:124 lib/ui/stdcontext.inc:152
 #: lib/ui/stdcontext.inc:168 lib/ui/stdcontext.inc:320
-#, fuzzy
 msgid "Close Inset|C"
-msgstr "Zavrieť|Z"
+msgstr "Zavrieť vložku"
 
 #: lib/ui/stdcontext.inc:126 lib/ui/stdcontext.inc:132
 #: lib/ui/stdcontext.inc:154 lib/ui/stdcontext.inc:170
 #: lib/ui/stdcontext.inc:322
 msgid "Dissolve Inset|D"
-msgstr "Rozpustit vložku do textu|u"
+msgstr "Rozpustit vložku do textu"
 
 #: lib/ui/stdcontext.inc:131
 #, fuzzy
@@ -10837,24 +10786,22 @@ msgstr "Chýbajúci parameter"
 #: lib/ui/stdcontext.inc:299 lib/ui/stdmenus.inc:220
 #: lib/ui/stdtoolbars.inc:174
 msgid "Make First Non-Optional into Optional Argument"
-msgstr "Změnit první povinný argument na volitelný"
+msgstr "Zmeniť prvý povinný argument na nepovinný"
 
 #: lib/ui/stdcontext.inc:300 lib/ui/stdmenus.inc:221
 #: lib/ui/stdtoolbars.inc:175
 msgid "Make Last Optional into Non-Optional Argument"
-msgstr "Změnit poslední volitelný argument na povinný"
+msgstr "Zmeniť posledny nepovinný argument na povinný"
 
 #: lib/ui/stdcontext.inc:301 lib/ui/stdmenus.inc:222
 #: lib/ui/stdtoolbars.inc:178
-#, fuzzy
 msgid "Insert Optional Argument"
-msgstr "Chýbajúci parameter"
+msgstr "Vložiť nepovinný argument"
 
 #: lib/ui/stdcontext.inc:302 lib/ui/stdmenus.inc:223
 #: lib/ui/stdtoolbars.inc:177
-#, fuzzy
 msgid "Remove Optional Argument"
-msgstr "Otvorený nepovinný argument prílohy"
+msgstr "Zmazať nepovinný argument"
 
 #: lib/ui/stdcontext.inc:304 lib/ui/stdmenus.inc:225
 #: lib/ui/stdtoolbars.inc:181
@@ -10863,9 +10810,8 @@ msgstr "Přidat pohlcování argumentu zprava"
 
 #: lib/ui/stdcontext.inc:305 lib/ui/stdmenus.inc:226
 #: lib/ui/stdtoolbars.inc:182
-#, fuzzy
 msgid "Append Optional Argument Eating From The Right"
-msgstr "Otvorený nepovinný argument prílohy"
+msgstr "Pridať nepovinný argument sprava"
 
 #: lib/ui/stdcontext.inc:306 lib/ui/stdmenus.inc:227
 #: lib/ui/stdtoolbars.inc:180
@@ -10970,20 +10916,19 @@ msgstr "Znížiť hĺbku listiny"
 
 #: lib/ui/stdmenus.inc:116
 msgid "Dissolve Inset|l"
-msgstr "Rozpustit vložku do textu|R"
+msgstr "Rozpustit vložku do textu"
 
 #: lib/ui/stdmenus.inc:117
 msgid "TeX Code Settings...|C"
 msgstr "TeX Kód nastavenia..."
 
 #: lib/ui/stdmenus.inc:119
-#, fuzzy
 msgid "Float Settings...|a"
-msgstr "Nastavenia objektu"
+msgstr "Nastavenia plávajúceho objektu"
 
 #: lib/ui/stdmenus.inc:120
 msgid "Text Wrap Settings...|W"
-msgstr "Nastavenie zalomenia textu...|t"
+msgstr "Nastavenie obtekania textu..."
 
 #: lib/ui/stdmenus.inc:121
 msgid "Note Settings...|N"
@@ -11193,18 +11138,16 @@ msgid "List / TOC|i"
 msgstr "Listiny / Obsah"
 
 #: lib/ui/stdmenus.inc:325
-#, fuzzy
 msgid "Float|a"
-msgstr "Objekty|j"
+msgstr "Plávajúci objekt"
 
 #: lib/ui/stdmenus.inc:327
 msgid "Branch|B"
 msgstr "Vetva|V"
 
 #: lib/ui/stdmenus.inc:328
-#, fuzzy
 msgid "Custom insets"
-msgstr "Zákazník"
+msgstr "Vlastné vložky"
 
 #: lib/ui/stdmenus.inc:329
 msgid "File|e"
@@ -11221,7 +11164,7 @@ msgstr "Krížová referencia...|r"
 
 #: lib/ui/stdmenus.inc:335
 msgid "Caption"
-msgstr "Názov"
+msgstr "Popisok"
 
 #: lib/ui/stdmenus.inc:336
 #, fuzzy
@@ -11289,7 +11232,7 @@ msgstr "Číslovaný zoznam"
 
 #: lib/ui/stdmenus.inc:411
 msgid "Figure Wrap Float|F"
-msgstr "Plávajúci obrázok (zalomenie)|o"
+msgstr "Plávajúci obrázok (obtekanie)"
 
 #: lib/ui/stdmenus.inc:412
 msgid "Table Wrap Float|T"
@@ -11380,9 +11323,8 @@ msgid "Embedded Objects|O"
 msgstr "Vkládané objekty|V"
 
 #: lib/ui/stdmenus.inc:525
-#, fuzzy
 msgid "Shortcuts|S"
-msgstr "Klávesová s&kratka:"
+msgstr "Skratky"
 
 #: lib/ui/stdmenus.inc:526
 #, fuzzy
@@ -14255,9 +14197,8 @@ msgstr ""
 "Použití .pdf vyžaduje alespoň lilypond 2.9\n"
 
 #: lib/external_templates:261
-#, fuzzy
 msgid "PDFPages"
-msgstr "Strany"
+msgstr "PDFStránky"
 
 #: lib/external_templates:262 lib/external_templates:273
 msgid "PDF pages: $$AbsOrRelPathParent$$Basename"
@@ -15144,7 +15085,7 @@ msgstr "Chyba pri čítaní vnútorných formátnych informácií"
 
 #: src/BufferView.cpp:178
 msgid "No more insets"
-msgstr "Už nie je viac príloh"
+msgstr "Už nie je viac vložiek"
 
 #: src/BufferView.cpp:691
 #, fuzzy
@@ -15384,7 +15325,7 @@ msgstr "pozadie matematiky"
 
 #: src/Color.cpp:160
 msgid "greyedout inset label"
-msgstr "zosivelá vložka označenia"
+msgstr "zosivelá vložka (označenie)"
 
 #: src/Color.cpp:161
 msgid "greyedout inset background"
@@ -15435,15 +15376,15 @@ msgstr "jazyk"
 
 #: src/Color.cpp:172
 msgid "command inset"
-msgstr "vložka - příkaz"
+msgstr "vložka - príkaz"
 
 #: src/Color.cpp:173
 msgid "command inset background"
-msgstr "pozadí vložky příkazu"
+msgstr "pozadie vložky príkazu"
 
 #: src/Color.cpp:174
 msgid "command inset frame"
-msgstr "rámok pre vložku príkazov"
+msgstr "rámok pre vložku príkazu"
 
 #: src/Color.cpp:175
 msgid "special character"
@@ -15514,15 +15455,15 @@ msgstr "popisok (rámok)"
 
 #: src/Color.cpp:191
 msgid "collapsable inset text"
-msgstr "sbalitelná vložka textu"
+msgstr "zbalitelná vložka textu"
 
 #: src/Color.cpp:192
 msgid "collapsable inset frame"
-msgstr "sbalitelná vložka (rámok)"
+msgstr "zbalitelná vložka (rámok)"
 
 #: src/Color.cpp:193
 msgid "inset background"
-msgstr "vložka - pozadí"
+msgstr "vložka - pozadie"
 
 #: src/Color.cpp:194
 msgid "inset frame"
@@ -15712,13 +15653,12 @@ msgid ""
 "Flex inset %1$s is undefined because of class conversion from\n"
 "%2$s to %3$s"
 msgstr ""
-"Flexibilní vložka %1$s není definována kvůli konverzi třídy z\n"
+"Flexibilná vložka %1$s nedefinovaná kvôli konverzii triedy z\n"
 "%2$s na %3$s"
 
 #: src/CutAndPaste.cpp:571
-#, fuzzy
 msgid "Undefined flex inset"
-msgstr "Otvorený text prílohy"
+msgstr "Nedefinované flexibilná vložka"
 
 #: src/Exporter.cpp:44 src/LyXFunc.cpp:1022
 #, c-format
@@ -16874,14 +16814,13 @@ msgstr ""
 "bude hľadať v globálnych a lokálnych ui adresároch."
 
 #: src/LyXRC.cpp:2842
-#, fuzzy
 msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
 "if you cannot check the spelling of words containing accented letters. This "
 "may not work with all dictionaries."
 msgstr ""
 "Špecifikuje či poslať nastavenie -T vstupné kódovanie pre ispell. Povoľte "
-"toto Ak nemôže kontrolovať slová s medzinárodnými znakmi. Toto nemusí "
+"toto ak nemôže kontrolovať slová s medzinárodnými znakmi. Toto nemusí "
 "fungovať so všetkými slovníkmi."
 
 #: src/LyXRC.cpp:2846
@@ -16982,9 +16921,8 @@ msgid "Native OS API not yet supported."
 msgstr "Ešte nie je podporované"
 
 #: src/Text.cpp:146
-#, fuzzy
 msgid "Unknown Inset"
-msgstr "Neznámy zoznam obsahu"
+msgstr "Neznáma vložka"
 
 #: src/Text.cpp:219 src/Text.cpp:232
 msgid "Change tracking error"
@@ -17056,9 +16994,8 @@ msgid "Other ("
 msgstr "Iné ("
 
 #: src/Text.cpp:1430
-#, fuzzy
 msgid ", Inset: "
-msgstr ", Hĺbka: "
+msgstr ", Vložka: "
 
 #: src/Text.cpp:1431
 msgid ", Paragraph: "
@@ -17132,8 +17069,7 @@ msgstr "Chýbajúci Súbor"
 
 #: src/TextClass.cpp:639
 msgid "Could not find stdinsets.inc! This may lead to data loss!"
-msgstr ""
-"Nepodařilo se najít soubor stdinsets.inc! Toto může vést ke ztrátě dat!"
+msgstr "Nedá sa nájsť súbor stdinsets.inc! Môže dôjsť ku ztrata dát!"
 
 #: src/TextClass.cpp:642
 msgid "Corrupt File"
@@ -17141,8 +17077,7 @@ msgstr "Skazený Súbor"
 
 #: src/TextClass.cpp:643
 msgid "Could not read stdinsets.inc! This may lead to data loss!"
-msgstr ""
-"Nepodařilo se přečíst soubor stdinsets.inc! Toto může vést ke ztrátě dat!"
+msgstr "Nedá sa čítať súbor stdinsets.inc! Môže dôjsť ku ztrata dát!"
 
 #: src/Thesaurus.cpp:60
 #, fuzzy
@@ -17401,7 +17336,6 @@ msgstr ""
 "verze."
 
 #: src/frontends/qt4/GuiAbout.cpp:91
-#, fuzzy
 msgid ""
 "LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
@@ -17413,11 +17347,11 @@ msgid ""
 msgstr ""
 "LyX je šírený v nádeji, že bude užitočný, ale BEZ AKEJKOĽVEK ZÁRUKY; dokonca "
 "bez akejkoľvek OBCHODNEJ ZÁRUKY alebo VHODNOSTI K DANÉMU POUŽÍVANIU.\n"
-" Podrobnosti si pozrite v GNU General Public Licence.\n"
+"Podrobnosti si pozrite v GNU General Public Licence.\n"
 "Kópiu tejto licencie by ste mali dostať spolu s týmto programom; pokiaľ nie, "
-"tak napíšte na The Free Software Foundation, Inc., 675 Mass Ave, Cambridge, "
-"MA 02139, USA. Slovenský preklad nájdete na http://www.linux.sk.  Český "
-"preklad je na http://www.freesoft.cz."
+"tak napíšte na The Free Software Foundation, Inc., 51 Franklin Street, Fifth "
+"Floor, Boston, MA 02110-1301, USA. Slovenský preklad nájdete na http://www."
+"linux.sk.  Český preklad je na http://www.freesoft.cz."
 
 #: src/frontends/qt4/GuiAbout.cpp:104
 #, fuzzy
@@ -17527,7 +17461,7 @@ msgstr "Literatúra "
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
 #: src/frontends/qt4/GuiDocument.cpp:1304
 #: src/frontends/qt4/GuiExternal.cpp:670 src/frontends/qt4/GuiGraphics.cpp:847
-#: src/frontends/qt4/GuiInclude.cpp:325 src/frontends/qt4/GuiView.cpp:1287
+#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1287
 #: src/frontends/qt4/GuiView.cpp:1345 src/frontends/qt4/GuiView.cpp:1492
 #: src/frontends/qt4/GuiView.cpp:1620 src/frontends/qt4/GuiView.cpp:1699
 msgid "Documents|#o#O"
@@ -18051,9 +17985,8 @@ msgid "Math Options"
 msgstr "Možnosti Matematiky"
 
 #: src/frontends/qt4/GuiDocument.cpp:992
-#, fuzzy
 msgid "Float Placement"
-msgstr "Umiestnenie objektov:|#U"
+msgstr "Umiestnenie plávajúceho objektu"
 
 #: src/frontends/qt4/GuiDocument.cpp:993
 msgid "Bullets"
@@ -18291,7 +18224,7 @@ msgstr "Zvoľte externý súbor"
 
 #: src/frontends/qt4/GuiFloat.cpp:28
 msgid "Float Settings"
-msgstr "Nastavenia objektu"
+msgstr "Nastavenia plávajúceho objektu"
 
 #: src/frontends/qt4/GuiGraphics.cpp:154 src/frontends/qt4/GuiPrefs.cpp:912
 msgid "Graphics"
@@ -18440,11 +18373,11 @@ msgid ""
 msgstr ""
 "Parametry výpisu zadávajte napravo. Na listinu parametrov vložte znak '?'."
 
-#: src/frontends/qt4/GuiInclude.cpp:308
+#: src/frontends/qt4/GuiInclude.cpp:315
 msgid "Select document to include"
 msgstr "Zvoľte dokument na vloženie"
 
-#: src/frontends/qt4/GuiInclude.cpp:315
+#: src/frontends/qt4/GuiInclude.cpp:322
 msgid "LaTeX/LyX Documents (*.tex *.lyx)"
 msgstr "LaTeX/LyX dokumenty (p.tex *.lyx)"
 
@@ -18454,14 +18387,12 @@ msgid "unknown"
 msgstr " neznámy"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
-#, fuzzy
 msgid "shortcut"
-msgstr "Klávesová s&kratka:"
+msgstr "skratka"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
-#, fuzzy
 msgid "shortcuts"
-msgstr "Klávesová s&kratka:"
+msgstr "skratky"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "lyxrc"
@@ -18734,9 +18665,8 @@ msgid "Control"
 msgstr "Záznam"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2081
-#, fuzzy
 msgid "Shortcuts"
-msgstr "Klávesová s&kratka:"
+msgstr "Skratky"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2086
 #, fuzzy
@@ -18744,9 +18674,8 @@ msgid "Function"
 msgstr "&Funkcie"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2087
-#, fuzzy
 msgid "Shortcut"
-msgstr "Klávesová s&kratka:"
+msgstr "Skratka"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2168
 msgid "Cursor, Mouse and Editing functions"
@@ -18778,9 +18707,8 @@ msgstr "O&bnoviť"
 #: src/frontends/qt4/GuiPrefs.cpp:2467 src/frontends/qt4/GuiPrefs.cpp:2474
 #: src/frontends/qt4/GuiPrefs.cpp:2485 src/frontends/qt4/GuiPrefs.cpp:2498
 #: src/frontends/qt4/GuiPrefs.cpp:2517
-#, fuzzy
 msgid "Failed to create shortcut"
-msgstr "Volanie na vytvorenie priečinku s neplatným názvom"
+msgstr "Nepodarilo sa vytvoriť skratku"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2468
 #, fuzzy
@@ -18797,7 +18725,7 @@ msgid ""
 "Shortcut `%1$s' is already bound to:\n"
 "%2$s"
 msgstr ""
-"Zkratka `%1$s' je již přiřazena k:\n"
+"Skratka `%1$s' je už priviazaná k:\n"
 "%2$s"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2499
@@ -18807,9 +18735,9 @@ msgid ""
 "%2$s\n"
 "You need to remove that binding before creating a new one."
 msgstr ""
-"Zkratka `%1$s' je již použita pro:\n"
+"Skratka `%1$s' je už použitá pre:\n"
 "%2$s\n"
-"Musíte toto přiřazení smazat před vytvořením nového."
+"Pred vytvorením novej musíte túto väzbu zmazať."
 
 #: src/frontends/qt4/GuiPrefs.cpp:2518
 msgid "Can not insert shortcut to the list"
@@ -18846,7 +18774,7 @@ msgstr "Použiť &klávesnicovú mapu"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2767
 msgid "Choose personal dictionary"
-msgstr "Použiť osobný slovník"
+msgstr "Zvoliť osobný slovník"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2768
 msgid "*.pws"
@@ -18873,15 +18801,15 @@ msgstr "PostScript súbory (*.ps)"
 msgid "Cross-reference"
 msgstr "Krížová referencia"
 
-#: src/frontends/qt4/GuiRef.cpp:283
+#: src/frontends/qt4/GuiRef.cpp:276
 msgid "&Go Back"
 msgstr "Ísť s&päť"
 
-#: src/frontends/qt4/GuiRef.cpp:285
+#: src/frontends/qt4/GuiRef.cpp:278
 msgid "Jump back"
 msgstr "Prejsť dozadu"
 
-#: src/frontends/qt4/GuiRef.cpp:293
+#: src/frontends/qt4/GuiRef.cpp:286
 msgid "Jump to label"
 msgstr "Skok na označenie"
 
@@ -19661,7 +19589,7 @@ msgstr "Zavrieť"
 
 #: src/frontends/qt4/GuiWrap.cpp:32
 msgid "Wrap Float Settings"
-msgstr "Nastavenie plávajúceho obrázku na zalomenie"
+msgstr "Nastavenie plávajúceho objektu (obtekanie)"
 
 #: src/frontends/qt4/IconPalette.cpp:39
 msgid "Click to detach"
@@ -19683,9 +19611,8 @@ msgid "No Document Open!"
 msgstr "Žiadny otvorený dokument!"
 
 #: src/frontends/qt4/Menus.cpp:858
-#, fuzzy
 msgid "No custom insets defined!"
-msgstr "Prejsť na ďalšiu zmenu"
+msgstr "Niet vlastných definovaných vložiek!"
 
 #: src/frontends/qt4/Menus.cpp:938
 #, fuzzy
@@ -19813,7 +19740,7 @@ msgstr ""
 
 #: src/insets/Inset.cpp:333
 msgid "Opened inset"
-msgstr "Otvorená príloha"
+msgstr "Otvorená vložka"
 
 #: src/insets/InsetBibitem.cpp:87
 msgid "Keys must be unique!"
@@ -19834,8 +19761,8 @@ msgid ""
 "The BibTeX inset includes %1$s databases.\n"
 "If you proceed, all of them will be opened."
 msgstr ""
-"Vložka BibTeX-u zahrnuje  %1$s databází.\n"
-"Budete-li pokračovat, všechny budou otevřeny."
+"Vložka BibTeX-u zahrnuje  %1$s databázy.\n"
+"Keď budete pokračovat, budú všekty budou otvorené."
 
 #: src/insets/InsetBibtex.cpp:142
 #, fuzzy
@@ -19922,9 +19849,8 @@ msgid "double frame"
 msgstr "dvojitý rámok"
 
 #: src/insets/InsetBox.cpp:111
-#, fuzzy
 msgid "Opened Box Inset"
-msgstr "Otvorený objekt prílohy"
+msgstr "Otvorená vložka (rámok)"
 
 #: src/insets/InsetBox.cpp:161 src/insets/InsetBox.cpp:164
 #, fuzzy, c-format
@@ -19938,7 +19864,7 @@ msgstr "%1$s (%2$s, %3$s)"
 
 #: src/insets/InsetBranch.cpp:60
 msgid "Opened Branch Inset"
-msgstr "Vetva - otvorená vložka"
+msgstr "Otvorená vložka (vetva)"
 
 #: src/insets/InsetBranch.cpp:80 src/insets/InsetBranch.cpp:86
 msgid "Branch: "
@@ -19959,7 +19885,7 @@ msgstr "vetva"
 
 #: src/insets/InsetCaption.cpp:82
 msgid "Opened Caption Inset"
-msgstr "Otvorený popis prílohy"
+msgstr "Otvorená vložka (popis)"
 
 #: src/insets/InsetCaption.cpp:304
 #, c-format
@@ -19985,9 +19911,8 @@ msgid "LaTeX Command: "
 msgstr "Príkaz &BibTeX:"
 
 #: src/insets/InsetCommandParams.cpp:250
-#, fuzzy
 msgid "InsetCommand Error: "
-msgstr "Nasledujúci príkaz"
+msgstr "Chyba príkazu (vložka):"
 
 #: src/insets/InsetCommandParams.cpp:251 src/insets/InsetCommandParams.cpp:268
 #, fuzzy
@@ -19995,14 +19920,12 @@ msgid "Incompatible command name."
 msgstr "Nasledujúci príkaz"
 
 #: src/insets/InsetCommandParams.cpp:267
-#, fuzzy
 msgid "InsetCommandParams Error: "
-msgstr "Nasledujúci príkaz"
+msgstr "Chyba v parametre príkazu (vložka):"
 
 #: src/insets/InsetCommandParams.cpp:290
-#, fuzzy
 msgid "InsetCommandParams: "
-msgstr "Nasledujúci príkaz"
+msgstr "Parametre príkazu (vložka):"
 
 #: src/insets/InsetCommandParams.cpp:291
 #, fuzzy
@@ -20015,7 +19938,7 @@ msgstr "Tu chýba \\end_inset ."
 
 #: src/insets/InsetERT.cpp:68
 msgid "Opened ERT Inset"
-msgstr "Otvorený ERT prílohy"
+msgstr "Otvorená vložka (ERT)"
 
 #: src/insets/InsetExternal.cpp:491
 #, c-format
@@ -20023,9 +19946,8 @@ msgid "External template %1$s is not installed"
 msgstr "Externá šablona %1$s nie je inštalovaná"
 
 #: src/insets/InsetFlex.cpp:52
-#, fuzzy
 msgid "Opened Flex Inset"
-msgstr "Otvorený text prílohy"
+msgstr "Otvorená flexibilná vložka"
 
 #: src/insets/InsetFloat.cpp:119 src/insets/InsetFloat.cpp:424
 msgid "float: "
@@ -20033,7 +19955,7 @@ msgstr "plávajúci objekt:"
 
 #: src/insets/InsetFloat.cpp:286
 msgid "Opened Float Inset"
-msgstr "Otvorený objekt prílohy"
+msgstr "Otvorená vložka (plávajúci objekt)"
 
 #: src/insets/InsetFloat.cpp:360
 msgid "float"
@@ -20058,7 +19980,7 @@ msgstr "Zoznam od %1$s"
 
 #: src/insets/InsetFoot.cpp:44
 msgid "Opened Footnote Inset"
-msgstr "Otvorená vložka poznámky pod čiarou"
+msgstr "Otvorená vložka (poznámky pod čiarou)"
 
 #: src/insets/InsetFoot.cpp:113
 msgid "footnote"
@@ -20192,7 +20114,7 @@ msgstr "DUPLIKÁT: "
 
 #: src/insets/InsetListings.cpp:129
 msgid "Opened Listing Inset"
-msgstr "Otvorená vložka výpisu"
+msgstr "Otvorená vložka (výpis)"
 
 #: src/insets/InsetListings.cpp:218
 msgid "no more lstline delimiters available"
@@ -20322,7 +20244,7 @@ msgstr "Vložte niečo ako \\color{white}"
 
 #: src/insets/InsetListingsParams.cpp:319
 msgid "Expect a number with an optional * before it"
-msgstr "Očekávám číslo s nepovinným znakem * vpředu"
+msgstr "Očakávam číslo s nepovinným * pred ním"
 
 #: src/insets/InsetListingsParams.cpp:403
 msgid "auto, last or a number"
@@ -20335,7 +20257,7 @@ msgid ""
 "defining a listing inset)"
 msgstr ""
 "Tento parameter by tu nemal byť zadaný. Použite prosím políčko popisku (v "
-"dialogu pre dokument potomka) alebo pcez menu Vložiť->Popisok (pri definícii "
+"dialogu pre dokument potomka) alebo cez menu Vložiť->Popisok (pri definícii "
 "výpisu zdrojového kódu)"
 
 #: src/insets/InsetListingsParams.cpp:419
@@ -20345,7 +20267,7 @@ msgid ""
 "a listing inset)"
 msgstr ""
 "Tento parameter by tu nemal byť zadaný. Použite prosím políčko popisku (v "
-"dialogu pre dokument potomka) alebo pcez menu Vložiť->Popisok (pri definícii "
+"dialogu pre dokument potomka) alebo cez menu Vložiť->Popisok (pri definícii "
 "výpisu zdrojového kódu)"
 
 #: src/insets/InsetListingsParams.cpp:622
@@ -20379,7 +20301,7 @@ msgstr "Parametry začínající na '%1$s': %2$s"
 
 #: src/insets/InsetMarginal.cpp:34
 msgid "Opened Marginal Note Inset"
-msgstr "Otvorená poznámka na okraji"
+msgstr "Otvorená vložka (poznámka na okraji)"
 
 #: src/insets/InsetNewpage.cpp:178 src/insets/InsetNewpage.cpp:190
 msgid "New Page"
@@ -20423,11 +20345,11 @@ msgstr "Zosivelé"
 
 #: src/insets/InsetNote.cpp:133
 msgid "Opened Note Inset"
-msgstr "Otvorená vložka poznámky"
+msgstr "Otvorená vložka (poznámka)"
 
 #: src/insets/InsetOptArg.cpp:31
 msgid "Opened Optional Argument Inset"
-msgstr "Otvorený nepovinný argument prílohy"
+msgstr "Otvorená vložka (nepovinný argument)"
 
 #: src/insets/InsetRef.cpp:153
 msgid "BROKEN: "
@@ -20587,7 +20509,7 @@ msgstr "Nemůžete vkládat do výběru vícera buňek."
 
 #: src/insets/InsetText.cpp:220
 msgid "Opened Text Inset"
-msgstr "Otvorený text prílohy"
+msgstr "Otvorená vložka (text)"
 
 #: src/insets/InsetVSpace.cpp:127
 msgid "Vertical Space"
@@ -20595,15 +20517,15 @@ msgstr "Vertikálna medzera"
 
 #: src/insets/InsetWrap.cpp:48 src/insets/InsetWrap.cpp:121
 msgid "wrap: "
-msgstr "zalomenie: "
+msgstr "obtekanie: "
 
 #: src/insets/InsetWrap.cpp:181
 msgid "Opened Wrap Inset"
-msgstr "Zalomenie - otvorená vložka"
+msgstr "Otvorená vložka (obtekanie)"
 
 #: src/insets/InsetWrap.cpp:207
 msgid "wrap"
-msgstr "zalomenie"
+msgstr "obtekanie"
 
 #: src/insets/RenderGraphic.cpp:79 src/insets/RenderGraphic.cpp:83
 #, fuzzy
@@ -20837,9 +20759,8 @@ msgid "Standard[[mathref]]"
 msgstr "Standardní"
 
 #: src/mathed/MathMacroTemplate.cpp:489
-#, fuzzy
 msgid "optional"
-msgstr "&Horizontálne:"
+msgstr "nepovinne"
 
 #: src/mathed/MathMacroTemplate.cpp:532
 #, fuzzy
@@ -20860,7 +20781,7 @@ msgstr "Nedá sa otvoriť dokument %1$s"
 
 #: src/output_plaintext.cpp:136
 msgid "Abstract: "
-msgstr "Abstrakt: "
+msgstr "Súhrn: "
 
 #: src/output_plaintext.cpp:148
 msgid "References: "
@@ -20941,7 +20862,7 @@ msgstr "Informácie o závislostiach"
 
 #: src/support/debug.cpp:56
 msgid "LyX Insets"
-msgstr "LyX prílohy"
+msgstr "LyX vložky"
 
 #: src/support/debug.cpp:57
 msgid "Files used by LyX"
@@ -20953,7 +20874,7 @@ msgstr "Udalosti pracovnej oblasti"
 
 #: src/support/debug.cpp:59
 msgid "Insettext/tabular messages"
-msgstr "Zprávy z tabulek/vložek textu"
+msgstr "Správy z tabuliek/vložiek textu"
 
 #: src/support/debug.cpp:60
 msgid "Graphics conversion and loading"
@@ -20964,9 +20885,8 @@ msgid "Change tracking"
 msgstr "Zmeniť sledovanie"
 
 #: src/support/debug.cpp:62
-#, fuzzy
 msgid "External template/inset messages"
-msgstr "Externé aplikácie"
+msgstr "Správy externej šablóny/vložky"
 
 #: src/support/debug.cpp:63
 msgid "RowPainter profiling"
