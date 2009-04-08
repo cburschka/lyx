@@ -77,10 +77,13 @@ void TocWidget::on_tocTV_activated(QModelIndex const & index)
 }
 
 
-void TocWidget::on_tocTV_clicked(QModelIndex const & index)
+void TocWidget::on_tocTV_pressed(QModelIndex const & index)
 {
-	goTo(index);
-	gui_view_.setFocus();
+	Qt::MouseButtons const button = QApplication::mouseButtons();
+	if (button & Qt::LeftButton) {
+		goTo(index);
+		gui_view_.setFocus();
+	}
 }
 
 

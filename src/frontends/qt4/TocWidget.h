@@ -46,7 +46,7 @@ protected Q_SLOTS:
 	void goTo(QModelIndex const &);
 
 	void on_tocTV_activated(QModelIndex const &);
-	void on_tocTV_clicked(QModelIndex const &);
+	void on_tocTV_pressed(QModelIndex const &);
 	void on_updateTB_clicked();
 	void on_sortCB_stateChanged(int state);
 	void on_persistentCB_stateChanged(int state);
