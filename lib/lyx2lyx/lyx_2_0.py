@@ -200,6 +200,10 @@ def revert_xetex(document):
     " Reverts documents that use XeTeX "
     i = find_token(document.header, '\\use_xetex', 0)
     if i == -1:
+        document.warning("Malformed LyX document: Missing \\use_xetex.")
+        return
+    if get_value(document.header, "\\use_xetex", i) == 'false':
+        del document.header[i]
         return
     del document.header[i]
     # 1.) set doc encoding to utf8-plain
@@ -235,17 +239,22 @@ def revert_xetex(document):
     # 3.) set preamble stuff
     pretext = '%% This document must be processed with xelatex!\n'
     pretext += '\\usepackage{fontspec}\n'
-    pretext += '\\setmainfont[Mapping=tex-text]{' + roman + '}\n'
-    pretext += '\\setsansfont['
-    if sf_scale != 100:
-        pretext += 'Scale=' + str(sf_scale / 100) + ','
-    pretext += 'Mapping=tex-text]{' + sans + '}\n'
-    pretext += '\\setmonofont'
-    if tt_scale != 100:
-        pretext += '[Scale=' + str(tt_scale / 100) + ']'
-    pretext += '{' + typewriter + '}\n'
+    if roman != "default":
+        pretext += '\\setmainfont[Mapping=tex-text]{' + roman + '}\n'
+    if sans != "default":
+        pretext += '\\setsansfont['
+        if sf_scale != 100:
+            pretext += 'Scale=' + str(sf_scale / 100) + ','
+        pretext += 'Mapping=tex-text]{' + sans + '}\n'
+    if typewriter != "default":
+        pretext += '\\setmonofont'
+        if tt_scale != 100:
+            pretext += '[Scale=' + str(tt_scale / 100) + ']'
+        pretext += '{' + typewriter + '}\n'
     if osf:
         pretext += '\\defaultfontfeatures{Numbers=OldStyle}\n'
+    pretext += '\usepackage{xunicode}\n'
+    pretext += '\usepackage{xltxtra}\n'
     insert_to_preamble(0, document, pretext)
     # 4.) reset font settings
     i = find_token(document.header, "\\font_roman", 0)
