@@ -21,11 +21,13 @@
 #include "Buffer.h"
 #include "FuncRequest.h"
 #include "LyXFunc.h"
+#include "Menus.h"
 
 #include "support/debug.h"
 #include "support/lassert.h"
 
 #include <QHeaderView>
+#include <QMenu>
 #include <QTimer>
 
 #include <vector>
@@ -67,7 +69,33 @@ TocWidget::TocWidget(GuiView & gui_view, QWidget * parent)
 	// Buffer.
 	enableControls(false);
 
+	// make us responsible for the context menu of the tabbar
+	setContextMenuPolicy(Qt::CustomContextMenu);
+	connect(this, SIGNAL(customContextMenuRequested(const QPoint &)),
+		this, SLOT(showContextMenu(const QPoint &)));
+	connect(tocTV, SIGNAL(customContextMenuRequested(const QPoint &)),
+		this, SLOT(showContextMenu(const QPoint &)));
+
 	init(QString());
+}
+
+
+void TocWidget::showContextMenu(const QPoint & pos)
+{
+	std::string name = "context-toc-" + fromqstr(current_type_);
+	QMenu * menu = guiApp->menus().menu(toqstr(name), gui_view_);
+	if (!menu)
+		return;	
+	menu->exec(mapToGlobal(pos));
+}
+
+
+void TocWidget::doDispatch(Cursor const & cur, FuncRequest const & cmd)
+{
+	switch(cmd.action) {
+	default:
+		break;
+	}
 }
 
 

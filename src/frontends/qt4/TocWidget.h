@@ -15,6 +15,8 @@
 
 #include "ui_TocUi.h"
 
+#include "Cursor.h"
+
 #include <QWidget>
 
 class QModelIndex;
@@ -34,6 +36,8 @@ public:
 
 	/// Initialise GUI.
 	void init(QString const & str);
+
+	void doDispatch(Cursor const & cur, FuncRequest const & fr);
 
 public Q_SLOTS:
 	/// Update the display of the dialog whilst it is still visible.
@@ -56,6 +60,8 @@ protected Q_SLOTS:
 	void on_moveDownTB_clicked();
 	void on_moveInTB_clicked();
 	void on_moveOutTB_clicked();
+
+	void showContextMenu(const QPoint & pos);
 
 private:
 	///

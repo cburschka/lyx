@@ -168,10 +168,11 @@ public:
 	MenuItem(Kind kind,
 		 QString const & label,
 		 FuncRequest const & func,
-		 bool optional = false)
+		 bool optional = false,
+		 FuncRequest::Origin origin = FuncRequest::MENU)
 		: kind_(kind), label_(label), func_(func), optional_(optional)
 	{
-		func_.origin = FuncRequest::MENU;
+		func_.origin = origin;
 	}
 
 	// boost::shared_ptr<MenuDefinition> needs this apprently...
@@ -453,7 +454,10 @@ void MenuDefinition::read(Lexer & lex)
 			lex.next(true);
 			string const command = lex.getString();
 			FuncRequest func = lyxaction.lookupFunc(command);
-			add(MenuItem(MenuItem::Command, toqstr(name), func, optional));
+			FuncRequest::Origin origin = FuncRequest::MENU;
+			if (name_.startsWith("context-toc-"))
+				origin = FuncRequest::TOC;
+			add(MenuItem(MenuItem::Command, toqstr(name), func, optional, origin));
 			optional = false;
 			break;
 		}

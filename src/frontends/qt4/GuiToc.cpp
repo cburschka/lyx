@@ -91,6 +91,11 @@ void GuiToc::enableView(bool enable)
 		widget_->updateView();
 }
 
+void GuiToc::doDispatch(Cursor & cur, FuncRequest const & cmd)
+{
+	widget_->doDispatch(cur, cmd);
+}
+
 
 Dialog * createGuiToc(GuiView & lv)
 {

@@ -23,6 +23,7 @@
 #include "GuiCompleter.h"
 #include "GuiWorkArea.h"
 #include "GuiKeySymbol.h"
+#include "GuiToc.h"
 #include "GuiToolbar.h"
 #include "Menus.h"
 #include "TocModel.h"
@@ -1204,6 +1205,11 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	if (cmd.origin == FuncRequest::MENU && !hasFocus())
 		buf = 0;
 
+	if (cmd.origin == FuncRequest::TOC) {
+		//FIXME: dispatch this to the toc
+		return true;
+	}
+
 	switch(cmd.action) {
 	case LFUN_BUFFER_WRITE:
 		enable = buf && (buf->isUnnamed() || !buf->isClean());
@@ -1968,6 +1974,12 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 	if (bv)
 		bv->cursor().updateFlags(Update::None);
 	bool dispatched = true;
+
+	if (cmd.origin == FuncRequest::TOC) {
+		GuiToc * toc = static_cast<GuiToc*>(findOrBuild("toc", false));
+		toc->doDispatch(bv->cursor(), cmd);
+		return true;
+	}
 
 	switch(cmd.action) {
 		case LFUN_BUFFER_IMPORT:

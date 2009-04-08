@@ -34,7 +34,8 @@ public:
 		MENU, // A menu entry
 		TOOLBAR, // A toolbar icon
 		KEYBOARD, // a keyboard binding
-		COMMANDBUFFER
+		COMMANDBUFFER, 
+		TOC
 	};
 
 	/// just for putting these things in std::container

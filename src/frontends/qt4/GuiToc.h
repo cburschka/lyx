@@ -57,6 +57,8 @@ public:
 	void dispatchParams();
 	///
 	bool isBufferDependent() const { return true; }
+	///
+	void doDispatch(Cursor & cur, FuncRequest const & fr);
 
 private:
 	///
