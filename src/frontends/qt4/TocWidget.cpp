@@ -98,15 +98,22 @@ void TocWidget::showContextMenu(const QPoint & pos)
 void TocWidget::doDispatch(Cursor const & cur, FuncRequest const & cmd)
 {
 	switch(cmd.action) {
-	case LFUN_COPY_LABEL_AS_REF: {
+	
+	case LFUN_COPY_LABEL_AS_REF:
+	case LFUN_INSERT_LABEL_AS_REF: {
 		QModelIndex index = tocTV->currentIndex();
-		TocItem const & item = 
+		TocItem const & item =
 			gui_view_.tocModels().currentItem(current_type_, index);
 		if (!item.str().empty()) {
 			InsetCommandParams p(REF_CODE, "ref");
 			p["reference"] =  item.str();
-			cap::clearSelection();
-			cap::copyInset(cur, new InsetRef(*cur.buffer(), p), item.str());
+			if (cmd.action == LFUN_COPY_LABEL_AS_REF) {
+				cap::clearSelection();
+				cap::copyInset(cur, new InsetRef(*cur.buffer(), p), item.str());
+			} else {
+				string const data = InsetCommand::params2string("ref", p);
+				dispatch(FuncRequest(LFUN_INSET_INSERT, data));
+			}
 		}
 		break;
 	}

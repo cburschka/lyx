@@ -414,11 +414,12 @@ Menuset
 	End
 
 #
-# InsetTocLabel context menu
+# Toc Labels and References context menu
 #
 
 	Menu "context-toc-label"
 		Item "Copy Label as Reference|C" "copy-label-as-reference"
+		Item "Insert Reference at Cursor Position|I" "insert-label-as-reference"
 	End
 
 End

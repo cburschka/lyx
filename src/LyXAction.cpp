@@ -3226,6 +3226,15 @@ void LyXAction::init()
 		{ LFUN_COPY_LABEL_AS_REF, "copy-label-as-reference", ReadOnly | NoUpdate, Edit },
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_INSERT_LABEL_AS_REF
+ * \li Action: Inserts the label as a cross-reference at the position of the cursor.
+ * \li Syntax: insert-label-as-reference
+ * \li Origin: vfr, 7 Apr 2009
+ * \endvar
+ */
+		{ LFUN_INSERT_LABEL_AS_REF, "insert-label-as-reference", Noop, Edit},
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_BUFFER_ZOOM_IN
  * \li Action: Increases the zoom of the screen fonts.
  * \li Syntax: buffer-zoom-in [<ZOOM>]

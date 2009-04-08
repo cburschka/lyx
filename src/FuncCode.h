@@ -412,10 +412,10 @@ enum FuncCode
 	LFUN_TAB_DELETE,
 	LFUN_WORD_FINDADV,              // Tommaso, 20081003
 	LFUN_REGEXP_MODE,               // Tommaso, 20081003
-	LFUN_COPY_LABEL_AS_REF,         // sts, 20081116
-	// 320
 	LFUN_VC_COMMAND,
-	LFUN_MATH_FONT_STYLE,
+	// 320
+	LFUN_COPY_LABEL_AS_REF,         // sts, 20081116
+	LFUN_INSERT_LABEL_AS_REF,		// vfr, 20090407
 	LFUN_PHANTOM_INSERT,            // uwestoehr, 20090130
 	LFUN_INSET_BEGIN,               // JMarc, 20090316
 	LFUN_INSET_END,                 // JMarc, 20090316
@@ -427,6 +427,7 @@ enum FuncCode
 	LFUN_BUFFER_ZOOM_OUT,           // vfr, 20090330
 	// 330
 	LFUN_MATH_BIGDELIM,
+	LFUN_MATH_FONT_STYLE,
 
 
 	LFUN_LASTACTION                 // end of the table
