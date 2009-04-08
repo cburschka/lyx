@@ -232,6 +232,10 @@ void GuiInclude::paramsToDialog(InsetCommandParams const & params_)
 		string extra = getStringFromVector(pars);
 		listingsED->setPlainText(toqstr(InsetListingsParams(extra).separatedParams()));
 	}
+
+	// Make sure that the bc is in the INITIAL state
+	if (bc().policy().buttonStatus(ButtonPolicy::OKAY))
+		bc().restore();
 }
 
 
@@ -291,8 +295,11 @@ void GuiInclude::edit()
 	if (!isValid())
 		return;
 	string const file = fromqstr(filenameED->text());
-	slotOK();
-	applyView();
+	if (bc().policy().buttonStatus(ButtonPolicy::OKAY)) {
+		slotOK();
+		applyView();
+	} else
+		hideView();
 	dispatch(FuncRequest(LFUN_INSET_EDIT));
 }
 
