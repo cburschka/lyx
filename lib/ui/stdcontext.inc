@@ -413,4 +413,12 @@ Menuset
 		OptItem "Settings...|S" "inset-settings"
 	End
 
+#
+# InsetTocLabel context menu
+#
+
+	Menu "context-toc-label"
+		Item "Copy Label as Reference|C" "copy-label-as-reference"
+	End
+
 End

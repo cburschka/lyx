@@ -118,6 +118,9 @@ public:
 	void sort(QString const & type, bool sort_it);
 	///
 	bool isSorted(QString const & type) const;
+	/// the item that is currently selected
+	TocItem const currentItem(QString const & type,
+		QModelIndex const & index) const;
 
 Q_SIGNALS:
 	/// Signal that the internal toc_models_ has been reset.

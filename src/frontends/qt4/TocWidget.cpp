@@ -19,9 +19,14 @@
 #include "TocModel.h"
 
 #include "Buffer.h"
+#include "CutAndPaste.h"
 #include "FuncRequest.h"
 #include "LyXFunc.h"
 #include "Menus.h"
+#include "TocBackend.h"
+
+#include "insets/InsetCommand.h"
+#include "insets/InsetRef.h"
 
 #include "support/debug.h"
 #include "support/lassert.h"
@@ -93,6 +98,19 @@ void TocWidget::showContextMenu(const QPoint & pos)
 void TocWidget::doDispatch(Cursor const & cur, FuncRequest const & cmd)
 {
 	switch(cmd.action) {
+	case LFUN_COPY_LABEL_AS_REF: {
+		QModelIndex index = tocTV->currentIndex();
+		TocItem const & item = 
+			gui_view_.tocModels().currentItem(current_type_, index);
+		if (!item.str().empty()) {
+			InsetCommandParams p(REF_CODE, "ref");
+			p["reference"] =  item.str();
+			cap::clearSelection();
+			cap::copyInset(cur, new InsetRef(*cur.buffer(), p), item.str());
+		}
+		break;
+	}
+
 	default:
 		break;
 	}
