@@ -106,8 +106,9 @@ void TocWidget::doDispatch(Cursor & cur, FuncRequest const & cmd)
 	if (current_type_ == "label")
 		inset = dit.nextInset();
 
+	FuncRequest tmpcmd(cmd);
 	if (inset)
-		inset->dispatch(cur, FuncRequest(cmd));
+		inset->dispatch(cur, tmpcmd);
 }
 
 
