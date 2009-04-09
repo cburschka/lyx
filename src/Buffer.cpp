@@ -1589,7 +1589,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 				LYXERR0("Branch " << branchName << " does not exist.");
 				dr.setError(true);
 				docstring const msg = 
-					bformat(_("Branch \%1$s\" does not exist."), branchName);
+					bformat(_("Branch \"%1$s\" does not exist."), branchName);
 				dr.setMessage(msg);
 			} else {
 				branch->setSelected(func.action == LFUN_BRANCH_ACTIVATE);
