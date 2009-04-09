@@ -109,6 +109,8 @@ private:
 	docstring contextMenu(BufferView const & bv, int x, int y) const;
 	/// This should provide the text for the button
 	virtual docstring screenLabel() const = 0;
+	/// show the Label dialog
+	bool showInsetDialog(BufferView * bv) const;
 
 private:
 	///

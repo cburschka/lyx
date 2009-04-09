@@ -184,8 +184,16 @@ docstring InsetCommand::contextMenu(BufferView const &, int, int) const
 
 void InsetCommand::edit(Cursor & cur, bool, EntryDirection)
 {
+	showInsetDialog(&cur.bv());
+}
+
+
+bool InsetCommand::showInsetDialog(BufferView * bv) const
+{
 	if (!mailer_name_.empty())
-		cur.bv().showDialog(mailer_name_, params2string(mailer_name_, p_), this);
+		bv->showDialog(mailer_name_, params2string(mailer_name_, p_),
+			const_cast<InsetCommand *>(this));
+	return true;
 }
 
 
