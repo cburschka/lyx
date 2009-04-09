@@ -54,6 +54,8 @@ public:
 	docstring const & str() const;
 	///
 	docstring const asString() const;
+	///
+	DocIterator const & dit() const;
 
 	/// the action corresponding to the goTo above
 	FuncRequest action() const;

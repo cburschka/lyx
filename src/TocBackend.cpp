@@ -74,6 +74,12 @@ docstring const TocItem::asString() const
 }
 
 
+DocIterator const & TocItem::dit() const
+{
+	return dit_;
+}
+
+
 FuncRequest TocItem::action() const
 {
 	string const arg = convert<string>(dit_.paragraph().id())
