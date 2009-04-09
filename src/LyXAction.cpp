@@ -2246,7 +2246,7 @@ void LyXAction::init()
  * \li Params: <INSET>: <box|branch|ert|float|listings|note|phantom|tabular|wrap>
  * \endvar
  */
-		{ LFUN_INSET_SETTINGS, "inset-settings", ReadOnly, Edit },
+		{ LFUN_INSET_SETTINGS, "inset-settings", ReadOnly | AtPoint, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_INSET_TOGGLE
  * \li Action: Toggles the collapsable inset we are currently in.

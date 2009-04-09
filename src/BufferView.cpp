@@ -1017,36 +1017,6 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		flag.setEnabled(cur.inset().allowParagraphCustomization(cur.idx()));
 		break;
 
-	case LFUN_INSET_SETTINGS: {
-		InsetCode code = cur.inset().lyxCode();
-		if (cmd.getArg(0) == insetName(code)) {
-			flag.setEnabled(true);
-			break;
-		}
-		bool enable = false;
-		InsetCode next_code = cur.nextInset()
-			? cur.nextInset()->lyxCode() : NO_CODE;
-		//FIXME: remove these special cases:
-		switch (next_code) {
-			case TABULAR_CODE:
-			case ERT_CODE:
-			case FLOAT_CODE:
-			case WRAP_CODE:
-			case NOTE_CODE:
-			case BRANCH_CODE:
-			case PHANTOM_CODE:
-			case BOX_CODE:
-			case LISTINGS_CODE:
-				enable = (cmd.argument().empty() ||
-					  cmd.getArg(0) == insetName(next_code));
-				break;
-			default:
-				break;
-		}
-		flag.setEnabled(enable);
-		break;
-	}
-
 	case LFUN_DIALOG_SHOW_NEW_INSET:
 		if (cur.inset().lyxCode() == CAPTION_CODE)
 			return cur.inset().getStatus(cur, cmd, flag);

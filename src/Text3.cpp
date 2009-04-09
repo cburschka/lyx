@@ -945,24 +945,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_INSET_SETTINGS: {
-		Inset & inset = cur.inset();
-		if (cmd.getArg(0) == insetName(inset.lyxCode())) {
-			// This inset dialog has been explicitely requested.
-			inset.showInsetDialog(bv);
-			break;
-		}
-		// else, if there is an inset at the cursor, access this
-		Inset * next_inset = cur.nextInset();
-		if (next_inset) {
-			next_inset->showInsetDialog(bv);
-			break;
-		}
-		// if not then access the underlying inset.
-		inset.showInsetDialog(bv);
-		break;
-	}
-
 	case LFUN_SET_GRAPHICS_GROUP: {
 		InsetGraphics * ins = graphics::getCurrentGraphicsInset(cur);
 		if (!ins)
