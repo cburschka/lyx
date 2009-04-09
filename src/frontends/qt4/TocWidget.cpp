@@ -95,7 +95,7 @@ void TocWidget::showContextMenu(const QPoint & pos)
 }
 
 
-void TocWidget::doDispatch(Cursor const & cur, FuncRequest const & cmd)
+void TocWidget::doDispatch(Cursor & cur, FuncRequest const & cmd)
 {
 	switch(cmd.action) {
 	

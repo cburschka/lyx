@@ -37,7 +37,7 @@ public:
 	/// Initialise GUI.
 	void init(QString const & str);
 
-	void doDispatch(Cursor const & cur, FuncRequest const & fr);
+	void doDispatch(Cursor & cur, FuncRequest const & fr);
 
 public Q_SLOTS:
 	/// Update the display of the dialog whilst it is still visible.
