@@ -398,13 +398,13 @@ AC_ARG_ENABLE(monolithic-build,
    IFS="$ac_save_ifs"],
   [enable_monolithic_build=])
 
-AM_CONDITIONAL(MONOLITHIC_BOOST, test -n "$enable_monolithic_boost")
-AM_CONDITIONAL(MONOLITHIC_CLIENT, test -n "$enable_monolithic_client")
-AM_CONDITIONAL(MONOLITHIC_INSETS, test -n "$enable_monolithic_insets")
-AM_CONDITIONAL(MONOLITHIC_MATHED, test -n "$enable_monolithic_mathed")
-AM_CONDITIONAL(MONOLITHIC_CORE, test -n "$enable_monolithic_core")
-AM_CONDITIONAL(MONOLITHIC_TEX2LYX, test -n "$enable_monolithic_tex2lyx")
-AM_CONDITIONAL(MONOLITHIC_FRONTEND_QT4, test -n "$enable_monolithic_frontend_qt4")
+AM_CONDITIONAL(MONOLITHIC_BOOST, test "x$enable_monolithic_boost" = "xyes")
+AM_CONDITIONAL(MONOLITHIC_CLIENT, test "x$enable_monolithic_client" = "xyes")
+AM_CONDITIONAL(MONOLITHIC_INSETS, test "x$enable_monolithic_insets" = "xyes")
+AM_CONDITIONAL(MONOLITHIC_MATHED, test "x$enable_monolithic_mathed" = "xyes")
+AM_CONDITIONAL(MONOLITHIC_CORE, test "x$enable_monolithic_core" = "xyes")
+AM_CONDITIONAL(MONOLITHIC_TEX2LYX, test "x$enable_monolithic_tex2lyx" = "xyes")
+AM_CONDITIONAL(MONOLITHIC_FRONTEND_QT4, test "x$enable_monolithic_frontend_qt4" = "xyes")
 
 MSYS_AC_CANONICAL_PATH(lyx_abs_top_srcdir, ${srcdir})
 MSYS_AC_CANONICAL_PATH(lyx_abs_installed_localedir, ${real_localedir})

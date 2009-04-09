@@ -250,9 +250,9 @@ The following options allow to tweak more precisely the generated code:
     frontend for now.
 
   o --enable-monolithic-build[=boost,client,insets,mathed,core,tex2lyx,frontend-qt4]
-    that enable monolithic build of the given parts of the source code. This
-    should reduce the compilation time provided you have enough memory
-    (>500MB).
+    that enables monolithic build of the given parts of the source
+    code. This should reduce the compilation time provided you have
+    enough memory (>500MB).
 
 
 Compiling and installing LyX
