@@ -39,49 +39,9 @@ using namespace lyx::support;
 
 namespace lyx {
 
-//////////////////////////////////////////////////////////////////////
-//
-// BibTeXInfo
-//
-//////////////////////////////////////////////////////////////////////
+namespace {
 
-BibTeXInfo::BibTeXInfo(docstring const & key, docstring const & type)
-	: is_bibtex_(true), bib_key_(key), entry_type_(type), info_()
-{}
-
-
-bool BibTeXInfo::hasField(docstring const & field) const
-{
-	return count(field) == 1;
-}
-
-
-docstring const & BibTeXInfo::operator[](docstring const & field) const
-{
-	BibTeXInfo::const_iterator it = find(field);
-	if (it != end())
-		return it->second;
-	static docstring const empty_value = docstring();
-	return empty_value;
-}
-	
-	
-docstring const & BibTeXInfo::operator[](string const & field) const
-{
-	return operator[](from_ascii(field));
-}
-
-
-docstring BibTeXInfo::getValueForKey(string const & key, 
-		BibTeXInfo const * const xref) const
-{
-	docstring const ret = operator[](key);
-	if (!ret.empty() || !xref)
-		return ret;
-	return (*xref)[key];
-}
-
-
+// gets the "family name" from an author-type string
 docstring familyName(docstring const & name)
 {
 	if (name.empty())
@@ -127,6 +87,123 @@ docstring familyName(docstring const & name)
 	}
 	return retval;
 }
+
+// converts a string containing LaTeX commands into unicode
+// for display.
+docstring convertLaTeXCommands(docstring const & str)
+{
+	docstring val = str;
+	docstring ret;
+
+	bool scanning_cmd = false;
+	bool scanning_math = false;
+	bool escaped = false; // used to catch \$, etc.
+	while (val.size()) {
+		char_type const ch = val[0];
+
+		// if we're scanning math, we output everything until we
+		// find an unescaped $, at which point we break out.
+		if (scanning_math) {
+			if (escaped)
+				escaped = false;
+			else if (ch == '\\')
+				escaped = true;
+			else if (ch == '$') 
+				scanning_math = false;
+			ret += ch;
+			val = val.substr(1);
+			continue;
+		}
+
+		// if we're scanning a command name, then we just
+		// discard characters until we hit something that
+		// isn't alpha.
+		if (scanning_cmd) {
+			if (isAlphaASCII(ch)) {
+				val = val.substr(1);
+				escaped = false;
+				continue;
+			}
+			// so we're done with this command.
+			// now we fall through and check this character.
+			scanning_cmd = false;
+		}
+
+		// was the last character a \? If so, then this is something like: \\,
+		// or \$, so we'll just output it. That's probably not always right...
+		if (escaped) {
+			ret += ch;
+			val = val.substr(1);
+			escaped = false;
+			continue;
+		}
+
+		if (ch == '$') {
+			ret += ch;
+			val = val.substr(1);
+			scanning_math = true;
+			continue;
+		}
+
+		// we just ignore braces
+		if (ch == '{' || ch == '}') {
+			val = val.substr(1);
+			continue;
+		}
+
+		// we're going to check things that look like commands, so if
+		// this doesn't, just output it.
+		if (ch != '\\') {
+			ret += ch;
+			val = val.substr(1);
+			continue;
+		}
+
+		// ok, could be a command of some sort
+		// let's see if it corresponds to some unicode
+		// unicodesymbols has things in the form: \"{u},
+		// whereas we may see things like: \"u. So we'll
+		// look for that and change it, if necessary.
+		static boost::regex const reg("^\\\\\\W\\w");
+		if (boost::regex_search(to_utf8(val), reg)) {
+			val.insert(3, from_ascii("}"));
+			val.insert(2, from_ascii("{"));
+		}
+		docstring rem;
+		docstring const cnvtd = Encodings::fromLaTeXCommand(val, rem);
+		if (!cnvtd.empty()) {
+			// it did, so we'll take that bit and proceed with what's left
+			ret += cnvtd;
+			val = rem;
+			continue;
+		}
+		// it's a command of some sort
+		scanning_cmd = true;
+		escaped = true;
+		val = val.substr(1);
+	}
+	return ret;
+}
+
+} // anon namespace
+
+
+//////////////////////////////////////////////////////////////////////
+//
+// BibTeXInfo
+//
+//////////////////////////////////////////////////////////////////////
+
+BibTeXInfo::BibTeXInfo(docstring const & key, docstring const & type)
+	: is_bibtex_(true), bib_key_(key), entry_type_(type), info_()
+{}
+
+
+bool BibTeXInfo::hasField(docstring const & field) const
+{
+	return count(field) == 1;
+}
+
 
 docstring const BibTeXInfo::getAbbreviatedAuthor() const
 {
@@ -186,106 +263,6 @@ docstring const BibTeXInfo::getXRef() const
 		return docstring();
 	return operator[]("crossref");
 }
-
-
-namespace {
-
-	docstring convertLaTeXCommands(docstring const & str)
-	{
-		docstring val = str;
-		docstring ret;
-	
-		bool scanning_cmd = false;
-		bool scanning_math = false;
-		bool escaped = false; // used to catch \$, etc.
-		while (val.size()) {
-			char_type const ch = val[0];
-
-			// if we're scanning math, we output everything until we
-			// find an unescaped $, at which point we break out.
-			if (scanning_math) {
-				if (escaped)
-					escaped = false;
-				else if (ch == '\\')
-					escaped = true;
-				else if (ch == '$') 
-					scanning_math = false;
-				ret += ch;
-				val = val.substr(1);
-				continue;
-			}
-
-			// if we're scanning a command name, then we just
-			// discard characters until we hit something that
-			// isn't alpha.
-			if (scanning_cmd) {
-				if (isAlphaASCII(ch)) {
-					val = val.substr(1);
-					escaped = false;
-					continue;
-				}
-				// so we're done with this command.
-				// now we fall through and check this character.
-				scanning_cmd = false;
-			}
-
-			// was the last character a \? If so, then this is something like: \\,
-			// or \$, so we'll just output it. That's probably not always right...
-			if (escaped) {
-				ret += ch;
-				val = val.substr(1);
-				escaped = false;
-				continue;
-			}
-
-			if (ch == '$') {
-				ret += ch;
-				val = val.substr(1);
-				scanning_math = true;
-				continue;
-			}
-
-			// we just ignore braces
-			if (ch == '{' || ch == '}') {
-				val = val.substr(1);
-				continue;
-			}
-
-			// we're going to check things that look like commands, so if
-			// this doesn't, just output it.
-			if (ch != '\\') {
-				ret += ch;
-				val = val.substr(1);
-				continue;
-			}
-
-			// ok, could be a command of some sort
-			// let's see if it corresponds to some unicode
-			// unicodesymbols has things in the form: \"{u},
-			// whereas we may see things like: \"u. So we'll
-			// look for that and change it, if necessary.
-			static boost::regex const reg("^\\\\\\W\\w");
-			if (boost::regex_search(to_utf8(val), reg)) {
-				val.insert(3, from_ascii("}"));
-				val.insert(2, from_ascii("{"));
-			}
-			docstring rem;
-			docstring const cnvtd = Encodings::fromLaTeXCommand(val, rem);
-			if (!cnvtd.empty()) {
-				// it did, so we'll take that bit and proceed with what's left
-				ret += cnvtd;
-				val = rem;
-				continue;
-			}
-			// it's a command of some sort
-			scanning_cmd = true;
-			escaped = true;
-			val = val.substr(1);
-		}
-		return ret;
-	}
-
-} // anon namespace
 
 
 docstring const & BibTeXInfo::getInfo(BibTeXInfo const * const xref) const
@@ -351,6 +328,32 @@ docstring const & BibTeXInfo::getInfo(BibTeXInfo const * const xref) const
 	// This should never happen (or at least be very unusual!)
 	static docstring e = docstring();
 	return e;
+}
+
+
+docstring const & BibTeXInfo::operator[](docstring const & field) const
+{
+	BibTeXInfo::const_iterator it = find(field);
+	if (it != end())
+		return it->second;
+	static docstring const empty_value = docstring();
+	return empty_value;
+}
+	
+	
+docstring const & BibTeXInfo::operator[](string const & field) const
+{
+	return operator[](from_ascii(field));
+}
+
+
+docstring BibTeXInfo::getValueForKey(string const & key, 
+		BibTeXInfo const * const xref) const
+{
+	docstring const ret = operator[](key);
+	if (!ret.empty() || !xref)
+		return ret;
+	return (*xref)[key];
 }
 
 

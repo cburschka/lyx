@@ -87,7 +87,9 @@ public:
 	///
 	docstring entryType() const { return entry_type_; }
 private:
-	/// like operator[], except it will also check the given xref
+	/// like operator[], except, if the field is empty, it will attempt
+	/// to get the data from xref BibTeXInfo object, which would normally
+	/// be the one referenced in the crossref field.
 	docstring getValueForKey(std::string const & key, 
 			BibTeXInfo const * const xref = 0) const;
 	/// true if from BibTeX; false if from bibliography environment
