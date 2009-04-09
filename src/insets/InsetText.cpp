@@ -261,7 +261,7 @@ void InsetText::doDispatch(Cursor & cur, FuncRequest & cmd)
 	if (cur.text() == &text_)
 		text_.dispatch(cur, cmd);
 	else
-	    //FIXME we probably also want to dispatch to Inset when
+		//FIXME we probably also want to dispatch to Inset when
 		//text_ could do nothing with the FuncRequest.
 		Inset::doDispatch(cur, cmd);
 }
