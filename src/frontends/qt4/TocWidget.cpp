@@ -97,6 +97,17 @@ void TocWidget::showContextMenu(const QPoint & pos)
 
 void TocWidget::doDispatch(Cursor & cur, FuncRequest const & cmd)
 {
+	QModelIndex const & index = tocTV->currentIndex();
+	TocItem const & item =
+		gui_view_.tocModels().currentItem(current_type_, index);
+	DocIterator const & dit = item.dit();
+	
+	Inset * inset = 0;
+	if (current_type_ == "label")
+		inset = dit.nextInset();
+
+	if (inset)
+		inset->dispatch(cur, FuncRequest(cmd));
 }
 
 
