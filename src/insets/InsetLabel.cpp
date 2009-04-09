@@ -22,6 +22,7 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "InsetIterator.h"
+#include "LyXFunc.h"
 #include "ParIterator.h"
 #include "sgml.h"
 #include "Text.h"
@@ -174,6 +175,14 @@ void InsetLabel::doDispatch(Cursor & cur, FuncRequest & cmd)
 		p["reference"] = getParam("name");
 		cap::clearSelection();
 		cap::copyInset(cur, new InsetRef(*cur.buffer(), p), getParam("name"));
+		break;
+	}
+
+	case LFUN_INSERT_LABEL_AS_REF: {
+		InsetCommandParams p(REF_CODE, "ref");
+		p["reference"] = getParam("name");
+		string const data = InsetCommand::params2string("ref", p);
+		lyx::dispatch(FuncRequest(LFUN_INSET_INSERT, data));
 		break;
 	}
 
