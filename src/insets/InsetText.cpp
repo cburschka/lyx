@@ -255,7 +255,15 @@ void InsetText::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	LYXERR(Debug::ACTION, "InsetText::doDispatch()"
 		<< " [ cmd.action = " << cmd.action << ']');
-	text_.dispatch(cur, cmd);
+
+	// Dispatch only to text_ if the cursor is inside
+	// the text_. It is not for context menus (bug 5797).
+	if (cur.text() == &text_)
+		text_.dispatch(cur, cmd);
+	else
+	    //FIXME we probably also want to dispatch to Inset when
+		//text_ could do nothing with the FuncRequest.
+		Inset::doDispatch(cur, cmd);
 }
 
 
@@ -279,7 +287,8 @@ bool InsetText::getStatus(Cursor & cur, FuncRequest const & cmd,
 		// the text_. It is not for context menus (bug 5797).
 		if (cur.text() == &text_)
 			return text_.getStatus(cur, cmd, status);
-		return false;
+		else 
+			return Inset::getStatus(cur, cmd, status);
 	}
 }
 
