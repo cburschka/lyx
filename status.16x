@@ -255,4 +255,7 @@ What's new
 
 - Fix "make check" with gcc 4.3.
 
+- New --enable-monolithic-build configure option that subsumes the
+  previously existing monolithic flags;
+
 - Fix monolithic build.

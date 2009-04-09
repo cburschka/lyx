@@ -249,10 +249,10 @@ The following options allow to tweak more precisely the generated code:
     want to use. The default value is qt4, which is the only available
     frontend for now.
 
-  o --enable-monolithic-[boost,client,insets,mathed,core,tex2lyx,frontend-qt4]
-    that enable monolithic build of the given part of the source code. This
-    should reduce the compilation time provided you have enough memory
-    (>500MB).
+  o --enable-monolithic-build[=boost,client,insets,mathed,core,tex2lyx,frontend-qt4]
+    that enables to build the given parts of the source code as one
+    big file. This should reduce the compilation time, provided you
+    have enough memory (>500MB).
 
 
 Compiling and installing LyX
