@@ -103,8 +103,19 @@ void TocWidget::doDispatch(Cursor & cur, FuncRequest const & cmd)
 	DocIterator const & dit = item.dit();
 	
 	Inset * inset = 0;
-	if (current_type_ == "label")
+	if (current_type_ == "label" 
+		  || current_type_ == "graphics"
+		  || current_type_ == "citation")
 		inset = dit.nextInset();
+
+	else if (current_type_ == "branch")
+		inset = &dit.inset();
+
+	else if (current_type_ == "table" || current_type_ == "figure") {
+		DocIterator tmp_dit(dit);
+		tmp_dit.pop_back();
+		inset = &tmp_dit.inset();
+	}
 
 	FuncRequest tmpcmd(cmd);
 	if (inset)

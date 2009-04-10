@@ -420,6 +420,52 @@ Menuset
 	Menu "context-toc-label"
 		Item "Copy Label as Reference|C" "copy-label-as-reference"
 		Item "Insert Reference at Cursor Position|I" "insert-label-as-reference"
+		Separator
+		Item "Settings...|S" "inset-settings"
+	End
+
+#
+# Toc Branches context menu
+#
+
+	Menu "context-toc-branch"
+		Item "Activate Branch|A" "branch-activate"
+		Item "Deactivate Branch|e" "branch-deactivate"
+		Item "Settings...|S" "inset-settings"
+	End
+
+#
+# Toc Graphics context menu
+#
+
+	Menu "context-toc-graphics"
+		Item "Settings...|S" "inset-settings"
+		Separator
+		Item "Edit externally...|x" "inset-edit"
+	End
+
+#
+# Toc Citation context menu
+#
+
+	Menu "context-toc-citation"
+		Item "Settings...|S" "inset-settings"
+	End
+
+#
+# Toc Figures context menu
+#
+
+	Menu "context-toc-figure"
+		Item "Settings...|S" "inset-settings"
+	End
+
+#
+# Toc Tables context menu
+#
+
+	Menu "context-toc-table"
+		Item "Settings...|S" "inset-settings"
 	End
 
 End
