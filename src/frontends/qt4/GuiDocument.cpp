@@ -1174,10 +1174,26 @@ void GuiDocument::xetexChanged(bool xetex)
 		!langModule->defaultencodingRB->isChecked());
 	langModule->defaultencodingRB->setEnabled(!xetex);
 	langModule->otherencodingRB->setEnabled(!xetex);
-	
+
 	fontModule->fontsDefaultCO->setEnabled(!xetex);
-	if (xetex)
-		fontModule->fontScCB->setEnabled(false);
+	fontModule->fontsDefaultLA->setEnabled(!xetex);
+	fontModule->cjkFontLE->setEnabled(!xetex);
+	fontModule->cjkFontLA->setEnabled(!xetex);
+	string font;
+	if (!xetex)
+		font = tex_fonts_sans[fontModule->fontsSansCO->currentIndex()];
+	bool scaleable = providesScale(font);
+	fontModule->scaleSansSB->setEnabled(scaleable);
+	fontModule->scaleSansLA->setEnabled(scaleable);
+	if (!xetex)
+		font = tex_fonts_monospaced[fontModule->fontsTypewriterCO->currentIndex()];
+	scaleable = providesScale(font);
+	fontModule->scaleTypewriterSB->setEnabled(scaleable);
+	fontModule->scaleTypewriterLA->setEnabled(scaleable);
+	if (!xetex)
+		font = tex_fonts_roman[fontModule->fontsRomanCO->currentIndex()];
+	fontModule->fontScCB->setEnabled(providesSC(font));
+	fontModule->fontOsfCB->setEnabled(providesOSF(font));
 }
 
 
@@ -1244,10 +1260,8 @@ void GuiDocument::updateFontlist()
 
 void GuiDocument::romanChanged(int item)
 {
-	if (outputModule->xetexCB->isChecked()) {
-		fontModule->fontScCB->setEnabled(false);
+	if (outputModule->xetexCB->isChecked())
 		return;
-	}
 	string const font = tex_fonts_roman[item];
 	fontModule->fontScCB->setEnabled(providesSC(font));
 	fontModule->fontOsfCB->setEnabled(providesOSF(font));
@@ -1256,10 +1270,8 @@ void GuiDocument::romanChanged(int item)
 
 void GuiDocument::sansChanged(int item)
 {
-	if (outputModule->xetexCB->isChecked()) {
-		fontModule->fontScCB->setEnabled(false);
+	if (outputModule->xetexCB->isChecked())
 		return;
-	}
 	string const font = tex_fonts_sans[item];
 	bool scaleable = providesScale(font);
 	fontModule->scaleSansSB->setEnabled(scaleable);
@@ -1269,10 +1281,8 @@ void GuiDocument::sansChanged(int item)
 
 void GuiDocument::ttChanged(int item)
 {
-	if (outputModule->xetexCB->isChecked()) {
-		fontModule->fontScCB->setEnabled(false);
+	if (outputModule->xetexCB->isChecked())
 		return;
-	}
 	string const font = tex_fonts_monospaced[item];
 	bool scaleable = providesScale(font);
 	fontModule->scaleTypewriterSB->setEnabled(scaleable);
@@ -2605,6 +2615,10 @@ bool GuiDocument::isFontAvailable(string const & font) const
 
 bool GuiDocument::providesOSF(string const & font) const
 {
+	if (outputModule->xetexCB->isChecked())
+		// FIXME: we should check if the fonts really
+		// have OSF support. But how?
+		return true;
 	if (font == "cmr")
 		return isFontAvailable("eco");
 	if (font == "palatino")
@@ -2615,6 +2629,8 @@ bool GuiDocument::providesOSF(string const & font) const
 
 bool GuiDocument::providesSC(string const & font) const
 {
+	if (outputModule->xetexCB->isChecked())
+		return false;
 	if (font == "palatino")
 		return isFontAvailable("mathpazo");
 	if (font == "utopia")
@@ -2625,6 +2641,8 @@ bool GuiDocument::providesSC(string const & font) const
 
 bool GuiDocument::providesScale(string const & font) const
 {
+	if (outputModule->xetexCB->isChecked())
+		return true;
 	return font == "helvet" || font == "luximono"
 		|| font == "berasans"  || font == "beramono";
 }
