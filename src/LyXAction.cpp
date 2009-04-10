@@ -2258,7 +2258,7 @@ void LyXAction::init()
  * \li Origin: lasgouttes, 19 Jul 2001
  * \endvar
  */
-		{ LFUN_INSET_TOGGLE, "inset-toggle", ReadOnly | AtPoint, Hidden },
+		{ LFUN_INSET_TOGGLE, "inset-toggle", ReadOnly | AtPoint, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_ALL_INSETS_TOGGLE
  * \li Action: Toggles (open/closes) all collapsable insets (of a given type) in the document.
