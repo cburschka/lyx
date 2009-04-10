@@ -78,8 +78,6 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\converter_cache_maxage", LyXRC::RC_CONVERTER_CACHE_MAXAGE },
 	{ "\\copier", LyXRC::RC_COPIER },
 	{ "\\cursor_follows_scrollbar", LyXRC::RC_CURSOR_FOLLOWS_SCROLLBAR },
-	{ "\\custom_export_command", LyXRC::RC_CUSTOM_EXPORT_COMMAND },
-	{ "\\custom_export_format", LyXRC::RC_CUSTOM_EXPORT_FORMAT },
 	{ "\\date_insert_format", LyXRC::RC_DATE_INSERT_FORMAT },
 	{ "\\def_file", LyXRC::RC_DEFFILE },
 	{ "\\default_language", LyXRC::RC_DEFAULT_LANGUAGE },
@@ -227,7 +225,6 @@ void LyXRC::setDefaults()
 	document_path.erase();
 	view_dvi_paper_option.erase();
 	default_papersize = PAPER_DEFAULT;
-	custom_export_format = "ps";
 	default_view_format = "pdf2";
 	chktex_command = "chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38";
 	bibtex_command = "bibtex";
@@ -555,14 +552,6 @@ int LyXRC::read(Lexer & lexrc)
 
 		case RC_PRINTPAPERFLAG:
 			lexrc >> print_paper_flag;
-			break;
-
-		case RC_CUSTOM_EXPORT_COMMAND:
-			lexrc >> custom_export_command;
-			break;
-
-		case RC_CUSTOM_EXPORT_FORMAT:
-			lexrc >> custom_export_format;
 			break;
 
 		case RC_DEFAULT_PAPERSIZE:
@@ -1899,30 +1888,6 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 			break;
 
 		os << "\n#\n"
-		   << "# EXPORT SECTION ####################################\n"
-		   << "#\n\n";
-
-	case RC_CUSTOM_EXPORT_COMMAND:
-		if (ignore_system_lyxrc ||
-		    custom_export_command
-		    != system_lyxrc.custom_export_command) {
-			os << "\\custom_export_command \""
-			   << custom_export_command
-			   << "\"\n";
-		}
-		if (tag != RC_LAST)
-			break;
-	case RC_CUSTOM_EXPORT_FORMAT:
-		if (ignore_system_lyxrc ||
-		    custom_export_format
-		    != system_lyxrc.custom_export_format) {
-			os << "\\custom_export_format \"" << custom_export_format
-			   << "\"\n";
-		}
-		if (tag != RC_LAST)
-			break;
-
-		os << "\n#\n"
 		   << "# TEX SECTION #######################################\n"
 		   << "#\n\n";
 
@@ -2550,12 +2515,6 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_SHOW_MACRO_LABEL:
 		str = _("Show a small box around a Math Macro with the macro name when the cursor is inside.");
-		break;
-
-	case RC_CUSTOM_EXPORT_COMMAND:
-		break;
-
-	case RC_CUSTOM_EXPORT_FORMAT:
 		break;
 
 	case RC_DATE_INSERT_FORMAT:

@@ -142,7 +142,6 @@ bool GuiSendTo::isValid()
 bool GuiSendTo::initialiseParams(string const &)
 {
 	format_ = 0;
-	command_ = toqstr(lyxrc.custom_export_command);
 	paramsToDialog(format_, command_);
 	return true;
 }

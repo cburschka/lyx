@@ -64,8 +64,6 @@ public:
 		RC_COPIER,
 		RC_CURSOR_FOLLOWS_SCROLLBAR,
 		RC_MAC_LIKE_WORD_MOVEMENT,
-		RC_CUSTOM_EXPORT_COMMAND,
-		RC_CUSTOM_EXPORT_FORMAT,
 		RC_DATE_INSERT_FORMAT,
 		RC_DEFFILE,
 		RC_DEFAULT_LANGUAGE,
@@ -238,10 +236,6 @@ public:
 	std::string print_paper_flag;
 	///
 	std::string print_paper_dimension_flag;
-	///
-	std::string custom_export_command;
-	///
-	std::string custom_export_format;
 	/// option for telling the dvi viewer about the paper size
 	std::string view_dvi_paper_option;
 	/// default paper size for local xdvi/dvips/ghostview/whatever
