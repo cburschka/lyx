@@ -94,6 +94,7 @@ docstring const InsetBranch::buttonLabel(BufferView const & bv) const
 		if (c == Color_none)
 			s = _("Undef: ") + s;
 	}
+	s = char_type(isBranchSelected() ? 0x2714 : 0x2716) + s;
 	if (decoration() == InsetLayout::CLASSIC)
 		return isOpen(bv) ? s : getNewLabel(s);
 	else
