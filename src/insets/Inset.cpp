@@ -226,6 +226,7 @@ void Inset::doDispatch(Cursor & cur, FuncRequest &cmd)
 		break;
 	case LFUN_INSET_SETTINGS:
 		showInsetDialog(&cur.bv());
+		cur.dispatched();
 		break;
 	default:
 		cur.noUpdate();
