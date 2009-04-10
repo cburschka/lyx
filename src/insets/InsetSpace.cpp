@@ -177,6 +177,7 @@ bool InsetSpace::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.setOnOff(params_.kind == params.kind);
 		}
 		// fall through
+	case LFUN_INSET_SETTINGS:
 	case LFUN_INSET_DIALOG_UPDATE:
 		status.setEnabled(true);
 		return true;
@@ -188,7 +189,15 @@ bool InsetSpace::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetSpace::edit(Cursor & cur, bool, EntryDirection)
 {
-	cur.bv().showDialog("space", params2string(params()), this);
+	showInsetDialog(&cur.bv());
+}
+
+
+bool InsetSpace::showInsetDialog(BufferView * bv) const
+{
+	bv->showDialog("space", params2string(params()),
+		const_cast<InsetSpace *>(this));
+	return true;
 }
 
 

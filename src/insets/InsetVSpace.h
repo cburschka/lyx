@@ -67,6 +67,8 @@ private:
 	Inset * clone() const { return new InsetVSpace(*this); }
 	///
 	docstring const label() const;
+	///
+	bool showInsetDialog(BufferView * bv) const;
 
 	///
 	VSpace space_;

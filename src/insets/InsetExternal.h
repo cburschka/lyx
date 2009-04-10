@@ -140,6 +140,8 @@ private:
 	///
 	void edit(Cursor & cur, bool front, EntryDirection entry_from);
 	///
+	bool showInsetDialog(BufferView * bv) const;
+	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);

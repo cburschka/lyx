@@ -162,6 +162,8 @@ public:
 
 private:
 	///
+	bool showInsetDialog(BufferView * bv) const;
+	///
 	InsetSpaceParams params_;
 };
 

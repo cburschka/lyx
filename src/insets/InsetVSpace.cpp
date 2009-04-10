@@ -92,6 +92,11 @@ bool InsetVSpace::getStatus(Cursor & cur, FuncRequest const & cmd,
 		} 
 		status.setEnabled(true);
 		return true;
+	
+	case LFUN_INSET_SETTINGS:
+		status.setEnabled(true);
+		return true;
+
 	default:
 		return Inset::getStatus(cur, cmd, status);
 	}
@@ -100,8 +105,15 @@ bool InsetVSpace::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetVSpace::edit(Cursor & cur, bool, EntryDirection)
 {
-	cur.bv().showDialog("vspace", params2string(space()), 
+	showInsetDialog(&cur.bv());
+}
+
+
+bool InsetVSpace::showInsetDialog(BufferView * bv) const
+{
+	bv->showDialog("vspace", params2string(space()),
 		const_cast<InsetVSpace *>(this));
+	return true;
 }
 
 

@@ -234,6 +234,7 @@ bool InsetGraphics::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_INSET_EDIT:
 	case LFUN_INSET_MODIFY:
 	case LFUN_INSET_DIALOG_UPDATE:
+	case LFUN_INSET_SETTINGS:
 		flag.setEnabled(true);
 		return true;
 
@@ -245,9 +246,17 @@ bool InsetGraphics::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetGraphics::edit(Cursor & cur, bool, EntryDirection)
 {
-	cur.bv().showDialog("graphics", params2string(params(),
-		cur.bv().buffer()), this);
+	showInsetDialog(&cur.bv());
 }
+
+
+bool InsetGraphics::showInsetDialog(BufferView * bv) const
+{
+	bv->showDialog("graphics", params2string(params(), bv->buffer()),
+		const_cast<InsetGraphics *>(this));
+	return true;
+}
+
 
 
 void InsetGraphics::metrics(MetricsInfo & mi, Dimension & dim) const
