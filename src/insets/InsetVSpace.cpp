@@ -66,12 +66,6 @@ void InsetVSpace::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_MOUSE_RELEASE:
-		if (!cur.selection() && cmd.button() == mouse_button::button1)
-			cur.bv().showDialog("vspace", params2string(space()), 
-				const_cast<InsetVSpace *>(this));
-		break;
-
 	default:
 		Inset::doDispatch(cur, cmd);
 		break;
@@ -100,12 +94,6 @@ bool InsetVSpace::getStatus(Cursor & cur, FuncRequest const & cmd,
 	default:
 		return Inset::getStatus(cur, cmd, status);
 	}
-}
-
-
-void InsetVSpace::edit(Cursor & cur, bool, EntryDirection)
-{
-	showInsetDialog(&cur.bv());
 }
 
 

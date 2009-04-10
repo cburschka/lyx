@@ -220,10 +220,20 @@ void Inset::dispatch(Cursor & cur, FuncRequest & cmd)
 void Inset::doDispatch(Cursor & cur, FuncRequest &cmd)
 {
 	switch (cmd.action) {
+	case LFUN_MOUSE_RELEASE:
+		// if the derived inset did not explicitly handle mouse_release,
+		// we assume we request the settings dialog
+		if (!cur.selection() && cmd.button() == mouse_button::button1) {
+			FuncRequest tmpcmd(LFUN_INSET_SETTINGS);
+			dispatch(cur, tmpcmd);
+		}
+		break;
+
 	case LFUN_INSET_SETTINGS:
 		showInsetDialog(&cur.bv());
 		cur.dispatched();
 		break;
+
 	default:
 		cur.noUpdate();
 		cur.undispatched();

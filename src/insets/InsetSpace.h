@@ -133,9 +133,6 @@ public:
 	/// the string that is passed to the TOC
 	void tocString(odocstream &) const;
 	///
-	void edit(Cursor & cur, bool front,
-		EntryDirection entry_from = ENTRY_DIRECTION_IGNORE);
-	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	InsetCode lyxCode() const { return SPACE_CODE; }

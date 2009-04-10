@@ -90,9 +90,6 @@ private:
 	///
 	InsetCode lyxCode() const { return NO_CODE; }
 	///
-	void edit(Cursor & cur, bool front, 
-		EntryDirection entry_from = ENTRY_DIRECTION_IGNORE);
-	///
 	RenderButton & button() const { return button_; }
 	///
 	bool setMouseHover(bool mouse_hover);

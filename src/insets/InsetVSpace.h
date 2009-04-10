@@ -32,9 +32,6 @@ public:
 	///
 	InsetCode lyxCode() const { return VSPACE_CODE; }
 	///
-	void edit(Cursor & cur, bool front,
-		EntryDirection entry_from = ENTRY_DIRECTION_IGNORE);
-	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	docstring contextMenu(BufferView const & bv, int x, int y) const;

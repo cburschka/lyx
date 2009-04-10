@@ -215,11 +215,6 @@ void InsetGraphics::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.bv().updateDialog("graphics", params2string(params(), buffer()));
 		break;
 
-	case LFUN_MOUSE_RELEASE:
-		if (!cur.selection() && cmd.button() == mouse_button::button1)
-			cur.bv().showDialog("graphics", params2string(params(), buffer()), this);
-		break;
-
 	default:
 		Inset::doDispatch(cur, cmd);
 		break;
@@ -241,12 +236,6 @@ bool InsetGraphics::getStatus(Cursor & cur, FuncRequest const & cmd,
 	default:
 		return Inset::getStatus(cur, cmd, flag);
 	}
-}
-
-
-void InsetGraphics::edit(Cursor & cur, bool, EntryDirection)
-{
-	showInsetDialog(&cur.bv());
 }
 
 

@@ -414,13 +414,6 @@ void InsetExternal::doDispatch(Cursor & cur, FuncRequest & cmd)
 			params2string(params(), cur.bv().buffer()));
 		break;
 
-	case LFUN_MOUSE_RELEASE:
-		if (!cur.selection() && cmd.button() == mouse_button::button1)
-			cur.bv().showDialog("external",
-				params2string(params(), cur.bv().buffer()),
-				this);
-		break;
-
 	default:
 		Inset::doDispatch(cur, cmd);
 	}
@@ -442,12 +435,6 @@ bool InsetExternal::getStatus(Cursor & cur, FuncRequest const & cmd,
 	default:
 		return Inset::getStatus(cur, cmd, flag);
 	}
-}
-
-
-void InsetExternal::edit(Cursor & cur, bool, EntryDirection)
-{
-	showInsetDialog(&cur.bv());
 }
 
 

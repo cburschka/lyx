@@ -136,12 +136,6 @@ void InsetCommand::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_MOUSE_RELEASE: {
-		if (!cur.selection() && cmd.button() != mouse_button::button3)
-			edit(cur, true);
-		break;
-	}
-
 	default:
 		Inset::doDispatch(cur, cmd);
 		break;
@@ -183,12 +177,6 @@ bool InsetCommand::getStatus(Cursor & cur, FuncRequest const & cmd,
 docstring InsetCommand::contextMenu(BufferView const &, int, int) const
 {
 	return from_ascii("context-") + from_ascii(mailer_name_);
-}
-
-
-void InsetCommand::edit(Cursor & cur, bool, EntryDirection)
-{
-	showInsetDialog(&cur.bv());
 }
 
 

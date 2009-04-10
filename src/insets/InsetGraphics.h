@@ -85,8 +85,6 @@ private:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	void edit(Cursor & cur, bool front, EntryDirection entry_from);
-	///
 	bool showInsetDialog(BufferView * bv) const;
 	///
 	void editGraphics(InsetGraphicsParams const &, Buffer const &) const;
