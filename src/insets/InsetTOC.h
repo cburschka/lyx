@@ -26,7 +26,7 @@ public:
 	///
 	docstring screenLabel() const;
 	///
-	EDITABLE editable() const { return IS_EDITABLE; }
+	EDITABLE editable() const { return NOT_EDITABLE; }
 	///
 	InsetCode lyxCode() const { return TOC_CODE; }
 	///
