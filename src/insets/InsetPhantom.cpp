@@ -285,10 +285,15 @@ bool InsetPhantom::getStatus(Cursor & cur, FuncRequest const & cmd,
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY:
-	case LFUN_INSET_SETTINGS:
+		if (cmd.getArg(0) == "phantom") {
+			InsetPhantomParams params;
+			string2params(to_utf8(cmd.argument()), params);
+			flag.setOnOff(params_.type == params.type);
+		}
 		flag.setEnabled(true);
 		return true;
 
+	case LFUN_INSET_SETTINGS:
 	case LFUN_INSET_DIALOG_UPDATE:
 		flag.setEnabled(true);
 		return true;
