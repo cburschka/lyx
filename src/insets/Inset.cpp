@@ -220,10 +220,6 @@ void Inset::dispatch(Cursor & cur, FuncRequest & cmd)
 void Inset::doDispatch(Cursor & cur, FuncRequest &cmd)
 {
 	switch (cmd.action) {
-	case LFUN_INSET_TOGGLE:
-		edit(cur, true);
-		cur.dispatched();
-		break;
 	case LFUN_INSET_SETTINGS:
 		showInsetDialog(&cur.bv());
 		cur.dispatched();
@@ -260,11 +256,6 @@ bool Inset::getStatus(Cursor &, FuncRequest const & cmd,
 		// Every inset that wants to allow new insets from open
 		// dialogs needs to override this.
 		flag.setEnabled(false);
-		return true;
-
-	case LFUN_INSET_TOGGLE:
-		// remove this if we dissociate toggle from edit.
-		flag.setEnabled(editable() == IS_EDITABLE);
 		return true;
 
 	case LFUN_INSET_SETTINGS:
