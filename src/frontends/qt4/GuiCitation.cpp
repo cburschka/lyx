@@ -702,7 +702,7 @@ vector<docstring> GuiCitation::searchKeys(BiblioInfo const & bi,
 		else if (field.empty())
 			data = to_utf8(*it) + ' ' + to_utf8(kvm.allData());
 		else if (kvm.hasField(field))
-			data = to_utf8(kvm[field]);
+			data = to_utf8(kvm.getValueForField(field));
 		
 		if (data.empty())
 			continue;

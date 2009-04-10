@@ -38,9 +38,8 @@ std::string citationStyleToString(CitationStyle const &);
 
 /// Class to represent information about a BibTeX or
 /// bibliography entry.
-/// This class basically wraps a std::map, and many of its
-/// methods simply delegate to the corresponding methods of
-/// std::map.
+/// The keys are BibTeX fields (e.g., author, title, etc), 
+/// and the values are the associated field values.
 class BibTeXInfo {
 public:
 	///
@@ -52,33 +51,29 @@ public:
 	BibTeXInfo(bool ib) : is_bibtex_(ib) {}
 	/// constructor that sets the entryType
 	BibTeXInfo(docstring const & key, docstring const & type);
+	/// Search for the given field and return the associated info.
+	/// The point of this is that BibTeXInfo::operator[] has no const
+	/// form.
+	docstring const & getValueForField(docstring const & field) const;
+	///
+	docstring const & getValueForField(std::string const & field) const;
 	///
 	bool hasField(docstring const & field) const;
 	/// return the short form of an authorlist
 	docstring const getAbbreviatedAuthor() const;
 	/// 
 	docstring const getYear() const;
-	///
-	docstring const getXRef() const;
-	/// \return formatted BibTeX data suitable for framing.
-	/// \param pointer to crossref information
-	docstring const & getInfo(BibTeXInfo const * const xref = 0) const;
+	/// Returns formatted BibTeX data suitable for framing.
+	docstring const getInfo() const;
 	///
 	int count(docstring const & f) const { return bimap_.count(f); }
 	///
 	const_iterator find(docstring const & f) const { return bimap_.find(f); }
 	///
 	const_iterator end() const { return bimap_.end(); }
-	/// \return value for field f
-	/// note that this will create an empty field if it does not exist
+	///
 	docstring & operator[](docstring const & f) 
 		{ return bimap_[f]; }
-	/// \return value for field f
-	/// this one, since it is const, will simply return docstring() if
-	/// we don't have the field and will NOT create an empty field
-	docstring const & operator[](docstring const & field) const;
-	///
-	docstring const & operator[](std::string const & field) const;
 	///
 	docstring const & allData() const { return all_data_; }
 	///
@@ -86,9 +81,6 @@ public:
 	///
 	docstring entryType() const { return entry_type_; }
 private:
-	/// like operator[], except it will also check the given xref
-	docstring getValueForKey(std::string const & key, 
-			BibTeXInfo const * const xref = 0) const;
 	/// true if from BibTeX; false if from bibliography environment
 	bool is_bibtex_;
 	/// the BibTeX key for this entry
@@ -119,12 +111,9 @@ public:
 	/// return the short form of an authorlist
 	docstring const getAbbreviatedAuthor(docstring const & key) const;
 	/// return the year from the bibtex data record
-	/// Note that this will get the year from the crossref if it's
-	/// not present in the record itself
 	docstring const getYear(docstring const & key) const;
 	/// Returns formatted BibTeX data associated with a given key.
 	/// Empty if no info exists. 
-	/// Note that this will retrieve data from the crossref as needed.
 	docstring const getInfo(docstring const & key) const;
 	
 	/**

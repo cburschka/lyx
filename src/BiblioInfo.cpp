@@ -39,9 +39,39 @@ using namespace lyx::support;
 
 namespace lyx {
 
-namespace {
+//////////////////////////////////////////////////////////////////////
+//
+// BibTeXInfo
+//
+//////////////////////////////////////////////////////////////////////
 
-// gets the "family name" from an author-type string
+BibTeXInfo::BibTeXInfo(docstring const & key, docstring const & type)
+	: is_bibtex_(true), bib_key_(key), entry_type_(type), info_()
+{}
+
+
+bool BibTeXInfo::hasField(docstring const & field) const
+{
+	return count(field) == 1;
+}
+
+
+docstring const & BibTeXInfo::getValueForField(docstring const & field) const
+{
+	BibTeXInfo::const_iterator it = find(field);
+	if (it != end())
+		return it->second;
+	static docstring const empty_value = docstring();
+	return empty_value;
+}
+	
+	
+docstring const & BibTeXInfo::getValueForField(string const & field) const
+{
+	return getValueForField(from_ascii(field));
+}
+
+
 docstring familyName(docstring const & name)
 {
 	if (name.empty())
@@ -88,10 +118,65 @@ docstring familyName(docstring const & name)
 	return retval;
 }
 
+docstring const BibTeXInfo::getAbbreviatedAuthor() const
+{
+	if (!is_bibtex_) {
+		docstring const opt = trim(getValueForField("label"));
+		if (opt.empty())
+			return docstring();
 
-// converts a string containing LaTeX commands into unicode
-// for display.
-docstring convertLaTeXCommands(docstring const & str)
+		docstring authors;
+		split(opt, authors, '(');
+		return authors;
+	}
+
+	docstring author = getValueForField("author");
+	if (author.empty()) {
+		author = getValueForField("editor");
+		if (author.empty())
+			return bib_key_;
+	}
+
+	// OK, we've got some names. Let's format them.
+	// Try to split the author list on " and "
+	vector<docstring> const authors =
+		getVectorFromString(author, from_ascii(" and "));
+
+	if (authors.size() == 2)
+		return bformat(_("%1$s and %2$s"),
+			familyName(authors[0]), familyName(authors[1]));
+
+	if (authors.size() > 2)
+		return bformat(_("%1$s et al."), familyName(authors[0]));
+
+	return familyName(authors[0]);
+}
+
+
+docstring const BibTeXInfo::getYear() const
+{
+	if (!is_bibtex_) {
+		docstring const opt = trim(getValueForField("label"));
+		if (opt.empty())
+			return docstring();
+
+		docstring authors;
+		docstring const tmp = split(opt, authors, '(');
+		docstring year;
+		split(tmp, year, ')');
+		return year;
+	}
+
+	docstring year = getValueForField("year");
+	if (year.empty())
+		year = _("No year");
+	return year;
+}
+
+
+namespace {
+
+	docstring convertLaTeXCommands(docstring const & str)
 	{
 		docstring val = str;
 		docstring ret;
@@ -189,84 +274,7 @@ docstring convertLaTeXCommands(docstring const & str)
 } // anon namespace
 
 
-//////////////////////////////////////////////////////////////////////
-//
-// BibTeXInfo
-//
-//////////////////////////////////////////////////////////////////////
-
-BibTeXInfo::BibTeXInfo(docstring const & key, docstring const & type)
-	: is_bibtex_(true), bib_key_(key), entry_type_(type), info_()
-{}
-
-
-bool BibTeXInfo::hasField(docstring const & field) const
-{
-	return count(field) == 1;
-}
-
-
-docstring const BibTeXInfo::getAbbreviatedAuthor() const
-{
-	if (!is_bibtex_) {
-		docstring const opt = trim(operator[]("label"));
-		if (opt.empty())
-			return docstring();
-
-		docstring authors;
-		split(opt, authors, '(');
-		return authors;
-	}
-
-	docstring author = operator[]("author");
-	if (author.empty()) {
-		author = operator[]("editor");
-		if (author.empty())
-			return bib_key_;
-	}
-
-	// OK, we've got some names. Let's format them.
-	// Try to split the author list on " and "
-	vector<docstring> const authors =
-		getVectorFromString(author, from_ascii(" and "));
-
-	if (authors.size() == 2)
-		return bformat(_("%1$s and %2$s"),
-			familyName(authors[0]), familyName(authors[1]));
-
-	if (authors.size() > 2)
-		return bformat(_("%1$s et al."), familyName(authors[0]));
-
-	return familyName(authors[0]);
-}
-
-
-docstring const BibTeXInfo::getYear() const
-{
-	if (is_bibtex_) 
-		return operator[]("year");
-
-	docstring const opt = trim(operator[]("label"));
-	if (opt.empty())
-		return docstring();
-
-	docstring authors;
-	docstring const tmp = split(opt, authors, '(');
-	docstring year;
-	split(tmp, year, ')');
-	return year;
-}
-
-
-docstring const BibTeXInfo::getXRef() const
-{
-	if (!is_bibtex_)
-		return docstring();
-	return operator[]("crossref");
-}
-
-
-docstring const & BibTeXInfo::getInfo(BibTeXInfo const * const xref) const
+docstring const BibTeXInfo::getInfo() const
 {
 	if (!info_.empty())
 		return info_;
@@ -278,35 +286,35 @@ docstring const & BibTeXInfo::getInfo(BibTeXInfo const * const xref) const
 	}
  
 	// FIXME
-	// This could be made a lot better using the entry_type_
+	// This could be made a lot better using the entryType
 	// field to customize the output based upon entry type.
 	
 	// Search for all possible "required" fields
-	docstring author = getValueForKey("author", xref);
+	docstring author = getValueForField("author");
 	if (author.empty())
-		author = getValueForKey("editor", xref);
+		author = getValueForField("editor");
  
-	docstring year   = getValueForKey("year", xref);
-	docstring title  = getValueForKey("title", xref);
-	docstring docLoc = getValueForKey("pages", xref);
+	docstring year      = getValueForField("year");
+	docstring title     = getValueForField("title");
+	docstring docLoc    = getValueForField("pages");
 	if (docLoc.empty()) {
-		docLoc = getValueForKey("chapter", xref);
+		docLoc = getValueForField("chapter");
 		if (!docLoc.empty())
 			docLoc = _("Ch. ") + docLoc;
 	}	else {
 		docLoc = _("pp. ") + docLoc;
 	}
 
-	docstring media = getValueForKey("journal", xref);
+	docstring media = getValueForField("journal");
 	if (media.empty()) {
-		media = getValueForKey("publisher", xref);
+		media = getValueForField("publisher");
 		if (media.empty()) {
-			media = getValueForKey("school", xref);
+			media = getValueForField("school");
 			if (media.empty())
-				media = getValueForKey("institution");
+				media = getValueForField("institution");
 		}
 	}
-	docstring volume = getValueForKey("volume", xref);
+	docstring volume = getValueForField("volume");
 
 	odocstringstream result;
 	if (!author.empty())
@@ -316,7 +324,7 @@ docstring const & BibTeXInfo::getInfo(BibTeXInfo const * const xref) const
 	if (!media.empty())
 		result << ", " << media;
 	if (!year.empty())
-		result << " (" << year << ")";
+		result << ", " << year;
 	if (!docLoc.empty())
 		result << ", " << docLoc;
 
@@ -327,34 +335,7 @@ docstring const & BibTeXInfo::getInfo(BibTeXInfo const * const xref) const
 	}
 
 	// This should never happen (or at least be very unusual!)
-	static docstring e = docstring();
-	return e;
-}
-
-
-docstring const & BibTeXInfo::operator[](docstring const & field) const
-{
-	BibTeXInfo::const_iterator it = find(field);
-	if (it != end())
-		return it->second;
-	static docstring const empty_value = docstring();
-	return empty_value;
-}
-	
-	
-docstring const & BibTeXInfo::operator[](string const & field) const
-{
-	return operator[](from_ascii(field));
-}
-
-
-docstring BibTeXInfo::getValueForKey(string const & key, 
-		BibTeXInfo const * const xref) const
-{
-	docstring const ret = operator[](key);
-	if (!ret.empty() or !xref)
-		return ret;
-	return (*xref)[key];
+	return docstring();
 }
 
 
@@ -427,18 +408,6 @@ docstring const BiblioInfo::getYear(docstring const & key) const
 	if (it == end())
 		return docstring();
 	BibTeXInfo const & data = it->second;
-	docstring year = data.getYear();
-	if (!year.empty())
-		return year;
-	// let's try the crossref
-	docstring const xref = data.getXRef();
-	if (xref.empty())
-		return _("No year"); // no luck
-	BiblioInfo::const_iterator const xrefit = find(xref);
-	if (xrefit == end())
-		return _("No year"); // no luck again
-	BibTeXInfo const & xref_data = xrefit->second;
-	return xref_data.getYear();
 	return data.getYear();
 }
 
@@ -449,14 +418,7 @@ docstring const BiblioInfo::getInfo(docstring const & key) const
 	if (it == end())
 		return docstring();
 	BibTeXInfo const & data = it->second;
-	BibTeXInfo const * xrefptr = 0;
-	docstring const xref = data.getXRef();
-	if (!xref.empty()) {
-		BiblioInfo::const_iterator const xrefit = find(xref);
-		if (xrefit != end())
-			xrefptr = &(xrefit->second);
-	}
-	return data.getInfo(xrefptr);
+	return data.getInfo();
 }
 
 
