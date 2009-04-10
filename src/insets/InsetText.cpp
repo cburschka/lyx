@@ -261,8 +261,9 @@ void InsetText::doDispatch(Cursor & cur, FuncRequest & cmd)
 	if (cur.text() == &text_)
 		text_.dispatch(cur, cmd);
 	else
-		//FIXME we probably also want to dispatch to Inset when
-		//text_ could do nothing with the FuncRequest.
+		cur.undispatched();
+	
+	if (!cur.result().dispatched())
 		Inset::doDispatch(cur, cmd);
 }
 
@@ -285,10 +286,13 @@ bool InsetText::getStatus(Cursor & cur, FuncRequest const & cmd,
 	default:
 		// Dispatch only to text_ if the cursor is inside
 		// the text_. It is not for context menus (bug 5797).
+		bool ret = false;
 		if (cur.text() == &text_)
-			return text_.getStatus(cur, cmd, status);
-		else 
-			return Inset::getStatus(cur, cmd, status);
+			ret = text_.getStatus(cur, cmd, status);
+		
+		if (!ret)
+			ret = Inset::getStatus(cur, cmd, status);
+		return ret;
 	}
 }
 
