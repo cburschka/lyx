@@ -33,6 +33,7 @@
 #include "ui_PreambleUi.h"
 #include "ui_PDFSupportUi.h"
 #include "ui_ModulesUi.h"
+#include "ui_OutputUi.h"
 
 #include <list>
 #include <map>
@@ -70,6 +71,7 @@ public:
 	void paramsToDialog();
 	void updateFontsize(std::string const &, std::string const &);
 	void updateFontlist();
+	void updateDefaultFormat();
 	void updatePagestyle(std::string const &, std::string const &);
 
 	void showPreamble();
@@ -114,6 +116,7 @@ private:
 	UiWidget<Ui::LaTeXUi> *latexModule;
 	UiWidget<Ui::PDFSupportUi> *pdfSupportModule;
 	UiWidget<Ui::ModulesUi> *modulesModule;
+	UiWidget<Ui::OutputUi> *outputModule;
 	PreambleModule *preambleModule;
 	
 	GuiBranches *branchesModule;

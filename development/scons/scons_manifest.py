@@ -913,6 +913,7 @@ src_frontends_qt4_ui_files = Split('''
     NomenclUi.ui
     NoteUi.ui
     NumberingUi.ui
+    OutputUi.ui
     PageLayoutUi.ui
     ParagraphUi.ui
     PDFSupportUi.ui

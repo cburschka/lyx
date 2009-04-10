@@ -30,6 +30,7 @@
 #include "Color.h"
 #include "Encoding.h"
 #include "FloatPlacement.h"
+#include "Format.h"
 #include "FuncRequest.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
@@ -583,8 +584,18 @@ GuiDocument::GuiDocument(GuiView & lv)
 	// initialize the length validator
 	bc().addCheckedLineEdit(textLayoutModule->skipLE);
 
-	fontModule = new UiWidget<Ui::FontUi>;
+	// output
+	outputModule = new UiWidget<Ui::OutputUi>;
+
+	connect(outputModule->xetexCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(outputModule->xetexCB, SIGNAL(toggled(bool)),
+		this, SLOT(xetexChanged(bool)));
+	connect(outputModule->defaultFormatCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+
 	// fonts
+	fontModule = new UiWidget<Ui::FontUi>;
 	connect(fontModule->fontsRomanCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 	connect(fontModule->fontsRomanCO, SIGNAL(activated(int)),
@@ -611,10 +622,6 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(fontModule->fontOsfCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
-	connect(fontModule->xetexCB, SIGNAL(clicked()),
-		this, SLOT(change_adaptor()));
-	connect(fontModule->xetexCB, SIGNAL(toggled(bool)),
-		this, SLOT(xetexChanged(bool)));
 
 	updateFontlist();
 
@@ -982,6 +989,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	docPS->addPanel(floatModule, qt_("Float Placement"));
 	docPS->addPanel(bulletsModule, qt_("Bullets"));
 	docPS->addPanel(branchesModule, qt_("Branches"));
+	docPS->addPanel(outputModule, qt_("Output"));
 	docPS->addPanel(preambleModule, qt_("LaTeX Preamble"));
 	docPS->setCurrentPanel(qt_("Document Class"));
 // FIXME: hack to work around resizing bug in Qt >= 4.2
@@ -1161,6 +1169,7 @@ void GuiDocument::setCustomMargins(bool custom)
 void GuiDocument::xetexChanged(bool xetex)
 {
 	updateFontlist();
+	updateDefaultFormat();
 	langModule->encodingCO->setEnabled(!xetex &&
 		!langModule->defaultencodingRB->isChecked());
 	langModule->defaultencodingRB->setEnabled(!xetex);
@@ -1197,7 +1206,7 @@ void GuiDocument::updateFontlist()
 	fontModule->fontsTypewriterCO->clear();
 
 	// With XeTeX, we have access to all system fonts, but not the LaTeX fonts
-	if (fontModule->xetexCB->isChecked()) {
+	if (outputModule->xetexCB->isChecked()) {
 		fontModule->fontsRomanCO->addItem(qt_("Default"));
 		fontModule->fontsSansCO->addItem(qt_("Default"));
 		fontModule->fontsTypewriterCO->addItem(qt_("Default"));
@@ -1235,7 +1244,7 @@ void GuiDocument::updateFontlist()
 
 void GuiDocument::romanChanged(int item)
 {
-	if (fontModule->xetexCB->isChecked()) {
+	if (outputModule->xetexCB->isChecked()) {
 		fontModule->fontScCB->setEnabled(false);
 		return;
 	}
@@ -1247,7 +1256,7 @@ void GuiDocument::romanChanged(int item)
 
 void GuiDocument::sansChanged(int item)
 {
-	if (fontModule->xetexCB->isChecked()) {
+	if (outputModule->xetexCB->isChecked()) {
 		fontModule->fontScCB->setEnabled(false);
 		return;
 	}
@@ -1260,7 +1269,7 @@ void GuiDocument::sansChanged(int item)
 
 void GuiDocument::ttChanged(int item)
 {
-	if (fontModule->xetexCB->isChecked()) {
+	if (outputModule->xetexCB->isChecked()) {
 		fontModule->fontScCB->setEnabled(false);
 		return;
 	}
@@ -1599,6 +1608,32 @@ void GuiDocument::updateNumbering()
 }
 
 
+void GuiDocument::updateDefaultFormat()
+{
+	// make a copy in order to consider unapplied changes
+	Buffer * tmpbuf = const_cast<Buffer *>(&buffer());
+	tmpbuf->params().useXetex = outputModule->xetexCB->isChecked();
+	int idx = latexModule->classCO->currentIndex();
+	if (idx >= 0) {
+		string const classname = classes_model_.getIDString(idx);
+		tmpbuf->params().setBaseClass(classname);
+		tmpbuf->params().makeDocumentClass();
+	}
+	outputModule->defaultFormatCO->blockSignals(true);
+	outputModule->defaultFormatCO->clear();
+	outputModule->defaultFormatCO->addItem(qt_("Default"),
+				QVariant(QString("default")));
+	typedef vector<Format const *> Formats;
+	Formats formats = tmpbuf->exportableFormats(true);
+	Formats::const_iterator cit = formats.begin();
+	Formats::const_iterator end = formats.end();
+	for (; cit != end; ++cit)
+		outputModule->defaultFormatCO->addItem(qt_((*cit)->prettyname()),
+				QVariant(toqstr((*cit)->name())));
+	outputModule->defaultFormatCO->blockSignals(false);
+}
+
+
 void GuiDocument::applyView()
 {
 	// preamble
@@ -1799,10 +1834,14 @@ void GuiDocument::applyView()
 
 	bp_.float_placement = floatModule->get();
 
-	// fonts
-	bool const xetex = fontModule->xetexCB->isChecked();
+	// output
+	bp_.defaultOutputFormat = fromqstr(outputModule->defaultFormatCO->itemData(
+		outputModule->defaultFormatCO->currentIndex()).toString());
+
+	bool const xetex = outputModule->xetexCB->isChecked();
 	bp_.useXetex = xetex;
 
+	// fonts
 	if (xetex) {
 		if (fontModule->fontsRomanCO->currentIndex() == 0)
 			bp_.fontsRoman = "default";
@@ -2127,11 +2166,22 @@ void GuiDocument::paramsToDialog()
 
 	floatModule->set(bp_.float_placement);
 
+	// Output
+	// update combobox with formats
+	updateDefaultFormat();
+	int index = outputModule->defaultFormatCO->findData(toqstr(
+		bp_.defaultOutputFormat));
+	// set to default if format is not found 
+	if (index == -1)
+		index = 0;
+	outputModule->defaultFormatCO->setCurrentIndex(index);
+	outputModule->xetexCB->setEnabled(bp_.baseClass()->outputType() == lyx::LATEX);
+	outputModule->xetexCB->setChecked(
+		bp_.baseClass()->outputType() == lyx::LATEX && bp_.useXetex);
+
 	// Fonts
 	updateFontsize(documentClass().opt_fontsize(),
 			bp_.fontsize);
-
-	fontModule->xetexCB->setChecked(bp_.useXetex);
 
 	if (bp_.useXetex) {
 		for (int i = 0; i < fontModule->fontsRomanCO->count(); ++i) {

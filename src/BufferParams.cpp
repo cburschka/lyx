@@ -351,6 +351,7 @@ BufferParams::BufferParams()
 	fontsTypewriterScale = 100;
 	inputenc = "auto";
 	graphicsDriver = "default";
+	defaultOutputFormat = "default";
 	sides = OneSide;
 	columns = 1;
 	listings_params = string();
@@ -509,6 +510,8 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		lex >> inputenc;
 	} else if (token == "\\graphics") {
 		readGraphicsDriver(lex);
+	} else if (token == "\\default_output_format") {
+		lex >> defaultOutputFormat;
 	} else if (token == "\\font_roman") {
 		lex.eatLine();
 		fontsRoman = lex.getString();
@@ -758,6 +761,7 @@ void BufferParams::writeFile(ostream & os) const
 		os << "\\font_cjk " << fontsCJK << '\n';
 	}
 	os << "\n\\graphics " << graphicsDriver << '\n';
+	os << "\\default_output_format " << defaultOutputFormat << '\n';
 
 	if (!float_placement.empty()) {
 		os << "\\float_placement " << float_placement << '\n';

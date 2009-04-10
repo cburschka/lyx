@@ -267,6 +267,7 @@ UIFILES = \
 	NomenclUi.ui \
 	NoteUi.ui \
 	NumberingUi.ui \
+	OutputUi.ui \
 	PageLayoutUi.ui \
 	ParagraphUi.ui \
 	PDFSupportUi.ui \

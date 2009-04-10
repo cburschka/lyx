@@ -181,6 +181,8 @@ public:
 	/* some LaTeX options */
 	/// The graphics driver
 	std::string graphicsDriver;
+	/// The default output format
+	std::string defaultOutputFormat;
 	/// the rm font
 	std::string fontsRoman;
 	/// the sf font

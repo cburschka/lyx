@@ -184,11 +184,13 @@ public:
 	// accessors
 	///////////////////////////////////////////////////////////////////
 	///
-	std::string const & name() const { return name_; };
+	std::string const & name() const { return name_; }
 	///
-	std::string const & description() const {	return description_; };
+	std::string const & description() const { return description_; }
 	///
 	std::string const & latexname() const { return latexname_; }
+	/// Can be LaTeX, DocBook, etc.
+	OutputType outputType() const { return outputType_; }
 protected:
 	/// Protect construction
 	TextClass();

@@ -287,6 +287,15 @@ def revert_xetex(document):
     document.header[i] = "\\font_tt_scale 100"
 
 
+def revert_outputformat(document):
+    " Remove default output format param "
+    i = find_token(document.header, '\\default_output_format', 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\default_output_format.")
+        return
+    del document.header[i]
+
+
 ##
 # Conversion hub
 #
@@ -295,10 +304,12 @@ supported_versions = ["2.0.0","2.0"]
 convert = [[346, []],
            [347, []],
            [348, []],
-           [349, []]
+           [349, []],
+           [350, []]
           ]
 
-revert =  [[348, [revert_xetex]],
+revert =  [[349, [revert_outputformat]],
+           [348, [revert_xetex]],
            [347, [revert_phantom, revert_hphantom, revert_vphantom]],
            [346, [revert_tabularvalign]],
            [345, [revert_swiss]]

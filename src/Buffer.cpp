@@ -124,7 +124,7 @@ namespace {
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-int const LYX_FORMAT = 349;  // jspitzm: initial XeTeX support
+int const LYX_FORMAT = 350;  // jspitzm: default output format
 
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;
@@ -2654,6 +2654,9 @@ string Buffer::bufferFormat() const
 
 string Buffer::getDefaultOutputFormat() const
 {
+	if (!params().defaultOutputFormat.empty()
+	    && params().defaultOutputFormat != "default")
+		return params().defaultOutputFormat;
 	typedef vector<Format const *> Formats;
 	Formats formats = exportableFormats(true);
 	if (isDocBook()
