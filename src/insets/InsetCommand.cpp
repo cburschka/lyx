@@ -158,6 +158,7 @@ bool InsetCommand::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_ERT_INSERT:
 		status.setEnabled(false);
 		return true;
+	
 	// we handle these
 	case LFUN_INSET_MODIFY:
 		if (cmd.getArg(0) == "changetype") {
@@ -167,9 +168,12 @@ bool InsetCommand::getStatus(Cursor & cur, FuncRequest const & cmd,
 		} 
 		status.setEnabled(true);
 		return true;
+	
+	case LFUN_INSET_SETTINGS:
 	case LFUN_INSET_DIALOG_UPDATE:
 		status.setEnabled(true);
 		return true;
+	
 	default:
 		return Inset::getStatus(cur, cmd, status);
 	}

@@ -239,6 +239,7 @@ bool InsetBox::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return true;
 
 	case LFUN_INSET_DIALOG_UPDATE:
+	case LFUN_INSET_SETTINGS:
 		flag.setEnabled(true);
 		return true;
 

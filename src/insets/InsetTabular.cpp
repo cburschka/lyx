@@ -3742,6 +3742,12 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cell(cur.idx())->dispatch(cur, cmd);
 			break;
 		}
+
+	case LFUN_INSET_SETTINGS:
+		// relay this lfun to Inset, not to the cell.
+		Inset::doDispatch(cur, cmd);
+		break;
+
 	default:
 		// we try to handle this event in the insets dispatch function.
 		cell(cur.idx())->dispatch(cur, cmd);
@@ -4068,6 +4074,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 		} 
 		return cell(cur.idx())->getStatus(cur, cmd, status);
 
+	case LFUN_INSET_SETTINGS:
 	case LFUN_INSET_MODIFY:
 		if (insetCode(cmd.getArg(0)) == TABULAR_CODE) {
 			status.setEnabled(true);

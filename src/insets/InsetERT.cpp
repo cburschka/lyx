@@ -137,6 +137,7 @@ bool InsetERT::getStatus(Cursor & cur, FuncRequest const & cmd,
 		case LFUN_PASTE:
 		case LFUN_PRIMARY_SELECTION_PASTE:
 		case LFUN_QUOTE_INSERT:
+		case LFUN_INSET_SETTINGS:
 			status.setEnabled(true);
 			return true;
 

@@ -285,6 +285,7 @@ bool InsetPhantom::getStatus(Cursor & cur, FuncRequest const & cmd,
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY:
+	case LFUN_INSET_SETTINGS:
 		flag.setEnabled(true);
 		return true;
 
