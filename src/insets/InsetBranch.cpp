@@ -29,6 +29,7 @@
 
 #include "support/debug.h"
 #include "support/gettext.h"
+#include "support/lstrings.h"
 
 #include "frontends/Application.h"
 
@@ -72,7 +73,11 @@ void InsetBranch::read(Lexer & lex)
 
 docstring InsetBranch::toolTip(BufferView const &, int, int) const
 {
-	return _("Branch: ") + params_.branch;
+	docstring const status = isBranchSelected() ? 
+		_("active") : _("non-active");
+	return support::bformat(_("Branch (%1$s): %2$s"),
+				  status,
+				  params_.branch);
 }
 
 
