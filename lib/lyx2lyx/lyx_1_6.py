@@ -769,7 +769,6 @@ def revert_flex(document):
         document.body[i] = document.body[i].replace('\\begin_inset Flex', '\\begin_inset CharStyle')
 
 
-#  Discard PDF options for hyperref
 def revert_pdf_options(document):
         "Revert PDF options for hyperref."
         # store the PDF options and delete the entries from the Lyx file
