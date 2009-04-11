@@ -49,7 +49,7 @@ theorems-ams
 \begin_body
 
 \begin_layout Section*
-LFUNs documentation automatically generated 03.04.2009.
+LFUNs documentation automatically generated 11.04.2009.
 \end_layout
 
 \begin_layout Standard
@@ -4337,6 +4337,24 @@ Origin schmitt, 4 Oct 2006
 \end_layout
 
 \begin_layout Subsection*
+LFUN_CHANGE_PREVIOUS 
+\end_layout
+
+\begin_layout Description
+Action Moves the cursor to the position of the previous change of the change
+ tracking records.
+  
+\end_layout
+
+\begin_layout Description
+Syntax change-previous 
+\end_layout
+
+\begin_layout Description
+Origin vfr, 4 Apr 2009 
+\end_layout
+
+\begin_layout Subsection*
 LFUN_CHANGES_MERGE 
 \end_layout
 
@@ -6043,12 +6061,14 @@ Notion Displays the contents of the current buffer in the chosen format,
 \end_layout
 
 \begin_layout Description
-Syntax buffer-view <FORMAT> 
+Syntax buffer-view [<FORMAT>] 
 \end_layout
 
 \begin_layout Description
 Params <FORMAT>: The format to display, where this is one of the formats
  defined (in the current GUI) in the Tools>Preferences>File Formats dialog.
+ If no format is given, the default format as specified in the same dialog
+ is used.
   
 \end_layout
 
@@ -6071,12 +6091,14 @@ EW) the output will be rewriten - updated.
 \end_layout
 
 \begin_layout Description
-Syntax buffer-update <FORMAT> 
+Syntax buffer-update [<FORMAT>] 
 \end_layout
 
 \begin_layout Description
 Params <FORMAT>: The format to display, where this is one of the formats
  defined (in the current GUI) in the Tools>Preferences>File Formats dialog.
+ If no format is given, the default format as specified in the same dialog
+ is used.
   
 \end_layout
 
@@ -6177,13 +6199,20 @@ LFUN_MASTER_BUFFER_UPDATE
 
 \begin_layout Description
 Action When run from a child document, this updates (exports) document built
- from the master buffer.
- If a master is not found, it updates the current buffer.
+ from the master buffer, if available.
   
 \end_layout
 
 \begin_layout Description
-Syntax master-buffer-update 
+Syntax master-buffer-update [<FORMAT>] 
+\end_layout
+
+\begin_layout Description
+Params <FORMAT>: The format to display, where this is one of the formats
+ defined (in the current GUI) in the Tools>Preferences>File Formats dialog.
+ If no format is given, the default format as specified in the same dialog
+ is used.
+  
 \end_layout
 
 \begin_layout Description
@@ -6196,13 +6225,20 @@ LFUN_MASTER_BUFFER_VIEW
 
 \begin_layout Description
 Action When run from a child document, this command shows a preview built
- from the master buffer.
- If a master is not found, it previews the current buffer.
+ from the master buffer, if available.
   
 \end_layout
 
 \begin_layout Description
-Syntax master-buffer-view 
+Syntax master-buffer-view [<FORMAT>] 
+\end_layout
+
+\begin_layout Description
+Params <FORMAT>: The format to display, where this is one of the formats
+ defined (in the current GUI) in the Tools>Preferences>File Formats dialog.
+ If no format is given, the default format as specified in the same dialog
+ is used.
+  
 \end_layout
 
 \begin_layout Description
@@ -6828,6 +6864,67 @@ Syntax copy-label-as-reference
 
 \begin_layout Description
 Origin sts, 16 Nov 2008 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_INSERT_LABEL_AS_REF 
+\end_layout
+
+\begin_layout Description
+Action Inserts the label as a cross-reference at the position of the cursor.
+  
+\end_layout
+
+\begin_layout Description
+Syntax insert-label-as-reference 
+\end_layout
+
+\begin_layout Description
+Origin vfr, 7 Apr 2009 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUFFER_ZOOM_IN 
+\end_layout
+
+\begin_layout Description
+Action Increases the zoom of the screen fonts.
+  
+\end_layout
+
+\begin_layout Description
+Syntax buffer-zoom-in [<ZOOM>] 
+\end_layout
+
+\begin_layout Description
+Params <ZOOM>: The zoom in %, the default is 20.
+  
+\end_layout
+
+\begin_layout Description
+Origin vfr, 30 Mar 2009 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BUFFER_ZOOM_OUT 
+\end_layout
+
+\begin_layout Description
+Action Decreases the zoom of the screen fonts.
+  
+\end_layout
+
+\begin_layout Description
+Syntax buffer-zoom-out [<ZOOM>] 
+\end_layout
+
+\begin_layout Description
+Params <ZOOM>: The zoom in %, the default is 20.
+  
+\end_layout
+
+\begin_layout Description
+Origin vfr, 30 Mar 2009 
 \end_layout
 
 \end_body
