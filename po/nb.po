@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-04-03 13:11+0200\n"
+"POT-Creation-Date: 2009-04-11 09:18+0200\n"
 "PO-Revision-Date: 2009-02-27 17:25+0100\n"
 "Last-Translator: Helge Hafting <helge.hafting@aitel.hist.no>\n"
 "Language-Team: norsk <no@li.org>\n"
@@ -81,15 +81,15 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/AskForTextUi.ui:94
 #: src/frontends/qt4/ui/CitationUi.ui:461
 #: src/frontends/qt4/ui/DocumentUi.ui:152
-#: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:862
-#: src/Buffer.cpp:2582 src/Buffer.cpp:2606 src/Buffer.cpp:2641
+#: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:883
+#: src/Buffer.cpp:2610 src/Buffer.cpp:2634 src/Buffer.cpp:2669
 #: src/LyXFunc.cpp:713 src/LyXFunc.cpp:852 src/LyXFunc.cpp:1026
 #: src/LyXVC.cpp:182 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1262
 #: src/frontends/qt4/GuiParagraph.cpp:69
-#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1531
-#: src/frontends/qt4/GuiView.cpp:1718 src/frontends/qt4/GuiView.cpp:1763
-#: src/frontends/qt4/GuiView.cpp:1823 src/insets/InsetBibtex.cpp:143
+#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1542
+#: src/frontends/qt4/GuiView.cpp:1729 src/frontends/qt4/GuiView.cpp:1774
+#: src/frontends/qt4/GuiView.cpp:1834 src/insets/InsetBibtex.cpp:143
 msgid "&Cancel"
 msgstr "&Avbryt"
 
@@ -374,7 +374,7 @@ msgstr "&Tilbakestill"
 msgid "&Apply"
 msgstr "&Bruk"
 
-#: src/frontends/qt4/ui/BoxUi.ui:285 src/frontends/qt4/ui/ExternalUi.ui:498
+#: src/frontends/qt4/ui/BoxUi.ui:285 src/frontends/qt4/ui/ExternalUi.ui:504
 #: src/frontends/qt4/ui/PageLayoutUi.ui:204
 msgid "&Height:"
 msgstr "&Høyde:"
@@ -387,7 +387,7 @@ msgstr "&Indre boks:"
 msgid "&Decoration:"
 msgstr "&Dekor:"
 
-#: src/frontends/qt4/ui/BoxUi.ui:330 src/frontends/qt4/ui/ExternalUi.ui:472
+#: src/frontends/qt4/ui/BoxUi.ui:330 src/frontends/qt4/ui/ExternalUi.ui:478
 #: src/frontends/qt4/ui/PageLayoutUi.ui:217
 #: src/frontends/qt4/ui/TabularUi.ui:100 src/frontends/qt4/ui/WrapUi.ui:85
 msgid "&Width:"
@@ -921,137 +921,137 @@ msgstr "Kladd"
 msgid "&Template"
 msgstr "&Mal"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:180
+#: src/frontends/qt4/ui/ExternalUi.ui:182
 msgid "Available templates"
 msgstr "Tilgjengelige maler"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:191
+#: src/frontends/qt4/ui/ExternalUi.ui:193
 #: src/frontends/qt4/ui/GraphicsUi.ui:448
 msgid "LaTe&X and LyX options"
 msgstr "LaTeX og LyX opsjoner"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:197
+#: src/frontends/qt4/ui/ExternalUi.ui:199
 #, fuzzy
 msgid "LaTeX Options"
 msgstr "LaTeX-opsjoner"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:215
+#: src/frontends/qt4/ui/ExternalUi.ui:217
 msgid "O&ption:"
 msgstr "Innstillinger:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:228
+#: src/frontends/qt4/ui/ExternalUi.ui:230
 msgid "Forma&t:"
 msgstr "Forma&t:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:252
+#: src/frontends/qt4/ui/ExternalUi.ui:254
 msgid "&Show in LyX"
 msgstr "&Vis i LyX"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:264
-#: src/frontends/qt4/ui/ExternalUi.ui:286
+#: src/frontends/qt4/ui/ExternalUi.ui:266
+#: src/frontends/qt4/ui/ExternalUi.ui:290
 #: src/frontends/qt4/ui/GraphicsUi.ui:559
 #: src/frontends/qt4/ui/GraphicsUi.ui:566
 msgid "Percentage to scale by in LyX"
 msgstr "Prosentvis skalering for visning i LyX"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:267
+#: src/frontends/qt4/ui/ExternalUi.ui:269
 #: src/frontends/qt4/ui/GraphicsUi.ui:569
 msgid "Sca&le on Screen (%):"
 msgstr "Størrelse på skjermen (%):"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:323
+#: src/frontends/qt4/ui/ExternalUi.ui:327
 msgid "Si&ze and Rotation"
 msgstr "St&ørrelse og rotasjon"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:335
+#: src/frontends/qt4/ui/ExternalUi.ui:339
 msgid "Rotate"
 msgstr "Rotasjon"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:380
-#: src/frontends/qt4/ui/ExternalUi.ui:410
+#: src/frontends/qt4/ui/ExternalUi.ui:386
+#: src/frontends/qt4/ui/ExternalUi.ui:416
 #: src/frontends/qt4/ui/GraphicsUi.ui:240
 #: src/frontends/qt4/ui/GraphicsUi.ui:247
 msgid "Angle to rotate image by"
 msgstr "Vinkel for å vri bildet"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:390
-#: src/frontends/qt4/ui/ExternalUi.ui:403
+#: src/frontends/qt4/ui/ExternalUi.ui:396
+#: src/frontends/qt4/ui/ExternalUi.ui:409
 #: src/frontends/qt4/ui/GraphicsUi.ui:212
 #: src/frontends/qt4/ui/GraphicsUi.ui:219
 msgid "The origin of the rotation"
 msgstr "Punktet bildet roteres rundt"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:393
+#: src/frontends/qt4/ui/ExternalUi.ui:399
 #, fuzzy
 msgid "Ori&gin:"
 msgstr "&Origo:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:413
+#: src/frontends/qt4/ui/ExternalUi.ui:419
 msgid "A&ngle:"
 msgstr "Vi&nkel:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:428
+#: src/frontends/qt4/ui/ExternalUi.ui:434
 msgid "Scale"
 msgstr "Skaler"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:452
+#: src/frontends/qt4/ui/ExternalUi.ui:458
 #: src/frontends/qt4/ui/GraphicsUi.ui:131
 msgid "Height of image in output"
 msgstr "Bildehøyde i utskrift"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:462
+#: src/frontends/qt4/ui/ExternalUi.ui:468
 #: src/frontends/qt4/ui/GraphicsUi.ui:97
 msgid "Width of image in output"
 msgstr "Bildebredde i utskrift"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:485
+#: src/frontends/qt4/ui/ExternalUi.ui:491
 msgid "Maintain aspect ratio with largest dimension"
 msgstr "Korrekt bredde/høydeforhold, etter største dimensjon"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:488
+#: src/frontends/qt4/ui/ExternalUi.ui:494
 #: src/frontends/qt4/ui/GraphicsUi.ui:177
 msgid "&Maintain aspect ratio"
 msgstr "&Korrekt forhold mellom bredde og høyde"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:511
+#: src/frontends/qt4/ui/ExternalUi.ui:517
 msgid "Crop"
 msgstr "Klipp"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:526
+#: src/frontends/qt4/ui/ExternalUi.ui:532
 #: src/frontends/qt4/ui/GraphicsUi.ui:309
 msgid "Clip to bounding box values"
 msgstr "Klipp til rammestørrelsen"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:529
+#: src/frontends/qt4/ui/ExternalUi.ui:535
 #: src/frontends/qt4/ui/GraphicsUi.ui:312
 msgid "Clip to &bounding box"
 msgstr "Klipp til ramma"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:536
+#: src/frontends/qt4/ui/ExternalUi.ui:542
 #: src/frontends/qt4/ui/GraphicsUi.ui:345
 msgid "&Left bottom:"
 msgstr "Venstre nederst"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:549
+#: src/frontends/qt4/ui/ExternalUi.ui:555
 msgid "x"
 msgstr "x"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:556
+#: src/frontends/qt4/ui/ExternalUi.ui:562
 #: src/frontends/qt4/ui/GraphicsUi.ui:383
 msgid "Right &top:"
 msgstr "Høyre øverst"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:566
+#: src/frontends/qt4/ui/ExternalUi.ui:572
 #: src/frontends/qt4/ui/GraphicsUi.ui:437
 msgid "Get bounding box from the (EPS) file"
 msgstr "Hent størrelse fra (EPS)-fil"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:569
+#: src/frontends/qt4/ui/ExternalUi.ui:575
 #: src/frontends/qt4/ui/GraphicsUi.ui:440
 msgid "&Get from File"
 msgstr "&Les fra fil"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:599
+#: src/frontends/qt4/ui/ExternalUi.ui:605
 msgid "y"
 msgstr "y"
 
@@ -1488,11 +1488,11 @@ msgstr "Velg dokument som skal settes inn"
 msgid "&Include Type:"
 msgstr "&Innkluderingsform:"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:293 src/insets/InsetInclude.cpp:337
+#: src/frontends/qt4/ui/IncludeUi.ui:293 src/insets/InsetInclude.cpp:341
 msgid "Include"
 msgstr "Inkluder"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:298 src/insets/InsetInclude.cpp:328
+#: src/frontends/qt4/ui/IncludeUi.ui:298 src/insets/InsetInclude.cpp:332
 msgid "Input"
 msgstr "Input"
 
@@ -1500,8 +1500,8 @@ msgstr "Input"
 msgid "Verbatim"
 msgstr "Verbatim"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:939
-#: src/insets/InsetInclude.cpp:945
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:964
+#: src/insets/InsetInclude.cpp:970
 msgid "Program Listing"
 msgstr "Programlisting"
 
@@ -3154,7 +3154,7 @@ msgid "&User interface file:"
 msgstr "&Brukergrensesnittfil:"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:713
-#: src/frontends/qt4/GuiView.cpp:1823
+#: src/frontends/qt4/GuiView.cpp:1834
 msgid "&Save"
 msgstr "Lagre"
 
@@ -3291,7 +3291,7 @@ msgstr "Oppdater referanselisten"
 msgid "Jump to the label"
 msgstr "Flytt markøren til referansen"
 
-#: src/frontends/qt4/ui/RefUi.ui:259 src/frontends/qt4/GuiRef.cpp:291
+#: src/frontends/qt4/ui/RefUi.ui:259 src/frontends/qt4/GuiRef.cpp:284
 msgid "&Go to Label"
 msgstr "&Gå til merket"
 
@@ -10193,7 +10193,7 @@ msgstr "Menyseparator|M"
 msgid "Horizontal Line"
 msgstr "Vannrett linje"
 
-#: lib/ui/classic.ui:261 src/insets/InsetNewpage.cpp:182
+#: lib/ui/classic.ui:261 src/insets/InsetNewpage.cpp:181
 msgid "Page Break"
 msgstr "Sideskift"
 
@@ -10935,19 +10935,19 @@ msgstr "Justert linjeskift|J"
 
 #: lib/ui/stdcontext.inc:268 lib/ui/stdcontext.inc:314 lib/ui/stdmenus.inc:88
 #: lib/ui/stdtoolbars.inc:66 src/Text3.cpp:1037
-#: src/mathed/InsetMathNest.cpp:547
+#: src/mathed/InsetMathNest.cpp:549
 msgid "Cut"
 msgstr "Klipp"
 
 #: lib/ui/stdcontext.inc:269 lib/ui/stdcontext.inc:315 lib/ui/stdmenus.inc:89
 #: lib/ui/stdtoolbars.inc:67 src/Text3.cpp:1042
-#: src/mathed/InsetMathNest.cpp:555
+#: src/mathed/InsetMathNest.cpp:557
 msgid "Copy"
 msgstr "Kopier"
 
 #: lib/ui/stdcontext.inc:270 lib/ui/stdcontext.inc:316 lib/ui/stdmenus.inc:90
 #: lib/ui/stdtoolbars.inc:68 src/Text3.cpp:995
-#: src/mathed/InsetMathGrid.cpp:1256 src/mathed/InsetMathNest.cpp:527
+#: src/mathed/InsetMathGrid.cpp:1256 src/mathed/InsetMathNest.cpp:529
 msgid "Paste"
 msgstr "Lim inn"
 
@@ -11589,11 +11589,11 @@ msgstr "Skriv ut dokumentet"
 msgid "Check spelling"
 msgstr "Stavesjekk"
 
-#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:1061
+#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:1074
 msgid "Undo"
 msgstr "Angre"
 
-#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:1070
+#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:1083
 msgid "Redo"
 msgstr "Gjør omigjen"
 
@@ -14493,8 +14493,8 @@ msgstr "Neste kommando"
 msgid "Table (CSV)"
 msgstr "Tabell (kommaseparert)"
 
-#: lib/configure.py:339 src/frontends/qt4/GuiView.cpp:850
-#: src/frontends/qt4/GuiView.cpp:851 src/mathed/MathMacroTemplate.cpp:537
+#: lib/configure.py:339 src/frontends/qt4/GuiView.cpp:853
+#: src/frontends/qt4/GuiView.cpp:854 src/mathed/MathMacroTemplate.cpp:537
 msgid "LyX"
 msgstr "LyX"
 
@@ -14606,57 +14606,57 @@ msgstr "Bibliografi registreres i innholdsfortegnelsen"
 msgid "before"
 msgstr "før"
 
-#: src/Buffer.cpp:239
+#: src/Buffer.cpp:254
 msgid "Disk Error: "
 msgstr ""
 
-#: src/Buffer.cpp:240
+#: src/Buffer.cpp:255
 #, fuzzy, c-format
 msgid ""
 "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
 msgstr "Kunne ikke fjerne den midlertidige mappa %1$s"
 
-#: src/Buffer.cpp:301
+#: src/Buffer.cpp:317
 msgid "Could not remove temporary directory"
 msgstr "Kunne ikke fjerne midlertidig mappe"
 
-#: src/Buffer.cpp:302
+#: src/Buffer.cpp:318
 #, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "Kunne ikke fjerne den midlertidige mappa %1$s"
 
-#: src/Buffer.cpp:517
+#: src/Buffer.cpp:533
 msgid "Unknown document class"
 msgstr "Ukjent dokumentklasse"
 
-#: src/Buffer.cpp:518
+#: src/Buffer.cpp:534
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "Bruker standard dokumentklasse, fordi klassen %1$s er ukjent."
 
-#: src/Buffer.cpp:522 src/Text.cpp:241
+#: src/Buffer.cpp:538 src/Text.cpp:241
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Ukjent symbol: %1$s %2$s\n"
 
-#: src/Buffer.cpp:526 src/Buffer.cpp:533 src/Buffer.cpp:553
+#: src/Buffer.cpp:542 src/Buffer.cpp:549 src/Buffer.cpp:569
 msgid "Document header error"
 msgstr "Feil i dokumenthodet"
 
-#: src/Buffer.cpp:532
+#: src/Buffer.cpp:548
 msgid "\\begin_header is missing"
 msgstr "\\begin_header mangler"
 
-#: src/Buffer.cpp:552
+#: src/Buffer.cpp:568
 msgid "\\begin_document is missing"
 msgstr "\\begin_document mangler"
 
-#: src/Buffer.cpp:568 src/Buffer.cpp:574 src/BufferView.cpp:1180
-#: src/BufferView.cpp:1186
+#: src/Buffer.cpp:584 src/Buffer.cpp:590 src/BufferView.cpp:1193
+#: src/BufferView.cpp:1199
 msgid "Changes not shown in LaTeX output"
 msgstr ""
 
-#: src/Buffer.cpp:569 src/BufferView.cpp:1181
+#: src/Buffer.cpp:585 src/BufferView.cpp:1194
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -14664,7 +14664,7 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:575 src/BufferView.cpp:1187
+#: src/Buffer.cpp:591 src/BufferView.cpp:1200
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -14672,20 +14672,20 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:731 src/Buffer.cpp:814
+#: src/Buffer.cpp:752 src/Buffer.cpp:835
 msgid "Document format failure"
 msgstr "Feil med dokumentformatet"
 
-#: src/Buffer.cpp:732
+#: src/Buffer.cpp:753
 #, fuzzy, c-format
 msgid "%1$s is not a readable LyX document."
 msgstr "%1$s er ikke et LyX-dokument."
 
-#: src/Buffer.cpp:769
+#: src/Buffer.cpp:790
 msgid "Conversion failed"
 msgstr "Kunne ikke konvertere"
 
-#: src/Buffer.cpp:770
+#: src/Buffer.cpp:791
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
@@ -14694,11 +14694,11 @@ msgstr ""
 "%1$s ble laget med en annen versjon av LyX, men en midlertidig fil for "
 "konvertering kunne ikke bli laget."
 
-#: src/Buffer.cpp:779
+#: src/Buffer.cpp:800
 msgid "Conversion script not found"
 msgstr "Fant ikke konverteringsscriptet"
 
-#: src/Buffer.cpp:780
+#: src/Buffer.cpp:801
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
@@ -14707,11 +14707,11 @@ msgstr ""
 "%1$s er fra en annen versjon av LyX, men konverteringsskriptet lyx2lyx var "
 "ikke å finne."
 
-#: src/Buffer.cpp:799
+#: src/Buffer.cpp:820
 msgid "Conversion script failed"
 msgstr "Konverteringsscriptet mislyktes"
 
-#: src/Buffer.cpp:800
+#: src/Buffer.cpp:821
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the lyx2lyx script failed to "
@@ -14720,16 +14720,16 @@ msgstr ""
 "%1$s er fra en annen versjon av LyX, men konverteringsscriptet lyx2lyx "
 "mislyktes med konverteringen."
 
-#: src/Buffer.cpp:815
+#: src/Buffer.cpp:836
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr "%1$s tok uventet slutt, filen er sannsynligvis korrupt."
 
-#: src/Buffer.cpp:848
+#: src/Buffer.cpp:869
 msgid "Backup failure"
 msgstr "Sikkerhetskopi mislyktes"
 
-#: src/Buffer.cpp:849
+#: src/Buffer.cpp:870
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
@@ -14738,7 +14738,7 @@ msgstr ""
 "Kan ikke lage sikkerhetskopien %1$s.\n"
 "Vennligst sjekk at mappen fins og er skrivbar."
 
-#: src/Buffer.cpp:859
+#: src/Buffer.cpp:880
 #, c-format
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
@@ -14746,134 +14746,134 @@ msgid ""
 msgstr ""
 "Dokumentet %1$s er endret utenfor LyX. Sikker på at du vil skrive over filen?"
 
-#: src/Buffer.cpp:861
+#: src/Buffer.cpp:882
 msgid "Overwrite modified file?"
 msgstr "Overskrive endret fil?"
 
-#: src/Buffer.cpp:862 src/Exporter.cpp:49 src/LyXFunc.cpp:1026
-#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1531
-#: src/frontends/qt4/GuiView.cpp:1718
+#: src/Buffer.cpp:883 src/Exporter.cpp:49 src/LyXFunc.cpp:1026
+#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1542
+#: src/frontends/qt4/GuiView.cpp:1729
 msgid "&Overwrite"
 msgstr "&Overskrive"
 
-#: src/Buffer.cpp:886
+#: src/Buffer.cpp:907
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Lagrer dokument %1$s..."
 
-#: src/Buffer.cpp:899
+#: src/Buffer.cpp:920
 #, fuzzy
 msgid " could not write file!"
 msgstr "Kunne ikke lese filen"
 
-#: src/Buffer.cpp:906
+#: src/Buffer.cpp:927
 msgid " done."
 msgstr "ferdig."
 
-#: src/Buffer.cpp:985
+#: src/Buffer.cpp:1006
 msgid "Iconv software exception Detected"
 msgstr ""
 
-#: src/Buffer.cpp:985
+#: src/Buffer.cpp:1006
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
 "installed"
 msgstr ""
 
-#: src/Buffer.cpp:1007
+#: src/Buffer.cpp:1028
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr ""
 
-#: src/Buffer.cpp:1010
+#: src/Buffer.cpp:1031
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
 
-#: src/Buffer.cpp:1017
+#: src/Buffer.cpp:1038
 #, fuzzy
 msgid "iconv conversion failed"
 msgstr "Kunne ikke konvertere"
 
-#: src/Buffer.cpp:1022
+#: src/Buffer.cpp:1043
 #, fuzzy
 msgid "conversion failed"
 msgstr "Kunne ikke konvertere"
 
-#: src/Buffer.cpp:1299
+#: src/Buffer.cpp:1320
 msgid "Running chktex..."
 msgstr "Kjører chktex..."
 
-#: src/Buffer.cpp:1312
+#: src/Buffer.cpp:1333
 msgid "chktex failure"
 msgstr "chktex mislyktes"
 
-#: src/Buffer.cpp:1313
+#: src/Buffer.cpp:1334
 msgid "Could not run chktex successfully."
 msgstr "Mislyktes med chktex."
 
-#: src/Buffer.cpp:2161
+#: src/Buffer.cpp:2189
 msgid "Preview source code"
 msgstr "Forhåndsvist kildekode"
 
-#: src/Buffer.cpp:2174
+#: src/Buffer.cpp:2202
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Forhåndsvist kildekode for avsnitt %1$d"
 
-#: src/Buffer.cpp:2178
+#: src/Buffer.cpp:2206
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Forhåndsvist kildekode for avsnittene %1$s til %2$s"
 
-#: src/Buffer.cpp:2285
+#: src/Buffer.cpp:2313
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Autolagrer %1$s"
 
-#: src/Buffer.cpp:2329
+#: src/Buffer.cpp:2357
 msgid "Autosave failed!"
 msgstr "Autolagring feilet!"
 
-#: src/Buffer.cpp:2352
+#: src/Buffer.cpp:2380
 msgid "Autosaving current document..."
 msgstr "Autolagrer gjelende dokument..."
 
-#: src/Buffer.cpp:2402
+#: src/Buffer.cpp:2430
 msgid "Couldn't export file"
 msgstr "Kunne ikke eksportere fil"
 
-#: src/Buffer.cpp:2403
+#: src/Buffer.cpp:2431
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Ingen informasjon om å eksportere formatet %1$s."
 
-#: src/Buffer.cpp:2440
+#: src/Buffer.cpp:2468
 msgid "File name error"
 msgstr "Feil med filnavnet"
 
-#: src/Buffer.cpp:2441
+#: src/Buffer.cpp:2469
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Stien til dokumentet kan ikke inneholde mellomrom."
 
-#: src/Buffer.cpp:2483
+#: src/Buffer.cpp:2511
 msgid "Document export cancelled."
 msgstr "Avbrøt eksport av dokumentet."
 
-#: src/Buffer.cpp:2489
+#: src/Buffer.cpp:2517
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokumentet eksportert som %1$s til filen `%2$s'"
 
-#: src/Buffer.cpp:2495
+#: src/Buffer.cpp:2523
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokumentet eksportert som %1$s"
 
-#: src/Buffer.cpp:2565
+#: src/Buffer.cpp:2593
 #, c-format
 msgid ""
 "The specified document\n"
@@ -14883,11 +14883,11 @@ msgstr ""
 "Dokumentet %1$s\n"
 "var uleselig."
 
-#: src/Buffer.cpp:2567
+#: src/Buffer.cpp:2595
 msgid "Could not read document"
 msgstr "Kunne ikke åpne dokumentet"
 
-#: src/Buffer.cpp:2577
+#: src/Buffer.cpp:2605
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -14898,19 +14898,19 @@ msgstr ""
 "\n"
 "Gjenopprette det nødlagrede dokumentet?"
 
-#: src/Buffer.cpp:2580
+#: src/Buffer.cpp:2608
 msgid "Load emergency save?"
 msgstr "Åpne nødlagret fil?"
 
-#: src/Buffer.cpp:2581
+#: src/Buffer.cpp:2609
 msgid "&Recover"
 msgstr "&Gjenopprett"
 
-#: src/Buffer.cpp:2581
+#: src/Buffer.cpp:2609
 msgid "&Load Original"
 msgstr "&Åpne originalen"
 
-#: src/Buffer.cpp:2601
+#: src/Buffer.cpp:2629
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -14921,28 +14921,28 @@ msgstr ""
 "\n"
 "Åpne sikkerhetskopien i stedet?"
 
-#: src/Buffer.cpp:2604
+#: src/Buffer.cpp:2632
 msgid "Load backup?"
 msgstr "Åpne sikkerhetskopi i stedet?"
 
-#: src/Buffer.cpp:2605
+#: src/Buffer.cpp:2633
 msgid "&Load backup"
 msgstr "&Åpne sikkerhetskopien"
 
-#: src/Buffer.cpp:2605
+#: src/Buffer.cpp:2633
 msgid "Load &original"
 msgstr "Åpne &originalen"
 
-#: src/Buffer.cpp:2638
+#: src/Buffer.cpp:2666
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "Vil du hente inn dokumentet %1$s som er under versionskontroll?"
 
-#: src/Buffer.cpp:2640
+#: src/Buffer.cpp:2668
 msgid "Retrieve from version control?"
 msgstr "Vil du hente inn filen som er under versjonskontroll?"
 
-#: src/Buffer.cpp:2641
+#: src/Buffer.cpp:2669
 msgid "&Retrieve"
 msgstr "&Hent"
 
@@ -15069,93 +15069,93 @@ msgstr "Ingen flere insets"
 msgid "Save bookmark"
 msgstr "Lagre bokmerke"
 
-#: src/BufferView.cpp:1064
+#: src/BufferView.cpp:1077
 msgid "No further undo information"
 msgstr "Ikke mer \"Angre\" informasjon"
 
-#: src/BufferView.cpp:1073
+#: src/BufferView.cpp:1086
 msgid "No further redo information"
 msgstr "Ikke mer \"Gjør om\" informasjon"
 
-#: src/BufferView.cpp:1242 src/lyxfind.cpp:295 src/lyxfind.cpp:313
+#: src/BufferView.cpp:1255 src/lyxfind.cpp:295 src/lyxfind.cpp:313
 msgid "String not found!"
 msgstr "Streng ikke funnet!"
 
-#: src/BufferView.cpp:1266
+#: src/BufferView.cpp:1279
 msgid "Mark off"
 msgstr "Merke slått av"
 
-#: src/BufferView.cpp:1273
+#: src/BufferView.cpp:1286
 msgid "Mark on"
 msgstr "Merke på"
 
-#: src/BufferView.cpp:1280
+#: src/BufferView.cpp:1293
 msgid "Mark removed"
 msgstr "Fjernet merke"
 
-#: src/BufferView.cpp:1283
+#: src/BufferView.cpp:1296
 msgid "Mark set"
 msgstr "Merke satt"
 
-#: src/BufferView.cpp:1334
+#: src/BufferView.cpp:1347
 #, fuzzy
 msgid "Statistics for the selection:"
 msgstr "Bytt til det åpne dokumentet"
 
-#: src/BufferView.cpp:1336
+#: src/BufferView.cpp:1349
 #, fuzzy
 msgid "Statistics for the document:"
 msgstr "Bytt til det åpne dokumentet"
 
-#: src/BufferView.cpp:1339
+#: src/BufferView.cpp:1352
 #, fuzzy, c-format
 msgid "%1$d words"
 msgstr "%1$d ord kontrollert."
 
-#: src/BufferView.cpp:1341
+#: src/BufferView.cpp:1354
 #, fuzzy
 msgid "One word"
 msgstr "Nøkkelord"
 
-#: src/BufferView.cpp:1344
+#: src/BufferView.cpp:1357
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1347
+#: src/BufferView.cpp:1360
 msgid "One character (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1350
+#: src/BufferView.cpp:1363
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1353
+#: src/BufferView.cpp:1366
 msgid "One character (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1355
+#: src/BufferView.cpp:1368
 #, fuzzy
 msgid "Statistics"
 msgstr "Status"
 
-#: src/BufferView.cpp:2129
+#: src/BufferView.cpp:2142
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Setter inn dokumentet %1$s..."
 
-#: src/BufferView.cpp:2140
+#: src/BufferView.cpp:2153
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Satt inn document %1$s."
 
-#: src/BufferView.cpp:2142
+#: src/BufferView.cpp:2155
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Kunne ikke sette inn dokumentet %1$s"
 
-#: src/BufferView.cpp:2381
+#: src/BufferView.cpp:2417
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15166,26 +15166,26 @@ msgstr ""
 "%1$s.\n"
 "på grunn av feilen: %2$s"
 
-#: src/BufferView.cpp:2383
+#: src/BufferView.cpp:2419
 msgid "Could not read file"
 msgstr "Kunne ikke lese filen"
 
-#: src/BufferView.cpp:2390
+#: src/BufferView.cpp:2426
 #, fuzzy, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr "%1$s var uleselig"
 
-#: src/BufferView.cpp:2391 src/output.cpp:39
+#: src/BufferView.cpp:2427 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Kan ikke åpne fil"
 
-#: src/BufferView.cpp:2398
+#: src/BufferView.cpp:2434
 msgid "Reading not UTF-8 encoded file"
 msgstr ""
 
-#: src/BufferView.cpp:2399
+#: src/BufferView.cpp:2435
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -15619,7 +15619,7 @@ msgstr "Ingen utdata"
 msgid "An empty output file was generated."
 msgstr "Det ble produsert en tom fil"
 
-#: src/CutAndPaste.cpp:557
+#: src/CutAndPaste.cpp:564
 #, fuzzy, c-format
 msgid ""
 "Flex inset %1$s is undefined because of class conversion from\n"
@@ -15628,7 +15628,7 @@ msgstr ""
 "Tekststilen %1$s er udefinert på grunn av konvertering fra\n"
 "%2$s til %3$s"
 
-#: src/CutAndPaste.cpp:564
+#: src/CutAndPaste.cpp:571
 #, fuzzy
 msgid "Undefined flex inset"
 msgstr "Åpnet text inset"
@@ -15874,7 +15874,7 @@ msgstr "Kjører MakeIndex for glossar."
 msgid "Could not read configuration file"
 msgstr "Kunne ikke lese konfigurasjonsfilen"
 
-#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1429
+#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1453
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -15941,7 +15941,7 @@ msgstr "&Standard"
 msgid "&Exit LyX"
 msgstr "&Avslutt LyX"
 
-#: src/LyX.cpp:640 src/frontends/qt4/GuiView.cpp:683
+#: src/LyX.cpp:640 src/frontends/qt4/GuiView.cpp:686
 msgid "LyX: "
 msgstr "LyX: "
 
@@ -16153,7 +16153,7 @@ msgstr ""
 "\n"
 "Vil du lagre dokumentet?"
 
-#: src/LyXFunc.cpp:705 src/frontends/qt4/GuiView.cpp:1822
+#: src/LyXFunc.cpp:705 src/frontends/qt4/GuiView.cpp:1833
 msgid "Save changed document?"
 msgstr "Lagre dokumentet?"
 
@@ -16786,38 +16786,38 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Tilbake til lagret versjon av dokumentet?"
 
-#: src/Paragraph.cpp:1594 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1585 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "Uten mening for denne stilen!"
 
-#: src/Paragraph.cpp:1660
+#: src/Paragraph.cpp:1651
 msgid "Alignment not permitted"
 msgstr ""
 
-#: src/Paragraph.cpp:1661
+#: src/Paragraph.cpp:1652
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
 
-#: src/Paragraph.cpp:2138 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2129 src/frontends/qt4/LaTeXHighlighter.cpp:108
 #: src/insets/InsetListings.cpp:185 src/insets/InsetListings.cpp:193
 #: src/insets/InsetListings.cpp:217 src/mathed/InsetMathString.cpp:165
 #, fuzzy
 msgid "LyX Warning: "
 msgstr "LyX Versjon "
 
-#: src/Paragraph.cpp:2139 src/insets/InsetListings.cpp:186
+#: src/Paragraph.cpp:2130 src/insets/InsetListings.cpp:186
 #: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:166
 #, fuzzy
 msgid "uncodable character"
 msgstr "spesielle tegn"
 
-#: src/Paragraph.cpp:2502
+#: src/Paragraph.cpp:2493
 msgid "Memory problem"
 msgstr ""
 
-#: src/Paragraph.cpp:2502
+#: src/Paragraph.cpp:2493
 msgid "Paragraph not properly initialized"
 msgstr ""
 
@@ -17254,45 +17254,45 @@ msgstr "Bruker folder: "
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:416
+#: src/frontends/qt4/GuiApplication.cpp:440
 #, fuzzy
 msgid "About %1"
 msgstr "Om LyX"
 
-#: src/frontends/qt4/GuiApplication.cpp:416
+#: src/frontends/qt4/GuiApplication.cpp:440
 #: src/frontends/qt4/GuiPrefs.cpp:2582
 msgid "Preferences"
 msgstr "Preferanser"
 
-#: src/frontends/qt4/GuiApplication.cpp:417
+#: src/frontends/qt4/GuiApplication.cpp:441
 #, fuzzy
 msgid "Reconfigure"
 msgstr "Rekonfigurer|R"
 
-#: src/frontends/qt4/GuiApplication.cpp:417
+#: src/frontends/qt4/GuiApplication.cpp:441
 #, fuzzy
 msgid "Quit %1"
 msgstr "Avslutt LyX"
 
-#: src/frontends/qt4/GuiApplication.cpp:804
+#: src/frontends/qt4/GuiApplication.cpp:828
 msgid "Exiting."
 msgstr "Avslutter."
 
-#: src/frontends/qt4/GuiApplication.cpp:871
+#: src/frontends/qt4/GuiApplication.cpp:895
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:887
+#: src/frontends/qt4/GuiApplication.cpp:911
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1253
+#: src/frontends/qt4/GuiApplication.cpp:1277
 #, fuzzy
 msgid "The current document was closed."
 msgstr "Utskrift av dokumentet mislyktes"
 
-#: src/frontends/qt4/GuiApplication.cpp:1263
+#: src/frontends/qt4/GuiApplication.cpp:1287
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -17300,18 +17300,18 @@ msgid ""
 "Exception: "
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1267
-#: src/frontends/qt4/GuiApplication.cpp:1273
+#: src/frontends/qt4/GuiApplication.cpp:1291
+#: src/frontends/qt4/GuiApplication.cpp:1297
 msgid "Software exception Detected"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1271
+#: src/frontends/qt4/GuiApplication.cpp:1295
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1428
+#: src/frontends/qt4/GuiApplication.cpp:1452
 #, fuzzy
 msgid "Could not find UI definition file"
 msgstr "Kunne ikke lese konfigurasjonsfilen"
@@ -17327,9 +17327,9 @@ msgstr "BibTeX referanseliste"
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
 #: src/frontends/qt4/GuiDocument.cpp:1304
 #: src/frontends/qt4/GuiExternal.cpp:670 src/frontends/qt4/GuiGraphics.cpp:847
-#: src/frontends/qt4/GuiInclude.cpp:325 src/frontends/qt4/GuiView.cpp:1276
-#: src/frontends/qt4/GuiView.cpp:1334 src/frontends/qt4/GuiView.cpp:1481
-#: src/frontends/qt4/GuiView.cpp:1609 src/frontends/qt4/GuiView.cpp:1688
+#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1287
+#: src/frontends/qt4/GuiView.cpp:1345 src/frontends/qt4/GuiView.cpp:1492
+#: src/frontends/qt4/GuiView.cpp:1620 src/frontends/qt4/GuiView.cpp:1699
 msgid "Documents|#o#O"
 msgstr "Dokumenter|#o#O"
 
@@ -17537,10 +17537,10 @@ msgstr "%1$s og %2$s"
 msgid "Choose a filename to save the pasted graphic as"
 msgstr "Velg filnavn som dokumentet skal lagres som"
 
-#: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1353
-#: src/frontends/qt4/GuiView.cpp:1501 src/frontends/qt4/GuiView.cpp:1517
-#: src/frontends/qt4/GuiView.cpp:1534 src/frontends/qt4/GuiView.cpp:1626
-#: src/frontends/qt4/GuiView.cpp:1664
+#: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1364
+#: src/frontends/qt4/GuiView.cpp:1512 src/frontends/qt4/GuiView.cpp:1528
+#: src/frontends/qt4/GuiView.cpp:1545 src/frontends/qt4/GuiView.cpp:1637
+#: src/frontends/qt4/GuiView.cpp:1675
 msgid "Canceled."
 msgstr "Avbrutt."
 
@@ -17557,12 +17557,12 @@ msgstr ""
 "\n"
 "Vil du skrive over den?"
 
-#: src/frontends/qt4/GuiCommandBuffer.cpp:97
+#: src/frontends/qt4/GuiCommandBuffer.cpp:98
 #, fuzzy
 msgid "List of previous commands"
 msgstr "Forrige kommando"
 
-#: src/frontends/qt4/GuiCommandBuffer.cpp:100
+#: src/frontends/qt4/GuiCommandBuffer.cpp:101
 msgid "Next command"
 msgstr "Neste kommando"
 
@@ -18223,11 +18223,11 @@ msgstr ""
 "Skriv inn listing-parametre i vinduet til høyre. Trykk ? for en liste over "
 "parametre."
 
-#: src/frontends/qt4/GuiInclude.cpp:308
+#: src/frontends/qt4/GuiInclude.cpp:315
 msgid "Select document to include"
 msgstr "Velg dokument som skal settes inn"
 
-#: src/frontends/qt4/GuiInclude.cpp:315
+#: src/frontends/qt4/GuiInclude.cpp:322
 msgid "LaTeX/LyX Documents (*.tex *.lyx)"
 msgstr "LaTeX/LyX dokumenter (*.tex *.lyx)"
 
@@ -18649,15 +18649,15 @@ msgstr "PostScript filer (*.ps)"
 msgid "Cross-reference"
 msgstr "Kryssreferanse"
 
-#: src/frontends/qt4/GuiRef.cpp:283
+#: src/frontends/qt4/GuiRef.cpp:276
 msgid "&Go Back"
 msgstr "&Tilbake"
 
-#: src/frontends/qt4/GuiRef.cpp:285
+#: src/frontends/qt4/GuiRef.cpp:278
 msgid "Jump back"
 msgstr "Gå tilbake igjen"
 
-#: src/frontends/qt4/GuiRef.cpp:293
+#: src/frontends/qt4/GuiRef.cpp:286
 msgid "Jump to label"
 msgstr "Gå til referanse"
 
@@ -19174,83 +19174,83 @@ msgstr ""
 msgid "Vertical Space Settings"
 msgstr "Loddrett avstand"
 
-#: src/frontends/qt4/GuiView.cpp:119
+#: src/frontends/qt4/GuiView.cpp:122
 #, fuzzy
 msgid "version "
 msgstr "Versjon"
 
-#: src/frontends/qt4/GuiView.cpp:119
+#: src/frontends/qt4/GuiView.cpp:122
 msgid "unknown version"
 msgstr "ukjent versjon"
 
-#: src/frontends/qt4/GuiView.cpp:187
+#: src/frontends/qt4/GuiView.cpp:190
 msgid "Small-sized icons"
 msgstr "Små ikoner"
 
-#: src/frontends/qt4/GuiView.cpp:194
+#: src/frontends/qt4/GuiView.cpp:197
 msgid "Normal-sized icons"
 msgstr "Normale ikoner"
 
-#: src/frontends/qt4/GuiView.cpp:201
+#: src/frontends/qt4/GuiView.cpp:204
 msgid "Big-sized icons"
 msgstr "Store ikoner"
 
-#: src/frontends/qt4/GuiView.cpp:410
+#: src/frontends/qt4/GuiView.cpp:413
 #, c-format
 msgid "Unknown toolbar \"%1$s\""
 msgstr "Ukjent verktøylinje: \"%1$s\""
 
-#: src/frontends/qt4/GuiView.cpp:1275
+#: src/frontends/qt4/GuiView.cpp:1286
 msgid "Select template file"
 msgstr "Velg mal"
 
-#: src/frontends/qt4/GuiView.cpp:1277 src/frontends/qt4/GuiView.cpp:1689
+#: src/frontends/qt4/GuiView.cpp:1288 src/frontends/qt4/GuiView.cpp:1700
 msgid "Templates|#T#t"
 msgstr "Maler"
 
-#: src/frontends/qt4/GuiView.cpp:1280 src/frontends/qt4/GuiView.cpp:1338
-#: src/frontends/qt4/GuiView.cpp:1615 src/frontends/qt4/GuiView.cpp:1696
+#: src/frontends/qt4/GuiView.cpp:1291 src/frontends/qt4/GuiView.cpp:1349
+#: src/frontends/qt4/GuiView.cpp:1626 src/frontends/qt4/GuiView.cpp:1707
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX-Dokumenter (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1297
+#: src/frontends/qt4/GuiView.cpp:1308
 #, fuzzy
 msgid "Document not loaded."
 msgstr "Dokumentet ble ikke lagret"
 
-#: src/frontends/qt4/GuiView.cpp:1333
+#: src/frontends/qt4/GuiView.cpp:1344
 msgid "Select document to open"
 msgstr "Velg dokument som skal åpnes"
 
-#: src/frontends/qt4/GuiView.cpp:1335 src/frontends/qt4/GuiView.cpp:1482
-#: src/frontends/qt4/GuiView.cpp:1610
+#: src/frontends/qt4/GuiView.cpp:1346 src/frontends/qt4/GuiView.cpp:1493
+#: src/frontends/qt4/GuiView.cpp:1621
 msgid "Examples|#E#e"
 msgstr "Eksempler|#E#e"
 
-#: src/frontends/qt4/GuiView.cpp:1339
+#: src/frontends/qt4/GuiView.cpp:1350
 #, fuzzy
 msgid "LyX-1.3.x Documents (*.lyx13)"
 msgstr "LyX-Dokumenter (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1340
+#: src/frontends/qt4/GuiView.cpp:1351
 msgid "LyX-1.4.x Documents (*.lyx14)"
 msgstr "LyX-1.4.x dokumenter (*.lyx14)"
 
-#: src/frontends/qt4/GuiView.cpp:1341
+#: src/frontends/qt4/GuiView.cpp:1352
 msgid "LyX-1.5.x Documents (*.lyx15)"
 msgstr "LyX-1.5.x dokumenter (*.lyx15)"
 
-#: src/frontends/qt4/GuiView.cpp:1342
+#: src/frontends/qt4/GuiView.cpp:1353
 msgid "LyX-1.6.x Documents (*.lyx16)"
 msgstr "LyX-1.6.x dokumenter (*.lyx16)"
 
-#: src/frontends/qt4/GuiView.cpp:1367 src/frontends/qt4/Validator.cpp:174
+#: src/frontends/qt4/GuiView.cpp:1378 src/frontends/qt4/Validator.cpp:174
 #: src/insets/ExternalSupport.cpp:365 src/insets/InsetBibtex.cpp:286
-#: src/insets/InsetGraphics.cpp:592 src/insets/InsetInclude.cpp:467
+#: src/insets/InsetGraphics.cpp:592 src/insets/InsetInclude.cpp:471
 msgid "Invalid filename"
 msgstr "Ugyldig filnavn"
 
-#: src/frontends/qt4/GuiView.cpp:1368
+#: src/frontends/qt4/GuiView.cpp:1379
 #, c-format
 msgid ""
 "The directory in the given path\n"
@@ -19258,41 +19258,41 @@ msgid ""
 "does not exists."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1382
+#: src/frontends/qt4/GuiView.cpp:1393
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Åpner dokument %1$s...\""
 
-#: src/frontends/qt4/GuiView.cpp:1391
+#: src/frontends/qt4/GuiView.cpp:1402
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokument %1$s åpnet."
 
-#: src/frontends/qt4/GuiView.cpp:1394
+#: src/frontends/qt4/GuiView.cpp:1405
 #, fuzzy
 msgid "Version control detected."
 msgstr "Versjonskontroll"
 
-#: src/frontends/qt4/GuiView.cpp:1396
+#: src/frontends/qt4/GuiView.cpp:1407
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Kunne ikke åpne dokumentet %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:1425
+#: src/frontends/qt4/GuiView.cpp:1436
 msgid "Couldn't import file"
 msgstr "Kan ikke importere fil"
 
-#: src/frontends/qt4/GuiView.cpp:1426
+#: src/frontends/qt4/GuiView.cpp:1437
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr "Ingen informasjon om importering fra %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:1477
+#: src/frontends/qt4/GuiView.cpp:1488
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Velg %1$s fil som skal importeres"
 
-#: src/frontends/qt4/GuiView.cpp:1528 src/frontends/qt4/GuiView.cpp:1713
+#: src/frontends/qt4/GuiView.cpp:1539 src/frontends/qt4/GuiView.cpp:1724
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -19303,46 +19303,46 @@ msgstr ""
 "\n"
 "Vil du overskrive det dokumentet?"
 
-#: src/frontends/qt4/GuiView.cpp:1530 src/frontends/qt4/GuiView.cpp:1717
+#: src/frontends/qt4/GuiView.cpp:1541 src/frontends/qt4/GuiView.cpp:1728
 msgid "Overwrite document?"
 msgstr "OVerskrive dokument?"
 
-#: src/frontends/qt4/GuiView.cpp:1539
+#: src/frontends/qt4/GuiView.cpp:1550
 #, c-format
 msgid "Importing %1$s..."
 msgstr "Importerer %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1542
+#: src/frontends/qt4/GuiView.cpp:1553
 msgid "imported."
 msgstr "importert."
 
-#: src/frontends/qt4/GuiView.cpp:1544
+#: src/frontends/qt4/GuiView.cpp:1555
 #, fuzzy
 msgid "file not imported!"
 msgstr "Fil ikke funnet"
 
-#: src/frontends/qt4/GuiView.cpp:1608
+#: src/frontends/qt4/GuiView.cpp:1619
 msgid "Select LyX document to insert"
 msgstr "Velg LyX dokument som skal settes inn"
 
-#: src/frontends/qt4/GuiView.cpp:1649
+#: src/frontends/qt4/GuiView.cpp:1660
 msgid "Select file to insert"
 msgstr "Velg fil som skal settes inn"
 
-#: src/frontends/qt4/GuiView.cpp:1653
+#: src/frontends/qt4/GuiView.cpp:1664
 #, fuzzy
 msgid "All Files (*)"
 msgstr "Alle filer (*)"
 
-#: src/frontends/qt4/GuiView.cpp:1686
+#: src/frontends/qt4/GuiView.cpp:1697
 msgid "Choose a filename to save document as"
 msgstr "Velg filnavn som dokumentet skal lagres som"
 
-#: src/frontends/qt4/GuiView.cpp:1718 src/frontends/qt4/GuiView.cpp:1763
+#: src/frontends/qt4/GuiView.cpp:1729 src/frontends/qt4/GuiView.cpp:1774
 msgid "&Rename"
 msgstr "&Bytte navn"
 
-#: src/frontends/qt4/GuiView.cpp:1759
+#: src/frontends/qt4/GuiView.cpp:1770
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -19353,16 +19353,16 @@ msgstr ""
 "\n"
 "Vil du prøve å lagre det under et annet navn?"
 
-#: src/frontends/qt4/GuiView.cpp:1762
+#: src/frontends/qt4/GuiView.cpp:1773
 msgid "Rename and save?"
 msgstr "Bytte navn og lagre?"
 
-#: src/frontends/qt4/GuiView.cpp:1763
+#: src/frontends/qt4/GuiView.cpp:1774
 #, fuzzy
 msgid "&Retry"
 msgstr "&Tilbakestill"
 
-#: src/frontends/qt4/GuiView.cpp:1820
+#: src/frontends/qt4/GuiView.cpp:1831
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -19373,24 +19373,24 @@ msgstr ""
 "\n"
 "Vil du lagre dokumentet, eller forkaste endringene?"
 
-#: src/frontends/qt4/GuiView.cpp:1823
+#: src/frontends/qt4/GuiView.cpp:1834
 msgid "&Discard"
 msgstr "&Forkast"
 
-#: src/frontends/qt4/GuiView.cpp:1895
+#: src/frontends/qt4/GuiView.cpp:1906
 #, fuzzy
 msgid "Document not loaded"
 msgstr "Dokumentet ble ikke lagret"
 
-#: src/frontends/qt4/GuiView.cpp:1953
+#: src/frontends/qt4/GuiView.cpp:1964
 msgid "Saving all documents..."
 msgstr "Lagrer alle dokumenter..."
 
-#: src/frontends/qt4/GuiView.cpp:1963
+#: src/frontends/qt4/GuiView.cpp:1974
 msgid "All documents saved."
 msgstr "Alle dokumenter lagret."
 
-#: src/frontends/qt4/GuiView.cpp:2191
+#: src/frontends/qt4/GuiView.cpp:2221
 #, c-format
 msgid "%1$s unknown command!"
 msgstr ""
@@ -19410,33 +19410,33 @@ msgstr "Bokmerker|B"
 msgid "Literate Source"
 msgstr "LaTeX kildekode"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1130
+#: src/frontends/qt4/GuiWorkArea.cpp:1117
 #, fuzzy
 msgid " (version control)"
 msgstr "Versjonskontroll"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1132
+#: src/frontends/qt4/GuiWorkArea.cpp:1119
 #, fuzzy
 msgid " (version control, locking)"
 msgstr "Versjonskontroll"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1135
+#: src/frontends/qt4/GuiWorkArea.cpp:1122
 msgid " (changed)"
 msgstr " (endret)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1139
+#: src/frontends/qt4/GuiWorkArea.cpp:1126
 msgid " (read only)"
 msgstr " (skrivebeskyttet)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1226
+#: src/frontends/qt4/GuiWorkArea.cpp:1213
 msgid "Close File"
 msgstr "Lukk"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1625
+#: src/frontends/qt4/GuiWorkArea.cpp:1612
 msgid "Hide tab"
 msgstr "Gjem fane"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1627
+#: src/frontends/qt4/GuiWorkArea.cpp:1614
 msgid "Close tab"
 msgstr "Lukk fane"
 
@@ -19594,7 +19594,7 @@ msgid "List of Changes"
 msgstr "Liste over tabeller"
 
 #: src/insets/ExternalSupport.cpp:366 src/insets/InsetBibtex.cpp:287
-#: src/insets/InsetGraphics.cpp:593 src/insets/InsetInclude.cpp:468
+#: src/insets/InsetGraphics.cpp:593 src/insets/InsetInclude.cpp:472
 msgid ""
 "The following filename is likely to cause trouble when running the exported "
 "file through LaTeX: "
@@ -19720,24 +19720,38 @@ msgstr "%1$s og %2$s"
 msgid "%1$s (%2$s, %3$s)"
 msgstr "%1$s og %2$s"
 
-#: src/insets/InsetBranch.cpp:60
+#: src/insets/InsetBranch.cpp:61
 msgid "Opened Branch Inset"
 msgstr "Åpnet \"gren-inset\""
 
-#: src/insets/InsetBranch.cpp:80 src/insets/InsetBranch.cpp:86
+#: src/insets/InsetBranch.cpp:82
+#, fuzzy
+msgid "active"
+msgstr "akutt aksent \\acute"
+
+#: src/insets/InsetBranch.cpp:82
+msgid "non-active"
+msgstr ""
+
+#: src/insets/InsetBranch.cpp:83
+#, fuzzy, c-format
+msgid "Branch (%1$s): %2$s"
+msgstr "%1$s og %2$s"
+
+#: src/insets/InsetBranch.cpp:91
 msgid "Branch: "
 msgstr "Gren: "
 
-#: src/insets/InsetBranch.cpp:90
+#: src/insets/InsetBranch.cpp:95
 msgid "Branch (child only): "
 msgstr ""
 
-#: src/insets/InsetBranch.cpp:95
+#: src/insets/InsetBranch.cpp:100
 #, fuzzy
 msgid "Undef: "
 msgstr "Ref: "
 
-#: src/insets/InsetBranch.cpp:224
+#: src/insets/InsetBranch.cpp:230
 #, fuzzy
 msgid "branch"
 msgstr "Dokumentgren"
@@ -19854,7 +19868,7 @@ msgstr "Åpnet fotnote"
 msgid "footnote"
 msgstr "fotnote"
 
-#: src/insets/InsetGraphics.cpp:470 src/insets/InsetInclude.cpp:545
+#: src/insets/InsetGraphics.cpp:470 src/insets/InsetInclude.cpp:549
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -19875,25 +19889,25 @@ msgstr "Det er ikke nødvendig å kovnvertere %1$s"
 msgid "Graphics file: %1$s"
 msgstr "Grafikkfil: %1$s"
 
-#: src/insets/InsetInclude.cpp:331
+#: src/insets/InsetInclude.cpp:335
 msgid "Verbatim Input"
 msgstr "Sett inn Verbatim"
 
-#: src/insets/InsetInclude.cpp:334
+#: src/insets/InsetInclude.cpp:338
 #, fuzzy
 msgid "Verbatim Input*"
 msgstr "Sett inn Verbatim"
 
-#: src/insets/InsetInclude.cpp:434 src/insets/InsetInclude.cpp:633
+#: src/insets/InsetInclude.cpp:438 src/insets/InsetInclude.cpp:637
 msgid "Recursive input"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:435 src/insets/InsetInclude.cpp:634
+#: src/insets/InsetInclude.cpp:439 src/insets/InsetInclude.cpp:638
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:490
+#: src/insets/InsetInclude.cpp:494
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -19904,11 +19918,11 @@ msgstr ""
 "har tekstklasse `%2$s'\n"
 "mens hovedfilen har tekstklasse `%3$s'."
 
-#: src/insets/InsetInclude.cpp:496
+#: src/insets/InsetInclude.cpp:500
 msgid "Different textclasses"
 msgstr "Ulike tekstklasser"
 
-#: src/insets/InsetInclude.cpp:511
+#: src/insets/InsetInclude.cpp:515
 #, fuzzy, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -19919,7 +19933,7 @@ msgstr ""
 "har tekstklasse `%2$s'\n"
 "mens hovedfilen har tekstklasse `%3$s'."
 
-#: src/insets/InsetInclude.cpp:515
+#: src/insets/InsetInclude.cpp:519
 #, fuzzy
 msgid "Module not found"
 msgstr "Fil ikke funnet"
@@ -20161,16 +20175,16 @@ msgstr "Parametre som starter med '%1$s': %2$s"
 msgid "Opened Marginal Note Inset"
 msgstr "Åpnet \"float inset\""
 
-#: src/insets/InsetNewpage.cpp:179 src/insets/InsetNewpage.cpp:191
+#: src/insets/InsetNewpage.cpp:178 src/insets/InsetNewpage.cpp:190
 #, fuzzy
 msgid "New Page"
 msgstr "Ny side"
 
-#: src/insets/InsetNewpage.cpp:185
+#: src/insets/InsetNewpage.cpp:184
 msgid "Clear Page"
 msgstr "Blank side"
 
-#: src/insets/InsetNewpage.cpp:188
+#: src/insets/InsetNewpage.cpp:187
 msgid "Clear Double Page"
 msgstr "Dobbelt blank side"
 
@@ -20612,11 +20626,11 @@ msgstr ""
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:957
+#: src/mathed/InsetMathNest.cpp:959
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:960
+#: src/mathed/InsetMathNest.cpp:962
 #, fuzzy
 msgid "entered math text mode (textrm)"
 msgstr "Normal tekstmodus\t\\textrm"

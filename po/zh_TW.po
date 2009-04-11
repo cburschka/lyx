@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-04-03 13:11+0200\n"
+"POT-Creation-Date: 2009-04-11 09:18+0200\n"
 "PO-Revision-Date: 2008-08-04 22:57+0100\n"
 "Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -83,15 +83,15 @@ msgstr "確定(&O)"
 #: src/frontends/qt4/ui/AskForTextUi.ui:94
 #: src/frontends/qt4/ui/CitationUi.ui:461
 #: src/frontends/qt4/ui/DocumentUi.ui:152
-#: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:862
-#: src/Buffer.cpp:2582 src/Buffer.cpp:2606 src/Buffer.cpp:2641
+#: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:883
+#: src/Buffer.cpp:2610 src/Buffer.cpp:2634 src/Buffer.cpp:2669
 #: src/LyXFunc.cpp:713 src/LyXFunc.cpp:852 src/LyXFunc.cpp:1026
 #: src/LyXVC.cpp:182 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1262
 #: src/frontends/qt4/GuiParagraph.cpp:69
-#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1531
-#: src/frontends/qt4/GuiView.cpp:1718 src/frontends/qt4/GuiView.cpp:1763
-#: src/frontends/qt4/GuiView.cpp:1823 src/insets/InsetBibtex.cpp:143
+#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1542
+#: src/frontends/qt4/GuiView.cpp:1729 src/frontends/qt4/GuiView.cpp:1774
+#: src/frontends/qt4/GuiView.cpp:1834 src/insets/InsetBibtex.cpp:143
 msgid "&Cancel"
 msgstr "取消(&C)"
 
@@ -380,7 +380,7 @@ msgstr "還原(&R)"
 msgid "&Apply"
 msgstr "套用(&A)"
 
-#: src/frontends/qt4/ui/BoxUi.ui:285 src/frontends/qt4/ui/ExternalUi.ui:498
+#: src/frontends/qt4/ui/BoxUi.ui:285 src/frontends/qt4/ui/ExternalUi.ui:504
 #: src/frontends/qt4/ui/PageLayoutUi.ui:204
 msgid "&Height:"
 msgstr "高度(&H)："
@@ -393,7 +393,7 @@ msgstr "內框(&X)："
 msgid "&Decoration:"
 msgstr "裝飾(&D)："
 
-#: src/frontends/qt4/ui/BoxUi.ui:330 src/frontends/qt4/ui/ExternalUi.ui:472
+#: src/frontends/qt4/ui/BoxUi.ui:330 src/frontends/qt4/ui/ExternalUi.ui:478
 #: src/frontends/qt4/ui/PageLayoutUi.ui:217
 #: src/frontends/qt4/ui/TabularUi.ui:100 src/frontends/qt4/ui/WrapUi.ui:85
 msgid "&Width:"
@@ -930,138 +930,138 @@ msgstr "草稿(&D)"
 msgid "&Template"
 msgstr "模板"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:180
+#: src/frontends/qt4/ui/ExternalUi.ui:182
 msgid "Available templates"
 msgstr "可用模板"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:191
+#: src/frontends/qt4/ui/ExternalUi.ui:193
 #: src/frontends/qt4/ui/GraphicsUi.ui:448
 msgid "LaTe&X and LyX options"
 msgstr "LaTe&X 和 LyX 選項"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:197
+#: src/frontends/qt4/ui/ExternalUi.ui:199
 #, fuzzy
 msgid "LaTeX Options"
 msgstr "LaTeX 選項(&O)："
 
-#: src/frontends/qt4/ui/ExternalUi.ui:215
+#: src/frontends/qt4/ui/ExternalUi.ui:217
 msgid "O&ption:"
 msgstr "選項(&P)："
 
-#: src/frontends/qt4/ui/ExternalUi.ui:228
+#: src/frontends/qt4/ui/ExternalUi.ui:230
 msgid "Forma&t:"
 msgstr "格式(&T)："
 
-#: src/frontends/qt4/ui/ExternalUi.ui:252
+#: src/frontends/qt4/ui/ExternalUi.ui:254
 msgid "&Show in LyX"
 msgstr "在 LyX 中顯示(&S)"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:264
-#: src/frontends/qt4/ui/ExternalUi.ui:286
+#: src/frontends/qt4/ui/ExternalUi.ui:266
+#: src/frontends/qt4/ui/ExternalUi.ui:290
 #: src/frontends/qt4/ui/GraphicsUi.ui:559
 #: src/frontends/qt4/ui/GraphicsUi.ui:566
 msgid "Percentage to scale by in LyX"
 msgstr "在 LyX 中縮放的百分比"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:267
+#: src/frontends/qt4/ui/ExternalUi.ui:269
 #: src/frontends/qt4/ui/GraphicsUi.ui:569
 msgid "Sca&le on Screen (%):"
 msgstr "螢幕上的比例(%)(&L)："
 
-#: src/frontends/qt4/ui/ExternalUi.ui:323
+#: src/frontends/qt4/ui/ExternalUi.ui:327
 #, fuzzy
 msgid "Si&ze and Rotation"
 msgstr "搜尋引用"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:335
+#: src/frontends/qt4/ui/ExternalUi.ui:339
 msgid "Rotate"
 msgstr "旋轉"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:380
-#: src/frontends/qt4/ui/ExternalUi.ui:410
+#: src/frontends/qt4/ui/ExternalUi.ui:386
+#: src/frontends/qt4/ui/ExternalUi.ui:416
 #: src/frontends/qt4/ui/GraphicsUi.ui:240
 #: src/frontends/qt4/ui/GraphicsUi.ui:247
 msgid "Angle to rotate image by"
 msgstr "圖像的旋轉角度"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:390
-#: src/frontends/qt4/ui/ExternalUi.ui:403
+#: src/frontends/qt4/ui/ExternalUi.ui:396
+#: src/frontends/qt4/ui/ExternalUi.ui:409
 #: src/frontends/qt4/ui/GraphicsUi.ui:212
 #: src/frontends/qt4/ui/GraphicsUi.ui:219
 msgid "The origin of the rotation"
 msgstr "旋轉的原點"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:393
+#: src/frontends/qt4/ui/ExternalUi.ui:399
 #, fuzzy
 msgid "Ori&gin:"
 msgstr "原點(&O)："
 
-#: src/frontends/qt4/ui/ExternalUi.ui:413
+#: src/frontends/qt4/ui/ExternalUi.ui:419
 msgid "A&ngle:"
 msgstr "角度(&N)："
 
-#: src/frontends/qt4/ui/ExternalUi.ui:428
+#: src/frontends/qt4/ui/ExternalUi.ui:434
 msgid "Scale"
 msgstr "伸縮"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:452
+#: src/frontends/qt4/ui/ExternalUi.ui:458
 #: src/frontends/qt4/ui/GraphicsUi.ui:131
 msgid "Height of image in output"
 msgstr "圖像輸出時高度"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:462
+#: src/frontends/qt4/ui/ExternalUi.ui:468
 #: src/frontends/qt4/ui/GraphicsUi.ui:97
 msgid "Width of image in output"
 msgstr "圖像輸出時寬度"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:485
+#: src/frontends/qt4/ui/ExternalUi.ui:491
 msgid "Maintain aspect ratio with largest dimension"
 msgstr "以最大尺寸保持外觀比例"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:488
+#: src/frontends/qt4/ui/ExternalUi.ui:494
 #: src/frontends/qt4/ui/GraphicsUi.ui:177
 msgid "&Maintain aspect ratio"
 msgstr "保持外觀比例(&M)"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:511
+#: src/frontends/qt4/ui/ExternalUi.ui:517
 msgid "Crop"
 msgstr "裁剪"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:526
+#: src/frontends/qt4/ui/ExternalUi.ui:532
 #: src/frontends/qt4/ui/GraphicsUi.ui:309
 msgid "Clip to bounding box values"
 msgstr "裁剪到邊界方塊值"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:529
+#: src/frontends/qt4/ui/ExternalUi.ui:535
 #: src/frontends/qt4/ui/GraphicsUi.ui:312
 msgid "Clip to &bounding box"
 msgstr "裁剪到邊界方塊(&B)"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:536
+#: src/frontends/qt4/ui/ExternalUi.ui:542
 #: src/frontends/qt4/ui/GraphicsUi.ui:345
 msgid "&Left bottom:"
 msgstr "左下(&L)："
 
-#: src/frontends/qt4/ui/ExternalUi.ui:549
+#: src/frontends/qt4/ui/ExternalUi.ui:555
 msgid "x"
 msgstr "x"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:556
+#: src/frontends/qt4/ui/ExternalUi.ui:562
 #: src/frontends/qt4/ui/GraphicsUi.ui:383
 msgid "Right &top:"
 msgstr "右上(&T)："
 
-#: src/frontends/qt4/ui/ExternalUi.ui:566
+#: src/frontends/qt4/ui/ExternalUi.ui:572
 #: src/frontends/qt4/ui/GraphicsUi.ui:437
 msgid "Get bounding box from the (EPS) file"
 msgstr "從 (EPS) 檔案取得邊界方塊"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:569
+#: src/frontends/qt4/ui/ExternalUi.ui:575
 #: src/frontends/qt4/ui/GraphicsUi.ui:440
 msgid "&Get from File"
 msgstr "從檔案取得(&G)"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:599
+#: src/frontends/qt4/ui/ExternalUi.ui:605
 msgid "y"
 msgstr "y"
 
@@ -1496,11 +1496,11 @@ msgstr "要包含的檔案名稱"
 msgid "&Include Type:"
 msgstr "包含型態(&I)："
 
-#: src/frontends/qt4/ui/IncludeUi.ui:293 src/insets/InsetInclude.cpp:337
+#: src/frontends/qt4/ui/IncludeUi.ui:293 src/insets/InsetInclude.cpp:341
 msgid "Include"
 msgstr "包含"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:298 src/insets/InsetInclude.cpp:328
+#: src/frontends/qt4/ui/IncludeUi.ui:298 src/insets/InsetInclude.cpp:332
 msgid "Input"
 msgstr "輸入"
 
@@ -1508,8 +1508,8 @@ msgstr "輸入"
 msgid "Verbatim"
 msgstr "逐字地"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:939
-#: src/insets/InsetInclude.cpp:945
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:964
+#: src/insets/InsetInclude.cpp:970
 msgid "Program Listing"
 msgstr "程式清單"
 
@@ -3190,7 +3190,7 @@ msgid "&User interface file:"
 msgstr "使用者介面檔案(&U)："
 
 #: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:713
-#: src/frontends/qt4/GuiView.cpp:1823
+#: src/frontends/qt4/GuiView.cpp:1834
 msgid "&Save"
 msgstr "儲存(&S)"
 
@@ -3327,7 +3327,7 @@ msgstr "更新標籤清單"
 msgid "Jump to the label"
 msgstr "跳到標籤"
 
-#: src/frontends/qt4/ui/RefUi.ui:259 src/frontends/qt4/GuiRef.cpp:291
+#: src/frontends/qt4/ui/RefUi.ui:259 src/frontends/qt4/GuiRef.cpp:284
 msgid "&Go to Label"
 msgstr "前往標籤(&G)"
 
@@ -10294,7 +10294,7 @@ msgstr "選單分隔符號|M"
 msgid "Horizontal Line"
 msgstr "水平線"
 
-#: lib/ui/classic.ui:261 src/insets/InsetNewpage.cpp:182
+#: lib/ui/classic.ui:261 src/insets/InsetNewpage.cpp:181
 msgid "Page Break"
 msgstr "分頁符號"
 
@@ -11047,19 +11047,19 @@ msgstr "分列符號|L"
 
 #: lib/ui/stdcontext.inc:268 lib/ui/stdcontext.inc:314 lib/ui/stdmenus.inc:88
 #: lib/ui/stdtoolbars.inc:66 src/Text3.cpp:1037
-#: src/mathed/InsetMathNest.cpp:547
+#: src/mathed/InsetMathNest.cpp:549
 msgid "Cut"
 msgstr "剪下"
 
 #: lib/ui/stdcontext.inc:269 lib/ui/stdcontext.inc:315 lib/ui/stdmenus.inc:89
 #: lib/ui/stdtoolbars.inc:67 src/Text3.cpp:1042
-#: src/mathed/InsetMathNest.cpp:555
+#: src/mathed/InsetMathNest.cpp:557
 msgid "Copy"
 msgstr "複製"
 
 #: lib/ui/stdcontext.inc:270 lib/ui/stdcontext.inc:316 lib/ui/stdmenus.inc:90
 #: lib/ui/stdtoolbars.inc:68 src/Text3.cpp:995
-#: src/mathed/InsetMathGrid.cpp:1256 src/mathed/InsetMathNest.cpp:527
+#: src/mathed/InsetMathGrid.cpp:1256 src/mathed/InsetMathNest.cpp:529
 msgid "Paste"
 msgstr "貼上"
 
@@ -11716,11 +11716,11 @@ msgstr "列印文件"
 msgid "Check spelling"
 msgstr "檢查拼寫"
 
-#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:1061
+#: lib/ui/stdtoolbars.inc:64 src/BufferView.cpp:1074
 msgid "Undo"
 msgstr "復原"
 
-#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:1070
+#: lib/ui/stdtoolbars.inc:65 src/BufferView.cpp:1083
 msgid "Redo"
 msgstr "重做"
 
@@ -14664,8 +14664,8 @@ msgstr "下一個命令"
 msgid "Table (CSV)"
 msgstr "表格"
 
-#: lib/configure.py:339 src/frontends/qt4/GuiView.cpp:850
-#: src/frontends/qt4/GuiView.cpp:851 src/mathed/MathMacroTemplate.cpp:537
+#: lib/configure.py:339 src/frontends/qt4/GuiView.cpp:853
+#: src/frontends/qt4/GuiView.cpp:854 src/mathed/MathMacroTemplate.cpp:537
 msgid "LyX"
 msgstr "LyX"
 
@@ -14779,57 +14779,57 @@ msgstr "加入文獻目錄到內容表(&T)"
 msgid "before"
 msgstr "之前"
 
-#: src/Buffer.cpp:239
+#: src/Buffer.cpp:254
 msgid "Disk Error: "
 msgstr ""
 
-#: src/Buffer.cpp:240
+#: src/Buffer.cpp:255
 #, fuzzy, c-format
 msgid ""
 "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
 msgstr "無法移除暫存目錄 %1$s"
 
-#: src/Buffer.cpp:301
+#: src/Buffer.cpp:317
 msgid "Could not remove temporary directory"
 msgstr "無法移除暫存目錄"
 
-#: src/Buffer.cpp:302
+#: src/Buffer.cpp:318
 #, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "無法移除暫存目錄 %1$s"
 
-#: src/Buffer.cpp:517
+#: src/Buffer.cpp:533
 msgid "Unknown document class"
 msgstr "不明的文件類別"
 
-#: src/Buffer.cpp:518
+#: src/Buffer.cpp:534
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "正在使用預設文件類別，因為類別 %1$s 不明。"
 
-#: src/Buffer.cpp:522 src/Text.cpp:241
+#: src/Buffer.cpp:538 src/Text.cpp:241
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "不明的符記：%1$s %2$s\n"
 
-#: src/Buffer.cpp:526 src/Buffer.cpp:533 src/Buffer.cpp:553
+#: src/Buffer.cpp:542 src/Buffer.cpp:549 src/Buffer.cpp:569
 msgid "Document header error"
 msgstr "文件頁首錯誤"
 
-#: src/Buffer.cpp:532
+#: src/Buffer.cpp:548
 msgid "\\begin_header is missing"
 msgstr "\\begin_header 缺少"
 
-#: src/Buffer.cpp:552
+#: src/Buffer.cpp:568
 msgid "\\begin_document is missing"
 msgstr "\\begin_document 缺少"
 
-#: src/Buffer.cpp:568 src/Buffer.cpp:574 src/BufferView.cpp:1180
-#: src/BufferView.cpp:1186
+#: src/Buffer.cpp:584 src/Buffer.cpp:590 src/BufferView.cpp:1193
+#: src/BufferView.cpp:1199
 msgid "Changes not shown in LaTeX output"
 msgstr "在 LaTeX 輸出中未顯示變更"
 
-#: src/Buffer.cpp:569 src/BufferView.cpp:1181
+#: src/Buffer.cpp:585 src/BufferView.cpp:1194
 #, fuzzy
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
@@ -14841,7 +14841,7 @@ msgstr ""
 "安裝。\n"
 "請安裝這些套件，或者在 LaTeX 前文中重新定義 \\lyxadded 和 \\lyxdeleted。"
 
-#: src/Buffer.cpp:575 src/BufferView.cpp:1187
+#: src/Buffer.cpp:591 src/BufferView.cpp:1200
 #, fuzzy
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
@@ -14853,58 +14853,58 @@ msgstr ""
 "未安裝。\n"
 "請安裝這兩個套件，或者在 LaTeX 前文中重新定義 \\lyxadded 和 \\lyxdeleted。"
 
-#: src/Buffer.cpp:731 src/Buffer.cpp:814
+#: src/Buffer.cpp:752 src/Buffer.cpp:835
 msgid "Document format failure"
 msgstr "文件格式錯誤"
 
-#: src/Buffer.cpp:732
+#: src/Buffer.cpp:753
 #, fuzzy, c-format
 msgid "%1$s is not a readable LyX document."
 msgstr "%1$s 並非 LyX 文件。"
 
-#: src/Buffer.cpp:769
+#: src/Buffer.cpp:790
 msgid "Conversion failed"
 msgstr "轉換失敗"
 
-#: src/Buffer.cpp:770
+#: src/Buffer.cpp:791
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr "%1$s 是從不同版本的 LyX 而來，但是無法建立用於轉換它的暫存檔。"
 
-#: src/Buffer.cpp:779
+#: src/Buffer.cpp:800
 msgid "Conversion script not found"
 msgstr "找不到轉換命令稿"
 
-#: src/Buffer.cpp:780
+#: src/Buffer.cpp:801
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr "%1$s 是來自不同版本的 LyX，但是無法找到轉換命令稿 lyx2lyx。"
 
-#: src/Buffer.cpp:799
+#: src/Buffer.cpp:820
 msgid "Conversion script failed"
 msgstr "轉換命令稿失敗"
 
-#: src/Buffer.cpp:800
+#: src/Buffer.cpp:821
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the lyx2lyx script failed to "
 "convert it."
 msgstr "%1$s 是來自不同版本的 LyX，但是 lyx2lyx 命令稿轉換它時失敗。"
 
-#: src/Buffer.cpp:815
+#: src/Buffer.cpp:836
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr "%1$s 未如預期地結束，這表示它大概已經崩解。"
 
-#: src/Buffer.cpp:848
+#: src/Buffer.cpp:869
 msgid "Backup failure"
 msgstr "備份失敗"
 
-#: src/Buffer.cpp:849
+#: src/Buffer.cpp:870
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
@@ -14913,54 +14913,54 @@ msgstr ""
 "無法建立備份檔案 %1$s。\n"
 "請檢查是否目錄存在並為可寫。"
 
-#: src/Buffer.cpp:859
+#: src/Buffer.cpp:880
 #, c-format
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
 "overwrite this file?"
 msgstr "文件 %1$s 已經由外部修改過。您確定要覆寫該檔案嗎？"
 
-#: src/Buffer.cpp:861
+#: src/Buffer.cpp:882
 msgid "Overwrite modified file?"
 msgstr "覆寫已修改檔案？"
 
-#: src/Buffer.cpp:862 src/Exporter.cpp:49 src/LyXFunc.cpp:1026
-#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1531
-#: src/frontends/qt4/GuiView.cpp:1718
+#: src/Buffer.cpp:883 src/Exporter.cpp:49 src/LyXFunc.cpp:1026
+#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1542
+#: src/frontends/qt4/GuiView.cpp:1729
 msgid "&Overwrite"
 msgstr "覆寫(&O)"
 
-#: src/Buffer.cpp:886
+#: src/Buffer.cpp:907
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "正在儲存文件 %1$s…"
 
-#: src/Buffer.cpp:899
+#: src/Buffer.cpp:920
 #, fuzzy
 msgid " could not write file!"
 msgstr "無法讀取檔案"
 
-#: src/Buffer.cpp:906
+#: src/Buffer.cpp:927
 msgid " done."
 msgstr " 已完成。"
 
-#: src/Buffer.cpp:985
+#: src/Buffer.cpp:1006
 msgid "Iconv software exception Detected"
 msgstr ""
 
-#: src/Buffer.cpp:985
+#: src/Buffer.cpp:1006
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
 "installed"
 msgstr ""
 
-#: src/Buffer.cpp:1007
+#: src/Buffer.cpp:1028
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr ""
 
-#: src/Buffer.cpp:1010
+#: src/Buffer.cpp:1031
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
@@ -14969,87 +14969,87 @@ msgstr ""
 "您的文件中某些字元，可能無法以所選編碼來表現。\n"
 "變更文件編碼為 utf8 可能會有幫助。"
 
-#: src/Buffer.cpp:1017
+#: src/Buffer.cpp:1038
 #, fuzzy
 msgid "iconv conversion failed"
 msgstr "轉換失敗"
 
-#: src/Buffer.cpp:1022
+#: src/Buffer.cpp:1043
 #, fuzzy
 msgid "conversion failed"
 msgstr "轉換失敗"
 
-#: src/Buffer.cpp:1299
+#: src/Buffer.cpp:1320
 msgid "Running chktex..."
 msgstr "chktex 執行中…"
 
-#: src/Buffer.cpp:1312
+#: src/Buffer.cpp:1333
 msgid "chktex failure"
 msgstr "chktex 失敗"
 
-#: src/Buffer.cpp:1313
+#: src/Buffer.cpp:1334
 msgid "Could not run chktex successfully."
 msgstr "無法成功運行 chktex。"
 
-#: src/Buffer.cpp:2161
+#: src/Buffer.cpp:2189
 msgid "Preview source code"
 msgstr "預覽原始碼"
 
-#: src/Buffer.cpp:2174
+#: src/Buffer.cpp:2202
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "預覽段落 %1$d 原始碼"
 
-#: src/Buffer.cpp:2178
+#: src/Buffer.cpp:2206
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "預覽從段落 %1$s 到 %2$s 的原始碼"
 
-#: src/Buffer.cpp:2285
+#: src/Buffer.cpp:2313
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "自動儲存 %1$s"
 
-#: src/Buffer.cpp:2329
+#: src/Buffer.cpp:2357
 msgid "Autosave failed!"
 msgstr "自動儲存失敗！"
 
-#: src/Buffer.cpp:2352
+#: src/Buffer.cpp:2380
 msgid "Autosaving current document..."
 msgstr "自動儲存目前文件…"
 
-#: src/Buffer.cpp:2402
+#: src/Buffer.cpp:2430
 msgid "Couldn't export file"
 msgstr "無法匯出檔案"
 
-#: src/Buffer.cpp:2403
+#: src/Buffer.cpp:2431
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "沒有資訊用於匯出格式 %1$s。"
 
-#: src/Buffer.cpp:2440
+#: src/Buffer.cpp:2468
 msgid "File name error"
 msgstr "檔案名稱錯誤"
 
-#: src/Buffer.cpp:2441
+#: src/Buffer.cpp:2469
 msgid "The directory path to the document cannot contain spaces."
 msgstr "到文件的目錄路徑不可包含空格。"
 
-#: src/Buffer.cpp:2483
+#: src/Buffer.cpp:2511
 msgid "Document export cancelled."
 msgstr "文件匯出取消。"
 
-#: src/Buffer.cpp:2489
+#: src/Buffer.cpp:2517
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "文件匯出為 %1$s 到檔案「%2$s」"
 
-#: src/Buffer.cpp:2495
+#: src/Buffer.cpp:2523
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "文件匯出為 %1$s"
 
-#: src/Buffer.cpp:2565
+#: src/Buffer.cpp:2593
 #, c-format
 msgid ""
 "The specified document\n"
@@ -15060,11 +15060,11 @@ msgstr ""
 "%1$s\n"
 "無法讀取。"
 
-#: src/Buffer.cpp:2567
+#: src/Buffer.cpp:2595
 msgid "Could not read document"
 msgstr "無法讀取文件"
 
-#: src/Buffer.cpp:2577
+#: src/Buffer.cpp:2605
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -15075,19 +15075,19 @@ msgstr ""
 "\n"
 "回復緊急儲存？"
 
-#: src/Buffer.cpp:2580
+#: src/Buffer.cpp:2608
 msgid "Load emergency save?"
 msgstr "載入緊急儲存？"
 
-#: src/Buffer.cpp:2581
+#: src/Buffer.cpp:2609
 msgid "&Recover"
 msgstr "回復(&R)"
 
-#: src/Buffer.cpp:2581
+#: src/Buffer.cpp:2609
 msgid "&Load Original"
 msgstr "載入原件(&L)"
 
-#: src/Buffer.cpp:2601
+#: src/Buffer.cpp:2629
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -15098,28 +15098,28 @@ msgstr ""
 "\n"
 "載入備份做為替代？"
 
-#: src/Buffer.cpp:2604
+#: src/Buffer.cpp:2632
 msgid "Load backup?"
 msgstr "載入備份？"
 
-#: src/Buffer.cpp:2605
+#: src/Buffer.cpp:2633
 msgid "&Load backup"
 msgstr "載入備份(&L)"
 
-#: src/Buffer.cpp:2605
+#: src/Buffer.cpp:2633
 msgid "Load &original"
 msgstr "載入原件(&O)"
 
-#: src/Buffer.cpp:2638
+#: src/Buffer.cpp:2666
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "您要從版本控制取回文件 %1$s 嗎？"
 
-#: src/Buffer.cpp:2640
+#: src/Buffer.cpp:2668
 msgid "Retrieve from version control?"
 msgstr "從版本控制取回？"
 
-#: src/Buffer.cpp:2641
+#: src/Buffer.cpp:2669
 msgid "&Retrieve"
 msgstr "取回(&R)"
 
@@ -15253,93 +15253,93 @@ msgstr "沒有更多內欄"
 msgid "Save bookmark"
 msgstr "儲存書籤"
 
-#: src/BufferView.cpp:1064
+#: src/BufferView.cpp:1077
 msgid "No further undo information"
 msgstr "無進一步的復原資訊"
 
-#: src/BufferView.cpp:1073
+#: src/BufferView.cpp:1086
 msgid "No further redo information"
 msgstr "無進一步的重做資訊"
 
-#: src/BufferView.cpp:1242 src/lyxfind.cpp:295 src/lyxfind.cpp:313
+#: src/BufferView.cpp:1255 src/lyxfind.cpp:295 src/lyxfind.cpp:313
 msgid "String not found!"
 msgstr "找不到字串！"
 
-#: src/BufferView.cpp:1266
+#: src/BufferView.cpp:1279
 msgid "Mark off"
 msgstr "標記關閉"
 
-#: src/BufferView.cpp:1273
+#: src/BufferView.cpp:1286
 msgid "Mark on"
 msgstr "標記開啟"
 
-#: src/BufferView.cpp:1280
+#: src/BufferView.cpp:1293
 msgid "Mark removed"
 msgstr "標記移除"
 
-#: src/BufferView.cpp:1283
+#: src/BufferView.cpp:1296
 msgid "Mark set"
 msgstr "標記設定"
 
-#: src/BufferView.cpp:1334
+#: src/BufferView.cpp:1347
 #, fuzzy
 msgid "Statistics for the selection:"
 msgstr "切換至文件(&S)"
 
-#: src/BufferView.cpp:1336
+#: src/BufferView.cpp:1349
 #, fuzzy
 msgid "Statistics for the document:"
 msgstr "切換至文件(&S)"
 
-#: src/BufferView.cpp:1339
+#: src/BufferView.cpp:1352
 #, fuzzy, c-format
 msgid "%1$d words"
 msgstr "%1$d 個字詞已勾選。"
 
-#: src/BufferView.cpp:1341
+#: src/BufferView.cpp:1354
 #, fuzzy
 msgid "One word"
 msgstr "關鍵字"
 
-#: src/BufferView.cpp:1344
+#: src/BufferView.cpp:1357
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1347
+#: src/BufferView.cpp:1360
 msgid "One character (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1350
+#: src/BufferView.cpp:1363
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1353
+#: src/BufferView.cpp:1366
 msgid "One character (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1355
+#: src/BufferView.cpp:1368
 #, fuzzy
 msgid "Statistics"
 msgstr "狀態"
 
-#: src/BufferView.cpp:2129
+#: src/BufferView.cpp:2142
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "插入文件 %1$s…"
 
-#: src/BufferView.cpp:2140
+#: src/BufferView.cpp:2153
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "文件 %1$s 已插入。"
 
-#: src/BufferView.cpp:2142
+#: src/BufferView.cpp:2155
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "無法插入文件 %1$s"
 
-#: src/BufferView.cpp:2381
+#: src/BufferView.cpp:2417
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15350,26 +15350,26 @@ msgstr ""
 "%1$s\n"
 "由於錯誤：%2$s"
 
-#: src/BufferView.cpp:2383
+#: src/BufferView.cpp:2419
 msgid "Could not read file"
 msgstr "無法讀取檔案"
 
-#: src/BufferView.cpp:2390
+#: src/BufferView.cpp:2426
 #, fuzzy, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr "%1$s 無法讀取。"
 
-#: src/BufferView.cpp:2391 src/output.cpp:39
+#: src/BufferView.cpp:2427 src/output.cpp:39
 msgid "Could not open file"
 msgstr "無法開啟檔案"
 
-#: src/BufferView.cpp:2398
+#: src/BufferView.cpp:2434
 msgid "Reading not UTF-8 encoded file"
 msgstr "讀取非 UTF-8 編碼的檔案"
 
-#: src/BufferView.cpp:2399
+#: src/BufferView.cpp:2435
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -15807,7 +15807,7 @@ msgstr "輸出為空"
 msgid "An empty output file was generated."
 msgstr "已產生空的輸出檔案。"
 
-#: src/CutAndPaste.cpp:557
+#: src/CutAndPaste.cpp:564
 #, fuzzy, c-format
 msgid ""
 "Flex inset %1$s is undefined because of class conversion from\n"
@@ -15816,7 +15816,7 @@ msgstr ""
 "字元樣式 %1$s 未定義，因為類別轉換自\n"
 "%2$s 到 %3$s"
 
-#: src/CutAndPaste.cpp:564
+#: src/CutAndPaste.cpp:571
 #, fuzzy
 msgid "Undefined flex inset"
 msgstr "開啟的文字內欄"
@@ -16054,7 +16054,7 @@ msgstr "正在執行 nomencl 的 MakeIndex。"
 msgid "Could not read configuration file"
 msgstr "無法讀取組態檔案"
 
-#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1429
+#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1453
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -16121,7 +16121,7 @@ msgstr "使用預設(&U)"
 msgid "&Exit LyX"
 msgstr "離開 LyX(&E)"
 
-#: src/LyX.cpp:640 src/frontends/qt4/GuiView.cpp:683
+#: src/LyX.cpp:640 src/frontends/qt4/GuiView.cpp:686
 msgid "LyX: "
 msgstr "LyX："
 
@@ -16331,7 +16331,7 @@ msgstr ""
 "\n"
 "您要儲存文件嗎？"
 
-#: src/LyXFunc.cpp:705 src/frontends/qt4/GuiView.cpp:1822
+#: src/LyXFunc.cpp:705 src/frontends/qt4/GuiView.cpp:1833
 msgid "Save changed document?"
 msgstr "儲存變更的文件？"
 
@@ -16970,15 +16970,15 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "還原成文件的已儲存版本？"
 
-#: src/Paragraph.cpp:1594 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1585 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "此版面配置沒有意義！"
 
-#: src/Paragraph.cpp:1660
+#: src/Paragraph.cpp:1651
 msgid "Alignment not permitted"
 msgstr "對齊方式不被允許"
 
-#: src/Paragraph.cpp:1661
+#: src/Paragraph.cpp:1652
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -16986,24 +16986,24 @@ msgstr ""
 "新的版面配置不允許之前使用的對齊方式。\n"
 "設定為預設值。"
 
-#: src/Paragraph.cpp:2138 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2129 src/frontends/qt4/LaTeXHighlighter.cpp:108
 #: src/insets/InsetListings.cpp:185 src/insets/InsetListings.cpp:193
 #: src/insets/InsetListings.cpp:217 src/mathed/InsetMathString.cpp:165
 #, fuzzy
 msgid "LyX Warning: "
 msgstr "LyX 版本 "
 
-#: src/Paragraph.cpp:2139 src/insets/InsetListings.cpp:186
+#: src/Paragraph.cpp:2130 src/insets/InsetListings.cpp:186
 #: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:166
 #, fuzzy
 msgid "uncodable character"
 msgstr "特殊字元"
 
-#: src/Paragraph.cpp:2502
+#: src/Paragraph.cpp:2493
 msgid "Memory problem"
 msgstr ""
 
-#: src/Paragraph.cpp:2502
+#: src/Paragraph.cpp:2493
 msgid "Paragraph not properly initialized"
 msgstr ""
 
@@ -17440,42 +17440,42 @@ msgstr "使用者目錄："
 msgid "LyX: %1$s"
 msgstr "LyX：%1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:416
+#: src/frontends/qt4/GuiApplication.cpp:440
 msgid "About %1"
 msgstr "關於 %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:416
+#: src/frontends/qt4/GuiApplication.cpp:440
 #: src/frontends/qt4/GuiPrefs.cpp:2582
 msgid "Preferences"
 msgstr "偏好設定"
 
-#: src/frontends/qt4/GuiApplication.cpp:417
+#: src/frontends/qt4/GuiApplication.cpp:441
 msgid "Reconfigure"
 msgstr "重新配置"
 
-#: src/frontends/qt4/GuiApplication.cpp:417
+#: src/frontends/qt4/GuiApplication.cpp:441
 msgid "Quit %1"
 msgstr "離開 %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:804
+#: src/frontends/qt4/GuiApplication.cpp:828
 msgid "Exiting."
 msgstr "離開中。"
 
-#: src/frontends/qt4/GuiApplication.cpp:871
+#: src/frontends/qt4/GuiApplication.cpp:895
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "語法：set-color <lyx_name> <x11_name>"
 
-#: src/frontends/qt4/GuiApplication.cpp:887
+#: src/frontends/qt4/GuiApplication.cpp:911
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr "Set-color「%1$s」失敗 - 顏色未定義或是不可重新定義"
 
-#: src/frontends/qt4/GuiApplication.cpp:1253
+#: src/frontends/qt4/GuiApplication.cpp:1277
 #, fuzzy
 msgid "The current document was closed."
 msgstr "列印文件失敗"
 
-#: src/frontends/qt4/GuiApplication.cpp:1263
+#: src/frontends/qt4/GuiApplication.cpp:1287
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -17483,18 +17483,18 @@ msgid ""
 "Exception: "
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1267
-#: src/frontends/qt4/GuiApplication.cpp:1273
+#: src/frontends/qt4/GuiApplication.cpp:1291
+#: src/frontends/qt4/GuiApplication.cpp:1297
 msgid "Software exception Detected"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1271
+#: src/frontends/qt4/GuiApplication.cpp:1295
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1428
+#: src/frontends/qt4/GuiApplication.cpp:1452
 #, fuzzy
 msgid "Could not find UI definition file"
 msgstr "無法讀取組態檔案"
@@ -17510,9 +17510,9 @@ msgstr "BibTeX 文獻目錄"
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
 #: src/frontends/qt4/GuiDocument.cpp:1304
 #: src/frontends/qt4/GuiExternal.cpp:670 src/frontends/qt4/GuiGraphics.cpp:847
-#: src/frontends/qt4/GuiInclude.cpp:325 src/frontends/qt4/GuiView.cpp:1276
-#: src/frontends/qt4/GuiView.cpp:1334 src/frontends/qt4/GuiView.cpp:1481
-#: src/frontends/qt4/GuiView.cpp:1609 src/frontends/qt4/GuiView.cpp:1688
+#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1287
+#: src/frontends/qt4/GuiView.cpp:1345 src/frontends/qt4/GuiView.cpp:1492
+#: src/frontends/qt4/GuiView.cpp:1620 src/frontends/qt4/GuiView.cpp:1699
 msgid "Documents|#o#O"
 msgstr "文件|#o#O"
 
@@ -17726,10 +17726,10 @@ msgstr "%1$s 和 %2$s"
 msgid "Choose a filename to save the pasted graphic as"
 msgstr "選擇檔名以儲存文件"
 
-#: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1353
-#: src/frontends/qt4/GuiView.cpp:1501 src/frontends/qt4/GuiView.cpp:1517
-#: src/frontends/qt4/GuiView.cpp:1534 src/frontends/qt4/GuiView.cpp:1626
-#: src/frontends/qt4/GuiView.cpp:1664
+#: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1364
+#: src/frontends/qt4/GuiView.cpp:1512 src/frontends/qt4/GuiView.cpp:1528
+#: src/frontends/qt4/GuiView.cpp:1545 src/frontends/qt4/GuiView.cpp:1637
+#: src/frontends/qt4/GuiView.cpp:1675
 msgid "Canceled."
 msgstr "已取消。"
 
@@ -17746,12 +17746,12 @@ msgstr ""
 "\n"
 "您要覆寫該檔案嗎？"
 
-#: src/frontends/qt4/GuiCommandBuffer.cpp:97
+#: src/frontends/qt4/GuiCommandBuffer.cpp:98
 #, fuzzy
 msgid "List of previous commands"
 msgstr "上一個命令"
 
-#: src/frontends/qt4/GuiCommandBuffer.cpp:100
+#: src/frontends/qt4/GuiCommandBuffer.cpp:101
 msgid "Next command"
 msgstr "下一個命令"
 
@@ -18412,11 +18412,11 @@ msgid ""
 "Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr "在右側輸入列表參數。輸入 ? 以取得參數清單。"
 
-#: src/frontends/qt4/GuiInclude.cpp:308
+#: src/frontends/qt4/GuiInclude.cpp:315
 msgid "Select document to include"
 msgstr "選取要包含的文件"
 
-#: src/frontends/qt4/GuiInclude.cpp:315
+#: src/frontends/qt4/GuiInclude.cpp:322
 msgid "LaTeX/LyX Documents (*.tex *.lyx)"
 msgstr "LaTeX/LyX 文件 (*.tex *.lyx)"
 
@@ -18838,15 +18838,15 @@ msgstr "PostScript 檔案 (*.ps)"
 msgid "Cross-reference"
 msgstr "交叉參照"
 
-#: src/frontends/qt4/GuiRef.cpp:283
+#: src/frontends/qt4/GuiRef.cpp:276
 msgid "&Go Back"
 msgstr "前往上一步(&G)"
 
-#: src/frontends/qt4/GuiRef.cpp:285
+#: src/frontends/qt4/GuiRef.cpp:278
 msgid "Jump back"
 msgstr "跳回上一步"
 
-#: src/frontends/qt4/GuiRef.cpp:293
+#: src/frontends/qt4/GuiRef.cpp:286
 msgid "Jump to label"
 msgstr "跳到標籤"
 
@@ -19367,85 +19367,85 @@ msgstr "工具列「%1$s」狀態設定為 %2$s"
 msgid "Vertical Space Settings"
 msgstr "垂直空格設定值"
 
-#: src/frontends/qt4/GuiView.cpp:119
+#: src/frontends/qt4/GuiView.cpp:122
 #, fuzzy
 msgid "version "
 msgstr "版本"
 
-#: src/frontends/qt4/GuiView.cpp:119
+#: src/frontends/qt4/GuiView.cpp:122
 msgid "unknown version"
 msgstr "不明的版本"
 
-#: src/frontends/qt4/GuiView.cpp:187
+#: src/frontends/qt4/GuiView.cpp:190
 msgid "Small-sized icons"
 msgstr "小尺寸圖示"
 
-#: src/frontends/qt4/GuiView.cpp:194
+#: src/frontends/qt4/GuiView.cpp:197
 msgid "Normal-sized icons"
 msgstr "中尺寸圖示"
 
-#: src/frontends/qt4/GuiView.cpp:201
+#: src/frontends/qt4/GuiView.cpp:204
 msgid "Big-sized icons"
 msgstr "大尺寸圖示"
 
-#: src/frontends/qt4/GuiView.cpp:410
+#: src/frontends/qt4/GuiView.cpp:413
 #, c-format
 msgid "Unknown toolbar \"%1$s\""
 msgstr "不明的工具列「%1$s」"
 
-#: src/frontends/qt4/GuiView.cpp:1275
+#: src/frontends/qt4/GuiView.cpp:1286
 msgid "Select template file"
 msgstr "選取模板檔案"
 
-#: src/frontends/qt4/GuiView.cpp:1277 src/frontends/qt4/GuiView.cpp:1689
+#: src/frontends/qt4/GuiView.cpp:1288 src/frontends/qt4/GuiView.cpp:1700
 msgid "Templates|#T#t"
 msgstr "模板|#T#t"
 
-#: src/frontends/qt4/GuiView.cpp:1280 src/frontends/qt4/GuiView.cpp:1338
-#: src/frontends/qt4/GuiView.cpp:1615 src/frontends/qt4/GuiView.cpp:1696
+#: src/frontends/qt4/GuiView.cpp:1291 src/frontends/qt4/GuiView.cpp:1349
+#: src/frontends/qt4/GuiView.cpp:1626 src/frontends/qt4/GuiView.cpp:1707
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX 文件 (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1297
+#: src/frontends/qt4/GuiView.cpp:1308
 msgid "Document not loaded."
 msgstr "文件尚未載入"
 
-#: src/frontends/qt4/GuiView.cpp:1333
+#: src/frontends/qt4/GuiView.cpp:1344
 msgid "Select document to open"
 msgstr "選取要開啟的文件"
 
-#: src/frontends/qt4/GuiView.cpp:1335 src/frontends/qt4/GuiView.cpp:1482
-#: src/frontends/qt4/GuiView.cpp:1610
+#: src/frontends/qt4/GuiView.cpp:1346 src/frontends/qt4/GuiView.cpp:1493
+#: src/frontends/qt4/GuiView.cpp:1621
 msgid "Examples|#E#e"
 msgstr "範例|#E#e"
 
-#: src/frontends/qt4/GuiView.cpp:1339
+#: src/frontends/qt4/GuiView.cpp:1350
 #, fuzzy
 msgid "LyX-1.3.x Documents (*.lyx13)"
 msgstr "LyX 文件 (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1340
+#: src/frontends/qt4/GuiView.cpp:1351
 #, fuzzy
 msgid "LyX-1.4.x Documents (*.lyx14)"
 msgstr "LyX 文件 (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1341
+#: src/frontends/qt4/GuiView.cpp:1352
 #, fuzzy
 msgid "LyX-1.5.x Documents (*.lyx15)"
 msgstr "LyX 文件 (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1342
+#: src/frontends/qt4/GuiView.cpp:1353
 #, fuzzy
 msgid "LyX-1.6.x Documents (*.lyx16)"
 msgstr "LyX 文件 (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1367 src/frontends/qt4/Validator.cpp:174
+#: src/frontends/qt4/GuiView.cpp:1378 src/frontends/qt4/Validator.cpp:174
 #: src/insets/ExternalSupport.cpp:365 src/insets/InsetBibtex.cpp:286
-#: src/insets/InsetGraphics.cpp:592 src/insets/InsetInclude.cpp:467
+#: src/insets/InsetGraphics.cpp:592 src/insets/InsetInclude.cpp:471
 msgid "Invalid filename"
 msgstr "無效檔名"
 
-#: src/frontends/qt4/GuiView.cpp:1368
+#: src/frontends/qt4/GuiView.cpp:1379
 #, c-format
 msgid ""
 "The directory in the given path\n"
@@ -19453,41 +19453,41 @@ msgid ""
 "does not exists."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1382
+#: src/frontends/qt4/GuiView.cpp:1393
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "開啟文件 %1$s…"
 
-#: src/frontends/qt4/GuiView.cpp:1391
+#: src/frontends/qt4/GuiView.cpp:1402
 #, c-format
 msgid "Document %1$s opened."
 msgstr "文件 %1$s 已開啟。"
 
-#: src/frontends/qt4/GuiView.cpp:1394
+#: src/frontends/qt4/GuiView.cpp:1405
 #, fuzzy
 msgid "Version control detected."
 msgstr "版本控制"
 
-#: src/frontends/qt4/GuiView.cpp:1396
+#: src/frontends/qt4/GuiView.cpp:1407
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "無法開啟文件 %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:1425
+#: src/frontends/qt4/GuiView.cpp:1436
 msgid "Couldn't import file"
 msgstr "無法匯入檔案"
 
-#: src/frontends/qt4/GuiView.cpp:1426
+#: src/frontends/qt4/GuiView.cpp:1437
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr "沒有資訊用於匯入格式 %1$s。"
 
-#: src/frontends/qt4/GuiView.cpp:1477
+#: src/frontends/qt4/GuiView.cpp:1488
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "選取 %1$s 檔案以匯入"
 
-#: src/frontends/qt4/GuiView.cpp:1528 src/frontends/qt4/GuiView.cpp:1713
+#: src/frontends/qt4/GuiView.cpp:1539 src/frontends/qt4/GuiView.cpp:1724
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -19498,46 +19498,46 @@ msgstr ""
 "\n"
 "您要覆寫該文件嗎？"
 
-#: src/frontends/qt4/GuiView.cpp:1530 src/frontends/qt4/GuiView.cpp:1717
+#: src/frontends/qt4/GuiView.cpp:1541 src/frontends/qt4/GuiView.cpp:1728
 msgid "Overwrite document?"
 msgstr "覆寫文件？"
 
-#: src/frontends/qt4/GuiView.cpp:1539
+#: src/frontends/qt4/GuiView.cpp:1550
 #, c-format
 msgid "Importing %1$s..."
 msgstr "匯入 %1$s…"
 
-#: src/frontends/qt4/GuiView.cpp:1542
+#: src/frontends/qt4/GuiView.cpp:1553
 msgid "imported."
 msgstr "已匯入。"
 
-#: src/frontends/qt4/GuiView.cpp:1544
+#: src/frontends/qt4/GuiView.cpp:1555
 #, fuzzy
 msgid "file not imported!"
 msgstr "找不到檔案"
 
-#: src/frontends/qt4/GuiView.cpp:1608
+#: src/frontends/qt4/GuiView.cpp:1619
 msgid "Select LyX document to insert"
 msgstr "選取要插入的 LyX 文件"
 
-#: src/frontends/qt4/GuiView.cpp:1649
+#: src/frontends/qt4/GuiView.cpp:1660
 msgid "Select file to insert"
 msgstr "選取檔案以插入"
 
-#: src/frontends/qt4/GuiView.cpp:1653
+#: src/frontends/qt4/GuiView.cpp:1664
 #, fuzzy
 msgid "All Files (*)"
 msgstr "所有檔案 (*)"
 
-#: src/frontends/qt4/GuiView.cpp:1686
+#: src/frontends/qt4/GuiView.cpp:1697
 msgid "Choose a filename to save document as"
 msgstr "選擇檔名以儲存文件"
 
-#: src/frontends/qt4/GuiView.cpp:1718 src/frontends/qt4/GuiView.cpp:1763
+#: src/frontends/qt4/GuiView.cpp:1729 src/frontends/qt4/GuiView.cpp:1774
 msgid "&Rename"
 msgstr "重新命名(&R)"
 
-#: src/frontends/qt4/GuiView.cpp:1759
+#: src/frontends/qt4/GuiView.cpp:1770
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -19548,16 +19548,16 @@ msgstr ""
 "\n"
 "您要重新命名文件並再次嘗試嗎？"
 
-#: src/frontends/qt4/GuiView.cpp:1762
+#: src/frontends/qt4/GuiView.cpp:1773
 msgid "Rename and save?"
 msgstr "重新命名和儲存？"
 
-#: src/frontends/qt4/GuiView.cpp:1763
+#: src/frontends/qt4/GuiView.cpp:1774
 #, fuzzy
 msgid "&Retry"
 msgstr "還原(&R)"
 
-#: src/frontends/qt4/GuiView.cpp:1820
+#: src/frontends/qt4/GuiView.cpp:1831
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -19568,24 +19568,24 @@ msgstr ""
 "\n"
 "您要儲存文件或是捨棄變更？"
 
-#: src/frontends/qt4/GuiView.cpp:1823
+#: src/frontends/qt4/GuiView.cpp:1834
 msgid "&Discard"
 msgstr "捨棄(&D)"
 
-#: src/frontends/qt4/GuiView.cpp:1895
+#: src/frontends/qt4/GuiView.cpp:1906
 #, fuzzy
 msgid "Document not loaded"
 msgstr "文件尚未載入"
 
-#: src/frontends/qt4/GuiView.cpp:1953
+#: src/frontends/qt4/GuiView.cpp:1964
 msgid "Saving all documents..."
 msgstr "正在儲存全部文件…"
 
-#: src/frontends/qt4/GuiView.cpp:1963
+#: src/frontends/qt4/GuiView.cpp:1974
 msgid "All documents saved."
 msgstr "所有文件已儲存"
 
-#: src/frontends/qt4/GuiView.cpp:2191
+#: src/frontends/qt4/GuiView.cpp:2221
 #, c-format
 msgid "%1$s unknown command!"
 msgstr ""
@@ -19605,35 +19605,35 @@ msgstr "書籤|B"
 msgid "Literate Source"
 msgstr "LaTeX 來源"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1130
+#: src/frontends/qt4/GuiWorkArea.cpp:1117
 #, fuzzy
 msgid " (version control)"
 msgstr "版本控制"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1132
+#: src/frontends/qt4/GuiWorkArea.cpp:1119
 #, fuzzy
 msgid " (version control, locking)"
 msgstr "版本控制"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1135
+#: src/frontends/qt4/GuiWorkArea.cpp:1122
 msgid " (changed)"
 msgstr " (已變更)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1139
+#: src/frontends/qt4/GuiWorkArea.cpp:1126
 msgid " (read only)"
 msgstr " (唯讀)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1226
+#: src/frontends/qt4/GuiWorkArea.cpp:1213
 #, fuzzy
 msgid "Close File"
 msgstr "關閉"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1625
+#: src/frontends/qt4/GuiWorkArea.cpp:1612
 #, fuzzy
 msgid "Hide tab"
 msgstr "δ"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1627
+#: src/frontends/qt4/GuiWorkArea.cpp:1614
 #, fuzzy
 msgid "Close tab"
 msgstr "關閉"
@@ -19792,7 +19792,7 @@ msgid "List of Changes"
 msgstr "表格列表"
 
 #: src/insets/ExternalSupport.cpp:366 src/insets/InsetBibtex.cpp:287
-#: src/insets/InsetGraphics.cpp:593 src/insets/InsetInclude.cpp:468
+#: src/insets/InsetGraphics.cpp:593 src/insets/InsetInclude.cpp:472
 msgid ""
 "The following filename is likely to cause trouble when running the exported "
 "file through LaTeX: "
@@ -19925,23 +19925,37 @@ msgstr "%1$s 和 %2$s"
 msgid "%1$s (%2$s, %3$s)"
 msgstr "%1$s 和 %2$s"
 
-#: src/insets/InsetBranch.cpp:60
+#: src/insets/InsetBranch.cpp:61
 msgid "Opened Branch Inset"
 msgstr "開啟的分支內欄"
 
-#: src/insets/InsetBranch.cpp:80 src/insets/InsetBranch.cpp:86
+#: src/insets/InsetBranch.cpp:82
+#, fuzzy
+msgid "active"
+msgstr "銳角"
+
+#: src/insets/InsetBranch.cpp:82
+msgid "non-active"
+msgstr ""
+
+#: src/insets/InsetBranch.cpp:83
+#, fuzzy, c-format
+msgid "Branch (%1$s): %2$s"
+msgstr "%1$s 和 %2$s"
+
+#: src/insets/InsetBranch.cpp:91
 msgid "Branch: "
 msgstr "分支："
 
-#: src/insets/InsetBranch.cpp:90
+#: src/insets/InsetBranch.cpp:95
 msgid "Branch (child only): "
 msgstr ""
 
-#: src/insets/InsetBranch.cpp:95
+#: src/insets/InsetBranch.cpp:100
 msgid "Undef: "
 msgstr "未定義："
 
-#: src/insets/InsetBranch.cpp:224
+#: src/insets/InsetBranch.cpp:230
 msgid "branch"
 msgstr "分支"
 
@@ -20053,7 +20067,7 @@ msgstr "開啟的註腳內欄"
 msgid "footnote"
 msgstr "註腳"
 
-#: src/insets/InsetGraphics.cpp:470 src/insets/InsetInclude.cpp:545
+#: src/insets/InsetGraphics.cpp:470 src/insets/InsetInclude.cpp:549
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -20074,24 +20088,24 @@ msgstr "完全沒有所需的 %1$s 轉換"
 msgid "Graphics file: %1$s"
 msgstr "圖形檔案：%1$s"
 
-#: src/insets/InsetInclude.cpp:331
+#: src/insets/InsetInclude.cpp:335
 msgid "Verbatim Input"
 msgstr "逐字地輸入"
 
-#: src/insets/InsetInclude.cpp:334
+#: src/insets/InsetInclude.cpp:338
 msgid "Verbatim Input*"
 msgstr "逐字地輸入*"
 
-#: src/insets/InsetInclude.cpp:434 src/insets/InsetInclude.cpp:633
+#: src/insets/InsetInclude.cpp:438 src/insets/InsetInclude.cpp:637
 msgid "Recursive input"
 msgstr "遞迴輸入"
 
-#: src/insets/InsetInclude.cpp:435 src/insets/InsetInclude.cpp:634
+#: src/insets/InsetInclude.cpp:439 src/insets/InsetInclude.cpp:638
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr "試圖包含檔案 %1$s 於它自己中！忽略包含動作。"
 
-#: src/insets/InsetInclude.cpp:490
+#: src/insets/InsetInclude.cpp:494
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -20102,11 +20116,11 @@ msgstr ""
 "具有文字類別「%2$s」\n"
 "當上層檔案有文字類別「%3$s」。"
 
-#: src/insets/InsetInclude.cpp:496
+#: src/insets/InsetInclude.cpp:500
 msgid "Different textclasses"
 msgstr "不同的文字類別"
 
-#: src/insets/InsetInclude.cpp:511
+#: src/insets/InsetInclude.cpp:515
 #, fuzzy, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -20117,7 +20131,7 @@ msgstr ""
 "具有文字類別「%2$s」\n"
 "當上層檔案有文字類別「%3$s」。"
 
-#: src/insets/InsetInclude.cpp:515
+#: src/insets/InsetInclude.cpp:519
 #, fuzzy
 msgid "Module not found"
 msgstr "找不到檔案"
@@ -20355,16 +20369,16 @@ msgstr "參數啟始以「%1$s」：%2$s"
 msgid "Opened Marginal Note Inset"
 msgstr "開啟的邊界註記內欄"
 
-#: src/insets/InsetNewpage.cpp:179 src/insets/InsetNewpage.cpp:191
+#: src/insets/InsetNewpage.cpp:178 src/insets/InsetNewpage.cpp:190
 #, fuzzy
 msgid "New Page"
 msgstr "清空頁面"
 
-#: src/insets/InsetNewpage.cpp:185
+#: src/insets/InsetNewpage.cpp:184
 msgid "Clear Page"
 msgstr "清空頁面"
 
-#: src/insets/InsetNewpage.cpp:188
+#: src/insets/InsetNewpage.cpp:187
 msgid "Clear Double Page"
 msgstr "清空雙頁"
 
@@ -20795,11 +20809,11 @@ msgstr "無法在「%1$s」中變更欄數"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "無法在「%1$s」中加入水平網格線"
 
-#: src/mathed/InsetMathNest.cpp:957
+#: src/mathed/InsetMathNest.cpp:959
 msgid "create new math text environment ($...$)"
 msgstr "建立新的數學文字環境 ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:960
+#: src/mathed/InsetMathNest.cpp:962
 msgid "entered math text mode (textrm)"
 msgstr "已進入數學文字模式 (textrm)"
 
