@@ -2185,9 +2185,9 @@ void GuiDocument::paramsToDialog()
 	if (index == -1)
 		index = 0;
 	outputModule->defaultFormatCO->setCurrentIndex(index);
-	outputModule->xetexCB->setEnabled(bp_.baseClass()->outputType() == LATEX);
+	outputModule->xetexCB->setEnabled(bp_.baseClass()->outputType() == lyx::LATEX);
 	outputModule->xetexCB->setChecked(
-		bp_.baseClass()->outputType() == LATEX && bp_.useXetex);
+		bp_.baseClass()->outputType() == lyx::LATEX && bp_.useXetex);
 
 	// Fonts
 	updateFontsize(documentClass().opt_fontsize(),
