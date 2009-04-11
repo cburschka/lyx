@@ -141,6 +141,7 @@ bool InsetLabel::getStatus(Cursor & cur, FuncRequest const & cmd,
 {
 	bool enabled;
 	switch (cmd.action) {
+	case LFUN_INSERT_LABEL_AS_REF:
 	case LFUN_COPY_LABEL_AS_REF:
 		enabled = true;
 		break;
