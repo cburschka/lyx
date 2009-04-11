@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-04-11 13:01+0200\n"
-"PO-Revision-Date: 2009-04-11 13:57+0200\n"
+"PO-Revision-Date: 2009-04-11 16:18+0200\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
 "Language-Team: German <kde-i18n-de@lists.kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -102,12 +102,12 @@ msgstr "Kľúč literatúry"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:54 src/frontends/qt4/ui/BibitemUi.ui:61
 msgid "The label as it appears in the document"
-msgstr "Označenie ako sa zobrazí v dokumente"
+msgstr "Návestie ako sa zobrazí v dokumente"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:64 src/frontends/qt4/ui/LabelUi.ui:39
 #: src/frontends/qt4/ui/RefUi.ui:151
 msgid "&Label:"
-msgstr "&Označenie:"
+msgstr "Návestie:"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:77
 msgid "&Key:"
@@ -1580,7 +1580,7 @@ msgstr "Kódovanie"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:40
 msgid "Language &Default"
-msgstr "Štandardné pre daný jazyk"
+msgstr "Jazyk Štandard"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:63
 msgid "&Other:"
@@ -2131,16 +2131,16 @@ msgstr "O&dsadiť odstavec"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:180
 msgid "Label Width"
-msgstr "Šírka označenia"
+msgstr "Šírka návestia"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:195
 #: src/frontends/qt4/ui/ParagraphUi.ui:202
 msgid "This text defines the width of the paragraph label"
-msgstr "Tento text definuje šírku značky odstavca"
+msgstr "Tento text definuje šírku návestia odstavca"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:205
 msgid "Lo&ngest label"
-msgstr "&Najdlhšia značka"
+msgstr "&Najdlhšie návestie"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:218
 msgid "Line &spacing"
@@ -2507,7 +2507,7 @@ msgstr "Štan&dardný jazyk:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:65
 msgid "Language pac&kage:"
-msgstr "Jazykový balíče&k:"
+msgstr "Jazykový balí&k:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:75
 msgid "Enter the command to load the language package (default: babel)"
@@ -3215,7 +3215,7 @@ msgstr "Formátovaná referencia"
 
 #: src/frontends/qt4/ui/RefUi.ui:212
 msgid "Sort labels in alphabetical order"
-msgstr "Triediť označenia v abecednom poradí"
+msgstr "Triediť návestia v abecednom poradí"
 
 #: src/frontends/qt4/ui/RefUi.ui:215
 msgid "&Sort"
@@ -3223,15 +3223,15 @@ msgstr "Triedenie"
 
 #: src/frontends/qt4/ui/RefUi.ui:238
 msgid "Update the label list"
-msgstr "Aktualizovať listinu označení"
+msgstr "Aktualizovať listinu návestí"
 
 #: src/frontends/qt4/ui/RefUi.ui:256
 msgid "Jump to the label"
-msgstr "Presuň sa na označenie"
+msgstr "Presuň sa na návestie"
 
 #: src/frontends/qt4/ui/RefUi.ui:259 src/frontends/qt4/GuiRef.cpp:284
 msgid "&Go to Label"
-msgstr "Prejsť na označenie"
+msgstr "Prejsť na návestie"
 
 #: src/frontends/qt4/ui/SearchUi.ui:28
 msgid "&Find:"
@@ -3595,7 +3595,7 @@ msgstr "Päta:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1163
 msgid "Repeat this row as footer on every (except the last) page"
-msgstr "Opakovať tento riadok ako pätku na všetkých stranách (okrem poslednej)"
+msgstr "Opakovať tento riadok ako pätu na všetkých stranách (okrem poslednej)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1187
 msgid "Last footer:"
@@ -3603,11 +3603,11 @@ msgstr "Posledná päta:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1194
 msgid "This row is the footer of the last page"
-msgstr "Tento riadok je pätkou na poslednej stránke"
+msgstr "Tento riadok je pätou na poslednej stránke"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1218
 msgid "Don't output the last footer"
-msgstr "Negeneruj poslednú pätku"
+msgstr "Negeneruj poslednú pätu"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1228
 msgid "Caption:"
@@ -4307,7 +4307,7 @@ msgstr "Životopis bez fotky"
 
 #: lib/layouts/IEEEtran.layout:442 lib/layouts/IEEEtran.layout:453
 msgid "Footernote"
-msgstr "Poznámka pod čiarou"
+msgstr "Poznámka pri päte"
 
 #: lib/layouts/IEEEtran.layout:465
 msgid "MarkBoth"
@@ -5016,7 +5016,7 @@ msgstr "AgainFrame"
 
 #: lib/layouts/beamer.layout:325
 msgid "Again frame with label"
-msgstr "Rám ešte raz s označením"
+msgstr "Rám ešte raz s návestím"
 
 #: lib/layouts/beamer.layout:349
 msgid "EndFrame"
@@ -7214,7 +7214,7 @@ msgstr "PACS-číslo:"
 #: lib/layouts/scrlettr.layout:24 lib/layouts/scrlttr2.layout:26
 #: lib/layouts/scrclass.inc:33
 msgid "Labeling"
-msgstr "Označovanie"
+msgstr "Etiketácia"
 
 #: lib/layouts/scrlettr.layout:50
 msgid "L"
@@ -8668,9 +8668,8 @@ msgid "List of Tableaux"
 msgstr "Zoznam tablov"
 
 #: lib/layouts/logicalmkup.module:2
-#, fuzzy
 msgid "Logical Markup"
-msgstr "Prejsť dozadu"
+msgstr "Logické štýly"
 
 #: lib/layouts/logicalmkup.module:5
 msgid ""
@@ -9797,7 +9796,7 @@ msgstr "Krížová referencia..."
 
 #: lib/ui/classic.ui:219 lib/ui/stdmenus.inc:334
 msgid "Label...|L"
-msgstr "Označenie..."
+msgstr "Návestie..."
 
 #: lib/ui/classic.ui:220 lib/ui/stdmenus.inc:343
 msgid "Footnote|F"
@@ -10180,7 +10179,7 @@ msgstr "Ďalšia poznámka"
 
 #: lib/ui/classic.ui:379 lib/ui/stdmenus.inc:480
 msgid "Go to Label|L"
-msgstr "Prejsť na označenie"
+msgstr "Prejsť na Návestie"
 
 #: lib/ui/classic.ui:380 lib/ui/stdmenus.inc:476
 msgid "Bookmarks|B"
@@ -10300,11 +10299,11 @@ msgstr "AMS prostredie"
 
 #: lib/ui/stdcontext.inc:46
 msgid "Equation Label|L"
-msgstr "Označenie rovnice"
+msgstr "Návestie Rovnice"
 
 #: lib/ui/stdcontext.inc:47
 msgid "Toggle Labeling/Numbering|T"
-msgstr "Prepnuť číslovania/označenie"
+msgstr "Prepnúť číslovanie/etiketáciu"
 
 #: lib/ui/stdcontext.inc:49 lib/ui/stdmenus.inc:203
 msgid "Split Cell|C"
@@ -10364,7 +10363,7 @@ msgstr "Ďalšia krížová referencia"
 
 #: lib/ui/stdcontext.inc:74
 msgid "Go to Label|G"
-msgstr "Prejsť na označenie"
+msgstr "Prejsť na Návestie"
 
 #: lib/ui/stdcontext.inc:76
 msgid "<reference>|r"
@@ -10430,7 +10429,7 @@ msgstr "Rozpustit vložku do textu"
 
 #: lib/ui/stdcontext.inc:131
 msgid "Toggle Label|L"
-msgstr "Prepnúť označenie"
+msgstr "Prepnúť Návestie"
 
 #: lib/ui/stdcontext.inc:142
 msgid "Frameless|l"
@@ -11345,7 +11344,7 @@ msgstr "Vložiť plávajúcu tabuľku"
 
 #: lib/ui/stdtoolbars.inc:96
 msgid "Insert label"
-msgstr "Vložiť označenie"
+msgstr "Vložiť návestie"
 
 #: lib/ui/stdtoolbars.inc:97
 msgid "Insert cross-reference"
@@ -14967,7 +14966,7 @@ msgstr "útržok (okamžitý náhľad)"
 
 #: src/Color.cpp:156
 msgid "note label"
-msgstr "Označenie poznámky"
+msgstr "Návestie poznámky"
 
 #: src/Color.cpp:157
 msgid "note background"
@@ -14975,7 +14974,7 @@ msgstr "pozadie poznámky"
 
 #: src/Color.cpp:158
 msgid "comment label"
-msgstr "označenie komentáru"
+msgstr "návestie komentáru"
 
 #: src/Color.cpp:159
 msgid "comment background"
@@ -14983,7 +14982,7 @@ msgstr "pozadie komentáru"
 
 #: src/Color.cpp:160
 msgid "greyedout inset label"
-msgstr "zosivelá vložka (označenie)"
+msgstr "zosivelá vložka (návestie)"
 
 #: src/Color.cpp:161
 msgid "greyedout inset background"
@@ -14999,23 +14998,23 @@ msgstr "pozadie výpisov"
 
 #: src/Color.cpp:164
 msgid "branch label"
-msgstr "značka vetvy"
+msgstr "návestie vetvy"
 
 #: src/Color.cpp:165
 msgid "footnote label"
-msgstr "Označenie poznámky pod čiarou"
+msgstr "návestie poznámky pod čiarou"
 
 #: src/Color.cpp:166
 msgid "index label"
-msgstr "označenie indexu"
+msgstr "návestie indexu"
 
 #: src/Color.cpp:167
 msgid "margin note label"
-msgstr "Označenie okrajovej poznámky"
+msgstr "návestie okrajovej poznámky"
 
 #: src/Color.cpp:168
 msgid "URL label"
-msgstr "URL Označenie"
+msgstr "URL návestie"
 
 #: src/Color.cpp:169
 msgid "URL text"
@@ -15058,51 +15057,44 @@ msgid "graphics background"
 msgstr "pozadí obrázku"
 
 #: src/Color.cpp:179 src/Color.cpp:183
-#, fuzzy
 msgid "math macro background"
-msgstr "pozadie matematiky"
+msgstr "pozadie matematického makra"
 
 #: src/Color.cpp:180
 msgid "math frame"
 msgstr "matematika (rám)"
 
 #: src/Color.cpp:181
-#, fuzzy
 msgid "math corners"
-msgstr "matematický panel"
+msgstr "rôžky mat. vzorca"
 
 #: src/Color.cpp:182
 msgid "math line"
 msgstr "matematický panel"
 
 #: src/Color.cpp:184
-#, fuzzy
 msgid "math macro hovered background"
-msgstr "pozadie matematiky"
+msgstr "mat. makro posunuté do pozadia"
 
 #: src/Color.cpp:185
-#, fuzzy
 msgid "math macro label"
-msgstr "pozadie matematiky"
+msgstr "návestie mat. makra"
 
 #: src/Color.cpp:186
 msgid "math macro frame"
 msgstr "matematické-macro (rám)"
 
 #: src/Color.cpp:187
-#, fuzzy
 msgid "math macro blended out"
-msgstr "pozadie matematiky"
+msgstr "mat. makro vymaskované"
 
 #: src/Color.cpp:188
-#, fuzzy
 msgid "math macro old parameter"
-msgstr "matematický režim"
+msgstr "mat. makro starý parameter"
 
 #: src/Color.cpp:189
-#, fuzzy
 msgid "math macro new parameter"
-msgstr "matematický režim"
+msgstr "mat. makro nový parameter"
 
 #: src/Color.cpp:190
 msgid "caption frame"
@@ -16119,7 +16111,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2567
 msgid "Maximum number of words in the initialization string for a new label"
-msgstr "Maximálny počet slov v počiatočnom reťazci pre nové označenie"
+msgstr "Maximálny počet slov v počiatočnom reťazci pre nové návestie"
 
 #: src/LyXRC.cpp:2571
 msgid ""
@@ -16416,9 +16408,8 @@ msgid "De-select if you don't want the startup banner."
 msgstr "Zrušte výber keď si neprajete transparent pri štarte."
 
 #: src/LyXRC.cpp:2811
-#, fuzzy
 msgid "What command runs the spellchecker?"
-msgstr "Aký program spúšťa kontrolu pravopisu?"
+msgstr "Ktorý program spúšťa kontrolu pravopisu?"
 
 #: src/LyXRC.cpp:2815
 msgid ""
@@ -16476,9 +16467,8 @@ msgid "Document not saved"
 msgstr "Dokument nie je uložený!"
 
 #: src/LyXVC.cpp:101
-#, fuzzy
 msgid "You must save the document before it can be registered."
-msgstr "skôr ako by bol zaregistrovaný."
+msgstr "Musíte uložiť dokument skôr ako by bol zaregistrovaný."
 
 #: src/LyXVC.cpp:133
 msgid "LyX VC: Initial description"
@@ -16505,9 +16495,8 @@ msgstr ""
 "Chcete přejít zpět k starší uložené verzi ?"
 
 #: src/LyXVC.cpp:181
-#, fuzzy
 msgid "Revert to stored version of document?"
-msgstr "Vyberať po koniec dokumentu"
+msgstr "Vrátiť sa k uloženej verzii dokumentu?"
 
 #: src/Paragraph.cpp:1585 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
@@ -16545,9 +16534,8 @@ msgid "Paragraph not properly initialized"
 msgstr "Odstavec není správně inicializován"
 
 #: src/SpellBase.cpp:51
-#, fuzzy
 msgid "Native OS API not yet supported."
-msgstr "Ešte nie je podporované"
+msgstr "Pôvodné OS API ešte nie je podporované."
 
 #: src/Text.cpp:146
 msgid "Unknown Inset"
@@ -16590,12 +16578,10 @@ msgid "[Change Tracking] "
 msgstr "[Zmeniť Sledovanie] "
 
 #: src/Text.cpp:1384
-#, fuzzy
 msgid "Change: "
-msgstr "Strana: "
+msgstr "Zmena: "
 
 #: src/Text.cpp:1388
-#, fuzzy
 msgid " at "
 msgstr " na "
 
@@ -16634,9 +16620,8 @@ msgid ", Id: "
 msgstr ", Id: "
 
 #: src/Text.cpp:1433
-#, fuzzy
 msgid ", Position: "
-msgstr "   možnosti: "
+msgstr ", Pozícia: "
 
 #: src/Text.cpp:1439
 msgid ", Char: 0x"
@@ -16647,9 +16632,8 @@ msgid ", Boundary: "
 msgstr ", Okraj: "
 
 #: src/Text2.cpp:388
-#, fuzzy
 msgid "No font change defined."
-msgstr "Prejsť na ďalšiu zmenu"
+msgstr "Žiadna zmena fontu nie je definovaná."
 
 #: src/Text2.cpp:428
 msgid "Nothing to index!"
@@ -16708,9 +16692,8 @@ msgid "Could not read stdinsets.inc! This may lead to data loss!"
 msgstr "Nedá sa čítať súbor stdinsets.inc! Môže dôjsť ku ztrata dát!"
 
 #: src/Thesaurus.cpp:60
-#, fuzzy
 msgid "Thesaurus failure"
-msgstr "Synonymický slovník"
+msgstr "Chyba tezauru"
 
 #: src/Thesaurus.cpp:61
 #, c-format
@@ -16725,9 +16708,8 @@ msgstr ""
 
 #: src/VCBackend.cpp:56 src/VCBackend.cpp:535 src/VCBackend.cpp:597
 #: src/VCBackend.cpp:603 src/VCBackend.cpp:624
-#, fuzzy
 msgid "Revision control error."
-msgstr "Kontrola verzií"
+msgstr "Chyba kontroly verzií."
 
 #: src/VCBackend.cpp:57
 #, c-format
@@ -16786,29 +16768,24 @@ msgid "Default skip"
 msgstr "Štd. riadkovanie"
 
 #: src/VSpace.cpp:475
-#, fuzzy
 msgid "Small skip"
 msgstr "Malá"
 
 #: src/VSpace.cpp:478
-#, fuzzy
 msgid "Medium skip"
 msgstr "Stredná"
 
 #: src/VSpace.cpp:481
-#, fuzzy
 msgid "Big skip"
 msgstr "Veľká"
 
 #: src/VSpace.cpp:484
-#, fuzzy
 msgid "Vertical fill"
-msgstr " (vertikálne vyplnenie)"
+msgstr "Variabilná"
 
 #: src/VSpace.cpp:491
-#, fuzzy
 msgid "protected"
-msgstr "Chránená medzera|m"
+msgstr "chránená"
 
 #: src/buffer_funcs.cpp:72
 #, c-format
@@ -16816,23 +16793,20 @@ msgid ""
 "The document %1$s is already loaded and has unsaved changes.\n"
 "Do you want to abandon your changes and reload the version on disk?"
 msgstr ""
-"Dokument %1$s je již otevřen a obsahuje neuložené změny.\n"
-"Chcete se těchto změn vzdát a načíst původní verzi z disku?"
+"Dokument %1$s je už otvorený a obsahuje neuložené zmeny.\n"
+"Chcete sa týchto zmien vzdať a nahrať pôvodnú verziu z disku?"
 
 #: src/buffer_funcs.cpp:74
-#, fuzzy
 msgid "Reload saved document?"
-msgstr "Obnovenie uloženej verzie"
+msgstr "Opäť načítať uložený dokument?"
 
 #: src/buffer_funcs.cpp:75
-#, fuzzy
 msgid "&Reload"
-msgstr "&Nahradiť"
+msgstr "Opäť načítať"
 
 #: src/buffer_funcs.cpp:75
-#, fuzzy
 msgid "&Keep Changes"
-msgstr "Spojiť bunky"
+msgstr "Držať Zmeny"
 
 #: src/buffer_funcs.cpp:86
 #, c-format
@@ -16855,14 +16829,12 @@ msgstr ""
 "Chcete vytvořit nový ?"
 
 #: src/buffer_funcs.cpp:106
-#, fuzzy
 msgid "Create new document?"
-msgstr "Vytvoriť nový dokument s týmto názvom?"
+msgstr "Vytvoriť nový dokument?"
 
 #: src/buffer_funcs.cpp:107
-#, fuzzy
 msgid "&Create"
-msgstr "Uspo&riadať"
+msgstr "Vytvoriť"
 
 #: src/buffer_funcs.cpp:135
 #, c-format
@@ -16904,24 +16876,20 @@ msgid "Maths"
 msgstr "Matematika"
 
 #: src/frontends/qt4/BulletsModule.cpp:43
-#, fuzzy
 msgid "Dings 1"
-msgstr "Ďalšie 1|#Ď"
+msgstr "Dings 1"
 
 #: src/frontends/qt4/BulletsModule.cpp:44
-#, fuzzy
 msgid "Dings 2"
-msgstr "Ďalšie 2|#a"
+msgstr "Dings 2"
 
 #: src/frontends/qt4/BulletsModule.cpp:45
-#, fuzzy
 msgid "Dings 3"
-msgstr "Ďalšie 3|#l"
+msgstr "Dings 3"
 
 #: src/frontends/qt4/BulletsModule.cpp:46
-#, fuzzy
 msgid "Dings 4"
-msgstr "Ďalšie 4|#š"
+msgstr "Dings 4"
 
 #: src/frontends/qt4/FileDialog.cpp:181
 msgid "Directories"
@@ -16940,13 +16908,13 @@ msgid "amount of work other people have done for the LyX project."
 msgstr "množstva práce všetkých ľudí, ktorí pracovali pre LyX projekt."
 
 #: src/frontends/qt4/GuiAbout.cpp:77
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
 "1995--%1$s LyX Team"
 msgstr ""
 "LyX Copyright (C) 1995 Matthias Ettrich,\n"
-"1995-2001 LyX Team"
+"1995-%1$s LyX Team"
 
 #: src/frontends/qt4/GuiAbout.cpp:85
 msgid ""
@@ -16979,9 +16947,8 @@ msgstr ""
 "linux.sk.  Český preklad je na http://www.freesoft.cz."
 
 #: src/frontends/qt4/GuiAbout.cpp:104
-#, fuzzy
 msgid "not released yet"
-msgstr "Zvýšenie hĺbky"
+msgstr "ešte neuvoľnené"
 
 #: src/frontends/qt4/GuiAbout.cpp:109
 #, c-format
@@ -17017,19 +16984,16 @@ msgid "Preferences"
 msgstr "Preferencie"
 
 #: src/frontends/qt4/GuiApplication.cpp:441
-#, fuzzy
 msgid "Reconfigure"
-msgstr "Rekonfigurácia|R"
+msgstr "Rekonfigurácia"
 
 #: src/frontends/qt4/GuiApplication.cpp:441
-#, fuzzy
 msgid "Quit %1"
-msgstr "Ukončiť LyX"
+msgstr "Opustiť %1"
 
 #: src/frontends/qt4/GuiApplication.cpp:828
-#, fuzzy
 msgid "Exiting."
-msgstr "Koniec|K"
+msgstr "Končím."
 
 #: src/frontends/qt4/GuiApplication.cpp:895
 msgid "Syntax: set-color <lyx_name> <x11_name>"
@@ -17093,18 +17057,16 @@ msgid "Documents|#o#O"
 msgstr "Dokumenty|#o#O"
 
 #: src/frontends/qt4/GuiBibtex.cpp:437
-#, fuzzy
 msgid "BibTeX Databases (*.bib)"
-msgstr "*.bib| BibTeX databázy (*.bib)"
+msgstr "BibTeX databázy (*.bib)"
 
 #: src/frontends/qt4/GuiBibtex.cpp:439
 msgid "Select a BibTeX database to add"
 msgstr "Vybrat databázi BibTeX-u k přidání"
 
 #: src/frontends/qt4/GuiBibtex.cpp:447
-#, fuzzy
 msgid "BibTeX Styles (*.bst)"
-msgstr "BibTeX štýly"
+msgstr "BibTeX štýly (*.bst)"
 
 #: src/frontends/qt4/GuiBibtex.cpp:449
 msgid "Select a BibTeX style"
@@ -17177,9 +17139,8 @@ msgstr "Farebné"
 
 #: src/frontends/qt4/GuiBranches.cpp:72 src/frontends/qt4/GuiBranches.cpp:146
 #: src/frontends/qt4/GuiDocument.cpp:1521
-#, fuzzy
 msgid "Yes"
-msgstr "&Áno"
+msgstr "Áno"
 
 #: src/frontends/qt4/GuiBranches.cpp:72 src/frontends/qt4/GuiDocument.cpp:1520
 msgid "No"
@@ -17284,9 +17245,8 @@ msgid "PDF"
 msgstr "PDF"
 
 #: src/frontends/qt4/GuiClipboard.cpp:147
-#, fuzzy
 msgid "pasted"
-msgstr "Vložiť"
+msgstr "vlepené"
 
 #: src/frontends/qt4/GuiClipboard.cpp:156
 #, c-format
@@ -17343,14 +17303,12 @@ msgstr "Mat. oddeľovač"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:203
 #: src/frontends/qt4/GuiDelimiter.cpp:204
-#, fuzzy
 msgid "(None)"
-msgstr "Žiadne"
+msgstr "(Žiadne)"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:206
-#, fuzzy
 msgid "Variable"
-msgstr "Variabilná veľkosť"
+msgstr "Variabilný"
 
 #: src/frontends/qt4/GuiDocument.cpp:103
 msgid "Computer Modern Roman"
@@ -17365,14 +17323,12 @@ msgid "AE (Almost European)"
 msgstr "AE (Almost European)"
 
 #: src/frontends/qt4/GuiDocument.cpp:104
-#, fuzzy
 msgid "Times Roman"
-msgstr "Roman"
+msgstr "Times Roman"
 
 #: src/frontends/qt4/GuiDocument.cpp:104
-#, fuzzy
 msgid "Palatino"
-msgstr "Tabuľka_popis"
+msgstr "Palatino"
 
 #: src/frontends/qt4/GuiDocument.cpp:105
 msgid "Bitstream Charter"
@@ -17383,18 +17339,16 @@ msgid "New Century Schoolbook"
 msgstr "New Century Schoolbook"
 
 #: src/frontends/qt4/GuiDocument.cpp:105
-#, fuzzy
 msgid "Bookman"
-msgstr "Roman"
+msgstr "Bookman"
 
 #: src/frontends/qt4/GuiDocument.cpp:106
 msgid "Utopia"
 msgstr "Utopia"
 
 #: src/frontends/qt4/GuiDocument.cpp:106
-#, fuzzy
 msgid "Bera Serif"
-msgstr "Sans Serif"
+msgstr "Bera Serif"
 
 #: src/frontends/qt4/GuiDocument.cpp:106
 msgid "Concrete Roman"
@@ -17425,9 +17379,8 @@ msgid "Bera Sans"
 msgstr "Bera Sans"
 
 #: src/frontends/qt4/GuiDocument.cpp:120
-#, fuzzy
 msgid "CM Bright"
-msgstr "Horný pravý"
+msgstr "CM Bright"
 
 #: src/frontends/qt4/GuiDocument.cpp:132
 msgid "Computer Modern Typewriter"
@@ -17438,9 +17391,8 @@ msgid "Latin Modern Typewriter"
 msgstr "Latin Modern Typewriter"
 
 #: src/frontends/qt4/GuiDocument.cpp:133
-#, fuzzy
 msgid "Courier"
-msgstr "Kópie"
+msgstr "Courier"
 
 #: src/frontends/qt4/GuiDocument.cpp:133
 msgid "Bera Mono"
@@ -17455,14 +17407,12 @@ msgid "CM Typewriter Light"
 msgstr "CM Typewriter Light"
 
 #: src/frontends/qt4/GuiDocument.cpp:146
-#, fuzzy
 msgid "Page"
-msgstr "Strany"
+msgstr "Stránka"
 
 #: src/frontends/qt4/GuiDocument.cpp:204
-#, fuzzy
 msgid "Module not found!"
-msgstr "Reťazec nebol nájdený!"
+msgstr "Modul nenájdený!"
 
 #: src/frontends/qt4/GuiDocument.cpp:505
 msgid "Document Settings"
@@ -17521,9 +17471,8 @@ msgid "B4"
 msgstr "B4"
 
 #: src/frontends/qt4/GuiDocument.cpp:792
-#, fuzzy
 msgid "Language Default (no inputenc)"
-msgstr "Ľavá_Hlavička"
+msgstr "Jazyk Štandard (no inputenc)"
 
 #: src/frontends/qt4/GuiDocument.cpp:801
 msgid "``text''"
@@ -17542,14 +17491,12 @@ msgid ",,text''"
 msgstr ",,text''"
 
 #: src/frontends/qt4/GuiDocument.cpp:805
-#, fuzzy
 msgid "<<text>>"
-msgstr "text"
+msgstr "<<text>>"
 
 #: src/frontends/qt4/GuiDocument.cpp:806
-#, fuzzy
 msgid ">>text<<"
-msgstr "text"
+msgstr ">>text<<"
 
 #: src/frontends/qt4/GuiDocument.cpp:821
 msgid "Numbered"
@@ -17577,28 +17524,24 @@ msgid "Document Class"
 msgstr "Trieda dokumentu"
 
 #: src/frontends/qt4/GuiDocument.cpp:982
-#, fuzzy
 msgid "Modules"
-msgstr "Stred"
+msgstr "Moduly"
 
 #: src/frontends/qt4/GuiDocument.cpp:984
 msgid "Text Layout"
 msgstr "Formát Textu"
 
 #: src/frontends/qt4/GuiDocument.cpp:986
-#, fuzzy
 msgid "Page Margins"
-msgstr "Okraje"
+msgstr "Okraje Stránky"
 
 #: src/frontends/qt4/GuiDocument.cpp:988
-#, fuzzy
 msgid "Numbering & TOC"
-msgstr "Číslovanie"
+msgstr "Číslovanie & TOC"
 
 #: src/frontends/qt4/GuiDocument.cpp:990
-#, fuzzy
 msgid "PDF Properties"
-msgstr "Vlastníctvo"
+msgstr "PDF Vlastnosti"
 
 #: src/frontends/qt4/GuiDocument.cpp:991
 msgid "Math Options"
@@ -17653,18 +17596,16 @@ msgstr "Použiť format"
 #: src/frontends/qt4/GuiDocument.cpp:1275
 #: src/frontends/qt4/GuiDocument.cpp:1349
 #: src/frontends/qt4/GuiDocument.cpp:2243
-#, fuzzy
 msgid "Error"
-msgstr "Šípka"
+msgstr "Chyba"
 
 #: src/frontends/qt4/GuiDocument.cpp:1276
 msgid "Unable to read local layout file."
 msgstr "Nepodarilo sa čítať lokálny súbor formátov."
 
 #: src/frontends/qt4/GuiDocument.cpp:1298
-#, fuzzy
 msgid "Select master document"
-msgstr "Uložiť dokument"
+msgstr "Vyber hlavný dokument"
 
 #: src/frontends/qt4/GuiDocument.cpp:1302
 msgid "LyX Files (*.lyx)"
@@ -17672,9 +17613,8 @@ msgstr "LyX súbory (*.lyx)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1334
 #: src/frontends/qt4/GuiDocument.cpp:2232
-#, fuzzy
 msgid "Unapplied changes"
-msgstr "Sledovať zmeny|S"
+msgstr "Nepoužité zmeny"
 
 #: src/frontends/qt4/GuiDocument.cpp:1335
 #: src/frontends/qt4/GuiDocument.cpp:2233
@@ -17706,9 +17646,8 @@ msgid "%1$s, %2$s, and %3$s"
 msgstr "%1$s, %2$s a %3$s"
 
 #: src/frontends/qt4/GuiDocument.cpp:1472
-#, fuzzy
 msgid "Module provided by document class."
-msgstr "Uložiť rozloženie ako štandardné"
+msgstr "Modul poskytnutý triedou dokumentu"
 
 #: src/frontends/qt4/GuiDocument.cpp:1480
 #, c-format
@@ -17716,9 +17655,8 @@ msgid "Package(s) required: %1$s."
 msgstr "Vyžadované balíčky: %1$s."
 
 #: src/frontends/qt4/GuiDocument.cpp:1486
-#, fuzzy
 msgid "or"
-msgstr "Formáty"
+msgstr "alebo"
 
 #: src/frontends/qt4/GuiDocument.cpp:1489
 #, c-format
@@ -17748,9 +17686,8 @@ msgid "Unable to set layout for ID: %1$s"
 msgstr "Nedá sa nastaviť formát pre ID: %1$s"
 
 #: src/frontends/qt4/GuiDocument.cpp:2333
-#, fuzzy
 msgid "Not Found"
-msgstr " neznámy"
+msgstr "Nenájdený"
 
 #: src/frontends/qt4/GuiDocument.cpp:2387
 msgid "Assigned master does not include this file"
@@ -17771,11 +17708,13 @@ msgid "Could not load master"
 msgstr "Hlavný dokument sa nedá nahrať"
 
 #: src/frontends/qt4/GuiDocument.cpp:2393
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The master document '%1$s'\n"
 "could not be loaded."
-msgstr "Dokument nie je možné uložiť!"
+msgstr ""
+"Hlavný dokument '%1$s'\n"
+"nie je možné nahrať."
 
 #: src/frontends/qt4/GuiERT.cpp:29
 msgid "TeX Code Settings"
@@ -17896,9 +17835,8 @@ msgid "Enter unique group name:"
 msgstr "Vložte unikátní jméno skupiny:"
 
 #: src/frontends/qt4/GuiGraphics.cpp:373
-#, fuzzy
 msgid "Group already defined!"
-msgstr "Prejsť na ďalšiu zmenu"
+msgstr "Skupina je už definovaná!"
 
 #: src/frontends/qt4/GuiGraphics.cpp:374
 #, c-format
@@ -17976,9 +17914,8 @@ msgid "Hyperlink"
 msgstr "Hyperlinka"
 
 #: src/frontends/qt4/GuiInclude.cpp:48 src/frontends/qt4/Menus.cpp:1082
-#, fuzzy
 msgid "Child Document"
-msgstr "Dokument"
+msgstr "Dokument potomka"
 
 #: src/frontends/qt4/GuiInclude.cpp:120 src/frontends/qt4/GuiInclude.cpp:182
 #: src/frontends/qt4/GuiListings.cpp:239 src/frontends/qt4/GuiListings.cpp:375
@@ -17997,9 +17934,8 @@ msgid "LaTeX/LyX Documents (*.tex *.lyx)"
 msgstr "LaTeX/LyX dokumenty (p.tex *.lyx)"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
-#, fuzzy
 msgid "unknown"
-msgstr " neznámy"
+msgstr "neznámy"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "shortcut"
@@ -18014,24 +17950,20 @@ msgid "lyxrc"
 msgstr "lyxrc"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
-#, fuzzy
 msgid "package"
-msgstr "&Nahradiť"
+msgstr "balík"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
-#, fuzzy
 msgid "textclass"
-msgstr "text"
+msgstr "trieda textu"
 
 #: src/frontends/qt4/GuiInfo.cpp:47
-#, fuzzy
 msgid "menu"
-msgstr "min."
+msgstr "menu"
 
 #: src/frontends/qt4/GuiInfo.cpp:47
-#, fuzzy
 msgid "icon"
-msgstr "na"
+msgstr "ikona"
 
 #: src/frontends/qt4/GuiInfo.cpp:47
 msgid "buffer"
@@ -18042,14 +17974,12 @@ msgid "Shift-"
 msgstr "Shift-"
 
 #: src/frontends/qt4/GuiKeySymbol.cpp:708
-#, fuzzy
 msgid "Control-"
-msgstr "Záznam"
+msgstr "Ctrl-"
 
 #: src/frontends/qt4/GuiKeySymbol.cpp:709
-#, fuzzy
 msgid "Option-"
-msgstr "Možnosti"
+msgstr "Voľba-"
 
 #: src/frontends/qt4/GuiKeySymbol.cpp:710
 msgid "Command-"
@@ -18057,21 +17987,19 @@ msgstr "Príkaz-"
 
 #: src/frontends/qt4/GuiLabel.cpp:37
 msgid "Label"
-msgstr "Označenie"
+msgstr "Návestie"
 
 #: src/frontends/qt4/GuiListings.cpp:60
-#, fuzzy
 msgid "No language"
-msgstr "jazyk"
+msgstr "Žiadny jazyk"
 
 #: src/frontends/qt4/GuiListings.cpp:164
 msgid "Program Listing Settings"
 msgstr "Nastavenia tlačiarne pre programové zdroje"
 
 #: src/frontends/qt4/GuiListings.cpp:414
-#, fuzzy
 msgid "No dialect"
-msgstr "Bez obrázku"
+msgstr "Žiadny dialekt"
 
 #: src/frontends/qt4/GuiLog.cpp:103 src/frontends/qt4/GuiLog.cpp:180
 msgid "LaTeX Log"
@@ -18132,10 +18060,10 @@ msgid ""
 "the items is used."
 msgstr ""
 "Ako popísané v uživateľskej príručke, šírka tohto textu určuje šírku "
-"označenia v prostrediach typu Listina a Popis.\n"
+"návestia v prostrediach typu Listina a Popis.\n"
 "\n"
 "Toto obvykle netreba nastavovať, lebo je štandardne vybraná najdlhším "
-"označením všetkých použitých položiek."
+"návestím všetkých použitých položiek."
 
 #: src/frontends/qt4/GuiPrefs.cpp:136
 msgid "System files|#S#s"
@@ -18150,12 +18078,10 @@ msgid "Look & Feel"
 msgstr "Vzhled"
 
 #: src/frontends/qt4/GuiPrefs.cpp:226
-#, fuzzy
 msgid "Language Settings"
-msgstr "Nastavenia tlačiarne"
+msgstr "Jazyk Nastavenia"
 
 #: src/frontends/qt4/GuiPrefs.cpp:227
-#, fuzzy
 msgid "Output"
 msgstr "Výstup"
 
@@ -18168,9 +18094,8 @@ msgid "Date format"
 msgstr "Formát dátumu"
 
 #: src/frontends/qt4/GuiPrefs.cpp:432
-#, fuzzy
 msgid "Keyboard/Mouse"
-msgstr "Klávesnica"
+msgstr "Klávesnica/Myš"
 
 #: src/frontends/qt4/GuiPrefs.cpp:507
 msgid "Input Completion"
@@ -18226,9 +18151,8 @@ msgid "aspell"
 msgstr "aspell"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1103
-#, fuzzy
 msgid "hspell"
-msgstr "ispell"
+msgstr "hspell"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1105
 msgid "pspell (library)"
@@ -18247,9 +18171,8 @@ msgid "File formats"
 msgstr "Formáty súborov"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1691
-#, fuzzy
 msgid "Format in use"
-msgstr "Formáty"
+msgstr "Formát v použítí"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1692
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
@@ -18275,18 +18198,16 @@ msgid "User interface"
 msgstr "Používateľské rozhranie"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2009
-#, fuzzy
 msgid "Control"
-msgstr "Záznam"
+msgstr "Ctrl"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2081
 msgid "Shortcuts"
 msgstr "Skratky"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2086
-#, fuzzy
 msgid "Function"
-msgstr "&Funkcie"
+msgstr "Funkcia"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2087
 msgid "Shortcut"
@@ -18309,14 +18230,12 @@ msgid "Font, Layouts and Textclasses"
 msgstr "Font, Formáty a Triedy textu"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2184
-#, fuzzy
 msgid "System and Miscellaneous"
-msgstr "AMS rôzne"
+msgstr "Systém a Rôzne"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2311 src/frontends/qt4/GuiPrefs.cpp:2357
-#, fuzzy
 msgid "Res&tore"
-msgstr "O&bnoviť"
+msgstr "Reštaurovať"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2467 src/frontends/qt4/GuiPrefs.cpp:2474
 #: src/frontends/qt4/GuiPrefs.cpp:2485 src/frontends/qt4/GuiPrefs.cpp:2498
@@ -18325,9 +18244,8 @@ msgid "Failed to create shortcut"
 msgstr "Nepodarilo sa vytvoriť skratku"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2468
-#, fuzzy
 msgid "Unknown or invalid LyX function"
-msgstr "Neznáma funkcia."
+msgstr "Neznáma alebo neplatná LyX funkcia"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2475
 msgid "Invalid or empty key sequence"
@@ -18382,9 +18300,8 @@ msgid "Choose keyboard map"
 msgstr "Vybrat mapu kláves"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2761
-#, fuzzy
 msgid "LyX keyboard maps (*.kmap)"
-msgstr "Použiť &klávesnicovú mapu"
+msgstr "LyX klávesnicové mapy (*.kmap)"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2767
 msgid "Choose personal dictionary"
@@ -18395,9 +18312,8 @@ msgid "*.pws"
 msgstr "*.pws"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2768
-#, fuzzy
 msgid "*.ispell"
-msgstr "ispell"
+msgstr "*.ispell"
 
 #: src/frontends/qt4/GuiPrint.cpp:43
 msgid "Print Document"
@@ -18425,7 +18341,7 @@ msgstr "Prejsť dozadu"
 
 #: src/frontends/qt4/GuiRef.cpp:286
 msgid "Jump to label"
-msgstr "Skok na označenie"
+msgstr "Skok na návestie"
 
 #: src/frontends/qt4/GuiSearch.cpp:41
 msgid "Find and Replace"
@@ -18444,23 +18360,20 @@ msgid "Error -> Cannot load file!"
 msgstr "Chyba -> Nemôžem nahrať súbor!"
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:243
-#, fuzzy
 msgid "Spellchecker error"
-msgstr "Kontrola pravopisu"
+msgstr "Chyba programu kontroly pravopisu"
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:244
-#, fuzzy
 msgid "The spellchecker could not be started\n"
-msgstr "Dokument nie je možné uložiť!"
+msgstr "Program kontroly pravopisu sa nedá spustiť\n"
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:398
-#, fuzzy
 msgid ""
 "The spellchecker has died for some reason.\n"
 "Maybe it has been killed."
 msgstr ""
-"Kontrola pravopisu z nejakého dôvodu nebola dokončená.\n"
-"Možno bola zabitá."
+"Program kontroly pravopisu z nejakého dôvodu zomrel.\n"
+"Možno bol zabitý."
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:401
 msgid "The spellchecker has failed.\n"
@@ -18471,9 +18384,9 @@ msgid "The spellchecker has failed"
 msgstr "Kontrola pravopisu selhala"
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:419
-#, fuzzy, c-format
+#, c-format
 msgid "%1$d words checked."
-msgstr "Jedno slovo skontrolované."
+msgstr "%1$d  slov skontrolované."
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:421
 msgid "One word checked."
@@ -18484,9 +18397,8 @@ msgid "Spelling check completed"
 msgstr "Kontrola pravopisu je dokončená"
 
 #: src/frontends/qt4/GuiSymbols.cpp:54
-#, fuzzy
 msgid "Basic Latin"
-msgstr "BibTeX štýly"
+msgstr "Základná Latinka"
 
 #: src/frontends/qt4/GuiSymbols.cpp:55
 msgid "Latin-1 Supplement"
@@ -18517,7 +18429,6 @@ msgid "Cyrillic"
 msgstr "Cyrilika"
 
 #: src/frontends/qt4/GuiSymbols.cpp:65
-#, fuzzy
 msgid "Arabic"
 msgstr "Arabsky"
 
@@ -18534,25 +18445,22 @@ msgid "Gurmukhi"
 msgstr "Gurmukhi"
 
 #: src/frontends/qt4/GuiSymbols.cpp:69
-#, fuzzy
 msgid "Gujarati"
-msgstr "Podvariácia"
+msgstr "Gujarati"
 
 #: src/frontends/qt4/GuiSymbols.cpp:70
 msgid "Oriya"
 msgstr "Oriya"
 
 #: src/frontends/qt4/GuiSymbols.cpp:71
-#, fuzzy
 msgid "Tamil"
-msgstr "Pošta"
+msgstr "Tamilsky"
 
 #: src/frontends/qt4/GuiSymbols.cpp:72
 msgid "Telugu"
 msgstr "Telugština"
 
 #: src/frontends/qt4/GuiSymbols.cpp:73
-#, fuzzy
 msgid "Kannada"
 msgstr "Kanadsky"
 
@@ -18565,14 +18473,12 @@ msgid "Lao"
 msgstr "Laosky"
 
 #: src/frontends/qt4/GuiSymbols.cpp:77
-#, fuzzy
 msgid "Tibetan"
-msgstr "Thajsky"
+msgstr "Tibetsky"
 
 #: src/frontends/qt4/GuiSymbols.cpp:78
-#, fuzzy
 msgid "Georgian"
-msgstr "Nemecky"
+msgstr "Gruzínsky"
 
 #: src/frontends/qt4/GuiSymbols.cpp:79
 msgid "Hangul Jamo"
@@ -18591,14 +18497,12 @@ msgid "Greek Extended"
 msgstr "Řečtina rozšíření"
 
 #: src/frontends/qt4/GuiSymbols.cpp:83
-#, fuzzy
 msgid "General Punctuation"
-msgstr "Všeobecné informácie"
+msgstr "Všeobecná interpunkcia"
 
 #: src/frontends/qt4/GuiSymbols.cpp:84
-#, fuzzy
 msgid "Superscripts and Subscripts"
-msgstr "Horný index|H"
+msgstr "Horné a Dolné indexy"
 
 #: src/frontends/qt4/GuiSymbols.cpp:85
 msgid "Currency Symbols"
@@ -18613,23 +18517,20 @@ msgid "Letterlike Symbols"
 msgstr "Symboly písmen"
 
 #: src/frontends/qt4/GuiSymbols.cpp:88
-#, fuzzy
 msgid "Number Forms"
-msgstr "Počet riadkov"
+msgstr "Číselné znaky"
 
 #: src/frontends/qt4/GuiSymbols.cpp:90
 msgid "Mathematical Operators"
 msgstr "Matematické operátory"
 
 #: src/frontends/qt4/GuiSymbols.cpp:91
-#, fuzzy
 msgid "Miscellaneous Technical"
-msgstr "Rôzne"
+msgstr "Rôzne technické"
 
 #: src/frontends/qt4/GuiSymbols.cpp:92
-#, fuzzy
 msgid "Control Pictures"
-msgstr "Dohad"
+msgstr "Kontrolné obrázky"
 
 #: src/frontends/qt4/GuiSymbols.cpp:93
 msgid "Optical Character Recognition"
@@ -18644,23 +18545,20 @@ msgid "Box Drawing"
 msgstr "Výkres Rámku"
 
 #: src/frontends/qt4/GuiSymbols.cpp:96
-#, fuzzy
 msgid "Block Elements"
-msgstr "Poďakovanie"
+msgstr "Blokové Elementy"
 
 #: src/frontends/qt4/GuiSymbols.cpp:97
 msgid "Geometric Shapes"
 msgstr "Geometrické tvary"
 
 #: src/frontends/qt4/GuiSymbols.cpp:98
-#, fuzzy
 msgid "Miscellaneous Symbols"
-msgstr "Rôzne"
+msgstr "Rôzne Symboly"
 
 #: src/frontends/qt4/GuiSymbols.cpp:99
-#, fuzzy
 msgid "Dingbats"
-msgstr "Ďalšie 1|#Ď"
+msgstr "Dingbats"
 
 #: src/frontends/qt4/GuiSymbols.cpp:100
 msgid "Miscellaneous Mathematical Symbols-A"
@@ -18675,14 +18573,12 @@ msgid "Hiragana"
 msgstr "Hiragana"
 
 #: src/frontends/qt4/GuiSymbols.cpp:103
-#, fuzzy
 msgid "Katakana"
-msgstr "Katalánsky"
+msgstr "Katakana"
 
 #: src/frontends/qt4/GuiSymbols.cpp:104
-#, fuzzy
 msgid "Bopomofo"
-msgstr "S&podok strany"
+msgstr "Bopomofo"
 
 #: src/frontends/qt4/GuiSymbols.cpp:105
 msgid "Hangul Compatibility Jamo"
@@ -18757,9 +18653,8 @@ msgid "Halfwidth and Fullwidth Forms"
 msgstr "Latin + CJK"
 
 #: src/frontends/qt4/GuiSymbols.cpp:123
-#, fuzzy
 msgid "Specials"
-msgstr "Zvláštna pošta"
+msgstr "Špeciálne"
 
 #: src/frontends/qt4/GuiSymbols.cpp:124
 msgid "Linear B Syllabary"
@@ -18770,9 +18665,8 @@ msgid "Linear B Ideograms"
 msgstr "Stará krétština, ideogram (Linear B)"
 
 #: src/frontends/qt4/GuiSymbols.cpp:126
-#, fuzzy
 msgid "Aegean Numbers"
-msgstr "Číslo strany"
+msgstr "Egejské Čísla"
 
 #: src/frontends/qt4/GuiSymbols.cpp:127
 msgid "Ancient Greek Numbers"
@@ -18783,9 +18677,8 @@ msgid "Old Italic"
 msgstr "Stará kurzíva (italic)"
 
 #: src/frontends/qt4/GuiSymbols.cpp:129
-#, fuzzy
 msgid "Gothic"
-msgstr "Škótsky"
+msgstr "Gótske"
 
 #: src/frontends/qt4/GuiSymbols.cpp:130
 msgid "Ugaritic"
@@ -18796,14 +18689,12 @@ msgid "Old Persian"
 msgstr "Staroperské"
 
 #: src/frontends/qt4/GuiSymbols.cpp:132
-#, fuzzy
 msgid "Deseret"
-msgstr "Obnoviť"
+msgstr "Mormónska abeceda"
 
 #: src/frontends/qt4/GuiSymbols.cpp:133
-#, fuzzy
 msgid "Shavian"
-msgstr "Chorvátsky"
+msgstr "Shavska abeceda"
 
 #: src/frontends/qt4/GuiSymbols.cpp:134
 msgid "Osmanya"
@@ -18846,9 +18737,8 @@ msgid "CJK Compatibility Ideographs Supplement"
 msgstr "CJK kompat. iedograf. dodatkové"
 
 #: src/frontends/qt4/GuiSymbols.cpp:144
-#, fuzzy
 msgid "Tags"
-msgstr "Strany"
+msgstr "Označenia"
 
 #: src/frontends/qt4/GuiSymbols.cpp:145
 msgid "Variation Selectors Supplement"
@@ -18871,9 +18761,8 @@ msgid "Code Point: "
 msgstr "Kódový bod: "
 
 #: src/frontends/qt4/GuiSymbols.cpp:270
-#, fuzzy
 msgid "Symbols"
-msgstr "Symbol"
+msgstr "Symboly"
 
 #: src/frontends/qt4/GuiTabular.cpp:43
 msgid "Table Settings"
@@ -18902,19 +18791,16 @@ msgid "Enter characters to filter the layout list."
 msgstr "Zadajte znaky na výber z listiny formátov."
 
 #: src/frontends/qt4/GuiToolbar.cpp:543
-#, fuzzy
 msgid " (unknown)"
-msgstr " neznámy"
+msgstr " (neznáme)"
 
 #: src/frontends/qt4/GuiToolbar.cpp:951 src/frontends/qt4/Toolbars.cpp:309
-#, fuzzy
 msgid "auto"
-msgstr "Dátum"
+msgstr "auto"
 
 #: src/frontends/qt4/GuiToolbar.cpp:956 src/frontends/qt4/GuiToolbar.cpp:965
-#, fuzzy
 msgid "off"
-msgstr "Vypnuté"
+msgstr "vypnuté"
 
 #: src/frontends/qt4/GuiToolbar.cpp:972
 #, c-format
@@ -18930,9 +18816,8 @@ msgid "version "
 msgstr "verzia "
 
 #: src/frontends/qt4/GuiView.cpp:122
-#, fuzzy
 msgid "unknown version"
-msgstr "Neznáma akcia"
+msgstr "neznáma verzia"
 
 #: src/frontends/qt4/GuiView.cpp:190
 msgid "Small-sized icons"
@@ -19021,9 +18906,8 @@ msgid "Document %1$s opened."
 msgstr "Dokument %1$s je otvorený."
 
 #: src/frontends/qt4/GuiView.cpp:1405
-#, fuzzy
 msgid "Version control detected."
-msgstr "Kontrola verzií"
+msgstr "Kontrola verzií zistená."
 
 #: src/frontends/qt4/GuiView.cpp:1407
 #, c-format
@@ -19035,9 +18919,9 @@ msgid "Couldn't import file"
 msgstr "Nie je možné importovať súbor"
 
 #: src/frontends/qt4/GuiView.cpp:1437
-#, fuzzy, c-format
+#, c-format
 msgid "No information for importing the format %1$s."
-msgstr "Žiadne informácie o importe z %1$s"
+msgstr "Žiadne informácie pre import formátu %1$s."
 
 #: src/frontends/qt4/GuiView.cpp:1488
 #, c-format
@@ -19056,9 +18940,8 @@ msgstr ""
 "Chcete jej přepsat ?"
 
 #: src/frontends/qt4/GuiView.cpp:1541 src/frontends/qt4/GuiView.cpp:1728
-#, fuzzy
 msgid "Overwrite document?"
-msgstr "Uložiť dokument?"
+msgstr "Prepísať dokument?"
 
 #: src/frontends/qt4/GuiView.cpp:1550
 #, c-format
@@ -19090,9 +18973,8 @@ msgid "Choose a filename to save document as"
 msgstr "Zvoliť názov súboru, pod ktorým sa má dokument uložiť"
 
 #: src/frontends/qt4/GuiView.cpp:1729 src/frontends/qt4/GuiView.cpp:1774
-#, fuzzy
 msgid "&Rename"
-msgstr "Meno"
+msgstr "Premenuj"
 
 #: src/frontends/qt4/GuiView.cpp:1770
 #, c-format
@@ -19110,9 +18992,8 @@ msgid "Rename and save?"
 msgstr "Přejmenovat a uložit ?"
 
 #: src/frontends/qt4/GuiView.cpp:1774
-#, fuzzy
 msgid "&Retry"
-msgstr "O&bnoviť"
+msgstr "Zopakuj"
 
 #: src/frontends/qt4/GuiView.cpp:1831
 #, c-format
@@ -19134,14 +19015,12 @@ msgid "Document not loaded"
 msgstr "Dokument nie je nahraný"
 
 #: src/frontends/qt4/GuiView.cpp:1964
-#, fuzzy
 msgid "Saving all documents..."
-msgstr "Ukladám dokument %1$s..."
+msgstr "Ukladať všetky dokumenty..."
 
 #: src/frontends/qt4/GuiView.cpp:1974
-#, fuzzy
 msgid "All documents saved."
-msgstr "Dokument nie je možné uložiť!"
+msgstr "Všetky dokumenty uložené."
 
 #: src/frontends/qt4/GuiView.cpp:2221
 #, c-format
@@ -19150,18 +19029,16 @@ msgstr "%1$s neznámý příkaz!"
 
 #: src/frontends/qt4/GuiViewSource.cpp:160
 #: src/frontends/qt4/GuiViewSource.cpp:202
-#, fuzzy
 msgid "LaTeX Source"
-msgstr "Viditeľná medzera|#m"
+msgstr "LaTeX Zdroj"
 
 #: src/frontends/qt4/GuiViewSource.cpp:204
 msgid "DocBook Source"
 msgstr "Zdrojový soubor DocBook-u"
 
 #: src/frontends/qt4/GuiViewSource.cpp:206
-#, fuzzy
 msgid "Literate Source"
-msgstr "Viditeľná medzera|#m"
+msgstr "Literate Zdroj"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:1117
 msgid " (version control)"
@@ -19184,14 +19061,12 @@ msgid "Close File"
 msgstr "Zavrieť Súbor"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:1612
-#, fuzzy
 msgid "Hide tab"
-msgstr "štandardné"
+msgstr "Podokno schovať"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:1614
-#, fuzzy
 msgid "Close tab"
-msgstr "Zavrieť"
+msgstr "Podokno zavrieť"
 
 #: src/frontends/qt4/GuiWrap.cpp:32
 msgid "Wrap Float Settings"
@@ -19221,9 +19096,8 @@ msgid "No custom insets defined!"
 msgstr "Niet vlastných definovaných vložiek!"
 
 #: src/frontends/qt4/Menus.cpp:938
-#, fuzzy
 msgid "Master Document"
-msgstr "Uložiť dokument"
+msgstr "Hlavný dokument"
 
 #: src/frontends/qt4/Menus.cpp:955
 msgid "Open Navigator..."
@@ -19250,9 +19124,8 @@ msgid "No Citation in Scope!"
 msgstr "Žiadna citácia nablízku!"
 
 #: src/frontends/qt4/Menus.cpp:1643
-#, fuzzy
 msgid "No action defined!"
-msgstr "Prejsť na ďalšiu zmenu"
+msgstr "Žiadna akcia nebola definovaná!"
 
 #: src/frontends/qt4/Validator.cpp:147
 msgid "space"
@@ -19267,9 +19140,8 @@ msgstr ""
 "týchto znakov:\n"
 
 #: src/frontends/qt4/qt_helpers.cpp:180
-#, fuzzy
 msgid "Could not update TeX information"
-msgstr "Nie je viac informácií pre funkciu Opakovať vrátené"
+msgstr "Nemôhol som aktualizovať TeX informáciu"
 
 #: src/frontends/qt4/qt_helpers.cpp:181
 #, c-format
@@ -19285,9 +19157,8 @@ msgid "Table of Contents"
 msgstr "Obsah"
 
 #: src/frontends/qt4/qt_helpers.cpp:508
-#, fuzzy
 msgid "Child Documents"
-msgstr "Dokument"
+msgstr "Dokumenty potomkov"
 
 #: src/frontends/qt4/qt_helpers.cpp:510
 msgid "List of Graphics"
@@ -19322,9 +19193,8 @@ msgid "List of Citations"
 msgstr "Zoznam citácií"
 
 #: src/frontends/qt4/qt_helpers.cpp:526
-#, fuzzy
 msgid "Labels and References"
-msgstr "všetky necitované referencie"
+msgstr "Návestia a Referencie"
 
 #: src/frontends/qt4/qt_helpers.cpp:528
 msgid "List of Branches"
@@ -19370,18 +19240,16 @@ msgstr ""
 "Keď budete pokračovat, budú všekty budou otvorené."
 
 #: src/insets/InsetBibtex.cpp:142
-#, fuzzy
 msgid "Open Databases?"
-msgstr "Databá&zy"
+msgstr "Otvoriť Databázy?"
 
 #: src/insets/InsetBibtex.cpp:143
 msgid "&Proceed"
 msgstr "&Pokračovat"
 
 #: src/insets/InsetBibtex.cpp:161
-#, fuzzy
 msgid "BibTeX Generated Bibliography"
-msgstr "Referencie generované BibTeXom"
+msgstr "Bibliografie generované BibTeXom"
 
 #: src/insets/InsetBibtex.cpp:168
 msgid "Databases:"
@@ -19400,9 +19268,8 @@ msgid "included in TOC"
 msgstr "zahrnuté do Obsahu"
 
 #: src/insets/InsetBibtex.cpp:307 src/insets/InsetBibtex.cpp:358
-#, fuzzy
 msgid "Export Warning!"
-msgstr "Varovanie!"
+msgstr "Export-Varovanie!"
 
 #: src/insets/InsetBibtex.cpp:308
 msgid ""
@@ -19457,9 +19324,9 @@ msgid "Opened Box Inset"
 msgstr "Otvorená vložka (rámok)"
 
 #: src/insets/InsetBox.cpp:161 src/insets/InsetBox.cpp:164
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s (%2$s)"
-msgstr "Ladenie `%1$s' (%2$s)"
+msgstr "%1$s (%2$s)"
 
 #: src/insets/InsetBox.cpp:167
 #, c-format
@@ -19493,9 +19360,8 @@ msgid "Branch (child only): "
 msgstr "Vetva (len potomok): "
 
 #: src/insets/InsetBranch.cpp:100
-#, fuzzy
 msgid "Undef: "
-msgstr "Ref: "
+msgstr "Undef: "
 
 #: src/insets/InsetBranch.cpp:230
 msgid "branch"
@@ -19515,9 +19381,8 @@ msgid "not cited"
 msgstr "necitované"
 
 #: src/insets/InsetCitation.cpp:396
-#, fuzzy
 msgid "No bibliography defined!"
-msgstr "Kľúč literatúry"
+msgstr "Žiadna bibliografia nie je definovaná!"
 
 #: src/insets/InsetCitation.cpp:400
 msgid "No citations selected!"
@@ -19532,9 +19397,8 @@ msgid "InsetCommand Error: "
 msgstr "Chyba príkazu (vložka): "
 
 #: src/insets/InsetCommandParams.cpp:251 src/insets/InsetCommandParams.cpp:268
-#, fuzzy
 msgid "Incompatible command name."
-msgstr "Nasledujúci príkaz"
+msgstr "Inkompatibilné meno príkazu."
 
 #: src/insets/InsetCommandParams.cpp:267
 msgid "InsetCommandParams Error: "
@@ -19545,9 +19409,8 @@ msgid "InsetCommandParams: "
 msgstr "Parametre príkazu (vložka): "
 
 #: src/insets/InsetCommandParams.cpp:291
-#, fuzzy
 msgid "Unknown parameter name: "
-msgstr "Neznámy parameter riadkovania: "
+msgstr "Neznáme meno parametru: "
 
 #: src/insets/InsetCommandParams.cpp:298 src/insets/InsetInfo.cpp:139
 msgid "Missing \\end_inset at this point."
@@ -19668,14 +19531,12 @@ msgstr ""
 "ktorý sa nepoužíva v rodičovskom dokumente."
 
 #: src/insets/InsetInclude.cpp:519
-#, fuzzy
 msgid "Module not found"
-msgstr "Reťazec nebol nájdený!"
+msgstr "Modul nebol nájdený"
 
 #: src/insets/InsetIndex.cpp:127
-#, fuzzy
 msgid "Index sorting failed"
-msgstr "Prevod"
+msgstr "Triedenie index zlyhalo"
 
 #: src/insets/InsetIndex.cpp:128
 #, c-format
@@ -19691,9 +19552,9 @@ msgstr ""
 "vysvetlené v uživatelskej príručke."
 
 #: src/insets/InsetInfo.cpp:115
-#, fuzzy, c-format
+#, c-format
 msgid "Information regarding %1$s '%2$s'"
-msgstr "Žiadne informácie pre prezeranie %1$s"
+msgstr "Informácia ohľiadne %1$s '%2$s'"
 
 #: src/insets/InsetInfo.cpp:283
 msgid "undefined"
@@ -19713,7 +19574,7 @@ msgstr "Neznáma informácia pre zásobník"
 
 #: src/insets/InsetLabel.cpp:66
 msgid "Label names must be unique!"
-msgstr "Jména značek musí být unikátní!"
+msgstr "Mená návestí musí byť unikátna!"
 
 #: src/insets/InsetLabel.cpp:67
 #, c-format
@@ -19721,8 +19582,8 @@ msgid ""
 "The label %1$s already exists,\n"
 "it will be changed to %2$s."
 msgstr ""
-"Značka %1$s již existuje,\n"
-"bude přejmenována na %2$s."
+"Návestie %1$s už existuje,\n"
+"bude prejmenované na %2$s."
 
 #: src/insets/InsetLabel.cpp:112
 msgid "DUPLICATE: "
@@ -19883,7 +19744,7 @@ msgid ""
 "a listing inset)"
 msgstr ""
 "Tento parameter by tu nemal byť zadaný. Použite prosím políčko popisku (v "
-"dialogu pre dokument potomka) alebo cez menu Vložiť->Popisok (pri definícii "
+"dialogu pre dokument potomka) alebo cez menu Vložiť->Návestie (pri definícii "
 "výpisu zdrojového kódu)"
 
 #: src/insets/InsetListingsParams.cpp:622
@@ -19901,9 +19762,9 @@ msgid "Available listings parameters containing string \"%1$s\" are %2$s"
 msgstr "Dostupné parametry výpisu obsahujúce reťazec \"%1$s\" sú %2$s"
 
 #: src/insets/InsetListingsParams.cpp:652
-#, fuzzy, c-format
+#, c-format
 msgid "Parameter %1$s: "
-msgstr " Makro: %s: "
+msgstr "Parameter %1$s: "
 
 #: src/insets/InsetListingsParams.cpp:665
 #, c-format
@@ -19972,14 +19833,12 @@ msgid "Ref: "
 msgstr "Ref: "
 
 #: src/insets/InsetRef.cpp:172 src/mathed/InsetMathRef.cpp:188
-#, fuzzy
 msgid "Equation"
-msgstr "Označenie"
+msgstr "Rovnica"
 
 #: src/insets/InsetRef.cpp:172 src/mathed/InsetMathRef.cpp:188
-#, fuzzy
 msgid "EqRef: "
-msgstr "Ref: "
+msgstr "EqRef: "
 
 #: src/insets/InsetRef.cpp:173 src/mathed/InsetMathRef.cpp:189
 msgid "Page Number"
@@ -20104,9 +19963,8 @@ msgid "Unknown TOC type"
 msgstr "Neznámy typ obsahu"
 
 #: src/insets/InsetTabular.cpp:3207
-#, fuzzy
 msgid "Opened table"
-msgstr "Otvoriť súbor"
+msgstr "Otvorená tabuľka"
 
 #: src/insets/InsetTabular.cpp:4022
 msgid "You cannot paste into a multicell selection."
@@ -20133,9 +19991,8 @@ msgid "wrap"
 msgstr "obtekanie"
 
 #: src/insets/RenderGraphic.cpp:79 src/insets/RenderGraphic.cpp:83
-#, fuzzy
 msgid "Not shown."
-msgstr " neznámy"
+msgstr "Neukázané."
 
 #: src/insets/RenderGraphic.cpp:86
 msgid "Loading..."
@@ -20234,44 +20091,36 @@ msgid "mu[[unit of measure]]"
 msgstr "mu"
 
 #: src/lengthcommon.cpp:39
-#, fuzzy
 msgid "Text Width %"
-msgstr "Pevná šírka"
+msgstr "Pevná šírka %"
 
 #: src/lengthcommon.cpp:40
-#, fuzzy
 msgid "Column Width %"
-msgstr "Šírka stĺpca"
+msgstr "Šírka stĺpca %"
 
 #: src/lengthcommon.cpp:40
-#, fuzzy
 msgid "Page Width %"
-msgstr "Šírka označenia"
+msgstr "Šírka Stránky %"
 
 #: src/lengthcommon.cpp:40
-#, fuzzy
 msgid "Line Width %"
-msgstr "Šírka označenia"
+msgstr "Šírka Riadku %"
 
 #: src/lengthcommon.cpp:41
-#, fuzzy
 msgid "Text Height %"
-msgstr "Celková výška"
+msgstr "Výška Textu %"
 
 #: src/lengthcommon.cpp:41
-#, fuzzy
 msgid "Page Height %"
-msgstr "Celková výška"
+msgstr "Výška Stránky %"
 
 #: src/lyxfind.cpp:115
-#, fuzzy
 msgid "Search error"
-msgstr "Hľadať"
+msgstr "Chyba pri hľadaní"
 
 #: src/lyxfind.cpp:115
-#, fuzzy
 msgid "Search string is empty"
-msgstr "Výsledný súbor je prázdny"
+msgstr "Reťazec na hľadanie je prázdny"
 
 #: src/lyxfind.cpp:299
 msgid "String has been replaced."
@@ -20282,9 +20131,9 @@ msgid " strings have been replaced."
 msgstr " reťazce boli nahradené."
 
 #: src/mathed/InsetFormulaMacro.cpp:119
-#, fuzzy, c-format
+#, c-format
 msgid " Macro: %1$s: "
-msgstr " Makro: %s: "
+msgstr " Makro: %1$s: "
 
 #: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1394
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:71
@@ -20311,9 +20160,8 @@ msgid "Only one column"
 msgstr "Len jeden stĺpec"
 
 #: src/mathed/InsetMathGrid.cpp:1386
-#, fuzzy
 msgid "No hline to delete"
-msgstr "Nie je čo robiť."
+msgstr "žiadna horizontálna čiara na zmazanie "
 
 #: src/mathed/InsetMathGrid.cpp:1395
 msgid "No vline to delete"
@@ -20329,9 +20177,8 @@ msgid "No number"
 msgstr "Bez čísla"
 
 #: src/mathed/InsetMathHull.cpp:1190 src/mathed/InsetMathHull.cpp:1198
-#, fuzzy
 msgid "Number"
-msgstr "Číslovanie"
+msgstr "Číslo"
 
 #: src/mathed/InsetMathHull.cpp:1367
 #, c-format
@@ -20365,21 +20212,21 @@ msgid "optional"
 msgstr "nepovinne"
 
 #: src/mathed/MathMacroTemplate.cpp:532
-#, fuzzy
 msgid "TeX"
-msgstr "LaTeX"
+msgstr "TeX"
 
 #: src/mathed/MathMacroTemplate.cpp:1209
-#, fuzzy
 msgid "math macro"
-msgstr "pozadie matematiky"
+msgstr "mat. makro"
 
 #: src/output.cpp:37
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not open the specified document\n"
 "%1$s."
-msgstr "Nedá sa otvoriť dokument %1$s"
+msgstr ""
+"Nedá sa otvoriť špecifokovaný dokument\n"
+"%1$s."
 
 #: src/output_plaintext.cpp:136
 msgid "Abstract: "
@@ -20410,7 +20257,6 @@ msgid "GUI handling"
 msgstr "Spravovanie GUI"
 
 #: src/support/debug.cpp:43
-#, fuzzy
 msgid "Lyxlex grammar parser"
 msgstr "Analyzátor gramatiky Lyxlex"
 
@@ -20544,9 +20390,8 @@ msgstr ""
 "Prosím nainštalujte."
 
 #: src/support/os_win32.cpp:330
-#, fuzzy
 msgid "System function not found"
-msgstr "Reťazec nebol nájdený!"
+msgstr "Systémová funkcia nenájdená"
 
 #: src/support/os_win32.cpp:331
 msgid ""
