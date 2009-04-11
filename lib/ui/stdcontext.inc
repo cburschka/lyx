@@ -418,8 +418,8 @@ Menuset
 #
 
 	Menu "context-toc-label"
-		Item "Copy Label as Reference|C" "copy-label-as-reference"
-		Item "Insert Reference at Cursor Position|I" "insert-label-as-reference"
+		OptItem "Copy Label as Reference|C" "copy-label-as-reference"
+		OptItem "Insert Reference at Cursor Position|I" "insert-label-as-reference"
 		Separator
 		Item "Settings...|S" "inset-settings"
 	End
@@ -429,8 +429,9 @@ Menuset
 #
 
 	Menu "context-toc-branch"
-		Item "Activate Branch|A" "branch-activate"
-		Item "Deactivate Branch|e" "branch-deactivate"
+		OptItem "Activate Branch|A" "branch-activate"
+		OptItem "Deactivate Branch|e" "branch-deactivate"
+		Separator
 		Item "Settings...|S" "inset-settings"
 	End
 
