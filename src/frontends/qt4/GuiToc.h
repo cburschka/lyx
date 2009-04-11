@@ -59,6 +59,8 @@ public:
 	bool isBufferDependent() const { return true; }
 	///
 	void doDispatch(Cursor & cur, FuncRequest const & fr);
+	///
+	bool getStatus(Cursor & cur, FuncRequest const & fr, FuncStatus & fs) const;
 
 private:
 	///

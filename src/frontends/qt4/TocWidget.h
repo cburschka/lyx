@@ -36,8 +36,11 @@ public:
 
 	/// Initialise GUI.
 	void init(QString const & str);
-
+	///
 	void doDispatch(Cursor & cur, FuncRequest const & fr);
+	///
+	bool getStatus(Cursor & cur, FuncRequest const & fr, FuncStatus & status)
+		const;
 
 public Q_SLOTS:
 	/// Update the display of the dialog whilst it is still visible.
@@ -70,6 +73,9 @@ private:
 	void setTreeDepth(int depth);
 	///
 	void outline(int func_code);
+	/// finds the inset that is connected to the current item,
+	/// if any, otherwise return null
+	Inset * itemInset() const;
 	///
 	QString current_type_;
 

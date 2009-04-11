@@ -21,6 +21,7 @@
 #include "Buffer.h"
 #include "CutAndPaste.h"
 #include "FuncRequest.h"
+#include "FuncStatus.h"
 #include "LyXFunc.h"
 #include "Menus.h"
 #include "TocBackend.h"
@@ -95,7 +96,7 @@ void TocWidget::showContextMenu(const QPoint & pos)
 }
 
 
-void TocWidget::doDispatch(Cursor & cur, FuncRequest const & cmd)
+Inset * TocWidget::itemInset() const
 {
 	QModelIndex const & index = tocTV->currentIndex();
 	TocItem const & item =
@@ -116,6 +117,25 @@ void TocWidget::doDispatch(Cursor & cur, FuncRequest const & cmd)
 		tmp_dit.pop_back();
 		inset = &tmp_dit.inset();
 	}
+	return inset;
+}
+
+
+bool TocWidget::getStatus(Cursor & cur, FuncRequest const & cmd,
+	FuncStatus & status) const
+{
+	Inset * inset = itemInset();
+
+	FuncRequest tmpcmd(cmd);
+	if (inset)
+		return inset->getStatus(cur, tmpcmd, status);
+	return false;
+}
+
+
+void TocWidget::doDispatch(Cursor & cur, FuncRequest const & cmd)
+{
+	Inset * inset = itemInset();
 
 	FuncRequest tmpcmd(cmd);
 	if (inset)

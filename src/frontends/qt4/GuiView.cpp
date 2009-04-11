@@ -1206,7 +1206,12 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		buf = 0;
 
 	if (cmd.origin == FuncRequest::TOC) {
-		//FIXME: dispatch this to the toc
+		GuiToc * toc = static_cast<GuiToc*>(findOrBuild("toc", false));
+		FuncStatus fs;
+		if (toc->getStatus(view()->cursor(), cmd, fs))
+			flag |= fs;
+		else
+			flag.setEnabled(false);
 		return true;
 	}
 

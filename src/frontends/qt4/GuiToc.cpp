@@ -97,6 +97,13 @@ void GuiToc::doDispatch(Cursor & cur, FuncRequest const & cmd)
 }
 
 
+bool GuiToc::getStatus(Cursor & cur, FuncRequest const & cmd,
+	FuncStatus & status) const
+{
+	return widget_->getStatus(cur, cmd, status);
+}
+
+
 Dialog * createGuiToc(GuiView & lv)
 {
 	GuiView & guiview = static_cast<GuiView &>(lv);
