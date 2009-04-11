@@ -356,6 +356,8 @@ BufferParams::BufferParams()
 	columns = 1;
 	listings_params = string();
 	pagestyle = "default";
+	// white is equal to no background color
+	backgroundcolor = lyx::rgbFromHexName("#ffffff");
 	compressed = false;
 	for (int iter = 0; iter < 4; ++iter) {
 		user_defined_bullet(iter) = ITEMIZE_DEFAULTS[iter];
@@ -600,7 +602,6 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 					color = lcolor.getX11Name(Color_background);
 				// FIXME UNICODE
 				lcolor.setColor(to_utf8(branch), color);
-
 			}
 		}
 	} else if (token == "\\author") {
@@ -613,6 +614,9 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		string orient;
 		lex >> orient;
 		orientation = paperorientationtranslator().find(orient);
+	} else if (token == "\\backgroundcolor") {
+		lex.eatLine();
+		backgroundcolor = lyx::rgbFromHexName(lex.getString());
 	} else if (token == "\\paperwidth") {
 		lex >> paperwidth;
 	} else if (token == "\\paperheight") {
@@ -778,6 +782,7 @@ void BufferParams::writeFile(ostream & os) const
 	   << "\n\\cite_engine " << citeenginetranslator().find(cite_engine_)
 	   << "\n\\use_bibtopic " << convert<string>(use_bibtopic)
 	   << "\n\\paperorientation " << string_orientation[orientation]
+	   << "\n\\backgroundcolor " << lyx::X11hexname(backgroundcolor)
 	   << '\n';
 
 	BranchList::const_iterator it = branchlist().begin();
@@ -1262,6 +1267,15 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		}
 		os << "\\pagestyle{" << from_ascii(pagestyle) << "}\n";
 		texrow.newline();
+	}
+
+	// only output when the background color is not white
+	if (backgroundcolor != lyx::rgbFromHexName("#ffffff")) {
+		// only require color here, the background color will be defined
+		// in LaTeXFeatures.cpp to avoid interferences with the LaTeX
+		// package pdfpages 
+		features.require("color");
+		features.require("pagecolor");
 	}
 
 	// Only if class has a ToC hierarchy

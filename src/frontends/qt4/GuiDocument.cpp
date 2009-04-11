@@ -28,6 +28,7 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "Color.h"
+#include "ColorCache.h"
 #include "Encoding.h"
 #include "FloatPlacement.h"
 #include "Format.h"
@@ -54,6 +55,8 @@
 #include "frontends/alert.h"
 
 #include <QAbstractItemModel>
+#include <QColor>
+#include <QColorDialog>
 #include <QCloseEvent>
 #include <QFontDatabase>
 #include <QScrollBar>
@@ -65,6 +68,19 @@
 #ifdef IN
 #undef IN
 #endif
+
+
+// a style sheet for buttons
+// this is for example used for the background color setting button
+static inline QString colorButtonStyleSheet(const QColor &bgColor)
+{
+    if (bgColor.isValid()) {
+		QString rc = QLatin1String("background:");
+        rc += bgColor.name();
+        return rc;
+    }
+    return QLatin1String("");
+}
 
 
 using namespace std;
@@ -156,6 +172,8 @@ vector<pair<string, QString> > pagestyles;
 } // anonymous namespace
 
 namespace lyx {
+
+RGBColor set_backgroundcolor;
 
 namespace {
 // used when sorting the textclass list.
@@ -661,6 +679,10 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(pageLayoutModule->pagestyleCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
+	connect(pageLayoutModule->backgroundTB, SIGNAL(clicked()),
+        this, SLOT(changeBackgroundColor()));
+    connect(pageLayoutModule->delbackgroundTB, SIGNAL(clicked()),
+        this, SLOT(deleteBackgroundColor()));
 
 	pageLayoutModule->pagestyleCO->addItem(qt_("Default"));
 	pageLayoutModule->pagestyleCO->addItem(qt_("empty"));
@@ -1163,6 +1185,31 @@ void GuiDocument::setCustomMargins(bool custom)
 	marginsModule->columnsepL->setEnabled(enableColSep);
 	marginsModule->columnsepLE->setEnabled(enableColSep);
 	marginsModule->columnsepUnit->setEnabled(enableColSep);
+}
+
+void GuiDocument::changeBackgroundColor()
+{
+	const QColor newColor = QColorDialog::getColor(
+		rgb2qcolor(set_backgroundcolor), qApp->focusWidget());
+	if (!newColor.isValid())
+		return;
+	// set the button color
+	pageLayoutModule->backgroundTB->setStyleSheet(
+		colorButtonStyleSheet(newColor));
+	// save white as the set color
+	set_backgroundcolor = rgbFromHexName(fromqstr(newColor.name()));
+	changed();
+}
+
+
+void GuiDocument::deleteBackgroundColor()
+{
+	// set the button color back to white
+	pageLayoutModule->backgroundTB->setStyleSheet(
+		colorButtonStyleSheet(QColor(Qt::white)));
+	// save white as the set color
+	set_backgroundcolor = rgbFromHexName("#ffffff");
+	changed();
 }
 
 
@@ -1928,6 +1975,8 @@ void GuiDocument::applyView()
 	else
 		bp_.orientation = ORIENTATION_PORTRAIT;
 
+	bp_.backgroundcolor = set_backgroundcolor;
+
 	// margins
 	bp_.use_geometry = !marginsModule->marginCB->isChecked()
 		|| geom_papersize;
@@ -2267,10 +2316,12 @@ void GuiDocument::paramsToDialog()
 	pageLayoutModule->facingPagesCB->setChecked(
 		bp_.sides == TwoSides);
 
+	pageLayoutModule->backgroundTB->setStyleSheet(
+		colorButtonStyleSheet(QColor(rgb2qcolor(bp_.backgroundcolor))));
+	set_backgroundcolor = bp_.backgroundcolor;
 
 	lengthToWidgets(pageLayoutModule->paperwidthLE,
 		pageLayoutModule->paperwidthUnitCO, bp_.paperwidth, defaultUnit);
-
 	lengthToWidgets(pageLayoutModule->paperheightLE,
 		pageLayoutModule->paperheightUnitCO, bp_.paperheight, defaultUnit);
 

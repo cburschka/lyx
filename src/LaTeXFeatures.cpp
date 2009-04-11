@@ -545,6 +545,16 @@ string const LaTeXFeatures::getColorOptions() const
 	if (mustProvide("pdfcolmk"))
 		colors << "\\usepackage{pdfcolmk}\n";
 
+	if (mustProvide("pagecolor")) {
+		// the \pagecolor command must be set after color is loaded and
+		// before pdfpages, therefore add the command here
+		// define the set color
+		colors << "\\definecolor{page_backgroundcolor}{rgb}{";
+		colors << outputLaTeXColor(params_.backgroundcolor) << "}\n";
+		// set the page color
+		colors << "\\pagecolor{page_backgroundcolor}\n";
+	}
+
 	return colors.str();
 }
 

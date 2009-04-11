@@ -61,6 +61,7 @@ std::ostream & operator<<(std::ostream & os, Color color);
 
 std::string const X11hexname(RGBColor const & col);
 RGBColor rgbFromHexName(std::string const & x11hexname);
+std::string const outputLaTeXColor(RGBColor const & color);
 
 } // namespace lyx
 

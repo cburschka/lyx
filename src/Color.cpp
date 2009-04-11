@@ -19,6 +19,7 @@
 #include "Color.h"
 #include "ColorSet.h"
 
+#include "support/convert.h"
 #include "support/debug.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
@@ -82,6 +83,28 @@ RGBColor rgbFromHexName(string const & x11hexname)
 	c.g = hexstrToInt(x11hexname.substr(3, 2));
 	c.b = hexstrToInt(x11hexname.substr(5, 2));
 	return c;
+}
+
+string const outputLaTeXColor(RGBColor const & color)
+{
+	// this routine returns a LaTeX readable color string in the form
+	// "red, green, blue" where the colors are a number in the range 0-1 
+	int red = color.r;
+	int green = color.g;
+	int blue = color.b;
+	// the color values are given in the range of 0-255, so to get
+	// an output of "0.5" for the value 127 we need to do the following
+	if (red != 0)
+		++red;
+	if (green != 0)
+		++green;
+	if (blue != 0)
+		++blue;
+	string output;
+	output = convert<string>(float(red) / 256) + ", "
+			 + convert<string>(float(green) / 256) + ", "
+			 + convert<string>(float(blue) / 256);
+	return output;
 }
 
 
