@@ -1719,7 +1719,7 @@ void GuiDocument::applyView()
 
 	QString const lang = langModule->languageCO->itemData(
 		langModule->languageCO->currentIndex()).toString();
-	bp_.language = lyx::languages.getLanguage(fromqstr(lang));
+	bp_.language = languages.getLanguage(fromqstr(lang));
 
 	// numbering
 	if (bp_.documentClass().hasTocLevels()) {
@@ -2185,9 +2185,9 @@ void GuiDocument::paramsToDialog()
 	if (index == -1)
 		index = 0;
 	outputModule->defaultFormatCO->setCurrentIndex(index);
-	outputModule->xetexCB->setEnabled(bp_.baseClass()->outputType() == lyx::LATEX);
+	outputModule->xetexCB->setEnabled(bp_.baseClass()->outputType() == LATEX);
 	outputModule->xetexCB->setChecked(
-		bp_.baseClass()->outputType() == lyx::LATEX && bp_.useXetex);
+		bp_.baseClass()->outputType() == LATEX && bp_.useXetex);
 
 	// Fonts
 	updateFontsize(documentClass().opt_fontsize(),
