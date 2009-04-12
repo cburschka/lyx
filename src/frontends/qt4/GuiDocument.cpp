@@ -2317,7 +2317,7 @@ void GuiDocument::paramsToDialog()
 		bp_.sides == TwoSides);
 
 	pageLayoutModule->backgroundTB->setStyleSheet(
-		colorButtonStyleSheet(QColor(rgb2qcolor(bp_.backgroundcolor))));
+		colorButtonStyleSheet(rgb2qcolor(bp_.backgroundcolor)));
 	set_backgroundcolor = bp_.backgroundcolor;
 
 	lengthToWidgets(pageLayoutModule->paperwidthLE,
