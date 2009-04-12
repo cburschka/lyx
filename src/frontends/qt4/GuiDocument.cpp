@@ -680,9 +680,9 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(pageLayoutModule->pagestyleCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 	connect(pageLayoutModule->backgroundTB, SIGNAL(clicked()),
-        this, SLOT(changeBackgroundColor()));
-    connect(pageLayoutModule->delbackgroundTB, SIGNAL(clicked()),
-        this, SLOT(deleteBackgroundColor()));
+		this, SLOT(changeBackgroundColor()));
+	connect(pageLayoutModule->delbackgroundTB, SIGNAL(clicked()),
+		this, SLOT(deleteBackgroundColor()));
 
 	pageLayoutModule->pagestyleCO->addItem(qt_("Default"));
 	pageLayoutModule->pagestyleCO->addItem(qt_("empty"));
