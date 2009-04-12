@@ -72,14 +72,14 @@
 
 // a style sheet for buttons
 // this is for example used for the background color setting button
-static inline QString colorButtonStyleSheet(const QColor &bgColor)
+static inline QString colorButtonStyleSheet(QColor const & bgColor)
 {
-    if (bgColor.isValid()) {
+	if (bgColor.isValid()) {
 		QString rc = QLatin1String("background:");
-        rc += bgColor.name();
-        return rc;
-    }
-    return QLatin1String("");
+		rc += bgColor.name();
+		return rc;
+	}
+	return QLatin1String("");
 }
 
 
@@ -1189,14 +1189,14 @@ void GuiDocument::setCustomMargins(bool custom)
 
 void GuiDocument::changeBackgroundColor()
 {
-	const QColor newColor = QColorDialog::getColor(
+	QColor const & newColor = QColorDialog::getColor(
 		rgb2qcolor(set_backgroundcolor), qApp->focusWidget());
 	if (!newColor.isValid())
 		return;
 	// set the button color
 	pageLayoutModule->backgroundTB->setStyleSheet(
 		colorButtonStyleSheet(newColor));
-	// save white as the set color
+	// save color
 	set_backgroundcolor = rgbFromHexName(fromqstr(newColor.name()));
 	changed();
 }
