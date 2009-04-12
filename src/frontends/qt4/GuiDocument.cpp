@@ -679,7 +679,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(pageLayoutModule->pagestyleCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
-	connect(pageLayoutModule->backgroundTB, SIGNAL(clicked()),
+	connect(pageLayoutModule->backgroundPB, SIGNAL(clicked()),
 		this, SLOT(changeBackgroundColor()));
 	connect(pageLayoutModule->delbackgroundTB, SIGNAL(clicked()),
 		this, SLOT(deleteBackgroundColor()));
@@ -1194,7 +1194,7 @@ void GuiDocument::changeBackgroundColor()
 	if (!newColor.isValid())
 		return;
 	// set the button color
-	pageLayoutModule->backgroundTB->setStyleSheet(
+	pageLayoutModule->backgroundPB->setStyleSheet(
 		colorButtonStyleSheet(newColor));
 	// save color
 	set_backgroundcolor = rgbFromHexName(fromqstr(newColor.name()));
@@ -1205,7 +1205,7 @@ void GuiDocument::changeBackgroundColor()
 void GuiDocument::deleteBackgroundColor()
 {
 	// set the button color back to white
-	pageLayoutModule->backgroundTB->setStyleSheet(
+	pageLayoutModule->backgroundPB->setStyleSheet(
 		colorButtonStyleSheet(QColor(Qt::white)));
 	// save white as the set color
 	set_backgroundcolor = rgbFromHexName("#ffffff");
@@ -2316,7 +2316,7 @@ void GuiDocument::paramsToDialog()
 	pageLayoutModule->facingPagesCB->setChecked(
 		bp_.sides == TwoSides);
 
-	pageLayoutModule->backgroundTB->setStyleSheet(
+	pageLayoutModule->backgroundPB->setStyleSheet(
 		colorButtonStyleSheet(rgb2qcolor(bp_.backgroundcolor)));
 	set_backgroundcolor = bp_.backgroundcolor;
 
