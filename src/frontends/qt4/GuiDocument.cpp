@@ -79,7 +79,7 @@ static inline QString colorButtonStyleSheet(QColor const & bgColor)
 		rc += bgColor.name();
 		return rc;
 	}
-	return QLatin1String("");
+	return QString();
 }
 
 
