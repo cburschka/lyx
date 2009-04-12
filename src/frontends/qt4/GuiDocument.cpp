@@ -1190,7 +1190,7 @@ void GuiDocument::setCustomMargins(bool custom)
 void GuiDocument::changeBackgroundColor()
 {
 	QColor const & newColor = QColorDialog::getColor(
-		rgb2qcolor(set_backgroundcolor), qApp->focusWidget());
+		rgb2qcolor(set_backgroundcolor), asQWidget());
 	if (!newColor.isValid())
 		return;
 	// set the button color
