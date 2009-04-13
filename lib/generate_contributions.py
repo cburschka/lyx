@@ -406,7 +406,7 @@ contributers = [
                  "The LyX licence",
                  "m=123100818303101",
                  "3 January 2009",
-                 u"small bugfixes, CMake build system"),
+                 u"small bugfixes, CMake build system, Slovak translation"),
 
      contributer(u"Graham Biswell",
                  "graham () gbiswell ! com",
