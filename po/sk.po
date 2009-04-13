@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-04-11 13:01+0200\n"
-"PO-Revision-Date: 2009-04-13 14:17+0200\n"
+"PO-Revision-Date: 2009-04-13 16:37+0200\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
 "Language-Team: German <kde-i18n-de@lists.kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -2211,7 +2211,7 @@ msgstr "Automatické doplňovanie v riadku"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:88
 msgid "Show the popup after the set delay in text mode."
-msgstr "Zobraz vyťahovaciu menu po zdržení."
+msgstr "Zobraz vyťahovaciu menu po zdržaní."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:91
 msgid "Automatic &popup"
@@ -2284,7 +2284,7 @@ msgstr "K&onvertor:"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:91
 msgid "E&xtra flag:"
-msgstr "Príznak e&xtra:"
+msgstr "E&xtra indikátor:"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:121
 msgid "&From format:"
@@ -2311,11 +2311,11 @@ msgstr "Definície konvertoru"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:252
 msgid "Converter File Cache"
-msgstr "Dočasná pamäť pre súbor konvertoru"
+msgstr "Cache pre súbor konvertoru"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:272
 msgid "&Enabled"
-msgstr "Zapnuté"
+msgstr "Zapnutý"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:292
 msgid "Maximum A&ge (in days):"
@@ -2440,7 +2440,7 @@ msgstr "Príp&ona:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:168
 msgid "Co&pier:"
-msgstr "Kópír. skript:"
+msgstr "Kopír. skript:"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:33
 msgid "&E-mail:"
@@ -2626,7 +2626,7 @@ msgstr "Príkaz a voľby pre indexovanie (makeindex, xindi)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:59
 msgid "Optional paper size flag (-paper) for some DVI viewers"
-msgstr "Nepovinný príznak veľkosti (-paper) pre niektoré DVI prehliadače"
+msgstr "Nepovinný indikátor veľkosti (-paper) pre niektoré DVI prehliadače"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:66
 msgid "&DVI viewer paper size options:"
@@ -2711,7 +2711,7 @@ msgstr "Te&X kódovanie:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:228
 msgid "Default paper si&ze:"
-msgstr "Štandardné rozmery stránky:"
+msgstr "Prednastavené ro&zmery stránky:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:25
 msgid "&Working directory:"
@@ -2957,7 +2957,7 @@ msgstr "Najmenšie:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:325
 msgid "S&maller:"
-msgstr "Menší:"
+msgstr "Menšie:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:335
 msgid "S&mall:"
@@ -2995,7 +2995,7 @@ msgstr "Alternatívny jazyk:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:77
 msgid "Specify a personal dictionary file other than the default"
-msgstr "Nastaviť osobný slovníkový súbor iný než štandardný"
+msgstr "Nastaviť osobný slovníkový súbor iný než implicitný"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:87
 msgid "Personal &dictionary:"
@@ -3090,7 +3090,7 @@ msgstr "Prechádzať..."
 
 #: src/frontends/qt4/ui/PrefUi.ui:241
 msgid "&User interface file:"
-msgstr "Súbor s uživatelským rozhraním:"
+msgstr "Súbor s uživateľským rozhraním:"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:713
 #: src/frontends/qt4/GuiView.cpp:1834
@@ -15651,7 +15651,7 @@ msgstr "Nepodarilo sa vytvoriť adresár. Končím."
 
 #: src/LyX.cpp:938
 msgid "List of supported debug flags:"
-msgstr "Zoznam podporovaných ladiacich parametrov:"
+msgstr "Zoznam podporovaných ladiacich indikátorov:"
 
 #: src/LyX.cpp:942
 #, c-format
@@ -16352,7 +16352,7 @@ msgstr "Váš obľúbený program na tlač, napr. \"dvips\", \"dvilj4\"."
 #: src/LyXRC.cpp:2764
 msgid ""
 "Select to have visual bidi cursor movement, unselect for logical movement."
-msgstr "Vyberte pro visuální/logický pohyb kurzoru v dvojsměrném módu (bidi)"
+msgstr "Vyberte pre visuálny/logický pohyb kurzoru v dvojsmernom móde (bidi)"
 
 #: src/LyXRC.cpp:2768
 msgid ""
@@ -16447,7 +16447,8 @@ msgstr ""
 
 #: src/LyXRC.cpp:2846
 msgid "Enable the automatic appearance of tool tips in the work area."
-msgstr "Zapíná automatické zobrazování bublinové nápovědy na pracovní ploše."
+msgstr ""
+"Aktivuje automatické zobrazovanie bublinových nápovedí na pracovnej ploche."
 
 #: src/LyXRC.cpp:2850
 msgid ""
@@ -16504,7 +16505,7 @@ msgstr "S týmto formátom to nemá zmysel!"
 
 #: src/Paragraph.cpp:1651
 msgid "Alignment not permitted"
-msgstr "Zarovnání nepovoleno"
+msgstr "Zarovnanie nepovolené"
 
 #: src/Paragraph.cpp:1652
 msgid ""
@@ -16527,11 +16528,11 @@ msgstr "Nekódovatelný znak"
 
 #: src/Paragraph.cpp:2493
 msgid "Memory problem"
-msgstr "Interní chyba"
+msgstr "Problém s  pamäťou"
 
 #: src/Paragraph.cpp:2493
 msgid "Paragraph not properly initialized"
-msgstr "Odstavec není správně inicializován"
+msgstr "Odstavec nesprávne inicializovaný"
 
 #: src/SpellBase.cpp:51
 msgid "Native OS API not yet supported."
@@ -16548,12 +16549,12 @@ msgstr "Chyba pri zmene sledovania"
 #: src/Text.cpp:220
 #, c-format
 msgid "Unknown author index for insertion: %1$d\n"
-msgstr "Neznámý index autora pro vložení: %1$d\n"
+msgstr "Neznámy index autora pro vklad: %1$d\n"
 
 #: src/Text.cpp:233
 #, c-format
 msgid "Unknown author index for deletion: %1$d\n"
-msgstr "Neznámý index autora pro výmaz: %1$d\n"
+msgstr "Neznámy index autora pre vymazanie: %1$d\n"
 
 #: src/Text.cpp:240
 msgid "Unknown token"
@@ -20172,7 +20173,7 @@ msgstr "žiadna horizontálna čiara na zmazanie "
 
 #: src/mathed/InsetMathGrid.cpp:1395
 msgid "No vline to delete"
-msgstr "Žádná vertikální linka (vline) ke smazání"
+msgstr "Žiadna vertikálna linka (vline) na zmazanie"
 
 #: src/mathed/InsetMathGrid.cpp:1423
 #, c-format
