@@ -283,7 +283,7 @@ int LaTeX::run(TeXErrors & terr)
 		LYXERR(Debug::LATEX, "Running BibTeX.");
 		message(_("Running BibTeX."));
 		updateBibtexDependencies(head, bibtex_info);
-		rerun |= runBibTeX(bibtex_info);
+		rerun |= runBibTeX(bibtex_info, runparams);
 	} else if (!had_depfile) {
 		/// If we run pdflatex on the file after running latex on it,
 		/// then we do not need to run bibtex, but we do need to
@@ -335,7 +335,7 @@ int LaTeX::run(TeXErrors & terr)
 		LYXERR(Debug::LATEX, "Running BibTeX.");
 		message(_("Running BibTeX."));
 		updateBibtexDependencies(head, bibtex_info);
-		rerun |= runBibTeX(bibtex_info);
+		rerun |= runBibTeX(bibtex_info, runparams);
 	}
 
 	// 4
@@ -414,7 +414,9 @@ bool LaTeX::runMakeIndex(string const & f, OutputParams const & runparams,
 {
 	LYXERR(Debug::LATEX,
 		"idx file has been made, running makeindex on file " << f);
-	string tmp = lyxrc.index_command + ' ';
+	string tmp = runparams.use_japanese ?
+		lyxrc.jindex_command : lyxrc.index_command;
+	tmp += ' ';
 
 	tmp = subst(tmp, "$$lang", runparams.document_language);
 	tmp += quoteName(f);
@@ -549,7 +551,8 @@ void LaTeX::updateBibtexDependencies(DepTable & dep,
 }
 
 
-bool LaTeX::runBibTeX(vector<AuxInfo> const & bibtex_info)
+bool LaTeX::runBibTeX(vector<AuxInfo> const & bibtex_info,
+		      OutputParams const & runparams)
 {
 	bool result = false;
 	for (vector<AuxInfo>::const_iterator it = bibtex_info.begin();
@@ -558,7 +561,9 @@ bool LaTeX::runBibTeX(vector<AuxInfo> const & bibtex_info)
 			continue;
 		result = true;
 
-		string tmp = lyxrc.bibtex_command + " ";
+		string tmp = runparams.use_japanese ?
+			lyxrc.jbibtex_command : lyxrc.bibtex_command;
+		tmp += " ";
 		// onlyFilename() is needed for cygwin
 		tmp += quoteName(onlyFilename(removeExtension(
 				it->aux_file.absFilename())));

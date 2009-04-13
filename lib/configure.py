@@ -591,10 +591,14 @@ def checkOtherEntries():
     ''' entries other than Format and Converter '''
     checkProg('ChkTeX', ['chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38'],
         rc_entry = [ r'\chktex_command "%%"' ])
-    checkProg('BibTeX', ['jbibtex', 'bibtex'],
+    checkProg('BibTeX', ['bibtex'],
         rc_entry = [ r'\bibtex_command "%%"' ])
+    checkProg('JBibTeX, the Japanese BibTeX', ['jbibtex', 'bibtex'],
+        rc_entry = [ r'\jbibtex_command "%%"' ])
     checkProg('an index processor', ['texindy', 'makeindex -c -q'],
         rc_entry = [ r'\index_command "%%"' ])
+    checkProg('an index processor appropriate to Japanese', ['mendex -c -q', 'makeindex -c -q'],
+        rc_entry = [ r'\jindex_command "%%"' ])
     checkProg('a nomenclature processor', ['makeindex'],
         rc_entry = [ r'\nomencl_command "makeindex -s nomencl.ist"' ])
     ## FIXME: OCTAVE is not used anywhere

@@ -86,6 +86,8 @@ public:
 		RC_GROUP_LAYOUTS,
 		RC_INDEX_COMMAND,
 		RC_INPUT,
+		RC_JBIBTEX_COMMAND,
+		RC_JINDEX_COMMAND,
 		RC_KBMAP,
 		RC_KBMAP_PRIMARY,
 		RC_KBMAP_SECONDARY,
@@ -244,8 +246,12 @@ public:
 	std::string chktex_command;
 	/// command to run bibtex incl. options
 	std::string bibtex_command;
+	/// command to run japanese bibtex incl. options
+	std::string jbibtex_command;
 	/// command to run makeindex incl. options or other index programs
 	std::string index_command;
+	/// command to run japanese index program incl. options
+	std::string jindex_command;
 	/// command to run makeindex incl. options for nomencl
 	std::string nomencl_command;
 	///

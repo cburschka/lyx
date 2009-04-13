@@ -99,6 +99,8 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\gui_language", LyXRC::RC_GUI_LANGUAGE },
 	{ "\\index_command", LyXRC::RC_INDEX_COMMAND },
 	{ "\\input", LyXRC::RC_INPUT },
+	{ "\\jbibtex_command", LyXRC::RC_JBIBTEX_COMMAND },
+	{ "\\jindex_command", LyXRC::RC_JINDEX_COMMAND },
 	{ "\\kbmap", LyXRC::RC_KBMAP },
 	{ "\\kbmap_primary", LyXRC::RC_KBMAP_PRIMARY },
 	{ "\\kbmap_secondary", LyXRC::RC_KBMAP_SECONDARY },
@@ -595,9 +597,21 @@ int LyXRC::read(Lexer & lexrc)
 			}
 			break;
 
+		case RC_JBIBTEX_COMMAND:
+			if (lexrc.next(true)) {
+				jbibtex_command = lexrc.getString();
+			}
+			break;
+
 		case RC_INDEX_COMMAND:
 			if (lexrc.next(true)) {
 				index_command = lexrc.getString();
+			}
+			break;
+
+		case RC_JINDEX_COMMAND:
+			if (lexrc.next(true)) {
+				jindex_command = lexrc.getString();
 			}
 			break;
 
@@ -1337,10 +1351,24 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
+	case RC_JBIBTEX_COMMAND:
+		if (ignore_system_lyxrc ||
+		    jbibtex_command != system_lyxrc.jbibtex_command) {
+			os << "\\jbibtex_command \"" << escapeCommand(jbibtex_command) << "\"\n";
+		}
+		if (tag != RC_LAST)
+			break;
 	case RC_INDEX_COMMAND:
 		if (ignore_system_lyxrc ||
 		    index_command != system_lyxrc.index_command) {
 			os << "\\index_command \"" << escapeCommand(index_command) << "\"\n";
+		}
+		if (tag != RC_LAST)
+			break;
+	case RC_JINDEX_COMMAND:
+		if (ignore_system_lyxrc ||
+		    jindex_command != system_lyxrc.jindex_command) {
+			os << "\\jindex_command \"" << escapeCommand(jindex_command) << "\"\n";
 		}
 		if (tag != RC_LAST)
 			break;
@@ -2483,6 +2511,10 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		str = _("Define the options of bibtex (cf. man bibtex) or select an alternative compiler (e.g. mlbibtex or bibulus).");
 		break;
 
+	case RC_JBIBTEX_COMMAND:
+		str = _("Define the options of the bibtex program for PLaTeX (Japanese LaTeX).");
+		break;
+
 	case RC_BINDFILE:
 		str = _("Keybindings file. Can either specify an absolute path, or LyX will look in its global and local bind/ directories.");
 		break;
@@ -2568,6 +2600,10 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_INDEX_COMMAND:
 		str = _("Define the options of makeindex (cf. man makeindex) or select an alternative compiler. E.g., using xindy/make-rules, the command string would be \"makeindex.sh -m $$lang\".");
+		break;
+
+	case RC_JINDEX_COMMAND:
+		str = _("Define the options of the index program for PLaTeX (Japanese LaTeX).");
 		break;
 
 	case RC_NOMENCL_COMMAND:
