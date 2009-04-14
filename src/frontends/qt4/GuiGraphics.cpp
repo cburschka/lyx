@@ -291,7 +291,7 @@ void GuiGraphics::change_adaptor()
 }
 
 
-void GuiGraphics::change_group(int index)
+void GuiGraphics::change_group(int /*index*/)
 {
 	QString const new_group = groupCO->itemData(
 		groupCO->currentIndex()).toString();
