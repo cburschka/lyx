@@ -52,7 +52,7 @@ FIND_PROGRAM(GETTEXT_MSGUNIQ_EXECUTABLE msguniq)
 
 ADD_CUSTOM_COMMAND(
     OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
-    COMMAND perl
+    COMMAND ${_PERL_EXECUTABLE}
     ARGS -e "\"while(<>){print;}\"" ${_py_sources} > "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
     DEPENDS ${_py_sources}
     )

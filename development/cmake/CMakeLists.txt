@@ -81,7 +81,7 @@ if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
     # don't use the default "/usr/local"
     # but respect the user-choice on the command-line
     SET(CMAKE_INSTALL_PREFIX
-      "/usr/local/lyx${LYX_INSTALL_SUFFIX}" CACHE PATH "LyX install prefix" FORCE)
+      "/usr/local/${project}${LYX_INSTALL_SUFFIX}" CACHE PATH "LyX install prefix" FORCE)
   endif()
   if(WIN32)
     SET(CMAKE_INSTALL_PREFIX
@@ -199,14 +199,14 @@ if(nls OR all)
 	set(nls TRUE CACHE TYPE STRING)
 	add_definitions(-DENABLE_NLS=1)
 	message(STATUS "----- Building with ENABLE_NLS")
-else()	
+else()
 	message(STATUS "----- No nls, to enable use -Dnls=1")
 endif()
 set(nls)
 if(ASPELL_FOUND)
 	add_definitions(-DUSE_ASPELL=1)
 	message(STATUS "----- Building with USE_ASPELL")
-else()	
+else()
 	message(STATUS "----- No aspell, to get more information use -Daspell=1")
 endif()
 set(all)
@@ -221,7 +221,7 @@ if(WIN32)
 		message(STATUS "----- Console enabled, disable it with -Dnoconsole=1")
 	endif()
 	if(MSVC)
-		add_definitions(-D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -DNOMINMAX)	
+		add_definitions(-D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -DNOMINMAX)
 		# disable checked iterators for msvc release builds to get maximum speed
 		set(CMAKE_CXX_FLAGS_RELEASE  "${CMAKE_CXX_FLAGS_RELEASE} /D_SECURE_SCL=0")
 	else()
@@ -244,7 +244,7 @@ message(STATUS "")
 
 
 add_definitions(-DBOOST_USER_CONFIG="<config.h>")
-	
+
 if(MSVC AND NOT disable-pch AND NOT MERGE_FILES)
 	message(STATUS "-----")
 	message(STATUS "----- using precompiled headers, disable with -Ddisable-pch=1")
@@ -279,7 +279,7 @@ else()
 	endmacro(lyx_add_msvc_pch)
 endif()
 
-if(MSVC)	
+if(MSVC)
        if(vld)
                set(vld 1 CACHE TYPE STRING FORCE)
                set(LYX_LEAK_DETECTION 1 CACHE TYPE STRING FORCE)
@@ -299,67 +299,70 @@ if(MSVC)
 
 	if(WALL)
 		set(WALL 1 CACHE TYPE STRING FORCE)
-		
+
 		# Use the highest warning level
 		set(CMAKE_CXX_WARNING_LEVEL 4 CACHE TYPE STRING FORCE)
 		set(WARNING_LEVEL_MESSAGE "(switch to warning level 3 with -DWALL=0)")
-		
+
 		if(CMAKE_CXX_FLAGS MATCHES "/W[0-4]")
 			string(REGEX REPLACE "/W[0-4]" "/W4" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 		else()
 			set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
 		endif()
-		
+
 		if(CMAKE_C_FLAGS MATCHES "/W[0-4]")
 			string(REGEX REPLACE "/W[0-4]" "/W4" CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
 		else()
 			set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /W4")
 		endif()
-		
+
 		# add here warnings which should produce an error /weXXXX
 		set(MSVC_W_ERROR   "/we4101 /we4189")
 		# add here warnings which should be disabled /wdXXXX
 		set(MSVC_W_DISABLE "/wd4288 /wd4355 /wd4800 /wd4996 /wd4311 /wd4312 /wd4505 /wd4267 /wd4512 /wd4245 /wd4127 /wd4180")
-		
+
 		set(CMAKE_CXX_FLAGS_DEBUG
 			"${CMAKE_CXX_FLAGS_DEBUG} /Wp64 ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
 		set(CMAKE_CXX_FLAGS_RELEASE
 			"${CMAKE_CXX_FLAGS_RELEASE} /Wp64 ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
 		set(CMAKE_CXX_FLAGS_MINSIZEREL
 			"${CMAKE_CXX_FLAGS_MINSIZEREL} /Wp64 ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
-		
-	else()	
+
+	else()
 		set(WALL 0 CACHE TYPE STRING FORCE)
-		
+
 		set(CMAKE_CXX_WARNING_LEVEL 3 CACHE TYPE STRING FORCE)
 		set(WARNING_LEVEL_MESSAGE "(switch to warning level 4 with -DWALL=1)")
-	
+
 		# add here warnings which should produce an error /weXXXX
 		set(MSVC_W_ERROR   "/we4101 /we4189")
 		# add here warnings which should be disabled /wdXXXX
 		set(MSVC_W_DISABLE "/wd4288 /wd4355 /wd4800 /wd4996 /wd4267 /wd4180")
-		
+
 		set(CMAKE_CXX_FLAGS_DEBUG
 			"${CMAKE_CXX_FLAGS_DEBUG} ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
 		set(CMAKE_CXX_FLAGS_RELEASE
 			"${CMAKE_CXX_FLAGS_RELEASE} ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
 		set(CMAKE_CXX_FLAGS_MINSIZEREL
 			"${CMAKE_CXX_FLAGS_MINSIZEREL} ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
-		
+
 	endif()
-	
+
 	message(STATUS "----- Warning level      : ${CMAKE_CXX_WARNING_LEVEL}  ${WARNING_LEVEL_MESSAGE}")
 	message(STATUS "----- Warnings as errors : ${MSVC_W_ERROR}")
 	message(STATUS "----- Warnings disabled  : ${MSVC_W_DISABLE}")
 	message(STATUS "")
-	
+
 endif()
 
 
-if(nls OR all)
-  find_package(LyXGettext REQUIRED)
-  include_directories(${TOP_SRC_DIR}/po)
-  add_subdirectory(po)
+FIND_PROGRAM(_PERL_EXECUTABLE perl)
+if(NOT ${_PERL_EXECUTABLE} MATCHES "-NOTFOUND")
+    if(nls OR all)
+      find_package(LyXGettext REQUIRED)
+      include_directories(${TOP_SRC_DIR}/po)
+      add_subdirectory(po)
+    endif()
 endif()
 
 # compiler tests, config.h generation
@@ -387,7 +390,9 @@ endif()
 add_subdirectory(src)
 
 add_subdirectory(man)
-add_subdirectory(doc)
+if(NOT ${_PERL_EXECUTABLE} MATCHES "-NOTFOUND")
+    add_subdirectory(doc)
+endif()
 add_subdirectory(lyx2lyx)
 add_subdirectory(scripts)
 
@@ -396,7 +401,6 @@ include(../Install)
 SET(CPACK_PACKAGE_VERSION_MAJOR "${LYX_MAJOR_VERSION}")
 SET(CPACK_PACKAGE_VERSION_MINOR "${LYX_MINOR_VERSION}")
 FILE(STRINGS "${TOP_SRC_DIR}/development/cmake/LyX_summary.txt" CPACK_PACKAGE_DESCRIPTION_SUMMARY)
-#SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "A WYSIWYM (What You See Is What You Mean) document processor")
 
 SET(CPACK_PACKAGE_INSTALL_DIRECTORY "CMake ${LYX_INSTALL_SUFFIX}")
 #
@@ -408,9 +412,15 @@ SET(CPACK_RPM_PACKAGE_VENDOR "The LyX team")
 #
 # the next ones are needed by deb
 SET(CPACK_PACKAGE_CONTACT "${PACKAGE_BUGREPORT}")
-SET(CPACK_SOURCE_PACKAGE_FILE_NAME "lyx-${LYX_INSTALL_SUFFIX}")
+SET(CPACK_SOURCE_PACKAGE_FILE_NAME "${project}-${LYX_INSTALL_SUFFIX}")
+
+# This is experimental, valid on _my_ system (Kornel)
+SET(CPACK_DEBIAN_PACKAGE_DEPENDS "libqtgui4 (>= 4.4.3-0)")
+IF(ASPELL_FOUND)
+  SET(CPACK_DEBIAN_PACKAGE_DEPENDS "libaspell15 (>= 0.60.6-1),${CPACK_DEBIAN_PACKAGE_DEPENDS}")
+ENDIF()
 #
-# for the next ones, cmake insists on data  with values in some file
+# for the next ones, cpack insists on data with values in some file
 SET(CPACK_PACKAGE_DESCRIPTION_FILE "${TOP_SRC_DIR}/development/cmake/LyX_description.txt")
 SET(CPACK_RESOURCE_FILE_LICENSE "${TOP_SRC_DIR}/development/cmake/LyX_license.txt")
 
@@ -418,7 +428,14 @@ SET(CPACK_RESOURCE_FILE_LICENSE "${TOP_SRC_DIR}/development/cmake/LyX_license.tx
 # This way we may omit the otherwise needed "--force" parameter when
 # installing from that rpm package.
 FIND_PROGRAM(_svnversion svnversion)
-EXECUTE_PROCESS(COMMAND ${_svnversion} WORKING_DIRECTORY "${TOP_SRC_DIR}" OUTPUT_VARIABLE CPACK_RPM_PACKAGE_RELEASE OUTPUT_STRIP_TRAILING_WHITESPACE)
+message(STATUS "svnversion = ${_svnversion}")
+if(NOT ${_svnversion} MATCHES "-NOTFOUND")
+  EXECUTE_PROCESS(COMMAND ${_svnversion} WORKING_DIRECTORY "${TOP_SRC_DIR}" OUTPUT_VARIABLE CPACK_RPM_PACKAGE_RELEASE OUTPUT_STRIP_TRAILING_WHITESPACE)
+  # We use this value also to set the package-patch-value
+  if(CPACK_RPM_PACKAGE_RELEASE MATCHES "^\([0-9]+\)")
+    set(CPACK_PACKAGE_VERSION_PATCH ${CMAKE_MATCH_1})
+  endif()
+endif()
 
 # we do not have a readme or welcome data,
 # so we do not provide infofiles for
@@ -428,9 +445,20 @@ include(CPack)
 #Now it is possible to create some packages
 # cd <BuildDir>
 # make package
+#############################################################################################
+# So, e.g. for variables
+#    CMAKE_PROJECT_NAME                     : lyx
+#    CPACK_PACKAGE_VERSION_MAJOR            : 2
+#    CPACK_PACKAGE_VERSION_MINOR            : 0
+#    CPACK_PACKAGE_VERSION_PATCH            : 1
+#    CMAKE_SYSTEM_NAME                      : Linux
+#    CPACK_BINARY_DEB:BOOL                  : ON
+#
+# the package name builds as "lyx-2.0.1-Linux.deb"
+#
 ############################## rpm ################################### deb ##################
 # create    # cpack -G RPM --config CPackConfig.cmake   # cpack -G DEB --config CPackConfig.cmake
-# creates =># lyx-2.0.1-Linux.rpm                       #  ==> lyx-2.0.1-Linux.deb
+# creates =># lyx-2.0.1-Linux.rpm                       # lyx-2.0.1-Linux.deb
 # list      # rpm -qlp lyx-2.0.1-Linux.rpm              # dpkg-deb -c lyx-2.0.1-Linux.deb
 # install   # rpm -U lyx-2.0.1-Linux.rpm                # dpkg -i lyx-2.0.1-Linux.deb
 #
