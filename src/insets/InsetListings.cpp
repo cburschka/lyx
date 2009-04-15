@@ -316,11 +316,8 @@ void InsetListings::doDispatch(Cursor & cur, FuncRequest & cmd)
 		} else {
 			// Maybe we shouldn't allow tabs within a line, because they
 			// are not (yet) aligned as one might do expect.
-			cur.recordUndo();
-			if (cur.selection())
-				cap::cutSelection(cur, false, false);
-			cur.insert(from_ascii("\t"));
-			cur.finishUndo();
+			FuncRequest cmd(LFUN_SELF_INSERT, from_ascii("\t"));
+			dispatch(cur, cmd);	
 		}
 		break;
 	}
