@@ -321,6 +321,15 @@ void Cursor::dispatch(FuncRequest const & cmd0)
 	// object will be used again.
 	if (!disp_.dispatched()) {
 		LYXERR(Debug::DEBUG, "RESTORING OLD CURSOR!");
+		// We might have invalidated the cursor when removing an empty
+		// paragraph while the cursor could not be moved out the inset
+		// while we initially thought we could. This might happen when
+		// a multiline inset becomes an inline inset when the second 
+		// paragraph is removed.
+		if (safe.pit() > safe.lastpit()) {
+			safe.pit() = safe.lastpit();
+			safe.pos() = safe.lastpos();
+		}
 		operator=(safe);
 		disp_.update(Update::None);
 		disp_.dispatched(false);
@@ -1776,14 +1785,31 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 		row = pm.pos2row(pos());
 		
 	if (atFirstOrLastRow(up)) {
+		// Is there a place for the cursor to go ? If yes, we
+		// can execute the DEPM, otherwise we should keep the
+		// paragraph to host the cursor.
 		Cursor dummy = *this;
-		// The cursor hasn't changed yet. This happens when
-		// you e.g. move out of an inset. And to give the 
-		// DEPM the possibility of doing something we must
-		// provide it with two different cursors. (Lgb, vfr)
-		dummy.pos() = dummy.pos() == 0 ? dummy.lastpos() : 0;
-		dummy.pit() = dummy.pit() == 0 ? dummy.lastpit() : 0;
-		updateNeeded |= bv().checkDepm(dummy, *this);
+		bool valid_destination = false;
+		for(; dummy.depth(); dummy.pop())
+			if (!dummy.atFirstOrLastRow(up)) {
+				valid_destination = true;
+				break;
+			}
+
+		// will a next dispatch follow and if there is a new 
+		// dispatch will it move the cursor out ?
+		if (depth() > 1 && valid_destination) {
+			// The cursor hasn't changed yet. This happens when
+			// you e.g. move out of an inset. And to give the 
+			// DEPM the possibility of doing something we must
+			// provide it with two different cursors. (Lgb, vfr)
+			dummy = *this;
+			dummy.pos() = dummy.pos() == 0 ? dummy.lastpos() : 0;
+			dummy.pit() = dummy.pit() == 0 ? dummy.lastpit() : 0;
+
+			updateNeeded |= bv().checkDepm(dummy, *this);
+			updateTextTargetOffset();
+		}
 		return false;
 	}
 
@@ -1797,6 +1823,19 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 		else
 			tm.editXY(*this, xo, yo + textRow().descent() + 1);
 		clearSelection();
+		
+		// This happens when you move out of an inset.  
+		// And to give the DEPM the possibility of doing  
+		// something we must provide it with two different  
+		// cursors. (Lgb)  
+		Cursor dummy = *this;
+		if (dummy == old)
+			++dummy.pos();
+		if (bv().checkDepm(dummy, old)) {
+			updateNeeded = true;
+			// Make sure that cur gets back whatever happened to dummy(Lgb) 
+			operator=(dummy);
+		}
 	} else {
 		// if there is a selection, we stay out of any inset, and just jump to the right position:
 		Cursor old = *this;
