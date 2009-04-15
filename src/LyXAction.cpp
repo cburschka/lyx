@@ -2249,7 +2249,8 @@ void LyXAction::init()
 		{ LFUN_INSET_SETTINGS, "inset-settings", ReadOnly | AtPoint, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_INSET_TOGGLE
- * \li Action: Toggles the collapsable inset we are currently in.
+ * \li Action: Toggles the collapsable inset at cursor position,
+ *             or the inset we are currently in.
  * \li Syntax: inset-toggle [<ARG>]
  * \li Params: <ARG>: <open|close|toggle|assign>. \n
                open/close/toggle are for collapsable insets. toggle is used when no argument is given.\n
@@ -2263,8 +2264,8 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_ALL_INSETS_TOGGLE
  * \li Action: Toggles (open/closes) all collapsable insets (of a given type) in the document.
  * \li Notion: Used for box, branch, ert, float, listings, note, tabular, wrap insets.
- * \li Syntax: all-insets-toggle <STATE> <INSET>
- * \li Params: <STATE>: <toggle|open|close> default: toggle \n
+ * \li Syntax: all-insets-toggle [<STATE>] [<INSET>]
+ * \li Params: <STATE>: <toggle|open|close|assign> default: toggle \n
                <INSET>: <box|branch|ert|float|listings|note|tabular|wrap> default: all insets
  * \li Origin: leeming, 30 Mar 2004
  * \endvar
@@ -2447,7 +2448,7 @@ void LyXAction::init()
 		{ LFUN_UI_TOGGLE, "ui-toggle", NoBuffer, Buffer },
 
 /*!
- * \var lyx::FuncCode lyx::WINDOW_NEW
+ * \var lyx::FuncCode lyx::LFUN_WINDOW_NEW
  * \li Action: Creates new empty LyX window.
  * \li Notion: Already opened documents from the previous window can be found under View menu.
  * \li Syntax: window-new [<GEOMETRY>]
