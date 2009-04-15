@@ -360,6 +360,20 @@ bool findChange(BufferView * bv, bool next)
 	}
 
 	DocIterator cur = bv->cursor();
+	
+	// Are we within a change ? Then first search forward (backward), 
+	// clear the selection and search the other way around (see the end
+	// of this function). This will avoid changes to be selected half.
+	bool search_both_sides = false;
+	if (cur.pos() > 1) {
+		Change change_next_pos  
+			= cur.paragraph().lookupChange(cur.pos());
+		Change change_prev_pos 
+			= cur.paragraph().lookupChange(cur.pos() - 1);
+		if (change_next_pos.isSimilarTo(change_prev_pos))
+			search_both_sides = true;
+	}
+
 	if (!findChange(cur, next))
 		return false;
 
@@ -393,6 +407,11 @@ bool findChange(BufferView * bv, bool next)
 	// Now put cursor to end of selection:
 	bv->cursor().setCursor(cur);
 	bv->cursor().setSelection();
+
+	if (search_both_sides) {
+		bv->cursor().setSelection(false);
+		findChange(bv, !next);
+	}
 
 	return true;
 }
