@@ -30,11 +30,15 @@ The following new LyX functions have been introduced:
 
 - LFUN_REGEXP_MODE ("regexp-mode").
 
-- LFUN_COPY_LABEL_AS_REF ("copy-label-as-reference").
-
 The following LyX functions have been removed:
 
-- LFUN_NEXT_INSET_TOGGLE (next-inset-toggle): use "inset-toggle" instead.
+- LFUN_NEXT_INSET_TOGGLE ("next-inset-toggle"): use "inset-toggle" instead.
+
+The following LyX functions have been changed:
+
+- LFUN_INSET_TOGGLE ("inset-toggle"): For some insets, this function was used 
+  to show the settings dialog. This is no longer possible and one should use
+  inset-settings for this purpose.
 
 Known issues in version 2.0.0
 -----------------------------
