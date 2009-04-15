@@ -18,6 +18,7 @@
 #include "BufferParams.h"
 #include "Counters.h"
 #include "Cursor.h"
+#include "CutAndPaste.h"
 #include "DispatchResult.h"
 #include "Encoding.h"
 #include "FuncRequest.h"
@@ -288,13 +289,17 @@ void InsetListings::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetListings::string2params(to_utf8(cmd.argument()), params());
 		break;
 	}
+
 	case LFUN_INSET_DIALOG_UPDATE:
 		cur.bv().updateDialog("listings", params2string(params()));
 		break;
-	case LFUN_TAB_INSERT:
-		if (cur.selection()) {
-			// If there is a selection, a tab is inserted at the
-			// beginning of each paragraph.
+
+	case LFUN_TAB_INSERT: {
+		bool const multi_par_selection = cur.selection() &&
+			cur.selBegin().pit() != cur.selEnd().pit();
+		if (multi_par_selection) {
+			// If there is a multi-paragraph selection, a tab is inserted
+			// at the beginning of each paragraph.
 			cur.recordUndoSelection();
 			pit_type const pit_end = cur.selEnd().pit();
 			for (pit_type pit = cur.selBegin().pit(); pit <= pit_end; pit++) {
@@ -312,10 +317,14 @@ void InsetListings::doDispatch(Cursor & cur, FuncRequest & cmd)
 			// Maybe we shouldn't allow tabs within a line, because they
 			// are not (yet) aligned as one might do expect.
 			cur.recordUndo();
+			if (cur.selection())
+				cap::cutSelection(cur, false, false);
 			cur.insert(from_ascii("\t"));
 			cur.finishUndo();
 		}
 		break;
+	}
+
 	case LFUN_TAB_DELETE:
 		if (cur.selection()) {
 			// If there is a selection, a tab (if present) is removed from
