@@ -394,7 +394,8 @@ bool findChange(BufferView * bv, bool next)
 				break;
 		}
 	} else {
-		for (; !tip.at_begin(); tip.backwardPos()) {
+		for (; !tip.at_begin();) {
+			tip.backwardPos();
 			Change change = tip.paragraph().lookupChange(tip.pos());
 			if (change != orig_change) {
 				// take a step forward to correctly set the selection
