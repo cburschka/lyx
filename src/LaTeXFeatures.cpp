@@ -619,9 +619,11 @@ string const LaTeXFeatures::getPackages() const
 	// [x]color and pdfcolmk are handled in getColorOptions() above
 	
 	// makeidx.sty
-	if (isRequired("makeidx")) {
-		if (!tclass.provides("makeidx"))
+	if (isRequired("makeidx") || isRequired("splitidx")) {
+		if (!tclass.provides("makeidx") && !isRequired("splitidx"))
 			packages << "\\usepackage{makeidx}\n";
+		if (!tclass.provides("splitidx") && isRequired("splitidx"))
+			packages << "\\usepackage{splitidx}\n";
 		packages << "\\makeindex\n";
 	}
 

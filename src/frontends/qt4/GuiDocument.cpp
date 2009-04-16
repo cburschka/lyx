@@ -15,6 +15,7 @@
 
 #include "GuiApplication.h"
 #include "GuiBranches.h"
+#include "GuiIndices.h"
 #include "GuiSelectionManager.h"
 #include "LaTeXHighlighter.h"
 #include "LengthCombo.h"
@@ -33,6 +34,7 @@
 #include "FloatPlacement.h"
 #include "Format.h"
 #include "FuncRequest.h"
+#include "IndicesList.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Layout.h"
@@ -862,6 +864,11 @@ GuiDocument::GuiDocument(GuiView & lv)
 	biblioModule->citeStyleCO->addItem(qt_("Numerical"));
 	biblioModule->citeStyleCO->setCurrentIndex(0);
 
+	// indices
+	indicesModule = new GuiIndices;
+	connect(indicesModule, SIGNAL(changed()),
+		this, SLOT(change_adaptor()));
+
 
 	mathsModule = new UiWidget<Ui::MathsUi>;
 	connect(mathsModule->amsautoCB, SIGNAL(toggled(bool)),
@@ -1006,6 +1013,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	docPS->addPanel(langModule, qt_("Language"));
 	docPS->addPanel(numberingModule, qt_("Numbering & TOC"));
 	docPS->addPanel(biblioModule, qt_("Bibliography"));
+	docPS->addPanel(indicesModule, qt_("Indices"));
 	docPS->addPanel(pdfSupportModule, qt_("PDF Properties"));
 	docPS->addPanel(mathsModule, qt_("Math Options"));
 	docPS->addPanel(floatModule, qt_("Float Placement"));
@@ -1713,6 +1721,9 @@ void GuiDocument::applyView()
 	bp_.use_bibtopic =
 		biblioModule->bibtopicCB->isChecked();
 
+	// Indices
+	indicesModule->apply(bp_);
+
 	// language & quotes
 	if (langModule->defaultencodingRB->isChecked()) {
 		bp_.inputenc = "auto";
@@ -2046,6 +2057,9 @@ void GuiDocument::paramsToDialog()
 
 	biblioModule->bibtopicCB->setChecked(
 		bp_.use_bibtopic);
+
+	// indices
+	indicesModule->update(bp_);
 
 	// language & quotes
 	int const pos = langModule->languageCO->findData(toqstr(
@@ -2617,6 +2631,20 @@ void GuiDocument::dispatchParams()
 		// Open insets of selected branches, close deselected ones
 		dispatch(FuncRequest(LFUN_ALL_INSETS_TOGGLE,
 			"assign branch"));
+	}
+	// Generate the colours requested by indices.
+	IndicesList & indiceslist = params().indiceslist();
+	if (!indiceslist.empty()) {
+		IndicesList::const_iterator it = indiceslist.begin();
+		IndicesList::const_iterator const end = indiceslist.end();
+		for (; it != end; ++it) {
+			docstring const & current_index = it->index();
+			Index const * index = indiceslist.find(current_index);
+			string const x11hexname = X11hexname(index->color());
+			// display the new color
+			docstring const str = current_index + ' ' + from_ascii(x11hexname);
+			dispatch(FuncRequest(LFUN_SET_COLOR, str));
+		}
 	}
 	// FIXME: If we used an LFUN, we would not need those two lines:
 	BufferView * bv = const_cast<BufferView *>(bufferview());

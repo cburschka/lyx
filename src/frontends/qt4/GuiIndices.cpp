@@ -1,0 +1,217 @@
+/**
+ * \file GuiIndices.cpp
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Edwin Leuven
+ * \author Jürgen Spitzmüller
+ * \author Abdelrazak Younes
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
+#include <config.h>
+
+#include "GuiIndices.h"
+
+#include "ColorCache.h"
+#include "GuiApplication.h"
+#include "Validator.h"
+#include "qt_helpers.h"
+
+#include "frontends/alert.h"
+
+#include "BufferParams.h"
+
+#include "support/gettext.h"
+#include "support/lstrings.h"
+
+#include <QTreeWidget>
+#include <QTreeWidgetItem>
+#include <QPixmap>
+#include <QIcon>
+#include <QColor>
+#include <QColorDialog>
+
+
+namespace lyx {
+namespace frontend {
+
+
+GuiIndices::GuiIndices(QWidget * parent)
+	: QWidget(parent)
+{
+	setupUi(this);
+	indicesTW->setColumnCount(2);
+	indicesTW->headerItem()->setText(0, qt_("Name"));
+	indicesTW->headerItem()->setText(1, qt_("Label Color"));
+	indicesTW->setSortingEnabled(true);
+}
+
+void GuiIndices::update(BufferParams const & params)
+{
+	indiceslist_ = params.indiceslist();
+	multipleIndicesCB->setChecked(
+		params.use_indices);
+	bool const state = params.use_indices;
+	indicesTW->setEnabled(state);
+	newIndexLE->setEnabled(state);
+	newIndexLA->setEnabled(state);
+	addIndexPB->setEnabled(state);
+	availableLA->setEnabled(state);
+	removePB->setEnabled(state);
+	colorPB->setEnabled(state);
+	updateView();
+}
+
+
+void GuiIndices::updateView()
+{
+	// store the selected index
+	QTreeWidgetItem * item = indicesTW->currentItem();
+	QString sel_index;
+	if (item != 0)
+		sel_index = item->text(0);
+
+	indicesTW->clear();
+
+	IndicesList::const_iterator it = indiceslist_.begin();
+	IndicesList::const_iterator const end = indiceslist_.end();
+	for (; it != end; ++it) {
+		QTreeWidgetItem * newItem = new QTreeWidgetItem(indicesTW);
+
+		QString const iname = toqstr(it->index());
+		newItem->setText(0, iname);
+
+		QColor const itemcolor = rgb2qcolor(it->color());
+		if (itemcolor.isValid()) {
+			QPixmap coloritem(30, 10);
+			coloritem.fill(itemcolor);
+			newItem->setIcon(1, QIcon(coloritem));
+		}
+		// restore selected index
+		if (iname == sel_index) {
+			indicesTW->setCurrentItem(newItem);
+			indicesTW->setItemSelected(newItem, true);
+		}
+	}
+	// emit signal
+	changed();
+}
+
+
+void GuiIndices::apply(BufferParams & params) const
+{
+	params.use_indices = multipleIndicesCB->isChecked();
+	params.indiceslist() = indiceslist_;
+}
+
+
+void GuiIndices::on_addIndexPB_pressed()
+{
+	QString const new_index = newIndexLE->text();
+	if (!new_index.isEmpty()) {
+		indiceslist_.add(qstring_to_ucs4(new_index));
+		newIndexLE->clear();
+		updateView();
+	}
+}
+
+
+void GuiIndices::on_removePB_pressed()
+{
+	QTreeWidgetItem * selItem = indicesTW->currentItem();
+	QString sel_index;
+	if (selItem != 0)
+		sel_index = selItem->text(0);
+	if (!sel_index.isEmpty()) {
+		if (indiceslist_.find(qstring_to_ucs4(sel_index)) == 
+		    indiceslist_.findShortcut(from_ascii("idx"))) {
+			Alert::error(_("Cannot remove standard index"), 
+			      _("The default index cannot be removed."));
+			      return;
+		}
+		indiceslist_.remove(qstring_to_ucs4(sel_index));
+		newIndexLE->clear();
+		updateView();
+	}
+}
+
+
+void GuiIndices::on_renamePB_clicked()
+{
+	QTreeWidgetItem * selItem = indicesTW->currentItem();
+	QString sel_index;
+	if (selItem != 0)
+		sel_index = selItem->text(0);
+	if (!sel_index.isEmpty()) {
+		docstring newname;
+		bool success = false;
+		if (Alert::askForText(newname, _("Enter new index name"))) {
+			success = indiceslist_.rename(qstring_to_ucs4(sel_index), newname);
+			newIndexLE->clear();
+			updateView();
+		}
+		if (!success)
+			Alert::error(_("Renaming failed"), 
+			      _("The index could not be renamed. "
+			        "Check if the new name already exists."));
+	}
+}
+
+
+void GuiIndices::on_indicesTW_itemDoubleClicked(QTreeWidgetItem * item, int /*col*/)
+{
+	toggleColor(item);
+}
+
+
+void GuiIndices::on_colorPB_clicked()
+{
+	toggleColor(indicesTW->currentItem());
+}
+
+
+void GuiIndices::on_multipleIndicesCB_toggled(bool const state)
+{
+	indicesTW->setEnabled(state);
+	newIndexLE->setEnabled(state);
+	newIndexLA->setEnabled(state);
+	addIndexPB->setEnabled(state);
+	availableLA->setEnabled(state);
+	removePB->setEnabled(state);
+	colorPB->setEnabled(state);
+	// emit signal
+	changed();
+}
+
+
+void GuiIndices::toggleColor(QTreeWidgetItem * item)
+{
+	if (item == 0)
+		return;
+
+	QString sel_index = item->text(0);
+	if (sel_index.isEmpty())
+		return;
+
+	docstring current_index = qstring_to_ucs4(sel_index);
+	Index * index = indiceslist_.find(current_index);
+	if (!index)
+		return;
+
+	QColor const initial = rgb2qcolor(index->color());
+	QColor ncol = QColorDialog::getColor(initial, qApp->focusWidget());
+	if (!ncol.isValid())
+		return;
+
+	// add the color to the indiceslist
+	index->setColor(fromqstr(ncol.name()));
+	newIndexLE->clear();
+	updateView();
+}
+
+} // namespace frontend
+} // namespace lyx
+
+#include "moc_GuiIndices.cpp"

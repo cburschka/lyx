@@ -1537,7 +1537,18 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_INDEX_PRINT:
+	case LFUN_INDEX_PRINT: {
+		InsetCommandParams p(INDEX_PRINT_CODE);
+		if (cmd.argument().empty())
+			p["type"] = from_ascii("idx");
+		else
+			p["type"] = cmd.argument();
+		string const data = InsetCommand::params2string("index_print", p);
+		FuncRequest fr(LFUN_INSET_INSERT, data);
+		dispatch(cur, fr);
+		break;
+	}
+
 	case LFUN_NOMENCL_PRINT:
 	case LFUN_TOC_INSERT:
 	case LFUN_LINE_INSERT:

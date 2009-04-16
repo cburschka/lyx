@@ -177,8 +177,10 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 			return 0;
 		}
 
-		case LFUN_INDEX_INSERT:
-			return new InsetIndex(buf);
+		case LFUN_INDEX_INSERT: {
+			docstring arg = cmd.argument();
+			return new InsetIndex(buf, InsetIndexParams(arg));
+		}
 
 		case LFUN_NOMENCL_INSERT: {
 			InsetCommandParams icp(NOMENCL_CODE);
@@ -202,8 +204,11 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 		case LFUN_CAPTION_INSERT:
 			return new InsetCaption(buf);
 
-		case LFUN_INDEX_PRINT:
-			return new InsetPrintIndex(InsetCommandParams(INDEX_PRINT_CODE));
+		case LFUN_INDEX_PRINT:  {
+			InsetCommandParams icp(INDEX_PRINT_CODE);
+			icp["type"] = cmd.argument();
+			return new InsetPrintIndex(icp);
+		}
 
 		case LFUN_NOMENCL_PRINT:
 			return new InsetPrintNomencl(InsetCommandParams(NOMENCL_PRINT_CODE));
@@ -283,8 +288,16 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 				return new InsetInclude(icp);
 			}
 			
-			case INDEX_CODE:
-				return new InsetIndex(buf);
+			case INDEX_CODE: {
+				docstring arg = cmd.argument();
+				return new InsetIndex(buf, InsetIndexParams(arg));
+			}
+			
+			case INDEX_PRINT_CODE:  {
+				InsetCommandParams icp(code);
+				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
+				return new InsetPrintIndex(icp);
+			}
 			
 			case NOMENCL_CODE: {
 				InsetCommandParams icp(code);
@@ -566,7 +579,7 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 		} else if (tmptok == "Caption") {
 			inset.reset(new InsetCaption(buf));
 		} else if (tmptok == "Index") {
-			inset.reset(new InsetIndex(buf));
+			inset.reset(new InsetIndex(buf, InsetIndexParams()));
 		} else if (tmptok == "FloatList") {
 			inset.reset(new InsetFloatList);
 		} else if (tmptok == "Info") {

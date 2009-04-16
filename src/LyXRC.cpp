@@ -165,6 +165,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\sort_layouts", LyXRC::RC_SORT_LAYOUTS },
 	{ "\\spell_command", LyXRC::RC_SPELL_COMMAND },
 	{ "\\spellcheck_continuously", LyXRC::RC_SPELLCHECK_CONTINUOUSLY },
+	{ "\\splitindex_command", LyXRC::RC_SPLITINDEX_COMMAND },
 	{ "\\tempdir_path", LyXRC::RC_TEMPDIRPATH },
 	{ "\\template_path", LyXRC::RC_TEMPLATEPATH },
 	{ "\\tex_allows_spaces", LyXRC::RC_TEX_ALLOWS_SPACES },
@@ -612,6 +613,12 @@ int LyXRC::read(Lexer & lexrc)
 		case RC_JINDEX_COMMAND:
 			if (lexrc.next(true)) {
 				jindex_command = lexrc.getString();
+			}
+			break;
+
+		case RC_SPLITINDEX_COMMAND:
+			if (lexrc.next(true)) {
+				splitindex_command = lexrc.getString();
 			}
 			break;
 
@@ -1369,6 +1376,13 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		if (ignore_system_lyxrc ||
 		    jindex_command != system_lyxrc.jindex_command) {
 			os << "\\jindex_command \"" << escapeCommand(jindex_command) << "\"\n";
+		}
+		if (tag != RC_LAST)
+			break;
+	case RC_SPLITINDEX_COMMAND:
+		if (ignore_system_lyxrc ||
+		    splitindex_command != system_lyxrc.splitindex_command) {
+			os << "\\splitindex_command \"" << escapeCommand(splitindex_command) << "\"\n";
 		}
 		if (tag != RC_LAST)
 			break;

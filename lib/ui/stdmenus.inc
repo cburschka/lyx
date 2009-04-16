@@ -346,7 +346,7 @@ Menuset
 		Item "Cross-Reference...|R" "dialog-show-new-inset ref"
 		Item "Label...|L" "label-insert"
 		Item "Caption" "caption-insert"
-		Item "Index Entry|d" "index-insert"
+		Indices
 		Item "Nomenclature Entry...|y" "nomencl-insert"
 		Separator
 		Item "Table...|T" "tabular-insert"
@@ -430,7 +430,7 @@ Menuset
 	Menu "insert_toc"
 		Item "Table of Contents|C" "toc-insert"
 		FloatListInsert
-		Item "Index List|I" "index-print"
+		IndicesLists
 		Item "Nomenclature|N" "nomencl-print"
 		Item "BibTeX Bibliography...|B" "dialog-show-new-inset bibtex"
 	End

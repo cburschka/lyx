@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Lars Gullik Bjønnes
+ * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -12,11 +13,15 @@
 #include "InsetIndex.h"
 
 #include "Buffer.h"
+#include "BufferParams.h"
+#include "ColorSet.h"
 #include "DispatchResult.h"
 #include "Encoding.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
+#include "IndicesList.h"
 #include "LaTeXFeatures.h"
+#include "Lexer.h"
 #include "MetricsInfo.h"
 #include "sgml.h"
 #include "TocBackend.h"
@@ -42,16 +47,23 @@ namespace lyx {
 ///////////////////////////////////////////////////////////////////////
 
 
-InsetIndex::InsetIndex(Buffer const & buf)
-	: InsetCollapsable(buf)
+InsetIndex::InsetIndex(Buffer const & buf, InsetIndexParams const & params)
+	: InsetCollapsable(buf), params_(params)
 {}
 
 
 int InsetIndex::latex(odocstream & os,
 		      OutputParams const & runparams) const
 {
-	os << "\\index";
-	os << '{';
+	if (buffer().masterBuffer()->params().use_indices && !params_.index.empty()
+	    && params_.index != "idx") {
+		os << "\\sindex[";
+		os << params_.index;
+		os << "]{";
+	} else {
+		os << "\\index";
+		os << '{';
+	}
 	int i = 0;
 
 	// get contents of InsetText as LaTeX and plaintext
@@ -158,10 +170,96 @@ int InsetIndex::docbook(odocstream & os, OutputParams const & runparams) const
 }
 
 
+void InsetIndex::doDispatch(Cursor & cur, FuncRequest & cmd)
+{
+	switch (cmd.action) {
+
+	case LFUN_INSET_MODIFY: {
+		if (cmd.getArg(0) == "changetype") {
+			params_.index = from_utf8(cmd.getArg(1));
+			setLayout(cur.buffer()->params());
+			break;
+		}
+	}
+
+	default:
+		InsetCollapsable::doDispatch(cur, cmd);
+		break;
+	}
+}
+
+
+bool InsetIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
+		FuncStatus & flag) const
+{
+	switch (cmd.action) {
+
+	case LFUN_INSET_MODIFY:
+		if (cmd.getArg(0) == "changetype") {
+			docstring const newtype = from_utf8(cmd.getArg(1));
+			Buffer const & realbuffer = *buffer().masterBuffer();
+			IndicesList const & indiceslist = realbuffer.params().indiceslist();
+			Index const * index = indiceslist.findShortcut(newtype);
+			flag.setEnabled(index != 0);
+			flag.setOnOff(
+				from_utf8(cmd.getArg(1)) == params_.index);
+			return true;
+		}
+
+	default:
+		return InsetCollapsable::getStatus(cur, cmd, flag);
+	}
+}
+
+
+docstring const InsetIndex::buttonLabel(BufferView const & bv) const
+{
+	docstring s = _("Idx");
+	if (decoration() == InsetLayout::CLASSIC)
+		return isOpen(bv) ? s : getNewLabel(s);
+	else
+		return getNewLabel(s);
+}
+
+
+docstring InsetIndex::toolTip(BufferView const &, int, int) const
+{
+	docstring tip = _("Index Entry");
+	if (buffer().params().use_indices && !params_.index.empty()) {
+		Buffer const & realbuffer = *buffer().masterBuffer();
+		IndicesList const & indiceslist = realbuffer.params().indiceslist();
+		tip += " (";
+		Index const * index = indiceslist.findShortcut(params_.index);
+		if (!index)
+			tip += _("unknown type!");
+		else
+			tip += index->index();
+		tip += ")";
+	}
+	tip += ": ";
+	OutputParams rp(&buffer().params().encoding());
+	odocstringstream ods;
+	InsetText::plaintext(ods, rp);
+	tip += ods.str();
+	// shorten it if necessary
+	if (tip.size() > 200)
+		tip = tip.substr(0, 200) + "...";
+	return tip;
+}
+
+
 void InsetIndex::write(ostream & os) const
 {
-	os << to_utf8(name()) << "\n";
+	os << to_utf8(name());
+	params_.write(os);
 	InsetCollapsable::write(os);
+}
+
+
+void InsetIndex::read(Lexer & lex)
+{
+	params_.read(lex);
+	InsetCollapsable::read(lex);
 }
 
 
@@ -176,6 +274,41 @@ void InsetIndex::addToToc(DocIterator const & cpit)
 }
 
 
+void InsetIndex::validate(LaTeXFeatures & features) const
+{
+	if (buffer().masterBuffer()->params().use_indices
+	    && !params_.index.empty()
+	    && params_.index != "idx")
+		features.require("splitidx");
+}
+
+
+docstring InsetIndex::contextMenu(BufferView const &, int, int) const
+{
+	return from_ascii("context-index");
+}
+
+
+void InsetIndexParams::write(ostream & os) const
+{
+	os << ' ';
+	if (!index.empty())
+		os << to_utf8(index);
+	else
+		os << "idx";
+	os << '\n';
+}
+
+
+void InsetIndexParams::read(Lexer & lex)
+{
+	if (lex.eatLine())
+		index = lex.getDocString();
+	else
+		index = from_ascii("idx");
+}
+
+
 /////////////////////////////////////////////////////////////////////
 //
 // InsetPrintIndex
@@ -183,34 +316,85 @@ void InsetIndex::addToToc(DocIterator const & cpit)
 ///////////////////////////////////////////////////////////////////////
 
 InsetPrintIndex::InsetPrintIndex(InsetCommandParams const & p)
-	: InsetCommand(p, string())
+	: InsetCommand(p, "index_print")
 {}
 
 
 ParamInfo const & InsetPrintIndex::findInfo(string const & /* cmdName */)
 {
 	static ParamInfo param_info_;
-	if (param_info_.empty())
+	if (param_info_.empty()) {
+		param_info_.add("type", ParamInfo::LATEX_OPTIONAL);
 		param_info_.add("name", ParamInfo::LATEX_REQUIRED);
+	}
 	return param_info_;
 }
 
 
 docstring InsetPrintIndex::screenLabel() const
 {
-	return _("Index");
+	if ((!buffer().masterBuffer()->params().use_indices
+	     && getParam("type") == from_ascii("idx"))
+	    || getParam("type").empty())
+		return _("Index");
+	Buffer const & realbuffer = *buffer().masterBuffer();
+	IndicesList const & indiceslist = realbuffer.params().indiceslist();
+	Index const * index = indiceslist.findShortcut(getParam("type"));
+	if (!index)
+		return _("Unknown index type!");
+	docstring res = index->index();
+	if (!buffer().masterBuffer()->params().use_indices)
+		res += " (" + _("non-active") + ")";
+	return res;
+}
+
+
+bool InsetPrintIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
+	FuncStatus & status) const
+{
+	switch (cmd.action) {
+
+	case LFUN_INSET_MODIFY: {
+		InsetCommandParams p(INDEX_PRINT_CODE);
+		InsetCommand::string2params("index_print", to_utf8(cmd.argument()), p);
+		Buffer const & realbuffer = *buffer().masterBuffer();
+		IndicesList const & indiceslist = realbuffer.params().indiceslist();
+		Index const * index = indiceslist.findShortcut(p["type"]);
+		status.setEnabled(index != 0);
+		status.setOnOff(p["type"] == getParam("type"));
+		return true;
+	} 
+
+	default:
+		return InsetCommand::getStatus(cur, cmd, status);
+	}
+}
+
+
+int InsetPrintIndex::latex(odocstream & os, OutputParams const &) const
+{
+	if (!buffer().masterBuffer()->params().use_indices) {
+		if (getParam("type") == from_ascii("idx"))
+			os << "\\printindex{}";
+		return 0;
+	}
+	os << getCommand();
+	return 0;
 }
 
 
 void InsetPrintIndex::validate(LaTeXFeatures & features) const
 {
 	features.require("makeidx");
+	if (buffer().masterBuffer()->params().use_indices)
+		features.require("splitidx");
 }
 
 
-InsetCode InsetPrintIndex::lyxCode() const
+docstring InsetPrintIndex::contextMenu(BufferView const &, int, int) const
 {
-	return INDEX_PRINT_CODE;
+	return buffer().masterBuffer()->params().use_indices ?
+		from_ascii("context-indexprint") : docstring();
 }
 
 } // namespace lyx

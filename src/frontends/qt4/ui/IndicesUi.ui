@@ -1,0 +1,142 @@
+<ui version="4.0" >
+ <class>IndicesUi</class>
+ <widget class="QWidget" name="IndicesUi" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>401</width>
+    <height>340</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string/>
+  </property>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>9</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item row="2" column="0" colspan="2" >
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="newIndexLA" >
+       <property name="text" >
+        <string>&amp;New:</string>
+       </property>
+       <property name="buddy" >
+        <cstring>newIndexLE</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="newIndexLE" >
+       <property name="toolTip" >
+        <string>Enter the name of the desired index (e.g. "Index of Names") and hit "Add"</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="addIndexPB" >
+       <property name="toolTip" >
+        <string>Add a new branch to the list</string>
+       </property>
+       <property name="text" >
+        <string>&amp;Add</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="4" column="1" >
+    <widget class="QPushButton" name="removePB" >
+     <property name="toolTip" >
+      <string>Remove the selected index</string>
+     </property>
+     <property name="text" >
+      <string>&amp;Remove</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="1" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>121</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="3" column="0" >
+    <widget class="QLabel" name="availableLA" >
+     <property name="text" >
+      <string>A&amp;vailable Indices:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>indicesTW</cstring>
+     </property>
+    </widget>
+   </item>
+   <item rowspan="4" row="4" column="0" >
+    <widget class="QTreeWidget" name="indicesTW" />
+   </item>
+   <item row="0" column="0" >
+    <widget class="QCheckBox" name="multipleIndicesCB" >
+     <property name="toolTip" >
+      <string>Check if you need multiple indices (e.g., an Index of Names)</string>
+     </property>
+     <property name="text" >
+      <string>&amp;Use multiple indices</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="2" >
+    <widget class="Line" name="line" >
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1" >
+    <widget class="QPushButton" name="colorPB" >
+     <property name="toolTip" >
+      <string>Define or change button color</string>
+     </property>
+     <property name="text" >
+      <string>Alter Co&amp;lor...</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1" >
+    <widget class="QPushButton" name="renamePB" >
+     <property name="toolTip" >
+      <string>Rename the selected index</string>
+     </property>
+     <property name="text" >
+      <string>R&amp;ename...</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <includes>
+  <include location="local" >qt_i18n.h</include>
+ </includes>
+ <resources/>
+ <connections/>
+</ui>

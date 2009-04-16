@@ -149,6 +149,7 @@ public:
 		RC_SORT_LAYOUTS,
 		RC_SPELL_COMMAND,
 		RC_SPELLCHECK_CONTINUOUSLY,
+		RC_SPLITINDEX_COMMAND,
 		RC_TEMPDIRPATH,
 		RC_TEMPLATEPATH,
 		RC_TEX_ALLOWS_SPACES,
@@ -252,6 +253,8 @@ public:
 	std::string index_command;
 	/// command to run japanese index program incl. options
 	std::string jindex_command;
+	/// command to generate multiple indices
+	std::string splitindex_command;
 	/// command to run makeindex incl. options for nomencl
 	std::string nomencl_command;
 	///

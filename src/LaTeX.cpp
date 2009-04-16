@@ -416,9 +416,11 @@ bool LaTeX::runMakeIndex(string const & f, OutputParams const & runparams,
 		"idx file has been made, running makeindex on file " << f);
 	string tmp = runparams.use_japanese ?
 		lyxrc.jindex_command : lyxrc.index_command;
-	tmp += ' ';
 
 	tmp = subst(tmp, "$$lang", runparams.document_language);
+	if (runparams.use_indices)
+		tmp = lyxrc.splitindex_command + " -m " + quoteName(tmp);
+	tmp += ' ';
 	tmp += quoteName(f);
 	tmp += params;
 	Systemcall one;

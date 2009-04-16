@@ -515,7 +515,9 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_INDEX_INSERT
  * \li Action: Inserts Index entry.
  * \li Notion: It automatically takes the word on the cursor position.
- * \li Syntax: index-insert
+ * \li Syntax: index-insert [<TYPE:Name>]
+ * \li Params: <TYPE:Name>: name of the index, if multiple indices are defined.
+               with an empty argument, the default index is selected.
  * \li Origin: leeming, 3 Aug 2000
  * \endvar
  */
@@ -523,7 +525,9 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_INDEX_PRINT
  * \li Action: Inserts list of Index entries on a new page.
- * \li Syntax: index-print
+ * \li Syntax: index-print [<TYPE:Name>]
+ * \li Params: <TYPE:Name>: name of the index, if multiple indices are defined.
+               with an empty argument, the default index is selected.
  * \li Origin: Lgb, 27 Feb 1997
  * \endvar
  */

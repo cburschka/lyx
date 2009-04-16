@@ -48,6 +48,7 @@ class TextClass;
 namespace frontend {
 
 class GuiBranches;
+class GuiIndices;
 class ModuleSelectionManager;
 class PreambleModule;
 
@@ -119,9 +120,10 @@ private:
 	UiWidget<Ui::PDFSupportUi> *pdfSupportModule;
 	UiWidget<Ui::ModulesUi> *modulesModule;
 	UiWidget<Ui::OutputUi> *outputModule;
-	PreambleModule *preambleModule;
+	PreambleModule * preambleModule;
 	
-	GuiBranches *branchesModule;
+	GuiBranches * branchesModule;
+	GuiIndices * indicesModule;
 
 	BulletsModule * bulletsModule;
 	FloatPlacement * floatModule;

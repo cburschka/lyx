@@ -36,6 +36,7 @@ class BranchList;
 class Bullet;
 class DocumentClass;
 class Encoding;
+class IndicesList;
 class Language;
 class LatexFeatures;
 class LayoutFile;
@@ -215,6 +216,9 @@ public:
 	/// BranchList:
 	BranchList & branchlist();
 	BranchList const & branchlist() const;
+	/// IndicesList:
+	IndicesList & indiceslist();
+	IndicesList const & indiceslist() const;
 	/**
 	 * The input encoding for LaTeX. This can be one of
 	 * - \c auto: find out the input encoding from the used languages
@@ -278,8 +282,10 @@ public:
 	Package use_amsmath;
 	/// Whether and how to load esint
 	Package use_esint;
-	///
+	/// Split bibliography?
 	bool use_bibtopic;
+	/// Split the index?
+	bool use_indices;
 	/// revision tracking for this buffer ?
 	bool trackChanges;
 	/** This param decides whether change tracking marks should be used

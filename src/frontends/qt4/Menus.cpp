@@ -36,6 +36,7 @@
 #include "Format.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
+#include "IndicesList.h"
 #include "KeyMap.h"
 #include "Lexer.h"
 #include "LyXAction.h"
@@ -148,6 +149,14 @@ public:
 		Toolbars,
 		/** Available branches in document */
 		Branches,
+		/** Available indices in document */
+		Indices,
+		/** Context menu for indices in document */
+		IndicesContext,
+		/** Available index lists in document */
+		IndicesLists,
+		/** Context menu for available indices lists in document */
+		IndicesListsContext,
 		/** Available citation styles for a given citation */
 		CiteStyles,
 		/** Available graphics groups */
@@ -304,6 +313,8 @@ public:
 	void expandPasteRecent(Buffer const * buf);
 	void expandToolbars();
 	void expandBranches(Buffer const * buf);
+	void expandIndices(Buffer const * buf, bool listof = false);
+	void expandIndicesContext(Buffer const * buf, bool listof = false);
 	void expandCiteStyles(BufferView const *);
 	void expandGraphicsGroups(BufferView const *);
 	///
@@ -395,6 +406,10 @@ void MenuDefinition::read(Lexer & lex)
 		md_endmenu,
 		md_exportformats,
 		md_importformats,
+		md_indices,
+		md_indicescontext,
+		md_indiceslists,
+		md_indiceslistscontext,
 		md_lastfiles,
 		md_optitem,
 		md_optsubmenu,
@@ -424,6 +439,10 @@ void MenuDefinition::read(Lexer & lex)
 		{ "floatlistinsert", md_floatlistinsert },
 		{ "graphicsgroups", md_graphicsgroups },
 		{ "importformats", md_importformats },
+		{ "indices", md_indices },
+		{ "indicescontext", md_indicescontext },
+		{ "indiceslists", md_indiceslists },
+		{ "indiceslistscontext", md_indiceslistscontext },
 		{ "item", md_item },
 		{ "lastfiles", md_lastfiles },
 		{ "optitem", md_optitem },
@@ -536,6 +555,22 @@ void MenuDefinition::read(Lexer & lex)
 
 		case md_graphicsgroups:
 			add(MenuItem(MenuItem::GraphicsGroups));
+			break;
+
+		case md_indices:
+			add(MenuItem(MenuItem::Indices));
+			break;
+
+		case md_indicescontext:
+			add(MenuItem(MenuItem::IndicesContext));
+			break;
+
+		case md_indiceslists:
+			add(MenuItem(MenuItem::IndicesLists));
+			break;
+
+		case md_indiceslistscontext:
+			add(MenuItem(MenuItem::IndicesListsContext));
 			break;
 
 		case md_optsubmenu:
@@ -1099,6 +1134,78 @@ void MenuDefinition::expandBranches(Buffer const * buf)
 }
 
 
+void MenuDefinition::expandIndices(Buffer const * buf, bool listof)
+{
+	if (!buf)
+		return;
+
+	BufferParams const & params = buf->masterBuffer()->params();
+	if (!params.use_indices) {
+		if (listof)
+			addWithStatusCheck(MenuItem(MenuItem::Command,
+					   qt_("Index List|I"),
+					   FuncRequest(LFUN_INDEX_PRINT,
+						  from_ascii("idx"))));
+		else
+			addWithStatusCheck(MenuItem(MenuItem::Command,
+					   qt_("Index Entry|d"),
+					   FuncRequest(LFUN_INDEX_INSERT,
+						  from_ascii("idx"))));
+		return;
+	}
+
+	if (params.indiceslist().empty())
+		return;
+
+	IndicesList::const_iterator cit = params.indiceslist().begin();
+	IndicesList::const_iterator end = params.indiceslist().end();
+
+	for (int ii = 1; cit != end; ++cit, ++ii) {
+		if (listof)
+			addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(cit->index()),
+					   FuncRequest(LFUN_INDEX_PRINT,
+						  cit->shortcut())));
+		else {
+			docstring label = _("Index Entry");
+			label += " (" + cit->index() + ")";
+			addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(label),
+					   FuncRequest(LFUN_INDEX_INSERT,
+						  cit->shortcut())));
+		}
+	}
+}
+
+
+void MenuDefinition::expandIndicesContext(Buffer const * buf, bool listof)
+{
+	if (!buf)
+		return;
+
+	BufferParams const & params = buf->masterBuffer()->params();
+	if (!params.use_indices || params.indiceslist().empty())
+		return;
+
+	IndicesList::const_iterator cit = params.indiceslist().begin();
+	IndicesList::const_iterator end = params.indiceslist().end();
+
+	for (int ii = 1; cit != end; ++cit, ++ii) {
+		if (listof) {
+			InsetCommandParams p(INDEX_PRINT_CODE);
+			p["type"] = cit->shortcut();
+			string const data = InsetCommand::params2string("index_print", p);
+			addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(cit->index()),
+					   FuncRequest(LFUN_NEXT_INSET_MODIFY, data)));
+		} else {
+			docstring label = _("Index Entry");
+			label += " (" + cit->index() + ")";
+			addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(label),
+					   FuncRequest(LFUN_NEXT_INSET_MODIFY,
+						  from_ascii("changetype ") + cit->shortcut())));
+		}
+	}
+}
+
+
 void MenuDefinition::expandCiteStyles(BufferView const * bv)
 {
 	if (!bv)
@@ -1251,7 +1358,7 @@ struct Menus::Impl {
 	/// Expands some special entries of the menu
 	/** The entries with the following kind are expanded to a
 	    sequence of Command MenuItems: Lastfiles, Documents,
-	    ViewFormats, ExportFormats, UpdateFormats, Branches
+	    ViewFormats, ExportFormats, UpdateFormats, Branches, Indices
 	*/
 	void expand(MenuDefinition const & frommenu, MenuDefinition & tomenu,
 		BufferView const *) const;
@@ -1424,6 +1531,22 @@ void Menus::Impl::expand(MenuDefinition const & frommenu,
 
 		case MenuItem::Branches:
 			tomenu.expandBranches(buf);
+			break;
+
+		case MenuItem::Indices:
+			tomenu.expandIndices(buf);
+			break;
+
+		case MenuItem::IndicesContext:
+			tomenu.expandIndicesContext(buf);
+			break;
+
+		case MenuItem::IndicesLists:
+			tomenu.expandIndices(buf, true);
+			break;
+
+		case MenuItem::IndicesListsContext:
+			tomenu.expandIndicesContext(buf, true);
 			break;
 
 		case MenuItem::CiteStyles:

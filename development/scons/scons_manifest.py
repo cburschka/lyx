@@ -72,6 +72,7 @@ src_header_files = Split('''
     FuncRequest.h
     FuncStatus.h
     Graph.h
+    IndicesList.h
     InsetIterator.h
     InsetList.h
     Intl.h
@@ -172,6 +173,7 @@ src_pre_files = Split('''
     FuncRequest.cpp
     FuncStatus.cpp
     Graph.cpp
+    IndicesList.cpp
     InsetIterator.cpp
     InsetList.cpp
     Intl.cpp
@@ -725,6 +727,7 @@ src_frontends_qt4_header_files = Split('''
     GuiIdListModel.h
     GuiImage.h
     GuiInclude.h
+    GuiIndices.h
     GuiInfo.h
     GuiKeySymbol.h
     GuiLabel.h
@@ -817,6 +820,7 @@ src_frontends_qt4_files = Split('''
     GuiIdListModel.cpp 
     GuiImage.cpp
     GuiInclude.cpp
+    GuiIndices.cpp
     GuiInfo.cpp
     GuiKeySymbol.cpp
     GuiLabel.cpp
@@ -900,6 +904,7 @@ src_frontends_qt4_ui_files = Split('''
     HSpaceUi.ui
     HyperlinkUi.ui
     IncludeUi.ui
+    IndicesUi.ui
     InfoUi.ui
     LabelUi.ui
     LaTeXUi.ui

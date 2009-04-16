@@ -599,6 +599,8 @@ def checkOtherEntries():
         rc_entry = [ r'\index_command "%%"' ])
     checkProg('an index processor appropriate to Japanese', ['mendex -c -q', 'makeindex -c -q'],
         rc_entry = [ r'\jindex_command "%%"' ])
+    checkProg('the splitindex processor', ['splitindex.pl', 'java splitindex', 'splitindex'],
+        rc_entry = [ r'\splitindex_command "%%"' ])
     checkProg('a nomenclature processor', ['makeindex'],
         rc_entry = [ r'\nomencl_command "makeindex -s nomencl.ist"' ])
     ## FIXME: OCTAVE is not used anywhere

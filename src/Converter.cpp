@@ -325,6 +325,8 @@ bool Converters::convert(Buffer const * buffer,
 	// used anyway.
 	OutputParams runparams(buffer ? &buffer->params().encoding() : 0);
 	runparams.flavor = getFlavor(edgepath);
+	
+	runparams.use_indices = buffer->params().use_indices;
 
 	if (buffer)
 		runparams.use_japanese = buffer->bufferFormat() == "platex";

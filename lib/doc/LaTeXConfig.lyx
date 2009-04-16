@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 347
+\lyxformat 352
 \begin_document
 \begin_header
 \textclass article
@@ -10,12 +10,14 @@
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_xetex false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
 
 \graphics default
+\default_output_format default
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -25,7 +27,9 @@
 \use_esint 0
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\backgroundcolor #ffffff
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -4581,6 +4585,39 @@ Notes: The package
 slashed
 \family default
  is needed by LyX to correctly typeset unicode symbols with slashes in math.
+\end_layout
+
+\begin_layout Subsection
+splitidx
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "splitidx"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/splitindex/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+splitidx
+\family default
+ is needed by LyX to generate multiple and subdivided indices.
+ Note that you also need to install one of the included 
+\family sans
+splitindex
+\family default
+ converter programs.
 \end_layout
 
 \begin_layout Subsection

@@ -111,6 +111,10 @@ public:
 	*/
 	bool use_babel;
 
+	/** Are we generating multiple indices?
+	*/
+	bool use_indices;
+
 	/** Are we using japanese (pLaTeX)?
 	*/
 	bool use_japanese;

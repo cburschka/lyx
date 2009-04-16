@@ -32,6 +32,7 @@
 #include "Format.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
+#include "IndicesList.h"
 #include "InsetIterator.h"
 #include "InsetList.h"
 #include "Language.h"
@@ -124,7 +125,7 @@ namespace {
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-int const LYX_FORMAT = 351;  // uwestoehr: support for page background color
+int const LYX_FORMAT = 352;  // jspitzm: splitindex support
 
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;
@@ -523,6 +524,7 @@ int Buffer::readHeader(Lexer & lex)
 	params().clearLayoutModules();
 	params().clearRemovedModules();
 	params().pdfoptions().clear();
+	params().indiceslist().clear();
 
 	for (int i = 0; i < 4; ++i) {
 		params().user_defined_bullet(i) = ITEMIZE_DEFAULTS[i];

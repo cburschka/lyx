@@ -469,4 +469,25 @@ Menuset
 		Item "Settings...|S" "inset-settings"
 	End
 
+#
+# Index context menu
+#
+
+	Menu "context-index"
+		IndicesContext
+		Separator
+		OptItem "Open Inset|O" "inset-toggle open"
+		OptItem "Close Inset|C" "inset-toggle close"
+		Separator
+		Item "Dissolve Inset|D" "inset-dissolve"
+	End
+
+#
+# Index Lists context menu
+#
+
+	Menu "context-indexprint"
+		IndicesListsContext
+	End
+
 End

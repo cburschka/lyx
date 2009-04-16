@@ -25,6 +25,7 @@
 #include "Color.h"
 #include "ColorSet.h"
 #include "Encoding.h"
+#include "IndicesList.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "ModuleList.h"
@@ -283,6 +284,7 @@ public:
 	BranchList branchlist;
 	Bullet temp_bullets[4];
 	Bullet user_defined_bullets[4];
+	IndicesList indiceslist;
 	Spacing spacing;
 	/** This is the amount of space used for paragraph_separation "skip",
 	 * and for detached paragraphs in "indented" documents.
@@ -334,6 +336,7 @@ BufferParams::BufferParams()
 	use_esint = package_auto;
 	cite_engine_ = ENGINE_BASIC;
 	use_bibtopic = false;
+	use_indices = false;
 	trackChanges = false;
 	outputChanges = false;
 	use_default_options = true;
@@ -363,6 +366,8 @@ BufferParams::BufferParams()
 		user_defined_bullet(iter) = ITEMIZE_DEFAULTS[iter];
 		temp_bullet(iter) = ITEMIZE_DEFAULTS[iter];
 	}
+	// default index
+	indiceslist().addDefault(B_("Index"));
 }
 
 
@@ -394,6 +399,18 @@ BranchList & BufferParams::branchlist()
 BranchList const & BufferParams::branchlist() const
 {
 	return pimpl_->branchlist;
+}
+
+
+IndicesList & BufferParams::indiceslist()
+{
+	return pimpl_->indiceslist;
+}
+
+
+IndicesList const & BufferParams::indiceslist() const
+{
+	return pimpl_->indiceslist;
 }
 
 
@@ -572,6 +589,8 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		cite_engine_ = citeenginetranslator().find(engine);
 	} else if (token == "\\use_bibtopic") {
 		lex >> use_bibtopic;
+	} else if (token == "\\use_indices") {
+		lex >> use_indices;
 	} else if (token == "\\tracking_changes") {
 		lex >> trackChanges;
 	} else if (token == "\\output_changes") {
@@ -602,6 +621,34 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 					color = lcolor.getX11Name(Color_background);
 				// FIXME UNICODE
 				lcolor.setColor(to_utf8(branch), color);
+			}
+		}
+	} else if (token == "\\index") {
+		lex.eatLine();
+		docstring index = lex.getDocString();
+		indiceslist().add(index);
+		while (true) {
+			lex.next();
+			string const tok = lex.getString();
+			if (tok == "\\end_index")
+				break;
+			Index * index_ptr = indiceslist().find(index);
+			if (tok == "\\shortcut") {
+				lex.next();
+				if (index_ptr)
+					index_ptr->setShortcut(lex.getDocString());
+			}
+			// not yet operational
+			if (tok == "\\color") {
+				lex.eatLine();
+				string color = lex.getString();
+				if (index_ptr)
+					index_ptr->setColor(color);
+				// Update also the Color table:
+				if (color == "none")
+					color = lcolor.getX11Name(Color_background);
+				// FIXME UNICODE
+				lcolor.setColor(to_utf8(index), color);
 			}
 		}
 	} else if (token == "\\author") {
@@ -781,6 +828,7 @@ void BufferParams::writeFile(ostream & os) const
 	   << "\n\\use_esint " << use_esint
 	   << "\n\\cite_engine " << citeenginetranslator().find(cite_engine_)
 	   << "\n\\use_bibtopic " << convert<string>(use_bibtopic)
+	   << "\n\\use_indices " << convert<string>(use_indices)
 	   << "\n\\paperorientation " << string_orientation[orientation]
 	   << "\n\\backgroundcolor " << lyx::X11hexname(backgroundcolor)
 	   << '\n';
@@ -792,6 +840,16 @@ void BufferParams::writeFile(ostream & os) const
 		   << "\n\\selected " << it->isSelected()
 		   << "\n\\color " << lyx::X11hexname(it->color())
 		   << "\n\\end_branch"
+		   << "\n";
+	}
+
+	IndicesList::const_iterator iit = indiceslist().begin();
+	IndicesList::const_iterator iend = indiceslist().end();
+	for (; iit != iend; ++iit) {
+		os << "\\index " << to_utf8(iit->index())
+		   << "\n\\shortcut " << to_utf8(iit->shortcut())
+		   << "\n\\color " << lyx::X11hexname(iit->color())
+		   << "\n\\end_index"
 		   << "\n";
 	}
 
@@ -1344,6 +1402,19 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 
 	// The optional packages;
 	lyxpreamble += from_ascii(features.getPackages());
+
+	// Additional Indices
+	if (features.isRequired("splitidx")) {
+		IndicesList::const_iterator iit = indiceslist().begin();
+		IndicesList::const_iterator iend = indiceslist().end();
+		for (; iit != iend; ++iit) {
+			lyxpreamble += "\\newindex[";
+			lyxpreamble += iit->index();
+			lyxpreamble += "]{";
+			lyxpreamble += iit->shortcut();
+			lyxpreamble += "}\n";
+		}
+	}
 
 	// Line spacing
 	lyxpreamble += from_utf8(spacing().writePreamble(tclass.provides("SetSpace")));
