@@ -39,6 +39,8 @@ What's new
 
 - Updated English, French, German, and Spanish Introduction manual.
 
+- Updated English, French, German, and Spanish Math manual.
+
 - Updated Spanish Shortcuts list.
 
 
@@ -63,13 +65,16 @@ What's new
 
 * USER INTERFACE
 
+- Add jump-back navigation button to the standard toolbar (bug 898).
+
+- Support for continued fractions (LaTeX-command \cfrac) in math/formulas
+  (bug 2473).
+
 - Store the command buffer history in the session file and show it in 
   a pop-up list in the command buffer.
 
 - Added locking capabilities for SVN version control support.
-  Read Extended manual for details.
-
-- Add Jump-back navigation button to the standard toolbar (bug 898).
+  (Read Extended manual for details).
 
 - Add Open/Close items to context menu of collapsable insets.
 
@@ -87,7 +92,8 @@ What's new
   (next to ctrl+mousewheel), such that it is possible to assign keyboard
   shortcuts to them (bug 3038).
 
-- Reintroduce crossreferencing between independent files in Reference dialog.
+- Reintroduce cross-referencing between independent files in the Reference
+  dialog.
 
 - Add visual and tooltip indication of activation status for branches.
 
