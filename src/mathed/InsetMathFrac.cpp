@@ -385,14 +385,15 @@ void InsetMathFrac::octave(OctaveStream & os) const
 void InsetMathFrac::mathmlize(MathStream & os) const
 {
 	switch (kind_) {
-	case FRAC:
-		os << MTag("mfrac") << cell(0) << cell(1) << ETag("mfrac");
-		break;
 	case DFRAC:
 		os << MTag("mdfrac") << cell(0) << cell(1) << ETag("mdfrac");
 		break;
 	case TFRAC:
 		os << MTag("mtfrac") << cell(0) << cell(1) << ETag("mtfrac");
+		break;
+	case FRAC:
+	default:
+		os << MTag("mfrac") << cell(0) << cell(1) << ETag("mfrac");
 		break;
 	}
 }
@@ -544,11 +545,12 @@ void InsetMathBinom::mathmlize(MathStream & os) const
 	case BINOM:
 		os << MTag("mbinom") << cell(0) << cell(1) << ETag("mbinom");
 		break;
-	case DBINOM:
-		os << MTag("mdbinom") << cell(0) << cell(1) << ETag("mdbinom");
-		break;
 	case TBINOM:
 		os << MTag("mtbinom") << cell(0) << cell(1) << ETag("mtbinom");
+		break;
+	case DBINOM:
+	default:
+		os << MTag("mdbinom") << cell(0) << cell(1) << ETag("mdbinom");
 		break;
 	}
 }
