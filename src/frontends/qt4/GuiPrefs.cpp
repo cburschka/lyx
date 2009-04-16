@@ -601,7 +601,7 @@ void PrefLatex::apply(LyXRC & rc) const
 	rc.bibtex_command = fromqstr(latexBibtexED->text());
 	rc.jbibtex_command = fromqstr(latexJBibtexED->text());
 	rc.index_command = fromqstr(latexIndexED->text());
-	rc.index_command = fromqstr(latexJIndexED->text());
+	rc.jindex_command = fromqstr(latexJIndexED->text());
 	rc.nomencl_command = fromqstr(latexNomenclED->text());
 	rc.auto_reset_options = latexAutoresetCB->isChecked();
 	rc.view_dvi_paper_option = fromqstr(latexDviPaperED->text());
@@ -716,16 +716,16 @@ void PrefScreenFonts::apply(LyXRC & rc) const
 
 	rc.zoom = screenZoomSB->value();
 	rc.dpi = screenDpiSB->value();
-	rc.font_sizes[FONT_SIZE_TINY] = fromqstr(screenTinyED->text());
-	rc.font_sizes[FONT_SIZE_SCRIPT] = fromqstr(screenSmallestED->text());
-	rc.font_sizes[FONT_SIZE_FOOTNOTE] = fromqstr(screenSmallerED->text());
-	rc.font_sizes[FONT_SIZE_SMALL] = fromqstr(screenSmallED->text());
-	rc.font_sizes[FONT_SIZE_NORMAL] = fromqstr(screenNormalED->text());
-	rc.font_sizes[FONT_SIZE_LARGE] = fromqstr(screenLargeED->text());
-	rc.font_sizes[FONT_SIZE_LARGER] = fromqstr(screenLargerED->text());
-	rc.font_sizes[FONT_SIZE_LARGEST] = fromqstr(screenLargestED->text());
-	rc.font_sizes[FONT_SIZE_HUGE] = fromqstr(screenHugeED->text());
-	rc.font_sizes[FONT_SIZE_HUGER] = fromqstr(screenHugerED->text());
+	rc.font_sizes[FONT_SIZE_TINY] = widgetToDoubleStr(screenTinyED);
+	rc.font_sizes[FONT_SIZE_SCRIPT] = widgetToDoubleStr(screenSmallestED);
+	rc.font_sizes[FONT_SIZE_FOOTNOTE] = widgetToDoubleStr(screenSmallerED);
+	rc.font_sizes[FONT_SIZE_SMALL] = widgetToDoubleStr(screenSmallED);
+	rc.font_sizes[FONT_SIZE_NORMAL] = widgetToDoubleStr(screenNormalED);
+	rc.font_sizes[FONT_SIZE_LARGE] = widgetToDoubleStr(screenLargeED);
+	rc.font_sizes[FONT_SIZE_LARGER] = widgetToDoubleStr(screenLargerED);
+	rc.font_sizes[FONT_SIZE_LARGEST] = widgetToDoubleStr(screenLargestED);
+	rc.font_sizes[FONT_SIZE_HUGE] = widgetToDoubleStr(screenHugeED);
+	rc.font_sizes[FONT_SIZE_HUGER] = widgetToDoubleStr(screenHugerED);
 	rc.use_pixmap_cache = pixmapCacheCB->isChecked();
 
 	if (rc.font_sizes != oldrc.font_sizes
@@ -758,16 +758,16 @@ void PrefScreenFonts::update(LyXRC const & rc)
 
 	screenZoomSB->setValue(rc.zoom);
 	screenDpiSB->setValue(rc.dpi);
-	screenTinyED->setText(toqstr(rc.font_sizes[FONT_SIZE_TINY]));
-	screenSmallestED->setText(toqstr(rc.font_sizes[FONT_SIZE_SCRIPT]));
-	screenSmallerED->setText(toqstr(rc.font_sizes[FONT_SIZE_FOOTNOTE]));
-	screenSmallED->setText(toqstr(rc.font_sizes[FONT_SIZE_SMALL]));
-	screenNormalED->setText(toqstr(rc.font_sizes[FONT_SIZE_NORMAL]));
-	screenLargeED->setText(toqstr(rc.font_sizes[FONT_SIZE_LARGE]));
-	screenLargerED->setText(toqstr(rc.font_sizes[FONT_SIZE_LARGER]));
-	screenLargestED->setText(toqstr(rc.font_sizes[FONT_SIZE_LARGEST]));
-	screenHugeED->setText(toqstr(rc.font_sizes[FONT_SIZE_HUGE]));
-	screenHugerED->setText(toqstr(rc.font_sizes[FONT_SIZE_HUGER]));
+	doubleToWidget(screenTinyED, rc.font_sizes[FONT_SIZE_TINY]);
+	doubleToWidget(screenSmallestED, rc.font_sizes[FONT_SIZE_SCRIPT]);
+	doubleToWidget(screenSmallerED, rc.font_sizes[FONT_SIZE_FOOTNOTE]);
+	doubleToWidget(screenSmallED, rc.font_sizes[FONT_SIZE_SMALL]);
+	doubleToWidget(screenNormalED, rc.font_sizes[FONT_SIZE_NORMAL]);
+	doubleToWidget(screenLargeED, rc.font_sizes[FONT_SIZE_LARGE]);
+	doubleToWidget(screenLargerED, rc.font_sizes[FONT_SIZE_LARGER]);
+	doubleToWidget(screenLargestED, rc.font_sizes[FONT_SIZE_LARGEST]);
+	doubleToWidget(screenHugeED, rc.font_sizes[FONT_SIZE_HUGE]);
+	doubleToWidget(screenHugerED, rc.font_sizes[FONT_SIZE_HUGER]);
 
 	pixmapCacheCB->setChecked(rc.use_pixmap_cache);
 #if defined(Q_WS_X11)
@@ -1200,7 +1200,7 @@ PrefConverters::PrefConverters(GuiPreferences * form)
 void PrefConverters::apply(LyXRC & rc) const
 {
 	rc.use_converter_cache = cacheCB->isChecked();
-	rc.converter_cache_maxage = int(maxAgeLE->text().toDouble() * 86400.0);
+	rc.converter_cache_maxage = int(widgetToDouble(maxAgeLE) * 86400.0);
 }
 
 
@@ -1208,8 +1208,7 @@ void PrefConverters::update(LyXRC const & rc)
 {
 	cacheCB->setChecked(rc.use_converter_cache);
 	QString max_age;
-	max_age.setNum(double(rc.converter_cache_maxage) / 86400.0, 'g', 6);
-	maxAgeLE->setText(max_age);
+	doubleToWidget(maxAgeLE, (double(rc.converter_cache_maxage) / 86400.0), 'g', 6);
 	updateGui();
 }
 
