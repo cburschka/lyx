@@ -6,6 +6,7 @@
  *
  * \author Alejandro Aguilar Sierra
  * \author André Pönitz
+ * \author Uwe Stöhr
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -39,6 +40,9 @@ public:
 	///
 	enum Kind {
 		FRAC,
+		CFRAC,
+		CFRACLEFT,
+		CFRACRIGHT,
 		OVER,
 		ATOP,
 		NICEFRAC,
@@ -154,6 +158,8 @@ public:
 	{ drawMarkers2(pi, x, y); }
 	///
 	bool extraBraces() const;
+	///
+	void mathmlize(MathStream &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 private:

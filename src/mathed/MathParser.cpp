@@ -1304,6 +1304,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
 			}
 		}
+
 		else if (t.cs() == "unitfrac") {
 			// Here allowed formats are \unitfrac[val]{num}{denom}
 			MathData ar;
@@ -1314,6 +1315,24 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			} else {
 				cell->push_back(MathAtom(new InsetMathFrac(InsetMathFrac::UNITFRAC)));
 			}
+			parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
+			parse(cell->back().nucleus()->cell(1), FLAG_ITEM, mode);
+		}
+
+		else if (t.cs() == "cfrac") {
+			// allowed formats are \cfrac[pos]{num}{denom}
+			docstring const arg = getArg('[', ']');
+			//lyxerr << "got so far: '" << arg << "'" << endl;				
+				if (arg == "l")
+					cell->push_back(MathAtom(new InsetMathFrac(InsetMathFrac::CFRACLEFT)));
+				else if (arg == "r")
+					cell->push_back(MathAtom(new InsetMathFrac(InsetMathFrac::CFRACRIGHT)));
+				else if (arg.empty() || arg == "c")
+					cell->push_back(MathAtom(new InsetMathFrac(InsetMathFrac::CFRAC)));
+				else {
+					error("found invalid optional argument");
+					break;
+				}
 			parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
 			parse(cell->back().nucleus()->cell(1), FLAG_ITEM, mode);
 		}

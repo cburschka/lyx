@@ -5,6 +5,7 @@
  *
  * \author Alejandro Aguilar Sierra
  * \author André Pönitz
+ * \author Uwe Stöhr
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -146,12 +147,13 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 			dim.des = max(dim2.des, dim1.height() - 5);
 		}
 	} else {
+		// general cell metrics used for \frac
 		FracChanger dummy(mi.base);
 		cell(0).metrics(mi, dim0);
 		cell(1).metrics(mi, dim1);
 		if (nargs() == 3)
 			cell(2).metrics(mi, dim2);
-
+		// metrics for special fraction types
 		if (kind_ == NICEFRAC) {
 			dim.wid = dim0.width() + dim1.wid + 5;
 			dim.asc = dim0.height() + 5;
@@ -162,7 +164,14 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 			dim.asc = dim0.height() + 5;
 			dim.des = dim1.height() - 5;
 		} else {
-			dim.wid = max(dim0.width(), dim1.wid) + 2;
+			if (kind_ == CFRAC || kind_ == CFRACLEFT
+			|| kind_ == CFRACRIGHT) {
+				// \cfrac is always in display size
+				StyleChanger dummy2(mi.base, LM_ST_DISPLAY);
+				cell(0).metrics(mi, dim0);
+				cell(1).metrics(mi, dim1);
+			}
+			dim.wid = max(dim0.wid, dim1.wid) + 2;
 			dim.asc = dim0.height() + 2 + 5;
 			dim.des = dim1.height() + 2 - 5;
 		}
@@ -207,16 +216,22 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 					y + dim1.asc / 2);
 		} else if (kind_ == UNITFRAC) {
 			ShapeChanger dummy2(pi.base.font, UP_SHAPE);
-			cell(0).draw(pi, x + 2,
-					y - dim0.des - 5);
-			cell(1).draw(pi, x + dim0.width() + 5,
-					y + dim1.asc / 2);
+			cell(0).draw(pi, x + 2,	y - dim0.des - 5);
+			cell(1).draw(pi, x + dim0.width() + 5, y + dim1.asc / 2);
+		} else if (kind_ == FRAC) {
+			cell(0).draw(pi, m - dim0.wid / 2, y - dim0.des - 2 - 5);
+			cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc + 2 - 5);
 		} else {
-			// Classical fraction
-			cell(0).draw(pi, m - dim0.width() / 2,
+			// \cfrac is always in display size
+			StyleChanger dummy2(pi.base, LM_ST_DISPLAY);
+			if (kind_ == CFRAC)
+				cell(0).draw(pi, m - dim0.wid / 2, y - dim0.des - 2 - 5);
+			else if (kind_ == CFRACLEFT)
+				cell(0).draw(pi, x + 2, y - dim0.des - 2 - 5);
+			else if (kind_ == CFRACRIGHT)
+				cell(0).draw(pi, x + dim.wid - dim0.wid - 2,
 					y - dim0.des - 2 - 5);
-			cell(1).draw(pi, m - dim1.wid / 2,
-					y + dim1.asc  + 2 - 5);
+			cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc + 2 - 5);
 		}
 	}
 	if (kind_ == NICEFRAC || kind_ == UNITFRAC) {
@@ -224,13 +239,13 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 		int xx = x;
 		if (nargs() == 3)
 			xx += cell(2).dimension(*pi.base.bv).wid + 5;
-
 		pi.pain.line(xx + dim0.wid,
 				y + dim.des - 2,
 				xx + dim0.wid + 5,
 				y - dim.asc + 2, Color_math);
 	}
-	if (kind_ == FRAC || kind_ == OVER)
+	if (kind_ == FRAC || kind_ == CFRAC || kind_ == CFRACLEFT
+		|| kind_ == CFRACRIGHT || kind_ == OVER)
 		pi.pain.line(x + 1, y - 5,
 				x + dim.wid - 2, y - 5, Color_math);
 	drawMarkers(pi, x, y);
@@ -275,6 +290,7 @@ void InsetMathFrac::write(WriteStream & os) const
 		os << "\\frac{" << cell(0) << "}{" << cell(1) << '}';
 		break;
 	case FRAC:
+	case CFRAC:
 	case NICEFRAC:
 	case UNITFRAC:
 		if (nargs() == 2)
@@ -288,6 +304,12 @@ void InsetMathFrac::write(WriteStream & os) const
 		else
 			os << "\\unit{" << cell(0) << '}';
 		break;
+	case CFRACLEFT:
+		os << "\\cfrac[l]{" << cell(0) << "}{" << cell(1) << '}';
+		break;
+	case CFRACRIGHT:
+		os << "\\cfrac[r]{" << cell(0) << "}{" << cell(1) << '}';
+		break;
 	}
 }
 
@@ -297,6 +319,10 @@ docstring InsetMathFrac::name() const
 	switch (kind_) {
 	case FRAC:
 		return from_ascii("frac");
+	case CFRAC:
+	case CFRACLEFT:
+	case CFRACRIGHT:
+		return from_ascii("cfrac");
 	case OVER:
 		return from_ascii("over");
 	case NICEFRAC:
@@ -557,6 +583,12 @@ void InsetMathBinom::write(WriteStream & os) const
 void InsetMathBinom::normalize(NormalStream & os) const
 {
 	os << "[binom " << cell(0) << ' ' << cell(1) << ']';
+}
+
+
+void InsetMathBinom::mathmlize(MathStream & os) const
+{
+	os << MTag("mbinom") << cell(0) << cell(1) << ETag("mbinom");
 }
 
 

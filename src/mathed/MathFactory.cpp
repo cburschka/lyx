@@ -417,19 +417,25 @@ MathAtom createInsetMath(docstring const & s)
 		return MathAtom(new InsetMathBinom(InsetMathBinom::BRACK));
 	if (s == "frac")
 		return MathAtom(new InsetMathFrac);
+	if (s == "cfrac")
+		return MathAtom(new InsetMathFrac(InsetMathFrac::CFRAC));
 	if (s == "over")
 		return MathAtom(new InsetMathFrac(InsetMathFrac::OVER));
 	if (s == "nicefrac")
 		return MathAtom(new InsetMathFrac(InsetMathFrac::NICEFRAC));
 	if (s == "unitfrac")
 		return MathAtom(new InsetMathFrac(InsetMathFrac::UNITFRAC));
-	// This string value is only for math toolbar use. Not a LaTeX name
+	// These string values are only for math toolbar use, no LaTeX names
 	if (s == "unitfracthree")
 		return MathAtom(new InsetMathFrac(InsetMathFrac::UNITFRAC, 3));
 	if (s == "unitone")
 		return MathAtom(new InsetMathFrac(InsetMathFrac::UNIT, 1));
 	if (s == "unittwo")
 		return MathAtom(new InsetMathFrac(InsetMathFrac::UNIT));
+	if (s == "cfracleft")
+		return MathAtom(new InsetMathFrac(InsetMathFrac::CFRACLEFT));
+	if (s == "cfracright")
+		return MathAtom(new InsetMathFrac(InsetMathFrac::CFRACRIGHT));
 	//if (s == "infer")
 	//	return MathAtom(new MathInferInset);
 	if (s == "atop")
