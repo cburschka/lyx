@@ -412,14 +412,19 @@ int LaTeX::startscript()
 bool LaTeX::runMakeIndex(string const & f, OutputParams const & runparams,
 			 string const & params)
 {
-	LYXERR(Debug::LATEX,
-		"idx file has been made, running makeindex on file " << f);
 	string tmp = runparams.use_japanese ?
 		lyxrc.jindex_command : lyxrc.index_command;
 
+	LYXERR(Debug::LATEX,
+		"idx file has been made, running index processor ("
+		<< tmp << ") on file " << f);
+
 	tmp = subst(tmp, "$$lang", runparams.document_language);
-	if (runparams.use_indices)
+	if (runparams.use_indices) {
 		tmp = lyxrc.splitindex_command + " -m " + quoteName(tmp);
+		LYXERR(Debug::LATEX,
+		"Multiple indices. Using splitindex command: " << tmp);
+	}
 	tmp += ' ';
 	tmp += quoteName(f);
 	tmp += params;
