@@ -1964,30 +1964,65 @@ La commande pour l'exemple précédent est:
 
 \begin_layout Standard
 
+\series bold
+
 \backslash
-cfrac{A
-\begin_inset Formula $\to$
+cfrac
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
 \end_inset
 
-
-\backslash
-{B+
-\backslash
-cfrac{C+
-\backslash
-cfrac{E
-\begin_inset Formula $\to$
+A
+\begin_inset Formula $\downarrow$
 \end_inset
 
+B+
+\backslash
+cfrac
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
 
 \backslash
-{F
-\begin_inset Formula $\to\to$
+spce 
+\end_layout
+
 \end_inset
 
+C+
+\backslash
+cfrac
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
 
 \backslash
-{D
+spce 
+\end_layout
+
+\end_inset
+
+E
+\begin_inset Formula $\downarrow$
+\end_inset
+
+F
+\begin_inset Formula $\downarrow$
+\end_inset
+
+D
 \end_layout
 
 \begin_layout Standard
@@ -2006,51 +2041,40 @@ cfrac
 \series default
  met toujours la fraction dans la taille d'une formule hors ligne, même
  si elle est une partie d'une autre fraction.
- La commande
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+It is possible to specify the alignment of the numerator.
+ The command 
 \series bold
+
+\backslash
+cfracleft
+\series default
+ is used to left align it, the command 
+\series bold
+
+\backslash
+cfracright
+\series default
+ to right-align it.
  
+\series bold
+
 \backslash
 cfrac
 \series default
- a la syntaxe suivante:
-\end_layout
+ centers the numerator.
 
-\begin_layout Standard
-
-\series bold
-
-\backslash
-cfrac[position du numérateur]{numérateur}{dénominateur}
-\end_layout
-
-\begin_layout Standard
-La position du numérateur peut être 
-\emph on
-l
-\emph default
- , 
-\emph on
-c
-\emph default
-, ou 
-\emph on
-r
-\emph default
- .
- l ou r aligne le numérateur respectivement à gauche ou à droite par rapport
- à la barre de fraction.
- Quand on met 
-\emph on
-c 
-\emph default
-ou rien, le numérateur apparaît centré.
+\lang french
  Les fractions qui suivent illustrent les différents alignements:
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Standard
 
 \series bold
-
 \begin_inset Formula $\cfrac[l]{A}{B+C}$
 \end_inset
 
@@ -2060,6 +2084,44 @@ ou rien, le numérateur apparaît centré.
 
 , 
 \begin_inset Formula $\cfrac[r]{A}{B+C}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Notez:
+\series default
+ 
+\series bold
+
+\backslash
+cfracleft
+\series default
+ et 
+\series bold
+cfracright
+\series default
+ ne sont pas des commandes LaTeX réelle, mais représentent la commande 
+\series bold
+
+\backslash
+cfrac[alignement]{numérateur}{dénominateur}
+\series default
+ .
+
+\series bold
+ 
+\series default
+Vous ne pouvez donc pas les utiliser en code TeX.
+\end_layout
+
 \end_inset
 
 
@@ -2143,31 +2205,45 @@ unitfrac
 \backslash
 unitfracthree
 \series default
- qui permet d'écrire une fraction en combinaison avec un nombre:
-\begin_inset Newline newline
+ qui permet d'écrire une fraction en combinaison avec un nombre: 
+\begin_inset Formula $\unitfrac[2]{1}{3}$
 \end_inset
 
-Notez que 
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Notez:
+\series default
+ 
 \series bold
 
 \backslash
 unitfracthree
 \series default
- n'est pas une commande LaTeX réelle, mais c'est la commande
-\begin_inset Newline newline
-\end_inset
-
-
+ n'est pas une commande LaTeX réelle, mais c'est la commande 
 \series bold
 
 \backslash
 unitfrac[nombre]{numérateur}{dénominateur}
 \series default
-,
+ .
+
 \series bold
  
 \series default
-vous ne pouvez donc pas l'utiliser en code TeX.
+Vous ne pouvez donc pas l'utiliser en code TeX.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6137,7 +6213,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Note:
+Notez:
 \series default
  En mode TeX, on doit utiliser la commande 
 \series bold

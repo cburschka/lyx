@@ -2026,29 +2026,62 @@ El comando para el ejemplo de arriba es:
 \series bold
 
 \backslash
-cfrac{A
-\begin_inset Formula $\to$
+cfrac
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
 \end_inset
 
-
-\backslash
-{B+
-\backslash
-cfrac{C+
-\backslash
-cfrac{E
-\begin_inset Formula $\to$
+A
+\begin_inset Formula $\downarrow$
 \end_inset
 
+B+
+\backslash
+cfrac
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
 
 \backslash
-{F
-\begin_inset Formula $\to\to$
+spce 
+\end_layout
+
 \end_inset
 
+C+
+\backslash
+cfrac
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
 
 \backslash
-{D
+spce 
+\end_layout
+
+\end_inset
+
+E
+\begin_inset Formula $\downarrow$
+\end_inset
+
+F
+\begin_inset Formula $\downarrow$
+\end_inset
+
+D
 \end_layout
 
 \begin_layout Standard
@@ -2067,58 +2100,38 @@ cfrac
 \series default
  compone la fracción siempre en el tamaño del estilo presentación, también
  cuando es parte de otra fracción.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+It is possible to specify the alignment of the numerator.
+ The command 
+\series bold
+
+\backslash
+cfracleft
+\series default
+ is used to left align it, the command 
+\series bold
+
+\backslash
+cfracright
+\series default
+ to right-align it.
  
 \series bold
 
 \backslash
 cfrac
 \series default
- tiene el siguiente esquema de comando:
-\end_layout
+ centers the numerator.
 
-\begin_layout Standard
-
-\series bold
-
-\backslash
-cfrac[posición del numerador]{numerador}{denominador}
-\end_layout
-
-\begin_layout Standard
-La posición del numerador puede ser 
-\emph on
-l
-\emph default
-, 
-\emph on
-c
-\emph default
- o 
-\emph on
-r
-\emph default
- .
- 
-\emph on
-l
-\emph default
- o 
-\emph on
-r
-\emph default
- alinean el numerador a la izquierda o a la derecha, respectivamente, de
- la raya de fracción.
- Si se pone 
-\emph on
-c
-\emph default
- o no se especifica posición, el numerador aparece centrado.
+\lang spanish
  Estas fracciones muestran las distintas alineaciones:
 \end_layout
 
 \begin_layout Standard
-\noindent
-\align center
 \begin_inset Formula $\cfrac[l]{A}{B+C}$
 \end_inset
 
@@ -2130,7 +2143,52 @@ c
 \begin_inset Formula $\cfrac[r]{A}{B+C}$
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Nota
+\series default
+: 
+\series bold
+
+\backslash
+cfracleft
+\series default
+ y
+\series bold
  
+\backslash
+cfracright
+\series default
+ 
+\lang english
+are no real LaTeX commands but represent the command
+\lang spanish
+ 
+\series bold
+
+\backslash
+cfrac[posición del numerador]{numerador}{denominador}
+\series default
+ .
+ 
+\lang english
+Therefore you cannot use them 
+\lang spanish
+en código TeX.
+\end_layout
+
+\end_inset
+
+
 \begin_inset VSpace medskip
 \end_inset
 
@@ -2194,10 +2252,18 @@ unitfracthree
 \end_inset
 
 
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-Ten en cuenta que 
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Nota
+\series default
+: 
 \series bold
 
 \backslash
@@ -2213,7 +2279,13 @@ unitfracthree
 \backslash
 unitfrac[número]{numerador}{denominador}
 \series default
-, por tanto no puedes usarlo en código TeX.
+ .
+ Por tanto no puedes usarlo en código TeX.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6205,7 +6277,7 @@ rfloor
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
