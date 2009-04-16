@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 348
+\lyxformat 352
 \begin_document
 \begin_header
 \textclass scrbook
@@ -56,12 +56,14 @@
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_xetex false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
 
 \graphics default
+\default_output_format default
 \paperfontsize 12
 \spacing single
 \use_hyperref true
@@ -85,7 +87,9 @@
 \use_esint 0
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\backgroundcolor #ffffff
 \branch Question
 \selected 1
 \color #00ff00
@@ -361,7 +365,7 @@ There are several features of LyX that can be configured from inside LyX,
 Preferences
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -387,7 +391,7 @@ Tools\SpecialChar \menuseparator
 Reconfigure
 \family default
 .
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -498,7 +502,7 @@ reference "sub:LyX's-Proper-Names"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -516,7 +520,7 @@ How to work with LyX
 
 \begin_layout Section
 Basic File Operations
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -807,7 +811,7 @@ you can there register the changes you made to a document so that others
 
 \begin_layout Section
 Basic Editing Features
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -962,7 +966,7 @@ Undo
 \end_layout
 
 \begin_layout Standard
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1022,7 +1026,7 @@ Lines
 \end_layout
 
 \begin_layout Standard
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1032,7 +1036,7 @@ Replace
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1187,7 +1191,7 @@ Delete
 
 \begin_layout Section
 Undo and Redo
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1197,7 +1201,7 @@ Redo
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1293,7 +1297,7 @@ Redo
 
 \begin_layout Section
 Mouse Operations
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1389,7 +1393,7 @@ name "sec:Navigating"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1601,7 +1605,7 @@ name "sec:Input-Completion"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1611,7 +1615,7 @@ Input completion
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1717,7 +1721,7 @@ reference "sub:Input-Completion-Appendix"
 
 \begin_layout Section
 Basic Key Bindings
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1727,7 +1731,7 @@ Key Bindings
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -1759,7 +1763,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2215,7 +2219,7 @@ reference "sub:Editing-Shortcuts"
 
 \begin_layout Chapter
 LyX Basics
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2229,7 +2233,7 @@ LyX ! Basics
 
 \begin_layout Section
 Document Types
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2273,7 +2277,7 @@ Read on for info about the document classes you can choose from LyX, and
 
 \begin_layout Subsection
 Document Classes
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2297,7 +2301,7 @@ You can select a class using the
 \family sans
 Document\SpecialChar \menuseparator
 Settings
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2529,7 +2533,7 @@ We won't go into any detail about how to use these different document classes
  here.
  You can find all the details about the non-standard classes in the 
 \emph on
-Extended Editing
+Additional Features
 \emph default
  manual.
  Here, we will settle with a list of some of the common properties of all
@@ -2545,7 +2549,7 @@ name "sub:Modules"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -2573,7 +2577,7 @@ Document\SpecialChar \menuseparator
 Settings
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -3175,7 +3179,7 @@ name "sub:Document-Layout"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -3187,7 +3191,7 @@ Document ! Layout
 
 \family sans
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -3298,7 +3302,7 @@ Fancy
 fancyhdr
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -3346,7 +3350,7 @@ reference "sec:Par-indent-intro"
 
 \begin_layout Subsection
 Paper Size and Orientation
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -3382,7 +3386,7 @@ Settings
  menu:
 \family sans
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -3494,7 +3498,7 @@ name "sub:Margins"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -3504,7 +3508,7 @@ Document ! Margins
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -3523,7 +3527,7 @@ Document\SpecialChar \menuseparator
 Settings
 \family default
 .
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -3566,7 +3570,7 @@ Standard
 
 \begin_layout Section
 Paragraph Indentation and Separation
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -3645,7 +3649,7 @@ all
 
 \begin_layout Subsection
 Paragraph Separation
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -3680,7 +3684,7 @@ Document\SpecialChar \menuseparator
 Settings
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -3760,7 +3764,7 @@ You should only need to change the indentation method for a single paragraph
 
 \begin_layout Subsection
 Line Spacing
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -3779,7 +3783,7 @@ Document\SpecialChar \menuseparator
 Settings
 \noun on
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -3809,7 +3813,7 @@ You need to have the LaTeX-package
 setspace
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -3835,7 +3839,7 @@ name "sec:Paragraph-Environments"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -3845,7 +3849,7 @@ Paragraph ! Environments
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -4093,7 +4097,7 @@ Standard
 
 \begin_layout Subsection
 Document Title
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -4210,7 +4214,7 @@ thanks
 
 \begin_layout Subsection
 Headings
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -4236,7 +4240,7 @@ There are several paragraph environments for producing section headings.
 
 \begin_layout Subsubsection
 Numbered Headings
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -4432,7 +4436,7 @@ Subsubsection
 
 \begin_layout Subsubsection
 Unnumbered Headings
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -4556,7 +4560,7 @@ Settings
  dialog.
 \family sans
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -4592,7 +4596,7 @@ Numbering
 
 \begin_layout Subsubsection
 Short Titles of Headings
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -4765,7 +4769,7 @@ name "sec:Quote"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -4886,7 +4890,7 @@ Quotation
 Verse
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -4898,7 +4902,7 @@ Paragraph ! Verse
 
 \family sans
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -4984,7 +4988,7 @@ arg   "newline-insert newline"
 
 \begin_layout Subsection
 Lists
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5086,7 +5090,7 @@ reference "sec:Nesting"
 Itemize
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5250,7 +5254,7 @@ Bullets
 .
 \family sans
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5285,7 +5289,7 @@ reference "sec:Nesting"
 Enumerate
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5467,7 +5471,7 @@ reference "sec:Nesting"
 Description
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5628,7 +5632,7 @@ The LyX
 List
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -5957,7 +5961,7 @@ HFill
 
 \begin_layout Subsection
 Letters
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6212,7 +6216,7 @@ Most academic writing begins with an abstract and ends with a bibliography
 
 \family sans
 Abstract
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6379,7 +6383,7 @@ abstract
 Bibliography
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6475,7 +6479,7 @@ reference "sec:Bibliography"
 LyX
 \family sans
 -Code
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6720,7 +6724,7 @@ LyX-Code
  rc-files, and so on.
  Use it only in those very special cases where you need to generate text
  as if you used a typewriter.
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -6734,7 +6738,7 @@ Paragraph environments|)
 
 \begin_layout Section
 Nesting Environments
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -7154,7 +7158,7 @@ lists, it is highly recommended not to do this because the aim is to create
 
 \begin_layout Subsection
 Nesting Other Things: Tables, Math, Floats, etc.
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -7742,7 +7746,7 @@ A.
 
 \begin_layout Subsection
 Some Examples
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -8786,7 +8790,7 @@ Itemize
 
 \begin_layout Section
 Spacing, pagination and line breaks
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -8816,7 +8820,7 @@ name "sub:Protected-Space"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -8907,7 +8911,7 @@ name "sub:Horizontal-Space"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -8950,7 +8954,7 @@ name "sub:Inter-word-Space"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9003,7 +9007,7 @@ name "sub:Thin-Space"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9509,7 +9513,7 @@ em
 Horizontal Fills
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9713,7 +9717,7 @@ Protect
 
 \begin_layout Subsubsection
 Phantom Space
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9910,7 +9914,7 @@ name "sub:Vertical-Space"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9961,7 +9965,7 @@ Document\SpecialChar \menuseparator
 Settings
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -9988,7 +9992,7 @@ MedSkip
 VFill
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -10152,7 +10156,7 @@ this one is left aligned.
 
 \begin_layout Subsection
 Forced Page Breaks
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -10251,7 +10255,7 @@ name "sub:Clear-Page-Breaks"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -10303,7 +10307,7 @@ Page
 
 \begin_layout Subsection
 Forced Line Breaks
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -10422,7 +10426,7 @@ name "sub:Horizontal-Lines"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -10529,7 +10533,7 @@ name "sec:Fonts-and-Text"
 
 \begin_layout Subsection
 Font Types
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -10551,7 +10555,7 @@ Vector
 \end_inset
 
 fonts
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -10608,7 +10612,7 @@ Bitmap
 \end_inset
 
 fonts
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -10685,7 +10689,7 @@ name "sub:Document-Font"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -10695,7 +10699,7 @@ Font ! Size
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -10714,7 +10718,7 @@ Document\SpecialChar \menuseparator
 Settings
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -10869,7 +10873,7 @@ Loading the LaTeX-package
 aeguill
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -11225,7 +11229,7 @@ reference "sub:Screen-Fonts"
 
 \begin_layout Subsection
 Using Different Character Styles
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -11235,7 +11239,7 @@ Character Styles
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -11418,7 +11422,7 @@ name "sub:Fine-Tuning-with-the"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -12158,7 +12162,7 @@ Magenta
 Yellow
 \family default
  text.
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -12426,11 +12430,7 @@ Now that we have covered some of the basic features of document preparation
  goes on behind-the-scenes.
  We cover this information in much greater detail in the 
 \emph on
-Extended
-\begin_inset space ~
-\end_inset
-
-Features
+Additional Features
 \emph default
  manual as well.
 \end_layout
@@ -12472,7 +12472,7 @@ Next, LaTeX uses the commands in the
 
 \begin_layout Subsection
 Output file formats
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -12493,7 +12493,7 @@ name "sub:Output-file-formats"
 
 \begin_layout Subsubsection
 ASCII
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -12542,7 +12542,7 @@ ASCII
 
 \begin_layout Subsubsection
 LaTeX
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -12598,7 +12598,7 @@ eX
 
 \begin_layout Subsubsection
 DVI
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -12659,7 +12659,7 @@ DVI
 
 \begin_layout Subsubsection
 PostScript
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -12711,7 +12711,7 @@ ge
 pstricks
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -12778,7 +12778,7 @@ PostScript
 
 \begin_layout Subsubsection
 PDF
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -12788,7 +12788,7 @@ File formats ! PDF
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -12973,7 +12973,7 @@ dvipdfm
 
 \begin_layout Subsection
 Previewing
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -13175,7 +13175,7 @@ File
 
 \begin_layout Section
 A few Words about Typography
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -13189,7 +13189,7 @@ Typography
 
 \begin_layout Subsection
 Hyphens
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -13555,7 +13555,7 @@ minus sign
 
 \begin_layout Subsection
 Hyphenation
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -13581,7 +13581,7 @@ Words aren't hyphenated within LyX but automatically in the output.
 babel
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -13722,7 +13722,7 @@ reference "sec:TeX-Code"
 
 \begin_layout Subsection
 Punctuation Marks
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -13846,7 +13846,7 @@ reference "sub:Inter-word-Space"
 \end_inset
 
 ).
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -13879,7 +13879,7 @@ reference "sub:Thin-Space"
 \end_inset
 
 ).
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -13977,7 +13977,7 @@ Additional Features
 
 \begin_layout Subsubsection
 Quotes
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -13987,7 +13987,7 @@ Typography ! Quotes
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -14056,7 +14056,7 @@ Document\SpecialChar \menuseparator
 Settings
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -14275,7 +14275,7 @@ These settings affect what character the
 
 \begin_layout Subsection
 Ligatures
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -14285,7 +14285,7 @@ Typography ! Ligatures
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -14439,7 +14439,7 @@ fest
 
 \begin_layout Subsection
 LyX's Proper Names
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -14672,7 +14672,7 @@ reference "sec:TeX-Code"
 
 \begin_layout Subsection
 Units
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -14791,7 +14791,7 @@ half space between number and unit
 
 \begin_layout Subsection
 Widows and Orphans
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -14883,7 +14883,7 @@ Embedded Objects
 
 \begin_layout Section
 Notes
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15024,7 +15024,7 @@ Note
 
 \begin_layout Section
 Footnotes
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15177,7 +15177,7 @@ Embedded Objects
 
 \begin_layout Section
 Marginal Notes
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15271,7 +15271,7 @@ Marginal notes appear at the right side in single-sided documents.
 
 \begin_layout Section
 Graphics and Images
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15281,7 +15281,7 @@ Images
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15468,7 +15468,7 @@ reference "sec:Figure-Floats"
 
 \begin_layout Subsection
 Image Formats
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15553,7 +15553,7 @@ Graphics Interchange Format
 \end_inset
 
 )
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15605,7 +15605,7 @@ Portable Network Graphics
 \end_inset
 
 )
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15669,7 +15669,7 @@ Joint Photographic Experts Group
 \end_inset
 
 )
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15737,7 +15737,7 @@ Scalable Vector Graphics
 \end_inset
 
 )
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15789,7 +15789,7 @@ Encapsulated PostScript
 \end_inset
 
 )
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15841,7 +15841,7 @@ Portable Document Format
 \end_inset
 
 )
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15874,7 +15874,7 @@ Normally one can't convert a bitmap image into a scalable one, only vice
 
 \begin_layout Subsection
 Grouping of Image Settings
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -15913,7 +15913,7 @@ Name
 
 \begin_layout Section
 Tables
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -16433,7 +16433,7 @@ Default
 
 \begin_layout Subsection
 Longtables
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -16443,7 +16443,7 @@ Tables ! Longtables
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -18748,7 +18748,7 @@ End
 
 \begin_layout Subsection
 Table Cells
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19052,7 +19052,7 @@ Shift
 
 \begin_layout Section
 Floats
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19151,7 +19151,7 @@ Figure
  The label will automatically be translated to the document language in
  the output.
  After the label you can insert the caption text.
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19185,7 +19185,7 @@ Float Types
 
 \begin_layout Subsubsection
 Figure Floats
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19572,7 +19572,7 @@ reference "sub:List-of-Figures"
 
 \begin_layout Subsubsection
 Table Floats
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19833,7 +19833,7 @@ c & d\end{array}\right]$
 
 \begin_layout Subsubsection
 Algorithm Floats
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -19934,7 +19934,7 @@ algorithm
 
 \begin_layout Subsubsection
 Wrap Floats
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20014,7 +20014,7 @@ Float
 wrapfig
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20140,7 +20140,7 @@ name "sub:Rotated-Floats"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20321,7 +20321,7 @@ name "sub:Float-Placement"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20603,7 +20603,7 @@ key "latexcompanion,latexguide,latexbook"
 
 \begin_layout Section
 Minipages
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20773,7 +20773,7 @@ Embedded Objects
 
 \begin_layout Chapter
 Mathematical Formulas
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20783,7 +20783,7 @@ Math
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20835,7 +20835,7 @@ Math
 
 \begin_layout Section
 Basic Math Editing
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -20946,7 +20946,7 @@ Panel
 
 \begin_layout Subsection
 Navigating in Formulas
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -21143,7 +21143,7 @@ Shift
 
 \begin_layout Subsection
 Exponents and Subscripts
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -21153,7 +21153,7 @@ Math ! Exponents
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -21295,7 +21295,7 @@ spce
 
 \begin_layout Subsection
 Fractions
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -21355,7 +21355,7 @@ Up
 
 \begin_layout Subsection
 Roots
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -21412,7 +21412,7 @@ sqrt
 
 \begin_layout Subsection
 Operators with Limits
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -21422,7 +21422,7 @@ Math ! Sums
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -21514,7 +21514,7 @@ moving limits
 \end_inset
 
  feature as addition, such as
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -21573,7 +21573,7 @@ reference "sub:Functions"
 
 \begin_layout Subsection
 Math Symbols
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -21631,7 +21631,7 @@ Panel
 
 \begin_layout Subsection
 Altering Spacing
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -21725,7 +21725,7 @@ Space
 
 \begin_layout Subsection
 Functions
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -21822,7 +21822,7 @@ reference "sub:Operators-with-Limits"
 
 \begin_layout Subsection
 Accents
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -22519,7 +22519,7 @@ decorations
 
 \begin_layout Section
 Brackets and Delimiters
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -22529,7 +22529,7 @@ Math ! Brackets
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -22618,7 +22618,7 @@ Insert
 
 \begin_layout Section
 Arrays and Multi-line Equations
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -22628,7 +22628,7 @@ Math ! Arrays
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -22638,7 +22638,7 @@ Math ! Matrices
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -22913,7 +22913,7 @@ reference "sub:AMS-Formula-Types"
 
 \begin_layout Section
 Formula Numbering and Referencing
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -22923,7 +22923,7 @@ Math ! Formula numbering
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23152,7 +23152,7 @@ This is a unintuitive and will be fixed in the next version of LyX.
 
 \begin_layout Section
 User defined math macros
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23188,7 +23188,7 @@ Fine-Tuning
 
 \begin_layout Subsection
 Typefaces
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23660,7 +23660,7 @@ Style
 
 \begin_layout Subsection
 Math Text
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23724,7 +23724,7 @@ x & \textrm{if I say so}\\
 
 \begin_layout Subsection
 Font Sizes
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23862,7 +23862,7 @@ Theorem Modules
 \begin_layout Standard
 As of LyX 1.6, support for theorem-like environments has been moved out of
  the document classes and into layout modules.
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23885,7 +23885,7 @@ reference "sub:Modules"
 
 \begin_layout Section
 AMS-LaTeX
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23895,7 +23895,7 @@ AMS math
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23939,7 +23939,7 @@ Document\SpecialChar \menuseparator
 Settings
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -23971,7 +23971,7 @@ name "sub:AMS-Formula-Types"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -24015,7 +24015,7 @@ More Tools
 
 \begin_layout Section
 Cross-References
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -24359,7 +24359,7 @@ Note:
 prettyref
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -24493,7 +24493,7 @@ Embedded Objects
 
 \begin_layout Section
 Table of Contents and other Listings
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -24503,7 +24503,7 @@ Table of contents
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -24638,7 +24638,7 @@ TOC
 
 \begin_layout Section
 URLs and Hyperlinks
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -24648,7 +24648,7 @@ URLs
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -24848,7 +24848,7 @@ Additional options
 
 \begin_layout Section
 Appendices
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -24924,7 +24924,7 @@ reference "sub:Export"
 
 \begin_layout Section
 Bibliography
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -25091,7 +25091,7 @@ key "lyxcredit"
 
 \begin_layout Subsection
 Bibliography databases (BibTeX)
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -25101,7 +25101,7 @@ Bibliography ! Databases
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -25353,7 +25353,7 @@ with BibTeX
 \emph default
  of the 
 \emph on
-Extended
+Additional Features
 \emph default
  manual.
 \end_layout
@@ -25372,7 +25372,7 @@ alphadin.bst
 
 \begin_layout Subsection
 Bibliography layout
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -25396,7 +25396,7 @@ Document\SpecialChar \menuseparator
 Settings
 \family default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -25447,7 +25447,7 @@ key "latexcompanion"
 
 \begin_layout Section
 Index
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -25556,7 +25556,7 @@ Index
 
 \begin_layout Subsection
 Grouping Index Entries
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -25671,7 +25671,7 @@ Lists
 
 \begin_layout Subsection
 Page Ranges
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -25771,7 +25771,7 @@ Document ! Settings
 
 \begin_layout Subsection
 Cross referencing
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -25829,7 +25829,7 @@ where the braces have to be inserted as TeX Code.
 
 \begin_layout Subsection
 Index Entry Order
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -25892,7 +25892,7 @@ maître
 \end_inset
 
 .
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
@@ -25902,7 +25902,7 @@ Dummy entries ! maïs
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
@@ -25912,7 +25912,7 @@ Dummy entries ! maître
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
@@ -25966,7 +25966,7 @@ The previous entry needn't to be a real existing entry, you can also use
 
 \begin_layout Subsection
 Index Entry Layout
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -25980,7 +25980,7 @@ Index ! Entry layout
 
 \begin_layout Standard
 You can change the appearance of index entries via the text style dialog.
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
@@ -26011,7 +26011,7 @@ italic page number:|textit
 
 \begin_layout Standard
 to get the page number in italic.
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
@@ -26139,7 +26139,7 @@ my entry|IndexDef
 
 \begin_layout Standard
 in the index entry.
-\begin_inset Index
+\begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
@@ -26189,7 +26189,7 @@ key "makeindex,xindy"
 
 \begin_layout Subsection
 Index Program
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -26262,7 +26262,7 @@ xindy
 
 \begin_layout Section
 Nomenclature / Glossary 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -26272,7 +26272,7 @@ Nomenclature
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -26325,7 +26325,7 @@ To be able to create nomenclatures, you need the LaTeX package
 nomencl
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -26408,7 +26408,7 @@ Note:
 
 \begin_layout Subsection
 Nomenclature Definition and Layout
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -26584,7 +26584,7 @@ emph
 
 \begin_layout Subsection
 Sort Order of Nomenclature Entries
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -26719,7 +26719,7 @@ key "nomencl"
 
 \begin_layout Subsection
 Nomenclature Options
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -26929,7 +26929,7 @@ nomnorefeqpage Turns off the corresponding options
 
 \begin_layout Subsection
 Printing the Nomenclature
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27056,7 +27056,7 @@ cm.
 
 \begin_layout Subsection
 Nomenclature Program
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27110,7 +27110,7 @@ key "nomencl,makeindex"
 
 \begin_layout Section
 Branches
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27120,7 +27120,7 @@ Branches
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27405,7 +27405,7 @@ name "sec:PDF-Properties"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27432,7 +27432,7 @@ PDF Properties
 hyperref
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27549,7 +27549,7 @@ name "sec:TeX-Code"
 
 \begin_layout Subsection
 TeX Code Boxes
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27699,7 +27699,7 @@ The LaTeX Syntax
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27770,7 +27770,7 @@ As result you know that the package
 caption
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27917,7 +27917,7 @@ name "sec:Previewing-snippets-of"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27927,7 +27927,7 @@ Instant preview
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -27957,7 +27957,7 @@ If you would for example like to see in LyX your math formulas typeset by
 preview-latex
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -28096,7 +28096,7 @@ name "sec:Spellchecking"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -28356,7 +28356,7 @@ ispell
 
 \begin_layout Section
 Thesaurus
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -28612,7 +28612,7 @@ s), then you get proposals without adjusting the query in the dialog, and
 
 \begin_layout Section
 Change Tracking
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -28622,7 +28622,7 @@ Change Tracking
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -28689,7 +28689,7 @@ feel
 Colors
 \family default
 .
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -28703,7 +28703,7 @@ Color ! LyX screen
 
 \begin_layout Standard
 When change tracking is activated, you will see the review toolbar in LyX:
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29177,7 +29177,7 @@ To show made changes in the output you need the LaTeX package
 dvipost
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29199,7 +29199,7 @@ key "TeXCatalogue"
 
 \begin_layout Section
 International Support
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29241,7 +29241,7 @@ reference "sub:Special-Character"
 
 \begin_layout Subsection
 Language Options
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29251,7 +29251,7 @@ Language ! Options
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -29261,7 +29261,7 @@ Document ! Settings
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34064,7 +34064,7 @@ This appendix lists all available menus and describes its functionality.
 
 \begin_layout Section
 The File Menu
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34164,11 +34164,7 @@ Version Control in LyX
 \emph default
  of the 
 \emph on
-Extended
-\begin_inset space ~
-\end_inset
-
-Features
+Additional Features
 \emph default
  manual.
 \end_layout
@@ -34506,7 +34502,7 @@ reference "sec:Basic-LyX-Setup"
 \end_inset
 
 .
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34566,7 +34562,7 @@ Opens a new instance of LyX with all currently opened documents.
 
 \begin_layout Section
 The Edit Menu
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34673,7 +34669,7 @@ reference "sub:Fine-Tuning-with-the"
 
 \begin_layout Subsection
 Paragraph Settings
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34773,7 +34769,7 @@ reference "sub:Numbering-depth"
 
 \begin_layout Section
 The View Menu
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34832,7 +34828,7 @@ reference "sec:Basic-LyX-Setup"
 \end_inset
 
 .
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -34971,7 +34967,7 @@ name "sub:Toolbars"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -35063,7 +35059,7 @@ reference "sec:Toolbars"
 
 \begin_layout Section
 The Insert Menu
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -35247,7 +35243,7 @@ Phonetic
 \end_inset
 
 Symbols 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -35257,7 +35253,7 @@ Phonetic symbols
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -35273,7 +35269,7 @@ Creates a formula with a so called tipa inset.
 tipa
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -35730,7 +35726,7 @@ reference "sec:Branches"
 
 \begin_layout Subsection
 File
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -35757,7 +35753,7 @@ Embedded Objects
 
 \begin_layout Subsection
 Box
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -35852,7 +35848,7 @@ reference "sec:Cross-References"
 
 \begin_layout Subsection
 Caption
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -35862,7 +35858,7 @@ Captions
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -36092,7 +36088,7 @@ reference "sub:TeX-Code-Boxes"
 
 \begin_layout Subsection
 Program Listing
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -36140,7 +36136,7 @@ Embedded Objects
 
 \begin_layout Section
 The Navigate Menu
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -36257,7 +36253,7 @@ Only active when the cursor is in front of a cross-reference.
 
 \begin_layout Section
 The Document Menu
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -36393,7 +36389,7 @@ reference "cha:The-Document-Settings"
 
 \begin_layout Section
 The Tools Menu
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -36445,7 +36441,7 @@ reference "sec:Thesaurus"
 
 \begin_layout Subsection
 Statistics
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -36455,7 +36451,7 @@ Word count
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -36474,7 +36470,7 @@ Counts the number of words and characters in the actual document or the
 
 \begin_layout Subsection
 TeX Information
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -36492,7 +36488,7 @@ Shows you a list of the classes and styles installed in your LaTeX-system.
 
 \begin_layout Subsection
 Reconfigure
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -36524,7 +36520,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -36573,7 +36569,7 @@ reference "cha:The-Preferences-dialog"
 
 \begin_layout Section
 The Help Menu
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -36651,7 +36647,7 @@ Additional Features
 
 \begin_layout Subsection
 Standard Toolbar
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -37397,7 +37393,7 @@ Toggle table toolbar on/off
 
 \begin_layout Subsection
 Extra Toolbar
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -38238,7 +38234,7 @@ Thesaurus
 
 \begin_layout Subsection
 View / Update Toolbar
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -38491,7 +38487,7 @@ reference "sec:Change-Tracking"
 \end_inset
 
 , the table toolbar
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -38505,7 +38501,7 @@ Toolbar ! Table
 Embedded Objects
 \emph default
  manual, the math macro toolbar
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -38530,7 +38526,7 @@ name "cha:The-Document-Settings"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -38765,7 +38761,7 @@ reference "sub:Margins"
 
 \begin_layout Section
 Language
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -38881,7 +38877,7 @@ Language Default
 inputenc
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -39169,7 +39165,7 @@ Japanese
 CJK
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -39215,7 +39211,7 @@ Japanese
 japanese
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -39346,7 +39342,7 @@ Unicode
 CJK
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -39409,7 +39405,7 @@ Unicode
 ucs
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -39431,7 +39427,7 @@ Unicode
 inputenc
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -39531,7 +39527,7 @@ You can specify here a citation style using the LaTeX-packages
 natbib
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -39545,7 +39541,7 @@ LaTeX-packages ! natbib
 jurabib
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -39598,7 +39594,7 @@ These options will force LyX to use the LaTeX-packages
 amsmath
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -39612,7 +39608,7 @@ LaTeX-packages ! amsmath
 esint
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -39750,7 +39746,7 @@ name "cha:The-Preferences-dialog"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -39782,7 +39778,7 @@ User Interface
 
 \begin_layout Subsubsection
 User Interface File
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -39792,7 +39788,7 @@ Customization ! of toolbars
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -40036,7 +40032,7 @@ name "sub:Backup documents"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -40085,7 +40081,7 @@ Open documents in tabs
 
 \begin_layout Subsection
 Screen Fonts
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -40251,7 +40247,7 @@ OS and Windows.
 
 \begin_layout Subsection
 Colors
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -40261,7 +40257,7 @@ Color ! LyX screen
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -40284,7 +40280,7 @@ Alter
 
 \begin_layout Subsection
 Graphics
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -40322,7 +40318,7 @@ reference "sec:Previewing-snippets-of"
 
 \begin_layout Section
 Editing
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -40384,7 +40380,7 @@ Limit text width
 
 \begin_layout Subsection
 Shortcuts
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -40394,7 +40390,7 @@ Key Bindings
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -40492,7 +40488,7 @@ name "sub:Editing-Shortcuts"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -40628,7 +40624,7 @@ name "sub:Keyboard-Map"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -40638,7 +40634,7 @@ Keyboard Map
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -40705,7 +40701,7 @@ name "sub:Input-Completion-Appendix"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -40739,7 +40735,7 @@ reference "sec:Input-Completion"
 
 \begin_layout Section
 Paths
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -40749,7 +40745,7 @@ Paths
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -40852,7 +40848,7 @@ Backup
 \end_inset
 
 directory
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -40980,7 +40976,7 @@ reference "sec:Change-Tracking"
 
 \begin_layout Section
 Language Settings
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -40990,7 +40986,7 @@ Language ! Settings
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -41293,7 +41289,7 @@ name "sub:Printer"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -41303,7 +41299,7 @@ Printer
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -41422,7 +41418,7 @@ Printer command
 
 \begin_layout Subsection
 Date Format
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -41432,7 +41428,7 @@ Date Format
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -41538,7 +41534,7 @@ name "sub:LaTeX-settings"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -41807,7 +41803,7 @@ files Uses paths in the notation of Windows, that means that
 
  to separate folders.
  This option is enabled by default when you use LyX on Windows.
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -41817,7 +41813,7 @@ Paths
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -41868,7 +41864,7 @@ File
 \end_inset
 
 Handling
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -41882,7 +41878,7 @@ File handling
 
 \begin_layout Subsection
 Converters
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -41972,7 +41968,7 @@ name "sec:File-Formats"
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -41982,7 +41978,7 @@ File formats
 \end_inset
 
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -42035,7 +42031,7 @@ Customization
 
 \begin_layout Chapter
 Units available in LyX
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -43039,7 +43035,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption.
 caption
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -43086,7 +43082,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/fancyhdr/fancyhd
 fancyhdr
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -43137,7 +43133,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/hyperre
 hyperref
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -43184,7 +43180,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/nomencl/nomencl.
 nomencl
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -43231,7 +43227,7 @@ target "http://www.ctan.org/tex-archive/fonts/tipa/tipaman.pdf"
 tipa
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -43278,7 +43274,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/wrapfig/wrapfig.
 wrapfig
 \series default
 
-\begin_inset Index
+\begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
@@ -43786,6 +43782,7 @@ LatexCommand printnomenclature
 
 \begin_inset CommandInset index_print
 LatexCommand printindex
+type "idx"
 
 \end_inset
 
