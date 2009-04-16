@@ -2063,29 +2063,62 @@ The command for the example above is:
 \series bold
 
 \backslash
-cfrac{A
-\begin_inset Formula $\to$
+cfrac
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
 \end_inset
 
-
-\backslash
-{B+
-\backslash
-cfrac{C+
-\backslash
-cfrac{E
-\begin_inset Formula $\to$
+A
+\begin_inset Formula $\downarrow$
 \end_inset
 
+B+
+\backslash
+cfrac
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
 
 \backslash
-{F
-\begin_inset Formula $\to\to$
+spce 
+\end_layout
+
 \end_inset
 
+C+
+\backslash
+cfrac
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
 
 \backslash
-{D
+spce 
+\end_layout
+
+\end_inset
+
+E
+\begin_inset Formula $\downarrow$
+\end_inset
+
+F
+\begin_inset Formula $\downarrow$
+\end_inset
+
+D
 \end_layout
 
 \begin_layout Standard
@@ -2104,54 +2137,34 @@ cfrac
 \series default
  sets the fraction always in the size of a displayed formula, also when
  it is part of another fraction.
+\end_layout
+
+\begin_layout Standard
+It is possible to specify the alignment of the numerator.
+ The command 
+\series bold
+
+\backslash
+cfracleft
+\series default
+ is used to left align it, the command 
+\series bold
+
+\backslash
+cfracright
+\series default
+ to right-align it.
  
 \series bold
 
 \backslash
 cfrac
 \series default
- has the following command scheme:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-cfrac[numerator position]{numerator}{denominator}
-\end_layout
-
-\begin_layout Standard
-The numerator position can be 
-\emph on
-l
-\emph default
- , 
-\emph on
-c
-\emph default
-, or 
-\emph on
-r
-\emph default
- .
- l or r aligns the numerator to the left or right, resp.
-\begin_inset space ~
-\end_inset
-
-with the fraction stroke.
- When 
-\emph on
-c
-\emph default
- or no position is given, the numerator appears centered.
+ centers the numerator.
  These fractions demonstrate the different alignments:
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-
-\series bold
-
+\begin_layout Standard
 \begin_inset Formula $\cfrac[l]{A}{B+C}$
 \end_inset
 
@@ -2161,6 +2174,42 @@ c
 
 , 
 \begin_inset Formula $\cfrac[r]{A}{B+C}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ 
+\series bold
+
+\backslash
+cfracleft
+\series default
+ and 
+\series bold
+
+\backslash
+cfracright
+\series default
+ are no real LaTeX commands but represent the command 
+\series bold
+
+\backslash
+cfrac[alignment]{numerator}{denominator}
+\series default
+ .
+ Therefore you cannot use them in TeX code.
+\end_layout
+
 \end_inset
 
 
@@ -2248,10 +2297,18 @@ unitfracthree
 \end_inset
 
 
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-Note that 
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ 
 \series bold
 
 \backslash
@@ -2267,7 +2324,13 @@ unitfracthree
 \backslash
 unitfrac[number]{numerator}{denominator}
 \series default
-, therefore you cannot use it in TeX code.
+ .
+ Therefore you cannot use it in TeX code.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

@@ -2029,29 +2029,62 @@ Der Befehl für obiges Beispiel lautet:
 \series bold
 
 \backslash
-cfrac{A
-\begin_inset Formula $\to$
+cfrac
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+leer 
+\end_layout
+
 \end_inset
 
-
-\backslash
-{B+
-\backslash
-cfrac{C+
-\backslash
-cfrac{E
-\begin_inset Formula $\to$
+A
+\begin_inset Formula $\downarrow$
 \end_inset
 
+B+
+\backslash
+cfrac
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
 
 \backslash
-{F
-\begin_inset Formula $\to\to$
+leer 
+\end_layout
+
 \end_inset
 
+C+
+\backslash
+cfrac
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
 
 \backslash
-{D
+leer 
+\end_layout
+
+\end_inset
+
+E
+\begin_inset Formula $\downarrow$
+\end_inset
+
+F
+\begin_inset Formula $\downarrow$
+\end_inset
+
+D
 \end_layout
 
 \begin_layout Standard
@@ -2070,62 +2103,36 @@ cfrac
 \series default
  bewirkt, dass der Bruch immer in der Größe einer abgesetzten Formel erscheint,
  auch wenn er selbst Teil eines Bruches ist.
+\end_layout
+
+\begin_layout Standard
+Es ist möglich die Ausrichtung des Zählers einzustellen.
+ Der Befehl 
+\series bold
+
+\backslash
+cfracleft
+\series default
+ richtet ihn links, der Befehl 
+\series bold
+
+\backslash
+cfracright
+\series default
+ rechts aus.
  
 \series bold
 
 \backslash
 cfrac
 \series default
- besitzt folgendes Befehlsschema:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-cfrac[Zählerposition]{Zähler}{Nenner}
-\end_layout
-
-\begin_layout Standard
-Zählerposition kann 
-\emph on
-l
-\emph default
- , 
-\emph on
-c
-\emph default
- oder 
-\emph on
-r
-\emph default
- sein.
- Bei 
-\emph on
-l
-\emph default
- oder 
-\emph on
-r
-\emph default
- wird der Zähler links- bzw.
-\begin_inset space ~
-\end_inset
-
-rechtsbündig am Bruchstrich ausgerichtet.
- Wird 
-\emph on
-c
-\emph default
- oder keine Position angegeben, erscheint der Zähler wie gewohnt mittig.
+ zentriert den Zähler.
  Diese Brüche demonstrieren die verschiedenen Ausrichtungen:
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Standard
 
 \series bold
-
 \begin_inset Formula $\cfrac[l]{A}{B+C}$
 \end_inset
 
@@ -2135,6 +2142,42 @@ c
 
 , 
 \begin_inset Formula $\cfrac[r]{A}{B+C}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Achtung:
+\series default
+ 
+\series bold
+
+\backslash
+cfracleft
+\series default
+ und
+\series bold
+ 
+\backslash
+cfracright
+\series default
+ sind keine echten LaTeX-Befehle, sondern stellen den Befehl 
+\series bold
+
+\backslash
+cfrac[Ausrichtung]{Zähler}{Nenner}
+\series default
+ dar.
+ Daher kann man sie nicht im TeX-Code benutzen.
+\end_layout
+
 \end_inset
 
 
@@ -2222,16 +2265,24 @@ unitfracthree
 \end_inset
 
 
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-Zu beachten ist, dass 
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Achtung:
+\series default
+ 
 \series bold
 
 \backslash
 unitfracthree
 \series default
- kein echter LaTeX-Befehl, sondern der Befehl
+ ist kein echter LaTeX-Befehl, sondern der Befehl
 \begin_inset Newline newline
 \end_inset
 
@@ -2241,7 +2292,13 @@ unitfracthree
 \backslash
 unitfrac[Zahl]{Zähler}{Nenner}
 \series default
- ist, daher kann man ihn nicht im TeX-Code benutzen.
+ .
+ Daher kann man ihn nicht im TeX-Code benutzen.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
