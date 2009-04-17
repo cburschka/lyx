@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-04-16 22:52+0200\n"
-"PO-Revision-Date: 2009-04-13 16:37+0200\n"
+"PO-Revision-Date: 2009-04-17 14:43+0200\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
 "Language-Team: German <kde-i18n-de@lists.kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -1192,8 +1192,7 @@ msgstr "Veľkosť výstupu"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:141
 msgid "Sets height of graphic. Leave unchecked to set automatically."
-msgstr ""
-"Nastaviť výšku obrázku. Nechajte nezaškrtnuté na automatické nastavenie."
+msgstr "Nastaviť výšku obrázku. Nechajte nezaškrtnuté na automatické nastavenie."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:144
 msgid "Set &height:"
@@ -1205,8 +1204,7 @@ msgstr "Mierka grafiky (%):"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:161
 msgid "Sets width of graphic. Leave unchecked to set automatically."
-msgstr ""
-"Nastaviť šírku obrázku. Nechajte nezaškrtnuté na automatické nastavenie."
+msgstr "Nastaviť šírku obrázku. Nechajte nezaškrtnuté na automatické nastavenie."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:164
 msgid "Set &width:"
@@ -1288,8 +1286,7 @@ msgstr "&Zobraziť v LyXe"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:595
 msgid "Assign the graphic to a group of graphics that share the same settings"
-msgstr ""
-"Priraď obrázok do skupiny obrázkov podielajúce sa rovnakýmy nastaveniamy"
+msgstr "Priraď obrázok do skupiny obrázkov podielajúce sa rovnakýmy nastaveniamy"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:598
 msgid "Graphics Group"
@@ -1763,8 +1760,7 @@ msgstr "Okno pre odozvu"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:499
 msgid "Input listing parameters here. Enter ? for a list of parameters."
-msgstr ""
-"Tu vkladajte ďalšie parametry výpisu. Pre zoznam parametrov vložte znak '?'"
+msgstr "Tu vkladajte ďalšie parametry výpisu. Pre zoznam parametrov vložte znak '?'"
 
 #: src/frontends/qt4/ui/LogUi.ui:31
 msgid "Copy to Clip&board"
@@ -1956,8 +1952,7 @@ msgstr "Formát Stránky"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:103
 msgid "Choose a particular paper size, or set your own with \"Custom\""
-msgstr ""
-"Vyberte si kontkrénu veľkosť stránky, alebo nastavte si svoju vo \"Vlastné\""
+msgstr "Vyberte si kontkrénu veľkosť stránky, alebo nastavte si svoju vo \"Vlastné\""
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:121
 msgid "Style used for the page header and footer"
@@ -1999,8 +1994,7 @@ msgstr "Okamžite použiť"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:129
 msgid "Use the default alignment for this paragraph, whatever it is."
-msgstr ""
-"Použiť štandardné zarovnanie pre tento odstavec, nech už to je čo chce."
+msgstr "Použiť štandardné zarovnanie pre tento odstavec, nech už to je čo chce."
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:132
 msgid "Paragraph's &Default"
@@ -2075,8 +2069,7 @@ msgid "&General"
 msgstr "&Všeobecné"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:99
-msgid ""
-"If not stated explicitly, fill title and author from appropriate environments"
+msgid "If not stated explicitly, fill title and author from appropriate environments"
 msgstr ""
 "Pokiaľ nadpis a autor nie je zadaný explicitne, doplniť informácie z "
 "príslušných prostredí v dokumnete"
@@ -2586,8 +2579,7 @@ msgid "Right-to-left language support"
 msgstr "Podpora písania sprava-doľava"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:203 src/LyXRC.cpp:2760
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Zvoľte pre zapnutie podpory písania sprava doľava (napr. pre Hebrejčinu, "
 "Arabčinu)."
@@ -3035,8 +3027,7 @@ msgstr "Obnoviť formáty okien a ich geometrie"
 
 #: src/frontends/qt4/ui/PrefUi.ui:58
 msgid "Restore to the cursor position when the file was last closed"
-msgstr ""
-"Obnoviť pozíciu kurzoru na miesto, kde bol pri poslednom zavretí súboru"
+msgstr "Obnoviť pozíciu kurzoru na miesto, kde bol pri poslednom zavretí súboru"
 
 #: src/frontends/qt4/ui/PrefUi.ui:61
 msgid "Restore cursor &positions"
@@ -3400,8 +3391,7 @@ msgstr "Fixná šírka stĺpca"
 msgid ""
 "Specifies the vertical alignment of this cell in relation to the baseline of "
 "the row."
-msgstr ""
-"Udáva vertikálne zarovnanie tejto bunky vzhľadom k základnej linke riadku."
+msgstr "Udáva vertikálne zarovnanie tejto bunky vzhľadom k základnej linke riadku."
 
 #: src/frontends/qt4/ui/TabularUi.ui:110
 msgid "&Vertical alignment in row:"
@@ -3642,10 +3632,8 @@ msgid "Rebuild the file lists"
 msgstr "Obnoviť listinu súborov"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:104
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
-msgstr ""
-"Zobraziť obsah označeného súbora. Len možné, ak súbory sú zobrazené s cestou"
+msgid "Show contents of marked file. Only possible when files are shown with path"
+msgstr "Zobraziť obsah označeného súbora. Len možné, ak súbory sú zobrazené s cestou"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:107
 msgid "&View"
@@ -8717,8 +8705,7 @@ msgstr "Minimalistické"
 
 #: lib/layouts/minimalistic.module:5
 msgid "Redefines several insets (Index, Branch, URL) as being Minimalistic."
-msgstr ""
-"Predefinovať niekteré z vložiek ako minimalistické (Index, Vetva, URL)."
+msgstr "Predefinovať niekteré z vložiek ako minimalistické (Index, Vetva, URL)."
 
 #: lib/layouts/theorems-ams-extended.module:2
 msgid "Theorems (AMS-Extended)"
@@ -14300,8 +14287,7 @@ msgstr "Chyba Disku: "
 
 #: src/Buffer.cpp:255
 #, c-format
-msgid ""
-"LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
+msgid "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
 msgstr "LyX nemôhol vytvoriť pomocý adresár '%1$s' (možné že je plný disk?)"
 
 #: src/Buffer.cpp:317
@@ -15508,8 +15494,7 @@ msgstr "Nedá sa komunikovať s procesom kontroly pravopisu (ispell)."
 msgid ""
 "Could not insert word `%1$s' because it could not be converted to encoding `%"
 "2$s'."
-msgstr ""
-"Nedá sa vložiť slovo `%1$s', lebo ho nešlo zkonvertovať do kódovania `%2$s'."
+msgstr "Nedá sa vložiť slovo `%1$s', lebo ho nešlo zkonvertovať do kódovania `%2$s'."
 
 #: src/ISpell.cpp:481
 #, c-format
@@ -15937,8 +15922,7 @@ msgstr ""
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
-msgstr ""
-"Nastavenie alternatívneho jazyka. Implicitne sa použije jazyk dokumentu."
+msgstr "Nastavenie alternatívneho jazyka. Implicitne sa použije jazyk dokumentu."
 
 #: src/LyXRC.cpp:2438
 msgid ""
@@ -15967,8 +15951,7 @@ msgstr ""
 "zmene triedy."
 
 #: src/LyXRC.cpp:2454
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Časový interval pri automatickom ukladaní (v sekundách). 0 znamená bez "
 "automatického ukladania."
@@ -16132,8 +16115,7 @@ msgid ""
 msgstr "Zvoľte, ak príkaz pre zmenu jazyku je potrebný na začiatku dokumentu."
 
 #: src/LyXRC.cpp:2575
-msgid ""
-"Select if a language switching command is needed at the end of the document."
+msgid "Select if a language switching command is needed at the end of the document."
 msgstr "Zvoľte, ak príkaz pre zmenu jazyku je potrebný na konci dokumentu."
 
 #: src/LyXRC.cpp:2579
@@ -16157,8 +16139,7 @@ msgstr "LaTeXovský príkaz pre lokálnu zmenu jazyka."
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
-msgstr ""
-"Zrušte výber ak nechcete použiť jazyk(y) ako argument k \\documentclass."
+msgstr "Zrušte výber ak nechcete použiť jazyk(y) ako argument k \\documentclass."
 
 #: src/LyXRC.cpp:2595
 msgid ""
@@ -16192,8 +16173,7 @@ msgstr "Zrušte výber ak nechcete, aby LyX vytváral záložné súbory."
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
-msgstr ""
-"Zvoľte pre kontrolu zvýrazňovania slov ktoré nie sú v jazyku dokumentu."
+msgstr "Zvoľte pre kontrolu zvýrazňovania slov ktoré nie sú v jazyku dokumentu."
 
 #: src/LyXRC.cpp:2619
 msgid "The scrolling speed of the mouse wheel."
@@ -16205,16 +16185,14 @@ msgstr "Zdržanie pre vyťahovacie menu na doplňovanie."
 
 #: src/LyXRC.cpp:2628
 msgid "Select to display the completion popup in math mode."
-msgstr ""
-"Vybrať, aby sa vnútry mat. vzorkov vyťahovacie menu doplňovania zobrazilo."
+msgstr "Vybrať, aby sa vnútry mat. vzorkov vyťahovacie menu doplňovania zobrazilo."
 
 #: src/LyXRC.cpp:2632
 msgid "Select to display the completion popup in text mode."
 msgstr "Vybrať, aby sa textovom režime vyťahovacie menu doplňovania zobrazilo."
 
 #: src/LyXRC.cpp:2636
-msgid ""
-"Show the completion popup without delay after non-unique completion attempt."
+msgid "Show the completion popup without delay after non-unique completion attempt."
 msgstr "Bez zdržania zobraziť vyťahovacie menu pri viacznačnosti."
 
 #: src/LyXRC.cpp:2640
@@ -16253,8 +16231,7 @@ msgstr ""
 "adresármy. Použite formát vhodný pre daný operačný systém."
 
 #: src/LyXRC.cpp:2672
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 "Špecifikovanie alternatívneho súboru osobného slovníka. Napr. \"."
 "ispell_english\"."
@@ -16295,8 +16272,7 @@ msgstr "Nastavenie, či tlačiť iba párne strany."
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
-msgstr ""
-"Extra voľby pre program tlače, ktoré sa použijú tesne pred tlačou DVI súboru."
+msgstr "Extra voľby pre program tlače, ktoré sa použijú tesne pred tlačou DVI súboru."
 
 #: src/LyXRC.cpp:2708
 msgid "Extension of printer program output file. Usually \".ps\"."
@@ -16362,8 +16338,7 @@ msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "Váš obľúbený program na tlač, napr. \"dvips\", \"dvilj4\"."
 
 #: src/LyXRC.cpp:2764
-msgid ""
-"Select to have visual bidi cursor movement, unselect for logical movement."
+msgid "Select to have visual bidi cursor movement, unselect for logical movement."
 msgstr "Vyberte pre visuálny/logický pohyb kurzoru v dvojsmernom móde (bidi)"
 
 #: src/LyXRC.cpp:2768
@@ -16376,8 +16351,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2774
 msgid "The screen fonts used to display the text while editing."
-msgstr ""
-"Písmo obrazovky, ktoré sa použije na zobrazovanie textu pri upravovaní."
+msgstr "Písmo obrazovky, ktoré sa použije na zobrazovanie textu pri upravovaní."
 
 #: src/LyXRC.cpp:2783
 msgid ""
@@ -16459,12 +16433,10 @@ msgstr ""
 
 #: src/LyXRC.cpp:2846
 msgid "Enable the automatic appearance of tool tips in the work area."
-msgstr ""
-"Aktivuje automatické zobrazovanie bublinových nápovedí na pracovnej ploche."
+msgstr "Aktivuje automatické zobrazovanie bublinových nápovedí na pracovnej ploche."
 
 #: src/LyXRC.cpp:2850
-msgid ""
-"Enable the pixmap cache that might improve performance on Mac and Windows."
+msgid "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 "Zapnout vyrovnávací paměť pro pixmap, která může zlepšit výkonnost na Mac-u "
 "a Windows."
@@ -17440,10 +17412,8 @@ msgstr "Nastavenia dokumentu"
 
 #: src/frontends/qt4/GuiDocument.cpp:559
 #: src/frontends/qt4/GuiDocument.cpp:1058
-msgid ""
-"Input listings parameters on the right. Enter ? for a list of parameters."
-msgstr ""
-"Parametry výpisov zadávajte napravo. Na listinu parametrov vložte znak '?'."
+msgid "Input listings parameters on the right. Enter ? for a list of parameters."
+msgstr "Parametry výpisov zadávajte napravo. Na listinu parametrov vložte znak '?'."
 
 #: src/frontends/qt4/GuiDocument.cpp:568
 msgid "Length"
@@ -17940,10 +17910,8 @@ msgstr "Dokument potomka"
 #: src/frontends/qt4/GuiInclude.cpp:120 src/frontends/qt4/GuiInclude.cpp:182
 #: src/frontends/qt4/GuiListings.cpp:239 src/frontends/qt4/GuiListings.cpp:375
 #: src/frontends/qt4/GuiListings.cpp:450
-msgid ""
-"Input listing parameters on the right. Enter ? for a list of parameters."
-msgstr ""
-"Parametry výpisu zadávajte napravo. Na listinu parametrov vložte znak '?'."
+msgid "Input listing parameters on the right. Enter ? for a list of parameters."
+msgstr "Parametry výpisu zadávajte napravo. Na listinu parametrov vložte znak '?'."
 
 #: src/frontends/qt4/GuiInclude.cpp:315
 msgid "Select document to include"
@@ -18196,8 +18164,7 @@ msgstr "Formát v použítí"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1692
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
-msgstr ""
-"Nemôžem odstrániť Formát používaný Konvertorom. Odstráňte najprv konvertor."
+msgstr "Nemôžem odstrániť Formát používaný Konvertorom. Odstráňte najprv konvertor."
 
 #: src/frontends/qt4/GuiPrefs.cpp:1766
 msgid "LyX needs to be restarted!"
@@ -18207,8 +18174,7 @@ msgstr "Treba reštartovať LyX!"
 msgid ""
 "The change of user interface language will be fully effective only after a "
 "restart."
-msgstr ""
-"Zmena uživateľského rozhrania bude naplno aktívna len po reštartu LyXu."
+msgstr "Zmena uživateľského rozhrania bude naplno aktívna len po reštartu LyXu."
 
 #: src/frontends/qt4/GuiPrefs.cpp:1825
 msgid "Printer"
@@ -18804,8 +18770,7 @@ msgstr "Členenie"
 #: src/frontends/qt4/GuiToolbar.cpp:368
 #, c-format
 msgid "Filtering layouts with \"%1$s\". Press ESC to remove filter."
-msgstr ""
-"Filtrovanie formátov pomocou \"%1$s\". Použite ESC na odstránenie filtru."
+msgstr "Filtrovanie formátov pomocou \"%1$s\". Použite ESC na odstránenie filtru."
 
 #: src/frontends/qt4/GuiToolbar.cpp:372 src/frontends/qt4/GuiToolbar.cpp:421
 msgid "Enter characters to filter the layout list."
@@ -19713,8 +19678,7 @@ msgid "Should be composed of one or more of %1$s."
 msgstr "Malo by byť zložené jedným či viac z %1$s."
 
 #: src/insets/InsetListingsParams.cpp:284
-msgid ""
-"Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
+msgid "Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
 msgstr ""
 "Použte \\footnotesize, \\small, \\itshape, \\ttfamily alebo niečo na ten "
 "zpôsob"
@@ -20257,8 +20221,7 @@ msgstr "Spustiteľný súbor LyX nebol nájdený!"
 
 #: src/support/Package.cpp:436
 #, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1$s"
+msgid "Unable to determine the path to the LyX binary from the command line %1$s"
 msgstr "Nepodarilo sa určiť cestu k spustiteľnému súboru LyX z príkazového riadku %1$s"
 
 #: src/support/Package.cpp:555
@@ -20283,7 +20246,8 @@ msgstr "Súbor nenájdený"
 msgid ""
 "Invalid %1$s switch.\n"
 "Directory %2$s does not contain %3$s."
-msgstr "Neplatný %1$s prepínač.\n"
+msgstr ""
+"Neplatný %1$s prepínač.\n"
 "Adresár %2$s neobsahuje %3$s."
 
 #: src/support/Package.cpp:664
@@ -20301,6 +20265,8 @@ msgid ""
 "Invalid %1$s environment variable.\n"
 "%2$s is not a directory."
 msgstr ""
+"Neplatná premenná %1$s.\n"
+"%2$s nie je adresár."
 
 #: src/support/Package.cpp:690
 msgid "Directory not found"
@@ -21274,3 +21240,4 @@ msgstr "Neznámy používateľ"
 #, fuzzy
 #~ msgid "Insets|n"
 #~ msgstr "Vložiť|I"
+
