@@ -301,7 +301,7 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 			
 			case NOMENCL_CODE: {
 				InsetCommandParams icp(code);
-				InsetCommand::string2params(name, lyx::to_utf8(cmd.argument()), icp);
+				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
 				return new InsetNomencl(icp);
 			}
 			

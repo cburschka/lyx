@@ -2246,12 +2246,12 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_INSET_SETTINGS
  * \li Action: Open the inset's properties dialog.
  * \li Notion: Used for bibitem, bibtex, box, branch, citation, ert, external,
- *             float, graphics, href, include, index, label, listings, note, phantom,
- *             ref, space, tabular, vspace, wrap insets.
+ *             float, graphics, href, include, index, index_print, label, listings,
+ *             note, phantom, ref, space, tabular, vspace, wrap insets.
  * \li Syntax: inset-settings <INSET>
  * \li Params: <INSET>: <bibitem|bibtex|box|branch|citation|ert|external|float|
- *                       graphics|href|include|index|label|listings|note|phantom|ref|
- *                       space|tabular|vspace|wrap>.
+ *                       graphics|href|include|index|index_print|label|listings|
+ *                       note|phantom|ref|space|tabular|vspace|wrap>.
  * \endvar
  */
 		{ LFUN_INSET_SETTINGS, "inset-settings", ReadOnly | AtPoint, Edit },

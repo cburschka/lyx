@@ -2017,6 +2017,8 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 			code = INCLUDE_CODE;
 		else if (cmd.argument() == "index")
 			code = INDEX_CODE;
+		else if (cmd.argument() == "index_print")
+			code = INDEX_PRINT_CODE;
 		else if (cmd.argument() == "nomenclature")
 			code = NOMENCL_CODE;
 		else if (cmd.argument() == "label")

@@ -490,6 +490,8 @@ Menuset
 
 	Menu "context-indexprint"
 		IndicesListsContext
+		Separator
+		OptItem "Settings...|S" "inset-settings"
 	End
 
 End

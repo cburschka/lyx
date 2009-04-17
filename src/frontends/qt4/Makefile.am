@@ -105,6 +105,7 @@ SOURCEFILES = \
 	GuiPhantom.cpp \
 	GuiPrefs.cpp \
 	GuiPrint.cpp \
+	GuiPrintindex.cpp \
 	GuiRef.cpp \
 	GuiSearch.cpp \
 	GuiSelection.cpp \
@@ -201,6 +202,7 @@ MOCHEADER = \
 	GuiPhantom.h \
 	GuiPrefs.h \
 	GuiPrint.h \
+	GuiPrintindex.h \
 	GuiRef.h \
 	GuiSearch.h \
 	GuiSelection.h \
@@ -299,6 +301,7 @@ UIFILES = \
 	PrefsUi.ui \
 	PrefUi.ui \
 	PrintUi.ui \
+	PrintindexUi.ui \
 	RefUi.ui \
 	SearchUi.ui \
 	SendtoUi.ui \

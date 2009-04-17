@@ -400,21 +400,57 @@ docstring InsetPrintIndex::screenLabel() const
 }
 
 
+void InsetPrintIndex::doDispatch(Cursor & cur, FuncRequest & cmd)
+{
+	switch (cmd.action) {
+
+	case LFUN_INSET_MODIFY: {
+		InsetCommandParams p(INDEX_PRINT_CODE);
+		// FIXME UNICODE
+		InsetCommand::string2params("index_print",
+			to_utf8(cmd.argument()), p);
+		if (p.getCmdName().empty()) {
+			cur.noUpdate();
+			break;
+		}
+		setParam("type", p["type"]);
+		break;
+	}
+
+	default:
+		InsetCommand::doDispatch(cur, cmd);
+		break;
+	}
+}
+
+
 bool InsetPrintIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY: {
-		InsetCommandParams p(INDEX_PRINT_CODE);
-		InsetCommand::string2params("index_print", to_utf8(cmd.argument()), p);
+		if (cmd.getArg(0) == "index_print"
+		    && cmd.getArg(1) == "InsetCommand") {
+			InsetCommandParams p(INDEX_PRINT_CODE);
+			InsetCommand::string2params("index_print",
+				to_utf8(cmd.argument()), p);
+			Buffer const & realbuffer = *buffer().masterBuffer();
+			IndicesList const & indiceslist =
+				realbuffer.params().indiceslist();
+			Index const * index = indiceslist.findShortcut(p["type"]);
+			status.setEnabled(index != 0);
+			status.setOnOff(p["type"] == getParam("type"));
+			return true;
+		}
+	}
+	
+	case LFUN_INSET_DIALOG_UPDATE:
+	case LFUN_INSET_SETTINGS: {
 		Buffer const & realbuffer = *buffer().masterBuffer();
-		IndicesList const & indiceslist = realbuffer.params().indiceslist();
-		Index const * index = indiceslist.findShortcut(p["type"]);
-		status.setEnabled(index != 0);
-		status.setOnOff(p["type"] == getParam("type"));
+		status.setEnabled(realbuffer.params().use_indices);
 		return true;
-	} 
+	}
 
 	default:
 		return InsetCommand::getStatus(cur, cmd, status);
@@ -447,5 +483,13 @@ docstring InsetPrintIndex::contextMenu(BufferView const &, int, int) const
 	return buffer().masterBuffer()->params().use_indices ?
 		from_ascii("context-indexprint") : docstring();
 }
+
+
+Inset::EDITABLE InsetPrintIndex::editable() const
+{
+	return buffer().masterBuffer()->params().use_indices ?
+		IS_EDITABLE : NOT_EDITABLE;
+}
+
 
 } // namespace lyx

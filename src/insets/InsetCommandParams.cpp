@@ -55,7 +55,7 @@ static ParamInfo const & findInfo(InsetCode code, string const & cmdName)
 	case BIBTEX_CODE:
 		return InsetBibtex::findInfo(cmdName);
 	case CITE_CODE:
-		return InsetCitation::findInfo(cmdName);	
+		return InsetCitation::findInfo(cmdName);
 	case FLOAT_LIST_CODE:
 		return InsetFloatList::findInfo(cmdName);
 	case HYPERLINK_CODE:
@@ -65,7 +65,7 @@ static ParamInfo const & findInfo(InsetCode code, string const & cmdName)
 	case INDEX_PRINT_CODE:
 		return InsetPrintIndex::findInfo(cmdName);
 	case LABEL_CODE:
-		return InsetLabel::findInfo(cmdName);	
+		return InsetLabel::findInfo(cmdName);
 	case NOMENCL_CODE:
 		return InsetNomencl::findInfo(cmdName);
 	case NOMENCL_PRINT_CODE:

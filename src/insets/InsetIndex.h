@@ -103,6 +103,8 @@ public:
 	///
 	int latex(odocstream &, OutputParams const &) const;
 	///
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///
 	virtual docstring contextMenu(BufferView const & bv, int x, int y) const;
@@ -110,7 +112,7 @@ private:
 	/// Updates needed features for this inset.
 	void validate(LaTeXFeatures & features) const;
 	///
-	EDITABLE editable() const { return NOT_EDITABLE; }
+	EDITABLE editable() const;
 	///
 	DisplayType display() const { return AlignCenter; }
 	///
