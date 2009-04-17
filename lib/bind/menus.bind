@@ -56,15 +56,20 @@
 
 
 #
-# Alignment menu
+# Paragraph menu
 #
 
-#bind "M-a l"			"para-align left"	# Not yet implemented!
-#bind "M-a r"			"para-align right"	# Not yet implemented!
-#bind "M-a c"			"para-align center"	# Not yet implemented!
-#bind "M-a b"			"para-align block"	# Not yet implemented!
-#bind "M-a f"			"para-align block"	# Not yet implemented!
-#bind "M-a d"			"para-align default"	# Not yet implemented!
+\bind "M-a l"			"paragraph-params \align left"
+\bind "M-a r"			"paragraph-params \align right"
+\bind "M-a c"			"paragraph-params \align center"
+# It's called Justified in the UI
+\bind "M-a j"			"paragraph-params \align block"
+\bind "M-a e"			"paragraph-params \align default"
+\bind "M-a i"			"paragraph-params \indent-toggle"
+\bind "M-a s"			"paragraph-params \paragraph_spacing single"
+\bind "M-a o"			"paragraph-params \paragraph_spacing onehalf"
+\bind "M-a d"			"paragraph-params \paragraph_spacing double"
+\bind "M-a f"			"paragraph-params \paragraph_spacing default"
 
 
 #

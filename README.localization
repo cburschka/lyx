@@ -53,8 +53,8 @@ These chars should be somehow used in your translations, however you'll have to
 invent your own working shortcuts for dialog and menu entries and resolve 
 possible conflicts of the same shortcut chars in one menu... 
 
-Note also that there are already used global shortcuts (such as p k x c m) and
-you should avoid to use these characters for first-level menu shortcuts.
+Note also that there are already used global shortcuts (such as p k x c m s a)
+and you should avoid to use these characters for first-level menu shortcuts.
 
 '$' and '%' are usually used as handlers for formatting or variables to be 
 inserted into the strings. Character sequences like %1$s or %1$d MUST also 
