@@ -3659,7 +3659,13 @@ Sangrar
 
 párrafo
 \family default
- para cambiar el estado actual.
+ para cambiar el estado actual (atajo 
+\begin_inset Info
+type  "shortcut"
+arg   "paragraph-params \\indent-toggle"
+\end_inset
+
+).
  Si el método global para separar los párrafos está establecido en 
 \family sans
 Espacio
@@ -10297,31 +10303,77 @@ del
 párrafo
 \family default
 .
- Hay cuatro posibilidades: 
+ Hay cinco posibilidades: 
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
 Justificado
+\family default
+ (atajo 
+\begin_inset Info
+type  "shortcut"
+arg   "paragraph-params \\align block"
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
 Izquierda
+\family default
+ (
+\begin_inset Info
+type  "shortcut"
+arg   "paragraph-params \\align left"
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Derecha
+Derecha 
+\family default
+(
+\begin_inset Info
+type  "shortcut"
+arg   "paragraph-params \\align right"
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Centro
+Centro 
+\family default
+(
+\begin_inset Info
+type  "shortcut"
+arg   "paragraph-params \\align center"
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Predeterminado 
+\family default
+(
+\begin_inset Info
+type  "shortcut"
+arg   "paragraph-params \\align default"
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Standard

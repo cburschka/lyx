@@ -48,6 +48,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\Intro.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\Math.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\Shortcuts.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\UserGuide.lyx"
  SetOutPath "$INSTDIR\Resources\doc\ja"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\ja\LaTeXConfig.lyx"
  #SetOutPath "$INSTDIR\Resources\examples"
