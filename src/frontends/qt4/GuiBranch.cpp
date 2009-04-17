@@ -15,7 +15,6 @@
 #include "GuiBranch.h"
 
 #include "qt_helpers.h"
-#include "BranchList.h"
 
 #include "Buffer.h"
 #include "BufferParams.h"
