@@ -9411,7 +9411,7 @@ msgstr "Soubor|o"
 
 #: lib/ui/classic.ui:33 lib/ui/stdmenus.inc:21
 msgid "Edit|E"
-msgstr "Úpravy|a"
+msgstr "Úpravy|y"
 
 #: lib/ui/classic.ui:34 lib/ui/stdmenus.inc:23
 msgid "Insert|I"
@@ -11911,29 +11911,24 @@ msgid "Unit fraction (20 km/h)\t\\unitfrac"
 msgstr "Jednotka zlomek (km/h)\t\\unitfrac"
 
 #: lib/ui/stdtoolbars.inc:311
-#, fuzzy
 msgid "Text fraction\t\\tfrac"
-msgstr "Text. zlomek (amsmath)\t\\tfrac"
+msgstr "Text. zlomek\t\\tfrac"
 
 #: lib/ui/stdtoolbars.inc:312
-#, fuzzy
 msgid "Display fraction\t\\dfrac"
-msgstr "Celoøádkový zlomek (amsmath)\t\\dfrac"
+msgstr "Celoøádkový zlomek\t\\dfrac"
 
 #: lib/ui/stdtoolbars.inc:313
-#, fuzzy
 msgid "Continued fraction\t\\cfrac"
-msgstr "Jemný zlomek\t\\nicefrac"
+msgstr "Øetìzový zlomek\t\\cfrac"
 
 #: lib/ui/stdtoolbars.inc:314
-#, fuzzy
 msgid "Continued fraction (left)\t\\cfrac"
-msgstr "Jemný zlomek\t\\nicefrac"
+msgstr "Øetìzový zlomek (levý)\t\\cfrac"
 
 #: lib/ui/stdtoolbars.inc:315
-#, fuzzy
 msgid "Continued fraction (right)\t\\cfrac"
-msgstr "Jemný zlomek\t\\nicefrac"
+msgstr "Øetìzový zlomek (pravý)\t\\cfrac"
 
 #: lib/ui/stdtoolbars.inc:316
 msgid "Binomial\t\\binom"
@@ -19368,18 +19363,17 @@ msgid "Opened Branch Inset"
 msgstr "Vìtev - otevøená vlo¾ka"
 
 #: src/insets/InsetBranch.cpp:82
-#, fuzzy
 msgid "active"
-msgstr "acute"
+msgstr "aktivní"
 
 #: src/insets/InsetBranch.cpp:82
 msgid "non-active"
-msgstr ""
+msgstr "neaktivní"
 
 #: src/insets/InsetBranch.cpp:83
-#, fuzzy, c-format
+#, c-format
 msgid "Branch (%1$s): %2$s"
-msgstr "%1$s, %2$s"
+msgstr "Vìtev (%1$s): %2$s"
 
 #: src/insets/InsetBranch.cpp:91
 msgid "Branch: "
