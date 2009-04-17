@@ -1,11 +1,44 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\textclass book
+\textclass article
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+%This preamble is designed to ensure that the document prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \cleardoublepage
+  \pagenumbering{arabic} }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX}}
+\end_preamble
 \use_default_options false
 \language norsk
-\inputencoding default
+\inputencoding auto
 \font_roman default
 \font_sans default
 \font_typewriter default
@@ -16,23 +49,37 @@
 \font_tt_scale 100
 
 \graphics default
-\paperfontsize default
+\paperfontsize 12
 \spacing single
-\use_hyperref false
-\papersize default
+\use_hyperref true
+\pdf_title "Introduksjon til LyX"
+\pdf_author "LyX-teamet"
+\pdf_subject "LyX-dokumentasjon, introduksjon"
+\pdf_keywords "LyX, dokumentasjon"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 2
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\papersize a4paper
 \use_geometry false
-\use_amsmath 0
+\use_amsmath 1
 \use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
-\secnumdepth 2
+\secnumdepth 3
 \tocdepth 2
 \paragraph_separation indent
 \defskip medskip
 \quotes_language french
 \papercolumns 1
-\papersides 2
+\papersides 1
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
@@ -52,18 +99,20 @@ av LyX-teamet
 status open
 
 \begin_layout Plain Layout
+Bruk epostlisten for LyX-dokumentasjon, 
+\lang english
 
-\noun on
-John Weiss
-\noun default
- er hovedansvarlig for denne filen.
- Bruk epostlisten for LyX-dokumentasjon, <lyx-docs@lists.lyx.org>, om du har
- kommentarer eller forslag til rettelser.
- 
-\begin_inset Newline newline
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
 \end_inset
 
-Oversatt til norsk av 
+
+\lang norsk
+, om du har kommentarer eller forslag til rettelser.
+ Oversatt til norsk av 
 \shape smallcaps
 Helge Hafting
 \shape default
@@ -84,17 +133,11 @@ LatexCommand tableofcontents
 
 \end_layout
 
-\begin_layout Chapter
-\begin_inset CommandInset label
-LatexCommand label
-name "cha:LyX-filosofien"
-
-\end_inset
-
+\begin_layout Section
 LyX-filosofien
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Hva er LyX?
 \end_layout
 
@@ -103,7 +146,7 @@ LyX er et program for å produsere dokumenter.
  Det egner seg bra til komplekse tekniske og vitenskapelige artikler med
  formler, kryssreferanser, bibliografier, indekser m.m.
  Det er utmerket for dokumenter av enhver lengde, hvor vanlige tekstbehandlingsf
-unksjoner ønskes: automatisk side- og avsnittsnummerering, stavekontroll
+unksjoner ønskes: automatisk nummerering av sider og avsnitt, stavekontroll
  osv.
  LyX kan også brukes for å skrive et brev til mor, selvom det finnes enklere
  programmer for slike formål.
@@ -130,7 +173,7 @@ skrivemaskin-modellen
 
 .
  Det er laget for tekstforfattere som vil ha et profesjonelt resultat raskt,
- med minimal innsats, uten å måtte være spesialister i typesetting.
+ med minimal innsats, uten å måtte være spesialister i typografi.
  Typesettingen gjøres hovedsaklig av datamaskinen, ikke forfatteren; med
  LyX kan forfatteren konsentrere seg om innholdet.
 \end_layout
@@ -166,7 +209,11 @@ Med andre ord, vi er trent opp til å bekymre oss om små detaljer om hvor
 \begin_inset Quotes fld
 \end_inset
 
+
+\lang british
 What you see is what you get
+\lang norsk
+
 \begin_inset Quotes frd
 \end_inset
 
@@ -237,7 +284,7 @@ Introduksjon
 \end_layout
 
 \begin_layout Standard
-I Lyx velger du 
+I LyX velger du 
 \family sans
 Seksjon
 \family default
@@ -321,7 +368,11 @@ mener
 \begin_inset Quotes frd
 \end_inset
 
- (What You See Is What You Mean, WYSIWYM).
+ (
+\lang british
+What You See Is What You Mean
+\lang norsk
+, WYSIWYM).
  Den gjør det mye enklere å skrive dokumenter.
  Dette er også grunnen til at LyX ikke er så godt egnet til plakater og
  brosjyrer — i slike tilfeller 
@@ -335,40 +386,8 @@ e enheter som avsnitt, seksjoner, osv.
  Du bruker heller ikke en skrutrekker til å slå inn spiker med.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Forskjeller mellom LyX og andre tekstbehandlere
-\begin_inset OptArg
-status open
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-LyX og andre tekstbehandlere
-\end_layout
-
-\end_inset
-
-
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Nei, vi prøver ikke å starte (eller vinne) en tekstbehandlingskrig, men
- vi mener det er viktig å beskrive LyXs egenskaper.
- Og en av LyXs viktigste egenskaper, WYSIWYM, er grunnleggende anderledes
- enn det tekstbehandlingskonsept folk flest kjenner.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -391,7 +410,7 @@ Enter
 \family default
  eller 
 \family sans
-Space
+Mellomrom
 \family default
  to eller flere ganger på rad.)
 \end_layout
@@ -432,7 +451,7 @@ Skrifttyper og -størrelser
 \end_layout
 
 \begin_layout Itemize
-Skriftjustering (fet, kursiv, understreket, osv.)
+Skriftjustering (fet, kursiv, understreking, osv.)
 \end_layout
 
 \begin_layout Standard
@@ -453,11 +472,11 @@ Alle disse egenskapene kan finjusteres (noen krever kjennskap til LaTeX),
  enten for hele dokumentet eller deler av det.
  Se 
 \emph on
-Brukermanualen
+Håndboka
 \emph default
  eller 
 \emph on
-Avanserte funksjoner.
+Ekstra muligheter.
 \end_layout
 
 \end_inset
@@ -494,31 +513,23 @@ Kryssreferanser
 Riktig nok kan mange moderne tekstbehandlere håndtere matematiske symboler,
  tabeller og orddeling, og mange har beveget seg mot stildefinisjoner og
  WYSIWYM-filosofien.
- Men det har skjedd nylig, mens Lyx bygger på dokumentutviklingssystemet
+ Men det har skjedd nylig, mens LyX bygger på dokumentutviklingssystemet
  LaTeX.
- LaTeX har eksistert i over 15 år, og 
+ LaTeX har eksistert i over 20 år, og 
 \emph on
 virker
 \emph default
 .
 \end_layout
 
-\begin_layout Section
-Hva 
-\emph on
-er
-\emph default
- LaTeX
-\emph on
-,
-\emph default
- (og hva angår det meg)?
+\begin_layout Subsection
+Hva er LaTeX?
 \end_layout
 
 \begin_layout Standard
 LaTeX er et dokumentutviklingssystem designet av Leslie Lamport i 1985.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Informasjonen i dette avsnittet kommer fra 
@@ -531,7 +542,7 @@ A Guide to LaTeX2e,
 
  av Helmut Kopka og Patrick Dal, som er nevnt i 
 \emph on
-Brukermanualens
+Håndbokas
 \emph default
  litteraturliste.
 \end_layout
@@ -540,32 +551,6 @@ Brukermanualens
 
  Det bygger igjen på et typesettingsspråk kalt TeX, som Donald Knuth lagde
  i 1984.
- TeX uttales 
-\begin_inset Quotes fld
-\end_inset
-
-Tech
-\begin_inset Quotes frd
-\end_inset
-
-, med samme 
-\begin_inset Quotes fld
-\end_inset
-
-ch
-\begin_inset Quotes frd
-\end_inset
-
--lyd som i tysk 
-\begin_inset Quotes fld
-\end_inset
-
-ach
-\begin_inset Quotes frd
-\end_inset
-
-.
- De fleste vet ikke hva TeX er.
  TeX leser typesettingskommandoer fra en tekstfil, og utfører dem.
  Det er mer komplisert enn en skrivemaskin, men ikke så komplisert som en
  trykkpresse; men mange av pressens 
@@ -578,7 +563,11 @@ triks
 
  er implementert som algoritmer av Knuth, dette er grunnen til den fremragende
  kvaliteten på utskrifter fra TeX.
- TeX produserer en såkalt 
+ TeX produserer filer i standardformatet 
+\emph on
+pdf,
+\emph default
+ eller en såkalt 
 \begin_inset Quotes fld
 \end_inset
 
@@ -586,37 +575,30 @@ utstyrsuavhengig
 \begin_inset Quotes frd
 \end_inset
 
- (device independent) fil, 
+ (
+\lang british
+device independent
+\lang norsk
+) fil, 
 \family typewriter
 dvi
 \family default
 .
- Du kan bruke 
+ D
 \family typewriter
-dvi
+enne dvi
 \family default
--filen i programmer som forstår 
-\family typewriter
-dvi
-\family default
-, eller konvertere den til andre formater som PostScript®, PDF, o.l.
+-filen brukes for forhåndsvisninger, og kan konverteres til andre formater
+ som PostScript®.
 \end_layout
 
 \begin_layout Standard
-Hvis det ikke var for en funksjon til, ville TeX bare vært et typesettingsprogra
-m.
- Men TeX har også muligheter for å definere makroer.
- Dermed blir det straks mer interessant.
-\end_layout
-
-\begin_layout Standard
-De fleste TeX-brukere bruker egentlig en makro-pakke Knuth lagde for å skjule
- detaljene omkring typesetting.
+TeX er mer enn et typesettingsprogram.
+ Det har også mulighet for å definere makroer.
+ De fleste TeX-brukere bruker egentlig en makro-pakke Knuth lagde for å
+ skjule de typografiske detaljene.
  Det er dette folk flest kjenner som Tex.
- Vanlige brukere arbeider ikke med rå TeX, som kun er grunnleggende typesettings
-kommandoer.
- Det er bare de som lager nye makropakker som gjør det, og det er her Leslie
- Lamport kommer inn.
+ Det er her Leslie Lamport kommer inn.
  Han ville ha en makro-pakke som var mer brukerorientert og mindre typesetter-or
 ientert, et kommandosett for å sette ting som seksjoner, tabeller og formler
  på en ensartet konsistent måte.
@@ -660,8 +642,7 @@ oppførsel
  Det fins stilfiler for en lang rekke ting: utskrift av etiketter eller
  konvolutter, endring av innrykk, nye skrifttyper, håndtering av grafikk,
  design av sideoppsett, justering av litteraturlister, forandring av utseende
- og plassering for fotnoter, tabeller og figurer, listeoppsett, osv., osv.
- 
+ og plassering for fotnoter, tabeller og figurer, listeoppsett, osv.
 \end_layout
 
 \begin_layout Standard
@@ -708,7 +689,7 @@ hva
  Datamaskinen ordner deretter utseendet.
 \end_layout
 
-\begin_layout Chapter
+\begin_layout Section
 Finne frem i dokumentasjonen
 \end_layout
 
@@ -729,9 +710,9 @@ versjon 1.0
 \begin_inset Quotes frd
 \end_inset
 
-, kan noe av dokumentasjonen kan ha mangler eller være foreldet, men vi
- prøver å holde følge.
- Som for resten av LyX produseres manualene av frivillige, som har 
+, kan noe av dokumentasjonen være foreldet, eller mangle stoff.
+ Men vi prøver å holde følge! Som for resten av LyX produseres bruksanvisningene
+ av frivillige, som har 
 \begin_inset Quotes fld
 \end_inset
 
@@ -747,7 +728,7 @@ virkelige jobber
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cha:Bidra"
+reference "sec:Bidra"
 
 \end_inset
 
@@ -755,54 +736,47 @@ reference "cha:Bidra"
 \end_layout
 
 \begin_layout Standard
-Og gjør oss en tjeneste — hvis noe i manualene forvirrer deg, er uklart
- eller feil, la oss få vite det! Du kan kontakte oss ved å skrive til 
-\family typewriter
-lyx-docs@lists.lyx.org
-\family default
+Og gjør oss en tjeneste — hvis noe i bruksanvisningene forvirrer deg, er
+ uklart eller feil, la oss få vite det! Du kan kontakte oss ved å skrive
+ til 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
 .
  Hvis du har spørsmål som ikke har opplagte svar i dokumentasjonen og trenger
  hjelp fort, kan du bruke postlisten for LyX-brukere, som har adressen 
-\family typewriter
-lyx-users@lists.lyx.org
-\family default
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-users@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
 .
 \end_layout
 
-\begin_layout Section
-Formatet
+\begin_layout Subsection
+Formatet på bruksanvisningene
 \end_layout
 
 \begin_layout Standard
-Noen trykker manualene, andre leser dem på skjermen i LyX.
+Noen trykker dokumentasjonen, andre leser filene på skjermen i LyX.
  Utseendet på skjermen avviker en del fra det trykte.
  For det første står tittelen øverst i dokumentet, ikke på en egen side
  som i visse trykte versjoner.
- Hverken fotnoter eller innholdsfortegnelse er synlig.
- For å åpne en fotnote, som ser slik ut,
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Hei!
-\end_layout
-
-\begin_layout Plain Layout
-For å lukke denne fotnoten, klikk på den grå boksen over til venstre som
- det står 
-\begin_inset Quotes fld
-\end_inset
-
-fot
-\begin_inset Quotes frd
-\end_inset
-
- på.
-\end_layout
+ Hverken fotnoter eller innholdsfortegnelsen vises normalt.
+ For å åpne en fotnote, som ser slik ut:
+\begin_inset Graphics
+	filename /usr/share/lyx/doc/clipart/footnoteQt4.png
+	scale 75
 
 \end_inset
 
- klikker du på den med venstre museknapp.
+, klikker du på den med venstre museknapp.
  For innholdsfortegnelsen kan du enten klikke på den grå knappen, eller
  bruke menyen 
 \family sans
@@ -812,67 +786,37 @@ N
 aviger
 \family default
  hvor innholdet vises automatisk.
- (Prøv det!)
+ 
 \end_layout
 
 \begin_layout Standard
-I de trykte manualene opptrer alle kryssreferanser som kapittelnumre, seksjonsnu
-mre, underseksjonsnumre osv.
+I de trykte dokumentene opptrer alle kryssreferanser som kapittelnumre,
+ seksjonsnumre, underseksjonsnumre osv.
  På skjermen vil derimot kryssreferanser være en grå firkant som den følgende:
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cha:Bidra"
+ 
+\begin_inset Graphics
+	filename /usr/share/lyx/doc/clipart/referenceQt4.png
+	scale 75
 
 \end_inset
 
 .
- (Den trykte manualen viser bare et nummer.) Hvis du klikker på firkanten
- med venstre museknapp får du et vindu med liste over alle kryssreferanser
- i dokumentet.
- Denne introduksjonen har bare en, kalt 
-\begin_inset Quotes fld
-\end_inset
-
-cha:Bidrag
-\begin_inset Quotes frd
-\end_inset
-
+ Hvis du klikker på firkanten med venstre museknapp får du et vindu med
+ liste over alle kryssreferanser i dokumentet.
  Du kan hoppe til dette kapitlet ved å klikke på knappen 
-\begin_inset Quotes fld
+\family sans
+Gå
+\begin_inset space ~
 \end_inset
 
-Gå til
-\begin_inset Quotes frd
-\end_inset
-
+til
+\family default
 .
- Det er like lett å komme tilbake.
- Klikk på knappen 
-\begin_inset Quotes fld
-\end_inset
-
+ Det er like lett å komme tilbake dit du kom fra, ved å bruke knappen 
+\family sans
 Tilbake
-\begin_inset Quotes frd
-\end_inset
-
- eller trykk 
-\family sans
-C-<
 \family default
 .
- (Hva betyr 
-\begin_inset Quotes fld
-\end_inset
-
-
-\family sans
-C-<
-\family default
-
-\begin_inset Quotes frd
-\end_inset
-
-? Se under.)
 \end_layout
 
 \begin_layout Standard
@@ -886,8 +830,8 @@ Nå som vi har gjort rede for noen av forskjellene mellom den trykte versjonen
 \emph on
 Uthevet stil
 \emph default
- brukes for generell utheving, boktitler, titler på avsnitt i de andre manualene
-, og notater fra forfatterne.
+ brukes for generell utheving, generelle argumenter, boktitler, titler på
+ avsnitt i de andre bruksanvisningene, og notater fra forfatterne.
 \end_layout
 
 \begin_layout Itemize
@@ -895,13 +839,13 @@ Uthevet stil
 \family typewriter
 Skrivemaskin
 \family default
- brukes til program- og filnavn, LaTeX- og LyX-kode, og funksjoner.
+ brukes til program- og filnavn, LyX-kode og funksjoner.
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Grotesk (Sans Serif)
+Grotesk
 \family default
  brukes for navn på menyer, knapper, vinduer, og taster på tastaturet.
 \end_layout
@@ -914,29 +858,16 @@ Kapiteler
  brukes til personnavn.
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+Fet 
+\series default
+brukes til LaTeX-kode.
+\end_layout
+
 \begin_layout Standard
-For hurtigtaster og lignende henvises du til avsnittet 
-\emph on
-Key Bindings
-\emph default
- i 
-\emph on
-
-\begin_inset Quotes fld
-\end_inset
-
-Avanserte funksjoner
-\begin_inset Quotes frd
-\end_inset
-
-
-\emph default
- (filen 
-\family typewriter
-Extended.lyx
-\family default
-).
- Når vi beskriver taster, bruker vi følgende konvensjon:
+Når vi beskriver taster, bruker vi følgende konvensjon:
 \end_layout
 
 \begin_layout Itemize
@@ -945,7 +876,7 @@ Extended.lyx
 \begin_inset Quotes fld
 \end_inset
 
-C-
+Ctrl-
 \begin_inset Quotes frd
 \end_inset
 
@@ -964,7 +895,7 @@ Ctrl-
 \begin_inset Quotes fld
 \end_inset
 
-S-
+Shift-
 \begin_inset Quotes frd
 \end_inset
 
@@ -972,7 +903,7 @@ S-
 \family default
  betyr 
 \family sans
-Shift-
+Skift-
 \family default
  tasten.
 \end_layout
@@ -983,7 +914,7 @@ Shift-
 \begin_inset Quotes fld
 \end_inset
 
-M-
+Alt-
 \begin_inset Quotes frd
 \end_inset
 
@@ -991,13 +922,11 @@ M-
 \family default
  betyr 
 \family sans
-Meta-
-\family default
- tasten, som på mange tastaturer er 
-\family sans
 Alt-
 \family default
- tasten.
+ tasten, som på noen tastaturer heter 
+\family sans
+Meta
 \end_layout
 
 \begin_layout Itemize
@@ -1040,7 +969,11 @@ Esc
 
 
 \family default
- er escape-tasten.
+ er 
+\lang british
+escape
+\lang norsk
+-tasten.
 \end_layout
 
 \begin_layout Itemize
@@ -1100,7 +1033,11 @@ Ned
 \begin_inset Quotes fld
 \end_inset
 
+
+\lang british
 Insert
+\lang norsk
+
 \begin_inset Quotes frd
 \end_inset
 
@@ -1112,7 +1049,11 @@ Insert
 \begin_inset Quotes fld
 \end_inset
 
+
+\lang british
 Delete
+\lang norsk
+
 \begin_inset Quotes frd
 \end_inset
 
@@ -1124,7 +1065,11 @@ Delete
 \begin_inset Quotes fld
 \end_inset
 
+
+\lang british
 Home
+\lang norsk
+
 \begin_inset Quotes frd
 \end_inset
 
@@ -1136,7 +1081,11 @@ Home
 \begin_inset Quotes fld
 \end_inset
 
+
+\lang british
 End
+\lang norsk
+
 \begin_inset Quotes frd
 \end_inset
 
@@ -1166,7 +1115,11 @@ PageDown
 
 
 \family default
-: 6 taster som fins over piltastene på endel PC-tastaturer.
+: 6
+\begin_inset space ~
+\end_inset
+
+taster som fins over piltastene på endel PC-tastaturer.
  
 \family sans
 
@@ -1197,7 +1150,11 @@ PageDown
 \begin_inset Quotes fld
 \end_inset
 
+
+\lang british
 Prior
+\lang norsk
+
 \begin_inset Quotes frd
 \end_inset
 
@@ -1209,7 +1166,11 @@ Prior
 \begin_inset Quotes fld
 \end_inset
 
+
+\lang british
 Next
+\lang norsk
+
 \begin_inset Quotes frd
 \end_inset
 
@@ -1221,18 +1182,26 @@ Next
 \begin_layout Itemize
 
 \family sans
+\lang british
 Return
 \family default
+\lang norsk
  og 
 \family sans
+\lang british
 Enter
 \family default
+\lang norsk
  refererer til samme tast.
  Noen tastaturer bruker navnet 
 \begin_inset Quotes fld
 \end_inset
 
+
+\lang british
 Return
+\lang norsk
+
 \begin_inset Quotes frd
 \end_inset
 
@@ -1240,73 +1209,789 @@ Return
 \begin_inset Quotes fld
 \end_inset
 
+
+\lang british
 Enter
+\lang norsk
+
 \begin_inset Quotes frd
 \end_inset
 
  i stedet, noen har to taster.
  LyX behandler begge som samme tast, og kaller dem både 
 \family sans
+\lang british
 Return
 \family default
+\lang norsk
  og 
 \family sans
+\lang british
 Enter
 \family default
+\lang norsk
 .
 \end_layout
 
 \begin_layout Standard
-Du kan også støte på fraser som 
-\begin_inset Quotes fld
-\end_inset
-
-(Se 
-\emph on
-'Avanserte funksjoner'
-\emph default
-)
-\begin_inset Quotes frd
-\end_inset
-
- fra tid til annen.
- Vi har listet opp de mulige standard-hurtigtastene for funksjoner i 
-\emph on
-
-\begin_inset Quotes fld
-\end_inset
-
-Avanserte funksjoner
-\begin_inset Quotes frd
-\end_inset
-
-,
-\emph default
- så se der også.
- Legg merke til at det fins to tastaturoppsett for LyX: 
-\begin_inset Quotes fld
-\end_inset
-
-CUA
-\begin_inset Quotes frd
-\end_inset
-
--typen som er den vanlige og vel kjent for PC-brukere, og 
-\begin_inset Quotes fld
-\end_inset
-
-emacs
-\begin_inset Quotes frd
-\end_inset
-
--typen for de som har vokst opp med unix og Emacs.
- Medmindre det står noe annet refererer dokumentasjonen til CUA-typen.
- Hvis du kjenner Emacs klarer du sannsynligvis selv å finne frem i dokumentasjon
-en og aktivere emacs-oppsettet.
+Du finner en liste over hurtigtaster menyen 
+\family sans
+Hjelp
+\family default
+ under 
+\family sans
+Hurtigtaster.
 \end_layout
 
-\begin_layout Section
-Manualene
+\begin_layout Subsection
+Måleenheter
+\end_layout
+
+\begin_layout Standard
+Tabell
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cap:Units-for-image"
+
+\end_inset
+
+ forklarer måleenhetene som brukes i LyX og dokumentasjonen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement t
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "cap:Units-for-image"
+
+\end_inset
+
+Måleenheter
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="20" columns="3">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Enhet
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Engelsk
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+navn/beskrivelse
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+millimeter
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+centimeter
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+in
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang british
+inch
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+tomme
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pt
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+punkt (72.27
+\begin_inset space \thinspace{}
+\end_inset
+
+pt = 1
+\begin_inset space \thinspace{}
+\end_inset
+
+in)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pc
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pica (1
+\begin_inset space \thinspace{}
+\end_inset
+
+pc = 12
+\begin_inset space \thinspace{}
+\end_inset
+
+pt)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+sp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+skalert punkt (65536
+\begin_inset space \thinspace{}
+\end_inset
+
+sp = 1
+\begin_inset space \thinspace{}
+\end_inset
+
+pt)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang british
+big point
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+stort punkt (72
+\begin_inset space \thinspace{}
+\end_inset
+
+bp = 1
+\begin_inset space \thinspace{}
+\end_inset
+
+in)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+dd
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+didot (72
+\begin_inset space \thinspace{}
+\end_inset
+
+dd 
+\begin_inset Formula $\approx$
+\end_inset
+
+ 37.6
+\begin_inset space \thinspace{}
+\end_inset
+
+mm)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cc
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cicero (1
+\begin_inset space \thinspace{}
+\end_inset
+
+cc = 12
+\begin_inset space \thinspace{}
+\end_inset
+
+dd)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Skalér %
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang british
+Scale
+\lang norsk
+%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% av opprinnelig bildebredde
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tekstbredde %
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang british
+text
+\lang norsk
+%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% av tekstbredde
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kolonnebredde %
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang british
+col
+\lang norsk
+%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% av kolonnebredde
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sidebredde %
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang british
+page
+\lang norsk
+%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% av papirbredde
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Linjelengde %
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang british
+line
+\lang norsk
+%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% av linjelengde
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Teksthøyde %
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+theight%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% av teksthøyde
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sidehøyde %
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pheight%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% av papirhøyde
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ex
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+høyden av 
+\emph on
+x 
+\emph default
+i skriften som brukes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+em
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bredden av 
+\emph on
+M
+\emph default
+ i skriften som brukes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mu
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang british
+math unit
+\lang norsk
+ (1
+\begin_inset space \thinspace{}
+\end_inset
+
+mu = 1/18
+\begin_inset space \thinspace{}
+\end_inset
+
+em)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Bruksanvisningene
 \end_layout
 
 \begin_layout Standard
@@ -1315,8 +2000,6 @@ Følgende liste beskriver innholdet i hver av filene i dokumentasjonen.
 \end_layout
 
 \begin_layout Description
-
-\emph on
 Introduksjon
 \end_layout
 
@@ -1327,79 +2010,50 @@ Denne filen.
 
 \end_deeper
 \begin_layout Description
-
+Innføring
 \emph on
-Begynnermanual (Tutorial)
+ (
+\lang british
+Tutorial
+\lang norsk
+)
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
 Hvis LyX og LaTeX er nytt for deg, bør du starte her.
- Hvis du tror LaTeX er råmateriale for kondomer bør du definitivt lese kapittel
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cha:LyX-filosofien"
-
-\end_inset
-
-, omigjen, og deretter 
+ Hvis du har brukt LaTex før, bør du likevel lese 
 \emph on
-begynnermanualen
-\emph default
-.
- Etter å ha lest 
-\emph on
-Begynnermanualen,
-\emph default
- vil du muligens fremdeles tro LaTeX er et elastisk materiale — men du 
-\emph on
-vil
-\emph default
- vite hvordan du bruker LyX.
-\end_layout
-
-\begin_layout Standard
-Hvis du 
-\emph on
-har
-\emph default
- brukt LaTex før, bør du likevel lese 
-\emph on
-Begynnermanualen,
+Innføringen,
 \emph default
  fra og med avsnittet 
 \begin_inset Quotes fld
 \end_inset
 
+
+\lang british
 LyX for LaTeX users.
+\lang norsk
+
 \begin_inset Quotes frd
 \end_inset
 
  Det skader ikke å skumlese resten av dokumentet heller.
 \end_layout
 
-\begin_layout Standard
-Hvis du til noen tid føler deg usikker på LyX, bør du sjekke 
-\emph on
-Begynnermanualen
-\emph default
- før du går løs på de andre.
- Den er et godt springbrett.
-\end_layout
-
 \end_deeper
 \begin_layout Description
-
+Håndbok
 \emph on
-Brukermanual (User's
+ (
+\lang british
+User's
 \begin_inset space ~
 \end_inset
 
-Guide)
+Guide
+\lang norsk
+)
 \end_layout
 
 \begin_deeper
@@ -1410,65 +2064,140 @@ Den primære dokumentasjonen.
 de fleste
 \emph default
  av de grunnleggende funksjonene i LyX.
- Brukermanualen forutsetter at du har lest 
+ 
 \emph on
-Begynnermanualen.
+Håndboka
+\emph default
+ forutsetter at du har lest 
+\emph on
+Innføringen.
 \end_layout
 
 \end_deeper
 \begin_layout Description
-
-\emph on
-Avanserte
+Inkluderte
 \begin_inset space ~
 \end_inset
 
-funksjoner (Additional Features)
+objekter 
+\emph on
+(
+\lang british
+Embedded Objects
+\lang norsk
+)
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-Utvidelse av 
+Tillegg til 
 \emph on
-Brukermanualen.
-
+Håndboka
 \emph default
- Dokumenterer hvordan du bruker LaTeX-kommandoer, mer om layout, spesielle
- redigeringsfunksjoner.
- og noen av de (underlige men praktiske) triksene LaTeX-eksperter har adgang
- til.
+.
+ Detaljer om tabeller, grafikk, flytende elementer, noter og rammer.
+ Dessuten mange av LaTeX-ekspertenes spesielle triks.
 \end_layout
 
 \end_deeper
 \begin_layout Description
-
+Matte 
 \emph on
-Tilpassing (Customization)
+(
+\lang british
+Math
+\lang norsk
+)
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-En beskrivelse av avanserte Lyx-funksjoner, herunder hvordan du tilpasser
+Tillegg til 
+\emph on
+Håndboka.
+
+\emph default
+ Detaljer om typesetting av alle slags formler.
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Ekstra
+\begin_inset space ~
+\end_inset
+
+muligheter
+\emph on
+ (
+\lang british
+Additional Features
+\lang norsk
+)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Tillegg til 
+\emph on
+Håndboka.
+
+\emph default
+ Dokumenterer hvordan du bruker LaTeX-kom\SpecialChar \-
+mandoer, mer om layout, og spesielle
+ redigeringsfunksjoner.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Tilpassing
+\emph on
+ (
+\lang british
+Customization
+\lang norsk
+)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+En beskrivelse av avanserte LyX-funksjoner, herunder hvordan du tilpasser
  LyX' generelle oppførsel til dine behov.
  Dette omfatter tastaturutlegg, språktilpasning og konfigurasjonsfiler.
  Du bør ikke engang tenke på å se her før du har lest 
 \emph on
-Begynnermanualen.
+Håndboka.
 \end_layout
 
 \end_deeper
 \begin_layout Description
-
+Hurtigtaster 
 \emph on
+(Shortcuts)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Tabeller med hurtigtaster i LyX.
+\end_layout
+
+\end_deeper
+\begin_layout Description
 LaTeX
 \begin_inset space ~
 \end_inset
 
-konfigurasjon (LaTeX
+konfigurasjon
+\emph on
+ (
+\lang british
+LaTeX
 \begin_inset space ~
 \end_inset
 
-configuration)
+configuration
+\lang norsk
+)
 \end_layout
 
 \begin_deeper
@@ -1483,7 +2212,7 @@ LyX undersøker systemet under installasjonen.
 Disse filene refererer til hverandre når det er nødvendig.
  
 \emph on
-Brukermanualen
+Håndboka
 \emph default
  har for eksempel litt informasjon om installering og tilpasning, men henviser
  leseren til 
@@ -1508,7 +2237,7 @@ Vi gjentar et viktig poeng:
 \align center
 Les 
 \emph on
-Begynnermanualen
+Innføringen
 \emph default
  nå, hvis du ikke kjenner LyX fra før.
 \end_layout
@@ -1526,32 +2255,37 @@ Ellers skaffer du deg unødvendige frustrasjoner.
  tenkemåte.
 \end_layout
 
-\begin_layout Chapter
+\begin_layout Section
+Bidrag til LyX-prosjektet
 \begin_inset CommandInset label
 LatexCommand label
-name "cha:Bidra"
+name "sec:Bidra"
 
 \end_inset
 
-Bidrag til LyX-prosjektet
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Å bidra til LyX
 \end_layout
 
 \begin_layout Standard
-LyX er stort sett skrevet i C++ (LaTeX-import er skrevet i Perl).
- Det er et stort prosjekt og derfor ikke fritt for feil og behov for forbedringe
-r i kildekoden.
+LyX er stort sett skrevet i C++ (LaTeX-import er skrevet i 
+\lang british
+Python
+\lang norsk
+).
+ Det er et stort prosjekt, og derfor ikke fritt for feil og behov for forbedring
+er i kildekoden.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Rapporter feil
 \end_layout
 
 \begin_layout Standard
-Under bruk av lyx kan det hende det skjer noe du mener er feil.
+Under bruk av LyX kan det hende det skjer noe du mener er feil.
  Kræsj kan forekomme, selvom de er sjeldne.
  Feil i brukergrensesnittet regnes som alvorlige feil; det er spesielt interessa
 nt å få vite om deler av brukergrensesnittet du finner forvirrende eller
@@ -1563,7 +2297,7 @@ LyX har et feilrapporteringssystem, som du finner på
 \family typewriter
 LyX bug tracker 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -1579,15 +2313,19 @@ http://bugzilla.lyx.org/
  Hvis du har kommentarer til en kjent feil, eller ønsker å rapportere en
  ny, bruker du enten feilrapporteringssystemet eller sender en engelskspråklig
  e-post til utviklingslisten 
-\family typewriter
-lyx-devel@lists.lyx.org
-\family default
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-devel@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
 .
- Du finner arkivet for denne postlisten via LyX-hjemmesiden, 
+ Du finner arkivet for denne postlisten via LyX-hjemmesiden,
 \family typewriter
-LyX website 
+ 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -1604,7 +2342,7 @@ http://www.lyx.org/
 \begin_layout Standard
 En god (brukbar) feilrapport må som minimum fortelle hvilken versjon av
  LyX det er du har problemer med.
- Nøyaktige detaljerte feilrapporter foretrekkes - jo mer tid utviklerne
+ Nøyaktige detaljerte feilrapporter foretrekkes -- jo mer tid utviklerne
  trenger på å finne ut hva som er galt, jo mindre tid får de til andre forbedrin
 ger.
  Nevn hva slags system og hvilken versjon du kjører LyX på.
@@ -1619,118 +2357,7 @@ config.log
  
 \end_layout
 
-\begin_layout Standard
-Hvis du kan få LyX til å kræsje, ber vi deg om å spore opp feilen med gdb.
- Skriv f.eks.
- 
-\begin_inset Quotes fld
-\end_inset
-
-
-\family typewriter
-\size small
-gdb /users/steve/lyx-1.0.x/src/lyx
-\family default
-\size default
-
-\begin_inset Quotes frd
-\end_inset
-
- og deretter 
-\family typewriter
-\size small
-
-\begin_inset Quotes fld
-\end_inset
-
-run
-\family default
-\size default
-
-\begin_inset Quotes frd
-\end_inset
-
-.
- Få LyX til å kræsje, og du kommer tilbake til gdb igjen.
- skriv 
-\family typewriter
-\size small
-
-\begin_inset Quotes fld
-\end_inset
-
-bt
-\begin_inset Quotes frd
-\end_inset
-
-
-\family default
-\size default
- for å lage en 
-\begin_inset Quotes fld
-\end_inset
-
-backtrace
-\begin_inset Quotes frd
-\end_inset
-
--fil og ta den med i feilrapporten
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Hvis du vil være grundig, bruk kommandoene 
-\family typewriter
-
-\begin_inset Quotes fld
-\end_inset
-
-info locals
-\family default
-
-\begin_inset Quotes frd
-\end_inset
-
- og 
-\family typewriter
-
-\begin_inset Quotes fld
-\end_inset
-
-up
-\family default
-
-\begin_inset Quotes frd
-\end_inset
-
- for å skrive ut innholdet i lokale variabler og noen få stack-nivåer.
-\end_layout
-
-\end_inset
-
-.
- Hvis der er mulig, er en oppskrift på hvordan du kræsjer LyX enda bedre
- enn enn 
-\begin_inset Quotes fld
-\end_inset
-
-backtrace
-\begin_inset Quotes frd
-\end_inset
-
--fil fra gdb, da kan utviklerne spore opp feilen selv.
- Hvis feilen derimot er vanskelig å reprodusere er 
-\begin_inset Quotes fld
-\end_inset
-
-backtrace
-\begin_inset Quotes frd
-\end_inset
-
--filen viktig, da har vi ikke noe annet å gå ut ifra.
-\end_layout
-
-\begin_layout Subsection
+\begin_layout Subsubsection
 Bidra med retting og nye funksjoner
 \end_layout
 
@@ -1748,7 +2375,7 @@ unified
 gene dine består i.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Bidrag til dokumentasjonen
 \end_layout
 
@@ -1760,21 +2387,25 @@ LyX har omfattende dokumentasjon; men LyX er under konstant utvikling og
  forslag om å forbedre dokumentasjonen.
 \end_layout
 
-\begin_layout Subsection
-Rapporter feil i manualene
+\begin_layout Subsubsection
+Rapporter feil i bruksanvisningene
 \end_layout
 
 \begin_layout Standard
-Hvis du finner feil i en manual, send et engelskspråklig brev til postlisten
- 
-\family typewriter
-lyx-docs@lists.lyx.org
-\family default
+Hvis du finner feil i en bruksanvisning, send et engelskspråklig brev til
+ postlisten 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
 .
  Dokumentasjonsteamet tar seg av rettingen.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Delta i dokumentasjonsteamet.
 \end_layout
 
@@ -1785,44 +2416,29 @@ Som alt annet i LyX-prosjektet, har også dokumentasjonsprosjektet alltid
 \end_layout
 
 \begin_layout Enumerate
-skaff deg den nyeste LyX-kildekoden, og pakk den ut.
- 
-\begin_inset Foot
+Skaff deg den nyeste LyX-kildekoden fra 
+\begin_inset Flex URL
 status open
 
 \begin_layout Plain Layout
-De mer eventyrlystne kan hente den nyeste dokumentasjonen fra LyX's CVS-arkiv
- – den ligger i 
-\family typewriter
-lyxdoc
-\family default
--modulen.
+
+http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/doc
 \end_layout
 
 \end_inset
 
- I katalogtreet finner du en katalog kalt 
-\family typewriter
-lib/doc/
-\family default
 .
- I den finner du filen 
-\family typewriter
-DocStyle.lyx
-\family default
-.
- Les den, den er malen for hvordan dokumentasjonen skal se ut.
  
 \end_layout
 
 \begin_layout Enumerate
 Les deretter 
 \emph on
-Brukermanualen
+Håndboka
 \emph default
  og 
 \emph on
-Begynnermanualen.
+Innføringen.
 \end_layout
 
 \begin_deeper
@@ -1830,34 +2446,38 @@ Begynnermanualen.
 Meningen med dette er å gi deg idéer.
  
 \emph on
-Begynnermanualen
+Innføringen
 \emph default
  og 
 \emph on
-Brukermanualen
+Håndboka
 \emph default
  er sannsynligvis de mest oppdaterte filene i dokumentasjonen.
- Du vil få et godt inntrykk av hvordan vi vil at manualene skal se ut og
- leses.
+ Du vil få et godt inntrykk av hvordan vi vil at bruksanvisningene skal
+ se ut og leses.
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
 Kontakt teamet på engelsk på: 
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_deeper
-\begin_layout Standard
 
-\family typewriter
-lyx-docs@lists.lyx.org
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
 
-\begin_layout Standard
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
 for å diskutere de endringer du foreslår, og få tilbakemelding.
 \end_layout
 
-\end_deeper
 \begin_layout Standard
 Endringene du ønsker kan være alt fra å gjøre teksten klarere, til større
  omstruktureringer.
