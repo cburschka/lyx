@@ -2576,6 +2576,7 @@ Dialog * createGuiExternal(GuiView & lv);
 Dialog * createGuiFloat(GuiView & lv);
 Dialog * createGuiGraphics(GuiView & lv);
 Dialog * createGuiInclude(GuiView & lv);
+Dialog * createGuiIndex(GuiView & lv);
 Dialog * createGuiInfo(GuiView & lv);
 Dialog * createGuiLabel(GuiView & lv);
 Dialog * createGuiListings(GuiView & lv);
@@ -2647,6 +2648,8 @@ Dialog * GuiView::build(string const & name)
 		return createGuiGraphics(*this);
 	if (name == "include")
 		return createGuiInclude(*this);
+	if (name == "index")
+		return createGuiIndex(*this);
 	if (name == "info")
 		return createGuiInfo(*this);
 	if (name == "nomenclature")

@@ -727,6 +727,7 @@ src_frontends_qt4_header_files = Split('''
     GuiIdListModel.h
     GuiImage.h
     GuiInclude.h
+    GuiIndex.h
     GuiIndices.h
     GuiInfo.h
     GuiKeySymbol.h
@@ -820,6 +821,7 @@ src_frontends_qt4_files = Split('''
     GuiIdListModel.cpp 
     GuiImage.cpp
     GuiInclude.cpp
+    GuiIndex.cpp
     GuiIndices.cpp
     GuiInfo.cpp
     GuiKeySymbol.cpp
@@ -904,6 +906,7 @@ src_frontends_qt4_ui_files = Split('''
     HSpaceUi.ui
     HyperlinkUi.ui
     IncludeUi.ui
+    IndexUi.ui
     IndicesUi.ui
     InfoUi.ui
     LabelUi.ui

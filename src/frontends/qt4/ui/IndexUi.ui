@@ -1,0 +1,97 @@
+<ui version="4.0" >
+ <class>IndexUi</class>
+ <widget class="QDialog" name="IndexUi" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>262</width>
+    <height>108</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string/>
+  </property>
+  <property name="sizeGripEnabled" >
+   <bool>true</bool>
+  </property>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>9</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item row="1" column="0" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>71</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="1" >
+    <widget class="QPushButton" name="okPB" >
+     <property name="text" >
+      <string>&amp;OK</string>
+     </property>
+     <property name="default" >
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="3" >
+    <layout class="QVBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="indicesLA" >
+       <property name="text" >
+        <string>A&amp;vailable indices:</string>
+       </property>
+       <property name="buddy" >
+        <cstring>indicesCO</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="indicesCO" >
+       <property name="toolTip" >
+        <string>Select the index this entry should be listed in.</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="2" >
+    <widget class="QPushButton" name="cancelPB" >
+     <property name="text" >
+      <string>&amp;Cancel</string>
+     </property>
+     <property name="default" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>indicesCO</tabstop>
+  <tabstop>okPB</tabstop>
+  <tabstop>cancelPB</tabstop>
+ </tabstops>
+ <includes>
+  <include location="local" >qt_i18n.h</include>
+ </includes>
+ <resources/>
+ <connections/>
+</ui>

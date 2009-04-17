@@ -480,6 +480,8 @@ Menuset
 		OptItem "Close Inset|C" "inset-toggle close"
 		Separator
 		Item "Dissolve Inset|D" "inset-dissolve"
+		Separator
+		OptItem "Settings...|S" "inset-settings"
 	End
 
 #

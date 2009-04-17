@@ -14,6 +14,7 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
+#include "BufferView.h"
 #include "ColorSet.h"
 #include "DispatchResult.h"
 #include "Encoding.h"
@@ -170,6 +171,14 @@ int InsetIndex::docbook(odocstream & os, OutputParams const & runparams) const
 }
 
 
+bool InsetIndex::showInsetDialog(BufferView * bv) const
+{
+	bv->showDialog("index", params2string(params_),
+			const_cast<InsetIndex *>(this));
+	return true;
+}
+
+
 void InsetIndex::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
@@ -180,7 +189,16 @@ void InsetIndex::doDispatch(Cursor & cur, FuncRequest & cmd)
 			setLayout(cur.buffer()->params());
 			break;
 		}
+		InsetIndexParams params;
+		InsetIndex::string2params(to_utf8(cmd.argument()), params);
+		params_.index = params.index;
+		setLayout(cur.buffer()->params());
+		break;
 	}
+
+	case LFUN_INSET_DIALOG_UPDATE:
+		cur.bv().updateDialog("index", params2string(params_));
+		break;
 
 	default:
 		InsetCollapsable::doDispatch(cur, cmd);
@@ -205,6 +223,15 @@ bool InsetIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
 				from_utf8(cmd.getArg(1)) == params_.index);
 			return true;
 		}
+		flag.setEnabled(true);
+		return true;
+
+	case LFUN_INSET_DIALOG_UPDATE:
+	case LFUN_INSET_SETTINGS: {
+		Buffer const & realbuffer = *buffer().masterBuffer();
+		flag.setEnabled(realbuffer.params().use_indices);
+		return true;
+	}
 
 	default:
 		return InsetCollapsable::getStatus(cur, cmd, flag);
@@ -260,6 +287,30 @@ void InsetIndex::read(Lexer & lex)
 {
 	params_.read(lex);
 	InsetCollapsable::read(lex);
+}
+
+
+string InsetIndex::params2string(InsetIndexParams const & params)
+{
+	ostringstream data;
+	data << "index";
+	params.write(data);
+	return data.str();
+}
+
+
+void InsetIndex::string2params(string const & in, InsetIndexParams & params)
+{
+	params = InsetIndexParams();
+	if (in.empty())
+		return;
+
+	istringstream data(in);
+	Lexer lex;
+	lex.setStream(data);
+	lex.setContext("InsetIndex::string2params");
+	lex >> "index";
+	params.read(lex);
 }
 
 

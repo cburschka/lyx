@@ -123,6 +123,7 @@ Menuset
 		OptItem "Phantom Settings...|h" "inset-settings phantom"
 		OptItem "Branch Settings...|B" "inset-settings branch"
 		OptItem "Box Settings...|x" "inset-settings box"
+		OptItem "Index Entry Settings...|C" "inset-settings inset"
 		OptItem "Listings Settings...|g" "inset-settings listings"
 # Hey, guess what's broken ? Surprise surprise, it's tabular stuff
 # This is in the Table submenu instead for now.

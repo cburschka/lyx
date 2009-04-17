@@ -39,6 +39,10 @@ class InsetIndex : public InsetCollapsable {
 public:
 	///
 	InsetIndex(Buffer const &, InsetIndexParams const &);
+	///
+	static std::string params2string(InsetIndexParams const &);
+	///
+	static void string2params(std::string const &, InsetIndexParams &);
 private:
 	///
 	EDITABLE editable() const { return HIGHLY_EDITABLE; }
@@ -54,6 +58,8 @@ private:
 	int docbook(odocstream &, OutputParams const &) const;
 	///
 	int latex(odocstream &, OutputParams const &) const;
+	///
+	bool showInsetDialog(BufferView *) const;
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///
