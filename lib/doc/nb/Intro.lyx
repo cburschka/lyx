@@ -1,4 +1,4 @@
-#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -96,12 +96,10 @@ Introduksjon til LyX
 \begin_layout Author
 av LyX-teamet
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Bruk epostlisten for LyX-dokumentasjon, 
-\lang english
-
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
@@ -109,8 +107,6 @@ type "mailto:"
 
 \end_inset
 
-
-\lang norsk
 , om du har kommentarer eller forslag til rettelser.
  Oversatt til norsk av 
 \shape smallcaps
@@ -241,7 +237,7 @@ hva du skriver
 \emph on
 stil.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Riktignok har andre populære kontorprogrammer også fått seg noen slags stiler
@@ -465,7 +461,7 @@ Selv om de fins i LyX, trenger du dem vanligvis ikke.
  Generelt er avstanden mellom linjer, ord og avsnitt fleksibel, styrt av
  LyX.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Alle disse egenskapene kan finjusteres (noen krever kjennskap til LaTeX),
@@ -589,7 +585,7 @@ dvi
 enne dvi
 \family default
 -filen brukes for forhåndsvisninger, og kan konverteres til andre formater
- som PostScript®.
+ som PostScript.
 \end_layout
 
 \begin_layout Standard
@@ -771,7 +767,7 @@ Noen trykker dokumentasjonen, andre leser filene på skjermen i LyX.
  Hverken fotnoter eller innholdsfortegnelsen vises normalt.
  For å åpne en fotnote, som ser slik ut:
 \begin_inset Graphics
-	filename /usr/share/lyx/doc/clipart/footnoteQt4.png
+	filename ../clipart/footnoteQt4.png
 	scale 75
 
 \end_inset
@@ -795,7 +791,7 @@ I de trykte dokumentene opptrer alle kryssreferanser som kapittelnumre,
  På skjermen vil derimot kryssreferanser være en grå firkant som den følgende:
  
 \begin_inset Graphics
-	filename /usr/share/lyx/doc/clipart/referenceQt4.png
+	filename ../clipart/referenceQt4.png
 	scale 75
 
 \end_inset
@@ -2271,11 +2267,7 @@ name "sec:Bidra"
 \end_layout
 
 \begin_layout Standard
-LyX er stort sett skrevet i C++ (LaTeX-import er skrevet i 
-\lang british
-Python
-\lang norsk
-).
+LyX er stort sett skrevet i C++ (LaTeX-import er skrevet i Python).
  Det er et stort prosjekt, og derfor ikke fritt for feil og behov for forbedring
 er i kildekoden.
 \end_layout
