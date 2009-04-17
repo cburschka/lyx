@@ -20259,7 +20259,7 @@ msgstr "Spustiteľný súbor LyX nebol nájdený!"
 #, c-format
 msgid ""
 "Unable to determine the path to the LyX binary from the command line %1$s"
-msgstr "Nepodarilo sa určiť cestu k spustiteľnému súboru LyX z príkazového riadku"
+msgstr "Nepodarilo sa určiť cestu k spustiteľnému súboru LyX z príkazového riadku %1$s"
 
 #: src/support/Package.cpp:555
 #, c-format
@@ -20268,7 +20268,10 @@ msgid ""
 "\t%1$s\n"
 "Use the '-sysdir' command line parameter or set the environment variable\n"
 "%2$s to the LyX system directory containing the file `chkconfig.ltx'."
-msgstr "Použte voľbu '-sysdir' alebo nastavte premennú\n"
+msgstr ""
+"Nepodarilo sa určiť systémový adresár pri prehľadávaní\n"
+"\t%1$s\n"
+"Použte voľbu '-sysdir' alebo nastavte premennú\n"
 "%2$s na cestu adresára obsahujúceho súbor `chkconfig.ltx'."
 
 #: src/support/Package.cpp:636 src/support/Package.cpp:663
