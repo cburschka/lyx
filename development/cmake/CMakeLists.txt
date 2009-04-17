@@ -170,6 +170,7 @@ if(NOT MSVC)
 		set(CMAKE_CXX_FLAGS_RELEASE  "${LYX_CXX_FLAGS} -O2 -DNDEBUG" CACHE TYPE STRING FORCE)
 	else()
 		set(CMAKE_CXX_FLAGS_RELEASE  "${LYX_CXX_FLAGS} -O3 -DNDEBUG" CACHE TYPE STRING FORCE)
+		#set(CMAKE_CXX_FLAGS_RELEASE  "${LYX_CXX_FLAGS} -O0 -g3 -D_DEBUG" CACHE TYPE STRING FORCE)
 	endif()
 	set(CMAKE_CXX_FLAGS_PROFILE  "${CMAKE_CXX_FLAGS_RELEASE} -pg" CACHE TYPE STRING FORCE)
 endif()
@@ -200,14 +201,14 @@ if(nls OR all)
 	set(nls TRUE CACHE TYPE STRING)
 	add_definitions(-DENABLE_NLS=1)
 	message(STATUS "----- Building with ENABLE_NLS")
-else()	
+else()
 	message(STATUS "----- No nls, to enable use -Dnls=1")
 endif()
 set(nls)
 if(ASPELL_FOUND)
 	add_definitions(-DUSE_ASPELL=1)
 	message(STATUS "----- Building with USE_ASPELL")
-else()	
+else()
 	message(STATUS "----- No aspell, to get more information use -Daspell=1")
 endif()
 set(all)
@@ -222,7 +223,7 @@ if(WIN32)
 		message(STATUS "----- Console enabled, disable it with -Dnoconsole=1")
 	endif()
 	if(MSVC)
-		add_definitions(-D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -DNOMINMAX)	
+		add_definitions(-D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -DNOMINMAX)
 		# disable checked iterators for msvc release builds to get maximum speed
 		set(CMAKE_CXX_FLAGS_RELEASE  "${CMAKE_CXX_FLAGS_RELEASE} /D_SECURE_SCL=0")
 	else()
@@ -245,7 +246,7 @@ message(STATUS "")
 
 
 add_definitions(-DBOOST_USER_CONFIG="<config.h>")
-	
+
 if(MSVC AND NOT disable-pch AND NOT MERGE_FILES)
 	message(STATUS "-----")
 	message(STATUS "----- using precompiled headers, disable with -Ddisable-pch=1")
@@ -280,7 +281,7 @@ else()
 	endmacro(lyx_add_msvc_pch)
 endif()
 
-if(MSVC)	
+if(MSVC)
        if(vld)
                set(vld 1 CACHE TYPE STRING FORCE)
                set(LYX_LEAK_DETECTION 1 CACHE TYPE STRING FORCE)
@@ -300,60 +301,60 @@ if(MSVC)
 
 	if(WALL)
 		set(WALL 1 CACHE TYPE STRING FORCE)
-		
+
 		# Use the highest warning level
 		set(CMAKE_CXX_WARNING_LEVEL 4 CACHE TYPE STRING FORCE)
 		set(WARNING_LEVEL_MESSAGE "(switch to warning level 3 with -DWALL=0)")
-		
+
 		if(CMAKE_CXX_FLAGS MATCHES "/W[0-4]")
 			string(REGEX REPLACE "/W[0-4]" "/W4" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 		else()
 			set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
 		endif()
-		
+
 		if(CMAKE_C_FLAGS MATCHES "/W[0-4]")
 			string(REGEX REPLACE "/W[0-4]" "/W4" CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
 		else()
 			set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /W4")
 		endif()
-		
+
 		# add here warnings which should produce an error /weXXXX
 		set(MSVC_W_ERROR   "/we4101 /we4189")
 		# add here warnings which should be disabled /wdXXXX
 		set(MSVC_W_DISABLE "/wd4288 /wd4355 /wd4800 /wd4996 /wd4311 /wd4312 /wd4505 /wd4267 /wd4512 /wd4245 /wd4127 /wd4180")
-		
+
 		set(CMAKE_CXX_FLAGS_DEBUG
 			"${CMAKE_CXX_FLAGS_DEBUG} /Wp64 ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
 		set(CMAKE_CXX_FLAGS_RELEASE
 			"${CMAKE_CXX_FLAGS_RELEASE} /Wp64 ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
 		set(CMAKE_CXX_FLAGS_MINSIZEREL
 			"${CMAKE_CXX_FLAGS_MINSIZEREL} /Wp64 ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
-		
-	else()	
+
+	else()
 		set(WALL 0 CACHE TYPE STRING FORCE)
-		
+
 		set(CMAKE_CXX_WARNING_LEVEL 3 CACHE TYPE STRING FORCE)
 		set(WARNING_LEVEL_MESSAGE "(switch to warning level 4 with -DWALL=1)")
-	
+
 		# add here warnings which should produce an error /weXXXX
 		set(MSVC_W_ERROR   "/we4101 /we4189")
 		# add here warnings which should be disabled /wdXXXX
 		set(MSVC_W_DISABLE "/wd4288 /wd4355 /wd4800 /wd4996 /wd4267 /wd4180")
-		
+
 		set(CMAKE_CXX_FLAGS_DEBUG
 			"${CMAKE_CXX_FLAGS_DEBUG} ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
 		set(CMAKE_CXX_FLAGS_RELEASE
 			"${CMAKE_CXX_FLAGS_RELEASE} ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
 		set(CMAKE_CXX_FLAGS_MINSIZEREL
 			"${CMAKE_CXX_FLAGS_MINSIZEREL} ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
-		
+
 	endif()
-	
+
 	message(STATUS "----- Warning level      : ${CMAKE_CXX_WARNING_LEVEL}  ${WARNING_LEVEL_MESSAGE}")
 	message(STATUS "----- Warnings as errors : ${MSVC_W_ERROR}")
 	message(STATUS "----- Warnings disabled  : ${MSVC_W_DISABLE}")
 	message(STATUS "")
-	
+
 endif()
 
 
