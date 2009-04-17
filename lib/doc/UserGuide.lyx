@@ -106,9 +106,9 @@
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
-\author "" 
+\author "ab" 
 \author "" 
 \end_header
 
@@ -3751,7 +3751,17 @@ Indent
 
 Paragraph
 \family default
- option to change the state of the current paragraph.
+ option to change the state of the current paragraph
+\change_inserted 0 1239957270
+ (shortcut 
+\begin_inset Info
+type  "shortcut"
+arg   "paragraph-params \\indent-toggle"
+\end_inset
+
+)
+\change_unchanged
+.
  If paragraphs have no indentation but use extra space for separation, this
  button will be ignored (you can't indent a single paragraph by toggling
  this).
@@ -3801,9 +3811,37 @@ Text
 \begin_inset space ~
 \end_inset
 
-Layout.
-\family default
+Layout
+\change_inserted 0 1239957292
 
+\family default
+ (shortcuts are 
+\begin_inset Info
+type  "shortcut"
+arg   "paragraph-params \\paragraph_spacing single"
+\end_inset
+
+, 
+\begin_inset Info
+type  "shortcut"
+arg   "paragraph-params \\paragraph_spacing onehalf"
+\end_inset
+
+, 
+\begin_inset Info
+type  "shortcut"
+arg   "paragraph-params \\paragraph_spacing double"
+\end_inset
+
+, 
+\begin_inset Info
+type  "shortcut"
+arg   "paragraph-params \\paragraph_spacing default"
+\end_inset
+
+ for single, onehalf, double, default settings)
+\change_unchanged
+.
 \begin_inset Foot
 status collapsed
 
@@ -10105,7 +10143,35 @@ Edit\SpecialChar \menuseparator
 Paragraph Settings
 \family default
  dialog.
- There are four possibilities: 
+ There are four possibilities
+\change_inserted 0 1239958063
+ (shortcuts are 
+\begin_inset Info
+type  "shortcut"
+arg   "paragraph-params \\align block"
+\end_inset
+
+, 
+\begin_inset Info
+type  "shortcut"
+arg   "paragraph-params \\align left"
+\end_inset
+
+, 
+\begin_inset Info
+type  "shortcut"
+arg   "paragraph-params \\align right"
+\end_inset
+
+, 
+\begin_inset Info
+type  "shortcut"
+arg   "paragraph-params \\align default"
+\end_inset
+
+)
+\change_unchanged
+: 
 \end_layout
 
 \begin_layout Itemize
