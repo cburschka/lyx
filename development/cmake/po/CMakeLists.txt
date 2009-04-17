@@ -52,7 +52,7 @@ FIND_PROGRAM(GETTEXT_MSGUNIQ_EXECUTABLE msguniq)
 
 ADD_CUSTOM_COMMAND(
     OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
-    COMMAND perl
+    COMMAND ${_PERL_EXECUTABLE}
     ARGS -e "\"while(<>){print;}\"" ${_py_sources} > "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
     DEPENDS ${_py_sources}
     )
@@ -90,7 +90,11 @@ ADD_CUSTOM_COMMAND(
 file(GLOB LYX_BASE_PO_FILES RELATIVE ${TOP_SRC_DIR}/po ${TOP_SRC_DIR}/po/*.po)
 set(LYX_PO_FILES)
 foreach(_pofile ${LYX_BASE_PO_FILES})
-  configure_file(${TOP_SRC_DIR}/po/${_pofile} ${CMAKE_CURRENT_BINARY_DIR}/${_pofile} COPYONLY)
+  add_custom_command(
+    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${_pofile}
+    COMMAND ${CMAKE_COMMAND} -E copy ${TOP_SRC_DIR}/po/${_pofile} ${CMAKE_CURRENT_BINARY_DIR}/${_pofile}
+    DEPENDS ${TOP_SRC_DIR}/po/${_pofile}
+    )
   list(APPEND LYX_PO_FILES ${CMAKE_CURRENT_BINARY_DIR}/${_pofile})
 endforeach(_pofile)
 

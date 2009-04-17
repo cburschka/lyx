@@ -1,7 +1,7 @@
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 #
-# Copyright (c) 2006, Peter Kümmel, <syntheticpp@gmx.net>
+# Copyright (c) 2006, Peter KÃ¼mmel, <syntheticpp@gmx.net>
 #
 
 cmake_minimum_required(VERSION 2.4)
@@ -170,7 +170,6 @@ if(NOT MSVC)
 		set(CMAKE_CXX_FLAGS_RELEASE  "${LYX_CXX_FLAGS} -O2 -DNDEBUG" CACHE TYPE STRING FORCE)
 	else()
 		set(CMAKE_CXX_FLAGS_RELEASE  "${LYX_CXX_FLAGS} -O3 -DNDEBUG" CACHE TYPE STRING FORCE)
-		#set(CMAKE_CXX_FLAGS_RELEASE  "${LYX_CXX_FLAGS} -O0 -g3 -D_DEBUG" CACHE TYPE STRING FORCE)
 	endif()
 	set(CMAKE_CXX_FLAGS_PROFILE  "${CMAKE_CXX_FLAGS_RELEASE} -pg" CACHE TYPE STRING FORCE)
 endif()
@@ -358,10 +357,13 @@ if(MSVC)
 endif()
 
 
-if(nls OR all)
-  find_package(LyXGettext REQUIRED)
-  include_directories(${TOP_SRC_DIR}/po)
-  add_subdirectory(po)
+FIND_PROGRAM(_PERL_EXECUTABLE perl)
+if(NOT ${_PERL_EXECUTABLE} MATCHES "-NOTFOUND")
+    if(nls OR all)
+      find_package(LyXGettext REQUIRED)
+      include_directories(${TOP_SRC_DIR}/po)
+      add_subdirectory(po)
+    endif()
 endif()
 
 # compiler tests, config.h generation
@@ -389,7 +391,9 @@ endif()
 add_subdirectory(src)
 
 add_subdirectory(man)
-add_subdirectory(doc)
+if(NOT ${_PERL_EXECUTABLE} MATCHES "-NOTFOUND")
+    add_subdirectory(doc)
+endif()
 add_subdirectory(lyx2lyx)
 add_subdirectory(scripts)
 
@@ -398,7 +402,6 @@ include(../Install)
 SET(CPACK_PACKAGE_VERSION_MAJOR "${LYX_MAJOR_VERSION}")
 SET(CPACK_PACKAGE_VERSION_MINOR "${LYX_MINOR_VERSION}")
 FILE(STRINGS "${TOP_SRC_DIR}/development/cmake/LyX_summary.txt" CPACK_PACKAGE_DESCRIPTION_SUMMARY)
-#SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "A WYSIWYM (What You See Is What You Mean) document processor")
 
 SET(CPACK_PACKAGE_INSTALL_DIRECTORY "CMake ${LYX_INSTALL_SUFFIX}")
 #
@@ -412,7 +415,7 @@ SET(CPACK_RPM_PACKAGE_VENDOR "The LyX team")
 SET(CPACK_PACKAGE_CONTACT "${PACKAGE_BUGREPORT}")
 SET(CPACK_SOURCE_PACKAGE_FILE_NAME "${project}-${LYX_INSTALL_SUFFIX}")
 #
-# for the next ones, cmake insists on data  with values in some file
+# for the next ones, cpack insists on data with values in some file
 SET(CPACK_PACKAGE_DESCRIPTION_FILE "${TOP_SRC_DIR}/development/cmake/LyX_description.txt")
 SET(CPACK_RESOURCE_FILE_LICENSE "${TOP_SRC_DIR}/development/cmake/LyX_license.txt")
 
