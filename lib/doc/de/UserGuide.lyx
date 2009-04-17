@@ -167,8 +167,8 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 29.
- März 2009
+letzte Änderung: 18.
+ April 2009
 \end_layout
 
 \begin_layout Standard
@@ -5352,7 +5352,6 @@ Absatz
 \family sans
 Einstellungen
 \family default
-\SpecialChar \ldots{}
  oder klicken Sie auf 
 \begin_inset Graphics
 	filename ../../images/layout-paragraph.png
@@ -5377,7 +5376,13 @@ Absatz
 
 einrücken
 \family default
--Knopf anklicken, um die Einrückart des aktuellen Absatzes zu ändern.
+-Knopf anklicken (Tastenkürzel 
+\begin_inset Info
+type  "shortcut"
+arg   "paragraph-params \\indent-toggle"
+\end_inset
+
+), um die Einrückart des aktuellen Absatzes zu ändern.
 \end_layout
 
 \begin_layout Standard
@@ -5422,7 +5427,6 @@ Absatz
 \family sans
 Einstellungen
 \family default
-\SpecialChar \ldots{}
  oder 
 \begin_inset Graphics
 	filename ../../images/layout-paragraph.png

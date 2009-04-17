@@ -1,4 +1,4 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -3768,7 +3768,13 @@ Indente
 
 Paragraphe
 \family default
- pour changer le statut du paragraphe en cours.
+ (raccourci 
+\begin_inset Info
+type  "shortcut"
+arg   "paragraph-params \\indent-toggle"
+\end_inset
+
+) pour changer le statut du paragraphe en cours.
  Si les paragraphes sont indentés par défaut, ce bouton sera d'origine actif.
  Si les paragraphes ne sont pas indentés mais sont séparés par de l'espace
  supplémentaire, ce bouton sera complètement ignoré (vous ne pourrez pas
@@ -10644,13 +10650,21 @@ Vous pouvez modifier la justification des paragraphes avec la fenêtre de
 Paramètres de paragraphe
 \family default
 .
- Il y a quatre possibilités: 
+ Il y a cinq possibilités: 
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Justifié
+Justifié 
+\family default
+(raccourci 
+\begin_inset Info
+type  "shortcut"
+arg   "paragraph-params \\align block"
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Itemize
@@ -10660,7 +10674,15 @@ Justifié
 \begin_inset space ~
 \end_inset
 
-Gauche
+Gauche 
+\family default
+(
+\begin_inset Info
+type  "shortcut"
+arg   "paragraph-params \\align left"
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Itemize
@@ -10670,13 +10692,43 @@ Gauche
 \begin_inset space ~
 \end_inset
 
-Droite
+Droite 
+\family default
+(
+\begin_inset Info
+type  "shortcut"
+arg   "paragraph-params \\align right"
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Centré
+Centré 
+\family default
+(
+\begin_inset Info
+type  "shortcut"
+arg   "paragraph-params \\align center"
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Défaut
+\family default
+ (
+\begin_inset Info
+type  "shortcut"
+arg   "paragraph-params \\align default"
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Standard
