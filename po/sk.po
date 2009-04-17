@@ -1764,7 +1764,7 @@ msgstr "Okno pre odozvu"
 #: src/frontends/qt4/ui/ListingsUi.ui:499
 msgid "Input listing parameters here. Enter ? for a list of parameters."
 msgstr ""
-"Tu vkladejte ďalšie parametry výpisu. Pre zoznam parametrov vložte znak '?'"
+"Tu vkladajte ďalšie parametry výpisu. Pre zoznam parametrov vložte znak '?'"
 
 #: src/frontends/qt4/ui/LogUi.ui:31
 msgid "Copy to Clip&board"
@@ -11904,29 +11904,24 @@ msgid "Unit fraction (20 km/h)\t\\unitfrac"
 msgstr "Jednotka zlomok (20 km/h)\t\\unitfrac"
 
 #: lib/ui/stdtoolbars.inc:311
-#, fuzzy
 msgid "Text fraction\t\\tfrac"
-msgstr "Text. zlomok (amsmath)\t\\tfrac"
+msgstr "Text. zlomok\t\\tfrac"
 
 #: lib/ui/stdtoolbars.inc:312
-#, fuzzy
 msgid "Display fraction\t\\dfrac"
-msgstr "Celoriadkový zlomok (amsmath)\t\\dfrac"
+msgstr "Celoriadkový zlomok\t\\dfrac"
 
 #: lib/ui/stdtoolbars.inc:313
-#, fuzzy
 msgid "Continued fraction\t\\cfrac"
-msgstr "Jemný zlomok\t\\nicefrac"
+msgstr "Jemný zlomok\t\\cfrac"
 
 #: lib/ui/stdtoolbars.inc:314
-#, fuzzy
 msgid "Continued fraction (left)\t\\cfrac"
-msgstr "Jemný zlomok\t\\nicefrac"
+msgstr "Jemný zlomok (vľavo)\t\\cfrac"
 
 #: lib/ui/stdtoolbars.inc:315
-#, fuzzy
 msgid "Continued fraction (right)\t\\cfrac"
-msgstr "Jemný zlomok\t\\nicefrac"
+msgstr "Jemný zlomok (vpravo)\t\\cfrac"
 
 #: lib/ui/stdtoolbars.inc:316
 msgid "Binomial\t\\binom"
@@ -20257,15 +20252,14 @@ msgid "References: "
 msgstr "Referencie: "
 
 #: src/support/Package.cpp:435
-#, fuzzy
 msgid "LyX binary not found"
-msgstr "Reťazec nebol nájdený!"
+msgstr "Spustiteľný súbor LyX nebol nájdený!"
 
 #: src/support/Package.cpp:436
 #, c-format
 msgid ""
 "Unable to determine the path to the LyX binary from the command line %1$s"
-msgstr ""
+msgstr "Nepodarilo sa určiť cestu k spustiteľnému súboru LyX z príkazového riadku"
 
 #: src/support/Package.cpp:555
 #, c-format
@@ -20274,19 +20268,20 @@ msgid ""
 "\t%1$s\n"
 "Use the '-sysdir' command line parameter or set the environment variable\n"
 "%2$s to the LyX system directory containing the file `chkconfig.ltx'."
-msgstr ""
+msgstr "Použte voľbu '-sysdir' alebo nastavte premennú\n"
+"%2$s na cestu adresára obsahujúceho súbor `chkconfig.ltx'."
 
 #: src/support/Package.cpp:636 src/support/Package.cpp:663
-#, fuzzy
 msgid "File not found"
-msgstr "Reťazec nebol nájdený!"
+msgstr "Súbor nenájdený"
 
 #: src/support/Package.cpp:637
 #, c-format
 msgid ""
 "Invalid %1$s switch.\n"
 "Directory %2$s does not contain %3$s."
-msgstr ""
+msgstr "Neplatný %1$s prepínač.\n"
+"Adresár %2$s neobsahuje %3$s."
 
 #: src/support/Package.cpp:664
 #, c-format
@@ -20294,6 +20289,8 @@ msgid ""
 "Invalid %1$s environment variable.\n"
 "Directory %2$s does not contain %3$s."
 msgstr ""
+"Neplatná %1$s premenná.\n"
+"Adresár %2$s neobsahuje %3$s."
 
 #: src/support/Package.cpp:688
 #, c-format
@@ -20303,9 +20300,8 @@ msgid ""
 msgstr ""
 
 #: src/support/Package.cpp:690
-#, fuzzy
 msgid "Directory not found"
-msgstr "Reťazec nebol nájdený!"
+msgstr "Adresár nenájdený"
 
 #: src/support/debug.cpp:38
 msgid "No debugging message"
