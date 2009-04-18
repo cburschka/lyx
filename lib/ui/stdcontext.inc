@@ -493,7 +493,7 @@ Menuset
 	End
 
 #
-# Toc Indicis context menu
+# Toc Indices context menu
 #
 
 	Menu "context-toc-index"
