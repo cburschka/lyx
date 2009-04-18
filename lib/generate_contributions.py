@@ -1136,6 +1136,14 @@ contributers = [
                  "21 February 2005",
                  u"GUI-I architect, LyX PR head, LDN, bug reports/fixes, Itemize Bullet Selection, xforms-0.81 + gcc-2.6.3 compatibility"),
      
+     contributer(u"Manoj Rajagopalan",
+                 "rmanoj () umich ! edu", 
+                 "GPL", 
+                 "Re: patch for case-insensitive reference sorting", 
+                 "m=123506398801004", 
+                 "Feb 19 2009", 
+                 u"reference dialog tweaks"),
+     
      contributer(u"Vincent van Ravesteijn",
                  "V.F.vanRavesteijn () tudelft ! nl",
                  "GPL",
