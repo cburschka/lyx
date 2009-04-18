@@ -442,7 +442,8 @@ bool InsetPrintIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.setEnabled(index != 0);
 			status.setOnOff(p["type"] == getParam("type"));
 			return true;
-		}
+		} else
+			return InsetCommand::getStatus(cur, cmd, status);
 	}
 	
 	case LFUN_INSET_DIALOG_UPDATE:
