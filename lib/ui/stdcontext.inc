@@ -462,11 +462,42 @@ Menuset
 	End
 
 #
+# Toc Listings context menu
+#
+
+	Menu "context-toc-listing"
+		Item "Settings...|S" "inset-settings"
+	End
+
+#
 # Toc Tables context menu
 #
 
 	Menu "context-toc-table"
 		Item "Settings...|S" "inset-settings"
+	End
+
+#
+# Toc Childs context menu
+#
+	Menu "context-toc-child"
+		Item "Include|c" "inset-modify changetype include"
+		Item "Input|p" "inset-modify changetype input"
+		Item "Verbatim|V" "inset-modify changetype verbatiminput"
+		Item "Verbatim (marked blanks)|b" "inset-modify changetype verbatiminput*"
+		Item "Listing|L" "inset-modify changetype lstinputlisting"
+		Separator
+		Item "Settings...|S" "inset-settings"
+		Separator
+		Item "Edit included file...|E" "inset-edit"
+	End
+
+#
+# Toc Indicis context menu
+#
+
+	Menu "context-toc-index"
+		OptItem "Settings...|S" "inset-settings"
 	End
 
 #

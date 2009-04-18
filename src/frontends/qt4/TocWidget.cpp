@@ -106,13 +106,17 @@ Inset * TocWidget::itemInset() const
 	Inset * inset = 0;
 	if (current_type_ == "label" 
 		  || current_type_ == "graphics"
-		  || current_type_ == "citation")
+		  || current_type_ == "citation"
+		  || current_type_ == "child")
 		inset = dit.nextInset();
 
-	else if (current_type_ == "branch")
+	else if (current_type_ == "branch"
+		     || current_type_ == "index")
 		inset = &dit.inset();
 
-	else if (current_type_ == "table" || current_type_ == "figure") {
+	else if (current_type_ == "table" 
+		     || current_type_ == "listing"
+		     || current_type_ == "figure") {
 		DocIterator tmp_dit(dit);
 		tmp_dit.pop_back();
 		inset = &tmp_dit.inset();
