@@ -431,7 +431,7 @@ bool InsetPrintIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_INSET_MODIFY: {
 		if (cmd.getArg(0) == "index_print"
-		    && cmd.getArg(1) == "InsetCommand") {
+		    && cmd.getArg(1) == "CommandInset") {
 			InsetCommandParams p(INDEX_PRINT_CODE);
 			InsetCommand::string2params("index_print",
 				to_utf8(cmd.argument()), p);
