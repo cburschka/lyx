@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-04-18 12:30+0200\n"
-"PO-Revision-Date: 2009-04-18 12:39+0200\n"
+"PO-Revision-Date: 2009-04-18 15:01+0200\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
 "Language-Team: German <kde-i18n-de@lists.kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -2400,7 +2400,7 @@ msgstr "Skryť posuvník"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:191
 msgid "&Hide toolbars"
-msgstr "Skryť panel s nástrojmy"
+msgstr "Skryť lišty nástrojov"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:31
 msgid "&New..."
@@ -10347,15 +10347,15 @@ msgstr "Zmazať riadok doprava"
 
 #: lib/ui/stdcontext.inc:63 lib/ui/stdtoolbars.inc:81
 msgid "Toggle Math Toolbar"
-msgstr "Prepnúť matematický panel nástrojov"
+msgstr "Prepnúť lištu nástrojov pre matematiku"
 
 #: lib/ui/stdcontext.inc:64
 msgid "Toggle Math-Panels Toolbar"
-msgstr "Prepnúť matematický panel nástrojov"
+msgstr "Prepnúť lištu nástrojov pre matematiku"
 
 #: lib/ui/stdcontext.inc:65 lib/ui/stdtoolbars.inc:82
 msgid "Toggle Table Toolbar"
-msgstr "Prepnúť panel nástrojov pre tabuľku"
+msgstr "Prepnúť lištu nástrojov pre tabuľku"
 
 #: lib/ui/stdcontext.inc:73 lib/ui/stdcontext.inc:90
 msgid "Next Cross-Reference|N"
@@ -11036,7 +11036,7 @@ msgstr "Celoobrazovkový mód"
 
 #: lib/ui/stdmenus.inc:302
 msgid "Toolbars|b"
-msgstr "Nástrojové panely"
+msgstr "Lišty nástrojov"
 
 #: lib/ui/stdmenus.inc:322
 msgid "Special Character|p"
@@ -18824,7 +18824,7 @@ msgstr "vypnuté"
 #: src/frontends/qt4/GuiToolbar.cpp:972
 #, c-format
 msgid "Toolbar \"%1$s\" state set to %2$s"
-msgstr "Stav panelu nástrojov \"%1$s\" nastavený na %2$s"
+msgstr "Stav lišty nástrojov \"%1$s\" nastavený na %2$s"
 
 #: src/frontends/qt4/GuiVSpace.cpp:44
 msgid "Vertical Space Settings"
@@ -18853,7 +18853,7 @@ msgstr "Veľké ikony"
 #: src/frontends/qt4/GuiView.cpp:413
 #, c-format
 msgid "Unknown toolbar \"%1$s\""
-msgstr "Neznámy panel nástrojov \"%1$s\""
+msgstr "Neznáma lišta nástrojov \"%1$s\""
 
 #: src/frontends/qt4/GuiView.cpp:1286
 msgid "Select template file"
@@ -19132,7 +19132,7 @@ msgstr "Bez obsahu"
 
 #: src/frontends/qt4/Menus.cpp:1022
 msgid "Other Toolbars"
-msgstr "Iné panely nástrojov"
+msgstr "Iné lišty nástrojov"
 
 #: src/frontends/qt4/Menus.cpp:1042
 msgid "No Branch in Document!"
