@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-04-17 09:27+0200\n"
-"PO-Revision-Date: 2009-04-17 14:43+0200\n"
+"POT-Creation-Date: 2009-04-18 12:30+0200\n"
+"PO-Revision-Date: 2009-04-18 12:39+0200\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
 "Language-Team: German <kde-i18n-de@lists.kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -119,7 +119,7 @@ msgstr "Štýl citovania"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:37
 msgid "Use the jurabib styles for law and humanities"
-msgstr "Použiť stýly jurabib pre právne a humanitné obory"
+msgstr "Použite štýl jurabib pre právne a humanitné obory"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:40
 msgid "&Jurabib"
@@ -127,7 +127,7 @@ msgstr "&Jurabib"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:47
 msgid "Use the natbib styles for natural sciences and arts"
-msgstr "Použiť štýl natbib pre prírodné a umelecké obory"
+msgstr "Použite štýl natbib pre prírodné a umelecké obory"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:50
 msgid "&Natbib"
@@ -135,7 +135,7 @@ msgstr "&Natbib"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:57
 msgid "Use BibTeX's default numerical styles"
-msgstr "Použiť štandardné BibTeX numerické štýly"
+msgstr "Použite štandardné BibTeX numerické štýly"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:60
 msgid "&Default (numerical)"
@@ -203,7 +203,7 @@ msgstr "&Štýl"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:94 src/frontends/qt4/ui/BibtexUi.ui:107
 msgid "Choose a style file"
-msgstr "Vybrať súbor so štýlom"
+msgstr "Zvoľte súbor so štýlom"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:131 src/frontends/qt4/ui/BibtexUi.ui:144
 msgid "This bibliography section contains..."
@@ -438,11 +438,11 @@ msgstr "&Dostupné vetvy:"
 
 #: src/frontends/qt4/ui/BranchUi.ui:69
 msgid "Select your branch"
-msgstr "Vyber svoju vetvu"
+msgstr "Vyberte svoju vetvu"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:47
 msgid "Add a new branch to the list"
-msgstr "Pridať novú vetvu do listiny"
+msgstr "Pridajte novú vetvu do listiny"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:57
 msgid "A&vailable Branches:"
@@ -696,11 +696,11 @@ msgstr "&Hľadať:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:79
 msgid "Hit Enter to search, or click Go!"
-msgstr "Stlačte enter alebo kliknite na \"Hľadaj!\""
+msgstr "Stlačte Enter alebo kliknite na \"Hľadaj!\""
 
 #: src/frontends/qt4/ui/CitationUi.ui:92
 msgid "You can also hit Enter in the search box"
-msgstr "Vo vyhľadávacom poli môžete použiť aj enter"
+msgstr "Vo vyhľadávacom poli môžete použiť aj Enter"
 
 #: src/frontends/qt4/ui/CitationUi.ui:95
 msgid "&Go!"
@@ -794,11 +794,11 @@ msgstr "Vybrané citácie:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:547
 msgid "The Enter key works, too"
-msgstr "Klávesa enter funguje tiež"
+msgstr "Klávesa Enter funguje tiež"
 
 #: src/frontends/qt4/ui/CitationUi.ui:560
 msgid "The delete key works, too"
-msgstr "Klávesa delete funguje tiež"
+msgstr "Klávesa Delete funguje tiež"
 
 #: src/frontends/qt4/ui/CitationUi.ui:563
 msgid "D&elete"
@@ -823,7 +823,7 @@ msgstr "TeX Kód: "
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:167
 msgid "Match delimiter types"
-msgstr "Párovať typy oddělovačov"
+msgstr "Vyberte príslušné typy oddělovačov"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:170
 msgid "&Keep matched"
@@ -844,7 +844,7 @@ msgstr "Vlož&iť"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:58
 msgid "Reset to the default settings for the document class"
-msgstr "Obnoviť štandardné nastavenie triedy dokumentu"
+msgstr "Obnovte štandardné nastavenie triedy dokumentu"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:61
 msgid "Use Class Defaults"
@@ -1106,19 +1106,19 @@ msgstr "Vložte font na použitie pre CJK skript"
 
 #: src/frontends/qt4/ui/FontUi.ui:71
 msgid "Use old style instead of lining figures"
-msgstr "Použte číslice minuskové, nie verzálkové"
+msgstr "Použite číslice minuskové, nie verzálkové"
 
 #: src/frontends/qt4/ui/FontUi.ui:74
 msgid "Use &Old Style Figures"
-msgstr "Použte &minuskové číslice (old style figures)"
+msgstr "Použite &minuskové číslice (old style figures)"
 
 #: src/frontends/qt4/ui/FontUi.ui:81
 msgid "Use a real small caps shape, if the font provides one"
-msgstr "Použte reálne kapitálky v prípade, že sú fontom poskytované"
+msgstr "Použite reálne kapitálky v prípade, že sú fontom poskytované"
 
 #: src/frontends/qt4/ui/FontUi.ui:84
 msgid "Use true S&mall Caps"
-msgstr "Použte pravé Malé kapitálky"
+msgstr "Použite pravé Malé kapitálky"
 
 #: src/frontends/qt4/ui/FontUi.ui:91
 msgid "Select the default family for the document"
@@ -1140,7 +1140,7 @@ msgstr "Bez&serifové:"
 
 #: src/frontends/qt4/ui/FontUi.ui:148
 msgid "Select the Sans Serif (grotesque) typeface"
-msgstr "Zvolte bezserifovú rodinu písma (Sans Serif)"
+msgstr "Vyberte bezserifovú rodinu písma (Sans Serif)"
 
 #: src/frontends/qt4/ui/FontUi.ui:155
 msgid "S&cale (%):"
@@ -1158,7 +1158,7 @@ msgstr "&Serifové:"
 
 #: src/frontends/qt4/ui/FontUi.ui:188
 msgid "Select the roman (serif) typeface"
-msgstr "Zvolte serifové (roman serif) písmo"
+msgstr "Vyberte serifové (roman serif) písmo"
 
 #: src/frontends/qt4/ui/FontUi.ui:195
 msgid "&Typewriter:"
@@ -1166,7 +1166,7 @@ msgstr "Strojopisné:"
 
 #: src/frontends/qt4/ui/FontUi.ui:205
 msgid "Select the typewriter (monospaced) typeface"
-msgstr "Zvolte strojopisnú rodinu písma"
+msgstr "Vyberte strojopisnú rodinu písma"
 
 #: src/frontends/qt4/ui/FontUi.ui:212
 msgid "Sc&ale (%):"
@@ -1215,8 +1215,8 @@ msgstr "Nastaviť šír&ku:"
 #: src/frontends/qt4/ui/GraphicsUi.ui:174
 msgid "Scale image to maximum size not exceeding width and height"
 msgstr ""
-"Zmente mierku obrázka na maximálnu velkosť ktorá nepresahuje ani výšku ani "
-"šířku"
+"Zmeňte mierku obrázka na maximálnu veľkosť ktorá nepresahuje ani výšku ani "
+"šírku"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:187
 msgid "Rotate Graphics"
@@ -1309,7 +1309,7 @@ msgstr "&Založiť novú skupinu..."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:657
 msgid "Select an existing group for the current graphics."
-msgstr "Zvoliť existujúcu skupinu pre tento obrázok."
+msgstr "Vyberte existujúcu skupinu pre tento obrázok."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:670
 msgid "Draft mode"
@@ -1437,7 +1437,7 @@ msgstr "Parametery výpisu"
 #: src/frontends/qt4/ui/IncludeUi.ui:66 src/frontends/qt4/ui/ListingsUi.ui:507
 #: src/frontends/qt4/ui/TextLayoutUi.ui:127
 msgid "Check it to enter parameters that are not recognizable by LyX"
-msgstr "Vybrať pre parametry ináč nerozpoznávané LyX-om"
+msgstr "Vyberte pre parametry ináč nerozpoznávané LyX-om"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:69 src/frontends/qt4/ui/ListingsUi.ui:510
 #: src/frontends/qt4/ui/TextLayoutUi.ui:130
@@ -1564,7 +1564,7 @@ msgstr "Vyberte keď je súčasný dokument vložený do hlavného dokumenta"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:159
 msgid "Select de&fault master document"
-msgstr "Vybrať štandardný hlavný dokument"
+msgstr "Vyberte štandardný hlavný dokument"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:174
 msgid "&Master:"
@@ -1625,7 +1625,7 @@ msgstr "&Umiestnenie:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:68
 msgid "Specify placement (htbp) for floating listings"
-msgstr "Urči umiestnenie (htpb) pre plávajúce výpisy"
+msgstr "Určte umiestnenie (htpb) pre plávajúce výpisy"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:78
 msgid "Line numbering"
@@ -1653,7 +1653,7 @@ msgstr "Veľkos&ť písma:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:169
 msgid "Choose the font size for line numbers"
-msgstr "Vybrať veľkosť písma pre čísla riadkov"
+msgstr "Zvoľte veľkosť písma pre čísla riadkov"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:188
 #: src/frontends/qt4/ui/TabularUi.ui:298
@@ -1718,7 +1718,7 @@ msgstr "&Jazyk:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:355
 msgid "Select the programming language"
-msgstr "Vybrať programovací jazyk"
+msgstr "Vyberte programovací jazyk"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:362
 msgid "&Dialect:"
@@ -1726,7 +1726,7 @@ msgstr "&Dialekt:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:372
 msgid "Select the dialect of the programming language, if available"
-msgstr "Vybrať dialekt programovacieho jazyka"
+msgstr "Vyberte dialekt programovacieho jazyka"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:382
 msgid "Range"
@@ -1781,7 +1781,7 @@ msgstr "&Aktualizovať"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:28
 msgid "Use the margin settings provided by the document class"
-msgstr "Použiť nastavenia okrajov z triedy dokumentu"
+msgstr "Použite nastavenia okrajov z triedy dokumentu"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:31
 msgid "&Default Margins"
@@ -1845,7 +1845,7 @@ msgstr "&Stĺpce:"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:136
 msgid "Resize this to the correct table dimensions"
-msgstr "Zmeň toto na opravu veľkosti tabuľky"
+msgstr "Zmeňte toto na opravu veľkosti tabuľky"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:211 src/frontends/qt4/ui/WrapUi.ui:195
 msgid "Vertical alignment"
@@ -2060,7 +2060,7 @@ msgstr "Formát Stránky"
 #: src/frontends/qt4/ui/PageLayoutUi.ui:103
 msgid "Choose a particular paper size, or set your own with \"Custom\""
 msgstr ""
-"Vyberte si kontkrénu veľkosť stránky, alebo nastavte si svoju vo \"Vlastné\""
+"Zvoľte si kontkrénu veľkosť stránky, alebo nastavte si svoju vo \"Vlastné\""
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:121
 msgid "Style used for the page header and footer"
@@ -2090,7 +2090,7 @@ msgstr "&Orientácia:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:253
 msgid "Lay out the page for double-sided printing"
-msgstr "Rozlož stránku na obojstrannú tlač"
+msgstr "Rozložte stránku na obojstrannú tlač"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:256
 msgid "&Two-sided document"
@@ -2222,7 +2222,7 @@ msgid ""
 "Show a small triangle on the cursor if a completion is available in text "
 "mode."
 msgstr ""
-"V textovom režime zobraziť  malý trojúholník za kurzorom keď je doplňovanie "
+"V textovom režime zobraziť malý trojúholník za kurzorom keď je doplňovanie "
 "možné."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:101
@@ -2499,7 +2499,7 @@ msgstr "Jazyk pre uživatelské rozhranie:"
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:35
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:55
 msgid "Select the default language of your documents"
-msgstr "Vybrať  štandardný jazyk pre vaše dokumenty"
+msgstr "Vyberte štandardný jazyk pre vaše dokumenty"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:45
 msgid "&Default language:"
@@ -2589,7 +2589,7 @@ msgstr "Podpora písania sprava-doľava"
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
-"Zvoľte pre zapnutie podpory písania sprava doľava (napr. pre Hebrejčinu, "
+"Vyberte pre zapnutie podpory písania sprava doľava (napr. pre Hebrejčinu, "
 "Arabčinu)."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:206
@@ -2644,7 +2644,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:88
 msgid "&Use Windows-style paths in LaTeX files"
-msgstr "Používať  Windows-štýl na zápis ciest v súboroch LaTeX-u"
+msgstr "Používať Windows-štýl na zápis ciest v súboroch LaTeX-u"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:95
 msgid "Set class options to default on class change"
@@ -2889,7 +2889,7 @@ msgid ""
 "printers."
 msgstr ""
 "Vyberte to len keď používate dvips ako príkaz k tlači a máte súbory typu "
-"config.<tlačiareň> nainštalovaný pre všetky vaše tlačiarne."
+"config.<tlačiareň> nainštalované pre všetky vaše tlačiarne."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:304
 msgid "Adapt &output to printer"
@@ -2995,7 +2995,7 @@ msgstr "Alternatívny jazyk:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:77
 msgid "Specify a personal dictionary file other than the default"
-msgstr "Nastaviť osobný slovníkový súbor iný než implicitný"
+msgstr "Nastavte osobný slovníkový súbor iný než implicitný"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:87
 msgid "Personal &dictionary:"
@@ -3011,7 +3011,7 @@ msgstr "Program &kontroly pravopisu:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:117
 msgid "Override the language used for the spellchecker"
-msgstr "Prekriť jazyk použitý pre kontrolu pravopisu"
+msgstr "Udajte jazyk na použitie pri kontrole pravopisu"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:124
 msgid "Use input encod&ing"
@@ -3269,7 +3269,7 @@ msgstr "Hľadať nazpäť"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:42
 msgid "Process the converted file with this command ($$FName = file name)"
-msgstr "Spracuj konvertovaný súbor tímto príkazom ($$FName = meno súboru)"
+msgstr "Spracujte konvertovaný súbor týmto príkazom ($$FName = meno súboru)"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:101
 msgid "&Export formats:"
@@ -3318,7 +3318,7 @@ msgid ""
 "the 'Clear' button"
 msgstr ""
 "Zadajte skratku po kliknutí na toto políčko. Jeho obsah môžte zmazať pomocou "
-"tlačidla 'Zmazat'"
+"tlačidla 'Zmazať'"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:35
 msgid "Suggestions:"
@@ -3653,7 +3653,7 @@ msgstr "Zobraziť"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:124
 msgid "Selected classes or styles"
-msgstr "Zvolené triedy alebo štýly"
+msgstr "Vybrané triedy alebo štýly"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:128
 msgid "LaTeX classes"
@@ -4022,7 +4022,7 @@ msgstr "Definícia"
 
 #: lib/layouts/IEEEtran.layout:156
 msgid "Definition #:"
-msgstr "Definícia  #:"
+msgstr "Definícia #:"
 
 #: lib/layouts/IEEEtran.layout:163 lib/layouts/beamer.layout:1027
 #: lib/layouts/elsart.layout:368 lib/layouts/ijmpc.layout:163
@@ -4721,7 +4721,7 @@ msgstr "Náčrtok"
 
 #: lib/layouts/achemso.layout:59
 msgid "List of Schemes"
-msgstr "Zoznam  náčrtkov"
+msgstr "Zoznam náčrtkov"
 
 #: lib/layouts/achemso.layout:63
 msgid "scheme"
@@ -6711,7 +6711,7 @@ msgstr "Pripomienky"
 
 #: lib/layouts/heb-article.layout:88
 msgid "Remarks #."
-msgstr "Pripomienky  #."
+msgstr "Pripomienky #."
 
 #: lib/layouts/hollywood.layout:55
 msgid "More"
@@ -8882,7 +8882,7 @@ msgid ""
 "that provide a chapter environment."
 msgstr ""
 "Očísluje vety apod. podľa kapitoly. Použite tento modul len s formátom, "
-"ktoré podporuje prostredie kapitoly."
+"ktorý podporuje prostredie kapitoly."
 
 #: lib/layouts/theorems-sec.module:2
 msgid "Theorems (By Section)"
@@ -8912,7 +8912,7 @@ msgid ""
 msgstr ""
 "Definuje niektoré prostredia mat. viet pre použitie v triedach neodvodených "
 "od AMS. Implicitne sú vety číslované postupne bez ohľadu na struktúru "
-"dokumentu.To sa dá zmeniť voľbou jedného z Teorémov (usporiadané podľa ...)  "
+"dokumentu.To sa dá zmeniť voľbou jedného z Teorémov (usporiadané podľa ...) "
 "modulov."
 
 #: lib/languages:3 src/Font.cpp:51 src/Font.cpp:54 src/Font.cpp:58
@@ -14564,7 +14564,7 @@ msgstr "Dokument exportovaný ako %1$s do súboru `%2$s'"
 #: src/Buffer.cpp:2523
 #, c-format
 msgid "Document exported as %1$s"
-msgstr "Dokument exportovaný ako  %1$s"
+msgstr "Dokument exportovaný ako %1$s"
 
 #: src/Buffer.cpp:2593
 #, c-format
@@ -14630,7 +14630,7 @@ msgstr "Nahrať Originál"
 #: src/Buffer.cpp:2666
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
-msgstr "Chcete získať späť dokument %1$s  od kontroly verzií?"
+msgstr "Chcete získať späť dokument %1$s od kontroly verzií?"
 
 #: src/Buffer.cpp:2668
 msgid "Retrieve from version control?"
@@ -14651,15 +14651,15 @@ msgstr "Lyx: Pokúšam sa uložiť dokument %1$s\n"
 
 #: src/BufferList.cpp:253 src/BufferList.cpp:266 src/BufferList.cpp:280
 msgid "  Save seems successful. Phew.\n"
-msgstr " Zdá sa, že uloženie bolo úspešné. Uf.\n"
+msgstr "  Zdá sa, že uloženie bolo úspešné. Uf.\n"
 
 #: src/BufferList.cpp:256 src/BufferList.cpp:270
 msgid "  Save failed! Trying...\n"
-msgstr " Uloženie zlyhalo! Skúšam...\n"
+msgstr "  Uloženie zlyhalo! Skúšam...\n"
 
 #: src/BufferList.cpp:284
 msgid "  Save failed! Bummer. Document is lost."
-msgstr " Uloženie zlyhalo! Och. Dokument je stratený."
+msgstr "  Uloženie zlyhalo! Och. Dokument je stratený."
 
 #: src/BufferParams.cpp:480
 #, c-format
@@ -14721,7 +14721,7 @@ msgstr ""
 "Tento dokument vyžaduje Modul %1$s\n"
 "ale nenašiel sa v listine dostupných modulov.\n"
 "Keď ste ho len nedávno inštalovali, treba\n"
-"vám asi  LyX rekonfigurovať.\n"
+"vám asi LyX rekonfigurovať.\n"
 
 #: src/BufferParams.cpp:1727
 msgid "Module not available"
@@ -14800,7 +14800,7 @@ msgstr "Štatistika pre výber:"
 
 #: src/BufferView.cpp:1349
 msgid "Statistics for the document:"
-msgstr "Štatistika pre  dokument:"
+msgstr "Štatistika pre dokument:"
 
 #: src/BufferView.cpp:1352
 #, c-format
@@ -15554,7 +15554,7 @@ msgid ""
 msgstr ""
 "Chyba pri čítaní konfiguračného súboru\n"
 "%1$s.\n"
-"Prosím skontrolujte prosím vašu inštaláciu."
+"Skontrolujte prosím vašu inštaláciu."
 
 #: src/LyX.cpp:111
 msgid "LyX: reconfiguring user directory"
@@ -15700,7 +15700,7 @@ msgstr ""
 "\t-sysdir dir        pokúsi sa nastaviť systémový adresár\n"
 "\t-geometry WxH+X+Y  nastaví geometriu hlavného okna\n"
 "\t-dbg feature[,feature]...\n"
-"                  vybe patričnú časť na ladenie.\n"
+"                  vyberie patričnú časť na ladenie.\n"
 "                  Príkaz `lyx -dbg' vypíše zoznam ladiacich častí\n"
 "\t-x [--execute] command\n"
 "                  spustí príkaz command .\n"
@@ -15741,7 +15741,7 @@ msgstr "Chýba príkazový reťazec po prepínači --execute!"
 
 #: src/LyX.cpp:1029
 msgid "Missing file type [eg latex, ps...] after --export switch"
-msgstr "Chýba typ súboru [napr. latex, ps...] po prepínači  --export"
+msgstr "Chýba typ súboru [napr. latex, ps...] po prepínači --export"
 
 #: src/LyX.cpp:1042
 msgid "Missing file type [eg latex, ps...] after --import switch"
@@ -15986,7 +15986,7 @@ msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
 msgstr ""
-"Zvolte voľby pre bibtex (porovnaj man bibtex) alebo zvolte alternativný "
+"Zvoľte voľby pre bibtex (porovnaj man bibtex) alebo zvoľte alternativný "
 "kompilátor (napr. mlbibtex alebo bibulus)."
 
 #: src/LyXRC.cpp:2469
@@ -15995,7 +15995,7 @@ msgid ""
 "its global and local bind/ directories."
 msgstr ""
 "Súbor s klávesnými skratkami. Môžete použiť absolútnu cestu, ináč bude LyX "
-"hľadať v globálnych a lokálnych bind adresároch."
+"hľadať v globálnych a lokálnych bind/ adresároch."
 
 #: src/LyXRC.cpp:2473
 msgid "Select to check whether the lastfiles still exist."
@@ -16006,7 +16006,7 @@ msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
 msgstr ""
-"Definuje ako spustiť chktex. Napr. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -"
+"Definujte ako spustiť chktex. Napr. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -"
 "n30 -n38\" Pozrite si dokumentáciu k ChkTeX."
 
 #: src/LyXRC.cpp:2487
@@ -16035,7 +16035,7 @@ msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
 "E.g.\"%A, %e. %B %Y\"."
 msgstr ""
-"Tu je akceptovaný bežný strftime formát;  detaily sú v man strftime. Napr.\"%"
+"Tu je akceptovaný bežný strftime formát; detaily sú v man strftime. Napr.\"%"
 "A, %e. %B %Y\"."
 
 #: src/LyXRC.cpp:2510
@@ -16052,7 +16052,7 @@ msgstr "Novým dokumentom bude priradený tento jazyk."
 
 #: src/LyXRC.cpp:2518
 msgid "Specify the default paper size."
-msgstr "Určenie štandardnej veľkosti stránky"
+msgstr "Určite štandardné veľkosti stránky"
 
 #: src/LyXRC.cpp:2522
 msgid ""
@@ -16076,7 +16076,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2535
 msgid "Specify additional chars that can be part of a word."
-msgstr "Špecifikovanie dodatočných znakov, ktoré smú byť časťou slova."
+msgstr "Špecifikujte dodatočné znaky, ktoré smú byť časťou slova."
 
 #: src/LyXRC.cpp:2539
 msgid ""
@@ -16129,12 +16129,12 @@ msgstr "Maximálny počet slov v počiatočnom reťazci pre nové návestie"
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
-msgstr "Zvoľte, ak príkaz pre zmenu jazyku je potrebný na začiatku dokumentu."
+msgstr "Vyberte, ak je príkaz pre zmenu jazyku potrebný na začiatku dokumentu."
 
 #: src/LyXRC.cpp:2575
 msgid ""
 "Select if a language switching command is needed at the end of the document."
-msgstr "Zvoľte, ak príkaz pre zmenu jazyku je potrebný na konci dokumentu."
+msgstr "Vyberte, ak je príkaz pre zmenu jazyku potrebný na konci dokumentu."
 
 #: src/LyXRC.cpp:2579
 msgid ""
@@ -16193,7 +16193,7 @@ msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
 msgstr ""
-"Zvoľte pre kontrolu zvýrazňovania slov ktoré nie sú v jazyku dokumentu."
+"Vyberte pre kontrolu zvýrazňovania slov ktoré nie sú v jazyku dokumentu."
 
 #: src/LyXRC.cpp:2619
 msgid "The scrolling speed of the mouse wheel."
@@ -16229,11 +16229,11 @@ msgstr "Zdržanie pre riadkové doplňovanie."
 
 #: src/LyXRC.cpp:2648
 msgid "Select to display the inline completion in math mode."
-msgstr "Zvoliť pre zobrazenie riadkového doplňovania v matematickom móde."
+msgstr "Vyberte pre zobrazenie riadkového doplňovania v matematickom móde."
 
 #: src/LyXRC.cpp:2652
 msgid "Select to display the inline completion in text mode."
-msgstr "Zvoliť pre zobrazenie riadkového doplňovania v textovom móde."
+msgstr "Vyberte pre zobrazenie riadkového doplňovania v textovom móde."
 
 #: src/LyXRC.cpp:2656
 msgid "Use \"...\" to shorten long completions."
@@ -16256,8 +16256,7 @@ msgstr ""
 msgid ""
 "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
-"Špecifikovanie alternatívneho súboru osobného slovníka. Napr. \"."
-"ispell_english\"."
+"Špecifikujte alternatívny súbor osobného slovníka. Napr. \".ispell_english\"."
 
 #: src/LyXRC.cpp:2676
 msgid "Shows a typeset preview of things such as math"
@@ -16355,7 +16354,7 @@ msgstr "Voľba, ktorá bude odoslaná programu na tlač pre konkrétnu tlačiare
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
-msgstr "Vyber, keď má LyX poslať názov tlačiarne príkazu pre tlač."
+msgstr "Vyberte, keď má LyX poslať názov tlačiarne príkazu pre tlač."
 
 #: src/LyXRC.cpp:2756
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
@@ -16385,10 +16384,9 @@ msgid ""
 "this option may make some fonts look blocky in LyX. Deselecting this option "
 "makes LyX use the nearest bitmap font size available, instead of scaling."
 msgstr ""
-"Povolit změnu velikosti bitmapových fontů. Pokud používáte bitmapový font a "
-"nastavíte tuto volbu, mohou některé fonty vypadat v LyX-u kostrbatě. Pokud "
-"je tato volba vypnuta použije LyX nejbližší dostupnou velikostbitmapového "
-"fontu."
+"Povoliť zmenu veľkosti bitmapových fontov. Keď používate bitmapový font a "
+"nastavíte túto voľbu, môžu niektoré fonty vyzerať v LyX-e hranate. Vypnutím "
+"tejto voľby použije LyX najbližšiu dostupnú veľkosť bitmapového fontu."
 
 #: src/LyXRC.cpp:2787
 msgid "The font sizes used for calculating the scaling of the screen fonts."
@@ -16445,7 +16443,7 @@ msgid ""
 "will look in its global and local ui/ directories."
 msgstr ""
 "UI (užívateľské rozhranie) súbor. Môžete použiť absolútnu cestu, alebo LyX "
-"bude hľadať v globálnych a lokálnych ui adresároch."
+"bude hľadať v globálnych a lokálnych ui/ adresároch."
 
 #: src/LyXRC.cpp:2842
 msgid ""
@@ -16453,9 +16451,9 @@ msgid ""
 "if you cannot check the spelling of words containing accented letters. This "
 "may not work with all dictionaries."
 msgstr ""
-"Špecifikuje či poslať -T ako voľbu vstupného kódovania pre ispell. Povoľte "
-"to ak nemôžte kontrolovať pravopis slov s medzinárodnými znakmi. Nemusí "
-"tofungovať s každým slovníkom."
+"Špecifikujte či poslať -T ako voľbu vstupného kódovania pre ispell. Povoľte "
+"to ak nemôžte kontrolovať pravopis slov s medzinárodnými znakmi. Nemusí to "
+"fungovať s každým slovníkom."
 
 #: src/LyXRC.cpp:2846
 msgid "Enable the automatic appearance of tool tips in the work area."
@@ -16503,9 +16501,10 @@ msgid ""
 "\n"
 "Do you want to revert to the older version?"
 msgstr ""
-"Návrat k uložené verzi dokumentu %1$s znamená ztrátu všech současných změn.\n"
+"Návrat k uloženej verzii dokumentu %1$s znamená ztratu všetkých súčasných "
+"zmien.\n"
 "\n"
-"Chcete přejít zpět k starší uložené verzi ?"
+"Chcete prejsť zpät k staršej uloženej verzii ?"
 
 #: src/LyXVC.cpp:181
 msgid "Revert to stored version of document?"
@@ -16540,7 +16539,7 @@ msgstr "Nekódovatelný znak"
 
 #: src/Paragraph.cpp:2493
 msgid "Memory problem"
-msgstr "Problém s  pamäťou"
+msgstr "Problém s pamäťou"
 
 #: src/Paragraph.cpp:2493
 msgid "Paragraph not properly initialized"
@@ -16577,14 +16576,13 @@ msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr ""
-"Nemôžete vložiť medzeru na začiatok odstavca. Prečítajte si prosím Príručku"
+"Nemôžte vložiť medzeru na začiatok odstavca. Prečítajte si prosím Príručku"
 "(tutorial)."
 
 #: src/Text.cpp:533
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
-"Nemôžete takýmto spôsobom vložiť dve medzery. Prečítajte si, prosím, "
-"Príručku."
+"Nemôžte takýmto spôsobom vložiť dve medzery. Prečítajte si, prosím, Príručku."
 
 #: src/Text.cpp:1378
 msgid "[Change Tracking] "
@@ -16743,7 +16741,7 @@ msgid ""
 "You have to manually resolve the problem.\n"
 "After pressing OK, LyX will reopen the document."
 msgstr ""
-"Chyba pri aktualizovaní repositu.\n"
+"Chyba pri aktualizovaní repositáru.\n"
 "Treba vyriešiť problém manuálne.\n"
 "Po stisknutí tlačidla OK sa LyX pokúsi dokument znovu otvoriť."
 
@@ -16843,9 +16841,9 @@ msgid ""
 "\n"
 "Do you want to create a new document?"
 msgstr ""
-"Dokument %1$s ještě neexistuje.\n"
+"Dokument %1$s ešte neexistuje.\n"
 "\n"
-"Chcete vytvořit nový ?"
+"Chcete vytvoriť nový ?"
 
 #: src/buffer_funcs.cpp:106
 msgid "Create new document?"
@@ -16964,7 +16962,7 @@ msgstr ""
 "Kópiu tejto licencie by ste mali dostať spolu s týmto programom; pokiaľ nie, "
 "tak napíšte na The Free Software Foundation, Inc., 51 Franklin Street, Fifth "
 "Floor, Boston, MA 02110-1301, USA. Slovenský preklad nájdete na http://www."
-"linux.sk.  Český preklad je na http://www.freesoft.cz."
+"linux.sk. Český preklad je na http://www.freesoft.cz."
 
 #: src/frontends/qt4/GuiAbout.cpp:104
 msgid "not released yet"
@@ -17023,7 +17021,7 @@ msgstr "Syntax: set-color <lyx_name> <x11_name>"
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
-"Nepodarilo sa nastaviť farbu  \"%1$s\" - alebo nie je definovaná alebo sa "
+"Nepodarilo sa nastaviť farbu \"%1$s\" - alebo nie je definovaná alebo sa "
 "nedá predefinovať"
 
 #: src/frontends/qt4/GuiApplication.cpp:1277
@@ -17082,7 +17080,7 @@ msgstr "BibTeX databázy (*.bib)"
 
 #: src/frontends/qt4/GuiBibtex.cpp:439
 msgid "Select a BibTeX database to add"
-msgstr "Vybrať BibTeX databázu k pridaniu"
+msgstr "Vyberte BibTeX databázu na pridanie"
 
 #: src/frontends/qt4/GuiBibtex.cpp:447
 msgid "BibTeX Styles (*.bst)"
@@ -17090,7 +17088,7 @@ msgstr "BibTeX štýly (*.bst)"
 
 #: src/frontends/qt4/GuiBibtex.cpp:449
 msgid "Select a BibTeX style"
-msgstr "Vybrať BibTeX štýl"
+msgstr "Vyberte BibTeX štýl"
 
 #: src/frontends/qt4/GuiBox.cpp:56
 msgid "No frame"
@@ -17275,7 +17273,7 @@ msgstr "%1$s súborov"
 
 #: src/frontends/qt4/GuiClipboard.cpp:166
 msgid "Choose a filename to save the pasted graphic as"
-msgstr "Zvoliť názov súboru, pod ktorým sa vlepená grafika má uložit"
+msgstr "Zvoľte názov súboru, pod ktorým sa vlepená grafika má uložit"
 
 #: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1364
 #: src/frontends/qt4/GuiView.cpp:1512 src/frontends/qt4/GuiView.cpp:1528
@@ -17795,7 +17793,7 @@ msgstr "Mierka%"
 
 #: src/frontends/qt4/GuiExternal.cpp:666
 msgid "Select external file"
-msgstr "Zvoľte externý súbor"
+msgstr "Vyberte externý súbor"
 
 #: src/frontends/qt4/GuiFloat.cpp:28
 msgid "Float Settings"
@@ -17865,7 +17863,7 @@ msgstr "Skupina obrázkov s menom '%1$s' už existuje."
 
 #: src/frontends/qt4/GuiGraphics.cpp:834
 msgid "Select graphics file"
-msgstr "Zvoľte grafický súbor"
+msgstr "Vyberte súbor s grafikou"
 
 #: src/frontends/qt4/GuiGraphics.cpp:846
 msgid "Clipart|#C#c"
@@ -17947,7 +17945,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiInclude.cpp:315
 msgid "Select document to include"
-msgstr "Zvoľte dokument na zahrnutie"
+msgstr "Vyberte dokument na zahrnutie"
 
 #: src/frontends/qt4/GuiInclude.cpp:322
 msgid "LaTeX/LyX Documents (*.tex *.lyx)"
@@ -18049,7 +18047,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiLog.cpp:218
 msgid "No lyx2lyx error log file found."
-msgstr "Žiadny protokolný súbor chýb  lyx2lyx sa nenašiel."
+msgstr "Žiadny protokolný súbor chýb lyx2lyx sa nenašiel."
 
 #: src/frontends/qt4/GuiLog.cpp:221
 msgid "No version control log file found."
@@ -18135,23 +18133,23 @@ msgstr "Cesty"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1021
 msgid "Select directory for example files"
-msgstr "Vybrať adresár s príkladmi"
+msgstr "Vyberte adresár s príkladmi"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1030
 msgid "Select a document templates directory"
-msgstr "Zvoliť adresár pre šablóny dokumentov"
+msgstr "Vyberte adresár pre šablóny dokumentov"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1039
 msgid "Select a temporary directory"
-msgstr "Zvoliť pomocný adresár"
+msgstr "Vyberte pomocný adresár"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1048
 msgid "Select a backups directory"
-msgstr "Vybrať adresár na zálohy"
+msgstr "Vyberte adresár na zálohy"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1057
 msgid "Select a document directory"
-msgstr "Vybrať adresár pre dokumenty"
+msgstr "Vyberte adresár pre dokumenty"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1066
 msgid "Give a filename for the LyX server pipe"
@@ -18302,15 +18300,15 @@ msgstr "Totožnosť"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2746
 msgid "Choose bind file"
-msgstr "Vyberte súbor väzobných skratiek"
+msgstr "Zvoľte súbor väzbových skratiek"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2747
 msgid "LyX bind files (*.bind)"
-msgstr "Väzobné zkratky LyX-u (*.bind)"
+msgstr "Väzbové zkratky LyX-u (*.bind)"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2753
 msgid "Choose UI file"
-msgstr "Vybrať súbor uživatelského rozhrania"
+msgstr "Zvoľte súbor uživatelského rozhrania"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2754
 msgid "LyX UI files (*.ui)"
@@ -18318,7 +18316,7 @@ msgstr "LyX UI súbory (*.ui)"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2760
 msgid "Choose keyboard map"
-msgstr "Vybrat mapu kláves"
+msgstr "Zvoľte mapu kláves"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2761
 msgid "LyX keyboard maps (*.kmap)"
@@ -18326,7 +18324,7 @@ msgstr "LyX klávesové mapy (*.kmap)"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2767
 msgid "Choose personal dictionary"
-msgstr "Zvoliť osobný slovník"
+msgstr "Zvoľte osobný slovník"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2768
 msgid "*.pws"
@@ -18407,7 +18405,7 @@ msgstr "Kontrola pravopisu zlyhala"
 #: src/frontends/qt4/GuiSpellchecker.cpp:419
 #, c-format
 msgid "%1$d words checked."
-msgstr "%1$d  slov skontrolované."
+msgstr "%1$d slov skontrolované."
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:421
 msgid "One word checked."
@@ -18850,7 +18848,7 @@ msgstr "Normálné ikony"
 
 #: src/frontends/qt4/GuiView.cpp:204
 msgid "Big-sized icons"
-msgstr "Velké ikony"
+msgstr "Veľké ikony"
 
 #: src/frontends/qt4/GuiView.cpp:413
 #, c-format
@@ -18859,7 +18857,7 @@ msgstr "Neznámy panel nástrojov \"%1$s\""
 
 #: src/frontends/qt4/GuiView.cpp:1286
 msgid "Select template file"
-msgstr "Zvoliť súbor šablóny"
+msgstr "Vyberte súbor šablóny"
 
 #: src/frontends/qt4/GuiView.cpp:1288 src/frontends/qt4/GuiView.cpp:1700
 msgid "Templates|#T#t"
@@ -18876,7 +18874,7 @@ msgstr "Dokument nie je nahraný."
 
 #: src/frontends/qt4/GuiView.cpp:1344
 msgid "Select document to open"
-msgstr "Zvoliť dokument pre otvorenie"
+msgstr "Vyberte dokument pre otvorenie"
 
 #: src/frontends/qt4/GuiView.cpp:1346 src/frontends/qt4/GuiView.cpp:1493
 #: src/frontends/qt4/GuiView.cpp:1621
@@ -18947,7 +18945,7 @@ msgstr "Žiadne informácie pre import formátu %1$s."
 #: src/frontends/qt4/GuiView.cpp:1488
 #, c-format
 msgid "Select %1$s file to import"
-msgstr "Zvoliť súbor %1$s na import"
+msgstr "Vyberte súbor %1$s na import"
 
 #: src/frontends/qt4/GuiView.cpp:1539 src/frontends/qt4/GuiView.cpp:1724
 #, c-format
@@ -18979,7 +18977,7 @@ msgstr "Súbor nie je importovaný!"
 
 #: src/frontends/qt4/GuiView.cpp:1619
 msgid "Select LyX document to insert"
-msgstr "Zvoľte LyX dokument na vloženie"
+msgstr "Vyberte LyX dokument na vloženie"
 
 #: src/frontends/qt4/GuiView.cpp:1660
 msgid "Select file to insert"
@@ -18991,7 +18989,7 @@ msgstr "Všetky súbory (*)"
 
 #: src/frontends/qt4/GuiView.cpp:1697
 msgid "Choose a filename to save document as"
-msgstr "Zvoliť názov súboru, pod ktorým sa má dokument uložiť"
+msgstr "Zvoľte názov súboru, pod ktorým sa má dokument uložiť"
 
 #: src/frontends/qt4/GuiView.cpp:1729 src/frontends/qt4/GuiView.cpp:1774
 msgid "&Rename"
@@ -19183,7 +19181,7 @@ msgstr "Dokumenty potomkov"
 
 #: src/frontends/qt4/qt_helpers.cpp:510
 msgid "List of Graphics"
-msgstr "Zoznam  Grafík"
+msgstr "Zoznam Grafík"
 
 #: src/frontends/qt4/qt_helpers.cpp:512
 msgid "List of Equations"
@@ -19199,7 +19197,7 @@ msgstr "Zoznam výpisov"
 
 #: src/frontends/qt4/qt_helpers.cpp:518
 msgid "List of Indexes"
-msgstr "Zoznam  indexov"
+msgstr "Zoznam indexov"
 
 #: src/frontends/qt4/qt_helpers.cpp:520
 msgid "List of Marginal notes"
@@ -19257,7 +19255,7 @@ msgid ""
 "The BibTeX inset includes %1$s databases.\n"
 "If you proceed, all of them will be opened."
 msgstr ""
-"Vložka BibTeX-u zahrňuje  %1$s databázy.\n"
+"Vložka BibTeX-u zahrňuje %1$s databázy.\n"
 "Keď budete pokračovat, budú všekty otvorené."
 
 #: src/insets/InsetBibtex.cpp:142
@@ -19533,7 +19531,7 @@ msgid ""
 msgstr ""
 "Zahrnutý súbor `%1$s'\n"
 "má triedu (textclass) `%2$s'\n"
-"zatiaľ čo  rodičovský súbor má triedu `%3$s'."
+"zatiaľ čo rodičovský súbor má triedu `%3$s'."
 
 #: src/insets/InsetInclude.cpp:500
 msgid "Different textclasses"
@@ -19665,11 +19663,11 @@ msgstr "Nesúmerný počet zátvoriek !"
 
 #: src/insets/InsetListingsParams.cpp:133
 msgid "Please specify true or false."
-msgstr "Prosím zadajte true alebo false."
+msgstr "Prosím zadajte 'true' alebo 'false'."
 
 #: src/insets/InsetListingsParams.cpp:136
 msgid "Only true or false is allowed."
-msgstr "Povolené jedine true alebo false."
+msgstr "Povolené jedine 'true' alebo 'false'."
 
 #: src/insets/InsetListingsParams.cpp:146
 msgid "Please specify an integer value."
@@ -19716,7 +19714,7 @@ msgstr "Malo by byť zložené jedným či viac z %1$s."
 msgid ""
 "Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
 msgstr ""
-"Použte \\footnotesize, \\small, \\itshape, \\ttfamily alebo niečo na ten "
+"Použite \\footnotesize, \\small, \\itshape, \\ttfamily alebo niečo na ten "
 "zpôsob"
 
 #: src/insets/InsetListingsParams.cpp:286
@@ -19753,7 +19751,7 @@ msgid ""
 "(when using the child document dialog) or menu Insert->Caption (when "
 "defining a listing inset)"
 msgstr ""
-"Tento parameter by tu nemal byť zadaný. Použte prosím políčko popisku (v "
+"Tento parameter by tu nemal byť zadaný. Použite prosím políčko popisku (v "
 "dialogu pre dokument potomka) alebo cez menu Vložiť->Popisok (pri definícii "
 "výpisu zdrojového kódu)"
 
@@ -19763,7 +19761,7 @@ msgid ""
 "(when using the child document dialog) or menu Insert->Label (when defining "
 "a listing inset)"
 msgstr ""
-"Tento parameter by tu nemal byť zadaný. Použte prosím políčko popisku (v "
+"Tento parameter by tu nemal byť zadaný. Použite prosím políčko popisku (v "
 "dialogu pre dokument potomka) alebo cez menu Vložiť->Návestie (pri definícii "
 "výpisu zdrojového kódu)"
 
@@ -20169,7 +20167,7 @@ msgstr "Žiadne vertikálne linky v 'cases' : vlastnosť %1$s'"
 #: src/mathed/InsetMathCases.cpp:106
 #, c-format
 msgid "Changing number of columns not allowed in 'cases': feature %1$s"
-msgstr "Počet stĺpcov sa nedá zmeniť v  'cases':vlastnosť '%1$s'"
+msgstr "Počet stĺpcov sa nedá zmeniť v 'cases':vlastnosť '%1$s'"
 
 #: src/mathed/InsetMathGrid.cpp:1372
 msgid "Only one row"
@@ -20190,7 +20188,7 @@ msgstr "Žiadna vertikálna linka (vline) na zmazanie"
 #: src/mathed/InsetMathGrid.cpp:1423
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
-msgstr "Neznáme vlastnosti tabuľky  '%1$s'"
+msgstr "Neznáme vlastnosti tabuľky '%1$s'"
 
 #: src/mathed/InsetMathHull.cpp:1190 src/mathed/InsetMathHull.cpp:1198
 msgid "No number"
@@ -20442,7 +20440,7 @@ msgstr "Neznámy používateľ"
 #~ msgstr ""
 #~ "Nepodarilo sa určiť systémový adresár pri prehľadávaní\n"
 #~ "\t%1$s\n"
-#~ "Použte voľbu '-sysdir' alebo nastavte premennú\n"
+#~ "Použite voľbu '-sysdir' alebo nastavte premennú\n"
 #~ "%2$s na cestu adresára obsahujúceho súbor `chkconfig.ltx'."
 
 #~ msgid "File not found"
@@ -21268,3 +21266,4 @@ msgstr "Neznámy používateľ"
 #, fuzzy
 #~ msgid "Insets|n"
 #~ msgstr "Vložiť|I"
+
