@@ -200,18 +200,14 @@ bool InsetInfo::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return InsetCollapsable::getStatus(cur, cmd, flag);
 
 	case LFUN_INSET_DIALOG_UPDATE:
+	case LFUN_INSET_MODIFY:
 	case LFUN_INSET_SETTINGS:
 		flag.setEnabled(true);
 		return true;
 
-	case LFUN_INSET_MODIFY:
-		flag.setEnabled(true);
-		break;
-
 	default:
 		return false;
 	}
-	return true;
 }
 
 
