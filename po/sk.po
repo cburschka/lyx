@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-04-18 12:30+0200\n"
-"PO-Revision-Date: 2009-04-18 15:01+0200\n"
+"PO-Revision-Date: 2009-04-18 20:47+0200\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
 "Language-Team: German <kde-i18n-de@lists.kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -2189,7 +2189,7 @@ msgstr "Automatické doplňovanie v riadku"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:50
 msgid "Show the popup in math mode after the delay."
-msgstr "Zobraz vyťahovaciu menu po zdržaní."
+msgstr "Zobraz vyťahovacie menu po zdržaní."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:53
 msgid "Automatic p&opup"
@@ -2211,7 +2211,7 @@ msgstr "Automatické doplňovanie v riadku"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:88
 msgid "Show the popup after the set delay in text mode."
-msgstr "Zobraz vyťahovaciu menu po zdržaní."
+msgstr "Zobraz vyťahovacie menu po zdržaní."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:91
 msgid "Automatic &popup"
@@ -2384,11 +2384,11 @@ msgstr "Celoobrazovkový mód"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:112
 msgid "&Limit text width"
-msgstr "&Obmez šířku textu"
+msgstr "&Obmedz šírku textu"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:143
 msgid "Screen used (&pixels):"
-msgstr "Použitá šířka obrazovky (pixel):"
+msgstr "Použitá šírka obrazovky (pixel):"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:169
 msgid "Hide &tabbar"
@@ -11616,7 +11616,7 @@ msgstr "Prezrieť PDF (pdflatex)"
 
 #: lib/ui/stdtoolbars.inc:209
 msgid "Update PDF (pdflatex)"
-msgstr "Aktualizovat PDF (pdflatex)"
+msgstr "Aktualizovať PDF (pdflatex)"
 
 #: lib/ui/stdtoolbars.inc:210
 msgid "View PostScript"
@@ -14250,7 +14250,7 @@ msgstr "Windows Metafile"
 
 #: lib/configure.py:354 src/frontends/qt4/GuiClipboard.cpp:133
 msgid "Enhanced Metafile"
-msgstr "Rozšířený WMF"
+msgstr "Rozšírený WMF"
 
 #: lib/configure.py:355
 msgid "MS Word"
@@ -15986,7 +15986,7 @@ msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
 msgstr ""
-"Zvoľte voľby pre bibtex (porovnaj man bibtex) alebo zvoľte alternativný "
+"Zvoľte voľby pre bibtex (porovnaj man bibtex) alebo zvoľte alternatívny "
 "kompilátor (napr. mlbibtex alebo bibulus)."
 
 #: src/LyXRC.cpp:2469
@@ -16828,7 +16828,7 @@ msgstr "Držať Zmeny"
 #: src/buffer_funcs.cpp:86
 #, c-format
 msgid "The file %1$s exists but is not readable by the current user."
-msgstr "Súbor %1$s existuje, ale nie je přrstupný pre aktuálneho použivateľa."
+msgstr "Súbor %1$s existuje, ale nie je prístupný pre aktuálneho použivateľa."
 
 #: src/buffer_funcs.cpp:89
 msgid "File not readable!"
@@ -16860,9 +16860,9 @@ msgid ""
 "%1$s\n"
 "could not be read."
 msgstr ""
-"Požadovaná šablona dokumentu\n"
+"Požadovaná šablóna dokumentu\n"
 "%1$s\n"
-"nelze přečíst."
+"sa nedá čítať."
 
 #: src/buffer_funcs.cpp:137
 msgid "Could not read template"
@@ -18268,7 +18268,7 @@ msgstr "Neznáma alebo neplatná LyX funkcia"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2475
 msgid "Invalid or empty key sequence"
-msgstr "Chybná nebo prázdna sekvencia kláves"
+msgstr "Chybná alebo prázdna sekvencia kláves"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2486
 #, c-format
@@ -18276,7 +18276,7 @@ msgid ""
 "Shortcut `%1$s' is already bound to:\n"
 "%2$s"
 msgstr ""
-"Skratka `%1$s' je už priviazaná k:\n"
+"Skratka `%1$s' je už viazaná k:\n"
 "%2$s"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2499
@@ -18286,7 +18286,7 @@ msgid ""
 "%2$s\n"
 "You need to remove that binding before creating a new one."
 msgstr ""
-"Skratka `%1$s' je už použitá pre:\n"
+"Skratka `%1$s' je už viazaná k:\n"
 "%2$s\n"
 "Pred vytvorením novej musíte túto väzbu zmazať."
 
