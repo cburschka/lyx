@@ -208,8 +208,8 @@ ToolbarSet
 		Item "View Master Document" "master-buffer-view"
 		Item "Update Master Document" "master-buffer-update"
 		Separator
-		PopupMenu "view-others" "View Other Formats"
-		PopupMenu "update-others" "Update Other Formats"
+		StickyPopupMenu "view-others" "View Other Formats"
+		StickyPopupMenu "update-others" "Update Other Formats"
 	End
 	
 	Toolbar "view-others" "View Other Formats"

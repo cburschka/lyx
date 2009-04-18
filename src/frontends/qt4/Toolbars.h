@@ -38,8 +38,10 @@ public:
 		LAYOUTS,
 		/// a special widget to insert tabulars
 		TABLEINSERT,
-		///
+		/// a button that expands a menu
 		POPUPMENU,
+		/// a button that expands a menu but remembers the last choice
+		STICKYPOPUPMENU,
 		///
 		ICONPALETTE
 	};

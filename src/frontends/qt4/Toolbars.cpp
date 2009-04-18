@@ -71,6 +71,7 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 		TO_MINIBUFFER,
 		TO_TABLEINSERT,
 		TO_POPUPMENU,
+		TO_STICKYPOPUPMENU,
 		TO_ICONPALETTE,
 	};
 
@@ -82,6 +83,7 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 		{ "minibuffer", TO_MINIBUFFER },
 		{ "popupmenu", TO_POPUPMENU },
 		{ "separator", TO_SEPARATOR },
+		{ "stickypopupmenu", TO_STICKYPOPUPMENU },
 		{ "tableinsert", TO_TABLEINSERT }
 	};
 
@@ -143,6 +145,15 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 				lex.next(true);
 				docstring const label = lex.getDocString();
 				add(ToolbarItem(ToolbarItem::POPUPMENU, name, label));
+			}
+			break;
+		
+		case TO_STICKYPOPUPMENU:
+			if (lex.next(true)) {
+				string const name = lex.getString();
+				lex.next(true);
+				docstring const label = lex.getDocString();
+				add(ToolbarItem(ToolbarItem::STICKYPOPUPMENU, name, label));
 			}
 			break;
 

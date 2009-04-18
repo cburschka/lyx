@@ -790,56 +790,59 @@ public:
 	}
 };
 
-class MenuButton : public QToolButton
+}
+
+
+MenuButton::MenuButton(GuiToolbar * bar, ToolbarItem const & item, bool const sticky)
+	: QToolButton(bar), bar_(bar), tbitem_(item), initialized_(false)
 {
-private:
-	GuiToolbar * bar_;
-	ToolbarItem const & tbitem_;
-	bool initialized_;
-public:
-	MenuButton(GuiToolbar * bar, ToolbarItem const & item)
-		: QToolButton(bar), bar_(bar), tbitem_(item), initialized_(false)
-	{
-		setPopupMode(QToolButton::InstantPopup);
-		QString const label = qt_(to_ascii(tbitem_.label_));
-		setToolTip(label);
-		setStatusTip(label);
-		setText(label);
-		setIcon(QIcon(getPixmap("images/math/", toqstr(tbitem_.name_), "png")));
-		connect(bar, SIGNAL(iconSizeChanged(QSize)),
-			this, SLOT(setIconSize(QSize)));
-	}
+	setPopupMode(QToolButton::InstantPopup);
+	QString const label = qt_(to_ascii(tbitem_.label_));
+	setToolTip(label);
+	setStatusTip(label);
+	setText(label);
+	setIcon(QIcon(getPixmap("images/math/", toqstr(tbitem_.name_), "png")));
+	if (sticky)
+		connect(this, SIGNAL(triggered(QAction *)),
+			this, SLOT(actionTriggered(QAction *)));
+	connect(bar, SIGNAL(iconSizeChanged(QSize)),
+		this, SLOT(setIconSize(QSize)));
+}
 
-	void mousePressEvent(QMouseEvent * e)
-	{
-		if (initialized_) {
-			QToolButton::mousePressEvent(e);
-			return;
-		}
-
-		initialized_ = true;
-
-		QString const label = qt_(to_ascii(tbitem_.label_));
-		ButtonMenu * m = new ButtonMenu(label, this);
-		m->setWindowTitle(label);
-		m->setTearOffEnabled(true);
-		connect(bar_, SIGNAL(updated()), m, SLOT(updateParent()));
-		ToolbarInfo const * tbinfo = guiApp->toolbars().info(tbitem_.name_);
-		if (!tbinfo) {
-			LYXERR0("Unknown toolbar " << tbitem_.name_);
-			return;
-		}
-		ToolbarInfo::item_iterator it = tbinfo->items.begin();
-		ToolbarInfo::item_iterator const end = tbinfo->items.end();
-		for (; it != end; ++it)
-			if (!getStatus(it->func_).unknown())
-				m->add(bar_->addItem(*it));
-		setMenu(m);
-
+void MenuButton::mousePressEvent(QMouseEvent * e)
+{
+	if (initialized_) {
 		QToolButton::mousePressEvent(e);
+		return;
 	}
-};
 
+	initialized_ = true;
+
+	QString const label = qt_(to_ascii(tbitem_.label_));
+	ButtonMenu * m = new ButtonMenu(label, this);
+	m->setWindowTitle(label);
+	m->setTearOffEnabled(true);
+	connect(bar_, SIGNAL(updated()), m, SLOT(updateParent()));
+	ToolbarInfo const * tbinfo = guiApp->toolbars().info(tbitem_.name_);
+	if (!tbinfo) {
+		LYXERR0("Unknown toolbar " << tbitem_.name_);
+		return;
+	}
+	ToolbarInfo::item_iterator it = tbinfo->items.begin();
+	ToolbarInfo::item_iterator const end = tbinfo->items.end();
+	for (; it != end; ++it)
+		if (!getStatus(it->func_).unknown())
+			m->add(bar_->addItem(*it));
+	setMenu(m);
+
+	QToolButton::mousePressEvent(e);
+}
+
+
+void MenuButton::actionTriggered(QAction * action)
+{
+	QToolButton::setDefaultAction(action);
+	setPopupMode(QToolButton::DelayedPopup);
 }
 
 
@@ -879,7 +882,11 @@ void GuiToolbar::add(ToolbarItem const & item)
 		break;
 
 	case ToolbarItem::POPUPMENU: {
-		addWidget(new MenuButton(this, item));
+		addWidget(new MenuButton(this, item, false));
+		break;
+		}
+	case ToolbarItem::STICKYPOPUPMENU: {
+		addWidget(new MenuButton(this, item, true));
 		break;
 		}
 	case ToolbarItem::COMMAND: {

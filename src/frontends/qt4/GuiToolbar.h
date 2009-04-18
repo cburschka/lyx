@@ -22,6 +22,7 @@
 #include <QComboBox>
 #include <QList>
 #include <QToolBar>
+#include <QToolButton>
 
 class QSortFilterProxyModel;
 class QStandardItemModel;
@@ -106,6 +107,31 @@ private:
 	///
 	bool inShowPopup_;
 };
+
+
+class MenuButton : public QToolButton
+{
+	Q_OBJECT
+public:
+	///
+	MenuButton(GuiToolbar * bar, ToolbarItem const & item,
+		bool const sticky = false);
+	///
+	void mousePressEvent(QMouseEvent * e);
+
+private:
+	///
+	GuiToolbar * bar_;
+	///
+	ToolbarItem const & tbitem_;
+	///
+	bool initialized_;
+
+private Q_SLOTS:
+	///
+	void actionTriggered(QAction * action);
+};
+
 
 
 class GuiToolbar : public QToolBar
