@@ -4,7 +4,7 @@
 # Peter Sütterlin <P.Suetterlin@astro.uu.nl>
 # Michael Gerz <Michael.Gerz@teststep.org>
 # Uwe Stöhr <uwestoehr@web.de>
-# Jürgen Spitzmüller <juergen@spitzmueller.org>
+# Jürgen Spitzmüller <spitz@lyx.org>
 #
 # Ein paar generelle Richtlinien für eine einheitliche Übersetzung (Vorschlag von M. Gerz):
 #
@@ -95,7 +95,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-04-17 09:27+0200\n"
-"PO-Revision-Date: 2009-04-16 22:55+0100\n"
+"PO-Revision-Date: 2009-04-18 22:55+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -8469,11 +8469,11 @@ msgstr "Info:Menü"
 
 #: lib/layouts/stdinsets.inc:292
 msgid "Info:shortcut"
-msgstr "Info:Tastenkürzel"
+msgstr "Info:Tastenkürzel (letztes)"
 
 #: lib/layouts/stdinsets.inc:304
 msgid "Info:shortcuts"
-msgstr "Info:Tastenkürzel"
+msgstr "Info:Tastenkürzel (alle)"
 
 #: lib/layouts/stdlayouts.inc:67
 msgid "--Separator--"
@@ -18178,11 +18178,11 @@ msgstr "unbekannt"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "shortcut"
-msgstr "Tastenkürzel"
+msgstr "Tastenkürzel (letztes)"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "shortcuts"
-msgstr "Tastenkürzel"
+msgstr "Tastenkürzel (alle)"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "lyxrc"
