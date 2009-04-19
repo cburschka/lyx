@@ -258,6 +258,9 @@ What's new
 
 - Fix the enabling of buttons in some dialogs when the document is marked
   read-only (e.g. the print dialog).
+
+- Do not indent line when pressing tab in a program listing with an
+  inline selection (bug 5894).
   
 
 * DOCUMENTATION AND LOCALIZATION
