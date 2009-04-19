@@ -219,8 +219,10 @@
   ${endif}
 
   ${if} ${LangISOCode} = 1057
+   StrCpy ${LangNme} "Bahasa Indonesia"
    StrCpy ${LangCdeSys} "id"
-   StrCpy ${LangNmeSys} "Indonesian"
+   StrCpy ${LangNmeSys} "Indonesia"
+   StrCpy ${LangSysEnc} "1252"
   ${endif}
 
   ${if} ${LangISOCode} = 1058
@@ -584,6 +586,11 @@
   ${if} ${Name} == "Hebrew"
    StrCpy ${LangCde} "he_IL"
    StrCpy ${LangEnc} "cp-1255"
+  ${endif}
+  
+  ${if} ${Name} == "Bahasa Indonesia"
+   StrCpy ${LangCde} "id_ID"
+   StrCpy ${LangEnc} "cp-1252"
   ${endif}
 
   ${if} ${Name} == "Italiano"

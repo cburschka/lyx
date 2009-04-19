@@ -94,14 +94,16 @@ Function Metafile2eps
    # restore DEVMODE with proper settings
    ExecWait '$PrinterConf /q /Sr /n "Metafile to EPS Converter" /a "$INSTDIR\metafile2eps.dat" g'
    # register printer
-   WriteRegStr HKLM "Software\InkNote Selector" "" ${Metafile2epsDir}
+   WriteRegStr HKLM "SOFTWARE\InkNote Selector" "" ${Metafile2epsDir}
    # register Metafile2eps
    Var /GLOBAL RegLocation
-   StrCpy $RegLocation "Software\Microsoft\Windows\CurrentVersion\Uninstall\Metafile to EPS Converter"
+   StrCpy $RegLocation "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Metafile to EPS Converter"
    WriteRegStr HKLM "$RegLocation" "InstallLocation" "${Metafile2epsDir}"
    WriteRegStr HKLM "$RegLocation" "DisplayName" "Metafile to EPS Converter"
    WriteRegStr HKLM "$RegLocation" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}" # special entry to tell the uninstaller that it was installed with LyX
    StrCpy $WMFPath "${Metafile2epsDir}"
+   # delete temporary file
+   Delete "$INSTDIR\metafile2eps.dat"
   ${else}
    # delete unnecessary files
    RMDir /r "${Metafile2epsDir}"

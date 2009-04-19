@@ -55,6 +55,7 @@ Var MiKTeXVersion
 Var MiKTeXUser
 Var MiKTeXPath
 Var MissedProg
+Var PathPrefix
 Var PSVPath
 Var SVGPath
 Var WMFPath

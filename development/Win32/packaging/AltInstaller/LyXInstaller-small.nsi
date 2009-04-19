@@ -52,6 +52,7 @@ Var LaTeXName
 Var MiKTeXVersion
 Var MiKTeXUser
 Var MissedProg
+Var PathPrefix
 Var PSVPath
 Var State
 Var SVGPath

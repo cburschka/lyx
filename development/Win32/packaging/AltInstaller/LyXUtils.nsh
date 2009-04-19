@@ -119,7 +119,9 @@ FunctionEnd
  # this macro saves the "C:\Documents and Settings\" substring into the variable "AppPre"
  # and the "Application Data" substring into the variable "AppSuff"
   
-  SetShellVarContext current # switch temoprarily to local user
+  # switch temporarily to local user because the all users application data path is in
+  # Vista only C:\ProgramData 
+  SetShellVarContext current
   StrCpy $String "$APPDATA"
   Var /GLOBAL APPDATemp
   StrCpy $APPDATemp "$APPDATA"
