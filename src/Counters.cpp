@@ -14,14 +14,12 @@
 #include <config.h>
 
 #include "Counters.h"
-
 #include "Lexer.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
-#include "support/lstrings.h"
-
 #include "support/lassert.h"
+#include "support/lstrings.h"
 
 #include <sstream>
 
