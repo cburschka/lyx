@@ -963,6 +963,7 @@ src_frontends_qt4_ui_files = Split('''
     TextLayoutUi.ui
     ThesaurusUi.ui
     TocUi.ui
+    ToggleWarningUi.ui
     VSpaceUi.ui
     ViewSourceUi.ui
     WrapUi.ui

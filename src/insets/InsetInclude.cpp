@@ -508,7 +508,7 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 				included_file.displayName(),
 				from_utf8(tmp->params().documentClass().name()),
 				from_utf8(masterBuffer->params().documentClass().name()));
-			Alert::warning(_("Different textclasses"), text);
+			Alert::warning(_("Different textclasses"), text, true);
 		}
 
 		// Make sure modules used in child are all included in master
