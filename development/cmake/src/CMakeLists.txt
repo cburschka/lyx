@@ -83,7 +83,7 @@ if (MINGW)
   target_link_libraries(${_lyx} ole32)
 endif()
 
-if (MYTHES_LIBS)
+if (MYTHESLIB_LIBRARY)
     target_link_libraries(${_lyx} ${MYTHESLIB_LIBRARY})
 endif()
 
