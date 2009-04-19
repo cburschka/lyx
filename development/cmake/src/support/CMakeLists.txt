@@ -16,7 +16,7 @@ file(GLOB support_minizip_headers ${TOP_SRC_DIR}/src/support/minizip/*.h)
 file(GLOB support_linkback_sources ${TOP_SRC_DIR}/src/support/linkback/*.m*)
 file(GLOB support_linkback_headers ${TOP_SRC_DIR}/src/support/linkback/*.h)
 
-list(REMOVE_ITEM support_sources 	
+list(REMOVE_ITEM support_sources
 	${TOP_SRC_DIR}/src/support/os_win32.cpp
 	${TOP_SRC_DIR}/src/support/os_unix.cpp
 	${TOP_SRC_DIR}/src/support/os_cygwin.cpp
@@ -40,7 +40,7 @@ set(dont_merge ${TOP_SRC_DIR}/src/support/gettext.cpp)
 lyx_add_msvc_pch(support)
 
 lyx_automoc(${support_sources})
-	
+
 include_directories(${TOP_SRC_DIR}/src/support
 	${CMAKE_BINARY_DIR}/src/support
 	${TOP_SRC_DIR}/src/support/minizip
@@ -59,7 +59,7 @@ else()
 	set_source_files_properties(_allinone_const.C
 		PROPERTIES OBJECT_DEPENDS "${depends_moc}")
 	set_source_files_properties(_allinone_touched.C
-		PROPERTIES OBJECT_DEPENDS "${depends_moc}")	
+		PROPERTIES OBJECT_DEPENDS "${depends_moc}")
 	add_library(support ${library_type} ${_allinone_files}
 		${support_minizip_sources} ${support_minizip_cpp_sources} ${support_linkback_sources} ${support_headers} ${dont_merge})
 endif()
