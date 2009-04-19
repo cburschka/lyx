@@ -111,11 +111,11 @@ public:
 	void copy(Counters & from, Counters & to,
 		  docstring const & match = docstring());
 	/// returns the expanded string representation of the counter.
-	docstring theCounter(docstring const & c);
-	/// Replace om format all the LaTeX-like macros that depend on
+	docstring theCounter(docstring const & c) const;
+	/// Replace in \c format all the LaTeX-like macros that depend on
 	/// counters.
 	docstring counterLabel(docstring const & format, 
-	                       std::set<docstring> * callers = 0);
+	                       std::set<docstring> * callers = 0) const;
 	/// Are we in apendix?
 	bool appendix() const { return appendix_; };
 	/// Set the state variable indicating whether we are in appendix.
@@ -132,7 +132,7 @@ private:
 	/// returns the expanded string representation of the counter
 	/// with recursion protection through callers.
 	docstring theCounter(docstring const & c, 
-	                     std::set<docstring> & callers);
+	                     std::set<docstring> & callers) const;
 	/// Returns the value of the counter according to the
 	/// numbering scheme numbertype.
 	/** Available numbering schemes are arabic (1, 2,...), roman
@@ -140,11 +140,11 @@ private:
 	 *  B,...) and hebrew.
 	 */
 	docstring labelItem(docstring const & ctr,
-			    docstring const & numbertype);
+			    docstring const & numbertype) const;
 	/// Maps counter (layout) names to actual counters.
 	typedef std::map<docstring, Counter> CounterList;
 	/// Instantiate.
-	CounterList counterList;
+	CounterList counterList_;
 	/// Are we in an appendix?
 	bool appendix_;
 	/// The current enclosing float.

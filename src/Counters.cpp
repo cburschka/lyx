@@ -161,13 +161,13 @@ void Counters::newCounter(docstring const & newc,
 		       << endl;
 		return;
 	}
-	counterList[newc] = Counter(masterc, ls, lsa);
+	counterList_[newc] = Counter(masterc, ls, lsa);
 }
 
 
 bool Counters::hasCounter(docstring const & c) const
 {
-	return counterList.find(c) != counterList.end();
+	return counterList_.find(c) != counterList_.end();
 }
 
 
@@ -175,13 +175,13 @@ bool Counters::read(Lexer & lex, docstring const & name)
 {
 	if (hasCounter(name)) {
 		LYXERR(Debug::TCLASS, "Reading existing counter " << to_utf8(name));
-		return counterList[name].read(lex);
+		return counterList_[name].read(lex);
 	}
 	LYXERR(Debug::TCLASS, "Reading new counter " << to_utf8(name));
 	Counter cnt;
 	bool success = cnt.read(lex);
 	if (success)
-		counterList[name] = cnt;
+		counterList_[name] = cnt;
 	else
 		LYXERR0("Error reading counter `" << name << "'!");
 	return success;
@@ -190,8 +190,8 @@ bool Counters::read(Lexer & lex, docstring const & name)
 
 void Counters::set(docstring const & ctr, int const val)
 {
-	CounterList::iterator const it = counterList.find(ctr);
-	if (it == counterList.end()) {
+	CounterList::iterator const it = counterList_.find(ctr);
+	if (it == counterList_.end()) {
 		lyxerr << "set: Counter does not exist: "
 		       << to_utf8(ctr) << endl;
 		return;
@@ -202,8 +202,8 @@ void Counters::set(docstring const & ctr, int const val)
 
 void Counters::addto(docstring const & ctr, int const val)
 {
-	CounterList::iterator const it = counterList.find(ctr);
-	if (it == counterList.end()) {
+	CounterList::iterator const it = counterList_.find(ctr);
+	if (it == counterList_.end()) {
 		lyxerr << "addto: Counter does not exist: "
 		       << to_utf8(ctr) << endl;
 		return;
@@ -214,8 +214,8 @@ void Counters::addto(docstring const & ctr, int const val)
 
 int Counters::value(docstring const & ctr) const
 {
-	CounterList::const_iterator const cit = counterList.find(ctr);
-	if (cit == counterList.end()) {
+	CounterList::const_iterator const cit = counterList_.find(ctr);
+	if (cit == counterList_.end()) {
 		lyxerr << "value: Counter does not exist: "
 		       << to_utf8(ctr) << endl;
 		return 0;
@@ -226,16 +226,16 @@ int Counters::value(docstring const & ctr) const
 
 void Counters::step(docstring const & ctr)
 {
-	CounterList::iterator it = counterList.find(ctr);
-	if (it == counterList.end()) {
+	CounterList::iterator it = counterList_.find(ctr);
+	if (it == counterList_.end()) {
 		lyxerr << "step: Counter does not exist: "
 		       << to_utf8(ctr) << endl;
 		return;
 	}
 
 	it->second.step();
-	it = counterList.begin();
-	CounterList::iterator const end = counterList.end();
+	it = counterList_.begin();
+	CounterList::iterator const end = counterList_.end();
 	for (; it != end; ++it) {
 		if (it->second.master() == ctr) {
 			it->second.reset();
@@ -249,8 +249,8 @@ void Counters::reset()
 	appendix_ = false;
 	subfloat_ = false;
 	current_float_.erase();
-	CounterList::iterator it = counterList.begin();
-	CounterList::iterator const end = counterList.end();
+	CounterList::iterator it = counterList_.begin();
+	CounterList::iterator const end = counterList_.end();
 	for (; it != end; ++it) {
 		it->second.reset();
 	}
@@ -261,8 +261,8 @@ void Counters::reset(docstring const & match)
 {
 	LASSERT(!match.empty(), /**/);
 
-	CounterList::iterator it = counterList.begin();
-	CounterList::iterator end = counterList.end();
+	CounterList::iterator it = counterList_.begin();
+	CounterList::iterator end = counterList_.end();
 	for (; it != end; ++it) {
 		if (it->first.find(match) != string::npos)
 			it->second.reset();
@@ -272,8 +272,8 @@ void Counters::reset(docstring const & match)
 
 void Counters::copy(Counters & from, Counters & to, docstring const & match)
 {
-	CounterList::iterator it = counterList.begin();
-	CounterList::iterator end = counterList.end();
+	CounterList::iterator it = counterList_.begin();
+	CounterList::iterator end = counterList_.end();
 	for (; it != end; ++it) {
 		if (it->first.find(match) != string::npos || match == "") {
 			to.set(it->first, from.value(it->first));
@@ -384,10 +384,10 @@ docstring const lowerromanCounter(int const n)
 
 
 docstring Counters::labelItem(docstring const & ctr,
-			      docstring const & numbertype)
+			      docstring const & numbertype) const
 {
-	CounterList::const_iterator const cit = counterList.find(ctr);
-	if (cit == counterList.end()) {
+	CounterList::const_iterator const cit = counterList_.find(ctr);
+	if (cit == counterList_.end()) {
 		lyxerr << "Counter "
 		       << to_utf8(ctr)
 		       << " does not exist." << endl;
@@ -415,25 +415,24 @@ docstring Counters::labelItem(docstring const & ctr,
 }
 
 
-docstring Counters::theCounter(docstring const & counter)
+docstring Counters::theCounter(docstring const & counter) const
 {
 	std::set<docstring> callers;
 	return theCounter(counter, callers);
 }
 
 docstring Counters::theCounter(docstring const & counter,
-                               std::set<docstring> & callers)
+                               std::set<docstring> & callers) const
 {
-	if (!hasCounter(counter))
-		return from_ascii("??");
-
 	docstring label;
 
 	if (callers.find(counter) == callers.end()) {
 		
-		pair<std::set<docstring>::iterator, bool> result = callers.insert(counter);
+		CounterList::const_iterator it = counterList_.find(counter); 
+		if (it == counterList_.end())
+			return from_ascii("??");
+		Counter const & c = it->second;
 
-		Counter const & c = counterList[counter];
 		docstring ls = appendix() ? c.labelStringAppendix() : c.labelString();
 
 		if (ls.empty()) {
@@ -442,8 +441,8 @@ docstring Counters::theCounter(docstring const & counter,
 			ls += from_ascii("\\arabic{") + counter + "}";
 		}
 
+		pair<std::set<docstring>::iterator, bool> const result = callers.insert(counter);
 		label = counterLabel(ls, &callers);
-
 		callers.erase(result.first);
 	} else {
 		// recursion detected
@@ -457,7 +456,7 @@ docstring Counters::theCounter(docstring const & counter,
 
 
 docstring Counters::counterLabel(docstring const & format,
-                                 std::set<docstring> * callers)
+                                 std::set<docstring> * callers) const
 {
 	docstring label = format;
 
@@ -469,13 +468,13 @@ docstring Counters::counterLabel(docstring const & format,
 		size_t const i = label.find(from_ascii("\\the"), 0);
 		if (i == docstring::npos)
 			break;
-		size_t j = i + 4;
+		size_t const j = i + 4;
 		size_t k = j;
 		while (k < label.size() && lowercase(label[k]) >= 'a' 
 		       && lowercase(label[k]) <= 'z')
 			++k;
-		docstring counter = label.substr(j, k - j);
-		docstring repl = callers? theCounter(counter, *callers): 
+		docstring const counter = label.substr(j, k - j);
+		docstring const repl = callers? theCounter(counter, *callers): 
 			                      theCounter(counter);
 		label.replace(i, k - j + 4, repl);
 	}
