@@ -643,7 +643,13 @@ public:
 
 struct GuiApplication::Private
 {
-	Private(): language_model_(0), global_menubar_(0) {}
+	Private(): language_model_(0), global_menubar_(0) 
+	{
+	#ifdef Q_WS_WIN
+		/// WMF Mime handler for Windows clipboard.
+		wmf_mime_ = new QWindowsMimeMetafile();
+	#endif
+	}
 
 	///
 	QSortFilterProxyModel * language_model_;
@@ -691,7 +697,7 @@ struct GuiApplication::Private
 
 #ifdef Q_WS_WIN
 	/// WMF Mime handler for Windows clipboard.
-	QWindowsMimeMetafile wmf_mime_;
+	QWindowsMimeMetafile * wmf_mime_;
 #endif
 };
 
