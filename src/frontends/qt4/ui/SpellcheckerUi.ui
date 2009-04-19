@@ -1,186 +1,163 @@
 <ui version="4.0" >
  <class>SpellcheckerUi</class>
- <widget class="QDialog" name="SpellcheckerUi" >
+ <widget class="QDockWidget" name="SpellcheckerUi" >
   <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>323</width>
-    <height>359</height>
+    <width>259</width>
+    <height>536</height>
    </rect>
   </property>
   <property name="windowTitle" >
-   <string/>
+   <string>DockWidget</string>
   </property>
-  <property name="sizeGripEnabled" >
-   <bool>true</bool>
-  </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
-    <number>9</number>
-   </property>
-   <property name="spacing" >
-    <number>6</number>
-   </property>
-   <item row="10" column="1" >
-    <widget class="QPushButton" name="closePB" >
-     <property name="text" >
-      <string>&amp;Close</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0" >
-    <widget class="QLabel" name="TextLabel2" >
-     <property name="text" >
-      <string>Suggestions:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>suggestionsLW</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1" >
-    <widget class="QPushButton" name="replacePB" >
-     <property name="toolTip" >
-      <string>Replace word with current choice</string>
-     </property>
-     <property name="text" >
-      <string>&amp;Replace</string>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="1" >
-    <widget class="QPushButton" name="addPB" >
-     <property name="toolTip" >
-      <string>Add the word to your personal dictionary</string>
-     </property>
-     <property name="text" >
-      <string>A&amp;dd</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="1" >
-    <widget class="QPushButton" name="ignorePB" >
-     <property name="toolTip" >
-      <string>Ignore this word</string>
-     </property>
-     <property name="text" >
-      <string>&amp;Ignore</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="1" >
-    <widget class="QPushButton" name="replacePB_3" >
-     <property name="toolTip" >
-      <string>Ignore this word throughout this session</string>
-     </property>
-     <property name="text" >
-      <string>I&amp;gnore All</string>
-     </property>
-    </widget>
-   </item>
-   <item row="8" column="1" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeType" >
-      <enum>QSizePolicy::Expanding</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>20</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="2" column="0" >
-    <widget class="QLabel" name="TextLabel1" >
-     <property name="text" >
-      <string>Replacement:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>replaceCO</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" >
-    <widget class="QLineEdit" name="wordED" >
-     <property name="toolTip" >
-      <string>Current word</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" >
-    <widget class="QLabel" name="TextLabel3" >
-     <property name="text" >
-      <string>Unknown word:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>wordED</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0" >
-    <widget class="QComboBox" name="replaceCO" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>3</hsizetype>
-       <vsizetype>0</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="focusPolicy" >
-      <enum>Qt::StrongFocus</enum>
-     </property>
-     <property name="toolTip" >
-      <string>Replace with selected word</string>
-     </property>
-     <property name="editable" >
-      <bool>true</bool>
-     </property>
-     <property name="insertPolicy" >
-      <enum>QComboBox::InsertAtTop</enum>
-     </property>
-     <property name="autoCompletion" >
-      <bool>true</bool>
-     </property>
-     <property name="duplicatesEnabled" >
-      <bool>false</bool>
-     </property>
-    </widget>
-   </item>
-   <item rowspan="4" row="5" column="0" >
-    <widget class="QListWidget" name="suggestionsLW" />
-   </item>
-   <item row="9" column="0" >
-    <widget class="QProgressBar" name="spellcheckPR" >
-     <property name="value" >
-      <number>24</number>
-     </property>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-  </layout>
+  <widget class="QWidget" name="dockWidgetContents" >
+   <layout class="QGridLayout" name="gridLayout" >
+    <item row="0" column="0" >
+     <widget class="QLabel" name="TextLabel3" >
+      <property name="text" >
+       <string>Unknown word:</string>
+      </property>
+      <property name="buddy" >
+       <cstring>wordED</cstring>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" >
+     <widget class="QLineEdit" name="wordED" >
+      <property name="toolTip" >
+       <string>Current word</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0" >
+     <widget class="QLabel" name="TextLabel1" >
+      <property name="text" >
+       <string>Replacement:</string>
+      </property>
+      <property name="buddy" >
+       <cstring>replaceCO</cstring>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0" >
+     <widget class="QComboBox" name="replaceCO" >
+      <property name="sizePolicy" >
+       <sizepolicy vsizetype="Fixed" hsizetype="MinimumExpanding" >
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="focusPolicy" >
+       <enum>Qt::StrongFocus</enum>
+      </property>
+      <property name="toolTip" >
+       <string>Replace with selected word</string>
+      </property>
+      <property name="editable" >
+       <bool>true</bool>
+      </property>
+      <property name="insertPolicy" >
+       <enum>QComboBox::InsertAtTop</enum>
+      </property>
+      <property name="autoCompletion" >
+       <bool>true</bool>
+      </property>
+      <property name="duplicatesEnabled" >
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1" >
+     <widget class="QPushButton" name="replacePB" >
+      <property name="toolTip" >
+       <string>Replace word with current choice</string>
+      </property>
+      <property name="text" >
+       <string>&amp;Replace</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0" >
+     <widget class="QLabel" name="TextLabel2" >
+      <property name="text" >
+       <string>Suggestions:</string>
+      </property>
+      <property name="buddy" >
+       <cstring>suggestionsLW</cstring>
+      </property>
+     </widget>
+    </item>
+    <item rowspan="4" row="5" column="0" >
+     <widget class="QListWidget" name="suggestionsLW" />
+    </item>
+    <item row="5" column="1" >
+     <widget class="QPushButton" name="ignorePB" >
+      <property name="toolTip" >
+       <string>Ignore this word</string>
+      </property>
+      <property name="text" >
+       <string>&amp;Ignore</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="1" >
+     <widget class="QPushButton" name="replacePB_3" >
+      <property name="toolTip" >
+       <string>Ignore this word throughout this session</string>
+      </property>
+      <property name="text" >
+       <string>I&amp;gnore All</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="1" >
+     <widget class="QPushButton" name="addPB" >
+      <property name="toolTip" >
+       <string>Add the word to your personal dictionary</string>
+      </property>
+      <property name="text" >
+       <string>A&amp;dd</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="1" >
+     <spacer name="spacer" >
+      <property name="orientation" >
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeType" >
+       <enum>QSizePolicy::Expanding</enum>
+      </property>
+      <property name="sizeHint" stdset="0" >
+       <size>
+        <width>74</width>
+        <height>98</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="9" column="0" >
+     <widget class="QProgressBar" name="spellcheckPR" >
+      <property name="value" >
+       <number>24</number>
+      </property>
+      <property name="orientation" >
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="10" column="1" >
+     <widget class="QPushButton" name="closePB" >
+      <property name="text" >
+       <string>&amp;Close</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
  </widget>
- <pixmapfunction></pixmapfunction>
- <includes>
-  <include location="local" >qt_i18n.h</include>
- </includes>
- <tabstops>
-  <tabstop>wordED</tabstop>
-  <tabstop>replaceCO</tabstop>
-  <tabstop>replacePB</tabstop>
-  <tabstop>suggestionsLW</tabstop>
-  <tabstop>ignorePB</tabstop>
-  <tabstop>replacePB_3</tabstop>
-  <tabstop>addPB</tabstop>
-  <tabstop>closePB</tabstop>
- </tabstops>
  <resources/>
  <connections/>
 </ui>

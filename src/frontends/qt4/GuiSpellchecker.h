@@ -7,6 +7,7 @@
  * \author John Levon
  * \author Kalle Dalheimer
  * \author Edwin Leuven
+ * \author Abdelrazak Younes
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -14,74 +15,53 @@
 #ifndef GUISPELLCHECKER_H
 #define GUISPELLCHECKER_H
 
-#include "GuiDialog.h"
-#include "ui_SpellcheckerUi.h"
-#include "Dialog.h"
-#include "WordLangTuple.h"
+#include "DockView.h"
 
 class QListWidgetItem;
 
 namespace lyx {
 
 class docstring_list;
-class SpellChecker;
 
 namespace frontend {
 
-class GuiSpellchecker : public GuiDialog, public Ui::SpellcheckerUi
+class GuiSpellchecker : public DockView
 {
 	Q_OBJECT
 
 public:
-	GuiSpellchecker(GuiView & lv);
-
-public Q_SLOTS:
-	void suggestionChanged(QListWidgetItem *);
+	GuiSpellchecker(GuiView & parent);
+	~GuiSpellchecker();
 
 private Q_SLOTS:
-	/// ignore all occurances of word
-	void accept();
-	void add();
-	void ignore();
-	void replace();
-	void replaceChanged(const QString &);
-	void reject();
+	void on_closePB_clicked();
+	void on_suggestionsLW_changed(QListWidgetItem *);
+	void on_replaceC0_highlighted(const QString & str);
+	void on_replaceAllPB_clicked();
+	void on_addPB_clicked();
+	void on_ignorePB_clicked();
+	void on_replacePB_clicked();
 
 private:
 	/// update from controller
 	void updateSuggestions(docstring_list & words);
-	///
-	void updateContents();
 
-	///
+	///{
+	void updateView();
 	bool initialiseParams(std::string const & data);
-	///
 	void clearParams() {}
-	/// Not needed here
 	void dispatchParams() {}
-	///
 	bool isBufferDependent() const { return true; }
+	///}
 
-	/// replace word with replacement
-	void replace(docstring const &);
-
-	/// replace all occurances of word
-	void replaceAll(docstring const &);
-	/// insert word in personal dictionary
-	void insert();
 	/// check text until next misspelled/unknown word
 	/// returns true when finished
 	void check();
 	/// show count of checked words at normal exit
 	void showSummary();
 
-	/// current word being checked and lang code
-	WordLangTuple word_;
-	/// values for progress
-	int total_;
-	int progress_;
-	/// word count
-	int count_;
+	struct Private;
+	Private * const d;
 };
 
 } // namespace frontend

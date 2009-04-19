@@ -5,6 +5,7 @@
  *
  * \author John Levon
  * \author Edwin Leuven
+ * \author Abdelrazak Younes
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -14,6 +15,8 @@
 #include "GuiSpellchecker.h"
 
 #include "qt_helpers.h"
+
+#include "ui_SpellcheckerUi.h"
 
 #include "Buffer.h"
 #include "BufferParams.h"
@@ -25,6 +28,7 @@
 #include "LyX.h"
 #include "LyXRC.h"
 #include "Paragraph.h"
+#include "WordLangTuple.h"
 
 #include "support/debug.h"
 #include "support/docstring.h"
@@ -47,112 +51,132 @@ namespace lyx {
 namespace frontend {
 
 
+struct GuiSpellchecker::Private
+{
+	Private() : progress_(0), count_(0) {}
+	Ui::SpellcheckerUi ui;
+	/// current word being checked and lang code
+	WordLangTuple word_;
+	/// values for progress
+	int total_;
+	int progress_;
+	/// word count
+	int count_;
+};
+
+
 GuiSpellchecker::GuiSpellchecker(GuiView & lv)
-	: GuiDialog(lv, "spellchecker", qt_("Spellchecker")),
-	  progress_(0), count_(0)
+	: DockView(lv, "spellchecker", qt_("Spellchecker"),
+	Qt::RightDockWidgetArea), d(new GuiSpellchecker::Private)
 {
-	setupUi(this);
+	d->ui.setupUi(this);
 
-	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
-	connect(replacePB, SIGNAL(clicked()), this, SLOT(replace()));
-	connect(ignorePB, SIGNAL(clicked()), this, SLOT(ignore()));
-	connect(replacePB_3, SIGNAL(clicked()), this, SLOT(accept()));
-	connect(addPB, SIGNAL(clicked()), this, SLOT(add()));
+	connect(d->ui.suggestionsLW, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
+		this, SLOT(on_replacePB_clicked()));
 
-	connect(replaceCO, SIGNAL(highlighted(QString)),
-		this, SLOT(replaceChanged(QString)));
-	connect(suggestionsLW, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
-		this, SLOT(replace()));
-	connect(suggestionsLW, SIGNAL(itemClicked(QListWidgetItem*)),
-		this, SLOT(suggestionChanged(QListWidgetItem*)));
-
-	wordED->setReadOnly(true);
-
-	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
-	bc().setCancel(closePB);
+	d->ui.wordED->setReadOnly(true);
 }
 
 
-void GuiSpellchecker::suggestionChanged(QListWidgetItem * item)
+GuiSpellchecker::~GuiSpellchecker()
 {
-	if (replaceCO->count() != 0)
-		replaceCO->setItemText(0, item->text());
+	delete d;
+}
+
+
+void GuiSpellchecker::on_closePB_clicked()
+{
+	close();
+}
+
+
+void GuiSpellchecker::on_suggestionsLW_changed(QListWidgetItem * item)
+{
+	if (d->ui.replaceCO->count() != 0)
+		d->ui.replaceCO->setItemText(0, item->text());
 	else
-		replaceCO->addItem(item->text());
+		d->ui.replaceCO->addItem(item->text());
 
-	replaceCO->setCurrentIndex(0);
+	d->ui.replaceCO->setCurrentIndex(0);
 }
 
 
-void GuiSpellchecker::replaceChanged(const QString & str)
+void GuiSpellchecker::on_replaceC0_highlighted(const QString & str)
 {
-	if (suggestionsLW->currentItem()
-	    && suggestionsLW->currentItem()->text() == str)
+	QListWidget * lw = d->ui.suggestionsLW;
+	if (lw->currentItem() && lw->currentItem()->text() == str)
 		return;
 
-	for (int i = 0; i != suggestionsLW->count(); ++i) {
-		if (suggestionsLW->item(i)->text() == str) {
-			suggestionsLW->setCurrentRow(i);
+	for (int i = 0; i != lw->count(); ++i) {
+		if (lw->item(i)->text() == str) {
+			lw->setCurrentRow(i);
 			break;
 		}
 	}
 }
 
 
-void GuiSpellchecker::reject()
-{
-	slotClose();
-	QDialog::reject();
-}
-
-
-void GuiSpellchecker::updateContents()
+void GuiSpellchecker::updateView()
 {
 	if (hasFocus())
 		check();
 }
 
 
-void GuiSpellchecker::accept()
+void GuiSpellchecker::on_replaceAllPB_clicked()
 {
-	theSpellChecker()->accept(word_);
+	/// replace all occurances of word
+	theSpellChecker()->accept(d->word_);
 	check();
 }
 
 
-void GuiSpellchecker::add()
+void GuiSpellchecker::on_addPB_clicked()
 {
-	theSpellChecker()->insert(word_);
+	/// insert word in personal dictionary
+	theSpellChecker()->insert(d->word_);
 	check();
 }
 
 
-void GuiSpellchecker::ignore()
+void GuiSpellchecker::on_ignorePB_clicked()
 {
 	check();
 }
 
 
-void GuiSpellchecker::replace()
+void GuiSpellchecker::on_replacePB_clicked()
 {
-	replace(qstring_to_ucs4(replaceCO->currentText()));
+	docstring const replacement = qstring_to_ucs4(d->ui.replaceCO->currentText());
+
+	LYXERR(Debug::GUI, "Replace (" << replacement << ")");
+	BufferView * bv = const_cast<BufferView *>(bufferview());
+	cap::replaceSelectionWithString(bv->cursor(), replacement, true);
+	bv->buffer().markDirty();
+	// If we used an LFUN, we would not need that
+	bv->processUpdateFlags(Update::Force | Update::FitCursor);
+	// fix up the count
+	--d->count_;
+	check();
 }
 
 
 void GuiSpellchecker::updateSuggestions(docstring_list & words)
 {
-	wordED->setText(toqstr(word_.word()));
-	suggestionsLW->clear();
+	QString const suggestion = toqstr(d->word_.word());
+	d->ui.wordED->setText(suggestion);
+	QListWidget * lw = d->ui.suggestionsLW;
+	lw->clear();
 
 	if (words.empty()) {
-		suggestionChanged(new QListWidgetItem(wordED->text()));
+		on_suggestionsLW_changed(new QListWidgetItem(suggestion));
 		return;
 	}
 	for (size_t i = 0; i != words.size(); ++i)
-		suggestionsLW->addItem(toqstr(words[i]));
+		lw->addItem(toqstr(words[i]));
 
-	suggestionChanged(suggestionsLW->item(0));
-	suggestionsLW->setCurrentRow(0);
+	on_suggestionsLW_changed(lw->item(0));
+	lw->setCurrentRow(0);
 }
 
 
@@ -165,9 +189,9 @@ bool GuiSpellchecker::initialiseParams(string const &)
 
 	DocIterator const begin = doc_iterator_begin(&buffer());
 	Cursor const & cur = bufferview()->cursor();
-	progress_ = countWords(begin, cur);
-	total_ = progress_ + countWords(cur, doc_iterator_end(&buffer()));
-	count_ = 0;
+	d->progress_ = countWords(begin, cur);
+	d->total_ = d->progress_ + countWords(cur, doc_iterator_end(&buffer()));
+	d->count_ = 0;
 	return true;
 }
 
@@ -187,14 +211,14 @@ void GuiSpellchecker::check()
 	} catch (ExceptionMessage const & message) {
 		if (message.type_ == WarningException) {
 			Alert::warning(message.title_, message.details_);
-			slotClose();
+			close();
 			return;
 		}
 		throw message;
 	}
 	LYXERR(Debug::GUI, "Found word \"" << word_lang.word() << "\"");
-	count_ += progress;
-	progress_ += progress;
+	d->count_ += progress;
+	d->progress_ += progress;
 
 	// end of document
 	if (from == to) {
@@ -204,13 +228,13 @@ void GuiSpellchecker::check()
 	if (!isVisible())
 		show();
 
-	word_ = word_lang;
+	d->word_ = word_lang;
 
-	int const progress_bar = total_
-		? int(100.0 * float(progress_)/total_) : 100;
+	int const progress_bar = d->total_
+		? int(100.0 * float(d->progress_)/d->total_) : 100;
 	LYXERR(Debug::GUI, "Updating spell progress.");
 	// set progress bar
-	spellcheckPR->setValue(progress_bar);
+	d->ui.spellcheckPR->setValue(progress_bar);
 	// set suggestions
 	updateSuggestions(suggestions);
 
@@ -224,41 +248,19 @@ void GuiSpellchecker::check()
 
 void GuiSpellchecker::showSummary()
 {
-	if (count_ == 0) {
-		slotClose();
+	if (d->count_ == 0) {
+		close();
 		return;
 	}
 
 	docstring message;
-	if (count_ != 1)
-		message = bformat(_("%1$d words checked."), count_);
+	if (d->count_ != 1)
+		message = bformat(_("%1$d words checked."), d->count_);
 	else
 		message = _("One word checked.");
 
-	slotClose();
+	close();
 	Alert::information(_("Spelling check completed"), message);
-}
-
-
-void GuiSpellchecker::replace(docstring const & replacement)
-{
-	LYXERR(Debug::GUI, "GuiSpellchecker::replace("
-			   << to_utf8(replacement) << ")");
-	BufferView * bv = const_cast<BufferView *>(bufferview());
-	cap::replaceSelectionWithString(bv->cursor(), replacement, true);
-	bv->buffer().markDirty();
-	// If we used an LFUN, we would not need that
-	bv->processUpdateFlags(Update::Force | Update::FitCursor);
-	// fix up the count
-	--count_;
-	check();
-}
-
-
-void GuiSpellchecker::replaceAll(docstring const & replacement)
-{
-	// TODO: add to list
-	replace(replacement);
 }
 
 
