@@ -31982,6 +31982,10 @@ Les sous-documents sont utilisés quand on a un document très long qui peut
  Les différents documents sont ce que l'on appelle les sous-documents et
  un document maître les relie pour imprimer le document complet ou seulement
  une partie de celui-ci.
+ 
+\lang english
+A child documents inherits contents of its master, for example the LaTeX
+ preamble, the bibliography, and labels for cross-references.
 \end_layout
 
 \begin_layout Standard
@@ -31989,6 +31993,7 @@ Les documents inclus sont visualisés dans LyX sous la forme d'une boîte
  comme celle-ci : 
 \begin_inset Graphics
 	filename clipart/ChildDocumentQt4.png
+	lyxscale 70
 	scale 60
 	scaleBeforeRotation
 
