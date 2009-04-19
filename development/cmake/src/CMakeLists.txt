@@ -30,8 +30,8 @@ list(REMOVE_ITEM lyx_sources
 	${TOP_SRC_DIR}/src/Section.cpp)
 
 if (ASPELL_FOUND)
-	include_directories(${ASPELL_INCLUDE_DIR})
-	set(lyx_sources ${lyx_sources} ${TOP_SRC_DIR}/src/ASpell.cpp)
+  include_directories(${ASPELL_INCLUDE_DIR})
+  list(APPEND lyx_sources ${TOP_SRC_DIR}/src/ASpell.cpp)
 endif()
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR}
@@ -40,11 +40,9 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR}
 lyx_add_msvc_pch(lyx)
 
 
-if (NOT MERGE_FILES)
-	set(lyx_sources ${lyx_sources})
-else()
-	lyx_const_touched_files(_allinone  lyx_sources)
-	set(lyx_sources ${_allinone_files})
+if (MERGE_FILES)
+  lyx_const_touched_files(_allinone  lyx_sources)
+  set(lyx_sources ${_allinone_files})
 endif()
 
 if (LYX_LEAK_DETECTION)
@@ -83,6 +81,10 @@ endif()
 
 if (MINGW)
   target_link_libraries(${_lyx} ole32)
+endif()
+
+if (MYTHES_LIBS)
+    target_link_libraries(${_lyx} ${MYTHESLIB_LIBRARY})
 endif()
 
 project_source_group("${GROUP_CODE}" lyx_sources lyx_headers)

@@ -41,5 +41,7 @@
 #cmakedefine USE_MACOSX_PACKAGING 1
 #cmakedefine PATH_MAX ${PATH_MAX}
 
+#cmakedefine HAVE_LIBMYTHES 1
+#cmakedefine MYTHES_H_LOCATION <${MYTHES_H}>
 
 #endif
