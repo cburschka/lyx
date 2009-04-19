@@ -18,7 +18,7 @@
 #include "support/docstring.h"
 
 #include <map>
-#include <set>
+#include <vector>
 
 
 namespace lyx {
@@ -49,14 +49,20 @@ public:
 	docstring const & master() const;
 	/// Returns a LaTeX-like string to format the counter. 
 	/** This is similar to what one gets in LaTeX when using
-	 *  "\the<counter>".
+	 *  "\the<counter>". The \c in_appendix bool tells whether
+	 *  we want the version shown in an appendix.
 	 */
-	docstring const & labelString() const;
-	/// Returns a LaTeX-like string to format the counter in appendix.
+	docstring const & labelString(bool in_appendix) const;
+	/// Returns a LaTeX-like string to format the counter. 
 	/** This is similar to what one gets in LaTeX when using
-	 *  "\the<counter>" in an appendix.
+	 *  "\the<counter>". The \c in_appendix bool tells whether
+	 *  we want the version shown in an appendix. This version does 
+	 * not contain any \\the<counter> expression.
 	 */
-	docstring const & labelStringAppendix() const;
+	docstring const & flatLabelString(bool in_appendix) const;
+	/// set the \c flatLabelString values.
+	docstring const & setFlatLabelStrings(docstring const & fls,
+					      docstring const & flsa);
 private:
 	///
 	int value_;
@@ -70,6 +76,10 @@ private:
 	docstring labelstring_;
 	/// The same as labelstring_, but in appendices.
 	docstring labelstringappendix_;
+	/// A version of the labelstring with \\the<counter> expressions expanded
+	docstring flatlabelstring_;
+	/// A version of the appendix labelstring with \\the<counter> expressions expanded
+	docstring flatlabelstringappendix_;
 };
 
 
@@ -114,9 +124,8 @@ public:
 	docstring theCounter(docstring const & c) const;
 	/// Replace in \c format all the LaTeX-like macros that depend on
 	/// counters.
-	docstring counterLabel(docstring const & format, 
-	                       std::set<docstring> * callers = 0) const;
-	/// Are we in apendix?
+	docstring counterLabel(docstring const & format) const;
+	/// Are we in appendix?
 	bool appendix() const { return appendix_; };
 	/// Set the state variable indicating whether we are in appendix.
 	void appendix(bool a) { appendix_ = a; };
@@ -129,10 +138,10 @@ public:
 	/// Set the state variable indicating whether we are in a subfloat.
 	void isSubfloat(bool s) { subfloat_ = s; };
 private:
-	/// returns the expanded string representation of the counter
-	/// with recursion protection through callers.
-	docstring theCounter(docstring const & c, 
-	                     std::set<docstring> & callers) const;
+	/// expands recusrsively any \\the<counter> macro in the
+	/// labelstring of \c counter.
+	docstring flattenLabelString(docstring const & counter, bool in_appendix, 
+				     std::vector<docstring> & callers) const;
 	/// Returns the value of the counter according to the
 	/// numbering scheme numbertype.
 	/** Available numbering schemes are arabic (1, 2,...), roman

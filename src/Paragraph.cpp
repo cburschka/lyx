@@ -1620,7 +1620,7 @@ docstring Paragraph::expandLabel(Layout const & layout,
 
 	if (fmt.empty() && layout.labeltype == LABEL_COUNTER 
 	    && !layout.counter.empty())
-		fmt = "\\the" + layout.counter;
+		return tclass.counters().theCounter(layout.counter);
 
 	// handle 'inherited level parts' in 'fmt',
 	// i.e. the stuff between '@' in   '@Section@.\arabic{subsection}'

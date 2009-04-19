@@ -138,15 +138,23 @@ docstring const & Counter::master() const
 }
 
 
-docstring const & Counter::labelString() const
+docstring const & Counter::labelString(bool in_appendix) const
 {
-	return labelstring_;
+	return in_appendix ? labelstringappendix_ : labelstring_;
 }
 
 
-docstring const & Counter::labelStringAppendix() const
+docstring const & Counter::flatLabelString(bool in_appendix) const
 {
-	return labelstringappendix_;
+	return in_appendix ? flatlabelstringappendix_ : flatlabelstring_;
+}
+
+
+docstring const & Counter::setFlatLabelStrings(docstring const & fls,
+					       docstring const & flsa)
+{
+	flatlabelstring_ = fls;
+	flatlabelstringappendix_ = flsa;
 }
 
 
@@ -251,8 +259,17 @@ void Counters::reset()
 	current_float_.erase();
 	CounterList::iterator it = counterList_.begin();
 	CounterList::iterator const end = counterList_.end();
+	std::vector<docstring> callers;
 	for (; it != end; ++it) {
 		it->second.reset();
+		// Compute the explicit counter labels without any
+		// \thexxx strings, in order to avoid recursion.  
+		// It only needs to be done when the textclass is
+		// updated, but in practice the extra work is probably
+		// not noticeable (JMarc)
+		docstring const fls = flattenLabelString(it->first, false, callers);
+		docstring const flsa = flattenLabelString(it->first, true, callers);
+		it->second.setFlatLabelStrings(fls, flsa);
 	}
 }
 
@@ -417,52 +434,68 @@ docstring Counters::labelItem(docstring const & ctr,
 
 docstring Counters::theCounter(docstring const & counter) const
 {
-	std::set<docstring> callers;
-	return theCounter(counter, callers);
+	CounterList::const_iterator it = counterList_.find(counter); 
+	if (it == counterList_.end())
+		return from_ascii("??");
+	return counterLabel(it->second.flatLabelString(appendix()));
 }
 
-docstring Counters::theCounter(docstring const & counter,
-                               std::set<docstring> & callers) const
+
+docstring Counters::flattenLabelString(docstring const & counter, bool in_appendix, 
+				       vector<docstring> & callers) const
 {
 	docstring label;
 
-	if (callers.find(counter) == callers.end()) {
-		
-		CounterList::const_iterator it = counterList_.find(counter); 
-		if (it == counterList_.end())
-			return from_ascii("??");
-		Counter const & c = it->second;
-
-		docstring ls = appendix() ? c.labelStringAppendix() : c.labelString();
-
-		if (ls.empty()) {
-			if (!c.master().empty())
-				ls = from_ascii("\\the") + c.master() + from_ascii(".");
-			ls += from_ascii("\\arabic{") + counter + "}";
-		}
-
-		pair<std::set<docstring>::iterator, bool> const result = callers.insert(counter);
-		label = counterLabel(ls, &callers);
-		callers.erase(result.first);
-	} else {
+	if (find(callers.begin(), callers.end(), counter) != callers.end()) {
 		// recursion detected
 		lyxerr << "Warning: Recursion in label for counter `"
-			   << counter << "' detected"
-			   << endl;
+		       << counter << "' detected"
+		       << endl;
+		return from_ascii("??");
+	}
+		
+	CounterList::const_iterator it = counterList_.find(counter); 
+	if (it == counterList_.end())
+		return from_ascii("??");
+	Counter const & c = it->second;
+
+	docstring ls = c.labelString(in_appendix);
+
+	callers.push_back(counter);
+	if (ls.empty()) {
+		if (!c.master().empty())
+			ls = flattenLabelString(c.master(), in_appendix, callers) 
+				+ from_ascii(".");
+		callers.pop_back();
+		return ls + from_ascii("\\arabic{") + counter + "}";
 	}
 
-	return label;
+	while (true) {
+		//lyxerr << "ls=" << to_utf8(ls) << endl;
+		size_t const i = ls.find(from_ascii("\\the"), 0);
+		if (i == docstring::npos)
+			break;
+		size_t const j = i + 4;
+		size_t k = j;
+		while (k < ls.size() && lowercase(ls[k]) >= 'a' 
+		       && lowercase(ls[k]) <= 'z')
+			++k;
+		docstring const newc = ls.substr(j, k - j);
+		docstring const repl = flattenLabelString(newc, in_appendix, callers);
+		ls.replace(i, k - j + 4, repl);
+	}
+	callers.pop_back();
+
+	return ls;
 }
 
 
-docstring Counters::counterLabel(docstring const & format,
-                                 std::set<docstring> * callers) const
+docstring Counters::counterLabel(docstring const & format) const
 {
 	docstring label = format;
 
 	// FIXME: Using regexps would be better, but we compile boost without
 	// wide regexps currently.
-
 	while (true) {
 		//lyxerr << "label=" << to_utf8(label) << endl;
 		size_t const i = label.find(from_ascii("\\the"), 0);
@@ -473,12 +506,10 @@ docstring Counters::counterLabel(docstring const & format,
 		while (k < label.size() && lowercase(label[k]) >= 'a' 
 		       && lowercase(label[k]) <= 'z')
 			++k;
-		docstring const counter = label.substr(j, k - j);
-		docstring const repl = callers? theCounter(counter, *callers): 
-			                      theCounter(counter);
+		docstring const newc = label.substr(j, k - j);
+		docstring const repl = theCounter(newc);
 		label.replace(i, k - j + 4, repl);
 	}
-
 	while (true) {
 		//lyxerr << "label=" << to_utf8(label) << endl;
 
