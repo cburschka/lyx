@@ -12,7 +12,7 @@ LangString WelcomePageText "${LYX_LANG}" "Wizard ini akan memandu anda dalam mel
 					  \r\n\
 					  Anda harus bertindak dan mempunyai hak sebagai administrator untuk instalasi LyX.\r\n\
 					  \r\n\
-					  Sangat disarankan anda menutup semua aplikasi sebelum memulai Setup. Hal ini akan memungkinkan memperbarui berkas sistem yang relevan tanpa melakukan booting ulang komputer anda.\r\n\
+					  Sangat disarankan anda menutup semua aplikasi sebelum memulai. Hal ini akan memungkinkan memperbarui berkas sistem yang relevan tanpa melakukan booting ulang komputer anda.\r\n\
 					  \r\n\
 					  $_CLICK"
 
@@ -38,7 +38,7 @@ LangString MissProgHeader "${LYX_LANG}" "Pengecekan program yang diperlukan"
 LangString MissProgCap "${LYX_LANG}" "Berikut ini adalah program yang diperlukan dan akan diinstal sebagai tambahan"
 LangString MissProgLatex "${LYX_LANG}" "MiKTeX, salah satu program distribusi LaTeX"
 LangString MissProgGhostscript "${LYX_LANG}" "Ghostscript, suatu penafsir PostScript and PDF"
-LangString MissProgImageMagick "${LYX_LANG}" "ImageMagick, salah satu penngkonversi gambar"
+LangString MissProgImageMagick "${LYX_LANG}" "ImageMagick, salah satu pengkonversi gambar"
 LangString MissProgAspell "${LYX_LANG}" "Aspell, salah satu program pemeriksa ejaan"
 LangString MissProgMessage "${LYX_LANG}" 'Tidak ada program tambahan yang perlu diinstal.'
 
@@ -60,7 +60,7 @@ LangString DontUseLaTeX "${LYX_LANG}" "LaTeX tidak akan berfungsi"
 LangString InvalidLaTeXFolder "${LYX_LANG}" 'Berkas "latex.exe" tidak berada di lokasi tempat yang dinyatakan.'
 
 LangString LatexInfo "${LYX_LANG}" 'Sekarang instalasi program distribusi LaTeX "MiKTeX" akan dijalankan.$\r$\n\
-			            Untuk meneruskan tekanlah tombol "Next" yang ada di jendela dan tunggu sampai instalasi dimulai.$\r$\n\
+			            Untuk meneruskan tekanlah tombol "Lanjut" yang ada di jendela dan tunggu sampai instalasi dimulai.$\r$\n\
 				    $\r$\n\
 				    !!! Gunakan semua pilihan default pada program instalasi MiKTeX !!!'
 LangString LatexError1 "${LYX_LANG}" 'Distribusi LaTeX tidak ditemukan!$\r$\n\
@@ -68,8 +68,8 @@ LangString LatexError1 "${LYX_LANG}" 'Distribusi LaTeX tidak ditemukan!$\r$\n\
 				      Oleh karena itu proses instalasi dibatalkan.'
 			    
 LangString GSviewInfo "${LYX_LANG}" 'Sekarang instalasi program "GSview" akan dijalankan.$\r$\n\
-			             Untuk memulainya tekanlah tombol "Setup" setup pada jendela instalasi yang pertama,$\r$\n\
-				     pilihlah bahasa yang anda inginkan kemudian tekan tombol "Next" pada jendela berikutnya.$\r$\n\
+			             Untuk memulainya tekanlah tombol "Mulai" pada jendela instalasi yang pertama,$\r$\n\
+				     pilihlah bahasa yang anda inginkan kemudian tekan tombol "Lanjut" pada jendela berikutnya.$\r$\n\
 				     Anda boleh memilih semua pilihan default yang ada di program instalasi GSview.'
 LangString GSviewError "${LYX_LANG}" 'Program "GSview" tidak berhasil diinstal secara keseluruhan!$\r$\n\
 		                      Namun proses instalasi dapat diteruskan.$\r$\n\
@@ -132,7 +132,7 @@ LangString UnInstallRunning "${LYX_LANG}" "Anda harus menutup LyX terlebih dahul
 LangString UnNotAdminLabel "${LYX_LANG}" "Anda harus berlaku dan mempunyai hak sebagai administrator untuk menghapus LyX!"
 LangString UnReallyRemoveLabel "${LYX_LANG}" "Apakah anda yakin akan menghapus LyX secara menyeluruh termasuk semua komponen yang ada?"
 LangString UnLyXPreferencesTitle "${LYX_LANG}" 'Preferensi pengguna LyX'
-LangString UnGSview "${LYX_LANG}" 'Silahkan tekan tombol "Uninstall" pada jendela berikutnya untuk memulai penghapusan$\r$\n\
+LangString UnGSview "${LYX_LANG}" 'Silahkan tekan tombol "Hapus" pada jendela berikutnya untuk memulai penghapusan$\r$\n\
 				   Postscript dan  penampil PDF "GSview".'
 LangString UnRemoveSuccessLabel "${LYX_LANG}" "LyX telah dihapus dengan sukses dari komputer anda."
 
