@@ -158,6 +158,9 @@ What's new
 - Fix crash when closing a child after it has been unincluded from its
   master (bug 5859).
 
+- Fix crash when the dos-box is closed from which LyX was started
+  (bug 5758).
+
 - After reloading a child document, correctly re-assign the master
   (bug 5873).
 
