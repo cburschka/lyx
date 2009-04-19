@@ -23,12 +23,12 @@ file(GLOB_RECURSE frontend_qt4_images      ${TOP_SRC_DIR}/lib/images/*.png)
 set(resource_name ${CMAKE_CURRENT_BINARY_DIR}/Resources.qrc)
 lyx_qt_resources_file(${resource_name} "${TOP_SRC_DIR}/lib/" frontend_qt4_images)
 qt4_add_resources(resource_files ${resource_name})
-	
+
 
 add_definitions(-DQT_GENUINE_STR -DLYX_BUILD_QT4_FRONTEND)
 
-include_directories(	
-	${TOP_SRC_DIR}/src/frontends/qt4 
+include_directories(
+	${TOP_SRC_DIR}/src/frontends/qt4
 	${QT_INCLUDES}
 	${CMAKE_CURRENT_BINARY_DIR})
 
@@ -39,7 +39,7 @@ if(MERGE_FILES)
 		PROPERTIES OBJECT_DEPENDS "${depends_moc_uic}")
 	set_source_files_properties(_allinone_touched.C
 		PROPERTIES OBJECT_DEPENDS "${depends_moc_uic}")
-	add_library(frontend_qt4 ${library_type} 
+	add_library(frontend_qt4 ${library_type}
 		${_allinone_files} ${frontends_qt4_headers} ${ui_files} ${resource_files})
 else()
 	add_library(frontend_qt4 ${library_type}
@@ -47,9 +47,9 @@ else()
 endif()
 
 
-target_link_libraries(frontend_qt4 
+target_link_libraries(frontend_qt4
 	frontends
-	${QT_QTCORE_LIBRARY} 
+	${QT_QTCORE_LIBRARY}
 	${QT_QTGUI_LIBRARY})
 
 if(WIN32)
