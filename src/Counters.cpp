@@ -21,6 +21,7 @@
 #include "support/lassert.h"
 #include "support/lstrings.h"
 
+#include <algorithm>
 #include <sstream>
 
 using namespace std;
