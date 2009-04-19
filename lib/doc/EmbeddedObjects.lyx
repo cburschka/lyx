@@ -31613,8 +31613,8 @@ Child documents are used when you have a long document consisting of several
  the document in several files that can be revised separately.
  The different documents are then the so called child documents and a master
  document connects them to print the full document or parts of it.
- A child documents inherits contents of its master, for example the bibliography
- and the labels for cross-references.
+ A child documents inherits contents of its master, for example the LaTeX
+ preamble, the bibliography, and labels for cross-references.
 \end_layout
 
 \begin_layout Standard
