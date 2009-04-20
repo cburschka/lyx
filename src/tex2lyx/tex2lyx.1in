@@ -20,14 +20,12 @@ call it from the command line only if you need to use more complicated
 options.
 .PP
 \fBtex2lyx\fR [ \fB\-userdir\fR \fIuserdir\fR ] [ \fB\-systemdir\fR \fIsystemdir\fR ]
-[\fB\-n\fR] [\ \fB\-r\fR\ \fIrenv1\fR[,\fIrenv2\fR...]] [\ \fB\-s\fR\ \fIsfile1\fR[,\fIsfile2\fR...]]
-\fIinputfile\fR  [ \fB\-c\fR \fItextclass\fR ] 
-.PP
-\fBtex2lyx\fR [ \fB\-userdir\fR \fIuserdir\fR ] [ \fB\-systemdir\fR \fIsystemdir\fR ]
-[\ \fB\-r\fR\ \fIrenv1\fR[,\fIrenv2\fR...]] [\ \fB\-s\fR\ \fIsfile1\fR[,\fIsfile2\fR...]]
-\fIinputfiles\fR \fB\-p\fR \fB\-c\fR \fItextclass\fR
-.PP
-\fBtex2lyx\fR \fB\-help\fR
+[ \fB\-n\fR ] [ \fB\-c\fR \fItextclass\fR ] [\ \fB\-s\fR\ \fIsfile1\fR[,\fIsfile2\fR...]]
+\fIinputfile\fR  
+." .PP
+." \fBtex2lyx\fR [ \fB\-userdir\fR \fIuserdir\fR ] [ \fB\-systemdir\fR \fIsystemdir\fR ]
+." [\ \fB\-r\fR\ \fIrenv1\fR[,\fIrenv2\fR...]] [\ \fB\-s\fR\ \fIsfile1\fR[,\fIsfile2\fR...]]
+." \fIinputfiles\fR \fB\-p\fR \fB\-c\fR \fItextclass\fR
 .SH "OPTIONS"
 .TP
 .BI \-c
@@ -41,31 +39,28 @@ creates a file of textclass \*(L"foo\*(R" and reads the LyX layout file for that
 Force. \fBtex2lyx\fR will not run if the .lyx file it would generate already exists.
 Use the \fB\-f\fR option (carefully) to clobber any existing files.
 .TP
-.BI \-help
-Help. Print out usage information and quit.
-.TP
 .BI \-n
 Noweb. Translate a noweb (aka literate programming) file. This should be
 (almost?) equivalent to running \*(L"noweb2lyx foo.tex foo.lyx\*(R". This option
 requires the \fB\-c\fR option.
-.TP
-.BI \-p
-Partial file. The input files are LaTeX fragments, with no preamble matter or
-\f(CW\ebegin{document}\fR commands. This option requires the \fB\-c\fR option, since there
-are no \f(CW\edocumentclass\fR commands in the files \fBtex2lyx\fR is translating. When
-using this option, you can translate more than one file, as long as all files
-are the same class. The LyX file created by \fBtex2lyx\fR can be included in an
-existing LyX file using the \*(L"Include LyX File\*(R" command from
-LyX's Insert menu. (\fBNOTE\fR: this feature of the older \fBreLyX\fR script has
-not yet been implemented in \fBtex2lyx\fR).
-.TP
-.BI \-r
-Regular environments (see the section on \fISyntax Files\fR).  If you give more than one
-environment, separate them with commas (not spaces). You'll probably need to
-quote the environment list, especially if it has asterisk environments (foo*)
-in it. If you use this command often, considering creating a personal syntax
-file. (\fBNOTE\fR: this feature of the older \fBreLyX\fR script has
-not yet been implemented in \fBtex2lyx\fR).
+." .TP
+." .BI \-p
+." Partial file. The input files are LaTeX fragments, with no preamble matter or
+." \f(CW\ebegin{document}\fR commands. This option requires the \fB\-c\fR option, since there
+." are no \f(CW\edocumentclass\fR commands in the files \fBtex2lyx\fR is translating. When
+." using this option, you can translate more than one file, as long as all files
+." are the same class. The LyX file created by \fBtex2lyx\fR can be included in an
+." existing LyX file using the \*(L"Include LyX File\*(R" command from
+." LyX's Insert menu. (\fBNOTE\fR: this feature of the older \fBreLyX\fR script has
+." not yet been implemented in \fBtex2lyx\fR).
+." .TP
+." .BI \-r
+." Regular environments (see the section on \fISyntax Files\fR).  If you give more than one
+." environment, separate them with commas (not spaces). You'll probably need to
+." quote the environment list, especially if it has asterisk environments (foo*)
+." in it. If you use this command often, considering creating a personal syntax
+." file. (\fBNOTE\fR: this feature of the older \fBreLyX\fR script has
+." not yet been implemented in \fBtex2lyx\fR).
 .TP
 .BI \-s
 Syntax files. Input (one or more quoted, comma-separated) syntax files to read
@@ -78,6 +73,9 @@ chosen. Cf. the section \f(CWFILES\fR for details.
 .BI \-userdir
 Specify a user directory. Normally, you shouldn't need this. Your LyX user directory is
 chosen. Cf. the section \f(CWFILES\fR for details.
+.TP
+.BI \-help
+Help. Print out usage information and quit.
 .SH "DESCRIPTION"
 .SS "Introduction"
 \fBtex2lyx\fR will create a LyX file \fIdir/foo.lyx\fR from the LaTeX file
