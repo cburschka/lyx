@@ -45,7 +45,7 @@ typedef std::basic_ostream<char_type> odocstream;
 class ifdocstream : public std::basic_ifstream<char_type> {
 	typedef std::basic_ifstream<char_type> base;
 public:
-	ifdocstream(std::string const & encoding = "UTF-8");
+	ifdocstream();
 	explicit ifdocstream(const char* s,
 		std::ios_base::openmode mode = std::ios_base::in,
 		std::string const & encoding = "UTF-8");

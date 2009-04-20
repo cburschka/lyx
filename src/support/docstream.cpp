@@ -320,9 +320,9 @@ const char * iconv_codecvt_facet_exception::what() const throw()
 }
 
 
-ifdocstream::ifdocstream(string const & encoding) : base()
+ifdocstream::ifdocstream() : base()
 {
-	setEncoding(*this, encoding, in);
+	setEncoding(*this, "UTF-8", in);
 }
 
 
