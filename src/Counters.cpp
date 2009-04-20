@@ -439,7 +439,8 @@ docstring Counters::theCounter(docstring const & counter) const
 }
 
 
-docstring const Counters::flattenLabelString(docstring const & counter, bool in_appendix, 
+docstring Counters::flattenLabelString(docstring const & counter, 
+				       bool in_appendix, 
 				       vector<docstring> & callers) const
 {
 	docstring label;
