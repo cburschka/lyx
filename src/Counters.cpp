@@ -149,8 +149,7 @@ docstring const & Counter::flatLabelString(bool in_appendix) const
 }
 
 
-docstring const & Counter::setFlatLabelStrings(docstring const & fls,
-					       docstring const & flsa)
+void Counter::setFlatLabelStrings(docstring const & fls, docstring const & flsa)
 {
 	flatlabelstring_ = fls;
 	flatlabelstringappendix_ = flsa;

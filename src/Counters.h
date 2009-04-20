@@ -61,8 +61,7 @@ public:
 	 */
 	docstring const & flatLabelString(bool in_appendix) const;
 	/// set the \c flatLabelString values.
-	docstring const & setFlatLabelStrings(docstring const & fls,
-					      docstring const & flsa);
+	void setFlatLabelStrings(docstring const & fls, docstring const & flsa);
 private:
 	///
 	int value_;
