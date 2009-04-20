@@ -219,12 +219,16 @@
 # Traduction groupes de graphiques -> denomination "graphique" a remplacer
 # par "image" ou autre en instance
 # ------------------------------------------------------------------
+# 20 avril 2009 mise a jour intermediaire pour 1.6.3
+# Raccourci A de Aide change en d pour raccourcis paragraphe
+# en Alt-A, -> D de Document change en u
+# ------------------------------------------------------------------
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-04-17 09:27+0200\n"
-"PO-Revision-Date: 2009-04-18 00:39+0100\n"
+"POT-Creation-Date: 2009-04-20 09:26+0200\n"
+"PO-Revision-Date: 2009-04-20 09:56+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "MIME-Version: 1.0\n"
@@ -2511,7 +2515,6 @@ msgid "Custom"
 msgstr "Réglable"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
-#, fuzzy
 msgid "A&lter..."
 msgstr "&Modifier..."
 
@@ -2641,9 +2644,8 @@ msgid "&Enabled"
 msgstr "Ac&tivé"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:292
-#, fuzzy
 msgid "Maximum A&ge (in days):"
-msgstr "Age &Maximum (en jours) :"
+msgstr "Âge &Maximum (en jours) :"
 
 #: src/frontends/qt4/ui/PrefDateUi.ui:33
 msgid "&Date format:"
@@ -2682,7 +2684,6 @@ msgid "Editing"
 msgstr "Édition"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:51
-#, fuzzy
 msgid "Cursor &follows scrollbar"
 msgstr "Le curseur suit la barre de &défilement"
 
@@ -2715,12 +2716,10 @@ msgid "&Limit text width"
 msgstr "&Limitation de la largeur du texte"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:143
-#, fuzzy
 msgid "Screen used (&pixels):"
 msgstr "Écran &utilisé (pixels) :"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:169
-#, fuzzy
 msgid "Hide &tabbar"
 msgstr "Cacher la barre de &tabulation"
 
@@ -2737,7 +2736,6 @@ msgid "&New..."
 msgstr "&Nouveau..."
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:38
-#, fuzzy
 msgid "Re&move"
 msgstr "&Enlever"
 
@@ -2746,7 +2744,6 @@ msgid "S&hort Name:"
 msgstr "Nom cour&t :"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:85
-#, fuzzy
 msgid "Vector &graphics format"
 msgstr "Format &graphique vectoriel"
 
@@ -2763,7 +2760,6 @@ msgid "Ed&itor:"
 msgstr "É&diteur :"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:132
-#, fuzzy
 msgid "Shortc&ut:"
 msgstr "&Raccourci :"
 
@@ -2822,7 +2818,6 @@ msgid "1.0 is the standard scrolling speed with the mouse wheel. Higher values w
 msgstr "1.0 est la vitesse de défilement standard avec la molette de la souris. Les valeurs supérieures l'accélèrent, les valeurs inférieures la ralentissent."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:25
-#, fuzzy
 msgid "User &interface language:"
 msgstr "Langage de l'interface &utilisateur :"
 
@@ -2864,7 +2859,6 @@ msgid "Use the babel package for multilingual support"
 msgstr "Utiliser la paquetage babel pour le support multilingue"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:119
-#, fuzzy
 msgid "&Use babel"
 msgstr "Utiliser &babel"
 
@@ -2910,9 +2904,8 @@ msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)
 msgstr "Sélectionner pour activer le support des langues écrites de droite à gauche (par ex. l'hébreu ou l'arabe)."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:206
-#, fuzzy
 msgid "Enable RTL su&pport"
-msgstr "Activer le support &RTL (droite à gauche)"
+msgstr "Activer la fonctionnalité &RTL (droite à gauche)"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:234
 msgid "Cursor movement:"
@@ -2963,7 +2956,6 @@ msgid "Set class options to default on class change"
 msgstr "Repositionner les options de classe à leur valeur implicite quand la classe change"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:98
-#, fuzzy
 msgid "R&eset class options when document class changes"
 msgstr "Repositionner les options quand la classe de &document change"
 
@@ -3105,18 +3097,16 @@ msgid "Option used to print to non-default printer."
 msgstr "Option à transmettre au programme d'impression pour imprimer sur une imprimante donnée."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:101
-#, fuzzy
 msgid "Set &printer:"
-msgstr "Imp&rimante :"
+msgstr "Sélectionner l'imp&rimante :"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:114
 msgid "Option used with spool command to set printer."
 msgstr "Option à utiliser avec la commande de spoule pour désigner l'imprimante à utiliser."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:117
-#, fuzzy
 msgid "Spool &printer:"
-msgstr "Préfi&xe de spoule :"
+msgstr "Imprim&ante de spoule :"
 
 # Pas très clair ...
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:130
@@ -3124,7 +3114,6 @@ msgid "Setting causes printer command to print to file and then use this actuall
 msgstr "Cette option fait que la commande d'impression imprime dans un fichier et utilise cette commande pour effectuer l'impression."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:136
-#, fuzzy
 msgid "Spool co&mmand:"
 msgstr "Commande de &spoule :"
 
@@ -3141,9 +3130,8 @@ msgid "Lan&dscape:"
 msgstr "Pa&ysage :"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:182
-#, fuzzy
 msgid "&Number of copies:"
-msgstr "Nombre d'exemplaires"
+msgstr "Nombre d'e&xemplaires :"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:192
 msgid "Option used to set number of copies."
@@ -3198,9 +3186,8 @@ msgid "Normally, this needs to be checked only if you are using dvips as your pr
 msgstr "En principe, vous n'avez besoin de cocher cette option que si vous utilisez dvips comme commande d'impression et que vous avez des fichiers config.<imprimante> installés pour toutes vos imprimantes."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:304
-#, fuzzy
 msgid "Adapt &output to printer"
-msgstr "Adapter la sortie à l'imprimante"
+msgstr "Adapter la s&ortie à l'imprimante"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:311
 msgid "Name of the default printer"
@@ -3215,7 +3202,6 @@ msgid "Printer co&mmand:"
 msgstr "Commande d'im&pression :"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:69
-#, fuzzy
 msgid "Sans Seri&f:"
 msgstr "&Sans empattement :"
 
@@ -3224,7 +3210,6 @@ msgid "T&ypewriter:"
 msgstr "&Chasse fixe :"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:117
-#, fuzzy
 msgid "R&oman:"
 msgstr "&Romain :"
 
@@ -3241,63 +3226,52 @@ msgid "Font Sizes"
 msgstr "Tailles de police"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:262
-#, fuzzy
 msgid "&Large:"
-msgstr "Grand :"
+msgstr "&Grand :"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:272
-#, fuzzy
 msgid "&Larger:"
-msgstr "Très grand :"
+msgstr "Très &grand :"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:282
-#, fuzzy
 msgid "&Largest:"
-msgstr "Très très grand :"
+msgstr "Très très &grand :"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:295
-#, fuzzy
 msgid "&Huge:"
-msgstr "Énorme :"
+msgstr "Énorm&e :"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:305
-#, fuzzy
 msgid "&Hugest:"
-msgstr "Très très énorme :"
+msgstr "Très très énorm&e :"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:315
-#, fuzzy
 msgid "S&mallest:"
-msgstr "Tout petit :"
+msgstr "Tout &petit :"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:325
-#, fuzzy
 msgid "S&maller:"
-msgstr "Très petit :"
+msgstr "Très &petit :"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:335
-#, fuzzy
 msgid "S&mall:"
-msgstr "Petit :"
+msgstr "&Petit :"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:345
-#, fuzzy
 msgid "&Normal:"
-msgstr "Normal :"
+msgstr "&Normal :"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:355
-#, fuzzy
 msgid "&Tiny:"
-msgstr "Minuscule :"
+msgstr "Min&uscule :"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:368
 msgid "Checking this improves performance, but might decrease the on-screen quality of fonts"
 msgstr "Cocher ceci améliore les performances, mais peut dégrader l'affichage écran des caractères"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:371
-#, fuzzy
 msgid "&Use pixmap cache to speed up font rendering"
-msgstr "Utiliser le cache Pixmap pour accélérer le rendu des polices"
+msgstr "&Utiliser le cache Pixmap pour accélérer le rendu des polices"
 
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:90
 msgid "&Bind file:"
@@ -3320,9 +3294,8 @@ msgid "Personal &dictionary:"
 msgstr "&Dictionnaire personnel :"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:97
-#, fuzzy
 msgid "&Escape characters:"
-msgstr "Utiliser les caractères &protégés :"
+msgstr "Caractères &protégés :"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:107
 msgid "Spellchec&ker executable:"
@@ -3349,29 +3322,24 @@ msgid "Session"
 msgstr "Session"
 
 #: src/frontends/qt4/ui/PrefUi.ui:51
-#, fuzzy
 msgid "Restore window layouts and &geometries"
-msgstr "Autoriser l'enregistrement/restauration de l'apparence et de la géométrie des fenêtres"
+msgstr "Restaurer l'apparence et de la &géométrie des fenêtres"
 
 #: src/frontends/qt4/ui/PrefUi.ui:58
-#, fuzzy
 msgid "Restore to the cursor position when the file was last closed"
 msgstr "Restaurer la position qu'avait le curseur quand le fichier a été fermé la dernière fois"
 
 #: src/frontends/qt4/ui/PrefUi.ui:61
-#, fuzzy
 msgid "Restore cursor &positions"
-msgstr "Restaurer la position du curseur"
+msgstr "Restaurer les &positions du curseur"
 
 #: src/frontends/qt4/ui/PrefUi.ui:68
-#, fuzzy
 msgid "&Load opened files from last session"
-msgstr "Charger les fichiers ouverts lors de la dernière session"
+msgstr "&Charger les fichiers ouverts lors de la dernière session"
 
 #: src/frontends/qt4/ui/PrefUi.ui:75
-#, fuzzy
 msgid "Clear all session &information"
-msgstr "Effacer toutes les informations sur la session"
+msgstr "Effacer toutes les &informations sur la session"
 
 #: src/frontends/qt4/ui/PrefUi.ui:85
 msgid "Documents"
@@ -3386,14 +3354,12 @@ msgid "minutes"
 msgstr "minutes"
 
 #: src/frontends/qt4/ui/PrefUi.ui:170
-#, fuzzy
 msgid "&Backup documents, every"
 msgstr "&Sauvegarde automatique, toutes les"
 
 #: src/frontends/qt4/ui/PrefUi.ui:177
-#, fuzzy
 msgid "&Open documents in tabs"
-msgstr "Ouvrir un document en on&glet"
+msgstr "&Ouvrir un document en on&glet"
 
 #: src/frontends/qt4/ui/PrefUi.ui:200
 msgid "Automatic help"
@@ -3404,7 +3370,6 @@ msgid "Checking this allow the automatic display of helpful comments for insets 
 msgstr "Cocher ceci permet l'affichage automatique de commentaires d'aide dans la zone de travail principale d'un document en cours d'édition"
 
 #: src/frontends/qt4/ui/PrefUi.ui:221
-#, fuzzy
 msgid "&Enable tool tips in main work area"
 msgstr "Au&toriser l'affichage des bulles d'aide dans la zone de travail principale"
 
@@ -10509,7 +10474,7 @@ msgstr "Documents|D"
 #: lib/ui/classic.ui:39
 #: lib/ui/stdmenus.inc:27
 msgid "Help|H"
-msgstr "Aide|A"
+msgstr "Aide|d"
 
 #: lib/ui/classic.ui:47
 #: lib/ui/stdmenus.inc:35
@@ -11647,9 +11612,8 @@ msgid "Settings...|S"
 msgstr "Paramètres...|m"
 
 #: lib/ui/stdcontext.inc:91
-#, fuzzy
 msgid "Go back|G"
-msgstr "&Revenir"
+msgstr "Revenir|R"
 
 #: lib/ui/stdcontext.inc:93
 msgid "Copy as Reference|C"
@@ -11700,7 +11664,6 @@ msgid "Simple frame, page breaks|p"
 msgstr "Cadre simple, sauts de page|a"
 
 #: lib/ui/stdcontext.inc:145
-#, fuzzy
 msgid "Oval, thin|a"
 msgstr "Ovale, fin|O"
 
@@ -11717,7 +11680,6 @@ msgid "Shaded background|b"
 msgstr "Fond ombré|b"
 
 #: lib/ui/stdcontext.inc:149
-#, fuzzy
 msgid "Double frame|u"
 msgstr "Double cadre|D"
 
@@ -11727,7 +11689,6 @@ msgid "LyX Note|N"
 msgstr "Note LyX|N"
 
 #: lib/ui/stdcontext.inc:164
-#, fuzzy
 msgid "Comment|m"
 msgstr "Commentaire|C"
 
@@ -11938,7 +11899,6 @@ msgid "Paste Recent|e"
 msgstr "Coller une Sélection Récente|c"
 
 #: lib/ui/stdcontext.inc:273
-#, fuzzy
 msgid "Jump Back to Saved Bookmark|B"
 msgstr "Aller au signet enregistré|e"
 
@@ -12081,7 +12041,7 @@ msgstr "Copier la colonne|i"
 
 #: lib/ui/stdmenus.inc:25
 msgid "Document|D"
-msgstr "Document|D"
+msgstr "Document|u"
 
 #: lib/ui/stdmenus.inc:26
 msgid "Tools|T"
@@ -12170,9 +12130,8 @@ msgid "Box Settings...|x"
 msgstr "Paramètres de boîte...|o"
 
 #: lib/ui/stdmenus.inc:124
-#, fuzzy
 msgid "Listings Settings...|g"
-msgstr "Paramètres de listing"
+msgstr "Paramètres de listing...|g"
 
 #: lib/ui/stdmenus.inc:128
 msgid "Table Settings...|a"
@@ -12595,9 +12554,8 @@ msgid "Find and replace"
 msgstr "Rechercher et remplacer"
 
 #: lib/ui/stdtoolbars.inc:70
-#, fuzzy
 msgid "Navigate back"
-msgstr "Naviguer|N"
+msgstr "Naviguer en arrière"
 
 #: lib/ui/stdtoolbars.inc:72
 msgid "Toggle emphasis"
@@ -13232,32 +13190,23 @@ msgstr "Fraction unité (20 km/h)\t\\unitfrac"
 
 #: lib/ui/stdtoolbars.inc:311
 msgid "Text fraction\t\\tfrac"
-msgstr "Fraction en ligne\t\\tfrac"
+msgstr "Fraction en ligne \t\\tfrac"
 
 #: lib/ui/stdtoolbars.inc:312
 msgid "Display fraction\t\\dfrac"
 msgstr "Fraction hors ligne\t\\dfrac"
 
 #: lib/ui/stdtoolbars.inc:313
-#, fuzzy
 msgid "Continued fraction\t\\cfrac"
-msgstr ""
-"Fraction esthétique (3/4)\t\\n"
-"icefrac"
+msgstr "Fraction continue\t\\cfrac"
 
 #: lib/ui/stdtoolbars.inc:314
-#, fuzzy
 msgid "Continued fraction (left)\t\\cfrac"
-msgstr ""
-"Fraction esthétique (3/4)\t\\n"
-"icefrac"
+msgstr "Fraction continue (gauche)\t\\cfrac"
 
 #: lib/ui/stdtoolbars.inc:315
-#, fuzzy
 msgid "Continued fraction (right)\t\\cfrac"
-msgstr ""
-"Fraction esthétique (3/4)\t\\n"
-"icefrac"
+msgstr "Fraction continue (droite)\t\\cfrac"
 
 #: lib/ui/stdtoolbars.inc:316
 msgid "Binomial\t\\binom"
@@ -15613,35 +15562,36 @@ msgstr "MS Word|W"
 msgid "HTML (MS Word)"
 msgstr "HTML (MS Word)"
 
-#: src/BiblioInfo.cpp:146
+#: src/BiblioInfo.cpp:234
 #: src/frontends/qt4/GuiDocument.cpp:1377
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s et %2$s"
 
-#: src/BiblioInfo.cpp:150
+#: src/BiblioInfo.cpp:238
 #, c-format
 msgid "%1$s et al."
 msgstr "%1$s et al."
 
-#: src/BiblioInfo.cpp:172
-msgid "No year"
-msgstr "Pas d'année"
-
-#: src/BiblioInfo.cpp:303
+#: src/BiblioInfo.cpp:295
 msgid "Ch. "
 msgstr "Ch. "
 
-#: src/BiblioInfo.cpp:305
+#: src/BiblioInfo.cpp:297
 msgid "pp. "
 msgstr "pp. "
 
-#: src/BiblioInfo.cpp:460
-#: src/BiblioInfo.cpp:520
+#: src/BiblioInfo.cpp:436
+#: src/BiblioInfo.cpp:439
+msgid "No year"
+msgstr "Pas d'année"
+
+#: src/BiblioInfo.cpp:498
+#: src/BiblioInfo.cpp:558
 msgid "Add to bibliography only."
 msgstr "Ajouter seulement à la bibliographie."
 
-#: src/BiblioInfo.cpp:516
+#: src/BiblioInfo.cpp:554
 msgid "before"
 msgstr "avant"
 
@@ -16516,9 +16466,8 @@ msgid "changed text 5th author"
 msgstr "texte modifié auteur 5"
 
 #: src/Color.cpp:206
-#, fuzzy
 msgid "deleted text modifier"
-msgstr "texte supprimé"
+msgstr "modificateur de texte supprimé"
 
 #: src/Color.cpp:207
 msgid "added space markers"
@@ -17198,20 +17147,19 @@ msgid "Save changed document?"
 msgstr "Enregistrer le document modifié ?"
 
 #: src/LyXFunc.cpp:708
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The document %1$s has not been saved yet.\n"
 "\n"
 "Do you want to save the document?"
 msgstr ""
-"Le document %1$s a des modifications non enregistrées.\n"
+"Le document %1$s n'a pas encore été enregistré.\n"
 "\n"
 "Voulez-vous enregistrer le document ?"
 
 #: src/LyXFunc.cpp:711
-#, fuzzy
 msgid "Save new document?"
-msgstr "Enregistrer le document modifié ?"
+msgstr "Enregistrer le nouveau document ?"
 
 #: src/LyXFunc.cpp:726
 #, c-format
@@ -17932,7 +17880,6 @@ msgid "Error: Could not generate logfile."
 msgstr " Erreur : échec de la génération du fichier journal."
 
 #: src/VCBackend.cpp:536
-#, fuzzy
 msgid ""
 "Error when committing to repository.\n"
 "You have to manually resolve the problem.\n"
@@ -17949,12 +17896,18 @@ msgid ""
 "the current document now!\n"
 "Also check the access to the repository."
 msgstr ""
+"Erreur lors de la prise de contrôle de la version.\n"
+"Un autre utilisateur est sans doute en train\n"
+"d'éditer le document courant !\n"
+"Vérifier également les droits d'accès au dépôt."
 
 #: src/VCBackend.cpp:604
 msgid ""
 "Error when releasing write lock.\n"
 "Check the access to the repository."
 msgstr ""
+"Erreur lors de la restitution du contrôle de la version.\n"
+"Vérifier les droits d'accès au dépôt."
 
 #: src/VCBackend.cpp:625
 #, c-format
@@ -18478,7 +18431,7 @@ msgstr "Le fichier %1$s existe déjà, voulez-vous l'écraser ?"
 
 #: src/frontends/qt4/GuiCommandBuffer.cpp:98
 msgid "List of previous commands"
-msgstr ""
+msgstr "Liste des commandes précédentes"
 
 #: src/frontends/qt4/GuiCommandBuffer.cpp:101
 msgid "Next command"
@@ -19321,7 +19274,7 @@ msgstr "Complétion de saisie"
 
 #: src/frontends/qt4/GuiPrefs.cpp:638
 msgid "Screen fonts"
-msgstr "Polices d'Écran"
+msgstr "Polices d'écran"
 
 #: src/frontends/qt4/GuiPrefs.cpp:813
 msgid "Colors"
@@ -20243,7 +20196,6 @@ msgid "&Discard"
 msgstr "I&gnorer"
 
 #: src/frontends/qt4/GuiView.cpp:1906
-#, fuzzy
 msgid "Document not loaded"
 msgstr "Le document n'a pas été chargé"
 
@@ -20278,9 +20230,8 @@ msgid " (version control)"
 msgstr " (contrôle de version)"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:1119
-#, fuzzy
 msgid " (version control, locking)"
-msgstr " (contrôle de version)"
+msgstr " (contrôle de version, verrouillage)"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:1122
 msgid " (changed)"
@@ -20572,18 +20523,17 @@ msgid "Opened Branch Inset"
 msgstr "Insert de branche ouvert"
 
 #: src/insets/InsetBranch.cpp:82
-#, fuzzy
 msgid "active"
-msgstr "acute"
+msgstr "actif"
 
 #: src/insets/InsetBranch.cpp:82
 msgid "non-active"
-msgstr ""
+msgstr "non-actif"
 
 #: src/insets/InsetBranch.cpp:83
-#, fuzzy, c-format
+#, c-format
 msgid "Branch (%1$s): %2$s"
-msgstr "%1$s, %2$s"
+msgstr "Branche (%1$s) : %2$s"
 
 #: src/insets/InsetBranch.cpp:91
 msgid "Branch: "
@@ -20591,7 +20541,7 @@ msgstr "Branche : "
 
 #: src/insets/InsetBranch.cpp:95
 msgid "Branch (child only): "
-msgstr ""
+msgstr "Branche (sous-document seulement) :"
 
 #: src/insets/InsetBranch.cpp:100
 msgid "Undef: "
@@ -20615,14 +20565,12 @@ msgid "not cited"
 msgstr "non cité"
 
 #: src/insets/InsetCitation.cpp:396
-#, fuzzy
 msgid "No bibliography defined!"
-msgstr "La clé bibliographique"
+msgstr "Aucune bibliographie définie !"
 
 #: src/insets/InsetCitation.cpp:400
-#, fuzzy
 msgid "No citations selected!"
-msgstr "Aucune citation accessible !"
+msgstr "Aucune citation sélectionnée !"
 
 #: src/insets/InsetCommand.cpp:102
 msgid "LaTeX Command: "
@@ -21393,9 +21341,9 @@ msgid "No vertical grid lines in 'cases': feature %1$s"
 msgstr "Pas de lignes de grille verticales dans 'cases' : option %1$s"
 
 #: src/mathed/InsetMathCases.cpp:106
-#, fuzzy, c-format
+#, c-format
 msgid "Changing number of columns not allowed in 'cases': feature %1$s"
-msgstr "Impossible de changer le nombre de colonnes dans '%1$s'"
+msgstr "Interdiction de changer le nombre de colonnes dans 'cases' : fonctionnalité %1$s"
 
 #: src/mathed/InsetMathGrid.cpp:1372
 msgid "Only one row"
