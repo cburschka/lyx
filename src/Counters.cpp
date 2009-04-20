@@ -265,8 +265,8 @@ void Counters::reset()
 		// It only needs to be done when the textclass is
 		// updated, but in practice the extra work is probably
 		// not noticeable (JMarc)
-		docstring const & fls = flattenLabelString(it->first, false, callers);
-		docstring const & flsa = flattenLabelString(it->first, true, callers);
+		docstring const fls = flattenLabelString(it->first, false, callers);
+		docstring const flsa = flattenLabelString(it->first, true, callers);
 		it->second.setFlatLabelStrings(fls, flsa);
 	}
 }
@@ -439,7 +439,7 @@ docstring Counters::theCounter(docstring const & counter) const
 }
 
 
-docstring Counters::flattenLabelString(docstring const & counter, bool in_appendix, 
+docstring const Counters::flattenLabelString(docstring const & counter, bool in_appendix, 
 				       vector<docstring> & callers) const
 {
 	docstring label;
@@ -478,8 +478,8 @@ docstring Counters::flattenLabelString(docstring const & counter, bool in_append
 		while (k < ls.size() && lowercase(ls[k]) >= 'a' 
 		       && lowercase(ls[k]) <= 'z')
 			++k;
-		docstring const & newc = ls.substr(j, k - j);
-		docstring const & repl = flattenLabelString(newc, in_appendix, callers);
+		docstring const newc = ls.substr(j, k - j);
+		docstring const repl = flattenLabelString(newc, in_appendix, callers);
 		ls.replace(i, k - j + 4, repl);
 	}
 	callers.pop_back();
@@ -504,8 +504,8 @@ docstring Counters::counterLabel(docstring const & format) const
 		while (k < label.size() && lowercase(label[k]) >= 'a' 
 		       && lowercase(label[k]) <= 'z')
 			++k;
-		docstring const & newc = label.substr(j, k - j);
-		docstring const & repl = theCounter(newc);
+		docstring const newc = label.substr(j, k - j);
+		docstring const repl = theCounter(newc);
 		label.replace(i, k - j + 4, repl);
 	}
 	while (true) {
@@ -522,7 +522,7 @@ docstring Counters::counterLabel(docstring const & format) const
 			break;
 		docstring const numbertype(label, i + 1, j - i - 1);
 		docstring const counter(label, j + 1, k - j - 1);
-		docstring const & rep = labelItem(counter, numbertype);
+		docstring const rep = labelItem(counter, numbertype);
 		label = docstring(label, 0, i) + rep
 			+ docstring(label, k + 1, docstring::npos);
 	}
