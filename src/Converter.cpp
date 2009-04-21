@@ -326,10 +326,10 @@ bool Converters::convert(Buffer const * buffer,
 	OutputParams runparams(buffer ? &buffer->params().encoding() : 0);
 	runparams.flavor = getFlavor(edgepath);
 	
-	runparams.use_indices = buffer->params().use_indices;
-
-	if (buffer)
+	if (buffer) {
 		runparams.use_japanese = buffer->bufferFormat() == "platex";
+		runparams.use_indices = buffer->params().use_indices;
+	}
 
 	// Some converters (e.g. lilypond) can only output files to the
 	// current directory, so we need to change the current directory.
