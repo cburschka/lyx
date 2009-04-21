@@ -35,9 +35,9 @@ public:
 
 private Q_SLOTS:
 	void on_closePB_clicked();
-	void on_suggestionsLW_changed(QListWidgetItem *);
-	void on_replaceC0_highlighted(const QString & str);
-	void on_replaceAllPB_clicked();
+	void on_suggestionsLW_itemChanged(QListWidgetItem *);
+	void on_replaceCO_highlighted(const QString & str);
+	void on_ignoreAllPB_clicked();
 	void on_addPB_clicked();
 	void on_ignorePB_clicked();
 	void on_replacePB_clicked();

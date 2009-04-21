@@ -90,7 +90,7 @@ void GuiSpellchecker::on_closePB_clicked()
 }
 
 
-void GuiSpellchecker::on_suggestionsLW_changed(QListWidgetItem * item)
+void GuiSpellchecker::on_suggestionsLW_itemChanged(QListWidgetItem * item)
 {
 	if (d->ui.replaceCO->count() != 0)
 		d->ui.replaceCO->setItemText(0, item->text());
@@ -101,7 +101,7 @@ void GuiSpellchecker::on_suggestionsLW_changed(QListWidgetItem * item)
 }
 
 
-void GuiSpellchecker::on_replaceC0_highlighted(const QString & str)
+void GuiSpellchecker::on_replaceCO_highlighted(const QString & str)
 {
 	QListWidget * lw = d->ui.suggestionsLW;
 	if (lw->currentItem() && lw->currentItem()->text() == str)
@@ -123,7 +123,7 @@ void GuiSpellchecker::updateView()
 }
 
 
-void GuiSpellchecker::on_replaceAllPB_clicked()
+void GuiSpellchecker::on_ignoreAllPB_clicked()
 {
 	/// replace all occurances of word
 	theSpellChecker()->accept(d->word_);
@@ -169,13 +169,13 @@ void GuiSpellchecker::updateSuggestions(docstring_list & words)
 	lw->clear();
 
 	if (words.empty()) {
-		on_suggestionsLW_changed(new QListWidgetItem(suggestion));
+		on_suggestionsLW_itemChanged(new QListWidgetItem(suggestion));
 		return;
 	}
 	for (size_t i = 0; i != words.size(); ++i)
 		lw->addItem(toqstr(words[i]));
 
-	on_suggestionsLW_changed(lw->item(0));
+	on_suggestionsLW_itemChanged(lw->item(0));
 	lw->setCurrentRow(0);
 }
 
