@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-04-17 09:27+0200\n"
+"POT-Creation-Date: 2009-04-22 20:54+0200\n"
 "PO-Revision-Date: 2008-08-04 17:40+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -1573,7 +1573,7 @@ msgid "&Quote Style:"
 msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 src/insets/InsetCaption.cpp:298
-#: src/insets/InsetListings.cpp:403 src/insets/InsetListings.cpp:405
+#: src/insets/InsetListings.cpp:408 src/insets/InsetListings.cpp:410
 msgid "Listing"
 msgstr ""
 
@@ -9455,11 +9455,11 @@ msgstr ""
 msgid "Tabular|T"
 msgstr ""
 
-#: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:106 lib/ui/stdmenus.inc:523
+#: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:106 lib/ui/stdmenus.inc:524
 msgid "Math|M"
 msgstr ""
 
-#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:501
+#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:502
 msgid "Spellchecker...|S"
 msgstr ""
 
@@ -9471,7 +9471,7 @@ msgstr ""
 msgid "Statistics...|i"
 msgstr ""
 
-#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:504
+#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:505
 msgid "Check TeX|h"
 msgstr ""
 
@@ -9479,11 +9479,11 @@ msgstr ""
 msgid "Change Tracking|g"
 msgstr ""
 
-#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:511
+#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:512
 msgid "Preferences...|P"
 msgstr ""
 
-#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:510
+#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:511
 msgid "Reconfigure|R"
 msgstr ""
 
@@ -10135,15 +10135,15 @@ msgstr ""
 msgid "Go to Bookmark 5|5"
 msgstr ""
 
-#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:518
+#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:519
 msgid "Introduction|I"
 msgstr ""
 
-#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:519
+#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:520
 msgid "Tutorial|T"
 msgstr ""
 
-#: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:520
+#: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:521
 msgid "User's Guide|U"
 msgstr ""
 
@@ -10155,15 +10155,15 @@ msgstr ""
 msgid "Embedded Objects|m"
 msgstr ""
 
-#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:524
+#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:525
 msgid "Customization|C"
 msgstr ""
 
-#: lib/ui/classic.ui:415 lib/ui/stdmenus.inc:527
+#: lib/ui/classic.ui:415 lib/ui/stdmenus.inc:528
 msgid "LaTeX Configuration|L"
 msgstr ""
 
-#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:530
+#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:531
 msgid "About LyX|X"
 msgstr ""
 
@@ -11112,51 +11112,55 @@ msgstr ""
 msgid "Clear Bookmarks|C"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:502
-msgid "Thesaurus...|T"
+#: lib/ui/stdmenus.inc:493
+msgid "Navigate Back|B"
 msgstr ""
 
 #: lib/ui/stdmenus.inc:503
+msgid "Thesaurus...|T"
+msgstr ""
+
+#: lib/ui/stdmenus.inc:504
 msgid "Statistics...|a"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:505
+#: lib/ui/stdmenus.inc:506
 msgid "TeX Information|I"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:521
+#: lib/ui/stdmenus.inc:522
 msgid "Additional Features|F"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:522
+#: lib/ui/stdmenus.inc:523
 msgid "Embedded Objects|O"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:525
+#: lib/ui/stdmenus.inc:526
 msgid "Shortcuts|S"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:526
+#: lib/ui/stdmenus.inc:527
 msgid "LyX Functions|y"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:528
+#: lib/ui/stdmenus.inc:529
 msgid "Specific Manuals|p"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:534
+#: lib/ui/stdmenus.inc:535
 msgid "Linguistics Manual|L"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:535
+#: lib/ui/stdmenus.inc:536
 msgid "Braille Manual|B"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:536
+#: lib/ui/stdmenus.inc:537
 msgid "XY-pic Manual|X"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:537
+#: lib/ui/stdmenus.inc:538
 msgid "Multicolumn Manual|M"
 msgstr ""
 
@@ -14142,33 +14146,33 @@ msgstr ""
 msgid "HTML (MS Word)"
 msgstr ""
 
-#: src/BiblioInfo.cpp:146 src/frontends/qt4/GuiDocument.cpp:1377
+#: src/BiblioInfo.cpp:234 src/frontends/qt4/GuiDocument.cpp:1377
 #, c-format
 msgid "%1$s and %2$s"
 msgstr ""
 
-#: src/BiblioInfo.cpp:150
+#: src/BiblioInfo.cpp:238
 #, c-format
 msgid "%1$s et al."
 msgstr ""
 
-#: src/BiblioInfo.cpp:172
-msgid "No year"
-msgstr ""
-
-#: src/BiblioInfo.cpp:303
+#: src/BiblioInfo.cpp:295
 msgid "Ch. "
 msgstr ""
 
-#: src/BiblioInfo.cpp:305
+#: src/BiblioInfo.cpp:297
 msgid "pp. "
 msgstr ""
 
-#: src/BiblioInfo.cpp:460 src/BiblioInfo.cpp:520
+#: src/BiblioInfo.cpp:436 src/BiblioInfo.cpp:439
+msgid "No year"
+msgstr ""
+
+#: src/BiblioInfo.cpp:498 src/BiblioInfo.cpp:558
 msgid "Add to bibliography only."
 msgstr ""
 
-#: src/BiblioInfo.cpp:516
+#: src/BiblioInfo.cpp:554
 msgid "before"
 msgstr ""
 
@@ -15354,7 +15358,7 @@ msgstr ""
 msgid "Could not read configuration file"
 msgstr ""
 
-#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1453
+#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1459
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -16179,36 +16183,36 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr ""
 
-#: src/Paragraph.cpp:1585 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1594 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr ""
 
-#: src/Paragraph.cpp:1651
+#: src/Paragraph.cpp:1660
 msgid "Alignment not permitted"
 msgstr ""
 
-#: src/Paragraph.cpp:1652
+#: src/Paragraph.cpp:1661
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
 
-#: src/Paragraph.cpp:2129 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2138 src/frontends/qt4/LaTeXHighlighter.cpp:108
 #: src/insets/InsetListings.cpp:185 src/insets/InsetListings.cpp:193
 #: src/insets/InsetListings.cpp:217 src/mathed/InsetMathString.cpp:165
 msgid "LyX Warning: "
 msgstr ""
 
-#: src/Paragraph.cpp:2130 src/insets/InsetListings.cpp:186
+#: src/Paragraph.cpp:2139 src/insets/InsetListings.cpp:186
 #: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:166
 msgid "uncodable character"
 msgstr ""
 
-#: src/Paragraph.cpp:2493
+#: src/Paragraph.cpp:2502
 msgid "Memory problem"
 msgstr ""
 
-#: src/Paragraph.cpp:2493
+#: src/Paragraph.cpp:2502
 msgid "Paragraph not properly initialized"
 msgstr ""
 
@@ -16630,24 +16634,24 @@ msgstr ""
 msgid "Quit %1"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:828
+#: src/frontends/qt4/GuiApplication.cpp:834
 msgid "Exiting."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:895
+#: src/frontends/qt4/GuiApplication.cpp:901
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:911
+#: src/frontends/qt4/GuiApplication.cpp:917
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1277
+#: src/frontends/qt4/GuiApplication.cpp:1283
 msgid "The current document was closed."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1287
+#: src/frontends/qt4/GuiApplication.cpp:1293
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -16655,18 +16659,18 @@ msgid ""
 "Exception: "
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1291
 #: src/frontends/qt4/GuiApplication.cpp:1297
+#: src/frontends/qt4/GuiApplication.cpp:1303
 msgid "Software exception Detected"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1295
+#: src/frontends/qt4/GuiApplication.cpp:1301
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1452
+#: src/frontends/qt4/GuiApplication.cpp:1458
 msgid "Could not find UI definition file"
 msgstr ""
 

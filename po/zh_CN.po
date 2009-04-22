@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.5.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-04-17 09:27+0200\n"
+"POT-Creation-Date: 2009-04-22 20:54+0200\n"
 "PO-Revision-Date: 2008-08-04 23:00+0100\n"
 "Last-Translator: Bo Peng <ben.bob@gmail.com>\n"
 "Language-Team: English <en@translate.freefriends.org>\n"
@@ -1621,7 +1621,7 @@ msgid "&Quote Style:"
 msgstr "引号风格(&Q):"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 src/insets/InsetCaption.cpp:298
-#: src/insets/InsetListings.cpp:403 src/insets/InsetListings.cpp:405
+#: src/insets/InsetListings.cpp:408 src/insets/InsetListings.cpp:410
 msgid "Listing"
 msgstr "程序列表"
 
@@ -9904,11 +9904,11 @@ msgstr "查找和替换(F)...|F"
 msgid "Tabular|T"
 msgstr "表格(T)|T"
 
-#: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:106 lib/ui/stdmenus.inc:523
+#: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:106 lib/ui/stdmenus.inc:524
 msgid "Math|M"
 msgstr "数学(M)|M"
 
-#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:501
+#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:502
 msgid "Spellchecker...|S"
 msgstr "拼写检查(S)...|S"
 
@@ -9921,7 +9921,7 @@ msgstr "同义词..."
 msgid "Statistics...|i"
 msgstr "状态"
 
-#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:504
+#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:505
 msgid "Check TeX|h"
 msgstr "检查TeX(h)|h"
 
@@ -9929,11 +9929,11 @@ msgstr "检查TeX(h)|h"
 msgid "Change Tracking|g"
 msgstr "追踪编辑"
 
-#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:511
+#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:512
 msgid "Preferences...|P"
 msgstr "首选项(P)...|P"
 
-#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:510
+#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:511
 msgid "Reconfigure|R"
 msgstr "重配置(R)|R"
 
@@ -10589,15 +10589,15 @@ msgstr "跳至书签4|4"
 msgid "Go to Bookmark 5|5"
 msgstr "跳至书签5|5"
 
-#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:518
+#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:519
 msgid "Introduction|I"
 msgstr "介绍(I)|I"
 
-#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:519
+#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:520
 msgid "Tutorial|T"
 msgstr "入门教程(T)|T"
 
-#: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:520
+#: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:521
 msgid "User's Guide|U"
 msgstr "用户手册(U)|U"
 
@@ -10609,15 +10609,15 @@ msgstr "详细功能(E)|E"
 msgid "Embedded Objects|m"
 msgstr "嵌入项(m)|m"
 
-#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:524
+#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:525
 msgid "Customization|C"
 msgstr "首选项(C)|C"
 
-#: lib/ui/classic.ui:415 lib/ui/stdmenus.inc:527
+#: lib/ui/classic.ui:415 lib/ui/stdmenus.inc:528
 msgid "LaTeX Configuration|L"
 msgstr "配置LaTeX(L)|L"
 
-#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:530
+#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:531
 msgid "About LyX|X"
 msgstr "关于LyX(X)|X"
 
@@ -11655,59 +11655,64 @@ msgstr "下一交叉引用(R)|R"
 msgid "Clear Bookmarks|C"
 msgstr "清除书签(C)|C"
 
-#: lib/ui/stdmenus.inc:502
+#: lib/ui/stdmenus.inc:493
+#, fuzzy
+msgid "Navigate Back|B"
+msgstr "导航(N)|N"
+
+#: lib/ui/stdmenus.inc:503
 msgid "Thesaurus...|T"
 msgstr "同义词(T)...|T"
 
-#: lib/ui/stdmenus.inc:503
+#: lib/ui/stdmenus.inc:504
 #, fuzzy
 msgid "Statistics...|a"
 msgstr "状态"
 
-#: lib/ui/stdmenus.inc:505
+#: lib/ui/stdmenus.inc:506
 msgid "TeX Information|I"
 msgstr "TeX信息"
 
-#: lib/ui/stdmenus.inc:521
+#: lib/ui/stdmenus.inc:522
 #, fuzzy
 msgid "Additional Features|F"
 msgstr "额外空间"
 
-#: lib/ui/stdmenus.inc:522
+#: lib/ui/stdmenus.inc:523
 #, fuzzy
 msgid "Embedded Objects|O"
 msgstr "嵌入项(m)|m"
 
-#: lib/ui/stdmenus.inc:525
+#: lib/ui/stdmenus.inc:526
 #, fuzzy
 msgid "Shortcuts|S"
 msgstr "快捷键(&h)"
 
-#: lib/ui/stdmenus.inc:526
+#: lib/ui/stdmenus.inc:527
 #, fuzzy
 msgid "LyX Functions|y"
 msgstr "函数"
 
-#: lib/ui/stdmenus.inc:528
+#: lib/ui/stdmenus.inc:529
 #, fuzzy
 msgid "Specific Manuals|p"
 msgstr "调试邮件"
 
-#: lib/ui/stdmenus.inc:534
+#: lib/ui/stdmenus.inc:535
 msgid "Linguistics Manual|L"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:535
+#: lib/ui/stdmenus.inc:536
 #, fuzzy
 msgid "Braille Manual|B"
 msgstr "LaTeX缺省设置"
 
-#: lib/ui/stdmenus.inc:536
+#: lib/ui/stdmenus.inc:537
 #, fuzzy
 msgid "XY-pic Manual|X"
 msgstr "调试邮件"
 
-#: lib/ui/stdmenus.inc:537
+#: lib/ui/stdmenus.inc:538
 #, fuzzy
 msgid "Multicolumn Manual|M"
 msgstr "多列(M)|M"
@@ -14779,34 +14784,34 @@ msgstr "字数(W)|W"
 msgid "HTML (MS Word)"
 msgstr ""
 
-#: src/BiblioInfo.cpp:146 src/frontends/qt4/GuiDocument.cpp:1377
+#: src/BiblioInfo.cpp:234 src/frontends/qt4/GuiDocument.cpp:1377
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s 和 %2$s"
 
-#: src/BiblioInfo.cpp:150
+#: src/BiblioInfo.cpp:238
 #, c-format
 msgid "%1$s et al."
 msgstr "%1$s 等."
 
-#: src/BiblioInfo.cpp:172
-msgid "No year"
-msgstr "未知年份"
-
-#: src/BiblioInfo.cpp:303
+#: src/BiblioInfo.cpp:295
 msgid "Ch. "
 msgstr ""
 
-#: src/BiblioInfo.cpp:305
+#: src/BiblioInfo.cpp:297
 msgid "pp. "
 msgstr ""
 
-#: src/BiblioInfo.cpp:460 src/BiblioInfo.cpp:520
+#: src/BiblioInfo.cpp:436 src/BiblioInfo.cpp:439
+msgid "No year"
+msgstr "未知年份"
+
+#: src/BiblioInfo.cpp:498 src/BiblioInfo.cpp:558
 #, fuzzy
 msgid "Add to bibliography only."
 msgstr "添加文献引用到目录(&T)"
 
-#: src/BiblioInfo.cpp:516
+#: src/BiblioInfo.cpp:554
 msgid "before"
 msgstr "之前"
 
@@ -16098,7 +16103,7 @@ msgstr "Running MakeIndex for nomencl."
 msgid "Could not read configuration file"
 msgstr "无法读取配置文件"
 
-#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1453
+#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1459
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -17061,15 +17066,15 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "使用保存的版本吗?"
 
-#: src/Paragraph.cpp:1585 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1594 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "在此显示布局下无意义"
 
-#: src/Paragraph.cpp:1651
+#: src/Paragraph.cpp:1660
 msgid "Alignment not permitted"
 msgstr "无效对齐方式"
 
-#: src/Paragraph.cpp:1652
+#: src/Paragraph.cpp:1661
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -17077,24 +17082,24 @@ msgstr ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 
-#: src/Paragraph.cpp:2129 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2138 src/frontends/qt4/LaTeXHighlighter.cpp:108
 #: src/insets/InsetListings.cpp:185 src/insets/InsetListings.cpp:193
 #: src/insets/InsetListings.cpp:217 src/mathed/InsetMathString.cpp:165
 #, fuzzy
 msgid "LyX Warning: "
 msgstr "LyX版本"
 
-#: src/Paragraph.cpp:2130 src/insets/InsetListings.cpp:186
+#: src/Paragraph.cpp:2139 src/insets/InsetListings.cpp:186
 #: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:166
 #, fuzzy
 msgid "uncodable character"
 msgstr "特殊字符"
 
-#: src/Paragraph.cpp:2493
+#: src/Paragraph.cpp:2502
 msgid "Memory problem"
 msgstr ""
 
-#: src/Paragraph.cpp:2493
+#: src/Paragraph.cpp:2502
 msgid "Paragraph not properly initialized"
 msgstr ""
 
@@ -17554,25 +17559,25 @@ msgstr "重配置(R)|R"
 msgid "Quit %1"
 msgstr "退出LyX"
 
-#: src/frontends/qt4/GuiApplication.cpp:828
+#: src/frontends/qt4/GuiApplication.cpp:834
 msgid "Exiting."
 msgstr "退出."
 
-#: src/frontends/qt4/GuiApplication.cpp:895
+#: src/frontends/qt4/GuiApplication.cpp:901
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "语法: set-color <lyx_name> <x11_name>"
 
-#: src/frontends/qt4/GuiApplication.cpp:911
+#: src/frontends/qt4/GuiApplication.cpp:917
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr "设置颜色 \"%1$s\" 失败 - 未定义或不能重定义颜色"
 
-#: src/frontends/qt4/GuiApplication.cpp:1277
+#: src/frontends/qt4/GuiApplication.cpp:1283
 #, fuzzy
 msgid "The current document was closed."
 msgstr "打印文件失败"
 
-#: src/frontends/qt4/GuiApplication.cpp:1287
+#: src/frontends/qt4/GuiApplication.cpp:1293
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -17580,18 +17585,18 @@ msgid ""
 "Exception: "
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1291
 #: src/frontends/qt4/GuiApplication.cpp:1297
+#: src/frontends/qt4/GuiApplication.cpp:1303
 msgid "Software exception Detected"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1295
+#: src/frontends/qt4/GuiApplication.cpp:1301
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1452
+#: src/frontends/qt4/GuiApplication.cpp:1458
 #, fuzzy
 msgid "Could not find UI definition file"
 msgstr "无法读取配置文件"

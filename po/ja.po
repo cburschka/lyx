@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-04-19 23:29+0900\n"
+"POT-Creation-Date: 2009-04-22 20:54+0200\n"
 "PO-Revision-Date: 2009-04-21 03:23+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-doc@lists.lyx.org>\n"
@@ -1950,7 +1950,8 @@ msgid "&General"
 msgstr "一般(&G)"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:99
-msgid "If not stated explicitly, fill title and author from appropriate environments"
+msgid ""
+"If not stated explicitly, fill title and author from appropriate environments"
 msgstr "明示的に指定しなければ、タイトルと著者を適当な環境から補完します"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:102
@@ -2227,7 +2228,8 @@ msgstr "一般"
 msgid ""
 "After the cursor has not moved for this time, the inline completion is shown "
 "if it is available."
-msgstr "これだけの時間カーソルを動かさなかったとき、可能ならば補完入力を表示します。"
+msgstr ""
+"これだけの時間カーソルを動かさなかったとき、可能ならば補完入力を表示します。"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:147
 msgid "s inline completion dela&y"
@@ -2249,7 +2251,8 @@ msgstr "秒のポップアップ遅延(&E)"
 msgid ""
 "When the TAB completion is not unique, there won't be a delay of the popup. "
 "It will be shown right away."
-msgstr "タブ補完に複数候補がある場合、ポップアップに遅延を置かず、直ちに表示する。"
+msgstr ""
+"タブ補完に複数候補がある場合、ポップアップに遅延を置かず、直ちに表示する。"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:221
 msgid "Sho&w popup without delay for non-unique completions"
@@ -2571,7 +2574,8 @@ msgid "Right-to-left language support"
 msgstr "右から左書きの言語をサポート"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:203 src/LyXRC.cpp:2760
-msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid ""
+"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "右から左へ書く言語（ヘブライ語，アラビア語など）をサポートするときに選択して"
 "ください。"
@@ -3630,7 +3634,8 @@ msgid "Rebuild the file lists"
 msgstr "ファイル一覧を再構築する"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:104
-msgid "Show contents of marked file. Only possible when files are shown with path"
+msgid ""
+"Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "選択したフィルの中身を表示する。ファイルのパスが表示されている時のみ有効であ"
 "る。"
@@ -9523,11 +9528,11 @@ msgstr "検索／置換(F)...|F"
 msgid "Tabular|T"
 msgstr "表(T)|T"
 
-#: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:106 lib/ui/stdmenus.inc:523
+#: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:106 lib/ui/stdmenus.inc:524
 msgid "Math|M"
 msgstr "数式(M)|M"
 
-#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:501
+#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:502
 msgid "Spellchecker...|S"
 msgstr "スペルチェック(S)...|S"
 
@@ -9539,7 +9544,7 @@ msgstr "類語辞典..."
 msgid "Statistics...|i"
 msgstr "統計(I)...|I"
 
-#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:504
+#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:505
 msgid "Check TeX|h"
 msgstr "TeX構文チェック(H)|H"
 
@@ -9547,11 +9552,11 @@ msgstr "TeX構文チェック(H)|H"
 msgid "Change Tracking|g"
 msgstr "変更追跡機能(G)|G"
 
-#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:511
+#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:512
 msgid "Preferences...|P"
 msgstr "設定(P)...|P"
 
-#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:510
+#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:511
 msgid "Reconfigure|R"
 msgstr "再初期設定(R)|R"
 
@@ -10203,15 +10208,15 @@ msgstr "しおり4に移動|4"
 msgid "Go to Bookmark 5|5"
 msgstr "しおり5に移動|5"
 
-#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:518
+#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:519
 msgid "Introduction|I"
 msgstr "はじめの一歩(I)|I"
 
-#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:519
+#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:520
 msgid "Tutorial|T"
 msgstr "入門篇(T)|T"
 
-#: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:520
+#: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:521
 msgid "User's Guide|U"
 msgstr "ユーザーの手引き(U)|U"
 
@@ -10223,15 +10228,15 @@ msgstr "拡張機能篇(E)|E"
 msgid "Embedded Objects|m"
 msgstr "埋込オブジェクト篇(M)|M"
 
-#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:524
+#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:525
 msgid "Customization|C"
 msgstr "カスタマイズ篇(C)|C"
 
-#: lib/ui/classic.ui:415 lib/ui/stdmenus.inc:527
+#: lib/ui/classic.ui:415 lib/ui/stdmenus.inc:528
 msgid "LaTeX Configuration|L"
 msgstr "LaTeXの設定|L"
 
-#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:530
+#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:531
 msgid "About LyX|X"
 msgstr "LyXについて|X"
 
@@ -11180,51 +11185,56 @@ msgstr "次の相互参照(R)|R"
 msgid "Clear Bookmarks|C"
 msgstr "しおり消去(C)|C"
 
-#: lib/ui/stdmenus.inc:502
+#: lib/ui/stdmenus.inc:493
+#, fuzzy
+msgid "Navigate Back|B"
+msgstr "戻る"
+
+#: lib/ui/stdmenus.inc:503
 msgid "Thesaurus...|T"
 msgstr "類語辞典(T)...|T"
 
-#: lib/ui/stdmenus.inc:503
+#: lib/ui/stdmenus.inc:504
 msgid "Statistics...|a"
 msgstr "統計(A)...|A"
 
-#: lib/ui/stdmenus.inc:505
+#: lib/ui/stdmenus.inc:506
 msgid "TeX Information|I"
 msgstr "TeX情報(I)|I"
 
-#: lib/ui/stdmenus.inc:521
+#: lib/ui/stdmenus.inc:522
 msgid "Additional Features|F"
 msgstr "高度な機能篇(F)|F"
 
-#: lib/ui/stdmenus.inc:522
+#: lib/ui/stdmenus.inc:523
 msgid "Embedded Objects|O"
 msgstr "埋込オブジェクト篇(O)|O"
 
-#: lib/ui/stdmenus.inc:525
+#: lib/ui/stdmenus.inc:526
 msgid "Shortcuts|S"
 msgstr "短絡キー(S)|S"
 
-#: lib/ui/stdmenus.inc:526
+#: lib/ui/stdmenus.inc:527
 msgid "LyX Functions|y"
 msgstr "LyX関数(Y)|Y"
 
-#: lib/ui/stdmenus.inc:528
+#: lib/ui/stdmenus.inc:529
 msgid "Specific Manuals|p"
 msgstr "用途別説明書(P)|P"
 
-#: lib/ui/stdmenus.inc:534
+#: lib/ui/stdmenus.inc:535
 msgid "Linguistics Manual|L"
 msgstr "言語学向け説明書(L)|L"
 
-#: lib/ui/stdmenus.inc:535
+#: lib/ui/stdmenus.inc:536
 msgid "Braille Manual|B"
 msgstr "点字用説明書(B)|B"
 
-#: lib/ui/stdmenus.inc:536
+#: lib/ui/stdmenus.inc:537
 msgid "XY-pic Manual|X"
 msgstr "XY-pic説明書|X"
 
-#: lib/ui/stdmenus.inc:537
+#: lib/ui/stdmenus.inc:538
 msgid "Multicolumn Manual|M"
 msgstr "段組説明書(M)|M"
 
@@ -14276,7 +14286,8 @@ msgstr "ディスクエラー: "
 
 #: src/Buffer.cpp:255
 #, c-format
-msgid "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
+msgid ""
+"LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
 msgstr ""
 "LyXは作業ディレクトリ'%1$s'を作ることができませんでした(ひょっとしてディスク"
 "がいっぱいですか？)。"
@@ -15949,7 +15960,8 @@ msgstr ""
 "は，チェックを外してください。"
 
 #: src/LyXRC.cpp:2454
-msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid ""
+"The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr "自動保存の間の間隔（秒単位)。0 は自動保存しないことを示します。"
 
 #: src/LyXRC.cpp:2461
@@ -15978,7 +15990,8 @@ msgstr ""
 
 #: src/LyXRC.cpp:2473
 msgid "Select to check whether the lastfiles still exist."
-msgstr "最後のファイルがまだ存在するかどうかをチェックするときには選んでください。"
+msgstr ""
+"最後のファイルがまだ存在するかどうかをチェックするときには選んでください。"
 
 #: src/LyXRC.cpp:2477
 msgid ""
@@ -16004,7 +16017,8 @@ msgstr "単語間のカーソル移動にMac OS X式の方法を使う。"
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
-msgstr "カーソルが内部にある時に、数式マクロをマクロ名のついた小さなボックスで囲む。"
+msgstr ""
+"カーソルが内部にある時に、数式マクロをマクロ名のついた小さなボックスで囲む。"
 
 #: src/LyXRC.cpp:2506
 #, no-c-format
@@ -16047,7 +16061,8 @@ msgstr "LyX が画像をどのように表示するかを選びます。"
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
-msgstr "文書への既定パス。空の値は，LyX を開始したディレクトリを選ぶことになります。"
+msgstr ""
+"文書への既定パス。空の値は，LyX を開始したディレクトリを選ぶことになります。"
 
 #: src/LyXRC.cpp:2535
 msgid "Specify additional chars that can be part of a word."
@@ -16107,7 +16122,8 @@ msgid ""
 msgstr "文書の最初に言語切換コマンドが必要なときに選んでください。"
 
 #: src/LyXRC.cpp:2575
-msgid "Select if a language switching command is needed at the end of the document."
+msgid ""
+"Select if a language switching command is needed at the end of the document."
 msgstr "文書の最後に言語切換コマンドが必要なときに選んでください。"
 
 #: src/LyXRC.cpp:2579
@@ -16153,7 +16169,8 @@ msgstr ""
 
 #: src/LyXRC.cpp:2603
 msgid "De-select if you do not want LyX to scroll to saved position."
-msgstr "LyXが保存位置までスクロールしないようにしたいときは，非選択にしてください。"
+msgstr ""
+"LyXが保存位置までスクロールしないようにしたいときは，非選択にしてください。"
 
 #: src/LyXRC.cpp:2607
 msgid "De-select to prevent loading files opened from the last LyX session."
@@ -16192,14 +16209,16 @@ msgid "Select to display the completion popup in text mode."
 msgstr "選択すると、テキストモードで補完ポップアップを表示します。"
 
 #: src/LyXRC.cpp:2636
-msgid "Show the completion popup without delay after non-unique completion attempt."
+msgid ""
+"Show the completion popup without delay after non-unique completion attempt."
 msgstr "複数の補完候補がある際、遅延なしに補完ポップアップを表示する。"
 
 #: src/LyXRC.cpp:2640
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
-msgstr "補完が利用可能であることを示すためにカーソル上に小さな三角形を表示します。"
+msgstr ""
+"補完が利用可能であることを示すためにカーソル上に小さな三角形を表示します。"
 
 #: src/LyXRC.cpp:2644
 msgid "The inline completion delay."
@@ -16220,7 +16239,8 @@ msgstr "長い補完を短縮するのに\"...\"を使用する。"
 #: src/LyXRC.cpp:2660
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
-msgstr "最後に使ったファイルの最大表示数。%1$d までファイルメニューに表示できます。"
+msgstr ""
+"最後に使ったファイルの最大表示数。%1$d までファイルメニューに表示できます。"
 
 #: src/LyXRC.cpp:2665
 msgid ""
@@ -16231,7 +16251,8 @@ msgstr ""
 "マットを使ってください。"
 
 #: src/LyXRC.cpp:2672
-msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid ""
+"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "代替の個人用辞書を指定してください。例：\".ispell_english\"。"
 
 #: src/LyXRC.cpp:2676
@@ -16343,7 +16364,8 @@ msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "お好みの印刷プログラム。例：\"dvips\", \"dvilj4\"。"
 
 #: src/LyXRC.cpp:2764
-msgid "Select to have visual bidi cursor movement, unselect for logical movement."
+msgid ""
+"Select to have visual bidi cursor movement, unselect for logical movement."
 msgstr ""
 "選択すると、視覚的な上下カーソル動作をします。選択を外すと、論理的な動作にな"
 "ります。"
@@ -16445,7 +16467,8 @@ msgid "Enable the automatic appearance of tool tips in the work area."
 msgstr "作業領域でのツールチップスの自動表示を有効にする。"
 
 #: src/LyXRC.cpp:2850
-msgid "Enable the pixmap cache that might improve performance on Mac and Windows."
+msgid ""
+"Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 "pixmapのキャッシュを有効にします。MacやWindowsでのパフォーマンスが向上する可"
 "能性があります。"
@@ -16493,15 +16516,15 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "文書を保管されている版に戻しますか？"
 
-#: src/Paragraph.cpp:1585 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1594 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "このレイアウトでは意味を持ちません！"
 
-#: src/Paragraph.cpp:1651
+#: src/Paragraph.cpp:1660
 msgid "Alignment not permitted"
 msgstr "配置が使えません"
 
-#: src/Paragraph.cpp:1652
+#: src/Paragraph.cpp:1661
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -16509,22 +16532,22 @@ msgstr ""
 "新しいレイアウトでは，これまで使っていた配置を使うことが出来ません。\n"
 "既定値に設定します。"
 
-#: src/Paragraph.cpp:2129 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2138 src/frontends/qt4/LaTeXHighlighter.cpp:108
 #: src/insets/InsetListings.cpp:185 src/insets/InsetListings.cpp:193
 #: src/insets/InsetListings.cpp:217 src/mathed/InsetMathString.cpp:165
 msgid "LyX Warning: "
 msgstr "LyX警告: "
 
-#: src/Paragraph.cpp:2130 src/insets/InsetListings.cpp:186
+#: src/Paragraph.cpp:2139 src/insets/InsetListings.cpp:186
 #: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:166
 msgid "uncodable character"
 msgstr "コード化できない文字"
 
-#: src/Paragraph.cpp:2493
+#: src/Paragraph.cpp:2502
 msgid "Memory problem"
 msgstr "メモリ障害"
 
-#: src/Paragraph.cpp:2493
+#: src/Paragraph.cpp:2502
 msgid "Paragraph not properly initialized"
 msgstr "段落が正しく初期化されていません"
 
@@ -16558,7 +16581,8 @@ msgstr "未知のトークン"
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
-msgstr "空白を段落の先頭に挿入することはできません。LyX入門篇を読んでください。"
+msgstr ""
+"空白を段落の先頭に挿入することはできません。LyX入門篇を読んでください。"
 
 #: src/Text.cpp:533
 msgid "You cannot type two spaces this way. Please read the Tutorial."
@@ -16682,7 +16706,8 @@ msgstr "破損ファイル"
 
 #: src/TextClass.cpp:643
 msgid "Could not read stdinsets.inc! This may lead to data loss!"
-msgstr "stdinsets.incを読むことができません！データ喪失につながる可能性があります！"
+msgstr ""
+"stdinsets.incを読むことができません！データ喪失につながる可能性があります！"
 
 #: src/Thesaurus.cpp:60
 msgid "Thesaurus failure"
@@ -17417,7 +17442,8 @@ msgstr "文書の設定"
 
 #: src/frontends/qt4/GuiDocument.cpp:559
 #: src/frontends/qt4/GuiDocument.cpp:1058
-msgid "Input listings parameters on the right. Enter ? for a list of parameters."
+msgid ""
+"Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 "リストのパラメーターを右側に入力してください。パラメーターの一覧を表示するに"
 "は？を入力してください。"
@@ -17918,7 +17944,8 @@ msgstr "子文書"
 #: src/frontends/qt4/GuiInclude.cpp:120 src/frontends/qt4/GuiInclude.cpp:182
 #: src/frontends/qt4/GuiListings.cpp:239 src/frontends/qt4/GuiListings.cpp:375
 #: src/frontends/qt4/GuiListings.cpp:450
-msgid "Input listing parameters on the right. Enter ? for a list of parameters."
+msgid ""
+"Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 "リストのパラメーターを右側に入力してください。パラメーターの一覧を表示するに"
 "は？を入力してください。"
@@ -19038,31 +19065,31 @@ msgstr "DocBookソース"
 msgid "Literate Source"
 msgstr "Literateソース"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1071
+#: src/frontends/qt4/GuiWorkArea.cpp:1117
 msgid " (version control)"
 msgstr " (バージョン管理)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1073
+#: src/frontends/qt4/GuiWorkArea.cpp:1119
 msgid " (version control, locking)"
 msgstr " (バージョン管理・ロック中)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1076
+#: src/frontends/qt4/GuiWorkArea.cpp:1122
 msgid " (changed)"
 msgstr " (変更されました)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1080
+#: src/frontends/qt4/GuiWorkArea.cpp:1126
 msgid " (read only)"
 msgstr " (読み込み専用)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1167
+#: src/frontends/qt4/GuiWorkArea.cpp:1213
 msgid "Close File"
 msgstr "ファイルを閉じる"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1566
+#: src/frontends/qt4/GuiWorkArea.cpp:1612
 msgid "Hide tab"
 msgstr "タブを隠す"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1568
+#: src/frontends/qt4/GuiWorkArea.cpp:1614
 msgid "Close tab"
 msgstr "タブを閉じる"
 
@@ -19695,7 +19722,8 @@ msgid "Should be composed of one or more of %1$s."
 msgstr "%1$sのうちの1つ以上で構成されなくてはなりません。"
 
 #: src/insets/InsetListingsParams.cpp:284
-msgid "Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
+msgid ""
+"Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
 msgstr "\\footnotesize, \\small, \\itshape, \\ttfamily 等を使ってください"
 
 #: src/insets/InsetListingsParams.cpp:286
@@ -20403,4 +20431,3 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "未知の"
-

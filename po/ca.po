@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-04-17 09:27+0200\n"
+"POT-Creation-Date: 2009-04-22 20:54+0200\n"
 "PO-Revision-Date: 2008-08-04 22:25+0100\n"
 "Last-Translator: joan <joan@montane.cat>\n"
 "Language-Team: Catalan\n"
@@ -1607,7 +1607,7 @@ msgid "&Quote Style:"
 msgstr "Estil de &cometes:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 src/insets/InsetCaption.cpp:298
-#: src/insets/InsetListings.cpp:403 src/insets/InsetListings.cpp:405
+#: src/insets/InsetListings.cpp:408 src/insets/InsetListings.cpp:410
 msgid "Listing"
 msgstr "Llistat"
 
@@ -9817,11 +9817,11 @@ msgstr "Cerca i substitueix...|F"
 msgid "Tabular|T"
 msgstr "Tabular|T"
 
-#: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:106 lib/ui/stdmenus.inc:523
+#: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:106 lib/ui/stdmenus.inc:524
 msgid "Math|M"
 msgstr "Matemàtiques|M"
 
-#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:501
+#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:502
 msgid "Spellchecker...|S"
 msgstr "Corrector ortogràfic...|S"
 
@@ -9834,7 +9834,7 @@ msgstr "Tesaurus..."
 msgid "Statistics...|i"
 msgstr "Estat"
 
-#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:504
+#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:505
 msgid "Check TeX|h"
 msgstr "Verifica el codi TeX|h"
 
@@ -9843,11 +9843,11 @@ msgstr "Verifica el codi TeX|h"
 msgid "Change Tracking|g"
 msgstr "Verifica els canvis|g"
 
-#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:511
+#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:512
 msgid "Preferences...|P"
 msgstr "Preferències...|P"
 
-#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:510
+#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:511
 msgid "Reconfigure|R"
 msgstr "Reconfigura|R"
 
@@ -10515,15 +10515,15 @@ msgstr "Ves al punt d'interès 4|4"
 msgid "Go to Bookmark 5|5"
 msgstr "Ves al punt d'interès 5|5"
 
-#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:518
+#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:519
 msgid "Introduction|I"
 msgstr "Introducció|I"
 
-#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:519
+#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:520
 msgid "Tutorial|T"
 msgstr "Tutorial|T"
 
-#: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:520
+#: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:521
 msgid "User's Guide|U"
 msgstr "Guia de l'usuari|U"
 
@@ -10536,15 +10536,15 @@ msgstr "Funcionalitats exteses|E"
 msgid "Embedded Objects|m"
 msgstr "Objectes adjunts|m"
 
-#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:524
+#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:525
 msgid "Customization|C"
 msgstr "Personalització|C"
 
-#: lib/ui/classic.ui:415 lib/ui/stdmenus.inc:527
+#: lib/ui/classic.ui:415 lib/ui/stdmenus.inc:528
 msgid "LaTeX Configuration|L"
 msgstr "Configuració del LaTeX|L"
 
-#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:530
+#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:531
 msgid "About LyX|X"
 msgstr "Quan al LyX|X"
 
@@ -11585,60 +11585,65 @@ msgstr "Referència creuada següent|R"
 msgid "Clear Bookmarks|C"
 msgstr "Neteja els punts d'interès|C"
 
-#: lib/ui/stdmenus.inc:502
+#: lib/ui/stdmenus.inc:493
+#, fuzzy
+msgid "Navigate Back|B"
+msgstr "Navega|N"
+
+#: lib/ui/stdmenus.inc:503
 msgid "Thesaurus...|T"
 msgstr "Tesaurus...|T"
 
-#: lib/ui/stdmenus.inc:503
+#: lib/ui/stdmenus.inc:504
 #, fuzzy
 msgid "Statistics...|a"
 msgstr "Estat"
 
-#: lib/ui/stdmenus.inc:505
+#: lib/ui/stdmenus.inc:506
 msgid "TeX Information|I"
 msgstr "Informació del TeX|I"
 
-#: lib/ui/stdmenus.inc:521
+#: lib/ui/stdmenus.inc:522
 #, fuzzy
 msgid "Additional Features|F"
 msgstr "Espai addicional"
 
-#: lib/ui/stdmenus.inc:522
+#: lib/ui/stdmenus.inc:523
 #, fuzzy
 msgid "Embedded Objects|O"
 msgstr "Objectes adjunts|m"
 
-#: lib/ui/stdmenus.inc:525
+#: lib/ui/stdmenus.inc:526
 #, fuzzy
 msgid "Shortcuts|S"
 msgstr "&Drecera:"
 
-#: lib/ui/stdmenus.inc:526
+#: lib/ui/stdmenus.inc:527
 #, fuzzy
 msgid "LyX Functions|y"
 msgstr "Funcions"
 
-#: lib/ui/stdmenus.inc:528
+#: lib/ui/stdmenus.inc:529
 #, fuzzy
 msgid "Specific Manuals|p"
 msgstr "Especials"
 
-#: lib/ui/stdmenus.inc:534
+#: lib/ui/stdmenus.inc:535
 #, fuzzy
 msgid "Linguistics Manual|L"
 msgstr "Lingüístics"
 
-#: lib/ui/stdmenus.inc:535
+#: lib/ui/stdmenus.inc:536
 #, fuzzy
 msgid "Braille Manual|B"
 msgstr "Braille (predeterminat)"
 
-#: lib/ui/stdmenus.inc:536
+#: lib/ui/stdmenus.inc:537
 #, fuzzy
 msgid "XY-pic Manual|X"
 msgstr "Especials"
 
-#: lib/ui/stdmenus.inc:537
+#: lib/ui/stdmenus.inc:538
 #, fuzzy
 msgid "Multicolumn Manual|M"
 msgstr "Multicolumna|M"
@@ -14679,33 +14684,33 @@ msgstr "MS Word|W"
 msgid "HTML (MS Word)"
 msgstr "HTML (MS Word)"
 
-#: src/BiblioInfo.cpp:146 src/frontends/qt4/GuiDocument.cpp:1377
+#: src/BiblioInfo.cpp:234 src/frontends/qt4/GuiDocument.cpp:1377
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s i %2$s"
 
-#: src/BiblioInfo.cpp:150
+#: src/BiblioInfo.cpp:238
 #, c-format
 msgid "%1$s et al."
 msgstr "%1$s i altres"
 
-#: src/BiblioInfo.cpp:172
-msgid "No year"
-msgstr "Sense any"
-
-#: src/BiblioInfo.cpp:303
+#: src/BiblioInfo.cpp:295
 msgid "Ch. "
 msgstr ""
 
-#: src/BiblioInfo.cpp:305
+#: src/BiblioInfo.cpp:297
 msgid "pp. "
 msgstr ""
 
-#: src/BiblioInfo.cpp:460 src/BiblioInfo.cpp:520
+#: src/BiblioInfo.cpp:436 src/BiblioInfo.cpp:439
+msgid "No year"
+msgstr "Sense any"
+
+#: src/BiblioInfo.cpp:498 src/BiblioInfo.cpp:558
 msgid "Add to bibliography only."
 msgstr "Afegeix només a la bibliografia"
 
-#: src/BiblioInfo.cpp:516
+#: src/BiblioInfo.cpp:554
 msgid "before"
 msgstr "abans"
 
@@ -15958,7 +15963,7 @@ msgstr "S'està executant el Makeindex per nomencl."
 msgid "Could not read configuration file"
 msgstr "No s'ha pogut llegir el fitxer de configuració"
 
-#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1453
+#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1459
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -16871,38 +16876,38 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Seleccionar fins al final del document"
 
-#: src/Paragraph.cpp:1585 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1594 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "No té sentit amb aquest format !"
 
-#: src/Paragraph.cpp:1651
+#: src/Paragraph.cpp:1660
 msgid "Alignment not permitted"
 msgstr ""
 
-#: src/Paragraph.cpp:1652
+#: src/Paragraph.cpp:1661
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
 
-#: src/Paragraph.cpp:2129 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2138 src/frontends/qt4/LaTeXHighlighter.cpp:108
 #: src/insets/InsetListings.cpp:185 src/insets/InsetListings.cpp:193
 #: src/insets/InsetListings.cpp:217 src/mathed/InsetMathString.cpp:165
 #, fuzzy
 msgid "LyX Warning: "
 msgstr "Versió del LyX"
 
-#: src/Paragraph.cpp:2130 src/insets/InsetListings.cpp:186
+#: src/Paragraph.cpp:2139 src/insets/InsetListings.cpp:186
 #: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:166
 #, fuzzy
 msgid "uncodable character"
 msgstr "caràcter especial"
 
-#: src/Paragraph.cpp:2493
+#: src/Paragraph.cpp:2502
 msgid "Memory problem"
 msgstr ""
 
-#: src/Paragraph.cpp:2493
+#: src/Paragraph.cpp:2502
 msgid "Paragraph not properly initialized"
 msgstr ""
 
@@ -17387,26 +17392,26 @@ msgstr "Reconfigura|R"
 msgid "Quit %1"
 msgstr "Surt del LyX"
 
-#: src/frontends/qt4/GuiApplication.cpp:828
+#: src/frontends/qt4/GuiApplication.cpp:834
 msgid "Exiting."
 msgstr "S'està sortint"
 
-#: src/frontends/qt4/GuiApplication.cpp:895
+#: src/frontends/qt4/GuiApplication.cpp:901
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Sintaxi: set-color <nom_lyx> <nom_x11>"
 
-#: src/frontends/qt4/GuiApplication.cpp:911
+#: src/frontends/qt4/GuiApplication.cpp:917
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Ha fallat set-color \"%1$s\" - color no està definit o no és pot redefinir"
 
-#: src/frontends/qt4/GuiApplication.cpp:1277
+#: src/frontends/qt4/GuiApplication.cpp:1283
 #, fuzzy
 msgid "The current document was closed."
 msgstr "La impressió del document ha fallat"
 
-#: src/frontends/qt4/GuiApplication.cpp:1287
+#: src/frontends/qt4/GuiApplication.cpp:1293
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -17414,18 +17419,18 @@ msgid ""
 "Exception: "
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1291
 #: src/frontends/qt4/GuiApplication.cpp:1297
+#: src/frontends/qt4/GuiApplication.cpp:1303
 msgid "Software exception Detected"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1295
+#: src/frontends/qt4/GuiApplication.cpp:1301
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1452
+#: src/frontends/qt4/GuiApplication.cpp:1458
 #, fuzzy
 msgid "Could not find UI definition file"
 msgstr "No s'ha pogut llegir el fitxer de configuració"

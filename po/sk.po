@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-04-18 12:30+0200\n"
+"POT-Creation-Date: 2009-04-22 20:54+0200\n"
 "PO-Revision-Date: 2009-04-18 20:47+0200\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
 "Language-Team: German <kde-i18n-de@lists.kde.org>\n"
@@ -1591,7 +1591,7 @@ msgid "&Quote Style:"
 msgstr "Typ úvodzoviek:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 src/insets/InsetCaption.cpp:298
-#: src/insets/InsetListings.cpp:403 src/insets/InsetListings.cpp:405
+#: src/insets/InsetListings.cpp:408 src/insets/InsetListings.cpp:410
 msgid "Listing"
 msgstr "Výpis"
 
@@ -9545,11 +9545,11 @@ msgstr "Nájsť a nahradiť...|N"
 msgid "Tabular|T"
 msgstr "Formát tabuľky"
 
-#: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:106 lib/ui/stdmenus.inc:523
+#: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:106 lib/ui/stdmenus.inc:524
 msgid "Math|M"
 msgstr "Matematika|M"
 
-#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:501
+#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:502
 msgid "Spellchecker...|S"
 msgstr "Kontrola pravopisu...|K"
 
@@ -9561,7 +9561,7 @@ msgstr "Slovník synoným..."
 msgid "Statistics...|i"
 msgstr "Štatistika...|Š"
 
-#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:504
+#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:505
 msgid "Check TeX|h"
 msgstr "Kontrola TeXu"
 
@@ -9569,11 +9569,11 @@ msgstr "Kontrola TeXu"
 msgid "Change Tracking|g"
 msgstr "Zmeniť sledovanie|s"
 
-#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:511
+#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:512
 msgid "Preferences...|P"
 msgstr "Preferencie...|P"
 
-#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:510
+#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:511
 msgid "Reconfigure|R"
 msgstr "Rekonfigurácia"
 
@@ -10225,15 +10225,15 @@ msgstr "Prejsť na záložku 4"
 msgid "Go to Bookmark 5|5"
 msgstr "Prejsť na záložku 5"
 
-#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:518
+#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:519
 msgid "Introduction|I"
 msgstr "Úvod|Ú"
 
-#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:519
+#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:520
 msgid "Tutorial|T"
 msgstr "Príručka|P"
 
-#: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:520
+#: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:521
 msgid "User's Guide|U"
 msgstr "Uživateľská príručka|U"
 
@@ -10245,15 +10245,15 @@ msgstr "Rozšírené vlastnosti|R"
 msgid "Embedded Objects|m"
 msgstr "Vložené Objekty|l"
 
-#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:524
+#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:525
 msgid "Customization|C"
 msgstr "Prispôsobenie|ô"
 
-#: lib/ui/classic.ui:415 lib/ui/stdmenus.inc:527
+#: lib/ui/classic.ui:415 lib/ui/stdmenus.inc:528
 msgid "LaTeX Configuration|L"
 msgstr "Konfigurácia LaTeXu|K"
 
-#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:530
+#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:531
 msgid "About LyX|X"
 msgstr "O programe LyX|X"
 
@@ -11202,51 +11202,56 @@ msgstr "Ďalšia krížová referencia|f"
 msgid "Clear Bookmarks|C"
 msgstr "Zrušiť záložky"
 
-#: lib/ui/stdmenus.inc:502
+#: lib/ui/stdmenus.inc:493
+#, fuzzy
+msgid "Navigate Back|B"
+msgstr "Navigujte späť"
+
+#: lib/ui/stdmenus.inc:503
 msgid "Thesaurus...|T"
 msgstr "Slovník synoným..."
 
-#: lib/ui/stdmenus.inc:503
+#: lib/ui/stdmenus.inc:504
 msgid "Statistics...|a"
 msgstr "Štatistika...|Š"
 
-#: lib/ui/stdmenus.inc:505
+#: lib/ui/stdmenus.inc:506
 msgid "TeX Information|I"
 msgstr "TeX informácia|X"
 
-#: lib/ui/stdmenus.inc:521
+#: lib/ui/stdmenus.inc:522
 msgid "Additional Features|F"
 msgstr "Dodatočné Vlastnosti|D"
 
-#: lib/ui/stdmenus.inc:522
+#: lib/ui/stdmenus.inc:523
 msgid "Embedded Objects|O"
 msgstr "Vložené Objekty|O"
 
-#: lib/ui/stdmenus.inc:525
+#: lib/ui/stdmenus.inc:526
 msgid "Shortcuts|S"
 msgstr "Skratky|S"
 
-#: lib/ui/stdmenus.inc:526
+#: lib/ui/stdmenus.inc:527
 msgid "LyX Functions|y"
 msgstr "LyX Funkcie|y"
 
-#: lib/ui/stdmenus.inc:528
+#: lib/ui/stdmenus.inc:529
 msgid "Specific Manuals|p"
 msgstr "Špecifické manuály|Š"
 
-#: lib/ui/stdmenus.inc:534
+#: lib/ui/stdmenus.inc:535
 msgid "Linguistics Manual|L"
 msgstr "Lingvistika: Manuál"
 
-#: lib/ui/stdmenus.inc:535
+#: lib/ui/stdmenus.inc:536
 msgid "Braille Manual|B"
 msgstr "Braille: Manuál"
 
-#: lib/ui/stdmenus.inc:536
+#: lib/ui/stdmenus.inc:537
 msgid "XY-pic Manual|X"
 msgstr "XY-pic: Manuál"
 
-#: lib/ui/stdmenus.inc:537
+#: lib/ui/stdmenus.inc:538
 msgid "Multicolumn Manual|M"
 msgstr "Viacstĺpcová príručka"
 
@@ -14264,33 +14269,33 @@ msgstr "MS Word"
 msgid "HTML (MS Word)"
 msgstr "HTML (MS Word)"
 
-#: src/BiblioInfo.cpp:146 src/frontends/qt4/GuiDocument.cpp:1377
+#: src/BiblioInfo.cpp:234 src/frontends/qt4/GuiDocument.cpp:1377
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s a %2$s"
 
-#: src/BiblioInfo.cpp:150
+#: src/BiblioInfo.cpp:238
 #, c-format
 msgid "%1$s et al."
 msgstr "%1$s et al."
 
-#: src/BiblioInfo.cpp:172
-msgid "No year"
-msgstr "Bez roku"
-
-#: src/BiblioInfo.cpp:303
+#: src/BiblioInfo.cpp:295
 msgid "Ch. "
 msgstr "Kap. "
 
-#: src/BiblioInfo.cpp:305
+#: src/BiblioInfo.cpp:297
 msgid "pp. "
 msgstr "str. "
 
-#: src/BiblioInfo.cpp:460 src/BiblioInfo.cpp:520
+#: src/BiblioInfo.cpp:436 src/BiblioInfo.cpp:439
+msgid "No year"
+msgstr "Bez roku"
+
+#: src/BiblioInfo.cpp:498 src/BiblioInfo.cpp:558
 msgid "Add to bibliography only."
 msgstr "Pridať len do bibliografie."
 
-#: src/BiblioInfo.cpp:516
+#: src/BiblioInfo.cpp:554
 msgid "before"
 msgstr "pred"
 
@@ -15545,7 +15550,7 @@ msgstr "Spúšťam MakeIndex pre nomencl."
 msgid "Could not read configuration file"
 msgstr "Nemôžem čítať konfiguračný súbor"
 
-#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1453
+#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1459
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -16510,15 +16515,15 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Vrátiť sa k uloženej verzii dokumentu?"
 
-#: src/Paragraph.cpp:1585 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1594 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "S týmto formátom to nemá zmysel!"
 
-#: src/Paragraph.cpp:1651
+#: src/Paragraph.cpp:1660
 msgid "Alignment not permitted"
 msgstr "Zarovnanie nepovolené"
 
-#: src/Paragraph.cpp:1652
+#: src/Paragraph.cpp:1661
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -16526,22 +16531,22 @@ msgstr ""
 "Nový formát nepovoľuje používané zarovnanie.\n"
 "Prepnuté na štandardné."
 
-#: src/Paragraph.cpp:2129 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2138 src/frontends/qt4/LaTeXHighlighter.cpp:108
 #: src/insets/InsetListings.cpp:185 src/insets/InsetListings.cpp:193
 #: src/insets/InsetListings.cpp:217 src/mathed/InsetMathString.cpp:165
 msgid "LyX Warning: "
 msgstr "LyX varovanie: "
 
-#: src/Paragraph.cpp:2130 src/insets/InsetListings.cpp:186
+#: src/Paragraph.cpp:2139 src/insets/InsetListings.cpp:186
 #: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:166
 msgid "uncodable character"
 msgstr "Nekódovatelný znak"
 
-#: src/Paragraph.cpp:2493
+#: src/Paragraph.cpp:2502
 msgid "Memory problem"
 msgstr "Problém s pamäťou"
 
-#: src/Paragraph.cpp:2493
+#: src/Paragraph.cpp:2502
 msgid "Paragraph not properly initialized"
 msgstr "Odstavec nesprávne inicializovaný"
 
@@ -17009,26 +17014,26 @@ msgstr "Rekonfigurácia"
 msgid "Quit %1"
 msgstr "Opustiť %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:828
+#: src/frontends/qt4/GuiApplication.cpp:834
 msgid "Exiting."
 msgstr "Končím."
 
-#: src/frontends/qt4/GuiApplication.cpp:895
+#: src/frontends/qt4/GuiApplication.cpp:901
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntax: set-color <lyx_name> <x11_name>"
 
-#: src/frontends/qt4/GuiApplication.cpp:911
+#: src/frontends/qt4/GuiApplication.cpp:917
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Nepodarilo sa nastaviť farbu \"%1$s\" - alebo nie je definovaná alebo sa "
 "nedá predefinovať"
 
-#: src/frontends/qt4/GuiApplication.cpp:1277
+#: src/frontends/qt4/GuiApplication.cpp:1283
 msgid "The current document was closed."
 msgstr "Aktuálny dokument sa zavrel"
 
-#: src/frontends/qt4/GuiApplication.cpp:1287
+#: src/frontends/qt4/GuiApplication.cpp:1293
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -17040,12 +17045,12 @@ msgstr ""
 "\n"
 "Výnimka: "
 
-#: src/frontends/qt4/GuiApplication.cpp:1291
 #: src/frontends/qt4/GuiApplication.cpp:1297
+#: src/frontends/qt4/GuiApplication.cpp:1303
 msgid "Software exception Detected"
 msgstr "Detekovaná softvérová výnimka"
 
-#: src/frontends/qt4/GuiApplication.cpp:1295
+#: src/frontends/qt4/GuiApplication.cpp:1301
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -17053,7 +17058,7 @@ msgstr ""
 "LyX zachytil záhadnú výnimku a teraz sa pokúsi uložiť všetky neuložené "
 "dokumenty a skončiť."
 
-#: src/frontends/qt4/GuiApplication.cpp:1452
+#: src/frontends/qt4/GuiApplication.cpp:1458
 msgid "Could not find UI definition file"
 msgstr "Nemôžem nájsť súbor definíc pre UI"
 
@@ -21266,4 +21271,3 @@ msgstr "Neznámy používateľ"
 #, fuzzy
 #~ msgid "Insets|n"
 #~ msgstr "Vložiť|I"
-
