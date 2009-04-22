@@ -181,8 +181,6 @@ bool InsetIndex::showInsetDialog(BufferView * bv) const
 
 void InsetIndex::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	LYXERR0( cmd.action);
-	LYXERR0( cmd.getArg(0));
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY: {
@@ -212,8 +210,6 @@ void InsetIndex::doDispatch(Cursor & cur, FuncRequest & cmd)
 bool InsetIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
-		LYXERR0( cmd.action);
-	LYXERR0( cmd.getArg(0));
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY:
