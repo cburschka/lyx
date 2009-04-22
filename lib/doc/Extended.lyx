@@ -1,5 +1,5 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 352
 \begin_document
 \begin_header
 \textclass scrbook
@@ -72,12 +72,14 @@ End
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_xetex false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
 
 \graphics default
+\default_output_format default
 \paperfontsize 12
 \spacing single
 \use_hyperref true
@@ -101,7 +103,9 @@ End
 \use_esint 0
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\backgroundcolor #ffffff
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -3582,7 +3586,7 @@ The six panels are divided up by the packages they require.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -17595,7 +17599,7 @@ Commit:
 status collapsed
 
 \begin_layout Plain Layout
-vc-command DS "." "TortoiseProc /command:commit /path:$$p"
+vc-command D "." "TortoiseProc /command:commit /path:$$p"
 \end_layout
 
 \end_inset
