@@ -64,12 +64,14 @@ docstring InsetHyperlink::screenLabel() const
 }
 
 
-int InsetHyperlink::latex(odocstream & os, OutputParams const & runparams) const
+int InsetHyperlink::latex(odocstream & os,
+						  OutputParams const & runparams) const
 {
 	docstring url = getParam("target");
 	docstring name = getParam("name");
 	static docstring const backslash = from_ascii("\\");
 	static docstring const braces = from_ascii("{}");
+	static char_type const chars_url[2] = {'%', '#'};
 	static char_type const chars_name[6] = {
 		'&', '_', '$', '%', '#', '^'};
 
@@ -79,18 +81,27 @@ int InsetHyperlink::latex(odocstream & os, OutputParams const & runparams) const
 	if (name.empty())
 		name = url;
 
-	// The characters in chars_url[] need to be changed to a command when
-	// they are in the url field.
 	if (!url.empty()) {
-		// Replace the "\" character by its ASCII code according to the URL specifications
-		// because "\" is not allowed in URLs and by \href. Only do this when the
-		// following character is not also a "\", because "\\" is valid code
+		// Replace the "\" character by its ASCII code according to the
+		// URL specifications because "\" is not allowed in URLs and by
+		// \href. Only do this when the following character is not also
+		// a "\", because "\\" is valid code
 		for (size_t i = 0, pos;
 			(pos = url.find('\\', i)) != string::npos;
 			i = pos + 2) {
 			if (url[pos + 1] != '\\')
 				url.replace(pos, 1, from_ascii("%5C"));
 		}
+
+		// The characters in chars_url[] need to be escaped in the url
+		// field because otherwise LaTeX will fail when the hyperlink is
+		// within an argument of another command, e.g. in a \footnote. It
+		// is important that they are escaped as "\#" and not as "\#{}".
+		for (int k = 0;	k < 2; k++)
+			for (size_t i = 0, pos;
+				(pos = url.find(chars_url[k], i)) != string::npos;
+				i = pos + 2)
+				url.replace(pos, 1, backslash + chars_url[k]);
 		
 		// add "http://" when the type is web (type = empty)
 		// and no "://" or "run:" is given
@@ -114,18 +125,17 @@ int InsetHyperlink::latex(odocstream & os, OutputParams const & runparams) const
 			if (name[pos + 1] != '\\')
 				name.replace(pos, 1, textbackslash);
 		}
-		// The characters in chars_name[] need to be changed to a command when
-		// they are in the name field.
+		// The characters in chars_name[] need to be changed to a command
+		// when they are in the name field.
 		// Therefore the treatment of "\" must be the first thing
-		for (int k = 0;	k < 6; k++) {
+		for (int k = 0;	k < 6; k++)
 			for (size_t i = 0, pos;
 				(pos = name.find(chars_name[k], i)) != string::npos;
-				i = pos + 2) {
+				i = pos + 2)
 				name.replace(pos, 1, backslash + chars_name[k] + braces);
-			}
-		}
-		// replace the tilde by the \sim character as suggested in the LaTeX FAQ
-		// for URLs
+
+		// replace the tilde by the \sim character as suggested in the
+		// LaTeX FAQ for URLs
 		docstring const sim = from_ascii("$\\sim$");
 		for (size_t i = 0, pos;
 			(pos = name.find('~', i)) != string::npos;
