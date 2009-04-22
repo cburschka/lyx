@@ -70,6 +70,7 @@ int InsetHyperlink::latex(odocstream & os, OutputParams const & runparams) const
 	docstring name = getParam("name");
 	static docstring const backslash = from_ascii("\\");
 	static docstring const braces = from_ascii("{}");
+	static char_type const chars_url[2] = {'%', '#'};
 	static char_type const chars_name[6] = {
 		'&', '_', '$', '%', '#', '^'};
 
@@ -79,8 +80,6 @@ int InsetHyperlink::latex(odocstream & os, OutputParams const & runparams) const
 	if (name.empty())
 		name = url;
 
-	// The characters in chars_url[] need to be changed to a command when
-	// they are in the url field.
 	if (!url.empty()) {
 		// Replace the "\" character by its ASCII code according to the URL specifications
 		// because "\" is not allowed in URLs and by \href. Only do this when the
@@ -91,6 +90,16 @@ int InsetHyperlink::latex(odocstream & os, OutputParams const & runparams) const
 			if (url[pos + 1] != '\\')
 				url.replace(pos, 1, from_ascii("%5C"));
 		}
+
+		// The characters in chars_url[] need to be escaped in the url
+		// field because otherwise LaTeX will fail when the hyperlink is
+		// within an argument of another command, e.g. in a \footnote. It
+		// is important that they are escaped as "\#" and not as "\#{}".
+		for (int k = 0;	k < 2; k++)
+			for (size_t i = 0, pos;
+				(pos = url.find(chars_url[k], i)) != string::npos;
+				i = pos + 2)
+				url.replace(pos, 1, backslash + chars_url[k]);
 		
 		// add "http://" when the type is web (type = empty)
 		// and no "://" or "run:" is given

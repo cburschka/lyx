@@ -120,6 +120,9 @@ What's new
 - Fix reading of document when a customizable inset name contains a
   space.
 
+- Fix bug when using the characters # and % in hyperlinks that are e.g.
+  in footnotes (bug 5908). 
+
 - Fix LaTeX export of an isolated Japanese character when using
   ISO-2022-JP encoding (bug 5802).
 
