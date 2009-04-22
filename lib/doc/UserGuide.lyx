@@ -106,7 +106,6 @@
 \output_changes false
 \author "" 
 \author "" 
-\author "" 
 \end_header
 
 \begin_body
@@ -1583,6 +1582,21 @@ Shift-Tab
 \end_inset
 
 2.4.1.
+\end_layout
+
+\begin_layout Standard
+The toolbar button 
+\begin_inset Graphics
+	filename ../images/bookmark-goto_0.png
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+ jumps to the position in the document where you recently changed something.
+ This is for example useful when you have a large document and navigated
+ or scrolled to another document part to look for something, and want to
+ go back to your last editing position.
 \end_layout
 
 \begin_layout Section
@@ -24517,8 +24531,15 @@ Back
 \family default
  and you can use it to set the cursor back to the cross-reference.
  Right-clicking on a cross-reference box also sets the cursor before the
- referred label but without a possibility to go back.
- 
+ referred label and you can go back with the toolbar button 
+\begin_inset Graphics
+	filename ../images/bookmark-goto_0.png
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -36650,7 +36671,7 @@ pull-down box for the paragraph environments
 \begin_layout Standard
 \align left
 \begin_inset Tabular
-<lyxtabular version="3" rows="20" columns="2">
+<lyxtabular version="3" rows="21" columns="2">
 <features islongtable="true">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -36979,6 +37000,37 @@ Find
 \end_inset
 
 Replace
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../images/bookmark-goto_0.png
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Navigate\SpecialChar \menuseparator
+Bookmarks\SpecialChar \menuseparator
+Navigate Back
 \end_layout
 
 \end_inset
