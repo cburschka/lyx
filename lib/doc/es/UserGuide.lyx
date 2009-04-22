@@ -1520,6 +1520,23 @@ Mayúsculas+Tab
 2.4.1.
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+The toolbar button 
+\begin_inset Graphics
+	filename ../../images/bookmark-goto_0.png
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+ jumps to the position in the document where you recently changed something.
+ This is for example useful when you have a large document and navigated
+ or scrolled to another document part to look for something, and want to
+ go back to your last editing position.
+\end_layout
+
 \begin_layout Section
 Finalización de entradas
 \begin_inset space \thinspace{}
@@ -25136,7 +25153,19 @@ Volver,
 \family default
  que sirve para retornar el cursor al cuadro de la referencia.
  Clic derecho sobre el cuadro de una referencia también lleva el cursor
- a la etiqueta pero sin posibilidad de volver.
+ a la etiqueta 
+\lang english
+and you can go back with the toolbar button
+\lang spanish
+ 
+\begin_inset Graphics
+	filename D:/LyXSVN/LyX1.6.x/lib/images/bookmark-goto_0.png
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -37353,7 +37382,7 @@ Menú desplegable con los entornos de párrafo
 \begin_layout Standard
 \align left
 \begin_inset Tabular
-<lyxtabular version="3" rows="20" columns="2">
+<lyxtabular version="3" rows="21" columns="2">
 <features islongtable="true">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -37674,6 +37703,39 @@ Pegar
 \family sans
 Editar\SpecialChar \menuseparator
 Encontrar y reemplazar
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../images/bookmark-goto_0.png
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Navegar\SpecialChar \menuseparator
+
+\lang english
+Bookmarks\SpecialChar \menuseparator
+Navigate Back
 \end_layout
 
 \end_inset

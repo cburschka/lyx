@@ -1680,6 +1680,23 @@ Shift-Tab
 2.4.1.
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+The toolbar button 
+\begin_inset Graphics
+	filename ../../images/bookmark-goto_0.png
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+ jumps to the position in the document where you recently changed something.
+ This is for example useful when you have a large document and navigated
+ or scrolled to another document part to look for something, and want to
+ go back to your last editing position.
+\end_layout
+
 \begin_layout Section
 Complétion de saisie/ de mot
 \begin_inset CommandInset label
@@ -25775,7 +25792,19 @@ Revenir
 \family default
  et permet de replacer le curseur juste devant la référence croisée.
  Si on clique avec le bouton de droite sur une référence croisée, le curseur
- se déplace pour se placer devant l'étiquette, mais on ne peut pas revenir.
+ se déplace pour se placer devant l'étiquette et vouz 
+\lang english
+can go back with the toolbar button
+\lang french
+ 
+\begin_inset Graphics
+	filename D:/LyXSVN/LyX1.6.x/lib/images/bookmark-goto_0.png
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -37026,7 +37055,7 @@ menu déroulant pour les environnements de paragraphes
 \begin_layout Standard
 \align left
 \begin_inset Tabular
-<lyxtabular version="3" rows="20" columns="2">
+<lyxtabular version="3" rows="21" columns="2">
 <features islongtable="true">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -37359,6 +37388,39 @@ et
 \end_inset
 
 Remplacer
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../images/bookmark-goto_0.png
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Naviguer
+\family sans
+\SpecialChar \menuseparator
+
+\lang english
+Bookmarks\SpecialChar \menuseparator
+Navigate Back
 \end_layout
 
 \end_inset
