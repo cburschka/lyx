@@ -490,6 +490,7 @@ Menuset
 		Item "Save Bookmark 5" "bookmark-save 5"
 		Item "Clear Bookmarks|C" "bookmark-clear"
 		Separator
+		Item "Navigate Back|B" "bookmark-goto 0"
 		Bookmarks
 	End
 
