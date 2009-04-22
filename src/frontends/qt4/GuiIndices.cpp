@@ -51,8 +51,7 @@ GuiIndices::GuiIndices(QWidget * parent)
 void GuiIndices::update(BufferParams const & params)
 {
 	indiceslist_ = params.indiceslist();
-	multipleIndicesCB->setChecked(
-		params.use_indices);
+	multipleIndicesCB->setChecked(params.use_indices);
 	bool const state = params.use_indices;
 	indicesTW->setEnabled(state);
 	newIndexLE->setEnabled(state);

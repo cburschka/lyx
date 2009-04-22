@@ -144,9 +144,9 @@ void GuiPrint::updateContents()
 
 	collateCB->setChecked(params_.sorted_copies);
 
-	if (params_.all_pages) {
+	if (params_.all_pages)
 		allRB->setChecked(true);
-	} else {
+	else {
 		rangeRB->setChecked(true);
 		fromED->setText(QString::number(params_.from_page));
 		toED->setText(QString::number(params_.to_page));
