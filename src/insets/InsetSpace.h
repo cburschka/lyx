@@ -133,7 +133,7 @@ public:
 	/// the string that is passed to the TOC
 	void tocString(odocstream &) const;
 	///
-	EDITABLE editable() const { return IS_EDITABLE; }
+	bool hasSettings() const { return true; }
 	///
 	InsetCode lyxCode() const { return SPACE_CODE; }
 	/// is this an expandible space (rubber length)?

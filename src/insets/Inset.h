@@ -213,9 +213,6 @@ public:
 	/// Force inset into LTR environment if surroundings are RTL?
 	virtual bool forceLTR() const { return false; }
 
-	/// is this an inset that can be moved into?
-	/// FIXME: merge with editable()
-	virtual bool isActive() const { return nargs() > 0; }
 	/// Where should we go when we press the up or down cursor key?
 	virtual bool idxUpDown(Cursor & cur, bool up) const;
 	/// Move one cell backwards
@@ -301,27 +298,21 @@ public:
 	/// the string that is passed to the TOC
 	virtual void tocString(odocstream &) const {}
 
-	/** This enum indicates by which means the inset can be modified:
-	- NOT_EDITABLE: the inset's content cannot be modified at all
-	  (e.g. printindex, insetspecialchar)
-	- IS_EDITABLE: content can be edited via dialog (e.g. bibtex, index, href)
-	- HIGHLY_EDITABLE: content can be edited on screen (normally means that
-	  insettext is contained, e.g. collapsables, tabular) */
-	// FIXME: This has not yet been fully implemented to math insets
-	enum EDITABLE {
-		///
-		NOT_EDITABLE = 0,
-		///
-		IS_EDITABLE,
-		///
-		HIGHLY_EDITABLE
-	};
 	/// what appears in the minibuffer when opening
 	virtual docstring editMessage() const;
-	///
-	virtual EDITABLE editable() const;
+	/// can the contents of the inset be edited on screen ?
+	// true for InsetCollapsables (not ButtonOnly) (not InsetInfo), InsetText
+	virtual bool editable() const;
+	/// has the Inset settings that can be modified in a dialog ?
+	virtual bool hasSettings() const;
 	/// can we go further down on mouse click?
+	// true for InsetCaption, InsetCollapsables (not ButtonOnly), InsetTabular
 	virtual bool descendable() const { return false; }
+	/// is this an inset that can be moved into?
+	/// FIXME: merge with editable()
+	// true for InsetTabular & InsetText
+	virtual bool isActive() const { return nargs() > 0; }
+
 	/// does this contain text that can be change track marked in DVI?
 	virtual bool canTrackChanges() const { return false; }
 	/// return true if the inset should be removed automatically

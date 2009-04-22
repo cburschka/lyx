@@ -64,7 +64,7 @@ public:
 	///
 	docstring editMessage() const;
 	///
-	EDITABLE editable() const { return HIGHLY_EDITABLE; }
+	bool editable() const { return true; }
 	///
 	bool canTrackChanges() const { return true; }
 	///

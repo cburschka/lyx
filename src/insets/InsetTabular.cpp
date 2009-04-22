@@ -4075,6 +4075,9 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return cell(cur.idx())->getStatus(cur, cmd, status);
 
 	case LFUN_INSET_SETTINGS:
+		// relay this lfun to Inset, not to the cell.
+		return Inset::getStatus(cur, cmd, status);
+
 	case LFUN_INSET_MODIFY:
 		if (insetCode(cmd.getArg(0)) == TABULAR_CODE) {
 			status.setEnabled(true);

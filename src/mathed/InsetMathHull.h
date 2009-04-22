@@ -212,7 +212,7 @@ public:
 	///
 	virtual void revealCodes(Cursor & cur) const;
 	///
-	EDITABLE editable() const { return HIGHLY_EDITABLE; }
+	bool editable() const { return true; }
 	///
 	void edit(Cursor & cur, bool front, 
 		EntryDirection entry_from = ENTRY_DIRECTION_IGNORE);

@@ -120,7 +120,7 @@ private:
 	///
 	InsetCode lyxCode() const { return EXTERNAL_CODE; }
 	///
-	EDITABLE editable() const { return IS_EDITABLE; }
+	bool hasSettings() const { return true; }
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///

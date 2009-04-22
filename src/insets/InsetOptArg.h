@@ -31,6 +31,8 @@ public:
 
 	/// Outputting the optional parameter of a LaTeX command
 	int latexOptional(odocstream &, OutputParams const &) const;
+	///
+	bool hasSettings() const { return false; }
 
 private:
 	/// code of the inset

@@ -772,7 +772,7 @@ void RowPainter::paintText()
 
 		Inset const * inset = par_.getInset(pos);
 		bool const highly_editable_inset = inset
-			&& inset->editable() == Inset::HIGHLY_EDITABLE;
+			&& inset->editable();
 
 		// If we reach the end of a change or if the author changes, paint it.
 		// We also don't paint across things like tables

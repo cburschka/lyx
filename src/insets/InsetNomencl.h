@@ -32,7 +32,7 @@ public:
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 	///
-	EDITABLE editable() const { return IS_EDITABLE; }
+	bool hasSettings() const { return true; }
 	/// Updates needed features for this inset.
 	void validate(LaTeXFeatures & features) const;
 	///
@@ -65,8 +65,6 @@ public:
 	// in params_["labelwidth"]).
 	// Currently the width can be read from file and written, but not
 	// changed.
-	///
-	EDITABLE editable() const { return NOT_EDITABLE; }
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	///

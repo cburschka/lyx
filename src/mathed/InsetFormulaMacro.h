@@ -55,7 +55,7 @@ public:
 	///
 	docstring const & getInsetName() const { return name_; }
 	///
-	EDITABLE editable() const { return HIGHLY_EDITABLE; }
+	bool editable() const { return true; }
 private:
 	///
 	MathAtom & tmpl() const;

@@ -56,7 +56,7 @@ public:
 	/// generate something that will be understood by the Dialogs.
 	std::string const createDialogStr() const;
 	///
-	EDITABLE editable() const { return IS_EDITABLE; }
+	bool hasSettings() const { return true; }
 	///
 	docstring contextMenu(BufferView const &, int, int) const;
 	///

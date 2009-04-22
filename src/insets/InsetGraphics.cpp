@@ -230,7 +230,6 @@ bool InsetGraphics::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_INSET_EDIT:
 	case LFUN_INSET_MODIFY:
 	case LFUN_INSET_DIALOG_UPDATE:
-	case LFUN_INSET_SETTINGS:
 		flag.setEnabled(true);
 		return true;
 
@@ -258,12 +257,6 @@ void InsetGraphics::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetGraphics::draw(PainterInfo & pi, int x, int y) const
 {
 	graphic_->draw(pi, x, y);
-}
-
-
-Inset::EDITABLE InsetGraphics::editable() const
-{
-	return IS_EDITABLE;
 }
 
 

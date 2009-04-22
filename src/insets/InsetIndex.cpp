@@ -181,6 +181,8 @@ bool InsetIndex::showInsetDialog(BufferView * bv) const
 
 void InsetIndex::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
+	LYXERR0( cmd.action);
+	LYXERR0( cmd.getArg(0));
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY: {
@@ -210,6 +212,8 @@ void InsetIndex::doDispatch(Cursor & cur, FuncRequest & cmd)
 bool InsetIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
+		LYXERR0( cmd.action);
+	LYXERR0( cmd.getArg(0));
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY:
@@ -226,8 +230,7 @@ bool InsetIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
 		flag.setEnabled(true);
 		return true;
 
-	case LFUN_INSET_DIALOG_UPDATE:
-	case LFUN_INSET_SETTINGS: {
+	case LFUN_INSET_DIALOG_UPDATE: {
 		Buffer const & realbuffer = *buffer().masterBuffer();
 		flag.setEnabled(realbuffer.params().use_indices);
 		return true;
@@ -340,6 +343,21 @@ docstring InsetIndex::contextMenu(BufferView const &, int, int) const
 }
 
 
+bool InsetIndex::hasSettings() const
+{
+	return buffer().masterBuffer()->params().use_indices;
+}
+
+
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// InsetIndexParams
+//
+///////////////////////////////////////////////////////////////////////
+
+
 void InsetIndexParams::write(ostream & os) const
 {
 	os << ' ';
@@ -446,8 +464,7 @@ bool InsetPrintIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
 			return InsetCommand::getStatus(cur, cmd, status);
 	}
 	
-	case LFUN_INSET_DIALOG_UPDATE:
-	case LFUN_INSET_SETTINGS: {
+	case LFUN_INSET_DIALOG_UPDATE: {
 		Buffer const & realbuffer = *buffer().masterBuffer();
 		status.setEnabled(realbuffer.params().use_indices);
 		return true;
@@ -486,10 +503,9 @@ docstring InsetPrintIndex::contextMenu(BufferView const &, int, int) const
 }
 
 
-Inset::EDITABLE InsetPrintIndex::editable() const
+bool InsetPrintIndex::hasSettings() const
 {
-	return buffer().masterBuffer()->params().use_indices ?
-		IS_EDITABLE : NOT_EDITABLE;
+	return buffer().masterBuffer()->params().use_indices;
 }
 
 

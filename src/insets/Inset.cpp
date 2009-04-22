@@ -223,15 +223,19 @@ void Inset::doDispatch(Cursor & cur, FuncRequest &cmd)
 	case LFUN_MOUSE_RELEASE:
 		// if the derived inset did not explicitly handle mouse_release,
 		// we assume we request the settings dialog
-		if (!cur.selection() && cmd.button() == mouse_button::button1) {
+		if (!cur.selection() && cmd.button() == mouse_button::button1
+			  && hasSettings()) {
 			FuncRequest tmpcmd(LFUN_INSET_SETTINGS);
 			dispatch(cur, tmpcmd);
 		}
 		break;
 
 	case LFUN_INSET_SETTINGS:
-		showInsetDialog(&cur.bv());
-		cur.dispatched();
+		if (cmd.argument().empty() || cmd.getArg(0) == insetName(lyxCode())) {
+			showInsetDialog(&cur.bv());
+			cur.dispatched();
+		} else
+			cur.undispatched();
 		break;
 
 	default:
@@ -269,8 +273,14 @@ bool Inset::getStatus(Cursor &, FuncRequest const & cmd,
 		return true;
 
 	case LFUN_INSET_SETTINGS:
-		flag.setEnabled(false);
-		return true;
+		if (cmd.argument().empty() || cmd.getArg(0) == insetName(lyxCode())) {
+			bool const enable = hasSettings();
+			flag.setEnabled(enable);
+			return true;
+		} else {
+			flag.setEnabled(false);
+			return false;
+		}
 
 	default:
 		break;
@@ -326,10 +336,17 @@ bool Inset::directWrite() const
 }
 
 
-Inset::EDITABLE Inset::editable() const
+bool Inset::editable() const
 {
-	return NOT_EDITABLE;
+	return false;
 }
+
+
+bool Inset::hasSettings() const
+{
+	return false;
+}
+
 
 
 bool Inset::autoDelete() const

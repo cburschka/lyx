@@ -18,7 +18,6 @@
 #include "BufferParams.h"
 #include "Counters.h"
 #include "Cursor.h"
-#include "CutAndPaste.h"
 #include "DispatchResult.h"
 #include "Encoding.h"
 #include "FuncRequest.h"
@@ -387,7 +386,6 @@ bool InsetListings::getStatus(Cursor & cur, FuncRequest const & cmd,
 	switch (cmd.action) {
 		case LFUN_INSET_MODIFY:
 		case LFUN_INSET_DIALOG_UPDATE:
-		case LFUN_INSET_SETTINGS:
 			status.setEnabled(true);
 			return true;
 		case LFUN_CAPTION_INSERT:

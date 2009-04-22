@@ -32,7 +32,7 @@ public:
 	///
 	InsetCode lyxCode() const { return VSPACE_CODE; }
 	///
-	EDITABLE editable() const { return IS_EDITABLE; }
+	bool hasSettings() const { return true; }
 	///
 	docstring contextMenu(BufferView const & bv, int x, int y) const;
 	///

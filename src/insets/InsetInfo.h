@@ -100,7 +100,9 @@ public:
 	///
 	Inset * editXY(Cursor & cur, int x, int y);
 	///
-	EDITABLE editable() const { return IS_EDITABLE; }
+	bool editable() const { return false; }
+	///
+	bool hasSettings() const { return true; }
 	///
 	void read(Lexer & lex);
 	///

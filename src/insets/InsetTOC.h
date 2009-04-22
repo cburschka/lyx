@@ -26,8 +26,6 @@ public:
 	///
 	docstring screenLabel() const;
 	///
-	EDITABLE editable() const { return NOT_EDITABLE; }
-	///
 	InsetCode lyxCode() const { return TOC_CODE; }
 	///
 	DisplayType display() const { return AlignCenter; }

@@ -52,7 +52,7 @@ InsetCommand::~InsetCommand()
 
 void InsetCommand::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	button_.update(screenLabel(), editable() != NOT_EDITABLE);
+	button_.update(screenLabel(), editable() || hasSettings());
 	button_.metrics(mi, dim);
 }
 
@@ -163,7 +163,6 @@ bool InsetCommand::getStatus(Cursor & cur, FuncRequest const & cmd,
 		status.setEnabled(true);
 		return true;
 	
-	case LFUN_INSET_SETTINGS:
 	case LFUN_INSET_DIALOG_UPDATE:
 		status.setEnabled(true);
 		return true;

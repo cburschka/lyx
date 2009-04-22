@@ -315,7 +315,7 @@ void DocIterator::forwardPosIgnoreCollapsed()
 	// FIXME: the check for asInsetMath() shouldn't be necessary
 	// but math insets do not return a sensible editable() state yet.
 	if (nextinset && !nextinset->asInsetMath()
-	    && nextinset->editable() != Inset::HIGHLY_EDITABLE) {
+	    && !nextinset->editable()) {
 		++top().pos();
 		return;
 	}

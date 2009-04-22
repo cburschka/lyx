@@ -74,7 +74,9 @@ public:
 	///
 	docstring const getNewLabel(docstring const & l) const;
 	///
-	EDITABLE editable() const;
+	bool editable() const;
+	///
+	bool hasSettings() const { return true; }
 	/// can we go further down on mouse click?
 	bool descendable() const;
 	///

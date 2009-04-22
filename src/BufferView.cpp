@@ -729,7 +729,7 @@ bool BufferView::moveToPosition(pit_type bottom_pit, pos_type bottom_pos,
 			// insets.
 			size_t const n = dit.depth();
 			for (size_t i = 0; i < n; ++i)
-				if (dit[i].inset().editable() != Inset::HIGHLY_EDITABLE) {
+				if (!dit[i].inset().editable()) {
 					dit.resize(i);
 					break;
 				}

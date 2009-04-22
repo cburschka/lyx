@@ -736,7 +736,9 @@ public:
 	///
 	docstring editMessage() const;
 	///
-	EDITABLE editable() const { return HIGHLY_EDITABLE; }
+	bool editable() const { return true; }
+	///
+	bool hasSettings() const { return true; }
 	///
 	bool insetAllowed(InsetCode code) const;
 	///

@@ -573,7 +573,7 @@ bool Text::checkAndActivateInset(Cursor & cur, bool front)
 	if (!front && cur.pos() == 0)
 		return false;
 	Inset * inset = front ? cur.nextInset() : cur.prevInset();
-	if (!inset || inset->editable() != Inset::HIGHLY_EDITABLE)
+	if (!inset || !inset->editable())
 		return false;
 	/*
 	 * Apparently, when entering an inset we are expected to be positioned
@@ -599,7 +599,7 @@ bool Text::checkAndActivateInsetVisual(Cursor & cur, bool movingForward, bool mo
 		return false;
 	Paragraph & par = cur.paragraph();
 	Inset * inset = par.isInset(cur.pos()) ? par.getInset(cur.pos()) : 0;
-	if (!inset || inset->editable() != Inset::HIGHLY_EDITABLE)
+	if (!inset || !inset->editable())
 		return false;
 	inset->edit(cur, movingForward, 
 		movingLeft ? Inset::ENTRY_DIRECTION_RIGHT : Inset::ENTRY_DIRECTION_LEFT);

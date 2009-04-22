@@ -60,7 +60,7 @@ private:
 	bool isLabeled() const { return true; }
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
-	EDITABLE editable() const;
+	bool hasSettings() const { return true; }
 	///
 	void write(std::ostream &) const;
 	///

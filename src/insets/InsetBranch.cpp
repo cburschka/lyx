@@ -176,7 +176,6 @@ bool InsetBranch::getStatus(Cursor & cur, FuncRequest const & cmd,
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY:
 	case LFUN_INSET_DIALOG_UPDATE:
-	case LFUN_INSET_SETTINGS:
 		flag.setEnabled(true);
 		break;
 

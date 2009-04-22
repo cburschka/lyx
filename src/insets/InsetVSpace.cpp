@@ -87,10 +87,6 @@ bool InsetVSpace::getStatus(Cursor & cur, FuncRequest const & cmd,
 		status.setEnabled(true);
 		return true;
 	
-	case LFUN_INSET_SETTINGS:
-		status.setEnabled(true);
-		return true;
-
 	default:
 		return Inset::getStatus(cur, cmd, status);
 	}

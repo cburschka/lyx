@@ -45,7 +45,7 @@ public:
 	static void string2params(std::string const &, InsetIndexParams &);
 private:
 	///
-	EDITABLE editable() const { return HIGHLY_EDITABLE; }
+	bool hasSettings() const;
 	///
 	InsetCode lyxCode() const { return INDEX_CODE; }
 	///
@@ -112,7 +112,8 @@ private:
 	/// Updates needed features for this inset.
 	void validate(LaTeXFeatures & features) const;
 	///
-	EDITABLE editable() const;
+	bool hasSettings() const;
+
 	///
 	DisplayType display() const { return AlignCenter; }
 	///

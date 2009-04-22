@@ -34,6 +34,8 @@ public:
 	void write(std::ostream &) const;
 	/// should paragraph indendation be ommitted in any case?
 	bool neverIndent() const { return true; }
+	///
+	bool hasSettings() const { return false; }
 
 protected:
 	InsetFlex(InsetFlex const &);

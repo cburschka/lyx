@@ -299,6 +299,7 @@ void InsetInclude::editIncluded(string const & file)
 bool InsetInclude::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
+	LYXERR0(cmd.action);
 	switch (cmd.action) {
 
 	case LFUN_INSET_EDIT:

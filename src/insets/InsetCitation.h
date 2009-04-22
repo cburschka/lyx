@@ -38,7 +38,7 @@ public:
 	///
 	docstring screenLabel() const;
 	///
-	EDITABLE editable() const { return IS_EDITABLE; }
+	bool hasSettings() const { return true; }
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 	///

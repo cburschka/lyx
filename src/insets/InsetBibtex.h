@@ -34,7 +34,7 @@ public:
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 	///
-	EDITABLE editable() const { return IS_EDITABLE; }
+	bool hasSettings() const { return true; }
 	///
 	InsetCode lyxCode() const { return BIBTEX_CODE; }
 	///

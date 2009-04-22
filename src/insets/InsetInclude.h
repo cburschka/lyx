@@ -72,7 +72,7 @@ public:
 	support::FileNameList const &
 		getBibfilesCache() const;
 	///
-	EDITABLE editable() const { return IS_EDITABLE; }
+	bool hasSettings() const { return true; }
 	///
 	int latex(odocstream &, OutputParams const &) const;
 	///

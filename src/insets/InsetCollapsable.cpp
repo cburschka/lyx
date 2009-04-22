@@ -437,9 +437,9 @@ void InsetCollapsable::cursorPos(BufferView const & bv,
 }
 
 
-Inset::EDITABLE InsetCollapsable::editable() const
+bool InsetCollapsable::editable() const
 {
-	return geometry() != ButtonOnly ? HIGHLY_EDITABLE : IS_EDITABLE;
+	return geometry() != ButtonOnly;
 }
 
 

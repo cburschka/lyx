@@ -293,7 +293,6 @@ bool InsetPhantom::getStatus(Cursor & cur, FuncRequest const & cmd,
 		flag.setEnabled(true);
 		return true;
 
-	case LFUN_INSET_SETTINGS:
 	case LFUN_INSET_DIALOG_UPDATE:
 		flag.setEnabled(true);
 		return true;

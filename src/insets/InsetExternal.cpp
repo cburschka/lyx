@@ -428,7 +428,6 @@ bool InsetExternal::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_INSET_EDIT:
 	case LFUN_INSET_MODIFY:
 	case LFUN_INSET_DIALOG_UPDATE:
-	case LFUN_INSET_SETTINGS:
 		flag.setEnabled(true);
 		return true;
 
