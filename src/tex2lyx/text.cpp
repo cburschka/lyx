@@ -2245,10 +2245,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "=" && (flags & FLAG_TABBING))
 			handle_ert(os, t.asInput(), context);
 
-		else if (t.cs() == "H" || t.cs() == "c" || t.cs() == "^"
-			 || t.cs() == "'" || t.cs() == "`"
-			 || t.cs() == "~" || t.cs() == "." || t.cs() == "=") {
-			// we need the trim as the LyX parser chokes on such spaces
+		// accents (see Table 6 in Comprehensive LaTeX Symbol List)
+		else if (t.cs().size() == 1 
+			 && contains("\"'.=^`bcdHkrtuv~", t.cs())) {
 			context.check_layout(os);
 			// try to see whether the string is in unicodesymbols
 			docstring rem;
