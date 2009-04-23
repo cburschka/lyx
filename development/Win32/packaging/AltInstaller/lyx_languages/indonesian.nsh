@@ -56,7 +56,7 @@ LangString EnterLaTeXFolderNone "${LYX_LANG}" 'Aturlah lokasi tempat berkas "lat
 					       \r\n\
 					       Program instalasi ini tidak menemukan adanya distribusi LaTeX di sistem anda.'
 LangString PathName "${LYX_LANG}" 'Lokasi tempat berkas "latex.exe" berada'
-LangString DontUseLaTeX "${LYX_LANG}" "LaTeX tidak akan berfungsi"
+LangString DontUseLaTeX "${LYX_LANG}" "Tidak menggunakan LaTeX"
 LangString InvalidLaTeXFolder "${LYX_LANG}" 'Berkas "latex.exe" tidak berada di lokasi tempat yang dinyatakan.'
 
 LangString LatexInfo "${LYX_LANG}" 'Sekarang instalasi program distribusi LaTeX "MiKTeX" akan dijalankan.$\r$\n\
@@ -94,7 +94,7 @@ LangString AspellNone "${LYX_LANG}" 'Kamus untuk pemeriksa ejaan "Aspell" belum 
 				     Berbagai kamus dapat dimuat turun dari$\r$\n\
 				     ${AspellLocation}$\r$\n\
 				     Apakah anda menginginkan memuat turun berbagai kamus sekarang?'
-LangString AspellPartStart "${LYX_LANG}" "Sudah pernah diinstal "
+LangString AspellPartStart "${LYX_LANG}" "Sudah berhasil diinstal "
 LangString AspellPart1 "${LYX_LANG}" "kamus bahasa inggris"
 LangString AspellPart2 "${LYX_LANG}" "Kamus untuk bahasa $LangName"
 LangString AspellPart3 "${LYX_LANG}" "a$\r$\n\
