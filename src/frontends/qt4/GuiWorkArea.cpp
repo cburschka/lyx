@@ -231,7 +231,7 @@ private:
 // cursor is at the top or bottom edge of the viewport. One scroll per 0.2 s
 SyntheticMouseEvent::SyntheticMouseEvent()
 	: timeout(200), restart_timeout(true),
-	  x_old(-1), y_old(-1), scrollbar_value_old(-1.0)
+	  x_old(-1), y_old(-1), min_scrollbar_old(-1.0), max_scrollbar_old(-1.0)
 {}
 
 
@@ -787,10 +787,10 @@ void GuiWorkArea::mouseMoveEvent(QMouseEvent * e)
 
 	// Has anything changed on-screen since the last QMouseEvent
 	// was received?
-	double const scrollbar_value = verticalScrollBar()->value();
 	if (e->x() == synthetic_mouse_event_.x_old
 		&& e->y() == synthetic_mouse_event_.y_old
-		&& scrollbar_value == synthetic_mouse_event_.scrollbar_value_old) {
+		&& synthetic_mouse_event_.min_scrollbar_old == verticalScrollBar()->minimum()
+		&& synthetic_mouse_event_.max_scrollbar_old == verticalScrollBar()->maximum()) {
 		// Nothing changed on-screen since the last QMouseEvent.
 		return;
 	}
@@ -798,7 +798,8 @@ void GuiWorkArea::mouseMoveEvent(QMouseEvent * e)
 	// Yes something has changed. Store the params used to check this.
 	synthetic_mouse_event_.x_old = e->x();
 	synthetic_mouse_event_.y_old = e->y();
-	synthetic_mouse_event_.scrollbar_value_old = scrollbar_value;
+	synthetic_mouse_event_.min_scrollbar_old = verticalScrollBar()->minimum();
+	synthetic_mouse_event_.max_scrollbar_old = verticalScrollBar()->maximum();
 
 	// ... and dispatch the event to the LyX core.
 	dispatch(cmd);
@@ -846,14 +847,17 @@ void GuiWorkArea::generateSyntheticMouseEvent()
 
 	// Has anything changed on-screen since the last timeout signal
 	// was received?
-	double const scrollbar_value = verticalScrollBar()->value();
-	if (scrollbar_value != synthetic_mouse_event_.scrollbar_value_old) {
-		// Yes it has. Store the params used to check this.
-		synthetic_mouse_event_.scrollbar_value_old = scrollbar_value;
-
-		// ... and dispatch the event to the LyX core.
-		dispatch(synthetic_mouse_event_.cmd);
+	int const min_scrollbar = verticalScrollBar()->minimum();
+	int const max_scrollbar = verticalScrollBar()->maximum();
+	if (min_scrollbar == synthetic_mouse_event_.min_scrollbar_old
+		&& max_scrollbar == synthetic_mouse_event_.max_scrollbar_old) {
+		return;
 	}
+	// Yes it has. Store the params used to check this.
+	synthetic_mouse_event_.min_scrollbar_old = min_scrollbar;
+	synthetic_mouse_event_.max_scrollbar_old = max_scrollbar;
+	// ... and dispatch the event to the LyX core.
+	dispatch(synthetic_mouse_event_.cmd);
 }
 
 
