@@ -4684,7 +4684,7 @@ Method
 \begin_inset space ~
 \end_inset
 
-1 Change the 
+1 If you use recent texlive or miktex distributions, change the 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
@@ -4744,33 +4744,12 @@ Converters
 status collapsed
 
 \begin_layout Plain Layout
-latex -
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
--src $$i
-\end_layout
-
-\end_inset
-
- if you use tetex or texlive, or to 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
 latex -src-specials $$i
 \end_layout
 
 \end_inset
 
- if you use miktex.
+, otherwise check what is the appropriate option for your TeX engine.
 \end_layout
 
 \begin_layout Description
