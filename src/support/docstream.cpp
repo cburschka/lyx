@@ -281,6 +281,14 @@ private:
 				inbytesleft, to, outbytesleft);
 		if (converted == (size_t)(-1)) {
 			switch(errno) {
+			case 0: 
+				// As strange as it may seem, this
+				// does happen on windows when parsing
+				// comments with accented chars in
+				// tex2lyx. See the following thread
+				// for details
+				// http://thread.gmane.org/gmane.editors.lyx.devel/117636
+				break;
 			case EINVAL:
 			case E2BIG:
 				return base::partial;
