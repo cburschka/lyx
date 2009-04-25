@@ -168,6 +168,8 @@ What's new
 - After reloading a child document, correctly re-assign the master
   (bug 5873).
 
+- Fix downwards selection by mouse movement (part of bug 4464).
+
 - Adjust the color of deletions slightly when using change tracking. It
   is now easier to distinguish between added and deleted text (bug 5629).
 

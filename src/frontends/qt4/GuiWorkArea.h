@@ -87,7 +87,8 @@ public:
 	bool restart_timeout;
 	int x_old;
 	int y_old;
-	double scrollbar_value_old;
+	int min_scrollbar_old;
+	int max_scrollbar_old;
 };
 
 
