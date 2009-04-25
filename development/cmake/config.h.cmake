@@ -44,4 +44,7 @@
 #cmakedefine HAVE_LIBMYTHES 1
 #cmakedefine MYTHES_H_LOCATION <${MYTHES_H}>
 
+#cmakedefine HAVE_LIBAIKSAURUS 1
+#cmakedefine AIKSAURUS_H_LOCATION <${AIKSAURUS_H}>
+
 #endif
