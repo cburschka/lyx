@@ -4128,9 +4128,9 @@ push
 \begin_layout Standard
 Please note that, at present, 
 \emph on
-the server does not work on Windows
+the server does not work natively on Windows
 \emph default
-.
+
 \begin_inset Foot
 status collapsed
 
@@ -4142,7 +4142,7 @@ There is no reason it cannot do so.
 
 \end_inset
 
-
+ but it does work with Cygwin versions of LyX.
 \end_layout
 
 \begin_layout Section
@@ -4473,9 +4473,9 @@ Examples:
 
 \begin_layout LyX-Code
 echo "LYXCMD:test:beginning-of-buffer:" >~/.lyxpipe.in
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout LyX-Code
 echo "LYXCMD:test:get-xy:" >~/.lyxpipe.in
 \begin_inset Newline newline
 \end_inset
@@ -4605,6 +4605,469 @@ bye
 \end_inset
 
  sent from LyX will inform clients that LyX is closing.
+\end_layout
+
+\begin_layout Section
+Reverse DVI search
+\end_layout
+
+\begin_layout Standard
+Some DVI viewers provide the reverse DVI search feature (also called 
+\emph on
+inverse DVI search
+\emph default
+), allowing the cursor in LyX to automatically jump to the point corresponding
+ to a given position in the previewed DVI file.
+ A program or script will be called by the DVI viewer when initiating a
+ reverse DVI search.
+ The way the search is triggered depends on the viewer (for example, 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+xdvi
+\end_layout
+
+\end_inset
+
+ uses Ctrl-click, whereas 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+yap
+\end_layout
+
+\end_inset
+
+ uses double click) but in general the program is called with two arguments,
+ a filename and a line number, and, in turn, it should pass this info to
+ a running instance of LyX.
+ This can be done through the LyX server either by using the named pipe,
+ or the unix domain socket that lyx creates in its temporary directory (this
+ is the way the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxclient
+\end_layout
+
+\end_inset
+
+ program communicates with LyX).
+\end_layout
+
+\begin_layout Standard
+The reverse DVI search feature can be enabled in LyX as follows:
+\end_layout
+
+\begin_layout Itemize
+The DVI file should contain suitable info (src-specials) produced either
+ by using appropriate options when calling the LaTeX compiler (method 1),
+ or by using the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+srcltx
+\end_layout
+
+\end_inset
+
+ package (method 2).
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Method
+\begin_inset space ~
+\end_inset
+
+1 Change the 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+LaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX (plain)->DVI
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+LaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX (plain)->DraftDVI
+\end_layout
+
+\end_inset
+
+ converter in 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+File Handling\SpecialChar \menuseparator
+Converters
+\end_layout
+
+\end_inset
+
+ to 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+latex -
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+-src $$i
+\end_layout
+
+\end_inset
+
+ if you use tetex or texlive, or to 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+latex -src-specials $$i
+\end_layout
+
+\end_inset
+
+ if you use miktex.
+\end_layout
+
+\begin_layout Description
+Method
+\begin_inset space ~
+\end_inset
+
+2 As an alternative to redefining the converter (maybe because you use the
+ pplatex command instead of latex for producing a DVI file), insert 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+usepackage[active]{srcltx}
+\end_layout
+
+\end_inset
+
+ in the preamble of the LyX file.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+If you use 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+xdvi
+\end_layout
+
+\end_inset
+
+, you don't need to do anything else, as LyX already provides the necessary
+ hooks for automatically using the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxclient
+\end_layout
+
+\end_inset
+
+ program.
+ However, if for whatever reason you want to use the named pipe instead
+ of the socket for communicating with lyx, simply change the DVI viewer
+ in 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+File Handling\SpecialChar \menuseparator
+File formats
+\end_layout
+
+\end_inset
+
+ to 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+xdvi -editor 'lyxeditor.sh %f %l'
+\end_layout
+
+\end_inset
+
+, where 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxeditor.sh
+\end_layout
+
+\end_inset
+
+ is a suitable script.
+ For example, a minimal shell script is the following one:
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+#!/bin/sh
+\begin_inset Newline newline
+\end_inset
+
+LYXPIPE="/path/to/lyxpipe"
+\begin_inset Newline newline
+\end_inset
+
+COMMAND="LYXCMD:revdvi:server-goto-file-row:$1 $2"
+\begin_inset Newline newline
+\end_inset
+
+echo "$COMMAND" > "${LYXPIPE}".in || exit
+\begin_inset Newline newline
+\end_inset
+
+read < "${LYXPIPE}".out || exit
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+/path/to/lyxpipe
+\end_layout
+
+\end_inset
+
+ is the LyXServer pipe path specified in
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+Paths
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+If you use the Cygwin version of LyX and yap as a viewer, you should set
+ the name of the program that communicates with LyX directly in yap as follows.
+ After launching yap, choose its 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+View\SpecialChar \menuseparator
+Options
+\end_layout
+
+\end_inset
+
+ menu and select the "Inverse DVI Search" tab.
+ Click on the "New..." button and, in the window which opens, enter "LyX Editor"
+ (or any other name you like) in the "Name:" field.
+ Now click on the button labeled "..." to open a filedialog and navigate to
+ the directory containing the batch file 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxeditor.bat
+\end_layout
+
+\end_inset
+
+ (see below).
+ Select 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxeditor.bat
+\end_layout
+
+\end_inset
+
+ and then specify the program arguments as 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+%f %l
+\end_layout
+
+\end_inset
+
+ if you want to use the shell script above, or as 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+-g %f %l
+\end_layout
+
+\end_inset
+
+ if you want to use the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxclient
+\end_layout
+
+\end_inset
+
+ program.
+ As yap is a native Windows application, the filename it provides should
+ be converted to posix style before being passed to 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxeditor.sh
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxclient
+\end_layout
+
+\end_inset
+
+, and this is the purpose of the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxeditor.bat
+\end_layout
+
+\end_inset
+
+ wrapper, which is as follows:
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+@echo off
+\begin_inset Newline newline
+\end_inset
+
+if "%1" == "-g" goto lyxclient
+\begin_inset Newline newline
+\end_inset
+
+bash -c 'lyxeditor.sh $(cygpath "%1") %2'
+\begin_inset Newline newline
+\end_inset
+
+exit
+\begin_inset Newline newline
+\end_inset
+
+:lyxclient
+\begin_inset Newline newline
+\end_inset
+
+bash -c 'lyxclient %1 $(cygpath "%2") %3'
+\end_layout
+
+\begin_layout Standard
+You have to make sure that both 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxeditor.sh
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxclient.exe
+\end_layout
+
+\end_inset
+
+ are in the command PATH, otherwise you have to use their full posix path
+ in the above batch file.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+If you did no mistakes, and if src-specials are activated as previously
+ described, whenever you Ctrl-click in xdvi, or double click in yap, the
+ cursor in LyX should jump to the desired location.
 \end_layout
 
 \begin_layout Chapter
