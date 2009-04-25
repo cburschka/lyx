@@ -41,5 +41,7 @@
 #cmakedefine USE_MACOSX_PACKAGING 1
 #cmakedefine PATH_MAX ${PATH_MAX}
 
+#cmakedefine HAVE_LIBAIKSAURUS 1
+#cmakedefine AIKSAURUS_H_LOCATION <${AIKSAURUS_H}>
 
 #endif
