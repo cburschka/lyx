@@ -49,7 +49,7 @@ theorems-ams
 \begin_body
 
 \begin_layout Section*
-LFUNs documentation automatically generated 11.04.2009.
+LFUNs documentation automatically generated 26.04.2009.
 \end_layout
 
 \begin_layout Standard
@@ -930,7 +930,13 @@ Notion It automatically takes the word on the cursor position.
 \end_layout
 
 \begin_layout Description
-Syntax index-insert 
+Syntax index-insert [<TYPE:Name>] 
+\end_layout
+
+\begin_layout Description
+Params <TYPE:Name>: name of the index, if multiple indices are defined.
+ with an empty argument, the default index is selected.
+  
 \end_layout
 
 \begin_layout Description
@@ -947,7 +953,13 @@ Action Inserts list of Index entries on a new page.
 \end_layout
 
 \begin_layout Description
-Syntax index-print 
+Syntax index-print [<TYPE:Name>] 
+\end_layout
+
+\begin_layout Description
+Params <TYPE:Name>: name of the index, if multiple indices are defined.
+ with an empty argument, the default index is selected.
+  
 \end_layout
 
 \begin_layout Description
@@ -4652,7 +4664,10 @@ Action Open the inset's properties dialog.
 \end_layout
 
 \begin_layout Description
-Notion Used for box, branch, ert, float, listings, note, tabular, wrap insets.
+Notion Used for bibitem, bibtex, box, branch, citation, ert, external, *
+             float, graphics, href, include, index, index_print, label,
+ listings, *             note, phantom, ref, space, tabular, vspace, wrap
+ insets.
   
 \end_layout
 
@@ -4661,7 +4676,9 @@ Syntax inset-settings <INSET>
 \end_layout
 
 \begin_layout Description
-Params <INSET>: <box|branch|ert|float|listings|note|phantom|tabular|wrap>
+Params <INSET>: <bibitem|bibtex|box|branch|citation|ert|external|float|
+ *                       graphics|href|include|index|index_print|label|listings|
+ *                       note|phantom|ref|space|tabular|vspace|wrap>.
   
 \end_layout
 
@@ -4670,7 +4687,8 @@ LFUN_INSET_TOGGLE
 \end_layout
 
 \begin_layout Description
-Action Toggles the collapsable inset we are currently in.
+Action Toggles the collapsable inset at cursor position, *             or
+ the inset we are currently in.
   
 \end_layout
 
@@ -4715,11 +4733,11 @@ Notion Used for box, branch, ert, float, listings, note, tabular, wrap insets.
 \end_layout
 
 \begin_layout Description
-Syntax all-insets-toggle <STATE> <INSET> 
+Syntax all-insets-toggle [<STATE>] [<INSET>] 
 \end_layout
 
 \begin_layout Description
-Params <STATE>: <toggle|open|close> default: toggle  
+Params <STATE>: <toggle|open|close|assign> default: toggle  
 \begin_inset Newline newline
 \end_inset
 
@@ -5122,7 +5140,7 @@ Origin sanda, 9 Feb 2007
 \end_layout
 
 \begin_layout Subsection*
-WINDOW_NEW 
+LFUN_WINDOW_NEW 
 \end_layout
 
 \begin_layout Description
@@ -5602,6 +5620,12 @@ LFUN_SERVER_GOTO_FILE_ROW
 \begin_layout Description
 Action Sets the cursor position based on the row number of generated TeX
  file.
+  
+\end_layout
+
+\begin_layout Description
+Notion This can be useful for DVI inverse-search or detection of the problematic
+ line from LaTeX compilation.
   
 \end_layout
 
