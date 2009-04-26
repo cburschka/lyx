@@ -522,6 +522,8 @@ Menuset
 	Menu "context-indexprint"
 		IndicesListsContext
 		Separator
+		Item "Subindex|b" "next-inset-modify toggle-subindex"
+		Separator
 		OptItem "Settings...|S" "inset-settings"
 	End
 

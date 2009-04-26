@@ -39,6 +39,7 @@ GuiPrintindex::GuiPrintindex(GuiView & lv)
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(cancelPB, SIGNAL(clicked()), this, SLOT(slotClose()));
 	connect(indicesCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(subindexCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 
 	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	bc().setOK(okPB);
@@ -69,6 +70,7 @@ void GuiPrintindex::updateContents()
 
 	int const pos = indicesCO->findData(toqstr(cur_index));
 	indicesCO->setCurrentIndex(pos);
+	subindexCB->setChecked(params_.getCmdName() == "printsubindex");
 }
 
 
@@ -76,6 +78,10 @@ void GuiPrintindex::applyView()
 {
 	QString const index = indicesCO->itemData(
 		indicesCO->currentIndex()).toString();
+	if (subindexCB->isChecked())
+		params_.setCmdName("printsubindex");
+	else
+		params_.setCmdName("printindex");
 	params_["type"] = qstring_to_ucs4(index);
 }
 
@@ -83,6 +89,7 @@ void GuiPrintindex::applyView()
 void GuiPrintindex::paramsToDialog(InsetCommandParams const & /*icp*/)
 {
 	int const pos = indicesCO->findData(toqstr(params_["type"]));
+	subindexCB->setChecked(params_.getCmdName() == "printsubindex");
 	indicesCO->setCurrentIndex(pos);
 	bc().setValid(isValid());
 }

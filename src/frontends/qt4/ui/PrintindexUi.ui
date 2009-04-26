@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>262</width>
-    <height>108</height>
+    <height>130</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -22,26 +22,46 @@
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="1" column="0" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
+   <item row="2" column="2" >
+    <widget class="QPushButton" name="cancelPB" >
+     <property name="text" >
+      <string>&amp;Cancel</string>
      </property>
-     <property name="sizeHint" >
-      <size>
-       <width>71</width>
-       <height>20</height>
-      </size>
+     <property name="default" >
+      <bool>true</bool>
      </property>
-    </spacer>
+    </widget>
    </item>
-   <item row="1" column="1" >
+   <item row="2" column="1" >
     <widget class="QPushButton" name="okPB" >
      <property name="text" >
       <string>&amp;OK</string>
      </property>
      <property name="default" >
       <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>78</width>
+       <height>29</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="0" colspan="3" >
+    <widget class="QCheckBox" name="subindexCB" >
+     <property name="toolTip" >
+      <string>Check if this index should be part (e.g., a section) of the former one.</string>
+     </property>
+     <property name="text" >
+      <string>&amp;Subindex</string>
      </property>
     </widget>
    </item>
@@ -66,21 +86,11 @@
      <item>
       <widget class="QComboBox" name="indicesCO" >
        <property name="toolTip" >
-        <string>Select the index this entry should be listed in.</string>
+        <string>Select the index that shall be printed at this place of the document.</string>
        </property>
       </widget>
      </item>
     </layout>
-   </item>
-   <item row="1" column="2" >
-    <widget class="QPushButton" name="cancelPB" >
-     <property name="text" >
-      <string>&amp;Cancel</string>
-     </property>
-     <property name="default" >
-      <bool>true</bool>
-     </property>
-    </widget>
    </item>
   </layout>
  </widget>

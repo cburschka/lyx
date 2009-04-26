@@ -410,6 +410,8 @@ docstring InsetPrintIndex::screenLabel() const
 	docstring res = index->index();
 	if (!buffer().masterBuffer()->params().use_indices)
 		res += " (" + _("non-active") + ")";
+	else if (getCmdName() == "printsubindex")
+		res += " (" + _("subindex") + ")";
 	return res;
 }
 
@@ -419,6 +421,13 @@ void InsetPrintIndex::doDispatch(Cursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY: {
+		if (cmd.argument() == from_ascii("toggle-subindex")) {
+			if (getCmdName() == "printindex")
+				setCmdName("printsubindex");
+			else
+				setCmdName("printindex");
+			break;
+		}
 		InsetCommandParams p(INDEX_PRINT_CODE);
 		// FIXME UNICODE
 		InsetCommand::string2params("index_print",
@@ -427,7 +436,7 @@ void InsetPrintIndex::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.noUpdate();
 			break;
 		}
-		setParam("type", p["type"]);
+		setParams(p);
 		break;
 	}
 
@@ -444,7 +453,11 @@ bool InsetPrintIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY: {
-		if (cmd.getArg(0) == "index_print"
+		if (cmd.argument() == from_ascii("toggle-subindex")) {
+			status.setEnabled(buffer().masterBuffer()->params().use_indices);
+			status.setOnOff(getCmdName() == "printsubindex");
+			return true;
+		} if (cmd.getArg(0) == "index_print"
 		    && cmd.getArg(1) == "CommandInset") {
 			InsetCommandParams p(INDEX_PRINT_CODE);
 			InsetCommand::string2params("index_print",
@@ -461,8 +474,7 @@ bool InsetPrintIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
 	}
 	
 	case LFUN_INSET_DIALOG_UPDATE: {
-		Buffer const & realbuffer = *buffer().masterBuffer();
-		status.setEnabled(realbuffer.params().use_indices);
+		status.setEnabled(buffer().masterBuffer()->params().use_indices);
 		return true;
 	}
 
