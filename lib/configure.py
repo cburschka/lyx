@@ -307,18 +307,18 @@ def checkFormatEntries(dtl_tools):
     #
     #checkProg('a Postscript interpreter', ['gs'],
     #  rc_entry = [ r'\ps_command "%%"' ])
-    checkViewer('a Postscript previewer', ['kghostview', 'evince', 'gv', 'ghostview -swap'],
+    checkViewer('a Postscript previewer', ['kghostview', 'okular', 'evince', 'gv', 'ghostview -swap'],
         rc_entry = [r'''\Format eps        eps     EPS                    "" "%%"	""	"vector"
 \Format ps         ps      Postscript             t  "%%"	""	"document,vector"'''])
     #
-    checkViewer('a PDF previewer', ['kpdf', 'evince', 'kghostview', 'xpdf', 'acrobat', 'acroread', \
+    checkViewer('a PDF previewer', ['kpdf', 'okular', 'evince', 'kghostview', 'xpdf', 'acrobat', 'acroread', \
 		    'gv', 'ghostview'],
         rc_entry = [r'''\Format pdf        pdf    "PDF (ps2pdf)"          P  "%%"	""	"document,vector"
 \Format pdf2       pdf    "PDF (pdflatex)"        F  "%%"	""	"document,vector"
 \Format pdf3       pdf    "PDF (dvipdfm)"         m  "%%"	""	"document,vector"
 \Format pdf4       pdf    "PDF (XeTeX)"           X  "%%"	""	"document,vector"'''])
     #
-    checkViewer('a DVI previewer', ['xdvi', 'kdvi'],
+    checkViewer('a DVI previewer', ['xdvi', 'kdvi', 'okular'],
         rc_entry = [r'\Format dvi        dvi     DVI                    D  "%%"	""	"document,vector"'])
     if dtl_tools:
         # Windows only: DraftDVI
