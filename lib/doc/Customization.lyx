@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 348
+\lyxformat 353
 \begin_document
 \begin_header
 \textclass scrbook
@@ -66,12 +66,14 @@ End
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_xetex false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
 
 \graphics default
+\default_output_format default
 \paperfontsize 12
 \spacing single
 \use_hyperref true
@@ -95,7 +97,9 @@ End
 \use_esint 0
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\backgroundcolor #ffffff
 \branch OutDated
 \selected 0
 \color #f5fae7
@@ -108,11 +112,12 @@ End
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes true
+\tracking_changes false
 \output_changes false
-\author "rgheck" 
-\author "ab" 
-\author "Georg Baum,,," 
+\author "" 
+\author "" 
+\author "" 
+\author "" 
 \author "" 
 \end_header
 
@@ -617,7 +622,7 @@ xx
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "chap:i18n"
+reference "cha:Internationalizing-LyX"
 
 \end_inset
 
@@ -719,7 +724,7 @@ layouts/
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "chap:textclass"
+reference "cha:Installing-New-Document"
 
 \end_inset
 
@@ -799,7 +804,7 @@ templates/
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:templates"
+reference "sec:Creating-Templates"
 
 \end_inset
 
@@ -1275,142 +1280,14 @@ User's Guide
 \end_layout
 
 \begin_layout Section
-Using the dialog for the first time
-\end_layout
-
-\begin_layout Standard
-The 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-UserDir/preferences
-\end_layout
-
-\end_inset
-
- file will contain only changes that you have made to the default behavior,
- some of which is hard-coded into LyX and some of which is contained in
- the system file 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-LyXDir/lyxrc.defaults
-\end_layout
-
-\end_inset
-
-.
- Note that in both files lines beginning with a 
-\begin_inset Quotes eld
-\end_inset
-
-#
-\begin_inset Quotes erd
-\end_inset
-
- are just comments and are not interpreted.
- However, only system administrators should edit 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-LyXDir/lyxrc.defaults
-\end_layout
-
-\end_inset
-
-.
- Users should use the 
-\begin_inset Flex CharStyle:MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-Tools\SpecialChar \menuseparator
-Preferences
-\end_layout
-
-\end_inset
-
- dialog to create and modify their own 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-UserDir/preferences
-\end_layout
-
-\end_inset
-
- file.
-\end_layout
-
-\begin_layout Standard
-We hope that the 
-\begin_inset Flex CharStyle:MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-Tools\SpecialChar \menuseparator
-Preferences
-\end_layout
-
-\end_inset
-
- dialog will be largely self-explanatory.
- Most things in the dialog have associated `tool tips': hover your mouse
- pointer over something for more information.
- Before we highlight a few of the more important commands below, however,
- a word of warning: Applying some of your changes (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-screen fonts) will have an instant effect.
- Others (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-changing the bind file) will not.
- If nothing appears to have changed, just 
-\begin_inset Flex CharStyle:MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-Save
-\end_layout
-
-\end_inset
-
- the changes and restart LyX.
-\end_layout
-
-\begin_layout Section
-File Handling
-\end_layout
-
-\begin_layout Standard
-LyX has a powerful mechanism to convert to and from any file format using
- external programs.
- 
-\end_layout
-
-\begin_layout Subsection
+Formats
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Formats"
+name "sec:Formats"
 
 \end_inset
 
-Formats
+
 \end_layout
 
 \begin_layout Standard
@@ -1602,10 +1479,14 @@ Document format
 \end_inset
 
  option tells LyX that a format is suitable for document export.
- If this is is set and if a suitable conversion route exists (see 
+ If this is is set and if a suitable conversion route exists (see sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Converters"
+reference "sec:Converters"
 
 \end_inset
 
@@ -1774,7 +1655,7 @@ png
 .
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Copiers
 \end_layout
 
@@ -2101,14 +1982,15 @@ status collapsed
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
+Converters
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Converters"
+name "sec:Converters"
 
 \end_inset
 
-Converters
+
 \end_layout
 
 \begin_layout Standard
@@ -2515,7 +2397,7 @@ dvipdfm
  formats', as described in section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Formats"
+reference "sec:Formats"
 
 \end_inset
 
@@ -2567,7 +2449,7 @@ status collapsed
 Internationalizing LyX
 \begin_inset CommandInset label
 LatexCommand label
-name "chap:i18n"
+name "cha:Internationalizing-LyX"
 
 \end_inset
 
@@ -5381,10 +5263,10 @@ Preferences
 \end_layout
 
 \begin_layout Chapter
-Installing New Document Classes, Layouts, and Templates 
+Installing New Document Classes, Layouts, and Templates
 \begin_inset CommandInset label
 LatexCommand label
-name "chap:textclass"
+name "cha:Installing-New-Document"
 
 \end_inset
 
@@ -6015,13 +5897,14 @@ default
 \end_layout
 
 \begin_layout Subsection
+Layout modules
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Layout-modules"
 
 \end_inset
 
-Layout modules
+
 \end_layout
 
 \begin_layout Standard
@@ -6078,16 +5961,12 @@ DeclareLyXModule[endnotes.sty]{Endnotes}
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 0 1235082501
 The mandatory argument, in curly brackets, is the name of the module, as
  it should appear in 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 0 1235082501
 Document\SpecialChar \menuseparator
 Settings
 \end_layout
@@ -6095,45 +5974,20 @@ Settings
 \end_inset
 
 .
- 
-\change_unchanged
-The argument in square brackets is optional: It declares any LaTeX packages
+ The argument in square brackets is optional: It declares any LaTeX packages
  on which the module depends.
- 
-\change_deleted 0 1235082500
-The mandatory argument, in curly brackets, is the name of the module, as
- it should appear in 
-\begin_inset Flex CharStyle:MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-Document\SpecialChar \menuseparator
-Settings
-\end_layout
-
-\end_inset
-
-.
- 
-\change_inserted 0 1235082535
-Please note that only packages about which LyX knows should be listed in
+ Please note that only packages about which LyX knows should be listed in
  the square brackets.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 0 1235082591
 The list of such packages is documented only in the source code.
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
  LyX will not check for arbitrary packages.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
@@ -6923,15 +6777,7 @@ int
 
 ] This tag was introduced with LyX 1.4.0 (layout files of LyX 1.3.x and earlier
  don't have an explicit file format).
- The file format that is documented here is format 1
-\change_deleted 2 1234611237
-2
-\change_inserted 2 1234611237
-4
-\change_unchanged
-.
-\change_deleted 1 1234946903
-
+ The file format that is documented here is format 14.
 \end_layout
 
 \begin_layout Subsection
@@ -6992,7 +6838,7 @@ ClassOptions
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:classoptions"
+reference "sub:ClassOptions"
 
 \end_inset
 
@@ -7083,7 +6929,7 @@ Counter
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:counter"
+reference "sub:Counters"
 
 \end_inset
 
@@ -7127,7 +6973,7 @@ DefaultFont
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:fonts"
+reference "sub:Font-description"
 
 \end_inset
 
@@ -7302,7 +7148,7 @@ Float
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:floats"
+reference "sub:Floats"
 
 \end_inset
 
@@ -7381,7 +7227,7 @@ a new character style.
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:charstyle"
+reference "sub:Flex-insets-and"
 
 \end_inset
 
@@ -7911,7 +7757,7 @@ Style
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:style"
+reference "sub:Paragraph-Styles"
 
 \end_inset
 
@@ -8118,15 +7964,16 @@ ClassOptions
 \end_inset
 
  section
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:classoptions"
+name "sub:ClassOptions"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 The 
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -8319,15 +8166,16 @@ End
 
 \begin_layout Subsection
 Paragraph Styles
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:style"
+name "sub:Paragraph-Styles"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 A paragraph style description looks like this:
 \begin_inset Foot
 status collapsed
@@ -8859,7 +8707,7 @@ and
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:fonts"
+reference "sub:Font-description"
 
 \end_inset
 
@@ -8956,13 +8804,7 @@ FreeSpacing
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 2 1234613251
-Babel
-\change_deleted 2 1234611266
-I18N
-\change_unchanged
-Preamble
+BabelPreamble
 \end_layout
 
 \end_inset
@@ -8974,13 +8816,7 @@ Preamble
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 2 1234613436
-Babel
-\change_deleted 2 1234611275
-I18N
-\change_unchanged
-Preamble
+BabelPreamble
 \end_layout
 
 \end_inset
@@ -8995,13 +8831,7 @@ Preamble
 status collapsed
 
 \begin_layout Plain Layout
-End
-\change_deleted 2 1234611280
-I18N
-\change_inserted 2 1234613262
-Babel
-\change_unchanged
-Preamble
+EndBabelPreamble
 \end_layout
 
 \end_inset
@@ -9051,29 +8881,19 @@ _()
 
  replaces its argument by the translation of the argument to the current
  language.
-\change_inserted 2 1234611470
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 2 1234615134
 This preamble snippet will only be used if the document contains more than
  one language and the babel package is used.
-\change_unchanged
-
 \end_layout
 
 \end_deeper
 \begin_layout Description
-
-\change_inserted 2 1234614203
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 2 1234614202
 LangPreamble
 \end_layout
 
@@ -9084,8 +8904,6 @@ LangPreamble
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 2 1234614202
 BabelPreamble
 \end_layout
 
@@ -9102,8 +8920,6 @@ BabelPreamble
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 2 1234614202
 EndLangPreamble
 \end_layout
 
@@ -9124,38 +8940,22 @@ If the style defines text that appears in the typeset document, it may use
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 2 1234611302
-Lang
-\change_deleted 2 1234611306
-I18N
-\change_unchanged
-Preamble
+LangPreamble
 \end_layout
 
 \end_inset
 
-
-\change_inserted 2 1234611823
- and
-\change_unchanged
- 
-\change_inserted 2 1234611832
-
+ and 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 2 1234611838
 BabelPreamble
 \end_layout
 
 \end_inset
 
- 
-\change_unchanged
-to support non-english and even multilanguage documents correctly.
+ to support non-english and even multilanguage documents correctly.
  The following excerpt (from the 
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -9171,16 +8971,6 @@ theorems-ams.inc
 
 \begin_layout LyX-Code
 Preamble
-\end_layout
-
-\begin_layout LyX-Code
-
-\change_deleted 2 1234612061
-  
-\backslash
-providecommand{
-\backslash
-claimname}{Claim}
 \end_layout
 
 \begin_layout LyX-Code
@@ -9204,14 +8994,10 @@ EndPreamble
 \end_layout
 
 \begin_layout LyX-Code
-
-\change_inserted 2 1234612037
 LangPreamble
 \end_layout
 
 \begin_layout LyX-Code
-
-\change_inserted 2 1234612045
   
 \backslash
 providecommand{
@@ -9221,46 +9007,18 @@ claimname}{_(Claim)}
 
 \begin_layout LyX-Code
 
-\change_inserted 2 1234611897
-
 \end_layout
 
 \begin_layout LyX-Code
-
-\change_inserted 2 1234612050
 EndLangPreamble
 \end_layout
 
 \begin_layout LyX-Code
-
-\change_inserted 2 1234611892
-Babel
-\change_deleted 2 1234611847
-I18n
-\change_unchanged
-Preamble
+BabelPreamble
 \end_layout
 
 \begin_layout LyX-Code
-  
-\change_deleted 2 1234612079
-
-\backslash
-AtBeginDocument{
-\backslash
-ifx
-\backslash
-LdfInit
-\backslash
-undefined
-\backslash
-relax
-\backslash
-else%
-\end_layout
-
-\begin_layout LyX-Code
-  
+    
 \backslash
 addto
 \backslash
@@ -9269,28 +9027,10 @@ captions$$lang{
 renewcommand{
 \backslash
 claimname}{_(Claim)}}
-\change_deleted 2 1234612086
-%
 \end_layout
 
 \begin_layout LyX-Code
-
-\change_deleted 2 1234612089
-  
-\backslash
-fi}
-\change_unchanged
-
-\end_layout
-
-\begin_layout LyX-Code
-End
-\change_inserted 2 1234611859
-Babel
-\change_deleted 2 1234611856
-I18n
-\change_unchanged
-Preamble
+EndBabelPreamble
 \end_layout
 
 \begin_layout Standard
@@ -9307,26 +9047,14 @@ claimname
 
 \end_inset
 
- in the 
-\change_inserted 2 1234612144
-language
-\change_deleted 2 1234612146
-standard
-\change_unchanged
- preamble.
+ in the language preamble.
  This command holds the name of the theorem that will appear in the output.
  The 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 2 1234612157
-Babel
-\change_deleted 2 1234612155
-I18N
-\change_unchanged
-Preamble
+BabelPreamble
 \end_layout
 
 \end_inset
@@ -9343,44 +9071,7 @@ claimname
 
 \end_inset
 
- for each used language
-\change_inserted 2 1234622073
- in multilanguage documents
-\change_unchanged
-.
-
-\change_deleted 2 1234612171
- The 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-ifx
-\backslash
-LdfInit
-\end_layout
-
-\end_inset
-
- test ensures that no LaTeX error occurs in documents that do not use babel.
- Since LyX loads babel after the style-specific preamble, the whole command
- is deferred to the actual start of the document with 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-AtBeginDocument
-\end_layout
-
-\end_inset
-
-.
-\change_unchanged
-
+ for each used language in multilanguage documents.
 \end_layout
 
 \end_deeper
@@ -9615,7 +9306,7 @@ string=""
 The name of the counter for automatic numbering (see Section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:counter"
+reference "sub:Counters"
 
 \end_inset
 
@@ -9661,7 +9352,7 @@ LabelFont
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:fonts"
+reference "sub:Font-description"
 
 \end_inset
 
@@ -9750,7 +9441,7 @@ LabelCounter
  in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:counter"
+reference "sub:Counters"
 
 \end_inset
 
@@ -9800,7 +9491,7 @@ style-name
  Section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:counter"
+reference "sub:Counters"
 
 \end_inset
 
@@ -10079,7 +9770,7 @@ Counter
  See Section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:counter"
+reference "sub:Counters"
 
 \end_inset
 
@@ -11290,7 +10981,7 @@ TextFont
  See section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:fonts"
+reference "sub:Font-description"
 
 \end_inset
 
@@ -11341,15 +11032,16 @@ float=0
 
 \begin_layout Subsection
 Floats
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:floats"
+name "sub:Floats"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Since version 1.3.0 of LyX, it is has been both possible and necessary to
  define the floats (
 \begin_inset Flex CharStyle:MenuItem
@@ -11883,15 +11575,16 @@ type
 
 \begin_layout Subsection
 Flex insets and InsetLayout
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:charstyle"
+name "sub:Flex-insets-and"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 LyX has supported character styles since version 1.4.0; as of version 1.6.0,
  these are called Flex insets.
  
@@ -12505,7 +12198,7 @@ and
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:fonts"
+reference "sub:Font-description"
 
 \end_inset
 
@@ -12697,7 +12390,7 @@ LabelFont
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:fonts"
+reference "sub:Font-description"
 
 \end_inset
 
@@ -13040,15 +12733,16 @@ reference "des:Requires"
 
 \begin_layout Subsection
 Counters
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:counter"
+name "sub:Counters"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Since version 1.3.0 of LyX, it is both possible and necessary to define the
  counters (
 \begin_inset Flex CharStyle:MenuItem
@@ -13465,15 +13159,16 @@ section
 
 \begin_layout Subsection
 Font description
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:fonts"
+name "sub:Font-description"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 A font description looks like this:
 \end_layout
 
@@ -14003,7 +13698,7 @@ The automatic conversion only handles syntax changes.
 Creating Templates
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:templates"
+name "sec:Creating-Templates"
 
 \end_inset
 
@@ -14770,7 +14465,7 @@ InputFormat
  This must be the name of a format that is known to LyX (see section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Formats"
+reference "sec:Formats"
 
 \end_inset
 
@@ -15860,170 +15555,6 @@ status collapsed
 \end_inset
 
  files needs the relative name in order to rewrite the file content.
-\end_layout
-
-\begin_layout Section
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Security-discussion"
-
-\end_inset
-
-Security discussion
-\end_layout
-
-\begin_layout Standard
-\begin_inset Box Shadowbox
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-WARNING: This section is definitely outdated.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The external material feature interfaces with a lot of external programs
- and does so automatically, so we have to consider the security implications
- of this.
- In particular, since you have the option of including your own filenames
- and/or parameter strings and those are expanded into a command, it seems
- that it would be possible to create a malicious document which executes
- arbitrary commands when a user views or prints the document.
- This is something we definitely want to avoid.
-\end_layout
-
-\begin_layout Standard
-However, since the external program commands are specified in the template
- configuration file only, there are no security issues if LyX is properly
- configured with safe templates only.
- This is so because the external programs are invoked with the 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-execvp
-\end_layout
-
-\end_inset
-
--system call rather than the 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-system
-\end_layout
-
-\end_inset
-
- system-call, so it's not possible to execute arbitrary commands from the
- filename or parameter section via the shell.
-\end_layout
-
-\begin_layout Standard
-This also implies that you are restricted in what command strings you can
- use in the external material templates.
- In particular, pipes and redirection are not readily available.
- This has to be so if LyX should remain safe.
- If you want to use some of the shell features, you should write a safe
- script to do this in a controlled manner, and then invoke the script from
- the command string.
- In the 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-lib/scripts
-\end_layout
-
-\end_inset
-
- directory of the LyX installation, you can find a safe wrapper script 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-general_command_wrapper.py
-\end_layout
-
-\end_inset
-
- that supports redirection of input and output.
- That can serve as an example for how to write safe template scripts.
- For a more advanced example that uses 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-fork
-\end_layout
-
-\end_inset
-
- and friends, take a look at the 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-pic2ascii.py
-\end_layout
-
-\end_inset
-
- converter script.
-\end_layout
-
-\begin_layout Standard
-It is possible to design a template that interacts directly with the shell,
- but since this would allow a malicious user to execute arbitrary commands
- by writing clever filenames and/or parameters, we generally recommend that
- you only use safe scripts that work with the 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-execvp
-\end_layout
-
-\end_inset
-
- system call in a controlled manner.
- Of course, for use in a controlled environment, it can be tempting to just
- fall back to use ordinary shell scripts.
- If you do so, be aware that you 
-\emph on
-will
-\emph default
- provide an easily exploitable security hole in your system.
- Of course it stands to reason that such unsafe templates will never be
- included in the standard LyX distribution, although we do encourage people
- to submit new templates in the open source tradition.
- But LyX as shipped from the official distribution channels will never have
- unsafe templates.
-\end_layout
-
-\begin_layout Standard
-Including external material provides a lot of power, and you have to be
- careful not to introduce security hazards with this power.
- A subtle error in a single line in an innocent looking script can open
- the door to huge security problems.
- So if you do not fully understand the issues, we recommend that you consult
- a knowledgeable security professional or the LyX development team if you
- have any questions about whether a given template is safe or not.
- And do this before you use it in an uncontrolled environment.
 \end_layout
 
 \end_body
