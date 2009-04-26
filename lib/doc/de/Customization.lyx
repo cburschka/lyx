@@ -1,8 +1,7 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass scrbook
 \begin_preamble
 % Präambel nicht verändern!!!
@@ -51,6 +50,7 @@
 \usepackage{multicol}
 \end_preamble
 \options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
+\use_default_options false
 \language ngerman
 \inputencoding auto
 \font_roman default
@@ -61,6 +61,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -100,8 +101,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -145,8 +146,8 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 25.
- September 2008
+letzte Änderung: 21.
+ April 2009
 \end_layout
 
 \begin_layout Standard
@@ -229,7 +230,7 @@ X
 \family typewriter
 Ly
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -248,7 +249,7 @@ Was befindet sich in
 \family typewriter
 Ly
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -267,7 +268,7 @@ Das Verzeichnis
 \family typewriter
 Ly
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -294,7 +295,7 @@ Einstellungen
 \family typewriter
 Ly
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -400,7 +401,7 @@ layout
 \family typewriter
 doc/LaTe
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -415,7 +416,7 @@ XConfig.lyx
 \family typewriter
 LaTe
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -476,7 +477,7 @@ bind/
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "sec:bindings"
+reference "sec:Tastaturkürzel"
 
 \end_inset
 
@@ -494,7 +495,7 @@ g existiert, wird diese bevorzugt geladen.
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "chap:i18n"
+reference "cha:Internationales-LyX"
 
 \end_inset
 
@@ -505,7 +506,7 @@ reference "chap:i18n"
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "sec:bindings"
+reference "sec:Tastaturkürzel"
 
 \end_inset
 
@@ -539,7 +540,7 @@ doc/
 \family typewriter
 LaTe
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -563,7 +564,7 @@ $LANG_
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "chap:i18n"
+reference "cha:Internationales-LyX"
 
 \end_inset
 
@@ -597,7 +598,7 @@ images/[math/]
 \family sans
 Aufzählungszeichen
 \family default
- in 
+ im Menü 
 \family sans
 Do\SpecialChar \-
 ku\SpecialChar \-
@@ -608,7 +609,6 @@ ment
 \family sans
 Einstellungen
 \family default
-\SpecialChar \ldots{}
  benötigt werden.
  Außerdem finden Sie hier die unterschiedlichen Icons für die Werkzeugleiste
  und das Bild für den Startbildschirm.
@@ -630,7 +630,7 @@ kbd/
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "sec:keymap"
+reference "sec:Internationale-Tastaturtabellen"
 
 \end_inset
 
@@ -652,7 +652,7 @@ layouts/
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "chap:textclass"
+reference "cha:Installieren-neuer-Textklassen"
 
 \end_inset
 
@@ -668,7 +668,7 @@ lyx2lyx
 \family default
 / Enthält Dateien, die für die Konvertierung zwischen verschiedenen LyX
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -697,10 +697,7 @@ templates
 \family default
 / Enthält die Vorlagendateien, die Ihnen bei 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
+Datei\SpecialChar \menuseparator
 Neu
 \begin_inset space \space{}
 \end_inset
@@ -709,11 +706,7 @@ von
 \begin_inset space \space{}
 \end_inset
 
-
-\bar under
-V
-\bar default
-orlage
+Vorlage
 \family default
  präsentiert werden.
 \end_layout
@@ -872,7 +865,7 @@ Material
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "cha:Externes"
+reference "cha:Externes-Material-einfügen"
 
 \end_inset
 
@@ -943,7 +936,7 @@ X
 \family typewriter
 Ly
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -1041,7 +1034,7 @@ UserDir
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "sec:autodetected"
+reference "sec:Automatische-Einstellungen"
 
 \end_inset
 
@@ -1080,7 +1073,7 @@ TEXINPUTS
 \family default
  findet, können auch diese in LyX verwendet werden.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 vorausgesetzt, es gibt auch eine 
@@ -1201,9 +1194,6 @@ Der Dialog Werkzeuge
 Ei
 \family sans
 nstellungen
-\family default
-\SpecialChar \ldots{}
-
 \end_layout
 
 \begin_layout Section
@@ -1263,7 +1253,7 @@ n abweichen.
 \family typewriter
 Ly
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -1289,7 +1279,7 @@ faults
 \family typewriter
 Ly
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -1427,7 +1417,7 @@ Demgegenüber sind Bitmap-Zeichensätze von vornherein als kleine Grafikdateien
  Sie können aber nur schlecht skaliert werden, denn für eine Vergrößerung
  müssen aus einem Pixel mehrere gemacht werden.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Sie kennen diesen Effekt vermutlich.
@@ -1768,8 +1758,7 @@ Kodierung
  von 
 \family sans
 Dokument\SpecialChar \menuseparator
-Einstellungen\SpecialChar \ldots{}
- \SpecialChar \menuseparator
+Einstellungen \SpecialChar \menuseparator
 Sprache
 \family default
  eine andere Kodierung aktivieren.
@@ -2227,7 +2216,7 @@ copy-and-paste
 \family default
 -Datei bringen, und Sie sind fertig.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Sie können sich etwas Schreibarbeit sparen, wenn Sie folgendes ausführen:
@@ -2324,7 +2313,7 @@ Rückschritt
 Tastaturkürzel
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:bindings"
+name "sec:Tastaturkürzel"
 
 \end_inset
 
@@ -2334,7 +2323,7 @@ name "sec:bindings"
 \begin_layout Standard
 Tastaturkürzel dienen dazu, einer Taste oder Tastenkombination eine LyX
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -2357,7 +2346,7 @@ Wenn Sie stattdessen Ihre Kürzel lieber selbst definieren wollen, nehmen
 \family typewriter
 Ly
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -2384,7 +2373,7 @@ LyX unterstützt die Internationalisierung der Benutzerschnittstelle (siehe
  Kapitel 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "chap:i18n"
+reference "cha:Internationales-LyX"
 
 \end_inset
 
@@ -2436,7 +2425,7 @@ bind <Tastenkombination> <Ly
 \family typewriter
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -2493,7 +2482,7 @@ ui
 \family typewriter
 Ly
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -2704,7 +2693,7 @@ LyX besitzt einen mächtigen Mechanismus, um mittels externer Programme zwischen
 \family typewriter
 LaTe
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -2786,8 +2775,7 @@ E
 \family default
 i
 \family sans
-nstellungen\SpecialChar \ldots{}
-\SpecialChar \menuseparator
+nstellungen\SpecialChar \menuseparator
 Datei\SpecialChar \-
 for\SpecialChar \-
 ma\SpecialChar \-
@@ -2815,8 +2803,7 @@ i
 n\SpecialChar \-
 stel\SpecialChar \-
 lun\SpecialChar \-
-gen\SpecialChar \ldots{}
-\SpecialChar \menuseparator
+gen\SpecialChar \menuseparator
 Ausgaben\SpecialChar \menuseparator
 Einfacher Text
 \family default
@@ -2882,8 +2869,7 @@ E
 \family default
 i
 \family sans
-nstellungen\SpecialChar \ldots{}
-\SpecialChar \menuseparator
+nstellungen\SpecialChar \menuseparator
 Ausgaben\SpecialChar \menuseparator
 Drucker
 \family default
@@ -2892,22 +2878,6 @@ Drucker
  Jedoch sollten die Standardeinstellungen normalerweise korrekt sein.
  Wenn jedoch Ihr lokaler Druckbefehl andere Optionen benötigt, können Sie
  das hier festlegen.
-\end_layout
-
-\begin_layout Standard
-Falls Sie generelle Probleme mit Ihrem Drucker haben, hilft Ihnen vielleicht
- Kapitel
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "chap:printer"
-
-\end_inset
-
- weiter.
 \end_layout
 
 \begin_layout Section
@@ -2922,8 +2892,7 @@ E
 \family default
 i
 \family sans
-nstellungen\SpecialChar \ldots{}
-\SpecialChar \menuseparator
+nstellungen\SpecialChar \menuseparator
 Aussehen\SpecialChar \menuseparator
 Farben
 \family default
@@ -3282,15 +3251,16 @@ hellblau (173,216,230)
 
 \begin_layout Section
 Automatische Einstellungen
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:autodetected"
+name "sec:Automatische-Einstellungen"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Einige Einstellungen werden von LyX selbständig ermittelt, wenn Sie den
  Menüpunkt 
 \family sans
@@ -3527,7 +3497,7 @@ Referenzhandbuch
 Internationales LyX
 \begin_inset CommandInset label
 LatexCommand label
-name "chap:i18n"
+name "cha:Internationales-LyX"
 
 \end_inset
 
@@ -3545,7 +3515,7 @@ Anmerkung des Übersetzers: Dieses Kapitel behandelt zwei Themenbereiche.
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "sec:interface-aendern"
+reference "sec:Eine-andere-Sprache"
 
 \end_inset
 
@@ -3556,7 +3526,7 @@ reference "sec:interface-aendern"
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "sec:andere-tastaturkuerzel"
+reference "sec:Tastaturkürzel-für-andere"
 
 \end_inset
 
@@ -3570,14 +3540,14 @@ ant sein.
  Die letzten beiden Abschnitte, 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "sec:internat-tastaturbelegung"
+reference "sec:Internationale-Tastaturbelegung"
 
 \end_inset
 
  und 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "sec:keymap"
+reference "sec:Internationale-Tastaturtabellen"
 
 \end_inset
 
@@ -3629,7 +3599,7 @@ Wir werden versuchen, diese Dinge in einer späteren Version zu korrigieren.
 Eine andere Sprache für die Schnittstelle auswählen
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:interface-aendern"
+name "sec:Eine-andere-Sprache"
 
 \end_inset
 
@@ -3668,7 +3638,7 @@ de
 \family default
  für deutsch.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Noch besser wäre es, 
@@ -3719,7 +3689,7 @@ nls
 Tastaturkürzel für andere Sprachen anpassen
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:andere-tastaturkuerzel"
+name "sec:Tastaturkürzel-für-andere"
 
 \end_inset
 
@@ -3738,7 +3708,7 @@ Strg+Umschalt+N
 \family typewriter
 new-file-from-template
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -3775,7 +3745,7 @@ Es ist allerdings einfach, dies zu ändern, da alle Tastenkürzel für die
 \family typewriter
 Ly
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -3825,7 +3795,7 @@ Vorlage
 \family typewriter
 Ly
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -3886,7 +3856,7 @@ Strg+D
 \family typewriter
 word-delete-forward
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -4041,15 +4011,7 @@ scgen.pl
 \family default
 , das sich im Quellverzeichnis in 
 \family typewriter
-
-\begin_inset CommandInset href
-LatexCommand href
-target "LYX-SOURCE- DIR/development/tools/"
-type "file:"
-
-\end_inset
-
-
+LYX-SOURCE-DIR/development/tools/
 \family default
  befindet.
  Vielleicht hilft es Ihnen bei der Bestimmung der Tastenkürzel.
@@ -4155,7 +4117,7 @@ Hilfe
 -Menü) kann (und sollte!) übersetzt werden.
  Wenn übersetzte Versionen verfügbar sind
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Derzeit (November 2006) sind praktisch alle Texte bis auf 
@@ -4190,7 +4152,7 @@ locale
 \family typewriter
 Ly
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -4245,7 +4207,7 @@ Lesen Sie
 \family typewriter
 Ly
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -4259,7 +4221,7 @@ XDir/doc/DocStyle.lyx
 , den Leitfaden zum Schreiben der LyX-Dokumentation.
  Beachten Sie vor allem den Abschnitt für Übersetzer.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -4331,7 +4293,7 @@ Legen Sie eine Kopie des Originaldokumentes an.
  Sie können beispielsweise CVSweb auf der LyX-Entwickler-Seite im WWW verwenden
  um zu sehen, was sich verändert hat.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Alternativ können Sie auch lokal eine Kopie des (englischen) Ausgangstextes
@@ -4361,7 +4323,7 @@ Auch die Originaldokumentation ist nicht komplett.
 Internationale Tastaturbelegung
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:internat-tastaturbelegung"
+name "sec:Internationale-Tastaturbelegung"
 
 \end_inset
 
@@ -4840,7 +4802,7 @@ Keymaps
 
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:keymap"
+name "sec:Internationale-Tastaturtabellen"
 
 \end_inset
 
@@ -4869,7 +4831,7 @@ Die
 -Datei
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:kmap"
+name "sub:Die-.kmap-Datei"
 
 \end_inset
 
@@ -5046,7 +5008,7 @@ erlaubt
 \emph on
 (dead keys).
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Der Ausdruck 
@@ -5565,7 +5527,7 @@ Tasten (dead keys)
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "sec:bindings"
+reference "sec:Tastaturkürzel"
 
 \end_inset
 
@@ -5609,7 +5571,7 @@ asciicircum
 
 -Taste verwendet.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Die Bezeichnungen anderer Symbole lassen sich ganz gut aus einer c-Include-Datei
@@ -5647,7 +5609,7 @@ Leider unterscheidet sich die Wirkungsweise der toten Tasten, die in
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "sec:kmap"
+reference "sub:Die-.kmap-Datei"
 
 \end_inset
 
@@ -5728,7 +5690,7 @@ font_norm iso8859-2
 Installieren neuer Textklassen, Layouts und Vorlagen
 \begin_inset CommandInset label
 LatexCommand label
-name "chap:textclass"
+name "cha:Installieren-neuer-Textklassen"
 
 \end_inset
 
@@ -5804,7 +5766,7 @@ Bei manchen TeX-Installationen fehlt möglicherweise das eine oder andere
  Ein Beispiel dafür ist FoilTeX, ein verbreitetes (und sehr leistungsfähiges)
  Paket zur Erstellung von Dias und Folien für Overheadprojektoren.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Weitere Dokumentation zu FoilTeX finden Sie im Teil 
@@ -5819,7 +5781,7 @@ Handbuchergänzungen
  Sie finden hier eine Beschreibung der grundlegenden Schritte, um ein solches
  zusätzliches Paket in einer aktuellen Version von teTeX
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Die Prozedur gilt auf jeden Fall für v1.0 sowie die 0.9 Betaversionen.
@@ -5835,7 +5797,7 @@ Die Prozedur gilt auf jeden Fall für v1.0 sowie die 0.9 Betaversionen.
 \begin_layout Enumerate
 Besorgen Sie sich das Paket von CTAN oder einer anderen Quelle
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Informationen darüber, was CTAN ist und wo unterstützte Dokumentenklassen
@@ -6037,7 +5999,7 @@ slides (FoilTe
 \family typewriter
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -6059,7 +6021,6 @@ Dokumentklasse
 Dokument\SpecialChar \menuseparator
 Einstellungen
 \family default
-\SpecialChar \ldots{}
  erscheinen.
  Ein Hinweis am Rande: es gibt auch einfachere Möglichkeiten, ein neues
  Paket zu installieren, Sie können etwa im LaTeX-Systemverzeichnis (
@@ -6151,6 +6112,195 @@ Voreinstellung
 \end_layout
 
 \begin_layout Subsection
+Layout-Module
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Layout-Module"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Seit LyX 1.6 gibt es, ähnlich wie Layout-Dateien, Layout-Module.
+ Module sind für LaTeX-Pakete, was Layouts für LaTeX-Klassen sind, und einige
+ Module -- wie zum Beispiel das Endnotizen-Modul -- unterstützen solch ein
+ Paket.
+ Man kann sagen, dass Layout-Module ähnlich sind wie eingefügte Dateien
+ -- Dateien wie 
+\family typewriter
+stdsections.inc
+\family default
+.
+ Sie sind nicht speziell für ein Dokument-Layout, sondern können in verschiedene
+n Layouts benutzt werden.
+ Der Unterschied ist, dass man keine Layout-Dateien ändern muss, wenn man
+ Layout-Module benutzt.
+ Stattdessen wählt man Module in 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Module
+\family default
+ aus.
+\end_layout
+
+\begin_layout Standard
+Module zu erstellen ist die einfachste Art, mit dem Editieren von Layouts
+ zu beginnen, weil es so einfach sein kann wie das Hinzufügen eines neuen
+ Absatzes oder einer flexiblen Einfügung.
+ Aber Module können prinzipiell alles enthalten, was Layout-Dateien enthalten
+ können.
+\end_layout
+
+\begin_layout Standard
+Ein Modul muss mit einer Zeile wie der folgenden beginnen:
+\end_layout
+
+\begin_layout LyX-Code
+#
+\backslash
+DeclareLyXModule[endnotes.sty]{Endnotes}
+\end_layout
+
+\begin_layout Standard
+Das Argument in eckigen Klammern ist optional: es nennt alle LaTeX-Pakete,
+ von denen das Modul abhängt.
+ Das notwendige Argument in geschweiften Klammern ist der Modulname, wie
+ er in 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Module
+\family default
+ erscheint.
+\end_layout
+
+\begin_layout Standard
+Nach der Moduldefinition sollten Zeilen wie die folgenden stehen:
+\end_layout
+
+\begin_layout LyX-Code
+#DescriptionBegin 
+\end_layout
+
+\begin_layout LyX-Code
+#Adds an endnote command, in addition to footnotes.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+#You will need to add  
+\backslash
+theendnotes in TeX code where you 
+\end_layout
+
+\begin_layout LyX-Code
+#want the endnotes to appear.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+#DescriptionEnd 
+\end_layout
+
+\begin_layout LyX-Code
+#Requires: somemodule | othermodule
+\end_layout
+
+\begin_layout LyX-Code
+#Excludes: badmodule
+\end_layout
+
+\begin_layout Standard
+Die Beschreibung wird in 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Module
+\family default
+ verwendet, um dem Benutzer Informationen über das Modul zu geben.
+ Die Zeile 
+\family typewriter
+#Requires:\SpecialChar \ldots{}
+
+\family default
+ nennt Module, die ebenfalls benötigt werden.
+ Die Zeile 
+\family typewriter
+#Excludes:\SpecialChar \ldots{}
+
+\family default
+ nennt Module, die nicht zusammen mit dem beschriebenen benutzt werden dürfen.
+ Beide Zeilen sind optional, und Mehrfachnennungen werden durch | getrennt.
+ Von den in der Zeile 
+\family typewriter
+#Requires:\SpecialChar \ldots{}
+
+\family default
+ aufgeführten mus 
+\emph on
+mindestens
+\emph default
+ 
+\emph on
+eins
+\emph default
+ benutzt werden.
+ Entsprechend darf von den in der Zeile 
+\family typewriter
+#Excludes:\SpecialChar \ldots{}
+
+\family default
+ aufgeführten 
+\emph on
+keins
+\emph default
+ benutzt werden.
+ Die Module werden hier mit ihren 
+\emph on
+Dateinamen
+\emph default
+ ohne die Erweiterung .module identifiziert, das heißt, 
+\family typewriter
+somemodule
+\family default
+ bedeutet 
+\family typewriter
+somemodule.module
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Nachdem Sie ein neues Modul erzeugt haben, müssen Sie LyX neu konfigurieren
+ und neu starten, damit diese Modul in der Liste erscheint.
+ Dagegen erscheinen Moduländerungen sofort wenn Sie 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Module
+\family default
+ öffnen, ein Modul auswählen und auf 
+\family sans
+OK
+\family default
+ klicken.
+\end_layout
+
+\begin_layout Description
+Anmerkung: 
+\emph on
+Bevor
+\emph default
+ Sie das tun, sollten Sie Ihre Arbeit speichern.
+ Außerdem sollten Sie Module nicht ändern, während Sie ein Dokument bearbeiten.
+ Obwohl die Entwickler sich anstrengen, LyX in solchen Situationen stabil
+ zu halten, können Syntaxfehler und andere merkwürdige Ergebnisse hervorrufen.
+\end_layout
+
+\begin_layout Subsection
 Unterstützung neuer Dokumentenklassen
 \end_layout
 
@@ -6217,7 +6367,7 @@ DeclareLaTe
 \family typewriter
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -6242,7 +6392,7 @@ DeclareLaTe
 \family typewriter
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -6304,7 +6454,7 @@ report
  Höchstwahrscheinlich werden sich einige Befehle der neuen Klasse von denen
  der Basisklasse
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -6406,7 +6556,7 @@ cp Ly
 \family typewriter
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -6468,7 +6618,7 @@ DeclareLaTe
 \family typewriter
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -6592,7 +6742,7 @@ DeclareLaTe
 \size default
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -6690,7 +6840,7 @@ DeclareLaTe
 \size default
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -6712,7 +6862,7 @@ myarticle
 \family default
 , die die LaTeX
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -6750,7 +6900,7 @@ DeclareLaTe
 \size default
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -6764,7 +6914,7 @@ status open
 \size small
 XClass[article,foo.sty]{article (with my own head
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -6816,7 +6966,7 @@ Wenn Sie eine Textklasse nach Ihrem Geschmack erstellt haben, müssen Sie
 \family typewriter
 Ly
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -6846,8 +6996,24 @@ konfigurieren
 Dokument\SpecialChar \menuseparator
 Einstellungen
 \family default
-\SpecialChar \ldots{}
  auswählbar sein.
+\end_layout
+
+\begin_layout Subsection
+Dateiformat
+\end_layout
+
+\begin_layout Standard
+Die erste Zeile, die kein Kommentar ist, muss die Dateiformatnummer enthalten:
+\end_layout
+
+\begin_layout Description
+Format
+\begin_inset space ~
+\end_inset
+
+[int] Diese Marke wurde mit LyX 1.4.0 eingeführt.
+ Das hier dokumentierte Dateiformat ist Format 8.
 \end_layout
 
 \begin_layout Subsection
@@ -6855,8 +7021,60 @@ Allgemeine Parameter für Textklassen
 \end_layout
 
 \begin_layout Standard
-Nachfolgend allgemeine Parameter, die die Form des gesamten Dokumentes beschreib
+Nachfolgend allgemeine Parameter, die die Form des gesamten Dokumentes be\SpecialChar \-
+schrei\SpecialChar \-
+b
 en:
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+AddToPreamble
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+fügt Informationen zum LaTeX-Vorspann hinzu und muss mir 
+\family typewriter
+EndPreamble
+\family default
+ beendet werden.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+ClassOptions\SpecialChar \ldots{}
+End
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Dieser Abschnitt beschreibt verschiedene globale Optionen, die von der Dokumente
+nklasse unterstützt werden.
+ Eine detaillierte Beschreibung finden Sie in Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "sub:Der-Abschnitt-ClassOptions"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -6917,32 +7135,359 @@ Einstellungen
 \end_layout
 
 \begin_layout Description
+Counter 
+\begin_inset space ~
+\end_inset
 
-\family typewriter
-\series medium
-Sides
-\family default
-\series default
- [
-\family typewriter
-\emph on
-1
-\emph default
-, 2
-\family default
-]
+
 \begin_inset Newline newline
 \end_inset
 
-Gibt an, ob der Text standardmäßig für ein- oder für zweiseitigen Druck
- gesetzt wird.
- Kann im Popup-Menü 
-\family sans
-Dokument\SpecialChar \menuseparator
-Einstellungen
+definiert einen neuen Zähler (siehe 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "sub:Zähler"
+
+\end_inset
+
+) und muss mit 
+\family typewriter
+End
 \family default
-\SpecialChar \ldots{}
- geändert werden.
+ beendet werden.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+DefaultFont
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Dieser Parameter definiert den Standardzeichensatz des Dokuments.
+ Eine genauere Beschreibung finden Sie in Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "sub:Beschreibung-des-Zeichensatzes"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+DefaultModule
+\begin_inset space ~
+\end_inset
+
+[string] 
+\family default
+\series default
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+spezifiziert ein Modul, das standardmäßig zu dieser Dokumentklasse hinzugefügt
+ wird.
+ string ist der Dateiname ohne die Erweiterung 
+\family typewriter
+.module
+\family default
+.
+ Sie können das Modul zwar entfernen, aber es bleibt von Beginn an aktiv.
+ Es wird nur angewendet, wenn neue Dateien erstellt oder diese Klasse für
+ ein vorhandenes Dokument gewählt werden.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+DefaultStyle
+\series default
+
+\begin_inset space ~
+\end_inset
+
+[string]
+\family default
+ 
+\family typewriter
+
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+Dies ist das Layout für neu angelegte Absätze, normalerweise 
+\family sans
+Standard
+\family default
+.
+ Fehlt dieser Eintrag, wird das erste definierte Layout verwendet; dennoch
+ ist es sehr ratsam, diese Anweisung anzugeben.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+ExcludesModule
+\series default
+
+\begin_inset space ~
+\end_inset
+
+
+\series medium
+[string]
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+zeigt an, dass das genannte Modul -- spezifiziert durch den Dateinamen ohne
+ die Erweiterung 
+\family typewriter
+.module
+\family default
+ -- in dieser Dokumentklasse nicht benutzt werden kann.
+ Dies könnte in einem Journal-spezifischen Layout benutzt werden, um zum
+ Beispiel die Verwendung des theorems-sec-Moduls, das Theoreme abschnittsweise
+ nummeriert, zu verhindern.
+ Diese Marke darf 
+\emph on
+nicht
+\emph default
+ in einem Modul benutzt werden.
+ Module haben einen anderen Weg, andere Module auszuschließen (siehe 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "sub:Layout-Module"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+Float
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+definiert ein neues Gleitobjekt (siehe 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "Gleitobjekte"
+
+\end_inset
+
+) und muss mit 
+\family typewriter
+End
+\family default
+ beendet werden.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+Input
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Hiermit können Sie andere Dateien einbinden, die Definitionen für Textklassen
+ enthalten.
+ Damit können Sie unnötige Mehrfachdefinitionen vermeiden.
+ Beispielsweise binden die meisten Standardtextklassen die Datei 
+\family typewriter
+stdclass.inc
+\family default
+ ein, in der ein Großteil der Definitionen für Standardlayouts gemacht wird.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+InsetLayout
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+definiert das Layout einer Einfügung (neu).
+ 
+\family typewriter
+\series medium
+InsetLayout
+\family default
+\series default
+ kann auf eine vorhandene Einfügung angewendet werden oder eine neue, benutzerde
+finierte, zum Beispiel einen neuen Zeichenstil.
+ Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "sub:Flexible-Einfügungen-und"
+
+\end_inset
+
+ enthält weitere Einzelheiten.
+ Diese Marke muss mit 
+\family typewriter
+End
+\family default
+ beendet werden.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+LeftMargin
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ist eine Zeichenkette, deren Länge die Breite des linken Randes festlegt,
+ zum Beispiel 
+\begin_inset Quotes gld
+\end_inset
+
+MMMMM
+\begin_inset Quotes grd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+NoFloat
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+löscht ein vorhandenes Gleitobjekt.
+ Dies ist besonders dann nützlich, wenn Sie ein Gleitobjekt, das in einer
+ Eingabedatei definiert wurde, unterdrücken wollen.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+NoStyle
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Mit diesem Befehl können Sie die Definition eines bereits mit 
+\family typewriter
+Style 
+\family default
+definierten Layouts rückgängig ma\SpecialChar \-
+chen.
+ Dies ist dann nützlich, wenn Sie ein Layout unterdrücken möchten, das in
+ einer Datei definiert wird, die Sie mit 
+\family typewriter
+Input
+\family default
+ eingebunden haben.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+OutputType
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ist eine Zeichenkette, die angibt, welche Dokumentart diese Klasse erzeugt.
+ Zur Zeit gibt es folgende Möglichkeiten: 
+\family typewriter
+docbook
+\family default
+, 
+\family typewriter
+latex
+\family default
+ und 
+\family typewriter
+literate
+\family default
+.
 \end_layout
 
 \begin_layout Description
@@ -6980,267 +7525,14 @@ gen
 
 \family typewriter
 \series medium
-MaxCounter
-\family default
-\series default
- [
-\family typewriter
-\emph on
-Counter_Chapter
-\emph default
-, Counter_Section, Counter_Subsection, 
-\begin_inset Newline newline
-\end_inset
-
-Counter_Subsubsection, Counter_Paragraph, Counter_Subparagraph, 
-\begin_inset Newline newline
-\end_inset
-
-Counter_EnumI, Counter_EnumII, Counter_EnumIII, Counter_EnumIV
-\family default
-] 
-\begin_inset Newline newline
-\end_inset
-
-Der kleinste Abschnitt-Typ, der automatisch nummeriert wird.
- Sinnvoll sind Werte wie 
-\family typewriter
-Counter_Chapter
-\family default
- für 
-\family sans
-book
-\family default
- oder 
-\family sans
-report
-\family default
- und 
-\family typewriter
-Counter_Section
-\family default
- für 
-\family sans
-article
-\family default
-.
- Wenn überhaupt keine Nummerierung benötigt wird, beispielsweise in einem
- Brief, sollte 
-\family typewriter
-MaxCounter
-\family default
- den Wert 
-\family typewriter
-Counter_EnumI
-\family default
- erhalten.
- 
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-ClassOptions\SpecialChar \ldots{}
-End
-\family default
-\series default
- 
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-Dieser Abschnitt beschreibt verschiedene globale Optionen, die von der Dokumente
-nklasse unterstützt werden.
- Eine detaillierte Beschreibung finden Sie in Abschnitt 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "sec:classoptions"
+Preamble
+\begin_inset CommandInset label
+LatexCommand label
+name "Preamble"
 
 \end_inset
 
-.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-ProvidesAmsmath
-\family default
-\series default
- 
-\family typewriter
-[
-\emph on
-0
-\emph default
-,1]
-\family default
- 
-\begin_inset space ~
-\end_inset
-
-
-\family typewriter
-
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-Gibt an, ob die betreffende Klasse von sich aus das Paket 
-\family typewriter
-amsmath
-\family default
- lädt.
- Dies ist für die Dokumentenklassen 
-\family typewriter
-amsart
-\family default
- und 
-\family typewriter
-amsbook
-\family default
- der Fall.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-ProvidesMakeidx
-\family default
-\series default
- 
-\family typewriter
-[
-\emph on
-0
-\emph default
-,1]
-\family default
- 
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-Gibt an, ob die betreffende Klasse die Funktionalität des Paketes 
-\family typewriter
-makeidx
-\family default
- bereitstellt.
- Dies ist für die Dokumentenklassen 
-\family typewriter
-amsart
-\family default
- und 
-\family typewriter
-amsbook
-\family default
- der Fall.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-ProvidesUrl
-\family default
-\series default
- 
-\family typewriter
-[
-\emph on
-0
-\emph default
-,1]
-\family default
- 
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-Gibt an, ob die betreffende Klasse die Funktionalität des Paketes 
-\family typewriter
-url
-\family default
- bereitstellt.
- Dies ist für die Dokumentenklasse 
-\family typewriter
-AASTeX
-\family default
- der Fall.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-DefaultFont
-\family default
-\series default
- 
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-Dieser Parameter definiert den Standardzeichensatz des Dokuments.
- Eine genauere Beschreibung finden Sie in Abschnitt 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "sec:fonts"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-DefaultStyle
-\family default
-\series default
- 
-\family typewriter
-[string]
-\family default
- 
-\family typewriter
-
-\begin_inset Newline newline
-\end_inset
-
-
-\family default
-Dies ist das Layout für neu angelegte Absätze, normalerweise 
-\family sans
-Standard
-\family default
-.
- Fehlt dieser Eintrag, wird das erste definierte Layout verwendet; dennoch
- ist es sehr ratsam, diese Anweisung anzugeben.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-Preamble\SpecialChar \ldots{}
+\SpecialChar \ldots{}
 EndPreamble
 \family default
 \series default
@@ -7266,7 +7558,19 @@ begin{document}
 
 \family typewriter
 \series medium
-Input
+Provides
+\begin_inset space ~
+\end_inset
+
+[string][
+\emph on
+0
+\emph default
+,
+\begin_inset space ~
+\end_inset
+
+1]
 \family default
 \series default
  
@@ -7277,22 +7581,87 @@ Input
 \begin_inset Newline newline
 \end_inset
 
-Hiermit können Sie andere Dateien einbinden, die Definitionen für Textklassen
- enthalten.
- Damit können Sie unnötige Mehrfachdefinitionen vermeiden.
- Beispielsweise binden die meisten Standardtextklassen die Datei 
+
+\begin_inset CommandInset label
+LatexCommand label
+name "Provides"
+
+\end_inset
+
+zeigt an, ob die Klasse bereits die Funktion 
 \family typewriter
-stdclass.inc
+string
 \family default
- ein, in der ein Großteil der Definitionen für Standardlayouts gemacht wird.
+ liefert.
+ Normalerweise ist eine Funktion der Name eines Paketes (
+\family typewriter
+amsmath
+\family default
+, 
+\family typewriter
+makeidx
+\family default
+,\SpecialChar \ldots{}
+) oder ein Makro (
+\family typewriter
+url
+\family default
+, 
+\family typewriter
+boldsymbol
+\family default
+,\SpecialChar \ldots{}
+).
+ Die vollständige Liste der unterstützten Funktionen ist leider nur in den
+ LyX-Quellen dokumentiert -- in 
+\family typewriter
+src/LaTe
+\family sans
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+
+\family typewriter
+X\SpecialChar \-
+Features.cpp
+\family default
+.
  
+\family sans
+Hilfe\SpecialChar \menuseparator
+LaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X-Konfiguration
+\family default
+ gibt einen Überblick über die unterstützten Pakete.
 \end_layout
 
 \begin_layout Description
 
 \family typewriter
 \series medium
-NoStyle
+ProvidesModule
+\begin_inset space ~
+\end_inset
+
+[string]
 \family default
 \series default
  
@@ -7303,39 +7672,298 @@ NoStyle
 \begin_inset Newline newline
 \end_inset
 
-Mit diesem Befehl können Sie die Definition eines bereits mit 
+zeigt an, dass dieses Layout die Funktionalität des Moduls 
 \family typewriter
+\series medium
+string
+\family default
+\series default
+ liefert, das als Dateiname ohne die Erweiterung 
+\family typewriter
+.module
+\family default
+ spezifiziert ist.
+ Dies wird typischerweise benutzt, um anzuzeigen, dass es benutzt werden
+ sollte.
+ Es könnte in einem Modul benutzt werden, das eine andere Implementation
+ derselben Funktion liefert.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+Requires
+\begin_inset space ~
+\end_inset
+
+[string] 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+\series default
+zeigt an, ob die Klasse die Funktion 
+\family typewriter
+string
+\family default
+ benötigt.
+ Mehrfache Funktionen müssen durch Komma getrennt werden Beachten Sie, dass
+ Sie nur unterstützte Funktionen anfordern können.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+RightMargin
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ist eine Zeichenkette, deren Länge die Breite des rechten Randes festlegt,
+ zum Beispiel 
+\begin_inset Quotes gld
+\end_inset
+
+MMMMM
+\begin_inset Quotes grd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+SecNumDepth
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+legt die Nummerierungstiefe fest und korrespondiert mit dem LaTeX-Zähler
+ 
+\family typewriter
+secnumdepth
+\family default
+.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+Sides
+\family default
+\series default
+ [
+\family typewriter
+\emph on
+1
+\emph default
+, 2
+\family default
+]
+\begin_inset Newline newline
+\end_inset
+
+Gibt an, ob der Text standardmäßig für ein- oder für zweiseitigen Druck
+ gesetzt wird.
+ Kann im Popup-Menü 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen
+\family default
+\SpecialChar \ldots{}
+ geändert werden.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
 Style
 \family default
- (siehe Abschnitt 
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+definiert einen neuen Absatzstil.
+ Wenn er bereits existiert, werden stattdessen einige seiner Parameter neu
+ definiert (siehe auch 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "sec:specific-layouts"
+reference "sub:Einzelne-Absatz-Layouts"
 
 \end_inset
 
-) definierten Layouts rückgängig machen.
- Dies ist dann nützlich, wenn Sie ein Layout unterdrücken möchten, das in
- einer Datei definiert wird, die Sie mit 
+).
+ Diese Marke muss mit 
 \family typewriter
-Input
+End
 \family default
- eingebunden haben.
+ beendet werden.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+TitleLatexName
+\begin_inset space ~
+\end_inset
+
+[string="maketitle"]
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ist der Name des Befehls oder der Umgebung, der für 
+\family typewriter
+TitleLatexType
+\family default
+ benutzt werden soll.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+TitleLatexType
+\begin_inset space ~
+\end_inset
+
+[
+\emph on
+CommandAfter
+\emph default
+,
+\begin_inset space ~
+\end_inset
+
+Environment]
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+gibt an, wie der Dokumenttitel aussehen soll.
+ 
+\family typewriter
+CommandAfter
+\family default
+ bedeutet, dass das Makro namens 
+\family typewriter
+\series medium
+TitleLatexName
+\family default
+\series default
+ nach dem letzten Layout mit 
+\family typewriter
+InTitle
+\begin_inset space \space{}
+\end_inset
+
+1
+\family default
+ eingesetzt werden soll.
+ 
+\family typewriter
+\series medium
+Environment
+\family default
+\series default
+ korrespondiert zu dem Fall, in dem der Absatzblock mit 
+\family typewriter
+InTitle
+\begin_inset space \space{}
+\end_inset
+
+1
+\family default
+ in die 
+\family typewriter
+\series medium
+TitleLatexName
+\family default
+\series default
+-Umgebung eingeschlos\SpecialChar \-
+sen werden soll.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+TocDepth
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+legt fest, bis zu welcher Tiefe das Inhaltsverzeichnis gehen soll und korrespond
+iert mit dem LaTeX-Zähler 
+\family typewriter
+tocdepth
+\family default
+.
 \end_layout
 
 \begin_layout Subsection
 Der Abschnitt 
 \family typewriter
 ClassOptions
-\end_layout
+\family default
 
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:classoptions"
+name "sub:Der-Abschnitt-ClassOptions"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Der Abschnitt 
 \family typewriter
 ClassOptions
@@ -7372,7 +8000,65 @@ Eine Liste verfügbarer Größen für den Hauptzeichensatz; die Einträge werden
 \end_inset
 
  getrennt.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+Header
+\family default
+\series default
  
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+wird benutzt, um die DTD-Zeile mit XML-basierten Klassen zu setzen.
+ Zum Beispiel PUBLIC 
+\begin_inset Quotes eld
+\end_inset
+
+-//OASIS//DTD DocBook V4.2//EN
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+Other
+\begin_inset space ~
+\end_inset
+
+
+\family default
+[
+\family typewriter
+string=""
+\family default
+]
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Sonstige Optionen für die Dokumentenklasse, die durch Komma getrennt werden.
+ Sie werden in dem 
+\family typewriter
+documentclass-
+\family default
+Befehl als optionales Argument übergeben.
 \end_layout
 
 \begin_layout Description
@@ -7405,43 +8091,21 @@ Eine Liste verfügbarer Seitenstile; die Einträge werden mit
  getrennt.
 \end_layout
 
-\begin_layout Description
-
-\family typewriter
-\series medium
-Other
-\family default
-\series default
- [
-\family typewriter
-string=""
-\family default
-]
-\begin_inset Newline newline
-\end_inset
-
-Sonstige Optionen für die Dokumentenklasse, die durch Komma getrennt werden.
- Sie werden in dem 
-\family typewriter
-documentclass-
-\family default
-Befehl als optionales Argument übergeben.
-\end_layout
-
 \begin_layout Subsection
 Einzelne Absatz-Layouts
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Einzelne-Absatz-Layouts"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:specific-layouts"
-
-\end_inset
-
 Eine Layoutbeschreibung für einen Absatz sieht wie folgt aus
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Sie können mit diesem Ausdruck entweder ein neues Layout definieren oder
@@ -7477,11 +8141,1075 @@ Innerhalb des Blocks sind folgende Befehle erlaubt:
 
 \family typewriter
 \series medium
+Align
+\family default
+\series default
+ [
+\family typewriter
+\emph on
+block
+\emph default
+, left, right, center
+\family default
+]
+\begin_inset Newline newline
+\end_inset
+
+Gibt an, ob der Text im Blocksatz linksbündig, rechtsbündig oder zentriert
+ gesetzt wird.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+AlignPossible
+\family default
+\series default
+ [
+\family typewriter
+\emph on
+block
+\emph default
+, left, right, center
+\family default
+]
+\begin_inset Newline newline
+\end_inset
+
+Eine 
+\emph on
+Liste
+\emph default
+ von möglichen Textausrichtungen, die durch Kommata voneinander getrennt
+ werden.
+ Einige LaTeX-Stile verbieten bestimmte Ausrichtungen, weil sie keinen Sinn
+ machen.
+ Beispielsweise sollte in einer Aufzählung der Text nicht rechtsbündig oder
+ zentriert gesetzt werden.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+BottomSep
+\family default
+\series default
+ [
+\family typewriter
+float=0
+\family default
+]
+\begin_inset Newline newline
+\end_inset
+
+Ähnlich wie 
+\family typewriter
+TopSep
+\family default
+ -- nur ist dies der Abstand nach einer Serie von Absätzen.
+ Ist der 
+\family typewriter
+TopSep
+\family default
+ des nachfolgenden Layouts nicht 0, so werden die beiden Abstände 
+\emph on
+nicht
+\emph default
+ addiert, sondern LyX wählt das Maximum der beiden Abstände.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+Category
+\begin_inset space ~
+\end_inset
+
+[string]
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ist die Kategorie für diesen Stil.
+ Sie wird benutzt, um zugehörige Stile in der Layout-Kombobox der Werkzeugleiste
+ zu gruppieren.
+ Eine beliebige Zei\SpecialChar \-
+chenkette kann benutzt werden, aber vielleicht wollen
+ Sie vorhandene Ka\SpecialChar \-
+te\SpecialChar \-
+gorien zusammen mit Ihren eigenen Stilen benutzen.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+CommandDepth
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ist die Tiefe des XML-Befehls und wird nur für XML-Formate benutzt.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
 CopyStyle
 \family default
 \series default
- Hiermit können Sie alle Optionen eines bereits definierten Layouts in das
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "CopyStyle"
+
+\end_inset
+
+Hiermit können Sie alle Optionen eines bereits definierten Layouts in das
  aktuelle kopieren.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+DependsOn
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ist der Name eines Stils, dessen Vorspann 
+\emph on
+vor
+\emph default
+ diesem ausgegeben werden soll.
+ Dadurch wird eine Reihenfolge von Vorspannteilen bewirkt, wenn Makro-Definition
+en voneinander abhängen.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Beachten Sie, dass es außer dieser Funktionalität keine andere Möglichkeit
+ gibt, Vorspanne zu ordnen.
+ Die Reihenfolge, die Sie in einer LyX-Version sehen, kann sich in späteren
+ Versionen ohne Warnung ändern.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+EndLabelType
+\family default
+\series default
+ 
+\family typewriter
+[
+\emph on
+No_Label
+\emph default
+, Box, Filled_Box, Static] 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+ist der Markentyp, der am Ende eines Absatzes steht (oder mehrerer Absätze,
+ wenn 
+\family typewriter
+LaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+XType
+\family default
+ auf 
+\family typewriter
+Environment
+\family default
+ , 
+\family typewriter
+Item_Environment
+\family default
+ oder 
+\family typewriter
+List_En\SpecialChar \-
+vironment
+\family default
+ gesetzt ist).
+ No_Label bedeutet 
+\emph on
+nichts
+\emph default
+, 
+\family typewriter
+Box
+\family default
+ oder 
+\family typewriter
+Filled_Box
+\family default
+ ist ein weißes oder schwarzes Quadrat, das für das Markieren eines Beweisendes
+ geeignet ist.
+ 
+\family typewriter
+Static
+\family default
+ ist eine explizite Zeichenkette.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+EndLabelString
+\begin_inset space ~
+\end_inset
+
+[string=""]
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ist eine Zeichenkette, die für einen 
+\family typewriter
+Static
+\family default
+ 
+\family typewriter
+\series medium
+EndLabelType
+\family default
+\series default
+ benutzt wird.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+Fill_Bottom
+\family default
+\series default
+ [
+\family typewriter
+\emph on
+0
+\emph default
+,1
+\family default
+] Steuert ähnlich wie 
+\family typewriter
+Fill_Top
+\family default
+ das Einfügen eines 
+\family typewriter
+
+\backslash
+vfill
+\family default
+ 
+\emph on
+unter
+\emph default
+ dem Absatz.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+Fill_Top
+\family default
+\series default
+ [
+\family typewriter
+\emph on
+0
+\emph default
+,1
+\family default
+]
+\begin_inset Newline newline
+\end_inset
+
+Hiermit wird festgelegt, ob über dem Absatz ein 
+\family typewriter
+
+\backslash
+vfill
+\family default
+ eingefügt werden soll.
+ Dies kann auch im Menü 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Besondere
+\begin_inset space \space{}
+\end_inset
+
+Formatierung\SpecialChar \menuseparator
+Vertikaler
+\begin_inset space \space{}
+\end_inset
+
+Abstand\SpecialChar \ldots{}
+
+\family default
+ eingestellt werden, indem man in 
+\family sans
+Abstand
+\family default
+ den Wert 
+\family sans
+Variabel
+\family default
+ auswählt.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+Font
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Der Zeichensatz, der für den Textkörper 
+\emph on
+und
+\emph default
+ die Marke verwendet wird (siehe Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "sub:Beschreibung-des-Zeichensatzes"
+
+\end_inset
+
+).
+ Wird 
+\family typewriter
+Font
+\family default
+ gesetzt, dann erhält 
+\family typewriter
+Label\SpecialChar \-
+Font
+\family default
+ automatisch denselben Wert.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+FreeSpacing
+\family default
+\series default
+ [
+\family typewriter
+\emph on
+0
+\emph default
+, 1
+\family default
+]
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "FreeSpacing"
+
+\end_inset
+
+Normalerweise erlaubt es LyX nicht, mehr als ein Leerzeichen zwischen Wörtern
+ einzufügen.
+ Diese Eigenschaft kann in bestimmten Fällen umständ\SpecialChar \-
+lich sein, zum Beispiel,
+ wenn ein Programmcode eingegeben werden soll.
+ In solchen Fällen kann 
+\family typewriter
+FreeSpacing
+\family default
+ auf 
+\family typewriter
+1
+\family default
+ gesetzt werden.
+ LyX erzeugt in diesem Fall für jedes zusätzliche Leerzeichen ein geschütztes
+ Leerzeichen, es sei denn, LyX befindet sich im LaTeX-Modus.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+InnerTag
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+wird nur für XML-Formate benutzt.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+InTitle
+\family default
+\series default
+ [
+\family typewriter
+1,
+\family default
+ 
+\family typewriter
+\emph on
+0
+\family default
+\emph default
+]
+\begin_inset Newline newline
+\end_inset
+
+Bei 1 wird nach dem Layout noch ein 
+\family typewriter
+
+\backslash
+maketitle
+\family default
+ in LaTeX eingefügt.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+ItemSep
+\family default
+\series default
+ [
+\family typewriter
+float=0
+\family default
+]
+\begin_inset Newline newline
+\end_inset
+
+Dies ist ein zusätzlicher Abstand für die Unterpunkte eines 
+\family typewriter
+Environment
+\family default
+-Layouts.
+ Wenn in solch einem Layout andere Layouts integriert werden, so werden
+ diese mit 
+\family typewriter
+ParSep
+\family default
+ getrennt.
+ Aber die einzelnen Unterpunkte der Umgebung werden 
+\emph on
+zusätzlich
+\emph default
+ mit 
+\family typewriter
+ItemSep
+\family default
+ getrennt.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+ItemTag
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+wird nur für XML-Formate benutzt.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+KeepEmpty
+\family default
+\series default
+ 
+\family typewriter
+[
+\emph on
+0
+\emph default
+, 1]
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+
+\begin_inset CommandInset label
+LatexCommand label
+name "KeepEmpty"
+
+\end_inset
+
+Normalerweise ist es in LyX nicht möglich, einen Absatz leer zu lassen,
+ da das zu einer leeren LaTeX-Ausgabe führen würde.
+ In manchen Fällen ist das aber durchaus gewünscht: So können beispielsweise
+ in einer Briefvorlage die benötigten Felder leer voreingestellt werden,
+ damit keiner vergisst, sie anzugeben.
+ In anderen Klassen wird ein solcher Absatz als Unterbrechung verwendet,
+ die keinen eigentlichen Text enthält.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+LabelBottomSep
+\family default
+\series default
+ [
+\family typewriter
+float=0
+\family default
+]
+\begin_inset Newline newline
+\end_inset
+
+Der vertikale Abstand zwischen der Marke und dem folgenden Text.
+ Wird nur für Marken benutzt, die über dem folgenden Text stehen (
+\family typewriter
+Top_En\SpecialChar \-
+vi\SpecialChar \-
+ron\SpecialChar \-
+ment
+\family default
+, 
+\family typewriter
+Center\SpecialChar \-
+ed_Top_Environment
+\family default
+).
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+LabelCounter
+\begin_inset space ~
+\end_inset
+
+[string=""]
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ist der Name des Zählers zur automatischen Nummerierung (siehe Abschnitt
+\begin_inset Newline linebreak
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "sub:Zähler"
+
+\end_inset
+
+ für Einzelheiten).
+ Er muss vorhanden sein, wenn 
+\family typewriter
+LabelType
+\family default
+ 
+\family typewriter
+Counter
+\family default
+ ist.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+LabelFont
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Der Zeichensatz, der für die Marke verwendet wird.
+ (Siehe Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "sub:Beschreibung-des-Zeichensatzes"
+
+\end_inset
+
+.)
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+LabelSep
+\family default
+
+\begin_inset space ~
+\end_inset
+
+[
+\family typewriter
+string=""
+\family default
+]
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Der horizontale Abstand zwischen der Marke und dem folgenden Text.
+ Wird nur für Marken benutzt, die nicht über dem folgenden Text stehen.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+LabelString
+\family default
+
+\begin_inset space ~
+\end_inset
+
+[
+\family typewriter
+string=""
+\family default
+]
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Der String, der für den 
+\family typewriter
+LabelType
+\family default
+ 
+\family typewriter
+\emph on
+Static
+\family default
+\emph default
+ verwendet wird.
+ Wenn 
+\family typewriter
+\series medium
+Label\SpecialChar \-
+Counter
+\family default
+\series default
+ gesetzt wurde, kann diese Zeichenkette spezielle Formatierungsbefehle enthalten
+, wie sie in Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "sub:Zähler"
+
+\end_inset
+
+ be\SpecialChar \-
+schrieben sind.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Wegen der Rückwärtskompatibilität wird die Zeichenkette 
+\family typewriter
+\emph on
+@style-name@
+\family default
+\emph default
+ durch den expandierten 
+\family typewriter
+\series medium
+LabelString
+\family default
+\series default
+ mit dem Stil 
+\family typewriter
+\emph on
+style-name
+\family default
+\emph default
+ ersetzt.
+ Diese Funktion ist jetzt überflüssig und sollte durch die Mechanismen,
+ die in Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "sub:Zähler"
+
+\end_inset
+
+ beschrieben sind, ersetzt werden.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+LabelStringAppendix
+\begin_inset space ~
+\end_inset
+
+[
+\family default
+string=""
+\family typewriter
+]
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+wird im Anhang anstatt 
+\family typewriter
+\series medium
+LabelString
+\family default
+\series default
+ benutzt.
+ Beachten Sie, dass jeder 
+\family typewriter
+\series medium
+LabelString
+\family default
+\series default
+-Befehl auch 
+\family typewriter
+\series medium
+LabelStringAppendix
+\family default
+\series default
+ zurücksetzt.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+LabelTag
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+wird nur für XML-Formate benutzt.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+LabelType
+\family default
+\series default
+ [
+\family typewriter
+\emph on
+No_Label
+\emph default
+, Manual, Static, Top_Environment, Centered_Top_
+\family default
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\family typewriter
+En\SpecialChar \-
+vi\SpecialChar \-
+ron\SpecialChar \-
+ment, Sensitive, Counter
+\family default
+]
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+
+\family typewriter
+\series medium
+Manual
+\family default
+\series default
+ bedeutet: die Marke ist das erste Wort (bis zum ersten echten Leerzeichen).
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Wenn Sie mehr als ein Wort als Marke haben wollen, müssen Sie geschützte
+ Leerzeichen benutzen.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+Static
+\family default
+\series default
+ bedeutet: die Marke wird im Layout definiert (siehe: 
+\family typewriter
+LabelString
+\family default
+).
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+Top_Environment
+\family default
+ und
+\family typewriter
+ Centered_Top_Environment
+\family default
+\series default
+ sind Spezialfälle von
+\family typewriter
+ Static
+\family default
+.
+ Die Marke wird über dem Absatz abgebildet, aber nur am Anfang der Umgebung
+ oder am Anfang einer Serie von Absätzen mit diesem Layout.
+ Dies benutzt man zum Beispiel im 
+\family sans
+Abstract
+\family default
+-Layout oder im 
+\family sans
+Bibliography
+\family default
+-Layout.
+ Dasselbe trifft auch für 
+\family typewriter
+Manual
+\family default
+-Marken mit dem LaTeX-Typ 
+\family typewriter
+Environment
+\family default
+ zu, damit Layouts für Theoreme korrekt arbeiten.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+Sensitive
+\family default
+\series default
+ ist ein Spezialfall von Bildunterschriften für Gleitobjekte (Abbildungen
+ und Tabellen).
+ 
+\family typewriter
+Sensi\SpecialChar \-
+tive
+\family default
+ bedeutet, dass der gedruckte Text von der Art des Gleitobjekts abhängt.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+Counter 
+\family default
+\series default
+definiert automatisch nummerierte Zähler, wie in Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "sub:Zähler"
+
+\end_inset
+
+ beschrieben.
+\end_layout
+
+\end_deeper
+\begin_layout Description
+
+\family typewriter
+\series medium
+LatexName
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Der Name, den LaTeX für dieses Layout wählt, das heißt entweder der Name
+ eines LaTeX-Befehls oder der einer LaTeX-Umgebung.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+LatexParam
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Ein optionaler Parameter, der 
+\family typewriter
+\series medium
+LatexName
+\family default
+\series default
+ (dem zugehörigen Befehl oder der Umgebung) übergeben wird.
+ Dieser Parameter kann innerhalb von LyX nicht mehr geändert werden.
  
 \end_layout
 
@@ -7492,7 +9220,14 @@ CopyStyle
 LatexType
 \family default
 \series default
- [
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "LatexType"
+
+\end_inset
+
+[
 \family typewriter
 \emph on
 Paragraph
@@ -7561,7 +9296,7 @@ Environment
 \series default
  behandelt den Text als Kern einer LaTeX-Umgebung
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 LaTeX-Umgebung und LaTeX-Befehl sind hier etwas irreführend, denn diese
@@ -7676,80 +9411,80 @@ status open
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+Fasst man die letzten Sachen zusammen, wird die LaTeX-Ausgabe entweder so:
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+latexname[latexparam]{\SpecialChar \ldots{}
+}
+\end_layout
+
+\begin_layout Standard
+oder so:
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+begin{latexname}[latexparam] \SpecialChar \ldots{}
+ 
+\backslash
+end{latexname}.
+\end_layout
+
+\begin_layout Standard
+aussehen, abhängig vom LaTeX-Typ.
+\end_layout
+
 \begin_layout Description
 
 \family typewriter
 \series medium
-InTitle
+LeftMargin
 \family default
 \series default
  [
 \family typewriter
-1,
+string=""
 \family default
- 
-\family typewriter
-\emph on
-0
-\family default
-\emph default
 ]
 \begin_inset Newline newline
 \end_inset
 
-Bei 1 wird nach dem Layout noch ein 
+Definiert den linken Einzug.
+ Wenn ein Layout in ein anderes 
 \family typewriter
-
-\backslash
-maketitle
+Environment
 \family default
- in LaTeX eingefügt.
- 
-\end_layout
-
-\begin_layout Description
-
+-Layout integriert wird, werden die Breiten der verschiedenen 
 \family typewriter
-\series medium
-LatexName
+LeftMargin
 \family default
-\series default
- 
-\begin_inset space ~
+s nicht einfach addiert, sondern vorher in Abhängigkeit zur Schachtelungstiefe
+ mit dem Faktor 
+\begin_inset Formula $\frac{4}{\mathrm{Tiefe}+4}$
 \end_inset
 
-
-\begin_inset Newline newline
-\end_inset
-
-Der Name, den LaTeX für dieses Layout wählt, das heißt entweder der Name
- eines LaTeX-Befehls oder der einer LaTeX-Umgebung.
-\end_layout
-
-\begin_layout Description
-
+ multipliziert.
+ Dieser Parameter wird auch dann benutzt, wenn der Rand als 
 \family typewriter
-\series medium
-LatexParam
+Manual
 \family default
-\series default
- 
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-Ein optionaler Parameter, der 
+ oder 
 \family typewriter
-\series medium
-LatexName
+Dynamic
 \family default
-\series default
- (dem zugehörigen Befehl oder der Umgebung) übergeben wird.
- Dieser Parameter kann innerhalb von LyX nicht mehr geändert werden.
- 
+ definiert wurde.
+ In diesem Fall wird der Wert zu den gegebenen manuellen oder dynamischen
+ Rändern hinzugefügt.
+ Für die Bedeutung des Wertes gilt das bei 
+\family typewriter
+ParIndent
+\family default
+ Gesagte.
 \end_layout
 
 \begin_layout Description
@@ -7810,7 +9545,7 @@ Bearbeiten
 \family sans
 Absatz-Einstellungen
 \family default
- 
+
 \begin_inset Marginal
 status open
 
@@ -7877,7 +9612,7 @@ Dynamic
 , aber nur die erste Zeile wird dynamisch gesetzt, die anderen statisch.
  Dies wird für die LaTeX
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -7910,20 +9645,120 @@ Right_Address_Box
 
 \family typewriter
 \series medium
-NextNoIndent
+NeedProtect
 \family default
 \series default
- [
-\family typewriter
-1,
-\family default
- 
+
+\begin_inset space ~
+\end_inset
+
+[
 \family typewriter
 \emph on
 0
+\emph default
+,1
+\family default
+] 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Gibt an, ob 
+\emph on
+zerbrechliche
+\emph default
+ LaTeX-Befehle innerhalb dieses Layouts durch 
+\family typewriter
+
+\backslash
+protect
+\family default
+ ge\SpecialChar \-
+schützt werden müssen.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+Newline
+\family default
+\series default
+
+\begin_inset space ~
+\end_inset
+
+[
+\family typewriter
+0,
+\emph on
+
+\begin_inset space ~
+\end_inset
+
+1
 \family default
 \emph default
-]
+] 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Gibt an, ob Zeilenumbrüche in LaTeX als 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+
+\backslash
+
+\backslash
+
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+ dargestellt werden, oder nicht.
+ Es macht Sinn, diese Option auszuschalten (Wert: 0), um LaTeX-Einschübe
+ in LyX komfortabler editieren zu können.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+NextNoIndent
+\family default
+\series default
+
+\begin_inset space ~
+\end_inset
+
+[
+\family typewriter
+1,
+\emph on
+
+\begin_inset space ~
+\end_inset
+
+0
+\family default
+\emph default
+] 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 
@@ -7941,14 +9776,66 @@ Gibt an, ob der nachfolgende Absatz einen linken Einzug haben darf oder
 
 \family typewriter
 \series medium
+ObsoletedBy
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ist der Name eines Layouts, das durch dieses ersetzt wurde.
+ So können Sie ein Layout umbenennen und die Rückwärtskompatibilität erhalten.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+OptionalArgs
+\begin_inset space ~
+\end_inset
+
+[int=0]
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ist die Zahl der optionalen Argumente, die in diesem Layout benutzt werden
+ können.
+ Dies ist zum Beispiel bei Abschnittsüberschriften hilfreich und macht nur
+ mit LaTeX Sinn.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
 ParIndent
 \family default
 \series default
- [
+
+\begin_inset space ~
+\end_inset
+
+[
 \family typewriter
 string=""
 \family default
-]
+] 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 
@@ -8017,14 +9904,53 @@ Auch benutzt das Standard-Layout innerhalb von Umgebungen den Einzug der
 
 \family typewriter
 \series medium
-ParSkip
+ParSep
 \family default
 \series default
- [
+
+\begin_inset space ~
+\end_inset
+
+
+\series medium
+[
 \family typewriter
 float=0
 \family default
-] 
+]
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Der vertikale Anstand zwischen den Absätzen dieses Layouts.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+ParSkip
+\family default
+
+\begin_inset space ~
+\end_inset
+
+[
+\family typewriter
+float=0
+\family default
+]
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 
@@ -8037,7 +9963,6 @@ Dokument
 \family sans
 Einstellungen
 \family default
-\SpecialChar \ldots{}
 \SpecialChar \menuseparator
 
 \family sans
@@ -8058,7 +9983,8 @@ durch
 .
  Mögliche Einstellungen sind entweder 
 \family sans
-Einrückung
+Einrü\SpecialChar \-
+ckung
 \family default
  oder 
 \family sans
@@ -8099,688 +10025,24 @@ ParSkip
 
 \family typewriter
 \series medium
-TopSep
-\family default
-\series default
- [
-\family typewriter
-float=0
-\family default
-]
-\begin_inset Newline newline
-\end_inset
-
-Der vertikale Abstand, der die erste Serie von Absätzen vom vorangehenden
- Text trennt.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-BottomSep
-\family default
-\series default
- [
-\family typewriter
-float=0
-\family default
-]
-\begin_inset Newline newline
-\end_inset
-
-Ähnlich wie 
-\family typewriter
-TopSep
-\family default
- -- nur ist dies der Abstand nach einer Serie von Absätzen.
- Ist der 
-\family typewriter
-TopSep
-\family default
- des nachfolgenden Layouts nicht 0, so werden die beiden Abstände 
-\emph on
-nicht
-\emph default
- addiert, sondern LyX wählt das Maximum der beiden Abstände.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-ParSep
-\family default
-\series default
- [
-\family typewriter
-float=0
-\family default
-]
-\begin_inset Newline newline
-\end_inset
-
-Der vertikale Anstand zwischen den Absätzen dieses Layouts.
- 
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-ItemSep
-\family default
-\series default
- [
-\family typewriter
-float=0
-\family default
-]
-\begin_inset Newline newline
-\end_inset
-
-Dies ist ein zusätzlicher Abstand für die Unterpunkte eines 
-\family typewriter
-Environment
-\family default
--Layouts.
- Wenn in solch einem Layout andere Layouts integriert werden, so werden
- diese mit 
-\family typewriter
-ParSep
-\family default
- getrennt.
- Aber die einzelnen Unterpunkte der Umgebung werden 
-\emph on
-zusätzlich
-\emph default
- mit 
-\family typewriter
-ItemSep
-\family default
- getrennt.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-LeftMargin
-\family default
-\series default
- [
-\family typewriter
-string=""
-\family default
-]
-\begin_inset Newline newline
-\end_inset
-
-Definiert den linken Einzug.
- Wenn ein Layout in ein anderes 
-\family typewriter
-Environment
-\family default
--Layout integriert wird, werden die Breiten der verschiedenen 
-\family typewriter
-LeftMargin
-\family default
-s nicht einfach addiert, sondern vorher in Abhängigkeit zur Schachtelungstiefe
- mit dem Faktor 
-\begin_inset Formula $\frac{4}{\mathrm{Tiefe}+4}$
-\end_inset
-
- multipliziert.
- Dieser Parameter wird auch dann benutzt, wenn der Rand als 
-\family typewriter
-Manual
-\family default
- oder 
-\family typewriter
-Dynamic
-\family default
- definiert wurde.
- In diesem Fall wird der Wert zu den gegebenen manuellen oder dynamischen
- Rändern hinzugefügt.
- Für die Bedeutung des Wertes gilt das bei 
-\family typewriter
-ParIndent
-\family default
- Gesagte.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-RightMargin
-\family default
-\series default
- [
-\family typewriter
-string=""
-\family default
-]
-\begin_inset Newline newline
-\end_inset
-
-Ähnlich wie 
-\family typewriter
-LeftMargin
-\family default
-.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-LabelType
-\family default
-\series default
- [
-\family typewriter
-\emph on
-No_Label
-\emph default
-, Manual, Static, Top_Environment, Centered_Top_
-\begin_inset Newline linebreak
-\end_inset
-
-En\SpecialChar \-
-vi\SpecialChar \-
-ron\SpecialChar \-
-ment, Sensitive, Counter_Chapter, Counter_Section, Coun\SpecialChar \-
-ter_Subsec\SpecialChar \-
-tion,
- Counter_Subsubsection, Counter_Paragraph, Coun\SpecialChar \-
-ter_Subparagraph, Coun\SpecialChar \-
-ter_EnumI,
- Counter_EnumII, Counter_Enum
-\begin_inset Newline linebreak
-\end_inset
-
-III, Counter_EnumIV
-\family default
-]
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-
-\family typewriter
-\series medium
-Manual
-\family default
-\series default
- bedeutet: die Marke ist das erste Wort (bis zum ersten echten Leerzeichen).
- 
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-Static
-\family default
-\series default
- bedeutet: die Marke wird im Layout definiert (siehe: 
-\family typewriter
-LabelString
-\family default
-).
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-Top_Environment
-\family default
-
-\begin_inset space \space{}
-\end_inset
-
-und
-\family typewriter
-
-\begin_inset space \space{}
-\end_inset
-
-Centered
-\begin_inset space \space{}
-\end_inset
-
-Top
-\begin_inset space \space{}
-\end_inset
-
-Environment
-\family default
-\series default
- sind Spezialfälle von
-\family typewriter
-
-\begin_inset Newline linebreak
-\end_inset
-
-Static
-\family default
-.
- Die Marke wird über dem Absatz abgebildet, aber nur am Anfang der Umgebung
- oder am Anfang einer Serie von Absätzen mit diesem Layout.
- Dies benutzt man zum Beispiel im 
-\family sans
-Abstract
-\family default
--Layout oder im 
-\family sans
-Bibliography
-\family default
--Layout.
- Dasselbe trifft auch für 
-\family typewriter
-Manual
-\family default
--Marken mit dem LaTeX-Typ 
-\family typewriter
-Environment
-\family default
- zu, damit Layouts für Theoreme korrekt arbeiten.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-Sensitive
-\family default
-\series default
- ist ein Spezialfall von Bildunterschriften für Gleitobjekte (Abbildungen
- und Tabellen).
- 
-\family typewriter
-Sensi\SpecialChar \-
-tive
-\family default
- bedeutet, dass der gedruckte Text von der Art des Gleitobjekts abhängt.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-Counter_xxx
-\family default
-\series default
- Sollte selbsterklärend sein -- 
-\family typewriter
-xxx
-\family default
- entspricht jeweils einem LaTeX-Gliederungsbefehl.
-\end_layout
-
-\end_deeper
-\begin_layout Description
-
-\family typewriter
-\series medium
-LabelSep
-\family default
-\series default
- [
-\family typewriter
-string=""
-\family default
-]
-\begin_inset Newline newline
-\end_inset
-
-Der horizontale Abstand zwischen der Marke und dem folgenden Text.
- Wird nur für Marken benutzt, die nicht über dem folgenden Text stehen.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-LabelBottomSep
-\family default
-\series default
- [
-\family typewriter
-float=0
-\family default
-]
-\begin_inset Newline newline
-\end_inset
-
-Der vertikale Abstand zwischen der Marke und dem folgenden Text.
- Wird nur für Marken benutzt, die über dem folgenden Text stehen (
-\family typewriter
-Top_En\SpecialChar \-
-vi\SpecialChar \-
-ron\SpecialChar \-
-ment
-\family default
-, 
-\family typewriter
-Center\SpecialChar \-
-ed_Top_Environment
-\family default
-).
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-LabelString
-\family default
-\series default
- [
-\family typewriter
-string=""
-\family default
-]
-\begin_inset Newline newline
-\end_inset
-
-Der String, der für den 
-\family typewriter
-LabelType
-\family default
- 
-\family typewriter
-\emph on
-Static
-\family default
-\emph default
- verwendet wird.
- Wenn der Rand (
-\family typewriter
-Mar\SpecialChar \-
-gin
-\family default
-) auf 
-\family typewriter
-Manual
-\family default
- gesetzt wurde, dient dieser String auch als Voreinstellung für 
-\family typewriter
-Label\SpecialChar \-
-Width\SpecialChar \-
-String
-\family default
-, die im Menü 
-\family sans
-Absatz-Einstellungen
-\family default
- (
-\family sans
-Bearbeiten
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-Absatz-Ein\SpecialChar \-
-stel\SpecialChar \-
-lun\SpecialChar \-
-gen
-\family default
- 
-\begin_inset Marginal
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/layout-paragraph.png
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-) verändert werden kann.
- Wenn als 
-\family typewriter
-Labeltype
-\family default
- 
-\family typewriter
-\emph on
-Counter_
-\begin_inset Newline linebreak
-\end_inset
-
-xxx
-\family default
-\emph default
- eingestellt wurde, wird der Zähler an diesen String angehängt.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-Align
-\family default
-\series default
- [
-\family typewriter
-\emph on
-block
-\emph default
-, left, right, center
-\family default
-]
-\begin_inset Newline newline
-\end_inset
-
-Gibt an, ob der Text im Blocksatz linksbündig, rechtsbündig oder zentriert
- gesetzt wird.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-AlignPossible
-\family default
-\series default
- [
-\family typewriter
-\emph on
-block
-\emph default
-, left, right, center
-\family default
-]
-\begin_inset Newline newline
-\end_inset
-
-Eine 
-\emph on
-Liste
-\emph default
- von möglichen Textausrichtungen, die durch Kommata voneinander getrennt
- werden.
- Einige LaTeX-Stile verbieten bestimmte Ausrichtungen, weil sie keinen Sinn
- machen.
- Beispielsweise sollte in einer Aufzählung der Text nicht rechtsbündig oder
- zentriert gesetzt werden.
- 
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-Fill_Top
-\family default
-\series default
- [
-\family typewriter
-\emph on
-0
-\emph default
-,1
-\family default
-]
-\begin_inset Newline newline
-\end_inset
-
-Hiermit wird festgelegt, ob über dem Absatz ein 
-\family typewriter
-
-\backslash
-vfill
-\family default
- eingefügt werden soll.
- Dies kann auch im Menü 
-\family sans
-Einfügen\SpecialChar \menuseparator
-Besondere
-\begin_inset space \space{}
-\end_inset
-
-Formatierung\SpecialChar \menuseparator
-Vertikaler
-\begin_inset space \space{}
-\end_inset
-
-Abstand\SpecialChar \ldots{}
-
-\family default
- eingestellt werden, indem man in 
-\family sans
-Abstand
-\family default
- den Wert 
-\family sans
-Variabel
-\family default
- auswählt.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-Fill_Bottom
-\family default
-\series default
- [
-\family typewriter
-\emph on
-0
-\emph default
-,1
-\family default
-] Steuert ähnlich wie 
-\family typewriter
-Fill_Top
-\family default
- das Einfügen eines 
-\family typewriter
-
-\backslash
-vfill
-\family default
- 
-\emph on
-unter
-\emph default
- dem Absatz.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-NeedProtect
-\family default
-\series default
- [
-\family typewriter
-\emph on
-0
-\emph default
-,1
-\family default
-]
-\begin_inset Newline newline
-\end_inset
-
-Gibt an, ob 
-\emph on
-zerbrechliche
-\emph default
- LaTeX-Befehle innerhalb dieses Layouts durch 
-\family typewriter
-
-\backslash
-protect
-\family default
- ge\SpecialChar \-
-schützt werden müssen.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-Newline
-\family default
-\series default
- [
-\family typewriter
-0,
-\family default
- 
-\family typewriter
-\emph on
-1
-\family default
-\emph default
-]
-\begin_inset Newline newline
-\end_inset
-
-Gibt an, ob Zeilenumbrüche in LaTeX als 
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-
-\backslash
-
-\backslash
-
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
- dargestellt werden, oder nicht.
- Es macht Sinn, diese Option auszuschalten (Wert: 0), um LaTeX-Einschübe
- in LyX komfortabler editieren zu können.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
 PassThru
-\family default
 \series default
- 
-\family typewriter
-[0, 1]
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "PassThru"
+
+\end_inset
+
+
+\series medium
+[0,
+\series default
+ 1]
 \begin_inset Newline newline
 \end_inset
 
@@ -8792,7 +10054,7 @@ Legt fest, ob der Absatzinhalt unverändert ausgegeben werden soll, also
 \family typewriter
 LaTe
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -8810,63 +10072,117 @@ X
 
 \family typewriter
 \series medium
-FreeSpacing
+Preamble\SpecialChar \ldots{}
+EndPreamble
 \family default
 \series default
- [
-\family typewriter
-\emph on
-0
-\emph default
-, 1
-\family default
-]
+ 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 
-Normalerweise erlaubt es LyX nicht, mehr als ein Leerzeichen zwischen Wörtern
- einzufügen.
- Diese Eigenschaft kann in bestimmten Fällen umständlich sein, zum Beispiel,
- wenn ein Programmcode eingegeben werden soll.
- In solchen Fällen kann 
+Eine Serie von Makrodefinitionen, die in die Präambel (vor 
 \family typewriter
-FreeSpacing
+
+\backslash
+begin{docu\SpecialChar \-
+ment}
 \family default
- auf 
-\family typewriter
-1
-\family default
- gesetzt werden.
- LyX erzeugt in diesem Fall für jedes zusätzliche Leerzeichen ein geschütztes
- Leerzeichen, es sei denn, LyX befindet sich im LaTeX-Modus.
+) eingefügt werden, falls dieses Layout benutzt wird.
 \end_layout
 
 \begin_layout Description
 
 \family typewriter
 \series medium
-KeepEmpty
+Requires
 \family default
 \series default
- 
-\family typewriter
+
+\begin_inset space ~
+\end_inset
+
+
+\series medium
 [
-\emph on
-0
-\emph default
-, 1]
+\family typewriter
+string
+\family default
+]
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 
 
+\series medium
+
+\begin_inset CommandInset label
+LatexCommand label
+name "Requires-2"
+
+\end_inset
+
+
+\series default
+legt fest, dass das Layout die Funktion 
+\family typewriter
+string
 \family default
-Normalerweise ist es in LyX nicht möglich, einen Absatz leer zu lassen,
- da das zu einer leeren LaTeX-Ausgabe führen würde.
- In manchen Fällen ist das aber durchaus gewünscht: So können beispielsweise
- in einer Briefvorlage die benötigten Felder leer voreingestellt werden,
- damit keiner vergisst, sie anzugeben.
- In anderen Klassen wird ein solcher Absatz als Unterbrechung verwendet,
- die keinen eigentlichen Text enthält.
+ benötigt.
+ Sehen Sie sich auch die Beschreibung von 
+\family typewriter
+Provides
+\family default
+
+\begin_inset CommandInset ref
+LatexCommand vpageref
+reference "Provides"
+
+\end_inset
+
+ an.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+RightMargin
+\family default
+\series default
+
+\begin_inset space ~
+\end_inset
+
+
+\series medium
+[
+\family typewriter
+string=""
+\family default
+]
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Ähnlich wie 
+\family typewriter
+LeftMargin
+\family default
+.
 \end_layout
 
 \begin_layout Description
@@ -8876,18 +10192,45 @@ Normalerweise ist es in LyX nicht möglich, einen Absatz leer zu lassen,
 Spacing
 \family default
 \series default
- [
+
+\begin_inset space ~
+\end_inset
+
+
+\series medium
+[
 \family typewriter
 \emph on
 single
 \emph default
-, onehalf, double, other
+,
+\begin_inset space ~
+\end_inset
+
+onehalf,
+\begin_inset space ~
+\end_inset
+
+double,
+\begin_inset space ~
+\end_inset
+
+other
 \family default
- 
 \emph on
+
+\begin_inset space ~
+\end_inset
+
 Wert
 \emph default
 ]
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 
@@ -8922,52 +10265,7 @@ Spacing
 \family typewriter
 setspace.sty
 \family default
- zurückgreift
-\family typewriter
-\emph on
-.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-Font
-\family default
-\series default
- 
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-Der Zeichensatz, der für den Textkörper 
-\emph on
-und
-\emph default
- die Marke verwendet wird (siehe Abschnitt
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "sec:fonts"
-
-\end_inset
-
-).
- Wird 
-\family typewriter
-Font
-\family default
- gesetzt, dann erhält 
-\family typewriter
-LabelFont
-\family default
- automatisch denselben Wert.
+ zurückgreift.
 \end_layout
 
 \begin_layout Description
@@ -8986,18 +10284,941 @@ TextFont
 \end_inset
 
 Der Zeichensatz, der für den Textkörper verwendet wird.
- (Siehe Abschnitt
-\begin_inset space \space{}
-\end_inset
-
-
+ (Siehe auch Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "sec:fonts"
+reference "sub:Beschreibung-des-Zeichensatzes"
 
 \end_inset
 
 .)
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+TocLevel
+\begin_inset space ~
+\end_inset
+
+[int]
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ist die Stufe des Stils im Inhaltsverzeichnis und wird zur automatischen
+ Nummerierung von Abschnittsüberschriften benutzt.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+TopSep
+\family default
+\series default
+
+\begin_inset space ~
+\end_inset
+
+
+\series medium
+[
+\family typewriter
+float=0
+\family default
+]
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Der vertikale Abstand, der die erste Serie von Absätzen vom vorangehenden
+ Text trennt.
+\end_layout
+
+\begin_layout Subsection
+Gleitobjekte
+\begin_inset CommandInset label
+LatexCommand label
+name "Gleitobjekte"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Seit LyX 1.3.0 ist es möglich und nötig, Gleitobjekte (
+\family sans
+Abbildung
+\family default
+, 
+\family sans
+Tabelle
+\family default
+,\SpecialChar \ldots{}
+) in der Textklasse selber zu definieren.
+ Standardgleitobjekte sind in der Datei 
+\family typewriter
+stdfloats.inc
+\family default
+ enthalten, so dass Sie sie nur noch
+\end_layout
+
+\begin_layout LyX-Code
+Input stdfloats.inc
+\end_layout
+
+\begin_layout Standard
+zu Ihrer Layoutdatei hinzufügen müssen.
+ Wenn Sie eine Textklasse implementieren wollen, die andere Gleitobjekttypen
+ enthält (wie zum Beispiel die AGU-Klasse), werden Ihnen die folgenden Informati
+onen helfen:
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+Extension
+\begin_inset space ~
+\end_inset
+
+[string=""]
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Die Dateinamenerweiterung einer zusätzlichen Datei für das Abbildungsverzeichnis
+ (oder andere).
+ LaTeX schreibt die Beschriftungen in diese Datei.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+GuiName
+\begin_inset space ~
+\end_inset
+
+[string=""]
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Die Zeichenkette, die in den Menüs und für die Beschriftung benutzt wird.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+LaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+XBuiltin
+\begin_inset space ~
+\end_inset
+
+[0,
+\begin_inset space ~
+\end_inset
+
+1]
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+1 bedeutet, das das Gleitobjekt bereits von der LaTeX-Dokumentklasse benutzt
+ wird.
+ 0 bedeutet, das das Gleitobjekt im LaTeX-Paket 
+\family typewriter
+float
+\family default
+ definiert wird.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+ListName
+\begin_inset space ~
+\end_inset
+
+[string=""]
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Die Überschrift für das Gleitobjekt-Verzeichnis.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+NumberWithin
+\begin_inset space ~
+\end_inset
+
+[string=""]
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Dieses optionale Argument bestimmt, ob Gleitobjekte dieser Klasse mit der
+ Abschnittsnummer dieses Dokuments nummeriert werden.
+ Wenn zum Beispiel [string="chapter"] gesetzt ist, werden die Gleitobjekte
+ mit den Kapitelnummern nummeriert.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+Placement
+\begin_inset space ~
+\end_inset
+
+[string=""]
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Die Standardplatzierung für die Gleitobjektklasse.
+\family typewriter
+
+\begin_inset Newline linebreak
+\end_inset
+
+string
+\family default
+ sollte die Standard-LaTeX-Werte 
+\family typewriter
+t
+\family default
+, 
+\family typewriter
+b
+\family default
+, 
+\family typewriter
+p
+\family default
+ und 
+\family typewriter
+h
+\family default
+ für oben, unten, Seite und hier enthalten.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Wie in LaTeX ist die Reihenfolge der Buchstaben unerheblich.
+\end_layout
+
+\end_inset
+
+ Zusätzlich gibt es den neuen Typ 
+\family typewriter
+H
+\family default
+, der mit Gleitobjekt nichts mehr zu tun hat, denn er bedeutet: drucke es
+ 
+\emph on
+hier
+\emph default
+ und nirgendwo sonst.
+ Beachten Sie, dass 
+\family typewriter
+H
+\family default
+ besonders ist und wegen der Implementierungsdetails nicht bei nicht-eingebauten
+ Gleitobjekttypen benutzt werden kann.
+ Wenn Sie das nicht verstehen, benutzen Sie einfach 
+\family typewriter
+"tbp"
+\family default
+.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+Style
+\begin_inset space ~
+\end_inset
+
+[string=""] 
+\family default
+\series default
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ist der Gleitobjektstil, wenn er mit 
+\family typewriter
+
+\backslash
+newfloat
+\family default
+ definiert wird.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+Type
+\begin_inset space ~
+\end_inset
+
+[string=""] 
+\family default
+\series default
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ist der 
+\emph on
+Typ
+\emph default
+ der neuen Gleitobjektklasse, wie Programm oder Algorithmus.
+ Nach dem entsprechenden 
+\family typewriter
+
+\backslash
+newfloat
+\family default
+ stehen Befehle wie 
+\family typewriter
+
+\backslash
+be\SpecialChar \-
+gin{program}
+\family default
+ oder 
+\family typewriter
+
+\backslash
+end{algorithm*}
+\family default
+ zur Verfügung.
+\end_layout
+
+\begin_layout Description
+Anmerkung: Wenn ein Gleitobjekt vom Typ 
+\emph on
+type
+\emph default
+ definiert wurde, gibt es automatisch einen dazugehörigen Zähler namens
+ 
+\emph on
+type
+\emph default
+.
+\end_layout
+
+\begin_layout Subsection
+Flexible Einfügungen und InsetLayout
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Flexible-Einfügungen-und"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Seit Version 1.4.0 unterstützt LyX Zeichenstile.
+ Seit Version 1.6.0 heißen sie Flexible Einfügungen.
+\end_layout
+
+\begin_layout Standard
+Es gibt drei Arten von flexiblen Einfügungen:
+\end_layout
+
+\begin_layout Itemize
+Zeichenstil (
+\family typewriter
+CharStyle
+\family default
+): diese definieren semantische Textauszeichnungen, die mit LaTeX-Befehlen
+ wie 
+\family typewriter
+
+\backslash
+noun
+\family default
+ oder 
+\family typewriter
+
+\backslash
+code
+\family default
+ korrespondieren.
+\end_layout
+
+\begin_layout Itemize
+benutzerdefiniert (
+\family typewriter
+Custom
+\family default
+): diese können benutzt werden, um benutzer\SpecialChar \-
+de\SpecialChar \-
+fi\SpecialChar \-
+nier\SpecialChar \-
+te einklappbare Einfügungen
+ zu definieren, ähnlich wie TeX-Code, Fuß\SpecialChar \-
+no\SpecialChar \-
+te usw.
+ Ein naheliegendes Beispiel ist die Endnotiz, die im 
+\family typewriter
+endnote
+\family default
+-Modul definiert ist.
+\end_layout
+
+\begin_layout Itemize
+XML-Element (
+\family sans
+Element
+\family default
+): diese werden mit DocBook-Klassen benutzt.
+\end_layout
+
+\begin_layout Standard
+Flexible Einfügungen werden mit der 
+\family typewriter
+InsetLayout
+\family default
+-Marke definiert, die weiter unten erklärt wird.
+\end_layout
+
+\begin_layout Standard
+Die 
+\family typewriter
+InsetLayout
+\family default
+-Marke besitzt noch eine andere Funktion: sie kann benutzt werden, um das
+ allgemeine Aussehen vieler verschiedener Einfügungstypen anzupassen.
+ Zurzeit kann 
+\family typewriter
+InsetLayout
+\family default
+ benutzt werden, um die Layout-Parameter für Fußnoten, Randnoten, eingefügten
+ Noten, TeX-Code (ERT), Zweige, Stichwortverzeichnisse, Boxen, Tabellen,
+ Algorithmen, URLs und optionaler Argumente anzupassen, ebenso um flexible
+ Einfügungen zu definieren.
+\end_layout
+
+\begin_layout Standard
+Die 
+\family typewriter
+InsetLayout
+\family default
+-Definition muss mit folgender Zeile beginnen:
+\end_layout
+
+\begin_layout LyX-Code
+
+\family typewriter
+InsetLayout <Type>
+\end_layout
+
+\begin_layout Standard
+Hier bezeichnet 
+\family typewriter
+<Type>
+\family default
+ die Einfügung, deren Layout definiert wird.
+ Es gibt zwei Möglichkeiten.
+\end_layout
+
+\begin_layout Enumerate
+Das Layout für eine existierende Einfügung wird geändert.
+ In diesem Fall kann 
+\family typewriter
+<Type>
+\family default
+ folgendes sein: 
+\family typewriter
+Algorithm
+\family default
+, 
+\family typewriter
+Branch
+\family default
+, Box, 
+\family typewriter
+Box:shaded
+\family default
+, 
+\family typewriter
+ERT
+\family default
+, 
+\family typewriter
+Figure
+\family default
+, 
+\family typewriter
+Foot
+\family default
+, 
+\family typewriter
+Index
+\family default
+, 
+\family typewriter
+Info
+\family default
+, 
+\family typewriter
+Info:menu
+\family default
+, 
+\family typewriter
+Info:shortcut
+\family default
+, 
+\family typewriter
+Info:shortcuts
+\family default
+, 
+\family typewriter
+Listings
+\family default
+, 
+\family typewriter
+Marginal
+\family default
+, 
+\family typewriter
+Note:Comment
+\family default
+, 
+\family typewriter
+Note:Note
+\family default
+, 
+\family typewriter
+Note:GreyedOut
+\family default
+, 
+\family typewriter
+OptArg
+\family default
+, 
+\family typewriter
+Table
+\family default
+ oder 
+\family typewriter
+URL
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+Das Layout für eine flexible Einfügung wird definiert.
+ In diesem Fall kann 
+\family typewriter
+<Type>
+\family default
+ ein beliebiger gültiger Bezeichner sein, der in keiner existierenden Einfügung
+ benutzt wird.
+ Beachten Sie, dass die Definition einer flexiblen Einfügung 
+\emph on
+auch
+\emph default
+ einen 
+\family typewriter
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+XType
+\family default
+-Eintrag enthalten muss.
+\end_layout
+
+\begin_layout Standard
+Die 
+\family typewriter
+InsetLayout
+\family default
+-Definition kann folgende Einträge enthalten:
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+BGColor
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ist die Hintergrundfarbe der Einfügung.
+ Die gültigen Farben sind in 
+\family typewriter
+src/Co\SpecialChar \-
+lorCode.h
+\family default
+ definiert.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+CopyStyle
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+wie beim Absatzstil (siehe 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "CopyStyle"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+CustomPars
+\begin_inset space ~
+\end_inset
+
+[
+\emph on
+0
+\emph default
+,
+\begin_inset space ~
+\end_inset
+
+1]
+\family default
+\series default
+ zeigt an, ob der Benutzer den Absatzeinstellungen-Dialog (
+\begin_inset Graphics
+	filename ../../images/layout-paragraph.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
+
+\end_inset
+
+) benutzen darf.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+Decoration
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+kann 
+\family typewriter
+Classic
+\family default
+, 
+\family typewriter
+Minimalistic
+\family default
+ oder 
+\family typewriter
+Conglomerate
+\family default
+ sein.
+ Es beschreibt den Rendering-Stil für den Einfügungsrahmen und die -knöpfe.
+ Fußnoten benutzen im allgemeinen 
+\family typewriter
+Classic
+\family default
+, TeX-Code
+\family typewriter
+ Minimalistic
+\family default
+ und Buchstabenstile 
+\family typewriter
+Conglomerate
+\family default
+.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+End
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+beendet die 
+\family typewriter
+InsetLayout
+\family default
+-Definition.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+Font
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+wird für den Text 
+\emph on
+und
+\emph default
+ die Marke benutzt (siehe 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "sub:Beschreibung-des-Zeichensatzes"
+
+\end_inset
+
+).
+ Beachten Sie, dass die Definition dieses Fonts automatisch dem 
+\family typewriter
+LabelFont
+\family default
+ denselben Wert zuweist, das heißt 
+\family typewriter
+Font
+\family default
+ muss zuerst definiert werden und 
+\family typewriter
+LabelFont
+\family default
+ danach, wenn sie unterschiedlich sein sollen.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+ForceLTR
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+erzwingt die 
+\emph on
+latex
+\emph default
+-Sprache und führt zu einer links-nach-rechts-Ausgabe (latin), zum Beispiel
+ bei TeX-Code oder URL.
+ Es ist eine Behelfslösung.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+ForcePlain
+\begin_inset space ~
+\end_inset
+
+[
+\emph on
+0
+\emph default
+,
+\begin_inset space ~
+\end_inset
+
+1]
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+zeigt an, ob PlainLayout benutzt werden soll oder ob der Benutzer den Absatzstil
+ der Einfügung ändern darf.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+FreeSpacing
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+wie beim Absatzstil (siehe 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "FreeSpacing"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+KeepEmpty
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+wie beim Absatzstil (siehe 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "KeepEmpty"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Description
@@ -9015,27 +11236,26 @@ LabelFont
 \begin_inset Newline newline
 \end_inset
 
-Der Zeichensatz, der für die Marke verwendet wird.
- (Siehe Abschnitt
-\begin_inset space \space{}
-\end_inset
-
-
+ist der für die Marke benutze Font (siehe 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "sec:fonts"
+reference "sub:Beschreibung-des-Zeichensatzes"
 
 \end_inset
 
-.) 
+).
+ Beachten Sie, dass diese Definition niemals vor 
+\family typewriter
+Font
+\family default
+ erscheinen darf, weil sie sonst unwirksam ist.
 \end_layout
 
 \begin_layout Description
 
 \family typewriter
 \series medium
-Preamble\SpecialChar \ldots{}
-EndPreamble
+LabelString
 \family default
 \series default
  
@@ -9046,26 +11266,609 @@ EndPreamble
 \begin_inset Newline newline
 \end_inset
 
-Eine Serie von Makrodefinitionen, die in die Präambel (vor 
+wird auf dem Knopf und anderswo als Einfügungsmarke angezeigt.
+ Einige Einfügungstypen (TeX-Code und Zweig) ändern diese Marke im Vo\SpecialChar \-
+rü\SpecialChar \-
+ber\SpecialChar \-
+gehen.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+LatexName
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ist der Name des zugehörigen LaTeX-Stoffes, entweder der Umgebungs- oder
+ Befehlsname.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+LatexParam
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ist ein optionaler Parameter für den zugehörigen 
+\family typewriter
+\series medium
+LatexName
+\family default
+\series default
+-Stoff, einschließ\SpecialChar \-
+lich möglicher Klammerpaare wie 
+\family typewriter
+[]
+\family default
+.
+ Dieser Parameter kann in LyX nicht geändert werden.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+LatexType
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+wie beim Absatzstil (siehe 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "LatexType"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+LyxType
+\family default
+\series default
+ kann die Werte 
+\family typewriter
+charstyle
+\family default
+, 
+\family typewriter
+custom
+\family default
+, 
+\family typewriter
+element
+\family default
+ oder 
+\family typewriter
+end
+\family default
+ (zeigt das Ende einer Definition an).
+ Dieser Eintrag wird für flexible Einfügungen benötigt und ist nur dort
+ sinnvoll.
+ Neben anderen Dingen legt er fest, in welchem Menü diese Einfügung erscheinen
+ wird.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+MultiPar
+\begin_inset space ~
+\end_inset
+
+[
+\emph on
+0
+\emph default
+,
+\begin_inset space ~
+\end_inset
+
+1]
+\family default
+\series default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+zeigt an, ob in dieser Einfügung mehrfache Absätze erlaubt sind.
+ Dadurch wird 
+\family typewriter
+\series medium
+CustomPars
+\family default
+\series default
+ auf denselben Wert gesetzt und 
+\family typewriter
+\series medium
+ForcePlain
+\family default
+\series default
+ auf den anderen.
+ Diese können auf andere Werte gesetzt werden, wenn sie 
+\emph on
+nach
+\emph default
+ 
+\family typewriter
+\series medium
+Multi\SpecialChar \-
+Par
+\family default
+\series default
+ benutzt werden.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+NeedProtect
+\begin_inset space ~
+\end_inset
+
+[
+\emph on
+0
+\emph default
+,
+\begin_inset space ~
+\end_inset
+
+1] 
+\family default
+\series default
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+zeigt an, ob 
+\emph on
+zerbrechliche
+\emph default
+ Befehle in diesem Layout ge\SpecialChar \-
+schützt (
 \family typewriter
 
 \backslash
-begin{document}
+protect
 \family default
-) eingefügt werden, falls dieses Layout benutzt wird.
+) werden sollen.
+ Es zeigt 
+\emph on
+nicht
+\emph default
+ an, ob der Befehl selber geschützt werden soll.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+PassThru
+\begin_inset space ~
+\end_inset
+
+[
+\emph on
+0
+\emph default
+,
+\begin_inset space ~
+\end_inset
+
+1] 
+\family default
+\series default
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+wie beim Absatzstil (siehe 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "PassThru"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+Preamble
+\begin_inset space ~
+\end_inset
+
+[
+\emph on
+0
+\emph default
+,
+\begin_inset space ~
+\end_inset
+
+1] 
+\family default
+\series default
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+wie beim Absatzstil (siehe 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "Preamble"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+Requires
+\begin_inset space ~
+\end_inset
+
+[string] 
+\family default
+\series default
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+wie beim Absatzstil (siehe 
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "Requires-2"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection
+Zähler
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Zähler"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Seit LyX-Version 1.3.0 ist es möglich und notwendig, Zähler (
+\family typewriter
+chapter
+\family default
+, 
+\family typewriter
+figure
+\family default
+,\SpecialChar \ldots{}
+) in der Textklasse selber zu definieren.
+ Die Standardzähler sind in der Datei 
+\family typewriter
+lib/
+\begin_inset Newline linebreak
+\end_inset
+
+layouts/stdcounters.inc
+\family default
+ definiert, so dass Sie nur die Zeile
+\end_layout
+
+\begin_layout LyX-Code
+Input stdcounters.inc
+\end_layout
+
+\begin_layout Standard
+zu zu Ihrer Layout-Datei hinzufügen müssen, damit sie arbeiten.
+ Aber wenn Sie eigene Zähler definieren wollen, können Sie das tun.
+ Zähler-Deklarationen beginnen mit
+\end_layout
+
+\begin_layout LyX-Code
+Counter name
+\end_layout
+
+\begin_layout Standard
+wobei 
+\family typewriter
+name
+\family default
+ der Name Ihres Zählers ist.
+ Die Deklaration endet mit
+\end_layout
+
+\begin_layout LyX-Code
+End
+\end_layout
+
+\begin_layout Standard
+Folgende Parameter können auch benutzt werden:
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+LabelString
+\begin_inset space ~
+\end_inset
+
+[string=""]
+\family default
+ 
+\series default
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+definiert, wie der Zähler dargestellt wird.
+ Hierdurch wird 
+\family typewriter
+LabelStringAp\SpecialChar \-
+pen\SpecialChar \-
+dix
+\family default
+ auf denselben Wert gesetzt.
+ In der Zeichenkette können folgende Konstrukte benutzt werden:
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+
+\backslash
+thecounter
+\family default
+ wird durch die Erweiterung von 
+\family typewriter
+LabelString
+\family default
+ (oder 
+\family typewriter
+Label\SpecialChar \-
+StringAppendix
+\family default
+) des Zählers 
+\family typewriter
+counter
+\family default
+ ersetzt.
+\end_layout
+
+\begin_layout Itemize
+Zählerwerte können durch LaTeX-ähnliche Makros wie 
+\family typewriter
+\emph on
+
+\backslash
+numbertype{coun\SpecialChar \-
+ter}
+\family default
+\emph default
+ ausgedrückt werden, wobei 
+\family typewriter
+\emph on
+numbertype
+\family default
+\emph default
+ folgendes sein kann:
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Genaugenommen ist die Situation etwas komplizierter: andere 
+\emph on
+numbertype
+\emph default
+ als die beschriebenen erzeugen arabische Zahlen.
+ Wahrscheinlich wird sich das in Zukunft ändern.
+\end_layout
+
+\end_inset
+
+ 
+\family typewriter
+arabic
+\family default
+: 1, 2, 3,\SpecialChar \ldots{}
+; 
+\family typewriter
+alph
+\family default
+ für Kleinbuchstaben: a, b, c,\SpecialChar \ldots{}
+; 
+\family typewriter
+Alph
+\family default
+ für Großbuchstaben: A, B, C,\SpecialChar \ldots{}
+; 
+\family typewriter
+roman
+\family default
+ für kleine römische Zahlen: i, ii, iii,\SpecialChar \ldots{}
+; 
+\family typewriter
+Roman
+\family default
+ für große römische Zahlen: I, II, III,\SpecialChar \ldots{}
+; 
+\family typewriter
+hebrew
+\family default
+ für hebräische Zahlen.
+\end_layout
+
+\begin_layout Standard
+Wenn 
+\family typewriter
+LabelString
+\family default
+ nicht definiert ist, wird ein Standardwert wie folgt benutzt: wenn der
+ Zähler einen Hauptzähler 
+\emph on
+master
+\emph default
+ (über 
+\family typewriter
+Within
+\family default
+ definiert) hat, wird 
+\family typewriter
+
+\backslash
+themaster.
+\backslash
+arabic{counter}
+\family default
+ benutzt, sonst 
+\family typewriter
+
+\backslash
+arabic{counter}
+\family default
+.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+LabelStringAppendix
+\begin_inset space ~
+\end_inset
+
+[string=""]
+\family default
+ 
+\series default
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ist dasselbe wie 
+\family typewriter
+\series medium
+LabelString
+\family default
+\series default
+, wird aber in Anhängen benutzt.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\series medium
+Within
+\begin_inset space ~
+\end_inset
+
+[string=""]
+\family default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Wenn dies auf den Namen eines anderen Zählers gesetzt wird, wird der gegenwärtig
+e Zähler jedesmal zurückgesetzt, wenn der andere erhöht wird.
+ Zum Beispiel wird 
+\family typewriter
+\series default
+subsection
+\family default
+\series medium
+ innerhalb 
+\family typewriter
+\series default
+section
+\family default
+\series medium
+ nummeriert.
 \end_layout
 
 \begin_layout Subsection
 Beschreibung des Zeichensatzes
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:fonts"
+name "sub:Beschreibung-des-Zeichensatzes"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Eine Zeichensatzbeschreibung sieht folgendermaßen aus:
 \end_layout
 
@@ -9180,6 +11983,53 @@ none
 ]
 \end_layout
 
+\begin_layout Subsection
+Alte Layout-Dateien aktualisieren
+\end_layout
+
+\begin_layout Standard
+Das Dateiformat von Layout-Dateien ändert sich hin und wieder, so dass alte
+ Layout-Dateien konvertiert werden müssen.
+ Mit LyX 1.4.0 wurde dieser Prozess automatisiert: wenn LyX eine Layout-Datei
+ mit altem Format liest, ruft es das Konvertierungswerkzeug 
+\family typewriter
+LyXDir/scripts/layout2layout.py
+\family default
+ auf und konvertiert die Datei in eine temporäre Datei mit dem neuen Format.
+ Die Originaldatei wird nicht verändert.
+ Wenn Sie sie permanent konvertieren wollen, müssen Sie das von Hand tun:
+\end_layout
+
+\begin_layout LyX-Code
+python $LyXDir/scripts/layout2layout.py myclass.layout myclass\SpecialChar \-
+new.layout
+\end_layout
+
+\begin_layout Standard
+Sie müssen dabei 
+\family typewriter
+$LyXDir
+\family default
+ durch den Namen Ihres LyX-Systemverzeichnisses ersetzen, wenn Sie es nicht
+ als Umgebungsvariable definiert haben.
+ Danach kopieren Sie 
+\family typewriter
+myclass\SpecialChar \-
+new.layout
+\family default
+ nach 
+\family typewriter
+UserDir/layouts/
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Die automatische Konvertierung behandelt nur Syntaxänderungen.
+ Es kann keine Fälle handhaben, in denen Inhalte geändert wurden, also müssen
+ diese getrennt konvertiert werden.
+\end_layout
+
 \begin_layout Section
 Vorlagen erstellen
 \end_layout
@@ -9216,7 +12066,7 @@ UserDir/templates/
 \family typewriter
 Ly
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -9291,3635 +12141,14 @@ speichern
 \end_layout
 
 \begin_layout Chapter
-Eine Anleitung für Drucker
+Externes Material einfügen
 \begin_inset CommandInset label
 LatexCommand label
-name "chap:printer"
+name "cha:Externes-Material-einfügen"
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-\size larger
-Anmerkung von 
-\noun on
-HHa
-\noun default
-: Wenn Sie für Ihren Drucker CUPS benutzen oder unter Windows arbeiten,
- ist dieses Kapitel für Sie uninteressant.
- Ich werde es auch nicht mehr bearbeiten.
-\end_layout
-
-\begin_layout Section
-Einleitung
-\end_layout
-
-\begin_layout Standard
-
-\emph on
-Anmerkung des Übersetzers: Der erste Satz dieser Einleitung 
-\begin_inset Quotes gld
-\end_inset
-
-Lesen Sie die Print\SpecialChar \-
-ing-HOWTO
-\begin_inset Quotes grd
-\end_inset
-
- ist Unsinn.
- Wenn Sie tatsächlich die Printing-HOWTO gelesen (und verstanden) haben,
- enthält dieser Abschnitt für Sie praktisch keine neuen Informationen mehr.
- Natürlich enthält die Printing-HOWTO viele nützliche Informationen, die
- weit über das hinausgehen, was wir in diesem Abschnitt beschreiben werden.
- Im übrigen ist die Installation des Druckers heutzutage erheblich einfacher,
- als die (sehr umfangreiche) Printing-HOWTO vermuten lässt.
- Die meisten Distributionen ermöglichen es, die hier erwähnten Konfigurationsdat
-eien mit wenigen Handgriffen zu erstellen.
- -LA
-\end_layout
-
-\begin_layout Standard
-Wenn Sie auf einem Linux-System arbeiten und erst Ihren Drucker installieren
- müssen, sollten Sie zunächst die Datei 
-\family typewriter
-\size normal
-Printing-HOWTO
-\family default
-\size default
- lesen.
- (Sie befindet sich je nach Distribution oft im Verzeichnis 
-\family typewriter
-/usr/doc/FAQ/HOWTO
-\family default
- oder 
-\family typewriter
-/usr/doc/HOWTO
-\family default
-.) Es gibt auch eine deutschsprachige Übersetzung, die man über FTP
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-zum Beispiel
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-ftp://sunsite.unc.edu/pub/Linux/docs/HOWTO/translations/de/DE-Drucker-HOWTO.txt.gz
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- bekommen kann.
- Zudem müssen Sie das Ghostscript-Paket installieren, falls Sie dies noch
- nicht getan haben.
- 
-\end_layout
-
-\begin_layout Standard
-Einige Linux-Distributionen werden mit sogenannten Magic-Filtern ausgeliefert
- und installieren diese selbständig.
- Anstelle der Prozedur, die wir unten beschreiben, können Sie auch diese
- Magic-Filter-Prozedur benutzen.
- Allerdings wird es vermutlich etwas schwieriger sein, die Möglichkeiten
- Ihres Druckers voll auszuschöpfen.
- Wenn Ihre Linux-Distribution mit einem Extraprogramm für die Druckerinstallatio
-n ausgestattet ist, können Sie auch einfach dies benutzen.
- Werfen Sie danach einfach einen Blick in die 
-\family typewriter
-Printing-HOWTO
-\family default
-, um eventuell noch ein paar Kleinigkeiten anzupassen.
-\end_layout
-
-\begin_layout Section
-Die Datei 
-\family typewriter
-/etc/printcap
-\end_layout
-
-\begin_layout Subsection
-Überblick
-\end_layout
-
-\begin_layout Standard
-Die Datei 
-\family typewriter
-/etc/printcap
-\family default
- informiert Linux über Ihre Druckerkonfiguration.
- Jeder Eintrag definiert einen Drucker, gibt ihm einen Namen, mit dem Sie
- und andere Benutzer ihn ansprechen können und erklärt Linux, wie Ausgaben
- an diesen Drucker gehandhabt werden sollen.
- Es macht durchaus Sinn, in dieser Datei mehrere 
-\begin_inset Quotes gld
-\end_inset
-
-logische Drucker
-\begin_inset Quotes grd
-\end_inset
-
- zu definieren, die alle denselben physikalischen Drucker ansprechen, dies
- aber in unterschiedlicher Art und Weise tun
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Bemerkung von 
-\noun on
-John Weiss:
-\noun default
- Ich handhabe dies so mit meinem Epson Stylus Color IIs.
- Da man für Farb- und Schwarzweißdruck verschiedene Druckköpfe benötigt,
- habe ich einen eigenen Drucker 
-\family typewriter
-color
-\family default
- für farbige Dokumente eingerichtet.
- Ich benutze auch einen 
-\family typewriter
-draft
-\family default
--Drucker, der eine geringere Auf\SpecialChar \textcompwordmark{}
-lösung und einen ungenaueren Druckmodus
- benutzt.
- Sie sehen, man kann mit Printcaps viele Dinge tun.
-\end_layout
-
-\end_inset
-
-.
- Natürlich benötigt man für jeden physikalischen Drucker auch mindestens
- einen Eintrag.
-\end_layout
-
-\begin_layout Standard
-Hier ein Beispiel für eine 
-\family typewriter
-/etc/printcap
-\family default
--Datei:
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-lp|Text
-\size default
- auf einem 
-\size normal
-Epson:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :lp=/dev/lp1:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :sd=/var/spool/lpd/lp:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :lf=/var/spool/lpd/lp/errs:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :mx#0:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :sh:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :sf:
-\begin_inset Newline newline
-\end_inset
-
-
-\size default
-
-\begin_inset Newline newline
-\end_inset
-
-
-\size normal
-draft|Post
-\size default
-S
-\size normal
-cript 
-\size default
-auf einem
-\size normal
- Epson Stylus Color IIs, 180dpi:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :lp=/dev/lp1:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :sd=/var/spool/lpd/draft:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :lf=/var/spool/lpd/draft/errs:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :if=/var/spool/lpd/draft/draft.filter:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :mx#0:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :sh:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :sf:
-\begin_inset Newline newline
-\end_inset
-
-
-\size default
-
-\begin_inset Newline newline
-\end_inset
-
-
-\size normal
-ps|Post
-\size default
-S
-\size normal
-cript
-\size default
- auf einem 
-\size normal
-Epson Stylus Color IIs, 360dpi:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :lp=/dev/lp1:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :sd=/var/spool/lpd/ps:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :lf=/var/spool/lpd/ps/errs:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :if=/var/spool/lpd/ps/ps.filter:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :mx#0:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :sh:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :sf:
-\end_layout
-
-\begin_layout Standard
-Bevor wir mit Erklärungen zu diesen Hieroglyphen fortfahren, haben wir eine
- wichtige Information:
-\end_layout
-
-\begin_layout Standard
-\align center
-WARNUNG! WARNUNG! WARNUNG!
-\begin_inset Newline newline
-\end_inset
-
-Benutzen Sie nur eine Leerzeile zwischen den Einträgen!
-\begin_inset Newline newline
-\end_inset
-
-Stellen Sie sicher, dass diese Zeile VÖLLIG LEER ist!
-\end_layout
-
-\begin_layout Standard
-Selbst ein Leerzeichen in einer Leerzeile zwischen zwei Einträgen kann fatale
- Folgen haben, denn das System wird Ihre 
-\family typewriter
-/etc/printcap
-\family default
--Datei nicht richtig interpretieren können.
-\end_layout
-
-\begin_layout Standard
-Sehen Sie sich jetzt einmal die Einträge genauer an.
- Jeder Teil eines Eintrags wird von einem 
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-:
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
- Zeichen abgeschlossen.
- Ein 
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-
-\backslash
-
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
--Zeichen am Ende einer Zeile bedeutet, dass der Eintrag in der nächsten
- Zeile fortgesetzt wird.
- Nach dem 
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-
-\backslash
-
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
--Zeichen dürfen keine anderen Zeichen mehr stehen -- nicht einmal Leerzeichen.
- Das 
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-
-\backslash
-
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
--Zeichen sollte unmittelbar hinter dem 
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-:
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
- stehen.
- Wenn Sie (wie im Beispiel) einen Eintrag in mehrere Zeilen aufteilen und
- die Zeilen mit einem Leerzeichen beginnen, schreiben Sie ein 
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-:
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
- unmittelbar vor den folgenden Text.
- Beispielsweise könnten Sie den ersten Eintrag auch schreiben als:
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-lp|Text:lp=/dev/lp1:sd=/var/spool/lpd/lp:lf=/var/spool/lpd/lp/errs:
-\end_layout
-
-\begin_layout Standard
-Beachten Sie, dass sich hier lediglich ein einzelnes 
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-:
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
- zwischen den Teilen des Eintrags befindet.
- Wir spalten diesen Eintrag nun in zwei Zeilen auf:
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-lp|Text:lp=/dev/lp1:sd=/var/spool/lpd/lp:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-     :lf=/var/spool/lpd/lp/errs:
-\end_layout
-
-\begin_layout Standard
-Wir brechen die Zeile zunächst direkt hinter einem 
-\size normal
-
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-:
-\family default
-\size default
-
-\begin_inset Quotes grd
-\end_inset
-
-
-\size normal
- 
-\size default
-um, indem wir ein
-\size normal
- 
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-
-\backslash
-
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
-
-\size default
- einfügen, eine neue Zeile beginnen, ein wenig Freiraum einfügen und dann
- noch ein 
-\size normal
-
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-:
-\family default
-\size default
-
-\begin_inset Quotes grd
-\end_inset
-
-
-\size normal
- 
-\size default
-einfügen, 
-\size normal
-be
-\size default
-vor wir fortfahren.
- Es ist üblich, wenn man einen Eintrag in mehrere Zeilen aufspaltet, alle
- Zeilen bis auf die erste einzurücken.
- Es gibt übrigens viele Optionen, die man an einen Eintrag einfügen kann.
- Wir werden hier nur die vier wichtigsten behandeln.
- Die 
-\emph on
-man page
-\emph default
- für die 
-\family typewriter
-printcap
-\family default
--Datei enthält weitere Informationen.
-\end_layout
-
-\begin_layout Subsection
-Der Druckername
-\end_layout
-
-\begin_layout Standard
-Der erste Teil eines 
-\family typewriter
-printcap
-\family default
--Eintrags ist der Druckername.
- Dort dürfen mehrere Namen angegeben werden, die durch ein 
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-|
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
--Zeichen getrennt werden.
- Es ist sinnvoll, als ersten Namen ein ein Kürzel anzugeben und als zweiten
- Namen eine Kurzbeschreibung des Druckers (natürlich gefolgt von einem 
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-:
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
- Zeichen).
- Zum Beispiel ist
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-draft|
-\size default
-Unser Drucker im
-\size normal
- Draft
-\size default
--
-\size normal
-Mod
-\size default
-us
-\size normal
-:
-\backslash
-
-\end_layout
-
-\begin_layout Standard
-ein Drucker, der den Kurznamen 
-\size normal
-
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-draft
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
- 
-\size default
-erhält und eine Beschreibung 
-\begin_inset Quotes gld
-\end_inset
-
-Unser Drucker im Draft Modus
-\begin_inset Quotes grd
-\end_inset
-
-.
- [Beachten Sie das 
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-
-\backslash
-
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
- am Ende der Zeile, das angibt, dass der Eintrag in der nächsten Zeile fortgeset
-zt wird.] Das Kürzel 
-\family typewriter
-draft
-\family default
- ist der Name, den Sie bei vielen Druckkommandos benutzen (beispielsweise
- dem 
-\family typewriter
-lpr
-\family default
- Befehl mit der 
-\family typewriter
--P
-\family default
- Option).
-\end_layout
-
-\begin_layout Standard
-Es ist üblich, für einen 
-\size normal
-PostScript
-\size default
--Drucker das Kürzel 
-\size normal
-
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-ps
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
- 
-\size default
-zu benutzen, und den Textdrucker
-\size normal
- 
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-lp
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
-
-\size default
- zu nennen
-\size normal
-.
-\end_layout
-
-\begin_layout Subsection
-Die Drucker-Gerätedatei
-\end_layout
-
-\begin_layout Standard
-Der nächste Teil der Beispieleinträge legt das Gerät (das heißt den Namen
- der Gerätedatei) fest, auf dem gedruckt werden soll.
- In allen Beispieleinträgen lautet diese Zeile:
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :lp=/dev/lp1:
-\backslash
-
-\end_layout
-
-\begin_layout Standard
-
-\size normal
-[
-\size default
-Noch einmal: Beachten Sie das 
-\size normal
-
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-
-\backslash
-
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
- 
-\size default
-am Ende der Zeile und das zusätzliche
-\size normal
- 
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-:
-\family default
-
-\begin_inset Quotes gld
-\end_inset
-
- 
-\size default
-nach den Leerzeichen, die benutzt wurden, um den Text einzurücken
-\size normal
-.]
-\end_layout
-
-\begin_layout Standard
-Mit dem Kürzel 
-\family typewriter
-\size normal
-lp=
-\family default
- 
-\size default
-(
-\series bold
-\emph on
-l
-\series default
-ine
-\emph default
- 
-\series bold
-\emph on
-p
-\series default
-rinter
-\emph default
-) geben Sie den Namen des Drucker-Device an.
- Im Beispiel handelt es sich um 
-\family typewriter
-\size normal
-/dev/lp1
-\family default
-, 
-\size default
-die parallele Schnittstelle.
- Es gibt auch Drucker, die an die serielle Schnittstelle angeschlossen werden.
- Wenn Sie einen haben, sollten Sie 
-\family typewriter
-\size normal
-/dev/ttyS0
-\family default
- 
-\size default
-für die erste serielle Schnittstelle benutzen, 
-\family typewriter
-\size normal
-/dev/ttyS1
-\family default
- 
-\size default
-für die zweite, usw.
- In diesem Fall werden Sie wahrscheinlich auch noch andere Kommandos in
- Ihrem 
-\family typewriter
-printcap
-\family default
--Eintrag benutzen müssen, beispielsweise um die Baudrate festzulegen.
- Die 
-\family typewriter
-printcap
-\family default
--Manpage enthält darüber weitere Informationen.
-\end_layout
-
-\begin_layout Standard
-Die meisten Drucker benutzen allerdings die parallele Schnittstelle.
- Außerdem hängt der Drucker bei 
-\emph on
-fast allen
-\emph default
- PC-Kompatiblen Computern an 
-\family typewriter
-\size normal
-/dev/lp1
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Warum ist die erste parallele Schnittstelle 
-\family typewriter
-/dev/lp1
-\family default
- und 
-\emph on
-nicht
-\emph default
- 
-\family typewriter
-/dev/lp0
-\family default
-? Die I/O-Adressen der einzelnen Schnittstellen sind im Linux-Systemkern
- kodiert.
- Adresse 
-\family typewriter
-0x3BC
-\family default
- ist Schnittstelle 
-\family typewriter
-/dev/lp0
-\family default
-, Adresse 
-\family typewriter
-0x378
-\family default
- ist Schnittstelle 
-\family typewriter
-/dev/lp1
-\family default
- und 
-\family typewriter
-0x278
-\family default
- ist 
-\family typewriter
-/dev/lp2
-\family default
-.
- Da die meisten PC-Kompatiblen Computer die parallele Schnittstelle auf
- die Adresse 
-\family typewriter
-0x378
-\family default
- legen, ist bei diesen Systemen 
-\family typewriter
-/dev/lp1
-\family default
- die parallele Schnittstelle.
-\begin_inset Newline newline
-\end_inset
-
-Wenn Sie über mehr als eine parallele Schnittstelle verfügen, ändert sich
- die Situation.
- Auch wenn Sie die I/O-Adresse Ihrer Schnittstelle aus einem anderen Grund
- geändert haben sollten, wird ein anderes 
-\family typewriter
-lp
-\family default
--Gerät auf die parallele Schnittstelle zeigen.
- Andere Systeme sind möglicherweise völlig merkwürdig konfiguriert.
- In jedem Fall können Sie unter DOS kontrollieren, welche I/O-Adresse Ihre
- Schnittstelle hat.
- Dann können Sie mit Hilfe der Adresse auch bestimmen, ob Sie 
-\family typewriter
-/dev/lp0
-\family default
-, 
-\family typewriter
-/dev/lp1
-\family default
- oder 
-\family typewriter
-/dev/lp2
-\family default
- benutzen müssen.
-\end_layout
-
-\end_inset
-
-
-\family default
-\size default
-.
-
-\size normal
- 
-\size default
-Möglicherweise ist an Ihrem System jedoch etwas anders konfiguriert, Sie
- sollten also testen, welches Device die Druckerschnittstelle anspricht.
-\end_layout
-
-\begin_layout Subsection
-Das Spulverzeichnis und die Logdatei
-\end_layout
-
-\begin_layout Standard
-Zusätzlich zu einem Druckernamen und einem zugehörigen Gerät benötigen Sie
- auch noch ein Verzeichnis für den Drucker-Spooler.
- Dieses wird mit dem Kürzel 
-\family typewriter
-sd=
-\family default
- (
-\series bold
-\emph on
-s
-\series default
-pool
-\emph default
- 
-\series bold
-\emph on
-d
-\series default
-irectory
-\emph default
-) identifiziert.
- Es ist auch sehr sinnvoll, eine Logdatei für Fehlermeldungen anzulegen.
- Diese gibt man nach dem Kürzel 
-\family typewriter
-lf=
-\family default
- (
-\series bold
-\emph on
-l
-\series default
-og
-\emph default
- 
-\series bold
-\emph on
-f
-\series default
-ile
-\emph default
-) an.
-\end_layout
-
-\begin_layout Standard
-Die meisten Systeme packen alle Spoolverzeichnisse in das Verzeichnis 
-\family typewriter
-/var/spool/lpd
-\family default
-; manche benutzen nur 
-\family typewriter
-/var/spool
-\family default
-.
- In jedem Fall erhält traditionell jeder Druckereintrag ein eigenes Unterverzeic
-hnis mit dem Namen des jeweiligen Druckers.
- Sie müssen sich als 
-\begin_inset Quotes gld
-\end_inset
-
-root
-\begin_inset Quotes grd
-\end_inset
-
- einloggen und diese Verzeichnisse von Hand anlegen.
- Sie werden auch den Eigentümer dieser Verzeichnisse ändern müssen, damit
- die Gruppenzugehörigkeit der Verzeichnisse 
-\family typewriter
-daemon
-\family default
- lautet.
- (Dies kann man zum Beispiel mit 
-\family typewriter
-chgrp daemon
-\family default
- 
-\emph on
-Name
-\emph default
- erreichen, wobei 
-\emph on
-Name
-\emph default
- der Name des entsprechenden Verzeichnisses ist.)
-\end_layout
-
-\begin_layout Standard
-Sehen Sie sich einmal den Eintrag des Druckers 
-\family typewriter
-ps
-\family default
- aus dem Beispiel an.
- Er enthält die Zeilen:
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :sd=/var/spool/lpd/ps:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :lf=/var/spool/lpd/ps/errs:
-\backslash
-
-\end_layout
-
-\begin_layout Standard
-Das bedeutet, dass 
-\family typewriter
-/var/spool/lpd/ps
-\family default
- das Spulverzeichnis ist und die Fehlermeldungen in die Datei 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-/var/spool/lpd/ps/errs
-\end_layout
-
-\end_inset
-
- geschrieben werden sollen.
- Sie sollten diese Datei 
-\begin_inset Quotes gld
-\end_inset
-
-erzeugen
-\begin_inset Quotes grd
-\end_inset
-
-, indem Sie im Spulverzeichnis das Kommando 
-\family typewriter
-touch errs
-\family default
- aufrufen
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Der Befehl 
-\family typewriter
-touch
-\family default
- erfüllt zwei Aufgaben.
- Erstens stellt er sicher, dass eine Datei dieses Namens existiert, indem
- sie gegebenenfalls einfach erzeugt wird.
- Sie ist dann zwar leer, aber sie existiert.
- Zweitens merkt sich das Betriebssystem, wann eine Datei zuletzt geändert
- wurde.
- 
-\family typewriter
-touch
-\family default
- sorgt dafür, dass diese Zeit auf 
-\begin_inset Quotes gld
-\end_inset
-
-gerade eben
-\begin_inset Quotes grd
-\end_inset
-
- gesetzt wird.
- Es 
-\begin_inset Quotes gld
-\end_inset
-
-berührt
-\begin_inset Quotes grd
-\end_inset
-
- also die Datei nur, ohne Einfluss auf ihren Inhalt zu nehmen.
- (In unserem Fall benötigen wir lediglich die erste Wirkungsweise.)
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Ganz ähnlich sieht der Eintrag für den Drucker 
-\family typewriter
-lp
-\family default
- aus.
- Er enthält:
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :sd=/var/spool/lpd/lp:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :lf=/var/spool/lpd/lp/errs:
-\backslash
-
-\end_layout
-
-\begin_layout Standard
-Wieder: Spulverzeichnis 
-\family typewriter
-\size normal
-/var/spool/lpd/lp
-\family default
-\size default
-, Logdatei 
-\family typewriter
-\size normal
-/var/spool/lpd/lp/errs
-\family default
-.
- 
-\end_layout
-
-\begin_layout Subsection
-Die Filterdatei
-\end_layout
-
-\begin_layout Standard
-Anders als 
-\family typewriter
-lp
-\family default
-, der einfach Text direkt an den Drucker weitergibt, benötigen die Drucker
- 
-\family typewriter
-draft
-\family default
- und 
-\family typewriter
-ps
-\family default
- einen sogenannten Filter.
- (Darum haben Ihre Einträge noch eine zusätzliche Zeile.) Das 
-\family typewriter
-printcap
-\family default
--Kürzel für das Filterprogramm ist 
-\family typewriter
-if=
-\family default
- (
-\series bold
-\emph on
-i
-\series default
-nput
-\emph default
- 
-\series bold
-\emph on
-f
-\series default
-ilter
-\emph default
-)
-\emph on
-.
-\end_layout
-
-\begin_layout Standard
-Es gibt übrigens verschiedene Kürzel, um Filterprogramme anzugeben.
- Man hat dadurch die Möglichkeit, verschiedene Filter für verschiedene Zwecke
- einzusetzen.
- Sie können auch beim Aufruf von 
-\family typewriter
-lpr
-\family default
- unterschiedliche Filter auswählen -- aber das soll hier nicht vertieft
- werden, es wird hier nicht benötigt.
-\end_layout
-
-\begin_layout Standard
-Sehen Sie sich den Eintrag für den Drucker 
-\family typewriter
-ps
-\family default
- an:
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :if=/var/spool/lpd/ps/ps.filter:
-\backslash
-
-\end_layout
-
-\begin_layout Standard
-Die Datei
-\size normal
- 
-\family typewriter
-ps.filter
-\family default
- 
-\size default
-ist ein Shellscript, das im Spulverzeichnis des Druckers 
-\family typewriter
-ps
-\family default
- steht.
- Sie können prinzipiell auch direkt den Namen eines Programms angeben, aber
- der Aufruf eines Shellscripts gibt Ihnen die Möglichkeit, Kommandozeilenparamet
-er anzugeben.
-\end_layout
-
-\begin_layout Standard
-Alle Filter, egal ob 
-\begin_inset Quotes gld
-\end_inset
-
-echte
-\begin_inset Quotes grd
-\end_inset
-
- Programme oder Shellscripts, müssen Ihre Eingabe aus 
-\family typewriter
-stdin
-\family default
- (der Standardeingabe) übernehmen und die Ausgabe nach 
-\family typewriter
-stdout
-\family default
- (der Standardausgabe) ausgeben.
-\end_layout
-
-\begin_layout Subsection
-Zusätzliche Kürzel
-\end_layout
-
-\begin_layout Standard
-Es gibt noch drei zusätzliche Kürzel, die Sie in Ihre 
-\family typewriter
-\size normal
-printcap
-\family default
-\size default
--Einträge schreiben sollten.
- Sie können diese am Ende aller drei Beispieleinträge sehen.
- Es handelt sich um:
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :mx#0:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :sh:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :sf:
-\end_layout
-
-\begin_layout Standard
-Das 
-\family typewriter
-\size normal
-mx#0
-\family default
- 
-\size default
-(
-\series bold
-\emph on
-m
-\series default
-a
-\series bold
-x
-\series default
-imum file size
-\emph default
-)
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Das 
-\family typewriter
-mx#5
-\family default
- würde bedeuten: Die zu druckende Datei darf nicht größer werden als 5 Datenblöc
-ke.
- Da die Angabe von 0 an sich unsinnig ist und man irgendwie ein 
-\begin_inset Quotes gld
-\end_inset
-
-unbegrenzt
-\begin_inset Quotes grd
-\end_inset
-
- benötigt, hat man festgelegt, dass 0 hier soviel bedeutet wie 
-\begin_inset Quotes gld
-\end_inset
-
-unendlich
-\begin_inset Quotes grd
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
- bedeutet, 
-\begin_inset Quotes gld
-\end_inset
-
-es können Dateien beliebiger Größe gedruckt werden
-\begin_inset Quotes grd
-\end_inset
-
-.
-
-\size normal
- 
-\size default
-Das
-\size normal
- 
-\family typewriter
-sf
-\family default
- 
-\size default
-(
-\series bold
-\emph on
-s
-\series default
-uppress
-\emph default
- 
-\series bold
-\emph on
-f
-\series default
-orm feed)
-\emph default
- sorgt dafür, dass nach einem Druckauftrag nicht noch ein zusätzlicher Befehl
- 
-\begin_inset Quotes gld
-\end_inset
-
-Seitenauswurf
-\begin_inset Quotes grd
-\end_inset
-
- gesendet wird.
- Zuletzt verhindert 
-\family typewriter
-sh
-\family default
- (
-\series bold
-\emph on
-s
-\series default
-uppress
-\emph default
- 
-\series bold
-\emph on
-h
-\series default
-eader page
-\emph default
-), dass vor jedem Druckauftrag eine Kopfseite gedruckt wird, auf der zusätzliche
- Informationen ausgegeben werden (zum Beispiel der Name des Benutzers).
-\end_layout
-
-\begin_layout Section
-Wir bauen einen Druckerfilter
-\end_layout
-
-\begin_layout Subsection
-PostScript-Dateien mit Hilfe von Ghostscript ausdrucken
-\end_layout
-
-\begin_layout Standard
-Vermutlich kann Ihr Drucker nicht von sich aus PostScript drucken.
- Um Ihren Drucker trotzdem wie einen 
-\size normal
-PostScript
-\size default
--Drucker benutzen zu können, ist es am einfachsten, das
-\size normal
- 
-\size default
-Programm 
-\size normal
-Ghostscript 
-\size default
-als Filterprogramm zu benutzen.
-
-\size normal
- 
-\size default
-Es gibt vermutlich auch noch andere Wege, aber dies ist der verbreitetste.
- Wenn Sie aus irgendeinem Grund Ghostscript nicht benutzen wollen (oder
- können), sind Sie auf sich allein gestellt (für den Anfang lesen Sie einmal
- das 
-\family typewriter
-Printing-HOWTO
-\family default
-).
-\end_layout
-
-\begin_layout Standard
-Zunächst sollten Sie Ghostscript installieren.
- An sich sollte eine Version von Ghostscript in Ihrer Linux-Distribution
- enthalten sein.
- Andernfalls können Sie Ghostscript auch über das Linux-FTP-Archiv 
-\family typewriter
-\size normal
-sunsite.unc.edu
-\family default
-\size default
- bekommen
-\size normal
-.
-
-\size default
- Nachdem Sie es installiert haben, rufen Sie es einmal von der Kommandozeile
- aus auf mit:
-\size normal
- 
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-gs -h | more
-\end_layout
-
-\begin_layout Standard
-Es erscheint eine Liste von verfügbaren Ausgabetreibern und -formaten.
- Hier ist eine Liste, die helfen soll, die Treibernamen unter Ghostscript
- zu entschlüsseln:
-\end_layout
-
-\begin_layout Itemize
-
-\size normal
-Apple
-\size default
-:
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-
-\size normal
-appledmp Apple
-\size default
--Matrixdrucker
-\end_layout
-
-\begin_layout Description
-
-\size normal
-iwhi Imagewriter 
-\size default
-im hochauf\SpecialChar \textcompwordmark{}
-lösenden Modus
-\end_layout
-
-\begin_layout Description
-
-\size normal
-iwlo Imagewriter i
-\size default
-m niedrigauf\SpecialChar \textcompwordmark{}
-lösenden Modus
-\end_layout
-
-\begin_layout Description
-
-\size normal
-iwlq Imagewriter LQ i
-\size default
-m
-\size normal
- 
-\size default
-
-\begin_inset Formula $320\times216$
-\end_inset
-
-
-\size normal
- dpi 
-\size default
-Modus
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\size normal
-Canon
-\size default
-:
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-
-\size normal
-bj10e BubbleJet BJ-10e
-\end_layout
-
-\begin_layout Description
-
-\size normal
-bj200 BubbleJet BJ-200
-\end_layout
-
-\begin_layout Description
-
-\size normal
-bjc600 Color BubbleJet BJC-600, BJC-4000 
-\size default
-u
-\size normal
-nd BJC-70
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Funktioniert auch für Apple-Drucker wie dem StyleWriter 2x00
-\end_layout
-
-\end_inset
-
-
-\size default
-.
-\end_layout
-
-\begin_layout Description
-
-\size normal
-bjc800 Color BubbleJet BJC-800
-\end_layout
-
-\begin_layout Description
-
-\size normal
-lbp8 LBP-II8 
-\size default
-Laserdrucker
-\end_layout
-
-\begin_layout Description
-
-\size normal
-lips3 LIPS-III 
-\size default
-Laserdrucker im 
-\size normal
-CaPSL 
-\size default
-Modus
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\size normal
-DEC
-\size default
-:
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-
-\size normal
-la50 LA50
-\end_layout
-
-\begin_layout Description
-
-\size normal
-la70 LA70
-\end_layout
-
-\begin_layout Description
-
-\size normal
-la70t LA70 
-\size default
-mit Textverbesserung bei niedriger Auf\SpecialChar \textcompwordmark{}
-lösung
-\end_layout
-
-\begin_layout Description
-
-\size normal
-la75 LA75
-\end_layout
-
-\begin_layout Description
-
-\size normal
-la75plus LA75 Plus
-\end_layout
-
-\begin_layout Description
-
-\size normal
-ln03 LN03
-\end_layout
-
-\begin_layout Description
-
-\size normal
-lj250 LJ250 
-\size default
-Farbdrucker
-\end_layout
-
-\begin_layout Description
-
-\size normal
-declj250 
-\size default
-Alternativer Treiber für
-\size normal
- LJ250 
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\size normal
-Epson
-\size default
-:
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-
-\size normal
-ap3250 ActionPrinter AP3250 
-\size default
-(und jeder andere Drucker, der die Druckersprache
-\size normal
- ESC/P2 
-\size default
-benutzt)
-\size normal
- 
-\end_layout
-
-\begin_layout Description
-
-\size normal
-escp2 
-\size default
-Alle
-\size normal
- Epson
-\size default
- Drucker, die den
-\size normal
- ESC/P2 
-\size default
-Befehlssatz benutzen (eventuell funktioniert dieser Treiber nicht -- benutzen
- Sie stattdessen
-\size normal
- 
-\series bold
-ap3250
-\series default
-\size default
-.)
-\series medium
-\size normal
- 
-\end_layout
-
-\begin_layout Description
-
-\size normal
-epson All
-\size default
-e
-\size normal
- 
-\size default
-Matrixdrucker mit 
-\size normal
-9
-\size default
- oder
-\size normal
- 24
-\size default
- Nadeln (und Kompatible)
-\end_layout
-
-\begin_layout Description
-
-\size normal
-eps9mid All
-\size default
-e
-\size normal
- 9-
-\size default
-Nadeldrucker
-\size normal
- 
-\size default
-(und Kompatible) in mittlerer Auf\SpecialChar \textcompwordmark{}
-lösung
-\size normal
- 
-\end_layout
-
-\begin_layout Description
-
-\size normal
-eps9hi All
-\size default
-e
-\size normal
- 9-
-\size default
-Nadeldrucker (und Kompatible) in dreifacher Auf\SpecialChar \textcompwordmark{}
-lösung
-\end_layout
-
-\begin_layout Description
-
-\size normal
-epsonc LQ-2550 
-\size default
-Farbdrucker (funktioniert auch mit
-\size normal
- Fujitsu 1200, 2400 
-\size default
-u
-\size normal
-nd 3400 
-\size default
-Druckern)
-\end_layout
-
-\begin_layout Description
-
-\size normal
-st800 Stylus 800 inkjet
-\end_layout
-
-\begin_layout Description
-
-\size normal
-stcolor
-\size default
- 
-\size normal
-Stylus Color, Stylus Color Pro, Stylus Color II 
-\size default
-und
-\size normal
- IIs color inkjet 
-\size default
-Drucker
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\size normal
-Hewlet Packard 
-\size default
-(
-\size normal
-HP
-\size default
-):
-\size normal
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-
-\size normal
-lp2563 2563B 
-\size default
-Zeilendrucker
-\end_layout
-
-\begin_layout Description
-
-\size normal
-cdeskjet DeskJet 500C
-\size default
- mit 
-\size normal
-1 bpp 
-\size default
-Farbe
-\end_layout
-
-\begin_layout Description
-
-\size normal
-cdjcolor DeskJet 500C 
-\size default
-(u
-\size normal
-nd 540C
-\size default
-) mit
-\size normal
- 24 bpp 
-\size default
-Farbe und 
-\size normal
-Floyd-Steinberg
-\size default
--D
-\size normal
-ithering
-\end_layout
-
-\begin_layout Description
-
-\size normal
-cdjmono DeskJet 500C 
-\size default
-(
-\size normal
-und 510C, 520C, 540C
-\size default
-) im Schwarzweißbetrieb
-\end_layout
-
-\begin_layout Description
-
-\size normal
-cdj500 
-\size default
-dasselbe wie 
-\series bold
-\size normal
-cdjcolor
-\end_layout
-
-\begin_layout Description
-
-\size normal
-cdj550 DeskJet 550C 
-\size default
-u
-\size normal
-nd 560C
-\end_layout
-
-\begin_layout Description
-
-\size normal
-deskjet DeskJet 
-\size default
-u
-\size normal
-nd DeskJet Plus
-\end_layout
-
-\begin_layout Description
-
-\size normal
-djet500 DeskJet 500
-\end_layout
-
-\begin_layout Description
-
-\size normal
-djet500c Alternat
-\size default
-iver
-\size normal
- DeskJet
-\size default
--
-\size normal
-500c-
-\size default
-Treiber (arbeitet nicht mit dem
-\size normal
- 550C o
-\size default
-der
-\size normal
- 
-\size default
-dem 
-\size normal
-560C
-\size default
-)
-\end_layout
-
-\begin_layout Description
-
-\size normal
-dnj650c DesignJet 650C
-\end_layout
-
-\begin_layout Description
-
-\size normal
-ljet2p LaserJet IId, LaserJet IIp, 
-\size default
-u
-\size normal
-nd LaserJet III* 
-\size default
-mit
-\size normal
- TIFF
-\size default
--Komprimierung
-\end_layout
-
-\begin_layout Description
-
-\size normal
-ljet3 LaserJet III* 
-\size default
-mit 
-\size normal
-Delta
-\size default
--
-\size normal
-Row
-\size default
--Komprimierung
-\size normal
- 
-\end_layout
-
-\begin_layout Description
-
-\size normal
-ljet3d LaserJet IIID 
-\size default
-mit Möglichkeit zu doppelseitigem Drucken
-\end_layout
-
-\begin_layout Description
-
-\size normal
-ljet4 LaserJet 4 
-\size default
-(Voreinstellung für die Auf\SpecialChar \textcompwordmark{}
-lösung 
-\size normal
-600dpi
-\size default
-)
-\end_layout
-
-\begin_layout Description
-
-\size normal
-lj4dith LaserJet 4 
-\size default
-mit 
-\size normal
-Floyd-Steinberg
-\size default
--D
-\size normal
-ithering
-\end_layout
-
-\begin_layout Description
-
-\size normal
-ljetplus LaserJet Plus
-\end_layout
-
-\begin_layout Description
-
-\size normal
-pj PaintJet XL
-\end_layout
-
-\begin_layout Description
-
-\size normal
-pjetxl Altern
-\size default
-ativer
-\size normal
- PaintJet XL 
-\size default
-Treiber
-\end_layout
-
-\begin_layout Description
-
-\size normal
-pjxl PaintJet XL color
-\end_layout
-
-\begin_layout Description
-
-\size normal
-pjxl300 PaintJet XL300 color 
-\size default
-(u
-\size normal
-nd 1200C
-\size default
-)
-\end_layout
-
-\begin_layout Description
-
-\size normal
-paintjet Alternat
-\size default
-iver
-\size normal
- PaintJet color 
-\size default
-Treiber
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\size normal
-Tektronix
-\size default
-:
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-
-\size normal
-t4693d2 4693d 
-\size default
-Farbdrucker mit 
-\size normal
-2 bits
-\size default
- pro 
-\size normal
-RGB
-\size default
--Wert (
-\size normal
-=6 bpp
-\size default
-)
-\end_layout
-
-\begin_layout Description
-
-\size normal
-t4693d4 4693d 
-\size default
-Farbdrucker mit 
-\size normal
-4 bits
-\size default
- pro 
-\size normal
-RGB
-\size default
--Wert (
-\size normal
-=12 bpp
-\size default
-)
-\end_layout
-
-\begin_layout Description
-
-\size normal
-t4693d8 4693d 
-\size default
-Farbdrucker mit 
-\size normal
-8 bits
-\size default
- pro 
-\size normal
-RGB
-\size default
--Wert (
-\size normal
-=24 bpp
-\size default
-)
-\end_layout
-
-\begin_layout Description
-
-\size normal
-tek4696 4695 
-\size default
-u
-\size normal
-nd 4696 
-\size default
-I
-\size normal
-nkjet 
-\size default
-Plotter
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Verschiedene andere Drucker
-\size normal
-:
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-
-\size normal
-cp50 Mitsubishi CP50 
-\size default
-Farbdrucker
-\end_layout
-
-\begin_layout Description
-
-\size normal
-ibmpro IBM 9-
-\size default
-Nadel
-\size normal
- Proprinter
-\end_layout
-
-\begin_layout Description
-
-\size normal
-imagen Imagen ImPress 
-\size default
-Drucker
-\end_layout
-
-\begin_layout Description
-
-\size normal
-jetp3852 IBM Jetprinter 
-\size default
-I
-\size normal
-nkjet 
-\size default
-Farbdrucker
-\size normal
- 
-\size default
-(
-\size normal
-Model
-\size default
-l
-\size normal
- #3852)
-\end_layout
-
-\begin_layout Description
-
-\size normal
-m8510 C.Itoh M8510 
-\size default
-Drucker
-\end_layout
-
-\begin_layout Description
-
-\size normal
-necp6 NEC P6/P6+/P60 
-\size default
-Drucker bei
-\size normal
- 360 dpi 
-\size default
-Auf\SpecialChar \textcompwordmark{}
-lösung
-\end_layout
-
-\begin_layout Description
-
-\size normal
-nwp533 Sony Microsystems NWP533 
-\size default
-Laserdrucker (nur 
-\size normal
-Sony
-\size default
-)
-\size normal
- 
-\end_layout
-
-\begin_layout Description
-
-\size normal
-oce9050 OCE 9050 
-\size default
-Drucker
-\end_layout
-
-\begin_layout Description
-
-\size normal
-oki182 Okidata MicroLine 182
-\end_layout
-
-\begin_layout Description
-
-\size normal
-okiibm Okidata MicroLine IBM-K
-\size default
-ompatible Drucker
-\end_layout
-
-\begin_layout Description
-
-\size normal
-r4081 Ricoh 4081 
-\size default
-Laserdrucker
-\end_layout
-
-\begin_layout Description
-
-\size normal
-sj48 StarJet 48 
-\size default
-I
-\size normal
-nkjet 
-\size default
-Drucker
-\end_layout
-
-\begin_layout Description
-
-\size normal
-sparc SPARCprinter
-\end_layout
-
-\begin_layout Description
-
-\size normal
-xes Xerox XES 
-\size default
-Drucker (
-\size normal
-2700, 3700, 4045, etc.)
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-Falls das Ghostscript-Paket, das mit Ihrer Distribution ausgeliefert wurde,
- Ihren Drucker nicht unterstützt, können Sie versuchen, Ghostscript mit
- Hilfe des Quellcodes selbst zu übersetzen.
- Wenn Ihr Drucker nicht 
-\emph on
-direkt
-\emph default
- unterstützt wird, versuchen Sie es mit einem Treiber für einen kompatiblen
- Drucker.
-\end_layout
-
-\begin_layout Standard
-Beachten Sie, dass einige Drucker spezielle Kommandozeilenparameter benötigen.
- Zum Beispiel möchte der 
-\family typewriter
-stcolor
-\family default
--Treiber, dass die Datei 
-\family typewriter
-stcolor.ps
-\family default
- noch vor der eigentlichen Eingabedatei eingegeben wird.
- Für mehr Details sollten Sie die Dokumentation von Ghostscript lesen.
-\end_layout
-
-\begin_layout Standard
-Als nächstes bauen wir den Filter.
- Es empfiehlt sich, der Datei den Namen 
-\emph on
-druckername
-\family typewriter
-\emph default
-.filter
-\family default
- zu geben (dabei ist 
-\emph on
-druckername
-\emph default
- der Name, den Sie Ihrem Drucker in der 
-\family typewriter
-printcap
-\family default
--Datei gegeben haben).
- Zudem ist es sinnvoll, diese Datei in das Spulverzeichnis des Druckers
- zu schreiben.
- Das Filterskript sollte folgendes enthalten:
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-#!/bin/sh
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-/usr/bin/gs -q -dSAFER -dNOPAUSE
-\size default
- -
-\size normal
-sDEVICE=
-\family roman
-\size default
-\emph on
-Druckertreiber
-\family default
-\size normal
-\emph default
- 
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-  
-\size normal
-[-r
-\family roman
-\size default
-\emph on
-Auflösung
-\family default
-\size normal
-\emph default
- 
-\family roman
-\size default
-\emph on
-Zusatzoptionen
-\family default
-\size normal
-\emph default
-] -sOutputFile=
-\size default
- 
-\size normal
--[
-\family roman
-\size default
-\emph on
-VorangestellteDatei
-\family default
-\size normal
-\emph default
-.ps] -
-\end_layout
-
-\begin_layout Standard
-wobei 
-\emph on
-Druckertreiber
-\emph default
- den Treiber für Ihren Drucker angibt; 
-\emph on
-Auflösung
-\emph default
- ist die Auf\SpecialChar \textcompwordmark{}
-lösung, die Sie benutzen wollen; 
-\emph on
-Zusatzoptionen
-\emph default
- steht für alle möglichen anderen Optionen, mit denen Sie Ghostscript aufrufen
- möchten; das (optionale) 
-\emph on
-VorangestellteDatei
-\family typewriter
-\emph default
-.ps
-\family default
- ist der Name einer Datei, die Sie vor der eigentlichen Eingabedatei einfügen
- möchten.
- Das 
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-
-\backslash
-
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
- am Ende der zweiten Zeile ist der übliche Weg, in einem Shellskript einen
- Befehl in mehrere Zeilen aufzuspalten
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Ähnlich wie in der 
-\family typewriter
-printcap
-\family default
--Datei.
- Nur muss ein Shellskript bei weitem nicht so penibel geschrieben werden.
-\end_layout
-
-\end_inset
-
-.
- (Die Argumente in den eckigen Klammern sind optional und werden in vielen
- Fällen nicht benötigt.
- Die Klammern selbst erscheinen natürlich 
-\emph on
-nicht
-\emph default
- in der Filterdatei.)
-\end_layout
-
-\begin_layout Standard
-Beachten Sie, dass hier davon ausgegangen wird, dass sich das Programm Ghostscri
-pt (
-\family typewriter
-gs
-\family default
-) im Verzeichnis 
-\family typewriter
-/usr/bin/
-\family default
- befindet.
- Dies kann in Ihrem System anders sein.
-\end_layout
-
-\begin_layout Standard
-Verschiedene Druckertreiber behandeln das Argument 
-\family typewriter
--r
-\family default
- unterschiedlich.
- Einige suchen einfach nach einer einzelnen Zahl, zum Beispiel 
-\family typewriter
--r600
-\family default
-.
- Andere möchten die horizontale und die vertikale Auf\SpecialChar \textcompwordmark{}
-lösung einzeln eingegeben
- haben, zum Beispiel 
-\family typewriter
--r360x360
-\family default
-.
- Es kann sein, dass der Druckertreiber auch noch andere Optionen unterstützt.
- Genaueres müssen Sie in der Dokumentation von Ghostscript nachlesen.
-\end_layout
-
-\begin_layout Standard
-Nachdem Sie den Druckerfilter geschrieben haben, benutzen Sie 
-\family typewriter
-chmod a+X
-\family default
-, um die Skriptdatei zu einer ausführbaren Datei zu machen.
- (Dazu müssen Sie als 
-\begin_inset Quotes gld
-\end_inset
-
-root
-\begin_inset Quotes grd
-\end_inset
-
- eingeloggt sein.)
-\end_layout
-
-\begin_layout Standard
-Hier ist ein Beispielfilter, den 
-\size normal
-\noun on
-John Weiss
-\noun default
- 
-\size default
-für seinen 
-\size normal
-Epson Stylus Color IIs
-\size default
- benutzt
-\size normal
-:
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-#!/bin/sh
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-/usr/bin/gs -q -dSAFER -sDEVICE=stcolor 
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-             -r360x360 -sDithering=fsmono 
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-             -dNOPAUSE -dnoWeave 
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-             -sOutputFile=- stcolor.ps -
-\end_layout
-
-\begin_layout Standard
-Dieser Filter erzeugt eine Ausgabe in 
-\size normal
-360dpi 
-\size default
-und schwarzweiß für einen
-\size normal
- Epson Stylus Color IIs
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Bemerkung von 
-\noun on
-John Weiss
-\noun default
-: Dies ist mein 
-\family typewriter
-ps-
-\family default
-Drucker.
- Ich benutze einen ähnlichen Filter für meinen 
-\family typewriter
-draft
-\family default
--Drucker, der 
-\family typewriter
--r180x180
-\family default
- anstatt 
-\family typewriter
--r360x360
-\family default
- benutzt.
- Für meinen Drucker 
-\family typewriter
-color
-\family default
- benutze ich einen anderen Wert für den 
-\family typewriter
--sDithering
-\family default
- Parameter.
-\end_layout
-
-\end_inset
-
-
-\size default
-.
-\end_layout
-
-\begin_layout Subsection
-Wenn Ihr Drucker bereits PostScript versteht\SpecialChar \ldots{}
-
-\end_layout
-
-\begin_layout Standard
-Viele moderne Laserdrucker haben Post
-\size normal
-Script 
-\size default
-bereits eingebaut.
-
-\size normal
- 
-\size default
-Einige Laserdrucker benutzen 
-\size normal
-PostScript 
-\size default
-sogar als Ihre 
-\begin_inset Quotes gld
-\end_inset
-
-Muttersprache
-\begin_inset Quotes grd
-\end_inset
-
-.
- Wenn Sie über solch einen Drucker verfügen, benötigen Sie keinen Filter,
- sondern können Ihre Ausgabe direkt an den Drucker weiterleiten.
- Allerdings -- wenn Sie eine einfache Textdatei drucken möchten, werden
- Sie den Text erst irgendwie in 
-\size normal
-PostScript 
-\size default
-formatieren müssen.
-\end_layout
-
-\begin_layout Standard
-Es gibt drei verbreitete Programme, die ASCII-Dateien nach 
-\size normal
-PostScript
-\size default
- übersetzen
-\size normal
-: 
-\family typewriter
-nenscript
-\family default
-, 
-\family typewriter
-a2ps
-\family default
-, 
-\size default
-u
-\size normal
-nd 
-\family typewriter
-mpage
-\family default
-.
- 
-\family typewriter
-mpage
-\family default
- 
-\size default
-kann auch mehrere Textseiten auf ein einzelnes Blatt Papier drucken.
- Für Ihren 
-\family typewriter
-lp
-\family default
--Drucker sollten Sie ein Filterskript erzeugen, das eines dieser Programme
- zur Umwandlung benutzt.
- (Der 
-\family typewriter
-lp
-\family default
--Drucker ist der traditionelle Name des Druckers, der einfache ASCII-Texte
- druckt.) Lesen Sie für weitere Informationen die 
-\family typewriter
-\size normal
-Printing-HOWTO
-\family default
-\size default
-.
-
-\size normal
- 
-\end_layout
-
-\begin_layout Section
-Der Druckerspuldämon 
-\family typewriter
-lpd
-\end_layout
-
-\begin_layout Standard
-Das Programm, das letztlich die Druckaufträge ausführt, heißt 
-\family typewriter
-lpd
-\family default
-.
- Dies ist auch das Programm, das die Datei 
-\family typewriter
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-/etc/printcap
-\end_layout
-
-\end_inset
-
-
-\family default
-\size normal
- 
-\size default
-liest.
- Irgendwo in den Shellskripts, die ausgeführt werden, wenn Ihr Computer
- hochgefahren wird
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Auf einigen Computern stehen diese 
-\emph on
-bootup scripts
-\emph default
- im Verzeichnis 
-\family typewriter
-/etc/rc.d
-\family default
-.
- Andere benutzen 
-\family typewriter
-/etc/init.d
-\family default
- oder 
-\family typewriter
-/sbin/init.d
-\family default
-.
- Das müssen Sie selbst herausfinden.
-\end_layout
-
-\end_inset
-
-, muss auch 
-\family typewriter
-lpd
-\family default
- gestartet werden, damit der Druckerspooler immer nach dem Hochfahren des
- Systems zur Verfügung steht.
- Im Prinzip können Sie auch jedes Mal 
-\family typewriter
-lpd
-\family default
- von Hand starten, wenn Sie als 
-\begin_inset Quotes gld
-\end_inset
-
-root
-\begin_inset Quotes grd
-\end_inset
-
- eingeloggt sind.
-\end_layout
-
-\begin_layout Standard
-Wenn 
-\family typewriter
-lpd
-\family default
- erst einmal auf Ihrem System läuft, können Sie ihn mit Hilfe des 
-\family typewriter
-lpc-B
-\family default
-efehls kontrollieren.
- Auch hierzu müssen Sie als 
-\begin_inset Quotes gld
-\end_inset
-
-root
-\begin_inset Quotes grd
-\end_inset
-
- eingeloggt sein.
-\end_layout
-
-\begin_layout Section
-Kurze Zusammenfassung
-\end_layout
-
-\begin_layout Standard
-Zum Abschluss fassen wir noch einmal die Schritte zusammen, die Sie durchführen
- müssen, um eine minimale Konfiguration zu erreichen.
- Wenn Sie fertig sind, haben Sie zwei Drucker: der eine heißt 
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-lp
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
- und dient dazu, ASCII zu drucken, der andere heißt 
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-ps
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
- und verarbeitet Aufträge in 
-\size normal
-PostScript
-\size default
-.
- Der Druckerfilter für den 
-\size normal
-
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-ps
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
-
-\size default
--Drucker (siehe unten) arbeitet mit jedem Epson-kompatiblen Drucker (heutzutage
- ist fast jeder Nadeldrucker Epson-kompatibel) und benutzt die Standardauf\SpecialChar \textcompwordmark{}
-lösung.
-
-\size normal
- 
-\end_layout
-
-\begin_layout Enumerate
-
-\size normal
-Log
-\size default
-gen Sie sich als 
-\size normal
-
-\begin_inset Quotes gld
-\end_inset
-
-root
-\begin_inset Quotes grd
-\end_inset
-
- 
-\size default
-ein oder benutzen Sie
-\size normal
- 
-\family typewriter
-su root
-\family default
-.
- 
-\end_layout
-
-\begin_layout Enumerate
-Führen Sie folgende Befehle aus:
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-
-\family typewriter
-\size normal
-cd /var/spool
-\end_layout
-
-\begin_layout Enumerate
-
-\family typewriter
-\size normal
-mkdir lpd
-\family default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-(wenn es nicht bereits existiert)
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-
-\family typewriter
-\size normal
-chgrp lp lpd
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-(Möglicherweise müssen Sie 
-\family typewriter
-\size normal
-daemon
-\family default
- 
-\size default
-statt 
-\family typewriter
-\size normal
-lp
-\family default
-\size default
- benutzen)
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-
-\family typewriter
-\size normal
-cd lpd
-\end_layout
-
-\begin_layout Enumerate
-
-\family typewriter
-\size normal
-mkdir lp ps
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-(nur falls diese Verzeichnisse noch nicht existieren)
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-
-\family typewriter
-\size normal
-touch lp/errs ps/errs
-\end_layout
-
-\begin_layout Enumerate
-
-\family typewriter
-\size normal
-chgrp daemon lp ps lp/errs ps/errs
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-Editieren Sie nun Ihre Datei
-\size normal
- 
-\family typewriter
-/etc/printcap
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Wenn diese Datei bereits existiert, sollten Sie\SpecialChar \ldots{}
-
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-\SpecialChar \ldots{}
-entweder die alte Version umbenennen (zum Beispiel in
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-/etc/printcap.orig
-\end_layout
-
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Enumerate
-\SpecialChar \ldots{}
-oder alle Einträge auskommentieren, indem Sie an den Anfang jeder Zeile
- ein 
-\size normal
-
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-#
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
-
-\size default
--Zeichen schreiben.
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-Erstellen Sie in Ihrer
-\size normal
- 
-\family typewriter
-/etc/printcap
-\family default
-\size default
- folgende Einträge
-\size normal
-:
-\end_layout
-
-\begin_deeper
-\begin_layout LyX-Code
-
-\size normal
-lp|Text printer:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :lp=/dev/lp1:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :sd=/var/spool/lpd/lp:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :lf=/var/spool/lpd/lp/errs:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :mx#0:sh:sf:
-\begin_inset Newline newline
-\end_inset
-
-
-\size default
-
-\begin_inset Newline newline
-\end_inset
-
-
-\size normal
-ps|Post
-\size default
-S
-\size normal
-cript
-\size default
-(R)
-\size normal
- printer:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :lp=/dev/lp1:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :sd=/var/spool/lpd/ps:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :lf=/var/spool/lpd/ps/errs:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :if=/var/spool/lpd/ps/ps.filter:
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-        :mx#0:sh:sf:
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-STELLEN SIE SICHER, DASS:
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-nichts in einer Leerzeile zwischen zwei Einträgen steht -- nicht einmal
- ein Leerzeichen.
-
-\size normal
- 
-\end_layout
-
-\begin_layout Enumerate
-hinter dem 
-\size normal
-
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-
-\backslash
-
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
-
-\size default
--Zeichen am Ende jeder Zeile kein anderes Zeichen mehr steht.
-
-\size normal
- 
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout Enumerate
-Als nächstes, erstellen Sie ein Filterskript für den Drucker 
-\family typewriter
-\size normal
-ps
-\family default
-\size default
-.
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Erstellen Sie eine Datei 
-\family typewriter
-\size normal
-/var/spool/lpd/ps/ps.filter
-\family default
-\size default
- mit folgendem Inhalt
-\size normal
-:
-\end_layout
-
-\begin_deeper
-\begin_layout LyX-Code
-
-\size normal
-#!/bin/sh
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-/usr/bin/gs -q -dSAFER -dNOPAUSE 
-\backslash
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\size normal
-            -sDEVICE=epson -sOutputFile=- -
-\end_layout
-
-\begin_layout Standard
-(Wenn Ihr Drucker nicht Epson-kompatibel sein sollte, ersetzen Sie 
-\begin_inset Quotes gld
-\end_inset
-
-
-\family typewriter
-epson
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
- durch den entsprechenden Treibernamen Ihres Druckers.
- Wenn sich das Programm 
-\family typewriter
-gs
-\family default
- nicht in 
-\family typewriter
-/usr/bin
-\family default
- befinden sollte, korrigieren Sie den Pfad.)
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-Führen Sie folgende Befehle aus:
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-
-\family typewriter
-\size normal
-chmod a+X /var/spool/lpd/ps/ps.filter
-\end_layout
-
-\begin_layout Enumerate
-
-\family typewriter
-\size normal
-chgrp daemon /var/spool/lpd/ps/ps.filter
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout Enumerate
-Zuletzt starten Sie den Druckerdämon
-\size normal
- 
-\family typewriter
-lpd
-\family default
-:
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Wenn er noch nicht läuft, benutzen Sie 
-\family typewriter
-\size normal
-lpd &
-\family default
-\size default
-, um ihn zu starten.
- 
-\end_layout
-
-\begin_layout Enumerate
-Wenn er bereits läuft, starten Sie das Programm 
-\family typewriter
-\size normal
-lpc
-\family default
-.
- 
-\size default
-Danach (in 
-\family typewriter
-\size normal
-lpc
-\family default
-\size default
-) führen Sie ein 
-\family typewriter
-\size normal
-restart all
-\family default
- 
-\size default
-und ein 
-\family typewriter
-\size normal
-up all
-\family default
- 
-\size default
-aus.
- Diese Befehle aktivieren die neuen Einträge in 
-\family typewriter
-/etc/printcap
-\family default
-.
- (Mit 
-\family typewriter
-\size normal
-quit
-\family default
- 
-\size default
-können Sie 
-\family typewriter
-\size normal
-lpc
-\family default
-\size default
- wieder verlassen
-\size normal
-.
-\size default
-)
-\end_layout
-
-\begin_layout Enumerate
-Stellen Sie sicher, dass 
-\family typewriter
-\size normal
-lpd
-\family default
- 
-\size default
-irgendwo in Ihren Bootscripts ausgeführt wird.
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-Sie können sich jetzt wieder als 
-\emph on
-root
-\emph default
- ausloggen und Ihre neuen Druckereinträge testen.
- Führen Sie 
-\family typewriter
-l
-\size normal
-pr -Plp
-\family default
-\size default
- aus, gefolgt von dem Namen einer kurzen (ASCII) Textdatei, um den Drucker
- 
-\family typewriter
-lp
-\family default
- zu testen; entsprechend testen Sie den Drucker 
-\family typewriter
-ps
-\family default
-, indem Sie 
-\family typewriter
-\size normal
-lpr -Pps
-\family default
-\size default
-,
-\size normal
- 
-\size default
-gefolgt vom Namen einer kurzen Datei im 
-\size normal
-PostScript
-\size default
--Format, eingeben.
-
-\size normal
- 
-\end_layout
-
-\begin_layout Standard
-Noch ein Wort zur Vorsicht: wenn Sie den Drucker 
-\family typewriter
-ps
-\family default
- testen und der Drucker falsch konfiguriert wurde, wird der Computer vermutlich
- eine Unmenge Müll an Ihren Drucker schicken.
- Wenn dies passieren sollte, schalten Sie Ihren Drucker ab und benutzen
- die Befehle 
-\family typewriter
-\size normal
-lpq
-\family default
- 
-\size default
-und
-\size normal
- 
-\family typewriter
-lprm
-\family default
-\size default
-, um den Druckauftrag zu widerrufen.
-
-\size normal
- 
-\size default
-Anschließend können Sie Ihren Drucker wieder einschalten.
-\end_layout
-
-\begin_layout Standard
-Wenn einer der beiden Drucker nicht funktioniert, überprüfen Sie alle Schritte
- noch einmal.
- Ansonsten können Ihnen die Man
-\size normal
-pages 
-\size default
-für 
-\family typewriter
-\size normal
-printcap
-\family default
- 
-\size default
-und
-\size normal
- 
-\family typewriter
-lpd
-\family default
- 
-\size default
-und das 
-\family typewriter
-\size normal
-Printing-
-\family default
-\size default
- 
-\family typewriter
-\size normal
-HOWTO
-\family default
- 
-\size default
-weiterhelfen.
-\end_layout
-
-\begin_layout Standard
-Wenn alles funktioniert, herzlichen Glückwunsch!
-\end_layout
-
-\begin_layout Chapter
-Externes Material
-\begin_inset CommandInset label
-LatexCommand label
-name "cha:Externes"
-
-\end_inset
-
- einfügen
 \end_layout
 
 \begin_layout Section
@@ -12961,9 +12190,9 @@ Externes
 
 Material
 \family default
- ist der Versuch, diese Probleme zu lösen
+ ist der Versuch, diese Probleme zu lösen.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Auch wenn das alte Grafik-Inset einige Mängel hat, so ist es dennoch sehr
@@ -12974,7 +12203,6 @@ Auch wenn das alte Grafik-Inset einige Mängel hat, so ist es dennoch sehr
 
 \end_inset
 
-.
  Dies wird erreicht, indem eine abstrahierte Methode der Interaktion zwischen
  LyX und einer externen Anwendung definiert wird.
  Anstatt also eine lange Liste von Einfügungen für alle möglichen Arten
@@ -13446,7 +12674,7 @@ Die Vorlagendefinitionen befinden sich in der Datei
 \family typewriter
 Ly
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -13586,7 +12814,7 @@ Im Verzeichnis
 \family typewriter
 Ly
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
