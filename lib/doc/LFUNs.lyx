@@ -49,7 +49,7 @@ theorems-ams
 \begin_body
 
 \begin_layout Section*
-LFUNs documentation automatically generated 11.04.2009.
+LFUNs documentation automatically generated 26.04.2009.
 \end_layout
 
 \begin_layout Standard
@@ -5455,6 +5455,12 @@ LFUN_SERVER_GOTO_FILE_ROW
 \begin_layout Description
 Action Sets the cursor position based on the row number of generated TeX
  file.
+  
+\end_layout
+
+\begin_layout Description
+Notion This can be useful for DVI inverse-search or detection of the problematic
+ line from LaTeX compilation.
   
 \end_layout
 
