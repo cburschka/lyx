@@ -2661,6 +2661,8 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_SERVER_GOTO_FILE_ROW
  * \li Action: Sets the cursor position based on the row number of generated TeX file.
+ * \li Notion: This can be useful for DVI inverse-search or detection of the problematic
+               line from LaTeX compilation.
  * \li Syntax: server-goto-file-row <LYX_FILE_NAME> <ROW_NUMBER>
  * \li Origin: Edmar, 23 Dec 1998
  * \endvar
