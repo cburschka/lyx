@@ -128,7 +128,13 @@ What's new
   space.
 
 - Fix bug when using the characters # and % in hyperlinks that are e.g.
-  in footnotes (bug 5908). 
+  in footnotes (bug 5908).
+  
+- Fix reversion of aligned tables in subfloats to LyX 1.5 (bug 5918).
+  
+- Fix reversion of info insets with a backslash to LyX 1.5.
+
+- Fix unicode characters > LaTeX macro reversion to LyX 1.5.
 
 - Fix LaTeX export of an isolated Japanese character when using
   ISO-2022-JP encoding (bug 5802).
