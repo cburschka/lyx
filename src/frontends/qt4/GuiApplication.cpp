@@ -357,7 +357,7 @@ QString iconName(FuncRequest const & f, bool unknown)
 			   << '(' << to_utf8(f.argument()) << ")\"");
 
 	if (unknown) {
-		fname = libFileSearch("images/", "unknown", "png");
+		fname = libFileSearch(QString("images/"), "unknown", "png");
 		if (fname.exists())
 			return toqstr(fname.absFilename());
 		return QString(":/images/unknown.png");
