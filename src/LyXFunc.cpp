@@ -1161,10 +1161,13 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				// Either change buffer or load the file
 				if (theBufferList().exists(s))
 					buf = theBufferList().getBuffer(s);
-				else {
+				else if (s.exists()) {
 					buf = lyx_view_->loadDocument(s);
 					loaded = true;
-				}
+				} else
+					lyx_view_->message(bformat(
+						_("File does not exist: %1$s"),
+						makeDisplayPath(file_name)));
 			}
 
 			if (!buf) {

@@ -283,6 +283,9 @@ What's new
 
 - Do not indent line when pressing tab in a program listing with an
   inline selection (bug 5894).
+
+- Fix crash when passing a nonexisting file to the lyx function
+  server-goto-file-row.
   
 
 * DOCUMENTATION AND LOCALIZATION
