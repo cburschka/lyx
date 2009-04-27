@@ -580,6 +580,31 @@ def revert_subindex(document):
         i = i + 1
 
 
+def revert_printindexall(document):
+    " Reverts \\print[sub]index* CommandInset types "
+    i = find_token(document.header, '\\use_indices', 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\use_indices.")
+        return
+    indices = get_value(document.header, "\\use_indices", i)
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset CommandInset index_print", i)
+        if i == -1:
+            return
+        k = find_end_of_inset(document.body, i)
+        ctype = get_value(document.body, 'LatexCommand', i, k)
+        if ctype != "printindex*" and ctype != "printsubindex*":
+            i = i + 1
+            continue
+        if indices == "false":
+            del document.body[i:k+1]
+        else:
+            subst = [put_cmd_in_ert("\\" + ctype + "{}")]
+            document.body[i:k+1] = subst
+        i = i + 1
+
+
 ##
 # Conversion hub
 #
@@ -592,10 +617,12 @@ convert = [[346, []],
            [350, []],
            [351, []],
            [352, [convert_splitindex]],
-           [353, []]
+           [353, []],
+           [354, []]
           ]
 
-revert =  [[352, [revert_subindex]],
+revert =  [[353, [revert_printindexall]],
+           [352, [revert_subindex]],
            [351, [revert_splitindex]],
            [350, [revert_backgroundcolor]],
            [349, [revert_outputformat]],

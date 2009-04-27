@@ -520,6 +520,7 @@ Menuset
 #
 
 	Menu "context-indexprint"
+		Item "All Indices|A" "next-inset-modify check-printindex*"
 		IndicesListsContext
 		Separator
 		Item "Subindex|b" "next-inset-modify toggle-subindex"

@@ -21,11 +21,14 @@
 #include "FuncRequest.h"
 #include "IndicesList.h"
 
+#include "support/lstrings.h"
+
 #include "insets/InsetCommand.h"
 
 #include <QPushButton>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 namespace frontend {
@@ -58,9 +61,13 @@ void GuiPrintindex::updateContents()
 	typedef IndicesList::const_iterator const_iterator;
 
 	IndicesList const & indiceslist = buffer().params().indiceslist();
-	docstring const cur_index = params_["type"];
+	docstring const cur_index = suffixIs(params_.getCmdName(), '*') ?
+		from_ascii("printall") : params_["type"];
 
 	indicesCO->clear();
+
+	indicesCO->addItem(qt_("<All indices>"),
+			QVariant(QString("printall")));
 
 	const_iterator const begin = indiceslist.begin();
 	const_iterator const end = indiceslist.end();
@@ -78,17 +85,24 @@ void GuiPrintindex::applyView()
 {
 	QString const index = indicesCO->itemData(
 		indicesCO->currentIndex()).toString();
+	string cmd = "printindex";
 	if (subindexCB->isChecked())
-		params_.setCmdName("printsubindex");
+		cmd = "printsubindex";
+	if (index == QString("printall"))
+		cmd += '*';
+	params_.setCmdName(cmd);
+	if (index == QString("printall"))
+		params_["type"] = docstring();
 	else
-		params_.setCmdName("printindex");
-	params_["type"] = qstring_to_ucs4(index);
+		params_["type"] = qstring_to_ucs4(index);
 }
 
 
 void GuiPrintindex::paramsToDialog(InsetCommandParams const & /*icp*/)
 {
-	int const pos = indicesCO->findData(toqstr(params_["type"]));
+	int const pos = suffixIs(params_.getCmdName(), '*') ?
+		indicesCO->findData(QString("printall")) :
+		indicesCO->findData(toqstr(params_["type"]));
 	subindexCB->setChecked(params_.getCmdName() == "printsubindex");
 	indicesCO->setCurrentIndex(pos);
 	bc().setValid(isValid());

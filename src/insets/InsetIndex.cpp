@@ -398,21 +398,30 @@ ParamInfo const & InsetPrintIndex::findInfo(string const & /* cmdName */)
 
 docstring InsetPrintIndex::screenLabel() const
 {
-	if ((!buffer().masterBuffer()->params().use_indices
+	bool const printall = suffixIs(getCmdName(), '*');
+	bool const multind = buffer().masterBuffer()->params().use_indices;
+	if ((!multind
 	     && getParam("type") == from_ascii("idx"))
-	    || getParam("type").empty())
+	    || (getParam("type").empty() && !printall))
 		return _("Index");
 	Buffer const & realbuffer = *buffer().masterBuffer();
 	IndicesList const & indiceslist = realbuffer.params().indiceslist();
 	Index const * index = indiceslist.findShortcut(getParam("type"));
-	if (!index)
+	if (!index && !printall)
 		return _("Unknown index type!");
-	docstring res = index->index();
-	if (!buffer().masterBuffer()->params().use_indices)
+	docstring res = printall ? _("All indices") : index->index();
+	if (!multind)
 		res += " (" + _("non-active") + ")";
-	else if (getCmdName() == "printsubindex")
+	else if (contains(getCmdName(), "printsubindex"))
 		res += " (" + _("subindex") + ")";
 	return res;
+}
+
+
+bool InsetPrintIndex::isCompatibleCommand(string const & s)
+{
+	return s == "printindex" || s == "printsubindex"
+		|| s == "printindex*" || s == "printsubindex*";
 }
 
 
@@ -422,10 +431,20 @@ void InsetPrintIndex::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY: {
 		if (cmd.argument() == from_ascii("toggle-subindex")) {
-			if (getCmdName() == "printindex")
-				setCmdName("printsubindex");
+			string cmd = getCmdName();
+			if (contains(cmd, "printindex"))
+				cmd = subst(cmd, "printindex", "printsubindex");
 			else
-				setCmdName("printindex");
+				cmd = subst(cmd, "printsubindex", "printindex");
+			setCmdName(cmd);
+			break;
+		} else if (cmd.argument() == from_ascii("check-printindex*")) {
+			string cmd = getCmdName();
+			if (suffixIs(cmd, '*'))
+				break;
+			cmd += '*';
+			setParam("type", docstring());
+			setCmdName(cmd);
 			break;
 		}
 		InsetCommandParams p(INDEX_PRINT_CODE);
@@ -455,13 +474,22 @@ bool InsetPrintIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_INSET_MODIFY: {
 		if (cmd.argument() == from_ascii("toggle-subindex")) {
 			status.setEnabled(buffer().masterBuffer()->params().use_indices);
-			status.setOnOff(getCmdName() == "printsubindex");
+			status.setOnOff(contains(getCmdName(), "printsubindex"));
+			return true;
+		} else if (cmd.argument() == from_ascii("check-printindex*")) {
+			status.setEnabled(buffer().masterBuffer()->params().use_indices);
+			status.setOnOff(suffixIs(getCmdName(), '*'));
 			return true;
 		} if (cmd.getArg(0) == "index_print"
 		    && cmd.getArg(1) == "CommandInset") {
 			InsetCommandParams p(INDEX_PRINT_CODE);
 			InsetCommand::string2params("index_print",
 				to_utf8(cmd.argument()), p);
+			if (suffixIs(p.getCmdName(), '*')) {
+				status.setEnabled(true);
+				status.setOnOff(false);
+				return true;
+			}
 			Buffer const & realbuffer = *buffer().masterBuffer();
 			IndicesList const & indiceslist =
 				realbuffer.params().indiceslist();

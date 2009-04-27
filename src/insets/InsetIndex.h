@@ -98,8 +98,7 @@ public:
 	///
 	static std::string defaultCommand() { return "printindex"; };
 	///
-	static bool isCompatibleCommand(std::string const & s)
-		{ return s == "printindex" || s == "printsubindex"; }
+	static bool isCompatibleCommand(std::string const & s);
 	///
 	int latex(odocstream &, OutputParams const &) const;
 	///
