@@ -322,6 +322,71 @@ def latex2lyx(data):
     return retval
 
 
+def lyxline2latex(document, line, inert):
+    'Convert some LyX stuff into corresponding LaTeX stuff line-wise, as best we can.'
+    if line.startswith("\\begin_inset Formula"):
+        line = line[20:]
+    elif line.startswith("\\begin_inset Quotes"):
+        # For now, we do a very basic reversion. Someone who understands
+        # quotes is welcome to fix it up.
+        qtype = line[20:].strip()
+        # lang = qtype[0]
+        side = qtype[1]
+        dbls = qtype[2]
+        if side == "l":
+            if dbls == "d":
+                line = "``"
+            else:
+                line = "`"
+        else:
+            if dbls == "d":
+                line = "''"
+            else:
+                line = "'"
+    elif line.isspace() or \
+          line.startswith("\\begin_layout") or \
+          line.startswith("\\end_layout") or \
+          line.startswith("\\begin_inset") or \
+          line.startswith("\\end_inset") or \
+          line.startswith("\\lang") or \
+          line.strip() == "status collapsed" or \
+          line.strip() == "status open":
+        #skip all that stuff
+        return ""
+
+    # this needs to be added to the preamble because of cases like
+    # \textmu, \textbackslash, etc.
+    add_to_preamble(document, ['% added by lyx2lyx for converted entries',
+                               '\\@ifundefined{textmu}',
+                               ' {\\usepackage{textcomp}}{}'])
+    # a lossless reversion is not possible
+    # try at least to handle some common insets and settings
+    if inert:
+        line = line.replace(r'\backslash', '\\')
+    else:
+        line = line.replace('&', '\\&{}')
+        line = line.replace('#', '\\#{}')
+        line = line.replace('^', '\\^{}')
+        line = line.replace('%', '\\%{}')
+        line = line.replace('_', '\\_{}')
+        line = line.replace('$', '\\${}')
+
+        # Do the LyX text --> LaTeX conversion
+        for rep in unicode_reps:
+            line = line.replace(rep[1], rep[0].replace('\\\\', '\\') + "{}")
+            line = line.replace(r'\backslash', r'\textbackslash{}')
+            line = line.replace(r'\series bold', r'\bfseries{}').replace(r'\series default', r'\mdseries{}')
+            line = line.replace(r'\shape italic', r'\itshape{}').replace(r'\shape smallcaps', r'\scshape{}')
+            line = line.replace(r'\shape slanted', r'\slshape{}').replace(r'\shape default', r'\upshape{}')
+            line = line.replace(r'\emph on', r'\em{}').replace(r'\emph default', r'\em{}')
+            line = line.replace(r'\noun on', r'\scshape{}').replace(r'\noun default', r'\upshape{}')
+            line = line.replace(r'\bar under', r'\underbar{').replace(r'\bar default', r'}')
+            line = line.replace(r'\family sans', r'\sffamily{}').replace(r'\family default', r'\normalfont{}')
+            line = line.replace(r'\family typewriter', r'\ttfamily{}').replace(r'\family roman', r'\rmfamily{}')
+            line = line.replace(r'\InsetSpace ', r'').replace(r'\SpecialChar ', r'')
+    return line
+
+
 def lyx2latex(document, lines):
     'Convert some LyX stuff into corresponding LaTeX stuff, as best we can.'
     # clean up multiline stuff
@@ -329,73 +394,15 @@ def lyx2latex(document, lines):
     ert_end = 0
 
     for curline in range(len(lines)):
-      line = lines[curline]
-      if line.startswith("\\begin_inset ERT"):
-          # We don't want to replace things inside ERT, so figure out
-          # where the end of the inset is.
-          ert_end = find_end_of_inset(lines, curline + 1)
-          continue
-      elif line.startswith("\\begin_inset Formula"):
-          line = line[20:]
-      elif line.startswith("\\begin_inset Quotes"):
-          # For now, we do a very basic reversion. Someone who understands
-          # quotes is welcome to fix it up.
-          qtype = line[20:].strip()
-          # lang = qtype[0]
-          side = qtype[1]
-          dbls = qtype[2]
-          if side == "l":
-              if dbls == "d":
-                  line = "``"
-              else:
-                  line = "`"
-          else:
-              if dbls == "d":
-                  line = "''"
-              else:
-                  line = "'"
-      elif line.isspace() or \
-            line.startswith("\\begin_layout") or \
-            line.startswith("\\end_layout") or \
-            line.startswith("\\begin_inset") or \
-            line.startswith("\\end_inset") or \
-            line.startswith("\\lang") or \
-            line.strip() == "status collapsed" or \
-            line.strip() == "status open":
-          #skip all that stuff
-          continue
-
-      # this needs to be added to the preamble because of cases like
-      # \textmu, \textbackslash, etc.
-      add_to_preamble(document, ['% added by lyx2lyx for converted index entries',
-                                 '\\@ifundefined{textmu}',
-                                 ' {\\usepackage{textcomp}}{}'])
-      # a lossless reversion is not possible
-      # try at least to handle some common insets and settings
-      if ert_end >= curline:
-          line = line.replace(r'\backslash', r'\\')
-      else:
-          line = line.replace('&', '\\&{}')
-          line = line.replace('#', '\\#{}')
-          line = line.replace('^', '\\^{}')
-          line = line.replace('%', '\\%{}')
-          line = line.replace('_', '\\_{}')
-          line = line.replace('$', '\\${}')
-
-          # Do the LyX text --> LaTeX conversion
-          for rep in unicode_reps:
-            line = line.replace(rep[1], rep[0] + "{}")
-          line = line.replace(r'\backslash', r'\textbackslash{}')
-          line = line.replace(r'\series bold', r'\bfseries{}').replace(r'\series default', r'\mdseries{}')
-          line = line.replace(r'\shape italic', r'\itshape{}').replace(r'\shape smallcaps', r'\scshape{}')
-          line = line.replace(r'\shape slanted', r'\slshape{}').replace(r'\shape default', r'\upshape{}')
-          line = line.replace(r'\emph on', r'\em{}').replace(r'\emph default', r'\em{}')
-          line = line.replace(r'\noun on', r'\scshape{}').replace(r'\noun default', r'\upshape{}')
-          line = line.replace(r'\bar under', r'\underbar{').replace(r'\bar default', r'}')
-          line = line.replace(r'\family sans', r'\sffamily{}').replace(r'\family default', r'\normalfont{}')
-          line = line.replace(r'\family typewriter', r'\ttfamily{}').replace(r'\family roman', r'\rmfamily{}')
-          line = line.replace(r'\InsetSpace ', r'').replace(r'\SpecialChar ', r'')
-      content += line
+        line = lines[curline]
+        if line.startswith("\\begin_inset ERT"):
+            # We don't want to replace things inside ERT, so figure out
+            # where the end of the inset is.
+            ert_end = find_end_of_inset(lines, curline + 1)
+            continue
+        inert = ert_end >= curline
+        content += lyxline2latex(document, lines[curline], inert)
+      
     return content
 
 
@@ -1239,7 +1246,9 @@ def revert_inset_info(document):
                 if arg[len(arg) - 1] == '"':
                     arg = arg[:len(arg) - 1]
                 # \" to straight quote
-                arg = arg.replace(r'\"','"')
+                arg = arg.replace(r'\"', '"')
+                # \ to \backslash
+                arg = arg.replace(r'\\', "\\backslash\n")
             if document.body[k].startswith("type"):
                 type = document.body[k][4:].strip().strip('"')
         # I think there is a newline after \\end_inset, which should be removed.
@@ -2219,7 +2228,7 @@ def revert_subfig(document):
             if l == -1:
                 document.warning("Malformed lyx document: Missing '\\end_inset' (embedded float).")
                 i += 1
-                j == -1
+                j = -1
                 continue # escape to the outer loop
             m = find_default_layout(document, k + 1, l)
             # caption?
@@ -2271,14 +2280,15 @@ def revert_subfig(document):
                         continue
                     elif line in document.body[opt:optend]:
                         continue
-                    elif not line.startswith('\\'):
-                        caption += line.strip()
+                    else:
+                        inert = True
+                        caption += lyxline2latex(document, line, inert)
                 if len(label) > 0:
-                    caption += "\\backslash\nlabel{" + label + "}"
-            subst = '\\begin_layout Plain Layout\n\\begin_inset ERT\nstatus collapsed\n\n' \
-                      '\\begin_layout Plain Layout\n\n}' + alignment_end + \
+                    caption += "\n\\backslash\nlabel{" + label + "}"
+            subst = '\\begin_layout PlainLayout\n\\begin_inset ERT\nstatus collapsed\n\n' \
+                      '\\begin_layout PlainLayout\n\n}' + alignment_end + \
                       '\n\\end_layout\n\n\\end_inset\n\n' \
-                      '\\end_layout\n\n\\begin_layout Plain Layout\n'
+                      '\\end_layout\n\n\\begin_layout PlainLayout\n'
             subst = subst.split('\n')
             document.body[l : l+1] = subst
             addedLines = len(subst) - 1
@@ -2289,7 +2299,7 @@ def revert_subfig(document):
             del document.body[k+1:m-1]
             addedLines -= (m - 1 - (k + 1))
             insertion = '\\begin_inset ERT\nstatus collapsed\n\n' \
-                        '\\begin_layout Plain Layout\n\n' + alignment_beg + '\\backslash\n' \
+                        '\\begin_layout PlainLayout\n\n' + alignment_beg + '\n\\backslash\n' \
                         'subfloat'
             if len(shortcap) > 0:
                 insertion = insertion + "[" + shortcap + "]"
@@ -2299,6 +2309,7 @@ def revert_subfig(document):
             insertion = insertion.split('\n')
             document.body[k : k + 1] = insertion
             addedLines += len(insertion) - 1
+            al = find_token(document.body, '\\align ', k - 1, j + addedLines)
             if al != -1:
                 del document.body[al]
                 addedLines -= 1
@@ -2925,7 +2936,7 @@ def convert_plain_layout(document):
 
 
 def revert_plain_layout(document):
-    " Convert 'PlainLayout' to 'Plain Layout'"
+    " Revert 'Plain Layout' to 'PlainLayout'"
     i = 0
     while True:
         i = find_token(document.body, '\\begin_layout Plain Layout', i)
@@ -2937,7 +2948,7 @@ def revert_plain_layout(document):
 
 
 def revert_plainlayout(document):
-    " Convert 'PlainLayout' to 'Plain Layout'"
+    " Revert 'PlainLayout' to 'Standard'"
     i = 0
     while True:
         i = find_token(document.body, '\\begin_layout PlainLayout', i)
