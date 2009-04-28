@@ -180,6 +180,9 @@ What's new
 
 - Fix crash when the dos-box is closed from which LyX was started
   (bug 5758).
+  
+- Fix crash when passing a nonexisting file to the lyx function
+  server-goto-file-row.
 
 - After reloading a child document, correctly re-assign the master
   (bug 5873).
@@ -283,9 +286,6 @@ What's new
 
 - Do not indent line when pressing tab in a program listing with an
   inline selection (bug 5894).
-
-- Fix crash when passing a nonexisting file to the lyx function
-  server-goto-file-row.
   
 
 * DOCUMENTATION AND LOCALIZATION
