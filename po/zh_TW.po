@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-04-19 17:00+0200\n"
+"POT-Creation-Date: 2009-04-29 03:11+0200\n"
 "PO-Revision-Date: 2008-08-04 22:57+0100\n"
 "Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -75,7 +75,7 @@ msgstr "虛設(&D)"
 #: src/frontends/qt4/ui/MathMatrixUi.ui:167
 #: src/frontends/qt4/ui/NomenclUi.ui:92 src/frontends/qt4/ui/NoteUi.ui:38
 #: src/frontends/qt4/ui/ParagraphUi.ui:82 src/frontends/qt4/ui/PhantomUi.ui:38
-#: src/frontends/qt4/ui/PrintindexUi.ui:41 src/frontends/qt4/ui/RefUi.ui:239
+#: src/frontends/qt4/ui/PrintindexUi.ui:38 src/frontends/qt4/ui/RefUi.ui:239
 #: src/frontends/qt4/ui/SendtoUi.ui:72 src/frontends/qt4/ui/ShortcutUi.ui:52
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
@@ -88,7 +88,7 @@ msgstr "確定(&O)"
 #: src/frontends/qt4/ui/CitationUi.ui:461
 #: src/frontends/qt4/ui/DocumentUi.ui:152 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
-#: src/frontends/qt4/ui/PrintindexUi.ui:78 src/Buffer.cpp:908
+#: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:908
 #: src/Buffer.cpp:1696 src/Buffer.cpp:2880 src/Buffer.cpp:2904
 #: src/Buffer.cpp:2939 src/LyXFunc.cpp:740 src/LyXFunc.cpp:870
 #: src/LyXVC.cpp:182 src/frontends/qt4/GuiClipboard.cpp:208
@@ -1673,12 +1673,12 @@ msgstr "編輯檔案"
 msgid "&Edit"
 msgstr "編輯(&E)"
 
-#: src/frontends/qt4/ui/IndexUi.ui:59 src/frontends/qt4/ui/PrintindexUi.ui:59
+#: src/frontends/qt4/ui/IndexUi.ui:59 src/frontends/qt4/ui/PrintindexUi.ui:79
 #, fuzzy
 msgid "A&vailable indices:"
 msgstr "可用分支(&V)："
 
-#: src/frontends/qt4/ui/IndexUi.ui:69 src/frontends/qt4/ui/PrintindexUi.ui:69
+#: src/frontends/qt4/ui/IndexUi.ui:69
 msgid "Select the index this entry should be listed in."
 msgstr ""
 
@@ -1820,7 +1820,7 @@ msgid "&Quote Style:"
 msgstr "引言樣式(&Q)："
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 src/insets/InsetCaption.cpp:296
-#: src/insets/InsetListings.cpp:410 src/insets/InsetListings.cpp:412
+#: src/insets/InsetListings.cpp:408 src/insets/InsetListings.cpp:410
 msgid "Listing"
 msgstr "列表"
 
@@ -2203,6 +2203,125 @@ msgstr ""
 msgid "Use &XeTeX"
 msgstr "使用 b&abel"
 
+#: src/frontends/qt4/ui/PDFSupportUi.ui:28
+msgid "&Use hyperref support"
+msgstr ""
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:53
+#, fuzzy
+msgid "&General"
+msgstr "一般"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:99
+msgid ""
+"If not stated explicitly, fill title and author from appropriate environments"
+msgstr ""
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:102
+#, fuzzy
+msgid "Automatically fi&ll header"
+msgstr "自動更新"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:109
+msgid "Enable fullscreen PDF presentation"
+msgstr ""
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:112
+msgid "Load in &fullscreen mode"
+msgstr ""
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:121
+#, fuzzy
+msgid "Header Information"
+msgstr "TeX 資訊"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:133
+#, fuzzy
+msgid "&Title:"
+msgstr "標題："
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:146
+#, fuzzy
+msgid "&Author:"
+msgstr "作者："
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:159
+#, fuzzy
+msgid "&Subject:"
+msgstr "主旨："
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:172
+#, fuzzy
+msgid "&Keywords:"
+msgstr "關鍵字(&K)："
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:189
+#, fuzzy
+msgid "H&yperlinks"
+msgstr "產生超連結(&G)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:222
+msgid "Allows link text to break across lines."
+msgstr ""
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:225
+#, fuzzy
+msgid "B&reak links over lines"
+msgstr "折斷長列(&B)"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:232
+#, fuzzy
+msgid "No &frames around links"
+msgstr "沒畫框架"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:242
+#, fuzzy
+msgid "C&olor links"
+msgstr "顏色"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:249
+msgid "Bibliographical backreferences"
+msgstr ""
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:252
+#, fuzzy
+msgid "B&ackreferences:"
+msgstr "偏好設定"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:281
+#, fuzzy
+msgid "&Bookmarks"
+msgstr "書籤|B"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:293
+#, fuzzy
+msgid "G&enerate Bookmarks"
+msgstr "清空書籤|C"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:314
+#, fuzzy
+msgid "&Numbered bookmarks"
+msgstr "編號的公式|N"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:339
+#, fuzzy
+msgid "Number of levels"
+msgstr "複本數量"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:348
+#, fuzzy
+msgid "&Open bookmarks"
+msgstr "儲存書籤"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:388
+#, fuzzy
+msgid "Additional o&ptions"
+msgstr "額外 LaTeX 選項"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:417
+msgid "e.g.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+msgstr ""
+
 #: src/frontends/qt4/ui/PageLayoutUi.ui:33
 #, fuzzy
 msgid "Paper Format"
@@ -2349,125 +2468,6 @@ msgstr "雙倍"
 #: src/frontends/qt4/GuiHSpace.cpp:160
 msgid "Custom"
 msgstr "自訂"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:28
-msgid "&Use hyperref support"
-msgstr ""
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:53
-#, fuzzy
-msgid "&General"
-msgstr "一般"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:99
-msgid ""
-"If not stated explicitly, fill title and author from appropriate environments"
-msgstr ""
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:102
-#, fuzzy
-msgid "Automatically fi&ll header"
-msgstr "自動更新"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:109
-msgid "Enable fullscreen PDF presentation"
-msgstr ""
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:112
-msgid "Load in &fullscreen mode"
-msgstr ""
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:121
-#, fuzzy
-msgid "Header Information"
-msgstr "TeX 資訊"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:133
-#, fuzzy
-msgid "&Title:"
-msgstr "標題："
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:146
-#, fuzzy
-msgid "&Author:"
-msgstr "作者："
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:159
-#, fuzzy
-msgid "&Subject:"
-msgstr "主旨："
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:172
-#, fuzzy
-msgid "&Keywords:"
-msgstr "關鍵字(&K)："
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:189
-#, fuzzy
-msgid "H&yperlinks"
-msgstr "產生超連結(&G)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:222
-msgid "Allows link text to break across lines."
-msgstr ""
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:225
-#, fuzzy
-msgid "B&reak links over lines"
-msgstr "折斷長列(&B)"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:232
-#, fuzzy
-msgid "No &frames around links"
-msgstr "沒畫框架"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:242
-#, fuzzy
-msgid "C&olor links"
-msgstr "顏色"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:249
-msgid "Bibliographical backreferences"
-msgstr ""
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:252
-#, fuzzy
-msgid "B&ackreferences:"
-msgstr "偏好設定"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:281
-#, fuzzy
-msgid "&Bookmarks"
-msgstr "書籤|B"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:293
-#, fuzzy
-msgid "G&enerate Bookmarks"
-msgstr "清空書籤|C"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:314
-#, fuzzy
-msgid "&Numbered bookmarks"
-msgstr "編號的公式|N"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:339
-#, fuzzy
-msgid "Number of levels"
-msgstr "複本數量"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:348
-#, fuzzy
-msgid "&Open bookmarks"
-msgstr "儲存書籤"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:388
-#, fuzzy
-msgid "Additional o&ptions"
-msgstr "額外 LaTeX 選項"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:417
-msgid "e.g.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
-msgstr ""
 
 #: src/frontends/qt4/ui/PhantomUi.ui:60
 msgid "Horizontal and vertical space of the phantom content"
@@ -3581,6 +3581,20 @@ msgstr "發送輸出到給定的印表機"
 msgid "Send output to a file"
 msgstr "發送輸出到檔案"
 
+#: src/frontends/qt4/ui/PrintindexUi.ui:61
+msgid "Check if this index should be part (e.g., a section) of the former one."
+msgstr ""
+
+#: src/frontends/qt4/ui/PrintindexUi.ui:64
+#, fuzzy
+msgid "&Subindex"
+msgstr "側邊(&S)："
+
+#: src/frontends/qt4/ui/PrintindexUi.ui:89
+#, fuzzy
+msgid "Select the index that shall be printed at this place of the document."
+msgstr "重置文件類別的設定為預設值"
+
 #: src/frontends/qt4/ui/RefUi.ui:22
 msgid "La&bels in:"
 msgstr "標籤位於(&B)："
@@ -4306,17 +4320,17 @@ msgstr ""
 msgid "Allow &floating"
 msgstr ""
 
-#: lib/layouts/aa.layout:27 lib/layouts/aapaper.layout:34
-#: lib/layouts/aastex.layout:52 lib/layouts/achemso.layout:30
-#: lib/layouts/acmsiggraph.layout:34 lib/layouts/amsart.layout:24
-#: lib/layouts/amsbook.layout:25 lib/layouts/apa.layout:24
-#: lib/layouts/beamer.layout:32 lib/layouts/broadway.layout:173
-#: lib/layouts/chess.layout:29 lib/layouts/cl2emult.layout:125
-#: lib/layouts/dtk.layout:31 lib/layouts/egs.layout:18
-#: lib/layouts/elsart.layout:47 lib/layouts/elsarticle.layout:31
-#: lib/layouts/europecv.layout:16 lib/layouts/foils.layout:30
-#: lib/layouts/g-brief2.layout:31 lib/layouts/hollywood.layout:345
-#: lib/layouts/IEEEtran.layout:18 lib/layouts/iopart.layout:34
+#: lib/layouts/IEEEtran.layout:18 lib/layouts/aa.layout:27
+#: lib/layouts/aapaper.layout:34 lib/layouts/aastex.layout:52
+#: lib/layouts/achemso.layout:30 lib/layouts/acmsiggraph.layout:34
+#: lib/layouts/amsart.layout:24 lib/layouts/amsbook.layout:25
+#: lib/layouts/apa.layout:24 lib/layouts/beamer.layout:32
+#: lib/layouts/broadway.layout:173 lib/layouts/chess.layout:29
+#: lib/layouts/cl2emult.layout:125 lib/layouts/dtk.layout:31
+#: lib/layouts/egs.layout:18 lib/layouts/elsart.layout:47
+#: lib/layouts/elsarticle.layout:31 lib/layouts/europecv.layout:16
+#: lib/layouts/foils.layout:30 lib/layouts/g-brief2.layout:31
+#: lib/layouts/hollywood.layout:345 lib/layouts/iopart.layout:34
 #: lib/layouts/kluwer.layout:33 lib/layouts/llncs.layout:23
 #: lib/layouts/ltugboat.layout:30 lib/layouts/manpage.layout:18
 #: lib/layouts/memoir.layout:30 lib/layouts/moderncv.layout:19
@@ -4332,15 +4346,318 @@ msgstr ""
 msgid "Standard"
 msgstr "標準"
 
-#: lib/layouts/aa.layout:42 lib/layouts/aa.layout:222
-#: lib/layouts/aapaper.layout:64 lib/layouts/aapaper.layout:130
-#: lib/layouts/aastex.layout:67 lib/layouts/aastex.layout:170
-#: lib/layouts/amsart.layout:64 lib/layouts/amsbook.layout:50
-#: lib/layouts/amsbook.layout:89 lib/layouts/apa.layout:307
-#: lib/layouts/beamer.layout:111 lib/layouts/beamer.layout:140
-#: lib/layouts/beamer.layout:141 lib/layouts/beamer.layout:183
-#: lib/layouts/egs.layout:30 lib/layouts/europecv.layout:29
-#: lib/layouts/IEEEtran.layout:272 lib/layouts/ijmpc.layout:95
+#: lib/layouts/IEEEtran.layout:49
+msgid "TheoremTemplate"
+msgstr "定理模版"
+
+#: lib/layouts/IEEEtran.layout:65 lib/layouts/beamer.layout:1052
+#: lib/layouts/elsart.layout:285 lib/layouts/foils.layout:278
+#: lib/layouts/heb-article.layout:95 lib/layouts/ijmpc.layout:211
+#: lib/layouts/ijmpd.layout:211 lib/layouts/llncs.layout:371
+#: lib/layouts/siamltex.layout:150 lib/layouts/svjour.inc:433
+#: lib/layouts/theorems-order.inc:76 lib/layouts/theorems-proof.inc:13
+#: lib/layouts/theorems-std.module:20 lib/layouts/theorems-std.module:36
+#: lib/layouts/theorems-std.module:39
+msgid "Proof"
+msgstr "證明"
+
+#: lib/layouts/IEEEtran.layout:68 lib/layouts/heb-article.layout:110
+msgid "Proof:"
+msgstr "證明："
+
+#: lib/layouts/IEEEtran.layout:73 lib/layouts/beamer.layout:1058
+#: lib/layouts/elsart.layout:256 lib/layouts/foils.layout:218
+#: lib/layouts/heb-article.layout:18 lib/layouts/ijmpc.layout:190
+#: lib/layouts/ijmpd.layout:193 lib/layouts/llncs.layout:412
+#: lib/layouts/siamltex.layout:62 lib/layouts/siamltex.layout:112
+#: lib/layouts/svjour.inc:475 lib/layouts/theorems-ams.inc:24
+#: lib/layouts/theorems-ams.inc:25 lib/layouts/theorems-ams.inc:56
+#: lib/layouts/theorems-ams.inc:59 lib/layouts/theorems-ams.inc:276
+#: lib/layouts/theorems-order.inc:7 lib/layouts/theorems-proof.inc:14
+#: lib/layouts/theorems-starred-equivalents.inc:6
+#: lib/layouts/theorems-starred.inc:24 lib/layouts/theorems-starred.inc:54
+#: lib/layouts/theorems-starred.inc:57 lib/layouts/theorems.inc:24
+#: lib/layouts/theorems.inc:25 lib/layouts/theorems.inc:55
+#: lib/layouts/theorems.inc:58 lib/layouts/theorems.inc:270
+#: lib/layouts/theorems-chap.module:17 lib/layouts/theorems-chap.module:26
+#: lib/layouts/theorems-chap.module:29 lib/layouts/theorems-sec.module:16
+#: lib/layouts/theorems-sec.module:21 lib/layouts/theorems-sec.module:24
+msgid "Theorem"
+msgstr "定理"
+
+#: lib/layouts/IEEEtran.layout:76
+msgid "Theorem #:"
+msgstr "定理 #："
+
+#: lib/layouts/IEEEtran.layout:83 lib/layouts/elsart.layout:312
+#: lib/layouts/foils.layout:243 lib/layouts/heb-article.layout:45
+#: lib/layouts/ijmpc.layout:238 lib/layouts/ijmpd.layout:243
+#: lib/layouts/llncs.layout:351 lib/layouts/siamltex.layout:82
+#: lib/layouts/svjour.inc:412 lib/layouts/theorems-ams.inc:83
+#: lib/layouts/theorems-ams.inc:93 lib/layouts/theorems-ams.inc:96
+#: lib/layouts/theorems-order.inc:19
+#: lib/layouts/theorems-starred-equivalents.inc:20
+#: lib/layouts/theorems-starred.inc:89 lib/layouts/theorems-starred.inc:92
+#: lib/layouts/theorems.inc:81 lib/layouts/theorems.inc:90
+#: lib/layouts/theorems.inc:93
+msgid "Lemma"
+msgstr "Lemma"
+
+#: lib/layouts/IEEEtran.layout:86
+msgid "Lemma #:"
+msgstr "Lemma #："
+
+#: lib/layouts/IEEEtran.layout:93 lib/layouts/beamer.layout:988
+#: lib/layouts/elsart.layout:319 lib/layouts/foils.layout:250
+#: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:229
+#: lib/layouts/ijmpd.layout:230 lib/layouts/llncs.layout:316
+#: lib/layouts/siamltex.layout:72 lib/layouts/svjour.inc:373
+#: lib/layouts/theorems-ams.inc:65 lib/layouts/theorems-ams.inc:75
+#: lib/layouts/theorems-ams.inc:78 lib/layouts/theorems-order.inc:13
+#: lib/layouts/theorems-starred-equivalents.inc:13
+#: lib/layouts/theorems-starred.inc:72 lib/layouts/theorems-starred.inc:75
+#: lib/layouts/theorems.inc:64 lib/layouts/theorems.inc:73
+#: lib/layouts/theorems.inc:76
+msgid "Corollary"
+msgstr "Corollary"
+
+#: lib/layouts/IEEEtran.layout:96
+msgid "Corollary #:"
+msgstr "Corollary #："
+
+#: lib/layouts/IEEEtran.layout:103 lib/layouts/elsart.layout:326
+#: lib/layouts/foils.layout:257 lib/layouts/ijmpc.layout:247
+#: lib/layouts/ijmpd.layout:253 lib/layouts/llncs.layout:385
+#: lib/layouts/siamltex.layout:92 lib/layouts/svjour.inc:447
+#: lib/layouts/theorems-ams.inc:101 lib/layouts/theorems-ams.inc:111
+#: lib/layouts/theorems-ams.inc:114 lib/layouts/theorems-order.inc:25
+#: lib/layouts/theorems-starred-equivalents.inc:27
+#: lib/layouts/theorems-starred.inc:106 lib/layouts/theorems-starred.inc:109
+#: lib/layouts/theorems.inc:98 lib/layouts/theorems.inc:107
+#: lib/layouts/theorems.inc:110
+msgid "Proposition"
+msgstr "Proposition"
+
+#: lib/layouts/IEEEtran.layout:106
+msgid "Proposition #:"
+msgstr "Proposition #："
+
+#: lib/layouts/IEEEtran.layout:113 lib/layouts/elsart.layout:361
+#: lib/layouts/ijmpc.layout:283 lib/layouts/ijmpd.layout:293
+#: lib/layouts/llncs.layout:309 lib/layouts/siamltex.layout:102
+#: lib/layouts/svjour.inc:366 lib/layouts/theorems-ams.inc:119
+#: lib/layouts/theorems-ams.inc:129 lib/layouts/theorems-ams.inc:132
+#: lib/layouts/theorems-order.inc:31
+#: lib/layouts/theorems-starred-equivalents.inc:34
+#: lib/layouts/theorems-starred.inc:123 lib/layouts/theorems-starred.inc:126
+#: lib/layouts/theorems.inc:115 lib/layouts/theorems.inc:124
+#: lib/layouts/theorems.inc:127
+msgid "Conjecture"
+msgstr "Conjecture"
+
+#: lib/layouts/IEEEtran.layout:116
+msgid "Conjecture #:"
+msgstr "Conjecture #："
+
+#: lib/layouts/IEEEtran.layout:123 lib/layouts/elsart.layout:333
+#: lib/layouts/theorems-ams-extended.module:35
+#: lib/layouts/theorems-ams-extended.module:45
+#: lib/layouts/theorems-ams-extended.module:48
+#: lib/layouts/theorems-ams-extended.module:61
+#: lib/layouts/theorems-ams-extended.module:64
+msgid "Criterion"
+msgstr "條件"
+
+#: lib/layouts/IEEEtran.layout:126
+msgid "Criterion #:"
+msgstr "條件 #："
+
+#: lib/layouts/IEEEtran.layout:133 lib/layouts/beamer.layout:1046
+#: lib/layouts/theorems-ams.inc:137 lib/layouts/theorems-ams.inc:147
+#: lib/layouts/theorems-ams.inc:150 lib/layouts/theorems-starred.inc:140
+#: lib/layouts/theorems-starred.inc:143 lib/layouts/theorems.inc:132
+#: lib/layouts/theorems.inc:141 lib/layouts/theorems.inc:144
+msgid "Fact"
+msgstr "Fact"
+
+#: lib/layouts/IEEEtran.layout:136
+msgid "Fact #:"
+msgstr "Fact #："
+
+#: lib/layouts/IEEEtran.layout:143
+#: lib/layouts/theorems-ams-extended.module:104
+#: lib/layouts/theorems-ams-extended.module:114
+#: lib/layouts/theorems-ams-extended.module:117
+#: lib/layouts/theorems-ams-extended.module:131
+#: lib/layouts/theorems-ams-extended.module:134
+msgid "Axiom"
+msgstr "Axiom"
+
+#: lib/layouts/IEEEtran.layout:146
+msgid "Axiom #:"
+msgstr "Axiom #："
+
+#: lib/layouts/IEEEtran.layout:153 lib/layouts/beamer.layout:1016
+#: lib/layouts/elsart.layout:347 lib/layouts/foils.layout:264
+#: lib/layouts/heb-article.layout:75 lib/layouts/ijmpc.layout:131
+#: lib/layouts/ijmpd.layout:128 lib/layouts/llncs.layout:330
+#: lib/layouts/siamltex.layout:121 lib/layouts/svjour.inc:387
+#: lib/layouts/theorems-ams.inc:155 lib/layouts/theorems-ams.inc:172
+#: lib/layouts/theorems-ams.inc:175 lib/layouts/theorems-order.inc:37
+#: lib/layouts/theorems-starred-equivalents.inc:41
+#: lib/layouts/theorems-starred.inc:165 lib/layouts/theorems-starred.inc:168
+#: lib/layouts/theorems.inc:149 lib/layouts/theorems.inc:166
+#: lib/layouts/theorems.inc:169
+msgid "Definition"
+msgstr "定義"
+
+#: lib/layouts/IEEEtran.layout:156
+msgid "Definition #:"
+msgstr "定義 #："
+
+#: lib/layouts/IEEEtran.layout:163 lib/layouts/beamer.layout:1028
+#: lib/layouts/elsart.layout:368 lib/layouts/ijmpc.layout:163
+#: lib/layouts/ijmpd.layout:160 lib/layouts/llncs.layout:337
+#: lib/layouts/svjour.inc:394 lib/layouts/theorems-ams.inc:180
+#: lib/layouts/theorems-ams.inc:189 lib/layouts/theorems-ams.inc:192
+#: lib/layouts/theorems-order.inc:43
+#: lib/layouts/theorems-starred-equivalents.inc:48
+#: lib/layouts/theorems-starred.inc:182 lib/layouts/theorems-starred.inc:185
+#: lib/layouts/theorems.inc:174 lib/layouts/theorems.inc:183
+#: lib/layouts/theorems.inc:186 src/frontends/qt4/GuiDocument.cpp:841
+msgid "Example"
+msgstr "範例"
+
+#: lib/layouts/IEEEtran.layout:166
+msgid "Example #:"
+msgstr "範例 #："
+
+#: lib/layouts/IEEEtran.layout:173
+#: lib/layouts/theorems-ams-extended.module:139
+#: lib/layouts/theorems-ams-extended.module:148
+#: lib/layouts/theorems-ams-extended.module:151
+#: lib/layouts/theorems-ams-extended.module:165
+#: lib/layouts/theorems-ams-extended.module:168
+msgid "Condition"
+msgstr "條件"
+
+#: lib/layouts/IEEEtran.layout:176
+msgid "Condition #:"
+msgstr "條件 #："
+
+#: lib/layouts/IEEEtran.layout:183 lib/layouts/elsart.layout:375
+#: lib/layouts/llncs.layout:364 lib/layouts/svjour.inc:426
+#: lib/layouts/theorems-ams.inc:197 lib/layouts/theorems-ams.inc:206
+#: lib/layouts/theorems-ams.inc:209 lib/layouts/theorems-order.inc:49
+#: lib/layouts/theorems-starred-equivalents.inc:55
+#: lib/layouts/theorems-starred.inc:199 lib/layouts/theorems-starred.inc:202
+#: lib/layouts/theorems.inc:191 lib/layouts/theorems.inc:200
+#: lib/layouts/theorems.inc:203
+msgid "Problem"
+msgstr "問題"
+
+#: lib/layouts/IEEEtran.layout:186
+msgid "Problem #:"
+msgstr "問題 #："
+
+#: lib/layouts/IEEEtran.layout:193 lib/layouts/llncs.layout:344
+#: lib/layouts/svjour.inc:401 lib/layouts/theorems-ams.inc:214
+#: lib/layouts/theorems-ams.inc:223 lib/layouts/theorems-ams.inc:226
+#: lib/layouts/theorems-order.inc:55
+#: lib/layouts/theorems-starred-equivalents.inc:62
+#: lib/layouts/theorems-starred.inc:216 lib/layouts/theorems-starred.inc:219
+#: lib/layouts/theorems.inc:208 lib/layouts/theorems.inc:217
+#: lib/layouts/theorems.inc:220
+msgid "Exercise"
+msgstr "練習"
+
+#: lib/layouts/IEEEtran.layout:196
+msgid "Exercise #:"
+msgstr "練習 #："
+
+#: lib/layouts/IEEEtran.layout:203 lib/layouts/elsart.layout:382
+#: lib/layouts/ijmpc.layout:172 lib/layouts/ijmpd.layout:170
+#: lib/layouts/llncs.layout:398 lib/layouts/svjour.inc:461
+#: lib/layouts/theorems-ams.inc:231 lib/layouts/theorems-ams.inc:249
+#: lib/layouts/theorems-ams.inc:252 lib/layouts/theorems-order.inc:61
+#: lib/layouts/theorems-starred-equivalents.inc:69
+#: lib/layouts/theorems-starred.inc:241 lib/layouts/theorems-starred.inc:244
+#: lib/layouts/theorems.inc:225 lib/layouts/theorems.inc:243
+#: lib/layouts/theorems.inc:246
+msgid "Remark"
+msgstr "備註"
+
+#: lib/layouts/IEEEtran.layout:206
+msgid "Remark #:"
+msgstr "備註 #："
+
+#: lib/layouts/IEEEtran.layout:213 lib/layouts/elsart.layout:396
+#: lib/layouts/heb-article.layout:65 lib/layouts/ijmpc.layout:274
+#: lib/layouts/ijmpd.layout:283 lib/layouts/llncs.layout:302
+#: lib/layouts/svjour.inc:345 lib/layouts/theorems-ams.inc:257
+#: lib/layouts/theorems-ams.inc:266 lib/layouts/theorems-ams.inc:269
+#: lib/layouts/theorems-order.inc:67
+#: lib/layouts/theorems-starred-equivalents.inc:76
+#: lib/layouts/theorems-starred.inc:258 lib/layouts/theorems-starred.inc:261
+#: lib/layouts/theorems.inc:251 lib/layouts/theorems.inc:260
+#: lib/layouts/theorems.inc:263
+msgid "Claim"
+msgstr "宣稱"
+
+#: lib/layouts/IEEEtran.layout:216
+msgid "Claim #:"
+msgstr "宣稱 #："
+
+#: lib/layouts/IEEEtran.layout:223 lib/layouts/apa.layout:212
+#: lib/layouts/elsart.layout:389 lib/layouts/iopart.layout:93
+#: lib/layouts/llncs.layout:357 lib/layouts/powerdot.layout:198
+#: lib/layouts/slides.layout:167 lib/layouts/svjour.inc:419
+#: lib/layouts/theorems-ams-extended.module:173
+#: lib/layouts/theorems-ams-extended.module:182
+#: lib/layouts/theorems-ams-extended.module:185
+#: lib/layouts/theorems-ams-extended.module:199
+#: lib/layouts/theorems-ams-extended.module:202
+msgid "Note"
+msgstr "註記"
+
+#: lib/layouts/IEEEtran.layout:226
+msgid "Note #:"
+msgstr "註記 #："
+
+#: lib/layouts/IEEEtran.layout:233 lib/layouts/ijmpc.layout:181
+#: lib/layouts/ijmpd.layout:180 lib/layouts/theorems-ams-extended.module:207
+#: lib/layouts/theorems-ams-extended.module:216
+#: lib/layouts/theorems-ams-extended.module:219
+#: lib/layouts/theorems-ams-extended.module:233
+#: lib/layouts/theorems-ams-extended.module:236
+msgid "Notation"
+msgstr "記法"
+
+#: lib/layouts/IEEEtran.layout:236
+msgid "Notation #:"
+msgstr "記法 #："
+
+#: lib/layouts/IEEEtran.layout:243 lib/layouts/elsart.layout:411
+#: lib/layouts/llncs.layout:281 lib/layouts/theorems-ams.inc:275
+#: lib/layouts/theorems-ams.inc:310 lib/layouts/theorems-ams.inc:313
+#: lib/layouts/theorems-order.inc:73 lib/layouts/theorems.inc:269
+#: lib/layouts/theorems.inc:294 lib/layouts/theorems.inc:297
+msgid "Case"
+msgstr "大小寫"
+
+#: lib/layouts/IEEEtran.layout:246
+msgid "Case #:"
+msgstr "大小寫 #："
+
+#: lib/layouts/IEEEtran.layout:272 lib/layouts/aa.layout:42
+#: lib/layouts/aa.layout:222 lib/layouts/aapaper.layout:64
+#: lib/layouts/aapaper.layout:130 lib/layouts/aastex.layout:67
+#: lib/layouts/aastex.layout:170 lib/layouts/amsart.layout:64
+#: lib/layouts/amsbook.layout:50 lib/layouts/amsbook.layout:89
+#: lib/layouts/apa.layout:307 lib/layouts/beamer.layout:111
+#: lib/layouts/beamer.layout:140 lib/layouts/beamer.layout:141
+#: lib/layouts/beamer.layout:183 lib/layouts/egs.layout:30
+#: lib/layouts/europecv.layout:29 lib/layouts/ijmpc.layout:95
 #: lib/layouts/ijmpd.layout:91 lib/layouts/isprs.layout:155
 #: lib/layouts/kluwer.layout:58 lib/layouts/latex8.layout:41
 #: lib/layouts/llncs.layout:45 lib/layouts/ltugboat.layout:45
@@ -4358,12 +4675,12 @@ msgstr "標準"
 msgid "Section"
 msgstr "區段"
 
-#: lib/layouts/aa.layout:45 lib/layouts/aa.layout:232
-#: lib/layouts/aapaper.layout:67 lib/layouts/aapaper.layout:139
-#: lib/layouts/aastex.layout:70 lib/layouts/aastex.layout:182
-#: lib/layouts/amsart.layout:74 lib/layouts/amsbook.layout:60
-#: lib/layouts/apa.layout:317 lib/layouts/beamer.layout:182
-#: lib/layouts/egs.layout:51 lib/layouts/IEEEtran.layout:282
+#: lib/layouts/IEEEtran.layout:282 lib/layouts/aa.layout:45
+#: lib/layouts/aa.layout:232 lib/layouts/aapaper.layout:67
+#: lib/layouts/aapaper.layout:139 lib/layouts/aastex.layout:70
+#: lib/layouts/aastex.layout:182 lib/layouts/amsart.layout:74
+#: lib/layouts/amsbook.layout:60 lib/layouts/apa.layout:317
+#: lib/layouts/beamer.layout:182 lib/layouts/egs.layout:51
 #: lib/layouts/ijmpc.layout:109 lib/layouts/ijmpd.layout:105
 #: lib/layouts/isprs.layout:166 lib/layouts/kluwer.layout:66
 #: lib/layouts/latex8.layout:49 lib/layouts/llncs.layout:53
@@ -4378,11 +4695,11 @@ msgstr "區段"
 msgid "Subsection"
 msgstr "小節"
 
-#: lib/layouts/aa.layout:48 lib/layouts/aa.layout:244
-#: lib/layouts/aapaper.layout:70 lib/layouts/aapaper.layout:150
-#: lib/layouts/aastex.layout:73 lib/layouts/aastex.layout:194
-#: lib/layouts/amsart.layout:82 lib/layouts/amsbook.layout:68
-#: lib/layouts/apa.layout:326 lib/layouts/IEEEtran.layout:290
+#: lib/layouts/IEEEtran.layout:290 lib/layouts/aa.layout:48
+#: lib/layouts/aa.layout:244 lib/layouts/aapaper.layout:70
+#: lib/layouts/aapaper.layout:150 lib/layouts/aastex.layout:73
+#: lib/layouts/aastex.layout:194 lib/layouts/amsart.layout:82
+#: lib/layouts/amsbook.layout:68 lib/layouts/apa.layout:326
 #: lib/layouts/ijmpc.layout:117 lib/layouts/ijmpd.layout:113
 #: lib/layouts/isprs.layout:175 lib/layouts/kluwer.layout:75
 #: lib/layouts/llncs.layout:61 lib/layouts/ltugboat.layout:83
@@ -4394,6 +4711,127 @@ msgstr "小節"
 #: lib/layouts/stdsections.inc:100 lib/layouts/svjour.inc:71
 msgid "Subsubsection"
 msgstr "次小節"
+
+#: lib/layouts/IEEEtran.layout:298 lib/layouts/beamer.layout:172
+#: lib/layouts/egs.layout:576 lib/layouts/ijmpc.layout:102
+#: lib/layouts/ijmpd.layout:98 lib/layouts/isprs.layout:184
+#: lib/layouts/spie.layout:29 lib/layouts/aguplus.inc:34
+#: lib/layouts/db_stdstarsections.inc:36 lib/layouts/stdstarsections.inc:34
+msgid "Section*"
+msgstr "區段*"
+
+#: lib/layouts/IEEEtran.layout:308 lib/layouts/beamer.layout:215
+#: lib/layouts/egs.layout:596 lib/layouts/isprs.layout:195
+#: lib/layouts/aguplus.inc:48 lib/layouts/db_stdstarsections.inc:48
+#: lib/layouts/stdstarsections.inc:45
+msgid "Subsection*"
+msgstr "小節*"
+
+#: lib/layouts/IEEEtran.layout:316 lib/layouts/isprs.layout:204
+#: lib/layouts/db_stdstarsections.inc:60 lib/layouts/stdstarsections.inc:56
+msgid "Subsubsection*"
+msgstr "次小節*"
+
+#: lib/layouts/IEEEtran.layout:331 lib/layouts/aa.layout:85
+#: lib/layouts/aa.layout:312 lib/layouts/aa.layout:328
+#: lib/layouts/aapaper.layout:97 lib/layouts/aapaper.layout:193
+#: lib/layouts/aastex.layout:109 lib/layouts/aastex.layout:242
+#: lib/layouts/achemso.layout:115 lib/layouts/achemso.layout:132
+#: lib/layouts/acmsiggraph.layout:107 lib/layouts/acmsiggraph.layout:123
+#: lib/layouts/apa.layout:69 lib/layouts/cl2emult.layout:80
+#: lib/layouts/cl2emult.layout:91 lib/layouts/egs.layout:481
+#: lib/layouts/elsart.layout:202 lib/layouts/elsart.layout:217
+#: lib/layouts/elsarticle.layout:219 lib/layouts/elsarticle.layout:236
+#: lib/layouts/entcs.layout:84 lib/layouts/foils.layout:147
+#: lib/layouts/ijmpc.layout:63 lib/layouts/ijmpd.layout:66
+#: lib/layouts/iopart.layout:168 lib/layouts/iopart.layout:185
+#: lib/layouts/isprs.layout:24 lib/layouts/kluwer.layout:251
+#: lib/layouts/latex8.layout:100 lib/layouts/llncs.layout:237
+#: lib/layouts/ltugboat.layout:166 lib/layouts/ltugboat.layout:180
+#: lib/layouts/paper.layout:124 lib/layouts/revtex.layout:135
+#: lib/layouts/revtex4.layout:216 lib/layouts/siamltex.layout:246
+#: lib/layouts/sigplanconf.layout:150 lib/layouts/sigplanconf.layout:166
+#: lib/layouts/spie.layout:73 lib/layouts/svglobal.layout:29
+#: lib/layouts/svglobal3.layout:29 lib/layouts/svjog.layout:34
+#: lib/layouts/agu_stdtitle.inc:193 lib/layouts/amsdefs.inc:96
+#: lib/layouts/db_stdstruct.inc:11 lib/layouts/scrclass.inc:216
+#: lib/layouts/stdstruct.inc:12 lib/layouts/stdstruct.inc:27
+#: lib/layouts/svjour.inc:249 src/output_plaintext.cpp:133
+msgid "Abstract"
+msgstr "摘要"
+
+#: lib/layouts/IEEEtran.layout:337
+msgid "Abstract---"
+msgstr "摘要---"
+
+#: lib/layouts/IEEEtran.layout:351 lib/layouts/aa.layout:342
+#: lib/layouts/aastex.layout:112 lib/layouts/aastex.layout:317
+#: lib/layouts/elsart.layout:62 lib/layouts/elsarticle.layout:248
+#: lib/layouts/ijmpc.layout:73 lib/layouts/ijmpd.layout:76
+#: lib/layouts/iopart.layout:197 lib/layouts/isprs.layout:51
+#: lib/layouts/kluwer.layout:274 lib/layouts/paper.layout:163
+#: lib/layouts/revtex4.layout:255 lib/layouts/siamltex.layout:298
+#: lib/layouts/sigplanconf.layout:143 lib/layouts/spie.layout:39
+#: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:166
+#: lib/layouts/svjour.inc:270
+msgid "Keywords"
+msgstr "關鍵字"
+
+#: lib/layouts/IEEEtran.layout:362
+msgid "Index Terms---"
+msgstr "索引語詞---"
+
+#: lib/layouts/IEEEtran.layout:374 lib/layouts/aa.layout:91
+#: lib/layouts/aa.layout:371 lib/layouts/aapaper.layout:103
+#: lib/layouts/aapaper.layout:210 lib/layouts/achemso.layout:167
+#: lib/layouts/beamer.layout:884 lib/layouts/book.layout:21
+#: lib/layouts/book.layout:23 lib/layouts/cl2emult.layout:102
+#: lib/layouts/egs.layout:552 lib/layouts/elsarticle.layout:269
+#: lib/layouts/foils.layout:210 lib/layouts/ijmpc.layout:331
+#: lib/layouts/ijmpd.layout:342 lib/layouts/latex8.layout:118
+#: lib/layouts/llncs.layout:258 lib/layouts/memoir.layout:140
+#: lib/layouts/memoir.layout:142 lib/layouts/mwbk.layout:22
+#: lib/layouts/mwbk.layout:24 lib/layouts/mwrep.layout:13
+#: lib/layouts/mwrep.layout:15 lib/layouts/powerdot.layout:292
+#: lib/layouts/recipebook.layout:48 lib/layouts/recipebook.layout:50
+#: lib/layouts/report.layout:12 lib/layouts/report.layout:14
+#: lib/layouts/scrbook.layout:21 lib/layouts/scrbook.layout:23
+#: lib/layouts/scrreprt.layout:11 lib/layouts/scrreprt.layout:13
+#: lib/layouts/siamltex.layout:312 lib/layouts/simplecv.layout:139
+#: lib/layouts/aguplus.inc:167 lib/layouts/aguplus.inc:169
+#: lib/layouts/amsdefs.inc:201 lib/layouts/scrclass.inc:223
+#: lib/layouts/stdstruct.inc:39 lib/layouts/svjour.inc:323
+#: src/frontends/qt4/GuiDocument.cpp:1015
+msgid "Bibliography"
+msgstr "文獻目錄"
+
+#: lib/layouts/IEEEtran.layout:383 lib/layouts/IEEEtran.layout:394
+#: lib/layouts/aastex.layout:118 lib/layouts/aastex.layout:443
+#: lib/layouts/ijmpc.layout:309 lib/layouts/ijmpd.layout:320
+#: lib/layouts/kluwer.layout:313 lib/layouts/kluwer.layout:326
+#: src/rowpainter.cpp:462
+msgid "Appendix"
+msgstr "附錄"
+
+#: lib/layouts/IEEEtran.layout:406 lib/layouts/IEEEtran.layout:409
+msgid "Appendices"
+msgstr "附錄"
+
+#: lib/layouts/IEEEtran.layout:413
+msgid "Biography"
+msgstr "傳記"
+
+#: lib/layouts/IEEEtran.layout:423
+msgid "BiographyNoPhoto"
+msgstr "傳記無相片"
+
+#: lib/layouts/IEEEtran.layout:442 lib/layouts/IEEEtran.layout:453
+msgid "Footernote"
+msgstr "腳註"
+
+#: lib/layouts/IEEEtran.layout:465
+msgid "MarkBoth"
+msgstr "MarkBoth"
 
 #: lib/layouts/aa.layout:51 lib/layouts/aapaper.layout:48
 #: lib/layouts/aastex.layout:79 lib/layouts/apa.layout:354
@@ -4531,34 +4969,6 @@ msgstr "郵件"
 msgid "Date"
 msgstr "日期"
 
-#: lib/layouts/aa.layout:85 lib/layouts/aa.layout:312
-#: lib/layouts/aa.layout:328 lib/layouts/aapaper.layout:97
-#: lib/layouts/aapaper.layout:193 lib/layouts/aastex.layout:109
-#: lib/layouts/aastex.layout:242 lib/layouts/achemso.layout:115
-#: lib/layouts/achemso.layout:132 lib/layouts/acmsiggraph.layout:107
-#: lib/layouts/acmsiggraph.layout:123 lib/layouts/apa.layout:69
-#: lib/layouts/cl2emult.layout:80 lib/layouts/cl2emult.layout:91
-#: lib/layouts/egs.layout:481 lib/layouts/elsart.layout:202
-#: lib/layouts/elsart.layout:217 lib/layouts/elsarticle.layout:219
-#: lib/layouts/elsarticle.layout:236 lib/layouts/entcs.layout:84
-#: lib/layouts/foils.layout:147 lib/layouts/IEEEtran.layout:331
-#: lib/layouts/ijmpc.layout:63 lib/layouts/ijmpd.layout:66
-#: lib/layouts/iopart.layout:168 lib/layouts/iopart.layout:185
-#: lib/layouts/isprs.layout:24 lib/layouts/kluwer.layout:251
-#: lib/layouts/latex8.layout:100 lib/layouts/llncs.layout:237
-#: lib/layouts/ltugboat.layout:166 lib/layouts/ltugboat.layout:180
-#: lib/layouts/paper.layout:124 lib/layouts/revtex.layout:135
-#: lib/layouts/revtex4.layout:216 lib/layouts/siamltex.layout:246
-#: lib/layouts/sigplanconf.layout:150 lib/layouts/sigplanconf.layout:166
-#: lib/layouts/spie.layout:73 lib/layouts/svglobal.layout:29
-#: lib/layouts/svglobal3.layout:29 lib/layouts/svjog.layout:34
-#: lib/layouts/agu_stdtitle.inc:193 lib/layouts/amsdefs.inc:96
-#: lib/layouts/db_stdstruct.inc:11 lib/layouts/scrclass.inc:216
-#: lib/layouts/stdstruct.inc:12 lib/layouts/stdstruct.inc:27
-#: lib/layouts/svjour.inc:249 src/output_plaintext.cpp:133
-msgid "Abstract"
-msgstr "摘要"
-
 #: lib/layouts/aa.layout:88 lib/layouts/aa.layout:198
 #: lib/layouts/aapaper.layout:100 lib/layouts/egs.layout:527
 #: lib/layouts/elsart.layout:421 lib/layouts/aapaper.inc:80
@@ -4569,30 +4979,6 @@ msgstr "摘要"
 #: lib/layouts/theorems-ams-extended.module:304
 msgid "Acknowledgement"
 msgstr "致謝"
-
-#: lib/layouts/aa.layout:91 lib/layouts/aa.layout:371
-#: lib/layouts/aapaper.layout:103 lib/layouts/aapaper.layout:210
-#: lib/layouts/achemso.layout:167 lib/layouts/beamer.layout:884
-#: lib/layouts/book.layout:21 lib/layouts/book.layout:23
-#: lib/layouts/cl2emult.layout:102 lib/layouts/egs.layout:552
-#: lib/layouts/elsarticle.layout:269 lib/layouts/foils.layout:210
-#: lib/layouts/IEEEtran.layout:374 lib/layouts/ijmpc.layout:331
-#: lib/layouts/ijmpd.layout:342 lib/layouts/latex8.layout:118
-#: lib/layouts/llncs.layout:258 lib/layouts/memoir.layout:140
-#: lib/layouts/memoir.layout:142 lib/layouts/mwbk.layout:22
-#: lib/layouts/mwbk.layout:24 lib/layouts/mwrep.layout:13
-#: lib/layouts/mwrep.layout:15 lib/layouts/powerdot.layout:292
-#: lib/layouts/recipebook.layout:48 lib/layouts/recipebook.layout:50
-#: lib/layouts/report.layout:12 lib/layouts/report.layout:14
-#: lib/layouts/scrbook.layout:21 lib/layouts/scrbook.layout:23
-#: lib/layouts/scrreprt.layout:11 lib/layouts/scrreprt.layout:13
-#: lib/layouts/siamltex.layout:312 lib/layouts/simplecv.layout:139
-#: lib/layouts/aguplus.inc:167 lib/layouts/aguplus.inc:169
-#: lib/layouts/amsdefs.inc:201 lib/layouts/scrclass.inc:223
-#: lib/layouts/stdstruct.inc:39 lib/layouts/svjour.inc:323
-#: src/frontends/qt4/GuiDocument.cpp:1015
-msgid "Bibliography"
-msgstr "文獻目錄"
 
 #: lib/layouts/aa.layout:117 lib/layouts/aa.layout:140
 #: lib/layouts/aa.layout:155 lib/layouts/aa.layout:179
@@ -4648,19 +5034,6 @@ msgstr "慣例"
 #, fuzzy
 msgid "institute mark"
 msgstr "慣例"
-
-#: lib/layouts/aa.layout:342 lib/layouts/aastex.layout:112
-#: lib/layouts/aastex.layout:317 lib/layouts/elsart.layout:62
-#: lib/layouts/elsarticle.layout:248 lib/layouts/IEEEtran.layout:351
-#: lib/layouts/ijmpc.layout:73 lib/layouts/ijmpd.layout:76
-#: lib/layouts/iopart.layout:197 lib/layouts/isprs.layout:51
-#: lib/layouts/kluwer.layout:274 lib/layouts/paper.layout:163
-#: lib/layouts/revtex4.layout:255 lib/layouts/siamltex.layout:298
-#: lib/layouts/sigplanconf.layout:143 lib/layouts/spie.layout:39
-#: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:166
-#: lib/layouts/svjour.inc:270
-msgid "Keywords"
-msgstr "關鍵字"
 
 #: lib/layouts/aa.layout:357
 msgid "Key words."
@@ -4718,14 +5091,6 @@ msgstr "和"
 #: lib/layouts/aapaper.inc:91 lib/layouts/svjour.inc:291
 msgid "Acknowledgements"
 msgstr "致謝"
-
-#: lib/layouts/aastex.layout:118 lib/layouts/aastex.layout:443
-#: lib/layouts/IEEEtran.layout:383 lib/layouts/IEEEtran.layout:394
-#: lib/layouts/ijmpc.layout:309 lib/layouts/ijmpd.layout:320
-#: lib/layouts/kluwer.layout:313 lib/layouts/kluwer.layout:326
-#: src/rowpainter.cpp:462
-msgid "Appendix"
-msgstr "附錄"
 
 #: lib/layouts/aastex.layout:121 lib/layouts/aastex.layout:475
 #: lib/layouts/aastex.layout:488 lib/layouts/achemso.layout:181
@@ -5049,18 +5414,6 @@ msgstr "日誌"
 msgid "CopNum"
 msgstr "CopNum"
 
-#: lib/layouts/apa.layout:212 lib/layouts/elsart.layout:389
-#: lib/layouts/IEEEtran.layout:223 lib/layouts/iopart.layout:93
-#: lib/layouts/llncs.layout:357 lib/layouts/powerdot.layout:198
-#: lib/layouts/slides.layout:167 lib/layouts/svjour.inc:419
-#: lib/layouts/theorems-ams-extended.module:173
-#: lib/layouts/theorems-ams-extended.module:182
-#: lib/layouts/theorems-ams-extended.module:185
-#: lib/layouts/theorems-ams-extended.module:199
-#: lib/layouts/theorems-ams-extended.module:202
-msgid "Note"
-msgstr "註記"
-
 #: lib/layouts/apa.layout:233
 msgid "Acknowledgements:"
 msgstr "致謝："
@@ -5126,6 +5479,11 @@ msgstr "拉丁語關閉"
 msgid "Latin off"
 msgstr "拉丁語關閉"
 
+#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:225
+#: lib/layouts/scrarticle-beamer.layout:22
+msgid "BeginFrame"
+msgstr "BeginFrame"
+
 #: lib/layouts/article.layout:18 lib/layouts/beamer.layout:110
 #: lib/layouts/beamer.layout:125 lib/layouts/mwart.layout:23
 #: lib/layouts/paper.layout:40 lib/layouts/scrartcl.layout:20
@@ -5141,11 +5499,6 @@ msgstr "部分"
 msgid "Part*"
 msgstr "部分*"
 
-#: lib/layouts/article-beamer.layout:22 lib/layouts/beamer.layout:225
-#: lib/layouts/scrarticle-beamer.layout:22
-msgid "BeginFrame"
-msgstr "BeginFrame"
-
 #: lib/layouts/beamer.layout:100 lib/layouts/egs.layout:196
 #: lib/layouts/manpage.layout:114 lib/layouts/stdlists.inc:65
 msgid "MM"
@@ -5159,14 +5512,6 @@ msgstr "Section \\arabic{section}"
 #: lib/layouts/numarticle.inc:10
 msgid "\\Alph{section}"
 msgstr "\\Alph{section}"
-
-#: lib/layouts/beamer.layout:172 lib/layouts/egs.layout:576
-#: lib/layouts/IEEEtran.layout:298 lib/layouts/ijmpc.layout:102
-#: lib/layouts/ijmpd.layout:98 lib/layouts/isprs.layout:184
-#: lib/layouts/spie.layout:29 lib/layouts/aguplus.inc:34
-#: lib/layouts/db_stdstarsections.inc:36 lib/layouts/stdstarsections.inc:34
-msgid "Section*"
-msgstr "區段*"
 
 #: lib/layouts/beamer.layout:174 lib/layouts/beamer.layout:217
 #: lib/layouts/stdstarsections.inc:15 lib/layouts/stdstarsections.inc:25
@@ -5184,13 +5529,6 @@ msgstr "Subsection \\arabic{section}.\\arabic{subsection}"
 #: lib/layouts/beamer.layout:210
 msgid "\\arabic{section}.\\arabic{subsection}"
 msgstr "\\arabic{section}.\\arabic{subsection}"
-
-#: lib/layouts/beamer.layout:215 lib/layouts/egs.layout:596
-#: lib/layouts/IEEEtran.layout:308 lib/layouts/isprs.layout:195
-#: lib/layouts/aguplus.inc:48 lib/layouts/db_stdstarsections.inc:48
-#: lib/layouts/stdstarsections.inc:45
-msgid "Subsection*"
-msgstr "小節*"
 
 #: lib/layouts/beamer.layout:226 lib/layouts/beamer.layout:270
 #: lib/layouts/beamer.layout:310 lib/layouts/beamer.layout:351
@@ -5381,20 +5719,6 @@ msgstr "Verse"
 msgid "TitleGraphic"
 msgstr "標題圖形"
 
-#: lib/layouts/beamer.layout:988 lib/layouts/elsart.layout:319
-#: lib/layouts/foils.layout:250 lib/layouts/heb-article.layout:55
-#: lib/layouts/IEEEtran.layout:93 lib/layouts/ijmpc.layout:229
-#: lib/layouts/ijmpd.layout:230 lib/layouts/llncs.layout:316
-#: lib/layouts/siamltex.layout:72 lib/layouts/svjour.inc:373
-#: lib/layouts/theorems.inc:64 lib/layouts/theorems.inc:73
-#: lib/layouts/theorems.inc:76 lib/layouts/theorems-ams.inc:65
-#: lib/layouts/theorems-ams.inc:75 lib/layouts/theorems-ams.inc:78
-#: lib/layouts/theorems-order.inc:13 lib/layouts/theorems-starred.inc:72
-#: lib/layouts/theorems-starred.inc:75
-#: lib/layouts/theorems-starred-equivalents.inc:13
-msgid "Corollary"
-msgstr "Corollary"
-
 #: lib/layouts/beamer.layout:989 lib/layouts/theorems-std.module:2
 #, fuzzy
 msgid "Theorems"
@@ -5404,20 +5728,6 @@ msgstr "定理"
 #: lib/layouts/theorems-starred.inc:66
 msgid "Corollary."
 msgstr "推論。"
-
-#: lib/layouts/beamer.layout:1016 lib/layouts/elsart.layout:347
-#: lib/layouts/foils.layout:264 lib/layouts/heb-article.layout:75
-#: lib/layouts/IEEEtran.layout:153 lib/layouts/ijmpc.layout:131
-#: lib/layouts/ijmpd.layout:128 lib/layouts/llncs.layout:330
-#: lib/layouts/siamltex.layout:121 lib/layouts/svjour.inc:387
-#: lib/layouts/theorems.inc:149 lib/layouts/theorems.inc:166
-#: lib/layouts/theorems.inc:169 lib/layouts/theorems-ams.inc:155
-#: lib/layouts/theorems-ams.inc:172 lib/layouts/theorems-ams.inc:175
-#: lib/layouts/theorems-order.inc:37 lib/layouts/theorems-starred.inc:165
-#: lib/layouts/theorems-starred.inc:168
-#: lib/layouts/theorems-starred-equivalents.inc:41
-msgid "Definition"
-msgstr "定義"
 
 #: lib/layouts/beamer.layout:1019 lib/layouts/foils.layout:323
 #: lib/layouts/theorems-starred.inc:152
@@ -5432,19 +5742,6 @@ msgstr "定義"
 msgid "Definitions."
 msgstr "定義。"
 
-#: lib/layouts/beamer.layout:1028 lib/layouts/elsart.layout:368
-#: lib/layouts/IEEEtran.layout:163 lib/layouts/ijmpc.layout:163
-#: lib/layouts/ijmpd.layout:160 lib/layouts/llncs.layout:337
-#: lib/layouts/svjour.inc:394 lib/layouts/theorems.inc:174
-#: lib/layouts/theorems.inc:183 lib/layouts/theorems.inc:186
-#: lib/layouts/theorems-ams.inc:180 lib/layouts/theorems-ams.inc:189
-#: lib/layouts/theorems-ams.inc:192 lib/layouts/theorems-order.inc:43
-#: lib/layouts/theorems-starred.inc:182 lib/layouts/theorems-starred.inc:185
-#: lib/layouts/theorems-starred-equivalents.inc:48
-#: src/frontends/qt4/GuiDocument.cpp:841
-msgid "Example"
-msgstr "範例"
-
 #: lib/layouts/beamer.layout:1031 lib/layouts/theorems-starred.inc:176
 msgid "Example."
 msgstr "範例。"
@@ -5457,28 +5754,9 @@ msgstr "範例"
 msgid "Examples."
 msgstr "範例。"
 
-#: lib/layouts/beamer.layout:1046 lib/layouts/IEEEtran.layout:133
-#: lib/layouts/theorems.inc:132 lib/layouts/theorems.inc:141
-#: lib/layouts/theorems.inc:144 lib/layouts/theorems-ams.inc:137
-#: lib/layouts/theorems-ams.inc:147 lib/layouts/theorems-ams.inc:150
-#: lib/layouts/theorems-starred.inc:140 lib/layouts/theorems-starred.inc:143
-msgid "Fact"
-msgstr "Fact"
-
 #: lib/layouts/beamer.layout:1049 lib/layouts/theorems-starred.inc:134
 msgid "Fact."
 msgstr "論據。"
-
-#: lib/layouts/beamer.layout:1052 lib/layouts/elsart.layout:285
-#: lib/layouts/foils.layout:278 lib/layouts/heb-article.layout:95
-#: lib/layouts/IEEEtran.layout:65 lib/layouts/ijmpc.layout:211
-#: lib/layouts/ijmpd.layout:211 lib/layouts/llncs.layout:371
-#: lib/layouts/siamltex.layout:150 lib/layouts/svjour.inc:433
-#: lib/layouts/theorems-order.inc:76 lib/layouts/theorems-proof.inc:13
-#: lib/layouts/theorems-std.module:20 lib/layouts/theorems-std.module:36
-#: lib/layouts/theorems-std.module:39
-msgid "Proof"
-msgstr "證明"
 
 #: lib/layouts/beamer.layout:1055 lib/layouts/foils.layout:281
 #: lib/layouts/ijmpc.layout:219 lib/layouts/ijmpd.layout:219
@@ -5486,26 +5764,6 @@ msgstr "證明"
 #: lib/layouts/svjour.inc:436 lib/layouts/theorems-proof.inc:30
 msgid "Proof."
 msgstr "證明。"
-
-#: lib/layouts/beamer.layout:1058 lib/layouts/elsart.layout:256
-#: lib/layouts/foils.layout:218 lib/layouts/heb-article.layout:18
-#: lib/layouts/IEEEtran.layout:73 lib/layouts/ijmpc.layout:190
-#: lib/layouts/ijmpd.layout:193 lib/layouts/llncs.layout:412
-#: lib/layouts/siamltex.layout:62 lib/layouts/siamltex.layout:112
-#: lib/layouts/svjour.inc:475 lib/layouts/theorems.inc:24
-#: lib/layouts/theorems.inc:25 lib/layouts/theorems.inc:55
-#: lib/layouts/theorems.inc:58 lib/layouts/theorems.inc:270
-#: lib/layouts/theorems-ams.inc:24 lib/layouts/theorems-ams.inc:25
-#: lib/layouts/theorems-ams.inc:56 lib/layouts/theorems-ams.inc:59
-#: lib/layouts/theorems-ams.inc:276 lib/layouts/theorems-order.inc:7
-#: lib/layouts/theorems-proof.inc:14 lib/layouts/theorems-starred.inc:24
-#: lib/layouts/theorems-starred.inc:54 lib/layouts/theorems-starred.inc:57
-#: lib/layouts/theorems-starred-equivalents.inc:6
-#: lib/layouts/theorems-chap.module:17 lib/layouts/theorems-chap.module:26
-#: lib/layouts/theorems-chap.module:29 lib/layouts/theorems-sec.module:16
-#: lib/layouts/theorems-sec.module:21 lib/layouts/theorems-sec.module:24
-msgid "Theorem"
-msgstr "定理"
 
 #: lib/layouts/beamer.layout:1061 lib/layouts/foils.layout:295
 #: lib/layouts/theorems-starred.inc:29
@@ -6187,19 +6445,6 @@ msgstr "Theorem \\arabic{theorem}"
 msgid "PROOF."
 msgstr "證明。"
 
-#: lib/layouts/elsart.layout:312 lib/layouts/foils.layout:243
-#: lib/layouts/heb-article.layout:45 lib/layouts/IEEEtran.layout:83
-#: lib/layouts/ijmpc.layout:238 lib/layouts/ijmpd.layout:243
-#: lib/layouts/llncs.layout:351 lib/layouts/siamltex.layout:82
-#: lib/layouts/svjour.inc:412 lib/layouts/theorems.inc:81
-#: lib/layouts/theorems.inc:90 lib/layouts/theorems.inc:93
-#: lib/layouts/theorems-ams.inc:83 lib/layouts/theorems-ams.inc:93
-#: lib/layouts/theorems-ams.inc:96 lib/layouts/theorems-order.inc:19
-#: lib/layouts/theorems-starred.inc:89 lib/layouts/theorems-starred.inc:92
-#: lib/layouts/theorems-starred-equivalents.inc:20
-msgid "Lemma"
-msgstr "Lemma"
-
 #: lib/layouts/elsart.layout:315
 msgid "Lemma \\arabic{theorem}"
 msgstr "Lemma \\arabic{theorem}"
@@ -6208,31 +6453,9 @@ msgstr "Lemma \\arabic{theorem}"
 msgid "Corollary \\arabic{theorem}"
 msgstr "Corollary \\arabic{theorem}"
 
-#: lib/layouts/elsart.layout:326 lib/layouts/foils.layout:257
-#: lib/layouts/IEEEtran.layout:103 lib/layouts/ijmpc.layout:247
-#: lib/layouts/ijmpd.layout:253 lib/layouts/llncs.layout:385
-#: lib/layouts/siamltex.layout:92 lib/layouts/svjour.inc:447
-#: lib/layouts/theorems.inc:98 lib/layouts/theorems.inc:107
-#: lib/layouts/theorems.inc:110 lib/layouts/theorems-ams.inc:101
-#: lib/layouts/theorems-ams.inc:111 lib/layouts/theorems-ams.inc:114
-#: lib/layouts/theorems-order.inc:25 lib/layouts/theorems-starred.inc:106
-#: lib/layouts/theorems-starred.inc:109
-#: lib/layouts/theorems-starred-equivalents.inc:27
-msgid "Proposition"
-msgstr "Proposition"
-
 #: lib/layouts/elsart.layout:329
 msgid "Proposition \\arabic{theorem}"
 msgstr "Proposition \\arabic{theorem}"
-
-#: lib/layouts/elsart.layout:333 lib/layouts/IEEEtran.layout:123
-#: lib/layouts/theorems-ams-extended.module:35
-#: lib/layouts/theorems-ams-extended.module:45
-#: lib/layouts/theorems-ams-extended.module:48
-#: lib/layouts/theorems-ams-extended.module:61
-#: lib/layouts/theorems-ams-extended.module:64
-msgid "Criterion"
-msgstr "條件"
 
 #: lib/layouts/elsart.layout:336
 msgid "Criterion \\arabic{theorem}"
@@ -6256,18 +6479,6 @@ msgstr "Algorithm \\arabic{theorem}"
 msgid "Definition \\arabic{theorem}"
 msgstr "Definition \\arabic{theorem}"
 
-#: lib/layouts/elsart.layout:361 lib/layouts/IEEEtran.layout:113
-#: lib/layouts/ijmpc.layout:283 lib/layouts/ijmpd.layout:293
-#: lib/layouts/llncs.layout:309 lib/layouts/siamltex.layout:102
-#: lib/layouts/svjour.inc:366 lib/layouts/theorems.inc:115
-#: lib/layouts/theorems.inc:124 lib/layouts/theorems.inc:127
-#: lib/layouts/theorems-ams.inc:119 lib/layouts/theorems-ams.inc:129
-#: lib/layouts/theorems-ams.inc:132 lib/layouts/theorems-order.inc:31
-#: lib/layouts/theorems-starred.inc:123 lib/layouts/theorems-starred.inc:126
-#: lib/layouts/theorems-starred-equivalents.inc:34
-msgid "Conjecture"
-msgstr "Conjecture"
-
 #: lib/layouts/elsart.layout:364
 msgid "Conjecture \\arabic{theorem}"
 msgstr "Conjecture \\arabic{theorem}"
@@ -6276,32 +6487,9 @@ msgstr "Conjecture \\arabic{theorem}"
 msgid "Example \\arabic{theorem}"
 msgstr "Example \\arabic{theorem}"
 
-#: lib/layouts/elsart.layout:375 lib/layouts/IEEEtran.layout:183
-#: lib/layouts/llncs.layout:364 lib/layouts/svjour.inc:426
-#: lib/layouts/theorems.inc:191 lib/layouts/theorems.inc:200
-#: lib/layouts/theorems.inc:203 lib/layouts/theorems-ams.inc:197
-#: lib/layouts/theorems-ams.inc:206 lib/layouts/theorems-ams.inc:209
-#: lib/layouts/theorems-order.inc:49 lib/layouts/theorems-starred.inc:199
-#: lib/layouts/theorems-starred.inc:202
-#: lib/layouts/theorems-starred-equivalents.inc:55
-msgid "Problem"
-msgstr "問題"
-
 #: lib/layouts/elsart.layout:378
 msgid "Problem \\arabic{theorem}"
 msgstr "Problem \\arabic{theorem}"
-
-#: lib/layouts/elsart.layout:382 lib/layouts/IEEEtran.layout:203
-#: lib/layouts/ijmpc.layout:172 lib/layouts/ijmpd.layout:170
-#: lib/layouts/llncs.layout:398 lib/layouts/svjour.inc:461
-#: lib/layouts/theorems.inc:225 lib/layouts/theorems.inc:243
-#: lib/layouts/theorems.inc:246 lib/layouts/theorems-ams.inc:231
-#: lib/layouts/theorems-ams.inc:249 lib/layouts/theorems-ams.inc:252
-#: lib/layouts/theorems-order.inc:61 lib/layouts/theorems-starred.inc:241
-#: lib/layouts/theorems-starred.inc:244
-#: lib/layouts/theorems-starred-equivalents.inc:69
-msgid "Remark"
-msgstr "備註"
 
 #: lib/layouts/elsart.layout:385
 msgid "Remark \\arabic{theorem}"
@@ -6310,18 +6498,6 @@ msgstr "Remark \\arabic{theorem}"
 #: lib/layouts/elsart.layout:392
 msgid "Note \\arabic{theorem}"
 msgstr "Note \\arabic{theorem}"
-
-#: lib/layouts/elsart.layout:396 lib/layouts/heb-article.layout:65
-#: lib/layouts/IEEEtran.layout:213 lib/layouts/ijmpc.layout:274
-#: lib/layouts/ijmpd.layout:283 lib/layouts/llncs.layout:302
-#: lib/layouts/svjour.inc:345 lib/layouts/theorems.inc:251
-#: lib/layouts/theorems.inc:260 lib/layouts/theorems.inc:263
-#: lib/layouts/theorems-ams.inc:257 lib/layouts/theorems-ams.inc:266
-#: lib/layouts/theorems-ams.inc:269 lib/layouts/theorems-order.inc:67
-#: lib/layouts/theorems-starred.inc:258 lib/layouts/theorems-starred.inc:261
-#: lib/layouts/theorems-starred-equivalents.inc:76
-msgid "Claim"
-msgstr "宣稱"
 
 #: lib/layouts/elsart.layout:399
 msgid "Claim \\arabic{theorem}"
@@ -6338,14 +6514,6 @@ msgstr "概要"
 #: lib/layouts/elsart.layout:407
 msgid "Summary \\arabic{summ}"
 msgstr "Summary \\arabic{summ}"
-
-#: lib/layouts/elsart.layout:411 lib/layouts/IEEEtran.layout:243
-#: lib/layouts/llncs.layout:281 lib/layouts/theorems.inc:269
-#: lib/layouts/theorems.inc:294 lib/layouts/theorems.inc:297
-#: lib/layouts/theorems-ams.inc:275 lib/layouts/theorems-ams.inc:310
-#: lib/layouts/theorems-ams.inc:313 lib/layouts/theorems-order.inc:73
-msgid "Case"
-msgstr "大小寫"
 
 #: lib/layouts/elsart.layout:415
 msgid "Case \\arabic{case}"
@@ -7092,10 +7260,6 @@ msgstr "備註"
 msgid "Remarks #."
 msgstr "備註 #."
 
-#: lib/layouts/heb-article.layout:110 lib/layouts/IEEEtran.layout:68
-msgid "Proof:"
-msgstr "證明："
-
 #: lib/layouts/hollywood.layout:55
 msgid "More"
 msgstr "更多"
@@ -7148,152 +7312,6 @@ msgstr "FADE OUT"
 msgid "Scene"
 msgstr "場景"
 
-#: lib/layouts/IEEEtran.layout:49
-msgid "TheoremTemplate"
-msgstr "定理模版"
-
-#: lib/layouts/IEEEtran.layout:76
-msgid "Theorem #:"
-msgstr "定理 #："
-
-#: lib/layouts/IEEEtran.layout:86
-msgid "Lemma #:"
-msgstr "Lemma #："
-
-#: lib/layouts/IEEEtran.layout:96
-msgid "Corollary #:"
-msgstr "Corollary #："
-
-#: lib/layouts/IEEEtran.layout:106
-msgid "Proposition #:"
-msgstr "Proposition #："
-
-#: lib/layouts/IEEEtran.layout:116
-msgid "Conjecture #:"
-msgstr "Conjecture #："
-
-#: lib/layouts/IEEEtran.layout:126
-msgid "Criterion #:"
-msgstr "條件 #："
-
-#: lib/layouts/IEEEtran.layout:136
-msgid "Fact #:"
-msgstr "Fact #："
-
-#: lib/layouts/IEEEtran.layout:143
-#: lib/layouts/theorems-ams-extended.module:104
-#: lib/layouts/theorems-ams-extended.module:114
-#: lib/layouts/theorems-ams-extended.module:117
-#: lib/layouts/theorems-ams-extended.module:131
-#: lib/layouts/theorems-ams-extended.module:134
-msgid "Axiom"
-msgstr "Axiom"
-
-#: lib/layouts/IEEEtran.layout:146
-msgid "Axiom #:"
-msgstr "Axiom #："
-
-#: lib/layouts/IEEEtran.layout:156
-msgid "Definition #:"
-msgstr "定義 #："
-
-#: lib/layouts/IEEEtran.layout:166
-msgid "Example #:"
-msgstr "範例 #："
-
-#: lib/layouts/IEEEtran.layout:173
-#: lib/layouts/theorems-ams-extended.module:139
-#: lib/layouts/theorems-ams-extended.module:148
-#: lib/layouts/theorems-ams-extended.module:151
-#: lib/layouts/theorems-ams-extended.module:165
-#: lib/layouts/theorems-ams-extended.module:168
-msgid "Condition"
-msgstr "條件"
-
-#: lib/layouts/IEEEtran.layout:176
-msgid "Condition #:"
-msgstr "條件 #："
-
-#: lib/layouts/IEEEtran.layout:186
-msgid "Problem #:"
-msgstr "問題 #："
-
-#: lib/layouts/IEEEtran.layout:193 lib/layouts/llncs.layout:344
-#: lib/layouts/svjour.inc:401 lib/layouts/theorems.inc:208
-#: lib/layouts/theorems.inc:217 lib/layouts/theorems.inc:220
-#: lib/layouts/theorems-ams.inc:214 lib/layouts/theorems-ams.inc:223
-#: lib/layouts/theorems-ams.inc:226 lib/layouts/theorems-order.inc:55
-#: lib/layouts/theorems-starred.inc:216 lib/layouts/theorems-starred.inc:219
-#: lib/layouts/theorems-starred-equivalents.inc:62
-msgid "Exercise"
-msgstr "練習"
-
-#: lib/layouts/IEEEtran.layout:196
-msgid "Exercise #:"
-msgstr "練習 #："
-
-#: lib/layouts/IEEEtran.layout:206
-msgid "Remark #:"
-msgstr "備註 #："
-
-#: lib/layouts/IEEEtran.layout:216
-msgid "Claim #:"
-msgstr "宣稱 #："
-
-#: lib/layouts/IEEEtran.layout:226
-msgid "Note #:"
-msgstr "註記 #："
-
-#: lib/layouts/IEEEtran.layout:233 lib/layouts/ijmpc.layout:181
-#: lib/layouts/ijmpd.layout:180 lib/layouts/theorems-ams-extended.module:207
-#: lib/layouts/theorems-ams-extended.module:216
-#: lib/layouts/theorems-ams-extended.module:219
-#: lib/layouts/theorems-ams-extended.module:233
-#: lib/layouts/theorems-ams-extended.module:236
-msgid "Notation"
-msgstr "記法"
-
-#: lib/layouts/IEEEtran.layout:236
-msgid "Notation #:"
-msgstr "記法 #："
-
-#: lib/layouts/IEEEtran.layout:246
-msgid "Case #:"
-msgstr "大小寫 #："
-
-#: lib/layouts/IEEEtran.layout:316 lib/layouts/isprs.layout:204
-#: lib/layouts/db_stdstarsections.inc:60 lib/layouts/stdstarsections.inc:56
-msgid "Subsubsection*"
-msgstr "次小節*"
-
-#: lib/layouts/IEEEtran.layout:337
-msgid "Abstract---"
-msgstr "摘要---"
-
-#: lib/layouts/IEEEtran.layout:362
-msgid "Index Terms---"
-msgstr "索引語詞---"
-
-#: lib/layouts/IEEEtran.layout:406 lib/layouts/IEEEtran.layout:409
-msgid "Appendices"
-msgstr "附錄"
-
-#: lib/layouts/IEEEtran.layout:413
-msgid "Biography"
-msgstr "傳記"
-
-#: lib/layouts/IEEEtran.layout:423
-msgid "BiographyNoPhoto"
-msgstr "傳記無相片"
-
-#: lib/layouts/IEEEtran.layout:442 lib/layouts/IEEEtran.layout:453
-msgid "Footernote"
-msgstr "腳註"
-
-#: lib/layouts/IEEEtran.layout:465
-msgid "MarkBoth"
-msgstr "MarkBoth"
-
 #: lib/layouts/ijmpc.layout:88
 msgid "Classification Codes"
 msgstr "分類編碼"
@@ -7328,7 +7346,7 @@ msgid "Notation \\thenotation."
 msgstr "Notation \\arabic{notation}."
 
 #: lib/layouts/ijmpc.layout:200 lib/layouts/ijmpd.layout:203
-#: lib/layouts/theorems.inc:42 lib/layouts/theorems-ams.inc:42
+#: lib/layouts/theorems-ams.inc:42 lib/layouts/theorems.inc:42
 #, fuzzy
 msgid "Theorem \\thetheorem."
 msgstr "Theorem \\arabic{theorem}."
@@ -7530,8 +7548,8 @@ msgstr "目錄作者"
 msgid "TOC Author:"
 msgstr "目錄作者："
 
-#: lib/layouts/llncs.layout:295 lib/layouts/theorems.inc:275
-#: lib/layouts/theorems-ams.inc:291
+#: lib/layouts/llncs.layout:295 lib/layouts/theorems-ams.inc:291
+#: lib/layouts/theorems.inc:275
 msgid "Case #."
 msgstr "大小寫 #."
 
@@ -8875,7 +8893,7 @@ msgstr "註釋"
 msgid "Note:Note"
 msgstr "註記："
 
-#: lib/layouts/stdinsets.inc:116 src/insets/InsetNote.cpp:298
+#: lib/layouts/stdinsets.inc:116 src/insets/InsetNote.cpp:297
 msgid "note"
 msgstr "註記"
 
@@ -8890,7 +8908,7 @@ msgid "greyedout"
 msgstr "灰色顯示"
 
 #: lib/layouts/stdinsets.inc:139 lib/layouts/stdinsets.inc:140
-#: src/insets/InsetERT.cpp:163 src/insets/InsetERT.cpp:165
+#: src/insets/InsetERT.cpp:162 src/insets/InsetERT.cpp:164
 msgid "ERT"
 msgstr "ERT"
 
@@ -8912,11 +8930,11 @@ msgid "Branch"
 msgstr "分支"
 
 #: lib/layouts/stdinsets.inc:199 lib/layouts/minimalistic.module:8
-#: src/BufferParams.cpp:370 src/insets/InsetIndex.cpp:390
+#: src/BufferParams.cpp:370 src/insets/InsetIndex.cpp:406
 msgid "Index"
 msgstr "索引"
 
-#: lib/layouts/stdinsets.inc:200 src/insets/InsetIndex.cpp:244
+#: lib/layouts/stdinsets.inc:200 src/insets/InsetIndex.cpp:243
 #, fuzzy
 msgid "Idx"
 msgstr "索引："
@@ -9011,56 +9029,56 @@ msgstr "抽印本"
 msgid "Offprints:"
 msgstr "抽印本："
 
-#: lib/layouts/theorems.inc:68 lib/layouts/theorems-ams.inc:69
+#: lib/layouts/theorems-ams.inc:69 lib/layouts/theorems.inc:68
 #, fuzzy
 msgid "Corollary \\thetheorem."
 msgstr "Corollary \\arabic{theorem}"
 
-#: lib/layouts/theorems.inc:85 lib/layouts/theorems-ams.inc:87
+#: lib/layouts/theorems-ams.inc:87 lib/layouts/theorems.inc:85
 #, fuzzy
 msgid "Lemma \\thetheorem."
 msgstr "Lemma \\arabic{theorem}"
 
-#: lib/layouts/theorems.inc:102 lib/layouts/theorems-ams.inc:105
+#: lib/layouts/theorems-ams.inc:105 lib/layouts/theorems.inc:102
 #, fuzzy
 msgid "Proposition \\thetheorem."
 msgstr "Proposition \\arabic{theorem}"
 
-#: lib/layouts/theorems.inc:119 lib/layouts/theorems-ams.inc:123
+#: lib/layouts/theorems-ams.inc:123 lib/layouts/theorems.inc:119
 #, fuzzy
 msgid "Conjecture \\thetheorem."
 msgstr "Conjecture \\arabic{theorem}"
 
-#: lib/layouts/theorems.inc:136 lib/layouts/theorems-ams.inc:141
+#: lib/layouts/theorems-ams.inc:141 lib/layouts/theorems.inc:136
 msgid "Fact \\thetheorem."
 msgstr ""
 
-#: lib/layouts/theorems.inc:153 lib/layouts/theorems-ams.inc:159
+#: lib/layouts/theorems-ams.inc:159 lib/layouts/theorems.inc:153
 #, fuzzy
 msgid "Definition \\thetheorem."
 msgstr "Definition \\arabic{theorem}"
 
-#: lib/layouts/theorems.inc:177 lib/layouts/theorems-ams.inc:183
+#: lib/layouts/theorems-ams.inc:183 lib/layouts/theorems.inc:177
 #, fuzzy
 msgid "Example \\thetheorem."
 msgstr "Example \\arabic{theorem}"
 
-#: lib/layouts/theorems.inc:194 lib/layouts/theorems-ams.inc:200
+#: lib/layouts/theorems-ams.inc:200 lib/layouts/theorems.inc:194
 #, fuzzy
 msgid "Problem \\thetheorem."
 msgstr "Problem \\arabic{theorem}"
 
-#: lib/layouts/theorems.inc:211 lib/layouts/theorems-ams.inc:217
+#: lib/layouts/theorems-ams.inc:217 lib/layouts/theorems.inc:211
 #, fuzzy
 msgid "Exercise \\thetheorem."
 msgstr "Exercise @Section@.\\arabic{theorem}."
 
-#: lib/layouts/theorems.inc:229 lib/layouts/theorems-ams.inc:235
+#: lib/layouts/theorems-ams.inc:235 lib/layouts/theorems.inc:229
 #, fuzzy
 msgid "Remark \\thetheorem."
 msgstr "Remark \\arabic{theorem}"
 
-#: lib/layouts/theorems.inc:254 lib/layouts/theorems-ams.inc:260
+#: lib/layouts/theorems-ams.inc:260 lib/layouts/theorems.inc:254
 #, fuzzy
 msgid "Claim \\thetheorem."
 msgstr "Claim \\arabic{theorem}"
@@ -10130,7 +10148,7 @@ msgstr "插入|I"
 msgid "Layout|L"
 msgstr "版面配置|L"
 
-#: lib/ui/classic.ui:36 lib/ui/stdmenus.inc:22 lib/ui/stdmenus.inc:302
+#: lib/ui/classic.ui:36 lib/ui/stdmenus.inc:22
 msgid "View|V"
 msgstr "檢視|V"
 
@@ -10260,11 +10278,11 @@ msgstr "尋找 & 置換…|F"
 msgid "Tabular|T"
 msgstr "跳格|T"
 
-#: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:107 lib/ui/stdmenus.inc:546
+#: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:107 lib/ui/stdmenus.inc:547
 msgid "Math|M"
 msgstr "數學|M"
 
-#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:524
+#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:525
 msgid "Spellchecker...|S"
 msgstr "拼寫檢查器…|S"
 
@@ -10277,7 +10295,7 @@ msgstr "同義詞…"
 msgid "Statistics...|i"
 msgstr "狀態"
 
-#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:527
+#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:528
 msgid "Check TeX|h"
 msgstr "檢查 TeX|h"
 
@@ -10285,11 +10303,11 @@ msgstr "檢查 TeX|h"
 msgid "Change Tracking|g"
 msgstr "變更追蹤|g"
 
-#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:534
+#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:535
 msgid "Preferences...|P"
 msgstr "偏好設定…|P"
 
-#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:533
+#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:534
 msgid "Reconfigure|R"
 msgstr "重新配置|R"
 
@@ -10945,15 +10963,15 @@ msgstr "前往書籤 4|4"
 msgid "Go to Bookmark 5|5"
 msgstr "前往書籤 5|5"
 
-#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:541
+#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:542
 msgid "Introduction|I"
 msgstr "介紹|I"
 
-#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:542
+#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:543
 msgid "Tutorial|T"
 msgstr "教學課程|T"
 
-#: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:543
+#: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:544
 msgid "User's Guide|U"
 msgstr "使用者指南|U"
 
@@ -10965,15 +10983,15 @@ msgstr "進階特色|E"
 msgid "Embedded Objects|m"
 msgstr "內嵌物件|m"
 
-#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:547
+#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:548
 msgid "Customization|C"
 msgstr "客製化|C"
 
-#: lib/ui/classic.ui:415 lib/ui/stdmenus.inc:550
+#: lib/ui/classic.ui:415 lib/ui/stdmenus.inc:551
 msgid "LaTeX Configuration|L"
 msgstr "LaTeX 配置|L"
 
-#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:553
+#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:554
 msgid "About LyX|X"
 msgstr "關於 LyX|X"
 
@@ -11137,7 +11155,7 @@ msgstr "格式化的參考"
 #: lib/ui/stdcontext.inc:453 lib/ui/stdcontext.inc:461
 #: lib/ui/stdcontext.inc:469 lib/ui/stdcontext.inc:477
 #: lib/ui/stdcontext.inc:490 lib/ui/stdcontext.inc:500
-#: lib/ui/stdcontext.inc:515 lib/ui/stdcontext.inc:525 lib/ui/stdmenus.inc:482
+#: lib/ui/stdcontext.inc:515 lib/ui/stdcontext.inc:528 lib/ui/stdmenus.inc:482
 msgid "Settings...|S"
 msgstr "設定值…|S"
 
@@ -11608,6 +11626,15 @@ msgstr "交叉參照…|R"
 msgid "Insert Reference at Cursor Position|I"
 msgstr ""
 
+#: lib/ui/stdcontext.inc:523
+#, fuzzy
+msgid "All Indices|A"
+msgstr "發票"
+
+#: lib/ui/stdcontext.inc:526
+msgid "Subindex|b"
+msgstr ""
+
 #: lib/ui/stdmenus.inc:25
 msgid "Document|D"
 msgstr "文件|D"
@@ -11892,6 +11919,11 @@ msgstr "數學巨集"
 msgid "View Source|S"
 msgstr "檢視原始碼|S"
 
+#: lib/ui/stdmenus.inc:302
+#, fuzzy
+msgid "View|V[[show]]"
+msgstr "檢視|V"
+
 #: lib/ui/stdmenus.inc:304
 #, fuzzy
 msgid "View Master Document|M"
@@ -12100,59 +12132,64 @@ msgstr "下一個交叉參照|R"
 msgid "Clear Bookmarks|C"
 msgstr "清空書籤|C"
 
-#: lib/ui/stdmenus.inc:525
+#: lib/ui/stdmenus.inc:516
+#, fuzzy
+msgid "Navigate Back|B"
+msgstr "巡覽|N"
+
+#: lib/ui/stdmenus.inc:526
 msgid "Thesaurus...|T"
 msgstr "同義詞...|T"
 
-#: lib/ui/stdmenus.inc:526
+#: lib/ui/stdmenus.inc:527
 #, fuzzy
 msgid "Statistics...|a"
 msgstr "狀態"
 
-#: lib/ui/stdmenus.inc:528
+#: lib/ui/stdmenus.inc:529
 msgid "TeX Information|I"
 msgstr "TeX 資訊|I"
 
-#: lib/ui/stdmenus.inc:544
+#: lib/ui/stdmenus.inc:545
 #, fuzzy
 msgid "Additional Features|F"
 msgstr "額外空格"
 
-#: lib/ui/stdmenus.inc:545
+#: lib/ui/stdmenus.inc:546
 #, fuzzy
 msgid "Embedded Objects|O"
 msgstr "內嵌物件|m"
 
-#: lib/ui/stdmenus.inc:548
+#: lib/ui/stdmenus.inc:549
 #, fuzzy
 msgid "Shortcuts|S"
 msgstr "捷徑(&H)："
 
-#: lib/ui/stdmenus.inc:549
+#: lib/ui/stdmenus.inc:550
 #, fuzzy
 msgid "LyX Functions|y"
 msgstr "函數"
 
-#: lib/ui/stdmenus.inc:551
+#: lib/ui/stdmenus.inc:552
 #, fuzzy
 msgid "Specific Manuals|p"
 msgstr "Specialmail"
 
-#: lib/ui/stdmenus.inc:557
+#: lib/ui/stdmenus.inc:558
 msgid "Linguistics Manual|L"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:558
+#: lib/ui/stdmenus.inc:559
 #, fuzzy
 msgid "Braille Manual|B"
 msgstr "LaTeX 預設"
 
-#: lib/ui/stdmenus.inc:559
+#: lib/ui/stdmenus.inc:560
 #, fuzzy
 msgid "XY-pic Manual|X"
 msgstr "Specialmail"
 
-#: lib/ui/stdmenus.inc:560
+#: lib/ui/stdmenus.inc:561
 #, fuzzy
 msgid "Multicolumn Manual|M"
 msgstr "多欄|M"
@@ -16529,7 +16566,7 @@ msgstr "  數字 %1$s"
 msgid "Cannot view file"
 msgstr "無法檢視檔案"
 
-#: src/Format.cpp:254 src/Format.cpp:325
+#: src/Format.cpp:254 src/Format.cpp:325 src/LyXFunc.cpp:1098
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "檔案不存在：%1$s"
@@ -16759,7 +16796,7 @@ msgstr ""
 "\t-version        概述版本和組建資訊\n"
 "查看 LyX 線上手冊以獲得更多細節。"
 
-#: src/LyX.cpp:1011 src/support/Package.cpp:554
+#: src/LyX.cpp:1011
 msgid "No system directory"
 msgstr "無系統目錄"
 
@@ -16912,43 +16949,43 @@ msgstr "缺少引數"
 msgid "Opening help file %1$s..."
 msgstr "開啟說明檔案 %1$s…"
 
-#: src/LyXFunc.cpp:1253
+#: src/LyXFunc.cpp:1256
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "開啟子文件 %1$s…"
 
-#: src/LyXFunc.cpp:1415
+#: src/LyXFunc.cpp:1418
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "文件預設儲存在 %1$s 中"
 
-#: src/LyXFunc.cpp:1418
+#: src/LyXFunc.cpp:1421
 msgid "Unable to save document defaults"
 msgstr "無法儲存文件預設值"
 
-#: src/LyXFunc.cpp:1562 src/LyXVC.cpp:151
+#: src/LyXFunc.cpp:1565 src/LyXVC.cpp:151
 msgid "LyX VC: Log Message"
 msgstr "LyX VC：記錄檔訊息"
 
-#: src/LyXFunc.cpp:1571
+#: src/LyXFunc.cpp:1574
 msgid "Directory is not accessible."
 msgstr ""
 
-#: src/LyXFunc.cpp:1778
+#: src/LyXFunc.cpp:1781
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "文件 %1$s 已開啟。"
 
-#: src/LyXFunc.cpp:1780
+#: src/LyXFunc.cpp:1783
 #, fuzzy, c-format
 msgid "Could not reload document %1$s"
 msgstr "無法讀取文件"
 
-#: src/LyXFunc.cpp:1817
+#: src/LyXFunc.cpp:1820
 msgid "Welcome to LyX!"
 msgstr "歡迎使用 LyX！"
 
-#: src/LyXFunc.cpp:1838
+#: src/LyXFunc.cpp:1841
 msgid "Converting document to new document class..."
 msgstr "轉換文件到新文件類別…"
 
@@ -17538,14 +17575,14 @@ msgstr ""
 "設定為預設值。"
 
 #: src/Paragraph.cpp:2134 src/frontends/qt4/LaTeXHighlighter.cpp:108
-#: src/insets/InsetListings.cpp:186 src/insets/InsetListings.cpp:194
-#: src/insets/InsetListings.cpp:218 src/mathed/InsetMathString.cpp:165
+#: src/insets/InsetListings.cpp:185 src/insets/InsetListings.cpp:193
+#: src/insets/InsetListings.cpp:217 src/mathed/InsetMathString.cpp:165
 #, fuzzy
 msgid "LyX Warning: "
 msgstr "LyX 版本 "
 
-#: src/Paragraph.cpp:2135 src/insets/InsetListings.cpp:187
-#: src/insets/InsetListings.cpp:195 src/mathed/InsetMathString.cpp:166
+#: src/Paragraph.cpp:2135 src/insets/InsetListings.cpp:186
+#: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:166
 #, fuzzy
 msgid "uncodable character"
 msgstr "特殊字元"
@@ -19029,27 +19066,27 @@ msgstr "索引項目"
 msgid "Label Color"
 msgstr "顏色"
 
-#: src/frontends/qt4/GuiIndices.cpp:130
+#: src/frontends/qt4/GuiIndices.cpp:129
 #, fuzzy
 msgid "Cannot remove standard index"
 msgstr "無法移除暫存目錄"
 
-#: src/frontends/qt4/GuiIndices.cpp:131
+#: src/frontends/qt4/GuiIndices.cpp:130
 #, fuzzy
 msgid "The default index cannot be removed."
 msgstr "要列印的最後一列"
 
-#: src/frontends/qt4/GuiIndices.cpp:150
+#: src/frontends/qt4/GuiIndices.cpp:149
 #, fuzzy
 msgid "Enter new index name"
 msgstr "輸入 BibTeX 資料庫名稱"
 
-#: src/frontends/qt4/GuiIndices.cpp:156
+#: src/frontends/qt4/GuiIndices.cpp:155
 #, fuzzy
 msgid "Renaming failed"
 msgstr "轉換失敗"
 
-#: src/frontends/qt4/GuiIndices.cpp:157
+#: src/frontends/qt4/GuiIndices.cpp:156
 msgid "The index could not be renamed. Check if the new name already exists."
 msgstr ""
 
@@ -19447,10 +19484,15 @@ msgstr "列印到檔案"
 msgid "PostScript files (*.ps)"
 msgstr "PostScript 檔案 (*.ps)"
 
-#: src/frontends/qt4/GuiPrintindex.cpp:34
+#: src/frontends/qt4/GuiPrintindex.cpp:37
 #, fuzzy
 msgid "Index Settings"
 msgstr "方框設定值"
+
+#: src/frontends/qt4/GuiPrintindex.cpp:69
+#, fuzzy
+msgid "<All indices>"
+msgstr "可用分支(&V)："
 
 #: src/frontends/qt4/GuiRef.cpp:43
 msgid "Cross-reference"
@@ -20039,7 +20081,7 @@ msgstr "LyX 文件 (*.lyx)"
 
 #: src/frontends/qt4/GuiView.cpp:1463 src/frontends/qt4/Validator.cpp:176
 #: src/insets/ExternalSupport.cpp:365 src/insets/InsetBibtex.cpp:285
-#: src/insets/InsetGraphics.cpp:589 src/insets/InsetInclude.cpp:482
+#: src/insets/InsetGraphics.cpp:582 src/insets/InsetInclude.cpp:482
 msgid "Invalid filename"
 msgstr "無效檔名"
 
@@ -20203,35 +20245,35 @@ msgstr "書籤|B"
 msgid "Literate Source"
 msgstr "LaTeX 來源"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1169
+#: src/frontends/qt4/GuiWorkArea.cpp:1173
 #, fuzzy
 msgid " (version control)"
 msgstr "版本控制"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1171
+#: src/frontends/qt4/GuiWorkArea.cpp:1175
 #, fuzzy
 msgid " (version control, locking)"
 msgstr "版本控制"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1174
+#: src/frontends/qt4/GuiWorkArea.cpp:1178
 msgid " (changed)"
 msgstr " (已變更)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1178
+#: src/frontends/qt4/GuiWorkArea.cpp:1182
 msgid " (read only)"
 msgstr " (唯讀)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1313
+#: src/frontends/qt4/GuiWorkArea.cpp:1317
 #, fuzzy
 msgid "Close File"
 msgstr "關閉"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1711
+#: src/frontends/qt4/GuiWorkArea.cpp:1715
 #, fuzzy
 msgid "Hide tab"
 msgstr "δ"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1713
+#: src/frontends/qt4/GuiWorkArea.cpp:1717
 #, fuzzy
 msgid "Close tab"
 msgstr "關閉"
@@ -20306,7 +20348,7 @@ msgid "Index Entry|d"
 msgstr "索引項目|d"
 
 #: src/frontends/qt4/Menus.cpp:1169 src/frontends/qt4/Menus.cpp:1199
-#: src/insets/InsetIndex.cpp:254
+#: src/insets/InsetIndex.cpp:253
 msgid "Index Entry"
 msgstr "索引項目"
 
@@ -20409,13 +20451,13 @@ msgid "List of Changes"
 msgstr "表格列表"
 
 #: src/insets/ExternalSupport.cpp:366 src/insets/InsetBibtex.cpp:286
-#: src/insets/InsetGraphics.cpp:590 src/insets/InsetInclude.cpp:483
+#: src/insets/InsetGraphics.cpp:583 src/insets/InsetInclude.cpp:483
 msgid ""
 "The following filename is likely to cause trouble when running the exported "
 "file through LaTeX: "
 msgstr "透過 LaTeX 執行匯出檔案時，下列檔名似乎會造成麻煩："
 
-#: src/insets/Inset.cpp:343
+#: src/insets/Inset.cpp:360
 msgid "Opened inset"
 msgstr "開啟的內欄"
 
@@ -20551,7 +20593,7 @@ msgstr "開啟的分支內欄"
 msgid "active"
 msgstr "銳角"
 
-#: src/insets/InsetBranch.cpp:77 src/insets/InsetIndex.cpp:398
+#: src/insets/InsetBranch.cpp:77 src/insets/InsetIndex.cpp:414
 msgid "non-active"
 msgstr ""
 
@@ -20572,7 +20614,7 @@ msgstr ""
 msgid "Undef: "
 msgstr "未定義："
 
-#: src/insets/InsetBranch.cpp:227
+#: src/insets/InsetBranch.cpp:226
 msgid "branch"
 msgstr "分支"
 
@@ -20637,7 +20679,7 @@ msgstr "缺少 \\end_inset 於此點。"
 msgid "Opened ERT Inset"
 msgstr "開啟的 ERT 內欄"
 
-#: src/insets/InsetExternal.cpp:485
+#: src/insets/InsetExternal.cpp:484
 #, c-format
 msgid "External template %1$s is not installed"
 msgstr "外部模板 %1$s 並未安裝"
@@ -20647,24 +20689,24 @@ msgstr "外部模板 %1$s 並未安裝"
 msgid "Opened Flex Inset"
 msgstr "開啟的文字內欄"
 
-#: src/insets/InsetFloat.cpp:119 src/insets/InsetFloat.cpp:423
+#: src/insets/InsetFloat.cpp:119 src/insets/InsetFloat.cpp:422
 msgid "float: "
 msgstr "浮動："
 
-#: src/insets/InsetFloat.cpp:285
+#: src/insets/InsetFloat.cpp:284
 msgid "Opened Float Inset"
 msgstr "開啟的浮動內欄"
 
-#: src/insets/InsetFloat.cpp:359
+#: src/insets/InsetFloat.cpp:358
 msgid "float"
 msgstr "浮動"
 
-#: src/insets/InsetFloat.cpp:426
+#: src/insets/InsetFloat.cpp:425
 #, fuzzy
 msgid "subfloat: "
 msgstr "浮動："
 
-#: src/insets/InsetFloat.cpp:434
+#: src/insets/InsetFloat.cpp:433
 msgid " (sideways)"
 msgstr " (側向地)"
 
@@ -20685,7 +20727,7 @@ msgstr "開啟的註腳內欄"
 msgid "footnote"
 msgstr "註腳"
 
-#: src/insets/InsetGraphics.cpp:467 src/insets/InsetInclude.cpp:560
+#: src/insets/InsetGraphics.cpp:460 src/insets/InsetInclude.cpp:560
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -20696,12 +20738,12 @@ msgstr ""
 "%1$s\n"
 "進入暫存目錄。"
 
-#: src/insets/InsetGraphics.cpp:700
+#: src/insets/InsetGraphics.cpp:693
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr "完全沒有所需的 %1$s 轉換"
 
-#: src/insets/InsetGraphics.cpp:794
+#: src/insets/InsetGraphics.cpp:787
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "圖形檔案：%1$s"
@@ -20768,15 +20810,25 @@ msgid ""
 "explained in the User Guide."
 msgstr ""
 
-#: src/insets/InsetIndex.cpp:261
+#: src/insets/InsetIndex.cpp:260
 #, fuzzy
 msgid "unknown type!"
 msgstr "不明的內容表型態"
 
-#: src/insets/InsetIndex.cpp:395
+#: src/insets/InsetIndex.cpp:411
 #, fuzzy
 msgid "Unknown index type!"
 msgstr "不明的內容表型態"
+
+#: src/insets/InsetIndex.cpp:412
+#, fuzzy
+msgid "All indices"
+msgstr "可用分支(&V)："
+
+#: src/insets/InsetIndex.cpp:416
+#, fuzzy
+msgid "subindex"
+msgstr "索引"
 
 #: src/insets/InsetInfo.cpp:115
 #, fuzzy, c-format
@@ -20822,20 +20874,20 @@ msgstr ""
 msgid "DUPLICATE: "
 msgstr ""
 
-#: src/insets/InsetListings.cpp:130
+#: src/insets/InsetListings.cpp:129
 msgid "Opened Listing Inset"
 msgstr "開啟的清單內欄"
 
-#: src/insets/InsetListings.cpp:219
+#: src/insets/InsetListings.cpp:218
 msgid "no more lstline delimiters available"
 msgstr ""
 
-#: src/insets/InsetListings.cpp:224
+#: src/insets/InsetListings.cpp:223
 #, fuzzy
 msgid "Running out of delimiters"
 msgstr "插入分隔符號"
 
-#: src/insets/InsetListings.cpp:225
+#: src/insets/InsetListings.cpp:224
 msgid ""
 "For inline program listings, one character must be reserved\n"
 "as a delimiter. One of the listings, however, uses all available\n"
@@ -20844,12 +20896,12 @@ msgid ""
 "must investigate!"
 msgstr ""
 
-#: src/insets/InsetListings.cpp:268
+#: src/insets/InsetListings.cpp:267
 #, fuzzy
 msgid "Uncodable characters in listings inset"
 msgstr "特殊字元"
 
-#: src/insets/InsetListings.cpp:269
+#: src/insets/InsetListings.cpp:268
 #, c-format
 msgid ""
 "The following characters in one of the program listings are\n"
@@ -21065,15 +21117,15 @@ msgstr "phantom"
 msgid "Opened Phantom Inset"
 msgstr "開啟的題要內欄"
 
-#: src/insets/InsetPhantom.cpp:342
+#: src/insets/InsetPhantom.cpp:341
 msgid "phantom"
 msgstr "phantom"
 
-#: src/insets/InsetPhantom.cpp:344
+#: src/insets/InsetPhantom.cpp:343
 msgid "hphantom"
 msgstr "hphantom"
 
-#: src/insets/InsetPhantom.cpp:346
+#: src/insets/InsetPhantom.cpp:345
 msgid "vphantom"
 msgstr "vphantom"
 
@@ -21247,19 +21299,19 @@ msgstr "您無法垂直地設定多欄。"
 msgid "Opened Text Inset"
 msgstr "開啟的文字內欄"
 
-#: src/insets/InsetVSpace.cpp:127
+#: src/insets/InsetVSpace.cpp:123
 msgid "Vertical Space"
 msgstr "垂直空格"
 
-#: src/insets/InsetWrap.cpp:48 src/insets/InsetWrap.cpp:122
+#: src/insets/InsetWrap.cpp:48 src/insets/InsetWrap.cpp:121
 msgid "wrap: "
 msgstr "換列："
 
-#: src/insets/InsetWrap.cpp:182
+#: src/insets/InsetWrap.cpp:181
 msgid "Opened Wrap Inset"
 msgstr "開啟的換列內欄"
 
-#: src/insets/InsetWrap.cpp:208
+#: src/insets/InsetWrap.cpp:207
 msgid "wrap"
 msgstr "換列"
 
@@ -21451,6 +21503,11 @@ msgstr "找不到字串！"
 msgid "Match found!"
 msgstr "找不到檔案"
 
+#: src/mathed/InsetFormulaMacro.cpp:119
+#, c-format
+msgid " Macro: %1$s: "
+msgstr " 巨集：%1$s："
+
 #: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1408
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
@@ -21561,64 +21618,6 @@ msgstr "摘要："
 #: src/output_plaintext.cpp:148
 msgid "References: "
 msgstr "參考："
-
-#: src/support/Package.cpp:435
-msgid "LyX binary not found"
-msgstr "找不到 LyX 執行程式"
-
-#: src/support/Package.cpp:436
-#, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1$s"
-msgstr "無法從命令列 %1$s 決定 LyX 程式的路徑"
-
-#: src/support/Package.cpp:555
-#, fuzzy, c-format
-msgid ""
-"Unable to determine the system directory having searched\n"
-"\t%1$s\n"
-"Use the '-sysdir' command line parameter or set the environment variable\n"
-"%2$s to the LyX system directory containing the file `chkconfig.ltx'."
-msgstr ""
-"無法決定要搜尋的系統目錄\n"
-"\t%1$s\n"
-"使用「-sysdir」命令列參數或設定環境變數 LYX_DIR_15x 為 LyX 系統目錄，其中包含"
-"檔案「chkconfig.ltx」。"
-
-#: src/support/Package.cpp:636 src/support/Package.cpp:663
-msgid "File not found"
-msgstr "找不到檔案"
-
-#: src/support/Package.cpp:637
-#, c-format
-msgid ""
-"Invalid %1$s switch.\n"
-"Directory %2$s does not contain %3$s."
-msgstr ""
-"無效的 %1$s 切換。\n"
-"目錄 %2$s 不包含 %3$s。"
-
-#: src/support/Package.cpp:664
-#, c-format
-msgid ""
-"Invalid %1$s environment variable.\n"
-"Directory %2$s does not contain %3$s."
-msgstr ""
-"無效的 %1$s 環境變數。\n"
-"目錄 %2$s 不包含 %3$s。"
-
-#: src/support/Package.cpp:688
-#, c-format
-msgid ""
-"Invalid %1$s environment variable.\n"
-"%2$s is not a directory."
-msgstr ""
-"無效的 %1$s 環境變數。\n"
-"%2$s 並非目錄。"
-
-#: src/support/Package.cpp:690
-msgid "Directory not found"
-msgstr "找不到目錄"
 
 #: src/support/debug.cpp:38
 msgid "No debugging message"
@@ -21790,6 +21789,52 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "不明的使用者"
+
+#~ msgid "LyX binary not found"
+#~ msgstr "找不到 LyX 執行程式"
+
+#~ msgid ""
+#~ "Unable to determine the path to the LyX binary from the command line %1$s"
+#~ msgstr "無法從命令列 %1$s 決定 LyX 程式的路徑"
+
+#, fuzzy
+#~ msgid ""
+#~ "Unable to determine the system directory having searched\n"
+#~ "\t%1$s\n"
+#~ "Use the '-sysdir' command line parameter or set the environment variable\n"
+#~ "%2$s to the LyX system directory containing the file `chkconfig.ltx'."
+#~ msgstr ""
+#~ "無法決定要搜尋的系統目錄\n"
+#~ "\t%1$s\n"
+#~ "使用「-sysdir」命令列參數或設定環境變數 LYX_DIR_15x 為 LyX 系統目錄，其中"
+#~ "包含檔案「chkconfig.ltx」。"
+
+#~ msgid "File not found"
+#~ msgstr "找不到檔案"
+
+#~ msgid ""
+#~ "Invalid %1$s switch.\n"
+#~ "Directory %2$s does not contain %3$s."
+#~ msgstr ""
+#~ "無效的 %1$s 切換。\n"
+#~ "目錄 %2$s 不包含 %3$s。"
+
+#~ msgid ""
+#~ "Invalid %1$s environment variable.\n"
+#~ "Directory %2$s does not contain %3$s."
+#~ msgstr ""
+#~ "無效的 %1$s 環境變數。\n"
+#~ "目錄 %2$s 不包含 %3$s。"
+
+#~ msgid ""
+#~ "Invalid %1$s environment variable.\n"
+#~ "%2$s is not a directory."
+#~ msgstr ""
+#~ "無效的 %1$s 環境變數。\n"
+#~ "%2$s 並非目錄。"
+
+#~ msgid "Directory not found"
+#~ msgstr "找不到目錄"
 
 #~ msgid "B&rowse..."
 #~ msgstr "瀏覽(&R)…"
@@ -21974,9 +22019,6 @@ msgstr "不明的使用者"
 
 #~ msgid "*.ispell"
 #~ msgstr "*.ispell"
-
-#~ msgid " Macro: %1$s: "
-#~ msgstr " 巨集：%1$s："
 
 #, fuzzy
 #~ msgid "figure"
