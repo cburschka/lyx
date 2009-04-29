@@ -2663,7 +2663,11 @@ void LyXAction::init()
  * \li Action: Sets the cursor position based on the row number of generated TeX file.
  * \li Notion: This can be useful for DVI inverse-search or detection of the problematic
                line from LaTeX compilation.
- * \li Syntax: server-goto-file-row <LYX_FILE_NAME> <ROW_NUMBER>
+ * \li Syntax: server-goto-file-row <FILE[.ext]> <ROW_NUMBER>
+ * \li Params: .ext: extensions will be automatically replaced by .lyx.
+                     If the file is located inside LyX temporary directory it will be
+		     mapped back into the appropriate opened buffer (e.g. for the case
+		     of generated .tex file).
  * \li Origin: Edmar, 23 Dec 1998
  * \endvar
  */
