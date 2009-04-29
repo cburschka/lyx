@@ -298,6 +298,9 @@ What's new
 
 * BUILD/INSTALLATION
 
+- Fix building of LyX/Mac with autotools when using -framework gcc
+  option.
+
 - Fix build on Cygwin when using gcc4.
 
 - Fix "make check" with gcc 4.3.
