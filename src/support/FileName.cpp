@@ -921,49 +921,18 @@ docstring const FileName::relPath(string const & path) const
 }
 
 
-// Note: According to Qt, QFileInfo::operator== is undefined when
-// both files do not exist (Qt4.5 gives true for all non-existent
-// files, while Qt4.4 compares the filenames).
-// see:
-// http://www.qtsoftware.com/developer/task-tracker/
-//   index_html?id=248471&method=entry.
-bool operator==(FileName const & l, FileName const & r)
+bool operator==(FileName const & lhs, FileName const & rhs)
 {
-	// FIXME: In future use Qt.
-	// Qt 4.4: We need to solve this warning from Qt documentation:
-	// * Long and short file names that refer to the same file on Windows are
-	//   treated as if they referred to different files.
-	// This is supposed to be fixed for Qt5.
-	FileName const lhs(os::internal_path(l.absFilename()));
-	FileName const rhs(os::internal_path(r.absFilename()));
-
-	if (lhs.empty())
-		// QFileInfo::operator==() returns false if the two QFileInfo are empty.
-		return rhs.empty();
-
-	if (rhs.empty())
-		// Avoid unnecessary checks below.
-		return false;
-
-	lhs.d->refresh();
-	rhs.d->refresh();
-	
-	if (!lhs.d->fi.isSymLink() && !rhs.d->fi.isSymLink()) {
-		// Qt already checks if the filesystem is case sensitive or not.
-		// see note above why the extra check with fileName is needed.
-		return lhs.d->fi == rhs.d->fi
-			&& lhs.d->fi.fileName() == rhs.d->fi.fileName();
+	// Firstly, compare the filenames.
+	if (QString::compare(toqstr(lhs.absFilename()),
+			     toqstr(rhs.absFilename()),
+			     os::isFilesystemCaseSensitive() ?
+			     Qt::CaseSensitive : Qt::CaseInsensitive) == 0) {
+		return true;
 	}
 
-	// FIXME: When/if QFileInfo support symlink comparison, remove this code.
-	QFileInfo fi1(lhs.d->fi);
-	if (fi1.isSymLink())
-		fi1 = QFileInfo(fi1.symLinkTarget());
-	QFileInfo fi2(rhs.d->fi);
-	if (fi2.isSymLink())
-		fi2 = QFileInfo(fi2.symLinkTarget());
-	// see note above why the extra check with fileName is needed.
-	return fi1 == fi2 && fi1.fileName() == fi2.fileName();
+	// They don't match, so check whether they point to the same file.
+	return os::isSameFile(lhs.toFilesystemEncoding(), rhs.toFilesystemEncoding());
 }
 
 

@@ -112,6 +112,9 @@ bool canAutoOpenFile(std::string const & ext, auto_open_mode const mode = VIEW);
  */
 bool autoOpenFile(std::string const & filename, auto_open_mode const mode = VIEW);
 
+/// Check whether two filenames point to the same file.
+bool isSameFile(std::string const & fileone, std::string const & filetwo);
+
 } // namespace os
 } // namespace support
 } // namespace lyx

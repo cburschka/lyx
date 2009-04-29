@@ -17,6 +17,8 @@
 #include "support/FileName.h"
 #include "support/lstrings.h"
 
+#include <sys/stat.h>
+
 #ifdef __APPLE__
 #include <Carbon/Carbon.h>
 #endif
@@ -213,6 +215,21 @@ bool autoOpenFile(string const & filename, auto_open_mode const mode)
 	// support for KDE/Gnome/Macintosh may be added later
 	return false;
 #endif
+}
+
+
+bool isSameFile(string const & fileone, string const & filetwo)
+{
+	struct stat st1;
+	struct stat st2;
+
+	if (::stat(fileone.c_str(), &st1) == 0
+	    && ::stat(filetwo.c_str(), &st2) == 0) {
+		return st1.st_ino == st2.st_ino && st1.st_dev == st2.st_dev;
+	}
+
+	// One or both files cannot be accessed.
+	return false;
 }
 
 } // namespace os
