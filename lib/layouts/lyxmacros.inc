@@ -42,6 +42,7 @@ End
 
 
 Style Address
+	Category	      FrontMatter
 	Margin                Static
 	LatexType             Command
 	LatexName             lyxaddress
@@ -62,6 +63,7 @@ End
 
 
 Style Right_Address
+	Category	      FrontMatter
 	Margin                Right_Address_Box
 	LatexType             Command
 	LatexName             lyxrightaddress
