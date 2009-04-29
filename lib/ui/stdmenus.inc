@@ -477,7 +477,7 @@ Menuset
 		Item "Next Note|N" "note-next"
 		Item "Next Change|C" "change-next"
 		Item "Next Cross-Reference|R" "reference-next"
-		Item "Go to Label|L" "label-goto"
+		OptItem "Go to Label|L" "label-goto"
 		Separator
 		Toc
 	End
