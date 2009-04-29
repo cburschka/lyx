@@ -299,7 +299,7 @@ Menuset
 		Item "Fold Math Macro" "math-macro-fold"
 		Separator
 		Item "View Source|S" "dialog-toggle view-source"
-		Item "View|V" "buffer-view"
+		Item "View|V[[show]]" "buffer-view"
 		Item "Update|U" "buffer-update"
 		OptItem "View Master Document|M" "master-buffer-view"
 		OptItem "Update Master Document|a" "master-buffer-update"
