@@ -355,7 +355,7 @@ def checkFormatEntries(dtl_tools):
 \Format wmf        wmf    "Windows Metafile"      "" ""	""	"vector"
 \Format emf        emf    "Enhanced Metafile"     "" ""	""	"vector"
 \Format word       doc    "MS Word"               W  ""	""	"document,vector"
-\Format wordhtml   html   "HTML (MS Word)"        "" ""        ""	"document"
+\Format wordhtml   html   "HTML (MS Word)"        "" "" ""	"document"
 ''')
 
 
