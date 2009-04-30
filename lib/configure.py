@@ -387,6 +387,14 @@ def checkConverterEntries():
         rc_entry = [r'''\converter literate   latex      "%%"	""
 \converter literate   pdflatex      "%%"	""'''])
     #
+    path, elyx = checkProg('eLyXer converter', ['elyxer $$i $$o'],
+        rc_entry = [ r'\converter lyx elyxhtml "%%" ""' ] )
+    if elyx.find('elyxer') >= 0 :
+      addToRC(r'''\copier    elyxhtml       "python -tt $$s/scripts/ext_copy.py -e html,png,css $$i $$o"''')
+      checkViewer('an eLyXer previewer', ['firefox', 'mozilla file://$$p$$i', 'netscape'],
+          rc_entry = [r'\Format elyxhtml   html    "HTML (eLyXer)"        e  "%%"	""	"document"'])
+
+    #
     checkProg('an HTML -> LaTeX converter', ['html2latex $$i', 'gnuhtml2latex $$i', \
         'htmltolatex -input $$i -output $$o', 'java -jar htmltolatex.jar -input $$i -output $$o'],
         rc_entry = [ r'\converter html       latex      "%%"	""' ])
