@@ -2103,32 +2103,30 @@ cfrac
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-It is possible to specify the alignment of the numerator.
- The command 
+Es posible especificar la alineación del numerador.
+ El comando 
 \series bold
 
 \backslash
 cfracleft
 \series default
- is used to left align it, the command 
+ se usa para alinearlo a la izquierda, el comando 
 \series bold
 
 \backslash
 cfracright
 \series default
- to right-align it.
- 
+ para alinearlo a la derecha, 
 \series bold
 
 \backslash
 cfrac
 \series default
- centers the numerator.
+ centra el numerador.
+\end_layout
 
-\lang spanish
- Estas fracciones muestran las distintas alineaciones:
+\begin_layout Standard
+Estas fracciones muestran las distintas alineaciones:
 \end_layout
 
 \begin_layout Standard
@@ -2168,22 +2166,14 @@ cfracleft
 \backslash
 cfracright
 \series default
- 
-\lang english
-are no real LaTeX commands but represent the command
-\lang spanish
- 
+ no son comandos LaTeX reales sino sustituciones del comando 
 \series bold
 
 \backslash
 cfrac[posición del numerador]{numerador}{denominador}
 \series default
  .
- 
-\lang english
-Therefore you cannot use them 
-\lang spanish
-en código TeX.
+ Por tanto no puedes usarlos código TeX.
 \end_layout
 
 \end_inset
@@ -2269,7 +2259,7 @@ Nota
 \backslash
 unitfracthree
 \series default
- no es un comando LaTeX auténtico, sino el comando
+ no es un comando LaTeX auténtico, sino un equivalente al comando
 \begin_inset Newline newline
 \end_inset
 
