@@ -1521,9 +1521,7 @@ Mayúsculas+Tab
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The toolbar button 
+El botón 
 \begin_inset Graphics
 	filename ../../images/bookmark-goto_0.png
 	BoundingBox 0bp 5bp 20bp 25bp
@@ -1531,10 +1529,10 @@ The toolbar button
 
 \end_inset
 
- jumps to the position in the document where you recently changed something.
- This is for example useful when you have a large document and navigated
- or scrolled to another document part to look for something, and want to
- go back to your last editing position.
+ de la barra de herramientas salta a la posición del documento en la que
+ ha cambiado algo recientemente.
+ Esto es útil para, por ejemplo, desplazarte a alguna parte de un documento
+ extenso para mirar algo y volver a la última posición de edición.
 \end_layout
 
 \begin_layout Section
@@ -25153,19 +25151,13 @@ Volver,
 \family default
  que sirve para retornar el cursor al cuadro de la referencia.
  Clic derecho sobre el cuadro de una referencia también lleva el cursor
- a la etiqueta 
-\lang english
-and you can go back with the toolbar button
-\lang spanish
- 
+ a la etiqueta y puedes volver con el botón 
 \begin_inset Graphics
-	filename D:/LyXSVN/LyX1.6.x/lib/images/bookmark-goto_0.png
-	BoundingBox 0bp 5bp 20bp 25bp
-	rotateOrigin center
+	filename ../../images/bookmark-goto_0.png
 
 \end_inset
 
-.
+ de la barra de herramientas.
 \end_layout
 
 \begin_layout Standard
@@ -37732,10 +37724,8 @@ Encontrar y reemplazar
 
 \family sans
 Navegar\SpecialChar \menuseparator
-
-\lang english
-Bookmarks\SpecialChar \menuseparator
-Navigate Back
+Marcadores\SpecialChar \menuseparator
+Volver
 \end_layout
 
 \end_inset

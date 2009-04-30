@@ -31198,11 +31198,8 @@ Los documentos hijos se emplean en el caso de tener un documento extenso
  en varios archivos que pueden ser revisados por separado.
  Estos archivos se conocen como documentos hijos, y el llamado documento
  maestro los conecta con el fin de imprimirlos como un todo o por partes.
- Un documento hijo hereda contenidos de su maestro, por ejemplo 
-\lang english
-the LaTeX preamble,
-\lang spanish
- la bibliografía y las etiquetas de las referencias cruzadas.
+ Un documento hijo hereda contenidos de su maestro, por ejemplo el preámbulo
+ LaTeX, la bibliografía y las etiquetas de las referencias cruzadas.
 \end_layout
 
 \begin_layout Standard
