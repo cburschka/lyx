@@ -561,7 +561,7 @@ bool InsetText::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 	LASSERT(&insetCur.inset() == this, /**/);
 	
 	// update the old paragraph's words
-	insetCur.paragraph().updateWords(insetCur.top());
+	insetCur.paragraph().updateWords();
 	
 	return Inset::notifyCursorLeaves(old, cur);
 }
