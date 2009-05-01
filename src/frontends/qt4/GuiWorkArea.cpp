@@ -256,6 +256,9 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & lv)
 	}
 
 	screen_ = QPixmap(viewport()->width(), viewport()->height());
+	// With Qt4.5 a mouse event will happen before the first paint event
+	// so make sure that the buffer view has an up to date metrics.
+	buffer_view_->resize(viewport()->width(), viewport()->height());
 	cursor_ = new frontend::CursorWidget();
 	cursor_->hide();
 

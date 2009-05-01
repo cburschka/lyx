@@ -181,6 +181,8 @@ What's new
 - Fix crash when passing a nonexisting file to the lyx function
   server-goto-file-row.
 
+- Fix crash when creating new file - Qt 4.5 issue (bug 5887).
+
 - After reloading a child document, correctly re-assign the master
   (bug 5873).
 
