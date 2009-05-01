@@ -141,13 +141,16 @@ typedef std::map<docstring, MyThes *> Thesauri;
 
 struct Thesaurus::Private
 {
-	~Private()
+	~Private(Thesaurus & parent): parent_(parent)
 	{
 		for (Thesauri::iterator it = thes_.begin();
 		     it != thes_.end(); ++it) {
 			delete it->second;
 		}
 	}
+
+	///
+	Thesaurus & parent_;
 
 	/// add a thesaurus to the list
 	bool addThesaurus(docstring const & lang);
@@ -163,7 +166,7 @@ bool Thesaurus::Private::addThesaurus(docstring const & lang)
 	if (thes_path.empty())
 		return false;
 
-	if (thesaurusAvailable(lang))
+	if (parent_.thesaurusAvailable(lang))
 		return true;
 
 	FileNameList const idx_files = FileName(thes_path).dirList("idx");
