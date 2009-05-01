@@ -531,4 +531,14 @@ Menuset
 		OptItem "Settings...|S" "inset-settings"
 	End
 
+
+#
+# Toc Changes context menu
+#
+
+	Menu "context-toc-change"
+		Item "Accept Change|C" "change-accept"
+		Item "Reject Change|R" "change-reject"
+	End	
+
 End

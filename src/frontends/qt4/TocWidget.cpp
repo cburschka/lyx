@@ -111,7 +111,8 @@ Inset * TocWidget::itemInset() const
 		inset = dit.nextInset();
 
 	else if (current_type_ == "branch"
-		     || current_type_ == "index")
+		     || current_type_ == "index"
+			 || current_type_ == "change")
 		inset = &dit.inset();
 
 	else if (current_type_ == "table" 
@@ -129,10 +130,20 @@ bool TocWidget::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
 	Inset * inset = itemInset();
-
 	FuncRequest tmpcmd(cmd);
-	if (inset)
-		return inset->getStatus(cur, tmpcmd, status);
+
+	switch (cmd.action)
+	{
+	case LFUN_CHANGE_ACCEPT:
+	case LFUN_CHANGE_REJECT:
+		status.setEnabled(true);
+		return true;
+
+	default:
+		if (inset)
+			return inset->getStatus(cur, tmpcmd, status);
+	}
+
 	return false;
 }
 
@@ -140,10 +151,24 @@ bool TocWidget::getStatus(Cursor & cur, FuncRequest const & cmd,
 void TocWidget::doDispatch(Cursor & cur, FuncRequest const & cmd)
 {
 	Inset * inset = itemInset();
-
 	FuncRequest tmpcmd(cmd);
-	if (inset)
-		inset->dispatch(cur, tmpcmd);
+
+	QModelIndex const & index = tocTV->currentIndex();
+	TocItem const & item =
+		gui_view_.tocModels().currentItem(current_type_, index);
+
+	switch (cmd.action)
+	{
+	case LFUN_CHANGE_ACCEPT:
+	case LFUN_CHANGE_REJECT:
+		dispatch(item.action());
+		cur.dispatch(tmpcmd);
+		break;
+
+	default:
+		if (inset)
+			inset->dispatch(cur, tmpcmd);
+	}
 }
 
 
@@ -369,6 +394,7 @@ void TocWidget::updateView()
 	sortCB->setChecked(gui_view_.tocModels().isSorted(current_type_));
 	sortCB->blockSignals(false);
 
+	
 	bool const can_navigate_ = canNavigate(current_type_);
 	persistentCB->setEnabled(can_navigate_);
 
