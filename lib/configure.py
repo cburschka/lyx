@@ -325,8 +325,7 @@ def checkFormatEntries(dtl_tools):
         addToRC(r'\Format dvi2       dvi     DraftDVI               ""	""	""	"vector"')
     #
     checkViewer('an HTML previewer', ['firefox', 'mozilla file://$$p$$i', 'netscape'],
-        rc_entry = [r'''\Format html       html   "HTML (tex4ht)"         H  "auto"	""	"document"
-\Format html2      html   "HTML (eLyXer)"         "" "%%"	""	"document"'''])
+        rc_entry = [r'\Format html       html    HTML                   H  "%%"	""	"document"'])
     #
     checkViewer('Noteedit', ['noteedit'],
         rc_entry = [r'\Format noteedit   not     Noteedit               "" "%%"	"%%"	"vector"'])
@@ -387,6 +386,13 @@ def checkConverterEntries():
     checkProg('a Noweb -> LaTeX converter', ['noweave -delay -index $$i > $$o'],
         rc_entry = [r'''\converter literate   latex      "%%"	""
 \converter literate   pdflatex      "%%"	""'''])
+    #
+    path, elyx = checkProg('eLyXer converter', ['elyxer $$i $$o'],
+        rc_entry = [ r'\converter lyx elyxhtml "%%" ""' ] )
+    if elyx.find('elyxer') >= 0 :
+      addToRC(r'''\copier    elyxhtml       "python -tt $$s/scripts/ext_copy.py -e html,png,css $$i $$o"''')
+      checkViewer('an eLyXer previewer', ['firefox', 'mozilla file://$$p$$i', 'netscape'],
+          rc_entry = [r'\Format elyxhtml   html    "HTML (eLyXer)"        e  "%%"	""	"document"'])
 
     #
     checkProg('an HTML -> LaTeX converter', ['html2latex $$i', 'gnuhtml2latex $$i', \
@@ -557,7 +563,6 @@ def checkConverterEntries():
 \converter fen        asciichess "python -tt $$s/scripts/fen2ascii.py $$i $$o"	""
 \converter fig        pdftex     "python -tt $$s/scripts/fig2pdftex.py $$i $$o"	""
 \converter fig        pstex      "python -tt $$s/scripts/fig2pstex.py $$i $$o"	""
-\converter lyx        html2      "python -tt $$s/scripts/eLyXer/elyxer.py $$i $$o"	""
 \converter lyx        lyx13x     "python -tt $$s/lyx2lyx/lyx2lyx -t 221 $$i > $$o"	""
 \converter lyx        lyx14x     "python -tt $$s/lyx2lyx/lyx2lyx -t 245 $$i > $$o"	""
 \converter lyx        lyx15x     "python -tt $$s/lyx2lyx/lyx2lyx -t 276 $$i > $$o"	""
