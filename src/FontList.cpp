@@ -184,17 +184,12 @@ void FontList::set(pos_type pos, Font const & font)
 void FontList::setMisspelled(pos_type startpos, pos_type endpos,
 	bool misspelled)
 {
-	if (list_.empty())
-		return;
-
-	List::iterator end_it = fontIterator(endpos);
-	List::iterator const end = list_.end();
-	if (end_it != end)
-		++end_it;
-
-	List::iterator cit = fontIterator(startpos);
-	for (; cit != end_it; ++cit)
-		cit->font_.setMisspelled(misspelled);
+	// FIXME: Optimize!!!
+	for (pos_type pos = startpos; pos != endpos; ++pos) {
+		Font f = get(pos);
+		f.setMisspelled(misspelled);
+		set(pos, f);
+	}
 }
 
 
