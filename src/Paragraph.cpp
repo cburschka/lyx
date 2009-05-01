@@ -2905,7 +2905,7 @@ void Paragraph::locateWord(pos_type & from, pos_type & to,
 }
 
 
-void Paragraph::collectWords(CursorSlice const & sl)
+void Paragraph::collectWords()
 {
 	SpellChecker * speller = theSpellChecker();
 
@@ -2955,11 +2955,10 @@ void Paragraph::registerWords()
 }
 
 
-void Paragraph::updateWords(CursorSlice const & sl)
+void Paragraph::updateWords()
 {
-	LASSERT(&sl.paragraph() == this, /**/);
 	deregisterWords();
-	collectWords(sl);
+	collectWords();
 	registerWords();
 }
 

@@ -569,7 +569,7 @@ void Text::charInserted(Cursor & cur)
 	    && !par.isLetter(cur.pos() - 1)) {
 		// get the word in front of cursor
 		LASSERT(this == cur.text(), /**/);
-		cur.paragraph().updateWords(cur.top());
+		cur.paragraph().updateWords();
 	}
 }
 
@@ -1308,7 +1308,7 @@ bool Text::read(Buffer const & buf, Lexer & lex,
 			// register the words in the global word list
 			CursorSlice sl = CursorSlice(*insetPtr);
 			sl.pit() = pars_.size() - 1;
-			pars_.back().updateWords(sl);
+			pars_.back().updateWords();
 		} else if (token == "\\begin_deeper") {
 			++depth;
 		} else if (token == "\\end_deeper") {

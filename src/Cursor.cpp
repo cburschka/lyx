@@ -2088,7 +2088,7 @@ bool notifyCursorLeavesOrEnters(Cursor const & old, Cursor & cur)
 	    && !cur.buffer()->isClean()
 	    && cur.inTexted() && old.inTexted()
 	    && cur.pit() != old.pit()) {
-		old.paragraph().updateWords(old.top());
+		old.paragraph().updateWords();
 	}
 
 	// notify everything on top of the common part in old cursor,

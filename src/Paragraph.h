@@ -404,13 +404,13 @@ public:
 	void locateWord(pos_type & from, pos_type & to,
 		word_location const loc) const;
 	///
-	void updateWords(CursorSlice const & sl);
+	void updateWords();
 
 private:
 	///
 	void deregisterWords();
 	///
-	void collectWords(CursorSlice const & sl);
+	void collectWords();
 	///
 	void registerWords();
 
