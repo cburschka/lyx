@@ -25,6 +25,7 @@
 #include "buffer_funcs.h"
 #include "BufferParams.h"
 #include "BufferView.h"
+#include "Changes.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
 #include "DispatchResult.h"
@@ -2269,13 +2270,18 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_CHANGE_ACCEPT:
 	case LFUN_CHANGE_REJECT:
-		// TODO: context-sensitive enabling of LFUN_CHANGE_ACCEPT/REJECT
 		// In principle, these LFUNs should only be enabled if there
 		// is a change at the current position/in the current selection.
 		// However, without proper optimizations, this will inevitably
 		// result in unacceptable performance - just imagine a user who
 		// wants to select the complete content of a long document.
-		enable = true;
+		if (!cur.selection()) {
+			Change const & change = cur.paragraph().lookupChange(cur.pos());
+			enable = change.changed();
+		} else
+			// TODO: context-sensitive enabling of LFUN_CHANGE_ACCEPT/REJECT
+			// for selections.
+			enable = true;
 		break;
 
 	case LFUN_OUTLINE_UP:

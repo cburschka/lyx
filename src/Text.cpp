@@ -37,6 +37,7 @@
 #include "Language.h"
 #include "Length.h"
 #include "Lexer.h"
+#include "lyxfind.h"
 #include "LyXRC.h"
 #include "Paragraph.h"
 #include "paragraph_funcs.h"
@@ -792,8 +793,11 @@ void Text::acceptOrRejectChanges(Cursor & cur, ChangeOp op)
 {
 	LASSERT(this == cur.text(), /**/);
 
-	if (!cur.selection())
-		return;
+	if (!cur.selection()) {
+		Change const & change = cur.paragraph().lookupChange(cur.pos());
+		if (!(change.changed() && findNextChange(&cur.bv())))
+			return;
+	}
 
 	cur.recordUndoSelection();
 
