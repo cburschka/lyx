@@ -25,6 +25,14 @@
 
 #include "frontends/alert.h"
 
+#ifdef HAVE_LIBMYTHES
+#include MYTHES_H_LOCATION
+#else
+#ifdef HAVE_LIBAIKSAURUS
+#include AIKSAURUS_H_LOCATION
+#endif // HAVE_LIBAIKSAURUS
+#endif // !HAVE_LIBMYTHES
+
 #include <algorithm>
 #include <cstring>
 
@@ -34,20 +42,13 @@ using namespace lyx::support::os;
 
 namespace lyx {
 
-#ifndef HAVE_LIBMYTHES
 #ifdef HAVE_LIBAIKSAURUS
 
-
-Thesaurus::Thesaurus()
-	: thes_(new Aiksaurus)
-{}
-
-
-Thesaurus::~Thesaurus()
+struct Thesaurus::Private
 {
-	delete thes_;
-}
-
+	Private(): thes_(new Aiksaurus) {}
+	Aiksaurus * thes_;
+};
 
 Thesaurus::Meanings Thesaurus::lookup(docstring const & t, docstring const &)
 {
@@ -63,7 +64,7 @@ Thesaurus::Meanings Thesaurus::lookup(docstring const & t, docstring const &)
 
 	string const text = to_ascii(t);
 
-	docstring error = from_ascii(thes_->error());
+	docstring error = from_ascii(d->thes_->error());
 	if (!error.empty()) {
 		static bool sent_error = false;
 		if (!sent_error) {
@@ -74,7 +75,7 @@ Thesaurus::Meanings Thesaurus::lookup(docstring const & t, docstring const &)
 		}
 		return meanings;
 	}
-	if (!thes_->find(text.c_str()))
+	if (!d->thes_->find(text.c_str()))
 		return meanings;
 
 	// weird api, but ...
@@ -84,19 +85,19 @@ Thesaurus::Meanings Thesaurus::lookup(docstring const & t, docstring const &)
 	docstring meaning;
 
 	// correct, returns "" at the end
-	string ret = thes_->next(cur_meaning);
+	string ret = d->thes_->next(cur_meaning);
 
 	while (!ret.empty()) {
 		if (cur_meaning != prev_meaning) {
 			meaning = from_ascii(ret);
-			ret = thes_->next(cur_meaning);
+			ret = d->thes_->next(cur_meaning);
 			prev_meaning = cur_meaning;
 		} else {
 			if (ret != text)
 				meanings[meaning].push_back(from_ascii(ret));
 		}
 
-		ret = thes_->next(cur_meaning);
+		ret = d->thes_->next(cur_meaning);
 	}
 
 	for (Meanings::iterator it = meanings.begin();
@@ -113,10 +114,7 @@ bool Thesaurus::thesaurusAvailable(docstring const & lang) const
 	return prefixIs(lang, from_ascii("en_"));
 }
 
-#endif // HAVE_LIBAIKSAURUS
-#endif // !HAVE_LIBMYTHES
-
-
+#else // HAVE_LIBAIKSAURUS
 #ifdef HAVE_LIBMYTHES
 
 namespace {
@@ -139,20 +137,25 @@ docstring const from_iconv_encoding(string const & s, string const & encoding)
 } // namespace anon
 
 
-Thesaurus::Thesaurus()
-{}
-
-
-Thesaurus::~Thesaurus()
+struct Thesaurus::Private
 {
-	for (Thesauri::iterator it = thes_.begin();
-	     it != thes_.end(); ++it) {
-		delete it->second;
+	~Private()
+	{
+		for (Thesauri::iterator it = thes_.begin();
+		     it != thes_.end(); ++it) {
+			delete it->second;
+		}
 	}
-}
 
+	/// add a thesaurus to the list
+	bool addThesaurus(docstring const & lang);
 
-bool Thesaurus::addThesaurus(docstring const & lang)
+	typedef std::map<docstring, MyThes *> Thesauri;
+	/// the thesauri
+	Thesauri thes_;
+};
+
+bool Thesaurus::Private::addThesaurus(docstring const & lang)
 {
 	string const thes_path = external_path(lyxrc.thesaurusdir_path);
 	LYXERR(Debug::FILES, "thesaurus path: " << thes_path);
@@ -199,8 +202,8 @@ bool Thesaurus::addThesaurus(docstring const & lang)
 
 bool Thesaurus::thesaurusAvailable(docstring const & lang) const
 {
-	for (Thesauri::const_iterator it = thes_.begin();
-	     it != thes_.end(); ++it) {
+	for (Thesauri::const_iterator it = d->thes_.begin();
+	     it != d->thes_.end(); ++it) {
 		if (it->first == lang)
 			if (it->second)
 				return true;
@@ -215,11 +218,11 @@ Thesaurus::Meanings Thesaurus::lookup(docstring const & t, docstring const & lan
 	Meanings meanings;
 	MyThes * mythes = 0;
 
-	if (!addThesaurus(lang))
+	if (!d->addThesaurus(lang))
 		return meanings;
 
-	for (Thesauri::const_iterator it = thes_.begin();
-	     it != thes_.end(); ++it) {
+	for (Thesauri::const_iterator it = d->thes_.begin();
+	     it != d->thes_.end(); ++it) {
 		if (it->first == lang) {
 			mythes = it->second;
 			break;
@@ -265,15 +268,10 @@ Thesaurus::Meanings Thesaurus::lookup(docstring const & t, docstring const & lan
 }
 
 #else
-#ifndef HAVE_LIBAIKSAURUS
-Thesaurus::Thesaurus()
-{
-}
 
-
-Thesaurus::~Thesaurus()
+struct Thesaurus::Private
 {
-}
+};
 
 
 Thesaurus::Meanings Thesaurus::lookup(docstring const &, docstring const &)
@@ -287,8 +285,18 @@ bool Thesaurus::thesaurusAvailable(docstring const &) const
 	return false;
 }
 
-#endif
 #endif // HAVE_LIBMYTHES
+#endif // HAVE_LIBAIKSAURUS
+
+Thesaurus::Thesaurus() : d(new Thesaurus::Private)
+{
+}
+
+
+Thesaurus::~Thesaurus()
+{
+	delete d;
+}
 
 // Global instance
 Thesaurus thesaurus;

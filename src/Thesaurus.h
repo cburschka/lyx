@@ -15,17 +15,9 @@
 
 #include "support/docstring.h"
 
-#include <vector>
 #include <map>
 #include <string>
-
-#ifdef HAVE_LIBMYTHES
-#include MYTHES_H_LOCATION
-#else
-#ifdef HAVE_LIBAIKSAURUS
-#include AIKSAURUS_H_LOCATION
-#endif // HAVE_LIBAIKSAURUS
-#endif // !HAVE_LIBMYTHES
+#include <vector>
 
 namespace lyx {
 
@@ -51,18 +43,8 @@ public:
 	bool thesaurusAvailable(docstring const & lang) const;
 
 private:
-#ifdef HAVE_LIBMYTHES
-	/// add a thesaurus to the list
-	bool addThesaurus(docstring const & lang);
-
-	typedef std::map<docstring, MyThes *> Thesauri;
-	/// the thesauri
-	Thesauri thes_;
-#else
-#ifdef HAVE_LIBAIKSAURUS
-	Aiksaurus * thes_;
-#endif // HAVE_LIBAIKSAURUS
-#endif // !HAVE_LIBMYTHES
+	struct Private;
+	Private * const d;
 };
 
 extern Thesaurus thesaurus;
