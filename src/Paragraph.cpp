@@ -37,11 +37,13 @@
 #include "output_latex.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
+#include "SpellChecker.h"
 #include "sgml.h"
 #include "TextClass.h"
 #include "TexRow.h"
 #include "Text.h"
 #include "VSpace.h"
+#include "WordLangTuple.h"
 #include "WordList.h"
 
 #include "frontends/alert.h"
@@ -2905,28 +2907,39 @@ void Paragraph::locateWord(pos_type & from, pos_type & to,
 
 void Paragraph::collectWords(CursorSlice const & sl)
 {
-	// find new words
-	bool inword = false;
+	SpellChecker * speller = theSpellChecker();
 
 	//lyxerr << "Words: ";
 	pos_type n = size();
 	for (pos_type pos = 0; pos < n; ++pos) {
 		if (isDeleted(pos))
 			continue;
-		if (!isLetter(pos)) {
-			inword = false;
+		if (!isLetter(pos))
 			continue;
-		}
-		if (inword)
-			continue;
-
-		inword = true;
 		pos_type from = pos;
 		locateWord(from, pos, WHOLE_WORD);
-		if (pos - from < 6)
+		if (!lyxrc.spellcheck_continuously && pos - from < 6)
 			continue;
+
 		docstring word = asString(from, pos, false);
-		d->words_.insert(word);
+		if (pos - from >= 6)
+			d->words_.insert(word);
+
+		if (!lyxrc.spellcheck_continuously || !speller)
+			continue;
+		
+		string lang_code = lyxrc.spellchecker_use_alt_lang
+		      ? lyxrc.spellchecker_alt_lang
+		      : getFontSettings(d->inset_owner_->buffer().params(), from).language()->code();
+		WordLangTuple wl(word, lang_code);
+		SpellChecker::Result res = speller->check(wl);
+		// ... just ignore any error that the spellchecker reports.
+		if (!speller->error().empty())
+			continue;
+		bool const misspelled = res != SpellChecker::OK
+			&& res != SpellChecker::IGNORED_WORD;
+		d->fontlist_.setMisspelled(from, pos, misspelled);
+
 		//lyxerr << word << " ";
 	}
 	//lyxerr << std::endl;
