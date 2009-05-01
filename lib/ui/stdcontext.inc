@@ -292,8 +292,8 @@ Menuset
 		OptItem "Move Section up|u" "outline-up"
 		OptItem "Insert Short Title|T" "optional-insert"
 		Separator
-		OptItem "Accept Change|C" "change-accept"
-		OptItem "Reject Change|R" "change-reject"
+		OptItem "Accept Change|c" "change-accept"
+		OptItem "Reject Change|j" "change-reject"
 		Separator
 		Item "Apply Last Text Style|A" "textstyle-apply"
 		Submenu "Text Style|S" "edit_textstyles"
