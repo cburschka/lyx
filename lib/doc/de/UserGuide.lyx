@@ -167,8 +167,8 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 22.
- April 2009
+letzte Änderung: 1.
+ Mai 2009
 \end_layout
 
 \begin_layout Standard
@@ -873,7 +873,10 @@ LyX wird diese Informationen dazu verwenden, in der Datei
 \family typewriter
 preferences
 \family default
- vernünftige Werte für einige Variablen einzutragen.
+ ver\SpecialChar \-
+nünf\SpecialChar \-
+ti\SpecialChar \-
+ge Werte für einige Variablen einzutragen.
  Obwohl diese Konfiguration bereits während der LyX-Installation durchgeführt
  wurde, gibt es vielleicht einige Dinge, die Sie lokal installiert haben
  und die LyX nicht sehen kann.
@@ -5494,7 +5497,8 @@ Die Absatzumgebungen entsprechen in einer normalen LaTeX-Datei
 begin{
 \family default
 \emph on
-environment
+environ\SpecialChar \-
+ment
 \family typewriter
 \emph default
 } ...
@@ -13095,7 +13099,7 @@ environment
 
 \begin_layout Standard
 \noindent
-4.
+3.
  Sie können einfach mit 
 \family sans
 Strg+Eingabe
@@ -13139,7 +13143,7 @@ environment
 
 \begin_layout Standard
 \noindent
-5.
+4.
  Etwas besser ist es, den rechtsbündigen Zeilenumbruch (
 \family sans
 Strg+ Umschalt+ Return
@@ -13183,7 +13187,7 @@ environment
 
 \begin_layout Standard
 \noindent
-6.
+5.
  Manchmal hilft es auch, solche Textteile als URL zu definieren (siehe Abschnitt
  
 \begin_inset CommandInset ref
@@ -15894,7 +15898,8 @@ Um die Post\SpecialChar \-
 Script-Version Ihres Dokumentes anzusehen, wählen Sie 
 \family sans
 Ansicht\SpecialChar \menuseparator
-Postscript
+Post\SpecialChar \-
+script
 \family default
 , 
 \family sans
@@ -16030,7 +16035,8 @@ PDF-Dateien können Abbildungen im PDF-eigenen Grafikformat,
 \family typewriter
 .jp[e]g
 \family default
--Grafiken (Joint Photographic Experts Group) und 
+-Grafi\SpecialChar \-
+ken (Joint Photographic Experts Group) und 
 \family typewriter
 .png
 \family default
@@ -24118,7 +24124,11 @@ Einfügen\SpecialChar \menuseparator
 Gleitobjekt\SpecialChar \menuseparator
 Tabelle
 \family default
- (
+
+\begin_inset Newline linebreak
+\end_inset
+
+(
 \begin_inset Graphics
 	filename ../../images/float-insert_table.png
 	scale 70
@@ -24282,7 +24292,9 @@ name "Tab:Tabelle-ohne-Titel"
 \begin_layout Standard
 Ohne Titel wird die Tabelle nicht nummeriert, deshalb wird sie, falls Sie
  eine Marke für Querverweise einfügen, unter der Nummer des aktuellen (Unter)Kap
-itels/Abschnittes referenziert.
+itels/Ab\SpecialChar \-
+schnit\SpecialChar \-
+tes referenziert.
  Beachten Sie bitte auch, dass nur Tabellen und Abbildungen in Gleitobjekt-Umgeb
 ungen mit einem Titel versehen werden können.
 \end_layout
@@ -28912,7 +28924,7 @@ name "Querverweise"
 \end_layout
 
 \begin_layout Standard
-Wenn Sie dieses Handbuch in LyX lesen, sehen Sie am Anfang dieses Satzes
+Wenn Sie dieses Handbuch in LyX lesen, sehen Sie am Ende der Überschrift
  ein graues Kästchen mit Text darin.
  Das ist eine 
 \family sans
@@ -29935,7 +29947,7 @@ Es gibt zwei Möglichkeiten, in einem LyX-Dokument ein Literaturverzeichnis
 \end_layout
 
 \begin_layout Enumerate
-Sie können eine Literaturverzeichnis-Datenbank einfügen 
+Sie können eine Literaturverzeichnis-Datenbank einfügen
 \begin_inset Foot
 status collapsed
 
@@ -38409,7 +38421,18 @@ Kommentar
 \emph on
 Kommentar
 \emph default
- bei einer Kommentar-Notiz hinterlegt wird.
+ bei einer Kommentar
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+"=
+\end_layout
+
+\end_inset
+
+Notiz hinterlegt wird.
 \end_layout
 
 \begin_layout Description
@@ -38421,7 +38444,18 @@ Kommentar
 \emph on
 Kommentar
 \emph default
- bei einer Kommentar-Notiz geschrieben wird.
+ bei einer Kommentar
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+"=
+\end_layout
+
+\end_inset
+
+Notiz geschrieben wird.
 \end_layout
 
 \begin_layout Description
@@ -40290,7 +40324,7 @@ Tagen)
 
 Für Linux ist dieser Zwischenspeicher das Verzeichnis 
 \family typewriter
-~/.lyx[Version]/cache
+~/.lyx[Version]/ cache
 \family default
 .
  Sie sollten hin und wieder hineinschauen, weil es bei vielen Grafiken sehr
