@@ -134,6 +134,8 @@ docstring const from_iconv_encoding(string const & s, string const & encoding)
 	return docstring(ucs4.begin(), ucs4.end());
 }
 
+typedef std::map<docstring, MyThes *> Thesauri;
+
 } // namespace anon
 
 
@@ -150,7 +152,6 @@ struct Thesaurus::Private
 	/// add a thesaurus to the list
 	bool addThesaurus(docstring const & lang);
 
-	typedef std::map<docstring, MyThes *> Thesauri;
 	/// the thesauri
 	Thesauri thes_;
 };
