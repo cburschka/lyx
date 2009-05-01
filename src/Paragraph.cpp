@@ -2866,6 +2866,43 @@ void Paragraph::deregisterWords()
 }
 
 
+void Paragraph::locateWord(pos_type & from, pos_type & to,
+	word_location const loc) const
+{
+	switch (loc) {
+	case WHOLE_WORD_STRICT:
+		if (from == 0 || from == size()
+		    || !isLetter(from)
+		    || !isLetter(from - 1)) {
+			to = from;
+			return;
+		}
+		// no break here, we go to the next
+
+	case WHOLE_WORD:
+		// If we are already at the beginning of a word, do nothing
+		if (!from || !isLetter(from - 1))
+			break;
+		// no break here, we go to the next
+
+	case PREVIOUS_WORD:
+		// always move the cursor to the beginning of previous word
+		while (from && isLetter(from - 1))
+			--from;
+		break;
+	case NEXT_WORD:
+		LYXERR0("Paragraph::locateWord: NEXT_WORD not implemented yet");
+		break;
+	case PARTIAL_WORD:
+		// no need to move the 'from' cursor
+		break;
+	}
+	to = from;
+	while (to < size() && isLetter(to))
+		++to;
+}
+
+
 void Paragraph::collectWords(CursorSlice const & sl)
 {
 	// find new words
@@ -2873,27 +2910,22 @@ void Paragraph::collectWords(CursorSlice const & sl)
 
 	//lyxerr << "Words: ";
 	pos_type n = size();
-	for (pos_type pos = 0; pos != n; ++pos) {
+	for (pos_type pos = 0; pos < n; ++pos) {
 		if (isDeleted(pos))
 			continue;
-
 		if (!isLetter(pos)) {
 			inword = false;
 			continue;
 		}
-
 		if (inword)
 			continue;
 
 		inword = true;
-		CursorSlice from = sl;
-		CursorSlice to = sl;
-		from.pos() = pos;
-		to.pos() = pos;
-		from.text()->getWord(from, to, WHOLE_WORD);
-		if (to.pos() - from.pos() < 6)
+		pos_type from = pos;
+		locateWord(from, pos, WHOLE_WORD);
+		if (pos - from < 6)
 			continue;
-		docstring word = asString(from.pos(), to.pos(), false);
+		docstring word = asString(from, pos, false);
 		d->words_.insert(word);
 		//lyxerr << word << " ";
 	}

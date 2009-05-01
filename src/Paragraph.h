@@ -401,6 +401,8 @@ public:
 		pos_type pos, ///< start from here.
 		bool del = true) const;
 	
+	void locateWord(pos_type & from, pos_type & to,
+		word_location const loc) const;
 	///
 	void updateWords(CursorSlice const & sl);
 

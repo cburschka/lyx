@@ -1246,39 +1246,8 @@ bool Text::dissolveInset(Cursor & cur)
 void Text::getWord(CursorSlice & from, CursorSlice & to,
 	word_location const loc) const
 {
-	Paragraph const & from_par = pars_[from.pit()];
-	switch (loc) {
-	case WHOLE_WORD_STRICT:
-		if (from.pos() == 0 || from.pos() == from_par.size()
-		    || !from_par.isLetter(from.pos())
-		    || !from_par.isLetter(from.pos() - 1)) {
-			to = from;
-			return;
-		}
-		// no break here, we go to the next
-
-	case WHOLE_WORD:
-		// If we are already at the beginning of a word, do nothing
-		if (!from.pos() || !from_par.isLetter(from.pos() - 1))
-			break;
-		// no break here, we go to the next
-
-	case PREVIOUS_WORD:
-		// always move the cursor to the beginning of previous word
-		while (from.pos() && from_par.isLetter(from.pos() - 1))
-			--from.pos();
-		break;
-	case NEXT_WORD:
-		LYXERR0("Text::getWord: NEXT_WORD not implemented yet");
-		break;
-	case PARTIAL_WORD:
-		// no need to move the 'from' cursor
-		break;
-	}
 	to = from;
-	Paragraph const & to_par = pars_[to.pit()];
-	while (to.pos() < to_par.size() && to_par.isLetter(to.pos()))
-		++to.pos();
+	pars_[to.pit()].locateWord(from.pos(), to.pos(), loc);
 }
 
 
