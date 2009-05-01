@@ -479,7 +479,7 @@ string real_path(string const & path)
 	UINT namelen = _tcslen(tmpbuf);
 	if (_tcsnicmp(realpath, tmpbuf, namelen) == 0) {
 		// UNC path
-		snprintf(tmpbuf, MAX_PATH, "\\\\%s", realpath + namelen);
+		_snprintf(tmpbuf, MAX_PATH, "\\\\%s", realpath + namelen);
 		strncpy(realpath, tmpbuf, MAX_PATH);
 		realpath[MAX_PATH] = '\0';
 	} else if (GetLogicalDriveStrings(MAX_PATH - 1, tmpbuf)) {
@@ -499,7 +499,7 @@ string real_path(string const & path)
 					if (found) {
 						// Repl. device spec with drive
 						TCHAR tempfile[MAX_PATH];
-						snprintf(tempfile,
+						_snprintf(tempfile,
 							MAX_PATH,
 							"%s%s",
 							drive,
