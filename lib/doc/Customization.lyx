@@ -15207,5 +15207,105 @@ status collapsed
  files needs the relative name in order to rewrite the file content.
 \end_layout
 
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Security-discussion"
+
+\end_inset
+
+Security discussion
+\end_layout
+
+\begin_layout Standard
+The external material feature interfaces with a lot of external programs
+ and does so automatically, so we have to consider the security implications
+ of this.
+ In particular, since you have the option of including your own filenames
+ and/or parameter strings and those are expanded into a command, it seems
+ that it would be possible to create a malicious document which executes
+ arbitrary commands when a user views or prints the document.
+ This is something we definitely want to avoid.
+\end_layout
+
+\begin_layout Standard
+However, since the external program commands are specified in the template
+ configuration file only, there are no security issues if LyX is properly
+ configured with safe templates only.
+ This is so because the external programs are invoked with the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+execvp
+\end_layout
+
+\end_inset
+
+-system call rather than the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+system
+\end_layout
+
+\end_inset
+
+ system-call, so it's not possible to execute arbitrary commands from the
+ filename or parameter section via the shell.
+\end_layout
+
+\begin_layout Standard
+This also implies that you are restricted in what command strings you can
+ use in the external material templates.
+ In particular, pipes and redirection are not readily available.
+ This has to be so if LyX should remain safe.
+ If you want to use some of the shell features, you should write a safe
+ script to do this in a controlled manner, and then invoke the script from
+ the command string.
+ 
+\end_layout
+
+\begin_layout Standard
+It is possible to design a template that interacts directly with the shell,
+ but since this would allow a malicious user to execute arbitrary commands
+ by writing clever filenames and/or parameters, we generally recommend that
+ you only use safe scripts that work with the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+execvp
+\end_layout
+
+\end_inset
+
+ system call in a controlled manner.
+ Of course, for use in a controlled environment, it can be tempting to just
+ fall back to use ordinary shell scripts.
+ If you do so, be aware that you 
+\emph on
+will
+\emph default
+ provide an easily exploitable security hole in your system.
+ Of course it stands to reason that such unsafe templates will never be
+ included in the standard LyX distribution, although we do encourage people
+ to submit new templates in the open source tradition.
+ But LyX as shipped from the official distribution channels will never have
+ unsafe templates.
+\end_layout
+
+\begin_layout Standard
+Including external material provides a lot of power, and you have to be
+ careful not to introduce security hazards with this power.
+ A subtle error in a single line in an innocent looking script can open
+ the door to huge security problems.
+ So if you do not fully understand the issues, we recommend that you consult
+ a knowledgeable security professional or the LyX development team if you
+ have any questions about whether a given template is safe or not.
+ And do this before you use it in an uncontrolled environment.
+\end_layout
+
 \end_body
 \end_document
