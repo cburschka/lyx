@@ -21,7 +21,7 @@ EXTRA_DIST = Section.h \
 	pch.h
 
 OTHERLIBS = $(BOOST_LIBS) $(INTLLIBS) $(MYTHES_LIBS) $(AIKSAURUS_LIBS) \
-	    @LIBS@ $(SOCKET_LIBS) $(LIBSHLWAPI)
+	    @LIBS@ $(SOCKET_LIBS) $(LIBSHLWAPI) $(LIBPSAPI)
 
 noinst_LIBRARIES = liblyxcore.a
 bin_PROGRAMS = lyx

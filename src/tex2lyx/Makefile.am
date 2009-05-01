@@ -72,4 +72,4 @@ tex2lyx_LDADD = \
 	$(top_builddir)/src/support/liblyxsupport.a \
 	$(LIBICONV) $(BOOST_LIBS) \
 	$(QT4_LIB) $(QT4_LDFLAGS) \
-	@LIBS@ $(LIBSHLWAPI)
+	@LIBS@ $(LIBSHLWAPI) $(LIBPSAPI)

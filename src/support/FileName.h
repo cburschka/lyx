@@ -64,6 +64,12 @@ public:
 
 	/// get the absolute file name in UTF-8 encoding
 	std::string absFilename() const;
+
+	/** returns an absolute pathname (whose resolution does not involve
+	  * '.', '..', or symbolic links) in UTF-8 encoding
+	  */
+	std::string realPath() const;
+
 	/**
 	 * Get the file name in the encoding used by the file system.
 	 * Only use this for accessing the file, e.g. with an fstream.

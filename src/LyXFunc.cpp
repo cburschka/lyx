@@ -1079,11 +1079,17 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			is >> file_name >> row;
 			Buffer * buf = 0;
 			bool loaded = false;
-			if (prefixIs(file_name, package().temp_dir().absFilename()))
+			string const abstmp = package().temp_dir().absFilename();
+			string const realtmp = package().temp_dir().realPath();
+			if (prefixIs(file_name, abstmp) || prefixIs(file_name, realtmp)) {
 				// Needed by inverse dvi search. If it is a file
-				// in tmpdir, call the apropriated function
+				// in tmpdir, call the apropriated function.
+				// If tmpdir is a symlink, we may have the real
+				// path passed back, so we correct for that.
+				if (prefixIs(file_name, realtmp))
+					file_name = subst(file_name, realtmp, abstmp);
 				buf = theBufferList().getBufferFromTmp(file_name);
-			else {
+			} else {
 				// Must replace extension of the file to be .lyx
 				// and get full path
 				FileName const s = fileSearch(string(), changeExtension(file_name, ".lyx"), "lyx");

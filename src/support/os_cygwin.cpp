@@ -27,6 +27,7 @@
 #include <shellapi.h>
 #include <shlwapi.h>
 #include <limits.h>
+#include <stdlib.h>
 #include <sys/cygwin.h>
 #include <sys/stat.h>
 
@@ -295,6 +296,14 @@ bool isSameFile(string const & fileone, string const & filetwo)
 
 	// One or both files cannot be accessed.
 	return false;
+}
+
+
+string real_path(string const & path)
+{
+	char rpath[PATH_MAX + 1];
+	char * result = realpath(path.c_str(), rpath);
+	return FileName::fromFilesystemEncoding(result ? rpath : path).absFilename();
 }
 
 } // namespace os

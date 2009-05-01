@@ -426,6 +426,102 @@ bool isSameFile(string const & fileone, string const & filetwo)
 	return samefile;
 }
 
+
+string real_path(string const & path)
+{
+	// See http://msdn.microsoft.com/en-us/library/aa366789(VS.85).aspx
+	HANDLE hpath = CreateFile(subst(path, '/', '\\').c_str(), GENERIC_READ,
+				FILE_SHARE_READ, NULL, OPEN_EXISTING, 0, NULL);
+
+	if (hpath == INVALID_HANDLE_VALUE) {
+		// The file cannot be accessed.
+		return FileName::fromFilesystemEncoding(path).absFilename();
+	}
+
+	// Get the file size.
+	DWORD size_hi = 0;
+	DWORD size_lo = GetFileSize(hpath, &size_hi);
+
+	if (size_lo == 0 && size_hi == 0) {
+		// A zero-length file cannot be mapped.
+		CloseHandle(hpath);
+		return FileName::fromFilesystemEncoding(path).absFilename();
+	}
+
+	// Create a file mapping object.
+	HANDLE hmap = CreateFileMapping(hpath, NULL, PAGE_READONLY, 0, 1, NULL);
+
+	if (!hmap) {
+		CloseHandle(hpath);
+		return FileName::fromFilesystemEncoding(path).absFilename();
+	}
+
+	// Create a file mapping to get the file name.
+	void * pmem = MapViewOfFile(hmap, FILE_MAP_READ, 0, 0, 1);
+
+	if (!pmem) {
+		CloseHandle(hmap);
+		CloseHandle(hpath);
+		return FileName::fromFilesystemEncoding(path).absFilename();
+	}
+
+	TCHAR realpath[MAX_PATH + 1];
+
+	if (!GetMappedFileName(GetCurrentProcess(), pmem, realpath, MAX_PATH)) {
+		UnmapViewOfFile(pmem);
+		CloseHandle(hmap);
+		CloseHandle(hpath);
+		return FileName::fromFilesystemEncoding(path).absFilename();
+	}
+
+	// Translate device name to UNC prefix or drive letters.
+	TCHAR tmpbuf[MAX_PATH] = TEXT("\\Device\\Mup\\");
+	UINT namelen = _tcslen(tmpbuf);
+	if (_tcsnicmp(realpath, tmpbuf, namelen) == 0) {
+		// UNC path
+		snprintf(tmpbuf, MAX_PATH, "\\\\%s", realpath + namelen);
+		strncpy(realpath, tmpbuf, MAX_PATH);
+		realpath[MAX_PATH] = '\0';
+	} else if (GetLogicalDriveStrings(MAX_PATH - 1, tmpbuf)) {
+		// Check whether device name corresponds to some local drive.
+		TCHAR name[MAX_PATH];
+		TCHAR drive[3] = TEXT(" :");
+		bool found = false;
+		TCHAR * p = tmpbuf;
+		do {
+			// Copy the drive letter to the template string
+			drive[0] = *p;
+			// Look up each device name
+			if (QueryDosDevice(drive, name, MAX_PATH)) {
+				namelen = _tcslen(name);
+				if (namelen < MAX_PATH) {
+					found = _tcsnicmp(realpath, name, namelen) == 0;
+					if (found) {
+						// Repl. device spec with drive
+						TCHAR tempfile[MAX_PATH];
+						snprintf(tempfile,
+							MAX_PATH,
+							"%s%s",
+							drive,
+							realpath + namelen);
+						strncpy(realpath,
+							tempfile,
+							MAX_PATH);
+						realpath[MAX_PATH] = '\0';
+					}
+				}
+			}
+			// Advance p to the next NULL character.
+			while (*p++) ;
+		} while (!found && *p);
+	}
+	UnmapViewOfFile(pmem);
+	CloseHandle(hmap);
+	CloseHandle(hpath);
+	string const retpath = subst(string(realpath), '\\', '/');
+	return FileName::fromFilesystemEncoding(retpath).absFilename();
+}
+
 } // namespace os
 } // namespace support
 } // namespace lyx

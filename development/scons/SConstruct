@@ -1212,9 +1212,9 @@ if platform_name in ['win32', 'cygwin']:
     # the final link step needs stdc++ to succeed under mingw
     # FIXME: shouldn't g++ automatically link to stdc++?
     if use_vc:
-        system_libs += ['ole32', 'shlwapi', 'shell32', 'advapi32', 'zdll']
+        system_libs += ['ole32', 'shlwapi', 'psapi', 'shell32', 'advapi32', 'zdll']
     else:
-        system_libs += ['shlwapi', 'stdc++', 'z']
+        system_libs += ['shlwapi', 'psapi', 'stdc++', 'z']
 elif platform_name == 'cygwin' and env['X11']:
     system_libs += ['GL',  'Xmu', 'Xi', 'Xrender', 'Xrandr',
         'Xcursor', 'Xft', 'freetype', 'fontconfig', 'Xext', 'X11', 'SM', 'ICE', 

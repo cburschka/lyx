@@ -69,7 +69,7 @@ target_link_libraries(support boost_signals ${QT_QTCORE_LIBRARY} ${ZLIB_LIBRARY}
 if(APPLE)
 	target_link_libraries(support "objc" "-framework Appkit" "-framework CoreFoundation")
 elseif(WIN32)
-	target_link_libraries(support shlwapi)
+	target_link_libraries(support shlwapi psapi)
 endif()
 
 project_source_group("${GROUP_CODE}" support_sources support_headers)

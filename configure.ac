@@ -112,6 +112,8 @@ LYX_ADD_INC_DIR(CPPFLAGS,$dir/include)
 ### These are needed in windows
 AC_CHECK_LIB(shlwapi, main, [LIBSHLWAPI=-lshlwapi])
 AC_SUBST(LIBSHLWAPI)
+AC_CHECK_LIB(psapi, main, [LIBPSAPI=-lpsapi])
+AC_SUBST(LIBPSAPI)
 AC_CHECK_LIB(gdi32, main)
 
 AC_ARG_WITH(mythes,

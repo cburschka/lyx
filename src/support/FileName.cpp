@@ -194,6 +194,12 @@ string FileName::absFilename() const
 }
 
 
+string FileName::realPath() const
+{
+	return os::real_path(toFilesystemEncoding());
+}
+
+
 void FileName::set(string const & name)
 {
 	d->fi.setFile(toqstr(name));
@@ -923,6 +929,10 @@ docstring const FileName::relPath(string const & path) const
 
 bool operator==(FileName const & lhs, FileName const & rhs)
 {
+	// Avoid unnecessary checks below
+	if (lhs.empty() || rhs.empty())
+		return lhs.empty() && rhs.empty();
+
 	// Firstly, compare the filenames.
 	if (QString::compare(toqstr(lhs.absFilename()),
 			     toqstr(rhs.absFilename()),
