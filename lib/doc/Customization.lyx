@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 353
+\lyxformat 354
 \begin_document
 \begin_header
 \textclass scrbook
@@ -114,9 +114,6 @@ End
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
-\author "" 
 \author "" 
 \author "" 
 \end_header
@@ -15568,28 +15565,6 @@ Security discussion
 \end_layout
 
 \begin_layout Standard
-\begin_inset Box Shadowbox
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-WARNING: This section is definitely outdated.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 The external material feature interfaces with a lot of external programs
  and does so automatically, so we have to consider the security implications
  of this.
@@ -15636,49 +15611,7 @@ This also implies that you are restricted in what command strings you can
  If you want to use some of the shell features, you should write a safe
  script to do this in a controlled manner, and then invoke the script from
  the command string.
- In the 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-lib/scripts
-\end_layout
-
-\end_inset
-
- directory of the LyX installation, you can find a safe wrapper script 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-general_command_wrapper.py
-\end_layout
-
-\end_inset
-
- that supports redirection of input and output.
- That can serve as an example for how to write safe template scripts.
- For a more advanced example that uses 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-fork
-\end_layout
-
-\end_inset
-
- and friends, take a look at the 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-pic2ascii.py
-\end_layout
-
-\end_inset
-
- converter script.
+ 
 \end_layout
 
 \begin_layout Standard
