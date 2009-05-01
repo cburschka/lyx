@@ -2352,7 +2352,12 @@ bool Paragraph::isLetter(pos_type pos) const
 	if (Inset const * inset = getInset(pos))
 		return inset->isLetter();
 	char_type const c = d->text_[pos];
-	return isLetterChar(c) || isDigit(c);
+    // We want to pass the ' and escape chars to the spellchecker
+	static docstring const quote = from_utf8(lyxrc.spellchecker_esc_chars + '\'');
+	return (isLetterChar(c) || isDigit(c) || contains(quote, c))
+		&& (!d->inset_owner_ || d->inset_owner_->allowSpellCheck())
+		&& pos != size()
+		&& !isDeleted(pos);
 }
 
 
@@ -2912,8 +2917,6 @@ void Paragraph::collectWords()
 	//lyxerr << "Words: ";
 	pos_type n = size();
 	for (pos_type pos = 0; pos < n; ++pos) {
-		if (isDeleted(pos))
-			continue;
 		if (!isLetter(pos))
 			continue;
 		pos_type from = pos;

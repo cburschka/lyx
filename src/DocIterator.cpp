@@ -612,14 +612,7 @@ bool operator==(StableDocIterator const & dit1, StableDocIterator const & dit2)
 
 bool isLetter(DocIterator const & dit)
 {
-	return dit.inTexted()
-		&& dit.inset().allowSpellCheck()
-		&& dit.pos() != dit.lastpos()
-		&& (dit.paragraph().isLetter(dit.pos())
-		    // We want to pass the ' and escape chars to ispell
-		    || contains(from_utf8(lyxrc.spellchecker_esc_chars + '\''),
-				dit.paragraph().getChar(dit.pos())))
-		&& !dit.paragraph().isDeleted(dit.pos());
+	return dit.inTexted() && dit.paragraph().isLetter(dit.pos());
 }
 
 } // namespace lyx
