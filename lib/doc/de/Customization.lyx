@@ -146,8 +146,8 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 21.
- April 2009
+letzte Änderung: 1.
+ Mai 2009
 \end_layout
 
 \begin_layout Standard
@@ -169,8 +169,12 @@ In diesem Teil der Dokumentation wird beschrieben, welche Möglichkeiten
  Es werden Dinge wie Tastaturkürzel, Vorschau am Bildschirm, Optionen zum
  Drucken, das Senden von Befehlen an LyX durch den LyX-Server, Internationalisie
 rung, Installation neuer LaTeX-Klassen und LyX-Layouts usw.
- behandelt.
- Es kann hier nicht alles beschrieben werden, das an LyX individuell eingestellt
+\begin_inset space \space{}
+\end_inset
+
+behandelt.
+ Es kann hier nicht alles beschrie\SpecialChar \-
+ben werden, das an LyX individuell eingestellt
  und verändert werden kann --- die Entwickler fügen Neuerungen schneller
  ein, als wir sie dokumentieren können --- doch werden die grundlegenden
  Fähigkeiten von LyX dokumentiert sowie für einige der etwas obskureren
@@ -470,18 +474,6 @@ bind/
 .
  In ihnen werden die Tastenkombinationen festgelegt, mit denen Sie Menüs
  öffnen und Bearbeitungsoperationen direkt starten können.
- Siehe dazu Abschnitt
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "sec:Tastaturkürzel"
-
-\end_inset
-
-.
  Falls eine Datei 
 \family typewriter
 $LANG_xxx.bind
@@ -496,17 +488,6 @@ g existiert, wird diese bevorzugt geladen.
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "cha:Internationales-LyX"
-
-\end_inset
-
- und Abschnitt
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "sec:Tastaturkürzel"
 
 \end_inset
 
@@ -536,7 +517,10 @@ doc/
 \series default
  Enthält die Dateien der LyX-Dokumentation (einschließlich der, die Sie
  gerade lesen).
- Eine kleine Ausnahmestellung hat die bereits beschriebene Datei 
+ Eine kleine Ausnahmestellung hat die bereits be\SpecialChar \-
+schrie\SpecialChar \-
+be\SpecialChar \-
+ne Datei 
 \family typewriter
 LaTe
 \begin_inset ERT
@@ -742,20 +726,10 @@ ui/
 \family typewriter
 .ui
 \family default
-, die die Benutzerschnittstelle von LyX festlegen, also welche Einträge
+, die die Benutzerschnitt\SpecialChar \-
+stel\SpecialChar \-
+le von LyX festlegen, also welche Einträge
  in welchen Menüs sind, und wie die Werkzeugleiste zusammengesetzt ist.
- Siehe hierzu Abschnitt
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "sec:Die-Benutzerschnittstelle"
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Subsection
@@ -1027,22 +1001,7 @@ konfigurieren
 \family typewriter
 UserDir
 \family default
- gespeichert (im Abschnitt
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "sec:Automatische-Einstellungen"
-
-\end_inset
-
- finden Sie eine Liste all derjenigen Optionen in 
-\family typewriter
-preferences
-\family default
-, die davon betroffen sind).
+ gespeichert.
  Das bedeutet, dass ab sofort etwaige neue Dokumentenklassen, die Sie in
  Ihrem Verzeichnis 
 \family typewriter
@@ -1069,7 +1028,9 @@ Einstellungen
 Falls Sie irgendwelche Dateien für neue LaTeX-Dokumentenklassen in einem
  Verzeichnis installiert haben, das LaTeX über die Umgebungsvariable 
 \family typewriter
-TEXINPUTS
+TEX\SpecialChar \-
+IN\SpecialChar \-
+PUTS
 \family default
  findet, können auch diese in LyX verwendet werden.
 \begin_inset Foot
@@ -1197,1156 +1158,392 @@ nstellungen
 \end_layout
 
 \begin_layout Section
-Der erste Aufruf des Dialogs
+Formate
+\begin_inset CommandInset label
+LatexCommand label
+name "Formate"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Bei alten Versionen von LyX bestand die Konfiguration darin, die Datei 
-\family typewriter
-UserDir/
-\begin_inset Newline linebreak
-\end_inset
-
-lyxrc
-\family default
- manuell zu editieren.
- Dies wurde mit LyX
-\begin_inset space ~
-\end_inset
-
-1.1.6 geändert, es steht nun mit 
+Als ersten Schritt müssen Sie Ihre Dateiformate definieren, wenn das nicht
+ bereits passiert ist.
+ Dazu öffnen Sie 
 \family sans
 Werkzeuge\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Datei-Handhabung\SpecialChar \menuseparator
+Dateiformate
+\family default
+ und klicken auf 
+\family sans
 Neu
-\begin_inset space ~
+\family default
+.
+ Das 
+\family sans
+Format
+\family default
+-Feld enthält den Namen, unter dem das Format im GUI identifiziert wird.
+ Im Feld 
+\family sans
+Einsortieren
+\begin_inset space \space{}
 \end_inset
 
-konfigurieren
+als
 \family default
- ein Befehl zur Verfügung, der die Mühsal der Konfiguration beendet.
- Die alte Datei 
-\family typewriter
-UserDir/lyxrc
+ steht der Name, mit dem das Format intern identifiziert wird.
+ Außerdem muss eine 
+\family sans
+Dateiendung
 \family default
- wird nur solange verwendet, bis Sie das erste Mal den neuen Konfigurationsdialo
-g verwenden.
- Alle weiteren Änderungen werden in der Datei 
-\family typewriter
-preferences
+ festgelegt werden.
+ Diese drei Felder sind erforderlich.
+ Zusätzlich kann ein 
+\family sans
+Tastenkürzel
 \family default
- gespeichert, 
-\family typewriter
-lyxrc
+ definiert werden.
+ Zum Beispiel bedeutet 
+\family sans
+Strg+D
 \family default
- wird danach nicht mehr eingelesen und kann gelöscht werden.
+: 
+\family sans
+Ansicht\SpecialChar \menuseparator
+DVI
+\family default
+.
 \end_layout
 
 \begin_layout Standard
-In der neuen Datei 
-\family typewriter
-UserDir/preferences
-\family default
- werden nur noch diejenigen Einstellungen gespeichert, die von den Standardwerte
-n abweichen.
- Einige dieser Standardwerte sind fest in LyX einkompiliert, andere werden
- in 
-\family typewriter
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-XDir/lyxrc.de\SpecialChar \-
-faults
-\family default
- festgelegt.
- Beachten Sie bitte, dass in beiden Dateien Zeilen, die mit einem 
-\begin_inset Quotes gld
-\end_inset
-
-#
-\begin_inset Quotes grd
-\end_inset
-
- beginnen, Kommentare sind und nicht ausgewertet werden.
- Jedoch sollte 
-\family typewriter
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-XDir/lyxrc.defaults
-\family default
- nur vom Systemadministator verändert werden, und die Benutzer sollten ihre
- persönliche Konfiguration in 
-\family typewriter
-UserDir/preferences
-\family default
- nur über den Dialog 
+Ein Format kann ein 
 \family sans
-Werkzeuge\SpecialChar \menuseparator
-Einstellungen
+Bearbeitungsprogramm
 \family default
-\SpecialChar \ldots{}
- verändern.
+ und ein 
+\family sans
+Anzeigeprogramm
+\family default
+ haben.
+ Am Beispiel von JPEG-Dateien steht bei mir in beiden Feldern 
+\family sans
+gimp
+\family default
+.
+ Was bei Ihnen steht, hängt von der Software-Ausstattung Ihres PCs ab.
+ Zum Definieren des Befehls können auch die vier Variablen aus dem nächsten
+ Abschnitt benutzt werden.
+ Das 
+\family sans
+Bearbeitungsprogramm
+\family default
+ wird aufgerufen, wenn Sie nach einem Rechtsklick auf ein Bild 
+\family sans
+Datei
+\begin_inset space \space{}
+\end_inset
+
+extern
+\begin_inset space \space{}
+\end_inset
+
+bearbeiten
+\family default
+ auswählen.
+ 
 \end_layout
 
 \begin_layout Standard
-Wir hoffen dass der Dialog im großen und ganzen selbsterklärend ist.
- Praktisch alle Befehle haben einen erklärenden Kommentar, es sollte Ihnen
- also keine Schwierigkeiten bereiten, alles Ihren Wünschen entsprechend
- anzupassen.
- Bevor wir nun jedoch ein paar der wichtigeren Optionen vorstelle,n ein
- Wort der Warnung: Einige der Einstellungen, die Sie mit dem Klick auf 
+Wenn 
 \family sans
-Übernehmen
+Dokumentformat
 \family default
- aktivieren, werden sofort umgesetzt (zum Beispiel Bildschirmzeichensätze),
- andere (wie etwa das Ändern der 
+ angekreuzt ist, weiß LyX, dass das Format für den Dokumentexport geeignet
+ ist.
+ Wenn dann auch noch ein geeigneter Konverter existiert (siehe Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "Konverter"
+
+\end_inset
+
+), wird das Format unter 
+\family sans
+Datei\SpecialChar \menuseparator
+Exportieren
+\family default
+ erscheinen.
+ Außerdem wird es im 
+\family sans
+Ansicht
+\family default
+-Menü erscheinen, wenn ein 
+\family sans
+Anzeigeprogramm
+\family default
+ angegeben wurde.
+ Reine Grafikformate wie 
 \family typewriter
-bind
+png
 \family default
--Datei) bedürfen eines Neustarts von LyX.
-  Wenn sich also nach einer Änderung scheinbar nichts verändert hat -- speichern
- Sie die Konfiguration und starten Sie LyX neu.
+ sollten diese Option nicht benutzen, dagegen aber Formate, die sowohl Vektorgra
+fiken als auch Dokumente repräsentieren wie 
+\family typewriter
+pdf
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Die Option 
+\family sans
+Vektorgrafik-Format
+\family default
+ sagt LyX, dass ein Format Vektorgrafiken ent\SpecialChar \-
+halten kann.
+ Diese Information wird dazu benutzt, um ein Zielformat für eingefügte Grafiken
+ für den 
+\family typewriter
+pdflatex
+\family default
+-Export zu bestimmen.
+ Eingefügte Grafiken müs\SpecialChar \-
+sen nach 
+\family typewriter
+pdf
+\family default
+, 
+\family typewriter
+png
+\family default
+ oder 
+\family typewriter
+jpg
+\family default
+ konvertiert werden, weil 
+\family typewriter
+pdflatex
+\family default
+ keine anderen Grafikformate handhaben kann.
+ Hat eine eingefügte Grafik bereits eines der Formate, wird sie nach pdf
+ konvertiert, wenn 
+\family sans
+Vektorgrafik-Format
+\family default
+ angekreuzt ist, sonst nach 
+\family typewriter
+png
+\family default
+.
 \end_layout
 
 \begin_layout Section
-Bildschirmdarstellung und Zeichensätze
+Kopierer
 \end_layout
 
 \begin_layout Standard
-Dem Zeichensatz, den LyX zur Darstellung auf dem Bildschirm verwendet, kommt
- eine besondere Bedeutung zu, denn er sollte so gut lesbar sein wie nur
- möglich.
- Schließlich lesen und schreiben Sie Ihre gesamten Texte am Bildschirm.
- Das LyX-Team hat sich bemüht, den bestmöglichen Standardzeichensatz auszuwählen
-, doch jedes X11-System hat kleine Unterschiede, und deshalb kann es sein,
- dass dieser Standard gerade auf Ihrem System nicht die beste Wahl ist.
- Bevor wir nun erklären, wie Sie die Bildschirmzeichensätze optimieren können,
- sollten Sie ein wenig mehr über Zeichensätze erfahren, damit Sie Ihre Wahl
- gut vorbereitet treffen können.
- Denn es handelt sich dabei um eine Entscheidung, die von Ihren Wünschen
- und den Fähigkeiten Ihres Rechners beeinflusst wird.
-\end_layout
-
-\begin_layout Standard
-Beachten Sie bitte, dass es in diesem Abschnitt nur um die Zeichensätze
- für die 
-\emph on
-Bildschirmdarstellung
-\emph default
- innerhalb von LyX geht.
- Die Zeichensätze, die später für den Ausdruck verwendet werden, sind davon
- vollkommen unabhängig und werden durch die verwendete Dokumentenklasse
- bestimmt.
- Das Ändern von Zeichensätzen für den Ausdruck wird im 
-\emph on
-Benutzerhandbuch
-\emph default
- beschrieben.
-\end_layout
-
-\begin_layout Standard
-Grundsätzlich gibt es zwei unterschiedliche Typen von Bildschirmzeichensätzen:
- skalierbare (
-\emph on
-outline
-\emph default
-) und nichtskalierbare (
-\emph on
-bitmap
-\emph default
-).
- Diese Unterscheidung erscheint zunächst etwas akademisch, denn die meisten
- modernen Zeichensatzgeneratoren können auch die nichtskalierbaren Zeichensätze
- vergrößern oder verkleinern.
- Der Unterschied liegt aber in der 
-\emph on
-Qualität
-\emph default
- dieser Skalierung und der 
-\emph on
-Geschwindigkeit
-\emph default
-, mit der sie dargestellt werden können.
- Die wichtigste Entscheidung ist deshalb, ob Sie nichtskalierbare oder skalierba
-re Zeichensätze verwenden wollen.
-\end_layout
-
-\begin_layout Standard
-Die skalierbaren Zeichensätze werden über die Umrisse der einzelnen Glyphen
- (also Buchstaben, Zahlen, Satzzeichen usw.) definiert.
- Das bedeutet, dass jedes einzelne Zeichen über mathematische Kurven beschrieben
- wird, die sich sehr einfach in jede beliebige Größe skalieren lassen.
- Diese mathematische Beschreibung wird nun vom Zeichensatzgenerator ausgewertet
- und daraus ein kleines Bild berechnet, das das gewünschte Zeichen genau
- in der richtigen Größe darstellt.
- Oder zumindest in fast jeder Größe.
-\end_layout
-
-\begin_layout Standard
-Denn da die Glyphen in einer recht abstrakten Weise definiert wurden, ist
- es recht schwierig, daraus bei sehr kleinen Schriftgrößen ein gutes Bild
- zu berechnen, da dann jedes einzelne Pixel sehr sorgfältig gesetzt werden
- muss, um eine verständliche Darstellung des Zeichens zu erreichen.
- Das ist zwar anhand der mathematischen Beschreibung des Zeichens theoretisch
- möglich, aber um die Darstellungsgeschwindigkeit in annehmbaren Grenzen
- zu halten, werden dabei gewisse Vereinfachungen gemacht.
- Dies hat möglicherweise zur Folge, dass ein skalierbarer Zeichensatz bei
- kleinen Vergrößerungen sehr schlecht zu lesen ist.
-\end_layout
-
-\begin_layout Standard
-Demgegenüber sind Bitmap-Zeichensätze von vornherein als kleine Grafikdateien
- angelegt, deshalb sehen Sie bei der Größe, für die sie berechnet wurden,
- sehr gut aus.
- Sie können aber nur schlecht skaliert werden, denn für eine Vergrößerung
- müssen aus einem Pixel mehrere gemacht werden.
+Weil alle Konvertierungen im temporären Verzeichnis von LyX stattfinden,
+ muß eine Datei manchmal geändert werden bevor sie ins temporäre Verzeichnis
+ kopiert wird, damit die Konvertierung durchgeführt werden kann.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Sie kennen diesen Effekt vermutlich.
- Er tritt auch auf, wenn Sie in einem Bildbearbeitungsprogramm wie 
+Wenn die Datei beispielsweise auf andere Dateien mit relativen Pfaden verweist
+ -- vielleicht Bilder -- und diese Pfade beim Kopieren ungültig werden.
+\end_layout
+
+\end_inset
+
+ Das macht ein Kopierer: er kopiert eine Datei ins (oder vom) temporären
+ Verzeichnis und ändert sie dabei.
+\end_layout
+
+\begin_layout Standard
+Die Definitionen der Kopierer können vier Variablen benutzen:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
 \family typewriter
-gimp
+$$s
 \family default
- ein Bild stark vergrößern.
-\end_layout
-
-\end_inset
-
- Um das zu vermeiden, werden Bitmap-Zeichensätze bereits für verschiedene,
- häufig benutzte Größen (8 Pixel bis etwa 34 Pixel Zeichenhöhe) berechnet
- und zur Verfügung gestellt.
- Der Vorteil dieser Bitmap-Zeichensätze liegt darin, dass keine komplizierten
- Berechnungen notwendig sind, um sie darzustellen, daher sind sie in der
- Darstellung sehr viel schneller als skalierbare Zeichensätze.
- Der Nachteil ist, dass nichtvorhandene Vergrößerungsstufen durch Pixelverdopplu
-ng berechnet werden müssen und deshalb schlecht aussehen.
-\end_layout
-
-\begin_layout Standard
-Als Fazit kann man also sagen, dass die Bitmap-Zeichensätze normalerweise
- für kleinere Vergrößerungsstufen vorzuziehen sind (vorausgesetzt es gibt
- sie in dieser Größe), wohingegen skalierbare Zeichensätze für große Zeichen
- vorzuziehen sind.
- Die logische Schlussfolgerung wäre nun also, für kleine Zeichen die Bitmap-
- und für große Zeichen die skalierbaren Zeichensätze zu verwenden.
- Leider ist das so nicht machbar, denn skalierbare und Bitmap-Zeichensätze
- sind nicht dafür gedacht, gleichzeitig verwendet zu werden.
- Dadurch würde ein solches Dokument ziemlich armselig aussehen.
- Sie sollten also einfach auf Ihrem Rechner beide Möglichkeiten ausprobieren
- und entscheiden, welche Ihnen besser gefällt.
-\end_layout
-
-\begin_layout Standard
-Standardmäßig verwendet LyX nichtskalierbare Zeichensätze.
- Als normaler Zeichensatz (mit Serifen) wird 
-\emph on
-Nimbus Roman
-\emph default
- verwendet, für Sans Serif 
-\emph on
-Nimbus Sans
-\emph default
- und für Schreibmaschine 
-\emph on
-Nimbus Mono
-\emph default
-.
-\end_layout
-
-\begin_layout Standard
-In den folgenden Abschnitten wird beschrieben, was Sie alles tun können,
- wenn Ihr Text in LyX nicht gut aussieht.
- Begonnen wird mit den wichtigsten Parametern: Auf\SpecialChar \textcompwordmark{}
-lösung und Vergrößerungsfaktor.
-\end_layout
-
-\begin_layout Subsection
-Auf\SpecialChar \textcompwordmark{}
-lösung und Vergrößerungsfaktor
-\end_layout
-
-\begin_layout Standard
-LyX versucht, automatisch die verwendeten Zeichensätze so zu skalieren,
- dass ihre Darstellung auf dem Bildschirm bis auf den sogenannten Zoom-Faktor
- der späteren Größe auf dem Papier entspricht.
-\end_layout
-
-\begin_layout Standard
-Damit dies auf allen Systemen funktioniert, vertraut LyX darauf, dass die
- DPI-Einstel\SpecialChar \-
-lung des Bildschirmes richtig ist.
- DPI steht für 
-\begin_inset Quotes gld
-\end_inset
-
-Dots per Inch
-\begin_inset Quotes grd
-\end_inset
-
-, Punkte je Zoll, und beschreibt die Auf\SpecialChar \textcompwordmark{}
-lösung der Bildschirmdarstellung.
- Diese Einstellung erfragt LyX automatisch beim X-Server.
- Welchen Wert LyX so feststellt, können Sie herausfinden, wenn Sie LyX folgender
-maßen starten: 
+ ist das Systemverzeichnis von LyX (zum Beispiel 
 \family typewriter
+/usr/local/bin/
+\begin_inset Newline linebreak
+\end_inset
+
 lyx
-\begin_inset space ~
-\end_inset
-
--dbg
-\begin_inset space ~
-\end_inset
-
-2
 \family default
-.
-\end_layout
-
-\begin_layout Standard
-Nun ist X aber nicht auf jedem System richtig konfiguriert, deshalb sollten
- Sie diese Einstellung selber nachprüfen.
- Geben Sie dazu den Befehl 
-\family typewriter
-xdpyinfo
-\begin_inset space \space{}
-\end_inset
-
-|
-\begin_inset space \space{}
-\end_inset
-
-more
-\family default
- ein und notieren Sie sich den DPI-Wert beim Eintrag 
-\begin_inset Quotes gld
-\end_inset
-
-
-\emph on
-resolution
-\emph default
-: (dies ist der Wert, den auch LyX automatisch findet).
- Notieren Sie sich außerdem die Anzahl der Pixel auf Ihrem Bildschirm (die
- erste Zahl hinter dem Eintrag 
-\emph on
-dimensions
-\emph default
 ).
 \end_layout
 
-\begin_layout Standard
-Dann nehmen Sie sich ein Lineal und messen Sie die sichtbare Breite des
- Bildes auf dem Schirm.
- Rechnen Sie diese Breite in Zoll um, falls Sie ein Zentimetermaß verwendet
- haben, indem Sie den Wert durch 2.54 teilen.
- Nun können Sie den tatsächlichen DPI-Wert berechnen, indem Sie die Anzahl
- der Pixel durch die Breite des Bildes dividieren.
- Wenn der so ermittelte Wert mehr als etwa 5 DPI von dem vom X-Server gemeldeten
- Wert abweicht, sollten Sie entweder den X-Server neu konfigurieren oder
- zumindest LyX mitteilen, dass der tatsächliche Wert ein anderer als der
- vom X-Server gemeldete ist.
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family typewriter
+$$i
+\family default
+ ist die Eingabedatei.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family typewriter
+$$o
+\family default
+ ist die Ausgabedatei.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family typewriter
+$$l
+\family default
+ ist der 
+\emph on
+LaTeX-Name
+\emph default
+.
+ Dies sollte der Dateiname sein, den LaTeX im 
+\family typewriter
+
+\backslash
+include
+\family default
+-Befehl benutzt.
+ Er ist nur dann relevant, wenn die expor\SpecialChar \-
+tier\SpecialChar \-
+ten Dateien für den Befehl
+ geeignet sind.
 \end_layout
 
 \begin_layout Standard
-Falls Sie die Einstellung des X-Servers nicht verändern wollen oder können
- (immerhin profitieren auch andere Programme als LyX von einer korrekten
- Konfiguration), können Sie LyX den wahren Wert im Dialog 
-\family sans
-Einstellungen
+Kopierer können benutzt werden, um 
+\emph on
+fast
+\emph default
+ alles mit Ausgabedateien zu machen.
+ Wenn Sie zum Beispiel 
+\family typewriter
+pdf
 \family default
- mitteilen.
+-Dateien in ein spezielles Verzeichnis kopieren wollen, können Sie ein Shell-Skr
+ipt wie folgt schreiben:
+\end_layout
+
+\begin_layout LyX-Code
+#!/bin/bash
+\end_layout
+
+\begin_layout LyX-Code
+FROMFILE=$1
+\end_layout
+
+\begin_layout LyX-Code
+TOFILE=`basename $2`
+\end_layout
+
+\begin_layout LyX-Code
+cp $FROMFILE /home/you/pdf/$TOFILE
 \end_layout
 
 \begin_layout Standard
-Wenn der Text nun für Ihren Geschmack zu groß oder zu klein ist, können
- Sie mit dem Zoom-Faktor experimentieren.
- Mit diesem Faktor wird die Größe der Zeichensätze multipliziert.
- Wenn Ihre Einstellung des DPI-Wertes richtig ist und der Zoom-Faktor auf
- 100 eingestellt ist, wird LyX den Text in derselben Größe darstellen wie
- auf dem Papier.
- Ist der Faktor 200, wird die Darstellung am Bildschirm doppelt so groß
- sein wie auf dem Papier.
- All dies natürlich unter der Voraussetzung, dass LyX den Zeichensatz in
- der so berechneten Größe findet, worauf man sich nicht immer verlassen
- kann.
- Doch da es sich bei LyX um ein WYSIWYM-System handelt, ist diese Einschränkung
- nicht sehr bedeutend.
-\end_layout
-
-\begin_layout Standard
-Die Standardeinstellung für den Zoom-Faktor ist 150, da ein Bildschirm normalerw
-eise breiter als ein Blatt Papier ist.
- Sie sollten aber mit der Einstellung experimentieren.
- Verändern können Sie den Wert über das Feld 
-\family sans
-Vergrößerung
+Speichern Sie das Skript ausführbar in Ihrem lokalen LyX-Verzeichnis --
+ etwa 
+\family typewriter
+/home/you/lyx/scripts/pdfkopierer.sh
 \family default
-
-\begin_inset space ~
-\end_inset
-
-
-\family sans
-%:
-\family default
- im Dialog 
+.
+ Dann wählen Sie in 
 \family sans
 Werkzeuge\SpecialChar \menuseparator
-Einstellungen
+Ein\SpecialChar \-
+stel\SpecialChar \-
+lun\SpecialChar \-
+gen\SpecialChar \menuseparator
+Datei-Handhabung\SpecialChar \menuseparator
+Dateiformate
 \family default
-\SpecialChar \ldots{}
-\SpecialChar \menuseparator
-
+ das Format 
 \family sans
-Aussehen\SpecialChar \menuseparator
-Bildschrimschriften
+PDF
+\begin_inset space \space{}
+\end_inset
+
+(pdflatex)
 \family default
-.
- Ein Tipp zum Probieren: Verwenden Sie 
-\family sans
-Übernehmen
-\family default
-, dann bleibt der Dialog geöffnet und Sie können leicht andere Werte eintragen.
- Wenn Sie dann einen Wert gefunden haben, der Ihren Wünschen entspricht,
- können Sie diesen mit 
-\family sans
-Speichern
-\family default
- dauerhaft übernehmen.
-\end_layout
-
-\begin_layout Standard
-Auf diese Weise ist es meist möglich, eine angemessene Darstellung des Textes
- auf dem Bildschirm zu erreichen.
- Das heißt aber nicht, dass Sie damit die besten Zeichensätze verwenden,
- die es auf Ihrem Rechner gibt.
- Deshalb gibt es eine Reihe von Befehlen, die den verwendeten Zeichensatz
- festlegen, um Ihnen so noch mehr Möglichkeiten zu geben, die Darstellung
- am Bildschirm zu optimieren.
-\end_layout
-
-\begin_layout Subsection
-Befehle zur Festlegung des Zeichensatzes
-\end_layout
-
-\begin_layout Standard
-Wie bereits erwähnt, verwendet LyX standardmäßig nichtskalierbare Zeichensätze.
- Als normaler Zeichensatz (mit Serifen) wird 
-\emph on
-Nimbus Roman
-\emph default
- verwendet, für Sans Serif 
-\emph on
-Nimbus Sans
-\emph default
- und für Schreibmaschine 
-\emph on
-Nimbus Mono
-\emph default
-.
-\end_layout
-
-\begin_layout Standard
-Alle diese Einstellungen können Sie über den Konfigurationsdialog verändern.
- Wählen Sie einen Zeichensatz aus der Liste aus und klicken Sie auf 
-\family sans
-Übernehmen
-\family default
-.
- LyX formatiert dann den Text unter der Verwendung des angegebenen Zeichensatzes
- neu und wenn Ihnen das Ergebnis zusagt, können Sie es dauerhaft speichern.
-\end_layout
-
-\begin_layout Standard
-Welche Größen für die jeweiligen Zeichensätze zur Verfügung stehen, können
- Sie mit dem Befehl 
+ und tragen im Kopierer-Feld 
 \family typewriter
-xlsfonts
+pdfkopierer.sh $$i $$o
 \family default
- herausfinden.
- Näheres dazu liefert 
-\family typewriter
-man xlsfonts
-\family default
-.
- Ein Nachteil dieser Vorgehensweise ist, dass nun die Unterschiede zwischen
- den Zeichensatzgrößen auf dem Bildschirm und denen auf dem Papier größer
- sind, da LyX nur die am ehesten passende Größe auswählen kann, und nicht
- die genau passende.
- Ebenfalls kann es passieren, dass zwei sich logisch unterscheidende Schriftgröß
-en wie 
+ ein.
+\end_layout
+
+\begin_layout Standard
+Kopierer werden von LyX in vielen eigenen Konvertierungen benutzt.
+ Wenn auf dem PC geeignete Programme installiert sind, wird LyX automatisch
+ Kopierer für 
 \family sans
-Groß
+HTML
 \family default
  und 
 \family sans
-Groß
-\begin_inset space ~
+HTML
+\begin_inset space \space{}
 \end_inset
 
-2
-\family default
- durch denselben Bildschirm-Zeichensatz dargestellt werden und dadurch nur
- schwer zu unterscheiden sind.
-\end_layout
-
-\begin_layout Standard
-Und noch eine weitere Möglichkeit bleibt Ihnen, um die Auswirkungen zu minimiere
-n: Sie können für jede logische Schriftgröße genau festlegen, welche Größe
- zur Darstellung am Bildschirm verwendet wird.
- Wenn Sie LyX mit der Option 
-\family typewriter
--dbg
-\begin_inset space ~
+(MS
+\begin_inset space \space{}
 \end_inset
 
-513
+Word)
 \family default
- starten, können Sie feststellen, welche Schriftgrößen tatsächlich verwendet
- werden.
- Nun können Sie die entsprechenden Einträge im Dialog solange verändern,
- bis Sie die richtigen Größen gefunden haben.
-\end_layout
-
-\begin_layout Standard
-Dies kann etwas schwierig sein, da LyX die Einstellungen für DPI und Vergrößerun
-g benutzt, um die tatsächliche Zeichensatzgröße zu berechnen, die es vom
- X-Server anfordert; dadurch wird die Zuordnung ein wenig verschleiert.
- Wenn es Ihnen durch Ausprobieren nicht gelingt, gute Einstellungen zu finden,
- können Sie den Prozess vereinfachen, indem Sie sowohl DPI als auch Vergrößerung
- auf 100 setzen, auch wenn dies falsch ist.
- Dabei sehen dann vor allem die skalierbaren Zeichensätze seltsam aus, also
- verwenden Sie diesen Tipp mit Vorsicht.
-\end_layout
-
-\begin_layout Subsection
-Zeichensatzkodierung
-\end_layout
-
-\begin_layout Standard
-Standardmäßig verwendet LyX Zeichensätze, die zum Schreiben von Texten in
- westeuropäischen Sprachen gedacht sind.
- Dies wird über die 
+ installieren.
+ Wenn diese Formate exportiert werden, 
 \emph on
-Zeichensatzkodierung
+sieht
 \emph default
- festgelegt.
- Wenn Sie nun LyX verwenden wollen, um einen Text zum Beispiel in osteuropäische
-n Sprachen oder Kyrillisch zu schreiben, deren Zeichen nicht durch die ISO-8859-
-1-Kodierung abgedeckt sind, können Sie im Feld 
-\family sans
-Kodierung
-\family default
- von 
-\family sans
-Dokument\SpecialChar \menuseparator
-Einstellungen \SpecialChar \menuseparator
-Sprache
-\family default
- eine andere Kodierung aktivieren.
-\end_layout
-
-\begin_layout Standard
-Dies setzt allerdings voraus, dass Sie besondere Zeichensätze installiert
- haben.
- Benutzen Sie wiederum 
-\family typewriter
-xfontsel
-\family default
-, und prüfen Sie die Felder 
-\family typewriter
-rgstry
-\family default
- und 
-\family typewriter
-encdng
-\family default
-, ob dort außer ISO-8859-X weitere Einträge vorhanden sind.
- Suchen Sie dann aus diesen einen Zeichensatz heraus, der die von Ihnen
- benötigten Zeichen enthält.
- Wenn Sie einen passenden gefunden haben, können Sie diesen im Dialogfeld
- eintragen, andernfalls müssen Sie sich zunächst (zum Beispiel via Internet)
- geeignete Zeichensätze besorgen.
-\end_layout
-
-\begin_layout Standard
-Wenn Sie LyX derart konfigurieren, dass standardmäßig eine andere Zeichensatzkod
-ierung verwendet wird, sollten Sie auch darüber nachdenken, einen anderen
- Zeichensatz für die Menüs und Dialoge zu verwenden.
- Sonst wird zum Beispiel der Dialog 
-\family sans
-Inhaltsverzeichnis
-\family default
- kaum lesbar sein, wenn nicht auch dort die neue Kodierung verwendet wird.
- Normalerweise verwendet LyX hierzu den Zeichensatz 
-\family typewriter
--*-helvetica-medium-r
-\family default
-, doch meist ist Helvetica in der von Ihnen benötigten Kodierung nicht vorhanden.
- Deshalb können Sie den für Menüs verwendeten Zeichensatz im Dialogbereich
- 
-\family sans
-Benutzerschnittstelle
-\family default
- ändern.
-\end_layout
-
-\begin_layout Standard
-Wie Sie sehen, gibt es eine ganze Reihe von Befehlen, mit denen Sie der
- Darstellung am Bildschirm den letzten Schliff verpassen können.
- Dies sollte Sie nicht davon abhalten, mit diesen Einstellungen herumzuspielen,
- im Gegenteil.
- Denn Sie werden (hoffentlich) in Zukunft viele Stunden mit LyX verbringen
- --- da lohnt es sich, eine perfekte Darstellung zu haben.
- Und während Sie bei anderen Textverarbeitungen darauf angewiesen sind,
- Zeichensätze zu verwenden, die sowohl am Bildschirm als auch auf dem Papier
- gut aussehen, können Sie bei LyX als WYSIWYM-Programm die besten Zeichensätze
- für die Bildschirmdarstellung verwenden, ohne sich dabei Gedanken um den
- Ausdruck machen zu müssen.
-\end_layout
-
-\begin_layout Standard
-Für eine spätere Version von LyX ist es geplant, den 
-\family typewriter
-T1Lib
-\family default
--Zeichensatzgenerator zu benutzen, der auch 
-\emph on
-anti-aliasing
-\emph default
- unterstützt.
- Das bedeutet, dass jedes Zeichen aus mehreren Farbschattierungen zusammengesetz
-t werden kann, anstelle von nur zwei wie derzeit.
- Das erhöht scheinbar die Auf\SpecialChar \textcompwordmark{}
-lösung.
- Dadurch wird der Text am Bildschirm nicht nur besser lesbar, LyX kann dadurch
- den Text noch genauer in der Größe anzeigen, die er auch später auf dem
- Ausdruck hat, da dann zum Beispiel auch ein 14.4pt-Zeichensatz verwendet
- werden kann, wohingegen im Moment auf 14pt abgerundet werden muss.
-\end_layout
-
-\begin_layout Section
-Tastatur-Einstellung
+ der Kopierer, dass nicht nur die Haupt-HTML-Datei, sondern auch verschiedene
+ zugehörige Dateien (Stildateien, Bilder usw.) kopiert werden müssen.
+ All diese Dateien werden in ein Unterverzeichnis des Verzeichnisses geschrieben
+, in dem die LyX-Datei steht.
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-Wenn Sie Linux selber auf einem PC installiert haben, können Sie diesen
- Teil ignorieren.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Um LyX richtig benutzen zu können, 
-\emph on
-muss
-\emph default
- X richtig eingerichtet werden.
- Das ist besonders dann wichtig, wenn Sie die internationalen LyX-Unterstützunge
-n und nicht-englische Tastaturen benutzen wollen.
- Unglücklicherweise kümmert sich fast niemand darum, besonders nicht diejenigen,
- die LyX auf einem PC installiert haben\SpecialChar \@.
- Administratoren großer Systeme können
- auch schuld sein, also verlassen Sie sich nicht auf richtige Einstellungen,
- wenn Sie ein großes System benutzen.
- Jeder Benutzer kann X beibringen, die richtige Tastatureinstellung zu benutzen.
- Sie müssen sich nicht auf Ihren Systemadministrator verlassen -- 
-\emph on
-Sie
-\emph default
- 
-\emph on
-sollten es auch nicht tun
-\emph default
-! Sie benötigen nur die beiden folgenden Programme, um die Tastatur Ihren
- Bedürfnissen anzupassen.
-\end_layout
-
-\begin_layout Subsection
-
+Kopierer können angepasst werden.
+ Der optionale Parameter 
 \family typewriter
-xmodmap
+-e
 \family default
- und 
+ kann eine durch Kommata getrennte Liste von Erweiterungen enthalten, die
+ mitkopiert werden sollen.
+ Wenn es fehlt, werden alle Dateien kopiert.
+ Der Parameter 
 \family typewriter
-xkeycaps
-\end_layout
-
-\begin_layout Standard
-Zunächst lesen Sie die 
-\family typewriter
-man
+-t
 \family default
--Seiten der beiden Programme.
- Das sind Ihre wirklichen Freunde für die richtige Tastatureinstellung.
- Wenn Sie die Programme nicht haben, installieren Sie sie.
-\end_layout
-
-\begin_layout Subsubsection
-
-\family typewriter
-xmodmap
-\end_layout
-
-\begin_layout Standard
-Dieses Dokument beschreibt 
-\emph on
-nicht,
-\emph default
- wie man 
-\family typewriter
-xmodmap
-\family default
- benutzt.
- In 
-\emph on
-Anpassung
-\emph default
- gibt es eine 
-\family typewriter
-.Xmodmap
-\family default
--Beispieldatei.
- Um die neuen Tastatureinstellungen zu laden, fügen Sie den Befehl 
-\end_layout
-
-\begin_layout Standard
-
-\family typewriter
-xmodmap
-\begin_inset space ~
-\end_inset
-
-.Xmodmap
-\family default
- 
-\end_layout
-
-\begin_layout Standard
-irgendwo in Ihre Startdateien ein (zum Beispiel 
-\family typewriter
-.bashrc
-\family default
-, 
-\family typewriter
-.cshrc
-\family default
-, 
-\family typewriter
-.profile
-\family default
-, 
-\family typewriter
-.login
-\family default
- oder 
-\family typewriter
-.xinitrc
-\family default
-).
-\end_layout
-
-\begin_layout Subsubsection
-
-\family typewriter
-xkeycaps
-\end_layout
-
-\begin_layout Standard
-Mit diesem Programm ist ein Traum wahr geworden! Es zeigt ein Bild Ihrer
- Tastatur, erlaubt Ihnen, Änderungen vorzunehmen, und gibt diese Änderungen
- in einer für 
-\family typewriter
-xmodmap
-\family default
- lesbaren Form auf der Standardausgabe aus.
- Es ist sehr nützlich, wenn Sie versuchen, eine neue 
-\family typewriter
-.Xmodmap
-\family default
--Datei zu erzeugen, obwohl ein wenig 
-\emph on
-cut-and-paste
-\emph default
- nötig ist.
-\end_layout
-
-\begin_layout Subsection
-Sondertasten
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Sondertasten
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-LyX unterstützt drei Sondertasten: 
+ bestimmt die Namenserweiterung, die an den erzeugten Verzeichnisnamen angehängt
+ werden soll.
+ Standardmäßig ist es 
 \family sans
-Umschalt
-\family default
-, 
-\family sans
-Strg
-\family default
- und 
-\family sans
-Alt
-\family default
-.
- Wenn außerdem eine Taste als 
-\family sans
-Compose
-\family default
--Taste konfiguriert wurde, dann können Sie damit einige Zeichen, die nicht
- auf Ihrer Tastatur sind, erzeugen.
- Diese Taste ist die Kombination 
-\family sans
-Umschalt+AltGr
-\family default
- und/oder die rechte 
-\family sans
-Windows
-\family default
--Taste (rechts von 
-\family sans
-AltGr
-\family default
-).
- Diese 
-\family sans
-Compose
-\family default
--Taste kann entweder wie 
-\family sans
-Umschalt
-\family default
- oder 
-\family sans
-Strg
-\family default
- benutzt werden oder als Präfix-Taste.
- Hier sind einige Beispiele dafür, was Sie mit der 
-\family sans
-Compose
-\family default
--Taste machen können:
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Compose
-\begin_inset space ~
-\end_inset
-
-e
-\begin_inset space ~
-\end_inset
-
-'
-\family default
- 
-\begin_inset Formula $\rightarrow$
-\end_inset
-
- é
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Compose
-\begin_inset space ~
-\end_inset
-
-O
-\begin_inset space ~
-\end_inset
-
-R
-\family default
- 
-\begin_inset Formula $\rightarrow$
-\end_inset
-
- ®
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Compose
-\begin_inset space ~
-\end_inset
-
-1
-\begin_inset space ~
-\end_inset
-
-2
-\family default
- 
-\begin_inset Formula $\rightarrow$
-\end_inset
-
- ½
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Compose
-\begin_inset space ~
-\end_inset
-
-<
-\begin_inset space ~
-\end_inset
-
-<
-\family default
- 
-\begin_inset Formula $\rightarrow$
-\end_inset
-
- «
-\end_layout
-
-\begin_layout Standard
-Diese Eingabeart ist besonders dann hilfreich, wenn man Buchstaben mit Akzenten
- nur manchmal benutzt.
- Bei Latin1-Buchstaben geht es automatisch, aber andere Methoden sind nötig,
- wenn Sie Ihr 
-\emph on
-locale
-\emph default
- richtig gesetzt haben.
-\end_layout
-
-\begin_layout Standard
-Eine einfachere Art, Sonderzeichen einzufügen, gibt es mit 
-\family sans
-Einfügen\SpecialChar \menuseparator
-Son\SpecialChar \-
-der\SpecialChar \-
-zei\SpecialChar \-
-chen\SpecialChar \menuseparator
-Symbole
-\family default
-.
-\end_layout
-
-\begin_layout Subsection
-Hilfreiche Hinweise und Tipps
-\end_layout
-
-\begin_layout Standard
-Öffnen Sie bitte zwei X-Terminals.
- Editieren Sie in einem eine neue 
-\family typewriter
-.Xmodmap
-\family default
--Datei, und lassen Sie 
-\family typewriter
-xkeycaps
-\family default
- im anderen laufen.
- Mit 
-\family typewriter
-xkeycaps
-\family default
- wird Ihre neue Tastaturbelegung erzeugt.
- Es gibt einen Knopf in 
-\family typewriter
-xkeycaps
-\family default
-, um die neue Tabelle auszugeben.
- Wenn Sie ihn drücken, gibt 
-\family typewriter
-xkeycaps
-\family default
- eine Menge Zeug auf dem 
-\emph on
-xterm
-\emph default
- aus, von wo Sie es gestartet haben.
- Sie müssen es nur noch mit 
-\emph on
-
-\begin_inset Quotes gld
-\end_inset
-
-copy-and-paste
-\begin_inset Quotes grd
-\end_inset
-
-
-\emph default
- in Ihre 
-\family typewriter
-.Xmodmap
-\family default
--Datei bringen, und Sie sind fertig.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Sie können sich etwas Schreibarbeit sparen, wenn Sie folgendes ausführen:
- 
-\family typewriter
-xkeycaps > .Xmodmap
-\family default
-.
- Dadurch erhalten Sie Ihre neue Datei.
- Wenn Sie aber den Knopf 
-\begin_inset Quotes gld
-\end_inset
-
-output keymap
-\begin_inset Quotes grd
-\end_inset
-
- in 
-\family typewriter
-xkeycaps
-\family default
- mehr als einmal drücken, wird Ihre Datei durcheinander geraten.
- Wie alle Werkzeuge ist 
-\family typewriter
-xkeycaps
-\family default
- nur so intelligent wie sein Benutzer.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Da sind noch ein paar Dinge, die Sie tun können, um sich zurechtzufinden.
- Versuchen Sie, das Kommando 
-\family typewriter
-xmodmap -v -pm
-\family default
- auszuführen.
- Das zeigt Ihnen alle aktiven Sondertasten.
- Versuchen Sie auch 
-\family typewriter
-xmodmap -v -pke | more
-\family default
-, um zu sehen, welche Nummern zu welchen symbolischen Namen gehören.
- So sehen Sie auch die Syntax der 
-\family typewriter
-.Xmodmap
-\family default
--Datei.
-\end_layout
-
-\begin_layout Standard
-Eine Sache müssen Sie noch prüfen: 
-\family sans
-Entf
-\family default
- und 
-\family sans
-Rückschritt (
-\begin_inset Formula $\leftarrow$
-\end_inset
-
-)
-\family default
- sollten 
-\emph on
-nicht
-\emph default
- dieselbe Bedeutung haben! Eindeutige Namen für diese beiden Tasten ändern
- das Verhalten Ihrer Programme nicht unbedingt.
- Einige Programme binden 
-\family sans
-Entf
-\family default
- und 
-\family sans
-Rückschritt
-\family default
- an dieselbe Operation (zum Beispiel Emacs), aber wenn 
-\family sans
-Entf
-\family default
- und 
-\family sans
-Rückschritt
-\family default
- dasselbe tun, werden Sie Probleme mit LyX bekommen.
-\end_layout
-
-\begin_layout Section
-Tastaturkürzel
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Tastaturkürzel"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Tastaturkürzel dienen dazu, einer Taste oder Tastenkombination eine LyX
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"=
-\end_layout
-
-\end_inset
-
-Funktion zuzuordnen.
- Die LyX-Distribution umfasst einige Dateien mit unterschiedlichen Tastaturzuord
-nungen: CUA, die typische Belegung auf PC und CDE, eine Emacs-Version sowie
- einige spezialisierte Versionen (broadway, hollywood) und an andere Sprachen
- (Deutsch, Französisch) angepasste Tastenbelegungen.
- 
-\end_layout
-
-\begin_layout Standard
-Wenn Sie stattdessen Ihre Kürzel lieber selbst definieren wollen, nehmen
- Sie am besten diejenige Systemdatei aus 
-\family typewriter
 Ly
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -2355,77 +1552,17 @@ status collapsed
 
 \end_inset
 
-XDir/bind
+Xconv
 \family default
- als Vorlage, die am ehesten Ihren Vorstellungen entspricht, und modifizieren
- Sie diese entsprechend.
- Vergessen Sie nicht, diese Datei dann im Dialog 
-\family sans
-Einstellungen
-\family default
- auch zu aktivieren.
- (Derzeit ist es noch notwendig, LyX danach neu zu starten um die Änderungen
- wirksam zu machen.)
-\end_layout
-
-\begin_layout Standard
-LyX unterstützt die Internationalisierung der Benutzerschnittstelle (siehe
- Kapitel 
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "cha:Internationales-LyX"
-
-\end_inset
-
-).
- Wenn Ihre Sprachumgebung (
-\emph on
-locale
-\emph default
-) über die Umgebungsvariable 
+, so dass die aus 
 \family typewriter
-$LANG
+Datei.lyx
 \family default
- richtig eingestellt ist, versucht LyX, entsprechende 
+ erzeugte HTML-Datei im Unterverzeichnis 
 \family typewriter
-bind
-\family default
--Dateien zu laden, indem die Zeichenkette 
-\family typewriter
-$LANG_
-\family default
- dem Dateinamen vorangestellt wird (für Deutsch, 
-\family typewriter
-$LANG=de
-\family default
-, also zum Beispiel 
-\family typewriter
-de/menus.bind
-\family default
-).
- Sie können derartige übersetzte Versionen auch in Ihrem privaten 
-\family typewriter
-bind/
-\family default
--Verzeichnis speichern, LyX findet und benutzt sie auch dort.
-\end_layout
-
-\begin_layout Standard
-Die Syntax der Dateien im 
-\family typewriter
-bind
-\family default
--Verzeichnis ist einfach:
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-bind <Tastenkombination> <Ly
-\family typewriter
-
+Datei.html.Ly
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -2434,26 +1571,21 @@ status collapsed
 
 \end_inset
 
-
+Xconv
 \family default
-X_Funktion>
+ landet.
 \end_layout
 
-\begin_layout Standard
-Sowohl die Tastenkombination als auch die LyX-Funktion muss dabei in doppelten
- Anführungszeichen gesetzt werden.
- Eine Liste der LyX-Funktionen finden Sie im 
-\emph on
-Benutzerhandbuch
-\emph default
-.
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
-Die Benutzerschnittstelle
+Konverter
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Die-Benutzerschnittstelle"
+name "Konverter"
 
 \end_inset
 
@@ -2461,1036 +1593,350 @@ name "sec:Die-Benutzerschnittstelle"
 \end_layout
 
 \begin_layout Standard
-Das Aussehen der Menü- und der Werkzeugleiste können ebenfalls im Dialog
- 
-\family sans
-Einstellungen
-\family default
- verändert werden.
- Wählen Sie dazu eine andere Datei für den Eintrag 
-\family sans
-Aussehen\SpecialChar \menuseparator
-Benutzerschnittstelle\SpecialChar \menuseparator
-GUI-Datei:
-\family default
-.
- Im 
-\family typewriter
-ui
-\family default
--Unterverzeichnis von 
-\family typewriter
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-XDir
-\family default
- gibt es mehrere Dateien, von denen 
-\family typewriter
-default.ui
-\family default
- als Standard verwendet wird.
-\end_layout
-
-\begin_layout Standard
-
-\family typewriter
-classic.ui
-\family default
- erzeugt das Aussehen der 1.3.x-Versionen von LyX.
- 
-\family typewriter
-stdmenus.inc
-\family default
- beschreibt das Aussehen der Menüleisten und 
-\family typewriter
-stdtoolbars.inc
-\family default
- das Aussehen der Werkzeugleisten.
- Auch hier ist es derzeit noch nötig, LyX neu zu starten, um Änderungen
- zu aktivieren.
-\end_layout
-
-\begin_layout Standard
-Die Syntax dieser 
-\family typewriter
-.ui
-\family default
--Dateien ist ebenfalls sehr einfach, sie wird in der jeweiligen Datei beschriebe
-n..
- Die Sektionen 
-\family typewriter
-Menubar
-\family default
-, 
-\family typewriter
-Menu
-\family default
- und 
-\family typewriter
-Toolbar
-\family default
- müssen jeweils mit einem expliziten 
-\family typewriter
-End
-\family default
- abgeschlossen werden.
- Sie dürfen die Einträge 
-\family typewriter
-Untermenüs
-\family default
-, 
-\family typewriter
-Items
-\family default
-, 
-\family typewriter
-OptItems
-\family default
-, 
-\family typewriter
-Separators
-\family default
-, 
-\family typewriter
-Icons
-\family default
- und, im Falle des Menüs 
-\family typewriter
-File
-\family default
-, auch 
-\family typewriter
-Lastentry
-\family default
- enthalten.
- Eine kleine Warnung dazu: Ein 
-\family typewriter
-Untermenü
-\family default
- kann in 
-\family typewriter
-Menubar
-\family default
- und 
-\family typewriter
-Menu
-\family default
- eingefügt werden, das entsprechende Menü muss aber als 
-\family typewriter
-Menu
-\family default
- definiert werden, nicht als 
-\family typewriter
-Untermenü
-\family default
-.
-\end_layout
-
-\begin_layout Standard
-Kommen wir jetzt zu 
-\family typewriter
-default.ui
-\family default
-.
- Sie benutzt 
-\family typewriter
-stdtoolbars.inc
-\family default
- und 
-\family typewriter
-stdmenus.inc
-\family default
- und definiert folgende Werkzeugleisten:
-\end_layout
-
-\begin_layout LyX-Code
-"standard" "on,top" 
-\end_layout
-
-\begin_layout LyX-Code
-"extra" "on,top" 
-\end_layout
-
-\begin_layout LyX-Code
-"table" "off,bottom" 
-\end_layout
-
-\begin_layout LyX-Code
-"math" "off,bottom" 
-\end_layout
-
-\begin_layout LyX-Code
-"minibuffer" "off,bottom" 
-\end_layout
-
-\begin_layout Standard
-Interessant sind vor allem "
-\family typewriter
-table
-\family default
-" und "
-\family typewriter
-math
-\family default
-".
- Wenn man diese Zeilen wie folgt ändert:
-\end_layout
-
-\begin_layout LyX-Code
-"table" "table,bottom"
-\end_layout
-
-\begin_layout LyX-Code
-"math" "math,bottom"
-\end_layout
-
-\begin_layout Standard
-dann erhält am unteren Fensterrand einige Einstellmöglichkeiten von Tabelle
- und Mathed in Form von Schaltern, wenn der Cursor sich in einer Tabelle
- oder einer mathematischen Formel befindet.
- Das erleichtert auf jeden Fall das Arbeiten mit Tabellen.
-\end_layout
-
-\begin_layout Standard
-Damit die neuen Einstellungen wirksam werden, müssen Sie 
-\family typewriter
-default.ui
-\family default
- entweder an Ort und Stelle als 
-\family typewriter
-su
-\family default
- editieren oder in ein lokales Verzeichnis innerhalb Ihres 
-\emph on
-Benutzerverzeichnisses
-\emph default
- kopieren, sie dort ändern und LyX in 
-\family sans
-Aussehen\SpecialChar \menuseparator
-Benutzerschnittstelle\SpecialChar \menuseparator
-GUI-Datei:
-\family default
- mitteilen, welche Datei Sie benutzen wollen.
-\end_layout
-
-\begin_layout Section
-Konverter, Formate und Druckvorschau
-\end_layout
-
-\begin_layout Standard
-LyX besitzt einen mächtigen Mechanismus, um mittels externer Programme zwischen
- beliebigen Dateiformaten zu konvertieren.
- Geben Sie ein Paar von Formaten an, zum Beispiel 
-\family typewriter
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X
-\family default
- und 
-\family typewriter
-PDF
-\family default
-, dann geben Sie ein Programm an, das vom einen in das andere Format konvertiere
-n kann.
- Für unser Beispiel kommen zwei Wege in Frage:
-\end_layout
-
-\begin_layout Enumerate
-Eine direkte Konvertierung von LaTeX in PDF mittels 
-\family typewriter
-pdflatex.
-\end_layout
-
-\begin_layout Enumerate
-Eine stufenweise Konvertierung über Zwischenformate: LaTeX in DVI (mit 
-\family typewriter
-latex
-\family default
-) in Post\SpecialChar \-
-Script® (mit 
-\family typewriter
-dvips
-\family default
-) in PDF (mit 
-\family typewriter
-ps2pdf
-\family default
-).
-\end_layout
-
-\begin_layout Standard
-LyX wird immer den kürzesten Weg wählen, deswegen müssen Sie unterschiedliche
- Formatnamen für 
-\family typewriter
-.pdf
-\family default
--Dateien angeben, wenn Sie beide Wege verwenden wollen.
- Beide sind im entsprechenden Dialog in 
-\family sans
-Einstellungen
-\family default
- enthalten.
- Sehen Sie sie sich an und definieren Sie sich eigene\SpecialChar \ldots{}
-
-\end_layout
-
-\begin_layout Standard
-Darüberhinaus kann jedem Dateiformat ein Betrachtungsprogramm zugeordnet
- werden, etwa 
-\family typewriter
-gv
-\family default
-, um Post\SpecialChar \-
-Script®-Dateien anzuzeigen, 
-\family typewriter
-xdvi
-\family default
- oder 
-\family typewriter
-kdvi
-\family default
- für DVI-Dateien usw\SpecialChar \@.
- Im Dialog in 
+Sie können eigene Konverter in 
 \family sans
 Werkzeuge\SpecialChar \menuseparator
-E
-\family default
-i
-\family sans
-nstellungen\SpecialChar \menuseparator
-Datei\SpecialChar \-
-for\SpecialChar \-
-ma\SpecialChar \-
-te\SpecialChar \menuseparator
-Betrachter:
-\family default
- können Sie diese Programme sowie etwaige Optionen festlegen.
-\end_layout
-
-\begin_layout Section
-Optionen für den ASCII-Export
-\end_layout
-
-\begin_layout Standard
-Eine ganze Reihe von Befehlen dient dazu, die Ausgabe und Formatierung im
- ASCII-Format zu verbessern.
- LyX versucht bei der Installation, die besten Einstellungen für Ihr System
- zu finden, Sie können dies aber in 
-\family sans
-Werkzeuge\SpecialChar \menuseparator
-E
-\family default
-i
-\family sans
-n\SpecialChar \-
+Ein\SpecialChar \-
 stel\SpecialChar \-
 lun\SpecialChar \-
 gen\SpecialChar \menuseparator
-Ausgaben\SpecialChar \menuseparator
-Einfacher Text
+Datei-Handhabung\SpecialChar \menuseparator
+Kon\SpecialChar \-
+verter
 \family default
- jederzeit ändern, wenn Sie mit den Vorgaben nicht einverstanden sind.
-\end_layout
-
-\begin_layout Description
-
+ definieren.
+ Dazu wählen aus 
 \family sans
-\series medium
-groff-Befehl
-\family default
-\series default
- Damit legen Sie den Befehl fest, mit dem (durch die Unixprogramme 
-\family typewriter
-groff
-\family default
-, 
-\family typewriter
-troff
-\family default
- oder 
-\family typewriter
-nroff
-\family default
-, siehe die jeweiligen Manpages) die Formatierung von ASCII-Tabellen durchgeführ
-t wird.
- Ist er nicht festgelegt, verwendet LyX den internen, schlechteren Formatierer.
-\end_layout
-
-\begin_layout Description
-
-\family sans
-\series medium
-Ausgabe
-\begin_inset space ~
+Von
+\begin_inset space \space{}
 \end_inset
 
-Zeilenlänge
-\family default
-\series default
- Dieser Befehl legt die maximale Zeilenlänge in der Ausgabedatei fest.
- Ein Wert von 
-\begin_inset Quotes gld
-\end_inset
-
-0
-\begin_inset Quotes grd
-\end_inset
-
- bedeutet keine Grenze.
-\end_layout
-
-\begin_layout Section
-Drucker
-\end_layout
-
-\begin_layout Standard
-In 
-\family sans
-Werkzeuge\SpecialChar \menuseparator
-E
-\family default
-i
-\family sans
-nstellungen\SpecialChar \menuseparator
-Ausgaben\SpecialChar \menuseparator
-Drucker
-\family default
- haben Sie die Möglichkeit, die Zusammenarbeit von LyX mit dem (externen)
- Druckbefehl genau zu steuern.
- Jedoch sollten die Standardeinstellungen normalerweise korrekt sein.
- Wenn jedoch Ihr lokaler Druckbefehl andere Optionen benötigt, können Sie
- das hier festlegen.
-\end_layout
-
-\begin_layout Section
-Bildschirmfarben
-\end_layout
-
-\begin_layout Standard
-In 
-\family sans
-Werkzeuge\SpecialChar \menuseparator
-E
-\family default
-i
-\family sans
-nstellungen\SpecialChar \menuseparator
-Aussehen\SpecialChar \menuseparator
-Farben
-\family default
- können Sie interaktiv festlegen, mit welchen Farben die diversen Strukturen
- am Bildschirm dargestellt werden.
- Hier eine Auswahl der wichtigeren Funktionen und ihrer Standardfarben:
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="11" columns="3">
-<features>
-<column alignment="left" valignment="top" width="0pt">
-<column alignment="left" valignment="top" width="0pt">
-<column alignment="left" valignment="top" width="40mm">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family sans
-\series bold
-LyX-Name
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family sans
-\series bold
-Zweck
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family sans
-\series bold
-Standardfarbe (RGB-Wert)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Cursor
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Textcursor
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-schwarz (0,0,0)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Hintergrund
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Texthintergrund
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-leinen (250,240,230)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Text
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Textvordergrund
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-schwarz (0,0,0)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-LaTeX-Text
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-LaTeX-Text
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-dunkelrot (139,0,0)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Mathe
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Mathematische Formeln
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-dunkelblau (0,0,139)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Mathe (Strich)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Bruchstriche, Klammern usw.
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-blau (0,0,255)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Mathe (Hintergrund)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Hintergrund für Formeln
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-leinen (250,240,230)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Mathe (Rahmen)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-purpurrot (255,0,255)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Mathe (Cursor)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-schwarz (0,0,0)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Auswahl
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Auswahlhintergrund
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-hellblau (173,216,230)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\end_layout
-
-\begin_layout Section
-Automatische Einstellungen
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Automatische-Einstellungen"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Einige Einstellungen werden von LyX selbständig ermittelt, wenn Sie den
- Menüpunkt 
-\family sans
-Werkzeuge\SpecialChar \menuseparator
-Neu
-\begin_inset space ~
-\end_inset
-
-konfigu\SpecialChar \-
-rie\SpecialChar \-
-ren
-\family default
- wählen.
- Im vorliegenden Abschnitt zählen wir diejenigen Einstellungen auf, die
- die Benutzerkonfiguration betreffen.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-
-\backslash
-latex_command
-\family default
-\series default
- enthält den Namen eines gültigen LaTeX2e-Prozessors (automatisch getestet
- werden 
-\family typewriter
-latex
+Format
 \family default
  und 
+\family sans
+In
+\begin_inset space \space{}
+\end_inset
+
+Format
+\family default
+ jeweils eins aus, schreiben den benötigten Befehl ins Feld 
+\family sans
+Konverter
+\family default
+ und klicken auf 
+\family sans
+Hinzufügen
+\family default
+ rechts oben.
+ Sie können im Befehl mehrere Variablen benutzen:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
 \family typewriter
-latex2e
+$$s
+\family default
+ ist das Systemverzeichnis von LyX (zum Beispiel 
+\family typewriter
+/usr/local/bin/
+\begin_inset Newline linebreak
+\end_inset
+
+lyx
 \family default
 ).
 \end_layout
 
-\begin_layout Description
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \family typewriter
-\series medium
-
-\backslash
-ps_command
+$$i
 \family default
-\series default
- ist auf 
-\family typewriter
-gs
-\family default
- gesetzt, wenn Sie Ghostscript installiert haben.
+ ist die Eingabedatei.
 \end_layout
 
-\begin_layout Description
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \family typewriter
-\series medium
-
-\backslash
-view_ps_command
+$$o
 \family default
-\series default
- wird auf 
-\family typewriter
-gv
-\family default
- gesetzt, wenn Sie die entsprechenden Programme installiert haben (
-\family typewriter
-
-\backslash
-view_pspic_command
-\family default
- wird auf dasselbe Programm gesetzt).
+ ist die Ausgabedatei.
 \end_layout
 
-\begin_layout Description
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \family typewriter
-\series medium
-
-\backslash
-plaintext_roff_command
+$$b
 \family default
-\series default
- verwendet entweder 
+ ist der Dateiname ohne Erweiterung (siehe Linux-Befehl 
 \family typewriter
-groff
+basename
 \family default
- oder 
-\family typewriter
-nroff
-\family default
-+
-\family typewriter
-tbl
-\family default
-, je nachdem, was vorhanden ist.
+).
 \end_layout
 
-\begin_layout Description
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \family typewriter
-\series medium
-
-\backslash
-chktex_command
+$$p
 \family default
-\series default
- wird auf 
-\family typewriter
-chktex
-\family default
- plus einiger Optionen gesetzt (falls vorhanden).
+ ist der Pfad zur Eingabedatei.
 \end_layout
 
-\begin_layout Description
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \family typewriter
-\series medium
-
-\backslash
-fax_command
+$$r
 \family default
-\series default
- wird auf 
+ ist der Pfad zur ursprünglichen Eingabedatei.
+ Wenn eine Kette von Konvertern aufgerufen wird, weicht er von 
 \family typewriter
-fax
-\begin_inset space ~
-\end_inset
-
-send
+$$p
 \family default
- oder 
-\family typewriter
-sendfax
-\family default
- gesetzt, je nachdem, welches Fax-Paket gefunden wurde.
- Benötigte Kommandooptionen werden ebenfalls mit angegeben.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-
-\backslash
-print_spool_command
-\family default
-\series default
- wird für System-V-Systeme auf 
-\family typewriter
-lp
-\family default
- und für BSD-Systeme auf 
-\family typewriter
-lpr
-\family default
- eingestellt.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-
-\backslash
-print_spool_printerprefix
-\family default
-\series default
- wird auf 
-\family typewriter
--d
-\family default
- oder 
-\family typewriter
--P
-\family default
- gesetzt, je nachdem, ob 
-\family typewriter
-lp
-\family default
- oder 
-\family typewriter
-lpr
-\family default
- gefunden wurden.
-\end_layout
-
-\begin_layout Description
-
-\family typewriter
-\series medium
-
-\backslash
-font_encoding
-\family default
-\series default
- Falls die 
-\family typewriter
-\series bold
-ec-Z
-\family default
-\series default
-eichensätze gefunden und von LaTeX unterstützt werden, wird dies auf 
-\family typewriter
-T1
-\family default
- gesetzt.
- Haben Sie nur die 
-\family typewriter
-dc-Z
-\family default
-eichensätze, können Sie die Option von Hand aktivieren.
-\end_layout
-
-\begin_layout Section
-Weitere Befehle
+ ab.
 \end_layout
 
 \begin_layout Standard
-Es gibt noch eine große Zahl an weiteren Konfigurationsmöglichkeiten, die
- hier nicht erwähnt wurden.
- Leider ist die Dokumentation noch nicht vollständig.
- Aber die meisten davon sind zum Glück selbsterklärend.
- Eine weitere mögliche Quelle von Informationen ist das 
+Ins Feld Zusatz-Flag können Sie folgende, durch Kommata getrennte, Flags
+ schrei\SpecialChar \-
+ben:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family typewriter
+latex
+\family default
+ Damit ein besonderer LaTeX-Lauf gestartet, der die LaTeX-Fehlermel\SpecialChar \-
+dun\SpecialChar \-
+gen
+ von LyX verfügbar macht.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family typewriter
+needaux
+\family default
+ benötigt die LaTeX-Datei 
+\family typewriter
+xyz.aux
+\family default
+ zur Konvertierung.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family typewriter
+xml
+\family default
+ Damit wird die Ausgabe im XML-Format gespeichert.
+\end_layout
+
+\begin_layout Standard
+Die folgenden Flags sind keine richtigen, weil sie ein Argument der Form
+ 
+\family typewriter
+key=value
+\family default
+ benutzen:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family typewriter
+parselog
+\family default
+ Wenn das gesetzt ist, wird der Standardfehler des Konverters in die Datei
+ 
+\family typewriter
+infile.out
+\family default
+ umgeleitet, und das Skript wird so ausgeführt: 
+\family typewriter
+script
+\begin_inset space \space{}
+\end_inset
+
+<
+\begin_inset space \space{}
+\end_inset
+
+infile.out
+\begin_inset space \space{}
+\end_inset
+
+>
+\begin_inset space \space{}
+\end_inset
+
+infile.log
+\family default
+.
+ Das Argument kann 
+\family typewriter
+$$s
+\family default
+ ent\SpecialChar \-
+halten.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family typewriter
+resultdir
+\family default
+ ist der Name des Verzeichnisses, in dem der Konverter die erzeugten Dateien
+ ablegen soll.
+ LyX wird das Verzeichnis nicht anlegen und auch nichts hineinkopieren,
+ aber dieses Verzeichnis an seinen Bestimmungs\SpecialChar \-
+ort kopieren.
+ Das Argument darf 
+\family typewriter
+$$b
+\family default
+ enthalten, was durch die Basisnamen von Ein- oder Ausgabedatei ersetzt
+ wird, wenn das Verzeichnis kopiert wird.
+\begin_inset Newline newline
+\end_inset
+
+Beachten Sie, das 
+\family typewriter
+resultdir
+\family default
+ und 
+\family typewriter
+usetempdir
+\family default
+ zusammen keinen Sinn machen.
+ Wenn das erste definiert wurde, wird das zweite ignoriert.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family typewriter
+resultfile
+\family default
+ ist der Name der Ausgabedatei und darf 
+\family typewriter
+$$b
+\family default
+ enthalten.
+ Er wird nur zusammen mit 
+\family typewriter
+resultdir
+\family default
+ benutzt und ist auch da nur optional.
+ Wenn er nicht angegeben wird, wird 
+\family typewriter
+index
+\family default
+ benutzt.
+\end_layout
+
+\begin_layout Standard
+Keines dieser Flags wird zur Zeit in einem Konverter benutzt, der zusammen
+ mit LyX installiert wird.
+\end_layout
+
+\begin_layout Standard
+Sie müssen nicht für alle Formate, zwischen denen Sie konvertieren wollen,
+ Konverter definieren.
+ Zum Beispiel gibt es keinen Konverter von LyX nach PostScript, aber LyX
+ wird PostScript exportieren.
+ Dies geschieht, indem zunächst eine LaTeX-Datei erzeugt wird -- dafür wird
+ auch kein Konverter benötigt --, die dann mit dem Konverter von LyX nach
+ DVI in eine DVI-Datei konvertiert wird, die schließlich nach PostScript
+ konvertiert wird.
+ LyX findet solche Konverter-Ketten automatisch und wird immer die kürzeste
+ finden.
+\end_layout
+
+\begin_layout Standard
+Trotzdem können Sie Mehrfachkonversionen zwischen Dateiformaten definieren.
+ Zum Beispiel liefert die Standardkonfiguration von LyX drei Möglichkeiten,
+ um von LaTeX nach PDF zu konvertieren:
+\end_layout
+
+\begin_layout Enumerate
+direkt mit 
+\family typewriter
+pdflatex
+\end_layout
+
+\begin_layout Enumerate
+mit 
+\family typewriter
+ps2pdf
+\family default
+ über DVI und PostScript
+\end_layout
+
+\begin_layout Enumerate
+mit 
+\family typewriter
+dvipdfm
+\family default
+ über DVI.
+\end_layout
+
+\begin_layout Standard
+Um andere Ketten zu definieren, müssen Sie andere Ziel-
 \emph on
-Referenzhandbuch
+Dateiformate
 \emph default
-, jedoch ist auch dieses nicht immer auf dem allerneuesten Stand.
+ definieren, wie in Abschnitt
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand vref
+reference "Formate"
+
+\end_inset
+
+ beschrieben.
+ Zum Beispiel enthält die Standardkonfiguration drei Formate für pdf-Dateien,
+ die 
+\family sans
+pdf
+\family default
+ für 
+\family typewriter
+ps2pdf
+\family default
+, 
+\family sans
+pdf2
+\family default
+ für 
+\family typewriter
+pdflatex
+\family default
+ und 
+\family sans
+pdf3
+\family default
+ für 
+\family typewriter
+dvipdfm
+\family default
+ heißen.
 \end_layout
 
 \begin_layout Chapter
@@ -4011,7 +2457,9 @@ scgen.pl
 \family default
 , das sich im Quellverzeichnis in 
 \family typewriter
-LYX-SOURCE-DIR/development/tools/
+LYX\SpecialChar \-
+SOURCE\SpecialChar \-
+DIR/development/tools/
 \family default
  befindet.
  Vielleicht hilft es Ihnen bei der Bestimmung der Tastenkürzel.
@@ -5060,8 +3508,8 @@ Der folgende Ausdruck definiert, dass die Taste
 \begin_inset Quotes grd
 \end_inset
 
- als circumflex-Akzent definiert wird, wenn er von einem der Buchstaben
- a, e, i, o, u, A, E, I ,O oder U gefolgt wird:
+ der circumflex-Akzent wird, wenn er von einem der Buchstaben a, e, i, o,
+ u, A, E, I ,O oder U gefolgt wird:
 \end_layout
 
 \begin_layout LyX-Code
@@ -5093,7 +3541,8 @@ Dieser Ausdruck definiert eine Ausnahme für die Wirkung, die
 \emph on
 Akzent
 \emph default
- in Verbindung mit 
+ in Verbin\SpecialChar \-
+dung mit 
 \emph on
 Zeichen
 \emph default
@@ -5189,9 +3638,10 @@ Akzent2
 \emph default
  (in dieser Reihenfolge!) bei allen 
 \emph on
-erlaubt
+erlaubten
 \emph default
--en Zeichen.
+ Zei\SpecialChar \-
+chen.
  Die Bedeutungen von 
 \emph on
 Akzent1
@@ -5280,7 +3730,8 @@ status collapsed
 \end_inset
 
 ).
- In diesem Fall löscht die Backspace-Taste das letzte gedrückte Zeichen.
+ In diesem Fall löscht die Backspace-Taste das letzte gedrückte Zei\SpecialChar \-
+chen.
  Wenn Sie also 
 \family typewriter
 ;:
@@ -5405,7 +3856,10 @@ Ausgabe
 \begin_inset Quotes grd
 \end_inset
 
- das entsprechende Zeichen im ISO-8859-1 Zeichensatz (233) zuzuweisen, benutzt
+ das ent\SpecialChar \-
+spre\SpecialChar \-
+chen\SpecialChar \-
+de Zeichen im ISO-8859-1 Zeichensatz (233) zuzuweisen, benutzt
  man folgenden Ausdruck:
 \end_layout
 
@@ -5520,18 +3974,6 @@ Tasten (dead keys)
 .bind
 \family default
 -Datei.
- (Genaueres finden Sie in Abschnitt
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand vref
-reference "sec:Tastaturkürzel"
-
-\end_inset
-
-.
  Dazu ein einfaches Beispiel:
 \end_layout
 
@@ -5727,8 +4169,11 @@ Eine
 \emph on
 Layout-Datei
 \emph default
- ist eine LyX-Datei, die einer LaTeX-Dokumentenklasse entspricht und LyX
- mitteilt, wie die diversen Formatelemente am Bildschirm dargestellt werden
+ ist eine LyX-Datei, die einer LaTeX-Dokumentenklasse ent\SpecialChar \-
+spricht und LyX
+ mitteilt, wie die diversen Formatelemente am Bildschirm dar\SpecialChar \-
+ge\SpecialChar \-
+stellt werden
  sollen, damit der Eindruck möglichst gut dem späteren Druckbild entspricht.
  Genauer gesagt beschreibt eine Layoutdatei eine 
 \emph on
@@ -6819,7 +5264,11 @@ article
  benutzt, in der Sie aber das Aussehen der Kopfzeile verändert haben.
  Wenn Sie dann Ihre Textklasse in eine Datei namens 
 \family typewriter
-myarticle.layout
+myarticle.
+\begin_inset Newline linebreak
+\end_inset
+
+layout
 \family default
  schreiben, sollten die ersten beiden Zeilen der Datei etwa so aussehen:
 \end_layout
@@ -7449,7 +5898,9 @@ Mit diesem Befehl können Sie die Definition eines bereits mit
 \family typewriter
 Style 
 \family default
-definierten Layouts rückgängig ma\SpecialChar \-
+defi\SpecialChar \-
+nier\SpecialChar \-
+ten Layouts rückgängig ma\SpecialChar \-
 chen.
  Dies ist dann nützlich, wenn Sie ein Layout unterdrücken möchten, das in
  einer Datei definiert wird, die Sie mit 
@@ -7921,7 +6372,8 @@ InTitle
 TitleLatexName
 \family default
 \series default
--Umgebung eingeschlos\SpecialChar \-
+-Umgebung einge\SpecialChar \-
+schlos\SpecialChar \-
 sen werden soll.
 \end_layout
 
@@ -10407,7 +8859,8 @@ Extension
 \begin_inset Newline newline
 \end_inset
 
-Die Dateinamenerweiterung einer zusätzlichen Datei für das Abbildungsverzeichnis
+Die Dateinamenerweiterung einer zusätzlichen Datei für das Abbildungsver\SpecialChar \-
+zeichnis
  (oder andere).
  LaTeX schreibt die Beschriftungen in diese Datei.
 \end_layout
@@ -12119,7 +10572,10 @@ Neu
 \family default
  anlegen, damit dieses vernünftige Standardeinstellungen hat.
  Um diese Vorlage zu erstellen, müssen Sie lediglich ein Dokument mit den
- von Ihnen bevorzugten Einstellungen öffnen und dann im Dialog 
+ von Ihnen be\SpecialChar \-
+vor\SpecialChar \-
+zug\SpecialChar \-
+ten Einstellungen öffnen und dann im Dialog 
 \family sans
 Dokument\SpecialChar \menuseparator
 Einstellungen

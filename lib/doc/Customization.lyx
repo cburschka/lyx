@@ -696,7 +696,7 @@ kbd/
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:keymap"
+reference "sec:International-Keymap-Stuff"
 
 \end_inset
 
@@ -1334,7 +1334,7 @@ Format
 
 \end_inset
 
- field contains the named used to identify the format in the GUI.
+ field contains the name used to identify the format in the GUI.
  The 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
@@ -1394,7 +1394,7 @@ Viewer
 
 \end_inset
 
- and 
+ and an 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
@@ -1476,7 +1476,7 @@ Document format
 \end_inset
 
  option tells LyX that a format is suitable for document export.
- If this is is set and if a suitable conversion route exists (see sec.
+ If this is set and if a suitable conversion route exists (see sec.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -1808,7 +1808,7 @@ cp $FROMFILE /home/you/pdf/$TOFILE
 
 \end_inset
 
-Save that in your local LyX directory—say, 
+Save it in your local LyX directory—say, 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -2137,8 +2137,8 @@ $$r
 
 \end_inset
 
- The path to the original input file (this is different from $$p when chain
- of converters is called).
+ The path to the original input file (this is different from $$p when a
+ chain of converters is called).
 \end_layout
 
 \begin_layout Standard
@@ -2261,7 +2261,7 @@ infile.out
 status collapsed
 
 \begin_layout Plain Layout
-script <infile.out >infile.log
+script < infile.out > infile.log
 \end_layout
 
 \end_inset
@@ -2347,8 +2347,8 @@ None of these last three are presently used in any of the converters that
 \end_layout
 
 \begin_layout Standard
-You do not have to define converters between all the formats between which
- you want to convert.
+You do not have to define converters for all formats between which you want
+ to convert.
  For example, you will note that there is no `LyX to PostScript' converter,
  but LyX will export PostScript.
  It does so by first creating a LaTeX file (no converter needs to be defined
@@ -3665,13 +3665,14 @@ kinclude
 \end_layout
 
 \begin_layout Section
+International Keymap Stuff
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:keymap"
+name "sec:International-Keymap-Stuff"
 
 \end_inset
 
-International Keymap Stuff
+
 \end_layout
 
 \begin_layout Standard
@@ -15555,13 +15556,14 @@ status collapsed
 \end_layout
 
 \begin_layout Section
+Security discussion
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Security-discussion"
 
 \end_inset
 
-Security discussion
+
 \end_layout
 
 \begin_layout Standard
