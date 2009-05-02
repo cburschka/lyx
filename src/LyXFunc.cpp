@@ -1086,7 +1086,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				// in tmpdir, call the apropriated function.
 				// If tmpdir is a symlink, we may have the real
 				// path passed back, so we correct for that.
-				if (prefixIs(file_name, realtmp))
+				if (!prefixIs(file_name, abstmp))
 					file_name = subst(file_name, realtmp, abstmp);
 				buf = theBufferList().getBufferFromTmp(file_name);
 			} else {
