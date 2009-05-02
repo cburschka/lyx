@@ -130,7 +130,7 @@ string const doSubstitution(InsetExternalParams const & params,
 				    relToParentPath, use_latex_path,
 				    PROTECT_EXTENSION,
 				    ESCAPE_DOTS);
-		if (FileName(filename).isAbsolute()) {
+		if (FileName::isAbsolute(filename)) {
 			result = subst_path(result, "$$AbsOrRelPathMaster",
 					    abspath, use_latex_path,
 					    PROTECT_EXTENSION,

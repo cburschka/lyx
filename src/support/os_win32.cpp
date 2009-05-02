@@ -252,8 +252,7 @@ string latex_path(string const & p)
 	// on windows_style_tex_paths_), but we use always forward slashes,
 	// since it gets written into a .tex file.
 
-	FileName path(p);
-	if (!windows_style_tex_paths_ && path.isAbsolute()) {
+	if (!windows_style_tex_paths_ && FileName::isAbsolute(p)) {
 		string const drive = p.substr(0, 2);
 		string const cygprefix = cygdrive + "/" + drive.substr(0, 1);
 		string const cygpath = subst(subst(p, '\\', '/'), drive, cygprefix);

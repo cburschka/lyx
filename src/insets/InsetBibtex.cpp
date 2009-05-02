@@ -219,7 +219,7 @@ static string normalizeName(Buffer const & buffer,
 	OutputParams const & runparams, string const & name, string const & ext)
 {
 	string const fname = makeAbsPath(name, buffer.filePath()).absFilename();
-	if (FileName(name).isAbsolute() || !FileName(fname + ext).isReadableFile())
+	if (FileName::isAbsolute(name) || !FileName(fname + ext).isReadableFile())
 		return name;
 	if (!runparams.nice)
 		return fname;
@@ -408,8 +408,7 @@ support::FileNameList InsetBibtex::getBibFiles() const
 	vector<docstring>::const_iterator it = bibfilelist.begin();
 	vector<docstring>::const_iterator en = bibfilelist.end();
 	for (; it != en; ++it) {
-		FileName const file = 
-			findtexfile(changeExtension(to_utf8(*it), "bib"), "bib");
+		FileName const file = getBibTeXPath(*it, buffer());
 
 		if (!file.empty())
 			vec.push_back(file);

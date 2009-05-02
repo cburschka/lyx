@@ -375,10 +375,9 @@ string const onlyPath(string const & filename)
 // FIXME It might be nice if the code didn't simply assume that.
 FileName const makeAbsPath(string const & relPath, string const & basePath)
 {
-	FileName relative_path(relPath);
 	// checks for already absolute path
-	if (relative_path.isAbsolute())
-		return relative_path;
+	if (FileName::isAbsolute(relPath))
+		return FileName(relPath);
 
 	// Copies given paths
 	string tempRel = os::internal_path(relPath);
@@ -387,8 +386,7 @@ FileName const makeAbsPath(string const & relPath, string const & basePath)
 
 	string tempBase;
 
-	FileName base_path(basePath);
-	if (base_path.isAbsolute())
+	if (FileName::isAbsolute(basePath))
 		tempBase = basePath;
 	else
 		tempBase = addPath(FileName::getcwd().absFilename(), basePath);
@@ -488,8 +486,7 @@ string const expandPath(string const & path)
 {
 	// checks for already absolute path
 	string rTemp = replaceEnvironmentPath(path);
-	FileName abs_path(rTemp);
-	if (abs_path.isAbsolute())
+	if (FileName::isAbsolute(rTemp))
 		return rTemp;
 
 	string temp;
