@@ -1210,6 +1210,7 @@ TabWorkArea::TabWorkArea(QWidget * parent)
 	QObject::connect(this, SIGNAL(currentChanged(int)),
 		this, SLOT(on_currentTabChanged(int)));
 
+#if QT_VERSION < 0x040500
 	closeBufferButton = new QToolButton(this);
 	closeBufferButton->setPalette(pal);
 	// FIXME: rename the icon to closebuffer.png
@@ -1222,6 +1223,7 @@ TabWorkArea::TabWorkArea(QWidget * parent)
 	QObject::connect(closeBufferButton, SIGNAL(clicked()),
 		this, SLOT(closeCurrentBuffer()));
 	setCornerWidget(closeBufferButton, Qt::TopRightCorner);
+#endif
 
 	// setup drag'n'drop
 	QTabBar* tb = new DragTabBar;
@@ -1234,6 +1236,10 @@ TabWorkArea::TabWorkArea(QWidget * parent)
 	tb->setContextMenuPolicy(Qt::CustomContextMenu);
 	connect(tb, SIGNAL(customContextMenuRequested(const QPoint &)),
 		this, SLOT(showContextMenu(const QPoint &)));
+#if QT_VERSION >= 0x040500
+	connect(tb, SIGNAL(tabCloseRequested(int)),
+		tb, SLOT(on_tabCloseRequested(int)));
+#endif
 
 	setUsesScrollButtons(true);
 }
@@ -1255,7 +1261,9 @@ void TabWorkArea::showBar(bool show)
 {
 	tabBar()->setEnabled(show);
 	tabBar()->setVisible(show);
+#if QT_VERSION < 0x040500
 	closeBufferButton->setVisible(show);	
+#endif
 }
 
 
@@ -1642,6 +1650,16 @@ DragTabBar::DragTabBar(QWidget* parent)
 	: QTabBar(parent)
 {
 	setAcceptDrops(true);
+#if QT_VERSION >= 0x040500
+	setTabsClosable(true);
+#endif
+}
+
+
+void DragTabBar::on_tabCloseRequested(int index)
+{
+	setCurrentIndex(index);
+	lyx::dispatch(FuncRequest(LFUN_BUFFER_CLOSE));
 }
 
 

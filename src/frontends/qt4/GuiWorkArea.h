@@ -285,8 +285,10 @@ private Q_SLOTS:
 private:
 	///
 	int clicked_tab_;
+#if QT_VERSION < 0x040500
 	///
 	QToolButton * closeBufferButton;
+#endif
 }; // TabWorkArea
 
 
@@ -321,6 +323,10 @@ private:
 Q_SIGNALS:
 	///
 	void tabMoveRequested(int fromIndex, int toIndex);
+
+private Q_SLOTS:
+	///
+	void on_tabCloseRequested(int index);
 };
 
 } // namespace frontend
