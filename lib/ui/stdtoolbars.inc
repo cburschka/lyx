@@ -213,16 +213,28 @@ ToolbarSet
 	End
 	
 	Toolbar "view-others" "View Other Formats"
-		Item "View DVI" "buffer-view dvi"
-		Item "View PDF (pdflatex)" "buffer-view pdf2"
-		Item "View PostScript" "buffer-view ps"
+		ViewFormats
 	End
 	
 	Toolbar "update-others" "Update Other Formats"
-		Item "Update DVI" "buffer-update dvi"
-		Item "Update PDF (pdflatex)" "buffer-update pdf2"
-		Item "Update PostScript" "buffer-update ps"
+		UpdateFormats
 	End
+
+# The following three toolbars are disabled because of missing icons.
+#	Toolbar "import/export" "Import/Export"
+#		Item "Import" "buffer-import"
+#		Item "Export" "buffer-export"
+#		StickyPopupMenu "import-others" "Import Other Formats"
+#		StickyPopupMenu "export-others" "Export Other Formats"
+#	End
+
+#	Toolbar "import-others" "Import Other Formats"
+#		ImportFormats
+#	End
+
+#	Toolbar "export-others" "Export Other Formats"
+#		ExportFormats
+#	End
 
 	Toolbar "vcs" "Version Control"
 		Item "Register" "vc-register"

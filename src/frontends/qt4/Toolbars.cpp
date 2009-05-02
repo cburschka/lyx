@@ -12,6 +12,8 @@
 #include <config.h>
 
 #include "Toolbars.h"
+#include "Converter.h"
+#include "Format.h"
 #include "FuncRequest.h"
 #include "Lexer.h"
 #include "LyXAction.h"
@@ -30,10 +32,6 @@ using namespace lyx::support;
 
 namespace lyx {
 namespace frontend {
-
-namespace {
-
-} // namespace anon
 
 
 /////////////////////////////////////////////////////////////////////////
@@ -73,18 +71,26 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 		TO_POPUPMENU,
 		TO_STICKYPOPUPMENU,
 		TO_ICONPALETTE,
+		TO_EXPORTFORMATS,
+		TO_IMPORTFORMATS,
+		TO_UPDATEFORMATS,
+		TO_VIEWFORMATS,
 	};
 
 	struct LexerKeyword toolTags[] = {
 		{ "end", TO_ENDTOOLBAR },
+		{ "exportformats", TO_EXPORTFORMATS },
 		{ "iconpalette", TO_ICONPALETTE },
+		{ "importformats", TO_IMPORTFORMATS },
 		{ "item", TO_COMMAND },
 		{ "layouts", TO_LAYOUTS },
 		{ "minibuffer", TO_MINIBUFFER },
 		{ "popupmenu", TO_POPUPMENU },
 		{ "separator", TO_SEPARATOR },
 		{ "stickypopupmenu", TO_STICKYPOPUPMENU },
-		{ "tableinsert", TO_TABLEINSERT }
+		{ "tableinsert", TO_TABLEINSERT },
+		{ "updateformats", TO_UPDATEFORMATS },
+		{ "viewformats", TO_VIEWFORMATS },
 	};
 
 	//consistency check
@@ -114,7 +120,8 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 		lex.printTable(lyxerr);
 
 	while (lex.isOK() && !quit) {
-		switch (lex.lex()) {
+		int const code = lex.lex();
+		switch (code) {
 		case TO_COMMAND:
 			if (lex.next(true)) {
 				docstring const tooltip = translateIfPossible(lex.getDocString());
@@ -182,6 +189,53 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 		case TO_ENDTOOLBAR:
 			quit = true;
 			break;
+
+		case TO_EXPORTFORMATS:
+		case TO_IMPORTFORMATS:
+		case TO_UPDATEFORMATS:
+		case TO_VIEWFORMATS: {
+			vector<Format const *> formats = (code == TO_IMPORTFORMATS) ?
+				theConverters().importableFormats() :
+				theConverters().exportableFormats(code != TO_EXPORTFORMATS);
+			sort(formats.begin(), formats.end());
+			vector<Format const *>::const_iterator fit = formats.begin();
+			vector<Format const *>::const_iterator end = formats.end();
+			for (; fit != end ; ++fit) {
+				if ((*fit)->dummy())
+					continue;
+				if (code != TO_IMPORTFORMATS &&
+				    !(*fit)->documentFormat())
+					continue;
+
+				docstring const prettyname =
+					from_utf8((*fit)->prettyname());
+				docstring tooltip;
+				FuncCode lfun;
+				switch (code) {
+				case TO_EXPORTFORMATS:
+					lfun = LFUN_BUFFER_EXPORT;
+					tooltip = _("Export %1$s");
+					break;
+				case TO_IMPORTFORMATS:
+					lfun = LFUN_BUFFER_IMPORT;
+					tooltip = _("Import %1$s ...");
+					break;
+				case TO_UPDATEFORMATS:
+					lfun = LFUN_BUFFER_UPDATE;
+					tooltip = _("Update %1$s");
+					break;
+				case TO_VIEWFORMATS:
+					lfun = LFUN_BUFFER_VIEW;
+					tooltip = _("View %1$s");
+					break;
+				}
+				FuncRequest func(lfun, (*fit)->name(),
+						FuncRequest::TOOLBAR);
+				add(ToolbarItem(ToolbarItem::COMMAND, func,
+						bformat(tooltip, prettyname)));
+			}
+			break;
+		}
 
 		default:
 			lex.printError("ToolbarInfo::read: "

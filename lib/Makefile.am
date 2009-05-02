@@ -275,20 +275,30 @@ dist_images_DATA = \
 	images/box-insert.png \
 	images/break-line.png \
 	images/buffer-close.png \
+	images/buffer-export.png \
 	images/buffer-export_dvi.png \
 	images/buffer-export_latex.png \
+	images/buffer-export_pdf.png \
 	images/buffer-export_pdf2.png \
+	images/buffer-export_pdf3.png \
+	images/buffer-export_pdf4.png \
 	images/buffer-export_ps.png \
 	images/buffer-export_text.png \
 	images/buffer-new.png \
 	images/buffer-reload.png \
 	images/buffer-update.png \
 	images/buffer-update_dvi.png \
+	images/buffer-update_pdf.png \
 	images/buffer-update_pdf2.png \
+	images/buffer-update_pdf3.png \
+	images/buffer-update_pdf4.png \
 	images/buffer-update_ps.png \
 	images/buffer-view.png \
 	images/buffer-view_dvi.png \
+	images/buffer-view_pdf.png \
 	images/buffer-view_pdf2.png \
+	images/buffer-view_pdf3.png \
+	images/buffer-view_pdf4.png \
 	images/buffer-view_ps.png \
 	images/buffer-write-as.png \
 	images/buffer-write.png \
@@ -554,6 +564,7 @@ dist_imagesmath_DATA = \
 	images/math/eta.png \
 	images/math/eth.png \
 	images/math/exists.png \
+	images/math/export-others.png \
 	images/math/fallingdotseq.png \
 	images/math/fint.png \
 	images/math/fintop.png \

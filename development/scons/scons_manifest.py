@@ -1364,20 +1364,30 @@ lib_images_files = Split('''
     box-insert.png
     break-line.png
     buffer-close.png
+    buffer-export.png
     buffer-export_dvi.png
     buffer-export_latex.png
+    buffer-export_pdf.png
     buffer-export_pdf2.png
+    buffer-export_pdf3.png
+    buffer-export_pdf4.png
     buffer-export_ps.png
     buffer-export_text.png
     buffer-new.png
     buffer-reload.png
     buffer-update.png
     buffer-update_dvi.png
+    buffer-update_pdf.png
     buffer-update_pdf2.png
+    buffer-update_pdf3.png
+    buffer-update_pdf4.png
     buffer-update_ps.png
     buffer-view.png
     buffer-view_dvi.png
+    buffer-view_pdf.png
     buffer-view_pdf2.png
+    buffer-view_pdf3.png
+    buffer-view_pdf4.png
     buffer-view_ps.png
     buffer-write-as.png
     buffer-write.png
@@ -1642,6 +1652,7 @@ lib_images_math_files = Split('''
     eta.png
     eth.png
     exists.png
+    export-others.png
     fallingdotseq.png
     fint.png
     fintop.png

@@ -707,12 +707,41 @@ vector<Format const *> Converters::importableFormats()
 }
 
 
+vector<Format const *> Converters::exportableFormats(bool only_viewable)
+{
+	vector<string> s = savers();
+	vector<Format const *> result = getReachable(s[0], only_viewable, true);
+	for (vector<string>::const_iterator it = s.begin() + 1;
+	     it != s.end(); ++it) {
+		vector<Format const *> r =
+			getReachable(*it, only_viewable, false);
+		result.insert(result.end(), r.begin(), r.end());
+	}
+	return result;
+}
+
+
 vector<string> Converters::loaders() const
 {
 	vector<string> v;
 	v.push_back("lyx");
 	v.push_back("text");
 	v.push_back("textparagraph");
+	return v;
+}
+
+
+vector<string> Converters::savers() const
+{
+	vector<string> v;
+	v.push_back("docbook");
+	v.push_back("latex");
+	v.push_back("literate");
+	v.push_back("lyx");
+	v.push_back("pdflatex");
+	v.push_back("platex");
+	v.push_back("text");
+	v.push_back("xetex");
 	return v;
 }
 
