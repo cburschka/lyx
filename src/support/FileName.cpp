@@ -221,11 +221,11 @@ void FileName::set(string const & name)
 
 void FileName::set(FileName const & rhs, string const & suffix)
 {
-	d->name = rhs.d->name + suffix;
 	if (!rhs.d->fi.isDir())
 		d->fi.setFile(rhs.d->fi.filePath() + toqstr(suffix));
 	else
 		d->fi.setFile(QDir(rhs.d->fi.absoluteFilePath()), toqstr(suffix));
+	d->name = fromqstr(d->fi.absoluteFilePath());
 	//LYXERR(Debug::FILES, "FileName::set(" << d->name << ')');
 	LASSERT(empty() || isAbsolute(d->name), /**/);
 }
