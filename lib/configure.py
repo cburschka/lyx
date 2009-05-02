@@ -388,11 +388,11 @@ def checkConverterEntries():
 \converter literate   pdflatex      "%%"	""'''])
     #
     path, elyx = checkProg('eLyXer converter', ['elyxer $$i $$o'],
-        rc_entry = [ r'\converter lyx elyxhtml "%%" ""' ] )
+        rc_entry = [ r'\converter lyx html2 "%%" ""' ] )
     if elyx.find('elyxer') >= 0 :
-      addToRC(r'''\copier    elyxhtml       "python -tt $$s/scripts/ext_copy.py -e html,png,css $$i $$o"''')
+      addToRC(r'''\copier    html2       "python -tt $$s/scripts/ext_copy.py -e html,png,css $$i $$o"''')
       checkViewer('an eLyXer previewer', ['firefox', 'mozilla file://$$p$$i', 'netscape'],
-          rc_entry = [r'\Format elyxhtml   html    "HTML (eLyXer)"        e  "%%"	""	"document"'])
+          rc_entry = [r'\Format html2   html    "HTML (eLyXer)"        e  "%%"	""	"document"'])
 
     #
     checkProg('an HTML -> LaTeX converter', ['html2latex $$i', 'gnuhtml2latex $$i', \
