@@ -112,11 +112,6 @@ bool canAutoOpenFile(std::string const & ext, auto_open_mode const mode = VIEW);
  */
 bool autoOpenFile(std::string const & filename, auto_open_mode const mode = VIEW);
 
-/** Check whether two filenames point to the same file.
-  * \warning the filenames must already be in the filesystem encoding.
-  */
-bool isSameFile(std::string const & fileone, std::string const & filetwo);
-
 /** Resolves a path such that it does not contain '.', '..', or symbolic links.
   * \warning the path must already be in the filesystem encoding.
   * \returns the resolved path in utf8 encoding.

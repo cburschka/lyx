@@ -390,43 +390,6 @@ bool autoOpenFile(string const & filename, auto_open_mode const mode)
 }
 
 
-bool isSameFile(string const & fileone, string const & filetwo)
-{
-	HANDLE h1 = CreateFile(fileone.c_str(), 0,
-		FILE_SHARE_READ|FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL);
-	HANDLE h2 = CreateFile(filetwo.c_str(), 0,
-		FILE_SHARE_READ|FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL);
-
-	if (h1 == INVALID_HANDLE_VALUE || h2 == INVALID_HANDLE_VALUE) {
-		// One or both files cannot be accessed.
-		if (h1 != INVALID_HANDLE_VALUE)
-			CloseHandle(h1);
-		if (h2 != INVALID_HANDLE_VALUE)
-			CloseHandle(h2);
-		return false;
-	}
-
-	BY_HANDLE_FILE_INFORMATION info1;
-	BY_HANDLE_FILE_INFORMATION info2;
-	bool samefile = false;
-	if (GetFileInformationByHandle(h1, &info1) != 0
-	    && GetFileInformationByHandle(h2, &info2) != 0) {
-		// Serial number of the volumes containing the files.
-		ULONG st1_dev = info1.dwVolumeSerialNumber;
-		ULONG st2_dev = info2.dwVolumeSerialNumber;
-		// Unique identifiers associated to the files on the volumes.
-		ULONGLONG highbits = info1.nFileIndexHigh & 0x0000FFFF;
-		ULONGLONG st1_ino = (highbits << sizeof(ULONG)) | info1.nFileIndexLow;
-		highbits = info2.nFileIndexHigh & 0x0000FFFF;
-		ULONGLONG st2_ino = (highbits << sizeof(ULONG)) | info2.nFileIndexLow;
-		samefile = st1_ino == st2_ino && st1_dev == st2_dev;
-	}
-	CloseHandle(h1);
-	CloseHandle(h2);
-	return samefile;
-}
-
-
 string real_path(string const & path)
 {
 	// See http://msdn.microsoft.com/en-us/library/aa366789(VS.85).aspx

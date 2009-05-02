@@ -28,8 +28,8 @@
 #include <shlwapi.h>
 #include <limits.h>
 #include <stdlib.h>
+
 #include <sys/cygwin.h>
-#include <sys/stat.h>
 
 using namespace std;
 
@@ -281,21 +281,6 @@ bool autoOpenFile(string const & filename, auto_open_mode const mode)
 	char const * action = (mode == VIEW) ? "open" : "edit";
 	return reinterpret_cast<int>(ShellExecute(NULL, action,
 		win_path.c_str(), NULL, NULL, 1)) > 32;
-}
-
-
-bool isSameFile(string const & fileone, string const & filetwo)
-{
-	struct stat st1;
-	struct stat st2;
-
-	if (::stat(fileone.c_str(), &st1) == 0
-	    && ::stat(filetwo.c_str(), &st2) == 0) {
-		return st1.st_ino == st2.st_ino && st1.st_dev == st2.st_dev;
-	}
-
-	// One or both files cannot be accessed.
-	return false;
 }
 
 
