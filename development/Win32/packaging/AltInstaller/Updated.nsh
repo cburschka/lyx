@@ -65,6 +65,7 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources\layouts"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\beamer.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\lyxmacros.inc"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\memoir.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\powerdot.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\stdinsets.inc"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\theorems.inc"
