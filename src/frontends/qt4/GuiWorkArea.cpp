@@ -1334,6 +1334,10 @@ TabWorkArea::TabWorkArea(QWidget * parent)
 	tb->setContextMenuPolicy(Qt::CustomContextMenu);
 	connect(tb, SIGNAL(customContextMenuRequested(const QPoint &)),
 		this, SLOT(showContextMenu(const QPoint &)));
+#if QT_VERSION >= 0x040500
+	connect(tb, SIGNAL(tabCloseRequested(int)),
+		tb, SLOT(on_tabCloseRequested(int)));
+#endif
 
 	setUsesScrollButtons(true);
 }
@@ -1741,6 +1745,16 @@ DragTabBar::DragTabBar(QWidget* parent)
 	: QTabBar(parent)
 {
 	setAcceptDrops(true);
+#if QT_VERSION >= 0x040500
+	setTabsClosable(true);
+#endif
+}
+
+
+void DragTabBar::on_tabCloseRequested(int index)
+{
+	setCurrentIndex(index);
+	lyx::dispatch(FuncRequest(LFUN_BUFFER_CLOSE));
 }
 
 

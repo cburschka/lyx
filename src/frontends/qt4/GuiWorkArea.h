@@ -368,6 +368,10 @@ private:
 Q_SIGNALS:
 	///
 	void tabMoveRequested(int fromIndex, int toIndex);
+
+private Q_SLOTS:
+	///
+	void on_tabCloseRequested(int index);
 };
 
 } // namespace frontend
