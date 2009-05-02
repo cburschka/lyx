@@ -66,7 +66,7 @@ void GuiPrintindex::updateContents()
 
 	indicesCO->clear();
 
-	indicesCO->addItem(qt_("<All indices>"),
+	indicesCO->addItem(qt_("<All indexes>"),
 			QVariant(QString("printall")));
 
 	const_iterator const begin = indiceslist.begin();

@@ -85,7 +85,7 @@
    <item row="3" column="0" >
     <widget class="QLabel" name="availableLA" >
      <property name="text" >
-      <string>A&amp;vailable Indices:</string>
+      <string>A&amp;vailable Indexes:</string>
      </property>
      <property name="buddy" >
       <cstring>indicesTW</cstring>
@@ -98,10 +98,10 @@
    <item row="0" column="0" >
     <widget class="QCheckBox" name="multipleIndicesCB" >
      <property name="toolTip" >
-      <string>Check if you need multiple indices (e.g., an Index of Names)</string>
+      <string>Check if you need multiple indexes (e.g., an Index of Names)</string>
      </property>
      <property name="text" >
-      <string>&amp;Use multiple indices</string>
+      <string>&amp;Use multiple indexes</string>
      </property>
     </widget>
    </item>

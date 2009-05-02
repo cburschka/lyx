@@ -1013,7 +1013,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	docPS->addPanel(langModule, qt_("Language"));
 	docPS->addPanel(numberingModule, qt_("Numbering & TOC"));
 	docPS->addPanel(biblioModule, qt_("Bibliography"));
-	docPS->addPanel(indicesModule, qt_("Indices"));
+	docPS->addPanel(indicesModule, qt_("Indexes"));
 	docPS->addPanel(pdfSupportModule, qt_("PDF Properties"));
 	docPS->addPanel(mathsModule, qt_("Math Options"));
 	docPS->addPanel(floatModule, qt_("Float Placement"));
