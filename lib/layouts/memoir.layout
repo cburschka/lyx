@@ -52,6 +52,10 @@ Style Chapter
 	OptionalArgs         2
 End
 
+Style Chapter*
+	OptionalArgs         1
+End
+
 
 Style Section
 	OptionalArgs         2
@@ -155,6 +159,6 @@ Style Legend
 	LatexName           legend
 	NeedProtect         1
 	NextNoIndent        1
-	ParSkip              0.4
-	Align                   Center
+	ParSkip             0.4
+	Align               Center
 End
