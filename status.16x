@@ -294,6 +294,9 @@ What's new
   Frontmatter of the layout combo box.
   
 - Hide the "Navigate->Go to Label" menuitem when disabled (bug 4124).
+
+- Fix bug causing reverse DVI search to fail when the temporary directory
+  is a symbolic link.
   
 
 * DOCUMENTATION AND LOCALIZATION

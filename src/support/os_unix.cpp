@@ -17,6 +17,9 @@
 #include "support/FileName.h"
 #include "support/lstrings.h"
 
+#include <limits.h>
+#include <stdlib.h>
+
 #ifdef __APPLE__
 #include <Carbon/Carbon.h>
 #endif
@@ -213,6 +216,14 @@ bool autoOpenFile(string const & filename, auto_open_mode const mode)
 	// support for KDE/Gnome/Macintosh may be added later
 	return false;
 #endif
+}
+
+
+string real_path(string const & path)
+{
+	char rpath[PATH_MAX + 1];
+	char * result = realpath(path.c_str(), rpath);
+	return FileName::fromFilesystemEncoding(result ? rpath : path).absFilename();
 }
 
 } // namespace os

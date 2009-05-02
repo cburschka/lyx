@@ -46,7 +46,7 @@ target_link_libraries(${_tex2lyx}
 	${ICONV_LIBRARY})
 
 if(WIN32)
-	target_link_libraries(${_tex2lyx} shlwapi ole32)
+	target_link_libraries(${_tex2lyx} shlwapi ole32 psapi)
 endif()
 
 if(APPLE)

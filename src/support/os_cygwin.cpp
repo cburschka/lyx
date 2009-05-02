@@ -26,6 +26,7 @@
 #include <shellapi.h>
 #include <shlwapi.h>
 #include <limits.h>
+#include <stdlib.h>
 
 #include <sys/cygwin.h>
 
@@ -279,6 +280,14 @@ bool autoOpenFile(string const & filename, auto_open_mode const mode)
 	char const * action = (mode == VIEW) ? "open" : "edit";
 	return reinterpret_cast<int>(ShellExecute(NULL, action,
 		win_path.c_str(), NULL, NULL, 1)) > 32;
+}
+
+
+string real_path(string const & path)
+{
+	char rpath[PATH_MAX + 1];
+	char * result = realpath(path.c_str(), rpath);
+	return FileName::fromFilesystemEncoding(result ? rpath : path).absFilename();
 }
 
 } // namespace os

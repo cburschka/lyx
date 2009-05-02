@@ -194,6 +194,12 @@ string FileName::absFilename() const
 }
 
 
+string FileName::realPath() const
+{
+	return os::real_path(toFilesystemEncoding());
+}
+
+
 void FileName::set(string const & name)
 {
 	d->fi.setFile(toqstr(name));

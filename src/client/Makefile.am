@@ -12,7 +12,7 @@ AM_CPPFLAGS += -I$(srcdir)/.. $(BOOST_INCLUDES)
 
 lyxclient_LDADD = \
 	$(top_builddir)/src/support/liblyxsupport.la \
-	$(BOOST_LIBS) $(INTLLIBS) @LIBS@ $(SOCKET_LIBS)
+	$(BOOST_LIBS) $(INTLLIBS) @LIBS@ $(SOCKET_LIBS) $(LIBPSAPI)
 
 # everything below the line containing the single backslashs
 # an ugly hack and needed because of the
