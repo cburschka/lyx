@@ -1,4 +1,4 @@
-#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -4254,7 +4254,15 @@ abajo
 Si necesitas cambiar el número de filas y columnas, usa el menú 
 \family sans
 Editar\SpecialChar \menuseparator
-Ecuación
+Filas
+\begin_inset space ~
+\end_inset
+
+y
+\begin_inset space ~
+\end_inset
+
+columnas
 \family default
  o los botones de la barra de herramientas de tabla 
 \begin_inset Graphics
