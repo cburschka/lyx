@@ -605,7 +605,7 @@ def revert_printindexall(document):
         i = i + 1
 
 def revert_strikeout(document):
-    " Reverts \\strike character style "
+    " Reverts \\strikeout character style "
     while True:
         i = find_token(document.body, '\\strikeout', 0)
         if i == -1:
