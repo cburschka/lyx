@@ -550,6 +550,8 @@ Menuset
 		Item "Demote Section|D" "outline-in"
 		Item "Move Section Up|U" "outline-up"
 		Item "Move Section Down|w" "outline-down"
+		Separator
+		Item "Select Section|S" "section-select"
 	End	
 
 End

@@ -140,6 +140,7 @@ bool TocWidget::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_OUTLINE_DOWN:
 	case LFUN_OUTLINE_IN:
 	case LFUN_OUTLINE_OUT:
+	case LFUN_SECTION_SELECT:
 		status.setEnabled(true);
 		return true;
 
@@ -165,6 +166,7 @@ void TocWidget::doDispatch(Cursor & cur, FuncRequest const & cmd)
 	{
 	case LFUN_CHANGE_ACCEPT:
 	case LFUN_CHANGE_REJECT:
+	case LFUN_SECTION_SELECT:
 		dispatch(item.action());
 		cur.dispatch(tmpcmd);
 		break;
