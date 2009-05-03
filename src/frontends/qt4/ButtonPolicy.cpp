@@ -563,7 +563,7 @@ void ButtonPolicy::Private::initOkApplyCancelAutoReadOnly()
 	outputs_[VALID] = RESTORE | OKAY | APPLY | CANCEL | AUTOAPPLY;
 	outputs_[INVALID] = RESTORE | CANCEL | AUTOAPPLY;
 	outputs_[APPLIED] = OKAY | CLOSE | AUTOAPPLY;
-	outputs_[AUTOAPPLY_INITIAL] = CLOSE | AUTOAPPLY | OKAY;
+	outputs_[AUTOAPPLY_INITIAL] = CLOSE | AUTOAPPLY;
 	outputs_[AUTOAPPLY_CHANGED] = CLOSE | RESTORE | AUTOAPPLY | OKAY;
 	outputs_[RO_INITIAL] = CLOSE;
 	outputs_[RO_VALID] = RESTORE | CANCEL;
