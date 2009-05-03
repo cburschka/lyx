@@ -1722,6 +1722,12 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
+	case LFUN_FONT_STRIKEOUT: {
+		Font font(ignore_font, ignore_language);
+		font.fontInfo().setStrikeout(FONT_TOGGLE);
+		toggleAndShow(cur, this, font);
+		break;
+	}
 	case LFUN_FONT_UNDERLINE: {
 		Font font(ignore_font, ignore_language);
 		font.fontInfo().setUnderbar(FONT_TOGGLE);
@@ -2423,6 +2429,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_MATH_SUPERSCRIPT:
 	case LFUN_FONT_DEFAULT:
 	case LFUN_FONT_UNDERLINE:
+	case LFUN_FONT_STRIKEOUT:
 	case LFUN_FONT_SIZE:
 	case LFUN_LANGUAGE:
 	case LFUN_TEXTSTYLE_APPLY:

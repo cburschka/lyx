@@ -76,6 +76,7 @@ static QList<BarPair> barData()
 	bars << BarPair(qt_("No change"), IGNORE);
 	bars << BarPair(qt_("Emph"),      EMPH_TOGGLE);
 	bars << BarPair(qt_("Underbar"),  UNDERBAR_TOGGLE);
+	bars << BarPair(qt_("Strikeout"),  STRIKEOUT_TOGGLE);
 	bars << BarPair(qt_("Noun"),      NOUN_TOGGLE);
 	bars << BarPair(qt_("Reset"),     INHERIT);
 	return bars;
@@ -276,6 +277,9 @@ static FontState getBar(FontInfo const & fi)
 	if (fi.underbar() == FONT_TOGGLE)
 		return UNDERBAR_TOGGLE;
 
+	if (fi.strikeout() == FONT_TOGGLE)
+		return STRIKEOUT_TOGGLE;
+
 	if (fi.noun() == FONT_TOGGLE)
 		return NOUN_TOGGLE;
 
@@ -294,6 +298,7 @@ static void setBar(FontInfo & fi, FontState val)
 	case IGNORE:
 		fi.setEmph(FONT_IGNORE);
 		fi.setUnderbar(FONT_IGNORE);
+		fi.setStrikeout(FONT_IGNORE);
 		fi.setNoun(FONT_IGNORE);
 		break;
 
@@ -305,6 +310,10 @@ static void setBar(FontInfo & fi, FontState val)
 		fi.setUnderbar(FONT_TOGGLE);
 		break;
 
+	case STRIKEOUT_TOGGLE:
+		fi.setStrikeout(FONT_TOGGLE);
+		break;
+
 	case NOUN_TOGGLE:
 		fi.setNoun(FONT_TOGGLE);
 		break;
@@ -312,6 +321,7 @@ static void setBar(FontInfo & fi, FontState val)
 	case INHERIT:
 		fi.setEmph(FONT_INHERIT);
 		fi.setUnderbar(FONT_INHERIT);
+		fi.setStrikeout(FONT_INHERIT);
 		fi.setNoun(FONT_INHERIT);
 		break;
 	}

@@ -336,6 +336,8 @@ int GuiPainter::text(int x, int y, docstring const & s,
 		textwidth = smallCapsText(x, y, str, f);
 		if (f.underbar() == FONT_ON)
 			underline(f, x, y, textwidth);
+		if (f.strikeout() == FONT_ON)
+			strikeoutLine(f, x, y, textwidth);
 		return textwidth;
 	}
 
@@ -345,6 +347,8 @@ int GuiPainter::text(int x, int y, docstring const & s,
 	textwidth = fm.width(s);
 	if (f.underbar() == FONT_ON)
 		underline(f, x, y, textwidth);
+	if (f.strikeout() == FONT_ON)
+		strikeoutLine(f, x, y, textwidth);
 
 	if (!isDrawingEnabled())
 		return textwidth;
@@ -531,6 +535,20 @@ void GuiPainter::underline(FontInfo const & f, int x, int y, int width)
 		line(x, y + below, x + width, y + below, f.realColor());
 	else
 		fillRectangle(x, y + below, width, below + height, f.realColor());
+}
+
+
+void GuiPainter::strikeoutLine(FontInfo const & f, int x, int y, int width)
+{
+	FontMetrics const & fm = theFontMetrics(f);
+
+	int const middle = max((fm.maxHeight() / 4), 1);
+	int const height =  middle/3;
+
+	if (height < 2)
+		line(x, y - middle, x + width, y - middle, f.realColor());
+	else
+		fillRectangle(x, y - middle, width, height, f.realColor());
 }
 
 

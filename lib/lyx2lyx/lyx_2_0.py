@@ -604,6 +604,14 @@ def revert_printindexall(document):
             document.body[i:k+1] = subst
         i = i + 1
 
+def revert_strikeout(document):
+    " Reverts \\strike character style "
+    while True:
+        i = find_token(document.body, '\\strikeout', 0)
+        if i == -1:
+            return
+        del document.body[i]
+
 
 ##
 # Conversion hub
@@ -618,10 +626,12 @@ convert = [[346, []],
            [351, []],
            [352, [convert_splitindex]],
            [353, []],
-           [354, []]
+           [354, []],
+           [355, []]
           ]
 
-revert =  [[353, [revert_printindexall]],
+revert =  [[354, [revert_strikeout]],
+           [353, [revert_printindexall]],
            [352, [revert_subindex]],
            [351, [revert_splitindex]],
            [350, [revert_backgroundcolor]],

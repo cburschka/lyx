@@ -41,11 +41,12 @@ public:
 		ColorCode background,
 		FontState emph,
 		FontState underbar,
+		FontState strikeout,
 		FontState noun,
 		FontState number)
 		: family_(family), series_(series), shape_(shape), size_(size), 
 		color_(color), background_(background), paint_color_(), emph_(emph),
-		underbar_(underbar), noun_(noun), number_(number)
+		underbar_(underbar), strikeout_(strikeout), noun_(noun), number_(number)
 	{}
 
 	/// Decreases font size by one
@@ -67,6 +68,8 @@ public:
 	void setEmph(FontState e) { emph_ = e; }
 	FontState underbar() const { return underbar_; }
 	void setUnderbar(FontState u) { underbar_ = u; }
+	FontState strikeout() const { return strikeout_; }
+	void setStrikeout(FontState s) { strikeout_ = s; }
 	FontState noun() const { return noun_; }
 	void setNoun(FontState n) { noun_ = n; }
 	FontState number() const { return number_; }
@@ -145,6 +148,8 @@ private:
 	///
 	FontState underbar_;
 	///
+	FontState strikeout_;
+	///
 	FontState noun_;
 	///
 	FontState number_;
@@ -161,6 +166,7 @@ inline bool operator==(FontInfo const & lhs, FontInfo const & rhs)
 		&& lhs.background_ == rhs.background_
 		&& lhs.emph_ == rhs.emph_
 		&& lhs.underbar_ == rhs.underbar_
+		&& lhs.strikeout_ == rhs.strikeout_
 		&& lhs.noun_ == rhs.noun_
 		&& lhs.number_ == rhs.number_;
 }

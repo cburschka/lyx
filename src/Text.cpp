@@ -188,6 +188,9 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 		else
 			lex.printError("Unknown bar font flag "
 				       "`$$Token'");
+	} else if (token == "\\strikeout") {
+		lex.next();
+		font.fontInfo().setStrikeout(font.setLyXMisc(lex.getString()));
 	} else if (token == "\\noun") {
 		lex.next();
 		font.fontInfo().setNoun(font.setLyXMisc(lex.getString()));

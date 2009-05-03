@@ -125,7 +125,7 @@ namespace {
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-int const LYX_FORMAT = 354;  // jspitzm: support for \print[sub]index*
+int const LYX_FORMAT = 355;  // sanda: support for \\sout
 
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;

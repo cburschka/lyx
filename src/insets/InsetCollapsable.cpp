@@ -688,6 +688,7 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_FONT_SIZE:
 	case LFUN_FONT_STATE:
 	case LFUN_FONT_UNDERLINE:
+	case LFUN_FONT_STRIKEOUT:
 	case LFUN_FOOTNOTE_INSERT:
 	case LFUN_HYPERLINK_INSERT:
 	case LFUN_INDEX_INSERT:

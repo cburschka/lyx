@@ -175,6 +175,9 @@ docstring const stateText(FontInfo const & f)
 	if (f.underbar() != FONT_INHERIT)
 		os << bformat(_("Underline %1$s, "),
 			      _(GUIMiscNames[f.underbar()]));
+	if (f.strikeout() != FONT_INHERIT)
+		os << bformat(_("Strikeout %1$s, "),
+			      _(GUIMiscNames[f.strikeout()]));
 	if (f.noun() != FONT_INHERIT)
 		os << bformat(_("Noun %1$s, "),
 			      _(GUIMiscNames[f.noun()]));
@@ -329,6 +332,8 @@ FontInfo lyxRead(Lexer & lex, FontInfo const & fi)
 
 			if (ttok == "no_bar") {
 				f.setUnderbar(FONT_OFF);
+			} else if (ttok == "no_strikeout") {
+				f.setStrikeout(FONT_OFF);
 			} else if (ttok == "no_emph") {
 				f.setEmph(FONT_OFF);
 			} else if (ttok == "no_noun") {
@@ -337,6 +342,8 @@ FontInfo lyxRead(Lexer & lex, FontInfo const & fi)
 				f.setEmph(FONT_ON);
 			} else if (ttok == "underbar") {
 				f.setUnderbar(FONT_ON);
+			} else if (ttok == "strikeout") {
+				f.setStrikeout(FONT_ON);
 			} else if (ttok == "noun") {
 				f.setNoun(FONT_ON);
 			} else {
@@ -387,6 +394,9 @@ void Font::lyxWriteChanges(Font const & orgfont,
 				       << endl;
 		break;
 		}
+	}
+	if (orgfont.fontInfo().strikeout() != bits_.strikeout()) {
+		os << "\\strikeout " << LyXMiscNames[bits_.strikeout()] << "\n";
 	}
 	if (orgfont.fontInfo().noun() != bits_.noun()) {
 		os << "\\noun " << LyXMiscNames[bits_.noun()] << "\n";
@@ -526,6 +536,11 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 		count += 10;
 		env = true; //We have opened a new environment
 	}
+	if (f.strikeout() == FONT_ON) {
+		os << "\\sout{";
+		count += 6;
+		env = true; //We have opened a new environment
+	}
 	// \noun{} is a LyX special macro
 	if (f.noun() == FONT_ON) {
 		os << "\\noun{";
@@ -595,6 +610,11 @@ int Font::latexWriteEndChanges(odocstream & os, BufferParams const & bparams,
 		++count;
 		env = true; // Size change need not bother about closing env.
 	}
+	if (f.strikeout() == FONT_ON) {
+		os << '}';
+		++count;
+		env = true; // Size change need not bother about closing env.
+	}
 	if (f.noun() == FONT_ON) {
 		os << '}';
 		++count;
@@ -654,6 +674,7 @@ string Font::toString(bool const toggle) const
 	   << "size " << bits_.size() << '\n'
 	   << "emph " << bits_.emph() << '\n'
 	   << "underbar " << bits_.underbar() << '\n'
+	   << "strikeout " << bits_.strikeout() << '\n'
 	   << "noun " << bits_.noun() << '\n'
 	   << "number " << bits_.number() << '\n'
 	   << "color " << bits_.color() << '\n'
@@ -695,7 +716,8 @@ bool Font::fromString(string const & data, bool & toggle)
 			bits_.setSize(FontSize(next));
 
 		} else if (token == "emph" || token == "underbar" ||
-			   token == "noun" || token == "number") {
+			   token == "noun" || token == "number" ||
+			   token == "strikeout") {
 
 			int const next = lex.getInteger();
 			FontState const misc = FontState(next);
@@ -704,6 +726,8 @@ bool Font::fromString(string const & data, bool & toggle)
 				bits_.setEmph(misc);
 			else if (token == "underbar")
 				bits_.setUnderbar(misc);
+			else if (token == "strikeout")
+				bits_.setStrikeout(misc);
 			else if (token == "noun")
 				bits_.setNoun(misc);
 			else if (token == "number")
@@ -746,6 +770,11 @@ void Font::validate(LaTeXFeatures & features) const
 		LYXERR(Debug::LATEX, "font.noun: " << bits_.noun());
 		features.require("noun");
 		LYXERR(Debug::LATEX, "Noun enabled. Font: " << to_utf8(stateText(0)));
+	}
+	if (bits_.strikeout() == FONT_ON) {
+		LYXERR(Debug::LATEX, "font.strikeout: " << bits_.strikeout());
+		features.require("ulem");
+		LYXERR(Debug::LATEX, "Strikeout enabled. Font: " << to_utf8(stateText(0)));
 	}
 	switch (bits_.color()) {
 		case Color_none:
@@ -791,6 +820,7 @@ ostream & operator<<(ostream & os, FontInfo const & f)
 		//<< " background " << f.background()
 		<< " emph " << f.emph()
 		<< " underbar " << f.underbar()
+		<< " strikeout " << f.strikeout()
 		<< " noun " << f.noun()
 		<< " number " << f.number();
 }

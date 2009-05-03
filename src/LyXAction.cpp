@@ -1228,6 +1228,14 @@ void LyXAction::init()
  */
 		{ LFUN_FONT_UNDERLINE, "font-underline", Noop, Layout },
 /*!
+ * \var lyx::FuncCode lyx::LFUN_FONT_STRIKEOUT
+ * \li Action: Toggles strikeout (strike-through) in the font (selection-wise).
+ * \li Syntax: font-strikeout
+ * \li Origin: sanda, 3 May 2009
+ * \endvar
+ */
+		{ LFUN_FONT_STRIKEOUT, "font-strikeout", Noop, Layout },
+/*!
  * \var lyx::FuncCode lyx::LFUN_FONT_EMPH
  * \li Action: Toggles the emphasis font style (selection-wise).
  * \li Syntax: font-emph

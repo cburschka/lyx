@@ -37,6 +37,8 @@ enum FontState {
 	///
 	NOUN_TOGGLE,
 	///
+	STRIKEOUT_TOGGLE,
+	///
 	INHERIT
 };
 
