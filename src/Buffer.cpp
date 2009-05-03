@@ -2607,7 +2607,16 @@ int AutoSaveBuffer::generateChild()
 
 FileName Buffer::getAutosaveFilename() const
 {
-	string const fpath = isUnnamed() ? lyxrc.document_path : filePath();
+	// if the document is unnamed try to save in the backup dir, else
+	// in the default document path, and as a last try in the filePath, 
+	// which will most often be the temporary directory
+	string fpath;
+	if (isUnnamed())
+		fpath = lyxrc.backupdir_path.empty() ? lyxrc.document_path
+			: lyxrc.backupdir_path;
+	if (!isUnnamed() || fpath.empty() || !FileName(fpath).exists())
+		fpath = filePath();
+
 	string const fname = "#" + d->filename.onlyFileName() + "#";
 	return makeAbsPath(fname, fpath);
 }
