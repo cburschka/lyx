@@ -718,25 +718,25 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		ParagraphList::iterator finish = start;
 		ParagraphList::iterator end = pars.end();
 
-		setCursor(cur, cur.pit(), 0);
-		Cursor const old_cur = cur;
-		needsUpdate |= cur.selHandle(true);
-		
 		int const thistoclevel = start->layout().toclevel;
 		if (thistoclevel == Layout::NOT_IN_TOC)
 			break;
+
+		cur.pos() = 0;
+		Cursor const old_cur = cur;
+		needsUpdate |= cur.selHandle(true);
 
 		// Move out (down) from this section header
 		if (finish != end)
 			++finish;
 
 		// Seek the one (on same level) below
-		for (; finish != end; ++finish, cur.forwardPar()) {
+		for (; finish != end; ++finish, ++cur.pit()) {
 			int const toclevel = finish->layout().toclevel;
 			if (toclevel != Layout::NOT_IN_TOC && toclevel <= thistoclevel)
 				break;
 		}
-		setCursor(cur, cur.pit(), cur.lastpos());
+		cur.pos() = cur.lastpos();
 		
 		needsUpdate |= cur != old_cur;
 		break;
