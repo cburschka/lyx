@@ -708,8 +708,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_SECTION_SELECT: {
-		Buffer & buf = *cur.buffer();
-		pit_type & pit = cur.pit();
+		Buffer const & buf = *cur.buffer();
+		pit_type const pit = cur.pit();
 		ParagraphList & pars = buf.text().paragraphs();
 		ParagraphList::iterator bgn = pars.begin();
 		// The first paragraph of the area to be selected:
@@ -719,7 +719,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		ParagraphList::iterator end = pars.end();
 
 		setCursor(cur, cur.pit(), 0);
-		Cursor old_cur = cur;
+		Cursor const old_cur = cur;
 		needsUpdate |= cur.selHandle(true);
 		
 		int const thistoclevel = start->layout().toclevel;
@@ -730,10 +730,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		if (finish != end)
 			++finish;
 
-		int toclevel;
 		// Seek the one (on same level) below
 		for (; finish != end; ++finish, cur.forwardPar()) {
-			toclevel = finish->layout().toclevel;
+			int const toclevel = finish->layout().toclevel;
 			if (toclevel != Layout::NOT_IN_TOC && toclevel <= thistoclevel)
 				break;
 		}
