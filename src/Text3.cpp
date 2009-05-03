@@ -1046,6 +1046,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				type = Clipboard::JpegGraphicsType;
 			else if (arg == "linkback")
 				type = Clipboard::LinkBackGraphicsType;
+			else if (arg == "emf")
+				type = Clipboard::EmfGraphicsType;
+			else if (arg == "wmf")
+				type = Clipboard::WmfGraphicsType;
+
 			else
 				LASSERT(false, /**/);
 
@@ -2220,11 +2225,14 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		}
 
 		// explicit graphics type?
-		if ((arg == "pdf" && theClipboard().hasGraphicsContents(Clipboard::PdfGraphicsType))
-		    || (arg == "png" && theClipboard().hasGraphicsContents(Clipboard::PngGraphicsType))
-		    || (arg == "jpeg" && theClipboard().hasGraphicsContents(Clipboard::JpegGraphicsType))
-		    || (arg == "linkback" && theClipboard().hasGraphicsContents(Clipboard::LinkBackGraphicsType))) {
-			enable = true;
+		Clipboard::GraphicsType type = Clipboard::AnyGraphicsType;
+		if ((arg == "pdf" && (type = Clipboard::PdfGraphicsType))
+			  || (arg == "png" && (type = Clipboard::PngGraphicsType))
+			  || (arg == "jpeg" && (type = Clipboard::JpegGraphicsType))
+			  || (arg == "linkback" &&  (type = Clipboard::LinkBackGraphicsType))
+			  || (arg == "emf" &&  (type = Clipboard::EmfGraphicsType))
+			  || (arg == "wmf" &&  (type = Clipboard::WmfGraphicsType))) {
+			enable = theClipboard().hasGraphicsContents(type);
 			break;
 		}
 
