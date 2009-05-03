@@ -180,12 +180,14 @@ dist_hudoc_DATA = \
 
 iddocdir = $(docdir)/id
 dist_iddoc_DATA = \
-	id/Intro.lyx
+	id/Intro.lyx \
+	id/Tutorial.lyx
 
 idclipartdocdir = $(iddocdir)/clipart
 dist_idclipartdoc_DATA = \
 	id/clipart/id-contrib.png \
-	id/clipart/id-footnote.png
+	id/clipart/id-footnote.png \
+	id/clipart/id-lingkungan.png
 
 itdocdir = $(docdir)/it
 dist_itdoc_DATA = \
