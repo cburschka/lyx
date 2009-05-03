@@ -59,7 +59,7 @@ void catInit()
  * \p c must have catcode catNewline, and it must be the last character read
  * from \p is.
  */
-char getNewline(idocstream & is, char c)
+char_type getNewline(idocstream & is, char_type c)
 {
 	// we have to handle 3 different line endings:
 	// - UNIX (\n)
