@@ -329,9 +329,8 @@ static void outline(OutlineOp mode, Cursor & cur)
 	// Seek the one (on same level) below
 	for (; finish != end; ++finish) {
 		toclevel = finish->layout().toclevel;
-		if (toclevel != Layout::NOT_IN_TOC && toclevel <= thistoclevel) {
+		if (toclevel != Layout::NOT_IN_TOC && toclevel <= thistoclevel)
 			break;
-		}
 	}
 
 	switch (mode) {
@@ -373,9 +372,8 @@ static void outline(OutlineOp mode, Cursor & cur)
 			for (; dest != end; ++dest) {
 				toclevel = dest->layout().toclevel;
 				if (toclevel != Layout::NOT_IN_TOC
-				    && toclevel <= thistoclevel) {
+				      && toclevel <= thistoclevel)
 					break;
-				}
 			}
 			// One such was found:
 			pit_type newpit = distance(bgn, dest);
@@ -708,6 +706,42 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_LINE_END_SELECT);
 		needsUpdate |= tm.cursorEnd(cur);
 		break;
+
+	case LFUN_SECTION_SELECT: {
+		Buffer & buf = *cur.buffer();
+		pit_type & pit = cur.pit();
+		ParagraphList & pars = buf.text().paragraphs();
+		ParagraphList::iterator bgn = pars.begin();
+		// The first paragraph of the area to be selected:
+		ParagraphList::iterator start = boost::next(bgn, pit);
+		// The final paragraph of area to be selected:
+		ParagraphList::iterator finish = start;
+		ParagraphList::iterator end = pars.end();
+
+		setCursor(cur, cur.pit(), 0);
+		Cursor old_cur = cur;
+		needsUpdate |= cur.selHandle(true);
+		
+		int const thistoclevel = start->layout().toclevel;
+		if (thistoclevel == Layout::NOT_IN_TOC)
+			break;
+
+		// Move out (down) from this section header
+		if (finish != end)
+			++finish;
+
+		int toclevel;
+		// Seek the one (on same level) below
+		for (; finish != end; ++finish, cur.forwardPar()) {
+			toclevel = finish->layout().toclevel;
+			if (toclevel != Layout::NOT_IN_TOC && toclevel <= thistoclevel)
+				break;
+		}
+		setCursor(cur, cur.pit(), cur.lastpos());
+		
+		needsUpdate |= cur != old_cur;
+		break;
+	}
 
 	case LFUN_WORD_RIGHT:
 	case LFUN_WORD_RIGHT_SELECT:
@@ -2363,6 +2397,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_WORD_RIGHT_SELECT:
 	case LFUN_WORD_LEFT_SELECT:
 	case LFUN_WORD_SELECT:
+	case LFUN_SECTION_SELECT:
 	case LFUN_PARAGRAPH_UP:
 	case LFUN_PARAGRAPH_DOWN:
 	case LFUN_LINE_BEGIN:

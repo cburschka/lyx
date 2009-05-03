@@ -3273,6 +3273,17 @@ void LyXAction::init()
  */
 		{ LFUN_BUFFER_ZOOM_OUT, "buffer-zoom-out", ReadOnly, Buffer },
 
+/*!
+ * \var lyx::FuncCode lyx::LFUN_SECTION_SELECT
+ * \li Action: Selects the whole section.
+ * \li Notion: The cursor should be in a section heading 
+               before calling this lfun.
+ * \li Syntax: section-select
+ * \li Origin: vfr, 05 May 2009
+ * \endvar
+ */
+		{ LFUN_SECTION_SELECT, "section-select", ReadOnly, Edit },
+
 		{ LFUN_NOACTION, "", Noop, Hidden }
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
 	};

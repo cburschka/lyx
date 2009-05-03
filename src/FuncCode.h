@@ -428,6 +428,7 @@ enum FuncCode
 	// 330
 	LFUN_MATH_BIGDELIM,
 	LFUN_MATH_FONT_STYLE,
+	LFUN_SECTION_SELECT,            // vfr, 20090503
 
 
 	LFUN_LASTACTION                 // end of the table
