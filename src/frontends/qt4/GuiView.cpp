@@ -1818,6 +1818,8 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
 		}
 	}
 
+	FileName oldauto = b.getAutosaveFilename();
+
 	// Ok, change the name of the buffer
 	b.setFileName(fname.absFilename());
 	b.markDirty();
@@ -1825,10 +1827,15 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname)
 	b.setUnnamed(false);
 	b.saveCheckSum(fname);
 
+	// bring the autosave file with us, just in case.
+	b.moveAutosaveFile(oldauto);
+	
 	if (!saveBuffer(b)) {
+		oldauto = b.getAutosaveFilename();
 		b.setFileName(oldname.absFilename());
 		b.setUnnamed(unnamed);
 		b.saveCheckSum(oldname);
+		b.moveAutosaveFile(oldauto);
 		return false;
 	}
 
