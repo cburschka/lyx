@@ -491,17 +491,9 @@ void Buffer::setReadonly(bool const flag)
 
 void Buffer::setFileName(string const & newfile)
 {
-	// bring the autosave file with us, just in case.
-	FileName const oldauto = getAutosaveFilename();
 	d->filename = makeAbsPath(newfile);
 	setReadonly(d->filename.isReadOnly());
 	updateTitles();
-	FileName const newauto = getAutosaveFilename();
-	if (oldauto == newauto)
-		return;
-	if (oldauto.moveTo(newauto))
-		return;
-	LYXERR0("Unable to remove autosave file `" << oldauto << "'!");
 }
 
 
