@@ -540,5 +540,16 @@ Menuset
 		Item "Accept Change|C" "change-accept"
 		Item "Reject Change|R" "change-reject"
 	End	
+	
+#
+# Toc Table of Context context menu
+#
+
+	Menu "context-toc-tableofcontents"
+		Item "Promote Section|P" "outline-out"
+		Item "Demote Section|D" "outline-in"
+		Item "Move Section Up|U" "outline-up"
+		Item "Move Section Down|w" "outline-down"
+	End	
 
 End
