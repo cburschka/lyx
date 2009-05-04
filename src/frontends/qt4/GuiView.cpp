@@ -536,66 +536,67 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 	setCurrentWorkArea(currentMainWorkArea());
 
 	int splitter_count = d.splitter_->count();
-	for (; splitter_count > 0; --splitter_count) {
-	TabWorkArea * twa = d.tabWorkArea(0);
-			
-	int twa_count = twa->count();
-	for (; twa_count > 0; --twa_count) {
-		twa->setCurrentIndex(0);
+	for (; splitter_count; --splitter_count) {
+		TabWorkArea * twa = d.tabWorkArea(0);
+				
+		int twa_count = twa->count();
+		for (; twa_count; --twa_count) {
+			twa->setCurrentIndex(0);
 
-		GuiWorkArea * wa = twa->currentWorkArea();
-		Buffer * b = &wa->bufferView().buffer();
-		if (b->parent()) {
-			// This is a child document, just close the tab
-			// after saving but keep the file loaded.
-			if (!closeBuffer(*b, true)) {
+			GuiWorkArea * wa = twa->currentWorkArea();
+			Buffer * b = &wa->bufferView().buffer();
+			if (b->parent()) {
+				// This is a child document, just close the tab
+				// after saving but keep the file loaded.
+				if (!closeBuffer(*b, true)) {
+					closing_ = false;
+					close_event->ignore();
+					return;
+				}
+				continue;
+			}
+
+			vector<Buffer *> clist = b->getChildren();
+			for (vector<Buffer *>::const_iterator it = clist.begin();
+				 it != clist.end(); ++it) {
+				if ((*it)->isClean())
+					continue;
+				Buffer * c = *it;
+				// If a child is dirty, do not close
+				// without user intervention
+				if (!closeBuffer(*c, false)) {
+					closing_ = false;
+					close_event->ignore();
+					return;
+				}
+			}
+
+			QList<int> const ids = guiApp->viewIds();
+			for (int i = 0; i != ids.size(); ++i) {
+				if (id_ == ids[i])
+					continue;
+				if (guiApp->view(ids[i]).workArea(*b)) {
+					// FIXME 1: should we put an alert box here
+					// that the buffer is viewed elsewhere?
+					// FIXME 2: should we try to save this buffer in any case?
+					//saveBuffer(b);
+
+					// This buffer is also opened in another view, so
+					// close the associated work area...
+					removeWorkArea(wa);
+					// ... but don't close the buffer.
+					b = 0;
+					break;
+				}
+			}
+			// closeBuffer() needs buffer workArea still alive and
+			// set as currrent one, and destroys it
+			if (b && !closeBuffer(*b, true)) {
 				closing_ = false;
 				close_event->ignore();
 				return;
 			}
-			continue;
 		}
-
-		vector<Buffer *> clist = b->getChildren();
-		for (vector<Buffer *>::const_iterator it = clist.begin();
-		     it != clist.end(); ++it) {
-			if ((*it)->isClean())
-				continue;
-			Buffer * c = *it;
-			// If a child is dirty, do not close
-			// without user intervention
-			if (!closeBuffer(*c, false)) {
-				closing_ = false;
-				close_event->ignore();
-				return;
-			}
-		}
-
-		QList<int> const ids = guiApp->viewIds();
-		for (int i = 0; i != ids.size(); ++i) {
-			if (id_ == ids[i])
-				continue;
-			if (guiApp->view(ids[i]).workArea(*b)) {
-				// FIXME 1: should we put an alert box here that the buffer
-				// is viewed elsewhere?
-				// FIXME 2: should we try to save this buffer in any case?
-				//saveBuffer(b);
-
-				// This buffer is also opened in another view, so
-				// close the associated work area...
-				removeWorkArea(wa);
-				// ... but don't close the buffer.
-				b = 0;
-				break;
-			}
-		}
-		// closeBuffer() needs buffer workArea still alive and set as currrent one, and destroys it
-		if (b && !closeBuffer(*b, true)) {
-			closing_ = false;
-			close_event->ignore();
-			return;
-		}
-	}
 	}
 	// Make sure that nothing will use this close to be closed View.
 	guiApp->unregisterView(this);
