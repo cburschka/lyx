@@ -387,9 +387,9 @@ def checkConverterEntries():
         rc_entry = [r'''\converter literate   latex      "%%"	""
 \converter literate   pdflatex      "%%"	""'''])
     #
-    path, elyx = checkProg('eLyXer converter', ['elyxer $$i $$o'],
+    path, elyx = checkProg('eLyXer converter', ['elyxer.py $$i $$o'],
         rc_entry = [ r'\converter lyx html2 "%%" ""' ] )
-    if elyx.find('elyxer') >= 0 :
+    if elyx.find('elyxer.py') >= 0 :
       addToRC(r'''\copier    html2       "python -tt $$s/scripts/ext_copy.py -e html,png,css $$i $$o"''')
       checkViewer('an eLyXer previewer', ['firefox', 'mozilla file://$$p$$i', 'netscape'],
           rc_entry = [r'\Format html2   html    "HTML (eLyXer)"        e  "%%"	""	"document"'])
