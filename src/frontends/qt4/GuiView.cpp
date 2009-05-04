@@ -534,7 +534,16 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 	// e.g. when clicking the close button on a background window.
 	setFocus();
 	setCurrentWorkArea(currentMainWorkArea());
-	while (GuiWorkArea * wa = currentMainWorkArea()) {
+
+	int splitter_count = d.splitter_->count();
+	for (; splitter_count > 0; --splitter_count) {
+	TabWorkArea * twa = d.tabWorkArea(0);
+			
+	int twa_count = twa->count();
+	for (; twa_count > 0; --twa_count) {
+		twa->setCurrentIndex(0);
+
+		GuiWorkArea * wa = twa->currentWorkArea();
 		Buffer * b = &wa->bufferView().buffer();
 		if (b->parent()) {
 			// This is a child document, just close the tab
@@ -587,7 +596,7 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 			return;
 		}
 	}
-
+	}
 	// Make sure that nothing will use this close to be closed View.
 	guiApp->unregisterView(this);
 
