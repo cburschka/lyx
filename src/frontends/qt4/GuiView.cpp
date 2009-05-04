@@ -538,6 +538,8 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 	int splitter_count = d.splitter_->count();
 	for (; splitter_count; --splitter_count) {
 		TabWorkArea * twa = d.tabWorkArea(0);
+		twa->showBar(false);
+		twa->updateTabTexts();
 				
 		int twa_count = twa->count();
 		for (; twa_count; --twa_count) {
