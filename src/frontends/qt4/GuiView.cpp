@@ -807,8 +807,8 @@ bool GuiView::event(QEvent * e)
 
 	case QEvent::ShortcutOverride: {
 
-#ifndef Q_WS_X11
-		// FIXME bug 4888
+// See bug 4888
+#if (!defined Q_WS_X11) || (QT_VERSION >= 0x040500)
 		if (isFullScreen() && menuBar()->isHidden()) {
 			QKeyEvent * ke = static_cast<QKeyEvent*>(e);
 			// FIXME: we should also try to detect special LyX shortcut such as
