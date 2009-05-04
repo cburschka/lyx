@@ -207,6 +207,9 @@ What's new
 
 - Fix the LFUN_SCREEN_RECENTER (bug 5526).
 
+- Restore the document tabs from the previous session in the correct
+  order (bug 5001).
+
 - Improve the selection of table cells with the keyboard (bug 1802).
 
 - Correct cursor movement in cases where the cursor jumped to a different
