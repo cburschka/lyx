@@ -999,7 +999,10 @@ bool equivalent(FileName const & l, FileName const & r)
 
 bool operator==(FileName const & lhs, FileName const & rhs)
 {
-	return lhs.absFilename() == rhs.absFilename();
+	return os::isFilesystemCaseSensitive()
+		? lhs.absFilename() == rhs.absFilename()
+		: !QString::compare(toqstr(lhs.absFilename()),
+				toqstr(rhs.absFilename()), Qt::CaseInsensitive);
 }
 
 
