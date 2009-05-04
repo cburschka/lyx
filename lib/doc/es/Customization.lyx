@@ -1,4 +1,4 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -6,9 +6,9 @@
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
 %
-% This preamble is designed to ensure that the User's Guide prints
+% This preamble is designed to ensure that the manual prints
 % out as advertised. If you mess with this preamble,
-% parts of the User's Guide may not print out as expected.  If you
+% parts of the document may not print out as expected.  If you
 % have problems LaTeXing this file, please contact 
 % the documentation team
 % email: lyx-docs@lists.lyx.org
@@ -75,8 +75,8 @@ End
 \paperfontsize 12
 \spacing single
 \use_hyperref true
-\pdf_title "LyX Configuration Manual"
-\pdf_author "LyX Team"
+\pdf_title "Manual Personalización de LyX"
+\pdf_author "Equipo LyX"
 \pdf_subject "LyX-documentation Customization"
 \pdf_keywords "LyX, documentation, customization"
 \pdf_bookmarks true
@@ -182,10 +182,10 @@ Este manual trata de las características de LyX que pueden ser modificadas
  en pantalla, opciones de impresora, envío de comandos mediante LyX Server,
  internacionalización, instalación de nuevas clases de LaTeX y de formatos
  de LyX, etc.
- Seguro que no podemos aspirar a tratar todo lo que se puede cambiar, —nuestros
+ Seguro que no podemos aspirar a tratar todo lo que se puede cambiar, —nuestross
  desarrolladores añaden características nuevas más deprisa de lo que las
  podemos documentar— pero explicaremos las modificaciones más comunes y
- esperamos orientarte en la dirección correcta para algunas más desconocidas.
+ y esperamos orientarte en la dirección correcta para algunas más desconocidas.
 \end_layout
 
 \begin_layout Standard
@@ -1240,136 +1240,9 @@ Guía del usuario
 \end_layout
 
 \begin_layout Section
-Usando el diálogo por primera vez
-\end_layout
-
-\begin_layout Standard
-El archivo 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-UserDir/preferences
-\end_layout
-
-\end_inset
-
- contendrá solo los cambios hechos al comportamiento predeterminado, parte
- del cuál es del código duro de LyX y otra parte está en el archivo de sistema
- 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-LyXDir/lyxrc.defaults
-\end_layout
-
-\end_inset
-
-.
- Ten en cuenta que en ambos archivos las líneas que comienzan con 
-\begin_inset Quotes fld
-\end_inset
-
-#
-\begin_inset Quotes frd
-\end_inset
-
- son solo comentarios y no son interpretados.
- Sin embargo, solo los administradores del sistema deberían editar 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-LyXDir/lyxrc.defaults
-\end_layout
-
-\end_inset
-
-.
- Los usuarios deberían utilizar el diálogo 
-\begin_inset Flex CharStyle:MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-Herramientas\SpecialChar \menuseparator
-Preferencias 
-\end_layout
-
-\end_inset
-
- para crear y modificar su propio archivo 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-UserDir/preferences
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Creemos que el diálogo 
-\begin_inset Flex CharStyle:MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-Herramientas\SpecialChar \menuseparator
-Preferencias 
-\end_layout
-
-\end_inset
-
- resultará bastante explícito por sí mismo.
- La mayoría de las cosas en este diálogo tiene 'ayudas emergentes' asociadas:
- basta colocar el puntero del ratón sobre alguna opción.
- Antes de fijarnos a continuación en algunos de los comandos más importantes,
- una advertencia: algunos de los cambios aplicados (p.
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
-\begin_inset space ~
-\end_inset
-
-las fuentes de pantalla) tendrán un efecto inmediato, otros no (p.
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
-\begin_inset space ~
-\end_inset
-
-los atajos de teclado).
- Si parece que no cambia nada, hay que 
-\begin_inset Flex CharStyle:MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-Guardar
-\end_layout
-
-\end_inset
-
- cambios y reiniciar LyX.
-\end_layout
-
-\begin_layout Section
-Manejo de archivos
-\end_layout
-
-\begin_layout Standard
-LyX dispone de un poderoso mecanismo para convertir a y desde cualquier
- formato de archivo usando programas externos.
-\end_layout
-
-\begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Formatos"
+name "sec:Formatos"
 
 \end_inset
 
@@ -1543,7 +1416,8 @@ Editar externamente
 
 \end_inset
 
- en un gráfico o en un material externo, por ejemplo.
+ que se muestra al hacer clic derecho en un gráfico o en un material externo,
+ por ejemplo.
 \end_layout
 
 \begin_layout Standard
@@ -1561,7 +1435,7 @@ Formato de documento
  Si esto está marcado y existe una ruta de conversión adecuada (véase 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Convertidores"
+reference "sec:Convertidores"
 
 \end_inset
 
@@ -1732,7 +1606,7 @@ png
  
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Copiadores
 \end_layout
 
@@ -2069,10 +1943,10 @@ status collapsed
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Convertidores"
+name "sec:Convertidores"
 
 \end_inset
 
@@ -2211,6 +2085,50 @@ $$p
 \end_inset
 
  La ruta al archivo de entrada
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color red
+
+\backslash
+begin_layout Labeling 
+\backslash
+labelwidthstring 00.00.0000 
+\backslash
+begin_inset Flex CharStyle:Code status collapsed
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color red
+
+\backslash
+begin_layout Plain Layout $$r 
+\backslash
+end_layout
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color red
+
+\backslash
+end_inset
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color red
+The path to the original input file (this is different from $$p when chain
+ of converters is called).
+ 
+\backslash
+end_layout 
 \end_layout
 
 \begin_layout Standard
@@ -2456,7 +2374,7 @@ dvipdfm
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Formatos"
+reference "sec:Formatos"
 
 \end_inset
 
@@ -5709,13 +5627,14 @@ default
 \end_layout
 
 \begin_layout Subsection
+Módulos de formato
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Módulos-de-formato"
 
 \end_inset
 
-Módulos de formato
+
 \end_layout
 
 \begin_layout Standard
@@ -5810,11 +5729,11 @@ La declaración del módulo debería seguir a continuación con líneas como:
 \begin_layout LyX-Code
 #Deberás añadir 
 \backslash
-theendnotes en ERT allí donde quieras 
+theendnotes en código TeX allí donde 
 \end_layout
 
 \begin_layout LyX-Code
-#que aparezcan las notas finales.
+#quieras que aparezcan las notas finales.
  
 \end_layout
 
@@ -6682,7 +6601,7 @@ ClassOptions
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:classoptions"
+reference "sub:classoptions"
 
 \end_inset
 
@@ -6773,7 +6692,7 @@ Counter
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:contadores"
+reference "sub:contadores"
 
 \end_inset
 
@@ -6817,7 +6736,7 @@ DefaultFont
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:fuentes"
+reference "sub:fuentes"
 
 \end_inset
 
@@ -6996,7 +6915,7 @@ Float
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:flotantes"
+reference "sub:flotantes"
 
 \end_inset
 
@@ -7071,7 +6990,7 @@ e., un nuevo estilo de texto.
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:estilo-del-texto"
+reference "sub:estilo-del-texto"
 
 \end_inset
 
@@ -7818,7 +7737,7 @@ ClassOptions
 
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:classoptions"
+name "sub:classoptions"
 
 \end_inset
 
@@ -8557,7 +8476,7 @@ y
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:fuentes"
+reference "sub:fuentes"
 
 \end_inset
 
@@ -8883,7 +8802,7 @@ string=""
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:contadores"
+reference "sub:contadores"
 
 \end_inset
 
@@ -8929,7 +8848,7 @@ LabelFont
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:fuentes"
+reference "sub:fuentes"
 
 \end_inset
 
@@ -9022,7 +8941,7 @@ LabelCounter
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:contadores"
+reference "sub:contadores"
 
 \end_inset
 
@@ -9076,7 +8995,7 @@ style-name
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:contadores"
+reference "sub:contadores"
 
 \end_inset
 
@@ -9362,7 +9281,7 @@ Counter
  
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:contadores"
+reference "sub:contadores"
 
 \end_inset
 
@@ -10580,7 +10499,7 @@ TextFont
  Véase la sección 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:fuentes"
+reference "sub:fuentes"
 
 \end_inset
 
@@ -10633,7 +10552,7 @@ float=0
 Flotantes
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:flotantes"
+name "sub:flotantes"
 
 \end_inset
 
@@ -11218,7 +11137,7 @@ type
 Recuadros flexibles y formato del recuadro
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:estilo-del-texto"
+name "sub:estilo-del-texto"
 
 \end_inset
 
@@ -11353,9 +11272,9 @@ InsetLayout
 \end_inset
 
  permite personalizar los parámetros de diseño de notas al pie, notas al
- margen, notas, recuadros de código TeX, ramas, listados de programa, índices,
- cuadros, tablas, algoritmos, URL, y argumentos opcionales, así como para
- definir recuadros flexibles.
+ margen, notas, recuadros de código TeX (ERT), ramas, listados de programa,
+ índices, cuadros, tablas, algoritmos, URL, y argumentos opcionales, así
+ como para definir recuadros flexibles.
 \end_layout
 
 \begin_layout Standard
@@ -11837,7 +11756,7 @@ Font
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:fuentes"
+reference "sub:fuentes"
 
 \end_inset
 
@@ -11893,7 +11812,7 @@ e.
 \begin_inset space \space{}
 \end_inset
 
-en ERT o URL.
+en código TeX o URL.
  Un parche.
 \end_layout
 
@@ -11991,7 +11910,7 @@ LabelFont
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:fuentes"
+reference "sub:fuentes"
 
 \end_inset
 
@@ -12020,8 +11939,8 @@ LabelString
 \end_inset
 
  Lo que se mostrará sobre el botón u otra parte como etiqueta del recuadro.
- Algunos tipos de recuadro (ERT y ramas) modifican esta etiqueta sobre la
- marcha.
+ Algunos tipos de recuadro (código TeX y ramas) modifican esta etiqueta
+ sobre la marcha.
 \end_layout
 
 \begin_layout Description
@@ -12340,7 +12259,7 @@ reference "des:Requires"
 Contadores
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:contadores"
+name "sub:contadores"
 
 \end_inset
 
@@ -12823,7 +12742,7 @@ section
 Descripción de las fuentes
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:fuentes"
+name "sub:fuentes"
 
 \end_inset
 
@@ -13677,19 +13596,6 @@ Es relativamente fácil añadir en LyX definiciones personalizadas de plantillas
  externas.
  Sin embargo, hay que ser consciente de que hacer esto de manera descuidada
  generará muy probablemente un agujero de seguridad fácil de explotar.
- Así pues, antes de hacer esto, es recomendable leer la discusión sobre
- seguridad en la sección
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Security-discussion"
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Standard
@@ -14138,7 +14044,7 @@ InputFormat
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Formatos"
+reference "sec:Formatos"
 
 \end_inset
 
@@ -15246,182 +15152,6 @@ status collapsed
 \end_inset
 
  necesita el nombre relativo para reescribir el contenido del archivo.
-\end_layout
-
-\begin_layout Section
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Security-discussion"
-
-\end_inset
-
-Security discussion
-\end_layout
-
-\begin_layout Standard
-\begin_inset Box Shadowbox
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-WARNING: This section is definitely outdated.
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-N.
- del T.: Sección definitivamente anticuada, por lo que no merece la pena
- traducirla.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The external material feature interfaces with a lot of external programs
- and does so automatically, so we have to consider the security implications
- of this.
- In particular, since you have the option of including your own filenames
- and/or parameter strings and those are expanded into a command, it seems
- that it would be possible to create a malicious document which executes
- arbitrary commands when a user views or prints the document.
- This is something we definately want to avoid.
-\end_layout
-
-\begin_layout Standard
-However, since the external program commands are specified in the template
- configuration file only, there are no security issues if LyX is properly
- configured with safe templates only.
- This is so because the external programs are invoked with the 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-execvp
-\end_layout
-
-\end_inset
-
--system call rather than the 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-system
-\end_layout
-
-\end_inset
-
- system-call, so it's not possible to execute arbitrary commands from the
- filename or parameter section via the shell.
-\end_layout
-
-\begin_layout Standard
-This also implies that you are restricted in what command strings you can
- use in the external material templates.
- In particular, pipes and redirection are not readily available.
- This has to be so if LyX should remain safe.
- If you want to use some of the shell features, you should write a safe
- script to do this in a controlled manner, and then invoke the script from
- the command string.
- In the 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-lib/scripts
-\end_layout
-
-\end_inset
-
- directory of the LyX installation, you can find a safe wrapper script 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-general_command_wrapper.py
-\end_layout
-
-\end_inset
-
- that supports redirection of input and output.
- That can serve as an example for how to write safe template scripts.
- For a more advanced example that uses 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-fork
-\end_layout
-
-\end_inset
-
- and friends, take a look at the 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-pic2ascii.py
-\end_layout
-
-\end_inset
-
- converter script.
-\end_layout
-
-\begin_layout Standard
-It is possible to design a template that interacts directly with the shell,
- but since this would allow a malicious user to execute arbitrary commands
- by writing clever filenames and/or parameters, we generally recommend that
- you only use safe scripts that work with the 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-execvp
-\end_layout
-
-\end_inset
-
- system call in a controlled manner.
- Of course, for use in a controlled environment, it can be tempting to just
- fall back to use ordinary shell scripts.
- If you do so, be aware that you 
-\emph on
-will
-\emph default
- provide an easily exploitable security hole in your system.
- Of course it stands to reason that such unsafe templates will never be
- included in the standard LyX distribution, although we do encourage people
- to submit new templates in the open source tradition.
- But LyX as shipped from the official distribution channels will never have
- unsafe templates.
-\end_layout
-
-\begin_layout Standard
-Including external material provides a lot of power, and you have to be
- careful not to introduce security hazards with this power.
- A subtle error in a single line in an innocent looking script can open
- the door to huge security problems.
- So if you do not fully understand the issues, we recommend that you consult
- a knowledgable security professional or the LyX development team if you
- have any questions about whether a given template is safe or not.
- And do this before you use it in an uncontrolled environment.
 \end_layout
 
 \end_body
