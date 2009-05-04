@@ -1207,8 +1207,10 @@ void GuiApplication::restoreGuiSession()
 	// do not add to the lastfile list since these files are restored from
 	// last session, and should be already there (regular files), or should
 	// not be added at all (help files).
-	for_each(lastopened.begin(), lastopened.end(),
-		bind(&GuiView::loadDocument, current_view_, _1, false));
+	// Note that we open them in reverse order. This is because we close
+	// buffers also in reverse order (aesthetically motivated).
+	for (size_t i = lastopened.size(); i > 0; --i)
+		current_view_->loadDocument(lastopened[i - 1], false);
 
 	// clear this list to save a few bytes of RAM
 	session.lastOpened().clear();
