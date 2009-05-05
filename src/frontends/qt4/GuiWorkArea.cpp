@@ -1461,8 +1461,7 @@ bool TabWorkArea::removeWorkArea(GuiWorkArea * work_area)
 			setFullScreen(true);
 		else
 			// Hide tabbar if there's only one tab.
-			if (tabBar()->isVisible() && count() <= 1)
-				showBar(false);
+			showBar(count() > 1);
 	} else {
 		lastWorkAreaRemoved();
 	}
