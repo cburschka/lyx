@@ -552,7 +552,7 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 		env = true; //We have opened a new environment
 	}
 	if (f.underbar() == FONT_ON) {
-		os << "\\underbar{";
+		os << "\\uline{";
 		count += 10;
 		env = true; //We have opened a new environment
 	}
@@ -817,6 +817,11 @@ void Font::validate(LaTeXFeatures & features) const
 		LYXERR(Debug::LATEX, "font.noun: " << bits_.noun());
 		features.require("noun");
 		LYXERR(Debug::LATEX, "Noun enabled. Font: " << to_utf8(stateText(0)));
+	}
+	if (bits_.underbar() == FONT_ON) {
+		LYXERR(Debug::LATEX, "font.underline: " << bits_.strikeout());
+		features.require("ulem");
+		LYXERR(Debug::LATEX, "Underline enabled. Font: " << to_utf8(stateText(0)));
 	}
 	if (bits_.strikeout() == FONT_ON) {
 		LYXERR(Debug::LATEX, "font.strikeout: " << bits_.strikeout());
