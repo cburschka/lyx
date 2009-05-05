@@ -533,7 +533,8 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 	// it can happen that this event arrives without selecting the view,
 	// e.g. when clicking the close button on a background window.
 	setFocus();
-	setCurrentWorkArea(currentMainWorkArea());
+	GuiWorkArea * active_wa = currentMainWorkArea();
+	setCurrentWorkArea(active_wa);
 
 	int splitter_count = d.splitter_->count();
 	for (; splitter_count; --splitter_count) {
@@ -544,11 +545,12 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 			twa->setCurrentIndex(twa_count-1);
 
 			GuiWorkArea * wa = twa->currentWorkArea();
+			bool const is_active_wa = active_wa == wa;
 			Buffer * b = &wa->bufferView().buffer();
 			if (b->parent()) {
 				// This is a child document, just close the tab
 				// after saving but keep the file loaded.
-				if (!closeBuffer(*b, true)) {
+				if (!closeBuffer(*b, true, is_active_wa)) {
 					closing_ = false;
 					close_event->ignore();
 					return;
@@ -591,7 +593,7 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 			}
 			// closeBuffer() needs buffer workArea still alive and
 			// set as currrent one, and destroys it
-			if (b && !closeBuffer(*b, true)) {
+			if (b && !closeBuffer(*b, true, is_active_wa)) {
 				closing_ = false;
 				close_event->ignore();
 				return;
@@ -1898,7 +1900,7 @@ bool GuiView::closeBuffer()
 }
 
 
-bool GuiView::closeBuffer(Buffer & buf, bool tolastopened)
+bool GuiView::closeBuffer(Buffer & buf, bool tolastopened, bool mark_active)
 {
 	// goto bookmark to update bookmark pit.
 	//FIXME: we should update only the bookmarks related to this buffer!
@@ -1911,7 +1913,7 @@ bool GuiView::closeBuffer(Buffer & buf, bool tolastopened)
 		// do not save childs if their master
 		// is opened as well
 		if (tolastopened)
-			theSession().lastOpened().add(buf.fileName());
+			theSession().lastOpened().add(buf.fileName(), mark_active);
 		if (buf.parent())
 			// Don't close child documents.
 			removeWorkArea(currentMainWorkArea());
@@ -1955,7 +1957,7 @@ bool GuiView::closeBuffer(Buffer & buf, bool tolastopened)
 
 	// save file names to .lyx/session
 	if (tolastopened)
-		theSession().lastOpened().add(buf.fileName());
+		theSession().lastOpened().add(buf.fileName(), mark_active);
 
 	if (buf.parent())
 		// Don't close child documents.

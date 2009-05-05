@@ -106,7 +106,17 @@ class LastOpenedSection : SessionSection
 {
 public:
 	///
-	typedef std::vector<support::FileName> LastOpened;
+	struct LastOpenedFile {
+		LastOpenedFile() : file_name(), active(false) {}
+
+		LastOpenedFile(support::FileName file_name_, bool active_)
+			: file_name(file_name_), active(active_) {}
+
+		support::FileName file_name;
+		bool active;
+	};
+	///
+	typedef std::vector<LastOpenedFile> LastOpened;
 
 public:
 	///
@@ -121,7 +131,7 @@ public:
 	/** add file to lastopened file list
 	    @param file filename to add
 	*/
-	void add(support::FileName const & file);
+	void add(support::FileName const & file, bool active = false);
 
 	/** clear lastopened file list
 	 */

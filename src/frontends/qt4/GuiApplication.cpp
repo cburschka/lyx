@@ -1203,14 +1203,25 @@ void GuiApplication::restoreGuiSession()
 		return;
 
 	Session & session = theSession();
-	vector<FileName> const & lastopened = session.lastOpened().getfiles();
+	LastOpenedSection::LastOpened const & lastopened = 
+		session.lastOpened().getfiles();
+
+	FileName active_file;
 	// do not add to the lastfile list since these files are restored from
 	// last session, and should be already there (regular files), or should
 	// not be added at all (help files).
 	// Note that we open them in reverse order. This is because we close
 	// buffers also in reverse order (aesthetically motivated).
-	for (size_t i = lastopened.size(); i > 0; --i)
-		current_view_->loadDocument(lastopened[i - 1], false);
+	for (size_t i = lastopened.size(); i > 0; --i) {
+		current_view_->loadDocument(lastopened[i - 1].file_name, false);
+		if (lastopened[i - 1].active)
+			active_file = lastopened[i - 1].file_name;
+	}
+
+	// Restore last active buffer
+	Buffer * buffer = theBufferList().getBuffer(active_file);
+	if (buffer)
+		current_view_->setBuffer(buffer);
 
 	// clear this list to save a few bytes of RAM
 	session.lastOpened().clear();

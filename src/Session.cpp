@@ -111,14 +111,31 @@ void LastOpenedSection::read(istream & is)
 		if (c == '[')
 			break;
 		getline(is, tmp);
-		if (tmp.empty() || tmp[0] == '#' || tmp[0] == ' ' || !FileName::isAbsolute(tmp))
+		if (tmp.empty() || tmp[0] == '#' || tmp[0] == ' ')
 			continue;
 
-		FileName const file(tmp);
-		if (file.exists() && !file.isDirectory())
-			lastopened.push_back(file);
-		else
-			LYXERR(Debug::INIT, "LyX: Warning: Ignore last opened file: " << tmp);
+		try {
+			LastOpenedFile lof;
+			istringstream itmp(tmp);
+			itmp >> lof.active;
+			itmp.ignore(2);  // ignore ", "
+			string fname;
+			getline(itmp, fname);
+			if (!FileName::isAbsolute(fname))
+				continue;
+
+			FileName const file(fname);
+			if (file.exists() && !file.isDirectory()) {
+				lof.file_name = file;
+				lastopened.push_back(lof);
+			} else {
+				LYXERR(Debug::INIT, 
+					"LyX: Warning: Ignore last opened file: " << tmp);
+			}
+		} catch (...) {
+			LYXERR(Debug::INIT,
+				"LyX: Warning: unknown state of last opened file: " << tmp);
+		}
 	} while (is.good());
 }
 
@@ -126,14 +143,15 @@ void LastOpenedSection::read(istream & is)
 void LastOpenedSection::write(ostream & os) const
 {
 	os << '\n' << sec_lastopened << '\n';
-	copy(lastopened.begin(), lastopened.end(),
-	     ostream_iterator<FileName>(os, "\n"));
+	for (size_t i = 0; i < lastopened.size(); ++i)
+		os << lastopened[i].active << ", " << lastopened[i].file_name << '\n';
 }
 
 
-void LastOpenedSection::add(FileName const & file)
+void LastOpenedSection::add(FileName const & file, bool active)
 {
-	lastopened.push_back(file);
+	LastOpenedFile lof(file, active);
+	lastopened.push_back(lof);
 }
 
 

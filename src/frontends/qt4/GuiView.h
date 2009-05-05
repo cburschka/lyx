@@ -294,7 +294,9 @@ private:
 	///
 	bool saveBuffer(Buffer & b);
 	///
-	bool closeBuffer(Buffer & buf, bool tolastopened = false);
+	bool closeBuffer(Buffer & buf, bool tolastopened = false,
+		bool mark_active = false);
+	///
 	enum NextOrPrevious {
 		NEXTBUFFER,
 		PREVBUFFER
