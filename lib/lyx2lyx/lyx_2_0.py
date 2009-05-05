@@ -604,6 +604,7 @@ def revert_printindexall(document):
             document.body[i:k+1] = subst
         i = i + 1
 
+
 def revert_strikeout(document):
     " Reverts \\strikeout character style "
     while True:
