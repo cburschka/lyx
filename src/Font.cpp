@@ -177,13 +177,13 @@ docstring const stateText(FontInfo const & f)
 			      _(GUIMiscNames[f.underbar()]));
 	if (f.strikeout() != FONT_INHERIT)
 		os << bformat(_("Strikeout %1$s, "),
-			      _(GUIMiscNames[f.uuline()]));
+			      _(GUIMiscNames[f.strikeout()]));
 	if (f.uuline() != FONT_INHERIT)
 		os << bformat(_("Double underline %1$s, "),
-			      _(GUIMiscNames[f.uwave()]));
+			      _(GUIMiscNames[f.uuline()]));
 	if (f.uwave() != FONT_INHERIT)
 		os << bformat(_("Wavy underline %1$s, "),
-			      _(GUIMiscNames[f.strikeout()]));
+			      _(GUIMiscNames[f.uwave()]));
 	if (f.noun() != FONT_INHERIT)
 		os << bformat(_("Noun %1$s, "),
 			      _(GUIMiscNames[f.noun()]));
