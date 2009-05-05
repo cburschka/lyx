@@ -191,6 +191,12 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 	} else if (token == "\\strikeout") {
 		lex.next();
 		font.fontInfo().setStrikeout(font.setLyXMisc(lex.getString()));
+	} else if (token == "\\uuline") {
+		lex.next();
+		font.fontInfo().setUuline(font.setLyXMisc(lex.getString()));
+	} else if (token == "\\uwave") {
+		lex.next();
+		font.fontInfo().setUwave(font.setLyXMisc(lex.getString()));
 	} else if (token == "\\noun") {
 		lex.next();
 		font.fontInfo().setNoun(font.setLyXMisc(lex.getString()));

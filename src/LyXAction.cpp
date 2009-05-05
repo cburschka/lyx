@@ -1228,6 +1228,22 @@ void LyXAction::init()
  */
 		{ LFUN_FONT_UNDERLINE, "font-underline", Noop, Layout },
 /*!
+ * \var lyx::FuncCode lyx::LFUN_FONT_UULINE
+ * \li Action: Toggles double underline in the font (selection-wise).
+ * \li Syntax: font-underunderline
+ * \li Origin: sanda, 5 May 2009
+ * \endvar
+ */
+		{ LFUN_FONT_UULINE, "font-underunderline", Noop, Layout },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_FONT_UWAVE
+ * \li Action: Toggles wavy underline in the font (selection-wise).
+ * \li Syntax: font-underwave
+ * \li Origin: sanda, 5 May 2009
+ * \endvar
+ */
+		{ LFUN_FONT_UWAVE, "font-underwave", Noop, Layout },
+/*!
  * \var lyx::FuncCode lyx::LFUN_FONT_STRIKEOUT
  * \li Action: Toggles strikeout (strike-through) in the font (selection-wise).
  * \li Syntax: font-strikeout

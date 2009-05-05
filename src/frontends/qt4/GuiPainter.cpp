@@ -338,6 +338,10 @@ int GuiPainter::text(int x, int y, docstring const & s,
 			underline(f, x, y, textwidth);
 		if (f.strikeout() == FONT_ON)
 			strikeoutLine(f, x, y, textwidth);
+		if (f.uuline() == FONT_ON)
+			doubleUnderline(f, x, y, textwidth);
+		if (f.uwave() == FONT_ON)
+			wavyHorizontalLine(x, y, textwidth, f.realColor().baseColor);
 		return textwidth;
 	}
 
@@ -349,6 +353,11 @@ int GuiPainter::text(int x, int y, docstring const & s,
 		underline(f, x, y, textwidth);
 	if (f.strikeout() == FONT_ON)
 		strikeoutLine(f, x, y, textwidth);
+	if (f.uuline() == FONT_ON)
+		doubleUnderline(f, x, y, textwidth);
+	if (f.uwave() == FONT_ON)
+		// f.color() doesn't work on some circumstances
+		wavyHorizontalLine(x, y, textwidth,  f.realColor().baseColor);
 
 	if (!isDrawingEnabled())
 		return textwidth;
@@ -521,6 +530,17 @@ int GuiPainter::preeditText(int x, int y, char_type c,
 	text(x, y - descent + 1, c, temp_font);
 
 	return width;
+}
+
+
+void GuiPainter::doubleUnderline(FontInfo const & f, int x, int y, int width)
+{
+	FontMetrics const & fm = theFontMetrics(f);
+
+	int const below = max(fm.maxDescent() / 2, 2);
+
+	line(x, y + below, x + width, y + below, f.realColor());
+	line(x, y + below - 2, x + width, y + below - 2, f.realColor());
 }
 
 

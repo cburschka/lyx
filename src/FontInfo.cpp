@@ -33,6 +33,8 @@ FontInfo const sane_font(
 	FONT_OFF,
 	FONT_OFF,
 	FONT_OFF,
+	FONT_OFF,
+	FONT_OFF,
 	FONT_OFF);
 
 FontInfo const inherit_font(
@@ -46,6 +48,8 @@ FontInfo const inherit_font(
 	FONT_INHERIT,
 	FONT_INHERIT,
 	FONT_INHERIT,
+	FONT_INHERIT,
+	FONT_INHERIT,
 	FONT_OFF);
 
 FontInfo const ignore_font(
@@ -55,6 +59,8 @@ FontInfo const ignore_font(
 	FONT_SIZE_IGNORE,
 	Color_ignore,
 	Color_ignore,
+	FONT_IGNORE,
+	FONT_IGNORE,
 	FONT_IGNORE,
 	FONT_IGNORE,
 	FONT_IGNORE,
@@ -146,6 +152,10 @@ void FontInfo::reduce(FontInfo const & tmplt)
 		underbar_ = FONT_INHERIT;
 	if (strikeout_ == tmplt.strikeout_)
 		strikeout_ = FONT_INHERIT;
+	if (uuline_ == tmplt.uuline_)
+		uuline_ = FONT_INHERIT;
+	if (uwave_ == tmplt.uwave_)
+		uwave_ = FONT_INHERIT;
 	if (noun_ == tmplt.noun_)
 		noun_ = FONT_INHERIT;
 	if (color_ == tmplt.color_)
@@ -183,6 +193,12 @@ FontInfo & FontInfo::realize(FontInfo const & tmplt)
 
 	if (strikeout_ == FONT_INHERIT)
 		strikeout_ = tmplt.strikeout_;
+
+	if (uuline_ == FONT_INHERIT)
+		uuline_ = tmplt.uuline_;
+
+	if (uwave_ == FONT_INHERIT)
+		uwave_ = tmplt.uwave_;
 
 	if (noun_ == FONT_INHERIT)
 		noun_ = tmplt.noun_;
@@ -261,6 +277,8 @@ void FontInfo::update(FontInfo const & newfont, bool toggleall)
 	setEmph(setMisc(newfont.emph_, emph_));
 	setUnderbar(setMisc(newfont.underbar_, underbar_));
 	setStrikeout(setMisc(newfont.strikeout_, strikeout_));
+	setUuline(setMisc(newfont.uuline_, uuline_));
+	setUwave(setMisc(newfont.uwave_, uwave_));
 	setNoun(setMisc(newfont.noun_, noun_));
 	setNumber(setMisc(newfont.number_, number_));
 
@@ -281,6 +299,7 @@ bool FontInfo::resolved() const
 	return (family_ != INHERIT_FAMILY && series_ != INHERIT_SERIES
 		&& shape_ != INHERIT_SHAPE && size_ != FONT_SIZE_INHERIT
 		&& emph_ != FONT_INHERIT && underbar_ != FONT_INHERIT
+		&& uuline_ != FONT_INHERIT && uwave_ != FONT_INHERIT
 		&& strikeout_ != FONT_INHERIT && noun_ != FONT_INHERIT
 		&& color_ != Color_inherit
 		&& background_ != Color_inherit);

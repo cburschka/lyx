@@ -42,11 +42,14 @@ public:
 		FontState emph,
 		FontState underbar,
 		FontState strikeout,
+		FontState uuline,
+		FontState uwave,
 		FontState noun,
 		FontState number)
 		: family_(family), series_(series), shape_(shape), size_(size), 
 		color_(color), background_(background), paint_color_(), emph_(emph),
-		underbar_(underbar), strikeout_(strikeout), noun_(noun), number_(number)
+		underbar_(underbar), strikeout_(strikeout), uuline_(uuline),
+		uwave_(uwave), noun_(noun), number_(number)
 	{}
 
 	/// Decreases font size by one
@@ -70,6 +73,10 @@ public:
 	void setUnderbar(FontState u) { underbar_ = u; }
 	FontState strikeout() const { return strikeout_; }
 	void setStrikeout(FontState s) { strikeout_ = s; }
+	FontState uuline() const { return uuline_; }
+	void setUuline(FontState s) { uuline_ = s; }
+	FontState uwave() const { return uwave_; }
+	void setUwave(FontState s) { uwave_ = s; }
 	FontState noun() const { return noun_; }
 	void setNoun(FontState n) { noun_ = n; }
 	FontState number() const { return number_; }
@@ -150,6 +157,10 @@ private:
 	///
 	FontState strikeout_;
 	///
+	FontState uuline_;
+	///
+	FontState uwave_;
+	///
 	FontState noun_;
 	///
 	FontState number_;
@@ -167,6 +178,8 @@ inline bool operator==(FontInfo const & lhs, FontInfo const & rhs)
 		&& lhs.emph_ == rhs.emph_
 		&& lhs.underbar_ == rhs.underbar_
 		&& lhs.strikeout_ == rhs.strikeout_
+		&& lhs.uuline_ == rhs.uuline_
+		&& lhs.uwave_ == rhs.uwave_
 		&& lhs.noun_ == rhs.noun_
 		&& lhs.number_ == rhs.number_;
 }

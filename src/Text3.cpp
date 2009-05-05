@@ -1728,6 +1728,21 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		toggleAndShow(cur, this, font);
 		break;
 	}
+
+	case LFUN_FONT_UULINE: {
+		Font font(ignore_font, ignore_language);
+		font.fontInfo().setUuline(FONT_TOGGLE);
+		toggleAndShow(cur, this, font);
+		break;
+	}
+
+	case LFUN_FONT_UWAVE: {
+		Font font(ignore_font, ignore_language);
+		font.fontInfo().setUwave(FONT_TOGGLE);
+		toggleAndShow(cur, this, font);
+		break;
+	}
+
 	case LFUN_FONT_UNDERLINE: {
 		Font font(ignore_font, ignore_language);
 		font.fontInfo().setUnderbar(FONT_TOGGLE);
@@ -2430,6 +2445,8 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_FONT_DEFAULT:
 	case LFUN_FONT_UNDERLINE:
 	case LFUN_FONT_STRIKEOUT:
+	case LFUN_FONT_UULINE:
+	case LFUN_FONT_UWAVE:
 	case LFUN_FONT_SIZE:
 	case LFUN_LANGUAGE:
 	case LFUN_TEXTSTYLE_APPLY:

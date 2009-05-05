@@ -613,6 +613,20 @@ def revert_strikeout(document):
         del document.body[i]
 
 
+def revert_uulinewave(document):
+    " Reverts \\uuline and \\uwave character style "
+    while True:
+        i = find_token(document.body, '\\uuline', 0)
+        if i == -1:
+            break
+        del document.body[i]
+    while True:
+        i = find_token(document.body, '\\uwave', 0)
+        if i == -1:
+            return
+        del document.body[i]
+
+
 ##
 # Conversion hub
 #
@@ -627,10 +641,12 @@ convert = [[346, []],
            [352, [convert_splitindex]],
            [353, []],
            [354, []],
-           [355, []]
+           [355, []],
+           [356, []]
           ]
 
-revert =  [[354, [revert_strikeout]],
+revert =  [[355, [revert_uulinewave]],
+           [354, [revert_strikeout]],
            [353, [revert_printindexall]],
            [352, [revert_subindex]],
            [351, [revert_splitindex]],

@@ -3713,6 +3713,8 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_FONT_SIZE:
 	case LFUN_FONT_UNDERLINE:
 	case LFUN_FONT_STRIKEOUT:
+	case LFUN_FONT_UULINE:
+	case LFUN_FONT_UWAVE:
 	case LFUN_LANGUAGE:
 	case LFUN_WORD_CAPITALIZE:
 	case LFUN_WORD_UPCASE:

@@ -76,6 +76,8 @@ static QList<BarPair> barData()
 	bars << BarPair(qt_("No change"), IGNORE);
 	bars << BarPair(qt_("Emph"),      EMPH_TOGGLE);
 	bars << BarPair(qt_("Underbar"),  UNDERBAR_TOGGLE);
+	bars << BarPair(qt_("Double underbar"),  UULINE_TOGGLE);
+	bars << BarPair(qt_("Wavy underbar"),  UWAVE_TOGGLE);
 	bars << BarPair(qt_("Strikeout"),  STRIKEOUT_TOGGLE);
 	bars << BarPair(qt_("Noun"),      NOUN_TOGGLE);
 	bars << BarPair(qt_("Reset"),     INHERIT);
@@ -280,6 +282,12 @@ static FontState getBar(FontInfo const & fi)
 	if (fi.strikeout() == FONT_TOGGLE)
 		return STRIKEOUT_TOGGLE;
 
+	if (fi.uuline() == FONT_TOGGLE)
+		return UULINE_TOGGLE;
+
+	if (fi.uwave() == FONT_TOGGLE)
+		return UWAVE_TOGGLE;
+
 	if (fi.noun() == FONT_TOGGLE)
 		return NOUN_TOGGLE;
 
@@ -314,6 +322,14 @@ static void setBar(FontInfo & fi, FontState val)
 		fi.setStrikeout(FONT_TOGGLE);
 		break;
 
+	case UULINE_TOGGLE:
+		fi.setUuline(FONT_TOGGLE);
+		break;
+
+	case UWAVE_TOGGLE:
+		fi.setUwave(FONT_TOGGLE);
+		break;
+
 	case NOUN_TOGGLE:
 		fi.setNoun(FONT_TOGGLE);
 		break;
@@ -322,6 +338,8 @@ static void setBar(FontInfo & fi, FontState val)
 		fi.setEmph(FONT_INHERIT);
 		fi.setUnderbar(FONT_INHERIT);
 		fi.setStrikeout(FONT_INHERIT);
+		fi.setUuline(FONT_INHERIT);
+		fi.setUwave(FONT_INHERIT);
 		fi.setNoun(FONT_INHERIT);
 		break;
 	}

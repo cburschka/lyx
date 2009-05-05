@@ -129,8 +129,13 @@ private:
 	/// check the font, and if set, draw an dashed underline
 	void dashedUnderline(FontInfo const & f,
 		int x, int y, int width);
+
 	/// check the font, and if set, draw an strike-through line
 	void strikeoutLine(FontInfo const & f,
+		int x, int y, int width);
+
+	/// check the font, and if set, draw double underline
+	void doubleUnderline(FontInfo const & f,
 		int x, int y, int width);
 
 	/// draw a bevelled button border

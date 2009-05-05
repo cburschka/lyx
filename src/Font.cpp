@@ -177,6 +177,12 @@ docstring const stateText(FontInfo const & f)
 			      _(GUIMiscNames[f.underbar()]));
 	if (f.strikeout() != FONT_INHERIT)
 		os << bformat(_("Strikeout %1$s, "),
+			      _(GUIMiscNames[f.uuline()]));
+	if (f.uuline() != FONT_INHERIT)
+		os << bformat(_("Double underline %1$s, "),
+			      _(GUIMiscNames[f.uwave()]));
+	if (f.uwave() != FONT_INHERIT)
+		os << bformat(_("Wavy underline %1$s, "),
 			      _(GUIMiscNames[f.strikeout()]));
 	if (f.noun() != FONT_INHERIT)
 		os << bformat(_("Noun %1$s, "),
@@ -334,6 +340,10 @@ FontInfo lyxRead(Lexer & lex, FontInfo const & fi)
 				f.setUnderbar(FONT_OFF);
 			} else if (ttok == "no_strikeout") {
 				f.setStrikeout(FONT_OFF);
+			} else if (ttok == "no_uuline") {
+				f.setUuline(FONT_OFF);
+			} else if (ttok == "no_uwave") {
+				f.setUwave(FONT_OFF);
 			} else if (ttok == "no_emph") {
 				f.setEmph(FONT_OFF);
 			} else if (ttok == "no_noun") {
@@ -344,6 +354,10 @@ FontInfo lyxRead(Lexer & lex, FontInfo const & fi)
 				f.setUnderbar(FONT_ON);
 			} else if (ttok == "strikeout") {
 				f.setStrikeout(FONT_ON);
+			} else if (ttok == "uuline") {
+				f.setUuline(FONT_ON);
+			} else if (ttok == "uwave") {
+				f.setUwave(FONT_ON);
 			} else if (ttok == "noun") {
 				f.setNoun(FONT_ON);
 			} else {
@@ -397,6 +411,12 @@ void Font::lyxWriteChanges(Font const & orgfont,
 	}
 	if (orgfont.fontInfo().strikeout() != bits_.strikeout()) {
 		os << "\\strikeout " << LyXMiscNames[bits_.strikeout()] << "\n";
+	}
+	if (orgfont.fontInfo().uuline() != bits_.uuline()) {
+		os << "\\uuline " << LyXMiscNames[bits_.uuline()] << "\n";
+	}
+	if (orgfont.fontInfo().uwave() != bits_.uwave()) {
+		os << "\\uwave " << LyXMiscNames[bits_.uwave()] << "\n";
 	}
 	if (orgfont.fontInfo().noun() != bits_.noun()) {
 		os << "\\noun " << LyXMiscNames[bits_.noun()] << "\n";
@@ -541,6 +561,16 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 		count += 6;
 		env = true; //We have opened a new environment
 	}
+	if (f.uuline() == FONT_ON) {
+		os << "\\uuline{";
+		count += 8;
+		env = true; //We have opened a new environment
+	}
+	if (f.uwave() == FONT_ON) {
+		os << "\\uwave{";
+		count += 7;
+		env = true; //We have opened a new environment
+	}
 	// \noun{} is a LyX special macro
 	if (f.noun() == FONT_ON) {
 		os << "\\noun{";
@@ -615,6 +645,16 @@ int Font::latexWriteEndChanges(odocstream & os, BufferParams const & bparams,
 		++count;
 		env = true; // Size change need not bother about closing env.
 	}
+	if (f.uuline() == FONT_ON) {
+		os << '}';
+		++count;
+		env = true; // Size change need not bother about closing env.
+	}
+	if (f.uwave() == FONT_ON) {
+		os << '}';
+		++count;
+		env = true; // Size change need not bother about closing env.
+	}
 	if (f.noun() == FONT_ON) {
 		os << '}';
 		++count;
@@ -675,6 +715,8 @@ string Font::toString(bool const toggle) const
 	   << "emph " << bits_.emph() << '\n'
 	   << "underbar " << bits_.underbar() << '\n'
 	   << "strikeout " << bits_.strikeout() << '\n'
+	   << "uuline " << bits_.uuline() << '\n'
+	   << "uwave " << bits_.uwave() << '\n'
 	   << "noun " << bits_.noun() << '\n'
 	   << "number " << bits_.number() << '\n'
 	   << "color " << bits_.color() << '\n'
@@ -717,6 +759,7 @@ bool Font::fromString(string const & data, bool & toggle)
 
 		} else if (token == "emph" || token == "underbar" ||
 			   token == "noun" || token == "number" ||
+			   token == "uuline" || token == "uwave" ||
 			   token == "strikeout") {
 
 			int const next = lex.getInteger();
@@ -728,6 +771,10 @@ bool Font::fromString(string const & data, bool & toggle)
 				bits_.setUnderbar(misc);
 			else if (token == "strikeout")
 				bits_.setStrikeout(misc);
+			else if (token == "uuline")
+				bits_.setUuline(misc);
+			else if (token == "uwave")
+				bits_.setUwave(misc);
 			else if (token == "noun")
 				bits_.setNoun(misc);
 			else if (token == "number")
@@ -776,6 +823,16 @@ void Font::validate(LaTeXFeatures & features) const
 		features.require("ulem");
 		LYXERR(Debug::LATEX, "Strikeout enabled. Font: " << to_utf8(stateText(0)));
 	}
+	if (bits_.uuline() == FONT_ON) {
+		LYXERR(Debug::LATEX, "font.uuline: " << bits_.uuline());
+		features.require("ulem");
+		LYXERR(Debug::LATEX, "Double underline enabled. Font: " << to_utf8(stateText(0)));
+	}
+	if (bits_.uwave() == FONT_ON) {
+		LYXERR(Debug::LATEX, "font.uwave: " << bits_.uwave());
+		features.require("ulem");
+		LYXERR(Debug::LATEX, "Wavy underline enabled. Font: " << to_utf8(stateText(0)));
+	}
 	switch (bits_.color()) {
 		case Color_none:
 		case Color_inherit:
@@ -821,6 +878,8 @@ ostream & operator<<(ostream & os, FontInfo const & f)
 		<< " emph " << f.emph()
 		<< " underbar " << f.underbar()
 		<< " strikeout " << f.strikeout()
+		<< " uuline " << f.uuline()
+		<< " uwave " << f.uwave()
 		<< " noun " << f.noun()
 		<< " number " << f.number();
 }

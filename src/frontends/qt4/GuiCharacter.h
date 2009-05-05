@@ -39,6 +39,10 @@ enum FontState {
 	///
 	STRIKEOUT_TOGGLE,
 	///
+	UULINE_TOGGLE,
+	///
+	UWAVE_TOGGLE,
+	///
 	INHERIT
 };
 
