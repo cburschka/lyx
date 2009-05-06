@@ -22,8 +22,7 @@ class BufferParams;
 class WordLangTuple;
 
 /**
- * Base class of all spellchecker implementations.
- * The class can be instantiated but will have no functionality.
+ * Pure virtual base class of all spellchecker implementations.
  */
 class SpellChecker {
 public:
