@@ -552,23 +552,23 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 		env = true; //We have opened a new environment
 	}
 	if (f.underbar() == FONT_ON) {
-		os << "\\uline{";
+		os << "\\lyxuline{";
 		count += 10;
 		env = true; //We have opened a new environment
 	}
 	if (f.strikeout() == FONT_ON) {
-		os << "\\sout{";
-		count += 6;
+		os << "\\lyxsout{";
+		count += 9;
 		env = true; //We have opened a new environment
 	}
 	if (f.uuline() == FONT_ON) {
-		os << "\\uuline{";
-		count += 8;
+		os << "\\lyxuuline{";
+		count += 11;
 		env = true; //We have opened a new environment
 	}
 	if (f.uwave() == FONT_ON) {
-		os << "\\uwave{";
-		count += 7;
+		os << "\\lyxuwave{";
+		count += 10;
 		env = true; //We have opened a new environment
 	}
 	// \noun{} is a LyX special macro
@@ -819,23 +819,31 @@ void Font::validate(LaTeXFeatures & features) const
 		LYXERR(Debug::LATEX, "Noun enabled. Font: " << to_utf8(stateText(0)));
 	}
 	if (bits_.underbar() == FONT_ON) {
-		LYXERR(Debug::LATEX, "font.underline: " << bits_.strikeout());
+		LYXERR(Debug::LATEX, "font.underline: " << bits_.underbar());
 		features.require("ulem");
+		features.require("boxcite");
+		features.require("lyxuline");
 		LYXERR(Debug::LATEX, "Underline enabled. Font: " << to_utf8(stateText(0)));
 	}
 	if (bits_.strikeout() == FONT_ON) {
 		LYXERR(Debug::LATEX, "font.strikeout: " << bits_.strikeout());
 		features.require("ulem");
+		features.require("boxcite");
+		features.require("lyxsout");
 		LYXERR(Debug::LATEX, "Strikeout enabled. Font: " << to_utf8(stateText(0)));
 	}
 	if (bits_.uuline() == FONT_ON) {
 		LYXERR(Debug::LATEX, "font.uuline: " << bits_.uuline());
 		features.require("ulem");
+		features.require("boxcite");
+		features.require("lyxuuline");
 		LYXERR(Debug::LATEX, "Double underline enabled. Font: " << to_utf8(stateText(0)));
 	}
 	if (bits_.uwave() == FONT_ON) {
 		LYXERR(Debug::LATEX, "font.uwave: " << bits_.uwave());
 		features.require("ulem");
+		features.require("boxcite");
+		features.require("lyxuwave");
 		LYXERR(Debug::LATEX, "Wavy underline enabled. Font: " << to_utf8(stateText(0)));
 	}
 	switch (bits_.color()) {

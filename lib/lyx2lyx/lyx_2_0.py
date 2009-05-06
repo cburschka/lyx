@@ -435,6 +435,9 @@ def revert_backgroundcolor(document):
           return
       colorcode = get_value(document.header, '\\backgroundcolor', 0)
       del document.header[i]
+      # don't clutter the preamble if backgroundcolor is not set
+      if colorcode == "#ffffff":
+          continue
       # the color code is in the form #rrggbb where every character denotes a hex number
       # convert the string to an int
       red = string.atoi(colorcode[1:3],16)
@@ -615,7 +618,7 @@ def revert_strikeout(document):
 
 
 def revert_uulinewave(document):
-    " Reverts \\uuline and \\uwave character style "
+    " Reverts \\uline, \\uuline, and \\uwave character styles "
     while True:
         i = find_token(document.body, '\\uuline', 0)
         if i == -1:
@@ -624,8 +627,19 @@ def revert_uulinewave(document):
     while True:
         i = find_token(document.body, '\\uwave', 0)
         if i == -1:
-            return
+            break
         del document.body[i]
+    i = find_token(document.body, '\\bar under', 0)
+    if i == -1:
+        return
+    insert_to_preamble(0, document,
+            '% Commands inserted by lyx2lyx for proper underlining\n'
+            + '\\PassOptionsToPackage{normalem}{ulem}\n'
+            + '\\usepackage{ulem}\n'
+            + '\\let\\cite@rig\\cite\n'
+            + '\\newcommand{\\b@xcite}[2][\\%]{\\def\\def@pt{\\%}\\def\\pas@pt{#1}\n'
+            + '  \\mbox{\\ifx\\def@pt\\pas@pt\\cite@rig{#2}\\else\\cite@rig[#1]{#2}\\fi}}\n'
+            + '\\renewcommand{\\underbar}[1]{{\\let\\cite\\b@xcite\\uline{#1}}}\n')
 
 
 ##

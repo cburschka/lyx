@@ -164,6 +164,23 @@ static string const lyxdot_def =
 	"%% A simple dot to overcome graphicx limitations\n"
 	"\\newcommand{\\lyxdot}{.}\n";
 
+static string const boxcite_def =
+	"\\let\\cite@rig\\cite\n"
+	"\\newcommand{\\b@xcite}[2][\\%]{\\def\\def@pt{\\%}\\def\\pas@pt{#1}\n"
+	"  \\mbox{\\ifx\\def@pt\\pas@pt\\cite@rig{#2}\\else\\cite@rig[#1]{#2}\\fi}}\n";
+
+static string const lyxuline_def =
+	"\\newcommand{\\lyxuline}[1]{{\\let\\cite\\b@xcite\\uline{#1}}}\n";
+
+static string const lyxuuline_def =
+	"\\newcommand{\\lyxuuline}[1]{{\\let\\cite\\b@xcite\\uuline{#1}}}\n";
+
+static string const lyxuwave_def =
+	"\\newcommand{\\lyxuwave}[1]{{\\let\\cite\\b@xcite\\uwave{#1}}}\n";
+
+static string const lyxsout_def =
+	"\\newcommand{\\lyxsout}[1]{{\\let\\cite\\b@xcite\\sout{#1}}}\n";
+
 static string const changetracking_dvipost_def =
 	"%% Change tracking with dvipost\n"
 	"\\dvipostlayout\n"
@@ -741,6 +758,21 @@ string const LaTeXFeatures::getMacros() const
 
 	if (mustProvide("lyxline"))
 		macros << lyxline_def << '\n';
+
+	if (mustProvide("boxcite"))
+		macros << boxcite_def << '\n';
+
+	if (mustProvide("lyxuline"))
+		macros << lyxuline_def << '\n';
+
+	if (mustProvide("lyxuuline"))
+		macros << lyxuuline_def << '\n';
+
+	if (mustProvide("lyxuwave"))
+		macros << lyxuwave_def << '\n';
+
+	if (mustProvide("lyxsout"))
+		macros << lyxsout_def << '\n';
 
 	if (mustProvide("noun"))
 		macros << noun_def << '\n';
