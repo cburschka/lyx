@@ -147,12 +147,12 @@ void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_BRANCH_ACTIVATE:
 	case LFUN_BRANCH_DEACTIVATE: {
 		// FIXME: I do not like this cast, but have no other idea...
-		Buffer * realbuffer = const_cast<Buffer *>(buffer().masterBuffer());
-		BranchList & branchlist = realbuffer->params().branchlist();
-		Branch * ourBranch = branchlist.find(params_.branch);
-		if (!ourBranch)
+		Buffer const * buf = buffer().masterBuffer();
+		BranchList const & branchlist = buf->params().branchlist();
+		Branch * our_branch = const_cast<Branch *>(branchlist.find(params_.branch));
+		if (!our_branch)
 			break;
-		ourBranch->setSelected(cmd.action == LFUN_BRANCH_ACTIVATE);
+		our_branch->setSelected(cmd.action == LFUN_BRANCH_ACTIVATE);
 		break;
 	}
 
