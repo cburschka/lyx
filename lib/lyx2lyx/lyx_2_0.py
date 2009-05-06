@@ -618,7 +618,7 @@ def revert_strikeout(document):
 
 
 def revert_uulinewave(document):
-    " Reverts \\uline, \\uuline, and \\uwave character styles "
+    " Reverts \\uuline, and \\uwave character styles "
     while True:
         i = find_token(document.body, '\\uuline', 0)
         if i == -1:
@@ -627,8 +627,11 @@ def revert_uulinewave(document):
     while True:
         i = find_token(document.body, '\\uwave', 0)
         if i == -1:
-            break
+            return
         del document.body[i]
+
+def revert_ulinelatex(document):
+    " Reverts \\uline character style "
     i = find_token(document.body, '\\bar under', 0)
     if i == -1:
         return
@@ -657,10 +660,12 @@ convert = [[346, []],
            [353, []],
            [354, []],
            [355, []],
-           [356, []]
+           [356, []],
+           [357, []]
           ]
 
-revert =  [[355, [revert_uulinewave]],
+revert =  [[356, [revert_ulinelatex]],
+           [355, [revert_uulinewave]],
            [354, [revert_strikeout]],
            [353, [revert_printindexall]],
            [352, [revert_subindex]],

@@ -125,7 +125,7 @@ namespace {
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-int const LYX_FORMAT = 356;  // sanda: support for \\uuline
+int const LYX_FORMAT = 357;  // sanda: change latex output for various underline commands
 
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;
