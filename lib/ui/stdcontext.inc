@@ -279,6 +279,7 @@ Menuset
 		Item "Cut" "cut"
 		Item "Copy" "copy"
 		Item "Paste" "paste"
+		spellingsuggestions
 		Submenu "Paste Recent|e" "edit_pasterecent"
 		Separator
 		Item "Jump Back to Saved Bookmark|B" "bookmark-goto 0"

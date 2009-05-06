@@ -405,6 +405,9 @@ public:
 		word_location const loc) const;
 	///
 	void updateWords();
+	/// Spellcheck word at position \p pos.
+	/// \return true if pointed word is misspelled.
+	bool isMisspelled(pos_type pos) const;
 
 private:
 	///

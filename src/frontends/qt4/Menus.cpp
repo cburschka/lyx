@@ -45,6 +45,7 @@
 #include "Paragraph.h"
 #include "ParIterator.h"
 #include "Session.h"
+#include "SpellChecker.h"
 #include "TextClass.h"
 #include "TocBackend.h"
 #include "Toolbars.h"
@@ -160,7 +161,9 @@ public:
 		/** Available citation styles for a given citation */
 		CiteStyles,
 		/** Available graphics groups */
-		GraphicsGroups
+		GraphicsGroups,
+		/// Words suggested by the spellchecker.
+		SpellingSuggestions
 	};
 
 	explicit MenuItem(Kind kind) : kind_(kind), optional_(false) {}
@@ -317,6 +320,7 @@ public:
 	void expandIndicesContext(Buffer const * buf, bool listof = false);
 	void expandCiteStyles(BufferView const *);
 	void expandGraphicsGroups(BufferView const *);
+	void expandSpellingSuggestions(BufferView const *);
 	///
 	ItemList items_;
 	///
@@ -422,7 +426,8 @@ void MenuDefinition::read(Lexer & lex)
 		md_floatinsert,
 		md_pasterecent,
 		md_toolbars,
-		md_graphicsgroups
+		md_graphicsgroups,
+		md_spellingsuggestions
 	};
 
 	LexerKeyword menutags[] = {
@@ -449,6 +454,7 @@ void MenuDefinition::read(Lexer & lex)
 		{ "optsubmenu", md_optsubmenu },
 		{ "pasterecent", md_pasterecent },
 		{ "separator", md_separator },
+		{ "spellingsuggestions", md_spellingsuggestions },
 		{ "submenu", md_submenu },
 		{ "toc", md_toc },
 		{ "toolbars", md_toolbars },
@@ -555,6 +561,10 @@ void MenuDefinition::read(Lexer & lex)
 
 		case md_graphicsgroups:
 			add(MenuItem(MenuItem::GraphicsGroups));
+			break;
+
+		case md_spellingsuggestions:
+			add(MenuItem(MenuItem::SpellingSuggestions));
 			break;
 
 		case md_indices:
@@ -701,6 +711,37 @@ void MenuDefinition::expandGraphicsGroups(BufferView const * bv)
 				FuncRequest(LFUN_SET_GRAPHICS_GROUP, *it)));
 	}
 }
+
+
+void MenuDefinition::expandSpellingSuggestions(BufferView const * bv)
+{
+	if (!bv)
+		return;
+	Paragraph const & par = bv->cursor().paragraph();
+	if (!par.isMisspelled(bv->cursor().pos()))
+		return;
+	LYXERR0("Misspelled Word!");
+
+	SpellChecker * speller = theSpellChecker();
+	docstring word;
+	int i = 0;
+	MenuItem item(MenuItem::Submenu, qt_("more spelling suggestions"));
+	item.setSubmenu(MenuDefinition(qt_("more spelling suggestions")));
+	while (!(word = speller->nextMiss()).empty()) {
+		LYXERR0("Misspelled Word = " << word);
+		MenuItem w(MenuItem::Command, toqstr(word),
+			FuncRequest(LFUN_WORD_REPLACE, word));
+		if (i < 10) {
+			add(w);
+		} else {
+			item.submenu().add(w);
+		}
+		++i;
+	}
+	if (i >= 10)
+		add(item);
+}
+
 
 void MenuDefinition::expandLastfiles()
 {
@@ -1559,6 +1600,10 @@ void Menus::Impl::expand(MenuDefinition const & frommenu,
 
 		case MenuItem::GraphicsGroups:
 			tomenu.expandGraphicsGroups(bv);
+			break;
+
+		case MenuItem::SpellingSuggestions:
+			tomenu.expandSpellingSuggestions(bv);
 			break;
 
 		case MenuItem::Submenu: {

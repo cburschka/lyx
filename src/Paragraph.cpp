@@ -2965,4 +2965,32 @@ void Paragraph::updateWords()
 	registerWords();
 }
 
+
+bool Paragraph::isMisspelled(pos_type pos) const
+{
+	SpellChecker * speller = theSpellChecker();
+	pos_type from = pos;
+	pos_type to = pos;
+	locateWord(from, to, WHOLE_WORD);
+	docstring word = asString(from, to, false);
+	if (!speller)
+		return false;
+		
+	string lang_code = lyxrc.spellchecker_use_alt_lang
+	      ? lyxrc.spellchecker_alt_lang
+	      : getFontSettings(d->inset_owner_->buffer().params(), from).language()->code();
+	WordLangTuple wl(word, lang_code);
+	SpellChecker::Result res = speller->check(wl);
+	// ... just ignore any error that the spellchecker reports.
+	if (!speller->error().empty())
+		return false;
+
+	bool const misspelled = res != SpellChecker::OK
+		&& res != SpellChecker::IGNORED_WORD;
+	if (lyxrc.spellcheck_continuously)
+		d->fontlist_.setMisspelled(from, pos, misspelled);
+	return misspelled;
+}
+
+
 } // namespace lyx
