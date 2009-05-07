@@ -552,23 +552,27 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 		env = true; //We have opened a new environment
 	}
 	if (f.underbar() == FONT_ON) {
-		os << "\\lyxuline{";
+		os << "\\uline{";
 		count += 10;
+		runparams.inulemcmd = true;
 		env = true; //We have opened a new environment
 	}
 	if (f.strikeout() == FONT_ON) {
-		os << "\\lyxsout{";
+		os << "\\sout{";
 		count += 9;
+		runparams.inulemcmd = true;
 		env = true; //We have opened a new environment
 	}
 	if (f.uuline() == FONT_ON) {
-		os << "\\lyxuuline{";
+		os << "\\uuline{";
 		count += 11;
+		runparams.inulemcmd = true;
 		env = true; //We have opened a new environment
 	}
 	if (f.uwave() == FONT_ON) {
-		os << "\\lyxuwave{";
+		os << "\\uwave{";
 		count += 10;
+		runparams.inulemcmd = true;
 		env = true; //We have opened a new environment
 	}
 	// \noun{} is a LyX special macro
@@ -638,21 +642,25 @@ int Font::latexWriteEndChanges(odocstream & os, BufferParams const & bparams,
 	if (f.underbar() == FONT_ON) {
 		os << '}';
 		++count;
+		runparams.inulemcmd = false;
 		env = true; // Size change need not bother about closing env.
 	}
 	if (f.strikeout() == FONT_ON) {
 		os << '}';
 		++count;
+		runparams.inulemcmd = false;
 		env = true; // Size change need not bother about closing env.
 	}
 	if (f.uuline() == FONT_ON) {
 		os << '}';
 		++count;
+		runparams.inulemcmd = false;
 		env = true; // Size change need not bother about closing env.
 	}
 	if (f.uwave() == FONT_ON) {
 		os << '}';
 		++count;
+		runparams.inulemcmd = false;
 		env = true; // Size change need not bother about closing env.
 	}
 	if (f.noun() == FONT_ON) {
@@ -821,29 +829,21 @@ void Font::validate(LaTeXFeatures & features) const
 	if (bits_.underbar() == FONT_ON) {
 		LYXERR(Debug::LATEX, "font.underline: " << bits_.underbar());
 		features.require("ulem");
-		features.require("boxcite");
-		features.require("lyxuline");
 		LYXERR(Debug::LATEX, "Underline enabled. Font: " << to_utf8(stateText(0)));
 	}
 	if (bits_.strikeout() == FONT_ON) {
 		LYXERR(Debug::LATEX, "font.strikeout: " << bits_.strikeout());
 		features.require("ulem");
-		features.require("boxcite");
-		features.require("lyxsout");
 		LYXERR(Debug::LATEX, "Strikeout enabled. Font: " << to_utf8(stateText(0)));
 	}
 	if (bits_.uuline() == FONT_ON) {
 		LYXERR(Debug::LATEX, "font.uuline: " << bits_.uuline());
 		features.require("ulem");
-		features.require("boxcite");
-		features.require("lyxuuline");
 		LYXERR(Debug::LATEX, "Double underline enabled. Font: " << to_utf8(stateText(0)));
 	}
 	if (bits_.uwave() == FONT_ON) {
 		LYXERR(Debug::LATEX, "font.uwave: " << bits_.uwave());
 		features.require("ulem");
-		features.require("boxcite");
-		features.require("lyxuwave");
 		LYXERR(Debug::LATEX, "Wavy underline enabled. Font: " << to_utf8(stateText(0)));
 	}
 	switch (bits_.color()) {

@@ -535,12 +535,15 @@ void InsetCitation::tocString(odocstream & os) const
 // the \cite command is valid. Eg, the user has natbib enabled, inputs some
 // citations and then changes his mind, turning natbib support off. The output
 // should revert to \cite[]{}
-int InsetCitation::latex(odocstream & os, OutputParams const &) const
+int InsetCitation::latex(odocstream & os, OutputParams const & runparams) const
 {
 	CiteEngine cite_engine = buffer().params().citeEngine();
 	// FIXME UNICODE
 	docstring const cite_str = from_utf8(
 		asValidLatexCommand(getCmdName(), cite_engine));
+
+	if (runparams.inulemcmd)
+		os << "\\mbox{";
 
 	os << "\\" << cite_str;
 
@@ -552,6 +555,9 @@ int InsetCitation::latex(odocstream & os, OutputParams const &) const
 		os << '[' << after << ']';
 
 	os << '{' << cleanupWhitespace(getParam("key")) << '}';
+
+	if (runparams.inulemcmd)
+		os << "}";
 
 	return 0;
 }
