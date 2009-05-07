@@ -237,6 +237,13 @@ docstring const escape(docstring const & lab);
 docstring wrap(docstring const & str, int const indent = 0,
                size_t const width = 80);
 
+/// Like the preceding, except it is intended to operate on strings
+/// that may contain embedded newlines.
+/// \param numlines Don't return more than numlines lines. If numlines
+///    is 0, we return everything.
+docstring wrapParas(docstring const & str, int const indent = 0,
+                    size_t const width = 80, size_t const numlines = 10);
+
 /// gives a vector of stringparts which have the delimiter delim
 /// If \p keepempty is true, empty strings will be pushed to the vector as well
 std::vector<std::string> const getVectorFromString(std::string const & str,
@@ -245,9 +252,11 @@ std::vector<std::string> const getVectorFromString(std::string const & str,
 std::vector<docstring> const getVectorFromString(docstring const & str,
 		docstring const & delim = from_ascii(","), bool keepempty = false);
 
-// the same vice versa
+/// the same vice versa
 std::string const getStringFromVector(std::vector<std::string> const & vec,
 				 std::string const & delim = std::string(","));
+docstring const getStringFromVector(std::vector<docstring> const & vec,
+				 docstring const & delim = from_ascii(","));
 
 /// Search \p search_token in \p str and return the position if it is
 /// found, else -1. The last item in \p str must be "".

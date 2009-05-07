@@ -32,6 +32,7 @@
 
 #include "support/docstream.h"
 #include "support/gettext.h"
+#include "support/lstrings.h"
 #include "support/Translator.h"
 
 #include "frontends/Application.h"
@@ -308,13 +309,10 @@ docstring InsetPhantom::toolTip(BufferView const &, int, int) const
 	OutputParams rp(&buffer().params().encoding());
 	odocstringstream ods;
 	InsetCollapsable::plaintext(ods, rp);
-	docstring content_tip = ods.str();
-	// shorten it if necessary
-	if (content_tip.size() > 200)
-		content_tip = content_tip.substr(0, 200) + "...";
+	docstring content_tip = support::wrapParas(ods.str());
 	docstring res = phantomtranslator_loc().find(params_.type);
 	if (!content_tip.empty())
-		res += from_ascii(": ") + content_tip;
+		res += from_ascii(": ") + "\n" + content_tip;
 	return res;
 }
 

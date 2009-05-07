@@ -267,10 +267,7 @@ docstring InsetIndex::toolTip(BufferView const &, int, int) const
 	odocstringstream ods;
 	InsetText::plaintext(ods, rp);
 	tip += ods.str();
-	// shorten it if necessary
-	if (tip.size() > 200)
-		tip = tip.substr(0, 200) + "...";
-	return tip;
+	return wrapParas(tip);
 }
 
 
