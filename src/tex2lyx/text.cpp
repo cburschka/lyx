@@ -1139,7 +1139,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 	bool const use_natbib = used_packages.find("natbib") != used_packages.end();
 	bool const use_jurabib = used_packages.find("jurabib") != used_packages.end();
 	while (p.good()) {
-		Token const & t = p.get_token();
+		Token const t = p.get_token();
 
 #ifdef FILEDEBUG
 		cerr << "t: " << t << " flags: " << flags << "\n";
