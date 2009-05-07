@@ -944,7 +944,7 @@ docstring wrap(docstring const & str, int const ind, size_t const width)
 
 	docstring retval;
 	while (s.size() > width) {
-		size_t i = width - 1;
+		int i = width - 1;
 		// find the last space
 		for (; i >= 0; --i)
 			if (s[i] == ' ')
