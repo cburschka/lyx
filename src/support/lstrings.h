@@ -226,6 +226,17 @@ std::string const rsplit(std::string const & a, std::string & piece, char delim)
 /// problems in latex labels.
 docstring const escape(docstring const & lab);
 
+/// Word-wraps the provided docstring, returning a line-broken string
+/// of width no wider than width, with the string broken at spaces. 
+/// If the string cannot be broken appropriately, it returns something 
+/// with "..." at the end, again no wider than width.
+/// We assume here that str does not contain newlines.
+/// If indent is positive, then the first line is indented that many 
+/// spaces. If it is negative, then successive lines are indented, as
+/// if the first line were "outdented".
+docstring wrap(docstring const & str, int const indent = 0,
+               size_t const width = 80);
+
 /// gives a vector of stringparts which have the delimiter delim
 /// If \p keepempty is true, empty strings will be pushed to the vector as well
 std::vector<std::string> const getVectorFromString(std::string const & str,

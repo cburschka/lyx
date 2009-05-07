@@ -385,7 +385,6 @@ bool InsetCitation::isCompatibleCommand(string const & cmd)
 
 docstring InsetCitation::toolTip(BufferView const & bv, int, int) const
 {
-	static unsigned int maxwdth = 80;
 	Buffer const & buf = bv.buffer();
 	// Only after the buffer is loaded from file...
 	if (!buf.isFullyLoaded())
@@ -404,32 +403,12 @@ docstring InsetCitation::toolTip(BufferView const & bv, int, int) const
 	vector<docstring>::const_iterator en = keys.end();
 	docstring tip;
 	for (; it != en; ++it) {
-		docstring key_info = bi.getInfo(*it);
+		docstring const key_info = bi.getInfo(*it);
 		if (key_info.empty())
 			continue;
 		if (!tip.empty())
 			tip += "\n";
-		docstring newkey;
-		while (key_info.size() > maxwdth) {
-			int i = maxwdth - 1;
-			// find the last space
-			for (; i >= 0; --i)
-				if (key_info[i] == ' ')
-					break;
-			if (i < 0) { 
-				// no space found
-				key_info = key_info.substr(0, maxwdth - 3) + "...";
-				break;
-			}
-			if (!newkey.empty())
-				newkey += "\n";
-			newkey += key_info.substr(0, i);
-			key_info = "  " + key_info.substr(i);
-		}
-		if (!newkey.empty())
-			newkey += "\n";
-		newkey += key_info;
-		tip += newkey;
+		tip += wrap(key_info, -4);
 	}
 	return tip;
 }

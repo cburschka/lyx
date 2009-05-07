@@ -928,6 +928,47 @@ docstring const escape(docstring const & lab)
 }
 
 
+docstring wrap(docstring const & str, int const ind, size_t const width)
+{
+	docstring s = trim(str);
+	if (s.empty()) 
+		return docstring();
+
+	docstring indent;
+	if (ind < 0)
+		for (int j = 0; j > ind; --j)
+			indent += " ";
+	else if (ind > 0)
+		for (int j = 0; j < ind; ++j)
+			s = " " + s;
+
+	docstring retval;
+	while (s.size() > width) {
+		size_t i = width - 1;
+		// find the last space
+		for (; i >= 0; --i)
+			if (s[i] == ' ')
+				break;
+		if (i < 0) { 
+			// no space found
+			s = s.substr(0, width - 3) + "...";
+			break;
+		}
+		if (!retval.empty())
+			retval += "\n";
+		retval += s.substr(0, i);
+		s = indent + s.substr(i);
+	}
+	if (!s.empty()) {
+		if (!retval.empty())
+			retval += "\n";
+		retval += s;
+	}
+	return retval;
+}
+
+
+
 namespace {
 
 template<typename String> vector<String> const
