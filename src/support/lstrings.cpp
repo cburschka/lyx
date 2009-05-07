@@ -981,7 +981,7 @@ docstring wrap(docstring const & str, int const ind, size_t const width)
 
 
 docstring wrapParas(docstring const & str, int const indent,
-                    size_t const width, size_t maxlines)
+                    size_t const width, size_t const maxlines)
 {
 	if (str.empty())
 		return docstring();
@@ -997,12 +997,12 @@ docstring wrapParas(docstring const & str, int const indent,
 		if (nlines == 0)
 			continue;
 		int const curlines = retval.size();
-		if (curlines + nlines >= maxlines) {
+		if (maxlines > 0 && curlines + nlines >= maxlines) {
 			tmp.resize(maxlines - curlines - 1);
 			tmp.push_back(from_ascii("..."));
 		}
 		retval.insert(retval.end(), tmp.begin(), tmp.end());
-		if (retval.size() >= maxlines)
+		if (maxlines > 0 && retval.size() >= maxlines)
 			break;
 	}
 	return getStringFromVector(retval, from_ascii("\n"));

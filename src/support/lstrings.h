@@ -242,7 +242,7 @@ docstring wrap(docstring const & str, int const indent = 0,
 /// \param numlines Don't return more than numlines lines. If numlines
 ///    is 0, we return everything.
 docstring wrapParas(docstring const & str, int const indent = 0,
-                    size_t const width = 80, size_t const numlines = 10);
+                    size_t const width = 80, size_t const maxlines = 10);
 
 /// gives a vector of stringparts which have the delimiter delim
 /// If \p keepempty is true, empty strings will be pushed to the vector as well
