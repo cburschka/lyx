@@ -154,7 +154,7 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 				add(ToolbarItem(ToolbarItem::POPUPMENU, name, label));
 			}
 			break;
-		
+
 		case TO_STICKYPOPUPMENU:
 			if (lex.next(true)) {
 				string const name = lex.getString();
@@ -210,7 +210,7 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 				docstring const prettyname =
 					from_utf8((*fit)->prettyname());
 				docstring tooltip;
-				FuncCode lfun;
+				FuncCode lfun = LFUN_NOACTION;
 				switch (code) {
 				case TO_EXPORTFORMATS:
 					lfun = LFUN_BUFFER_EXPORT;

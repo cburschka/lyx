@@ -117,7 +117,7 @@ bool findBackwards(DocIterator & cur, MatchString const & match,
 
 bool findChange(DocIterator & cur, bool next)
 {
-	if (!next) 
+	if (!next)
 		cur.backwardPos();
 	for (; cur; next ? cur.forwardPos() : cur.backwardPos())
 		if (cur.inTexted() && !cur.paragraph().isUnchanged(cur.pos())) {
@@ -311,7 +311,7 @@ void replace(BufferView * bv, FuncRequest const & ev, bool has_deleted)
 		int const replace_count = all
 			? replaceAll(bv, search, rplc, casesensitive, matchword)
 			: replace(bv, search, rplc, casesensitive, matchword, forward);
-	
+
 		Buffer & buf = bv->buffer();
 		if (replace_count == 0) {
 			// emit message signal.
@@ -355,20 +355,20 @@ bool findChange(BufferView * bv, bool next)
 	if (bv->cursor().selection()) {
 		// set the cursor at the beginning or at the end of the selection
 		// before searching. Otherwise, the current change will be found.
-		if (next != bv->cursor().top() > bv->cursor().anchor())
+		if (next != (bv->cursor().top() > bv->cursor().anchor()))
 			bv->cursor().setCursorToAnchor();
 	}
 
 	DocIterator cur = bv->cursor();
-	
-	// Are we within a change ? Then first search forward (backward), 
+
+	// Are we within a change ? Then first search forward (backward),
 	// clear the selection and search the other way around (see the end
 	// of this function). This will avoid changes to be selected half.
 	bool search_both_sides = false;
 	if (cur.pos() > 1) {
-		Change change_next_pos  
+		Change change_next_pos
 			= cur.paragraph().lookupChange(cur.pos());
-		Change change_prev_pos 
+		Change change_prev_pos
 			= cur.paragraph().lookupChange(cur.pos() - 1);
 		if (change_next_pos.isSimilarTo(change_prev_pos))
 			search_both_sides = true;
@@ -602,7 +602,7 @@ public:
 	 ** @param at_begin
 	 ** 	If set, then match is searched only against beginning of text starting at cur.
 	 ** 	If unset, then match is searched anywhere in text starting at cur.
-	 ** 
+	 **
 	 ** @return
 	 ** The length of the matching text, or zero if no match was found.
 	 **/
