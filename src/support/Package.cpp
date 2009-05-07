@@ -374,8 +374,7 @@ FileName const abs_path_from_command_line(string const & command_line)
 		return FileName();
 
 	string const str_path = fix_dir_name(command_line);
-	FileName path(str_path);
-	return path.isAbsolute() ? path : makeAbsPath(str_path);
+	return makeAbsPath(str_path);
 }
 
 
@@ -392,9 +391,8 @@ FileName const get_binary_path(string const & exe)
 #else
 	string const exe_path = os::internal_path(exe);
 #endif
-	FileName exepath(exe_path);
-	if (exepath.isAbsolute())
-		return exepath;
+	if (FileName::isAbsolute(exe_path))
+		return FileName(exe_path);
 
 	// Two possibilities present themselves.
 	// 1. The binary is relative to the CWD.

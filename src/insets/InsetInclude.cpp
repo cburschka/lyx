@@ -445,7 +445,7 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 
 	// if incfile is relative, make it relative to the master
 	// buffer directory.
-	if (!FileName(incfile).isAbsolute()) {
+	if (!FileName::isAbsolute(incfile)) {
 		// FIXME UNICODE
 		incfile = to_utf8(makeRelPath(from_utf8(included_file.absFilename()),
 					      from_utf8(masterBuffer->filePath())));

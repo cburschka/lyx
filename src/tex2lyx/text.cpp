@@ -1049,8 +1049,7 @@ string const normalize_filename(string const & name)
 /// convention (relative to .lyx file) if it is relative
 void fix_relative_filename(string & name)
 {
-	FileName fname(name);
-	if (fname.isAbsolute())
+	if (FileName::isAbsolute(name))
 		return;
 
 	name = to_utf8(makeRelPath(from_utf8(makeAbsPath(name, getMasterFilePath()).absFilename()),

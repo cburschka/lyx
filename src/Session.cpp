@@ -57,11 +57,11 @@ void LastFilesSection::read(istream & is)
 		if (c == '[')
 			break;
 		getline(is, tmp);
-		FileName const file(tmp);
-		if (tmp == "" || tmp[0] == '#' || tmp[0] == ' ' || !file.isAbsolute())
+		if (tmp.empty() || tmp[0] == '#' || tmp[0] == ' ' || !FileName::isAbsolute(tmp))
 			continue;
 
 		// read lastfiles
+		FileName const file(tmp);
 		if (file.exists() && !file.isDirectory()
 		    && lastfiles.size() < num_lastfiles)
 			lastfiles.push_back(file);
@@ -111,10 +111,10 @@ void LastOpenedSection::read(istream & is)
 		if (c == '[')
 			break;
 		getline(is, tmp);
-		FileName const file(tmp);
-		if (tmp == "" || tmp[0] == '#' || tmp[0] == ' ' || !file.isAbsolute())
+		if (tmp.empty() || tmp[0] == '#' || tmp[0] == ' ' || !FileName::isAbsolute(tmp))
 			continue;
 
+		FileName const file(tmp);
 		if (file.exists() && !file.isDirectory())
 			lastopened.push_back(file);
 		else
@@ -165,9 +165,9 @@ void LastFilePosSection::read(istream & is)
 			itmp >> filepos.pos;
 			itmp.ignore(2);  // ignore ", "
 			getline(itmp, fname);
-			FileName const file(fname);
-			if (!file.isAbsolute())
+			if (!FileName::isAbsolute(fname))
 				continue;
+			FileName const file(fname);
 			if (file.exists() && !file.isDirectory()
 			    && lastfilepos.size() < num_lastfilepos)
 				lastfilepos[file] = filepos;
@@ -242,9 +242,9 @@ void BookmarksSection::read(istream & is)
 			itmp >> pos;
 			itmp.ignore(2);  // ignore ", "
 			getline(itmp, fname);
-			FileName const file(fname);
-			if (!file.isAbsolute())
+			if (!FileName::isAbsolute(fname))
 				continue;
+			FileName const file(fname);
 			// only load valid bookmarks
 			if (file.exists() && !file.isDirectory() && idx <= max_bookmarks)
 				bookmarks[idx] = Bookmark(file, pit, pos, 0, 0);

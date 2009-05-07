@@ -105,6 +105,7 @@ struct FileName::Private
 
 	Private(string const & abs_filename) : fi(toqstr(abs_filename))
 	{
+		name = abs_filename;
 		fi.setCaching(fi.exists() ? true : false);
 	}
 	///
@@ -129,6 +130,8 @@ struct FileName::Private
 			Qt::CaseSensitive : Qt::CaseInsensitive) == 0;
 	}
 
+	/// The absolute file name in UTF-8 encoding.
+	std::string name;
 	///
 	QFileInfo fi;
 };
@@ -148,6 +151,8 @@ FileName::FileName() : d(new Private)
 FileName::FileName(string const & abs_filename)
 	: d(abs_filename.empty() ? new Private : new Private(abs_filename))
 {
+	//LYXERR(Debug::FILES, "FileName(" << abs_filename << ')');
+	LASSERT(empty() || isAbsolute(d->name), /**/);
 }
 
 
@@ -159,6 +164,7 @@ FileName::~FileName()
 
 FileName::FileName(FileName const & rhs) : d(new Private)
 {
+	d->name = rhs.d->name;
 	d->fi = rhs.d->fi;
 }
 
@@ -171,6 +177,9 @@ FileName::FileName(FileName const & rhs, string const & suffix) : d(new Private)
 
 FileName & FileName::operator=(FileName const & rhs)
 {
+	if (&rhs == this)
+		return *this;
+	d->name = rhs.d->name;
 	d->fi = rhs.d->fi;
 	return *this;
 }
@@ -178,19 +187,20 @@ FileName & FileName::operator=(FileName const & rhs)
 
 bool FileName::empty() const
 {
-	return d->fi.absoluteFilePath().isEmpty();
+	return d->name.empty();
 }
 
 
-bool FileName::isAbsolute() const
+bool FileName::isAbsolute(string const & name)
 {
-	return d->fi.isAbsolute();
+	QFileInfo fi(toqstr(name));
+	return fi.isAbsolute();
 }
 
 
 string FileName::absFilename() const
 {
-	return fromqstr(d->fi.absoluteFilePath());
+	return d->name;
 }
 
 
@@ -202,7 +212,10 @@ string FileName::realPath() const
 
 void FileName::set(string const & name)
 {
+	d->name = name;
 	d->fi.setFile(toqstr(name));
+	//LYXERR(Debug::FILES, "FileName::set(" << name << ')');
+	LASSERT(empty() || isAbsolute(d->name), /**/);
 }
 
 
@@ -212,11 +225,15 @@ void FileName::set(FileName const & rhs, string const & suffix)
 		d->fi.setFile(rhs.d->fi.filePath() + toqstr(suffix));
 	else
 		d->fi.setFile(QDir(rhs.d->fi.absoluteFilePath()), toqstr(suffix));
+	d->name = fromqstr(d->fi.absoluteFilePath());
+	//LYXERR(Debug::FILES, "FileName::set(" << d->name << ')');
+	LASSERT(empty() || isAbsolute(d->name), /**/);
 }
 
 
 void FileName::erase()
 {
+	d->name.clear();
 	d->fi = QFileInfo();
 }
 
@@ -285,37 +302,39 @@ FileName FileName::fromFilesystemEncoding(string const & name)
 
 bool FileName::exists() const
 {
-	return d->fi.exists();
+	return !empty() && d->fi.exists();
 }
 
 
 bool FileName::isSymLink() const
 {
-	return d->fi.isSymLink();
+	return !empty() && d->fi.isSymLink();
 }
 
 
 bool FileName::isFileEmpty() const
 {
+	LASSERT(!empty(), return true);
 	return d->fi.size() == 0;
 }
 
 
 bool FileName::isDirectory() const
 {
-	return d->fi.isDir();
+	return !empty() && d->fi.isDir();
 }
 
 
 bool FileName::isReadOnly() const
 {
+	LASSERT(!empty(), return true);
 	return d->fi.isReadable() && !d->fi.isWritable();
 }
 
 
 bool FileName::isReadableDirectory() const
 {
-	return d->fi.isDir() && d->fi.isReadable();
+	return isDirectory() && d->fi.isReadable();
 }
 
 
@@ -346,26 +365,29 @@ bool FileName::hasExtension(const string & ext)
 FileName FileName::onlyPath() const
 {
 	FileName path;
+	if (empty())
+		return path;
 	path.d->fi.setFile(d->fi.path());
+	path.d->name = fromqstr(path.d->fi.absoluteFilePath());
 	return path;
 }
 
 
 bool FileName::isReadableFile() const
 {
-	return d->fi.isFile() && d->fi.isReadable();
+	return !empty() && d->fi.isFile() && d->fi.isReadable();
 }
 
 
 bool FileName::isWritable() const
 {
-	return d->fi.isWritable();
+	return !empty() && d->fi.isWritable();
 }
 
 
 bool FileName::isDirWritable() const
 {
-	LASSERT(d->fi.isDir(), return false);
+	LASSERT(isDirectory(), return false);
 	QFileInfo tmp(QDir(d->fi.absoluteFilePath()), "lyxwritetest");
 	QTemporaryFile qt_tmp(tmp.absoluteFilePath());
 	if (qt_tmp.open()) {
@@ -440,7 +462,9 @@ FileName FileName::tempName(string const & mask)
 
 FileName FileName::getcwd()
 {
-	return FileName(".");
+	// return makeAbsPath("."); would create an infinite loop
+	QFileInfo fi(".");
+	return FileName(fromqstr(fi.absoluteFilePath()));
 }
 
 
@@ -653,7 +677,7 @@ bool FileName::createDirectory(int permission) const
 
 bool FileName::createPath() const
 {
-	LASSERT(!empty(), /**/);
+	LASSERT(!empty(), return false);
 	LYXERR(Debug::FILES, "creating path '" << *this << "'.");
 	if (isDirectory())
 		return false;
@@ -927,7 +951,13 @@ docstring const FileName::relPath(string const & path) const
 }
 
 
-bool operator==(FileName const & l, FileName const & r)
+// Note: According to Qt, QFileInfo::operator== is undefined when
+// both files do not exist (Qt4.5 gives true for all non-existent
+// files, while Qt4.4 compares the filenames).
+// see:
+// http://www.qtsoftware.com/developer/task-tracker/
+//   index_html?id=248471&method=entry.
+bool equivalent(FileName const & l, FileName const & r)
 {
 	// FIXME: In future use Qt.
 	// Qt 4.4: We need to solve this warning from Qt documentation:
@@ -966,6 +996,15 @@ bool operator==(FileName const & l, FileName const & r)
 	// This is needed as in Qt4.5, QFileInfo::operator== compares
 	// the location of the two files and not the files themselves.
 	return fi1 == fi2 && fi1.fileName() == fi2.fileName();
+}
+
+
+bool operator==(FileName const & lhs, FileName const & rhs)
+{
+	return os::isFilesystemCaseSensitive()
+		? lhs.absFilename() == rhs.absFilename()
+		: !QString::compare(toqstr(lhs.absFilename()),
+				toqstr(rhs.absFilename()), Qt::CaseInsensitive);
 }
 
 
@@ -1017,10 +1056,10 @@ DocFileName::DocFileName(FileName const & abs_filename, bool save_abs)
 
 void DocFileName::set(string const & name, string const & buffer_path)
 {
-	FileName::set(name);
-	bool const nameIsAbsolute = isAbsolute();
-	save_abs_path_ = nameIsAbsolute;
-	if (!nameIsAbsolute)
+	save_abs_path_ = isAbsolute(name);
+	if (save_abs_path_)
+		FileName::set(name);
+	else
 		FileName::set(makeAbsPath(name, buffer_path).absFilename());
 	zipped_valid_ = false;
 }

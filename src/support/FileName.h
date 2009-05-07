@@ -60,7 +60,7 @@ public:
 	/// Is this filename empty?
 	bool empty() const;
 	/// Is the filename absolute?
-	bool isAbsolute() const;
+	static bool isAbsolute(std::string const & name);
 
 	/// get the absolute file name in UTF-8 encoding
 	std::string absFilename() const;
@@ -197,13 +197,14 @@ public:
 	docstring const absoluteFilePath() const;
 
 private:
-	friend bool operator==(FileName const &, FileName const &);
+	friend bool equivalent(FileName const &, FileName const &);
 	///
 	struct Private;
 	Private * const d;
 };
 
 
+bool equivalent(FileName const &, FileName const &);
 bool operator==(FileName const &, FileName const &);
 bool operator!=(FileName const &, FileName const &);
 bool operator<(FileName const &, FileName const &);

@@ -1386,7 +1386,7 @@ void GuiView::openDocument(string const & fname)
 
 	if (!fullname.onlyPath().isDirectory()) {
 		Alert::warning(_("Invalid filename"),
-				bformat(_("The directory in the given path\n%1$s\ndoes not exists."),
+				bformat(_("The directory in the given path\n%1$s\ndoes not exist."),
 				from_utf8(fullname.absFilename())));
 		return;
 	}

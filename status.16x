@@ -302,6 +302,9 @@ What's new
 
 - Fix bug causing reverse DVI search to fail when the temporary directory
   is a symbolic link.
+
+- Improve responsiveness, especially on slow or networked drives, when
+  editing a master with child documents (bug 5705). 
   
 
 * DOCUMENTATION AND LOCALIZATION

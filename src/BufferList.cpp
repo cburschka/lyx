@@ -300,10 +300,25 @@ bool BufferList::isLoaded(Buffer const * b) const
 }
 
 
+namespace {
+struct equivalent_to : public binary_function<FileName, FileName, bool>
+{
+	bool operator()(FileName const & x, FileName const & y) const
+	{ return equivalent(x, y); }
+};
+}
+
+
 Buffer * BufferList::getBuffer(support::FileName const & fname) const
 {
+	// 1) cheap test, using string comparison of file names
 	BufferStorage::const_iterator it = find_if(bstore.begin(), bstore.end(),
 		bind(equal_to<FileName>(), bind(&Buffer::fileName, _1), fname));
+	if (it != bstore.end())
+			return *it;
+	// 2) possibly expensive test, using quivalence test of file names
+	it = find_if(bstore.begin(), bstore.end(),
+		bind(equivalent_to(), bind(&Buffer::fileName, _1), fname));
 	return it != bstore.end() ? (*it) : 0;
 }
 

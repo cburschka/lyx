@@ -196,7 +196,7 @@ string latex_path(string const & p)
 	// on windows_style_tex_paths_), but we use always forward slashes,
 	// since it gets written into a .tex file.
 
-	if (windows_style_tex_paths_ && FileName(p).isAbsolute()) {
+	if (windows_style_tex_paths_ && FileName::isAbsolute(p)) {
 		string dos_path = convert_path(p, PathStyle(windows));
 		LYXERR(Debug::LATEX, "<Path correction for LaTeX> ["
 			<< p << "]->>[" << dos_path << ']');
