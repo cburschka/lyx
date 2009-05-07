@@ -1028,13 +1028,13 @@ string const getStringFromVector(vector<string> const & vec,
 				 string const & delim)
 {
 	string str;
-	int i = 0;
-	for (vector<string>::const_iterator it = vec.begin();
-	     it != vec.end(); ++it) {
+	vector<string>::const_iterator it = vec.begin();
+	vector<string>::const_iterator en = vec.end();
+	for (; it != en; ++it) {
 		string item = trim(*it);
 		if (item.empty())
 			continue;
-		if (i++ > 0)
+		if (!str.empty())
 			str += delim;
 		str += item;
 	}
