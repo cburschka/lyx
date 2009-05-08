@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 352
+\lyxformat 357
 \begin_document
 \begin_header
 \textclass scrbook
@@ -3114,6 +3114,39 @@ User Guide
 \end_layout
 
 \begin_layout Standard
+For more information on fancy headers, see the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+fancyhdr
+\end_layout
+
+\end_inset
+
+ package documentation.
+ This can be found in the file 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+fancyhdr.dvi
+\end_layout
+
+\end_inset
+
+, which should have been installed with your LaTeX distribution, or 
+\begin_inset CommandInset href
+LatexCommand href
+name "online"
+target "http://www.ctan.org/tex-archive/macros/latex/contrib/fancyhdr/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
 The page header is divided into three fields, not surprisingly labeled 
 \begin_inset Quotes eld
 \end_inset
@@ -3432,32 +3465,6 @@ thispagestyle{fancy}
  as TeX code.
  In fact, title pages are marked as plain by default, while following pages
  are marked fancy when using the global fancy setting.
-\end_layout
-
-\begin_layout Standard
-There are more complex commands which will let you insert things in the
- upper left on odd numbered pages, etc., but we will refer you to the 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-fancyhdr
-\end_layout
-
-\end_inset
-
- package documentation for more information.
- (Find the file 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-fancyhdr.dvi
-\end_layout
-
-\end_inset
-
-.)
 \end_layout
 
 \begin_layout Standard
