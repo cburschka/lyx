@@ -2049,7 +2049,8 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 	case LFUN_BRANCH_INSERT:
 		code = BRANCH_CODE;
-		if (cur.buffer().masterBuffer()->params().branchlist().empty())
+		if (cur.buffer().masterBuffer()->params().branchlist().empty()
+		    && cur.buffer().params().branchlist().empty())
 			enable = false;
 		break;
 	case LFUN_LABEL_INSERT:
