@@ -97,7 +97,9 @@ liblyxsupport_a_SOURCES = \
 	userinfo.h \
 	unicode.cpp \
 	unicode.h \
-	weighted_btree.h
+	weighted_btree.h \
+	mythes/mythes.cxx \
+	mythes/mythes.hxx
 
 if INSTALL_MACOSX
 liblyxsupport_a_SOURCES += \

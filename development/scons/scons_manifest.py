@@ -316,6 +316,7 @@ src_support_header_files = Split('''
     types.h
     unicode.h
     userinfo.h
+    mythes/mythes.hxx
 ''')
 
 
@@ -347,6 +348,7 @@ src_support_files = Split('''
     socktools.cpp
     unicode.cpp
     userinfo.cpp
+    mythes/mythes.hxx
 ''')
 
 

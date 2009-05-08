@@ -9,9 +9,8 @@ project(support)
 file(GLOB support_sources ${TOP_SRC_DIR}/src/support/${LYX_CPP_FILES})
 file(GLOB support_headers ${TOP_SRC_DIR}/src/support/${LYX_HPP_FILES})
 
-file(GLOB support_minizip_sources ${TOP_SRC_DIR}/src/support/minizip/*.c)
-file(GLOB support_minizip_cpp_sources ${TOP_SRC_DIR}/src/support/minizip/*.cpp)
-file(GLOB support_minizip_headers ${TOP_SRC_DIR}/src/support/minizip/*.h)
+file(GLOB support_mythes_sources ${TOP_SRC_DIR}/src/support/mythes/*.cxx)
+file(GLOB support_mythes_headers ${TOP_SRC_DIR}/src/support/mythes/*.hxx)
 
 file(GLOB support_linkback_sources ${TOP_SRC_DIR}/src/support/linkback/*.m*)
 file(GLOB support_linkback_headers ${TOP_SRC_DIR}/src/support/linkback/*.h)
@@ -23,8 +22,6 @@ list(REMOVE_ITEM support_sources
 	${TOP_SRC_DIR}/src/support/os_os2.C
 	${TOP_SRC_DIR}/src/support/atexit.c
 	${TOP_SRC_DIR}/src/support/strerror.c
-	${TOP_SRC_DIR}/src/support/minizip/iowin32.h
-	${TOP_SRC_DIR}/src/support/minizip/iowin32.c
 	${TOP_SRC_DIR}/src/support/gettext.cpp)
 
 if(APPLE)
@@ -43,15 +40,15 @@ lyx_automoc(${support_sources})
 
 include_directories(${TOP_SRC_DIR}/src/support
 	${CMAKE_BINARY_DIR}/src/support
-	${TOP_SRC_DIR}/src/support/minizip
+	${TOP_SRC_DIR}/src/support/mythes
 	${QT_INCLUDES}
 	${ICONV_INCLUDE_DIR}
 	${ZLIB_INCLUDE_DIR})
 
 
 if(NOT MERGE_FILES)
-	set(support_sources ${support_sources} ${support_minizip_sources} ${support_minizip_cpp_sources} ${support_linkback_sources})
-	set(support_headers ${support_headers} ${support_minizip_headers} ${support_linkback_headers})
+	set(support_sources ${support_sources} ${support_mythes_sources} ${support_linkback_sources})
+	set(support_headers ${support_headers} ${support_mythes_headers} ${support_linkback_headers})
 	add_library(support ${library_type} ${support_sources} ${support_headers} ${dont_merge})
 else()
 	lyx_const_touched_files(_allinone  support_sources)
@@ -61,7 +58,7 @@ else()
 	set_source_files_properties(_allinone_touched.C
 		PROPERTIES OBJECT_DEPENDS "${depends_moc}")
 	add_library(support ${library_type} ${_allinone_files}
-		${support_minizip_sources} ${support_minizip_cpp_sources} ${support_linkback_sources} ${support_headers} ${dont_merge})
+		${support_mythes_sources} ${support_linkback_sources} ${support_headers} ${dont_merge})
 endif()
 
 target_link_libraries(support boost_signals ${QT_QTCORE_LIBRARY} ${ZLIB_LIBRARY})

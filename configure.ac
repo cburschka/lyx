@@ -116,44 +116,6 @@ AC_CHECK_LIB(psapi, main, [LIBPSAPI=-lpsapi])
 AC_SUBST(LIBPSAPI)
 AC_CHECK_LIB(gdi32, main)
 
-AC_ARG_WITH(mythes,
-  [  --without-mythes        do not use the MyThes library],
-  [lyx_use_mythes=$withval])
-if test x$lyx_use_mythes != xno; then
-AC_CHECK_LIB(mythes, main,
-	[AC_DEFINE(HAVE_LIBMYTHES,1,[Define this if you have the MyThes library])
-	 MYTHES_LIBS="-lmythes"
-	 lyx_flags="mythes $lyx_flags"
-	])
-AC_CHECK_HEADER(mythes.hxx,[
-  ac_cv_header_mythes_h=yes
-  lyx_cv_mythes_h_location="<mythes.hxx>"])
-AC_CHECK_HEADER(mythes/mythes.hxx,[
-  ac_cv_header_mythes_h=yes
-  lyx_cv_mythes_h_location="<mythes/mythes.hxx>"])
-AC_DEFINE_UNQUOTED(MYTHES_H_LOCATION,$lyx_cv_mythes_h_location,[Location of mythes.hxx])
-fi
-AC_SUBST(MYTHES_LIBS)
-
-AC_ARG_WITH(aiksaurus,
-  [  --without-aiksaurus     do not use the Aiksaurus library],
-  [lyx_use_aiksaurus=$withval])
-if test x$lyx_use_aiksaurus != xno; then
-AC_CHECK_LIB(Aiksaurus, main,
-	[AC_DEFINE(HAVE_LIBAIKSAURUS,1,[Define this if you have the AikSaurus library])
-	 AIKSAURUS_LIBS="-lAiksaurus"
-	 lyx_flags="aiksaurus $lyx_flags"
-	])
-AC_CHECK_HEADER(Aiksaurus.h,[
-  ac_cv_header_aiksaurus_h=yes
-  lyx_cv_aiksaurus_h_location="<Aiksaurus.h>"])
-AC_CHECK_HEADER(Aiksaurus/Aiksaurus.h,[
-  ac_cv_header_aiksaurus_h=yes
-  lyx_cv_aiksaurus_h_location="<Aiksaurus/Aiksaurus.h>"])
-AC_DEFINE_UNQUOTED(AIKSAURUS_H_LOCATION,$lyx_cv_aiksaurus_h_location,[Location of Aiksaurus.h])
-fi
-AC_SUBST(AIKSAURUS_LIBS)
-
 LYX_USE_INCLUDED_BOOST
 
 # Needed for our char_type
