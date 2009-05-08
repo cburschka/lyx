@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 352
+\lyxformat 357
 \begin_document
 \begin_header
 \textclass scrbook
@@ -106,9 +106,9 @@
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
-\author "" 
+\author "rgheck" 
 \author "" 
 \end_header
 
@@ -3330,11 +3330,22 @@ LaTeX-packages ! fancyhdr
  At the moment, support in LyX is limited to this setting.
  To use the full power of this package, you have to add code to your document
  preamble.
- Check the documentation for the 
+ 
+\change_deleted 0 1241791541
+Check the documentation for the 
 \series bold
 fancyhdr
 \series default
  package for more details, 
+\change_inserted 0 1241791541
+See the Additional Features manual for more information, or check the documentat
+ion for the 
+\series bold
+fancyhdr
+\series default
+ package 
+\change_unchanged
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "fancyhdr"
