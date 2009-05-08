@@ -569,9 +569,13 @@ PrefLatex::PrefLatex(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(latexChecktexED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
+	connect(latexBibtexCO, SIGNAL(activated(int)),
+		this, SIGNAL(changed()));
 	connect(latexBibtexED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 	connect(latexJBibtexED, SIGNAL(textChanged(QString)),
+		this, SIGNAL(changed()));
+	connect(latexIndexCO, SIGNAL(activated(int)),
 		this, SIGNAL(changed()));
 	connect(latexIndexED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
@@ -594,13 +598,77 @@ PrefLatex::PrefLatex(GuiPreferences * form)
 }
 
 
+void PrefLatex::on_latexBibtexCO_activated(int n)
+{
+	QString const bibtex = latexBibtexCO->itemData(n).toString();
+	if (bibtex.isEmpty()) {
+		latexBibtexED->clear();
+		latexBibtexOptionsLA->setText(qt_("C&ommand:"));
+		return;
+	}
+	for (vector<string>::const_iterator it = bibtex_alternatives.begin();
+	     it != bibtex_alternatives.end(); ++it) {
+		QString const bib = toqstr(*it);
+		int ind = bib.indexOf(" ");
+		QString sel_command = bib.left(ind);
+		QString sel_options = bib;
+		sel_options.remove(0, ind);
+		if (bibtex == sel_command) {
+			if (ind == -1)
+				latexBibtexED->clear();
+			else
+				latexBibtexED->setText(sel_options.trimmed());
+		}
+	}
+	latexBibtexOptionsLA->setText(qt_("&Options:"));
+}
+
+
+void PrefLatex::on_latexIndexCO_activated(int n)
+{
+	QString const index = latexIndexCO->itemData(n).toString();
+	if (index.isEmpty()) {
+		latexIndexED->clear();
+		latexIndexOptionsLA->setText(qt_("Co&mmand:"));
+		return;
+	}
+	for (vector<string>::const_iterator it = index_alternatives.begin();
+	     it != index_alternatives.end(); ++it) {
+		QString const idx = toqstr(*it);
+		int ind = idx.indexOf(" ");
+		QString sel_command = idx.left(ind);
+		QString sel_options = idx;
+		sel_options.remove(0, ind);
+		if (index == sel_command) {
+			if (ind == -1)
+				latexIndexED->clear();
+			else
+				latexIndexED->setText(sel_options.trimmed());
+		}
+	}
+	latexIndexOptionsLA->setText(qt_("Op&tions:"));
+}
+
+
 void PrefLatex::apply(LyXRC & rc) const
 {
+	QString const bibtex = latexBibtexCO->itemData(
+		latexBibtexCO->currentIndex()).toString();
+	if (bibtex.isEmpty())
+		rc.bibtex_command = fromqstr(latexBibtexED->text());
+	else
+		rc.bibtex_command = fromqstr(bibtex) + " " + fromqstr(latexBibtexED->text());
+
+	QString const index = latexIndexCO->itemData(
+		latexIndexCO->currentIndex()).toString();
+	if (index.isEmpty())
+		rc.index_command = fromqstr(latexIndexED->text());
+	else
+		rc.index_command = fromqstr(index) + " " + fromqstr(latexIndexED->text());
+
 	rc.fontenc = fromqstr(latexEncodingED->text());
 	rc.chktex_command = fromqstr(latexChecktexED->text());
-	rc.bibtex_command = fromqstr(latexBibtexED->text());
 	rc.jbibtex_command = fromqstr(latexJBibtexED->text());
-	rc.index_command = fromqstr(latexIndexED->text());
 	rc.jindex_command = fromqstr(latexJIndexED->text());
 	rc.nomencl_command = fromqstr(latexNomenclED->text());
 	rc.auto_reset_options = latexAutoresetCB->isChecked();
@@ -615,11 +683,65 @@ void PrefLatex::apply(LyXRC & rc) const
 
 void PrefLatex::update(LyXRC const & rc)
 {
+	latexBibtexCO->clear();
+
+	latexBibtexCO->addItem(qt_("Custom"), QString());
+	for (vector<string>::const_iterator it = rc.bibtex_alternatives.begin();
+			     it != rc.bibtex_alternatives.end(); ++it) {
+		QString const command = toqstr(*it).left(toqstr(*it).indexOf(" "));
+		latexBibtexCO->addItem(command, command);
+	}
+
+	bibtex_alternatives = rc.bibtex_alternatives;
+
+	QString const bib = toqstr(rc.bibtex_command);
+	int ind = bib.indexOf(" ");
+	QString sel_command = bib.left(ind);
+	QString sel_options = bib;
+	sel_options.remove(0, ind);
+
+	int pos = latexBibtexCO->findData(sel_command);
+	if (pos != -1) {
+		latexBibtexCO->setCurrentIndex(pos);
+		latexBibtexED->setText(sel_options.trimmed());
+		latexBibtexOptionsLA->setText(qt_("&Options:"));
+	} else {
+		latexBibtexED->setText(toqstr(rc.bibtex_command));
+		latexBibtexCO->setCurrentIndex(0);
+		latexBibtexOptionsLA->setText(qt_("C&ommand:"));
+	}
+
+	latexIndexCO->clear();
+
+	latexIndexCO->addItem(qt_("Custom"), QString());
+	for (vector<string>::const_iterator it = rc.index_alternatives.begin();
+			     it != rc.index_alternatives.end(); ++it) {
+		QString const command = toqstr(*it).left(toqstr(*it).indexOf(" "));
+		latexIndexCO->addItem(command, command);
+	}
+
+	index_alternatives = rc.index_alternatives;
+
+	QString const idx = toqstr(rc.index_command);
+	ind = idx.indexOf(" ");
+	sel_command = idx.left(ind);
+	sel_options = idx;
+	sel_options.remove(0, ind);
+
+	pos = latexIndexCO->findData(sel_command);
+	if (pos != -1) {
+		latexIndexCO->setCurrentIndex(pos);
+		latexIndexED->setText(sel_options.trimmed());
+		latexIndexOptionsLA->setText(qt_("Op&tions:"));
+	} else {
+		latexIndexED->setText(toqstr(rc.index_command));
+		latexIndexCO->setCurrentIndex(0);
+		latexIndexOptionsLA->setText(qt_("Co&mmand:"));
+	}
+
 	latexEncodingED->setText(toqstr(rc.fontenc));
 	latexChecktexED->setText(toqstr(rc.chktex_command));
-	latexBibtexED->setText(toqstr(rc.bibtex_command));
 	latexJBibtexED->setText(toqstr(rc.jbibtex_command));
-	latexIndexED->setText(toqstr(rc.index_command));
 	latexJIndexED->setText(toqstr(rc.jindex_command));
 	latexNomenclED->setText(toqstr(rc.nomencl_command));
 	latexAutoresetCB->setChecked(rc.auto_reset_options);

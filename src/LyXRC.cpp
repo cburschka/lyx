@@ -61,6 +61,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\autocorrection_math", LyXRC::RC_AUTOCORRECTION_MATH },
 	{ "\\autosave", LyXRC::RC_AUTOSAVE },
 	{ "\\backupdir_path", LyXRC::RC_BACKUPDIR_PATH },
+	{ "\\bibtex_alternatives", LyXRC::RC_BIBTEX_ALTERNATIVES },
 	{ "\\bibtex_command", LyXRC::RC_BIBTEX_COMMAND },
 	{ "\\bind_file", LyXRC::RC_BINDFILE },
 	{ "\\check_lastfiles", LyXRC::RC_CHECKLASTFILES },
@@ -97,6 +98,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\fullscreen_width", LyXRC::RC_FULL_SCREEN_WIDTH },
 	{ "\\group_layouts", LyXRC::RC_GROUP_LAYOUTS },
 	{ "\\gui_language", LyXRC::RC_GUI_LANGUAGE },
+	{ "\\index_alternatives", LyXRC::RC_INDEX_ALTERNATIVES },
 	{ "\\index_command", LyXRC::RC_INDEX_COMMAND },
 	{ "\\input", LyXRC::RC_INPUT },
 	{ "\\jbibtex_command", LyXRC::RC_JBIBTEX_COMMAND },
@@ -592,6 +594,12 @@ int LyXRC::read(Lexer & lexrc)
 			}
 			break;
 
+		case RC_BIBTEX_ALTERNATIVES:
+			if (lexrc.next(true)) {
+				bibtex_alternatives.push_back(lexrc.getString());
+			}
+			break;
+
 		case RC_BIBTEX_COMMAND:
 			if (lexrc.next(true)) {
 				bibtex_command = lexrc.getString();
@@ -601,6 +609,12 @@ int LyXRC::read(Lexer & lexrc)
 		case RC_JBIBTEX_COMMAND:
 			if (lexrc.next(true)) {
 				jbibtex_command = lexrc.getString();
+			}
+			break;
+
+		case RC_INDEX_ALTERNATIVES:
+			if (lexrc.next(true)) {
+				index_alternatives.push_back(lexrc.getString());
 			}
 			break;
 
@@ -1351,6 +1365,15 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
+	case RC_BIBTEX_ALTERNATIVES:
+		if (ignore_system_lyxrc ||
+		    bibtex_alternatives != system_lyxrc.bibtex_alternatives) {
+			for (vector<string>::const_iterator it = bibtex_alternatives.begin();
+			     it != bibtex_alternatives.end(); ++it)
+			os << "\\bibtex_alternatives \"" << *it << "\"\n";
+		}
+		if (tag != RC_LAST)
+			break;
 	case RC_BIBTEX_COMMAND:
 		if (ignore_system_lyxrc ||
 		    bibtex_command != system_lyxrc.bibtex_command) {
@@ -1362,6 +1385,15 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		if (ignore_system_lyxrc ||
 		    jbibtex_command != system_lyxrc.jbibtex_command) {
 			os << "\\jbibtex_command \"" << escapeCommand(jbibtex_command) << "\"\n";
+		}
+		if (tag != RC_LAST)
+			break;
+	case RC_INDEX_ALTERNATIVES:
+		if (ignore_system_lyxrc ||
+		    index_alternatives != system_lyxrc.index_alternatives) {
+			for (vector<string>::const_iterator it = index_alternatives.begin();
+			     it != index_alternatives.end(); ++it)
+			os << "\\index_alternatives \"" << *it << "\"\n";
 		}
 		if (tag != RC_LAST)
 			break;

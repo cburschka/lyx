@@ -178,6 +178,67 @@ def checkProg(description, progs, rc_entry = [], path = [], not_found = ''):
     return ['', not_found]
 
 
+## Searching some useful programs
+def checkProgAlternatives(description, progs, rc_entry = [], alt_rc_entry = [], path = [], not_found = ''):
+    ''' 
+        The same as checkProg, but additionally, all found programs will be added
+        as alt_rc_entries
+    '''
+    # one rc entry for each progs plus not_found entry
+    if len(rc_entry) > 1 and len(rc_entry) != len(progs) + 1:
+        logger.error("rc entry should have one item or item for each prog and not_found.")
+        sys.exit(2)
+    # check if alt rcs are given
+    if len(alt_rc_entry) > 1 and len(alt_rc_entry) != len(rc_entry):
+        logger.error("invalid alt_rc_entry specification.")
+        sys.exit(2)
+    logger.info('checking for ' + description + '...')
+    ## print '(' + ','.join(progs) + ')',
+    found_prime = False
+    real_ac_dir = ''
+    real_ac_word = not_found
+    for idx in range(len(progs)):
+        # ac_prog may have options, ac_word is the command name
+        ac_prog = progs[idx]
+        ac_word = ac_prog.split(' ')[0]
+        msg = '+checking for "' + ac_word + '"... '
+        path = os.environ["PATH"].split(os.pathsep) + path
+        extlist = ['']
+        if os.environ.has_key("PATHEXT"):
+            extlist = extlist + os.environ["PATHEXT"].split(os.pathsep)
+        found_alt = False
+        for ac_dir in path:
+            for ext in extlist:
+                if os.path.isfile( os.path.join(ac_dir, ac_word + ext) ):
+                    logger.info(msg + ' yes')
+                    # write rc entries for this command
+                    if found_prime == False:
+                        if len(rc_entry) == 1:
+                            addToRC(rc_entry[0].replace('%%', ac_prog))
+                        elif len(rc_entry) > 1:
+                            addToRC(rc_entry[idx].replace('%%', ac_prog))
+                        real_ac_dir = ac_dir
+                        real_ac_word = ac_word
+                        found_prime = True
+                    if len(alt_rc_entry) == 1:
+                        addToRC(alt_rc_entry[0].replace('%%', ac_prog))
+                    elif len(alt_rc_entry) > 1:
+                        addToRC(alt_rc_entry[idx].replace('%%', ac_prog))
+                    found_alt = True
+                    break
+            if found_alt:
+                break
+        if found_alt == False:
+            # if not successful
+            logger.info(msg + ' no')
+    if found_prime:
+        return [real_ac_dir, real_ac_word]
+    # write rc entries for 'not found'
+    if len(rc_entry) > 0:  # the last one.
+        addToRC(rc_entry[-1].replace('%%', not_found))
+    return ['', not_found]
+
+
 def checkViewer(description, progs, rc_entry = [], path = []):
     ''' The same as checkProg, but for viewers and editors '''
     return checkProg(description, progs, rc_entry, path, not_found = 'auto')
@@ -599,12 +660,14 @@ def checkOtherEntries():
     ''' entries other than Format and Converter '''
     checkProg('ChkTeX', ['chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38'],
         rc_entry = [ r'\chktex_command "%%"' ])
-    checkProg('BibTeX', ['bibtex'],
-        rc_entry = [ r'\bibtex_command "%%"' ])
+    checkProgAlternatives('BibTeX or alternative programs', ['bibtex', 'bibtex8', 'biber'],
+        rc_entry = [ r'\bibtex_command "%%"' ],
+        alt_rc_entry = [ r'\bibtex_alternatives "%%"' ])
     checkProg('JBibTeX, the Japanese BibTeX', ['jbibtex', 'bibtex'],
         rc_entry = [ r'\jbibtex_command "%%"' ])
-    checkProg('an index processor', ['texindy', 'makeindex -c -q'],
-        rc_entry = [ r'\index_command "%%"' ])
+    checkProgAlternatives('available index processors', ['texindy', 'makeindex -c -q'],
+        rc_entry = [ r'\index_command "%%"' ],
+        alt_rc_entry = [ r'\index_alternatives "%%"' ])
     checkProg('an index processor appropriate to Japanese', ['mendex -c -q', 'makeindex -c -q'],
         rc_entry = [ r'\jindex_command "%%"' ])
     checkProg('the splitindex processor', ['splitindex.pl', 'java splitindex', 'splitindex'],

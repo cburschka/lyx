@@ -221,6 +221,16 @@ public:
 
 	virtual void apply(LyXRC & rc) const;
 	virtual void update(LyXRC const & rc);
+
+private Q_SLOTS:
+	void on_latexBibtexCO_activated(int n);
+	void on_latexIndexCO_activated(int n);
+
+private:
+	///
+	std::vector<std::string> bibtex_alternatives;
+	///
+	std::vector<std::string> index_alternatives;
 };
 
 

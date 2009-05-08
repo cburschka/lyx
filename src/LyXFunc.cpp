@@ -1880,6 +1880,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_AUTOSAVE:
 	case LyXRC::RC_AUTO_NUMBER:
 	case LyXRC::RC_BACKUPDIR_PATH:
+	case LyXRC::RC_BIBTEX_ALTERNATIVES:
 	case LyXRC::RC_BIBTEX_COMMAND:
 	case LyXRC::RC_BINDFILE:
 	case LyXRC::RC_CHECKLASTFILES:
@@ -1919,6 +1920,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_FONT_ENCODING:
 	case LyXRC::RC_FORMAT:
 	case LyXRC::RC_GROUP_LAYOUTS:
+	case LyXRC::RC_INDEX_ALTERNATIVES:
 	case LyXRC::RC_INDEX_COMMAND:
 	case LyXRC::RC_JBIBTEX_COMMAND:
 	case LyXRC::RC_JINDEX_COMMAND:

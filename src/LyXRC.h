@@ -23,6 +23,7 @@
 #include "support/strfwd.h"
 
 #include <string>
+#include <vector>
 
 
 namespace lyx {
@@ -46,6 +47,7 @@ public:
 		RC_AUTOSAVE,
 		RC_AUTO_NUMBER,
 		RC_BACKUPDIR_PATH,
+		RC_BIBTEX_ALTERNATIVES,
 		RC_BIBTEX_COMMAND,
 		RC_BINDFILE,
 		RC_CHECKLASTFILES,
@@ -84,6 +86,7 @@ public:
 		RC_FULL_SCREEN_WIDTH,
 		RC_GEOMETRY_SESSION,
 		RC_GROUP_LAYOUTS,
+		RC_INDEX_ALTERNATIVES,
 		RC_INDEX_COMMAND,
 		RC_INPUT,
 		RC_JBIBTEX_COMMAND,
@@ -245,10 +248,14 @@ public:
 	PAPER_SIZE default_papersize;
 	/// command to run chktex incl. options
 	std::string chktex_command;
+	/// all available commands to run bibtex incl. options
+	std::vector<std::string> bibtex_alternatives;
 	/// command to run bibtex incl. options
 	std::string bibtex_command;
 	/// command to run japanese bibtex incl. options
 	std::string jbibtex_command;
+	/// all available index commands incl. options
+	std::vector<std::string> index_alternatives;
 	/// command to run makeindex incl. options or other index programs
 	std::string index_command;
 	/// command to run japanese index program incl. options
