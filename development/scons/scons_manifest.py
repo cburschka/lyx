@@ -348,7 +348,7 @@ src_support_files = Split('''
     socktools.cpp
     unicode.cpp
     userinfo.cpp
-    mythes/mythes.hxx
+    mythes/mythes.cxx
 ''')
 
 
