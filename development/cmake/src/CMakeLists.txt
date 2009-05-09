@@ -83,14 +83,6 @@ if (MINGW)
   target_link_libraries(${_lyx} ole32)
 endif()
 
-if (MYTHESLIB_LIBRARY)
-    target_link_libraries(${_lyx} ${MYTHESLIB_LIBRARY})
-else()
-  if (AIKSAURUSLIB_LIBRARY)
-    target_link_libraries(${_lyx} ${AIKSAURUSLIB_LIBRARY})
-  endif()
-endif()
-
 project_source_group("${GROUP_CODE}" lyx_sources lyx_headers)
 
 install(TARGETS ${_lyx} DESTINATION bin)
