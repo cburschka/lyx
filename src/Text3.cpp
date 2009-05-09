@@ -311,12 +311,12 @@ static void outline(OutlineOp mode, Cursor & cur)
 	Buffer & buf = *cur.buffer();
 	pit_type & pit = cur.pit();
 	ParagraphList & pars = buf.text().paragraphs();
-	ParagraphList::iterator bgn = pars.begin();
+	ParagraphList::iterator const bgn = pars.begin();
 	// The first paragraph of the area to be copied:
 	ParagraphList::iterator start = boost::next(bgn, pit);
 	// The final paragraph of area to be copied:
 	ParagraphList::iterator finish = start;
-	ParagraphList::iterator end = pars.end();
+	ParagraphList::iterator const end = pars.end();
 
 	DocumentClass const & tc = buf.params().documentClass();
 
@@ -332,6 +332,10 @@ static void outline(OutlineOp mode, Cursor & cur)
 		if (toclevel != Layout::NOT_IN_TOC && toclevel <= thistoclevel)
 			break;
 	}
+
+	// Do we need to set insets' buffer_ members, because we copied
+	// some stuff? We'll assume we do and reset it otherwise.
+	bool setBuffers = true;
 
 	switch (mode) {
 		case OutlineUp: {
@@ -360,7 +364,7 @@ static void outline(OutlineOp mode, Cursor & cur)
 			start = boost::next(pars.begin(), deletepit);
 			pit = newpit;
 			pars.erase(start, finish);
-			return;
+			break;
 		}
 		case OutlineDown: {
 			if (finish == end)
@@ -383,7 +387,7 @@ static void outline(OutlineOp mode, Cursor & cur)
 			start = boost::next(bgn, pit);
 			pit = newpit - len;
 			pars.erase(start, finish);
-			return;
+			break;
 		}
 		case OutlineIn: {
 			pit_type const len = distance(start, finish);
@@ -402,7 +406,8 @@ static void outline(OutlineOp mode, Cursor & cur)
 					}
 				}
 			}
-			return;
+			setBuffers = false;
+			break;
 		}
 		case OutlineOut: {
 			pit_type const len = distance(start, finish);
@@ -421,9 +426,20 @@ static void outline(OutlineOp mode, Cursor & cur)
 					}
 				}
 			}
-			return;
+			setBuffers = false;
+			break;
 		}
 	}
+	if (setBuffers)
+		// FIXME This only really needs doing for the newly introduced 
+		// paragraphs. Something like:
+		// 	pit_type const numpars = distance(start, finish);
+		// 	start = boost::next(bgn, pit);
+		// 	finish = boost::next(start, numpars);
+		// 	for (; start != finish; ++start)
+		// 		start->setBuffer(buf);
+		// But while this seems to work, it is kind of fragile.
+		buf.inset().setBuffer(buf);
 }
 
 
