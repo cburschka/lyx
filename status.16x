@@ -171,6 +171,9 @@ What's new
 - Autosave files of still unnamed documents (newfiles) are now saved
   in the backup dir, default document dir, or else in the temp dir.
 
+- Make sure the autosave files are removed when a document is saved
+  with a different filename or in a different location (bug 5879).
+  
 
 * USER INTERFACE
 
