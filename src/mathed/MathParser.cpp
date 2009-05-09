@@ -46,6 +46,7 @@ following hack as starting point to write some macros:
 #include "InsetMathColor.h"
 #include "InsetMathComment.h"
 #include "InsetMathDelim.h"
+#include "InsetMathEnsureMath.h"
 #include "InsetMathEnv.h"
 #include "InsetMathFrac.h"
 #include "InsetMathKern.h"
@@ -804,8 +805,14 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				} else {
 					// simple $...$  stuff
 					putback();
-					cell->push_back(MathAtom(new InsetMathHull(hullSimple)));
-					parse2(cell->back(), FLAG_SIMPLE, InsetMath::MATH_MODE, false);
+					if (mode == InsetMath::UNDECIDED_MODE) {
+						cell->push_back(MathAtom(new InsetMathHull(hullSimple)));
+						parse2(cell->back(), FLAG_SIMPLE, InsetMath::MATH_MODE, false);
+					} else {
+						// Don't create nested math hulls (bug #5392)
+						cell->push_back(MathAtom(new InsetMathEnsureMath));
+						parse(cell->back().nucleus()->cell(0), FLAG_SIMPLE, InsetMath::MATH_MODE);
+					}
 				}
 			}
 
