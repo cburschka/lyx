@@ -2414,13 +2414,8 @@ char const * const dialognames[] = {
 "float", "graphics", "include", "index", "index_print", "info", "nomenclature",
 "label", "log", "mathdelimiter", "mathmatrix", "mathspace", "note", "paragraph",
 "phantom", "prefs", "print", "ref", "sendto", "space", "spellchecker",
-"symbols", "tabular", "tabularcreate",
-
-#ifdef HAVE_LIBAIKSAURUS
-"thesaurus",
-#endif
-
-"texinfo", "toc", "href", "view-source", "vspace", "wrap", "listings", "findreplaceadv" };
+"symbols", "tabular", "tabularcreate", "thesaurus", "texinfo", "toc", "href", 
+"view-source", "vspace", "wrap", "listings", "findreplaceadv" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -2712,10 +2707,8 @@ Dialog * GuiView::build(string const & name)
 		return createGuiTexInfo(*this);
 	if (name == "view-source")
 		return createGuiViewSource(*this);
-#ifdef HAVE_LIBAIKSAURUS
 	if (name == "thesaurus")
 		return createGuiThesaurus(*this);
-#endif
 	if (name == "href")
 		return createGuiHyperlink(*this);
 	if (name == "index_print")
