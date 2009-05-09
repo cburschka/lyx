@@ -226,7 +226,7 @@ void TocWidget::select(QModelIndex const & index)
 }
 
 
-/// Test if outlining operation is possible
+/// Test whether outlining operation is possible
 static bool canOutline(QString const & type)
 {
 	return type == "tableofcontents";
@@ -244,20 +244,16 @@ void TocWidget::enableControls(bool enable)
 	moveDownTB->setEnabled(enable);
 	moveInTB->setEnabled(enable);
 	moveOutTB->setEnabled(enable);
-	if (!enable) {
-		depthSL->setMaximum(0);
-		depthSL->setValue(0);
-	}
 }
 
 
-/// Test if synchronized navigation is possible
+/// Test whether synchronized navigation is possible
 static bool canNavigate(QString const & type)
 {
-	// It is not possible to have synchronous navigation in a correctl
-	// and efficient way with the label type because Toc::item() do a linear
-	// seatch. Even if fixed, it might even not be desirable to do so if we 
-	// want to support drag&drop of labels and references.
+	// It is not possible to have synchronous navigation in a correct
+	// and efficient way with the label and change type because Toc::item()
+	// does a linear search. Even when fixed, it might even not be desirable
+	// to do so if we want to support drag&drop of labels and references.
 	return type != "label" && type != "change";
 }
 
@@ -269,8 +265,15 @@ void TocWidget::updateView()
 		typeCO->setEnabled(false);
 		tocTV->setModel(0);
 		tocTV->setEnabled(false);
+		depthSL->setMaximum(0);
+		depthSL->setValue(0);
+		persistentCB->setEnabled(false);
+		sortCB->setEnabled(false);
+		depthSL->setEnabled(false);
 		return;
 	}
+	sortCB->setEnabled(true);
+	depthSL->setEnabled(true);
 	typeCO->setEnabled(true);
 	tocTV->setEnabled(false);
 	tocTV->setUpdatesEnabled(false);
@@ -288,7 +291,8 @@ void TocWidget::updateView()
 	sortCB->setChecked(gui_view_.tocModels().isSorted(current_type_));
 	sortCB->blockSignals(false);
 
-	persistentCB->setChecked(persistent_);
+	bool const can_navigate_ = canNavigate(current_type_);
+	persistentCB->setEnabled(can_navigate_);
 
 	bool controls_enabled = toc_model && toc_model->rowCount() > 0
 		&& !gui_view_.buffer()->isReadonly();
@@ -296,10 +300,12 @@ void TocWidget::updateView()
 
 	depthSL->setMaximum(gui_view_.tocModels().depth(current_type_));
 	depthSL->setValue(depth_);
-	if (!persistent_)
+	if (!persistent_ && can_navigate_)
 		setTreeDepth(depth_);
-	if (canNavigate(current_type_))
+	if (can_navigate_) {
+		persistentCB->setChecked(persistent_);
 		select(gui_view_.tocModels().currentIndex(current_type_));
+	}
 	tocTV->setEnabled(true);
 	tocTV->setUpdatesEnabled(true);
 }

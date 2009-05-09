@@ -112,9 +112,9 @@ What's new
   
 - Support the optional argument of \chapter* in the memoir class.
 
-- Move the buffer-close button into each tabbar for Qt 4.5 (bug 3724).
+- Move the buffer-close button into each tabbar -- for Qt 4.5 (bug 3724).
 
-- Support fullscreen menu under linux too - for Qt 4.5 (bug 4888).
+- Support fullscreen menu under linux too -- for Qt 4.5 (bug 4888).
 
 
 * WINDOWS INSTALLER
@@ -307,6 +307,9 @@ What's new
   is a symbolic link.
 
 - Disable some invalid insets inside description items (bug 5937).
+
+- Adjust the enabling of some controls in the outliner and reduce the
+  flickering caused by collapsing and opening of items.
   
 
 * DOCUMENTATION AND LOCALIZATION
