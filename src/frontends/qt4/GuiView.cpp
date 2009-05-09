@@ -536,6 +536,10 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 	GuiWorkArea * active_wa = currentMainWorkArea();
 	setCurrentWorkArea(active_wa);
 
+	// When a view/window was closed before without quitting LyX, there
+	// are already entries in the lastOpened list.
+	theSession().lastOpened().clear();
+
 	int splitter_count = d.splitter_->count();
 	for (; splitter_count; --splitter_count) {
 		TabWorkArea * twa = d.tabWorkArea(0);
