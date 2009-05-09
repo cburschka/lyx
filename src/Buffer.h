@@ -126,9 +126,6 @@ public:
 	/// Maybe we know the function already by number...
 	bool dispatch(FuncRequest const & func, bool * result = 0);
 
-	/// Load the autosaved file.
-	void loadAutoSaveFile();
-
 	/// read a new document from a string
 	bool readString(std::string const &);
 	/// load a new file
@@ -447,6 +444,8 @@ public:
 
 	///
 	void autoSave() const;
+	///
+	void removeAutosaveFile() const;
 
 	/// return the format of the buffer on a string
 	std::string bufferFormat() const;
@@ -490,6 +489,8 @@ private:
 	*/
 	ReadStatus readFile(Lexer &, support::FileName const & filename,
 			    bool fromString = false);
+	///
+	support::FileName getAutosaveFilename() const;
 
 	/// Use the Pimpl idiom to hide the internals.
 	class Impl;

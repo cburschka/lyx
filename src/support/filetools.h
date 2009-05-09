@@ -250,9 +250,6 @@ bool readLink(FileName const & file, FileName & link);
 FileName const findtexfile(std::string const & fil,
 			      std::string const & format);
 
-/// remove the autosave-file and give a Message if it can't be done
-void removeAutosaveFile(std::string const & filename);
-
 /// read the BoundingBox entry from a ps/eps/pdf-file
 std::string const readBB_from_PSFile(FileName const & file);
 

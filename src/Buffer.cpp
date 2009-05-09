@@ -921,7 +921,7 @@ bool Buffer::writeFile(FileName const & fname) const
 		return false;
 	}
 
-	removeAutosaveFile(d->filename.absFilename());
+	removeAutosaveFile();
 
 	saveCheckSum(d->filename);
 	message(str + _(" done."));
@@ -2367,6 +2367,31 @@ int AutoSaveBuffer::generateChild()
 } // namespace anon
 
 
+FileName Buffer::getAutosaveFilename() const
+{
+	// if the document is unnamed try to save in the backup dir, else
+	// in the default document path, and as a last try in the filePath, 
+	// which will most often be the temporary directory
+	string fpath;
+	if (isUnnamed())
+		fpath = lyxrc.backupdir_path.empty() ? lyxrc.document_path
+			: lyxrc.backupdir_path;
+	if (!isUnnamed() || fpath.empty() || !FileName(fpath).exists())
+		fpath = filePath();
+
+	string const fname = "#" + d->filename.onlyFileName() + "#";
+	return makeAbsPath(fname, fpath);
+}
+
+
+void Buffer::removeAutosaveFile() const
+{
+	FileName const f = getAutosaveFilename();
+	if (f.exists())
+		f.removeFile();
+}
+
+
 // Perfect target for a thread...
 void Buffer::autoSave() const
 {
@@ -2378,14 +2403,7 @@ void Buffer::autoSave() const
 
 	// emit message signal.
 	message(_("Autosaving current document..."));
-
-	// create autosave filename
-	string fname = filePath();
-	fname += '#';
-	fname += d->filename.onlyFileName();
-	fname += '#';
-
-	AutoSaveBuffer autosave(*this, FileName(fname));
+	AutoSaveBuffer autosave(*this, getAutosaveFilename());
 	autosave.start();
 
 	markBakClean();

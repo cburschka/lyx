@@ -1854,7 +1854,7 @@ bool GuiView::closeBuffer(Buffer & buf, bool tolastopened, bool mark_active)
 		// if we crash after this we could
 		// have no autosave file but I guess
 		// this is really improbable (Jug)
-		removeAutosaveFile(buf.absFileName());
+		buf.removeAutosaveFile();
 		break;
 	case 2:
 		return false;

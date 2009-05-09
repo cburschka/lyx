@@ -167,6 +167,9 @@ What's new
 
 - Support LATIN CAPITAL LETTER SHARP S (bug 5913). Note that only selected
   fonts provide this character. Others output <SS>.
+  
+- Autosave files of still unnamed documents (newfiles) are now saved
+  in the backup dir, default document dir, or else in the temp dir.
 
 
 * USER INTERFACE
