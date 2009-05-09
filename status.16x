@@ -97,8 +97,8 @@ What's new
   by verbatim pasting (Ctrl+Shift+V) or by dissolving the text inset.
   
 - Zooming is bound to LFUN_BUFFER_ZOOM_IN and LFUN_BUFFER_ZOOM_OUT
-  (next to ctrl+mousewheel), such that it is possible to assign keyboard
-  shortcuts to them (bug 3038).
+  (next to ctrl+mousewheel), and the shortcuts M-plus (M-equal) and 
+  M-minus are assigned to them (bug 3038).
 
 - Reintroduce cross-referencing between independent files in the Reference
   dialog.
