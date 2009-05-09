@@ -187,7 +187,7 @@ int TextMetrics::parPosition(pit_type pit) const
 
 bool TextMetrics::metrics(MetricsInfo & mi, Dimension & dim, int min_width)
 {
-	LASSERT(mi.base.textwidth, /**/);
+	LASSERT(mi.base.textwidth > 0, /**/);
 	max_width_ = mi.base.textwidth;
 	// backup old dimension.
 	Dimension const old_dim = dim_;

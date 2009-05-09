@@ -183,6 +183,13 @@ void InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 	// Hand font through to contained lyxtext:
 	tm.font_.fontInfo() = mi.base.font;
 	mi.base.textwidth -= 2 * TEXT_TO_INSET_OFFSET;
+
+	// This can happen when a layout has a left and right margin,
+	// and the view is made very narrow. We can't do better than 
+	// to draw it partly out of view (bug 5890).
+	if (mi.base.textwidth < 1)
+		mi.base.textwidth = 1;
+
 	if (hasFixedWidth())
 		tm.metrics(mi, dim, mi.base.textwidth);
 	else
@@ -480,9 +487,9 @@ void InsetText::updateLabels(ParIterator const & it)
 	ParIterator it2 = it;
 	it2.forwardPos();
 	LASSERT(&it2.inset() == this && it2.pit() == 0, return);
-	if (producesOutput()) {
+	if (producesOutput())
 		buffer().updateLabels(it2);
-	} else {
+	else {
 		DocumentClass const & tclass = buffer().masterBuffer()->params().documentClass();
 		Counters const savecnt = tclass.counters();
 		buffer().updateLabels(it2);
