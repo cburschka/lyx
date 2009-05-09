@@ -2392,6 +2392,14 @@ void Buffer::removeAutosaveFile() const
 }
 
 
+void Buffer::moveAutosaveFile(support::FileName const & oldauto) const
+{
+	FileName const newauto = getAutosaveFilename();
+	if (!(oldauto == newauto || oldauto.moveTo(newauto)))
+		LYXERR0("Unable to remove autosave file `" << oldauto << "'!");
+}
+
+
 // Perfect target for a thread...
 void Buffer::autoSave() const
 {
