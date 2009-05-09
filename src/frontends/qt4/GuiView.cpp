@@ -532,7 +532,7 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 				
 		int twa_count = twa->count();
 		for (; twa_count > 0; --twa_count) {
-			twa->setCurrentIndex(0);
+			twa->setCurrentIndex(twa_count-1);
 
 			GuiWorkArea * wa = twa->currentWorkArea();
 			Buffer * b = &wa->bufferView().buffer();
