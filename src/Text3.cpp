@@ -2071,8 +2071,11 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_DIALOG_SHOW_NEW_INSET:
 		if (cmd.argument() == "bibitem")
 			code = BIBITEM_CODE;
-		else if (cmd.argument() == "bibtex")
+		else if (cmd.argument() == "bibtex") {
 			code = BIBTEX_CODE;
+			// not allowed in description items
+			enable = !inDescriptionItem(cur);
+		}
 		else if (cmd.argument() == "box")
 			code = BOX_CODE;
 		else if (cmd.argument() == "branch")
@@ -2147,6 +2150,8 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 	case LFUN_FLOAT_LIST_INSERT:
 		code = FLOAT_LIST_CODE;
+		// not allowed in description items
+		enable = !inDescriptionItem(cur);
 		break;
 	case LFUN_CAPTION_INSERT:
 		code = CAPTION_CODE;
@@ -2201,6 +2206,8 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 	case LFUN_INDEX_PRINT:
 		code = INDEX_PRINT_CODE;
+		// not allowed in description items
+		enable = !inDescriptionItem(cur);
 		break;
 	case LFUN_NOMENCL_INSERT:
 		if (cur.selIsMultiCell() || cur.selIsMultiLine()) {
@@ -2211,9 +2218,13 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 	case LFUN_NOMENCL_PRINT:
 		code = NOMENCL_PRINT_CODE;
+		// not allowed in description items
+		enable = !inDescriptionItem(cur);
 		break;
 	case LFUN_TOC_INSERT:
 		code = TOC_CODE;
+		// not allowed in description items
+		enable = !inDescriptionItem(cur);
 		break;
 	case LFUN_HYPERLINK_INSERT:
 		if (cur.selIsMultiCell() || cur.selIsMultiLine()) {
