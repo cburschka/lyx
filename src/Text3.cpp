@@ -335,7 +335,7 @@ static void outline(OutlineOp mode, Cursor & cur)
 
 	// Do we need to set insets' buffer_ members, because we copied
 	// some stuff? We'll assume we do and reset it otherwise.
-	bool setBuffers = true;
+	bool set_buffers = true;
 
 	switch (mode) {
 		case OutlineUp: {
@@ -406,7 +406,7 @@ static void outline(OutlineOp mode, Cursor & cur)
 					}
 				}
 			}
-			setBuffers = false;
+			set_buffers = false;
 			break;
 		}
 		case OutlineOut: {
@@ -426,11 +426,11 @@ static void outline(OutlineOp mode, Cursor & cur)
 					}
 				}
 			}
-			setBuffers = false;
+			set_buffers = false;
 			break;
 		}
 	}
-	if (setBuffers)
+	if (set_buffers)
 		// FIXME This only really needs doing for the newly introduced 
 		// paragraphs. Something like:
 		// 	pit_type const numpars = distance(start, finish);
