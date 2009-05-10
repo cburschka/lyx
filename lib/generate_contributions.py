@@ -704,6 +704,14 @@ contributers = [
                  "22 February 2005",
                  u"Maintainer of the OSX ports, taking over from Ronald Florence"),
 
+     contributer(u"Kevin B. Hendricks",
+                 "kevin.hendricks () sympatico ! ca",
+                 "GPL",
+                 "Fwd: Re: Integration of libmythes and hunspell",
+                 "m=124190107613441",
+                 "9 May 2009",
+                 u"Author of the MyThes thesaurus library"),
+
      contributer(u"Claus Hentschel",
                  "claus.hentschel () mbau ! fh-hannover ! de",
                  "",
