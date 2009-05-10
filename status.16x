@@ -173,6 +173,10 @@ What's new
 
 - Make sure the autosave files are removed when a document is saved
   with a different filename or in a different location (bug 5879).
+
+- Fix bug in LyX internal file handling that would have caused returning
+  the listing of the parent directory if a directory path was specified
+  without a trailing slash (only converters may have been affected).
   
 
 * USER INTERFACE

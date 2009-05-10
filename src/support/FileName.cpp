@@ -407,7 +407,9 @@ FileNameList FileName::dirList(string const & ext) const
 		return dirlist;
 	}
 
-	QDir dir = d->fi.absoluteDir();
+	// If the directory is specified without a trailing '/', absoluteDir()
+	// would return the parent dir, so we must use absoluteFilePath() here.
+	QDir dir = d->fi.absoluteFilePath();
 
 	if (!ext.empty()) {
 		QString filter;
