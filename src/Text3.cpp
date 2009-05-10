@@ -1417,6 +1417,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		if (!inset)
 			break;
+		cur.recordUndo();
 		insertInset(cur, inset);
 		cur.posForward();
 		break;

@@ -197,6 +197,8 @@ What's new
 
 - Fix crash when reducing the size of the workarea such that the left
   and right margins (specified in the layout) will overlap (bug 5890).
+  
+- Fix the undo of info-insert, which caused a crash in math (bug 5930).
 
 - Improve responsiveness, especially on slow or networked drives, when
   editing a master with child documents (bug 5705).
