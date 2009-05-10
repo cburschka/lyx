@@ -370,6 +370,9 @@ void LyX::prepareExit()
 	cap::clearCutStack();
 	cap::clearSelection();
 
+	// Write the index file of the converter cache
+	ConverterCache::get().writeIndex();
+
 	// close buffers first
 	pimpl_->buffer_list_.closeAll();
 

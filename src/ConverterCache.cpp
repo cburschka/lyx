@@ -218,7 +218,6 @@ ConverterCache::~ConverterCache()
 {
 	if (!lyxrc.use_converter_cache)
 		return;
-	pimpl_->writeIndex();
 	delete pimpl_;
 }
 
@@ -245,6 +244,12 @@ void ConverterCache::init()
 			exit(EXIT_FAILURE);
 		}
 	get().pimpl_->readIndex();
+}
+
+
+void ConverterCache::writeIndex()
+{
+	pimpl_->writeIndex();
 }
 
 

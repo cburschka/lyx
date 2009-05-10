@@ -55,6 +55,9 @@ public:
 	/// Init the cache. This must be done after package initialization.
 	static void init();
 
+	/// Writes the index list. This must be called on exit.
+	void writeIndex();
+
 	/**
 	 * Add \c converted_file (\c orig_from converted to \c to_format) to
 	 * the cache if it is not already in or not up to date.
