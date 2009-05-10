@@ -195,6 +195,9 @@ What's new
 
 - Fix crash when creating new file -- Qt 4.5 issue (bug 5887).
 
+- Fix crash when reducing the size of the workarea such that the left
+  and right margins (specified in the layout) will overlap (bug 5890).
+
 - Improve responsiveness, especially on slow or networked drives, when
   editing a master with child documents (bug 5705).
 

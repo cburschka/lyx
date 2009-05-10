@@ -179,6 +179,13 @@ void InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 	// Hand font through to contained lyxtext:
 	tm.font_.fontInfo() = mi.base.font;
 	mi.base.textwidth -= 2 * TEXT_TO_INSET_OFFSET;
+
+	// This can happen when a layout has a left and right margin,
+	// and the view is made very narrow. We can't do better than 
+	// to draw it partly out of view (bug 5890).
+	if (mi.base.textwidth < 1)
+		mi.base.textwidth = 1;
+
 	if (hasFixedWidth())
 		tm.metrics(mi, dim, mi.base.textwidth);
 	else
