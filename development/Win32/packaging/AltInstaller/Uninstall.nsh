@@ -3,6 +3,9 @@
 # this function is called at first after starting the uninstaller
 Function un.onInit
 
+  # set the uninstaller language to the Windows locale language
+  System::Call "kernel32::GetUserDefaultLangID()i.a"
+
   # Check that LyX is not currently running
   FindProcDLL::FindProc "lyx.exe"
   ${if} $R0 == "1"
