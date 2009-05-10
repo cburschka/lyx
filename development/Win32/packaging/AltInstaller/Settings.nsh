@@ -40,12 +40,12 @@ BrandingText "LyXWinInstaller v4.${INSTALLER_SUBVERSION} - ${INSTALLER_VERSION}"
 
 # definitions for the Update installer
 !if ${INSTALLER_VERSION} == "Update"
- !define PRODUCT_VERSION_SHORT_OLD "161"
+ !define PRODUCT_VERSION_SHORT_OLD "162"
  !define PRODUCT_UNINST_KEY_OLD "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX${PRODUCT_VERSION_SHORT_OLD}"
- !define PRODUCT_VERSION_OLD "LyX 1.6.1"
+ !define PRODUCT_VERSION_OLD "LyX 1.6.2"
  !define JabRefVersion "2.4.2" # could be an older version
- !define ImageMagickVersion_Old "6.4.7" # could be an older version
- !define GhostscriptVersion_Old "8.63" # could be an older version
+ !define ImageMagickVersion_Old "6.4.9" # could be an older version
+ !define GhostscriptVersion_Old "8.64" # could be an older version
  !define MiKTeXDeliveredVersion "2.7" # could be an older version
 !endif
 
@@ -66,7 +66,7 @@ BrandingText "LyXWinInstaller v4.${INSTALLER_SUBVERSION} - ${INSTALLER_VERSION}"
 
 !define ClassFileDir "${PRODUCT_SOURCEDIR}\Resources\tex"
 
-!define ImageMagickVersion "6.4.9"
+!define ImageMagickVersion "6.5.2"
 # for some odd reason the ImageMagick folder may not be a subfolder of $INSTDIR\bin!
 !define ImageMagickDir "$INSTDIR\etc\ImageMagick"
 !define GhostscriptDir "$INSTDIR\etc\Ghostscript"

@@ -6,20 +6,15 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
  File "${PRODUCT_SOURCEDIR}\bin\dt2dv.exe"
  File "${PRODUCT_SOURCEDIR}\bin\dv2dt.exe"
- #File /r "${PRODUCT_SOURCEDIR}\bin\DLLs"
- #SetOutPath "$INSTDIR\bin\Lib"
- #File "${PRODUCT_SOURCEDIR}\bin\Lib\optparse.py"
  SetOutPath "$INSTDIR\Resources" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\man\man1"
  File "${PRODUCT_SOURCEDIR}\Resources\chkconfig.ltx"
  File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
  File "${PRODUCT_SOURCEDIR}\Resources\CREDITS"
- #File "${PRODUCT_SOURCEDIR}\Resources\external_templates"
- #File "${PRODUCT_SOURCEDIR}\Resources\languages"
- #File "${PRODUCT_SOURCEDIR}\Resources\symbols"
  File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"
  SetOutPath "$INSTDIR\Resources\bind"
+ File "${PRODUCT_SOURCEDIR}\Resources\bind\cua.bind"
  File "${PRODUCT_SOURCEDIR}\Resources\bind\menus.bind"
  SetOutPath "$INSTDIR\Resources\doc"
  File /r "${PRODUCT_SOURCEDIR}\Resources\doc\id"
@@ -55,7 +50,6 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\UserGuide.lyx"
  SetOutPath "$INSTDIR\Resources\doc\ja"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\ja\LaTeXConfig.lyx"
- #SetOutPath "$INSTDIR\Resources\examples"
  SetOutPath "$INSTDIR\Resources\images"
  File "${PRODUCT_SOURCEDIR}\Resources\images\bookmark-goto_0.png"
  File "${PRODUCT_SOURCEDIR}\Resources\images\tabular-feature_m-align-center.png"
@@ -74,7 +68,6 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx_1_6.py"
- #SetOutPath "$INSTDIR\Resources\templates"
  SetOutPath "$INSTDIR\Resources\ui"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\stdcontext.inc"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\stdmenus.inc"
