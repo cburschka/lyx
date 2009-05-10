@@ -190,6 +190,9 @@ What's new
 - Fix crash when closing a child after it has been unincluded from its
   master (bug 5859).
 
+- Fix crash when the dos-box is closed from which LyX was started
+  (bug 5758).
+  
 - Fix crash when passing a nonexisting file to the lyx function
   server-goto-file-row.
 
