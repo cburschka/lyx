@@ -330,6 +330,9 @@ What's new
 
 - Adjust the enabling of some controls in the outliner and reduce the
   flickering caused by collapsing and opening of items.
+
+- Fix crash with instant preview when nesting math in a text-in-math
+  environment (bug 5392).
   
 
 * DOCUMENTATION AND LOCALIZATION
