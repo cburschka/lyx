@@ -18,6 +18,8 @@
 
 #include <cstdlib>
 
+#include <QProcess>
+
 using namespace std;
 
 namespace lyx {
@@ -38,6 +40,15 @@ int Systemcall::startscript(Starttype how, string const & what)
 			break;
 		}
 	}
+
+//#define DISABLE_EVALUATE_QPROCESS
+#ifndef DISABLE_EVALUATE_QPROCESS
+	QString cmd = QString::fromLocal8Bit(command.c_str());
+	QProcess process;
+	process.start(cmd);
+	process.waitForFinished();
+	return process.exitCode();
+#endif
 
 	return ::system(command.c_str());
 }
