@@ -8,7 +8,7 @@
 
 LicenseLangString LyXLicenseData ${LYX_LANG} "${PRODUCT_LICENSE_FILE}"
 
-LangString WelcomePageText "${LYX_LANG}" "Wizard ini akan memandu anda dalam melakukan instalasi LyX.\r\n\
+LangString WelcomePageText "${LYX_LANG}" "Program ini akan memandu anda dalam melakukan instalasi LyX.\r\n\
 					  \r\n\
 					  Anda harus bertindak dan mempunyai hak sebagai administrator untuk instalasi LyX.\r\n\
 					  \r\n\
@@ -89,7 +89,7 @@ LangString AspellDownloadFailed "${LYX_LANG}" "Kamus pemeriksa ejaan Aspell tida
 LangString AspellInstallFailed "${LYX_LANG}" "Kamus pemeriksa ejaan Aspell tidak bisa diinstal!"
 LangString AspellPartAnd "${LYX_LANG}" " dan "
 LangString AspellPartSep "${LYX_LANG}" ", "
-LangString AspellAll "${LYX_LANG}" 'Kamus untuk bahasa yang dipilih sudah diinstal'
+LangString AspellAll "${LYX_LANG}" 'Kamus bahasa sudah diinstal'
 LangString AspellNone "${LYX_LANG}" 'Kamus untuk pemeriksa ejaan "Aspell" belum diinstal.$\r$\n\
 				     Berbagai kamus dapat dimuat turun dari$\r$\n\
 				     ${AspellLocation}$\r$\n\
