@@ -830,8 +830,9 @@ void BufferParams::writeFile(ostream & os) const
 	   << "\n\\use_bibtopic " << convert<string>(use_bibtopic)
 	   << "\n\\use_indices " << convert<string>(use_indices)
 	   << "\n\\paperorientation " << string_orientation[orientation]
-	   << "\n\\backgroundcolor " << lyx::X11hexname(backgroundcolor)
 	   << '\n';
+	   if (backgroundcolor != lyx::rgbFromHexName("#ffffff"))
+		os << "\\backgroundcolor " << lyx::X11hexname(backgroundcolor) << '\n';
 
 	BranchList::const_iterator it = branchlist().begin();
 	BranchList::const_iterator end = branchlist().end();
