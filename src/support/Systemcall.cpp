@@ -22,6 +22,8 @@
 
 #include <QProcess>
 
+#define DISABLE_EVALUATE_QPROCESS
+
 using namespace std;
 
 namespace lyx {
@@ -30,6 +32,7 @@ namespace support {
 // Reuse of instance
 int Systemcall::startscript(Starttype how, string const & what)
 {
+#ifdef DISABLE_EVALUATE_QPROCESS
 	string command = what;
 
 	if (how == DontWait) {
@@ -43,36 +46,39 @@ int Systemcall::startscript(Starttype how, string const & what)
 		}
 	}
 
-//#define DISABLE_EVALUATE_QPROCESS
-#ifndef DISABLE_EVALUATE_QPROCESS
-	QString cmd = QString::fromLocal8Bit(command.c_str());
-	QProcess process;
-	process.start(cmd);
-	if (!process.waitForStarted(1000)) {
+	return ::system(command.c_str());
+#else
+	QString cmd = QString::fromLocal8Bit(what.c_str());
+	QProcess * process = new QProcess;
+	process->start(cmd);
+	if (!process->waitForStarted(1000)) {
 		LYXERR0("Qprocess " << cmd << " did not start!");
-		LYXERR0("error " << process.error());
-		LYXERR0("state " << process.state());
-		LYXERR0("status " << process.exitStatus());
+		LYXERR0("error " << process->error());
+		LYXERR0("state " << process->state());
+		LYXERR0("status " << process->exitStatus());
 		return 10;
 	}
-	if (!process.waitForFinished(30000)) {
+	if (how == DontWait)
+		return 0;
+
+	if (!process->waitForFinished(30000)) {
 		LYXERR0("Qprocess " << cmd << " did not finished!");
-		LYXERR0("error " << process.error());
-		LYXERR0("state " << process.state());
-		LYXERR0("status " << process.exitStatus());
+		LYXERR0("error " << process->error());
+		LYXERR0("state " << process->state());
+		LYXERR0("status " << process->exitStatus());
 		return 20;
 	}
-	if (process.exitCode()) {
+	int const exit_code = process->exitCode();
+	if (exit_code) {
 		LYXERR0("Qprocess " << cmd << " finished!");
-		LYXERR0("exitCode " << process.exitCode());
-		LYXERR0("error " << process.error());
-		LYXERR0("state " << process.state());
-		LYXERR0("status " << process.exitStatus());
+		LYXERR0("exitCode " << process->exitCode());
+		LYXERR0("error " << process->error());
+		LYXERR0("state " << process->state());
+		LYXERR0("status " << process->exitStatus());
 	}
-	return process.exitCode();
+	delete process;
+	return exit_code;
 #endif
-
-	return ::system(command.c_str());
 }
 
 } // namespace support
