@@ -207,6 +207,9 @@ What's new
   
 - Fix the undo of info-insert, which caused a crash in math (bug 5930).
 
+- Fix assertion with instant preview when nesting math in a text-in-math
+  environment (bug 5392).
+
 - Improve responsiveness, especially on slow or networked drives, when
   editing a master with child documents (bug 5705).
 
@@ -330,9 +333,6 @@ What's new
 
 - Adjust the enabling of some controls in the outliner and reduce the
   flickering caused by collapsing and opening of items.
-
-- Fix crash with instant preview when nesting math in a text-in-math
-  environment (bug 5392).
   
 
 * DOCUMENTATION AND LOCALIZATION
