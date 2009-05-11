@@ -61,7 +61,7 @@ int Systemcall::startscript(Starttype how, string const & what)
 	QString cmd = QString::fromLocal8Bit(what.c_str());
 	QProcess * process = new QProcess;
 	process->start(cmd);
-	if (!process->waitForStarted(1000)) {
+	if (!process->waitForStarted(3000)) {
 		LYXERR0("Qprocess " << cmd << " did not start!");
 		LYXERR0("error " << process->error());
 		LYXERR0("state " << process->state());
@@ -71,7 +71,7 @@ int Systemcall::startscript(Starttype how, string const & what)
 	if (how == DontWait)
 		return 0;
 
-	if (!process->waitForFinished(30000)) {
+	if (!process->waitForFinished(180000)) {
 		LYXERR0("Qprocess " << cmd << " did not finished!");
 		LYXERR0("error " << process->error());
 		LYXERR0("state " << process->state());
