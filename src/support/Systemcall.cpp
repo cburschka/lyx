@@ -13,6 +13,8 @@
 
 #include <config.h>
 
+#include "support/debug.h"
+#include "support/qstring_helpers.h"
 #include "support/Systemcall.h"
 #include "support/os.h"
 
@@ -46,7 +48,27 @@ int Systemcall::startscript(Starttype how, string const & what)
 	QString cmd = QString::fromLocal8Bit(command.c_str());
 	QProcess process;
 	process.start(cmd);
-	process.waitForFinished();
+	if (!process.waitForStarted(1000)) {
+		LYXERR0("Qprocess " << cmd << " did not start!");
+		LYXERR0("error " << process.error());
+		LYXERR0("state " << process.state());
+		LYXERR0("status " << process.exitStatus());
+		return 10;
+	}
+	if (!process.waitForFinished(30000)) {
+		LYXERR0("Qprocess " << cmd << " did not finished!");
+		LYXERR0("error " << process.error());
+		LYXERR0("state " << process.state());
+		LYXERR0("status " << process.exitStatus());
+		return 20;
+	}
+	if (process.exitCode()) {
+		LYXERR0("Qprocess " << cmd << " finished!");
+		LYXERR0("exitCode " << process.exitCode());
+		LYXERR0("error " << process.error());
+		LYXERR0("state " << process.state());
+		LYXERR0("status " << process.exitStatus());
+	}
 	return process.exitCode();
 #endif
 
