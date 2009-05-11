@@ -2010,15 +2010,16 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			importDocument(to_utf8(cmd.argument()));
 			break;
 
-		case LFUN_BUFFER_SWITCH: {
-			Buffer * buffer = 
-				theBufferList().getBuffer(FileName(to_utf8(cmd.argument())));
-			if (buffer)
-				setBuffer(buffer);
-			else
-				bv->cursor().message(_("Document not loaded"));
+		case LFUN_BUFFER_SWITCH:
+			if (FileName::isAbsolute(to_utf8(cmd.argument()))) {
+				Buffer * buffer = 
+					theBufferList().getBuffer(FileName(to_utf8(cmd.argument())));
+				if (buffer)
+					setBuffer(buffer);
+				else
+					bv->cursor().message(_("Document not loaded"));
+			}
 			break;
-		}
 
 		case LFUN_BUFFER_NEXT:
 			gotoNextOrPreviousBuffer(NEXTBUFFER);
