@@ -51,6 +51,8 @@
 
 using namespace std;
 
+#define USE_QPROCESS
+
 namespace lyx {
 namespace support {
 
@@ -136,9 +138,13 @@ string const quoteName(string const & name, quote_style style)
 		// filenames to child processes if possible. We store them in
 		// a python script instead, where we don't have these
 		// limitations.
+#ifndef USE_QPROCESS
 		return (os::shell() == os::UNIX) ?
 			'\'' + name + '\'':
 			'"' + name + '"';
+#else
+		return '"' + name + '"';
+#endif
 	case quote_python:
 		return "\"" + subst(subst(name, "\\", "\\\\"), "\"", "\\\"")
 		     + "\"";

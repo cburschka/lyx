@@ -146,7 +146,7 @@ Package::Package(string const & command_line_arg0,
 
 	FileName const configure_script(addName(system_support().absFilename(), "configure.py"));
 	configure_command_ = os::python() + ' ' +
-			quoteName(configure_script.toFilesystemEncoding()) +
+			quoteName(configure_script.toFilesystemEncoding(), quote_python) +
 			with_version_suffix();
 
 	LYXERR(Debug::INIT, "<package>\n"

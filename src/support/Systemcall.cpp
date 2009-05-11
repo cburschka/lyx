@@ -23,7 +23,7 @@
 
 #include <QProcess>
 
-#define DISABLE_EVALUATE_QPROCESS
+#define USE_QPROCESS
 
 using namespace std;
 
@@ -42,7 +42,7 @@ static void killProcess(QProcess * p)
 // Reuse of instance
 int Systemcall::startscript(Starttype how, string const & what)
 {
-#ifdef DISABLE_EVALUATE_QPROCESS
+#ifndef USE_QPROCESS
 	string command = what;
 
 	if (how == DontWait) {
