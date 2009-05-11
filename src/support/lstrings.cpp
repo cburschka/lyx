@@ -504,7 +504,7 @@ bool prefixIs(docstring const & a, docstring const & pre)
 
 bool suffixIs(string const & a, char c)
 {
-	if (a.empty()) 
+	if (a.empty())
 		return false;
 	return a[a.length() - 1] == c;
 }
@@ -931,11 +931,11 @@ docstring const escape(docstring const & lab)
 namespace {
 
 // this doesn't check whether str is empty, so do that first.
-vector<docstring> wrapToVec(docstring const & str, int const ind, 
-                            size_t const width)
+vector<docstring> wrapToVec(docstring const & str, int const ind,
+			    size_t const width)
 {
 	docstring s = trim(str);
-	if (s.empty()) 
+	if (s.empty())
 		return vector<docstring>();
 
 	docstring indent;
@@ -953,7 +953,7 @@ vector<docstring> wrapToVec(docstring const & str, int const ind,
 		for (; i >= 0; --i)
 			if (s[i] == ' ')
 				break;
-		if (i < 0) { 
+		if (i < 0) {
 			// no space found
 			s = s.substr(0, width - 3) + "...";
 			break;
@@ -961,7 +961,7 @@ vector<docstring> wrapToVec(docstring const & str, int const ind,
 		retval.push_back(s.substr(0, i));
 		s = indent + s.substr(i);
 	}
-	if (!s.empty()) 
+	if (!s.empty())
 		retval.push_back(s);
 	return retval;
 }
@@ -972,7 +972,7 @@ vector<docstring> wrapToVec(docstring const & str, int const ind,
 docstring wrap(docstring const & str, int const ind, size_t const width)
 {
 	docstring s = trim(str);
-	if (s.empty()) 
+	if (s.empty())
 		return docstring();
 
 	vector<docstring> const svec = wrapToVec(str, ind, width);
@@ -981,7 +981,7 @@ docstring wrap(docstring const & str, int const ind, size_t const width)
 
 
 docstring wrapParas(docstring const & str, int const indent,
-                    size_t const width, size_t const maxlines)
+		    size_t const width, size_t const maxlines)
 {
 	if (str.empty())
 		return docstring();
@@ -993,10 +993,10 @@ docstring wrapParas(docstring const & str, int const indent,
 	vector<docstring>::iterator en = pars.end();
 	for (; it != en; ++it) {
 		vector<docstring> tmp = wrapToVec(*it, indent, width);
-		int const nlines = tmp.size();
+		size_t const nlines = tmp.size();
 		if (nlines == 0)
 			continue;
-		int const curlines = retval.size();
+		size_t const curlines = retval.size();
 		if (maxlines > 0 && curlines + nlines >= maxlines) {
 			tmp.resize(maxlines - curlines - 1);
 			tmp.push_back(from_ascii("..."));
@@ -1082,14 +1082,14 @@ vector<docstring> const getVectorFromString(docstring const & str,
 
 
 string const getStringFromVector(vector<string> const & vec,
-                                 string const & delim)
+				 string const & delim)
 {
 	return getStringFromVector<string>(vec, delim);
 }
 
 
 docstring const getStringFromVector(vector<docstring> const & vec,
-                                    docstring const & delim)
+				    docstring const & delim)
 {
 	return getStringFromVector<docstring>(vec, delim);
 }
