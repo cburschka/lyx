@@ -60,8 +60,6 @@ int Systemcall::startscript(Starttype how, string const & what)
 #else
 	QString cmd = QString::fromLocal8Bit(what.c_str());
 	QProcess * process = new QProcess;
-	cmd.replace("python", "python2.5");
-	cmd.prepend("/usr/bin/");
 	process->start(cmd);
 	if (!process->waitForStarted(1000)) {
 		LYXERR0("Qprocess " << cmd << " did not start!");
