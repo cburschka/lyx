@@ -88,6 +88,10 @@
 
 \bind "M-x"			"command-execute"
 
+\bind "M-equal"			"buffer-zoom-in"
+\bind "M-plus"			"buffer-zoom-in"
+\bind "M-minus"			"buffer-zoom-out"
+
 #
 # Motion group
 #
