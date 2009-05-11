@@ -19,6 +19,7 @@
 #include "support/os.h"
 
 #include <cstdlib>
+#include <iostream>
 
 #include <QProcess>
 
@@ -28,6 +29,15 @@ using namespace std;
 
 namespace lyx {
 namespace support {
+
+static void killProcess(QProcess * p)
+{
+	p->closeReadChannel(QProcess::StandardOutput);
+	p->closeReadChannel(QProcess::StandardError);
+	p->close();
+	delete p;
+}
+
 
 // Reuse of instance
 int Systemcall::startscript(Starttype how, string const & what)
@@ -50,6 +60,8 @@ int Systemcall::startscript(Starttype how, string const & what)
 #else
 	QString cmd = QString::fromLocal8Bit(what.c_str());
 	QProcess * process = new QProcess;
+	cmd.replace("python", "python2.5");
+	cmd.prepend("/usr/bin/");
 	process->start(cmd);
 	if (!process->waitForStarted(1000)) {
 		LYXERR0("Qprocess " << cmd << " did not start!");
@@ -76,7 +88,9 @@ int Systemcall::startscript(Starttype how, string const & what)
 		LYXERR0("state " << process->state());
 		LYXERR0("status " << process->exitStatus());
 	}
-	delete process;
+	cout << fromqstr(QString::fromLocal8Bit(process->readAllStandardOutput().data())) << endl;
+	cerr << fromqstr(QString::fromLocal8Bit(process->readAllStandardError().data())) << endl;
+	killProcess(process);
 	return exit_code;
 #endif
 }
