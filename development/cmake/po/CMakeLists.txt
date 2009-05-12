@@ -18,19 +18,31 @@ macro(add_gettext_python  _par _dir)
     list(APPEND _sources ${_s1})
   endforeach(_arg)
   SET(_dst "${CMAKE_CURRENT_BINARY_DIR}/${_par}_l10n.pot")
+  SET(_tmp_src_files "${CMAKE_CURRENT_BINARY_DIR}/${_par}_tmp_files")
+  SET(_src_files "${CMAKE_CURRENT_BINARY_DIR}/${_par}_files")
+  file(WRITE ${_tmp_src_files} "")
+  foreach(_s ${_sources})
+    FILE(APPEND ${_tmp_src_files} "${_s}\n")
+  endforeach()
   if(${_par} MATCHES "^\(.*\)_[0-9]+$")
     set(_par1 ${CMAKE_MATCH_1})
   else()
     set(_par1 ${_par})
   endif()
   ADD_CUSTOM_COMMAND(
+    OUTPUT ${_src_files}
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${_tmp_src_files} ${_src_files}
+    DEPENDS ${_tmp_src_files}
+  )
+  ADD_CUSTOM_COMMAND(
     OUTPUT "${_dst}"
     PRE_BUILD
     COMMAND python
-    ARGS "${TOP_SRC_DIR}/po/lyx_pot.py" -b "${TOP_SRC_DIR}" -o "${_dst}" -t ${_par1} ${_sources}
-    DEPENDS ${_sources}
+    ARGS "${TOP_SRC_DIR}/po/lyx_pot.py" -b "${TOP_SRC_DIR}" -o "${_dst}" -t ${_par1} "--src_file=${_src_files}"
+    DEPENDS ${_sources} ${_src_files}
     )
   SET_SOURCE_FILES_PROPERTIES("${_dst}" GENERATED)
+  SET_SOURCE_FILES_PROPERTIES("${_src_files}" GENERATED)
   LIST(APPEND _py_sources "${_dst}")
 endmacro(add_gettext_python)
 
@@ -39,13 +51,10 @@ SET_SOURCE_FILES_PROPERTIES("${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmt.pot" GE
 SET_SOURCE_FILES_PROPERTIES("${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot" GENERATED)
 
 add_gettext_python(qt4 src/frontends/qt4/ui *.ui)
-add_gettext_python(layouts_1 lib/layouts *.layout)
-add_gettext_python(layouts_2 lib/layouts *.inc)
-add_gettext_python(layouts_3 lib/layouts *.module)
+add_gettext_python(layouts lib/layouts *.layout *.inc *.module)
 add_gettext_python(languages lib languages)
 add_gettext_python(encodings lib encodings)
-add_gettext_python(ui_1 lib/ui *.ui)
-add_gettext_python(ui_2 lib/ui *.inc)
+add_gettext_python(ui lib/ui *.ui *.inc)
 add_gettext_python(external lib external_templates)
 add_gettext_python(formats lib configure.py)
 
