@@ -1661,6 +1661,11 @@ void GuiView::insertPlaintextFile(docstring const & fname,
 	if (!bv)
 		return;
 
+	if (!fname.empty() && !FileName::isAbsolute(to_utf8(fname))) {
+		message(_("Absolute filename expected."));
+		return;
+	}
+
 	// FIXME UNICODE
 	FileName filename(to_utf8(fname));
 	
@@ -1916,15 +1921,16 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			importDocument(to_utf8(cmd.argument()));
 			break;
 
-		case LFUN_BUFFER_SWITCH: {
-			Buffer * buffer = 
-				theBufferList().getBuffer(FileName(to_utf8(cmd.argument())));
-			if (buffer)
-				setBuffer(buffer);
-			else
-				bv->cursor().message(_("Document not loaded"));
+		case LFUN_BUFFER_SWITCH:
+			if (FileName::isAbsolute(to_utf8(cmd.argument()))) {
+				Buffer * buffer = 
+					theBufferList().getBuffer(FileName(to_utf8(cmd.argument())));
+				if (buffer)
+					setBuffer(buffer);
+				else
+					bv->cursor().message(_("Document not loaded"));
+			}
 			break;
-		}
 
 		case LFUN_BUFFER_NEXT:
 			gotoNextOrPreviousBuffer(NEXTBUFFER);
