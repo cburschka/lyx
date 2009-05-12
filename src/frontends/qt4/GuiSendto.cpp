@@ -70,7 +70,7 @@ void GuiSendTo::changed_adaptor()
 
 void GuiSendTo::updateContents()
 {
-	all_formats_ = allFormats();
+	all_formats_ = buffer().exportableFormats(false);
 
 	// Save the current selection if any
 	Format const * current_format = 0;
@@ -164,59 +164,6 @@ void GuiSendTo::dispatchParams()
 	string const data = format_->name() + " " + fromqstr(command_);
 	dispatch(FuncRequest(getLfun(), data));
 }
-
-// FIXME: Move to Converters?
-vector<Format const *> GuiSendTo::allFormats() const
-{
-	// What formats can we output natively?
-	vector<string> exports;
-	exports.push_back("lyx");
-	exports.push_back("text");
-
-	if (buffer().isLatex()) {
-		if (buffer().params().useXetex)
-			exports.push_back("xetex");
-		else {
-			exports.push_back("latex");
-			exports.push_back("pdflatex");
-		}
-	}
-	else if (buffer().isDocBook())
-		exports.push_back("docbook");
-	else if (buffer().isLiterate())
-		exports.push_back("literate");
-
-	// Loop over these native formats and ascertain what formats we
-	// can convert to
-	vector<Format const *> to;
-
-	vector<string>::const_iterator ex_it  = exports.begin();
-	vector<string>::const_iterator ex_end = exports.end();
-	for (; ex_it != ex_end; ++ex_it) {
-		// Start off with the native export format.
-		// "formats" is LyX's list of recognised formats
-		to.push_back(formats.getFormat(*ex_it));
-
-		Formats::const_iterator fo_it  = formats.begin();
-		Formats::const_iterator fo_end = formats.end();
-		for (; fo_it != fo_end; ++fo_it) {
-			// we need to hide the default graphic export formats
-			// from the external menu, because we need them only
-			// for the internal lyx-view and external latex run
-			string const name = fo_it->name();
-			if (name != "eps" && name != "xpm" && name != "png" &&
-			    theConverters().isReachable(*ex_it, name))
-				to.push_back(&(*fo_it));
-		}
-	}
-
-	// Remove repeated formats.
-	sort(to.begin(), to.end());
-	to.erase(unique(to.begin(), to.end()), to.end());
-
-	return to;
-}
-
 
 Dialog * createGuiSendTo(GuiView & lv) { return new GuiSendTo(lv); }
 

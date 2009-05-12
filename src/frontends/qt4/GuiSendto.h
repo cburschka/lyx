@@ -61,9 +61,6 @@ private:
 	///
 	FuncCode getLfun() const { return LFUN_BUFFER_EXPORT_CUSTOM; }
 
-	/// Return a vector of those formats that can be exported from "lyx".
-	std::vector<Format const *> allFormats() const;
-
 private:
 	///
 	Format const * format_;
