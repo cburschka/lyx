@@ -138,6 +138,6 @@ private:
 };
 
 
-
 } // namespace lyx
+
 #endif
