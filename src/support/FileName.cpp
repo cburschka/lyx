@@ -212,8 +212,8 @@ string FileName::realPath() const
 
 void FileName::set(string const & name)
 {
-	d->name = name;
 	d->fi.setFile(toqstr(name));
+	d->name = d->fi.absoluteFilePath();
 	//LYXERR(Debug::FILES, "FileName::set(" << name << ')');
 	LASSERT(empty() || isAbsolute(d->name), /**/);
 }
