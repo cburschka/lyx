@@ -1742,8 +1742,13 @@ void GuiView::insertPlaintextFile(docstring const & fname,
 	bool asParagraph)
 {
 	BufferView * bv = view();
-	if (!bv || !FileName::isAbsolute(to_utf8(fname)))
+	if (!bv)
 		return;
+
+	if (!fname.empty() && !FileName::isAbsolute(to_utf8(fname))) {
+		message(_("Absolute filename expected."));
+		return;
+	}
 
 	// FIXME UNICODE
 	FileName filename(to_utf8(fname));
