@@ -60,6 +60,12 @@ int Systemcall::startscript(Starttype how, string const & what)
 #else
 	QString cmd = QString::fromLocal8Bit(what.c_str());
 	QProcess * process = new QProcess;
+#ifndef WIN32
+	if (isatty(1))
+		process->setStandardOutputFile(toqstr("/dev/stdout"));
+	if (isatty(2))
+		process->setStandardErrorFile(toqstr("/dev/stderr"));
+#endif
 	process->start(cmd);
 	if (!process->waitForStarted(3000)) {
 		LYXERR0("Qprocess " << cmd << " did not start!");
@@ -86,8 +92,10 @@ int Systemcall::startscript(Starttype how, string const & what)
 		LYXERR0("state " << process->state());
 		LYXERR0("status " << process->exitStatus());
 	}
+#ifdef WIN32
 	cout << fromqstr(QString::fromLocal8Bit(process->readAllStandardOutput().data())) << endl;
 	cerr << fromqstr(QString::fromLocal8Bit(process->readAllStandardError().data())) << endl;
+#endif
 	killProcess(process);
 	return exit_code;
 #endif
