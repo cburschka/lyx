@@ -189,7 +189,7 @@ def qt4_l10n(input_files, output, base):
                 string = string.replace('&amp;', '&').replace('&lt;', '<').replace('&gt;', '>')
                 string = string.replace('\\', '\\\\').replace('"', r'\"')
                 print >> output, '#: %s:%d\nmsgid "%s"\nmsgstr ""\n' % \
-                    (relativePath(src, base), lineno+1, string) 
+                    (relativePath(src, base), lineno+1, string)
         input.close()
     output.close()
 
@@ -324,13 +324,15 @@ def encodings_l10n(input_files, output, base):
 
 
 Usage = '''
-lyx_pot.py [-b|--base top_src_dir] [-o|--output output_file] [-h|--help] -t|--type input_type input_files
+lyx_pot.py [-b|--base top_src_dir] [-o|--output output_file] [-h|--help] [-s|src_file filename] -t|--type input_type input_files
 
-where 
+where
     --base:
         path to the top source directory. default to '.'
     --output:
         output pot file, default to './lyx.pot'
+    --src_file
+        filename that contains a list of input files in each line
     --input_type can be
         ui: lib/ui/*
         layouts: lib/layouts/*
@@ -345,9 +347,10 @@ if __name__ == '__main__':
     input_type = None
     output = 'lyx.pot'
     base = '.'
+    input_files = []
     #
-    optlist, args = getopt.getopt(sys.argv[1:], 'ht:o:b:',
-        ['help', 'type=', 'output=', 'base='])
+    optlist, args = getopt.getopt(sys.argv[1:], 'ht:o:b:s:',
+        ['help', 'type=', 'output=', 'base=', 'src_file='])
     for (opt, value) in optlist:
         if opt in ['-h', '--help']:
             print Usage
@@ -358,22 +361,28 @@ if __name__ == '__main__':
             base = value
         elif opt in ['-t', '--type']:
             input_type = value
+        elif opt in ['-s', '--src_file']:
+            input_files = [f.strip() for f in open(value)]
+
     if input_type not in ['ui', 'layouts', 'modules', 'qt4', 'languages', 'encodings', 'external', 'formats'] or output is None:
         print 'Wrong input type or output filename.'
         sys.exit(1)
+
+    input_files += args
+
     if input_type == 'ui':
-        ui_l10n(args, output, base)
+        ui_l10n(input_files, output, base)
     elif input_type == 'layouts':
-        layouts_l10n(args, output, base)
+        layouts_l10n(input_files, output, base)
     elif input_type == 'qt4':
-        qt4_l10n(args, output, base)
+        qt4_l10n(input_files, output, base)
     elif input_type == 'external':
-        external_l10n(args, output, base)
+        external_l10n(input_files, output, base)
     elif input_type == 'formats':
-        formats_l10n(args, output, base)
+        formats_l10n(input_files, output, base)
     elif input_type == 'encodings':
-        encodings_l10n(args, output, base)
+        encodings_l10n(input_files, output, base)
     else:
-        languages_l10n(args, output, base)
+        languages_l10n(input_files, output, base)
 
 
