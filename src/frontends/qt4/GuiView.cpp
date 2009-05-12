@@ -1742,7 +1742,7 @@ void GuiView::insertPlaintextFile(docstring const & fname,
 	bool asParagraph)
 {
 	BufferView * bv = view();
-	if (!bv)
+	if (!bv || !FileName::isAbsolute(to_utf8(fname)))
 		return;
 
 	// FIXME UNICODE
