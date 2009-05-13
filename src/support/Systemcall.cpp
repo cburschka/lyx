@@ -60,12 +60,15 @@ int Systemcall::startscript(Starttype how, string const & what)
 #else
 	QString cmd = QString::fromLocal8Bit(what.c_str());
 	QProcess * process = new QProcess;
-	if (os::terminal_output()) {
-		// Qt won't start the process if we redirect stdout and
-		// stderr this way, without running in a terminal.
+
+	// Qt won't start the process if we redirect stdout/stderr in
+	// this way and they are not connected to a terminal (maybe
+	// because we were launched from some desktop GUI).
+	if (os::is_terminal(os::STDOUT))
 		process->setStandardOutputFile(toqstr(os::stdoutdev()));
+	if (os::is_terminal(os::STDERR))
 		process->setStandardErrorFile(toqstr(os::stderrdev()));
-	}
+
 	process->start(cmd);
 	if (!process->waitForStarted(3000)) {
 		LYXERR0("Qprocess " << cmd << " did not start!");
@@ -92,13 +95,17 @@ int Systemcall::startscript(Starttype how, string const & what)
 		LYXERR0("state " << process->state());
 		LYXERR0("status " << process->exitStatus());
 	}
-	if (!os::terminal_output()) {
-	    // The output may have been redirected. But even if we are not
-	    // running in a terminal, the output could go to some log file,
-	    // for example ~/.xsession-errors on *nix.
-	    cout << fromqstr(QString::fromLocal8Bit(process->readAllStandardOutput().data())) << endl;
-	    cerr << fromqstr(QString::fromLocal8Bit(process->readAllStandardError().data())) << endl;
-	}
+
+	// If the output has been redirected, we write it all at once.
+	// Even if we are not running in a terminal, the output could go
+	// to some log file, for example ~/.xsession-errors on *nix.
+	if (!os::is_terminal(os::STDOUT))
+		cout << fromqstr(QString::fromLocal8Bit(
+			    process->readAllStandardOutput().data()));
+	if (!os::is_terminal(os::STDERR))
+		cerr << fromqstr(QString::fromLocal8Bit(
+			    process->readAllStandardError().data()));
+
 	killProcess(process);
 	return exit_code;
 #endif

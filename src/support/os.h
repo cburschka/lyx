@@ -27,6 +27,12 @@ enum shell_type {
 	CMD_EXE
 };
 
+enum io_channel {
+	STDIN = 0,
+	STDOUT,
+	STDERR
+};
+
 /// Do some work just once.
 void init(int argc, char * argv[]);
 
@@ -39,9 +45,8 @@ std::string const & stdoutdev();
 /// Returns the name of the stderr device (/dev/stderr, /dev/tty, conout$).
 std::string const & stderrdev();
 
-/// Tells whether LyX is being run from a terminal and stdout/stderr are
-/// not redirected.
-bool terminal_output();
+/// Tells whether \p channel is connected to a terminal or not. 
+bool is_terminal(io_channel channel);
 
 /// Returns "/" on *nix, "C:/", etc on Windows.
 std::string current_root();

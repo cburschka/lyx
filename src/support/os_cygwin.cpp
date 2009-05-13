@@ -254,9 +254,9 @@ string const & stderrdev()
 }
 
 
-bool terminal_output()
+bool is_terminal(io_channel channel)
 {
-	return isatty(1) && isatty(2);
+	return isatty(channel);
 }
 
 

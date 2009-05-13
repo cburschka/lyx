@@ -310,7 +310,7 @@ string const & stderrdev()
 }
 
 
-bool terminal_output()
+bool is_terminal(io_channel channel)
 {
 	// FIXME: Passing conout$ to Qt fails, most probably for the
 	// reason explained here:
