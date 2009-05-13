@@ -349,6 +349,7 @@ def checkFormatEntries(dtl_tools):
 \Format dot        dot    "Graphviz Dot"          "" ""	"%%"	"vector"
 \Format platex     tex    "LaTeX (pLaTeX)"        "" "" "%%"    "document"
 \Format literate   nw      NoWeb                  N  ""	"%%"	"document"
+\Format sweave     Rnw    "Sweave"                S  "" "%%"    "document"
 \Format lilypond   ly     "LilyPond music"        "" ""	"%%"	"vector"
 \Format latex      tex    "LaTeX (plain)"         L  ""	"%%"	"document"
 \Format pdflatex   tex    "LaTeX (pdflatex)"      "" ""	"%%"	"document"
@@ -447,6 +448,10 @@ def checkConverterEntries():
     checkProg('a Noweb -> LaTeX converter', ['noweave -delay -index $$i > $$o'],
         rc_entry = [r'''\converter literate   latex      "%%"	""
 \converter literate   pdflatex      "%%"	""'''])
+    #
+    checkProg('a Sweave -> LaTeX converter', ['R CMD Sweave $$i'],
+        rc_entry = [r'''\converter sweave   latex      "%%"	""
+\converter sweave   pdflatex      "%%"	""'''])
     #
     path, elyx = checkProg('eLyXer converter', ['elyxer.py $$i $$o'],
         rc_entry = [ r'\converter lyx html2 "%%" ""' ] )

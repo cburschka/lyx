@@ -1070,6 +1070,7 @@ dist_layouts_DATA =\
 	layouts/mwart.layout \
 	layouts/mwbk.layout \
 	layouts/mwrep.layout \
+	layouts/noweb.module \
 	layouts/numarticle.inc \
 	layouts/numreport.inc \
 	layouts/numrevtex.inc \
@@ -1111,6 +1112,7 @@ dist_layouts_DATA =\
 	layouts/svjog.layout \
 	layouts/svjour.inc \
 	layouts/svprobth.layout \
+	layouts/sweave.module \
 	layouts/tarticle.layout \
 	layouts/tbook.layout \
 	layouts/theorems-ams-extended.module \

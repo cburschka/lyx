@@ -1,0 +1,100 @@
+#\DeclareLyXModule[Sweave.sty]{Sweave - S/R literate programming}
+#DescriptionBegin
+#Allows to use the statistical language S/R as a literate programming tool - Sweave.
+#DescriptionEnd
+
+# Within the chunk, lines are separated by newlines (Ctrl-Return)!
+
+# To add :
+# - \setkeys{Gin}{width=0.8\textwidth} How to add such a "beast"? This is used to define
+#   the size of produced plots.
+
+Format 11
+OutputType              literate
+#OutputFormat           sweave
+
+Style Chunk
+	Category              Sweave
+	LatexType             Paragraph
+	LatexName             dummy
+	Margin                static
+	ParSep                0.4
+	TopSep                0.4
+	BottomSep             0.4
+	ItemSep               0.4
+	Align                 Left
+	AlignPossible         Block, Left, Right, Center
+	NewLine               0
+	FreeSpacing           1
+	PassThru              1
+	## What is LabelType used for?
+	LabelType             Static
+	TextFont
+	  Color               latex
+	  Family              Typewriter
+	EndFont
+End
+
+Style Scrap
+	ObsoletedBy           Chunk
+End
+
+InsetLayout "Sweave Options"
+	LabelString           "Sweave opts"
+	LatexType             Command
+	LaTexName             SweaveOpts
+	LyXType               Custom
+	Decoration            Classic
+	Font
+	  Color               latex
+	  Family              typewriter
+	EndFont
+	LabelFont
+	  Color               latex
+	  Size                Small
+	EndFont
+	MultiPar              false
+	PassThru              true
+	FreeSpacing           true
+	ForceLTR              true
+End
+
+InsetLayout "S/R expression"
+	LabelString           "S/R expr"
+	LatexType             Command
+	LaTexName             Sexpr
+	LyXType               Custom
+	Decoration            Conglomerate
+	Font
+	  Color               latex
+	  Family              typewriter
+	EndFont
+	LabelFont
+	  Color               latex
+	  Size                Small
+	EndFont
+	MultiPar              false
+	PassThru              true
+	FreeSpacing           true
+	ForceLTR              true
+End
+
+InsetLayout "Sweave Input File"
+	LabelString           "Sweave Input File"
+	LatexType             Command
+	LaTexName             SweaveInput
+	LyXType               Custom
+	Decoration            Classic
+	Font
+	  Color               latex
+	  Family              typewriter
+	EndFont
+	LabelFont
+	  Color               latex
+	  Size                Small
+	EndFont
+	MultiPar              false
+	PassThru              true
+	FreeSpacing           true
+	ForceLTR              true
+End
