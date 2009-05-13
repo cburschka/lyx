@@ -2764,6 +2764,8 @@ lib_layouts_module_files = Split('''
     linguistics.module
     logicalmkup.module
     minimalistic.module
+    noweb.module
+    sweave.module
     theorems-ams-extended.module
     theorems-ams.module
     theorems-chap.module
