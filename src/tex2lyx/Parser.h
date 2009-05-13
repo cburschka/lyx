@@ -180,13 +180,13 @@ public:
 	///
 	void push_back(Token const & t);
 	/// The previous token.
-	Token const & prev_token() const;
+	Token const prev_token() const;
 	/// The current token.
-	Token const & curr_token() const;
+	Token const curr_token() const;
 	/// The next token.
-	Token const & next_token();
+	Token const next_token();
 	/// Make the next token current and return that.
-	Token const & get_token();
+	Token const get_token();
 	/// \return whether the current token starts a new paragraph
 	bool isParagraph();
 	/// skips spaces (and comments if \p skip_comments is true)

@@ -166,28 +166,32 @@ void Parser::push_back(Token const & t)
 }
 
 
-Token const & Parser::prev_token() const
+// We return a copy here because the tokens_ vector may get reallocated
+Token const Parser::prev_token() const
 {
 	static const Token dummy;
 	return pos_ > 1 ? tokens_[pos_ - 2] : dummy;
 }
 
 
-Token const & Parser::curr_token() const
+// We return a copy here because the tokens_ vector may get reallocated
+Token const Parser::curr_token() const
 {
 	static const Token dummy;
 	return pos_ > 0 ? tokens_[pos_ - 1] : dummy;
 }
 
 
-Token const & Parser::next_token()
+// We return a copy here because the tokens_ vector may get reallocated
+Token const Parser::next_token()
 {
 	static const Token dummy;
 	return good() ? tokens_[pos_] : dummy;
 }
 
 
-Token const & Parser::get_token()
+// We return a copy here because the tokens_ vector may get reallocated
+Token const Parser::get_token()
 {
 	static const Token dummy;
 	//cerr << "looking at token " << tokens_[pos_] << " pos: " << pos_ << '\n';
