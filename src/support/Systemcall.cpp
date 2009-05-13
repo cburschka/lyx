@@ -93,8 +93,9 @@ int Systemcall::startscript(Starttype how, string const & what)
 		LYXERR0("status " << process->exitStatus());
 	}
 	if (!os::terminal_output()) {
-	    // Even if we are not running in a terminal, the output could
-	    // go to some log file, for example ~/.xsession-errors on *nix.
+	    // The output may have been redirected. But even if we are not
+	    // running in a terminal, the output could go to some log file,
+	    // for example ~/.xsession-errors on *nix.
 	    cout << fromqstr(QString::fromLocal8Bit(process->readAllStandardOutput().data())) << endl;
 	    cerr << fromqstr(QString::fromLocal8Bit(process->readAllStandardError().data())) << endl;
 	}
