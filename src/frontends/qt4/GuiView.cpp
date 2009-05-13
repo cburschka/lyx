@@ -2417,11 +2417,12 @@ namespace {
 char const * const dialognames[] = {
 "aboutlyx", "bibitem", "bibtex", "box", "branch", "changes", "character",
 "citation", "document", "errorlist", "ert", "external", "file", "findreplace",
-"float", "graphics", "include", "index", "index_print", "info", "nomenclature",
-"label", "log", "mathdelimiter", "mathmatrix", "mathspace", "note", "paragraph",
-"phantom", "prefs", "print", "ref", "sendto", "space", "spellchecker",
-"symbols", "tabular", "tabularcreate", "thesaurus", "texinfo", "toc", "href", 
-"view-source", "vspace", "wrap", "listings", "findreplaceadv" };
+"findreplaceadv", "float", "graphics", "href", "include", "index",
+"index_print", "info", "listings", "label", "log", "mathdelimiter",
+"mathmatrix", "mathspace", "nomenclature", "note", "paragraph", "phantom",
+"prefs", "print", "ref", "sendto", "space", "spellchecker", "symbols",
+"tabular", "tabularcreate", "thesaurus", "texinfo", "toc", "view-source",
+"vspace", "wrap",  " };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));

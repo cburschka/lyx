@@ -2527,10 +2527,10 @@ void LyXAction::init()
  * \li Syntax: dialog-show <NAME> [<DATA>]
  * \li Params: <NAME>: aboutlyx|bibitem|bibtex|box|branch|changes|character|citation|\n
                document|errorlist|ert|external|file|findreplace|float|graphics|\n
-               include|index|info|nomenclature|label|listings|log|mathdelimiter|\n
+               href|include|index|info|nomenclature|label|listings|log|mathdelimiter|\n
                mathmatrix|note|paragraph|phantom|prefs|print|ref|sendto|space|\n
-               spellchecker|symbols|tabular|tabularcreate|thesaurus|texinfo|toc|href|\n
-               view-source|vspace|wrap|<SPECIAL> \n
+			   spellchecker|symbols|tabular|tabularcreate|thesaurus|texinfo|toc|\n
+			   view-source|vspace|wrap|<SPECIAL> \n
                <SPECIAL>: latexlog|vclog \n
                <DATA>: data, usually settings for the given dialog. Use debug mode for the
                        details.
