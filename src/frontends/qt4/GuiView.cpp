@@ -2422,7 +2422,7 @@ char const * const dialognames[] = {
 "mathmatrix", "mathspace", "nomenclature", "note", "paragraph", "phantom",
 "prefs", "print", "ref", "sendto", "space", "spellchecker", "symbols",
 "tabular", "tabularcreate", "thesaurus", "texinfo", "toc", "view-source",
-"vspace", "wrap",  " };
+"vspace", "wrap" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
