@@ -296,6 +296,31 @@ string const & nulldev()
 }
 
 
+string const & stdoutdev()
+{
+	static string const stdoutdev_ = "conout$";
+	return stdoutdev_;
+}
+
+
+string const & stderrdev()
+{
+	static string const stderrdev_ = "conout$";
+	return stderrdev_;
+}
+
+
+bool terminal_output()
+{
+	// FIXME: Passing conout$ to Qt fails, most probably for the
+	// reason explained here:
+	// http://support.microsoft.com/?scid=kb%3Ben-us%3B90088&x=15&y=15
+	// How to convince Qt to open conout$ in FILE_SHARE_WRITE mode?
+	// For the time being, we assume we are not running in a terminal.
+	return false;
+}
+
+
 shell_type shell()
 {
 	return CMD_EXE;

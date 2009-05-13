@@ -240,6 +240,26 @@ string const & nulldev()
 }
 
 
+string const & stdoutdev()
+{
+	static string const stdoutdev_ = "/dev/stdout";
+	return stdoutdev_;
+}
+
+
+string const & stderrdev()
+{
+	static string const stderrdev_ = "/dev/stderr";
+	return stderrdev_;
+}
+
+
+bool terminal_output()
+{
+	return isatty(1) && isatty(2);
+}
+
+
 shell_type shell()
 {
 	return UNIX;

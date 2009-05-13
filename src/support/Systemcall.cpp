@@ -60,12 +60,12 @@ int Systemcall::startscript(Starttype how, string const & what)
 #else
 	QString cmd = QString::fromLocal8Bit(what.c_str());
 	QProcess * process = new QProcess;
-#ifndef _WIN32
-	if (isatty(1))
-		process->setStandardOutputFile(toqstr("/dev/stdout"));
-	if (isatty(2))
-		process->setStandardErrorFile(toqstr("/dev/stderr"));
-#endif
+	if (os::terminal_output()) {
+		// Qt won't start the process if we redirect stdout and
+		// stderr this way, without running in a terminal.
+		process->setStandardOutputFile(toqstr(os::stdoutdev()));
+		process->setStandardErrorFile(toqstr(os::stderrdev()));
+	}
 	process->start(cmd);
 	if (!process->waitForStarted(3000)) {
 		LYXERR0("Qprocess " << cmd << " did not start!");
@@ -92,10 +92,12 @@ int Systemcall::startscript(Starttype how, string const & what)
 		LYXERR0("state " << process->state());
 		LYXERR0("status " << process->exitStatus());
 	}
-#ifdef _WIN32
-	cout << fromqstr(QString::fromLocal8Bit(process->readAllStandardOutput().data())) << endl;
-	cerr << fromqstr(QString::fromLocal8Bit(process->readAllStandardError().data())) << endl;
-#endif
+	if (!os::terminal_output()) {
+	    // Even if we are not running in a terminal, the output could
+	    // go to some log file, for example ~/.xsession-errors on *nix.
+	    cout << fromqstr(QString::fromLocal8Bit(process->readAllStandardOutput().data())) << endl;
+	    cerr << fromqstr(QString::fromLocal8Bit(process->readAllStandardError().data())) << endl;
+	}
 	killProcess(process);
 	return exit_code;
 #endif
