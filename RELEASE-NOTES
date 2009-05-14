@@ -30,6 +30,14 @@ The following new LyX functions have been introduced:
 
 - LFUN_REGEXP_MODE ("regexp-mode").
 
+- LFUN_FONT_UNDERLINE ("font-underline").
+
+- LFUN_FONT_STRIKEOUT ("font-strikeout").
+
+- LFUN_FONT_UULINE ("font-underunderline").
+
+- LFUN_FONT_UWAVE ("font-underwave").
+
 The following LyX functions have been removed:
 
 - LFUN_NEXT_INSET_TOGGLE ("next-inset-toggle"): use "inset-toggle" instead.
