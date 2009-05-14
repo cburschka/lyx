@@ -105,7 +105,7 @@ struct FileName::Private
 
 	Private(string const & abs_filename) : fi(toqstr(abs_filename))
 	{
-		name = abs_filename;
+		name = fromqstr(fi.absoluteFilePath());
 		fi.setCaching(fi.exists() ? true : false);
 	}
 	///
@@ -212,8 +212,8 @@ string FileName::realPath() const
 
 void FileName::set(string const & name)
 {
-	d->name = name;
 	d->fi.setFile(toqstr(name));
+	d->name = fromqstr(d->fi.absoluteFilePath());
 	//LYXERR(Debug::FILES, "FileName::set(" << name << ')');
 	LASSERT(empty() || isAbsolute(d->name), /**/);
 }
