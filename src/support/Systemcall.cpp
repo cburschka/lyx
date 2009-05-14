@@ -98,9 +98,11 @@ int Systemcall::startscript(Starttype how, string const & what)
 	// Qt won't start the process if we redirect stdout/stderr in
 	// this way and they are not connected to a terminal (maybe
 	// because we were launched from some desktop GUI).
-	if (!outfile.empty())
-		process->setStandardOutputFile(toqstr(outfile));
-	else if (os::is_terminal(os::STDOUT))
+	if (!outfile.empty()) {
+		// Check whether we have to simply throw away the output.
+		if (outfile != os::nulldev())
+			process->setStandardOutputFile(toqstr(outfile));
+	} else if (os::is_terminal(os::STDOUT))
 		process->setStandardOutputFile(toqstr(os::stdoutdev()));
 	if (os::is_terminal(os::STDERR))
 		process->setStandardErrorFile(toqstr(os::stderrdev()));
