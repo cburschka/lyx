@@ -635,7 +635,7 @@ void LyXAction::init()
  */
 		{ LFUN_UP_SELECT, "up-select", ReadOnly | SingleParUpdate, Edit },
 /*!
- * \var lyx::FuncCode lyx::SCREEN_DOWN
+ * \var lyx::FuncCode lyx::LFUN_SCREEN_DOWN
  * \li Action: Moves the cursor one page in downward direction.
  * \li Syntax: screen-down
  * \endvar
