@@ -30,6 +30,22 @@ The following new LyX functions have been introduced:
 
 - LFUN_REGEXP_MODE ("regexp-mode").
 
+- LFUN_PHANTOM_INSERT ("phantom-insert").
+
+- LFUN_INSET_BEGIN ("inset-begin").
+
+- LFUN_INSET_END (""inset-end"").
+
+- LFUN_INSET_BEGIN_SELECT ("inset-begin-select").
+
+- LFUN_INSET_END_SELECT ("inset-end-select").
+
+- LFUN_CHANGE_PREVIOUS ("change-previous").
+
+- LFUN_INSERT_LABEL_AS_REF ("insert-label-as-reference").
+
+- LFUN_SECTION_SELECT ("section-select").
+
 - LFUN_FONT_UNDERLINE ("font-underline").
 
 - LFUN_FONT_STRIKEOUT ("font-strikeout").
@@ -37,6 +53,7 @@ The following new LyX functions have been introduced:
 - LFUN_FONT_UULINE ("font-underunderline").
 
 - LFUN_FONT_UWAVE ("font-underwave").
+
 
 The following LyX functions have been removed:
 
