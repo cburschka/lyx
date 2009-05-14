@@ -422,10 +422,10 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	LYXERR(Debug::ACTION, "Text::dispatch: cmd: " << cmd);
 
 	BufferView * bv = &cur.bv();
-	TextMetrics & tm = bv->textMetrics(this);
-	if (!tm.contains(cur.pit())) {
+	TextMetrics * tm = &bv->textMetrics(this);
+	if (!tm->contains(cur.pit())) {
 		lyx::dispatch(FuncRequest(LFUN_SCREEN_SHOW_CURSOR));
-		tm = bv->textMetrics(this);
+		tm = &bv->textMetrics(this);
 	}
 
 	// FIXME: We use the update flag to indicates wether a singlePar or a
@@ -513,7 +513,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		if (cur.selection()) {
 			cutSelection(cur, true, false);
 		} else
-			tm.deleteLineForward(cur);
+			tm->deleteLineForward(cur);
 		finishChange(cur, false);
 		break;
 
@@ -656,13 +656,13 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_LINE_BEGIN:
 	case LFUN_LINE_BEGIN_SELECT:
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_LINE_BEGIN_SELECT);
-		needsUpdate |= tm.cursorHome(cur);
+		needsUpdate |= tm->cursorHome(cur);
 		break;
 
 	case LFUN_LINE_END:
 	case LFUN_LINE_END_SELECT:
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_LINE_END_SELECT);
-		needsUpdate |= tm.cursorEnd(cur);
+		needsUpdate |= tm->cursorEnd(cur);
 		break;
 
 	case LFUN_WORD_RIGHT:
@@ -1044,8 +1044,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_SERVER_GET_XY:
 		cur.message(from_utf8(
-			convert<string>(tm.cursorX(cur.top(), cur.boundary()))
-			+ ' ' + convert<string>(tm.cursorY(cur.top(), cur.boundary()))));
+			convert<string>(tm->cursorX(cur.top(), cur.boundary()))
+			+ ' ' + convert<string>(tm->cursorY(cur.top(), cur.boundary()))));
 		break;
 
 	case LFUN_SERVER_SET_XY: {
@@ -1057,7 +1057,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			lyxerr << "SETXY: Could not parse coordinates in '"
 			       << to_utf8(cmd.argument()) << endl;
 		else
-			tm.setCursorFromCoordinates(cur, x, y);
+			tm->setCursorFromCoordinates(cur, x, y);
 		break;
 	}
 
@@ -1203,9 +1203,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_MOUSE_TRIPLE:
 		if (cmd.button() == mouse_button::button1) {
-			tm.cursorHome(cur);
+			tm->cursorHome(cur);
 			cur.resetAnchor();
-			tm.cursorEnd(cur);
+			tm->cursorEnd(cur);
 			cur.setSelection();
 			bv->cursor() = cur;
 		}
@@ -1274,7 +1274,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		int const wh = bv->workHeight();
 		int const y = max(0, min(wh - 1, cmd.y));
 
-		tm.setCursorFromCoordinates(cur, cmd.x, y);
+		tm->setCursorFromCoordinates(cur, cmd.x, y);
 		cur.setTargetX(cmd.x);
 		if (cmd.y >= wh)
 			lyx::dispatch(FuncRequest(LFUN_DOWN_SELECT));

@@ -181,6 +181,9 @@ What's new
 
 * USER INTERFACE
 
+- Fix crash that might happen when pressing a key while the cursor is not
+  visible, thus requesting the view to be scrolled (bug 5888).
+
 - Validate the input of Preferences>Output>Date Format and the argument
   of the date-insert function. This fixes a crash on Windows with invalid/
   unsupported date specifiers (bug 5827).
