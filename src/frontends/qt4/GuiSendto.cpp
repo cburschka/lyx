@@ -15,11 +15,8 @@
 #include "qt_helpers.h"
 
 #include "Buffer.h"
-#include "BufferParams.h"
-#include "Converter.h"
 #include "Format.h"
 #include "FuncRequest.h"
-#include "LyXRC.h"
 
 #include "support/qstring_helpers.h"
 #include "support/filetools.h"
