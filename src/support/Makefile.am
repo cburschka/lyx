@@ -12,7 +12,7 @@ BUILT_SOURCES = $(PCH_FILE)
 #########################  Qt stuff  #############################
 #
 
-MOCHEADER = SignalSlotPrivate.h
+MOCHEADER = SignalSlotPrivate.h Systemcall.h
 
 MOCEDFILES = $(MOCHEADER:%.h=moc_%.cpp)
 

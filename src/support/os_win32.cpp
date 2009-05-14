@@ -296,28 +296,23 @@ string const & nulldev()
 }
 
 
-string const & stdoutdev()
-{
-	static string const stdoutdev_ = "conout$";
-	return stdoutdev_;
-}
-
-
-string const & stderrdev()
-{
-	static string const stderrdev_ = "conout$";
-	return stderrdev_;
-}
-
-
 bool is_terminal(io_channel channel)
 {
-	// FIXME: Passing conout$ to Qt fails, most probably for the
-	// reason explained here:
-	// http://support.microsoft.com/?scid=kb%3Ben-us%3B90088&x=15&y=15
-	// How to convince Qt to open conout$ in FILE_SHARE_WRITE mode?
-	// For the time being, we assume we are not running in a terminal.
-	return false;
+	switch (channel) {
+	case STDIN:
+		if (GetStdHandle(STD_INPUT_HANDLE) == NULL)
+			return false;
+		break;
+	case STDOUT:
+		if (GetStdHandle(STD_OUTPUT_HANDLE) == NULL)
+			return false;
+		break;
+	case STDERR:
+		if (GetStdHandle(STD_ERROR_HANDLE) == NULL)
+			return false;
+		break;
+	}
+	return true;
 }
 
 

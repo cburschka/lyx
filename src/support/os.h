@@ -39,12 +39,6 @@ void init(int argc, char * argv[]);
 /// Returns the name of the NULL device (/dev/null, null).
 std::string const & nulldev();
 
-/// Returns the name of the stdout device (/dev/stdout, /dev/tty, conout$).
-std::string const & stdoutdev();
-
-/// Returns the name of the stderr device (/dev/stderr, /dev/tty, conout$).
-std::string const & stderrdev();
-
 /// Tells whether \p channel is connected to a terminal or not. 
 bool is_terminal(io_channel channel);
 

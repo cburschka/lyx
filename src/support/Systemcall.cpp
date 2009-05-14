@@ -33,6 +33,7 @@ namespace support {
 
 static void killProcess(QProcess * p)
 {
+	p->disconnect();
 	p->closeReadChannel(QProcess::StandardOutput);
 	p->closeReadChannel(QProcess::StandardError);
 	p->close();
@@ -83,7 +84,6 @@ string const parsecmd(string const & cmd, string & outfile)
 	}
 	outfile.erase();
 	return cmd;
-
 }
 
 } // namespace anon
@@ -94,18 +94,15 @@ int Systemcall::startscript(Starttype how, string const & what)
 	string outfile;
 	QString cmd = toqstr(parsecmd(what, outfile));
 	QProcess * process = new QProcess;
-
-	// Qt won't start the process if we redirect stdout/stderr in
-	// this way and they are not connected to a terminal (maybe
-	// because we were launched from some desktop GUI).
+	ConOut console(process);
 	if (!outfile.empty()) {
 		// Check whether we have to simply throw away the output.
 		if (outfile != os::nulldev())
 			process->setStandardOutputFile(toqstr(outfile));
 	} else if (os::is_terminal(os::STDOUT))
-		process->setStandardOutputFile(toqstr(os::stdoutdev()));
+		console.showout();
 	if (os::is_terminal(os::STDERR))
-		process->setStandardErrorFile(toqstr(os::stderrdev()));
+		console.showerr();
 
 	process->start(cmd);
 	if (!process->waitForStarted(3000)) {
@@ -115,8 +112,10 @@ int Systemcall::startscript(Starttype how, string const & what)
 		LYXERR0("status " << process->exitStatus());
 		return 10;
 	}
-	if (how == DontWait)
+	if (how == DontWait) {
+		// TODO delete process later
 		return 0;
+	}
 
 	if (!process->waitForFinished(180000)) {
 		LYXERR0("Qprocess " << cmd << " did not finished!");
@@ -147,6 +146,57 @@ int Systemcall::startscript(Starttype how, string const & what)
 	killProcess(process);
 	return exit_code;
 }
+
+
+ConOut::ConOut(QProcess * proc) : proc_(proc), outindex_(0), errindex_(0),
+				  showout_(false), showerr_(false)
+{
+	connect(proc, SIGNAL(readyReadStandardOutput()), SLOT(stdOut()));
+	connect(proc, SIGNAL(readyReadStandardError()), SLOT(stdErr()));
+}
+
+
+ConOut::~ConOut()
+{
+	cout.flush();
+	cerr.flush();
+}
+
+
+void ConOut::stdOut()
+{
+	if (showout_) {
+		char c;
+		proc_->setReadChannel(QProcess::StandardOutput);
+		while (proc_->getChar(&c)) {
+			outdata_[outindex_++] = c;
+			if (c == '\n' || outindex_ + 1 == bufsize_) {
+				outdata_[outindex_] = '\0';
+				outindex_ = 0;
+				cout << outdata_;
+			}
+		}
+	}
+}
+
+
+void ConOut::stdErr()
+{
+	if (showerr_) {
+		char c;
+		proc_->setReadChannel(QProcess::StandardError);
+		while (proc_->getChar(&c)) {
+			errdata_[errindex_++] = c;
+			if (c == '\n' || errindex_ + 1 == bufsize_) {
+				errdata_[errindex_] = '\0';
+				errindex_ = 0;
+				cerr << errdata_;
+			}
+		}
+	}
+}
+
+#include "moc_Systemcall.cpp"
 #endif
 
 } // namespace support

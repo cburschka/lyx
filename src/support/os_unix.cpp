@@ -30,23 +30,8 @@ namespace lyx {
 namespace support {
 namespace os {
 
-namespace {
-
-string stdoutdev_ = "/dev/stdout";
-string stderrdev_ = "/dev/stderr";
-
-} // namespace anon
-
 void init(int, char *[])
-{
-	// Check whether /dev/stdout and /dev/stderr are available,
-	// otherwise default to /dev/tty.
-	if (access(stdoutdev_.c_str(), W_OK) != 0
-	    || access(stderrdev_.c_str(), W_OK) != 0) {
-		stdoutdev_ = "/dev/tty";
-		stderrdev_ = "/dev/tty";
-	}
-}
+{}
 
 
 string current_root()
@@ -142,18 +127,6 @@ string const & nulldev()
 {
 	static string const nulldev_ = "/dev/null";
 	return nulldev_;
-}
-
-
-string const & stdoutdev()
-{
-	return stdoutdev_;
-}
-
-
-string const & stderrdev()
-{
-	return stderrdev_;
 }
 
 

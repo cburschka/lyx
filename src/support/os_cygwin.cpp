@@ -240,20 +240,6 @@ string const & nulldev()
 }
 
 
-string const & stdoutdev()
-{
-	static string const stdoutdev_ = "/dev/stdout";
-	return stdoutdev_;
-}
-
-
-string const & stderrdev()
-{
-	static string const stderrdev_ = "/dev/stderr";
-	return stderrdev_;
-}
-
-
 bool is_terminal(io_channel channel)
 {
 	return isatty(channel);
