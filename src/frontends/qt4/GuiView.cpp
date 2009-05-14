@@ -2515,7 +2515,7 @@ bool GuiView::isDialogVisible(string const & name) const
 	map<string, DialogPtr>::const_iterator it = d.dialogs_.find(name);
 	if (it == d.dialogs_.end())
 		return false;
-	return it->second.get()->isVisibleView();
+	return it->second.get()->isVisibleView() && !it->second.get()->isClosing();
 }
 
 
