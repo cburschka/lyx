@@ -3270,11 +3270,11 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_LABEL_INSERT_AS_REF
  * \li Action: Inserts the label as a cross-reference at the position of the cursor.
- * \li Syntax: insert-label-as-reference
+ * \li Syntax: label-insert-as-reference
  * \li Origin: vfr, 7 Apr 2009
  * \endvar
  */
-		{ LFUN_LABEL_INSERT_AS_REF, "insert-label-as-reference", Noop, Edit},
+		{ LFUN_LABEL_INSERT_AS_REF, "label-insert-as-reference", Noop, Edit},
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_BUFFER_ZOOM_IN

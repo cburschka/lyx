@@ -45,6 +45,7 @@ Menuset
 		Separator		
 		OptItem "Equation Label|L" "label-insert"
 		OptItem "Toggle Labeling/Numbering|T" "math-number-toggle"
+		OptItem "Copy as Reference|R" "copy-label-as-reference"
 		Separator
 		Item "Split Cell|C" "cell-split"
 		Separator
@@ -422,8 +423,8 @@ Menuset
 #
 
 	Menu "context-toc-label"
-		OptItem "Copy Label as Reference|C" "copy-label-as-reference"
-		OptItem "Insert Reference at Cursor Position|I" "insert-label-as-reference"
+		OptItem "Copy as Reference|C" "copy-label-as-reference"
+		OptItem "Insert Reference at Cursor Position|I" "label-insert-as-reference"
 		Separator
 		Item "Settings...|S" "inset-settings"
 	End
