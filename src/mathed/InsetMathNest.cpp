@@ -816,8 +816,14 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// InsetMathFrac -> a pos value > 0 is invalid.
 		// A side effect is that an undo before the macro is finished
 		// undoes the complete macro, not only the last character.
-		if (!cur.inMacroMode())
-			cur.recordUndoSelection();
+		if (!cur.inMacroMode()) {
+			MathMacro const * macro = 0;
+			if (cur.pos() > 0 && cmd.argument() != "\\")
+				macro = cur.inset().asInsetMath()->asMacro();
+			
+			if (!macro)
+				cur.recordUndoSelection();
+		}
 
 		// spacial handling of space. If we insert an inset
 		// via macro mode, we want to put the cursor inside it
