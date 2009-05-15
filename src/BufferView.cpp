@@ -1403,14 +1403,17 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 	case LFUN_SCREEN_UP:
 	case LFUN_SCREEN_DOWN: {
 		Point p = getPos(cur, cur.boundary());
-		if (p.y_ < 0 || p.y_ > height_) {
+		// This code has been commented out to enable to scroll down a
+		// document, even if there are large insets in it (see bug #5465).
+		/*if (p.y_ < 0 || p.y_ > height_) {
 			// The cursor is off-screen so recenter before proceeding.
 			showCursor();
 			p = getPos(cur, cur.boundary());
-		}
+		}*/
 		int const scrolled = scroll(cmd.action == LFUN_SCREEN_UP
 			? - height_ : height_);
 		if (cmd.action == LFUN_SCREEN_UP && scrolled > - height_)
+		if (cmd.action == LFUN_SCREEN_UP && scrolled > -height_)
 			p = Point(0, 0);
 		if (cmd.action == LFUN_SCREEN_DOWN && scrolled < height_)
 			p = Point(width_, height_);
