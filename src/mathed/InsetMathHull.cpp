@@ -46,6 +46,7 @@
 
 #include "insets/RenderPreview.h"
 #include "insets/InsetLabel.h"
+#include "insets/InsetRef.h"
 
 #include "graphics/PreviewImage.h"
 #include "graphics/PreviewLoader.h"
@@ -1227,6 +1228,15 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
+	case LFUN_COPY_LABEL_AS_REF: {
+		row_type row = (type_ == hullMultline) ? nrows() - 1 : cur.row();
+		InsetCommandParams p(REF_CODE, "ref");
+		p["reference"] = label(row);
+		cap::clearSelection();
+		cap::copyInset(cur, new InsetRef(*cur.buffer(), p), label(row));
+		break;
+	}
+
 	case LFUN_WORD_DELETE_FORWARD:
 	case LFUN_CHAR_DELETE_FORWARD:
 		if (col(cur.idx()) + 1 == ncols()
@@ -1335,12 +1345,14 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 		// we handle these
 		status.setEnabled(true);
 		return true;
+
 	case LFUN_MATH_NUMBER_TOGGLE:
 		// FIXME: what is the right test, this or the one of
 		// LABEL_INSERT?
 		status.setEnabled(display());
 		status.setOnOff(numberedType());
 		return true;
+
 	case LFUN_MATH_NUMBER_LINE_TOGGLE: {
 		// FIXME: what is the right test, this or the one of
 		// LABEL_INSERT?
@@ -1352,15 +1364,24 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 		status.setOnOff(numbered(r));
 		return true;
 	}
+
 	case LFUN_LABEL_INSERT:
 		status.setEnabled(type_ != hullSimple);
 		return true;
+
+	case LFUN_COPY_LABEL_AS_REF: {
+		row_type const row = (type_ == hullMultline) ? nrows() - 1 : cur.row();
+		status.setEnabled(numberedType() && label_[row] && !nonum_[row]);
+		return true;
+	}
+
 	case LFUN_INSET_INSERT:
 		if (cmd.getArg(0) == "label") {
 			status.setEnabled(type_ != hullSimple);
 			return true;
 		}
 		return InsetMathGrid::getStatus(cur, cmd, status);
+
 	case LFUN_TABULAR_FEATURE: {
 		istringstream is(to_utf8(cmd.argument()));
 		string s;
@@ -1410,6 +1431,7 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 		}
 		return InsetMathGrid::getStatus(cur, cmd, status);
 	}
+
 	default:
 		return InsetMathGrid::getStatus(cur, cmd, status);
 	}

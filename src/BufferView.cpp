@@ -1357,9 +1357,12 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		// turn compression on/off
 		buffer_.params().compressed = !buffer_.params().compressed;
 		break;
+
 	case LFUN_COPY_LABEL_AS_REF: {
 		// if there is an inset at cursor, try to copy it
-		Inset * inset = cur.nextInset();
+		Inset * inset = &cur.inset();
+		if (!inset || !inset->asInsetMath())
+			inset = cur.nextInset();
 		if (inset) {
 			FuncRequest tmpcmd = cmd;
 			inset->dispatch(cur, tmpcmd);
@@ -1371,6 +1374,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		processUpdateFlags(Update::SinglePar | Update::FitCursor);
 		break;
 	}
+
 	case LFUN_NEXT_INSET_MODIFY: {
 		// create the the real function we want to invoke
 		FuncRequest tmpcmd = cmd;
