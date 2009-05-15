@@ -1229,7 +1229,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_COPY_LABEL_AS_REF: {
-		row_type row = (type_ == hullMultline) ? nrows() - 1 : cur.row();
+		row_type const row = (type_ == hullMultline) ? nrows() - 1 : cur.row();
 		InsetCommandParams p(REF_CODE, "ref");
 		p["reference"] = label(row);
 		cap::clearSelection();
