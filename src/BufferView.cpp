@@ -1918,6 +1918,7 @@ bool BufferView::mouseSetCursor(Cursor & cur, bool select)
 	bool update = leftinset;
 	if (!do_selection && d->cursor_.inTexted())
 		update |= checkDepm(cur, d->cursor_);
+	d->cursor_.macroModeClose();
 
 	d->cursor_.setCursor(cur);
 	d->cursor_.boundary(cur.boundary());
