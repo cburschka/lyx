@@ -158,7 +158,17 @@ ConOut::ConOut(QProcess * proc) : proc_(proc), outindex_(0), errindex_(0),
 
 ConOut::~ConOut()
 {
+	if (outindex_) {
+		outdata_[outindex_] = '\0';
+		outindex_ = 0;
+		cout << outdata_;
+	}
 	cout.flush();
+	if (errindex_) {
+		errdata_[errindex_] = '\0';
+		errindex_ = 0;
+		cerr << errdata_;
+	}
 	cerr.flush();
 }
 
