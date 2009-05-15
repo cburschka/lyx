@@ -943,7 +943,7 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		flag.setEnabled(! this->cursor().inRegexped());
 		break;
 
-	case LFUN_COPY_LABEL_AS_REF: {
+	case LFUN_LABEL_COPY_AS_REF: {
 		// if there is an inset at cursor, see whether it
 		// handles the lfun
 		Inset * inset = cur.nextInset();
@@ -1358,7 +1358,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		buffer_.params().compressed = !buffer_.params().compressed;
 		break;
 
-	case LFUN_COPY_LABEL_AS_REF: {
+	case LFUN_LABEL_COPY_AS_REF: {
 		// if there is an inset at cursor, try to copy it
 		Inset * inset = &cur.inset();
 		if (!inset || !inset->asInsetMath())

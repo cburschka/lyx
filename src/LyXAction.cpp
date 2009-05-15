@@ -3259,22 +3259,22 @@ void LyXAction::init()
 		{ LFUN_BRANCH_DEACTIVATE, "branch-deactivate", AtPoint, Buffer },
 
 /*!
- * \var lyx::FuncCode lyx::LFUN_COPY_LABEL_AS_REF
+ * \var lyx::FuncCode lyx::LFUN_LABEL_COPY_AS_REF
  * \li Action: Copies the label at the cursor as a cross-reference to be pasted elsewhere.
  * \li Syntax: copy-label-as-reference
  * \li Origin: sts, 16 Nov 2008
  * \endvar
  */
-		{ LFUN_COPY_LABEL_AS_REF, "copy-label-as-reference", ReadOnly | NoUpdate, Edit },
+		{ LFUN_LABEL_COPY_AS_REF, "copy-label-as-reference", ReadOnly | NoUpdate, Edit },
 
 /*!
- * \var lyx::FuncCode lyx::LFUN_INSERT_LABEL_AS_REF
+ * \var lyx::FuncCode lyx::LFUN_LABEL_INSERT_AS_REF
  * \li Action: Inserts the label as a cross-reference at the position of the cursor.
  * \li Syntax: insert-label-as-reference
  * \li Origin: vfr, 7 Apr 2009
  * \endvar
  */
-		{ LFUN_INSERT_LABEL_AS_REF, "insert-label-as-reference", Noop, Edit},
+		{ LFUN_LABEL_INSERT_AS_REF, "insert-label-as-reference", Noop, Edit},
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_BUFFER_ZOOM_IN

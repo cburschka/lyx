@@ -1228,7 +1228,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_COPY_LABEL_AS_REF: {
+	case LFUN_LABEL_COPY_AS_REF: {
 		row_type const row = (type_ == hullMultline) ? nrows() - 1 : cur.row();
 		InsetCommandParams p(REF_CODE, "ref");
 		p["reference"] = label(row);
@@ -1369,7 +1369,7 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 		status.setEnabled(type_ != hullSimple);
 		return true;
 
-	case LFUN_COPY_LABEL_AS_REF: {
+	case LFUN_LABEL_COPY_AS_REF: {
 		row_type const row = (type_ == hullMultline) ? nrows() - 1 : cur.row();
 		status.setEnabled(numberedType() && label_[row] && !nonum_[row]);
 		return true;

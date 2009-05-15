@@ -414,8 +414,8 @@ enum FuncCode
 	LFUN_REGEXP_MODE,               // Tommaso, 20081003
 	LFUN_VC_COMMAND,
 	// 320
-	LFUN_COPY_LABEL_AS_REF,         // sts, 20081116
-	LFUN_INSERT_LABEL_AS_REF,		// vfr, 20090407
+	LFUN_LABEL_COPY_AS_REF,         // sts, 20081116
+	LFUN_LABEL_INSERT_AS_REF,		// vfr, 20090407
 	LFUN_PHANTOM_INSERT,            // uwestoehr, 20090130
 	LFUN_INSET_BEGIN,               // JMarc, 20090316
 	LFUN_INSET_END,                 // JMarc, 20090316

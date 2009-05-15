@@ -141,8 +141,8 @@ bool InsetLabel::getStatus(Cursor & cur, FuncRequest const & cmd,
 {
 	bool enabled;
 	switch (cmd.action) {
-	case LFUN_INSERT_LABEL_AS_REF:
-	case LFUN_COPY_LABEL_AS_REF:
+	case LFUN_LABEL_INSERT_AS_REF:
+	case LFUN_LABEL_COPY_AS_REF:
 		enabled = true;
 		break;
 	default:
@@ -171,7 +171,7 @@ void InsetLabel::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_COPY_LABEL_AS_REF: {
+	case LFUN_LABEL_COPY_AS_REF: {
 		InsetCommandParams p(REF_CODE, "ref");
 		p["reference"] = getParam("name");
 		cap::clearSelection();
@@ -179,7 +179,7 @@ void InsetLabel::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_INSERT_LABEL_AS_REF: {
+	case LFUN_LABEL_INSERT_AS_REF: {
 		InsetCommandParams p(REF_CODE, "ref");
 		p["reference"] = getParam("name");
 		string const data = InsetCommand::params2string("ref", p);
