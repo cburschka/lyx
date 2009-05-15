@@ -1568,6 +1568,19 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 		return true;
 	}
 
+	if (cur.pos() > 0) {
+		MathMacro const * macro = cur.inset().asInsetMath()->asMacro();
+		if (macro) {
+			// resume macro_mode
+			docstring const & s = macro->name();
+			cur.leaveInset(*macro);
+			cur.plainErase();
+			docstring safe = grabAndEraseSelection(cur);
+			cur.insert(MathAtom(new InsetMathUnknown("\\" + s + c, safe, false)));
+			return true;	
+		}
+	}
+
 	selClearOrDel(cur);
 
 	if (c == '\n') {
