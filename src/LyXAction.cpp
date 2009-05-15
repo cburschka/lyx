@@ -35,7 +35,7 @@ namespace lyx {
      Here's the set of rules to apply when a new command name is introduced:
 
      1) Use the object.event order. That is, use `word-forward'
-	instead of `forward-word'.
+        instead of `forward-word'.
      2) Don't introduce an alias for an already named object. Same for events.
      3) Forward movement or focus is called `forward' (not `right').
      4) Backward movement or focus is called `backward' (not `left').
@@ -380,7 +380,7 @@ void LyXAction::init()
                a listings inset.
  * \li Notion: It also works on a selection - it removes a tab or spaces from the
                beginning of each line spanned by the selection. This is useful if
-	       you want to indent/unindent multiple lines in one action.
+               you want to indent/unindent multiple lines in one action.
  * \li Syntax: tab-delete
  * \li Origin: vfvanravesteijn, Sep 30 2008
  * \endvar
@@ -403,11 +403,11 @@ void LyXAction::init()
  * \li Notion: Apart from lfun arguments you can use the following method: \n
                1. input the type and argument of this inset, e.g. "menu paste", in
                the work area.\n
-	       2. select the text and run info-insert lfun.
+               2. select the text and run info-insert lfun.
  * \li Syntax: info-insert <TYPE> <ARG>
  * \li Params: <TYPE>: shortcut|lyxrc|package|textclass|menu|buffer \n
                <ARG>: argument for a given type. Look into InsetInfo.h for detailed
-	              description.
+                      description.
  * \li Sample: command-sequence info-insert buffer path; info-insert buffer name
  * \li Origin: bpeng, 7 Oct 2007
  * \endvar
@@ -440,16 +440,16 @@ void LyXAction::init()
                class you're using has to load the character styles. There are
                a few contained in the Logical Markup module. You can also of
                course create some yourself. \n
-	       For dissolving the element see #LFUN_INSET_DISSOLVE.
+               For dissolving the element see #LFUN_INSET_DISSOLVE.
  * \li Syntax: flex-insert <TYPE:Name>
  * \li Params: TYPE: CharStyle|Custom|Element|Standard \n
-		     Identifies whether this is a Character Style, a
-		     Custom Inset or an XML Element, and which dynamical 
-		     sub-menu this flex inset is in on the LyX menu tree. 
-		     If Standard (currently unused): none of these.
-	       Name: This name must be defined either in your layout file
-		     or imported by some module. The definition is \n
-		     InsetLayout <TYPE:Name>
+                     Identifies whether this is a Character Style, a
+                     Custom Inset or an XML Element, and which dynamical 
+                     sub-menu this flex inset is in on the LyX menu tree. 
+                     If Standard (currently unused): none of these.\n
+               Name: This name must be defined either in your layout file
+                     or imported by some module. The definition is 
+                     InsetLayout <TYPE:Name>
  * \li Sample: flex-insert CharStyle:Code
  * \endvar
  */
@@ -807,7 +807,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_WORD_BACKWARD_SELECT
  * \li Action: Moves the cursor to the logically previous beginning of a word,
-			   adding the logically traversed text to the selection.
+               adding the logically traversed text to the selection.
  * \li Notion: See also #LFUN_WORD_BACKWARD.
  * \li Syntax: word-backward-select
  * \endvar
@@ -851,7 +851,7 @@ void LyXAction::init()
  * \li Syntax: word-find [<DATA>]
  * \li Params: <DATA>: data encoded from Find dialog (see #lyx::find2string()).
                        If no parameter is given, search with last find-dialog
-		       data is used for search (i.e. find-next).
+                       data is used for search (i.e. find-next).
  * \li Origin: Andre, Jan 7 2004
  * \endvar
  */
@@ -892,7 +892,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_WORD_FORWARD_SELECT
  * \li Action: Moves the cursor to the logically next beginning of a word, 
-  			   adding the logically traversed text to the selection.
+               adding the logically traversed text to the selection.
  * \li Notion: See also #LFUN_WORD_FORWARD.
  * \li Syntax: word-forward-select
  * \endvar
@@ -902,12 +902,12 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_WORD_LEFT
  * \li Action: Moves the cursor to the next beginning of a word "on the left".
  * \li Notion: This is the action which should be taken when the (e.g., ctrl-)
-			   "left" key is pressed. Generally, it moves the cursor to the 
-			   next beginning of a word on the left. However, in Bidi text this 
-			   become slightly more complicated, and there are different modes
-			   of cursor movement. In "visual mode", this moves left, plain and
-			   simple. In "logical mode", movement is logically forward in RTL
-			   paragraphs, and logically backwards in LTR paragraphs.
+               "left" key is pressed. Generally, it moves the cursor to the 
+               next beginning of a word on the left. However, in Bidi text this 
+               become slightly more complicated, and there are different modes
+               of cursor movement. In "visual mode", this moves left, plain and
+               simple. In "logical mode", movement is logically forward in RTL
+               paragraphs, and logically backwards in LTR paragraphs.
  * \li Syntax: word-left
  * \li Origin: dov, 28 Oct 2007
  * \endvar
@@ -916,7 +916,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_WORD_LEFT_SELECT
  * \li Action: Moves the cursor to the next beginning of a word "on the left",
-			   adding *logically* traversed text to the selection.
+               adding *logically* traversed text to the selection.
  * \li Notion: See also #LFUN_WORD_LEFT for exact details of the movement.
  * \li Syntax: word-left-select
  * \li Origin: dov, 28 Oct 2007
@@ -927,13 +927,13 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_WORD_RIGHT
  * \li Action: Moves the cursor to the next beginning of a word "on the right".
  * \li Notion: This is the action which should be taken when the (e.g., ctrl-)
-			   "right" key is pressed. Generally, it moves the cursor to the 
-			   next beginning of a word on the right. However, in Bidi text 
-			   this become slightly more complicated, and there are different
-			   modes of cursor movement. In "visual mode", this moves right,
-			   plain and simple. In "logical mode", movement is logically 
-			   forward in LTR paragraphs, and logically backwards in RTL 
-			   paragraphs.
+               "right" key is pressed. Generally, it moves the cursor to the 
+               next beginning of a word on the right. However, in Bidi text 
+               this become slightly more complicated, and there are different
+               modes of cursor movement. In "visual mode", this moves right,
+               plain and simple. In "logical mode", movement is logically 
+               forward in LTR paragraphs, and logically backwards in RTL 
+               paragraphs.
  * \li Syntax: word-right
  * \li Origin: dov, 28 Oct 2007
  * \endvar
@@ -942,7 +942,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_WORD_RIGHT_SELECT
  * \li Action: Moves the cursor to the next beginning of a word "on the right",
-			   adding *logically* traversed text to the selection.
+               adding *logically* traversed text to the selection.
  * \li Notion: See also #LFUN_WORD_RIGHT for exact details of the movement.
  * \li Syntax: word-right-select
  * \li Origin: dov, 28 Oct 2007
@@ -1327,9 +1327,9 @@ void LyXAction::init()
  * \li Syntax: textstyle-update <FONT_INFO>
  * \li Params: <FONT_INFO>: specifies font atributes, e.g. family, series, shape,
                             size, emph, noun, underbar, number, color, language,
-			    toggleall.\n
-			    Use lyx -dbg action for exact syntax of text-style
-			    dialog parameters.
+                            toggleall.\n
+                            Use lyx -dbg action for exact syntax of text-style
+                            dialog parameters.
  * \li Origin: leeming, 12 Mar 2003
  * \endvar
  */
@@ -1487,7 +1487,7 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_MARK_TOGGLE, "mark-toggle", ReadOnly, Edit },
-		
+
 /*!
  * \var lyx::FuncCode lyx::LFUN_MATH_DELIM
  * \li Action: Inserts math delimiters (e.g. parentheses, brackets) enclosing expression.
@@ -1600,7 +1600,7 @@ void LyXAction::init()
  * \li Syntax: math-matrix <COLS> <ROWS> [<ALIGN>]
  * \li Params: <ALIGN>: Alignment is a word composed of the vertical alignment
                         (b, c or t) (i.e. 1 char) and the horizontal alignments 
-			(l, c or r) (i.e. <COL> chars).
+                        (l, c or r) (i.e. <COL> chars).
  * \li Sample: math-matrix 3 3 bccc
  * \endvar
  */
@@ -2016,7 +2016,7 @@ void LyXAction::init()
                        set-special-column|set-special-multi|set-booktabs|unset-booktabs|
                        set-top-space|set-bottom-space|set-interline-space|set-border-lines|
                        tabular-valign-top|tabular-valign-middle|tabular-valign-bottom \n
-		<ARG>: additional argument for some commands, use debug mode to explore its values.
+               <ARG>: additional argument for some commands, use debug mode to explore its values.
  * \li Origin: Jug, 28 Jul 2000
  * \endvar
  */
@@ -2050,8 +2050,8 @@ void LyXAction::init()
  * \li Action: Register the document as an file inside version control system (RCS, CVS).
  * \li Notion: File is registered inside cvs, svn or rcs repository acording to the existence
                of cvs/svn/rcs entries in the document's directory. \n
-	       See LyX Additional Features Manual (Version Control Chapter) for additional
-	       information.
+               See LyX Additional Features Manual (Version Control Chapter) for additional
+               information.
  * \li Syntax: vc-register
  * \li Origin: Lgb, 1 Jul 1997
  * \endvar
@@ -2098,13 +2098,13 @@ void LyXAction::init()
                additional VCS commands.
  * \li Syntax: vc-command <FLAG> <PATH> <COMMAND>
  * \li Params:  <FLAG>: Flags for the command can be combined together.\n
-			U - dUmmy - no flags \n
-			D - Doc - need document loaded to proceed \n
-			I - dIrty - mark document dirty \n
-			R - Reload - ensure that the document is saved and reload it after command execution \n
-			M - Message - ask for input string (commit message)\n
-		<PATH>: path where to start. $$p will be replaced by the current document path.\n
-		<COMMAND>: command to execute. $$i/$$p/$$m will be replaced by the current document/path/message.
+                        U - dUmmy - no flags \n
+                        D - Doc - need document loaded to proceed \n
+                        I - dIrty - mark document dirty \n
+                        R - Reload - ensure that the document is saved and reload it after command execution \n
+                        M - Message - ask for input string (commit message)\n
+                <PATH>: path where to start. $$p will be replaced by the current document path.\n
+                <COMMAND>: command to execute. $$i/$$p/$$m will be replaced by the current document/path/message.
  * \li Sample: vc-command DR $$p "svn up"
  * \li Origin: sanda, 13 Jan 2009
  * \endvar
@@ -2207,7 +2207,7 @@ void LyXAction::init()
                         is dissolved. For example "dissolve" entry in the charstyles
                         sub-menu should only dissolve the charstyle inset, even if the
                         cursor is inside several nested insets of different type.\n
-			For values see #lyx::InsetLayout::lyxtype_ .
+                        For values see #lyx::InsetLayout::lyxtype_ .
  * \li Origin: JSpitz, 7 Aug 2006
  * \endvar
  */
@@ -2218,16 +2218,15 @@ void LyXAction::init()
  * \li Syntax: inset-insert <INSET> <ARGS>
  * \li Params: <INSET>: <bibitem|bibtex|cite|ert|listings|external|graphics|
                          hyperlink|include|index|label|nomencl|vspace|ref|toc>\n
-               <ARGS>: depends on the given inset. Use "lyx -dbg action" to
-	               explore.
+               <ARGS>: depends on the given inset. Use "lyx -dbg action" to explore.
  * \li Sample: inset-insert ref LatexCommand <Format> reference "<label name>"\end_inset \n
                where <label name> is the name of the referenced label and
-	       <Format> is one of the following: \n
-	       ref -- <reference> \n
-	       eqref -- (<reference>) \n
-	       pageref -- <page> \n
+               <Format> is one of the following: \n
+               ref -- <reference> \n
+               eqref -- (<reference>) \n
+               pageref -- <page> \n
                vpageref -- on <page> \n
-	       vref -- <reference> on <page> \n
+               vref -- <reference> on <page> \n
                prettyref -- Formatted reference
  * \endvar
  */
@@ -2287,7 +2286,7 @@ void LyXAction::init()
  * \li Params: <ARG>: <open|close|toggle|assign>. \n
                open/close/toggle are for collapsable insets. toggle is used when no argument is given.\n
                assign synchronize the branch-inset with activation status of the branch.
-	       Used for global toggling when changed activation.
+               Used for global toggling when changed activation.
  * \li Origin: lasgouttes, 19 Jul 2001
  * \endvar
  */
@@ -2364,8 +2363,8 @@ void LyXAction::init()
  * \li Action: Goto a label.
  * \li Syntax: label-goto [<LABEL>]
  * \li Params: <LABEL>: Requested label. If no label is given and reference
-			is on cursor position, Bookmark 0 is saved and
-			cursor moves to the position of referenced label.
+                        is on cursor position, Bookmark 0 is saved and
+                        cursor moves to the position of referenced label.
  * \li Origin: Ale, 6 Aug 1997
  * \endvar
  */
@@ -2395,10 +2394,10 @@ void LyXAction::init()
                per file.
  * \li Notion: Bookmark 0 has a special purpose. It is automatically set \n
                1. to the paragraph you are currently editing \n
-	       2. to the paragraph from where you are jumping to the last-edited
-	          position (jump-back feature) \n
-	       3. when jumping from crossreference to the requested label by
-	          #LFUN_LABEL_GOTO.
+               2. to the paragraph from where you are jumping to the last-edited
+                  position (jump-back feature) \n
+               3. when jumping from crossreference to the requested label by
+                  #LFUN_LABEL_GOTO.
  * \li Syntax: bookmark-goto <NUMBER>
  * \li Params: <NUMBER>: the number of the bookmark to restore.
  * \li Origin: Dekel, 27 January 2001
@@ -2469,11 +2468,11 @@ void LyXAction::init()
  * \li Syntax: ui-toggle <statusbar|menubar|scrollbar|frame|fullscreen>
  * \li Params: statusbar  : Toggle visibility of the statusbar.\n
                menubar    : Toggle visibility of the menubar.\n
-	       scrollbar  : Toggle visibility of the scrollbar.\n
-	       frame      : Toggle visibility of the frames around editing window.\n
-	       fullscreen : Toggle fullscreen mode. This also covers calling the
-	                    previous functions. However #LFUN_TOOLBAR_TOGGLE for the
-			    custom tweaks of the toolbars should be used.
+               scrollbar  : Toggle visibility of the scrollbar.\n
+               frame      : Toggle visibility of the frames around editing window.\n
+               fullscreen : Toggle fullscreen mode. This also covers calling the
+                            previous functions. However #LFUN_TOOLBAR_TOGGLE for the
+                            custom tweaks of the toolbars should be used.
  * \li Origin: sanda, 9 Feb 2007
  * \endvar
  */
@@ -2687,14 +2686,14 @@ void LyXAction::init()
  * \li Action: Sets the cursor position based on the row number of generated TeX file.
  * \li Notion: This can be useful for DVI inverse-search or detection of the problematic
                line from LaTeX compilation. Note that before this function can be used
-	       export to LaTeX output must occur (in order to map the row numbers).
+               export to LaTeX output must occur (in order to map the row numbers).
  * \li Syntax: server-goto-file-row <FILE[.ext]> <ROW_NUMBER>
  * \li Params: <FILE>: the filename. Environment variables are expaned in the path.
                        In case this LFUN does not work make sure you are giving correct
-		       path to the file.\n
+                       path to the file.\n
                        If the file is located inside LyX temporary directory it will be
-		       mapped back into the appropriate opened buffer (e.g. for the case
-		       of generated .tex file).
+                       mapped back into the appropriate opened buffer (e.g. for the case
+                       of generated .tex file).
                  .ext: extensions will be automatically replaced by .lyx.
  * \li Origin: Edmar, 23 Dec 1998
  * \endvar
@@ -2730,12 +2729,12 @@ void LyXAction::init()
  * \li Action: Generates the code (literate programming).
  * \li Notion: Latex file with extension \literate_extension is generated.
                Then LyX invokes \build_command (with a default of``make'') to generate the code and
-	       \build_error_filter to process the compilation error messages. \n
-	       In case you want to process your literate file with a script, or some other program,
-	       just insert in your lyxrc file an entry with:\n
-	       \build_command "my_script my_arguments" \n
-	       The \build_error_filter differs from the \literate_error_filter only in that the
-	       former will identify error messages from your compiler.
+               \build_error_filter to process the compilation error messages. \n
+               In case you want to process your literate file with a script, or some other program,
+               just insert in your lyxrc file an entry with:\n
+               \build_command "my_script my_arguments" \n
+               The \build_error_filter differs from the \literate_error_filter only in that the
+               former will identify error messages from your compiler.
  * \li Syntax: build-program
  * \endvar
  */
@@ -2791,12 +2790,12 @@ void LyXAction::init()
  * \li Syntax: buffer-export <FORMAT>
  * \li Params: <FORMAT> is either "custom" or one of the formats which you
                         can find in Tools->Preferences->File formats->Format.
-			Usual format you will enter is "pdf2" (pdflatex),
-			"pdflatex" (plain tex for pdflatex) or "ps" for postscript.\n
-			In case of "custom" you will be asked for a format you
-			want to start from and for the command that you want to
-			apply to this format. Internally the control is then passed
-			to #LFUN_BUFFER_EXPORT_CUSTOM.
+                        Usual format you will enter is "pdf2" (pdflatex),
+                        "pdflatex" (plain tex for pdflatex) or "ps" for postscript.\n
+                        In case of "custom" you will be asked for a format you
+                        want to start from and for the command that you want to
+                        apply to this format. Internally the control is then passed
+                        to #LFUN_BUFFER_EXPORT_CUSTOM.
  * \li Origin: Lgb, 29 Jul 1997
  * \endvar
  */
@@ -2809,7 +2808,7 @@ void LyXAction::init()
  * \li Params: <FORMAT> format to start from (LyX will care to produce such
                         intermediate file).\n
                <COMMAND> this command will be launched on the file. Note that you can
-	       use "$$FName" string to qualify the intermediate file.
+                         use "$$FName" string to qualify the intermediate file.
  * \li Sample: buffer-export-custom dvi dvips -f $$FName -o myfile.ps
  * \li Origin: leeming, 27 Mar 2004
  * \endvar
@@ -2822,7 +2821,7 @@ void LyXAction::init()
  * \li Syntax: buffer-print <TARGET> <TARGET-NAME> <COMMAND>
  * \li Params: <TARGET> is either "printer" or "file".\n
                <TARGER-NAME> is either "default" or file name or printer name.\n
-	       <COMMAND> command ensuring the printing job.
+               <COMMAND> command ensuring the printing job.
  * \li Sample: buffer-print file "/trash/newfile1.ps" "dvips"
  * \li Origin: leeming, 28 Mar 2004
  * \endvar
@@ -2833,7 +2832,7 @@ void LyXAction::init()
  * \li Action: Import a given file as a lyx document.
  * \li Notion: File can be imported iff lyx file format is (transitively) reachable via
                defined convertors in preferences. Look into File->Import menu to get
-	       an idea of the currently active import formats.
+               an idea of the currently active import formats.
  * \li Syntax: buffer-import <FORMAT> [<FILE>]
  * \li Origin: Asger, 24 Jul 1998
  * \endvar
@@ -2881,7 +2880,7 @@ void LyXAction::init()
  * \li Action: Toggle editing mode of the current document between read/write and read-only.
  * \li Notion: In the ->Readonly mode checks-in/commits the data if the file is under version control.
                In the Readonly-> mode checkouts the data from repository. \n
-	       If these operations fail, buffer won't be toggled.
+               If these operations fail, buffer won't be toggled.
  * \li Syntax: buffer-toggle-read-only
  * \li Origin: Lgb, 27 May 1997
  * \endvar
@@ -2908,7 +2907,7 @@ void LyXAction::init()
                temporary directory.
  * \li Notion: In case you are already viewing the exported document (see #LFUN_BUFFER_VIEW)
                the output will be rewriten - updated. This is useful in case your viewer
-	       is able to detect such changes (e.g. ghostview for postscript).
+               is able to detect such changes (e.g. ghostview for postscript).
  * \li Syntax: buffer-update [<FORMAT>]
  * \li Params: <FORMAT>: The format to display, where this is one of the
                          formats defined (in the current GUI) in the
