@@ -512,6 +512,14 @@ contributers = [
                  "22 February 2005",
                  u"Qt2 port"),
 
+     contributer(u"Ewan Davies",
+                 "ewan.davies () googlemail ! com",
+                 "GPL",
+                 "Re: Starting Development",
+                 "m=124248720628359",
+                 "17 May 2009",
+                 u"doxygen to LFUNs.lyx conversion"),
+
      contributer(u"Anders Ekberg",
                  "anek () chalmers ! se",
                  "GPL",
