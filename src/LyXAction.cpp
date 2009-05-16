@@ -879,7 +879,8 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_WORD_FINDADV, "word-findadv", ReadOnly, Edit },
-/*! \var lyx::FuncCode lyx::LFUN_WORD_FORWARD
+/*!
+ * \var lyx::FuncCode lyx::LFUN_WORD_FORWARD
  * \li Action: Moves the cursor to the logically next beginning of a word.
  * \li Notion: This is not the action which should be bound to the arrow keys,
                because forward may be left or right, depending on the language.
@@ -1561,7 +1562,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_MATH_MACRO
  * \li Action: Inserts a math macro definition at the cursor position in the text.
  * \li Syntax: math-macro <NAME> [<NARGS>] [def]
- * \li Params: <NAME>: The name of the macro, e.g. "mymacro".
+ * \li Params: <NAME>: The name of the macro, e.g. "mymacro".\n
                <NARGS>: The number of parameters of the macro. Default is 0.
                "def": Has no effect anymore, just for compatibility with former LyX versions.
  * \li Origin: ale, 10 May 1997;  sts, 21 Dec 2007
@@ -1908,7 +1909,7 @@ void LyXAction::init()
  * \li Params: <INDENT>:  \noindent|\indent|\indent-toggle|\leftindent LENGTH\n
                <SPACING>: \paragraph_spacing default|single|onehalf|double|other\n
                <ALIGN>:   \align block|left|right|center|default\n
-               <OTHERS>:  \labelwidthstring WIDTH|\start_of_appendix\n
+               <OTHERS>:  \labelwidthstring WIDTH|\start_of_appendix
  * \li Origin: rgh, Aug 15 2007
  * \endvar
  */
