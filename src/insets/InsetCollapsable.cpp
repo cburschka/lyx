@@ -586,6 +586,7 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_PASTE:
 	case LFUN_CLIPBOARD_PASTE:
+	case LFUN_SELECTION_PASTE:
 	case LFUN_PRIMARY_SELECTION_PASTE: {
 		InsetText::doDispatch(cur, cmd);
 		// Since we can only store plain text, we must reset all

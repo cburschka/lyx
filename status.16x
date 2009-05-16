@@ -229,6 +229,8 @@ What's new
 
 - Fix the loss of clipboard contents on exit (bug 5769).
 
+- Correctly reset language when pasting into ERT or listing.
+
 - Fix the annoying behaviour that the cursor got hidden by auto-toggling
   of the math or table toolbar(s) (bug 4733).
 
