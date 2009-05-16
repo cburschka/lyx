@@ -389,7 +389,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_QUOTE_INSERT
  * \li Action: Inserts quotes according to the type and quote-language preference.
- * \li Action: Currently  English, Swedish, German, Polish, French, Danish quotes
+ * \li Notion: Currently English, Swedish, German, Polish, French, Danish quotes
                are distinguished.
  * \li Syntax: quote-insert [<TYPE>]
  * \li Params: <TYPE>: 'single' for single quotes, otherwise double quotes will be used.
