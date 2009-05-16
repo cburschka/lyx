@@ -1905,10 +1905,10 @@ void LyXAction::init()
                This function only modifies, and does not override, existing settings.
                Note that the "leftindent" indent setting is deprecated.
  * \li Syntax: paragraph-params [<INDENT>] [<SPACING>] [<ALIGN>] [<OTHERS>]
- * \li Params: <INDENT>:  \\noindent|\\indent|\\indent-toggle|\\leftindent LENGTH\n
-               <SPACING>: \\paragraph_spacing default|single|onehalf|double|other\n
-               <ALIGN>:   \\align block|left|right|center|default\n
-               <OTHERS>:  \\labelwidthstring WIDTH|\\start_of_appendix\n
+ * \li Params: <INDENT>:  \noindent|\indent|\indent-toggle|\leftindent LENGTH\n
+               <SPACING>: \paragraph_spacing default|single|onehalf|double|other\n
+               <ALIGN>:   \align block|left|right|center|default\n
+               <OTHERS>:  \labelwidthstring WIDTH|\start_of_appendix\n
  * \li Origin: rgh, Aug 15 2007
  * \endvar
  */
@@ -3060,10 +3060,10 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_CALL
  * \li Action: Executes a command defined in a .def file.
  * \li Notion: The definitions are by default read from lib/commands/default.def.\n
-               A .def file allows to define a command with \\define "<NAME>" "<LFUN>"
+               A .def file allows to define a command with \define "<NAME>" "<LFUN>"
                where <NAME> is the name of the new command and <LFUN> is the lfun code
                to be executed (see e.g. #LFUN_COMMAND_SEQUENCE).
-               \\def_file "FileName" allows to include another .def file. \n
+               \def_file "FileName" allows to include another .def file. \n
                This is particularly useful in connection with toolbar buttons:
                Since the name of the button image for this lfun is 
                lib/images/commands/<NAME>.png this is the way to assign an image
