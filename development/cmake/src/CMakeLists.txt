@@ -35,7 +35,7 @@ if (ASPELL_FOUND)
 endif()
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR}
-	${ZLIB_INCLUDE_DIR} ${QT_INCLUDES})
+	${ZLIB_INCLUDE_DIR})
 
 lyx_add_msvc_pch(lyx)
 

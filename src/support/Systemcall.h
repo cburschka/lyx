@@ -16,9 +16,6 @@
 #define SYSTEMCALL_H
 
 #include <string>
-#include <QObject>
-
-class QProcess;
 
 namespace lyx {
 namespace support {
@@ -46,48 +43,6 @@ public:
 	 *  by spaces.
 	 */
 	int startscript(Starttype how, std::string const & what);
-};
-
-
-/**
- * Outputs to the console terminal the line buffered standard output and
- * error of a spawned process when there is a controlling terminal and 
- * stdout/stderr have not been redirected.
- */
-class ConOut : public QObject
-{
-	Q_OBJECT
-public:
-	ConOut(QProcess * proc);
-	~ConOut();
-
-	/// Should the standard output be displayed?
-	void showout() { showout_ = true; }
-
-	/// Should the standard error be displayed?
-	void showerr() { showerr_ = true; }
-
-private:
-	/// Pointer to the process to monitor.
-	QProcess * proc_;
-	/// Index to the standard output buffer.
-	size_t outindex_;
-	/// Index to the standard error buffer.
-	size_t errindex_;
-	/// Size of buffers.
-	static size_t const bufsize_ = 200;
-	/// Standard output buffer.
-	char outdata_[bufsize_];
-	/// Standard error buffer.
-	char errdata_[bufsize_];
-	/// 
-	bool showout_;
-	/// 
-	bool showerr_;
-
-public Q_SLOTS:
-	void stdOut();
-	void stdErr();
 };
 
 } // namespace support

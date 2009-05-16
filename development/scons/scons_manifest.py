@@ -289,6 +289,7 @@ src_support_header_files = Split('''
     SignalSlot.h
     SignalSlotPrivate.h
     Systemcall.h
+    SystemcallPrivate.h
     Timeout.h
     Translator.h
     convert.h

@@ -17,6 +17,7 @@
 #include "support/lstrings.h"
 #include "support/qstring_helpers.h"
 #include "support/Systemcall.h"
+#include "support/SystemcallPrivate.h"
 #include "support/os.h"
 
 #include <cstdlib>
@@ -206,7 +207,7 @@ void ConOut::stdErr()
 	}
 }
 
-#include "moc_Systemcall.cpp"
+#include "moc_SystemcallPrivate.cpp"
 #endif
 
 } // namespace support
