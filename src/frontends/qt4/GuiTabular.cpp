@@ -57,52 +57,90 @@ GuiTabular::GuiTabular(GuiView & lv)
 		this, SLOT(topspace_changed()));
 	connect(topspaceUnit, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(topspace_changed()));
-	connect(topspaceCO, SIGNAL(activated(int)), this, SLOT(topspace_changed()));
+	connect(topspaceCO, SIGNAL(activated(int)),
+		this, SLOT(topspace_changed()));
 	connect(bottomspaceED, SIGNAL(returnPressed()),
 		this, SLOT(bottomspace_changed()));
 	connect(bottomspaceUnit, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(bottomspace_changed()));
-	connect(bottomspaceCO, SIGNAL(activated(int)), this, SLOT(bottomspace_changed()));
+	connect(bottomspaceCO, SIGNAL(activated(int)),
+		this, SLOT(bottomspace_changed()));
 	connect(interlinespaceED, SIGNAL(returnPressed()),
 		this, SLOT(interlinespace_changed()));
 	connect(interlinespaceUnit, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(interlinespace_changed()));
-	connect(interlinespaceCO, SIGNAL(activated(int)), this, SLOT(interlinespace_changed()));
-	connect(booktabsRB, SIGNAL(clicked(bool)), this, SLOT(booktabsChanged(bool)));
-	connect(borderDefaultRB, SIGNAL(clicked(bool)), this, SLOT(booktabsChanged(bool)));
-	connect(borderSetPB, SIGNAL(clicked()), this, SLOT(borderSet_clicked()));
-	connect(borderUnsetPB, SIGNAL(clicked()), this, SLOT(borderUnset_clicked()));
-	connect(longTabularCB, SIGNAL(toggled(bool)), longtableGB, SLOT(setEnabled(bool)));
-	connect(longTabularCB, SIGNAL(toggled(bool)), newpageCB, SLOT(setEnabled(bool)));
-	connect(hAlignCB, SIGNAL(activated(int)), this, SLOT(hAlign_changed(int)));
-	connect(vAlignCB, SIGNAL(activated(int)), this, SLOT(vAlign_changed(int)));
-	connect(multicolumnCB, SIGNAL(clicked()), this, SLOT(multicolumn_clicked()));
-	connect(newpageCB, SIGNAL(clicked()), this, SLOT(ltNewpage_clicked()));
-	connect(headerStatusCB, SIGNAL(clicked()), this, SLOT(ltHeaderStatus_clicked()));
-	connect(headerBorderAboveCB, SIGNAL(clicked()), this, SLOT(ltHeaderBorderAbove_clicked()));
-	connect(headerBorderBelowCB, SIGNAL(clicked()), this, SLOT(ltHeaderBorderBelow_clicked()));
-	connect(firstheaderStatusCB, SIGNAL(clicked()), this, SLOT(ltFirstHeaderStatus_clicked()));
-	connect(firstheaderBorderAboveCB, SIGNAL(clicked()), this, SLOT(ltFirstHeaderBorderAbove_clicked()));
-	connect(firstheaderBorderBelowCB, SIGNAL(clicked()), this, SLOT(ltFirstHeaderBorderBelow_clicked()));
-	connect(firstheaderNoContentsCB, SIGNAL(clicked()), this, SLOT(ltFirstHeaderEmpty_clicked()));
-	connect(footerStatusCB, SIGNAL(clicked()), this, SLOT(ltFooterStatus_clicked()));
-	connect(footerBorderAboveCB, SIGNAL(clicked()), this, SLOT(ltFooterBorderAbove_clicked()));
-	connect(footerBorderBelowCB, SIGNAL(clicked()), this, SLOT(ltFooterBorderBelow_clicked()));
-	connect(lastfooterStatusCB, SIGNAL(clicked()), this, SLOT(ltLastFooterStatus_clicked()));
-	connect(lastfooterBorderAboveCB, SIGNAL(clicked()), this, SLOT(ltLastFooterBorderAbove_clicked()));
-	connect(lastfooterBorderBelowCB, SIGNAL(clicked()), this, SLOT(ltLastFooterBorderBelow_clicked()));
-	connect(lastfooterNoContentsCB, SIGNAL(clicked()), this, SLOT(ltLastFooterEmpty_clicked()));
-	connect(specialAlignmentED, SIGNAL(returnPressed()), this, SLOT(specialAlignment_changed()));
-	connect(widthED, SIGNAL(editingFinished()), this, SLOT(width_changed()));
-	connect(widthUnit, SIGNAL(selectionChanged(lyx::Length::UNIT)), this, SLOT(width_changed()));
-	connect(closePB, SIGNAL(clicked()), this, SLOT(close_clicked()));
-	connect(borders, SIGNAL(topSet(bool)), this, SLOT(topBorder_changed()));
-	connect(borders, SIGNAL(bottomSet(bool)), this, SLOT(bottomBorder_changed()));
-	connect(borders, SIGNAL(rightSet(bool)), this, SLOT(rightBorder_changed()));
-	connect(borders, SIGNAL(leftSet(bool)), this, SLOT(leftBorder_changed()));
-	connect(rotateTabularCB, SIGNAL(clicked()), this, SLOT(rotateTabular()));
-	connect(rotateCellCB, SIGNAL(clicked()), this, SLOT(rotateCell()));
-	connect(longTabularCB, SIGNAL(clicked()), this, SLOT(longTabular()));
+	connect(interlinespaceCO, SIGNAL(activated(int)),
+		this, SLOT(interlinespace_changed()));
+	connect(booktabsRB, SIGNAL(clicked(bool)),
+		this, SLOT(booktabsChanged(bool)));
+	connect(borderDefaultRB, SIGNAL(clicked(bool)),
+		this, SLOT(booktabsChanged(bool)));
+	connect(borderSetPB, SIGNAL(clicked()),
+		this, SLOT(borderSet_clicked()));
+	connect(borderUnsetPB, SIGNAL(clicked()),
+		this, SLOT(borderUnset_clicked()));
+	connect(longTabularCB, SIGNAL(toggled(bool)),
+		longtableGB, SLOT(setEnabled(bool)));
+	connect(longTabularCB, SIGNAL(toggled(bool)),
+		newpageCB, SLOT(setEnabled(bool)));
+	connect(hAlignCB, SIGNAL(activated(int)),
+		this, SLOT(hAlign_changed(int)));
+	connect(vAlignCB, SIGNAL(activated(int)),
+		this, SLOT(vAlign_changed(int)));
+	connect(multicolumnCB, SIGNAL(clicked()),
+		this, SLOT(multicolumn_clicked()));
+	connect(newpageCB, SIGNAL(clicked()),
+		this, SLOT(ltNewpage_clicked()));
+	connect(headerStatusCB, SIGNAL(clicked()),
+		this, SLOT(ltHeaderStatus_clicked()));
+	connect(headerBorderAboveCB, SIGNAL(clicked()),
+		this, SLOT(ltHeaderBorderAbove_clicked()));
+	connect(headerBorderBelowCB, SIGNAL(clicked()),
+		this, SLOT(ltHeaderBorderBelow_clicked()));
+	connect(firstheaderStatusCB, SIGNAL(clicked()),
+		this, SLOT(ltFirstHeaderStatus_clicked()));
+	connect(firstheaderBorderAboveCB, SIGNAL(clicked()),
+		this, SLOT(ltFirstHeaderBorderAbove_clicked()));
+	connect(firstheaderBorderBelowCB, SIGNAL(clicked()),
+		this, SLOT(ltFirstHeaderBorderBelow_clicked()));
+	connect(firstheaderNoContentsCB, SIGNAL(clicked()),
+		this, SLOT(ltFirstHeaderEmpty_clicked()));
+	connect(footerStatusCB, SIGNAL(clicked()),
+		this, SLOT(ltFooterStatus_clicked()));
+	connect(footerBorderAboveCB, SIGNAL(clicked()),
+		this, SLOT(ltFooterBorderAbove_clicked()));
+	connect(footerBorderBelowCB, SIGNAL(clicked()),
+		this, SLOT(ltFooterBorderBelow_clicked()));
+	connect(lastfooterStatusCB, SIGNAL(clicked()),
+		this, SLOT(ltLastFooterStatus_clicked()));
+	connect(lastfooterBorderAboveCB, SIGNAL(clicked()),
+		this, SLOT(ltLastFooterBorderAbove_clicked()));
+	connect(lastfooterBorderBelowCB, SIGNAL(clicked()),
+		this, SLOT(ltLastFooterBorderBelow_clicked()));
+	connect(lastfooterNoContentsCB, SIGNAL(clicked()),
+		this, SLOT(ltLastFooterEmpty_clicked()));
+	connect(specialAlignmentED, SIGNAL(returnPressed()),
+		this, SLOT(specialAlignment_changed()));
+	connect(widthED, SIGNAL(editingFinished()),
+		this, SLOT(width_changed()));
+	connect(widthUnit, SIGNAL(selectionChanged(lyx::Length::UNIT)),
+		this, SLOT(width_changed()));
+	connect(closePB, SIGNAL(clicked()),
+		this, SLOT(close_clicked()));
+	connect(borders, SIGNAL(topSet(bool)),
+		this, SLOT(topBorder_changed()));
+	connect(borders, SIGNAL(bottomSet(bool)),
+		this, SLOT(bottomBorder_changed()));
+	connect(borders, SIGNAL(rightSet(bool)),
+		this, SLOT(rightBorder_changed()));
+	connect(borders, SIGNAL(leftSet(bool)),
+		this, SLOT(leftBorder_changed()));
+	connect(rotateTabularCB, SIGNAL(clicked()),
+		this, SLOT(rotateTabular()));
+	connect(rotateCellCB, SIGNAL(clicked()),
+		this, SLOT(rotateCell()));
+	connect(longTabularCB, SIGNAL(clicked()),
+		this, SLOT(longTabular()));
 
 	bc().setPolicy(ButtonPolicy::IgnorantPolicy);
 	
@@ -191,7 +229,8 @@ void GuiTabular::topspace_changed()
 		case 2: {
 			if (!topspaceED->text().isEmpty())
 				set(Tabular::SET_TOP_SPACE,
-					widgetsToLength(topspaceED, topspaceUnit));
+				    widgetsToLength(topspaceED,
+					            topspaceUnit));
 			if (!bc().policy().isReadOnly()) {
 				topspaceED->setEnabled(true);
 				topspaceUnit->setEnabled(true);
@@ -221,7 +260,8 @@ void GuiTabular::bottomspace_changed()
 		case 2: {
 			if (!bottomspaceED->text().isEmpty())
 				set(Tabular::SET_BOTTOM_SPACE,
-					widgetsToLength(bottomspaceED, bottomspaceUnit));
+				    widgetsToLength(bottomspaceED,
+					            bottomspaceUnit));
 			if (!bc().policy().isReadOnly()) {
 				bottomspaceED->setEnabled(true);
 				bottomspaceUnit->setEnabled(true);
@@ -251,7 +291,8 @@ void GuiTabular::interlinespace_changed()
 		case 2: {
 			if (!interlinespaceED->text().isEmpty())
 				set(Tabular::SET_INTERLINE_SPACE,
-					widgetsToLength(interlinespaceED, interlinespaceUnit));
+				    widgetsToLength(interlinespaceED,
+					            interlinespaceUnit));
 			if (!bc().policy().isReadOnly()) {
 				interlinespaceED->setEnabled(true);
 				interlinespaceUnit->setEnabled(true);
@@ -629,10 +670,12 @@ void GuiTabular::updateContents()
 	docstring special;
 
 	if (multicol) {
-		special = getAlignSpecial(tabular_, cell, Tabular::SET_SPECIAL_MULTI);
+		special = getAlignSpecial(tabular_, cell,
+			Tabular::SET_SPECIAL_MULTI);
 		pwidth = getMColumnPWidth(tabular_, cell);
 	} else {
-		special = getAlignSpecial(tabular_, cell, Tabular::SET_SPECIAL_COLUMN);
+		special = getAlignSpecial(tabular_, cell,
+			Tabular::SET_SPECIAL_COLUMN);
 		pwidth = getColumnPWidth(tabular_, cell);
 	}
 
@@ -919,9 +962,11 @@ void GuiTabular::closeGUI()
 	docstring sa2;
 
 	if (multicol)
-		sa2 = getAlignSpecial(tabular_, cell, Tabular::SET_SPECIAL_MULTI);
+		sa2 = getAlignSpecial(tabular_, cell,
+			Tabular::SET_SPECIAL_MULTI);
 	else
-		sa2 = getAlignSpecial(tabular_, cell, Tabular::SET_SPECIAL_COLUMN);
+		sa2 = getAlignSpecial(tabular_, cell,
+			Tabular::SET_SPECIAL_COLUMN);
 
 	if (sa1 != sa2) {
 		if (multicol)
@@ -991,7 +1036,8 @@ bool GuiTabular::initialiseParams(string const & data)
 		// assume that it is "ours"
 		for (int i = cur.depth() - 1; i >= 0; --i)
 			if (cur[i].inset().lyxCode() == TABULAR_CODE) {
-				current_inset = static_cast<InsetTabular const *>(&cur[i].inset());
+				current_inset =
+					static_cast<InsetTabular const *>(&cur[i].inset());
 				active_cell_ = cur[i].idx();
 				break;
 			}
@@ -1011,8 +1057,9 @@ bool GuiTabular::initialiseParams(string const & data)
 
 void GuiTabular::clearParams()
 {
-	// This function is also called when LyX is closing and the dialog is
-	// still open. At that time, the buffer might not be available anymore.
+	// This function is also called when LyX is closing and the dialog
+	// is still open. At that time, the buffer might not be available
+	// anymore.
 	if (isBufferAvailable()) {
 		InsetTabular tmp(const_cast<Buffer &>(buffer()));
 		tabular_ = tmp.tabular;
