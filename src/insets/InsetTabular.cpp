@@ -2096,7 +2096,7 @@ int Tabular::TeXLongtableHeaderFooter(odocstream & os,
 	}
 	// output first header info
 	// first header must be output before the header, otherwise the
-	// correct caption placement becomes really wierd
+	// correct caption placement becomes really weird
 	if (haveLTFirstHead()) {
 		if (endfirsthead.topDL) {
 			os << "\\hline\n";
@@ -3936,7 +3936,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 		// every row can only be one thing:
 		// either a footer or header or caption
-		case Tabular::SET_LTFIRSTHEAD:			
+		case Tabular::SET_LTFIRSTHEAD:
 			status.setEnabled(sel_row_start == sel_row_end
 				&& !tabular.getRowOfLTHead(sel_row_start, dummyltt)
 				&& !tabular.getRowOfLTFoot(sel_row_start, dummyltt)
