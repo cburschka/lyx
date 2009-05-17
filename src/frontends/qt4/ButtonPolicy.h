@@ -23,7 +23,7 @@ namespace frontend {
     dialogs. Only the policy is implemented here.  Separate ButtonController
     classes are needed for each GUI implementation.
 
-		Policy                    | ReadOnly | Apply Button | Repeated Apply
+    Policy                    | ReadOnly | Apply Button  | Repeated Apply
     ========================================================================
     OkCancel                  |     N    |      N        |      -
     OkCancelReadOnly          |     Y    |      N        |      -
@@ -72,7 +72,7 @@ public:
 			This is based on the value of the bool state of the Button::CANCEL.
 			true == Cancel, false == Close
 		 */
-    OkCancelPolicy,
+		OkCancelPolicy,
 
 
 		/** Ok and Cancel buttons for dialogs where read-only operation is blocked.
@@ -121,7 +121,7 @@ public:
 		OkApplyCancelReadOnlyPolicy,
 
 		/** Ok, Apply and Cancel buttons for dialogs where repeated
- *    Apply is allowed.
+			Apply is allowed.
 			Note: This scheme supports the relabelling of Cancel to Close
 			and vice versa.
 			This is based on the value of the bool state of the Button::CANCEL.
