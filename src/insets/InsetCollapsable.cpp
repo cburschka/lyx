@@ -662,7 +662,6 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_APPENDIX:
 	case LFUN_BOX_INSERT:
 	case LFUN_BRANCH_INSERT:
-	case LFUN_NEWLINE_INSERT:
 	case LFUN_CAPTION_INSERT:
 	case LFUN_DEPTH_DECREMENT:
 	case LFUN_DEPTH_INCREMENT:
@@ -677,8 +676,6 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_FONT_TYPEWRITER:
 	case LFUN_FONT_DEFAULT:
 	case LFUN_FONT_EMPH:
-	case LFUN_TEXTSTYLE_APPLY:
-	case LFUN_TEXTSTYLE_UPDATE:
 	case LFUN_FONT_NOUN:
 	case LFUN_FONT_ROMAN:
 	case LFUN_FONT_SANS:
@@ -697,15 +694,16 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_INSET_INSERT:
 	case LFUN_LABEL_GOTO:
 	case LFUN_LABEL_INSERT:
-	case LFUN_LINE_INSERT:
-	case LFUN_NEWPAGE_INSERT:
 	case LFUN_LAYOUT_TABULAR:
+	case LFUN_LINE_INSERT:
 	case LFUN_MARGINALNOTE_INSERT:
 	case LFUN_MATH_DISPLAY:
 	case LFUN_MATH_INSERT:
 	case LFUN_MATH_MATRIX:
 	case LFUN_MATH_MODE:
 	case LFUN_MENU_OPEN:
+	case LFUN_NEWLINE_INSERT:
+	case LFUN_NEWPAGE_INSERT:
 	case LFUN_NOACTION:
 	case LFUN_NOMENCL_INSERT:
 	case LFUN_NOMENCL_PRINT:
@@ -720,6 +718,8 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_SPACE_INSERT:
 	case LFUN_SPECIALCHAR_INSERT:
 	case LFUN_TABULAR_INSERT:
+	case LFUN_TEXTSTYLE_APPLY:
+	case LFUN_TEXTSTYLE_UPDATE:
 	case LFUN_TOC_INSERT:
 	case LFUN_WRAP_INSERT:
 		if (layout_->isPassThru()) {
