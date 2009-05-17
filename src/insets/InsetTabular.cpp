@@ -3630,8 +3630,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 				cur.recordUndoInset(DELETE_UNDO);
 				cutSelection(cur);
 			}
-		}
-		else
+		} else
 			cell(cur.idx())->dispatch(cur, cmd);
 		break;
 
@@ -3690,7 +3689,8 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_PASTE:
 		if (!tabularStackDirty()) {
-			cell(cur.idx())->dispatch(cur, cmd);
+			if (!cur.selIsMultiCell())
+				cell(cur.idx())->dispatch(cur, cmd);
 			break;
 		}
 		if (theClipboard().isInternal() ||
@@ -4067,15 +4067,22 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return true;
 
 	case LFUN_PASTE:
-		if (cur.selIsMultiCell()) {
-			status.setEnabled(false);
-			status.message(_("You cannot paste into a multicell selection."));
+		if (tabularStackDirty() && theClipboard().isInternal()) {
+			if (cur.selIsMultiCell()) {
+				row_type rs, re;
+				col_type cs, ce;
+				getSelection(cur, rs, re, cs, ce);
+				if (paste_tabular && paste_tabular->column_info.size() == ce - cs + 1
+					  && paste_tabular->row_info.size() == re - rs + 1)
+					status.setEnabled(true);	
+				else {
+					status.setEnabled(false);
+					status.message(_("Selection size should match clipboard content."));
+				}
+			} else
+				status.setEnabled(true);
 			return true;
 		}
-		if (tabularStackDirty() && theClipboard().isInternal()) {
-			status.setEnabled(true);
-			return true;
-		} 
 		return cell(cur.idx())->getStatus(cur, cmd, status);
 
 	case LFUN_INSET_SETTINGS:
@@ -4923,8 +4930,15 @@ bool InsetTabular::pasteClipboard(Cursor & cur)
 {
 	if (!paste_tabular)
 		return false;
-	col_type const actcol = tabular.cellColumn(cur.idx());
-	row_type const actrow = tabular.cellRow(cur.idx());
+	col_type actcol = tabular.cellColumn(cur.idx());
+	row_type actrow = tabular.cellRow(cur.idx());
+
+	if (cur.selIsMultiCell()) {
+		row_type re;
+		col_type ce;
+		getSelection(cur, actrow, re, actcol, ce);
+	}
+
 	for (row_type r1 = 0, r2 = actrow;
 	     r1 < paste_tabular->row_info.size() && r2 < tabular.row_info.size();
 	     ++r1, ++r2) {
@@ -4932,7 +4946,7 @@ bool InsetTabular::pasteClipboard(Cursor & cur)
 		    c1 < paste_tabular->column_info.size() && c2 < tabular.column_info.size();
 		    ++c1, ++c2) {
 			if (paste_tabular->isPartOfMultiColumn(r1, c1) &&
-			    tabular.isPartOfMultiColumn(r2, c2))
+			      tabular.isPartOfMultiColumn(r2, c2))
 				continue;
 			if (paste_tabular->isPartOfMultiColumn(r1, c1)) {
 				--c2;
