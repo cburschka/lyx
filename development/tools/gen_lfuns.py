@@ -300,7 +300,6 @@ def main(argv):
 	
     lyxaction_text = lyxaction_file.read()
 	
-    # TODO: format a proper header for LFUNs.lyx
     lfuns_file.write(LFUNS_HEADER)
 	
 	# seek to the important bit of LyXAction.cpp
