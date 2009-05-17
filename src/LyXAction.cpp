@@ -1587,9 +1587,9 @@ void LyXAction::init()
  * \li Params: <TYPE>: negative spaces: !|negthinspace|negmedspace|negthickspace \n
                        positive spaces: ,|thinspace|:|medspace|;|thickspace|enskip|quad|qquad \n
                        custom space: hspace \n
-                       "," used by default.
+                       "," used by default.\n
                        Note that ! is equivalent to negthinspace, , = thinspace,
-                       : = medspace, and ; = thickspace.
+                       : = medspace, and ; = thickspace.\n
                <LEN>: length for custom spaces (hspace)
  * \li Origin: Andre, 25 Jul 2001; sanda, 16 Jun 2008
  * \endvar
@@ -1668,7 +1668,7 @@ void LyXAction::init()
  * \li Notion: Provides an interface to the LaTeX math mode font size commands.
  * \li Syntax: math-size <STYLE>
  * \li Params: <STYLE>: \displaystyle|\textstyle|\scriptstyle|\scriptscriptstyle
- * \li Origin: Alejandro, 15 Aug 1996; ps, 14 Jun 2008
+ * \li Origin: Alejandro, 15 Aug 1996; sanda, 14 Jun 2008
  * \endvar
  */
 		{ LFUN_MATH_SIZE, "math-size", Noop, Math },
