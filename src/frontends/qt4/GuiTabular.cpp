@@ -137,7 +137,7 @@ GuiTabular::GuiTabular(GuiView & lv)
 	connect(rotateTabularCB, SIGNAL(clicked()),
 		this, SLOT(rotateTabular()));
 	connect(rotateCellCB, SIGNAL(clicked()),
-		his, SLOT(rotateCell()));
+		this, SLOT(rotateCell()));
 	connect(longTabularCB, SIGNAL(clicked()),
 		this, SLOT(longTabular()));
 
