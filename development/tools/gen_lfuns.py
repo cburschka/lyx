@@ -21,7 +21,7 @@ def error(message):
     sys.exit(1)
 
 def usage(prog_name):
-    return "Usage: %s <path/to/LyXAction.cpp> <where/to/save/LFUNs.lyx>" % prog_name
+    return "Usage: %s <path/to/LyXAction.cpp> [<where/to/save/LFUNs.lyx>]" % prog_name
 
 DOXYGEN_START = "/*!"
 DOXYGEN_END = "*/"
@@ -282,7 +282,7 @@ def write_fields(file, lfun):
 def main(argv):
     # parse command line arguments   
     script_path, script_name = os.path.split(argv[0])
-    if len(argv) != 3:
+    if len(argv) < 2:
         error(usage(script_name))
     # input file
     lyxaction_path = argv[1]
@@ -290,16 +290,19 @@ def main(argv):
         error(script_name + ": %s is not a valid path" % lyxaction_path, usage(argv[0]))
 
     # output file
-    lfuns_path = argv[2]
-    if os.path.isdir(lfuns_path):
-        lfuns_path = lfuns_path + "LFUNs.lyx"
-    elif os.path.exists(lfuns_path):
-        error(script_name + ": %s already exists, delete it and rerun the script" % lfuns_path)
+    if len(argv) == 3:
+        lfuns_path = argv[2]
+        if os.path.isdir(lfuns_path):
+            lfuns_path = lfuns_path + "LFUNs.lyx"
+        elif os.path.exists(lfuns_path):
+            error(script_name + ": %s already exists, delete it and rerun the script" % lfuns_path)
+        lfuns_file = open(lfuns_path, 'wb')
+    else:
+        lfuns_file = sys.stdout
 
-    print(script_name + ": Start processing " + argv[1])
+    sys.stderr.write(script_name + ": Start processing " + argv[1] + '\n')
     # Read the input file and write the output file
     lyxaction_file = open(lyxaction_path, 'rb')
-    lfuns_file = open(lfuns_path, 'wb')
 	
     lyxaction_text = lyxaction_file.read()
 	
@@ -331,7 +334,7 @@ def main(argv):
             # if no more lfuns are found, EOF reached
             done = 1
             
-    print(script_name + ": Created documentation for " + str(count) + " LFUNs")
+    sys.stderr.write(script_name + ": Created documentation for " + str(count) + " LFUNs\n")
     
     # write the last part of LFUNs.lyx
     lfuns_file.write(LFUNS_FOOTER)
@@ -339,7 +342,7 @@ def main(argv):
     lyxaction_file.close()
     lfuns_file.close()
     
-    print(script_name + ": Finished")
+    sys.stderr.write(script_name + ": Finished\n")
     
 if __name__ == "__main__":
     main(sys.argv)
