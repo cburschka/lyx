@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-04-25 09:43+0200\n"
-"PO-Revision-Date: 2009-04-25 09:47+0200\n"
+"PO-Revision-Date: 2009-05-17 12:00+0200\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
 "Language-Team: German <kde-i18n-de@lists.kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -1764,7 +1764,7 @@ msgstr "Okno pre odozvu"
 #: src/frontends/qt4/ui/ListingsUi.ui:499
 msgid "Input listing parameters here. Enter ? for a list of parameters."
 msgstr ""
-"Tu vkladajte ďalšie parametry výpisu. Pre zoznam parametrov vložte znak '?'"
+"Tu vkladajte ďalšie parametry výpisu. Pre prehľad parametrov vložte znak '?'"
 
 #: src/frontends/qt4/ui/LogUi.ui:31
 msgid "Copy to Clip&board"
@@ -2376,7 +2376,7 @@ msgstr "Zobraz meno makra v stavovom riadku pri editácii mat. makrov v riadku"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:83
 msgid "Edit Math Macros with a parameter list (like in LyX < 1.6)"
-msgstr "Editácia mat. makrov so zoznamom parametrov (ako v LyXe < 1.6)"
+msgstr "Editácia mat. makrov s prehľadom parametrov (ako v LyXe < 1.6)"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:94
 msgid "Fullscreen"
@@ -3223,7 +3223,7 @@ msgstr "Triedenie"
 
 #: src/frontends/qt4/ui/RefUi.ui:238
 msgid "Update the label list"
-msgstr "Aktualizovať listinu návestí"
+msgstr "Aktualizovať prehľad návestí"
 
 #: src/frontends/qt4/ui/RefUi.ui:256
 msgid "Jump to the label"
@@ -3669,7 +3669,7 @@ msgstr "BibTeX štýly"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:162
 msgid "Toggles view of the file list"
-msgstr "Prepni zobrazenie listiny súborov"
+msgstr "Prepne zobrazenie prehľadu súborov"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:165
 msgid "Show &path"
@@ -3741,7 +3741,7 @@ msgid ""
 "Switch between available lists (table of contents, list of figures, list of "
 "tables, and others)"
 msgstr ""
-"Prepni medzi dostupnými listinamy (obsah, zoznam obrázkov, zoznam tabuliek a "
+"Prepni medzi dostupnými prehľadmi (obsah, zoznam obrázkov, zoznam tabuliek a "
 "iné)"
 
 #: src/frontends/qt4/ui/TocUi.ui:57
@@ -16717,7 +16717,7 @@ msgid ""
 "\n"
 "%1$s."
 msgstr ""
-"Aiksaurus vrátil následující chybu:\n"
+"Aiksaurus vrátil nasledujúcu chybu:\n"
 "\n"
 "%1$s."
 
@@ -17297,7 +17297,7 @@ msgstr "Súbor %1$s už existuje. Chcete tento súbor prepísať?"
 
 #: src/frontends/qt4/GuiCommandBuffer.cpp:98
 msgid "List of previous commands"
-msgstr "Zoznam predchádzajúci príkazov"
+msgstr "Zoznam predchádzajúcich príkazov"
 
 #: src/frontends/qt4/GuiCommandBuffer.cpp:101
 msgid "Next command"
@@ -17445,7 +17445,7 @@ msgstr "Nastavenia dokumentu"
 msgid ""
 "Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
-"Parametry výpisov zadávajte napravo. Na listinu parametrov vložte znak '?'."
+"Parametry výpisov zadávajte napravo. Na prehľad parametrov vložte znak '?'."
 
 #: src/frontends/qt4/GuiDocument.cpp:568
 msgid "Length"
@@ -17945,7 +17945,7 @@ msgstr "Dokument potomka"
 msgid ""
 "Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr ""
-"Parametry výpisu zadávajte napravo. Na listinu parametrov vložte znak '?'."
+"Parametry výpisu zadávajte napravo. Na prehľad parametrov vložte znak '?'."
 
 #: src/frontends/qt4/GuiInclude.cpp:315
 msgid "Select document to include"
@@ -19796,7 +19796,7 @@ msgstr "Neznáme meno parametra výpisu: %1$s"
 #: src/insets/InsetListingsParams.cpp:668
 #, c-format
 msgid "Parameters starting with '%1$s': %2$s"
-msgstr "Parametry začínající na '%1$s': %2$s"
+msgstr "Parametry začínajúce na '%1$s': %2$s"
 
 #: src/insets/InsetMarginal.cpp:34
 msgid "Opened Marginal Note Inset"
