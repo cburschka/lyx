@@ -370,7 +370,7 @@ void LyXAction::init()
  * \li Action: Insert a tab into a listings inset.
  * \li Notion: It also works on a selection.
  * \li Syntax: tab-insert
- * \li Origin: vfvanravesteijn, Sep 30 2008
+ * \li Origin: vfr, Sep 30 2008
  * \endvar
  */
 		{ LFUN_TAB_INSERT, "tab-insert", SingleParUpdate, Edit },
@@ -382,7 +382,7 @@ void LyXAction::init()
                beginning of each line spanned by the selection. This is useful if
                you want to indent/unindent multiple lines in one action.
  * \li Syntax: tab-delete
- * \li Origin: vfvanravesteijn, Sep 30 2008
+ * \li Origin: vfr, Sep 30 2008
  * \endvar
  */
 		{ LFUN_TAB_DELETE, "tab-delete", SingleParUpdate, Edit },
@@ -1029,7 +1029,7 @@ void LyXAction::init()
                if it is not already there, or at the beginning of the 
                enclosing inset otherwise
  * \li Syntax: inset-begin
- * \li Origin: JMarc, 2009/03/16
+ * \li Origin: lasgouttes, 16 Mar 2009
  * \endvar
  */
 		{ LFUN_INSET_BEGIN, "inset-begin", ReadOnly, Edit },
@@ -1040,7 +1040,7 @@ void LyXAction::init()
                enclosing inset otherwise (adding the
                traversed text to the selection).
  * \li Syntax: inset-begin-select
- * \li Origin: JMarc, 2009/03/16
+ * \li Origin: lasgouttes, 16 Mar 2009
  * \endvar
  */
 		{ LFUN_INSET_BEGIN_SELECT, "inset-begin-select", ReadOnly, Edit },
@@ -1050,7 +1050,7 @@ void LyXAction::init()
                if it is not already there, or at the end of the 
                enclosing inset otherwise
  * \li Syntax: inset-end
- * \li Origin: JMarc, 2009/03/16
+ * \li Origin: lasgouttes, 16 Mar 2009
  * \endvar
  */
 		{ LFUN_INSET_END, "inset-end", ReadOnly, Edit },
@@ -1061,7 +1061,7 @@ void LyXAction::init()
                enclosing inset otherwise (adding the
                traversed text to the selection).
  * \li Syntax: inset-end-select
- * \li Origin: JMarc, 2009/03/16
+ * \li Origin: lasgouttes, 16 Mar 2009
  * \endvar
  */
 		{ LFUN_INSET_END_SELECT, "inset-end-select", ReadOnly, Edit },
