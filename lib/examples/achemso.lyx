@@ -1,30 +1,36 @@
-#LyX 1.6.1svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
 \textclass achemso
 \begin_preamble
-%% Each author should be given as a separate \author command.
-%%
-%% Corresponding authors should have an e-mail given after the author
-%% name as an \email command.
-%%
-%% The affiliation of authors is given after the authors; each
-%% \affiliation command applies to all preceding authors not already
-%% assigned an affiliation.
-%%
-%% The affiliation takes an option argument for the short name.  This
-%% will typically be something like "University of Somewhere".
-%%
-%% The \altaffiliation macro should be used for new address, etc.
-\author{Andrew N. Other}
-\author{Fred T. Secondauthor}
-\altaffiliation{Current address: Some other place, Othertown,
-Germany}
-\author{I. Ken Groupleader}
-\email{i.k.groupleader@unknown.uu}
-\affiliation[Unknown University]
-{Department of Chemistry, Unknown University, Unknown Town}
+% Each author should be given as a separate \author command.
+%
+% Corresponding authors should have an e-mail given after the author
+% name as an \email command.
+%
+% The affiliation of authors is given after the authors; each
+% \affiliation command applies to all preceding authors not already
+% assigned an affiliation.
+%
+% The affiliation takes an option argument for the short name.  This
+% will typically be something like "University of Somewhere".
+%
+% Notice that \alsoaffiliation is used when one (or more) authors work
+% at multiple institutions, while \altaffiliation is intended for previous
+% addresses (or other notes). Only \affiliation applies to multiple
+% authors: both \alsoaffiliation and \altaffiliation are set on a per
+% author basis.
+
+\author{Author Person}
+\author{Second Bloke}
+\email{second.bloke@some.place}
+\affiliation[University of Sometown]{University of Somewhere, Sometown, USA}
+\altaffiliation{Previous address: Minute University, Nowhereville, USA}
+\author{Indus Trialguy}
+\email{i.trialguy@sponsor.co}
+\affiliation[SponsoCo]{Research Department, SponsorCo, BigCity, USA}
+\alsoaffiliation{University of Somewhere, Sometown, USA}
 
 % A short title can be given as a *suggestion* for running headers.
 \title[\texttt{achemso} demonstration]
