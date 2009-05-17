@@ -226,6 +226,9 @@ def parse_lfun(str):
         # TODO: actually insert a cross-reference here
         line = line.replace("#LFUN", "LFUN")
         
+        # handle the few #lyx:: cases
+        line = line.replace("#lyx::", "lyx::")
+
         # the first line might not have a field in it in which
         # case the variable field won't have a value, so check
         # to avoid an error
