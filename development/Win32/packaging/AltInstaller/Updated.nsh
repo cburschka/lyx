@@ -55,6 +55,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\ja\LaTeXConfig.lyx"
  SetOutPath "$INSTDIR\Resources\examples"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\achemso.lyx"
+ SetOutPath "$INSTDIR\Resources\examples\id"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\id\splash.lyx"
  SetOutPath "$INSTDIR\Resources\images"
  File "${PRODUCT_SOURCEDIR}\Resources\images\bookmark-goto_0.png"
  File "${PRODUCT_SOURCEDIR}\Resources\images\tabular-feature_m-align-center.png"
