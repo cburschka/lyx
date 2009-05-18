@@ -234,6 +234,9 @@ What's new
 
 - Correctly reset language when pasting into ERT or listing.
 
+- Allow again to allocate multiple header attributes to a longtable row
+  (bug 5950).
+
 - Fix the annoying behaviour that the cursor got hidden by auto-toggling
   of the math or table toolbar(s) (bug 4733).
 
