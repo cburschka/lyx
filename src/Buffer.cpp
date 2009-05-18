@@ -525,6 +525,7 @@ int Buffer::readHeader(Lexer & lex)
 	params().clearRemovedModules();
 	params().pdfoptions().clear();
 	params().indiceslist().clear();
+	params().backgroundcolor = lyx::rgbFromHexName("#ffffff");
 
 	for (int i = 0; i < 4; ++i) {
 		params().user_defined_bullet(i) = ITEMIZE_DEFAULTS[i];
