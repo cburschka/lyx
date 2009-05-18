@@ -3812,7 +3812,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			return true;
 
 		case Tabular::MULTICOLUMN:
-			// When a row is set as longtable caption, it must not be allowed
+			// If a row is set as longtable caption, it must not be allowed
 			// to unset that this row is a multicolumn.
 			status.setEnabled(sel_row_start == sel_row_end
 				&& !tabular.ltCaption(tabular.cellRow(cur.idx())));
@@ -3938,9 +3938,6 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 		// either a footer or header or caption
 		case Tabular::SET_LTFIRSTHEAD:
 			status.setEnabled(sel_row_start == sel_row_end
-				&& !tabular.getRowOfLTHead(sel_row_start, dummyltt)
-				&& !tabular.getRowOfLTFoot(sel_row_start, dummyltt)
-				&& !tabular.getRowOfLTLastFoot(sel_row_start, dummyltt)
 				&& !tabular.ltCaption(sel_row_start));
 			status.setOnOff(tabular.getRowOfLTFirstHead(sel_row_start, dummyltt));
 			break;
@@ -3951,9 +3948,6 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 		case Tabular::SET_LTHEAD:
 			status.setEnabled(sel_row_start == sel_row_end
-				&& !tabular.getRowOfLTFirstHead(sel_row_start, dummyltt)
-				&& !tabular.getRowOfLTFoot(sel_row_start, dummyltt)
-				&& !tabular.getRowOfLTLastFoot(sel_row_start, dummyltt)
 				&& !tabular.ltCaption(sel_row_start));
 			status.setOnOff(tabular.getRowOfLTHead(sel_row_start, dummyltt));
 			break;
@@ -3964,9 +3958,6 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 		case Tabular::SET_LTFOOT:
 			status.setEnabled(sel_row_start == sel_row_end
-				&& !tabular.getRowOfLTFirstHead(sel_row_start, dummyltt)
-				&& !tabular.getRowOfLTHead(sel_row_start, dummyltt)
-				&& !tabular.getRowOfLTLastFoot(sel_row_start, dummyltt)
 				&& !tabular.ltCaption(sel_row_start));
 			status.setOnOff(tabular.getRowOfLTFoot(sel_row_start, dummyltt));
 			break;
@@ -3977,9 +3968,6 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 		case Tabular::SET_LTLASTFOOT:
 			status.setEnabled(sel_row_start == sel_row_end
-				&& !tabular.getRowOfLTFirstHead(sel_row_start, dummyltt)
-				&& !tabular.getRowOfLTHead(sel_row_start, dummyltt)
-				&& !tabular.getRowOfLTFoot(sel_row_start, dummyltt)
 				&& !tabular.ltCaption(sel_row_start));
 			status.setOnOff(tabular.getRowOfLTLastFoot(sel_row_start, dummyltt));
 			break;
