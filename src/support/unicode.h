@@ -36,6 +36,11 @@ public:
 	int convert(char const * in_buffer, size_t in_size,
 		char * out_buffer, size_t max_out_size);
 
+	/// source encoding
+	std::string from() const;
+	/// target encoding
+	std::string to() const;
+
 private:
 	/// open iconv.
 	/// \return true if the processor is ready to use.
@@ -88,6 +93,8 @@ void ucs4_to_multibytes(char_type ucs4, std::vector<char> & out,
 
 extern char const * ucs4_codeset;
 
+/// How many bytes does one UCS4 code point use at most in encoding \p encoding?
+int max_encoded_bytes(std::string const & encoding);
 
 } // namespace lyx
 
