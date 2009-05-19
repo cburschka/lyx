@@ -48,6 +48,9 @@ import os, re, string, sys
 # Incremented to format 14, 14 February 2009 by gb
 # Rename I18NPreamble to BabelPreamble and add LangPreamble
 
+# Do not forget to document format change in Customization
+# Manual (section "Declaring a new text class".
+
 currentFormat = 14
 
 
