@@ -1,0 +1,361 @@
+#LyX 1.6.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\begin_modules
+sweave
+\end_modules
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+A Test File
+\end_layout
+
+\begin_layout Author
+Friedrich Leisch
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+LyX 
+\begin_inset Quotes eld
+\end_inset
+
+port
+\begin_inset Quotes erd
+\end_inset
+
+ by Gregor Gorjanc
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A simple example that will run in any S engine: The integers from 1 to 10
+ are
+\end_layout
+
+\begin_layout Chunk
+<<print=TRUE>>=
+\begin_inset Newline newline
+\end_inset
+
+1:10 
+\begin_inset Newline newline
+\end_inset
+
+<<results=hide>>=
+\begin_inset Newline newline
+\end_inset
+
+print(1:20)
+\begin_inset Newline newline
+\end_inset
+
+@ % the above is just to ensure that 2 code chunks can follow each other
+\end_layout
+
+\begin_layout Standard
+We can also emulate a simple calculator: 
+\end_layout
+
+\begin_layout Chunk
+<<echo=TRUE,print=TRUE>>=
+\begin_inset Newline newline
+\end_inset
+
+1 + 1 
+\begin_inset Newline newline
+\end_inset
+
+1 + pi
+\begin_inset Newline newline
+\end_inset
+
+sin(pi/2)
+\begin_inset Newline newline
+\end_inset
+
+@
+\end_layout
+
+\begin_layout Standard
+Now we look at Gaussian data:
+\end_layout
+
+\begin_layout Chunk
+<<>>=
+\begin_inset Newline newline
+\end_inset
+
+library(stats)
+\begin_inset Newline newline
+\end_inset
+
+x <- rnorm(20)
+\begin_inset Newline newline
+\end_inset
+
+print(x)
+\begin_inset Newline newline
+\end_inset
+
+print(t1 <- t.test(x))
+\begin_inset Newline newline
+\end_inset
+
+@
+\end_layout
+
+\begin_layout Standard
+Note that we can easily integrate some numbers into standard text: The third
+ element of vector 
+\family typewriter
+x
+\family default
+ is 
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+x[3]
+\end_layout
+
+\end_inset
+
+, the 
+\begin_inset Formula $p$
+\end_inset
+
+-value of the test is 
+\begin_inset Flex S/R expression
+status collapsed
+
+\begin_layout Plain Layout
+
+format.pval(t1$p.value)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+Now we look at a summary of the famous iris dataset, and we want to see
+ the commands in the code chunks:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Sweave Options
+status open
+
+\begin_layout Plain Layout
+
+echo=true,keep.source=true
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chunk
+<<engine=R>>=
+\begin_inset Newline newline
+\end_inset
+
+# A comment
+\begin_inset Newline newline
+\end_inset
+
+data(iris)
+\begin_inset Newline newline
+\end_inset
+
+summary(iris)
+\begin_inset Newline newline
+\end_inset
+
+@ % def
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement tbph
+wide false
+sideways false
+status collapsed
+
+\begin_layout Chunk
+\align center
+<<fig=TRUE>>=
+\begin_inset Newline newline
+\end_inset
+
+library(graphics)
+\begin_inset Newline newline
+\end_inset
+
+pairs(iris)
+\begin_inset Newline newline
+\end_inset
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Pairs plot of the iris data.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement tbph
+wide false
+sideways false
+status collapsed
+
+\begin_layout Chunk
+\align center
+<<fig=true>>=
+\begin_inset Newline newline
+\end_inset
+
+boxplot(Sepal.Length~Species,data=iris)
+\begin_inset Newline newline
+\end_inset
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Boxplot of sepal length grouped by species.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chunk
+<<engine=S4>>=
+\begin_inset Newline newline
+\end_inset
+
+function.that.comes.only.with.Splus(x)
+\begin_inset Newline newline
+\end_inset
+
+@
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Chunk
+\align center
+<<fig=true>>=
+\begin_inset Newline newline
+\end_inset
+
+boxplot(Sepal.Length~Species,data=iris)
+\begin_inset Newline newline
+\end_inset
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Boxplot of sepal length grouped by species
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

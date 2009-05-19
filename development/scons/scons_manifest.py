@@ -2429,6 +2429,7 @@ lib_examples_files = Split('''
     serial_letter3.lyx
     simplecv.lyx
     splash.lyx
+    sweave.lyx
     xyfigure.png
     xypic.lyx
 ''')

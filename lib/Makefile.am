@@ -246,6 +246,7 @@ dist_examples_DATA = \
 	examples/serial_letter3.lyx \
 	examples/simplecv.lyx \
 	examples/splash.lyx \
+	examples/sweave.lyx \
 	examples/xyfigure.png \
 	examples/xypic.lyx
 
