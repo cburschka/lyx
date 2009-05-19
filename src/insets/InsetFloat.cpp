@@ -32,7 +32,6 @@
 #include "ParIterator.h"
 #include "TextClass.h"
 
-#include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
