@@ -182,7 +182,7 @@ docstring bibitemWidest(Buffer const & buffer)
 	/*
 	bibitemWidest() is supposed to find the bibitem with the widest label in the
 	output, because that is needed as an argument of the bibliography
-	environment to dtermine the correct indentation. To be 100% correct we
+	environment to determine the correct indentation. To be 100% correct we
 	would need the metrics of the font that is used in the output, but usually
 	we don't have access to these.
 	In practice, any proportional font is probably good enough, since we don't
