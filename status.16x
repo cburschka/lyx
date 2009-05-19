@@ -215,6 +215,9 @@ What's new
 
 - Fix assertion with instant preview when nesting math in a text-in-math
   environment (bug 5392).
+  
+- Fix a bug where LyX ate a large preamble consisting of many non-Western
+  characters (bug 5951).
 
 - Improve responsiveness, especially on slow or networked drives, when
   editing a master with child documents (bug 5705).

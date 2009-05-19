@@ -197,6 +197,18 @@ int IconvProcessor::convert(char const * buf, size_t buflen,
 }
 
 
+std::string IconvProcessor::from() const
+{
+	return pimpl_->fromcode_;
+}
+
+
+std::string IconvProcessor::to() const
+{
+	return pimpl_->tocode_;
+}
+
+
 namespace {
 
 
@@ -210,17 +222,21 @@ iconv_convert(IconvProcessor & processor, InType const * buf, size_t buflen)
 	char const * inbuf = reinterpret_cast<char const *>(buf);
 	size_t inbytesleft = buflen * sizeof(InType);
 
-	size_t const outsize = 32768;
-	static char out[outsize];
-	char * outbuf = out;
+	static std::vector<char> outbuf(32768);
+	// The number of UCS4 code points in buf is at most inbytesleft.
+	// The output encoding will use at most
+	// max_encoded_bytes(pimpl_->tocode_) per UCS4 code point.
+	size_t maxoutbufsize = max_encoded_bytes(processor.to()) * inbytesleft;
+	if (outbuf.size() < maxoutbufsize)
+		outbuf.resize(maxoutbufsize);
 
-	int bytes = processor.convert(inbuf, inbytesleft, outbuf, outsize);
+	int bytes = processor.convert(inbuf, inbytesleft, outbuf.data(), outbuf.size());
 	if (bytes <= 0)
 		// Conversion failed
 		// FIXME Maybe throw an exception and handle that in the caller?
 		return vector<RetType>();
 
-	RetType const * tmp = reinterpret_cast<RetType const *>(out);
+	RetType const * tmp = reinterpret_cast<RetType const *>(outbuf.data());
 	return vector<RetType>(tmp, tmp + bytes / sizeof(RetType));
 }
 
@@ -343,6 +359,37 @@ void ucs4_to_multibytes(char_type ucs4, vector<char> & out,
 		out.resize(bytes);
 	else
 		out.clear();
+}
+
+int max_encoded_bytes(std::string const & encoding)
+{
+	// FIXME: this information should be transferred to lib/encodings
+	// UTF8 uses at most 4 bytes to represent one UCS4 code point
+	// (see RFC 3629). RFC 2279 specifies 6 bytes, but that
+	// information is outdated, and RFC 2279 has been superseded by
+	// RFC 3629.
+	// The CJK encodings use (different) multibyte representation as well.
+	// All other encodings encode one UCS4 code point in one byte
+	// (and can therefore only encode a subset of UCS4)
+	// Note that BIG5 and SJIS do not work with LaTeX (see lib/encodings).
+	// Furthermore, all encodings that use shifting (like SJIS) do not work with
+	// iconv_codecvt_facet.
+	if (encoding == "UTF-8" ||
+	    encoding == "GB" ||
+	    encoding == "EUC-TW")
+		return 4;
+	else if (encoding == "EUC-JP")
+		return 3;
+	else if (encoding == "ISO-2022-JP")
+		return 8;
+	else if (encoding == "BIG5" ||
+	         encoding == "EUC-KR" ||
+	         encoding == "EUC-CN" ||
+	         encoding == "SJIS" ||
+	         encoding == "GBK")
+		return 2;
+	else
+		return 1;
 }
 
 } // namespace lyx
