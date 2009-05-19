@@ -44,6 +44,11 @@
  \texorpdfstring{%
   \leavevmode\,$\triangleright$\,\allowbreak}
   {->}}
+
+% workaround for a makeindex bug
+\newcommand*{\OrgIndex}{} 
+\let\OrgIndex\index 
+\renewcommand*{\index}[1]{\OrgIndex{#1}}
 \end_preamble
 \options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove,liststotoc
 \use_default_options false
@@ -167,7 +172,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 1.
+letzte Änderung: 19.
  Mai 2009
 \end_layout
 
@@ -3434,13 +3439,6 @@ Handbuchergänzungen
 
 \begin_layout Subsubsection
 Module
-\begin_inset CommandInset label
-LatexCommand label
-name "Module"
-
-\end_inset
-
-
 \begin_inset Index
 status collapsed
 
@@ -4102,22 +4100,9 @@ Handbuchergänzungen
 
 \begin_layout Subsection
 Dokument-Einstellungen
-\begin_inset CommandInset label
-LatexCommand label
-name "Dokument-Einstellungen"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "Eine-Klasse-auswählen"
-
-\end_inset
-
 Ja, wir wissen, dass wir Ihnen noch nicht gesagt haben, was die meisten
  dieser 
 \emph on
@@ -4321,7 +4306,7 @@ Außerdem erhalten Sie im darunterliegenden Fenster weitere Hinweise, wenn
 Schriften
 \begin_inset CommandInset label
 LatexCommand label
-name "Schriften"
+name "sub:Schriften"
 
 \end_inset
 
@@ -4341,8 +4326,8 @@ status collapsed
 
 \begin_layout Plain Layout
 Wenn Sie nicht überall Standard verwenden, werden die Zeichen nicht immer
- gleich groß gedruckt, weil (fast) jeder Font etwas Anderes unter Schriftgröße
- versteht.
+ gleich groß gedruckt, weil (fast) jede Schriftart etwas Anderes unter Schriftgr
+öße versteht.
  Zur Korrektur gibt es die Skalierung.
 \end_layout
 
@@ -4353,11 +4338,13 @@ Wenn Sie nicht überall Standard verwenden, werden die Zeichen nicht immer
 
 \end_deeper
 \begin_layout Description
-Serifenschrift: Hier legen Sie den Font für den Roman-Zeichensatz fest.
+Serifenschrift: Hier legen Sie die Schriftart für den Roman-Zeichensatz
+ fest.
 \end_layout
 
 \begin_layout Description
-Serifenlos: Hier legen Sie den Font für den serifenfreien Zeichensatz fest.
+Serifenlos: Hier legen Sie die Schriftart für den serifenfreien Zeichensatz
+ fest.
 \end_layout
 
 \begin_deeper
@@ -4366,12 +4353,19 @@ Skalierung
 \begin_inset space ~
 \end_inset
 
-(%) Wenn Sie zum Beispiel den benutzten 11
+(%) Wenn Sie zum Beispiel die benutzte Schriftart 
+\family sans
+Palatino
+\family default
+ mit einer Größe von 11
 \begin_inset space \thinspace{}
 \end_inset
 
-pt-Palatino-Font durch Helvetica ersetzen, sieht das Ergebnis wahrscheinlich
- zu groß aus.
+pt durch 
+\family sans
+Helvetica
+\family default
+ ersetzen, sieht das Ergebnis wahrscheinlich zu groß aus.
  Wenn Sie es dann auf 95
 \begin_inset space \thinspace{}
 \end_inset
@@ -4395,7 +4389,11 @@ Skalierung
 
 \end_deeper
 \begin_layout Description
-CJK siehe Abschnitt 
+CJK siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "CJK-Feld"
@@ -4414,7 +4412,7 @@ Kapitälchen
 \begin_inset space ~
 \end_inset
 
-verwenden Manche Fonts wie zum Beispiel 
+verwenden Manche Schriftarten wie zum Beispiel 
 \family sans
 Palatino
 \family default
@@ -4457,7 +4455,8 @@ name "Mediävalziffern-verwenden"
 
 \end_inset
 
- Manche Fonts erlauben auch, Mediävalziffern (in Antiqua gesetzt) zu verwenden.
+ Manche Schriftarten erlauben auch, Mediävalziffern (in Antiqua gesetzt)
+ zu verwenden.
  
 \emph on
 Computer Modern
@@ -4492,7 +4491,7 @@ http://www.fonts.com/AboutFonts/Articles/fyti/OldstyleFigs.htm
 \end_inset
 
 .
- Sie müssen dann so einen Font für 
+ Sie müssen dann so eine Schriftart für 
 \family sans
 \series bold
 Roman
@@ -4503,8 +4502,8 @@ Roman
 
 \begin_deeper
 \begin_layout Standard
-Eine weitere Möglichkeit, bei der Sie keinen Font kennen müssen, ist, den
- Befehl 
+Eine weitere Möglichkeit, bei der Sie keine Schriftart kennen müssen, ist,
+ den Befehl 
 \family typewriter
 
 \backslash
@@ -5308,13 +5307,6 @@ alle
 
 \begin_layout Subsection
 Globale Absatztrennung
-\begin_inset CommandInset label
-LatexCommand label
-name "Globale-Absatztrennung"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -5568,7 +5560,7 @@ Eine Absatzumgebung ist eine Art
 Behälter
 \emph default
  für einen Absatz, der für ihn gewisse Eigenschaften enthält.
- Diese können Stil, Font, Ränder, Nummerierungsart, Marken usw.
+ Diese können Stil, Schriftart, Ränder, Nummerierungsart, Marken usw.
 \begin_inset space \space{}
 \end_inset
 
@@ -8760,7 +8752,7 @@ koma-script
 \family default
 -Version).
  Die Marke und der Text werden durch zusätzlichen Leerraum getrennt.
- Zweitens ist der Font etwas kleiner, gerade so wie Sie es erwarten.
+ Zweitens ist die Schriftart etwas kleiner, gerade so wie Sie es erwarten.
  Drittens ist die Zusammenfassung ein wenig eingerückt und vom restlichen
  Text durch zusätzlichen Leerraum getrennt.
  So jedenfalls wird es in LyX aussehen.
@@ -8931,7 +8923,7 @@ reference "Literaturverzeichnis"
 .
  Dort finden Sie auch einiges über BibTeX
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -9102,7 +9094,7 @@ Die
 LyX-Code
 \family default
 -Umgebung ist noch eine LyX-Erweiterung von LaTeX.
- Sie setzt Text in einem Schreibmaschinenfont.
+ Sie setzt Text in einem Schreibmaschinenschriftart.
  Außerdem kann die Leertaste mehrfach hintereinander benutzt werden;
 \begin_inset Foot
 status collapsed
@@ -10906,7 +10898,7 @@ lung der Elternumgebung (
 \family sans
 LyX-Code
 \family default
-) erbt, sondern auch Font und Leerzeichen!
+) erbt, sondern auch Schriftart und Leerzeichen!
 \end_layout
 
 \end_deeper
@@ -12488,13 +12480,6 @@ reference "LyX-Liste-und-Liste"
 
 \begin_layout Subsubsection
 Absatz einrücken
-\begin_inset CommandInset label
-LatexCommand label
-name "Absatz-einrücken"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -12531,10 +12516,10 @@ einrücken
 \begin_layout Subsubsection
 Ausrichtung
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Absatz!-ausrichtung
+Absatz ! -ausrichtung
 \end_layout
 
 \end_inset
@@ -13419,13 +13404,6 @@ ist eine solche Linie.
 
 \begin_layout Section
 Zeichen und Symbole
-\begin_inset CommandInset label
-LatexCommand label
-name "Zeichen-und-Symbole"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -13466,7 +13444,7 @@ Symbole
 Anmerkung:
 \series default
  Eventuell werden nicht alle eingefügten Symbole von LyX angezeigt.
- Das hängt von Ihrem Bildschirmfont ab, aber 
+ Das hängt von Ihrer Bildschirmschriftart ab, aber 
 \emph on
 alle
 \emph default
@@ -13474,12 +13452,12 @@ alle
 \end_layout
 
 \begin_layout Section
-Fonts
+Schrift
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Font
+Schriften
 \end_layout
 
 \end_inset
@@ -13489,7 +13467,7 @@ Font
 status collapsed
 
 \begin_layout Plain Layout
-Text!-stil
+Text ! -stil
 \end_layout
 
 \end_inset
@@ -13498,12 +13476,12 @@ Text!-stil
 \end_layout
 
 \begin_layout Subsection
-Fonttypen
+Schriftypen
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Font!Typen
+Schriften ! Typen
 \end_layout
 
 \end_inset
@@ -13512,7 +13490,7 @@ Font!Typen
 \end_layout
 
 \begin_layout Standard
-Es gibt zwei Fonttypen:
+Es gibt zwei Schriftypen:
 \end_layout
 
 \begin_layout Description
@@ -13520,22 +13498,22 @@ Skalierbare
 \begin_inset space ~
 \end_inset
 
-Fonts
+Schriften
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Font!skalierbar
+Schriften ! skalierbare
 \end_layout
 
 \end_inset
 
- (auch Vektorfonts
+ (auch Vektorschriften
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Font!Vektor-
+Schriften ! Vektor-
 \end_layout
 
 \end_inset
@@ -13546,13 +13524,13 @@ hen Funktionen erstellt.
  werden mehrere Funktionen benutzt.
  Zum Darstellen oder Drucken eines Zeichens berechnet ein Renderer, welche
  Pixel in den Umriss gepackt werden müssen.
- Die Vektorfonts sind für jede Zeichengröße bestens geeignet.
+ Die Vektorschriften sind für jede Zeichengröße bestens geeignet.
  Nur bei sehr kleinen Zeichengrößen kann es schwer sein, die Pixel richtig
  zu berechnen, damit das Zeichen noch gut aussieht.
 \begin_inset Newline newline
 \end_inset
 
-Die Fonttypen 
+Die Schriftarttypen 
 \family typewriter
 TrueType
 \family default
@@ -13572,16 +13550,16 @@ Type
 
 Postscript
 \family default
- sind Vektorfonts.
+ sind Vektorschriftarten.
 \end_layout
 
 \begin_layout Description
-Bitmap-Fonts
+Bitmap-Schriften
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Font!Bitmap-
+Schriften ! Bitmap-
 \end_layout
 
 \end_inset
@@ -13589,10 +13567,18 @@ Font!Bitmap-
  werden aus Bitmap-Bildern der einzelnen Zeichen erstellt.
  Sie sehen deshalb für alle Größen gut aus, für die ein Bitmap-Bild vorhanden
  ist.
- Das sind meist Zeichengrößen von 8-36 Pixel.
+ Das sind meist Zeichengrößen von 8
+\begin_inset space \thinspace{}
+\end_inset
+
+-
+\begin_inset space \thinspace{}
+\end_inset
+
+36 Pixel.
  Vergrößerungen sehen deshalb nicht besonders gut aus.
- Der Vorteil von Bitmap-Fonts ist, dass keine aufwendigen Berechnungen durchgefü
-hrt werden müssen.
+ Der Vorteil von Bitmap-Schriften ist, dass keine aufwendigen Berechnungen
+ durchgeführt werden müssen.
 \begin_inset Newline newline
 \end_inset
 
@@ -13604,61 +13590,65 @@ Type
 
 3
 \family default
--Fonts Bitmap-Fonts.
+-Schriftarten Bitmap-Schriften.
 \end_layout
 
 \begin_layout Standard
-Weil also skalierbare Fonts für fast alle Zeichengrößen gute Ergebnisse
- liefern, benutzen fast alle Text-Render- und Drucksetz-Programme sie.
+Weil also skalierbare Schriften für fast alle Zeichengrößen gute Ergebnisse
+ liefern, werden sie von fast allen Text-Render- und Drucksatz-Programmen
+ benutzt.
 \end_layout
 
 \begin_layout Standard
-Wenn Sie wissen wollen, welche Fonts in einem PDF-Dokument benutzt werden,
- sollten Sie sich dessen Eigenschaften anschauen.
+Wenn Sie wissen wollen, welche Schriftarten in einem PDF-Dokument benutzt
+ werden, sollten Sie sich dessen Eigenschaften anschauen.
  Beim Adobe Reader sind sie unter unter 
 \family sans
-File\SpecialChar \menuseparator
-Document
-\begin_inset space \space{}
-\end_inset
-
-Properties\SpecialChar \menuseparator
-Fonts
+Datei\SpecialChar \menuseparator
+Dokumenteigenschaften\SpecialChar \menuseparator
+Schriften
 \family default
  zu finden.
 \end_layout
 
 \begin_layout Standard
 Viele moderne Drucksetz- und Textauszeichnungs-Programme haben damit begonnen,
- Buchstabenstile an Stelle von Fonts zu benutzen.
- Anstatt zum Beispiel die Kursivform eines bestimmten Fonts zu benutzen,
+ Schriftstile an Stelle von verschiedenen Schriftarten zu benutzen.
+ Anstatt zum Beispiel die Kursivform einer bestimmten Schriftart zu benutzen,
  wird ein 
 \emph on
 Hervorhebungsstil
 \emph default
  benutzt.
  So wird das auch in LyX gemacht, wo kontextabhängig gearbeitet wird, damit
- Sie sich nicht auf die Einzelheiten der Drucksetzung konzentrieren müssen.
+ Sie sich nicht auf die Einzelheiten des Drucksatzes konzentrieren müssen.
 \end_layout
 
 \begin_layout Subsection
-Dokumentfont
+Dokumentschrift
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Dokument!font@-font
+Dokument ! Schrift@-schrift
 \end_layout
 
 \end_inset
 
- und Fontgröße
+ und Schriftgröße
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Font!-größe
+Schriften ! Größe
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Dokumentschrift-und-Schriftgröße"
 
 \end_inset
 
@@ -13666,7 +13656,7 @@ Font!-größe
 \end_layout
 
 \begin_layout Standard
-Sie können die Dokumentfonts im Dialogfenster 
+Sie können die Dokumentschrift im Dialogfenster 
 \family sans
 Dokument\SpecialChar \menuseparator
 Einstellungen\SpecialChar \menuseparator
@@ -13689,13 +13679,13 @@ Schreibmaschine
 \family sans
 Standard
 \family default
- und eine Liste von Fonts, die auf Ihrem Computer verfügbar sind.
+ und eine Liste von Schriftarten, die auf Ihrem Computer verfügbar sind.
  Einige davon sind skalierbar.
  
 \family sans
 Standard
 \family default
- benutzt die TeX-Fonts 
+ benutzt entweder die TeX-Schriftart 
 \family typewriter
 Computer Modern (cm)
 \family default
@@ -13719,19 +13709,19 @@ cm
 \family typewriter
 ec
 \family default
- Bitmap-Fonts sind, können sie in manchen PDF-Betrachtern bei großer Vergrößerun
-g treppenförmig aussehen.
+ Bitmap-Schriften sind, können sie in manchen PDF-Betrachtern bei großer
+ Vergrößerung treppenförmig aussehen.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 Der Adobe Reader ab Version 6 glättet sie mit einem speziellen Renderer
- für Bitmap-Fonts.
+ für Bitmap-Schriften.
 \end_layout
 
 \end_inset
 
- Um das zu vermeiden, können Sie skalierbare Fonts benutzen.
+ Um das zu vermeiden, können Sie skalierbare Schriften benutzen.
  Es gibt drei Möglichkeiten:
 \end_layout
 
@@ -13740,12 +13730,12 @@ Eine Möglichkeit sind
 \family typewriter
 AE
 \family default
--Fonts.
- Es sind virtuelle Fonts in dem Sinne, dass sie das Aussehen der 
+-Schriften.
+ Es sind virtuelle Schriften in dem Sinne, dass sie das Aussehen der 
 \family typewriter
 cm
 \family default
--Fonts von anderen Fonts 
+-Schriften von anderen Schriften 
 \emph on
 stehlen
 \emph default
@@ -13753,7 +13743,7 @@ stehlen
  Der Nachteil ist, dass einige Zeichen fehlen, zum Beispiel die französischen
  
 \emph on
-guillemets
+Guillemets
 \emph default
  
 \begin_inset Quotes gld
@@ -13834,12 +13824,12 @@ e +
 \end_layout
 
 \begin_layout Itemize
-Eine andere Möglichkeit ist die Verwendung von drei verschiedenen Fonts
+Eine andere Möglichkeit ist die Verwendung von drei verschiedenen Schriften
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Fonts wie 
+Schriften wie 
 \family typewriter
 Latin Modern
 \family default
@@ -13847,13 +13837,13 @@ Latin Modern
 \family typewriter
  Computer Modern
 \family default
- bestehen aus drei Haupt-Fonttypen 
+ bestehen aus drei Haupt-Schrifttypen 
 \family sans
-serifenfrei
+Serifenfrei
 \family default
 , 
 \family sans
-serif
+Serif
 \family default
  und 
 \family sans
@@ -13872,7 +13862,7 @@ Times
 
 Roman
 \family default
- als Roman-Font, 
+ als Roman-Schrift, 
 \family sans
 Helvetica
 \family default
@@ -13884,16 +13874,23 @@ Helvetica
 \begin_inset space \thinspace{}
 \end_inset
 
-95% – als serifenfreien Font und 
+95% – als serifenfreie Schrift und 
 \family sans
 Courier
 \family default
- als Schreibmaschinenfont.
+ als Schreibmaschinenschrift.
 \begin_inset Newline newline
 \end_inset
 
-Die Unterschiede zwischen Roman, serifenfrei und Schreibmaschine werden
- in Abschnitt
+Die Unterschiede zwischen Roman, 
+\family sans
+Serifenfrei
+\family default
+ und 
+\family typewriter
+Schreibmaschine
+\family default
+ werden in Abschnitt
 \begin_inset space \space{}
 \end_inset
 
@@ -13908,10 +13905,10 @@ reference "Textstil-Menü"
 \begin_inset Newline newline
 \end_inset
 
-Der Font Times Roman wurde ursprünglich für Zeitungen entwickelt.
- Das bedeutet, dass seine Zeichen kleiner als die von anderen Fonts sind,
+Die Schrift Times Roman wurde ursprünglich für Zeitungen entwickelt.
+ Das bedeutet, dass ihre Zeichen kleiner als die von anderen Schriften sind,
  damit sie in die schmalen Zeitungsspalten passen.
- Deshalb ist dieser Font für große Dokumente wie Bücher nicht geeignet.
+ Deshalb ist diese Schrift für große Dokumente wie Bücher nicht geeignet.
 \end_layout
 
 \begin_layout Itemize
@@ -13919,12 +13916,12 @@ Am besten ist es,
 \family typewriter
 Latin-Modern
 \family default
--Fonts zu benutzen.
- Diese Fonts wurden für die LaTeX-Gemeinde entwickelt, um die 
+ zu benutzen.
+ Diese Schriften wurden für die LaTeX-Gemeinde entwickelt, um die 
 \family typewriter
 cm
 \family default
--Fonts als Standard abzulösen.
+-Schriften als Standard abzulösen.
 \end_layout
 
 \begin_layout Standard
@@ -13959,7 +13956,7 @@ Standard
 10
 \family default
 .
- LyX richtet alle anderen möglichen Fontgrößen, zum Beispiel für Fußnoten,
+ LyX richtet alle anderen möglichen Schriftgrößen, zum Beispiel für Fußnoten,
  hoch- und tiefgestellt usw.
 \begin_inset space \space{}
 \end_inset
@@ -13978,7 +13975,6 @@ Textstil
 Bearbeiten\SpecialChar \menuseparator
 Textstil
 \family default
-\SpecialChar \ldots{}
  oder klicken Sie auf 
 \begin_inset Graphics
 	filename ../../images/dialog-show_character.png
@@ -13989,8 +13985,8 @@ Textstil
 
 \end_inset
 
-) können Sie die Fontgröße für Textteile ändern, wenn Sie wollen.
- Die möglichen Fontgrößen sind in Abschnitt
+) können Sie die Schriftgröße für Textteile ändern, wenn Sie wollen.
+ Die möglichen Schriftgrößen sind in Abschnitt
 \begin_inset space \space{}
 \end_inset
 
@@ -14013,12 +14009,12 @@ name "CJK-Feld"
 \end_inset
 
 können die Benutzer von Chinesisch, Japanisch oder Koreanisch (CJK) eine
- Font festlegen, mit dem die Schriftzeichen dargestellt werden sollen.
+ Schrift festlegen, mit dem die Schriftzeichen dargestellt werden sollen.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Der Font wird als Argument an die Befehle des LaTeX-Paketes 
+Die Schrift wird als Argument an die Befehle des LaTeX-Paketes 
 \family typewriter
 cjk
 \family default
@@ -14050,15 +14046,15 @@ cjk
 \series bold
 Bemerkung
 \series default
-: Wenn Sie einen anderen Font oder eine Basisgröße wählen, wird LyX den
- Bildschirmfont 
+: Wenn Sie eine andere Schrift oder eine Basisgröße wählen, wird LyX den
+ Bildschirmschrift 
 \emph on
 nicht
 \emph default
  ändern! Den Unterschied werden Sie nur in der Druckvorschau oder auf dem
  Papier sehen.
  Das ist Teil des WYSIWYM-Konzeptes.
- Die Bildschirmfonts können Sie über 
+ Die Bildschirmschriften können Sie über 
 \family sans
 Werkzeuge\SpecialChar \menuseparator
 Einstellungen\SpecialChar \menuseparator
@@ -14216,7 +14212,7 @@ Zur Zeit ist der
 \family sans
 Hervorhebung
 \family default
-sstil gleichbedeutend mit einem kursiven Font.
+sstil gleichbedeutend mit einer kursiven Schrift.
  Wir wollen dem Benutzer in Zukunft ermöglichen, eine andere Zuordnung zu
  treffen.
 \end_layout
@@ -14273,7 +14269,7 @@ name "Textstil-Menü"
 Es gibt immer Situationen, in denen man Feineinstellungen vornehmen muss.
  Deshalb hat LyX Möglichkeiten, den Buchstabenstil zu verändern.
  Zum Beispiel schreiben ein wissenschaftliches Journal oder eine Firma vor,
- dass ein Font ohne Serifen in gewissen Situationen zu benutzen ist.
+ dass eine Schrift ohne Serifen in gewissen Situationen zu benutzen ist.
 \begin_inset Foot
 status collapsed
 
@@ -14288,7 +14284,7 @@ John Weiss
 
 \end_inset
 
- Schriftsteller benutzen manchmal einen anderen Font, um die Gedanken einer
+ Schriftsteller benutzen manchmal eine andere Schrift, um die Gedanken einer
  Person von einem gewöhnlichen Dialog abzuheben.
 \end_layout
 
@@ -14296,26 +14292,25 @@ John Weiss
 Bevor wir beschreiben, wie man Buchstabenstile ändern kann, wollen wir eine
  Warnung wiederholen: Übertreiben Sie den Gebrauch von Buchstabenstilen
  nicht.
- Viele moderne Textverarbeitungen bieten viele Fonts an, womit Sie die Stärke
- der Presse besitzen.
+ Viele moderne Textverarbeitungen bieten viele Schriften an, womit Sie die
+ Stärke der Presse besitzen.
  Unglücklicherweise gibt es eine Tendenz, damit zu verschwenderisch umzugehen.
  Es hat etwas von 
 \emph on
 mit Kanonen auf Spatzen schießen
 \emph default
 .
- Außerdem sieht ein Dokument, das sehr viele Fonts und Größen benutzt, wirklich
- so aus, als hätte jemand Löcher hineingeschossen.
+ Außerdem sieht ein Dokument, das sehr viele Schriften und Größen benutzt,
+ wirklich so aus, als hätte jemand Löcher hineingeschossen.
  – Aber genug gejammert.
 \end_layout
 
 \begin_layout Standard
-Um Fonts zu verändern, wählen Sie 
+Um Schriften zu verändern, wählen Sie 
 \family sans
 Bearbeiten\SpecialChar \menuseparator
 Textstil
 \family default
-\SpecialChar \ldots{}
  oder klicken Sie auf 
 \begin_inset Graphics
 	filename ../../images/dialog-show_character.png
@@ -14330,8 +14325,8 @@ Textstil
 Textstil
 \family default
  angezeigt zu bekommen.
- Dieses Menü hat sieben Schaltflächen für die verschiedenen Fonteigenschaften,
- die man auswählen kann.
+ Dieses Menü hat sieben Schaltflächen für die verschiedenen Schrifteigenschaften
+, die man auswählen kann.
  Klickt man auf eine Schaltfläche, kann man eine Einstellung wählen oder
  mit 
 \family sans
@@ -14353,7 +14348,7 @@ ung zurückgesetzt.
 \end_layout
 
 \begin_layout Standard
-Die sieben Fonteigenschaften und ihre möglichen Werte (plus 
+Die sieben Schrifteigenschaften und ihre möglichen Werte (plus 
 \family sans
 Keine
 \begin_inset space ~
@@ -14377,7 +14372,7 @@ Familie
 status collapsed
 
 \begin_layout Plain Layout
-Font!-familie
+Schriften ! Familie
 \end_layout
 
 \end_inset
@@ -14388,7 +14383,7 @@ Font!-familie
 \emph on
 allgemeine Aussehen
 \emph default
- des Fonts.
+ der Schrift.
  Es gibt folgende Möglichkeiten:
 \end_layout
 
@@ -14398,7 +14393,7 @@ allgemeine Aussehen
 \family sans
 Roman
 \family default
- Dies ist die Fontfamilie Roman.
+ Dies ist die Schriftfamilie Roman.
  Es ist auch die Standardfamilie.
  (Tastenkürzel 
 \family sans
@@ -14419,7 +14414,7 @@ Serifenfrei
 \family default
  
 \family sans
-Dies ist die Fontfamilie Sans Serif.
+Dies ist die Schriftfamilie Sans Serif.
 
 \family default
  (Tastenkürzel 
@@ -14441,7 +14436,7 @@ Schreibmaschine
 \family default
  
 \family typewriter
-Dies ist die Fontfamilie Schreibmaschine
+Dies ist die Schriftfamilie Schreibmaschine
 \family default
  (Tas\SpecialChar \-
 ten\SpecialChar \-
@@ -14608,7 +14603,7 @@ Farbe
 status collapsed
 
 \begin_layout Plain Layout
-Font!-farbe
+Schriften ! Farbe
 \end_layout
 
 \end_inset
@@ -14731,19 +14726,19 @@ name "Fontgröße"
 
 
 \family default
- Ändert die Fontgröße
+ Ändert die Schriftgröße
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Font!-größe
+Schriften ! Größe
 \end_layout
 
 \end_inset
 
 .
  Sie werden hier keine Zahlenwerte finden; alle möglichen Größen sind proportion
-al zur Standardfontgröße.
+al zur Standardschriftgröße.
  Noch einmal, Sie füttern LyX nicht mit Details, sondern mit einer Beschreibung
  von dem, was Sie machen wollen.
 \end_layout
@@ -14769,7 +14764,7 @@ winzige
 \begin_inset Quotes grd
 \end_inset
 
- Fontgröße.
+ Schriftgröße.
 
 \size default
  LaTeX: 
@@ -14825,7 +14820,7 @@ sehr kleine
 \begin_inset Quotes grd
 \end_inset
 
- Fontgröße.
+ Schriftgröße.
 
 \size default
  LaTeX: scriptsize
@@ -14865,7 +14860,7 @@ Fußnoten
 \begin_inset Quotes erd
 \end_inset
 
--Fontgröße.
+-Schriftgröße.
  
 \size default
 LaTeX: footnotesize
@@ -14909,7 +14904,7 @@ kleine
 \begin_inset Quotes erd
 \end_inset
 
- Fontgröße.
+ Schriftgröße.
  
 \size default
 LaTeX: small
@@ -14959,7 +14954,7 @@ normale
 \begin_inset Quotes erd
 \end_inset
 
- Fontgröße.
+ Schriftgröße.
  LaTeX: normalsize
 \begin_inset Index
 status collapsed
@@ -15002,7 +14997,7 @@ große
 \begin_inset Quotes grd
 \end_inset
 
- Fontgröße.
+ Schriftgröße.
  
 \size default
 LaTeX: large
@@ -15050,7 +15045,7 @@ größere
 \begin_inset Quotes grd
 \end_inset
 
- Fontgröße.
+ Schriftgröße.
  
 \size default
 LaTeX: Large
@@ -15102,7 +15097,7 @@ noch größere
 \begin_inset Quotes grd
 \end_inset
 
- Fontgröße.
+ Schriftgröße.
  
 \size default
 LaTeX: LARGE
@@ -15142,7 +15137,7 @@ riesige
 \begin_inset Quotes grd
 \end_inset
 
- Fontgröße.
+ Schriftgröße.
  
 \size default
 LaTeX: huge
@@ -15190,7 +15185,7 @@ gigantische
 \begin_inset Quotes grd
 \end_inset
 
- Fontgröße.
+ Schriftgröße.
  
 \size default
 LaTeX: Huge
@@ -15272,8 +15267,8 @@ dieser
 Funktion
 \size default
  nicht verrückt.
- Die Fontgröße müssen Sie so gut wie nie ändern.
- LyX ändert die Fontgröße für verschiedene Absatzumgebungen automatisch
+ Die Schriftgröße müssen Sie so gut wie nie ändern.
+ LyX ändert die Schriftgröße für verschiedene Absatzumgebungen automatisch
  – das sollten Sie benutzen.
  Dies ist 
 \emph on
@@ -15376,7 +15371,7 @@ Kapitälchen
 
 \begin_layout Standard
 Vermeiden Sie zu unterstreichen, wenn Sie können! Es ist ein Überbleibsel
- aus den Schreibmaschinentagen, als man Fonts nicht wechseln konnte.
+ aus den Schreibmaschinentagen, als man Schriften nicht wechseln konnte.
  Wir brauchen auf das Unterstreichen nicht mehr zurückzugreifen, um etwas
  hervorzuheben.
  Es ist nur deshalb in LyX, weil es auch in LaTeX ist und weil einige es
@@ -15607,7 +15602,7 @@ dvips
  auch alle Bilder in Ihrem Dokument be\SpecialChar \-
 arbeiten kann und sie in die PostScript-Ve
 rsion Ihres Dokumentes einfügt.
- Es fügt auch alle Spezialfonts, die Sie benutzt haben, ein.
+ Es fügt auch alle Spezialschriften, die Sie benutzt haben, ein.
  Dadurch ist die PostScript-Version viel leichter zu übertragen als die
  DVI-Version.
 \end_layout
@@ -15879,8 +15874,9 @@ dvi
 \family default
 -Betrachter anschauen.
  Manchmal jedoch möchten Sie die PostScript-Version sehen.
- Ein Grund sind Fonts.
- Man kann PostScript-Fonts in einem LaTeX-Dokument benutzen, aber ein 
+ Ein Grund sind Schriften.
+ Man kann PostScript-Schriften in einem LaTeX-Dokument benutzen, aber ein
+ 
 \family typewriter
 dvi
 \family default
@@ -15997,8 +15993,7 @@ name "PDF-Version-anschauen"
 Mit 
 \family sans
 Ansicht\SpecialChar \menuseparator
-PDF\SpecialChar \ldots{}
-
+PDF
 \family default
  oder 
 \begin_inset Graphics
@@ -16014,8 +16009,7 @@ PDF\SpecialChar \ldots{}
 \family sans
 Ansicht\SpecialChar \menuseparator
 Aktualisieren\SpecialChar \menuseparator
-PDF\SpecialChar \ldots{}
-
+PDF
 \family default
  oder 
 \begin_inset Graphics
@@ -16646,7 +16640,7 @@ einigen
 \emph default
  Sprachen, nach den Regeln der Dokumentsprache.
  Die LaTeX-Silbentrennung ist fast perfekt, sie hat nur Probleme mit dem
- Font 
+ Schriftstil 
 \family sans
 Schreibmaschine
 \family default
@@ -19045,7 +19039,7 @@ reference "PDF-Version-anschauen"
 \end_inset
 
  ist beschrieben, welche Grafikformate Sie benutzen sollten.
- Ähnlich wie bei Fonts gibt es zwei Hauptarten:
+ Ähnlich wie bei Schriften gibt es zwei Hauptarten:
 \end_layout
 
 \begin_layout Description
@@ -25478,7 +25472,7 @@ key "latex-einführung"
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Fontgrößen-Mathe"
+reference "sub:Schriftgrößen-Mathe"
 
 \end_inset
 
@@ -26246,7 +26240,7 @@ Das
 esint
 \family default
 -Paket, das Sie ebenfalls [automatisch] benutzen können, erlaubt für Computer-Mo
-dern-Fonts alternative Integral-Symbole, näheres finden Sie auf
+dern Schriften alternative Integral-Symbole, näheres finden Sie auf
 \begin_inset Newline linebreak
 \end_inset
 
@@ -27323,7 +27317,7 @@ Strg+Eingabe
  zwei Zeilen erzeugt.
  In die beiden blauen Kästchen wurde dann alles rechts der geschweiften
  Klammer geschrieben.
- Wie man den Roman-Font bekommt, wird später erklärt.
+ Wie man die Roman-Schrift bekommt, wird später erklärt.
 \end_layout
 
 \begin_layout Standard
@@ -27692,7 +27686,7 @@ WYSIWYM
 \end_inset
 
 , und einige werden überhaupt nicht angezeigt.
- Der Standardfont für Text ist kursiv, 
+ Der Standardschriftstil für Text ist kursiv, 
 \begin_inset Formula $text$
 \end_inset
 
@@ -27730,7 +27724,7 @@ Alt+Z
 F
 \family default
 .
- Den kalligraphischen Font für Großbuchstaben, 
+ Den kalligraphischen Schriftstil für Großbuchstaben, 
 \begin_inset Formula $\mathcal{TEXT}$
 \end_inset
 
@@ -27750,7 +27744,7 @@ reference "Tab:Mathematik-Schriftstile"
 
 \end_inset
 
- zeigt die unterstützten Fonts.
+ zeigt die unterstützten Schriften.
 \end_layout
 
 \begin_layout Standard
@@ -28347,7 +28341,8 @@ boldsymbol
 
 \begin_layout Standard
 \noindent
-Der Tastaturbefehl, um zu einem speziellen Font zu wechseln, wird im 
+Der Tastaturbefehl, um zu einem speziellen Schriftstil zu wechseln, wird
+ im 
 \family typewriter
 Mathe-Modus
 \family default
@@ -28356,18 +28351,18 @@ Mathe-Modus
 \family typewriter
 Mathe-Modus
 \family default
- unterstützt aber nicht alle Zeichen in allen Fonts, und der Kalligraphiefont
- unterstützt nur Großbuchstaben.
+ unterstützt aber nicht alle Zeichen in allen Schriftstilen, und der Kalligraphi
+estil unterstützt nur Großbuchstaben.
 \end_layout
 
 \begin_layout Standard
-Bei all diesen Fonts müssen Sie den Text sorgfältig eingeben.
- Wenn es rechts vom Anfangspunkt Text gibt, wird der Font nach einem Buchstaben
- in den anderen Stil geändert.
- Um eine Zeichenkette mit einem speziellen Font zu schreiben, müssen Sie
+Bei all diesen Schriftstilen müssen Sie den Text sorgfältig eingeben.
+ Wenn es rechts vom Anfangspunkt Text gibt, wird der Schriftstil nach einem
+ Buchstaben in den anderen Stil geändert.
+ Um eine Zeichenkette mit einem speziellen Stil zu schreiben, müssen Sie
  rechts vom Cursor ein geschütztes Leerzeichen eingeben.
  Außerdem wird durch ein geschütztes Leerzeichen der nachfolgende Text in
- den Standardfont geändert.
+ den Standardstil geändert.
 \end_layout
 
 \begin_layout Standard
@@ -28474,20 +28469,20 @@ x & \textrm{wenn ich es sage}\\
 \end_layout
 
 \begin_layout Subsection
-Fontgrößen
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Font!-größe
-\end_layout
+Schriftgrößen
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Schriftgrößen-Mathe"
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "Fontgrößen-Mathe"
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Schriften ! Größe
+\end_layout
 
 \end_inset
 
@@ -28495,7 +28490,7 @@ name "Fontgrößen-Mathe"
 \end_layout
 
 \begin_layout Standard
-Es gibt vier (relative) Fontgrößen, die in den meisten Fällen automatisch
+Es gibt vier (relative) Schriftgrößen, die in den meisten Fällen automatisch
  benutzt werden.
  Sie heißen 
 \emph on
@@ -28604,7 +28599,7 @@ Mathe-Werkzeugleiste
 \end_layout
 
 \begin_layout Standard
-Mit einer Änderung der Fontgröße kann zum Beispiel Gleichung 
+Mit einer Änderung der Schriftgröße kann zum Beispiel Gleichung 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:Bruch"
@@ -28632,20 +28627,20 @@ reference "eq:Bruch"
 \end_layout
 
 \begin_layout Standard
-All diese Fontgrößen sind relativ, das heißt sie werden angepasst, wenn
+All diese Schriftgrößen sind relativ, das heißt sie werden angepasst, wenn
  die gesamte Formel, Gleichung usw.
 \begin_inset space \space{}
 \end_inset
 
 und der umgebende Text in einer bestimmten Größe geschrieben werden.
- Auf ähnliche Weise wird alles angepasst, wenn die Basisfontgröße eines
+ Auf ähnliche Weise wird alles angepasst, wenn die Basisschriftgröße eines
  Dokumentes geändert wird.
 \end_layout
 
 \begin_layout Standard
 
 \size huge
-Hier ist ein Absatz im 
+Hier ist ein Absatz in der 
 \begin_inset Quotes gld
 \end_inset
 
@@ -28653,7 +28648,7 @@ größten
 \begin_inset Quotes grd
 \end_inset
 
- Font, mit Symbolen: 
+ Schrift, mit Symbolen: 
 \begin_inset Formula $\alpha$
 \end_inset
 
@@ -28663,7 +28658,7 @@ größten
 \end_layout
 
 \begin_layout Standard
-Dies gilt auch für Mathematikfonts in Titeln usw.
+Dies gilt auch für Mathematikschriften in Titeln usw.
 \end_layout
 
 \begin_layout Section
@@ -28730,7 +28725,7 @@ AMS-Symbole
 \begin_layout Standard
 Die AMS-LaTeX-Pakete unterstützen einige mathematische Symbole, die man
  mit LaTeX (LyX) nicht direkt erreicht, die aber in mathematischen Veröffentlich
-ungen benutzt werden, zum Beispiel der altdeutsche Frakturfont, der nach
+ungen benutzt werden, zum Beispiel die altdeutsche Frakturschrift, die nach
  der Eingabe von 
 \family typewriter
 
@@ -28742,7 +28737,7 @@ mathfrak
 {g}
 \family default
  ein Fraktur-
-\begin_inset Formula $\mathfrak{{g}}$
+\begin_inset Formula $\mathfrak{g}$
 \end_inset
 
  druckt, oder die 
@@ -28835,7 +28830,7 @@ Das
 \family typewriter
 esint
 \family default
--Paket, das Sie ebenfalls benutzen können, erlaubt für Computer-Modern-Fonts
+-Paket, das Sie ebenfalls benutzen können, erlaubt für Computer-Modern Schriften
  alternative Integral-Symbole, näheres finden Sie auf 
 \begin_inset Flex URL
 status collapsed
@@ -31012,6 +31007,106 @@ makeindex
  zu benutzen.
 \end_layout
 
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In einigen Fällen ist die Stichwort-Reihenfolge nicht korrekt wenn das Programm
+ 
+\family sans
+makeindex 
+\family default
+verwendet wird um das Stichwortverzeichnis zu erzeugen (siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Stichwort-Programm"
+
+\end_inset
+
+).
+ 
+\family sans
+makeindex
+\family default
+ würde zum Beispiel das Stichwort für das LaTeX-Paket cjk in Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Dokumentschrift-und-Schriftgröße"
+
+\end_inset
+
+ nach den Stichworten für die anderen LaTeX-Pakete drucken, obwohl all diese
+ Stichworte mit dem Befehl 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+LaTeX-Paket !
+\series bold
+ 
+\family default
+\series default
+
+\begin_inset Quotes grd
+\end_inset
+
+ beginnen.
+ Der Grund ist, dass sich das Stichwort für cjk in einer Fußnote befindet.
+ Um diesen 
+\family sans
+makeindex
+\family default
+ Fehler zu beheben, fügen Sie diese Befehle zum LaTeX-Vorspann ihres Dokuments
+ hinzu:
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+
+\backslash
+newcommand*{
+\backslash
+OrgIndex}{}
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+
+\backslash
+let
+\backslash
+OrgIndex
+\backslash
+index
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+
+\backslash
+renewcommand*{
+\backslash
+index}[1]{
+\backslash
+OrgIndex{#1}}
+\end_layout
+
 \begin_layout Subsection
 Stichwort formatieren
 \begin_inset Index
@@ -31052,7 +31147,7 @@ Mediävalziffern | oldstylenums
 \end_inset
 
 , der Mediävalziffern (siehe Abschnitt
-\begin_inset space \space{}
+\begin_inset space ~
 \end_inset
 
 
@@ -31099,7 +31194,7 @@ Stichwort ! Mediävalziffern| oldstylenums
 \begin_inset space ~
 \end_inset
 
-command
+Befehl
 \family default
 
 \begin_inset Quotes grd
@@ -31111,23 +31206,17 @@ command
 
 
 \family typewriter
-\series bold
 
 \backslash
-command{page
-\begin_inset space ~
-\end_inset
-
-number}
+Befehl{Seitenzahl}
 \family default
-\series default
 
 \begin_inset Quotes grd
 \end_inset
 
 .
  In Abschnitt
-\begin_inset space \space{}
+\begin_inset space ~
 \end_inset
 
 
@@ -31148,13 +31237,13 @@ make\SpecialChar \-
 index
 \family default
 , siehe Abschnitt
-\begin_inset space \space{}
+\begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Stichwort-Programm"
+reference "sub:Stichwort-Programm"
 
 \end_inset
 
@@ -31313,19 +31402,19 @@ nis}}
 
 \begin_layout Subsection
 Stichwort-Programm
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Stichwort-Programm"
+
+\end_inset
+
+
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
 Stichwort ! Programm
 \end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "Stichwort-Programm"
 
 \end_inset
 
@@ -32964,7 +33053,7 @@ caption
 \family typewriter
 labelfont=bf
 \family default
- den Font für die Legenden-Marken ändert.
+ den Schriftstil für die Legenden-Marken ändert.
  Also würden Sie in den LaTeX-Vorspann folgendes eintragen:
 \end_layout
 
@@ -33494,13 +33583,6 @@ Worterbuch@Wörterbuch
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "Rechtschreibprogramm"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -33586,7 +33668,7 @@ aspell
 \end_layout
 
 \begin_layout Standard
-Möglicherweise werden Sie auch Probleme bekommen, wenn die Fontkodierung
+Möglicherweise werden Sie auch Probleme bekommen, wenn die Zeichenkodierung
  für das Wörterbuch nicht richtig ist.
  Wenn Sie eine Sprache mit Latin1-Kodierung benutzen und die 
 \family sans
@@ -35011,7 +35093,6 @@ Bearbeiten
 \family sans
 Textstil
 \family default
-\SpecialChar \ldots{}
  oder 
 \begin_inset Graphics
 	filename ../../images/dialog-show_character.png
@@ -35022,8 +35103,8 @@ Textstil
 
 \end_inset
 
- den voreingestellten Font geändert haben, können Sie mit einem Klick auf
- diesen Knopf einzelne Worte oder markierten Text damit formatieren.
+ den voreingestellten Schriftstil geändert haben, können Sie mit einem Klick
+ auf diesen Knopf einzelne Worte oder markierten Text damit formatieren.
 \end_layout
 
 \begin_layout Enumerate
@@ -35056,8 +35137,7 @@ Eingebettete Formel (Strg+M)
  : 
 \family sans
 Einfügen\SpecialChar \menuseparator
-Grafik\SpecialChar \ldots{}
-
+Grafik
 \end_layout
 
 \begin_layout Enumerate
@@ -35073,8 +35153,7 @@ Grafik\SpecialChar \ldots{}
  : 
 \family sans
 Einfügen\SpecialChar \menuseparator
-Tabelle\SpecialChar \ldots{}
- 
+Tabelle
 \end_layout
 
 \begin_layout Enumerate
@@ -37257,9 +37336,12 @@ Programmlisting
 \end_layout
 
 \begin_layout Standard
-Der Text, den Sie im Feld Listing eingeben, wird in LyX mit dem Schreibmaschinen
-font dargestellt und ohne Zeilenumbrüche gesperrt gedruckt, sofern Sie in
- der Eingabe selber keine machen.
+Der Text, den Sie im Feld Listing eingeben, wird in LyX mit der 
+\family typewriter
+Schreibmaschinenschrift
+\family default
+ dargestellt und ohne Zeilenumbrüche gesperrt gedruckt, sofern Sie in der
+ Eingabe selber keine machen.
  Beispiel:
 \end_layout
 
@@ -37275,7 +37357,7 @@ Der Text, den Sie im Feld Listing eingeben,
 
 \begin_layout Plain Layout
 
-wird in LyX mit dem Schreibmaschinenfont dargestellt und ohne Zeilenumbrüche
+wird in LyX mit der Schreibmaschinenschrift dargestellt und ohne Zeilenumbrüche
  gedruckt, sofern Sie in der Eingabe selber keine machen.
 \end_layout
 
@@ -40081,13 +40163,6 @@ status collapsed
 \end_inset
 
 X
-\begin_inset CommandInset label
-LatexCommand label
-name "LaTeX"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Description
@@ -40636,7 +40711,7 @@ Siehe Abschnitt
 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "Schriften"
+reference "sub:Schriften"
 
 \end_inset
 
@@ -40702,13 +40777,6 @@ reference "Seitenränder"
 
 \begin_layout Section
 Sprache
-\begin_inset CommandInset label
-LatexCommand label
-name "Sprache"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Description
