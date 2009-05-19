@@ -114,8 +114,6 @@
 \output_changes false
 \author "" 
 \author "" 
-\author "" 
-\author "" 
 \end_header
 
 \begin_body
@@ -28783,199 +28781,17 @@ Kevin B.
 Berkeley Database License
 \emph default
 , which is compatible with LyX's license, the GPL.
- In order to meet the requirements of the Berkeley Database License, we
- quote MyThes' license in detail in what follows:
-\end_layout
-
-\begin_layout Standard
-\begin_inset listings
-lstparams "basicstyle={\scriptsize},language={C++}"
-inline false
-status collapsed
-
-\begin_layout Plain Layout
-
-/*
-\end_layout
-
-\begin_layout Plain Layout
-
- * Copyright 2003 Kevin B.
- Hendricks, Stratford, Ontario, Canada
-\end_layout
-
-\begin_layout Plain Layout
-
- * And Contributors.
-  All rights reserved.
-\end_layout
-
-\begin_layout Plain Layout
-
- *  
-\end_layout
-
-\begin_layout Plain Layout
-
- * Redistribution and use in source and binary forms, with or without
-\end_layout
-
-\begin_layout Plain Layout
-
- * modification, are permitted provided that the following conditions
-\end_layout
-
-\begin_layout Plain Layout
-
- * are met:
-\end_layout
-
-\begin_layout Plain Layout
-
- *
-\end_layout
-
-\begin_layout Plain Layout
-
- * 1.
- Redistributions of source code must retain the above copyright
-\end_layout
-
-\begin_layout Plain Layout
-
- *    notice, this list of conditions and the following disclaimer.
-\end_layout
-
-\begin_layout Plain Layout
-
- *
-\end_layout
-
-\begin_layout Plain Layout
-
- * 2.
- Redistributions in binary form must reproduce the above copyright
-\end_layout
-
-\begin_layout Plain Layout
-
- *    notice, this list of conditions and the following disclaimer in the
-\end_layout
-
-\begin_layout Plain Layout
-
- *    documentation and/or other materials provided with the distribution.
-\end_layout
-
-\begin_layout Plain Layout
-
- *
-\end_layout
-
-\begin_layout Plain Layout
-
- * 3.
- All modifications to the source code must be clearly marked as
-\end_layout
-
-\begin_layout Plain Layout
-
- *    such.
-  Binary redistributions based on modified source code
-\end_layout
-
-\begin_layout Plain Layout
-
- *    must be clearly marked as modified versions in the documentation
-\end_layout
-
-\begin_layout Plain Layout
-
- *    and/or other materials provided with the distribution.
-\end_layout
-
-\begin_layout Plain Layout
-
- *
-\end_layout
-
-\begin_layout Plain Layout
-
- * THIS SOFTWARE IS PROVIDED BY KEVIN B.
- HENDRICKS AND CONTRIBUTORS
-\end_layout
-
-\begin_layout Plain Layout
-
- * ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-\end_layout
-
-\begin_layout Plain Layout
-
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-\end_layout
-
-\begin_layout Plain Layout
-
- * FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
-  IN NO EVENT SHALL
-\end_layout
-
-\begin_layout Plain Layout
-
- * KEVIN B.
- HENDRICKS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-\end_layout
-
-\begin_layout Plain Layout
-
- * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
-\end_layout
-
-\begin_layout Plain Layout
-
- * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-\end_layout
-
-\begin_layout Plain Layout
-
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
-\end_layout
-
-\begin_layout Plain Layout
-
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-\end_layout
-
-\begin_layout Plain Layout
-
- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
- WAY
-\end_layout
-
-\begin_layout Plain Layout
-
- * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
-\end_layout
-
-\begin_layout Plain Layout
-
- * SUCH DAMAGE.
-\end_layout
-
-\begin_layout Plain Layout
-
- *
-\end_layout
-
-\begin_layout Plain Layout
-
- */ 
-\end_layout
-
-\end_inset
-
-
+ In order to meet the requirements of the Berkeley Database License, the
+ MyThes license file is included in the LyX sources in the folder 
+\family sans
+~src/support/mythes/license.readme
+\family default
+.
+ In LyX Windows installations it is additionally available in the file 
+\family sans
+MyThes-License.txt
+\family default
+ that is in the same folder as the file lyx.exe.
 \end_layout
 
 \begin_layout Section
