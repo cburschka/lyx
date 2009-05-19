@@ -236,7 +236,7 @@ iconv_convert(IconvProcessor & processor, InType const * buf, size_t buflen)
 		// FIXME Maybe throw an exception and handle that in the caller?
 		return vector<RetType>();
 
-	RetType const * tmp = reinterpret_cast<RetType const *>(outbuf.data());
+	RetType const * tmp = reinterpret_cast<RetType const *>(&outbuf[0]);
 	return vector<RetType>(tmp, tmp + bytes / sizeof(RetType));
 }
 
