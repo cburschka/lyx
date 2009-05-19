@@ -230,7 +230,7 @@ iconv_convert(IconvProcessor & processor, InType const * buf, size_t buflen)
 	if (outbuf.size() < maxoutbufsize)
 		outbuf.resize(maxoutbufsize);
 
-	int bytes = processor.convert(inbuf, inbytesleft, outbuf.data(), outbuf.size());
+	int bytes = processor.convert(inbuf, inbytesleft, &outbuf[0], outbuf.size());
 	if (bytes <= 0)
 		// Conversion failed
 		// FIXME Maybe throw an exception and handle that in the caller?
