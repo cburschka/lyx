@@ -47,6 +47,11 @@
 % redefine the greyed out note
 \renewenvironment{lyxgreyedout}
  {\textcolor{blue}\bgroup}{\egroup}
+
+% workaround for a makeindex bug
+\newcommand*{\OrgIndex}{} 
+\let\OrgIndex\index 
+\renewcommand*{\index}[1]{\OrgIndex{#1}}
 \end_preamble
 \options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove
 \use_default_options false
@@ -26709,6 +26714,115 @@ reference "sec:Indice-alfabético"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+In some cases the index entry order is not correct when you are using the
+ program 
+\family sans
+makeindex 
+\family default
+to generate the index (see sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\lang spanish
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Programas-para-índice"
+
+\end_inset
+
+
+\lang english
+).
+ 
+\family sans
+makeindex
+\family default
+ would for example print the index entry for the LaTeX-package aeguill in
+ sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\lang spanish
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Fuentes-de-documento"
+
+\end_inset
+
+
+\lang english
+ after the the index entries of the other LaTeX-packages although all these
+ index commands start with 
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+\lang spanish
+LaTeX, paquetes ! 
+\series default
+\lang english
+
+\begin_inset Quotes eld
+\end_inset
+
+.
+ The reason is that the index entry for aeguill is in a footnote.
+ To fix this 
+\family sans
+makeindex
+\family default
+ bug, add these commands to the preamble of your document:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+newcommand*{
+\backslash
+OrgIndex}{}
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+let
+\backslash
+OrgIndex
+\backslash
+index
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand*{
+\backslash
+index}[1]{
+\backslash
+OrgIndex{#1}}
 \end_layout
 
 \begin_layout Subsection

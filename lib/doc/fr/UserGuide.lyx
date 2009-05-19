@@ -48,6 +48,11 @@
 \renewenvironment{lyxgreyedout}
  {\textcolor{blue}\bgroup}{\egroup}
 
+% workaround for a makeindex bug
+\newcommand*{\OrgIndex}{} 
+\let\OrgIndex\index 
+\renewcommand*{\index}[1]{\OrgIndex{#1}}
+
 % use normal list environments also in French documents
 \StandardLayout
 \end_preamble
@@ -27420,6 +27425,116 @@ L'entrée précédente n'a pas besoin d'être une vraie entrée, présente dans
  Voyez la sous-section suivante pour un exemple.
 \end_layout
 
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+In some cases the index entry order is not correct when you are using the
+ program 
+\family sans
+makeindex 
+\family default
+to generate the index (see sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\lang french
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Programme-d'indexation"
+
+\end_inset
+
+
+\lang english
+).
+ 
+\family sans
+makeindex
+\family default
+ would for example print the index entry for the LaTeX-package aeguill in
+ sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\lang french
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Document-Polices"
+
+\end_inset
+
+
+\lang english
+ after the the index entries of the other LaTeX-packages although all these
+ index commands start with 
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+\lang french
+Paquetages LaTeX !
+\series default
+ 
+\lang english
+
+\begin_inset Quotes eld
+\end_inset
+
+.
+ The reason is that the index entry for aeguill is in a footnote.
+ To fix this 
+\family sans
+makeindex
+\family default
+ bug, add these commands to the preamble of your document:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+newcommand*{
+\backslash
+OrgIndex}{}
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+let
+\backslash
+OrgIndex
+\backslash
+index
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand*{
+\backslash
+index}[1]{
+\backslash
+OrgIndex{#1}}
+\end_layout
+
 \begin_layout Subsection
 Format des Entrées d'Index
 \begin_inset Index
@@ -28963,7 +29078,7 @@ name "sec:propriétés-du-PDF"
 
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 PDF ! Propriétés
@@ -28987,8 +29102,10 @@ Propriétés du PDF
  Toutes les options qui sont proposées viennent du paquetage LaTeX 
 \series bold
 hyperref
+\series default
+
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Paquetages LaTeX ! hyperref
@@ -29096,7 +29213,7 @@ key "hyperref"
 \end_layout
 
 \begin_layout Section
-Le code TeX et la Syntaxe LaTeX 
+Le code TeX et la Syntaxe LaTeX
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Code-TeX"
@@ -29107,7 +29224,7 @@ name "sec:Code-TeX"
 \end_layout
 
 \begin_layout Subsection
-Les Boîtes de code TeX 
+Les Boîtes de code TeX
 \begin_inset Index
 status collapsed
 
@@ -39207,7 +39324,7 @@ langue implicite
 \family sans
 XeTeX
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -39708,8 +39825,10 @@ Japonais
 (EUC-JP) encodage EUC-JP pour le japonais, utilise le paquetage LaTeX 
 \series bold
 CJK
+\series default
+
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Paquetages LaTeX ! CJK
@@ -39717,9 +39836,7 @@ Paquetages LaTeX ! CJK
 
 \end_inset
 
-, 
-\series default
-quand vous utilisez cet encodage, mettez la langue du document à 
+, quand vous utilisez cet encodage, mettez la langue du document à 
 \family sans
 Japonais
 \begin_inset space ~
@@ -39766,8 +39883,10 @@ CJK)
 (EUC-JP) encodage EUC-JP pour le japonais, utilise le paquetage LaTeX 
 \series bold
 japanese
+\series default
+
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Paquetages LaTeX ! japanese
@@ -39775,9 +39894,7 @@ Paquetages LaTeX ! japanese
 
 \end_inset
 
-, 
-\series default
-quand vous utilisez cet encodage, mettez la langue du document à 
+, quand vous utilisez cet encodage, mettez la langue du document à 
 \family sans
 Japonais
 \end_layout
@@ -39840,8 +39957,10 @@ Unicode
 (utf8) encodage Unicode utf8 utilsant le paquetage LaTeX 
 \series bold
 CJK
+\series default
+
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Paquetages LaTeX ! CJK
@@ -39849,9 +39968,7 @@ Paquetages LaTeX ! CJK
 
 \end_inset
 
- 
-\series default
-pour le chinois, le japonais et le coréen
+ pour le chinois, le japonais et le coréen
 \end_layout
 
 \begin_layout Description
@@ -39873,7 +39990,7 @@ inputenc
 \series default
  
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Plus d'information pour utiliser LyX avec XeTeX dans 
@@ -39906,7 +40023,7 @@ ucs
 \series default
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Paquetages LaTeX ! ucs
@@ -39928,7 +40045,7 @@ inputenc
 \series default
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Paquetages LaTeX ! inputenc
@@ -39973,7 +40090,7 @@ natbib
 \series default
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Paquetages LaTeX ! natbib
