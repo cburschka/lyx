@@ -1229,7 +1229,23 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_LABEL_COPY_AS_REF: {
-		row_type const row = (type_ == hullMultline) ? nrows() - 1 : cur.row();
+		row_type row;
+		if (cmd.argument().empty() && &cur.inset() == this)
+			// if there is no argument and we're inside math, we retrieve
+			// the row number from the cursor position.
+			row = (type_ == hullMultline) ? nrows() - 1 : cur.row();
+		else {
+			// if there is an argument, find the corresponding label, else
+			// check whether there is at least one label.
+			for (row = 0; row != nrows(); ++row)
+				if (!nonum_[row] && label_[row]
+					  && (cmd.argument().empty() || label(row) == cmd.argument()))
+					break;
+		}
+
+		if (row == nrows())
+			break;
+
 		InsetCommandParams p(REF_CODE, "ref");
 		p["reference"] = label(row);
 		cap::clearSelection();
@@ -1370,8 +1386,25 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return true;
 
 	case LFUN_LABEL_COPY_AS_REF: {
-		row_type const row = (type_ == hullMultline) ? nrows() - 1 : cur.row();
-		status.setEnabled(numberedType() && label_[row] && !nonum_[row]);
+		bool enabled = false;
+		row_type row;
+		if (cmd.argument().empty() && &cur.inset() == this) {
+			// if there is no argument and we're inside math, we retrieve
+			// the row number from the cursor position.
+			row = (type_ == hullMultline) ? nrows() - 1 : cur.row();
+			enabled = numberedType() && label_[row] && !nonum_[row];
+		} else {
+			// if there is an argument, find the corresponding label, else
+			// check whether there is at least one label.
+			for (row_type row = 0; row != nrows(); ++row) {
+				if (!nonum_[row] && label_[row] && 
+					(cmd.argument().empty() || label(row) == cmd.argument())) {
+						enabled = true;
+						break;
+				}
+			}
+		}
+		status.setEnabled(enabled);
 		return true;
 	}
 

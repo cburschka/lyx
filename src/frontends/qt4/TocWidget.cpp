@@ -132,6 +132,10 @@ bool TocWidget::getStatus(Cursor & cur, FuncRequest const & cmd,
 	Inset * inset = itemInset();
 	FuncRequest tmpcmd(cmd);
 
+	QModelIndex const & index = tocTV->currentIndex();
+	TocItem const & item =
+		gui_view_.tocModels().currentItem(current_type_, index);
+
 	switch (cmd.action)
 	{
 	case LFUN_CHANGE_ACCEPT:
@@ -143,6 +147,13 @@ bool TocWidget::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_SECTION_SELECT:
 		status.setEnabled(true);
 		return true;
+
+	case LFUN_LABEL_COPY_AS_REF: {
+		// For labels in math, we need to supply the label as a string
+		FuncRequest label_copy(LFUN_LABEL_COPY_AS_REF, item.asString());
+		if (inset)
+			return inset->getStatus(cur, label_copy, status);
+	}
 
 	default:
 		if (inset)
@@ -170,6 +181,14 @@ void TocWidget::doDispatch(Cursor & cur, FuncRequest const & cmd)
 		dispatch(item.action());
 		cur.dispatch(tmpcmd);
 		break;
+
+	case LFUN_LABEL_COPY_AS_REF: {
+		// For labels in math, we need to supply the label as a string
+		FuncRequest label_copy(LFUN_LABEL_COPY_AS_REF, item.asString());
+		if (inset)
+			inset->dispatch(cur, label_copy);
+		break;
+	}
 	
 	case LFUN_OUTLINE_UP:
 	case LFUN_OUTLINE_DOWN:
