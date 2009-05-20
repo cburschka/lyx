@@ -1421,7 +1421,8 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		cur.reset(buffer_.inset());
 		updateMetrics();
 		buffer_.changed();
-		d->text_metrics_[&buffer_.text()].editXY(cur, p.x_, p.y_);
+		d->text_metrics_[&buffer_.text()].editXY(cur, p.x_, p.y_,
+			true, cmd.action == LFUN_SCREEN_UP); 
 		//FIXME: what to do with cur.x_target()?
 		bool update = in_texted && cur.bv().checkDepm(cur, old);
 		cur.finishUndo();
