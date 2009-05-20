@@ -1411,8 +1411,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 			p = getPos(cur, cur.boundary());
 		}*/
 		int const scrolled = scroll(cmd.action == LFUN_SCREEN_UP
-			? - height_ : height_);
-		if (cmd.action == LFUN_SCREEN_UP && scrolled > - height_)
+			? -height_ : height_);
 		if (cmd.action == LFUN_SCREEN_UP && scrolled > -height_)
 			p = Point(0, 0);
 		if (cmd.action == LFUN_SCREEN_DOWN && scrolled < height_)

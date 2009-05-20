@@ -1341,7 +1341,7 @@ pit_type TextMetrics::getPitNearY(int y)
 
 	if (y >= last->second.position() + int(pm_last.descent())) {
 		// We are looking for a position that is after the last paragraph in
-		// the cache (which is in priciple off-screen, that is before the
+		// the cache (which is in priciple off-screen), that is before the
 		// visible part.
 		pit = last->first + 1;
 		if (pit == int(text_->paragraphs().size()))
@@ -1421,7 +1421,7 @@ Inset * TextMetrics::editXY(Cursor & cur, int x, int y)
 	}
 
 	ParagraphList const & pars = text_->paragraphs();
-	Inset const * insetBefore = pos? pars[pit].getInset(pos - 1): 0;
+	Inset const * insetBefore = pos ? pars[pit].getInset(pos - 1) : 0;
 	//Inset * insetBehind = pars[pit].getInset(pos);
 
 	// This should be just before or just behind the
