@@ -20,6 +20,7 @@
 #include "InsetMathColor.h"
 #include "InsetMathComment.h"
 #include "InsetMathDelim.h"
+#include "InsetMathEnsureMath.h"
 #include "InsetMathHull.h"
 #include "InsetMathRef.h"
 #include "InsetMathScript.h"
@@ -954,7 +955,10 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		docstring const save_selection = grabAndEraseSelection(cur);
 		selClearOrDel(cur);
 		//cur.plainInsert(MathAtom(new InsetMathMBox(cur.bv())));
-		cur.plainInsert(MathAtom(new InsetMathBox(from_ascii("mbox"))));
+		if (currentMode() == Inset::TEXT_MODE)
+			cur.plainInsert(MathAtom(new InsetMathEnsureMath));
+		else
+			cur.plainInsert(MathAtom(new InsetMathBox(from_ascii("mbox"))));
 		cur.posBackward();
 		cur.pushBackward(*cur.nextInset());
 		cur.niceInsert(save_selection);
