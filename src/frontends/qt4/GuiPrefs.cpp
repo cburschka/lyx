@@ -525,6 +525,19 @@ PrefCompletion::PrefCompletion(GuiPreferences * form)
 }
 
 
+void PrefCompletion::on_inlineTextCB_clicked()
+{
+	on_popupTextCB_clicked();
+}
+
+
+void PrefCompletion::on_popupTextCB_clicked()
+{
+	cursorTextCB->setEnabled(
+		popupTextCB->isChecked() || inlineTextCB->isChecked());
+}
+
+
 void PrefCompletion::apply(LyXRC & rc) const
 {
 	rc.completion_inline_delay = inlineDelaySB->value();
@@ -551,6 +564,7 @@ void PrefCompletion::update(LyXRC const & rc)
 	popupTextCB->setChecked(rc.completion_popup_text);
 	cursorTextCB->setChecked(rc.completion_cursor_text);
 	popupAfterCompleteCB->setChecked(rc.completion_popup_after_complete);
+        on_popupTextCB_clicked();
 }
 
 
