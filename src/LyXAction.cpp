@@ -52,7 +52,7 @@ namespace lyx {
  * The documentation below is primarily description of purpose and syntax
  * relating to the different LFUNs.
  *
- * Try to find an appropriate (thematical) place when adding the new LFUN
+   Try to find an appropriate (thematical) place when adding the new LFUN
  * and don't forget to add doxygen commentary.
  *
  * Doxygen template below. Some notes: Parameters should be set in uppercase
@@ -389,7 +389,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_QUOTE_INSERT
  * \li Action: Inserts quotes according to the type and quote-language preference.
- * \li Action: Currently  English, Swedish, German, Polish, French, Danish quotes
+ * \li Notion: Currently English, Swedish, German, Polish, French, Danish quotes
                are distinguished.
  * \li Syntax: quote-insert [<TYPE>]
  * \li Params: <TYPE>: 'single' for single quotes, otherwise double quotes will be used.
@@ -621,7 +621,7 @@ void LyXAction::init()
  */
 		{ LFUN_UP_SELECT, "up-select", ReadOnly | SingleParUpdate, Edit },
 /*!
- * \var lyx::FuncCode lyx::SCREEN_DOWN
+ * \var lyx::FuncCode lyx::LFUN_SCREEN_DOWN
  * \li Action: Moves the cursor one page in downward direction.
  * \li Syntax: screen-down
  * \endvar
@@ -1873,7 +1873,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_INSET_EDIT
  * \li Action: Edit the inset at cursor with an external application,
- *             if one is attributed.
+               if one is attributed.
  * \li Syntax: inset-edit [<INSET_PARAMS>]
  * \li Params: <INSET_PARAMS>: Parameters for the inset. \n
                                Currently only the filename will be considered.
