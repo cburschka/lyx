@@ -1254,10 +1254,6 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_FONT_DEFAULT:
 		flag.setEnabled(true);
 		break;
-	case LFUN_MATH_MUTATE:
-		//flag.setOnOff(mathcursor::formula()->hullType() == to_utf8(cmd.argument()));
-		flag.setOnOff(false);
-		break;
 
 	// we just need to be in math mode to enable that
 	case LFUN_MATH_SIZE:

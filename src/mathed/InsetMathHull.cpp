@@ -1356,11 +1356,17 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_DOWN:
 	case LFUN_NEWLINE_INSERT:
 	case LFUN_MATH_EXTERN:
-	case LFUN_MATH_MUTATE:
 	case LFUN_MATH_DISPLAY:
 		// we handle these
 		status.setEnabled(true);
 		return true;
+
+	case LFUN_MATH_MUTATE: {
+		HullType ht = hullType(cmd.argument());
+		status.setOnOff(type_ == ht);
+		status.setEnabled(true);
+		return true;
+	}
 
 	case LFUN_MATH_NUMBER_TOGGLE:
 		// FIXME: what is the right test, this or the one of
