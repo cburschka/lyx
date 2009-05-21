@@ -1176,7 +1176,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// this one is not per buffer
 	// for arabic_arabi and farsi we also need to load the LAE and
 	// LFE encoding
-	// XeteX works without fontenc
+	// XeTeX works without fontenc
 	if (lyxrc.fontenc != "default" && language->lang() != "japanese"
 	    && !useXetex) {
 		if (language->lang() == "arabic_arabi"
