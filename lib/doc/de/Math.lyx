@@ -462,7 +462,7 @@ Formel ! eingebettete
 
  zu erstellen, drückt man 
 \family sans
-Strg-m
+Strg+M
 \family default
  oder den Werkzeugleistenknopf 
 \begin_inset Graphics
@@ -487,7 +487,7 @@ Formel ! abgesetzte
 
  zu erstellen, drückt man 
 \family sans
-Strg-M
+Strg+Shift+M
 \family default
 .
 \end_layout
@@ -496,7 +496,7 @@ Strg-M
 Um eine abgesetzte Formel in eine eingebettete umzuwandeln, setzt man den
  Cursor in die Formel und drückt 
 \family sans
-Strg-M
+Strg+Shift+M
 \family default
  oder benutzt das Menü 
 \family sans
@@ -644,7 +644,7 @@ Code
 \family default
  (Tastenkürzel 
 \family sans
-Strg-l
+Strg+L
 \family default
 ).
 \begin_inset Note Note
@@ -789,11 +789,11 @@ Mathematischer Textmodus
 
 , in den man mit dem Tastenkürzel 
 \family sans
-Alt-m
+Alt+M
 \begin_inset space ~
 \end_inset
 
-m
+M
 \family default
  oder durch Eingabe des Befehls 
 \series bold
@@ -908,7 +908,7 @@ immer
 \begin_layout Standard
 Ein geschütztes Leerzeichen gibt man mit 
 \family sans
-Strg-Leertaste
+Strg+Leertaste
 \family default
  ein.
 \end_layout
@@ -3155,7 +3155,7 @@ leer
 
 \end_inset
 
-Strg-Enter
+Strg+Enter
 \end_layout
 
 \end_inset
@@ -3198,7 +3198,7 @@ cases
 
  können mit 
 \family sans
-Strg-Enter
+Strg+Enter
 \family default
  oder dem Tabellen-Werkzeugleistenknopf 
 \begin_inset Graphics
@@ -5176,7 +5176,7 @@ Zeilen & Spalten
  verwenden.
  Neue Zeilen können auch mit 
 \family sans
-Strg-Enter
+Strg+Enter
 \family default
  erstellt werden.
 \end_layout
@@ -5223,7 +5223,7 @@ right
 
  erstellt werden (Tastenkürzel 
 \family sans
-Alt-m
+Alt+M
 \begin_inset space ~
 \end_inset
 
@@ -5771,7 +5771,7 @@ Spalten
  oder die Mathe-Werkzeugleiste um neue Spalten zu erstellen.
  Neue Zeilen können auch mit 
 \family sans
-Strg-Enter
+Strg+Enter
 \family default
  erstellt werden.
 \end_layout
@@ -7113,7 +7113,7 @@ right
 \series default
  kann man die Tastenkürzel 
 \family sans
-Alt-m
+Alt+M
 \begin_inset space ~
 \end_inset
 
@@ -7129,7 +7129,7 @@ Der Befehl für das letzte Beispiel würde dann lauten:
 \series bold
 
 \backslash
-ln Alt-m
+ln Alt+M
 \series default
  
 \series bold
@@ -11644,7 +11644,7 @@ Abstand
 \family default
  (Tastenkürzel 
 \family sans
-Strg-Shift-Leertaste
+Strg+Shift+Leertaste
 \family default
 ) ein.
 \end_layout
@@ -12445,7 +12445,7 @@ fbox
 \series default
  muss in diesem Eingabefeld mit 
 \family sans
-Strg-m
+Strg+M
 \family default
  noch eine Formel erstellt werden, denn der Inhalt dieser Box wird sonst
  als mathematischer Text behandelt.
@@ -12638,7 +12638,7 @@ leer
 
 
 \family sans
-Strg-m
+Strg+M
 \family default
  
 \backslash
@@ -12794,7 +12794,7 @@ leer
 
 
 \family sans
-Strg-m
+Strg+M
 \family default
  
 \backslash
@@ -13134,7 +13134,7 @@ raisebox
  wird diese weitere Formel durch zweimaliges statt einmaliges Drücken von
  
 \family sans
-Strg-m
+Strg+M
 \family default
  erstellt, denn LyX unterstützt 
 \series bold
@@ -13262,7 +13262,7 @@ raisebox{-2mm
 \backslash
 {
 \family sans
-Strg-m Strg-m
+Strg+M Strg+M
 \family default
  
 \backslash
@@ -13682,7 +13682,7 @@ colorbox{green
 \backslash
 {
 \family sans
-Strg-m Strg-m
+Strg+M Strg+M
 \family default
  
 \backslash
@@ -15448,11 +15448,11 @@ d
 \emph default
  und wandelt es mit der Tastenkombination 
 \family sans
-Alt-z
+Alt+Z
 \begin_inset space ~
 \end_inset
 
-r
+R
 \family default
 
 \begin_inset Foot
@@ -15907,11 +15907,11 @@ Eingebettet
 \series default
  (Tastenkombination 
 \family sans
-Alt-m
+Alt+M
 \begin_inset space ~
 \end_inset
 
-l
+L
 \family default
 ).
  Dazu folgendes Beispiel:
@@ -16069,7 +16069,7 @@ leer
  Zeilen untereinander schreiben.
  Mit Eingabe des Zeilenumbruchs (
 \family sans
-Strg-Enter
+Strg+Enter
 \family default
 ) wird eine neue Zeile erstellt.
  Gibt man
@@ -17836,7 +17836,7 @@ ABC
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alt-z k
+Alt+Z K
 \end_layout
 
 \end_inset
@@ -17887,7 +17887,7 @@ AbC
 \begin_inset Text
 
 \begin_layout Plain Layout
-Strg-b
+Strg+B
 \end_layout
 
 \end_inset
@@ -17938,7 +17938,7 @@ AbC
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alt-z f oder Strg-Alt-b
+Alt+Z F oder Strg+Alt+B
 \end_layout
 
 \end_inset
@@ -17989,7 +17989,7 @@ ABC
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alt-z h
+Alt+Z H
 \end_layout
 
 \end_inset
@@ -18186,7 +18186,7 @@ AbC
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alt-z r
+Alt+Z R
 \end_layout
 
 \end_inset
@@ -18237,7 +18237,7 @@ AbC
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alt-z s
+Alt+Z S
 \end_layout
 
 \end_inset
@@ -18288,7 +18288,7 @@ AbC
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alt-z c
+Alt+Z C
 \end_layout
 
 \end_inset
@@ -27438,7 +27438,7 @@ Allgemeines
 In LyX werden mehrzeilige Formeln erstellt, wenn man in einer Formel 
 \family sans
 \series bold
-Strg-Enter
+Strg+Enter
 \family default
 \series default
  drückt.
@@ -27485,7 +27485,7 @@ Mathe
 In allen mehrzeiligen Formelumgebungen erstellt man eine neue Zeile, indem
  man 
 \family sans
-Strg-Enter
+Strg+Enter
 \family default
  drückt.
  Um Spalten hinzuzufügen oder zu entfernen, können die Mathe-Werkzeugleistenknöp
@@ -28440,7 +28440,7 @@ Formel ! mehrzeilige ! align-Umgebung
 \begin_layout Standard
 Diese Align-Umgebung wird erstellt, indem man in einer Formel 
 \family sans
-Strg-Enter
+Strg+Enter
 \family default
  drückt oder das Menü 
 \family sans
@@ -29258,11 +29258,11 @@ Formel
 \family default
  (Tastenkürzel 
 \family sans
-Strg-Alt
+Strg+Alt
 \begin_inset space ~
 \end_inset
 
-n
+N
 \family default
 ) erstellt, bestehende Formeln über das Menü 
 \family sans
@@ -29276,11 +29276,11 @@ an/aus
 \family default
  (Tastenkürzel 
 \family sans
-Alt-m
+Alt+M
 \begin_inset space ~
 \end_inset
 
-n
+N
 \family default
 ) nummeriert werden.
  Die Formelnummer erscheint in LyX hinter der Formel als Raute in runden
@@ -29299,11 +29299,11 @@ Zeilennummerierung an/aus
 \family default
  (Tastenkürzel 
 \family sans
-Alt-m
+Alt+M
 \begin_inset space ~
 \end_inset
 
-N
+Shift+N
 \family default
 ) für jede Zeile die Nummerierung festlegen.
 \end_layout
@@ -32079,7 +32079,7 @@ xleftarrow[#2]{#1}}
 in LyX als normalen Text, markiert ihn komplett und verwendet dann das Tastenkür
 zel 
 \family sans
-Strg-m
+Strg+M
 \family default
 , wird der Befehl in ein Mathe-Makro umgewandelt.
  Bei dieser Methode muss man jedoch aufpassen, dass der 
@@ -33149,11 +33149,11 @@ Diese Reaktionsgleichung kann direkt als Formel erstellt werden.
  Damit die Symbole nicht kursiv erscheinen, markiert man sämtliche Zeichen
  in der Formel und wandelt diese mit der Tastenkombination 
 \family sans
-Alt-z
+Alt+Z
 \begin_inset space ~
 \end_inset
 
-r
+R
 \family default
  in den aufrechten Schriftstil um.
 \begin_inset Foot
@@ -33311,11 +33311,11 @@ In LaTeX fungiert das Komma in einer Formel, gemäß englischer Konvention,
 Um dies zu verhindern, markiert man das Komma und wandelt es in mathematischen
  Text um (Tastenkürzel 
 \family sans
-Alt-m
+Alt+M
 \begin_inset space ~
 \end_inset
 
-m
+M
 \family default
 ).
 \end_layout
