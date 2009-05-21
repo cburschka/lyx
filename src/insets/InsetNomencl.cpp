@@ -5,6 +5,8 @@
  *
  * \author Lars Gullik Bjønnes
  * \author O. U. Baran
+ * \author Uwe Stöhr
+ * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -17,6 +19,7 @@
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "InsetIterator.h"
+#include "InsetList.h"
 #include "LaTeXFeatures.h"
 #include "MetricsInfo.h"
 #include "sgml.h"
@@ -116,16 +119,16 @@ void InsetNomencl::validate(LaTeXFeatures & features) const
 /////////////////////////////////////////////////////////////////////
 
 InsetPrintNomencl::InsetPrintNomencl(InsetCommandParams const & p)
-	: InsetCommand(p, string())
+	: InsetCommand(p, "printnomenclature")
 {}
 
 
 ParamInfo const & InsetPrintNomencl::findInfo(string const & /* cmdName */)
 {
+	// there are no parameters to give because the symbol width is set via
+	// nomencl's \nomlabelwidth in InsetPrintNomencl::latex and not as
+	// optional parameter of \printnomenclature
 	static ParamInfo param_info_;
-	if (param_info_.empty()) {
-		param_info_.add("labelwidth", ParamInfo::LATEX_REQUIRED);
-	}
 	return param_info_;
 }
 
@@ -157,6 +160,59 @@ int InsetPrintNomencl::docbook(odocstream & os, OutputParams const &) const
 	}
 	os << "</glossary>\n";
 	return newlines;
+}
+
+
+docstring nomenclWidest(Buffer const & buffer)
+{
+	// nomenclWidest() determines and returns the widest used nomenclature
+	// symbol in the document
+
+	int w = 0;
+	docstring symb;
+	InsetNomencl const * nomencl = 0;
+
+	ParagraphList::const_iterator it = buffer.paragraphs().begin();
+	ParagraphList::const_iterator end = buffer.paragraphs().end();
+
+	for (; it != end; ++it) {
+		if (it->insetList().empty())
+			continue;
+		InsetList::const_iterator iit = it->insetList().begin();
+		InsetList::const_iterator eend = it->insetList().end();
+		for (; iit != eend; ++iit) {
+			Inset * inset = iit->inset;
+			if (inset->lyxCode() != NOMENCL_CODE)
+				continue;
+			nomencl = static_cast<InsetNomencl const *>(inset);
+			docstring const symbol = nomencl->getParam("symbol");
+			int const wx = symbol.size();
+			if (wx > w) {
+				w = wx;
+				symb = symbol;
+			}
+		}
+	}
+
+	// return the widest symbol
+	return symb;
+}
+
+
+int InsetPrintNomencl::latex(odocstream & os, OutputParams const &) const
+{
+	int lines = 0;
+	// this must be output before the command \printnomenclature
+	docstring widest = nomenclWidest(buffer());
+	if (!widest.empty()) {
+		// set the label width via nomencl's command \nomlabelwidth
+		os << "\\settowidth{\\nomlabelwidth}{";
+		os << widest <<"}\n";
+		++lines;
+	}
+	// output the command \printnomenclature
+	os << getCommand();
+	return lines;
 }
 
 

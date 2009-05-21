@@ -61,10 +61,6 @@ public:
 	InsetPrintNomencl(InsetCommandParams const &);
 	/// Updates needed features for this inset.
 	void validate(LaTeXFeatures & features) const;
-	// FIXME: This should be editable to set the label width (stored
-	// in params_["labelwidth"]).
-	// Currently the width can be read from file and written, but not
-	// changed.
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	///
@@ -80,9 +76,16 @@ public:
 	///
 	static bool isCompatibleCommand(std::string const & s) 
 		{ return s == "printnomenclature"; }
+	///
+	int latex(odocstream &, OutputParams const &) const;
 private:
 	Inset * clone() const { return new InsetPrintNomencl(*this); }
+	///
+	friend docstring nomenclWidest(Buffer const & buffer);
 };
+
+/// return the widest symbol of all nomenclature entries of the document
+docstring nomenclWidest(Buffer const &);
 
 
 } // namespace lyx
