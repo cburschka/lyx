@@ -7846,7 +7846,7 @@ status collapsed
 \begin_inset CommandInset href
 LatexCommand href
 name "LyX-Fehler #1505"
-target "http://bugzilla.lyx.org/show_bug.cgi?id=1505"
+target "http://www.lyx.org/trac/ticket/1505"
 
 \end_inset
 
@@ -12447,29 +12447,8 @@ fbox
 \family sans
 Strg-m
 \family default
- noch eine Formel erstellt werden
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Aufgrund eines Fehlers in LyX ist es nicht möglich mit 
-\family sans
-Strg-m
-\family default
- eine neue Formel zu erzeugen, siehe 
-\begin_inset CommandInset href
-LatexCommand href
-name "LyX-Fehler #1435"
-target "http://bugzilla.lyx.org/show_bug.cgi?id=1435"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-, denn der Inhalt dieser Box wird sonst als mathematischer Text behandelt.
+ noch eine Formel erstellt werden, denn der Inhalt dieser Box wird sonst
+ als mathematischer Text behandelt.
  Verwendet man 
 \series bold
 
@@ -12596,32 +12575,6 @@ fbox
 
 \begin_layout Standard
 \align center
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Die Tabelle wurde in eine Minibox gesetzt damit die Fußnote der Tabelle
- auch erscheint.
- Denn sonst würde der Fußnotentext im Ausdruck nicht angezeigt werden.
-\end_layout
-
-\end_inset
-
-
-\begin_inset Box Frameless
-position "c"
-hor_pos "c"
-has_inner_box 1
-inner_pos "c"
-use_parbox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
 <features>
@@ -12633,28 +12586,6 @@ status open
 
 \begin_layout Plain Layout
 Befehl
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Durch einen Fehler in LyX ist es momentan nicht möglich mit 
-\family sans
-Strg-m
-\family default
- eine neue Formel zu erzeugen, siehe 
-\begin_inset CommandInset href
-LatexCommand href
-name "LyX-Fehler #1435"
-target "http://bugzilla.lyx.org/show_bug.cgi?id=1435"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -12733,7 +12664,7 @@ A=B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox{6mm}{}\fbox{$\int A=B$}\raisebox{-4mm}{}$
+\begin_inset Formula $\raisebox{6mm}{}\fbox{\ensuremath{\int A=B}}\raisebox{-4mm}{}$
 \end_inset
 
 
@@ -12897,7 +12828,7 @@ B
 \end_inset
 
 
-\begin_inset Formula $\framebox[20mm][]{$\frac{A}{B}$}$
+\begin_inset Formula $\framebox[20mm][]{\ensuremath{\frac{A}{B}}}$
 \end_inset
 
 
@@ -12911,11 +12842,6 @@ B
 </cell>
 </row>
 </lyxtabular>
-
-\end_inset
-
-
-\end_layout
 
 \end_inset
 
@@ -13190,6 +13116,38 @@ Soll in der Box eine Formel stehen, muss man wie bei
 fbox
 \series default
  eine weitere Formel erstellen.
+ 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Achtung:
+\series default
+ Für 
+\series bold
+
+\backslash
+raisebox
+\series default
+ wird diese weitere Formel durch zweimaliges statt einmaliges Drücken von
+ 
+\family sans
+Strg-m
+\family default
+ erstellt, denn LyX unterstützt 
+\series bold
+
+\backslash
+raisebox
+\series default
+ noch nicht direkt.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -13304,7 +13262,7 @@ raisebox{-2mm
 \backslash
 {
 \family sans
-Strg-m
+Strg-m Strg-m
 \family default
  
 \backslash
@@ -13330,18 +13288,7 @@ B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-$A=
-\backslash
-raisebox{-2mm}{$
-\backslash
-sqrt{B}$}$
-\end_layout
-
+\begin_inset Formula $A=\raisebox{-2mm}{\mbox{\ensuremath{\sqrt{B}}}}$
 \end_inset
 
 
@@ -13351,29 +13298,6 @@ sqrt{B}$}$
 </cell>
 </row>
 </lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Die letzte Formel kann derzeit nur im TeX-Modus erstellt werden, da LyX
- statt der benötigten weiteren Formel eine Box einfügt.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-siehe 
-\begin_inset CommandInset href
-LatexCommand href
-name "LyX-Fehler #1435"
-target "http://bugzilla.lyx.org/show_bug.cgi?id=1435"
-
-\end_inset
-
-
-\end_layout
 
 \end_inset
 
@@ -13549,7 +13473,7 @@ colorbox
 \series bold
 
 \backslash
-fbox
+raisebox
 \series default
  eine weitere Formel erstellt werden.
 \begin_inset Foot
@@ -13563,15 +13487,6 @@ Das gilt auch für den Befehl
 fcolorbox
 \series default
 .
- Dabei ist 
-\begin_inset CommandInset href
-LatexCommand href
-name "LyX-Fehler #1435"
-target "http://bugzilla.lyx.org/show_bug.cgi?id=1435"
-
-\end_inset
-
- zu beachten.
 \end_layout
 
 \end_inset
@@ -13765,7 +13680,26 @@ colorbox{green
 
 
 \backslash
-{A=B
+{
+\family sans
+Strg-m Strg-m
+\family default
+ 
+\backslash
+int
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+leer 
+\end_layout
+
+\end_inset
+
+C=D
 \end_layout
 
 \end_inset
@@ -13774,7 +13708,7 @@ colorbox{green
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox{6mm}{}\fbox{\colorbox{green}{A=B}}\raisebox{-3mm}{}$
+\begin_inset Formula $\raisebox{7mm}{}\fbox{\colorbox{green}{\mbox{\ensuremath{\int C=D}}}}\raisebox{-5mm}{}$
 \end_inset
 
 
@@ -14493,7 +14427,7 @@ status collapsed
 \begin_inset CommandInset href
 LatexCommand href
 name "LyX-Fehler #4483"
-target "http://bugzilla.lyx.org/show_bug.cgi?id=4483"
+target "http://www.lyx.org/trac/ticket/4483"
 
 \end_inset
 
@@ -18425,16 +18359,16 @@ ile, sondern in dem Textschriftstil
 textrm
 \series default
 .
- Dass ihr Stil nicht über den Textstil Dialog geändert werden kann ist ein
- Fehler in LyX .
+ Dass deren Stil nicht über den Textstil Dialog geändert werden kann ist
+ ein Fehler in LyX.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 \begin_inset CommandInset href
 LatexCommand href
-name "LyX-Fehler #4091"
-target "http://bugzilla.lyx.org/show_bug.cgi?id=4091"
+name "LyX-Fehler #4629"
+target "http://www.lyx.org/trac/ticket/4629"
 
 \end_inset
 
@@ -18711,7 +18645,7 @@ status collapsed
 \begin_inset CommandInset href
 LatexCommand href
 name "LyX-bug #5269"
-target "http://bugzilla.lyx.org/show_bug.cgi?id=5269"
+target "http://www.lyx.org/trac/ticket/5269"
 
 \end_inset
 
@@ -27625,7 +27559,7 @@ siehe
 \begin_inset CommandInset href
 LatexCommand href
 name "LyX-Fehler #1505"
-target "http://bugzilla.lyx.org/show_bug.cgi?id=1505"
+target "http://www.lyx.org/trac/ticket/1505"
 
 \end_inset
 
@@ -28177,7 +28111,7 @@ status collapsed
 \begin_inset CommandInset href
 LatexCommand href
 name "LyX-Fehler #1429"
-target "http://bugzilla.lyx.org/show_bug.cgi?id=1429"
+target "http://www.lyx.org/trac/ticket/1429"
 
 \end_inset
 
@@ -29254,7 +29188,7 @@ intertext
  Ein Beispiel bei dem der Text zu Beginn der zweiten Zeile eingegeben wurde:
 \begin_inset Formula \begin{align}
 I & =a\sqrt{2}\int_{0}^{2\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\\
-\intertext{\text{Integrand ist symmetrisch zu $\phi=\pi$, daher}} & =2a\sqrt{2}\int_{0}^{\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\end{align}
+\intertext{\text{Integrand ist symmetrisch zu \ensuremath{\phi=\pi}, daher}} & =2a\sqrt{2}\int_{0}^{\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\end{align}
 
 \end_inset
 

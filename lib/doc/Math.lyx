@@ -7848,7 +7848,7 @@ status collapsed
 \begin_inset CommandInset href
 LatexCommand href
 name "LyX-bug #1505"
-target "http://bugzilla.lyx.org/show_bug.cgi?id=1505"
+target "http://www.lyx.org/trac/ticket/1505"
 
 \end_inset
 
@@ -12502,29 +12502,8 @@ fbox
 \family sans
 Ctrl+M
 \family default
- within this box
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Due to a bug in LyX it is not possible to create a new formula with 
-\family sans
-Ctrl+M
-\family default
-, see 
-\begin_inset CommandInset href
-LatexCommand href
-name "LyX-bug #1435"
-target "http://bugzilla.lyx.org/show_bug.cgi?id=1435"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-, because the box content will otherwise be treated as mathematical text.
+ within this box, because the box content will otherwise be treated as mathemati
+cal text.
  When 
 \series bold
 
@@ -12541,7 +12520,7 @@ The command
 \backslash
 fbox
 \series default
- is not suitable to frame displayed formulas, because the formula will always
+ is not suitable to frame displayed formulas because the formula will always
  be set in the size of the text.
  
 \series bold
@@ -12650,31 +12629,6 @@ fbox
 
 \begin_layout Standard
 \align center
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-The table has been set into a minipage to make the footnote appearing.
- Otherwise the footnote text would not be displayed.
-\end_layout
-
-\end_inset
-
-
-\begin_inset Box Frameless
-position "c"
-hor_pos "c"
-has_inner_box 1
-inner_pos "c"
-use_parbox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
 <features>
@@ -12686,28 +12640,6 @@ status open
 
 \begin_layout Plain Layout
 Command
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Due to a bug in LyX it is not possible to create a new formula with 
-\family sans
-Ctrl+m
-\family default
-, see 
-\begin_inset CommandInset href
-LatexCommand href
-name "LyX-bug #1435"
-target "http://bugzilla.lyx.org/show_bug.cgi?id=1435"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -12786,7 +12718,7 @@ A=B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox{6mm}{}\fbox{$\int A=B$}\raisebox{-4mm}{}$
+\begin_inset Formula $\raisebox{6mm}{}\fbox{\ensuremath{\int A=B}}\raisebox{-4mm}{}$
 \end_inset
 
 
@@ -12950,7 +12882,7 @@ B
 \end_inset
 
 
-\begin_inset Formula $\framebox[20mm][]{$\frac{A}{B}$}$
+\begin_inset Formula $\framebox[20mm][]{\ensuremath{\frac{A}{B}}}$
 \end_inset
 
 
@@ -12964,11 +12896,6 @@ B
 </cell>
 </row>
 </lyxtabular>
-
-\end_inset
-
-
-\end_layout
 
 \end_inset
 
@@ -13242,6 +13169,39 @@ When the box should contain a formula, an extra formula is needed like for
 fbox
 \series default
 .
+ 
+\series medium
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ For 
+\series bold
+
+\backslash
+raisebox
+\series default
+ this extra formula is created by pressing 
+\family sans
+Ctrl+M
+\family default
+ twice instead of once because LyX doesn't yet support 
+\series bold
+
+\backslash
+raisebox
+\series default
+ directly.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -13359,6 +13319,10 @@ raisebox{-2mm
 Ctrl+M
 \family default
  
+\family sans
+Ctrl+M
+\family default
+ 
 \backslash
 sqrt
 \begin_inset ERT
@@ -13382,18 +13346,7 @@ B
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-$A=
-\backslash
-raisebox{-2mm}{$
-\backslash
-sqrt{B}$}$
-\end_layout
-
+\begin_inset Formula $A=\raisebox{-2mm}{\mbox{\ensuremath{\sqrt{B}}}}$
 \end_inset
 
 
@@ -13403,29 +13356,6 @@ sqrt{B}$}$
 </cell>
 </row>
 </lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The last formula can currently only be created using TeX-mode because LyX
- inserts a box instead of the needed extra formula.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-see 
-\begin_inset CommandInset href
-LatexCommand href
-name "LyX-bug #1435"
-target "http://bugzilla.lyx.org/show_bug.cgi?id=1435"
-
-\end_inset
-
-
-\end_layout
 
 \end_inset
 
@@ -13592,11 +13522,11 @@ colorbox
 \series default
  can also be part of another box (see the 2nd and 3rd example).
  When the box should contain a formula, an extra formula has to be created,
- the same as for 
+ the same way as for 
 \series bold
 
 \backslash
-fbox
+raisebox
 \series default
 .
 \begin_inset Foot
@@ -13609,15 +13539,6 @@ This also applies for the command
 \backslash
 fcolorbox
 \series default
-.
- Thereby note 
-\begin_inset CommandInset href
-LatexCommand href
-name "LyX-bug #1435"
-target "http://bugzilla.lyx.org/show_bug.cgi?id=1435"
-
-\end_inset
-
 .
 \end_layout
 
@@ -13812,7 +13733,30 @@ colorbox{green
 
 
 \backslash
-{A=B
+{
+\family sans
+Ctrl+M
+\family default
+ 
+\family sans
+Ctrl+M
+\family default
+ 
+\backslash
+int
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+C=D
 \end_layout
 
 \end_inset
@@ -13821,7 +13765,7 @@ colorbox{green
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox{6mm}{}\fbox{\colorbox{green}{A=B}}\raisebox{-3mm}{}$
+\begin_inset Formula $\raisebox{7mm}{}\fbox{\colorbox{green}{\mbox{\ensuremath{\int C=D}}}}\raisebox{-5mm}{}$
 \end_inset
 
 
@@ -14515,7 +14459,7 @@ status collapsed
 \begin_inset CommandInset href
 LatexCommand href
 name "LyX-bug #4483"
-target "http://bugzilla.lyx.org/show_bug.cgi?id=4483"
+target "http://www.lyx.org/trac/ticket/4483"
 
 \end_inset
 
@@ -18498,8 +18442,8 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset CommandInset href
 LatexCommand href
-name "LyX-bug #4091"
-target "http://bugzilla.lyx.org/show_bug.cgi?id=4091"
+name "LyX-bug #4629"
+target "http://www.lyx.org/trac/ticket/4629"
 
 \end_inset
 
@@ -18776,7 +18720,7 @@ status collapsed
 \begin_inset CommandInset href
 LatexCommand href
 name "LyX-bug #5269"
-target "http://bugzilla.lyx.org/show_bug.cgi?id=5269"
+target "http://www.lyx.org/trac/ticket/5269"
 
 \end_inset
 
@@ -27647,7 +27591,7 @@ see
 \begin_inset CommandInset href
 LatexCommand href
 name "LyX-bug #1505"
-target "http://bugzilla.lyx.org/show_bug.cgi?id=1505"
+target "http://www.lyx.org/trac/ticket/1505"
 
 \end_inset
 
@@ -28199,7 +28143,7 @@ status collapsed
 \begin_inset CommandInset href
 LatexCommand href
 name "LyX-bug #1429"
-target "http://bugzilla.lyx.org/show_bug.cgi?id=1429"
+target "http://www.lyx.org/trac/ticket/1429"
 
 \end_inset
 
@@ -29257,7 +29201,7 @@ intertext
  An example where the text was inserted at the beginning of the second line:
 \begin_inset Formula \begin{align}
 I & =a\sqrt{2}\int_{0}^{2\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\\
-\intertext{\text{integrand is symmetric to $\phi=\pi$, therefore}} & =2a\sqrt{2}\int_{0}^{\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\end{align}
+\intertext{\text{integrand is symmetric to \ensuremath{\phi=\pi}, therefore}} & =2a\sqrt{2}\int_{0}^{\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\end{align}
 
 \end_inset
 
