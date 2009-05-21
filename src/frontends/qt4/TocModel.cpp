@@ -21,7 +21,6 @@
 #include "LyXFunc.h"
 #include "TocBackend.h"
 
-#include "support/convert.h"
 #include "support/debug.h"
 #include "support/lassert.h"
 

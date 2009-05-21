@@ -30,7 +30,6 @@
 #include "TextClass.h"
 #include "TocBackend.h"
 
-#include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/gettext.h"

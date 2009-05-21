@@ -26,7 +26,6 @@
 #include "output_latex.h"
 #include "TexRow.h"
 
-#include "support/convert.h"
 #include "support/debug.h"
 #include "support/FileName.h"
 #include "support/gettext.h"

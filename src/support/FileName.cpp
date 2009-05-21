@@ -13,7 +13,6 @@
 #include "support/FileName.h"
 #include "support/FileNameList.h"
 
-#include "support/convert.h"
 #include "support/debug.h"
 #include "support/filetools.h"
 #include "support/lassert.h"

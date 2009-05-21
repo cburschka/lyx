@@ -23,7 +23,6 @@
 
 #include "support/filetools.h"
 
-#include "support/convert.h"
 #include "support/debug.h"
 #include "support/environment.h"
 #include "support/gettext.h"
