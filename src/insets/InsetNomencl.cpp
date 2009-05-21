@@ -171,7 +171,6 @@ docstring nomenclWidest(Buffer const & buffer)
 	int w = 0;
 	docstring symb;
 	InsetNomencl const * nomencl = 0;
-
 	ParagraphList::const_iterator it = buffer.paragraphs().begin();
 	ParagraphList::const_iterator end = buffer.paragraphs().end();
 
@@ -186,15 +185,18 @@ docstring nomenclWidest(Buffer const & buffer)
 				continue;
 			nomencl = static_cast<InsetNomencl const *>(inset);
 			docstring const symbol = nomencl->getParam("symbol");
+			// we can only check for the number of characters, since it is
+			// impossible to get the info that "iiiii" is smaller than "WW"
+			// we therefore output w times "W" as string ("W" is always the
+			// widest character)
 			int const wx = symbol.size();
-			if (wx > w) {
+			if (wx > w)
 				w = wx;
-				symb = symbol;
-			}
 		}
 	}
-
-	// return the widest symbol
+	// return the widest symbol as w times a "W"
+	for (int n = 1; n <= w; ++n)
+		symb = symb + "W";
 	return symb;
 }
 
@@ -202,12 +204,14 @@ docstring nomenclWidest(Buffer const & buffer)
 int InsetPrintNomencl::latex(odocstream & os, OutputParams const &) const
 {
 	int lines = 0;
-	// this must be output before the command \printnomenclature
 	docstring widest = nomenclWidest(buffer());
+	// set the label width via nomencl's command \nomlabelwidth
+	// this must be output before the command \printnomenclature
 	if (!widest.empty()) {
-		// set the label width via nomencl's command \nomlabelwidth
-		os << "\\settowidth{\\nomlabelwidth}{";
-		os << widest <<"}\n";
+		// assure that the width is never below the predefined value of 1 cm
+		os << "\\settowidth{\\nomlabelwidth}{" << widest <<"}\n";
+		os << "\\ifthenelse{%\n  \\lengthtest{\\nomlabelwidth < 1cm}}\n";
+		os << " {\\setlength{\\nomlabelwidth}{1cm}}\n {}\n";
 		++lines;
 	}
 	// output the command \printnomenclature
@@ -219,6 +223,8 @@ int InsetPrintNomencl::latex(odocstream & os, OutputParams const &) const
 void InsetPrintNomencl::validate(LaTeXFeatures & features) const
 {
 	features.require("nomencl");
+	// needed for InsetPrintNomencl::latex
+	features.require("ifthen");
 }
 
 
