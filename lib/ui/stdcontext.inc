@@ -43,8 +43,9 @@ Menuset
 		Item "Eqnarray Environment|E" "math-mutate eqnarray"
 		Submenu "AMS Environment|A" "ams_environment"
 		Separator		
+		OptItem "Number whole Formula|N" "math-number-toggle"
+		OptItem "Number this Line|u" "math-number-line-toggle"
 		OptItem "Equation Label|L" "label-insert"
-		OptItem "Toggle Labeling/Numbering|T" "math-number-toggle"
 		OptItem "Copy as Reference|R" "copy-label-as-reference"
 		Separator
 		Item "Split Cell|C" "cell-split"
@@ -61,9 +62,9 @@ Menuset
 		OptItem "Delete Line to Left" "tabular-feature delete-vline-left"
 		OptItem "Delete Line to Right" "tabular-feature delete-vline-right"
 		Separator
-		Item "Toggle Math Toolbar" "toolbar-toggle math toggle"
-		Item "Toggle Math-Panels Toolbar" "toolbar-toggle math_panels toggle"
-		Item "Toggle Table Toolbar" "toolbar-toggle table toggle"
+		Item "Show Math Toolbar" "toolbar-toggle math toggle"
+		Item "Show Math-Panels Toolbar" "toolbar-toggle math_panels toggle"
+		Item "Show Table Toolbar" "toolbar-toggle table toggle"
 	End
 
 
