@@ -114,6 +114,7 @@ bool GuiPrintindex::initialiseParams(string const & data)
 	// The name passed with LFUN_INSET_APPLY is also the name
 	// used to identify the mailer.
 	InsetCommand::string2params("index_print", data, params_);
+	paramsToDialog(params_);
 	return true;
 }
 

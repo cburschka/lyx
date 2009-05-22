@@ -66,6 +66,8 @@ public:
 	///
 	InsetCode lyxCode() const;
 	///
+	bool hasSettings() const { return true; }
+	///
 	DisplayType display() const { return AlignCenter; }
 	///
 	docstring screenLabel() const;
@@ -78,6 +80,13 @@ public:
 		{ return s == "printnomenclature"; }
 	///
 	int latex(odocstream &, OutputParams const &) const;
+	///
+	docstring contextMenu(BufferView const & bv, int x, int y) const;
+protected:
+	///
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	///
+	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 private:
 	Inset * clone() const { return new InsetPrintNomencl(*this); }
 };

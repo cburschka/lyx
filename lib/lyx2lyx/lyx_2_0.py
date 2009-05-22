@@ -688,6 +688,25 @@ def revert_nomencl_width(document):
       i = i + 1
 
 
+def revert_nomencl_cwidth(document):
+    " Remove width param from nomencl_print "
+    i = 0
+    while True:
+      i = find_token(document.body, "\\begin_inset CommandInset nomencl_print", i)
+      if i == -1:
+        break
+      j = find_end_of_inset(document.body, i)
+      l = find_token(document.body, "width", i, j)
+      if l == -1:
+            document.warning("Can't find width option for nomencl_print!")
+            i = j
+            continue
+      width = get_value(document.body, "width", i, j).strip('"')
+      del document.body[l]
+      add_to_preamble(document, ["\\setlength{\\nomlabelwidth}{" + width + "}"])
+      i = i + 1
+
+
 ##
 # Conversion hub
 #
@@ -706,10 +725,12 @@ convert = [[346, []],
            [356, []],
            [357, []],
            [358, []],
-           [359, [convert_nomencl_width]]
+           [359, [convert_nomencl_width]],
+           [360, []]
           ]
 
-revert =  [[358, [revert_nomencl_width]],
+revert =  [[359, [revert_nomencl_cwidth]],
+           [358, [revert_nomencl_width]],
            [357, [revert_custom_processors]],
            [356, [revert_ulinelatex]],
            [355, [revert_uulinewave]],

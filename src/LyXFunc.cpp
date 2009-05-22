@@ -1129,6 +1129,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			case INDEX_CODE:
 			case LABEL_CODE:
 			case NOMENCL_CODE:
+			case NOMENCL_PRINT_CODE:
 			case REF_CODE:
 			case TOC_CODE:
 			case HYPERLINK_CODE: {

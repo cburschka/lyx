@@ -534,6 +534,14 @@ Menuset
 		OptItem "Settings...|S" "inset-settings"
 	End
 
+#
+# Nomencl List context menu
+#
+
+	Menu "context-nomenclprint"
+		OptItem "Settings...|S" "inset-settings"
+	End
+
 
 #
 # Toc Changes context menu

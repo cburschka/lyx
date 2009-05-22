@@ -19,9 +19,11 @@
 #include "DispatchResult.h"
 #include "Font.h"
 #include "FuncRequest.h"
+#include "FuncStatus.h"
 #include "InsetIterator.h"
 #include "InsetList.h"
 #include "LaTeXFeatures.h"
+#include "Length.h"
 #include "MetricsInfo.h"
 #include "sgml.h"
 
@@ -122,7 +124,7 @@ void InsetNomencl::validate(LaTeXFeatures & features) const
 /////////////////////////////////////////////////////////////////////
 
 InsetPrintNomencl::InsetPrintNomencl(InsetCommandParams const & p)
-	: InsetCommand(p, "printnomenclature")
+	: InsetCommand(p, "nomencl_print")
 {}
 
 
@@ -134,8 +136,10 @@ ParamInfo const & InsetPrintNomencl::findInfo(string const & /* cmdName */)
 	static ParamInfo param_info_;
 	if (param_info_.empty()) {
 		// how is the width set?
-		// values: none|auto
+		// values: none|auto|custom
 		param_info_.add("set_width", ParamInfo::LYX_INTERNAL);
+		// custom width
+		param_info_.add("width", ParamInfo::LYX_INTERNAL);
 	}
 	return param_info_;
 }
@@ -145,6 +149,47 @@ docstring InsetPrintNomencl::screenLabel() const
 {
 	return _("Nomenclature");
 }
+
+
+void InsetPrintNomencl::doDispatch(Cursor & cur, FuncRequest & cmd)
+{
+	switch (cmd.action) {
+
+	case LFUN_INSET_MODIFY: {
+		InsetCommandParams p(NOMENCL_PRINT_CODE);
+		// FIXME UNICODE
+		InsetCommand::string2params("nomencl_print",
+			to_utf8(cmd.argument()), p);
+		if (p.getCmdName().empty()) {
+			cur.noUpdate();
+			break;
+		}
+		setParams(p);
+		break;
+	}
+
+	default:
+		InsetCommand::doDispatch(cur, cmd);
+		break;
+	}
+}
+
+
+bool InsetPrintNomencl::getStatus(Cursor & cur, FuncRequest const & cmd,
+	FuncStatus & status) const
+{
+	switch (cmd.action) {
+
+	case LFUN_INSET_DIALOG_UPDATE:
+	case LFUN_INSET_MODIFY:
+		status.setEnabled(true);
+		return true;
+
+	default:
+		return InsetCommand::getStatus(cur, cmd, status);
+	}
+}
+
 
 
 int InsetPrintNomencl::docbook(odocstream & os, OutputParams const &) const
@@ -232,6 +277,16 @@ int InsetPrintNomencl::latex(odocstream & os, OutputParams const &) const
 			os << " {}\n";
 			lines += 5;
 		}
+	} else if (getParam("set_width") == "custom") {
+		// custom length as optional arg of \printnomenclature
+		string const width =
+			Length(to_ascii(getParam("width"))).asLatexString();
+		os << '\\'
+		   << from_ascii(getCmdName())
+		   << '['
+		   << from_ascii(width)
+		   << "]{}";
+		return lines;
 	}
 	// output the command \printnomenclature
 	os << getCommand();
@@ -250,6 +305,12 @@ void InsetPrintNomencl::validate(LaTeXFeatures & features) const
 InsetCode InsetPrintNomencl::lyxCode() const
 {
 	return NOMENCL_PRINT_CODE;
+}
+
+
+docstring InsetPrintNomencl::contextMenu(BufferView const &, int, int) const
+{
+	return from_ascii("context-nomenclprint");
 }
 
 

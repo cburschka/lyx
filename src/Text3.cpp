@@ -1630,7 +1630,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		dispatch(cur, fr);
 		break;
 	}
-
+	
 	case LFUN_NOMENCL_PRINT:
 	case LFUN_TOC_INSERT:
 	case LFUN_LINE_INSERT:
@@ -2127,6 +2127,8 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 			code = INDEX_PRINT_CODE;
 		else if (cmd.argument() == "nomenclature")
 			code = NOMENCL_CODE;
+		else if (cmd.argument() == "nomencl_print")
+			code = NOMENCL_PRINT_CODE;
 		else if (cmd.argument() == "label")
 			code = LABEL_CODE;
 		else if (cmd.argument() == "note")

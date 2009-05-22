@@ -2420,9 +2420,9 @@ char const * const dialognames[] = {
 "findreplaceadv", "float", "graphics", "href", "include", "index",
 "index_print", "info", "listings", "label", "log", "mathdelimiter",
 "mathmatrix", "mathspace", "nomenclature", "note", "paragraph", "phantom",
-"prefs", "print", "ref", "sendto", "space", "spellchecker", "symbols",
-"tabular", "tabularcreate", "thesaurus", "texinfo", "toc", "view-source",
-"vspace", "wrap" };
+"prefs", "print", "nomencl_print", "ref", "sendto", "space", "spellchecker",
+"symbols", "tabular", "tabularcreate", "thesaurus", "texinfo", "toc",
+"view-source", "vspace", "wrap" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -2611,6 +2611,7 @@ Dialog * createGuiPhantom(GuiView & lv);
 Dialog * createGuiPreferences(GuiView & lv);
 Dialog * createGuiPrint(GuiView & lv);
 Dialog * createGuiPrintindex(GuiView & lv);
+Dialog * createGuiPrintNomencl(GuiView & lv);
 Dialog * createGuiRef(GuiView & lv);
 Dialog * createGuiSearch(GuiView & lv);
 Dialog * createGuiSearchAdv(GuiView & lv);
@@ -2696,6 +2697,8 @@ Dialog * GuiView::build(string const & name)
 		return createGuiPreferences(*this);
 	if (name == "print")
 		return createGuiPrint(*this);
+	if (name == "nomencl_print")
+		return createGuiPrintNomencl(*this);
 	if (name == "ref")
 		return createGuiRef(*this);
 	if (name == "sendto")
