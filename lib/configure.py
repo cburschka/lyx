@@ -457,7 +457,7 @@ def checkConverterEntries():
         rc_entry = [ r'\converter lyx html2 "%%" ""' ] )
     if elyx.find('elyxer.py') >= 0 :
       addToRC(r'''\copier    html2       "python -tt $$s/scripts/ext_copy.py -e html,png,css $$i $$o"''')
-      checkViewer('an eLyXer previewer', ['firefox', 'mozilla file://$$p$$i', 'netscape'],
+      checkViewer('an HTML previewer', ['firefox', 'mozilla file://$$p$$i', 'netscape'],
           rc_entry = [r'\Format html2   html    "HTML (eLyXer)"        e  "%%"	""	"document"'])
 
     #
