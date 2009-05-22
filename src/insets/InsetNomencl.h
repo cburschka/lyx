@@ -80,13 +80,7 @@ public:
 	int latex(odocstream &, OutputParams const &) const;
 private:
 	Inset * clone() const { return new InsetPrintNomencl(*this); }
-	///
-	friend docstring nomenclWidest(Buffer const & buffer);
 };
-
-/// return the widest symbol of all nomenclature entries of the document
-docstring nomenclWidest(Buffer const &);
-
 
 } // namespace lyx
 

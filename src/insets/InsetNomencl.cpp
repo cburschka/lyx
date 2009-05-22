@@ -125,10 +125,15 @@ InsetPrintNomencl::InsetPrintNomencl(InsetCommandParams const & p)
 
 ParamInfo const & InsetPrintNomencl::findInfo(string const & /* cmdName */)
 {
-	// there are no parameters to give because the symbol width is set via
-	// nomencl's \nomlabelwidth in InsetPrintNomencl::latex and not as
-	// optional parameter of \printnomenclature
+	// The symbol width is set via nomencl's \nomlabelwidth in 
+	// InsetPrintNomencl::latex and not as optional parameter of
+	// \printnomenclature
 	static ParamInfo param_info_;
+	if (param_info_.empty()) {
+		// how is the width set?
+		// values: none|auto
+		param_info_.add("set_width", ParamInfo::LYX_INTERNAL);
+	}
 	return param_info_;
 }
 
@@ -163,10 +168,11 @@ int InsetPrintNomencl::docbook(odocstream & os, OutputParams const &) const
 }
 
 
+namespace {
 docstring nomenclWidest(Buffer const & buffer)
 {
-	// nomenclWidest() determines and returns the widest used nomenclature
-	// symbol in the document
+	// nomenclWidest() determines and returns the widest used
+	// nomenclature symbol in the document
 
 	int w = 0;
 	docstring symb;
@@ -199,20 +205,29 @@ docstring nomenclWidest(Buffer const & buffer)
 		symb = symb + "W";
 	return symb;
 }
+}
 
 
 int InsetPrintNomencl::latex(odocstream & os, OutputParams const &) const
 {
 	int lines = 0;
-	docstring widest = nomenclWidest(buffer());
-	// set the label width via nomencl's command \nomlabelwidth
-	// this must be output before the command \printnomenclature
-	if (!widest.empty()) {
-		// assure that the width is never below the predefined value of 1 cm
-		os << "\\settowidth{\\nomlabelwidth}{" << widest <<"}\n";
-		os << "\\ifthenelse{%\n  \\lengthtest{\\nomlabelwidth < 1cm}}\n";
-		os << " {\\setlength{\\nomlabelwidth}{1cm}}\n {}\n";
-		++lines;
+	if (getParam("set_width") == "auto") {
+		docstring widest = nomenclWidest(buffer());
+		// set the label width via nomencl's command
+		// \nomlabelwidth. This must be output before the command
+		// \printnomenclature
+		if (!widest.empty()) {
+			// assure that the width is never below the
+			// predefined value of 1 cm
+			os << "\\settowidth{\\nomlabelwidth}{"
+			   << widest
+			   << "}\n";
+			os << "\\ifthenelse{%\n";
+			os << "\\lengthtest{\\nomlabelwidth < 1cm}}\n";
+			os << " {\\setlength{\\nomlabelwidth}{1cm}}\n";
+			os << " {}\n";
+			lines += 5;
+		}
 	}
 	// output the command \printnomenclature
 	os << getCommand();

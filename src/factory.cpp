@@ -209,8 +209,11 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 			return new InsetPrintIndex(icp);
 		}
 
-		case LFUN_NOMENCL_PRINT:
-			return new InsetPrintNomencl(InsetCommandParams(NOMENCL_PRINT_CODE));
+		case LFUN_NOMENCL_PRINT: {
+			InsetCommandParams icp(NOMENCL_PRINT_CODE);
+			icp["set_width"] = from_ascii("auto");
+			return new InsetPrintNomencl(icp);
+		}
 
 		case LFUN_TOC_INSERT:
 			return new InsetTOC(InsetCommandParams(TOC_CODE));

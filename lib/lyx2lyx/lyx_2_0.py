@@ -660,6 +660,34 @@ def revert_custom_processors(document):
     del document.header[i]
 
 
+def convert_nomencl_width(document):
+    " Add set_width param to nomencl_print "
+    i = 0
+    while True:
+      i = find_token(document.body, "\\begin_inset CommandInset nomencl_print", i)
+      if i == -1:
+        break
+      document.body.insert(i + 2, "set_width \"none\"")
+      i = i + 1
+
+
+def revert_nomencl_width(document):
+    " Remove set_width param from nomencl_print "
+    i = 0
+    while True:
+      i = find_token(document.body, "\\begin_inset CommandInset nomencl_print", i)
+      if i == -1:
+        break
+      j = find_end_of_inset(document.body, i)
+      l = find_token(document.body, "set_width", i, j)
+      if l == -1:
+            document.warning("Can't find set_width option for nomencl_print!")
+            i = j
+            continue
+      del document.body[l]
+      i = i + 1
+
+
 ##
 # Conversion hub
 #
@@ -677,10 +705,12 @@ convert = [[346, []],
            [355, []],
            [356, []],
            [357, []],
-           [358, []]
+           [358, []],
+           [359, [convert_nomencl_width]]
           ]
 
-revert =  [[357, [revert_custom_processors]],
+revert =  [[358, [revert_nomencl_width]],
+           [357, [revert_custom_processors]],
            [356, [revert_ulinelatex]],
            [355, [revert_uulinewave]],
            [354, [revert_strikeout]],
