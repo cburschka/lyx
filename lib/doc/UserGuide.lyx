@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 357
+\lyxformat 360
 \begin_document
 \begin_header
 \textclass scrbook
@@ -69,6 +69,8 @@
 
 \graphics default
 \default_output_format default
+\bibtex_command default
+\index_command default
 \paperfontsize 12
 \spacing single
 \use_hyperref true
@@ -26080,7 +26082,7 @@ reference "sub:Document-Font"
 
 \end_inset
 
- after the the index entries of the other LaTeX-packages although all these
+ after the index entries of the other LaTeX-packages although all these
  index commands start with 
 \begin_inset Quotes eld
 \end_inset
@@ -43991,6 +43993,7 @@ The above bibliography is created from a BibTeX-database.
 \series bold
 \begin_inset CommandInset nomencl_print
 LatexCommand printnomenclature
+set_width "none"
 
 \end_inset
 

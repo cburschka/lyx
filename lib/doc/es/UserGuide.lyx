@@ -26724,19 +26724,15 @@ reference "sec:Indice-alfabético"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In some cases the index entry order is not correct when you are using the
- program 
+En algunos casos, si estás usando el programa 
 \family sans
-makeindex 
+makeindex
 \family default
-to generate the index (see sec.
+ para generar el índice, el orden de entradas en el índice no es correcto
+ (véase la sec.
 \begin_inset space \thinspace{}
 \end_inset
 
-
-\lang spanish
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -26744,20 +26740,16 @@ reference "sub:Programas-para-índice"
 
 \end_inset
 
-
-\lang english
 ).
- 
+ Por ejemplo, 
 \family sans
 makeindex
 \family default
- would for example print the index entry for the LaTeX-package aeguill in
- sec.
+ podría imprimir la entrada de índice para el paquete LaTeX aeguill, en
+ la sec.
 \begin_inset space \thinspace{}
 \end_inset
 
-
-\lang spanish
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -26765,30 +26757,26 @@ reference "sub:Fuentes-de-documento"
 
 \end_inset
 
-
-\lang english
- after the the index entries of the other LaTeX-packages although all these
- index commands start with 
+, después de las entradas de índice de los demás paquetes LaTeX, aunque
+ todos estos comandos de índice empiezan con 
 \begin_inset Quotes eld
 \end_inset
 
 
 \series bold
-\lang spanish
 LaTeX, paquetes ! 
 \series default
-\lang english
 
-\begin_inset Quotes eld
+\begin_inset Quotes erd
 \end_inset
 
 .
- The reason is that the index entry for aeguill is in a footnote.
- To fix this 
+ La razón es que la entrada de índice para aeguill está en una nota al pie.
+ Para arreglar este fallo de 
 \family sans
 makeindex
 \family default
- bug, add these commands to the preamble of your document:
+, añade estos comandos en el preámbulo del documento:
 \end_layout
 
 \begin_layout Standard
