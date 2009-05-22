@@ -355,6 +355,8 @@ BufferParams::BufferParams()
 	inputenc = "auto";
 	graphicsDriver = "default";
 	defaultOutputFormat = "default";
+	bibtex_command = "default";
+	index_command = "default";
 	sides = OneSide;
 	columns = 1;
 	listings_params = string();
@@ -531,6 +533,12 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		readGraphicsDriver(lex);
 	} else if (token == "\\default_output_format") {
 		lex >> defaultOutputFormat;
+	} else if (token == "\\bibtex_command") {
+		lex.eatLine();
+		bibtex_command = lex.getString();
+	} else if (token == "\\index_command") {
+		lex.eatLine();
+		index_command = lex.getString();
 	} else if (token == "\\font_roman") {
 		lex.eatLine();
 		fontsRoman = lex.getString();
@@ -813,6 +821,8 @@ void BufferParams::writeFile(ostream & os) const
 	}
 	os << "\n\\graphics " << graphicsDriver << '\n';
 	os << "\\default_output_format " << defaultOutputFormat << '\n';
+	os << "\\bibtex_command " << bibtex_command << '\n';
+	os << "\\index_command " << index_command << '\n';
 
 	if (!float_placement.empty()) {
 		os << "\\float_placement " << float_placement << '\n';

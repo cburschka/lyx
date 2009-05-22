@@ -630,6 +630,7 @@ def revert_uulinewave(document):
             return
         del document.body[i]
 
+
 def revert_ulinelatex(document):
     " Reverts \\uline character style "
     i = find_token(document.body, '\\bar under', 0)
@@ -643,6 +644,20 @@ def revert_ulinelatex(document):
             + '\\newcommand{\\b@xcite}[2][\\%]{\\def\\def@pt{\\%}\\def\\pas@pt{#1}\n'
             + '  \\mbox{\\ifx\\def@pt\\pas@pt\\cite@rig{#2}\\else\\cite@rig[#1]{#2}\\fi}}\n'
             + '\\renewcommand{\\underbar}[1]{{\\let\\cite\\b@xcite\\uline{#1}}}\n')
+
+
+def revert_custom_processors(document):
+    " Remove bibtex_command and index_command params "
+    i = find_token(document.header, '\\bibtex_command', 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\bibtex_command.")
+        return
+    del document.header[i]
+    i = find_token(document.header, '\\index_command', 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\index_command.")
+        return
+    del document.header[i]
 
 
 ##
@@ -661,10 +676,12 @@ convert = [[346, []],
            [354, []],
            [355, []],
            [356, []],
-           [357, []]
+           [357, []],
+           [358, []]
           ]
 
-revert =  [[356, [revert_ulinelatex]],
+revert =  [[357, [revert_custom_processors]],
+           [356, [revert_ulinelatex]],
            [355, [revert_uulinewave]],
            [354, [revert_strikeout]],
            [353, [revert_printindexall]],

@@ -127,6 +127,14 @@ public:
 	*/
 	bool use_japanese;
 
+	/** Customized bibtex_command
+	*/
+	mutable std::string bibtex_command;
+
+	/** Customized index_command
+	*/
+	mutable std::string index_command;
+
 	/** Line length to use with plaintext export.
 	*/
 	size_type linelen;

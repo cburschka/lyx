@@ -44,6 +44,8 @@ protected:
 	void updateView();
 
 protected Q_SLOTS:
+	void on_indexCO_activated(int n);
+	void on_indexOptionsED_textChanged(QString);
 	void on_addIndexPB_pressed();
 	void on_renamePB_clicked();
 	void on_removePB_pressed();

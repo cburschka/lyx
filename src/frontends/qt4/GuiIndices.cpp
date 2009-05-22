@@ -22,6 +22,7 @@
 #include "frontends/alert.h"
 
 #include "BufferParams.h"
+#include "LyXRC.h"
 
 #include "support/gettext.h"
 #include "support/lstrings.h"
@@ -32,6 +33,10 @@
 #include <QIcon>
 #include <QColor>
 #include <QColorDialog>
+
+
+using namespace std;
+using namespace lyx::support;
 
 
 namespace lyx {
@@ -46,6 +51,14 @@ GuiIndices::GuiIndices(QWidget * parent)
 	indicesTW->headerItem()->setText(0, qt_("Name"));
 	indicesTW->headerItem()->setText(1, qt_("Label Color"));
 	indicesTW->setSortingEnabled(true);
+
+	indexCO->clear();
+	indexCO->addItem(qt_("Default"), QString("default"));
+	for (vector<string>::const_iterator it = lyxrc.index_alternatives.begin();
+			     it != lyxrc.index_alternatives.end(); ++it) {
+		QString const command = toqstr(*it).left(toqstr(*it).indexOf(" "));
+		indexCO->addItem(command, command);
+	}
 }
 
 void GuiIndices::update(BufferParams const & params)
@@ -60,6 +73,22 @@ void GuiIndices::update(BufferParams const & params)
 	availableLA->setEnabled(state);
 	removePB->setEnabled(state);
 	colorPB->setEnabled(state);
+
+	string command;
+	string options =
+		split(params.index_command, command, ' ');
+
+	int const pos = indexCO->findData(toqstr(command));
+	if (pos != -1) {
+		indexCO->setCurrentIndex(pos);
+		indexOptionsED->setText(toqstr(options).trimmed());
+	} else {
+		indexCO->setCurrentIndex(0);
+		indexOptionsED->clear();
+	}
+	indexOptionsED->setEnabled(
+		indexCO->currentIndex() != 0);
+
 	updateView();
 }
 
@@ -103,6 +132,28 @@ void GuiIndices::apply(BufferParams & params) const
 {
 	params.use_indices = multipleIndicesCB->isChecked();
 	params.indiceslist() = indiceslist_;
+
+	string const index_command =
+		fromqstr(indexCO->itemData(
+			indexCO->currentIndex()).toString());
+	if (index_command == "default")
+		params.index_command = index_command;
+	else
+		params.index_command = index_command + " "
+			+ fromqstr(indexOptionsED->text());
+}
+
+
+void GuiIndices::on_indexCO_activated(int n)
+{
+	indexOptionsED->setEnabled(n != 0);
+	changed();
+}
+
+
+void GuiIndices::on_indexOptionsED_textChanged(QString)
+{
+	changed();
 }
 
 

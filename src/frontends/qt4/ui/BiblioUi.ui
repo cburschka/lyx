@@ -12,32 +12,23 @@
   <property name="windowTitle" >
    <string/>
   </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
-    <number>9</number>
-   </property>
-   <property name="spacing" >
-    <number>6</number>
-   </property>
+  <layout class="QGridLayout" name="gridLayout_3" >
    <item row="0" column="0" >
     <widget class="QGroupBox" name="CiteStyleBG" >
      <property name="title" >
       <string>Citation Style</string>
      </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
-       <number>9</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
-      <item row="2" column="0" >
-       <widget class="QRadioButton" name="citeJurabibRB" >
+     <property name="flat" >
+      <bool>true</bool>
+     </property>
+     <layout class="QGridLayout" name="gridLayout" >
+      <item row="0" column="0" >
+       <widget class="QRadioButton" name="citeDefaultRB" >
         <property name="toolTip" >
-         <string>Use the jurabib styles for law and humanities</string>
+         <string>Use BibTeX's default numerical styles</string>
         </property>
         <property name="text" >
-         <string>&amp;Jurabib</string>
+         <string>&amp;Default (numerical)</string>
         </property>
        </widget>
       </item>
@@ -51,23 +42,13 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="0" >
-       <widget class="QRadioButton" name="citeDefaultRB" >
-        <property name="toolTip" >
-         <string>Use BibTeX's default numerical styles</string>
-        </property>
-        <property name="text" >
-         <string>&amp;Default (numerical)</string>
-        </property>
-       </widget>
-      </item>
       <item row="1" column="1" >
        <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
         <property name="spacing" >
          <number>6</number>
+        </property>
+        <property name="margin" >
+         <number>0</number>
         </property>
         <item>
          <widget class="QLabel" name="citationStyleL" >
@@ -88,9 +69,7 @@
            <bool>false</bool>
           </property>
           <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>0</hsizetype>
-            <vsizetype>0</vsizetype>
+           <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -99,23 +78,33 @@
         </item>
        </layout>
       </item>
+      <item row="1" column="2" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0" >
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="2" column="0" >
+       <widget class="QRadioButton" name="citeJurabibRB" >
+        <property name="toolTip" >
+         <string>Use the jurabib styles for law and humanities</string>
+        </property>
+        <property name="text" >
+         <string>&amp;Jurabib</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
-   <item row="0" column="1" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="1" column="0" colspan="2" >
+   <item row="1" column="0" >
     <widget class="QCheckBox" name="bibtopicCB" >
      <property name="toolTip" >
       <string>Select this if you want to split your bibliography into sections</string>
@@ -125,7 +114,77 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="2" >
+   <item row="2" column="0" >
+    <widget class="QGroupBox" name="bibtexGB" >
+     <property name="toolTip" >
+      <string>Here you can define an alternative program to or specific options of bibtex.</string>
+     </property>
+     <property name="title" >
+      <string>Bibliography generation</string>
+     </property>
+     <property name="flat" >
+      <bool>true</bool>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2" >
+      <item row="0" column="0" >
+       <layout class="QHBoxLayout" name="horizontalLayout" >
+        <item>
+         <widget class="QLabel" name="bibtexLA" >
+          <property name="text" >
+           <string>&amp;Processor:</string>
+          </property>
+          <property name="buddy" >
+           <cstring>bibtexCO</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="bibtexCO" >
+          <property name="toolTip" >
+           <string>Select a processor</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item rowspan="2" row="0" column="1" >
+       <spacer name="horizontalSpacer" >
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0" >
+         <size>
+          <width>183</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="1" column="0" >
+       <layout class="QHBoxLayout" name="horizontalLayout_2" >
+        <item>
+         <widget class="QLabel" name="bibtexOptionsLA" >
+          <property name="text" >
+           <string>&amp;Options:</string>
+          </property>
+          <property name="buddy" >
+           <cstring>bibtexOptionsED</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="bibtexOptionsED" >
+          <property name="toolTip" >
+           <string>Define options such as --min-crossrefs (see man bibtex).</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="3" column="0" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Vertical</enum>
@@ -133,7 +192,7 @@
      <property name="sizeType" >
       <enum>QSizePolicy::Expanding</enum>
      </property>
-     <property name="sizeHint" >
+     <property name="sizeHint" stdset="0" >
       <size>
        <width>20</width>
        <height>20</height>

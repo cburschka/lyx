@@ -1,13 +1,17 @@
 LyX file-format changes
 -----------------------
 
-2009-05-05 Pavel Sanda, Enrico Forestieri
-	* Format incremented to 357: Change of the latex output for underline
-	  from \underbar to ulem's \uline.
+2009-04-26 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 358: support for custom bibtex and
+	  makeindex commands.
+
+2009-05-05 Pavel Sanda <sanda@lyx.org>, Enrico Forestieri <forenr@lyx.org>
+	* Format incremented to 357: Change of the latex output for
+	  underline from \underbar to ulem's \uline.
 
 2009-05-05 Pavel Sanda <sanda@lyx.org>
-	* Format incremented to 356: support for double and wave underline character
-	  styles via ulem's \uuline and \uwave
+	* Format incremented to 356: support for double and wave underline
+	  character styles via ulem's \uuline and \uwave
 
 2009-05-03 Pavel Sanda <sanda@lyx.org>
 	* Format incremented to 355: support for strikeout character
@@ -25,7 +29,8 @@ LyX file-format changes
 	* Format incremented to 352: splitindex support.
 
 2009-04-11 Uwe Stöhr <uwestoehr@web.de>
-	* Format incremented to 351: support to set a page background color.
+	* Format incremented to 351: support to set a page background
+	  color.
 
 2009-04-06 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 350: new param \default_output_format.

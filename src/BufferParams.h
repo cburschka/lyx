@@ -184,6 +184,10 @@ public:
 	std::string graphicsDriver;
 	/// The default output format
 	std::string defaultOutputFormat;
+	/// customized bibliography processor
+	std::string bibtex_command;
+	/// customized index processor
+	std::string index_command;
 	/// the rm font
 	std::string fontsRoman;
 	/// the sf font

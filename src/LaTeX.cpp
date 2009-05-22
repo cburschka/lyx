@@ -50,7 +50,6 @@ namespace os = support::os;
 //   different way.
 // - the makeindex style files should be taken care of with
 //   the dependency mechanism.
-// - makeindex commandline options should be supported
 // - somewhere support viewing of bibtex and makeindex log files.
 // - we should perhaps also scan the bibtex log file
 
@@ -414,6 +413,9 @@ bool LaTeX::runMakeIndex(string const & f, OutputParams const & runparams,
 {
 	string tmp = runparams.use_japanese ?
 		lyxrc.jindex_command : lyxrc.index_command;
+	
+	if (!runparams.index_command.empty())
+		tmp = runparams.index_command;
 
 	LYXERR(Debug::LATEX,
 		"idx file has been made, running index processor ("
@@ -570,6 +572,9 @@ bool LaTeX::runBibTeX(vector<AuxInfo> const & bibtex_info,
 
 		string tmp = runparams.use_japanese ?
 			lyxrc.jbibtex_command : lyxrc.bibtex_command;
+
+		if (!runparams.bibtex_command.empty())
+			tmp = runparams.bibtex_command;
 		tmp += " ";
 		// onlyFilename() is needed for cygwin
 		tmp += quoteName(onlyFilename(removeExtension(

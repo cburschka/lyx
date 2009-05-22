@@ -859,10 +859,23 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(biblioModule->bibtopicCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
+	connect(biblioModule->bibtexCO, SIGNAL(activated(int)),
+		this, SLOT(bibtexChanged(int)));
+	connect(biblioModule->bibtexOptionsED, SIGNAL(textChanged(QString)),
+		this, SLOT(change_adaptor()));
 	// biblio
 	biblioModule->citeStyleCO->addItem(qt_("Author-year"));
 	biblioModule->citeStyleCO->addItem(qt_("Numerical"));
 	biblioModule->citeStyleCO->setCurrentIndex(0);
+	
+	biblioModule->bibtexCO->clear();
+
+	biblioModule->bibtexCO->addItem(qt_("Default"), QString("default"));
+	for (vector<string>::const_iterator it = lyxrc.bibtex_alternatives.begin();
+			     it != lyxrc.bibtex_alternatives.end(); ++it) {
+		QString const command = toqstr(*it).left(toqstr(*it).indexOf(" "));
+		biblioModule->bibtexCO->addItem(command, command);
+	}
 
 	// indices
 	indicesModule = new GuiIndices;
@@ -1498,6 +1511,13 @@ void GuiDocument::classChanged()
 }
 
 
+void GuiDocument::bibtexChanged(int n)
+{
+	biblioModule->bibtexOptionsED->setEnabled(n != 0);
+	changed();
+}
+
+
 namespace {
 	// This is an insanely complicated attempt to make this sort of thing
 	// work with RTL languages.
@@ -1720,6 +1740,15 @@ void GuiDocument::applyView()
 
 	bp_.use_bibtopic =
 		biblioModule->bibtopicCB->isChecked();
+
+	string const bibtex_command =
+		fromqstr(biblioModule->bibtexCO->itemData(
+			biblioModule->bibtexCO->currentIndex()).toString());
+	if (bibtex_command == "default")
+		bp_.bibtex_command = bibtex_command;
+	else
+		bp_.bibtex_command = bibtex_command + " "
+			+ fromqstr(biblioModule->bibtexOptionsED->text());
 
 	// Indices
 	indicesModule->apply(bp_);
@@ -2057,6 +2086,21 @@ void GuiDocument::paramsToDialog()
 
 	biblioModule->bibtopicCB->setChecked(
 		bp_.use_bibtopic);
+
+	string command;
+	string options =
+		split(bp_.bibtex_command, command, ' ');
+
+	int const bpos = biblioModule->bibtexCO->findData(toqstr(command));
+	if (bpos != -1) {
+		biblioModule->bibtexCO->setCurrentIndex(bpos);
+		biblioModule->bibtexOptionsED->setText(toqstr(options).trimmed());
+	} else {
+		biblioModule->bibtexCO->setCurrentIndex(0);
+		biblioModule->bibtexOptionsED->clear();
+	}
+	biblioModule->bibtexOptionsED->setEnabled(
+		biblioModule->bibtexCO->currentIndex() != 0);
 
 	// indices
 	indicesModule->update(bp_);
