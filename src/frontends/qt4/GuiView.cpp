@@ -2419,10 +2419,10 @@ char const * const dialognames[] = {
 "citation", "document", "errorlist", "ert", "external", "file", "findreplace",
 "findreplaceadv", "float", "graphics", "href", "include", "index",
 "index_print", "info", "listings", "label", "log", "mathdelimiter",
-"mathmatrix", "mathspace", "nomenclature", "note", "paragraph", "phantom",
-"prefs", "print", "nomencl_print", "ref", "sendto", "space", "spellchecker",
-"symbols", "tabular", "tabularcreate", "thesaurus", "texinfo", "toc",
-"view-source", "vspace", "wrap" };
+"mathmatrix", "mathspace", "nomenclature", "nomencl_print", "note",
+"paragraph", "phantom", "prefs", "print", "ref", "sendto", "space",
+"spellchecker", "symbols", "tabular", "tabularcreate", "thesaurus", "texinfo",
+"toc", "view-source", "vspace", "wrap" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
