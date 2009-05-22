@@ -2529,8 +2529,8 @@ void LyXAction::init()
  * \li Params: <NAME>: aboutlyx|bibitem|bibtex|box|branch|changes|character|citation|\n
                document|errorlist|ert|external|file|findreplace|findreplaceadv|float|graphics|\n
                href|include|index|index_print|info|label|listings|log|mathdelimiter|\n
-               mathmatrix|mathspace|nomenclature|note|paragraph|phantom|prefs|print|\n
-               nomencl_print|ref|sendto|space|spellchecker|symbols|tabular|tabularcreate|\n
+               mathmatrix|mathspace|nomenclature|nomencl_print|note|paragraph|phantom|prefs|\n
+               print|ref|sendto|space|spellchecker|symbols|tabular|tabularcreate|\n
                thesaurus|texinfo|toc|view-source|vspace|wrap|<SPECIAL> \n
                <SPECIAL>: latexlog|vclog \n
                <DATA>: data, usually settings for the given dialog. Use debug mode for the
