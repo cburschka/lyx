@@ -29,6 +29,7 @@
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
+#include "support/os.h"
 #include "support/Package.h"
 
 #include "support/lassert.h"
@@ -328,7 +329,7 @@ Buffer * BufferList::getBufferFromTmp(string const & s)
 	BufferStorage::iterator it = bstore.begin();
 	BufferStorage::iterator end = bstore.end();
 	for (; it < end; ++it)
-		if (prefixIs(s, (*it)->temppath()))
+		if (os::path_prefix_is(s, (*it)->temppath()))
 			return *it;
 	return 0;
 }

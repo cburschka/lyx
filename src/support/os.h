@@ -33,6 +33,11 @@ enum io_channel {
 	STDERR
 };
 
+enum path_case {
+	CASE_UNCHANGED,
+	CASE_ADJUSTED
+};
+
 /// Do some work just once.
 void init(int argc, char * argv[]);
 
@@ -55,7 +60,9 @@ std::string const python();
 bool isFilesystemCaseSensitive();
 
 /// Extract the path common to both @c p1 and @c p2. DBCS aware!
-/// \p p1, \p p2 and the return value are encoded in utf8.
+/// \p p1 and \p p2 are encoded in ucs4, \returns the index to the
+/// end of the last matching path component (the index may be pointing
+/// to the path separator, if it is the last char in @c p2).
 std::size_t common_path(docstring const & p1, docstring const & p2);
 
 /// Converts a unix style path to host OS style.
@@ -126,6 +133,18 @@ bool autoOpenFile(std::string const & filename, auto_open_mode const mode = VIEW
   * \returns the resolved path in utf8 encoding.
   */
 std::string real_path(std::string const & path);
+
+/** Checks whether \param path starts with \param pre, accounting for case
+  * insensitive file systems.
+  */
+bool path_prefix_is(std::string const & path, std::string const & pre);
+
+/** Checks whether \param path starts with \param pre, accounting for case
+  * insensitive file systems. If true, the file system is case insensitive,
+  * and \param how == CASE_ADJUSTED, the case of the matching prefix in
+  * @c path is made equal to that of @c pre.
+  */
+bool path_prefix_is(std::string & path, std::string const & pre, path_case how = CASE_UNCHANGED);
 
 } // namespace os
 } // namespace support

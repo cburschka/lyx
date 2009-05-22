@@ -193,8 +193,33 @@ docstring::size_type common_path(docstring const & p1, docstring const & p2)
 			--i;     // here was the last match
 		while (i && p1[i] != '/')
 			--i;
-	}
+	} else
+		--i;
+
 	return i;
+}
+
+
+bool path_prefix_is(string const & path, string const & pre)
+{
+	string tmp = path;
+	return path_prefix_is(tmp, pre, CASE_UNCHANGED);
+}
+
+
+bool path_prefix_is(string & path, string const & pre, path_case how)
+{
+	docstring const p1 = from_utf8(path);
+	docstring const p2 = from_utf8(pre);
+	docstring::size_type i = common_path(p1, p2);
+
+	if (i + 1 != p2.length())
+		return false;
+
+	if (!prefixIs(path, pre) && how == CASE_ADJUSTED)
+		path = to_utf8(p2 + p1.substr(i + 1, p1.length() - i + 1));
+
+	return true;
 }
 
 
