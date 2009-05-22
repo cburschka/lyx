@@ -45,10 +45,11 @@
   \leavevmode\,$\triangleright$\,\allowbreak}
   {->}}
 
-% workaround for a makeindex bug
-\newcommand*{\OrgIndex}{} 
-\let\OrgIndex\index 
-\renewcommand*{\index}[1]{\OrgIndex{#1}}
+% workaround for a makeindex bug, 
+% see sec. "Index Entry Order"
+% only uncomment this when you are using makindex
+%\let\OrgIndex\index 
+%\renewcommand*{\index}[1]{\OrgIndex{#1}}
 \end_preamble
 \options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove,liststotoc
 \use_default_options false
@@ -172,7 +173,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 19.
+letzte Änderung: 23.
  Mai 2009
 \end_layout
 
@@ -31071,16 +31072,6 @@ makeindex
 \family default
  Fehler zu beheben, fügen Sie diese Befehle zum LaTeX-Vorspann ihres Dokuments
  hinzu:
-\end_layout
-
-\begin_layout Standard
-
-\family typewriter
-
-\backslash
-newcommand*{
-\backslash
-OrgIndex}{}
 \end_layout
 
 \begin_layout Standard
