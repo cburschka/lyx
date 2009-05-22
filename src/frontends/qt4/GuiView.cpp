@@ -2669,16 +2669,20 @@ Dialog * GuiView::build(string const & name)
 		return createGuiFloat(*this);
 	if (name == "graphics")
 		return createGuiGraphics(*this);
+	if (name == "href")
+		return createGuiHyperlink(*this);
 	if (name == "include")
 		return createGuiInclude(*this);
 	if (name == "index")
 		return createGuiIndex(*this);
+	if (name == "index_print")
+		return createGuiPrintindex(*this);
 	if (name == "info")
 		return createGuiInfo(*this);
-	if (name == "nomenclature")
-		return createGuiNomenclature(*this);
 	if (name == "label")
 		return createGuiLabel(*this);
+	if (name == "listings")
+		return createGuiListings(*this);
 	if (name == "log")
 		return createGuiLog(*this);
 	if (name == "mathdelimiter")
@@ -2687,6 +2691,10 @@ Dialog * GuiView::build(string const & name)
 		return createGuiMathHSpace(*this);
 	if (name == "mathmatrix")
 		return createGuiMathMatrix(*this);
+	if (name == "nomenclature")
+		return createGuiNomenclature(*this);
+	if (name == "nomencl_print")
+		return createGuiPrintNomencl(*this);
 	if (name == "note")
 		return createGuiNote(*this);
 	if (name == "paragraph")
@@ -2697,8 +2705,6 @@ Dialog * GuiView::build(string const & name)
 		return createGuiPreferences(*this);
 	if (name == "print")
 		return createGuiPrint(*this);
-	if (name == "nomencl_print")
-		return createGuiPrintNomencl(*this);
 	if (name == "ref")
 		return createGuiRef(*this);
 	if (name == "sendto")
@@ -2715,18 +2721,12 @@ Dialog * GuiView::build(string const & name)
 		return createGuiTabularCreate(*this);
 	if (name == "texinfo")
 		return createGuiTexInfo(*this);
-	if (name == "view-source")
-		return createGuiViewSource(*this);
 	if (name == "thesaurus")
 		return createGuiThesaurus(*this);
-	if (name == "href")
-		return createGuiHyperlink(*this);
-	if (name == "index_print")
-		return createGuiPrintindex(*this);
-	if (name == "listings")
-		return createGuiListings(*this);
 	if (name == "toc")
 		return createGuiToc(*this);
+	if (name == "view-source")
+		return createGuiViewSource(*this);
 	if (name == "vspace")
 		return createGuiVSpace(*this);
 	if (name == "wrap")
