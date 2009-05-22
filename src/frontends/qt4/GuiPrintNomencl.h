@@ -48,6 +48,8 @@ private:
 	void dispatchParams();
 	///
 	bool isBufferDependent() const { return true; }
+	///
+	bool isValid();
 
 	///
 	InsetCommandParams params_;

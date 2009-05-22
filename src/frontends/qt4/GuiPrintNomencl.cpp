@@ -129,6 +129,14 @@ void GuiPrintNomencl::applyView()
 }
 
 
+bool GuiPrintNomencl::isValid()
+{
+	return (setWidthCO->itemData(
+			setWidthCO->currentIndex()).toString() != "custom"
+		|| !valueLE->text().isEmpty());
+}
+
+
 bool GuiPrintNomencl::initialiseParams(std::string const & data)
 {
 	InsetCommand::string2params("nomencl_print", data, params_);
