@@ -17,12 +17,15 @@
 
 #include "Buffer.h"
 #include "DispatchResult.h"
+#include "Font.h"
 #include "FuncRequest.h"
 #include "InsetIterator.h"
 #include "InsetList.h"
 #include "LaTeXFeatures.h"
 #include "MetricsInfo.h"
 #include "sgml.h"
+
+#include "frontends/FontMetrics.h"
 
 #include "support/docstream.h"
 #include "support/gettext.h"
@@ -190,19 +193,19 @@ docstring nomenclWidest(Buffer const & buffer)
 			if (inset->lyxCode() != NOMENCL_CODE)
 				continue;
 			nomencl = static_cast<InsetNomencl const *>(inset);
-			docstring const symbol = nomencl->getParam("symbol");
-			// we can only check for the number of characters, since it is
-			// impossible to get the info that "iiiii" is smaller than "WW"
-			// we therefore output w times "W" as string ("W" is always the
-			// widest character)
-			int const wx = symbol.size();
-			if (wx > w)
+			docstring const symbol =
+				nomencl->getParam("symbol");
+			// This is only an approximation,
+			// but the best we can get.
+			int const wx =
+				theFontMetrics(Font()).width(symbol);
+			if (wx > w) {
 				w = wx;
+				symb = symbol;
+			}
 		}
 	}
-	// return the widest symbol as w times a "W"
-	for (int n = 1; n <= w; ++n)
-		symb = symb + "W";
+	// return the widest (or an empty) string
 	return symb;
 }
 }
@@ -219,6 +222,7 @@ int InsetPrintNomencl::latex(odocstream & os, OutputParams const &) const
 		if (!widest.empty()) {
 			// assure that the width is never below the
 			// predefined value of 1 cm
+			// FIXME: Why this?
 			os << "\\settowidth{\\nomlabelwidth}{"
 			   << widest
 			   << "}\n";
