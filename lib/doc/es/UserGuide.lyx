@@ -48,10 +48,11 @@
 \renewenvironment{lyxgreyedout}
  {\textcolor{blue}\bgroup}{\egroup}
 
-% workaround for a makeindex bug
-\newcommand*{\OrgIndex}{} 
-\let\OrgIndex\index 
-\renewcommand*{\index}[1]{\OrgIndex{#1}}
+% workaround for a makeindex bug, 
+% see sec. "Index Entry Order"
+% only uncomment this when you are using makindex
+%\let\OrgIndex\index 
+%\renewcommand*{\index}[1]{\OrgIndex{#1}}
 \end_preamble
 \options intoc,bibtotoc,idxtotoc,BCOR7mm,tablecaptionabove
 \use_default_options false
@@ -26777,16 +26778,6 @@ LaTeX, paquetes !
 makeindex
 \family default
 , añade estos comandos en el preámbulo del documento:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-newcommand*{
-\backslash
-OrgIndex}{}
 \end_layout
 
 \begin_layout Standard
