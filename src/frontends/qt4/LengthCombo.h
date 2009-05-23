@@ -46,7 +46,7 @@ public:
 	virtual void addUnit(lyx::Length::UNIT unit);
 
 protected Q_SLOTS:
-	virtual void has_activated(int index);
+	virtual void hasActivated(int index);
 Q_SIGNALS:
 	/// the current selection has changed
 	void selectionChanged(lyx::Length::UNIT unit);

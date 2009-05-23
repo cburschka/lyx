@@ -34,7 +34,7 @@ LengthCombo::LengthCombo(QWidget * parent)
 	}
 
 	connect(this, SIGNAL(activated(int)),
-		this, SLOT(has_activated(int)));
+		this, SLOT(hasActivated(int)));
 }
 
 
@@ -45,7 +45,7 @@ lyx::Length::UNIT LengthCombo::currentLengthItem() const
 }
 
 
-void LengthCombo::has_activated(int)
+void LengthCombo::hasActivated(int)
 {
   // emit signal
 	selectionChanged(currentLengthItem());
