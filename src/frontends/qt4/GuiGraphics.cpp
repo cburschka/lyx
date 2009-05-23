@@ -207,21 +207,21 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 	connect(clip, SIGNAL(stateChanged(int)),
 		this, SLOT(change_adaptor()));
 	connect(lbY, SIGNAL(textChanged(const QString&)),
-		this, SLOT(change_bb()));
+		this, SLOT(changeBB()));
 	connect(lbYunit, SIGNAL(activated(int)),
-		this, SLOT(change_bb()));
+		this, SLOT(changeBB()));
 	connect(rtY, SIGNAL(textChanged(const QString&)),
-		this, SLOT(change_bb()));
+		this, SLOT(changeBB()));
 	connect(rtYunit, SIGNAL(activated(int)),
-		this, SLOT(change_bb()));
+		this, SLOT(changeBB()));
 	connect(lbX, SIGNAL(textChanged(const QString&)),
-		this, SLOT(change_bb()));
+		this, SLOT(changeBB()));
 	connect(lbXunit, SIGNAL(activated(int)),
-		this, SLOT(change_bb()));
+		this, SLOT(changeBB()));
 	connect(rtX, SIGNAL(textChanged(const QString&)),
-		this, SLOT(change_bb()));
+		this, SLOT(changeBB()));
 	connect(rtXunit, SIGNAL(activated(int)),
-		this, SLOT(change_bb()));
+		this, SLOT(changeBB()));
 	connect(getPB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
 
@@ -248,7 +248,7 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 	connect(displayscale, SIGNAL(textChanged(const QString&)),
 		this, SLOT(change_adaptor()));
 	connect(groupCO, SIGNAL(currentIndexChanged(int)),
-		this, SLOT(change_group(int)));
+		this, SLOT(changeGroup(int)));
 
 	displayscale->setValidator(new QIntValidator(displayscale));
 
@@ -294,7 +294,7 @@ void GuiGraphics::change_adaptor()
 }
 
 
-void GuiGraphics::change_group(int /* index */)
+void GuiGraphics::changeGroup(int /* index */)
 {
 	QString const new_group = groupCO->itemData(
 		groupCO->currentIndex()).toString();
@@ -384,7 +384,7 @@ void GuiGraphics::on_newGroupPB_clicked()
 }
 
 
-void GuiGraphics::change_bb()
+void GuiGraphics::changeBB()
 {
 	bbChanged = true;
 	LYXERR(Debug::GRAPHICS, "[bb_Changed set to true]");
