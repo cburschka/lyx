@@ -264,8 +264,8 @@ public:
 	void update(LyXRC const & rc);
 
 private Q_SLOTS:
-	void change_color();
-	void change_lyxObjects_selection();
+	void changeColor();
+	void changeLyxObjectsSelection();
 
 private:
 	std::vector<ColorCode> lcolors_;

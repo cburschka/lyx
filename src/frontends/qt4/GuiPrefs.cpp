@@ -992,11 +992,11 @@ PrefColors::PrefColors(GuiPreferences * form)
 	// End initialization
 
 	connect(colorChangePB, SIGNAL(clicked()),
-		this, SLOT(change_color()));
+		this, SLOT(changeColor()));
 	connect(lyxObjectsLW, SIGNAL(itemSelectionChanged()),
-		this, SLOT(change_lyxObjects_selection()));
+		this, SLOT(changeLyxObjectsSelection()));
 	connect(lyxObjectsLW, SIGNAL(itemActivated(QListWidgetItem*)),
-		this, SLOT(change_color()));
+		this, SLOT(changeColor()));
 }
 
 
@@ -1017,11 +1017,11 @@ void PrefColors::update(LyXRC const & /*rc*/)
 		lyxObjectsLW->item(i)->setIcon(QIcon(coloritem));
 		newcolors_[i] = curcolors_[i] = color.name();
 	}
-	change_lyxObjects_selection();
+	changeLyxObjectsSelection();
 }
 
 
-void PrefColors::change_color()
+void PrefColors::changeColor()
 {
 	int const row = lyxObjectsLW->currentRow();
 
@@ -1042,7 +1042,7 @@ void PrefColors::change_color()
 	}
 }
 
-void PrefColors::change_lyxObjects_selection()
+void PrefColors::changeLyxObjectsSelection()
 {
 	colorChangePB->setDisabled(lyxObjectsLW->currentRow() < 0);
 }
