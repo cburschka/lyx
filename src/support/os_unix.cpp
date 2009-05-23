@@ -98,7 +98,7 @@ bool path_prefix_is(string & path, string const & pre, path_case how)
 	if (i + 1 != p2.length())
 		return false;
 
-	if (!prefixIs(path, pre) && how == CASE_ADJUSTED)
+	if (how == CASE_ADJUSTED && !prefixIs(path, pre))
 		path = to_utf8(p2 + p1.substr(i + 1, p1.length() - i + 1));
 
 	return true;
