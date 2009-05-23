@@ -412,7 +412,7 @@ public:
 	void update(LyXRC const & rc);
 
 public Q_SLOTS:
-	void select_ui();
+	void selectUi();
 	void on_clearSessionPB_clicked();
 };
 

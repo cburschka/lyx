@@ -2065,7 +2065,7 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form)
 	connect(openDocumentsInTabsCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 	connect(uiFilePB, SIGNAL(clicked()),
-		this, SLOT(select_ui()));
+		this, SLOT(selectUi()));
 	connect(uiFileED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 	connect(restoreCursorCB, SIGNAL(clicked()),
@@ -2118,7 +2118,7 @@ void PrefUserInterface::update(LyXRC const & rc)
 }
 
 
-void PrefUserInterface::select_ui()
+void PrefUserInterface::selectUi()
 {
 	QString file = form_->browseUI(internalPath(uiFileED->text()));
 	if (!file.isEmpty())
