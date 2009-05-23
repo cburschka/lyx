@@ -316,7 +316,7 @@ public:
 	void update(LyXRC const & rc);
 
 private Q_SLOTS:
-	void select_dict();
+	void selectDict();
 };
 
 

@@ -1240,7 +1240,7 @@ PrefSpellchecker::PrefSpellchecker(GuiPreferences * form)
 {
 	setupUi(this);
 
-	connect(persDictionaryPB, SIGNAL(clicked()), this, SLOT(select_dict()));
+	connect(persDictionaryPB, SIGNAL(clicked()), this, SLOT(selectDict()));
 
 	connect(altLanguageED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
@@ -1288,7 +1288,7 @@ void PrefSpellchecker::update(LyXRC const & rc)
 }
 
 
-void PrefSpellchecker::select_dict()
+void PrefSpellchecker::selectDict()
 {
 	QString file = form_->browsedict(internalPath(persDictionaryED->text()));
 	if (!file.isEmpty())
