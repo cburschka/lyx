@@ -1078,6 +1078,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			bool loaded = false;
 			string const abstmp = package().temp_dir().absFilename();
 			string const realtmp = package().temp_dir().realPath();
+			// We have to use os::path_prefix_is() here, instead of
+			// simply prefixIs(), because the file name comes from
+			// an external application and may need case adjustment.
 			if (os::path_prefix_is(file_name, abstmp, os::CASE_ADJUSTED)
 			    || os::path_prefix_is(file_name, realtmp, os::CASE_ADJUSTED)) {
 				// Needed by inverse dvi search. If it is a file
