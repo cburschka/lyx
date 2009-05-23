@@ -329,7 +329,7 @@ Buffer * BufferList::getBufferFromTmp(string const & s)
 	BufferStorage::iterator it = bstore.begin();
 	BufferStorage::iterator end = bstore.end();
 	for (; it < end; ++it)
-		if (os::path_prefix_is(s, (*it)->temppath()))
+		if (prefixIs(s, (*it)->temppath()))
 			return *it;
 	return 0;
 }
