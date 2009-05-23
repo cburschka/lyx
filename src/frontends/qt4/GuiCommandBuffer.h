@@ -46,7 +46,7 @@ public Q_SLOTS:
 	/// show history
 	void listHistoryUp();
 	/// called when an item in a list is selected
-	void item_selected(QListWidgetItem *);
+	void itemSelected(QListWidgetItem *);
 	/// up
 	void up();
 	/// down

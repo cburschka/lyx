@@ -208,16 +208,16 @@ void GuiCommandBuffer::showList(vector<string> const & list,
 	listBox->move(pos.x(), y);
 
 	connect(listBox, SIGNAL(itemClicked(QListWidgetItem *)),
-		this, SLOT(item_selected(QListWidgetItem *)));
+		this, SLOT(itemSelected(QListWidgetItem *)));
 	connect(listBox, SIGNAL(itemActivated(QListWidgetItem *)),
-		this, SLOT(item_selected(QListWidgetItem *)));
+		this, SLOT(itemSelected(QListWidgetItem *)));
 
 	listBox->show();
 	listBox->setFocus();
 }
 
 
-void GuiCommandBuffer::item_selected(QListWidgetItem * item)
+void GuiCommandBuffer::itemSelected(QListWidgetItem * item)
 {
 	QWidget const * widget = static_cast<QWidget const *>(sender());
 	const_cast<QWidget *>(widget)->hide();
