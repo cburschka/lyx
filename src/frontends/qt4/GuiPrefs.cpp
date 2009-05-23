@@ -1318,13 +1318,13 @@ PrefConverters::PrefConverters(GuiPreferences * form)
 	connect(convertersLW, SIGNAL(currentRowChanged(int)),
 		this, SLOT(switchConverter()));
 	connect(converterFromCO, SIGNAL(activated(QString)),
-		this, SLOT(converter_changed()));
+		this, SLOT(changeConverter()));
 	connect(converterToCO, SIGNAL(activated(QString)),
-		this, SLOT(converter_changed()));
+		this, SLOT(changeConverter()));
 	connect(converterED, SIGNAL(textEdited(QString)),
-		this, SLOT(converter_changed()));
+		this, SLOT(changeConverter()));
 	connect(converterFlagED, SIGNAL(textEdited(QString)),
-		this, SLOT(converter_changed()));
+		this, SLOT(changeConverter()));
 	connect(converterNewPB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 	connect(converterRemovePB, SIGNAL(clicked()),
@@ -1419,7 +1419,7 @@ void PrefConverters::switchConverter()
 }
 
 
-void PrefConverters::converter_changed()
+void PrefConverters::changeConverter()
 {
 	updateButtons();
 }
