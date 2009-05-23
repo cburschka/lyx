@@ -41,9 +41,10 @@
 %This additional command  is for Indonesian translation
 %to replace Contents with Daftar Isi
 \AtBeginDocument{\renewcommand{\contentsname}{Daftar Isi}}
+\date{May 2009}
 \end_preamble
 \use_default_options false
-\language english
+\language bahasa
 \inputencoding default
 \font_roman default
 \font_sans default
@@ -106,8 +107,8 @@ status open
 
 \begin_layout Plain Layout
 \noindent
-Apabila anda mempunyai komentar atau menemukan kesalahan, silahkan kirimkan
- koreksi dan komentar ke mailing list tim dokumentasi LyX: 
+Apabila anda mempunyai komentar atau menemukan kesalahan, kirimkan koreksi
+ dan komentar ke tim dokumentasi LyX: 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
@@ -116,8 +117,15 @@ type "mailto:"
 \end_inset
 
 .
- Versi Bahasa Indonesia disunting oleh: Waluyo Adi Siswanto, dan Wahyu Latpursa
- Kurniasih.
+ Versi Bahasa Indonesia disunting oleh: 
+\noun on
+Waluyo Adi Siswanto
+\noun default
+ dan 
+\noun on
+Wahyu Latpursa Kurniasih
+\noun default
+.
 \end_layout
 
 \end_inset
@@ -163,10 +171,10 @@ flyer
 \emph default
 , atau model iklan lain (kami akan jelaskan kemudian), walaupun bisa juga
  dikerjakan.
- Bebarapa contoh yang sangat sesuai adalah: makalah seminar, desertasi dan
+ Beberapa contoh yang sangat sesuai adalah: makalah seminar, disertasi dan
  tesis, nota kuliah, nota seminar, makalah untuk konferensi, dokumentasi
  dan buku petunjuk perangkat lunak, buku, artikel untuk jurnal internasional
- berwasit, skrip drama dan filem, proposal bisnis, presentasi \SpecialChar \ldots{}
+ berwasit, sekrip drama dan filem, proposal bisnis, presentasi \SpecialChar \ldots{}
 
 \end_layout
 
@@ -262,7 +270,11 @@ Pengolah kata LyX berbeda dari pengolah kata biasa.
 apa yang akan anda kerjakan 
 \emph default
 selanjutnya LyX akan menyesuaikan mengikuti aturan-aturan yang didefinisikan
- di berkas style.
+ di berkas 
+\emph on
+style
+\emph default
+.
 \begin_inset Foot
 status collapsed
 
@@ -401,7 +413,7 @@ Dengan demikian, ide dasar dibalik LyX adalah: nyatakan
 \emph on
 apa
 \emph default
- yang ingin anda kerjakan, bukan bagaimana mengerjakannya.
+ yang i-ngin anda kerjakan, bukan bagaimana mengerjakannya.
  Sebagai ganti dari 
 \begin_inset Quotes eld
 \end_inset
@@ -422,7 +434,7 @@ Mean
 \begin_inset Quotes erd
 \end_inset
 
- or 
+ atau 
 \begin_inset Quotes eld
 \end_inset
 
@@ -565,7 +577,7 @@ Walaupun ada di LyX, anda tidak akan terlalu sering melakukan perubahan.
  dilakukan.
  Pada bagian tertentu dalam dokumen, ukuran dan tipe huruf akan ditentukan
  secara otomatis oleh LyX.
- Indentasi paragraf menyesuaikan dengan tipe paragraf yang mempunyai defenisi
+ Indentasi paragraf menyesuaikan dengan tipe paragraf yang mempunyai definisi
  indentasi sendiri.
  Pemisah halaman akan diatur dengan sendirinya secara otomatis.
  Secara umum, spasi antara baris, antara kata, antara paragraf adalah variabel
@@ -592,7 +604,7 @@ Fitur Tambahan.
 \end_layout
 
 \begin_layout Standard
-Akhirnya, secara umum kami percaya bahwa LyX (juga LaTeX) mempunyai keunggulan
+Akhirnya, secara umum kami percaya bahwa LyX (juga LaTeX) mempu-nyai keunggulan
  dari program pengolah kata lainnya, meliputi:
 \end_layout
 
@@ -622,7 +634,7 @@ Penggunaan referensi-silang
 
 \begin_layout Standard
 Berbagai pengolah kata modern dapat menyunting dan menampilkan simbol dan
- rumus matematika, mengatur pemenggalan suku kata, mendefiniskan berbagai
+ rumus matematika, mengatur pemenggalan suku kata, mendefinisikan berbagai
  model dokumen, serta menggunakan konsep WYSIWYM.
  Namun demikian kebanyakan mereka baru saja menggunakannya, sementara LyX
  dirancang menggunakan sistem penyuntingan dokumen LaTeX, suatu program
@@ -700,7 +712,7 @@ dvi
 \emph on
 dvi
 \emph default
- ini sering digunakan sebagai pratampilan hasil penyuntingan sebelum dikonversi
+ ini sering digunakan sebagai pra tampilan hasil penyuntingan sebelum dikonversi
  ke format lain seperti PostScript yang digunakan mesin cetak.
 \end_layout
 
@@ -724,7 +736,7 @@ Pada masa sekarang, seiring dengan pengembangan dan perkembangan LaTeX,
  untuk membuat tayangan presentasi, sebagian lagi untuk penulisan jurnal
  matematika, dan berbagai aplikasi penulisan.
  Ada juga yang menggunakan fasilitas TeX asli untuk tujuan berbagai penulisan,
- dan tentu saja ada yang mulai memodifikasi LaTeX.
+ dan tentu saja ada yang mulai modifikasi LaTeX.
  Untuk menjawab perkembangan yang kacau tadi, tim teknisi LaTeX kemudian
  mendefinisikan LaTeX2e, yaitu versi yang sampai sekarang digunakan sejak
  akhir 1980an.
@@ -796,9 +808,12 @@ style
 \emph default
  digunakan untuk pengaturan lainnya: mencetak label dan amplop, merubah
  perilaku indentasi, menambah huruf baru, pengaturan grafik, pengaturan
- heading dokumen, menggunakan bibliografi, merubah dan mengatur tampilan
- catatan kaki, tabel, gambar, penulisan daftar, dan berbagai macam pengaturan
- lain.
+ penajukan (
+\emph on
+heading
+\emph default
+) dokumen, menggunakan bibliografi, merubah dan mengatur tampilan catatan
+ kaki, tabel, gambar, penulisan daftar, dan berbagai macam pengaturan lain.
 \end_layout
 
 \begin_layout Standard
@@ -824,7 +839,7 @@ class: Definisi tipe dokumen, menggunakan LaTeX\SpecialChar \@.
 \end_layout
 
 \begin_layout Description
-style: Merubah perilaku default dari LaTeX dengan cara tertentu.
+style: Merubah perilaku bawaan dari LaTeX dengan cara tertentu.
 \end_layout
 
 \begin_layout Description
@@ -865,7 +880,7 @@ Agar dapat menjawab pertanyaan anda dan menjelaskan fitur yang ada di LyX,
 \begin_layout Standard
 Pada dasarnya pengembangan LyX tidak pernah berhenti tetapi berkembang dari
  waktu ke waktu, sehingga buku petunjuk kemungkinan menjadi tidak lengkap
- dan kedaluarsa.
+ dan kedaluwarsa.
  Agar buku petunjuk sesuai dengan perkembangan yang ada, tentunya semua
  buku petunjuk yang ada harus selalu diperbaiki.
  Buku petunjuk merupakan hasil kerja para sukarelawan/wati yang mempunyai
@@ -877,8 +892,8 @@ Pekerjaan Tetap
 \begin_inset Quotes erd
 \end_inset
 
-, keluarga, perlu mengerjakan perkerjaan rumah tangga, membuang sampah,
- dan banyak hal lainnya.
+, keluarga, perlu mengerjakan pekerjaan rumah tangga, membuang sampah, dan
+ banyak hal lainnya.
  Apabila anda ingin berperan serta, perlu membaca dengan teliti bab 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -890,7 +905,7 @@ reference "sec:Kontrib"
 \end_layout
 
 \begin_layout Standard
-Bentuk peran serta dapat dilakukan dengan cara lain – apabila anda me-nemukan
+Bentuk peran serta dapat dilakukan dengan cara lain – apabila anda menemukan
  hal-hal dalam buku panduan yang dianggap membingungkan, kurang jelas, tidak
  akurat atau bahkan salah, jangan segan-segan untuk memberitahukan kepada
  kami! Anda dapat mengirimkan laporan ke perawat dokumen lewat email 
@@ -903,7 +918,7 @@ type "mailto:"
 
 .
  Apabila anda mempunyai pertanyaan yang tidak terjawab dalam buku panduan
- yang ada dan menginginkan jawaban segera, silahkan mengirim email ke mailing
+ yang ada dan menginginkan jawaban segera, silakan mengirim email ke mailing
  list pengguna kami 
 \begin_inset CommandInset href
 LatexCommand href
@@ -995,7 +1010,7 @@ Huruf Condong
  biasanya digunakan untuk menunjukkan kata yang penting, argumen program,
  judul buku acuan, nama bab di beberapa buku petunjuk, nota dari penulis
  buku petunjuk, atau untuk versi Bahasa Indonesia menunjukkan kata Bahasa
- Inggris yang tidak ditemui padanan kata Indonesianya.
+ Inggris yang tidak ditemui padanan kata Indonesia nya.
 \end_layout
 
 \begin_layout Itemize
@@ -1380,7 +1395,7 @@ Enter
 \end_layout
 
 \begin_layout Standard
-Kami sudah membuat daftar kunci ikatan default dan cara pintas yang bisa
+Kami sudah membuat daftar kunci ikatan bawaan dan cara pintas yang bisa
  anda temukan di buku panduan 
 \begin_inset Quotes eld
 \end_inset
@@ -1393,7 +1408,7 @@ Cara Pintas
 \begin_inset Quotes erd
 \end_inset
 
- silahkan untuk membacanya.
+ silakan untuk membacanya.
  Perlu dipahami ada dua peta kunci ikatan yang biasa digunakan oleh para
  pemakai LyX, yaitu: gaya 
 \begin_inset Quotes eld
@@ -1403,8 +1418,8 @@ CUA
 \begin_inset Quotes erd
 \end_inset
 
- yang digunakan sebagai default; berasal dari PC world, sedangkan yang kedua
- adalah gaya 
+ yang digunakan sebagai setelan bawaan; berasal dari PC world, sedangkan
+ yang kedua adalah gaya 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1413,7 +1428,7 @@ emacs
 \end_inset
 
  yang sangat umum di sistem Unix dimana menggunakan editor Emacs.
- Apabila tidak dinyatakan secara explisit, maka definisi kunci ikatan dalam
+ Apabila tidak dinyatakan secara eksplisit, maka definisi kunci ikatan dalam
  dokumentasi berasal dari peta CUA.
  Apabila ingin menggunakan emacs, anda perlu membaca buku petunjuknya dan
  perlu menemukan sendiri kunci ikatan yang didefiniskan.
@@ -1514,7 +1529,7 @@ mm
 \begin_inset Text
 
 \begin_layout Plain Layout
-millimeter
+milimeter
 \end_layout
 
 \end_inset
@@ -1534,7 +1549,7 @@ cm
 \begin_inset Text
 
 \begin_layout Plain Layout
-centimeter
+sentimeter
 \end_layout
 
 \end_inset
@@ -1979,7 +1994,7 @@ Pengantar Dokumen ini merupakan buku Pengantar LyX
 \end_layout
 
 \begin_layout Description
-Tutorial Apabila anda baru saja menggunakan LyX dan belum pernah mengenal
+Tutorial Apabila anda baru saja menggunakan LyX dan belum pernah me-ngenal
  dan menggunakan LaTeX, anda perlu mulai belajar dari dokumen Tutorial.
  Apabila anda sudah menggunakan LaTeX sebelumnya, anda tidak perlu membaca
  Tutorial dari awal tetapi langsung ke bab 
@@ -1999,7 +2014,7 @@ Petunjuk
 \end_inset
 
 Penggunaan Dokumen ini adalah buku petunjuk utama.
- Dokumen ini menjelaskan sebagian besar cara menggunakan LyX bagi pemula
+ Dokumen ini menjelaskan sebagian besar cara menggunakan LyX bagi pe-mula
  serta memaparkan fitur-fitur yang ada.
  Buku Petunjuk utama ini menganggap bahwa pembaca sudah memahami apa yang
  tertulis di Tutorial.
@@ -2072,7 +2087,7 @@ Petunjuk
 \end_inset
 
 Khusus Ada beberapa buku petunjuk yang sangat spesifik, meliputi Petunjuk
- Penggunaan Lingustik, Petunjuk Penggunaan Braille, Petunjuk Penggunaan
+ Penggunaan Linguistik, Petunjuk Penggunaan Braille, Petunjuk Penggunaan
  x-y pic, serta Petunjuk Penggunaan Multikolom.
 \end_layout
 
@@ -2086,7 +2101,7 @@ Petunjuk Penggunaan
 memberikan informasi tentang instalasi dan pengaturan mandiri yang mengacu
  dan mempunyai tautan di buku petunjuk lainnya, yaitu buku 
 \emph on
-Pe-ngaturan Mandiri
+Pengaturan Mandiri
 \emph default
 .
 \end_layout
@@ -2104,7 +2119,7 @@ Untuk melanjutkan, terlebih dahulu perlu memahami tahapan ini:
 
 \begin_layout Standard
 \align center
-Apabila anda baru mengenal LyX, silahkan anda membaca 
+Apabila anda baru mengenal LyX, silakan anda membaca 
 \emph on
 Tutorial
 \emph default
@@ -2239,7 +2254,7 @@ http://www.lyx.org/
 \begin_layout Standard
 Laporan kutu program hendaknya dilengkapi dengan versi LyX yang digunakan
  ketika menemui masalah.
- Laporan yang akurat serta terperinci de-ngan penjelasan akan sangat membantu
+ Laporan yang akurat serta terperinci dengan penjelasan akan sangat membantu
  agar mempercepat menemukan dan membersihkan dari kutu program.
  Waktu dari para pemrogram untuk mengatasi kutu program akan mengurangi
  waktu mereka untuk pengembangan lain di LyX.
@@ -2266,8 +2281,8 @@ Peran serta mengatasi masalah dan pengembangan baru
 
 \begin_layout Standard
 Apabila anda melakukan perubahan di sumber program LyX dan menurut anda
- seharusnya menjadi bagian sumber program LyX, silahkan kirim perubahan
- dalam berkas diff (
+ seharusnya menjadi bagian sumber program LyX, silakan kirim perubahan dalam
+ berkas diff (
 \emph on
 unified format
 \emph default
@@ -2294,7 +2309,7 @@ Melaporkan kesalahan di Buku Petunjuk
 
 \begin_layout Standard
 Apabila anda menemukan kesalahan atau ketidak akuratan di Buku Petunjuk,
- silahkan mengirim pesan ke alamat email 
+ silakan mengirim pesan ke alamat email 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
