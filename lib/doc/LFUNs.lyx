@@ -49,7 +49,7 @@ theorems-ams
 \begin_body
 
 \begin_layout Section*
-LFUNs documentation automatically generated 08.05.2009.
+LFUNs documentation automatically generated 23.05.2009.
 \end_layout
 
 \begin_layout Standard
@@ -628,7 +628,7 @@ Action Inserts quotes according to the type and quote-language preference.
 \end_layout
 
 \begin_layout Description
-Action Currently  English, Swedish, German, Polish, French, Danish quotes
+Notion Currently English, Swedish, German, Polish, French, Danish quotes
  are distinguished.
   
 \end_layout
@@ -1136,7 +1136,7 @@ Syntax up-select
 \end_layout
 
 \begin_layout Subsection*
-SCREEN_DOWN 
+LFUN_SCREEN_DOWN 
 \end_layout
 
 \begin_layout Description
@@ -3816,8 +3816,8 @@ LFUN_INSET_EDIT
 \end_layout
 
 \begin_layout Description
-Action Edit the inset at cursor with an external application, *        
-     if one is attributed.
+Action Edit the inset at cursor with an external application, if one is
+ attributed.
   
 \end_layout
 
