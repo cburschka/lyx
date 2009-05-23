@@ -137,7 +137,7 @@ dan
 \noun default
 .
  Apabila anda mempunyai komentar atau menemukan kesalahan yang perlu dikoreksi,
- silahkan kirim komentar ke mailing list LyX, 
+ silakan kirim komentar ke mailing list LyX, 
 \family typewriter
 
 \begin_inset CommandInset href
@@ -386,7 +386,7 @@ Memulai LyX
 \end_layout
 
 \begin_layout Section
-Dokumen LyX and yang pertama
+Dokumen LyX anda yang pertama
 \end_layout
 
 \begin_layout Standard
@@ -410,7 +410,7 @@ Bantuan
 \family default
  dan bukalah buku 
 \emph on
-Panduan Penggunaan
+Pan-duan Penggunaan
 \emph default
 , kemudian anda juga bisa membuka buku 
 \emph on
@@ -444,7 +444,7 @@ Tampilan
 
 \begin_layout Standard
 Dalam Tutorial ini, kami menganggap anda menggunakan versi LyX yang sesuai
- dengan buku Panduan, demikian pula LateX yang diinstal, serta adanya fasilitas
+ dengan buku Panduan, demikian pula LaTeX yang diinstal, serta adanya fasilitas
  untuk melihat tampilan DVI dan PDF.
  Hal ini biasanya sudah ada hampir semua distribusi Linux dan BSD, juga
  Windows yang instalasinya dilakukan oleh LyX 
@@ -703,9 +703,9 @@ LyX pada dasarnya mampu melakukan berbagai hal yang biasa dilakukan di pengolah
 \end_layout
 
 \begin_layout Description
-Batalkan LyX mempunyai kemampuan untuk membatalkan proses penyuntingan sampai
- beberapa tahap, artinya anda dapat membatalkan hal-hal yang sudah dilakukan
- sejak dimulai sesi penyuntingan, caranya melalui 
+Batalkan LyX mempunyai kemampuan untuk membatalkan proses penyun-tingan
+ sampai beberapa tahap, artinya anda dapat membatalkan hal-hal yang sudah
+ dilakukan sejak dimulai sesi penyuntingan, caranya melalui 
 \family sans
 Suntingan\SpecialChar \menuseparator
 Batalkan
@@ -995,7 +995,7 @@ Pengolah kata biasanya menggunakan suatu prinsip yaitu WYSIWYG:
 \emph on
 What You See Is What You Get
 \emph default
- = Apa yang anda lihat dilayar akan sama dengan yang anda cetak.
+ = Apa yang anda lihat di layar akan sama dengan yang anda cetak.
 \begin_inset Quotes erd
 \end_inset
 
@@ -1102,8 +1102,8 @@ What You See Is What You Mean
  dalam LyX.
  Pada lingkungan mengandung definisi jenis huruf, ukuran huruf, indentasi
  paragraf, spasi baris dan berbagai definisi format lain.
- Permasalahan yang sering terjadi adalah lingkunga dapat didefinisikan dengan
- berbagai variasi.
+ Permasalahan yang sering terjadi adalah lingkungan dapat didefinisikan
+ dengan berbagai variasi.
  Pada satu jurnal, misalnya menggunakan definisi lingkungan judul adalah
  berhuruf tebal ukuran 18 poin, posisi tulisan di tengah.
  Jurnal lainnya menggunakan huruf miring 15 poin ditulis dari batas kiri.
@@ -1136,7 +1136,7 @@ Standar,
 \begin_inset Quotes erd
 \end_inset
 
- yang merupakan lingkungan default.
+ yang merupakan lingkungan bawaan.
  Anda silakan mencoba beberapa lingkungan yang ada dan melihat hasilnya.
 \end_layout
 
@@ -1149,7 +1149,7 @@ Ketiklah
 \family typewriter
 Pendahuluan
 \family default
- di baris pertama berkas latihan anda, kemudian pilihlah 
+ di baris pertama berkas latihan anda, kemudian pi-lihlah 
 \family sans
 SubBab
 \family default
@@ -1432,7 +1432,7 @@ Sub-SubBab
 \begin_inset Quotes erd
 \end_inset
 
- and 
+ dan 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1539,7 +1539,7 @@ lingkungan
 \begin_inset Quotes erd
 \end_inset
 
- yang mempunyai kesetaraan dengan lingkungan yang tidak berbintang untuk
+ yang mempunyai kesetaraan dengan lingku-ngan yang tidak berbintang untuk
  
 \family sans
 Sub-SubBab
@@ -1645,7 +1645,7 @@ Ada satu lagi lingkungan
 \family sans
 Daftar
 \family default
- yang hampir mirip dengan lingkungan 
+ yang hampir mirip dengan lingku-ngan 
 \family sans
 Deskripsi
 \family default
@@ -1750,7 +1750,7 @@ Anda baru saja belajar menuliskan daftar dengan rapi.
  dicetak.
  Tapi sebelum itu, bagaimana jika anda ingin daftar yang bernomor bukan
  daftar bersimbol.
- Baiklah, mari kita coba; tandai semua list yang anda inginkan 
+ Baiklah, mari kita coba; tandai semua daftar yang anda inginkan 
 \begin_inset Foot
 status open
 
@@ -1762,7 +1762,7 @@ sebelum
 \emph default
  daftar bersimbol.
  Hal ini juga terjadi ketika anda memilih salah satu subbab bernomor, anda
- juga perlu memilih paragraf sebelumnnya.
+ juga perlu memilih paragraf sebelumnya.
  Hal ini disengaja karena sesungguhnya simbol atau nomor tergantung dari
  teks sebelumnya.
 \end_layout
@@ -1786,7 +1786,7 @@ Deskripsi
 Daftar
 \family default
 , lihatlah perbedaannya.
- Kedua tipe lingkungan daftar ini menggangap kata pertama adalah terminologi
+ Kedua tipe lingkungan daftar ini menganggap kata pertama adalah terminologi
  yang didefinisikan dengan kata-kata berikutnya sampai akhir paragraf (sebelum
  menekan tombol 
 \family sans
@@ -2047,7 +2047,7 @@ Sebelum ini, pada bab sebelumnya, anda menggunakan class dokumen yaitu
 status open
 
 \begin_layout Plain Layout
-Ini adalah default class dokumen di LyX
+Ini adalah class dokumen bawaan di LyX
 \end_layout
 
 \end_inset
@@ -2091,7 +2091,7 @@ heading
 \emph on
 style
 \emph default
- yang dapat digunakan penulis untuk menyusunan naskahnya yang sudah mengikuti
+ yang dapat digunakan penulis untuk menyusun naskahnya yang sudah mengikuti
  secara akurat aturan penulisan yang dikehendaki jurnal tersebut.
  LyX sudah dirancang untuk dapat mendukung sistem seperti itu juga.
  Sebagai contoh, LyX mendukung aturan penulisan (juga lingkungan tambahan)
@@ -2108,7 +2108,7 @@ Article
 \begin_layout Standard
 Tabel dibawah ini dapat anda gunakan sebagai acuan ringkas dari beberapa
  class dokumen.
- Untuk mendapatkan informasi lebih terperinci, silahkan lihat pada bab Class
+ Untuk mendapatkan informasi lebih terperinci, silakan lihat pada bab Class
  Dokumen Khusus yang ada di buku petunjuk 
 \emph on
 Fitur Tambahan
@@ -2339,7 +2339,7 @@ Alamat
 Saya
 \family default
 , yang tidak akan ditemui dalam class dokumen lainnya.
- Silahkan anda mencoba berbagai lingkungan yang tersedia serta bagaimana
+ Silakan anda mencoba berbagai lingkungan yang tersedia serta bagaimana
  hasil penulisannya.
  Anda bisa lihat ada lingkungan 
 \family sans
@@ -2372,7 +2372,7 @@ f atau ekspor ke pdf.
  Kata tersebut hanya sebagai petunjuk dimana anda harus menuliskan nama
  penanda tangan.
  Selain itu letak lingkungan juga tidak penting.
- Anda perlu ingat bahwa LyX adaah WYSIWYM; anda bisa menempatkan lingkungan
+ Anda perlu ingat bahwa LyX adalah WYSIWYM; anda bisa menempatkan lingkungan
  
 \family sans
 Tandatangan 
@@ -2447,7 +2447,7 @@ Dokumen di LyX (seperti juga LaTeX) selalu menggunakan halaman judul — yang
 \end_layout
 
 \begin_layout Standard
-Untuk memahami hal ini, silahkan ke berkas LyX anda dan pastikan anda mengguakan
+Untuk memahami hal ini, silakan ke berkas LyX anda dan pastikan anda menggunakan
  class dokumen 
 \family sans
 Article
@@ -2591,7 +2591,7 @@ Setuju
 \end_layout
 
 \begin_layout Standard
-Sebenarnya anda diperkenankan meletakkan label di sebarang tempat dalam
+Sebenarnya anda diperkenankan meletakkan label di sembarang tempat dalam
  judul yang anda pilih; teks yang mengacu akan selalu mengacu pada judul
  acuan terakhir sebelum acuan muncul.
  Namun demikian, meletakkan label pada baris yang sama dengan judul subbab
@@ -2848,7 +2848,7 @@ Sub-SubBab
 \begin_layout Standard
 Apabila anda ingin mencoba dan latihan menggunakan label, silakan mencoba
  menambahkan label baru di tempat label pertama berada.
- Kemudian di suatu tempat dalam dokumen, anda mengacu pada lebel yang baru
+ Kemudian di suatu tempat dalam dokumen, anda mengacu pada label yang baru
  anda buat.
  Apabila anda sering membuat label dan mengacu, akan lebih mudah membiarkan
  jendela dialog 
@@ -3035,8 +3035,8 @@ kaki
 \end_layout
 
 \begin_layout Standard
-Catatan kaki dapat disaling, dipotong dan ditempelkan seperti teks biasa.
- Silahkan mencoba! Anda hanya perlu menandai kotak catatan kaki
+Catatan kaki dapat disalin, dipotong dan ditempelkan seperti teks biasa.
+ Silakan mencoba! Anda hanya perlu menandai kotak catatan kaki
 \begin_inset Foot
 status collapsed
 
@@ -3052,7 +3052,7 @@ Akan lebih mudah menggunakan tombol papan ketik.
 \family sans
 Potong
 \family default
- and 
+ dan 
 \family sans
 Tempelkan
 \family default
@@ -3090,7 +3090,7 @@ Catatan
 
 tepi 
 \family default
-atau dari tombol bantuan the 
+atau dari tombol bantuan  
 \begin_inset Graphics
 	filename ../../images/marginalnote-insert.png
 	scale 60
@@ -3276,7 +3276,7 @@ setelah
  informasi halaman atau bab yang diacu dari buku atau artikel dalam bibliografi)
  yang ditulis dalam tanda kurung kotak setelah informasi acuan.
  Apabila anda menginginkan acuan yang diiginkan ditulis bukan dalam bentuk
- nomor acuan tetapi dalam bentuk label (misalnya, dalam beberapa jurnal
+ nomor acuan tetapi dalam bentuk label (mi-salnya, dalam beberapa jurnal
  menggunakan 
 \begin_inset Quotes eld
 \end_inset
@@ -3485,7 +3485,7 @@ Rumus
 \begin_inset space ~
 \end_inset
 
-Matematika
+Mate-matika
 \family default
  akan membantu anda menyusun rumus matematika dengan mudah dan akan mempunyai
  tampilan hasil yang profesional.
@@ -3508,7 +3508,7 @@ Saya mengerti rumus Einstein, E=mc^2, karena sangat mudah.
 Anda dapat lihat sendiri, rumus yang anda tulis tidak nampak rapi, baik
  di layar maupun tampilan hasilnya.
  Dikatakan tidak rapi karena tidak mempunyai spasi antara variabel demikian
- pula dengan tanda sama dengan.
+ pula dengan tanda sama de-ngan.
  Demikian pula tanda pangkat 2 tidak tertulis diatas seperti bagaimana tanda
  pangkat yang kita kenal.
  Tidak rapinya rumus yang anda tulis dikarenakan anda tidak mengatakan kepada
@@ -3601,7 +3601,7 @@ Penyuntingan rumus matematika merupakan salah satu contoh dari filosofi
 \backslash
 sqrt
 \family default
-; kemungkinan anda akan menemui kesulitan, karena anda tidak bia melihat
+; kemungkinan anda akan menemui kesulitan, karena anda tidak biasa melihat
  bagaimana ekspresi tersebut sampai anda menjalankan LaTeX untuk melihat
  tampilan hasil.
  Kesulitan lain adalah apabila ingin mencari lokasi penambahan tanda kurung
@@ -3613,7 +3613,7 @@ sqrt
 \end_layout
 
 \begin_layout Section
-Penulisan dalam Lingkungan Rumus Matematika
+Penulisan Rumus Matematika
 \end_layout
 
 \begin_layout Standard
@@ -3635,7 +3635,7 @@ Sekarang kita akan merubah rumus yang sudah ditulis
 \family sans
 Kiri
 \family default
- and 
+ dan 
 \family sans
 Kanan
 \family default
@@ -3652,7 +3652,7 @@ Kanan
 \end_inset
 
 .
- Untuk keluar dari lingkungan rumus matematikan anda dapat menggunakan tombol
+ Untuk keluar dari lingkungan rumus matematika anda dapat menggunakan tombol
  
 \family sans
 Esc\SpecialChar \@.
@@ -4231,7 +4231,7 @@ sin
 
 .
  Oleh karena itu tiga variabel tersebut akan dituliskan dengan huruf miring,
- padahal seungguhnya yang anda inginkan adalah satu kata dari fungsi matematika
+ padahal sesungguhnya yang anda inginkan adalah satu kata dari fungsi matematika
  
 \begin_inset Quotes eld
 \end_inset
@@ -4356,12 +4356,12 @@ sin
  matematika.
  Hasil tampilan setelah menjalankan LaTeX, penulisan tadi akan rapi dan
  cantik.
- Silahkan mencobanya.
+ Silakan mencobanya.
 \end_layout
 
 \begin_layout Standard
-Fungsi matematika yang ada termasuk semua fungsi trigonometrik dan kebalikannya,
- fungsi hiperbolik, fungsi logaritmik, limit, serta berbagai fungsi lain.
+Fungsi matematika yang ada termasuk semua fungsi trigonometri dan kebalikannya,
+ fungsi hiperbolik, fungsi logaritma, limit, serta berbagai fungsi lain.
  Fungsi yang ada dalam daftar, semuanya dapat mempunyai tambahan baris atas
  (
 \emph on
@@ -4403,7 +4403,7 @@ subscript
 \series bold
 Latihan
 \series default
-: Tuliskan persamaan 3 di berkas of 
+: Tuliskan persamaan 3 di berkas  
 \family typewriter
 example_raw.lyx
 \family default
@@ -4459,7 +4459,7 @@ Disini tombol papan ketik
 \family sans
 Tab
 \family default
- dapat digunakan untuk meindah kursor pada arah horisontal yaitu bergerak
+ dapat digunakan untuk memindah kursor pada arah horisontal yaitu bergerak
  dari satu kolom ke kolom lainnya.
  Anda juga dapat menggunakan tombol panah yang ada di papan ketik - tombol
  panah ke kanan 
@@ -4531,7 +4531,7 @@ Pengaturan lebih lanjut bagaimana perataan horisontal di setiap kolom, serta
 Petunjuk Penggunaan
 \emph default
 .
- Perlu mendapat perhatian anda, apabila anda ingin menuliskan tabel yang
+ Perlu mendapat perhatian anda, apabila anda ingin menu-liskan tabel yang
  berisi informasi teks, anda perlu menggunakan fasilitas tabel yang disediakan
  LyX, jangan mendefinisikan tabel menggunakan matriks.
 \end_layout
@@ -4542,14 +4542,24 @@ Rumus Matematika Dalam Mode Display
 
 \begin_layout Standard
 Semua cara penulisan rumus matematika yang dijelaskan sebelumnya adalah
- tipe rumus matematika inline, yaitu rumus matematika ditulis pada baris
- teks.
+ tipe rumus matematika 
+\emph on
+inline
+\emph default
+, yaitu rumus matematika ditulis pada baris teks.
  Hal ini biasa dituliskan bila rumus ini tidak terlalu panjang.
  Namun demikian, apabila anda ingin menuliskan rumus yang panjang atau ingin
  menuliskan rumus secara terpisah dari teks dan ditulis pada baris tersendiri
- maka anda perlu menulis rumus dalam mode display.
- Anda juga perlu mengerti bahwa hanya rumus dalam mode display yang bisa
- diberi label dan nomor persamaan (lihat buku 
+ maka anda perlu menulis rumus dalam mode 
+\emph on
+display
+\emph default
+.
+ Anda juga perlu mengerti bahwa hanya rumus dalam mode 
+\emph on
+display
+\emph default
+ yang bisa diberi label dan nomor persamaan (lihat buku 
 \emph on
 Petunjuk Penggunaan
 \emph default
@@ -4559,11 +4569,19 @@ Petunjuk Penggunaan
 \emph on
 multi-line
 \emph default
-), hanya dapat dilakukan pada mode display.
+), hanya dapat dilakukan pada mode 
+\emph on
+display
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
-Untuk memulai penulisan rumus display tekan tombol bantuan 
+Untuk memulai penulisan rumus 
+\emph on
+display
+\emph default
+ tekan tombol bantuan 
 \begin_inset Graphics
 	filename ../../images/math-display.png
 	scale 60
@@ -4629,7 +4647,7 @@ Batas bawah dan batas atas pada jumlah sigma
 \end_layout
 
 \begin_layout Itemize
-Rumus ditulis tengah baris
+Rumus ditulis di tengah baris
 \end_layout
 
 \begin_layout Standard
@@ -4638,7 +4656,7 @@ Selain dari hal yang dijelaskan diatas, penulisan rumus baris dan rumus
 \end_layout
 
 \begin_layout Standard
-Salah satu hal penting yang perlu anda catat adalah mengenai pengaturan
+Salah satu hal penting yang perlu anda catat adalah mengenai penga-turan
  setelah rumus display: Anda harus memahami benar apakah setelah rumus display
  merupakan paragraf baru atau tidak.
  Apabila rumus display berada di tengah suatu paragraf, maka anda jangan
@@ -4674,7 +4692,7 @@ example_raw.lyx
 Latihan
 \series default
 : Dengan menggunakan berbagai tombol bantuan yang sudah anda pelajari sampai
- saat ini, anda tentunya dapat menulis persamaan matematika seperti dibawah
+ saat ini, anda tentunya dapat menulis persamaan mate-matika seperti dibawah
  ini 
 \begin_inset Foot
 status open
@@ -5212,7 +5230,7 @@ name "sec:tex2lyx"
 \end_layout
 
 \begin_layout Standard
-Ada bisa mengimport berkas LaTeX ke dalam LyX dari menu 
+Ada bisa mengimpor berkas LaTeX ke dalam LyX dari menu 
 \family sans
 Berkas\SpecialChar \menuseparator
 Impor\SpecialChar \menuseparator
@@ -5257,7 +5275,7 @@ Program
 \family typewriter
  tex2lyx
 \family default
- akan mengkonversi sebagian besar perintah LaTeX, walupun masih ada kemungkinan
+ akan mengkonversi sebagian besar perintah LaTeX, walaupun masih ada kemungkinan
  ada yang tidak dikonversi ke LyX.
  Sangat disarankan setelah menjalankan 
 \family typewriter
@@ -5486,9 +5504,9 @@ Errors
 \end_layout
 
 \begin_layout Standard
-Kadang-kadang ketika anda menuliskan perintah LaTeX dalam dokumen anda,
- terjadi kesalahan, sehingga baik LyX ataupun LaTeX tidak bisa mengenal
- atau menjalankan perintah yang anda definisikan.
+Kadang-kadang ketika anda menuliskan perintah LaTeX dalam dokumen, terjadi
+ kesalahan, sehingga baik LyX ataupun LaTeX tidak bisa mengenal atau menjalankan
+ perintah yang anda definisikan.
  Apabila kasus seperti terjadi LyX akan membuka jendela dialog
 \family sans
  Kesalahan
