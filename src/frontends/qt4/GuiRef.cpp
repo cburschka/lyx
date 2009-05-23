@@ -58,8 +58,8 @@ GuiRef::GuiRef(GuiView & lv)
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
-	connect(closePB, SIGNAL(clicked()), this, SLOT(reset_dialog()));
-	connect(this, SIGNAL(rejected()), this, SLOT(dialog_rejected()));
+	connect(closePB, SIGNAL(clicked()), this, SLOT(resetDialog()));
+	connect(this, SIGNAL(rejected()), this, SLOT(dialogRejected()));
 
 	connect(typeCO, SIGNAL(activated(int)),
 		this, SLOT(changed_adaptor()));
@@ -186,16 +186,16 @@ void GuiRef::updateClicked()
 }
 
 
-void GuiRef::dialog_rejected()
+void GuiRef::dialogRejected()
 {
-	reset_dialog();
+	resetDialog();
 	// We have to do this manually, instead of calling slotClose(), because
 	// the dialog has already been made invisible before rejected() triggers.
 	Dialog::disconnect();
 }
 
 
-void GuiRef::reset_dialog()
+void GuiRef::resetDialog()
 {
 	at_ref_ = false;
 	setGotoRef();
@@ -205,7 +205,7 @@ void GuiRef::reset_dialog()
 void GuiRef::closeEvent(QCloseEvent * e)
 {
 	slotClose();
-	reset_dialog();
+	resetDialog();
 	e->accept();
 }
 

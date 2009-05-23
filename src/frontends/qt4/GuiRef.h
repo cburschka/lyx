@@ -40,8 +40,8 @@ private Q_SLOTS:
 	void sortToggled();
 	void caseSensitiveToggled();
 	void updateClicked();
-	void reset_dialog();
-	void dialog_rejected();
+	void resetDialog();
+	void dialogRejected();
 
 private:
 	///
