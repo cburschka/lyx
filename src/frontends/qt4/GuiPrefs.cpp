@@ -1310,13 +1310,13 @@ PrefConverters::PrefConverters(GuiPreferences * form)
 	setupUi(this);
 
 	connect(converterNewPB, SIGNAL(clicked()),
-		this, SLOT(update_converter()));
+		this, SLOT(updateConverter()));
 	connect(converterRemovePB, SIGNAL(clicked()),
-		this, SLOT(remove_converter()));
+		this, SLOT(removeConverter()));
 	connect(converterModifyPB, SIGNAL(clicked()),
-		this, SLOT(update_converter()));
+		this, SLOT(updateConverter()));
 	connect(convertersLW, SIGNAL(currentRowChanged(int)),
-		this, SLOT(switch_converter()));
+		this, SLOT(switchConverter()));
 	connect(converterFromCO, SIGNAL(activated(QString)),
 		this, SLOT(converter_changed()));
 	connect(converterToCO, SIGNAL(activated(QString)),
@@ -1375,7 +1375,7 @@ void PrefConverters::updateGui()
 	}
 
 	// currentRowChanged(int) is also triggered when updating the listwidget
-	// block signals to avoid unnecessary calls to switch_converter()
+	// block signals to avoid unnecessary calls to switchConverter()
 	convertersLW->blockSignals(true);
 	convertersLW->clear();
 
@@ -1406,7 +1406,7 @@ void PrefConverters::updateGui()
 }
 
 
-void PrefConverters::switch_converter()
+void PrefConverters::switchConverter()
 {
 	int const cnr = convertersLW->currentItem()->type();
 	Converter const & c(form_->converters().get(cnr));
@@ -1455,7 +1455,7 @@ void PrefConverters::updateButtons()
 // FIXME: user must
 // specify unique from/to or it doesn't appear. This is really bad UI
 // this is why we can use the same function for both new and modify
-void PrefConverters::update_converter()
+void PrefConverters::updateConverter()
 {
 	Format const & from = form_->formats().get(converterFromCO->currentIndex());
 	Format const & to = form_->formats().get(converterToCO->currentIndex());
@@ -1477,7 +1477,7 @@ void PrefConverters::update_converter()
 }
 
 
-void PrefConverters::remove_converter()
+void PrefConverters::removeConverter()
 {
 	Format const & from = form_->formats().get(converterFromCO->currentIndex());
 	Format const & to = form_->formats().get(converterToCO->currentIndex());

@@ -333,10 +333,10 @@ public Q_SLOTS:
 	void updateGui();
 
 private Q_SLOTS:
-	void update_converter();
-	void switch_converter();
+	void updateConverter();
+	void switchConverter();
+	void removeConverter();
 	void converter_changed();
-	void remove_converter();
 	void on_cacheCB_stateChanged(int state);
 
 private:
