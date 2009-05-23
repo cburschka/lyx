@@ -24,6 +24,7 @@
 #include "InsetList.h"
 #include "LaTeXFeatures.h"
 #include "Length.h"
+#include "LyX.h"
 #include "MetricsInfo.h"
 #include "sgml.h"
 
@@ -242,8 +243,9 @@ docstring nomenclWidest(Buffer const & buffer)
 				nomencl->getParam("symbol");
 			// This is only an approximation,
 			// but the best we can get.
-			int const wx =
-				theFontMetrics(Font()).width(symbol);
+			int const wx = use_gui ?
+				theFontMetrics(Font()).width(symbol) :
+				symbol.size();
 			if (wx > w) {
 				w = wx;
 				symb = symbol;
