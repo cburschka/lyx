@@ -242,8 +242,7 @@ void GuiParagraph::updateView()
 
 	// label width
 	docstring const & labelwidth = pp.labelWidthString();
-	// FIXME We should not compare translated strings
-	if (labelwidth != _("Senseless with this layout!")) {
+	if (hasLabelwidth()) {
 		labelwidthGB->setEnabled(true);
 		labelWidth->setText(toqstr(labelwidth));
 	} else {
@@ -351,6 +350,14 @@ LyXAlignment GuiParagraph::alignPossible() const
 LyXAlignment GuiParagraph::alignDefault() const
 {
 	return bufferview()->cursor().innerParagraph().layout().align;
+}
+
+
+bool GuiParagraph::hasLabelwidth() const
+{
+	Layout layout = bufferview()->cursor().innerParagraph().layout();
+	return (layout.margintype == MARGIN_MANUAL
+		|| layout.latextype == LATEX_BIB_ENVIRONMENT);
 }
 
 

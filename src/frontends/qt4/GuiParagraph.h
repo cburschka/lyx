@@ -65,6 +65,8 @@ private:
 	///
 	bool canIndent() const;
 	///
+	bool hasLabelwidth() const;
+	///
 	LyXAlignment alignPossible() const;
 	///
 	LyXAlignment alignDefault() const;
