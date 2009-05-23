@@ -2228,7 +2228,7 @@ PrefShortcuts::PrefShortcuts(GuiPreferences * form)
 	// shortcutsTW->setSelectionMode(QAbstractItemView::MultiSelection);
 
 	connect(bindFilePB, SIGNAL(clicked()),
-		this, SLOT(select_bind()));
+		this, SLOT(selectBind()));
 	connect(bindFileED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 	connect(removePB, SIGNAL(clicked()),
@@ -2246,13 +2246,13 @@ PrefShortcuts::PrefShortcuts(GuiPreferences * form)
 	connect(shortcut_->cancelPB, SIGNAL(clicked()),
 		shortcut_, SLOT(reject()));
 	connect(shortcut_->clearPB, SIGNAL(clicked()),
-		this, SLOT(shortcut_clearPB_pressed()));
+		this, SLOT(shortcutClearPressed()));
 	connect(shortcut_->removePB, SIGNAL(clicked()),
-		this, SLOT(shortcut_removePB_pressed()));
+		this, SLOT(shortcutRemovePressed()));
 	connect(shortcut_->okPB, SIGNAL(clicked()),
-		this, SLOT(shortcut_okPB_pressed()));
+		this, SLOT(shortcutOkPressed()));
 	connect(shortcut_->cancelPB, SIGNAL(clicked()),
-		this, SLOT(shortcut_cancelPB_pressed()));
+		this, SLOT(shortcutCancelPressed()));
 }
 
 
@@ -2527,7 +2527,7 @@ void PrefShortcuts::removeShortcut()
 }
 
 
-void PrefShortcuts::select_bind()
+void PrefShortcuts::selectBind()
 {
 	QString file = form_->browsebind(internalPath(bindFileED->text()));
 	if (!file.isEmpty()) {
@@ -2596,7 +2596,7 @@ docstring makeCmdString(FuncRequest const & f)
 }
 
 
-void PrefShortcuts::shortcut_okPB_pressed()
+void PrefShortcuts::shortcutOkPressed()
 {
 	QString const new_lfun = shortcut_->lfunLE->text();
 	FuncRequest func = lyxaction.lookupFunc(fromqstr(new_lfun));
@@ -2659,19 +2659,19 @@ void PrefShortcuts::shortcut_okPB_pressed()
 }
 
 
-void PrefShortcuts::shortcut_cancelPB_pressed()
+void PrefShortcuts::shortcutCancelPressed()
 {
 	shortcut_->shortcutWG->reset();
 }
 
 
-void PrefShortcuts::shortcut_clearPB_pressed()
+void PrefShortcuts::shortcutClearPressed()
 {
 	shortcut_->shortcutWG->reset();
 }
 
 
-void PrefShortcuts::shortcut_removePB_pressed()
+void PrefShortcuts::shortcutRemovePressed()
 {
 	shortcut_->shortcutWG->removeFromSequence();
 }

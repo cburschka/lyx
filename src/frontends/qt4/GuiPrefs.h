@@ -453,18 +453,19 @@ public:
 		KeySequence const & shortcut, KeyMap::ItemType tag);
 
 public Q_SLOTS:
-	void select_bind();
+	void selectBind();
 	void on_modifyPB_pressed();
 	void on_newPB_pressed();
 	void on_removePB_pressed();
 	void on_searchLE_textEdited();
 	///
 	void on_shortcutsTW_itemSelectionChanged();
-	void shortcut_okPB_pressed();
-	void shortcut_cancelPB_pressed();
-	void shortcut_clearPB_pressed();
-	void shortcut_removePB_pressed();
 	void on_shortcutsTW_itemDoubleClicked();
+	///
+	void shortcutOkPressed();
+	void shortcutCancelPressed();
+	void shortcutClearPressed();
+	void shortcutRemovePressed();
 
 private:
 	///
