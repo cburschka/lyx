@@ -199,6 +199,8 @@ docstring bibitemWidest(Buffer const & buffer)
 	font.
 	*/
 
+	docstring lbl;
+
 	ParagraphList::const_iterator it = buffer.paragraphs().begin();
 	ParagraphList::const_iterator end = buffer.paragraphs().end();
 
@@ -224,12 +226,14 @@ docstring bibitemWidest(Buffer const & buffer)
 		// potentially the wrong one.
 		int const wx = label.size();
 
-		if (wx > w)
+		if (wx > w) {
 			w = wx;
+			lbl = label;
+		}
 	}
 
-	if (bitem && !bitem->bibLabel().empty())
-		return bitem->bibLabel();
+	if (!lbl.empty())
+		return lbl;
 
 	return from_ascii("99");
 }
