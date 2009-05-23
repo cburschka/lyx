@@ -786,11 +786,11 @@ PrefScreenFonts::PrefScreenFonts(GuiPreferences * form)
 	setupUi(this);
 
 	connect(screenRomanCO, SIGNAL(activated(QString)),
-		this, SLOT(select_roman(QString)));
+		this, SLOT(selectRoman(QString)));
 	connect(screenSansCO, SIGNAL(activated(QString)),
-		this, SLOT(select_sans(QString)));
+		this, SLOT(selectSans(QString)));
 	connect(screenTypewriterCO, SIGNAL(activated(QString)),
-		this, SLOT(select_typewriter(QString)));
+		this, SLOT(selectTypewriter(QString)));
 
 	QFontDatabase fontdb;
 	QStringList families(fontdb.families());
@@ -894,9 +894,9 @@ void PrefScreenFonts::update(LyXRC const & rc)
 	setComboxFont(screenTypewriterCO, rc.typewriter_font_name,
 			rc.typewriter_font_foundry);
 
-	select_roman(screenRomanCO->currentText());
-	select_sans(screenSansCO->currentText());
-	select_typewriter(screenTypewriterCO->currentText());
+	selectRoman(screenRomanCO->currentText());
+	selectSans(screenSansCO->currentText());
+	selectTypewriter(screenTypewriterCO->currentText());
 
 	screenZoomSB->setValue(rc.zoom);
 	screenDpiSB->setValue(rc.dpi);
@@ -919,19 +919,19 @@ void PrefScreenFonts::update(LyXRC const & rc)
 }
 
 
-void PrefScreenFonts::select_roman(const QString & name)
+void PrefScreenFonts::selectRoman(const QString & name)
 {
 	screenRomanFE->set(QFont(name), name);
 }
 
 
-void PrefScreenFonts::select_sans(const QString & name)
+void PrefScreenFonts::selectSans(const QString & name)
 {
 	screenSansFE->set(QFont(name), name);
 }
 
 
-void PrefScreenFonts::select_typewriter(const QString & name)
+void PrefScreenFonts::selectTypewriter(const QString & name)
 {
 	screenTypewriterFE->set(QFont(name), name);
 }

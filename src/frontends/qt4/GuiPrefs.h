@@ -248,9 +248,9 @@ public:
 	virtual void update(LyXRC const & rc);
 
 private Q_SLOTS:
-	void select_roman(const QString&);
-	void select_sans(const QString&);
-	void select_typewriter(const QString&);
+	void selectRoman(const QString&);
+	void selectSans(const QString&);
+	void selectTypewriter(const QString&);
 };
 
 
