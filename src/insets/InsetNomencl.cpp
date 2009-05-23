@@ -264,20 +264,12 @@ int InsetPrintNomencl::latex(odocstream & os, OutputParams const &) const
 	if (getParam("set_width") == "auto") {
 		docstring widest = nomenclWidest(buffer());
 		// Set the label width via nomencl's command \nomlabelwidth.
-		// This must be output before the command
-		// \printnomenclature
+		// This must be output before the command \printnomenclature
 		if (!widest.empty()) {
-			// assure that the width is never below the
-			// value predefined in nomencl.cfg
-			os << "\\newlength{\\symbwidth}\n";
-			os << "\\settowidth{\\symbwidth}{"
+			os << "\\settowidth{\\nomlabelwidth}{"
 			   << widest
 			   << "}\n";
-			os << "\\ifthenelse{%\n";
-			os << "\\lengthtest{\\symbwidth < \\nomlabelwidth}}\n";
-			os << " {\\setlength{\\symbwidth}{\\nomlabelwidth}}\n";
-			os << " {}\n";
-			lines += 6;
+			++lines;
 		}
 	} else if (getParam("set_width") == "custom") {
 		// custom length as optional arg of \printnomenclature
@@ -299,8 +291,6 @@ int InsetPrintNomencl::latex(odocstream & os, OutputParams const &) const
 void InsetPrintNomencl::validate(LaTeXFeatures & features) const
 {
 	features.require("nomencl");
-	// needed for InsetPrintNomencl::latex
-	features.require("ifthen");
 }
 
 
