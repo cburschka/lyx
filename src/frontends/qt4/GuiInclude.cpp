@@ -64,9 +64,9 @@ GuiInclude::GuiInclude(GuiView & lv)
 	connect(captionLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(labelLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(listingsED, SIGNAL(textChanged()), this, SLOT(change_adaptor()));
-	connect(listingsED, SIGNAL(textChanged()), this, SLOT(set_listings_msg()));
+	connect(listingsED, SIGNAL(textChanged()), this, SLOT(setListingsMsg()));
 	connect(bypassCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(bypassCB, SIGNAL(clicked()), this, SLOT(set_listings_msg()));
+	connect(bypassCB, SIGNAL(clicked()), this, SLOT(setListingsMsg()));
 
 	setFocusProxy(filenameED);
 
@@ -108,7 +108,7 @@ docstring GuiInclude::validate_listings_params()
 }
 
 
-void GuiInclude::set_listings_msg()
+void GuiInclude::setListingsMsg()
 {
 	static bool isOK = true;
 	docstring msg = validate_listings_params();

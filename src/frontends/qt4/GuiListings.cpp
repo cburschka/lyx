@@ -207,11 +207,11 @@ GuiListings::GuiListings(GuiView & lv)
 	connect(listingsED,  SIGNAL(textChanged()),
 		this, SLOT(change_adaptor()));
 	connect(listingsED,  SIGNAL(textChanged()),
-		this, SLOT(set_listings_msg()));
+		this, SLOT(setListingsMsg()));
 	connect(bypassCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
 	connect(bypassCB, SIGNAL(clicked()),
-		this, SLOT(set_listings_msg()));
+		this, SLOT(setListingsMsg()));
 
 	for (int n = 0; languages[n][0]; ++n)
 		languageCO->addItem(qt_(languages_gui[n]));
@@ -363,7 +363,7 @@ docstring GuiListings::validate_listings_params()
 }
 
 
-void GuiListings::set_listings_msg()
+void GuiListings::setListingsMsg()
 {
 	static bool isOK = true;
 	docstring msg = validate_listings_params();

@@ -43,7 +43,7 @@ private Q_SLOTS:
 	/// I have to validate listingsED (QTextEdit) manually.
 	/// This function displays a hint or error message returned by
 	/// validate_listings_params
-	void set_listings_msg();
+	void setListingsMsg();
 
 private:
 	///

@@ -34,7 +34,7 @@ private Q_SLOTS:
 	/// I have to validate listingsED (QTextEdit) manually.
 	/// This function displays a hint or error message returned by
 	/// validate_listings_params
-	void set_listings_msg();
+	void setListingsMsg();
 	/// turn off inline when float is clicked
 	void on_floatCB_stateChanged(int state);
 	/// turn off float when inline is clicked
