@@ -65,9 +65,9 @@ GuiPrintNomencl::GuiPrintNomencl(GuiView & lv)
 	// initialize the length validator
 	bc().addCheckedLineEdit(valueLE, valueLA);
 
-	setWidthCO->addItem(qt_("Predefined"),
+	setWidthCO->addItem(qt_("Default"),
 		QVariant(toqstr("none")));
-	setWidthCO->addItem(qt_("Auto-determined"),
+	setWidthCO->addItem(qt_("Longest label width"),
 		QVariant(toqstr("auto")));
 	setWidthCO->addItem(qt_("Custom"),
 		QVariant(toqstr("custom")));
