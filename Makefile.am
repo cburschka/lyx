@@ -38,6 +38,9 @@ rpmdist: dist
 doxydoc:
 	cd sourcedoc; make doxydoc
 
+lfundoc:
+	development/tools/gen_lfuns.py src/LyXAction.cpp > lib/doc/LFUNs.lyx
+
 lgbtags:
 	etags --totals=yes --recurse=yes -o TAGS $(top_srcdir)/*
 

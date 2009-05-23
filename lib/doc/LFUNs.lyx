@@ -49,7 +49,7 @@ theorems-ams
 \begin_body
 
 \begin_layout Section*
-LFUNs documentation automatically generated 2009-05-17
+LFUNs documentation automatically generated 2009-05-23
 \end_layout
 
 \begin_layout Standard
@@ -1531,13 +1531,17 @@ Syntax cut
 LFUN_PASTE
 \end_layout
 \begin_layout Description
-Action Pastes material from the active clipboard.
+Action Pastes material (text or picture) from the active clipboard.
 \end_layout
 \begin_layout Description
-Syntax paste [<TYPE>]
+Syntax paste [<TYPE>|<NUM>]
 \end_layout
 \begin_layout Description
 Params <TYPE>: emf|pdf|png|jpeg|linkback|wmf
+\begin_inset Newline newline
+\end_inset
+
+<NUM>: number of the selection in the internal clipboard stack to be pasted.
 \end_layout
 
 \begin_layout Subsection*
@@ -3817,19 +3821,19 @@ document|errorlist|ert|external|file|findreplace|findreplaceadv|float|graphics|
 \begin_inset Newline newline
 \end_inset
 
-href|include|index|index_print|info|nomenclature|label|listings|log|mathdelimiter|
+href|include|index|index_print|info|label|listings|log|mathdelimiter|
 \begin_inset Newline newline
 \end_inset
 
-mathmatrix|mathspace|note|paragraph|phantom|prefs|print|ref|sendto|space|
+mathmatrix|mathspace|nomenclature|nomencl_print|note|paragraph|phantom|prefs|
 \begin_inset Newline newline
 \end_inset
 
-spellchecker|symbols|tabular|tabularcreate|thesaurus|texinfo|toc|
+print|ref|sendto|space|spellchecker|symbols|tabular|tabularcreate|
 \begin_inset Newline newline
 \end_inset
 
-view-source|vspace|wrap|<SPECIAL>
+thesaurus|texinfo|toc|view-source|vspace|wrap|<SPECIAL>
 \begin_inset Newline newline
 \end_inset
 
@@ -4975,7 +4979,10 @@ LFUN_LABEL_COPY_AS_REF
 Action Copies the label at the cursor as a cross-reference to be pasted elsewhere.
 \end_layout
 \begin_layout Description
-Syntax copy-label-as-reference
+Syntax copy-label-as-reference <LABEL>
+\end_layout
+\begin_layout Description
+Params <LABEL>: The label to copy (for multi-line math)
 \end_layout
 \begin_layout Description
 Origin sts, 16 Nov 2008
