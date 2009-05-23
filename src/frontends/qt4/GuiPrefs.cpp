@@ -1112,13 +1112,13 @@ PrefPaths::PrefPaths(GuiPreferences * form)
 	: PrefModule(QString(), qt_("Paths"), form)
 {
 	setupUi(this);
-	connect(exampleDirPB, SIGNAL(clicked()), this, SLOT(select_exampledir()));
-	connect(templateDirPB, SIGNAL(clicked()), this, SLOT(select_templatedir()));
-	connect(tempDirPB, SIGNAL(clicked()), this, SLOT(select_tempdir()));
-	connect(backupDirPB, SIGNAL(clicked()), this, SLOT(select_backupdir()));
-	connect(workingDirPB, SIGNAL(clicked()), this, SLOT(select_workingdir()));
-	connect(lyxserverDirPB, SIGNAL(clicked()), this, SLOT(select_lyxpipe()));
-	connect(thesaurusDirPB, SIGNAL(clicked()), this, SLOT(select_thesaurusdir()));
+	connect(exampleDirPB, SIGNAL(clicked()), this, SLOT(selectExampledir()));
+	connect(templateDirPB, SIGNAL(clicked()), this, SLOT(selectTemplatedir()));
+	connect(tempDirPB, SIGNAL(clicked()), this, SLOT(selectTempdir()));
+	connect(backupDirPB, SIGNAL(clicked()), this, SLOT(selectBackupdir()));
+	connect(workingDirPB, SIGNAL(clicked()), this, SLOT(selectWorkingdir()));
+	connect(lyxserverDirPB, SIGNAL(clicked()), this, SLOT(selectLyxPipe()));
+	connect(thesaurusDirPB, SIGNAL(clicked()), this, SLOT(selectThesaurusdir()));
 	connect(workingDirED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 	connect(exampleDirED, SIGNAL(textChanged(QString)),
@@ -1166,7 +1166,7 @@ void PrefPaths::update(LyXRC const & rc)
 }
 
 
-void PrefPaths::select_exampledir()
+void PrefPaths::selectExampledir()
 {
 	QString file = browseDir(internalPath(exampleDirED->text()),
 		qt_("Select directory for example files"));
@@ -1175,7 +1175,7 @@ void PrefPaths::select_exampledir()
 }
 
 
-void PrefPaths::select_templatedir()
+void PrefPaths::selectTemplatedir()
 {
 	QString file = browseDir(internalPath(templateDirED->text()),
 		qt_("Select a document templates directory"));
@@ -1184,7 +1184,7 @@ void PrefPaths::select_templatedir()
 }
 
 
-void PrefPaths::select_tempdir()
+void PrefPaths::selectTempdir()
 {
 	QString file = browseDir(internalPath(tempDirED->text()),
 		qt_("Select a temporary directory"));
@@ -1193,7 +1193,7 @@ void PrefPaths::select_tempdir()
 }
 
 
-void PrefPaths::select_backupdir()
+void PrefPaths::selectBackupdir()
 {
 	QString file = browseDir(internalPath(backupDirED->text()),
 		qt_("Select a backups directory"));
@@ -1202,7 +1202,7 @@ void PrefPaths::select_backupdir()
 }
 
 
-void PrefPaths::select_workingdir()
+void PrefPaths::selectWorkingdir()
 {
 	QString file = browseDir(internalPath(workingDirED->text()),
 		qt_("Select a document directory"));
@@ -1211,7 +1211,7 @@ void PrefPaths::select_workingdir()
 }
 
 
-void PrefPaths::select_thesaurusdir()
+void PrefPaths::selectThesaurusdir()
 {
 	QString file = browseDir(internalPath(thesaurusDirED->text()),
 		qt_("Set the path to the thesaurus dictionaries"));
@@ -1220,7 +1220,7 @@ void PrefPaths::select_thesaurusdir()
 }
 
 
-void PrefPaths::select_lyxpipe()
+void PrefPaths::selectLyxPipe()
 {
 	QString file = form_->browse(internalPath(lyxserverDirED->text()),
 		qt_("Give a filename for the LyX server pipe"));

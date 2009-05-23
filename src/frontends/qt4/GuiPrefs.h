@@ -295,13 +295,13 @@ public:
 	void update(LyXRC const & rc);
 
 private Q_SLOTS:
-	void select_exampledir();
-	void select_templatedir();
-	void select_tempdir();
-	void select_backupdir();
-	void select_workingdir();
-	void select_thesaurusdir();
-	void select_lyxpipe();
+	void selectExampledir();
+	void selectTemplatedir();
+	void selectTempdir();
+	void selectBackupdir();
+	void selectWorkingdir();
+	void selectThesaurusdir();
+	void selectLyxPipe();
 
 };
 
