@@ -2417,9 +2417,9 @@ void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
 	// No side effect of file copying and image conversion
 	runparams.dryrun = true;
 
-	d->texrow.reset();
 	if (full_source) {
 		os << "% " << _("Preview source code") << "\n\n";
+		d->texrow.reset();
 		d->texrow.newline();
 		d->texrow.newline();
 		if (isDocBook())
@@ -2441,14 +2441,16 @@ void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
 					convert<docstring>(par_end - 1))
 			   << "\n\n";
 		}
-		d->texrow.newline();
-		d->texrow.newline();
+		TexRow texrow;
+		texrow.reset();
+		texrow.newline();
+		texrow.newline();
 		// output paragraphs
 		if (isDocBook())
 			docbookParagraphs(paragraphs(), *this, os, runparams);
 		else 
 			// latex or literate
-			latexParagraphs(*this, text(), os, d->texrow, runparams);
+			latexParagraphs(*this, text(), os, texrow, runparams);
 	}
 }
 
