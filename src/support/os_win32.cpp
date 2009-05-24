@@ -202,8 +202,7 @@ docstring::size_type common_path(docstring const & p1, docstring const & p2)
 
 bool path_prefix_is(string const & path, string const & pre)
 {
-	string tmp = path;
-	return path_prefix_is(tmp, pre, CASE_UNCHANGED);
+	return path_prefix_is(const_cast<string &>(path), pre, CASE_UNCHANGED);
 }
 
 
@@ -213,7 +212,7 @@ bool path_prefix_is(string & path, string const & pre, path_case how)
 	docstring const p2 = from_utf8(pre);
 	docstring::size_type i = common_path(p1, p2);
 
-	if (i + 1 != p2.length())
+	if (i == 0 || i + 1 != p2.length())
 		return false;
 
 	if (how == CASE_ADJUSTED && !prefixIs(path, pre))
