@@ -12,7 +12,7 @@
 #ifndef PARAGRAPH_FUNCS_H
 #define PARAGRAPH_FUNCS_H
 
-#include "support/docstring.h"
+#include "support/strfwd.h"
 #include "support/types.h"
 
 
