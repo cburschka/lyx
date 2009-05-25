@@ -726,10 +726,12 @@ convert = [[346, []],
            [357, []],
            [358, []],
            [359, [convert_nomencl_width]],
-           [360, []]
+           [360, []],
+           [361, []]
           ]
 
-revert =  [[359, [revert_nomencl_cwidth]],
+revert =  [[360, []],
+           [359, [revert_nomencl_cwidth]],
            [358, [revert_nomencl_width]],
            [357, [revert_custom_processors]],
            [356, [revert_ulinelatex]],

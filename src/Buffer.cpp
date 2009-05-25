@@ -125,7 +125,7 @@ namespace {
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-int const LYX_FORMAT = 360;  // jspitzm: nomencl custom width
+int const LYX_FORMAT = 361;  // jspitzm: bibliography custom width
 
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;
