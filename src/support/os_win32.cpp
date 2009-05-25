@@ -210,13 +210,19 @@ bool path_prefix_is(string & path, string const & pre, path_case how)
 {
 	docstring const p1 = from_utf8(path);
 	docstring const p2 = from_utf8(pre);
-	docstring::size_type i = common_path(p1, p2);
+	docstring::size_type const p1_len = p1.length();
+	docstring::size_type const p2_len = p2.length();
+	docstring::size_type const common_len = common_path(p1, p2) + 1;
 
-	if (i == 0 || i + 1 != p2.length())
+	if (common_len == 1) {
+		if (p2_len != 1 || p1_len == 0 || p1[0] != p2[0]
+		    || (p1_len != 1 && p1[1] != '/'))
+			return false;
+	} else if (common_len != p2_len)
 		return false;
 
 	if (how == CASE_ADJUSTED && !prefixIs(path, pre))
-		path = to_utf8(p2 + p1.substr(i + 1, p1.length() - i + 1));
+		path = to_utf8(p2 + p1.substr(common_len, p1_len - common_len));
 
 	return true;
 }
