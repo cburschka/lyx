@@ -3144,7 +3144,8 @@ static void setLabel(Buffer const & buf, ParIterator & it)
 	// Compute the item depth of the paragraph
 	par.itemdepth = getItemDepth(it);
 
-	if (layout.margintype == MARGIN_MANUAL) {
+	if (layout.margintype == MARGIN_MANUAL
+	    || layout.latextype == LATEX_BIB_ENVIRONMENT) {
 		if (par.params().labelWidthString().empty())
 			par.params().labelWidthString(par.translateIfPossible(layout.labelstring(), bp));
 	} else {

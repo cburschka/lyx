@@ -169,8 +169,12 @@ TeXEnvironment(Buffer const & buf,
 			   << pit->params().labelWidthString()
 			   << "}\n";
 		} else if (style.labeltype == LABEL_BIBLIO) {
-			// ale970405
-			os << '{' << bibitemWidest(buf) << "}\n";
+			if (pit->params().labelWidthString().empty())
+				os << '{' << bibitemWidest(buf) << "}\n";
+			else
+				os << '{'
+				  << pit->params().labelWidthString()
+				  << "}\n";
 		} else
 			os << from_ascii(style.latexparam()) << '\n';
 		texrow.newline();

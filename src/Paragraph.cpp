@@ -1589,7 +1589,8 @@ docstring const & Paragraph::labelString() const
 // the next two functions are for the manual labels
 docstring const Paragraph::getLabelWidthString() const
 {
-	if (d->layout_->margintype == MARGIN_MANUAL)
+	if (d->layout_->margintype == MARGIN_MANUAL
+	    || d->layout_->latextype == LATEX_BIB_ENVIRONMENT)
 		return d->params_.labelWidthString();
 	else
 		return _("Senseless with this layout!");
