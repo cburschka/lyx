@@ -94,7 +94,7 @@ bool path_prefix_is(string & path, string const & pre, path_case how)
 	docstring::size_type const p2_len = p2.length();
 	docstring::size_type common_len = common_path(p1, p2);
 
-	if (p2[p2_len - 1] == '/')
+	if (p2[p2_len - 1] == '/' && p1_len != p2_len)
 		++common_len;
 
 	if (common_len != p2_len)
