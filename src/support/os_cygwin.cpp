@@ -162,9 +162,7 @@ docstring::size_type common_path(docstring const & p1, docstring const & p2)
 			--i;     // here was the last match
 		while (i && p1[i] != '/')
 			--i;
-	} else
-		--i;
-
+	}
 	return i;
 }
 
@@ -181,13 +179,12 @@ bool path_prefix_is(string & path, string const & pre, path_case how)
 	docstring const p2 = from_utf8(pre);
 	docstring::size_type const p1_len = p1.length();
 	docstring::size_type const p2_len = p2.length();
-	docstring::size_type const common_len = common_path(p1, p2) + 1;
+	docstring::size_type common_len = common_path(p1, p2);
 
-	if (common_len == 1) {
-		if (p2_len != 1 || p1_len == 0 || p1[0] != p2[0]
-		    || (p1_len != 1 && p1[1] != '/'))
-			return false;
-	} else if (common_len != p2_len)
+	if (p2[p2_len - 1] == '/')
+		++common_len;
+
+	if (common_len != p2_len)
 		return false;
 
 	if (how == CASE_ADJUSTED && !prefixIs(path, pre))

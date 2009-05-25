@@ -60,9 +60,9 @@ std::string const python();
 bool isFilesystemCaseSensitive();
 
 /// Extract the path common to both @c p1 and @c p2. DBCS aware!
-/// \p p1 and \p p2 are encoded in ucs4, \returns the index to the
-/// end of the last matching path component (the index may be pointing
-/// to the path separator, if it is the last char in @c p2).
+/// \p p1 and \p p2 are encoded in ucs4, \returns the index to the end of
+/// the last matching path component (the index may be pointing after the
+/// end of @c p1 or @c p2 if their last char is not the path separator).
 std::size_t common_path(docstring const & p1, docstring const & p2);
 
 /// Converts a unix style path to host OS style.
