@@ -223,7 +223,7 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 			ShapeChanger dummy2(pi.base.font, UP_SHAPE);
 			cell(0).draw(pi, x + 2,	y - dim0.des - 5);
 			cell(1).draw(pi, x + dim0.width() + 5, y + dim1.asc / 2);
-		} else if (kind_ == FRAC) {
+		} else if (kind_ == FRAC || kind_ == OVER) {
 			cell(0).draw(pi, m - dim0.wid / 2, y - dim0.des - 2 - 5);
 			cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc + 2 - 5);
 		} else if (kind_ == TFRAC) {
