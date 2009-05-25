@@ -12,6 +12,7 @@
 #ifndef PARAGRAPH_FUNCS_H
 #define PARAGRAPH_FUNCS_H
 
+#include "support/docstring.h"
 #include "support/types.h"
 
 
@@ -59,6 +60,11 @@ pit_type outerHook(pit_type par, ParagraphList const & plist);
 
 /// Is it the first par with same depth and layout?
 bool isFirstInSequence(pit_type par, ParagraphList const & plist);
+
+/** Set Label Width string to all paragraphs of the same layout
+    and depth in a sequence */
+void setLabelWidthStringToSequence(pit_type par_offset,
+	ParagraphList & pars, docstring const & s);
 
 /** Check if the current paragraph is the last paragraph in a
     proof environment */

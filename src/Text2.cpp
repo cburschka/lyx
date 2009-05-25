@@ -449,6 +449,10 @@ void Text::setParagraphs(Cursor & cur, docstring arg, bool merge)
 		Paragraph & par = pars_[pit];
 		ParagraphParameters params = par.params();
 		params.read(argument, merge);
+		// changes to label width string apply to all
+		// paragraph with same layout in a sequence
+		setLabelWidthStringToSequence(pit, pars_,
+				params.labelWidthString());
 		par.params().apply(params, par.layout());
 	}
 }
@@ -467,6 +471,10 @@ void Text::setParagraphs(Cursor & cur, ParagraphParameters const & p)
 	for (pit_type pit = cur.selBegin().pit(), end = cur.selEnd().pit();
 	     pit <= end; ++pit) {
 		Paragraph & par = pars_[pit];
+		// changes to label width string apply to all
+		// paragraph with same layout in a sequence
+		setLabelWidthStringToSequence(pit, pars_,
+				par.params().labelWidthString());
 		par.params().apply(p, par.layout());
 	}	
 }
