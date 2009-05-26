@@ -363,18 +363,13 @@ void GuiWorkArea::close()
 void GuiWorkArea::setFullScreen(bool full_screen)
 {
 	buffer_view_->setFullScreen(full_screen);
+	setFrameStyle(QFrame::NoFrame);
 	if (full_screen) {
 		setFrameStyle(QFrame::NoFrame);
 		if (lyxrc.full_screen_scrollbar)
 			setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-	} else {
-#ifdef Q_WS_MACX
-		setFrameStyle(QFrame::NoFrame);
-#else
-		setFrameStyle(QFrame::Box);
-#endif
+	} else
 		setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-	}
 }
 
 
@@ -1463,9 +1458,8 @@ bool TabWorkArea::removeWorkArea(GuiWorkArea * work_area)
 		else
 			// Show tabbar only if there's more than one tab.
 			showBar(count() > 1);
-	} else {
+	} else
 		lastWorkAreaRemoved();
-	}
 
 	updateTabTexts();
 
