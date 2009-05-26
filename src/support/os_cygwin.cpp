@@ -187,8 +187,13 @@ bool path_prefix_is(string & path, string const & pre, path_case how)
 	if (common_len != p2_len)
 		return false;
 
-	if (how == CASE_ADJUSTED && !prefixIs(path, pre))
-		path = to_utf8(p2 + p1.substr(common_len, p1_len - common_len));
+	if (how == CASE_ADJUSTED && !prefixIs(path, pre)) {
+		if (p1_len < common_len)
+			path = to_utf8(p2.substr(0, p1_len));
+		else
+			path = to_utf8(p2 + p1.substr(common_len,
+							p1_len - common_len));
+	}
 
 	return true;
 }
