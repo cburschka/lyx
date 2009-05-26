@@ -129,11 +129,11 @@ void GuiPrintNomencl::applyView()
 }
 
 
-bool GuiPrintNomencl::isValid()
+bool GuiPrintNomencl::isValid() const
 {
-	return (setWidthCO->itemData(
+	return setWidthCO->itemData(
 			setWidthCO->currentIndex()).toString() != "custom"
-		|| !valueLE->text().isEmpty());
+		|| !valueLE->text().isEmpty();
 }
 
 

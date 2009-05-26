@@ -49,7 +49,7 @@ private:
 	///
 	bool isBufferDependent() const { return true; }
 	///
-	bool isValid();
+	bool isValid() const;
 
 	///
 	InsetCommandParams params_;
