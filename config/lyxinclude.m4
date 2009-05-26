@@ -430,6 +430,20 @@ AC_DEFUN([LYX_USE_INCLUDED_BOOST],[
 	    [lyx_cv_with_included_boost=yes])
 	AM_CONDITIONAL(USE_INCLUDED_BOOST, test x$lyx_cv_with_included_boost = xyes)
 	AC_MSG_RESULT([$lyx_cv_with_included_boost])
+	if test x$lyx_cv_with_included_boost != xyes ; then
+		AC_CHECK_LIB(boost_signals, main, [lyx_boost_underscore=yes], [], [-lm])
+		AC_CHECK_LIB(boost_signals-mt, main, [lyx_boost_underscore_mt=yes], [], [-lm $LIBTHREAD])
+		if test x$lyx_boost_underscore_mt = xyes ; then
+			BOOST_MT="-mt"
+		else
+			BOOST_MT=""
+			if test x$lyx_boost_plain != xyes -a x$lyx_boost_underscore != xyes ; then
+				LYX_ERROR([No suitable boost library found (do not use --without-included-boost)])
+			fi
+		fi
+		AC_SUBST(BOOST_SEP)
+		AC_SUBST(BOOST_MT)
+	fi
 ])
 
 

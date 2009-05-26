@@ -33,7 +33,11 @@ BOOST_INCLUDES = -I$(top_srcdir)/boost
 BOOST_LIBS = $(top_builddir)/boost/liblyxboost.a
 else
 BOOST_INCLUDES =
-BOOST_LIBS = -lboost_filesystem -lboost_regex -lboost_signals -lboost_iostreams
+BOOST_FILESYSTEM = -lboost_filesystem$(BOOST_MT)
+BOOST_REGEX = -lboost_regex$(BOOST_MT)
+BOOST_SIGNALS = -lboost_signals$(BOOST_MT)
+BOOST_IOSTREAMS = -lboost_iostreams$(BOOST_MT)
+BOOST_LIBS = $(BOOST_FILESYSTEM) $(BOOST_REGEX) $(BOOST_SIGNALS) $(BOOST_IOSTREAMS)
 endif
 
 LIBS =
