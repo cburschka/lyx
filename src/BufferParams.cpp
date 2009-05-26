@@ -1445,7 +1445,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		lyxpreamble += oss.str();
 	}
 	
-	// Will be surrounded by \makeatletter and \makeatother when needed
+	// Will be surrounded by \makeatletter and \makeatother when not empty
 	docstring atlyxpreamble;
 
 	// Some macros LyX will need
@@ -1464,9 +1464,11 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			+ tmppreamble + '\n';
 
 	/* the user-defined preamble */
-	if (!preamble.empty())
+	if (preamble.find_first_not_of(" \n\t") != docstring::npos)
 		// FIXME UNICODE
-		atlyxpreamble += from_utf8(preamble);
+		atlyxpreamble += "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
+			"User specified LaTeX commands.\n"
+			+ from_utf8(preamble) + '\n';
 
 	// subfig loads internally the LaTeX package "caption". As
 	// caption is a very popular package, users will load it in
@@ -1519,19 +1521,9 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	if (!bullets_def.empty())
 		atlyxpreamble += bullets_def + "}\n\n";
 
-	lyxpreamble += "\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
-			"User specified LaTeX commands.\n";
-
-	// Check whether we should change the catcode of '@' in the preamble.
-	// We do it when '@' explicitly appears and, as a safety measure, also
-	// when an external file is included.
-	if (atlyxpreamble.find(from_ascii("@")) != docstring::npos
-	    || atlyxpreamble.find(from_ascii("\\input")) != docstring::npos
-	    || atlyxpreamble.find(from_ascii("\\include")) != docstring::npos)
-		lyxpreamble += "\\makeatletter\n"
+	if (!atlyxpreamble.empty())
+		lyxpreamble += "\n\\makeatletter\n"
 			+ atlyxpreamble + "\\makeatother\n\n";
-	else
-		lyxpreamble += atlyxpreamble + '\n';
 
 	// We try to load babel late, in case it interferes with other packages.
 	// Jurabib and Hyperref have to be called after babel, though.
