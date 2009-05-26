@@ -92,6 +92,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\font_encoding", LyXRC::RC_FONT_ENCODING },
 	{ "\\format", LyXRC::RC_FORMAT },
 	{ "\\fullscreen_limit", LyXRC::RC_FULL_SCREEN_LIMIT },
+	{ "\\fullscreen_menubar", LyXRC::RC_FULL_SCREEN_MENUBAR },
 	{ "\\fullscreen_scrollbar", LyXRC::RC_FULL_SCREEN_SCROLLBAR },
 	{ "\\fullscreen_tabbar", LyXRC::RC_FULL_SCREEN_TABBAR },
 	{ "\\fullscreen_toolbars", LyXRC::RC_FULL_SCREEN_TOOLBARS },
@@ -315,6 +316,7 @@ void LyXRC::setDefaults()
 	full_screen_limit = false;
 	full_screen_toolbars = true;
 	full_screen_tabbar = true;
+	full_screen_menubar = true;
 	full_screen_scrollbar = true;
 	full_screen_width = 700;
 
@@ -1123,6 +1125,9 @@ int LyXRC::read(Lexer & lexrc)
 		case RC_FULL_SCREEN_TABBAR:
 			lexrc >> full_screen_tabbar;
 			break;
+		case RC_FULL_SCREEN_MENUBAR:
+			lexrc >> full_screen_menubar;
+			break;
 		case RC_FULL_SCREEN_WIDTH:
 			lexrc >> full_screen_width;
 			break;
@@ -1767,6 +1772,15 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		    full_screen_tabbar != system_lyxrc.full_screen_tabbar) {
 			os << "\\fullscreen_tabbar "
 			   << convert<string>(full_screen_tabbar)
+			   << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+	case RC_FULL_SCREEN_MENUBAR:
+		if (ignore_system_lyxrc ||
+		    full_screen_menubar != system_lyxrc.full_screen_menubar) {
+			os << "\\fullscreen_menubar "
+			   << convert<string>(full_screen_menubar)
 			   << '\n';
 		}
 		if (tag != RC_LAST)

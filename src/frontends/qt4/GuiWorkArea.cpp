@@ -447,7 +447,8 @@ void GuiWorkArea::redraw()
 
 void GuiWorkArea::processKeySym(KeySymbol const & key, KeyModifier mod)
 {
-	if (lyx_view_->isFullScreen() && lyx_view_->menuBar()->isVisible()) {
+	if (lyx_view_->isFullScreen() && lyx_view_->menuBar()->isVisible()
+		&& lyxrc.full_screen_menubar) {
 		// FIXME HACK: we should not have to do this here. See related comment
 		// in GuiView::event() (QEvent::ShortcutOverride)
 		lyx_view_->menuBar()->hide();

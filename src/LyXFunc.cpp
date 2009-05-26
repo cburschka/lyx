@@ -2015,6 +2015,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_SORT_LAYOUTS:
 	case LyXRC::RC_FULL_SCREEN_LIMIT:
 	case LyXRC::RC_FULL_SCREEN_SCROLLBAR:
+	case LyXRC::RC_FULL_SCREEN_MENUBAR:
 	case LyXRC::RC_FULL_SCREEN_TABBAR:
 	case LyXRC::RC_FULL_SCREEN_TOOLBARS:
 	case LyXRC::RC_FULL_SCREEN_WIDTH:

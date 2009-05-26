@@ -2282,7 +2282,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 
 	// Part of automatic menu appearance feature.
 	if (isFullScreen()) {
-		if (menuBar()->isVisible())
+		if (menuBar()->isVisible() && lyxrc.full_screen_menubar)
 			menuBar()->hide();
 		if (statusBar()->isVisible())
 			statusBar()->hide();
@@ -2361,7 +2361,8 @@ void GuiView::toggleFullScreen()
 		saveLayout();
 		setWindowState(windowState() ^ Qt::WindowFullScreen);
 		statusBar()->hide();
-		menuBar()->hide();
+		if (lyxrc.full_screen_menubar)
+			menuBar()->hide();
 		if (lyxrc.full_screen_toolbars) {
 			ToolbarMap::iterator end = d.toolbars_.end();
 			for (ToolbarMap::iterator it = d.toolbars_.begin(); it != end; ++it)
