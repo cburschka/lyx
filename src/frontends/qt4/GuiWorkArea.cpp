@@ -1354,7 +1354,7 @@ void TabWorkArea::setFullScreen(bool full_screen)
 	}
 
 	if (lyxrc.full_screen_tabbar)
-		showBar(!full_screen && count()>1);
+		showBar(!full_screen && count() > 1);
 }
 
 
