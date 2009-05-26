@@ -72,6 +72,10 @@ What's new
 
 - KDE 4's okular is considered as a viewer for PDF, PS and DVI.
 
+- Revert to pre-1.6 behaviour of always enclosing the preamble between
+  \makeatletter and \makeatother when exporting to LaTeX and not only
+  when the @-glyph explicitly appears.
+
 
 * USER INTERFACE
 
