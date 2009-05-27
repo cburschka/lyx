@@ -563,9 +563,11 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 			flag = getStatus(func);
 			theTopLevelCmdDef().release(name);
 		} else {
-			// catch recursion or unknown command definiton
-			// all operations until the recursion or unknown command 
-			// definiton occures are performed, so set the state to enabled
+			// catch recursion or unknown command
+			// definition. all operations until the
+			// recursion or unknown command definition
+			// occurs are performed, so set the state to
+			// enabled
 			enable = true;
 		}
 		break;
