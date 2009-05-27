@@ -1370,15 +1370,33 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
-	case RC_BIBTEX_ALTERNATIVES:
-		if (ignore_system_lyxrc ||
-		    bibtex_alternatives != system_lyxrc.bibtex_alternatives) {
-			for (vector<string>::const_iterator it = bibtex_alternatives.begin();
-			     it != bibtex_alternatives.end(); ++it)
-			os << "\\bibtex_alternatives \"" << *it << "\"\n";
+	case RC_BIBTEX_ALTERNATIVES: {
+		vector<string>::const_iterator it = bibtex_alternatives.begin();
+		vector<string>::const_iterator end = bibtex_alternatives.end();
+		if (ignore_system_lyxrc) {
+			for ( ; it != end; ++it)
+				os << "\\bibtex_alternatives \""
+				   << *it << "\"\n";
+		} else {
+			vector<string>::const_iterator sbeg =
+				system_lyxrc.bibtex_alternatives.begin();
+			vector<string>::const_iterator send =
+				system_lyxrc.bibtex_alternatives.end();
+			for ( ; it != end; ++it) {
+				bool found = false;
+				for (vector<string>::const_iterator sit = sbeg;
+							sit != send; ++sit) {
+					if (*it == *sit)
+						found = true;
+				}
+				if (!found)
+					os << "\\bibtex_alternatives \""
+					   << *it << "\"\n";
+			}
 		}
 		if (tag != RC_LAST)
 			break;
+	}
 	case RC_BIBTEX_COMMAND:
 		if (ignore_system_lyxrc ||
 		    bibtex_command != system_lyxrc.bibtex_command) {
@@ -1393,15 +1411,33 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
-	case RC_INDEX_ALTERNATIVES:
-		if (ignore_system_lyxrc ||
-		    index_alternatives != system_lyxrc.index_alternatives) {
-			for (vector<string>::const_iterator it = index_alternatives.begin();
-			     it != index_alternatives.end(); ++it)
-			os << "\\index_alternatives \"" << *it << "\"\n";
+	case RC_INDEX_ALTERNATIVES: {
+		vector<string>::const_iterator it = index_alternatives.begin();
+		vector<string>::const_iterator end = index_alternatives.end();
+		if (ignore_system_lyxrc) {
+			for ( ; it != end; ++it)
+				os << "\\index_alternatives \""
+				   << *it << "\"\n";
+		} else {
+			vector<string>::const_iterator sbeg =
+				system_lyxrc.index_alternatives.begin();
+			vector<string>::const_iterator send =
+				system_lyxrc.index_alternatives.end();
+			for ( ; it != end; ++it) {
+				bool found = false;
+				for (vector<string>::const_iterator sit = sbeg;
+							sit != send; ++sit) {
+					if (*it == *sit)
+						found = true;
+				}
+				if (!found)
+					os << "\\index_alternatives \""
+					   << *it << "\"\n";
+			}
 		}
 		if (tag != RC_LAST)
 			break;
+	}
 	case RC_INDEX_COMMAND:
 		if (ignore_system_lyxrc ||
 		    index_command != system_lyxrc.index_command) {
