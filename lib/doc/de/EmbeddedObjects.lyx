@@ -150,7 +150,6 @@
 \newboolean{sidecap}
 \IfFileExists{sidecap.sty}
  {\usepackage{sidecap}
-  \let\marginpar\marginnote
   \setboolean{sidecap}{true}}
  {\setboolean{sidecap}{false}}
 
