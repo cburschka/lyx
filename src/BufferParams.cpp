@@ -1464,7 +1464,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			+ tmppreamble + '\n';
 
 	/* the user-defined preamble */
-	if (preamble.find_first_not_of(" \n\t") != docstring::npos)
+	if (!containsOnly(preamble, " \n\t"))
 		// FIXME UNICODE
 		atlyxpreamble += "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
 			"User specified LaTeX commands.\n"
