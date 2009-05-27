@@ -631,10 +631,9 @@ void PrefLatex::on_latexBibtexCO_activated(int n)
 		QString const bib = toqstr(*it);
 		int ind = bib.indexOf(" ");
 		QString sel_command = bib.left(ind);
-		QString sel_options = bib;
-		sel_options.remove(0, ind);
+		QString sel_options = ind < 0 ? QString() : bib.mid(ind + 1);
 		if (bibtex == sel_command) {
-			if (ind == -1)
+			if (ind < 0)
 				latexBibtexED->clear();
 			else
 				latexBibtexED->setText(sel_options.trimmed());
@@ -657,10 +656,9 @@ void PrefLatex::on_latexIndexCO_activated(int n)
 		QString const idx = toqstr(*it);
 		int ind = idx.indexOf(" ");
 		QString sel_command = idx.left(ind);
-		QString sel_options = idx;
-		sel_options.remove(0, ind);
+		QString sel_options = ind < 0 ? QString() : idx.mid(ind + 1);
 		if (index == sel_command) {
-			if (ind == -1)
+			if (ind < 0)
 				latexIndexED->clear();
 			else
 				latexIndexED->setText(sel_options.trimmed());
@@ -717,8 +715,7 @@ void PrefLatex::update(LyXRC const & rc)
 	QString const bib = toqstr(rc.bibtex_command);
 	int ind = bib.indexOf(" ");
 	QString sel_command = bib.left(ind);
-	QString sel_options = bib;
-	sel_options.remove(0, ind);
+	QString sel_options = ind < 0 ? QString() : bib.mid(ind + 1);
 
 	int pos = latexBibtexCO->findData(sel_command);
 	if (pos != -1) {
@@ -745,8 +742,7 @@ void PrefLatex::update(LyXRC const & rc)
 	QString const idx = toqstr(rc.index_command);
 	ind = idx.indexOf(" ");
 	sel_command = idx.left(ind);
-	sel_options = idx;
-	sel_options.remove(0, ind);
+	sel_options = ind < 0 ? QString() : idx.mid(ind + 1);
 
 	pos = latexIndexCO->findData(sel_command);
 	if (pos != -1) {
