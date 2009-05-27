@@ -2678,7 +2678,6 @@ lib_layouts_files = Split('''
     literate-report.layout
     llncs.layout
     ltugboat.layout
-    manpage.layout
     memoir.layout
     moderncv.layout
     mwart.layout
