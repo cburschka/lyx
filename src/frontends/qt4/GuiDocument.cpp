@@ -1744,11 +1744,12 @@ void GuiDocument::applyView()
 	string const bibtex_command =
 		fromqstr(biblioModule->bibtexCO->itemData(
 			biblioModule->bibtexCO->currentIndex()).toString());
-	if (bibtex_command == "default")
+	string const bibtex_options =
+		fromqstr(biblioModule->bibtexOptionsED->text());
+	if (bibtex_command == "default" || bibtex_options.empty())
 		bp_.bibtex_command = bibtex_command;
 	else
-		bp_.bibtex_command = bibtex_command + " "
-			+ fromqstr(biblioModule->bibtexOptionsED->text());
+		bp_.bibtex_command = bibtex_command + " " + bibtex_options;
 
 	// Indices
 	indicesModule->apply(bp_);

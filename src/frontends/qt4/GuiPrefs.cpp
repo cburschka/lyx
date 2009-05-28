@@ -670,19 +670,29 @@ void PrefLatex::on_latexIndexCO_activated(int n)
 
 void PrefLatex::apply(LyXRC & rc) const
 {
+	// If bibtex is not empty, bibopt contains the options, otherwise
+	// it is a customized bibtex command with options.
 	QString const bibtex = latexBibtexCO->itemData(
 		latexBibtexCO->currentIndex()).toString();
+	QString const bibopt = latexBibtexED->text();
 	if (bibtex.isEmpty())
-		rc.bibtex_command = fromqstr(latexBibtexED->text());
+		rc.bibtex_command = fromqstr(bibopt);
+	else if (bibopt.isEmpty())
+		rc.bibtex_command = fromqstr(bibtex);
 	else
-		rc.bibtex_command = fromqstr(bibtex) + " " + fromqstr(latexBibtexED->text());
+		rc.bibtex_command = fromqstr(bibtex) + " " + fromqstr(bibopt);
 
+	// If index is not empty, idxopt contains the options, otherwise
+	// it is a customized index command with options.
 	QString const index = latexIndexCO->itemData(
 		latexIndexCO->currentIndex()).toString();
+	QString const idxopt = latexIndexED->text();
 	if (index.isEmpty())
-		rc.index_command = fromqstr(latexIndexED->text());
+		rc.index_command = fromqstr(idxopt);
+	else if (idxopt.isEmpty())
+		rc.index_command = fromqstr(index);
 	else
-		rc.index_command = fromqstr(index) + " " + fromqstr(latexIndexED->text());
+		rc.index_command = fromqstr(index) + " " + fromqstr(idxopt);
 
 	rc.fontenc = fromqstr(latexEncodingED->text());
 	rc.chktex_command = fromqstr(latexChecktexED->text());

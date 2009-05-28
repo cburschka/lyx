@@ -136,11 +136,11 @@ void GuiIndices::apply(BufferParams & params) const
 	string const index_command =
 		fromqstr(indexCO->itemData(
 			indexCO->currentIndex()).toString());
-	if (index_command == "default")
+	string const index_options = fromqstr(indexOptionsED->text());
+	if (index_command == "default" || index_options.empty())
 		params.index_command = index_command;
 	else
-		params.index_command = index_command + " "
-			+ fromqstr(indexOptionsED->text());
+		params.index_command = index_command + " " + index_options;
 }
 
 
