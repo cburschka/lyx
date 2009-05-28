@@ -22,8 +22,8 @@
 
 #include "support/strfwd.h"
 
+#include <set>
 #include <string>
-#include <vector>
 
 
 namespace lyx {
@@ -250,13 +250,13 @@ public:
 	/// command to run chktex incl. options
 	std::string chktex_command;
 	/// all available commands to run bibtex incl. options
-	std::vector<std::string> bibtex_alternatives;
+	std::set<std::string> bibtex_alternatives;
 	/// command to run bibtex incl. options
 	std::string bibtex_command;
 	/// command to run japanese bibtex incl. options
 	std::string jbibtex_command;
 	/// all available index commands incl. options
-	std::vector<std::string> index_alternatives;
+	std::set<std::string> index_alternatives;
 	/// command to run makeindex incl. options or other index programs
 	std::string index_command;
 	/// command to run japanese index program incl. options

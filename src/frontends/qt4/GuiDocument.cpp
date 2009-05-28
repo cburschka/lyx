@@ -871,7 +871,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	biblioModule->bibtexCO->clear();
 
 	biblioModule->bibtexCO->addItem(qt_("Default"), QString("default"));
-	for (vector<string>::const_iterator it = lyxrc.bibtex_alternatives.begin();
+	for (set<string>::const_iterator it = lyxrc.bibtex_alternatives.begin();
 			     it != lyxrc.bibtex_alternatives.end(); ++it) {
 		QString const command = toqstr(*it).left(toqstr(*it).indexOf(" "));
 		biblioModule->bibtexCO->addItem(command, command);

@@ -232,9 +232,9 @@ private Q_SLOTS:
 
 private:
 	///
-	std::vector<std::string> bibtex_alternatives;
+	std::set<std::string> bibtex_alternatives;
 	///
-	std::vector<std::string> index_alternatives;
+	std::set<std::string> index_alternatives;
 };
 
 

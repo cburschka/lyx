@@ -626,7 +626,7 @@ void PrefLatex::on_latexBibtexCO_activated(int n)
 		latexBibtexOptionsLA->setText(qt_("C&ommand:"));
 		return;
 	}
-	for (vector<string>::const_iterator it = bibtex_alternatives.begin();
+	for (set<string>::const_iterator it = bibtex_alternatives.begin();
 	     it != bibtex_alternatives.end(); ++it) {
 		QString const bib = toqstr(*it);
 		int ind = bib.indexOf(" ");
@@ -651,7 +651,7 @@ void PrefLatex::on_latexIndexCO_activated(int n)
 		latexIndexOptionsLA->setText(qt_("Co&mmand:"));
 		return;
 	}
-	for (vector<string>::const_iterator it = index_alternatives.begin();
+	for (set<string>::const_iterator it = index_alternatives.begin();
 	     it != index_alternatives.end(); ++it) {
 		QString const idx = toqstr(*it);
 		int ind = idx.indexOf(" ");
@@ -714,7 +714,7 @@ void PrefLatex::update(LyXRC const & rc)
 	latexBibtexCO->clear();
 
 	latexBibtexCO->addItem(qt_("Custom"), QString());
-	for (vector<string>::const_iterator it = rc.bibtex_alternatives.begin();
+	for (set<string>::const_iterator it = rc.bibtex_alternatives.begin();
 			     it != rc.bibtex_alternatives.end(); ++it) {
 		QString const command = toqstr(*it).left(toqstr(*it).indexOf(" "));
 		latexBibtexCO->addItem(command, command);
@@ -741,7 +741,7 @@ void PrefLatex::update(LyXRC const & rc)
 	latexIndexCO->clear();
 
 	latexIndexCO->addItem(qt_("Custom"), QString());
-	for (vector<string>::const_iterator it = rc.index_alternatives.begin();
+	for (set<string>::const_iterator it = rc.index_alternatives.begin();
 			     it != rc.index_alternatives.end(); ++it) {
 		QString const command = toqstr(*it).left(toqstr(*it).indexOf(" "));
 		latexIndexCO->addItem(command, command);

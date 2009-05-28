@@ -54,7 +54,7 @@ GuiIndices::GuiIndices(QWidget * parent)
 
 	indexCO->clear();
 	indexCO->addItem(qt_("Default"), QString("default"));
-	for (vector<string>::const_iterator it = lyxrc.index_alternatives.begin();
+	for (set<string>::const_iterator it = lyxrc.index_alternatives.begin();
 			     it != lyxrc.index_alternatives.end(); ++it) {
 		QString const command = toqstr(*it).left(toqstr(*it).indexOf(" "));
 		indexCO->addItem(command, command);
