@@ -1040,7 +1040,6 @@ dist_layouts_DATA =\
 	layouts/logicalmkup.module \
 	layouts/ltugboat.layout \
 	layouts/lyxmacros.inc \
-	layouts/manpage.layout \
 	layouts/memoir.layout \
 	layouts/minimalistic.module \
 	layouts/moderncv.layout \
