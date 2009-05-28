@@ -49,7 +49,7 @@ import os, re, string, sys
 # Rename I18NPreamble to BabelPreamble and add LangPreamble
 
 # Do not forget to document format change in Customization
-# Manual (section "Declaring a new text class".
+# Manual (section "Declaring a new text class").
 
 currentFormat = 14
 
