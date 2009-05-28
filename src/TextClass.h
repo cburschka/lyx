@@ -191,6 +191,8 @@ public:
 	std::string const & latexname() const { return latexname_; }
 	/// Can be LaTeX, DocBook, etc.
 	OutputType outputType() const { return outputType_; }
+	/// Can be latex, docbook ... (the name of a format)
+	std::string outputFormat() const { return outputFormat_; }
 protected:
 	/// Protect construction
 	TextClass();
@@ -272,6 +274,8 @@ protected:
 	int tocdepth_;
 	/// Can be LaTeX, DocBook, etc.
 	OutputType outputType_;
+	/// Can be latex, docbook ... (the name of a format)
+	std::string outputFormat_;
 	/** Base font. The paragraph and layout fonts are resolved against
 	    this font. This has to be fully instantiated. Attributes
 	    FONT_INHERIT, FONT_IGNORE, and FONT_TOGGLE are
@@ -406,8 +410,6 @@ public:
 	int max_toclevel() const { return max_toclevel_; }
 	/// returns true if the class has a ToC structure
 	bool hasTocLevels() const;
-	/// Can be LaTeX, DocBook, etc.
-	OutputType outputType() const { return outputType_; }
 protected:
 	/// Constructs a DocumentClass based upon a LayoutFile.
 	DocumentClass(LayoutFile const & tc);

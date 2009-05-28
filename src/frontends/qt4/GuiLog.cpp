@@ -150,6 +150,7 @@ bool GuiLog::initialiseParams(string const & data)
 
 	if (logtype == "latex")
 		type_ = LatexLog;
+	// FIXME: not sure "literate" still works.
 	else if (logtype == "literate")
 		type_ = LiterateLog;
 	else if (logtype == "lyx2lyx")

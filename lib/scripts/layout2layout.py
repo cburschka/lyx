@@ -48,10 +48,14 @@ import os, re, string, sys
 # Incremented to format 14, 14 February 2009 by gb
 # Rename I18NPreamble to BabelPreamble and add LangPreamble
 
+# Incremented to format 15, 28 May 2009 by lasgouttes
+# Add new tag OutputFormat; modules can be conditionned on feature 
+# "from->to".
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
-currentFormat = 14
+currentFormat = 15
 
 
 def usage(prog_name):
@@ -226,6 +230,11 @@ def convert(lines):
             while i < len(lines) and not re_EndBabelPreamble.match(lines[i]):
                 i += 1
             continue
+
+        # This just involved new features, not any changes to old ones
+        if format == 14:
+          i += 1
+          continue
 
         # Rename I18NPreamble to BabelPreamble
         if format == 13:

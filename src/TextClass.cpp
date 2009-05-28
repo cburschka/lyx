@@ -62,7 +62,7 @@ private:
 };
 
 // Keep the changes documented in the Customization manual. 
-int const FORMAT = 14;
+int const FORMAT = 15;
 
 
 bool layout2layout(FileName const & filename, FileName const & tempfile)
@@ -127,6 +127,7 @@ InsetLayout DocumentClass::plain_insetlayout_;
 TextClass::TextClass()
 {
 	outputType_ = LATEX;
+	outputFormat_ = "latex";
 	columns_ = 1;
 	sides_ = OneSide;
 	secnumdepth_ = 3;
@@ -160,6 +161,7 @@ bool TextClass::readStyle(Lexer & lexrc, Layout & lay) const
 
 enum TextClassTags {
 	TC_OUTPUTTYPE = 1,
+	TC_OUTPUTFORMAT,
 	TC_INPUT,
 	TC_STYLE,
 	TC_DEFAULTSTYLE,
@@ -208,6 +210,7 @@ namespace {
 		{ "leftmargin",      TC_LEFTMARGIN },
 		{ "nofloat",         TC_NOFLOAT },
 		{ "nostyle",         TC_NOSTYLE },
+		{ "outputformat",    TC_OUTPUTFORMAT },
 		{ "outputtype",      TC_OUTPUTTYPE },
 		{ "pagestyle",       TC_PAGESTYLE },
 		{ "preamble",        TC_PREAMBLE },
@@ -352,8 +355,24 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 				format = lexrc.getInteger();
 			break;
 
-		case TC_OUTPUTTYPE:   // output type definition
+		case TC_OUTPUTFORMAT:
+			if (lexrc.next())
+				outputFormat_ = lexrc.getString();
+			break;
+
+		case TC_OUTPUTTYPE:
 			readOutputType(lexrc);
+			switch(outputType_) {
+			case LATEX:
+				outputFormat_ = "latex";
+				break;
+			case DOCBOOK:
+				outputFormat_ = "docbook";
+				break;
+			case LITERATE:
+				outputFormat_ = "literate";
+				break;
+			}
 			break;
 
 		case TC_INPUT: // Include file

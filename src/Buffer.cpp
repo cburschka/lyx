@@ -459,10 +459,12 @@ string Buffer::logName(LogType * type) const
 	FileName const fname(addName(temppath(),
 				     onlyFilename(changeExtension(filename,
 								  ".log"))));
+
+	// FIXME: how do we know this is the name of the build log?
 	FileName const bname(
 		addName(path, onlyFilename(
 			changeExtension(filename,
-					formats.extension("literate") + ".out"))));
+					formats.extension(bufferFormat()) + ".out"))));
 
 	// If no Latex log or Build log is newer, show Build log
 
@@ -2662,15 +2664,14 @@ void Buffer::autoSave() const
 
 string Buffer::bufferFormat() const
 {
-	if (isDocBook())
-		return "docbook";
-	if (isLiterate())
-		return "literate";
-	if (params().useXetex)
-		return "xetex";
-	if (params().encoding().package() == Encoding::japanese)
-		return "platex";
-	return "latex";
+	string format = params().documentClass().outputFormat();
+	if (format == "latex") {
+		if (params().useXetex)
+			return "xetex";
+		if (params().encoding().package() == Encoding::japanese)
+			return "platex";
+	}
+	return format;
 }
 
 
