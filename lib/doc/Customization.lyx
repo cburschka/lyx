@@ -9833,7 +9833,7 @@ LabelTag
 status collapsed
 
 \begin_layout Plain Layout
-Labeltype
+LabelType
 \end_layout
 
 \end_inset
@@ -9847,20 +9847,17 @@ status collapsed
 \emph on
 No_Label
 \emph default
-, Manual, Static, Top_Environment, 
-\begin_inset Newline newline
-\end_inset
-
-Centered_Top_Environment, Sensitive, Counter
+, Manual, Static, Top_Environment, Centered_Top_Environment, Counter, Sensitive,
+ Enumerate, Itemize, Bibliography
 \end_layout
 
 \end_inset
 
 ] 
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-
+\begin_deeper
+\begin_layout Itemize
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -9871,16 +9868,15 @@ Manual
 \end_inset
 
  means the label is the very first word (up to the first real blank).
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Use protected spaces if you want more than one word as the label.
-\end_layout
-
+ Use protected spaces (like
+\begin_inset space ~
 \end_inset
 
+that one) if you want more than one word as the label.
  
+\end_layout
+
+\begin_layout Itemize
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -9890,7 +9886,7 @@ Static
 
 \end_inset
 
- means it is defined in the layout (see 
+ means the label is simply whatever 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -9900,8 +9896,11 @@ LabelString
 
 \end_inset
 
-).
- 
+ declares it to be.
+ Note that this really is `static'.
+\end_layout
+
+\begin_layout Itemize
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -9934,7 +9933,7 @@ Static
 .
  The label will be printed above the paragraph, but only at the top of an
  environment or the top of a chain of paragraphs with this layout.
- Usage is for example the 
+ This might be used with the 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
@@ -9944,39 +9943,10 @@ Abstract
 
 \end_inset
 
- layout or the 
-\begin_inset Flex CharStyle:MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-Bibliography
+ layout, for example.
 \end_layout
 
-\end_inset
-
- layout.
- This is also the case for 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-Manual
-\end_layout
-
-\end_inset
-
- labels with latex type 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-Environment
-\end_layout
-
-\end_inset
-
-, in order to make layouts for theorems work correctly.
- 
+\begin_layout Itemize
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -10013,8 +9983,13 @@ Sensitive
 
 \end_inset
 
- means the (hardcoded) label string depends on the kind of float.
- The 
+ means the (hardcoded) label string depends on the kind of float: It is
+ hardcoded to be `FloatType N', where N is the value of the counter associated
+ with the float.
+\end_layout
+
+\begin_layout Itemize
+The 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -10025,6 +10000,40 @@ Counter
 \end_inset
 
  label type defines automatically numbered labels.
+ The 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+LabelString
+\end_layout
+
+\end_inset
+
+ will be expanded to resolve any counter references it contains: For example,
+ it might be 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Section 
+\backslash
+thechapter.
+\backslash
+thesection
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
  See Section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -10032,9 +10041,62 @@ reference "sub:Counters"
 
 \end_inset
 
+ for more information on counters.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Enumerate
+\end_layout
+
+\end_inset
+
+ produces the usual sort of enumeration labels.
+ At present, it is hardcoded to use Arabic numerals, lowercase letters,
+ small Roman numerals, and uppercase letters for the four possible depths.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Itemize
+\end_layout
+
+\end_inset
+
+ produces various bullets at the different levels.
+ It is also hardcoded.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Bibliography
+\end_layout
+
+\end_inset
+
+ is used internally by LyX and should be used only with 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+LatexType BibEnvironment
+\end_layout
+
+\end_inset
+
 .
 \end_layout
 
+\end_deeper
 \begin_layout Description
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -10109,13 +10171,36 @@ Paragraph
 status collapsed
 
 \begin_layout Plain Layout
-List_Environment
+List_Environment, Bib_Environment
 \end_layout
 
 \end_inset
 
 ] How the layout should be translated into LaTeX.
- 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+LatexType
+\end_layout
+
+\end_inset
+
+ is perhaps a bit misleading, since these rules apply to SGML classes, too.
+ Visit the SGML class files for specific examples.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -10127,6 +10212,9 @@ Paragraph
 
  means nothing special.
  
+\end_layout
+
+\begin_layout Itemize
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -10153,7 +10241,10 @@ LatexName
 
 \end_inset
 
- and 
+.
+\end_layout
+
+\begin_layout Itemize
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -10188,6 +10279,9 @@ LatexName
 
 .
  
+\end_layout
+
+\begin_layout Itemize
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -10207,7 +10301,7 @@ Environment
 
 \end_inset
 
-, except that a 
+, except that an 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -10221,6 +10315,9 @@ item
 
  is generated for each paragraph of this environment.
  
+\end_layout
+
+\begin_layout Itemize
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -10282,19 +10379,6 @@ aragraph
 
  dialog.
  
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\emph on
-LatexType
-\end_layout
-
-\end_inset
-
- is perhaps a bit misleading, since these rules apply to SGML classes, too.
- Visit the SGML class files for specific examples.
 \end_layout
 
 \begin_layout Standard
@@ -10325,6 +10409,7 @@ end{latexname}.
 depending upon the LaTeX type.
 \end_layout
 
+\end_deeper
 \begin_layout Description
 \begin_inset Flex CharStyle:Code
 status collapsed
