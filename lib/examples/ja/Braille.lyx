@@ -1,0 +1,540 @@
+#LyX 1.6.3svn created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass jarticle
+\begin_preamble
+% color greyed-out notes blue
+\renewenvironment{lyxgreyedout}
+ {\textcolor{blue}\bgroup}{\egroup}
+\end_preamble
+\use_default_options false
+\begin_modules
+braille
+\end_modules
+\language japanese
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_title "How to write Braille with LyX"
+\pdf_author "Uwe Stohr"
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "pdfstartview=XYZ"
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 2.5cm
+\rightmargin 2.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+LyXで点字を書く
+\end_layout
+
+\begin_layout Author
+Uwe Stöhr
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+target "uwestoehr@web.de"
+type "mailto:"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+まず一般的な注意をひとつ。LaTeXで生成できる点字は、完全ではありません。点字には、6点点字と8点点字がありますが、LaTeX（したがってLyXも）は、アクセ
+ント文字のない6点点字のみをサポートしています。
+\end_layout
+
+\begin_layout Standard
+LyXで点字を書くには、文書設定の
+\family sans
+モジュール
+\family default
+面で
+\family sans
+点字
+\family default
+モジュールを読み込んでください。そうすると、LyXの環境選択ボックスから
+\family sans
+点字（既定値）
+\family default
+環境または
+\family sans
+点字（テキストサイズ
+\family default
+）環境を選択して、文章を書けるようになります。他の点字環境は、以下に述べるように、特定の性質を有効にしたり無効にしたりするためだけのものです。これらの環境には文
+章は入れません。
+\end_layout
+
+\begin_layout Standard
+以下の例をご覧下さい。
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+ラテン文字：
+\begin_inset Newline newline
+\end_inset
+
+This is an example sentence written in Braille.
+\end_layout
+
+\begin_layout Standard
+点字：
+\end_layout
+
+\begin_layout Braille (default)
+This is an example sentence written in Braille.
+\end_layout
+
+\begin_layout Standard
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+LaTeXは、点字で書かれた単語のハイフネーションを行うことができません。ハイフネーションは、手動で行う必要があります。
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+（註）
+\series default
+点字モジュールでは、ラテン文字・数字・句読点・括弧のみを印字することができます。「@」や「$」のような特殊文字や、ウムラウトのようなアクセント文字、改行などはサ
+ポートされていません。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+（註）
+\series default
+LyXやLaTeXの固有名詞である「LaTeX」・「LaTeX2e」・「TeX」・「LyX」は、以下の例のように、TeXコードで入れなくてはなりません。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+ラテン文字：
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+LyX
+\end_layout
+
+\end_inset
+
+ is cool!
+\begin_inset Newline newline
+\end_inset
+
+点字：
+\end_layout
+
+\begin_layout Braille (default)
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+LyX
+\end_layout
+
+\end_inset
+
+ is cool!
+\end_layout
+
+\begin_layout Standard
+
+\lyxline
+
+\end_layout
+
+\begin_layout Standard
+以下は、「This is Braille.」という文章例を、さまざまな点字環境で表示させたものです。
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\family sans
+点字（既定値）
+\family default
+：
+\end_layout
+
+\begin_layout Braille (default)
+This is Braille.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+点字（本文寸法大）
+\family default
+ - ほぼ文書の本文文字寸法に一致する大きさです：
+\end_layout
+
+\begin_layout Braille (textsize)
+This is Braille.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\family sans
+点字（点付き）
+\family default
+ - 空位置に小さな点を表示することができます：
+\end_layout
+
+\begin_layout Braille (dots on)
+
+\end_layout
+
+\begin_layout Braille (textsize)
+This is Braille.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+後で、点字ニードルや適切な他の方法を使って、点字を「印字」できるように、文章を鏡像にすることができます：
+\end_layout
+
+\begin_layout Standard
+通常：
+\end_layout
+
+\begin_layout Braille (default)
+This is Braille.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+点字（鏡像）
+\family default
+：
+\end_layout
+
+\begin_layout Braille (mirror on)
+
+\end_layout
+
+\begin_layout Braille (default)
+This is Braille.
+\end_layout
+
+\begin_layout Braille (mirror off)
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+点字の文字は、点字ボックスに数字を書くことによっても、作成することができます。点字ボックスは、
+\family sans
+挿入\SpecialChar \menuseparator
+任意設定差込枠
+\family default
+メニューで挿入することができます。このボックス内の各数値は、対応する点字ドットを出力するようにします。たとえば、
+\series bold
+6145
+\series default
+という数値は：
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Braillebox
+status open
+
+\begin_layout Plain Layout
+6145
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+のようになります。
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+8点点字を使用するコンピューター点字は、
+\series bold
+
+\backslash
+brailleeightdotstrue
+\series default
+コマンドで有効にすることができますが、追加の二点は、点字ボックスを使用するときのみ印字されます。たとえば、点字ボックス内に
+\series bold
+8175
+\series default
+という数値を書くと：
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+brailleeightdotstrue 
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Braillebox
+status open
+
+\begin_layout Plain Layout
+8175
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+brailleeightdotsfalse 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+のようになります。
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+既定の点字フォントの寸法は、長さ
+\series bold
+
+\backslash
+brailleunit
+\series default
+で変更することができます。既定値は2.4
+\begin_inset space \thinspace{}
+\end_inset
+
+mmです。たとえば、2倍の大きさの点字を作るには、文書中にTeXコードで以下のコマンドを記述してください：
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+braillenormal}[1]
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+{
+\backslash
+setlength{
+\backslash
+brailleunit}{4.8mm}
+\backslash
+braille{#1}}
+\end_layout
+
+\begin_layout Standard
+2倍の大きさの点字：
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+braillenormal}[1]
+\end_layout
+
+\begin_layout Plain Layout
+
+ {
+\backslash
+setlength{
+\backslash
+brailleunit}{4mm}
+\backslash
+braille{#1}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Braille (default)
+This is Braille.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+braillenormal}[1]
+\end_layout
+
+\begin_layout Plain Layout
+
+ {
+\backslash
+setlength{
+\backslash
+brailleunit}{2mm}
+\backslash
+braille{#1}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+点字セルの寸法に関して、詳しくは以下をご覧下さい。
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "http://www.tiresias.org/research/reports/braille_cell.htm"
+target "http://www.tiresias.org/research/reports/braille_cell.htm"
+
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

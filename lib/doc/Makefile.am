@@ -206,6 +206,7 @@ dist_jadoc_DATA = \
 	ja/Extended.lyx \
 	ja/Intro.lyx \
 	ja/LaTeXConfig.lyx \
+	ja/Math.lyx \
 	ja/Shortcuts.lyx \
 	ja/Tutorial.lyx \
 	ja/UserGuide.lyx
