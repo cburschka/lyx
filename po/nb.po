@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: lyx 1.6.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-05-21 18:33+0200\n"
-"PO-Revision-Date: 2009-04-19 17:11+0100\n"
+"PO-Revision-Date: 2009-05-29 11:55+0200\n"
 "Last-Translator: Helge Hafting <helge.hafting@aitel.hist.no>\n"
 "Language-Team: norsk <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -148,7 +148,7 @@ msgstr "Velg dette hvis du ønsker å dele referanselisten inn i seksjoner"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:124
 msgid "S&ectioned bibliography"
-msgstr "Seksjonsinndelt bibliografi"
+msgstr "S&eksjonsinndelt bibliografi"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:21
 msgid "LyX: Add BibTeX Database"
@@ -161,7 +161,7 @@ msgstr ""
 #: src/frontends/qt4/ui/BibtexAddUi.ui:39 src/frontends/qt4/ui/BibtexUi.ui:50
 #: src/frontends/qt4/ui/TexinfoUi.ui:94
 msgid "&Rescan"
-msgstr ""
+msgstr "&Let omigjen"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:46 src/frontends/qt4/ui/BibtexUi.ui:97
 #: src/frontends/qt4/ui/ExternalUi.ui:129
@@ -179,7 +179,7 @@ msgstr "Velg en BibTeX database som skal legges til"
 #: src/frontends/qt4/ui/BranchesUi.ui:50
 #: src/frontends/qt4/ui/CitationUi.ui:550
 msgid "&Add"
-msgstr "Legg til"
+msgstr "&Legg til"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:127
 #: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:78
@@ -196,7 +196,7 @@ msgstr "BibTeX stilen"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:84
 msgid "St&yle"
-msgstr "Stil"
+msgstr "St&il"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:94 src/frontends/qt4/ui/BibtexUi.ui:107
 msgid "Choose a style file"
@@ -208,7 +208,7 @@ msgstr "Denne bibliografiseksjonen inneholder..."
 
 #: src/frontends/qt4/ui/BibtexUi.ui:134
 msgid "&Content:"
-msgstr "Innh&old"
+msgstr "Innh&old:"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:148 src/insets/InsetBibtex.cpp:207
 msgid "all cited references"
@@ -229,7 +229,7 @@ msgstr "Vis bibliografien i innholdsfortegnelsen"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:169
 msgid "Add bibliography to &TOC"
-msgstr "Bibliografi registreres i innholdsfortegnelsen"
+msgstr "Bibliografi regis&treres i innholdsfortegnelsen"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:225
 msgid "Move the selected database downwards in the list"
@@ -270,7 +270,7 @@ msgstr "Fjern den valgte databasen"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:282
 msgid "&Delete"
-msgstr "Slett"
+msgstr "&Slett"
 
 #: src/frontends/qt4/ui/BoxUi.ui:28
 msgid "Check this if the box should break across pages"
@@ -391,7 +391,7 @@ msgstr "&Dekor:"
 #: src/frontends/qt4/ui/PageLayoutUi.ui:217
 #: src/frontends/qt4/ui/TabularUi.ui:100 src/frontends/qt4/ui/WrapUi.ui:85
 msgid "&Width:"
-msgstr "Bredde:"
+msgstr "&Bredde:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:343
 msgid "Height value"
@@ -431,7 +431,7 @@ msgstr "Tilgjengelige rammesorter"
 
 #: src/frontends/qt4/ui/BranchUi.ui:59
 msgid "&Available branches:"
-msgstr "Tilgjengelige dokumentgrener:"
+msgstr "&Tilgjengelige dokumentgrener:"
 
 #: src/frontends/qt4/ui/BranchUi.ui:69
 msgid "Select your branch"
@@ -455,7 +455,7 @@ msgstr "Fjern den valgte dokumentgrenen"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:83
 msgid "&Remove"
-msgstr "Fjern"
+msgstr "&Fjern"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:90
 msgid "Toggle the selected branch"
@@ -480,7 +480,7 @@ msgstr "&Font:"
 #: src/frontends/qt4/ui/BulletsUi.ui:44
 #: src/frontends/qt4/ui/CharacterUi.ui:227
 msgid "Si&ze:"
-msgstr "Størrelse:"
+msgstr "St&ørrelse:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:66
 #: src/frontends/qt4/ui/ParagraphUi.ui:241
@@ -593,21 +593,21 @@ msgstr "Fontfamilie"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:47
 msgid "&Family:"
-msgstr "Familie:"
+msgstr "&Familie:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:65
 #: src/frontends/qt4/ui/CharacterUi.ui:75
 msgid "Font shape"
-msgstr "Form"
+msgstr "Skriftform"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:78
 msgid "S&hape:"
-msgstr "Form:"
+msgstr "F&orm:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:96
 #: src/frontends/qt4/ui/CharacterUi.ui:173
 msgid "Font series"
-msgstr "Font serier"
+msgstr "Skriftserie"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:114
 #: src/frontends/qt4/ui/CharacterUi.ui:160
@@ -620,20 +620,20 @@ msgstr "Språk"
 #: src/frontends/qt4/ui/CharacterUi.ui:150
 #: src/frontends/qt4/ui/CharacterUi.ui:189
 msgid "Font color"
-msgstr "Fontfarge"
+msgstr "Farge på skriften"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:163
 #: src/frontends/qt4/ui/LanguageUi.ui:99
 msgid "&Language:"
-msgstr "Språk:"
+msgstr "Spr&åk:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:176
 msgid "&Series:"
-msgstr "Serie:"
+msgstr "&Serie:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:192
 msgid "&Color:"
-msgstr "Farge:"
+msgstr "&Farge:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:212
 msgid "Never Toggled"
@@ -655,7 +655,7 @@ msgstr "Flippes alltid"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:273
 msgid "&Misc:"
-msgstr "Diverse:"
+msgstr "&Diverse:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:308
 msgid "toggle font on all of the above"
@@ -663,7 +663,7 @@ msgstr "Egenskapene over slåes av/på hver gang du klikker \"Bruk\""
 
 #: src/frontends/qt4/ui/CharacterUi.ui:311
 msgid "&Toggle all"
-msgstr "Flipp alle av/på"
+msgstr "Fli&pp alle av/på"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:318
 msgid "Apply each change automatically"
@@ -671,7 +671,7 @@ msgstr "Bruk endringer med én gang"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:321
 msgid "Apply changes immediately"
-msgstr "Gjør endringer øyeblikkelig"
+msgstr "Øyeblikkelig virkning"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:390 src/frontends/qt4/ui/ERTUi.ui:100
 #: src/frontends/qt4/ui/GraphicsUi.ui:763
@@ -697,11 +697,11 @@ msgstr ""
 
 #: src/frontends/qt4/ui/CitationUi.ui:92
 msgid "You can also hit Enter in the search box"
-msgstr ""
+msgstr "Du kan også trykke \"Enter\" i søketeksten"
 
 #: src/frontends/qt4/ui/CitationUi.ui:95
 msgid "&Go!"
-msgstr ""
+msgstr "&Søk!"
 
 #: src/frontends/qt4/ui/CitationUi.ui:105
 msgid "Search Field:"
@@ -714,24 +714,24 @@ msgstr "Alle felter"
 
 #: src/frontends/qt4/ui/CitationUi.ui:146
 msgid "Regular E&xpression"
-msgstr "Regulært uttrykk"
+msgstr "Regul&ært uttrykk"
 
 #: src/frontends/qt4/ui/CitationUi.ui:153
 msgid "Entry Types:"
-msgstr ""
+msgstr "Typer:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:170
 #: src/frontends/qt4/GuiCitation.cpp:333
 msgid "All Entry Types"
-msgstr ""
+msgstr "Alle typer"
 
 #: src/frontends/qt4/ui/CitationUi.ui:191
 msgid "Case Se&nsitive"
-msgstr "Skill mellom store og små bokstaver"
+msgstr "Skill mellom store og sm&å bokstaver"
 
 #: src/frontends/qt4/ui/CitationUi.ui:211
 msgid "Search As You &Type"
-msgstr ""
+msgstr "S&øk mens du skriver"
 
 #: src/frontends/qt4/ui/CitationUi.ui:221
 msgid "Formatting"
@@ -743,7 +743,7 @@ msgstr "Vis alle forfatterne"
 
 #: src/frontends/qt4/ui/CitationUi.ui:247
 msgid "Full aut&hor list"
-msgstr "Komplett forfatterliste"
+msgstr "&Komplett forfatterliste"
 
 #: src/frontends/qt4/ui/CitationUi.ui:254
 msgid "Force upper case in citation"
@@ -751,11 +751,11 @@ msgstr "Store bokstaver i referansen"
 
 #: src/frontends/qt4/ui/CitationUi.ui:257
 msgid "Force u&pper case"
-msgstr "Store bokstaver"
+msgstr "Store &bokstaver"
 
 #: src/frontends/qt4/ui/CitationUi.ui:295
 msgid "Citation st&yle:"
-msgstr "Siteringsstil:"
+msgstr "Siteringsst&il:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:305
 msgid "Text &before:"
@@ -771,7 +771,7 @@ msgstr "Tekst som skal plasseres før referansen"
 
 #: src/frontends/qt4/ui/CitationUi.ui:373
 msgid "Text a&fter:"
-msgstr "Tekst etter:"
+msgstr "Te&kst etter:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:391
 msgid "Text to place after citation"
@@ -783,7 +783,7 @@ msgstr "&Bruk"
 
 #: src/frontends/qt4/ui/CitationUi.ui:489
 msgid "A&vailable Citations:"
-msgstr "Tilgjengelige referanser:"
+msgstr "Til&gjengelige referanser:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:512
 msgid "&Selected Citations:"
@@ -791,11 +791,11 @@ msgstr "&Valgte referanser:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:547
 msgid "The Enter key works, too"
-msgstr ""
+msgstr "\"Enter\"-tasten kan også brukes"
 
 #: src/frontends/qt4/ui/CitationUi.ui:560
 msgid "The delete key works, too"
-msgstr ""
+msgstr "Slettetasten kan også brukes"
 
 #: src/frontends/qt4/ui/CitationUi.ui:563
 msgid "D&elete"
@@ -824,7 +824,7 @@ msgstr "Samme sort til høyre og venstre"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:170
 msgid "&Keep matched"
-msgstr "Samme sort"
+msgstr "S&amme sort"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:196
 msgid "&Size:"
@@ -906,7 +906,7 @@ msgstr "Velg en fil"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:136
 msgid "&Draft"
-msgstr "Kladd"
+msgstr "&Kladd"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:143
 msgid "&Template"
@@ -919,7 +919,7 @@ msgstr "Tilgjengelige maler"
 #: src/frontends/qt4/ui/ExternalUi.ui:193
 #: src/frontends/qt4/ui/GraphicsUi.ui:448
 msgid "LaTe&X and LyX options"
-msgstr "LaTeX og LyX opsjoner"
+msgstr "LaTe&X og LyX opsjoner"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:199
 msgid "LaTeX Options"
@@ -927,7 +927,7 @@ msgstr "LaTeX-opsjoner"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:217
 msgid "O&ption:"
-msgstr "Innstillinger:"
+msgstr "I&nnstillinger:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:230
 msgid "Forma&t:"
@@ -947,7 +947,7 @@ msgstr "Prosentvis skalering for visning i LyX"
 #: src/frontends/qt4/ui/ExternalUi.ui:269
 #: src/frontends/qt4/ui/GraphicsUi.ui:569
 msgid "Sca&le on Screen (%):"
-msgstr "Størrelse på skjermen (%):"
+msgstr "Større&lse på skjermen (%):"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:327
 msgid "Si&ze and Rotation"
@@ -1014,12 +1014,12 @@ msgstr "Klipp til rammestørrelsen"
 #: src/frontends/qt4/ui/ExternalUi.ui:535
 #: src/frontends/qt4/ui/GraphicsUi.ui:312
 msgid "Clip to &bounding box"
-msgstr "Klipp til ramma"
+msgstr "Klipp til &ramma"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:542
 #: src/frontends/qt4/ui/GraphicsUi.ui:345
 msgid "&Left bottom:"
-msgstr "Venstre nederst"
+msgstr "&Venstre nederst:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:555
 msgid "x"
@@ -1028,7 +1028,7 @@ msgstr "x"
 #: src/frontends/qt4/ui/ExternalUi.ui:562
 #: src/frontends/qt4/ui/GraphicsUi.ui:383
 msgid "Right &top:"
-msgstr "Høyre øverst"
+msgstr "H&øyre øverst:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:572
 #: src/frontends/qt4/ui/GraphicsUi.ui:437
@@ -1051,7 +1051,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:25
 msgid "Use &default placement"
-msgstr "Bruk standard plassering"
+msgstr "Bruk &standard plassering"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:32
 msgid "Advanced Placement Options"
@@ -1059,15 +1059,15 @@ msgstr "Avanserte plasseringsinnstillinger"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:44
 msgid "&Top of page"
-msgstr "Øverst på siden"
+msgstr "&Øverst på siden"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:51
 msgid "&Ignore LaTeX rules"
-msgstr "Ignorer LaTeX regler"
+msgstr "&Ignorer LaTeX-regler"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:58
 msgid "Here de&finitely"
-msgstr "Her, uansett"
+msgstr "Her, &uansett"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:65
 msgid "&Here if possible"
@@ -1075,11 +1075,11 @@ msgstr "&Her, om mulig"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:72
 msgid "&Page of floats"
-msgstr "Side med \"floats\""
+msgstr "&Egen side med flytende materiale"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:79
 msgid "&Bottom of page"
-msgstr "Nederst på siden"
+msgstr "&Nederst på siden"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:102
 msgid "&Span columns"
@@ -1087,16 +1087,15 @@ msgstr "&Gå over flere kolonner"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:109
 msgid "&Rotate sideways"
-msgstr "Rotér 90°"
+msgstr "&Rotér 90°"
 
 #: src/frontends/qt4/ui/FontUi.ui:13
 msgid "FontUi"
 msgstr ""
 
 #: src/frontends/qt4/ui/FontUi.ui:41
-#, fuzzy
 msgid "C&JK:"
-msgstr "&Nøkkel:"
+msgstr "C&JK:"
 
 #: src/frontends/qt4/ui/FontUi.ui:51
 msgid "Input the font to be used for Chinese, Japanese or Korean (CJK) script"
@@ -1128,7 +1127,7 @@ msgstr "&Basis størrelse:"
 
 #: src/frontends/qt4/ui/FontUi.ui:115
 msgid "&Default Family:"
-msgstr "Standard familie:"
+msgstr "&Standard familie:"
 
 #: src/frontends/qt4/ui/FontUi.ui:138
 msgid "&Sans Serif:"
@@ -1216,11 +1215,11 @@ msgstr "Kryss av for å forandre rekkefølgen for vridning og skalering"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:205
 msgid "Ro&tate after scaling"
-msgstr "Vri etter skalering"
+msgstr "Vri &etter skalering"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:222
 msgid "Or&igin:"
-msgstr "Or&igo"
+msgstr "Or&igo:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:250
 msgid "A&ngle (Degrees):"
@@ -1260,7 +1259,7 @@ msgstr "Ekstra opsjoner for LaTeX"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:501
 msgid "LaTeX &options:"
-msgstr "LaTeX-opsjoner"
+msgstr "LaTeX-&opsjoner:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:527
 msgid ""
@@ -1277,28 +1276,27 @@ msgstr "&Vis i LyX"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:595
 msgid "Assign the graphic to a group of graphics that share the same settings"
-msgstr ""
+msgstr "Putter bildet i ei bildegruppe, hvor alle bilder har de samme innstillingene."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:598
-#, fuzzy
 msgid "Graphics Group"
-msgstr "Grafikk"
+msgstr "Bildegruppe"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:637
 msgid "A&ssigned to group:"
-msgstr ""
+msgstr "&Plassert i gruppe:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:647
 msgid "Click to define a new graphics group."
-msgstr ""
+msgstr "Trykk for å lage en ny bildegruppe."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:650
 msgid "O&pen new group..."
-msgstr ""
+msgstr "&Lag ny gruppe..."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:657
 msgid "Select an existing group for the current graphics."
-msgstr ""
+msgstr "Velg en eksisterende gruppe for bildet."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:670
 msgid "Draft mode"
@@ -1310,7 +1308,7 @@ msgstr "&Kladd"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:28
 msgid "Select a fill pattern style for HFills"
-msgstr ""
+msgstr "Velg et fyllemønster for vannrett fyll"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:37
 msgid "..............."
@@ -1353,19 +1351,17 @@ msgid "Custom value. Needs spacing type \"Custom\"."
 msgstr "Brukerdefinert verdi. Krever typen \"Brukerdefinert\"."
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:110
-#, fuzzy
 msgid "&Fill Pattern:"
-msgstr "&Fil:"
+msgstr "&Fyllmønster:"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:123 src/frontends/qt4/ui/VSpaceUi.ui:94
 msgid "&Protect:"
-msgstr "Beskytt:"
+msgstr "B&eskytt:"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:133 src/frontends/qt4/GuiHSpace.cpp:95
 #: src/frontends/qt4/GuiHSpace.cpp:120
-#, fuzzy
 msgid "Insert the spacing even after a line break"
-msgstr "Setter inn loddrett avstand også rett etter sideskift"
+msgstr "Setter inn avstanden også rett etter linjeskift"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:28
 #, fuzzy
@@ -1374,35 +1370,31 @@ msgstr "Sett standard arkstørrelse."
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:31
 msgid "Link type"
-msgstr ""
+msgstr "Type lenke"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:43
 msgid "Link to the web or to every other target"
-msgstr ""
+msgstr "Lenke til en nettside, og alle andre typer"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:46
 msgid "&Web"
-msgstr ""
+msgstr "Nett&side"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:53
-#, fuzzy
 msgid "Link to an email address"
-msgstr "E-postadressen din"
+msgstr "Lenke til en epostadresse"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:56
-#, fuzzy
 msgid "&Email"
-msgstr "E-post"
+msgstr "&E-post"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:63
-#, fuzzy
 msgid "Link to a file"
-msgstr "Skriv til fil"
+msgstr "Lenke til en fil"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:66
-#, fuzzy
 msgid "&File"
-msgstr "&Fil:"
+msgstr "&Fil"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:76
 #: src/frontends/qt4/ui/HyperlinkUi.ui:90 lib/layouts/scrlttr2.layout:205
@@ -1418,9 +1410,8 @@ msgid "Name associated with the URL"
 msgstr "Navn some er assosiert med denne URL'en"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:93
-#, fuzzy
 msgid "&Target:"
-msgstr "Størst:"
+msgstr "&Mål:"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:106
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:50 src/frontends/qt4/ui/RefUi.ui:125
@@ -1434,12 +1425,12 @@ msgstr "«Listing» parametre"
 #: src/frontends/qt4/ui/IncludeUi.ui:66 src/frontends/qt4/ui/ListingsUi.ui:507
 #: src/frontends/qt4/ui/TextLayoutUi.ui:127
 msgid "Check it to enter parameters that are not recognizable by LyX"
-msgstr ""
+msgstr "Kryss av for å skrive inn parametre som LyX ikke forstår"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:69 src/frontends/qt4/ui/ListingsUi.ui:510
 #: src/frontends/qt4/ui/TextLayoutUi.ui:130
 msgid "&Bypass validation"
-msgstr ""
+msgstr "&Dropp validering"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:86
 msgid "C&aption:"
@@ -1503,24 +1494,21 @@ msgid "&Edit"
 msgstr "&Rediger"
 
 #: src/frontends/qt4/ui/InfoUi.ui:24
-#, fuzzy
 msgid "Information Type:"
-msgstr "TeX informasjon"
+msgstr ""
 
 #: src/frontends/qt4/ui/InfoUi.ui:34
-#, fuzzy
 msgid "Information Name:"
-msgstr "TeX informasjon"
+msgstr ""
 
 #: src/frontends/qt4/ui/InfoUi.ui:64
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:68
-#, fuzzy
 msgid "&New"
-msgstr "&Ny:"
+msgstr "&Ny"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:25
 msgid "Document &class"
-msgstr "Dokument&klasse:"
+msgstr "Dokument&klasse"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:52
 msgid "Click to select a local document class definition file"
@@ -1528,7 +1516,7 @@ msgstr "Trykk for å velge en lokal dokumentklassefil"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:55
 msgid "&Local Layout..."
-msgstr "Lokal klasse..."
+msgstr "&Lokal klasse..."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:65
 msgid "Class options"
@@ -1563,7 +1551,7 @@ msgstr "Kryss av hvis dette dokumentet skal brukes som del av et hoveddokument"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:159
 msgid "Select de&fault master document"
-msgstr "Velg hoveddokument"
+msgstr "&Velg hoveddokument"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:174
 msgid "&Master:"
@@ -1587,7 +1575,7 @@ msgstr "&Annet:"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:109
 msgid "&Quote Style:"
-msgstr "Siteringsstil:"
+msgstr "S&iteringsstil:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 src/insets/InsetCaption.cpp:298
 #: src/insets/InsetListings.cpp:408 src/insets/InsetListings.cpp:410
@@ -1600,7 +1588,7 @@ msgstr "&Hovedinnstillinger"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:29
 msgid "Placement"
-msgstr "Plassering:"
+msgstr "Plassering"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:35
 msgid "Check for inline listings"
@@ -1668,9 +1656,8 @@ msgid "The content's base font size"
 msgstr "Skriftstørrelse for innholdet"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:231
-#, fuzzy
 msgid "Font Famil&y:"
-msgstr "Fontfamilie"
+msgstr "Skrift&familie:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:252
 msgid "The content's base font style"
@@ -1697,23 +1684,20 @@ msgid "Make spaces in strings visible by a special symbol"
 msgstr "Gjør mellomrommene i tekststrenger synlige med et spesialsymbol"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:297
-#, fuzzy
 msgid "Space i&n string as symbol"
-msgstr "Synlige mellomrom i tekststrenger"
+msgstr "Sy&nlige mellomrom i tekststrenger"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:307
-#, fuzzy
 msgid "Tab&ulator size:"
-msgstr "Tabell|T"
+msgstr "Tab&ulatorstørrelse:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:323
 msgid "Use extended character table"
-msgstr ""
+msgstr "Bruk utvidet tegntabell"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:326
-#, fuzzy
 msgid "&Extended character table"
-msgstr "Udefinert tekststil"
+msgstr "&Utvidet tegntabell"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:345
 msgid "Lan&guage:"
@@ -1789,27 +1773,27 @@ msgstr "Bruk standardmarger for dokumentklassen"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:31
 msgid "&Default Margins"
-msgstr "Standard marger"
+msgstr "&Standard marger"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:89
 msgid "&Top:"
-msgstr "Øverst:"
+msgstr "&Øverst:"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:102
 msgid "&Bottom:"
-msgstr "Nederst:"
+msgstr "&Nederst:"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:115
 msgid "&Inner:"
-msgstr "Indre:"
+msgstr "&Indre:"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:128
 msgid "O&uter:"
-msgstr "Ytre:"
+msgstr "&Ytre:"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:141
 msgid "Head &sep:"
-msgstr "Avstand til topptekst:"
+msgstr "Avstand til &topptekst:"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:154
 msgid "Head &height:"
@@ -1817,7 +1801,7 @@ msgstr "&Høyde på topptekst:"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:167
 msgid "&Foot skip:"
-msgstr "Avstand til bunntekst:"
+msgstr "&Avstand til bunntekst:"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:180
 msgid "&Column Sep:"
@@ -1869,23 +1853,23 @@ msgstr "&Vannrett:"
 
 #: src/frontends/qt4/ui/MathsUi.ui:25
 msgid "&Use AMS math package automatically"
-msgstr "Bruk AMS-matematikk automatisk"
+msgstr "B&ruk AMS-matematikk automatisk"
 
 #: src/frontends/qt4/ui/MathsUi.ui:35
 msgid "Use AMS &math package"
-msgstr "Bruk AMS-matematikk"
+msgstr "Bruk AMS-&matematikk"
 
 #: src/frontends/qt4/ui/MathsUi.ui:42
 msgid "Use esint package &automatically"
-msgstr "Bruk \"esint\"-pakken automatisk"
+msgstr "Bruk \"esint\"-pakken &automatisk"
 
 #: src/frontends/qt4/ui/MathsUi.ui:52
 msgid "Use &esint package"
-msgstr "Bruk \"esint\"-pakken"
+msgstr "Bruk \"&esint\"-pakken"
 
 #: src/frontends/qt4/ui/ModulesUi.ui:59
 msgid "A&vailable:"
-msgstr "&Tilgjengelige"
+msgstr "&Tilgjengelige:"
 
 #: src/frontends/qt4/ui/ModulesUi.ui:108
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:187
@@ -1903,11 +1887,11 @@ msgstr "&Valgte:"
 
 #: src/frontends/qt4/ui/NomenclUi.ui:31
 msgid "Sort &as:"
-msgstr "Sortér som:"
+msgstr "Sortér so&m:"
 
 #: src/frontends/qt4/ui/NomenclUi.ui:41
 msgid "&Description:"
-msgstr "Beskrivelse"
+msgstr "&Beskrivelse:"
 
 #: src/frontends/qt4/ui/NomenclUi.ui:51
 msgid "&Symbol:"
@@ -1947,7 +1931,7 @@ msgstr "&Vis i innholdsfortegnelse"
 
 #: src/frontends/qt4/ui/NumberingUi.ui:70
 msgid "&Numbering"
-msgstr "Nummerering"
+msgstr "&Nummerering"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:28
 msgid "&Use hyperref support"
@@ -1964,7 +1948,7 @@ msgstr "Fyll ut hodet med informasjon fra passende miljøer i dokumentet."
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:102
 msgid "Automatically fi&ll header"
-msgstr "Fyll ut hodet automatisk"
+msgstr "Fy&ll ut hodet automatisk"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:109
 msgid "Enable fullscreen PDF presentation"
@@ -1972,7 +1956,7 @@ msgstr "Bruk hele skjermen for å vise PDF-presentasjon"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:112
 msgid "Load in &fullscreen mode"
-msgstr "Full skjerm"
+msgstr "F&ull skjerm"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:121
 msgid "Header Information"
@@ -2008,11 +1992,11 @@ msgstr "B&rekk lenker over linjeskift"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:232
 msgid "No &frames around links"
-msgstr "Ikke ramme rundt lenker"
+msgstr "Ikke r&amme rundt lenker"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:242
 msgid "C&olor links"
-msgstr "Fargede lenker"
+msgstr "&Fargede lenker"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:249
 msgid "Bibliographical backreferences"
@@ -2020,7 +2004,7 @@ msgstr "Bibliografiske tilbakereferanser"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:252
 msgid "B&ackreferences:"
-msgstr "Tilbakereferanser:"
+msgstr "&Tilbakereferanser:"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:281
 msgid "&Bookmarks"
@@ -2087,7 +2071,7 @@ msgstr "&Format:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:227
 msgid "&Orientation:"
-msgstr "&Orientering"
+msgstr "&Orientering:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:253
 msgid "Lay out the page for double-sided printing"
@@ -2099,16 +2083,15 @@ msgstr "&Tosidig dokument"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:44
 msgid "I&mmediate Apply"
-msgstr ""
+msgstr "&Øyeblikkelig virkning"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:129
 msgid "Use the default alignment for this paragraph, whatever it is."
 msgstr "Bruk standardjustering for avsnittet, hva det nå er."
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:132
-#, fuzzy
 msgid "Paragraph's &Default"
-msgstr "Standardjustering for avsnittstypen"
+msgstr "&Standardjustering for avsnittstypen"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:139
 msgid "Ri&ght"
@@ -2127,7 +2110,6 @@ msgid "&Justified"
 msgstr "&Justert"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:170
-#, fuzzy
 msgid "&Indent Paragraph"
 msgstr "Rykk inn &avsnitt"
 
@@ -2145,9 +2127,8 @@ msgid "Lo&ngest label"
 msgstr "&Lengste listeetikett"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:218
-#, fuzzy
 msgid "Line &spacing"
-msgstr "L&injeavstand:"
+msgstr "L&injeavstand"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:246 src/Text.cpp:1412
 #: src/frontends/qt4/GuiDocument.cpp:572
@@ -2173,65 +2154,58 @@ msgid "Custom"
 msgstr "Brukerdefinert"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
-#, fuzzy
 msgid "A&lter..."
-msgstr "&Modifiser..."
+msgstr "&Endre..."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:25
-#, fuzzy
 msgid "In Math"
-msgstr "Matte"
+msgstr "I formler"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:40
 msgid ""
 "Show the grey inline completion behind the cursor in math mode after the "
 "delay."
-msgstr ""
+msgstr "Vis forslag om å fullføre matematikk bak markøren, etter forsinkelsen."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:43
-#, fuzzy
 msgid "Automatic in&line completion"
-msgstr "L&isting i tekst"
+msgstr "Fullføre automatisk"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:50
 msgid "Show the popup in math mode after the delay."
-msgstr ""
+msgstr "Vis dialogen etter forsinkelsen."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:53
-#, fuzzy
 msgid "Automatic p&opup"
-msgstr "Automatisk oppdatering"
+msgstr "Automatisk dialog"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:63
-#, fuzzy
 msgid "In Text"
-msgstr "Bare tekst"
+msgstr "I teksten"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:78
 msgid ""
 "Show the grey inline completion behind the cursor in text mode after the "
 "delay."
-msgstr ""
+msgstr "Vis forslag om å fullføre tekst bak markøren, etter forsinkelsen."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:81
-#, fuzzy
 msgid "Automatic &inline completion"
-msgstr "L&isting i tekst"
+msgstr "Fullføre automatisk"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:88
 msgid "Show the popup after the set delay in text mode."
-msgstr ""
+msgstr "Vis dialogen etter forsinkelsen."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:91
-#, fuzzy
 msgid "Automatic &popup"
-msgstr "Automatisk oppdatering"
+msgstr "Automatisk dialog"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:98
 msgid ""
 "Show a small triangle on the cursor if a completion is available in text "
 "mode."
-msgstr ""
+msgstr "Vis et lite triangel på markøren, hvis det er mulig å fullføre ordet automatisk."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:101
 msgid "Cursor i&ndicator"
@@ -2246,40 +2220,39 @@ msgstr ""
 msgid ""
 "After the cursor has not moved for this time, the inline completion is shown "
 "if it is available."
-msgstr ""
+msgstr "Når markøren har stått stille så lenge, vises forslag om fullføring hvis det er noe."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:147
-#, fuzzy
 msgid "s inline completion dela&y"
-msgstr "L&isting i tekst"
+msgstr "s fullføringsforsinkelse"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:180
 msgid ""
 "After the cursor has not moved for this time, the completion popup is shown "
 "if it is available."
-msgstr ""
+msgstr "Når markøren har stått i ro så lenge, vises dialogen med forslag, om den er tilgjengelig."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:193
 msgid "s popup d&elay"
-msgstr ""
+msgstr "s dialogforsinkelse"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:218
 msgid ""
 "When the TAB completion is not unique, there won't be a delay of the popup. "
 "It will be shown right away."
-msgstr ""
+msgstr "Hvis det er flere muligheter for å fullføre med TAB-tasten, vises dialogen umiddelbart."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:221
 msgid "Sho&w popup without delay for non-unique completions"
-msgstr ""
+msgstr "Ingen dialogforsinkelse når det er flere muligheter"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:228
 msgid "Long completions are cut-off and shown with \"...\"."
-msgstr ""
+msgstr "Lenge forslag om fullføring kuttes og vises med \"...\"."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:231
 msgid "&Use \"...\" to shorten long completions"
-msgstr ""
+msgstr "Forkort lange forslag med \"...\""
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:81
 msgid "C&onverter:"
@@ -2321,9 +2294,8 @@ msgid "&Enabled"
 msgstr "&I bruk"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:292
-#, fuzzy
 msgid "Maximum A&ge (in days):"
-msgstr "Maksimal alder (i dager):"
+msgstr "Maksimal &alder (i dager):"
 
 #: src/frontends/qt4/ui/PrefDateUi.ui:33
 msgid "&Date format:"
@@ -2334,9 +2306,8 @@ msgid "Date format for strftime output"
 msgstr "Datoformat for \"strftime\""
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:19
-#, fuzzy
 msgid "Display &Graphics"
-msgstr "Grafikkvisning:"
+msgstr "Vis &Grafikk"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:39
 msgid "Instant &Preview:"
@@ -2356,80 +2327,70 @@ msgid "On"
 msgstr "På"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:33 src/frontends/qt4/GuiPrefs.cpp:225
-#, fuzzy
 msgid "Editing"
-msgstr "Avslutter."
+msgstr "Redigere"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:51
-#, fuzzy
 msgid "Cursor &follows scrollbar"
 msgstr "Markøren følger &rullefeltet"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:58
-#, fuzzy
 msgid "Sort &environments alphabetically"
-msgstr "Sortér referanselisten alfabetisk"
+msgstr "Sortér avsnittstyper alfabetisk"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:65
 msgid "&Group environments by their category"
-msgstr ""
+msgstr "&Gruppér avsnittstyper etter kategori"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:73
 msgid "Edit Math Macros inline with a box around"
-msgstr ""
+msgstr "Rediger mattemakroer i teksten, med en ramme rundt"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:78
 msgid "Edit Math Macros inline with the name in the status bar"
-msgstr ""
+msgstr "Rediger mattemakroer i teksten, med navnet i statusfeltet"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:83
 msgid "Edit Math Macros with a parameter list (like in LyX < 1.6)"
-msgstr ""
+msgstr "Rediger mattemakroer med en parameterliste (som i LyX < 1.6)"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:94
 msgid "Fullscreen"
-msgstr ""
+msgstr "Fullskjerm"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:112
 msgid "&Limit text width"
-msgstr ""
+msgstr "&Begrens tekstbredden"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:143
 msgid "Screen used (&pixels):"
-msgstr ""
+msgstr "Antall skjermpunkter:"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:169
-#, fuzzy
 msgid "Hide &tabbar"
-msgstr "delta"
+msgstr "&Skjul faner"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:176
-#, fuzzy
 msgid "Hide scr&ollbar"
-msgstr "Verktøylinje for matte av/på"
+msgstr "Skjul &rullefelt"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:191
-#, fuzzy
 msgid "&Hide toolbars"
-msgstr "Verktøylinje for matte av/på"
+msgstr "Skjul &verktøylinjer"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:31
-#, fuzzy
 msgid "&New..."
-msgstr "&Ny:"
+msgstr "&Ny..."
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:38
-#, fuzzy
 msgid "Re&move"
-msgstr "Fjern"
+msgstr "F&jern"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:51
-#, fuzzy
 msgid "S&hort Name:"
-msgstr "Sortér som:"
+msgstr "K&ort navn:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:85
-#, fuzzy
 msgid "Vector &graphics format"
 msgstr "&Vektorgrafikk"
 
@@ -2446,7 +2407,6 @@ msgid "Ed&itor:"
 msgstr "Redigeringsprogram:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:132
-#, fuzzy
 msgid "Shortc&ut:"
 msgstr "&Hurtigtast:"
 
@@ -2455,9 +2415,8 @@ msgid "E&xtension:"
 msgstr "Etternavn på fil:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:168
-#, fuzzy
 msgid "Co&pier:"
-msgstr "Kopiprogram:"
+msgstr "Ko&piprogram:"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:33
 msgid "&E-mail:"
@@ -2494,30 +2453,27 @@ msgid "S&econd:"
 msgstr "Andre:"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:122
-#, fuzzy
 msgid "Mouse"
-msgstr "Mer"
+msgstr "Mus"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:140
 msgid "&Wheel scrolling speed:"
-msgstr ""
+msgstr "&Fart for musehjul"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:150
 msgid ""
 "1.0 is the standard scrolling speed with the mouse wheel. Higher values will "
 "speed it up, low values slow it down."
-msgstr ""
+msgstr "1.0 er standardfart for å bla med musehjulet. Høyere tall blar raskere, lavere tall blar roligere."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:25
-#, fuzzy
 msgid "User &interface language:"
-msgstr "&Brukergrensesnittfil:"
+msgstr "Språk for brukergrensesn&itt:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:35
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:55
-#, fuzzy
 msgid "Select the default language of your documents"
-msgstr "Tilbake til standardinnstillinger for dokumentklassen"
+msgstr "Velg standardspråk for dokumentene dine"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:45
 msgid "&Default language:"
@@ -2553,7 +2509,6 @@ msgid "Use the babel package for multilingual support"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:119
-#, fuzzy
 msgid "&Use babel"
 msgstr "Bruk \"b&abel\""
 
@@ -2561,7 +2516,7 @@ msgstr "Bruk \"b&abel\""
 msgid ""
 "Check to pass the language globally (to the document class), not locally (to "
 "the language package)"
-msgstr ""
+msgstr "Kryss av så språket velges globalt (for dokumentklassen), ikke lokalt (bare for språkpakka)"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:129
 msgid "&Global"
@@ -2589,54 +2544,48 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:156
 msgid "Check to highlight foreign languages visually in the work area"
-msgstr ""
+msgstr "Kryss av for å merke fremmede språk i hovedvinduet"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:159
 msgid "Mark &foreign languages"
 msgstr "Merk &fremmede språk"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:185
-#, fuzzy
 msgid "Right-to-left language support"
 msgstr "Støtte for høyre-til-venstre språk"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:203 src/LyXRC.cpp:2760
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
-msgstr ""
+msgstr "Kryss av for å støtte språk som skrives fra høyre mot venstre. (Hebraisk, Arabisk)."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:206
 msgid "Enable RTL su&pport"
-msgstr ""
+msgstr "Støtt høyre-til-venstre språk"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:234
-#, fuzzy
 msgid "Cursor movement:"
-msgstr "Kommentar"
+msgstr "Flytte markøren:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:244
-#, fuzzy
 msgid "&Logical"
-msgstr "Sak"
+msgstr "&Logisk"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:254
 msgid "&Visual"
-msgstr ""
+msgstr "&Visuelt"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:25
-#, fuzzy
 msgid "&Nomenclature command:"
-msgstr "Nomenklatur|N"
+msgstr "&Nomenklatur-kommando:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:35
-#, fuzzy
 msgid "Command and options for nomencl (usually makeindex)"
-msgstr "Registerkommando og opsjoner (makeindex, xindy)"
+msgstr "Kommando og opsjoner for nomenklatur (vanligvis makeindex)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:42
-#, fuzzy
 msgid "&Index command:"
-msgstr "Register-kommando:"
+msgstr "&Register-kommando:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:52
 msgid "Index command and options (makeindex, xindy)"
@@ -2647,9 +2596,8 @@ msgid "Optional paper size flag (-paper) for some DVI viewers"
 msgstr "Papirstørrelse (-paper) for noen DVI-fremvisere"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:66
-#, fuzzy
 msgid "&DVI viewer paper size options:"
-msgstr "DVI-fremviser papirstørrelse:"
+msgstr "&DVI-fremviser papirstørrelse:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:82
 msgid ""
@@ -2667,10 +2615,9 @@ msgstr "&Bruk windows-type fil-stier i LaTeX-filer"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:95
 msgid "Set class options to default on class change"
-msgstr "Sett klasseinnstillingene til standard verdier ved klasse bytte"
+msgstr "Sett klasseinnstillingene til standard verdier ved klassebytte"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:98
-#, fuzzy
 msgid "R&eset class options when document class changes"
 msgstr "&Tilbakestill klasseinnstillingen når dokumentklassen endres"
 
@@ -2751,9 +2698,8 @@ msgid "&Document templates:"
 msgstr "&Dokumentmaler:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:71
-#, fuzzy
 msgid "&Example files:"
-msgstr "Eksempel #:"
+msgstr "&Eksempelfiler:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:94
 msgid "&Backup directory:"
@@ -2761,7 +2707,7 @@ msgstr "&Sikkerhetskopier:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:117
 msgid "Ly&XServer pipe:"
-msgstr ""
+msgstr "LyXServer datarør:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:140
 msgid "&Temporary directory:"
@@ -2794,63 +2740,56 @@ msgid "External app for formating tables in plain text output"
 msgstr "Eksternt program som formatterer tabeller ved eksport til ren tekst"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:41
-#, fuzzy
 msgid "Printer Command Options"
-msgstr "Kommando innstillinger"
+msgstr "Opsjoner for utskriftskommando"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:69
 msgid "Extension to be used when printing to file."
-msgstr ""
+msgstr "Filetternavn ved utskrift til fil"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:72
 msgid "File ex&tension:"
-msgstr "Fileks&tensjon:"
+msgstr "File&tternavn:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:85
-#, fuzzy
 msgid "Option used to print to a file."
-msgstr "Utskrift til fil"
+msgstr "Opsjon for å skrive til fil"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:88
-#, fuzzy
 msgid "Print to &file:"
-msgstr "Skriv til fil"
+msgstr "Skriv til &fil"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:98
 msgid "Option used to print to non-default printer."
-msgstr ""
+msgstr "Opsjon for å skrive til annen skriver enn standard."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:101
-#, fuzzy
 msgid "Set &printer:"
-msgstr "Til sk&river:"
+msgstr "Velg sk&river:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:114
 msgid "Option used with spool command to set printer."
-msgstr ""
+msgstr "Opsjon for å velge rett skriverkø."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:117
-#, fuzzy
 msgid "Spool &printer:"
-msgstr "Til sk&river:"
+msgstr "Skriverkø:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:130
 msgid ""
 "Setting causes printer command to print to file and then use this actually "
 "to print."
-msgstr ""
+msgstr "Bruker du denne, vil Lyx skrive til fil for deretter å bruke denne kommandoen for å skrive ut filen."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:136
-#, fuzzy
 msgid "Spool co&mmand:"
-msgstr "Spooler:"
+msgstr "Skriverkø-kommando:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:153
 msgid "Option used to reverse page order."
 msgstr "Skriv ut i omvendt rekkefølge"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:156
-#, fuzzy
 msgid "Re&verse pages:"
 msgstr "Reverser:"
 
@@ -2859,18 +2798,16 @@ msgid "Lan&dscape:"
 msgstr "Liggen&de:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:182
-#, fuzzy
 msgid "&Number of copies:"
-msgstr "Antall kopier"
+msgstr "&Antall kopier"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:192
 msgid "Option used to set number of copies."
 msgstr "Velg antall kopier"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:199
-#, fuzzy
 msgid "Option used to print a range of pages."
-msgstr "Mulighet for å bare skrive ut sider hvor sidetallet er partall"
+msgstr "Opsjon for å skrive ut et begrenset intervall med sider."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:206
 msgid "Co&llated:"
@@ -2882,7 +2819,7 @@ msgstr "Intervall:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:226
 msgid "Option used to collate multiple copies."
-msgstr ""
+msgstr "Opsjon for å sortere ekstra kopier."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:233
 msgid "&Odd pages:"
@@ -2902,16 +2839,15 @@ msgstr "Arkstørrelse:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:279
 msgid "Any other options you'd like to use with the printer command."
-msgstr ""
+msgstr "Alle andre opsjoner du vil bruke med utskriftskommandoen."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:282
 msgid "E&xtra options:"
 msgstr "Ekstra opsjoner:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:298
-#, fuzzy
 msgid "Customizes output to a given printer. Expert option."
-msgstr "Skriver å skrive ut til"
+msgstr "Tilpasser utskrift til en bestemt skriver. Ekspertopsjon."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:301
 msgid ""
@@ -2921,9 +2857,8 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:304
-#, fuzzy
 msgid "Adapt &output to printer"
-msgstr "Skriv ut til skriveren"
+msgstr "Tilpass utskrift til skriveren"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:311
 msgid "Name of the default printer"
@@ -2938,7 +2873,6 @@ msgid "Printer co&mmand:"
 msgstr "Skriverkommando:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:69
-#, fuzzy
 msgid "Sans Seri&f:"
 msgstr "&Grotesk:"
 
@@ -2947,7 +2881,6 @@ msgid "T&ypewriter:"
 msgstr "&Maskinskrift:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:117
-#, fuzzy
 msgid "R&oman:"
 msgstr "&Antikva:"
 
@@ -2961,67 +2894,57 @@ msgstr "&Zoom %:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:223
 msgid "Font Sizes"
-msgstr "Fontstørrelser"
+msgstr "Skriftstørrelser"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:262
-#, fuzzy
 msgid "&Large:"
 msgstr "Stor:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:272
-#, fuzzy
 msgid "&Larger:"
 msgstr "Større:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:282
-#, fuzzy
 msgid "&Largest:"
-msgstr "Størst:"
+msgstr "&Størst:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:295
-#, fuzzy
 msgid "&Huge:"
-msgstr "Enorm:"
+msgstr "&Enorm:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:305
-#, fuzzy
 msgid "&Hugest:"
-msgstr "Gigantisk:"
+msgstr "&Gigantisk:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:315
-#, fuzzy
 msgid "S&mallest:"
-msgstr "Minst:"
+msgstr "M&inst:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:325
-#, fuzzy
 msgid "S&maller:"
-msgstr "Mindre:"
+msgstr "M&indre:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:335
-#, fuzzy
 msgid "S&mall:"
-msgstr "Liten:"
+msgstr "L&iten:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:345
-#, fuzzy
 msgid "&Normal:"
-msgstr "Normal:"
+msgstr "&Normal:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:355
-#, fuzzy
 msgid "&Tiny:"
-msgstr "Bitteliten:"
+msgstr "&Bitteliten:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:368
 msgid ""
 "Checking this improves performance, but might decrease the on-screen quality "
 "of fonts"
-msgstr ""
+msgstr "Å krysse av her øker ytelsen, men kan gi dårligere kvalitet på skrift på skjermen."
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:371
 msgid "&Use pixmap cache to speed up font rendering"
-msgstr ""
+msgstr "Br&uk hurtilageret for bilder for å vise skrift raskere"
 
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:90
 msgid "&Bind file:"
@@ -3029,7 +2952,7 @@ msgstr "&Hurtigtast-fil:"
 
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:108
 msgid "Show ke&y-bindings containing:"
-msgstr ""
+msgstr "Vis tastekoblinger som inneholder:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:64
 msgid "Al&ternative language:"
@@ -3044,9 +2967,8 @@ msgid "Personal &dictionary:"
 msgstr "Personlig or&dliste:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:97
-#, fuzzy
 msgid "&Escape characters:"
-msgstr "spesielle tegn"
+msgstr "&Unntakstegn:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:107
 msgid "Spellchec&ker executable:"
@@ -3075,27 +2997,23 @@ msgstr "Økt"
 
 #: src/frontends/qt4/ui/PrefUi.ui:51
 msgid "Restore window layouts and &geometries"
-msgstr ""
+msgstr "Lagre og gjenopprett posisjoner for vinduer"
 
 #: src/frontends/qt4/ui/PrefUi.ui:58
-#, fuzzy
 msgid "Restore to the cursor position when the file was last closed"
 msgstr "Gå til posisjonen markøren var i sist gang dokumentet ble lukket"
 
 #: src/frontends/qt4/ui/PrefUi.ui:61
-#, fuzzy
 msgid "Restore cursor &positions"
 msgstr "Husk markørposisjoner i dokumentene"
 
 #: src/frontends/qt4/ui/PrefUi.ui:68
-#, fuzzy
 msgid "&Load opened files from last session"
 msgstr "Les inn åpne dokumenter fra forrige økt"
 
 #: src/frontends/qt4/ui/PrefUi.ui:75
-#, fuzzy
 msgid "Clear all session &information"
-msgstr "TeX informasjon"
+msgstr "Fjern all &informasjon om økta"
 
 #: src/frontends/qt4/ui/PrefUi.ui:85
 msgid "Documents"
@@ -3110,29 +3028,26 @@ msgid "minutes"
 msgstr "minutt"
 
 #: src/frontends/qt4/ui/PrefUi.ui:170
-#, fuzzy
 msgid "&Backup documents, every"
-msgstr "Sikkerhetskopiér dokumenter "
+msgstr "Sikkerhetskopiér dokumenter, hvert "
 
 #: src/frontends/qt4/ui/PrefUi.ui:177
-#, fuzzy
 msgid "&Open documents in tabs"
-msgstr "Åpne dokument"
+msgstr "Åpne dokumenter under faner"
 
 #: src/frontends/qt4/ui/PrefUi.ui:200
-#, fuzzy
 msgid "Automatic help"
-msgstr "Automatisk oppdatering"
+msgstr "Automatisk hjelp"
 
 #: src/frontends/qt4/ui/PrefUi.ui:218
 msgid ""
 "Checking this allow the automatic display of helpful comments for insets in "
 "the main work area of an edited document"
-msgstr ""
+msgstr "Kryss av for å få tips om objekter i dokumentet, når musepekeren er over dem."
 
 #: src/frontends/qt4/ui/PrefUi.ui:221
 msgid "&Enable tool tips in main work area"
-msgstr ""
+msgstr "Musehint i hovedvinduet"
 
 #: src/frontends/qt4/ui/PrefUi.ui:231
 msgid "Bro&wse..."
@@ -3192,9 +3107,8 @@ msgid "Re&verse order"
 msgstr "Baklengs rekkefølge"
 
 #: src/frontends/qt4/ui/PrintUi.ui:149
-#, fuzzy
 msgid "Copie&s"
-msgstr "Kopier"
+msgstr "&Kopier"
 
 #: src/frontends/qt4/ui/PrintUi.ui:161
 msgid "Number of copies"
@@ -3665,9 +3579,8 @@ msgid "Don't output the last footer"
 msgstr "Ikke skriv ut siste fot"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1228
-#, fuzzy
 msgid "Caption:"
-msgstr "&Figurtekst:"
+msgstr "Tabelloverskrift:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1245
 msgid "Select for tables that span multiple pages"
@@ -3695,12 +3608,12 @@ msgstr "Lukk dette vinduet"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:91
 msgid "Rebuild the file lists"
-msgstr "Oppdater fil lister"
+msgstr "Oppdater fil-lister"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:104
 msgid ""
 "Show contents of marked file. Only possible when files are shown with path"
-msgstr ""
+msgstr "Vis innholdet i markert fil."
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:107
 msgid "&View"
@@ -3724,7 +3637,7 @@ msgstr "BibTeX stiler"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:162
 msgid "Toggles view of the file list"
-msgstr ""
+msgstr "Kryss av får å få med stier i tillegg til filnavn"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:165
 msgid "Show &path"
@@ -8240,9 +8153,8 @@ msgid "Element:Directory"
 msgstr "Foldere"
 
 #: lib/layouts/db_stdcharstyles.inc:22
-#, fuzzy
 msgid "Directory"
-msgstr "Foldere"
+msgstr "Mappe"
 
 #: lib/layouts/db_stdcharstyles.inc:71
 #, fuzzy
@@ -8896,55 +8808,46 @@ msgid "List of Tableaux"
 msgstr "Liste over tabeller"
 
 #: lib/layouts/logicalmkup.module:2
-#, fuzzy
 msgid "Logical Markup"
-msgstr "Åpne sikkerhetskopi i stedet?"
+msgstr "Logisk markering"
 
 #: lib/layouts/logicalmkup.module:5
 msgid ""
 "Defines some character styles for logical markup: noun, emph, strong, and "
 "code."
-msgstr ""
+msgstr "Definerer tekststiler for logisk markering: kapitéler, uthevet, kraftig og kode."
 
 #: lib/layouts/logicalmkup.module:10
-#, fuzzy
 msgid "CharStyle:Noun"
-msgstr "Endring: "
+msgstr "Tekststil:kapitéler"
 
 #: lib/layouts/logicalmkup.module:12
-#, fuzzy
 msgid "noun"
-msgstr "ingen"
+msgstr "kapitéler"
 
 #: lib/layouts/logicalmkup.module:22
-#, fuzzy
 msgid "CharStyle:Emph"
-msgstr "Endring: "
+msgstr "Tekststil:uthevet"
 
 #: lib/layouts/logicalmkup.module:24
-#, fuzzy
 msgid "emph"
-msgstr "Uthevet "
+msgstr "uthevet "
 
 #: lib/layouts/logicalmkup.module:33
-#, fuzzy
 msgid "CharStyle:Strong"
-msgstr "Endring: "
+msgstr "Tekststil:kraftig"
 
 #: lib/layouts/logicalmkup.module:35
-#, fuzzy
 msgid "strong"
-msgstr "«Listing»"
+msgstr "kraftig"
 
 #: lib/layouts/logicalmkup.module:47
-#, fuzzy
 msgid "CharStyle:Code"
-msgstr "Endring: "
+msgstr "Tekststil:kode"
 
 #: lib/layouts/logicalmkup.module:49
-#, fuzzy
 msgid "code"
-msgstr "Kode"
+msgstr "kode"
 
 #: lib/layouts/minimalistic.module:2
 msgid "Minimalistic"
@@ -9382,7 +9285,7 @@ msgstr "Russisk"
 
 #: lib/languages:73
 msgid "North Sami"
-msgstr ""
+msgstr "Nordsamisk"
 
 #: lib/languages:74
 msgid "Scottish"
@@ -9638,7 +9541,7 @@ msgstr "Rediger|R"
 
 #: lib/ui/classic.ui:34 lib/ui/stdmenus.inc:23
 msgid "Insert|I"
-msgstr "Sett inn|S"
+msgstr "Sett inn|i"
 
 #: lib/ui/classic.ui:35
 msgid "Layout|L"
@@ -9706,7 +9609,7 @@ msgstr "Skriv ut...|u"
 
 #: lib/ui/classic.ui:60 lib/ui/stdmenus.inc:50
 msgid "Fax...|F"
-msgstr "Faks...|F"
+msgstr "Faks..."
 
 #: lib/ui/classic.ui:62 lib/ui/stdmenus.inc:55
 msgid "Exit|x"
@@ -9784,7 +9687,7 @@ msgstr "Stavekontroll...|S"
 
 #: lib/ui/classic.ui:105
 msgid "Thesaurus..."
-msgstr "Synonymordbok"
+msgstr "Synonymordbok..."
 
 #: lib/ui/classic.ui:106
 msgid "Statistics...|i"
@@ -10117,7 +10020,7 @@ msgstr "Ligaturbrudd|g"
 
 #: lib/ui/classic.ui:247
 msgid "Protected Space|r"
-msgstr "Hardt mellomrom|H"
+msgstr "Hardt mellomrom"
 
 #: lib/ui/classic.ui:248 lib/ui/stdmenus.inc:368
 msgid "Inter-word Space|w"
@@ -10280,7 +10183,7 @@ msgstr "Tekst kursiv"
 
 #: lib/ui/classic.ui:303 lib/ui/stdmenus.inc:256
 msgid "Text Small Caps Shape"
-msgstr "Tekst kapiteler"
+msgstr "Tekst kapitéler"
 
 #: lib/ui/classic.ui:304 lib/ui/stdmenus.inc:257
 msgid "Text Slanted Shape"
@@ -10714,7 +10617,7 @@ msgstr "Ordmellomrom|O"
 
 #: lib/ui/stdcontext.inc:179
 msgid "Protected Space|o"
-msgstr "Hardt mellomrom|H"
+msgstr "Hardt mellomrom"
 
 #: lib/ui/stdcontext.inc:181 lib/ui/stdcontext.inc:206
 msgid "Negative Thin Space|N"
@@ -10726,7 +10629,7 @@ msgstr "Halv quadratin-mellomrom (Enskip)"
 
 #: lib/ui/stdcontext.inc:183
 msgid "Protected Half Quad Space (Enspace)|E"
-msgstr "Hard halv quadratin-mellomrom (Enspace)|E"
+msgstr "Hardt halv quadratin-mellomrom (Enspace)|E"
 
 #: lib/ui/stdcontext.inc:184 lib/ui/stdcontext.inc:210
 msgid "Quad Space|Q"
@@ -10830,7 +10733,7 @@ msgstr "Verbatim|V"
 
 #: lib/ui/stdcontext.inc:238
 msgid "Verbatim (marked blanks)|b"
-msgstr ""
+msgstr "Verbatim (markerte mellomrom)|b"
 
 #: lib/ui/stdcontext.inc:239
 #, fuzzy
@@ -10889,9 +10792,8 @@ msgid "Paste Recent|e"
 msgstr "Lim inn tidligere utvalg|e"
 
 #: lib/ui/stdcontext.inc:273
-#, fuzzy
 msgid "Jump Back to Saved Bookmark|B"
-msgstr "Lagre bokmerke 1"
+msgstr "Gå tilbake til lagret bokmerke|b"
 
 #: lib/ui/stdcontext.inc:275 lib/ui/stdmenus.inc:98
 msgid "Move Paragraph Up|o"
@@ -10903,30 +10805,27 @@ msgstr "Flytt avsnitt ned|n"
 
 #: lib/ui/stdcontext.inc:278
 msgid "Promote Section|r"
-msgstr ""
+msgstr "Øk dybden for avsnittet|Ø"
 
 #: lib/ui/stdcontext.inc:279
 msgid "Demote Section|m"
-msgstr ""
+msgstr "Minsk dybden for avsnittet|M"
 
 #: lib/ui/stdcontext.inc:280
-#, fuzzy
 msgid "Move Section down|d"
-msgstr "Steng vindu|d"
+msgstr "Flytt seksjonen ned|d"
 
 #: lib/ui/stdcontext.inc:281
 msgid "Move Section up|u"
-msgstr ""
+msgstr "Flytt seksjonen opp|p"
 
 #: lib/ui/stdcontext.inc:282
-#, fuzzy
 msgid "Insert Short Title|T"
-msgstr "Kort tittel"
+msgstr "Sett inn kort tittel|k"
 
 #: lib/ui/stdcontext.inc:284
-#, fuzzy
 msgid "Apply Last Text Style|A"
-msgstr "Tekststil|s"
+msgstr "Bruk forrige tekststil|t"
 
 #: lib/ui/stdcontext.inc:285 lib/ui/stdmenus.inc:101
 msgid "Text Style|S"
@@ -10938,7 +10837,7 @@ msgstr "Avsnittsinnstillinger...|v"
 
 #: lib/ui/stdcontext.inc:288
 msgid "Fullscreen Mode"
-msgstr ""
+msgstr "Fullskjerm"
 
 #: lib/ui/stdcontext.inc:296 lib/ui/stdmenus.inc:217
 #: lib/ui/stdtoolbars.inc:172
@@ -10987,9 +10886,8 @@ msgid "Remove Last Argument Spitting Out To The Right"
 msgstr ""
 
 #: lib/ui/stdcontext.inc:333 lib/ui/stdcontext.inc:345
-#, fuzzy
 msgid "Edit externally...|x"
-msgstr "Rediger filen eksternt"
+msgstr "Rediger eksternt...|R"
 
 #: lib/ui/stdcontext.inc:355 lib/ui/stdmenus.inc:164
 msgid "Top Line|T"
@@ -11001,11 +10899,11 @@ msgstr "Bunnlinje|B"
 
 #: lib/ui/stdcontext.inc:357 lib/ui/stdmenus.inc:166
 msgid "Left Line|L"
-msgstr "Venstre linje|V"
+msgstr "Venstre linje|l"
 
 #: lib/ui/stdcontext.inc:358 lib/ui/stdmenus.inc:167
 msgid "Right Line|R"
-msgstr "Høyre linje|H"
+msgstr "Høyre linje|r"
 
 #: lib/ui/stdcontext.inc:370 lib/ui/stdmenus.inc:182
 msgid "Copy Row|o"
@@ -11363,7 +11261,7 @@ msgstr "Fonetiske symboler|F"
 
 #: lib/ui/stdmenus.inc:367
 msgid "Protected Space|P"
-msgstr "Hardt mellomrom|H"
+msgstr "Hardt mellomrom"
 
 #: lib/ui/stdmenus.inc:371
 msgid "Horizontal Line|L"
@@ -11446,13 +11344,12 @@ msgid "Clear Bookmarks|C"
 msgstr "Fjerne bokmerker|F"
 
 #: lib/ui/stdmenus.inc:493
-#, fuzzy
 msgid "Navigate Back|B"
-msgstr "Naviger|N"
+msgstr "Naviger tilbake|b"
 
 #: lib/ui/stdmenus.inc:503
 msgid "Thesaurus...|T"
-msgstr "Synonymordbok...|S"
+msgstr "Synonymordbok...|y"
 
 #: lib/ui/stdmenus.inc:504
 msgid "Statistics...|a"
@@ -11685,9 +11582,8 @@ msgid "Set right line"
 msgstr "Høyre strek på/av"
 
 #: lib/ui/stdtoolbars.inc:126
-#, fuzzy
 msgid "Set border lines"
-msgstr "Kantlinjer"
+msgstr "Kantlinjer på"
 
 #: lib/ui/stdtoolbars.inc:127
 msgid "Set all lines"
@@ -11731,7 +11627,7 @@ msgstr "Vri tabellen 90°"
 
 #: lib/ui/stdtoolbars.inc:140
 msgid "Set multi-column"
-msgstr "Multikolonne|M"
+msgstr "Multikolonne"
 
 #: lib/ui/stdtoolbars.inc:143
 msgid "Math"
@@ -11802,9 +11698,8 @@ msgid "Toggle Math Panels"
 msgstr "Matte-verktøylinjer på/av"
 
 #: lib/ui/stdtoolbars.inc:170
-#, fuzzy
 msgid "Math Macros"
-msgstr "matte bakgrunn"
+msgstr "Mattemakroer"
 
 #: lib/ui/stdtoolbars.inc:185
 msgid "Command Buffer"
@@ -11812,7 +11707,7 @@ msgstr "Kommandolinje"
 
 #: lib/ui/stdtoolbars.inc:189
 msgid "Review[[Toolbar]]"
-msgstr ""
+msgstr "Spore endringer"
 
 #: lib/ui/stdtoolbars.inc:190
 msgid "Track changes"
@@ -11827,14 +11722,12 @@ msgid "Next change"
 msgstr "Neste endring"
 
 #: lib/ui/stdtoolbars.inc:194
-#, fuzzy
 msgid "Accept change inside selection"
-msgstr "Godta endring"
+msgstr "Godta endringer i utvalget"
 
 #: lib/ui/stdtoolbars.inc:195
-#, fuzzy
 msgid "Reject change inside selection"
-msgstr "Forkast endring"
+msgstr "Forkast endringer i utvalget"
 
 #: lib/ui/stdtoolbars.inc:197
 msgid "Merge changes"
@@ -11885,29 +11778,24 @@ msgid "Version Control"
 msgstr "Versjonskontroll"
 
 #: lib/ui/stdtoolbars.inc:215
-#, fuzzy
 msgid "Register"
-msgstr "Registrer...|R"
+msgstr "Registrer i versjonskontrollsystem"
 
 #: lib/ui/stdtoolbars.inc:216
-#, fuzzy
 msgid "Check-out for edit"
-msgstr "Sjekk ut for endring|u"
+msgstr "Sjekk ut for å kunne redigere|u"
 
 #: lib/ui/stdtoolbars.inc:217
-#, fuzzy
 msgid "Check-in changes"
-msgstr "Sjekk inn endringer...|i"
+msgstr "Sjekk inn endringer"
 
 #: lib/ui/stdtoolbars.inc:218
-#, fuzzy
 msgid "View revision log"
-msgstr "Versjonskontroll-logg"
+msgstr "Se revisjonslogg"
 
 #: lib/ui/stdtoolbars.inc:219
-#, fuzzy
 msgid "Revert changes"
-msgstr "Forkast alle endringer"
+msgstr "Forkast endringer"
 
 #: lib/ui/stdtoolbars.inc:222
 msgid "Math Panels"
@@ -12096,15 +11984,15 @@ msgstr "Negativt mellomrom\t\\!"
 
 #: lib/ui/stdtoolbars.inc:286
 msgid "Placeholder\t\\phantom"
-msgstr ""
+msgstr "Usynlig\t\\phantom"
 
 #: lib/ui/stdtoolbars.inc:287
 msgid "Horizontal placeholder\t\\hphantom"
-msgstr ""
+msgstr "Vannrett usynlig\t\\hphantom"
 
 #: lib/ui/stdtoolbars.inc:288
 msgid "Vertical placeholder\t\\vphantom"
-msgstr ""
+msgstr "Loddrett usynlig\t\\vphantom"
 
 #: lib/ui/stdtoolbars.inc:291
 msgid "Roots"
@@ -12139,32 +12027,28 @@ msgid "Standard\t\\frac"
 msgstr "Standard\t\\frac"
 
 #: lib/ui/stdtoolbars.inc:305
-#, fuzzy
 msgid "No horizontal line\t\\atop"
-msgstr "Ingen linje over\t\\atop"
+msgstr "Uten brøkstrek\t\\atop"
 
 #: lib/ui/stdtoolbars.inc:306
-#, fuzzy
 msgid "Nice fraction (3/4)\t\\nicefrac"
-msgstr "Pen brøk\t\\nicefrac"
+msgstr "Pen brøk (3/4)\t\\nicefrac"
 
 #: lib/ui/stdtoolbars.inc:307
 msgid "Unit (km)\t\\unit"
-msgstr ""
+msgstr "Enhet (km)\t\\unit"
 
 #: lib/ui/stdtoolbars.inc:308
 msgid "Unit (864 m)\t\\unit"
-msgstr ""
+msgstr "Enhet (864 m)\t\\unit"
 
 #: lib/ui/stdtoolbars.inc:309
-#, fuzzy
 msgid "Unit fraction (km/h)\t\\unitfrac"
-msgstr "Pen brøk\t\\nicefrac"
+msgstr "Enhetsbrøk (km/h)\t\\unitfrac"
 
 #: lib/ui/stdtoolbars.inc:310
-#, fuzzy
 msgid "Unit fraction (20 km/h)\t\\unitfrac"
-msgstr "Pen brøk\t\\nicefrac"
+msgstr "Enhetsbrøk (20 km/h)\t\\unitfrac"
 
 #: lib/ui/stdtoolbars.inc:311
 msgid "Text fraction\t\\tfrac"
@@ -12172,34 +12056,31 @@ msgstr "Tekstbrøk\t\\tfrac"
 
 #: lib/ui/stdtoolbars.inc:312
 msgid "Display fraction\t\\dfrac"
-msgstr ""
+msgstr "Stor brøk\t\\dfrac"
 
 #: lib/ui/stdtoolbars.inc:313
-#, fuzzy
 msgid "Continued fraction\t\\cfrac"
-msgstr "Pen brøk\t\\nicefrac"
+msgstr "Kjedebrøk\t\\cfrac"
 
 #: lib/ui/stdtoolbars.inc:314
-#, fuzzy
 msgid "Continued fraction (left)\t\\cfrac"
-msgstr "Pen brøk\t\\nicefrac"
+msgstr "Kjedebrøk (venstre)\t\\cfrac"
 
 #: lib/ui/stdtoolbars.inc:315
-#, fuzzy
 msgid "Continued fraction (right)\t\\cfrac"
-msgstr "Pen brøk\t\\nicefrac"
+msgstr "Kjedebrøk (høyre)\t\\cfrac"
 
 #: lib/ui/stdtoolbars.inc:316
 msgid "Binomial\t\\binom"
-msgstr ""
+msgstr "Binom\t\\binom"
 
 #: lib/ui/stdtoolbars.inc:317
 msgid "Text binomial\t\\tbinom"
-msgstr ""
+msgstr "Tekst binom\t\\tbinom"
 
 #: lib/ui/stdtoolbars.inc:318
 msgid "Display binomial\t\\dbinom"
-msgstr ""
+msgstr "Stort binom\t\\dbinom"
 
 #: lib/ui/stdtoolbars.inc:322
 msgid "Roman\t\\mathrm"
@@ -13007,7 +12888,7 @@ msgstr "neg"
 
 #: lib/ui/stdtoolbars.inc:538
 msgid "flat"
-msgstr "flat"
+msgstr "musikk:b"
 
 #: lib/ui/stdtoolbars.inc:539
 msgid "natural"
@@ -13015,7 +12896,7 @@ msgstr "natural"
 
 #: lib/ui/stdtoolbars.inc:540
 msgid "sharp"
-msgstr "sharp"
+msgstr "musikk:kryss"
 
 #: lib/ui/stdtoolbars.inc:541
 msgid "surd"
@@ -15040,47 +14921,43 @@ msgid "Mark set"
 msgstr "Merke satt"
 
 #: src/BufferView.cpp:1347
-#, fuzzy
 msgid "Statistics for the selection:"
-msgstr "Bytt til det åpne dokumentet"
+msgstr "Statistikk for utvalget:"
 
 #: src/BufferView.cpp:1349
-#, fuzzy
 msgid "Statistics for the document:"
-msgstr "Bytt til det åpne dokumentet"
+msgstr "Statistikk for dokumentet:"
 
 #: src/BufferView.cpp:1352
-#, fuzzy, c-format
+#, c-format
 msgid "%1$d words"
-msgstr "%1$d ord kontrollert."
+msgstr "%1$d ord"
 
 #: src/BufferView.cpp:1354
-#, fuzzy
 msgid "One word"
-msgstr "Nøkkelord"
+msgstr "Ett ord"
 
 #: src/BufferView.cpp:1357
 #, c-format
 msgid "%1$d characters (including blanks)"
-msgstr ""
+msgstr "%1$d tegn (inkludert mellomrom)"
 
 #: src/BufferView.cpp:1360
 msgid "One character (including blanks)"
-msgstr ""
+msgstr "Ett tegn (inkludert mellomrom)"
 
 #: src/BufferView.cpp:1363
 #, c-format
 msgid "%1$d characters (excluding blanks)"
-msgstr ""
+msgstr "%1$d tegn (uten mellomrom)"
 
 #: src/BufferView.cpp:1366
 msgid "One character (excluding blanks)"
-msgstr ""
+msgstr "Ett tegn (uten mellomrom)"
 
 #: src/BufferView.cpp:1368
-#, fuzzy
 msgid "Statistics"
-msgstr "Status"
+msgstr "Statistikk"
 
 #: src/BufferView.cpp:2144
 #, c-format
@@ -15199,23 +15076,20 @@ msgid "selection"
 msgstr "merket"
 
 #: src/Color.cpp:148
-#, fuzzy
 msgid "selected text"
-msgstr "slettet tekst"
+msgstr "valgt tekst"
 
 #: src/Color.cpp:150
 msgid "LaTeX text"
 msgstr "LaTeX tekst"
 
 #: src/Color.cpp:151
-#, fuzzy
 msgid "inline completion"
-msgstr "L&isting i tekst"
+msgstr "fullføring i tekst"
 
 #: src/Color.cpp:153
-#, fuzzy
 msgid "non-unique inline completion"
-msgstr "L&isting i tekst"
+msgstr "Flertydig fullføring av tekst"
 
 #: src/Color.cpp:155
 msgid "previewed snippet"
@@ -15314,7 +15188,6 @@ msgid "graphics background"
 msgstr "grafikk, bakgrunn"
 
 #: src/Color.cpp:179 src/Color.cpp:183
-#, fuzzy
 msgid "math macro background"
 msgstr "matte-makro bakgrunn"
 
@@ -15337,14 +15210,12 @@ msgid "math macro hovered background"
 msgstr "matte-makro bakgrunn"
 
 #: src/Color.cpp:185
-#, fuzzy
 msgid "math macro label"
-msgstr "matte bakgrunn"
+msgstr "matte-makro etikett"
 
 #: src/Color.cpp:186
-#, fuzzy
 msgid "math macro frame"
-msgstr "matte ramme"
+msgstr "matte-makro ramme"
 
 #: src/Color.cpp:187
 #, fuzzy
@@ -15398,34 +15269,32 @@ msgid "change bar"
 msgstr "endringsmerke"
 
 #: src/Color.cpp:199
-#, fuzzy
 msgid "deleted text"
 msgstr "slettet tekst"
 
 #: src/Color.cpp:200
-#, fuzzy
 msgid "added text"
 msgstr "tillagt tekst"
 
 #: src/Color.cpp:201
 msgid "changed text 1st author"
-msgstr ""
+msgstr "tekst endret av første forfatter"
 
 #: src/Color.cpp:202
 msgid "changed text 2nd author"
-msgstr ""
+msgstr "tekst endret av andre forfatter"
 
 #: src/Color.cpp:203
 msgid "changed text 3rd author"
-msgstr ""
+msgstr "tekst endret av tredje forfatter"
 
 #: src/Color.cpp:204
 msgid "changed text 4th author"
-msgstr ""
+msgstr "tekst endret av fjerde forfatter"
 
 #: src/Color.cpp:205
 msgid "changed text 5th author"
-msgstr ""
+msgstr "tekst endret av femte forfatter"
 
 #: src/Color.cpp:206
 #, fuzzy
@@ -15453,14 +15322,12 @@ msgid "bottom area"
 msgstr "bunnområde"
 
 #: src/Color.cpp:213
-#, fuzzy
 msgid "new page"
-msgstr "på side <side>"
+msgstr "ny side"
 
 #: src/Color.cpp:214
-#, fuzzy
 msgid "page break / line break"
-msgstr "sidebrekk"
+msgstr "side/linjeskift"
 
 #: src/Color.cpp:215
 msgid "frame of button"
@@ -15819,7 +15686,7 @@ msgstr ""
 
 #: src/LyX.cpp:111
 msgid "LyX: reconfiguring user directory"
-msgstr "LyX: rekonfigurerer brukerfolder"
+msgstr "LyX: rekonfigurerer brukermappe"
 
 #: src/LyX.cpp:115
 msgid "Done!"
@@ -15932,7 +15799,6 @@ msgid "Setting debug level to %1$s"
 msgstr "Setter debug nivå til %1$s"
 
 #: src/LyX.cpp:956
-#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -15958,39 +15824,39 @@ msgstr ""
 "Bruk: lyx [ parametre ] [ filnavn.lyx ... ]\n"
 "Parametre (små bokstaver):\n"
 "\t-help              kort om bruk av LyX\n"
-"\t-userdir mappe     forsøk brukermappa \"mappe\"\n"
-"\t-sysdir mappe      forsøk systemmappa \"mappe\"\n"
-"\t-geometry WxH+X+Y  størrelsen på hovedvinduet\n"
+"\t-userdir mappe     bruk brukermappa \"mappe\"\n"
+"\t-sysdir mappe      bruk systemmappa \"mappe\"\n"
+"\t-geometry WxH+X+Y  størrelse og mål for hovedvinduet\n"
 "\t-dbg feature[,feature]...\n"
 "                  velg feilsøkingsfunksjoner\n"
-"                  Skriv `lyx -dbg' for å se lista over funskjoner\n"
+"                  Skriv `lyx -dbg' for å se lista over funksjoner\n"
 "\t-x [--execute] kommando\n"
-"                  hvor 'kommando' er en lyx kommando.\n"
+"                  hvor 'kommando' er en lyx-kommando.\n"
 "\t-e [--export] fmt\n"
-"                  hvor 'fmt' er et eksportformat.\n"
+"                  hvor 'fmt' er et ønsket eksportformat.\n"
+"                  Se Verktøy->Preferanser->Håndtering av filer->Filformater\n"
+"                  for en idé om hvilke parametre som passer.\n"
 "\t-i [--import] fmt fil.xxx\n"
-"                  hvor 'fmt' er et importformat.\n"
+"                  hvor 'fmt' er ønsket importformat,\n"
 "                  og fil.xxx er filen som skal importeres.\n"
-"\t-version        versjons- og byggeinformasjon\n"
-"Les man sidene til LyX for flere detaljer."
+"\t-version  versjons- og kompileringsinformasjon\n"
+"Les man-sidene til LyX for fler detaljer."
 
 #: src/LyX.cpp:996
-#, fuzzy
 msgid "No system directory"
-msgstr "Bruker folder: "
+msgstr "Ingen systemmappe"
 
 #: src/LyX.cpp:997
 msgid "Missing directory for -sysdir switch"
-msgstr "Mangler folder for -sysdir parameter"
+msgstr "Mangler mappe for -sysdir parameter"
 
 #: src/LyX.cpp:1008
-#, fuzzy
 msgid "No user directory"
-msgstr "Bruker folder: "
+msgstr "Ingen brukermappe"
 
 #: src/LyX.cpp:1009
 msgid "Missing directory for -userdir switch"
-msgstr "Mangler folder for -userdir parameter"
+msgstr "Mangler mappe for -userdir parameter"
 
 #: src/LyX.cpp:1020
 msgid "Incomplete command"
@@ -16021,9 +15887,8 @@ msgid "Reloading configuration..."
 msgstr "Leser konfigurasjon om igjen..."
 
 #: src/LyXFunc.cpp:130
-#, fuzzy
 msgid "System reconfiguration failed"
-msgstr "Systemed har blitt rekonfigurert."
+msgstr "Rekonfigurering mislyktes"
 
 #: src/LyXFunc.cpp:131
 msgid ""
@@ -16442,7 +16307,7 @@ msgstr ""
 #: src/LyXRC.cpp:2636
 msgid ""
 "Show the completion popup without delay after non-unique completion attempt."
-msgstr ""
+msgstr "Vis fullføringsdialogen uten forsinkelse når det er flere alternativer"
 
 #: src/LyXRC.cpp:2640
 msgid ""
@@ -16492,27 +16357,25 @@ msgstr ""
 
 #: src/LyXRC.cpp:2680
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
-msgstr ""
+msgstr "Forhåndsviste ligninger merkes med \"(#)\" i stedet for numre"
 
 #: src/LyXRC.cpp:2684
 msgid "Scale the preview size to suit."
 msgstr ""
 
 #: src/LyXRC.cpp:2688
-#, fuzzy
 msgid "The option for specifying whether the copies should be collated."
-msgstr "Skriv ut i omvendt rekkefølge."
+msgstr "Opsjonen for å velge om ekstra kopier skal sorteres."
 
 #: src/LyXRC.cpp:2692
-#, fuzzy
 msgid "The option for specifying the number of copies to print."
-msgstr "Skriv ut i omvendt rekkefølge."
+msgstr "Opsjonen for antall kopier å skrive ut."
 
 #: src/LyXRC.cpp:2696
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
-msgstr ""
+msgstr "Standardskriver. Hvis det ikke står noen her, bruker LyX miljøvariabelen PRINTER."
 
 #: src/LyXRC.cpp:2700
 msgid "The option to print only even pages."
@@ -17113,7 +16976,7 @@ msgstr "Dings 4"
 
 #: src/frontends/qt4/FileDialog.cpp:181
 msgid "Directories"
-msgstr "Foldere"
+msgstr "Mapper"
 
 #: src/frontends/qt4/GuiAbout.cpp:49
 msgid "ERROR: LyX wasn't able to read CREDITS file\n"
@@ -17177,7 +17040,7 @@ msgstr "Library directory: "
 
 #: src/frontends/qt4/GuiAbout.cpp:118
 msgid "User directory: "
-msgstr "Bruker folder: "
+msgstr "Brukermappe: "
 
 #: src/frontends/qt4/GuiAlert.cpp:124 src/frontends/qt4/GuiAlert.cpp:157
 #: src/frontends/qt4/GuiAlert.cpp:183 src/frontends/qt4/GuiAlert.cpp:209
@@ -17383,7 +17246,7 @@ msgstr "Ingen endring"
 
 #: src/frontends/qt4/GuiCharacter.cpp:46
 msgid "Small Caps"
-msgstr "Kapiteler"
+msgstr "Kapitéler"
 
 #: src/frontends/qt4/GuiCharacter.cpp:47 src/frontends/qt4/GuiCharacter.cpp:68
 #: src/frontends/qt4/GuiCharacter.cpp:80 src/frontends/qt4/GuiCharacter.cpp:98
@@ -17442,9 +17305,8 @@ msgid "Text Style"
 msgstr "Tekststil"
 
 #: src/frontends/qt4/GuiCitation.cpp:319
-#, fuzzy
 msgid "Keys"
-msgstr "&Nøkkel:"
+msgstr "Nøkler"
 
 #: src/frontends/qt4/GuiClipboard.cpp:135
 msgid "LinkBack PDF"
@@ -17455,19 +17317,17 @@ msgid "PDF"
 msgstr "PDF"
 
 #: src/frontends/qt4/GuiClipboard.cpp:147
-#, fuzzy
 msgid "pasted"
-msgstr "Lim inn"
+msgstr "limt inn"
 
 #: src/frontends/qt4/GuiClipboard.cpp:156
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s Files"
-msgstr "%1$s og %2$s"
+msgstr "%1$s filer"
 
 #: src/frontends/qt4/GuiClipboard.cpp:166
-#, fuzzy
 msgid "Choose a filename to save the pasted graphic as"
-msgstr "Velg filnavn som dokumentet skal lagres som"
+msgstr "Velg et filnavn for å lagre kopiert grafikk"
 
 #: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1376
 #: src/frontends/qt4/GuiView.cpp:1524 src/frontends/qt4/GuiView.cpp:1540
@@ -17477,22 +17337,17 @@ msgid "Canceled."
 msgstr "Avbrutt."
 
 #: src/frontends/qt4/GuiClipboard.cpp:206
-#, fuzzy
 msgid "Overwrite external file?"
-msgstr "Overskrive filen?"
+msgstr "Overskrive ekstern fil?"
 
 #: src/frontends/qt4/GuiClipboard.cpp:207
-#, fuzzy, c-format
+#, c-format
 msgid "File %1$s already exists, do you want to overwrite it?"
-msgstr ""
-"Filen %1$s fins fra før.\n"
-"\n"
-"Vil du skrive over den?"
+msgstr "Filen %1$s fins fra før, vil du skrive over den?"
 
 #: src/frontends/qt4/GuiCommandBuffer.cpp:98
-#, fuzzy
 msgid "List of previous commands"
-msgstr "Forrige kommando"
+msgstr "Liste over tidligere kommandoer"
 
 #: src/frontends/qt4/GuiCommandBuffer.cpp:101
 msgid "Next command"
@@ -17628,9 +17483,8 @@ msgid "Page"
 msgstr "Side"
 
 #: src/frontends/qt4/GuiDocument.cpp:204
-#, fuzzy
 msgid "Module not found!"
-msgstr "Fil ikke funnet"
+msgstr "Fant ikke modulen!"
 
 #: src/frontends/qt4/GuiDocument.cpp:505
 msgid "Document Settings"
@@ -17638,7 +17492,6 @@ msgstr "Dokumentinnstillinger"
 
 #: src/frontends/qt4/GuiDocument.cpp:559
 #: src/frontends/qt4/GuiDocument.cpp:1058
-#, fuzzy
 msgid ""
 "Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
@@ -17675,13 +17528,12 @@ msgid "plain"
 msgstr "enkel"
 
 #: src/frontends/qt4/GuiDocument.cpp:671
-#, fuzzy
 msgid "headings"
-msgstr "Innstillinger"
+msgstr "overskrifter"
 
 #: src/frontends/qt4/GuiDocument.cpp:672
 msgid "fancy"
-msgstr ""
+msgstr "avansert (fancy)"
 
 #: src/frontends/qt4/GuiDocument.cpp:688
 msgid "B3"
@@ -17770,7 +17622,7 @@ msgstr "Matte-innstillinger"
 
 #: src/frontends/qt4/GuiDocument.cpp:992
 msgid "Float Placement"
-msgstr "\"Float\"-plassering"
+msgstr "Flytende materiale"
 
 #: src/frontends/qt4/GuiDocument.cpp:993
 msgid "Bullets"
@@ -17791,15 +17643,13 @@ msgid "Layouts|#o#O"
 msgstr "Stil|S"
 
 #: src/frontends/qt4/GuiDocument.cpp:1246
-#, fuzzy
 msgid "LyX Layout (*.layout)"
-msgstr "LyX-Dokumenter (*.lyx)"
+msgstr "LyX stilfil (*.layout)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1248
 #: src/frontends/qt4/GuiDocument.cpp:1257
-#, fuzzy
 msgid "Local layout file"
-msgstr "Tekststil"
+msgstr "Lokal fil med dokument-/tekststiler"
 
 #: src/frontends/qt4/GuiDocument.cpp:1258
 msgid ""
@@ -17808,6 +17658,9 @@ msgid ""
 "document may not work with this layout if you do not\n"
 "keep the layout file in the document directory."
 msgstr ""
+"Stilen du har valgt er en lokal fil, ikke en i system- \n"
+"eller brukermappa. Dokumentet ditt kan bare brukes om\n"
+"du beholder stilfilen i samme mappe som dokumentet."
 
 #: src/frontends/qt4/GuiDocument.cpp:1262
 #, fuzzy
@@ -17817,30 +17670,25 @@ msgstr "Tekststil"
 #: src/frontends/qt4/GuiDocument.cpp:1275
 #: src/frontends/qt4/GuiDocument.cpp:1349
 #: src/frontends/qt4/GuiDocument.cpp:2243
-#, fuzzy
 msgid "Error"
-msgstr "Pilspiss"
+msgstr "Feil"
 
 #: src/frontends/qt4/GuiDocument.cpp:1276
-#, fuzzy
 msgid "Unable to read local layout file."
-msgstr "Fikk ikke lagret standardverdier for dokumenter"
+msgstr "Kunne ikke lese lokal stilfil."
 
 #: src/frontends/qt4/GuiDocument.cpp:1298
-#, fuzzy
 msgid "Select master document"
-msgstr "Hoveddokument"
+msgstr "Velg hoveddokument"
 
 #: src/frontends/qt4/GuiDocument.cpp:1302
-#, fuzzy
 msgid "LyX Files (*.lyx)"
 msgstr "LyX-Dokumenter (*.lyx)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1334
 #: src/frontends/qt4/GuiDocument.cpp:2232
-#, fuzzy
 msgid "Unapplied changes"
-msgstr "Spor endringer"
+msgstr "Endringer som ikke er gjort"
 
 #: src/frontends/qt4/GuiDocument.cpp:1335
 #: src/frontends/qt4/GuiDocument.cpp:2233
@@ -17852,28 +17700,26 @@ msgstr ""
 #: src/frontends/qt4/GuiDocument.cpp:1337
 #: src/frontends/qt4/GuiDocument.cpp:2235
 msgid "&Dismiss"
-msgstr ""
+msgstr "&Ta bort"
 
 #: src/frontends/qt4/GuiDocument.cpp:1349
 #: src/frontends/qt4/GuiDocument.cpp:2243
-#, fuzzy
 msgid "Unable to set document class."
-msgstr "Fikk ikke lagret standardverdier for dokumenter"
+msgstr "Kunne ikke velge dokumentklasse."
 
 #: src/frontends/qt4/GuiDocument.cpp:1383
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s, %2$s"
-msgstr "%1$s og %2$s"
+msgstr "%1$s, %2$s"
 
 #: src/frontends/qt4/GuiDocument.cpp:1388
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s, %2$s, and %3$s"
-msgstr "%1$s og %2$s"
+msgstr "%1$s, %2$s, og %3$s"
 
 #: src/frontends/qt4/GuiDocument.cpp:1472
-#, fuzzy
 msgid "Module provided by document class."
-msgstr "Fikk ikke lagret standardverdier for dokumenter"
+msgstr "Modul tilbudt av dokumentklassen."
 
 #: src/frontends/qt4/GuiDocument.cpp:1480
 #, c-format
@@ -17881,43 +17727,39 @@ msgid "Package(s) required: %1$s."
 msgstr "Nødvendige pakke(r): %1$s."
 
 #: src/frontends/qt4/GuiDocument.cpp:1486
-#, fuzzy
 msgid "or"
-msgstr "Mer"
+msgstr "eller"
 
 #: src/frontends/qt4/GuiDocument.cpp:1489
 #, c-format
 msgid "Module required: %1$s."
-msgstr ""
+msgstr "Nødvendig modul: %1$s."
 
 #: src/frontends/qt4/GuiDocument.cpp:1498
 #, c-format
 msgid "Modules excluded: %1$s."
-msgstr ""
+msgstr "Ekskluderer moduler: %1$s."
 
 #: src/frontends/qt4/GuiDocument.cpp:1504
 msgid "WARNING: Some required packages are unavailable!"
 msgstr "ADVARSEL: Noen nødvendige pakker er ikke tilgjengelige!"
 
 #: src/frontends/qt4/GuiDocument.cpp:2042
-#, fuzzy
 msgid "[No options predefined]"
-msgstr "Gå til neste endring"
+msgstr "[Ingen forhåndsdefinerte opsjoner]"
 
 #: src/frontends/qt4/GuiDocument.cpp:2255
-#, fuzzy
 msgid "Can't set layout!"
-msgstr "Endret stil"
+msgstr "Kan ikke endre stil!"
 
 #: src/frontends/qt4/GuiDocument.cpp:2256
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to set layout for ID: %1$s"
-msgstr "Fikk ikke lagret standardverdier for dokumenter"
+msgstr "Kunne ikke sette stil for ID: %1$s"
 
 #: src/frontends/qt4/GuiDocument.cpp:2333
-#, fuzzy
 msgid "Not Found"
-msgstr "Vises ikke."
+msgstr "Ikke funnet"
 
 #: src/frontends/qt4/GuiDocument.cpp:2387
 msgid "Assigned master does not include this file"
@@ -17930,11 +17772,12 @@ msgid ""
 "'%1$s' in order to use the master document\n"
 "feature."
 msgstr ""
+"Du må inkludere denne filen i dokumentet\n"
+"'%1$s' for å bruke funksjonen \"hoveddokument\"."
 
 #: src/frontends/qt4/GuiDocument.cpp:2392
-#, fuzzy
 msgid "Could not load master"
-msgstr "Fikk ikke byttet klasse"
+msgstr "Kunne ikke åpne hoveddokument"
 
 #: src/frontends/qt4/GuiDocument.cpp:2393
 #, fuzzy, c-format
@@ -17942,17 +17785,16 @@ msgid ""
 "The master document '%1$s'\n"
 "could not be loaded."
 msgstr ""
-"Dokumentet %1$s\n"
-"var uleselig."
+"Hoveddokumentet '%1$s'\n"
+"kunne ikke åpnes."
 
 #: src/frontends/qt4/GuiERT.cpp:29
 msgid "TeX Code Settings"
 msgstr "TeX innstillinger"
 
 #: src/frontends/qt4/GuiErrorList.cpp:38
-#, fuzzy
 msgid "Error List"
-msgstr "Programlisting"
+msgstr "Liste over feil"
 
 #: src/frontends/qt4/GuiErrorList.cpp:95
 #, c-format
@@ -18009,7 +17851,7 @@ msgstr "Velg ekstern fil"
 
 #: src/frontends/qt4/GuiFloat.cpp:28
 msgid "Float Settings"
-msgstr "\"Float\" innstillinger"
+msgstr "Innstillinger for flytende materiale"
 
 #: src/frontends/qt4/GuiGraphics.cpp:154 src/frontends/qt4/GuiPrefs.cpp:912
 msgid "Graphics"
@@ -18027,16 +17869,20 @@ msgid ""
 "because this graphic was its only member.\n"
 "How do you want to proceed?"
 msgstr ""
+"Hvis du plasserer dette bildet i gruppa '%2$s',\n"
+"oppløses gruppa '%1$s', fordi dette bildet var\n"
+"det eneste gruppemedlemmet.\n"
+"Hva vil du gjøre nå?"
 
 #: src/frontends/qt4/GuiGraphics.cpp:310 src/frontends/qt4/GuiGraphics.cpp:326
 #, c-format
 msgid "Stick with group '%1$s'"
-msgstr ""
+msgstr "Behold gruppe '%1$s'"
 
 #: src/frontends/qt4/GuiGraphics.cpp:312
 #, c-format
 msgid "Assign to group '%1$s' anyway"
-msgstr ""
+msgstr "Flytt til gruppe '%1$s' uansett"
 
 #: src/frontends/qt4/GuiGraphics.cpp:320
 #, c-format
@@ -18054,17 +17900,16 @@ msgstr ""
 
 #: src/frontends/qt4/GuiGraphics.cpp:368
 msgid "Enter unique group name:"
-msgstr ""
+msgstr "Gi gruppa et unikt navn:"
 
 #: src/frontends/qt4/GuiGraphics.cpp:373
-#, fuzzy
 msgid "Group already defined!"
-msgstr "Gå til neste endring"
+msgstr "Gruppa fins allerede!"
 
 #: src/frontends/qt4/GuiGraphics.cpp:374
 #, c-format
 msgid "A graphics group with the name '%1$s' already exists."
-msgstr ""
+msgstr "En bildegruppe med navn '%1$s' fins fra før."
 
 #: src/frontends/qt4/GuiGraphics.cpp:834
 msgid "Select graphics file"
@@ -18072,12 +17917,11 @@ msgstr "Velg grafikkfil"
 
 #: src/frontends/qt4/GuiGraphics.cpp:846
 msgid "Clipart|#C#c"
-msgstr ""
+msgstr "Bildesamling"
 
 #: src/frontends/qt4/GuiHSpace.cpp:39
-#, fuzzy
 msgid "Horizontal Space Settings"
-msgstr "Loddrett avstand"
+msgstr "Vannrett avstand, innstillinger"
 
 #: src/frontends/qt4/GuiHSpace.cpp:116
 msgid ""
@@ -18085,62 +17929,56 @@ msgid ""
 "Note that a protected Half Quad will be turned into\n"
 "a vertical space if used at the beginning of a paragraph!"
 msgstr ""
+"Sett inn avstanden selv etter et linjeskift.\n"
+"NB! En beskyttet \"halv quadrantin\" blir en loddrett avstand hvis den brukes aller først i et avsnitt!"
 
 #: src/frontends/qt4/GuiHSpace.cpp:141 src/frontends/qt4/GuiHSpace.cpp:155
-#, fuzzy
 msgid "Thin space"
-msgstr "Lite mellomrom\t\\,"
+msgstr "Lite mellomrom"
 
 #: src/frontends/qt4/GuiHSpace.cpp:142
-#, fuzzy
 msgid "Medium space"
-msgstr "Medium mellomrom\t\\:"
+msgstr "Medium mellomrom"
 
 #: src/frontends/qt4/GuiHSpace.cpp:143
-#, fuzzy
 msgid "Thick space"
-msgstr "Stort mellomrom\t\\;"
+msgstr "Stort mellomrom"
 
 #: src/frontends/qt4/GuiHSpace.cpp:144 src/frontends/qt4/GuiHSpace.cpp:156
-#, fuzzy
 msgid "Negative thin space"
-msgstr "Negativt mellomrom\t\\!"
+msgstr "Negativt tynt mellomrom"
 
 #: src/frontends/qt4/GuiHSpace.cpp:145
-#, fuzzy
 msgid "Negative medium space"
-msgstr "Negativt mellomrom\t\\!"
+msgstr "Negativt middels mellomrom"
 
 #: src/frontends/qt4/GuiHSpace.cpp:146
-#, fuzzy
 msgid "Negative thick space"
-msgstr "Negativt mellomrom\t\\!"
+msgstr "Negativt stort mellomrom"
 
 #: src/frontends/qt4/GuiHSpace.cpp:147 src/frontends/qt4/GuiHSpace.cpp:157
 msgid "Half Quad (0.5 em)"
-msgstr ""
+msgstr "Halv quadratin (0.5 em)"
 
 #: src/frontends/qt4/GuiHSpace.cpp:148 src/frontends/qt4/GuiHSpace.cpp:158
 msgid "Quad (1 em)"
-msgstr ""
+msgstr "Quadratin (1 em)"
 
 #: src/frontends/qt4/GuiHSpace.cpp:149 src/frontends/qt4/GuiHSpace.cpp:159
 msgid "Double Quad (2 em)"
-msgstr ""
+msgstr "Dobbel quadratin (2 em)"
 
 #: src/frontends/qt4/GuiHSpace.cpp:154
-#, fuzzy
 msgid "Inter-word space"
-msgstr "Ordmellomrom|O"
+msgstr "Ordmellomrom"
 
 #: src/frontends/qt4/GuiHSpace.cpp:160 src/insets/InsetSpace.cpp:108
 msgid "Horizontal Fill"
 msgstr "Vannrett fyll"
 
 #: src/frontends/qt4/GuiHyperlink.cpp:29
-#, fuzzy
 msgid "Hyperlink"
-msgstr "&Lag hyperlink"
+msgstr "Hyperlenke"
 
 #: src/frontends/qt4/GuiInclude.cpp:48 src/frontends/qt4/Menus.cpp:1082
 msgid "Child Document"
@@ -18151,9 +17989,7 @@ msgstr "Underdokument"
 #: src/frontends/qt4/GuiListings.cpp:450
 msgid ""
 "Input listing parameters on the right. Enter ? for a list of parameters."
-msgstr ""
-"Skriv inn listing-parametre i vinduet til høyre. Trykk ? for en liste over "
-"parametre."
+msgstr "Skriv inn listing-parametre i vinduet til høyre. Trykk ? for en liste over parametre."
 
 #: src/frontends/qt4/GuiInclude.cpp:315
 msgid "Select document to include"
@@ -18164,9 +18000,8 @@ msgid "LaTeX/LyX Documents (*.tex *.lyx)"
 msgstr "LaTeX/LyX dokumenter (*.tex *.lyx)"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
-#, fuzzy
 msgid "unknown"
-msgstr " ukjent"
+msgstr "ukjent"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 #, fuzzy
@@ -18209,12 +18044,11 @@ msgstr "blå"
 
 #: src/frontends/qt4/GuiKeySymbol.cpp:707
 msgid "Shift-"
-msgstr ""
+msgstr "Skift-"
 
 #: src/frontends/qt4/GuiKeySymbol.cpp:708
-#, fuzzy
 msgid "Control-"
-msgstr "Telle ord"
+msgstr "Ctrl-"
 
 #: src/frontends/qt4/GuiKeySymbol.cpp:709
 #, fuzzy
@@ -18309,42 +18143,36 @@ msgid "User files|#U#u"
 msgstr "Brukerfiler|#U#u"
 
 #: src/frontends/qt4/GuiPrefs.cpp:224
-#, fuzzy
 msgid "Look & Feel"
 msgstr "Utseende"
 
 #: src/frontends/qt4/GuiPrefs.cpp:226
-#, fuzzy
 msgid "Language Settings"
 msgstr "Språkinnstillinger"
 
 #: src/frontends/qt4/GuiPrefs.cpp:227
-#, fuzzy
 msgid "Output"
 msgstr "Utdata"
 
 #: src/frontends/qt4/GuiPrefs.cpp:228
-#, fuzzy
 msgid "File Handling"
-msgstr "Font håndtering"
+msgstr "Håndtering av filer"
 
 #: src/frontends/qt4/GuiPrefs.cpp:394
 msgid "Date format"
 msgstr "Datoformat"
 
 #: src/frontends/qt4/GuiPrefs.cpp:432
-#, fuzzy
 msgid "Keyboard/Mouse"
-msgstr "Tastatur"
+msgstr "Tastatur/mus"
 
 #: src/frontends/qt4/GuiPrefs.cpp:507
-#, fuzzy
 msgid "Input Completion"
-msgstr "Bildetekst"
+msgstr "Fullføre automatisk"
 
 #: src/frontends/qt4/GuiPrefs.cpp:638
 msgid "Screen fonts"
-msgstr "Skjermfonter"
+msgstr "Skrifter på skjermen"
 
 #: src/frontends/qt4/GuiPrefs.cpp:813
 msgid "Colors"
@@ -18361,23 +18189,23 @@ msgstr "Velg mal"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1030
 msgid "Select a document templates directory"
-msgstr "Velg folder for dokument maler"
+msgstr "Velg mappe for dokumentmaler"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1039
 msgid "Select a temporary directory"
-msgstr "Velg en temporær folder"
+msgstr "Velg mappe for midlertidige filer"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1048
 msgid "Select a backups directory"
-msgstr "Velg folder for sikkerhetskopier"
+msgstr "Velg mappe for sikkerhetskopier"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1057
 msgid "Select a document directory"
-msgstr "Velg folder for dokumenter"
+msgstr "Velg mappe for dokumenter"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1066
 msgid "Give a filename for the LyX server pipe"
-msgstr ""
+msgstr "Oppgi filnavn for LyXServer datarør (pipe)"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1079
 #: src/frontends/qt4/GuiSpellchecker.cpp:57
@@ -18441,47 +18269,40 @@ msgid "User interface"
 msgstr "Brukergrensesnitt"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2009
-#, fuzzy
 msgid "Control"
-msgstr "Telle ord"
+msgstr "Styring"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2081
-#, fuzzy
 msgid "Shortcuts"
-msgstr "&Hurtigtast:"
+msgstr "Hurtigtaster"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2086
-#, fuzzy
 msgid "Function"
-msgstr "Funksjoner"
+msgstr "Funksjon"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2087
-#, fuzzy
 msgid "Shortcut"
-msgstr "&Hurtigtast:"
+msgstr "Hurtigtast"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2168
 msgid "Cursor, Mouse and Editing functions"
-msgstr ""
+msgstr "Markør-, mus- og redigeringsfunksjoner"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2172
-#, fuzzy
 msgid "Mathematical Symbols"
-msgstr "Fonetiske symboler|y"
+msgstr "Matematiske symboler"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2176
-#, fuzzy
 msgid "Document and Window"
-msgstr "Feil i dokumenthodet"
+msgstr "Dokument og vindu"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2180
 msgid "Font, Layouts and Textclasses"
-msgstr ""
+msgstr "Skrift, avsnittstyper og tekstklasser"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2184
-#, fuzzy
 msgid "System and Miscellaneous"
-msgstr "AMS diverse"
+msgstr "System og diverse"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2311 src/frontends/qt4/GuiPrefs.cpp:2357
 #, fuzzy
@@ -18493,16 +18314,15 @@ msgstr "&Tilbakestill"
 #: src/frontends/qt4/GuiPrefs.cpp:2517
 #, fuzzy
 msgid "Failed to create shortcut"
-msgstr "Mislyktes i å lage mappen. Avslutter."
+msgstr "Mislyktes med å lage hurtigtast"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2468
-#, fuzzy
 msgid "Unknown or invalid LyX function"
-msgstr "Ukjent funksjon."
+msgstr "Ukjent/ugyldig LyX-funksjon"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2475
 msgid "Invalid or empty key sequence"
-msgstr ""
+msgstr "Tom/ugyldig tastesekvens"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2486
 #, c-format
@@ -18510,6 +18330,8 @@ msgid ""
 "Shortcut `%1$s' is already bound to:\n"
 "%2$s"
 msgstr ""
+"Hurtigtast `%1$s' er allerede bundet til:\n"
+"%2$s"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2499
 #, c-format
@@ -18518,11 +18340,14 @@ msgid ""
 "%2$s\n"
 "You need to remove that binding before creating a new one."
 msgstr ""
+"Hurtigtast `%1$s' er allerede koblet til:\n"
+"%2$s\n"
+"Du må fjerne den koblingen før du lager en ny."
 
 #: src/frontends/qt4/GuiPrefs.cpp:2518
 #, fuzzy
 msgid "Can not insert shortcut to the list"
-msgstr "Legg en ny dokumentgren til listen"
+msgstr "Får ikke lagt hurtigtast til lista"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2549
 msgid "Identity"
@@ -18647,26 +18472,24 @@ msgid "Spelling check completed"
 msgstr "Stavekontroll fullført"
 
 #: src/frontends/qt4/GuiSymbols.cpp:54
-#, fuzzy
 msgid "Basic Latin"
-msgstr "Latvisk"
+msgstr "Latinske basistegn"
 
 #: src/frontends/qt4/GuiSymbols.cpp:55
 msgid "Latin-1 Supplement"
-msgstr ""
+msgstr "Latin-1 ekstra tegn"
 
 #: src/frontends/qt4/GuiSymbols.cpp:56
 msgid "Latin Extended-A"
-msgstr ""
+msgstr "Latin ekstra-A"
 
 #: src/frontends/qt4/GuiSymbols.cpp:57
 msgid "Latin Extended-B"
-msgstr ""
+msgstr "Latin ekstra-B"
 
 #: src/frontends/qt4/GuiSymbols.cpp:58
-#, fuzzy
 msgid "IPA Extensions"
-msgstr "Etternavn på fil:"
+msgstr "IPA fonetiske symboler"
 
 #: src/frontends/qt4/GuiSymbols.cpp:59
 msgid "Spacing Modifier Letters"
@@ -18678,121 +18501,107 @@ msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:62
 msgid "Cyrillic"
-msgstr ""
+msgstr "Kyrillisk"
 
 #: src/frontends/qt4/GuiSymbols.cpp:65
-#, fuzzy
 msgid "Arabic"
-msgstr "Arabisk (Arabi)"
+msgstr "Arabisk"
 
 #: src/frontends/qt4/GuiSymbols.cpp:66
 msgid "Devanagari"
-msgstr ""
+msgstr "Devanāgarī"
 
 #: src/frontends/qt4/GuiSymbols.cpp:67
 msgid "Bengali"
-msgstr ""
+msgstr "Bengali"
 
 #: src/frontends/qt4/GuiSymbols.cpp:68
 msgid "Gurmukhi"
-msgstr ""
+msgstr "Gurmukhi"
 
 #: src/frontends/qt4/GuiSymbols.cpp:69
 msgid "Gujarati"
-msgstr ""
+msgstr "Gujarati"
 
 #: src/frontends/qt4/GuiSymbols.cpp:70
 msgid "Oriya"
-msgstr ""
+msgstr "Oriya"
 
 #: src/frontends/qt4/GuiSymbols.cpp:71
-#, fuzzy
 msgid "Tamil"
-msgstr "Thai"
+msgstr "Tamil"
 
 #: src/frontends/qt4/GuiSymbols.cpp:72
 msgid "Telugu"
-msgstr ""
+msgstr "Telugu"
 
 #: src/frontends/qt4/GuiSymbols.cpp:73
-#, fuzzy
 msgid "Kannada"
-msgstr "Kanadisk"
+msgstr "Kannada"
 
 #: src/frontends/qt4/GuiSymbols.cpp:74
 msgid "Malayalam"
-msgstr ""
+msgstr "Malayāḷam"
 
 #: src/frontends/qt4/GuiSymbols.cpp:76
-#, fuzzy
 msgid "Lao"
-msgstr "Stil "
+msgstr "Lao"
 
 #: src/frontends/qt4/GuiSymbols.cpp:77
-#, fuzzy
 msgid "Tibetan"
-msgstr "beta"
+msgstr "Tibetansk"
 
 #: src/frontends/qt4/GuiSymbols.cpp:78
-#, fuzzy
 msgid "Georgian"
-msgstr "Tysk"
+msgstr "Georgisk"
 
 #: src/frontends/qt4/GuiSymbols.cpp:79
 msgid "Hangul Jamo"
 msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:80
-#, fuzzy
 msgid "Phonetic Extensions"
-msgstr "Etternavn på fil:"
+msgstr "Fonetiske ekstrategn"
 
 #: src/frontends/qt4/GuiSymbols.cpp:81
 msgid "Latin Extended Additional"
-msgstr ""
+msgstr "Latin ekstra-ekstra"
 
 #: src/frontends/qt4/GuiSymbols.cpp:82
 msgid "Greek Extended"
-msgstr ""
+msgstr "Gresk, utvidet"
 
 #: src/frontends/qt4/GuiSymbols.cpp:83
-#, fuzzy
 msgid "General Punctuation"
-msgstr "Generel informasjon"
+msgstr "Generelle tegn"
 
 #: src/frontends/qt4/GuiSymbols.cpp:84
-#, fuzzy
 msgid "Superscripts and Subscripts"
-msgstr "Hevet skrift|H"
+msgstr "Hevet og senket skrift"
 
 #: src/frontends/qt4/GuiSymbols.cpp:85
-#, fuzzy
 msgid "Currency Symbols"
-msgstr "Fonetiske symboler|y"
+msgstr "Valutasymboler"
 
 #: src/frontends/qt4/GuiSymbols.cpp:86
 msgid "Combining Diacritical Marks for Symbols"
 msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:87
-#, fuzzy
 msgid "Letterlike Symbols"
-msgstr "Fonetiske symboler|y"
+msgstr "Bokstavbaserte"
 
 #: src/frontends/qt4/GuiSymbols.cpp:88
-#, fuzzy
 msgid "Number Forms"
-msgstr "Antall rader"
+msgstr "Tallbaserte"
 
 #: src/frontends/qt4/GuiSymbols.cpp:90
-#, fuzzy
 msgid "Mathematical Operators"
-msgstr "Mathematica|a"
+msgstr "Matematiske operatorer"
 
 #: src/frontends/qt4/GuiSymbols.cpp:91
-#, fuzzy
 msgid "Miscellaneous Technical"
-msgstr "Diverse"
+msgstr "Diverse tekniske"
 
 #: src/frontends/qt4/GuiSymbols.cpp:92
 #, fuzzy
@@ -18808,29 +18617,24 @@ msgid "Enclosed Alphanumerics"
 msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:95
-#, fuzzy
 msgid "Box Drawing"
-msgstr "Boksinnstillinger"
+msgstr "Tegne rammer"
 
 #: src/frontends/qt4/GuiSymbols.cpp:96
-#, fuzzy
 msgid "Block Elements"
-msgstr "\"Float\"-plassering"
+msgstr "Blokker"
 
 #: src/frontends/qt4/GuiSymbols.cpp:97
-#, fuzzy
 msgid "Geometric Shapes"
-msgstr "Tekst Kursiv"
+msgstr "Geometriske former"
 
 #: src/frontends/qt4/GuiSymbols.cpp:98
-#, fuzzy
 msgid "Miscellaneous Symbols"
 msgstr "Diverse"
 
 #: src/frontends/qt4/GuiSymbols.cpp:99
-#, fuzzy
 msgid "Dingbats"
-msgstr "Dings 1"
+msgstr "Dingbats"
 
 #: src/frontends/qt4/GuiSymbols.cpp:100
 msgid "Miscellaneous Mathematical Symbols-A"
@@ -18842,7 +18646,7 @@ msgstr "CJK-symboler"
 
 #: src/frontends/qt4/GuiSymbols.cpp:102
 msgid "Hiragana"
-msgstr ""
+msgstr "Hiragana"
 
 #: src/frontends/qt4/GuiSymbols.cpp:103
 msgid "Katakana"
@@ -18858,9 +18662,8 @@ msgid "Hangul Compatibility Jamo"
 msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:106
-#, fuzzy
 msgid "Kanbun"
-msgstr "Kanadisk"
+msgstr "Kanbun"
 
 #: src/frontends/qt4/GuiSymbols.cpp:107
 msgid "Enclosed CJK Letters and Months"
@@ -18900,7 +18703,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:116
 msgid "Alphabetic Presentation Forms"
-msgstr ""
+msgstr "Alfabetiske ligaturer"
 
 #: src/frontends/qt4/GuiSymbols.cpp:117
 #, fuzzy
@@ -18961,7 +18764,7 @@ msgstr "Gotisk"
 
 #: src/frontends/qt4/GuiSymbols.cpp:130
 msgid "Ugaritic"
-msgstr ""
+msgstr "Ugarittisk"
 
 #: src/frontends/qt4/GuiSymbols.cpp:131
 msgid "Old Persian"
@@ -18973,9 +18776,8 @@ msgid "Deseret"
 msgstr "Tilbakestill"
 
 #: src/frontends/qt4/GuiSymbols.cpp:133
-#, fuzzy
 msgid "Shavian"
-msgstr "Latvisk"
+msgstr "Shavian"
 
 #: src/frontends/qt4/GuiSymbols.cpp:134
 msgid "Osmanya"
@@ -18992,9 +18794,8 @@ msgid "Kharoshthi"
 msgstr "varnothing"
 
 #: src/frontends/qt4/GuiSymbols.cpp:137
-#, fuzzy
 msgid "Byzantine Musical Symbols"
-msgstr "Fonetiske symboler|y"
+msgstr "Bysantinske musikalske symboler"
 
 #: src/frontends/qt4/GuiSymbols.cpp:138
 msgid "Musical Symbols"
@@ -19043,7 +18844,7 @@ msgstr "Tegn:"
 
 #: src/frontends/qt4/GuiSymbols.cpp:227
 msgid "Code Point: "
-msgstr ""
+msgstr "Unikode: "
 
 #: src/frontends/qt4/GuiSymbols.cpp:270
 msgid "Symbols"
