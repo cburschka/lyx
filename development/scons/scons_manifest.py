@@ -2303,6 +2303,7 @@ lib_doc_ja_files = Split('''
     Extended.lyx
     Intro.lyx
     LaTeXConfig.lyx
+    Math.lyx
     Shortcuts.lyx
     Tutorial.lyx
     UserGuide.lyx
@@ -2539,6 +2540,7 @@ lib_examples_it_files = Split('''
 
 
 lib_examples_ja_files = Split('''
+    Braille.lyx
     splash.lyx
 ''')
 
