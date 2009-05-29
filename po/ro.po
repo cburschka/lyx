@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-05-21 18:33+0200\n"
-"PO-Revision-Date: 2009-05-23 03:19+0100\n"
-"Last-Translator: Liviu Andronic <landronimirc@gmail.com>\n"
+"PO-Revision-Date: 2009-05-29 12:42-0400\n"
+"Last-Translator: Marius Ionescu <felijohn@gmail.com>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -5254,69 +5254,58 @@ msgstr "Set de date:"
 
 #: lib/layouts/achemso.layout:54
 #: lib/layouts/achemso.layout:64
-#, fuzzy
 msgid "Scheme"
-msgstr "Scenă"
+msgstr "Schemă"
 
 #: lib/layouts/achemso.layout:59
-#, fuzzy
 msgid "List of Schemes"
-msgstr "Listă de tabele"
+msgstr "Listă de Scheme"
 
 #: lib/layouts/achemso.layout:63
 msgid "scheme"
-msgstr ""
+msgstr "schemă"
 
 #: lib/layouts/achemso.layout:75
 #: lib/layouts/achemso.layout:85
-#, fuzzy
 msgid "Chart"
-msgstr "hat"
+msgstr "Tabel"
 
 #: lib/layouts/achemso.layout:80
-#, fuzzy
 msgid "List of Charts"
-msgstr "Listă de tabele"
+msgstr "Listă de Tabele"
 
 #: lib/layouts/achemso.layout:84
-#, fuzzy
 msgid "chart"
-msgstr "hat"
+msgstr "tabel"
 
 #: lib/layouts/achemso.layout:96
 #: lib/layouts/achemso.layout:106
-#, fuzzy
 msgid "Graph"
-msgstr "&Grafică"
+msgstr "Grafic"
 
 #: lib/layouts/achemso.layout:101
-#, fuzzy
 msgid "List of Graphs"
-msgstr "Listă de tabele"
+msgstr "Listă de grafice"
 
 #: lib/layouts/achemso.layout:105
-#, fuzzy
 msgid "graph"
-msgstr "Epigraf"
+msgstr "grafic"
 
 #: lib/layouts/achemso.layout:144
-#, fuzzy
 msgid "Bibnote"
-msgstr "notă"
+msgstr "Notăbibliografică"
 
 #: lib/layouts/achemso.layout:148
-#, fuzzy
 msgid "bibnote"
-msgstr "notă"
+msgstr "notăbibliografică"
 
 #: lib/layouts/achemso.layout:190
-#, fuzzy
 msgid "Chemistry"
-msgstr "Oraş"
+msgstr "Chimie"
 
 #: lib/layouts/achemso.layout:193
 msgid "chemistry"
-msgstr ""
+msgstr "chimie"
 
 #: lib/layouts/acmsiggraph.layout:61
 #, fuzzy
@@ -5759,14 +5748,12 @@ msgid "Institute"
 msgstr "Institut"
 
 #: lib/layouts/beamer.layout:838
-#, fuzzy
 msgid "InstituteMark"
-msgstr "Institut"
+msgstr "MarcăInstitut"
 
 #: lib/layouts/beamer.layout:842
-#, fuzzy
 msgid "Institute mark"
-msgstr "Institut"
+msgstr "marcă Institut"
 
 #: lib/layouts/beamer.layout:907
 #: lib/layouts/egs.layout:94
@@ -6131,7 +6118,6 @@ msgid "My Address"
 msgstr "Adresa mea"
 
 #: lib/layouts/dinbrief.layout:59
-#, fuzzy
 msgid "Briefkopf:"
 msgstr "Briefkopf:"
 
@@ -7598,9 +7584,8 @@ msgstr "Coduri de clasificare"
 
 #: lib/layouts/ijmpc.layout:140
 #: lib/layouts/ijmpd.layout:137
-#, fuzzy
 msgid "Definition \\thedefinition."
-msgstr "Definiţie \\arabic{definition}"
+msgstr "Definiţie \\thedefinition"
 
 #: lib/layouts/ijmpc.layout:150
 #: lib/layouts/ijmpd.layout:147
@@ -7609,47 +7594,40 @@ msgstr "Etapă"
 
 #: lib/layouts/ijmpc.layout:154
 #: lib/layouts/ijmpd.layout:151
-#, fuzzy
 msgid "Step \\thestep."
-msgstr "Etapă \\arabic{step}"
+msgstr "Etapă \\thestep"
 
 #: lib/layouts/ijmpc.layout:167
 #: lib/layouts/ijmpd.layout:164
-#, fuzzy
 msgid "Example \\theexample."
-msgstr "Exemplu \\arabic{example}"
+msgstr "Exemplu \\theexample"
 
 #: lib/layouts/ijmpc.layout:176
 #: lib/layouts/ijmpd.layout:174
-#, fuzzy
 msgid "Remark \\theremark."
-msgstr "Remarcă \\arabic{remark}"
+msgstr "Remarcă \\theremark"
 
 #: lib/layouts/ijmpc.layout:185
 #: lib/layouts/ijmpd.layout:184
-#, fuzzy
 msgid "Notation \\thenotation."
-msgstr "Notaţie \\arabic{notation}"
+msgstr "Notaţie \\thenotation"
 
 #: lib/layouts/ijmpc.layout:200
 #: lib/layouts/ijmpd.layout:203
 #: lib/layouts/theorems-ams.inc:42
 #: lib/layouts/theorems.inc:42
-#, fuzzy
 msgid "Theorem \\thetheorem."
-msgstr "Teoremă \\arabic{theorem}"
+msgstr "Teoremă \\thetheorem"
 
 #: lib/layouts/ijmpc.layout:233
 #: lib/layouts/ijmpd.layout:234
-#, fuzzy
 msgid "Corollary \\thecorollary."
-msgstr "Corolar \\arabic{corollary}"
+msgstr "Corolar \\thecorollary"
 
 #: lib/layouts/ijmpc.layout:242
 #: lib/layouts/ijmpd.layout:247
-#, fuzzy
 msgid "Lemma \\thelemma."
-msgstr "Lemă \\arabic{lemma}"
+msgstr "Lemă \\thelemma"
 
 #: lib/layouts/ijmpc.layout:251
 #: lib/layouts/ijmpd.layout:257
@@ -8070,24 +8048,20 @@ msgid "\\thechapter"
 msgstr "\\thechapter"
 
 #: lib/layouts/recipebook.layout:84
-#, fuzzy
 msgid "Recipe"
-msgstr "Primit"
+msgstr "Rețetă"
 
 #: lib/layouts/recipebook.layout:91
-#, fuzzy
 msgid "Recipe:"
-msgstr "Primit:"
+msgstr "Rețetă:"
 
 #: lib/layouts/recipebook.layout:118
-#, fuzzy
 msgid "Ingredients"
-msgstr "Mulţumiri"
+msgstr "Ingrediente"
 
 #: lib/layouts/recipebook.layout:128
-#, fuzzy
 msgid "Ingredients:"
-msgstr "Mulţumiri"
+msgstr "Ingrediente:"
 
 #: lib/layouts/revtex4.layout:109
 msgid "Preprint"
@@ -8297,27 +8271,24 @@ msgid "LandscapeSlide"
 msgstr "LandscapeSlide"
 
 #: lib/layouts/seminar.layout:34
-#, fuzzy
 msgid "Landscape Slide:"
-msgstr "Slide Landscape"
+msgstr "Slide Mărime Landscape"
 
 #: lib/layouts/seminar.layout:40
 msgid "PortraitSlide"
-msgstr "Slide Portrai"
+msgstr "Slide Mărime Portret"
 
 #: lib/layouts/seminar.layout:43
-#, fuzzy
 msgid "Portrait Slide:"
-msgstr "Slide Portrait"
+msgstr "Slide Mărime Portret:"
 
 #: lib/layouts/seminar.layout:45
 msgid "Slide*"
-msgstr "Slide*"
+msgstr "Folie*"
 
 #: lib/layouts/seminar.layout:52
-#, fuzzy
 msgid "EndOfSlide"
-msgstr "Sfărşt de slide"
+msgstr "Sfărştdeslide"
 
 #: lib/layouts/seminar.layout:57
 msgid "SlideHeading"
@@ -8332,27 +8303,24 @@ msgid "ListOfSlides"
 msgstr "Listă de Sliduri"
 
 #: lib/layouts/seminar.layout:78
-#, fuzzy
 msgid "[List Of Slides]"
-msgstr "Listă de sliduri"
+msgstr "[Listă de sliduri]"
 
 #: lib/layouts/seminar.layout:81
 msgid "SlideContents"
 msgstr "Cuprins Slide"
 
 #: lib/layouts/seminar.layout:84
-#, fuzzy
 msgid "[Slide Contents]"
-msgstr "Cuprins Slide"
+msgstr "[Cuprins Slide]"
 
 #: lib/layouts/seminar.layout:87
 msgid "ProgressContents"
 msgstr "ProgressContents"
 
 #: lib/layouts/seminar.layout:90
-#, fuzzy
 msgid "[Progress Contents]"
-msgstr "Progresul Sumarului"
+msgstr "[Progresul Sumarului]"
 
 #: lib/layouts/siamltex.layout:107
 #: lib/layouts/theorems-order.inc:34
@@ -8362,9 +8330,8 @@ msgstr "Conjectură*"
 
 #: lib/layouts/siamltex.layout:117
 #: lib/layouts/theorems-ams-extended.module:67
-#, fuzzy
 msgid "Algorithm*"
-msgstr "Algoritm"
+msgstr "Algoritm*"
 
 #: lib/layouts/siamltex.layout:131
 msgid "AMS"
@@ -8373,52 +8340,43 @@ msgstr "AMS"
 #: lib/layouts/siamltex.layout:305
 #: lib/layouts/amsdefs.inc:194
 msgid "Subjectclass"
-msgstr "Clasificare în funcţtie de subiect"
+msgstr "Clasificare în funcţtie de topică"
 
 #: lib/layouts/siamltex.layout:308
-#, fuzzy
 msgid "AMS subject classifications:"
-msgstr "Clasificarea subiectelor AMS"
+msgstr "Clasificarea după topici AMS"
 
 #: lib/layouts/sigplanconf.layout:64
-#, fuzzy
 msgid "Conference"
-msgstr "Referinţă"
+msgstr "Conferinţă"
 
 #: lib/layouts/sigplanconf.layout:75
-#, fuzzy
 msgid "Conference:"
-msgstr "&Referinţă:"
+msgstr "Conferinţă:"
 
 #: lib/layouts/sigplanconf.layout:83
-#, fuzzy
 msgid "CopyrightYear"
-msgstr "Drepturi de autor"
+msgstr "AnulDrepturideautor"
 
 #: lib/layouts/sigplanconf.layout:86
-#, fuzzy
 msgid "Copyright year:"
-msgstr "Drepturi de autor"
+msgstr "Anul drepturi de autor:"
 
 #: lib/layouts/sigplanconf.layout:90
-#, fuzzy
 msgid "Copyrightdata"
-msgstr "Drepturi de autor"
+msgstr "Informațiidrepturideautor"
 
 #: lib/layouts/sigplanconf.layout:93
-#, fuzzy
 msgid "Copyright data:"
-msgstr "Drepturi de autor"
+msgstr "Informații drepturi de autor:"
 
 #: lib/layouts/sigplanconf.layout:136
-#, fuzzy
 msgid "Terms"
-msgstr "Teoreme"
+msgstr "Semestre"
 
 #: lib/layouts/sigplanconf.layout:139
-#, fuzzy
 msgid "Terms:"
-msgstr "Teoreme"
+msgstr "Semestre:"
 
 #: lib/layouts/simplecv.layout:55
 msgid "Topic"
@@ -8847,13 +8805,12 @@ msgid "Element:Code"
 msgstr "Element:Cod"
 
 #: lib/layouts/agu_stdtitle.inc:391
-#, fuzzy
 msgid "Element:Dscr"
-msgstr "&Poziţionare:"
+msgstr "Element:Descriere"
 
 #: lib/layouts/agu_stdtitle.inc:393
 msgid "Dscr"
-msgstr ""
+msgstr "Descriere"
 
 #: lib/layouts/agu_stdtitle.inc:403
 msgid "Element:Keyword"
@@ -8888,9 +8845,8 @@ msgid "City"
 msgstr "Oraş"
 
 #: lib/layouts/agu_stdtitle.inc:459
-#, fuzzy
 msgid "Element:State"
-msgstr "&Poziţionare:"
+msgstr "Element:Provincie/Județ"
 
 #: lib/layouts/agu_stdtitle.inc:470
 msgid "Element:Postcode"
@@ -8998,7 +8954,7 @@ msgstr "Traducător:"
 
 #: lib/layouts/amsdefs.inc:197
 msgid "2000 Mathematics Subject Classification:"
-msgstr "Clasificarea domeniilor matematice din 2000:"
+msgstr "Clasificarea topicilor matematice din 2000:"
 
 #: lib/layouts/db_stdcharstyles.inc:20
 msgid "Element:Directory"
@@ -9211,9 +9167,8 @@ msgid "\\Roman{part}"
 msgstr "\\Roman{part}"
 
 #: lib/layouts/stdinsets.inc:60
-#, fuzzy
 msgid "Marginal"
-msgstr "margine"
+msgstr "Lateral"
 
 #: lib/layouts/stdinsets.inc:61
 #: src/insets/InsetMarginal.cpp:53
@@ -9281,20 +9236,17 @@ msgid "Index"
 msgstr "Index"
 
 #: lib/layouts/stdinsets.inc:190
-#, fuzzy
 msgid "Idx"
-msgstr "Idx"
+msgstr "Index"
 
 #: lib/layouts/stdinsets.inc:214
 #: src/insets/InsetBox.cpp:143
-#, fuzzy
 msgid "Box"
-msgstr "&Contur:"
+msgstr "Contur"
 
 #: lib/layouts/stdinsets.inc:222
-#, fuzzy
 msgid "Box:Shaded"
-msgstr "F&ormă:"
+msgstr "Contur:umbrit"
 
 #: lib/layouts/stdinsets.inc:231
 #, fuzzy
@@ -9308,57 +9260,48 @@ msgstr "Scrap"
 
 #: lib/layouts/stdinsets.inc:267
 msgid "OptArg"
-msgstr ""
+msgstr "ArgumentOpțional"
 
 #: lib/layouts/stdinsets.inc:268
-#, fuzzy
 msgid "opt"
-msgstr "&Sus"
+msgstr "opțional"
 
 #: lib/layouts/stdinsets.inc:276
 #: src/frontends/qt4/GuiInfo.cpp:51
-#, fuzzy
 msgid "Info"
-msgstr "Des-face"
+msgstr "Informație"
 
 #: lib/layouts/stdinsets.inc:280
-#, fuzzy
 msgid "Info:menu"
-msgstr "minute"
+msgstr "Informație:meniu"
 
 #: lib/layouts/stdinsets.inc:292
-#, fuzzy
 msgid "Info:shortcut"
-msgstr "&Accelerator:"
+msgstr "Informație:accelerator"
 
 #: lib/layouts/stdinsets.inc:304
-#, fuzzy
 msgid "Info:shortcuts"
-msgstr "&Accelerator:"
+msgstr "Informație:acceleratoare"
 
 #: lib/layouts/stdlayouts.inc:67
 msgid "--Separator--"
 msgstr "--Separator--"
 
 #: lib/layouts/stdlayouts.inc:76
-#, fuzzy
 msgid "--- Separate Environment ---"
-msgstr "Mediu \"Gather\""
+msgstr "--- Mediu Separat ---"
 
 #: lib/layouts/stdsections.inc:14
-#, fuzzy
 msgid "Part \\thepart"
-msgstr "Parte \\Roman{part}"
+msgstr "Parte \\thepart"
 
 #: lib/layouts/stdsections.inc:39
-#, fuzzy
 msgid "Chapter \\thechapter"
-msgstr "Capitol \\arabic{chapter}"
+msgstr "Capitol \\thechapter"
 
 #: lib/layouts/stdsections.inc:40
-#, fuzzy
 msgid "Appendix \\thechapter"
-msgstr "Apendix \\Alph{chapter}"
+msgstr "Apendix \\thechapter"
 
 #: lib/layouts/svjour.inc:98
 msgid "Headnote"
@@ -9375,76 +9318,66 @@ msgstr "AutorCuprins"
 
 #: lib/layouts/svjour.inc:241
 msgid "Offprints"
-msgstr "Offprints"
+msgstr "Republicații"
 
 #: lib/layouts/svjour.inc:245
 msgid "Offprints:"
-msgstr "Offprints"
+msgstr "Republicații"
 
 #: lib/layouts/theorems-ams.inc:63
 #: lib/layouts/theorems.inc:62
-#, fuzzy
 msgid "Corollary \\thetheorem."
-msgstr "Corolariu \\arabic{theorem}"
+msgstr "Corolariu \\thetheorem"
 
 #: lib/layouts/theorems-ams.inc:75
 #: lib/layouts/theorems.inc:73
-#, fuzzy
 msgid "Lemma \\thetheorem."
-msgstr "Lemă \\arabic{theorem}"
+msgstr "Lemă \\thetheorem"
 
 #: lib/layouts/theorems-ams.inc:87
 #: lib/layouts/theorems.inc:84
-#, fuzzy
 msgid "Proposition \\thetheorem."
-msgstr "Propoziţie \\arabic{theorem}"
+msgstr "Propoziţie \\thetheorem"
 
 #: lib/layouts/theorems-ams.inc:99
 #: lib/layouts/theorems.inc:95
-#, fuzzy
 msgid "Conjecture \\thetheorem."
-msgstr "Conjectură \\arabic{theorem}"
+msgstr "Conjectură \\thetheorem"
 
 #: lib/layouts/theorems-ams.inc:111
 #: lib/layouts/theorems.inc:106
 msgid "Fact \\thetheorem."
-msgstr ""
+msgstr "Fapt \\thetheorem"
 
 #: lib/layouts/theorems-ams.inc:123
 #: lib/layouts/theorems.inc:117
-#, fuzzy
 msgid "Definition \\thetheorem."
-msgstr "Definiţie \\arabic{theorem}"
+msgstr "Definiţie \\thetheorem"
 
 #: lib/layouts/theorems-ams.inc:141
 #: lib/layouts/theorems.inc:135
-#, fuzzy
 msgid "Example \\thetheorem."
-msgstr "Exemple \\arabic{theorem}"
+msgstr "Exemplu \\thetheorem"
 
 #: lib/layouts/theorems-ams.inc:153
 #: lib/layouts/theorems.inc:147
-#, fuzzy
 msgid "Problem \\thetheorem."
-msgstr "Problemă \\arabic{theorem}"
+msgstr "Problemă \\thetheorem"
 
 #: lib/layouts/theorems-ams.inc:165
 #: lib/layouts/theorems.inc:159
-#, fuzzy
 msgid "Exercise \\thetheorem."
-msgstr "Exerciţiu @Section@.\\\\arabic{theorem}."
+msgstr "Exerciţiu \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:178
 #: lib/layouts/theorems.inc:172
-#, fuzzy
 msgid "Remark \\thetheorem."
-msgstr "Remarcă \\arabic{theorem}"
+msgstr "Remarcă \\thetheorem"
 
 #: lib/layouts/theorems-ams.inc:197
 #: lib/layouts/theorems.inc:191
-#, fuzzy
 msgid "Claim \\thetheorem."
-msgstr "Declaraţie \\arabic{theorem}"
+msgstr "Declaraţie \\thetheorem."
 
 #: lib/layouts/theorems-order.inc:46
 #: lib/layouts/theorems-starred.inc:137
@@ -9454,12 +9387,12 @@ msgstr "Exemplu*"
 #: lib/layouts/theorems-order.inc:52
 #: lib/layouts/theorems-starred.inc:149
 msgid "Problem*"
-msgstr "Problemă"
+msgstr "Problemă*"
 
 #: lib/layouts/theorems-order.inc:58
 #: lib/layouts/theorems-starred.inc:161
 msgid "Exercise*"
-msgstr "Exerciţiu"
+msgstr "Exerciţiu*"
 
 #: lib/layouts/theorems-order.inc:64
 #: lib/layouts/theorems-starred.inc:173
@@ -9481,15 +9414,15 @@ msgstr "Fapt*"
 
 #: lib/layouts/theorems-starred.inc:152
 msgid "Problem."
-msgstr "Problemă"
+msgstr "Problemă."
 
 #: lib/layouts/theorems-starred.inc:164
 msgid "Exercise."
-msgstr "Exerciţiu"
+msgstr "Exerciţiu."
 
 #: lib/layouts/theorems-starred.inc:176
 msgid "Remark."
-msgstr "Remarcă"
+msgstr "Remarcă."
 
 #: lib/layouts/braille.module:2
 msgid "Braille"
@@ -9497,12 +9430,11 @@ msgstr "Braille"
 
 #: lib/layouts/braille.module:6
 msgid "Defines an environment to typeset Braille. For more details see Braille.lyx in examples."
-msgstr ""
+msgstr "Definește un mediu pentru a dactilografia Braille. Pentru mai multe detalii folosiți Braille.lyx din dosarul ce exemple."
 
 #: lib/layouts/braille.module:22
-#, fuzzy
 msgid "Braille (default)"
-msgstr "Titlu_LaTeX"
+msgstr "Braille (implicit)"
 
 #: lib/layouts/braille.module:36
 #: lib/layouts/braille.module:59
@@ -9511,23 +9443,23 @@ msgstr "Braille:"
 
 #: lib/layouts/braille.module:45
 msgid "Braille (textsize)"
-msgstr ""
+msgstr "Braille (mărimeacaracterelor)"
 
 #: lib/layouts/braille.module:68
 msgid "Braille (dots on)"
-msgstr ""
+msgstr "Braille (punctat)"
 
 #: lib/layouts/braille.module:83
 msgid "Braille_dots_on"
-msgstr ""
+msgstr "Braille_punctat"
 
 #: lib/layouts/braille.module:92
 msgid "Braille (dots off)"
-msgstr ""
+msgstr "Braille (nepunctat)"
 
 #: lib/layouts/braille.module:107
 msgid "Braille_dots_off"
-msgstr ""
+msgstr "Braille_nepunctat"
 
 #: lib/layouts/braille.module:116
 msgid "Braille (mirror on)"
@@ -9546,14 +9478,12 @@ msgid "Braille_mirror_off"
 msgstr ""
 
 #: lib/layouts/braille.module:163
-#, fuzzy
 msgid "Braillebox"
-msgstr "linie tabulară"
+msgstr "RamăBraille"
 
 #: lib/layouts/braille.module:167
-#, fuzzy
 msgid "Braille box"
-msgstr "linie tabulară"
+msgstr "Ramă Braille"
 
 #: lib/layouts/endnotes.module:2
 #, fuzzy
@@ -9585,50 +9515,44 @@ msgstr ""
 
 #: lib/layouts/hanging.module:2
 #: lib/layouts/hanging.module:16
-#, fuzzy
 msgid "Hanging"
-msgstr "Margini"
+msgstr "Atîrnat"
 
 #: lib/layouts/hanging.module:6
 msgid "Adds an environment for hanging paragraphs. Hanging paragraph is a paragraph in which the first line is set to the left margin, but all subsequent lines are indented."
-msgstr ""
+msgstr "Adaugă un mediu pentru paragrafe atîrnate. Într-un paragraf atîrnat prima linie este aliniată la stînga, iar următoarele linii sunt incrementate."
 
 #: lib/layouts/linguistics.module:2
-#, fuzzy
 msgid "Linguistics"
-msgstr "Listă"
+msgstr "Lingvistic"
 
 #: lib/layouts/linguistics.module:7
 msgid "Defines some special environments useful for linguistics (numbered examples, glosses, semantic markup, tableau floats). See linguistics.lyx file in examples."
-msgstr ""
+msgstr "Definește niște medii folositoare lingviștilor (exemple numerotate, glosări, mascaj semantic, tabele plutitoare). Puteți studia fișierul linquistics.lyx din dosarul cu exemple."
 
 #: lib/layouts/linguistics.module:13
 msgid "Numbered Example (multiline)"
-msgstr ""
+msgstr "Exemplu numerotat (multilinie)"
 
 #: lib/layouts/linguistics.module:27
-#, fuzzy
 msgid "Example:"
-msgstr "Exemplu"
+msgstr "Exemplu:"
 
 #: lib/layouts/linguistics.module:37
 msgid "Numbered Examples (consecutive)"
-msgstr ""
+msgstr "Exemple numerotate (consecutiv)"
 
 #: lib/layouts/linguistics.module:43
-#, fuzzy
 msgid "Examples:"
-msgstr "Exemple"
+msgstr "Exemple:"
 
 #: lib/layouts/linguistics.module:48
-#, fuzzy
 msgid "Subexample"
-msgstr "Exemplu"
+msgstr "Subexemplu"
 
 #: lib/layouts/linguistics.module:54
-#, fuzzy
 msgid "Subexample:"
-msgstr "Exemplu"
+msgstr "Subxxemplu:"
 
 #: lib/layouts/linguistics.module:69
 #, fuzzy
@@ -9636,9 +9560,8 @@ msgid "Custom:Glosse"
 msgstr "Client"
 
 #: lib/layouts/linguistics.module:71
-#, fuzzy
 msgid "Glosse"
-msgstr "Închide"
+msgstr "Glosar"
 
 #: lib/layouts/linguistics.module:95
 #, fuzzy
@@ -9650,24 +9573,20 @@ msgid "Tri-Glosse"
 msgstr ""
 
 #: lib/layouts/linguistics.module:120
-#, fuzzy
 msgid "CharStyle:Expression"
-msgstr "Expresie regulară"
+msgstr "StilCaracter:Expresie"
 
 #: lib/layouts/linguistics.module:122
-#, fuzzy
 msgid "expr."
-msgstr "Format "
+msgstr "expresie"
 
 #: lib/layouts/linguistics.module:134
-#, fuzzy
 msgid "CharStyle:Concepts"
-msgstr "CenteredCaption"
+msgstr "StilCaracter:Concepte"
 
 #: lib/layouts/linguistics.module:136
-#, fuzzy
 msgid "concept"
-msgstr "Acceptă"
+msgstr "concept"
 
 #: lib/layouts/linguistics.module:148
 msgid "CharStyle:Meaning"
@@ -9679,64 +9598,56 @@ msgid "meaning"
 msgstr "Deschidere"
 
 #: lib/layouts/linguistics.module:163
-#, fuzzy
 msgid "Tableau"
 msgstr "Tabel"
 
 #: lib/layouts/linguistics.module:168
-#, fuzzy
 msgid "List of Tableaux"
-msgstr "Listă de tabele"
+msgstr "Listă de Tabele"
 
 #: lib/layouts/logicalmkup.module:2
-#, fuzzy
 msgid "Logical Markup"
-msgstr "&Global"
+msgstr "Marcaj Logic"
 
 #: lib/layouts/logicalmkup.module:5
 msgid "Defines some character styles for logical markup: noun, emph, strong, and code."
-msgstr ""
+msgstr "Definește niște stiluri de scriere pentru marcaje logice: substantiv, apăsat, puternic, și programe de calculator."
 
 #: lib/layouts/logicalmkup.module:10
 msgid "CharStyle:Noun"
-msgstr ""
+msgstr "StilText:Substantiv"
 
 #: lib/layouts/logicalmkup.module:12
-#, fuzzy
 msgid "noun"
-msgstr "nimic"
+msgstr "substantiv"
 
 #: lib/layouts/logicalmkup.module:22
 msgid "CharStyle:Emph"
-msgstr ""
+msgstr "StilText:Apăsat"
 
 #: lib/layouts/logicalmkup.module:24
-#, fuzzy
 msgid "emph"
-msgstr "Adîncime"
+msgstr "apăsat"
 
 #: lib/layouts/logicalmkup.module:33
 msgid "CharStyle:Strong"
-msgstr ""
+msgstr "StilText:Puternic"
 
 #: lib/layouts/logicalmkup.module:35
-#, fuzzy
 msgid "strong"
-msgstr "Listare"
+msgstr "puternic"
 
 #: lib/layouts/logicalmkup.module:47
 msgid "CharStyle:Code"
-msgstr ""
+msgstr "StilText:ProgrameCalculator"
 
 #: lib/layouts/logicalmkup.module:49
-#, fuzzy
 msgid "code"
-msgstr "Cod"
+msgstr "programe de calculator"
 
 #: lib/layouts/minimalistic.module:2
-#, fuzzy
 msgid "Minimalistic"
-msgstr "Minisec"
+msgstr "Minimalistic"
 
 #: lib/layouts/minimalistic.module:5
 msgid "Redefines several insets (Index, Branch, URL) as being Minimalistic."
@@ -9744,30 +9655,27 @@ msgstr ""
 
 #: lib/layouts/theorems-ams-extended.module:2
 msgid "Theorems (AMS-Extended)"
-msgstr ""
+msgstr "Theoreme (AMS-Extins)"
 
 #: lib/layouts/theorems-ams-extended.module:8
 msgid "Defines some additional theorem environments for use with the AMS theorems packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, Summary, Acknowledgement, Conclusion, Fact, Assumption, and Case, in both starred and non-starred forms."
-msgstr ""
+msgstr "Definește mediuri adiționale tip theoremă pentru a fi folosite cu pachetul the teoreme AMS. Include Criteriu, Algoritm, Axiomă, Condiție, Notă, Notație, Sumar, Concluzie, Faptă, Supoziție, și Cazuri, numerotate (fără asterisk) și nenumerotate (cu asterisk) "
 
 #: lib/layouts/theorems-ams-extended.module:37
-#, fuzzy
 msgid "Criterion \\thetheorem."
-msgstr "Criteriu \\arabic{theorem}"
+msgstr "Criteriu \\thetheorem"
 
 #: lib/layouts/theorems-ams-extended.module:44
-#, fuzzy
 msgid "Criterion*"
-msgstr "Criteriu"
+msgstr "Criteriu*"
 
 #: lib/layouts/theorems-ams-extended.module:47
 msgid "Criterion."
 msgstr "Criteriu"
 
 #: lib/layouts/theorems-ams-extended.module:59
-#, fuzzy
 msgid "Algorithm \\thetheorem."
-msgstr "Algoritm \\arabic{theorem}"
+msgstr "Algoritm \\thetheorem"
 
 #: lib/layouts/theorems-ams-extended.module:70
 msgid "Algorithm."
@@ -9775,34 +9683,31 @@ msgstr "Algoritm."
 
 #: lib/layouts/theorems-ams-extended.module:82
 msgid "Axiom \\thetheorem."
-msgstr ""
+msgstr "Axiomă \\thetheorem"
 
 #: lib/layouts/theorems-ams-extended.module:90
-#, fuzzy
 msgid "Axiom*"
-msgstr "Axiomă"
+msgstr "Axiomă*"
 
 #: lib/layouts/theorems-ams-extended.module:93
 msgid "Axiom."
-msgstr "Axiomă"
+msgstr "Axiomă."
 
 #: lib/layouts/theorems-ams-extended.module:104
-#, fuzzy
 msgid "Condition \\thetheorem."
-msgstr "Condiţie @Section@.\\\\arabic{theorem}."
+msgstr "Condiţie \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:112
 msgid "Condition*"
-msgstr "Condiţie"
+msgstr "Condiţie*"
 
 #: lib/layouts/theorems-ams-extended.module:115
 msgid "Condition."
 msgstr "Condiţie"
 
 #: lib/layouts/theorems-ams-extended.module:126
-#, fuzzy
 msgid "Note \\thetheorem."
-msgstr "Notă \\arabic{theorem}"
+msgstr "Notă \\thetheorem"
 
 #: lib/layouts/theorems-ams-extended.module:134
 msgid "Note*"
@@ -9810,39 +9715,35 @@ msgstr "Notă*"
 
 #: lib/layouts/theorems-ams-extended.module:137
 msgid "Note."
-msgstr "Notă"
+msgstr "Notă."
 
 #: lib/layouts/theorems-ams-extended.module:148
-#, fuzzy
 msgid "Notation \\thetheorem."
-msgstr "Notaţie @Section@.\\\\arabic{theorem}."
+msgstr "Notaţie \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:156
 msgid "Notation*"
-msgstr "Notaţie"
+msgstr "Notaţie*"
 
 #: lib/layouts/theorems-ams-extended.module:159
 msgid "Notation."
-msgstr "Notaţie"
+msgstr "Notaţie."
 
 #: lib/layouts/theorems-ams-extended.module:170
-#, fuzzy
 msgid "Summary \\thetheorem."
-msgstr "Sumar @Section@.\\\\arabic{theorem}."
+msgstr "Sumar \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:178
-#, fuzzy
 msgid "Summary*"
-msgstr "Sumar"
+msgstr "Sumar*"
 
 #: lib/layouts/theorems-ams-extended.module:181
 msgid "Summary."
-msgstr "Sumar"
+msgstr "Sumar."
 
 #: lib/layouts/theorems-ams-extended.module:192
-#, fuzzy
 msgid "Acknowledgement \\thetheorem."
-msgstr "Acknowledgement"
+msgstr "Acknowledgement \\thetheorem"
 
 #: lib/layouts/theorems-ams-extended.module:200
 msgid "Acknowledgement*"
@@ -9853,9 +9754,8 @@ msgid "Conclusion"
 msgstr "Concluzie"
 
 #: lib/layouts/theorems-ams-extended.module:214
-#, fuzzy
 msgid "Conclusion \\thetheorem."
-msgstr "Concluzie @Section@.\\\\arabic{theorem}."
+msgstr "Concluzie \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:222
 msgid "Conclusion*"
@@ -9870,9 +9770,8 @@ msgid "Assumption"
 msgstr "Supoziţie"
 
 #: lib/layouts/theorems-ams-extended.module:237
-#, fuzzy
 msgid "Assumption \\thetheorem."
-msgstr "Axiomă @Section@.\\\\arabic{theorem}."
+msgstr "Supoziție \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:245
 msgid "Assumption*"
@@ -9883,43 +9782,40 @@ msgid "Assumption."
 msgstr "Supoziţie"
 
 #: lib/layouts/theorems-ams.module:2
-#, fuzzy
 msgid "Theorems (AMS)"
-msgstr "Teoremă"
+msgstr "Teoreme (AMS)"
 
 #: lib/layouts/theorems-ams.module:8
 msgid "Defines theorem environments and the proof environment using the extended AMS machinery. Both numbered and unnumbered types are provided. By default, the theorems are numbered consecutively throughout the document. This can be changed by loading one of the Theorems (By ...) modules."
-msgstr ""
+msgstr "Definește medii tip teoreme și demonstrații folosind mecanismul extins al AMS. Sunt incluse atît medii numerotate cît și nenumerotate. Implicit, teoremele sunt numerotate consecutiv în cadrul documentului. Această setare se poate schimba încarcînd unul de modulele Teoreme (Pe ...)."
 
 #: lib/layouts/theorems-chap.module:2
-#, fuzzy
 msgid "Theorems (By Chapter)"
-msgstr "Teoremă"
+msgstr "Teoreme (Pe Capitol)"
 
 #: lib/layouts/theorems-chap.module:6
 msgid "Numbers theorems and the like by chapter. Use this module only with layouts that provide a chapter environment."
-msgstr ""
+msgstr "Numerotează teoremele și celelalte medii similare în cadrul capitolelor. Folosește acest modul doar cu documentele care conțin capitole."
 
 #: lib/layouts/theorems-sec.module:2
-#, fuzzy
 msgid "Theorems (By Section)"
-msgstr "Teoremă"
+msgstr "Teoreme (Pe Secțiuni)"
 
 #: lib/layouts/theorems-sec.module:5
 msgid "Numbers theorems and the like by section."
-msgstr ""
+msgstr "Numerotează teoremele și celelalte medii similare în cadrul secțiunilor."
 
 #: lib/layouts/theorems-starred.module:2
 msgid "Theorems (Starred)"
-msgstr ""
+msgstr "Teoreme (Nenumerotate)"
 
 #: lib/layouts/theorems-starred.module:6
 msgid "Defines only unnumbered theorem environments, and the proof environment, using the extended AMS machinery."
-msgstr ""
+msgstr "Definește doar medii de teoreme și demonstrații nenumerotate, folosind mașinăria extinsă a AMS."
 
 #: lib/layouts/theorems-std.module:7
 msgid "Defines some theorem environments for use with non-AMS classes. By default, the theorems are numbered consecutively throughout the document. This can be changed by loading one of the Theorems (Ordered By ...) modules."
-msgstr ""
+msgstr "Definește medii de teoreme care pot fi folosite cu documente ce nu sunt de tip AMS. Implicit, teoremele sunt numerotate consecutiv în cadrul întregului document. Această setare se poate schimba încărcînd unul din modulele Teorem (Ordonate Pe ...)."
 
 #: lib/languages:3
 #: src/Font.cpp:51
@@ -9927,7 +9823,6 @@ msgstr ""
 #: src/Font.cpp:58
 #: src/Font.cpp:63
 #: src/Font.cpp:66
-#, fuzzy
 msgid "Ignore"
 msgstr "&Ignoră"
 
@@ -9940,14 +9835,12 @@ msgid "Afrikaans"
 msgstr "African"
 
 #: lib/languages:7
-#, fuzzy
 msgid "Albanian"
-msgstr "Armenian"
+msgstr "Albaneză"
 
 #: lib/languages:8
-#, fuzzy
 msgid "English (USA)"
-msgstr "Englez"
+msgstr "Engleză (SUA)"
 
 #: lib/languages:10
 msgid "Arabic (ArabTeX)"
@@ -9963,22 +9856,20 @@ msgid "Armenian"
 msgstr "Armenian"
 
 #: lib/languages:13
-#, fuzzy
 msgid "German (Austria, old spelling)"
-msgstr "German (noua ortografie)"
+msgstr "Germană (Austriacă, ortografia veche)"
 
 #: lib/languages:14
 msgid "German (Austria)"
-msgstr ""
+msgstr "Germană (Austriacă)"
 
 #: lib/languages:15
 msgid "Indonesian"
-msgstr ""
+msgstr "Indoneziană"
 
 #: lib/languages:16
-#, fuzzy
 msgid "Malay"
-msgstr "Mail"
+msgstr "Mali"
 
 #: lib/languages:17
 msgid "Basque"
@@ -9990,63 +9881,59 @@ msgstr "Belarusă"
 
 #: lib/languages:19
 msgid "Portuguese (Brazil)"
-msgstr "Portughez (Brazilia)"
+msgstr "Portugheză (Brazilia)"
 
 #: lib/languages:20
 msgid "Breton"
 msgstr "Breton"
 
 #: lib/languages:21
-#, fuzzy
 msgid "English (UK)"
-msgstr "Englez"
+msgstr "Engleză (Marea Britanie)"
 
 #: lib/languages:22
 msgid "Bulgarian"
-msgstr "Bulgar"
+msgstr "Bulgară"
 
 #: lib/languages:23
-#, fuzzy
 msgid "English (Canada)"
-msgstr "Englez"
+msgstr "Engleză (Canada)"
 
 #: lib/languages:24
-#, fuzzy
 msgid "French (Canada)"
-msgstr "Francez (Canada)"
+msgstr "Franceză (Canada)"
 
 #: lib/languages:25
 msgid "Catalan"
 msgstr "Catalan"
 
 #: lib/languages:26
-#, fuzzy
 msgid "Chinese (simplified)"
-msgstr "Chinez (simplificat)"
+msgstr "Chineză (simplificat)"
 
 #: lib/languages:27
 msgid "Chinese (traditional)"
-msgstr "Chinez (tradiţional)"
+msgstr "Chineză (tradiţional)"
 
 #: lib/languages:28
 msgid "Croatian"
-msgstr "Croat"
+msgstr "Croată"
 
 #: lib/languages:29
 msgid "Czech"
-msgstr "Ceh"
+msgstr "Cehă"
 
 #: lib/languages:30
 msgid "Danish"
-msgstr "Danez"
+msgstr "Daneză"
 
 #: lib/languages:31
 msgid "Dutch"
-msgstr "Olandez"
+msgstr "Olandeză"
 
 #: lib/languages:32
 msgid "English"
-msgstr "Englez"
+msgstr "Engleză"
 
 #: lib/languages:34
 msgid "Esperanto"
@@ -10054,7 +9941,7 @@ msgstr "Esperanto"
 
 #: lib/languages:35
 msgid "Estonian"
-msgstr "Estonian"
+msgstr "Estoniană"
 
 #: lib/languages:37
 msgid "Farsi"
@@ -10062,24 +9949,23 @@ msgstr "Farsi"
 
 #: lib/languages:38
 msgid "Finnish"
-msgstr "Finlandez"
+msgstr "Finlandeză"
 
 #: lib/languages:40
 msgid "French"
-msgstr "Francez"
+msgstr "Franceză"
 
 #: lib/languages:41
 msgid "Galician"
-msgstr "Galic"
+msgstr "Galică"
 
 #: lib/languages:42
-#, fuzzy
 msgid "German (old spelling)"
-msgstr "German (noua ortografie)"
+msgstr "Germană (vechea ortografie)"
 
 #: lib/languages:43
 msgid "German"
-msgstr "German"
+msgstr "Germană"
 
 #: lib/languages:44
 #: lib/ui/stdtoolbars.inc:474
@@ -10089,16 +9975,16 @@ msgstr "Greacă"
 
 #: lib/languages:45
 msgid "Greek (polytonic)"
-msgstr ""
+msgstr "Greacă (polytonic)"
 
 #: lib/languages:46
 #: src/frontends/qt4/GuiSymbols.cpp:64
 msgid "Hebrew"
-msgstr "Israelian"
+msgstr "Evreică"
 
 #: lib/languages:50
 msgid "Icelandic"
-msgstr "Islanda"
+msgstr "Islandeză"
 
 #: lib/languages:52
 #, fuzzy
@@ -10107,33 +9993,31 @@ msgstr "Inserează tabel"
 
 #: lib/languages:53
 msgid "Irish"
-msgstr "Irlandez"
+msgstr "Irlandeză"
 
 #: lib/languages:54
 msgid "Italian"
-msgstr "Italian"
+msgstr "Italiană"
 
 #: lib/languages:55
 msgid "Japanese"
-msgstr "Japonez"
+msgstr "Japoneză"
 
 #: lib/languages:56
-#, fuzzy
 msgid "Japanese (CJK)"
-msgstr "Japonez"
+msgstr "Japoneză (CJK)"
 
 #: lib/languages:57
 msgid "Kazakh"
-msgstr "Cazac"
+msgstr "Cazacă"
 
 #: lib/languages:59
 msgid "Korean"
-msgstr "Corean"
+msgstr "Coreană"
 
 #: lib/languages:61
-#, fuzzy
 msgid "Latin"
-msgstr "Locaţie"
+msgstr "Latină"
 
 #: lib/languages:62
 msgid "Latvian"
@@ -10149,13 +10033,12 @@ msgid "Lower Sorbian"
 msgstr "Sîrba superioara"
 
 #: lib/languages:65
-#, fuzzy
 msgid "Hungarian"
-msgstr "Bulgar"
+msgstr "Maghiară"
 
 #: lib/languages:66
 msgid "Mongolian"
-msgstr ""
+msgstr "Mongoleză"
 
 #: lib/languages:67
 msgid "Norsk"
@@ -10238,9 +10121,8 @@ msgid "Upper Sorbian"
 msgstr "Sîrba superioara"
 
 #: lib/languages:86
-#, fuzzy
 msgid "Vietnamese"
-msgstr "Nume de fişier"
+msgstr "Vietnameză"
 
 #: lib/languages:87
 msgid "Welsh"
@@ -10252,7 +10134,7 @@ msgstr "Unicode (utf8)"
 
 #: lib/encodings:19
 msgid "Unicode (ucs-extended) (utf8x)"
-msgstr ""
+msgstr "Unicode extins (utf8x)"
 
 #: lib/encodings:23
 msgid "Armenian (ArmSCII8)"
@@ -10385,52 +10267,44 @@ msgid "Cyrillic (pt 254)"
 msgstr ""
 
 #: lib/encodings:145
-#, fuzzy
 msgid "Chinese (simplified) (EUC-CN)"
-msgstr "Chinez (simplificat)"
+msgstr "Chinezește (simplificat) (EUC-CN)"
 
 #: lib/encodings:149
-#, fuzzy
 msgid "Chinese (simplified) (GBK)"
-msgstr "Chinez (simplificat)"
+msgstr "Chinezește (simplificat) (GBK)"
 
 #: lib/encodings:153
-#, fuzzy
 msgid "Japanese (CJK) (JIS)"
-msgstr "Japonez"
+msgstr "Japoneză (CJK) (JIS)"
 
 #: lib/encodings:157
 msgid "Korean (EUC-KR)"
-msgstr ""
+msgstr "Koreană (EUC-KR)"
 
 #: lib/encodings:161
 msgid "Unicode (CJK) (utf8)"
 msgstr ""
 
 #: lib/encodings:165
-#, fuzzy
 msgid "Chinese (traditional) (EUC-TW)"
-msgstr "Chinez (tradiţional)"
+msgstr "Chinezește (tradiţional) (EUC-TW)"
 
 #: lib/encodings:169
-#, fuzzy
 msgid "Japanese (CJK) (EUC-JP)"
-msgstr "Japonez"
+msgstr "Japoneză (CJK) (EUC-JP)"
 
 #: lib/encodings:176
-#, fuzzy
 msgid "Japanese (non-CJK) (EUC-JP)"
-msgstr "Japonez"
+msgstr "Japoneză (non-CJK) (EUC-JP)"
 
 #: lib/encodings:178
-#, fuzzy
 msgid "Japanese (non-CJK) (JIS)"
-msgstr "Japonez"
+msgstr "Japoneză (non-CJK) (JIS)"
 
 #: lib/encodings:180
-#, fuzzy
 msgid "Japanese (non-CJK) (SJIS)"
-msgstr "Japonez"
+msgstr "Japoneză (non-CJK) (SJIS)"
 
 #: lib/encodings:187
 msgid "Thai (TIS 620-0)"
