@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 357
+\lyxformat 361
 \begin_document
 \begin_header
 \textclass scrbook
@@ -80,6 +80,8 @@ End
 
 \graphics default
 \default_output_format default
+\bibtex_command default
+\index_command default
 \paperfontsize 12
 \spacing single
 \use_hyperref true
@@ -105,7 +107,6 @@ End
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
-\backgroundcolor #ffffff
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -4615,18 +4616,29 @@ bye
 \end_layout
 
 \begin_layout Section
-Reverse DVI search
+Reverse DVI/PDF search
 \end_layout
 
 \begin_layout Standard
-Some DVI viewers provide the reverse DVI search feature (also called 
+Some DVI/PDF viewers
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Currently, only Skim on Mac OSX and SumatraPDF on Windows offer the reverse
+ PDF search feature.
+\end_layout
+
+\end_inset
+
+ provide the reverse search feature (also called 
 \emph on
-inverse DVI search
+inverse search
 \emph default
 ), allowing the cursor in LyX to automatically jump to the point corresponding
- to a given position in the previewed DVI file.
- A program or script will be called by the DVI viewer when initiating a
- reverse DVI search.
+ to a given position in the previewed DVI or PDF file.
+ A program or script will be called by the viewer when initiating a reverse
+ search.
  The way the search is triggered depends on the viewer (for example, 
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -4637,7 +4649,7 @@ xdvi
 
 \end_inset
 
- uses Ctrl-click, whereas 
+ uses Ctrl-click (Alt-click on Mac OSX), 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -4647,12 +4659,32 @@ yap
 
 \end_inset
 
- uses double click) but in general the program is called with two arguments,
- a filename and a line number, and, in turn, it should pass this info to
- a running instance of LyX.
- This can be done through the LyX server either by using the named pipe,
- or the unix domain socket that lyx creates in its temporary directory (this
- is the way the 
+ and 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+SumatraPDF
+\end_layout
+
+\end_inset
+
+ use double-click, whereas 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Skim
+\end_layout
+
+\end_inset
+
+ uses COMMAND-SHIFT-click), but in general the program is called with two
+ arguments, a filename and a line number, and, in turn, it should pass this
+ info to a running instance of LyX.
+ This can be done through the LyX server either by using the named pipe
+ (lyxpipe), or the unix domain socket (lyxsocket) that lyx creates in its
+ temporary directory (this is the way the 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -4666,23 +4698,13 @@ lyxclient
 \end_layout
 
 \begin_layout Standard
-The reverse DVI search feature can be enabled in LyX as follows:
+The reverse search feature can be enabled in LyX as follows:
 \end_layout
 
 \begin_layout Itemize
-The DVI file should contain suitable info (src-specials) produced either
- by using appropriate options when calling the LaTeX compiler (method 1),
- or by using the 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-srcltx
-\end_layout
-
-\end_inset
-
- package (method 2).
+The DVI or PDF file should be complemented by suitable info produced either
+ by using appropriate options when calling the LaTeX compiler (method 1,
+ DVI only), or by using an appropriate package (method 2, both DVI and PDF).
 \end_layout
 
 \begin_deeper
@@ -4691,7 +4713,15 @@ Method
 \begin_inset space ~
 \end_inset
 
-1 If you use recent texlive or miktex distributions, change the 
+1
+\begin_inset space ~
+\end_inset
+
+(DVI
+\begin_inset space ~
+\end_inset
+
+only) If you use recent texlive or miktex distributions, change the 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
@@ -4738,7 +4768,6 @@ eX (plain)->DraftDVI
 status collapsed
 
 \begin_layout Plain Layout
-Tools\SpecialChar \menuseparator
 Preferences\SpecialChar \menuseparator
 File Handling\SpecialChar \menuseparator
 Converters
@@ -4764,8 +4793,20 @@ Method
 \begin_inset space ~
 \end_inset
 
-2 As an alternative to redefining the converter (maybe because you use the
- pplatex command instead of latex for producing a DVI file), insert 
+2 Insert in the preamble of the LyX file 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+usepackage{pdfsync}
+\end_layout
+
+\end_inset
+
+ for reverse PDF search, or (as an alternative to redefining the converters)
+ 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -4777,9 +4818,54 @@ usepackage[active]{srcltx}
 
 \end_inset
 
- in the preamble of the LyX file.
+ for reverse DVI search.
+ If you want to be able to perform both DVI and PDF reverse searches, you
+ can also insert in the preamble the following lines
 \end_layout
 
+\begin_deeper
+\begin_layout LyX-Code
+
+\backslash
+usepackage{ifpdf}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+ifpdf
+\begin_inset Newline newline
+\end_inset
+
+  
+\backslash
+usepackage{pdfsync}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+else
+\begin_inset Newline newline
+\end_inset
+
+  
+\backslash
+usepackage[active]{srcltx}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+fi
+\end_layout
+
+\begin_layout Standard
+In this way, you can preview the file as either DVI or PDF (pdflatex) and
+ the right package will be used.
+\end_layout
+
+\end_deeper
 \end_deeper
 \begin_layout Itemize
 If you use 
@@ -4792,8 +4878,9 @@ xdvi
 
 \end_inset
 
-, you don't need to do anything else, as LyX already provides the necessary
- hooks for automatically using the 
+, you don't need to do anything else for performing a reverse DVI search,
+ as LyX already provides the necessary hooks for automatically using the
+ 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -4805,13 +4892,12 @@ lyxclient
 
  program.
  However, if for whatever reason you want to use the named pipe instead
- of the socket for communicating with lyx, simply change the DVI viewer
+ of the socket for communicating with LyX, simply change the DVI viewer
  in 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-Tools\SpecialChar \menuseparator
 Preferences\SpecialChar \menuseparator
 File Handling\SpecialChar \menuseparator
 File formats
@@ -4819,7 +4905,27 @@ File formats
 
 \end_inset
 
- to 
+ to
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+On Mac OSX you have to use 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+DISPLAY=:0.0 xdvi -editor 'lyxeditor.sh %f %l'
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -4875,16 +4981,11 @@ status collapsed
 
 \end_inset
 
- is the LyXServer pipe path specified in
-\begin_inset Newline newline
-\end_inset
-
-
+ is the LyXServer pipe path specified in 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-Tools\SpecialChar \menuseparator
 Preferences\SpecialChar \menuseparator
 Paths
 \end_layout
@@ -4896,9 +4997,104 @@ Paths
 
 \end_deeper
 \begin_layout Itemize
-If you use the Cygwin version of LyX and yap as a viewer, you should set
- the name of the program that communicates with LyX directly in yap as follows.
- After launching yap, choose its 
+If you use Mac OSX and MacDviX as a DVI viewer, add at the end of
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+/Applications/MacDviX_Folder/calleditor.script
+\end_layout
+
+\end_inset
+
+ the following lines:
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+/Applications/Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X.app/Contents/MacOS/lyxeditor "$2" $1
+\begin_inset Newline newline
+\end_inset
+
+exit 1
+\end_layout
+
+\begin_layout Standard
+(Modify as needed if you install LyX somewhere other than the Applications
+ folder.)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+If you use Mac OSX and Skim as a PDF viewer, you should enter 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+open -a Skim.app $$i
+\end_layout
+
+\end_inset
+
+ in the viewer setting in 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+Preferences\SpecialChar \menuseparator
+File Handling\SpecialChar \menuseparator
+File formats\SpecialChar \menuseparator
+PDF (pdflatex)
+\end_layout
+
+\end_inset
+
+, and then in 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+Skim\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+Sync
+\end_layout
+
+\end_inset
+
+ select Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X.
+\end_layout
+
+\begin_layout Itemize
+If you use the Cygwin version of LyX and yap as a DVI viewer, you should
+ set the name of the program that communicates with LyX directly in yap
+ as follows.
+ Launch yap, choose its 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
@@ -5009,7 +5205,7 @@ if "%1" == "-g" goto lyxclient
 \begin_inset Newline newline
 \end_inset
 
-bash -c 'lyxeditor.sh $(cygpath "%1") %2'
+bash -c 'lyxeditor.sh $(cygpath -a "%1") %2'
 \begin_inset Newline newline
 \end_inset
 
@@ -5021,7 +5217,7 @@ exit
 \begin_inset Newline newline
 \end_inset
 
-bash -c 'lyxclient %1 $(cygpath "%2") %3'
+bash -c 'lyxclient %1 $(cygpath -a "%2") %3'
 \end_layout
 
 \begin_layout Standard
@@ -5050,10 +5246,113 @@ lyxclient.exe
 \end_layout
 
 \end_deeper
+\begin_layout Itemize
+If you use the Cygwin version of LyX and SumatraPDF as a PDF viewer, you
+ can set the name of the program that communicates with LyX by simply launching
+ SumatraPDF as 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+SumatraPDF -inverse-search "lyxeditor.bat -g %f %l"
+\end_layout
+
+\end_inset
+
+ and then quit.
+ The program will remember the setting and using the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+-inverse-search
+\end_layout
+
+\end_inset
+
+ option will not be needed from now on (in this way you will be using the
+ lyxsocket; omit the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+-g
+\end_layout
+
+\end_inset
+
+ option if you want to use the lyxpipe and be sure that the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxeditor.sh
+\end_layout
+
+\end_inset
+
+ script is in your command PATH).
+ If SumatraPDF is not your default PDF viewer, you should enter 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+SumatraPDF.sh
+\end_layout
+
+\end_inset
+
+ in the viewer setting in 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+Preferences\SpecialChar \menuseparator
+File Handling\SpecialChar \menuseparator
+File formats\SpecialChar \menuseparator
+PDF (pdflatex)
+\end_layout
+
+\end_inset
+
+, where 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+SumatraPDF.sh
+\end_layout
+
+\end_inset
+
+ is the following script (to be placed in your command PATH, /usr/local/bin
+ being the best choice):
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+#!/bin/bash
+\begin_inset Newline newline
+\end_inset
+
+cd $(dirname $1)
+\begin_inset Newline newline
+\end_inset
+
+SumatraPDF.exe $(basename $1)
+\end_layout
+
 \begin_layout Standard
-If you did no mistakes, and if src-specials are activated as previously
- described, whenever you Ctrl-click in xdvi, or double click in yap, the
- cursor in LyX should jump to the desired location.
+This is needed because SumatraPDF is a native Windows application and does
+ not understand the posix paths used by the Cygwin version of LyX.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+If you did no mistakes and the DVI or PDF files are produced as previously
+ described, whenever you Ctrl-click (Alt-click on Mac) in xdvi, double-click
+ in yap and SumatraPDF, or COMMAND-SHIFT-click in Skim, the cursor in LyX
+ should jump to the desired location.
 \end_layout
 
 \begin_layout Chapter
