@@ -4686,7 +4686,7 @@ lyxclient
 \end_layout
 
 \begin_layout Standard
-The reverse DVI search feature can be enabled in LyX as follows:
+The reverse search feature can be enabled in LyX as follows:
 \end_layout
 
 \begin_layout Itemize
@@ -5259,12 +5259,12 @@ status collapsed
 \end_inset
 
  option will not be needed from now on (in this way you will be using the
- lyxsocket; omit the
+ lyxsocket; omit the 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
- -g
+-g
 \end_layout
 
 \end_inset
