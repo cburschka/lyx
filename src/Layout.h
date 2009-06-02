@@ -73,15 +73,17 @@ public:
 	///
 	void readSpacing(Lexer &);
 	///
-	docstring const & name() const;
+	docstring const & name() const { return name_; };
 	///
-	void setName(docstring const & n);
+	void setName(docstring const & n) { name_ = n; }
 	///
-	docstring const & obsoleted_by() const;
+	docstring const & obsoleted_by() const { return obsoleted_by_; }
 	///
-	docstring const & depends_on() const;
+	docstring const & depends_on() const { return depends_on_; }
 	///
 	std::string const & latexname() const { return latexname_; }
+	///
+	void setLatexName(std::string const & n) { latexname_ = n; }
 	///
 	docstring const & labelstring() const { return labelstring_; }
 	///
@@ -131,11 +133,6 @@ public:
 	////////////////////////////////////////////////////////////////
 	// members
 	////////////////////////////////////////////////////////////////
-	/** Is this layout the default layout for an unknown layout? If
-	 * so, its name will be displayed as xxx (unknown).
-	 */
-	bool unknown_;
-
 	/** Default font for this layout/environment.
 	    The main font for this kind of environment. If an attribute has
 	    INHERITED_*, it means that the value is specified by
@@ -235,12 +232,19 @@ public:
 	/// until it has proper support for the caption inset (JMarc)
 	static Layout * forCaption();
 
+
+private:
 	/// Name of the layout/paragraph environment
 	docstring name_;
+
 	/// LaTeX name for environment
 	std::string latexname_;
 
-private:
+	/** Is this layout the default layout for an unknown layout? If
+	 * so, its name will be displayed as xxx (unknown).
+	 */
+	bool unknown_;
+
 	/** Name of an layout that has replaced this layout.
 	    This is used to rename a layout, while keeping backward
 	    compatibility

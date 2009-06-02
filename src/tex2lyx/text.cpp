@@ -441,8 +441,8 @@ Layout * captionlayout()
 	static Layout * lay = 0;
 	if (!lay) {
 		lay = new Layout;
-		lay->name_ = from_ascii("Caption");
-		lay->latexname_ = "caption";
+		lay->setName(from_ascii("Caption"));
+		lay->setLatexName("caption");
 		lay->latextype = LATEX_COMMAND;
 		lay->optionalargs = 1;
 	}

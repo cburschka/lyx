@@ -758,30 +758,6 @@ void Layout::readSpacing(Lexer & lex)
 }
 
 
-docstring const & Layout::name() const
-{
-	return name_;
-}
-
-
-void Layout::setName(docstring const & name)
-{
-	name_ = name;
-}
-
-
-docstring const & Layout::obsoleted_by() const
-{
-	return obsoleted_by_;
-}
-
-
-docstring const & Layout::depends_on() const
-{
-	return depends_on_;
-}
-
-
 namespace {
 
 docstring const i18npreamble(Language const * lang, docstring const & templ)
