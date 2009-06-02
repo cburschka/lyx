@@ -154,7 +154,7 @@ bool ModuleList::read()
 				break;
 			string const fname = lex.getString();
 			LYXERR(Debug::TCLASS, "Filename: " << fname);
-			if (!lex.next())
+			if (!lex.next(true))
 				break;
 			string const desc = lex.getString();
 			LYXERR(Debug::TCLASS, "Description: " << desc);
