@@ -330,10 +330,10 @@ char hebrewCounter(int const n)
 
 
 
-//On the special cases, see http://mathworld.wolfram.com/RomanNumerals.html
-//and for a list of roman numerals up to and including 3999, see 
-//http://www.research.att.com/~njas/sequences/a006968.txt. (Thanks to Joost
-//for this info.)
+// On the special cases, see http://mathworld.wolfram.com/RomanNumerals.html
+// and for a list of roman numerals up to and including 3999, see 
+// http://www.research.att.com/~njas/sequences/a006968.txt. (Thanks to Joost
+// for this info.)
 docstring const romanCounter(int const n)
 {
 	static char const * const ones[9] = {
