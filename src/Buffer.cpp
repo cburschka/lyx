@@ -3191,9 +3191,7 @@ static void setLabel(Buffer const & buf, ParIterator & it)
 	}
 
 	case LABEL_ENUMERATE: {
-		// FIXME: Yes I know this is a really, really! bad solution
-		// (Lgb)
-		docstring enumcounter = from_ascii("enum");
+		docstring enumcounter = layout.counter.empty() ? from_ascii("enum") : layout.counter;
 
 		switch (par.itemdepth) {
 		case 2:
@@ -3214,31 +3212,9 @@ static void setLabel(Buffer const & buf, ParIterator & it)
 		// Maybe we have to reset the enumeration counter.
 		if (needEnumCounterReset(it))
 			counters.reset(enumcounter);
-
 		counters.step(enumcounter);
 
-		string format;
-
-		switch (par.itemdepth) {
-		case 0:
-			format = N_("\\arabic{enumi}.");
-			break;
-		case 1:
-			format = N_("(\\alph{enumii})");
-			break;
-		case 2:
-			format = N_("\\roman{enumiii}.");
-			break;
-		case 3:
-			format = N_("\\Alph{enumiv}.");
-			break;
-		default:
-			// not a valid enumdepth...
-			break;
-		}
-
-		par.params().labelString(counters.counterLabel(
-			par.translateIfPossible(from_ascii(format), bp)));
+		par.params().labelString(counters.theCounter(enumcounter));
 
 		break;
 	}

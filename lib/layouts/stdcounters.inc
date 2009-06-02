@@ -33,18 +33,22 @@ Counter subparagraph
 End
 
 Counter enumi
+	LabelString          "\arabic{enumi}."
 End
 
 Counter enumii
 	Within               enumi
+	LabelString          "\alph{enumii}."
 End
 
 Counter enumiii
 	Within               enumii
+	LabelString          "\roman{enumiii}."
 End
 
 Counter enumiv
 	Within               enumiii
+	LabelString          "\Alph{enumiv}."
 End
 
 Counter bibitem

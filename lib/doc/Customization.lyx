@@ -113,8 +113,9 @@ End
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes true
+\tracking_changes false
 \output_changes false
+\author "" 
 \author "Jean-Marc Lasgouttes" 
 \author "" 
 \end_header
@@ -151,11 +152,7 @@ type "mailto:"
 \end_inset
 
  in the subject header, and please cc the current maintainer of this file,
- Richard Heck <
-rgheck
-@
-comcast
-.net>.
+ Richard Heck <rgheck@comcast.net>.
 \end_layout
 
 \end_inset
@@ -204,9 +201,7 @@ Introduction
 This manual covers the customization features present in LyX.
  In it, we discuss issues like keyboard shortcuts, screen previewing options,
  printer options, sending commands to LyX via the LyX Server, internationalizati
-on, installing new 
-LaTeX
- classes and LyX layouts, etc.
+on, installing new LaTeX classes and LyX layouts, etc.
  We can't possibly hope to touch on everything you can change—our developers
  add new features faster than we can document them—but we will explain the
  most common customizations and hopefully point you in the right direction
@@ -219,12 +214,8 @@ status open
 
 \begin_layout Standard
 Information from previous versions of this document that now seems to be
- outdated is contained in the 
-OutDated
- branch of this document.
- By default, this information will not appear in the 
-LaTeX
- output.
+ outdated is contained in the OutDated branch of this document.
+ By default, this information will not appear in the LaTeX output.
 \end_layout
 
 \end_inset
@@ -263,7 +254,6 @@ on files; the user directory is where you can place your modified versions.
 status collapsed
 
 \begin_layout Plain Layout
-
 LyXDir
 \end_layout
 
@@ -274,7 +264,6 @@ LyXDir
 status collapsed
 
 \begin_layout Plain Layout
-
 UserDir
 \end_layout
 
@@ -290,7 +279,6 @@ What's in
 status collapsed
 
 \begin_layout Plain Layout
-
 LyXDir
 \end_layout
 
@@ -304,7 +292,6 @@ LyXDir
 status collapsed
 
 \begin_layout Plain Layout
-
 LyXDir
 \end_layout
 
@@ -332,7 +319,6 @@ Preferences
 status collapsed
 
 \begin_layout Plain Layout
-
 LyXDir
 \end_layout
 
@@ -353,7 +339,6 @@ The files, which are to be found in
 status collapsed
 
 \begin_layout Plain Layout
-
 UserDir
 \end_layout
 
@@ -385,8 +370,7 @@ lyxrc.defaults
 status collapsed
 
 \begin_layout Plain Layout
-packages.
-lst
+packages.lst
 \end_layout
 
 \end_inset
@@ -399,9 +383,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Help\SpecialChar \menuseparator
-
 LaTeX
-
 \begin_inset space ~
 \end_inset
 
@@ -419,10 +401,7 @@ Configuration
 status collapsed
 
 \begin_layout Plain Layout
-
-textclass
-.
-lst
+textclass.lst
 \end_layout
 
 \end_inset
@@ -437,9 +416,8 @@ layout/
 
 \end_inset
 
- directories, along with the associated 
-LaTeX
- document class and their description.
+ directories, along with the associated LaTeX document class and their descripti
+on.
 \end_layout
 
 \begin_layout Labeling
@@ -448,10 +426,7 @@ LaTeX
 status collapsed
 
 \begin_layout Plain Layout
-
-lyxmodules
-.
-lst
+lyxmodules.lst
 \end_layout
 
 \end_inset
@@ -475,15 +450,12 @@ layout/
 status collapsed
 
 \begin_layout Plain Layout
-*files.
-lst
+*files.lst
 \end_layout
 
 \end_inset
 
- lists of various sorts of 
-LaTeX
--related files found on your system
+ lists of various sorts of LaTeX-related files found on your system
 \end_layout
 
 \begin_layout Labeling
@@ -492,9 +464,7 @@ LaTeX
 status collapsed
 
 \begin_layout Plain Layout
-doc/
-LaTeXConfig
-.lyx
+doc/LaTeXConfig.lyx
 \end_layout
 
 \end_inset
@@ -504,17 +474,13 @@ LaTeXConfig
 status collapsed
 
 \begin_layout Plain Layout
-
-LaTeXConfig
-.lyx.in
+LaTeXConfig.lyx.in
 \end_layout
 
 \end_inset
 
 .
- It contains information on your 
-LaTeX
- configuration.
+ It contains information on your LaTeX configuration.
 \end_layout
 
 \begin_layout Subsection
@@ -527,7 +493,6 @@ These directories are duplicated between
 status collapsed
 
 \begin_layout Plain Layout
-
 LyXDir
 \end_layout
 
@@ -538,7 +503,6 @@ LyXDir
 status collapsed
 
 \begin_layout Plain Layout
-
 UserDir
 \end_layout
 
@@ -550,7 +514,6 @@ UserDir
 status collapsed
 
 \begin_layout Plain Layout
-
 UserDir
 \end_layout
 
@@ -580,9 +543,7 @@ status collapsed
 
 \end_inset
 
- that define the 
-keybindings
- used in LyX.
+ that define the keybindings used in LyX.
  If there exists an internationalized version of the bind file named 
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -602,9 +563,7 @@ $LANG_xxx.bind
 status collapsed
 
 \begin_layout Plain Layout
-
-clipart
-/
+clipart/
 \end_layout
 
 \end_inset
@@ -630,17 +589,13 @@ doc/
 status collapsed
 
 \begin_layout Plain Layout
-
-LaTeXConfig
-.lyx
+LaTeXConfig.lyx
 \end_layout
 
 \end_inset
 
  deserves special attention, as noted above.
- The internationalized help docs are in 
-subdirectories
- 
+ The internationalized help docs are in subdirectories 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -730,16 +685,12 @@ Document
 status collapsed
 
 \begin_layout Plain Layout
-
-kbd
-/
+kbd/
 \end_layout
 
 \end_inset
 
- contains keyboard 
-keymapping
- files.
+ contains keyboard keymapping files.
  See Chapter
 \begin_inset space ~
 \end_inset
@@ -785,7 +736,6 @@ reference "cha:Installing-New-Document"
 status collapsed
 
 \begin_layout Plain Layout
-
 lyx2lyx
 \end_layout
 
@@ -796,7 +746,6 @@ lyx2lyx
 status collapsed
 
 \begin_layout Plain Layout
-
 lyx2lyx
 \end_layout
 
@@ -867,9 +816,7 @@ reference "sec:Creating-Templates"
 status collapsed
 
 \begin_layout Plain Layout
-
-ui
-/
+ui/
 \end_layout
 
 \end_inset
@@ -879,8 +826,7 @@ ui
 status collapsed
 
 \begin_layout Plain Layout
-.
-ui
+.ui
 \end_layout
 
 \end_inset
@@ -935,17 +881,12 @@ LyX
 status collapsed
 
 \begin_layout Plain Layout
-
-chkconfig
-.
-ltx
+chkconfig.ltx
 \end_layout
 
 \end_inset
 
- this is a 
-LaTeX
- script used during the configuration process.
+ this is a LaTeX script used during the configuration process.
  Do not run directly.
 \end_layout
 
@@ -955,8 +896,7 @@ LaTeX
 status collapsed
 
 \begin_layout Plain Layout
-configure.
-py
+configure.py
 \end_layout
 
 \end_inset
@@ -975,15 +915,13 @@ Other files needing a line or two...
 status collapsed
 
 \begin_layout Plain Layout
-
 encodings
 \end_layout
 
 \end_inset
 
- this contains tables describing how different character 
-encodings
- can be mapped to Unicode
+ this contains tables describing how different character encodings can be
+ mapped to Unicode
 \end_layout
 
 \begin_layout Labeling
@@ -1040,7 +978,6 @@ Even if you are using LyX as an unprivileged user, you might want to change
 status collapsed
 
 \begin_layout Plain Layout
-
 UserDir
 \end_layout
 
@@ -1076,7 +1013,6 @@ LyX
 status collapsed
 
 \begin_layout Plain Layout
-
 LyXDir
 \end_layout
 
@@ -1087,7 +1023,6 @@ LyXDir
 status collapsed
 
 \begin_layout Plain Layout
-
 UserDir
 \end_layout
 
@@ -1098,7 +1033,6 @@ UserDir
 status collapsed
 
 \begin_layout Plain Layout
-
 LyXDir
 \end_layout
 
@@ -1141,7 +1075,6 @@ preferences
 status collapsed
 
 \begin_layout Plain Layout
-
 UserDir
 \end_layout
 
@@ -1167,8 +1100,7 @@ Reconfigure
 status collapsed
 
 \begin_layout Plain Layout
-configure.
-py
+configure.py
 \end_layout
 
 \end_inset
@@ -1181,9 +1113,7 @@ py
 status collapsed
 
 \begin_layout Plain Layout
-
-UserDir
-/layouts
+UserDir/layouts
 \end_layout
 
 \end_inset
@@ -1210,9 +1140,7 @@ If you get some updated documentation from LyX ftp site and cannot install
 status collapsed
 
 \begin_layout Plain Layout
-
-UserDir
-/doc/
+UserDir/doc/
 \end_layout
 
 \end_inset
@@ -1249,8 +1177,7 @@ Invoking LyX with the command line switch
 status collapsed
 
 \begin_layout Plain Layout
--
-userdir
+-userdir
 \end_layout
 
 \end_inset
@@ -1266,8 +1193,7 @@ userdir
 status collapsed
 
 \begin_layout Plain Layout
--
-userdir
+-userdir
 \end_layout
 
 \end_inset
@@ -1283,10 +1209,7 @@ userdir
 status collapsed
 
 \begin_layout Plain Layout
-LYX_
-USERDIR
-_
-VER
+LYX_USERDIR_VER
 \end_layout
 
 \end_inset
@@ -1301,9 +1224,7 @@ Having several configurations also requires more maintenance: if you want
 status collapsed
 
 \begin_layout Plain Layout
-
-NewUserDir
-/layouts
+NewUserDir/layouts
 \end_layout
 
 \end_inset
@@ -1311,15 +1232,10 @@ NewUserDir
  which you want available from all your configurations, you must add it
  to each directory separately.
  You can avoid this with the following trick: after LyX creates the additional
- directory, most of the 
-subdirectories
- (see above) are empty.
+ directory, most of the subdirectories (see above) are empty.
  If you want the new configuration to mirror an existing one, replace the
- empty 
-subdirectory
- with a symbolic link to the matching 
-subdirectory
- in the existing configuration.
+ empty subdirectory with a symbolic link to the matching subdirectory in
+ the existing configuration.
  Take care with the 
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -1330,10 +1246,8 @@ doc/
 
 \end_inset
 
- 
-subdirectory
-, however, since it contains a file written by the configuration script
- (also accessible through 
+ subdirectory, however, since it contains a file written by the configuration
+ script (also accessible through 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
@@ -1498,7 +1412,6 @@ Editor
 status collapsed
 
 \begin_layout Plain Layout
-
 Ghostview
 \end_layout
 
@@ -1585,7 +1498,6 @@ View
 status collapsed
 
 \begin_layout Plain Layout
-
 png
 \end_layout
 
@@ -1597,7 +1509,6 @@ png
 status collapsed
 
 \begin_layout Plain Layout
-
 pdf
 \end_layout
 
@@ -1624,7 +1535,6 @@ Vector graphics format
 status collapsed
 
 \begin_layout Plain Layout
-
 pdflatex
 \end_layout
 
@@ -1636,7 +1546,6 @@ pdflatex
 status collapsed
 
 \begin_layout Plain Layout
-
 pdf
 \end_layout
 
@@ -1647,7 +1556,6 @@ pdf
 status collapsed
 
 \begin_layout Plain Layout
-
 png
 \end_layout
 
@@ -1658,7 +1566,6 @@ png
 status collapsed
 
 \begin_layout Plain Layout
-
 jpg
 \end_layout
 
@@ -1669,7 +1576,6 @@ jpg
 status collapsed
 
 \begin_layout Plain Layout
-
 pdflatex
 \end_layout
 
@@ -1681,7 +1587,6 @@ pdflatex
 status collapsed
 
 \begin_layout Plain Layout
-
 pdf
 \end_layout
 
@@ -1692,7 +1597,6 @@ pdf
 status collapsed
 
 \begin_layout Plain Layout
-
 png
 \end_layout
 
@@ -1703,7 +1607,6 @@ png
 status collapsed
 
 \begin_layout Plain Layout
-
 jpg
 \end_layout
 
@@ -1714,7 +1617,6 @@ jpg
 status collapsed
 
 \begin_layout Plain Layout
-
 pdf
 \end_layout
 
@@ -1725,7 +1627,6 @@ pdf
 status collapsed
 
 \begin_layout Plain Layout
-
 png
 \end_layout
 
@@ -1832,18 +1733,11 @@ $$l
 
 \end_inset
 
- The `
-LaTeX
- 
-name'
+ The `LaTeX name'
 \end_layout
 
 \begin_layout Standard
-The latter should be the 
-filename
- as it would be used in a 
-LaTeX's
- 
+The latter should be the filename as it would be used in a LaTeX's 
 \series bold
 
 \backslash
@@ -1855,16 +1749,13 @@ include
 
 \begin_layout Standard
 Copiers can be used to do almost anything with output files.
- For example, suppose you want generated 
-pdf
- files to be copied to a special directory, 
+ For example, suppose you want generated pdf files to be copied to a special
+ directory, 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-/home/you/
-pdf
-/
+/home/you/pdf/
 \end_layout
 
 \end_inset
@@ -1905,9 +1796,7 @@ Save it in your local LyX directory—say,
 status collapsed
 
 \begin_layout Plain Layout
-/home/you/.lyx/scripts/
-pdfcopier
-.sh
+/home/you/.lyx/scripts/pdfcopier.sh
 \end_layout
 
 \end_inset
@@ -1940,25 +1829,17 @@ File formats
 status collapsed
 
 \begin_layout Plain Layout
-
-PDF
-(
-pdflatex
-)
+PDF(pdflatex)
 \end_layout
 
 \end_inset
 
- format—or one of the other 
-pdf
- formats—and enter 
+ format—or one of the other pdf formats—and enter 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-
-pdfcopier
-.sh $$i $$o
+pdfcopier.sh $$i $$o
 \end_layout
 
 \end_inset
@@ -2008,9 +1889,8 @@ HTML
  When these formats are exported, the copier sees that not just the main
  HTML file but various associated files (style files, images, etc.) are also
  copied.
- All these files are written to a 
-subdirectory
- of the directory in which the original LyX file was found.
+ All these files are written to a subdirectory of the directory in which
+ the original LyX file was found.
 \begin_inset Foot
 status collapsed
 
@@ -2044,7 +1924,6 @@ This copier can be customized.
 status collapsed
 
 \begin_layout Plain Layout
-
 LyXconv
 \end_layout
 
@@ -2059,9 +1938,7 @@ LyXconv
 status collapsed
 
 \begin_layout Plain Layout
-/path/to/
-filename
-.lyx
+/path/to/filename.lyx
 \end_layout
 
 \end_inset
@@ -2071,12 +1948,7 @@ filename
 status collapsed
 
 \begin_layout Plain Layout
-/path/to/
-filename
-.
-html
-.
-LyXconv
+/path/to/filename.html.LyXconv
 \end_layout
 
 \end_inset
@@ -2216,9 +2088,7 @@ $$b
 
 \end_inset
 
- The base 
-filename
- of the input file (i.
+ The base filename of the input file (i.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -2283,12 +2153,8 @@ latex
 
 \end_inset
 
- This converter runs some form of 
-LaTeX
-.
- This will make LyX's 
-LaTeX
- error logs available.
+ This converter runs some form of LaTeX.
+ This will make LyX's LaTeX error logs available.
 \end_layout
 
 \begin_layout Labeling
@@ -2297,15 +2163,12 @@ LaTeX
 status collapsed
 
 \begin_layout Plain Layout
-
 needaux
 \end_layout
 
 \end_inset
 
- Needs the 
-LaTeX
- 
+ Needs the LaTeX 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
@@ -2324,7 +2187,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 xml
 \end_layout
 
@@ -2362,7 +2224,6 @@ value
 status collapsed
 
 \begin_layout Plain Layout
-
 parselog
 \end_layout
 
@@ -2373,9 +2234,7 @@ parselog
 status collapsed
 
 \begin_layout Plain Layout
-
-infile
-.out
+infile.out
 \end_layout
 
 \end_inset
@@ -2385,11 +2244,7 @@ infile
 status collapsed
 
 \begin_layout Plain Layout
-script < 
-infile
-.out > 
-infile
-.log
+script < infile.out > infile.log
 \end_layout
 
 \end_inset
@@ -2414,7 +2269,6 @@ $$s
 status collapsed
 
 \begin_layout Plain Layout
-
 resultdir
 \end_layout
 
@@ -2439,11 +2293,7 @@ $$b
 \begin_inset Newline newline
 \end_inset
 
-Note that 
-resultdir
- and 
-usetempdir
- make no sense together.
+Note that resultdir and usetempdir make no sense together.
  The latter will be ignored if the former is given.
 \end_layout
 
@@ -2453,7 +2303,6 @@ usetempdir
 status collapsed
 
 \begin_layout Plain Layout
-
 resultfile
 \end_layout
 
@@ -2470,11 +2319,8 @@ $$b
 \end_inset
 
 .
- Sensible only with 
-resultdir
- and optional even then; if not given, it defaults to `
-index'
-.
+ Sensible only with resultdir and optional even then; if not given, it defaults
+ to `index'.
 \end_layout
 
 \begin_layout Standard
@@ -2486,34 +2332,21 @@ None of these last three are presently used in any of the converters that
 \begin_layout Standard
 You do not have to define converters for all formats between which you want
  to convert.
- For example, you will note that there is no `LyX to 
-PostScript'
- converter, but LyX will export PostScript.
- It does so by first creating a 
-LaTeX
- file (no converter needs to be defined for this) which is then converted
- to DVI using the `
-LaTeX
- to 
-DVI'
- converter, and finally converting the resulting DVI file to PostScript.
- LyX finds such `
-chains'
- of converters automatically, and it will always choose the shortest possible
- chain.
+ For example, you will note that there is no `LyX to PostScript' converter,
+ but LyX will export PostScript.
+ It does so by first creating a LaTeX file (no converter needs to be defined
+ for this) which is then converted to DVI using the `LaTeX to DVI' converter,
+ and finally converting the resulting DVI file to PostScript.
+ LyX finds such `chains' of converters automatically, and it will always
+ choose the shortest possible chain.
  You can, though, still define multiple conversion methods between file
  formats.
  For example, the standard LyX configuration provides three ways to convert
- 
-LaTeX
- to 
-PDF
-: Directly, using 
+ LaTeX to PDF: Directly, using 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-
 pdflatex
 \end_layout
 
@@ -2524,7 +2357,6 @@ pdflatex
 status collapsed
 
 \begin_layout Plain Layout
-
 ps2pdf
 \end_layout
 
@@ -2535,7 +2367,6 @@ ps2pdf
 status collapsed
 
 \begin_layout Plain Layout
-
 dvipdfm
 \end_layout
 
@@ -2543,9 +2374,7 @@ dvipdfm
 
 .
  To define such alternate chains, you must define multiple target `file
- 
-formats'
-, as described in section 
+ formats', as described in section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Formats"
@@ -2558,7 +2387,6 @@ reference "sec:Formats"
 status collapsed
 
 \begin_layout Plain Layout
-
 pdf
 \end_layout
 
@@ -2569,7 +2397,6 @@ pdf
 status collapsed
 
 \begin_layout Plain Layout
-
 pdf2
 \end_layout
 
@@ -2580,7 +2407,6 @@ pdf2
 status collapsed
 
 \begin_layout Plain Layout
-
 pdf3
 \end_layout
 
@@ -2591,8 +2417,7 @@ pdf3
 status collapsed
 
 \begin_layout Plain Layout
-.
-pdf
+.pdf
 \end_layout
 
 \end_inset
@@ -2672,7 +2497,6 @@ LyX uses the GNU
 status collapsed
 
 \begin_layout Plain Layout
-
 gettext
 \end_layout
 
@@ -2685,7 +2509,6 @@ gettext
 status collapsed
 
 \begin_layout Plain Layout
-
 po
 \end_layout
 
@@ -2719,7 +2542,6 @@ mo
 status collapsed
 
 \begin_layout Plain Layout
-
 gettext
 \end_layout
 
@@ -2729,9 +2551,8 @@ gettext
  It is possible to do this just for yourself, but if you're going to do
  it, you might as well share the results of your labors with the rest of
  the LyX community.
- Send a message to the LyX 
-developers'
- list for more information about how to proceed.
+ Send a message to the LyX developers' list for more information about how
+ to proceed.
 \end_layout
 
 \begin_layout Standard
@@ -2767,8 +2588,7 @@ lyx.pot
 status collapsed
 
 \begin_layout Plain Layout
-**.
-po
+**.po
 \end_layout
 
 \end_inset
@@ -2779,8 +2599,7 @@ po
 status collapsed
 
 \begin_layout Plain Layout
-xx.
-po
+xx.po
 \end_layout
 
 \end_inset
@@ -2806,9 +2625,8 @@ make lyx.pot
 
 \end_inset
 
- in that directory, or you can use an existing 
-po
--file for some other language as a template).
+ in that directory, or you can use an existing po-file for some other language
+ as a template).
 \end_layout
 
 \begin_layout Itemize
@@ -2817,8 +2635,7 @@ Edit
 status collapsed
 
 \begin_layout Plain Layout
-xx.
-po
+xx.po
 \end_layout
 
 \end_inset
@@ -2838,21 +2655,16 @@ Poedit
 \family typewriter
 KBabel
 \family default
- (for 
-KDE
-).
+ (for KDE).
  
 \family typewriter
 Emacs
 \family default
- contains a `
-mode'
- for editing 
+ contains a `mode' for editing 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-
 po
 \end_layout
 
@@ -2873,7 +2685,6 @@ po
 status collapsed
 
 \begin_layout Plain Layout
-
 po
 \end_layout
 
@@ -2904,10 +2715,7 @@ xx.mo
 status collapsed
 
 \begin_layout Plain Layout
-
-msgfmt
- -o xx.mo < xx.
-po
+msgfmt -o xx.mo < xx.po
 \end_layout
 
 \end_inset
@@ -2970,7 +2778,6 @@ As said, however, it would be best if the new
 status collapsed
 
 \begin_layout Plain Layout
-
 po
 \end_layout
 
@@ -2978,9 +2785,8 @@ po
 
 -file could be added to the LyX distribution, so others can use it.
  Adding it involves making additional changes to LyX.
- So send an email to the 
-developers'
- mailing list if you're interested in doing that.
+ So send an email to the developers' mailing list if you're interested in
+ doing that.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3022,7 +2828,6 @@ to
 status collapsed
 
 \begin_layout Plain Layout
-
 gettext
 \end_layout
 
@@ -3045,11 +2850,7 @@ To
 status collapsed
 
 \begin_layout Plain Layout
-To[[as in 
-'From
- format x to format 
-y'
-]]
+To[[as in 'From format x to format y']]
 \end_layout
 
 \end_inset
@@ -3059,11 +2860,7 @@ y'
 status collapsed
 
 \begin_layout Plain Layout
-To[[as in 
-'From
- page x to page 
-y'
-]].
+To[[as in 'From page x to page y']].
 \end_layout
 
 \end_inset
@@ -3083,7 +2880,6 @@ To
 status collapsed
 
 \begin_layout Plain Layout
-
 gettext
 \end_layout
 
@@ -6160,7 +5956,7 @@ Settings
 
 .
  
-\change_inserted 0 1243500588
+\change_inserted 1 1243500588
 
 \end_layout
 
@@ -6180,14 +5976,14 @@ The list of such packages is documented only in the source code.
 
  LyX will not check for arbitrary packages.
 
-\change_inserted 0 1243500694
+\change_inserted 1 1243500694
  It is also possible to use the form 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1243500706
+\change_inserted 1 1243500706
 from->to
 \end_layout
 
@@ -7527,19 +7323,19 @@ OutputType
  A string indicating what sort of output documents using this class will
  produce.
  At present, the options are: `docbook', `latex', and `literate'.
-\change_inserted 0 1243500198
+\change_inserted 1 1243500198
 
 \end_layout
 
 \begin_layout Description
 
-\change_inserted 0 1243500505
+\change_inserted 1 1243500505
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1243500208
+\change_inserted 1 1243500208
 OutputFormat
 \end_layout
 
@@ -7553,7 +7349,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1243500394
+\change_inserted 1 1243500394
 OutputType
 \end_layout
 
@@ -7567,7 +7363,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1243500473
+\change_inserted 1 1243500473
 OutputType
 \end_layout
 
@@ -8528,6 +8324,96 @@ block
 status collapsed
 
 \begin_layout Plain Layout
+BabelPreamble
+\end_layout
+
+\end_inset
+
+ Language dependent information to be included in the LaTeX preamble when
+ this style is used.
+ Note that this will completely override any prior 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+BabelPreamble
+\end_layout
+
+\end_inset
+
+ declarations.
+ Must end with 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+EndBabelPreamble
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ The contents of this tag will occur once in the LaTeX preamble for each
+ language used by the document.
+ Each time, the following substitutions are made:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+$$lang
+\end_layout
+
+\end_inset
+
+ is replaced by the language name (as used by the babel package).
+\end_layout
+
+\begin_layout Itemize
+The 
+\begin_inset Quotes eld
+\end_inset
+
+Function
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+_()
+\end_layout
+
+\end_inset
+
+ replaces its argument by the translation of the argument to the current
+ language.
+\end_layout
+
+\begin_layout Standard
+This preamble snippet will only be used if the document contains more than
+ one language and the babel package is used.
+\end_layout
+
+\end_deeper
+\begin_layout Description
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 BottomSep
 \end_layout
 
@@ -9062,282 +8948,6 @@ FreeSpacing
 status collapsed
 
 \begin_layout Plain Layout
-BabelPreamble
-\end_layout
-
-\end_inset
-
- Language dependent information to be included in the LaTeX preamble when
- this style is used.
- Note that this will completely override any prior 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-BabelPreamble
-\end_layout
-
-\end_inset
-
- declarations.
- Must end with 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-EndBabelPreamble
-\end_layout
-
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
-.
- The contents of this tag will occur once in the LaTeX preamble for each
- language used by the document.
- Each time, the following substitutions are made:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-$$lang
-\end_layout
-
-\end_inset
-
- is replaced by the language name (as used by the babel package).
-\end_layout
-
-\begin_layout Itemize
-The 
-\begin_inset Quotes eld
-\end_inset
-
-Function
-\begin_inset Quotes erd
-\end_inset
-
- 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-_()
-\end_layout
-
-\end_inset
-
- replaces its argument by the translation of the argument to the current
- language.
-\end_layout
-
-\begin_layout Standard
-This preamble snippet will only be used if the document contains more than
- one language and the babel package is used.
-\end_layout
-
-\end_deeper
-\begin_layout Description
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-LangPreamble
-\end_layout
-
-\end_inset
-
- Like 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-BabelPreamble
-\end_layout
-
-\end_inset
-
-, but this preamble snippet occurs independently from the babel package,
- and only for the document language.
- Must end with 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-EndLangPreamble
-\end_layout
-
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
-.
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-If the style defines text that appears in the typeset document, it may use
- 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-LangPreamble
-\end_layout
-
-\end_inset
-
- and 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-BabelPreamble
-\end_layout
-
-\end_inset
-
- to support non-english and even multilanguage documents correctly.
- The following excerpt (from the 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-theorems-ams.inc
-\end_layout
-
-\end_inset
-
- file) shows how this works:
-\end_layout
-
-\begin_layout LyX-Code
-Preamble
-\end_layout
-
-\begin_layout LyX-Code
-  
-\backslash
-theoremstyle{remark}
-\end_layout
-
-\begin_layout LyX-Code
-  
-\backslash
-newtheorem{claim}[thm]{
-\backslash
-protect
-\backslash
-claimname}
-\end_layout
-
-\begin_layout LyX-Code
-EndPreamble
-\end_layout
-
-\begin_layout LyX-Code
-LangPreamble
-\end_layout
-
-\begin_layout LyX-Code
-  
-\backslash
-providecommand{
-\backslash
-claimname}{_(Claim)}
-\end_layout
-
-\begin_layout LyX-Code
-
-\end_layout
-
-\begin_layout LyX-Code
-EndLangPreamble
-\end_layout
-
-\begin_layout LyX-Code
-BabelPreamble
-\end_layout
-
-\begin_layout LyX-Code
-    
-\backslash
-addto
-\backslash
-captions$$lang{
-\backslash
-renewcommand{
-\backslash
-claimname}{_(Claim)}}
-\end_layout
-
-\begin_layout LyX-Code
-EndBabelPreamble
-\end_layout
-
-\begin_layout Standard
-The key to correct translation of the user visible text is the definition
- of the command 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-claimname
-\end_layout
-
-\end_inset
-
- in the language preamble.
- This command holds the name of the theorem that will appear in the output.
- The 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-BabelPreamble
-\end_layout
-
-\end_inset
-
- then uses the commands offered by the babel package to redefine 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-claimname
-\end_layout
-
-\end_inset
-
- for each used language in multilanguage documents.
-\end_layout
-
-\end_deeper
-\begin_layout Description
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
 InnerTag
 \end_layout
 
@@ -9561,20 +9171,21 @@ string=""
 \begin_inset Newline newline
 \end_inset
 
-The name of the counter for automatic numbering (see Section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Counters"
-
+The name of the counter for automatic numbering.
+ 
+\begin_inset Newline newline
 \end_inset
 
- for details).
- This must be given if 
+This 
+\emph on
+must
+\emph default
+ be given if 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-Labeltype
+LabelType
 \end_layout
 
 \end_inset
@@ -9590,6 +9201,108 @@ Counter
 \end_inset
 
 .
+ In that case, the counter will be stepped each time the layout appears.
+ 
+\begin_inset Newline newline
+\end_inset
+
+This 
+\emph on
+may
+\emph default
+ also be given if 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+LabelType
+\end_layout
+
+\end_inset
+
+ is 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Enumerate
+\end_layout
+
+\end_inset
+
+, though this case is a bit complicated.
+ Suppose you declare 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+LabelCounter myenum
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Then the actual counters used are 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+myenumi
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+myenumii
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+myenumiii
+\end_layout
+
+\end_inset
+
+, and 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+myenumiv
+\end_layout
+
+\end_inset
+
+, much as in LaTeX.
+ These counters must all be declared separately.
+\begin_inset Newline newline
+\end_inset
+
+See Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Counters"
+
+\end_inset
+
+ for details on counters.
 \end_layout
 
 \begin_layout Description
@@ -10094,6 +9807,192 @@ LatexType BibEnvironment
 \end_inset
 
 .
+\end_layout
+
+\end_deeper
+\begin_layout Description
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+LangPreamble
+\end_layout
+
+\end_inset
+
+ Like 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+BabelPreamble
+\end_layout
+
+\end_inset
+
+, but this preamble snippet occurs independently from the babel package,
+ and only for the document language.
+ Must end with 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+EndLangPreamble
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+If the style defines text that appears in the typeset document, it may use
+ 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+LangPreamble
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+BabelPreamble
+\end_layout
+
+\end_inset
+
+ to support non-english and even multilanguage documents correctly.
+ The following excerpt (from the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+theorems-ams.inc
+\end_layout
+
+\end_inset
+
+ file) shows how this works:
+\end_layout
+
+\begin_layout LyX-Code
+Preamble
+\end_layout
+
+\begin_layout LyX-Code
+  
+\backslash
+theoremstyle{remark}
+\end_layout
+
+\begin_layout LyX-Code
+  
+\backslash
+newtheorem{claim}[thm]{
+\backslash
+protect
+\backslash
+claimname}
+\end_layout
+
+\begin_layout LyX-Code
+EndPreamble
+\end_layout
+
+\begin_layout LyX-Code
+LangPreamble
+\end_layout
+
+\begin_layout LyX-Code
+  
+\backslash
+providecommand{
+\backslash
+claimname}{_(Claim)}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+EndLangPreamble
+\end_layout
+
+\begin_layout LyX-Code
+BabelPreamble
+\end_layout
+
+\begin_layout LyX-Code
+    
+\backslash
+addto
+\backslash
+captions$$lang{
+\backslash
+renewcommand{
+\backslash
+claimname}{_(Claim)}}
+\end_layout
+
+\begin_layout LyX-Code
+EndBabelPreamble
+\end_layout
+
+\begin_layout Standard
+The key to correct translation of the user visible text is the definition
+ of the command 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+claimname
+\end_layout
+
+\end_inset
+
+ in the language preamble.
+ This command holds the name of the theorem that will appear in the output.
+ The 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+BabelPreamble
+\end_layout
+
+\end_inset
+
+ then uses the commands offered by the babel package to redefine 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+claimname
+\end_layout
+
+\end_inset
+
+ for each used language in multilanguage documents.
 \end_layout
 
 \end_deeper

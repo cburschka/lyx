@@ -43,8 +43,8 @@ Style Enumerate
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Enumerate
+	LabelCounter          "enum"
 End
-
 
 Style Description
 	Category              List

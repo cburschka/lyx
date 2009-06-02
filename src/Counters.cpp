@@ -435,6 +435,7 @@ docstring Counters::theCounter(docstring const & counter) const
 	CounterList::const_iterator it = counterList_.find(counter); 
 	if (it == counterList_.end())
 		return from_ascii("??");
+	// FIXME: this should get translated.
 	return counterLabel(it->second.flatLabelString(appendix()));
 }
 
