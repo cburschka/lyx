@@ -1,3 +1,20 @@
+What's new in version 1.6.3?
+-------------------------------
+
+This is the third maintenance release in the 1.6.x series. Besides the usual
+improvements of stability, the highlights of this release are:
+
+* tex2lyx is now able to read files in all latex supported encodings and
+  transform them into the proper unicode-based format introduced in 1.5.0.
+  This paves the way for many other improvements in LaTeX->LyX translation
+* The performance problems when editing a master with child documents have
+  been resolved.
+* LyX 1.6.3 introduces some goodies provided by Qt 4.5 (menu support for 
+  fullscreen mode in linux, close button on tabs). Of course these
+  improvements (as well as some Qt-related fixes) only show up if LyX is
+  compiled against Qt 4.5.
+
+
 What's new in version 1.6.2?
 -------------------------------
 

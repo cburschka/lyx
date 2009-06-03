@@ -232,7 +232,7 @@ Known issues in version 1.6.x
 ------------------------------------
 
 - New pLaTeX support for Japanese:
-  * Documents using this method can be backported to 1.5 in pricipal, but
+  * Documents using this method can be backported to 1.5 in principal, but
     the backported documents are not guaranteed to work, since 1.5 falls
     back to the CJK package; expect the output to differ.
   * pLaTeX provides a Japanese variant of BibTeX named "jbibtex", which will
