@@ -453,34 +453,32 @@ def checkConverterEntries():
         rc_entry = [r'''\converter sweave   latex      "%%"	""
 \converter sweave   pdflatex      "%%"	""'''])
     #
-    path, elyx = checkProg('eLyXer converter', ['elyxer.py $$i $$o'],
-        rc_entry = [ r'\converter lyx html2 "%%" ""' ] )
-    if elyx.find('elyxer.py') >= 0 :
-      addToRC(r'''\copier    html2       "python -tt $$s/scripts/ext_copy.py -e html,png,css $$i $$o"''')
-      checkViewer('an HTML previewer', ['firefox', 'mozilla file://$$p$$i', 'netscape'],
-          rc_entry = [r'\Format html2   html    "HTML (eLyXer)"        e  "%%"	""	"document"'])
-
-    #
     checkProg('an HTML -> LaTeX converter', ['html2latex $$i', 'gnuhtml2latex $$i', \
         'htmltolatex -input $$i -output $$o', 'java -jar htmltolatex.jar -input $$i -output $$o'],
         rc_entry = [ r'\converter html       latex      "%%"	""' ])
     #
     checkProg('an MS Word -> LaTeX converter', ['wvCleanLatex $$i $$o'],
         rc_entry = [ r'\converter word       latex      "%%"	""' ])
-    # On SuSE the scripts have a .sh suffix, and on debian they are in /usr/share/tex4ht/
-    path, htmlconv = checkProg('a LaTeX -> HTML converter', ['htlatex $$i', 'htlatex.sh $$i', \
-        '/usr/share/tex4ht/htlatex $$i', 'tth  -t -e2 -L$$b < $$i > $$o', \
-        'latex2html -no_subdir -split 0 -show_section_numbers $$i', 'hevea -s $$i'],
-        rc_entry = [ r'\converter latex      html       "%%"	"needaux"' ])
-    if htmlconv.find('htlatex') >= 0 or htmlconv == 'latex2html':
+    #
+    path, elyxer = checkProg('a LyX -> HTML converter', ['elyxer.py $$i $$o'],
+      rc_entry = [ r'\converter lyx      html       "%%"	""' ])
+    if elyxer.find('elyxer.py') >= 0:
       addToRC(r'''\copier    html       "python -tt $$s/scripts/ext_copy.py -e html,png,css $$i $$o"''')
     else:
-      addToRC(r'''\copier    html       "python -tt $$s/scripts/ext_copy.py $$i $$o"''')
+      # On SuSE the scripts have a .sh suffix, and on debian they are in /usr/share/tex4ht/
+      path, htmlconv = checkProg('a LaTeX -> HTML converter', ['htlatex $$i', 'htlatex.sh $$i', \
+          '/usr/share/tex4ht/htlatex $$i', 'tth  -t -e2 -L$$b < $$i > $$o', \
+          'latex2html -no_subdir -split 0 -show_section_numbers $$i', 'hevea -s $$i'],
+          rc_entry = [ r'\converter latex      html       "%%"	"needaux"' ])
+      if htmlconv.find('htlatex') >= 0 or htmlconv == 'latex2html':
+        addToRC(r'''\copier    html       "python -tt $$s/scripts/ext_copy.py -e html,png,css $$i $$o"''')
+      else:
+        addToRC(r'''\copier    html       "python -tt $$s/scripts/ext_copy.py $$i $$o"''')
 
     # On SuSE the scripts have a .sh suffix, and on debian they are in /usr/share/tex4ht/
     path, htmlconv = checkProg('a LaTeX -> MS Word converter', ["htlatex $$i 'html,word' 'symbol/!' '-cvalidate'", \
         "htlatex.sh $$i 'html,word' 'symbol/!' '-cvalidate'", \
-	"/usr/share/tex4ht/htlatex $$i 'html,word' 'symbol/!' '-cvalidate'"],
+        "/usr/share/tex4ht/htlatex $$i 'html,word' 'symbol/!' '-cvalidate'"],
         rc_entry = [ r'\converter latex      wordhtml   "%%"	"needaux"' ])
     if htmlconv.find('htlatex') >= 0:
       addToRC(r'''\copier    wordhtml       "python -tt $$s/scripts/ext_copy.py -e html,png,css $$i $$o"''')
