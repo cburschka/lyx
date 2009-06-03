@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-06-03 13:25+0200\n"
+"POT-Creation-Date: 2009-06-03 14:27+0200\n"
 "PO-Revision-Date: 2009-05-23 13:33+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@lyx.org>\n"
 "Language-Team: italiano <it@li.org>\n"
@@ -16601,15 +16601,15 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Ripristino la versione salvata del documento?"
 
-#: src/Paragraph.cpp:1594 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1585 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "Non ha senso con questo layout!"
 
-#: src/Paragraph.cpp:1660
+#: src/Paragraph.cpp:1651
 msgid "Alignment not permitted"
 msgstr "Allineamento non consentito"
 
-#: src/Paragraph.cpp:1661
+#: src/Paragraph.cpp:1652
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -16617,22 +16617,22 @@ msgstr ""
 "Il nuovo layout non permette l'allineamento usato in precedenza.\n"
 "Uso quello predefinito."
 
-#: src/Paragraph.cpp:2138 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2129 src/frontends/qt4/LaTeXHighlighter.cpp:108
 #: src/insets/InsetListings.cpp:185 src/insets/InsetListings.cpp:193
 #: src/insets/InsetListings.cpp:217 src/mathed/InsetMathString.cpp:165
 msgid "LyX Warning: "
 msgstr "Avviso di LyX: "
 
-#: src/Paragraph.cpp:2139 src/insets/InsetListings.cpp:186
+#: src/Paragraph.cpp:2130 src/insets/InsetListings.cpp:186
 #: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:166
 msgid "uncodable character"
 msgstr "carattere intraducibile"
 
-#: src/Paragraph.cpp:2502
+#: src/Paragraph.cpp:2493
 msgid "Memory problem"
 msgstr "Problema di memoria"
 
-#: src/Paragraph.cpp:2502
+#: src/Paragraph.cpp:2493
 msgid "Paragraph not properly initialized"
 msgstr "Paragrafo non correttamente inizializzato"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-06-03 13:25+0200\n"
+"POT-Creation-Date: 2009-06-03 14:27+0200\n"
 "PO-Revision-Date: 2009-05-26 21:42+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-doc@lists.lyx.org>\n"
@@ -16511,15 +16511,15 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "文書を保管されている版に戻しますか？"
 
-#: src/Paragraph.cpp:1594 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1585 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "このレイアウトでは意味を持ちません！"
 
-#: src/Paragraph.cpp:1660
+#: src/Paragraph.cpp:1651
 msgid "Alignment not permitted"
 msgstr "配置が使えません"
 
-#: src/Paragraph.cpp:1661
+#: src/Paragraph.cpp:1652
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -16527,22 +16527,22 @@ msgstr ""
 "新しいレイアウトでは，これまで使っていた配置を使うことが出来ません。\n"
 "既定値に設定します。"
 
-#: src/Paragraph.cpp:2138 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2129 src/frontends/qt4/LaTeXHighlighter.cpp:108
 #: src/insets/InsetListings.cpp:185 src/insets/InsetListings.cpp:193
 #: src/insets/InsetListings.cpp:217 src/mathed/InsetMathString.cpp:165
 msgid "LyX Warning: "
 msgstr "LyX警告: "
 
-#: src/Paragraph.cpp:2139 src/insets/InsetListings.cpp:186
+#: src/Paragraph.cpp:2130 src/insets/InsetListings.cpp:186
 #: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:166
 msgid "uncodable character"
 msgstr "コード化できない文字"
 
-#: src/Paragraph.cpp:2502
+#: src/Paragraph.cpp:2493
 msgid "Memory problem"
 msgstr "メモリ障害"
 
-#: src/Paragraph.cpp:2502
+#: src/Paragraph.cpp:2493
 msgid "Paragraph not properly initialized"
 msgstr "段落が正しく初期化されていません"
 

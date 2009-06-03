@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-06-03 13:25+0200\n"
+"POT-Creation-Date: 2009-06-03 14:27+0200\n"
 "PO-Revision-Date: 2009-04-19 17:10+0100\n"
 "Last-Translator: Michał Fita <michal.fita@gmail.com>\n"
 "Language-Team: Polski <pl@li.org>\n"
@@ -17032,15 +17032,15 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Przywrócić zapisaną wersję dokumentu?"
 
-#: src/Paragraph.cpp:1594 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1585 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "Bez sensu w tym układzie!"
 
-#: src/Paragraph.cpp:1660
+#: src/Paragraph.cpp:1651
 msgid "Alignment not permitted"
 msgstr "Wyrównanie niedopuszczalne"
 
-#: src/Paragraph.cpp:1661
+#: src/Paragraph.cpp:1652
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -17048,22 +17048,22 @@ msgstr ""
 "Nowy układ nie dopuszcza wyrównania użytego poprzednio.\n"
 "Ustawiam na domyślne."
 
-#: src/Paragraph.cpp:2138 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2129 src/frontends/qt4/LaTeXHighlighter.cpp:108
 #: src/insets/InsetListings.cpp:185 src/insets/InsetListings.cpp:193
 #: src/insets/InsetListings.cpp:217 src/mathed/InsetMathString.cpp:165
 msgid "LyX Warning: "
 msgstr "Ostrzeżenie LyX:"
 
-#: src/Paragraph.cpp:2139 src/insets/InsetListings.cpp:186
+#: src/Paragraph.cpp:2130 src/insets/InsetListings.cpp:186
 #: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:166
 msgid "uncodable character"
 msgstr "znak niekodowalny"
 
-#: src/Paragraph.cpp:2502
+#: src/Paragraph.cpp:2493
 msgid "Memory problem"
 msgstr "Problem z pamięcią"
 
-#: src/Paragraph.cpp:2502
+#: src/Paragraph.cpp:2493
 msgid "Paragraph not properly initialized"
 msgstr "Akapit nie został poprawnie zainicjalizowany"
 
