@@ -873,10 +873,7 @@ int InsetCollapsable::docbook(odocstream & os, OutputParams const & runparams) c
 
 void InsetCollapsable::validate(LaTeXFeatures & features) const
 {
-	string const preamble = getLayout().preamble();
-	if (!preamble.empty())
-		features.addPreambleSnippet(preamble);
-	features.require(getLayout().requires());
+	features.useInsetLayout(getLayout());
 	InsetText::validate(features);
 }
 

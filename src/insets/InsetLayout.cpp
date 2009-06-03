@@ -256,7 +256,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			bgcolor_ = lcolor.getFromLyXName(tmp);
 			break;
 		case IL_PREAMBLE:
-			preamble_ = lex.getLongString("EndPreamble");
+			preamble_ = from_utf8(lex.getLongString("EndPreamble"));
 			break;
 		case IL_REQUIRES: {
 			lex.eatLine();

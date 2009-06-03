@@ -77,7 +77,7 @@ public:
 	///
 	ColorCode bgcolor() const { return bgcolor_; };
 	///
-	std::string preamble() const { return preamble_; };
+	docstring preamble() const { return preamble_; };
 	///
 	std::set<std::string> requires() const { return requires_; };
 	///
@@ -124,7 +124,7 @@ private:
 	///
 	ColorCode bgcolor_;
 	///
-	std::string preamble_;
+	docstring preamble_;
 	///
 	std::set<std::string> requires_;
 	///

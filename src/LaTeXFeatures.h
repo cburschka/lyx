@@ -26,6 +26,7 @@ namespace lyx {
 
 class Buffer;
 class BufferParams;
+class InsetLayout;
 class Language;
 
 /** The packages and commands that a buffer needs. This class
@@ -98,6 +99,8 @@ public:
 	///
 	void useLayout(docstring const & lyt);
 	///
+	void useInsetLayout(InsetLayout const & lay);
+	///
 	Buffer const & buffer() const;
 	///
 	void setBuffer(Buffer const &);
@@ -113,8 +116,10 @@ public:
 	OutputParams const & runparams() const { return runparams_; }
 
 private:
+	///
 	std::list<docstring> usedLayouts_;
-
+	///
+	std::list<docstring> usedInsetLayouts_;
 	/// The features that are needed by the document
 	typedef std::set<std::string> Features;
 	///

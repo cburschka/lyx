@@ -29,6 +29,8 @@
 #include "LyXRC.h"
 #include "TextClass.h"
 
+#include "insets/InsetLayout.h"
+
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/FileName.h"
@@ -354,6 +356,26 @@ void LaTeXFeatures::useLayout(docstring const & layoutname)
 	}
 
 	--level;
+}
+
+
+void LaTeXFeatures::useInsetLayout(InsetLayout const & lay)
+{
+	docstring const & lname = lay.name();
+	DocumentClass const & tclass = params_.documentClass();
+	if (!tclass.hasInsetLayout(lname)) {
+		lyxerr << "LaTeXFeatures::useInsetLayout: layout `"
+		       << to_utf8(lname) << "' does not exist in this class"
+		       << endl;
+		return;
+	}
+	// Is this layout already in usedInsetLayouts?
+	if (find(usedInsetLayouts_.begin(), usedInsetLayouts_.end(), lname) 
+			!= usedInsetLayouts_.end())
+		return;
+
+	require(lay.requires());
+	usedInsetLayouts_.push_back(lname);
 }
 
 
@@ -894,6 +916,16 @@ docstring const LaTeXFeatures::getTClassPreamble() const
 	list<docstring>::const_iterator end = usedLayouts_.end();
 	for (; cit != end; ++cit)
 		tcpreamble << tclass[*cit].preamble();
+
+	cit = usedInsetLayouts_.begin();
+	end = usedInsetLayouts_.end();
+	TextClass::InsetLayouts const & ils = tclass.insetLayouts();
+	for (; cit != end; ++cit) {
+		TextClass::InsetLayouts::const_iterator it = ils.find(*cit);
+		if (it == ils.end())
+			continue;
+		tcpreamble << it->second.preamble();
+	}
 
 	return tcpreamble.str();
 }
