@@ -55,8 +55,13 @@ docstring::size_type common_path(docstring const & p1, docstring const & p2)
 	docstring::size_type i = 0;
 	docstring::size_type const p1_len = p1.length();
 	docstring::size_type const p2_len = p2.length();
+#ifdef __APPLE__
+	while (i < p1_len && i < p2_len && uppercase(p1[i]) == uppercase(p2[i]))
+		++i;
+#else
 	while (i < p1_len && i < p2_len && p1[i] == p2[i])
 		++i;
+#endif
 	if ((i < p1_len && i < p2_len)
 	    || (i < p1_len && p1[i] != '/' && i == p2_len)
 	    || (i < p2_len && p2[i] != '/' && i == p1_len))
@@ -67,6 +72,49 @@ docstring::size_type common_path(docstring const & p1, docstring const & p2)
 			--i;
 	}
 	return i;
+}
+
+
+bool path_prefix_is(string const & path, string const & pre)
+{
+#ifdef __APPLE__
+	return path_prefix_is(const_cast<string &>(path), pre, CASE_UNCHANGED);
+#else
+	return prefixIs(path, pre);
+#endif
+}
+
+
+bool path_prefix_is(string & path, string const & pre, path_case how)
+{
+#ifdef __APPLE__
+	docstring const p1 = from_utf8(path);
+	docstring const p2 = from_utf8(pre);
+	docstring::size_type const p1_len = p1.length();
+	docstring::size_type const p2_len = p2.length();
+	docstring::size_type common_len = common_path(p1, p2);
+
+	if (p2[p2_len - 1] == '/' && p1_len != p2_len)
+		++common_len;
+
+	if (common_len != p2_len)
+		return false;
+
+	if (how == CASE_ADJUSTED && !prefixIs(path, pre)) {
+		if (p1_len < common_len)
+			path = to_utf8(p2.substr(0, p1_len));
+		else
+			path = to_utf8(p2 + p1.substr(common_len,
+							p1_len - common_len));
+	}
+
+	return true;
+#else
+	// silence compiler warnings
+	(void)how;
+
+	return prefixIs(path, pre);
+#endif
 }
 
 
