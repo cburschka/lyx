@@ -6,7 +6,7 @@
 # Licence details can be found in the file COPYING or copy at
 # http://www.lyx.org/about/license.php3
 
-# Author Uwe Stöhr
+# Author: Uwe Stöhr
 # Full author contact details are available in file CREDITS or copy at
 # http://www.lyx.org/about/credits.php
 
