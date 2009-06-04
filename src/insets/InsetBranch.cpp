@@ -76,13 +76,17 @@ void InsetBranch::read(Lexer & lex)
 }
 
 
-docstring InsetBranch::toolTip(BufferView const &, int, int) const
+docstring InsetBranch::toolTip(BufferView const & bv, int x, int y) const
 {
 	docstring const status = isBranchSelected() ? 
 		_("active") : _("non-active");
-	return support::bformat(_("Branch (%1$s): %2$s"),
-				  status,
-				  params_.branch);
+	docstring const heading = 
+		support::bformat(_("Branch (%1$s): %2$s"), status, params_.branch);
+	docstring const contents = InsetCollapsable::toolTip(bv, x, y);
+	if (isOpen(bv) || contents.empty())
+		return heading;
+	else
+		return heading + from_ascii("\n") + contents;
 }
 
 

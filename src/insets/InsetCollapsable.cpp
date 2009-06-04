@@ -38,6 +38,7 @@
 #include "support/docstream.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
+#include "support/lstrings.h"
 
 using namespace std;
 
@@ -138,11 +139,8 @@ docstring InsetCollapsable::toolTip(BufferView const & bv, int x, int y) const
 	OutputParams rp(&buffer().params().encoding());
 	odocstringstream ods;
 	InsetText::plaintext(ods, rp);
-	docstring content_tip = ods.str();
-	// shorten it if necessary
-	if (content_tip.size() > 200)
-		content_tip = content_tip.substr(0, 200) + "...";
-	return content_tip;
+	docstring const content_tip = ods.str();
+	return support::wrapParas(content_tip, 4);
 }
 
 

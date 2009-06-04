@@ -930,6 +930,87 @@ docstring const escape(docstring const & lab)
 
 namespace {
 
+// this doesn't check whether str is empty, so do that first.
+vector<docstring> wrapToVec(docstring const & str, int const ind, 
+                            size_t const width)
+{
+	docstring s = trim(str);
+	if (s.empty()) 
+		return vector<docstring>();
+
+	docstring indent;
+	if (ind < 0)
+		for (int j = 0; j > ind; --j)
+			indent += " ";
+	else if (ind > 0)
+		for (int j = 0; j < ind; ++j)
+			s = " " + s;
+
+	vector<docstring> retval;
+	while (s.size() > width) {
+		int i = width - 1;
+		// find the last space
+		for (; i >= 0; --i)
+			if (s[i] == ' ')
+				break;
+		if (i < 0) { 
+			// no space found
+			s = s.substr(0, width - 3) + "...";
+			break;
+		}
+		retval.push_back(s.substr(0, i));
+		s = indent + s.substr(i);
+	}
+	if (!s.empty()) 
+		retval.push_back(s);
+	return retval;
+}
+
+}
+
+
+docstring wrap(docstring const & str, int const ind, size_t const width)
+{
+	docstring s = trim(str);
+	if (s.empty()) 
+		return docstring();
+
+	vector<docstring> const svec = wrapToVec(str, ind, width);
+	return getStringFromVector(svec, from_ascii("\n"));
+}
+
+
+docstring wrapParas(docstring const & str, int const indent,
+                    size_t const width, size_t const maxlines)
+{
+	if (str.empty())
+		return docstring();
+
+	vector<docstring> pars = getVectorFromString(str, from_ascii("\n"), true);
+	vector<docstring> retval;
+
+	vector<docstring>::iterator it = pars.begin();
+	vector<docstring>::iterator en = pars.end();
+	for (; it != en; ++it) {
+		vector<docstring> tmp = wrapToVec(*it, indent, width);
+		int const nlines = tmp.size();
+		if (nlines == 0)
+			continue;
+		int const curlines = retval.size();
+		if (maxlines > 0 && curlines + nlines >= maxlines) {
+			tmp.resize(maxlines - curlines - 1);
+			tmp.push_back(from_ascii("..."));
+		}
+		retval.insert(retval.end(), tmp.begin(), tmp.end());
+		if (maxlines > 0 && retval.size() >= maxlines)
+			break;
+	}
+	return getStringFromVector(retval, from_ascii("\n"));
+}
+
+
+namespace {
+
 template<typename String> vector<String> const
 getVectorFromStringT(String const & str, String const & delim, bool keepempty)
 {
@@ -963,6 +1044,24 @@ getVectorFromStringT(String const & str, String const & delim, bool keepempty)
 #endif
 }
 
+
+template<typename String> const String
+	getStringFromVector(vector<String> const & vec, String const & delim)
+{
+	String str;
+	typename vector<String>::const_iterator it = vec.begin();
+	typename vector<String>::const_iterator en = vec.end();
+	for (; it != en; ++it) {
+		String item = trim(*it);
+		if (item.empty())
+			continue;
+		if (!str.empty())
+			str += delim;
+		str += item;
+	}
+	return str;
+}
+
 } // namespace anon
 
 
@@ -982,22 +1081,17 @@ vector<docstring> const getVectorFromString(docstring const & str,
 }
 
 
-// the same vice versa
 string const getStringFromVector(vector<string> const & vec,
-				 string const & delim)
+                                 string const & delim)
 {
-	string str;
-	int i = 0;
-	for (vector<string>::const_iterator it = vec.begin();
-	     it != vec.end(); ++it) {
-		string item = trim(*it);
-		if (item.empty())
-			continue;
-		if (i++ > 0)
-			str += delim;
-		str += item;
-	}
-	return str;
+	return getStringFromVector<string>(vec, delim);
+}
+
+
+docstring const getStringFromVector(vector<docstring> const & vec,
+                                    docstring const & delim)
+{
+	return getStringFromVector<docstring>(vec, delim);
 }
 
 
