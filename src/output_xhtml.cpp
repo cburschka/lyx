@@ -63,23 +63,21 @@ docstring escapeChar(char_type c)
 	}
 	return str;
 }
-} // html
 
-namespace {
 
+// FIXME This needs to be protected somehow.
 static vector<string> taglist;
 
-void openTag(odocstream & os, Layout const & lay)
+void openTag(odocstream & os, string tag, string attr)
 {
-	string const & tag = lay.htmltag();
 	if (tag.empty())
 		return;
+	// FIXME This is completely primitive. We need something
+	// a lot better.
 	// Now do some checks on nesting of tags.
 	if (tag == "p")
 		if (find(taglist.begin(), taglist.end(), "p") != taglist.end())
 			return;
-	// FIXME More? Better?
-	string attr = lay.htmlattr();
 	if (!attr.empty())
 		attr = ' ' + attr;
 	os << from_ascii("<" + tag + attr + ">");
@@ -87,66 +85,60 @@ void openTag(odocstream & os, Layout const & lay)
 }
 
 
-void closeTag(odocstream & os, Layout const & lay)
+void closeTag(odocstream & os, string tag)
 {
-	string const & tag = lay.htmltag();
-	if (tag.empty() || taglist.empty())
-		// Here we will just assume this does not need to be done.
+	if (tag.empty())
 		return;
-	if (find(taglist.begin(), taglist.end(), tag) == taglist.end())
-		return;
-	os << from_ascii("</" + tag + ">");
-	// Check for proper nesting
+	// FIXME Check for proper nesting
 	string const & lasttag = taglist.back();
 	if (lasttag != tag)  {
 		LYXERR0("Last tag was `" << lasttag << "' when closing `" << tag << "'!");
 		return;
 	}
 	taglist.pop_back();
+	os << from_ascii("</" + tag + ">");
+}
+
+
+
+} // html
+
+namespace {
+
+void openTag(odocstream & os, Layout const & lay)
+{
+	html::openTag(os, lay.htmltag(), lay.htmlattr());
+}
+
+
+void closeTag(odocstream & os, Layout const & lay)
+{
+	html::closeTag(os, lay.htmltag());
 }
 
 
 void openLabelTag(odocstream & os, Layout const & lay)
 {
-	string const & tag = lay.htmllabel();
-	if (tag.empty())
-		return;
-	string attr = lay.htmllabelattr();
-	if (!attr.empty())
-		attr = ' ' + attr;
-	os << from_ascii("<" + tag + attr + ">");
+	html::openTag(os, lay.htmllabel(), lay.htmllabelattr());
 }
 
 
 void closeLabelTag(odocstream & os, Layout const & lay)
 {
-	string const & tag = lay.htmllabel();
-	if (tag.empty())
-		return;
-	os << from_ascii("</" + tag + ">");
+	html::closeTag(os, lay.htmllabel());
 }
 
 
 void openItemTag(odocstream & os, Layout const & lay)
 {
-	string const & tag = lay.htmlitem();
-	if (tag.empty())
-		return;
-	string attr = lay.htmlitemattr();
-	if (!attr.empty())
-		attr = ' ' + attr;
-	os << from_ascii("<" + tag + attr + ">");
+	html::openTag(os, lay.htmlitem(), lay.htmlitemattr());
 }
 
 
 void closeItemTag(odocstream & os, Layout const & lay)
 {
-	string const & tag = lay.htmlitem();
-	if (tag.empty())
-		return;
-	os << from_ascii("</" + tag + ">");
+	html::closeTag(os, lay.htmlitem());
 }
-
 
 ParagraphList::const_iterator searchParagraph(
 	ParagraphList::const_iterator p,

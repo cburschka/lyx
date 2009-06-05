@@ -28,6 +28,8 @@ void xhtmlParagraphs(ParagraphList const & subset,
 
 namespace html {
 	docstring escapeChar(char_type c);
+	void openTag(odocstream & os, std::string tag, std::string attr);
+	void closeTag(odocstream & os, std::string tag);
 }
 } // namespace lyx
 
