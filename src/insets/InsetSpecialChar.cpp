@@ -291,6 +291,32 @@ int InsetSpecialChar::docbook(odocstream & os, OutputParams const &) const
 }
 
 
+int InsetSpecialChar::xhtml(odocstream & os, OutputParams const &) const
+{
+	switch (kind_) {
+	case HYPHENATION:
+	case LIGATURE_BREAK:
+		break;
+	case END_OF_SENTENCE:
+		os << '.';
+		break;
+	case LDOTS:
+		os << "&hellip;";
+		break;
+	case MENU_SEPARATOR:
+		os << "&rArr;";
+		break;
+	case SLASH:
+		os << "&frasl;";
+		break;
+	case NOBREAKDASH:
+		os << '-';
+		break;
+	}
+	return 0;
+}
+
+
 void InsetSpecialChar::tocString(odocstream & os) const
 {
 	plaintext(os, OutputParams(0));

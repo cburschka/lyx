@@ -484,6 +484,16 @@ int InsetBox::docbook(odocstream & os, OutputParams const & runparams) const
 }
 
 
+int InsetBox::xhtml(odocstream & os, OutputParams const & runparams) const
+{
+	// FIXME We also want to do something with the length info, etc,
+	// presumably as "style='...'".
+	os << from_ascii("<span class='" + params_.type + "'>\n");
+	InsetText::xhtml(os, runparams);
+	os << "</span>\n";
+}
+
+
 void InsetBox::validate(LaTeXFeatures & features) const
 {
 	BoxType btype = boxtranslator().find(params_.type);

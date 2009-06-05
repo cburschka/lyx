@@ -247,6 +247,13 @@ int InsetNewpage::docbook(odocstream & os, OutputParams const &) const
 }
 
 
+int InsetNewpage::xhtml(odocstream & os, OutputParams const &) const
+{
+	os << "<br />\n";
+	return 0;
+}
+
+
 docstring InsetNewpage::contextMenu(BufferView const &, int, int) const
 {
 	return from_ascii("context-newpage");

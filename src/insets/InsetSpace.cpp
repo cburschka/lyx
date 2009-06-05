@@ -680,6 +680,52 @@ int InsetSpace::docbook(odocstream & os, OutputParams const &) const
 }
 
 
+int InsetSpace::xhtml(odocstream & os, OutputParams const &) const
+{
+	switch (params_.kind) {
+	case InsetSpaceParams::NORMAL:
+		os << " ";
+		break;
+	case InsetSpaceParams::ENSKIP:
+	case InsetSpaceParams::ENSPACE:
+		os << "&ensp;";
+		break;
+	case InsetSpaceParams::QQUAD:
+		os << "&emsp;";
+	case InsetSpaceParams::THICK:
+	case InsetSpaceParams::QUAD:
+		os << "&emsp;";
+		break;
+	case InsetSpaceParams::THIN:
+		os << "&thinsp;";
+		break;
+	case InsetSpaceParams::PROTECTED:
+	case InsetSpaceParams::MEDIUM:
+	case InsetSpaceParams::NEGTHIN:
+	case InsetSpaceParams::NEGMEDIUM:
+	case InsetSpaceParams::NEGTHICK:
+		os << "&nbsp;";
+		break;
+	case InsetSpaceParams::HFILL:
+	case InsetSpaceParams::HFILL_PROTECTED:
+	case InsetSpaceParams::DOTFILL:
+	case InsetSpaceParams::HRULEFILL:
+	case InsetSpaceParams::LEFTARROWFILL:
+	case InsetSpaceParams::RIGHTARROWFILL:
+	case InsetSpaceParams::UPBRACEFILL:
+	case InsetSpaceParams::DOWNBRACEFILL:
+		// FIXME Can we do anything with those in HTML?
+		os << '\n';
+		break;
+	case InsetSpaceParams::CUSTOM:
+	case InsetSpaceParams::CUSTOM_PROTECTED:
+		// FIXME Probably we could do some sort of blank span?
+		os << '\n';
+	}
+	return 0;
+}
+
+
 void InsetSpace::validate(LaTeXFeatures & features) const
 {
 	if (params_.kind == InsetSpaceParams::NEGMEDIUM ||

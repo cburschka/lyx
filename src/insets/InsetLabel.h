@@ -44,6 +44,8 @@ public:
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	///
+	int xhtml(odocstream &, OutputParams const &) const;
+	///
 	static ParamInfo const & findInfo(std::string const &);
 	///
 	static std::string defaultCommand() { return "label"; };

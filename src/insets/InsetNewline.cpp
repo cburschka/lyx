@@ -173,6 +173,13 @@ int InsetNewline::docbook(odocstream & os, OutputParams const &) const
 }
 
 
+int InsetNewline::xhtml(odocstream & os, OutputParams const &) const
+{
+	os << "<br />\n";
+	return 0;
+}
+
+
 void InsetNewline::draw(PainterInfo & pi, int x, int y) const
 {
 	FontInfo font;

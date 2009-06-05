@@ -83,6 +83,8 @@ public:
 	int plaintext(odocstream &, OutputParams const &) const;
 	///
 	int docbook(odocstream &, OutputParams const &) const;
+	///
+	int xhtml(odocstream &, OutputParams const &) const;
 
 	/// the string that is passed to the TOC
 	void tocString(odocstream &) const;

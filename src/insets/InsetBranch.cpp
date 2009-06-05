@@ -235,6 +235,13 @@ int InsetBranch::docbook(odocstream & os,
 }
 
 
+int InsetBranch::xhtml(odocstream & os,
+			 OutputParams const & runparams) const
+{
+	return isBranchSelected() ?  InsetText::xhtml(os, runparams) : 0;
+}
+
+
 void InsetBranch::tocString(odocstream & os) const
 {
 	if (isBranchSelected())

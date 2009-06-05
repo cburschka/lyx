@@ -74,6 +74,8 @@ private:
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	///
+	int xhtml(odocstream &, OutputParams const &) const;
+	///
 	void tocString(odocstream &) const;
 	///
 	void validate(LaTeXFeatures &) const;

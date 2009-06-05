@@ -34,6 +34,7 @@
 #include "MetricsInfo.h"
 #include "output_docbook.h"
 #include "output_latex.h"
+#include "output_xhtml.h"
 #include "OutputParams.h"
 #include "output_plaintext.h"
 #include "paragraph_funcs.h"
@@ -363,6 +364,13 @@ int InsetText::plaintext(odocstream & os, OutputParams const & runparams) const
 int InsetText::docbook(odocstream & os, OutputParams const & runparams) const
 {
 	docbookParagraphs(paragraphs(), buffer(), os, runparams);
+	return 0;
+}
+
+
+int InsetText::xhtml(odocstream & os, OutputParams const & runparams) const
+{
+	xhtmlParagraphs(paragraphs(), buffer(), os, runparams);
 	return 0;
 }
 
