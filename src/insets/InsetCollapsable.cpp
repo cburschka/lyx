@@ -28,7 +28,6 @@
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
-#include "output_xhtml.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "sgml.h"
@@ -868,19 +867,6 @@ int InsetCollapsable::docbook(odocstream & os, OutputParams const & runparams) c
 	if (!undefined())
 		sgml::closeTag(os, getLayout().latexname());
 
-	return 0;
-}
-
-
-int InsetCollapsable::xhtml(odocstream & os, OutputParams const & runparams) const
-{
-	InsetLayout const & il = getLayout();
-	bool opened = false;
-	if (!undefined())
-		opened = html::openTag(os, il.htmltag(), il.htmlattr());
-	InsetText::xhtml(os, runparams);
-	if (opened && !undefined())
-		html::closeTag(os, il.htmltag());
 	return 0;
 }
 
