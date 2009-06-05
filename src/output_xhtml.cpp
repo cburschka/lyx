@@ -68,35 +68,41 @@ docstring escapeChar(char_type c)
 // FIXME This needs to be protected somehow.
 static vector<string> taglist;
 
-void openTag(odocstream & os, string tag, string attr)
+bool openTag(odocstream & os, string tag, string attr)
 {
 	if (tag.empty())
-		return;
+		return false;
 	// FIXME This is completely primitive. We need something
 	// a lot better.
 	// Now do some checks on nesting of tags.
 	if (tag == "p")
 		if (find(taglist.begin(), taglist.end(), "p") != taglist.end())
-			return;
+			return false;
 	if (!attr.empty())
 		attr = ' ' + attr;
 	os << from_ascii("<" + tag + attr + ">");
 	taglist.push_back(tag);
+	return true;
 }
 
 
-void closeTag(odocstream & os, string tag)
+bool closeTag(odocstream & os, string tag)
 {
 	if (tag.empty())
-		return;
+		return false;
 	// FIXME Check for proper nesting
+	if (taglist.empty()){
+		LYXERR0("Last tag not found when closing `" << tag << "'!");
+		return false;
+	}
 	string const & lasttag = taglist.back();
 	if (lasttag != tag)  {
 		LYXERR0("Last tag was `" << lasttag << "' when closing `" << tag << "'!");
-		return;
+		return false;
 	}
 	taglist.pop_back();
 	os << from_ascii("</" + tag + ">");
+	return true;
 }
 
 
@@ -105,39 +111,39 @@ void closeTag(odocstream & os, string tag)
 
 namespace {
 
-void openTag(odocstream & os, Layout const & lay)
+bool openTag(odocstream & os, Layout const & lay)
 {
-	html::openTag(os, lay.htmltag(), lay.htmlattr());
+	return html::openTag(os, lay.htmltag(), lay.htmlattr());
 }
 
 
-void closeTag(odocstream & os, Layout const & lay)
+bool closeTag(odocstream & os, Layout const & lay)
 {
-	html::closeTag(os, lay.htmltag());
+	return html::closeTag(os, lay.htmltag());
 }
 
 
-void openLabelTag(odocstream & os, Layout const & lay)
+bool openLabelTag(odocstream & os, Layout const & lay)
 {
-	html::openTag(os, lay.htmllabel(), lay.htmllabelattr());
+	return html::openTag(os, lay.htmllabel(), lay.htmllabelattr());
 }
 
 
-void closeLabelTag(odocstream & os, Layout const & lay)
+bool closeLabelTag(odocstream & os, Layout const & lay)
 {
-	html::closeTag(os, lay.htmllabel());
+	return html::closeTag(os, lay.htmllabel());
 }
 
 
-void openItemTag(odocstream & os, Layout const & lay)
+bool openItemTag(odocstream & os, Layout const & lay)
 {
-	html::openTag(os, lay.htmlitem(), lay.htmlitemattr());
+	return html::openTag(os, lay.htmlitem(), lay.htmlitemattr());
 }
 
 
-void closeItemTag(odocstream & os, Layout const & lay)
+bool closeItemTag(odocstream & os, Layout const & lay)
 {
-	html::closeTag(os, lay.htmlitem());
+	return html::closeTag(os, lay.htmlitem());
 }
 
 ParagraphList::const_iterator searchParagraph(
@@ -192,10 +198,11 @@ ParagraphList::const_iterator makeParagraph(Buffer const & buf,
 		Layout const & lay = par->layout();
 		if (par != pbegin)
 			os << '\n';
-		openTag(os, lay);
+		bool const opened = openTag(os, lay);
 		par->simpleLyXHTMLOnePar(buf, os, runparams, 
 				outerFont(distance(paragraphs.begin(), par), paragraphs));
-		closeTag(os, lay);
+		if (opened)
+			closeTag(os, lay);
 		os << '\n';
 	}
 	return pend;
@@ -213,7 +220,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 	depth_type const origdepth = pbegin->params().depth();
 
 	// Open tag for this environment
-	openTag(os, bstyle);
+	bool const main_tag_opened = openTag(os, bstyle);
 	os << '\n';
 
 	// we will on occasion need to remember a layout from before.
@@ -240,34 +247,39 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 				}
 				Layout const & cstyle = par->layout();
 				if (cstyle.labeltype == LABEL_MANUAL) {
-					openLabelTag(os, cstyle);
+					bool const label_tag_opened = openLabelTag(os, cstyle);
 					sep = par->firstWordLyXHTML(os, runparams);
-					closeLabelTag(os, cstyle);
+					if (label_tag_opened)
+						closeLabelTag(os, cstyle);
 					os << '\n';
 				} else if (style.latextype == LATEX_ENVIRONMENT 
 				           && style.labeltype != LABEL_NO_LABEL) {
-					openLabelTag(os, cstyle);
+					bool const label_tag_opened = openLabelTag(os, cstyle);
 					if (!style.counter.empty())
 						buf.params().documentClass().counters().step(cstyle.counter);
 					os << pbegin->expandLabel(style, buf.params(), false);
-					closeLabelTag(os, cstyle);
+					if (label_tag_opened)
+						closeLabelTag(os, cstyle);
 					os << '\n';
 				}
 
-				openItemTag(os, cstyle);
+				bool const item_tag_opened = openItemTag(os, cstyle);
 				par->simpleLyXHTMLOnePar(buf, os, runparams, 
 					outerFont(distance(paragraphs.begin(), par), paragraphs), sep);
 				++par;
 				// We may not want to close the tag yet, in particular,
-				// if we're not at the end and are doing items...
-				if (par != pend && style.latextype == LATEX_ITEM_ENVIRONMENT
-				    // and if the depth has changed,
+				if (item_tag_opened 
+						// if we're not at the end...
+				    && par != pend 
+				    //  and are doing items...
+				    && style.latextype == LATEX_ITEM_ENVIRONMENT
+				    // and if the depth has changed...
 				    && par->params().depth() != origdepth) {
 						// then we'll save this layout for later, and close it when
 						// we get another item.
 						lastlay = &cstyle;
 				} else {
-					closeItemTag(os, cstyle); // FIXME
+						closeItemTag(os, cstyle); // FIXME
 					os << '\n';
 				}
 			} 
@@ -292,7 +304,8 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 
 	if (lastlay != 0)
 		closeItemTag(os, *lastlay);
-	closeTag(os, bstyle);
+	if (main_tag_opened)
+		closeTag(os, bstyle);
 	os << '\n';
 	return pend;
 }
@@ -306,22 +319,24 @@ void makeCommand(Buffer const & buf,
 {
 	Layout const & style = pbegin->layout();
 
-	openTag(os, style);
+	bool const main_tag_opened = openTag(os, style);
 
 	// Label around sectioning number:
 	if (style.labeltype != LABEL_NO_LABEL) {
-		openLabelTag(os, style);
+		bool const label_tag_opened = openLabelTag(os, style);
 		if (!style.counter.empty())
 			buf.params().documentClass().counters().step(style.counter);
 		os << pbegin->expandLabel(style, buf.params(), false);
-		closeLabelTag(os, style);
+		if (label_tag_opened)
+			closeLabelTag(os, style);
 		// Otherwise the label might run together with the text
 		os << ' ';
 	}
 
 	pbegin->simpleLyXHTMLOnePar(buf, os, runparams,
 			outerFont(distance(paragraphs.begin(), pbegin), paragraphs));
-	closeTag(os, style);
+	if (main_tag_opened)
+		closeTag(os, style);
 }
 
 } // end anonymous namespace

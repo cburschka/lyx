@@ -27,9 +27,12 @@ void xhtmlParagraphs(ParagraphList const & subset,
 		       OutputParams const & runparams);
 
 namespace html {
+	///
 	docstring escapeChar(char_type c);
-	void openTag(odocstream & os, std::string tag, std::string attr);
-	void closeTag(odocstream & os, std::string tag);
+	/// \return true if tag was opened, false if not 
+	bool openTag(odocstream & os, std::string tag, std::string attr);
+	/// \return true if tag was opened, false if not 
+	bool closeTag(odocstream & os, std::string tag);
 }
 } // namespace lyx
 
