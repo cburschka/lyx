@@ -84,6 +84,8 @@ public:
 	std::string const & htmlattr() const { return htmlattr_; }
 	/// 
 	docstring htmlstyle() const { return htmlstyle_; }
+	/// 
+	docstring htmlpreamble() const { return htmlpreamble_; }
 	///
 	std::set<std::string> requires() const { return requires_; };
 	///
@@ -137,6 +139,8 @@ private:
 	std::string htmlattr_;
 	/// 
 	docstring htmlstyle_;
+	/// 
+	docstring htmlpreamble_;
 	///
 	std::set<std::string> requires_;
 	///

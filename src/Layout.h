@@ -122,6 +122,8 @@ public:
 	std::string const & htmllabelattr() const { return htmllabelattr_; }
 	/// 
 	docstring const & htmlstyle() const { return htmlstyle_; }
+	/// 
+	docstring const & htmlpreamble() const { return htmlpreamble_; }
 	///
 	docstring const & labelstring_appendix() const {
 		return labelstring_appendix_;
@@ -306,6 +308,8 @@ private:
 	std::string htmllabelattr_;
 	/// CSS information needed by this layout.
 	docstring htmlstyle_;
+	/// Any other info for the HTML header.
+	docstring htmlpreamble_;
 	/// This is the `category' for this layout. The following are
 	/// recommended basic categories: FrontMatter, BackMatter, MainText,
 	/// Section, Starred, List, Theorem.

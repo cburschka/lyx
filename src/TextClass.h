@@ -255,6 +255,7 @@ protected:
 	/// preamble text to support layout styles
 	docstring preamble_;
 	/// same, but for HTML output
+	/// this is output as is to the header
 	docstring htmlpreamble_;
 	/// latex packages loaded by document class.
 	std::set<std::string> provides_;
