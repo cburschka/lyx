@@ -81,6 +81,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		IL_FORCELTR,
 		IL_FORCEPLAIN,
 		IL_FREESPACING,
+		IL_HTMLTAG,
+		IL_HTMLATTR,
+		IL_HTMLSTYLE,
 		IL_INTOC,
 		IL_LABELFONT,
 		IL_LABELSTRING,
@@ -108,6 +111,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		{ "forceltr", IL_FORCELTR },
 		{ "forceplain", IL_FORCEPLAIN },
 		{ "freespacing", IL_FREESPACING },
+		{ "htmlattr", IL_HTMLATTR },
+		{ "htmlstyle", IL_HTMLSTYLE },
+		{ "htmltag", IL_HTMLTAG },
 		{ "intoc", IL_INTOC },
 		{ "keepempty", IL_KEEPEMPTY },
 		{ "labelfont", IL_LABELFONT },
@@ -257,6 +263,15 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			break;
 		case IL_PREAMBLE:
 			preamble_ = from_utf8(lex.getLongString("EndPreamble"));
+			break;
+		case IL_HTMLTAG:
+			lex >> htmltag_;
+			break;
+		case IL_HTMLATTR:
+			lex >> htmlattr_;
+			break;
+		case IL_HTMLSTYLE:
+			htmlstyle_ = from_utf8(lex.getLongString("EndHTMLStyle"));
 			break;
 		case IL_REQUIRES: {
 			lex.eatLine();

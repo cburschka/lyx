@@ -78,6 +78,12 @@ public:
 	ColorCode bgcolor() const { return bgcolor_; };
 	///
 	docstring preamble() const { return preamble_; };
+	/// 
+	std::string const & htmltag() const { return htmltag_; }
+	/// 
+	std::string const & htmlattr() const { return htmlattr_; }
+	/// 
+	docstring htmlstyle() const { return htmlstyle_; }
 	///
 	std::set<std::string> requires() const { return requires_; };
 	///
@@ -125,6 +131,12 @@ private:
 	ColorCode bgcolor_;
 	///
 	docstring preamble_;
+	/// 
+	std::string htmltag_;
+	/// 
+	std::string htmlattr_;
+	/// 
+	docstring htmlstyle_;
 	///
 	std::set<std::string> requires_;
 	///
