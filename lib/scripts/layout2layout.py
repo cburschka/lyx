@@ -55,7 +55,7 @@ import os, re, string, sys
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
-currentFormat = 15
+currentFormat = 16
 
 
 def usage(prog_name):
@@ -232,7 +232,7 @@ def convert(lines):
             continue
 
         # This just involved new features, not any changes to old ones
-        if format == 14:
+        if format == 14 or format == 15:
           i += 1
           continue
 
