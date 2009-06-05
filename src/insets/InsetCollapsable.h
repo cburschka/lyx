@@ -144,6 +144,8 @@ public:
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	///
+	int xhtml(odocstream &, OutputParams const &) const;
+	///
 	void validate(LaTeXFeatures &) const;
 	///
 	InsetCode lyxCode() const { return COLLAPSABLE_CODE; }
