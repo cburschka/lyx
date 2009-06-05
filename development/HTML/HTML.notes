@@ -62,4 +62,8 @@ These do not yet work and need some attention:
 	InsetVSpace: This will be easy, once we have the Length::asHTML() method.
 	InsetWrap: This should be simple enough, probably a div and some CSS, but I'm not sure
 		precisely what this is supposed to do.
-There seems not to be much here for math, so that will take some doing.
+
+MATH
+	Regarding math, the view seems to be that we should in the first instance just use what
+	we get from instant preview and copy those over to the output directory, and then try
+	to make MathML work.
