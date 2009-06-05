@@ -60,7 +60,7 @@ public:
 	/// The language dependent definitions needed by the document's textclass
 	docstring const getTClassI18nPreamble(bool use_babel) const;
 	///
-	docstring const getTClassHTMLPreamble() const;
+	docstring const getTClassHTMLStyles() const;
 	/// The sgml definitions needed by the document (docbook)
 	docstring const getLyXSGMLEntities() const;
 	/// The SGML Required to include the files added with includeFile();

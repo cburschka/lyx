@@ -931,7 +931,7 @@ docstring const LaTeXFeatures::getTClassPreamble() const
 }
 
 
-docstring const LaTeXFeatures::getTClassHTMLPreamble() const {
+docstring const LaTeXFeatures::getTClassHTMLStyles() const {
 	DocumentClass const & tclass = params_.documentClass();
 	odocstringstream tcpreamble;
 
