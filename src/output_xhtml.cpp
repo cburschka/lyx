@@ -186,7 +186,7 @@ ParagraphList::const_iterator searchEnvironment(
 }
 
 
-ParagraphList::const_iterator makeParagraph(Buffer const & buf,
+ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 					    odocstream & os,
 					    OutputParams const & runparams,
 					    ParagraphList const & paragraphs,
@@ -207,6 +207,7 @@ ParagraphList::const_iterator makeParagraph(Buffer const & buf,
 	}
 	return pend;
 }
+
 
 ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 					      odocstream & os,
@@ -293,7 +294,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 		}
 		case LATEX_PARAGRAPH:
 			send = searchParagraph(par, pend);
-			par = makeParagraph(buf, os, runparams, paragraphs, par, send);
+			par = makeParagraphs(buf, os, runparams, paragraphs, par, send);
 			break;
 		// FIXME
 		case LATEX_BIB_ENVIRONMENT:
@@ -371,7 +372,7 @@ void xhtmlParagraphs(ParagraphList const & paragraphs,
 		}
 		case LATEX_PARAGRAPH:
 			send = searchParagraph(par, pend);
-			par = makeParagraph(buf, os, runparams, paragraphs, par,send);
+			par = makeParagraphs(buf, os, runparams, paragraphs, par,send);
 			break;
 		default:
 			break;
