@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-06-03 14:27+0200\n"
+"POT-Creation-Date: 2009-06-05 07:07+0200\n"
 "PO-Revision-Date: 2009-04-19 17:26+0100\n"
 "Last-Translator: Hatim Alahmadi <Dr.Hatim@hotmail.com>\n"
 "Language-Team: LyX team <Dr.Hatim@hotmail.com>\n"
@@ -54,6 +54,7 @@ msgid "&Close"
 msgstr "اغلاق"
 
 #: src/frontends/qt4/ui/AskForTextUi.ui:16
+#: src/frontends/qt4/ui/ToggleWarningUi.ui:14
 msgid "LyX: Enter text"
 msgstr "ليك: ادخل النص"
 
@@ -78,6 +79,7 @@ msgstr "نموذج طباعة"
 #: src/frontends/qt4/ui/SendtoUi.ui:72 src/frontends/qt4/ui/ShortcutUi.ui:52
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
+#: src/frontends/qt4/ui/ToggleWarningUi.ui:91
 #: src/frontends/qt4/ui/VSpaceUi.ui:36 src/frontends/qt4/ui/WrapUi.ui:150
 msgid "&OK"
 msgstr "موافق"
@@ -3784,6 +3786,14 @@ msgstr "انزال المادة المحددة للأسفل"
 #: src/frontends/qt4/ui/TocUi.ui:238
 msgid "Move selected item up by one"
 msgstr "رفع المادة المحددة للأعلى"
+
+#: src/frontends/qt4/ui/ToggleWarningUi.ui:45
+msgid "If you check this, LyX will not warn you again in the given case."
+msgstr ""
+
+#: src/frontends/qt4/ui/ToggleWarningUi.ui:48
+msgid "&Do not show this warning again!"
+msgstr ""
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:81
 msgid "Insert the spacing even after a page break"
@@ -8289,7 +8299,7 @@ msgid "CharStyle"
 msgstr ""
 
 #: lib/layouts/stdcharstyles.inc:10 lib/layouts/stdcustom.inc:10
-#: src/insets/InsetCollapsable.cpp:162
+#: src/insets/InsetCollapsable.cpp:160
 msgid "UNDEFINED"
 msgstr ""
 
@@ -15426,7 +15436,7 @@ msgstr "رقم %1$s"
 msgid "Cannot view file"
 msgstr "فشل عرض ملف"
 
-#: src/Format.cpp:254 src/Format.cpp:325 src/LyXFunc.cpp:1175
+#: src/Format.cpp:254 src/Format.cpp:325 src/LyXFunc.cpp:1179
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr ""
@@ -15826,44 +15836,44 @@ msgstr ""
 msgid "Opening help file %1$s..."
 msgstr "فتح ملف المساعدة %1$s..."
 
-#: src/LyXFunc.cpp:1328
+#: src/LyXFunc.cpp:1332
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr ""
 
-#: src/LyXFunc.cpp:1490
+#: src/LyXFunc.cpp:1494
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "المستند يحفظ افتراضياً في %1$s"
 
-#: src/LyXFunc.cpp:1493
+#: src/LyXFunc.cpp:1497
 msgid "Unable to save document defaults"
 msgstr ""
 
-#: src/LyXFunc.cpp:1637 src/LyXVC.cpp:151
+#: src/LyXFunc.cpp:1641 src/LyXVC.cpp:151
 msgid "LyX VC: Log Message"
 msgstr ""
 
-#: src/LyXFunc.cpp:1646
+#: src/LyXFunc.cpp:1650
 #, fuzzy
 msgid "Directory is not accessible."
 msgstr "ملف غير قابل للقراءة!"
 
-#: src/LyXFunc.cpp:1831
+#: src/LyXFunc.cpp:1835
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "المستند %1$s حمل"
 
-#: src/LyXFunc.cpp:1833
+#: src/LyXFunc.cpp:1837
 #, c-format
 msgid "Could not reload document %1$s"
 msgstr "لم يعد تحميل المستند %1$s"
 
-#: src/LyXFunc.cpp:1870
+#: src/LyXFunc.cpp:1874
 msgid "Welcome to LyX!"
 msgstr "أهلاً بك في ليك"
 
-#: src/LyXFunc.cpp:1891
+#: src/LyXFunc.cpp:1895
 msgid "Converting document to new document class..."
 msgstr ""
 
@@ -16790,9 +16800,9 @@ msgstr "مسار المكتبة:"
 msgid "User directory: "
 msgstr "مسار المستخدم:"
 
-#: src/frontends/qt4/GuiAlert.cpp:124 src/frontends/qt4/GuiAlert.cpp:157
-#: src/frontends/qt4/GuiAlert.cpp:183 src/frontends/qt4/GuiAlert.cpp:209
-#: src/frontends/qt4/GuiAlert.cpp:230
+#: src/frontends/qt4/GuiAlert.cpp:162 src/frontends/qt4/GuiAlert.cpp:196
+#: src/frontends/qt4/GuiAlert.cpp:225 src/frontends/qt4/GuiAlert.cpp:251
+#: src/frontends/qt4/GuiAlert.cpp:272
 #, c-format
 msgid "LyX: %1$s"
 msgstr "ليك: %1$s"
@@ -19121,24 +19131,24 @@ msgstr "acute"
 msgid "non-active"
 msgstr ""
 
-#: src/insets/InsetBranch.cpp:83
+#: src/insets/InsetBranch.cpp:84
 #, fuzzy, c-format
 msgid "Branch (%1$s): %2$s"
 msgstr "%1$s, %2$s"
 
-#: src/insets/InsetBranch.cpp:91
+#: src/insets/InsetBranch.cpp:95
 msgid "Branch: "
 msgstr "فرع:"
 
-#: src/insets/InsetBranch.cpp:95
+#: src/insets/InsetBranch.cpp:99
 msgid "Branch (child only): "
 msgstr ""
 
-#: src/insets/InsetBranch.cpp:100
+#: src/insets/InsetBranch.cpp:104
 msgid "Undef: "
 msgstr ""
 
-#: src/insets/InsetBranch.cpp:230
+#: src/insets/InsetBranch.cpp:234
 msgid "branch"
 msgstr "فرع"
 
@@ -19155,12 +19165,12 @@ msgstr ""
 msgid "not cited"
 msgstr ""
 
-#: src/insets/InsetCitation.cpp:396
+#: src/insets/InsetCitation.cpp:395
 #, fuzzy
 msgid "No bibliography defined!"
 msgstr "مفتاح بابلوغرافيا"
 
-#: src/insets/InsetCitation.cpp:400
+#: src/insets/InsetCitation.cpp:399
 #, fuzzy
 msgid "No citations selected!"
 msgstr "لا اجراء محدد"
@@ -20127,21 +20137,21 @@ msgstr ""
 msgid "[[Replace with the code of your language]]"
 msgstr ""
 
-#: src/support/os_win32.cpp:323
+#: src/support/os_win32.cpp:355
 msgid "System file not found"
 msgstr "ملف النظام غير موجود"
 
-#: src/support/os_win32.cpp:324
+#: src/support/os_win32.cpp:356
 msgid ""
 "Unable to load shfolder.dll\n"
 "Please install."
 msgstr ""
 
-#: src/support/os_win32.cpp:329
+#: src/support/os_win32.cpp:361
 msgid "System function not found"
 msgstr "دالة النظام غير موجودة"
 
-#: src/support/os_win32.cpp:330
+#: src/support/os_win32.cpp:362
 msgid ""
 "Unable to find SHGetFolderPathA in shfolder.dll\n"
 "Don't know how to proceed. Sorry."

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-06-03 14:27+0200\n"
+"POT-Creation-Date: 2009-06-05 07:07+0200\n"
 "PO-Revision-Date: 2009-04-05 02:01+0100\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -50,6 +50,7 @@ msgid "&Close"
 msgstr "&Zavøít"
 
 #: src/frontends/qt4/ui/AskForTextUi.ui:16
+#: src/frontends/qt4/ui/ToggleWarningUi.ui:14
 msgid "LyX: Enter text"
 msgstr "LyX: Vlo¾ text"
 
@@ -75,6 +76,7 @@ msgstr "&Dummy"
 #: src/frontends/qt4/ui/SendtoUi.ui:72 src/frontends/qt4/ui/ShortcutUi.ui:52
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
+#: src/frontends/qt4/ui/ToggleWarningUi.ui:91
 #: src/frontends/qt4/ui/VSpaceUi.ui:36 src/frontends/qt4/ui/WrapUi.ui:150
 msgid "&OK"
 msgstr "&OK"
@@ -3790,6 +3792,14 @@ msgstr "Pøesun oznaèené polo¾ky dolù"
 #: src/frontends/qt4/ui/TocUi.ui:238
 msgid "Move selected item up by one"
 msgstr "Pøesun oznaèené citace nahoru"
+
+#: src/frontends/qt4/ui/ToggleWarningUi.ui:45
+msgid "If you check this, LyX will not warn you again in the given case."
+msgstr ""
+
+#: src/frontends/qt4/ui/ToggleWarningUi.ui:48
+msgid "&Do not show this warning again!"
+msgstr ""
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:81
 msgid "Insert the spacing even after a page break"
@@ -8236,7 +8246,7 @@ msgid "CharStyle"
 msgstr "Styl znaku"
 
 #: lib/layouts/stdcharstyles.inc:10 lib/layouts/stdcustom.inc:10
-#: src/insets/InsetCollapsable.cpp:162
+#: src/insets/InsetCollapsable.cpp:160
 msgid "UNDEFINED"
 msgstr "NEDEFINOVÁNO"
 
@@ -15440,7 +15450,7 @@ msgstr "  Èíslo %1$s"
 msgid "Cannot view file"
 msgstr "Soubor nelze prohlí¾et"
 
-#: src/Format.cpp:254 src/Format.cpp:325 src/LyXFunc.cpp:1175
+#: src/Format.cpp:254 src/Format.cpp:325 src/LyXFunc.cpp:1179
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "Soubor neexistuje: %1$s"
@@ -15890,43 +15900,43 @@ msgstr "Chybí argument"
 msgid "Opening help file %1$s..."
 msgstr "Otvírání nápovìdy %1$s..."
 
-#: src/LyXFunc.cpp:1328
+#: src/LyXFunc.cpp:1332
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "Otvírání dokumentu potomka %1$s..."
 
-#: src/LyXFunc.cpp:1490
+#: src/LyXFunc.cpp:1494
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Standardní nastavení dokumentu ulo¾eno v %1$s"
 
-#: src/LyXFunc.cpp:1493
+#: src/LyXFunc.cpp:1497
 msgid "Unable to save document defaults"
 msgstr "Nelze ulo¾it standardní nastavení dokumentu"
 
-#: src/LyXFunc.cpp:1637 src/LyXVC.cpp:151
+#: src/LyXFunc.cpp:1641 src/LyXVC.cpp:151
 msgid "LyX VC: Log Message"
 msgstr "LyX SV: Zpráva Log-u"
 
-#: src/LyXFunc.cpp:1646
+#: src/LyXFunc.cpp:1650
 msgid "Directory is not accessible."
 msgstr "Adresáø není pøístupný."
 
-#: src/LyXFunc.cpp:1831
+#: src/LyXFunc.cpp:1835
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s znovunaèten."
 
-#: src/LyXFunc.cpp:1833
+#: src/LyXFunc.cpp:1837
 #, c-format
 msgid "Could not reload document %1$s"
 msgstr "Nelze znovunaèíst dokument %1$s"
 
-#: src/LyXFunc.cpp:1870
+#: src/LyXFunc.cpp:1874
 msgid "Welcome to LyX!"
 msgstr "Vítejte v LyXu!"
 
-#: src/LyXFunc.cpp:1891
+#: src/LyXFunc.cpp:1895
 msgid "Converting document to new document class..."
 msgstr "Konverze dokumentu do nové tøídy dokumentu..."
 
@@ -16993,9 +17003,9 @@ msgstr "Adresáø s knihovnami: "
 msgid "User directory: "
 msgstr "U¾ivatelský adresáø: "
 
-#: src/frontends/qt4/GuiAlert.cpp:124 src/frontends/qt4/GuiAlert.cpp:157
-#: src/frontends/qt4/GuiAlert.cpp:183 src/frontends/qt4/GuiAlert.cpp:209
-#: src/frontends/qt4/GuiAlert.cpp:230
+#: src/frontends/qt4/GuiAlert.cpp:162 src/frontends/qt4/GuiAlert.cpp:196
+#: src/frontends/qt4/GuiAlert.cpp:225 src/frontends/qt4/GuiAlert.cpp:251
+#: src/frontends/qt4/GuiAlert.cpp:272
 #, c-format
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
@@ -19375,24 +19385,24 @@ msgstr "aktivní"
 msgid "non-active"
 msgstr "neaktivní"
 
-#: src/insets/InsetBranch.cpp:83
+#: src/insets/InsetBranch.cpp:84
 #, c-format
 msgid "Branch (%1$s): %2$s"
 msgstr "Vìtev (%1$s): %2$s"
 
-#: src/insets/InsetBranch.cpp:91
+#: src/insets/InsetBranch.cpp:95
 msgid "Branch: "
 msgstr "Vìtev: "
 
-#: src/insets/InsetBranch.cpp:95
+#: src/insets/InsetBranch.cpp:99
 msgid "Branch (child only): "
 msgstr "Vìtev (pouze potomek): "
 
-#: src/insets/InsetBranch.cpp:100
+#: src/insets/InsetBranch.cpp:104
 msgid "Undef: "
 msgstr "Nedef: "
 
-#: src/insets/InsetBranch.cpp:230
+#: src/insets/InsetBranch.cpp:234
 msgid "branch"
 msgstr "vìtev"
 
@@ -19409,11 +19419,11 @@ msgstr "Sub-%1$s"
 msgid "not cited"
 msgstr "necitováno"
 
-#: src/insets/InsetCitation.cpp:396
+#: src/insets/InsetCitation.cpp:395
 msgid "No bibliography defined!"
 msgstr "Není definována ¾ádná bibliografie!"
 
-#: src/insets/InsetCitation.cpp:400
+#: src/insets/InsetCitation.cpp:399
 msgid "No citations selected!"
 msgstr "Není vybrána ¾ádná citace!"
 
@@ -20409,11 +20419,11 @@ msgstr "Ladìní `%1$s' (%2$s)"
 msgid "[[Replace with the code of your language]]"
 msgstr "cs"
 
-#: src/support/os_win32.cpp:323
+#: src/support/os_win32.cpp:355
 msgid "System file not found"
 msgstr "Systémový soubor nenalezen"
 
-#: src/support/os_win32.cpp:324
+#: src/support/os_win32.cpp:356
 msgid ""
 "Unable to load shfolder.dll\n"
 "Please install."
@@ -20421,11 +20431,11 @@ msgstr ""
 "Nelze naèíst shfolder.dll\n"
 "Prosím nainstalujte."
 
-#: src/support/os_win32.cpp:329
+#: src/support/os_win32.cpp:361
 msgid "System function not found"
 msgstr "Systémová funkce nenalezena"
 
-#: src/support/os_win32.cpp:330
+#: src/support/os_win32.cpp:362
 msgid ""
 "Unable to find SHGetFolderPathA in shfolder.dll\n"
 "Don't know how to proceed. Sorry."

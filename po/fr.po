@@ -227,7 +227,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-06-03 14:27+0200\n"
+"POT-Creation-Date: 2009-06-05 07:07+0200\n"
 "PO-Revision-Date: 2009-05-19 13:54+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
@@ -272,6 +272,7 @@ msgid "&Close"
 msgstr "&Fermer"
 
 #: src/frontends/qt4/ui/AskForTextUi.ui:16
+#: src/frontends/qt4/ui/ToggleWarningUi.ui:14
 msgid "LyX: Enter text"
 msgstr "LyX : saisir un texte"
 
@@ -296,6 +297,7 @@ msgstr "&Bidon"
 #: src/frontends/qt4/ui/SendtoUi.ui:72 src/frontends/qt4/ui/ShortcutUi.ui:52
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
+#: src/frontends/qt4/ui/ToggleWarningUi.ui:91
 #: src/frontends/qt4/ui/VSpaceUi.ui:36 src/frontends/qt4/ui/WrapUi.ui:150
 msgid "&OK"
 msgstr "&OK"
@@ -4046,6 +4048,14 @@ msgstr "Descendre l'élément sélectionné d'une place"
 #: src/frontends/qt4/ui/TocUi.ui:238
 msgid "Move selected item up by one"
 msgstr "Remonter l'élément sélectionné d'une place"
+
+#: src/frontends/qt4/ui/ToggleWarningUi.ui:45
+msgid "If you check this, LyX will not warn you again in the given case."
+msgstr ""
+
+#: src/frontends/qt4/ui/ToggleWarningUi.ui:48
+msgid "&Do not show this warning again!"
+msgstr ""
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:81
 msgid "Insert the spacing even after a page break"
@@ -8517,7 +8527,7 @@ msgid "CharStyle"
 msgstr "Style de texte"
 
 #: lib/layouts/stdcharstyles.inc:10 lib/layouts/stdcustom.inc:10
-#: src/insets/InsetCollapsable.cpp:162
+#: src/insets/InsetCollapsable.cpp:160
 msgid "UNDEFINED"
 msgstr "INDÉFINI"
 
@@ -15742,7 +15752,7 @@ msgstr "  Nombre %1$s"
 msgid "Cannot view file"
 msgstr "Visualisation du fichier impossible"
 
-#: src/Format.cpp:254 src/Format.cpp:325 src/LyXFunc.cpp:1175
+#: src/Format.cpp:254 src/Format.cpp:325 src/LyXFunc.cpp:1179
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "Fichier inexistant : %1$s"
@@ -16202,43 +16212,43 @@ msgstr "Paramètre manquant"
 msgid "Opening help file %1$s..."
 msgstr "Ouverture du fichier d'aide %1$s..."
 
-#: src/LyXFunc.cpp:1328
+#: src/LyXFunc.cpp:1332
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "Ouverture du sous-document %1$s..."
 
-#: src/LyXFunc.cpp:1490
+#: src/LyXFunc.cpp:1494
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Les valeurs par défaut du document ont été enregistrées dans %1$s"
 
-#: src/LyXFunc.cpp:1493
+#: src/LyXFunc.cpp:1497
 msgid "Unable to save document defaults"
 msgstr "Impossible d'enregistrer les valeurs par défaut du document"
 
-#: src/LyXFunc.cpp:1637 src/LyXVC.cpp:151
+#: src/LyXFunc.cpp:1641 src/LyXVC.cpp:151
 msgid "LyX VC: Log Message"
 msgstr "LyX CV : Message de log"
 
-#: src/LyXFunc.cpp:1646
+#: src/LyXFunc.cpp:1650
 msgid "Directory is not accessible."
 msgstr "Répertoire inaccessible."
 
-#: src/LyXFunc.cpp:1831
+#: src/LyXFunc.cpp:1835
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Document %1$s rechargé."
 
-#: src/LyXFunc.cpp:1833
+#: src/LyXFunc.cpp:1837
 #, c-format
 msgid "Could not reload document %1$s"
 msgstr "Impossible de recharger le document %1$s"
 
-#: src/LyXFunc.cpp:1870
+#: src/LyXFunc.cpp:1874
 msgid "Welcome to LyX!"
 msgstr "Bienvenue dans LyX !"
 
-#: src/LyXFunc.cpp:1891
+#: src/LyXFunc.cpp:1895
 msgid "Converting document to new document class..."
 msgstr "Conversion du document vers sa nouvelle classe..."
 
@@ -17346,9 +17356,9 @@ msgstr "Répertoire système : "
 msgid "User directory: "
 msgstr "Répertoire utilisateur : "
 
-#: src/frontends/qt4/GuiAlert.cpp:124 src/frontends/qt4/GuiAlert.cpp:157
-#: src/frontends/qt4/GuiAlert.cpp:183 src/frontends/qt4/GuiAlert.cpp:209
-#: src/frontends/qt4/GuiAlert.cpp:230
+#: src/frontends/qt4/GuiAlert.cpp:162 src/frontends/qt4/GuiAlert.cpp:196
+#: src/frontends/qt4/GuiAlert.cpp:225 src/frontends/qt4/GuiAlert.cpp:251
+#: src/frontends/qt4/GuiAlert.cpp:272
 #, c-format
 msgid "LyX: %1$s"
 msgstr "LyX : %1$s"
@@ -19737,24 +19747,24 @@ msgstr "actif"
 msgid "non-active"
 msgstr "non-actif"
 
-#: src/insets/InsetBranch.cpp:83
+#: src/insets/InsetBranch.cpp:84
 #, c-format
 msgid "Branch (%1$s): %2$s"
 msgstr "Branche (%1$s) : %2$s"
 
-#: src/insets/InsetBranch.cpp:91
+#: src/insets/InsetBranch.cpp:95
 msgid "Branch: "
 msgstr "Branche : "
 
-#: src/insets/InsetBranch.cpp:95
+#: src/insets/InsetBranch.cpp:99
 msgid "Branch (child only): "
 msgstr "Branche (sous-document seulement) :"
 
-#: src/insets/InsetBranch.cpp:100
+#: src/insets/InsetBranch.cpp:104
 msgid "Undef: "
 msgstr "Undef : "
 
-#: src/insets/InsetBranch.cpp:230
+#: src/insets/InsetBranch.cpp:234
 msgid "branch"
 msgstr "branche"
 
@@ -19771,11 +19781,11 @@ msgstr "Sous-%1$s"
 msgid "not cited"
 msgstr "non cité"
 
-#: src/insets/InsetCitation.cpp:396
+#: src/insets/InsetCitation.cpp:395
 msgid "No bibliography defined!"
 msgstr "Aucune bibliographie définie !"
 
-#: src/insets/InsetCitation.cpp:400
+#: src/insets/InsetCitation.cpp:399
 msgid "No citations selected!"
 msgstr "Aucune citation sélectionnée !"
 
@@ -20782,11 +20792,11 @@ msgstr "Débogage de '%1$s' (%2$s)"
 msgid "[[Replace with the code of your language]]"
 msgstr "fr"
 
-#: src/support/os_win32.cpp:323
+#: src/support/os_win32.cpp:355
 msgid "System file not found"
 msgstr "Fichier système introuvable !"
 
-#: src/support/os_win32.cpp:324
+#: src/support/os_win32.cpp:356
 msgid ""
 "Unable to load shfolder.dll\n"
 "Please install."
@@ -20794,11 +20804,11 @@ msgstr ""
 "Impossible de charger shfolder.dll\n"
 "Veuillez l'installer."
 
-#: src/support/os_win32.cpp:329
+#: src/support/os_win32.cpp:361
 msgid "System function not found"
 msgstr "Fonction système introuvable !"
 
-#: src/support/os_win32.cpp:330
+#: src/support/os_win32.cpp:362
 msgid ""
 "Unable to find SHGetFolderPathA in shfolder.dll\n"
 "Don't know how to proceed. Sorry."

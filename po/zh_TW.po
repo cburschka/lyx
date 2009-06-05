@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-06-03 14:27+0200\n"
+"POT-Creation-Date: 2009-06-05 07:07+0200\n"
 "PO-Revision-Date: 2009-04-19 17:10+0100\n"
 "Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -52,6 +52,7 @@ msgid "&Close"
 msgstr "關閉(&C)"
 
 #: src/frontends/qt4/ui/AskForTextUi.ui:16
+#: src/frontends/qt4/ui/ToggleWarningUi.ui:14
 msgid "LyX: Enter text"
 msgstr "LyX：輸入文字"
 
@@ -76,6 +77,7 @@ msgstr "虛設(&D)"
 #: src/frontends/qt4/ui/SendtoUi.ui:72 src/frontends/qt4/ui/ShortcutUi.ui:52
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
+#: src/frontends/qt4/ui/ToggleWarningUi.ui:91
 #: src/frontends/qt4/ui/VSpaceUi.ui:36 src/frontends/qt4/ui/WrapUi.ui:150
 msgid "&OK"
 msgstr "確定(&O)"
@@ -3889,6 +3891,14 @@ msgstr "向下移動已選項目一格"
 #: src/frontends/qt4/ui/TocUi.ui:238
 msgid "Move selected item up by one"
 msgstr "向上移動已選項目一格"
+
+#: src/frontends/qt4/ui/ToggleWarningUi.ui:45
+msgid "If you check this, LyX will not warn you again in the given case."
+msgstr ""
+
+#: src/frontends/qt4/ui/ToggleWarningUi.ui:48
+msgid "&Do not show this warning again!"
+msgstr ""
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:81
 msgid "Insert the spacing even after a page break"
@@ -8494,7 +8504,7 @@ msgid "CharStyle"
 msgstr "變更："
 
 #: lib/layouts/stdcharstyles.inc:10 lib/layouts/stdcustom.inc:10
-#: src/insets/InsetCollapsable.cpp:162
+#: src/insets/InsetCollapsable.cpp:160
 msgid "UNDEFINED"
 msgstr ""
 
@@ -15959,7 +15969,7 @@ msgstr "  數字 %1$s"
 msgid "Cannot view file"
 msgstr "無法檢視檔案"
 
-#: src/Format.cpp:254 src/Format.cpp:325 src/LyXFunc.cpp:1175
+#: src/Format.cpp:254 src/Format.cpp:325 src/LyXFunc.cpp:1179
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "檔案不存在：%1$s"
@@ -16402,44 +16412,44 @@ msgstr "缺少引數"
 msgid "Opening help file %1$s..."
 msgstr "開啟說明檔案 %1$s…"
 
-#: src/LyXFunc.cpp:1328
+#: src/LyXFunc.cpp:1332
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "開啟子文件 %1$s…"
 
-#: src/LyXFunc.cpp:1490
+#: src/LyXFunc.cpp:1494
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "文件預設儲存在 %1$s 中"
 
-#: src/LyXFunc.cpp:1493
+#: src/LyXFunc.cpp:1497
 msgid "Unable to save document defaults"
 msgstr "無法儲存文件預設值"
 
-#: src/LyXFunc.cpp:1637 src/LyXVC.cpp:151
+#: src/LyXFunc.cpp:1641 src/LyXVC.cpp:151
 msgid "LyX VC: Log Message"
 msgstr "LyX VC：記錄檔訊息"
 
-#: src/LyXFunc.cpp:1646
+#: src/LyXFunc.cpp:1650
 #, fuzzy
 msgid "Directory is not accessible."
 msgstr "%1$s 無法讀取。"
 
-#: src/LyXFunc.cpp:1831
+#: src/LyXFunc.cpp:1835
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "文件 %1$s 已開啟。"
 
-#: src/LyXFunc.cpp:1833
+#: src/LyXFunc.cpp:1837
 #, fuzzy, c-format
 msgid "Could not reload document %1$s"
 msgstr "無法讀取文件"
 
-#: src/LyXFunc.cpp:1870
+#: src/LyXFunc.cpp:1874
 msgid "Welcome to LyX!"
 msgstr "歡迎使用 LyX！"
 
-#: src/LyXFunc.cpp:1891
+#: src/LyXFunc.cpp:1895
 msgid "Converting document to new document class..."
 msgstr "轉換文件到新文件類別…"
 
@@ -17447,9 +17457,9 @@ msgstr "函式庫目錄："
 msgid "User directory: "
 msgstr "使用者目錄："
 
-#: src/frontends/qt4/GuiAlert.cpp:124 src/frontends/qt4/GuiAlert.cpp:157
-#: src/frontends/qt4/GuiAlert.cpp:183 src/frontends/qt4/GuiAlert.cpp:209
-#: src/frontends/qt4/GuiAlert.cpp:230
+#: src/frontends/qt4/GuiAlert.cpp:162 src/frontends/qt4/GuiAlert.cpp:196
+#: src/frontends/qt4/GuiAlert.cpp:225 src/frontends/qt4/GuiAlert.cpp:251
+#: src/frontends/qt4/GuiAlert.cpp:272
 #, c-format
 msgid "LyX: %1$s"
 msgstr "LyX：%1$s"
@@ -19957,24 +19967,24 @@ msgstr "銳角"
 msgid "non-active"
 msgstr ""
 
-#: src/insets/InsetBranch.cpp:83
+#: src/insets/InsetBranch.cpp:84
 #, fuzzy, c-format
 msgid "Branch (%1$s): %2$s"
 msgstr "%1$s 和 %2$s"
 
-#: src/insets/InsetBranch.cpp:91
+#: src/insets/InsetBranch.cpp:95
 msgid "Branch: "
 msgstr "分支："
 
-#: src/insets/InsetBranch.cpp:95
+#: src/insets/InsetBranch.cpp:99
 msgid "Branch (child only): "
 msgstr ""
 
-#: src/insets/InsetBranch.cpp:100
+#: src/insets/InsetBranch.cpp:104
 msgid "Undef: "
 msgstr "未定義："
 
-#: src/insets/InsetBranch.cpp:230
+#: src/insets/InsetBranch.cpp:234
 msgid "branch"
 msgstr "分支"
 
@@ -19992,12 +20002,12 @@ msgstr ""
 msgid "not cited"
 msgstr "保護的"
 
-#: src/insets/InsetCitation.cpp:396
+#: src/insets/InsetCitation.cpp:395
 #, fuzzy
 msgid "No bibliography defined!"
 msgstr "文獻目錄鍵"
 
-#: src/insets/InsetCitation.cpp:400
+#: src/insets/InsetCitation.cpp:399
 #, fuzzy
 msgid "No citations selected!"
 msgstr "沒有字型變更定義。"
@@ -21014,11 +21024,11 @@ msgstr "偵錯「%1$s」(%2$s)"
 msgid "[[Replace with the code of your language]]"
 msgstr "zh_TW"
 
-#: src/support/os_win32.cpp:323
+#: src/support/os_win32.cpp:355
 msgid "System file not found"
 msgstr "找不到系統檔案"
 
-#: src/support/os_win32.cpp:324
+#: src/support/os_win32.cpp:356
 msgid ""
 "Unable to load shfolder.dll\n"
 "Please install."
@@ -21026,11 +21036,11 @@ msgstr ""
 "無法載入 shfolder.dll\n"
 "請安裝。"
 
-#: src/support/os_win32.cpp:329
+#: src/support/os_win32.cpp:361
 msgid "System function not found"
 msgstr "系統函式找不到"
 
-#: src/support/os_win32.cpp:330
+#: src/support/os_win32.cpp:362
 msgid ""
 "Unable to find SHGetFolderPathA in shfolder.dll\n"
 "Don't know how to proceed. Sorry."
