@@ -68,7 +68,7 @@ docstring escapeChar(char_type c)
 // FIXME This needs to be protected somehow.
 static vector<string> taglist;
 
-bool openTag(odocstream & os, string tag, string attr)
+bool openTag(odocstream & os, string const & tag, string const & attr)
 {
 	if (tag.empty())
 		return false;
@@ -78,15 +78,13 @@ bool openTag(odocstream & os, string tag, string attr)
 	if (tag == "p")
 		if (find(taglist.begin(), taglist.end(), "p") != taglist.end())
 			return false;
-	if (!attr.empty())
-		attr = ' ' + attr;
-	os << from_ascii("<" + tag + attr + ">");
+	os << from_ascii("<" + tag + (attr.empty() ? "" : " " + attr) + ">");
 	taglist.push_back(tag);
 	return true;
 }
 
 
-bool closeTag(odocstream & os, string tag)
+bool closeTag(odocstream & os, string const & tag)
 {
 	if (tag.empty())
 		return false;

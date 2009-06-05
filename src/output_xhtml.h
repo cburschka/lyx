@@ -30,9 +30,10 @@ namespace html {
 	///
 	docstring escapeChar(char_type c);
 	/// \return true if tag was opened, false if not 
-	bool openTag(odocstream & os, std::string tag, std::string attr);
+	bool openTag(odocstream & os, std::string const & tag, 
+	             std::string const & attr);
 	/// \return true if tag was opened, false if not 
-	bool closeTag(odocstream & os, std::string tag);
+	bool closeTag(odocstream & os, std::string const & tag);
 }
 } // namespace lyx
 
