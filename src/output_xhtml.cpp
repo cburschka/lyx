@@ -201,9 +201,10 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 		bool const opened = openTag(os, lay);
 		par->simpleLyXHTMLOnePar(buf, os, runparams, 
 				outerFont(distance(paragraphs.begin(), par), paragraphs));
-		if (opened)
+		if (opened) {
 			closeTag(os, lay);
-		os << '\n';
+			os << '\n';
+		}
 	}
 	return pend;
 }
@@ -338,6 +339,7 @@ void makeCommand(Buffer const & buf,
 			outerFont(distance(paragraphs.begin(), pbegin), paragraphs));
 	if (main_tag_opened)
 		closeTag(os, style);
+	os << '\n';
 }
 
 } // end anonymous namespace
@@ -377,7 +379,6 @@ void xhtmlParagraphs(ParagraphList const & paragraphs,
 		default:
 			break;
 		}
-		os << '\n';
 		// makeEnvironment may process more than one paragraphs and bypass pend
 		if (distance(lastpar, par) >= distance(lastpar, pend))
 			break;

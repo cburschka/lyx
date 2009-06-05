@@ -2413,6 +2413,8 @@ void Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 						i += 1;
 					}
 				}
+				else
+					os << c;
 			} else
 				os << html::escapeChar(c);
 		}
