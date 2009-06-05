@@ -351,7 +351,6 @@ def checkFormatEntries(dtl_tools):
 \Format literate   nw      NoWeb                  N  ""	"%%"	"document"
 \Format sweave     Rnw    "Sweave"                S  "" "%%"    "document"
 \Format lilypond   ly     "LilyPond music"        "" ""	"%%"	"vector"
-\Format xhtml      html   "LyX HTML"              "" "" "%%"  "document"
 \Format latex      tex    "LaTeX (plain)"         L  ""	"%%"	"document"
 \Format pdflatex   tex    "LaTeX (pdflatex)"      "" ""	"%%"	"document"
 \Format xetex      tex    "LaTeX (XeTeX)"         "" ""	"%%"	"document"
@@ -360,6 +359,11 @@ def checkFormatEntries(dtl_tools):
 \Format text3      txt    "Plain text (ps2ascii)" "" ""	"%%"	"document"
 \Format text4      txt    "Plain text (catdvi)"   "" ""	"%%"	"document"
 \Format textparagraph txt "Plain Text, Join Lines" "" ""	"%%"	"document"''' ])
+ #
+    path, xhtmlview = checkViewer('an HTML previewer', ['firefox', 'mozilla file://$$p$$i', 'netscape'],
+        rc_entry = [r'\Format xhtml      html   "LyX HTML"              "" "%%" ""    "document"'])
+    if xhtmlview == "":
+        addToRC(r'\Format xhtml      html   "LyX HTML"              "" "" "%%"  "document"')
  #
     checkViewer('a BibTeX editor', ['sensible-editor', 'jabref', 'JabRef', \
         'pybliographic', 'bibdesk', 'gbib', 'kbib', \
