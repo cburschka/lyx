@@ -1,0 +1,70 @@
+The main output routines now more or less work.
+
+Known issues:
+- InsetLine normally appears in a standard environment, which puts <hr /> inside
+	<p>, in violation of the DTD. I guess we could close the paragraph and then do
+	the <hr />, but isn't there a better solution? There's actually a LyX bug here, 
+	I think, since a line surely ought not appear in a normal paragraph?
+- The code that manages the nesting of tags is pretty primitive. Its main function
+	is to keep us from outputting too many "p" tags. But perhaps it does its work.
+	We shall see.
+
+These insets are basically done, though there are probably issues here and there,
+	and there are even some FIXMEs:
+	Branch, Hyperlink, Label, Line, Newline, Newpage, Quotes, Space, SpecialChar
+
+These insets probably do nothing:
+	OptArg, Phantom
+
+These insets work but still need work:
+	InsetBox: We need a Length::asHTML() method and the like, but it basically works.
+		though the CSS isn't there yet.
+
+These insets do not work but should be completely straightforward:
+	Caption, Flex (uses collapsable)
+
+These do not yet work and need some attention:
+	InsetBibitem: Should be fairly straightforward, in itself, actually.
+	InsetBibtex: We should be able to collect the keys of references in
+		validate() and then use our parsed information to output some sort of
+		bibliography. Formatting is another question, but here again we could
+		try parsing the bbl file.
+	InsetCitation: I think we'll want to do something here involving reference keys.
+		Maybe for the beginning, we should just do everything numerically, but even
+		that will need a bit of work. Validation is our friend, presumably.
+	InsetCollapsable: This is a bit of a mess at the moment, but ought not to be
+		too hard to get right. Probably we ought to do as suggested there, and just
+		call InsetText::lyxhtml().
+	InsetCommand: By default does nothing. That may be right?
+	InsetERT: It's not entirely clear what it's best to do here. Maybe output it
+		verbatim. Perhaps wrapped in some CSS. (What else would one expect?)
+	InsetExternal: I don't understand these so am not sure what to do.
+	InsetFloat: This will need some work, again because I do not really understand
+		what these are meant to do. Presumably, we'll just use a div or something, but
+		it's not clear what subfloat means, etc.
+	InsetFoot: Easy, but need CSS.
+	InsetGraphics: This should be fairly straightforward, but I'll need to learn a bit
+		about export formats, etc, to get it completely right. We'll also want to make
+		some use of the params, eg, on width and height. I guess there is also some
+		issue about converting the graphics formats?
+	InsetInclude: I think we just want to include it, straightforwardly. Probably will
+		base this more on the latex() routine, then. Another possibility, maybe with a
+		flag of some sort, would be to do it as a separate file, to which we link.
+	InsetIndex: Not clear whether to do anything with this or not. Certainly it's an 
+		"advanced" case.
+	InsetInfo: Probably skip it.
+	InsetListings: Probably just output it as <pre>.
+	InsetMarginal: Fine, but will need CSS.
+	InsetNomencl: Also "advanced".
+	InsetNote: Need CSS, again.
+	InsetRef: Presumably, this is an internal link. But what should the text be, and how
+		should we get it? Probably some validation thing again, where labels tell us where 
+		they are. Alternatively, we could parse the aux file.
+	InsetTabular: This shouldn't be too hard, but will need doing.
+	InsetTOC: Here again, validation might do the trick, but I'm not sure. Or perhaps some
+		kind of post-processing? Another option, maybe the best option, would be just to use
+		the information we already have in the TOC.
+	InsetVSpace: This will be easy, once we have the Length::asHTML() method.
+	InsetWrap: This should be simple enough, probably a div and some CSS, but I'm not sure
+		precisely what this is supposed to do.
+There seems not to be much here for math, so that will take some doing.

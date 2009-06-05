@@ -1,0 +1,122 @@
+#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 361
+\begin_document
+\begin_header
+\textclass paper
+\begin_preamble
+\usepackage{heck}
+\end_preamble
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_xetex false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format lyxhtml
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing onehalf
+\use_hyperref false
+\papersize letterpaper
+\use_geometry true
+\use_amsmath 1
+\use_esint 0
+\cite_engine natbib_authoryear
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip smallskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+this is text.
+\end_layout
+
+\begin_layout Quote
+quote q.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+depth depth
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+standard stuff
+\end_layout
+
+\begin_layout Quote
+this quote is not in the list.
+\end_layout
+
+\begin_deeper
+\begin_layout Quotation
+OK, maybe that's deep enough!
+\end_layout
+
+\end_deeper
+\begin_layout Quote
+more of that quote.
+\end_layout
+
+\begin_layout Standard
+end the standard stuff.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+more list
+\end_layout
+
+\begin_layout Itemize
+some more still
+\end_layout
+
+\end_deeper
+\begin_layout Quote
+more of that quote.
+\end_layout
+
+\begin_deeper
+\begin_layout Quote
+more or another uote.
+\end_layout
+
+\end_deeper
+\begin_layout Quote
+quote t.
+\end_layout
+
+\begin_layout Standard
+that is text.
+\end_layout
+
+\end_body
+\end_document
