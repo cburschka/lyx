@@ -742,6 +742,7 @@ vector<string> Converters::savers() const
 	v.push_back("latex");
 	v.push_back("literate");
 	v.push_back("lyx");
+	v.push_back("xhtml");
 	v.push_back("pdflatex");
 	v.push_back("platex");
 	v.push_back("text");

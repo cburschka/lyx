@@ -145,11 +145,20 @@ public:
 	/// Get the id of the paragraph, usefull for docbook
 	std::string getID(Buffer const & buf, OutputParams const & runparams) const;
 
-	/// Get the first word of a paragraph, return the position where it left
-	pos_type firstWord(odocstream & os, OutputParams const & runparams) const;
+	/// Output the first word of a paragraph, return the position where it left.
+	pos_type firstWordDocBook(odocstream & os, OutputParams const & runparams) const;
+
+	/// Output the first word of a paragraph, return the position where it left.
+	pos_type firstWordLyXHTML(odocstream & os, OutputParams const & runparams) const;
 
 	/// Writes to stream the docbook representation
 	void simpleDocBookOnePar(Buffer const & buf,
+				 odocstream &,
+				 OutputParams const & runparams,
+				 Font const & outerfont,
+				 pos_type initial = 0) const;
+	/// 
+	void simpleLyXHTMLOnePar(Buffer const & buf,
 				 odocstream &,
 				 OutputParams const & runparams,
 				 Font const & outerfont,

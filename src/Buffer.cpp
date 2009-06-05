@@ -47,6 +47,7 @@
 #include "output_docbook.h"
 #include "output.h"
 #include "output_latex.h"
+#include "output_xhtml.h"
 #include "output_plaintext.h"
 #include "paragraph_funcs.h"
 #include "Paragraph.h"
@@ -1334,6 +1335,61 @@ void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 	os << '\n';
 	docbookParagraphs(paragraphs(), *this, os, runparams);
 	sgml::closeTag(os, top_element);
+}
+
+
+void Buffer::makeLyXHTMLFile(FileName const & fname,
+			      OutputParams const & runparams,
+			      bool const body_only) const
+{
+	LYXERR(Debug::LATEX, "makeLYXHTMLFile...");
+
+	ofdocstream ofs;
+	if (!openFileWrite(ofs, fname))
+		return;
+
+	writeLyXHTMLSource(ofs, runparams, body_only);
+
+	ofs.close();
+	if (ofs.fail())
+		lyxerr << "File '" << fname << "' was not closed properly." << endl;
+}
+
+
+void Buffer::writeLyXHTMLSource(odocstream & os,
+			     OutputParams const & runparams,
+			     bool const only_body) const
+{
+	LaTeXFeatures features(*this, params(), runparams);
+	validate(features);
+
+	d->texrow.reset();
+
+	if (!only_body) {
+		os << "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"" <<
+			" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n";
+		// FIXME Language should be set properly.
+		os << "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n";
+		// FIXME Header
+		os << "<head>\n";
+		// FIXME Presumably need to set this right
+		os << "<meta http-equiv=\"Content-type\" content=\"text/html;charset=UTF-8\" />\n";
+		// FIXME Get this during validation? What about other meta-data?
+		os << "<title>TBA</title>\n";
+
+		docstring styleinfo = features.getTClassHTMLPreamble();
+		if (!styleinfo.empty()) {
+			os << "<style type='text/css'>\n";
+			os << styleinfo;
+			os << "</style>\n";
+		}
+		os << "</head>\n<body>\n";
+	}
+
+	params().documentClass().counters().reset();
+	xhtmlParagraphs(paragraphs(), *this, os, runparams);
+	if (!only_body)
+		os << "</body>\n</html>\n";
 }
 
 
@@ -2742,6 +2798,8 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 	if (backend_format == "text")
 		writePlaintextFile(*this, FileName(filename), runparams);
 	// no backend
+	else if (backend_format == "xhtml")
+		makeLyXHTMLFile(FileName(filename), runparams);
 	else if (backend_format == "lyx")
 		writeFile(FileName(filename));
 	// Docbook backend
@@ -2871,6 +2929,7 @@ vector<string> Buffer::backends() const
 			v.push_back("pdflatex");
 	}
 	v.push_back("text");
+	v.push_back("xhtml");
 	v.push_back("lyx");
 	return v;
 }

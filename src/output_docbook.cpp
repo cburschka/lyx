@@ -156,7 +156,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 			if (!bstyle.labeltag().empty()) {
 				sgml::openTag(os, bstyle.innertag(), id);
 				sgml::openTag(os, bstyle.labeltag());
-				sep = par->firstWord(os, runparams) + 1;
+				sep = par->firstWordDocBook(os, runparams) + 1;
 				sgml::closeTag(os, bstyle.labeltag());
 			}
 			wrapper = defaultstyle.latexname();

@@ -137,6 +137,7 @@ SOURCEFILESCORE = \
 	output_docbook.cpp \
 	output.cpp \
 	output_latex.cpp \
+	output_xhtml.cpp \
 	OutputParams.cpp \
 	output_plaintext.cpp \
 	Paragraph.cpp \
@@ -237,6 +238,7 @@ HEADERFILESCORE = \
 	output_docbook.h \
 	output.h \
 	output_latex.h \
+	output_xhtml.h \
 	OutputParams.h \
 	output_plaintext.h \
 	paper.h \

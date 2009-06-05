@@ -295,6 +295,8 @@ public:
 	virtual int plaintext(odocstream &, OutputParams const &) const = 0;
 	/// docbook output
 	virtual int docbook(odocstream & os, OutputParams const &) const;
+	/// LyX HTML output
+	virtual int xhtml(odocstream & os, OutputParams const &) const;
 	/// the string that is passed to the TOC
 	virtual void tocString(odocstream &) const {}
 

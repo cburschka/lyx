@@ -351,6 +351,7 @@ def checkFormatEntries(dtl_tools):
 \Format literate   nw      NoWeb                  N  ""	"%%"	"document"
 \Format sweave     Rnw    "Sweave"                S  "" "%%"    "document"
 \Format lilypond   ly     "LilyPond music"        "" ""	"%%"	"vector"
+\Format lyxhtml    html   "LyX HTML"              "" "" "%%"  "document"
 \Format latex      tex    "LaTeX (plain)"         L  ""	"%%"	"document"
 \Format pdflatex   tex    "LaTeX (pdflatex)"      "" ""	"%%"	"document"
 \Format xetex      tex    "LaTeX (XeTeX)"         "" ""	"%%"	"document"

@@ -35,6 +35,7 @@
 #include "LyXRC.h"
 #include "OutputParams.h"
 #include "output_latex.h"
+#include "output_xhtml.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "SpellChecker.h"
@@ -2241,7 +2242,7 @@ string Paragraph::getID(Buffer const & buf, OutputParams const & runparams)
 }
 
 
-pos_type Paragraph::firstWord(odocstream & os, OutputParams const & runparams)
+pos_type Paragraph::firstWordDocBook(odocstream & os, OutputParams const & runparams)
 	const
 {
 	pos_type i;
@@ -2253,6 +2254,24 @@ pos_type Paragraph::firstWord(odocstream & os, OutputParams const & runparams)
 			if (c == ' ')
 				break;
 			os << sgml::escapeChar(c);
+		}
+	}
+	return i;
+}
+
+
+pos_type Paragraph::firstWordLyXHTML(odocstream & os, OutputParams const & runparams)
+	const
+{
+	pos_type i;
+	for (i = 0; i < size(); ++i) {
+		if (Inset const * inset = getInset(i)) {
+			inset->xhtml(os, runparams);
+		} else {
+			char_type c = d->text_[i];
+			if (c == ' ')
+				break;
+			os << html::escapeChar(c);
 		}
 	}
 	return i;
@@ -2327,6 +2346,89 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 		os << '\n';
 	if (style.pass_thru && !d->onlyText(buf, outerfont, initial))
 		os << "<![CDATA[";
+}
+
+
+void Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
+				    odocstream & os,
+				    OutputParams const & runparams,
+				    Font const & outerfont,
+				    pos_type initial) const
+{
+	// FIXME We really need to manage the tag nesting here.
+	// Probably in the same sort of way as in output_xhtml.
+	bool emph_flag = false;
+	bool bold_flag = false;
+	std::string closing_tag;
+
+	Layout const & style = *d->layout_;
+	FontInfo font_old =
+		style.labeltype == LABEL_MANUAL ? style.labelfont : style.font;
+
+	//if (style.pass_thru && !d->onlyText(buf, outerfont, initial))
+	//	os << "]]>";
+
+	// parsing main loop
+	for (pos_type i = initial; i < size(); ++i) {
+		Font font = getFont(buf.params(), i, outerfont);
+
+		// emphasis
+		if (font_old.emph() != font.fontInfo().emph()) {
+			if (font.fontInfo().emph() == FONT_ON) {
+				os << "<em>";
+				emph_flag = true;
+			} else if (emph_flag && i != initial) {
+				os << "</em>";
+				emph_flag = false;
+			}
+		}
+		// bold
+		if (font_old.series() != font.fontInfo().series()) {
+			if (font.fontInfo().series() == BOLD_SERIES) {
+				os << "<strong>";
+				bold_flag = true;
+			} else if (bold_flag && i != initial) {
+				os << "</strong>";
+				bold_flag = false;
+			}
+		}
+		// FIXME Other such tags? 
+
+		if (Inset const * inset = getInset(i)) {
+			inset->xhtml(os, runparams);
+		} else {
+			char_type c = d->text_[i];
+
+			if (style.pass_thru)
+				os.put(c);
+			else if (c == '-') {
+				int j = i + 1;
+				if (j < size() && d->text_[j] == '-') {
+					j += 1;
+					if (j < size() && d->text_[j] == '-') {
+						os << from_ascii("&mdash;");
+						i += 2;
+					} else {
+						os << from_ascii("&ndash;");
+						i += 1;
+					}
+				}
+			} else
+				os << html::escapeChar(c);
+		}
+		font_old = font.fontInfo();
+	}
+
+	// FIXME This could be out of order. See above.
+	if (emph_flag)
+		os << "</em>";
+	if (bold_flag)
+		os << "</strong>";
+
+// 	if (style.free_spacing)
+// 		os << '\n';
+// 	if (style.pass_thru && !d->onlyText(buf, outerfont, initial))
+// 		os << "<![CDATA[";
 }
 
 

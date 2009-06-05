@@ -222,6 +222,14 @@ public:
 	void writeDocBookSource(odocstream & os, std::string const & filename,
 			     OutputParams const & runparams_in,
 			     bool only_body = false) const;
+	///
+	void makeLyXHTMLFile(support::FileName const & filename,
+			     OutputParams const & runparams_in,
+			     bool only_body = false) const;
+	///
+	void writeLyXHTMLSource(odocstream & os,
+			     OutputParams const & runparams_in,
+			     bool only_body = false) const;
 	/// returns the main language for the buffer (document)
 	Language const * language() const;
 	/// get l10n translated to the buffers language
