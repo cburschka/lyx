@@ -326,6 +326,15 @@ int InsetNote::docbook(odocstream & os, OutputParams const & runparams_in) const
 }
 
 
+int InsetNote::xhtml(odocstream & os, OutputParams const & rp) const
+{
+	if (params_.type == InsetNoteParams::Note)
+		return 0;
+
+	return InsetCollapsable::xhtml(os, rp);
+}
+
+
 void InsetNote::validate(LaTeXFeatures & features) const
 {
 	switch (params_.type) {

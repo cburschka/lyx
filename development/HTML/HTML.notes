@@ -10,8 +10,8 @@ Known issues:
 
 These insets are basically done, though there are probably issues here and there,
 	and there are even some FIXMEs:
-	Branch, Collapsable, Footnote, Hyperlink, Label, Line, Newline, Newpage, Quotes, 
-	Space, SpecialChar
+	Branch, Collapsable, Footnote, Hyperlink, Label, Line, Note, 
+	Newline, Newpage, Quotes, Space, SpecialChar
 
 These insets probably do nothing:
 	OptArg, Phantom
@@ -52,7 +52,6 @@ These do not yet work and need some attention:
 	InsetListings: Probably just output it as <pre>.
 	InsetMarginal: Fine, but will need CSS.
 	InsetNomencl: Also "advanced".
-	InsetNote: Need CSS, again.
 	InsetRef: Presumably, this is an internal link. But what should the text be, and how
 		should we get it? Probably some validation thing again, where labels tell us where 
 		they are. Alternatively, we could parse the aux file.

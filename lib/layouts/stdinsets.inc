@@ -126,6 +126,7 @@ InsetLayout Note:Comment
 	  Size                Small
 	EndFont
 	MultiPar              true
+	HTMLTag               !--
 End
 
 
@@ -151,6 +152,11 @@ InsetLayout Note:Greyedout
 	  Size                Small
 	EndFont
 	MultiPar              true
+	HTMLTag               span
+	HTMLAttr              class='notegrey'
+	HTMLStyle
+		span.notegrey { color: gray; }
+	EndHTMLStyle
 End
 
 InsetLayout ERT
