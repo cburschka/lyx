@@ -35,6 +35,7 @@ src_header_files = Split('''
     Box.h
     BranchList.h
     Buffer.h
+    buffer_funcs.h
     BufferList.h
     BufferParams.h
     BufferView.h
@@ -61,6 +62,7 @@ src_header_files = Split('''
     Encoding.h
     ErrorList.h
     Exporter.h
+    factory.h
     FloatList.h
     Floating.h
     Font.h
@@ -89,25 +91,35 @@ src_header_files = Split('''
     Lexer.h
     LyX.h
     LyXAction.h
+    lyxfind.h
     LyXFunc.h
     LyXRC.h
     LyXVC.h
     MetricsInfo.h
     ModuleList.h
     Mover.h
+    output.h
+    output_docbook.h
+    output_latex.h
+    output_plaintext.h
+    output_xhtml.h
     OutputParams.h
+    paper.h
     ParIterator.h
     Paragraph.h
+    paragraph_funcs.h
     ParagraphList.h
     ParagraphMetrics.h
     ParagraphParameters.h
     PDFOptions.h
     PrinterParams.h
     Row.h
+    rowpainter.h
     Section.h
     Server.h
     ServerSocket.h
     Session.h
+    sgml.h
     Spacing.h
     SpellChecker.h
     TexRow.h
@@ -118,23 +130,12 @@ src_header_files = Split('''
     TocBackend.h
     Trans.h
     Undo.h
+    update_flags.h
     VCBackend.h
     VSpace.h
     Variables.h
-    WordLangTuple.h
-    buffer_funcs.h
-    factory.h
-    lyxfind.h
-    output.h
-    output_docbook.h
-    output_latex.h
-    output_plaintext.h
-    paper.h
-    paragraph_funcs.h
-    rowpainter.h
-    sgml.h
-    update_flags.h
     version.h
+    WordLangTuple.h
     WordList.h
 ''')
 
@@ -144,6 +145,7 @@ src_pre_files = Split('''
     Bidi.cpp
     BranchList.cpp
     Buffer.cpp
+    buffer_funcs.cpp
     BufferList.cpp
     BufferParams.cpp
     BufferView.cpp
@@ -164,6 +166,7 @@ src_pre_files = Split('''
     Encoding.cpp
     ErrorList.cpp
     Exporter.cpp
+    factory.cpp
     FloatList.cpp
     Floating.cpp
     Font.cpp
@@ -186,24 +189,34 @@ src_pre_files = Split('''
     LayoutFile.cpp
     LayoutModuleList.cpp
     Length.cpp
+    lengthcommon.cpp
     Lexer.cpp
     LyX.cpp
     LyXAction.cpp
+    lyxfind.cpp
     LyXFunc.cpp
     LyXRC.cpp
     LyXVC.cpp
     MetricsInfo.cpp
     Mover.cpp
+    output.cpp
+    output_docbook.cpp
+    output_latex.cpp
+    output_plaintext.cpp
+    output_xhtml.cpp
     OutputParams.cpp
+    paragraph_funcs.cpp
     PDFOptions.cpp
     ParIterator.cpp
     Paragraph.cpp
     ParagraphMetrics.cpp
     ParagraphParameters.cpp
     Row.cpp
+    rowpainter.cpp
     Server.cpp
     ServerSocket.cpp
     Session.cpp
+    sgml.cpp
     Spacing.cpp
     TexRow.cpp
     Text.cpp
@@ -215,19 +228,8 @@ src_pre_files = Split('''
     Trans.cpp
     Undo.cpp
     VCBackend.cpp
-    VSpace.cpp
-    buffer_funcs.cpp
-    factory.cpp
-    lengthcommon.cpp
-    lyxfind.cpp
-    output.cpp
-    output_docbook.cpp
-    output_latex.cpp
-    output_plaintext.cpp
-    paragraph_funcs.cpp
-    rowpainter.cpp
-    sgml.cpp
     version.cpp
+    VSpace.cpp
     WordList.cpp
 ''')
 
