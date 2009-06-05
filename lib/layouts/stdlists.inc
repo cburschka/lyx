@@ -24,6 +24,8 @@ Style Itemize
 	AlignPossible         Block, Left
 	LabelType             Itemize
 	LabelString           "*"
+	HTMLTag               ul
+	HTMLItem              li
 End
 
 
@@ -44,6 +46,8 @@ Style Enumerate
 	AlignPossible         Block, Left
 	LabelType             Enumerate
 	LabelCounter          "enum"
+	HTMLTag               ol
+	HTMLItem              li
 End
 
 Style Description
@@ -66,6 +70,9 @@ Style Description
 	LabelFont
 	  Series              Bold
 	EndFont
+	HTMLTag               dl
+	HTMLItem              dd
+	HTMLLabel             dt
 End
 
 
@@ -84,6 +91,11 @@ Style List
 	AlignPossible         Block, Left
 	LabelType             Manual
 	LabelString           "00.00.0000"
+	HTMLTag               ol
+	HTMLAttr              class='lyxlist'
+	HTMLItem              li
+	HTMLLabel             span
+	HTMLLabelAttr         class='lyxlist'
 
 	#define the environment lyxlist
 	Preamble
@@ -95,4 +107,13 @@ Style List
 				 \renewcommand{\makelabel}[1]{##1\hfil}}}
 			{\end{list}}
 	EndPreamble
+
+	HTMLStyle
+		ol.lyxlist {
+			list-style-type: none;
+		}
+		span.lyxlist {
+			margin-right: 3em;
+		}
+	EndHTMLStyle
 End

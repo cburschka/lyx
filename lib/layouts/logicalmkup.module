@@ -17,6 +17,13 @@ InsetLayout CharStyle:Noun
 	EndFont
 	Requires              noun
 	InToc                 true
+	HTMLTag               span
+	HTMLAttr              class='noun'
+	HTMLStyle
+		span.noun {
+			font-family: sans-serif;
+		}
+	EndHTMLStyle
 End
 
 
@@ -29,6 +36,7 @@ InsetLayout CharStyle:Emph
 	  Shape               Italic
 	EndFont
 	InToc                 true
+	HTMLTag               em
 End
 
 
@@ -44,6 +52,7 @@ InsetLayout CharStyle:Strong
 	\newcommand{\strong}[1]{\textbf{#1}}
 	EndPreamble
 	InToc                 true
+	HTMLTag               strong
 End
 
 
@@ -59,4 +68,5 @@ InsetLayout CharStyle:Code
 	\newcommand{\code}[1]{\texttt{#1}}
 	EndPreamble
 	InToc                 true
+	HTMLTag               code
 End

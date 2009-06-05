@@ -24,6 +24,9 @@ Style Quotation
 	ParSep                0
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
+	HTMLTag               blockquote
+	HTMLAttr              class='quotation'
+	HTMLItem              p
 End
 
 
@@ -41,6 +44,9 @@ Style Quote
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
+	HTMLTag               blockquote
+	HTMLAttr              class='quote'
+	HTMLItem              p
 End
 
 
@@ -61,6 +67,9 @@ Style Verse
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             No_Label
+	HTMLTag               blockquote
+	HTMLAttr              class='verse'
+	HTMLItem              p
 End
 
 

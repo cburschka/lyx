@@ -97,6 +97,8 @@ InsetLayout Foot
 	  Size                Small
 	EndFont
 	MultiPar              true
+	HTMLTag               span
+	HTMLAttr              class='footnote'
 End
 
 InsetLayout Note:Comment
@@ -321,4 +323,10 @@ InsetLayout Info:shortcuts
 	Font
 	  Family              sans
 	EndFont
+End
+
+InsetLayout Box
+	HTMLStyle
+		span.Frameless { font-family: sans-serif; }
+	EndHTMLStyle
 End

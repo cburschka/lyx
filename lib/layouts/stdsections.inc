@@ -30,6 +30,8 @@ Style Part
 	  Series              Bold
 	  Size                Huge
 	EndFont
+	HTMLTag               h1
+	HTMLAttr              class='part'
 End
 
 
@@ -55,6 +57,8 @@ Style Chapter
 	  Series              Bold
 	  Size                Huge
 	EndFont
+	HTMLTag               h1
+	HTMLAttr              class='chapter'
 End
 
 
@@ -79,6 +83,11 @@ Style Section
 	  Series              Bold
 	  Size                Larger
 	EndFont
+	HTMLTag               h2
+	HTMLAttr              class='section'
+	HTMLStyle
+		h2.section { font-family: sans-serif; }
+	EndHTMLStyle
 End
 
 
@@ -94,6 +103,8 @@ Style Subsection
 	  Series              Bold
 	  Size                Large
 	EndFont
+	HTMLTag               h3
+	HTMLAttr              class='subsection'
 End
 
 
@@ -108,6 +119,8 @@ Style Subsubsection
 	  Series              Bold
 	  Size                Normal
 	EndFont
+	HTMLTag               h4
+	HTMLAttr              class='subsubsection'
 End
 
 
@@ -118,6 +131,8 @@ Style Paragraph
 	LatexName             paragraph
 	TopSep                0.4
 	BottomSep             0
+	HTMLTag               span
+	HTMLAttr              class='paragraph'
 End
 
 
@@ -128,6 +143,8 @@ Style Subparagraph
 	LatexName             subparagraph
 	NextNoIndent          0
 	LeftMargin            MM
+	HTMLTag               span
+	HTMLAttr              class='subparagraph'
 End
 
 Input numarticle.inc
