@@ -52,6 +52,15 @@ import os, re, string, sys
 # Add new tag OutputFormat; modules can be conditionned on feature 
 # "from->to".
 
+# Incremented to format 16, 5 June 2009 by rgh
+# Add new tags for Text Class:
+#   HTML Preamble
+# For Layout:
+#   HTMLTag, HTMLAttr, HTMLLabel, HTMLLabelAttr, HTMLItem, HTMLItemAttr
+#   HTMLStyle, and HTMLPreamble
+# For InsetLayout:
+#   HTMLTag, HTMLAttr, HTMLStyle, and HTMLPreamble
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
