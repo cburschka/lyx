@@ -37,8 +37,11 @@ int prompt(docstring const & title, docstring const & question,
 /**
  * Display a warning to the user. Title should be a short (general) summary.
  * Only use this if the user cannot perform some remedial action.
+ * \p askshowagain will display a check box where the user can turn off the
+ * warning for future cases. Ponder carefully if this is feasible.
  */
-void warning(docstring const & title, docstring const & message);
+void warning(docstring const & title, docstring const & message,
+	     bool const & askshowagain = false);
 
 /**
  * Display a warning to the user. Title should be a short (general) summary.

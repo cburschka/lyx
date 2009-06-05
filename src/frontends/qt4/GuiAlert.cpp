@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author John Levon
+ * \author Jürgen Spitzmüller
  * \author Abdelrazak Younes
  *
  * Full author contact details are available in file CREDITS.
@@ -18,6 +19,7 @@
 #include "qt_helpers.h"
 #include "LyX.h" // for lyx::use_gui
 #include "ui_AskForTextUi.h"
+#include "ui_ToggleWarningUi.h"
 #include "support/gettext.h"
 
 #include "support/debug.h"
@@ -25,9 +27,11 @@
 #include "support/lstrings.h"
 
 #include <QApplication>
+#include <QCheckBox>
 #include <QMessageBox>
 #include <QLineEdit>
 #include <QInputDialog>
+#include <QSettings>
 
 #include <iomanip>
 #include <iostream>
@@ -37,6 +41,17 @@ using namespace lyx::support;
 
 namespace lyx {
 namespace frontend {
+
+
+class GuiToggleWarningDialog : public QDialog, public Ui::ToggleWarningUi
+{
+public:
+	GuiToggleWarningDialog(QWidget * parent) : QDialog(parent)
+	{
+		Ui::ToggleWarningUi::setupUi(this);
+		QDialog::setModal(true);
+	}
+};
 
 
 static docstring const formatted(docstring const & text)
@@ -99,6 +114,29 @@ static docstring const formatted(docstring const & text)
 }
 
 
+void toggleWarning(docstring const & title, docstring const & msg)
+{
+	if (!use_gui)
+		return;
+
+	QSettings settings;
+	if (settings.value("hidden_warnings/" + toqstr(msg), false).toBool())
+		return;
+
+	GuiToggleWarningDialog * dlg =
+		new GuiToggleWarningDialog(qApp->focusWidget());
+
+	dlg->setWindowTitle(toqstr(title));
+	dlg->messageLA->setText(toqstr(formatted(msg)));
+	dlg->dontShowAgainCB->setChecked(false);
+
+	if (dlg->exec() == QDialog::Accepted)
+		if (dlg->dontShowAgainCB->isChecked())
+			settings.setValue("hidden_warnings/"
+				+ toqstr(msg), true);
+}
+
+
 namespace Alert {
 
 int prompt(docstring const & title0, docstring const & question,
@@ -145,7 +183,8 @@ int prompt(docstring const & title0, docstring const & question,
 }
 
 
-void warning(docstring const & title0, docstring const & message)
+void warning(docstring const & title0, docstring const & message,
+	     bool const & askshowagain)
 {
 	lyxerr << "Warning: " << title0 << '\n'
 	       << "----------------------------------------\n"
@@ -165,9 +204,12 @@ void warning(docstring const & title0, docstring const & message)
 			toqstr(formatted(message)));
 		return;
 	}
-	QMessageBox::warning(qApp->focusWidget(),
-			     toqstr(title),
-			     toqstr(formatted(message)));
+	if (!askshowagain)
+		QMessageBox::warning(qApp->focusWidget(),
+				toqstr(title),
+				toqstr(formatted(message)));
+	else
+		toggleWarning(title, message);
 }
 
 
