@@ -175,6 +175,7 @@ enum TextClassTags {
 	TC_TOCDEPTH,
 	TC_CLASSOPTIONS,
 	TC_PREAMBLE,
+	TC_HTMLPREAMBLE,
 	TC_PROVIDES,
 	TC_REQUIRES,
 	TC_LEFTMARGIN,
@@ -205,6 +206,7 @@ namespace {
 		{ "excludesmodule",  TC_EXCLUDESMODULE },
 		{ "float",           TC_FLOAT },
 		{ "format",          TC_FORMAT },
+		{ "htmlpreamble",    TC_HTMLPREAMBLE },
 		{ "input",           TC_INPUT },
 		{ "insetlayout",     TC_INSETLAYOUT },
 		{ "leftmargin",      TC_LEFTMARGIN },
@@ -496,6 +498,10 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 
 		case TC_PREAMBLE:
 			preamble_ = from_utf8(lexrc.getLongString("EndPreamble"));
+			break;
+
+		case TC_HTMLPREAMBLE:
+			htmlpreamble_ = from_utf8(lexrc.getLongString("EndPreamble"));
 			break;
 
 		case TC_ADDTOPREAMBLE:

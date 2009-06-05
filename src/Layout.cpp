@@ -92,6 +92,13 @@ enum LayoutTags {
 	LT_INNERTAG,
 	LT_LABELTAG,
 	LT_ITEMTAG,
+	LT_HTMLTAG,
+	LT_HTMLATTR,
+	LT_HTMLITEM,
+	LT_HTMLITEMATTR,
+	LT_HTMLLABEL,
+	LT_HTMLLABELATTR, 
+	LT_HTMLSTYLE,
 	LT_INTITLE // keep this last!
 };
 
@@ -152,6 +159,13 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 		{ "fill_top",       LT_FILL_TOP },
 		{ "font",           LT_FONT },
 		{ "freespacing",    LT_FREE_SPACING },
+		{	"htmlattr",       LT_HTMLATTR },
+		{ "htmlitem",       LT_HTMLITEM },
+		{ "htmlitemattr",   LT_HTMLITEMATTR },
+		{ "htmllabel",      LT_HTMLLABEL },
+		{ "htmllabelattr",  LT_HTMLLABELATTR },
+		{	"htmlstyle",      LT_HTMLSTYLE },
+		{ "htmltag",        LT_HTMLTAG },
 		{ "innertag",       LT_INNERTAG },
 		{ "intitle",        LT_INTITLE },
 		{ "itemsep",        LT_ITEMSEP },
@@ -455,11 +469,40 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 			readSpacing(lex);
 			break;
 
-		case LT_REQUIRES:
+		case LT_REQUIRES: {
 			lex.eatLine();
 			vector<string> const req = 
 				getVectorFromString(lex.getString());
 			requires_.insert(req.begin(), req.end());
+			break;
+		}
+
+		case LT_HTMLTAG:
+			lex >> htmltag_;
+			break;
+	
+		case LT_HTMLATTR:
+			lex >> htmlattr_;
+			break;
+
+		case LT_HTMLITEM:
+			lex >> htmlitem_;
+			break;
+	
+		case LT_HTMLITEMATTR:
+			lex >> htmlitemattr_;
+			break;
+	
+		case LT_HTMLLABEL:
+			lex >> htmllabel_;
+			break;
+
+		case LT_HTMLLABELATTR: 
+			lex >> htmllabelattr_;
+			break;
+
+		case LT_HTMLSTYLE:
+			htmlstyle_ = from_utf8(lex.getLongString("EndHTMLStyle"));
 			break;
 
 		}

@@ -254,6 +254,8 @@ protected:
 	static const docstring plain_layout_;
 	/// preamble text to support layout styles
 	docstring preamble_;
+	/// same, but for HTML output
+	docstring htmlpreamble_;
 	/// latex packages loaded by document class.
 	std::set<std::string> provides_;
 	/// latex packages requested by document class.
@@ -380,6 +382,8 @@ public:
 	std::string const & pagestyle() const { return pagestyle_; }
 	///
 	docstring const & preamble() const { return preamble_; }
+	///
+	docstring const & htmlpreamble() const { return htmlpreamble_; }
 	/// is this feature already provided by the class?
 	bool provides(std::string const & p) const;
 	/// features required by the class?

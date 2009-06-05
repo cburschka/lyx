@@ -108,6 +108,20 @@ public:
 	std::string const & labeltag() const { return labeltag_; }
 	///
 	std::string const & itemtag() const { return itemtag_; }
+	/// 
+	std::string const & htmltag() const { return htmltag_; }
+	/// 
+	std::string const & htmlattr() const { return htmlattr_; }
+	/// 
+	std::string const & htmlitem() const { return htmlitem_; }
+	/// 
+	std::string const & htmlitemattr() const { return htmlitemattr_; }
+	/// 
+	std::string const & htmllabel() const { return htmllabel_; }
+	/// 
+	std::string const & htmllabelattr() const { return htmllabelattr_; }
+	/// 
+	docstring const & htmlstyle() const { return htmlstyle_; }
 	///
 	docstring const & labelstring_appendix() const {
 		return labelstring_appendix_;
@@ -271,6 +285,27 @@ private:
 	std::string labeltag_;
 	/// Internal tag to surround the item text in a list)
 	std::string itemtag_;
+	/// Tag for HTML output, e.g., h2.
+	std::string htmltag_;
+	/// Additional attributes for inclusion with the start tag, 
+	/// e.g.: class='section'.
+	std::string htmlattr_;
+	/// Tag for individual paragraphs in an environment. In lists, this
+	/// would be something like "li". But it also needs to be set for
+	/// quotation, e.g., since the paragraphs in a quote need to be 
+	/// in "p" tags.
+	std::string htmlitem_;
+	/// Attributes for htmlitem_
+	std::string htmlitemattr_;
+	/// Tag for labels, of whatever sort. One use for this is in setting
+	/// descriptions, in which case it would be: dt. Another use is to
+	/// customize the display of, say, the auto-generated label for 
+	/// sections (in that case, it might be: span).
+	std::string htmllabel_;
+	/// Attributes for the label.
+	std::string htmllabelattr_;
+	/// CSS information needed by this layout.
+	docstring htmlstyle_;
 	/// This is the `category' for this layout. The following are
 	/// recommended basic categories: FrontMatter, BackMatter, MainText,
 	/// Section, Starred, List, Theorem.
