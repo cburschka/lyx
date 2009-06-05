@@ -99,6 +99,21 @@ InsetLayout Foot
 	MultiPar              true
 	HTMLTag               span
 	HTMLAttr              class='footnote'
+	HTMLStyle
+		span.notenum { 
+			vertical-align: super; 
+			font-size: smaller; 
+		}
+		span.footnote {
+			display: none;
+		}
+		span.footwrapper:hover span.footnote { 
+			display: block; 
+			border: 1px double black; 
+			margin: 0em 1em;
+			padding: 1em;
+		}
+	EndHTMLStyle
 End
 
 InsetLayout Note:Comment
