@@ -931,6 +931,31 @@ docstring const LaTeXFeatures::getTClassPreamble() const
 }
 
 
+docstring const LaTeXFeatures::getTClassHTMLPreamble() const {
+	DocumentClass const & tclass = params_.documentClass();
+	odocstringstream tcpreamble;
+
+	tcpreamble << tclass.htmlpreamble();
+
+	list<docstring>::const_iterator cit = usedLayouts_.begin();
+	list<docstring>::const_iterator end = usedLayouts_.end();
+	for (; cit != end; ++cit)
+		tcpreamble << tclass[*cit].htmlstyle();
+
+	cit = usedInsetLayouts_.begin();
+	end = usedInsetLayouts_.end();
+	TextClass::InsetLayouts const & ils = tclass.insetLayouts();
+	for (; cit != end; ++cit) {
+		TextClass::InsetLayouts::const_iterator it = ils.find(*cit);
+		if (it == ils.end())
+			continue;
+		tcpreamble << it->second.htmlstyle();
+	}
+
+	return tcpreamble.str();
+}
+
+
 docstring const LaTeXFeatures::getTClassI18nPreamble(bool use_babel) const
 {
 	DocumentClass const & tclass = params_.documentClass();
