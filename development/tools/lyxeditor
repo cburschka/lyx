@@ -1,0 +1,115 @@
+#!/bin/sh
+# file lyxeditor
+# This file is part of LyX, the document processor.
+# Licence details can be found in the file COPYING.
+
+# author Ronald Florence
+# author Angus Leeming
+# author Bennett Helm
+# author Enrico Forestieri
+
+# Full author contact details are available in file CREDITS
+
+# This script passes filename and line number of a latex file to the lyxpipe
+# of a running instance of LyX. If the filename is an absolute path pointing
+# to an already existing latex file in the temp dir (produced by a preview,
+# for example), LyX will jump to the corresponding line in the .lyx file.
+# It may also be invoked by a viewer for performing a reverse DVI/PDF search.
+
+parse_serverpipe()
+{
+    # The output of this sed script is output to STDOUT
+    LYXPIPE=`sed -n '/^\\\\serverpipe /{
+# First consider that the file path may be quoted
+s/^ *\\\\serverpipe \{1,\}\"\([^"]\{1,\}\)\" *$/\1/
+tfound
+
+# Now, unquoted
+s/^ *\\\\serverpipe \{1,\}\(.*\)/\1/
+s/ *$//
+
+:found
+# Change from single to double shell quoting temporarily...
+'"
+s@^~/@${HOME}/@
+# Revert to single shell quotes
+"'
+
+p
+q
+}' "$1"`
+
+    echo "${LYXPIPE}"
+    unset LYXPIPE
+}
+
+if [ $# != 2 ]; then
+    echo "Usage: $0 <latexfile> <lineno>"
+    exit 1
+fi
+
+LYXPIPE=""
+
+case $OSTYPE in
+    *darwin*) OSTYPE=macosx ;;
+esac
+
+if [ "$OSTYPE" = "macosx" ]; then
+    LYXSYSDIRS="/Applications/LyX.app/Contents/Resources"
+    LYXBASEDIR=LyX
+    pushd "${HOME}/Library/Application Support" > /dev/null
+else
+    LYXSYSDIRS="/usr/share/lyx /usr/local/share/lyx /opt/share/lyx"
+    LYXBASEDIR=.lyx
+    pushd "${HOME}" > /dev/null
+fi
+
+for LYXDIR in ${LYXBASEDIR}*
+do
+    PREFERENCES="${LYXDIR}/preferences"
+    test -r "${PREFERENCES}" || continue
+    # See if preferences file contains a \serverpipe entry
+    LYXPIPE=`parse_serverpipe "${PREFERENCES}"`
+    # If it does and $LYXPIPE.in exists, break out of the loop
+    test -n "${LYXPIPE}" -a -r "${LYXPIPE}".in && break || LYXPIPE=""
+done
+
+popd > /dev/null
+
+if [ -z "${LYXPIPE}" ]; then
+    # The preferences file does not set lyxpipe, so check lyxrc.dist
+    for SUBDIR in ${LYXSYSDIRS}
+    do
+        for LYXSYSDIR in ${SUBDIR}*
+        do
+            LYXRC_DIST=${LYXSYSDIR}/lyxrc.dist
+            test -r "${LYXRC_DIST}" || continue
+            # See if lyxrc.dist contains a \serverpipe entry
+            LYXPIPE=`parse_serverpipe "${LYXRC_DIST}"`
+            # If it does and $LYXPIPE.in exists, break out of the loop
+            test -n "${LYXPIPE}" -a -r "${LYXPIPE}".in && break || LYXPIPE=""
+        done
+        test -n "${LYXPIPE}" && break
+    done
+fi
+
+if [ -z "${LYXPIPE}" ]; then
+    echo "Unable to find the lyxpipe!"
+    exit
+fi
+
+# Let's do the job
+
+if [ "${OSTYPE}" = "macosx" ]; then
+    file=`echo "$1" | sed 's|^/private||'`
+elif [ "${OSTYPE}" = "cygwin" ]; then
+    file=`cygpath -a "$1"`
+else
+    file=$1
+fi
+
+echo "Using the lyxpipe ${LYXPIPE}"
+COMMAND="LYXCMD:revdvi:server-goto-file-row:$file $2"
+echo "$COMMAND"
+echo "$COMMAND" > "${LYXPIPE}".in || exit
+read < "${LYXPIPE}".out || exit
