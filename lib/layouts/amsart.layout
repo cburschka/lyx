@@ -71,6 +71,16 @@ Style Section
 End
 
 
+Style Section*
+	Align                 Center
+	Font
+	  Series              Medium
+	  Shape               Smallcaps
+	  Size                Large
+	EndFont
+End
+
+
 Style Subsection
 	Font
 	  Series              Bold
@@ -79,7 +89,23 @@ Style Subsection
 End
 
 
+Style Subsection*
+	Font
+	  Series              Bold
+	  Size                Normal
+	EndFont
+End
+
+
 Style Subsubsection
+	Font
+	  Shape               Italic
+	  Size                Normal
+	EndFont
+End
+
+
+Style Subsubsection*
 	Font
 	  Shape               Italic
 	  Size                Normal

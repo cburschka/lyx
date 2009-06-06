@@ -50,8 +50,7 @@ Input numreport.inc
 Style Section
 	Align                 Center
 	Font
-	  Series              Medium
-	  Shape               Smallcaps
+	  Series              Bold
 	  Size                Large
 	EndFont
 End
@@ -74,6 +73,33 @@ End
 
 
 Input stdstarsections.inc
+
+
+Style Section*
+	Align                 Center
+	Font
+	  Series              Bold
+	  Size                Large
+	EndFont
+End
+
+
+Style Subsection*
+	Font
+	  Series              Bold
+	  Size                Normal
+	EndFont
+End
+
+
+Style Subsubsection*
+	Font
+	  Shape               Italic
+	  Size                Normal
+	EndFont
+End
+
+
 Input lyxmacros.inc
 Input stdlayouts.inc
 Input stdlists.inc
@@ -86,10 +112,11 @@ NoStyle Address
 NoStyle Verse
 
 # Chapter is _not_ prepended
-Style Section
-	LabelString          "\arabic{section}"
-	LabelStringAppendix  "\arabic{section}"
-End
+# JSpitz: this seems to be not true (anymore?)
+#Style Section
+#	LabelString          "\arabic{section}"
+#	LabelStringAppendix  "\arabic{section}"
+#End
 
 
 Style Paragraph
