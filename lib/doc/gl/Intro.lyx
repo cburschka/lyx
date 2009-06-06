@@ -1,4 +1,4 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -488,20 +488,6 @@ LyX e outros procesadores de texto
 \end_inset
 
 
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Non, non tentamos iniciar (ou gañar) unha cruzada sobre procesadores de
- texto.
- Mais consideramos necesário descreber as características do LyX, e unha
- das características máis importantes do LyX, WYSIWYM, é un conceito radicalment
-e diferente do que ten a maioria da xente sobre o procesamento de texto.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -580,7 +566,7 @@ Se ben é posíbel utilizar tais funcións no LyX, usualmente o usuário non
  os diferentes tipos de parágrafos terán-se distintas identacións.
  Tamén as quebras de páxina son colocadas automaticamente.
  E en xeral, o espazo entre liñas, palabras e parágrafos é variábel, calculado
- axeitadamente polo LyX
+ axeitadamente polo LyX.
 \begin_inset Foot
 status collapsed
 
@@ -600,8 +586,7 @@ Guia do Usuário
 
 \end_inset
 
-.
- 
+
 \end_layout
 
 \begin_layout Standard
@@ -648,7 +633,7 @@ Que demo é iso do LaTeX? ( e por que me debe importar?)
 
 \begin_layout Standard
 O LaTeX é un sistema de preparación de documentos desenvolvido por Leslie
- Lamport en 1985
+ Lamport en 1985.
 \begin_inset Foot
 status collapsed
 
@@ -676,7 +661,6 @@ Guia do Usuário
 
 \end_inset
 
-.
  Por sua vez, o LaTeX, elaborou-se sobre unha linguaxe tipográfica chamada
  TeX, criada por Donald Knuth en 1984.
  O que fai o TeX é ler roteiros, ficheiros ASCII con unha secuéncia de instrució
@@ -718,7 +702,7 @@ dvi
 \family typewriter
 dvi
 \family default
-, ou ben converte-lo noutro formato como PostScript®, PDF, etc.
+, ou ben converte-lo noutro formato como PostScript, PDF, etc.
  
 \end_layout
 
@@ -897,58 +881,24 @@ Un outro favor que nos pode facer é avisar-nos se calquer cousa nestes manuais
  lle confundir, non estiver claro, ou estiver errado.
  Pode contactar cos actuais responsábeis pola documentación enviando un
  correo electrónico a 
-\family typewriter
-lyx-docs@lists.lyx.org
-\family default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-[N.
- do T.]Pode-se aceder ás listas do proxecto LyX na seguinte páxina 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.lyx.org/internet/mailing.php
-\end_layout
-
-\end_inset
-
-.
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
 
 \end_inset
 
 .
  Se lle xurde algunha pergunta sobre o LyX a cal non dá atopado resposta
- nos manuais, pode achar axuda na lista de correos de usuários en lyx-user@lists.
-lyx.org.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-[N.
- do T.] É posíbel aceder aos arquivos das mensaxes da dita lista na páxina
- 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.mail-archive.com/lyx-users@lists.lyx.org/
-\end_layout
+ nos manuais, pode achar axuda na lista de correos de usuários en 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-user@lists.lyx.org"
+type "mailto:"
 
 \end_inset
 
 .
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -1433,11 +1383,7 @@ Os manuais
 Na seguinte lista descrebe-se o contido dos manuais aos que se acede desde
  a 
 \family typewriter
-A
-\bar under
-x
-\bar default
-uda
+Axuda
 \family default
  :
 \end_layout
@@ -1840,29 +1786,19 @@ fr_intro.lyx
  Cando falta a tradución dalgun manual, ao aceder a ese manual mediante
  o menu de 
 \family typewriter
-A
-\bar under
-x
-\bar default
-uda
+Axuda
 \family default
  aparece o manual orixinal, i.e.
  en inglés.
  Se preferir lé-lo noutra língua, que teña tradución, non ten mais que abrir
  o ficheiro correspondente no menu 
 \family typewriter
-\bar under
-F
-\bar default
-icheiro
+Ficheiro
 \family sans
 \SpecialChar \menuseparator
 
 \family typewriter
-\bar under
-A
-\bar default
-brir.
+Abrir.
 \end_layout
 
 \begin_layout Standard
@@ -1976,7 +1912,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://bugzilla.lyx.org/
+http://www.lyx.org/trac/wiki/BugTrackerHome
 \end_layout
 
 \end_inset
@@ -1990,9 +1926,13 @@ http://bugzilla.lyx.org/
  poden-se facer comentários nos informes abertos por calquer outra persoa.
  Ademais é posíbel informar dun erro enviando un correo electrónico á lista
  de desenvolvimento do proxecto: 
-\family typewriter
-lyx-devel@lists.lyx.org
-\family default
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-devel@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
 .
  As mensaxes enviadas a esta lista, como as das outras listas do proxecto,
  armacenan-se nun arquivo público ao cal se pode aceder desde o site do
@@ -2054,7 +1994,7 @@ Se encontra algunha operación, ou conxunto de operación, que leven ao LyX
 
 \family typewriter
 \size small
-gdb /home/usuario/lyx-1.4.x/src/lyx
+gdb /home/usuario/lyx-1.6.x/src/lyx
 \family default
 \size default
 
@@ -2092,7 +2032,7 @@ bt
 \end_inset
 
  para producir o informe automático e inclua-o no seu informe manual sobre
- o erro
+ o erro.
 \begin_inset Foot
 status collapsed
 
@@ -2126,7 +2066,6 @@ up
 
 \end_inset
 
-.
  Se é reproducíbel, é mais importante unha descrición detallada dun xeito
  de reproducir o erro que o informe automático, xa que os desenvolvedores
  poden xerar o seu próprio informe.
@@ -2168,9 +2107,13 @@ Erros nos manuais
 \begin_layout Standard
 Se acha un problema na documentación envie unha mensaxe, en inglés, á lista
  de correos 
-\family typewriter
-lyx-docs@lists.lyx.org
-\family default
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
 .
  A equipa de documentación fará as correccións necesárias.
  
@@ -2259,9 +2202,14 @@ Contacte a equipa en:
 
 \begin_deeper
 \begin_layout Standard
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
 
-\family typewriter
-lyx-docs@lists.lyx.org
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
