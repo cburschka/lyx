@@ -194,6 +194,8 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 	ParagraphList::const_iterator par = pbegin;
 	for (; par != pend; ++par) {
 		Layout const & lay = par->layout();
+		if (!lay.counter.empty())
+			buf.params().documentClass().counters().step(lay.counter);
 		if (par != pbegin)
 			os << '\n';
 		bool const opened = openTag(os, lay);
@@ -228,6 +230,8 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 
 	while (par != pend) {
 		Layout const & style = par->layout();
+		if (!style.counter.empty())
+			buf.params().documentClass().counters().step(style.counter);
 		ParagraphList::const_iterator send;
 		// this will be positive, if we want to skip the initial word
 		// (if it's been taken for the label).
@@ -255,8 +259,6 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 				} else if (style.latextype == LATEX_ENVIRONMENT 
 				           && style.labeltype != LABEL_NO_LABEL) {
 					bool const label_tag_opened = openLabelTag(os, cstyle);
-					if (!style.counter.empty())
-						buf.params().documentClass().counters().step(cstyle.counter);
 					os << pbegin->expandLabel(style, buf.params(), false);
 					if (label_tag_opened)
 						closeLabelTag(os, cstyle);
@@ -318,14 +320,14 @@ void makeCommand(Buffer const & buf,
 					  ParagraphList::const_iterator const & pbegin)
 {
 	Layout const & style = pbegin->layout();
+	if (!style.counter.empty())
+		buf.params().documentClass().counters().step(style.counter);
 
 	bool const main_tag_opened = openTag(os, style);
 
 	// Label around sectioning number:
 	if (style.labeltype != LABEL_NO_LABEL) {
 		bool const label_tag_opened = openLabelTag(os, style);
-		if (!style.counter.empty())
-			buf.params().documentClass().counters().step(style.counter);
 		os << pbegin->expandLabel(style, buf.params(), false);
 		if (label_tag_opened)
 			closeLabelTag(os, style);
