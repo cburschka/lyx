@@ -241,6 +241,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 		case LATEX_ENVIRONMENT:
 		case LATEX_LIST_ENVIRONMENT:
 		case LATEX_ITEM_ENVIRONMENT: {
+			// FIXME Factor this out.
 			// There are two possiblities in this case. 
 			// One is that we are still in the environment in which we 
 			// started---which we will be if the depth is the same.
@@ -257,7 +258,9 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 					if (label_tag_opened)
 						closeLabelTag(os, cstyle);
 					os << '\n';
-				} else if (style.latextype == LATEX_ENVIRONMENT 
+				}
+				// FIXME Why did I put that first condition??
+				else if (style.latextype == LATEX_ENVIRONMENT 
 				           && style.labeltype != LABEL_NO_LABEL) {
 					bool const label_tag_opened = openLabelTag(os, cstyle);
 					os << pbegin->expandLabel(style, buf.params(), false);
@@ -300,6 +303,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 		// FIXME
 		case LATEX_BIB_ENVIRONMENT:
 		case LATEX_COMMAND:
+			++par;
 			break;
 		}
 	}
@@ -326,6 +330,7 @@ void makeCommand(Buffer const & buf,
 	bool const main_tag_opened = openTag(os, style);
 
 	// Label around sectioning number:
+	// FIXME Probably need to account for LABEL_MANUAL
 	if (style.labeltype != LABEL_NO_LABEL) {
 		bool const label_tag_opened = openLabelTag(os, style);
 		os << pbegin->expandLabel(style, buf.params(), false);
