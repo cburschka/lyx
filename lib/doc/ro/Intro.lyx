@@ -1,11 +1,44 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
 \textclass article
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!! 
+%
+%This preamble is designed to ensure that the document prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected. If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+
+% set fonts for nicer pdf view
+\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+\pdfbookmark[1]{\contentsname}{}
+\myTOC
+\cleardoublepage
+\pagenumbering{arabic} }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+{LyX}}
+\end_preamble
 \use_default_options false
 \language romanian
-\inputencoding latin2
+\inputencoding auto
 \font_roman default
 \font_sans default
 \font_typewriter default
@@ -18,22 +51,36 @@
 \graphics none
 \paperfontsize 12
 \spacing single
-\use_hyperref false
-\papersize default
+\use_hyperref true
+\pdf_title "Introducere în LyX"
+\pdf_author "LyX Team"
+\pdf_subject "LyX-documentation Intro"
+\pdf_keywords "LyX, documentation"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 2
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\papersize a4paper
 \use_geometry false
-\use_amsmath 0
+\use_amsmath 1
 \use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
-\tocdepth 3
+\tocdepth 2
 \paragraph_separation indent
 \defskip medskip
 \quotes_language english
-\papercolumns 0
+\papercolumns 1
 \papersides 1
-\paperpagestyle plain
+\paperpagestyle default
 \tracking_changes false
 \output_changes false
 \author "" 
@@ -54,6 +101,15 @@ status collapsed
 \begin_layout Plain Layout
 traducere Gabriel Cristache <cristache@adcomm.pub.ro>
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
 
 \end_inset
 
@@ -101,15 +157,11 @@ Documentaţia, ca un întreg, nu este completă în acest moment! Ca şi program
 \begin_layout Standard
 Dacă în lectura acestui manual întâlniţi neclarităţi sau vi se pare ceva
  confuz, puteţi contacta echipa LyX: 
-\begin_inset Quotes eld
-\end_inset
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-users@lists.lyx.org"
+type "mailto:"
 
-
-\family typewriter
-LyX@via.ecp.fr
-\family default
-
-\begin_inset Quotes erd
 \end_inset
 
 .
@@ -126,20 +178,6 @@ LyX Docs
 \end_inset
 
  undeva în subiectul mesajului.
- Pentru eventuale sugestii privind traducerea, puteţi contacta: 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family typewriter
-cristache@ADComm.pub.ro
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
-.
- Mulţumim!
 \end_layout
 
 \begin_layout Subsection
@@ -886,6 +924,25 @@ Nu faceţi nici o modificare în aceste manuale fără un acord prealabil al
 \end_layout
 
 \begin_layout Standard
+
+\lang english
+LyX has a bug tracking system, which you can find at
+\lang romanian
+ 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/trac/wiki/BugTrackerHome
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
 Orice modificare aleatoare a acestor manuale ar fi fără rost pentru că,
  oricum, echipa de documentare deţine originalul.
 \end_layout
@@ -957,9 +1014,14 @@ Ghidul utilizatorului
 
 \begin_deeper
 \begin_layout Standard
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
 
-\family typewriter
-LyX@via.ecp.fr
+\end_inset
+
+
 \end_layout
 
 \end_deeper

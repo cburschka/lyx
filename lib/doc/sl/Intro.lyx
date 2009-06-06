@@ -1,11 +1,44 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
 \textclass article
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!! 
+%
+%This preamble is designed to ensure that the document prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected. If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+
+% set fonts for nicer pdf view
+\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+\pdfbookmark[1]{\contentsname}{}
+\myTOC
+\cleardoublepage
+\pagenumbering{arabic} }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+{LyX}}
+\end_preamble
 \use_default_options false
 \language slovene
-\inputencoding latin2
+\inputencoding auto
 \font_roman default
 \font_sans default
 \font_typewriter default
@@ -16,18 +49,32 @@
 \font_tt_scale 100
 
 \graphics default
-\paperfontsize default
+\paperfontsize 12
 \spacing single
-\use_hyperref false
-\papersize default
+\use_hyperref true
+\pdf_title "Uvod v LyX"
+\pdf_author "LyX Team"
+\pdf_subject "LyX-documentation Intro"
+\pdf_keywords "LyX, documentation"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 2
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\papersize a4paper
 \use_geometry false
-\use_amsmath 0
+\use_amsmath 1
 \use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
-\tocdepth 3
+\tocdepth 2
 \paragraph_separation indent
 \defskip medskip
 \quotes_language german
@@ -77,6 +124,15 @@ Jezikovni pregled: Dora Mali
 \begin_layout Date
 11.
  marec 1999
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -154,9 +210,13 @@ reference "sec:Contrib"
 In še nekaj vas prosimo – če vas karkoli v teh priročnikih zmede, ker je
  nejasno ali napačno, ne oklevajte in nam sporočite! S trenutnimi vzdrževalci
  spisov lahko stopite v stik tudi po elektronski pošti na naslov 
-\family typewriter
-lyx-docs@lists.lyx.org
-\family default
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
 .
 \end_layout
 
@@ -775,17 +835,21 @@ večino
  Osrednji priročnik predpostavlja, da ste prebrali 
 \emph on
 Učbenik
+\emph default
+.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
+
+\emph on
 \SpecialChar \ldots{}
  ali pa vsaj bežno poznate LaTeX.
 \end_layout
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Description
@@ -961,13 +1025,14 @@ Drugače se boste po nepotrebnem jezili.
 \end_layout
 
 \begin_layout Section
+Prispevki k dokumentacijskem projektu
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Contrib"
 
 \end_inset
 
-Prispevki k dokumentacijskem projektu
+
 \end_layout
 
 \begin_layout Subsection
@@ -979,9 +1044,13 @@ To je zelo preprosto.
  Sporočilo lahko pošljete na dopisni seznam za razvijalce ali za uporabnike
  LyXa.
  Dokumentacijska skupina pa bo najbolj vesela sporočila na naslov 
-\family typewriter
-lyx-docs@lists.lyx.org
-\family default
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
 .
  Če gre za manjše popravke, jih bo kdo vnesel.
  Če gre za kaj večjega, pa vam priporočamo, da se pridružite dopisnemu seznamu
@@ -1011,18 +1080,41 @@ ijske skupine!
 \end_layout
 
 \begin_layout Standard
-Takšne naključne spremembe ne bodo prišle v dokumentacijo, saj dokumentacijska
- skupina vzdržuje osrednje izvode v drevesu CVS
-\begin_inset Foot
+
+\lang english
+LyX has a bug tracking system, which you can find at
+\lang slovene
+ 
+\family typewriter
+
+\begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
-CVS je sistem za nadzorovanje različic datotek prek omrežja.
+
+http://www.lyx.org/trac/wiki/BugTrackerHome
 \end_layout
 
 \end_inset
 
+
+\family default
 .
+\end_layout
+
+\begin_layout Standard
+Takšne naključne spremembe ne bodo prišle v dokumentacijo, saj dokumentacijska
+ skupina vzdržuje osrednje izvode v drevesu SVN.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+SVN je sistem za nadzorovanje različic datotek prek omrežja.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -1040,7 +1132,7 @@ najprej
 
 \begin_layout Enumerate
 Pridobite zadnjo izvorno kodo LyXa.
- Odtarajte jo
+ Odtarajte jo.
 \begin_inset Foot
 status collapsed
 
@@ -1051,7 +1143,6 @@ Bolj pustolovske duše med vami bodo anonimno pobrale zadnjo izvorno kodo
 
 \end_inset
 
-.
  V glavnem drevesu boste našli imenik, imenovan 
 \family typewriter
 development
@@ -1117,9 +1208,14 @@ Zdaj stopite v stik s skupino na naslovu:
 
 \begin_deeper
 \begin_layout Standard
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
 
-\family typewriter
-lyx-docs@lists.lyx.org
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1138,9 +1234,16 @@ Naj vam ne pride na misel, da bi se lotili pisanja, dokler ne poklepetamo
  Trenutno stanje v dokumentaciji si boste lahko ogledali na spletni strani
  dokumentacijske skupine (ko jo bomo usposobili) ali v arhivih dopisnih
  seznamov na 
-\family typewriter
-www.lyx.org
-\family default
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org
+\end_layout
+
+\end_inset
+
 .
 \end_layout
 
