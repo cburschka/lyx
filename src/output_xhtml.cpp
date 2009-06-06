@@ -235,7 +235,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 
 		switch (style.latextype) {
 		case LATEX_ENVIRONMENT:
-		// case LATEX_LIST_ENVIRONMENT??
+		case LATEX_LIST_ENVIRONMENT:
 		case LATEX_ITEM_ENVIRONMENT: {
 			// There are two possiblities in this case. 
 			// One is that we are still in the environment in which we 
@@ -352,6 +352,7 @@ void xhtmlParagraphs(ParagraphList const & paragraphs,
 	ParagraphList::const_iterator pend = paragraphs.end();
 
 	while (par != pend) {
+		LYXERR0(par->id());
 		Layout const & style = par->layout();
 		ParagraphList::const_iterator lastpar = par;
 		ParagraphList::const_iterator send;
@@ -365,6 +366,7 @@ void xhtmlParagraphs(ParagraphList const & paragraphs,
 			break;
 		}
 		case LATEX_ENVIRONMENT:
+		case LATEX_LIST_ENVIRONMENT:
 		case LATEX_ITEM_ENVIRONMENT: {
 			send = searchEnvironment(par, pend);
 			par = makeEnvironment(buf, os, runparams, paragraphs, par,send);
@@ -374,9 +376,12 @@ void xhtmlParagraphs(ParagraphList const & paragraphs,
 			send = searchParagraph(par, pend);
 			par = makeParagraphs(buf, os, runparams, paragraphs, par,send);
 			break;
-		default:
+		case LATEX_BIB_ENVIRONMENT:
+			// FIXME
+			++par;
 			break;
 		}
+		// FIXME??
 		// makeEnvironment may process more than one paragraphs and bypass pend
 		if (distance(lastpar, par) >= distance(lastpar, pend))
 			break;
