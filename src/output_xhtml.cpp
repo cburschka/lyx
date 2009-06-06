@@ -194,6 +194,8 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 	ParagraphList::const_iterator par = pbegin;
 	for (; par != pend; ++par) {
 		Layout const & lay = par->layout();
+		if (!lay.counter.empty())
+			buf.params().documentClass().counters().step(lay.counter);
 		if (par != pbegin)
 			os << '\n';
 		bool const opened = openTag(os, lay);
@@ -207,7 +209,7 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 	return pend;
 }
 
-
+ 
 ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 					      odocstream & os,
 					      OutputParams const & runparams,
@@ -228,6 +230,8 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 
 	while (par != pend) {
 		Layout const & style = par->layout();
+		if (!style.counter.empty())
+			buf.params().documentClass().counters().step(style.counter);
 		ParagraphList::const_iterator send;
 		// this will be positive, if we want to skip the initial word
 		// (if it's been taken for the label).
@@ -235,35 +239,36 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 
 		switch (style.latextype) {
 		case LATEX_ENVIRONMENT:
-		// case LATEX_LIST_ENVIRONMENT??
+		case LATEX_LIST_ENVIRONMENT:
 		case LATEX_ITEM_ENVIRONMENT: {
+			// FIXME Factor this out.
 			// There are two possiblities in this case. 
 			// One is that we are still in the environment in which we 
 			// started---which we will be if the depth is the same.
 			if (par->params().depth() == origdepth) {
+				Layout const & cstyle = par->layout();
 				if (lastlay != 0) {
 					closeItemTag(os, *lastlay);
 					lastlay = 0;
 				}
-				Layout const & cstyle = par->layout();
+				bool const item_tag_opened = openItemTag(os, cstyle);
 				if (cstyle.labeltype == LABEL_MANUAL) {
 					bool const label_tag_opened = openLabelTag(os, cstyle);
 					sep = par->firstWordLyXHTML(os, runparams);
 					if (label_tag_opened)
 						closeLabelTag(os, cstyle);
 					os << '\n';
-				} else if (style.latextype == LATEX_ENVIRONMENT 
+				}
+				// FIXME Why did I put that first condition??
+				else if (style.latextype == LATEX_ENVIRONMENT 
 				           && style.labeltype != LABEL_NO_LABEL) {
 					bool const label_tag_opened = openLabelTag(os, cstyle);
-					if (!style.counter.empty())
-						buf.params().documentClass().counters().step(cstyle.counter);
 					os << pbegin->expandLabel(style, buf.params(), false);
 					if (label_tag_opened)
 						closeLabelTag(os, cstyle);
 					os << '\n';
 				}
 
-				bool const item_tag_opened = openItemTag(os, cstyle);
 				par->simpleLyXHTMLOnePar(buf, os, runparams, 
 					outerFont(distance(paragraphs.begin(), par), paragraphs), sep);
 				++par;
@@ -298,6 +303,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 		// FIXME
 		case LATEX_BIB_ENVIRONMENT:
 		case LATEX_COMMAND:
+			++par;
 			break;
 		}
 	}
@@ -318,14 +324,15 @@ void makeCommand(Buffer const & buf,
 					  ParagraphList::const_iterator const & pbegin)
 {
 	Layout const & style = pbegin->layout();
+	if (!style.counter.empty())
+		buf.params().documentClass().counters().step(style.counter);
 
 	bool const main_tag_opened = openTag(os, style);
 
 	// Label around sectioning number:
+	// FIXME Probably need to account for LABEL_MANUAL
 	if (style.labeltype != LABEL_NO_LABEL) {
 		bool const label_tag_opened = openLabelTag(os, style);
-		if (!style.counter.empty())
-			buf.params().documentClass().counters().step(style.counter);
 		os << pbegin->expandLabel(style, buf.params(), false);
 		if (label_tag_opened)
 			closeLabelTag(os, style);
@@ -352,6 +359,7 @@ void xhtmlParagraphs(ParagraphList const & paragraphs,
 	ParagraphList::const_iterator pend = paragraphs.end();
 
 	while (par != pend) {
+		LYXERR0(par->id());
 		Layout const & style = par->layout();
 		ParagraphList::const_iterator lastpar = par;
 		ParagraphList::const_iterator send;
@@ -365,6 +373,7 @@ void xhtmlParagraphs(ParagraphList const & paragraphs,
 			break;
 		}
 		case LATEX_ENVIRONMENT:
+		case LATEX_LIST_ENVIRONMENT:
 		case LATEX_ITEM_ENVIRONMENT: {
 			send = searchEnvironment(par, pend);
 			par = makeEnvironment(buf, os, runparams, paragraphs, par,send);
@@ -374,9 +383,12 @@ void xhtmlParagraphs(ParagraphList const & paragraphs,
 			send = searchParagraph(par, pend);
 			par = makeParagraphs(buf, os, runparams, paragraphs, par,send);
 			break;
-		default:
+		case LATEX_BIB_ENVIRONMENT:
+			// FIXME
+			++par;
 			break;
 		}
+		// FIXME??
 		// makeEnvironment may process more than one paragraphs and bypass pend
 		if (distance(lastpar, par) >= distance(lastpar, pend))
 			break;
