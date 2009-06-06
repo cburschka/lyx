@@ -1,8 +1,41 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\textclass book
+\textclass article
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!! 
+%
+%This preamble is designed to ensure that the document prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected. If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+
+% set fonts for nicer pdf view
+\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+\pdfbookmark[1]{\contentsname}{}
+\myTOC
+\cleardoublepage
+\pagenumbering{arabic} }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+{LyX}}
+\end_preamble
 \use_default_options false
 \language danish
 \inputencoding default
@@ -16,23 +49,37 @@
 \font_tt_scale 100
 
 \graphics default
-\paperfontsize default
+\paperfontsize 12
 \spacing single
-\use_hyperref false
-\papersize default
+\use_hyperref true
+\pdf_title "Introduktion til LyX"
+\pdf_author "LyX Team"
+\pdf_subject "LyX-documentation Intro"
+\pdf_keywords "LyX, documentation"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 2
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\papersize a4paper
 \use_geometry false
-\use_amsmath 0
+\use_amsmath 1
 \use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
-\secnumdepth 2
+\secnumdepth 3
 \tocdepth 2
 \paragraph_separation indent
 \defskip medskip
 \quotes_language swedish
 \papercolumns 1
-\papersides 2
+\papersides 1
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
@@ -180,9 +227,9 @@ hvad det er, du laver
 \emph on
 stil
 \emph default
-
+.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Retfærdigvis skal det siges, at de nyeste udgaver af de mest populære kontorprog
@@ -194,7 +241,6 @@ rammer har fået en slags stilark, som kan marker teksten på en lignende
 
 \end_inset
 
-\SpecialChar \@.
  Lad os se på et lille eksempel:
 \end_layout
 
@@ -353,21 +399,6 @@ gerne
 \begin_layout Section
 Forskelle mellem LyX og anden tekst\SpecialChar \-
 behandling
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Nej, vi prøver ikke på at starte (eller vinde) en fundamentalistisk tekstbehandl
-ingskrig, men vi mener at det er vigtigt at beskrive LyX's egenskaber\SpecialChar \@.
- Og
- en af LyX's vigtigste egenskaber, WYSIWYM adskiller sig grundlæggende fra,
- hvad 99% af alle mennesker kender\SpecialChar \@.
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -452,7 +483,7 @@ drykning afhænger af konteksten; forskellige afsnitstyper indrykkes forskelligt
  og afsnit fleksibel, styret af LyX\SpecialChar \@.
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Det er muligt selv at finjustere disse (hvoraf enkelte kræver kendskab til
@@ -510,9 +541,9 @@ Godt nok kan mange nyere tekstbehandlingsprogrammer håndtere matematiske
 virker
 \emph default
 \SpecialChar \@.
- Alle fejlene er luget ud
+ Alle fejlene er luget ud.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Okay, vi ved godt at intet er helt perfekt, men LaTeX er så tæt på at være
@@ -522,7 +553,6 @@ Okay, vi ved godt at intet er helt perfekt, men LaTeX er så tæt på at være
 
 \end_inset
 
-\SpecialChar \@.
 
 \end_layout
 
@@ -538,7 +568,7 @@ er
 LaTeX er et dokumentudviklingssystem, der blev lavet af Leslie Lamport tilbage
  i 1985
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Oplysningerne i dette afsnit kommer fra 
@@ -800,16 +830,24 @@ Gør os i øvrigt en tjeneste — hvis der er noget i manualerne, der forvirrer
  dig, er uklart eller forkert, må du endelig lade os det vide! Du kan kontakte
  de nuværende vedligeholdere af manualerne ved at skrive på engelsk til
  
-\family typewriter
-lyx-docs@lists.lyx.org
-\family default
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
 .
  Hvis du har spørgsmål, der ikke åbenlyst besvares af dokumentationen og
  skal bruge hurtig hjælp, kan du benytte dig af postlisten for LyX-brugere,
  som du kan nå på 
-\family typewriter
-lyx-users@lists.lyx.org
-\family default
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-users@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
 .
 \end_layout
 
@@ -826,9 +864,9 @@ Nogen trykker manualerne, mens andre læser dem på skærmen med LyX\SpecialChar
  trykte versioner\SpecialChar \@.
  Hverken fodnoter eller indholdsfortegnelse er synlig\SpecialChar \@.
  Fodnoter
- ser således ud
+ ser således ud.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Hej!
@@ -850,7 +888,6 @@ fodnote
 
 \end_inset
 
-\SpecialChar \@.
  Klik på den med venstre museknap for at åbne den\SpecialChar \@.
  For indholdsfortegnelsen
  kan du enten klikke på den grå firkant eller kigge i menuen 
@@ -1641,32 +1678,38 @@ Under brugen af LyX kan det ske at du finder noget, du anser for at være
 \begin_layout Standard
 LyX har et fejlsporingssystem, som du finde på 
 \family typewriter
-LyX fejlsporing 
+LyX fejlsporing
+\family default
+ 
 \begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
 
-http://bugzilla.lyx.org/
+http://www.lyx.org/trac/wiki/BugTrackerHome
 \end_layout
 
 \end_inset
 
-
-\family default
 .
  Du bar tjekke dette inden du indrapporterer en fejl, så du undgår at den
  allerede er anmeldt\SpecialChar \@.
  Hvis du har kommentarer til en eksisterende fejl eller
  vil rapportere en ny fejl, kan du enten bruge fejlsporingssystemet eller
  sende et engelsksproget brev til udviklingslisten på 
-\family typewriter
-lyx-devel@lists.lyx.org
-\family default
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-devel@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
 .
  Du finder arkivet fra denne liste på LyX's hoved-webside, 
 \family typewriter
-LyX webside 
+LyX webside
+\family default
+ 
 \begin_inset Flex URL
 status collapsed
 
@@ -1677,8 +1720,6 @@ http://www.lyx.org/
 
 \end_inset
 
-
-\family default
 .
 \end_layout
 
@@ -1712,7 +1753,7 @@ Hvis du får LyX til at bryde ned, vil vi bede dig om at tage dig tid til
 \begin_inset Quotes srd
 \end_inset
 
-gdb /users/steve/lyx-1.0.x/src/lyx
+gdb /users/steve/lyx-1.6.x/src/lyx
 \family default
 \size default
 
@@ -1758,9 +1799,9 @@ backtrace
 \begin_inset Quotes srd
 \end_inset
 
--fil og medtag indholdet i din fejlrapport
+-fil og medtag indholdet i din fejlrapport.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 hvis du vil være grundig, kan du bruge kommandoerne 
@@ -1793,7 +1834,6 @@ up
 
 \end_inset
 
-.
  Hvis det er muligt, er en beskrivelse af hvordan man kan fremprovokere
  fejlen vigtigere end en 
 \begin_inset Quotes sld
@@ -1848,9 +1888,13 @@ Rapportér fejl i manualerne
 
 \begin_layout Standard
 Send et engelsksproget brev til postlisten 
-\family typewriter
-lyx-docs@lists.lyx.org
-\family default
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
 , hvis du finder fejl i dokumentationen\SpecialChar \@.
  Dokumentationsholdet vil tage sig
  af de nødvendige rettelser\SpecialChar \@.
@@ -1873,9 +1917,10 @@ først
 
 \begin_layout Enumerate
 Hent den seneste kildetekst til LyX\SpecialChar \@.
- Udpak den
+ Udpak den\SpecialChar \@.
+
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 De mere eventyrlystne kan hente den seneste kildtekst fra LyX's CVS-arkiv
@@ -1888,7 +1933,6 @@ lyxdoc
 
 \end_inset
 
-\SpecialChar \@.
  Du vil finde et katalog inden i hovedkataloget kaldet 
 \family typewriter
 lib/doc/
@@ -1949,9 +1993,14 @@ Kontakt holdet på engelsk på:
 
 \begin_deeper
 \begin_layout Standard
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
 
-\family typewriter
-lyx-docs@lists.lyx.org
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

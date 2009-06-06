@@ -1,10 +1,40 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
 \textclass scrbook
 \begin_preamble
-\usepackage{multicol}
+% DO NOT ALTER THIS PREAMBLE!!! 
+%
+%This preamble is designed to ensure that the document prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected. If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+
+% set fonts for nicer pdf view
+\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+\pdfbookmark[1]{\contentsname}{}
+\myTOC
+\cleardoublepage
+\pagenumbering{arabic} }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+{LyX}}
 \end_preamble
 \use_default_options false
 \language basque
@@ -21,7 +51,21 @@
 \graphics default
 \paperfontsize default
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_title "LyX Sarrera"
+\pdf_author "LyX Team"
+\pdf_subject "LyX-documentation Intro"
+\pdf_keywords "LyX, documentation"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 2
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -228,9 +272,9 @@ zer egiten ari zaren
 \emph on
 estilo
 \emph default
- izeneko arautegi bat jarraituz, beste denaz arduratuko da
+ izeneko arautegi bat jarraituz, beste denaz arduratuko da.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
  Zehatzago izatearren, bulegotikako suiteak (azken bertsioak) markatze-metodoare
@@ -241,7 +285,6 @@ n antzekoa erabiltzen duten orri-estiloak dituzte.
 
 \end_inset
 
-.
  Ikus dezakegun adibide bat:
 \end_layout
 
@@ -359,29 +402,12 @@ Horregatik irudi edo iragarkiak sortzeko LyX ez da erabilgarria – kasu horieta
 \end_layout
 
 \begin_layout Section
-LyX eta testu-prozesadoreen 
-\begin_inset Newline newline
-\end_inset
-
-arteko ezberdintasunak
+LyX eta testu-prozesadoreen arteko ezberdintasunak
 \begin_inset OptArg
 status collapsed
 
 \begin_layout Plain Layout
 LyX eta beste testu-prozesadoreak
-\end_layout
-
-\end_inset
-
-
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Ez, gerra-santu bat irabazteko asmoarekin ez gabiltza.
- LyX-en berezitasunak aipatzea garrantzitsua dela deritzogu.
- Berezitasun garrantzitsuenetariko bat WYSIWYM da, jendearen %99-ak testua
- ekoizteko daukan kontzeptuaz erabat ezberdintzen delako.
 \end_layout
 
 \end_inset
@@ -466,9 +492,8 @@ in bat egiten du.
  Orri-jauziak modu automatiko batean lantzen dira.
  Oro har, lerro, hitz eta paragrafo-tarteak aldakorrak dira, LyX-ek ezartzen
  ditu.
- 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Ezaugarri hauek denak zehatz ditzakezu (gutxi batzuk zehazteko LaTeX-eko
@@ -535,7 +560,7 @@ Zer demontre da LaTeX?
 \begin_layout Standard
 LaTeX
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Atal honetako informazioaren jatorria, Helmut Kopka eta Patrick Daly-k idatzitak
@@ -694,9 +719,8 @@ Epaaa! Gauza bat gehiago.
  Lamport-ek bere liburuan, ordea, dio "lay-tecks" ere izan daitekeela.
  Bestalde, "LyX" "licks" "lucks" edo "looks" ahoska daiteke, herri bakoitzeko
  ahoskeren arabera.
- 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -749,9 +773,13 @@ Beste mesede bat egin dezakezu: eskuliburu hauetan zerbait argi ez badago
  edo akatsak baditu, guri jakinarazi! Dokumentazioa eguneratua edukitzen
  arduratuta dauden neska/mutilekin harremanetan jar zaitezke, horretarako
  idatzi 
-\family typewriter
-lyx-docs@lists.lyx.org
-\family default
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
  helbidera.
  
 \end_layout
@@ -759,10 +787,14 @@ lyx-docs@lists.lyx.org
 \begin_layout Standard
 Dokumentazioarekin zerikusirik ez duten eta erantzun azkarra eskatzen duten
  galderentzat, erabil posta-zerrenda hau: 
-\family typewriter
-lyx-users@lists.lyx.org
-\family default
-.
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-users@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -783,7 +815,7 @@ Arakatu
 .
  Oin-ohar bat irakurtzeko, modu honetan agertzen da
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Kaixo! Oin-ohar hau ixteko, ezkerraldeko laukitxo gris horretan klikatu\SpecialChar \ldots{}
@@ -1210,7 +1242,7 @@ konfigurazioa
 \begin_layout Standard
 LyX-ek, instalatzerakoan, zure sistema aztertzen du.
  Fitxategi honek LyX-ek zure instalazioari buruz ikasitakoaren informazioa
- dauka
+ dauka.
 \begin_inset Foot
 status collapsed
 
@@ -1224,7 +1256,6 @@ Itzultzailearen oharra
 
 \end_inset
 
-.
  Eduki beharreko zerbait falta bada, hemen egiazta beharko duzu.
 \end_layout
 
@@ -1277,13 +1308,14 @@ Bestela alferrik haserretuko zara zeure buruarekin.
 \end_layout
 
 \begin_layout Chapter
+LyX proiektuan laguntzea
 \begin_inset CommandInset label
 LatexCommand label
 name "atal:auzolana"
 
 \end_inset
 
-LyX proiektuan laguntzea
+
 \end_layout
 
 \begin_layout Section
@@ -1319,7 +1351,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://bugzilla.lyx.org/
+http://www.lyx.org/trac/wiki/BugTrackerHome
 \end_layout
 
 \end_inset
@@ -1336,9 +1368,13 @@ http://bugzilla.lyx.org/
  Erabili sistema errore-kudeatzaile hori dagoen errore bati buruzko iradokizunak
 , edo errore berri bati buruzko txostena bidaltzeko, edo, bestela, bidali
  mezu bat 
-\family typewriter
-lyx-devel@lists.lyx.org
-\family default
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-devel@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
  posta-zerrendara.
  Posta-zerrenda honen artxiboei zuzenduriko estekak LyX gune nagusian jarri
  dira, 
@@ -1383,7 +1419,7 @@ igaro errorea non dagoen aurkitzen, orduan eta denbora gutxiago eskainiko
 \begin_layout Standard
 LyX hondatzeko gai bazara, eskertuko genizuke "backtrace
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -1405,7 +1441,7 @@ Itzultzailearen oharra
  Beraz, gdb tresna erabiliz LyX exekutatu, adibidez idatzi "
 \family typewriter
 \size small
-gdb /users/estitxu/lyx-1.0.x/src/lyx
+gdb /users/estitxu/lyx-1.6.x/src/lyx
 \family default
 \size default
 " eta ondoren "
@@ -1414,9 +1450,9 @@ run
 \family default
 ".
  Ondoren, itzuli LyX hondatzea egin eta gdb tresnara.
- Erabili "bt" "backtrace"-a sortzeko eta txertatu ezazu errore-txostenean
+ Erabili "bt" "backtrace"-a sortzeko eta txertatu ezazu errore-txostenean.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 perfektua izatea nahi baduzu, erabili "
@@ -1432,7 +1468,6 @@ info locals
 
 \end_inset
 
-.
  Posiblea bazaizu, azaldu zein urrats landu dituzun LyX hondatzeko, zeren
  eta "backtrace" bera baino garrantzitsuagoa baita, horrela guri gure "backtrace
 " propioa sortzeko aukera eskainiko baitiguzu.
@@ -1481,9 +1516,13 @@ Eskuliburuetako errore-txostena
 
 \begin_layout Standard
 Dokumentazioan arazorik aurkitzen baduzu bidali mezu bat 
-\family typewriter
-lyx-docs@lists.lyx.org
-\family default
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
  posta-zerrendara.
  Dokumentazio-taldeak behar diren zuzenketak egingo dituzte.
 \end_layout
@@ -1500,9 +1539,9 @@ LyX dokumentazio-proiektuak (The LyX Documentation Project), LyX proiektuko
 
 \begin_layout Enumerate
 Eskuratu LyX-en azken iturburuak.
- Deskonprimatu
+ Deskonprimatu.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Abenturazaleek dokumentazioa LyX-eko CVS eduki-sistematik anonimoki eskura
@@ -1516,7 +1555,6 @@ lyxdoc
 
 \end_inset
 
-.
  Bertan lib/doc/ izeneko direktorioa aurkituko duzu.
  Direktorio honetan 
 \family typewriter
@@ -1565,9 +1603,14 @@ Jarri taldearekin harremanetan:
 
 \begin_deeper
 \begin_layout Standard
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
 
-\family typewriter
-lyx-docs@lists.lyx.org
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

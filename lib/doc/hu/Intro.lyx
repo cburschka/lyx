@@ -1,72 +1,47 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\textclass book
+\textclass article
 \begin_preamble
-% DO NOT ALTER THIS PREAMBLE!!!
+% DO NOT ALTER THIS PREAMBLE!!! 
 %
 %This preamble is designed to ensure that the document prints
 % out as advertised. If you mess with this preamble,
-% parts of the document may not print out as expected.  If you
+% parts of the document may not print out as expected. If you
 % have problems LaTeXing this file, please contact 
 % the documentation team
 % email: lyx-docs@lists.lyx.org
 
-% provides missing characters,
-\usepackage{textcomp}
-
 \usepackage{ifpdf} % part of the hyperref bundle
 \ifpdf % if pdflatex is used
 
- % set fonts for nicer pdf view
- \IfFileExists{lmodern.sty}{\usepackage{lmodern}}
-  {\usepackage[scaled=0.92]{helvet}
-    \usepackage{mathptmx}
-    \usepackage{courier} }
+% set fonts for nicer pdf view
+\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
 
- % the pages of the TOC are numbered roman
- % and a pdf-bookmark for the TOC is added
- \pagenumbering{roman}
- \let\myTOC\tableofcontents
- \renewcommand\tableofcontents{%
-   \pdfbookmark[1]{Contents}{}
-   \myTOC
-   \clearpage
-   \pagenumbering{arabic} }
+\fi % end if pdflatex is used
 
- % link all cross references and URLs in pdf output
- \usepackage[colorlinks=true, bookmarks, bookmarksnumbered,
-  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
-  pdfpagelayout=OneColumn, pdfnewwindow=true,
-  pdfstartview=XYZ, plainpages=false, pdfpagelabels,
-  pdfauthor={LyX Team}, pdftex,
-  pdftitle={The LyX User's Guide},pdfsubject={LyX-documentation Intro},
-  pdfkeywords={LyX}]{hyperref}
- 
-\else % if dvi or ps is produced
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+\pdfbookmark[1]{\contentsname}{}
+\myTOC
+\cleardoublepage
+\pagenumbering{arabic} }
 
- % link all cross references and URLs in dvi output
- \usepackage[ps2pdf]{hyperref}
-
- % the pages of the TOC are numbered roman
- \pagenumbering{roman}
- \let\myTOC\tableofcontents
- \renewcommand\tableofcontents{%
-   \pdfbookmark[1]{Contents}{}
-   \myTOC
-   \clearpage
-   \pagenumbering{arabic} }
-   
-\fi
-%\def\magyarOptions{defaults=over-1.4,footnote=huplain}
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+{LyX}}
 \end_preamble
 \use_default_options false
 \language magyar
-\inputencoding latin2
-\font_roman times
-\font_sans helvet
-\font_typewriter courier
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
 \font_default_family default
 \font_sc false
 \font_osf false
@@ -74,9 +49,23 @@
 \font_tt_scale 100
 
 \graphics default
-\paperfontsize default
+\paperfontsize 12
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_title "Bevezetés a LyX használatába"
+\pdf_author "LyX Team"
+\pdf_subject "LyX-documentation Intro"
+\pdf_keywords "LyX, documentation"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 2
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 \papersize default
 \use_geometry false
 \use_amsmath 1
@@ -92,7 +81,7 @@
 \headsep 1cm
 \footskip 2cm
 \secnumdepth 3
-\tocdepth 3
+\tocdepth 2
 \paragraph_separation indent
 \defskip medskip
 \quotes_language polish
@@ -117,45 +106,18 @@ Készítette: a LyX csapat
 \size small
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset space ~
 \end_inset
 
 Amennyiben megjegyzése vagy hibajavítási javaslatai lennének, úgy kérem
- küldje azokat a LyX dokumentációs levelezési listára
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-mbox{
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-lyx-docs@lists.lyx.org
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
+ küldje azokat a LyX dokumentációs levelezési listára 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
 
 \end_inset
 
@@ -264,7 +226,7 @@ azt kapja amit lát
 
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset space ~
@@ -300,9 +262,9 @@ csak azt kapja amit lát
 \begin_inset Quotes prd
 \end_inset
 
-
+.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset space ~
@@ -329,7 +291,7 @@ WYSIAYG
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
@@ -343,9 +305,9 @@ mi az amit akar
 \emph on
 stílus
 \emph default
-nak hívunk
+nak hívunk.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset space ~
@@ -359,7 +321,6 @@ Azért ne felejtsük el, hogy a népszerű irodai programok jelenlegi verziói
 
 \end_inset
 
-.
  Nézzünk meg egy példát:
 \end_layout
 
@@ -479,7 +440,7 @@ azt kapja amit lát
 
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset space ~
@@ -518,9 +479,9 @@ gondol
 \begin_inset Quotes prd
 \end_inset
 
-
+.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset space ~
@@ -551,7 +512,6 @@ WYSIWYM
 
 \end_inset
 
-.
  Ez a nagyszerű ötlet, nagymértékben csökkenti a dokumentumok elkészítésének
  a nehézségeit.
  Szintén emiatt mondjuk, miért nem túl jó választás a LyX, poszterek és
@@ -569,7 +529,7 @@ pontosan
 \begin_layout Section
 Eltérések a LyX és a többi szövegszerkesztő között
 \begin_inset OptArg
-status open
+status collapsed
 
 \begin_layout Plain Layout
 LyX és a többi szövegszerkesztő
@@ -653,9 +613,9 @@ Habár mindezek léteznek a LyX-ben, általában nincs rájuk szüksége.
  bekezdésekhez különböző függő behúzásokat fog használni.
  A laptöréseket szintén automatikusan kezeli.
  Általánosan: a sorok, szavak, betűk és bekezdések közötti térköz változó,
- amit a LyX állít be
+ amit a LyX állít be.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset space ~
@@ -677,7 +637,7 @@ Haladó szolgáltatások
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
@@ -724,7 +684,7 @@ Mi a LaTeX?
 
 \begin_layout Standard
 A LaTeX egy dokumentum előkészítő rendszer amit Leslie Lamport készített
- 1985-ben
+ 1985-ben.
 \begin_inset Foot
 status collapsed
 
@@ -754,7 +714,6 @@ Felhasználói kézikönyv
 
 \end_inset
 
-.
  Ez a nyelv a TeX írásszedő nyelvből lett kifejlesztve, melyet Donald Knuth
  készített 1984-ben.
  A TeX egy szöveges (ASCII) fájlban tárolt írásszedő parancsok sorozatát
@@ -773,7 +732,7 @@ trükkjét
  A TeX kimenete lehet egy hordozható pdf dokumentum vagy egy eszközfüggetlen
  formátum fájl
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset space ~
@@ -832,7 +791,7 @@ LaTeX neve: class
 
 \end_inset
 
- és stílusokkal
+ és stílusokkal.
 \begin_inset Foot
 status collapsed
 
@@ -845,7 +804,6 @@ LaTeX neve: style
 
 \end_inset
 
-.
  Az 
 \emph on
 osztály
@@ -966,21 +924,18 @@ részt\SpecialChar \@.
 Először is tegyen nekünk egy szívességet: ha valami nem tiszta, érthetetlen
  vagy rossz, ne habozzon, tudassa velünk! A dokumentációk jelenlegi fejlesztőit
  elérheti a levelezési listájukon: 
-\family typewriter
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-mailto:lyx-docs@lists.lyx.org
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
 
 \end_inset
 
 
+\family typewriter
+
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset space ~
@@ -997,21 +952,18 @@ Persze először érdemes nekünk (a fordítóknak) írni, hátha csak a fordít
 .
  Ha olyan kérdése merülne fel, amire nem ad választ a dokumentáció, azonban
  sürgősen segítségre van szüksége, írjon a felhasználók listájára: 
-\family typewriter
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-mailto:lyx-users@lists.lyx.org
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-users@lists.lyx.org"
+type "mailto:"
 
 \end_inset
 
 
+\family typewriter
+
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset space ~
@@ -1167,7 +1119,7 @@ Haladó szolgáltatások kézikönyv
 \emph default
  részében (a fájl neve 
 \family typewriter
-extended.lyx
+Extended.lyx
 \family default
 ).
  Amikor a billentyűzet-kombinációkat ismertetjük, mindig a következő jelölésmódo
@@ -1580,7 +1532,7 @@ reference "tab:mertekegysegek"
 placement t
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -2342,7 +2294,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://bugzilla.lyx.org/
+http://www.lyx.org/trac/wiki/BugTrackerHome
 \end_layout
 
 \end_inset
@@ -2426,19 +2378,16 @@ A kézikönyvekben talált hibák jelentése
 
 \begin_layout Standard
 Amennyiben talál egy hibát a dokumentációban küldjön egy levelet a 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-mailto:lyx-docs@lists.lyx.org
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
 
 \end_inset
 
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset space ~
@@ -2520,16 +2469,10 @@ Lépjen kapcsolatba a csapattal:
 
 \begin_deeper
 \begin_layout Standard
-
-\family typewriter
-lyx-docs@lists.lyx.org 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-mailto:lyx-docs@lists.lyx.org
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
 
 \end_inset
 
@@ -2572,21 +2515,14 @@ Csatlakozás a dokumentációk fordításához, honosításához
 \begin_layout Standard
 Ha szeretne bekapcsolódni a dokumentációk fordításába, vegye fel a kapcsolatot
  a fordítókkal a következő e-mail címen: 
-\family typewriter
-alex@lyx.hu 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-mailto:alex@lyx.hu
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+target "alex@lyx.hu"
+type "mailto:"
 
 \end_inset
 
 
-\family default
-.
 \end_layout
 
 \begin_layout Standard
