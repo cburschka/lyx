@@ -190,7 +190,12 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 			send = searchParagraph(par, pend);
 			par = makeParagraph(buf, os, runparams, paragraphs, par,send);
 			break;
-		default:
+		case LATEX_LIST_ENVIRONMENT:
+		case LATEX_BIB_ENVIRONMENT:
+		case LATEX_COMMAND:
+			// FIXME This means that we are just skipping any paragraph that
+			// isn't implemented above, and this includes lists.
+			++par;
 			break;
 		}
 
