@@ -2402,19 +2402,21 @@ void Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 			if (style.pass_thru)
 				os.put(c);
 			else if (c == '-') {
+				docstring str;
 				int j = i + 1;
 				if (j < size() && d->text_[j] == '-') {
 					j += 1;
 					if (j < size() && d->text_[j] == '-') {
-						os << from_ascii("&mdash;");
+						str += from_ascii("&mdash;");
 						i += 2;
 					} else {
-						os << from_ascii("&ndash;");
+						str += from_ascii("&ndash;");
 						i += 1;
 					}
 				}
 				else
-					os << c;
+					str += c;
+				os << str;
 			} else
 				os << html::escapeChar(c);
 		}
