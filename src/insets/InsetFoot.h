@@ -38,8 +38,6 @@ private:
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	///
-	int xhtml(odocstream &, OutputParams const &) const;
-	///
 	docstring editMessage() const;
 	/// Update the counters of this inset and of its contents
 	void updateLabels(ParIterator const &);

@@ -75,6 +75,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 	enum {
 		IL_BGCOLOR,
 		IL_COPYSTYLE,
+		IL_COUNTER,
 		IL_CUSTOMPARS,
 		IL_DECORATION,
 		IL_FONT,
@@ -83,6 +84,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		IL_FREESPACING,
 		IL_HTMLTAG,
 		IL_HTMLATTR,
+		IL_HTMLINNERTAG,
+		IL_HTMLINNERATTR,
+		IL_HTMLLABEL,
 		IL_HTMLSTYLE,
 		IL_HTMLPREAMBLE,
 		IL_INTOC,
@@ -105,6 +109,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 	LexerKeyword elementTags[] = {
 		{ "bgcolor", IL_BGCOLOR },
 		{ "copystyle", IL_COPYSTYLE }, 
+		{ "counter", IL_COUNTER},
 		{ "custompars", IL_CUSTOMPARS },
 		{ "decoration", IL_DECORATION },
 		{ "end", IL_END },
@@ -113,6 +118,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		{ "forceplain", IL_FORCEPLAIN },
 		{ "freespacing", IL_FREESPACING },
 		{ "htmlattr", IL_HTMLATTR },
+		{ "htmlinnerattr", IL_HTMLINNERATTR},
+		{ "htmlinnertag", IL_HTMLINNERTAG},
+		{ "htmllabel", IL_HTMLLABEL },
 		{ "htmlpreamble", IL_HTMLPREAMBLE },
 		{ "htmlstyle", IL_HTMLSTYLE },
 		{ "htmltag", IL_HTMLTAG },
@@ -205,6 +213,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			custompars_ = multipar_;
 			forceplain_ = !multipar_;
 			break;
+		case IL_COUNTER:
+			lex >> counter_;
+			break;
 		case IL_CUSTOMPARS:
 			lex >> custompars_;
 			readCustomOrPlain = true;
@@ -271,6 +282,15 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			break;
 		case IL_HTMLATTR:
 			lex >> htmlattr_;
+			break;
+		case IL_HTMLINNERTAG:
+			lex >> htmlinnertag_;
+			break;
+		case IL_HTMLINNERATTR:
+			lex >> htmlinnerattr_;
+			break;
+		case IL_HTMLLABEL:
+			lex >> htmllabel_;
 			break;
 		case IL_HTMLSTYLE:
 			htmlstyle_ = from_utf8(lex.getLongString("EndHTMLStyle"));

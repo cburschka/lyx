@@ -875,11 +875,25 @@ int InsetCollapsable::docbook(odocstream & os, OutputParams const & runparams) c
 int InsetCollapsable::xhtml(odocstream & os, OutputParams const & runparams) const
 {
 	InsetLayout const & il = getLayout();
-	bool opened = false;
-	if (!undefined())
-		opened = html::openTag(os, il.htmltag(), il.htmlattr());
+	if (undefined())
+		return InsetText::xhtml(os, runparams);
+
+	bool const opened = html::openTag(os, il.htmltag(), il.htmlattr());
+	if (!il.counter().empty()) {
+		// FIXME Master buffer?
+		LYXERR0(il.counter());
+		Counters & cntrs = buffer().params().documentClass().counters();
+		cntrs.step(il.counter());
+		if (!il.htmllabel().empty())
+			os << cntrs.counterLabel(translateIfPossible(from_ascii(il.htmllabel())));
+	}
+	bool innertag_opened = false;
+	if (!il.htmlinnertag().empty())
+		innertag_opened = html::openTag(os, il.htmlinnertag(), il.htmlinnerattr());
 	InsetText::xhtml(os, runparams);
-	if (opened && !undefined())
+	if (innertag_opened)
+		html::closeTag(os, il.htmlinnertag());
+	if (opened)
 		html::closeTag(os, il.htmltag());
 	return 0;
 }

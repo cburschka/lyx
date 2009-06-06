@@ -55,33 +55,41 @@ public:
 	///
 	bool read(Lexer & lexrc, TextClass const & tclass);
 	///
-	docstring name() const { return name_; };
+	docstring name() const { return name_; }
 	///
 	void setName(docstring const & n) { name_ = n; }
 	///
-	InsetLyXType lyxtype() const { return lyxtype_; };
+	InsetLyXType lyxtype() const { return lyxtype_; }
 	///
-	docstring labelstring() const { return labelstring_; };
+	docstring labelstring() const { return labelstring_; }
 	///
-	InsetDecoration decoration() const { return decoration_; };
+	InsetDecoration decoration() const { return decoration_; }
 	///
-	InsetLaTeXType latextype() const { return latextype_; };
+	InsetLaTeXType latextype() const { return latextype_; }
 	///
-	std::string latexname() const { return latexname_; };
+	std::string latexname() const { return latexname_; }
 	///
-	std::string latexparam() const { return latexparam_; };
+	std::string latexparam() const { return latexparam_; }
 	///
-	FontInfo font() const { return font_; };
+	FontInfo font() const { return font_; }
 	///
-	FontInfo labelfont() const { return labelfont_; };
+	FontInfo labelfont() const { return labelfont_; }
 	///
-	ColorCode bgcolor() const { return bgcolor_; };
+	ColorCode bgcolor() const { return bgcolor_; }
 	///
-	docstring preamble() const { return preamble_; };
+	docstring preamble() const { return preamble_; }
+	///
+	docstring counter() const { return counter_; }
 	/// 
+	std::string const & htmlinnertag() const { return htmlinnertag_; }
+	/// 
+	std::string const & htmlinnerattr() const { return htmlinnerattr_; }
+	///
 	std::string const & htmltag() const { return htmltag_; }
 	/// 
 	std::string const & htmlattr() const { return htmlattr_; }
+	///
+	std::string const & htmllabel() const { return htmllabel_; }
 	/// 
 	docstring htmlstyle() const { return htmlstyle_; }
 	/// 
@@ -132,11 +140,19 @@ private:
 	///
 	ColorCode bgcolor_;
 	///
+	docstring counter_;
+	///
 	docstring preamble_;
 	/// 
 	std::string htmltag_;
 	/// 
 	std::string htmlattr_;
+	///
+	std::string htmlinnertag_;
+	/// 
+	std::string htmlinnerattr_;
+	///
+	std::string htmllabel_;
 	/// 
 	docstring htmlstyle_;
 	/// 

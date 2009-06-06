@@ -127,15 +127,4 @@ int InsetFoot::docbook(odocstream & os, OutputParams const & runparams) const
 	return i;
 }
 
-
-int InsetFoot::xhtml(odocstream & os, OutputParams const & runparams) const
-{
-	// FIXME It'd be nice to output the note number, but we'd need to save 
-	// that when we go through updateLabels.
-	os << "<span class='footwrapper'><span class='notenum'>Note</span>\n";
-	InsetCollapsable::xhtml(os, runparams);
-	os << "\n</span>\n";
-	return 0;
-}
-
 } // namespace lyx

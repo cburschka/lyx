@@ -82,6 +82,7 @@ InsetLayout Foot
 	LabelString           foot
 	LatexType             command
 	LatexName             footnote
+	Counter               footnote
 	Font
 	  Color               foreground
 	  Size                Small
@@ -98,7 +99,10 @@ InsetLayout Foot
 	EndFont
 	MultiPar              true
 	HTMLTag               span
-	HTMLAttr              class='footnote'
+	HTMLAttr              class='footwrapper'
+	HTMLLabel             "<span class='notenum'>\arabic{footnote}</span>"
+	HTMLInnerTag          span
+	HTMLInnerAttr         class='footnote'
 	HTMLStyle
 		span.notenum { 
 			vertical-align: super; 

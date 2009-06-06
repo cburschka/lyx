@@ -144,8 +144,8 @@ public:
 	///
 	virtual bool allowMultiPar() const { return true; }
 
-	// Update the counters of this inset and of its contents
-	void updateLabels(ParIterator const &);
+	/// Update the counters of this inset and of its contents
+	virtual void updateLabels(ParIterator const &);
 	///
 	void addToToc(DocIterator const &);
 	///
