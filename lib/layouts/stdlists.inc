@@ -71,9 +71,10 @@ Style Description
 	LabelFont
 	  Series              Bold
 	EndFont
-	HTMLTag               dl
-	HTMLItem              dd
-	HTMLLabel             dt
+	HTMLTag               ol
+	HTMLItem              li
+	HTMLLabel             span
+	HTMLLabelAttr         class='desc'
 End
 
 

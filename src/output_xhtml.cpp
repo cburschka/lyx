@@ -245,11 +245,12 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 			// One is that we are still in the environment in which we 
 			// started---which we will be if the depth is the same.
 			if (par->params().depth() == origdepth) {
+				Layout const & cstyle = par->layout();
 				if (lastlay != 0) {
 					closeItemTag(os, *lastlay);
 					lastlay = 0;
 				}
-				Layout const & cstyle = par->layout();
+				bool const item_tag_opened = openItemTag(os, cstyle);
 				if (cstyle.labeltype == LABEL_MANUAL) {
 					bool const label_tag_opened = openLabelTag(os, cstyle);
 					sep = par->firstWordLyXHTML(os, runparams);
@@ -265,7 +266,6 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 					os << '\n';
 				}
 
-				bool const item_tag_opened = openItemTag(os, cstyle);
 				par->simpleLyXHTMLOnePar(buf, os, runparams, 
 					outerFont(distance(paragraphs.begin(), par), paragraphs), sep);
 				++par;
