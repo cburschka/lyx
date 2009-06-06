@@ -13,8 +13,8 @@ These insets are basically done, though there are probably issues here and there
 	Branch, Collapsable, Footnote, Hyperlink, Label, Line, Note, 
 	Newline, Newpage, Quotes, Space, SpecialChar
 
-These insets probably do nothing:
-	OptArg, Phantom
+These insets do nothing for XHTML:
+	ERT, OptArg, Phantom
 
 These insets work but still need work:
 	InsetBox: We need a Length::asHTML() method and the like, but it basically works.
@@ -33,8 +33,6 @@ These do not yet work and need some attention:
 		Maybe for the beginning, we should just do everything numerically, but even
 		that will need a bit of work. Validation is our friend, presumably.
 	InsetCommand: By default does nothing. That may be right?
-	InsetERT: It's not entirely clear what it's best to do here. Maybe output it
-		verbatim. Perhaps wrapped in some CSS. (What else would one expect?)
 	InsetExternal: I don't understand these so am not sure what to do.
 	InsetFloat: This will need some work, again because I do not really understand
 		what these are meant to do. Presumably, we'll just use a div or something, but

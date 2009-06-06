@@ -81,6 +81,12 @@ int InsetERT::plaintext(odocstream &, OutputParams const &) const
 }
 
 
+int InsetERT::xhtml(odocstream &, OutputParams const &) const
+{
+	return 0; // do not output TeX code
+}
+
+
 int InsetERT::docbook(odocstream & os, OutputParams const &) const
 {
 	// FIXME can we do the same thing here as for LaTeX?

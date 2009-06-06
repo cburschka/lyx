@@ -47,6 +47,8 @@ private:
 	int plaintext(odocstream &, OutputParams const &) const;
 	/// Standard DocBook output -- short-circuited
 	int docbook(odocstream &, OutputParams const &) const;
+	/// Standard XHTML output -- short-circuited
+	int xhtml(odocstream &, OutputParams const &) const;
 	/// Write out to the .lyx file
 	void write(std::ostream & os) const;
 	/// should paragraph indendation be ommitted in any case?
