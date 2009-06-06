@@ -44,12 +44,13 @@ These do not yet work and need some attention:
 	InsetInclude: I think we just want to include it, straightforwardly. Probably will
 		base this more on the latex() routine, then. Another possibility, maybe with a
 		flag of some sort, would be to do it as a separate file, to which we link.
-	InsetIndex: Not clear whether to do anything with this or not. Certainly it's an 
-		"advanced" case.
+	InsetIndex and InsetPrintIndex: An "advanced" case. What really would be cool 
+		would be to collect all of these and then write the index as a series of links 
+		back to the occurrences. But not now.
 	InsetInfo: Probably skip it.
 	InsetListings: Probably just output it as <pre>.
 	InsetMarginal: Fine, but will need CSS.
-	InsetNomencl: Also "advanced".
+	InsetNomencl and InsetPrintNomencl: Also "advanced".
 	InsetRef: Presumably, this is an internal link. But what should the text be, and how
 		should we get it? Probably some validation thing again, where labels tell us where 
 		they are. Alternatively, we could parse the aux file.

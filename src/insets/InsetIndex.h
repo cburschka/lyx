@@ -56,6 +56,9 @@ private:
 	void read(Lexer & lex);
 	///
 	int docbook(odocstream &, OutputParams const &) const;
+	/// At the moment, this does nothing. See development/HTML.notes
+	/// for some remarks on what could be done.
+	int xhtml(odocstream &, OutputParams const &) const { return 0; };
 	///
 	int latex(odocstream &, OutputParams const &) const;
 	///
