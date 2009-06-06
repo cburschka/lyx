@@ -18920,7 +18920,7 @@ msgid "Invalid filename"
 msgstr "Neplatný název souboru"
 
 #: src/frontends/qt4/GuiView.cpp:1391
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The directory in the given path\n"
 "%1$s\n"
@@ -18996,9 +18996,8 @@ msgid "Select LyX document to insert"
 msgstr "Vybrat dokument LyX-u ke vlo¾ení"
 
 #: src/frontends/qt4/GuiView.cpp:1665
-#, fuzzy
 msgid "Absolute filename expected."
-msgstr "Je oèekávána hodnota."
+msgstr "Je oèekávána absolutní cesta k souboru."
 
 #: src/frontends/qt4/GuiView.cpp:1677
 msgid "Select file to insert"
