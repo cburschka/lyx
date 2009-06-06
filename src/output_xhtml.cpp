@@ -196,6 +196,8 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 		Layout const & lay = par->layout();
 		if (!lay.counter.empty())
 			buf.params().documentClass().counters().step(lay.counter);
+		// FIXME We should see if there's a label to be output and
+		// do something with it.
 		if (par != pbegin)
 			os << '\n';
 		bool const opened = openTag(os, lay);
@@ -209,14 +211,14 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 	return pend;
 }
 
- 
+
 ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 					      odocstream & os,
 					      OutputParams const & runparams,
 					      ParagraphList const & paragraphs,
 					      ParagraphList::const_iterator const & pbegin,
-					      ParagraphList::const_iterator const & pend) {
-	
+					      ParagraphList::const_iterator const & pend) 
+{
 	ParagraphList::const_iterator par = pbegin;
 	Layout const & bstyle = par->layout();
 	depth_type const origdepth = pbegin->params().depth();
@@ -241,7 +243,6 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 		case LATEX_ENVIRONMENT:
 		case LATEX_LIST_ENVIRONMENT:
 		case LATEX_ITEM_ENVIRONMENT: {
-			// FIXME Factor this out.
 			// There are two possiblities in this case. 
 			// One is that we are still in the environment in which we 
 			// started---which we will be if the depth is the same.
@@ -272,22 +273,23 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 				par->simpleLyXHTMLOnePar(buf, os, runparams, 
 					outerFont(distance(paragraphs.begin(), par), paragraphs), sep);
 				++par;
-				// We may not want to close the tag yet, in particular,
-				if (item_tag_opened 
-						// if we're not at the end...
-				    && par != pend 
+				if (item_tag_opened) {
+					// We may not want to close the tag yet, in particular,
+					// if we're not at the end...
+					if (par != pend 
 				    //  and are doing items...
-				    && style.latextype == LATEX_ITEM_ENVIRONMENT
-				    // and if the depth has changed...
-				    && par->params().depth() != origdepth) {
-						// then we'll save this layout for later, and close it when
-						// we get another item.
+				     && style.latextype == LATEX_ITEM_ENVIRONMENT
+				     // and if the depth has changed...
+				     && par->params().depth() != origdepth) {
+				     // then we'll save this layout for later, and close it when
+				     // we get another item.
 						lastlay = &cstyle;
-				} else {
-						closeItemTag(os, cstyle); // FIXME
+					} else {
+						closeItemTag(os, cstyle);
+					}
 					os << '\n';
 				}
-			} 
+			}
 			// The other possibility is that the depth has increased, in which
 			// case we need to recurse.
 			else {

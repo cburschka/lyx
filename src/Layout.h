@@ -120,6 +120,8 @@ public:
 	std::string const & htmllabel() const { return htmllabel_; }
 	/// 
 	std::string const & htmllabelattr() const { return htmllabelattr_; }
+	///
+	bool htmllabelfirst() const { return htmllabelfirst_; }
 	/// 
 	docstring const & htmlstyle() const { return htmlstyle_; }
 	/// 
@@ -306,6 +308,13 @@ private:
 	std::string htmllabel_;
 	/// Attributes for the label.
 	std::string htmllabelattr_;
+	/// Whether to put the label before the item, or within the item.
+	/// I.e., do we have (true):
+	///    <label>...</label><item>...</item>
+	/// or instead (false):
+	///    <item><label>...</label>...</item>
+	/// The latter is the default.
+	bool htmllabelfirst_;
 	/// CSS information needed by this layout.
 	docstring htmlstyle_;
 	/// Any other info for the HTML header.

@@ -98,6 +98,7 @@ enum LayoutTags {
 	LT_HTMLITEMATTR,
 	LT_HTMLLABEL,
 	LT_HTMLLABELATTR, 
+	LT_HTMLLABELFIRST,
 	LT_HTMLPREAMBLE,
 	LT_HTMLSTYLE,
 	LT_INTITLE // keep this last!
@@ -165,6 +166,7 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 		{ "htmlitemattr",   LT_HTMLITEMATTR },
 		{ "htmllabel",      LT_HTMLLABEL },
 		{ "htmllabelattr",  LT_HTMLLABELATTR },
+		{ "htmllabelfirst", LT_HTMLLABELFIRST },
 		{ "htmlpremable",   LT_HTMLPREAMBLE },
 		{ "htmlstyle",      LT_HTMLSTYLE },
 		{ "htmltag",        LT_HTMLTAG },
@@ -503,6 +505,10 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 			lex >> htmllabelattr_;
 			break;
 
+		case LT_HTMLLABELFIRST:
+			lex >> htmllabelfirst_;
+			break;
+			
 		case LT_HTMLSTYLE:
 			htmlstyle_ = from_utf8(lex.getLongString("EndHTMLStyle"));
 			break;
