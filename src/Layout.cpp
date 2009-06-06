@@ -139,6 +139,7 @@ Layout::Layout()
 	pass_thru = false;
 	toclevel = NOT_IN_TOC;
 	commanddepth = 0;
+	htmllabelfirst_ = false;
 }
 
 

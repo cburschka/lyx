@@ -881,7 +881,6 @@ int InsetCollapsable::xhtml(odocstream & os, OutputParams const & runparams) con
 	bool const opened = html::openTag(os, il.htmltag(), il.htmlattr());
 	if (!il.counter().empty()) {
 		// FIXME Master buffer?
-		LYXERR0(il.counter());
 		Counters & cntrs = buffer().params().documentClass().counters();
 		cntrs.step(il.counter());
 		if (!il.htmllabel().empty())

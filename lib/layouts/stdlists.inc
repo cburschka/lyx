@@ -71,10 +71,14 @@ Style Description
 	LabelFont
 	  Series              Bold
 	EndFont
-	HTMLTag               ol
-	HTMLItem              li
-	HTMLLabel             span
-	HTMLLabelAttr         class='desc'
+	HTMLTag               dl
+	HTMLAttr              class='description'
+	HTMLItem              dd
+	HTMLLabel             dt
+	HTMLLabelFirst        1
+	HTMLStyle
+		dl.description dt { font-weight: bold; }
+	EndHTMLStyle
 End
 
 

@@ -252,7 +252,10 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 					closeItemTag(os, *lastlay);
 					lastlay = 0;
 				}
-				bool const item_tag_opened = openItemTag(os, cstyle);
+				bool const labelfirst = cstyle.htmllabelfirst();
+				bool item_tag_opened;
+				if (!labelfirst)
+					item_tag_opened = openItemTag(os, cstyle);
 				if (cstyle.labeltype == LABEL_MANUAL) {
 					bool const label_tag_opened = openLabelTag(os, cstyle);
 					sep = par->firstWordLyXHTML(os, runparams);
@@ -269,9 +272,14 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 						closeLabelTag(os, cstyle);
 					os << '\n';
 				}
-
+				if (labelfirst)
+					item_tag_opened = openItemTag(os, cstyle);
+				else
+					os << "<span class='item'>";
 				par->simpleLyXHTMLOnePar(buf, os, runparams, 
 					outerFont(distance(paragraphs.begin(), par), paragraphs), sep);
+				if (!labelfirst)
+					os << "</span>";
 				++par;
 				if (item_tag_opened) {
 					// We may not want to close the tag yet, in particular,
@@ -361,7 +369,6 @@ void xhtmlParagraphs(ParagraphList const & paragraphs,
 	ParagraphList::const_iterator pend = paragraphs.end();
 
 	while (par != pend) {
-		LYXERR0(par->id());
 		Layout const & style = par->layout();
 		ParagraphList::const_iterator lastpar = par;
 		ParagraphList::const_iterator send;
