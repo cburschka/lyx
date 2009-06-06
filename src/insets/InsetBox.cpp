@@ -489,8 +489,9 @@ int InsetBox::xhtml(odocstream & os, OutputParams const & runparams) const
 	// FIXME We also want to do something with the length info, etc,
 	// presumably as "style='...'".
 	os << from_ascii("<span class='" + params_.type + "'>\n");
-	InsetText::xhtml(os, runparams);
+	int ret = InsetText::xhtml(os, runparams);
 	os << "</span>\n";
+	return ret;
 }
 
 
