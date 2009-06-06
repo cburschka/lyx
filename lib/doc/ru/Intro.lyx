@@ -1,14 +1,44 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\textclass book
+\textclass article
 \begin_preamble
-\usepackage{a4wide}
+% DO NOT ALTER THIS PREAMBLE!!! 
+%
+%This preamble is designed to ensure that the document prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected. If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+
+% set fonts for nicer pdf view
+\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+\pdfbookmark[1]{\contentsname}{}
+\myTOC
+\cleardoublepage
+\pagenumbering{arabic} }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+{LyX}}
 \end_preamble
 \use_default_options false
 \language russian
-\inputencoding koi8-r
+\inputencoding auto
 \font_roman default
 \font_sans default
 \font_typewriter default
@@ -19,23 +49,37 @@
 \font_tt_scale 100
 
 \graphics default
-\paperfontsize default
+\paperfontsize 12
 \spacing single
-\use_hyperref false
-\papersize default
+\use_hyperref true
+\pdf_title "Введение в LyX"
+\pdf_author "LyX Team"
+\pdf_subject "LyX-documentation Intro"
+\pdf_keywords "LyX, documentation"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 2
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\papersize a4paper
 \use_geometry false
-\use_amsmath 0
+\use_amsmath 1
 \use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
-\secnumdepth 2
+\secnumdepth 3
 \tocdepth 2
 \paragraph_separation indent
 \defskip medskip
 \quotes_language french
 \papercolumns 1
-\papersides 2
+\papersides 1
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
@@ -97,7 +141,7 @@ It's simple, Skyler.
 
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 — Дядя Космо, почему они называют его текстовым процессором?
@@ -487,19 +531,6 @@ WYSIWYM
 
 \begin_layout Section
 Различия между LyX и другими текстовыми процессорами
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Мы не пытаемся тут развязать (или выиграть) войну между текстовыми процессорами.
- Но мы считаем это важным описанием функций LyX.
- И одно из основных свойств LyX, WYSIWYM, — фундаментально отличается от
- представления о текстовом процессоре, которое имеют 99% людей.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -577,7 +608,7 @@ Enter
  В общем случае пространство между строками, между словами и между абзацами
  непостоянно, и определяется LyX.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Существуют способы всё это скорректировать (только некоторые из них требуют
@@ -836,20 +867,7 @@ dvi
 \emph default
  
 \emph on
-в другие форматы, такие как PostScript
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-textregistered{}
-\end_layout
-
-\end_inset
-
-, PDF, и т.п.
+в другие форматы, такие как PostScript, PDF, и т.п.
  
 \end_layout
 
@@ -1142,16 +1160,24 @@ reference "sec:Contrib"
 Также, будьте любезны — если что-либо в этих руководствах вас смущает, неясно
  или неправильно, сразу же дайте нам знать! Вы можете обратиться к тем,
  кто сейчас занимается документированием, по адресу 
-\family typewriter
-lyx-docs@lists.lyx.org
-\family default
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
 .
  Если у вас есть вопросы, которые плохо освещены в документации, и вам нужна
  быстрая помощь, есть список рассылки пользователей LyX, который доступен
  по адресу 
-\family typewriter
-lyx-users@lists.lyx.org
-\family default
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-users@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
 .
 \end_layout
 
@@ -1953,13 +1979,14 @@ LaTeX
 \end_layout
 
 \begin_layout Chapter
+Содействие проекту LyX
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Contrib"
 
 \end_inset
 
-Содействие проекту LyX
+
 \end_layout
 
 \begin_layout Section
@@ -1996,7 +2023,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://bugzilla.lyx.org/
+http://www.lyx.org/trac/wiki/BugTrackerHome
 \end_layout
 
 \end_inset
@@ -2070,7 +2097,7 @@ config.log
 
 \family typewriter
 \size small
-gdb /users/steve/lyx-1.0.x/src/lyx
+gdb /users/steve/lyx-1.6.x/src/lyx
 \family default
 \size default
 
@@ -2115,7 +2142,7 @@ bt
 \begin_inset Quotes frd
 \end_inset
 
- для отслеживания и и включите вывод в сообщение об ошибке
+ для отслеживания и и включите вывод в сообщение об ошибке.
 \begin_inset Foot
 status collapsed
 
@@ -2149,7 +2176,6 @@ up
 
 \end_inset
 
-.
  Если возможно описать путь воспроизведения ошибки, то это более важно,
  чем её отслеживание, так как у нас будет возможность самим выполнить отслеживан
 ие.
@@ -2210,7 +2236,7 @@ lyx-docs@lists.lyx.org
 \end_layout
 
 \begin_layout Enumerate
-Получите исходный код последней версии LyX и распакуйте его
+Получите исходный код последней версии LyX и распакуйте его.
 \begin_inset Foot
 status collapsed
 
@@ -2225,7 +2251,6 @@ lyxdoc
 
 \end_inset
 
-.
  В основном дереве вы найдёте каталог под названием 
 \family typewriter
 lib/doc/
@@ -2281,10 +2306,13 @@ DocStyle.lyx
 
 \begin_deeper
 \begin_layout Standard
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
 
-\family typewriter
-lyx-docs@lists.lyx.org
-\family default
+\end_inset
+
 ,
 \end_layout
 

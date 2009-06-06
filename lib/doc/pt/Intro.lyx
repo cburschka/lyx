@@ -1,11 +1,44 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
 \textclass article
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!! 
+%
+%This preamble is designed to ensure that the document prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected. If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+
+% set fonts for nicer pdf view
+\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+\pdfbookmark[1]{\contentsname}{}
+\myTOC
+\cleardoublepage
+\pagenumbering{arabic} }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+{LyX}}
+\end_preamble
 \use_default_options false
 \language brazilian
-\inputencoding default
+\inputencoding auto
 \font_roman default
 \font_sans default
 \font_typewriter default
@@ -16,18 +49,32 @@
 \font_tt_scale 100
 
 \graphics default
-\paperfontsize default
+\paperfontsize 12
 \spacing single
-\use_hyperref false
-\papersize default
+\use_hyperref true
+\pdf_title "Introdução ao LyX"
+\pdf_author "LyX Team"
+\pdf_subject "LyX-documentation Intro"
+\pdf_keywords "LyX, documentation"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 2
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\papersize a4paper
 \use_geometry false
-\use_amsmath 0
+\use_amsmath 1
 \use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
-\tocdepth 3
+\tocdepth 2
 \paragraph_separation indent
 \defskip medskip
 \quotes_language english
@@ -66,6 +113,15 @@ tradução: Roberto Mello <mello@internext.com.br>
 \end_inset
 
 revisão: Hélio Nunes <dedalu@linuxbr.com.br>
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -147,9 +203,13 @@ Faça-nos um favor, também — Se qualquer coisa nesses manuais lhe confundir,
 e-mail
 \emph default
  para 
-\family typewriter
-lyx-docs@lists.lyx.org
-\family default
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
 .
 \end_layout
 
@@ -257,7 +317,7 @@ online
 Enfatizado
 \emph default
  é usado para ênfase em geral, argumentos genéricos, títulos de livros,
- nomes de seções de outros manuais, e notas dos autores
+ nomes de seções de outros manuais, e notas dos autores;
 \begin_inset Foot
 status collapsed
 
@@ -269,7 +329,7 @@ N.T.: Esse estilo é usado também para indicar palavras em inglês utilizadas
 
 \end_inset
 
-;
+
 \end_layout
 
 \begin_layout List
@@ -1040,13 +1100,14 @@ De outra forma, o LyX parecerá bizarro e sem utilidade para você.
 \end_layout
 
 \begin_layout Section
+Contribuindo para o Projeto de documentação
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Contrib"
 
 \end_inset
 
-Contribuindo para o Projeto de documentação
+
 \end_layout
 
 \begin_layout Subsection
@@ -1059,9 +1120,13 @@ Isso é bem fácil de fazer.
  para a Lista de Usuários.
  O Time de documentação, entretanto, preferiria que você enviasse a mensagem
  para 
-\family typewriter
-lyx-docs@lists.lyx.org
-\family default
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
 .
  Se os reparos são pequenos, alguém irá faze-los.
  Se são maiores, sugerimos que você junte-se a lista e fale conosco por
@@ -1087,6 +1152,29 @@ Nunca mude algo nos manuais sem o consentimento prévio do Time de Documentaçã
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+LyX has a bug tracking system, which you can find at
+\lang brazilian
+ 
+\family typewriter
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/trac/wiki/BugTrackerHome
+\end_layout
+
+\end_inset
+
+
+\family default
+.
 \end_layout
 
 \begin_layout Standard
@@ -1174,9 +1262,14 @@ Por último, contate o time em:
 
 \begin_deeper
 \begin_layout Standard
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
 
-\family typewriter
-lyx-docs@lists.lyx.org
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1206,9 +1299,16 @@ web
 \emph default
  do Time de documentação [assim que a coloquemos no ar] ou através dos arquivos
  das listas em 
-\family typewriter
-www.lyx.org
-\family default
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org
+\end_layout
+
+\end_inset
+
 .
 \end_layout
 

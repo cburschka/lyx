@@ -1,14 +1,44 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
 \textclass article
 \begin_preamble
-\usepackage{a4wide}
+% DO NOT ALTER THIS PREAMBLE!!! 
+%
+%This preamble is designed to ensure that the document prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected. If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+
+% set fonts for nicer pdf view
+\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+\pdfbookmark[1]{\contentsname}{}
+\myTOC
+\cleardoublepage
+\pagenumbering{arabic} }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+{LyX}}
 \end_preamble
 \use_default_options false
 \language dutch
-\inputencoding default
+\inputencoding auto
 \font_roman default
 \font_sans default
 \font_typewriter default
@@ -19,18 +49,32 @@
 \font_tt_scale 100
 
 \graphics default
-\paperfontsize default
+\paperfontsize 12
 \spacing single
-\use_hyperref false
-\papersize default
+\use_hyperref true
+\pdf_title "Inleiding tot LyX"
+\pdf_author "LyX Team"
+\pdf_subject "LyX-documentation Intro"
+\pdf_keywords "LyX, documentation"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 2
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\papersize a4paper
 \use_geometry false
-\use_amsmath 0
+\use_amsmath 1
 \use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
 \secnumdepth 3
-\tocdepth 3
+\tocdepth 2
 \paragraph_separation indent
 \defskip medskip
 \quotes_language english
@@ -124,15 +168,25 @@ reference "sec:Contrib"
 Nog een verzoekje—als iets in deze handleidingen je verwart, of als het
  onduidelijk is of fout, aarzel dan niet het ons te laten weten! Je kunt
  de huidige documentatiebeheerders bereiken door naar 
-\family typewriter
-lyx-docs@lists.lyx.org
-\family default
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
  te mailen.
  Als je vragen hebt die niet in de documentatie worden beantwoord, en je
  hebt snel hulp nodig, is er een actieve mailing list die je kunt bereiken
  op 
-\family typewriter
-lyx-users@lists.lyx.org.
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-users@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -943,13 +997,14 @@ Je zou jezelf nodeloos kunnen frustreren als je het niet doet.
 \end_layout
 
 \begin_layout Section
+Meehelpen met het Documentation Project
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Contrib"
 
 \end_inset
 
-Meehelpen met het Documentation Project
+
 \end_layout
 
 \begin_layout Subsection
@@ -962,10 +1017,14 @@ Dat is makkelijk genoeg.
  User's Mailing List.
  Het Documentatie Team heeft echter liever dat je een bericht stuurt naar
  
-\family typewriter
-lyx-docs@lists.lyx.org.
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
 
-\family default
+\end_inset
+
+.
  Als het kleine aanpassingen zijn zal iemand dit veranderen.
  Als het grote veranderingen zijn, stellen we voor dat je je bij de mailing
  list aanmeldt en enige tijd met ons praat voordat je iets doet.
@@ -995,6 +1054,25 @@ Verander nooit iets in een handleiding zonder toestemming van het Documentatie
 \end_layout
 
 \begin_layout Standard
+
+\lang english
+LyX has a bug tracking system, which you can find at
+\lang dutch
+ 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/trac/wiki/BugTrackerHome
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
 Je veranderingen zouden anders nooit in de documentatie terechtkomen, omdat
  het Documentatie Team de originelen beheert via het CVS systeem.
  
@@ -1016,7 +1094,6 @@ eerst
 
 \begin_layout Enumerate
 Haal de broncode op van de meest recente versie van LyX, en pak het uit.
- 
 \begin_inset Foot
 status collapsed
 
@@ -1094,9 +1171,14 @@ En als laatste; neem contact op met het team:
 
 \begin_deeper
 \begin_layout Standard
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
 
-\family typewriter
-lyx-docs@lists.lyx.org
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
