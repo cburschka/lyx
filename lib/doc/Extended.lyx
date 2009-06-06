@@ -1,4 +1,4 @@
-#LyX 1.6.3svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -110,9 +110,9 @@ End
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes false
+\tracking_changes true
 \output_changes false
-\author "" 
+\author "Jürgen Spitzmüller" 
 \author "" 
 \end_header
 
@@ -4613,8 +4613,17 @@ Some DVI/PDF viewers
 status collapsed
 
 \begin_layout Plain Layout
-Currently, only Skim on Mac OSX and SumatraPDF on Windows offer the reverse
- PDF search feature.
+
+\change_deleted 0 1244215965
+Currently, only
+\change_inserted 0 1244216069
+The following viewers offer the reverse PDF search feature: Okular on KDE/Linux,
+\change_unchanged
+ Skim on Mac OSX and SumatraPDF on Windows
+\change_deleted 0 1244216074
+ offer the reverse PDF search feature
+\change_unchanged
+.
 \end_layout
 
 \end_inset
@@ -4637,7 +4646,25 @@ xdvi
 
 \end_inset
 
- uses Ctrl-click (Alt-click on Mac OSX), 
+ uses Ctrl-click (Alt-click on Mac OSX),
+\change_inserted 0 1244219414
+ 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1244216438
+okular
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ uses SHIFT-click,
+\change_unchanged
+ 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -5079,6 +5106,53 @@ X.
 \end_layout
 
 \begin_layout Itemize
+
+\change_inserted 0 1244216810
+If you use okular on KDE/Linux as a DVI or PDF viewer, go to 
+\begin_inset Flex CharStyle:MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1244216734
+Settings\SpecialChar \menuseparator
+Configure Okular\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+Editor
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+, select 
+\begin_inset Quotes eld
+\end_inset
+
+Custom Text Editor
+\begin_inset Quotes erd
+\end_inset
+
+ and add the command 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1244216761
+lyxclient -g %f %l
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Itemize
 If you use the Cygwin version of LyX and yap as a DVI viewer, you should
  set the name of the program that communicates with LyX directly in yap
  as follows.
@@ -5093,11 +5167,114 @@ Options
 
 \end_inset
 
- menu and select the "Inverse DVI Search" tab.
- Click on the "New..." button and, in the window which opens, enter "LyX Editor"
- (or any other name you like) in the "Name:" field.
- Now click on the button labeled "..." to open a filedialog and navigate to
- the directory containing the batch file 
+ menu and select the 
+\change_inserted 0 1244217872
+
+\begin_inset Quotes eld
+\end_inset
+
+
+\change_deleted 0 1244217872
+"
+\change_unchanged
+Inverse DVI Search
+\change_deleted 0 1244217874
+"
+\change_inserted 0 1244217875
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\change_unchanged
+ tab.
+ Click on the 
+\change_inserted 0 1244219499
+
+\begin_inset Quotes eld
+\end_inset
+
+
+\change_deleted 0 1244219498
+"
+\change_unchanged
+New
+\change_deleted 0 1244217826
+...
+\change_inserted 0 1244217826
+\SpecialChar \ldots{}
+
+\change_deleted 0 1244219500
+"
+\change_inserted 0 1244219500
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\change_unchanged
+ button and, in the window which opens, enter 
+\change_inserted 0 1244217853
+
+\begin_inset Quotes eld
+\end_inset
+
+
+\change_deleted 0 1244217850
+"
+\change_unchanged
+LyX Editor
+\change_inserted 0 1244217855
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\change_deleted 0 1244217855
+"
+\change_unchanged
+ (or any other name you like) in the 
+\change_inserted 0 1244217859
+
+\begin_inset Quotes eld
+\end_inset
+
+
+\change_deleted 0 1244217859
+"
+\change_unchanged
+Name:
+\change_inserted 0 1244217862
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\change_deleted 0 1244217861
+"
+\change_unchanged
+ field.
+ Now click on the button labeled 
+\change_inserted 0 1244217865
+
+\begin_inset Quotes eld
+\end_inset
+
+
+\change_deleted 0 1244217864
+"...
+\change_inserted 0 1244217867
+\SpecialChar \ldots{}
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\change_deleted 0 1244217866
+"
+\change_unchanged
+ to open a filedialog and navigate to the directory containing the batch
+ file 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -5338,9 +5515,12 @@ This is needed because SumatraPDF is a native Windows application and does
 \end_deeper
 \begin_layout Standard
 If you did no mistakes and the DVI or PDF files are produced as previously
- described, whenever you Ctrl-click (Alt-click on Mac) in xdvi, double-click
- in yap and SumatraPDF, or COMMAND-SHIFT-click in Skim, the cursor in LyX
- should jump to the desired location.
+ described, whenever you Ctrl-click (Alt-click on Mac) in xdvi, 
+\change_inserted 0 1244217776
+SHIFT-click in okular, 
+\change_unchanged
+double-click in yap and SumatraPDF, or COMMAND-SHIFT-click in Skim, the
+ cursor in LyX should jump to the desired location.
 \end_layout
 
 \begin_layout Standard
