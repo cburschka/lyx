@@ -2363,6 +2363,7 @@ lib_doc_sl_files = Split('''
 
 
 lib_doc_sk_files = Split('''
+    Intro.lyx
     Tutorial.lyx
     UserGuide.lyx
 ''')
