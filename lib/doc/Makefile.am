@@ -250,6 +250,7 @@ dist_rudoc_DATA = \
 
 skdocdir = $(docdir)/sk
 dist_skdoc_DATA = \
+	sk/Intro.lyx \
 	sk/Tutorial.lyx \
 	sk/UserGuide.lyx
 

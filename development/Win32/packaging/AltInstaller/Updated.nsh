@@ -68,6 +68,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\pt\Intro.lyx"
  SetOutPath "$INSTDIR\Resources\doc\ru"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\ru\Intro.lyx"
+ SetOutPath "$INSTDIR\Resources\doc\sk"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\sk\Intro.lyx"
  SetOutPath "$INSTDIR\Resources\doc\sl"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\sl\Intro.lyx"
  SetOutPath "$INSTDIR\Resources\doc\sv"
