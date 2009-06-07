@@ -623,7 +623,7 @@ void PrefLatex::on_latexBibtexCO_activated(int n)
 	QString const bibtex = latexBibtexCO->itemData(n).toString();
 	if (bibtex.isEmpty()) {
 		latexBibtexED->clear();
-		latexBibtexOptionsLA->setText(qt_("C&ommand:"));
+		latexBibtexOptionsLA->setText(qt_("Co&mmand:"));
 		return;
 	}
 	for (set<string>::const_iterator it = bibtex_alternatives.begin();
@@ -735,7 +735,7 @@ void PrefLatex::update(LyXRC const & rc)
 	} else {
 		latexBibtexED->setText(toqstr(rc.bibtex_command));
 		latexBibtexCO->setCurrentIndex(0);
-		latexBibtexOptionsLA->setText(qt_("C&ommand:"));
+		latexBibtexOptionsLA->setText(qt_("Co&mmand:"));
 	}
 
 	latexIndexCO->clear();

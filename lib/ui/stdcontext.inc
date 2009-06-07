@@ -548,7 +548,7 @@ Menuset
 #
 
 	Menu "context-toc-change"
-		Item "Accept Change|C" "change-accept"
+		Item "Accept Change|c" "change-accept"
 		Item "Reject Change|R" "change-reject"
 	End	
 	

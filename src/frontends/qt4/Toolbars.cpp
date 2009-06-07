@@ -218,7 +218,7 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 					break;
 				case TO_IMPORTFORMATS:
 					lfun = LFUN_BUFFER_IMPORT;
-					tooltip = _("Import %1$s ...");
+					tooltip = _("Import %1$s");
 					break;
 				case TO_UPDATEFORMATS:
 					lfun = LFUN_BUFFER_UPDATE;
