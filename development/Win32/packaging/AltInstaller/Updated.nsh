@@ -9,7 +9,7 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
  #File "${PRODUCT_SOURCEDIR}\Resources\chkconfig.ltx"
- #File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
+ File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
  #File "${PRODUCT_SOURCEDIR}\Resources\CREDITS"
  #File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"
  #SetOutPath "$INSTDIR\Resources\bind"
@@ -18,6 +18,7 @@ Function UpdateModifiedFiles
  File /r "${PRODUCT_SOURCEDIR}\Resources\doc\da"
  File /r "${PRODUCT_SOURCEDIR}\Resources\doc\nb"
  File /r "${PRODUCT_SOURCEDIR}\Resources\doc\ro"
+ File /r "${PRODUCT_SOURCEDIR}\Resources\doc\sk"
  File /r "${PRODUCT_SOURCEDIR}\Resources\doc\uk"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\Customization.lyx"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
@@ -68,8 +69,6 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\pt\Intro.lyx"
  SetOutPath "$INSTDIR\Resources\doc\ru"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\ru\Intro.lyx"
- SetOutPath "$INSTDIR\Resources\doc\sk"
- File "${PRODUCT_SOURCEDIR}\Resources\doc\sk\Intro.lyx"
  SetOutPath "$INSTDIR\Resources\doc\sl"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\sl\Intro.lyx"
  SetOutPath "$INSTDIR\Resources\doc\sv"
