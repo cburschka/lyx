@@ -32,6 +32,7 @@
 #include "Cursor.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
+#include "KeyMap.h"
 #include "Layout.h"
 #include "LyXFunc.h"
 #include "LyXRC.h"
@@ -730,8 +731,15 @@ void GuiToolbar::setVisibility(int visibility)
 
 Action * GuiToolbar::addItem(ToolbarItem const & item)
 {
+	QString text = toqstr(item.label_);
+	// Get the keys bound to this action, but keep only the
+	// first one later
+	KeyMap::Bindings bindings = theTopLevelKeymap().findBindings(item.func_);
+	if (bindings.size())
+		text += " [" + toqstr(bindings.begin()->print(KeySequence::ForGui)) + "]";
+
 	Action * act = new Action(&owner_, getIcon(item.func_, false),
-		toqstr(item.label_), item.func_, toqstr(item.label_), this);
+		text, item.func_, text, this);
 	actions_.append(act);
 	return act;
 }
