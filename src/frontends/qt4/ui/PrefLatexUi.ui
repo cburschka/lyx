@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>427</width>
-    <height>359</height>
+    <height>367</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -19,87 +19,7 @@
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="5" column="0" >
-    <widget class="QLabel" name="latexNomenclLA" >
-     <property name="text" >
-      <string>&amp;Nomenclature command:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>latexNomenclED</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="1" colspan="2" >
-    <widget class="QLineEdit" name="latexNomenclED" >
-     <property name="toolTip" >
-      <string>Command and options for nomencl (usually makeindex)</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0" >
-    <widget class="QLabel" name="latexIndexLA" >
-     <property name="text" >
-      <string>&amp;Index command:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>latexIndexED</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="1" colspan="2" >
-    <widget class="QLineEdit" name="latexIndexED" >
-     <property name="toolTip" >
-      <string>Index command and options (makeindex, xindy)</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="1" colspan="2" >
-    <widget class="QLineEdit" name="latexDviPaperED" >
-     <property name="toolTip" >
-      <string>Optional paper size flag (-paper) for some DVI viewers</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="0" >
-    <widget class="QLabel" name="latexDviPaperLA" >
-     <property name="text" >
-      <string>&amp;DVI viewer paper size options:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>latexDviPaperED</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="0" colspan="3" >
-    <widget class="QCheckBox" name="pathCB" >
-     <property name="enabled" >
-      <bool>true</bool>
-     </property>
-     <property name="toolTip" >
-      <string/>
-     </property>
-     <property name="whatsThis" >
-      <string>Select if LyX should output Windows-style paths rather than Posix-style paths to LaTeX files. Useful if you're using the native Windows MikTeX rather than the Cygwin teTeX.</string>
-     </property>
-     <property name="layoutDirection" >
-      <enum>Qt::LeftToRight</enum>
-     </property>
-     <property name="text" >
-      <string>&amp;Use Windows-style paths in LaTeX files</string>
-     </property>
-    </widget>
-   </item>
-   <item row="8" column="0" colspan="3" >
-    <widget class="QCheckBox" name="latexAutoresetCB" >
-     <property name="toolTip" >
-      <string>Set class options to default on class change</string>
-     </property>
-     <property name="text" >
-      <string>R&amp;eset class options when document class changes</string>
-     </property>
-    </widget>
-   </item>
-   <item row="9" column="0" colspan="3" >
+   <item row="11" column="0" colspan="3" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Vertical</enum>
@@ -110,10 +30,20 @@
      <property name="sizeHint" >
       <size>
        <width>409</width>
-       <height>20</height>
+       <height>21</height>
       </size>
      </property>
     </spacer>
+   </item>
+   <item row="10" column="0" colspan="3" >
+    <widget class="QCheckBox" name="latexAutoresetCB" >
+     <property name="toolTip" >
+      <string>Set class options to default on class change</string>
+     </property>
+     <property name="text" >
+      <string>R&amp;eset class options when document class changes</string>
+     </property>
+    </widget>
    </item>
    <item row="1" column="1" >
     <widget class="QComboBox" name="latexPaperSizeCO" >
@@ -178,13 +108,6 @@
      </property>
     </spacer>
    </item>
-   <item row="3" column="1" colspan="2" >
-    <widget class="QLineEdit" name="latexBibtexED" >
-     <property name="toolTip" >
-      <string>BibTeX command and options</string>
-     </property>
-    </widget>
-   </item>
    <item row="2" column="0" >
     <widget class="QLabel" name="latexChecktexLA" >
      <property name="text" >
@@ -192,16 +115,6 @@
      </property>
      <property name="buddy" >
       <cstring>latexChecktexED</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0" >
-    <widget class="QLabel" name="latexBibtexLA" >
-     <property name="text" >
-      <string>&amp;BibTeX command:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>latexBibtexED</cstring>
      </property>
     </widget>
    </item>
@@ -229,6 +142,127 @@
      </property>
      <property name="buddy" >
       <cstring>latexPaperSizeCO</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1" colspan="2" >
+    <widget class="QLineEdit" name="latexBibtexED" >
+     <property name="toolTip" >
+      <string>BibTeX command and options</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" >
+    <widget class="QLabel" name="latexBibtexLA" >
+     <property name="text" >
+      <string>&amp;BibTeX command:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>latexBibtexED</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0" >
+    <widget class="QLabel" name="latexNomenclLA" >
+     <property name="text" >
+      <string>&amp;Nomenclature command:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>latexNomenclED</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="0" colspan="3" >
+    <widget class="QCheckBox" name="pathCB" >
+     <property name="enabled" >
+      <bool>true</bool>
+     </property>
+     <property name="toolTip" >
+      <string/>
+     </property>
+     <property name="whatsThis" >
+      <string>Select if LyX should output Windows-style paths rather than Posix-style paths to LaTeX files. Useful if you're using the native Windows MikTeX rather than the Cygwin teTeX.</string>
+     </property>
+     <property name="layoutDirection" >
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="text" >
+      <string>&amp;Use Windows-style paths in LaTeX files</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="1" colspan="2" >
+    <widget class="QLineEdit" name="latexNomenclED" >
+     <property name="toolTip" >
+      <string>Command and options for nomencl (usually makeindex)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1" colspan="2" >
+    <widget class="QLineEdit" name="latexIndexED" >
+     <property name="toolTip" >
+      <string>Index command and options (makeindex, xindy)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0" >
+    <widget class="QLabel" name="latexIndexLA" >
+     <property name="text" >
+      <string>&amp;Index command:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>latexIndexED</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1" colspan="2" >
+    <widget class="QLineEdit" name="latexJIndexED" >
+     <property name="toolTip" >
+      <string>Specific index command and options for pLaTeX (Japanese)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1" colspan="2" >
+    <widget class="QLineEdit" name="latexJBibtexED" >
+     <property name="toolTip" >
+      <string>Specific BibTeX command and options for pLaTeX (Japanese)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" >
+    <widget class="QLabel" name="latexJBibtexLA" >
+     <property name="text" >
+      <string>BibTeX command (&amp;Japanese):</string>
+     </property>
+     <property name="buddy" >
+      <cstring>latexJBibtexED</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0" >
+    <widget class="QLabel" name="latexJIndexLA" >
+     <property name="text" >
+      <string>Index command (Ja&amp;panese):</string>
+     </property>
+     <property name="buddy" >
+      <cstring>latexJIndexED</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="1" colspan="2" >
+    <widget class="QLineEdit" name="latexDviPaperED" >
+     <property name="toolTip" >
+      <string>Optional paper size flag (-paper) for some DVI viewers</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="0" >
+    <widget class="QLabel" name="latexDviPaperLA" >
+     <property name="text" >
+      <string>&amp;DVI viewer paper size options:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>latexDviPaperED</cstring>
      </property>
     </widget>
    </item>

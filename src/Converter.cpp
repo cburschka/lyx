@@ -315,6 +315,9 @@ bool Converters::convert(Buffer const * buffer,
 	// used anyway.
 	OutputParams runparams(buffer ? &buffer->params().encoding() : 0);
 	runparams.flavor = getFlavor(edgepath);
+	
+	if (buffer)
+		runparams.use_japanese = buffer->bufferFormat() == "platex";
 
 	// Some converters (e.g. lilypond) can only output files to the
 	// current directory, so we need to change the current directory.

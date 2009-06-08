@@ -35,7 +35,9 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-
+- Implement separate chains for Japanese bibliography and index
+  compilation. This allows for proper support for jbibtex and mendex,
+  pLaTeX's bibtex and makeindex replacements (bug 5601).
 
 
 * USER INTERFACE

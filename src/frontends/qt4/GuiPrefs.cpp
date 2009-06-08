@@ -595,7 +595,11 @@ PrefLatex::PrefLatex(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(latexBibtexED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
+	connect(latexJBibtexED, SIGNAL(textChanged(QString)),
+		this, SIGNAL(changed()));
 	connect(latexIndexED, SIGNAL(textChanged(QString)),
+		this, SIGNAL(changed()));
+	connect(latexJIndexED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 	connect(latexAutoresetCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
@@ -619,7 +623,9 @@ void PrefLatex::apply(LyXRC & rc) const
 	rc.fontenc = fromqstr(latexEncodingED->text());
 	rc.chktex_command = fromqstr(latexChecktexED->text());
 	rc.bibtex_command = fromqstr(latexBibtexED->text());
+	rc.jbibtex_command = fromqstr(latexJBibtexED->text());
 	rc.index_command = fromqstr(latexIndexED->text());
+	rc.jindex_command = fromqstr(latexJIndexED->text());
 	rc.nomencl_command = fromqstr(latexNomenclED->text());
 	rc.auto_reset_options = latexAutoresetCB->isChecked();
 	rc.view_dvi_paper_option = fromqstr(latexDviPaperED->text());
@@ -636,7 +642,9 @@ void PrefLatex::update(LyXRC const & rc)
 	latexEncodingED->setText(toqstr(rc.fontenc));
 	latexChecktexED->setText(toqstr(rc.chktex_command));
 	latexBibtexED->setText(toqstr(rc.bibtex_command));
+	latexJBibtexED->setText(toqstr(rc.jbibtex_command));
 	latexIndexED->setText(toqstr(rc.index_command));
+	latexJIndexED->setText(toqstr(rc.jindex_command));
 	latexNomenclED->setText(toqstr(rc.nomencl_command));
 	latexAutoresetCB->setChecked(rc.auto_reset_options);
 	latexDviPaperED->setText(toqstr(rc.view_dvi_paper_option));

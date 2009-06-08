@@ -235,10 +235,6 @@ Known issues in version 1.6.x
   * Documents using this method can be backported to 1.5 in principal, but
     the backported documents are not guaranteed to work, since 1.5 falls
     back to the CJK package; expect the output to differ.
-  * pLaTeX provides a Japanese variant of BibTeX named "jbibtex", which will
-    be selected automatically by LyX. If you run into problems with this or 
-    if you need to use an alternative BibTeX program, you can change this
-    setting in the LyX preferences (Output->LaTeX->BibTeX command).
 
 
 Caveats when upgrading from earlier versions to 1.6.x
