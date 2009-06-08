@@ -1,8 +1,40 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
 \textclass book
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+%This preamble is designed to ensure that the document prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX}}
+\end_preamble
 \use_default_options false
 \language slovak
 \inputencoding latin2
@@ -18,7 +50,21 @@
 \graphics default
 \paperfontsize 12
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_title "The LyX Tutorial"
+\pdf_author "LyX Team"
+\pdf_subject "LyX-documentation Tutorial"
+\pdf_keywords "LyX, documentation"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 \papersize default
 \use_geometry false
 \use_amsmath 0
@@ -470,606 +516,6 @@ reference "sec: prvý-dok-ex"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Section
-Čo je LyX?
-\begin_inset CommandInset label
-LatexCommand label
-name "sec: čo-je-lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Prehľad
-\end_layout
-
-\begin_layout Standard
-Používanie LyXu vychádza zo zmeny myslenia, ktoré vy, užívateľ, musíte urobiť.
- Viete, že väčšina textových procesorov sú jednoducho vylepšené písacie
- stroje.
- Kedysi všetko, čo sme mali na tvorbu dokumentov, boli písacie stroje, tak
- všetci sme sa naučili určité triky, ako obísť ich obmedzenia.
- Podčiarkovanie znakom 
-\begin_inset Quotes gld
-\end_inset
-
-_
-\begin_inset Quotes grd
-\end_inset
-
- sa stalo spôsobom ako zvýrazniť text.
- Na vytvorenie tabuľky ste najprv museli vypočítať aký široký bude každý
- stĺpec a nastaviť príslušné tabelačné záražky.
- Rozdeľovanie na konci riadku vyžadovalo pozorné oko a veľa predvídania.
-\end_layout
-
-\begin_layout Standard
-Inými slovami, všetci sme boli cvičený zaoberať sa detailmi, kam ktorý znak
- má ísť.
-\end_layout
-
-\begin_layout Standard
-Následkom toho všetky teztové procesory majú tieto spôsoby.
- Stále používajú tabulátory na vloženie prázdnych miest.
- Stále sa musíte trápiť kde presne na stránke sa niečo zobrazí.
- Zvýrazniť text znamená zmeniť písmo, podobne ako zmeniť koliesko na písacom
- stroji.
- Prišli ste na nápad.
-\end_layout
-
-\begin_layout Standard
-Toto je to, v čom sa odlišuje LyX od bežného textového procesora.
- Nezaujímate sa ktorý znak kam ide.
- poviete LyXu 
-\emph on
-čo robíte
-\emph toggle
-, a LyX sa postará o zvyšok, používajúc množinu pravidiel nazývaných
-\emph default
- 
-\emph on
-štýl
-\emph toggle
-.
- Pozrime sa na malý príklad.
-\end_layout
-
-\begin_layout Standard
-Predpokladajme, že píšete správu.
- Na jej začiatku chcete časť nazvanú 
-\begin_inset Quotes gld
-\end_inset
-
-Úvod
-\begin_inset Quotes grd
-\end_inset
-
-.
- Tak pôjdete do nejakého menu vo vašom textovom procesore, ktoré mení veľkosť
- písma, a zmeníte ju.
- Potom písmo prepnete na tučné.
- Potom napíšete 
-\begin_inset Quotes gld
-\end_inset
-
-1.__Úvod
-\begin_inset Quotes grd
-\end_inset
-
-.
- Samozrejme, že keď sa neskôr rozhodnete, že táto časť patrí v dokumente
- niekde inde, alebo vložíte pred ňu inú časť, musíte zmeniť číslovanie a
- tiež položku v obsahu.
-\end_layout
-
-\begin_layout Standard
-V LyXe sa nastavíte na rozbaľovacie menu v ľavej časti tlačítkovej lišty
- a vyberiete 
-\begin_inset Quotes gld
-\end_inset
-
-Section
-\begin_inset Quotes grd
-\end_inset
-
- a napíšete 
-\begin_inset Quotes gld
-\end_inset
-
-Úvod
-\begin_inset Quotes grd
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Áno.
- To je všetko.
- Ak vystrihnete a vložite sekciu (časť), automaticky bude prečíslovaná —
- všade.
- Je aj spôsob, aby LyX automaticky aktualizoval všetky referencie v súbore
- na danú časť.
-\end_layout
-
-\begin_layout Standard
-Ďalej je tu problém dôslednosti.
- O päť dní neskôr si otvoríte svoju správu a začnete písať časť 4.
- Avšak zabudli ste, že ste používali 18pt tučné písmo, namiesto 16pt, takže
- nadpis časti 4 bude nappísaný iným písmom, ako nadpis časti 1.
- Tento problém v LyXe neexistuje.
- Počítač sa stará o všetko to, ktorá vec má akú veľkosť písma.
-\end_layout
-
-\begin_layout Standard
-Tu je ďalší príklad.
- Predpokladajme, že vytvárate zoznam.
- V iných textových procesoroch je zoznam kopa tabulátorov a prázdnych riadkov.
- Potrebujete vypočítať kde dať názov každej položky zoznamu, aký bude názov
- vyzerať, koľko prázdnych riadkov dať medzi jednotlivé položky atď.
- V LyXe máte len dve starosti: aký typ zoznamu to bude, a čo do neho dáte.
- To je všetko.
-\end_layout
-
-\begin_layout Standard
-Takže základná myšlienka v LyXe je: špecifikovať čo robiť, nie ako to robiť.
-\end_layout
-
-\begin_layout Subsection
-Rozdiely medzi LyXom a textovými procesormi
-\end_layout
-
-\begin_layout Standard
-Je veľa malých trikov, ktoré ste používali, a ktoré neexistujú v LyXe.
- Zo začiatku z toho budete šalieť.
- To je v poriadku.
- To chce čas zbavyť sa starých zvykov.
-\end_layout
-
-\begin_layout Standard
-Tu je malý zoznam vecí, ktoré v LyXe neanájdete:
-\end_layout
-
-\begin_layout Itemize
-Neslávne pravítko, vyskytujúce sa vo veľa komerčných textových procesoroch
-\end_layout
-
-\begin_layout Itemize
-tabulátory
-\end_layout
-
-\begin_layout Itemize
-extra prázdne riadky (napr.
- stlačenie 
-\shape smallcaps
-Enteru
-\shape default
- dva alebo viac krát)
-\end_layout
-
-\begin_layout Standard
-Tabulátory, spolu s pravítkom ukazujúcim pozíciu vecí na stránke, sú v LyXe
- celkom zbytočné.
- O to, kde sa čo zobrazí na stránke, sa stará program a nie vy.
- Extra prázdne riadky sú podobné: LyX ich pridáva tam, kde je to potrebné,
- záleží to na kontexte.
- Tiež riadkovanie je v LyXe úplne zastaralé.
- Medzery medzi riadkami sú 
-\emph on
-premenlivé
-\emph toggle
-, tak isto ako medzery medzi slovami.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Sú spôsoby ako nastaviť maximálnu a minimálnu medzeru, ale to vyžaduej nejaké
- znalosti LaTeXu.
- Takými vecami sa teraz nemusíme trápiť.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Tu je niekoľko vecí, ktoré v LyXe existujú, ale napoužívajú sa tak, ako
- by ste si mohli myslieť:
-\end_layout
-
-\begin_layout Itemize
-Zarovnanie objektov
-\end_layout
-
-\begin_layout Itemize
-Zlomy strán
-\end_layout
-
-\begin_layout Itemize
-Riadkovanie (napr.: jednoduché, dvojité, atď.)
-\end_layout
-
-\begin_layout Itemize
-Biela medzera, horizontálna a vertikálna
-\end_layout
-
-\begin_layout Itemize
-Písma a veľkosti písem
-\end_layout
-
-\begin_layout Itemize
-Vlastnosti písma (tučné, kurzíva, podčiarknuté, atď.)
-\end_layout
-
-\begin_layout Standard
-I keď existujú v LyXe, vo veobecnosti ich nepotrebujete.
- LyX sa o ne postará za vás, v závislosti na tom, čo robíte.
- Rôznym častiam dokumentu sú automaticky nastavované rôzne vlastnosti a
- veľkosť písma.
- Zarovnanie Odsekov je závislé na kontexte: rôzne typy odsekov sa zarovnajú
- rôzne.
- Zlomy strán sú tak isto spravované automaticky.
- Jediná výnimka sú medzery medzi riadkami, kde môžete potrebovať určité
- medzery medzi odstavcami, pritom určité medzery medzi riadkami v odstavci.
- pokúsime sa popísať ako Medzery medzi riadkami v LyXe fungujú, ale väčšina
- detailov je v 
-\emph on
-Užívateľskej príručke
-\emph toggle
-.
-\end_layout
-
-\begin_layout Standard
-Nakoniec niekoľko oblastí, v ktorých LyX (a LaTeX) prekonávanú bežné textové
- procesoty:
-\end_layout
-
-\begin_layout Itemize
-Rozdeľovanie
-\end_layout
-
-\begin_layout Itemize
-Zoznamy akéhokoľvek typu
-\end_layout
-
-\begin_layout Itemize
-Matematika
-\end_layout
-
-\begin_layout Itemize
-Tabuľky
-\end_layout
-
-\begin_layout Itemize
-Krížové odkazy (krosreferncie)
-\end_layout
-
-\begin_layout Standard
-Súhlasíme, veľa moderných textových procesorov môže narábať s matematickými
- symbolmi, tabuľkami a rozdeľovaním.
- Avšak dokázali to len v poslednej dobe, zatiaľčo LyX je postavený nad systémom
- prípravy dokumentov LaTeX.
- Ten tu je už 10 rokov a 
-\emph on
-funguje
-\emph toggle
-.
- Všetky chyby boli odstránené.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Tak dobre.
- Nikto nie je prefektný, ale LaTeX je tak bezchybný, ako len počítačový
- program môže byť.
-\end_layout
-
-\end_inset
-
- Ďalej takme žiadny textový procesor nepodporuje krížové odkazy, ktoré,
- tak isto ako matematické vzorce, boli časťou LaTeXu od prvého dňa.
- O niektorých týchto schopnosiach budeme hovoriť neskôr.
- Ďalšie sú trochu pokročilé a sú predstavené na konci tohto dokumentu, alebo
- v
-\emph default
- 
-\emph on
-Užívateľskej príručke
-\emph toggle
-.
-\end_layout
-
-\begin_layout Subsection
-Čo do kelu 
-\emph on
-je
-\emph default
- 
-\emph toggle
-LaTeX?
-\end_layout
-
-\begin_layout Standard
-LaTeX je systém prípravy dokumentov, vytvorený Lesliem Lamportom v roku
- 1985.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Zdroj informácií v tejto časti je 
-\emph on
-
-\begin_inset Quotes gld
-\end_inset
-
-A Guide to LaTeX2e
-\begin_inset Quotes grd
-\end_inset
-
-
-\emph default
- 
-\emph toggle
-od Helmuta Kopka a Patricka Dalyho, ktorý má záznam v bibliografii
-\emph default
- 
-\emph on
-Užívateľskej príručky
-\emph toggle
-.
-\end_layout
-
-\end_inset
-
- Ten bol vytvorený zo sádzacieho jazyka nazývaného TeX, vytvoreného Donaldom
- Knuthom v roky 1984.
- 
-\begin_inset Quotes gld
-\end_inset
-
-TeX
-\begin_inset Quotes grd
-\end_inset
-
- sa vyslovuje ako 
-\begin_inset Quotes gld
-\end_inset
-
-blech!
-\begin_inset Quotes grd
-\end_inset
-
-, čo je ako ho vníma veľa ľudí.
- Avšak väčšina ľudí jednoducho nerozumie na čo TeX je.
- TeX prijíma postupnosť sádzacích príkazov, napísaných v skripte v ASCII
- súbore, a vykonáva ich.
- Výsledkom je súbor formátu 
-\begin_inset Quotes gld
-\end_inset
-
-device independent
-\begin_inset Quotes grd
-\end_inset
-
-, alebo v skratke 
-\begin_inset Quotes gld
-\end_inset
-
-Dvi
-\begin_inset Quotes grd
-\end_inset
-
-.
- Dvi súbor môžete potom poslať hocičomu, čo mu bude rozumieť, alebo ho konvertov
-ať do iného formátu, napr.
- PostScript.
-\end_layout
-
-\begin_layout Standard
-Keby nebolo ďalšej vlastnosti, celý TeX by bol len sádzací program.
- TeX ale dovoľuje definovať makrá.
- Toto je miesto, kde začína akcia.
-\end_layout
-
-\begin_layout Standard
-Väčšina ľudí, ktorí používajú TeX, v podstate používajú balík makier, ktoré
- vytvoril Knuth, aby zakryl veľa sádzacích detailov.
- Toto je na čo myslia ľudia, keď myslia na TeX.
- Bežní používatelia nepracujú s čistým TeXom, ktorý tvoria prosté sádzacie
- príkazy.
- To robia ľudia, ktorí vytvárajú nové balíky makier.
- A tam Leslie Lamport vstúpil do príbehu.
- Chcel balík makier, ktorý by bol užívateľsky orientovaný a nie orientovaný
- na sádzanie.
- Chcel sadu príkazov, ktoré konzistentne vytvoria veci ako sekcie, alebo
- tabuľky, alebo matematické vzorce jednotným spôsobom a bez zvytočného zmätku.
- Takto sa zrodil LaTeX.
-\end_layout
-
-\begin_layout Standard
-Teraz, paralelne s vývojom a rastom LaTeXu, ďalší ľudia vytvárajú svoje
- vlastné užívateľské balíky makier pre TeX.
- Niektorí používajú čistý TeX, iní začali modifikovať LaTeX.
- Aby sa zjednotil tento neporiadok, skupina LaTeX-ákov (samozrejme vrátane
- Lamporta) začala pracovať na LaTeX2e, súčasnej verzii LaTeXu, počas konca
- roku 1980.
- Táto nová verzia LaTeXu má príkazy, ktoré poskytujú jednoduchší interfejs
- na vytváranie TeXových mkro-vytvárajúcich príkazov (pamätáte na TeX?),
- pomáhajú v používaní nových fontov atď.
- LaTeX je dosť obsiahly jazyk.
- Užívateia na celom svete vytvárali svoje vlastné prídavky pre LaTeX.
-\end_layout
-
-\begin_layout Standard
-Sú dva spôsoby ako rozšíriť LaTeX: 
-\emph on
-triedy
-\emph default
- 
-\emph toggle
-(classes) a
-\emph default
- 
-\emph on
-štýly
-\emph default
- 
-\emph toggle
-(styles).
-
-\emph default
- 
-\emph on
-Trieda
-\emph default
- 
-\emph toggle
-je množina makier LaTeXu (a TeXu), popisujúca nový typ dokumentu, napríklad
- kniha (book), článok (article).
- Sú triedy pre fólie, pre fyzikálne a matematické časopisy \SpecialChar \ldots{}
- niektoré univerzity
- dokonca majú formát triedy pre svoje diplomové práce!
-\emph default
- 
-\emph on
-Štýl
-\emph default
- 
-\emph toggle
-sa odlišuje od triedy v tom, že nedefinuje typ dokumentu, ale rôzny typ
- vzhľadu, ktorý môže použiť ľubovoľný dokument.
- Napríklad LyX ovláda okraje stránky a riadkové medzery používaním dvoch
- rôznych LaTeXových štýlových-súborov, navrhnutých pre tento účel.
- Rôzne typy štýlov: tlač štítkov a obálok, zmena správania sa odsadenia,
- pridávanie nových písem, práca s grafikou, vytváranie pekných titulkov
- stránok, zmena umiestnenia a vzhľadu poznámok, tabuliek a obrázkov, prispôsobov
-anie zoznamov, atď, atď, atď.
-\end_layout
-
-\begin_layout Standard
-Tu je prehľad:
-\end_layout
-
-\begin_layout List
-\labelwidthstring 00.00.0000
-TeX: Sádzací jazyk s možnosťami makier.
-\end_layout
-
-\begin_layout List
-\labelwidthstring 00.00.0000
-LaTeX: Balík makier postavený na TeXe.
-\end_layout
-
-\begin_layout List
-\labelwidthstring 00.00.0000
-triedy: Popis typu dokumentu, používajúci LaTeX.
-\end_layout
-
-\begin_layout List
-\labelwidthstring 00.00.0000
-štýly: Nejakým spôsobom mení všeobecné správanie sa LaTeXu.
-\end_layout
-
-\begin_layout List
-\labelwidthstring 00.00.0000
-LyX: Vizuálny, WYSIWYM textový procesor, ktorý používa LaTeX v celej jeho
- sláve, aby urobil svoju tlač.
-\end_layout
-
-\begin_layout Standard
-Základom tohto všetkého je starý dobrý TeX, ktorý vytvára Dvi súbory.
- Väčšina z nás konvertuje tieto Dvi súbory na PostScriptové súbory, ktoré
- môžeme vytlačiť na laserovej tlačiarni.
- Sú správy o zariadeniac, ktoré priamo 
-\emph on
-rozumejú
-\emph default
- 
-\emph toggle
-Dvi.
- Cieľom tejto časti bolo pokúsiť sa vysvetliť
-\emph default
- 
-\emph on
-prečo
-\emph default
- 
-\emph toggle
-LyX pracuje trochu odlišne od iných textových procesoroch.
- Dôvod je jednoduchý: LyX používa LaTeX ako svoj formátovací backend.
- Tak ako LaTeX, LyX sa zameriava na kontext vášho textu —
-\emph default
- 
-\emph on
-čo
-\emph default
- 
-\emph toggle
-píšete.
- Počítač sa potom postará o to ako to bude vyzerať.
-\end_layout
-
-\begin_layout Standard
-Ou — posledná vec.
- LaTeX sa vyslovuje ako TeX.
- Rýmuje sa to s 
-\begin_inset Quotes gld
-\end_inset
-
-hey blech
-\begin_inset Quotes grd
-\end_inset
-
-.
- Ak vyslovujete 
-\begin_inset Quotes gld
-\end_inset
-
-LaTeX
-\begin_inset Quotes grd
-\end_inset
-
- ako meno spoločnosti ktorá vyrába kondómy, vyslovujete ho zle.
- Na druhej strane 
-\begin_inset Quotes gld
-\end_inset
-
-LyX
-\begin_inset Quotes grd
-\end_inset
-
- sa vyslovuje 
-\begin_inset Quotes gld
-\end_inset
-
-licks
-\begin_inset Quotes grd
-\end_inset
-
-.
- Alebo 
-\begin_inset Quotes gld
-\end_inset
-
-lucks
-\begin_inset Quotes grd
-\end_inset
-
-, alebo 
-\begin_inset Quotes gld
-\end_inset
-
-looks
-\begin_inset Quotes grd
-\end_inset
-
-, záleží z akej krajiny ste\SpecialChar \ldots{}
-
 \end_layout
 
 \begin_layout Chapter

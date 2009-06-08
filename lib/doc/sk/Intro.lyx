@@ -1038,7 +1038,7 @@ reference "cap:Units-for-image"
 placement t
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -1596,7 +1596,7 @@ Príručka Keď s LyXom ešte len začínate, a zatiaľ ste LaTeX ešte nepouž�
 \emph on
 Príručku
 \emph default
- čitať, začinajúc sekciou 
+ čítať, začínajúc sekciou 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1645,8 +1645,8 @@ objekty Rozšírenie
 Uživateľskej príručky
 \emph default
 .
- Dokumentuje detailne how ako použiť tabuľky, grafiku, plávajuce objekty,
- poznámky, programové výpisy a rámky.
+ Dokumentuje detailne ako použiť tabuľky, grafiku, plávajúce objekty, poznámky,
+ programové výpisy a rámky.
  Zahrňuje aj mnoho trikov majstrov LaTeX-u.
 \end_layout
 
@@ -1656,7 +1656,7 @@ Matematika Rozšírenie
  Uživateľskej príručky
 \emph default
 .
- Dokumentuje in detailne ako opísať ktorýkoľvek druh formúl.
+ Dokumentuje detailne ako opísať ktorýkoľvek druh formúl.
 \end_layout
 
 \begin_layout Description
@@ -1704,7 +1704,7 @@ Uživateľská príručka
 \emph on
 niekoľko
 \emph default
- informácie o inštalácii a úprave, ale referuje čitateľa na 
+ informácií o inštalácii a úprave, ale referuje čitateľa na 
 \emph on
 Prispôsobenie 
 \emph default
@@ -1724,7 +1724,7 @@ Nuž, konštatujme ešte raz ten dôležitý bod:
 
 \begin_layout Standard
 \align center
-Keď s LyXom ešte len začínate, čitajte 
+Keď s LyXom ešte len začínate, čítajte 
 \emph on
 Príručku
 \emph default
@@ -1760,9 +1760,9 @@ Prispeť k LyX
 \end_layout
 
 \begin_layout Standard
-LyX je prevážne písný v C++ (LaTeX importér je písaný v Python).
+LyX je prevážne písaný v C++ (LaTeX importér je písaný v Python).
  Je to mohutný projekt, a výsledkom toho nie je bez chýb, alebo potrebuje
- vylepšenia v xdrojovom kóde.
+ vylepšenia v zdrojovom kóde.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1772,7 +1772,7 @@ Oznámiť chybu
 \begin_layout Standard
 Používajúc LyX možno zbadáte správanie, ktoré považujete za chybné.
  Crash, aj keď zriedka, sa môže stať.
- Problémy s uživateľským rozhraním sa považuje LyX Tím za veľké chyby: Veľmi
+ Problémy s uživateľským rozhraním považuje LyX Tím za veľké chyby: Veľmi
  nám pomáha keď sa dozvieme, ktorá časť uživateľského interfeisu vás pletie
  alebo je nejasná.
 \end_layout
@@ -1797,7 +1797,7 @@ http://www.lyx.org/trac/wiki/BugTrackerHome
  Preskúmajte ho pred hlásením nejakých chýb.
  Možno tá chyba už bola hlásená.
  Keď máte nejaký komentár k hlásenej chybe, alebo chcete hlásiť novú chybu,
- môzte použiť bug tracker alebo poslať e-mail na 
+ môžte použiť bug tracker alebo poslať e-mail na 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-devel@lists.lyx.org"
@@ -1896,7 +1896,7 @@ Pripojiť sa k Dokumentačnému Tímu.
 \end_layout
 
 \begin_layout Standard
-Dokumentačný Projekt LyX, ako aj každy iný LyX-projekt, rád a vždy použije
+Dokumentačný Projekt LyX, ako aj každý iný LyX-projekt, rád a vždy použije
  asistenciu! Keď chcete podporiť Dokumentačný Projekt, treba nasledujúce:
 \end_layout
 
@@ -1960,7 +1960,7 @@ Uživateľská príručka
 \end_layout
 
 \begin_layout Enumerate
-Dajte sa do styke s tímom na:
+Dajte sa do styku s tímom na:
 \begin_inset Newline newline
 \end_inset
 
