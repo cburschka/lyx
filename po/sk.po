@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-06-08 18:07+0200\n"
-"PO-Revision-Date: 2009-05-29 17:04+0200\n"
+"PO-Revision-Date: 2009-06-09 11:51+0200\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
 "Language-Team: Slowakisch <kde-i18n-de@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -967,7 +967,7 @@ msgstr "Otočiť"
 #: src/frontends/qt4/ui/GraphicsUi.ui:240
 #: src/frontends/qt4/ui/GraphicsUi.ui:247
 msgid "Angle to rotate image by"
-msgstr "Uhol otáčania obrázka"
+msgstr "Uhol otáčania obrázku"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:396
 #: src/frontends/qt4/ui/ExternalUi.ui:409
@@ -1195,7 +1195,7 @@ msgstr "Veľkosť výstupu"
 #: src/frontends/qt4/ui/GraphicsUi.ui:141
 msgid "Sets height of graphic. Leave unchecked to set automatically."
 msgstr ""
-"Nastaviť výšku obrázku. Nechajte nezaškrtnuté na automatické nastavenie."
+"Nastaví výšku obrázku. Nechajte nezaškrtnuté na automatické nastavenie."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:144
 msgid "Set &height:"
@@ -1208,7 +1208,7 @@ msgstr "Mierka grafiky (%):"
 #: src/frontends/qt4/ui/GraphicsUi.ui:161
 msgid "Sets width of graphic. Leave unchecked to set automatically."
 msgstr ""
-"Nastaviť šírku obrázku. Nechajte nezaškrtnuté na automatické nastavenie."
+"Nastaví šírku obrázku. Nechajte nezaškrtnuté na automatické nastavenie."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:164
 msgid "Set &width:"
@@ -1217,7 +1217,7 @@ msgstr "Nastaviť šír&ku:"
 #: src/frontends/qt4/ui/GraphicsUi.ui:174
 msgid "Scale image to maximum size not exceeding width and height"
 msgstr ""
-"Zmeňte mierku obrázka na maximálnu veľkosť ktorá nepresahuje ani výšku ani "
+"Zmeňte mierku obrázku na maximálnu veľkosť ktorá nepresahuje ani výšku ani "
 "šírku"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:187
@@ -2708,24 +2708,20 @@ msgid "&Index command:"
 msgstr "Príkaz indexovať:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:221
-#, fuzzy
 msgid "Specific index command and options for pLaTeX (Japanese)"
-msgstr "Príkaz a voľby pre indexovanie (makeindex, xindi)"
+msgstr "Príkaz a voľby pre indexovanie pre pLaTeX (Japonsky)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:228
-#, fuzzy
 msgid "Specific BibTeX command and options for pLaTeX (Japanese)"
-msgstr "BibTeX príkaz a voľby"
+msgstr "BibTeX príkaz a voľby pre pLaTeX (Japonsky)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:235
-#, fuzzy
 msgid "BibTeX command (&Japanese):"
-msgstr "BibTeX príkaz a voľby"
+msgstr "BibTeX príkaz a voľby (Japonsky)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:245
-#, fuzzy
 msgid "Index command (Ja&panese):"
-msgstr "Príkaz indexovať:"
+msgstr "Príkaz indexovať (Japonsky):"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:255
 msgid "Optional paper size flag (-paper) for some DVI viewers"
@@ -18545,7 +18541,7 @@ msgstr "Kórejsky (jamo)"
 
 #: src/frontends/qt4/GuiSymbols.cpp:80
 msgid "Phonetic Extensions"
-msgstr "Fonetické prípony"
+msgstr "Fonetické extenzie"
 
 #: src/frontends/qt4/GuiSymbols.cpp:81
 msgid "Latin Extended Additional"
