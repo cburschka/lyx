@@ -357,8 +357,31 @@ Enteru
 \end_layout
 
 \begin_layout Standard
-Tabulátory, spolu s pravítkom ukazujúcim pozíciu vecí na stránke, sú v LyX\SpecialChar \nobreakdash-
+Tabulátory, spolu s pravítkom ukazujúcim pozíciu vecí na stránke, sú v 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+mbox{
+\end_layout
+
+\end_inset
+
+LyX\SpecialChar \nobreakdash-
 e
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
  celkom zbytočné.
  O to, kde sa čo zobrazí na stránke, sa stará program a nie vy.
  Extra prázdne riadky sú podobné: LyX ich pridáva tam, kde je to potrebné,
@@ -798,10 +821,33 @@ Navigácia v dokumentácii
 \end_layout
 
 \begin_layout Standard
-Aby sa ľahšie odpovedalo na vaše otázky a opísalo všetky vlastnosti LyX\SpecialChar \nobreakdash-
-u,
- sme dokumentáciu rozdelili na niekoľké rozličné súbory.
- Každý má svoj vlastný zámer, ako nižšie opísané.
+Aby sa ľahšie odpovedalo na vaše otázky a opísalo všetky vlastnosti 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\backslash
+mbox
+{
+\end_layout
+
+\end_inset
+
+LyX\SpecialChar \nobreakdash-
+u
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+, sme dokumentáciu rozdelili na niekoľké rozličné súbory.
+ Každý má svoj vlast\SpecialChar \-
+ný zámer, ako nižšie opísané.
  Ale predtým ako sa vrhnete do niektorých z týchto súborov, mali by ste
  túto kapitolu celkom prečítať, však ona obsahuje množstvo užitočných informácií
  a komentárov ktoré vám môžu ušetriť niečo času.
@@ -1722,8 +1768,8 @@ Prispôsobenie Popis pokročilých možností LyX\SpecialChar \nobreakdash-
 u, zahrňujúc úpravu celkového
  správania LyX\SpecialChar \nobreakdash-
 u\SpecialChar \@.
- To zahrňuje také veci, ako skratky( keybindings), internacionali
-zácia, a konfiguračné súbory.
+ To zahrňuje také veci, ako skratky(keybindings), internacionaliz
+ácia, a konfiguračné súbory.
 \end_layout
 
 \begin_layout Description
@@ -1954,7 +2000,11 @@ Dokumentačný Projekt LyX, ako aj každý iný LyX-projekt, rád a vždy použi
 
 \begin_layout Enumerate
 Dostaňte najnovšie zdroje LyX\SpecialChar \nobreakdash-
-u od 
+u od
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Flex URL
 status collapsed
 
