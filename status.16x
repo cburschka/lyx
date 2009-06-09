@@ -78,6 +78,9 @@ What's new
   a path starts with a given prefix. This fixes a bug with reverse PDF
   search when using SumatraPDF as a PDF viewer on Cygwin.
 
+- Fix the maximum number of the files stored in last-opened-files list
+  (bug 5980).
+
 
 * DOCUMENTATION AND LOCALIZATION
 

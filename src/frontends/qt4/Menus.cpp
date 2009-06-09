@@ -41,6 +41,7 @@
 #include "LyXAction.h"
 #include "LyX.h" // for lastfiles
 #include "LyXFunc.h"
+#include "LyXRC.h"
 #include "Paragraph.h"
 #include "ParIterator.h"
 #include "Session.h"
@@ -657,12 +658,17 @@ void MenuDefinition::expandLastfiles()
 	LastFilesSection::LastFiles const & lf = theSession().lastFiles().lastFiles();
 	LastFilesSection::LastFiles::const_iterator lfit = lf.begin();
 
-	int ii = 1;
+	unsigned int ii = 1;
 
-	for (; lfit != lf.end() && ii < 10; ++lfit, ++ii) {
+	for (; lfit != lf.end() && ii <= lyxrc.num_lastfiles; ++lfit, ++ii) {
 		string const file = lfit->absFilename();
-		QString const label = QString("%1. %2|%3").arg(ii)
-			.arg(toqstr(makeDisplayPath(file, 30))).arg(ii);
+		QString label;
+		if (ii < 10)
+			label = QString("%1. %2|%3").arg(ii)
+				.arg(toqstr(makeDisplayPath(file, 30))).arg(ii);
+		else
+			label = QString("%1. %2").arg(ii)
+				.arg(toqstr(makeDisplayPath(file, 30)));
 		add(MenuItem(MenuItem::Command, label, FuncRequest(LFUN_FILE_OPEN, file)));
 	}
 }
