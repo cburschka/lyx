@@ -57,4 +57,18 @@ docstring const translateIfPossible(docstring const & name)
 }
 
 
+docstring const translateIfPossible(docstring const & name, std::string const & language)
+{
+	if (support::isAscii(name))
+		// Probably from a standard configuration file, try to
+		// translate
+		return getMessages(language).get(to_ascii(name));
+	else
+		// This must be from a user defined configuration file. We
+		// cannot translate this, since gettext accepts only ascii
+		// keys.
+		return name;
+}
+
+
 } // namespace lyx

@@ -35,6 +35,7 @@
 #include "support/docstream.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 
 using namespace std;
@@ -53,62 +54,63 @@ namespace lyx {
 //\ProvidesPackage{lyx}[1996/01/11 LLE v0.2 (LyX LaTeX Extensions)]
 //\message{LyX LaTeX Extensions (LLE v0.2) of 11-Jan-1996.}
 
-static string const lyx_def =
-	"\\providecommand{\\LyX}{L\\kern-.1667em\\lower.25em\\hbox{Y}\\kern-.125emX\\@}";
+static docstring const lyx_def = from_ascii(
+	"\\providecommand{\\LyX}{L\\kern-.1667em\\lower.25em\\hbox{Y}\\kern-.125emX\\@}");
 
-static string const lyxline_def =
+static docstring const lyxline_def = from_ascii(
 	"\\newcommand{\\lyxline}[1][1pt]{%\n"
 	"  \\par\\noindent%\n"
-	"  \\rule[.5ex]{\\linewidth}{#1}\\par}";
+	"  \\rule[.5ex]{\\linewidth}{#1}\\par}");
 
-static string const noun_def = "\\newcommand{\\noun}[1]{\\textsc{#1}}";
+static docstring const noun_def = from_ascii(
+	"\\newcommand{\\noun}[1]{\\textsc{#1}}");
 
-static string const lyxarrow_def =
+static docstring const lyxarrow_def = from_ascii(
 	"\\DeclareRobustCommand*{\\lyxarrow}{%\n"
 	"\\@ifstar\n"
 	"{\\leavevmode\\,$\\triangleleft$\\,\\allowbreak}\n"
-	"{\\leavevmode\\,$\\triangleright$\\,\\allowbreak}}";
+	"{\\leavevmode\\,$\\triangleright$\\,\\allowbreak}}");
 
 // for quotes without babel. This does not give perfect results, but
 // anybody serious about non-english quotes should use babel (JMarc).
 
-static string const quotedblbase_def =
+static docstring const quotedblbase_def = from_ascii(
 	"\\ProvideTextCommandDefault{\\quotedblbase}{%\n"
 	"  \\raisebox{-1.4ex}[1ex][.5ex]{\\textquotedblright}%\n"
 	"  \\penalty10000\\hskip0em\\relax%\n"
-	"}";
+	"}");
 
-static string const quotesinglbase_def =
+static docstring const quotesinglbase_def = from_ascii(
 	"\\ProvideTextCommandDefault{\\quotesinglbase}{%\n"
 	"  \\raisebox{-1.4ex}[1ex][.5ex]{\\textquoteright}%\n"
 	"  \\penalty10000\\hskip0em\\relax%\n"
-	"}";
+	"}");
 
-static string const guillemotleft_def =
+static docstring const guillemotleft_def = from_ascii(
 	"\\ProvideTextCommandDefault{\\guillemotleft}{%\n"
 	"  {\\usefont{U}{lasy}{m}{n}\\char'50\\kern-.15em\\char'50}%\n"
 	"\\penalty10000\\hskip0pt\\relax%\n"
-	"}";
+	"}");
 
-static string const guillemotright_def =
+static docstring const guillemotright_def = from_ascii(
 	"\\ProvideTextCommandDefault{\\guillemotright}{%\n"
 	"  \\penalty10000\\hskip0pt%\n"
 	"  {\\usefont{U}{lasy}{m}{n}\\char'51\\kern-.15em\\char'51}%\n"
-	"}";
+	"}");
 
-static string const guilsinglleft_def =
+static docstring const guilsinglleft_def = from_ascii(
 	"\\ProvideTextCommandDefault{\\guilsinglleft}{%\n"
 	"  {\\usefont{U}{lasy}{m}{n}\\char'50}%\n"
 	"  \\penalty10000\\hskip0pt\\relax%\n"
-	"}";
+	"}");
 
-static string const guilsinglright_def =
+static docstring const guilsinglright_def = from_ascii(
 	"\\ProvideTextCommandDefault{\\guilsinglright}{%\n"
 	"  \\penalty10000\\hskip0pt%\n"
 	"  {\\usefont{U}{lasy}{m}{n}\\char'51}%\n"
-	"}";
+	"}");
 
-static string const paragraphleftindent_def =
+static docstring const paragraphleftindent_def = from_ascii(
 	"\\newenvironment{LyXParagraphLeftIndent}[1]%\n"
 	"{\n"
 	"  \\begin{list}{}{%\n"
@@ -124,9 +126,9 @@ static string const paragraphleftindent_def =
 	"  }\n"
 	"  \\item[]\n"
 	"}\n"
-	"{\\end{list}}\n";
+	"{\\end{list}}\n");
 
-static string const floatingfootnote_def =
+static docstring const floatingfootnote_def = from_ascii(
 	"%% Special footnote code from the package 'stblftnt.sty'\n"
 	"%% Author: Robin Fairbairns -- Last revised Dec 13 1996\n"
 	"\\let\\SF@@footnote\\footnote\n"
@@ -142,32 +144,32 @@ static string const floatingfootnote_def =
 	"}\n"
 	"\\edef\\SF@gobble@opt{\\noexpand\\protect\n"
 	"  \\expandafter\\noexpand\\csname SF@gobble@opt \\endcsname}\n"
-	"\\def\\SF@gobble@twobracket[#1]#2{}\n";
+	"\\def\\SF@gobble@twobracket[#1]#2{}\n");
 
-static string const binom_def =
+static docstring const binom_def = from_ascii(
 	"%% Binom macro for standard LaTeX users\n"
-	"\\newcommand{\\binom}[2]{{#1 \\choose #2}}\n";
+	"\\newcommand{\\binom}[2]{{#1 \\choose #2}}\n");
 
-static string const mathcircumflex_def =
+static docstring const mathcircumflex_def = from_ascii(
 	"%% For printing a cirumflex inside a formula\n"
-	"\\newcommand{\\mathcircumflex}[0]{\\mbox{\\^{}}}\n";
+	"\\newcommand{\\mathcircumflex}[0]{\\mbox{\\^{}}}\n");
 
-static string const tabularnewline_def =
+static docstring const tabularnewline_def = from_ascii(
 	"%% Because html converters don't know tabularnewline\n"
-	"\\providecommand{\\tabularnewline}{\\\\}\n";
+	"\\providecommand{\\tabularnewline}{\\\\}\n");
 	
-static string const lyxgreyedout_def =
+static docstring const lyxgreyedout_def = from_ascii(
 	"%% The greyedout annotation environment\n"
-	"\\newenvironment{lyxgreyedout}{\\textcolor[gray]{0.8}\\bgroup}{\\egroup}\n";
+	"\\newenvironment{lyxgreyedout}{\\textcolor[gray]{0.8}\\bgroup}{\\egroup}\n");
 
 // We want to omit the file extension for includegraphics, but this does not
 // work when the filename contains other dots.
 // Idea from http://www.tex.ac.uk/cgi-bin/texfaq2html?label=unkgrfextn
-static string const lyxdot_def =
+static docstring const lyxdot_def = from_ascii(
 	"%% A simple dot to overcome graphicx limitations\n"
-	"\\newcommand{\\lyxdot}{.}\n";
+	"\\newcommand{\\lyxdot}{.}\n");
 
-static string const changetracking_dvipost_def =
+static docstring const changetracking_dvipost_def = from_ascii(
 	"%% Change tracking with dvipost\n"
 	"\\dvipostlayout\n"
 	"\\dvipost{osstart color push Red}\n"
@@ -176,84 +178,84 @@ static string const changetracking_dvipost_def =
 	"\\dvipost{cbend color pop}\n"
 	"\\newcommand{\\lyxadded}[3]{\\changestart#3\\changeend}\n"
 	"\\newcommand{\\lyxdeleted}[3]{%\n"
-	"\\changestart\\overstrikeon#3\\overstrikeoff\\changeend}\n";
+	"\\changestart\\overstrikeon#3\\overstrikeoff\\changeend}\n");
 
-static string const changetracking_xcolor_ulem_def =
+static docstring const changetracking_xcolor_ulem_def = from_ascii(
 	"%% Change tracking with ulem\n"
 	"\\newcommand{\\lyxadded}[3]{{\\color{lyxadded}#3}}\n"
-	"\\newcommand{\\lyxdeleted}[3]{{\\color{lyxdeleted}\\sout{#3}}}\n";
+	"\\newcommand{\\lyxdeleted}[3]{{\\color{lyxdeleted}\\sout{#3}}}\n");
 
-static string const changetracking_xcolor_ulem_hyperref_def =
+static docstring const changetracking_xcolor_ulem_hyperref_def = from_ascii(
 	"%% Change tracking with ulem\n"
 	"\\newcommand{\\lyxadded}[3]{{\\texorpdfstring{\\color{lyxadded}}{}#3}}\n"
-	"\\newcommand{\\lyxdeleted}[3]{{\\texorpdfstring{\\color{lyxdeleted}\\sout{#3}}{}}}\n";
+	"\\newcommand{\\lyxdeleted}[3]{{\\texorpdfstring{\\color{lyxdeleted}\\sout{#3}}{}}}\n");
 
-static string const changetracking_none_def =
+static docstring const changetracking_none_def = from_ascii(
 	"\\newcommand{\\lyxadded}[3]{#3}\n"
-	"\\newcommand{\\lyxdeleted}[3]{}\n";
+	"\\newcommand{\\lyxdeleted}[3]{}\n");
 
-static string const textgreek_def =
+static docstring const textgreek_def = from_ascii(
 	"\\DeclareRobustCommand{\\greektext}{%\n"
 	"  \\fontencoding{LGR}\\selectfont\\def\\encodingdefault{LGR}}\n"
 	"\\DeclareRobustCommand{\\textgreek}[1]{\\leavevmode{\\greektext #1}}\n"
-	"\\DeclareFontEncoding{LGR}{}{}\n";
+	"\\DeclareFontEncoding{LGR}{}{}\n");
 
-static string const textcyr_def =
+static docstring const textcyr_def = from_ascii(
 	"\\DeclareRobustCommand{\\cyrtext}{%\n"
 	"  \\fontencoding{T2A}\\selectfont\\def\\encodingdefault{T2A}}\n"
 	"\\DeclareRobustCommand{\\textcyr}[1]{\\leavevmode{\\cyrtext #1}}\n"
-	"\\AtBeginDocument{\\DeclareFontEncoding{T2A}{}{}}\n";
+	"\\AtBeginDocument{\\DeclareFontEncoding{T2A}{}{}}\n");
 
-static string const lyxmathsym_def =
+static docstring const lyxmathsym_def = from_ascii(
 	"\\newcommand{\\lyxmathsym}[1]{\\ifmmode\\begingroup\\def\\b@ld{bold}\n"
-	"  \\text{\\ifx\\math@version\\b@ld\\bfseries\\fi#1}\\endgroup\\else#1\\fi}\n";
+	"  \\text{\\ifx\\math@version\\b@ld\\bfseries\\fi#1}\\endgroup\\else#1\\fi}\n");
 
-static string const papersizedvi_def =
-	"\\special{papersize=\\the\\paperwidth,\\the\\paperheight}\n";
+static docstring const papersizedvi_def = from_ascii(
+	"\\special{papersize=\\the\\paperwidth,\\the\\paperheight}\n");
 
-static string const papersizepdf_def =
+static docstring const papersizepdf_def = from_ascii(
 	"\\pdfpageheight\\paperheight\n"
-	"\\pdfpagewidth\\paperwidth\n";
+	"\\pdfpagewidth\\paperwidth\n");
 
-static string const cedilla_def =
+static docstring const cedilla_def = from_ascii(
 	"\\newcommand{\\docedilla}[2]{\\underaccent{#1\\mathchar'30}{#2}}\n"
-	"\\newcommand{\\cedilla}[1]{\\mathpalette\\docedilla{#1}}\n";
+	"\\newcommand{\\cedilla}[1]{\\mathpalette\\docedilla{#1}}\n");
 
-static string const subring_def =
+static docstring const subring_def = from_ascii(
 	"\\newcommand{\\dosubring}[2]{\\underaccent{#1\\mathchar'27}{#2}}\n"
-	"\\newcommand{\\subring}[1]{\\mathpalette\\dosubring{#1}}\n";
+	"\\newcommand{\\subring}[1]{\\mathpalette\\dosubring{#1}}\n");
 
-static string const subdot_def =
+static docstring const subdot_def = from_ascii(
 	"\\newcommand{\\dosubdot}[2]{\\underaccent{#1.}{#2}}\n"
-	"\\newcommand{\\subdot}[1]{\\mathpalette\\dosubdot{#1}}\n";
+	"\\newcommand{\\subdot}[1]{\\mathpalette\\dosubdot{#1}}\n");
 
-static string const subhat_def =
+static docstring const subhat_def = from_ascii(
 	"\\newcommand{\\dosubhat}[2]{\\underaccent{#1\\mathchar'136}{#2}}\n"
-	"\\newcommand{\\subhat}[1]{\\mathpalette\\dosubhat{#1}}\n";
+	"\\newcommand{\\subhat}[1]{\\mathpalette\\dosubhat{#1}}\n");
 
-static string const subtilde_def =
+static docstring const subtilde_def = from_ascii(
 	"\\newcommand{\\dosubtilde}[2]{\\underaccent{#1\\mathchar'176}{#2}}\n"
-	"\\newcommand{\\subtilde}[1]{\\mathpalette\\dosubtilde{#1}}\n";
+	"\\newcommand{\\subtilde}[1]{\\mathpalette\\dosubtilde{#1}}\n");
 
-static string const dacute_def =
-	"\\DeclareMathAccent{\\dacute}{\\mathalpha}{operators}{'175}\n";
+static docstring const dacute_def = from_ascii(
+	"\\DeclareMathAccent{\\dacute}{\\mathalpha}{operators}{'175}\n");
 
-static string const tipasymb_def =
+static docstring const tipasymb_def = from_ascii(
 	"\\DeclareFontEncoding{T3}{}{}\n"
-	"\\DeclareSymbolFont{tipasymb}{T3}{cmr}{m}{n}\n";
+	"\\DeclareSymbolFont{tipasymb}{T3}{cmr}{m}{n}\n");
 
-static string const dgrave_def =
-	"\\DeclareMathAccent{\\dgrave}{\\mathord}{tipasymb}{'15}\n";
+static docstring const dgrave_def = from_ascii(
+	"\\DeclareMathAccent{\\dgrave}{\\mathord}{tipasymb}{'15}\n");
 
-static string const rcap_def =
-	"\\DeclareMathAccent{\\rcap}{\\mathord}{tipasymb}{'20}\n";
+static docstring const rcap_def = from_ascii(
+	"\\DeclareMathAccent{\\rcap}{\\mathord}{tipasymb}{'20}\n");
 
-static string const ogonek_def =
+static docstring const ogonek_def = from_ascii(
 	"\\newcommand{\\doogonek}[2]{\\setbox0=\\hbox{$#1#2$}\\underaccent{#1\\mkern-6mu\n"
 	"  \\ifx#2O\\hskip0.5\\wd0\\else\\ifx#2U\\hskip0.5\\wd0\\else\\hskip\\wd0\\fi\\fi\n"
 	"  \\ifx#2o\\mkern-2mu\\else\\ifx#2e\\mkern-1mu\\fi\\fi\n"
 	"  \\mathchar\"0\\hexnumber@\\symtipasymb0C}{#2}}\n"
-	"\\newcommand{\\ogonek}[1]{\\mathpalette\\doogonek{#1}}\n";
+	"\\newcommand{\\ogonek}[1]{\\mathpalette\\doogonek{#1}}\n");
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -749,9 +751,9 @@ string const LaTeXFeatures::getPackages() const
 }
 
 
-string const LaTeXFeatures::getMacros() const
+docstring const LaTeXFeatures::getMacros() const
 {
-	ostringstream macros;
+	odocstringstream macros;
 
 	if (!preamble_snippets_.empty())
 		macros << '\n';
@@ -980,6 +982,17 @@ docstring const LaTeXFeatures::getTClassHTMLStyles() const {
 }
 
 
+namespace {
+docstring const getFloatI18nPreamble(docstring const & type, docstring const & name, docstring const & lang)
+{
+	odocstringstream os;
+	os << "\\addto\\captions" << lang
+	   << "{\\renewcommand{\\" << type << "name}{" << name << "}}\n";
+	return os.str();
+}
+}
+
+
 docstring const LaTeXFeatures::getTClassI18nPreamble(bool use_babel) const
 {
 	DocumentClass const & tclass = params_.documentClass();
@@ -999,6 +1012,28 @@ docstring const LaTeXFeatures::getTClassI18nPreamble(bool use_babel) const
 			snippets.insert(tclass[*cit].babelpreamble(buffer().language()));
 			for (lang_it lit = lbeg; lit != lend; ++lit)
 				snippets.insert(tclass[*cit].babelpreamble(*lit));
+		}
+	}
+	if (use_babel && !UsedLanguages_.empty()) {
+		FloatList const & floats = params_.documentClass().floats();
+		UsedFloats::const_iterator fit = usedFloats_.begin();
+		UsedFloats::const_iterator fend = usedFloats_.end();
+		for (; fit != fend; ++fit) {
+			Floating const & fl = floats.getType(fit->first);
+			docstring const type = from_ascii(fl.type());
+			docstring const flname = from_utf8(fl.name());
+			docstring name = translateIfPossible(flname,
+				buffer().language()->code());
+			snippets.insert(getFloatI18nPreamble(
+				type, name,
+				from_ascii(buffer().language()->babel())));
+			for (lang_it lit = lbeg; lit != lend; ++lit) {
+				name = translateIfPossible(flname,
+					(*lit)->code());
+				snippets.insert(getFloatI18nPreamble(
+					type, name,
+					from_ascii((*lit)->babel())));
+			}
 		}
 	}
 
@@ -1046,7 +1081,7 @@ void LaTeXFeatures::showStruct() const
 {
 	lyxerr << "LyX needs the following commands when LaTeXing:"
 	       << "\n***** Packages:" << getPackages()
-	       << "\n***** Macros:" << getMacros()
+	       << "\n***** Macros:" << to_utf8(getMacros())
 	       << "\n***** Textclass stuff:" << to_utf8(getTClassPreamble())
 	       << "\n***** done." << endl;
 }
@@ -1070,7 +1105,7 @@ BufferParams const & LaTeXFeatures::bufferParams() const
 }
 
 
-void LaTeXFeatures::getFloatDefinitions(ostream & os) const
+void LaTeXFeatures::getFloatDefinitions(odocstream & os) const
 {
 	FloatList const & floats = params_.documentClass().floats();
 
@@ -1078,12 +1113,12 @@ void LaTeXFeatures::getFloatDefinitions(ostream & os) const
 	// We will try to do this as minimal as possible.
 	// \floatstyle{ruled}
 	// \newfloat{algorithm}{htbp}{loa}
-	// \floatname{algorithm}{Algorithm}
+	// \providecommand{\algorithmname}{Algorithm}
+	// \floatname{algorithm}{\protect\algorithmname}
 	UsedFloats::const_iterator cit = usedFloats_.begin();
 	UsedFloats::const_iterator end = usedFloats_.end();
-	// ostringstream floats;
 	for (; cit != end; ++cit) {
-		Floating const & fl = floats.getType((cit->first));
+		Floating const & fl = floats.getType(cit->first);
 
 		// For builtin floats we do nothing.
 		if (fl.builtin()) continue;
@@ -1094,9 +1129,9 @@ void LaTeXFeatures::getFloatDefinitions(ostream & os) const
 			// but only if builtin == false
 			// and that have to be true at this point in the
 			// function.
-			string const type = fl.type();
-			string const placement = fl.placement();
-			string const style = fl.style();
+			docstring const type = from_ascii(fl.type());
+			docstring const placement = from_ascii(fl.placement());
+			docstring const style = from_ascii(fl.style());
 			if (!style.empty()) {
 				os << "\\floatstyle{" << style << "}\n"
 				   << "\\restylefloat{" << type << "}\n";
@@ -1108,20 +1143,24 @@ void LaTeXFeatures::getFloatDefinitions(ostream & os) const
 		} else {
 			// The other non builtin floats.
 
-			string const type = fl.type();
-			string const placement = fl.placement();
-			string const ext = fl.ext();
-			string const within = fl.within();
-			string const style = fl.style();
-			string const name = fl.name();
+			docstring const type = from_ascii(fl.type());
+			docstring const placement = from_ascii(fl.placement());
+			docstring const ext = from_ascii(fl.ext());
+			docstring const within = from_ascii(fl.within());
+			docstring const style = from_ascii(fl.style());
+			docstring const name = translateIfPossible(
+					from_utf8(fl.name()),
+					buffer().language()->code());
 			os << "\\floatstyle{" << style << "}\n"
 			   << "\\newfloat{" << type << "}{" << placement
 			   << "}{" << ext << '}';
 			if (!within.empty())
 				os << '[' << within << ']';
 			os << '\n'
-			   << "\\floatname{" << type << "}{"
-			   << name << "}\n";
+			   << "\\providecommand{\\" << type << "name}{"
+			   << name << "}\n"
+			   << "\\floatname{" << type << "}{\\protect\\"
+			   << type << "name}\n";
 
 			// What missing here is to code to minimalize the code
 			// output so that the same floatstyle will not be
@@ -1129,7 +1168,7 @@ void LaTeXFeatures::getFloatDefinitions(ostream & os) const
 			// effect. (Lgb)
 		}
 		if (cit->second)
-			os << "\n\\newsubfloat{" << fl.type() << "}\n";
+			os << "\n\\newsubfloat{" << from_ascii(fl.type()) << "}\n";
 	}
 }
 

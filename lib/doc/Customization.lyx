@@ -117,6 +117,7 @@ End
 \output_changes false
 \author "" 
 \author "Jean-Marc Lasgouttes" 
+\author "Georg Baum" 
 \author "" 
 \end_header
 
@@ -11393,6 +11394,11 @@ string
 \end_inset
 
 ] The string that will be used in the menus and also for the caption.
+
+\change_inserted 2 1244364642
+ This is translated to the current language if babel is used.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -11490,6 +11496,11 @@ string
 \end_inset
 
 ] The heading used for the list of floats.
+
+\change_inserted 2 1244364301
+ This is translated to the document language.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description

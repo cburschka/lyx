@@ -1449,7 +1449,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	docstring atlyxpreamble;
 
 	// Some macros LyX will need
-	docstring tmppreamble(from_ascii(features.getMacros()));
+	docstring tmppreamble(features.getMacros());
 
 	if (!tmppreamble.empty())
 		atlyxpreamble += "\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "

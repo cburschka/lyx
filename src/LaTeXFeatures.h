@@ -19,7 +19,6 @@
 #include <set>
 #include <list>
 #include <map>
-#include <string>
 
 
 namespace lyx {
@@ -52,7 +51,7 @@ public:
 	/// The packages needed by the document
 	std::string const getPackages() const;
 	/// The macros definitions needed by the document
-	std::string const getMacros() const;
+	docstring const getMacros() const;
 	///
 	std::string const getBabelOptions() const;
 	/// The definitions needed by the document's textclass
@@ -70,7 +69,7 @@ public:
 	/// Include a file for use with the SGML entities
 	void includeFile(docstring const & key, std::string const & name);
 	/// The float definitions.
-	void getFloatDefinitions(std::ostream & os) const;
+	void getFloatDefinitions(odocstream & os) const;
 	/// Print requirements to lyxerr
 	void showStruct() const;
 	///
