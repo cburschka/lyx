@@ -253,7 +253,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 					lastlay = 0;
 				}
 				bool const labelfirst = cstyle.htmllabelfirst();
-				bool item_tag_opened;
+				bool item_tag_opened = false;
 				if (!labelfirst)
 					item_tag_opened = openItemTag(os, cstyle);
 				if (cstyle.labeltype == LABEL_MANUAL) {

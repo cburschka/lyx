@@ -92,7 +92,7 @@ void GuiToc::enableView(bool enable)
 }
 
 
-void GuiToc::closeEvent(QCloseEvent * event)
+void GuiToc::closeEvent(QCloseEvent * /*event*/)
 {
 	is_closing_ = true;
 	((GuiView *)parent())->updateToolbars();

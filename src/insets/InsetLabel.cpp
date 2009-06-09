@@ -218,7 +218,7 @@ int InsetLabel::docbook(odocstream & os, OutputParams const & runparams) const
 }
 
 
-int InsetLabel::xhtml(odocstream & os, OutputParams const & runparams) const
+int InsetLabel::xhtml(odocstream & os, OutputParams const & /*runparams*/) const
 {
 	// FIXME Does this need to be escaped?
 	os << "<a name=\"" << getParam("name") << "\"></a>";
