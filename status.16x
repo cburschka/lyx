@@ -22,18 +22,6 @@ What's new
 ** Updates:
 ***********
 
-* DOCUMENTATION AND LOCALIZATION
-
-- New Slovakian translation of the Introduction manual.
-
-- Updated Czech, German, Italian and Spanish localizations of the user
-  interface.
-
-- Updated English Additional Features manual.
-
-- Updated Intro manual for all languages.
-
-
 * DOCUMENT INPUT/OUTPUT
 
 - Implement separate chains for Japanese bibliography and index
@@ -48,8 +36,23 @@ What's new
   warning for this specific master/child constellation over sessions
   (bug 3218).
 
+- Tooltips for toolbat buttons now show the main shortcut associated
+  to the action.
+
 - Tooltips for footnotes and some other insets now wrap, so they can actually
   be seen.
+
+
+* DOCUMENTATION AND LOCALIZATION
+
+- New Slovakian translation of the Introduction manual.
+
+- Updated Czech, German, Italian and Spanish localizations of the user
+  interface.
+
+- Updated English Additional Features manual.
+
+- Updated Intro manual for all languages.
 
 
 * WINDOWS INSTALLER
