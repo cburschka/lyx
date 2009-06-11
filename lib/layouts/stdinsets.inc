@@ -110,6 +110,10 @@ InsetLayout Foot
 		}
 		span.footnote {
 			display: none;
+			font-size: medium;
+			font-weight: normal;
+			font-style: normal;
+			font-variant: normal;
 		}
 		span.footwrapper:hover span.footnote { 
 			display: block; 
