@@ -208,7 +208,7 @@ bool BibTeXInfo::hasField(docstring const & field) const
 docstring const BibTeXInfo::getAbbreviatedAuthor() const
 {
 	if (!is_bibtex_) {
-		docstring const opt = trim(operator[]("label"));
+		docstring const opt = label();
 		if (opt.empty())
 			return docstring();
 
@@ -245,7 +245,7 @@ docstring const BibTeXInfo::getYear() const
 	if (is_bibtex_) 
 		return operator[]("year");
 
-	docstring const opt = trim(operator[]("label"));
+	docstring const opt = label();
 	if (opt.empty())
 		return docstring();
 

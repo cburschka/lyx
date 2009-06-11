@@ -85,6 +85,12 @@ public:
 	///
 	void setAllData(docstring const & d) { all_data_ = d; }
 	///
+	void label(docstring const & d) { label_= d; }
+	///
+	docstring const & label() const { return label_; }
+	///
+	docstring const & key() const { return bib_key_; }
+	///
 	docstring entryType() const { return entry_type_; }
 private:
 	/// like operator[], except, if the field is empty, it will attempt
@@ -96,6 +102,10 @@ private:
 	bool is_bibtex_;
 	/// the BibTeX key for this entry
 	docstring bib_key_;
+	/// the label that will appear in citations
+	/// this is easily set from bibliography environments, but has
+	/// to be calculated for entries we get from BibTeX
+	docstring label_;
 	/// a single string containing all BibTeX data associated with this key
 	docstring all_data_;
 	/// the BibTeX entry type (article, book, incollection, ...)

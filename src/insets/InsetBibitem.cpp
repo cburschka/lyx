@@ -244,7 +244,7 @@ void InsetBibitem::fillWithBibKeys(BiblioInfo & keys, InsetIterator const & it) 
 {
 	docstring const key = getParam("key");
 	BibTeXInfo keyvalmap(false);
-	keyvalmap[from_ascii("label")] = getParam("label");
+	keyvalmap.label(trim(getParam("label")));
 	DocIterator doc_it(it); 
 	doc_it.forwardPos();
 	keyvalmap[from_ascii("ref")] = doc_it.paragraph().asString();
