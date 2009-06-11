@@ -19,6 +19,15 @@ These insets do nothing for XHTML:
 These insets work but still need work:
 	InsetBox: We need a Length::asHTML() method and the like, but it basically works.
 		though the CSS isn't there yet.
+	InsetCitation: This has two limitations as of 11 VI 2009. The first is that we
+		ignore the citation style and output square brackets, no matter what. The
+		second is that, with BibTeX, we simply use the BibTeX key as the citation
+		string, thus ignoring numerical, author-year, etc. It will not be too hard
+		to make numerical work. To do this, we need to collect information on the
+		used citations, alphabetize them, and then assign numerical labels via the
+		BibTeXInfo::label() method. A similar strategy will work for author-year and
+		the like, but calculating labels will be more complex---unless we just parse
+		the bbl file, which of course is the only fully general solution.
 
 These insets do not work but should be completely straightforward:
 	Caption, Flex (uses collapsable)
