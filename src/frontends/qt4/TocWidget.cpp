@@ -111,7 +111,7 @@ Inset * TocWidget::itemInset() const
 		inset = dit.nextInset();
 
 	else if (current_type_ == "branch"
-		     || current_type_ == "index"
+			 || current_type_ == "index"
 			 || current_type_ == "change")
 		inset = &dit.inset();
 
