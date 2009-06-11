@@ -41,9 +41,6 @@ These do not yet work and need some attention:
 		validate() and then use our parsed information to output some sort of
 		bibliography. Formatting is another question, but here again we could
 		try parsing the bbl file.
-	InsetCitation: I think we'll want to do something here involving reference keys.
-		Maybe for the beginning, we should just do everything numerically, but even
-		that will need a bit of work. Validation is our friend, presumably.
 	InsetCommand: By default does nothing. That may be right?
 	InsetExternal: I don't understand these so am not sure what to do.
 	InsetFloat: This will need some work, again because I do not really understand
