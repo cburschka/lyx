@@ -900,6 +900,13 @@ void InsetBibtex::validate(LaTeXFeatures & features) const
 }
 
 
+int InsetBibtex::xhtml(odocstream &, OutputParams const &) const
+{
+	//Toc const & toc = buffer().tocBackend().toc("citation");
+	return 0;
+}
+
+
 docstring InsetBibtex::contextMenu(BufferView const &, int, int) const
 {
 	return from_ascii("context-bibtex");
