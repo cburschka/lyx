@@ -10,7 +10,7 @@ Known issues:
 
 These insets are basically done, though there are probably issues here and there,
 	and there are even some FIXMEs:
-	Branch, Collapsable, Footnote, Hyperlink, Label, Line, Note, 
+	Bibitem, Branch, Collapsable, Footnote, Hyperlink, Label, Line, Note, 
 	Newline, Newpage, Quotes, Space, SpecialChar
 
 These insets do nothing for XHTML:
@@ -28,7 +28,6 @@ May need to make use here of TocWidget::itemInset, which should then be moved
 to TocBackend.
 
 These do not yet work and need some attention:
-	InsetBibitem: Should be fairly straightforward, in itself, actually.
 	InsetBibtex: We should be able to collect the keys of references in
 		validate() and then use our parsed information to output some sort of
 		bibliography. Formatting is another question, but here again we could
