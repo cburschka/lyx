@@ -23,6 +23,10 @@ These insets work but still need work:
 These insets do not work but should be completely straightforward:
 	Caption, Flex (uses collapsable)
 
+
+May need to make use here of TocWidget::itemInset, which should then be moved
+to TocBackend.
+
 These do not yet work and need some attention:
 	InsetBibitem: Should be fairly straightforward, in itself, actually.
 	InsetBibtex: We should be able to collect the keys of references in

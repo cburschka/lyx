@@ -24,6 +24,7 @@
 #include "InsetIterator.h"
 #include "InsetList.h"
 #include "Lexer.h"
+#include "output_xhtml.h"
 #include "Paragraph.h"
 #include "ParagraphList.h"
 #include "TextClass.h"
@@ -251,7 +252,7 @@ void InsetBibitem::fillWithBibKeys(BiblioInfo & keys, InsetIterator const & it) 
 }
 
 
-/// Update the counters of this inset and of its contents
+// Update the counters of this inset and of its contents
 void InsetBibitem::updateLabels(ParIterator const &) 
 {
 	Counters & counters = buffer().masterBuffer()->params().documentClass().counters();
@@ -262,6 +263,13 @@ void InsetBibitem::updateLabels(ParIterator const &)
 	} else {
 		autolabel_ = from_ascii("??");
 	}
+}
+
+
+int InsetBibitem::xhtml(odocstream & os, OutputParams const &) const
+{
+	os << "<a name='" << html::htmlize(getParam("key")) << "'></a>";
+	os << "<span class='biblabel'>" << bibLabel() << "</span> "; 
 }
 
 

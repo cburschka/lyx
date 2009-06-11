@@ -547,7 +547,7 @@ void InsetText::addToToc(DocIterator const & cdit)
 				break;
 			}
 		}
-		/// now the toc entry for the paragraph
+		// now the toc entry for the paragraph
 		int const toclevel = par.layout().toclevel;
 		if (toclevel != Layout::NOT_IN_TOC && toclevel >= min_toclevel) {
 			dit.pos() = 0;

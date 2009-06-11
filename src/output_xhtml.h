@@ -29,6 +29,8 @@ void xhtmlParagraphs(ParagraphList const & subset,
 namespace html {
 	///
 	docstring escapeChar(char_type c);
+	/// converts a string to a form safe for links, etc
+	docstring htmlize(docstring const & str);
 	/// \return true if tag was opened, false if not 
 	bool openTag(odocstream & os, std::string const & tag, 
 	             std::string const & attr);

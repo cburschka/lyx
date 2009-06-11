@@ -57,4 +57,6 @@ Style Bibliography
 	  Series              Bold
 	  Size                Larger
 	EndFont
+	HTMLTag               p
+	HTMLAttr              class='bibliography'
 End

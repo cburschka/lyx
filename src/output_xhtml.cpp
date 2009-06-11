@@ -65,6 +65,11 @@ docstring escapeChar(char_type c)
 }
 
 
+// FIXME do something here.
+docstring htmlize(docstring const & str) {
+	return str;
+}
+
 // FIXME This needs to be protected somehow.
 static vector<string> taglist;
 
@@ -212,6 +217,22 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 }
 
 
+ParagraphList::const_iterator makeBibliography(Buffer const & buf,
+				odocstream & os,
+				OutputParams const & runparams,
+				ParagraphList const & paragraphs,
+				ParagraphList::const_iterator const & pbegin,
+				ParagraphList::const_iterator const & pend) 
+{
+	os << "<div class='bibliography'>\n" 
+	   << "<h2 class='bibliography'>" 
+	   << pbegin->layout().labelstring() 
+	   << "</h2>\n";
+	makeParagraphs(buf, os, runparams, paragraphs, pbegin, pend);
+	return pend;
+}
+
+
 ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 					      odocstream & os,
 					      OutputParams const & runparams,
@@ -310,8 +331,13 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 			send = searchParagraph(par, pend);
 			par = makeParagraphs(buf, os, runparams, paragraphs, par, send);
 			break;
-		// FIXME
+		// Shouldn't happen
 		case LATEX_BIB_ENVIRONMENT:
+			send = par;
+			++send;
+			par = makeParagraphs(buf, os, runparams, paragraphs, par, send);
+			break;
+		// Shouldn't happen
 		case LATEX_COMMAND:
 			++par;
 			break;
@@ -385,16 +411,17 @@ void xhtmlParagraphs(ParagraphList const & paragraphs,
 		case LATEX_LIST_ENVIRONMENT:
 		case LATEX_ITEM_ENVIRONMENT: {
 			send = searchEnvironment(par, pend);
-			par = makeEnvironment(buf, os, runparams, paragraphs, par,send);
+			par = makeEnvironment(buf, os, runparams, paragraphs, par, send);
+			break;
+		}
+		case LATEX_BIB_ENVIRONMENT: {
+			send = searchEnvironment(par, pend);
+			par = makeBibliography(buf, os, runparams, paragraphs, par, send);
 			break;
 		}
 		case LATEX_PARAGRAPH:
 			send = searchParagraph(par, pend);
-			par = makeParagraphs(buf, os, runparams, paragraphs, par,send);
-			break;
-		case LATEX_BIB_ENVIRONMENT:
-			// FIXME
-			++par;
+			par = makeParagraphs(buf, os, runparams, paragraphs, par, send);
 			break;
 		}
 		// FIXME??

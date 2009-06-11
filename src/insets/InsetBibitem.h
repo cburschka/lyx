@@ -61,6 +61,8 @@ private:
 	///
 	int plaintext(odocstream &, OutputParams const &) const;
 	///
+	int xhtml(odocstream &, OutputParams const &) const;
+	///
 	virtual void fillWithBibKeys(BiblioInfo &, InsetIterator const &) const;
 	/// Update the counter of this inset
 	virtual void updateLabels(ParIterator const &);
