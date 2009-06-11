@@ -256,20 +256,28 @@ void handle_package(Parser &p, string const & name, string const & opts,
 	string scale;
 
 	// roman fonts
-	if (is_known(name, known_roman_fonts))
+	if (is_known(name, known_roman_fonts)) {
 		h_font_roman = name;
+		p.skip_spaces();
+	}
 
 	if (name == "fourier") {
 		h_font_roman = "utopia";
 		// when font uses real small capitals
 		if (opts == "expert")
 			h_font_sc = "true";
+		p.skip_spaces();
 	}
-	if (name == "mathpazo")
-		h_font_roman = "palatino";
 
-	if (name == "mathptmx")
+	if (name == "mathpazo") {
+		h_font_roman = "palatino";
+		p.skip_spaces();
+	}
+
+	if (name == "mathptmx") {
 		h_font_roman = "times";
+		p.skip_spaces();
+	}
 
 	// sansserif fonts
 	if (is_known(name, known_sans_fonts)) {
@@ -278,7 +286,9 @@ void handle_package(Parser &p, string const & name, string const & opts,
 			scale = opts;
 			h_font_sf_scale = scale_as_percentage(scale);
 		}
+		p.skip_spaces();
 	}
+
 	// typewriter fonts
 	if (is_known(name, known_typewriter_fonts)) {
 		h_font_typewriter = name;
@@ -286,13 +296,19 @@ void handle_package(Parser &p, string const & name, string const & opts,
 			scale = opts;
 			h_font_tt_scale = scale_as_percentage(scale);
 		}
+		p.skip_spaces();
 	}
-	// font uses old-style figure
-	if (name == "eco")
-		h_font_osf = "true";
 
-	else if (name == "amsmath" || name == "amssymb")
+	// font uses old-style figure
+	if (name == "eco") {
+		h_font_osf = "true";
+		p.skip_spaces();
+	}
+
+	else if (name == "amsmath" || name == "amssymb") {
 		h_use_amsmath = "2";
+		p.skip_spaces();
+	}
 
 	else if (name == "babel" && !opts.empty()) {
 		// check if more than one option was used - used later for inputenc
@@ -321,9 +337,10 @@ void handle_package(Parser &p, string const & name, string const & opts,
 				h_language = "ukrainian";
 			h_quotes_language = h_language;
 		}
+		p.skip_spaces();
 	}
 	else if (name == "fontenc")
-		; // ignore this
+		p.skip_spaces(); // ignore this
 
 	else if (name == "inputenc") {
 		// only set when there is not more than one inputenc
@@ -341,27 +358,39 @@ void handle_package(Parser &p, string const & name, string const & opts,
 		if (!options.empty())
 			p.setEncoding(options.back());
 		options.clear();
+		p.skip_spaces();
 	}
 
 	else if (name == "makeidx")
-		; // ignore this
+		p.skip_spaces(); // ignore this
+
+	else if (name == "prettyref")
+		p.skip_spaces(); // ignore this
+
+	else if (name == "varioref")
+		p.skip_spaces(); // ignore this
 
 	else if (name == "verbatim")
-		; // ignore this
+		p.skip_spaces(); // ignore this
 
-	else if (name == "color")
+	else if (name == "url")
+		p.skip_spaces(); // ignore this
+
+	else if (name == "color") {
 		// with the following command this package is only loaded when needed for
 		// undefined colors, since we only support the predefined colors
 		h_preamble << "\\@ifundefined{definecolor}\n {\\usepackage{color}}{}\n";
+		p.skip_spaces();
+	}
 
 	else if (name == "graphicx")
-		; // ignore this
+		p.skip_spaces(); // ignore this
 
 	else if (name == "setspace")
-		; // ignore this
+		p.skip_spaces(); // ignore this
 
 	else if (name == "geometry")
-		; // Ignore this, the geometry settings are made by the \geometry
+		p.skip_spaces(); // Ignore this, the geometry settings are made by the \geometry
 		  // command. This command is handled below.
 
 	else if (is_known(name, known_languages)) {
@@ -378,7 +407,9 @@ void handle_package(Parser &p, string const & name, string const & opts,
 		else
 			h_language = name;
 		h_quotes_language = h_language;
+		p.skip_spaces();
 	}
+
 	else if (name == "natbib") {
 		h_cite_engine = "natbib_authoryear";
 		vector<string>::iterator it =
@@ -392,9 +423,14 @@ void handle_package(Parser &p, string const & name, string const & opts,
 				options.erase(it);
 			}
 		}
+		p.skip_spaces();
 	}
-	else if (name == "jurabib")
+
+	else if (name == "jurabib") {
 		h_cite_engine = "jurabib";
+		p.skip_spaces();
+	}
+
 	else if (!in_lyx_preamble) {
 		if (options.empty())
 			h_preamble << "\\usepackage{" << name << "}";
@@ -416,7 +452,7 @@ void handle_package(Parser &p, string const & name, string const & opts,
 void end_preamble(ostream & os, TextClass const & /*textclass*/)
 {
 	os << "#LyX file created by tex2lyx " << PACKAGE_VERSION << "\n"
-	   << "\\lyxformat 249\n"
+	   << "\\lyxformat 252\n"
 	   << "\\begin_document\n"
 	   << "\\begin_header\n"
 	   << "\\textclass " << h_textclass << "\n";
