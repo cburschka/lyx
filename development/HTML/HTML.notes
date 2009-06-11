@@ -36,10 +36,10 @@ These insets work but still need work:
 		BibTeXInfo::label() method. A similar strategy will work for author-year and
 		the like, but calculating labels will be more complex---unless we just parse
 		the bbl file, which of course is the only fully general solution.
+	InsetFlex: I think this one is OK, but it needs some testing.
 
 These insets do not work but should be completely straightforward:
-	Caption, Flex (uses collapsable)
-
+	Caption
 
 May need to make use here of TocWidget::itemInset, which should then be moved
 to TocBackend.
@@ -68,9 +68,9 @@ These do not yet work and need some attention:
 		should we get it? Probably some validation thing again, where labels tell us where 
 		they are. Alternatively, we could parse the aux file.
 	InsetTabular: This shouldn't be too hard, but will need doing.
-	InsetTOC: Here again, validation might do the trick, but I'm not sure. Or perhaps some
-		kind of post-processing? Another option, maybe the best option, would be just to use
-		the information we already have in the TOC.
+	InsetTOC: We should just be able to use what we have in the TOC. To get links to
+		work, though, we'll need to co-ordinate the writing of anchors in the sections,
+		which won't actually happen until later.
 	InsetVSpace: This will be easy, once we have the Length::asHTML() method.
 	InsetWrap: This should be simple enough, probably a div and some CSS, but I'm not sure
 		precisely what this is supposed to do.
