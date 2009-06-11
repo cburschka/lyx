@@ -224,11 +224,12 @@ ParagraphList::const_iterator makeBibliography(Buffer const & buf,
 				ParagraphList::const_iterator const & pbegin,
 				ParagraphList::const_iterator const & pend) 
 {
-	os << "<div class='bibliography'>\n" 
-	   << "<h2 class='bibliography'>" 
+	os << "<h2 class='bibliography'>" 
 	   << pbegin->layout().labelstring() 
-	   << "</h2>\n";
-	makeParagraphs(buf, os, runparams, paragraphs, pbegin, pend);
+	   << "</h2>\n"
+	   << "<div class='bibliography'>\n";
+			makeParagraphs(buf, os, runparams, paragraphs, pbegin, pend);
+	os << "</div>";
 	return pend;
 }
 
