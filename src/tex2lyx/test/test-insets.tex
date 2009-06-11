@@ -9,7 +9,7 @@
 \usepackage{amsmath}
 
 \usepackage{verbatim}
-
+\usepackage[numbers]{natbib}
 \usepackage{varioref}
 \usepackage{prettyref}
 
@@ -40,6 +40,34 @@ reference~\pageref{lab:test}, but also equation
 reference~\eqref{lab:test} (from amsmath package), or varioref's
 equivalents~\vref{lab:test} and~\vpageref{lab:test}, without
 forgetting pretty references like~\prettyref{lab:test}.
+
+\section{Cites}
+
+Let's start with simple things: a \textbackslash{}cite: \citet{article-crossref}
+and two \textbackslash{}cites: \citep{whole-set,article-crossref}
+
+Now the natbib things:
+
+\textbackslash{}citet: \citet[before][after]{article-crossref} \textbackslash{}citet{*}:
+\citet*[before][after]{article-crossref} \textbackslash{}Citet: \Citet[before][after]{article-crossref}
+\textbackslash{}Citet{*}: \Citet*[before][after]{article-crossref}
+
+\textbackslash{}citep: \citep{article-crossref}
+
+\textbackslash{}citealt: \citealt{article-crossref}
+
+\textbackslash{}citealp: \citealp{article-crossref}
+
+\textbackslash{}citeauthor: \citeauthor{article-crossref}
+
+\textbackslash{}citeyear: \citeyear{article-crossref}
+
+\textbackslash{}citeyearpar: \citeyearpar{article-crossref}
+
+\textbackslash{}nocite: \nocite{article-crossref}
+
+\bibliographystyle{unsrt}
+\bibliography{xampl}
 
 \section{Input files}
 
