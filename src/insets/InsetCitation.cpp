@@ -417,8 +417,8 @@ docstring InsetCitation::toolTip(BufferView const & bv, int, int) const
 
 docstring InsetCitation::generateLabel() const
 {
-	docstring const before = getParam("before");
-	docstring const after  = getParam("after");
+	docstring const & before = getParam("before");
+	docstring const & after  = getParam("after");
 
 	docstring label;
 	CiteEngine const engine = buffer().params().citeEngine();
@@ -500,6 +500,47 @@ int InsetCitation::docbook(odocstream & os, OutputParams const &) const
 	os << from_ascii("<citation>")
 	   << cleanupWhitespace(getParam("key"))
 	   << from_ascii("</citation>");
+	return 0;
+}
+
+
+int InsetCitation::xhtml(odocstream & os, OutputParams const &) const
+{
+	BiblioInfo const & bi = buffer().masterBibInfo();
+	docstring const & keyList = getParam("key");
+	if (keyList.empty())
+		return 0;
+
+	// FIXME We shuld do a better job outputing different things for the
+	// different citation styles.	For now, we use square brackets for every
+	// case.
+	os << '[';
+	docstring const & before = getParam("before");
+	if (!before.empty())
+		os << before << " ";
+
+	vector<docstring> keys = getVectorFromString(keyList);
+	vector<docstring>::const_iterator it = keys.begin();
+	vector<docstring>::const_iterator en = keys.end();
+	bool first = true;
+	for (; it != en; ++it) {
+		BiblioInfo::const_iterator const bt = bi.find(*it);
+		if (bt == bi.end())
+			continue;
+		BibTeXInfo const & bibinfo = bt->second;
+		if (!first) {
+			os << ", ";
+			first = false;
+		}
+		docstring const & label = bibinfo.label();
+		docstring const & target = label.empty() ? *it : label;
+		os << "<a href='#" << *it << "'>" << target << "</a>";
+	}
+
+	docstring const & after = getParam("after");
+	if (!after.empty())
+		os << ", " << after;
+	os << "]\n";
 	return 0;
 }
 
