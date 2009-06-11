@@ -17,6 +17,14 @@ These insets do nothing for XHTML:
 	ERT, OptArg, Phantom
 
 These insets work but still need work:
+	InsetBibtex: There are a few issues here. One is that the output is not very
+		nice. This will be solved, though, by a patch of mine I seem to have forgotten
+		to finish. To get output that accorded with the BibTeX style, of course, we'd 
+		have to parse the bbl file. I don't know if that's worth it.
+		Another issue concerns cross-references. At the moment, we simply use the
+		xref information for every entry, rather than listing the xref separately and
+		then referencing it. That should not be terribly hard, but it would take a bit
+		of work.
 	InsetBox: We need a Length::asHTML() method and the like, but it basically works.
 		though the CSS isn't there yet.
 	InsetCitation: This has two limitations as of 11 VI 2009. The first is that we
@@ -37,10 +45,6 @@ May need to make use here of TocWidget::itemInset, which should then be moved
 to TocBackend.
 
 These do not yet work and need some attention:
-	InsetBibtex: We should be able to collect the keys of references in
-		validate() and then use our parsed information to output some sort of
-		bibliography. Formatting is another question, but here again we could
-		try parsing the bbl file.
 	InsetCommand: By default does nothing. That may be right?
 	InsetExternal: I don't understand these so am not sure what to do.
 	InsetFloat: This will need some work, again because I do not really understand
