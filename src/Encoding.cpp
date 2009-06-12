@@ -436,8 +436,11 @@ char_type Encodings::fromLaTeXCommand(docstring const & cmd, bool & combining)
 }
 
 
-docstring Encodings::fromLaTeXCommand(docstring const & cmd, docstring & rem)
+docstring Encodings::fromLaTeXCommand(docstring const & cmd, docstring & rem,
+				      int cmdtype)
 {
+	bool const mathmode = cmdtype & MATH_CMD;
+	bool const textmode = cmdtype & TEXT_CMD;
 	docstring symbols;
 	size_t i = 0;
 	size_t const cmdend = cmd.size();
@@ -468,8 +471,10 @@ docstring Encodings::fromLaTeXCommand(docstring const & cmd, docstring & rem)
 		size_t unicmd_size = 0;
 		char_type c = 0;
 		for (; it != uniend; ++it) {
-			docstring const math = it->second.mathcommand;
-			docstring const text = it->second.textcommand;
+			docstring const math = mathmode ? it->second.mathcommand
+							: docstring();
+			docstring const text = textmode ? it->second.textcommand
+							: docstring();
 			size_t cur_size = max(math.size(), text.size());
 			// The current math or text unicode command cannot
 			// match, or we already matched a longer one
