@@ -173,10 +173,9 @@ int InsetNewline::docbook(odocstream & os, OutputParams const &) const
 }
 
 
-int InsetNewline::xhtml(odocstream & os, OutputParams const &) const
+void InsetNewline::xhtml(odocstream & os, OutputParams const &) const
 {
 	os << "<br />\n";
-	return 0;
 }
 
 

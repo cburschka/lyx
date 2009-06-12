@@ -365,12 +365,6 @@ int InsetPhantom::docbook(odocstream & os, OutputParams const & runparams) const
 }
 
 
-int InsetPhantom::xhtml(odocstream &, OutputParams const &) const
-{
-	return 0; // makes no sense for HTML
-}
-
-
 docstring InsetPhantom::contextMenu(BufferView const &, int, int) const
 {
 	return from_ascii("context-phantom");

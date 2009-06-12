@@ -484,7 +484,7 @@ int InsetBox::docbook(odocstream & os, OutputParams const & runparams) const
 }
 
 
-int InsetBox::xhtml(odocstream & os, OutputParams const & runparams) const
+void InsetBox::xhtml(odocstream & os, OutputParams const & runparams) const
 {
 	string style;
 	if (!params_.width.empty())
@@ -498,7 +498,6 @@ int InsetBox::xhtml(odocstream & os, OutputParams const & runparams) const
 	os << ">\n";
 	InsetText::xhtml(os, runparams);
 	os << "</span>\n";
-	return 0;
 }
 
 

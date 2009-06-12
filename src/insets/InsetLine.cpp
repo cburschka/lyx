@@ -85,10 +85,9 @@ int InsetLine::docbook(odocstream & os, OutputParams const &) const
 }
 
 
-int InsetLine::xhtml(odocstream & os, OutputParams const &) const
+void InsetLine::xhtml(odocstream & os, OutputParams const &) const
 {
 	os << "<hr />\n";
-	return 0;
 }
 
 

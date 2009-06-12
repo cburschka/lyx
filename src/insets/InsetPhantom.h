@@ -83,8 +83,8 @@ private:
 	int plaintext(odocstream &, OutputParams const &) const;
 	///
 	int docbook(odocstream &, OutputParams const &) const;
-	/// Does nothing.
-	int xhtml(odocstream &, OutputParams const &) const;
+	/// Makes no sense fof XHTML.
+	void xhtml(odocstream &, OutputParams const &) const { return; }
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///

@@ -58,7 +58,7 @@ private:
 	int docbook(odocstream &, OutputParams const &) const;
 	/// At the moment, this does nothing. See development/HTML.notes
 	/// for some remarks on what could be done.
-	int xhtml(odocstream &, OutputParams const &) const { return 0; };
+	void xhtml(odocstream &, OutputParams const &) const { return; }
 	///
 	int latex(odocstream &, OutputParams const &) const;
 	///
@@ -104,6 +104,8 @@ public:
 	static bool isCompatibleCommand(std::string const & s);
 	///
 	int latex(odocstream &, OutputParams const &) const;
+	/// Does nothing yet.
+	void xhtml(odocstream &, OutputParams const &) const { return; }
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///

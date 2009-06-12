@@ -247,10 +247,9 @@ int InsetNewpage::docbook(odocstream & os, OutputParams const &) const
 }
 
 
-int InsetNewpage::xhtml(odocstream & os, OutputParams const &) const
+void InsetNewpage::xhtml(odocstream & os, OutputParams const &) const
 {
 	os << "<br />\n";
-	return 0;
 }
 
 

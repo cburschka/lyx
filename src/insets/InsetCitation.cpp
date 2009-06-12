@@ -504,12 +504,12 @@ int InsetCitation::docbook(odocstream & os, OutputParams const &) const
 }
 
 
-int InsetCitation::xhtml(odocstream & os, OutputParams const &) const
+void InsetCitation::xhtml(odocstream & os, OutputParams const &) const
 {
 	BiblioInfo const & bi = buffer().masterBibInfo();
 	docstring const & keyList = getParam("key");
 	if (keyList.empty())
-		return 0;
+		return;
 
 	// FIXME We shuld do a better job outputing different things for the
 	// different citation styles.	For now, we use square brackets for every
@@ -541,7 +541,6 @@ int InsetCitation::xhtml(odocstream & os, OutputParams const &) const
 	if (!after.empty())
 		os << ", " << after;
 	os << "]\n";
-	return 0;
 }
 
 

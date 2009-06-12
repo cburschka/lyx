@@ -266,7 +266,7 @@ void InsetBibitem::updateLabels(ParIterator const &)
 }
 
 
-int InsetBibitem::xhtml(odocstream & os, OutputParams const &) const
+void InsetBibitem::xhtml(odocstream & os, OutputParams const &) const
 {
 	os << "<a name='" << html::htmlize(getParam("key")) << "'></a>";
 	os << "<span class='biblabel'>" << bibLabel() << "</span> "; 

@@ -368,10 +368,9 @@ int InsetText::docbook(odocstream & os, OutputParams const & runparams) const
 }
 
 
-int InsetText::xhtml(odocstream & os, OutputParams const & runparams) const
+void InsetText::xhtml(odocstream & os, OutputParams const & runparams) const
 {
 	xhtmlParagraphs(paragraphs(), buffer(), os, runparams);
-	return 0;
 }
 
 

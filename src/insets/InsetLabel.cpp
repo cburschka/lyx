@@ -23,6 +23,7 @@
 #include "FuncStatus.h"
 #include "InsetIterator.h"
 #include "LyXFunc.h"
+#include "output_xhtml.h"
 #include "ParIterator.h"
 #include "sgml.h"
 #include "Text.h"
@@ -218,11 +219,9 @@ int InsetLabel::docbook(odocstream & os, OutputParams const & runparams) const
 }
 
 
-int InsetLabel::xhtml(odocstream & os, OutputParams const & /*runparams*/) const
+void InsetLabel::xhtml(odocstream & os, OutputParams const & /*runparams*/) const
 {
-	// FIXME Does this need to be escaped?
-	os << "<a name=\"" << getParam("name") << "\"></a>";
-	return 0;
+	os << "<a name=\"" << html::htmlize(getParam("name")) << "\"></a>";
 }
 
 } // namespace lyx

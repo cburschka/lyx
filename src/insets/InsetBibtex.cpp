@@ -911,7 +911,7 @@ namespace {
 }
 
 
-int InsetBibtex::xhtml(odocstream & os, OutputParams const &) const
+void InsetBibtex::xhtml(odocstream & os, OutputParams const &) const
 {
 	// We are going to collect all the citation keys used in the document,
 	// getting them from the TOC.
@@ -929,7 +929,7 @@ int InsetBibtex::xhtml(odocstream & os, OutputParams const &) const
 			citekeys.push_back(*dit);
 	}
 	if (citekeys.empty())
-		return 0;
+		return;
 	sort(citekeys.begin(), citekeys.end());
 	unique(citekeys.begin(), citekeys.end());
 	// We now have a sorted, unique list of the keys used in this document.
@@ -974,7 +974,6 @@ int InsetBibtex::xhtml(odocstream & os, OutputParams const &) const
 	}
 		
 	os << "</div>\n";
-	return 0;
 }
 
 

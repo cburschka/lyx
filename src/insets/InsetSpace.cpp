@@ -680,7 +680,7 @@ int InsetSpace::docbook(odocstream & os, OutputParams const &) const
 }
 
 
-int InsetSpace::xhtml(odocstream & os, OutputParams const &) const
+void InsetSpace::xhtml(odocstream & os, OutputParams const &) const
 {
 	switch (params_.kind) {
 	case InsetSpaceParams::NORMAL:
@@ -722,7 +722,6 @@ int InsetSpace::xhtml(odocstream & os, OutputParams const &) const
 		// FIXME Probably we could do some sort of blank span?
 		os << '\n';
 	}
-	return 0;
 }
 
 

@@ -129,7 +129,7 @@ public:
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	///
-	int xhtml(odocstream &, OutputParams const &) const;
+	void xhtml(odocstream &, OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 	/// the string that is passed to the TOC

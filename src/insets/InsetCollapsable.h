@@ -146,7 +146,7 @@ public:
 	/// It will rarely be right to call this from subclasses, due
 	/// to the fact that it steps counters, etc. Instead, call
 	/// InsetText::xhtml().
-	int xhtml(odocstream &, OutputParams const &) const;
+	void xhtml(odocstream &, OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures &) const;
 	///

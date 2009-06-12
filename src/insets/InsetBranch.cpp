@@ -235,10 +235,10 @@ int InsetBranch::docbook(odocstream & os,
 }
 
 
-int InsetBranch::xhtml(odocstream & os,
-			 OutputParams const & runparams) const
+void InsetBranch::xhtml(odocstream & os, OutputParams const & rp) const
 {
-	return isBranchSelected() ?  InsetText::xhtml(os, runparams) : 0;
+	if (isBranchSelected())
+		 InsetText::xhtml(os, rp);
 }
 
 

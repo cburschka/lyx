@@ -39,6 +39,8 @@ public:
 	InsetCode lyxCode() const { return NOMENCL_CODE; }
 	///
 	int docbook(odocstream &, OutputParams const &) const;
+	/// Does nothing at the moment.
+	void xhtml(odocstream &, OutputParams const &) const { return; }
 	///
 	int docbookGlossary(odocstream &) const;
 	///
@@ -63,6 +65,8 @@ public:
 	void validate(LaTeXFeatures & features) const;
 	///
 	int docbook(odocstream &, OutputParams const &) const;
+	/// Does nothing at the moment.
+	void xhtml(odocstream &, OutputParams const &) const { return; }
 	///
 	InsetCode lyxCode() const;
 	///

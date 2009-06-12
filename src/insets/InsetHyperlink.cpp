@@ -181,7 +181,7 @@ int InsetHyperlink::docbook(odocstream & os, OutputParams const &) const
 }
 
 
-int InsetHyperlink::xhtml(odocstream & os, OutputParams const &) const
+void InsetHyperlink::xhtml(odocstream & os, OutputParams const &) const
 {
 	os << "<a href=\""
 			// FIXME Do we need to do more escaping than this?
@@ -189,7 +189,6 @@ int InsetHyperlink::xhtml(odocstream & os, OutputParams const &) const
 	   << "\">"
 	   << getParam("name")
 	   << "</a>";
-	return 0;
 }
 
 

@@ -78,7 +78,7 @@ private:
 	bool showInsetDialog(BufferView *) const;
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
-	// Update the counters of this inset and of its contents
+	/// Update the counters of this inset and of its contents
 	void updateLabels(ParIterator const &);
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
