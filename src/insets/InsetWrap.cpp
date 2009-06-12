@@ -233,6 +233,7 @@ docstring InsetWrap::xhtml(odocstream &, OutputParams const & rp) const
 	docstring const deferred = InsetText::xhtml(os, rp);
 	retval += os.str() + from_ascii("</div>");
 	retval += deferred;
+	return retval;
 }
 
 
