@@ -312,9 +312,10 @@ int InsetQuotes::docbook(odocstream & os, OutputParams const &) const
 }
 
 
-void InsetQuotes::xhtml(odocstream & os, OutputParams const & op) const
+docstring InsetQuotes::xhtml(odocstream & os, OutputParams const & op) const
 {
 	docbook(os, op);
+	return docstring();
 }
 
 

@@ -157,8 +157,9 @@ public:
 				 OutputParams const & runparams,
 				 Font const & outerfont,
 				 pos_type initial = 0) const;
-	/// 
-	void simpleLyXHTMLOnePar(Buffer const & buf,
+	/// \return any material that has had to be deferred until after the
+	/// paragraph has closed.
+	docstring simpleLyXHTMLOnePar(Buffer const & buf,
 				 odocstream &,
 				 OutputParams const & runparams,
 				 Font const & outerfont,

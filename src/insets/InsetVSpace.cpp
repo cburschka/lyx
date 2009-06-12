@@ -233,7 +233,7 @@ int InsetVSpace::docbook(odocstream & os, OutputParams const &) const
 }
 
 
-void InsetVSpace::xhtml(odocstream & os, OutputParams const &) const
+docstring InsetVSpace::xhtml(odocstream & os, OutputParams const &) const
 {
 	string len = space_.asHTMLLength();
 	if (len.empty())
@@ -241,6 +241,7 @@ void InsetVSpace::xhtml(odocstream & os, OutputParams const &) const
 		os << "<br />\n";
 	else
 		os << "<div style='height:" << from_ascii(len) << "'></div>\n";
+	return docstring();
 }
 
 

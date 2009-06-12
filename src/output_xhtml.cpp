@@ -206,12 +206,14 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 		if (par != pbegin)
 			os << '\n';
 		bool const opened = openTag(os, lay);
-		par->simpleLyXHTMLOnePar(buf, os, runparams, 
+		docstring const deferred = par->simpleLyXHTMLOnePar(buf, os, runparams,
 				outerFont(distance(paragraphs.begin(), par), paragraphs));
 		if (opened) {
 			closeTag(os, lay);
 			os << '\n';
 		}
+		if (!deferred.empty())
+			os << deferred << '\n';
 	}
 	return pend;
 }

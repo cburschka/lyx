@@ -171,6 +171,12 @@ int InsetIndex::docbook(odocstream & os, OutputParams const & runparams) const
 }
 
 
+docstring InsetIndex::xhtml(odocstream &, OutputParams const &) const
+{
+	return docstring();
+}
+
+
 bool InsetIndex::showInsetDialog(BufferView * bv) const
 {
 	bv->showDialog("index", params2string(params_),
@@ -541,5 +547,9 @@ bool InsetPrintIndex::hasSettings() const
 	return buffer().masterBuffer()->params().use_indices;
 }
 
+docstring InsetPrintIndex::xhtml(odocstream &, OutputParams const &) const
+{
+	return docstring();
+}
 
 } // namespace lyx

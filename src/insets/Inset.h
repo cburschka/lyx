@@ -296,7 +296,7 @@ public:
 	/// docbook output
 	virtual int docbook(odocstream & os, OutputParams const &) const;
 	/// LyX HTML output
-	virtual void xhtml(odocstream & os, OutputParams const &) const;
+	virtual docstring xhtml(odocstream & os, OutputParams const &) const;
 	/// the string that is passed to the TOC
 	virtual void tocString(odocstream &) const {}
 

@@ -329,9 +329,10 @@ int Inset::docbook(odocstream &, OutputParams const &) const
 }
 
 
-void Inset::xhtml(odocstream & od, OutputParams const &) const
+docstring Inset::xhtml(odocstream & od, OutputParams const &) const
 {
 	od << "[[Inset: " << from_ascii(insetName(lyxCode())) << "]]";
+	return docstring();
 }
 
 bool Inset::directWrite() const

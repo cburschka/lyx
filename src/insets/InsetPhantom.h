@@ -84,7 +84,7 @@ private:
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	/// Makes no sense fof XHTML.
-	void xhtml(odocstream &, OutputParams const &) const { return; }
+	docstring xhtml(odocstream &, OutputParams const &) const;
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///

@@ -58,7 +58,7 @@ private:
 	int docbook(odocstream &, OutputParams const &) const;
 	/// At the moment, this does nothing. See development/HTML.notes
 	/// for some remarks on what could be done.
-	void xhtml(odocstream &, OutputParams const &) const { return; }
+	docstring xhtml(odocstream &, OutputParams const &) const;
 	///
 	int latex(odocstream &, OutputParams const &) const;
 	///
@@ -105,7 +105,7 @@ public:
 	///
 	int latex(odocstream &, OutputParams const &) const;
 	/// Does nothing yet.
-	void xhtml(odocstream &, OutputParams const &) const { return; }
+	docstring xhtml(odocstream &, OutputParams const &) const;
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///

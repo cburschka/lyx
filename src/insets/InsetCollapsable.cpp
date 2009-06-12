@@ -872,13 +872,11 @@ int InsetCollapsable::docbook(odocstream & os, OutputParams const & runparams) c
 }
 
 
-void InsetCollapsable::xhtml(odocstream & os, OutputParams const & runparams) const
+docstring InsetCollapsable::xhtml(odocstream & os, OutputParams const & runparams) const
 {
 	InsetLayout const & il = getLayout();
-	if (undefined()) {
-		InsetText::xhtml(os, runparams);
-		return;
-	}
+	if (undefined())
+		return InsetText::xhtml(os, runparams);
 
 	bool const opened = html::openTag(os, il.htmltag(), il.htmlattr());
 	if (!il.counter().empty()) {
@@ -891,11 +889,12 @@ void InsetCollapsable::xhtml(odocstream & os, OutputParams const & runparams) co
 	bool innertag_opened = false;
 	if (!il.htmlinnertag().empty())
 		innertag_opened = html::openTag(os, il.htmlinnertag(), il.htmlinnerattr());
-	InsetText::xhtml(os, runparams);
+	docstring deferred = InsetText::xhtml(os, runparams);
 	if (innertag_opened)
 		html::closeTag(os, il.htmlinnertag());
 	if (opened)
 		html::closeTag(os, il.htmltag());
+	return deferred;
 }
 
 

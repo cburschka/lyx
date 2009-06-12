@@ -65,7 +65,7 @@ public:
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	///
-	void xhtml(odocstream &, OutputParams const &) const;
+	docstring xhtml(odocstream &, OutputParams const &) const;
 	/// the string that is passed to the TOC
 	void tocString(odocstream &) const;
 	///

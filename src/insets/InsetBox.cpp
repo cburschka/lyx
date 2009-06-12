@@ -27,6 +27,7 @@
 #include "TextClass.h"
 
 #include "support/debug.h"
+#include "support/docstream.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/Translator.h"
@@ -484,7 +485,7 @@ int InsetBox::docbook(odocstream & os, OutputParams const & runparams) const
 }
 
 
-void InsetBox::xhtml(odocstream & os, OutputParams const & runparams) const
+docstring InsetBox::xhtml(odocstream &, OutputParams const & runparams) const
 {
 	string style;
 	if (!params_.width.empty())
@@ -492,12 +493,16 @@ void InsetBox::xhtml(odocstream & os, OutputParams const & runparams) const
 	if (!params_.height.empty())
 		style += ("height: " + params_.height.asHTMLString() + ";");
 	
-	os << from_ascii("<span class='" + params_.type + "'");
+	docstring retval = from_ascii("<div class='" + params_.type + "'");
 	if (!style.empty())
-		os << from_ascii(" style='" + style + "'");
-	os << ">\n";
-	InsetText::xhtml(os, runparams);
-	os << "</span>\n";
+		retval += from_ascii(" style='" + style + "'");
+	retval += ">\n";
+	odocstringstream os;
+	docstring defer = InsetText::xhtml(os, runparams);
+	retval += os.str();
+	retval += "</div>\n";
+	retval += defer + "\n";
+	return retval;
 }
 
 

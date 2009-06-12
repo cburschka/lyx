@@ -57,6 +57,11 @@ int InsetOptArg::docbook(odocstream &, OutputParams const &) const
 }
 
 
+docstring InsetOptArg::xhtml(odocstream &, OutputParams const &) const
+{
+	return docstring();
+}
+
 int InsetOptArg::latexOptional(odocstream & os,
 			       OutputParams const & runparams) const
 {

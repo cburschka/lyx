@@ -219,9 +219,10 @@ int InsetLabel::docbook(odocstream & os, OutputParams const & runparams) const
 }
 
 
-void InsetLabel::xhtml(odocstream & os, OutputParams const & /*runparams*/) const
+docstring InsetLabel::xhtml(odocstream & os, OutputParams const &) const
 {
 	os << "<a name=\"" << html::htmlize(getParam("name")) << "\"></a>";
+	return docstring();
 }
 
 } // namespace lyx

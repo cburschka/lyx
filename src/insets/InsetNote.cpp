@@ -326,12 +326,12 @@ int InsetNote::docbook(odocstream & os, OutputParams const & runparams_in) const
 }
 
 
-void InsetNote::xhtml(odocstream & os, OutputParams const & rp) const
+docstring InsetNote::xhtml(odocstream & os, OutputParams const & rp) const
 {
 	if (params_.type == InsetNoteParams::Note)
-		return;
+		return docstring();
 
-	InsetCollapsable::xhtml(os, rp);
+	return InsetCollapsable::xhtml(os, rp);
 }
 
 

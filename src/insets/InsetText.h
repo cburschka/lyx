@@ -81,7 +81,7 @@ public:
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	///
-	void xhtml(odocstream &, OutputParams const &) const;
+	docstring xhtml(odocstream &, OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 

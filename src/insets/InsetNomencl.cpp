@@ -98,6 +98,12 @@ int InsetNomencl::docbook(odocstream & os, OutputParams const &) const
 }
 
 
+docstring InsetNomencl::xhtml(odocstream &, OutputParams const &) const
+{
+	return docstring();
+}
+
+
 int InsetNomencl::docbookGlossary(odocstream & os) const
 {
 	os << "<glossentry id=\"" << nomenclature_entry_id << "\">\n"
@@ -191,6 +197,11 @@ bool InsetPrintNomencl::getStatus(Cursor & cur, FuncRequest const & cmd,
 	}
 }
 
+
+docstring InsetPrintNomencl::xhtml(odocstream &, OutputParams const &) const
+{
+	return docstring();
+}
 
 
 int InsetPrintNomencl::docbook(odocstream & os, OutputParams const &) const

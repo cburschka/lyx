@@ -291,7 +291,7 @@ int InsetSpecialChar::docbook(odocstream & os, OutputParams const &) const
 }
 
 
-void InsetSpecialChar::xhtml(odocstream & os, OutputParams const &) const
+docstring InsetSpecialChar::xhtml(odocstream & os, OutputParams const &) const
 {
 	switch (kind_) {
 	case HYPHENATION:
@@ -313,6 +313,7 @@ void InsetSpecialChar::xhtml(odocstream & os, OutputParams const &) const
 		os << '-';
 		break;
 	}
+	return docstring();
 }
 
 

@@ -2349,12 +2349,14 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 }
 
 
-void Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
+docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 				    odocstream & os,
 				    OutputParams const & runparams,
 				    Font const & outerfont,
 				    pos_type initial) const
 {
+	docstring retval;
+
 	// FIXME We really need to manage the tag nesting here.
 	// Probably in the same sort of way as in output_xhtml.
 	bool emph_flag = false;
@@ -2395,7 +2397,7 @@ void Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 		// FIXME Other such tags? 
 
 		if (Inset const * inset = getInset(i)) {
-			inset->xhtml(os, runparams);
+			retval += inset->xhtml(os, runparams);
 		} else {
 			char_type c = d->text_[i];
 
@@ -2429,10 +2431,7 @@ void Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 	if (bold_flag)
 		os << "</strong>";
 
-// 	if (style.free_spacing)
-// 		os << '\n';
-// 	if (style.pass_thru && !d->onlyText(buf, outerfont, initial))
-// 		os << "<![CDATA[";
+	return retval;
 }
 
 

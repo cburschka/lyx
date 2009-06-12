@@ -52,7 +52,7 @@ public:
 	///
 	void validate(LaTeXFeatures &) const;
 	///
-	void xhtml(odocstream &, OutputParams const &) const;
+	docstring xhtml(odocstream &, OutputParams const &) const;
 	///
 	static ParamInfo const & findInfo(std::string const &);
 	///
