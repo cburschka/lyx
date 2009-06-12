@@ -91,6 +91,10 @@ What's new
 
 - Fix display of BibTeX entries in the info field of the citation
   dialog by only converting text mode latex macros to unicode points.
+  
+- Convert LaTeX macros to proper unicode characters for the display
+  of authors/editors on the citation inset button.
+
 
 * DOCUMENTATION AND LOCALIZATION
 
