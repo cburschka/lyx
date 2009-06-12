@@ -294,6 +294,15 @@ InsetLayout Wrap
 	  Size                Small
 	EndFont
 	MultiPar              true
+	HTMLStyle
+		span.wrap { 
+			float: right;
+			width: 40%;
+			border: 2px solid black;
+			padding: 1ex;
+			margin: 1ex;
+		}
+	EndHTMLStyle
 End
 
 InsetLayout URL

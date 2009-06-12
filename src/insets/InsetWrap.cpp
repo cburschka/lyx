@@ -222,6 +222,20 @@ int InsetWrap::docbook(odocstream & os, OutputParams const & runparams) const
 }
 
 
+docstring InsetWrap::xhtml(odocstream &, OutputParams const & rp) const
+{
+	string const len = params_.width.asHTMLString();
+	docstring retval = from_ascii("<div class='wrap'");
+	if (!len.empty())
+		retval += from_ascii(" style='width: " + len + ";");
+	retval += from_ascii("'>");
+	odocstringstream os;
+	docstring const deferred = InsetText::xhtml(os, rp);
+	retval += os.str() + from_ascii("</div>");
+	retval += deferred;
+}
+
+
 bool InsetWrap::insetAllowed(InsetCode code) const
 {
 	switch(code) {

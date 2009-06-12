@@ -12,7 +12,7 @@ Known issues:
 These insets are basically done, though there are probably issues here and there,
 	and there are even some FIXMEs:
 	Bibitem, Branch, Collapsable, Footnote, Hyperlink, Info, Label, Line, 
-	Marginal, Note, Newline, Newpage, Quotes, Space, SpecialChar
+	Marginal, Note, Newline, Newpage, Quotes, Space, SpecialChar, Wrap
 
 These insets do nothing for XHTML:
 	ERT, OptArg, Phantom
@@ -70,8 +70,6 @@ These do not yet work and need some attention:
 	InsetTOC: We should just be able to use what we have in the TOC. To get links to
 		work, though, we'll need to co-ordinate the writing of anchors in the sections,
 		which won't actually happen until later.
-	InsetWrap: This should be simple enough, probably a div and some CSS, but I'm not sure
-		precisely what this is supposed to do.
 
 MATH
 	Regarding math, the view seems to be that we should in the first instance just use what
