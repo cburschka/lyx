@@ -327,6 +327,11 @@ End
 
 InsetLayout Info
 	Decoration	      conglomerate
+	HTMLTag           span
+	HTMLAttr          class='info'
+	HTMLStyle
+		span.info { font-family: sans-serif; }
+	EndHTMLStyle
 End
 
 InsetLayout Info:menu
@@ -339,6 +344,11 @@ InsetLayout Info:menu
 	Font
 	  Family              sans
 	EndFont
+	HTMLTag           span
+	HTMLAttr          "class='info menu'"
+	HTMLStyle
+		span.menu { font-family: sans-serif; }
+	EndHTMLStyle
 End
 
 InsetLayout Info:shortcut
@@ -351,6 +361,11 @@ InsetLayout Info:shortcut
 	Font
 	  Family              sans
 	EndFont
+	HTMLTag           span
+	HTMLAttr          "class='info shortcut'"
+	HTMLStyle
+		span.shortcut { font-family: sans-serif; }
+	EndHTMLStyle
 End
 
 InsetLayout Info:shortcuts
@@ -363,6 +378,11 @@ InsetLayout Info:shortcuts
 	Font
 	  Family              sans
 	EndFont
+	HTMLTag           span
+	HTMLAttr          "class='info shortcut'"
+	HTMLStyle
+		span.shortcut { font-family: sans-serif; }
+	EndHTMLStyle
 End
 
 InsetLayout Box

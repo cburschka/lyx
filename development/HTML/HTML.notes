@@ -11,8 +11,8 @@ Known issues:
 
 These insets are basically done, though there are probably issues here and there,
 	and there are even some FIXMEs:
-	Bibitem, Branch, Collapsable, Footnote, Hyperlink, Label, Line, Note, 
-	Newline, Newpage, Quotes, Space, SpecialChar
+	Bibitem, Branch, Collapsable, Footnote, Hyperlink, Info, Label, Line, 
+	Marginal, Note, Newline, Newpage, Quotes, Space, SpecialChar
 
 These insets do nothing for XHTML:
 	ERT, OptArg, Phantom
@@ -45,6 +45,7 @@ These insets do not work and are not yet scheduled to work:
 	InsetIndex and InsetPrintIndex: An "advanced" case. What really would be cool 
 		would be to collect all of these and then write the index as a series of links 
 		back to the occurrences. But not now.
+	InsetNomencl and InsetPrintNomencl: Also "advanced".
 
 May need to make use here of TocWidget::itemInset, which should then be moved
 to TocBackend.
@@ -61,10 +62,7 @@ These do not yet work and need some attention:
 	InsetInclude: I think we just want to include it, straightforwardly. Probably will
 		base this more on the latex() routine, then. Another possibility, maybe with a
 		flag of some sort, would be to do it as a separate file, to which we link.
-	InsetInfo: Probably skip it.
 	InsetListings: Probably just output it as <pre>.
-	InsetMarginal: Fine, but will need CSS.
-	InsetNomencl and InsetPrintNomencl: Also "advanced".
 	InsetRef: Presumably, this is an internal link. But what should the text be, and how
 		should we get it? Probably some validation thing again, where labels tell us where 
 		they are. Alternatively, we could parse the aux file.
