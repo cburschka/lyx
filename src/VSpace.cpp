@@ -493,6 +493,24 @@ docstring const VSpace::asGUIName() const
 }
 
 
+string VSpace::asHTMLLength() const 
+{
+	string result;
+	switch (kind_) {
+		case DEFSKIP:   result = "2ex"; break;
+		case SMALLSKIP: result = "1ex"; break;
+		case MEDSKIP:   result = "3ex"; break;
+		case BIGSKIP:   result = "5ex"; break;
+		case LENGTH: {
+			Length tmp = len_.len();
+			if (tmp.value() > 0)
+				result = tmp.asHTMLString();
+		}
+		case VFILL:     break;
+	}
+	return result;
+}
+
 int VSpace::inPixels(BufferView const & bv) const
 {
 	// Height of a normal line in pixels (zoom factor considered)

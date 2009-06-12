@@ -1,11 +1,12 @@
 The main output routines now more or less work.
 
 Known issues:
-- InsetLine normally appears in a standard environment, which puts <hr /> inside
+* InsetLine normally appears in a standard environment, which puts <hr /> inside
 	<p>, in violation of the DTD. I guess we could close the paragraph and then do
 	the <hr />, but isn't there a better solution? There's actually a LyX bug here, 
 	I think, since a line surely ought not appear in a normal paragraph?
-- The code that manages the nesting of tags is pretty primitive. It needs a lot
+* The same issue arises with InsetVSpace, unsurprisingly.
+* The code that manages the nesting of tags is pretty primitive. It needs a lot
 	of work.
 
 These insets are basically done, though there are probably issues here and there,
@@ -25,8 +26,7 @@ These insets work but still need work:
 		xref information for every entry, rather than listing the xref separately and
 		then referencing it. That should not be terribly hard, but it would take a bit
 		of work.
-	InsetBox: We need a Length::asHTML() method and the like, but it basically works.
-		though the CSS isn't there yet.
+	InsetBox: The CSS isn't there yet.
 	InsetCitation: This has two limitations as of 11 VI 2009. The first is that we
 		ignore the citation style and output square brackets, no matter what. The
 		second is that, with BibTeX, we simply use the BibTeX key as the citation
@@ -41,11 +41,15 @@ These insets work but still need work:
 These insets do not work but should be completely straightforward:
 	Caption
 
+These insets do not work and are not yet scheduled to work:
+	InsetIndex and InsetPrintIndex: An "advanced" case. What really would be cool 
+		would be to collect all of these and then write the index as a series of links 
+		back to the occurrences. But not now.
+
 May need to make use here of TocWidget::itemInset, which should then be moved
 to TocBackend.
 
 These do not yet work and need some attention:
-	InsetCommand: By default does nothing. That may be right?
 	InsetExternal: I don't understand these so am not sure what to do.
 	InsetFloat: This will need some work, again because I do not really understand
 		what these are meant to do. Presumably, we'll just use a div or something, but
@@ -57,9 +61,6 @@ These do not yet work and need some attention:
 	InsetInclude: I think we just want to include it, straightforwardly. Probably will
 		base this more on the latex() routine, then. Another possibility, maybe with a
 		flag of some sort, would be to do it as a separate file, to which we link.
-	InsetIndex and InsetPrintIndex: An "advanced" case. What really would be cool 
-		would be to collect all of these and then write the index as a series of links 
-		back to the occurrences. But not now.
 	InsetInfo: Probably skip it.
 	InsetListings: Probably just output it as <pre>.
 	InsetMarginal: Fine, but will need CSS.
@@ -71,7 +72,6 @@ These do not yet work and need some attention:
 	InsetTOC: We should just be able to use what we have in the TOC. To get links to
 		work, though, we'll need to co-ordinate the writing of anchors in the sections,
 		which won't actually happen until later.
-	InsetVSpace: This will be easy, once we have the Length::asHTML() method.
 	InsetWrap: This should be simple enough, probably a div and some CSS, but I'm not sure
 		precisely what this is supposed to do.
 

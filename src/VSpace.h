@@ -52,7 +52,7 @@ public:
 	/// return the length of this space
 	GlueLength const & length() const { return len_; }
 
-	// a flag that switches between \vspace and \vspace*
+	/// a flag that switches between \vspace and \vspace*
 	bool keep() const { return keep_; }
 	/// if set true, use \vspace* when type is not DEFSKIP
 	void setKeep(bool keep) { keep_ = keep; }
@@ -65,6 +65,8 @@ public:
 	std::string const asLyXCommand() const;
 	/// the latex representation
 	std::string const asLatexCommand(BufferParams const & params) const;
+	///
+	std::string asHTMLLength() const;
 	/// how it is seen in the LyX window
 	docstring const asGUIName() const;
 	/// the size of the space on-screen
