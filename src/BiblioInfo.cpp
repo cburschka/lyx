@@ -218,9 +218,9 @@ docstring const BibTeXInfo::getAbbreviatedAuthor() const
 		return authors;
 	}
 
-	docstring author = operator[]("author");
+	docstring author = convertLaTeXCommands(operator[]("author"));
 	if (author.empty()) {
-		author = operator[]("editor");
+		author = convertLaTeXCommands(operator[]("editor"));
 		if (author.empty())
 			return bib_key_;
 	}
