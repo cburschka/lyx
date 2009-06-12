@@ -21,7 +21,7 @@ Function UpdateModifiedFiles
  File /r "${PRODUCT_SOURCEDIR}\Resources\doc\sk"
  File /r "${PRODUCT_SOURCEDIR}\Resources\doc\uk"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\Customization.lyx"
- #File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Extended.lyx"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\Intro.lyx"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\LaTeXConfig.lyx"
