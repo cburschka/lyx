@@ -231,8 +231,14 @@ void GuiCitation::updateFormatting(CiteStyle currentStyle)
 
 	bool const isNocite = currentStyle == NOCITE;
 
-	fulllistCB->setEnabled(natbib_engine && haveSelection && !isNocite);
-	forceuppercaseCB->setEnabled(natbib_engine && haveSelection && !isNocite);
+	bool const isCiteyear =
+		currentStyle == CITEYEAR ||
+		currentStyle == CITEYEARPAR;
+
+	fulllistCB->setEnabled(natbib_engine && haveSelection && !isNocite
+		&& !isCiteyear);
+	forceuppercaseCB->setEnabled(natbib_engine && haveSelection
+		&& !isNocite && !isCiteyear);
 	textBeforeED->setEnabled(!basic_engine && haveSelection && !isNocite);
 	textBeforeLA->setEnabled(!basic_engine && haveSelection && !isNocite);
 	textAfterED->setEnabled(haveSelection && !isNocite);
