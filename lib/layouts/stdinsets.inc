@@ -76,6 +76,17 @@ InsetLayout Marginal
 	  Size                Small
 	EndFont
 	MultiPar              true
+	HTMLTag               span
+	HTMLAttr              class='marginal'
+	HTMLStyle
+		span.marginal {
+			border: 2px solid black; 
+			padding: 1ex; 
+			margin: 1ex; 
+			background-color: #F0F0F0; 
+			float:right;
+		}
+	EndHTMLStyle
 End
 
 InsetLayout Foot
