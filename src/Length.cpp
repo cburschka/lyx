@@ -110,6 +110,48 @@ string const Length::asLatexString() const
 }
 
 
+string const Length::asHTMLString() const
+{
+	ostringstream os;
+	switch (unit_) {
+	case PT:
+ 	case BP:
+	case DD:
+		// close enough
+		os << val_ << "pt";
+		break;
+ 	case MM:
+	case CM:
+	case PC:
+	case IN:
+	case EX:
+	case EM:
+		os << val_ << unit_name[unit_];
+		break;
+	case CC:
+		os << val_/12.0 << "pt";
+		break;
+ 	case MU:
+		os << val_/18.0 << "em";
+		break;
+	case PTW:
+	case PPW:
+	case PLW:
+	case PCW:
+	case PTH:
+	case PPH:
+		// what it's a percentage of probably won't make sense for HTML,
+		// so we'll assume people have chosen these appropriately
+		os << val_ << '%';
+		break;
+	case SP:
+	case UNIT_NONE:
+		break;
+	}
+	return os.str();
+}
+
+
 double Length::value() const
 {
 	return val_;

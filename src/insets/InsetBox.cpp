@@ -486,12 +486,19 @@ int InsetBox::docbook(odocstream & os, OutputParams const & runparams) const
 
 int InsetBox::xhtml(odocstream & os, OutputParams const & runparams) const
 {
-	// FIXME We also want to do something with the length info, etc,
-	// presumably as "style='...'".
-	os << from_ascii("<span class='" + params_.type + "'>\n");
-	int ret = InsetText::xhtml(os, runparams);
+	string style;
+	if (!params_.width.empty())
+		style += ("width: " + params_.width.asHTMLString() + ";");
+	if (!params_.height.empty())
+		style += ("height: " + params_.height.asHTMLString() + ";");
+	
+	os << from_ascii("<span class='" + params_.type + "'");
+	if (!style.empty())
+		os << from_ascii(" style='" + style + "'");
+	os << ">\n";
+	InsetText::xhtml(os, runparams);
 	os << "</span>\n";
-	return ret;
+	return 0;
 }
 
 

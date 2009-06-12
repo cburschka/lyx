@@ -87,6 +87,8 @@ public:
 	docstring const asDocstring() const;
 	/// return string representation for LaTeX
 	std::string const asLatexString() const;
+	/// return string representation for HTML
+	std::string const asHTMLString() const;
 	/// return the on-screen size of this length
 	int inPixels(int text_width, int em_width = 0) const;
 	/// return the value in Big Postscript points.
