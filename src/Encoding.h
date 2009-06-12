@@ -233,13 +233,23 @@ public:
 	 * point and set \p combining to true if it is a combining symbol
 	 */
 	static char_type fromLaTeXCommand(docstring const & cmd, bool & combining);
+	///
+	enum LatexCmd {
+		///
+		MATH_CMD = 1,
+		///
+		TEXT_CMD = 2
+	};
 	/**
 	 * Convert the LaTeX commands in \p cmd and \return a docstring
 	 * of corresponding unicode points. The conversion stops at the
 	 * first command which could not be converted, and the remaining
-	 * unconverted commands are returned in \p rem
+	 * unconverted commands are returned in \p rem.
+	 * The \p cmdtype parameter can be used to limit recognized
+	 * commands to math or text mode commands only.
 	 */
-	static docstring fromLaTeXCommand(docstring const & cmd, docstring & rem);
+	static docstring fromLaTeXCommand(docstring const & cmd,
+			docstring & rem, int cmdtype = MATH_CMD | TEXT_CMD);
 	/**
 	 * Add the preamble snippet needed for the output of \p c to
 	 * \p features.

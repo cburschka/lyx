@@ -89,6 +89,8 @@ What's new
 - Fix bug that the citation dialog offered non-existant features
   (bug 5987).
 
+- Fix display of BibTeX entries in the info field of the citation
+  dialog by only converting text mode latex macros to unicode points.
 
 * DOCUMENTATION AND LOCALIZATION
 
