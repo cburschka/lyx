@@ -707,6 +707,16 @@ def revert_nomencl_cwidth(document):
       i = i + 1
 
 
+def revert_applemac(document):
+    " Revert applemac encoding to auto "
+    i = 0
+    if document.encoding == "applemac":
+        document.encoding = "auto"
+        i = find_token(document.header, "\\encoding", 0)
+        if i != -1:
+            document.header[i] = "\\encoding auto"
+
+
 ##
 # Conversion hub
 #
@@ -727,10 +737,12 @@ convert = [[346, []],
            [358, []],
            [359, [convert_nomencl_width]],
            [360, []],
-           [361, []]
+           [361, []],
+           [362, []]
           ]
 
-revert =  [[360, []],
+revert =  [[361, [revert_applemac]],
+           [360, []],
            [359, [revert_nomencl_cwidth]],
            [358, [revert_nomencl_width]],
            [357, [revert_custom_processors]],
