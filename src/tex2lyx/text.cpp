@@ -354,20 +354,17 @@ void begin_inset(ostream & os, string const & name)
 	os << "\n\\begin_inset " << name;
 }
 
-void begin_Cinset(ostream & os, string const & name)
+void begin_command_inset(ostream & os, string const & name,
+						 string const & latexname)
 {
 	os << "\n\\begin_inset CommandInset " << name;
+	os << "\nLatexCommand " << latexname << "\n";
 }
 
 
 void end_inset(ostream & os)
 {
 	os << "\n\\end_inset\n\n";
-}
-
-void LatexCommand(ostream & os, string const & name)
-{
-	os << "\nLatexCommand " << name << "\n";
 }
 
 
@@ -1467,8 +1464,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "bibitem") {
 			context.set_item();
 			context.check_layout(os);
-			begin_Cinset(os, "bibitem");
-			LatexCommand(os, "bibitem");
+			begin_command_inset(os, "bibitem", "bibitem");
 			os << p.getOpt();
 			os << "key " << '"' << p.verbatim_item() << '"' << "\n";
 			end_inset(os);
@@ -1788,8 +1784,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "tableofcontents") {
 			p.skip_spaces();
 			context.check_layout(os);
-			begin_Cinset(os, "toc");
-			LatexCommand(os, "tableofcontents");
+			begin_command_inset(os, "toc", "tableofcontents");
 			end_inset(os);
 			skip_braces(p); // swallow this
 		}
@@ -1927,8 +1922,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (is_known(t.cs(), known_ref_commands)) {
 			context.check_layout(os);
-			begin_Cinset(os, "ref");
-			LatexCommand(os, t.cs());
+			begin_command_inset(os, "ref", t.cs());
 			// lyx cannot handle newlines in a latex command
 			// FIXME: Move the substitution into parser::getOpt()?
 			os << subst(p.getOpt(), "\n", " ");
@@ -1984,8 +1978,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				before.erase(0, 1);
 				before.erase(before.length() - 1, 1);
 			}
-			begin_Cinset(os, "citation");
-			LatexCommand(os, command);
+			begin_command_inset(os, "citation", command);
 			os << "after " << '"' << after << '"' << "\n";
 			os << "before " << '"' << before << '"' << "\n";
 			os << "key " << '"' << p.verbatim_item() << '"' << "\n";
@@ -2029,8 +2022,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				before.erase(0, 1);
 				before.erase(before.length() - 1, 1);
 			}
-			begin_Cinset(os, "citation");
-			LatexCommand(os, command);
+			begin_command_inset(os, "citation", command);
 			os << "after " << '"' << after << '"' << "\n";
 			os << "before " << '"' << before << '"' << "\n";
 			os << "key " << '"' << citation << '"' << "\n";
@@ -2045,8 +2037,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				after.erase(0, 1);
 				after.erase(after.length() - 1, 1);
 			}
-			begin_Cinset(os, "citation");
-			LatexCommand(os, t.cs());
+			begin_command_inset(os, "citation", t.cs());
 			os << "after " << '"' << after << '"' << "\n";
 			os << "key " << '"' << subst(p.verbatim_item(), "\n", " ") << '"' << "\n";
 			end_inset(os);
@@ -2063,8 +2054,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		
 		else if (t.cs() == "label") {
 			context.check_layout(os);
-			begin_Cinset(os, t.cs());
-			LatexCommand(os, t.cs());
+			begin_command_inset(os, t.cs(), t.cs());
 			// lyx cannot handle newlines in a latex command
 			os << "name " << '"' << subst(p.verbatim_item(), "\n", " ") << '"' << "\n";
 			end_inset(os);
@@ -2072,8 +2062,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "printindex") {
 			context.check_layout(os);
-			begin_Cinset(os, "index_print");
-			LatexCommand(os, t.cs());
+			begin_command_inset(os, "index_print", t.cs());
 			end_inset(os);
 			skip_braces(p);
 		}
@@ -2412,8 +2401,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "bibliography") {
 			context.check_layout(os);
-			begin_Cinset(os, "bibtex");
-			LatexCommand(os, "bibtex");
+			begin_command_inset(os, "bibtex", "bibtex");
 			os << "bibfiles " << '"' << p.verbatim_item() << '"' << "\n";
 			// Do we have a bibliographystyle set?
 			if (!bibliographystyle.empty())
