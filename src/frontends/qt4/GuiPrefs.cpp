@@ -516,6 +516,8 @@ PrefCompletion::PrefCompletion(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(popupMathCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
+	connect(autocorrectionCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
 	connect(popupTextCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 	connect(popupAfterCompleteCB, SIGNAL(clicked()),
@@ -552,6 +554,7 @@ void PrefCompletion::apply(LyXRC & rc) const
 	rc.completion_inline_dots = inlineDotsCB->isChecked() ? 13 : -1;
 	rc.completion_popup_delay = popupDelaySB->value();
 	rc.completion_popup_math = popupMathCB->isChecked();
+	rc.autocorrection_math = autocorrectionCB->isChecked();
 	rc.completion_popup_text = popupTextCB->isChecked();
 	rc.completion_cursor_text = cursorTextCB->isChecked();
 	rc.completion_popup_after_complete =
@@ -567,6 +570,7 @@ void PrefCompletion::update(LyXRC const & rc)
 	inlineDotsCB->setChecked(rc.completion_inline_dots != -1);
 	popupDelaySB->setValue(rc.completion_popup_delay);
 	popupMathCB->setChecked(rc.completion_popup_math);
+	autocorrectionCB->setChecked(rc.autocorrection_math);
 	popupTextCB->setChecked(rc.completion_popup_text);
 	cursorTextCB->setChecked(rc.completion_cursor_text);
 	popupAfterCompleteCB->setChecked(rc.completion_popup_after_complete);
