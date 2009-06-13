@@ -1,8 +1,8 @@
 % This is the default list of commands for tex conversion programs to read
 %    It tells how many arguments each command takes, and which of them
 % (if any) are optional.
-%    It is taken from the list of commands written by John Weiss 970311 for reLyX
-% plus the math commands from math_hash.C
+%    It is taken from the list of commands origianlly written by John Weiss 970311
+% for reLyX plus the math commands from math_hash.C
 %
 % Also had to add textrm etc. commands and many size commands (like \small)
 %
@@ -55,9 +55,9 @@ $$
 \`{}
 \~{}
 \b{}
-% \begin{}[]   %reLyX will get confused if \begin is found in this file!
+%\begin{}[]   %tex2lyx will get confused if \begin is found in this file!
 %\begin{}[]{} % All of these show the different variations of \begin (jpw)
-%\begin{}{}   % reLyX can only handle \begin{}
+%\begin{}{}
 %\begin{}{}{}
 %\begin{}[][][]{}
 %\begin{}(,)
@@ -118,7 +118,7 @@ $$
 \documentstyle[]{}
 \em
 \emph{}
-% \end{}   %reLyX will get confused if \end is found in this file!
+%\end{}   %tex2lyx will get confused if \end is found in this file!
 \epsf{}
 \epsfbox{}
 \epsffile{}
@@ -263,8 +263,6 @@ $$
 % arguments] and those that insert lists, since a list isn't a single
 % object.
 %
-% I had to remove things that TeX.pm doesn't recognize as a token, and hardcode
-%   those into reLyX. This included !' ?' -- --- and maybe some other things
 
 \ % A "\" followed by a space.
 \,
@@ -402,12 +400,12 @@ $$
 \clearpage
 \closing{}
 \color[]{,,}  % Two variants of this command and the next (jpw)
-% \color{}    %  This variant doesn't matter to reLyX (adk)
+%\color{}
 \colorspec[]{,,}{}
-%\colorspec{}{}    %  This variant doesn't matter to reLyX (adk)
+%\colorspec{}{}
 %\contentsline{}{\numberline{}  }{}     % Appears only in .toc file (JMarc)
 \contentsname
-% \dashbox{}(,)[]{}   %picture
+%\dashbox{}(,)[]{}   %picture
 \date{}
 \dblfigrule
 \dblfloatpagefraction
@@ -424,7 +422,7 @@ $$
 \extracolsep{}
 \fbox{translate}
 \fcolorbox[]{,,}{,,}{}  % Two variants of this command
-%\fcolorbox{}{}{}    %  This variant doesn't matter to reLyX (adk)
+%\fcolorbox{}{}{}
 \figurename
 \floatpagefraction
 \flushbottom
@@ -507,11 +505,11 @@ $$
 \newboolean{}
 \newcommand{}[][]{}
 \newcommand*{}[][]{}
-%\newcommand{}[]{}    % reLyX doesn't care about missing optarg
+%\newcommand{}[]{}    % tex2lyx can support this when the file format is the one of LyX 1.6.x
 \newcounter{}[]
 \newenvironment{}[][]{}{}
 \newenvironment*{}[][]{}{}
-% \newenvironment{}[]{}{}    % reLyX doesn't care about missing optarg
+%\newenvironment{}[]{}{}    % tex2lyx can support this when the file format is the one of LyX 1.6.x
 \newfont{}{ scaled }
 \newlength{}
 \newpage
@@ -534,7 +532,7 @@ $$
 % \oval(,)[]   %picture
 \pagebreak[]
 \pagecolor[]{,,}
-% \pagecolor{}    % reLyX doesn't care about this version
+% \pagecolor{}    % tex2lyx can first care about this when fileformat 351 is supported
 \pagename
 \pagenumbering{}
 \par
@@ -570,10 +568,10 @@ $$
 \refstepcounter{}
 \renewcommand{}[][]{}
 \renewcommand*{}[][]{}
-% \renewcommand{}[]{}   %reLyX doesn't care about variants
+%\renewcommand{}[]{}   % tex2lyx can support this when the file format is the one of LyX 1.6.x
 \renewenvironment{}[][]{}{}
 \renewenvironment*{}[][]{}{}
-% \renewenvironment{}[]{}{}
+%\renewenvironment{}[]{}{}
 \resizebox{}{}{translate}
 \resizebox*{}{}{translate}
 \reversemarginpar
@@ -628,7 +626,7 @@ $$
 \texorpdfstring{}{}      % from the hyperref package
 \textcircled{translate}
 \textcolor[]{,,}{translate}
-%\textcolor{}{}      % reLyX doesn't care about this version
+%\textcolor{}{}
 \textnormal{translate}
 \textfraction
 \thanks{translate}
@@ -648,45 +646,13 @@ $$
 \usepackage[]{}[]
 \value{}
 % \vector(,){}   %picture
-% \verb||     % reLyX needs \verb to be hardcoded
+% \verb||     % tex2lyx fails on \verb, see http://www.lyx.org/trac/ticket/4468 and http://www.lyx.org/trac/ticket/5408
 % \verb*||
 \visible
 \vline
 \vspace{}
 \vspace*{}
 \whiledo{}{}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% There are some environments which reLyX doesn't have an equivalent for.
-% However, *within* that environment, simple translatable LaTeX appears.
-% (E.g., this doesn't include something like "picture" because the TeX
-% parser can't (yet?) understand the parentheses as being delimiters of
-% coordinates rather than plain text.)
-%    The environment names are placed in a "reLyXre" environment.
-%    There aren't very many of these; the idea is that the user can add
-% user-defined environments in personal syntax files
-
-\begin{reLyXre}
-% filecontents can only appear before \documentclass command, so not worth it
-fussypar
-sloppypar
-% slide only appears in the slides class, but if we don't put this in, then
-% the whole document will be copied in TeX mode!
-slide
-titlepage
-\end{reLyXre}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Keep bugging André until he adds 'support' for these in mathed,
-% meaning that they can be removed from here.
-
-\begin{reLyXmt}
-\sb    {_}
-\sp    {^}
-\ensuremath   {}  % If it's in math mode, \ensuremath is unnec.
-\end{reLyXmt}
-
 
 % LaTeX environments.
 % They have always one extra "argument":
