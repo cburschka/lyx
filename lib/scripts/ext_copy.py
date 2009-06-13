@@ -26,7 +26,7 @@
 # KNOWN BUG: This script is not aware of generated subdirectories.
 
 import os, sys, getopt
-from lyxpreview_tools import error
+from lyxpreview_tools import error, warning
 
 
 def usage(prog_name):
@@ -49,6 +49,7 @@ def main(argv):
     if len(args) != 2:
       error(usage(progname))
     abs_from_file = args[0]
+    warning("from_file: %s." % abs_from_file)
     if not os.path.isabs(abs_from_file):
       error("%s is not an absolute file name.\n%s" % abs_from_file, usage(progname))
     from_dir = os.path.dirname(abs_from_file)
