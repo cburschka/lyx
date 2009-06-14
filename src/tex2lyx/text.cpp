@@ -354,7 +354,7 @@ void begin_inset(ostream & os, string const & name)
 	os << "\n\\begin_inset " << name;
 }
 
-/*// use this voi when format 288 is supported
+/*// use this void when format 288 is supported
 void begin_command_inset(ostream & os, string const & name,
 						 string const & latexname)
 {
