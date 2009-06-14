@@ -354,12 +354,13 @@ void begin_inset(ostream & os, string const & name)
 	os << "\n\\begin_inset " << name;
 }
 
+/*// use this voi when format 288 is supported
 void begin_command_inset(ostream & os, string const & name,
 						 string const & latexname)
 {
 	os << "\n\\begin_inset CommandInset " << name;
 	os << "\nLatexCommand " << latexname << "\n";
-}
+}*/
 
 
 void end_inset(ostream & os)
@@ -1464,7 +1465,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "bibitem") {
 			context.set_item();
 			context.check_layout(os);
-			begin_command_inset(os, "bibitem", "bibitem");
+			begin_inset(os, "LatexCommand ");
+			os << t.cs() << "\n";
 			os << p.getOpt();
 			os << "key " << '"' << p.verbatim_item() << '"' << "\n";
 			end_inset(os);
@@ -1784,7 +1786,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "tableofcontents") {
 			p.skip_spaces();
 			context.check_layout(os);
-			begin_command_inset(os, "toc", "tableofcontents");
+			begin_inset(os, "LatexCommand ");
+			os << t.cs() << "\n";
 			end_inset(os);
 			skip_braces(p); // swallow this
 		}
@@ -1922,7 +1925,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (is_known(t.cs(), known_ref_commands)) {
 			context.check_layout(os);
-			begin_command_inset(os, "ref", t.cs());
+			begin_inset(os, "LatexCommand ");
+			os << t.cs() << "\n";
 			// lyx cannot handle newlines in a latex command
 			// FIXME: Move the substitution into parser::getOpt()?
 			os << subst(p.getOpt(), "\n", " ");
@@ -1978,7 +1982,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				before.erase(0, 1);
 				before.erase(before.length() - 1, 1);
 			}
-			begin_command_inset(os, "citation", command);
+			begin_inset(os, "LatexCommand ");
+			os << t.cs() << "\n";
 			os << "after " << '"' << after << '"' << "\n";
 			os << "before " << '"' << before << '"' << "\n";
 			os << "key " << '"' << p.verbatim_item() << '"' << "\n";
@@ -2022,7 +2027,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				before.erase(0, 1);
 				before.erase(before.length() - 1, 1);
 			}
-			begin_command_inset(os, "citation", command);
+			begin_inset(os, "LatexCommand ");
+			os << t.cs() << "\n";
 			os << "after " << '"' << after << '"' << "\n";
 			os << "before " << '"' << before << '"' << "\n";
 			os << "key " << '"' << citation << '"' << "\n";
@@ -2032,12 +2038,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "cite") {
 			context.check_layout(os);
 			// lyx cannot handle newlines in a latex command
-			string after = subst(p.getOpt(), "\n", " ");
-			if (!after.empty()) {
-				after.erase(0, 1);
-				after.erase(after.length() - 1, 1);
-			}
-			begin_command_inset(os, "citation", t.cs());
+			string after = subst(p.getOptContent(), "\n", " ");
+			begin_inset(os, "LatexCommand ");
+			os << t.cs() << "\n";
 			os << "after " << '"' << after << '"' << "\n";
 			os << "key " << '"' << subst(p.verbatim_item(), "\n", " ") << '"' << "\n";
 			end_inset(os);
@@ -2046,15 +2049,29 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "index") {
 			context.check_layout(os);
 			begin_inset(os, "LatexCommand ");
-			os << t.cs() << "\n";;
+			os << t.cs() << "\n";
 			// lyx cannot handle newlines in a latex command
 			os << "name " << '"' << subst(p.verbatim_item(), "\n", " ") << '"' << "\n";
+			end_inset(os);
+		}
+
+		else if (t.cs() == "nomenclature") {
+			context.check_layout(os);
+			begin_inset(os, "LatexCommand ");
+			os << t.cs() << "\n";
+			// lyx cannot handle newlines in a latex command
+			string prefix = subst(p.getOptContent(), "\n", " ");
+			if (!prefix.empty())
+				os << "prefix " << '"' << prefix << '"' << "\n";
+			os << "symbol " << '"' << subst(p.verbatim_item(), "\n", " ") << '"' << "\n";
+			os << "description " << '"' << subst(p.verbatim_item(), "\n", " ") << '"' << "\n";
 			end_inset(os);
 		}
 		
 		else if (t.cs() == "label") {
 			context.check_layout(os);
-			begin_command_inset(os, t.cs(), t.cs());
+			begin_inset(os, "LatexCommand ");
+			os << t.cs() << "\n";
 			// lyx cannot handle newlines in a latex command
 			os << "name " << '"' << subst(p.verbatim_item(), "\n", " ") << '"' << "\n";
 			end_inset(os);
@@ -2062,7 +2079,16 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "printindex") {
 			context.check_layout(os);
-			begin_command_inset(os, "index_print", t.cs());
+			begin_inset(os, "LatexCommand ");
+			os << t.cs() << "\n";
+			end_inset(os);
+			skip_braces(p);
+		}
+
+		else if (t.cs() == "printnomenclature") {
+			context.check_layout(os);
+			begin_inset(os, "LatexCommand ");
+			os << t.cs() << "\n";
 			end_inset(os);
 			skip_braces(p);
 		}
@@ -2070,7 +2096,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "url") {
 			context.check_layout(os);
 			begin_inset(os, "LatexCommand ");
-			os << t.cs() << "\n";;
+			os << t.cs() << "\n";
 			// lyx cannot handle newlines in a latex command
 			os << "target " << '"' << subst(p.verbatim_item(), "\n", " ") << '"' << "\n";
 			end_inset(os);
@@ -2401,7 +2427,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "bibliography") {
 			context.check_layout(os);
-			begin_command_inset(os, "bibtex", "bibtex");
+			begin_inset(os, "LatexCommand ");
+			os << "bibtex" << "\n";
 			os << "bibfiles " << '"' << p.verbatim_item() << '"' << "\n";
 			// Do we have a bibliographystyle set?
 			if (!bibliographystyle.empty())
