@@ -443,7 +443,7 @@ LyX file-format changes
 		\\newcommand{\\lyxline}[1][1pt]{%
  	          \\par\\noindent%
  	          \\rule[.5ex]{\\linewidth}{#1}\\par}
-        The new definition is more robust, see bug 1988 and now really takes care about
+        The new definition is more robust, see bug 1988 and now really takes care of
 	the fontsize: \lyxline{\Huge} produces now a thicker line than \lyxline{\normalfont}
 
 2007-01-29  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
