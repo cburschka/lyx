@@ -252,7 +252,7 @@ bool splitLatexLength(string const & len, string & value, string & unit)
 }
 
 
-/// A simple function to translate a latex length to something lyx can
+/// A simple function to translate a latex length to something LyX can
 /// understand. Not perfect, but rather best-effort.
 bool translate_len(string const & length, string & valstring, string & unit)
 {
@@ -645,7 +645,7 @@ void parse_box(Parser & p, ostream & os, unsigned flags, bool outer,
 		parse_text_in_inset(p, os, flags, outer, parent_context);
 		end_inset(os);
 #ifdef PRESERVE_LAYOUT
-		// lyx puts a % after the end of the minipage
+		// LyX puts a % after the end of the minipage
 		if (p.next_token().cat() == catNewline && p.next_token().cs().size() > 1) {
 			// new paragraph
 			//handle_comment(os, "%dummy", parent_context);
@@ -1434,7 +1434,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			}
 			if (optarg) {
 				if (context.layout->labeltype != LABEL_MANUAL) {
-					// lyx does not support \item[\mybullet]
+					// LyX does not support \item[\mybullet]
 					// in itemize environments
 					handle_ert(os, "[", context);
 					os << s;
@@ -1928,7 +1928,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.check_layout(os);
 			begin_inset(os, "LatexCommand ");
 			os << t.cs() << "\n";
-			// lyx cannot handle newlines in a latex command
+			// LyX cannot handle newlines in a latex command
 			// FIXME: Move the substitution into parser::getOpt()?
 			os << subst(p.getOpt(), "\n", " ");
 			os << "reference " << '"' << subst(p.verbatim_item(), "\n", " ") << '"' << "\n";
@@ -2038,7 +2038,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "cite") {
 			context.check_layout(os);
-			// lyx cannot handle newlines in a latex command
+			// LyX cannot handle newlines in a latex command
 			string after = subst(p.getOptContent(), "\n", " ");
 			begin_inset(os, "LatexCommand ");
 			os << t.cs() << "\n";
@@ -2051,7 +2051,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.check_layout(os);
 			begin_inset(os, "LatexCommand ");
 			os << t.cs() << "\n";
-			// lyx cannot handle newlines in a latex command
+			// LyX cannot handle newlines in a latex command
 			os << "name " << '"' << subst(p.verbatim_item(), "\n", " ") << '"' << "\n";
 			end_inset(os);
 		}
@@ -2060,7 +2060,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.check_layout(os);
 			begin_inset(os, "LatexCommand ");
 			os << t.cs() << "\n";
-			// lyx cannot handle newlines in a latex command
+			// LyX cannot handle newlines in a latex command
 			string prefix = subst(p.getOptContent(), "\n", " ");
 			if (!prefix.empty())
 				os << "prefix " << '"' << prefix << '"' << "\n";
@@ -2073,7 +2073,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.check_layout(os);
 			begin_inset(os, "LatexCommand ");
 			os << t.cs() << "\n";
-			// lyx cannot handle newlines in a latex command
+			// LyX cannot handle newlines in a latex command
 			os << "name " << '"' << subst(p.verbatim_item(), "\n", " ") << '"' << "\n";
 			end_inset(os);
 		}
@@ -2098,7 +2098,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.check_layout(os);
 			begin_inset(os, "LatexCommand ");
 			os << t.cs() << "\n";
-			// lyx cannot handle newlines in a latex command
+			// LyX cannot handle newlines in a latex command
 			os << "target " << '"' << subst(p.verbatim_item(), "\n", " ") << '"' << "\n";
 			end_inset(os);
 		}
@@ -2232,6 +2232,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			string const enc = subst(p.verbatim_item(), "\n", " ");
 			p.setEncoding(enc);
 		}
+
 		else if (t.cs() == "LyX" || t.cs() == "TeX"
 			 || t.cs() == "LaTeX") {
 			context.check_layout(os);

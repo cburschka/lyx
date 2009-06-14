@@ -345,6 +345,7 @@ void handle_package(Parser &p, string const & name, string const & opts,
 		}
 		p.skip_spaces();
 	}
+
 	else if (name == "fontenc")
 		p.skip_spaces(); // ignore this
 
