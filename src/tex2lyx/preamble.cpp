@@ -112,10 +112,10 @@ const char * const known_lyx_commands[] = { "binom", "cedilla", "cyrtext",
 
 const char * const known_lyx_comments[] = { 
 "%% Binom macro for standard LaTeX users\n",
-"%% For printing a cirumflex inside a formula",
-"%% Because html converters don't know tabularnewline",
+"%% For printing a cirumflex inside a formula\n",
+"%% Because html converters don't know tabularnewline\n",
 "%% The greyedout annotation environment\n",
-"%% A simple dot to overcome graphicx limitations",
+"%% A simple dot to overcome graphicx limitations\n",
 "%% Change tracking with ulem\n",
 "% the following is useful when we have the old nomencl.sty package\n",
 "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.\n",
