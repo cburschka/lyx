@@ -2047,6 +2047,19 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			end_inset(os);
 		}
 
+		else if (t.cs() == "nomenclature") {
+			context.check_layout(os);
+			begin_inset(os, "LatexCommand ");
+			os << t.cs() << "\n";
+			// LyX cannot handle newlines in a latex command
+			string prefix = subst(p.getOptContent(), "\n", " ");
+			if (!prefix.empty())
+				os << "prefix " << '"' << prefix << '"' << "\n";
+			os << "symbol " << '"' << subst(p.verbatim_item(), "\n", " ") << '"' << "\n";
+			os << "description " << '"' << subst(p.verbatim_item(), "\n", " ") << '"' << "\n";
+			end_inset(os);
+		}
+		
 		else if (t.cs() == "label") {
 			context.check_layout(os);
 			begin_inset(os, "LatexCommand ");
@@ -2057,6 +2070,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "printindex") {
+			context.check_layout(os);
+			begin_inset(os, "LatexCommand ");
+			os << t.cs() << "\n";
+			end_inset(os);
+			skip_braces(p);
+		}
+
+		else if (t.cs() == "printnomenclature") {
 			context.check_layout(os);
 			begin_inset(os, "LatexCommand ");
 			os << t.cs() << "\n";
