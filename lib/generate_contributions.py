@@ -976,6 +976,14 @@ contributers = [
                  "27 February 2005",
                  u"Slovenian translation coordinator"),
 
+     contributer(u"John McCabe-Dansted",
+                 "gmatht () gmail ! com",
+                 "GPL",
+                 "Re: Randomly Generated Crash Reports Useful?",
+                 "m=113078277722316",
+                 "15 June 2009",
+                 u"Keys-test module"),
+
      contributer(u"Tino Meinen",
                  "a.t.meinen () chello ! nl",
                  "GPL",
