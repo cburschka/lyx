@@ -2366,8 +2366,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			}
 		}
 
-		else if (t.cs() == "newline" ||
-			t.cs() == "linebreak") {
+		else if (t.cs() == "newline") {
 			context.check_layout(os);
 			os << "\n\\" << t.cs() << "\n";
 			skip_braces(p); // eat {}
@@ -2485,7 +2484,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "newpage" ||
-			t.cs() == "pagebreak" ||
 			t.cs() == "clearpage" ||
 			t.cs() == "cleardoublepage") {
 			context.check_layout(os);
