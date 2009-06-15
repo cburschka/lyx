@@ -444,7 +444,7 @@ void handle_package(Parser &p, string const & name, string const & opts,
 void end_preamble(ostream & os, TextClass const & /*textclass*/)
 {
 	os << "#LyX file created by tex2lyx " << PACKAGE_VERSION << "\n"
-	   << "\\lyxformat 249\n"
+	   << "\\lyxformat 252\n"
 	   << "\\begin_document\n"
 	   << "\\begin_header\n"
 	   << "\\textclass " << h_textclass << "\n";
