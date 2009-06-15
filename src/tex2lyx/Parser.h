@@ -158,8 +158,12 @@ public:
 	 */
 	std::string getOpt();
 	/*!
-	 * \returns getFullArg('(', ')') including the parentheses or the
+	 * \returns getFullArg('[', ']') including the parentheses or the
 	 * empty string if there is no such argument.
+	 */
+	std::string getOptContent();
+	/*!
+	 * the same as getOpt but without the brackets
 	 */
 	std::string getFullParentheseArg();
 	/*!

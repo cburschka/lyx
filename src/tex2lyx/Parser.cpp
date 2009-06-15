@@ -334,6 +334,14 @@ string Parser::getOpt()
 }
 
 
+string Parser::getOptContent()
+// the same as getOpt but without the brackets
+{
+	string const res = getArg('[', ']');
+	return res.empty() ? string() : res;
+}
+
+
 string Parser::getFullParentheseArg()
 {
 	Arg arg = getFullArg('(', ')');
