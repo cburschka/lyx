@@ -1,2 +1,4 @@
-tar -c LT/start_tests.sh LT/killt* LT/README LT/stock_text LT/report.sh LT/autolyx LT/lyx_make.sh LT/maketar.sh LT/test.py | gzip -9 > LT/lyxtestc.tar.gz
-#cp lyxtestb.tar.gz LT/share
+#Make a package from keystest scripts.
+#It is supposed to be run inside development/keystest.
+
+tar -c start_tests.sh killt* README stock_text report.sh autolyx lyx_make.sh maketar.sh test.py | gzip -9 > lyxtestc.tar.gz

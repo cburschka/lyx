@@ -3,4 +3,6 @@
 #keypresses, and logs all output, including backtraces to LT/out/GDB
 #Use report.sh to generated the more useful bug reports in LT/out/{or}*
 
-(bash LT/autolyx & sleep 9 ; xterm -e python LT/test.py)
+LT=development/keystest
+
+(bash $LT/autolyx & sleep 9 ; xterm -e python $LT/test.py)

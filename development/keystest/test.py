@@ -2,7 +2,7 @@
 #This script generated hundreds of random keypresses per second,
 #  and sends them to the lyx window
 #It requires xvkbd and wmctrl
-#It generates a log of the KEYCODES it sends as LT/out/KEYCODES
+#It generates a log of the KEYCODES it sends as development/keystest/out/KEYCODES
 
 import random
 import os 
@@ -43,5 +43,5 @@ while True:
   for k in range(1,80):
 	keystr=keystr+keycode[random.randint(1,len(keycode))-1]
   os.system("wmctrl -R LyX && xvkbd -xsendevent -text '"+keystr+"';sleep 1")
-  #os.system("echo KEYCODES: '"+keystr+"' >> LT/out/GDB")
-  os.system("echo `date +%s`: '"+keystr+"' >> LT/out/KEYCODES")
+  #os.system("echo KEYCODES: '"+keystr+"' >> development/keystest/out/GDB")
+  os.system("echo `date +%s`: '"+keystr+"' >> development/keystest/out/KEYCODES")

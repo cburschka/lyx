@@ -12,5 +12,5 @@ while true
 do
   ( (echo SECONDS: `date +%s`
 	(echo "run
-  bt" ; yes q) | gdb src/lyx 2>&1) | strings|  tee -a LT/out/GDB)
+  bt" ; yes q) | gdb src/lyx 2>&1) | strings|  tee -a development/keystest/out/GDB)
 done
