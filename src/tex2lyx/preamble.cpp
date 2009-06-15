@@ -101,6 +101,28 @@ const char * const known_coded_paper_margins[] = { "leftmargin", "topmargin",
 "rightmargin", "bottommargin", "headheight", "headsep", "footskip",
 "columnsep", 0};
 
+const char * const known_lyx_commands[] = { "binom", "cedilla", "cyrtext",
+"dacute", "dgrave", "docedilla", "doogonek", "dosubhat", "dosubring",
+"dosubtilde", "greektext", "guillemotleft", "guillemotright", "guilsinglleft",
+"guilsinglright", "LyX", "lyxadded", "lyxarrow", "lyxdeleted", "lyxdot",
+"lyxgreyedout", "lyxline", "lyxmathsym", "LyXParagraphLeftIndent",
+"lyxrightaddress", "makenomenclature", "mathcircumflex", "noun", "ogonek",
+"printnomenclature", "quotedblbase", "quotesinglbase", "rcap", "subhat",
+"subring", "subtilde", "tabularnewline", "textcyr", "textgreek", 0};
+
+const char * const known_lyx_comments[] = { 
+"%% Binom macro for standard LaTeX users\n",
+"%% For printing a cirumflex inside a formula",
+"%% Because html converters don't know tabularnewline",
+"%% The greyedout annotation environment\n",
+"%% A simple dot to overcome graphicx limitations",
+"%% Change tracking with ulem\n",
+"% the following is useful when we have the old nomencl.sty package\n",
+"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.\n",
+"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.\n",
+"%% LyX 2.0.0svn created this file.  For more info, see http://www.lyx.org/.\n",
+0};
+
 // default settings
 ostringstream h_preamble;
 string h_textclass               = "article";
@@ -249,8 +271,7 @@ string const scale_as_percentage(string const & scale)
 }
 
 
-void handle_package(Parser &p, string const & name, string const & opts,
-		    bool in_lyx_preamble)
+void handle_package(Parser &p, string const & name, string const & opts)
 {
 	vector<string> options = split_options(opts);
 	add_package(name, options);
@@ -267,18 +288,13 @@ void handle_package(Parser &p, string const & name, string const & opts,
 		// when font uses real small capitals
 		if (opts == "expert")
 			h_font_sc = "true";
-		p.skip_spaces();
 	}
 
-	if (name == "mathpazo") {
+	if (name == "mathpazo")
 		h_font_roman = "palatino";
-		p.skip_spaces();
-	}
 
-	if (name == "mathptmx") {
+	if (name == "mathptmx")
 		h_font_roman = "times";
-		p.skip_spaces();
-	}
 
 	// sansserif fonts
 	if (is_known(name, known_sans_fonts)) {
@@ -287,7 +303,6 @@ void handle_package(Parser &p, string const & name, string const & opts,
 			scale = opts;
 			h_font_sf_scale = scale_as_percentage(scale);
 		}
-		p.skip_spaces();
 	}
 
 	// typewriter fonts
@@ -297,24 +312,17 @@ void handle_package(Parser &p, string const & name, string const & opts,
 			scale = opts;
 			h_font_tt_scale = scale_as_percentage(scale);
 		}
-		p.skip_spaces();
 	}
 
 	// font uses old-style figure
-	if (name == "eco") {
+	if (name == "eco")
 		h_font_osf = "true";
-		p.skip_spaces();
-	}
 
-	else if (name == "amsmath" || name == "amssymb") {
+	else if (name == "amsmath" || name == "amssymb")
 		h_use_amsmath = "2";
-		p.skip_spaces();
-	}
 
-	else if (name == "esint") {
+	else if (name == "esint")
 		h_use_esint = "2";
-		p.skip_spaces();
-	}
 
 	else if (name == "babel" && !opts.empty()) {
 		// check if more than one option was used - used later for inputenc
@@ -343,11 +351,10 @@ void handle_package(Parser &p, string const & name, string const & opts,
 				h_language = "ukrainian";
 			h_quotes_language = h_language;
 		}
-		p.skip_spaces();
 	}
 
 	else if (name == "fontenc")
-		p.skip_spaces(); // ignore this
+		 ;// ignore this
 
 	else if (name == "inputenc") {
 		// only set when there is not more than one inputenc
@@ -365,39 +372,40 @@ void handle_package(Parser &p, string const & name, string const & opts,
 		if (!options.empty())
 			p.setEncoding(options.back());
 		options.clear();
-		p.skip_spaces();
 	}
 
 	else if (name == "makeidx")
-		p.skip_spaces(); // ignore this
+		; // ignore this
 
 	else if (name == "prettyref")
-		p.skip_spaces(); // ignore this
+		; // ignore this
 
 	else if (name == "varioref")
-		p.skip_spaces(); // ignore this
+		; // ignore this
 
-	else if (name == "verbatim")
-		p.skip_spaces(); // ignore this
+	else if (name == "verbatim")		
+		; // ignore this
+
+	else if (name == "nomencl")
+		; // ignore this
 
 	else if (name == "url")
-		p.skip_spaces(); // ignore this
+		; // ignore this
 
 	else if (name == "color") {
 		// with the following command this package is only loaded when needed for
 		// undefined colors, since we only support the predefined colors
 		h_preamble << "\\@ifundefined{definecolor}\n {\\usepackage{color}}{}\n";
-		p.skip_spaces();
 	}
 
 	else if (name == "graphicx")
-		p.skip_spaces(); // ignore this
+		; // ignore this
 
 	else if (name == "setspace")
-		p.skip_spaces(); // ignore this
+		; // ignore this
 
 	else if (name == "geometry")
-		p.skip_spaces(); // Ignore this, the geometry settings are made by the \geometry
+		; // Ignore this, the geometry settings are made by the \geometry
 		  // command. This command is handled below.
 
 	else if (is_known(name, known_languages)) {
@@ -414,7 +422,6 @@ void handle_package(Parser &p, string const & name, string const & opts,
 		else
 			h_language = name;
 		h_quotes_language = h_language;
-		p.skip_spaces();
 	}
 
 	else if (name == "natbib") {
@@ -430,15 +437,15 @@ void handle_package(Parser &p, string const & name, string const & opts,
 				options.erase(it);
 			}
 		}
-		p.skip_spaces();
 	}
 
-	else if (name == "jurabib") {
+	else if (name == "jurabib")
 		h_cite_engine = "jurabib";
-		p.skip_spaces();
-	}
 
-	else if (!in_lyx_preamble) {
+	else if (name == "babel")
+		; // ignore this
+
+	else {
 		if (options.empty())
 			h_preamble << "\\usepackage{" << name << "}";
 		else {
@@ -452,6 +459,9 @@ void handle_package(Parser &p, string const & name, string const & opts,
 	if (!options.empty())
 		cerr << "Ignoring options '" << join(options, ",")
 		     << "' of package " << name << '.' << endl;
+
+	// remove the whitespace
+	p.skip_spaces();
 }
 
 
@@ -459,7 +469,7 @@ void handle_package(Parser &p, string const & name, string const & opts,
 void end_preamble(ostream & os, TextClass const & /*textclass*/)
 {
 	os << "#LyX file created by tex2lyx " << PACKAGE_VERSION << "\n"
-	   << "\\lyxformat 257\n"
+	   << "\\lyxformat 258\n"
 	   << "\\begin_document\n"
 	   << "\\begin_header\n"
 	   << "\\textclass " << h_textclass << "\n";
@@ -513,7 +523,7 @@ void parse_preamble(Parser & p, ostream & os,
 	special_columns['D'] = 3;
 	bool is_full_document = false;
 	bool is_lyx_file = false;
-	bool in_lyx_preamble = false;
+	bool lyx_specific_preamble = false;
 
 	// determine whether this is a full document or a fragment for inclusion
 	while (p.good()) {
@@ -536,8 +546,7 @@ void parse_preamble(Parser & p, ostream & os,
 		//
 		// cat codes
 		//
-		if (!in_lyx_preamble &&
-		    (t.cat() == catLetter ||
+		if ((t.cat() == catLetter ||
 		     t.cat() == catSuper ||
 		     t.cat() == catSub ||
 		     t.cat() == catOther ||
@@ -549,8 +558,7 @@ void parse_preamble(Parser & p, ostream & os,
 		     t.cat() == catParameter))
 			h_preamble << t.character();
 
-		else if (!in_lyx_preamble && 
-			 (t.cat() == catSpace || t.cat() == catNewline))
+		else if (t.cat() == catSpace || t.cat() == catNewline)
 			h_preamble << t.asInput();
 
 		else if (t.cat() == catComment) {
@@ -571,13 +579,10 @@ void parse_preamble(Parser & p, ostream & os,
 			}
 
 			smatch sub;
-			if (regex_search(comment, sub, islyxfile)) {
+			if (regex_search(comment, sub, islyxfile))
 				is_lyx_file = true;
-				in_lyx_preamble = true;
-			} else if (is_lyx_file
-				   && regex_search(comment, sub, usercommands))
-				in_lyx_preamble = false;
-			else if (!in_lyx_preamble)
+			// don't output LyX specific comments
+			if (!is_known(comment, known_lyx_comments))
 				h_preamble << t.asInput();
 		}
 
@@ -585,21 +590,20 @@ void parse_preamble(Parser & p, ostream & os,
 			h_paperpagestyle = p.verbatim_item();
 
 		else if (t.cs() == "makeatletter") {
-			if (!is_lyx_file || !in_lyx_preamble
-			    || p.getCatCode('@') != catLetter)
-				h_preamble << "\\makeatletter";
+			// LyX takes care of this
 			p.setCatCode('@', catLetter);
 		}
 
 		else if (t.cs() == "makeatother") {
-			if (!is_lyx_file || !in_lyx_preamble
-			    || p.getCatCode('@') != catOther)
-				h_preamble << "\\makeatother";
+			// LyX takes care of this
 			p.setCatCode('@', catOther);
 		}
 
 		else if (t.cs() == "newcommand" || t.cs() == "renewcommand"
-			    || t.cs() == "providecommand") {
+			    || t.cs() == "providecommand"
+				|| t.cs() == "DeclareRobustCommand"
+				|| t.cs() == "ProvideTextCommandDefault"
+				|| t.cs() == "DeclareMathAccent") {
 			bool star = false;
 			if (p.next_token().character() == '*') {
 				p.get_token();
@@ -613,22 +617,25 @@ void parse_preamble(Parser & p, ostream & os,
 			if (name == "\\rmdefault")
 				if (is_known(body, known_roman_fonts))
 					h_font_roman = body;
-
 			if (name == "\\sfdefault")
 				if (is_known(body, known_sans_fonts))
 					h_font_sans = body;
-
 			if (name == "\\ttdefault")
 				if (is_known(body, known_typewriter_fonts))
 					h_font_typewriter = body;
-
 			if (name == "\\familydefault") {
 				string family = body;
 				// remove leading "\"
 				h_font_default_family = family.erase(0,1);
 			}
+			// LyX specific commands that will automatically be set by LyX
+			string lyx_command = name;
+			// remove the leading "\"
+			lyx_command.erase(0,1);
+			if (is_known(lyx_command, known_lyx_commands))
+				lyx_specific_preamble = true;
 			// only non-lyxspecific stuff
-			if (!in_lyx_preamble) {
+			if (!lyx_specific_preamble) {
 				ostringstream ss;
 				ss << '\\' << t.cs();
 				if (star)
@@ -716,8 +723,7 @@ void parse_preamble(Parser & p, ostream & os,
 			vector<string>::const_iterator it  = vecnames.begin();
 			vector<string>::const_iterator end = vecnames.end();
 			for (; it != end; ++it)
-				handle_package(p, trim(*it), options, 
-					       in_lyx_preamble);
+				handle_package(p, trim(*it), options);
 		}
 
 		else if (t.cs() == "inputencoding") {
@@ -729,12 +735,13 @@ void parse_preamble(Parser & p, ostream & os,
 		else if (t.cs() == "newenvironment") {
 			string const name = p.getArg('{', '}');
 			ostringstream ss;
+			// only non LyX specific stuff is output
 			ss << "\\newenvironment{" << name << "}";
 			ss << p.getOpt();
 			ss << p.getOpt();
 			ss << '{' << p.verbatim_item() << '}';
 			ss << '{' << p.verbatim_item() << '}';
-			if (!in_lyx_preamble)
+			if (!is_known(name, known_lyx_commands))
 				h_preamble << ss.str();
 		}
 
@@ -742,7 +749,7 @@ void parse_preamble(Parser & p, ostream & os,
 			string name = p.get_token().cs();
 			while (p.next_token().cat() != catBegin)
 				name += p.get_token().asString();
-			if (!in_lyx_preamble)
+			if (!is_known(name, known_lyx_commands))
 				h_preamble << "\\def\\" << name << '{'
 					   << p.verbatim_item() << "}";
 		}
@@ -850,9 +857,14 @@ void parse_preamble(Parser & p, ostream & os,
 			}
 		}
 
-		else if (!t.cs().empty() && !in_lyx_preamble)
+		else if (!t.cs().empty())
 			h_preamble << '\\' << t.cs();
+
+		// remove the whitespace
+		p.skip_spaces();
 	}
+
+	// remove the whitespace
 	p.skip_spaces();
 
 	// Force textclass if the user wanted it
