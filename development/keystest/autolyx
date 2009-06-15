@@ -1,6 +1,6 @@
 #!/bin/bash
 # This script starts LyX, and restarts LyX if it is closed
-# it logs all output, including backtraces to LT/out/GDB
+# it logs all output, including backtraces to development/keystest/out/GDB
 
 #rename other windows to avoid confusion.
 wmctrl -N __renamed__ -r lyx

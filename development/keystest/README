@@ -6,11 +6,10 @@ presses, and collect the crash results.
 Since the code involves spamming random keypresses, I'd recommend
 running it in a VM, well away from your main X windows session.
 
-In short, to use this, move this directory LT into your LyX source directory
-(e.g. lyx-1.6.x, but not lyx-1.6.x/src). Then run LT/lyx_make.sh
+In short, to use this, run development/keytest/lyx_make.sh
 
 It requires the following packages to run
-  xvkbd wmctrl 
+  xvkbd wmctrl
 the following are also useful:
    lyx libqt4-dbg subversion automake
 
