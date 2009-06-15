@@ -1,0 +1,16 @@
+#!/bin/bash
+# This script starts LyX, and restarts LyX if it is closed
+# it logs all output, including backtraces to LT/out/GDB
+
+#rename other windows to avoid confusion.
+wmctrl -N __renamed__ -r lyx
+wmctrl -N __renamed__ -r lyx
+wmctrl -N __renamed__ -r lyx
+wmctrl -N __renamed__ -r lyx
+
+while true
+do
+  ( (echo SECONDS: `date +%s`
+	(echo "run
+  bt" ; yes q) | gdb src/lyx 2>&1) | strings|  tee -a LT/out/GDB)
+done
