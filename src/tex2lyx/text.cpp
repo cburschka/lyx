@@ -3,9 +3,9 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author AndrÃ© PÃ¶nitz
+ * \author André Pönitz
  * \author Jean-Marc Lasgouttes
- * \author Uwe StÃ¶hr
+ * \author Uwe Stöhr
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -429,20 +429,6 @@ Layout const * findLayout(TextClass const & textclass, string const & name)
 
 
 void eat_whitespace(Parser &, ostream &, Context &, bool);
-
-
-Layout * captionlayout()
-{
-	static Layout * lay = 0;
-	if (!lay) {
-		lay = new Layout;
-		lay->name_ = from_ascii("Caption");
-		lay->latexname_ = "caption";
-		lay->latextype = LATEX_COMMAND;
-		lay->optionalargs = 1;
-	}
-	return lay;
-}
 
 
 void output_command_layout(ostream & os, Parser & p, bool outer,
@@ -1578,13 +1564,28 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			p.skip_spaces();
 		}
 
-		// Special handling for \caption
-		// FIXME: remove this when InsetCaption is supported.
-		else if (context.new_layout_allowed &&
-			 t.cs() == captionlayout()->latexname()) {
-			output_command_layout(os, p, outer, context, 
-					      captionlayout());
+		else if (t.cs() == "caption") {
 			p.skip_spaces();
+			context.check_layout(os);
+			p.skip_spaces();
+			begin_inset(os, "Caption\n\n");
+			os << "\\begin_layout Standard";
+			if (p.next_token().character() == '[') {
+				p.get_token(); // eat '['
+				begin_inset(os, "OptArg\n");
+				os << "status collapsed\n";
+				parse_text_in_inset(p, os, FLAG_BRACK_LAST, outer, context);
+				end_inset(os);
+				eat_whitespace(p, os, context, false);
+			}
+			parse_text(p, os, FLAG_ITEM, outer, context);
+			context.check_end_layout(os);
+			// We don't need really a new paragraph, but
+			// we must make sure that the next item gets a \begin_layout.
+			context.new_paragraph(os);
+			end_inset(os);
+			p.skip_spaces();
+			os << "\\end_layout\n";
 		}
 
 		else if (t.cs() == "includegraphics") {
