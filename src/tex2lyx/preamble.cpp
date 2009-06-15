@@ -3,8 +3,8 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author André Pönitz
- * \author Uwe Stöhr
+ * \author AndrÃ© PÃ¶nitz
+ * \author Uwe StÃ¶hr
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -266,18 +266,13 @@ void handle_package(Parser &p, string const & name, string const & opts,
 		// when font uses real small capitals
 		if (opts == "expert")
 			h_font_sc = "true";
-		p.skip_spaces();
 	}
 
-	if (name == "mathpazo") {
+	if (name == "mathpazo")
 		h_font_roman = "palatino";
-		p.skip_spaces();
-	}
 
-	if (name == "mathptmx") {
+	if (name == "mathptmx")
 		h_font_roman = "times";
-		p.skip_spaces();
-	}
 
 	// sansserif fonts
 	if (is_known(name, known_sans_fonts)) {
@@ -286,7 +281,6 @@ void handle_package(Parser &p, string const & name, string const & opts,
 			scale = opts;
 			h_font_sf_scale = scale_as_percentage(scale);
 		}
-		p.skip_spaces();
 	}
 
 	// typewriter fonts
@@ -296,19 +290,14 @@ void handle_package(Parser &p, string const & name, string const & opts,
 			scale = opts;
 			h_font_tt_scale = scale_as_percentage(scale);
 		}
-		p.skip_spaces();
 	}
 
 	// font uses old-style figure
-	if (name == "eco") {
+	if (name == "eco")
 		h_font_osf = "true";
-		p.skip_spaces();
-	}
 
-	else if (name == "amsmath" || name == "amssymb") {
+	else if (name == "amsmath" || name == "amssymb")
 		h_use_amsmath = "2";
-		p.skip_spaces();
-	}
 
 	else if (name == "babel" && !opts.empty()) {
 		// check if more than one option was used - used later for inputenc
@@ -337,10 +326,10 @@ void handle_package(Parser &p, string const & name, string const & opts,
 				h_language = "ukrainian";
 			h_quotes_language = h_language;
 		}
-		p.skip_spaces();
 	}
+
 	else if (name == "fontenc")
-		p.skip_spaces(); // ignore this
+		 ;// ignore this
 
 	else if (name == "inputenc") {
 		// only set when there is not more than one inputenc
@@ -358,39 +347,43 @@ void handle_package(Parser &p, string const & name, string const & opts,
 		if (!options.empty())
 			p.setEncoding(options.back());
 		options.clear();
-		p.skip_spaces();
 	}
 
 	else if (name == "makeidx")
-		p.skip_spaces(); // ignore this
+		; // ignore this
 
 	else if (name == "prettyref")
-		p.skip_spaces(); // ignore this
+		; // ignore this
 
 	else if (name == "varioref")
-		p.skip_spaces(); // ignore this
+		; // ignore this
 
-	else if (name == "verbatim")
-		p.skip_spaces(); // ignore this
+	else if (name == "verbatim")		
+		; // ignore this
+
+	else if (name == "nomencl")
+		; // ignore this
+
+	else if (name == "textcomp")
+		; // ignore this
 
 	else if (name == "url")
-		p.skip_spaces(); // ignore this
+		; // ignore this
 
 	else if (name == "color") {
 		// with the following command this package is only loaded when needed for
 		// undefined colors, since we only support the predefined colors
 		h_preamble << "\\@ifundefined{definecolor}\n {\\usepackage{color}}{}\n";
-		p.skip_spaces();
 	}
 
 	else if (name == "graphicx")
-		p.skip_spaces(); // ignore this
+		; // ignore this
 
 	else if (name == "setspace")
-		p.skip_spaces(); // ignore this
+		; // ignore this
 
 	else if (name == "geometry")
-		p.skip_spaces(); // Ignore this, the geometry settings are made by the \geometry
+		; // Ignore this, the geometry settings are made by the \geometry
 		  // command. This command is handled below.
 
 	else if (is_known(name, known_languages)) {
@@ -407,7 +400,6 @@ void handle_package(Parser &p, string const & name, string const & opts,
 		else
 			h_language = name;
 		h_quotes_language = h_language;
-		p.skip_spaces();
 	}
 
 	else if (name == "natbib") {
@@ -423,13 +415,10 @@ void handle_package(Parser &p, string const & name, string const & opts,
 				options.erase(it);
 			}
 		}
-		p.skip_spaces();
 	}
 
-	else if (name == "jurabib") {
+	else if (name == "jurabib")
 		h_cite_engine = "jurabib";
-		p.skip_spaces();
-	}
 
 	else if (!in_lyx_preamble) {
 		if (options.empty())
@@ -445,6 +434,9 @@ void handle_package(Parser &p, string const & name, string const & opts,
 	if (!options.empty())
 		cerr << "Ignoring options '" << join(options, ",")
 		     << "' of package " << name << '.' << endl;
+
+	// remove the whitespace
+	p.skip_spaces();
 }
 
 
@@ -605,15 +597,12 @@ void parse_preamble(Parser & p, ostream & os,
 			if (name == "\\rmdefault")
 				if (is_known(body, known_roman_fonts))
 					h_font_roman = body;
-
 			if (name == "\\sfdefault")
 				if (is_known(body, known_sans_fonts))
 					h_font_sans = body;
-
 			if (name == "\\ttdefault")
 				if (is_known(body, known_typewriter_fonts))
 					h_font_typewriter = body;
-
 			if (name == "\\familydefault") {
 				string family = body;
 				// remove leading "\"
@@ -721,6 +710,7 @@ void parse_preamble(Parser & p, ostream & os,
 		else if (t.cs() == "newenvironment") {
 			string const name = p.getArg('{', '}');
 			ostringstream ss;
+			// only non LyX specific stuff is output
 			ss << "\\newenvironment{" << name << "}";
 			ss << p.getOpt();
 			ss << p.getOpt();
@@ -844,7 +834,12 @@ void parse_preamble(Parser & p, ostream & os,
 
 		else if (!t.cs().empty() && !in_lyx_preamble)
 			h_preamble << '\\' << t.cs();
+
+		// remove the whitespace
+		p.skip_spaces();
 	}
+
+	// remove the whitespace
 	p.skip_spaces();
 
 	// Force textclass if the user wanted it
