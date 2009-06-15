@@ -361,12 +361,6 @@ void handle_package(Parser &p, string const & name, string const & opts,
 	else if (name == "verbatim")		
 		; // ignore this
 
-	else if (name == "nomencl")
-		; // ignore this
-
-	else if (name == "textcomp")
-		; // ignore this
-
 	else if (name == "url")
 		; // ignore this
 
