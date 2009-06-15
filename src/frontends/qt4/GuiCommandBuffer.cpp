@@ -249,7 +249,8 @@ void GuiCommandBuffer::down()
 	if (!h.empty())
 		edit_->setText(toqstr(h));
 
-	downPB->setEnabled(history_pos_ != history_.end()-1);
+	downPB->setEnabled(!history_.empty()
+			   && history_pos_ != history_.end() - 1);
 	upPB->setEnabled(history_pos_ != history_.begin());
 }
 	
