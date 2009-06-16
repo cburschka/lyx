@@ -450,7 +450,14 @@ void InsetMathHull::drawT(TextPainter & pain, int x, int y) const
 static docstring latexString(InsetMathHull const & inset)
 {
 	odocstringstream ls;
-	Encoding const * encoding = &(inset.buffer().params().encoding());
+	// This has to be static, because a preview snippet or a math
+	// macro containing math in text mode (such as $\text{$\phi$}$ or
+	// \newcommand{\xxx}{\text{$\phi$}}) gets processed twice. The
+	// first time as a whole, and the second time only the inner math.
+	// In this last case inset.buffer() would be invalid.
+	static Encoding const * encoding = 0;
+	if (inset.isBufferValid())
+		encoding = &(inset.buffer().params().encoding());
 	WriteStream wi(ls, false, true, false, encoding);
 	inset.write(wi);
 	return ls.str();
