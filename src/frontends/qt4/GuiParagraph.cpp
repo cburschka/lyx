@@ -34,6 +34,7 @@
 #include <QCheckBox>
 #include <QLineEdit>
 #include <QPushButton>
+#include <QSettings>
 #include <QVariant>
 
 #include <sstream>

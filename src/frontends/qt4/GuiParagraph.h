@@ -23,7 +23,6 @@
 #include "ParagraphParameters.h"
 
 #include <QDialog>
-#include <QSettings>
 #include <QShowEvent>
 #include <QGridLayout>
 
