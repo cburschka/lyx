@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-06-08 18:07+0200\n"
+"POT-Creation-Date: 2009-06-16 11:05+0200\n"
 "PO-Revision-Date: 2009-04-19 17:26+0100\n"
 "Last-Translator: Hatim Alahmadi <Dr.Hatim@hotmail.com>\n"
 "Language-Team: LyX team <Dr.Hatim@hotmail.com>\n"
@@ -714,7 +714,7 @@ msgid "Search Field:"
 msgstr "حقل البحث:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:125
-#: src/frontends/qt4/GuiCitation.cpp:318
+#: src/frontends/qt4/GuiCitation.cpp:324
 msgid "All Fields"
 msgstr "كل الحقول"
 
@@ -727,7 +727,7 @@ msgid "Entry Types:"
 msgstr "نوع المدخل:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:170
-#: src/frontends/qt4/GuiCitation.cpp:333
+#: src/frontends/qt4/GuiCitation.cpp:339
 msgid "All Entry Types"
 msgstr "كل انواع المدخلات"
 
@@ -3577,8 +3577,8 @@ msgstr "كرر هذا الصف على رأس كل صفحة ما عدا الاو�
 #: src/frontends/qt4/ui/TabularUi.ui:1125
 #: src/frontends/qt4/ui/TabularUi.ui:1166
 #: src/frontends/qt4/ui/TabularUi.ui:1197
-#: src/frontends/qt4/ui/TabularUi.ui:1235 src/frontends/qt4/GuiToolbar.cpp:959
-#: src/frontends/qt4/GuiToolbar.cpp:968
+#: src/frontends/qt4/ui/TabularUi.ui:1235 src/frontends/qt4/GuiToolbar.cpp:967
+#: src/frontends/qt4/GuiToolbar.cpp:976
 msgid "on"
 msgstr "تشغيل"
 
@@ -9657,7 +9657,7 @@ msgstr "أسطر محددة"
 msgid "Selection as Paragraphs|P"
 msgstr "فقرات محددة"
 
-#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:353 lib/ui/stdmenus.inc:162
+#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:356 lib/ui/stdmenus.inc:162
 msgid "Multicolumn|M"
 msgstr "اعمدة متعددة|M"
 
@@ -9681,7 +9681,7 @@ msgstr "خط ايمن"
 msgid "Alignment|i"
 msgstr "محاذاة"
 
-#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:368 lib/ui/stdmenus.inc:180
+#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:371 lib/ui/stdmenus.inc:180
 msgid "Add Row|A"
 msgstr "اضافة صف"
 
@@ -9697,7 +9697,7 @@ msgstr "نسخ صف"
 msgid "Swap Rows"
 msgstr ""
 
-#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:373 lib/ui/stdmenus.inc:185
+#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:376 lib/ui/stdmenus.inc:185
 msgid "Add Column|u"
 msgstr "اضافة عمود"
 
@@ -9713,27 +9713,27 @@ msgstr "نسخ عمود"
 msgid "Swap Columns"
 msgstr ""
 
-#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:360 lib/ui/stdmenus.inc:172
+#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:363 lib/ui/stdmenus.inc:172
 msgid "Left|L"
 msgstr "يسار"
 
-#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:361 lib/ui/stdmenus.inc:173
+#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:364 lib/ui/stdmenus.inc:173
 msgid "Center|C"
 msgstr "توسيط"
 
-#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:362 lib/ui/stdmenus.inc:174
+#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:365 lib/ui/stdmenus.inc:174
 msgid "Right|R"
 msgstr "يمين"
 
-#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:364 lib/ui/stdmenus.inc:176
+#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:367 lib/ui/stdmenus.inc:176
 msgid "Top|T"
 msgstr "اعلى"
 
-#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:365 lib/ui/stdmenus.inc:177
+#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:368 lib/ui/stdmenus.inc:177
 msgid "Middle|M"
 msgstr "وسط"
 
-#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:366 lib/ui/stdmenus.inc:178
+#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:369 lib/ui/stdmenus.inc:178
 msgid "Bottom|B"
 msgstr "اسفل"
 
@@ -9765,7 +9765,7 @@ msgstr "محاذاة"
 msgid "Add Row|R"
 msgstr "اضافة صف"
 
-#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:369 lib/ui/stdmenus.inc:181
+#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:372 lib/ui/stdmenus.inc:181
 msgid "Delete Row|D"
 msgstr "حذف صف"
 
@@ -9773,7 +9773,7 @@ msgstr "حذف صف"
 msgid "Add Column|C"
 msgstr "اضافة عمود"
 
-#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:374 lib/ui/stdmenus.inc:186
+#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:377 lib/ui/stdmenus.inc:186
 msgid "Delete Column|e"
 msgstr "حذف عمود"
 
@@ -9966,7 +9966,7 @@ msgstr ""
 msgid "Inter-word Space|w"
 msgstr ""
 
-#: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:180 lib/ui/stdcontext.inc:203
+#: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:183 lib/ui/stdcontext.inc:206
 #: lib/ui/stdmenus.inc:369
 msgid "Thin Space|T"
 msgstr "مسافة رفيعة"
@@ -10465,10 +10465,10 @@ msgstr "هيئة مرجع"
 #: lib/ui/stdcontext.inc:83 lib/ui/stdcontext.inc:95 lib/ui/stdcontext.inc:105
 #: lib/ui/stdcontext.inc:113 lib/ui/stdcontext.inc:127
 #: lib/ui/stdcontext.inc:134 lib/ui/stdcontext.inc:155
-#: lib/ui/stdcontext.inc:196 lib/ui/stdcontext.inc:214
-#: lib/ui/stdcontext.inc:241 lib/ui/stdcontext.inc:323
-#: lib/ui/stdcontext.inc:331 lib/ui/stdcontext.inc:343
-#: lib/ui/stdcontext.inc:378 lib/ui/stdcontext.inc:387 lib/ui/stdmenus.inc:459
+#: lib/ui/stdcontext.inc:199 lib/ui/stdcontext.inc:217
+#: lib/ui/stdcontext.inc:244 lib/ui/stdcontext.inc:326
+#: lib/ui/stdcontext.inc:334 lib/ui/stdcontext.inc:346
+#: lib/ui/stdcontext.inc:381 lib/ui/stdcontext.inc:390 lib/ui/stdmenus.inc:459
 msgid "Settings...|S"
 msgstr "اعدادات..."
 
@@ -10487,18 +10487,18 @@ msgid "Edit Database(s) externally...|x"
 msgstr ""
 
 #: lib/ui/stdcontext.inc:123 lib/ui/stdcontext.inc:151
-#: lib/ui/stdcontext.inc:167 lib/ui/stdcontext.inc:319
+#: lib/ui/stdcontext.inc:167 lib/ui/stdcontext.inc:322
 msgid "Open Inset|O"
 msgstr ""
 
 #: lib/ui/stdcontext.inc:124 lib/ui/stdcontext.inc:152
-#: lib/ui/stdcontext.inc:168 lib/ui/stdcontext.inc:320
+#: lib/ui/stdcontext.inc:168 lib/ui/stdcontext.inc:323
 msgid "Close Inset|C"
 msgstr ""
 
 #: lib/ui/stdcontext.inc:126 lib/ui/stdcontext.inc:132
-#: lib/ui/stdcontext.inc:154 lib/ui/stdcontext.inc:170
-#: lib/ui/stdcontext.inc:322
+#: lib/ui/stdcontext.inc:154 lib/ui/stdcontext.inc:173
+#: lib/ui/stdcontext.inc:325
 msgid "Dissolve Inset|D"
 msgstr ""
 
@@ -10553,309 +10553,319 @@ msgstr "تعليق"
 msgid "Greyed Out|G"
 msgstr "رمادي"
 
-#: lib/ui/stdcontext.inc:178
+#: lib/ui/stdcontext.inc:170
+#, fuzzy
+msgid "Open All Notes|A"
+msgstr "فتح كل الادراجات|O"
+
+#: lib/ui/stdcontext.inc:171
+#, fuzzy
+msgid "Close All Notes|l"
+msgstr "اغلاق كل الادراجات|C"
+
+#: lib/ui/stdcontext.inc:181
 msgid "Interword Space|w"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:179
+#: lib/ui/stdcontext.inc:182
 msgid "Protected Space|o"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:181 lib/ui/stdcontext.inc:206
+#: lib/ui/stdcontext.inc:184 lib/ui/stdcontext.inc:209
 msgid "Negative Thin Space|N"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:182 lib/ui/stdcontext.inc:209
+#: lib/ui/stdcontext.inc:185 lib/ui/stdcontext.inc:212
 msgid "Half Quad Space (Enskip)|k"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:183
+#: lib/ui/stdcontext.inc:186
 msgid "Protected Half Quad Space (Enspace)|E"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:184 lib/ui/stdcontext.inc:210
+#: lib/ui/stdcontext.inc:187 lib/ui/stdcontext.inc:213
 msgid "Quad Space|Q"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:185 lib/ui/stdcontext.inc:211
+#: lib/ui/stdcontext.inc:188 lib/ui/stdcontext.inc:214
 msgid "Double Quad Space|u"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:186
+#: lib/ui/stdcontext.inc:189
 msgid "Horizontal Fill|F"
 msgstr "ملئ افقي"
 
-#: lib/ui/stdcontext.inc:187
+#: lib/ui/stdcontext.inc:190
 msgid "Protected Horizontal Fill|i"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:188
+#: lib/ui/stdcontext.inc:191
 msgid "Horizontal Fill (Dots)|D"
 msgstr "ملئ افقي (نقط)"
 
-#: lib/ui/stdcontext.inc:189
+#: lib/ui/stdcontext.inc:192
 msgid "Horizontal Fill (Rule)|R"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:190
+#: lib/ui/stdcontext.inc:193
 msgid "Horizontal Fill (Left Arrow)|L"
 msgstr "ملئ افقي (سهم ايسر)"
 
-#: lib/ui/stdcontext.inc:191
+#: lib/ui/stdcontext.inc:194
 msgid "Horizontal Fill (Right Arrow)|g"
 msgstr "ملئ افقي (سهم ايمن)"
 
-#: lib/ui/stdcontext.inc:192
+#: lib/ui/stdcontext.inc:195
 msgid "Horizontal Fill (Up Brace)|p"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:193
+#: lib/ui/stdcontext.inc:196
 msgid "Horizontal Fill (Down Brace)|B"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:194 lib/ui/stdcontext.inc:212
+#: lib/ui/stdcontext.inc:197 lib/ui/stdcontext.inc:215
 msgid "Custom Length|C"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:204
+#: lib/ui/stdcontext.inc:207
 #, fuzzy
 msgid "Medium Space|M"
 msgstr "مسافة رفيعة"
 
-#: lib/ui/stdcontext.inc:205
+#: lib/ui/stdcontext.inc:208
 #, fuzzy
 msgid "Thick Space|h"
 msgstr "مسافة رفيعة"
 
-#: lib/ui/stdcontext.inc:207
+#: lib/ui/stdcontext.inc:210
 msgid "Negative Medium Space|u"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:208
+#: lib/ui/stdcontext.inc:211
 msgid "Negative Thick Space|i"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:221
+#: lib/ui/stdcontext.inc:224
 msgid "DefSkip|D"
 msgstr "رفيع"
 
-#: lib/ui/stdcontext.inc:222
+#: lib/ui/stdcontext.inc:225
 msgid "SmallSkip|S"
 msgstr "صغير"
 
-#: lib/ui/stdcontext.inc:223
+#: lib/ui/stdcontext.inc:226
 msgid "MedSkip|M"
 msgstr "متوسط"
 
-#: lib/ui/stdcontext.inc:224
+#: lib/ui/stdcontext.inc:227
 msgid "BigSkip|B"
 msgstr "كبير"
 
-#: lib/ui/stdcontext.inc:225
+#: lib/ui/stdcontext.inc:228
 msgid "VFill|F"
 msgstr "ملئ رأسي"
 
-#: lib/ui/stdcontext.inc:226
+#: lib/ui/stdcontext.inc:229
 msgid "Custom|C"
 msgstr "اختياري"
 
-#: lib/ui/stdcontext.inc:228
+#: lib/ui/stdcontext.inc:231
 msgid "Settings...|e"
 msgstr "اعدادات..."
 
-#: lib/ui/stdcontext.inc:235
+#: lib/ui/stdcontext.inc:238
 msgid "Include|c"
 msgstr "تضمين"
 
-#: lib/ui/stdcontext.inc:236
+#: lib/ui/stdcontext.inc:239
 msgid "Input|p"
 msgstr "ادخل"
 
-#: lib/ui/stdcontext.inc:237
+#: lib/ui/stdcontext.inc:240
 msgid "Verbatim|V"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:238
+#: lib/ui/stdcontext.inc:241
 msgid "Verbatim (marked blanks)|b"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:239
+#: lib/ui/stdcontext.inc:242
 msgid "Listing|L"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:243
+#: lib/ui/stdcontext.inc:246
 msgid "Edit included file...|E"
 msgstr "تحرير ملف مضمن..."
 
-#: lib/ui/stdcontext.inc:250 lib/ui/stdmenus.inc:379
+#: lib/ui/stdcontext.inc:253 lib/ui/stdmenus.inc:379
 msgid "New Page|N"
 msgstr "صفحة جديدة"
 
-#: lib/ui/stdcontext.inc:251 lib/ui/stdmenus.inc:380
+#: lib/ui/stdcontext.inc:254 lib/ui/stdmenus.inc:380
 msgid "Page Break|a"
 msgstr "صفحة جديدة"
 
-#: lib/ui/stdcontext.inc:252 lib/ui/stdmenus.inc:381
+#: lib/ui/stdcontext.inc:255 lib/ui/stdmenus.inc:381
 msgid "Clear Page|C"
 msgstr "صفحة فارغة"
 
-#: lib/ui/stdcontext.inc:253 lib/ui/stdmenus.inc:382
+#: lib/ui/stdcontext.inc:256 lib/ui/stdmenus.inc:382
 msgid "Clear Double Page|D"
 msgstr "صفحتين فارغتين"
 
-#: lib/ui/stdcontext.inc:260 lib/ui/stdmenus.inc:376
+#: lib/ui/stdcontext.inc:263 lib/ui/stdmenus.inc:376
 msgid "Ragged Line Break|R"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:261 lib/ui/stdmenus.inc:377
+#: lib/ui/stdcontext.inc:264 lib/ui/stdmenus.inc:377
 msgid "Justified Line Break|J"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:268 lib/ui/stdcontext.inc:314 lib/ui/stdmenus.inc:88
+#: lib/ui/stdcontext.inc:271 lib/ui/stdcontext.inc:317 lib/ui/stdmenus.inc:88
 #: lib/ui/stdtoolbars.inc:66 src/Text3.cpp:1037
 #: src/mathed/InsetMathNest.cpp:550
 msgid "Cut"
 msgstr "قص"
 
-#: lib/ui/stdcontext.inc:269 lib/ui/stdcontext.inc:315 lib/ui/stdmenus.inc:89
+#: lib/ui/stdcontext.inc:272 lib/ui/stdcontext.inc:318 lib/ui/stdmenus.inc:89
 #: lib/ui/stdtoolbars.inc:67 src/Text3.cpp:1042
 #: src/mathed/InsetMathNest.cpp:558
 msgid "Copy"
 msgstr "نسخ"
 
-#: lib/ui/stdcontext.inc:270 lib/ui/stdcontext.inc:316 lib/ui/stdmenus.inc:90
+#: lib/ui/stdcontext.inc:273 lib/ui/stdcontext.inc:319 lib/ui/stdmenus.inc:90
 #: lib/ui/stdtoolbars.inc:68 src/Text3.cpp:995
 #: src/mathed/InsetMathGrid.cpp:1256 src/mathed/InsetMathNest.cpp:530
 msgid "Paste"
 msgstr "لصق"
 
-#: lib/ui/stdcontext.inc:271 lib/ui/stdcontext.inc:317 lib/ui/stdmenus.inc:91
+#: lib/ui/stdcontext.inc:274 lib/ui/stdcontext.inc:320 lib/ui/stdmenus.inc:91
 msgid "Paste Recent|e"
 msgstr "آخر لصق"
 
-#: lib/ui/stdcontext.inc:273
+#: lib/ui/stdcontext.inc:276
 #, fuzzy
 msgid "Jump Back to Saved Bookmark|B"
 msgstr "قفز لعلامة محفوظة"
 
-#: lib/ui/stdcontext.inc:275 lib/ui/stdmenus.inc:98
+#: lib/ui/stdcontext.inc:278 lib/ui/stdmenus.inc:98
 msgid "Move Paragraph Up|o"
 msgstr "نقل الفقرة لاعلى"
 
-#: lib/ui/stdcontext.inc:276 lib/ui/stdmenus.inc:99
+#: lib/ui/stdcontext.inc:279 lib/ui/stdmenus.inc:99
 msgid "Move Paragraph Down|v"
 msgstr "نقل الفقرة لاسفل"
 
-#: lib/ui/stdcontext.inc:278
+#: lib/ui/stdcontext.inc:281
 msgid "Promote Section|r"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:279
+#: lib/ui/stdcontext.inc:282
 msgid "Demote Section|m"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:280
+#: lib/ui/stdcontext.inc:283
 msgid "Move Section down|d"
 msgstr "نقل القسم لأسفل"
 
-#: lib/ui/stdcontext.inc:281
+#: lib/ui/stdcontext.inc:284
 msgid "Move Section up|u"
 msgstr "نقل القسم لأعلى"
 
-#: lib/ui/stdcontext.inc:282
+#: lib/ui/stdcontext.inc:285
 #, fuzzy
 msgid "Insert Short Title|T"
 msgstr "عنوان قصير"
 
-#: lib/ui/stdcontext.inc:284
+#: lib/ui/stdcontext.inc:287
 msgid "Apply Last Text Style|A"
 msgstr "تطبيق اسلوب النص الاخير"
 
-#: lib/ui/stdcontext.inc:285 lib/ui/stdmenus.inc:101
+#: lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:101
 msgid "Text Style|S"
 msgstr "اسلوب النص"
 
-#: lib/ui/stdcontext.inc:286 lib/ui/stdmenus.inc:102
+#: lib/ui/stdcontext.inc:289 lib/ui/stdmenus.inc:102
 msgid "Paragraph Settings...|P"
 msgstr "اعدادات الفقرة"
 
-#: lib/ui/stdcontext.inc:288
+#: lib/ui/stdcontext.inc:291
 msgid "Fullscreen Mode"
 msgstr "نظام كامل الشاشة"
 
-#: lib/ui/stdcontext.inc:296 lib/ui/stdmenus.inc:217
+#: lib/ui/stdcontext.inc:299 lib/ui/stdmenus.inc:217
 #: lib/ui/stdtoolbars.inc:172
 #, fuzzy
 msgid "Append Argument"
 msgstr "فتح مستند"
 
-#: lib/ui/stdcontext.inc:297 lib/ui/stdmenus.inc:218
+#: lib/ui/stdcontext.inc:300 lib/ui/stdmenus.inc:218
 #: lib/ui/stdtoolbars.inc:171
 #, fuzzy
 msgid "Remove Last Argument"
 msgstr "ازالة المعطى الاخير"
 
-#: lib/ui/stdcontext.inc:299 lib/ui/stdmenus.inc:220
+#: lib/ui/stdcontext.inc:302 lib/ui/stdmenus.inc:220
 #: lib/ui/stdtoolbars.inc:174
 msgid "Make First Non-Optional into Optional Argument"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:300 lib/ui/stdmenus.inc:221
+#: lib/ui/stdcontext.inc:303 lib/ui/stdmenus.inc:221
 #: lib/ui/stdtoolbars.inc:175
 msgid "Make Last Optional into Non-Optional Argument"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:301 lib/ui/stdmenus.inc:222
+#: lib/ui/stdcontext.inc:304 lib/ui/stdmenus.inc:222
 #: lib/ui/stdtoolbars.inc:178
 #, fuzzy
 msgid "Insert Optional Argument"
 msgstr "ادراج مدخل فهرس"
 
-#: lib/ui/stdcontext.inc:302 lib/ui/stdmenus.inc:223
+#: lib/ui/stdcontext.inc:305 lib/ui/stdmenus.inc:223
 #: lib/ui/stdtoolbars.inc:177
 msgid "Remove Optional Argument"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:304 lib/ui/stdmenus.inc:225
+#: lib/ui/stdcontext.inc:307 lib/ui/stdmenus.inc:225
 #: lib/ui/stdtoolbars.inc:181
 msgid "Append Argument Eating From The Right"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:305 lib/ui/stdmenus.inc:226
+#: lib/ui/stdcontext.inc:308 lib/ui/stdmenus.inc:226
 #: lib/ui/stdtoolbars.inc:182
 msgid "Append Optional Argument Eating From The Right"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:306 lib/ui/stdmenus.inc:227
+#: lib/ui/stdcontext.inc:309 lib/ui/stdmenus.inc:227
 #: lib/ui/stdtoolbars.inc:180
 msgid "Remove Last Argument Spitting Out To The Right"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:333 lib/ui/stdcontext.inc:345
+#: lib/ui/stdcontext.inc:336 lib/ui/stdcontext.inc:348
 msgid "Edit externally...|x"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:355 lib/ui/stdmenus.inc:164
+#: lib/ui/stdcontext.inc:358 lib/ui/stdmenus.inc:164
 msgid "Top Line|T"
 msgstr "خط اعلى"
 
-#: lib/ui/stdcontext.inc:356 lib/ui/stdmenus.inc:165
+#: lib/ui/stdcontext.inc:359 lib/ui/stdmenus.inc:165
 msgid "Bottom Line|B"
 msgstr "خط  اسفل"
 
-#: lib/ui/stdcontext.inc:357 lib/ui/stdmenus.inc:166
+#: lib/ui/stdcontext.inc:360 lib/ui/stdmenus.inc:166
 msgid "Left Line|L"
 msgstr "خط ايسر"
 
-#: lib/ui/stdcontext.inc:358 lib/ui/stdmenus.inc:167
+#: lib/ui/stdcontext.inc:361 lib/ui/stdmenus.inc:167
 msgid "Right Line|R"
 msgstr "خط ايمن"
 
-#: lib/ui/stdcontext.inc:370 lib/ui/stdmenus.inc:182
+#: lib/ui/stdcontext.inc:373 lib/ui/stdmenus.inc:182
 msgid "Copy Row|o"
 msgstr "نسخ صف"
 
-#: lib/ui/stdcontext.inc:375 lib/ui/stdmenus.inc:187
+#: lib/ui/stdcontext.inc:378 lib/ui/stdmenus.inc:187
 msgid "Copy Column|p"
 msgstr "نسخ عمود"
 
@@ -14337,33 +14347,33 @@ msgstr "مس وورد"
 msgid "HTML (MS Word)"
 msgstr "HTML (MS Word)"
 
-#: src/BiblioInfo.cpp:234 src/frontends/qt4/GuiDocument.cpp:1377
+#: src/BiblioInfo.cpp:235 src/frontends/qt4/GuiDocument.cpp:1377
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s و %2$s"
 
-#: src/BiblioInfo.cpp:238
+#: src/BiblioInfo.cpp:239
 #, c-format
 msgid "%1$s et al."
 msgstr ""
 
-#: src/BiblioInfo.cpp:295
+#: src/BiblioInfo.cpp:296
 msgid "Ch. "
 msgstr ""
 
-#: src/BiblioInfo.cpp:297
+#: src/BiblioInfo.cpp:298
 msgid "pp. "
 msgstr ""
 
-#: src/BiblioInfo.cpp:436 src/BiblioInfo.cpp:439
+#: src/BiblioInfo.cpp:437 src/BiblioInfo.cpp:440
 msgid "No year"
 msgstr "لا عام"
 
-#: src/BiblioInfo.cpp:498 src/BiblioInfo.cpp:558
+#: src/BiblioInfo.cpp:499 src/BiblioInfo.cpp:559
 msgid "Add to bibliography only."
 msgstr "اضافة للبابلوغرافيا فقط."
 
-#: src/BiblioInfo.cpp:554
+#: src/BiblioInfo.cpp:555
 msgid "before"
 msgstr "قبل"
 
@@ -17083,7 +17093,7 @@ msgstr "اصفر"
 msgid "Text Style"
 msgstr "اسلوب النص"
 
-#: src/frontends/qt4/GuiCitation.cpp:319
+#: src/frontends/qt4/GuiCitation.cpp:325
 msgid "Keys"
 msgstr "مفاتيح"
 
@@ -17750,7 +17760,7 @@ msgstr "ملئ افقي"
 msgid "Hyperlink"
 msgstr ""
 
-#: src/frontends/qt4/GuiInclude.cpp:48 src/frontends/qt4/Menus.cpp:1082
+#: src/frontends/qt4/GuiInclude.cpp:48 src/frontends/qt4/Menus.cpp:1088
 msgid "Child Document"
 msgstr ""
 
@@ -18604,28 +18614,28 @@ msgstr "معلومات تيك"
 msgid "Outline"
 msgstr "خط خارجي"
 
-#: src/frontends/qt4/GuiToolbar.cpp:368
+#: src/frontends/qt4/GuiToolbar.cpp:369
 #, c-format
 msgid "Filtering layouts with \"%1$s\". Press ESC to remove filter."
 msgstr ""
 
-#: src/frontends/qt4/GuiToolbar.cpp:372 src/frontends/qt4/GuiToolbar.cpp:421
+#: src/frontends/qt4/GuiToolbar.cpp:373 src/frontends/qt4/GuiToolbar.cpp:422
 msgid "Enter characters to filter the layout list."
 msgstr ""
 
-#: src/frontends/qt4/GuiToolbar.cpp:543
+#: src/frontends/qt4/GuiToolbar.cpp:544
 msgid " (unknown)"
 msgstr " (مجهول)"
 
-#: src/frontends/qt4/GuiToolbar.cpp:951 src/frontends/qt4/Toolbars.cpp:309
+#: src/frontends/qt4/GuiToolbar.cpp:959 src/frontends/qt4/Toolbars.cpp:309
 msgid "auto"
 msgstr "آلي"
 
-#: src/frontends/qt4/GuiToolbar.cpp:956 src/frontends/qt4/GuiToolbar.cpp:965
+#: src/frontends/qt4/GuiToolbar.cpp:964 src/frontends/qt4/GuiToolbar.cpp:973
 msgid "off"
 msgstr "ايقاف"
 
-#: src/frontends/qt4/GuiToolbar.cpp:972
+#: src/frontends/qt4/GuiToolbar.cpp:980
 #, c-format
 msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr ""
@@ -18899,55 +18909,55 @@ msgstr ""
 msgid "Click to detach"
 msgstr "انقر للفصل"
 
-#: src/frontends/qt4/Menus.cpp:647
+#: src/frontends/qt4/Menus.cpp:648
 msgid "No Group"
 msgstr "لا مجموعة"
 
-#: src/frontends/qt4/Menus.cpp:692
+#: src/frontends/qt4/Menus.cpp:698
 msgid "No Documents Open!"
 msgstr "لم يتم فتح مستند!"
 
-#: src/frontends/qt4/Menus.cpp:718 src/frontends/qt4/Menus.cpp:797
-#: src/frontends/qt4/Menus.cpp:817 src/frontends/qt4/Menus.cpp:839
-#: src/frontends/qt4/Menus.cpp:927 src/frontends/qt4/Menus.cpp:1033
-#: src/frontends/qt4/Menus.cpp:1093
+#: src/frontends/qt4/Menus.cpp:724 src/frontends/qt4/Menus.cpp:803
+#: src/frontends/qt4/Menus.cpp:823 src/frontends/qt4/Menus.cpp:845
+#: src/frontends/qt4/Menus.cpp:933 src/frontends/qt4/Menus.cpp:1039
+#: src/frontends/qt4/Menus.cpp:1099
 msgid "No Document Open!"
 msgstr "لا مستند مفتوح!"
 
-#: src/frontends/qt4/Menus.cpp:858
+#: src/frontends/qt4/Menus.cpp:864
 #, fuzzy
 msgid "No custom insets defined!"
 msgstr "لا اجراء محدد"
 
-#: src/frontends/qt4/Menus.cpp:938
+#: src/frontends/qt4/Menus.cpp:944
 msgid "Master Document"
 msgstr "مستند رئيسي"
 
-#: src/frontends/qt4/Menus.cpp:955
+#: src/frontends/qt4/Menus.cpp:961
 msgid "Open Navigator..."
 msgstr "فتح مستكشف..."
 
-#: src/frontends/qt4/Menus.cpp:976
+#: src/frontends/qt4/Menus.cpp:982
 msgid "Other Lists"
 msgstr "قوائم أخرى"
 
-#: src/frontends/qt4/Menus.cpp:985
+#: src/frontends/qt4/Menus.cpp:991
 msgid "No Table of contents"
 msgstr "لا جدول في المحتوى"
 
-#: src/frontends/qt4/Menus.cpp:1022
+#: src/frontends/qt4/Menus.cpp:1028
 msgid "Other Toolbars"
 msgstr "اشرطة ادوات أخرى"
 
-#: src/frontends/qt4/Menus.cpp:1042
+#: src/frontends/qt4/Menus.cpp:1048
 msgid "No Branch in Document!"
 msgstr "لا فرع في المستند!"
 
-#: src/frontends/qt4/Menus.cpp:1101
+#: src/frontends/qt4/Menus.cpp:1107
 msgid "No Citation in Scope!"
 msgstr ""
 
-#: src/frontends/qt4/Menus.cpp:1643
+#: src/frontends/qt4/Menus.cpp:1649
 msgid "No action defined!"
 msgstr "لا اجراء محدد"
 
