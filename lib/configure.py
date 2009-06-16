@@ -465,10 +465,10 @@ def checkConverterEntries():
     checkProg('an MS Word -> LaTeX converter', ['wvCleanLatex $$i $$o'],
         rc_entry = [ r'\converter word       latex      "%%"	""' ])
     #
-    path, elyxer = checkProg('a LyX -> HTML converter', ['elyxer.py $$i $$o'],
+    path, elyxer = checkProg('a LyX -> HTML converter', ['elyxer.py --directory $$r $$i $$o'],
       rc_entry = [ r'\converter lyx      html       "%%"	""' ])
     if elyxer.find('elyxer.py') >= 0:
-      addToRC(r'''\copier    html       "python -tt $$s/scripts/ext_copy.py -e html,png,css $$i $$o"''')
+      addToRC(r'''\copier    html       "python -tt $$s/scripts/ext_copy.py -e html,png,jpg,jpeg,css $$i $$o"''')
     else:
       # On SuSE the scripts have a .sh suffix, and on debian they are in /usr/share/tex4ht/
       path, htmlconv = checkProg('a LaTeX -> HTML converter', ['htlatex $$i', 'htlatex.sh $$i', \
