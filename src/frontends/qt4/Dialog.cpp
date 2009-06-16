@@ -153,7 +153,7 @@ void Dialog::apply()
 }
 
 
-void Dialog::showView()
+void Dialog::prepareView()
 {
 	// Make sure the dialog controls are correctly enabled/disabled with
 	// readonly status.
@@ -165,7 +165,14 @@ void Dialog::showView()
 	QSize const hint = w->sizeHint();
 	if (hint.height() >= 0 && hint.width() >= 0)
 		w->setMinimumSize(hint);
+}
 
+
+void Dialog::showView()
+{
+	prepareView();
+
+	QWidget * w = asQWidget();
 	if (w->isVisible()) {
 		w->raise();
 		w->activateWindow();
