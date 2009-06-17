@@ -121,8 +121,11 @@ public:
 	/// Hide the dialog from sight
 	void hideView();
 
-	/// Create the dialog if necessary, update it and display it.
+	/// Prepare dialog and display it.
 	void showView();
+
+	/// Prepare dialog before view.
+	void prepareView();
 
 	/// Decide wether the dialog should grab thekeyboard focus when shown.
 	/// This method defaults to true, override if a different behaviour

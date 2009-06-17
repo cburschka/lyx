@@ -375,6 +375,7 @@ bool GuiView::restoreLayout()
 	if (!settings.contains(icon_key))
 		return false;
 
+	//code below is skipped when when ~/.config/LyX is (re)created
 	setIconSize(settings.value(icon_key).toSize());
 #ifdef Q_WS_X11
 	QPoint pos = settings.value("pos", QPoint(50, 50)).toPoint();
@@ -390,11 +391,12 @@ bool GuiView::restoreLayout()
 
 	// Allow the toc and view-source dock widget to be restored if needed.
 	Dialog *d;
-	if ((d = findOrBuild("toc", true)))
-		// see bug 5082
-		d->showView();
+	if ((d = findOrBuild("toc", true)));
+		// see bug 5082. At least setup title and enabled state.
+		// Visibility will be adjusted by restoreState below.
+		d->prepareView();
 	if ((d = findOrBuild("view-source", true)))
-		d->showView();
+		d->prepareView();
 
 	if (!restoreState(settings.value("layout").toByteArray(), 0))
 		initToolbars();

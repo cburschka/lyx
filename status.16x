@@ -108,6 +108,9 @@ What's new
 - Fix assertion when pressing down arrow in the command buffer while
   the history is empty (bug 6001).
 
+- Fix pop-up of ToC and Source code panels after fresh install (part
+  of bug 5082).
+
 - Fix assertion when a nested math hull appears in a math macro.
 
 
