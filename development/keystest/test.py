@@ -7,13 +7,7 @@
 import random
 import os 
 
-#os.system("mv LT/*lyx*_*
-
-#os.system("lyx &")
-#os.system("sleep 20")
-
-
-keycode=["\[Left]",'\[Right]','\[Down]','\[Up]','\[BackSpace]','\[Delete]']
+keycode=["\[Left]",'\[Right]','\[Down]','\[Up]','\[BackSpace]','\[Delete]','\[Escape]']
 keycode[:0]=keycode
 keycode[:0]=keycode
 
@@ -38,10 +32,16 @@ print (random.randint(1,len(keycode)))
 for k in range(97, 123):
   print (keycode[random.randint(1,len(keycode))-1])
 
+#Start a new file. We could also open a random Help file.
+#os.system("wmctrl -R LyX && xvkbd -xsendevent -text '\Afn';sleep 1")
+keystr="'\Afn'"
+os.system("wmctrl -R LyX && xvkbd -xsendevent -text '"+keystr+"';sleep 1")
+os.system("echo '"+keystr+"'")
+
 while True:
   keystr=""
   for k in range(1,80):
 	keystr=keystr+keycode[random.randint(1,len(keycode))-1]
+  #output keystr before using, to make sure it is output before we are killed
+  os.system("echo '"+keystr+"'")
   os.system("wmctrl -R LyX && xvkbd -xsendevent -text '"+keystr+"';sleep 1")
-  #os.system("echo KEYCODES: '"+keystr+"' >> development/keystest/out/GDB")
-  os.system("echo `date +%s`: '"+keystr+"' >> development/keystest/out/KEYCODES")

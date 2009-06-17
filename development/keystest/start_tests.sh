@@ -5,4 +5,4 @@
 
 LT=development/keystest
 
-(bash $LT/autolyx & sleep 9 ; xterm -e python $LT/test.py)
+bash $LT/autolyx

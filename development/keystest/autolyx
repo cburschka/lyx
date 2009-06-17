@@ -2,15 +2,59 @@
 # This script starts LyX, and restarts LyX if it is closed
 # it logs all output, including backtraces to development/keystest/out/GDB
 
+#Setting the following may give better screen shots
+#gconftool-2 /apps/metacity/general/compositing_manager -s -t bool true
+
+DIRNAME0=`dirname "$0"`
+OUTDIR="$DIRNAME0/out"
+
 #rename other windows to avoid confusion.
 wmctrl -N __renamed__ -r lyx
 wmctrl -N __renamed__ -r lyx
 wmctrl -N __renamed__ -r lyx
 wmctrl -N __renamed__ -r lyx
 
+(
 while true
 do
-  ( (echo SECONDS: `date +%s`
-	(echo "run
-  bt" ; yes q) | gdb src/lyx 2>&1) | strings|  tee -a development/keystest/out/GDB)
+  SEC=`date +%s`
+  GDB=$OUTDIR/$SEC.GDB
+  KEYCODE=$OUTDIR/$SEC.KEYCODE
+  ( sleep 20 && python $DIRNAME0/test.py | tee $KEYCODE) &
+  CHILD_PID="$!"
+  ls src/lyx ; sleep 1
+   pwd
+  #sleep 10
+  
+  #You may want to use the following to simulate SIGFPE
+  #(sleep 90 && killall -8 lyx) &
+
+  (echo "
+  shell svn info src/
+  run
+  bt
+  shell kill $CHILD_PID
+  shell import -window root '$GDB.png'
+  shell wmctrl -l
+  shell sleep 1
+  shell kill -9 $CHILD_PID
+  shell wmctrl -r __renamed__ -b add,shaded
+  shell wmctrl -r term -b add,shaded
+  shell wmctrl -r term -b add,shaded
+  shell wmctrl -R lyx 
+  shell import -window root '$GDB..png'
+ " ; yes q) | gdb src/lyx 2>&1 | strings|  tee $GDB
+  kill $CHILD_PID
+  #sleep 2 kill -9 $CHILD_PID
+  grep " signal " $GDB || (
+    rm $OUTDIR/*GDB*.bak
+    rm $OUTDIR/*KEYCODE*.bak
+    mv $KEYCODE $KEYCODE.bak
+    mv $GDB $GDB.bak
+    mv $GDB.png $GDB.png.bak
+    mv $GDB..png $GDB..png.bak
+    #rm $OUTDIR/KEYCODE.$SEC
+    #rm $OUTDIR/GDB.$SEC
+  )
 done
+) 2>&1 |tee $OUTDIR/log

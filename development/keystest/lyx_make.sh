@@ -16,12 +16,16 @@ then
 
  if [ a"$1" == a--update ]; then
   svn up
-  ./autogen.sh && ./configure --enable-debug -- && nice -18 make && (bash $LT/autolyx & sleep 9 ; xterm -e python $LT/test.py)
+  ./autogen.sh && ./configure --enable-debug -- && nice -18 make && 
+	if [ ! a"$2" == a"0"  ]
+	then
+		bash $LT/autolyx 
+	fi
  else
   DBG=`src/lyx --version 2>&1 | grep C++.Compiler.flags|grep -- -g`;
   if [ -z "$DBG" ]; then echo Wrong build of LyX binary. ; exit; fi
 
-  bash $LT/autolyx & sleep 9 ; xterm -e python $LT/test.py
+  bash $LT/autolyx 
  fi
 
 else

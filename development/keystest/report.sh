@@ -14,7 +14,7 @@ do
   fi
 done
 
-strings $LT/out/GDB > $LT/out/GDBs 
+strings $LT/out/*GDB > $LT/out/GDBs 
 grep "#$UNIQUE_LINE " $LT/out/GDBs > $LT/out/list
 #cat $LT/out/list | grep -o ' in [[:alnum:]:]* ' | sort | uniq| tee $LT/out/listuniq
 #cat $LT/out/list | grep -o ' in [[:alnum:]:]* ' | sort | uniq| tee $LT/out/listuniq
