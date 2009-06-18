@@ -524,7 +524,6 @@ void parse_preamble(Parser & p, ostream & os,
 	// initialize fixed types
 	special_columns['D'] = 3;
 	bool is_full_document = false;
-	bool is_lyx_file = false;
 	bool lyx_specific_preamble = false;
 
 	// determine whether this is a full document or a fragment for inclusion
@@ -566,10 +565,7 @@ void parse_preamble(Parser & p, ostream & os,
 		else if (t.cat() == catComment) {
 			// regex to parse comments
 			static regex const islyxfile("%% LyX .* created this file");
-			static regex const usercommands("User specified LaTeX commands");
-			
 			string const comment = t.asInput();
-			
 			// magically switch encoding default if it looks like XeLaTeX
 			static string const magicXeLaTeX =
 				"% This document must be compiled with XeLaTeX ";
@@ -579,10 +575,7 @@ void parse_preamble(Parser & p, ostream & os,
 				cerr << "XeLaTeX comment found, switching to UTF8\n";
 				h_inputencoding = "utf8";
 			}
-
 			smatch sub;
-			if (regex_search(comment, sub, islyxfile))
-				is_lyx_file = true;
 			// don't output LyX specific comments
 			if (!is_known(comment, known_lyx_comments))
 				h_preamble << t.asInput();
