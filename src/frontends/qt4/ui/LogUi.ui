@@ -22,70 +22,7 @@
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="3" column="3" colspan="2" >
-    <widget class="QPushButton" name="updatePB" >
-     <property name="toolTip" >
-      <string>Update the display</string>
-     </property>
-     <property name="text" >
-      <string>&amp;Update</string>
-     </property>
-     <property name="default" >
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="5" >
-    <widget class="QPushButton" name="closePB" >
-     <property name="text" >
-      <string>&amp;Close</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1" colspan="2" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeType" >
-      <enum>QSizePolicy::Expanding</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>111</width>
-       <height>26</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="3" column="0" >
-    <widget class="QPushButton" name="copyPB" >
-     <property name="text" >
-      <string>Copy to Clip&amp;board</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" colspan="2" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>201</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="2" column="5" >
-    <widget class="QPushButton" name="findPB" >
-     <property name="text" >
-      <string>&amp;Go!</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1" colspan="4" >
+   <item row="2" column="1" colspan="5" >
     <widget class="QLineEdit" name="findLE" >
      <property name="toolTip" >
       <string>Enter search string, hit return or thr "Go!" button.</string>
@@ -102,17 +39,10 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="4" colspan="2" >
-    <widget class="QPushButton" name="nextWarningPB" >
-     <property name="toolTip" >
-      <string>Jump to the next warning message.</string>
-     </property>
-     <property name="text" >
-      <string>Next &amp;Warning</string>
-     </property>
-    </widget>
+   <item row="0" column="0" colspan="7" >
+    <widget class="QTextBrowser" name="logTB" />
    </item>
-   <item row="1" column="2" colspan="2" >
+   <item row="1" column="3" colspan="2" >
     <widget class="QPushButton" name="nextErrorPB" >
      <property name="toolTip" >
       <string>Jump to the next error message.</string>
@@ -122,8 +52,78 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="0" colspan="6" >
-    <widget class="QTextBrowser" name="logTB" />
+   <item row="1" column="5" colspan="2" >
+    <widget class="QPushButton" name="nextWarningPB" >
+     <property name="toolTip" >
+      <string>Jump to the next warning message.</string>
+     </property>
+     <property name="text" >
+      <string>Next &amp;Warning</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="6" >
+    <widget class="QPushButton" name="findPB" >
+     <property name="text" >
+      <string>&amp;Go!</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="3" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>201</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="3" column="0" colspan="2" >
+    <widget class="QPushButton" name="copyPB" >
+     <property name="text" >
+      <string>Copy to Clip&amp;board</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2" colspan="2" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>111</width>
+       <height>26</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="3" column="6" >
+    <widget class="QPushButton" name="closePB" >
+     <property name="text" >
+      <string>&amp;Close</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="4" colspan="2" >
+    <widget class="QPushButton" name="updatePB" >
+     <property name="toolTip" >
+      <string>Update the display</string>
+     </property>
+     <property name="text" >
+      <string>&amp;Update</string>
+     </property>
+     <property name="default" >
+      <bool>true</bool>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
