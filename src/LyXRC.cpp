@@ -710,11 +710,6 @@ int LyXRC::read(Lexer & lexrc)
 			}
 			break;
 
-		case RC_USETEMPDIR:
-			if (lexrc.next())
-				LYXERR0("Ignoring obsolete use_tempdir flag.");
-			break;
-
 		case RC_USELASTFILEPOS:
 			lexrc >> use_lastfilepos;
 			break;
@@ -873,9 +868,6 @@ int LyXRC::read(Lexer & lexrc)
 			lexrc >> dialogs_iconify_with_main;
 			break;
 
-		case RC_PLAINTEXT_ROFF_COMMAND: 
-			(void) lexrc.getString(); // Obsoleted in 2.0
-			break;
 		case RC_PLAINTEXT_LINELEN:
 			lexrc >> plaintext_linelen;
 			break;
@@ -883,14 +875,8 @@ int LyXRC::read(Lexer & lexrc)
 		case RC_ACCEPT_COMPOUND:
 			lexrc >> spellchecker_accept_compound;
 			break;
-		case RC_USE_INP_ENC:
-			(void) lexrc.getString(); // Obsoleted in 2.0
-			break;
 		case RC_USE_ALT_LANG:
 			lexrc >> spellchecker_use_alt_lang;
-			break;
-		case RC_USE_PERS_DICT:
-			(void) lexrc.getString(); // Obsoleted in 2.0
 			break;
 		case RC_USE_TOOLTIP:
 			lexrc >> use_tooltip;
@@ -903,9 +889,6 @@ int LyXRC::read(Lexer & lexrc)
 			break;
 		case RC_ALT_LANG:
 			lexrc >> spellchecker_alt_lang;
-			break;
-		case RC_PERS_DICT:
-			(void) lexrc.getString(); // Obsoleted in 2.0
 			break;
 		case RC_ESC_CHARS:
 			lexrc >> spellchecker_esc_chars;
@@ -1132,10 +1115,18 @@ int LyXRC::read(Lexer & lexrc)
 			lexrc >> open_buffers_in_tabs;
 			break;
 
+		// Obsoteted in 1.4.0
+		case RC_USETEMPDIR:
 		// Obsoleted in 2.0
 		case RC_SPELL_COMMAND:
+		case RC_PERS_DICT:
+		case RC_PLAINTEXT_ROFF_COMMAND: 
+		case RC_USE_INP_ENC:
+		case RC_USE_PERS_DICT:
 		case RC_USE_SPELL_LIB:
-			(void) lexrc.getString();
+			LYXERR(Debug::LYXRC, "Skipping obsolete tag `" 
+			       << lexrc.getString() << "'.");
+			lexrc.next(true);
 			break;
 
 		case RC_LAST:
