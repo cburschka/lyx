@@ -270,7 +270,6 @@ void LyXRC::setDefaults()
 	display_graphics = true;
 	// Spellchecker settings:
 	spellchecker_accept_compound = false;
-	spellchecker_use_esc_chars = false;
 	spellcheck_continuously = false;
 	use_kbmap = false;
 	rtl_support = true;
@@ -880,9 +879,6 @@ int LyXRC::read(Lexer & lexrc)
 		case RC_USE_PIXMAP_CACHE:
 			lexrc >> use_pixmap_cache;
 			break;
-		case RC_USE_ESC_CHARS:
-			lexrc >> spellchecker_use_esc_chars;
-			break;
 		case RC_ALT_LANG:
 			lexrc >> spellchecker_alt_lang;
 			break;
@@ -1118,6 +1114,7 @@ int LyXRC::read(Lexer & lexrc)
 		case RC_PERS_DICT:
 		case RC_PLAINTEXT_ROFF_COMMAND: 
 		case RC_USE_ALT_LANG:
+		case RC_USE_ESC_CHARS:
 		case RC_USE_INP_ENC:
 		case RC_USE_PERS_DICT:
 		case RC_USE_SPELL_LIB:
@@ -2203,11 +2200,6 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		if (tag != RC_LAST)
 			break;
 	case RC_USE_ESC_CHARS:
-		if (ignore_system_lyxrc ||
-		    spellchecker_use_esc_chars != system_lyxrc.spellchecker_use_esc_chars) {
-			os << "\\use_escape_chars " << convert<string>(spellchecker_use_esc_chars)
-			   << '\n';
-		}
 		if (tag != RC_LAST)
 			break;
 	case RC_ESC_CHARS:

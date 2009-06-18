@@ -1264,9 +1264,7 @@ PrefSpellchecker::PrefSpellchecker(GuiPreferences * form)
 void PrefSpellchecker::apply(LyXRC & rc) const
 {
 	rc.spellchecker_alt_lang = fromqstr(altLanguageED->text());
-	// FIXME: remove spellchecker_use_esc_chars
 	rc.spellchecker_esc_chars = fromqstr(escapeCharactersED->text());
-	rc.spellchecker_use_esc_chars = !rc.spellchecker_esc_chars.empty();
 	rc.spellchecker_accept_compound = compoundWordCB->isChecked();
 	rc.spellcheck_continuously = spellcheckContinuouslyCB->isChecked();
 }
@@ -1275,7 +1273,6 @@ void PrefSpellchecker::apply(LyXRC & rc) const
 void PrefSpellchecker::update(LyXRC const & rc)
 {
 	altLanguageED->setText(toqstr(rc.spellchecker_alt_lang));
-	// FIXME: remove spellchecker_use_esc_chars
 	escapeCharactersED->setText(toqstr(rc.spellchecker_esc_chars));
 	compoundWordCB->setChecked(rc.spellchecker_accept_compound);
 	spellcheckContinuouslyCB->setChecked(rc.spellcheck_continuously);

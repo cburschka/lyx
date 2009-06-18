@@ -25,8 +25,9 @@ The following variables are obsoleted in 2.0
   \use_personal_dictionary and \use_spell_lib (ispell support has been
   removed)
 
-- \spellchecker_use_alt_lang (actually not used by the UI, it is as
-  simple to check whether the relevant variable is empty)
+- \spellchecker_use_alt_lang and \use_escape_chars (actually not used
+  by the UI, and it is as simple to check whether the relevant
+  variable is empty)
 
 - \custom_export_command and \custom_export_format
 
