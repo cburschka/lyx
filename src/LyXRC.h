@@ -324,8 +324,6 @@ public:
 	unsigned int plaintext_linelen;
 	/// Accept compound words in spellchecker?
 	bool spellchecker_accept_compound;
-	/// Pass input encoding switch to the spellchecker?
-	bool spellchecker_use_input_encoding;
 	/// Use alternate language?
 	bool spellchecker_use_alt_lang;
 	/// Use personal dictionary?

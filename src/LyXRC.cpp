@@ -270,7 +270,6 @@ void LyXRC::setDefaults()
 	display_graphics = true;
 	// Spellchecker settings:
 	spellchecker_accept_compound = false;
-	spellchecker_use_input_encoding = false;
 	spellchecker_use_alt_lang = false;
 	spellchecker_use_pers_dict = false;
 	spellchecker_use_esc_chars = false;
@@ -886,7 +885,7 @@ int LyXRC::read(Lexer & lexrc)
 			lexrc >> spellchecker_accept_compound;
 			break;
 		case RC_USE_INP_ENC:
-			lexrc >> spellchecker_use_input_encoding;
+			(void) lexrc.getString(); // Obsoleted in 2.0
 			break;
 		case RC_USE_ALT_LANG:
 			lexrc >> spellchecker_use_alt_lang;
@@ -2263,16 +2262,6 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		if (spellchecker_pers_dict != system_lyxrc.spellchecker_pers_dict) {
 			string const path = os::external_path(spellchecker_pers_dict);
 			os << "\\personal_dictionary \"" << path << "\"\n";
-		}
-		if (tag != RC_LAST)
-			break;
-	case RC_USE_INP_ENC:
-		if (ignore_system_lyxrc ||
-		    spellchecker_use_input_encoding
-		    != system_lyxrc.spellchecker_use_input_encoding) {
-			os << "\\use_input_encoding "
-			   << convert<string>(spellchecker_use_input_encoding)
-			   << '\n';
 		}
 		if (tag != RC_LAST)
 			break;
