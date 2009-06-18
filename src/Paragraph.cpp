@@ -1854,7 +1854,12 @@ int Paragraph::Private::endTeXParParams(BufferParams const & bparams,
 {
 	int column = 0;
 
-	switch (params_.align()) {
+	LyXAlignment const curAlign = params_.align();
+
+	if (curAlign == layout_->align)
+		return column;
+
+	switch (curAlign) {
 	case LYX_ALIGN_NONE:
 	case LYX_ALIGN_BLOCK:
 	case LYX_ALIGN_LAYOUT:
@@ -1874,7 +1879,7 @@ int Paragraph::Private::endTeXParParams(BufferParams const & bparams,
 	InsetCode code = owner_->ownerCode();
 	bool const lastpar = runparams.isLastPar;
 
-	switch (params_.align()) {
+	switch (curAlign) {
 	case LYX_ALIGN_NONE:
 	case LYX_ALIGN_BLOCK:
 	case LYX_ALIGN_LAYOUT:
