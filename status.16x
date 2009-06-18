@@ -45,6 +45,10 @@ What's new
 - Tooltips for footnotes and some other insets now wrap, so they can
   actually be seen.
 
+- New commands inset-begin/end (bound to Ctrl-Alt-Home/End) allow to jump 
+  to begin/end of insets (and outside of the inset if the cursor is already 
+  in place). There are also versions that select text.
+
 - Enhance notes context menu for toggling all notes.
 
 
