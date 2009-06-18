@@ -1263,9 +1263,7 @@ PrefSpellchecker::PrefSpellchecker(GuiPreferences * form)
 
 void PrefSpellchecker::apply(LyXRC & rc) const
 {
-	// FIXME: remove spellchecker_use_alt_lang
 	rc.spellchecker_alt_lang = fromqstr(altLanguageED->text());
-	rc.spellchecker_use_alt_lang = !rc.spellchecker_alt_lang.empty();
 	// FIXME: remove spellchecker_use_esc_chars
 	rc.spellchecker_esc_chars = fromqstr(escapeCharactersED->text());
 	rc.spellchecker_use_esc_chars = !rc.spellchecker_esc_chars.empty();
@@ -1276,7 +1274,6 @@ void PrefSpellchecker::apply(LyXRC & rc) const
 
 void PrefSpellchecker::update(LyXRC const & rc)
 {
-	// FIXME: remove spellchecker_use_alt_lang
 	altLanguageED->setText(toqstr(rc.spellchecker_alt_lang));
 	// FIXME: remove spellchecker_use_esc_chars
 	escapeCharactersED->setText(toqstr(rc.spellchecker_esc_chars));

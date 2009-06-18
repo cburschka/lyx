@@ -3048,9 +3048,9 @@ void Paragraph::collectWords()
 		if (!lyxrc.spellcheck_continuously || !speller)
 			continue;
 		
-		string lang_code = lyxrc.spellchecker_use_alt_lang
-		      ? lyxrc.spellchecker_alt_lang
-		      : getFontSettings(d->inset_owner_->buffer().params(), from).language()->code();
+		string const lang_code = lyxrc.spellchecker_alt_lang.empty()
+			? getFontSettings(d->inset_owner_->buffer().params(), from).language()->code()
+			: lyxrc.spellchecker_alt_lang;
 		WordLangTuple wl(word, lang_code);
 		SpellChecker::Result res = speller->check(wl);
 		// ... just ignore any error that the spellchecker reports.
@@ -3093,9 +3093,9 @@ bool Paragraph::isMisspelled(pos_type pos) const
 	if (!speller)
 		return false;
 		
-	string lang_code = lyxrc.spellchecker_use_alt_lang
-	      ? lyxrc.spellchecker_alt_lang
-	      : getFontSettings(d->inset_owner_->buffer().params(), from).language()->code();
+	string const lang_code = lyxrc.spellchecker_alt_lang.empty()
+		? getFontSettings(d->inset_owner_->buffer().params(), from).language()->code()
+		: lyxrc.spellchecker_alt_lang;
 	WordLangTuple wl(word, lang_code);
 	SpellChecker::Result res = speller->check(wl);
 	// ... just ignore any error that the spellchecker reports.

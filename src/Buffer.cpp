@@ -3401,9 +3401,9 @@ int Buffer::spellCheck(DocIterator & from, DocIterator & to,
 	docstring word;
 	while (nextWord(from, to, word)) {
 		++progress;
-		string lang_code = lyxrc.spellchecker_use_alt_lang
-		      ? lyxrc.spellchecker_alt_lang
-		      : from.paragraph().getFontSettings(params(), from.pos()).language()->code();
+		string const lang_code = lyxrc.spellchecker_alt_lang.empty()
+			? from.paragraph().getFontSettings(params(), from.pos()).language()->code()
+			: lyxrc.spellchecker_alt_lang;
 		WordLangTuple wl(word, lang_code);
 		res = speller->check(wl);
 		// ... just bail out if the spellchecker reports an error.

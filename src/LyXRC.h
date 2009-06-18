@@ -324,8 +324,6 @@ public:
 	unsigned int plaintext_linelen;
 	/// Accept compound words in spellchecker?
 	bool spellchecker_accept_compound;
-	/// Use alternate language?
-	bool spellchecker_use_alt_lang;
 	/// Use tooltips?
 	bool use_tooltip;
 	/// Use pixmap cache?
