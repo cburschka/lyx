@@ -42,8 +42,8 @@ What's new
 - Tooltips for toolbar buttons now show the main shortcut associated
   to the action.
 
-- Tooltips for footnotes and some other insets now wrap, so they can actually
-  be seen.
+- Tooltips for footnotes and some other insets now wrap, so they can
+  actually be seen.
 
 - Enhance notes context menu for toggling all notes.
 
@@ -87,7 +87,13 @@ What's new
 
 * USER INTERFACE
 
-- Fix bookmark navigation crash when more windows are in play (bug 6000).
+- Fix bookmark navigation crash when multiple windows are used (bug 6000).
+
+- Fix assertion when a nested math hull appears in a math macro
+  (bug 5996).
+  
+- Fix assertion when pressing down arrow in the command buffer while
+  the history is empty (bug 6001).
 
 - Take into account file system case sensitivity when checking whether
   a path starts with a given prefix. This fixes a bug with reverse PDF
@@ -96,22 +102,16 @@ What's new
 - Fix the maximum number of the files stored in last-opened-files list
   (bug 5980).
 
-- Fix bug that the citation dialog offered non-existant features
-  (bug 5987).
+- Disable unused functions in the citation dialog (bug 5987).
 
 - Fix display of BibTeX entries in the info field of the citation
-  dialog by only converting text mode latex macros to unicode points.
+  dialog by only converting text mode latex macros to unicode glyphs.
   
-- Convert LaTeX macros to proper unicode characters for the display
-  of authors/editors on the citation inset button.
-
-- Fix assertion when pressing down arrow in the command buffer while
-  the history is empty (bug 6001).
+- Convert LaTeX macros such as \"{u} to proper unicode characters
+  for the display of authors/editors on the citation inset button.
 
 - Fix pop-up of ToC and Source code panels after fresh install (part
   of bug 5082).
-
-- Fix assertion when a nested math hull appears in a math macro.
 
 
 * DOCUMENTATION AND LOCALIZATION
@@ -123,5 +123,4 @@ What's new
 * BUILD/INSTALLATION
 
 - Detect multithreaded boost libraries if included boost is not used
-
 
