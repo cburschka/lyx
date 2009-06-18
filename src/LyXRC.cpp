@@ -2233,6 +2233,10 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
+	case RC_USE_PERS_DICT:
+		// obsoleted in 2.0
+		if (tag != RC_LAST)
+			break;
 	case RC_USE_TOOLTIP:
 		if (ignore_system_lyxrc ||
 		    use_tooltip != system_lyxrc.use_tooltip) {
@@ -2240,6 +2244,8 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 			   << convert<string>(use_tooltip)
 			   << '\n';
 		}
+		if (tag != RC_LAST)
+			break;
 	case RC_USE_PIXMAP_CACHE:
 		if (ignore_system_lyxrc ||
 		    use_pixmap_cache != system_lyxrc.use_pixmap_cache) {
@@ -2247,10 +2253,22 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 			   << convert<string>(use_pixmap_cache)
 			   << '\n';
 		}
+		if (tag != RC_LAST)
+			break;
+	case RC_PERS_DICT:
+		// obsoleted in 2.0
+		if (tag != RC_LAST)
+			break;
+	case RC_USE_INP_ENC:
+		// obsoleted in 2.0
+		if (tag != RC_LAST)
+			break;
 
 		os << "\n#\n"
 		   << "# LANGUAGE SUPPORT SECTION ##########################\n"
 		   << "#\n\n";
+		if (tag != RC_LAST)
+			break;
 
 	case RC_SPELLCHECK_CONTINUOUSLY:
 		if (ignore_system_lyxrc ||
