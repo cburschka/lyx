@@ -26,7 +26,6 @@
 #include "support/docstream.h"
 
 #include <map>
-#include <sstream>
 
 using namespace std;
 
@@ -202,6 +201,15 @@ double const dddot[] = {
 };
 
 
+double const ddddot[] = {
+	1, 0.0, 0.5,  0.1, 0.5,
+	1, 0.3, 0.5,  0.4, 0.5,
+	1, 0.6, 0.5,  0.7, 0.5,
+	1, 0.9, 0.5,  1.0, 0.5,
+	0
+};
+
+
 double const hline3[] = {
 	1, 0.1,   0,  0.15,  0,
 	1, 0.475, 0,  0.525, 0,
@@ -313,6 +321,7 @@ named_deco_struct deco_table[] = {
 	// Accents
 	{"ddot",           ddot,       0 },
 	{"dddot",          dddot,      0 },
+	{"ddddot",         ddddot,     0 },
 	{"hat",            angle,      3 },
 	{"grave",          slash,      1 },
 	{"acute",          slash,      0 },
@@ -330,6 +339,8 @@ named_deco_struct deco_table[] = {
 	{"cdots",          hline3,     0 },
 	{"vdots",          hline3,     1 },
 	{"ddots",          dline3,     0 },
+	{"adots",          dline3,     1 },
+	{"iddots",         dline3,     1 },
 	{"dotsb",          hline3,     0 },
 	{"dotsc",          hline3,     0 },
 	{"dotsi",          hline3,     0 },

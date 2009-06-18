@@ -1542,6 +1542,7 @@ lib_images_math_files = Split('''
     Rsh.png
     Vvdash.png
     acute.png
+    adots.png
     aleph.png
     alpha.png
     amalg.png
@@ -1624,6 +1625,8 @@ lib_images_math_files = Split('''
     dashrightarrow.png
     dashv.png
     ddagger.png
+    ddddot.png
+    dddot.png
     ddot.png
     ddots.png
     delim.png
@@ -1698,6 +1701,7 @@ lib_images_math_files = Split('''
     hookrightarrow.png
     hphantom.png
     hslash.png
+    iddots.png
     iiiint.png
     iiiintop.png
     iiint.png

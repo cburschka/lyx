@@ -94,16 +94,6 @@ bool InsetMathDecoration::wide() const
 }
 
 
-bool InsetMathDecoration::ams() const
-{
-	return
-			key_->name == "overleftrightarrow" ||
-			key_->name == "underleftarrow" ||
-			key_->name == "underrightarrow" ||
-			key_->name == "underleftrightarrow";
-}
-
-
 void InsetMathDecoration::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi, dim);
@@ -160,8 +150,8 @@ void InsetMathDecoration::infoize(odocstream & os) const
 
 void InsetMathDecoration::validate(LaTeXFeatures & features) const
 {
-	if (ams())
-		features.require("amsmath");
+	if (!key_->requires.empty())
+		features.require(to_utf8(key_->requires));
 	InsetMathNest::validate(features);
 }
 

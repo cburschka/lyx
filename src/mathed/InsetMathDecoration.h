@@ -48,8 +48,6 @@ private:
 	bool protect() const;
 	/// is it a wide decoration?
 	bool wide() const;
-	/// does this need AMS
-	bool ams() const;
 
 	///
 	latexkeys const * key_;

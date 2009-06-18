@@ -649,6 +649,14 @@ string const LaTeXFeatures::getPackages() const
 	if (mustProvide("accents"))
 		packages << "\\usepackage{accents}\n";
 
+	// mathdots must be loaded after amsmath
+	if (mustProvide("mathdots"))
+		packages << "\\usepackage{mathdots}\n";
+
+	// yhmath must be loaded after amsmath
+	if (mustProvide("yhmath"))
+		packages << "\\usepackage{yhmath}\n";
+
 	// [x]color and pdfcolmk are handled in getColorOptions() above
 	
 	// makeidx.sty

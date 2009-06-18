@@ -360,6 +360,8 @@ ToolbarSet
 		Item "cdots" "math-insert \cdots"
 		Item "vdots" "math-insert \vdots"
 		Item "ddots" "math-insert \ddots"
+# Do not show it as long as it does not load mathdots automatically
+#		Item "iddots" "math-insert \iddots"
 	End
 	
 	Toolbar "latex_deco" "Frame Decorations"
@@ -374,6 +376,8 @@ ToolbarSet
 		Item "vec" "math-insert \vec"
 		Item "acute" "math-insert \acute"
 		Item "ddot" "math-insert \ddot"
+		Item "dddot" "math-insert \dddot"
+		Item "ddddot" "math-insert \ddddot"
 		Item "breve" "math-insert \breve"
 		Item "overline" "math-insert \overline"
 		Item "overbrace" "math-insert \overbrace"

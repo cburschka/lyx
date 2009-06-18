@@ -7,7 +7,8 @@ acute               decoration none
 bar                 decoration none
 breve               decoration none
 check               decoration none
-dddot               decoration none
+ddddot              decoration none       amsmath
+dddot               decoration none       amsmath
 ddot                decoration none
 dot                 decoration none
 grave               decoration none
@@ -15,22 +16,26 @@ hat                 decoration none
 mathring            decoration none
 overbrace           decoration none
 overleftarrow       decoration none
-overleftrightarrow  decoration none
+overleftrightarrow  decoration none       amsmath
 overline            decoration none
 overrightarrow      decoration none
 tilde               decoration none
 underbar            decoration none
 underbrace          decoration none
-underleftarrow      decoration none
-underleftrightarrow decoration none
+underleftarrow      decoration none       amsmath
+underleftrightarrow decoration none       amsmath
 underline           decoration none
-underrightarrow     decoration none
+underrightarrow     decoration none       amsmath
 vec                 decoration none
 widehat             decoration none
 widetilde           decoration none
 
 # dots
 dots              dots        none
+#Do not load automatically, it redefines some other symbols, and we don't
+#have a possibility to turn automatic loading off like for ams
+#adots             dots        none        yhmath
+adots             dots        none
 cdots             dots        none
 ddots             dots        none
 dotsb             dots        none        amsmath
@@ -38,6 +43,10 @@ dotsc             dots        none        amsmath
 dotsi             dots        none        amsmath
 dotsm             dots        none        amsmath
 dotso             dots        none        amsmath
+#Do not load automatically, since we don't have a possibility to turn
+#automatic loading off like for ams
+#iddots            dots        none        mathdots
+iddots            dots        none
 ldots             dots        none
 vdots             dots        none
 
@@ -872,6 +881,7 @@ Pr                 lyxblacktext  0   0 funclim  x
 gcd                lyxblacktext  0   0 funclim  x
 deg                lyxblacktext  0   0 func     x
 bmod               lyxblacktext  0   0 func     x
+pmod               lyxblacktext  0   0 func     x
 
 
 

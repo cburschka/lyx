@@ -450,6 +450,7 @@ dist_imagesmath_DATA = \
 	images/math/Rsh.png \
 	images/math/Vvdash.png \
 	images/math/acute.png \
+	images/math/adots.png \
 	images/math/aleph.png \
 	images/math/alpha.png \
 	images/math/amalg.png \
@@ -532,6 +533,8 @@ dist_imagesmath_DATA = \
 	images/math/dashrightarrow.png \
 	images/math/dashv.png \
 	images/math/ddagger.png \
+	images/math/ddddot.png \
+	images/math/dddot.png \
 	images/math/ddot.png \
 	images/math/ddots.png \
 	images/math/delta.png \
@@ -603,6 +606,7 @@ dist_imagesmath_DATA = \
 	images/math/hookrightarrow.png \
 	images/math/hphantom.png \
 	images/math/hslash.png \
+	images/math/iddots.png \
 	images/math/iiiint.png \
 	images/math/iiiintop.png \
 	images/math/iiint.png \
