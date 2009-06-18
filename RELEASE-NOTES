@@ -21,8 +21,9 @@ The following variables are obsoleted in 2.0
 
 - \plaintext_roff_command (was not used anymore)
 
-- \spell_command, \use_input_encoding and \use_spell_lib (ispell
-  support has been removed)
+- \personal_dictionary, \spell_command, \use_input_encoding,
+  \use_personal_dictionary and \use_spell_lib (ispell support has been
+  removed)
 
 - \custom_export_command and \custom_export_format
 

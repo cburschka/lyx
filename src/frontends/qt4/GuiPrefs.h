@@ -91,7 +91,6 @@ public:
 	QString browsebind(QString const & file) const;
 	QString browseUI(QString const & file) const;
 	QString browsekbmap(QString const & file) const;
-	QString browsedict(QString const & file) const;
 
 	/// general browse
 	QString browse(QString const & file, QString const & title) const;
@@ -315,8 +314,6 @@ public:
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
 
-private Q_SLOTS:
-	void selectDict();
 };
 
 

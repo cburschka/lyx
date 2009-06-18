@@ -271,7 +271,6 @@ void LyXRC::setDefaults()
 	// Spellchecker settings:
 	spellchecker_accept_compound = false;
 	spellchecker_use_alt_lang = false;
-	spellchecker_use_pers_dict = false;
 	spellchecker_use_esc_chars = false;
 	spellcheck_continuously = false;
 	use_kbmap = false;
@@ -891,7 +890,7 @@ int LyXRC::read(Lexer & lexrc)
 			lexrc >> spellchecker_use_alt_lang;
 			break;
 		case RC_USE_PERS_DICT:
-			lexrc >> spellchecker_use_pers_dict;
+			(void) lexrc.getString(); // Obsoleted in 2.0
 			break;
 		case RC_USE_TOOLTIP:
 			lexrc >> use_tooltip;
@@ -906,8 +905,7 @@ int LyXRC::read(Lexer & lexrc)
 			lexrc >> spellchecker_alt_lang;
 			break;
 		case RC_PERS_DICT:
-			if (lexrc.next())
-				spellchecker_pers_dict = os::internal_path(lexrc.getString());
+			(void) lexrc.getString(); // Obsoleted in 2.0
 			break;
 		case RC_ESC_CHARS:
 			lexrc >> spellchecker_esc_chars;
@@ -2235,15 +2233,6 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
-	case RC_USE_PERS_DICT:
-		if (ignore_system_lyxrc ||
-		    spellchecker_use_pers_dict != system_lyxrc.spellchecker_use_pers_dict) {
-			os << "\\use_personal_dictionary "
-			   << convert<string>(spellchecker_use_pers_dict)
-			   << '\n';
-		}
-		if (tag != RC_LAST)
-			break;
 	case RC_USE_TOOLTIP:
 		if (ignore_system_lyxrc ||
 		    use_tooltip != system_lyxrc.use_tooltip) {
@@ -2258,13 +2247,6 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 			   << convert<string>(use_pixmap_cache)
 			   << '\n';
 		}
-	case RC_PERS_DICT:
-		if (spellchecker_pers_dict != system_lyxrc.spellchecker_pers_dict) {
-			string const path = os::external_path(spellchecker_pers_dict);
-			os << "\\personal_dictionary \"" << path << "\"\n";
-		}
-		if (tag != RC_LAST)
-			break;
 
 		os << "\n#\n"
 		   << "# LANGUAGE SUPPORT SECTION ##########################\n"
@@ -2782,11 +2764,6 @@ string const LyXRC::getDescription(LyXRCTags tag)
 			 "Use the OS native format.");
 		break;
 
-	case RC_PERS_DICT:
-	case RC_USE_PERS_DICT:
-		str = _("Specify an alternate personal dictionary file. E.g. \".aspell_english\".");
-		break;
-
 	case RC_PREVIEW:
 		str = _("Shows a typeset preview of things such as math");
 		break;
@@ -2951,10 +2928,6 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_USETEMPDIR:
-		break;
-
-	case RC_USE_INP_ENC:
-		str = _("Specify whether to pass the -T input encoding option to aspell. Enable this if you cannot check the spelling of words containing accented letters. This may not work with all dictionaries.");
 		break;
 
 	case RC_USE_TOOLTIP:

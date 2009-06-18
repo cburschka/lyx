@@ -1250,13 +1250,9 @@ PrefSpellchecker::PrefSpellchecker(GuiPreferences * form)
 {
 	setupUi(this);
 
-	connect(persDictionaryPB, SIGNAL(clicked()), this, SLOT(selectDict()));
-
 	connect(altLanguageED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 	connect(escapeCharactersED, SIGNAL(textChanged(QString)),
-		this, SIGNAL(changed()));
-	connect(persDictionaryED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 	connect(compoundWordCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
@@ -1273,9 +1269,6 @@ void PrefSpellchecker::apply(LyXRC & rc) const
 	// FIXME: remove spellchecker_use_esc_chars
 	rc.spellchecker_esc_chars = fromqstr(escapeCharactersED->text());
 	rc.spellchecker_use_esc_chars = !rc.spellchecker_esc_chars.empty();
-	// FIXME: remove spellchecker_use_pers_dict
-	rc.spellchecker_pers_dict = internal_path(fromqstr(persDictionaryED->text()));
-	rc.spellchecker_use_pers_dict = !rc.spellchecker_pers_dict.empty();
 	rc.spellchecker_accept_compound = compoundWordCB->isChecked();
 	rc.spellcheck_continuously = spellcheckContinuouslyCB->isChecked();
 }
@@ -1287,18 +1280,8 @@ void PrefSpellchecker::update(LyXRC const & rc)
 	altLanguageED->setText(toqstr(rc.spellchecker_alt_lang));
 	// FIXME: remove spellchecker_use_esc_chars
 	escapeCharactersED->setText(toqstr(rc.spellchecker_esc_chars));
-	// FIXME: remove spellchecker_use_pers_dict
-	persDictionaryED->setText(toqstr(external_path(rc.spellchecker_pers_dict)));
 	compoundWordCB->setChecked(rc.spellchecker_accept_compound);
 	spellcheckContinuouslyCB->setChecked(rc.spellcheck_continuously);
-}
-
-
-void PrefSpellchecker::selectDict()
-{
-	QString file = form_->browsedict(internalPath(persDictionaryED->text()));
-	if (!file.isEmpty())
-		persDictionaryED->setText(file);
 }
 
 
@@ -2907,13 +2890,6 @@ QString GuiPreferences::browsekbmap(QString const & file) const
 {
 	return browseLibFile("kbd", file, "kmap", qt_("Choose keyboard map"),
 			     QStringList(qt_("LyX keyboard maps (*.kmap)")));
-}
-
-
-QString GuiPreferences::browsedict(QString const & file) const
-{
-	return browseFile(file, qt_("Choose personal dictionary"),
-		QStringList(qt_("*.pws")));
 }
 
 

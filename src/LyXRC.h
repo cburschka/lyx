@@ -326,8 +326,6 @@ public:
 	bool spellchecker_accept_compound;
 	/// Use alternate language?
 	bool spellchecker_use_alt_lang;
-	/// Use personal dictionary?
-	bool spellchecker_use_pers_dict;
 	/// Use tooltips?
 	bool use_tooltip;
 	/// Use pixmap cache?
@@ -336,8 +334,6 @@ public:
 	bool spellchecker_use_esc_chars;
 	/// Alternate language for spellchecker
 	std::string spellchecker_alt_lang;
-	/// Alternate personal dictionary file for the spellchecker
-	std::string spellchecker_pers_dict;
 	/// Escape characters
 	std::string spellchecker_esc_chars;
 	/// spellcheck continuously?
