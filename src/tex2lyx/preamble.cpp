@@ -120,7 +120,6 @@ const char * const known_lyx_comments[] = {
 "% the following is useful when we have the old nomencl.sty package\n",
 "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.\n",
 "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.\n",
-"%% LyX 2.0.0svn created this file.  For more info, see http://www.lyx.org/.\n",
 0};
 
 // default settings
@@ -635,7 +634,10 @@ void parse_preamble(Parser & p, ostream & os,
 			string lyx_command = name;
 			// remove the leading "\"
 			lyx_command.erase(0,1);
-			if (is_known(lyx_command, known_lyx_commands))
+			lyx_specific_preamble = false;
+			// allow redefinitions of LyX specific commands
+			if (is_known(lyx_command, known_lyx_commands)
+				&& (t.cs() != "renewcommand"))
 				lyx_specific_preamble = true;
 			// only non-lyxspecific stuff
 			if (!lyx_specific_preamble) {
