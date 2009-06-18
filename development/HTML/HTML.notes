@@ -42,6 +42,8 @@ These insets do not work but should be completely straightforward:
 	Caption
 
 These insets do not work and are not yet scheduled to work:
+	InsetExternal: It may be that this won't be too hard, but I don't understand 
+		these so am not sure what to do. For now, it is disabled.
 	InsetIndex and InsetPrintIndex: An "advanced" case. What really would be cool 
 		would be to collect all of these and then write the index as a series of links 
 		back to the occurrences. But not now.
@@ -51,7 +53,6 @@ May need to make use here of TocWidget::itemInset, which should then be moved
 to TocBackend.
 
 These do not yet work and need some attention:
-	InsetExternal: I don't understand these so am not sure what to do.
 	InsetFloat: This will need some work, again because I do not really understand
 		what these are meant to do. Presumably, we'll just use a div or something, but
 		it's not clear what subfloat means, etc.
