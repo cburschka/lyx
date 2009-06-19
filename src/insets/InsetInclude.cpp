@@ -512,8 +512,8 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 		}
 
 		// Make sure modules used in child are all included in master
-		//FIXME It might be worth loading the children's modules into the master
-		//over in BufferParams rather than doing this check.
+		// FIXME It might be worth loading the children's modules into the master
+		// over in BufferParams rather than doing this check.
 		LayoutModuleList const masterModules = masterBuffer->params().getModules();
 		LayoutModuleList const childModules = tmp->params().getModules();
 		LayoutModuleList::const_iterator it = childModules.begin();
@@ -533,11 +533,11 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 
 		tmp->markDepClean(masterBuffer->temppath());
 
-// FIXME: handle non existing files
-// FIXME: Second argument is irrelevant!
-// since only_body is true, makeLaTeXFile will not look at second
-// argument. Should we set it to string(), or should makeLaTeXFile
-// make use of it somehow? (JMarc 20031002)
+		// FIXME: handle non existing files
+		// FIXME: Second argument is irrelevant!
+		// since only_body is true, makeLaTeXFile will not look at second
+		// argument. Should we set it to string(), or should makeLaTeXFile
+		// make use of it somehow? (JMarc 20031002)
 		// The included file might be written in a different encoding
 		Encoding const * const oldEnc = runparams.encoding;
 		runparams.encoding = &tmp->params().encoding();
