@@ -5,7 +5,6 @@ EXTRA_DIST = README.Documentation
 docdir = $(pkgdatadir)/doc
 dist_doc_DATA = \
 	Customization.lyx \
-	DocStyle.lyx \
 	DummyTextDocument.txt \
 	DummyDocument1.lyx \
 	DummyDocument2.lyx \

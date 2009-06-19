@@ -2082,7 +2082,6 @@ lib_tex_files = Split('''
 
 lib_doc_files = Split('''
     Customization.lyx
-    DocStyle.lyx
     DummyDocument1.lyx
     DummyDocument2.lyx
     DummyTextDocument.txt
