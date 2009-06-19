@@ -563,8 +563,8 @@ void parse_preamble(Parser & p, ostream & os,
 			h_preamble << t.asInput();
 
 		else if (t.cat() == catComment) {
-			// regex to parse comments
-			static regex const islyxfile("%% LyX .* created this file");
+			// regex to parse comments (currently not used)
+			//static regex const islyxfile("%% LyX .* created this file");
 			string const comment = t.asInput();
 			// magically switch encoding default if it looks like XeLaTeX
 			static string const magicXeLaTeX =
