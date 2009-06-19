@@ -55,23 +55,26 @@ bool documentclass_language;
 namespace {
 
 const char * const known_languages[] = { "afrikaans", "american", "arabic",
-"austrian", "bahasa", "basque", "belarusian", "brazil", "breton", "british",
-"bulgarian", "canadian", "canadien", "catalan", "croatian", "czech", "danish",
-"dutch", "english", "esperanto", "estonian", "finnish", "francais", "french",
-"frenchb", "frenchle", "frenchpro", "galician", "german", "germanb", "greek",
-"hebrew", "icelandic", "irish", "italian", "lsorbian", "magyar", "naustrian",
-"ngerman", "ngermanb", "norsk", "nynorsk", "polish", "portuges", "romanian",
-"russian", "russianb", "scottish", "serbian", "slovak", "slovene", "spanish",
-"swedish", "thai", "turkish", "ukraineb", "ukrainian", "usorbian", "welsh", 0};
+"austrian", "bahasa", "basque", "belarusian", "brazil", "brazilian", "breton",
+"british", "bulgarian", "canadian", "canadien", "catalan", "croatian", "czech",
+"danish", "dutch", "english", "esperanto", "estonian", "finnish", "francais",
+"french", "frenchb", "frenchle", "frenchpro", "galician", "german", "germanb",
+"greek", "hebrew", "icelandic", "irish", "italian", "lsorbian", "magyar",
+"naustrian", "ngerman", "ngermanb", "norsk", "nynorsk", "polish", "portuges",
+"portuguese", "romanian", "russian", "russianb", "scottish", "serbian", "slovak",
+"slovene", "spanish", "swedish", "thai", "turkish", "ukraineb", "ukrainian",
+"usorbian", "welsh", 0};
 
 //note this when updating to lyxformat 305:
 //bahasai, indonesian, and indon = equal to bahasa
-//malay, and meyalu = equal to bahasam
+//malay and meyalu = equal to bahasam
 
+const char * const known_brazilian_languages[] = {"brazil", "brazilian", 0};
 const char * const known_french_languages[] = {"french", "frenchb", "francais",
 						"frenchle", "frenchpro", 0};
 const char * const known_german_languages[] = {"german", "germanb", 0};
 const char * const known_ngerman_languages[] = {"ngerman", "ngermanb", 0};
+const char * const known_portuguese_languages[] = {"portuges", "portuguese", 0};
 const char * const known_russian_languages[] = {"russian", "russianb", 0};
 const char * const known_ukrainian_languages[] = {"ukrainian", "ukraineb", 0};
 
@@ -338,12 +341,16 @@ void handle_package(Parser &p, string const & name, string const & opts)
 		if (documentclass_language == false) {
 			handle_opt(options, known_languages, h_language);
 			delete_opt(options, known_languages);
-			if (is_known(h_language, known_french_languages))
+			if (is_known(h_language, known_brazilian_languages))
+				h_language = "brazilian";
+			else if (is_known(h_language, known_french_languages))
 				h_language = "french";
 			else if (is_known(h_language, known_german_languages))
 				h_language = "german";
 			else if (is_known(h_language, known_ngerman_languages))
 				h_language = "ngerman";
+			else if (is_known(h_language, known_portuguese_languages))
+				h_language = "portuguese";
 			else if (is_known(h_language, known_russian_languages))
 				h_language = "russian";
 			else if (is_known(h_language, known_ukrainian_languages))
@@ -411,12 +418,16 @@ void handle_package(Parser &p, string const & name, string const & opts)
 		  // command. This command is handled below.
 
 	else if (is_known(name, known_languages)) {
-		if (is_known(name, known_french_languages))
+		if (is_known(h_language, known_brazilian_languages))
+				h_language = "brazilian";
+		else if (is_known(name, known_french_languages))
 			h_language = "french";
 		else if (is_known(name, known_german_languages))
 			h_language = "german";
 		else if (is_known(name, known_ngerman_languages))
 			h_language = "ngerman";
+		else if (is_known(h_language, known_portuguese_languages))
+				h_language = "portuguese";
 		else if (is_known(name, known_russian_languages))
 			h_language = "russian";
 		else if (is_known(name, known_ukrainian_languages))
@@ -471,7 +482,7 @@ void handle_package(Parser &p, string const & name, string const & opts)
 void end_preamble(ostream & os, TextClass const & /*textclass*/)
 {
 	os << "#LyX file created by tex2lyx " << PACKAGE_VERSION << "\n"
-	   << "\\lyxformat 262\n"
+	   << "\\lyxformat 263\n"
 	   << "\\begin_document\n"
 	   << "\\begin_header\n"
 	   << "\\textclass " << h_textclass << "\n";
@@ -665,12 +676,16 @@ void parse_preamble(Parser & p, ostream & os,
 			documentclass_language = false;
 			handle_opt(opts, known_languages, h_language);
 			delete_opt(opts, known_languages);
-			if (is_known(h_language, known_french_languages))
+			if (is_known(h_language, known_brazilian_languages))
+				h_language = "brazilian";
+			else if (is_known(h_language, known_french_languages))
 				h_language = "french";
 			else if (is_known(h_language, known_german_languages))
 				h_language = "german";
 			else if (is_known(h_language, known_ngerman_languages))
 				h_language = "ngerman";
+			else if (is_known(h_language, known_portuguese_languages))
+				h_language = "portuguese";
 			else if (is_known(h_language, known_russian_languages))
 				h_language = "russian";
 			else if (is_known(h_language, known_ukrainian_languages))
