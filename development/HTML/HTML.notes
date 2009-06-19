@@ -21,14 +21,19 @@ These insets do nothing for XHTML:
 	ERT, OptArg, Phantom
 
 These insets work but still need work:
-	InsetBibtex: There are a few issues here. One is that the output is not very
-		nice. This will be solved, though, by a patch of mine I seem to have forgotten
-		to finish. To get output that accorded with the BibTeX style, of course, we'd 
-		have to parse the bbl file. I don't know if that's worth it.
-		Another issue concerns cross-references. At the moment, we simply use the
-		xref information for every entry, rather than listing the xref separately and
-		then referencing it. That should not be terribly hard, but it would take a bit
-		of work.
+	InsetBibtex: There are a few issues here. 
+		- One is that the output is not very nice. This will be solved, though, by 
+			a patch of mine I seem to have forgotten to finish. To get output that 
+			accorded with the BibTeX style, of course, we'd have to parse the bbl file. 
+			I don't know if that's worth it.
+		- Another issue concerns cross-references. At the moment, we simply use the
+			xref information for every entry, rather than listing the xref separately and
+			then referencing it. That should not be terribly hard, but it would take a bit
+			of work.
+		- A third issue concerns the labels. At present, we use the BibTeX key as the 
+			citation label. It would not be too hard, I think, to use numerical labels,
+			in the way BibTeX does. To do so, we'd need to move the sorting routine out
+			of InsetBibtex so we could do it before we print the citations. See below.
 	InsetBox: The CSS isn't there yet.
 	InsetCitation: This has two limitations as of 11 VI 2009. The first is that we
 		ignore the citation style and output square brackets, no matter what. The
