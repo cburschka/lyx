@@ -567,12 +567,16 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 
 	string const tex_format = (runparams.flavor == OutputParams::LATEX) ?
 			"latex" : "pdflatex";
-	if (isVerbatim(params())) {
+	switch (type(params())) {
+	case VERB:
+	case VERBAST: {
 		incfile = latex_path(incfile);
 		// FIXME UNICODE
 		os << '\\' << from_ascii(params().getCmdName()) << '{'
 		   << from_utf8(incfile) << '}';
-	} else if (type(params()) == INPUT) {
+		break;
+	} 
+	case INPUT: {
 		runparams.exportdata->addExternalFile(tex_format, writefile,
 						      exportfile);
 
@@ -589,7 +593,9 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 			os << '\\' << from_ascii(params().getCmdName())
 			   << '{' << from_utf8(incfile) <<  '}';
 		}
-	} else if (type(params()) == LISTINGS) {
+		break;
+	} 
+	case LISTINGS: {
 		os << '\\' << from_ascii(params().getCmdName());
 		string const opt = to_utf8(params()["lstparams"]);
 		// opt is set in QInclude dialog and should have passed validation.
@@ -597,7 +603,9 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 		if (!params.params().empty())
 			os << "[" << from_utf8(params.params()) << "]";
 		os << '{'  << from_utf8(incfile) << '}';
-	} else {
+		break;
+	} 
+	case INCLUDE: {
 		runparams.exportdata->addExternalFile(tex_format, writefile,
 						      exportfile);
 
@@ -608,6 +616,8 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 		// FIXME UNICODE
 		os << '\\' << from_ascii(params().getCmdName()) << '{'
 		   << from_utf8(incfile) << '}';
+		break;
+	}
 	}
 
 	return 0;
