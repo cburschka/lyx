@@ -26,6 +26,7 @@
 #include "ErrorList.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
+#include "InsetCaption.h"
 #include "InsetList.h"
 #include "Intl.h"
 #include "Lexer.h"
@@ -648,6 +649,50 @@ void InsetText::completionPosAndDim(Cursor const & cur, int & x, int & y,
 docstring InsetText::contextMenu(BufferView const &, int, int) const
 {
 	return from_ascii("context-edit");
+}
+
+
+InsetCaption const * InsetText::getCaptionInset() const
+{
+	ParagraphList::const_iterator pit = paragraphs().begin();
+	for (; pit != paragraphs().end(); ++pit) {
+		InsetList::const_iterator it = pit->insetList().begin();
+		for (; it != pit->insetList().end(); ++it) {
+			Inset & inset = *it->inset;
+			if (inset.lyxCode() == CAPTION_CODE) {
+				InsetCaption const * ins =
+					static_cast<InsetCaption const *>(it->inset);
+				return ins;
+			}
+		}
+	}
+	return 0;
+}
+
+
+docstring InsetText::getCaptionText(OutputParams const & runparams) const
+{
+	InsetCaption const * ins = getCaptionInset();
+	if (ins == 0)
+		return docstring();
+
+	odocstringstream ods;
+	ins->getCaptionAsPlaintext(ods, runparams);
+	return ods.str();
+}
+
+
+docstring InsetText::getCaptionHTML(OutputParams const & runparams) const
+{
+	InsetCaption const * ins = getCaptionInset();
+	if (ins == 0)
+		return docstring();
+
+	odocstringstream ods;
+	docstring def = ins->getCaptionAsHTML(ods, runparams);
+	if (!def.empty())
+		ods << def << '\n';
+	return ods.str();
 }
 
 

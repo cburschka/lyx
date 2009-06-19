@@ -85,8 +85,6 @@ private:
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
-	docstring getCaptionText(OutputParams const &) const;
-	///
 	docstring name() const;
 	///
 	Inset * clone() const { return new InsetWrap(*this); }

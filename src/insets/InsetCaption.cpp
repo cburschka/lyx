@@ -256,8 +256,8 @@ int InsetCaption::docbook(odocstream & os,
 }
 
 
-docstring InsetCaption::xhtml(odocstream & os,
-			  OutputParams const & runparams) const
+docstring InsetCaption::xhtml(odocstream &,
+			  OutputParams const &) const
 {
 	return docstring();
 }
@@ -276,7 +276,7 @@ int InsetCaption::getOptArg(odocstream & os,
 }
 
 
-int InsetCaption::getCaptionText(odocstream & os,
+int InsetCaption::getCaptionAsPlaintext(odocstream & os,
 			OutputParams const & runparams) const
 {
 	os << full_label_ << ' ';
@@ -284,7 +284,7 @@ int InsetCaption::getCaptionText(odocstream & os,
 }
 
 
-docstring InsetCaption::getCaptionHTML(odocstream & os,
+docstring InsetCaption::getCaptionAsHTML(odocstream & os,
 			OutputParams const & runparams) const
 {
 	os << full_label_ << ' ';

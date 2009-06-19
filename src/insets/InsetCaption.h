@@ -29,9 +29,9 @@ public:
 	/// return the optional argument(s) only
 	int getOptArg(odocstream & os, OutputParams const &) const;
 	/// return the caption text
-	int getCaptionText(odocstream & os, OutputParams const &) const;
+	int getCaptionAsPlaintext(odocstream & os, OutputParams const &) const;
 	/// return the caption text as HTML
-	docstring getCaptionHTML(odocstream & os, OutputParams const &) const;
+	docstring getCaptionAsHTML(odocstream & os, OutputParams const &) const;
 private:
 	///
 	void write(std::ostream & os) const;

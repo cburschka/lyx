@@ -23,7 +23,6 @@
 #include "FloatList.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "InsetCaption.h"
 #include "InsetLayout.h"
 #include "InsetList.h"
 #include "Language.h"
@@ -781,56 +780,6 @@ docstring InsetCollapsable::floatName(
 	FloatList::const_iterator it = floats[type];
 	// FIXME UNICODE
 	return (it == floats.end()) ? from_ascii(type) : bp.B_(it->second.name());
-}
-
-
-InsetCaption const * InsetCollapsable::getCaptionInset() const
-{
-	ParagraphList::const_iterator pit = paragraphs().begin();
-	for (; pit != paragraphs().end(); ++pit) {
-		InsetList::const_iterator it = pit->insetList().begin();
-		for (; it != pit->insetList().end(); ++it) {
-			Inset & inset = *it->inset;
-			if (inset.lyxCode() == CAPTION_CODE) {
-				InsetCaption const * ins =
-					static_cast<InsetCaption const *>(it->inset);
-				return ins;
-			}
-		}
-	}
-	return 0;
-}
-
-
-docstring InsetCollapsable::getCaptionText(OutputParams const & runparams) const
-{
-	if (paragraphs().empty())
-		return docstring();
-
-	InsetCaption const * ins = getCaptionInset();
-	if (ins == 0)
-		return docstring();
-
-	odocstringstream ods;
-	ins->getCaptionText(ods, runparams);
-	return ods.str();
-}
-
-
-docstring InsetCollapsable::getCaptionHTML(OutputParams const & runparams) const
-{
-	if (paragraphs().empty())
-		return docstring();
-
-	InsetCaption const * ins = getCaptionInset();
-	if (ins == 0)
-		return docstring();
-
-	odocstringstream ods;
-	docstring def = ins->getCaptionHTML(ods, runparams);
-	if (!def.empty())
-		ods << def << '\n';
-	return ods.str();
 }
 
 

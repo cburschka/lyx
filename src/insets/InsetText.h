@@ -26,6 +26,7 @@ class CompletionList;
 class CursorSlice;
 class Dimension;
 class ParagraphList;
+class InsetCaption;
 class InsetTabular;
 
 /**
@@ -176,6 +177,13 @@ public:
 	virtual docstring contextMenu(BufferView const & bv, int x, int y) const;
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
+protected:
+	///
+	InsetCaption const * getCaptionInset() const;
+	///
+	docstring getCaptionText(OutputParams const &) const;
+	///
+	docstring getCaptionHTML(OutputParams const &) const;
 private:
 	///
 	void initParagraphs(UsePlain type);

@@ -259,29 +259,6 @@ bool InsetWrap::showInsetDialog(BufferView * bv) const
 }
 
 
-docstring InsetWrap::getCaptionText(OutputParams const & runparams) const
-{
-	if (paragraphs().empty())
-		return docstring();
-
-	ParagraphList::const_iterator pit = paragraphs().begin();
-	for (; pit != paragraphs().end(); ++pit) {
-		InsetList::const_iterator it = pit->insetList().begin();
-		for (; it != pit->insetList().end(); ++it) {
-			Inset & inset = *it->inset;
-			if (inset.lyxCode() == CAPTION_CODE) {
-				odocstringstream ods;
-				InsetCaption * ins =
-					static_cast<InsetCaption *>(it->inset);
-				ins->getCaptionText(ods, runparams);
-				return ods.str();
-			}
-		}
-	}
-	return docstring();
-}
-
-
 void InsetWrap::string2params(string const & in, InsetWrapParams & params)
 {
 	params = InsetWrapParams();
