@@ -28,7 +28,14 @@ What's new
   compilation. This allows for proper support for jbibtex and mendex,
   pLaTeX's bibtex and makeindex replacements (bug 5601).
 
-- LyX recognizes now nomenclature entries and the LaTeX-package esint
+- LyX recognizes now
+  * nomenclature entries
+  * the LaTeX-package esint
+  * the alternative LaTeX document language names "portuguese" and
+    "brazilian"
+  when importing LaTeX files.
+
+- LyX recognizes now the nomenclature entries and the LaTeX-package esint
   when importing LaTeX files. 
 
 
