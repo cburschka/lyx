@@ -435,29 +435,39 @@ void InsetFloat::setNewLabel(BufferParams const & bp)
 }
 
 
-docstring InsetFloat::getCaption(OutputParams const & runparams) const
+InsetCaption const * InsetFloat::getCaptionInset() const
 {
-	if (paragraphs().empty())
-		return docstring();
-
 	ParagraphList::const_iterator pit = paragraphs().begin();
 	for (; pit != paragraphs().end(); ++pit) {
 		InsetList::const_iterator it = pit->insetList().begin();
 		for (; it != pit->insetList().end(); ++it) {
 			Inset & inset = *it->inset;
 			if (inset.lyxCode() == CAPTION_CODE) {
-				odocstringstream ods;
-				InsetCaption * ins =
-					static_cast<InsetCaption *>(it->inset);
-				ins->getOptArg(ods, runparams);
-				ods << '[';
-				ins->getArgument(ods, runparams);
-				ods << ']';
-				return ods.str();
+				InsetCaption const * ins =
+					static_cast<InsetCaption const *>(it->inset);
+				return ins;
 			}
 		}
 	}
-	return docstring();
+	return 0;
+}
+
+
+docstring InsetFloat::getCaption(OutputParams const & runparams) const
+{
+	if (paragraphs().empty())
+		return docstring();
+
+	InsetCaption const * ins = getCaptionInset();
+	if (ins == 0)
+		return docstring();
+
+	odocstringstream ods;
+	ins->getOptArg(ods, runparams);
+	ods << '[';
+	ins->getArgument(ods, runparams);
+	ods << ']';
+	return ods.str();
 }
 
 
@@ -466,21 +476,13 @@ docstring InsetFloat::getCaptionText(OutputParams const & runparams) const
 	if (paragraphs().empty())
 		return docstring();
 
-	ParagraphList::const_iterator pit = paragraphs().begin();
-	for (; pit != paragraphs().end(); ++pit) {
-		InsetList::const_iterator it = pit->insetList().begin();
-		for (; it != pit->insetList().end(); ++it) {
-			Inset & inset = *it->inset;
-			if (inset.lyxCode() == CAPTION_CODE) {
-				odocstringstream ods;
-				InsetCaption * ins =
-					static_cast<InsetCaption *>(it->inset);
-				ins->getCaptionText(ods, runparams);
-				return ods.str();
-			}
-		}
-	}
-	return docstring();
+	InsetCaption const * ins = getCaptionInset();
+	if (ins == 0)
+		return docstring();
+
+	odocstringstream ods;
+	ins->getCaptionText(ods, runparams);
+	return ods.str();
 }
 
 
