@@ -135,7 +135,7 @@ int InsetListings::latex(odocstream & os, OutputParams const & runparams) const
 	// NOTE: I use {} to quote text, which is an experimental feature
 	// of the listings package (see page 25 of the manual)
 	int lines = 0;
-	bool isInline = params().isInline();
+	bool const isInline = params().isInline();
 	// get the paragraphs. We can not output them directly to given odocstream
 	// because we can not yet determine the delimiter character of \lstinline
 	docstring code;
@@ -270,6 +270,37 @@ int InsetListings::latex(odocstream & os, OutputParams const & runparams) const
 	}
 
 	return lines;
+}
+
+
+docstring InsetListings::xhtml(odocstream & os, OutputParams const & rp) const
+{
+	odocstringstream out;
+
+	bool const isInline = params().isInline();
+	if (isInline) 
+		out << "<br />\n";
+	else {
+		out << "<div class='float float-listings'>\n";
+		docstring caption = getCaptionHTML(rp);
+		if (!caption.empty())
+			out << "<div class='float-caption'>" << caption << "</div>\n";
+	}
+
+	out << "<pre>\n";
+	docstring def = InsetText::xhtml(out, rp);
+	out << "\n</pre>\n";
+
+	if (isInline) {
+		out << "<br />\n";
+		os << out.str();
+	} else {
+		out <<  "</div>";
+		// In this case, this needs to be deferred, but we'll put it
+		// before anything the text itself deferred.
+		def = out.str() + '\n' + def;
+	}
+	return def;
 }
 
 

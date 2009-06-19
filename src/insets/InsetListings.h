@@ -57,6 +57,8 @@ private:
 	///
 	int latex(odocstream &, OutputParams const &) const;
 	///
+	docstring xhtml(odocstream &, OutputParams const &) const;
+	///
 	void validate(LaTeXFeatures &) const;
 	///
 	bool showInsetDialog(BufferView *) const;
