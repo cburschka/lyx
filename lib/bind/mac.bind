@@ -115,6 +115,8 @@
 \bind "M-Down"			"paragraph-down"
 \bind "C-Up"			"buffer-begin"
 \bind "C-Down"			"buffer-end"
+\bind "M-C-Up"			"inset-begin" 
+\bind "M-C-Down"		"inset-end" 
 \bind "C-Right"			"line-end"
 \bind "C-Left"			"line-begin"
 
@@ -140,6 +142,8 @@
 \bind "S-Next"			"screen-down-select"
 \bind "S-C-Up"			"buffer-begin-select"
 \bind "S-C-Down"		"buffer-end-select"
+\bind "S-M-C-Up"		"inset-begin-select" 
+\bind "S-M-C-Down"		"inset-end-select" 
 \bind "C-Insert"		"copy"
 \bind "S-Insert"		"paste"
 \bind "S-Delete"		"cut"
