@@ -27,9 +27,12 @@ Floating::Floating()
 Floating::Floating(string const & type, string const & placement,
 		   string const & ext, string const & within,
 		   string const & style, string const & name,
-		   string const & listName, bool builtin)
+		   string const & listName, string const & htmlType,
+		   string const & htmlClass, string const & htmlStyle,
+		   bool builtin)
 	: type_(type), placement_(placement), ext_(ext), within_(within),
-	  style_(style), name_(name), listName_(listName), builtin_(builtin)
+	  style_(style), name_(name), listName_(listName), htmlType_(htmlType),
+	  htmlClass_(htmlClass), htmlStyle_(htmlStyle), builtin_(builtin)
 {}
 
 
@@ -72,6 +75,24 @@ string const & Floating::name() const
 string const & Floating::listName() const
 {
 	return listName_;
+}
+
+
+string const & Floating::htmlStyle() const
+{
+	return htmlStyle_;
+}
+
+
+string const & Floating::htmlClass() const
+{
+	return htmlClass_;
+}
+
+
+string const & Floating::htmlType() const
+{
+	return htmlType_;
 }
 
 

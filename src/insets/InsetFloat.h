@@ -91,6 +91,8 @@ private:
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	///
+	docstring xhtml(odocstream &, OutputParams const &) const;
+	///
 	docstring editMessage() const;
 	///
 	bool insetAllowed(InsetCode) const;
@@ -112,6 +114,8 @@ private:
 	docstring getCaption(OutputParams const &) const;
 	///
 	docstring getCaptionText(OutputParams const &) const;
+	///
+	docstring getCaptionHTML(OutputParams const &) const;
 	///
 	InsetCaption const * getCaptionInset() const;
 	///

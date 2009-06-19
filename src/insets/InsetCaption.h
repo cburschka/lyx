@@ -30,6 +30,8 @@ public:
 	int getOptArg(odocstream & os, OutputParams const &) const;
 	/// return the caption text
 	int getCaptionText(odocstream & os, OutputParams const &) const;
+	/// return the caption text as HTML
+	docstring getCaptionHTML(odocstream & os, OutputParams const &) const;
 private:
 	///
 	void write(std::ostream & os) const;
@@ -68,6 +70,8 @@ private:
 	int plaintext(odocstream & os, OutputParams const & runparams) const;
 	///
 	int docbook(odocstream & os, OutputParams const & runparams) const;
+	/// This does nothing here. Instead, it is handled inside the float.
+	docstring xhtml(odocstream & os, OutputParams const & runparams) const;
 	///
 	void setCustomLabel(docstring const & label);
 	///

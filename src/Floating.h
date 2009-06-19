@@ -31,7 +31,9 @@ public:
 	Floating(std::string const & type, std::string const & placement,
 		 std::string const & ext, std::string const & within,
 		 std::string const & style, std::string const & name,
-		 std::string const & listName, bool builtin = false);
+		 std::string const & listName, std::string const & htmlType,
+		 std::string const & htmlClass, std::string const & htmlStyle,
+		 bool builtin = false);
 	///
 	std::string const & type() const;
 	///
@@ -46,6 +48,12 @@ public:
 	std::string const & name() const;
 	///
 	std::string const & listName() const;
+	/// 
+	std::string const & htmlStyle() const;
+	///
+	std::string const & htmlClass() const;
+	///
+	std::string const & htmlType() const;
 	///
 	bool builtin() const;
 private:
@@ -63,6 +71,12 @@ private:
 	std::string name_;
 	///
 	std::string listName_;
+	/// HTML Element type, usually div
+	std::string htmlType_;
+	/// class attribute, e.g., float-table, for CSS
+	std::string htmlClass_;
+	/// CSS information for this element
+	std::string htmlStyle_;
 	///
 	bool builtin_;
 };

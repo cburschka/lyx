@@ -284,6 +284,40 @@ docstring InsetFloat::editMessage() const
 }
 
 
+docstring InsetFloat::xhtml(odocstream & os, OutputParams const & rp) const
+{
+	FloatList const & floats = buffer().params().documentClass().floats();
+	Floating const & ftype = floats.getType(params_.type);
+	string const htmltype = ftype.htmlType().empty() ? 
+			"div" : ftype.htmlType();
+	string const htmlclass = ftype.htmlClass().empty() ?
+			"float-" + params_.type : ftype.htmlClass();
+	docstring const otag = 
+			from_ascii("<" + htmltype + " class='float " + htmlclass + "'>\n");
+	docstring const ctag = from_ascii("</" + htmltype + ">\n");
+
+	odocstringstream out;
+
+	docstring caption = getCaptionHTML(rp);
+	out << otag;
+	if (!caption.empty())
+		out << "<div class='float-caption'>" << caption << "</div>\n";
+
+	docstring def = InsetText::xhtml(out, rp);
+	out << ctag;
+
+	if (rp.inFloat == OutputParams::NONFLOAT)
+		// In this case, this float needs to be deferred, but we'll put it
+		// before anything the text itself deferred.
+		def = out.str() + '\n' + def;
+	else 
+		// In this case, the whole thing is already being deferred, so
+		// we can write to the stream.
+		os << out.str();
+	return def;
+}
+
+
 int InsetFloat::latex(odocstream & os, OutputParams const & runparams_in) const
 {
 	if (runparams_in.inFloat != OutputParams::NONFLOAT) {
@@ -482,6 +516,23 @@ docstring InsetFloat::getCaptionText(OutputParams const & runparams) const
 
 	odocstringstream ods;
 	ins->getCaptionText(ods, runparams);
+	return ods.str();
+}
+
+
+docstring InsetFloat::getCaptionHTML(OutputParams const & runparams) const
+{
+	if (paragraphs().empty())
+		return docstring();
+
+	InsetCaption const * ins = getCaptionInset();
+	if (ins == 0)
+		return docstring();
+
+	odocstringstream ods;
+	docstring def = ins->getCaptionHTML(ods, runparams);
+	if (!def.empty())
+		ods << def << '\n';
 	return ods.str();
 }
 

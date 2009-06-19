@@ -187,6 +187,7 @@ enum TextClassTags {
 	TC_TITLELATEXTYPE,
 	TC_FORMAT,
 	TC_ADDTOPREAMBLE,
+	TC_ADDTOHTMLPREAMBLE,
 	TC_DEFAULTMODULE,
 	TC_PROVIDESMODULE,
 	TC_EXCLUDESMODULE
@@ -196,36 +197,37 @@ enum TextClassTags {
 namespace {
 
 	LexerKeyword textClassTags[] = {
-		{ "addtopreamble",   TC_ADDTOPREAMBLE },
-		{ "classoptions",    TC_CLASSOPTIONS },
-		{ "columns",         TC_COLUMNS },
-		{ "counter",         TC_COUNTER },
-		{ "defaultfont",     TC_DEFAULTFONT },
-		{ "defaultmodule",   TC_DEFAULTMODULE },
-		{ "defaultstyle",    TC_DEFAULTSTYLE },
-		{ "excludesmodule",  TC_EXCLUDESMODULE },
-		{ "float",           TC_FLOAT },
-		{ "format",          TC_FORMAT },
-		{ "htmlpreamble",    TC_HTMLPREAMBLE },
-		{ "input",           TC_INPUT },
-		{ "insetlayout",     TC_INSETLAYOUT },
-		{ "leftmargin",      TC_LEFTMARGIN },
-		{ "nofloat",         TC_NOFLOAT },
-		{ "nostyle",         TC_NOSTYLE },
-		{ "outputformat",    TC_OUTPUTFORMAT },
-		{ "outputtype",      TC_OUTPUTTYPE },
-		{ "pagestyle",       TC_PAGESTYLE },
-		{ "preamble",        TC_PREAMBLE },
-		{ "provides",        TC_PROVIDES },
-		{ "providesmodule",  TC_PROVIDESMODULE },
-		{ "requires",        TC_REQUIRES },
-		{ "rightmargin",     TC_RIGHTMARGIN },
-		{ "secnumdepth",     TC_SECNUMDEPTH },
-		{ "sides",           TC_SIDES },
-		{ "style",           TC_STYLE },
-		{ "titlelatexname",  TC_TITLELATEXNAME },
-		{ "titlelatextype",  TC_TITLELATEXTYPE },
-		{ "tocdepth",        TC_TOCDEPTH }
+		{ "addtohtmlpreamble", TC_ADDTOHTMLPREAMBLE },
+		{ "addtopreamble",     TC_ADDTOPREAMBLE },
+		{ "classoptions",      TC_CLASSOPTIONS },
+		{ "columns",           TC_COLUMNS },
+		{ "counter",           TC_COUNTER },
+		{ "defaultfont",       TC_DEFAULTFONT },
+		{ "defaultmodule",     TC_DEFAULTMODULE },
+		{ "defaultstyle",      TC_DEFAULTSTYLE },
+		{ "excludesmodule",    TC_EXCLUDESMODULE },
+		{ "float",             TC_FLOAT },
+		{ "format",            TC_FORMAT },
+		{ "htmlpreamble",      TC_HTMLPREAMBLE },
+		{ "input",             TC_INPUT },
+		{ "insetlayout",       TC_INSETLAYOUT },
+		{ "leftmargin",        TC_LEFTMARGIN },
+		{ "nofloat",           TC_NOFLOAT },
+		{ "nostyle",           TC_NOSTYLE },
+		{ "outputformat",      TC_OUTPUTFORMAT },
+		{ "outputtype",        TC_OUTPUTTYPE },
+		{ "pagestyle",         TC_PAGESTYLE },
+		{ "preamble",          TC_PREAMBLE },
+		{ "provides",          TC_PROVIDES },
+		{ "providesmodule",    TC_PROVIDESMODULE },
+		{ "requires",          TC_REQUIRES },
+		{ "rightmargin",       TC_RIGHTMARGIN },
+		{ "secnumdepth",       TC_SECNUMDEPTH },
+		{ "sides",             TC_SIDES },
+		{ "style",             TC_STYLE },
+		{ "titlelatexname",    TC_TITLELATEXNAME },
+		{ "titlelatextype",    TC_TITLELATEXTYPE },
+		{ "tocdepth",          TC_TOCDEPTH }
 	};
 	
 } //namespace anon
@@ -506,6 +508,10 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 
 		case TC_ADDTOPREAMBLE:
 			preamble_ += from_utf8(lexrc.getLongString("EndPreamble"));
+			break;
+
+		case TC_ADDTOHTMLPREAMBLE:
+			htmlpreamble_ += from_utf8(lexrc.getLongString("EndPreamble"));
 			break;
 
 		case TC_PROVIDES: {
@@ -817,6 +823,9 @@ void TextClass::readFloat(Lexer & lexrc)
 		FT_STYLE,
 		FT_LISTNAME,
 		FT_BUILTIN,
+		FT_HTMLSTYLE,
+		FT_HTMLCLASS,
+		FT_HTMLTYPE,
 		FT_END
 	};
 
@@ -824,6 +833,9 @@ void TextClass::readFloat(Lexer & lexrc)
 		{ "end", FT_END },
 		{ "extension", FT_EXT },
 		{ "guiname", FT_NAME },
+		{ "htmlclass", FT_HTMLCLASS },
+		{ "htmlstyle", FT_HTMLSTYLE },
+		{ "htmltype", FT_HTMLTYPE },
 		{ "latexbuiltin", FT_BUILTIN },
 		{ "listname", FT_LISTNAME },
 		{ "numberwithin", FT_WITHIN },
@@ -834,13 +846,16 @@ void TextClass::readFloat(Lexer & lexrc)
 
 	lexrc.pushTable(floatTags);
 
-	string type;
-	string placement;
 	string ext;
-	string within;
-	string style;
-	string name;
+	string htmlclass;
+	string htmlstyle;
+	string htmltype;
 	string listName;
+	string name;
+	string placement;
+	string style;
+	string type;
+	string within;
 	bool builtin = false;
 
 	bool getout = false;
@@ -897,6 +912,18 @@ void TextClass::readFloat(Lexer & lexrc)
 			lexrc.next();
 			builtin = lexrc.getBool();
 			break;
+		case FT_HTMLCLASS:
+			lexrc.next();
+			htmlclass = lexrc.getString();
+			break;
+		case FT_HTMLSTYLE:
+			lexrc.next();
+			htmlstyle = lexrc.getLongString("EndHTMLStyle");
+			break;
+		case FT_HTMLTYPE:
+			lexrc.next();
+			htmltype = lexrc.getString();
+			break;
 		case FT_END:
 			getout = true;
 			break;
@@ -905,8 +932,8 @@ void TextClass::readFloat(Lexer & lexrc)
 
 	// Here if have a full float if getout == true
 	if (getout) {
-		Floating fl(type, placement, ext, within,
-			    style, name, listName, builtin);
+		Floating fl(type, placement, ext, within, style, name, 
+				listName, htmltype, htmlclass, htmlstyle, builtin);
 		floatlist_.newFloat(fl);
 		// each float has its own counter
 		counters_.newCounter(from_ascii(type), from_ascii(within),
