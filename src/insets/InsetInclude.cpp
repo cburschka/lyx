@@ -629,7 +629,7 @@ docstring InsetInclude::xhtml(odocstream & os, OutputParams const &rp) const
 
 	// For verbatim and listings, we just include the contents of the file as-is.
 	// In the case of listings, we wrap it in <pre>.
-	bool const listing = isListings(params();
+	bool const listing = isListings(params());
 	if (listing || isVerbatim(params())) {
 		if (listing)
 			os << "<pre>\n";
@@ -643,6 +643,9 @@ docstring InsetInclude::xhtml(odocstream & os, OutputParams const &rp) const
 	// We don't (yet) know how to Input or Include non-LyX files.
 	// (If we wanted to get really arcane, we could run some tex2html
 	// converter on the included file. But that's just masochistic.)
+	string const parent_filename = buffer().absFileName();
+	FileName const included_file = 
+		makeAbsPath(to_utf8(params()["filename"]), onlyPath(parent_filename));
 	if (!isLyXFilename(included_file.absFilename())) {
 		frontend::Alert::warning(_("Unsupported Inclusion"),
 					 _("LyX does not know how to include non-LyX files when"
@@ -655,9 +658,6 @@ docstring InsetInclude::xhtml(odocstream & os, OutputParams const &rp) const
 
 	// Check we're not trying to include ourselves.
 	// FIXME RECURSIVE INCLUDE
-	string const parent_filename = buffer().absFileName();
-	FileName const included_file = 
-		makeAbsPath(to_utf8(params()["filename"]), onlyPath(parent_filename));
 	if (buffer().absFileName() == included_file.absFilename()) {
 		Alert::error(_("Recursive input"),
 			       bformat(_("Attempted to include file %1$s in itself! "
