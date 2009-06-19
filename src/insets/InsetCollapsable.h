@@ -23,6 +23,7 @@
 namespace lyx {
 
 class CursorSlice;
+class InsetCaption;
 class InsetLayout;
 
 namespace frontend { class Painter; }
@@ -179,6 +180,8 @@ protected:
 	docstring floatName(std::string const & type, BufferParams const &) const;
 	///
 	virtual void resetParagraphsFont();
+	///
+	InsetCaption const * getCaptionInset() const;
 	///
 	mutable CollapseStatus status_;
 private:

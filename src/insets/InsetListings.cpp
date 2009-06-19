@@ -23,7 +23,6 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "InsetCaption.h"
-#include "InsetList.h"
 #include "Language.h"
 #include "MetricsInfo.h"
 #include "output_latex.h"
@@ -434,37 +433,29 @@ docstring InsetListings::getCaption(OutputParams const & runparams) const
 	if (paragraphs().empty())
 		return docstring();
 
-	ParagraphList::const_iterator pit = paragraphs().begin();
-	for (; pit != paragraphs().end(); ++pit) {
-		InsetList::const_iterator it = pit->insetList().begin();
-		for (; it != pit->insetList().end(); ++it) {
-			Inset & inset = *it->inset;
-			if (inset.lyxCode() == CAPTION_CODE) {
-				odocstringstream ods;
-				InsetCaption * ins =
-					static_cast<InsetCaption *>(it->inset);
-				ins->getOptArg(ods, runparams);
-				ins->getArgument(ods, runparams);
-				// the caption may contain \label{} but the listings
-				// package prefer caption={}, label={}
-				docstring cap = ods.str();
-				if (!contains(to_utf8(cap), "\\label{"))
-					return cap;
-				// convert from
-				//     blah1\label{blah2} blah3
-				// to
-				//     blah1 blah3},label={blah2
-				// to form options
-				//     caption={blah1 blah3},label={blah2}
-				//
-				// NOTE that } is not allowed in blah2.
-				regex const reg("(.*)\\\\label\\{(.*?)\\}(.*)");
-				string const new_cap("\\1\\3},label={\\2");
-				return from_utf8(regex_replace(to_utf8(cap), reg, new_cap));
-			}
-		}
-	}
-	return docstring();
+	InsetCaption const * ins = getCaptionInset();
+	if (ins == 0)
+		return docstring();
+
+	odocstringstream ods;
+	ins->getOptArg(ods, runparams);
+	ins->getArgument(ods, runparams);
+	// the caption may contain \label{} but the listings
+	// package prefer caption={}, label={}
+	docstring cap = ods.str();
+	if (!contains(to_utf8(cap), "\\label{"))
+		return cap;
+	// convert from
+	//     blah1\label{blah2} blah3
+	// to
+	//     blah1 blah3},label={blah2
+	// to form options
+	//     caption={blah1 blah3},label={blah2}
+	//
+	// NOTE that } is not allowed in blah2.
+	regex const reg("(.*)\\\\label\\{(.*?)\\}(.*)");
+	string const new_cap("\\1\\3},label={\\2");
+	return from_utf8(regex_replace(to_utf8(cap), reg, new_cap));
 }
 
 

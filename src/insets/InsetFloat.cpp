@@ -25,7 +25,6 @@
 #include "FloatList.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "InsetList.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "OutputParams.h"
@@ -466,24 +465,6 @@ void InsetFloat::setNewLabel(BufferParams const & bp)
 		lab += _(" (sideways)");
 
 	setLabel(lab);
-}
-
-
-InsetCaption const * InsetFloat::getCaptionInset() const
-{
-	ParagraphList::const_iterator pit = paragraphs().begin();
-	for (; pit != paragraphs().end(); ++pit) {
-		InsetList::const_iterator it = pit->insetList().begin();
-		for (; it != pit->insetList().end(); ++it) {
-			Inset & inset = *it->inset;
-			if (inset.lyxCode() == CAPTION_CODE) {
-				InsetCaption const * ins =
-					static_cast<InsetCaption const *>(it->inset);
-				return ins;
-			}
-		}
-	}
-	return 0;
 }
 
 

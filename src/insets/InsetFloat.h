@@ -18,8 +18,6 @@
 
 namespace lyx {
 
-class InsetCaption;
-
 class InsetFloatParams {
 public:
 	///
@@ -116,8 +114,6 @@ private:
 	docstring getCaptionText(OutputParams const &) const;
 	///
 	docstring getCaptionHTML(OutputParams const &) const;
-	///
-	InsetCaption const * getCaptionInset() const;
 	///
 	InsetFloatParams params_;
 	///
