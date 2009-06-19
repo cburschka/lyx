@@ -618,6 +618,8 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 		   << from_utf8(incfile) << '}';
 		break;
 	}
+	case NONE:
+		break;
 	}
 
 	return 0;
