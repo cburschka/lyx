@@ -54,7 +54,7 @@ import os, re, string, sys
 
 # Incremented to format 16, 5 June 2009 by rgh
 # Add new tags for Text Class:
-#   HTML Preamble
+#   HTMLPreamble, HTMLAddToPreamble
 # For Layout:
 #   HTMLTag, HTMLAttr, HTMLLabel, HTMLLabelAttr, HTMLItem, HTMLItemAttr
 #   HTMLStyle, and HTMLPreamble
