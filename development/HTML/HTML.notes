@@ -14,8 +14,9 @@ Known issues:
 
 These insets are basically done, though there are probably issues here and there,
 	and there are even some FIXMEs:
-	Bibitem, Branch, Caption, Collapsable, Footnote, Hyperlink, Info, Label, Line, 
-	Listings, Marginal, Note, Newline, Newpage, Quotes, Space, SpecialChar, Wrap
+	Bibitem, Branch, Caption, Collapsable, Footnote, Hyperlink, Include, Info, 
+	Label, Line,  Listings, Marginal, Note, Newline, Newpage, Quotes, Space, 
+	SpecialChar, Wrap
 
 These insets do nothing for XHTML:
 	ERT, OptArg, Phantom
@@ -63,9 +64,6 @@ These do not yet work and need some attention:
 		about export formats, etc, to get it completely right. We'll also want to make
 		some use of the params, eg, on width and height. I guess there is also some
 		issue about converting the graphics formats?
-	InsetInclude: I think we just want to include it, straightforwardly. Probably will
-		base this more on the latex() routine, then. Another possibility, maybe with a
-		flag of some sort, would be to do it as a separate file, to which we link.
 	InsetRef: Presumably, this is an internal link. But what should the text be, and how
 		should we get it? Probably some validation thing again, where labels tell us where 
 		they are. Alternatively, we could parse the aux file.

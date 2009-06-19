@@ -377,7 +377,7 @@ Buffer * InsetInclude::getChildBuffer() const
 Buffer * InsetInclude::loadIfNeeded() const
 {
 	// Don't try to load it again if we failed before.
-	if (failedtoload_)
+	if (failedtoload_ || isVerbatim(params()) || isListings(params()))
 		return 0;
 
 	// Use cached Buffer if possible.
@@ -388,13 +388,9 @@ Buffer * InsetInclude::loadIfNeeded() const
 		child_buffer_ = 0;
 	}
 
-	InsetCommandParams const & p = params();
-	if (isVerbatim(p) || isListings(p))
-		return 0;
-
 	string const parent_filename = buffer().absFileName();
 	FileName const included_file = 
-		makeAbsPath(to_utf8(p["filename"]), onlyPath(parent_filename));
+		makeAbsPath(to_utf8(params()["filename"]), onlyPath(parent_filename));
 
 	if (!isLyXFilename(included_file.absFilename()))
 		return 0;
@@ -623,6 +619,57 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 	}
 
 	return 0;
+}
+
+
+docstring InsetInclude::xhtml(odocstream & os, OutputParams const &rp) const
+{
+	if (rp.inComment)
+		 return docstring();
+
+	// For verbatim and listings, we just include the contents of the file as-is.
+	// In the case of listings, we wrap it in <pre>.
+	bool const listing = isListings(params();
+	if (listing || isVerbatim(params())) {
+		if (listing)
+			os << "<pre>\n";
+		// FIXME: We don't know the encoding of the file, default to UTF-8.
+		os << includedFilename(buffer(), params()).fileContents("UTF-8");
+		if (listing)
+			os << "</pre>\n";
+		return docstring();
+	}
+
+	// We don't (yet) know how to Input or Include non-LyX files.
+	// (If we wanted to get really arcane, we could run some tex2html
+	// converter on the included file. But that's just masochistic.)
+	if (!isLyXFilename(included_file.absFilename())) {
+		frontend::Alert::warning(_("Unsupported Inclusion"),
+					 _("LyX does not know how to include non-LyX files when"
+					   "generating HTML output. Offending file: ") +
+					    params()["filename"]);
+		return docstring();
+	}
+
+	// In the other cases, we will generate the HTML and include it.
+
+	// Check we're not trying to include ourselves.
+	// FIXME RECURSIVE INCLUDE
+	string const parent_filename = buffer().absFileName();
+	FileName const included_file = 
+		makeAbsPath(to_utf8(params()["filename"]), onlyPath(parent_filename));
+	if (buffer().absFileName() == included_file.absFilename()) {
+		Alert::error(_("Recursive input"),
+			       bformat(_("Attempted to include file %1$s in itself! "
+			       "Ignoring inclusion."), params()["filename"]));
+		return docstring();
+	}
+
+	Buffer const * const ibuf = loadIfNeeded();
+	if (!ibuf)
+		return docstring();
+	ibuf->writeLyXHTMLSource(os, rp, true);
+	return docstring();
 }
 
 

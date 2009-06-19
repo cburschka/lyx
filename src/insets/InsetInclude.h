@@ -80,6 +80,8 @@ public:
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	///
+	docstring xhtml(odocstream &, OutputParams const &) const;
+	///
 	void validate(LaTeXFeatures &) const;
 	///
 	void addPreview(graphics::PreviewLoader &) const;
