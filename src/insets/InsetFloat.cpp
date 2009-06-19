@@ -486,38 +486,6 @@ docstring InsetFloat::getCaption(OutputParams const & runparams) const
 }
 
 
-docstring InsetFloat::getCaptionText(OutputParams const & runparams) const
-{
-	if (paragraphs().empty())
-		return docstring();
-
-	InsetCaption const * ins = getCaptionInset();
-	if (ins == 0)
-		return docstring();
-
-	odocstringstream ods;
-	ins->getCaptionText(ods, runparams);
-	return ods.str();
-}
-
-
-docstring InsetFloat::getCaptionHTML(OutputParams const & runparams) const
-{
-	if (paragraphs().empty())
-		return docstring();
-
-	InsetCaption const * ins = getCaptionInset();
-	if (ins == 0)
-		return docstring();
-
-	odocstringstream ods;
-	docstring def = ins->getCaptionHTML(ods, runparams);
-	if (!def.empty())
-		ods << def << '\n';
-	return ods.str();
-}
-
-
 void InsetFloat::string2params(string const & in, InsetFloatParams & params)
 {
 	params = InsetFloatParams();

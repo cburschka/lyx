@@ -111,10 +111,6 @@ private:
 	///
 	docstring getCaption(OutputParams const &) const;
 	///
-	docstring getCaptionText(OutputParams const &) const;
-	///
-	docstring getCaptionHTML(OutputParams const &) const;
-	///
 	InsetFloatParams params_;
 	///
 	docstring name_;

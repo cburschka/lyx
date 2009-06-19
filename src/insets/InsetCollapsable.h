@@ -183,6 +183,10 @@ protected:
 	///
 	InsetCaption const * getCaptionInset() const;
 	///
+	docstring getCaptionText(OutputParams const &) const;
+	///
+	docstring getCaptionHTML(OutputParams const &) const;
+	///
 	mutable CollapseStatus status_;
 private:
 	/// cache for the layout_. Make sure it is in sync with the document class!
