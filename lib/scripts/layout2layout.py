@@ -60,6 +60,9 @@ import os, re, string, sys
 #   HTMLStyle, and HTMLPreamble
 # For InsetLayout:
 #   HTMLTag, HTMLAttr, HTMLStyle, and HTMLPreamble
+# For Floats:
+#   HTMLType, HTMLClass, HTMLStyle
+# These are still to be documented, once everything stabilizes.
 
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").

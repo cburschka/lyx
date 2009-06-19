@@ -4,7 +4,23 @@
 # in most LyX layouts.
 
 
-Format 11
+Format 16
+
+AddToHTMLPreamble
+	<style type="text/css">
+		div.float {
+			border: 2px solid black;
+		}
+		div.float-caption {
+			text-align: center;
+			border: 2px solid black;
+			padding: 1ex;
+			margin-bottom: 1ex;
+		}
+	</style>
+EndPreamble
+
+
 Float
 	Type                  table
 	GuiName               Table

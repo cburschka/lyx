@@ -11,7 +11,7 @@ Known issues:
 
 These insets are basically done, though there are probably issues here and there,
 	and there are even some FIXMEs:
-	Bibitem, Branch, Collapsable, Footnote, Hyperlink, Info, Label, Line, 
+	Bibitem, Branch, Caption, Collapsable, Footnote, Hyperlink, Info, Label, Line, 
 	Marginal, Note, Newline, Newpage, Quotes, Space, SpecialChar, Wrap
 
 These insets do nothing for XHTML:
@@ -37,9 +37,7 @@ These insets work but still need work:
 		the like, but calculating labels will be more complex---unless we just parse
 		the bbl file, which of course is the only fully general solution.
 	InsetFlex: I think this one is OK, but it needs some testing.
-
-These insets do not work but should be completely straightforward:
-	Caption
+	InsetFloat: This seems to work OK, but it will need testing and tweaking.
 
 These insets do not work and are not yet scheduled to work:
 	InsetExternal: It may be that this won't be too hard, but I don't understand 
@@ -53,9 +51,6 @@ May need to make use here of TocWidget::itemInset, which should then be moved
 to TocBackend.
 
 These do not yet work and need some attention:
-	InsetFloat: This will need some work, again because I do not really understand
-		what these are meant to do. Presumably, we'll just use a div or something, but
-		it's not clear what subfloat means, etc.
 	InsetGraphics: This should be fairly straightforward, but I'll need to learn a bit
 		about export formats, etc, to get it completely right. We'll also want to make
 		some use of the params, eg, on width and height. I guess there is also some
