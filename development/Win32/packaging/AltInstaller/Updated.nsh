@@ -14,6 +14,7 @@ Function UpdateModifiedFiles
  #File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"
  SetOutPath "$INSTDIR\Resources\bind"
  File "${PRODUCT_SOURCEDIR}\Resources\bind\cua.bind"
+ File "${PRODUCT_SOURCEDIR}\Resources\bind\mac.bind"
  SetOutPath "$INSTDIR\Resources\doc"
  File /r "${PRODUCT_SOURCEDIR}\Resources\doc\ca"
  File /r "${PRODUCT_SOURCEDIR}\Resources\doc\da"
