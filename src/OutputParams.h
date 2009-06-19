@@ -198,6 +198,8 @@ public:
 	bool dryrun;
 	/// Should we output verbatim or escape LaTeX's special chars?
 	bool verbatim;
+	/// Should we output captions? (Used in HTML output.)
+	bool disable_captions;
 };
 
 

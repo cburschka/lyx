@@ -26,7 +26,7 @@ OutputParams::OutputParams(Encoding const * enc)
 	  inComment(false), inTableCell(NO), inFloat(NONFLOAT),
 	  inDeletedInset(0), changeOfDeletedInset(Change::UNCHANGED),
 	  par_begin(0), par_end(0), isLastPar(false),
-	  dryrun(false), verbatim(false)
+	  dryrun(false), verbatim(false), disable_captions(false)
 {
 	// Note: in PreviewLoader::Impl::dumpPreamble
 	// OutputParams runparams(0); 

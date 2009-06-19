@@ -70,7 +70,7 @@ private:
 	int plaintext(odocstream & os, OutputParams const & runparams) const;
 	///
 	int docbook(odocstream & os, OutputParams const & runparams) const;
-	/// This does nothing here. Instead, it is handled inside the float.
+	/// 
 	docstring xhtml(odocstream & os, OutputParams const & runparams) const;
 	///
 	void setCustomLabel(docstring const & label);

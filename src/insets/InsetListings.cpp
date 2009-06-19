@@ -288,7 +288,9 @@ docstring InsetListings::xhtml(odocstream & os, OutputParams const & rp) const
 	}
 
 	out << "<pre>\n";
-	docstring def = InsetText::xhtml(out, rp);
+	OutputParams newrp = rp;
+	newrp.disable_captions = true;
+	docstring def = InsetText::xhtml(out, newrp);
 	out << "\n</pre>\n";
 
 	if (isInline) {

@@ -297,11 +297,7 @@ docstring InsetFloat::xhtml(odocstream & os, OutputParams const & rp) const
 
 	odocstringstream out;
 
-	docstring caption = getCaptionHTML(rp);
 	out << otag;
-	if (!caption.empty())
-		out << "<div class='float-caption'>" << caption << "</div>\n";
-
 	docstring def = InsetText::xhtml(out, rp);
 	out << ctag;
 
