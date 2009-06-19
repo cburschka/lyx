@@ -1189,15 +1189,16 @@ void Paragraph::write(ostream & os, BufferParams const & bparams,
 	int column = 0;
 	for (pos_type i = 0; i <= size(); ++i) {
 
-		Change change = lookupChange(i);
+		Change const change = lookupChange(i);
 		Changes::lyxMarkChange(os, column, running_change, change);
 		running_change = change;
 
 		if (i == size())
 			break;
 
-		// Write font changes
-		Font const & font2 = getFontSettings(bparams, i);
+		// Write font changes (ignore spelling markers)
+		Font font2 = getFontSettings(bparams, i);
+		font2.setMisspelled(false);
 		if (font2 != font1) {
 			font2.lyxWriteChanges(font1, os);
 			column = 0;
