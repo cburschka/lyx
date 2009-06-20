@@ -113,12 +113,12 @@ End
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \author "" 
 \author "" 
-\author "Jean-Marc Lasgouttes" 
-\author "Georg Baum" 
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -5937,13 +5937,7 @@ Settings
 \end_inset
 
 .
- 
-\change_inserted 2 1243500588
-
-\end_layout
-
-\begin_layout Standard
-The argument in square brackets is optional: It declares any LaTeX packages
+ The argument in square brackets is optional: It declares any LaTeX packages
  on which the module depends.
  Please note that only packages about which LyX knows should be listed in
  the square brackets.
@@ -5957,15 +5951,11 @@ The list of such packages is documented only in the source code.
 \end_inset
 
  LyX will not check for arbitrary packages.
-
-\change_inserted 2 1243500694
  It is also possible to use the form 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 2 1243500706
 from->to
 \end_layout
 
@@ -5973,8 +5963,6 @@ from->to
 
 , which declares that the module can only be used when there exists a conversion
  chain between formats `from' and `to'.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
@@ -7297,27 +7285,6 @@ NoStyle
 status collapsed
 
 \begin_layout Plain Layout
-OutputType
-\end_layout
-
-\end_inset
-
- A string indicating what sort of output documents using this class will
- produce.
- At present, the options are: `docbook', `latex', and `literate'.
-\change_inserted 2 1243500198
-
-\end_layout
-
-\begin_layout Description
-
-\change_inserted 2 1243500505
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted 2 1243500208
 OutputFormat
 \end_layout
 
@@ -7330,8 +7297,6 @@ OutputFormat
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 2 1243500394
 OutputType
 \end_layout
 
@@ -7344,16 +7309,27 @@ g
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 2 1243500473
 OutputType
 \end_layout
 
 \end_inset
 
  parameter is encountered.
-\change_unchanged
+\end_layout
 
+\begin_layout Description
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+OutputType
+\end_layout
+
+\end_inset
+
+ A string indicating what sort of output documents using this class will
+ produce.
+ At present, the options are: `docbook', `latex', and `literate'.
 \end_layout
 
 \begin_layout Description
@@ -11375,11 +11351,7 @@ string
 \end_inset
 
 ] The string that will be used in the menus and also for the caption.
-
-\change_inserted 3 1244364642
  This is translated to the current language if babel is used.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
@@ -11477,11 +11449,7 @@ string
 \end_inset
 
 ] The heading used for the list of floats.
-
-\change_inserted 3 1244364301
  This is translated to the document language.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
