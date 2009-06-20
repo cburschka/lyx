@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 361
+\lyxformat 362
 \begin_document
 \begin_header
 \textclass scrbook
@@ -113,12 +113,12 @@ End
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes false
+\tracking_changes true
 \output_changes false
+\author "" 
 \author "" 
 \author "Jean-Marc Lasgouttes" 
 \author "Georg Baum" 
-\author "" 
 \end_header
 
 \begin_body
@@ -2975,21 +2975,6 @@ DocName
 \end_layout
 
 \begin_layout Itemize
-Read 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-DocStyle.lyx
-\end_layout
-
-\end_inset
-
-, the guide to writing LyX documentation.
- Pay special attention to the translator's section.
-\end_layout
-
-\begin_layout Itemize
 Check out the documentation translation web page at 
 \begin_inset CommandInset href
 LatexCommand href
@@ -3028,11 +3013,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Help\SpecialChar \menuseparator
-
-\bar under
-I
-\bar default
-ntroduction
+Introduction
 \end_layout
 
 \end_inset
@@ -5957,7 +5938,7 @@ Settings
 
 .
  
-\change_inserted 1 1243500588
+\change_inserted 2 1243500588
 
 \end_layout
 
@@ -5977,14 +5958,14 @@ The list of such packages is documented only in the source code.
 
  LyX will not check for arbitrary packages.
 
-\change_inserted 1 1243500694
+\change_inserted 2 1243500694
  It is also possible to use the form 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1243500706
+\change_inserted 2 1243500706
 from->to
 \end_layout
 
@@ -7324,19 +7305,19 @@ OutputType
  A string indicating what sort of output documents using this class will
  produce.
  At present, the options are: `docbook', `latex', and `literate'.
-\change_inserted 1 1243500198
+\change_inserted 2 1243500198
 
 \end_layout
 
 \begin_layout Description
 
-\change_inserted 1 1243500505
+\change_inserted 2 1243500505
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1243500208
+\change_inserted 2 1243500208
 OutputFormat
 \end_layout
 
@@ -7350,7 +7331,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1243500394
+\change_inserted 2 1243500394
 OutputType
 \end_layout
 
@@ -7364,7 +7345,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 1 1243500473
+\change_inserted 2 1243500473
 OutputType
 \end_layout
 
@@ -11395,7 +11376,7 @@ string
 
 ] The string that will be used in the menus and also for the caption.
 
-\change_inserted 2 1244364642
+\change_inserted 3 1244364642
  This is translated to the current language if babel is used.
 \change_unchanged
 
@@ -11497,7 +11478,7 @@ string
 
 ] The heading used for the list of floats.
 
-\change_inserted 2 1244364301
+\change_inserted 3 1244364301
  This is translated to the document language.
 \change_unchanged
 
