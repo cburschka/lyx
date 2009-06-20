@@ -1,4 +1,4 @@
-#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -1639,30 +1639,6 @@ Guia do Usuário
 \end_layout
 
 \end_deeper
-\begin_layout Description
-Guia
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-estilo
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-(
-\family typewriter
-DocStyle.lyx
-\family default
-) É como seu nome indica o guia de estilo para escreber a documentación
- do LyX, ainda que evidentemente tamén serve de inspiración para outro tipo
- de documentación.
-\end_layout
-
-\end_deeper
 \begin_layout Standard
 Os manuais fan referéncia uns aos outros, cando é necesário.
  Por exemplo, o 
@@ -2157,12 +2133,6 @@ lyxdoc,
 lib/doc/
 \family default
 .
- Dentro da directória ha un ficheiro chamado 
-\family typewriter
-DocStyle.lyx
-\family default
-.
- Lea-o, xa que é a folla de estilo da documentación.
 \end_layout
 
 \begin_layout Enumerate
