@@ -28,12 +28,11 @@ What's new
   compilation. This allows for proper support for jbibtex and mendex,
   pLaTeX's bibtex and makeindex replacements (bug 5601).
 
-- LyX recognizes now
+- LaTeX import was updated and also supports now:
   * nomenclature entries
   * the LaTeX-package esint
   * the alternative LaTeX document language names "portuguese" and
     "brazilian"
-  when importing LaTeX files.
 
 - LyX recognizes now the nomenclature entries and the LaTeX-package esint
   when importing LaTeX files. 
@@ -90,6 +89,9 @@ What's new
 * DOCUMENT INPUT/OUTPUT
 
 - Fix output of alignment if default aligment is not justified (bug 5995).
+
+- Fix problem where updates in some child documents were not recognized
+  and not LaTeX update was performed (bug 6024).
 
 - Fix the on-screen representation of headings in the AMS article and
   AMS book classes.

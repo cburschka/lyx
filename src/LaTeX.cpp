@@ -1013,7 +1013,7 @@ void LaTeX::deplog(DepTable & head)
 		// where "File: file.ext" would be skipped
 		if (regex_match(token, sub, reg6)) {
 			// search for strings in (...)
-			static regex reg6_1("\\(([^()]+)(.).*");
+			static regex reg6_1("\\(([^()]+)(.)");
 			smatch what;
 			string::const_iterator first = token.begin();
 			string::const_iterator end = token.end();
