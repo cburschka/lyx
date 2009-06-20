@@ -1,4 +1,4 @@
-#LyX 1.6.3svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -2952,21 +2952,6 @@ DocName
 \end_layout
 
 \begin_layout Itemize
-Read 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-DocStyle.lyx
-\end_layout
-
-\end_inset
-
-, the guide to writing LyX documentation.
- Pay special attention to the translator's section.
-\end_layout
-
-\begin_layout Itemize
 Check out the documentation translation web page at 
 \begin_inset CommandInset href
 LatexCommand href
@@ -3005,11 +2990,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Help\SpecialChar \menuseparator
-
-\bar under
-I
-\bar default
-ntroduction
+Introduction
 \end_layout
 
 \end_inset
