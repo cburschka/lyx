@@ -283,7 +283,7 @@ public:
 	*/
 	std::string latexName(bool no_path = true) const;
 
-	/// Get thee name and type of the log.
+	/// Get the name and type of the log.
 	std::string logName(LogType * type = 0) const;
 
 	/// Change name of buffer. Updates "read-only" flag.

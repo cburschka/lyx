@@ -467,14 +467,31 @@ string Buffer::logName(LogType * type) const
 			changeExtension(filename,
 					formats.extension(bufferFormat()) + ".out"))));
 
-	// If no Latex log or Build log is newer, show Build log
+	// Also consider the master buffer log file
+	FileName masterfname = fname;
+	LogType mtype;
+	if (masterBuffer() != this) {
+		string const mlogfile = masterBuffer()->logName(&mtype);
+		masterfname = FileName(mlogfile);
+	}
 
+	// If no Latex log or Build log is newer, show Build log
 	if (bname.exists() &&
-	    (!fname.exists() || fname.lastModified() < bname.lastModified())) {
+	    ((!fname.exists() && !masterfname.exists())
+	     || (fname.lastModified() < bname.lastModified()
+	         && masterfname.lastModified() < bname.lastModified()))) {
 		LYXERR(Debug::FILES, "Log name calculated as: " << bname);
 		if (type)
 			*type = buildlog;
 		return bname.absFilename();
+	// If we have a newer master file log or only a master log, show this
+	} else if (fname != masterfname
+		   && (!fname.exists() && masterfname.exists()
+		   || fname.lastModified() < masterfname.lastModified())) {
+		LYXERR(Debug::FILES, "Log name calculated as: " << masterfname);
+		if (type)
+			*type = mtype;
+		return masterfname.absFilename();
 	}
 	LYXERR(Debug::FILES, "Log name calculated as: " << fname);
 	if (type)
