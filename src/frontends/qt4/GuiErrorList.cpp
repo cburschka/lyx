@@ -84,16 +84,24 @@ void GuiErrorList::updateContents()
 
 ErrorList const & GuiErrorList::errorList() const
 {
-	return bufferview()->buffer().errorList(error_type_);
+	return from_master_ ? 
+		bufferview()->buffer().masterBuffer()->errorList(error_type_)
+		: bufferview()->buffer().errorList(error_type_);
 }
 
 
-bool GuiErrorList::initialiseParams(string const & error_type)
+bool GuiErrorList::initialiseParams(string const & data)
 {
+	from_master_ = prefixIs(data, "from_master|");
+	string error_type = data;
+	if (from_master_)
+		error_type = split(data, '|');
 	error_type_ = error_type;
-	Buffer const & buf = bufferview()->buffer();
+	Buffer const * buf = from_master_ ?
+		bufferview()->buffer().masterBuffer()
+		: &bufferview()->buffer();
 	name_ = bformat(_("%1$s Errors (%2$s)"), _(error_type),
-				     from_utf8(buf.absFileName()));
+				     from_utf8(buf->absFileName()));
 	return true;
 }
 
@@ -103,6 +111,10 @@ bool GuiErrorList::goTo(int item)
 	ErrorItem const & err = errorList()[item];
 
 	if (err.par_id == -1)
+		return false;
+
+	if (from_master_)
+		// FIXME: implement
 		return false;
 
 	Buffer const & buf = buffer();

@@ -57,6 +57,8 @@ private:
 	std::string error_type_;
 	/// the parent document name
 	docstring name_;
+	///
+	bool from_master_;
 };
 
 } // namespace frontend

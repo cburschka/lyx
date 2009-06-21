@@ -104,7 +104,7 @@ public:
 	/// GuiBufferDelegate.
 	///@{
 	void resetAutosaveTimers();
-	void errors(std::string const &);
+	void errors(std::string const &, bool from_master = false);
 	void structureChanged();
 	void updateTocItem(std::string const &, DocIterator const &);
 	///@}

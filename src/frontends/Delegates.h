@@ -65,7 +65,7 @@ public:
 	/// This function is called when the buffer structure has been updated.
 	virtual void updateTocItem(std::string const &, DocIterator const &) = 0;
 	/// This function is called when some parsing error shows up.
-	virtual void errors(std::string const &) = 0;
+	virtual void errors(std::string const &, bool from_master = false) = 0;
 	/// This function is called when some message shows up.
 	virtual void message(docstring const &) = 0;
 	/// This function is called when the buffer busy status change.

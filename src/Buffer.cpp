@@ -2560,10 +2560,10 @@ void Buffer::structureChanged() const
 }
 
 
-void Buffer::errors(string const & err) const
+void Buffer::errors(string const & err, bool from_master) const
 {
 	if (gui_)
-		gui_->errors(err);
+		gui_->errors(err, from_master);
 }
 
 
@@ -2853,8 +2853,14 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 		tmp_result_file, FileName(absFileName()), backend_format, format,
 		error_list);
 	// Emit the signal to show the error list.
-	if (format != backend_format)
+	if (format != backend_format) {
 		errors(error_type);
+		// also to the children, in case of master-buffer-view
+		std::vector<Buffer *> clist = getChildren();
+		for (vector<Buffer *>::const_iterator cit = clist.begin();
+		     cit != clist.end(); ++cit)
+			(*cit)->errors(error_type, true);
+	}
 	if (!success)
 		return false;
 

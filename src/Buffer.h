@@ -455,7 +455,7 @@ public:
 	/// This function is called when the buffer structure is changed.
 	void structureChanged() const;
 	/// This function is called when some parsing error shows up.
-	void errors(std::string const & err) const;
+	void errors(std::string const & err, bool from_master = false) const;
 	/// This function is called when the buffer busy status change.
 	void setBusy(bool on) const;
 	/// This function is called when the buffer readonly status change.
