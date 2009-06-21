@@ -2464,17 +2464,15 @@ bool Paragraph::isLineSeparator(pos_type pos) const
 }
 
 
-/// Used by the spellchecker
-bool Paragraph::isLetter(pos_type pos) const
+bool Paragraph::isWordSeparator(pos_type pos) const
 {
 	if (Inset const * inset = getInset(pos))
-		return inset->isLetter();
+		return !inset->isLetter();
 	char_type const c = d->text_[pos];
     // We want to pass the ' and escape chars to the spellchecker
 	static docstring const quote = from_utf8(lyxrc.spellchecker_esc_chars + '\'');
-	return (isLetterChar(c) || isDigit(c) || contains(quote, c))
-		&& pos != size()
-		&& !isDeleted(pos);
+	return (!isLetterChar(c) && !isDigit(c) && !contains(quote, c))
+		|| pos == size();
 }
 
 
@@ -2885,7 +2883,7 @@ void Paragraph::changeCase(BufferParams const & bparams, pos_type pos,
 			}
 		}
 
-		if (!isLetter(pos) || isDeleted(pos)) {
+		if (isWordSeparator(pos) || isDeleted(pos)) {
 			// permit capitalization again
 			capitalize = true;
 		}
@@ -2938,10 +2936,10 @@ bool Paragraph::find(docstring const & str, bool cs, bool mw,
 
 	// if necessary, check whether string matches word
 	if (mw) {
-		if (pos > 0 && isLetter(pos - 1))
+		if (pos > 0 && !isWordSeparator(pos - 1))
 			return false;
 		if (pos + strsize < parsize
-			&& isLetter(pos + strsize))
+			&& !isWordSeparator(pos + strsize))
 			return false;
 	}
 
@@ -2996,8 +2994,8 @@ void Paragraph::locateWord(pos_type & from, pos_type & to,
 	switch (loc) {
 	case WHOLE_WORD_STRICT:
 		if (from == 0 || from == size()
-		    || !isLetter(from)
-		    || !isLetter(from - 1)) {
+		    || isWordSeparator(from)
+		    || isWordSeparator(from - 1)) {
 			to = from;
 			return;
 		}
@@ -3005,13 +3003,13 @@ void Paragraph::locateWord(pos_type & from, pos_type & to,
 
 	case WHOLE_WORD:
 		// If we are already at the beginning of a word, do nothing
-		if (!from || !isLetter(from - 1))
+		if (!from || isWordSeparator(from - 1))
 			break;
 		// no break here, we go to the next
 
 	case PREVIOUS_WORD:
 		// always move the cursor to the beginning of previous word
-		while (from && isLetter(from - 1))
+		while (from && !isWordSeparator(from - 1))
 			--from;
 		break;
 	case NEXT_WORD:
@@ -3022,7 +3020,7 @@ void Paragraph::locateWord(pos_type & from, pos_type & to,
 		break;
 	}
 	to = from;
-	while (to < size() && isLetter(to))
+	while (to < size() && !isWordSeparator(to))
 		++to;
 }
 
@@ -3034,7 +3032,7 @@ void Paragraph::collectWords()
 	//lyxerr << "Words: ";
 	pos_type n = size();
 	for (pos_type pos = 0; pos < n; ++pos) {
-		if (!isLetter(pos))
+		if (isWordSeparator(pos))
 			continue;
 		pos_type from = pos;
 		locateWord(from, pos, WHOLE_WORD);

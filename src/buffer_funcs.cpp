@@ -174,10 +174,11 @@ int countWords(DocIterator const & from, DocIterator const & to)
 	int count = 0;
 	bool inword = false;
 	for (DocIterator dit = from ; dit != to ; dit.forwardPos()) {
-		// Copied and adapted from isLetter() in ControlSpellChecker
+		// FIXME: use Paragraph::isWordSeparator
+		// Copied and adapted from isWordSeparator() in Paragraph
 		if (dit.inTexted()
 		    && dit.pos() != dit.lastpos()
-		    && dit.paragraph().isLetter(dit.pos())
+		    && !dit.paragraph().isWordSeparator(dit.pos())
 		    && !dit.paragraph().isDeleted(dit.pos())) {
 			if (!inword) {
 				++count;

@@ -362,9 +362,9 @@ public:
 	bool isSeparator(pos_type pos) const;
 	///
 	bool isLineSeparator(pos_type pos) const;
-	/// True if the character/inset at this point can be part of a word.
-	/// Note that digits in particular are considered as letters
-	bool isLetter(pos_type pos) const;
+	/// True if the character/inset at this point is a word separator.
+	/// Note that digits in particular are not considered as word separator.
+	bool isWordSeparator(pos_type pos) const;
 	/// True if the element at this point is a character that is not a letter.
 	bool isChar(pos_type pos) const;
 	/// True if the element at this point is a space

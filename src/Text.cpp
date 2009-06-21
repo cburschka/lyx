@@ -574,8 +574,8 @@ void Text::charInserted(Cursor & cur)
 
 	// register word if a non-letter was entered
 	if (cur.pos() > 1
-	    && par.isLetter(cur.pos() - 2)
-	    && !par.isLetter(cur.pos() - 1)) {
+	    && !par.isWordSeparator(cur.pos() - 2)
+	    && par.isWordSeparator(cur.pos() - 1)) {
 		// get the word in front of cursor
 		LASSERT(this == cur.text(), /**/);
 		cur.paragraph().updateWords();
@@ -609,14 +609,14 @@ bool Text::cursorForwardOneWord(Cursor & cur)
                         ++pos;
 
 		// Skip over either a non-char inset or a full word
-		if (pos != lastpos && !par.isLetter(pos))
+		if (pos != lastpos && par.isWordSeparator(pos))
 			++pos;
-		else while (pos != lastpos && par.isLetter(pos))
+		else while (pos != lastpos && !par.isWordSeparator(pos))
 			     ++pos;
 	} else {
 		LASSERT(pos < lastpos, /**/); // see above
-		if (par.isLetter(pos))
-			while (pos != lastpos && par.isLetter(pos))
+		if (!par.isWordSeparator(pos))
+			while (pos != lastpos && !par.isWordSeparator(pos))
 				++pos;
 		else if (par.isChar(pos))
 			while (pos != lastpos && par.isChar(pos))
@@ -651,17 +651,17 @@ bool Text::cursorBackwardOneWord(Cursor & cur)
 			--pos;
 
 		// Skip over either a non-char inset or a full word
-		if (pos != 0 && !par.isLetter(pos - 1) && !par.isChar(pos - 1))
+		if (pos != 0 && par.isWordSeparator(pos - 1) && !par.isChar(pos - 1))
 			--pos;
-		else while (pos != 0 && par.isLetter(pos - 1))
+		else while (pos != 0 && !par.isWordSeparator(pos - 1))
 			     --pos;
 	} else {
 		// Skip over white space
 		while (pos != 0 && par.isSpace(pos - 1))
 			     --pos;
 
-		if (pos != 0 && par.isLetter(pos - 1))
-			while (pos != 0 && par.isLetter(pos - 1))
+		if (pos != 0 && !par.isWordSeparator(pos - 1))
+			while (pos != 0 && !par.isWordSeparator(pos - 1))
 				--pos;
 		else if (pos != 0 && par.isChar(pos - 1))
 			while (pos != 0 && par.isChar(pos - 1))
@@ -689,9 +689,9 @@ bool Text::cursorVisLeftOneWord(Cursor & cur)
 		// collect some information about current cursor position
 		temp_cur.getSurroundingPos(left_pos, right_pos);
 		left_is_letter = 
-			(left_pos > -1 ? temp_cur.paragraph().isLetter(left_pos) : false);
+			(left_pos > -1 ? !temp_cur.paragraph().isWordSeparator(left_pos) : false);
 		right_is_letter = 
-			(right_pos > -1 ? temp_cur.paragraph().isLetter(right_pos) : false);
+			(right_pos > -1 ? !temp_cur.paragraph().isWordSeparator(right_pos) : false);
 
 		// if we're not at a letter/non-letter boundary, continue moving
 		if (left_is_letter == right_is_letter)
@@ -726,9 +726,9 @@ bool Text::cursorVisRightOneWord(Cursor & cur)
 		// collect some information about current cursor position
 		temp_cur.getSurroundingPos(left_pos, right_pos);
 		left_is_letter = 
-			(left_pos > -1 ? temp_cur.paragraph().isLetter(left_pos) : false);
+			(left_pos > -1 ? !temp_cur.paragraph().isWordSeparator(left_pos) : false);
 		right_is_letter = 
-			(right_pos > -1 ? temp_cur.paragraph().isLetter(right_pos) : false);
+			(right_pos > -1 ? !temp_cur.paragraph().isWordSeparator(right_pos) : false);
 
 		// if we're not at a letter/non-letter boundary, continue moving
 		if (left_is_letter == right_is_letter)
@@ -1611,8 +1611,8 @@ bool Text::completionSupported(Cursor const & cur) const
 {
 	Paragraph const & par = cur.paragraph();
 	return cur.pos() > 0
-		&& (cur.pos() >= par.size() || !par.isLetter(cur.pos()))
-		&& par.isLetter(cur.pos() - 1);
+		&& (cur.pos() >= par.size() || par.isWordSeparator(cur.pos()))
+		&& !par.isWordSeparator(cur.pos() - 1);
 }
 
 

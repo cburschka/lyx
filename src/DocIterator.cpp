@@ -612,7 +612,7 @@ bool operator==(StableDocIterator const & dit1, StableDocIterator const & dit2)
 
 bool isLetter(DocIterator const & dit)
 {
-	return dit.inTexted() && dit.paragraph().isLetter(dit.pos());
+	return dit.inTexted() && !dit.paragraph().isWordSeparator(dit.pos());
 }
 
 } // namespace lyx
