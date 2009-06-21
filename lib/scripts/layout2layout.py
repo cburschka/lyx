@@ -91,13 +91,25 @@ def trim_eol(line):
         return line
 
 
+def trim_bom(line):
+    " Remove byte order mark."
+    if line[0:3] == "\357\273\277":
+        return line[3:]
+    else:
+        return line
+
+
 def read(input):
     " Read input file and strip lineendings."
     lines = list()
+    first_line = 1
     while 1:
         line = input.readline()
         if not line:
             break
+        if (first_line):
+            line = trim_bom(line)
+            first_line = 0
         lines.append(trim_eol(line))
     return lines
 
