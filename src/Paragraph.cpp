@@ -2473,7 +2473,6 @@ bool Paragraph::isLetter(pos_type pos) const
     // We want to pass the ' and escape chars to the spellchecker
 	static docstring const quote = from_utf8(lyxrc.spellchecker_esc_chars + '\'');
 	return (isLetterChar(c) || isDigit(c) || contains(quote, c))
-		&& (!d->inset_owner_ || d->inset_owner_->allowSpellCheck())
 		&& pos != size()
 		&& !isDeleted(pos);
 }
