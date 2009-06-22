@@ -3383,7 +3383,7 @@ int Buffer::spellCheck(DocIterator & from, DocIterator & to,
 	for (; from != end; from.forwardPos()) {
 		// We are only interested in text so remove the math CursorSlice.
 		while (from.inMathed())
-			from.pop_back();
+			from.forwardInset();
 		to = from;
 		if (from.paragraph().spellCheck(from.pos(), to.pos(), wl, suggestions))
 			break;
