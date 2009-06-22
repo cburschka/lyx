@@ -24,6 +24,7 @@
 #include "buffer_funcs.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
+#include "FuncRequest.h"
 #include "Language.h"
 #include "LyX.h"
 #include "LyXRC.h"
@@ -141,6 +142,7 @@ void GuiSpellchecker::on_addPB_clicked()
 
 void GuiSpellchecker::on_ignorePB_clicked()
 {
+	dispatch(FuncRequest(LFUN_CHAR_FORWARD));
 	check();
 }
 
