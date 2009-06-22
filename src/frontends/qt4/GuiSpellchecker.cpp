@@ -223,7 +223,7 @@ void GuiSpellchecker::check()
 	d->progress_ += progress;
 
 	// end of document
-	if (from == to) {
+	if (from == doc_iterator_end(&buffer())) {
 		showSummary();
 		return;
 	}
