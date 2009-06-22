@@ -20,6 +20,7 @@
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/gzstream.h"
+#include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
 #include "support/types.h"
@@ -251,7 +252,8 @@ bool Lexer::Pimpl::setFile(FileName const & filename)
 		is.rdbuf(&gz_);
 		name = filename.absFilename();
 		lineno = 0;
-		return gz_.is_open() && is.good();
+		if (!gz_.is_open() || !is.good())
+			return false;
 	} else {
 		LYXERR(Debug::LYXLEX, "lyxlex: UNcompressed");
 
@@ -266,8 +268,21 @@ bool Lexer::Pimpl::setFile(FileName const & filename)
 		is.rdbuf(&fb_);
 		name = filename.absFilename();
 		lineno = 0;
-		return fb_.is_open() && is.good();
+		if (!fb_.is_open() || !is.good())
+			return false;
 	}
+
+	// Skip byte order mark.
+	if (is.peek() == 0xef) {
+		int c = is.get();
+		if (is.peek() == 0xbb) {
+			c = is.get();
+			LASSERT(is.get() == 0xbf, /**/);
+		} else
+			is.unget();
+	}
+
+	return true;
 }
 
 

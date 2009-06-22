@@ -98,6 +98,9 @@ What's new
 
 - The default eLyXer configuration now handles images correctly on view
   and export (requires eLyXer >= 0.27).
+
+- Fix loading of UTF-8 encoded files when a byte order mark (BOM) is present
+  (bug 6030).
   
 
 * USER INTERFACE
