@@ -875,9 +875,9 @@ def processModuleFile(file, bool_docbook):
 
         The top of a module file should look like this:
           #\DeclareLyXModule[LaTeX Packages]{ModuleName}
-          #BeginDescription
+          #DescriptionBegin
           #...body of description...
-          #EndDescription
+          #DescriptionEnd
           #Requires: [list of required modules]
           #Excludes: [list of excluded modules]
         The last two lines are optional
