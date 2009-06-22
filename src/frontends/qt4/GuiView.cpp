@@ -393,13 +393,13 @@ bool GuiView::restoreLayout()
 	setLayoutDirection(qApp->layoutDirection());
 
 	// Allow the toc and view-source dock widget to be restored if needed.
-	Dialog *d;
-	if ((d = findOrBuild("toc", true)));
+	Dialog * dialog;
+	if (dialog = findOrBuild("toc", true))
 		// see bug 5082. At least setup title and enabled state.
 		// Visibility will be adjusted by restoreState below.
-		d->prepareView();
-	if ((d = findOrBuild("view-source", true)))
-		d->prepareView();
+		dialog->prepareView();
+	if (dialog = findOrBuild("view-source", true))
+		dialog->prepareView();
 
 	if (!restoreState(settings.value("layout").toByteArray(), 0))
 		initToolbars();
