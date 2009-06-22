@@ -3378,14 +3378,12 @@ int Buffer::spellCheck(DocIterator & from, DocIterator & to,
 	WordLangTuple wl;
 	suggestions.clear();
 	word_lang = WordLangTuple();
-
-	// We are only interested in text so remove the math CursorSlice.
-	while (from.inMathed())
-		from.pop_back();
-
 	// OK, we start from here.
 	DocIterator const end = doc_iterator_end(this);
 	for (; from != end; from.forwardPos()) {
+		// We are only interested in text so remove the math CursorSlice.
+		while (from.inMathed())
+			from.pop_back();
 		to = from;
 		if (from.paragraph().spellCheck(from.pos(), to.pos(), wl, suggestions))
 			break;
