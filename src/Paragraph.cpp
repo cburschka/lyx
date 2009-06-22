@@ -3085,11 +3085,14 @@ bool Paragraph::spellCheck(pos_type & from, pos_type & to, WordLangTuple & wl,
 	docstring_list & suggestions) const
 {
 	SpellChecker * speller = theSpellChecker();
-	locateWord(from, to, WHOLE_WORD);
-	docstring word = asString(from, to, AS_STR_INSETS);
 	if (!speller)
 		return false;
 
+	locateWord(from, to, WHOLE_WORD);
+	if (from >= pos_type(d->text_.size()))
+		return false;
+
+	docstring word = asString(from, to, AS_STR_INSETS);
 	string const lang_code = lyxrc.spellchecker_alt_lang.empty()
 		? getFontSettings(d->inset_owner_->buffer().params(), from).language()->code()
 		: lyxrc.spellchecker_alt_lang;
@@ -3107,9 +3110,10 @@ bool Paragraph::spellCheck(pos_type & from, pos_type & to, WordLangTuple & wl,
 	if (lyxrc.spellcheck_continuously)
 		d->fontlist_.setMisspelled(from, to, misspelled);
 
-	while (!(word = speller->nextMiss()).empty())
-		suggestions.push_back(word);
-
+	if (misspelled) {
+		while (!(word = speller->nextMiss()).empty())
+			suggestions.push_back(word);
+	}
 	return misspelled;
 }
 
