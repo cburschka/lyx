@@ -3089,7 +3089,7 @@ bool Paragraph::spellCheck(pos_type & from, pos_type & to, WordLangTuple & wl,
 		return false;
 
 	locateWord(from, to, WHOLE_WORD);
-	if (from >= pos_type(d->text_.size()))
+	if (from == to || from >= pos_type(d->text_.size()))
 		return false;
 
 	docstring word = asString(from, to, AS_STR_INSETS);
