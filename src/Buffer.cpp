@@ -3377,22 +3377,20 @@ int Buffer::spellCheck(DocIterator & from, DocIterator & to,
 	int progress = 0;
 	WordLangTuple wl;
 	suggestions.clear();
+	word_lang = WordLangTuple();
+
 	// We are only interested in text so remove the math CursorSlice.
 	while (from.inMathed())
 		from.pop_back();
 
 	// OK, we start from here.
-	to = from;
-	while (!from.paragraph().spellCheck(from.pos(), to.pos(), wl, suggestions)) {
-		++progress;
-		if (from == to) {
-			// end of file reached.
-			word_lang = WordLangTuple();
-			suggestions.clear();
-			return progress;
-		}
+	DocIterator const end = doc_iterator_end(this);
+	for (; from != end; from.forwardPos()) {
+		to = from;
+		if (from.paragraph().spellCheck(from.pos(), to.pos(), wl, suggestions))
+			break;
 		from = to;
-		from.forwardPos();
+		++progress;
 	}
 	return progress;
 }
