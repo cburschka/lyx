@@ -34,6 +34,7 @@ class Counters;
 class Cursor;
 class CursorSlice;
 class DocIterator;
+class docstring_list;
 class DocumentClass;
 class Inset;
 class InsetBibitem;
@@ -49,6 +50,7 @@ class PainterInfo;
 class ParagraphParameters;
 class TexRow;
 class Toc;
+class WordLangTuple;
 
 class FontSpan {
 public:
@@ -417,6 +419,12 @@ public:
 		word_location const loc) const;
 	///
 	void updateWords();
+
+	/// Spellcheck word at position \p from and fill in found misspelled word.
+	/// \return true if pointed word is misspelled.
+	bool spellCheck(pos_type & from, pos_type & to, WordLangTuple & wl,
+		docstring_list & suggestions) const;
+
 	/// Spellcheck word at position \p pos.
 	/// \return true if pointed word is misspelled.
 	bool isMisspelled(pos_type pos) const;

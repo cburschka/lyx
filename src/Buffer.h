@@ -515,15 +515,12 @@ public:
 	///
 	void updateLabels(ParIterator & parit) const;
 
-	/// Find next word starting from \p from.
-	/// \p from initial position to search, will then points to the next
+	/// Spellcheck starting from \p from.
+	/// \p from initial position, will then points to the next misspelled
 	///    word.
-	/// \p to will points to the end of the next word.
-	/// \p word will contain the found word if any.
-	/// \return true if a new word was found.
-	bool nextWord(DocIterator & from, DocIterator & to,
-		docstring & word) const;
-
+	/// \p to will points to the end of the next misspelled word.
+	/// \p word_lang will contain the found misspelled word.
+	/// \return progress if a new word was found.
 	int spellCheck(DocIterator & from, DocIterator & to,
 		WordLangTuple & word_lang, docstring_list & suggestions) const;
 

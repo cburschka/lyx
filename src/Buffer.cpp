@@ -3371,77 +3371,29 @@ void Buffer::updateLabels(ParIterator & parit) const
 }
 
 
-bool Buffer::nextWord(DocIterator & from, DocIterator & to,
-	docstring & word) const
-{
-	bool inword = false;
-	bool ignoreword = false;
-	string lang_code;
-	// Go backward a bit if needed in order to return the word currently
-	// pointed by 'from'.
-	while (from && from.pos() && !isLetter(from))
-		from.backwardPos();
-	// OK, we start from here.
-	to = from;
-	while (to.depth()) {
-		if (isLetter(to)) {
-			if (!inword) {
-				inword = true;
-				ignoreword = false;
-				from = to;
-				word.clear();
-				lang_code = to.paragraph().getFontSettings(params(),
-					to.pos()).language()->code();
-			}
-			// Insets like optional hyphens and ligature
-			// break are part of a word.
-			if (!to.paragraph().isInset(to.pos())) {
-				char_type const c = to.paragraph().getChar(to.pos());
-				word += c;
-				if (isDigit(c))
-					ignoreword = true;
-			}
-		} else { // !isLetter(cur)
-			if (inword && !word.empty() && !ignoreword)
-				return true;
-			inword = false;
-		}
-		to.forwardPos();
-	}
-	from = to;
-	word.clear();
-	return false;
-}
-
-
 int Buffer::spellCheck(DocIterator & from, DocIterator & to,
 	WordLangTuple & word_lang, docstring_list & suggestions) const
 {
 	int progress = 0;
-	SpellChecker::Result res = SpellChecker::OK;
-	SpellChecker * speller = theSpellChecker();
+	WordLangTuple wl;
 	suggestions.clear();
-	docstring word;
-	while (nextWord(from, to, word)) {
+	// We are only interested in text so remove the math CursorSlice.
+	while (from.inMathed())
+		from.pop_back();
+
+	// OK, we start from here.
+	to = from;
+	while (!from.paragraph().spellCheck(from.pos(), to.pos(), wl, suggestions)) {
 		++progress;
-		string const lang_code = lyxrc.spellchecker_alt_lang.empty()
-			? from.paragraph().getFontSettings(params(), from.pos()).language()->code()
-			: lyxrc.spellchecker_alt_lang;
-		WordLangTuple wl(word, lang_code);
-		res = speller->check(wl);
-		// ... just bail out if the spellchecker reports an error.
-		if (!speller->error().empty()) {
-			throw ExceptionMessage(WarningException,
-				_("The spellchecker has failed."), speller->error());
-		}
-		if (res != SpellChecker::OK && res != SpellChecker::IGNORED_WORD) {
-			word_lang = wl;
-			break;
+		if (from == to) {
+			// end of file reached.
+			word_lang = WordLangTuple();
+			suggestions.clear();
+			return progress;
 		}
 		from = to;
+		from.forwardPos();
 	}
-	while (!(word = speller->nextMiss()).empty())
-		suggestions.push_back(word);
 	return progress;
 }
 

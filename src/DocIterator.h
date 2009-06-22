@@ -355,10 +355,6 @@ private:
 	std::vector<CursorSlice> data_;
 };
 
-/// Indicate if the character pointed by dit is a letter.
-/// This function takes care of spellchecker escape chars.
-bool isLetter(DocIterator const & dit);
-
 } // namespace lyx
 
 #endif // DOCITERATOR_H

@@ -52,10 +52,11 @@
 #include "insets/InsetBibitem.h"
 #include "insets/InsetLabel.h"
 
-#include "support/lassert.h"
 #include "support/debug.h"
+#include "support/docstring_list.h"
 #include "support/ExceptionMessage.h"
 #include "support/gettext.h"
+#include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/Messages.h"
 #include "support/textutils.h"
@@ -2469,7 +2470,7 @@ bool Paragraph::isWordSeparator(pos_type pos) const
 	if (Inset const * inset = getInset(pos))
 		return !inset->isLetter();
 	char_type const c = d->text_[pos];
-    // We want to pass the ' and escape chars to the spellchecker
+	// We want to pass the ' and escape chars to the spellchecker
 	static docstring const quote = from_utf8(lyxrc.spellchecker_esc_chars + '\'');
 	return (!isLetterChar(c) && !isDigit(c) && !contains(quote, c))
 		|| pos == size();
@@ -2888,28 +2889,27 @@ void Paragraph::changeCase(BufferParams const & bparams, pos_type pos,
 			capitalize = true;
 		}
 
-		if (oldChar != newChar)
+		if (oldChar != newChar) {
 			changes += newChar;
-
-		if (oldChar == newChar || pos == right - 1) {
-			if (oldChar != newChar) {
-				// step behind the changing area
-				pos++;
-			}
-			int erasePos = pos - changes.size();
-			for (size_t i = 0; i < changes.size(); i++) {
-				insertChar(pos, changes[i],
-					getFontSettings(bparams,
-					erasePos),
-					trackChanges);
-				if (!eraseChar(erasePos, trackChanges)) {
-					++erasePos;
-					++pos; // advance
-					++right; // expand selection
-				}
-			}
-			changes.clear();
+			if (pos != right - 1)
+				continue;
+			// step behind the changing area
+			pos++;
 		}
+
+		int erasePos = pos - changes.size();
+		for (size_t i = 0; i < changes.size(); i++) {
+			insertChar(pos, changes[i],
+				   getFontSettings(bparams,
+						   erasePos),
+				   trackChanges);
+			if (!eraseChar(erasePos, trackChanges)) {
+				++erasePos;
+				++pos; // advance
+				++right; // expand selection
+			}
+		}
+		changes.clear();
 	}
 }
 
@@ -3081,30 +3081,46 @@ void Paragraph::updateWords()
 }
 
 
-bool Paragraph::isMisspelled(pos_type pos) const
+bool Paragraph::spellCheck(pos_type & from, pos_type & to, WordLangTuple & wl,
+	docstring_list & suggestions) const
 {
 	SpellChecker * speller = theSpellChecker();
-	pos_type from = pos;
-	pos_type to = pos;
 	locateWord(from, to, WHOLE_WORD);
-	docstring word = asString(from, to, false);
+	docstring word = asString(from, to, AS_STR_INSETS);
 	if (!speller)
 		return false;
-		
+
 	string const lang_code = lyxrc.spellchecker_alt_lang.empty()
 		? getFontSettings(d->inset_owner_->buffer().params(), from).language()->code()
 		: lyxrc.spellchecker_alt_lang;
-	WordLangTuple wl(word, lang_code);
+	wl = WordLangTuple(word, lang_code);
 	SpellChecker::Result res = speller->check(wl);
-	// ... just ignore any error that the spellchecker reports.
+	// Just ignore any error that the spellchecker reports.
+	// FIXME: we should through out an exception and catch it in the GUI to
+	// display the error.
 	if (!speller->error().empty())
 		return false;
 
 	bool const misspelled = res != SpellChecker::OK
 		&& res != SpellChecker::IGNORED_WORD;
+
 	if (lyxrc.spellcheck_continuously)
-		d->fontlist_.setMisspelled(from, pos, misspelled);
+		d->fontlist_.setMisspelled(from, to, misspelled);
+
+	while (!(word = speller->nextMiss()).empty())
+		suggestions.push_back(word);
+
 	return misspelled;
+}
+
+
+bool Paragraph::isMisspelled(pos_type pos) const
+{
+	pos_type from = pos;
+	pos_type to = pos;
+	WordLangTuple wl;
+	docstring_list suggestions;
+	return spellCheck(from, to, wl, suggestions);
 }
 
 
