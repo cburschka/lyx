@@ -101,6 +101,10 @@ ASpell::Result ASpell::check(WordLangTuple const & word)
 
 	AspellSpeller * m = it->second.speller;
 
+	if (word.word().empty())
+		// MSVC compiled Aspell doesn't like it.
+		return OK;
+
 	int const word_ok = aspell_speller_check(m, to_utf8(word.word()).c_str(), -1);
 	LASSERT(word_ok != -1, /**/);
 
