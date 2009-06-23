@@ -1,4 +1,4 @@
-#LyX 1.6.3svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -31297,6 +31297,12 @@ reference "sub:Subsección-Externa-1"
 \begin_layout Standard
 El preámbulo del documento hijo se ignora, sólo se utiliza el preámbulo
  del documento maestro.
+ 
+\lang english
+Branches in child documents will be ignored by the master document as long
+ as also the master document has a branch with the same name.
+
+\lang spanish
  Los documentos incluidos se insertan comenzando una página nueva y acabando
  con un salto de página.
 \end_layout
