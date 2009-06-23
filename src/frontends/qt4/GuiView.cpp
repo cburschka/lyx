@@ -394,11 +394,11 @@ bool GuiView::restoreLayout()
 
 	// Allow the toc and view-source dock widget to be restored if needed.
 	Dialog * dialog;
-	if (dialog = findOrBuild("toc", true))
+	if ((dialog = findOrBuild("toc", true)))
 		// see bug 5082. At least setup title and enabled state.
 		// Visibility will be adjusted by restoreState below.
 		dialog->prepareView();
-	if (dialog = findOrBuild("view-source", true))
+	if ((dialog = findOrBuild("view-source", true)))
 		dialog->prepareView();
 
 	if (!restoreState(settings.value("layout").toByteArray(), 0))
