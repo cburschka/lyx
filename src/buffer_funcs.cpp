@@ -168,42 +168,68 @@ Buffer * newUnnamedFile(string const & templatename, FileName const & path)
 	return newFile(filename.absFilename(), templatename, false);
 }
 
-
+/* 
+ * FIXME : merge with countChars. The structures of the two functions
+ * are similar but, unfortunately, they seem to have a different
+ * notion of what to count. Since nobody ever complained about that,
+ * this proves (again) that any number beats no number ! (JMarc)
+ */
 int countWords(DocIterator const & from, DocIterator const & to)
 {
 	int count = 0;
 	bool inword = false;
-	for (DocIterator dit = from ; dit != to ; dit.forwardPos()) {
-		// FIXME: use Paragraph::isWordSeparator
+	for (DocIterator dit = from ; dit != to ; ) {
+		if (!dit.inTexted()) {
+			dit.forwardPos();
+			continue;
+		}
+		
+		Paragraph const & par = dit.paragraph();
+		pos_type const pos = dit.pos();
+		
 		// Copied and adapted from isWordSeparator() in Paragraph
-		if (dit.inTexted()
-		    && dit.pos() != dit.lastpos()
-		    && !dit.paragraph().isWordSeparator(dit.pos())
-		    && !dit.paragraph().isDeleted(dit.pos())) {
-			if (!inword) {
+		if (pos != dit.lastpos() && !par.isDeleted(pos)) {
+			Inset const * ins = par.getInset(pos);
+			if (ins && !ins->producesOutput()) {
+				//skip this inset
+				++dit.top().pos();
+				continue;
+			}
+			if (par.isWordSeparator(pos)) 
+				inword = false;
+			else if (!inword) {
 				++count;
 				inword = true;
 			}
-		} else if (inword)
-			inword = false;
+		}
+		dit.forwardPos();
 	}
 
 	return count;
 }
 
 
-int countChars(DocIterator const & from, DocIterator const & to, bool with_blanks)
+int countChars(DocIterator const & from, DocIterator const & to, 
+	       bool with_blanks)
 {
 	int chars = 0;
 	int blanks = 0;
-	for (DocIterator dit = from ; dit != to ; dit.forwardPos()) {
-
-		if (!dit.inTexted()) continue;
+	for (DocIterator dit = from ; dit != to ; ) {
+		if (!dit.inTexted()) {
+			dit.forwardPos();
+			continue;
+		}
+		
 		Paragraph const & par = dit.paragraph();
 		pos_type const pos = dit.pos();
-
+		
 		if (pos != dit.lastpos() && !par.isDeleted(pos)) {
 			if (Inset const * ins = par.getInset(pos)) {
+				if (!ins->producesOutput()) {
+					//skip this inset
+					++dit.top().pos();
+					continue;
+				}
 				if (ins->isLetter())
 					++chars;
 				else if (with_blanks && ins->isSpace())
@@ -216,6 +242,7 @@ int countChars(DocIterator const & from, DocIterator const & to, bool with_blank
 					++blanks;
 			}
 		}
+		dit.forwardPos();
 	}
 
 	return chars + blanks;
