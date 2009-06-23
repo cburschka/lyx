@@ -3027,40 +3027,24 @@ void Paragraph::locateWord(pos_type & from, pos_type & to,
 
 void Paragraph::collectWords()
 {
-	SpellChecker * speller = theSpellChecker();
-
-	//lyxerr << "Words: ";
 	pos_type n = size();
+	WordLangTuple wl;
+	docstring_list suggestions;
 	for (pos_type pos = 0; pos < n; ++pos) {
 		if (isWordSeparator(pos))
 			continue;
 		pos_type from = pos;
 		locateWord(from, pos, WHOLE_WORD);
-		if (!lyxrc.spellcheck_continuously && pos - from < 6)
-			continue;
-
-		docstring word = asString(from, pos, false);
-		if (pos - from >= 6)
+		if (pos - from >= 6) {
+			docstring word = asString(from, pos, AS_STR_NONE);
 			d->words_.insert(word);
-
-		if (!lyxrc.spellcheck_continuously || !speller)
-			continue;
-		
-		string const lang_code = lyxrc.spellchecker_alt_lang.empty()
-			? getFontSettings(d->inset_owner_->buffer().params(), from).language()->code()
-			: lyxrc.spellchecker_alt_lang;
-		WordLangTuple wl(word, lang_code);
-		SpellChecker::Result res = speller->check(wl);
-		// ... just ignore any error that the spellchecker reports.
-		if (!speller->error().empty())
-			continue;
-		bool const misspelled = res != SpellChecker::OK
-			&& res != SpellChecker::IGNORED_WORD;
-		d->fontlist_.setMisspelled(from, pos, misspelled);
-
-		//lyxerr << word << " ";
+		}
+		if (lyxrc.spellcheck_continuously
+		    && spellCheck(from, pos, wl, suggestions)) {
+			for (size_t i = 0; i != suggestions.size(); ++i)
+				d->words_.insert(suggestions[i]);
+		}
 	}
-	//lyxerr << std::endl;
 }
 
 

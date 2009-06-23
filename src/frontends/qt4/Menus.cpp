@@ -46,10 +46,10 @@
 #include "Paragraph.h"
 #include "ParIterator.h"
 #include "Session.h"
-#include "SpellChecker.h"
 #include "TextClass.h"
 #include "TocBackend.h"
 #include "Toolbars.h"
+#include "WordLangTuple.h"
 
 #include "insets/Inset.h"
 #include "insets/InsetCitation.h"
@@ -718,26 +718,26 @@ void MenuDefinition::expandSpellingSuggestions(BufferView const * bv)
 {
 	if (!bv)
 		return;
+	WordLangTuple wl;
+	docstring_list suggestions;
+	pos_type from = bv->cursor().pos();
+	pos_type to = from;
 	Paragraph const & par = bv->cursor().paragraph();
-	if (!par.isMisspelled(bv->cursor().pos()))
+	if (!par.spellCheck(from, to, wl, suggestions))
 		return;
-	LYXERR0("Misspelled Word!");
-
-	SpellChecker * speller = theSpellChecker();
-	docstring word;
-	int i = 0;
+	LYXERR(Debug::GUI, "Misspelled Word! Suggested Words = ");
+	size_t i = 0;
 	MenuItem item(MenuItem::Submenu, qt_("more spelling suggestions"));
 	item.setSubmenu(MenuDefinition(qt_("more spelling suggestions")));
-	while (!(word = speller->nextMiss()).empty()) {
-		LYXERR0("Misspelled Word = " << word);
-		MenuItem w(MenuItem::Command, toqstr(word),
-			FuncRequest(LFUN_WORD_REPLACE, word));
-		if (i < 10) {
+	for (; i != suggestions.size(); ++i) {
+		docstring const & suggestion = suggestions[i];
+		LYXERR(Debug::GUI, suggestion);
+		MenuItem w(MenuItem::Command, toqstr(suggestion),
+			FuncRequest(LFUN_WORD_REPLACE, suggestion));
+		if (i < 10)
 			add(w);
-		} else {
+		else
 			item.submenu().add(w);
-		}
-		++i;
 	}
 	if (i >= 10)
 		add(item);
