@@ -9,7 +9,7 @@ http://developer.berlios.de/projects/lyxwininstall/
 ---
 General
 
-To compile the installer scripts you need at least NSIS version 2.30.
+To compile the installer scripts you need at least NSIS version 2.45.
 
 The installer scripts needs the plugins "FindProc" and "InetLoad".
 To use them, copy the files "FindProcDLL.dll" and "InetLoad.dll" from the
@@ -47,14 +47,14 @@ ImageMagick
 
 License: ImageMagick license
 
-The folder ~\LyX\etc\ImageMagick contains all used files from ImageMagick 6.4.5
+The folder ~\LyX\etc\ImageMagick contains all used files from ImageMagick 6.5.3
 
 ---
 Ghostscript
 
 License: GPL
 
-The folder ~\LyX\etc\Ghostscript contains all used files from GPL Ghostscript 8.63
+The folder ~\LyX\etc\Ghostscript contains all used files from GPL Ghostscript 8.64
 
 ---
 Aspell

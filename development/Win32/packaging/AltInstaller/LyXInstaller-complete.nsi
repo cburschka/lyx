@@ -10,7 +10,7 @@
 # Full author contact details are available in file CREDITS or copy at
 # http://www.lyx.org/about/credits.php
 
-# This script requires NSIS 2.30 or newer
+# This script requires NSIS 2.45 or newer
 # http://nsis.sourceforge.net/
 #--------------------------------
 

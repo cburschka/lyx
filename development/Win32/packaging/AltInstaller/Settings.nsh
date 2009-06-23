@@ -1,11 +1,11 @@
 # installer settings
 # You should need to change only these macros for new releases.
 
-!define INSTALLER_SUBVERSION "19"
+!define INSTALLER_SUBVERSION "20"
 !define PRODUCT_DIR "D:\LyXPackage1.6"
 !define PRODUCT_NAME "LyX"
-!define PRODUCT_VERSION "1.6.3"
-!define PRODUCT_VERSION_SHORT "163"
+!define PRODUCT_VERSION "1.6.4"
+!define PRODUCT_VERSION_SHORT "164"
 !define PRODUCT_SUBFOLDER "lyx16"
 !define PRODUCT_LICENSE_FILE "${PRODUCT_DIR}\License.txt"
 !define PRODUCT_SOURCEDIR "${PRODUCT_DIR}\LyX"
@@ -40,11 +40,11 @@ BrandingText "LyXWinInstaller v4.${INSTALLER_SUBVERSION} - ${INSTALLER_VERSION}"
 
 # definitions for the Update installer
 !if ${INSTALLER_VERSION} == "Update"
- !define PRODUCT_VERSION_SHORT_OLD "162"
+ !define PRODUCT_VERSION_SHORT_OLD "163"
  !define PRODUCT_UNINST_KEY_OLD "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX${PRODUCT_VERSION_SHORT_OLD}"
- !define PRODUCT_VERSION_OLD "LyX 1.6.2"
+ !define PRODUCT_VERSION_OLD "LyX 1.6.3"
  !define JabRefVersion "2.4.2" # could be an older version
- !define ImageMagickVersion_Old "6.4.9" # could be an older version
+ !define ImageMagickVersion_Old "6.5.3" # could be an older version
  !define GhostscriptVersion_Old "8.64" # could be an older version
  !define MiKTeXDeliveredVersion "2.7" # could be an older version
 !endif
@@ -58,9 +58,9 @@ BrandingText "LyXWinInstaller v4.${INSTALLER_SUBVERSION} - ${INSTALLER_VERSION}"
 # definitions for the Complete installer
 !if ${INSTALLER_VERSION} == "Complete"
  !define GSviewInstall "external\gsv49w32.exe"
- !define JabRefInstall "external\JabRef-2.4.2-Setup.exe"
+ !define JabRefInstall "external\JabRef-2.5-setup.exe"
  !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.7.3248.exe"
- !define JabRefVersion "2.4.2"
+ !define JabRefVersion "2.5"
  !define MiKTeXDeliveredVersion "2.7"
 !endif
 
