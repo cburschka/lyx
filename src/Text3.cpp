@@ -2030,6 +2030,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
+	if (lyxrc.spellcheck_continuously) {
+		// Profit from this occasion to spellcheck current word.
+		cur.paragraph().isMisspelled(cur.pos());
+	}
+
 	needsUpdate |= (cur.pos() != cur.lastpos()) && cur.selection();
 
 	// FIXME: The cursor flag is reset two lines below
