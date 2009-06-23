@@ -1920,6 +1920,7 @@ bool BufferView::mouseSetCursor(Cursor & cur, bool select)
 		update |= checkDepm(cur, d->cursor_);
 	d->cursor_.macroModeClose();
 
+	d->cursor_.resetAnchor();
 	d->cursor_.setCursor(cur);
 	d->cursor_.boundary(cur.boundary());
 	if (do_selection)

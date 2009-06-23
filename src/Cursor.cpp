@@ -923,6 +923,8 @@ void Cursor::posVisToRowExtremity(bool left)
 
 CursorSlice Cursor::anchor() const
 {
+	if (!selection())
+		return top();
 	LASSERT(anchor_.depth() >= depth(), /**/);
 	CursorSlice normal = anchor_[depth() - 1];
 	if (depth() < anchor_.depth() && top() <= normal) {
