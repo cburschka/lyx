@@ -1,4 +1,4 @@
-#LyX 1.6.3svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -32065,6 +32065,8 @@ reference "uab:Externer-Unterabschnitt-1"
 \begin_layout Standard
 Der LaTeX-Vorspann des Unterdokuments wird ignoriert, nur der des Hauptdokuments
  wird benutzt.
+ Zweige in Unterdokumenten werden vom Hauptdokument ignoriert, wenn das
+ Hauptdokument nicht auch einen Zweig mit dem selben Namen besitzt.
  Unterdokumente, die per 
 \family sans
 Include

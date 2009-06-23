@@ -31011,12 +31011,12 @@ fleqn
 \end_layout
 
 \begin_layout Chapter
-External Stuff
+External Document Parts
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-External Stuff
+External Document Parts
 \end_layout
 
 \end_inset
@@ -31091,7 +31091,7 @@ External Material
 status collapsed
 
 \begin_layout Plain Layout
-External Stuff ! External Material
+External Document Parts ! External Material
 \end_layout
 
 \end_inset
@@ -31587,7 +31587,7 @@ name "sec:Child-Documents"
 status collapsed
 
 \begin_layout Plain Layout
-External Stuff ! Child Documents
+External Document Parts ! Child Documents
 \end_layout
 
 \end_inset
@@ -31629,8 +31629,8 @@ Document
 Class
 \family default
 .
- This master file will then be used in the background by LyX when you edit
- the child document.
+ This master document will then be used in the background by LyX when you
+ edit the child document.
 \end_layout
 
 \begin_layout Standard
@@ -31711,6 +31711,8 @@ reference "sub:External-Subsection-1"
 \begin_layout Standard
 The preamble of the child document is ignored, only the preamble of the
  master document is used.
+ Branches in child documents will be ignored by the master document as long
+ as also the master document has a branch with the same name.
  Included documents are inserted starting on a new page and end with a page
  break.
 \end_layout
