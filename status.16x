@@ -28,14 +28,11 @@ What's new
   compilation. This allows for proper support for jbibtex and mendex,
   pLaTeX's bibtex and makeindex replacements (bug 5601).
 
-- LaTeX import was updated and also supports now:
+- LaTeX import (tex2lyx) was updated and now also supports:
   * nomenclature entries
   * the LaTeX-package esint
   * the alternative LaTeX document language names "portuguese" and
     "brazilian"
-
-- LyX recognizes now the nomenclature entries and the LaTeX-package esint
-  when importing LaTeX files. 
 
 
 * USER INTERFACE
@@ -99,15 +96,16 @@ What's new
 - The default eLyXer configuration now handles images correctly on view
   and export (requires eLyXer >= 0.27).
 
-- Fix loading of UTF-8 encoded files when a byte order mark (BOM) is present
-  (bug 6030).
+- Fix loading of UTF-8 encoded files when a byte order mark (BOM) is
+  present (bug 6030).
 
 - Fix reverse DVI/PDF search with child documents (bug 6020).
   
 
 * USER INTERFACE
 
-- Fix bookmark navigation crash when multiple windows are used (bug 6000).
+- Fix bookmark navigation crash when multiple windows are used
+  (bug 6000).
 
 - Fix assertion when a nested math hull appears in a math macro
   (bug 5996).
@@ -115,7 +113,8 @@ What's new
 - Fix assertion when pressing down arrow in the command buffer while
   the history is empty (bug 6001).
 
-- Make Tools>Statisitcs ignore Note insets and inactive branches (bug 2566).
+- Make Tools>Statistics ignore Note insets and inactive branches
+  (bug 2566).
 
 - Take into account file system case sensitivity when checking whether
   a path starts with a given prefix. This fixes a bug with reverse PDF
