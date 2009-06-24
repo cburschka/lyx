@@ -1476,6 +1476,14 @@ void LyXAction::init()
  * \li Action: Inserts math objects and symbols.
  * \li Syntax: math-insert <ARG>
  * \li Params: <ARG>: Symbol or LaTeX code to be inserted.
+ * \li Notion: When <ARG> is a _single_ math inset with more than one cell
+               (such as "x_y^z" or "\frac{x}{y}"), the content of cell(0) is
+               replaced by the current selection (only works if the selection
+               is in mathed). As an example, if "abc" is selected in mathed,
+               "math-insert \frac{x}{y}" replaces "abc" with "\frac{abc}{y}",
+               and "math-insert x_y^z" replaces "abc" with "abc_y^z".
+               If nothing is selected (or the selection is not in mathed),
+               math-insert works as expected.
  * \endvar
  */
 		{ LFUN_MATH_INSERT, "math-insert", Noop, Math },

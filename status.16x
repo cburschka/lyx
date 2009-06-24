@@ -134,6 +134,9 @@ What's new
 - Fix pop-up of ToC and Source code panels after fresh install (part
   of bug 5082).
 
+- Fix math-insert lfun behaviour in the absence of a selection or when
+  something outside mathed is selected (bug 6033).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
