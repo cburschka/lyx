@@ -18396,7 +18396,15 @@ The file exchange through various revision control systems brings the problem
 
 \begin_layout Standard
 SVN has two mechanisms to provide such kind of mutual exclusivity for file
- access - locks and automatical setting of write permissions based on 
+ access - locks and automatical setting of write permissions (see sec.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Automatical-Locking-Property"
+
+\end_inset
+
+) based on 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -18482,6 +18490,72 @@ svn update "<file-name>"
 \end_inset
 
 svn lock "<file-name>"
+\end_layout
+
+\begin_layout Subsubsection
+
+\family typewriter
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Automatical-Locking-Property"
+
+\end_inset
+
+
+\family default
+Automatical Locking Property
+\end_layout
+
+\begin_layout Standard
+The above mentioned automatical setting of write permissions of the .lyx
+ file can be set through
+\family sans
+\bar under
+ F
+\bar default
+ile\SpecialChar \menuseparator
+
+\bar under
+V
+\bar default
+ersion
+\begin_inset space ~
+\end_inset
+
+Control\SpecialChar \menuseparator
+
+\bar under
+T
+\bar default
+oggle locking property
+\family default
+.
+ This command is active only when the file is not locked on the svn server
+ (i.e.
+ you need to check-out before proceeding).
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+SVN
+\begin_inset space ~
+\end_inset
+
+commands:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Set:
+\family typewriter
+ svn propset svn:needs-lock ON "<file-name>"
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Unset: 
+\family typewriter
+svn propdel svn:needs-lock "<file-name>"
 \end_layout
 
 \begin_layout Subsection

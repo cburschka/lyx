@@ -2121,6 +2121,15 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_VC_COMMAND, "vc-command", NoBuffer | ReadOnly, System },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_VC_LOCKING_TOGGLE
+ * \li Action: Toggles the locking property of the edited file.
+ * \li Notion: This is currently implemented only for SVN.
+ * \li Syntax: vc-locking-toggle
+ * \li Origin: sanda, 25 Jun 2009
+ * \endvar
+ */
+		{ LFUN_VC_LOCKING_TOGGLE, "vc-locking-toggle", ReadOnly, System },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_CHANGES_TRACK

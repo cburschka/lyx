@@ -471,6 +471,9 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_VC_CHECK_OUT:
 		enable = buf->lyxvc().checkOutEnabled();
 		break;
+	case LFUN_VC_LOCKING_TOGGLE:
+		enable = !buf->isReadonly() && buf->lyxvc().lockingToggleEnabled();
+		break;
 	case LFUN_VC_REVERT:
 		enable = buf->lyxvc().inUse();
 		break;
@@ -1042,6 +1045,22 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			if (buffer->lyxvc().inUse()) {
 				setMessage(from_utf8(buffer->lyxvc().checkOut()));
 				reloadBuffer();
+			}
+			break;
+
+		case LFUN_VC_LOCKING_TOGGLE:
+			LASSERT(lyx_view_ && buffer, /**/);
+			if (!ensureBufferClean(view()) || buffer->isReadonly())
+				break;
+			if (buffer->lyxvc().inUse()) {
+				string res = buffer->lyxvc().lockingToggle();
+				if (res.empty())
+					frontend::Alert::error(_("Revision control error."),
+						_("Error when setting the locking property."));
+				else {
+					setMessage(from_utf8(res));
+					reloadBuffer();
+				}
 			}
 			break;
 

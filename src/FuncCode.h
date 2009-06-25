@@ -433,6 +433,7 @@ enum FuncCode
 	LFUN_FONT_UULINE,
 	// 335
 	LFUN_FONT_UWAVE,
+	LFUN_VC_LOCKING_TOGGLE,
 
 	LFUN_LASTACTION                 // end of the table
 };
