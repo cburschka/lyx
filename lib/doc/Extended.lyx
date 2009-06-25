@@ -18416,7 +18416,7 @@ svn:needs-lock
 
  file svn property
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 http://svnbook.red-bean.com/en/1.2/svn.advanced.locking.html
@@ -18556,6 +18556,116 @@ Set:
 Unset: 
 \family typewriter
 svn propdel svn:needs-lock "<file-name>"
+\end_layout
+
+\begin_layout Subsubsection
+Revision Information in Documents
+\end_layout
+
+\begin_layout Standard
+Currently there is no way how to provide such kind of information directly
+ from LyX.
+ There are possibilities how to activate it with the help of svn features,
+ but each has its own drawbacks.
+\end_layout
+
+\begin_layout Standard
+One possibility is to use svn keywords
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+http://svnbook.red-bean.com/en/1.4/svn.advanced.props.special.keywords.html
+\end_layout
+
+\end_inset
+
+.
+ In short -- you set file keywords property (e.g.
+ 
+\family sans
+svn propset svn:keywords 'Rev' file.lyx
+\family default
+) and then paste keyword ERT
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+This is an easy way how to ensure that LyX won't break the line in the middle
+ of keyword tag.
+\end_layout
+
+\end_inset
+
+ tag in your document (e.g.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$Rev$
+\end_layout
+
+\end_inset
+
+).
+ This way svn client will automatically substitute revision number (e.g.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$Rev: 59 $
+\end_layout
+
+\end_inset
+
+) after each update and commit.
+ There are more problems with this approach.
+ Firstly, the '$' character is used in TeX world for math equations, so
+ any occurence of math formula 
+\begin_inset Formula $Rev$
+\end_inset
+
+ become 
+\begin_inset Formula $Rev:59$
+\end_inset
+
+ in your LyX document.
+ Similarly for other keywords like Id, Date, Author, etc.
+ Secondly svn output is dependent on your locales, so its very easy that
+ svn would produce some problematic strings once Date is used.
+ Thirdly you get the whole 'Rev: 59' string in your document instead of
+ the plain number.
+ Until subversion implements user's custom keywords it will be hard to use
+ this approach reliably or let LyX to support it directly .
+\end_layout
+
+\begin_layout Standard
+The second possibility would be to write your own external-material template
+ which calls either 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+svnversion
+\end_layout
+
+\end_inset
+
+ utility or parses the output of 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+svn info file.lyx
+\end_layout
+
+\end_inset
+
+ command and returns the result back, when typeseting the document.
 \end_layout
 
 \begin_layout Subsection
