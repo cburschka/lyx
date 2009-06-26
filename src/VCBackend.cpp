@@ -204,6 +204,18 @@ bool RCS::checkOutEnabled()
 	return owner_ && owner_->isReadonly();
 }
 
+string RCS::lockingToggle()
+{
+	lyxerr << "Sorry, not implemented." << endl;
+	return string();
+}
+
+
+bool RCS::lockingToggleEnabled()
+{
+	return false;
+}
+
 
 void RCS::revert()
 {
@@ -362,6 +374,19 @@ string CVS::checkOut()
 
 
 bool CVS::checkOutEnabled()
+{
+	return false;
+}
+
+
+string CVS::lockingToggle()
+{
+	lyxerr << "Sorry, not implemented." << endl;
+	return string();
+}
+
+
+bool CVS::lockingToggleEnabled()
 {
 	return false;
 }
@@ -569,6 +594,10 @@ string SVN::scanLogFile(FileName const & f, string & status)
 			ifs.close();
 			return line;
 		}
+		if (contains(line, "svn:needs-lock")) {
+			ifs.close();
+			return line;
+		}
 	}
 	ifs.close();
 	return string();
@@ -642,6 +671,51 @@ bool SVN::checkOutEnabled()
 		return true;
 }
 
+
+string SVN::lockingToggle()
+{
+	FileName tmpf = FileName::tempName("lyxvcout");
+	if (tmpf.empty()) {
+		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
+		return N_("Error: Could not generate logfile.");
+	}
+
+	int ret = doVCCommand("svn proplist " + quoteName(onlyFilename(owner_->absFileName()))
+		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
+		    FileName(owner_->filePath()));
+	if (ret)
+		return string();
+
+	string log;
+	string res = scanLogFile(tmpf, log);
+	bool locking = contains(res, "svn:needs-lock");
+	if (!locking)
+		ret = doVCCommand("svn propset svn:needs-lock ON "
+		    + quoteName(onlyFilename(owner_->absFileName()))
+		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
+		    FileName(owner_->filePath()));
+	else
+		ret = doVCCommand("svn propdel svn:needs-lock "
+		    + quoteName(onlyFilename(owner_->absFileName()))
+		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
+		    FileName(owner_->filePath()));
+	if (ret)
+		return string();
+
+	tmpf.erase();
+	frontend::Alert::warning(_("VCN File Locking"),
+		(locking ? _("Locking property unset.") : _("Locking property set.")) + "\n"
+		+ _("Do not forget to commit the locking property into the repository."),
+		true);
+
+	return N_("SVN: Locking property set.");
+}
+
+
+bool SVN::lockingToggleEnabled()
+{
+	return true;
+}
 
 void SVN::revert()
 {

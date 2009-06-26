@@ -170,6 +170,13 @@ string LyXVC::checkOut()
 }
 
 
+string LyXVC::lockingToggle()
+{
+	LYXERR(Debug::LYXVC, "LyXVC: toggle locking property");
+	return vcs->lockingToggle();
+}
+
+
 void LyXVC::revert()
 {
 	LYXERR(Debug::LYXVC, "LyXVC: revert");
@@ -263,6 +270,12 @@ bool LyXVC::checkOutEnabled()
 bool LyXVC::checkInEnabled()
 {
 	return vcs && vcs->checkInEnabled();
+}
+
+
+bool LyXVC::lockingToggleEnabled()
+{
+	return vcs && vcs->lockingToggleEnabled();
 }
 
 

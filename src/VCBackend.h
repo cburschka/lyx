@@ -43,6 +43,10 @@ public:
 	virtual std::string checkOut() = 0;
 	// can be this operation processed in the current RCS?
 	virtual bool checkOutEnabled() = 0;
+	// toggle locking property of the file
+	virtual std::string lockingToggle() = 0;
+	// can be this operation processed in the current RCS?
+	virtual bool lockingToggleEnabled() = 0;
 	/// revert current edits
 	virtual void revert() = 0;
 	/// FIXME
@@ -127,6 +131,10 @@ public:
 
 	virtual bool checkOutEnabled();
 
+	virtual std::string lockingToggle();
+
+	virtual bool lockingToggleEnabled();
+
 	virtual void revert();
 
 	virtual void undoLast();
@@ -165,6 +173,10 @@ public:
 	virtual std::string checkOut();
 
 	virtual bool checkOutEnabled();
+
+	virtual std::string lockingToggle();
+
+	virtual bool lockingToggleEnabled();
 
 	virtual void revert();
 
@@ -207,6 +219,10 @@ public:
 	virtual std::string checkOut();
 
 	virtual bool checkOutEnabled();
+
+	virtual std::string lockingToggle();
+
+	virtual bool lockingToggleEnabled();
 
 	virtual void revert();
 

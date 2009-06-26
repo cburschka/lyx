@@ -217,6 +217,8 @@ ToolbarSet
 		Item "Check-in changes" "vc-check-in"
 		Item "View revision log" "dialog-show vclog"
 		Item "Revert changes" "vc-revert"
+		Separator
+		Item "Use SVN File Locking Property" "vc-locking-toggle"
 	End
 
 	Toolbar "math_panels" "Math Panels"

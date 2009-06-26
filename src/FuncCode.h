@@ -423,6 +423,7 @@ enum FuncCode
  	LFUN_INSET_END,                 // JMarc, 20090316
  	LFUN_INSET_BEGIN_SELECT,        // JMarc, 20090316
  	LFUN_INSET_END_SELECT,          // JMarc, 20090316
+	LFUN_VC_LOCKING_TOGGLE,
  
 
 	LFUN_LASTACTION                  // end of the table

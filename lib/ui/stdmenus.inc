@@ -66,6 +66,7 @@ Menuset
 		OptItem "Revert to Repository Version|R" "vc-revert"
 		OptItem "Undo Last Check In|U" "vc-undo-last"
 		OptItem "Show History...|H" "dialog-show vclog"
+		OptItem "Use Locking Property|L" "vc-locking-toggle"
 	End
 
 	Menu "file_import"

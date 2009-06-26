@@ -77,6 +77,14 @@ public:
 	/// Does the current VC supports this operation?
 	bool checkOutEnabled();
 
+	/**
+	 * Toggle locking property of the edited file,
+	 * i.e. whether the file uses locking mechanism.
+	 */
+	std::string lockingToggle();
+	/// Does the current VC supports this operation?
+	bool lockingToggleEnabled();
+
 	/// Revert to last version
 	void revert();
 
