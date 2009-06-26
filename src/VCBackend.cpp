@@ -704,7 +704,7 @@ string SVN::lockingToggle()
 
 	tmpf.erase();
 	frontend::Alert::warning(_("VCN File Locking"),
-		(locking ? _("Locking property unset.") : _("Locking property set.") + "\n")
+		(locking ? _("Locking property unset.") : _("Locking property set.")) + "\n"
 		+ _("Do not forget to commit the locking property into the repository."),
 		true);
 
