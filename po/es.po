@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-06-16 11:05+0200\n"
+"POT-Creation-Date: 2009-06-26 13:03+0200\n"
 "PO-Revision-Date: 2009-06-10 13:19+0100\n"
 "Last-Translator: Ignacio García  <ignacio.gmorales@gmail.com>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -95,9 +95,9 @@ msgstr "&Aceptar"
 #: src/LyXVC.cpp:182 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1262
 #: src/frontends/qt4/GuiParagraph.cpp:69
-#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1554
-#: src/frontends/qt4/GuiView.cpp:1746 src/frontends/qt4/GuiView.cpp:1798
-#: src/frontends/qt4/GuiView.cpp:1858 src/insets/InsetBibtex.cpp:143
+#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1556
+#: src/frontends/qt4/GuiView.cpp:1748 src/frontends/qt4/GuiView.cpp:1800
+#: src/frontends/qt4/GuiView.cpp:1860 src/insets/InsetBibtex.cpp:143
 msgid "&Cancel"
 msgstr "&Cancelar"
 
@@ -3135,7 +3135,7 @@ msgid "&User interface file:"
 msgstr "Archivo interfaz de &usuario:"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:713
-#: src/frontends/qt4/GuiView.cpp:1858
+#: src/frontends/qt4/GuiView.cpp:1860
 msgid "&Save"
 msgstr "&Guardar"
 
@@ -4971,7 +4971,7 @@ msgid "Seriate"
 msgstr "En serie"
 
 #: lib/layouts/apa.layout:406 lib/layouts/apa.layout:407
-#: src/buffer_funcs.cpp:392
+#: src/buffer_funcs.cpp:420
 msgid "(\\alph{enumii})"
 msgstr "(\\alph{enumii})"
 
@@ -9637,7 +9637,7 @@ msgstr "Selección como líneas|l"
 msgid "Selection as Paragraphs|P"
 msgstr "Selección como párrafos|p"
 
-#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:356 lib/ui/stdmenus.inc:162
+#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:357 lib/ui/stdmenus.inc:162
 msgid "Multicolumn|M"
 msgstr "Multicolumna|M"
 
@@ -9661,7 +9661,7 @@ msgstr "Línea derecha|d"
 msgid "Alignment|i"
 msgstr "Alineación|A"
 
-#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:371 lib/ui/stdmenus.inc:180
+#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:372 lib/ui/stdmenus.inc:180
 msgid "Add Row|A"
 msgstr "Añadir fila|A"
 
@@ -9677,7 +9677,7 @@ msgstr "Copiar fila"
 msgid "Swap Rows"
 msgstr "Intercambiar filas"
 
-#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:376 lib/ui/stdmenus.inc:185
+#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:377 lib/ui/stdmenus.inc:185
 msgid "Add Column|u"
 msgstr "Añadir columna|l"
 
@@ -9693,27 +9693,27 @@ msgstr "Copiar columna"
 msgid "Swap Columns"
 msgstr "Intercambiar columnas"
 
-#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:363 lib/ui/stdmenus.inc:172
+#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:364 lib/ui/stdmenus.inc:172
 msgid "Left|L"
 msgstr "Izquierda|z"
 
-#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:364 lib/ui/stdmenus.inc:173
+#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:365 lib/ui/stdmenus.inc:173
 msgid "Center|C"
 msgstr "Centro|C"
 
-#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:365 lib/ui/stdmenus.inc:174
+#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:366 lib/ui/stdmenus.inc:174
 msgid "Right|R"
 msgstr "Derecha|D"
 
-#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:367 lib/ui/stdmenus.inc:176
+#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:368 lib/ui/stdmenus.inc:176
 msgid "Top|T"
 msgstr "Superior|S"
 
-#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:368 lib/ui/stdmenus.inc:177
+#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:369 lib/ui/stdmenus.inc:177
 msgid "Middle|M"
 msgstr "Medio"
 
-#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:369 lib/ui/stdmenus.inc:178
+#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:370 lib/ui/stdmenus.inc:178
 msgid "Bottom|B"
 msgstr "Inferior|I"
 
@@ -9745,7 +9745,7 @@ msgstr "Alineación|A"
 msgid "Add Row|R"
 msgstr "Añadir fila|A"
 
-#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:372 lib/ui/stdmenus.inc:181
+#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:373 lib/ui/stdmenus.inc:181
 msgid "Delete Row|D"
 msgstr "Eliminar fila|E"
 
@@ -9753,7 +9753,7 @@ msgstr "Eliminar fila|E"
 msgid "Add Column|C"
 msgstr "Añadir columna|u"
 
-#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:377 lib/ui/stdmenus.inc:186
+#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:378 lib/ui/stdmenus.inc:186
 msgid "Delete Column|e"
 msgstr "Eliminar columna|u"
 
@@ -9946,7 +9946,7 @@ msgstr "Espacio protegido|p"
 msgid "Inter-word Space|w"
 msgstr "Espacio entre palabras|r"
 
-#: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:183 lib/ui/stdcontext.inc:206
+#: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:184 lib/ui/stdcontext.inc:207
 #: lib/ui/stdmenus.inc:369
 msgid "Thin Space|T"
 msgstr "Espacio delgado|d"
@@ -10353,486 +10353,494 @@ msgstr "Entorno AMS|A"
 msgid "Equation Label|L"
 msgstr "Etiqueta de ecuación|t"
 
-#: lib/ui/stdcontext.inc:47
-msgid "Toggle Labeling/Numbering|T"
-msgstr "Conmutar  Etiquetado/Numeración|C"
+#: lib/ui/stdcontext.inc:47 lib/ui/stdmenus.inc:192
+msgid "Number whole Formula|N"
+msgstr "Numerar la ecuación|N"
 
-#: lib/ui/stdcontext.inc:49 lib/ui/stdmenus.inc:203
+#: lib/ui/stdcontext.inc:48 lib/ui/stdmenus.inc:193
+msgid "Number this Line|u"
+msgstr "Numerar la línea|u"
+
+#: lib/ui/stdcontext.inc:50 lib/ui/stdmenus.inc:203
 msgid "Split Cell|C"
 msgstr "Dividir celda|D"
 
-#: lib/ui/stdcontext.inc:51
+#: lib/ui/stdcontext.inc:52
 msgid "Insert|n"
 msgstr "Insertar|I"
 
-#: lib/ui/stdcontext.inc:53
+#: lib/ui/stdcontext.inc:54
 msgid "Add Line Above|o"
 msgstr "Añadir línea encima|r"
 
-#: lib/ui/stdcontext.inc:54 lib/ui/stdmenus.inc:206
+#: lib/ui/stdcontext.inc:55 lib/ui/stdmenus.inc:206
 msgid "Add Line Below|B"
 msgstr "Añadir línea debajo|l"
 
-#: lib/ui/stdcontext.inc:55 lib/ui/stdmenus.inc:207
+#: lib/ui/stdcontext.inc:56 lib/ui/stdmenus.inc:207
 msgid "Delete Line Above|D"
 msgstr "Eliminar línea de encima|E"
 
-#: lib/ui/stdcontext.inc:56 lib/ui/stdmenus.inc:208
+#: lib/ui/stdcontext.inc:57 lib/ui/stdmenus.inc:208
 msgid "Delete Line Below|e"
 msgstr "Eliminar línea de debajo|b"
 
-#: lib/ui/stdcontext.inc:58 lib/ui/stdmenus.inc:210
+#: lib/ui/stdcontext.inc:59 lib/ui/stdmenus.inc:210
 msgid "Add Line to Left"
 msgstr "Añadir línea a la izquierda|z"
 
-#: lib/ui/stdcontext.inc:59 lib/ui/stdmenus.inc:211
+#: lib/ui/stdcontext.inc:60 lib/ui/stdmenus.inc:211
 msgid "Add Line to Right"
 msgstr "Añadir línea a la derecha|h"
 
-#: lib/ui/stdcontext.inc:60 lib/ui/stdmenus.inc:212
+#: lib/ui/stdcontext.inc:61 lib/ui/stdmenus.inc:212
 msgid "Delete Line to Left"
 msgstr "Eliminar línea de la izquierda"
 
-#: lib/ui/stdcontext.inc:61 lib/ui/stdmenus.inc:213
+#: lib/ui/stdcontext.inc:62 lib/ui/stdmenus.inc:213
 msgid "Delete Line to Right"
 msgstr "Eliminar línea de la derecha"
 
-#: lib/ui/stdcontext.inc:63 lib/ui/stdtoolbars.inc:81
-msgid "Toggle Math Toolbar"
+#: lib/ui/stdcontext.inc:64
+#, fuzzy
+msgid "Show Math Toolbar"
 msgstr "Conmutar barra de herramientas de ecuaciones"
 
-#: lib/ui/stdcontext.inc:64
-msgid "Toggle Math-Panels Toolbar"
+#: lib/ui/stdcontext.inc:65
+#, fuzzy
+msgid "Show Math-Panels Toolbar"
 msgstr "Conmutar barra de paneles de ecuaciones"
 
-#: lib/ui/stdcontext.inc:65 lib/ui/stdtoolbars.inc:82
-msgid "Toggle Table Toolbar"
+#: lib/ui/stdcontext.inc:66
+#, fuzzy
+msgid "Show Table Toolbar"
 msgstr "Conmutar barra de herramientas de tabla"
 
-#: lib/ui/stdcontext.inc:73 lib/ui/stdcontext.inc:90
+#: lib/ui/stdcontext.inc:74 lib/ui/stdcontext.inc:91
 msgid "Next Cross-Reference|N"
 msgstr "Referencia cruzada siguiente|R"
 
-#: lib/ui/stdcontext.inc:74
+#: lib/ui/stdcontext.inc:75
 msgid "Go to Label|G"
 msgstr "Ir a la etiqueta|I"
 
-#: lib/ui/stdcontext.inc:76
+#: lib/ui/stdcontext.inc:77
 msgid "<reference>|r"
 msgstr "<referencia>|e"
 
-#: lib/ui/stdcontext.inc:77
+#: lib/ui/stdcontext.inc:78
 msgid "(<reference>)|e"
 msgstr "(<referencia>)|f"
 
-#: lib/ui/stdcontext.inc:78
+#: lib/ui/stdcontext.inc:79
 msgid "<page>|p"
 msgstr "<página>|p"
 
-#: lib/ui/stdcontext.inc:79
+#: lib/ui/stdcontext.inc:80
 msgid "on page <page>|o"
 msgstr "en página <página>|n"
 
-#: lib/ui/stdcontext.inc:80
+#: lib/ui/stdcontext.inc:81
 msgid "<reference> on page <page>|f"
 msgstr "<referencia> en página <página>|g"
 
-#: lib/ui/stdcontext.inc:81
+#: lib/ui/stdcontext.inc:82
 msgid "Formatted reference|t"
 msgstr "Referencia con formato|c"
 
-#: lib/ui/stdcontext.inc:83 lib/ui/stdcontext.inc:95 lib/ui/stdcontext.inc:105
-#: lib/ui/stdcontext.inc:113 lib/ui/stdcontext.inc:127
-#: lib/ui/stdcontext.inc:134 lib/ui/stdcontext.inc:155
-#: lib/ui/stdcontext.inc:199 lib/ui/stdcontext.inc:217
-#: lib/ui/stdcontext.inc:244 lib/ui/stdcontext.inc:326
-#: lib/ui/stdcontext.inc:334 lib/ui/stdcontext.inc:346
-#: lib/ui/stdcontext.inc:381 lib/ui/stdcontext.inc:390 lib/ui/stdmenus.inc:459
+#: lib/ui/stdcontext.inc:84 lib/ui/stdcontext.inc:96 lib/ui/stdcontext.inc:106
+#: lib/ui/stdcontext.inc:114 lib/ui/stdcontext.inc:128
+#: lib/ui/stdcontext.inc:135 lib/ui/stdcontext.inc:156
+#: lib/ui/stdcontext.inc:200 lib/ui/stdcontext.inc:218
+#: lib/ui/stdcontext.inc:245 lib/ui/stdcontext.inc:327
+#: lib/ui/stdcontext.inc:335 lib/ui/stdcontext.inc:347
+#: lib/ui/stdcontext.inc:382 lib/ui/stdcontext.inc:391 lib/ui/stdmenus.inc:459
 msgid "Settings...|S"
 msgstr "Configuración...|o"
 
-#: lib/ui/stdcontext.inc:91
+#: lib/ui/stdcontext.inc:92
 msgid "Go back|G"
 msgstr "Volver|V"
 
-#: lib/ui/stdcontext.inc:93
+#: lib/ui/stdcontext.inc:94
 msgid "Copy as Reference|C"
 msgstr "Copiar como Referencia|C"
 
-#: lib/ui/stdcontext.inc:115
+#: lib/ui/stdcontext.inc:116
 msgid "Edit Database(s) externally...|x"
 msgstr "Editar base de datos externamente...|x"
 
-#: lib/ui/stdcontext.inc:123 lib/ui/stdcontext.inc:151
-#: lib/ui/stdcontext.inc:167 lib/ui/stdcontext.inc:322
+#: lib/ui/stdcontext.inc:124 lib/ui/stdcontext.inc:152
+#: lib/ui/stdcontext.inc:168 lib/ui/stdcontext.inc:323
 msgid "Open Inset|O"
 msgstr "Abrir cuadro|A"
 
-#: lib/ui/stdcontext.inc:124 lib/ui/stdcontext.inc:152
-#: lib/ui/stdcontext.inc:168 lib/ui/stdcontext.inc:323
+#: lib/ui/stdcontext.inc:125 lib/ui/stdcontext.inc:153
+#: lib/ui/stdcontext.inc:169 lib/ui/stdcontext.inc:324
 msgid "Close Inset|C"
 msgstr "Cerrar recuadro"
 
-#: lib/ui/stdcontext.inc:126 lib/ui/stdcontext.inc:132
-#: lib/ui/stdcontext.inc:154 lib/ui/stdcontext.inc:173
-#: lib/ui/stdcontext.inc:325
+#: lib/ui/stdcontext.inc:127 lib/ui/stdcontext.inc:133
+#: lib/ui/stdcontext.inc:155 lib/ui/stdcontext.inc:174
+#: lib/ui/stdcontext.inc:326
 msgid "Dissolve Inset|D"
 msgstr "Disolver recuadro|D"
 
-#: lib/ui/stdcontext.inc:131
-msgid "Toggle Label|L"
-msgstr "Conmutar etiqueta|e"
+#: lib/ui/stdcontext.inc:132
+#, fuzzy
+msgid "Show Label|L"
+msgstr "Ir a la etiqueta|e"
 
-#: lib/ui/stdcontext.inc:142
+#: lib/ui/stdcontext.inc:143
 msgid "Frameless|l"
 msgstr "Sin marco|m"
 
-#: lib/ui/stdcontext.inc:143
+#: lib/ui/stdcontext.inc:144
 msgid "Simple frame|f"
 msgstr "Marco sencillo|M"
 
-#: lib/ui/stdcontext.inc:144
+#: lib/ui/stdcontext.inc:145
 msgid "Simple frame, page breaks|p"
 msgstr "Sencillo, extendido|x"
 
-#: lib/ui/stdcontext.inc:145
+#: lib/ui/stdcontext.inc:146
 msgid "Oval, thin|a"
 msgstr "Ovalado, fino|f"
 
-#: lib/ui/stdcontext.inc:146
+#: lib/ui/stdcontext.inc:147
 msgid "Oval, thick|v"
 msgstr "Ovalado, grueso|g"
 
-#: lib/ui/stdcontext.inc:147
+#: lib/ui/stdcontext.inc:148
 msgid "Drop Shadow|w"
 msgstr "Sombreado|b"
 
-#: lib/ui/stdcontext.inc:148
+#: lib/ui/stdcontext.inc:149
 msgid "Shaded background|b"
 msgstr "Fondo sombreado|o"
 
-#: lib/ui/stdcontext.inc:149
+#: lib/ui/stdcontext.inc:150
 msgid "Double frame|u"
 msgstr "Marco doble|d"
 
-#: lib/ui/stdcontext.inc:163 lib/ui/stdmenus.inc:433
+#: lib/ui/stdcontext.inc:164 lib/ui/stdmenus.inc:433
 msgid "LyX Note|N"
 msgstr "Nota LyX|N"
 
-#: lib/ui/stdcontext.inc:164
+#: lib/ui/stdcontext.inc:165
 msgid "Comment|m"
 msgstr "Comentario|C"
 
-#: lib/ui/stdcontext.inc:165 lib/ui/stdmenus.inc:435
+#: lib/ui/stdcontext.inc:166 lib/ui/stdmenus.inc:435
 msgid "Greyed Out|G"
 msgstr "Resaltado en gris|g"
 
-#: lib/ui/stdcontext.inc:170
+#: lib/ui/stdcontext.inc:171
 #, fuzzy
 msgid "Open All Notes|A"
 msgstr "Abrir todos los recuadros|A"
 
-#: lib/ui/stdcontext.inc:171
+#: lib/ui/stdcontext.inc:172
 #, fuzzy
 msgid "Close All Notes|l"
 msgstr "Cerrar todos los recuadros|C"
 
-#: lib/ui/stdcontext.inc:181
+#: lib/ui/stdcontext.inc:182
 msgid "Interword Space|w"
 msgstr "Espacio entre palabras|E"
 
-#: lib/ui/stdcontext.inc:182
+#: lib/ui/stdcontext.inc:183
 msgid "Protected Space|o"
 msgstr "Espacio protegido|p"
 
-#: lib/ui/stdcontext.inc:184 lib/ui/stdcontext.inc:209
+#: lib/ui/stdcontext.inc:185 lib/ui/stdcontext.inc:210
 msgid "Negative Thin Space|N"
 msgstr "Espacio delgado negativo|n"
 
-#: lib/ui/stdcontext.inc:185 lib/ui/stdcontext.inc:212
+#: lib/ui/stdcontext.inc:186 lib/ui/stdcontext.inc:213
 msgid "Half Quad Space (Enskip)|k"
 msgstr "Medio cuadratín|e"
 
-#: lib/ui/stdcontext.inc:186
+#: lib/ui/stdcontext.inc:187
 msgid "Protected Half Quad Space (Enspace)|E"
 msgstr "Medio cuadratín protegido|m"
 
-#: lib/ui/stdcontext.inc:187 lib/ui/stdcontext.inc:213
+#: lib/ui/stdcontext.inc:188 lib/ui/stdcontext.inc:214
 msgid "Quad Space|Q"
 msgstr "Cuadratín|C"
 
-#: lib/ui/stdcontext.inc:188 lib/ui/stdcontext.inc:214
+#: lib/ui/stdcontext.inc:189 lib/ui/stdcontext.inc:215
 msgid "Double Quad Space|u"
 msgstr "Doble cuadratín|u"
 
-#: lib/ui/stdcontext.inc:189
+#: lib/ui/stdcontext.inc:190
 msgid "Horizontal Fill|F"
 msgstr "Relleno horizontal|h"
 
-#: lib/ui/stdcontext.inc:190
+#: lib/ui/stdcontext.inc:191
 msgid "Protected Horizontal Fill|i"
 msgstr "Relleno horizontal protegido|g"
 
-#: lib/ui/stdcontext.inc:191
+#: lib/ui/stdcontext.inc:192
 msgid "Horizontal Fill (Dots)|D"
 msgstr "Relleno horizontal (puntos)|l"
 
-#: lib/ui/stdcontext.inc:192
+#: lib/ui/stdcontext.inc:193
 msgid "Horizontal Fill (Rule)|R"
 msgstr "Relleno horizontal (raya)|r"
 
-#: lib/ui/stdcontext.inc:193
+#: lib/ui/stdcontext.inc:194
 msgid "Horizontal Fill (Left Arrow)|L"
 msgstr "Relleno horizontal (flecha izquierda)|i"
 
-#: lib/ui/stdcontext.inc:194
+#: lib/ui/stdcontext.inc:195
 msgid "Horizontal Fill (Right Arrow)|g"
 msgstr "Relleno horizontal (flecha derecha)|z"
 
-#: lib/ui/stdcontext.inc:195
+#: lib/ui/stdcontext.inc:196
 msgid "Horizontal Fill (Up Brace)|p"
 msgstr "Relleno horizontal (corchete arriba)|t"
 
-#: lib/ui/stdcontext.inc:196
+#: lib/ui/stdcontext.inc:197
 msgid "Horizontal Fill (Down Brace)|B"
 msgstr "Relleno horizontal (corchete abajo)|n"
 
-#: lib/ui/stdcontext.inc:197 lib/ui/stdcontext.inc:215
+#: lib/ui/stdcontext.inc:198 lib/ui/stdcontext.inc:216
 msgid "Custom Length|C"
 msgstr "Personalizado|e"
 
-#: lib/ui/stdcontext.inc:207
+#: lib/ui/stdcontext.inc:208
 msgid "Medium Space|M"
 msgstr "Espacio medio|m"
 
-#: lib/ui/stdcontext.inc:208
+#: lib/ui/stdcontext.inc:209
 msgid "Thick Space|h"
 msgstr "Espacio grueso|g"
 
-#: lib/ui/stdcontext.inc:210
+#: lib/ui/stdcontext.inc:211
 msgid "Negative Medium Space|u"
 msgstr "Espacio medio negativo|n"
 
-#: lib/ui/stdcontext.inc:211
+#: lib/ui/stdcontext.inc:212
 msgid "Negative Thick Space|i"
 msgstr "Espacio grueso negativo|n"
 
-#: lib/ui/stdcontext.inc:224
+#: lib/ui/stdcontext.inc:225
 msgid "DefSkip|D"
 msgstr "Salto predeterminado|p"
 
-#: lib/ui/stdcontext.inc:225
+#: lib/ui/stdcontext.inc:226
 msgid "SmallSkip|S"
 msgstr "Salto pequeño|e"
 
-#: lib/ui/stdcontext.inc:226
+#: lib/ui/stdcontext.inc:227
 msgid "MedSkip|M"
 msgstr "Salto medio|d"
 
-#: lib/ui/stdcontext.inc:227
+#: lib/ui/stdcontext.inc:228
 msgid "BigSkip|B"
 msgstr "Salto grande|g"
 
-#: lib/ui/stdcontext.inc:228
+#: lib/ui/stdcontext.inc:229
 msgid "VFill|F"
 msgstr "Relleno vertical|v"
 
-#: lib/ui/stdcontext.inc:229
+#: lib/ui/stdcontext.inc:230
 msgid "Custom|C"
 msgstr "Personalizado|P"
 
-#: lib/ui/stdcontext.inc:231
+#: lib/ui/stdcontext.inc:232
 msgid "Settings...|e"
 msgstr "Configuración...|g"
 
-#: lib/ui/stdcontext.inc:238
+#: lib/ui/stdcontext.inc:239
 msgid "Include|c"
 msgstr "Adjuntar|A"
 
-#: lib/ui/stdcontext.inc:239
+#: lib/ui/stdcontext.inc:240
 msgid "Input|p"
 msgstr "Entrada|E"
 
-#: lib/ui/stdcontext.inc:240
+#: lib/ui/stdcontext.inc:241
 msgid "Verbatim|V"
 msgstr "Literal|L"
 
-#: lib/ui/stdcontext.inc:241
+#: lib/ui/stdcontext.inc:242
 msgid "Verbatim (marked blanks)|b"
 msgstr "Literal (espacios marcados)"
 
-#: lib/ui/stdcontext.inc:242
+#: lib/ui/stdcontext.inc:243
 msgid "Listing|L"
 msgstr "Listado|L"
 
-#: lib/ui/stdcontext.inc:246
+#: lib/ui/stdcontext.inc:247
 msgid "Edit included file...|E"
 msgstr "Editar archivo incluido...|E"
 
-#: lib/ui/stdcontext.inc:253 lib/ui/stdmenus.inc:379
+#: lib/ui/stdcontext.inc:254 lib/ui/stdmenus.inc:379
 msgid "New Page|N"
 msgstr "Página nueva|n"
 
-#: lib/ui/stdcontext.inc:254 lib/ui/stdmenus.inc:380
+#: lib/ui/stdcontext.inc:255 lib/ui/stdmenus.inc:380
 msgid "Page Break|a"
 msgstr "Salto de página|t"
 
-#: lib/ui/stdcontext.inc:255 lib/ui/stdmenus.inc:381
+#: lib/ui/stdcontext.inc:256 lib/ui/stdmenus.inc:381
 msgid "Clear Page|C"
 msgstr "Limpiar página|m"
 
-#: lib/ui/stdcontext.inc:256 lib/ui/stdmenus.inc:382
+#: lib/ui/stdcontext.inc:257 lib/ui/stdmenus.inc:382
 msgid "Clear Double Page|D"
 msgstr "Limpiar página doble|b"
 
-#: lib/ui/stdcontext.inc:263 lib/ui/stdmenus.inc:376
+#: lib/ui/stdcontext.inc:264 lib/ui/stdmenus.inc:376
 msgid "Ragged Line Break|R"
 msgstr "Salto de línea cortada|a"
 
-#: lib/ui/stdcontext.inc:264 lib/ui/stdmenus.inc:377
+#: lib/ui/stdcontext.inc:265 lib/ui/stdmenus.inc:377
 msgid "Justified Line Break|J"
 msgstr "Salto de línea justificada|j"
 
-#: lib/ui/stdcontext.inc:271 lib/ui/stdcontext.inc:317 lib/ui/stdmenus.inc:88
-#: lib/ui/stdtoolbars.inc:66 src/Text3.cpp:1037
+#: lib/ui/stdcontext.inc:272 lib/ui/stdcontext.inc:318 lib/ui/stdmenus.inc:88
+#: lib/ui/stdtoolbars.inc:66 src/Text3.cpp:1057
 #: src/mathed/InsetMathNest.cpp:550
 msgid "Cut"
 msgstr "Cortar"
 
-#: lib/ui/stdcontext.inc:272 lib/ui/stdcontext.inc:318 lib/ui/stdmenus.inc:89
-#: lib/ui/stdtoolbars.inc:67 src/Text3.cpp:1042
+#: lib/ui/stdcontext.inc:273 lib/ui/stdcontext.inc:319 lib/ui/stdmenus.inc:89
+#: lib/ui/stdtoolbars.inc:67 src/Text3.cpp:1062
 #: src/mathed/InsetMathNest.cpp:558
 msgid "Copy"
 msgstr "Copiar"
 
-#: lib/ui/stdcontext.inc:273 lib/ui/stdcontext.inc:319 lib/ui/stdmenus.inc:90
-#: lib/ui/stdtoolbars.inc:68 src/Text3.cpp:995
+#: lib/ui/stdcontext.inc:274 lib/ui/stdcontext.inc:320 lib/ui/stdmenus.inc:90
+#: lib/ui/stdtoolbars.inc:68 src/Text3.cpp:1015
 #: src/mathed/InsetMathGrid.cpp:1256 src/mathed/InsetMathNest.cpp:530
 msgid "Paste"
 msgstr "Pegar"
 
-#: lib/ui/stdcontext.inc:274 lib/ui/stdcontext.inc:320 lib/ui/stdmenus.inc:91
+#: lib/ui/stdcontext.inc:275 lib/ui/stdcontext.inc:321 lib/ui/stdmenus.inc:91
 msgid "Paste Recent|e"
 msgstr "Pegar reciente|P"
 
-#: lib/ui/stdcontext.inc:276
+#: lib/ui/stdcontext.inc:277
 msgid "Jump Back to Saved Bookmark|B"
 msgstr "Ir a marcador guardado|I"
 
-#: lib/ui/stdcontext.inc:278 lib/ui/stdmenus.inc:98
+#: lib/ui/stdcontext.inc:279 lib/ui/stdmenus.inc:98
 msgid "Move Paragraph Up|o"
 msgstr "Mover párrafo arriba|o"
 
-#: lib/ui/stdcontext.inc:279 lib/ui/stdmenus.inc:99
+#: lib/ui/stdcontext.inc:280 lib/ui/stdmenus.inc:99
 msgid "Move Paragraph Down|v"
 msgstr "Mover párrafo abajo|b"
 
-#: lib/ui/stdcontext.inc:281
+#: lib/ui/stdcontext.inc:282
 msgid "Promote Section|r"
 msgstr "Subir nivel de sección|u"
 
-#: lib/ui/stdcontext.inc:282
+#: lib/ui/stdcontext.inc:283
 msgid "Demote Section|m"
 msgstr "Bajar nivel de sección|j"
 
-#: lib/ui/stdcontext.inc:283
+#: lib/ui/stdcontext.inc:284
 msgid "Move Section down|d"
 msgstr "Mover sección abajo|v"
 
-#: lib/ui/stdcontext.inc:284
+#: lib/ui/stdcontext.inc:285
 msgid "Move Section up|u"
 msgstr "Mover sección arriba|r"
 
-#: lib/ui/stdcontext.inc:285
+#: lib/ui/stdcontext.inc:286
 msgid "Insert Short Title|T"
 msgstr "Insertar Título breve|T"
 
-#: lib/ui/stdcontext.inc:287
+#: lib/ui/stdcontext.inc:288
 msgid "Apply Last Text Style|A"
 msgstr "Aplicar último estilo de texto|A"
 
-#: lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:101
+#: lib/ui/stdcontext.inc:289 lib/ui/stdmenus.inc:101
 msgid "Text Style|S"
 msgstr "Estilo del texto|s"
 
-#: lib/ui/stdcontext.inc:289 lib/ui/stdmenus.inc:102
+#: lib/ui/stdcontext.inc:290 lib/ui/stdmenus.inc:102
 msgid "Paragraph Settings...|P"
 msgstr "Configuración del párrafo...|f"
 
-#: lib/ui/stdcontext.inc:291
+#: lib/ui/stdcontext.inc:292
 msgid "Fullscreen Mode"
 msgstr "Modo pantalla completa"
 
-#: lib/ui/stdcontext.inc:299 lib/ui/stdmenus.inc:217
+#: lib/ui/stdcontext.inc:300 lib/ui/stdmenus.inc:217
 #: lib/ui/stdtoolbars.inc:172
 msgid "Append Argument"
 msgstr "Añadir Argumento"
 
-#: lib/ui/stdcontext.inc:300 lib/ui/stdmenus.inc:218
+#: lib/ui/stdcontext.inc:301 lib/ui/stdmenus.inc:218
 #: lib/ui/stdtoolbars.inc:171
 msgid "Remove Last Argument"
 msgstr "Quitar último Argumento"
 
-#: lib/ui/stdcontext.inc:302 lib/ui/stdmenus.inc:220
+#: lib/ui/stdcontext.inc:303 lib/ui/stdmenus.inc:220
 #: lib/ui/stdtoolbars.inc:174
 msgid "Make First Non-Optional into Optional Argument"
 msgstr "Hacer opcional el primer argumento no opcional"
 
-#: lib/ui/stdcontext.inc:303 lib/ui/stdmenus.inc:221
+#: lib/ui/stdcontext.inc:304 lib/ui/stdmenus.inc:221
 #: lib/ui/stdtoolbars.inc:175
 msgid "Make Last Optional into Non-Optional Argument"
 msgstr "Hacer no opcional el último argumento opcional"
 
-#: lib/ui/stdcontext.inc:304 lib/ui/stdmenus.inc:222
+#: lib/ui/stdcontext.inc:305 lib/ui/stdmenus.inc:222
 #: lib/ui/stdtoolbars.inc:178
 msgid "Insert Optional Argument"
 msgstr "Insertar argumento opcional"
 
-#: lib/ui/stdcontext.inc:305 lib/ui/stdmenus.inc:223
+#: lib/ui/stdcontext.inc:306 lib/ui/stdmenus.inc:223
 #: lib/ui/stdtoolbars.inc:177
 msgid "Remove Optional Argument"
 msgstr "Quitar argumento opcional"
 
-#: lib/ui/stdcontext.inc:307 lib/ui/stdmenus.inc:225
+#: lib/ui/stdcontext.inc:308 lib/ui/stdmenus.inc:225
 #: lib/ui/stdtoolbars.inc:181
 msgid "Append Argument Eating From The Right"
 msgstr "Añadir argumento comiendo desde la derecha"
 
-#: lib/ui/stdcontext.inc:308 lib/ui/stdmenus.inc:226
+#: lib/ui/stdcontext.inc:309 lib/ui/stdmenus.inc:226
 #: lib/ui/stdtoolbars.inc:182
 msgid "Append Optional Argument Eating From The Right"
 msgstr "Añadir argumento opcional comiendo desde la derecha"
 
-#: lib/ui/stdcontext.inc:309 lib/ui/stdmenus.inc:227
+#: lib/ui/stdcontext.inc:310 lib/ui/stdmenus.inc:227
 #: lib/ui/stdtoolbars.inc:180
 msgid "Remove Last Argument Spitting Out To The Right"
 msgstr "Quitar último argumento yendo hacia la derecha"
 
-#: lib/ui/stdcontext.inc:336 lib/ui/stdcontext.inc:348
+#: lib/ui/stdcontext.inc:337 lib/ui/stdcontext.inc:349
 msgid "Edit externally...|x"
 msgstr "Editar externamente...|x"
 
-#: lib/ui/stdcontext.inc:358 lib/ui/stdmenus.inc:164
+#: lib/ui/stdcontext.inc:359 lib/ui/stdmenus.inc:164
 msgid "Top Line|T"
 msgstr "Línea superior|s"
 
-#: lib/ui/stdcontext.inc:359 lib/ui/stdmenus.inc:165
+#: lib/ui/stdcontext.inc:360 lib/ui/stdmenus.inc:165
 msgid "Bottom Line|B"
 msgstr "Línea inferior|i"
 
-#: lib/ui/stdcontext.inc:360 lib/ui/stdmenus.inc:166
+#: lib/ui/stdcontext.inc:361 lib/ui/stdmenus.inc:166
 msgid "Left Line|L"
 msgstr "Línea izquierda|z"
 
-#: lib/ui/stdcontext.inc:361 lib/ui/stdmenus.inc:167
+#: lib/ui/stdcontext.inc:362 lib/ui/stdmenus.inc:167
 msgid "Right Line|R"
 msgstr "Línea derecha|d"
 
-#: lib/ui/stdcontext.inc:373 lib/ui/stdmenus.inc:182
+#: lib/ui/stdcontext.inc:374 lib/ui/stdmenus.inc:182
 msgid "Copy Row|o"
 msgstr "Copiar fila|f"
 
-#: lib/ui/stdcontext.inc:378 lib/ui/stdmenus.inc:187
+#: lib/ui/stdcontext.inc:379 lib/ui/stdmenus.inc:187
 msgid "Copy Column|p"
 msgstr "Copiar columna|p"
 
@@ -10983,14 +10991,6 @@ msgstr "Mayúsculas|M"
 #: lib/ui/stdmenus.inc:157
 msgid "Lowercase|L"
 msgstr "Minúsculas|n"
-
-#: lib/ui/stdmenus.inc:192
-msgid "Number whole Formula|N"
-msgstr "Numerar la ecuación|N"
-
-#: lib/ui/stdmenus.inc:193
-msgid "Number this Line|u"
-msgstr "Numerar la línea|u"
 
 #: lib/ui/stdmenus.inc:195
 msgid "Macro Definition"
@@ -11379,6 +11379,14 @@ msgstr "Insertar tabla"
 #: lib/ui/stdtoolbars.inc:80
 msgid "Toggle Outline"
 msgstr "Conmutar navegador de contorno"
+
+#: lib/ui/stdtoolbars.inc:81
+msgid "Toggle Math Toolbar"
+msgstr "Conmutar barra de herramientas de ecuaciones"
+
+#: lib/ui/stdtoolbars.inc:82
+msgid "Toggle Table Toolbar"
+msgstr "Conmutar barra de herramientas de tabla"
 
 #: lib/ui/stdtoolbars.inc:85
 msgid "Extra"
@@ -14253,8 +14261,8 @@ msgstr "comando de fecha"
 msgid "Table (CSV)"
 msgstr "Tabla (CSV)"
 
-#: lib/configure.py:339 src/frontends/qt4/GuiView.cpp:865
-#: src/frontends/qt4/GuiView.cpp:866 src/mathed/MathMacroTemplate.cpp:537
+#: lib/configure.py:339 src/frontends/qt4/GuiView.cpp:867
+#: src/frontends/qt4/GuiView.cpp:868 src/mathed/MathMacroTemplate.cpp:537
 msgid "LyX"
 msgstr "LyX"
 
@@ -14518,8 +14526,8 @@ msgid "Overwrite modified file?"
 msgstr "¿Sobreescribir archivo modificado?"
 
 #: src/Buffer.cpp:883 src/Exporter.cpp:49 src/LyXFunc.cpp:1026
-#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1554
-#: src/frontends/qt4/GuiView.cpp:1746
+#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1556
+#: src/frontends/qt4/GuiView.cpp:1748
 msgid "&Overwrite"
 msgstr "&Sobreescribir"
 
@@ -15691,7 +15699,7 @@ msgstr "&Usar predeterminados"
 msgid "&Exit LyX"
 msgstr "&Salir de LyX"
 
-#: src/LyX.cpp:643 src/frontends/qt4/GuiView.cpp:698
+#: src/LyX.cpp:643 src/frontends/qt4/GuiView.cpp:700
 msgid "LyX: "
 msgstr "LyX: "
 
@@ -15905,7 +15913,7 @@ msgstr ""
 "\n"
 "¿Desea guardar el documento?"
 
-#: src/LyXFunc.cpp:705 src/frontends/qt4/GuiView.cpp:1857
+#: src/LyXFunc.cpp:705 src/frontends/qt4/GuiView.cpp:1859
 msgid "Save changed document?"
 msgstr "¿Guardar documento modificado?"
 
@@ -15954,7 +15962,7 @@ msgstr "¿Revertir al documento guardado?"
 msgid "&Revert"
 msgstr "&Revertir"
 
-#: src/LyXFunc.cpp:1063 src/Text3.cpp:1547
+#: src/LyXFunc.cpp:1063 src/Text3.cpp:1567
 msgid "Missing argument"
 msgstr "Falta argumento"
 
@@ -16652,22 +16660,22 @@ msgstr ""
 "El nuevo diseño no permite la alineación usada previamente.\n"
 "Poniendo la predeterminada."
 
-#: src/Paragraph.cpp:2129 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2134 src/frontends/qt4/LaTeXHighlighter.cpp:108
 #: src/insets/InsetListings.cpp:185 src/insets/InsetListings.cpp:193
 #: src/insets/InsetListings.cpp:217 src/mathed/InsetMathString.cpp:165
 msgid "LyX Warning: "
 msgstr "Aviso de LyX: "
 
-#: src/Paragraph.cpp:2130 src/insets/InsetListings.cpp:186
+#: src/Paragraph.cpp:2135 src/insets/InsetListings.cpp:186
 #: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:166
 msgid "uncodable character"
 msgstr "carácter no codificable"
 
-#: src/Paragraph.cpp:2493
+#: src/Paragraph.cpp:2498
 msgid "Memory problem"
 msgstr "Problema de memoria"
 
-#: src/Paragraph.cpp:2493
+#: src/Paragraph.cpp:2498
 msgid "Paragraph not properly initialized"
 msgstr "Párrafo no adecuadamente iniciado"
 
@@ -16780,7 +16788,7 @@ msgstr "¡Nada que indexar!"
 msgid "Cannot index more than one paragraph!"
 msgstr "¡No se puede indexar más de un párrafo!"
 
-#: src/Text3.cpp:186 src/mathed/InsetMathHull.cpp:1477
+#: src/Text3.cpp:186 src/mathed/InsetMathHull.cpp:1484
 msgid "Math editor mode"
 msgstr "Modo editor de ecuaciones"
 
@@ -16788,23 +16796,23 @@ msgstr "Modo editor de ecuaciones"
 msgid "No valid math formula"
 msgstr "Fórmula matemática no válida"
 
-#: src/Text3.cpp:824
+#: src/Text3.cpp:844
 msgid "Unknown spacing argument: "
 msgstr "Argumento de espaciado desconocido: "
 
-#: src/Text3.cpp:1102
+#: src/Text3.cpp:1122
 msgid "Layout "
 msgstr "Estilo "
 
-#: src/Text3.cpp:1103
+#: src/Text3.cpp:1123
 msgid " not known"
 msgstr " no conocido"
 
-#: src/Text3.cpp:1664 src/Text3.cpp:1676
+#: src/Text3.cpp:1684 src/Text3.cpp:1696
 msgid "Character set"
 msgstr "Conjunto de caracteres"
 
-#: src/Text3.cpp:1824 src/Text3.cpp:1835
+#: src/Text3.cpp:1844 src/Text3.cpp:1855
 msgid "Paragraph layout set"
 msgstr "Estilo de párrafo"
 
@@ -16996,19 +17004,19 @@ msgstr ""
 msgid "Could not read template"
 msgstr "No se pudo leer plantilla"
 
-#: src/buffer_funcs.cpp:389
+#: src/buffer_funcs.cpp:417
 msgid "\\arabic{enumi}."
 msgstr "\\arabic{enumi}."
 
-#: src/buffer_funcs.cpp:395
+#: src/buffer_funcs.cpp:423
 msgid "\\roman{enumiii}."
 msgstr "\\roman{enumiii}."
 
-#: src/buffer_funcs.cpp:398
+#: src/buffer_funcs.cpp:426
 msgid "\\Alph{enumiv}."
 msgstr "\\Alph{enumiv}."
 
-#: src/buffer_funcs.cpp:415 src/insets/InsetCaption.cpp:292
+#: src/buffer_funcs.cpp:443 src/insets/InsetCaption.cpp:292
 msgid "Senseless!!! "
 msgstr "¡Sin sentido! "
 
@@ -17194,9 +17202,9 @@ msgstr "Bibliografía BibTeX"
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
 #: src/frontends/qt4/GuiDocument.cpp:1304
 #: src/frontends/qt4/GuiExternal.cpp:670 src/frontends/qt4/GuiGraphics.cpp:847
-#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1299
-#: src/frontends/qt4/GuiView.cpp:1357 src/frontends/qt4/GuiView.cpp:1504
-#: src/frontends/qt4/GuiView.cpp:1632 src/frontends/qt4/GuiView.cpp:1716
+#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1301
+#: src/frontends/qt4/GuiView.cpp:1359 src/frontends/qt4/GuiView.cpp:1506
+#: src/frontends/qt4/GuiView.cpp:1634 src/frontends/qt4/GuiView.cpp:1718
 msgid "Documents|#o#O"
 msgstr "Documentos|#o#O"
 
@@ -17401,10 +17409,10 @@ msgstr "Archivos %1$s"
 msgid "Choose a filename to save the pasted graphic as"
 msgstr "Elegir un nombre de archivo para guardar el gráfico pegado como"
 
-#: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1376
-#: src/frontends/qt4/GuiView.cpp:1524 src/frontends/qt4/GuiView.cpp:1540
-#: src/frontends/qt4/GuiView.cpp:1557 src/frontends/qt4/GuiView.cpp:1649
-#: src/frontends/qt4/GuiView.cpp:1692
+#: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1378
+#: src/frontends/qt4/GuiView.cpp:1526 src/frontends/qt4/GuiView.cpp:1542
+#: src/frontends/qt4/GuiView.cpp:1559 src/frontends/qt4/GuiView.cpp:1651
+#: src/frontends/qt4/GuiView.cpp:1694
 msgid "Canceled."
 msgstr "Cancelado."
 
@@ -18983,60 +18991,60 @@ msgstr "Iconos tamaño-normal"
 msgid "Big-sized icons"
 msgstr "Iconos tamaño-grande"
 
-#: src/frontends/qt4/GuiView.cpp:413
+#: src/frontends/qt4/GuiView.cpp:415
 #, c-format
 msgid "Unknown toolbar \"%1$s\""
 msgstr "Barra de herramientas \"%1$s\" desconocida"
 
-#: src/frontends/qt4/GuiView.cpp:1298
+#: src/frontends/qt4/GuiView.cpp:1300
 msgid "Select template file"
 msgstr "Seleccionar plantilla"
 
-#: src/frontends/qt4/GuiView.cpp:1300 src/frontends/qt4/GuiView.cpp:1717
+#: src/frontends/qt4/GuiView.cpp:1302 src/frontends/qt4/GuiView.cpp:1719
 msgid "Templates|#T#t"
 msgstr "Plantillas|#T#t"
 
-#: src/frontends/qt4/GuiView.cpp:1303 src/frontends/qt4/GuiView.cpp:1361
-#: src/frontends/qt4/GuiView.cpp:1638 src/frontends/qt4/GuiView.cpp:1724
+#: src/frontends/qt4/GuiView.cpp:1305 src/frontends/qt4/GuiView.cpp:1363
+#: src/frontends/qt4/GuiView.cpp:1640 src/frontends/qt4/GuiView.cpp:1726
 msgid "LyX Documents (*.lyx)"
 msgstr "Documentos LyX (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1320
+#: src/frontends/qt4/GuiView.cpp:1322
 msgid "Document not loaded."
 msgstr "Documento no cargado."
 
-#: src/frontends/qt4/GuiView.cpp:1356
+#: src/frontends/qt4/GuiView.cpp:1358
 msgid "Select document to open"
 msgstr "Seleccionar documento para abrir"
 
-#: src/frontends/qt4/GuiView.cpp:1358 src/frontends/qt4/GuiView.cpp:1505
-#: src/frontends/qt4/GuiView.cpp:1633
+#: src/frontends/qt4/GuiView.cpp:1360 src/frontends/qt4/GuiView.cpp:1507
+#: src/frontends/qt4/GuiView.cpp:1635
 msgid "Examples|#E#e"
 msgstr "Ejemplos|#E#e"
 
-#: src/frontends/qt4/GuiView.cpp:1362
+#: src/frontends/qt4/GuiView.cpp:1364
 msgid "LyX-1.3.x Documents (*.lyx13)"
 msgstr "Documentos LyX-1.3.x (*.lyx13)"
 
-#: src/frontends/qt4/GuiView.cpp:1363
+#: src/frontends/qt4/GuiView.cpp:1365
 msgid "LyX-1.4.x Documents (*.lyx14)"
 msgstr "Documentos LyX-1.4.x (*.lyx14)"
 
-#: src/frontends/qt4/GuiView.cpp:1364
+#: src/frontends/qt4/GuiView.cpp:1366
 msgid "LyX-1.5.x Documents (*.lyx15)"
 msgstr "Documentos LyX-1.5.x (*.lyx15)"
 
-#: src/frontends/qt4/GuiView.cpp:1365
+#: src/frontends/qt4/GuiView.cpp:1367
 msgid "LyX-1.6.x Documents (*.lyx16)"
 msgstr "Documentos LyX-1.6.x (*.lyx16)"
 
-#: src/frontends/qt4/GuiView.cpp:1390 src/frontends/qt4/Validator.cpp:174
+#: src/frontends/qt4/GuiView.cpp:1392 src/frontends/qt4/Validator.cpp:174
 #: src/insets/ExternalSupport.cpp:365 src/insets/InsetBibtex.cpp:286
 #: src/insets/InsetGraphics.cpp:592 src/insets/InsetInclude.cpp:471
 msgid "Invalid filename"
 msgstr "Nombre de archivo no válido"
 
-#: src/frontends/qt4/GuiView.cpp:1391
+#: src/frontends/qt4/GuiView.cpp:1393
 #, c-format
 msgid ""
 "The directory in the given path\n"
@@ -19047,40 +19055,40 @@ msgstr ""
 "%1$s\n"
 "no existe."
 
-#: src/frontends/qt4/GuiView.cpp:1405
+#: src/frontends/qt4/GuiView.cpp:1407
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Abriendo documento %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1414
+#: src/frontends/qt4/GuiView.cpp:1416
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Documento %1$s abierto."
 
-#: src/frontends/qt4/GuiView.cpp:1417
+#: src/frontends/qt4/GuiView.cpp:1419
 msgid "Version control detected."
 msgstr "Detectado Control de versiones."
 
-#: src/frontends/qt4/GuiView.cpp:1419
+#: src/frontends/qt4/GuiView.cpp:1421
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "No se pudo abrir documento %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:1448
+#: src/frontends/qt4/GuiView.cpp:1450
 msgid "Couldn't import file"
 msgstr "No se pudo importar archivo"
 
-#: src/frontends/qt4/GuiView.cpp:1449
+#: src/frontends/qt4/GuiView.cpp:1451
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr "Sin información para importar el formato %1$s."
 
-#: src/frontends/qt4/GuiView.cpp:1500
+#: src/frontends/qt4/GuiView.cpp:1502
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Seleccionar archivo %1$s a importar"
 
-#: src/frontends/qt4/GuiView.cpp:1551 src/frontends/qt4/GuiView.cpp:1741
+#: src/frontends/qt4/GuiView.cpp:1553 src/frontends/qt4/GuiView.cpp:1743
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -19091,48 +19099,48 @@ msgstr ""
 "\n"
 "¿Desea sobreescribir ese documento?"
 
-#: src/frontends/qt4/GuiView.cpp:1553 src/frontends/qt4/GuiView.cpp:1745
+#: src/frontends/qt4/GuiView.cpp:1555 src/frontends/qt4/GuiView.cpp:1747
 msgid "Overwrite document?"
 msgstr "¿Sobreescribir documento?"
 
-#: src/frontends/qt4/GuiView.cpp:1562
+#: src/frontends/qt4/GuiView.cpp:1564
 #, c-format
 msgid "Importing %1$s..."
 msgstr "Importando %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1565
+#: src/frontends/qt4/GuiView.cpp:1567
 msgid "imported."
 msgstr "importado."
 
-#: src/frontends/qt4/GuiView.cpp:1567
+#: src/frontends/qt4/GuiView.cpp:1569
 msgid "file not imported!"
 msgstr "¡archivo no importado!"
 
-#: src/frontends/qt4/GuiView.cpp:1631
+#: src/frontends/qt4/GuiView.cpp:1633
 msgid "Select LyX document to insert"
 msgstr "Seleccionar documento LyX a insertar"
 
-#: src/frontends/qt4/GuiView.cpp:1665
+#: src/frontends/qt4/GuiView.cpp:1667
 msgid "Absolute filename expected."
 msgstr "Se espera un nombre de archivo absoluto."
 
-#: src/frontends/qt4/GuiView.cpp:1677
+#: src/frontends/qt4/GuiView.cpp:1679
 msgid "Select file to insert"
 msgstr "Seleccionar archivo a insertar"
 
-#: src/frontends/qt4/GuiView.cpp:1681
+#: src/frontends/qt4/GuiView.cpp:1683
 msgid "All Files (*)"
 msgstr "Todos los archivos (*)"
 
-#: src/frontends/qt4/GuiView.cpp:1714
+#: src/frontends/qt4/GuiView.cpp:1716
 msgid "Choose a filename to save document as"
 msgstr "Elegir un nombre de archivo para guardar el documento como"
 
-#: src/frontends/qt4/GuiView.cpp:1746 src/frontends/qt4/GuiView.cpp:1798
+#: src/frontends/qt4/GuiView.cpp:1748 src/frontends/qt4/GuiView.cpp:1800
 msgid "&Rename"
 msgstr "&Renombrar"
 
-#: src/frontends/qt4/GuiView.cpp:1794
+#: src/frontends/qt4/GuiView.cpp:1796
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -19143,15 +19151,15 @@ msgstr ""
 "\n"
 "¿Desea renombrar el documento y volverlo a intentar?"
 
-#: src/frontends/qt4/GuiView.cpp:1797
+#: src/frontends/qt4/GuiView.cpp:1799
 msgid "Rename and save?"
 msgstr "¿Renombrar y guardar?"
 
-#: src/frontends/qt4/GuiView.cpp:1798
+#: src/frontends/qt4/GuiView.cpp:1800
 msgid "&Retry"
 msgstr "&Reintentar"
 
-#: src/frontends/qt4/GuiView.cpp:1855
+#: src/frontends/qt4/GuiView.cpp:1857
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -19162,23 +19170,23 @@ msgstr ""
 "\n"
 "¿Desea guardar el documento o descartar los cambios?"
 
-#: src/frontends/qt4/GuiView.cpp:1858
+#: src/frontends/qt4/GuiView.cpp:1860
 msgid "&Discard"
 msgstr "&Descartar"
 
-#: src/frontends/qt4/GuiView.cpp:1931
+#: src/frontends/qt4/GuiView.cpp:1933
 msgid "Document not loaded"
 msgstr "Documento no cargado"
 
-#: src/frontends/qt4/GuiView.cpp:1989
+#: src/frontends/qt4/GuiView.cpp:1991
 msgid "Saving all documents..."
 msgstr "Guardando todos los documentos..."
 
-#: src/frontends/qt4/GuiView.cpp:1999
+#: src/frontends/qt4/GuiView.cpp:2001
 msgid "All documents saved."
 msgstr "Todos los documentos guardados."
 
-#: src/frontends/qt4/GuiView.cpp:2246
+#: src/frontends/qt4/GuiView.cpp:2248
 #, c-format
 msgid "%1$s unknown command!"
 msgstr "%1$s ¡comando desconocido!"
@@ -20288,7 +20296,7 @@ msgstr " cadenas han sido reemplazadas."
 msgid " Macro: %1$s: "
 msgstr " Macro: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1386
+#: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1393
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -20326,25 +20334,25 @@ msgstr "Ninguna vline para borrar"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Característica de tabla desconocida '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1182 src/mathed/InsetMathHull.cpp:1190
+#: src/mathed/InsetMathHull.cpp:1189 src/mathed/InsetMathHull.cpp:1197
 msgid "No number"
 msgstr "Ningún número"
 
-#: src/mathed/InsetMathHull.cpp:1182 src/mathed/InsetMathHull.cpp:1190
+#: src/mathed/InsetMathHull.cpp:1189 src/mathed/InsetMathHull.cpp:1197
 msgid "Number"
 msgstr "Número"
 
-#: src/mathed/InsetMathHull.cpp:1359
+#: src/mathed/InsetMathHull.cpp:1366
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "No se puede cambiar el número de filas en '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1369
+#: src/mathed/InsetMathHull.cpp:1376
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "No se puede cambiar el número de columnas en '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1379
+#: src/mathed/InsetMathHull.cpp:1386
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "No se pueden añadir líneas de cuadrícula horizontal en '%1$s'"
@@ -20558,6 +20566,12 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Usuario desconocido"
+
+#~ msgid "Toggle Labeling/Numbering|T"
+#~ msgstr "Conmutar  Etiquetado/Numeración|C"
+
+#~ msgid "Toggle Label|L"
+#~ msgstr "Conmutar etiqueta|e"
 
 #~ msgid "LyX binary not found"
 #~ msgstr "Binario LyX no encontrado"
