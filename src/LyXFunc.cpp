@@ -473,7 +473,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 	case LFUN_VC_LOCKING_TOGGLE:
 		enable = !buf->isReadonly() && buf->lyxvc().lockingToggleEnabled();
-		flag.setEnabled(enable);
 		if (enable)
 			flag.setOnOff(!buf->lyxvc().locker().empty());
 		break;
