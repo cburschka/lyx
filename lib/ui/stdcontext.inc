@@ -42,7 +42,7 @@ Menuset
 		Item "Displayed Formula|D" "math-mutate equation"
 		Item "Eqnarray Environment|E" "math-mutate eqnarray"
 		Submenu "AMS Environment|A" "ams_environment"
-		Separator		
+		Separator
 		OptItem "Number whole Formula|N" "math-number-toggle"
 		OptItem "Number this Line|u" "math-number-line-toggle"
 		OptItem "Equation Label|L" "label-insert"
@@ -130,7 +130,7 @@ Menuset
 	End
 
 	Menu "context-conglomerate"
-		Item "Toggle Label|L" "inset-toggle"
+		Item "Show Label|L" "inset-toggle"
 		Item "Dissolve Inset|D" "inset-dissolve charstyle"
 		Separator
 		OptItem "Settings...|S" "inset-settings"
