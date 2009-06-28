@@ -329,6 +329,7 @@ dist_images_DATA = \
 	images/dialog-show_mathmatrix.png \
 	images/dialog-show_print.png \
 	images/dialog-show_spellchecker.png \
+	images/dialog-show_vclog.png \
 	images/dialog-toggle_toc.png \
 	images/down.png \
 	images/ert-insert.png \
@@ -357,11 +358,6 @@ dist_images_DATA = \
 	images/layout_Section.png \
 	images/lyx-quit.png \
 	images/lyx.png \
-	images/vc-check-in.png \
-	images/vc-check-out.png \
-	images/dialog-show_vclog.png \
-	images/vc-register.png \
-	images/vc-revert.png \
 	images/marginalnote-insert.png \
 	images/master-buffer-update.png \
 	images/master-buffer-view.png \
@@ -425,7 +421,11 @@ dist_images_DATA = \
 	images/undo.png \
 	images/unknown.png \
 	images/up.png \
-	images/url-insert.png
+	images/url-insert.png \
+	images/vc-check-in.png \
+	images/vc-check-out.png \
+	images/vc-register.png \
+	images/vc-revert.png
 
 imagesmathdir = $(imagesdir)/math
 dist_imagesmath_DATA = \
