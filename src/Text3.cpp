@@ -306,6 +306,71 @@ enum OutlineOp {
 };
 
 
+static void dragMove(Cursor & cur, int moveId, int moveToId)
+{
+	// Create Pointers to Buffers
+	Buffer & buf_move = *cur.buffer();
+	DocIterator dit_move = buf_move.getParFromID(moveId);
+	DocIterator dit_dest = buf_move.getParFromID(moveToId);
+
+	pit_type & pit_move = dit_move.pit();
+	pit_type & pit_dest = dit_dest.pit();
+	ParagraphList & pars = dit_move.text()->paragraphs();
+
+	// Create References to the Paragraphs to Be Moved
+	ParagraphList::iterator const bgn = pars.begin();
+	ParagraphList::iterator dest_start = boost::next(bgn, pit_dest);
+
+	// The first paragraph of the area to be copied:
+	ParagraphList::iterator start = boost::next(bgn, pit_move);
+	// The final paragraph of area to be copied:
+	ParagraphList::iterator finish = start;
+	ParagraphList::iterator const end = pars.end();
+
+	DocumentClass const & tc = buf_move.params().documentClass();
+
+	int const thistoclevel = start->layout().toclevel;
+	int toclevel;
+
+	// Move out (down) from this section header
+	if (finish != end)
+		++finish;
+	// Seek the one (on same level) below
+	for (; finish != end; ++finish) {
+		toclevel = finish->layout().toclevel;
+		if (toclevel != Layout::NOT_IN_TOC
+		    && toclevel <= thistoclevel)
+			break;
+	}
+
+	// Do we need to set insets' buffer_ members, because we copied
+	// some stuff? We'll assume we do and reset it otherwise.
+	bool set_buffers = true;
+
+	if (start == pars.begin())
+		// Nothing to Move
+		return;
+	if (start == dest_start)
+		// Nothing to Move
+		return;
+
+	pit_type const len = distance(start, finish);
+	pars.insert(dest_start, start, finish);
+	pars.erase(start,finish);
+
+	if (set_buffers)
+		// FIXME: This only really needs doing for the newly
+		// introduced paragraphs. Something like:
+		// 	pit_type const numpars = distance(start, finish);
+		// 	start = boost::next(bgn, pit);
+		// 	finish = boost::next(start, numpars);
+		// 	for (; start != finish; ++start)
+		// 		start->setBuffer(buf);
+		// But while this seems to work, it is kind of fragile.
+		buf_move.inset().setBuffer(buf_move);
+}
+
+
 static void outline(OutlineOp mode, Cursor & cur)
 {
 	Buffer & buf = *cur.buffer();
@@ -2023,6 +2088,16 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		cur.buffer()->updateLabels();
 		needsUpdate = true;
 		break;
+	
+	case LFUN_OUTLINE_DRAGMOVE: {
+		int const move_id = convert<int>(cmd.getArg(0));
+		int const move_to_id = convert<int>(cmd.getArg(1));
+		dragMove(cur, move_id, move_to_id);
+		setCursor(cur, cur.pit(), 0);
+		cur.buffer()->updateLabels();
+		needsUpdate = true;
+		break;
+	}
 
 	default:
 		LYXERR(Debug::ACTION, "Command " << cmd << " not DISPATCHED by Text");
@@ -2411,6 +2486,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_OUTLINE_DOWN:
 	case LFUN_OUTLINE_IN:
 	case LFUN_OUTLINE_OUT:
+	case LFUN_OUTLINE_DRAGMOVE:
 		// FIXME: LyX is not ready for outlining within inset.
 		enable = isMainText(cur.bv().buffer())
 			&& cur.paragraph().layout().toclevel != Layout::NOT_IN_TOC;
