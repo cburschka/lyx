@@ -1,4 +1,4 @@
-#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -49,7 +49,7 @@ theorems-ams
 \begin_body
 
 \begin_layout Section*
-LFUNs documentation automatically generated 23.05.2009.
+LFUNs documentation automatically generated 28.06.2009.
 \end_layout
 
 \begin_layout Standard
@@ -1883,6 +1883,78 @@ Syntax buffer-end-select
 \end_layout
 
 \begin_layout Subsection*
+LFUN_INSET_BEGIN 
+\end_layout
+
+\begin_layout Description
+Action Move the cursor to the beginning of the current inset if it is not
+ already there, or at the beginning of the enclosing inset otherwise  
+\end_layout
+
+\begin_layout Description
+Syntax inset-begin 
+\end_layout
+
+\begin_layout Description
+Origin JMarc, 2009/03/16 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_INSET_BEGIN_SELECT 
+\end_layout
+
+\begin_layout Description
+Action Move the cursor to the beginning of the current inset if it is not
+ already there, or at the beginning of the enclosing inset otherwise (adding
+ the traversed text to the selection).
+  
+\end_layout
+
+\begin_layout Description
+Syntax inset-begin-select 
+\end_layout
+
+\begin_layout Description
+Origin JMarc, 2009/03/16 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_INSET_END 
+\end_layout
+
+\begin_layout Description
+Action Move the cursor to the end of the current inset if it is not already
+ there, or at the end of the enclosing inset otherwise  
+\end_layout
+
+\begin_layout Description
+Syntax inset-end 
+\end_layout
+
+\begin_layout Description
+Origin JMarc, 2009/03/16 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_INSET_END_SELECT 
+\end_layout
+
+\begin_layout Description
+Action Move the cursor to the end of the current inset if it is not already
+ there, or at the end of the enclosing inset otherwise (adding the traversed
+ text to the selection).
+  
+\end_layout
+
+\begin_layout Description
+Syntax inset-end-select 
+\end_layout
+
+\begin_layout Description
+Origin JMarc, 2009/03/16 
+\end_layout
+
+\begin_layout Subsection*
 LFUN_LINE_BEGIN 
 \end_layout
 
@@ -2800,6 +2872,18 @@ Syntax math-insert <ARG>
 
 \begin_layout Description
 Params <ARG>: Symbol or LaTeX code to be inserted.
+  
+\end_layout
+
+\begin_layout Description
+Notion When <ARG> is a _single_ math inset with more than one cell (such
+ as "x_y^z" or "frac{x}{y}"), the content of cell(0) is replaced by the
+ current selection (only works if the selection is in mathed).
+ As an example, if "abc" is selected in mathed, "math-insert frac{x}{y}"
+ replaces "abc" with "frac{abc}{y}", and "math-insert x_y^z" replaces "abc"
+ with "abc_y^z".
+ If nothing is selected (or the selection is not in mathed), math-insert
+ works as expected.
   
 \end_layout
 
@@ -4121,6 +4205,28 @@ Sample vc-command DR $$p "svn up"
 
 \begin_layout Description
 Origin sanda, 13 Jan 2009 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_VC_LOCKING_TOGGLE 
+\end_layout
+
+\begin_layout Description
+Action Toggles the locking property of the edited file.
+  
+\end_layout
+
+\begin_layout Description
+Notion This is currently implemented only for SVN.
+  
+\end_layout
+
+\begin_layout Description
+Syntax vc-locking-toggle 
+\end_layout
+
+\begin_layout Description
+Origin sanda, 25 Jun 2009 
 \end_layout
 
 \begin_layout Subsection*
