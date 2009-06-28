@@ -1048,6 +1048,14 @@ contributers = [
                  "",
                  u"config. handling enhancements, bugfixes, printer enhancements path mingling"),
 
+     contributer(u"Rob Oakes",
+                 "lyx-devel () oak-tree ! us>",
+                 "GPL",
+                 "Outline Contributions",
+                 "m=124615188102843",
+                 "27 June 2009",
+                 u"Improvements to the outliner."),
+
      contributer(u"Carl Ollivier-Gooch",
                  "cfog () mech ! ubc ! ca",
                  "GPL",
