@@ -49,7 +49,7 @@ theorems-ams
 \begin_body
 
 \begin_layout Section*
-LFUNs documentation automatically generated 2009-06-12
+LFUNs documentation automatically generated 2009-06-28
 \end_layout
 
 \begin_layout Standard
@@ -2169,6 +2169,15 @@ LFUN_MATH_INSERT
 Action Inserts math objects and symbols.
 \end_layout
 \begin_layout Description
+Notion When <ARG> is a _single_ math inset with more than one cell (such as "x_y^z" or "
+\backslash
+frac{x}{y}"), the content of cell(0) is replaced by the current selection (only works if the selection is in mathed). As an example, if "abc" is selected in mathed, "math-insert 
+\backslash
+frac{x}{y}" replaces "abc" with "
+\backslash
+frac{abc}{y}", and "math-insert x_y^z" replaces "abc" with "abc_y^z". If nothing is selected (or the selection is not in mathed), math-insert works as expected.
+\end_layout
+\begin_layout Description
 Syntax math-insert <ARG>
 \end_layout
 \begin_layout Description
@@ -2924,6 +2933,29 @@ Origin Vermeer, 23 Mar 2006
 \end_layout
 
 \begin_layout Subsection*
+LFUN_OUTLINE_DRAGMOVE
+\end_layout
+\begin_layout Description
+Action Moves the document section associated with the specified heading to a specified location. Both the heading and the target paragraph are specified by the paragraph ID numbers.
+\end_layout
+\begin_layout Description
+Notion The heading is a paragraph with style Part/Chapter/Section/ etc. Id number of the paragraph is not the sequential number seen on the screen, but an internal number that is unique for all opened buffers (documents).
+\end_layout
+\begin_layout Description
+Syntax outline-dragmove <PAR_ID_SECTION> <PAR_ID_DROP_POSITION>
+\end_layout
+\begin_layout Description
+Params <PAR_ID_SECTION>: paragraph id of the section heading which is to be moved.
+\begin_inset Newline newline
+\end_inset
+
+<PAR_ID_DROP_POSITION>: the paragraph id where the section will be moved to.
+\end_layout
+\begin_layout Description
+Origin Rob Oakes, 22 June 2009
+\end_layout
+
+\begin_layout Subsection*
 LFUN_INSET_EDIT
 \end_layout
 \begin_layout Description
@@ -3144,6 +3176,22 @@ Sample vc-command DR $$p "svn up"
 \end_layout
 \begin_layout Description
 Origin sanda, 13 Jan 2009
+\end_layout
+
+\begin_layout Subsection*
+LFUN_VC_LOCKING_TOGGLE
+\end_layout
+\begin_layout Description
+Action Toggles the locking property of the edited file.
+\end_layout
+\begin_layout Description
+Notion This is currently implemented only for SVN.
+\end_layout
+\begin_layout Description
+Syntax vc-locking-toggle
+\end_layout
+\begin_layout Description
+Origin sanda, 25 Jun 2009
 \end_layout
 
 \begin_layout Subsection*
