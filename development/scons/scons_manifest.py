@@ -1389,6 +1389,7 @@ lib_images_files = Split('''
     dialog-show_mathmatrix.png
     dialog-show_print.png
     dialog-show_spellchecker.png
+    dialog-show_vclog.png
     dialog-toggle_toc.png
     down.png
     ert-insert.png
@@ -1417,11 +1418,6 @@ lib_images_files = Split('''
     layout_Section.png
     lyx-quit.png
     lyx.png
-    vc-check-in.png
-    vc-check-out.png
-    dialog-show_vclog.png
-    vc-register.png
-    vc-revert.png
     marginalnote-insert.png
     math-display.png
     math-macro-add-greedy-optional-param.png
@@ -1484,6 +1480,11 @@ lib_images_files = Split('''
     unknown.png
     up.png
     url-insert.png
+    vc-check-in.png
+    vc-check-out.png
+    vc-locking-toggle.png
+    vc-register.png
+    vc-revert.png
 ''')
 
 
