@@ -10378,19 +10378,16 @@ msgid "Delete Line to Right"
 msgstr "Smazat linku napravo"
 
 #: lib/ui/stdcontext.inc:64
-#, fuzzy
 msgid "Show Math Toolbar"
-msgstr "Pøepnout matematický panel nástrojù"
+msgstr "Zobrazit matematický panel nástrojù"
 
 #: lib/ui/stdcontext.inc:65
-#, fuzzy
 msgid "Show Math-Panels Toolbar"
-msgstr "Pøepnout matematický panel nástrojù"
+msgstr "Zobrazit matematický panel nástrojù"
 
 #: lib/ui/stdcontext.inc:66
-#, fuzzy
 msgid "Show Table Toolbar"
-msgstr "Pøepnout panel nástrojù pro tabulku"
+msgstr "Zobrazit panel nástrojù pro tabulku"
 
 #: lib/ui/stdcontext.inc:74 lib/ui/stdcontext.inc:91
 msgid "Next Cross-Reference|N"
@@ -10463,7 +10460,6 @@ msgid "Dissolve Inset|D"
 msgstr "Rozpustit vlo¾ku do textu|u"
 
 #: lib/ui/stdcontext.inc:132
-#, fuzzy
 msgid "Show Label|L"
 msgstr "Jdi na znaèku|J"
 
@@ -10854,7 +10850,7 @@ msgstr "Zavøít okno|a"
 
 #: lib/ui/stdmenus.inc:69
 msgid "Use Locking Property|L"
-msgstr ""
+msgstr "Pou¾ívat zamykání souborù|z"
 
 #: lib/ui/stdmenus.inc:87
 msgid "Redo|R"
@@ -11707,7 +11703,7 @@ msgstr "Návrat k poslední verzi v repozitáøi"
 
 #: lib/ui/stdtoolbars.inc:221
 msgid "Use SVN File Locking Property"
-msgstr ""
+msgstr "Pou¾ívat zamykání souborù pod správou SVN"
 
 #: lib/ui/stdtoolbars.inc:224
 msgid "Math Panels"
@@ -15949,7 +15945,7 @@ msgstr "Chyba správy verzí."
 
 #: src/LyXFunc.cpp:1132
 msgid "Error when setting the locking property."
-msgstr ""
+msgstr "Chyba pøi nastavování zamykacího módu."
 
 #: src/LyXFunc.cpp:1352
 #, c-format
@@ -16857,23 +16853,23 @@ msgstr ""
 
 #: src/VCBackend.cpp:706
 msgid "VCN File Locking"
-msgstr ""
+msgstr "Zamykání souboru"
 
 #: src/VCBackend.cpp:707
 msgid "Locking property unset."
-msgstr ""
+msgstr "Vypnutí zamykacího módu."
 
 #: src/VCBackend.cpp:707
 msgid "Locking property set."
-msgstr ""
+msgstr "Zapnutí zamykacího módu."
 
 #: src/VCBackend.cpp:708
 msgid "Do not forget to commit the locking property into the repository."
-msgstr ""
+msgstr "Nezapomeòte nyní ulo¾it zmìnu módu do repositáøe."
 
 #: src/VCBackend.cpp:711
 msgid "SVN: Locking property set."
-msgstr ""
+msgstr "SVN: Zapnutí zamykacího módu."
 
 #: src/VSpace.cpp:472
 msgid "Default skip"
