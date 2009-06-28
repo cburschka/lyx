@@ -708,7 +708,7 @@ string SVN::lockingToggle()
 		+ _("Do not forget to commit the locking property into the repository."),
 		true);
 
-	return N_("SVN: Locking property set.");
+	return string("SVN: ") +  N_("Locking property set.");
 }
 
 
