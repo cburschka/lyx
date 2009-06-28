@@ -424,6 +424,7 @@ dist_images_DATA = \
 	images/url-insert.png \
 	images/vc-check-in.png \
 	images/vc-check-out.png \
+	images/vc-locking-toggle.png \
 	images/vc-register.png \
 	images/vc-revert.png
 
