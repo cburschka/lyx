@@ -51,7 +51,7 @@ ErrorItem errorTags[] = {
 	{ Debug::LYXSERVER, "lyxserver", N_("External control interface")},
 	{ Debug::UNDO,      "undo",      N_("Undo/Redo mechanism")},
 	{ Debug::ACTION,    "action",    N_("User commands")},
-	{ Debug::LYXLEX,    "lyxlex",    N_("The LyX Lexxer")},
+	{ Debug::LYXLEX,    "lyxlex",    N_("The LyX Lexer")},
 	{ Debug::DEPEND,    "depend",    N_("Dependency information")},
 	{ Debug::INSETS,    "insets",    N_("LyX Insets")},
 	{ Debug::FILES,     "files",     N_("Files used by LyX")},
