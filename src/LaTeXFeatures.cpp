@@ -399,7 +399,7 @@ bool LaTeXFeatures::isAvailable(string const & name)
 	if (i != string::npos) {
 		string const from = name.substr(0,i);
 		string const to = name.substr(i+2);
-		LYXERR0("from=[" << from << "] to=[" << to << "]");
+		//LYXERR0("from=[" << from << "] to=[" << to << "]");
 		return theConverters().isReachable(from, to);
 	}
 
