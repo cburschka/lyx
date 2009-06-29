@@ -12,6 +12,18 @@
 # The interface is designed (partially) following the KDE Human Interface
 # Guidelines (http://usability.kde.org/hig/)
 
+# Casing rules "The tooltip":
+# Capitalize the first letter of the first word, and any other words normally
+# capitalized in sentences, such as application names.
+#
+# Casing Rules for the "GUI Name":
+# Capitalize all words in the element, with the following exceptions: 
+# * Articles: a, an, the. 
+# * Conjunctions: and, but, for, not, so, yet ...  
+# * Prepositions of three or fewer letters: at, for, by, in, to ...
+#
+# (http://library.gnome.org/devel/hig-book/stable/design-text-labels.html.en)
+
 # A Toolbar starts like :
 #
 # Toolbar "name" "GUI Name"
@@ -32,11 +44,11 @@
 #
 #   TableInsert "The tooltip" adds a special widget for quick insertion of tables
 #
-#   PopupMenu "name" "GUI Name"
+#   PopupMenu "name" "The tooltip"
 #
 #   ... inserts a button with a popup menu derived from Toolbar "name"
 #
-#   IconPalette "name" "GUI Name"
+#   IconPalette "name" "The tooltip"
 #
 #   ... inserts a button with a popup iconpalette derived from Toolbar "name"
 #
@@ -77,11 +89,11 @@ ToolbarSet
 		Item "Insert graphics" "dialog-show-new-inset graphics"
 		TableInsert "Insert table"
 		Separator
-		Item "Toggle Outline" "dialog-toggle toc"
-		Item "Toggle Math Toolbar" "toolbar-toggle math"
-		Item "Toggle Table Toolbar" "toolbar-toggle table"
+		Item "Toggle outline" "dialog-toggle toc"
+		Item "Toggle math toolbar" "toolbar-toggle math"
+		Item "Toggle table toolbar" "toolbar-toggle table"
 	End
-	
+
 	Toolbar "extra" "Extra"
 		Item "Default" "layout"
 		Item "Numbered list" "layout Enumerate"
@@ -103,7 +115,7 @@ ToolbarSet
 		Item "Insert margin note" "marginalnote-insert"
 		Item "Insert note" "note-insert"
 		Item "Insert box" "box-insert Frameless"
-		Item "Insert Hyperlink" "href-insert"
+		Item "Insert hyperlink" "href-insert"
 		Item "Insert TeX code" "ert-insert"
 		Item "Insert math macro" "math-macro newmacroname newcommand"
 		Item "Include file" "dialog-show-new-inset include"
@@ -164,24 +176,24 @@ ToolbarSet
 		Item "Delete row" "tabular-feature delete-row"
 		Item "Delete column" "tabular-feature delete-column"
 		Separator
-		Item "Toggle Math Panels" "toolbar-toggle math_panels"
+		Item "Toggle math panels" "toolbar-toggle math_panels"
 	End
 
 	Toolbar "mathmacrotemplate" "Math Macros"
-		Item "Remove Last Argument" "math-macro-remove-param"
-		Item "Append Argument" "math-macro-add-param"
-                Separator
-		Item "Make First Non-Optional into Optional Argument" "math-macro-make-optional"
-		Item "Make Last Optional into Non-Optional Argument"
-		"math-macro-make-nonoptional"
-                Item "Remove Optional Argument" "math-macro-remove-optional-param"
-                Item "Insert Optional Argument" "math-macro-add-optional-param"
+		Item "Remove last argument" "math-macro-remove-param"
+		Item "Append argument" "math-macro-add-param"
 		Separator
-		Item "Remove Last Argument Spitting Out To The Right" "math-macro-remove-greedy-param"
-		Item "Append Argument Eating From The Right" "math-macro-append-greedy-param"
-                Item "Append Optional Argument Eating From The Right" "math-macro-add-greedy-optional-param"
+		Item "Make first non-optional into optional argument" "math-macro-make-optional"
+		Item "Make last optional into non-optional argument"
+		"math-macro-make-nonoptional"
+		Item "Remove optional argument" "math-macro-remove-optional-param"
+		Item "Insert optional argument" "math-macro-add-optional-param"
+		Separator
+		Item "Remove last argument spitting out to the right" "math-macro-remove-greedy-param"
+		Item "Append argument eating from the right" "math-macro-append-greedy-param"
+		Item "Append optional argument eating from the right" "math-macro-add-greedy-optional-param"
 	End
-	
+
 	Toolbar "minibuffer" "Command Buffer"
 		Minibuffer
 	End
@@ -205,11 +217,11 @@ ToolbarSet
 	Toolbar "view/update" "View/Update"
 		Item "View" "buffer-view"
 		Item "Update" "buffer-update"
-		Item "View Master Document" "master-buffer-view"
-		Item "Update Master Document" "master-buffer-update"
+		Item "View master document" "master-buffer-view"
+		Item "Update master document" "master-buffer-update"
 		Separator
-		StickyPopupMenu "view-others" "View Other Formats"
-		StickyPopupMenu "update-others" "Update Other Formats"
+		StickyPopupMenu "view-others" "View other formats"
+		StickyPopupMenu "update-others" "Update other formats"
 	End
 	
 	Toolbar "view-others" "View Other Formats"
@@ -224,8 +236,8 @@ ToolbarSet
 #	Toolbar "import/export" "Import/Export"
 #		Item "Import" "buffer-import"
 #		Item "Export" "buffer-export"
-#		StickyPopupMenu "import-others" "Import Other Formats"
-#		StickyPopupMenu "export-others" "Export Other Formats"
+#		StickyPopupMenu "import-others" "Import other formats"
+#		StickyPopupMenu "export-others" "Export other formats"
 #	End
 
 #	Toolbar "import-others" "Import Other Formats"
@@ -243,28 +255,28 @@ ToolbarSet
 		Item "View revision log" "dialog-show vclog"
 		Item "Revert changes" "vc-revert"
 		Separator
-		Item "Use SVN File Locking Property" "vc-locking-toggle"
+		Item "Use SVN file locking property" "vc-locking-toggle"
 	End
 
 	Toolbar "math_panels" "Math Panels"
-		PopupMenu "space" "Math Spacings"
+		PopupMenu "space" "Math spacings"
 		PopupMenu "style" "Styles"
 		PopupMenu "frac-square" "Fractions"
 		PopupMenu "font" "Fonts"
 		PopupMenu "functions" "Functions"
-		IconPalette "latex_deco" "Frame Decorations"
-		IconPalette "latex_varsz" "Big Operators"
+		IconPalette "latex_deco" "Frame decorations"
+		IconPalette "latex_varsz" "Big operators"
 		IconPalette "latex_misc" "Miscellaneous"
 		IconPalette "latex_greek" "Greek"
 		IconPalette "latex_arrow" "Arrows"
-		IconPalette "latex_ams_arrows" "AMS Arrows"
+		IconPalette "latex_ams_arrows" "AMS arrows"
 		IconPalette "latex_bop" "Operators"
 		IconPalette "latex_brel" "Relations"
-		IconPalette "latex_ams_rel" "AMS Relations"
-		IconPalette "latex_ams_nrel" "AMS Negative Relations"
+		IconPalette "latex_ams_rel" "AMS relations"
+		IconPalette "latex_ams_nrel" "AMS negative relations"
 		IconPalette "latex_dots" "Dots"
-		IconPalette "latex_ams_ops" "AMS Operators"
-		IconPalette "latex_ams_misc" "AMS Miscellaneous"
+		IconPalette "latex_ams_ops" "AMS operators"
+		IconPalette "latex_ams_misc" "AMS miscellaneous"
 	End
 
 	Toolbar "functions" "Functions"
@@ -314,7 +326,7 @@ ToolbarSet
 		Item "Horizontal placeholder	\\hphantom" "math-insert \hphantom"
 		Item "Vertical placeholder	\\vphantom" "math-insert \vphantom"
 	End
-	
+
 	Toolbar "sqrt-square" "Roots"
 		Item "Square root	\\sqrt" "math-insert \sqrt"
 		Item "Other root	\\root" "math-insert \root"
@@ -326,7 +338,7 @@ ToolbarSet
 		Item "Script (small) style	\\scriptstyle" "math-size \scriptstyle"
 		Item "Scriptscript (smaller) style	\\scriptscriptstyle" "math-size \scriptscriptstyle"
 	End
-	
+
 	Toolbar "frac-square" "Fractions"
 		Item "Standard	\\frac" "math-insert \frac"
 		Item "Nice fraction (3/4)	\\nicefrac" "math-insert \nicefrac"
@@ -343,7 +355,7 @@ ToolbarSet
 		Item "Text binomial	\\tbinom" "math-insert \tbinom"
 		Item "Display binomial	\\dbinom" "math-insert \dbinom"
 	End
-	
+
 	Toolbar "font" "Fonts"
 		Item "Roman	\\mathrm" "math-insert \mathrm"
 		Item "Bold	\\mathbf" "math-insert \mathbf"
@@ -365,7 +377,7 @@ ToolbarSet
 # Do not show it as long as it does not load mathdots automatically
 #		Item "iddots" "math-insert \iddots"
 	End
-	
+
 	Toolbar "latex_deco" "Frame Decorations"
 		Item "hat" "math-insert \hat"
 		Item "tilde" "math-insert \tilde"
@@ -394,7 +406,7 @@ ToolbarSet
 		Item "underleftrightarrow" "math-insert \underleftrightarrow"
 		Item "underset" "math-insert \underset"
 	End
-	
+
 	Toolbar "latex_arrow" "Arrows"
 		Item "leftarrow" "math-insert \leftarrow"
 		Item "rightarrow" "math-insert \rightarrow"
@@ -428,7 +440,7 @@ ToolbarSet
 		Item "searrow" "math-insert \searrow"
 		Item "rightleftharpoons" "math-insert \rightleftharpoons"
 	End
-	
+
 	Toolbar "latex_bop" "Operators"
 		Item "pm" "math-insert \pm"
 		Item "cap" "math-insert \cap"
@@ -462,7 +474,7 @@ ToolbarSet
 		Item "wr" "math-insert \wr"
 		Item "ddagger" "math-insert \ddagger"
 	End
-	
+
 	Toolbar "latex_brel" "Relations"
 		Item "leq" "math-insert \leq"
 		Item "geq" "math-insert \geq"
@@ -500,7 +512,7 @@ ToolbarSet
 		Item "dashv" "math-insert \dashv"
 		Item "bowtie" "math-insert \bowtie"
 	End
-	
+
 	Toolbar "latex_greek" "Greek"
 		Item "alpha" "math-insert \alpha"
 		Item "beta" "math-insert \beta"
@@ -543,7 +555,7 @@ ToolbarSet
 		Item "Psi" "math-insert \Psi"
 		Item "Omega" "math-insert \Omega"
 	End
-	
+
 	Toolbar "latex_misc" "Miscellaneous"
 		Item "nabla" "math-insert \nabla"
 		Item "partial" "math-insert \partial"
@@ -590,7 +602,7 @@ ToolbarSet
 		Item "mathcal H" "math-insert \mathcal H"
 		Item "mathcal O" "math-insert \mathcal O"
 	End
-	
+
 	Toolbar "latex_varsz" "Big Operators"
 		Item "intop" "math-insert \intop"
 		Item "int" "math-insert \int"
@@ -633,7 +645,7 @@ ToolbarSet
 		Item "bigvee" "math-insert \bigvee"
 		Item "bigwedge" "math-insert \bigwedge"
 	End
-	
+
 	Toolbar "latex_ams_misc" "AMS Miscellaneous"
 		Item "digamma" "math-insert \digamma"
 		Item "varkappa" "math-insert \varkappa"
@@ -671,7 +683,7 @@ ToolbarSet
 		Item "diagup" "math-insert \diagup"
 		Item "diagdown" "math-insert \diagdown"
 	End
-	
+
 	Toolbar "latex_ams_arrows" "AMS Arrows"
 		Item "dashleftarrow" "math-insert \dashleftarrow"
 		Item "dashrightarrow" "math-insert \dashrightarrow"
@@ -711,7 +723,7 @@ ToolbarSet
 		Item "nLeftrightarrow" "math-insert \nLeftrightarrow"
 		Item "multimap" "math-insert \multimap"
 	End
-	
+
 	Toolbar "latex_ams_rel" "AMS Relations"
 		Item "leqq" "math-insert \leqq"
 		Item "geqq" "math-insert \geqq"
@@ -780,7 +792,7 @@ ToolbarSet
 		Item "between" "math-insert \between"
 		Item "pitchfork" "math-insert \pitchfork"
 	End
-	
+
 	Toolbar "latex_ams_nrel" "AMS Negative Relations"
 		Item "nless" "math-insert \nless"
 		Item "ngtr" "math-insert \ngtr"
@@ -833,7 +845,7 @@ ToolbarSet
 		Item "nparallel" "math-insert \nparallel"
 		Item "nshortparallel" "math-insert \nshortparallel"
 	End
-	
+
 	Toolbar "latex_ams_ops" "AMS Operators"
 		Item "dotplus" "math-insert \dotplus"
 		Item "smallsetminus" "math-insert \smallsetminus"
