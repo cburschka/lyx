@@ -119,6 +119,9 @@ What's new
 - Fix assertion when pressing down arrow in the command buffer while
   the history is empty (bug 6001).
 
+- Fix assertion when selecting with Shift-button in math editor (bug
+  6026).
+
 - Make Tools>Statistics ignore Note insets and inactive branches
   (bug 2566).
 

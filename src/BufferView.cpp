@@ -1957,6 +1957,7 @@ bool BufferView::mouseSetCursor(Cursor & cur, bool select)
 	if (!do_selection && !badcursor && d->cursor_.inTexted())
 		update |= checkDepm(cur, d->cursor_);
 
+	d->cursor_.resetAnchor();
 	d->cursor_.setCursor(cur);
 	d->cursor_.boundary(cur.boundary());
 	if (do_selection)
