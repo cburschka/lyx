@@ -11,6 +11,13 @@
 # The interface is designed (partially) following the KDE Human Interface
 # Guidelines (http://usability.kde.org/hig/)
 
+# Casing Rules:
+# Capitalize all words in the element, with the following exceptions: 
+# * Articles: a, an, the. 
+# * Conjunctions: and, but, for, not, so, yet ...  
+# * Prepositions of three or fewer letters: at, for, by, in, to ...
+# (http://library.gnome.org/devel/hig-book/stable/design-text-labels.html.en)
+
 Menuset
 
 #
@@ -36,7 +43,7 @@ Menuset
 		Item "AMS gather Environment|g" "math-mutate gather"
 		Item "AMS multline Environment|m" "math-mutate multline"
 	End
-	
+
 	Menu "context-math"
 		Item "Inline Formula|I" "math-mutate simple"
 		Item "Displayed Formula|D" "math-mutate equation"
@@ -44,8 +51,8 @@ Menuset
 		Submenu "AMS Environment|A" "ams_environment"
 		Separator
 		OptItem "Equation Label|L" "label-insert"
-		OptItem "Number whole Formula|N" "math-number-toggle"
-		OptItem "Number this Line|u" "math-number-line-toggle"
+		OptItem "Number Whole Formula|N" "math-number-toggle"
+		OptItem "Number This Line|u" "math-number-line-toggle"
 		Separator
 		Item "Split Cell|C" "cell-split"
 		Separator
@@ -74,12 +81,12 @@ Menuset
 		Item "Next Cross-Reference|N" "reference-next"
 		Item "Go to Label|G" "label-goto"
 		Separator
-		Item "<reference>|r" "next-inset-modify changetype ref"
-		Item "(<reference>)|e" "next-inset-modify changetype eqref"
-		Item "<page>|p" "next-inset-modify changetype pageref"
-		Item "on page <page>|o" "next-inset-modify changetype vpageref"
-		Item "<reference> on page <page>|f" "next-inset-modify changetype vref"
-		Item "Formatted reference|t" "next-inset-modify changetype prettyref"
+		Item "<Reference>|R" "next-inset-modify changetype ref"
+		Item "(<Reference>)|E" "next-inset-modify changetype eqref"
+		Item "<Page>|P" "next-inset-modify changetype pageref"
+		Item "On Page <Page>|o" "next-inset-modify changetype vpageref"
+		Item "<Reference> on Page <Page>|f" "next-inset-modify changetype vref"
+		Item "Formatted Reference|t" "next-inset-modify changetype prettyref"
 		Separator
 		Item "Settings...|S" "next-inset-toggle"
 	End
@@ -89,7 +96,7 @@ Menuset
 #
 	Menu "context-label"
 		Item "Next Cross-Reference|N" "reference-next"
-		Item "Go back|G" "bookmark-goto 0"
+		Item "Go Back|G" "bookmark-goto 0"
 		Separator
 		Item "Copy as Reference|C" "copy-label-as-reference"
 		Separator
@@ -113,7 +120,7 @@ Menuset
 	Menu "context-bibtex"
 		Item "Settings...|S" "next-inset-toggle"
 		Separator
-		Item "Edit Database(s) externally...|x" "inset-edit"
+		Item "Edit Database(s) Externally...|x" "inset-edit"
 	End
 
 
@@ -141,13 +148,13 @@ Menuset
 
 	Menu "context-box"
 		Item "Frameless|l" "next-inset-modify changetype Frameless"
-		Item "Simple frame|f" "next-inset-modify changetype Boxed"
-		Item "Simple frame, page breaks|p" "next-inset-modify changetype Framed"
-		Item "Oval, thin|a" "next-inset-modify changetype ovalbox"
-		Item "Oval, thick|v" "next-inset-modify changetype Ovalbox"
+		Item "Simple Frame|F" "next-inset-modify changetype Boxed"
+		Item "Simple Frame, Page Breaks|P" "next-inset-modify changetype Framed"
+		Item "Oval, Thin|a" "next-inset-modify changetype ovalbox"
+		Item "Oval, Thick|v" "next-inset-modify changetype Ovalbox"
 		Item "Drop Shadow|w" "next-inset-modify changetype Shadowbox"
-		Item "Shaded background|b" "next-inset-modify changetype Shaded"
-		Item "Double frame|u" "next-inset-modify changetype Doublebox"
+		Item "Shaded Background|B" "next-inset-modify changetype Shaded"
+		Item "Double Frame|u" "next-inset-modify changetype Doublebox"
 		Separator
 		OptItem "Open Inset|O" "next-inset-toggle open"
 		OptItem "Close Inset|C" "next-inset-toggle close"
@@ -244,7 +251,7 @@ Menuset
 		Separator
 		Item "Settings...|S" "next-inset-toggle"
 		Separator
-		Item "Edit included file...|E" "inset-edit"
+		Item "Edit Included File...|E" "inset-edit"
 	End
 
 #
@@ -281,8 +288,8 @@ Menuset
 		Separator
 		OptItem "Promote Section|r" "outline-out"
 		OptItem "Demote Section|m" "outline-in"
-		OptItem "Move Section down|d" "outline-down"
-		OptItem "Move Section up|u" "outline-up"
+		OptItem "Move Section Down|D" "outline-down"
+		OptItem "Move Section Up|U" "outline-up"
 		OptItem "Insert Short Title|T" "optional-insert"
 		Separator
 		Item "Apply Last Text Style|A" "textstyle-apply"
@@ -299,15 +306,15 @@ Menuset
 	Menu "context-math-macro-definition"
 		Item "Append Argument" "math-macro-add-param"
 		Item "Remove Last Argument" "math-macro-remove-param"
-                Separator
-		Item "Make First Non-Optional into Optional Argument" "math-macro-make-optional"
-		Item "Make Last Optional into Non-Optional Argument" "math-macro-make-nonoptional"
-                Item "Insert Optional Argument" "math-macro-add-optional-param"
-                Item "Remove Optional Argument" "math-macro-remove-optional-param"
 		Separator
-		Item "Append Argument Eating From The Right" "math-macro-append-greedy-param"
-                Item "Append Optional Argument Eating From The Right" "math-macro-add-greedy-optional-param"
-		Item "Remove Last Argument Spitting Out To The Right" "math-macro-remove-greedy-param"
+		Item "Make First Non-Optional Into Optional Argument" "math-macro-make-optional"
+		Item "Make Last Optional Into Non-Optional Argument" "math-macro-make-nonoptional"
+		Item "Insert Optional Argument" "math-macro-add-optional-param"
+		Item "Remove Optional Argument" "math-macro-remove-optional-param"
+		Separator
+		Item "Append Argument Eating From the Right" "math-macro-append-greedy-param"
+		Item "Append Optional Argument Eating From the Right" "math-macro-add-greedy-optional-param"
+		Item "Remove Last Argument Spitting out to the Right" "math-macro-remove-greedy-param"
 	End
 
 #
@@ -334,7 +341,7 @@ Menuset
 	Menu "context-graphics"
 		Item "Settings...|S" "next-inset-toggle"
 		Separator
-		Item "Edit externally...|x" "inset-edit"
+		Item "Edit Externally...|x" "inset-edit"
 		Separator
 		GraphicsGroups
 	End
@@ -346,7 +353,7 @@ Menuset
 	Menu "context-external"
 		Item "Settings...|S" "next-inset-toggle"
 		Separator
-		Item "Edit externally...|x" "inset-edit"
+		Item "Edit Externally...|x" "inset-edit"
 	End
 
 #

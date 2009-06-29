@@ -13,6 +13,13 @@
 # The interface is designed (partially) following the KDE Human Interface
 # Guidelines (http://usability.kde.org/hig/)
 
+# Casing Rules:
+# Capitalize all words in the element, with the following exceptions: 
+# * Articles: a, an, the. 
+# * Conjunctions: and, but, for, not, so, yet ...  
+# * Prepositions of three or fewer letters: at, for, by, in, to ...
+# (http://library.gnome.org/devel/hig-book/stable/design-text-labels.html.en)
+
 Menuset
 
 	Menubar
@@ -61,8 +68,8 @@ Menuset
 
 	Menu "file_vc"
 		OptItem "Register...|R" "vc-register"
-		OptItem "Check In Changes...|I" "vc-check-in"
-		OptItem "Check Out for Edit|O" "vc-check-out"
+		OptItem "Check in Changes...|I" "vc-check-in"
+		OptItem "Check out for Edit|O" "vc-check-out"
 		OptItem "Revert to Repository Version|R" "vc-revert"
 		OptItem "Undo Last Check In|U" "vc-undo-last"
 		OptItem "Show History...|H" "dialog-show vclog"
@@ -136,10 +143,10 @@ Menuset
 		Item "Selection|S" "primary-selection-paste"
 		Item "Selection, Join Lines|i" "primary-selection-paste paragraph"
 		Separator
-		Item "Paste As LinkBack PDF" "paste linkback"
-		Item "Paste As PDF" "paste pdf"
-		Item "Paste As PNG" "paste png"
-		Item "Paste As JPEG" "paste jpeg"
+		Item "Paste as LinkBack PDF" "paste linkback"
+		Item "Paste as PDF" "paste pdf"
+		Item "Paste as PNG" "paste png"
+		Item "Paste as JPEG" "paste jpeg"
 	End
 
 	Menu "edit_pasterecent"
@@ -147,7 +154,7 @@ Menuset
 	End
 
 	Menu "edit_textstyles"
-		Item "Dissolve CharStyle" "inset-dissolve charstyle"
+		Item "Dissolve Text Style" "inset-dissolve charstyle"
 		CharStyles
 		Elements
 		Separator
@@ -190,8 +197,8 @@ Menuset
 	End
 
 	Menu "edit_math"
-		Item "Number whole Formula|N" "math-number-toggle"
-		Item "Number this Line|u" "math-number-line-toggle"
+		Item "Number Whole Formula|N" "math-number-toggle"
+		Item "Number This Line|u" "math-number-line-toggle"
 		Submenu "Change Limits Type|L" "edit_math_limits"
 		Submenu "Macro Definition" "edit_math_macro_definition"
 		Separator
@@ -217,15 +224,15 @@ Menuset
 	Menu "edit_math_macro_definition"
 		Item "Append Argument" "math-macro-add-param"
 		Item "Remove Last Argument" "math-macro-remove-param"
-                Separator
+		Separator
 		Item "Make First Non-Optional into Optional Argument" "math-macro-make-optional"
 		Item "Make Last Optional into Non-Optional Argument" "math-macro-make-nonoptional"
-                Item "Insert Optional Argument" "math-macro-add-optional-param"
-                Item "Remove Optional Argument" "math-macro-remove-optional-param"
+		Item "Insert Optional Argument" "math-macro-add-optional-param"
+		Item "Remove Optional Argument" "math-macro-remove-optional-param"
 		Separator
-		Item "Append Argument Eating From The Right" "math-macro-append-greedy-param"
-                Item "Append Optional Argument Eating From The Right" "math-macro-add-greedy-optional-param"
-		Item "Remove Last Argument Spitting Out To The Right" "math-macro-remove-greedy-param"
+		Item "Append Argument Eating From the Right" "math-macro-append-greedy-param"
+		Item "Append Optional Argument Eating From the Right" "math-macro-add-greedy-optional-param"
+		Item "Remove Last Argument Spitting out to the Right" "math-macro-remove-greedy-param"
 	End
 
 	Menu "edit_math_limits"
@@ -264,10 +271,10 @@ Menuset
 		Item "Maxima|M" "math-extern maxima"
 		Item "Mathematica|a" "math-extern mathematica"
 		Separator
-		Item "Maple, simplify|s" "math-extern maple simplify"
-		Item "Maple, factor|f" "math-extern maple factor"
-		Item "Maple, evalm|e" "math-extern maple evalm"
-		Item "Maple, evalf|v" "math-extern maple evalf"
+		Item "Maple, Simplify|S" "math-extern maple simplify"
+		Item "Maple, Factor|F" "math-extern maple factor"
+		Item "Maple, Evalm|E" "math-extern maple evalm"
+		Item "Maple, Evalf|v" "math-extern maple evalf"
 	End
 
 	Menu "edit_math_mutate"
@@ -296,13 +303,13 @@ Menuset
 		Submenu "Update|U" "view_update"
 		ViewFormats
 		Separator
-		Item "Split View Into Left And Right Half|i" "split-view horizontal"
-		Item "Split View Into Upper And Lower Half|V" "split-view vertical"
+		Item "Split View Into Left and Right Half|i" "split-view horizontal"
+		Item "Split View Into Upper and Lower Half|V" "split-view vertical"
 		Item "Close Tab Group|G" "close-tab-group"
 		Item "Fullscreen|l" "ui-toggle fullscreen"
 		Submenu "Toolbars|b" "toolbars"
 		Separator
-	    Documents
+		Documents
 	End
 
 	Menu "view_update"
@@ -326,7 +333,7 @@ Menuset
 		Submenu "Float|a" "insert_float"
 		Submenu "Note|N" "insert_note"
 		Submenu "Branch|B" "insert_branches"
-		Submenu "Custom insets" "insert_custom"
+		Submenu "Custom Insets" "insert_custom"
 		Submenu "File|e" "insert_file"
 		Item "Box[[Menu]]" "box-insert Frameless"
 		Separator
