@@ -16,5 +16,8 @@ char const * lyx_version = PACKAGE_VERSION;
 ///
 char const * lyx_release_date = LYX_DATE;
 
+/// Package identifier (lyx[-<version-suffix>])
+char const * lyx_package = PACKAGE;
+
 /// This is the version information shown by 'lyx --version'
 char const * lyx_version_info = VERSION_INFO;

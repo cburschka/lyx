@@ -19,6 +19,9 @@ extern char const * lyx_version;
 ///
 extern char const * lyx_release_date;
 
+/// Package identifier (lyx[-<version-suffix>])
+extern char const * lyx_package;
+
 /// This is the version information shown by 'lyx -version'
 extern char const * lyx_version_info;
 
