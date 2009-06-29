@@ -714,12 +714,13 @@ GuiApplication::~GuiApplication()
 
 
 GuiApplication::GuiApplication(int & argc, char ** argv)
-	: QApplication(argc, argv),	current_view_(0), d(new GuiApplication::Private)
+	: QApplication(argc, argv), current_view_(0),
+	  d(new GuiApplication::Private)
 {
 	QString app_name = "LyX";
 	QCoreApplication::setOrganizationName(app_name);
 	QCoreApplication::setOrganizationDomain("lyx.org");
-	QCoreApplication::setApplicationName(app_name + "-" + lyx_version);
+	QCoreApplication::setApplicationName(lyx_package);
 
 	// Install translator for GUI elements.
 	installTranslator(&d->qt_trans_);
