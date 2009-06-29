@@ -288,11 +288,11 @@ Menuset
 		Item "Inline Formula|I" "math-mutate simple"
 		Item "Displayed Formula|D" "math-mutate equation"
 		Item "Eqnarray Environment|E" "math-mutate eqnarray"
-		Item "AMS align Environment|A" "math-mutate align"
+		Item "AMS align Environment|a" "math-mutate align"
 		Item "AMS alignat Environment|t" "math-mutate alignat"
-		Item "AMS flalign Environment|F" "math-mutate flalign"
-		Item "AMS gather Environment|G" "math-mutate gather"
-		Item "AMS multline Environment|M" "math-mutate multline"
+		Item "AMS flalign Environment|f" "math-mutate flalign"
+		Item "AMS gather Environment|g" "math-mutate gather"
+		Item "AMS multline Environment|m" "math-mutate multline"
 	End
 
 #
@@ -412,11 +412,11 @@ Menuset
 		Item "Display Formula|D" "math-display"
 		Item "Numbered Formula|N" "command-sequence math-display; math-number-toggle;"
 		Item "Eqnarray Environment|E" "command-sequence math-mode on; math-mutate eqnarray;"
-		Item "AMS Align Environment|A" "command-sequence math-mode on; math-mutate align;"
-		Item "AMS AlignAt Environment|t" "command-sequence math-mode on; math-mutate alignat;"
-		Item "AMS FlAlign Environment|F" "command-sequence math-mode on; math-mutate flalign;"
-		Item "AMS Gather Environment|G" "command-sequence math-mode on; math-mutate gather;"
-		Item "AMS Multline Environment|M" "command-sequence math-mode on; math-mutate multline;"
+		Item "AMS align Environment|a" "command-sequence math-mode on; math-mutate align;"
+		Item "AMS alignat Environment|t" "command-sequence math-mode on; math-mutate alignat;"
+		Item "AMS flalign Environment|f" "command-sequence math-mode on; math-mutate flalign;"
+		Item "AMS gather Environment|g" "command-sequence math-mode on; math-mutate gather;"
+		Item "AMS multline Environment|m" "command-sequence math-mode on; math-mutate multline;"
 		Separator
 		Item "Array Environment|y" "math-matrix 2 2"
 		Item "Cases Environment|C" "command-sequence math-mode on; math-insert \cases"
