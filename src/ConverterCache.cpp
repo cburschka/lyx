@@ -247,7 +247,7 @@ void ConverterCache::init()
 }
 
 
-void ConverterCache::writeIndex()
+void ConverterCache::writeIndex() const
 {
 	pimpl_->writeIndex();
 }

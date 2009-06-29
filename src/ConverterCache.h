@@ -56,7 +56,7 @@ public:
 	static void init();
 
 	/// Writes the index list. This must be called on exit.
-	void writeIndex();
+	void writeIndex() const;
 
 	/**
 	 * Add \c converted_file (\c orig_from converted to \c to_format) to
