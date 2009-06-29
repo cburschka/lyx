@@ -142,13 +142,6 @@ void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_MOUSE_PRESS:
-		if (cmd.button() != mouse_button::button3)
-			InsetCollapsable::doDispatch(cur, cmd);
-		else
-			cur.undispatched();
-		break;
-
 	case LFUN_INSET_DIALOG_UPDATE:
 		cur.bv().updateDialog("branch", params2string(params()));
 		break;
