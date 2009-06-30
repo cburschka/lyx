@@ -401,6 +401,8 @@ AC_CONFIG_FILES([Makefile \
       development/MacOSX/Info.plist \
       development/MacOSX/lyxrc.dist \
       development/MacOSX/spotlight/Makefile \
+      development/cygwin/Makefile \
+      development/cygwin/lyxrc.dist \
       development/lyx.spec \
       intl/Makefile \
       lib/Makefile \

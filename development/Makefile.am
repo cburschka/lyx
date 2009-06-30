@@ -4,6 +4,10 @@ if INSTALL_MACOSX
 SUBDIRS = MacOSX
 endif
 
+if INSTALL_CYGWIN
+SUBDIRS = cygwin
+endif
+
 EXTRA_DIST = boostworkaround.txt coding/Rules coding/Recommendations \
 	FORMAT lyx.rpm.README \
 	lyxserver lyx.spec.in lyx.spec Seminar.txt \

@@ -1,0 +1,52 @@
+# Set up the home directory if not already set in the system environment.
+if [ -z "${HOME}" ]; then
+  USER=`id -un`
+  HOME=`grep "^${USER}:" /etc/passwd | cut -d: -f6`
+  if [ -z "${HOME}" -o ! -d "${HOME}" ]; then
+    DOCSFOLDER=`regtool -q get '\HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders\Personal'`
+    test -n "${DOCSFOLDER}" && HOME=`cygpath -u "${DOCSFOLDER}"` || HOME=/tmp
+  fi
+fi
+export HOME
+
+# Set up your Language (if you do not want English) by
+# replacing C (for C locale) with your country code in
+# the following line.
+export LANG=C
+
+# Set up the output charset for your locale.
+# You may need to experiment with this if you get garbage
+# in menus ("`a" instead of "à", for example).
+export OUTPUT_CHARSET=iso-8859-1
+
+# Set up Hostname/IP address where LyX can find an X-server.
+export DISPLAY=localhost:0.0
+
+# ========================================================
+# Below this line you should not change anything if you're
+# not familiar with configuration of an unix application!
+# ========================================================
+export PATH="/usr/local/bin:/usr/bin:/usr/X11R6/bin:$PATH"
+export USER="`id -un`"
+export MAKE_MODE=unix
+export OSTYPE=cygwin
+
+unset DOSDRIVE
+unset DOSDIR
+unset TMPDIR
+unset TMP
+
+for f in /etc/profile.d/*.sh ; do
+  if [ -f "${f}" ]; then
+    . "${f}"
+  fi
+done
+
+if [ ! -z "${CDPATH}" ]; then
+  cd "${CDPATH}"
+  unset CDPATH
+else
+  cd "${HOME}"
+fi
+
+test -f "${HOME}/.bashrc" && . "${HOME}/.bashrc"
