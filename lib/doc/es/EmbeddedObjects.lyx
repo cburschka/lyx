@@ -31297,12 +31297,8 @@ reference "sub:Subsección-Externa-1"
 \begin_layout Standard
 El preámbulo del documento hijo se ignora, sólo se utiliza el preámbulo
  del documento maestro.
- 
-\lang english
-Branches in child documents will be ignored by the master document as long
- as also the master document has a branch with the same name.
-
-\lang spanish
+ Las ramas en los documentos hijo serán ignoradas por el documento maestro
+ siempre que éste tenga una rama con el mismo nombre.
  Los documentos incluidos se insertan comenzando una página nueva y acabando
  con un salto de página.
 \end_layout
