@@ -3,6 +3,9 @@ from SCons.Util import Split
 TOP_extra_files = Split('''
     ABOUT-NLS
     ANNOUNCE
+    autogen.sh
+    config.log
+    configure.ac
     COPYING
     INSTALL
     INSTALL.MacOSX
@@ -10,6 +13,7 @@ TOP_extra_files = Split('''
     INSTALL.autoconf
     INSTALL.cmake
     INSTALL.scons
+    lyx.1in
     Makefile.am
     NEWS
     README
@@ -17,13 +21,9 @@ TOP_extra_files = Split('''
     README.Win32
     README.localization
     RELEASE-NOTES
-    UPGRADING
-    autogen.sh
-    config.log
-    configure.ac
-    lyx.1in
     rename.sh
     scons_lyx.log
+    UPGRADING
 ''')
 
 
@@ -145,10 +145,10 @@ src_pre_files = Split('''
     Bidi.cpp
     BranchList.cpp
     Buffer.cpp
-    buffer_funcs.cpp
     BufferList.cpp
     BufferParams.cpp
     BufferView.cpp
+    buffer_funcs.cpp
     Bullet.cpp
     Changes.cpp
     Chktex.cpp
@@ -200,11 +200,11 @@ src_pre_files = Split('''
     MetricsInfo.cpp
     Mover.cpp
     output.cpp
+    OutputParams.cpp
     output_docbook.cpp
     output_latex.cpp
     output_plaintext.cpp
     output_xhtml.cpp
-    OutputParams.cpp
     paragraph_funcs.cpp
     PDFOptions.cpp
     ParIterator.cpp
@@ -236,20 +236,20 @@ src_pre_files = Split('''
 
 src_post_files = Split('''
     BiblioInfo.cpp
+    boost.cpp
     Box.cpp
     Dimension.cpp
     ModuleList.cpp
     PrinterParams.cpp
     Thesaurus.cpp
-    boost.cpp
 ''')
 
 
 src_extra_src_files = Split('''
     ASpell.cpp
+    main.cpp
     Section.cpp
     Variables.cpp
-    main.cpp
 ''')
 
 
@@ -265,35 +265,21 @@ src_client_header_files = Split('''
 
 
 src_client_files = Split('''
-    Messages.cpp
     boost.cpp
     client.cpp
     gettext.cpp
+    Messages.cpp
 ''')
 
 
 src_client_extra_files = Split('''
-    Makefile.am
     lyxclient.1in
+    Makefile.am
     pch.h
 ''')
 
 
 src_support_header_files = Split('''
-    ExceptionMessage.h
-    FileMonitor.h
-    FileName.h
-    ForkedCalls.h
-    Messages.h
-    Package.h
-    Path.h
-    RandomAccessList.h
-    SignalSlot.h
-    SignalSlotPrivate.h
-    Systemcall.h
-    SystemcallPrivate.h
-    Timeout.h
-    Translator.h
     convert.h
     copied_ptr.h
     debug.h
@@ -301,8 +287,12 @@ src_support_header_files = Split('''
     docstring.h
     docstring_list.h
     environment.h
+    ExceptionMessage.h
+    FileMonitor.h
+    FileName.h
     filetools.h
     foreach.h
+    ForkedCalls.h
     gettext.h
     gzstream.h
     lassert.h
@@ -311,11 +301,21 @@ src_support_header_files = Split('''
     lyxalgo.h
     lyxlib.h
     lyxtime.h
+    Messages.h
     os.h
     os_win32.h
+    Package.h
+    Path.h
     qstring_helpers.h
+    RandomAccessList.h
+    SignalSlot.h
+    SignalSlotPrivate.h
     socktools.h
+    Systemcall.h
+    SystemcallPrivate.h
     textutils.h
+    Timeout.h
+    Translator.h
     types.h
     unicode.h
     userinfo.h
@@ -324,31 +324,31 @@ src_support_header_files = Split('''
 
 
 src_support_files = Split('''
-    FileMonitor.cpp
-    FileName.cpp
-    ForkedCalls.cpp
-    Messages.cpp
-    Package.cpp
-    Path.cpp
-    SignalSlot.cpp
-    SignalSlotPrivate.cpp
-    Systemcall.cpp
-    Timeout.cpp
     convert.cpp
     debug.cpp
     docstream.cpp
     docstring.cpp
     environment.cpp
+    FileMonitor.cpp
+    FileName.cpp
     filetools.cpp
+    ForkedCalls.cpp
     gettext.cpp
     gzstream.cpp
     kill.cpp
     lassert.cpp
     lstrings.cpp
     lyxtime.cpp
+    Messages.cpp
     os.cpp
+    Package.cpp
+    Path.cpp
     qstring_helpers.cpp
+    SignalSlot.cpp
+    SignalSlotPrivate.cpp
     socktools.cpp
+    Systemcall.cpp
+    Timeout.cpp
     unicode.cpp
     userinfo.cpp
     mythes/mythes.cxx
@@ -776,12 +776,12 @@ src_frontends_qt4_header_files = Split('''
     LyXFileDialog.h
     Menus.h
     PanelStack.h
+    qt_helpers.h
+    qt_i18n.h
     TocModel.h
     TocWidget.h
     Toolbars.h
     Validator.h
-    qt_helpers.h
-    qt_i18n.h
 ''')
 
 
@@ -872,19 +872,19 @@ src_frontends_qt4_files = Split('''
     LyXFileDialog.cpp
     Menus.cpp
     PanelStack.cpp
+    qt_helpers.cpp
     TocModel.cpp
     TocWidget.cpp
     Toolbars.cpp
     Validator.cpp
-    qt_helpers.cpp
 ''')
 
 
 src_frontends_qt4_extra_files = Split('''
     GuiFontMetrics.h
     Makefile.am
-    README
     pch.h
+    README    
 ''')
 
 
@@ -979,8 +979,8 @@ src_frontends_qt4_ui_files = Split('''
 
 
 src_frontends_qt4_ui_extra_files = Split('''
-    Makefile.am
     compile_uic.sh
+    Makefile.am    
 ''')
 
 
@@ -1148,7 +1148,6 @@ intl_files = Split('''
 
 
 intl_extra_files = Split('''
-    VERSION
     config.charset
     libgnuintl.h.in
     locale.alias
@@ -1159,11 +1158,11 @@ intl_extra_files = Split('''
     ref-add.sin
     ref-del.sin
     vasnprintf.c
+    VERSION
 ''')
 
 
 config_extra_files = Split('''
-    Makefile.am
     common.am
     config.guess
     config.rpath
@@ -1173,6 +1172,7 @@ config_extra_files = Split('''
     libtool.m4
     ltmain.sh
     lyxinclude.m4
+    Makefile.am
     missing
     mkinstalldirs
     pkg.m4
@@ -1189,12 +1189,6 @@ sourcedoc_extra_files = Split('''
 
 
 po_extra_files = Split('''
-    LINGUAS
-    Makefile.in.in
-    Makevars
-    POTFILES.in
-    README
-    Rules-quot
     ar.po
     bg.po
     boldquot.sed
@@ -1217,18 +1211,24 @@ po_extra_files = Split('''
     it.po
     ja.po
     ko.po
+    LINGUAS
     lyx_pot.py
+    Makefile.in.in
+    Makevars
     nb.po
     nl.po
     nn.po
     pl.po
     pocheck.pl
+    POTFILES.in
     postats.sh
     pt.po
     quot.sed
+    README
     remove-potcdate.sin
     ro.po
     ru.po
+    Rules-quot
     sk.po
     sl.po
     sv.po
@@ -1241,9 +1241,9 @@ po_extra_files = Split('''
 
 
 lib_files = Split('''
-    CREDITS
     chkconfig.ltx
     configure.py
+    CREDITS
     encodings
     external_templates
     languages
@@ -1254,10 +1254,10 @@ lib_files = Split('''
 
 
 lib_extra_files = Split('''
-    Makefile.am
     autocorrect
     build-listerrors
     generate_contributions.py
+    Makefile.am
 ''')
 
 
@@ -1348,7 +1348,6 @@ lib_ui_files = Split('''
 
 lib_fonts_files = Split('''
     BaKoMaFontLicense.txt
-    ReadmeBaKoMa4LyX.txt
     cmex10.ttf
     cmmi10.ttf
     cmr10.ttf
@@ -1357,6 +1356,7 @@ lib_fonts_files = Split('''
     eufm10.ttf
     msam10.ttf
     msbm10.ttf
+    ReadmeBaKoMa4LyX.txt
     wasy10.ttf
 ''')
 
@@ -1526,22 +1526,12 @@ lib_images_files = Split('''
 
 
 lib_images_extra_files = Split('''
-    README
     font-smallcaps.png
+    README
 ''')
 
 
 lib_images_math_files = Split('''
-    Bbbk.png
-    Finv.png
-    Game.png
-    Im.png
-    Lleftarrow.png
-    Lsh.png
-    Re.png
-    Rrightarrow.png
-    Rsh.png
-    Vvdash.png
     acute.png
     adots.png
     aleph.png
@@ -1559,6 +1549,7 @@ lib_images_math_files = Split('''
     bar.png
     bars.png
     barwedge.png
+    Bbbk.png
     because.png
     beta.png
     beth.png
@@ -1668,6 +1659,7 @@ lib_images_math_files = Split('''
     fallingdotseq.png
     fint.png
     fintop.png
+    Finv.png
     flat.png
     font.png
     forall.png
@@ -1675,6 +1667,7 @@ lib_images_math_files = Split('''
     frac.png
     frown.png
     functions.png
+    Game.png
     gamma.png
     gamma2.png
     geq.png
@@ -1709,6 +1702,7 @@ lib_images_math_files = Split('''
     iiintop.png
     iint.png
     iintop.png
+    Im.png
     imath.png
     in.png
     infty.png
@@ -1757,6 +1751,7 @@ lib_images_math_files = Split('''
     lfloor_rfloor.png
     ll.png
     llcorner.png
+    Lleftarrow.png
     lll.png
     lnapprox.png
     lneq.png
@@ -1775,6 +1770,7 @@ lib_images_math_files = Split('''
     lparen.png
     lparen_rparen.png
     lrcorner.png
+    Lsh.png
     ltimes.png
     lvertneqq.png
     mapsto.png
@@ -1889,6 +1885,7 @@ lib_images_math_files = Split('''
     rbrace.png
     rbracket.png
     rceil.png
+    Re.png
     rfloor.png
     rho.png
     rightarrow.png
@@ -1904,6 +1901,8 @@ lib_images_math_files = Split('''
     risingdotseq.png
     root.png
     rparen.png
+    Rrightarrow.png
+    Rsh.png
     rtimes.png
     searrow.png
     setminus.png
@@ -2029,6 +2028,7 @@ lib_images_math_files = Split('''
     vert2.png
     view-others.png
     vphantom.png
+    Vvdash.png
     wedge.png
     widehat.png
     widetilde.png
@@ -2111,20 +2111,17 @@ lib_doc_clipart_files = Split('''
     ChangesToolbar.png
     ChildDocumentQt4.png
     CommentNoteImageQt4.png
+    endnotes.pdf
     ERT.png
+    escher-lsd.eps
     ExternalMaterialQt4.png
     ExtraToolbar.png
-    GreyedOutNoteImageQt4.png
-    LaTeX.png
-    LyXNoteImageQt4.png
-    SpaceMarker.png
-    StandardToolbar.png
-    ToolbarEnvBox.png
-    endnotes.pdf
-    escher-lsd.eps
     floatQt4.png
     footnoteQt4.png
+    GreyedOutNoteImageQt4.png
     labelQt4.png
+    LaTeX.png
+    LyXNoteImageQt4.png
     macrobox.png
     MacroToolbar.png
     macrouse.png
@@ -2132,6 +2129,9 @@ lib_doc_clipart_files = Split('''
     mobius.eps
     platypus.eps
     referenceQt4.png
+    SpaceMarker.png
+    StandardToolbar.png
+    ToolbarEnvBox.png
     ViewToolbar.png
     with_fntright.pdf
     without_fntright.pdf
@@ -2210,16 +2210,16 @@ lib_doc_es_clipart_files = Split('''
     ComentNotaImagenQt4.png
     CuadroMinipagQt4.png
     DocumentoHijoQt4.png
-    GrisNotaImagenQt4.png
-    MaterialExternoQt4.png
-    NotaLyXImagenQt4.png
-    Resumen.pdf
     es_ERT.png
     es_ToolbarEnvBox.png
     etiquetaQt4.png
     flotanteQt4.png
+    GrisNotaImagenQt4.png
+    MaterialExternoQt4.png
+    NotaLyXImagenQt4.png
     notapieQt4.png
     referenciaQt4.png
+    Resumen.pdf
 ''')
 
 
@@ -2252,11 +2252,11 @@ lib_doc_fr_clipart_files = Split('''
     BoxInsetDefaultQt4.png
     ChildDocumentQt4.png
     CommentNoteImageQt4.png
-    GreyedOutNoteImageQt4.png
-    LyXNoteImageQt4.png
     floatQt4.png
     footnoteQt4.png
+    GreyedOutNoteImageQt4.png
     labelQt4.png
+    LyXNoteImageQt4.png    
 ''')
 
 
@@ -2486,10 +2486,10 @@ lib_examples_fa_files = Split('''
 
 lib_examples_fr_files = Split('''
     AlignementDecimal.lyx
-    Foils.lyx
-    ListesPuces.lyx
     exemple_brut.lyx
     exemple_lyxifie.lyx
+    Foils.lyx
+    ListesPuces.lyx
     multicol.lyx
     simplecv.lyx
     splash.lyx
@@ -2594,8 +2594,8 @@ lib_examples_uk_files = Split('''
 
 
 lib_lyx2lyx_files = Split('''
-    LyX.py
     generate_encoding_info.py
+    LyX.py
     lyx2lyx
     lyx2lyx_lang.py
     lyx_0_06.py
@@ -2620,8 +2620,8 @@ lib_lyx2lyx_files = Split('''
 
 
 lib_lyx2lyx_extra_files = Split('''
-    Makefile.am
     lyx2lyx_version.py.in
+    Makefile.am
 ''')
 
 
@@ -2788,7 +2788,6 @@ lib_layouts_module_files = Split('''
 ''')
 
 lib_scripts_files = Split('''
-    TeXFiles.py
     clean_dvi.py
     convertDefault.py
     csv2lyx.py
@@ -2804,6 +2803,7 @@ lib_scripts_files = Split('''
     lyxpreview2bitmap.py
     lyxpreview-platex2bitmap.py
     lyxpreview_tools.py
+    TeXFiles.py
     tex_copy.py
 ''')
 
