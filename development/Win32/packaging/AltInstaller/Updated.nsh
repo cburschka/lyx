@@ -27,7 +27,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Extended.lyx"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\Intro.lyx"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\LaTeXConfig.lyx"
- #File "${PRODUCT_SOURCEDIR}\Resources\doc\LFUNs.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\LFUNs.lyx"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\Math.lyx"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\Tutorial.lyx"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\UserGuide.lyx"
@@ -91,6 +91,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\scripts\layout2layout.py"
  SetOutPath "$INSTDIR\Resources\ui"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\stdcontext.inc"
+ File "${PRODUCT_SOURCEDIR}\Resources\ui\stdtoolbars.inc"
+ File "${PRODUCT_SOURCEDIR}\Resources\ui\stdmenus.inc"
 
 FunctionEnd
 
