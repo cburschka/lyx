@@ -151,12 +151,16 @@ What's new
 - Maintain session settings over version changes (also related to
   bug 5082).
 
+- Do not reset toolbar settings after a change of UI files that do not
+  concern toolbars.
+
 - Fix math-insert lfun behaviour in the absence of a selection or when
   something outside mathed is selected (bug 6033).
   
 - Fix casing inconsistencies in the English user interface.
 
 - Fix context menu for insets inside a branch inset (bug 6022).
+
 
 * DOCUMENTATION AND LOCALIZATION
 

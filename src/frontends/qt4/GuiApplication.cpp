@@ -1505,6 +1505,9 @@ bool GuiApplication::readUIFile(QString const & name, bool include)
 	if (lyxerr.debugging(Debug::PARSER))
 		lex.printTable(lyxerr);
 
+	// store which ui files define Toolbars
+	static QStringList toolbar_uifiles;
+
 	while (lex.isOK()) {
 		switch (lex.lex()) {
 		case ui_include: {
@@ -1524,6 +1527,7 @@ bool GuiApplication::readUIFile(QString const & name, bool include)
 
 		case ui_toolbars:
 			d->toolbars_.readToolbarSettings(lex);
+			toolbar_uifiles.push_back(uifile);
 			break;
 
 		default:
@@ -1544,9 +1548,12 @@ bool GuiApplication::readUIFile(QString const & name, bool include)
 		QFileInfo fi(uifiles[i]);
 		QDateTime const date_value = fi.lastModified();
 		QString const name_key = QString::number(i);
-		if (!settings.contains(name_key)
+		// if an ui file which defines Toolbars has changed,
+		// we have to reset the settings
+		if (toolbar_uifiles.contains(uifiles[i])
+		 && (!settings.contains(name_key)
 		 || settings.value(name_key).toString() != uifiles[i]
-		 || settings.value(name_key + "/date").toDateTime() != date_value) {
+		 || settings.value(name_key + "/date").toDateTime() != date_value)) {
 			touched = true;
 			settings.setValue(name_key, uifiles[i]);
 			settings.setValue(name_key + "/date", date_value);
