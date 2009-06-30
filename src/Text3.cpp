@@ -297,27 +297,18 @@ string const freefont2string()
 }
 
 
-/// the type of outline operation
-enum OutlineOp {
-	OutlineUp, // Move this header with text down
-	OutlineDown,   // Move this header with text up
-	OutlineIn, // Make this header deeper
-	OutlineOut // Make this header shallower
-};
-
-
-static void dragMove(Cursor & cur, int moveId, int moveToId)
+static void dragMove(Cursor & cur, int moveid, int movetoid)
 {
-	// Create Pointers to Buffers
+	// Create pointers to buffers
 	Buffer & buf_move = *cur.buffer();
-	DocIterator dit_move = buf_move.getParFromID(moveId);
-	DocIterator dit_dest = buf_move.getParFromID(moveToId);
+	DocIterator dit_move = buf_move.getParFromID(moveid);
+	DocIterator dit_dest = buf_move.getParFromID(movetoid);
 
 	pit_type & pit_move = dit_move.pit();
 	pit_type & pit_dest = dit_dest.pit();
 	ParagraphList & pars = dit_move.text()->paragraphs();
 
-	// Create References to the Paragraphs to Be Moved
+	// Create references to the paragraphs to be moved
 	ParagraphList::iterator const bgn = pars.begin();
 	ParagraphList::iterator dest_start = boost::next(bgn, pit_dest);
 
@@ -327,48 +318,45 @@ static void dragMove(Cursor & cur, int moveId, int moveToId)
 	ParagraphList::iterator finish = start;
 	ParagraphList::iterator const end = pars.end();
 
-	DocumentClass const & tc = buf_move.params().documentClass();
-
-	int const thistoclevel = start->layout().toclevel;
-	int toclevel;
-
 	// Move out (down) from this section header
 	if (finish != end)
 		++finish;
+
 	// Seek the one (on same level) below
+	int const thistoclevel = start->layout().toclevel;
 	for (; finish != end; ++finish) {
-		toclevel = finish->layout().toclevel;
+		int const toclevel = finish->layout().toclevel;
 		if (toclevel != Layout::NOT_IN_TOC
 		    && toclevel <= thistoclevel)
 			break;
 	}
 
-	// Do we need to set insets' buffer_ members, because we copied
-	// some stuff? We'll assume we do and reset it otherwise.
-	bool set_buffers = true;
-
-	if (start == pars.begin())
-		// Nothing to Move
-		return;
-	if (start == dest_start)
-		// Nothing to Move
+	if (start == pars.begin() || start == dest_start)
+		// Nothing to move
 		return;
 
-	pit_type const len = distance(start, finish);
 	pars.insert(dest_start, start, finish);
-	pars.erase(start,finish);
+	pars.erase(start, finish);
 
-	if (set_buffers)
-		// FIXME: This only really needs doing for the newly
-		// introduced paragraphs. Something like:
-		// 	pit_type const numpars = distance(start, finish);
-		// 	start = boost::next(bgn, pit);
-		// 	finish = boost::next(start, numpars);
-		// 	for (; start != finish; ++start)
-		// 		start->setBuffer(buf);
-		// But while this seems to work, it is kind of fragile.
-		buf_move.inset().setBuffer(buf_move);
+	// FIXME: This only really needs doing for the newly
+	// introduced paragraphs. Something like:
+	// 	pit_type const numpars = distance(start, finish);
+	// 	start = boost::next(bgn, pit);
+	// 	finish = boost::next(start, numpars);
+	// 	for (; start != finish; ++start)
+	// 		start->setBuffer(buf);
+	// But while this seems to work, it is kind of fragile.
+	buf_move.inset().setBuffer(buf_move);
 }
+
+
+/// the type of outline operation
+enum OutlineOp {
+	OutlineUp, // Move this header with text down
+	OutlineDown,   // Move this header with text up
+	OutlineIn, // Make this header deeper
+	OutlineOut // Make this header shallower
+};
 
 
 static void outline(OutlineOp mode, Cursor & cur)
@@ -391,6 +379,7 @@ static void outline(OutlineOp mode, Cursor & cur)
 	// Move out (down) from this section header
 	if (finish != end)
 		++finish;
+
 	// Seek the one (on same level) below
 	for (; finish != end; ++finish) {
 		toclevel = finish->layout().toclevel;
