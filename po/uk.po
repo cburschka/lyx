@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: uk-163\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-06-29 08:30+0200\n"
+"POT-Creation-Date: 2009-07-01 07:47+0200\n"
 "PO-Revision-Date: 2009-05-23 12:47+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
@@ -1483,11 +1483,11 @@ msgstr "Оберіть документ для вставки"
 msgid "&Include Type:"
 msgstr "&Тип включення:"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:293 src/insets/InsetInclude.cpp:341
+#: src/frontends/qt4/ui/IncludeUi.ui:293 src/insets/InsetInclude.cpp:347
 msgid "Include"
 msgstr "Включити файл"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:298 src/insets/InsetInclude.cpp:332
+#: src/frontends/qt4/ui/IncludeUi.ui:298 src/insets/InsetInclude.cpp:338
 msgid "Input"
 msgstr "Ввід"
 
@@ -1495,8 +1495,8 @@ msgstr "Ввід"
 msgid "Verbatim"
 msgstr "Стенограма"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:964
-#: src/insets/InsetInclude.cpp:970
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:970
+#: src/insets/InsetInclude.cpp:976
 msgid "Program Listing"
 msgstr "Текст програми"
 
@@ -2506,13 +2506,16 @@ msgid "User &interface language:"
 msgstr "&Мова інтерфейсу користувача:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:35
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:55
-msgid "Select the default language of your documents"
-msgstr "Оберіть типову мову для ваших документів"
+msgid "Select the language of the user interface (menus, dialogs, etc.)"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:45
 msgid "&Default language:"
 msgstr "&Типова мова:"
+
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:55
+msgid "Select the default language of your documents"
+msgstr "Оберіть типову мову для ваших документів"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:65
 msgid "Language pac&kage:"
@@ -15025,22 +15028,22 @@ msgstr "Один символ (без пробілів)"
 msgid "Statistics"
 msgstr "Статистика"
 
-#: src/BufferView.cpp:2144
+#: src/BufferView.cpp:2145
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Вставляється документ %1$s..."
 
-#: src/BufferView.cpp:2155
+#: src/BufferView.cpp:2156
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Документ %1$s вставлено."
 
-#: src/BufferView.cpp:2157
+#: src/BufferView.cpp:2158
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Неможливо вставити документ %1$s"
 
-#: src/BufferView.cpp:2419
+#: src/BufferView.cpp:2420
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15051,11 +15054,11 @@ msgstr ""
 "%1$s\n"
 "через помилку: %2$s"
 
-#: src/BufferView.cpp:2421
+#: src/BufferView.cpp:2422
 msgid "Could not read file"
 msgstr "Помилка читання файла"
 
-#: src/BufferView.cpp:2428
+#: src/BufferView.cpp:2429
 #, c-format
 msgid ""
 "%1$s\n"
@@ -15064,15 +15067,15 @@ msgstr ""
 "%1$s\n"
 " непридатний для читання."
 
-#: src/BufferView.cpp:2429 src/output.cpp:39
+#: src/BufferView.cpp:2430 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Неможливо відкрити файл"
 
-#: src/BufferView.cpp:2436
+#: src/BufferView.cpp:2437
 msgid "Reading not UTF-8 encoded file"
 msgstr "Читання файла не закодованого у UTF-8"
 
-#: src/BufferView.cpp:2437
+#: src/BufferView.cpp:2438
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -19142,7 +19145,7 @@ msgstr "Документи LyX-1.6.x (*.lyx16)"
 
 #: src/frontends/qt4/GuiView.cpp:1392 src/frontends/qt4/Validator.cpp:174
 #: src/insets/ExternalSupport.cpp:365 src/insets/InsetBibtex.cpp:286
-#: src/insets/InsetGraphics.cpp:592 src/insets/InsetInclude.cpp:471
+#: src/insets/InsetGraphics.cpp:592 src/insets/InsetInclude.cpp:477
 msgid "Invalid filename"
 msgstr "Некоректна назва файла"
 
@@ -19471,7 +19474,7 @@ msgid "List of Changes"
 msgstr "Список змін"
 
 #: src/insets/ExternalSupport.cpp:366 src/insets/InsetBibtex.cpp:287
-#: src/insets/InsetGraphics.cpp:593 src/insets/InsetInclude.cpp:472
+#: src/insets/InsetGraphics.cpp:593 src/insets/InsetInclude.cpp:478
 msgid ""
 "The following filename is likely to cause trouble when running the exported "
 "file through LaTeX: "
@@ -19628,7 +19631,7 @@ msgstr "Гілка (лише дочірні):"
 msgid "Undef: "
 msgstr "Undef: "
 
-#: src/insets/InsetBranch.cpp:234
+#: src/insets/InsetBranch.cpp:227
 msgid "branch"
 msgstr "branch"
 
@@ -19731,7 +19734,7 @@ msgstr "Відкрита вкладка зноски"
 msgid "footnote"
 msgstr "footnote"
 
-#: src/insets/InsetGraphics.cpp:470 src/insets/InsetInclude.cpp:549
+#: src/insets/InsetGraphics.cpp:470 src/insets/InsetInclude.cpp:555
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -19752,24 +19755,24 @@ msgstr "Після всього перетворення %1$s не потріб�
 msgid "Graphics file: %1$s"
 msgstr "Зображення: %1$s"
 
-#: src/insets/InsetInclude.cpp:335
+#: src/insets/InsetInclude.cpp:341
 msgid "Verbatim Input"
 msgstr "Буквальна вставка файла"
 
-#: src/insets/InsetInclude.cpp:338
+#: src/insets/InsetInclude.cpp:344
 msgid "Verbatim Input*"
 msgstr "Буквальна вставка* файла"
 
-#: src/insets/InsetInclude.cpp:438 src/insets/InsetInclude.cpp:637
+#: src/insets/InsetInclude.cpp:444 src/insets/InsetInclude.cpp:643
 msgid "Recursive input"
 msgstr "Рекурсивне введення"
 
-#: src/insets/InsetInclude.cpp:439 src/insets/InsetInclude.cpp:638
+#: src/insets/InsetInclude.cpp:445 src/insets/InsetInclude.cpp:644
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr "Спроба включити файл %1$s у самого себе! Включення ігнорується."
 
-#: src/insets/InsetInclude.cpp:494
+#: src/insets/InsetInclude.cpp:500
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -19780,11 +19783,11 @@ msgstr ""
 "має клас `%2$s'\n"
 "тоді як батьківський файл має клас `%3$s'."
 
-#: src/insets/InsetInclude.cpp:500
+#: src/insets/InsetInclude.cpp:506
 msgid "Different textclasses"
 msgstr "Відмінні класи"
 
-#: src/insets/InsetInclude.cpp:515
+#: src/insets/InsetInclude.cpp:521
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -19795,7 +19798,7 @@ msgstr ""
 "використовує модуль `%2$s',\n"
 "який не використовуєтсья у батьківському файлі."
 
-#: src/insets/InsetInclude.cpp:519
+#: src/insets/InsetInclude.cpp:525
 msgid "Module not found"
 msgstr "Модуль не знайдено"
 

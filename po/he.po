@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-06-29 08:30+0200\n"
+"POT-Creation-Date: 2009-07-01 07:47+0200\n"
 "PO-Revision-Date: 2009-04-19 17:13+0100\n"
 "Last-Translator: Ran Rutenberg <ran.rutenberg@gmail.com>\n"
 "Language-Team: Hebrew <en@li.org>\n"
@@ -1501,11 +1501,11 @@ msgstr "שם הקובץ שיכלל במסמך"
 msgid "&Include Type:"
 msgstr "סו&ג קובץ:"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:293 src/insets/InsetInclude.cpp:341
+#: src/frontends/qt4/ui/IncludeUi.ui:293 src/insets/InsetInclude.cpp:347
 msgid "Include"
 msgstr "כלול"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:298 src/insets/InsetInclude.cpp:332
+#: src/frontends/qt4/ui/IncludeUi.ui:298 src/insets/InsetInclude.cpp:338
 msgid "Input"
 msgstr "קלט"
 
@@ -1513,8 +1513,8 @@ msgstr "קלט"
 msgid "Verbatim"
 msgstr "מילה במילה"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:964
-#: src/insets/InsetInclude.cpp:970
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:970
+#: src/insets/InsetInclude.cpp:976
 msgid "Program Listing"
 msgstr "רישום קוד"
 
@@ -2563,14 +2563,17 @@ msgid "User &interface language:"
 msgstr "קובץ ממשק משתמש:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:35
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:55
-#, fuzzy
-msgid "Select the default language of your documents"
-msgstr "חזור להגדרות ברירת המחדל עבור מחלקת המסמך"
+msgid "Select the language of the user interface (menus, dialogs, etc.)"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:45
 msgid "&Default language:"
 msgstr "שפת ברירת המחדל:"
+
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:55
+#, fuzzy
+msgid "Select the default language of your documents"
+msgstr "חזור להגדרות ברירת המחדל עבור מחלקת המסמך"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:65
 msgid "Language pac&kage:"
@@ -15358,22 +15361,22 @@ msgstr "תו אחד (ללא רווחים)"
 msgid "Statistics"
 msgstr "סטטיסטיקות"
 
-#: src/BufferView.cpp:2144
+#: src/BufferView.cpp:2145
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "מוסיף מסמף %1$s..."
 
-#: src/BufferView.cpp:2155
+#: src/BufferView.cpp:2156
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "המסמך %1$s הוסף."
 
-#: src/BufferView.cpp:2157
+#: src/BufferView.cpp:2158
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "לא יכול להוסיף את המסמך %1$s"
 
-#: src/BufferView.cpp:2419
+#: src/BufferView.cpp:2420
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15384,26 +15387,26 @@ msgstr ""
 "%1$s\n"
 "בעטיה של השגיאה: %2$s"
 
-#: src/BufferView.cpp:2421
+#: src/BufferView.cpp:2422
 msgid "Could not read file"
 msgstr "לא יכול לקרוא את הקובץ"
 
-#: src/BufferView.cpp:2428
+#: src/BufferView.cpp:2429
 #, fuzzy, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr "לא יכול לקרוא את הקובץ %1$s."
 
-#: src/BufferView.cpp:2429 src/output.cpp:39
+#: src/BufferView.cpp:2430 src/output.cpp:39
 msgid "Could not open file"
 msgstr "לא יכול לפתוח את הקובץ"
 
-#: src/BufferView.cpp:2436
+#: src/BufferView.cpp:2437
 msgid "Reading not UTF-8 encoded file"
 msgstr "קורא קובץ שאינו מקודד ב- UTF-8"
 
-#: src/BufferView.cpp:2437
+#: src/BufferView.cpp:2438
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -19435,7 +19438,7 @@ msgstr "מסמכי LyX (*.lyx)"
 
 #: src/frontends/qt4/GuiView.cpp:1392 src/frontends/qt4/Validator.cpp:174
 #: src/insets/ExternalSupport.cpp:365 src/insets/InsetBibtex.cpp:286
-#: src/insets/InsetGraphics.cpp:592 src/insets/InsetInclude.cpp:471
+#: src/insets/InsetGraphics.cpp:592 src/insets/InsetInclude.cpp:477
 msgid "Invalid filename"
 msgstr "שם קובץ לא תקין"
 
@@ -19789,7 +19792,7 @@ msgid "List of Changes"
 msgstr "רשימת טבלאות"
 
 #: src/insets/ExternalSupport.cpp:366 src/insets/InsetBibtex.cpp:287
-#: src/insets/InsetGraphics.cpp:593 src/insets/InsetInclude.cpp:472
+#: src/insets/InsetGraphics.cpp:593 src/insets/InsetInclude.cpp:478
 msgid ""
 "The following filename is likely to cause trouble when running the exported "
 "file through LaTeX: "
@@ -19951,7 +19954,7 @@ msgstr ""
 msgid "Undef: "
 msgstr ""
 
-#: src/insets/InsetBranch.cpp:234
+#: src/insets/InsetBranch.cpp:227
 msgid "branch"
 msgstr "ענף"
 
@@ -20063,7 +20066,7 @@ msgstr "התוסף \"הערת תחתית\" פתוח"
 msgid "footnote"
 msgstr "הערת תחתית"
 
-#: src/insets/InsetGraphics.cpp:470 src/insets/InsetInclude.cpp:549
+#: src/insets/InsetGraphics.cpp:470 src/insets/InsetInclude.cpp:555
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -20084,24 +20087,24 @@ msgstr "בסופו של דבר, אין צורך להמיר את %1$s"
 msgid "Graphics file: %1$s"
 msgstr "קובץ תמונה: %1$s"
 
-#: src/insets/InsetInclude.cpp:335
+#: src/insets/InsetInclude.cpp:341
 msgid "Verbatim Input"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:338
+#: src/insets/InsetInclude.cpp:344
 msgid "Verbatim Input*"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:438 src/insets/InsetInclude.cpp:637
+#: src/insets/InsetInclude.cpp:444 src/insets/InsetInclude.cpp:643
 msgid "Recursive input"
 msgstr "קלט רקורסיבי"
 
-#: src/insets/InsetInclude.cpp:439 src/insets/InsetInclude.cpp:638
+#: src/insets/InsetInclude.cpp:445 src/insets/InsetInclude.cpp:644
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr "ניסיון לכלול את הקובץ %1$s בתוך עצמו. מתעלם מכלילת הקובץ."
 
-#: src/insets/InsetInclude.cpp:494
+#: src/insets/InsetInclude.cpp:500
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -20112,11 +20115,11 @@ msgstr ""
 "הוא במחלקת טקסט `%2$s'\n"
 "בעוד שמסמך האב הוא במחלקת טקסט `%3$s'."
 
-#: src/insets/InsetInclude.cpp:500
+#: src/insets/InsetInclude.cpp:506
 msgid "Different textclasses"
 msgstr "מחלקת טקסט שונה"
 
-#: src/insets/InsetInclude.cpp:515
+#: src/insets/InsetInclude.cpp:521
 #, fuzzy, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -20127,7 +20130,7 @@ msgstr ""
 "הוא במחלקת טקסט `%2$s'\n"
 "בעוד שמסמך האב הוא במחלקת טקסט `%3$s'."
 
-#: src/insets/InsetInclude.cpp:519
+#: src/insets/InsetInclude.cpp:525
 #, fuzzy
 msgid "Module not found"
 msgstr "קובץ לא נמצא"

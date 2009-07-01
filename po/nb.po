@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.6.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-06-29 08:30+0200\n"
+"POT-Creation-Date: 2009-07-01 07:47+0200\n"
 "PO-Revision-Date: 2009-05-29 11:55+0200\n"
 "Last-Translator: Helge Hafting <helge.hafting@aitel.hist.no>\n"
 "Language-Team: norsk <no@li.org>\n"
@@ -1471,11 +1471,11 @@ msgstr "Velg dokument som skal settes inn"
 msgid "&Include Type:"
 msgstr "&Innkluderingsform:"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:293 src/insets/InsetInclude.cpp:341
+#: src/frontends/qt4/ui/IncludeUi.ui:293 src/insets/InsetInclude.cpp:347
 msgid "Include"
 msgstr "Inkluder"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:298 src/insets/InsetInclude.cpp:332
+#: src/frontends/qt4/ui/IncludeUi.ui:298 src/insets/InsetInclude.cpp:338
 msgid "Input"
 msgstr "Input"
 
@@ -1483,8 +1483,8 @@ msgstr "Input"
 msgid "Verbatim"
 msgstr "Verbatim"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:964
-#: src/insets/InsetInclude.cpp:970
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:970
+#: src/insets/InsetInclude.cpp:976
 msgid "Program Listing"
 msgstr "Programlisting"
 
@@ -2484,13 +2484,16 @@ msgid "User &interface language:"
 msgstr "Språk for brukergrensesn&itt:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:35
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:55
-msgid "Select the default language of your documents"
-msgstr "Velg standardspråk for dokumentene dine"
+msgid "Select the language of the user interface (menus, dialogs, etc.)"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:45
 msgid "&Default language:"
 msgstr "Stan&dardspråk:"
+
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:55
+msgid "Select the default language of your documents"
+msgstr "Velg standardspråk for dokumentene dine"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:65
 msgid "Language pac&kage:"
@@ -15124,22 +15127,22 @@ msgstr "Ett tegn (uten mellomrom)"
 msgid "Statistics"
 msgstr "Statistikk"
 
-#: src/BufferView.cpp:2144
+#: src/BufferView.cpp:2145
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Setter inn dokumentet %1$s..."
 
-#: src/BufferView.cpp:2155
+#: src/BufferView.cpp:2156
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Satt inn document %1$s."
 
-#: src/BufferView.cpp:2157
+#: src/BufferView.cpp:2158
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Kunne ikke sette inn dokumentet %1$s"
 
-#: src/BufferView.cpp:2419
+#: src/BufferView.cpp:2420
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15150,26 +15153,26 @@ msgstr ""
 "%1$s.\n"
 "på grunn av feilen: %2$s"
 
-#: src/BufferView.cpp:2421
+#: src/BufferView.cpp:2422
 msgid "Could not read file"
 msgstr "Kunne ikke lese filen"
 
-#: src/BufferView.cpp:2428
+#: src/BufferView.cpp:2429
 #, fuzzy, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr "%1$s var uleselig"
 
-#: src/BufferView.cpp:2429 src/output.cpp:39
+#: src/BufferView.cpp:2430 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Kan ikke åpne fil"
 
-#: src/BufferView.cpp:2436
+#: src/BufferView.cpp:2437
 msgid "Reading not UTF-8 encoded file"
 msgstr ""
 
-#: src/BufferView.cpp:2437
+#: src/BufferView.cpp:2438
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -19165,7 +19168,7 @@ msgstr "LyX-1.6.x dokumenter (*.lyx16)"
 
 #: src/frontends/qt4/GuiView.cpp:1392 src/frontends/qt4/Validator.cpp:174
 #: src/insets/ExternalSupport.cpp:365 src/insets/InsetBibtex.cpp:286
-#: src/insets/InsetGraphics.cpp:592 src/insets/InsetInclude.cpp:471
+#: src/insets/InsetGraphics.cpp:592 src/insets/InsetInclude.cpp:477
 msgid "Invalid filename"
 msgstr "Ugyldig filnavn"
 
@@ -19495,7 +19498,7 @@ msgid "List of Changes"
 msgstr "Liste over endringer"
 
 #: src/insets/ExternalSupport.cpp:366 src/insets/InsetBibtex.cpp:287
-#: src/insets/InsetGraphics.cpp:593 src/insets/InsetInclude.cpp:472
+#: src/insets/InsetGraphics.cpp:593 src/insets/InsetInclude.cpp:478
 msgid ""
 "The following filename is likely to cause trouble when running the exported "
 "file through LaTeX: "
@@ -19652,7 +19655,7 @@ msgstr ""
 msgid "Undef: "
 msgstr "Ref: "
 
-#: src/insets/InsetBranch.cpp:234
+#: src/insets/InsetBranch.cpp:227
 msgid "branch"
 msgstr "dokumentgren"
 
@@ -19768,7 +19771,7 @@ msgstr "Åpnet fotnote"
 msgid "footnote"
 msgstr "fotnote"
 
-#: src/insets/InsetGraphics.cpp:470 src/insets/InsetInclude.cpp:549
+#: src/insets/InsetGraphics.cpp:470 src/insets/InsetInclude.cpp:555
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -19789,25 +19792,25 @@ msgstr "Det er ikke nødvendig å kovnvertere %1$s"
 msgid "Graphics file: %1$s"
 msgstr "Grafikkfil: %1$s"
 
-#: src/insets/InsetInclude.cpp:335
+#: src/insets/InsetInclude.cpp:341
 msgid "Verbatim Input"
 msgstr "Sett inn Verbatim"
 
-#: src/insets/InsetInclude.cpp:338
+#: src/insets/InsetInclude.cpp:344
 #, fuzzy
 msgid "Verbatim Input*"
 msgstr "Sett inn Verbatim"
 
-#: src/insets/InsetInclude.cpp:438 src/insets/InsetInclude.cpp:637
+#: src/insets/InsetInclude.cpp:444 src/insets/InsetInclude.cpp:643
 msgid "Recursive input"
 msgstr "Rekursiv input"
 
-#: src/insets/InsetInclude.cpp:439 src/insets/InsetInclude.cpp:638
+#: src/insets/InsetInclude.cpp:445 src/insets/InsetInclude.cpp:644
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:494
+#: src/insets/InsetInclude.cpp:500
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -19818,11 +19821,11 @@ msgstr ""
 "har tekstklasse `%2$s'\n"
 "mens hovedfilen har tekstklasse `%3$s'."
 
-#: src/insets/InsetInclude.cpp:500
+#: src/insets/InsetInclude.cpp:506
 msgid "Different textclasses"
 msgstr "Ulike tekstklasser"
 
-#: src/insets/InsetInclude.cpp:515
+#: src/insets/InsetInclude.cpp:521
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -19833,7 +19836,7 @@ msgstr ""
 "bruker modul `%2$s'\n"
 "som ikke fins i hovedfilen."
 
-#: src/insets/InsetInclude.cpp:519
+#: src/insets/InsetInclude.cpp:525
 msgid "Module not found"
 msgstr "Fant ikke modulen"
 

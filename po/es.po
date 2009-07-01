@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-06-30 14:04+0200\n"
+"POT-Creation-Date: 2009-07-01 07:47+0200\n"
 "PO-Revision-Date: 2009-06-30 13:22+0100\n"
 "Last-Translator: Ignacio García  <ignacio.gmorales@gmail.com>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -2509,13 +2509,16 @@ msgid "User &interface language:"
 msgstr "&Idioma de la interfaz de usuario:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:35
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:55
-msgid "Select the default language of your documents"
-msgstr "Seleccionar el idioma predeterminado de los documentos"
+msgid "Select the language of the user interface (menus, dialogs, etc.)"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:45
 msgid "&Default language:"
 msgstr "Idioma &predeterminado:"
+
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:55
+msgid "Select the default language of your documents"
+msgstr "Seleccionar el idioma predeterminado de los documentos"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:65
 msgid "Language pac&kage:"

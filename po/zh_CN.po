@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.5.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-06-29 08:30+0200\n"
+"POT-Creation-Date: 2009-07-01 07:47+0200\n"
 "PO-Revision-Date: 2008-08-04 23:00+0100\n"
 "Last-Translator: Bo Peng <ben.bob@gmail.com>\n"
 "Language-Team: English <en@translate.freefriends.org>\n"
@@ -1498,11 +1498,11 @@ msgstr "包含的文件名"
 msgid "&Include Type:"
 msgstr "包含类别(&I)"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:293 src/insets/InsetInclude.cpp:341
+#: src/frontends/qt4/ui/IncludeUi.ui:293 src/insets/InsetInclude.cpp:347
 msgid "Include"
 msgstr "包含"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:298 src/insets/InsetInclude.cpp:332
+#: src/frontends/qt4/ui/IncludeUi.ui:298 src/insets/InsetInclude.cpp:338
 msgid "Input"
 msgstr "输入"
 
@@ -1510,8 +1510,8 @@ msgstr "输入"
 msgid "Verbatim"
 msgstr "Verbatim"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:964
-#: src/insets/InsetInclude.cpp:970
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:970
+#: src/insets/InsetInclude.cpp:976
 msgid "Program Listing"
 msgstr "程序列表"
 
@@ -2570,14 +2570,17 @@ msgid "User &interface language:"
 msgstr "用户界面文件(&U):"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:35
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:55
-#, fuzzy
-msgid "Select the default language of your documents"
-msgstr "恢复至文本类的缺省设定"
+msgid "Select the language of the user interface (menus, dialogs, etc.)"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:45
 msgid "&Default language:"
 msgstr "缺省语言(&D):"
+
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:55
+#, fuzzy
+msgid "Select the default language of your documents"
+msgstr "恢复至文本类的缺省设定"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:65
 msgid "Language pac&kage:"
@@ -15492,22 +15495,22 @@ msgstr ""
 msgid "Statistics"
 msgstr "状态"
 
-#: src/BufferView.cpp:2144
+#: src/BufferView.cpp:2145
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "插入文档 %1$s..."
 
-#: src/BufferView.cpp:2155
+#: src/BufferView.cpp:2156
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "文档 %1$s 已插入"
 
-#: src/BufferView.cpp:2157
+#: src/BufferView.cpp:2158
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "无法插入文档 %1$s"
 
-#: src/BufferView.cpp:2419
+#: src/BufferView.cpp:2420
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15518,26 +15521,26 @@ msgstr ""
 "%1$s\n"
 "错误信息: %2$s"
 
-#: src/BufferView.cpp:2421
+#: src/BufferView.cpp:2422
 msgid "Could not read file"
 msgstr "无法读取文件"
 
-#: src/BufferView.cpp:2428
+#: src/BufferView.cpp:2429
 #, fuzzy, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr "无法读取 %1$s"
 
-#: src/BufferView.cpp:2429 src/output.cpp:39
+#: src/BufferView.cpp:2430 src/output.cpp:39
 msgid "Could not open file"
 msgstr "无法打开文件"
 
-#: src/BufferView.cpp:2436
+#: src/BufferView.cpp:2437
 msgid "Reading not UTF-8 encoded file"
 msgstr "读入非UTF-8编码的文件"
 
-#: src/BufferView.cpp:2437
+#: src/BufferView.cpp:2438
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -19692,7 +19695,7 @@ msgstr "LyX 文档 (*.lyx)"
 
 #: src/frontends/qt4/GuiView.cpp:1392 src/frontends/qt4/Validator.cpp:174
 #: src/insets/ExternalSupport.cpp:365 src/insets/InsetBibtex.cpp:286
-#: src/insets/InsetGraphics.cpp:592 src/insets/InsetInclude.cpp:471
+#: src/insets/InsetGraphics.cpp:592 src/insets/InsetInclude.cpp:477
 msgid "Invalid filename"
 msgstr "无效文件名"
 
@@ -20050,7 +20053,7 @@ msgid "List of Changes"
 msgstr "表格列表"
 
 #: src/insets/ExternalSupport.cpp:366 src/insets/InsetBibtex.cpp:287
-#: src/insets/InsetGraphics.cpp:593 src/insets/InsetInclude.cpp:472
+#: src/insets/InsetGraphics.cpp:593 src/insets/InsetInclude.cpp:478
 msgid ""
 "The following filename is likely to cause trouble when running the exported "
 "file through LaTeX: "
@@ -20213,7 +20216,7 @@ msgstr ""
 msgid "Undef: "
 msgstr "Undef: "
 
-#: src/insets/InsetBranch.cpp:234
+#: src/insets/InsetBranch.cpp:227
 msgid "branch"
 msgstr "branch"
 
@@ -20325,7 +20328,7 @@ msgstr "打开的尾注项"
 msgid "footnote"
 msgstr "脚注"
 
-#: src/insets/InsetGraphics.cpp:470 src/insets/InsetInclude.cpp:549
+#: src/insets/InsetGraphics.cpp:470 src/insets/InsetInclude.cpp:555
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -20346,24 +20349,24 @@ msgstr "No conversion of %1$s is needed after all"
 msgid "Graphics file: %1$s"
 msgstr "图形文件: %1$s"
 
-#: src/insets/InsetInclude.cpp:335
+#: src/insets/InsetInclude.cpp:341
 msgid "Verbatim Input"
 msgstr "Verbatim Input"
 
-#: src/insets/InsetInclude.cpp:338
+#: src/insets/InsetInclude.cpp:344
 msgid "Verbatim Input*"
 msgstr "Verbatim Input*"
 
-#: src/insets/InsetInclude.cpp:438 src/insets/InsetInclude.cpp:637
+#: src/insets/InsetInclude.cpp:444 src/insets/InsetInclude.cpp:643
 msgid "Recursive input"
 msgstr "迭代输入"
 
-#: src/insets/InsetInclude.cpp:439 src/insets/InsetInclude.cpp:638
+#: src/insets/InsetInclude.cpp:445 src/insets/InsetInclude.cpp:644
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr "试图包含文件 %1$s 本身! 忽略包含."
 
-#: src/insets/InsetInclude.cpp:494
+#: src/insets/InsetInclude.cpp:500
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -20374,11 +20377,11 @@ msgstr ""
 "has textclass `%2$s'\n"
 "while parent file has textclass `%3$s'."
 
-#: src/insets/InsetInclude.cpp:500
+#: src/insets/InsetInclude.cpp:506
 msgid "Different textclasses"
 msgstr "不同文档类"
 
-#: src/insets/InsetInclude.cpp:515
+#: src/insets/InsetInclude.cpp:521
 #, fuzzy, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -20389,7 +20392,7 @@ msgstr ""
 "has textclass `%2$s'\n"
 "while parent file has textclass `%3$s'."
 
-#: src/insets/InsetInclude.cpp:519
+#: src/insets/InsetInclude.cpp:525
 #, fuzzy
 msgid "Module not found"
 msgstr "文件没有找到"

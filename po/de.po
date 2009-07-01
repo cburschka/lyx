@@ -87,6 +87,7 @@
 #   toggle               -> umschalten / an/aus
 #   tooltip              -> Kurzinfo
 #   type                 -> Art
+#   user interface       -> Benutzeroberfläche
 #   view(er)             -> ansehen / Ansicht / Betrachter
 #   wrap                 -> umflossenes Gleitobjekt
 #
@@ -96,7 +97,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-06-29 08:30+0200\n"
+"POT-Creation-Date: 2009-07-01 07:47+0200\n"
 "PO-Revision-Date: 2009-06-29 08:42+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
@@ -1578,11 +1579,11 @@ msgstr "Name der einzubindenden Datei"
 msgid "&Include Type:"
 msgstr "&Art der Einbindung:"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:293 src/insets/InsetInclude.cpp:341
+#: src/frontends/qt4/ui/IncludeUi.ui:293 src/insets/InsetInclude.cpp:347
 msgid "Include"
 msgstr "Include"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:298 src/insets/InsetInclude.cpp:332
+#: src/frontends/qt4/ui/IncludeUi.ui:298 src/insets/InsetInclude.cpp:338
 msgid "Input"
 msgstr "Input"
 
@@ -1590,8 +1591,8 @@ msgstr "Input"
 msgid "Verbatim"
 msgstr "Unformatiert"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:964
-#: src/insets/InsetInclude.cpp:970
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:970
+#: src/insets/InsetInclude.cpp:976
 msgid "Program Listing"
 msgstr "Programmlisting"
 
@@ -2603,16 +2604,19 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:25
 msgid "User &interface language:"
-msgstr "&Sprache der Benutzerschnittstelle:"
+msgstr "Sprache der Benutzer&oberfläche:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:35
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:55
-msgid "Select the default language of your documents"
-msgstr "Wählen Sie die Standardsprache Ihres Dokuments"
+msgid "Select the language of the user interface (menus, dialogs, etc.)"
+msgstr "Legen Sie die Sprache der Benutzeroberfläche (Menüs, Dialoge usw.) fest."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:45
 msgid "&Default language:"
 msgstr "Standard-&Sprache:"
+
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:55
+msgid "Select the default language of your documents"
+msgstr "Wählen Sie die Standardsprache Ihrer Dokumente."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:65
 msgid "Language pac&kage:"
@@ -2698,12 +2702,12 @@ msgstr "Rechts-nach-links-Sprachunterstützung"
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
-"Bitte aktivieren, um Sprachen zu unterstützen, die von rechts nach links "
-"geschrieben werden, wie etwa Hebräisch oder Arabisch."
+"Aktiviert die Unterstützung von Sprachen, die von rechts nach links "
+"geschrieben werden (bspw. Hebräisch oder Arabisch)."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:206
 msgid "Enable RTL su&pport"
-msgstr "%RTL-Unterstützung aktivieren"
+msgstr "&RNL-Unterstützung aktivieren"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:234
 msgid "Cursor movement:"
@@ -2891,7 +2895,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefPlaintextUi.ui:67
 msgid "Output &line length:"
-msgstr "Ausgaben-&Zeilenlänge:"
+msgstr "&Zeilenlänge der Ausgabe:"
 
 #: src/frontends/qt4/ui/PrefPlaintextUi.ui:77
 msgid "&roff command:"
@@ -15080,22 +15084,22 @@ msgstr "Ein Zeichen (ohne Leerzeichen)"
 msgid "Statistics"
 msgstr "Statistik"
 
-#: src/BufferView.cpp:2144
+#: src/BufferView.cpp:2145
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Füge Dokument %1$s ein..."
 
-#: src/BufferView.cpp:2155
+#: src/BufferView.cpp:2156
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s ist eingefügt."
 
-#: src/BufferView.cpp:2157
+#: src/BufferView.cpp:2158
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Das Dokument %1$s konnte nicht eingefügt werden"
 
-#: src/BufferView.cpp:2419
+#: src/BufferView.cpp:2420
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15106,26 +15110,26 @@ msgstr ""
 "konnte aufgrund des folgenden Fehlers\n"
 "nicht gelesen werden: %2$s"
 
-#: src/BufferView.cpp:2421
+#: src/BufferView.cpp:2422
 msgid "Could not read file"
 msgstr "Die Datei konnte nicht gelesen werden"
 
-#: src/BufferView.cpp:2428
+#: src/BufferView.cpp:2429
 #, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr "%1$s ist nicht lesbar."
 
-#: src/BufferView.cpp:2429 src/output.cpp:39
+#: src/BufferView.cpp:2430 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Die Datei konnte nicht geöffnet werden"
 
-#: src/BufferView.cpp:2436
+#: src/BufferView.cpp:2437
 msgid "Reading not UTF-8 encoded file"
 msgstr "Lese nicht-UTF-8-kodierte Datei"
 
-#: src/BufferView.cpp:2437
+#: src/BufferView.cpp:2438
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -16768,7 +16772,7 @@ msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
 msgstr ""
-"Die Datei, in der die Menüstruktur (UI -- User Interface) festgelegt wird. "
+"Die Datei, in der die Benutzeroberfläche (UI -- User Interface) festgelegt wird. "
 "Entweder Sie geben einen absoluten Pfad an oder LyX sucht in den lokalen und "
 "globalen ui-Verzeichnissen."
 
@@ -18454,7 +18458,7 @@ msgstr "Spracheinstellungen"
 
 #: src/frontends/qt4/GuiPrefs.cpp:227
 msgid "Output"
-msgstr "Ausgaben"
+msgstr "Ausgabe"
 
 #: src/frontends/qt4/GuiPrefs.cpp:228
 msgid "File Handling"
@@ -18560,7 +18564,7 @@ msgid ""
 "The change of user interface language will be fully effective only after a "
 "restart."
 msgstr ""
-"Die Änderung der Sprache der Programmmenüs wird erst nach einem Neustart von "
+"Die Änderung der Sprache der Benutzeroberfläche wird erst nach einem Neustart von "
 "LyX wirksam."
 
 #: src/frontends/qt4/GuiPrefs.cpp:1853
@@ -18569,7 +18573,7 @@ msgstr "Drucker"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1951 src/frontends/qt4/GuiPrefs.cpp:2650
 msgid "User interface"
-msgstr "Benutzerschnittstelle"
+msgstr "Benutzeroberfläche"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2037
 msgid "Control"
@@ -19251,7 +19255,7 @@ msgstr "LyX-1.6.x-Dokumente (*.lyx16)"
 
 #: src/frontends/qt4/GuiView.cpp:1392 src/frontends/qt4/Validator.cpp:174
 #: src/insets/ExternalSupport.cpp:365 src/insets/InsetBibtex.cpp:286
-#: src/insets/InsetGraphics.cpp:592 src/insets/InsetInclude.cpp:471
+#: src/insets/InsetGraphics.cpp:592 src/insets/InsetInclude.cpp:477
 msgid "Invalid filename"
 msgstr "Ungültiger Dateiname"
 
@@ -19580,7 +19584,7 @@ msgid "List of Changes"
 msgstr "Liste der Änderungen"
 
 #: src/insets/ExternalSupport.cpp:366 src/insets/InsetBibtex.cpp:287
-#: src/insets/InsetGraphics.cpp:593 src/insets/InsetInclude.cpp:472
+#: src/insets/InsetGraphics.cpp:593 src/insets/InsetInclude.cpp:478
 msgid ""
 "The following filename is likely to cause trouble when running the exported "
 "file through LaTeX: "
@@ -19737,7 +19741,7 @@ msgstr "Zweig (Unterdokument): "
 msgid "Undef: "
 msgstr "Undef.: "
 
-#: src/insets/InsetBranch.cpp:234
+#: src/insets/InsetBranch.cpp:227
 msgid "branch"
 msgstr "Zweig"
 
@@ -19840,7 +19844,7 @@ msgstr "Fußnoten-Einfügung geöffnet"
 msgid "footnote"
 msgstr "Fußnote"
 
-#: src/insets/InsetGraphics.cpp:470 src/insets/InsetInclude.cpp:549
+#: src/insets/InsetGraphics.cpp:470 src/insets/InsetInclude.cpp:555
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -19861,26 +19865,26 @@ msgstr "Es ist keine Konvertierung von %1$s notwendig"
 msgid "Graphics file: %1$s"
 msgstr "Grafikdatei: %1$s"
 
-#: src/insets/InsetInclude.cpp:335
+#: src/insets/InsetInclude.cpp:341
 msgid "Verbatim Input"
 msgstr "Unformatiert"
 
-#: src/insets/InsetInclude.cpp:338
+#: src/insets/InsetInclude.cpp:344
 msgid "Verbatim Input*"
 msgstr "Unformatiert*"
 
-#: src/insets/InsetInclude.cpp:438 src/insets/InsetInclude.cpp:637
+#: src/insets/InsetInclude.cpp:444 src/insets/InsetInclude.cpp:643
 msgid "Recursive input"
 msgstr "Rekursive Eingabe"
 
-#: src/insets/InsetInclude.cpp:439 src/insets/InsetInclude.cpp:638
+#: src/insets/InsetInclude.cpp:445 src/insets/InsetInclude.cpp:644
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
 "Sie haben versucht, die Datei %1$s in sich selbst einzubetten! Die "
 "Einbettung wird ignoriert."
 
-#: src/insets/InsetInclude.cpp:494
+#: src/insets/InsetInclude.cpp:500
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -19891,11 +19895,11 @@ msgstr ""
 "hat die Textklasse `%2$s',\n"
 "während die Hauptdatei die Textklasse `%3$s' hat."
 
-#: src/insets/InsetInclude.cpp:500
+#: src/insets/InsetInclude.cpp:506
 msgid "Different textclasses"
 msgstr "Unterschiedliche Textklassen"
 
-#: src/insets/InsetInclude.cpp:515
+#: src/insets/InsetInclude.cpp:521
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -19906,7 +19910,7 @@ msgstr ""
 "benutzt Modul `%2$s',\n"
 "das nicht in der Hauptdatei benutzt wird."
 
-#: src/insets/InsetInclude.cpp:519
+#: src/insets/InsetInclude.cpp:525
 msgid "Module not found"
 msgstr "Modul nicht gefunden"
 
