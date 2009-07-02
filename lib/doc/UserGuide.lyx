@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 360
+\lyxformat 362
 \begin_document
 \begin_header
 \textclass scrbook
@@ -5220,7 +5220,6 @@ Itemize
 \begin_layout Standard
 We said that different levels use different symbols as their label.
  Here's an example of all four possible symbols.
- Note that those of you reading this manual within LyX won't see any difference.
 \end_layout
 
 \begin_layout Itemize
@@ -42929,6 +42928,7 @@ Bibliography
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "Credits"
@@ -42963,6 +42963,7 @@ http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/CREDITS
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexcompanion"
@@ -42978,6 +42979,7 @@ The LaTeX Companion Second Edition.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexguide"
@@ -42994,6 +42996,7 @@ A Guide to LaTeX Fourth Edition.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexbook"
@@ -43009,6 +43012,7 @@ LaTeX: A Document Preparation System.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "texbook"
@@ -43026,6 +43030,7 @@ The TeXbook.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "TeXCatalogue"
@@ -43051,6 +43056,7 @@ http://www.ctan.org/tex-archive/help/Catalogue/bytopic.html
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "LaTeXFAQ"
@@ -43076,6 +43082,7 @@ http://www.tex.ac.uk/cgi-bin/texfaq2html
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "BibTeX"
@@ -43113,6 +43120,7 @@ http://www.ctan.org/get/biblio/bibtex/contrib/doc/btxdoc.pdf
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "BibTeX-2"
@@ -43150,6 +43158,7 @@ http://www.ctan.org/tex-archive/info/bibtex/tamethebeast/ttb_en.pdf
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "makeindex"
@@ -43187,6 +43196,7 @@ http://tug.ctan.org/indexing/makeindex/doc/manpages.dvi
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "xindy"
@@ -43224,6 +43234,7 @@ http://www.xindy.org/documentation.html
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "caption"
@@ -43271,6 +43282,7 @@ ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption.pdf
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "fancyhdr"
@@ -43318,6 +43330,7 @@ ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "hyperref"
@@ -43369,6 +43382,7 @@ ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/hyperref.pdf
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "nomencl"
@@ -43416,6 +43430,7 @@ ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/nomencl/nomencl.pdf
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "tipa"
@@ -43463,6 +43478,7 @@ http://www.ctan.org/tex-archive/fonts/tipa/tipaman.pdf
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "wrapfig"
@@ -43510,6 +43526,7 @@ ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/wrapfig/wrapfig.sty
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "XeTeX"
@@ -43543,6 +43560,7 @@ http://wiki.lyx.org/LyX/XeTeX
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Arabic"
@@ -43576,6 +43594,7 @@ http://wiki.lyx.org/Windows/Arabic
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Armenian"
@@ -43609,6 +43628,7 @@ http://wiki.lyx.org/Windows/Armenian
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Farsi"
@@ -43642,6 +43662,7 @@ http://wiki.lyx.org/Windows/Farsi
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Hebrew"
@@ -43675,6 +43696,7 @@ http://wiki.lyx.org/Windows/Hebrew
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Japanese"
@@ -43708,6 +43730,7 @@ http://wiki.lyx.org/Windows/Japanese
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Latvian"
@@ -43741,6 +43764,7 @@ http://wiki.lyx.org/Windows/Latvian
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Lithuanian"
@@ -43774,6 +43798,7 @@ http://wiki.lyx.org/Windows/Lithuanian
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Mongolian"
@@ -43807,6 +43832,7 @@ http://wiki.lyx.org/Windows/Mongolian
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Vietnamese"
@@ -43840,6 +43866,7 @@ http://wiki.lyx.org/Windows/Vietnamese
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "LyX-func"
@@ -43873,6 +43900,7 @@ http://wiki.lyx.org/LyX/LyxFunctionList
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring Literaturverzeichnis
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "NewInLyX16"
