@@ -44,7 +44,7 @@ Function UpdateModifiedFiles
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\es\Math.lyx"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\es\Shortcuts.lyx"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\es\Tutorial.lyx"
- #File "${PRODUCT_SOURCEDIR}\Resources\doc\es\UserGuide.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\es\UserGuide.lyx"
  SetOutPath "$INSTDIR\Resources\doc\eu"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\eu\Customization.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\eu\Intro.lyx"
