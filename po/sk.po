@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-07-01 07:47+0200\n"
-"PO-Revision-Date: 2009-06-09 17:25+0200\n"
+"PO-Revision-Date: 2009-07-02 16:09+0200\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
 "Language-Team: Slowakisch <kde-i18n-de@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -10329,14 +10329,12 @@ msgid "Equation Label|L"
 msgstr "Návestie Rovnice|N"
 
 #: lib/ui/stdcontext.inc:54 lib/ui/stdmenus.inc:200
-#, fuzzy
 msgid "Number Whole Formula|N"
-msgstr "Prepnúť číslovanie celého vzorca"
+msgstr "Očísluj Celý Vzorec"
 
 #: lib/ui/stdcontext.inc:55 lib/ui/stdmenus.inc:201
-#, fuzzy
 msgid "Number This Line|u"
-msgstr "Prepnúť čislovanie tohto riadku"
+msgstr "Očísluj Tento Riadok"
 
 #: lib/ui/stdcontext.inc:57 lib/ui/stdmenus.inc:211
 msgid "Split Cell|C"
@@ -10379,19 +10377,16 @@ msgid "Delete Line to Right"
 msgstr "Zmazať riadok doprava"
 
 #: lib/ui/stdcontext.inc:71
-#, fuzzy
 msgid "Show Math Toolbar"
-msgstr "Prepnúť lištu nástrojov pre matematiku"
+msgstr "Zobraz lištu nástrojov pre matematiku"
 
 #: lib/ui/stdcontext.inc:72
-#, fuzzy
 msgid "Show Math-Panels Toolbar"
-msgstr "Prepnúť lištu nástrojov pre matematiku"
+msgstr "Zobraz paneli nástrojov pre matematiku"
 
 #: lib/ui/stdcontext.inc:73
-#, fuzzy
 msgid "Show Table Toolbar"
-msgstr "Prepnúť lištu nástrojov pre tabuľku"
+msgstr "Zobraz lištu nástrojov pre tabuľku"
 
 #: lib/ui/stdcontext.inc:81 lib/ui/stdcontext.inc:98
 msgid "Next Cross-Reference|N"
@@ -10402,34 +10397,28 @@ msgid "Go to Label|G"
 msgstr "Prejsť na Návestie|P"
 
 #: lib/ui/stdcontext.inc:84
-#, fuzzy
 msgid "<Reference>|R"
-msgstr "<referencia>"
+msgstr "<Referencia>|R"
 
 #: lib/ui/stdcontext.inc:85
-#, fuzzy
 msgid "(<Reference>)|E"
-msgstr "(<referencia>)"
+msgstr "(<Referencia>)|E"
 
 #: lib/ui/stdcontext.inc:86
-#, fuzzy
 msgid "<Page>|P"
-msgstr "<strana>"
+msgstr "<Strana>"
 
 #: lib/ui/stdcontext.inc:87
-#, fuzzy
 msgid "On Page <Page>|o"
-msgstr "na strane <strana>"
+msgstr "Na Strane <Strana>"
 
 #: lib/ui/stdcontext.inc:88
-#, fuzzy
 msgid "<Reference> on Page <Page>|f"
-msgstr "<referencia> na strane <strana>"
+msgstr "<Referencia> na Strane <Strana>|f"
 
 #: lib/ui/stdcontext.inc:89
-#, fuzzy
 msgid "Formatted Reference|t"
-msgstr "Formátovaná referencia"
+msgstr "Formátovaná Referencia|t"
 
 #: lib/ui/stdcontext.inc:91 lib/ui/stdcontext.inc:103
 #: lib/ui/stdcontext.inc:113 lib/ui/stdcontext.inc:121
@@ -10443,18 +10432,16 @@ msgid "Settings...|S"
 msgstr "Nastavenia...|a"
 
 #: lib/ui/stdcontext.inc:99
-#, fuzzy
 msgid "Go Back|G"
-msgstr "Ísť späť"
+msgstr "Choď späť"
 
 #: lib/ui/stdcontext.inc:101
 msgid "Copy as Reference|C"
 msgstr "Kopírovať ako referenciu..."
 
 #: lib/ui/stdcontext.inc:123
-#, fuzzy
 msgid "Edit Database(s) Externally...|x"
-msgstr "Externe upraviť súbor...|x"
+msgstr "Externe upraviť databázu(y)...|x"
 
 #: lib/ui/stdcontext.inc:131 lib/ui/stdcontext.inc:159
 #: lib/ui/stdcontext.inc:175 lib/ui/stdcontext.inc:330
@@ -10473,47 +10460,40 @@ msgid "Dissolve Inset|D"
 msgstr "Rozpustit vložku do textu"
 
 #: lib/ui/stdcontext.inc:139
-#, fuzzy
 msgid "Show Label|L"
-msgstr "Prejsť na Návestie|N"
+msgstr "Zobraz Návestie|N"
 
 #: lib/ui/stdcontext.inc:150
 msgid "Frameless|l"
 msgstr "Bez rámu"
 
 #: lib/ui/stdcontext.inc:151
-#, fuzzy
 msgid "Simple Frame|F"
-msgstr "jednoduchý rám"
+msgstr "Jednoduchý Rám|R"
 
 #: lib/ui/stdcontext.inc:152
-#, fuzzy
 msgid "Simple Frame, Page Breaks|P"
-msgstr "Jednoduchý rám, zalomené stránky"
+msgstr "Jednoduchý Rám, Zalomené Stránky|Z"
 
 #: lib/ui/stdcontext.inc:153
-#, fuzzy
 msgid "Oval, Thin|a"
-msgstr "Oválný tenký"
+msgstr "Oválny, Tenký"
 
 #: lib/ui/stdcontext.inc:154
-#, fuzzy
 msgid "Oval, Thick|v"
-msgstr "Oválny tučný"
+msgstr "Oválny, Tučný|v"
 
 #: lib/ui/stdcontext.inc:155
 msgid "Drop Shadow|w"
 msgstr "Vrhá tieň"
 
 #: lib/ui/stdcontext.inc:156
-#, fuzzy
 msgid "Shaded Background|B"
-msgstr "Stienené pozadie"
+msgstr "Stienené Pozadie|P"
 
 #: lib/ui/stdcontext.inc:157
-#, fuzzy
 msgid "Double Frame|u"
-msgstr "dvojitý rám"
+msgstr "Dvojitý Rám"
 
 #: lib/ui/stdcontext.inc:171 lib/ui/stdmenus.inc:441
 msgid "LyX Note|N"
@@ -10528,14 +10508,12 @@ msgid "Greyed Out|G"
 msgstr "Zosivelé"
 
 #: lib/ui/stdcontext.inc:178
-#, fuzzy
 msgid "Open All Notes|A"
-msgstr "Otvor všetky vložky"
+msgstr "Otvor všetky poznámky|p"
 
 #: lib/ui/stdcontext.inc:179
-#, fuzzy
 msgid "Close All Notes|l"
-msgstr "Zavri všetky vložky"
+msgstr "Zavri všetky poznámky|o"
 
 #: lib/ui/stdcontext.inc:189
 msgid "Interword Space|w"
@@ -10666,9 +10644,8 @@ msgid "Listing|L"
 msgstr "Výpis"
 
 #: lib/ui/stdcontext.inc:254
-#, fuzzy
 msgid "Edit Included File...|E"
-msgstr "Edituj zahrnútý súbor..."
+msgstr "Edituj zahrnútý súbor...|E"
 
 #: lib/ui/stdcontext.inc:261 lib/ui/stdmenus.inc:387
 msgid "New Page|N"
@@ -10737,14 +10714,12 @@ msgid "Demote Section|m"
 msgstr "Znížiť úroveň sekcie"
 
 #: lib/ui/stdcontext.inc:291
-#, fuzzy
 msgid "Move Section Down|D"
-msgstr "Presunúť sekciu dole"
+msgstr "Presunúť sekciu dole|D"
 
 #: lib/ui/stdcontext.inc:292
-#, fuzzy
 msgid "Move Section Up|U"
-msgstr "Presunúť sekciu nahor"
+msgstr "Presunúť sekciu nahor|N"
 
 #: lib/ui/stdcontext.inc:293
 msgid "Insert Short Title|T"
@@ -10775,12 +10750,10 @@ msgid "Remove Last Argument"
 msgstr "Zmaž Posledný Argument"
 
 #: lib/ui/stdcontext.inc:310
-#, fuzzy
 msgid "Make First Non-Optional Into Optional Argument"
 msgstr "Zmeniť prvý povinný argument na nepovinný"
 
 #: lib/ui/stdcontext.inc:311
-#, fuzzy
 msgid "Make Last Optional Into Non-Optional Argument"
 msgstr "Zmeniť posledný nepovinný argument na povinný"
 
@@ -10793,22 +10766,18 @@ msgid "Remove Optional Argument"
 msgstr "Zmazať nepovinný argument"
 
 #: lib/ui/stdcontext.inc:315 lib/ui/stdmenus.inc:233
-#, fuzzy
 msgid "Append Argument Eating From the Right"
 msgstr "Pridať argument zprava"
 
 #: lib/ui/stdcontext.inc:316 lib/ui/stdmenus.inc:234
-#, fuzzy
 msgid "Append Optional Argument Eating From the Right"
-msgstr "Pridať nepovinný argument sprava"
+msgstr "Pridať nepovinný argument zprava"
 
 #: lib/ui/stdcontext.inc:317 lib/ui/stdmenus.inc:235
-#, fuzzy
 msgid "Remove Last Argument Spitting out to the Right"
 msgstr "Odstráň posledný argument zprava"
 
 #: lib/ui/stdcontext.inc:344 lib/ui/stdcontext.inc:356
-#, fuzzy
 msgid "Edit Externally...|x"
 msgstr "Externe upraviť...|x"
 
@@ -10869,14 +10838,12 @@ msgid "Close Window|d"
 msgstr "Zavrieť okno|r"
 
 #: lib/ui/stdmenus.inc:71
-#, fuzzy
 msgid "Check in Changes...|I"
-msgstr "Skontrolovať v zmenách..."
+msgstr "Skontrolovať v Zmenách..."
 
 #: lib/ui/stdmenus.inc:72
-#, fuzzy
 msgid "Check out for Edit|O"
-msgstr "Check-out na úpravu"
+msgstr "Check-out na úpravu|O"
 
 #: lib/ui/stdmenus.inc:76
 msgid "Use Locking Property|L"
@@ -10963,27 +10930,22 @@ msgid "Selection, Join Lines|i"
 msgstr "Výber, spojiť riadky"
 
 #: lib/ui/stdmenus.inc:146
-#, fuzzy
 msgid "Paste as LinkBack PDF"
 msgstr "Vlepiť ako LinkBack PDF"
 
 #: lib/ui/stdmenus.inc:147
-#, fuzzy
 msgid "Paste as PDF"
 msgstr "Vlepiť ako PDF"
 
 #: lib/ui/stdmenus.inc:148
-#, fuzzy
 msgid "Paste as PNG"
 msgstr "Vlepiť ako PNG"
 
 #: lib/ui/stdmenus.inc:149
-#, fuzzy
 msgid "Paste as JPEG"
 msgstr "Vlepiť ako JPEG"
 
 #: lib/ui/stdmenus.inc:157
-#, fuzzy
 msgid "Dissolve Text Style"
 msgstr "Rozpustiť štýl znakov do textu"
 
@@ -11064,24 +11026,20 @@ msgid "Mathematica|a"
 msgstr "Mathematica|a"
 
 #: lib/ui/stdmenus.inc:274
-#, fuzzy
 msgid "Maple, Simplify|S"
 msgstr "Maple, simplify (zjednodušiť)"
 
 #: lib/ui/stdmenus.inc:275
-#, fuzzy
 msgid "Maple, Factor|F"
-msgstr "Maple, factor (rozložiť)"
+msgstr "Maple, Factor (rozložiť)|F"
 
 #: lib/ui/stdmenus.inc:276
-#, fuzzy
 msgid "Maple, Evalm|E"
-msgstr "Maple, evalm (vyhodnotiť)"
+msgstr "Maple, Evalm (vyhodnotiť)"
 
 #: lib/ui/stdmenus.inc:277
-#, fuzzy
 msgid "Maple, Evalf|v"
-msgstr "Maple, evalf (plávajúca čiarka)"
+msgstr "Maple, Evalf (plávajúca čiarka)|v"
 
 #: lib/ui/stdmenus.inc:296
 msgid "Open All Insets|O"
@@ -11104,14 +11062,12 @@ msgid "View Source|S"
 msgstr "Zobraziť zdrojový text (LaTeX)"
 
 #: lib/ui/stdmenus.inc:306
-#, fuzzy
 msgid "Split View Into Left and Right Half|i"
-msgstr "Pohľad vertikálne rozdeliť"
+msgstr "Pohľad rozdeliť na ľavú a pravú polovičku"
 
 #: lib/ui/stdmenus.inc:307
-#, fuzzy
 msgid "Split View Into Upper and Lower Half|V"
-msgstr "Pohľad horizontálne rozdeliť"
+msgstr "Pohľad rozdeliť na vrchnú a spodnú polovičku"
 
 #: lib/ui/stdmenus.inc:308
 msgid "Close Tab Group|G"
@@ -11146,9 +11102,8 @@ msgid "Branch|B"
 msgstr "Vetva|V"
 
 #: lib/ui/stdmenus.inc:336
-#, fuzzy
 msgid "Custom Insets"
-msgstr "Vlastné vložky"
+msgstr "Vlastné Vložky"
 
 #: lib/ui/stdmenus.inc:337
 msgid "File|e"
@@ -11403,17 +11358,14 @@ msgid "Insert table"
 msgstr "Vložiť tabuľku"
 
 #: lib/ui/stdtoolbars.inc:92
-#, fuzzy
 msgid "Toggle outline"
 msgstr "Prepnúť členenie"
 
 #: lib/ui/stdtoolbars.inc:93
-#, fuzzy
 msgid "Toggle math toolbar"
 msgstr "Prepnúť lištu nástrojov pre matematiku"
 
 #: lib/ui/stdtoolbars.inc:94
-#, fuzzy
 msgid "Toggle table toolbar"
 msgstr "Prepnúť lištu nástrojov pre tabuľku"
 
@@ -11482,9 +11434,8 @@ msgid "Insert box"
 msgstr "Vložiť rámok"
 
 #: lib/ui/stdtoolbars.inc:118
-#, fuzzy
 msgid "Insert hyperlink"
-msgstr "Vložiť hyperlinku"
+msgstr "Vlož hyperlinku"
 
 #: lib/ui/stdtoolbars.inc:119
 msgid "Insert TeX code"
@@ -11651,58 +11602,48 @@ msgid "Insert cases environment"
 msgstr "Vložiť cases prostredie"
 
 #: lib/ui/stdtoolbars.inc:179
-#, fuzzy
 msgid "Toggle math panels"
-msgstr "Prepnúť zobrazenie matematického panelu"
+msgstr "Prepnúť zobrazenie matematických panelov"
 
 #: lib/ui/stdtoolbars.inc:182
 msgid "Math Macros"
 msgstr "Mat. makrá"
 
 #: lib/ui/stdtoolbars.inc:183
-#, fuzzy
 msgid "Remove last argument"
 msgstr "Zmaž Posledný Argument"
 
 #: lib/ui/stdtoolbars.inc:184
-#, fuzzy
 msgid "Append argument"
-msgstr "Pridaj Argument"
+msgstr "Pridaj argument"
 
 #: lib/ui/stdtoolbars.inc:186
-#, fuzzy
 msgid "Make first non-optional into optional argument"
-msgstr "Zmeniť prvý povinný argument na nepovinný"
+msgstr "Zmeň prvý povinný argument na nepovinný"
 
 #: lib/ui/stdtoolbars.inc:187
-#, fuzzy
 msgid "Make last optional into non-optional argument"
-msgstr "Zmeniť posledný nepovinný argument na povinný"
+msgstr "Zmeň posledný nepovinný argument na povinný"
 
 #: lib/ui/stdtoolbars.inc:189
-#, fuzzy
 msgid "Remove optional argument"
-msgstr "Zmazať nepovinný argument"
+msgstr "Zmaž nepovinný argument"
 
 #: lib/ui/stdtoolbars.inc:190
-#, fuzzy
 msgid "Insert optional argument"
-msgstr "Vložiť nepovinný argument"
+msgstr "Vlož nepovinný argument"
 
 #: lib/ui/stdtoolbars.inc:192
-#, fuzzy
 msgid "Remove last argument spitting out to the right"
 msgstr "Odstráň posledný argument zprava"
 
 #: lib/ui/stdtoolbars.inc:193
-#, fuzzy
 msgid "Append argument eating from the right"
-msgstr "Pridať argument zprava"
+msgstr "Pridaj argument zprava"
 
 #: lib/ui/stdtoolbars.inc:194
-#, fuzzy
 msgid "Append optional argument eating from the right"
-msgstr "Pridať nepovinný argument sprava"
+msgstr "Pridaj nepovinný argument sprava"
 
 #: lib/ui/stdtoolbars.inc:197
 msgid "Command Buffer"
@@ -11809,7 +11750,6 @@ msgid "Math Panels"
 msgstr "Matematické panely"
 
 #: lib/ui/stdtoolbars.inc:237
-#, fuzzy
 msgid "Math spacings"
 msgstr "Mat. rozstupy"
 
