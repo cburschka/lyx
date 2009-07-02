@@ -1,4 +1,4 @@
-#LyX 1.6.3svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -5276,87 +5276,12 @@ Permite hasta cuatro niveles de anidación.
 
 \end_deeper
 \begin_layout Standard
-Las distintas etiquetas para cada nivel de profundidad en una lista 
+Las distintas etiquetas para cada nivel de profundidad en una lista numerada,
+ 
 \family sans
 Enumeración
 \family default
- se ven igual en LyX y en la salida,
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\emph on
-\begin_inset CommandInset label
-LatexCommand label
-name "np:N.del-t.:-enum"
-
-\end_inset
-
-N.
-\begin_inset space \thinspace{}
-\end_inset
-
-del t.:
-\emph default
- En documentos en español, la salida muestra las etiquetas: 
-\begin_inset space ~
-\end_inset
-
- 1.
- 
-\begin_inset space ~
-\end_inset
-
- 
-\emph on
-a
-\emph default
-) 
-\emph on
-
-\begin_inset space ~
-\end_inset
-
- 
-\emph default
-1) 
-\emph on
-
-\begin_inset space ~
-\end_inset
-
- a
-\begin_inset Formula $^{\prime}$
-\end_inset
-
-
-\emph default
-
-\begin_inset Newline newline
-\end_inset
-
-Más información
-\emph on
-
-\begin_inset space ~
-\end_inset
-
-
-\emph default
-
-\begin_inset CommandInset ref
-LatexCommand vpageref
-reference "sub:En-español"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
- como se ve en el siguiente ejemplo:
+, son las que se muestran en el siguiente ejemplo:
 \end_layout
 
 \begin_layout Enumerate
@@ -5365,17 +5290,18 @@ El primer nivel usa números arábigos seguidos de un punto.
 
 \begin_deeper
 \begin_layout Enumerate
-El segundo usa letras minúsculas entre paréntesis.
+El segundo usa letras minúsculas y un paréntesis.
+ 
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-El tercer nivel usa números romanos en minúscula y punto.
+El tercer nivel usa números arábigos seguidos de paréntesis.
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-El cuarto usa mayúsculas y punto.
+El cuarto usa letras minúsculas y prima.
 \end_layout
 
 \begin_layout Enumerate
@@ -5409,8 +5335,7 @@ Enumeración
 Características adicionales
 \emph default
 ).
- Como se dijo antes, tal personalización sólo se aprecia en la versión impresa,
- no en LyX.
+ Estos cambios sólo se aprecian en la versión impresa, no en LyX.
 \end_layout
 
 \begin_layout Standard
@@ -5492,16 +5417,22 @@ spanish
  establece por omisión un conjunto de formatos y características adaptado
  a los usos tipográficos propios del español.
  En particular, las marcas que aparecen en los ítems de una lista sin numerar
- y los caracteres que aparecen en una lista numerada, (entornos 
+ (entorno 
 \family sans
 Enumeración
 \family default
-* y 
-\family sans
-Enumeración
-\family default
-, respectivamente), no son como los que se han descrito en las dos secciones
- anteriores.
+*), no son como las que se han descrito en la sección
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Enumeración*"
+
+\end_inset
+
+.
  
 \end_layout
 
@@ -5568,19 +5499,15 @@ spanishsignitems
 \begin_layout Standard
 A partir de la versión 
 \family typewriter
-5.0
+5.0h
 \family default
 , 
 \family typewriter
 spanish
 \family default
  ofrece la posibilidad de anular sus valores predefinidos de marcas y símbolos
- mediante la opción de paquete «es-nolists», (en la versión 
-\family typewriter
-5.0h
-\family default
- se añaden «es-noitemize» y «es-noenumerate»), insertada en el preámbulo
- LaTeX del documento con el comando:
+ mediante las opciones de paquete «es-nolists», «es-noitemize» y «es-noenumerate
+», insertando en el preámbulo LaTeX del documento el comando:
 \family typewriter
  
 \end_layout
@@ -5596,22 +5523,23 @@ spanishoptions{opción}
 \end_layout
 
 \begin_layout Standard
-Según la opción, en la salida se imprimirán en todas las listas, (o sólo
- en
+Según la opción elegida, en la salida se imprimirán en todas las listas,
+ o sólo en
 \family typewriter
  
 \family sans
 Enumeración*
 \family default
- o en 
+ o sólo en 
 \family sans
-Enumeración)
+Enumeración,
 \family default
- las etiquetas predefinidas por LaTeX (no por 
+ respectivamente, las etiquetas predefinidas por LyX/LaTeX en vez de las
+ predefinidas por 
 \family typewriter
 spanish
 \family default
-).
+.
  
 \end_layout
 
@@ -8334,7 +8262,7 @@ del t.:
 \size default
 \emph default
 \color inherit
-véanse notas 
+véase nota 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "np:N.del-t.:-item"
@@ -8345,28 +8273,14 @@ reference "np:N.del-t.:-item"
 \family roman
 \series medium
 \bar no
- y 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "np:N.del-t.:-enum"
-
-\end_inset
-
- en las secciones 
+ en la sección 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Enumeración*"
 
 \end_inset
 
- y 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Enumeración"
-
-\end_inset
-
-, respectivamente.
+.
 \end_layout
 
 \end_inset

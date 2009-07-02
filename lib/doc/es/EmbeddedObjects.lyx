@@ -21464,16 +21464,12 @@ e
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Subfloats
+Subflotantes
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Flotantes
-\lang english
- ! Subfloats
+Flotantes ! Subflotantes
 \end_layout
 
 \end_inset
@@ -21482,26 +21478,29 @@ Flotantes
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Subfloats are for example used when a figure consists of several images.
- They are created by inserting a float to an existing float.
- The placement of the subfloats can be controlled like for paragraphs as
- shown in table
+Los subflotantes se usan cuando, por ejemplo, una figura consta de varias
+ imágenes.
+ Se crean insertando un flotante dentro de otro.
+ La colocación de los subflotantes puede controlarse como si fueran párrafos,
+ como se muestra en las tablas
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Two-subtables-side"
+reference "tab:Dos-subtablas-adosadas"
 
 \end_inset
 
- and 
+ y
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Two-subtables-upon"
+reference "tab:Dos-subtablas-una-sobre"
 
 \end_inset
 
@@ -21509,34 +21508,37 @@ reference "tab:Two-subtables-upon"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Referencing subfloats works as for normal floats: Table
+Las referencias a subflotantes funcionan como en los flotantes normales:
+ la tabla
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:This-is-subtable-a"
+reference "tab:Esta-es-la-subtabla-a"
 
 \end_inset
 
- and 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:This-is-subtable-b"
-
-\end_inset
-
- are subtables of table
+ y la tabla
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Two-subtables-side"
+reference "tab:Esta-es-la-subtabla-b"
+
+\end_inset
+
+ son subtablas de la tabla
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Dos-subtablas-adosadas"
 
 \end_inset
 
@@ -21544,28 +21546,22 @@ reference "tab:Two-subtables-side"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Float table
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Caption
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Two-subtables-side"
+name "tab:Dos-subtablas-adosadas"
 
 \end_inset
 
-Two subtables placed side by side.
+Dos subtablas adosadas
 \end_layout
 
 \end_inset
@@ -21574,9 +21570,6 @@ Two subtables placed side by side.
 \end_layout
 
 \begin_layout Plain Layout
-\align center
-
-\lang english
 \begin_inset space \hfill{}
 \end_inset
 
@@ -21584,23 +21577,19 @@ Two subtables placed side by side.
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Caption
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:This-is-subtable-a"
+name "tab:Esta-es-la-subtabla-a"
 
 \end_inset
 
-This is subtable a.
+Esta es la subtabla a
 \end_layout
 
 \end_inset
@@ -21623,7 +21612,7 @@ This is subtable a.
 \begin_inset Text
 
 \begin_layout Plain Layout
-test
+test 
 \end_layout
 
 \end_inset
@@ -21682,23 +21671,19 @@ e
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Caption
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:This-is-subtable-b"
+name "tab:Esta-es-la-subtabla-b"
 
 \end_inset
 
-This is subtable b.
+Esta es la subtabla b
 \end_layout
 
 \end_inset
@@ -21770,6 +21755,10 @@ test
 
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -21785,29 +21774,23 @@ test
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Float table
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Caption
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Two-subtables-upon"
+name "tab:Dos-subtablas-una-sobre"
 
 \end_inset
 
-Two subtables placed one upon the other.
- (a) table with 4 cells, (b) table with 5 cells.
+Dos subtablas colocadas una sobre otra.
+ La tabla (a) con 4 celdas, la (b) con 5 celdas.
 \end_layout
 
 \end_inset
@@ -21816,6 +21799,7 @@ Two subtables placed one upon the other.
 \end_layout
 
 \begin_layout Plain Layout
+\noindent
 \align center
 \begin_inset Float table
 wide false
@@ -21888,6 +21872,10 @@ test
 
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -21899,6 +21887,10 @@ test
 wide false
 sideways false
 status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -21973,6 +21965,10 @@ e
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -31820,8 +31816,8 @@ reference "sub:Subsección-Externa-1"
 \begin_layout Standard
 El preámbulo del documento hijo se ignora, sólo se utiliza el preámbulo
  del documento maestro.
- Las ramas en los documentos hijo serán ignoradas por el documento maestro
- siempre que éste tenga una rama con el mismo nombre.
+ Las ramas en los documentos hijos serán ignoradas por el documento maestro
+ si éste no tiene una rama con el mismo nombre.
  Los documentos incluidos se insertan comenzando una página nueva y acabando
  con un salto de página.
 \end_layout
