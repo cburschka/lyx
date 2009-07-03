@@ -103,7 +103,7 @@ void InsetMathString::mathmlize(MathStream & os) const
 
 void InsetMathString::write(WriteStream & os) const
 {
-	if (!os.latex()) {
+	if (!os.latex() || os.lockedMode()) {
 		os << str_;
 		return;
 	}

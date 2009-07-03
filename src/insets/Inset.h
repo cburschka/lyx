@@ -470,6 +470,8 @@ public:
 	enum mode_type {UNDECIDED_MODE, TEXT_MODE, MATH_MODE};
 	/// return text or mathmode if that is possible to determine
 	virtual mode_type currentMode() const { return UNDECIDED_MODE; }
+	/// returns whether changing mode during latex export is forbidden
+	virtual bool lockedMode() const { return false; }
 	/// returns whether this inset is allowed in other insets of given mode
 	virtual bool allowedIn(mode_type) const { return true; }
 	/**

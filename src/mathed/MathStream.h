@@ -65,6 +65,10 @@ public:
 	void textMode(bool textmode);
 	/// tell whether we are in text mode or not when producing latex code
 	bool textMode() const { return textmode_; }
+	/// tell whether we are allowed to switch mode when producing latex code
+	void lockedMode(bool locked);
+	/// tell whether we are allowed to switch mode when producing latex code
+	bool lockedMode() const { return locked_; }
 	/// LaTeX encoding
 	Encoding const * encoding() const { return encoding_; }
 private:
@@ -84,6 +88,8 @@ private:
 	bool pendingbrace_;
 	/// are we in text mode when producing latex code?
 	bool textmode_;
+	/// are we allowed to switch mode when producing latex code?
+	bool locked_;
 	///
 	int line_;
 	///
@@ -109,7 +115,7 @@ WriteStream & operator<<(WriteStream &, unsigned int);
 bool ensureMath(WriteStream & os, bool needs_math_mode = true, bool macro = false);
 
 /// ensure the requested mode, possibly by closing \ensuremath
-bool ensureMode(WriteStream & os, InsetMath::mode_type mode);
+int ensureMode(WriteStream & os, InsetMath::mode_type mode, bool locked);
 
 
 /**
@@ -169,12 +175,22 @@ private:
  * environment works in a given mode. For example, \mbox works in text
  * mode, but \boxed works in math mode. Note that no mode changing commands
  * are needed, but we have to track the current mode, hence this class.
+ * This is only used when exporting to latex and helps determining whether
+ * the mode needs being temporarily switched when a command would not work
+ * in the current mode. As there are cases where this switching is to be
+ * avoided, the optional third parameter can be used to lock the mode.
  *
- * Example:
+ * Example 1:
  *
  *      ModeSpecifier specifier(os, TEXT_MODE);
  *
- * Sets the current mode to text mode.
+ * Sets the current mode to text mode and allows mode switching.
+ *
+ * Example 2:
+ *
+ *      ModeSpecifier specifier(os, TEXT_MODE, true);
+ *
+ * Sets the current mode to text mode and disallows mode switching.
  *
  * At the end of specifier's scope the mode is reset to its previous value.
  */
@@ -182,15 +198,20 @@ class ModeSpecifier
 {
 public:
 	///
-	explicit ModeSpecifier(WriteStream & os, InsetMath::mode_type mode)
-		: os_(os), textmode_(ensureMode(os, mode)) {}
+	explicit ModeSpecifier(WriteStream & os, InsetMath::mode_type mode,
+				bool locked = false)
+		: os_(os), oldmodes_(ensureMode(os, mode, locked)) {}
 	///
-	~ModeSpecifier() { os_.textMode(textmode_); }
+	~ModeSpecifier()
+	{
+		os_.textMode(oldmodes_ & 1);
+		os_.lockedMode(oldmodes_ & 2);
+	}
 private:
 	///
 	WriteStream & os_;
 	///
-	bool textmode_;
+	int oldmodes_;
 };
 
 

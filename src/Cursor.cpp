@@ -405,7 +405,10 @@ int Cursor::currentMode()
 	LASSERT(!empty(), /**/);
 	for (int i = depth() - 1; i >= 0; --i) {
 		int res = operator[](i).inset().currentMode();
-		if (res != Inset::UNDECIDED_MODE)
+		bool locked_mode = operator[](i).inset().lockedMode();
+		// Also return UNDECIDED_MODE when the mode is locked,
+		// as in this case it is treated the same as TEXT_MODE
+		if (res != Inset::UNDECIDED_MODE || locked_mode)
 			return res;
 	}
 	return Inset::TEXT_MODE;
