@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-07-01 07:47+0200\n"
-"PO-Revision-Date: 2009-07-03 11:55+0200\n"
+"PO-Revision-Date: 2009-07-03 19:39+0200\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
 "Language-Team: Slowakisch <kde-i18n-de@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -5584,11 +5584,11 @@ msgstr "Predvoľba:"
 #: lib/layouts/dinbrief.layout:132 lib/layouts/scrlettr.layout:146
 #: lib/layouts/scrlttr2.layout:181 lib/layouts/stdletter.inc:126
 msgid "Telephone"
-msgstr "Telefon"
+msgstr "Telefón"
 
 #: lib/layouts/dinbrief.layout:134 lib/layouts/g-brief-de.layout:120
 msgid "Telefon:"
-msgstr "Telefon:"
+msgstr "Telefón:"
 
 #: lib/layouts/dinbrief.layout:139 lib/layouts/scrlettr.layout:181
 #: lib/layouts/scrlttr2.layout:261 lib/layouts/stdletter.inc:119
@@ -6263,35 +6263,35 @@ msgstr "Meno:"
 
 #: lib/layouts/g-brief-de.layout:61
 msgid "Strasse"
-msgstr "Strasse"
+msgstr "Ulica"
 
 #: lib/layouts/g-brief-de.layout:64
 msgid "Strasse:"
-msgstr "Strasse:"
+msgstr "Ulica:"
 
 #: lib/layouts/g-brief-de.layout:82
 msgid "Land"
-msgstr "Land"
+msgstr "Štát"
 
 #: lib/layouts/g-brief-de.layout:85
 msgid "Land:"
-msgstr "Land:"
+msgstr "Štát:"
 
 #: lib/layouts/g-brief-de.layout:92
 msgid "RetourAdresse:"
-msgstr "RetourAdresse:"
+msgstr "NávratováAdresa:"
 
 #: lib/layouts/g-brief-de.layout:99
 msgid "MeinZeichen:"
-msgstr "MeinZeichen:"
+msgstr "MojaZnačka:"
 
 #: lib/layouts/g-brief-de.layout:106
 msgid "IhrZeichen:"
-msgstr "IhrZeichen:"
+msgstr "VašaZnačka:"
 
 #: lib/layouts/g-brief-de.layout:113
 msgid "IhrSchreiben:"
-msgstr "IhrSchreiben:"
+msgstr "VášList:"
 
 #: lib/layouts/g-brief-de.layout:124 lib/layouts/g-brief-en.layout:124
 msgid "Telefax"
@@ -6345,11 +6345,11 @@ msgstr "Kód banky:"
 
 #: lib/layouts/g-brief-de.layout:166
 msgid "Konto"
-msgstr "Konto"
+msgstr "Účet"
 
 #: lib/layouts/g-brief-de.layout:169
 msgid "Konto:"
-msgstr "Konto:"
+msgstr "Účet:"
 
 #: lib/layouts/g-brief-de.layout:185
 msgid "Adresse:"
@@ -6357,11 +6357,11 @@ msgstr "Adresa:"
 
 #: lib/layouts/g-brief-de.layout:218
 msgid "Anlagen:"
-msgstr "Anlagen:"
+msgstr "Prílohy:"
 
 #: lib/layouts/g-brief-en.layout:26 lib/layouts/g-brief2.layout:49
 msgid "Letter:"
-msgstr "Letter:"
+msgstr "List:"
 
 #: lib/layouts/g-brief-en.layout:57 lib/layouts/g-brief2.layout:902
 #: lib/layouts/scrlettr.layout:135 lib/layouts/scrlttr2.layout:169
@@ -6383,19 +6383,19 @@ msgstr "Doplnok"
 
 #: lib/layouts/g-brief-en.layout:71
 msgid "Addition:"
-msgstr "Addition:"
+msgstr "Doplnok:"
 
 #: lib/layouts/g-brief-en.layout:78
 msgid "Town:"
-msgstr "Town:"
+msgstr "Mesto:"
 
 #: lib/layouts/g-brief-en.layout:82 lib/layouts/agu_stdtitle.inc:461
 msgid "State"
-msgstr "Stav"
+msgstr "Štát"
 
 #: lib/layouts/g-brief-en.layout:85
 msgid "State:"
-msgstr "State:"
+msgstr "Štát:"
 
 #: lib/layouts/g-brief-en.layout:89 lib/layouts/g-brief2.layout:675
 msgid "ReturnAddress"
@@ -6407,27 +6407,27 @@ msgstr "NávratováAdresa:"
 
 #: lib/layouts/g-brief-en.layout:99 lib/layouts/g-brief2.layout:748
 msgid "MyRef:"
-msgstr "MyRef:"
+msgstr "MojaZnačka:"
 
 #: lib/layouts/g-brief-en.layout:106 lib/layouts/g-brief2.layout:769
 msgid "YourRef:"
-msgstr "YourRef:"
+msgstr "VašaZnačka:"
 
 #: lib/layouts/g-brief-en.layout:113 lib/layouts/g-brief2.layout:790
 msgid "YourMail:"
-msgstr "YourMail:"
+msgstr "VášList:"
 
 #: lib/layouts/g-brief-en.layout:120
 msgid "Phone:"
-msgstr "Phone:"
+msgstr "Telefón:"
 
 #: lib/layouts/g-brief-en.layout:159
 msgid "BankCode"
-msgstr "BankovýKód"
+msgstr "KódBanky"
 
 #: lib/layouts/g-brief-en.layout:162
 msgid "BankCode:"
-msgstr "BankovýKód:"
+msgstr "KódBanky:"
 
 #: lib/layouts/g-brief-en.layout:166
 msgid "BankAccount"
@@ -6435,15 +6435,15 @@ msgstr "Bankový účet"
 
 #: lib/layouts/g-brief-en.layout:169
 msgid "BankAccount:"
-msgstr "BankAccount:"
+msgstr "Bankový účet:"
 
 #: lib/layouts/g-brief-en.layout:173 lib/layouts/g-brief2.layout:696
 msgid "PostalComment"
-msgstr "Poštový_komentár"
+msgstr "PoštovýZáznam"
 
 #: lib/layouts/g-brief-en.layout:176 lib/layouts/g-brief2.layout:706
 msgid "PostalComment:"
-msgstr "PostalComment:"
+msgstr "PoštovýZáznam:"
 
 #: lib/layouts/g-brief-en.layout:192 lib/layouts/g-brief2.layout:811
 #: lib/layouts/revtex.layout:108 lib/layouts/revtex4.layout:139
@@ -6478,107 +6478,107 @@ msgstr "Pozdrav:"
 
 #: lib/layouts/g-brief2.layout:78
 msgid "NameRowA"
-msgstr "NameRowA"
+msgstr "Meno Riadok A"
 
 #: lib/layouts/g-brief2.layout:89
 msgid "NameRowA:"
-msgstr "NameRowA:"
+msgstr "Meno Riadok A:"
 
 #: lib/layouts/g-brief2.layout:98
 msgid "NameRowB"
-msgstr "NameRowB"
+msgstr "Meno Riadok B"
 
 #: lib/layouts/g-brief2.layout:108
 msgid "NameRowB:"
-msgstr "NameRowB:"
+msgstr "Meno Riadok B:"
 
 #: lib/layouts/g-brief2.layout:117
 msgid "NameRowC"
-msgstr "NameRowC"
+msgstr "Meno Riadok C"
 
 #: lib/layouts/g-brief2.layout:127
 msgid "NameRowC:"
-msgstr "NameRowC:"
+msgstr "Meno Riadok C:"
 
 #: lib/layouts/g-brief2.layout:136
 msgid "NameRowD"
-msgstr "NameRowD"
+msgstr "Meno Riadok D"
 
 #: lib/layouts/g-brief2.layout:146
 msgid "NameRowD:"
-msgstr "NameRowD:"
+msgstr "Meno Riadok D:"
 
 #: lib/layouts/g-brief2.layout:155
 msgid "NameRowE"
-msgstr "NameRowE"
+msgstr "Meno Riadok E"
 
 #: lib/layouts/g-brief2.layout:165
 msgid "NameRowE:"
-msgstr "NameRowE:"
+msgstr "Meno Riadok E:"
 
 #: lib/layouts/g-brief2.layout:174
 msgid "NameRowF"
-msgstr "NameRowF"
+msgstr "Meno Riadok F"
 
 #: lib/layouts/g-brief2.layout:184
 msgid "NameRowF:"
-msgstr "NameRowF:"
+msgstr "Meno Riadok F:"
 
 #: lib/layouts/g-brief2.layout:193
 msgid "NameRowG"
-msgstr "NameRowG"
+msgstr "Meno Riadok G"
 
 #: lib/layouts/g-brief2.layout:203
 msgid "NameRowG:"
-msgstr "NameRowG:"
+msgstr "Meno Riadok G:"
 
 #: lib/layouts/g-brief2.layout:213
 msgid "AddressRowA"
-msgstr "AddressRowA"
+msgstr "Adresa Riadok A"
 
 #: lib/layouts/g-brief2.layout:224
 msgid "AddressRowA:"
-msgstr "AddressRowA:"
+msgstr "Adresa Riadok A:"
 
 #: lib/layouts/g-brief2.layout:233
 msgid "AddressRowB"
-msgstr "AddressRowB"
+msgstr "Adresa Riadok B"
 
 #: lib/layouts/g-brief2.layout:243
 msgid "AddressRowB:"
-msgstr "AddressRowB:"
+msgstr "Adresa Riadok B:"
 
 #: lib/layouts/g-brief2.layout:252
 msgid "AddressRowC"
-msgstr "AddressRowC"
+msgstr "Adresa Riadok C"
 
 #: lib/layouts/g-brief2.layout:262
 msgid "AddressRowC:"
-msgstr "AddressRowC:"
+msgstr "Adresa Riadok C:"
 
 #: lib/layouts/g-brief2.layout:271
 msgid "AddressRowD"
-msgstr "AddressRowD"
+msgstr "Adresa Riadok D"
 
 #: lib/layouts/g-brief2.layout:281
 msgid "AddressRowD:"
-msgstr "AddressRowD:"
+msgstr "Adresa Riadok D:"
 
 #: lib/layouts/g-brief2.layout:290
 msgid "AddressRowE"
-msgstr "AddressRowE"
+msgstr "Adresa Riadok E"
 
 #: lib/layouts/g-brief2.layout:300
 msgid "AddressRowE:"
-msgstr "AddressRowE:"
+msgstr "Adresa Riadok E:"
 
 #: lib/layouts/g-brief2.layout:309
 msgid "AddressRowF"
-msgstr "AddressRowF"
+msgstr "Adresa Riadok F"
 
 #: lib/layouts/g-brief2.layout:319
 msgid "AddressRowF:"
-msgstr "AddressRowF:"
+msgstr "Adresa Riadok F:"
 
 #: lib/layouts/g-brief2.layout:328
 msgid "TelephoneRowA"
