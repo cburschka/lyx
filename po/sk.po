@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-07-01 07:47+0200\n"
-"PO-Revision-Date: 2009-07-04 22:43+0200\n"
+"PO-Revision-Date: 2009-07-04 22:59+0200\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
 "Language-Team: Slowakisch <kde-i18n-de@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -15333,7 +15333,7 @@ msgid ""
 "Define a converter in the preferences."
 msgstr ""
 "Žiadne informácie pre konverziu %1$s formátnych súborov do %2$s.\n"
-"Definujte konvertor v preferenciach."
+"Definujte konvertor v preferenciách."
 
 #: src/Converter.cpp:409 src/Format.cpp:305 src/Format.cpp:377
 msgid "Executing command: "
@@ -15390,7 +15390,7 @@ msgstr "Výstup je prázdny"
 
 #: src/Converter.cpp:603
 msgid "An empty output file was generated."
-msgstr "Bol generovaný prázdny výstupny súbor."
+msgstr "Bol generovaný prázdny výstupný súbor."
 
 #: src/CutAndPaste.cpp:564
 #, c-format
@@ -15593,7 +15593,7 @@ msgid ""
 "Could not check word `%1$s' because it could not be converted to encoding `%2"
 "$s'."
 msgstr ""
-"Nedá sa kontrolovať slovo `%1$s', lebo ho nešlo zkonvertovať do kódovania `%2"
+"Nedá sa kontrolovať slovo `%1$s', lebo ho nešlo skonvertovať do kódovania `%2"
 "$s'."
 
 #: src/ISpell.cpp:406
@@ -15606,7 +15606,7 @@ msgid ""
 "Could not insert word `%1$s' because it could not be converted to encoding `%"
 "2$s'."
 msgstr ""
-"Nedá sa vložiť slovo `%1$s', lebo ho nešlo zkonvertovať do kódovania `%2$s'."
+"Nedá sa vložiť slovo `%1$s', lebo ho nešlo skonvertovať do kódovania `%2$s'."
 
 #: src/ISpell.cpp:481
 #, c-format
@@ -15614,7 +15614,7 @@ msgid ""
 "Could not accept word `%1$s' because it could not be converted to encoding `%"
 "2$s'."
 msgstr ""
-"Nedá sa akceptovať slovo `%1$s', lebo ho nešlo zkonvertovať do kódovania `%2"
+"Nedá sa akceptovať slovo `%1$s', lebo ho nešlo skonvertovať do kódovania `%2"
 "$s'."
 
 #: src/KeySequence.cpp:166
@@ -15655,7 +15655,7 @@ msgstr ""
 
 #: src/LyX.cpp:111
 msgid "LyX: reconfiguring user directory"
-msgstr "LyX: rekonfigurujem uživateľský adresár"
+msgstr "LyX: rekonfigurujem užívateľský adresár"
 
 #: src/LyX.cpp:115
 msgid "Done!"
@@ -15694,8 +15694,8 @@ msgid ""
 "reconfigure normally, or reconfigure using default textclasses, or quit LyX."
 msgstr ""
 "LyX nemôže pokračovať, lebo sa nenašli žiadne súbory tried (textclass). "
-"Alebo použijete rekonfiguráciu normálne, alebo rekonfirujte použitím "
-"štandardnych tried."
+"Alebo použijete rekonfiguráciu normálne, alebo rekonfigurujte použitím "
+"štandardných tried."
 
 #: src/LyX.cpp:495
 msgid "&Reconfigure"
@@ -15730,7 +15730,7 @@ msgstr ""
 
 #: src/LyX.cpp:852
 msgid "Missing user LyX directory"
-msgstr "Chýba uživatelský adresár LyX-u"
+msgstr "Chýba užívateľský adresár LyX-u"
 
 #: src/LyX.cpp:853
 #, c-format
@@ -15738,7 +15738,7 @@ msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr ""
-"Uviedli ste neexistujúci uživateľský adresár LyX-u, %1$s.\n"
+"Uviedli ste neexistujúci užívateľský adresár LyX-u, %1$s.\n"
 "Je potrebný k zachovaniu vašej konfigurácii."
 
 #: src/LyX.cpp:858
@@ -15747,7 +15747,7 @@ msgstr "Vytvoriť adresár"
 
 #: src/LyX.cpp:860
 msgid "No user LyX directory. Exiting."
-msgstr "Žiadny uživateľský adresár LyX-u. Koniec."
+msgstr "Žiadny užívateľský adresár LyX-u. Koniec."
 
 #: src/LyX.cpp:864
 #, c-format
@@ -15822,7 +15822,7 @@ msgstr "Chýba adresár pre prepínač -sysdir"
 
 #: src/LyX.cpp:1008
 msgid "No user directory"
-msgstr "Nemám uživateľský adresár"
+msgstr "Nemám užívateľský adresár"
 
 #: src/LyX.cpp:1009
 msgid "Missing directory for -userdir switch"
@@ -15869,7 +15869,7 @@ msgstr ""
 "Rekonfigurácia systému zlyhala.\n"
 "Bola nastavená štandardná trieda (textclass), ale LyX možno nebude schopný "
 "pracovať správne.\n"
-"Keď nutné, zkúste prosím ešte raz rekonfigurovať."
+"Keď nutné, skúste prosím ešte raz rekonfigurovať."
 
 #: src/LyXFunc.cpp:137
 msgid "System reconfigured"
@@ -15950,7 +15950,7 @@ msgid ""
 "Check that your printer is set up correctly."
 msgstr ""
 "Nedal sa vytlačiť dokument %1$s.\n"
-"Zkontrolujte nastavenie vašej tlačiarne."
+"Skontrolujte nastavenie vašej tlačiarne."
 
 #: src/LyXFunc.cpp:733
 msgid "Print document failed"
@@ -16007,7 +16007,7 @@ msgstr "Nedajú sa uložiť štandardné definície dokumentu."
 
 #: src/LyXFunc.cpp:1661 src/LyXVC.cpp:151
 msgid "LyX VC: Log Message"
-msgstr "LyX VC: Protokolná správa"
+msgstr "LyX VC: Protokolová správa"
 
 #: src/LyXFunc.cpp:1670
 msgid "Directory is not accessible."
@@ -16069,7 +16069,7 @@ msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
 msgstr ""
-"Zrušte výber ak nechcete, aby voľby triedy boly nahradené štandardom po "
+"Zrušte výber ak nechcete, aby voľby triedy boli nahradené štandardom po "
 "zmene triedy."
 
 #: src/LyXRC.cpp:2482
@@ -16136,8 +16136,8 @@ msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
 msgstr ""
-"Zobrazitť malý rámok okolo mat. makra spolu s menom makra keď je kurzor "
-"vnútry."
+"Zobraziť malý rámok okolo mat. makra spolu s menom makra keď je kurzor "
+"vnútri."
 
 #: src/LyXRC.cpp:2538
 #, no-c-format
@@ -16153,7 +16153,7 @@ msgid ""
 "Command definition file. Can either specify an absolute path, or LyX will "
 "look in its global and local commands/ directories."
 msgstr ""
-"Súbor definíc príkazov. Alebo zadáte absolútnu cestu, alebo bude LyX hladať "
+"Súbor definíc príkazov. Alebo zadáte absolútnu cestu, alebo bude LyX hľadať "
 "v jeho lokálnych a globálnych commands/ adresároch."
 
 #: src/LyXRC.cpp:2546
@@ -16169,8 +16169,8 @@ msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
 msgstr ""
-"Minimalizuj dialogové okná spoločne s hlavným oknom LyX-u. (Vzťahuje sa len "
-"na dialogy zobrazené po tejto zmene.)"
+"Minimalizuj dialógové okná spoločne s hlavným oknom LyX-u. (Vzťahuje sa len "
+"na dialógy zobrazené po tejto zmene.)"
 
 #: src/LyXRC.cpp:2558
 msgid "Select how LyX will display any graphics."
@@ -16223,7 +16223,7 @@ msgid ""
 "Define the options of makeindex (cf. man makeindex) to be used for "
 "nomenclatures. This might differ from the index processing options."
 msgstr ""
-"Definujte voľby programu makeindex používané pre nomenklatury. Môžu sa líšiť "
+"Definujte voľby programu makeindex používané pre nomenklatúry. Môžu sa líšiť "
 "od volieb pre generáciu registru."
 
 #: src/LyXRC.cpp:2599
@@ -16320,7 +16320,7 @@ msgstr "Zdržanie pre vyťahovacie menu na doplňovanie."
 #: src/LyXRC.cpp:2664
 msgid "Select to display the completion popup in math mode."
 msgstr ""
-"Vybrať, aby sa vnútry mat. vzorkov vyťahovacie menu doplňovania zobrazilo."
+"Vybrať, aby sa vnútri mat. vzorkov vyťahovacie menu doplňovania zobrazilo."
 
 #: src/LyXRC.cpp:2668
 msgid "Select to display the completion popup in text mode."
@@ -16335,7 +16335,7 @@ msgstr "Bez zdržania zobraziť vyťahovacie menu pri viacznačnosti."
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
-msgstr "Zobraziť malý trojúholník za kurzorom kým je doplňovanie možné."
+msgstr "Zobraziť malý trojuholník za kurzorom kým je doplňovanie možné."
 
 #: src/LyXRC.cpp:2680
 msgid "The inline completion delay."
@@ -16351,7 +16351,7 @@ msgstr "Vyberte pre zobrazenie riadkového doplňovania v textovom móde."
 
 #: src/LyXRC.cpp:2692
 msgid "Use \"...\" to shorten long completions."
-msgstr "Použiť \"...\" pre zkrátenie dlhých doplnení."
+msgstr "Použiť \"...\" pre skrátenie dlhých doplnení."
 
 #: src/LyXRC.cpp:2696
 #, c-format
@@ -16363,8 +16363,8 @@ msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
 msgstr ""
-"Určite adresáry, ktoré by maly byť pridané do premennej PATH pred ostatnými "
-"adresármy. Použite formát vhodný pre daný operačný systém."
+"Určite adresári, ktoré by mali byť pridané do premennej PATH pred ostatnými "
+"adresármi. Použite formát vhodný pre daný operačný systém."
 
 #: src/LyXRC.cpp:2708
 msgid ""
@@ -16477,7 +16477,7 @@ msgstr "Váš obľúbený program na tlač, napr. \"dvips\", \"dvilj4\"."
 #: src/LyXRC.cpp:2800
 msgid ""
 "Select to have visual bidi cursor movement, unselect for logical movement."
-msgstr "Vyberte pre visuálny/logický pohyb kurzoru v dvojsmernom móde (bidi)"
+msgstr "Vyberte pre vizuálny/logický pohyb kurzoru v dvojsmernom móde (bidi)"
 
 #: src/LyXRC.cpp:2804
 msgid ""
@@ -16499,7 +16499,7 @@ msgid ""
 "makes LyX use the nearest bitmap font size available, instead of scaling."
 msgstr ""
 "Povoliť zmenu veľkosti bitmapových fontov. Keď používate bitmapový font a "
-"nastavíte túto voľbu, môžu niektoré fonty vyzerať v LyX-e hranate. Vypnutím "
+"nastavíte túto voľbu, môžu niektoré fonty vyzerať v LyX-e hranaté. Vypnutím "
 "tejto voľby použije LyX najbližšiu dostupnú veľkosť bitmapového fontu."
 
 #: src/LyXRC.cpp:2823
@@ -16540,7 +16540,7 @@ msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
 msgstr ""
-"LyX bude umiestňovať svoje dočasné adresáry do tejto cesty. Budú odstránené "
+"LyX bude umiestňovať svoje dočasné adresári do tejto cesty. Budú odstránené "
 "pri skončení LyXu."
 
 #: src/LyXRC.cpp:2855
@@ -16578,7 +16578,7 @@ msgstr ""
 msgid ""
 "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
-"Zapnout vyrovnávací paměť pro pixmap, která může zlepšit výkonnost na Mac-u "
+"Zapnúť vyrovnávací pamäť pro pixmap, ktorá môže zlepšiť výkonnosť na Mac-u "
 "a Windows."
 
 #: src/LyXRC.cpp:2893
@@ -16615,10 +16615,10 @@ msgid ""
 "\n"
 "Do you want to revert to the older version?"
 msgstr ""
-"Návrat k uloženej verzii dokumentu %1$s znamená ztratu všetkých súčasných "
+"Návrat k uloženej verzii dokumentu %1$s znamená stratu všetkých súčasných "
 "zmien.\n"
 "\n"
-"Chcete prejsť zpät k staršej uloženej verzii ?"
+"Chcete prejsť späť k staršej uloženej verzii ?"
 
 #: src/LyXVC.cpp:188
 msgid "Revert to stored version of document?"
@@ -16674,7 +16674,7 @@ msgstr "Chyba pri zmene sledovania"
 #: src/Text.cpp:220
 #, c-format
 msgid "Unknown author index for insertion: %1$d\n"
-msgstr "Neznámy index autora pro vklad: %1$d\n"
+msgstr "Neznámy index autora pre vklad: %1$d\n"
 
 #: src/Text.cpp:233
 #, c-format
@@ -16806,7 +16806,7 @@ msgstr "Chýba Súbor"
 
 #: src/TextClass.cpp:639
 msgid "Could not find stdinsets.inc! This may lead to data loss!"
-msgstr "Nedá sa nájsť súbor stdinsets.inc! Môže dôjsť ku ztrata dát!"
+msgstr "Nedá sa nájsť súbor stdinsets.inc! Môže dôjsť ku strata dát!"
 
 #: src/TextClass.cpp:642
 msgid "Corrupt File"
@@ -16814,7 +16814,7 @@ msgstr "Skazený Súbor"
 
 #: src/TextClass.cpp:643
 msgid "Could not read stdinsets.inc! This may lead to data loss!"
-msgstr "Nedá sa čítať súbor stdinsets.inc! Môže dôjsť ku ztrata dát!"
+msgstr "Nedá sa čítať súbor stdinsets.inc! Môže dôjsť ku strata dát!"
 
 #: src/Thesaurus.cpp:60
 msgid "Thesaurus failure"
@@ -16853,7 +16853,7 @@ msgid ""
 msgstr ""
 "Chyba pri odoslaní do repozitáru.\n"
 "Treba vyriešiť problém manuálne.\n"
-"Po stisknutí tlačidla OK sa LyX pokúsi dokument znovu otvoriť."
+"Po stisnutí tlačidla OK sa LyX pokúsi dokument znovu otvoriť."
 
 #: src/VCBackend.cpp:627
 msgid ""
@@ -16888,7 +16888,7 @@ msgstr ""
 "Treba opraviť konflikty TERAZ!\n"
 "'%1$s'.\n"
 "\n"
-"Po stisknutí tlačidla OK sa LyX pokúsi opravený dokument znovu otvoriť."
+"Po stisnutí tlačidla OK sa LyX pokúsi opravený dokument znovu otvoriť."
 
 #: src/VCBackend.cpp:706
 msgid "VCN File Locking"
@@ -16954,7 +16954,7 @@ msgstr "Držať Zmeny"
 #: src/buffer_funcs.cpp:86
 #, c-format
 msgid "The file %1$s exists but is not readable by the current user."
-msgstr "Súbor %1$s existuje, ale nie je prístupný pre aktuálneho použivateľa."
+msgstr "Súbor %1$s existuje, ale nie je prístupný pre aktuálneho používateľa."
 
 #: src/buffer_funcs.cpp:89
 msgid "File not readable!"
@@ -17012,7 +17012,7 @@ msgstr "Nezmyselné!!! "
 
 #: src/frontends/qt4/BulletsModule.cpp:41
 msgid "Standard[[Bullets]]"
-msgstr "Standardné"
+msgstr "Štandardné"
 
 #: src/frontends/qt4/BulletsModule.cpp:42
 msgid "Maths"
@@ -17036,7 +17036,7 @@ msgstr "Dings 4"
 
 #: src/frontends/qt4/FileDialog.cpp:181
 msgid "Directories"
-msgstr "Adresáry"
+msgstr "Adresári"
 
 #: src/frontends/qt4/GuiAbout.cpp:49
 msgid "ERROR: LyX wasn't able to read CREDITS file\n"
@@ -17066,7 +17066,7 @@ msgid ""
 "Software Foundation; either version 2 of the License, or (at your option) "
 "any later version."
 msgstr ""
-"Tento program je slobodný softvér; môžte ho distributovať a/alebo upravovať "
+"Tento program je slobodný softvér; môžte ho distribuovať a/alebo upravovať "
 "podpodmienkami GNU General Public License, zverejnenej organizáciou Free "
 "Software Foundation,buď verzie 2 alebo (podľa vášho výberu) akejkoľvek "
 "ďalšej verzie."
@@ -17083,7 +17083,7 @@ msgid ""
 msgstr ""
 "LyX je rozširovaný s nádejou, že bude užitočný, avšak BEZ AKEJKOĽVEK ZÁRUKY; "
 "dokonca aj bez predpokladanej SCHOPNOSTI PREDAJA alebo VHODNOSŤOU PRE URČITÝ "
-"ÚĆEL.\n"
+"ÚČEL.\n"
 "Podrobnosti si pozrite v GNU General Public License.\n"
 "Kópiu tejto licencie by ste mali dostať spolu s týmto programom; pokiaľ nie, "
 "tak napíšte na The Free Software Foundation, Inc., 51 Franklin Street, Fifth "
