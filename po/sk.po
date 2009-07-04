@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-07-01 07:47+0200\n"
-"PO-Revision-Date: 2009-07-04 22:37+0200\n"
+"PO-Revision-Date: 2009-07-04 22:43+0200\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
 "Language-Team: Slowakisch <kde-i18n-de@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -11212,7 +11212,7 @@ msgstr "Začni Prílohy Tu|P"
 
 #: lib/ui/stdmenus.inc:465
 msgid "Save in Bundled Format|F"
-msgstr "Uložit v zbalenom formáte"
+msgstr "Uložiť v zbalenom formáte"
 
 #: lib/ui/stdmenus.inc:466
 msgid "Compressed|m"
@@ -11424,7 +11424,7 @@ msgstr "Vložiť poznámku pod čiarou"
 
 #: lib/ui/stdtoolbars.inc:115
 msgid "Insert margin note"
-msgstr "Vložit okrajovú poznámku"
+msgstr "Vložiť okrajovú poznámku"
 
 #: lib/ui/stdtoolbars.inc:116 lib/ui/stdtoolbars.inc:213
 msgid "Insert note"
@@ -11524,7 +11524,7 @@ msgstr "Zarovnať na stred"
 
 #: lib/ui/stdtoolbars.inc:148
 msgid "Align bottom"
-msgstr "Zarovnať dospod"
+msgstr "Zarovnať dospodu"
 
 #: lib/ui/stdtoolbars.inc:150
 msgid "Rotate cell"
@@ -11560,7 +11560,7 @@ msgstr "Vložiť druhú odmocninu"
 
 #: lib/ui/stdtoolbars.inc:161
 msgid "Insert root"
-msgstr "Vložit odmocninu"
+msgstr "Vložiť odmocninu"
 
 #: lib/ui/stdtoolbars.inc:162
 msgid "Insert standard fraction"
@@ -12093,7 +12093,7 @@ msgstr "ddots"
 
 #: lib/ui/stdtoolbars.inc:355
 msgid "Frame Decorations"
-msgstr "Dekorátia rámov"
+msgstr "Dekorácia rámov"
 
 #: lib/ui/stdtoolbars.inc:356
 msgid "hat"
@@ -13978,11 +13978,11 @@ msgstr ""
 "Šachový diagram.\n"
 "Táto šablóna použije program XBoard na editáciu pozície.\n"
 "Použite 'File->Save Position' v XBoard-u pre uloženie\n"
-"pozície, kterú chcete zobraziť.\n"
+"pozície, ktorú chcete zobraziť.\n"
 "Uistite sa, že má príponu '.fen'\n"
 "a nezabudnite dať relatívnu cestu\n"
 "k súboru do dokumentu LyX-a.\n"
-"Vnútry XBoard-u, použite 'Edit->Edit Position'\n"
+"Vnútri XBoard-u, použite 'Edit->Edit Position'\n"
 "pre obecnú editáciu šachovnice.\n"
 "Možno chcete aj použiť voľbu\n"
 "'Voľby->Test legality' a\n"
@@ -13990,7 +13990,7 @@ msgstr ""
 "pre vloženie nového materiálu na hraciu dosku.\n"
 "Aby to fungovalo musíte\n"
 "dať pribalený súbor lyxskak.sty na miesto\n"
-"kde ho nájde TeX. Ďalel je treba\n"
+"kde ho nájde TeX. Ďalej je treba\n"
 "nainštalovať balík skak z CTAN-u.\n"
 
 #: lib/external_templates:212
@@ -14008,7 +14008,7 @@ msgid ""
 "Using .eps requires at least lilypond 2.6\n"
 "Using .pdf requires at least lilypond 2.9\n"
 msgstr ""
-"Sada hudobních nôt pomocou programu GNU LilyPond.\n"
+"Sada hudobných nôt pomocou programu GNU LilyPond.\n"
 "konvertovaná na .pdf alebo .eps pre zahrnutie\n"
 "Použitie .eps vyžaduje aspoň lilypond 2.6\n"
 "Použitie .pdf vyžaduje aspoň lilypond 2.9\n"
@@ -14398,7 +14398,7 @@ msgstr "Chyba Disku: "
 #, c-format
 msgid ""
 "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
-msgstr "LyX nemôhol vytvoriť pomocý adresár '%1$s' (možné že je plný disk?)"
+msgstr "LyX nemohol vytvoriť pomocný adresár '%1$s' (možné že je plný disk?)"
 
 #: src/Buffer.cpp:317
 msgid "Could not remove temporary directory"
@@ -14450,7 +14450,7 @@ msgstr ""
 "Zmeny nebudú zvýraznené v LaTeX-ovom výstupe, lebo ani dvipost ani xcolor/"
 "ulem nie sú nainštalované.\n"
 "Prosím nainštalujte tieto balíky alebo predefinujte \\lyxadded a "
-"\\lyxdeleted v LaTeX-ovej preambuli."
+"\\lyxdeleted v LaTeX-ovej preambuly."
 
 #: src/Buffer.cpp:591 src/BufferView.cpp:1200
 msgid ""
@@ -14459,10 +14459,11 @@ msgid ""
 "Please install both packages or redefine \\lyxadded and \\lyxdeleted in the "
 "LaTeX preamble."
 msgstr ""
-"Zmeny nebudú zvýraznené v LaTeX-ovom výstupe pri pužití pdflatex, lebo ani "
+"Zmeny nebudú zvýraznené v LaTeX-ovom výstupe pri použití pdflatex, lebo ani "
 "dvipost ani xcolor/ulem nie sú nainštalované.\n"
-"Prosím naištalujte oba balíky alebo predefinujte \\lyxadded a \\lyxdeleted v "
-"LaTeX-ovej preambuli."
+"Prosím nainštalujte oba balíky alebo predefinujte \\lyxadded a \\lyxdeleted "
+"v "
+"LaTeX-ovej preambuly."
 
 #: src/Buffer.cpp:752 src/Buffer.cpp:835
 msgid "Document format failure"
@@ -14523,7 +14524,7 @@ msgid ""
 "Cannot create backup file %1$s.\n"
 "Please check whether the directory exists and is writeable."
 msgstr ""
-"LyX nemôhol vytvoriť záložnú kopiu v %1$s.\n"
+"LyX nemohol vytvoriť záložnú kópiu v %1$s.\n"
 "Skontrolujte, či daný adresár existuje a je možné do neho zapisovať."
 
 #: src/Buffer.cpp:880
@@ -14531,11 +14532,11 @@ msgstr ""
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
 "overwrite this file?"
-msgstr "Dokument %1$s bol externe modyfikovaný. Naozaj ho chcete prepísať?"
+msgstr "Dokument %1$s bol externe modifikovaný. Naozaj ho chcete prepísať?"
 
 #: src/Buffer.cpp:882
 msgid "Overwrite modified file?"
-msgstr "Prepísať modyfikovaný súbor?"
+msgstr "Prepísať modifikovaný súbor?"
 
 #: src/Buffer.cpp:883 src/Exporter.cpp:49 src/LyXFunc.cpp:1030
 #: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1556
@@ -14582,7 +14583,7 @@ msgid ""
 msgstr ""
 "Niektoré znaky vášho dokumentu sú pravdepodobne nereprezentovatelné vo "
 "zvolenom kódovaní.\n"
-"Pomôcť by môhla zmena kódovania dokumentu na utf8."
+"Pomôcť by mohla zmena kódovania dokumentu na utf8."
 
 #: src/Buffer.cpp:1038
 msgid "iconv conversion failed"
@@ -14602,7 +14603,7 @@ msgstr "chktex zlyhal"
 
 #: src/Buffer.cpp:1334
 msgid "Could not run chktex successfully."
-msgstr "Nemôzem spustiť Chktex úspešne."
+msgstr "Nemôžem spustiť Chktex úspešne."
 
 #: src/Buffer.cpp:2188
 msgid "Preview source code"
@@ -14633,7 +14634,7 @@ msgstr "Automatické ukladanie súčasného dokumentu..."
 
 #: src/Buffer.cpp:2458
 msgid "Couldn't export file"
-msgstr "Nemôzem exportovať súbor"
+msgstr "Nemôžem exportovať súbor"
 
 #: src/Buffer.cpp:2459
 #, c-format
@@ -14646,7 +14647,7 @@ msgstr "Chyba v názve súboru"
 
 #: src/Buffer.cpp:2497
 msgid "The directory path to the document cannot contain spaces."
-msgstr "Cesta k dokumetu nesmie obsahovať medzery."
+msgstr "Cesta k dokumentu nesmie obsahovať medzery."
 
 #: src/Buffer.cpp:2539
 msgid "Document export cancelled."
@@ -14769,7 +14770,7 @@ msgid ""
 msgstr ""
 "Formátový súbor požadovaný týmto dokumentom,\n"
 "%1$s.layout,\n"
-"nie je použitelný. To je pravdepodobne zpôsobené tým,\n"
+"nie je použiteľný. To je pravdepodobne spôsobené tým,\n"
 "že LaTeX-ová trieda alebo požadovaný súbor štýlu\n"
 "nie sú dostupné. Pre viac informácie pozrite si\n"
 "dokumentáciu (Prispôsobenie LyXu).\n"
@@ -14804,7 +14805,7 @@ msgstr "Nepodarilo sa nahrať triedu dokument %1$s."
 
 #: src/BufferParams.cpp:1659 src/LyXFunc.cpp:750
 msgid "Could not load class"
-msgstr "Nepodarilo sa nahrať tiredu"
+msgstr "Nepodarilo sa nahrať triedu"
 
 #: src/BufferParams.cpp:1721
 #, c-format
@@ -14835,7 +14836,7 @@ msgid ""
 "may not be possible.\n"
 msgstr ""
 "Modul %1$s vyžaduje balík, ktorý je nedostupný vo vašej\n"
-"LaTeX-ovej inštalácii. Nezaistený yýstup z LaTeXa.\n"
+"LaTeX-ovej inštalácii. Nezaistený výstup z LaTeXa.\n"
 
 #: src/BufferParams.cpp:1736
 msgid "Package not available"
@@ -15174,7 +15175,7 @@ msgstr "matematika (rám)"
 
 #: src/Color.cpp:181
 msgid "math corners"
-msgstr "rôžky mat. vzorca"
+msgstr "rožky mat. vzorca"
 
 #: src/Color.cpp:182
 msgid "math line"
