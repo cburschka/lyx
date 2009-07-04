@@ -247,7 +247,7 @@ void GuiThesaurus::replace(docstring const & newstr)
 	 * deletion/change !
 	 */
 	docstring const data =
-		replace2string(text_, newstr,
+		replace2string(newstr, text_,
 				     true,  // case sensitive
 				     true,  // match word
 				     false, // all words

@@ -176,8 +176,8 @@ void GuiSpellchecker::on_replacePB_clicked()
 void GuiSpellchecker::on_replaceAllPB_clicked()
 {
 	docstring const data = replace2string(
-		qstring_to_ucs4(d->ui.wordED->text()),
 		qstring_to_ucs4(d->ui.replaceCO->currentText()),
+		qstring_to_ucs4(d->ui.wordED->text()),
 		true, true, true, true);
 	dispatch(FuncRequest(LFUN_WORD_REPLACE, data));
 }

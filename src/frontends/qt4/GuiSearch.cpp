@@ -129,7 +129,7 @@ void GuiSearch::replace(docstring const & search, docstring const & replace,
 			    bool forward, bool all)
 {
 	docstring const data =
-		replace2string(search, replace, casesensitive,
+		replace2string(replace, search, casesensitive,
 				     matchword, all, forward);
 	dispatch(FuncRequest(LFUN_WORD_REPLACE, data));
 }

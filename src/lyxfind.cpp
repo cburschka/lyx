@@ -202,9 +202,17 @@ int replaceAll(BufferView * bv,
 }
 
 
-bool stringSelected(BufferView * bv, docstring const & searchstr,
+bool stringSelected(BufferView * bv, docstring & searchstr,
 		    bool cs, bool mw, bool fw)
 {
+	// if nothing selected and searched string is empty, this
+	// means that we want to search current word at cursor position.
+	if (!bv->cursor().selection() && searchstr.empty()) {
+		bv->cursor().innerText()->selectWord(bv->cursor(), WHOLE_WORD);
+		searchstr = bv->cursor().selectionAsString(false);
+		return true;
+	}
+
 	// if nothing selected or selection does not equal search
 	// string search and select next occurance and return
 	docstring const & str1 = searchstr;
@@ -218,13 +226,13 @@ bool stringSelected(BufferView * bv, docstring const & searchstr,
 }
 
 
-int replace(BufferView * bv, docstring const & searchstr,
+int replace(BufferView * bv, docstring & searchstr,
 	    docstring const & replacestr, bool cs, bool mw, bool fw)
 {
-	if (!searchAllowed(bv, searchstr) || bv->buffer().isReadonly())
+	if (!stringSelected(bv, searchstr, cs, mw, fw))
 		return 0;
 
-	if (!stringSelected(bv, searchstr, cs, mw, fw))
+	if (!searchAllowed(bv, searchstr) || bv->buffer().isReadonly())
 		return 0;
 
 	Cursor & cur = bv->cursor();
@@ -252,13 +260,13 @@ docstring const find2string(docstring const & search,
 }
 
 
-docstring const replace2string(docstring const & search, docstring const & replace,
-			    bool casesensitive, bool matchword,
-			    bool all, bool forward)
+docstring const replace2string(docstring const & replace,
+	docstring const & search, bool casesensitive, bool matchword,
+	bool all, bool forward)
 {
 	odocstringstream ss;
-	ss << search << '\n'
-	   << replace << '\n'
+	ss << replace << '\n'
+	   << search << '\n'
 	   << int(casesensitive) << ' '
 	   << int(matchword) << ' '
 	   << int(all) << ' '
@@ -299,8 +307,8 @@ void replace(BufferView * bv, FuncRequest const & ev, bool has_deleted)
 	//  <casesensitive> <matchword> <all> <forward>"
 	docstring search;
 	docstring rplc;
-	docstring howto = split(ev.argument(), search, '\n');
-	howto = split(howto, rplc, '\n');
+	docstring howto = split(ev.argument(), rplc, '\n');
+	howto = split(howto, search, '\n');
 
 	bool casesensitive = parse_bool(howto);
 	bool matchword     = parse_bool(howto);

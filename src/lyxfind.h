@@ -43,8 +43,8 @@ docstring const find2string(docstring const & search,
  *  as a string that can be dispatched to the LyX core in a FuncRequest
  *  wrapper.
  */
-docstring const replace2string(docstring const & search,
-				 docstring const & replace,
+docstring const replace2string(docstring const & replace,
+				 docstring const & search,
 				 bool casesensitive,
 				 bool matchword,
 				 bool all,
