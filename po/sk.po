@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-07-01 07:47+0200\n"
-"PO-Revision-Date: 2009-07-04 22:09+0200\n"
+"PO-Revision-Date: 2009-07-04 22:17+0200\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
 "Language-Team: Slowakisch <kde-i18n-de@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -2394,7 +2394,7 @@ msgstr "Použitá šírka obrazovky (pixel):"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:169
 msgid "Hide &tabbar"
-msgstr "Škryť lištu dokumentov"
+msgstr "Skryť lištu dokumentov"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:176
 msgid "Hide scr&ollbar"
@@ -2492,11 +2492,11 @@ msgid ""
 "speed it up, low values slow it down."
 msgstr ""
 "1.0 je štandardná rýchlosť rolovania kolieskom myši. Vyššie hodnoty "
-"zrýchlia, nižšie zpomalia."
+"zrýchlia, nižšie spomalia."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:25
 msgid "User &interface language:"
-msgstr "Jazyk pre uživatelské rozhranie:"
+msgstr "Jazyk pre užívateľské rozhranie:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:35
 msgid "Select the language of the user interface (menus, dialogs, etc.)"
@@ -2611,7 +2611,7 @@ msgstr "&Logický"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:254
 msgid "&Visual"
-msgstr "&Visuálny"
+msgstr "Vizuálny"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:41
 msgid "Set class options to default on class change"
@@ -2634,7 +2634,7 @@ msgstr "US-právna listina"
 #: src/frontends/qt4/ui/PrefLatexUi.ui:67
 #: src/frontends/qt4/GuiDocument.cpp:684
 msgid "US executive"
-msgstr "US-exekutiva"
+msgstr "US-exekutíva"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:72
 #: src/frontends/qt4/GuiDocument.cpp:685
@@ -2700,7 +2700,7 @@ msgstr "Používať Windows-štýl na zápis ciest v súboroch LaTeX-u"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:197
 msgid "Command and options for nomencl (usually makeindex)"
-msgstr "Príkaz a voľby pre nomenklaturu (bežne makeindex)"
+msgstr "Príkaz a voľby pre nomenklatúru (bežne makeindex)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:204
 msgid "Index command and options (makeindex, xindy)"
@@ -2753,7 +2753,7 @@ msgstr "Šablóny dokumentov:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:71
 msgid "&Example files:"
-msgstr "Príkladové súbory:"
+msgstr "Príkladné súbory:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:94
 msgid "&Backup directory:"
@@ -2873,7 +2873,7 @@ msgstr "Rozsah strán:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:226
 msgid "Option used to collate multiple copies."
-msgstr "Možnosť použitá na usporiadanie kopií za sebou."
+msgstr "Možnosť použitá na usporiadanie kópií za sebou."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:233
 msgid "&Odd pages:"
@@ -3000,7 +3000,7 @@ msgstr "Zlepší výkonnosť, ale môže zhoršiť zobrazenie fontov na obrazovk
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:371
 msgid "&Use pixmap cache to speed up font rendering"
-msgstr "Použíť vyrovnávaciu pamäť pre rýchlejšie vykreslovanie fontov"
+msgstr "Použiť vyrovnávaciu pamäť pre rýchlejšie vykresľovanie fontov"
 
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:90
 msgid "&Bind file:"
@@ -3040,7 +3040,7 @@ msgstr "Použiť kódovanie vstupu"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:131
 msgid "Accept words such as \"diskdrive\""
-msgstr "Akceptuj slová na zpôsob \"kafemlynček\""
+msgstr "Akceptuj slová na spôsob \"kafemlynček\""
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:134
 msgid "Accept compound &words"
@@ -3111,7 +3111,7 @@ msgstr "Prechádzať..."
 
 #: src/frontends/qt4/ui/PrefUi.ui:241
 msgid "&User interface file:"
-msgstr "Súbor s uživateľským rozhraním:"
+msgstr "Súbor s užívateľským rozhraním:"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:717
 #: src/frontends/qt4/GuiView.cpp:1860
@@ -3286,7 +3286,7 @@ msgstr "Nahradiť všetko"
 
 #: src/frontends/qt4/ui/SearchUi.ui:200
 msgid "Search &backwards"
-msgstr "Hľadať nazpäť"
+msgstr "Hľadať naspäť"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:42
 msgid "Process the converted file with this command ($$FName = file name)"
@@ -3390,12 +3390,12 @@ msgid ""
 "Available categories depend on the document encoding. Select UTF-8 for the "
 "full range."
 msgstr ""
-"Dostupné kategorie závisia na zvolenom kódovaní dokumentu. Vyberte UTF-8 pre "
+"Dostupné kategórie závisia na zvolenom kódovaní dokumentu. Vyberte UTF-8 pre "
 "plný rozsah."
 
 #: src/frontends/qt4/ui/SymbolsUi.ui:86
 msgid "Ca&tegory:"
-msgstr "Kategoria:"
+msgstr "Kategória:"
 
 #: src/frontends/qt4/ui/SymbolsUi.ui:116
 msgid "Select this to display all available characters at once"
@@ -3636,7 +3636,7 @@ msgstr "Popisok:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1245
 msgid "Select for tables that span multiple pages"
-msgstr "Vyber pre tabuľky rozsahujúce viac strán"
+msgstr "Vyber pre tabuľky presahujúce viac strán"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1248
 msgid "&Use long table"
@@ -3775,7 +3775,7 @@ msgstr "Triedenie"
 
 #: src/frontends/qt4/ui/TocUi.ui:125
 msgid "Try to keep persistent view of the uncollapsed nodes"
-msgstr "Pokús udržať struktúru rozbalenia položiek"
+msgstr "Pokús udržať štruktúru rozbalenia položiek"
 
 #: src/frontends/qt4/ui/TocUi.ui:128
 msgid "Keep"
@@ -3817,7 +3817,7 @@ msgstr "Toto varovanie odteraz už nezobrazovať!"
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:81
 msgid "Insert the spacing even after a page break"
-msgstr "Vložit rozstup i za zalomením stránky"
+msgstr "Vložiť rozstup i za zalomením stránky"
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:131
 msgid "DefSkip"
@@ -3873,7 +3873,7 @@ msgstr "Vnútorný"
 
 #: src/frontends/qt4/ui/WrapUi.ui:222
 msgid "use overhang"
-msgstr "použit presah"
+msgstr "použiť presah"
 
 #: src/frontends/qt4/ui/WrapUi.ui:225
 msgid "Over&hang:"
@@ -3889,7 +3889,7 @@ msgstr "Jednotky hodnoty šírky"
 
 #: src/frontends/qt4/ui/WrapUi.ui:280
 msgid "Check this to allow flexible placement"
-msgstr "Povoluje premenlivé umiestnenie"
+msgstr "Povoľuje premenlivé umiestnenie"
 
 #: src/frontends/qt4/ui/WrapUi.ui:283
 msgid "Allow &floating"
@@ -3956,7 +3956,7 @@ msgstr "Teoréma"
 
 #: lib/layouts/IEEEtran.layout:76
 msgid "Theorem #:"
-msgstr "Theoréma #:"
+msgstr "Teoréma #:"
 
 #: lib/layouts/IEEEtran.layout:83 lib/layouts/elsart.layout:312
 #: lib/layouts/foils.layout:243 lib/layouts/heb-article.layout:45
