@@ -3385,8 +3385,10 @@ int Buffer::spellCheck(DocIterator & from, DocIterator & to,
 		while (from.inMathed())
 			from.forwardInset();
 		to = from;
-		if (from.paragraph().spellCheck(from.pos(), to.pos(), wl, suggestions))
+		if (from.paragraph().spellCheck(from.pos(), to.pos(), wl, suggestions)) {
+			word_lang = wl;
 			break;
+		}
 		from = to;
 		++progress;
 	}
