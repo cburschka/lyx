@@ -72,6 +72,10 @@ The following LyX functions have been changed:
 - LFUN_INSET_TOGGLE ("inset-toggle"): For some insets, this function was used 
   to show the settings dialog. This is no longer possible and one should use
   inset-settings for this purpose.
+ 
+- LFUN_WORD_REPLACE ("word-replace"): The replacement and searched strings
+  arguments have been inverted in order to allow the replacement of the word
+  at current cursor position, even if it is not selected.
 
 Known issues in version 2.0.0
 -----------------------------
