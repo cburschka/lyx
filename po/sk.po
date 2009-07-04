@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-07-01 07:47+0200\n"
-"PO-Revision-Date: 2009-07-04 22:23+0200\n"
+"PO-Revision-Date: 2009-07-04 22:32+0200\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
 "Language-Team: Slowakisch <kde-i18n-de@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -7694,11 +7694,11 @@ msgstr "--Hlavička--"
 
 #: lib/layouts/agu_stdtitle.inc:31
 msgid "Special-section"
-msgstr "Špeciána-sekcia"
+msgstr "Špeciálna-sekcia"
 
 #: lib/layouts/agu_stdtitle.inc:37
 msgid "Special-section:"
-msgstr "Špeciána-sekcia:"
+msgstr "Špeciálna-sekcia:"
 
 #: lib/layouts/agu_stdtitle.inc:47
 msgid "AGU-journal"
@@ -7758,7 +7758,7 @@ msgstr "Cross-term:"
 
 #: lib/layouts/agu_stdtitle.inc:136
 msgid "Supplementary"
-msgstr "Dodatkove"
+msgstr "Dodatkové"
 
 #: lib/layouts/agu_stdtitle.inc:140
 msgid "Supplementary..."
@@ -8570,7 +8570,7 @@ msgid ""
 "Adds an endnote inset, in addition to footnotes. You will need to add "
 "\\theendnotes in ERT where you want the endnotes to appear."
 msgstr ""
-"Pridáva vložku pre koncové poznámky (Endnote) (okrem už existujúcích "
+"Pridáva vložku pre koncové poznámky (Endnote) (okrem už existujúcich "
 "poznámok pod čiarou). Nutné je pridať \\theendnotes do vložky TeX-ového kódu "
 "tam, kde sa koncové poznámky majú objaviť."
 
@@ -8597,7 +8597,7 @@ msgstr ""
 
 #: lib/layouts/hanging.module:2 lib/layouts/hanging.module:16
 msgid "Hanging"
-msgstr "Vysiace"
+msgstr "Visiace"
 
 #: lib/layouts/hanging.module:6
 msgid ""
@@ -8605,7 +8605,7 @@ msgid ""
 "in which the first line is set to the left margin, but all subsequent lines "
 "are indented."
 msgstr ""
-"Pridáva prostredie pre \"vysiace\" odstavce. Vysiacy odstavec začína na "
+"Pridáva prostredie pre \"visiace\" odstavce. Visiacy odstavec začína na "
 "prvom riadku bez zasunutia, následujúce riadky sú naopak zasunuté."
 
 #: lib/layouts/linguistics.module:2
@@ -8619,7 +8619,7 @@ msgid ""
 "examples."
 msgstr ""
 "Definuje špeciálne prostredie užitočné pre lingvistiku (číslované príklady, "
-"glosy, semantické štýly znakov (markup), plávajúce tabuľky). Pozri na súbor "
+"glosy, sémantické štýly znakov (markup), plávajúce tabuľky). Pozri na súbor "
 "linguistics.lyx v príkladoch."
 
 #: lib/layouts/linguistics.module:13
@@ -8745,7 +8745,7 @@ msgstr "Minimalistické"
 #: lib/layouts/minimalistic.module:5
 msgid "Redefines several insets (Index, Branch, URL) as being Minimalistic."
 msgstr ""
-"Predefinovať niekteré z vložiek ako minimalistické (Index, Vetva, URL)."
+"Predefinovať niektoré z vložiek ako minimalistické (Index, Vetva, URL)."
 
 #: lib/layouts/theorems-ams-extended.module:2
 msgid "Theorems (AMS-Extended)"
@@ -8894,9 +8894,10 @@ msgid ""
 "the theorems are numbered consecutively throughout the document. This can be "
 "changed by loading one of the Theorems (By ...) modules."
 msgstr ""
-"Definuje prostredie mat. viet a dôkazov použitím rošírenia AMS. K dispozicii "
+"Definuje prostredie mat. viet a dôkazov použitím rozšírenia AMS. K "
+"dispozícii "
 "sú číslované a neočíslované typy. Implicitne sú vety číslované postupne bez "
-"ohľadu na struktúru dokumentu. To sa dá zmeniť voľbou jedného z Teoréma "
+"ohľadu na štruktúru dokumentu. To sa dá zmeniť voľbou jedného z Teoréma "
 "(Podľa ...) modulov."
 
 #: lib/layouts/theorems-chap.module:2
@@ -8938,7 +8939,7 @@ msgid ""
 "changed by loading one of the Theorems (Ordered By ...) modules."
 msgstr ""
 "Definuje niektoré prostredia mat. viet pre použitie v triedach neodvodených "
-"od AMS. Implicitne sú vety číslované postupne bez ohľadu na struktúru "
+"od AMS. Implicitne sú vety číslované postupne bez ohľadu na štruktúru "
 "dokumentu.To sa dá zmeniť voľbou jedného z Teorémov (usporiadané podľa ...) "
 "modulov."
 
@@ -9021,7 +9022,7 @@ msgstr "Anglicky (Kanada)"
 
 #: lib/languages:24
 msgid "French (Canada)"
-msgstr "Franzúzsky (Kanada)"
+msgstr "Francúzsky (Kanada)"
 
 #: lib/languages:25
 msgid "Catalan"
