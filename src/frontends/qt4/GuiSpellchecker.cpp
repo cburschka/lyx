@@ -28,6 +28,7 @@
 #include "Language.h"
 #include "LyX.h"
 #include "LyXRC.h"
+#include "lyxfind.h"
 #include "Paragraph.h"
 #include "WordLangTuple.h"
 
@@ -147,6 +148,15 @@ void GuiSpellchecker::on_ignorePB_clicked()
 }
 
 
+void GuiSpellchecker::on_findNextPB_clicked()
+{
+	docstring const data = find2string(
+				qstring_to_ucs4(d->ui.wordED->text()),
+				true, true, true);
+	dispatch(FuncRequest(LFUN_WORD_FIND, data));
+}
+
+
 void GuiSpellchecker::on_replacePB_clicked()
 {
 	docstring const replacement = qstring_to_ucs4(d->ui.replaceCO->currentText());
@@ -160,6 +170,16 @@ void GuiSpellchecker::on_replacePB_clicked()
 	// fix up the count
 	--d->count_;
 	check();
+}
+
+
+void GuiSpellchecker::on_replaceAllPB_clicked()
+{
+	docstring const data = replace2string(
+		qstring_to_ucs4(d->ui.wordED->text()),
+		qstring_to_ucs4(d->ui.replaceCO->currentText()),
+		true, true, true, true);
+	dispatch(FuncRequest(LFUN_WORD_REPLACE, data));
 }
 
 

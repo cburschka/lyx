@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>259</width>
-    <height>536</height>
+    <height>506</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -28,6 +28,16 @@
      <widget class="QLineEdit" name="wordED" >
       <property name="toolTip" >
        <string>Current word</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1" >
+     <widget class="QPushButton" name="findNextPB" >
+      <property name="toolTip" >
+       <string>Replace word with current choice</string>
+      </property>
+      <property name="text" >
+       <string>&amp;Find Next</string>
       </property>
      </widget>
     </item>
@@ -89,10 +99,20 @@
       </property>
      </widget>
     </item>
-    <item rowspan="4" row="5" column="0" >
+    <item row="4" column="1" >
+     <widget class="QPushButton" name="replaceAllPB" >
+      <property name="toolTip" >
+       <string>Replace word with current choice</string>
+      </property>
+      <property name="text" >
+       <string>Replace &amp;All</string>
+      </property>
+     </widget>
+    </item>
+    <item rowspan="5" row="5" column="0" >
      <widget class="QListWidget" name="suggestionsLW" />
     </item>
-    <item row="5" column="1" >
+    <item row="6" column="1" >
      <widget class="QPushButton" name="ignorePB" >
       <property name="toolTip" >
        <string>Ignore this word</string>
@@ -102,7 +122,7 @@
       </property>
      </widget>
     </item>
-    <item row="6" column="1" >
+    <item row="7" column="1" >
      <widget class="QPushButton" name="ignoreAllPB" >
       <property name="toolTip" >
        <string>Ignore this word throughout this session</string>
@@ -112,7 +132,7 @@
       </property>
      </widget>
     </item>
-    <item row="7" column="1" >
+    <item row="8" column="1" >
      <widget class="QPushButton" name="addPB" >
       <property name="toolTip" >
        <string>Add the word to your personal dictionary</string>
@@ -122,7 +142,7 @@
       </property>
      </widget>
     </item>
-    <item row="8" column="1" >
+    <item row="9" column="1" >
      <spacer name="spacer" >
       <property name="orientation" >
        <enum>Qt::Vertical</enum>
@@ -138,7 +158,7 @@
       </property>
      </spacer>
     </item>
-    <item row="9" column="0" >
+    <item row="10" column="0" >
      <widget class="QProgressBar" name="spellcheckPR" >
       <property name="value" >
        <number>24</number>
