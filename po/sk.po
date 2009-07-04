@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-07-01 07:47+0200\n"
-"PO-Revision-Date: 2009-07-03 19:39+0200\n"
+"PO-Revision-Date: 2009-07-03 22:56+0200\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
 "Language-Team: Slowakisch <kde-i18n-de@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -364,7 +364,7 @@ msgstr "Horizontálne"
 #: src/frontends/qt4/ui/ParagraphUi.ui:59 src/frontends/qt4/ui/PrefsUi.ui:47
 #: src/frontends/qt4/ui/WrapUi.ui:121
 msgid "&Restore"
-msgstr "Obnoviť"
+msgstr "Reštauruj"
 
 #: src/frontends/qt4/ui/BoxUi.ui:247 src/frontends/qt4/ui/CharacterUi.ui:380
 #: src/frontends/qt4/ui/DocumentUi.ui:145
@@ -694,7 +694,7 @@ msgstr "Hľadať citáciu"
 
 #: src/frontends/qt4/ui/CitationUi.ui:66
 msgid "F&ind:"
-msgstr "&Hľadať:"
+msgstr "&Nájsť:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:79
 msgid "Hit Enter to search, or click Go!"
@@ -1400,7 +1400,7 @@ msgstr "Odkaz na e-mailovú adresu"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:56
 msgid "&Email"
-msgstr "&E-mail"
+msgstr "&Email"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:63
 msgid "Link to a file"
@@ -1452,7 +1452,7 @@ msgstr "Po&pisok:"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:99
 msgid "La&bel:"
-msgstr "&Označenie:"
+msgstr "&Návestie:"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:109
 msgid "Mo&re parameters"
@@ -1770,7 +1770,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/LogUi.ui:31
 msgid "Copy to Clip&board"
-msgstr "&Kopírovať do schránky"
+msgstr "&Kopíruj do schránky"
 
 #: src/frontends/qt4/ui/LogUi.ui:61
 msgid "Update the display"
@@ -1980,7 +1980,7 @@ msgstr "Informácia v hlavičke"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:133
 msgid "&Title:"
-msgstr "&Nadpis:"
+msgstr "&Titul:"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:146
 msgid "&Author:"
@@ -3052,16 +3052,16 @@ msgstr "Sedenie"
 
 #: src/frontends/qt4/ui/PrefUi.ui:51
 msgid "Restore window layouts and &geometries"
-msgstr "Obnoviť formáty okien a ich geometrie"
+msgstr "Reštauruj formáty okien a ich geometrie"
 
 #: src/frontends/qt4/ui/PrefUi.ui:58
 msgid "Restore to the cursor position when the file was last closed"
 msgstr ""
-"Obnoviť pozíciu kurzoru na miesto, kde bol pri poslednom zavretí súboru"
+"Reštauruj pozíciu kurzoru na miesto, kde bol pri poslednom zavretí súboru"
 
 #: src/frontends/qt4/ui/PrefUi.ui:61
 msgid "Restore cursor &positions"
-msgstr "Obnoviť pozíciu kurzoru"
+msgstr "Reštauruj pozíciu kurzoru"
 
 #: src/frontends/qt4/ui/PrefUi.ui:68
 msgid "&Load opened files from last session"
@@ -3375,7 +3375,7 @@ msgstr "Náhrada:"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:111
 msgid "Current word"
-msgstr "Aktálne slovo"
+msgstr "Aktuálne slovo"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:118
 msgid "Unknown word:"
@@ -4269,11 +4269,11 @@ msgstr "Podpodsekcia*"
 #: lib/layouts/stdstruct.inc:12 lib/layouts/stdstruct.inc:27
 #: lib/layouts/svjour.inc:249 src/output_plaintext.cpp:133
 msgid "Abstract"
-msgstr "Abstract"
+msgstr "Súhrn"
 
 #: lib/layouts/IEEEtran.layout:337
 msgid "Abstract---"
-msgstr "Abstract---"
+msgstr "Súhrn---"
 
 #: lib/layouts/IEEEtran.layout:351 lib/layouts/aa.layout:342
 #: lib/layouts/aastex.layout:112 lib/layouts/aastex.layout:317
@@ -4854,7 +4854,7 @@ msgstr "Hlavička vpravo:"
 
 #: lib/layouts/apa.layout:82
 msgid "Abstract:"
-msgstr "Abstract:"
+msgstr "Súhrn:"
 
 #: lib/layouts/apa.layout:91
 msgid "ShortTitle"
@@ -4862,19 +4862,19 @@ msgstr "ShortTitle"
 
 #: lib/layouts/apa.layout:99
 msgid "Short title:"
-msgstr "Krátky nadpis:"
+msgstr "Krátky titul:"
 
 #: lib/layouts/apa.layout:128
 msgid "TwoAuthors"
-msgstr "TwoAuthors"
+msgstr "DvajaAutori"
 
 #: lib/layouts/apa.layout:135
 msgid "ThreeAuthors"
-msgstr "ThreeAuthors"
+msgstr "TrajaAutori"
 
 #: lib/layouts/apa.layout:142
 msgid "FourAuthors"
-msgstr "FourAuthors"
+msgstr "ŠtyriaAutori"
 
 #: lib/layouts/apa.layout:161 lib/layouts/revtex4.layout:159
 #: lib/layouts/agu_stdtitle.inc:131
@@ -5078,11 +5078,11 @@ msgstr "Stĺpce (center aligned)"
 
 #: lib/layouts/beamer.layout:486
 msgid "ColumnsTopAligned"
-msgstr "ColumnsTopAligned"
+msgstr "StľpceHoreZarovnané"
 
 #: lib/layouts/beamer.layout:498
 msgid "Columns (top aligned)"
-msgstr "Stĺpce (top aligned)"
+msgstr "Stĺpce (hore zarownané)"
 
 #: lib/layouts/beamer.layout:518
 msgid "Pause"
@@ -5226,7 +5226,7 @@ msgstr "Príklad."
 
 #: lib/layouts/beamer.layout:1038
 msgid "Examples"
-msgstr "Príklad"
+msgstr "Príklady"
 
 #: lib/layouts/beamer.layout:1041
 msgid "Examples."
@@ -5634,7 +5634,7 @@ msgstr "Pozdrav:"
 
 #: lib/layouts/dinbrief.layout:196 lib/layouts/stdletter.inc:111
 msgid "encl"
-msgstr "príloha"
+msgstr "prílohy"
 
 #: lib/layouts/dinbrief.layout:198
 msgid "Anlage(n):"
@@ -5660,7 +5660,7 @@ msgstr "PS:"
 
 #: lib/layouts/dinbrief.layout:232 lib/layouts/scrlttr2.layout:173
 msgid "SenderAddress"
-msgstr "AdresaOdosilateľa"
+msgstr "AdresaOdosielateľa"
 
 #: lib/layouts/dinbrief.layout:237 lib/layouts/scrlettr.layout:167
 #: lib/layouts/scrlttr2.layout:245
@@ -5690,7 +5690,7 @@ msgstr "VašaZnačka"
 #: lib/layouts/dinbrief.layout:272 lib/layouts/g-brief-en.layout:110
 #: lib/layouts/g-brief2.layout:780
 msgid "YourMail"
-msgstr "Váš List"
+msgstr "VášMejl"
 
 #: lib/layouts/dinbrief.layout:277 lib/layouts/g-brief-de.layout:110
 msgid "IhrSchreiben"
@@ -5820,7 +5820,7 @@ msgstr "Prvý autor"
 
 #: lib/layouts/egs.layout:391
 msgid "1st_author_surname:"
-msgstr "1st_author_surname:"
+msgstr "1. Autor Priezvisko:"
 
 #: lib/layouts/egs.layout:400 lib/layouts/agu_stdtitle.inc:198
 #: lib/layouts/aguplus.inc:106
@@ -5856,7 +5856,7 @@ msgstr "reprint_reqs_to:"
 #: lib/layouts/svjog.layout:49 lib/layouts/amsdefs.inc:110
 #: lib/layouts/svjour.inc:263
 msgid "Abstract."
-msgstr "Abstract."
+msgstr "Súhrn."
 
 #: lib/layouts/egs.layout:541 lib/layouts/svjour.inc:319
 #: lib/layouts/theorems-ams-extended.module:203
@@ -5865,7 +5865,7 @@ msgstr "Poďakovanie."
 
 #: lib/layouts/elsart.layout:130
 msgid "Author Address"
-msgstr "Autorova Adresa"
+msgstr "Adresa Autora"
 
 #: lib/layouts/elsart.layout:138 lib/layouts/g-brief-en.layout:185
 #: lib/layouts/g-brief2.layout:727 lib/layouts/revtex.layout:128
@@ -5877,7 +5877,7 @@ msgstr "Adresa:"
 
 #: lib/layouts/elsart.layout:146 lib/layouts/revtex4.layout:192
 msgid "Author Email"
-msgstr "Author Email"
+msgstr "Email Autora"
 
 #: lib/layouts/elsart.layout:155 lib/layouts/llncs.layout:233
 msgid "Email:"
@@ -5885,7 +5885,7 @@ msgstr "Email:"
 
 #: lib/layouts/elsart.layout:166 lib/layouts/revtex4.layout:207
 msgid "Author URL"
-msgstr "Author URL"
+msgstr "URL Autora"
 
 #: lib/layouts/elsart.layout:176 lib/layouts/revtex4.layout:212
 #: lib/layouts/amsdefs.inc:162
@@ -5989,11 +5989,11 @@ msgstr "Title footnote:"
 
 #: lib/layouts/elsarticle.layout:134
 msgid "Authormark"
-msgstr "Authormark"
+msgstr "Poznámka autora"
 
 #: lib/layouts/elsarticle.layout:138
 msgid "Author mark"
-msgstr "Author mark"
+msgstr "Poznámka autora"
 
 #: lib/layouts/elsarticle.layout:156
 msgid "Author footnote"
@@ -6005,19 +6005,19 @@ msgstr "Autorova poznámka pod čiarou:"
 
 #: lib/layouts/elsarticle.layout:163
 msgid "CorAuthormark"
-msgstr "CorAuthormark"
+msgstr "Prísl. poznámka autora"
 
 #: lib/layouts/elsarticle.layout:167
 msgid "CorAuthor mark"
-msgstr "CorAuthor mark"
+msgstr "Prísl. poznámka autora"
 
 #: lib/layouts/elsarticle.layout:185
 msgid "Corresponding author"
-msgstr "Corresponding author"
+msgstr "Príslušný autor"
 
 #: lib/layouts/elsarticle.layout:188
 msgid "Corresponding author text:"
-msgstr "Corresponding author text:"
+msgstr "Príslušný autor text:"
 
 #: lib/layouts/elsarticle.layout:261 lib/layouts/ijmpc.layout:79
 #: lib/layouts/ijmpd.layout:82 lib/layouts/iopart.layout:208
@@ -6415,7 +6415,7 @@ msgstr "VašaZnačka:"
 
 #: lib/layouts/g-brief-en.layout:113 lib/layouts/g-brief2.layout:790
 msgid "YourMail:"
-msgstr "VášList:"
+msgstr "VášMejl:"
 
 #: lib/layouts/g-brief-en.layout:120
 msgid "Phone:"
@@ -6932,7 +6932,7 @@ msgstr "SÚHRN:"
 
 #: lib/layouts/isprs.layout:65
 msgid "KEY WORDS:"
-msgstr "KEY WORDS:"
+msgstr "HESLÁ:"
 
 #: lib/layouts/isprs.layout:133
 msgid "Commission"
@@ -7299,7 +7299,7 @@ msgstr "Vaša značka:"
 
 #: lib/layouts/scrlettr.layout:216 lib/layouts/scrlttr2.layout:301
 msgid "Yourmail"
-msgstr "Vaša pošta"
+msgstr "Váš mejl"
 
 #: lib/layouts/scrlettr.layout:219 lib/layouts/scrlttr2.layout:305
 msgid "Your letter of:"
@@ -7540,11 +7540,11 @@ msgstr "<Viditeľný text nasleduje>"
 
 #: lib/layouts/spie.layout:53
 msgid "Authorinfo"
-msgstr "Info_o_autorovi"
+msgstr "Autori-Info"
 
 #: lib/layouts/spie.layout:65
 msgid "Authorinfo:"
-msgstr "Info_o_autorovi:"
+msgstr "Autori-Info:"
 
 #: lib/layouts/spie.layout:78
 msgid "ABSTRACT"
@@ -8135,11 +8135,11 @@ msgstr "Autorská_skupina"
 
 #: lib/layouts/db_stdtitle.inc:43
 msgid "RevisionHistory"
-msgstr "RevisionHistory"
+msgstr "RevíznaHistória"
 
 #: lib/layouts/db_stdtitle.inc:58
 msgid "Revision History"
-msgstr "Revision History"
+msgstr "Revízna História"
 
 #: lib/layouts/db_stdtitle.inc:63
 msgid "Revision"
@@ -9554,7 +9554,7 @@ msgstr "Vystrihnúť|y"
 
 #: lib/ui/classic.ui:94
 msgid "Copy|o"
-msgstr "Kopírovať|K"
+msgstr "Kopíruj|K"
 
 #: lib/ui/classic.ui:95
 msgid "Paste|a"
@@ -9646,7 +9646,7 @@ msgstr "Zmazať riadok"
 
 #: lib/ui/classic.ui:131 lib/ui/classic.ui:172
 msgid "Copy Row"
-msgstr "Kopírovať riadok"
+msgstr "Kopíruj riadok"
 
 #: lib/ui/classic.ui:132 lib/ui/classic.ui:173
 msgid "Swap Rows"
@@ -9662,7 +9662,7 @@ msgstr "Zmazať stĺpec"
 
 #: lib/ui/classic.ui:136 lib/ui/classic.ui:177
 msgid "Copy Column"
-msgstr "Skopírovať stĺpec"
+msgstr "Kopíruj stĺpec"
 
 #: lib/ui/classic.ui:137 lib/ui/classic.ui:178
 msgid "Swap Columns"
@@ -9754,7 +9754,7 @@ msgstr "Maxima"
 
 #: lib/ui/classic.ui:190
 msgid "Mathematica"
-msgstr "Matematica"
+msgstr "Mathematica"
 
 #: lib/ui/classic.ui:192
 msgid "Maple, simplify"
@@ -9835,7 +9835,7 @@ msgstr "Poznámka na okraji"
 
 #: lib/ui/classic.ui:222
 msgid "Short Title"
-msgstr "Krátky nadpis"
+msgstr "Krátky titul"
 
 #: lib/ui/classic.ui:223
 msgid "Index Entry|I"
@@ -10126,7 +10126,7 @@ msgstr "Sledovať zmeny"
 
 #: lib/ui/classic.ui:329 lib/ui/stdmenus.inc:472
 msgid "Merge Changes...|M"
-msgstr "Združiť zmeny..."
+msgstr "Zlúčiť zmeny..."
 
 #: lib/ui/classic.ui:330
 msgid "Accept All Changes|A"
@@ -10437,7 +10437,7 @@ msgstr "Choď späť"
 
 #: lib/ui/stdcontext.inc:101
 msgid "Copy as Reference|C"
-msgstr "Kopírovať ako referenciu..."
+msgstr "Kopíruj ako referenciu..."
 
 #: lib/ui/stdcontext.inc:123
 msgid "Edit Database(s) Externally...|x"
@@ -10485,7 +10485,7 @@ msgstr "Oválny, Tučný|v"
 
 #: lib/ui/stdcontext.inc:155
 msgid "Drop Shadow|w"
-msgstr "Vrhá tieň"
+msgstr "S Tieňom"
 
 #: lib/ui/stdcontext.inc:156
 msgid "Shaded Background|B"
@@ -10661,7 +10661,7 @@ msgstr "Stránku vyprázdniť"
 
 #: lib/ui/stdcontext.inc:264 lib/ui/stdmenus.inc:390
 msgid "Clear Double Page|D"
-msgstr "Dvojitú stránku vyprázdniť"
+msgstr "Vyprázdniť Dvojitú Stránku"
 
 #: lib/ui/stdcontext.inc:271 lib/ui/stdmenus.inc:384
 msgid "Ragged Line Break|R"
@@ -10751,27 +10751,27 @@ msgstr "Zmaž Posledný Argument"
 
 #: lib/ui/stdcontext.inc:310
 msgid "Make First Non-Optional Into Optional Argument"
-msgstr "Zmeniť prvý povinný argument na nepovinný"
+msgstr "Zmeň prvý povinný argument na nepovinný"
 
 #: lib/ui/stdcontext.inc:311
 msgid "Make Last Optional Into Non-Optional Argument"
-msgstr "Zmeniť posledný nepovinný argument na povinný"
+msgstr "Zmeň posledný nepovinný argument na povinný"
 
 #: lib/ui/stdcontext.inc:312 lib/ui/stdmenus.inc:230
 msgid "Insert Optional Argument"
-msgstr "Vložiť nepovinný argument"
+msgstr "Vlož nepovinný argument"
 
 #: lib/ui/stdcontext.inc:313 lib/ui/stdmenus.inc:231
 msgid "Remove Optional Argument"
-msgstr "Zmazať nepovinný argument"
+msgstr "Zmaž nepovinný argument"
 
 #: lib/ui/stdcontext.inc:315 lib/ui/stdmenus.inc:233
 msgid "Append Argument Eating From the Right"
-msgstr "Pridať argument sprava"
+msgstr "Pridaj Argument Sprava"
 
 #: lib/ui/stdcontext.inc:316 lib/ui/stdmenus.inc:234
 msgid "Append Optional Argument Eating From the Right"
-msgstr "Pridať nepovinný argument sprava"
+msgstr "Pridaj Nepovinný Argument Sprava"
 
 #: lib/ui/stdcontext.inc:317 lib/ui/stdmenus.inc:235
 msgid "Remove Last Argument Spitting out to the Right"
@@ -10799,11 +10799,11 @@ msgstr "Pravý riadok"
 
 #: lib/ui/stdcontext.inc:381 lib/ui/stdmenus.inc:190
 msgid "Copy Row|o"
-msgstr "Kopírovať riadok"
+msgstr "Kopíruj riadok"
 
 #: lib/ui/stdcontext.inc:386 lib/ui/stdmenus.inc:195
 msgid "Copy Column|p"
-msgstr "Kopírovať stĺpec"
+msgstr "Kopíruj stĺpec"
 
 #: lib/ui/stdmenus.inc:32
 msgid "Document|D"
@@ -10979,11 +10979,11 @@ msgstr "Pridať riadok ponad"
 
 #: lib/ui/stdmenus.inc:228
 msgid "Make First Non-Optional into Optional Argument"
-msgstr "Zmeniť prvý povinný argument na nepovinný"
+msgstr "Zmeň prvý povinný argument na nepovinný"
 
 #: lib/ui/stdmenus.inc:229
 msgid "Make Last Optional into Non-Optional Argument"
-msgstr "Zmeniť posledný nepovinný argument na povinný"
+msgstr "Zmeň posledný nepovinný argument na povinný"
 
 #: lib/ui/stdmenus.inc:245
 msgid "Math Normal Font|N"
@@ -11319,7 +11319,7 @@ msgstr "Kontrola pravopisu"
 
 #: lib/ui/stdtoolbars.inc:76 src/BufferView.cpp:1074
 msgid "Undo"
-msgstr "Zrušiť"
+msgstr "Späť"
 
 #: lib/ui/stdtoolbars.inc:77 src/BufferView.cpp:1083
 msgid "Redo"
@@ -11331,7 +11331,7 @@ msgstr "Hľadať a nahradiť"
 
 #: lib/ui/stdtoolbars.inc:82
 msgid "Navigate back"
-msgstr "Navigujte späť"
+msgstr "Choď späť"
 
 #: lib/ui/stdtoolbars.inc:84
 msgid "Toggle emphasis"
@@ -11451,7 +11451,7 @@ msgstr "Zahrnúť súbor"
 
 #: lib/ui/stdtoolbars.inc:123
 msgid "Text style"
-msgstr "Text štýl"
+msgstr "Štýl textu"
 
 #: lib/ui/stdtoolbars.inc:124
 msgid "Paragraph settings"
@@ -11675,7 +11675,7 @@ msgstr "Odmietnuť zmeny vo výbere"
 
 #: lib/ui/stdtoolbars.inc:209
 msgid "Merge changes"
-msgstr "Združiť zmeny"
+msgstr "Zlúčiť zmeny"
 
 #: lib/ui/stdtoolbars.inc:210
 msgid "Accept all changes"
@@ -11731,7 +11731,7 @@ msgstr "Včítať verziu úpravy"
 
 #: lib/ui/stdtoolbars.inc:229
 msgid "Check-in changes"
-msgstr "Uložiť zmeny do repositáru"
+msgstr "Uložiť zmeny do repozitáru"
 
 #: lib/ui/stdtoolbars.inc:230
 msgid "View revision log"
@@ -11743,7 +11743,7 @@ msgstr "Zrušiť všetky zmeny"
 
 #: lib/ui/stdtoolbars.inc:233
 msgid "Use SVN file locking property"
-msgstr ""
+msgstr "Použiť blokovanie súborov z SVN"
 
 #: lib/ui/stdtoolbars.inc:236
 msgid "Math Panels"
@@ -12820,7 +12820,7 @@ msgstr "angle"
 
 #: lib/ui/stdtoolbars.inc:548
 msgid "top"
-msgstr "top"
+msgstr "hore"
 
 #: lib/ui/stdtoolbars.inc:549
 msgid "bot"
@@ -15983,11 +15983,11 @@ msgstr "Otváram súbor s pomocníkom %1$s..."
 #: src/LyXFunc.cpp:1131 src/VCBackend.cpp:56 src/VCBackend.cpp:560
 #: src/VCBackend.cpp:626 src/VCBackend.cpp:632 src/VCBackend.cpp:653
 msgid "Revision control error."
-msgstr "Chyba kontroly verzií."
+msgstr "Chyba kontroly správy verzií."
 
 #: src/LyXFunc.cpp:1132
 msgid "Error when setting the locking property."
-msgstr ""
+msgstr "Chyba pri nastavení blokovacej vlastnosti."
 
 #: src/LyXFunc.cpp:1352
 #, c-format
@@ -16591,7 +16591,7 @@ msgstr "Dokument nie je uložený!"
 
 #: src/LyXVC.cpp:101
 msgid "You must save the document before it can be registered."
-msgstr "Musíte uložiť dokument skôr ako by bol zaregistrovaný."
+msgstr "Musíte uložiť dokument pred zaregistrovaním."
 
 #: src/LyXVC.cpp:133
 msgid "LyX VC: Initial description"
@@ -16849,7 +16849,7 @@ msgid ""
 "You have to manually resolve the problem.\n"
 "After pressing OK, LyX will reopen the document."
 msgstr ""
-"Chyba pri aktualizovaní repositáru.\n"
+"Chyba pri odoslaní do repozitáru.\n"
 "Treba vyriešiť problém manuálne.\n"
 "Po stisknutí tlačidla OK sa LyX pokúsi dokument znovu otvoriť."
 
@@ -16860,7 +16860,7 @@ msgid ""
 "the current document now!\n"
 "Also check the access to the repository."
 msgstr ""
-"Chyba pri pokuse osvojiť si zámok na písanie.\n"
+"Chyba pri pokuse osvojiť si blokovanie na písanie.\n"
 "Najpravdepodobnejšie asi iný užívateľ teraz\n"
 "edituje súčasný dokument!\n"
 "Skontrolujte aj prístup do repozitára."
@@ -16870,7 +16870,7 @@ msgid ""
 "Error when releasing write lock.\n"
 "Check the access to the repository."
 msgstr ""
-"Chyba pri pokuse uvoľniť zámok na písanie.\n"
+"Chyba pri pokuse uvoľniť blokovanie na písanie.\n"
 "Skontrolujte prístup do repozitára."
 
 #: src/VCBackend.cpp:654
@@ -16882,7 +16882,7 @@ msgid ""
 "\n"
 "After pressing OK, LyX will try to reopen resolved document."
 msgstr ""
-"Chyba pri aktualizácii z repositára.\n"
+"Chyba pri aktualizácii z repozitára.\n"
 "Treba opraviť konflikty TERAZ!\n"
 "'%1$s'.\n"
 "\n"
@@ -16890,19 +16890,19 @@ msgstr ""
 
 #: src/VCBackend.cpp:706
 msgid "VCN File Locking"
-msgstr ""
+msgstr "Blokovanie Súborov zo Správy Verzií"
 
 #: src/VCBackend.cpp:707
 msgid "Locking property unset."
-msgstr ""
+msgstr "Blokovanie súborov neaktívne."
 
 #: src/VCBackend.cpp:707 src/VCBackend.cpp:711
 msgid "Locking property set."
-msgstr ""
+msgstr "Blokovanie súborov aktívne."
 
 #: src/VCBackend.cpp:708
 msgid "Do not forget to commit the locking property into the repository."
-msgstr ""
+msgstr "Nezabudnite odoslať blokovaciu vlastnosť do repozitára."
 
 #: src/VSpace.cpp:472
 msgid "Default skip"
@@ -17290,7 +17290,7 @@ msgstr "Nie"
 
 #: src/frontends/qt4/GuiChanges.cpp:40
 msgid "Merge Changes"
-msgstr "Združiť Zmeny"
+msgstr "Zlúčiť Zmeny"
 
 #: src/frontends/qt4/GuiChanges.cpp:63
 #, c-format
@@ -17372,7 +17372,7 @@ msgstr "Žltá"
 
 #: src/frontends/qt4/GuiCharacter.cpp:159
 msgid "Text Style"
-msgstr "Štýl textu"
+msgstr "Štýl Textu"
 
 #: src/frontends/qt4/GuiCitation.cpp:325
 msgid "Keys"
@@ -18476,7 +18476,7 @@ msgstr "Krížová referencia"
 
 #: src/frontends/qt4/GuiRef.cpp:276
 msgid "&Go Back"
-msgstr "Ísť s&päť"
+msgstr "Choď s&päť"
 
 #: src/frontends/qt4/GuiRef.cpp:278
 msgid "Jump back"
@@ -19936,7 +19936,7 @@ msgstr "Stránku vyprázdniť"
 
 #: src/insets/InsetNewpage.cpp:187
 msgid "Clear Double Page"
-msgstr "Vyprázdniť dvojitú stránku (\\cleardoublepage)"
+msgstr "Vyprázdniť Dvojitú Stránku (\\cleardoublepage)"
 
 #: src/insets/InsetNomencl.cpp:62
 msgid "Nom: "
@@ -20307,7 +20307,7 @@ msgstr "Len jeden stĺpec"
 
 #: src/mathed/InsetMathGrid.cpp:1386
 msgid "No hline to delete"
-msgstr "žiadna horizontálna čiara na zmazanie "
+msgstr "žiadna horizontálna čiara na zmazanie"
 
 #: src/mathed/InsetMathGrid.cpp:1395
 msgid "No vline to delete"
