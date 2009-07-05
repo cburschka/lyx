@@ -68,8 +68,8 @@ Menuset
 
 	Menu "file_vc"
 		OptItem "Register...|R" "vc-register"
-		OptItem "Check in Changes...|I" "vc-check-in"
-		OptItem "Check out for Edit|O" "vc-check-out"
+		OptItem "Check in Changes...|i" "vc-check-in"
+		OptItem "Check out for Edit|o" "vc-check-out"
 		OptItem "Revert to Repository Version|R" "vc-revert"
 		OptItem "Undo Last Check In|U" "vc-undo-last"
 		OptItem "Show History...|H" "dialog-show vclog"
