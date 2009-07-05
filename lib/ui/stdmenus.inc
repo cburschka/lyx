@@ -18,6 +18,7 @@
 # * Articles: a, an, the. 
 # * Conjunctions: and, but, for, not, so, yet ...  
 # * Prepositions of three or fewer letters: at, for, by, in, to ...
+#   (except when the preposition is part of a verb phrase, such as "Check In")
 # (http://library.gnome.org/devel/hig-book/stable/design-text-labels.html.en)
 
 Menuset
@@ -68,8 +69,8 @@ Menuset
 
 	Menu "file_vc"
 		OptItem "Register...|R" "vc-register"
-		OptItem "Check in Changes...|I" "vc-check-in"
-		OptItem "Check out for Edit|O" "vc-check-out"
+		OptItem "Check In Changes...|I" "vc-check-in"
+		OptItem "Check Out for Edit|O" "vc-check-out"
 		OptItem "Revert to Repository Version|R" "vc-revert"
 		OptItem "Undo Last Check In|U" "vc-undo-last"
 		OptItem "Show History...|H" "dialog-show vclog"
@@ -232,7 +233,7 @@ Menuset
 		Separator
 		Item "Append Argument Eating From the Right" "math-macro-append-greedy-param"
 		Item "Append Optional Argument Eating From the Right" "math-macro-add-greedy-optional-param"
-		Item "Remove Last Argument Spitting out to the Right" "math-macro-remove-greedy-param"
+		Item "Remove Last Argument Spitting Out to the Right" "math-macro-remove-greedy-param"
 	End
 
 	Menu "edit_math_limits"

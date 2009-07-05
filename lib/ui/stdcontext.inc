@@ -16,6 +16,7 @@
 # * Articles: a, an, the. 
 # * Conjunctions: and, but, for, not, so, yet ...  
 # * Prepositions of three or fewer letters: at, for, by, in, to ...
+#   (except when the preposition is part of a verb phrase, such as "Check In")
 # (http://library.gnome.org/devel/hig-book/stable/design-text-labels.html.en)
 
 Menuset
@@ -314,7 +315,7 @@ Menuset
 		Separator
 		Item "Append Argument Eating From the Right" "math-macro-append-greedy-param"
 		Item "Append Optional Argument Eating From the Right" "math-macro-add-greedy-optional-param"
-		Item "Remove Last Argument Spitting out to the Right" "math-macro-remove-greedy-param"
+		Item "Remove Last Argument Spitting Out to the Right" "math-macro-remove-greedy-param"
 	End
 
 #
