@@ -27,7 +27,6 @@
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
-#include "OutputParams.h"
 #include "ParIterator.h"
 #include "TextClass.h"
 

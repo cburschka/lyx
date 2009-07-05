@@ -24,11 +24,9 @@
 #include "FloatList.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "InsetList.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "TextClass.h"
-#include "TocBackend.h"
 
 #include "support/debug.h"
 #include "support/docstream.h"
