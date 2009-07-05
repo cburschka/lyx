@@ -16,6 +16,7 @@
 # * Articles: a, an, the. 
 # * Conjunctions: and, but, for, not, so, yet ...  
 # * Prepositions of three or fewer letters: at, for, by, in, to ...
+#   (except when the preposition is part of a verb phrase, such as "Check In")
 # (http://library.gnome.org/devel/hig-book/stable/design-text-labels.html.en)
 
 Menuset
@@ -459,7 +460,7 @@ Menuset
 	Menu "context-toc-graphics"
 		Item "Settings...|S" "inset-settings"
 		Separator
-		Item "Edit externally...|x" "inset-edit"
+		Item "Edit Externally...|x" "inset-edit"
 	End
 
 #
