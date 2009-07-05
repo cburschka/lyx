@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-07-01 07:47+0200\n"
+"POT-Creation-Date: 2009-07-05 18:33+0200\n"
 "PO-Revision-Date: 2009-05-29 12:42-0400\n"
 "Last-Translator: Marius Ionescu <felijohn@gmail.com>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
@@ -1420,7 +1420,7 @@ msgstr "&Fişier:"
 #: src/frontends/qt4/ui/HyperlinkUi.ui:90 lib/layouts/scrlttr2.layout:205
 #: lib/layouts/amsdefs.inc:158 lib/layouts/stdinsets.inc:247
 #: lib/layouts/stdinsets.inc:252 lib/layouts/minimalistic.module:24
-#: lib/layouts/minimalistic.module:26 lib/ui/stdmenus.inc:349
+#: lib/layouts/minimalistic.module:26 lib/ui/stdmenus.inc:350
 msgid "URL"
 msgstr "URL"
 
@@ -4559,7 +4559,7 @@ msgstr "Mail"
 #: lib/layouts/siamltex.layout:223 lib/layouts/agu_stdtitle.inc:238
 #: lib/layouts/amsdefs.inc:72 lib/layouts/db_stdtitle.inc:35
 #: lib/layouts/scrclass.inc:162 lib/layouts/stdtitle.inc:50
-#: lib/layouts/svjour.inc:227 lib/ui/stdmenus.inc:356
+#: lib/layouts/svjour.inc:227 lib/ui/stdmenus.inc:357
 #: lib/external_templates:300 lib/external_templates:301
 #: lib/external_templates:305
 msgid "Date"
@@ -9563,15 +9563,15 @@ msgstr "Unicode (XeTeX) (utf8)"
 msgid "ASCII"
 msgstr "ASCII"
 
-#: lib/ui/classic.ui:32 lib/ui/stdmenus.inc:27
+#: lib/ui/classic.ui:32 lib/ui/stdmenus.inc:28
 msgid "File|F"
 msgstr "Fişier|F"
 
-#: lib/ui/classic.ui:33 lib/ui/stdmenus.inc:28
+#: lib/ui/classic.ui:33 lib/ui/stdmenus.inc:29
 msgid "Edit|E"
 msgstr "Editare|E"
 
-#: lib/ui/classic.ui:34 lib/ui/stdmenus.inc:30
+#: lib/ui/classic.ui:34 lib/ui/stdmenus.inc:31
 msgid "Insert|I"
 msgstr "Inserare|I"
 
@@ -9579,11 +9579,11 @@ msgstr "Inserare|I"
 msgid "Layout|L"
 msgstr "Format|F"
 
-#: lib/ui/classic.ui:36 lib/ui/stdmenus.inc:29
+#: lib/ui/classic.ui:36 lib/ui/stdmenus.inc:30
 msgid "View|V"
 msgstr "Vizualizare|V"
 
-#: lib/ui/classic.ui:37 lib/ui/stdmenus.inc:31
+#: lib/ui/classic.ui:37 lib/ui/stdmenus.inc:32
 msgid "Navigate|N"
 msgstr "Navigare|N"
 
@@ -9591,11 +9591,11 @@ msgstr "Navigare|N"
 msgid "Documents|D"
 msgstr "Documente|D"
 
-#: lib/ui/classic.ui:39 lib/ui/stdmenus.inc:34
+#: lib/ui/classic.ui:39 lib/ui/stdmenus.inc:35
 msgid "Help|H"
 msgstr "Ajutor|A"
 
-#: lib/ui/classic.ui:47 lib/ui/stdmenus.inc:42
+#: lib/ui/classic.ui:47 lib/ui/stdmenus.inc:43
 msgid "New|N"
 msgstr "Nou|N"
 
@@ -9603,19 +9603,19 @@ msgstr "Nou|N"
 msgid "New from Template...|T"
 msgstr "Nou bazat pe model...|m"
 
-#: lib/ui/classic.ui:49 lib/ui/stdmenus.inc:44
+#: lib/ui/classic.ui:49 lib/ui/stdmenus.inc:45
 msgid "Open...|O"
 msgstr "Deschide...|D"
 
-#: lib/ui/classic.ui:51 lib/ui/stdmenus.inc:47
+#: lib/ui/classic.ui:51 lib/ui/stdmenus.inc:48
 msgid "Close|C"
 msgstr "Închide|C"
 
-#: lib/ui/classic.ui:52 lib/ui/stdmenus.inc:48
+#: lib/ui/classic.ui:52 lib/ui/stdmenus.inc:49
 msgid "Save|S"
 msgstr "Salvează|S"
 
-#: lib/ui/classic.ui:53 lib/ui/stdmenus.inc:49
+#: lib/ui/classic.ui:53 lib/ui/stdmenus.inc:50
 msgid "Save As...|A"
 msgstr "Salvează ca...|a"
 
@@ -9623,61 +9623,61 @@ msgstr "Salvează ca...|a"
 msgid "Revert|R"
 msgstr "Reface documentul original|r"
 
-#: lib/ui/classic.ui:55 lib/ui/stdmenus.inc:52
+#: lib/ui/classic.ui:55 lib/ui/stdmenus.inc:53
 msgid "Version Control|V"
 msgstr "Controlul versiunii|v"
 
-#: lib/ui/classic.ui:57 lib/ui/stdmenus.inc:54
+#: lib/ui/classic.ui:57 lib/ui/stdmenus.inc:55
 msgid "Import|I"
 msgstr "Importă|I"
 
-#: lib/ui/classic.ui:58 lib/ui/stdmenus.inc:55
+#: lib/ui/classic.ui:58 lib/ui/stdmenus.inc:56
 msgid "Export|E"
 msgstr "Exportă|E"
 
-#: lib/ui/classic.ui:59 lib/ui/stdmenus.inc:56
+#: lib/ui/classic.ui:59 lib/ui/stdmenus.inc:57
 msgid "Print...|P"
 msgstr "Tipăreşte...|T"
 
-#: lib/ui/classic.ui:60 lib/ui/stdmenus.inc:57
+#: lib/ui/classic.ui:60 lib/ui/stdmenus.inc:58
 msgid "Fax...|F"
 msgstr "Fax...|F"
 
-#: lib/ui/classic.ui:62 lib/ui/stdmenus.inc:62
+#: lib/ui/classic.ui:62 lib/ui/stdmenus.inc:63
 msgid "Exit|x"
 msgstr "Ieşire|I"
 
-#: lib/ui/classic.ui:68 lib/ui/stdmenus.inc:70
+#: lib/ui/classic.ui:68 lib/ui/stdmenus.inc:71
 msgid "Register...|R"
 msgstr "Înregistrează...|r"
 
-#: lib/ui/classic.ui:69
+#: lib/ui/classic.ui:69 lib/ui/stdmenus.inc:72
 msgid "Check In Changes...|I"
 msgstr "\"Check in\" schimbările...|I"
 
-#: lib/ui/classic.ui:70
+#: lib/ui/classic.ui:70 lib/ui/stdmenus.inc:73
 msgid "Check Out for Edit|O"
 msgstr "\"Check out\" pentru editare|O"
 
-#: lib/ui/classic.ui:71 lib/ui/stdmenus.inc:73
+#: lib/ui/classic.ui:71 lib/ui/stdmenus.inc:74
 #, fuzzy
 msgid "Revert to Repository Version|R"
 msgstr "Revine la ultima versiune|u"
 
-#: lib/ui/classic.ui:72 lib/ui/stdmenus.inc:74
+#: lib/ui/classic.ui:72 lib/ui/stdmenus.inc:75
 msgid "Undo Last Check In|U"
 msgstr "Des-face ultimul \"check in\"|d"
 
-#: lib/ui/classic.ui:73 lib/ui/stdmenus.inc:75
+#: lib/ui/classic.ui:73 lib/ui/stdmenus.inc:76
 #, fuzzy
 msgid "Show History...|H"
 msgstr "Afişează istoricul|i"
 
-#: lib/ui/classic.ui:82 lib/ui/stdmenus.inc:85
+#: lib/ui/classic.ui:82 lib/ui/stdmenus.inc:86
 msgid "Custom...|C"
 msgstr "Personalizat...|C"
 
-#: lib/ui/classic.ui:90 lib/ui/stdmenus.inc:93
+#: lib/ui/classic.ui:90 lib/ui/stdmenus.inc:94
 msgid "Undo|U"
 msgstr "Des-face|D"
 
@@ -9701,7 +9701,7 @@ msgstr "Lipeşte|L"
 msgid "Paste External Selection|x"
 msgstr "Lipeşte selecţia externă|x"
 
-#: lib/ui/classic.ui:98 lib/ui/stdmenus.inc:104
+#: lib/ui/classic.ui:98 lib/ui/stdmenus.inc:105
 msgid "Find & Replace...|F"
 msgstr "Înlocuieşte...|n"
 
@@ -9709,11 +9709,11 @@ msgstr "Înlocuieşte...|n"
 msgid "Tabular|T"
 msgstr "Tabular|T"
 
-#: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:114 lib/ui/stdmenus.inc:532
+#: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:115 lib/ui/stdmenus.inc:533
 msgid "Math|M"
 msgstr "Matematic|M"
 
-#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:510
+#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:511
 msgid "Spellchecker...|S"
 msgstr "Verificator ortografic...|V"
 
@@ -9726,7 +9726,7 @@ msgstr "Dicţionar..."
 msgid "Statistics...|i"
 msgstr "Stare"
 
-#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:513
+#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:514
 msgid "Check TeX|h"
 msgstr "Verifică TeX|V"
 
@@ -9735,11 +9735,11 @@ msgstr "Verifică TeX|V"
 msgid "Change Tracking|g"
 msgstr "Modifică limbajul"
 
-#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:520
+#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:521
 msgid "Preferences...|P"
 msgstr "Preferinţe....|P"
 
-#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:519
+#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:520
 msgid "Reconfigure|R"
 msgstr "Reconfigurează|R"
 
@@ -9751,7 +9751,7 @@ msgstr "Selecţa ca linii|l"
 msgid "Selection as Paragraphs|P"
 msgstr "Selecţa ca paragrafe|p"
 
-#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:364 lib/ui/stdmenus.inc:170
+#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:365 lib/ui/stdmenus.inc:171
 msgid "Multicolumn|M"
 msgstr "Multicoloană|M"
 
@@ -9775,7 +9775,7 @@ msgstr "Linie dreapta|d"
 msgid "Alignment|i"
 msgstr "Aliniere|A"
 
-#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:379 lib/ui/stdmenus.inc:188
+#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:380 lib/ui/stdmenus.inc:189
 msgid "Add Row|A"
 msgstr "Adaugă o linie|A"
 
@@ -9791,7 +9791,7 @@ msgstr "Copiază linia"
 msgid "Swap Rows"
 msgstr "Schimbă liniile între ele"
 
-#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:384 lib/ui/stdmenus.inc:193
+#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:385 lib/ui/stdmenus.inc:194
 msgid "Add Column|u"
 msgstr "Adaugă o coloană|o"
 
@@ -9807,27 +9807,27 @@ msgstr "Copiază coloana"
 msgid "Swap Columns"
 msgstr "Schimbă coloanele între ele"
 
-#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:371 lib/ui/stdmenus.inc:180
+#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:372 lib/ui/stdmenus.inc:181
 msgid "Left|L"
 msgstr "Stînga|#t"
 
-#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:372 lib/ui/stdmenus.inc:181
+#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:373 lib/ui/stdmenus.inc:182
 msgid "Center|C"
 msgstr "Centrat"
 
-#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:373 lib/ui/stdmenus.inc:182
+#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:374 lib/ui/stdmenus.inc:183
 msgid "Right|R"
 msgstr "Dreapta|#D"
 
-#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:375 lib/ui/stdmenus.inc:184
+#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:376 lib/ui/stdmenus.inc:185
 msgid "Top|T"
 msgstr "Sus|#S"
 
-#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:376 lib/ui/stdmenus.inc:185
+#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:377 lib/ui/stdmenus.inc:186
 msgid "Middle|M"
 msgstr "Mijloc"
 
-#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:377 lib/ui/stdmenus.inc:186
+#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:378 lib/ui/stdmenus.inc:187
 msgid "Bottom|B"
 msgstr "Jos|#J"
 
@@ -9839,15 +9839,15 @@ msgstr "Comută numerotarea|n"
 msgid "Toggle Numbering of Line|u"
 msgstr "Comută numerotarea liniei|u"
 
-#: lib/ui/classic.ui:162 lib/ui/stdmenus.inc:202
+#: lib/ui/classic.ui:162 lib/ui/stdmenus.inc:203
 msgid "Change Limits Type|L"
 msgstr "Modifică tipul limitei|l"
 
-#: lib/ui/classic.ui:164 lib/ui/stdmenus.inc:205
+#: lib/ui/classic.ui:164 lib/ui/stdmenus.inc:206
 msgid "Change Formula Type|F"
 msgstr "Modifică tipul formulei|f"
 
-#: lib/ui/classic.ui:166 lib/ui/stdmenus.inc:209
+#: lib/ui/classic.ui:166 lib/ui/stdmenus.inc:210
 msgid "Use Computer Algebra System|S"
 msgstr "Utilizează Computer Algebra System|S"
 
@@ -9859,7 +9859,7 @@ msgstr "Aliniere|A"
 msgid "Add Row|R"
 msgstr "Adaugă o linie|l"
 
-#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:380 lib/ui/stdmenus.inc:189
+#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:381 lib/ui/stdmenus.inc:190
 msgid "Delete Row|D"
 msgstr "Şterge linia|i"
 
@@ -9867,19 +9867,19 @@ msgstr "Şterge linia|i"
 msgid "Add Column|C"
 msgstr "Adaugă o coloană|c"
 
-#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:385 lib/ui/stdmenus.inc:194
+#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:386 lib/ui/stdmenus.inc:195
 msgid "Delete Column|e"
 msgstr "Şterge coloana|o"
 
-#: lib/ui/classic.ui:182 lib/ui/stdmenus.inc:239
+#: lib/ui/classic.ui:182 lib/ui/stdmenus.inc:240
 msgid "Default|t"
 msgstr "Implicit|I"
 
-#: lib/ui/classic.ui:183 lib/ui/stdmenus.inc:240
+#: lib/ui/classic.ui:183 lib/ui/stdmenus.inc:241
 msgid "Display|D"
 msgstr "Afişează|A"
 
-#: lib/ui/classic.ui:184 lib/ui/stdmenus.inc:241
+#: lib/ui/classic.ui:184 lib/ui/stdmenus.inc:242
 msgid "Inline|I"
 msgstr "În-linie|i"
 
@@ -9911,12 +9911,12 @@ msgstr "Maple, evalm"
 msgid "Maple, evalf"
 msgstr "Maple, evalf"
 
-#: lib/ui/classic.ui:199 lib/ui/classic.ui:265 lib/ui/stdcontext.inc:48
-#: lib/ui/stdmenus.inc:281 lib/ui/stdmenus.inc:394
+#: lib/ui/classic.ui:199 lib/ui/classic.ui:265 lib/ui/stdcontext.inc:49
+#: lib/ui/stdmenus.inc:282 lib/ui/stdmenus.inc:395
 msgid "Inline Formula|I"
 msgstr "Formulă în-linie|i"
 
-#: lib/ui/classic.ui:200 lib/ui/stdcontext.inc:49 lib/ui/stdmenus.inc:282
+#: lib/ui/classic.ui:200 lib/ui/stdcontext.inc:50 lib/ui/stdmenus.inc:283
 msgid "Displayed Formula|D"
 msgstr "Formulă afişată|F"
 
@@ -9944,7 +9944,7 @@ msgstr "Mediu \"Gather\""
 msgid "Multline Environment"
 msgstr "Mediu \"Multline\""
 
-#: lib/ui/classic.ui:214 lib/ui/stdmenus.inc:329
+#: lib/ui/classic.ui:214 lib/ui/stdmenus.inc:330
 msgid "Math|h"
 msgstr "Matematic|M"
 
@@ -9952,7 +9952,7 @@ msgstr "Matematic|M"
 msgid "Special Character|S"
 msgstr "Caractere speciale|C"
 
-#: lib/ui/classic.ui:217 lib/ui/stdmenus.inc:340
+#: lib/ui/classic.ui:217 lib/ui/stdmenus.inc:341
 msgid "Citation...|C"
 msgstr "Citare...|C"
 
@@ -9960,15 +9960,15 @@ msgstr "Citare...|C"
 msgid "Cross-reference...|r"
 msgstr "Referinţă încrucişată...|R"
 
-#: lib/ui/classic.ui:219 lib/ui/stdmenus.inc:342
+#: lib/ui/classic.ui:219 lib/ui/stdmenus.inc:343
 msgid "Label...|L"
 msgstr "Etichetă...|E"
 
-#: lib/ui/classic.ui:220 lib/ui/stdmenus.inc:351
+#: lib/ui/classic.ui:220 lib/ui/stdmenus.inc:352
 msgid "Footnote|F"
 msgstr "Notă de subsol|s"
 
-#: lib/ui/classic.ui:221 lib/ui/stdmenus.inc:352
+#: lib/ui/classic.ui:221 lib/ui/stdmenus.inc:353
 msgid "Marginal Note|M"
 msgstr "Notă marginală|m"
 
@@ -9988,7 +9988,7 @@ msgstr "Intrare de nomenclatură"
 msgid "URL...|U"
 msgstr "URL...|U"
 
-#: lib/ui/classic.ui:226 lib/ui/stdmenus.inc:334
+#: lib/ui/classic.ui:226 lib/ui/stdmenus.inc:335
 msgid "Note|N"
 msgstr "Notă|N"
 
@@ -10004,7 +10004,7 @@ msgstr "TeX|T"
 msgid "Minipage|p"
 msgstr "Minipagină|p"
 
-#: lib/ui/classic.ui:231 lib/ui/stdmenus.inc:348
+#: lib/ui/classic.ui:231 lib/ui/stdmenus.inc:349
 msgid "Graphics...|G"
 msgstr "Grafică...|G"
 
@@ -10028,16 +10028,16 @@ msgstr "Inserează fişier|e"
 msgid "External Material...|x"
 msgstr "Material extern...|x"
 
-#: lib/ui/classic.ui:241 lib/ui/stdmenus.inc:360
+#: lib/ui/classic.ui:241 lib/ui/stdmenus.inc:361
 #, fuzzy
 msgid "Symbols...|b"
 msgstr "Simbol:"
 
-#: lib/ui/classic.ui:242 lib/ui/stdmenus.inc:372
+#: lib/ui/classic.ui:242 lib/ui/stdmenus.inc:373
 msgid "Superscript|S"
 msgstr "Exponent|E"
 
-#: lib/ui/classic.ui:243 lib/ui/stdmenus.inc:373
+#: lib/ui/classic.ui:243 lib/ui/stdmenus.inc:374
 msgid "Subscript|u"
 msgstr "Indice|I"
 
@@ -10045,12 +10045,12 @@ msgstr "Indice|I"
 msgid "Hyphenation Point|P"
 msgstr "Punct de despărţire|P"
 
-#: lib/ui/classic.ui:245 lib/ui/stdmenus.inc:365
+#: lib/ui/classic.ui:245 lib/ui/stdmenus.inc:366
 #, fuzzy
 msgid "Protected Hyphen|y"
 msgstr "Spaţiu protejat|S"
 
-#: lib/ui/classic.ui:246 lib/ui/stdmenus.inc:383
+#: lib/ui/classic.ui:246 lib/ui/stdmenus.inc:384
 msgid "Ligature Break|k"
 msgstr "Rupere ligatură|R"
 
@@ -10058,16 +10058,16 @@ msgstr "Rupere ligatură|R"
 msgid "Protected Space|r"
 msgstr "Spaţiu protejat|S"
 
-#: lib/ui/classic.ui:248 lib/ui/stdmenus.inc:376
+#: lib/ui/classic.ui:248 lib/ui/stdmenus.inc:377
 msgid "Inter-word Space|w"
 msgstr "Spaţiu între cuvinte|c"
 
-#: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:191 lib/ui/stdcontext.inc:214
-#: lib/ui/stdmenus.inc:377
+#: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:192 lib/ui/stdcontext.inc:215
+#: lib/ui/stdmenus.inc:378
 msgid "Thin Space|T"
 msgstr "Spaţiu subţire|S"
 
-#: lib/ui/classic.ui:250 lib/ui/stdmenus.inc:378
+#: lib/ui/classic.ui:250 lib/ui/stdmenus.inc:379
 #, fuzzy
 msgid "Horizontal Space...|o"
 msgstr "Spaţiere verticală:|#v"
@@ -10080,11 +10080,11 @@ msgstr "Spaţiere verticală..."
 msgid "Line Break|L"
 msgstr "Rupere de linie|R"
 
-#: lib/ui/classic.ui:253 lib/ui/stdmenus.inc:361
+#: lib/ui/classic.ui:253 lib/ui/stdmenus.inc:362
 msgid "Ellipsis|i"
 msgstr "Elipsă|E"
 
-#: lib/ui/classic.ui:254 lib/ui/stdmenus.inc:362
+#: lib/ui/classic.ui:254 lib/ui/stdmenus.inc:363
 msgid "End of Sentence|E"
 msgstr "Punct de propoziţie|P"
 
@@ -10093,7 +10093,7 @@ msgstr "Punct de propoziţie|P"
 msgid "Protected Dash|D"
 msgstr "Spaţiu protejat|S"
 
-#: lib/ui/classic.ui:256 lib/ui/stdmenus.inc:366
+#: lib/ui/classic.ui:256 lib/ui/stdmenus.inc:367
 msgid "Breakable Slash|a"
 msgstr ""
 
@@ -10105,7 +10105,7 @@ msgstr "Ghilimea simplă|G"
 msgid "Ordinary Quote|O"
 msgstr "Ghilimea simplă|G"
 
-#: lib/ui/classic.ui:259 lib/ui/stdmenus.inc:367
+#: lib/ui/classic.ui:259 lib/ui/stdmenus.inc:368
 msgid "Menu Separator|M"
 msgstr "Separator de meniu|m"
 
@@ -10117,49 +10117,49 @@ msgstr "Aliniere pe &orizontală:"
 msgid "Page Break"
 msgstr "&Rupere de pagină"
 
-#: lib/ui/classic.ui:266 lib/ui/stdmenus.inc:395
+#: lib/ui/classic.ui:266 lib/ui/stdmenus.inc:396
 msgid "Display Formula|D"
 msgstr "Afişează formula|f"
 
-#: lib/ui/classic.ui:267 lib/ui/stdcontext.inc:50 lib/ui/stdmenus.inc:283
-#: lib/ui/stdmenus.inc:397
+#: lib/ui/classic.ui:267 lib/ui/stdcontext.inc:51 lib/ui/stdmenus.inc:284
+#: lib/ui/stdmenus.inc:398
 msgid "Eqnarray Environment|E"
 msgstr "Mediu \"Eqnarray\"|e"
 
-#: lib/ui/classic.ui:268 lib/ui/stdcontext.inc:40 lib/ui/stdmenus.inc:284
-#: lib/ui/stdmenus.inc:398
+#: lib/ui/classic.ui:268 lib/ui/stdcontext.inc:41 lib/ui/stdmenus.inc:285
+#: lib/ui/stdmenus.inc:399
 msgid "AMS align Environment|a"
 msgstr "Mediu \"Align\" AMS|A"
 
-#: lib/ui/classic.ui:269 lib/ui/stdcontext.inc:41 lib/ui/stdmenus.inc:285
-#: lib/ui/stdmenus.inc:399
+#: lib/ui/classic.ui:269 lib/ui/stdcontext.inc:42 lib/ui/stdmenus.inc:286
+#: lib/ui/stdmenus.inc:400
 msgid "AMS alignat Environment|t"
 msgstr "Mediu \"AlignAt\" AMS|t"
 
-#: lib/ui/classic.ui:270 lib/ui/stdcontext.inc:42 lib/ui/stdmenus.inc:286
-#: lib/ui/stdmenus.inc:400
+#: lib/ui/classic.ui:270 lib/ui/stdcontext.inc:43 lib/ui/stdmenus.inc:287
+#: lib/ui/stdmenus.inc:401
 msgid "AMS flalign Environment|f"
 msgstr "Mediu \"Flalign\" AMS|f"
 
-#: lib/ui/classic.ui:273 lib/ui/stdcontext.inc:43 lib/ui/stdmenus.inc:287
-#: lib/ui/stdmenus.inc:401
+#: lib/ui/classic.ui:273 lib/ui/stdcontext.inc:44 lib/ui/stdmenus.inc:288
+#: lib/ui/stdmenus.inc:402
 msgid "AMS gather Environment|g"
 msgstr "Mediu \"Gather\" AMS|g"
 
-#: lib/ui/classic.ui:274 lib/ui/stdcontext.inc:44 lib/ui/stdmenus.inc:288
-#: lib/ui/stdmenus.inc:402
+#: lib/ui/classic.ui:274 lib/ui/stdcontext.inc:45 lib/ui/stdmenus.inc:289
+#: lib/ui/stdmenus.inc:403
 msgid "AMS multline Environment|m"
 msgstr "Mediu \"Multline\" AMS|m"
 
-#: lib/ui/classic.ui:276 lib/ui/stdcontext.inc:27 lib/ui/stdmenus.inc:404
+#: lib/ui/classic.ui:276 lib/ui/stdcontext.inc:28 lib/ui/stdmenus.inc:405
 msgid "Array Environment|y"
 msgstr "Mediu \"Array\"|y"
 
-#: lib/ui/classic.ui:277 lib/ui/stdcontext.inc:28 lib/ui/stdmenus.inc:405
+#: lib/ui/classic.ui:277 lib/ui/stdcontext.inc:29 lib/ui/stdmenus.inc:406
 msgid "Cases Environment|C"
 msgstr "Mediu \"Cases\"|C"
 
-#: lib/ui/classic.ui:278 lib/ui/stdcontext.inc:32 lib/ui/stdmenus.inc:409
+#: lib/ui/classic.ui:278 lib/ui/stdcontext.inc:33 lib/ui/stdmenus.inc:410
 #, fuzzy
 msgid "Split Environment|S"
 msgstr "Mediu \"Align\"|A"
@@ -10196,39 +10196,39 @@ msgstr "Serii bold matematic"
 msgid "Text Normal Font"
 msgstr "Font normal text"
 
-#: lib/ui/classic.ui:295 lib/ui/stdmenus.inc:256
+#: lib/ui/classic.ui:295 lib/ui/stdmenus.inc:257
 msgid "Text Roman Family"
 msgstr "Familie roman text"
 
-#: lib/ui/classic.ui:296 lib/ui/stdmenus.inc:257
+#: lib/ui/classic.ui:296 lib/ui/stdmenus.inc:258
 msgid "Text Sans Serif Family"
 msgstr "Familie sans serif text"
 
-#: lib/ui/classic.ui:297 lib/ui/stdmenus.inc:258
+#: lib/ui/classic.ui:297 lib/ui/stdmenus.inc:259
 msgid "Text Typewriter Family"
 msgstr "Familie \"maşină de scris\" text"
 
-#: lib/ui/classic.ui:299 lib/ui/stdmenus.inc:260
+#: lib/ui/classic.ui:299 lib/ui/stdmenus.inc:261
 msgid "Text Bold Series"
 msgstr "Serii bold text"
 
-#: lib/ui/classic.ui:300 lib/ui/stdmenus.inc:261
+#: lib/ui/classic.ui:300 lib/ui/stdmenus.inc:262
 msgid "Text Medium Series"
 msgstr "Serii mediu text"
 
-#: lib/ui/classic.ui:302 lib/ui/stdmenus.inc:263
+#: lib/ui/classic.ui:302 lib/ui/stdmenus.inc:264
 msgid "Text Italic Shape"
 msgstr "Format italic text"
 
-#: lib/ui/classic.ui:303 lib/ui/stdmenus.inc:264
+#: lib/ui/classic.ui:303 lib/ui/stdmenus.inc:265
 msgid "Text Small Caps Shape"
 msgstr "Format majuscule mici text"
 
-#: lib/ui/classic.ui:304 lib/ui/stdmenus.inc:265
+#: lib/ui/classic.ui:304 lib/ui/stdmenus.inc:266
 msgid "Text Slanted Shape"
 msgstr "Format înclinat text"
 
-#: lib/ui/classic.ui:305 lib/ui/stdmenus.inc:266
+#: lib/ui/classic.ui:305 lib/ui/stdmenus.inc:267
 msgid "Text Upright Shape"
 msgstr "Format drept text"
 
@@ -10236,44 +10236,44 @@ msgstr "Format drept text"
 msgid "Floatflt Figure"
 msgstr "Figură  \"floatflt\""
 
-#: lib/ui/classic.ui:314 lib/ui/stdmenus.inc:424
+#: lib/ui/classic.ui:314 lib/ui/stdmenus.inc:425
 msgid "Table of Contents|C"
 msgstr "Cuprins|C"
 
-#: lib/ui/classic.ui:316 lib/ui/stdmenus.inc:426
+#: lib/ui/classic.ui:316 lib/ui/stdmenus.inc:427
 msgid "Index List|I"
 msgstr "Listă index|L"
 
-#: lib/ui/classic.ui:317 lib/ui/stdmenus.inc:427
+#: lib/ui/classic.ui:317 lib/ui/stdmenus.inc:428
 #, fuzzy
 msgid "Nomenclature|N"
 msgstr "Notă|N"
 
-#: lib/ui/classic.ui:318 lib/ui/stdmenus.inc:428
+#: lib/ui/classic.ui:318 lib/ui/stdmenus.inc:429
 #, fuzzy
 msgid "BibTeX Bibliography...|B"
 msgstr "Bibliografie"
 
-#: lib/ui/classic.ui:322 lib/ui/stdmenus.inc:432
+#: lib/ui/classic.ui:322 lib/ui/stdmenus.inc:433
 msgid "LyX Document...|X"
 msgstr "Document LyX...|X"
 
-#: lib/ui/classic.ui:323 lib/ui/stdmenus.inc:433
+#: lib/ui/classic.ui:323 lib/ui/stdmenus.inc:434
 #, fuzzy
 msgid "Plain Text...|T"
 msgstr "Place"
 
-#: lib/ui/classic.ui:324 lib/ui/stdmenus.inc:434
+#: lib/ui/classic.ui:324 lib/ui/stdmenus.inc:435
 #, fuzzy
 msgid "Plain Text, Join Lines...|J"
 msgstr "Text ASCII ca linii...|L"
 
-#: lib/ui/classic.ui:328 lib/ui/stdmenus.inc:471
+#: lib/ui/classic.ui:328 lib/ui/stdmenus.inc:472
 #, fuzzy
 msgid "Track Changes|T"
 msgstr "Pachete"
 
-#: lib/ui/classic.ui:329 lib/ui/stdmenus.inc:472
+#: lib/ui/classic.ui:329 lib/ui/stdmenus.inc:473
 msgid "Merge Changes...|M"
 msgstr ""
 
@@ -10285,7 +10285,7 @@ msgstr "Acceptă toate modificările"
 msgid "Reject All Changes|R"
 msgstr "Respinge toate modificările"
 
-#: lib/ui/classic.ui:332 lib/ui/stdmenus.inc:477
+#: lib/ui/classic.ui:332 lib/ui/stdmenus.inc:478
 #, fuzzy
 msgid "Show Changes in Output|S"
 msgstr "Lăţimea imaginii la tipărire"
@@ -10331,19 +10331,19 @@ msgstr "Creşte adîncimea cadrului|C"
 msgid "Start Appendix Here|S"
 msgstr "Începe apendixul aici|a"
 
-#: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:460
+#: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:461
 msgid "Build Program|B"
 msgstr "Construieşte programul|C"
 
-#: lib/ui/classic.ui:361 lib/ui/stdmenus.inc:303
+#: lib/ui/classic.ui:361 lib/ui/stdmenus.inc:304
 msgid "Update|U"
 msgstr "Actualizează|A"
 
-#: lib/ui/classic.ui:363 lib/ui/stdmenus.inc:461
+#: lib/ui/classic.ui:363 lib/ui/stdmenus.inc:462
 msgid "LaTeX Log|L"
 msgstr "Jurnal LaTeX|J"
 
-#: lib/ui/classic.ui:364 lib/ui/stdmenus.inc:462
+#: lib/ui/classic.ui:364 lib/ui/stdmenus.inc:463
 msgid "Outline|O"
 msgstr ""
 
@@ -10351,38 +10351,38 @@ msgstr ""
 msgid "TeX Information|X"
 msgstr "Informaţii TeX|X"
 
-#: lib/ui/classic.ui:378 lib/ui/stdmenus.inc:485
+#: lib/ui/classic.ui:378 lib/ui/stdmenus.inc:486
 #, fuzzy
 msgid "Next Note|N"
 msgstr "Notă|N"
 
-#: lib/ui/classic.ui:379 lib/ui/stdmenus.inc:488
+#: lib/ui/classic.ui:379 lib/ui/stdmenus.inc:489
 #, fuzzy
 msgid "Go to Label|L"
 msgstr "Cea mai &lungă etichetă"
 
-#: lib/ui/classic.ui:380 lib/ui/stdmenus.inc:484
+#: lib/ui/classic.ui:380 lib/ui/stdmenus.inc:485
 msgid "Bookmarks|B"
 msgstr "Semne de carte|S"
 
-#: lib/ui/classic.ui:384 lib/ui/stdmenus.inc:494
+#: lib/ui/classic.ui:384 lib/ui/stdmenus.inc:495
 msgid "Save Bookmark 1|S"
 msgstr "Salvează semnul de carte 1|S"
 
-#: lib/ui/classic.ui:385 lib/ui/stdmenus.inc:495
+#: lib/ui/classic.ui:385 lib/ui/stdmenus.inc:496
 msgid "Save Bookmark 2"
 msgstr "Salvează semnul de carte 2"
 
-#: lib/ui/classic.ui:386 lib/ui/stdmenus.inc:496
+#: lib/ui/classic.ui:386 lib/ui/stdmenus.inc:497
 msgid "Save Bookmark 3"
 msgstr "Salvează semnul de carte 3"
 
-#: lib/ui/classic.ui:387 lib/ui/stdmenus.inc:497
+#: lib/ui/classic.ui:387 lib/ui/stdmenus.inc:498
 #, fuzzy
 msgid "Save Bookmark 4"
 msgstr "Salvează semnul de carte 2"
 
-#: lib/ui/classic.ui:388 lib/ui/stdmenus.inc:498
+#: lib/ui/classic.ui:388 lib/ui/stdmenus.inc:499
 #, fuzzy
 msgid "Save Bookmark 5"
 msgstr "Salvează semnul de carte 2"
@@ -10412,15 +10412,15 @@ msgstr "Du-te la semnul de carte 3|3"
 msgid "Go to Bookmark 5|5"
 msgstr "Du-te la semnul de carte 3|3"
 
-#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:527
+#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:528
 msgid "Introduction|I"
 msgstr "Introducere|I"
 
-#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:528
+#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:529
 msgid "Tutorial|T"
 msgstr "Tutorial|T"
 
-#: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:529
+#: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:530
 msgid "User's Guide|U"
 msgstr "Ghidul utilizatorului|G"
 
@@ -10432,15 +10432,15 @@ msgstr "Caracteristici avansate|a"
 msgid "Embedded Objects|m"
 msgstr ""
 
-#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:533
+#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:534
 msgid "Customization|C"
 msgstr "Personalizare|P"
 
-#: lib/ui/classic.ui:415 lib/ui/stdmenus.inc:536
+#: lib/ui/classic.ui:415 lib/ui/stdmenus.inc:537
 msgid "LaTeX Configuration|L"
 msgstr "Configurare LaTeX|L"
 
-#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:539
+#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:540
 msgid "About LyX|X"
 msgstr "Despre LyX|X"
 
@@ -10458,1205 +10458,1195 @@ msgstr "Preferinţe....|P"
 msgid "Quit LyX"
 msgstr "Despre LyX"
 
-#: lib/ui/stdcontext.inc:29 lib/ui/stdmenus.inc:406
+#: lib/ui/stdcontext.inc:30 lib/ui/stdmenus.inc:407
 #, fuzzy
 msgid "Aligned Environment|l"
 msgstr "Mediu \"Align\"|A"
 
-#: lib/ui/stdcontext.inc:30 lib/ui/stdmenus.inc:407
+#: lib/ui/stdcontext.inc:31 lib/ui/stdmenus.inc:408
 #, fuzzy
 msgid "AlignedAt Environment|v"
 msgstr "Mediu \"AlignAt\""
 
-#: lib/ui/stdcontext.inc:31 lib/ui/stdmenus.inc:408
+#: lib/ui/stdcontext.inc:32 lib/ui/stdmenus.inc:409
 #, fuzzy
 msgid "Gathered Environment|h"
 msgstr "Mediu \"Gather\""
 
-#: lib/ui/stdcontext.inc:34 lib/ui/stdmenus.inc:411
+#: lib/ui/stdcontext.inc:35 lib/ui/stdmenus.inc:412
 #, fuzzy
 msgid "Delimiters...|r"
 msgstr "Delimitator"
 
-#: lib/ui/stdcontext.inc:35 lib/ui/stdmenus.inc:412
+#: lib/ui/stdcontext.inc:36 lib/ui/stdmenus.inc:413
 #, fuzzy
 msgid "Matrix...|x"
 msgstr "Matrice"
 
-#: lib/ui/stdcontext.inc:36 lib/ui/stdmenus.inc:413
+#: lib/ui/stdcontext.inc:37 lib/ui/stdmenus.inc:414
 msgid "Macro|o"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:51
+#: lib/ui/stdcontext.inc:52
 #, fuzzy
 msgid "AMS Environment|A"
 msgstr "Mediu \"Align\"|A"
 
-#: lib/ui/stdcontext.inc:53
+#: lib/ui/stdcontext.inc:54
 #, fuzzy
 msgid "Equation Label|L"
 msgstr "Cea mai &lungă etichetă"
 
-#: lib/ui/stdcontext.inc:54 lib/ui/stdmenus.inc:200
+#: lib/ui/stdcontext.inc:55 lib/ui/stdmenus.inc:201
 #, fuzzy
 msgid "Number Whole Formula|N"
 msgstr "Număr"
 
-#: lib/ui/stdcontext.inc:55 lib/ui/stdmenus.inc:201
+#: lib/ui/stdcontext.inc:56 lib/ui/stdmenus.inc:202
 #, fuzzy
 msgid "Number This Line|u"
 msgstr "Comută numerotarea liniei|u"
 
-#: lib/ui/stdcontext.inc:57 lib/ui/stdmenus.inc:211
+#: lib/ui/stdcontext.inc:58 lib/ui/stdmenus.inc:212
 #, fuzzy
 msgid "Split Cell|C"
 msgstr "Celulă specială"
 
-#: lib/ui/stdcontext.inc:59
+#: lib/ui/stdcontext.inc:60
 #, fuzzy
 msgid "Insert|n"
 msgstr "Inserare|I"
 
-#: lib/ui/stdcontext.inc:61
+#: lib/ui/stdcontext.inc:62
 #, fuzzy
 msgid "Add Line Above|o"
 msgstr "Margine deasupra"
 
-#: lib/ui/stdcontext.inc:62 lib/ui/stdmenus.inc:214
+#: lib/ui/stdcontext.inc:63 lib/ui/stdmenus.inc:215
 #, fuzzy
 msgid "Add Line Below|B"
 msgstr "Margine de desubt"
 
-#: lib/ui/stdcontext.inc:63 lib/ui/stdmenus.inc:215
+#: lib/ui/stdcontext.inc:64 lib/ui/stdmenus.inc:216
 #, fuzzy
 msgid "Delete Line Above|D"
 msgstr "Şterge această linie"
 
-#: lib/ui/stdcontext.inc:64 lib/ui/stdmenus.inc:216
+#: lib/ui/stdcontext.inc:65 lib/ui/stdmenus.inc:217
 #, fuzzy
 msgid "Delete Line Below|e"
 msgstr "Şterge această linie"
 
-#: lib/ui/stdcontext.inc:66 lib/ui/stdmenus.inc:218
+#: lib/ui/stdcontext.inc:67 lib/ui/stdmenus.inc:219
 #, fuzzy
 msgid "Add Line to Left"
 msgstr "Linie stînga|s"
 
-#: lib/ui/stdcontext.inc:67 lib/ui/stdmenus.inc:219
+#: lib/ui/stdcontext.inc:68 lib/ui/stdmenus.inc:220
 #, fuzzy
 msgid "Add Line to Right"
 msgstr "Linie dreapta|d"
 
-#: lib/ui/stdcontext.inc:68 lib/ui/stdmenus.inc:220
+#: lib/ui/stdcontext.inc:69 lib/ui/stdmenus.inc:221
 #, fuzzy
 msgid "Delete Line to Left"
 msgstr "Selectează document fiu"
 
-#: lib/ui/stdcontext.inc:69 lib/ui/stdmenus.inc:221
+#: lib/ui/stdcontext.inc:70 lib/ui/stdmenus.inc:222
 #, fuzzy
 msgid "Delete Line to Right"
 msgstr "Selectează document fiu"
 
-#: lib/ui/stdcontext.inc:71
+#: lib/ui/stdcontext.inc:72
 #, fuzzy
 msgid "Show Math Toolbar"
 msgstr "&Comută tot"
 
-#: lib/ui/stdcontext.inc:72
+#: lib/ui/stdcontext.inc:73
 #, fuzzy
 msgid "Show Math-Panels Toolbar"
 msgstr "&Comută tot"
 
-#: lib/ui/stdcontext.inc:73
+#: lib/ui/stdcontext.inc:74
 #, fuzzy
 msgid "Show Table Toolbar"
 msgstr "&Comută tot"
 
-#: lib/ui/stdcontext.inc:81 lib/ui/stdcontext.inc:98
+#: lib/ui/stdcontext.inc:82 lib/ui/stdcontext.inc:99
 #, fuzzy
 msgid "Next Cross-Reference|N"
 msgstr "Referinţă"
 
-#: lib/ui/stdcontext.inc:82
+#: lib/ui/stdcontext.inc:83
 #, fuzzy
 msgid "Go to Label|G"
 msgstr "Cea mai &lungă etichetă"
 
-#: lib/ui/stdcontext.inc:84
+#: lib/ui/stdcontext.inc:85
 #, fuzzy
 msgid "<Reference>|R"
 msgstr "<referinţă>"
 
-#: lib/ui/stdcontext.inc:85
+#: lib/ui/stdcontext.inc:86
 #, fuzzy
 msgid "(<Reference>)|E"
 msgstr "(<referinţă>)"
 
-#: lib/ui/stdcontext.inc:86
+#: lib/ui/stdcontext.inc:87
 #, fuzzy
 msgid "<Page>|P"
 msgstr "<pagină>"
 
-#: lib/ui/stdcontext.inc:87
+#: lib/ui/stdcontext.inc:88
 #, fuzzy
 msgid "On Page <Page>|o"
 msgstr "la pagina <pagină>"
 
-#: lib/ui/stdcontext.inc:88
+#: lib/ui/stdcontext.inc:89
 #, fuzzy
 msgid "<Reference> on Page <Page>|f"
 msgstr "<referinţă> la pagina <pagină>"
 
-#: lib/ui/stdcontext.inc:89
+#: lib/ui/stdcontext.inc:90
 #, fuzzy
 msgid "Formatted Reference|t"
 msgstr "Referinţă formatată"
 
-#: lib/ui/stdcontext.inc:91 lib/ui/stdcontext.inc:103
-#: lib/ui/stdcontext.inc:113 lib/ui/stdcontext.inc:121
-#: lib/ui/stdcontext.inc:135 lib/ui/stdcontext.inc:142
-#: lib/ui/stdcontext.inc:163 lib/ui/stdcontext.inc:207
-#: lib/ui/stdcontext.inc:225 lib/ui/stdcontext.inc:252
-#: lib/ui/stdcontext.inc:334 lib/ui/stdcontext.inc:342
-#: lib/ui/stdcontext.inc:354 lib/ui/stdcontext.inc:389
-#: lib/ui/stdcontext.inc:398 lib/ui/stdmenus.inc:467
+#: lib/ui/stdcontext.inc:92 lib/ui/stdcontext.inc:104
+#: lib/ui/stdcontext.inc:114 lib/ui/stdcontext.inc:122
+#: lib/ui/stdcontext.inc:136 lib/ui/stdcontext.inc:143
+#: lib/ui/stdcontext.inc:164 lib/ui/stdcontext.inc:208
+#: lib/ui/stdcontext.inc:226 lib/ui/stdcontext.inc:253
+#: lib/ui/stdcontext.inc:335 lib/ui/stdcontext.inc:343
+#: lib/ui/stdcontext.inc:355 lib/ui/stdcontext.inc:390
+#: lib/ui/stdcontext.inc:399 lib/ui/stdmenus.inc:468
 #, fuzzy
 msgid "Settings...|S"
 msgstr "Setări"
 
-#: lib/ui/stdcontext.inc:99
+#: lib/ui/stdcontext.inc:100
 #, fuzzy
 msgid "Go Back|G"
 msgstr "&Global"
 
-#: lib/ui/stdcontext.inc:101
+#: lib/ui/stdcontext.inc:102
 #, fuzzy
 msgid "Copy as Reference|C"
 msgstr "Referinţă încrucişată...|R"
 
-#: lib/ui/stdcontext.inc:123
+#: lib/ui/stdcontext.inc:124
 #, fuzzy
 msgid "Edit Database(s) Externally...|x"
 msgstr "Editează extern fişierul"
 
-#: lib/ui/stdcontext.inc:131 lib/ui/stdcontext.inc:159
-#: lib/ui/stdcontext.inc:175 lib/ui/stdcontext.inc:330
+#: lib/ui/stdcontext.inc:132 lib/ui/stdcontext.inc:160
+#: lib/ui/stdcontext.inc:176 lib/ui/stdcontext.inc:331
 #, fuzzy
 msgid "Open Inset|O"
 msgstr "Deschidere"
 
-#: lib/ui/stdcontext.inc:132 lib/ui/stdcontext.inc:160
-#: lib/ui/stdcontext.inc:176 lib/ui/stdcontext.inc:331
+#: lib/ui/stdcontext.inc:133 lib/ui/stdcontext.inc:161
+#: lib/ui/stdcontext.inc:177 lib/ui/stdcontext.inc:332
 #, fuzzy
 msgid "Close Inset|C"
 msgstr "Închide|C"
 
-#: lib/ui/stdcontext.inc:134 lib/ui/stdcontext.inc:140
-#: lib/ui/stdcontext.inc:162 lib/ui/stdcontext.inc:181
-#: lib/ui/stdcontext.inc:333
+#: lib/ui/stdcontext.inc:135 lib/ui/stdcontext.inc:141
+#: lib/ui/stdcontext.inc:163 lib/ui/stdcontext.inc:182
+#: lib/ui/stdcontext.inc:334
 msgid "Dissolve Inset|D"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:139
+#: lib/ui/stdcontext.inc:140
 #, fuzzy
 msgid "Show Label|L"
 msgstr "Cea mai &lungă etichetă"
 
-#: lib/ui/stdcontext.inc:150
+#: lib/ui/stdcontext.inc:151
 #, fuzzy
 msgid "Frameless|l"
 msgstr "Parametrii"
 
-#: lib/ui/stdcontext.inc:151
+#: lib/ui/stdcontext.inc:152
 #, fuzzy
 msgid "Simple Frame|F"
 msgstr "cadru \"inset\""
 
-#: lib/ui/stdcontext.inc:152
+#: lib/ui/stdcontext.inc:153
 msgid "Simple Frame, Page Breaks|P"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:153
+#: lib/ui/stdcontext.inc:154
 msgid "Oval, Thin|a"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:154
+#: lib/ui/stdcontext.inc:155
 msgid "Oval, Thick|v"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:155
+#: lib/ui/stdcontext.inc:156
 msgid "Drop Shadow|w"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:156
+#: lib/ui/stdcontext.inc:157
 #, fuzzy
 msgid "Shaded Background|B"
 msgstr "fundal notă"
 
-#: lib/ui/stdcontext.inc:157
+#: lib/ui/stdcontext.inc:158
 #, fuzzy
 msgid "Double Frame|u"
 msgstr "dublu"
 
-#: lib/ui/stdcontext.inc:171 lib/ui/stdmenus.inc:441
+#: lib/ui/stdcontext.inc:172 lib/ui/stdmenus.inc:442
 #, fuzzy
 msgid "LyX Note|N"
 msgstr "Notă|N"
 
-#: lib/ui/stdcontext.inc:172
+#: lib/ui/stdcontext.inc:173
 #, fuzzy
 msgid "Comment|m"
 msgstr "Comentariu"
 
-#: lib/ui/stdcontext.inc:173 lib/ui/stdmenus.inc:443
+#: lib/ui/stdcontext.inc:174 lib/ui/stdmenus.inc:444
 msgid "Greyed Out|G"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:178
+#: lib/ui/stdcontext.inc:179
 #, fuzzy
 msgid "Open All Notes|A"
 msgstr "Deschidere"
 
-#: lib/ui/stdcontext.inc:179
+#: lib/ui/stdcontext.inc:180
 msgid "Close All Notes|l"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:189
+#: lib/ui/stdcontext.inc:190
 #, fuzzy
 msgid "Interword Space|w"
 msgstr "Spaţiu între cuvinte|c"
 
-#: lib/ui/stdcontext.inc:190
+#: lib/ui/stdcontext.inc:191
 #, fuzzy
 msgid "Protected Space|o"
 msgstr "Spaţiu protejat|S"
 
-#: lib/ui/stdcontext.inc:192 lib/ui/stdcontext.inc:217
+#: lib/ui/stdcontext.inc:193 lib/ui/stdcontext.inc:218
 #, fuzzy
 msgid "Negative Thin Space|N"
 msgstr "Mediu"
 
-#: lib/ui/stdcontext.inc:193 lib/ui/stdcontext.inc:220
+#: lib/ui/stdcontext.inc:194 lib/ui/stdcontext.inc:221
 msgid "Half Quad Space (Enskip)|k"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:194
+#: lib/ui/stdcontext.inc:195
 #, fuzzy
 msgid "Protected Half Quad Space (Enspace)|E"
 msgstr "Spaţiu protejat|S"
 
-#: lib/ui/stdcontext.inc:195 lib/ui/stdcontext.inc:221
+#: lib/ui/stdcontext.inc:196 lib/ui/stdcontext.inc:222
 #, fuzzy
 msgid "Quad Space|Q"
 msgstr "Spaţiu"
 
-#: lib/ui/stdcontext.inc:196 lib/ui/stdcontext.inc:222
+#: lib/ui/stdcontext.inc:197 lib/ui/stdcontext.inc:223
 #, fuzzy
 msgid "Double Quad Space|u"
 msgstr "Spaţiu"
 
-#: lib/ui/stdcontext.inc:197
+#: lib/ui/stdcontext.inc:198
 #, fuzzy
 msgid "Horizontal Fill|F"
 msgstr "Aliniere orizontală:|#o"
 
-#: lib/ui/stdcontext.inc:198
+#: lib/ui/stdcontext.inc:199
 #, fuzzy
 msgid "Protected Horizontal Fill|i"
 msgstr "Aliniere orizontală:|#o"
 
-#: lib/ui/stdcontext.inc:199
+#: lib/ui/stdcontext.inc:200
 #, fuzzy
 msgid "Horizontal Fill (Dots)|D"
 msgstr "Aliniere orizontală:|#o"
 
-#: lib/ui/stdcontext.inc:200
+#: lib/ui/stdcontext.inc:201
 #, fuzzy
 msgid "Horizontal Fill (Rule)|R"
 msgstr "Aliniere orizontală:|#o"
 
-#: lib/ui/stdcontext.inc:201
+#: lib/ui/stdcontext.inc:202
 #, fuzzy
 msgid "Horizontal Fill (Left Arrow)|L"
 msgstr "Aliniere orizontală:|#o"
 
-#: lib/ui/stdcontext.inc:202
+#: lib/ui/stdcontext.inc:203
 #, fuzzy
 msgid "Horizontal Fill (Right Arrow)|g"
 msgstr "Aliniere orizontală:|#o"
 
-#: lib/ui/stdcontext.inc:203
+#: lib/ui/stdcontext.inc:204
 #, fuzzy
 msgid "Horizontal Fill (Up Brace)|p"
 msgstr "Aliniere orizontală:|#o"
 
-#: lib/ui/stdcontext.inc:204
+#: lib/ui/stdcontext.inc:205
 #, fuzzy
 msgid "Horizontal Fill (Down Brace)|B"
 msgstr "Aliniere orizontală:|#o"
 
-#: lib/ui/stdcontext.inc:205 lib/ui/stdcontext.inc:223
+#: lib/ui/stdcontext.inc:206 lib/ui/stdcontext.inc:224
 #, fuzzy
 msgid "Custom Length|C"
 msgstr "Comentariu"
 
-#: lib/ui/stdcontext.inc:215
+#: lib/ui/stdcontext.inc:216
 #, fuzzy
 msgid "Medium Space|M"
 msgstr "Mediu"
 
-#: lib/ui/stdcontext.inc:216
+#: lib/ui/stdcontext.inc:217
 #, fuzzy
 msgid "Thick Space|h"
 msgstr "Spaţiu subţire|S"
 
-#: lib/ui/stdcontext.inc:218
+#: lib/ui/stdcontext.inc:219
 #, fuzzy
 msgid "Negative Medium Space|u"
 msgstr "Mediu"
 
-#: lib/ui/stdcontext.inc:219
+#: lib/ui/stdcontext.inc:220
 #, fuzzy
 msgid "Negative Thick Space|i"
 msgstr "Mediu"
 
-#: lib/ui/stdcontext.inc:232
+#: lib/ui/stdcontext.inc:233
 #, fuzzy
 msgid "DefSkip|D"
 msgstr "DefSkip"
 
-#: lib/ui/stdcontext.inc:233
+#: lib/ui/stdcontext.inc:234
 #, fuzzy
 msgid "SmallSkip|S"
 msgstr "SmallSkip"
 
-#: lib/ui/stdcontext.inc:234
+#: lib/ui/stdcontext.inc:235
 #, fuzzy
 msgid "MedSkip|M"
 msgstr "MedSkip"
 
-#: lib/ui/stdcontext.inc:235
+#: lib/ui/stdcontext.inc:236
 #, fuzzy
 msgid "BigSkip|B"
 msgstr "BigSkip"
 
-#: lib/ui/stdcontext.inc:236
+#: lib/ui/stdcontext.inc:237
 #, fuzzy
 msgid "VFill|F"
 msgstr "VFill"
 
-#: lib/ui/stdcontext.inc:237
+#: lib/ui/stdcontext.inc:238
 #, fuzzy
 msgid "Custom|C"
 msgstr "Personalizat"
 
-#: lib/ui/stdcontext.inc:239
+#: lib/ui/stdcontext.inc:240
 #, fuzzy
 msgid "Settings...|e"
 msgstr "Setări"
 
-#: lib/ui/stdcontext.inc:246
+#: lib/ui/stdcontext.inc:247
 #, fuzzy
 msgid "Include|c"
 msgstr "Includere"
 
-#: lib/ui/stdcontext.inc:247
+#: lib/ui/stdcontext.inc:248
 #, fuzzy
 msgid "Input|p"
 msgstr "Intrare"
 
-#: lib/ui/stdcontext.inc:248
+#: lib/ui/stdcontext.inc:249
 #, fuzzy
 msgid "Verbatim|V"
 msgstr "Verbatim"
 
-#: lib/ui/stdcontext.inc:249
+#: lib/ui/stdcontext.inc:250
 msgid "Verbatim (marked blanks)|b"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:250
+#: lib/ui/stdcontext.inc:251
 #, fuzzy
 msgid "Listing|L"
 msgstr "Listare"
 
-#: lib/ui/stdcontext.inc:254
+#: lib/ui/stdcontext.inc:255
 #, fuzzy
 msgid "Edit Included File...|E"
 msgstr "Include fişier...|d"
 
-#: lib/ui/stdcontext.inc:261 lib/ui/stdmenus.inc:387
+#: lib/ui/stdcontext.inc:262 lib/ui/stdmenus.inc:388
 #, fuzzy
 msgid "New Page|N"
 msgstr "Nou|N"
 
-#: lib/ui/stdcontext.inc:262 lib/ui/stdmenus.inc:388
+#: lib/ui/stdcontext.inc:263 lib/ui/stdmenus.inc:389
 #, fuzzy
 msgid "Page Break|a"
 msgstr "&Rupere de pagină"
 
-#: lib/ui/stdcontext.inc:263 lib/ui/stdmenus.inc:389
+#: lib/ui/stdcontext.inc:264 lib/ui/stdmenus.inc:390
 #, fuzzy
 msgid "Clear Page|C"
 msgstr "Semne de carte|S"
 
-#: lib/ui/stdcontext.inc:264 lib/ui/stdmenus.inc:390
+#: lib/ui/stdcontext.inc:265 lib/ui/stdmenus.inc:391
 msgid "Clear Double Page|D"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:271 lib/ui/stdmenus.inc:384
+#: lib/ui/stdcontext.inc:272 lib/ui/stdmenus.inc:385
 #, fuzzy
 msgid "Ragged Line Break|R"
 msgstr "Rupere de linie|R"
 
-#: lib/ui/stdcontext.inc:272 lib/ui/stdmenus.inc:385
+#: lib/ui/stdcontext.inc:273 lib/ui/stdmenus.inc:386
 #, fuzzy
 msgid "Justified Line Break|J"
 msgstr "Rupere de linie|R"
 
-#: lib/ui/stdcontext.inc:279 lib/ui/stdcontext.inc:325 lib/ui/stdmenus.inc:96
+#: lib/ui/stdcontext.inc:280 lib/ui/stdcontext.inc:326 lib/ui/stdmenus.inc:97
 #: lib/ui/stdtoolbars.inc:78 src/Text3.cpp:1057
 #: src/mathed/InsetMathNest.cpp:550
 msgid "Cut"
 msgstr "Taie"
 
-#: lib/ui/stdcontext.inc:280 lib/ui/stdcontext.inc:326 lib/ui/stdmenus.inc:97
+#: lib/ui/stdcontext.inc:281 lib/ui/stdcontext.inc:327 lib/ui/stdmenus.inc:98
 #: lib/ui/stdtoolbars.inc:79 src/Text3.cpp:1062
 #: src/mathed/InsetMathNest.cpp:558
 msgid "Copy"
 msgstr "Copiază"
 
-#: lib/ui/stdcontext.inc:281 lib/ui/stdcontext.inc:327 lib/ui/stdmenus.inc:98
+#: lib/ui/stdcontext.inc:282 lib/ui/stdcontext.inc:328 lib/ui/stdmenus.inc:99
 #: lib/ui/stdtoolbars.inc:80 src/Text3.cpp:1015
 #: src/mathed/InsetMathGrid.cpp:1256 src/mathed/InsetMathNest.cpp:530
 msgid "Paste"
 msgstr "Lipeşte"
 
-#: lib/ui/stdcontext.inc:282 lib/ui/stdcontext.inc:328 lib/ui/stdmenus.inc:99
+#: lib/ui/stdcontext.inc:283 lib/ui/stdcontext.inc:329 lib/ui/stdmenus.inc:100
 #, fuzzy
 msgid "Paste Recent|e"
 msgstr "Aliniază centrat|c"
 
-#: lib/ui/stdcontext.inc:284
+#: lib/ui/stdcontext.inc:285
 #, fuzzy
 msgid "Jump Back to Saved Bookmark|B"
 msgstr "Salvează semnul de carte 1|S"
 
-#: lib/ui/stdcontext.inc:286 lib/ui/stdmenus.inc:106
+#: lib/ui/stdcontext.inc:287 lib/ui/stdmenus.inc:107
 #, fuzzy
 msgid "Move Paragraph Up|o"
 msgstr "Paragraf"
 
-#: lib/ui/stdcontext.inc:287 lib/ui/stdmenus.inc:107
+#: lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:108
 #, fuzzy
 msgid "Move Paragraph Down|v"
 msgstr "Paragraf"
 
-#: lib/ui/stdcontext.inc:289
+#: lib/ui/stdcontext.inc:290
 #, fuzzy
 msgid "Promote Section|r"
 msgstr "Secţiune goalăe"
 
-#: lib/ui/stdcontext.inc:290
+#: lib/ui/stdcontext.inc:291
 #, fuzzy
 msgid "Demote Section|m"
 msgstr "Secţiune goalăe"
 
-#: lib/ui/stdcontext.inc:291
+#: lib/ui/stdcontext.inc:292
 #, fuzzy
 msgid "Move Section Down|D"
 msgstr "Închide Secţiunea"
 
-#: lib/ui/stdcontext.inc:292
+#: lib/ui/stdcontext.inc:293
 #, fuzzy
 msgid "Move Section Up|U"
 msgstr "Închide Secţiunea"
 
-#: lib/ui/stdcontext.inc:293
+#: lib/ui/stdcontext.inc:294
 #, fuzzy
 msgid "Insert Short Title|T"
 msgstr "Titlu scurt"
 
-#: lib/ui/stdcontext.inc:295
+#: lib/ui/stdcontext.inc:296
 #, fuzzy
 msgid "Apply Last Text Style|A"
 msgstr "Documentul "
 
-#: lib/ui/stdcontext.inc:296 lib/ui/stdmenus.inc:109
+#: lib/ui/stdcontext.inc:297 lib/ui/stdmenus.inc:110
 #, fuzzy
 msgid "Text Style|S"
 msgstr "Documentul "
 
-#: lib/ui/stdcontext.inc:297 lib/ui/stdmenus.inc:110
+#: lib/ui/stdcontext.inc:298 lib/ui/stdmenus.inc:111
 #, fuzzy
 msgid "Paragraph Settings...|P"
 msgstr "Paragraf...|P"
 
-#: lib/ui/stdcontext.inc:299
+#: lib/ui/stdcontext.inc:300
 msgid "Fullscreen Mode"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:307 lib/ui/stdmenus.inc:225
+#: lib/ui/stdcontext.inc:308 lib/ui/stdmenus.inc:226
 #, fuzzy
 msgid "Append Argument"
 msgstr "Mai mulţi parametri"
 
-#: lib/ui/stdcontext.inc:308 lib/ui/stdmenus.inc:226
+#: lib/ui/stdcontext.inc:309 lib/ui/stdmenus.inc:227
 #, fuzzy
 msgid "Remove Last Argument"
 msgstr "Parametrii listă"
 
-#: lib/ui/stdcontext.inc:310
+#: lib/ui/stdcontext.inc:311
 #, fuzzy
 msgid "Make First Non-Optional Into Optional Argument"
 msgstr "Parametrii listă"
 
-#: lib/ui/stdcontext.inc:311
+#: lib/ui/stdcontext.inc:312
 #, fuzzy
 msgid "Make Last Optional Into Non-Optional Argument"
 msgstr "Parametrii listă"
 
-#: lib/ui/stdcontext.inc:312 lib/ui/stdmenus.inc:230
+#: lib/ui/stdcontext.inc:313 lib/ui/stdmenus.inc:231
 #, fuzzy
 msgid "Insert Optional Argument"
 msgstr "Parametrii listă"
 
-#: lib/ui/stdcontext.inc:313 lib/ui/stdmenus.inc:231
+#: lib/ui/stdcontext.inc:314 lib/ui/stdmenus.inc:232
 #, fuzzy
 msgid "Remove Optional Argument"
 msgstr "CenteredCaption"
 
-#: lib/ui/stdcontext.inc:315 lib/ui/stdmenus.inc:233
+#: lib/ui/stdcontext.inc:316 lib/ui/stdmenus.inc:234
 #, fuzzy
 msgid "Append Argument Eating From the Right"
 msgstr "CenteredCaption"
 
-#: lib/ui/stdcontext.inc:316 lib/ui/stdmenus.inc:234
+#: lib/ui/stdcontext.inc:317 lib/ui/stdmenus.inc:235
 #, fuzzy
 msgid "Append Optional Argument Eating From the Right"
 msgstr "CenteredCaption"
 
-#: lib/ui/stdcontext.inc:317 lib/ui/stdmenus.inc:235
+#: lib/ui/stdcontext.inc:318 lib/ui/stdmenus.inc:236
 #, fuzzy
-msgid "Remove Last Argument Spitting out to the Right"
+msgid "Remove Last Argument Spitting Out to the Right"
 msgstr "CenteredCaption"
 
-#: lib/ui/stdcontext.inc:344 lib/ui/stdcontext.inc:356
+#: lib/ui/stdcontext.inc:345 lib/ui/stdcontext.inc:357
 #, fuzzy
 msgid "Edit Externally...|x"
 msgstr "Editează extern fişierul"
 
-#: lib/ui/stdcontext.inc:366 lib/ui/stdmenus.inc:172
+#: lib/ui/stdcontext.inc:367 lib/ui/stdmenus.inc:173
 #, fuzzy
 msgid "Top Line|T"
 msgstr "Sus|#S"
 
-#: lib/ui/stdcontext.inc:367 lib/ui/stdmenus.inc:173
+#: lib/ui/stdcontext.inc:368 lib/ui/stdmenus.inc:174
 #, fuzzy
 msgid "Bottom Line|B"
 msgstr "Jos|#J"
 
-#: lib/ui/stdcontext.inc:368 lib/ui/stdmenus.inc:174
+#: lib/ui/stdcontext.inc:369 lib/ui/stdmenus.inc:175
 #, fuzzy
 msgid "Left Line|L"
 msgstr "Delimitator"
 
-#: lib/ui/stdcontext.inc:369 lib/ui/stdmenus.inc:175
+#: lib/ui/stdcontext.inc:370 lib/ui/stdmenus.inc:176
 #, fuzzy
 msgid "Right Line|R"
 msgstr "Dreapta|#D"
 
-#: lib/ui/stdcontext.inc:381 lib/ui/stdmenus.inc:190
+#: lib/ui/stdcontext.inc:382 lib/ui/stdmenus.inc:191
 #, fuzzy
 msgid "Copy Row|o"
 msgstr "Copiază linia"
 
-#: lib/ui/stdcontext.inc:386 lib/ui/stdmenus.inc:195
+#: lib/ui/stdcontext.inc:387 lib/ui/stdmenus.inc:196
 #, fuzzy
 msgid "Copy Column|p"
 msgstr "Copiază coloana"
 
-#: lib/ui/stdmenus.inc:32
+#: lib/ui/stdmenus.inc:33
 #, fuzzy
 msgid "Document|D"
 msgstr "Documente|D"
 
-#: lib/ui/stdmenus.inc:33
+#: lib/ui/stdmenus.inc:34
 #, fuzzy
 msgid "Tools|T"
 msgstr "Baloane de ajutor|B"
 
-#: lib/ui/stdmenus.inc:43
+#: lib/ui/stdmenus.inc:44
 #, fuzzy
 msgid "New from Template...|m"
 msgstr "Nou bazat pe model...|m"
 
-#: lib/ui/stdmenus.inc:45
+#: lib/ui/stdmenus.inc:46
 #, fuzzy
 msgid "Open Recent|t"
 msgstr "Salvare &documente"
 
-#: lib/ui/stdmenus.inc:50
+#: lib/ui/stdmenus.inc:51
 #, fuzzy
 msgid "Save All|l"
 msgstr "Salvează ca...|a"
 
-#: lib/ui/stdmenus.inc:51
+#: lib/ui/stdmenus.inc:52
 #, fuzzy
 msgid "Revert to Saved|R"
 msgstr "Revine la ultima versiune salvată"
 
-#: lib/ui/stdmenus.inc:59
+#: lib/ui/stdmenus.inc:60
 msgid "New Window|W"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:60
+#: lib/ui/stdmenus.inc:61
 msgid "Close Window|d"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:71
-#, fuzzy
-msgid "Check in Changes...|I"
-msgstr "\"Check in\" schimbările...|I"
-
-#: lib/ui/stdmenus.inc:72
-#, fuzzy
-msgid "Check out for Edit|O"
-msgstr "\"Check out\" pentru editare|O"
-
-#: lib/ui/stdmenus.inc:76
+#: lib/ui/stdmenus.inc:77
 msgid "Use Locking Property|L"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:94
+#: lib/ui/stdmenus.inc:95
 #, fuzzy
 msgid "Redo|R"
 msgstr "Re-face|R"
 
-#: lib/ui/stdmenus.inc:100
+#: lib/ui/stdmenus.inc:101
 #, fuzzy
 msgid "Paste Special"
 msgstr "Lipeşte|L"
 
-#: lib/ui/stdmenus.inc:102
+#: lib/ui/stdmenus.inc:103
 #, fuzzy
 msgid "Select All"
 msgstr "Selectaţi un fişier"
 
-#: lib/ui/stdmenus.inc:113
+#: lib/ui/stdmenus.inc:114
 #, fuzzy
 msgid "Table|T"
 msgstr "Tabel"
 
-#: lib/ui/stdmenus.inc:115
+#: lib/ui/stdmenus.inc:116
 #, fuzzy
 msgid "Rows & Columns|C"
 msgstr "Schimbă coloanele între ele"
 
-#: lib/ui/stdmenus.inc:122
+#: lib/ui/stdmenus.inc:123
 #, fuzzy
 msgid "Increase List Depth|I"
 msgstr "Creşte adîncimea cadrului|C"
 
-#: lib/ui/stdmenus.inc:123
+#: lib/ui/stdmenus.inc:124
 #, fuzzy
 msgid "Decrease List Depth|D"
 msgstr "Reduce adîncimea cadrului|R"
 
-#: lib/ui/stdmenus.inc:124
+#: lib/ui/stdmenus.inc:125
 msgid "Dissolve Inset|l"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:125
+#: lib/ui/stdmenus.inc:126
 #, fuzzy
 msgid "TeX Code Settings...|C"
 msgstr "Setări LaTeX"
 
-#: lib/ui/stdmenus.inc:127
+#: lib/ui/stdmenus.inc:128
 #, fuzzy
 msgid "Float Settings...|a"
 msgstr "opţiuni suplimentare"
 
-#: lib/ui/stdmenus.inc:128
+#: lib/ui/stdmenus.inc:129
 msgid "Text Wrap Settings...|W"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:129
+#: lib/ui/stdmenus.inc:130
 #, fuzzy
 msgid "Note Settings...|N"
 msgstr "opţiuni suplimentare"
 
-#: lib/ui/stdmenus.inc:130
+#: lib/ui/stdmenus.inc:131
 #, fuzzy
 msgid "Branch Settings...|B"
 msgstr "Cheie bibliografică"
 
-#: lib/ui/stdmenus.inc:131
+#: lib/ui/stdmenus.inc:132
 #, fuzzy
 msgid "Box Settings...|x"
 msgstr "opţiuni suplimentare"
 
-#: lib/ui/stdmenus.inc:132
+#: lib/ui/stdmenus.inc:133
 #, fuzzy
 msgid "Listings Settings...|g"
 msgstr "Setări pentru modul listing"
 
-#: lib/ui/stdmenus.inc:136
+#: lib/ui/stdmenus.inc:137
 #, fuzzy
 msgid "Table Settings...|a"
 msgstr "Setări tabel"
 
-#: lib/ui/stdmenus.inc:140
+#: lib/ui/stdmenus.inc:141
 #, fuzzy
 msgid "Plain Text|T"
 msgstr "Place"
 
-#: lib/ui/stdmenus.inc:141
+#: lib/ui/stdmenus.inc:142
 #, fuzzy
 msgid "Plain Text, Join Lines|J"
 msgstr "Text ASCII ca linii"
 
-#: lib/ui/stdmenus.inc:143
+#: lib/ui/stdmenus.inc:144
 #, fuzzy
 msgid "Selection|S"
 msgstr "&Selecţie:"
 
-#: lib/ui/stdmenus.inc:144
+#: lib/ui/stdmenus.inc:145
 #, fuzzy
 msgid "Selection, Join Lines|i"
 msgstr "ca linii|l"
 
-#: lib/ui/stdmenus.inc:146
+#: lib/ui/stdmenus.inc:147
 msgid "Paste as LinkBack PDF"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:147
+#: lib/ui/stdmenus.inc:148
 #, fuzzy
 msgid "Paste as PDF"
 msgstr "Lipeşte|L"
 
-#: lib/ui/stdmenus.inc:148
+#: lib/ui/stdmenus.inc:149
 #, fuzzy
 msgid "Paste as PNG"
 msgstr "Lipeşte|L"
 
-#: lib/ui/stdmenus.inc:149
+#: lib/ui/stdmenus.inc:150
 #, fuzzy
 msgid "Paste as JPEG"
 msgstr "Lipeşte|L"
 
-#: lib/ui/stdmenus.inc:157
+#: lib/ui/stdmenus.inc:158
 #, fuzzy
 msgid "Dissolve Text Style"
 msgstr "Pagini"
 
-#: lib/ui/stdmenus.inc:161
+#: lib/ui/stdmenus.inc:162
 #, fuzzy
 msgid "Customized...|C"
 msgstr "Personalizat...|C"
 
-#: lib/ui/stdmenus.inc:163
+#: lib/ui/stdmenus.inc:164
 #, fuzzy
 msgid "Capitalize|a"
 msgstr "Catalan"
 
-#: lib/ui/stdmenus.inc:164
+#: lib/ui/stdmenus.inc:165
 #, fuzzy
 msgid "Uppercase|U"
 msgstr "Actualizează|A"
 
-#: lib/ui/stdmenus.inc:165
+#: lib/ui/stdmenus.inc:166
 msgid "Lowercase|L"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:203
+#: lib/ui/stdmenus.inc:204
 #, fuzzy
 msgid "Macro Definition"
 msgstr "Definiţie"
 
-#: lib/ui/stdmenus.inc:207
+#: lib/ui/stdmenus.inc:208
 #, fuzzy
 msgid "Text Style|T"
 msgstr "Documentul "
 
-#: lib/ui/stdmenus.inc:213
+#: lib/ui/stdmenus.inc:214
 #, fuzzy
 msgid "Add Line Above|A"
 msgstr "Margine deasupra"
 
-#: lib/ui/stdmenus.inc:228
+#: lib/ui/stdmenus.inc:229
 msgid "Make First Non-Optional into Optional Argument"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:229
+#: lib/ui/stdmenus.inc:230
 msgid "Make Last Optional into Non-Optional Argument"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:245
+#: lib/ui/stdmenus.inc:246
 #, fuzzy
 msgid "Math Normal Font|N"
 msgstr "Font matematic normal"
 
-#: lib/ui/stdmenus.inc:247
+#: lib/ui/stdmenus.inc:248
 #, fuzzy
 msgid "Math Calligraphic Family|C"
 msgstr "Font matematic caligrafic"
 
-#: lib/ui/stdmenus.inc:248
+#: lib/ui/stdmenus.inc:249
 #, fuzzy
 msgid "Math Fraktur Family|F"
 msgstr "Familie fraktur matematic"
 
-#: lib/ui/stdmenus.inc:249
+#: lib/ui/stdmenus.inc:250
 #, fuzzy
 msgid "Math Roman Family|R"
 msgstr "Familie roman matematic"
 
-#: lib/ui/stdmenus.inc:250
+#: lib/ui/stdmenus.inc:251
 #, fuzzy
 msgid "Math Sans Serif Family|S"
 msgstr "Familie sans serif matematic"
 
-#: lib/ui/stdmenus.inc:252
+#: lib/ui/stdmenus.inc:253
 #, fuzzy
 msgid "Math Bold Series|B"
 msgstr "Serii bold matematic"
 
-#: lib/ui/stdmenus.inc:254
+#: lib/ui/stdmenus.inc:255
 #, fuzzy
 msgid "Text Normal Font|T"
 msgstr "Font normal text"
 
-#: lib/ui/stdmenus.inc:270
+#: lib/ui/stdmenus.inc:271
 msgid "Octave|O"
 msgstr "Octave|O"
 
-#: lib/ui/stdmenus.inc:271
+#: lib/ui/stdmenus.inc:272
 msgid "Maxima|M"
 msgstr "Maxima|M"
 
-#: lib/ui/stdmenus.inc:272
+#: lib/ui/stdmenus.inc:273
 msgid "Mathematica|a"
 msgstr "Mathematica|a"
 
-#: lib/ui/stdmenus.inc:274
+#: lib/ui/stdmenus.inc:275
 #, fuzzy
 msgid "Maple, Simplify|S"
 msgstr "Maple, simplifică"
 
-#: lib/ui/stdmenus.inc:275
+#: lib/ui/stdmenus.inc:276
 #, fuzzy
 msgid "Maple, Factor|F"
 msgstr "Maple, factor"
 
-#: lib/ui/stdmenus.inc:276
+#: lib/ui/stdmenus.inc:277
 #, fuzzy
 msgid "Maple, Evalm|E"
 msgstr "Maple, evalm"
 
-#: lib/ui/stdmenus.inc:277
+#: lib/ui/stdmenus.inc:278
 #, fuzzy
 msgid "Maple, Evalf|v"
 msgstr "Maple, evalf"
 
-#: lib/ui/stdmenus.inc:296
+#: lib/ui/stdmenus.inc:297
 #, fuzzy
 msgid "Open All Insets|O"
 msgstr "Deschidere"
 
-#: lib/ui/stdmenus.inc:297
+#: lib/ui/stdmenus.inc:298
 msgid "Close All Insets|C"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:299
+#: lib/ui/stdmenus.inc:300
 msgid "Unfold Math Macro"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:300
+#: lib/ui/stdmenus.inc:301
 #, fuzzy
 msgid "Fold Math Macro"
 msgstr "fundal mod matematic"
 
-#: lib/ui/stdmenus.inc:302
+#: lib/ui/stdmenus.inc:303
 #, fuzzy
 msgid "View Source|S"
 msgstr "Spaţii vizibile|#v"
 
-#: lib/ui/stdmenus.inc:306
+#: lib/ui/stdmenus.inc:307
 msgid "Split View Into Left and Right Half|i"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:307
+#: lib/ui/stdmenus.inc:308
 msgid "Split View Into Upper and Lower Half|V"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:308
+#: lib/ui/stdmenus.inc:309
 msgid "Close Tab Group|G"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:309
+#: lib/ui/stdmenus.inc:310
 msgid "Fullscreen|l"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:310
+#: lib/ui/stdmenus.inc:311
 #, fuzzy
 msgid "Toolbars|b"
 msgstr "Baloane de ajutor|B"
 
-#: lib/ui/stdmenus.inc:330
+#: lib/ui/stdmenus.inc:331
 #, fuzzy
 msgid "Special Character|p"
 msgstr "Caractere speciale|C"
 
-#: lib/ui/stdmenus.inc:331
+#: lib/ui/stdmenus.inc:332
 #, fuzzy
 msgid "Formatting|o"
 msgstr "&Format:"
 
-#: lib/ui/stdmenus.inc:332
+#: lib/ui/stdmenus.inc:333
 #, fuzzy
 msgid "List / TOC|i"
 msgstr "Liste şi cuprins|L"
 
-#: lib/ui/stdmenus.inc:333
+#: lib/ui/stdmenus.inc:334
 #, fuzzy
 msgid "Float|a"
 msgstr "Flotante|F"
 
-#: lib/ui/stdmenus.inc:335
+#: lib/ui/stdmenus.inc:336
 msgid "Branch|B"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:336
+#: lib/ui/stdmenus.inc:337
 #, fuzzy
 msgid "Custom Insets"
 msgstr "Client"
 
-#: lib/ui/stdmenus.inc:337
+#: lib/ui/stdmenus.inc:338
 #, fuzzy
 msgid "File|e"
 msgstr "Fişier|F"
 
-#: lib/ui/stdmenus.inc:338
+#: lib/ui/stdmenus.inc:339
 msgid "Box[[Menu]]"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:341
+#: lib/ui/stdmenus.inc:342
 #, fuzzy
 msgid "Cross-Reference...|R"
 msgstr "Referinţă încrucişată...|R"
 
-#: lib/ui/stdmenus.inc:343
+#: lib/ui/stdmenus.inc:344
 msgid "Caption"
 msgstr "Caption"
 
-#: lib/ui/stdmenus.inc:344
+#: lib/ui/stdmenus.inc:345
 #, fuzzy
 msgid "Index Entry|d"
 msgstr "Înregistrare index"
 
-#: lib/ui/stdmenus.inc:345
+#: lib/ui/stdmenus.inc:346
 #, fuzzy
 msgid "Nomenclature Entry...|y"
 msgstr "Inserează item de index"
 
-#: lib/ui/stdmenus.inc:347
+#: lib/ui/stdmenus.inc:348
 #, fuzzy
 msgid "Table...|T"
 msgstr "Tabular...|T"
 
-#: lib/ui/stdmenus.inc:350
+#: lib/ui/stdmenus.inc:351
 msgid "Hyperlink|k"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:353
+#: lib/ui/stdmenus.inc:354
 #, fuzzy
 msgid "Short Title|S"
 msgstr "Titlu scurt"
 
-#: lib/ui/stdmenus.inc:354
+#: lib/ui/stdmenus.inc:355
 msgid "TeX Code|X"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:355
+#: lib/ui/stdmenus.inc:356
 #, fuzzy
 msgid "Program Listing[[Menu]]"
 msgstr "Setări imprimantă"
 
-#: lib/ui/stdmenus.inc:363
+#: lib/ui/stdmenus.inc:364
 msgid "Ordinary Quote|Q"
 msgstr "Ghilimea simplă|G"
 
-#: lib/ui/stdmenus.inc:364
+#: lib/ui/stdmenus.inc:365
 #, fuzzy
 msgid "Single Quote|S"
 msgstr "Simplu|#S"
 
-#: lib/ui/stdmenus.inc:368
+#: lib/ui/stdmenus.inc:369
 msgid "Phonetic Symbols|P"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:375
+#: lib/ui/stdmenus.inc:376
 #, fuzzy
 msgid "Protected Space|P"
 msgstr "Spaţiu protejat|S"
 
-#: lib/ui/stdmenus.inc:379
+#: lib/ui/stdmenus.inc:380
 #, fuzzy
 msgid "Horizontal Line|L"
 msgstr "Aliniere pe &orizontală:"
 
-#: lib/ui/stdmenus.inc:380
+#: lib/ui/stdmenus.inc:381
 #, fuzzy
 msgid "Vertical Space...|V"
 msgstr "Spaţiere verticală:|#v"
 
-#: lib/ui/stdmenus.inc:382
+#: lib/ui/stdmenus.inc:383
 #, fuzzy
 msgid "Hyphenation Point|H"
 msgstr "Punct de despărţire|P"
 
-#: lib/ui/stdmenus.inc:396
+#: lib/ui/stdmenus.inc:397
 #, fuzzy
 msgid "Numbered Formula|N"
 msgstr "Număr"
 
-#: lib/ui/stdmenus.inc:419
+#: lib/ui/stdmenus.inc:420
 #, fuzzy
 msgid "Figure Wrap Float|F"
 msgstr "Inserează un flotant"
 
-#: lib/ui/stdmenus.inc:420
+#: lib/ui/stdmenus.inc:421
 #, fuzzy
 msgid "Table Wrap Float|T"
 msgstr "Inserează un flotant"
 
-#: lib/ui/stdmenus.inc:436
+#: lib/ui/stdmenus.inc:437
 #, fuzzy
 msgid "External Material...|M"
 msgstr "Material extern...|x"
 
-#: lib/ui/stdmenus.inc:437
+#: lib/ui/stdmenus.inc:438
 #, fuzzy
 msgid "Child Document...|d"
 msgstr "Document...|D"
 
-#: lib/ui/stdmenus.inc:442
+#: lib/ui/stdmenus.inc:443
 #, fuzzy
 msgid "Comment|C"
 msgstr "Comentariu"
 
-#: lib/ui/stdmenus.inc:459
+#: lib/ui/stdmenus.inc:460
 #, fuzzy
 msgid "Change Tracking|C"
 msgstr "Modifică limbajul"
 
-#: lib/ui/stdmenus.inc:463
+#: lib/ui/stdmenus.inc:464
 #, fuzzy
 msgid "Start Appendix Here|A"
 msgstr "Începe apendixul aici|a"
 
-#: lib/ui/stdmenus.inc:465
+#: lib/ui/stdmenus.inc:466
 msgid "Save in Bundled Format|F"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:466
+#: lib/ui/stdmenus.inc:467
 msgid "Compressed|m"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:473
+#: lib/ui/stdmenus.inc:474
 #, fuzzy
 msgid "Accept Change|A"
 msgstr "Modificare font|f"
 
-#: lib/ui/stdmenus.inc:474
+#: lib/ui/stdmenus.inc:475
 #, fuzzy
 msgid "Reject Change|R"
 msgstr "Rescanează|#R"
 
-#: lib/ui/stdmenus.inc:475
+#: lib/ui/stdmenus.inc:476
 msgid "Accept All Changes|c"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:476
+#: lib/ui/stdmenus.inc:477
 #, fuzzy
 msgid "Reject All Changes|e"
 msgstr "Rescanează|#R"
 
-#: lib/ui/stdmenus.inc:486
+#: lib/ui/stdmenus.inc:487
 #, fuzzy
 msgid "Next Change|C"
 msgstr "Modificare font|f"
 
-#: lib/ui/stdmenus.inc:487
+#: lib/ui/stdmenus.inc:488
 #, fuzzy
 msgid "Next Cross-Reference|R"
 msgstr "Referinţă"
 
-#: lib/ui/stdmenus.inc:499
+#: lib/ui/stdmenus.inc:500
 #, fuzzy
 msgid "Clear Bookmarks|C"
 msgstr "Semne de carte|S"
 
-#: lib/ui/stdmenus.inc:501
+#: lib/ui/stdmenus.inc:502
 #, fuzzy
 msgid "Navigate Back|B"
 msgstr "Navigare|N"
 
-#: lib/ui/stdmenus.inc:511
+#: lib/ui/stdmenus.inc:512
 #, fuzzy
 msgid "Thesaurus...|T"
 msgstr "Dicţionar..."
 
-#: lib/ui/stdmenus.inc:512
+#: lib/ui/stdmenus.inc:513
 #, fuzzy
 msgid "Statistics...|a"
 msgstr "Stare"
 
-#: lib/ui/stdmenus.inc:514
+#: lib/ui/stdmenus.inc:515
 #, fuzzy
 msgid "TeX Information|I"
 msgstr "Informaţii TeX|X"
 
-#: lib/ui/stdmenus.inc:530
+#: lib/ui/stdmenus.inc:531
 #, fuzzy
 msgid "Additional Features|F"
 msgstr "Spaţiu adiţional"
 
-#: lib/ui/stdmenus.inc:531
+#: lib/ui/stdmenus.inc:532
 msgid "Embedded Objects|O"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:534
+#: lib/ui/stdmenus.inc:535
 #, fuzzy
 msgid "Shortcuts|S"
 msgstr "&Accelerator:"
 
-#: lib/ui/stdmenus.inc:535
+#: lib/ui/stdmenus.inc:536
 #, fuzzy
 msgid "LyX Functions|y"
 msgstr "&Funcţii"
 
-#: lib/ui/stdmenus.inc:537
+#: lib/ui/stdmenus.inc:538
 #, fuzzy
 msgid "Specific Manuals|p"
 msgstr "EmailSpecial"
 
-#: lib/ui/stdmenus.inc:543
+#: lib/ui/stdmenus.inc:544
 #, fuzzy
 msgid "Linguistics Manual|L"
 msgstr "Listă"
 
-#: lib/ui/stdmenus.inc:544
+#: lib/ui/stdmenus.inc:545
 #, fuzzy
 msgid "Braille Manual|B"
 msgstr "Titlu_LaTeX"
 
-#: lib/ui/stdmenus.inc:545
+#: lib/ui/stdmenus.inc:546
 #, fuzzy
 msgid "XY-pic Manual|X"
 msgstr "EmailSpecial"
 
-#: lib/ui/stdmenus.inc:546
+#: lib/ui/stdmenus.inc:547
 #, fuzzy
 msgid "Multicolumn Manual|M"
 msgstr "Multicoloană|M"
@@ -21022,7 +21012,7 @@ msgstr "Nimic de indexat"
 msgid "No vline to delete"
 msgstr "Nimic de indexat"
 
-#: src/mathed/InsetMathGrid.cpp:1423
+#: src/mathed/InsetMathGrid.cpp:1424
 #, fuzzy, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Caracteristici tabular"
@@ -21279,6 +21269,14 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Cuvînt necunoscut:"
+
+#, fuzzy
+#~ msgid "Check in Changes...|I"
+#~ msgstr "\"Check in\" schimbările...|I"
+
+#, fuzzy
+#~ msgid "Check out for Edit|O"
+#~ msgstr "\"Check out\" pentru editare|O"
 
 #, fuzzy
 #~ msgid "Toggle Labeling/Numbering|T"
