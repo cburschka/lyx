@@ -1251,7 +1251,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 			break;
 		}
 		// perhaps this should be FINISHED_BACKWARD -- just for clarity?
-		lyxerr << "returning FINISHED_LEFT" << endl;
+		//lyxerr << "returning FINISHED_LEFT" << endl;
 		break;
 	}
 
@@ -1414,8 +1414,10 @@ bool InsetMathGrid::getStatus(Cursor & cur, FuncRequest const & cmd,
 					|| (s == "align-center"  && ha == 'c')
 					|| (s == "valign-top"    && va == 't')
 					|| (s == "valign-bottom" && va == 'b')
-					|| (s == "valign-middle" && va == 'm'));
-		} else if (s == "append-row" || s == "delete-row" ||
+					|| (s == "valign-middle" && va == 'c'));
+			return true;
+		}
+		if (s == "append-row" || s == "delete-row" ||
 		    s == "copy-row" || s == "swap-row" ||
 		    s == "add-hline-above" || s == "add-hline-below" ||
 		    s == "delete-hline-above" || s == "delete-hline-below" ||
