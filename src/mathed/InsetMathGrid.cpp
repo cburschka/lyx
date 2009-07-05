@@ -1243,7 +1243,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 			break;
 		}
 		// perhaps this should be FINISHED_BACKWARD -- just for clarity?
-		lyxerr << "returning FINISHED_LEFT" << endl;
+		//lyxerr << "returning FINISHED_LEFT" << endl;
 		break;
 	}
 
@@ -1406,7 +1406,8 @@ bool InsetMathGrid::getStatus(Cursor & cur, FuncRequest const & cmd,
 					|| (s == "align-center"  && ha == 'c')
 					|| (s == "valign-top"    && va == 't')
 					|| (s == "valign-bottom" && va == 'b')
-					|| (s == "valign-middle" && va == 'm'));
+					|| (s == "valign-middle" && va == 'c'));
+			return true;
 		}
 		if (s == "append-row" || s == "delete-row" ||
 		    s == "copy-row" || s == "swap-row" ||
@@ -1415,9 +1416,9 @@ bool InsetMathGrid::getStatus(Cursor & cur, FuncRequest const & cmd,
 		    s == "append-column" || s == "delete-column" ||
 		    s == "copy-column" || s == "swap-column" ||
 		    s == "add-vline-left" || s == "add-vline-right" ||
-		    s == "delete-vline-left" || s == "delete-vline-right")
+		    s == "delete-vline-left" || s == "delete-vline-right") {
 			status.setEnabled(true);
-		else {
+		} else {
 			status.setEnabled(false);
 			status.message(bformat(
 				from_utf8(N_("Unknown tabular feature '%1$s'")), lyx::from_ascii(s)));

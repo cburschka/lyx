@@ -166,6 +166,9 @@ What's new
 
 - Fix context menu for insets inside a branch inset (bug 6022).
 
+- Fix command "tabular-feature align-(left|right|center)" which was
+  inadvertently disabled for a math matrix (bug 6041).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
