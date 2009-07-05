@@ -654,7 +654,7 @@ docstring InsetInclude::xhtml(odocstream & os, OutputParams const &rp) const
 		makeAbsPath(to_utf8(params()["filename"]), onlyPath(parent_filename));
 	if (!isLyXFilename(included_file.absFilename())) {
 		frontend::Alert::warning(_("Unsupported Inclusion"),
-					 _("LyX does not know how to include non-LyX files when"
+					 _("LyX does not know how to include non-LyX files when "
 					   "generating HTML output. Offending file: ") +
 					    params()["filename"]);
 		return docstring();
