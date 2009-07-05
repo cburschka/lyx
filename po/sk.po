@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-07-01 07:47+0200\n"
-"PO-Revision-Date: 2009-07-04 23:11+0200\n"
+"PO-Revision-Date: 2009-07-05 12:33+0200\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
-"Language-Team: Slowakisch <kde-i18n-de@kde.org>\n"
+"Language-Team: Slovak <kde-i18n-de@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2690,7 +2690,7 @@ msgid ""
 "paths to LaTeX files. Useful if you're using the native Windows MikTeX "
 "rather than the Cygwin teTeX."
 msgstr ""
-"Vyberte v prípade, že má Lyx do LaTeX-u produkovať cesty k súborom radšej vo "
+"Vyberte v prípade, že má LyX do LaTeX-u produkovať cesty k súborom radšej vo "
 "Windows-štýle než v Posix-štýle. Užitočné pri používaní Windowsového MikTeX-"
 "u miesto teTeX-u pod Cygwin."
 
@@ -6912,7 +6912,7 @@ msgstr "Mathematics Subject Classification number:"
 
 #: lib/layouts/iopart.layout:230
 msgid "submitto"
-msgstr "podaťDo"
+msgstr "podať-do"
 
 #: lib/layouts/iopart.layout:233
 msgid "submit to paper:"
@@ -14603,7 +14603,7 @@ msgstr "chktex zlyhal"
 
 #: src/Buffer.cpp:1334
 msgid "Could not run chktex successfully."
-msgstr "Nemôžem spustiť Chktex úspešne."
+msgstr "Nemôžem spustiť chktex úspešne."
 
 #: src/Buffer.cpp:2188
 msgid "Preview source code"
@@ -14744,7 +14744,7 @@ msgstr "Žiadny súbor nie je otvorený!"
 #: src/BufferList.cpp:243
 #, c-format
 msgid "LyX: Attempting to save document %1$s\n"
-msgstr "Lyx: Pokúšam sa uložiť dokument %1$s\n"
+msgstr "LyX: Pokúšam sa uložiť dokument %1$s\n"
 
 #: src/BufferList.cpp:253 src/BufferList.cpp:266 src/BufferList.cpp:280
 msgid "  Save seems successful. Phew.\n"
@@ -14994,11 +14994,11 @@ msgstr ""
 #: src/Chktex.cpp:63
 #, c-format
 msgid "ChkTeX warning id # %1$d"
-msgstr "Varovanie chktexu id # %1$d"
+msgstr "Varovanie ChkTeXu id # %1$d"
 
 #: src/Chktex.cpp:65
 msgid "ChkTeX warning id # "
-msgstr "Varovanie chktexu id # "
+msgstr "Varovanie ChkTeXu id # "
 
 #: src/Color.cpp:135 src/insets/InsetBibtex.cpp:173
 #: src/insets/InsetBibtex.cpp:198
@@ -15211,11 +15211,11 @@ msgstr "popisok (rám)"
 
 #: src/Color.cpp:191
 msgid "collapsable inset text"
-msgstr "zbalitelná vložka textu"
+msgstr "zbaliteľná vložka textu"
 
 #: src/Color.cpp:192
 msgid "collapsable inset frame"
-msgstr "zbalitelná vložka (rám)"
+msgstr "zbaliteľná vložka (rám)"
 
 #: src/Color.cpp:193
 msgid "inset background"
