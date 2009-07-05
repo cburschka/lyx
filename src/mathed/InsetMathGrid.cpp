@@ -1415,17 +1415,16 @@ bool InsetMathGrid::getStatus(Cursor & cur, FuncRequest const & cmd,
 					|| (s == "valign-top"    && va == 't')
 					|| (s == "valign-bottom" && va == 'b')
 					|| (s == "valign-middle" && va == 'm'));
-		}
-		if (s == "append-row" || s == "delete-row" ||
+		} else if (s == "append-row" || s == "delete-row" ||
 		    s == "copy-row" || s == "swap-row" ||
 		    s == "add-hline-above" || s == "add-hline-below" ||
 		    s == "delete-hline-above" || s == "delete-hline-below" ||
 		    s == "append-column" || s == "delete-column" ||
 		    s == "copy-column" || s == "swap-column" ||
 		    s == "add-vline-left" || s == "add-vline-right" ||
-		    s == "delete-vline-left" || s == "delete-vline-right")
+		    s == "delete-vline-left" || s == "delete-vline-right") {
 			status.setEnabled(true);
-		else {
+		} else {
 			status.setEnabled(false);
 			status.message(bformat(
 				from_utf8(N_("Unknown tabular feature '%1$s'")), lyx::from_ascii(s)));
