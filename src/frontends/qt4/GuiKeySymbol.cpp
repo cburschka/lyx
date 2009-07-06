@@ -638,7 +638,7 @@ void KeySymbol::init(string const & symbolname)
 
 bool KeySymbol::isOK() const
 {
-	bool const ok = !(text_.empty() && key_ == Qt::Key_unknown);
+	bool const ok = !(text_.empty() && qkey_to_string(key_).empty());
 	LYXERR(Debug::KEY, "isOK is " << ok);
 	return ok;
 }

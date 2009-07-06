@@ -141,10 +141,11 @@ void ShortcutWidget::appendToSequence(QKeyEvent * e)
 {
 	KeySymbol sym;
 	setKeySymbol(&sym, e);
-
-	KeyModifier mod = lyx::q_key_state(e->modifiers());
 	
-	keysequence_.addkey(sym, mod, lyx::NoModifier);
+	if (sym.isOK()) {
+		KeyModifier mod = lyx::q_key_state(e->modifiers());
+		keysequence_.addkey(sym, mod, lyx::NoModifier);
+	}
 }
 
 
