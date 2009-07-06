@@ -25,8 +25,6 @@ public:
 	///
 	explicit InsetMathFracBase(idx_type ncells = 2);
 	///
-	mode_type currentMode() const { return MATH_MODE; }
-	///
 	bool idxUpDown(Cursor &, bool up) const;
 	///
 	bool idxBackward(Cursor &) const { return false; }
