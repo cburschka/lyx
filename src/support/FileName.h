@@ -222,7 +222,7 @@ class DocFileName : public FileName {
 public:
 	DocFileName();
 	/** \param abs_filename the file in question. Must have an absolute path.
-	 *  \param save_abs_path how is the file to be output to file?
+	 *  \param save_abs_path how is the filename to be output?
 	 */
 	DocFileName(std::string const & abs_filename, bool save_abs_path = true);
 	DocFileName(FileName const & abs_filename, bool save_abs_path = true);
@@ -233,9 +233,9 @@ public:
 	 *  the absolute path using this.
 	 */
 	virtual void set(std::string const & filename, std::string const & buffer_path);
-
+	///
 	void erase();
-
+	///
 	bool saveAbsPath() const { return save_abs_path_; }
 	/// \param buffer_path if empty, uses `pwd`
 	std::string relFilename(std::string const & buffer_path = empty_string()) const;
@@ -271,6 +271,8 @@ public:
 	std::string unzippedFilename() const;
 
 private:
+	/// Records whether we should save (or export) the filename as a relative
+	/// or absolute path.
 	bool save_abs_path_;
 	/// Cache for isZipped() because zippedFile() is expensive
 	mutable bool zipped_;
