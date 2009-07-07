@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-07-05 18:33+0200\n"
-"PO-Revision-Date: 2009-07-05 12:33+0200\n"
+"PO-Revision-Date: 2009-07-07 13:55+0200\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
-"Language-Team: Slovak <kde-i18n-de@kde.org>\n"
+"Language-Team: Slowakisch <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -9518,7 +9518,7 @@ msgstr "Registrovať...|R"
 
 #: lib/ui/classic.ui:69 lib/ui/stdmenus.inc:72
 msgid "Check In Changes...|I"
-msgstr "Skontrolovať v zmenách..."
+msgstr "Odoslaj Zmeny..."
 
 #: lib/ui/classic.ui:70 lib/ui/stdmenus.inc:73
 msgid "Check Out for Edit|O"
@@ -9530,7 +9530,7 @@ msgstr "Vrátiť sa k repozitárnej verzii"
 
 #: lib/ui/classic.ui:72 lib/ui/stdmenus.inc:75
 msgid "Undo Last Check In|U"
-msgstr "Zrušiť posledný check-in"
+msgstr "Zruš Posledné Odoslané Zmeny"
 
 #: lib/ui/classic.ui:73 lib/ui/stdmenus.inc:76
 msgid "Show History...|H"
@@ -10122,7 +10122,7 @@ msgstr "Prostý text, riadky spojiť...|s"
 
 #: lib/ui/classic.ui:328 lib/ui/stdmenus.inc:472
 msgid "Track Changes|T"
-msgstr "Sledovať zmeny"
+msgstr "Sleduj zmeny"
 
 #: lib/ui/classic.ui:329 lib/ui/stdmenus.inc:473
 msgid "Merge Changes...|M"
@@ -10130,15 +10130,15 @@ msgstr "Zlúčiť zmeny..."
 
 #: lib/ui/classic.ui:330
 msgid "Accept All Changes|A"
-msgstr "Akceptovať všetky zmeny"
+msgstr "Akceptuj všetky zmeny"
 
 #: lib/ui/classic.ui:331
 msgid "Reject All Changes|R"
-msgstr "Odmietnuť všetky zmeny"
+msgstr "Odhoď všetky zmeny"
 
 #: lib/ui/classic.ui:332 lib/ui/stdmenus.inc:478
 msgid "Show Changes in Output|S"
-msgstr "Zobraziť zmeny vo výstupe"
+msgstr "Zobraz zmeny vo výstupe"
 
 #: lib/ui/classic.ui:339
 msgid "Character...|C"
@@ -10774,7 +10774,6 @@ msgid "Append Optional Argument Eating From the Right"
 msgstr "Pridaj Nepovinný Argument Sprava"
 
 #: lib/ui/stdcontext.inc:318 lib/ui/stdmenus.inc:236
-#, fuzzy
 msgid "Remove Last Argument Spitting Out to the Right"
 msgstr "Odstráň Posledný Argument Sprava"
 
@@ -11220,11 +11219,11 @@ msgstr "Odmietnuť zmenu"
 
 #: lib/ui/stdmenus.inc:476
 msgid "Accept All Changes|c"
-msgstr "Akceptovať všetky zmeny"
+msgstr "Akceptuj všetky zmeny"
 
 #: lib/ui/stdmenus.inc:477
 msgid "Reject All Changes|e"
-msgstr "Odmietnuť všetky zmeny"
+msgstr "Odhoď všetky zmeny"
 
 #: lib/ui/stdmenus.inc:487
 msgid "Next Change|C"
@@ -11648,11 +11647,11 @@ msgstr "Recenzovať"
 
 #: lib/ui/stdtoolbars.inc:202
 msgid "Track changes"
-msgstr "Sledovať zmeny"
+msgstr "Sleduj zmeny"
 
 #: lib/ui/stdtoolbars.inc:203
 msgid "Show changes in output"
-msgstr "Zobraziť zmeny vo výstupe"
+msgstr "Zobraz zmeny vo výstupe"
 
 #: lib/ui/stdtoolbars.inc:205
 msgid "Next change"
@@ -11668,15 +11667,15 @@ msgstr "Odmietnuť zmeny vo výbere"
 
 #: lib/ui/stdtoolbars.inc:209
 msgid "Merge changes"
-msgstr "Zlúčiť zmeny"
+msgstr "Zlúč zmeny"
 
 #: lib/ui/stdtoolbars.inc:210
 msgid "Accept all changes"
-msgstr "Akceptovať všetky zmeny"
+msgstr "Akceptuj všetky zmeny"
 
 #: lib/ui/stdtoolbars.inc:211
 msgid "Reject all changes"
-msgstr "Odmietnuť všetky zmeny"
+msgstr "Odhoď všetky zmeny"
 
 #: lib/ui/stdtoolbars.inc:214
 msgid "Next note"
@@ -11724,7 +11723,7 @@ msgstr "Včítať verziu úpravy"
 
 #: lib/ui/stdtoolbars.inc:229
 msgid "Check-in changes"
-msgstr "Uložiť zmeny do repozitáru"
+msgstr "Odoslaj zmeny do repozitáru"
 
 #: lib/ui/stdtoolbars.inc:230
 msgid "View revision log"
@@ -11732,7 +11731,7 @@ msgstr "Prezrieť protokol revízií"
 
 #: lib/ui/stdtoolbars.inc:231
 msgid "Revert changes"
-msgstr "Zrušiť všetky zmeny"
+msgstr "Odhoď zmeny"
 
 #: lib/ui/stdtoolbars.inc:233
 msgid "Use SVN file locking property"
@@ -16940,7 +16939,7 @@ msgstr "Opäť načítať"
 
 #: src/buffer_funcs.cpp:75
 msgid "&Keep Changes"
-msgstr "Držať Zmeny"
+msgstr "Drž Zmeny"
 
 #: src/buffer_funcs.cpp:86
 #, c-format
@@ -17283,7 +17282,7 @@ msgstr "Nie"
 
 #: src/frontends/qt4/GuiChanges.cpp:40
 msgid "Merge Changes"
-msgstr "Zlúčiť Zmeny"
+msgstr "Zlúč Zmeny"
 
 #: src/frontends/qt4/GuiChanges.cpp:63
 #, c-format
@@ -20545,7 +20544,7 @@ msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
 #~ msgid "Check in Changes...|I"
-#~ msgstr "Skontrolovať v Zmenách..."
+#~ msgstr "Odoslaj Zmeny..."
 
 #~ msgid "Check out for Edit|O"
 #~ msgstr "Check-out na úpravu|O"
