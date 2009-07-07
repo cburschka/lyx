@@ -1571,7 +1571,7 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 
 	if (cur.pos() > 0) {
 		MathMacro const * macro = cur.inset().asInsetMath()->asMacro();
-		if (macro) {
+		if (macro && macro->displayMode() == MathMacro::DISPLAY_UNFOLDED) {
 			// resume macro_mode
 			docstring const & s = macro->name();
 			cur.leaveInset(*macro);
