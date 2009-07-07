@@ -169,6 +169,9 @@ What's new
 - Fix command "tabular-feature align-(left|right|center)" which was
   inadvertently disabled for a math matrix (bug 6041).
 
+- Ensure that pasting into the preamble resets the font formatting
+  (bug 3936).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
