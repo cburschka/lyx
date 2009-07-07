@@ -865,8 +865,8 @@ void GuiTabular::updateContents()
 
 	row_set = tabular_.getRowOfLTFirstHead(row, ltt);
 	// check if setting a first header is allowed
-	// additionally check firstheaderStatusCB because when this is the
-	// case a first header makes no sense
+	// additionally check firstheaderNoContentsCB because when this is
+	// the case a first header makes no sense
 	firstheaderStatusCB->setEnabled(
 		funcEnabled(Tabular::SET_LTFIRSTHEAD)
 		&& !firstheaderNoContentsCB->isChecked());
