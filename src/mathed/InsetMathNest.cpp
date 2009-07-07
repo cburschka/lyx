@@ -1862,6 +1862,9 @@ bool InsetMathNest::cursorMathForward(Cursor & cur)
 	if (cur.pos() != cur.lastpos() && cur.openable(cur.nextAtom())) {
 		cur.pushBackward(*cur.nextAtom().nucleus());
 		cur.inset().idxFirst(cur);
+		if (cur.inset().asInsetMath()->asMacro())
+			// editing macros is only possible at lastpos
+			cur.pos() = cur.lastpos();
 		return true;
 	}
 	if (cur.posForward() || idxForward(cur))
@@ -1883,11 +1886,15 @@ bool InsetMathNest::cursorMathBackward(Cursor & cur)
 		cur.inset().idxLast(cur);
 		return true;
 	}
+	MathMacro const * macro = cur.inset().asInsetMath()->asMacro();
+	int s = cur.depth() - 2;
+	if (macro && s >= 0 && cur[s].inset().asInsetMath())
+		// editing macros is only possible at lastpos
+		return cur.popBackward();
 	if (cur.posBackward() || idxBackward(cur))
 		return true;
 	// try to pop backwards --- but don't pop out of math! leave that to
 	// the FINISH lfuns
-	int s = cur.depth() - 2;
 	if (s >= 0 && cur[s].inset().asInsetMath())
 		return cur.popBackward();
 	return false;
