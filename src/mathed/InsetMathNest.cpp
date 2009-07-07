@@ -1569,6 +1569,8 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 		return true;
 	}
 
+	selClearOrDel(cur);
+
 	MathMacro const * macro = cur.inset().asInsetMath()->asMacro();
 	if (macro && macro->displayMode() == MathMacro::DISPLAY_UNFOLDED) {
 		// resume macro_mode
@@ -1579,8 +1581,6 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 		cur.insert(MathAtom(new InsetMathUnknown("\\" + s + c, safe, false)));
 		return true;	
 	}
-
-	selClearOrDel(cur);
 
 	if (c == '\n') {
 		if (currentMode() <= InsetMath::TEXT_MODE)
