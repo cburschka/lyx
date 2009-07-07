@@ -163,6 +163,8 @@ void GuiSpellchecker::on_replacePB_clicked()
 
 	LYXERR(Debug::GUI, "Replace (" << replacement << ")");
 	BufferView * bv = const_cast<BufferView *>(bufferview());
+	if (!bv->cursor().inTexted())
+		return;
 	cap::replaceSelectionWithString(bv->cursor(), replacement, true);
 	bv->buffer().markDirty();
 	// If we used an LFUN, we would not need that
