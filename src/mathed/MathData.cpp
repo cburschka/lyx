@@ -385,6 +385,19 @@ void MathData::updateMacros(Cursor * cur, MacroContext const & mc)
 		if (!macroInset || macroInset->name_[0] == '^'
 				|| macroInset->name_[0] == '_')
 			continue;
+
+		if (macroInset->displayMode() == MathMacro::DISPLAY_UNFOLDED) {
+			docstring const & unfolded_name = macroInset->name();
+			if (unfolded_name != macroInset->name_) {
+				// macro name was changed
+				cur->recordUndoInset();
+				cur->leaveInset(*macroInset);
+				cur->plainErase();
+				cur->insert(MathAtom(new InsetMathUnknown('\\'
+					+ unfolded_name, docstring(), false)));
+				continue;
+			}
+		}
 		
 		// get macro
 		macroInset->updateMacro(mc);
