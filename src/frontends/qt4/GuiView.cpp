@@ -538,8 +538,9 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 	GuiWorkArea * active_wa = currentMainWorkArea();
 	setCurrentWorkArea(active_wa);
 
-	int splitter_count = d.splitter_->count();
-	for (; splitter_count; --splitter_count) {
+	// We have to call count() each time, because it can happen that
+	// more than one splitter will disappear in one iteration (bug 5998).
+	for (; d.splitter_->count(); ) {
 		TabWorkArea * twa = d.tabWorkArea(0);
 				
 		int twa_count = twa->count();
