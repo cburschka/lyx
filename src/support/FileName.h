@@ -204,11 +204,18 @@ private:
 };
 
 
-bool equivalent(FileName const &, FileName const &);
+/// \return true if lhs and rhs represent the same file. E.g.,
+/// they might be hardlinks of one another.
+bool equivalent(FileName const & lhs, FileName const & rhs);
+/// \return true if the absolute path names are the same.
 bool operator==(FileName const &, FileName const &);
+///
 bool operator!=(FileName const &, FileName const &);
+/// Lexically compares the absolute path names.
 bool operator<(FileName const &, FileName const &);
+/// Lexically compares the absolute path names.
 bool operator>(FileName const &, FileName const &);
+/// Writes the absolute path name to the stream.
 std::ostream & operator<<(std::ostream &, FileName const &);
 
 
@@ -281,7 +288,10 @@ private:
 };
 
 
+/// \return true if these have the same absolute path name AND 
+/// if save_abs_path_ has the same value in both cases.
 bool operator==(DocFileName const &, DocFileName const &);
+///
 bool operator!=(DocFileName const &, DocFileName const &);
 
 } // namespace support
