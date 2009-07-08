@@ -1571,17 +1571,6 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 
 	selClearOrDel(cur);
 
-	MathMacro const * macro = cur.inset().asInsetMath()->asMacro();
-	if (macro && macro->displayMode() == MathMacro::DISPLAY_UNFOLDED) {
-		// resume macro_mode
-		docstring const & s = macro->name();
-		cur.leaveInset(*macro);
-		cur.plainErase();
-		docstring safe = grabAndEraseSelection(cur);
-		cur.insert(MathAtom(new InsetMathUnknown("\\" + s + c, safe, false)));
-		return true;	
-	}
-
 	if (c == '\n') {
 		if (currentMode() <= InsetMath::TEXT_MODE)
 			cur.insert(c);
@@ -1862,10 +1851,6 @@ bool InsetMathNest::cursorMathForward(Cursor & cur)
 	if (cur.pos() != cur.lastpos() && cur.openable(cur.nextAtom())) {
 		cur.pushBackward(*cur.nextAtom().nucleus());
 		cur.inset().idxFirst(cur);
-		MathMacro const * macro = cur.inset().asInsetMath()->asMacro();
-		if (macro && macro->displayMode() == MathMacro::DISPLAY_UNFOLDED)
-			// editing macros is only possible at lastpos
-			cur.pos() = cur.lastpos();
 		return true;
 	}
 	if (cur.posForward() || idxForward(cur))
@@ -1887,17 +1872,11 @@ bool InsetMathNest::cursorMathBackward(Cursor & cur)
 		cur.inset().idxLast(cur);
 		return true;
 	}
-	MathMacro const * macro = cur.inset().asInsetMath()->asMacro();
-	int s = cur.depth() - 2;
-	if (macro && macro->displayMode() == MathMacro::DISPLAY_UNFOLDED
-		  && s >= 0 && cur[s].inset().asInsetMath())
-		// editing macros is only possible at lastpos
-		return cur.popBackward();
-
 	if (cur.posBackward() || idxBackward(cur))
 		return true;
 	// try to pop backwards --- but don't pop out of math! leave that to
 	// the FINISH lfuns
+	int s = cur.depth() - 2;
 	if (s >= 0 && cur[s].inset().asInsetMath())
 		return cur.popBackward();
 	return false;
