@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-07-05 18:33+0200\n"
+"POT-Creation-Date: 2009-07-09 18:04+0200\n"
 "PO-Revision-Date: 2009-04-19 17:06+0100\n"
 "Last-Translator: Susana Barbosa <susana.barbosa@fc.up.pt>\n"
 "Language-Team: American English <kde-i18n-doc@lists.kde.org>\n"
@@ -43,7 +43,7 @@ msgstr "Copyright"
 #: src/frontends/qt4/ui/HSpaceUi.ui:174
 #: src/frontends/qt4/ui/HyperlinkUi.ui:153
 #: src/frontends/qt4/ui/IncludeUi.ui:250 src/frontends/qt4/ui/InfoUi.ui:71
-#: src/frontends/qt4/ui/LogUi.ui:54 src/frontends/qt4/ui/ParagraphUi.ui:102
+#: src/frontends/qt4/ui/LogUi.ui:41 src/frontends/qt4/ui/ParagraphUi.ui:102
 #: src/frontends/qt4/ui/PrefsUi.ui:93 src/frontends/qt4/ui/RefUi.ui:103
 #: src/frontends/qt4/ui/SearchUi.ui:207 src/frontends/qt4/ui/ShowFileUi.ui:55
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:28
@@ -697,7 +697,7 @@ msgstr "Procurar citação"
 msgid "F&ind:"
 msgstr "&Procurar:"
 
-#: src/frontends/qt4/ui/CitationUi.ui:79
+#: src/frontends/qt4/ui/CitationUi.ui:79 src/frontends/qt4/ui/LogUi.ui:91
 #, fuzzy
 msgid "Hit Enter to search, or click Go!"
 msgstr "Premir Enter para procurar, ou clicar Go!"
@@ -706,7 +706,7 @@ msgstr "Premir Enter para procurar, ou clicar Go!"
 msgid "You can also hit Enter in the search box"
 msgstr "Pode também premir Enter na caixa de procura"
 
-#: src/frontends/qt4/ui/CitationUi.ui:95
+#: src/frontends/qt4/ui/CitationUi.ui:95 src/frontends/qt4/ui/LogUi.ui:84
 #, fuzzy
 msgid "&Go!"
 msgstr "&Go!"
@@ -1778,18 +1778,40 @@ msgid "Input listing parameters here. Enter ? for a list of parameters."
 msgstr ""
 "Inserir parâmetros de listagem aqui. Premir ? para uma lista de parâmetros."
 
-#: src/frontends/qt4/ui/LogUi.ui:31
-msgid "Copy to Clip&board"
-msgstr "Copiar para o Clip&board"
-
-#: src/frontends/qt4/ui/LogUi.ui:61
+#: src/frontends/qt4/ui/LogUi.ui:28
 msgid "Update the display"
 msgstr "Actualizar a visualização"
 
-#: src/frontends/qt4/ui/LogUi.ui:64 src/frontends/qt4/ui/RefUi.ui:241
+#: src/frontends/qt4/ui/LogUi.ui:31 src/frontends/qt4/ui/RefUi.ui:241
 #: src/frontends/qt4/ui/ViewSourceUi.ui:56
 msgid "&Update"
 msgstr "&Actualizar"
+
+#: src/frontends/qt4/ui/LogUi.ui:64
+msgid "Copy to Clip&board"
+msgstr "Copiar para o Clip&board"
+
+#: src/frontends/qt4/ui/LogUi.ui:98 src/frontends/qt4/ui/SearchUi.ui:28
+msgid "&Find:"
+msgstr "&Procurar: "
+
+#: src/frontends/qt4/ui/LogUi.ui:108
+msgid "Jump to the next warning message."
+msgstr ""
+
+#: src/frontends/qt4/ui/LogUi.ui:111
+#, fuzzy
+msgid "Next &Warning"
+msgstr "Aviso ao Exportar!"
+
+#: src/frontends/qt4/ui/LogUi.ui:118
+msgid "Jump to the next error message."
+msgstr ""
+
+#: src/frontends/qt4/ui/LogUi.ui:121
+#, fuzzy
+msgid "Next &Error"
+msgstr "Erro de Leitura"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:28
 msgid "Use the margin settings provided by the document class"
@@ -3324,10 +3346,6 @@ msgstr "Saltar para a etiqueta"
 #: src/frontends/qt4/ui/RefUi.ui:259 src/frontends/qt4/GuiRef.cpp:284
 msgid "&Go to Label"
 msgstr "&Ir para Etiqueta"
-
-#: src/frontends/qt4/ui/SearchUi.ui:28
-msgid "&Find:"
-msgstr "&Procurar: "
 
 #: src/frontends/qt4/ui/SearchUi.ui:68
 msgid "Replace &with:"
@@ -18481,36 +18499,36 @@ msgstr "Configurações de Listagem de Programa"
 msgid "No dialect"
 msgstr "Sem dialecto"
 
-#: src/frontends/qt4/GuiLog.cpp:103 src/frontends/qt4/GuiLog.cpp:180
+#: src/frontends/qt4/GuiLog.cpp:111 src/frontends/qt4/GuiLog.cpp:226
 msgid "LaTeX Log"
 msgstr "Registo LaTex"
 
-#: src/frontends/qt4/GuiLog.cpp:182
+#: src/frontends/qt4/GuiLog.cpp:228
 msgid "Literate Programming Build Log"
 msgstr "Registo de Compilação de Programação Literal"
 
-#: src/frontends/qt4/GuiLog.cpp:184
+#: src/frontends/qt4/GuiLog.cpp:230
 msgid "lyx2lyx Error Log"
 msgstr "Registo de Erros lyx2lyx"
 
-#: src/frontends/qt4/GuiLog.cpp:186
+#: src/frontends/qt4/GuiLog.cpp:232
 msgid "Version Control Log"
 msgstr "Registo do Controlo de Versão"
 
-#: src/frontends/qt4/GuiLog.cpp:212
+#: src/frontends/qt4/GuiLog.cpp:258
 msgid "No LaTeX log file found."
 msgstr "Ficheiro de registo LaTeX não encontrado."
 
-#: src/frontends/qt4/GuiLog.cpp:215
+#: src/frontends/qt4/GuiLog.cpp:261
 msgid "No literate programming build log file found."
 msgstr ""
 "Ficheiro de registo de Compilação de Programação Literal não encontrado."
 
-#: src/frontends/qt4/GuiLog.cpp:218
+#: src/frontends/qt4/GuiLog.cpp:264
 msgid "No lyx2lyx error log file found."
 msgstr "Ficheiro de registo de erros lyx2lyx não encontrado."
 
-#: src/frontends/qt4/GuiLog.cpp:221
+#: src/frontends/qt4/GuiLog.cpp:267
 msgid "No version control log file found."
 msgstr "Ficheiro de registo do Controlo de Versão não encontrado."
 
@@ -19848,15 +19866,15 @@ msgstr "%1$s, %2$s"
 msgid "Branch: "
 msgstr "Ramo: "
 
-#: src/insets/InsetBranch.cpp:99
+#: src/insets/InsetBranch.cpp:100
 msgid "Branch (child only): "
 msgstr ""
 
-#: src/insets/InsetBranch.cpp:104
+#: src/insets/InsetBranch.cpp:105
 msgid "Undef: "
 msgstr " Indef:"
 
-#: src/insets/InsetBranch.cpp:227
+#: src/insets/InsetBranch.cpp:228
 msgid "branch"
 msgstr "ramo"
 

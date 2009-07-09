@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-07-05 18:33+0200\n"
+"POT-Creation-Date: 2009-07-09 18:04+0200\n"
 "PO-Revision-Date: 2009-04-19 17:10+0100\n"
 "Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -41,7 +41,7 @@ msgstr "著作權"
 #: src/frontends/qt4/ui/HSpaceUi.ui:174
 #: src/frontends/qt4/ui/HyperlinkUi.ui:153
 #: src/frontends/qt4/ui/IncludeUi.ui:250 src/frontends/qt4/ui/InfoUi.ui:71
-#: src/frontends/qt4/ui/LogUi.ui:54 src/frontends/qt4/ui/ParagraphUi.ui:102
+#: src/frontends/qt4/ui/LogUi.ui:41 src/frontends/qt4/ui/ParagraphUi.ui:102
 #: src/frontends/qt4/ui/PrefsUi.ui:93 src/frontends/qt4/ui/RefUi.ui:103
 #: src/frontends/qt4/ui/SearchUi.ui:207 src/frontends/qt4/ui/ShowFileUi.ui:55
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:28
@@ -699,7 +699,7 @@ msgstr "搜尋引用"
 msgid "F&ind:"
 msgstr "尋找(&I)："
 
-#: src/frontends/qt4/ui/CitationUi.ui:79
+#: src/frontends/qt4/ui/CitationUi.ui:79 src/frontends/qt4/ui/LogUi.ui:91
 msgid "Hit Enter to search, or click Go!"
 msgstr ""
 
@@ -707,7 +707,7 @@ msgstr ""
 msgid "You can also hit Enter in the search box"
 msgstr ""
 
-#: src/frontends/qt4/ui/CitationUi.ui:95
+#: src/frontends/qt4/ui/CitationUi.ui:95 src/frontends/qt4/ui/LogUi.ui:84
 msgid "&Go!"
 msgstr ""
 
@@ -1797,18 +1797,40 @@ msgstr "回饋視窗"
 msgid "Input listing parameters here. Enter ? for a list of parameters."
 msgstr "在此輸入列表參數。輸入 ? 以取得參數清單。"
 
-#: src/frontends/qt4/ui/LogUi.ui:31
-msgid "Copy to Clip&board"
-msgstr ""
-
-#: src/frontends/qt4/ui/LogUi.ui:61
+#: src/frontends/qt4/ui/LogUi.ui:28
 msgid "Update the display"
 msgstr "更新顯示"
 
-#: src/frontends/qt4/ui/LogUi.ui:64 src/frontends/qt4/ui/RefUi.ui:241
+#: src/frontends/qt4/ui/LogUi.ui:31 src/frontends/qt4/ui/RefUi.ui:241
 #: src/frontends/qt4/ui/ViewSourceUi.ui:56
 msgid "&Update"
 msgstr "更新(&U)"
+
+#: src/frontends/qt4/ui/LogUi.ui:64
+msgid "Copy to Clip&board"
+msgstr ""
+
+#: src/frontends/qt4/ui/LogUi.ui:98 src/frontends/qt4/ui/SearchUi.ui:28
+msgid "&Find:"
+msgstr "尋找(&F)："
+
+#: src/frontends/qt4/ui/LogUi.ui:108
+msgid "Jump to the next warning message."
+msgstr ""
+
+#: src/frontends/qt4/ui/LogUi.ui:111
+#, fuzzy
+msgid "Next &Warning"
+msgstr "匯出警告！"
+
+#: src/frontends/qt4/ui/LogUi.ui:118
+msgid "Jump to the next error message."
+msgstr ""
+
+#: src/frontends/qt4/ui/LogUi.ui:121
+#, fuzzy
+msgid "Next &Error"
+msgstr "搜尋錯誤"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:28
 msgid "Use the margin settings provided by the document class"
@@ -3355,10 +3377,6 @@ msgstr "跳到標籤"
 #: src/frontends/qt4/ui/RefUi.ui:259 src/frontends/qt4/GuiRef.cpp:284
 msgid "&Go to Label"
 msgstr "前往標籤(&G)"
-
-#: src/frontends/qt4/ui/SearchUi.ui:28
-msgid "&Find:"
-msgstr "尋找(&F)："
 
 #: src/frontends/qt4/ui/SearchUi.ui:68
 msgid "Replace &with:"
@@ -18659,35 +18677,35 @@ msgstr "程式表列設定值"
 msgid "No dialect"
 msgstr "無方言"
 
-#: src/frontends/qt4/GuiLog.cpp:103 src/frontends/qt4/GuiLog.cpp:180
+#: src/frontends/qt4/GuiLog.cpp:111 src/frontends/qt4/GuiLog.cpp:226
 msgid "LaTeX Log"
 msgstr "LaTeX 記錄檔"
 
-#: src/frontends/qt4/GuiLog.cpp:182
+#: src/frontends/qt4/GuiLog.cpp:228
 msgid "Literate Programming Build Log"
 msgstr "讀寫程式設計組建記錄檔"
 
-#: src/frontends/qt4/GuiLog.cpp:184
+#: src/frontends/qt4/GuiLog.cpp:230
 msgid "lyx2lyx Error Log"
 msgstr "lyx2lyx 錯誤記錄"
 
-#: src/frontends/qt4/GuiLog.cpp:186
+#: src/frontends/qt4/GuiLog.cpp:232
 msgid "Version Control Log"
 msgstr "版本控制記錄檔"
 
-#: src/frontends/qt4/GuiLog.cpp:212
+#: src/frontends/qt4/GuiLog.cpp:258
 msgid "No LaTeX log file found."
 msgstr "找不到 LaTeX 記錄檔。"
 
-#: src/frontends/qt4/GuiLog.cpp:215
+#: src/frontends/qt4/GuiLog.cpp:261
 msgid "No literate programming build log file found."
 msgstr "找不到讀寫程式設計組建記錄檔。"
 
-#: src/frontends/qt4/GuiLog.cpp:218
+#: src/frontends/qt4/GuiLog.cpp:264
 msgid "No lyx2lyx error log file found."
 msgstr "找不到 lyx2lyx 錯誤記錄檔案。"
 
-#: src/frontends/qt4/GuiLog.cpp:221
+#: src/frontends/qt4/GuiLog.cpp:267
 msgid "No version control log file found."
 msgstr "找不到版本控制記錄檔。"
 
@@ -20112,15 +20130,15 @@ msgstr "%1$s 和 %2$s"
 msgid "Branch: "
 msgstr "分支："
 
-#: src/insets/InsetBranch.cpp:99
+#: src/insets/InsetBranch.cpp:100
 msgid "Branch (child only): "
 msgstr ""
 
-#: src/insets/InsetBranch.cpp:104
+#: src/insets/InsetBranch.cpp:105
 msgid "Undef: "
 msgstr "未定義："
 
-#: src/insets/InsetBranch.cpp:227
+#: src/insets/InsetBranch.cpp:228
 msgid "branch"
 msgstr "分支"
 

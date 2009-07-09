@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-07-05 18:33+0200\n"
+"POT-Creation-Date: 2009-07-09 18:04+0200\n"
 "PO-Revision-Date: 2009-05-26 21:42+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-doc@lists.lyx.org>\n"
@@ -42,7 +42,7 @@ msgstr "著作権"
 #: src/frontends/qt4/ui/HSpaceUi.ui:174
 #: src/frontends/qt4/ui/HyperlinkUi.ui:153
 #: src/frontends/qt4/ui/IncludeUi.ui:250 src/frontends/qt4/ui/InfoUi.ui:71
-#: src/frontends/qt4/ui/LogUi.ui:54 src/frontends/qt4/ui/ParagraphUi.ui:102
+#: src/frontends/qt4/ui/LogUi.ui:41 src/frontends/qt4/ui/ParagraphUi.ui:102
 #: src/frontends/qt4/ui/PrefsUi.ui:93 src/frontends/qt4/ui/RefUi.ui:103
 #: src/frontends/qt4/ui/SearchUi.ui:207 src/frontends/qt4/ui/ShowFileUi.ui:55
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:28
@@ -696,7 +696,7 @@ msgstr "検索引用"
 msgid "F&ind:"
 msgstr "検索(&I):"
 
-#: src/frontends/qt4/ui/CitationUi.ui:79
+#: src/frontends/qt4/ui/CitationUi.ui:79 src/frontends/qt4/ui/LogUi.ui:91
 msgid "Hit Enter to search, or click Go!"
 msgstr "検索するにはEnterを打鍵するか、開始！をクリックしてください。"
 
@@ -704,7 +704,7 @@ msgstr "検索するにはEnterを打鍵するか、開始！をクリックし�
 msgid "You can also hit Enter in the search box"
 msgstr "検索ボックスの中でEnterを打鍵することもできます。"
 
-#: src/frontends/qt4/ui/CitationUi.ui:95
+#: src/frontends/qt4/ui/CitationUi.ui:95 src/frontends/qt4/ui/LogUi.ui:84
 msgid "&Go!"
 msgstr "開始！(&G)"
 
@@ -1764,18 +1764,40 @@ msgstr ""
 "リストのパラメーターを右側に入力してください。パラメーターの一覧を表示するに"
 "は？を入力してください。"
 
-#: src/frontends/qt4/ui/LogUi.ui:31
-msgid "Copy to Clip&board"
-msgstr "クリップボードへコピー(&B)"
-
-#: src/frontends/qt4/ui/LogUi.ui:61
+#: src/frontends/qt4/ui/LogUi.ui:28
 msgid "Update the display"
 msgstr "表示を更新"
 
-#: src/frontends/qt4/ui/LogUi.ui:64 src/frontends/qt4/ui/RefUi.ui:241
+#: src/frontends/qt4/ui/LogUi.ui:31 src/frontends/qt4/ui/RefUi.ui:241
 #: src/frontends/qt4/ui/ViewSourceUi.ui:56
 msgid "&Update"
 msgstr "更新(&U)"
+
+#: src/frontends/qt4/ui/LogUi.ui:64
+msgid "Copy to Clip&board"
+msgstr "クリップボードへコピー(&B)"
+
+#: src/frontends/qt4/ui/LogUi.ui:98 src/frontends/qt4/ui/SearchUi.ui:28
+msgid "&Find:"
+msgstr "検索対象(&F):"
+
+#: src/frontends/qt4/ui/LogUi.ui:108
+msgid "Jump to the next warning message."
+msgstr ""
+
+#: src/frontends/qt4/ui/LogUi.ui:111
+#, fuzzy
+msgid "Next &Warning"
+msgstr "エクスポートに関する警告！"
+
+#: src/frontends/qt4/ui/LogUi.ui:118
+msgid "Jump to the next error message."
+msgstr ""
+
+#: src/frontends/qt4/ui/LogUi.ui:121
+#, fuzzy
+msgid "Next &Error"
+msgstr "読み込みエラー"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:28
 msgid "Use the margin settings provided by the document class"
@@ -3246,10 +3268,6 @@ msgstr "ラベルに飛ぶ"
 #: src/frontends/qt4/ui/RefUi.ui:259 src/frontends/qt4/GuiRef.cpp:284
 msgid "&Go to Label"
 msgstr "ラベルに移動(&G)"
-
-#: src/frontends/qt4/ui/SearchUi.ui:28
-msgid "&Find:"
-msgstr "検索対象(&F):"
 
 #: src/frontends/qt4/ui/SearchUi.ui:68
 msgid "Replace &with:"
@@ -18196,35 +18214,35 @@ msgstr "プログラムリストの設定"
 msgid "No dialect"
 msgstr "方言指定なし"
 
-#: src/frontends/qt4/GuiLog.cpp:103 src/frontends/qt4/GuiLog.cpp:180
+#: src/frontends/qt4/GuiLog.cpp:111 src/frontends/qt4/GuiLog.cpp:226
 msgid "LaTeX Log"
 msgstr "LaTeXログ"
 
-#: src/frontends/qt4/GuiLog.cpp:182
+#: src/frontends/qt4/GuiLog.cpp:228
 msgid "Literate Programming Build Log"
 msgstr "文芸的プログラミングビルドログ"
 
-#: src/frontends/qt4/GuiLog.cpp:184
+#: src/frontends/qt4/GuiLog.cpp:230
 msgid "lyx2lyx Error Log"
 msgstr "lyx2lyxエラーログ"
 
-#: src/frontends/qt4/GuiLog.cpp:186
+#: src/frontends/qt4/GuiLog.cpp:232
 msgid "Version Control Log"
 msgstr "バージョン管理ログ"
 
-#: src/frontends/qt4/GuiLog.cpp:212
+#: src/frontends/qt4/GuiLog.cpp:258
 msgid "No LaTeX log file found."
 msgstr "LaTeXログファイルが見つかりません。"
 
-#: src/frontends/qt4/GuiLog.cpp:215
+#: src/frontends/qt4/GuiLog.cpp:261
 msgid "No literate programming build log file found."
 msgstr "文芸的プログラミングビルドログが見つかりません。"
 
-#: src/frontends/qt4/GuiLog.cpp:218
+#: src/frontends/qt4/GuiLog.cpp:264
 msgid "No lyx2lyx error log file found."
 msgstr "lyx2lyxエラーログファイルが見つかりません。"
 
-#: src/frontends/qt4/GuiLog.cpp:221
+#: src/frontends/qt4/GuiLog.cpp:267
 msgid "No version control log file found."
 msgstr "バージョン管理ログファイルが見つかりません。"
 
@@ -19553,15 +19571,15 @@ msgstr "派生枝(%1$s): %2$s"
 msgid "Branch: "
 msgstr "派生枝: "
 
-#: src/insets/InsetBranch.cpp:99
+#: src/insets/InsetBranch.cpp:100
 msgid "Branch (child only): "
 msgstr "派生枝（従属分のみ）:"
 
-#: src/insets/InsetBranch.cpp:104
+#: src/insets/InsetBranch.cpp:105
 msgid "Undef: "
 msgstr "未定義："
 
-#: src/insets/InsetBranch.cpp:227
+#: src/insets/InsetBranch.cpp:228
 msgid "branch"
 msgstr "派生枝"
 

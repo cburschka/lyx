@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-07-05 18:33+0200\n"
+"POT-Creation-Date: 2009-07-09 18:04+0200\n"
 "PO-Revision-Date: 2009-07-08 12:38+0200\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
 "Language-Team: Slowakisch <kde-i18n-doc@kde.org>\n"
@@ -42,7 +42,7 @@ msgstr "Autorské práva"
 #: src/frontends/qt4/ui/HSpaceUi.ui:174
 #: src/frontends/qt4/ui/HyperlinkUi.ui:153
 #: src/frontends/qt4/ui/IncludeUi.ui:250 src/frontends/qt4/ui/InfoUi.ui:71
-#: src/frontends/qt4/ui/LogUi.ui:54 src/frontends/qt4/ui/ParagraphUi.ui:102
+#: src/frontends/qt4/ui/LogUi.ui:41 src/frontends/qt4/ui/ParagraphUi.ui:102
 #: src/frontends/qt4/ui/PrefsUi.ui:93 src/frontends/qt4/ui/RefUi.ui:103
 #: src/frontends/qt4/ui/SearchUi.ui:207 src/frontends/qt4/ui/ShowFileUi.ui:55
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:28
@@ -696,7 +696,7 @@ msgstr "Hľadať citáciu"
 msgid "F&ind:"
 msgstr "&Nájsť:"
 
-#: src/frontends/qt4/ui/CitationUi.ui:79
+#: src/frontends/qt4/ui/CitationUi.ui:79 src/frontends/qt4/ui/LogUi.ui:91
 msgid "Hit Enter to search, or click Go!"
 msgstr "Stlačte Enter alebo kliknite na \"Hľadaj!\""
 
@@ -704,7 +704,7 @@ msgstr "Stlačte Enter alebo kliknite na \"Hľadaj!\""
 msgid "You can also hit Enter in the search box"
 msgstr "Vo vyhľadávacom poli môžete použiť aj Enter"
 
-#: src/frontends/qt4/ui/CitationUi.ui:95
+#: src/frontends/qt4/ui/CitationUi.ui:95 src/frontends/qt4/ui/LogUi.ui:84
 msgid "&Go!"
 msgstr "&Hľadaj!"
 
@@ -1768,18 +1768,40 @@ msgid "Input listing parameters here. Enter ? for a list of parameters."
 msgstr ""
 "Tu vkladajte ďalšie parametri výpisu. Pre prehľad parametrov vložte znak '?'"
 
-#: src/frontends/qt4/ui/LogUi.ui:31
-msgid "Copy to Clip&board"
-msgstr "&Kopíruj do schránky"
-
-#: src/frontends/qt4/ui/LogUi.ui:61
+#: src/frontends/qt4/ui/LogUi.ui:28
 msgid "Update the display"
 msgstr "Aktualizovať zobrazenie"
 
-#: src/frontends/qt4/ui/LogUi.ui:64 src/frontends/qt4/ui/RefUi.ui:241
+#: src/frontends/qt4/ui/LogUi.ui:31 src/frontends/qt4/ui/RefUi.ui:241
 #: src/frontends/qt4/ui/ViewSourceUi.ui:56
 msgid "&Update"
 msgstr "&Aktualizovať"
+
+#: src/frontends/qt4/ui/LogUi.ui:64
+msgid "Copy to Clip&board"
+msgstr "&Kopíruj do schránky"
+
+#: src/frontends/qt4/ui/LogUi.ui:98 src/frontends/qt4/ui/SearchUi.ui:28
+msgid "&Find:"
+msgstr "Nájsť:"
+
+#: src/frontends/qt4/ui/LogUi.ui:108
+msgid "Jump to the next warning message."
+msgstr ""
+
+#: src/frontends/qt4/ui/LogUi.ui:111
+#, fuzzy
+msgid "Next &Warning"
+msgstr "Export-Varovanie!"
+
+#: src/frontends/qt4/ui/LogUi.ui:118
+msgid "Jump to the next error message."
+msgstr ""
+
+#: src/frontends/qt4/ui/LogUi.ui:121
+#, fuzzy
+msgid "Next &Error"
+msgstr "Chyba pri čítaní"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:28
 msgid "Use the margin settings provided by the document class"
@@ -3253,10 +3275,6 @@ msgstr "Skok na návestie"
 #: src/frontends/qt4/ui/RefUi.ui:259 src/frontends/qt4/GuiRef.cpp:284
 msgid "&Go to Label"
 msgstr "&Prejsť na návestie"
-
-#: src/frontends/qt4/ui/SearchUi.ui:28
-msgid "&Find:"
-msgstr "Nájsť:"
 
 #: src/frontends/qt4/ui/SearchUi.ui:68
 msgid "Replace &with:"
@@ -18135,37 +18153,37 @@ msgstr "Nastavenia tlačiarne pre programové zdroje"
 msgid "No dialect"
 msgstr "Žiadny dialekt"
 
-#: src/frontends/qt4/GuiLog.cpp:103 src/frontends/qt4/GuiLog.cpp:180
+#: src/frontends/qt4/GuiLog.cpp:111 src/frontends/qt4/GuiLog.cpp:226
 msgid "LaTeX Log"
 msgstr "LaTeX Protokol"
 
-#: src/frontends/qt4/GuiLog.cpp:182
+#: src/frontends/qt4/GuiLog.cpp:228
 msgid "Literate Programming Build Log"
 msgstr "Protokol zostavovania pre \"Literate Programming\""
 
-#: src/frontends/qt4/GuiLog.cpp:184
+#: src/frontends/qt4/GuiLog.cpp:230
 msgid "lyx2lyx Error Log"
 msgstr "Protokol chýb lyx2lyx"
 
-#: src/frontends/qt4/GuiLog.cpp:186
+#: src/frontends/qt4/GuiLog.cpp:232
 msgid "Version Control Log"
 msgstr "Protokol Kontroly Verzií"
 
-#: src/frontends/qt4/GuiLog.cpp:212
+#: src/frontends/qt4/GuiLog.cpp:258
 msgid "No LaTeX log file found."
 msgstr "Protokolový súbor LaTeXu nebol nájdený"
 
-#: src/frontends/qt4/GuiLog.cpp:215
+#: src/frontends/qt4/GuiLog.cpp:261
 msgid "No literate programming build log file found."
 msgstr ""
 "Žiadny protokolový súbor zostavovania pre \"Literate Programming\" sa "
 "nenašiel."
 
-#: src/frontends/qt4/GuiLog.cpp:218
+#: src/frontends/qt4/GuiLog.cpp:264
 msgid "No lyx2lyx error log file found."
 msgstr "Žiadny protokolový súbor chýb lyx2lyx sa nenašiel."
 
-#: src/frontends/qt4/GuiLog.cpp:221
+#: src/frontends/qt4/GuiLog.cpp:267
 msgid "No version control log file found."
 msgstr "Protokolový súbor kontroly verzií nenájdený."
 
@@ -19493,15 +19511,15 @@ msgstr "Vetva (%1$s): %2$s"
 msgid "Branch: "
 msgstr "Vetva: "
 
-#: src/insets/InsetBranch.cpp:99
+#: src/insets/InsetBranch.cpp:100
 msgid "Branch (child only): "
 msgstr "Vetva (len potomok): "
 
-#: src/insets/InsetBranch.cpp:104
+#: src/insets/InsetBranch.cpp:105
 msgid "Undef: "
 msgstr "Undef: "
 
-#: src/insets/InsetBranch.cpp:227
+#: src/insets/InsetBranch.cpp:228
 msgid "branch"
 msgstr "vetva"
 

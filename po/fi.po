@@ -69,7 +69,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-07-05 18:33+0200\n"
+"POT-Creation-Date: 2009-07-09 18:04+0200\n"
 "PO-Revision-Date: 2009-04-19 17:14+0100\n"
 "Last-Translator: Martin Vermeer <martin.vermeer@tkk.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -102,7 +102,7 @@ msgstr "Copyright"
 #: src/frontends/qt4/ui/HSpaceUi.ui:174
 #: src/frontends/qt4/ui/HyperlinkUi.ui:153
 #: src/frontends/qt4/ui/IncludeUi.ui:250 src/frontends/qt4/ui/InfoUi.ui:71
-#: src/frontends/qt4/ui/LogUi.ui:54 src/frontends/qt4/ui/ParagraphUi.ui:102
+#: src/frontends/qt4/ui/LogUi.ui:41 src/frontends/qt4/ui/ParagraphUi.ui:102
 #: src/frontends/qt4/ui/PrefsUi.ui:93 src/frontends/qt4/ui/RefUi.ui:103
 #: src/frontends/qt4/ui/SearchUi.ui:207 src/frontends/qt4/ui/ShowFileUi.ui:55
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:28
@@ -760,7 +760,7 @@ msgstr "Etsi lähdeviite"
 msgid "F&ind:"
 msgstr "&Etsi:"
 
-#: src/frontends/qt4/ui/CitationUi.ui:79
+#: src/frontends/qt4/ui/CitationUi.ui:79 src/frontends/qt4/ui/LogUi.ui:91
 msgid "Hit Enter to search, or click Go!"
 msgstr ""
 
@@ -768,7 +768,7 @@ msgstr ""
 msgid "You can also hit Enter in the search box"
 msgstr ""
 
-#: src/frontends/qt4/ui/CitationUi.ui:95
+#: src/frontends/qt4/ui/CitationUi.ui:95 src/frontends/qt4/ui/LogUi.ui:84
 msgid "&Go!"
 msgstr ""
 
@@ -1858,18 +1858,40 @@ msgstr "Palauteikkuna"
 msgid "Input listing parameters here. Enter ? for a list of parameters."
 msgstr "Syötä listauksen parametrit. Syötä ? jos haluat niiden lista."
 
-#: src/frontends/qt4/ui/LogUi.ui:31
-msgid "Copy to Clip&board"
-msgstr ""
-
-#: src/frontends/qt4/ui/LogUi.ui:61
+#: src/frontends/qt4/ui/LogUi.ui:28
 msgid "Update the display"
 msgstr "Päivitä näyttö"
 
-#: src/frontends/qt4/ui/LogUi.ui:64 src/frontends/qt4/ui/RefUi.ui:241
+#: src/frontends/qt4/ui/LogUi.ui:31 src/frontends/qt4/ui/RefUi.ui:241
 #: src/frontends/qt4/ui/ViewSourceUi.ui:56
 msgid "&Update"
 msgstr "Päi&vitä"
+
+#: src/frontends/qt4/ui/LogUi.ui:64
+msgid "Copy to Clip&board"
+msgstr ""
+
+#: src/frontends/qt4/ui/LogUi.ui:98 src/frontends/qt4/ui/SearchUi.ui:28
+msgid "&Find:"
+msgstr "&Etsi:"
+
+#: src/frontends/qt4/ui/LogUi.ui:108
+msgid "Jump to the next warning message."
+msgstr ""
+
+#: src/frontends/qt4/ui/LogUi.ui:111
+#, fuzzy
+msgid "Next &Warning"
+msgstr "Vientivaroitus!"
+
+#: src/frontends/qt4/ui/LogUi.ui:118
+msgid "Jump to the next error message."
+msgstr ""
+
+#: src/frontends/qt4/ui/LogUi.ui:121
+#, fuzzy
+msgid "Next &Error"
+msgstr "Etsintävirhe"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:28
 msgid "Use the margin settings provided by the document class"
@@ -3423,10 +3445,6 @@ msgstr "Siirry nimikkeeseen"
 #: src/frontends/qt4/ui/RefUi.ui:259 src/frontends/qt4/GuiRef.cpp:284
 msgid "&Go to Label"
 msgstr "Siirry nimikkeeseen"
-
-#: src/frontends/qt4/ui/SearchUi.ui:28
-msgid "&Find:"
-msgstr "&Etsi:"
 
 #: src/frontends/qt4/ui/SearchUi.ui:68
 msgid "Replace &with:"
@@ -18802,38 +18820,38 @@ msgstr "Ohjelmalistausasetukset"
 msgid "No dialect"
 msgstr "Ei murretta"
 
-#: src/frontends/qt4/GuiLog.cpp:103 src/frontends/qt4/GuiLog.cpp:180
+#: src/frontends/qt4/GuiLog.cpp:111 src/frontends/qt4/GuiLog.cpp:226
 msgid "LaTeX Log"
 msgstr "LaTeX-lokitiedosto"
 
-#: src/frontends/qt4/GuiLog.cpp:182
+#: src/frontends/qt4/GuiLog.cpp:228
 #, fuzzy
 msgid "Literate Programming Build Log"
 msgstr "LyX: Literate-ohjelmoinnin käännösloki"
 
-#: src/frontends/qt4/GuiLog.cpp:184
+#: src/frontends/qt4/GuiLog.cpp:230
 #, fuzzy
 msgid "lyx2lyx Error Log"
 msgstr "lyx2lyx -käännöslokitiedostoa ei ole."
 
-#: src/frontends/qt4/GuiLog.cpp:186
+#: src/frontends/qt4/GuiLog.cpp:232
 msgid "Version Control Log"
 msgstr "Versiohallintaloki"
 
-#: src/frontends/qt4/GuiLog.cpp:212
+#: src/frontends/qt4/GuiLog.cpp:258
 msgid "No LaTeX log file found."
 msgstr "LaTeXin lokitiedostoa ei ole."
 
-#: src/frontends/qt4/GuiLog.cpp:215
+#: src/frontends/qt4/GuiLog.cpp:261
 #, fuzzy
 msgid "No literate programming build log file found."
 msgstr "Literate-ohjelmoinnin käännöslokitiedostoa ei löydy."
 
-#: src/frontends/qt4/GuiLog.cpp:218
+#: src/frontends/qt4/GuiLog.cpp:264
 msgid "No lyx2lyx error log file found."
 msgstr "lyx2lyx -käännöslokitiedostoa ei ole."
 
-#: src/frontends/qt4/GuiLog.cpp:221
+#: src/frontends/qt4/GuiLog.cpp:267
 msgid "No version control log file found."
 msgstr "Versionhallintalokitiedostoa ei löytynyt"
 
@@ -20254,15 +20272,15 @@ msgstr "%1$s, %2$s"
 msgid "Branch: "
 msgstr "Haara: "
 
-#: src/insets/InsetBranch.cpp:99
+#: src/insets/InsetBranch.cpp:100
 msgid "Branch (child only): "
 msgstr ""
 
-#: src/insets/InsetBranch.cpp:104
+#: src/insets/InsetBranch.cpp:105
 msgid "Undef: "
 msgstr "Ei määr.:"
 
-#: src/insets/InsetBranch.cpp:227
+#: src/insets/InsetBranch.cpp:228
 msgid "branch"
 msgstr "haara"
 
