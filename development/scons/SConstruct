@@ -743,7 +743,7 @@ utils.createConfigFile(conf,
         #('newapis.h', 'HAVE_NEWAPIS_H', 'c'),
     ],
     custom_tests = [
-        (env.has_key('assertions') and env['assertions'] and devel_version,
+        (env.has_key('assertions') and env['assertions'] and mode == 'debug',
             'ENABLE_ASSERTIONS',
             'Define if you want assertions to be enabled in the code'
         ),
