@@ -5,7 +5,7 @@
  *
  * \author John Levon
  * \author Angus Leeming
- * \author JÃ¼rgen SpitzmÃ¼ller
+ * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -39,7 +39,7 @@ namespace frontend {
 // Information
 QRegExp exprInfo("^(Document Class:|LaTeX Font Info:|File:|Package:|Language:|Underfull|Overfull|\\(|\\\\).*$");
 // Warnings
-QRegExp exprWarning("^LaTeX Warning.*$");
+QRegExp exprWarning("^(LaTeX Warning|Package \\w+ Warning).*$");
 // Errors
 QRegExp exprError("^!.*$");
 
