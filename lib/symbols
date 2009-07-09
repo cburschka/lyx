@@ -764,6 +764,13 @@ logof              wasy          22    0  mathrel x
 varint             wasy         114    0  mathop  x
 varoint            wasy         117    0  mathop  x
 
+# symbols from the mhchem package, all of them are equivalent to a math symbol
+# mhchem is not loaded because these commands can only be used inside
+# a \ce or a \cf inset
+
+sbond              cmsy        161   0 mathord  x
+dbond              cmr          61   0 mathord  x
+tbond              cmsy        180 186 mathord  x
 
 # From the esint package:
 # We emulate some symbols if the esint10 font is not available.
