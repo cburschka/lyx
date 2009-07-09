@@ -898,6 +898,7 @@ src_frontends_qt4_ui_files = Split('''
     BoxUi.ui
     BranchUi.ui
     BranchesUi.ui
+    BranchesUnknownUi.ui
     BulletsUi.ui
     ChangesUi.ui
     CharacterUi.ui

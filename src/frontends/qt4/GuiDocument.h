@@ -215,6 +215,8 @@ private:
 	///
 	void loadModuleInfo();
 	///
+	void updateUnknownBranches();
+	///
 	BufferParams bp_;
 	/// List of names of available modules
 	std::list<modInfoStruct> moduleNames_;

@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>BranchesUi</class>
  <widget class="QWidget" name="BranchesUi" >
   <property name="geometry" >
@@ -9,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>401</width>
-    <height>300</height>
+    <height>327</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -22,10 +19,17 @@
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="0" column="1" >
-    <widget class="QLineEdit" name="newBranchLE" />
+   <item row="7" column="2" colspan="2" >
+    <widget class="QPushButton" name="unknownPB" >
+     <property name="toolTip" >
+      <string>Show undefined branches used in this document.</string>
+     </property>
+     <property name="text" >
+      <string>&amp;Undefined Branches</string>
+     </property>
+    </widget>
    </item>
-   <item row="5" column="2" >
+   <item row="4" column="3" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Vertical</enum>
@@ -41,17 +45,20 @@
      </property>
     </spacer>
    </item>
-   <item row="0" column="2" >
-    <widget class="QPushButton" name="addBranchPB" >
-     <property name="toolTip" >
-      <string>Add a new branch to the list</string>
+   <item row="7" column="0" colspan="2" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
      </property>
-     <property name="text" >
-      <string>&amp;Add</string>
+     <property name="sizeHint" >
+      <size>
+       <width>251</width>
+       <height>20</height>
+      </size>
      </property>
-    </widget>
+    </spacer>
    </item>
-   <item row="1" column="0" colspan="2" >
+   <item row="1" column="0" colspan="3" >
     <widget class="QLabel" name="availableLB" >
      <property name="text" >
       <string>A&amp;vailable Branches:</string>
@@ -60,6 +67,39 @@
       <cstring>branchesTW</cstring>
      </property>
     </widget>
+   </item>
+   <item row="2" column="3" >
+    <widget class="QPushButton" name="removePB" >
+     <property name="toolTip" >
+      <string>Remove the selected branch</string>
+     </property>
+     <property name="text" >
+      <string>&amp;Remove</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="3" >
+    <widget class="QPushButton" name="activatePB" >
+     <property name="toolTip" >
+      <string>Toggle the selected branch</string>
+     </property>
+     <property name="text" >
+      <string>(&amp;De)activate</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="3" >
+    <widget class="QPushButton" name="colorPB" >
+     <property name="toolTip" >
+      <string>Define or change background color</string>
+     </property>
+     <property name="text" >
+      <string>Alter Co&amp;lor...</string>
+     </property>
+    </widget>
+   </item>
+   <item rowspan="5" row="2" column="0" colspan="3" >
+    <widget class="QTreeWidget" name="branchesTW" />
    </item>
    <item row="0" column="0" >
     <widget class="QLabel" name="newBranchLA" >
@@ -71,42 +111,21 @@
      </property>
     </widget>
    </item>
-   <item rowspan="4" row="2" column="0" colspan="2" >
-    <widget class="QTreeWidget" name="branchesTW" />
-   </item>
-   <item row="2" column="2" >
-    <widget class="QPushButton" name="removePB" >
+   <item row="0" column="3" >
+    <widget class="QPushButton" name="addBranchPB" >
      <property name="toolTip" >
-      <string>Remove the selected branch</string>
+      <string>Add a new branch to the list</string>
      </property>
      <property name="text" >
-      <string>&amp;Remove</string>
+      <string>&amp;Add</string>
      </property>
     </widget>
    </item>
-   <item row="5" column="2" >
-    <widget class="QPushButton" name="activatePB" >
-     <property name="toolTip" >
-      <string>Toggle the selected branch</string>
-     </property>
-     <property name="text" >
-      <string>(&amp;De)activate</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="2" >
-    <widget class="QPushButton" name="colorPB" >
-     <property name="toolTip" >
-      <string>Define or change background color</string>
-     </property>
-     <property name="text" >
-      <string>Alter Co&amp;lor...</string>
-     </property>
-    </widget>
+   <item row="0" column="1" colspan="2" >
+    <widget class="QLineEdit" name="newBranchLE" />
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
  <includes>
   <include location="local" >qt_i18n.h</include>
  </includes>

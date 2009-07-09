@@ -15,6 +15,7 @@
 
 #include "CutAndPaste.h"
 
+#include "BranchList.h"
 #include "Buffer.h"
 #include "buffer_funcs.h"
 #include "BufferList.h"
@@ -37,8 +38,9 @@
 #include "ParIterator.h"
 #include "Undo.h"
 
-#include "insets/InsetFlex.h"
+#include "insets/InsetBranch.h"
 #include "insets/InsetCommand.h"
+#include "insets/InsetFlex.h"
 #include "insets/InsetGraphics.h"
 #include "insets/InsetGraphicsParams.h"
 #include "insets/InsetInclude.h"
@@ -54,6 +56,7 @@
 #include "support/limited_stack.h"
 #include "support/lstrings.h"
 
+#include "frontends/alert.h"
 #include "frontends/Clipboard.h"
 #include "frontends/Selection.h"
 
@@ -268,6 +271,31 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 					}
 				}
 			}
+			break;
+		}
+
+		case BRANCH_CODE: {
+			// check if branch is known to target buffer
+			// or its master
+			InsetBranch & br = static_cast<InsetBranch &>(*it);
+			docstring const name = br.branch();
+			if (name.empty())
+				break;
+			bool const is_child = (&buffer != buffer.masterBuffer());
+			BranchList branchlist = buffer.params().branchlist();
+			if ((!is_child && branchlist.find(name))
+			    || (is_child && (branchlist.find(name)
+			        || buffer.masterBuffer()->params().branchlist().find(name))))
+				break;
+			// FIXME: add an option to add the branch to the master's BranchList.
+			docstring text = bformat(
+					_("The pasted branch \"%1$s\" is undefined.\n"
+					  "Do you want to add it to the document's branch list?"),
+					name);
+			if (frontend::Alert::prompt(_("Unknown branch"),
+					  text, 0, 1, _("&Add"), _("&Don't Add")) != 0)
+				break;
+			lyx::dispatch(FuncRequest(LFUN_BRANCH_ADD, name));
 			break;
 		}
 

@@ -1,15 +1,12 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>DocumentUi</class>
  <widget class="QDialog" name="DocumentUi" >
   <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>422</width>
-    <height>124</height>
+    <width>436</width>
+    <height>175</height>
    </rect>
   </property>
   <property name="sizePolicy" >
@@ -26,17 +23,117 @@
   <property name="sizeGripEnabled" >
    <bool>true</bool>
   </property>
-  <layout class="QVBoxLayout" >
+  <layout class="QGridLayout" >
    <property name="margin" >
-    <number>11</number>
+    <number>9</number>
    </property>
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item>
-    <widget class="lyx::frontend::PanelStack" name="docPS" />
+   <item row="0" column="0" >
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QRadioButton" name="childRB" >
+       <property name="toolTip" >
+        <string>Click to edit the settings of the child document</string>
+       </property>
+       <property name="text" >
+        <string>Child Settings</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="masterRB" >
+       <property name="toolTip" >
+        <string>Click to edit the settings of the Master document</string>
+       </property>
+       <property name="text" >
+        <string>Master Settings</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>181</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
    </item>
-   <item>
+   <item row="3" column="0" >
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QPushButton" name="restorePB" >
+       <property name="text" >
+        <string>&amp;Restore</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="okPB" >
+       <property name="text" >
+        <string>&amp;OK</string>
+       </property>
+       <property name="default" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="applyPB" >
+       <property name="text" >
+        <string>&amp;Apply</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="closePB" >
+       <property name="text" >
+        <string>&amp;Cancel</string>
+       </property>
+       <property name="autoDefault" >
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="0" >
     <layout class="QHBoxLayout" >
      <property name="margin" >
       <number>0</number>
@@ -98,81 +195,22 @@
      </item>
     </layout>
    </item>
-   <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <widget class="QPushButton" name="restorePB" >
-       <property name="text" >
-        <string>&amp;Restore</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType" >
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" >
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="okPB" >
-       <property name="text" >
-        <string>&amp;OK</string>
-       </property>
-       <property name="default" >
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="applyPB" >
-       <property name="text" >
-        <string>&amp;Apply</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="closePB" >
-       <property name="text" >
-        <string>&amp;Cancel</string>
-       </property>
-       <property name="autoDefault" >
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-    </layout>
+   <item row="1" column="0" >
+    <widget class="lyx::frontend::PanelStack" native="1" name="docPS" />
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
- <includes>
-  <include location="local" >qt_i18n.h</include>
- </includes>
  <customwidgets>
   <customwidget>
    <class>lyx::frontend::PanelStack</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>PanelStack.h</header>
    <container>1</container>
-   <pixmap></pixmap>
   </customwidget>
  </customwidgets>
+ <includes>
+  <include location="local" >qt_i18n.h</include>
+ </includes>
  <resources/>
  <connections/>
 </ui>

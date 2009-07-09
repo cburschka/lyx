@@ -1,0 +1,92 @@
+<ui version="4.0" >
+ <class>BranchesUnknownUi</class>
+ <widget class="QWidget" name="BranchesUnknownUi" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>401</width>
+    <height>234</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string/>
+  </property>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>9</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item row="1" column="1" >
+    <widget class="QPushButton" name="addSelectedPB" >
+     <property name="toolTip" >
+      <string>Add the selected branches to the list.</string>
+     </property>
+     <property name="text" >
+      <string>&amp;Add Selected</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1" >
+    <widget class="QPushButton" name="addAllPB" >
+     <property name="toolTip" >
+      <string>Add all unknown branches to the list.</string>
+     </property>
+     <property name="text" >
+      <string>Add A&amp;ll</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>81</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="4" column="1" >
+    <widget class="QPushButton" name="cancelPB" >
+     <property name="text" >
+      <string>&amp;Cancel</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" >
+    <widget class="QLabel" name="branchesLA" >
+     <property name="toolTip" >
+      <string>Undefined branches used in this document.</string>
+     </property>
+     <property name="text" >
+      <string>&amp;Undefined Branches:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>branchesLW</cstring>
+     </property>
+    </widget>
+   </item>
+   <item rowspan="4" row="1" column="0" >
+    <widget class="QListWidget" name="branchesLW" >
+     <property name="toolTip" >
+      <string>Undefined branches used in this document.</string>
+     </property>
+     <property name="selectionMode" >
+      <enum>QAbstractItemView::MultiSelection</enum>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <includes>
+  <include location="local" >qt_i18n.h</include>
+ </includes>
+ <resources/>
+ <connections/>
+</ui>

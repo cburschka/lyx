@@ -18,10 +18,14 @@
 #include "Validator.h"
 #include "qt_helpers.h"
 
+#include "ui_BranchesUnknownUi.h"
+
+#include "Buffer.h"
 #include "BufferParams.h"
 
 #include "support/lstrings.h"
 
+#include <QListWidget>
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
 #include <QPixmap>
@@ -43,6 +47,23 @@ GuiBranches::GuiBranches(QWidget * parent)
 	branchesTW->headerItem()->setText(1, qt_("Activated"));
 	branchesTW->headerItem()->setText(2, qt_("Color"));
 	branchesTW->setSortingEnabled(true);
+
+	undef_ = new BranchesUnknownDialog(this);
+	undef_bc_.setPolicy(ButtonPolicy::OkCancelPolicy);
+	undef_bc_.setCancel(undef_->cancelPB);
+
+	connect(undef_->branchesLW, SIGNAL(itemSelectionChanged()),
+		this, SLOT(unknownBranchSelChanged()));
+	connect(undef_->addSelectedPB, SIGNAL(clicked()),
+		this, SLOT(addUnknown()));
+	connect(undef_->addAllPB, SIGNAL(clicked()),
+		this, SLOT(addAllUnknown()));
+	connect(undef_->addSelectedPB, SIGNAL(clicked()),
+		undef_, SLOT(accept()));
+	connect(undef_->addAllPB, SIGNAL(clicked()),
+		undef_, SLOT(accept()));
+	connect(undef_->cancelPB, SIGNAL(clicked()),
+		undef_, SLOT(reject()));
 }
 
 void GuiBranches::update(BufferParams const & params)
@@ -83,6 +104,7 @@ void GuiBranches::updateView()
 			branchesTW->setItemSelected(newItem, true);
 		}
 	}
+	unknownPB->setEnabled(!unknown_branches_.isEmpty());
 	// emit signal
 	changed();
 }
@@ -182,6 +204,49 @@ void GuiBranches::toggleColor(QTreeWidgetItem * item)
 	newBranchLE->clear();
 	updateView();
 }
+
+
+void GuiBranches::on_unknownPB_pressed()
+{
+	undef_->branchesLW->clear();
+	for (int i = 0; i != unknown_branches_.count(); ++i) {
+		if (branchesTW->findItems(unknown_branches_[i], Qt::MatchExactly, 0).empty())
+			undef_->branchesLW->addItem(unknown_branches_[i]);
+	}
+	unknownBranchSelChanged();
+	undef_->exec();
+}
+
+
+void GuiBranches::addUnknown()
+{
+	QList<QListWidgetItem *> selItems =
+		undef_->branchesLW->selectedItems();
+	
+	QList<QListWidgetItem *>::const_iterator it = selItems.begin();
+	for (it ; it != selItems.end() ; ++it) {
+		QListWidgetItem const * new_branch = *it;
+		if (new_branch) {
+			branchlist_.add(qstring_to_ucs4(new_branch->text()));
+			updateView();
+		}
+	}
+}
+
+
+void GuiBranches::addAllUnknown()
+{
+	undef_->branchesLW->selectAll();
+	addUnknown();
+}
+
+
+void GuiBranches::unknownBranchSelChanged()
+{
+	undef_->addSelectedPB->setEnabled(
+		!undef_->branchesLW->selectedItems().isEmpty());
+}
+
 
 } // namespace frontend
 } // namespace lyx

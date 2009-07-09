@@ -3285,6 +3285,17 @@ void LyXAction::init()
 
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_BRANCH_ADD
+ * \li Action: Add a branch to the buffer's BranchList
+ * \li Syntax: branch-add <BRANCH>
+ * \li Params: <BRANCH>: Name of the branch to add
+ * \li Origin: spitz, 7 Jul 2009
+ * \endvar
+ */
+		{ LFUN_BRANCH_ADD, "branch-add", Noop, Buffer },
+
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_BRANCH_ACTIVATE
  * \li Action: Activate the branch
  * \li Syntax: branch-activate <BRANCH>

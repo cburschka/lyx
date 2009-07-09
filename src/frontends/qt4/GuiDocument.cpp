@@ -946,6 +946,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	branchesModule = new GuiBranches;
 	connect(branchesModule, SIGNAL(changed()),
 		this, SLOT(change_adaptor()));
+	updateUnknownBranches();
 
 	// preamble
 	preambleModule = new PreambleModule;
@@ -2413,6 +2414,8 @@ void GuiDocument::paramsToDialog()
 	lengthToWidgets(m->columnsepLE, m->columnsepUnit,
 		bp_.columnsep, defaultUnit);
 
+	// branches
+	updateUnknownBranches();
 	branchesModule->update(bp_);
 
 	// PDF support
@@ -2792,6 +2795,20 @@ void GuiDocument::loadModuleInfo()
 		m.description = desc;
 		moduleNames_.push_back(m);
 	}
+}
+
+
+void GuiDocument::updateUnknownBranches()
+{
+	list<docstring> used_branches;
+	buffer().getUsedBranches(used_branches);
+	list<docstring>::const_iterator it = used_branches.begin();
+	QStringList unknown_branches;
+	for (it ; it != used_branches.end() ; ++it) {
+		if (!buffer().params().branchlist().find(*it))
+			unknown_branches.append(toqstr(*it));
+	}
+	branchesModule->setUnknownBranches(unknown_branches);
 }
 
 

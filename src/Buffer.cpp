@@ -69,6 +69,7 @@
 
 #include "insets/InsetBibitem.h"
 #include "insets/InsetBibtex.h"
+#include "insets/InsetBranch.h"
 #include "insets/InsetInclude.h"
 #include "insets/InsetText.h"
 
@@ -1621,6 +1622,7 @@ bool Buffer::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 			break;
 		}
 
+		case LFUN_BRANCH_ADD:
 		case LFUN_BUFFER_PRINT:
 			// if no Buffer is present, then of course we won't be called!
 			flag.setEnabled(true);
@@ -1654,6 +1656,28 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 		if (!success)
 			dr.setMessage(bformat(_("Error exporting to format: %1$s."), 
 					      func.argument()));
+		break;
+	}
+
+	case LFUN_BRANCH_ADD: {
+		BranchList & branchList = params().branchlist();
+		docstring const branchName = func.argument();
+		if (branchName.empty()) {
+			dispatched = false;
+			break;
+		}
+		Branch * branch = branchList.find(branchName);
+		if (branch) {
+			LYXERR0("Branch " << branchName << " does already exist.");
+			dr.setError(true);
+			docstring const msg = 
+				bformat(_("Branch \"%1$s\" does already exist."), branchName);
+			dr.setMessage(msg);
+		} else {
+			branchList.add(branchName);
+			dr.setError(false);
+			dr.update(Update::Force);
+		}
 		break;
 	}
 
@@ -2325,6 +2349,59 @@ void Buffer::updateMacros() const
 	DocIterator outerScope = it;
 	outerScope.pit() = outerScope.lastpit() + 2;
 	updateMacros(it, outerScope);
+}
+
+
+void Buffer::getUsedBranches(std::list<docstring> & result, bool const from_master) const
+{
+	// Iterate over buffer, starting with first paragraph
+	// The scope must be bigger than any lookup DocIterator
+	// later. For the global lookup, lastpit+1 is used, hence
+	// we use lastpit+2 here.
+	DocIterator it = par_iterator_begin();
+	DocIterator scope = it;
+	scope.pit() = scope.lastpit() + 2;
+	pit_type lastpit = it.lastpit();
+
+	while (it.pit() <= lastpit) {
+		Paragraph & par = it.paragraph();
+
+		// iterate over the insets of the current paragraph
+		InsetList const & insets = par.insetList();
+		InsetList::const_iterator iit = insets.begin();
+		InsetList::const_iterator end = insets.end();
+		for (; iit != end; ++iit) {
+			it.pos() = iit->pos;
+
+			if (iit->inset->lyxCode() == BRANCH_CODE) {
+				// get buffer of external file
+				InsetBranch const & br =
+					static_cast<InsetBranch const &>(*iit->inset);
+				docstring const name = br.branch();
+				if (!from_master && !params().branchlist().find(name))
+					result.push_back(name);
+				else if (from_master && !masterBuffer()->params().branchlist().find(name))
+					result.push_back(name);
+				continue;
+			}
+
+			// is it an external file?
+			if (iit->inset->lyxCode() == INCLUDE_CODE) {
+				// get buffer of external file
+				InsetInclude const & inset =
+					static_cast<InsetInclude const &>(*iit->inset);
+				Buffer * child = inset.getChildBuffer();
+				if (!child)
+					continue;
+				child->getUsedBranches(result, true);
+			}
+		}
+		// next paragraph
+		it.pit()++;
+		it.pos() = 0;
+	}
+	// remove duplicates
+	result.unique();
 }
 
 
@@ -3106,7 +3183,7 @@ void Buffer::updateLabels(UpdateScope scope) const
 			// Do this here in case the master has no gui associated with it. Then, 
 			// the TocModel is not updated and TocModel::toc_ is invalid (bug 5699).
 			if (!master->gui_)
-				structureChanged();	
+				structureChanged();
 
 			// was buf referenced from the master (i.e. not in bufToUpdate anymore)?
 			if (bufToUpdate.find(this) == bufToUpdate.end())

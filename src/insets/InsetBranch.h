@@ -51,6 +51,8 @@ public:
 	static std::string params2string(InsetBranchParams const &);
 	///
 	static void string2params(std::string const &, InsetBranchParams &);
+	///
+	docstring branch() const { return params_.branch; }
 
 private:
 	///

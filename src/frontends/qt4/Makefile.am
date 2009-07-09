@@ -244,6 +244,7 @@ UIFILES = \
 	BibtexUi.ui \
 	BoxUi.ui \
 	BranchesUi.ui \
+	BranchesUnknownUi.ui \
 	BranchUi.ui \
 	BulletsUi.ui \
 	ChangesUi.ui \

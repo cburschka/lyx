@@ -12,7 +12,9 @@
 #ifndef GUIBRANCHES_H
 #define GUIBRANCHES_H
 
+#include "Buffer.h"
 #include "GuiDocument.h"
+#include "ui_BranchesUnknownUi.h"
 #include "ui_BranchesUi.h"
 #include "BranchList.h"
 
@@ -26,6 +28,16 @@ class BufferParams;
 
 namespace frontend {
 
+class BranchesUnknownDialog : public QDialog, public Ui::BranchesUnknownUi
+{
+public:
+	BranchesUnknownDialog(QWidget * parent) : QDialog(parent)
+	{
+		Ui::BranchesUnknownUi::setupUi(this);
+		QDialog::setModal(true);
+	}
+};
+
 class GuiBranches : public QWidget, public Ui::BranchesUi
 {
 	Q_OBJECT
@@ -34,6 +46,7 @@ public:
 
 	void update(BufferParams const & params);
 	void apply(BufferParams & params) const;
+	void setUnknownBranches(QStringList const & b) { unknown_branches_ = b; }
 
 Q_SIGNALS:
 	void changed();
@@ -49,10 +62,20 @@ protected Q_SLOTS:
 	void on_activatePB_pressed();
 	void on_branchesTW_itemDoubleClicked(QTreeWidgetItem *, int);
 	void on_colorPB_clicked();
+	void on_unknownPB_pressed();
+	void addUnknown();
+	void addAllUnknown();
+	void unknownBranchSelChanged();
 
 private:
 	/// Contains all legal branches for this doc
 	BranchList branchlist_;
+	///
+	BranchesUnknownDialog * undef_;
+	///
+	ButtonController undef_bc_;
+	///
+	QStringList unknown_branches_;
 };
 
 } // namespace frontend

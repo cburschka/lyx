@@ -20,6 +20,7 @@
 #include "support/types.h"
 #include "support/SignalSlot.h"
 
+#include <list>
 #include <string>
 #include <vector>
 
@@ -505,6 +506,9 @@ public:
 	void clearReferenceCache() const;
 	void setInsetLabel(docstring const & label, InsetLabel const * il);
 	InsetLabel const * insetLabel(docstring const & label) const;
+
+	/// return a list of all used branches (also in children)
+	void getUsedBranches(std::list<docstring> &, bool const from_master = false) const;
 
 	/// sets the buffer_ member for every inset in this buffer.
 	// FIXME This really shouldn't be needed, but at the moment it's not
