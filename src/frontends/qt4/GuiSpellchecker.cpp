@@ -182,6 +182,7 @@ void GuiSpellchecker::on_replaceAllPB_clicked()
 		qstring_to_ucs4(d->ui.wordED->text()),
 		true, true, true, true);
 	dispatch(FuncRequest(LFUN_WORD_REPLACE, data));
+	check(); // continue spellchecking
 }
 
 
