@@ -690,6 +690,10 @@ string const LaTeXFeatures::getPackages() const
 		packages << "\\PassOptionsToPackage{normalem}{ulem}\n"
 			    "\\usepackage{ulem}\n";
 
+	if (mustProvide("mhchem"))
+		packages << "\\PassOptionsToPackage{version=3}{mhchem}\n"
+			    "\\usepackage{mhchem}\n";
+
 	if (mustProvide("nomencl")) {
 		// Make it work with the new and old version of the package,
 		// but don't use the compatibility option since it is

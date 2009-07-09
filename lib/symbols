@@ -90,6 +90,9 @@ texttt            font        textmode
 textup            font        textmode
 emph              font        textmode
 noun              font        textmode
+# ce and cf are provided by the mhchem package
+ce                font        forcetext
+cf                font        forcetext
 
 # old-style font commands
 bf                oldfont     none

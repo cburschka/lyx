@@ -155,6 +155,12 @@ void WriteStream::textMode(bool textmode)
 }
 
 
+void WriteStream::lockedMode(bool locked)
+{
+	locked_ = locked;
+}
+
+
 WriteStream & operator<<(WriteStream & ws, MathAtom const & at)
 {
 	at->write(ws);

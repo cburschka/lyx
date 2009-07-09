@@ -97,6 +97,9 @@ public:
 	/// this is overridden in math text insets (i.e. mbox)
 	bool inMathed() const { return true; }
 
+	/// this is overridden by specific insets
+	virtual mode_type currentMode() const { return MATH_MODE; }
+
 	/// the ascent of the inset above the baseline
 	/// compute the size of the object for text based drawing
 	virtual void metricsT(TextMetricsInfo const & mi, Dimension & dim) const;

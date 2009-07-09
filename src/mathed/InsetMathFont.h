@@ -31,6 +31,8 @@ public:
 	InsetMathFont const * asFontInset() const { return this; }
 	/// are we in math mode, text mode, or unsure?
 	mode_type currentMode() const;
+	/// do we allow changing mode during latex export?
+	bool lockedMode() const;
 	///
 	docstring name() const;
 	///

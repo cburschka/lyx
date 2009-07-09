@@ -44,6 +44,14 @@ InsetMath::mode_type InsetMathFont::currentMode() const
 }
 
 
+bool InsetMathFont::lockedMode() const
+{
+	if (key_->extra == "forcetext")
+		return true;
+	return false;
+}
+
+
 void InsetMathFont::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy(mi.base, key_->name);
@@ -93,6 +101,8 @@ void InsetMathFont::validate(LaTeXFeatures & features) const
 		features.require("amstext");
 	if (key_->name == "textipa")
 		features.require("tipa");
+	if (key_->name == "ce" || key_->name == "cf")
+		features.require("mhchem");
 }
 
 

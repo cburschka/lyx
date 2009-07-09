@@ -275,7 +275,7 @@ bool ensureMath(WriteStream & os, bool needs_math_mode, bool macro)
 }
 
 
-bool ensureMode(WriteStream & os, InsetMath::mode_type mode)
+int ensureMode(WriteStream & os, InsetMath::mode_type mode, bool locked)
 {
 	bool textmode = mode == InsetMath::TEXT_MODE;
 	if (os.latex() && textmode && os.pendingBrace()) {
@@ -284,9 +284,11 @@ bool ensureMode(WriteStream & os, InsetMath::mode_type mode)
 		os.pendingSpace(false);
 		os.textMode(true);
 	}
-	bool oldmode = os.textMode();
+	int oldmodes = os.textMode() ? 1 : 0;
 	os.textMode(textmode);
-	return oldmode;
+	oldmodes |= os.lockedMode() ? 2 : 0;
+	os.lockedMode(locked);
+	return oldmodes;
 }
 
 

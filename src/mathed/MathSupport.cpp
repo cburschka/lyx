@@ -580,6 +580,12 @@ fontinfo fontinfos[] = {
 	{"textipa",       inh_family, inh_series,
 			  inh_shape, Color_foreground},
 
+	// mhchem support
+	{"ce",            inh_family, inh_series,
+			  inh_shape, Color_foreground},
+	{"cf",            inh_family, inh_series,
+			  inh_shape, Color_foreground},
+
 	// LyX internal usage
 	{"lyxtex",        inh_family, inh_series,
 			  UP_SHAPE, Color_latex},
