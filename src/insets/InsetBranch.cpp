@@ -90,8 +90,11 @@ docstring const InsetBranch::buttonLabel(BufferView const & bv) const
 	docstring s = _("Branch: ") + params_.branch;
 	Buffer const & realbuffer = *buffer().masterBuffer();
 	BranchList const & branchlist = realbuffer.params().branchlist();
-	if (!branchlist.find(params_.branch))
+	if (!branchlist.find(params_.branch)
+	    && buffer().params().branchlist().find(params_.branch))
 		s = _("Branch (child only): ") + params_.branch;
+	else if (!branchlist.find(params_.branch))
+		s = _("Branch (undefined): ") + params_.branch;
 	if (!params_.branch.empty()) {
 		// FIXME UNICODE
 		ColorCode c = lcolor.getFromLyXName(to_utf8(params_.branch));
