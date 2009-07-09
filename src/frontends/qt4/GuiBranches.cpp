@@ -224,7 +224,7 @@ void GuiBranches::addUnknown()
 		undef_->branchesLW->selectedItems();
 	
 	QList<QListWidgetItem *>::const_iterator it = selItems.begin();
-	for (it ; it != selItems.end() ; ++it) {
+	for (; it != selItems.end() ; ++it) {
 		QListWidgetItem const * new_branch = *it;
 		if (new_branch) {
 			branchlist_.add(qstring_to_ucs4(new_branch->text()));

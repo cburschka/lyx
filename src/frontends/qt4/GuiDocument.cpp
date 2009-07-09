@@ -2804,7 +2804,7 @@ void GuiDocument::updateUnknownBranches()
 	buffer().getUsedBranches(used_branches);
 	list<docstring>::const_iterator it = used_branches.begin();
 	QStringList unknown_branches;
-	for (it ; it != used_branches.end() ; ++it) {
+	for (; it != used_branches.end() ; ++it) {
 		if (!buffer().params().branchlist().find(*it))
 			unknown_branches.append(toqstr(*it));
 	}
