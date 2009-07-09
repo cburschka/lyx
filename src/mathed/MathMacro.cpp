@@ -17,6 +17,7 @@
 #include "InsetMathChar.h"
 #include "MathCompletionList.h"
 #include "MathExtern.h"
+#include "MathFactory.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 
@@ -624,6 +625,22 @@ bool MathMacro::idxLast(Cursor & cur) const
 
 bool MathMacro::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 {
+	if (displayMode_ == DISPLAY_UNFOLDED) {
+		docstring const & unfolded_name = name();
+		if (unfolded_name != name_) {
+			// The macro name was changed
+			cur = old;
+			bool left = cur.pos() == 0;
+			cur.recordUndoInset();
+			cur.popForward();
+			cur.backspace();
+			cur.niceInsert(createInsetMath(unfolded_name));
+			if (left)
+				cur.backwardPos();
+			cur.updateFlags(Update::Force);
+			return true;
+		}
+	}
 	cur.updateFlags(Update::Force);
 	return InsetMathNest::notifyCursorLeaves(old, cur);
 }
