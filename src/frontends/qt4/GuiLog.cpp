@@ -5,6 +5,7 @@
  *
  * \author John Levon
  * \author Angus Leeming
+ * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -32,6 +33,16 @@ using namespace lyx::support;
 
 namespace lyx {
 namespace frontend {
+
+
+// Regular expressions needed at several places
+// Information
+QRegExp exprInfo("^(Document Class:|LaTeX Font Info:|File:|Package:|Language:|Underfull|Overfull|\\(|\\\\).*$");
+// Warnings
+QRegExp exprWarning("^LaTeX Warning.*$");
+// Errors
+QRegExp exprError("^!.*$");
+
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -67,7 +78,6 @@ LogHighlighter::LogHighlighter(QTextDocument * parent)
 void LogHighlighter::highlightBlock(QString const & text)
 {
 	// Info
-	QRegExp exprInfo("^(Document Class:|LaTeX Font Info:|File:|Package:|Language:|Underfull|Overfull|\\(|\\\\).*$");
 	int index = exprInfo.indexIn(text);
 	while (index >= 0) {
 		int length = exprInfo.matchedLength();
@@ -75,7 +85,6 @@ void LogHighlighter::highlightBlock(QString const & text)
 		index = exprInfo.indexIn(text, index + length);
 	}
 	// LaTeX Warning:
-	QRegExp exprWarning("^LaTeX Warning.*$");
 	index = exprWarning.indexIn(text);
 	while (index >= 0) {
 		int length = exprWarning.matchedLength();
@@ -83,7 +92,6 @@ void LogHighlighter::highlightBlock(QString const & text)
 		index = exprWarning.indexIn(text, index + length);
 	}
 	// ! error
-	QRegExp exprError("^!.*$");
 	index = exprError.indexIn(text);
 	while (index >= 0) {
 		int length = exprError.matchedLength();
@@ -106,6 +114,9 @@ GuiLog::GuiLog(GuiView & lv)
 
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 	connect(updatePB, SIGNAL(clicked()), this, SLOT(updateContents()));
+	connect(findPB, SIGNAL(clicked()), this, SLOT(find()));
+	// FIXME: find via returnPressed() does not work!
+	connect(findLE, SIGNAL(returnPressed()), this, SLOT(find()));
 
 	bc().setPolicy(ButtonPolicy::OkCancelPolicy);
 
@@ -129,6 +140,41 @@ void GuiLog::updateContents()
 	getContents(ss);
 
 	logTB->setPlainText(toqstr(ss.str()));
+
+	nextErrorPB->setEnabled(contains(exprError));
+	nextWarningPB->setEnabled(contains(exprWarning));
+}
+
+
+void GuiLog::find()
+{
+	logTB->find(findLE->text());
+}
+
+
+void GuiLog::on_nextErrorPB_clicked()
+{
+	goTo(exprError);
+}
+
+
+void GuiLog::on_nextWarningPB_clicked()
+{
+	goTo(exprWarning);
+}
+
+
+void GuiLog::goTo(QRegExp const & exp) const
+{
+	QTextCursor const newc =
+		logTB->document()->find(exp, logTB->textCursor());
+	logTB->setTextCursor(newc);
+}
+
+
+bool GuiLog::contains(QRegExp const & exp) const
+{
+	return !logTB->document()->find(exp, logTB->textCursor()).isNull();
 }
 
 

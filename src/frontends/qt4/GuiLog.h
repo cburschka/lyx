@@ -33,8 +33,14 @@ public:
 
 private Q_SLOTS:
 	void updateContents();
-	// copy log to clipboard
+	/// copy log to clipboard
 	void on_copyPB_clicked();
+	/// find content
+	void find();
+	/// jump to next error message
+	void on_nextErrorPB_clicked();
+	/// jump to next warning
+	void on_nextWarningPB_clicked();
 
 private:
 	/// Apply changes
@@ -58,6 +64,10 @@ private:
 	docstring title() const;
 	/// put the log file into the ostream
 	void getContents(std::ostream & ss) const;
+	/// go to the next occurence of the RegExp
+	void goTo(QRegExp const & exp) const;
+	/// does the document after cursor position contain the RegExp?
+	bool contains(QRegExp const & exp) const;
 
 private:
 	/// Recognized log file-types
