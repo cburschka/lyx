@@ -822,15 +822,20 @@ void GuiTabular::updateContents()
 	// first header can only be suppressed when there is a header
 	firstheaderNoContentsCB->setEnabled(tabular_.haveLTHead()
 		&& !tabular_.haveLTFirstHead());
-
-	//firstheaderStatusCB->setEnabled(
-	//	!firstheaderNoContentsCB->isChecked());
+	// When there is a header but no first header, set the first header
+	// as empty . Otherwise longtable's caption handling would be broken,
+	// see bug 6057.
+	firstheaderNoContentsCB->setChecked(tabular_.haveLTHead()
+		&& !tabular_.haveLTFirstHead());
+	
 	headerBorderAboveCB->setEnabled(funcEnabled(Tabular::SET_LTHEAD));
 	headerBorderBelowCB->setEnabled(funcEnabled(Tabular::SET_LTHEAD));
 	headerStatusCB->setEnabled(funcEnabled(Tabular::SET_LTHEAD));
+
 	footerBorderAboveCB->setEnabled(funcEnabled(Tabular::SET_LTFOOT));
 	footerBorderBelowCB->setEnabled(funcEnabled(Tabular::SET_LTFOOT));
 	footerStatusCB->setEnabled(funcEnabled(Tabular::SET_LTFOOT));
+
 	lastfooterBorderAboveCB->setEnabled(
 		funcEnabled(Tabular::SET_LTLASTFOOT));
 	lastfooterBorderBelowCB->setEnabled(
@@ -865,11 +870,8 @@ void GuiTabular::updateContents()
 
 	row_set = tabular_.getRowOfLTFirstHead(row, ltt);
 	// check if setting a first header is allowed
-	// additionally check firstheaderNoContentsCB because when this is
-	// the case a first header makes no sense
 	firstheaderStatusCB->setEnabled(
-		funcEnabled(Tabular::SET_LTFIRSTHEAD)
-		&& !firstheaderNoContentsCB->isChecked());
+		funcEnabled(Tabular::SET_LTFIRSTHEAD));
 	firstheaderStatusCB->setChecked(row_set);
 	if (ltt.set && (!ltt.empty || !use_empty)) {
 		firstheaderBorderAboveCB->setChecked(ltt.topDL);
@@ -879,10 +881,6 @@ void GuiTabular::updateContents()
 		firstheaderBorderBelowCB->setEnabled(false);
 		firstheaderBorderAboveCB->setChecked(false);
 		firstheaderBorderBelowCB->setChecked(false);
-		if (use_empty) {
-			if (ltt.empty)
-				firstheaderStatusCB->setEnabled(false);
-		}
 	}
 
 	row_set = tabular_.getRowOfLTFoot(row, ltt);
@@ -973,6 +971,12 @@ void GuiTabular::closeGUI()
 		else
 			set(Tabular::SET_PWIDTH, width);
 	}
+
+	// When there is a header but no first header, set the first header
+	// as empty . Otherwise longtable's caption handling would be broken,
+	// see bug 6057.
+	if (tabular_.haveLTHead() && !tabular_.haveLTFirstHead())
+		set(Tabular::SET_LTFIRSTHEAD, "empty");
 
 	/* DO WE NEED THIS?
 	switch (topspaceCO->currentIndex()) {
