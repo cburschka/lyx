@@ -509,6 +509,8 @@ public:
 
 	/// return a list of all used branches (also in children)
 	void getUsedBranches(std::list<docstring> &, bool const from_master = false) const;
+	/// rename all branches of \p oldname in the buffer to \p newname.
+	void renameBranches(docstring const & oldname, docstring const & newname);
 
 	/// sets the buffer_ member for every inset in this buffer.
 	// FIXME This really shouldn't be needed, but at the moment it's not

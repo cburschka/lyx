@@ -105,6 +105,12 @@ public:
 	 *  \returns true if a branch is removed.
 	 */
 	bool remove(docstring const &);
+	/** rename an branch in list
+	 *  \returns true if renaming succeeded.
+	 * if \p merge is true, the branch will be removed
+	 * if a branch with the newname already exists.
+	 */
+	bool rename(docstring const &, docstring const &, bool const merge = false);
 
 private:
 	///

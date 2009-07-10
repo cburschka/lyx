@@ -3318,6 +3318,17 @@ void LyXAction::init()
 		{ LFUN_BRANCH_DEACTIVATE, "branch-deactivate", AtPoint, Buffer },
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_BRANCHES_RENAME
+ * \li Action: Rename all branches of a given name in a document
+ * \li Syntax: branches-rename <OLDNAME> <NEWNAME>
+ * \li Params: <OLDNAME>: Current name of the branch to be renamed
+ *             <NEWNAME>: New name of the branch
+ * \li Origin: spitz, 9 Jul 2009
+ * \endvar
+ */
+		{ LFUN_BRANCHES_RENAME, "branches-rename", Noop, Buffer },
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_LABEL_COPY_AS_REF
  * \li Action: Copies the label at the cursor as a cross-reference to be pasted elsewhere.
  * \li Syntax: copy-label-as-reference <LABEL>

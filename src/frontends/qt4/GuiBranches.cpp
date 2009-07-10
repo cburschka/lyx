@@ -20,9 +20,12 @@
 
 #include "ui_BranchesUnknownUi.h"
 
+#include "frontends/alert.h"
+
 #include "Buffer.h"
 #include "BufferParams.h"
 
+#include "support/gettext.h"
 #include "support/lstrings.h"
 
 #include <QListWidget>
@@ -137,6 +140,40 @@ void GuiBranches::on_removePB_pressed()
 		branchlist_.remove(qstring_to_ucs4(sel_branch));
 		newBranchLE->clear();
 		updateView();
+	}
+}
+
+
+void GuiBranches::on_renamePB_pressed()
+{
+	QTreeWidgetItem * selItem = branchesTW->currentItem();
+	QString sel_branch;
+	if (selItem != 0)
+		sel_branch = selItem->text(0);
+	if (!sel_branch.isEmpty()) {
+		docstring newname;
+		docstring const oldname = qstring_to_ucs4(sel_branch);
+		bool success = false;
+		if (Alert::askForText(newname, _("Enter new branch name"))) {
+			if (branchlist_.find(newname)) {
+				docstring text = support::bformat(
+					_("A branch with the name \"%1$s\" already exists.\n"
+					  "Do you want to merge branch \"%2$s\" with that one?"),
+					newname, oldname);
+				if (frontend::Alert::prompt(_("Branch already exists"),
+					  text, 0, 1, _("&Merge"), _("&Cancel")) == 0)
+					success = branchlist_.rename(oldname, newname, true);
+			} else
+				success = branchlist_.rename(oldname, newname);
+			newBranchLE->clear();
+			updateView();
+		}
+		if (!success)
+			Alert::error(_("Renaming failed"), 
+			      _("The branch could not be renamed."));
+		else
+			// emit signal
+			renameBranches(oldname, newname);
 	}
 }
 

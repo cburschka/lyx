@@ -50,6 +50,7 @@ public:
 
 Q_SIGNALS:
 	void changed();
+	void renameBranches(docstring const &, docstring const &);
 
 protected:
 	void toggleBranch(QTreeWidgetItem *);
@@ -59,6 +60,7 @@ protected:
 protected Q_SLOTS:
 	void on_addBranchPB_pressed();
 	void on_removePB_pressed();
+	void on_renamePB_pressed();
 	void on_activatePB_pressed();
 	void on_branchesTW_itemDoubleClicked(QTreeWidgetItem *, int);
 	void on_colorPB_clicked();

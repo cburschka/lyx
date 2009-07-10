@@ -436,6 +436,7 @@ enum FuncCode
 	LFUN_BUFFER_EXPORT,             // Lgb 97-07-29
 	LFUN_BUFFER_TOGGLE_COMPRESSION, // bpeng 20060427
 	LFUN_BRANCH_ADD,                // spitz 20090707
+	LFUN_BRANCHES_RENAME,           // spitz 20090709
 
 	LFUN_LASTACTION                 // end of the table
 };

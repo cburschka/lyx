@@ -946,6 +946,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 	branchesModule = new GuiBranches;
 	connect(branchesModule, SIGNAL(changed()),
 		this, SLOT(change_adaptor()));
+	connect(branchesModule, SIGNAL(renameBranches(docstring const &, docstring const &)),
+		this, SLOT(branchesRename(docstring const &, docstring const &)));
 	updateUnknownBranches();
 
 	// preamble
@@ -2809,6 +2811,13 @@ void GuiDocument::updateUnknownBranches()
 			unknown_branches.append(toqstr(*it));
 	}
 	branchesModule->setUnknownBranches(unknown_branches);
+}
+
+
+void GuiDocument::branchesRename(docstring const & oldname, docstring const & newname)
+{
+	docstring const arg = '"' + oldname + '"' + " " + '"' + newname + '"';
+	dispatch(FuncRequest(LFUN_BRANCHES_RENAME, arg));
 }
 
 

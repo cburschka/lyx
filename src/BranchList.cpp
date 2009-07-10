@@ -150,4 +150,25 @@ bool BranchList::remove(docstring const & s)
 }
 
 
+bool BranchList::rename(docstring const & oldname,
+	docstring const & newname, bool const merge)
+{
+	if (newname.empty())
+		return false;
+	if (find_if(list.begin(), list.end(),
+		    BranchNamesEqual(newname)) != list.end()) {
+		// new name already taken
+		if (merge)
+		      return remove(oldname);
+		return false;
+	}
+
+	Branch * branch = find(oldname);
+	if (!branch)
+		return false;
+	branch->setBranch(newname);
+	return true;
+}
+
+
 } // namespace lyx
