@@ -107,11 +107,12 @@ const char * const known_coded_paper_margins[] = { "leftmargin", "topmargin",
 const char * const known_lyx_commands[] = { "binom", "cedilla", "cyrtext",
 "dacute", "dgrave", "docedilla", "doogonek", "dosubhat", "dosubring",
 "dosubtilde", "greektext", "guillemotleft", "guillemotright", "guilsinglleft",
-"guilsinglright", "LyX", "lyxadded", "lyxarrow", "lyxdeleted", "lyxdot",
-"lyxgreyedout", "lyxline", "lyxmathsym", "LyXParagraphLeftIndent",
-"lyxrightaddress", "makenomenclature", "mathcircumflex", "noun", "ogonek",
-"printnomenclature", "quotedblbase", "quotesinglbase", "rcap", "subhat",
-"subring", "subtilde", "tabularnewline", "textcyr", "textgreek", 0};
+"guilsinglright", "LyX", "lyxadded", "lyxaddress", "lyxarrow", "lyxcode",
+"lyxdeleted", "lyxdot", "lyxgreyedout", "lyxline", "lyxlist", "lyxmathsym",
+"LyXParagraphLeftIndent", "lyxrightaddress", "makenomenclature",
+"mathcircumflex", "noun", "ogonek", "printnomenclature", "quotedblbase",
+"quotesinglbase", "rcap", "subhat", "subring", "subtilde", "tabularnewline",
+"textcyr", "textgreek", 0};
 
 const char * const known_lyx_comments[] = { 
 "%% Binom macro for standard LaTeX users\n",
@@ -123,6 +124,7 @@ const char * const known_lyx_comments[] = {
 "% the following is useful when we have the old nomencl.sty package\n",
 "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.\n",
 "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.\n",
+"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.\n",
 0};
 
 // default settings
