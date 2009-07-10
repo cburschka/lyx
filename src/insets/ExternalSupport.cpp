@@ -296,7 +296,9 @@ void updateExternal(InsetExternalParams const & params,
 						      ALL_BUT_PATHS);
 				// if file is a relative name, it is interpreted
 				// relative to the master document.
-				exportdata.addExternalFile(rit->first, source, file);
+				if (makeAbsPath(file, masterBuffer->filePath()) !=
+					params.filename.absFilename())
+						exportdata.addExternalFile(rit->first, source, file);
 			}
 		}
 	}
