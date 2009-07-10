@@ -3268,7 +3268,7 @@ void LyXAction::init()
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_COMPLETION_CANCEL
- * \li Action: Try to cancel completion, either the popup or the inline completion
+ * \li Action: Try to cancel completion, either the popup or the inline completion.
  * \li Syntax: completion-cancel
  * \li Origin: sts, Sep 07 2008
  * \endvar
@@ -3286,7 +3286,7 @@ void LyXAction::init()
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_BRANCH_ADD
- * \li Action: Add a branch to the buffer's BranchList
+ * \li Action: Add a branch to the buffer's BranchList.
  * \li Syntax: branch-add <BRANCH>
  * \li Params: <BRANCH>: Name of the branch to add
  * \li Origin: spitz, 7 Jul 2009
@@ -3297,7 +3297,7 @@ void LyXAction::init()
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_BRANCH_ACTIVATE
- * \li Action: Activate the branch
+ * \li Action: Activate the branch.
  * \li Syntax: branch-activate <BRANCH>
  * \li Params: <BRANCH>: The branch to activate
  * \li Sample: lyx -x "branch-activate answers" -e pdf2 finalexam.lyx \n
@@ -3309,7 +3309,7 @@ void LyXAction::init()
 		{ LFUN_BRANCH_ACTIVATE, "branch-activate", AtPoint, Buffer },
 /*!
  * \var lyx::FuncCode lyx::LFUN_BRANCH_DEACTIVATE
- * \li Action: De-activate the branch
+ * \li Action: De-activate the branch.
  * \li Syntax: branch-deactivate <BRANCH>
  * \li Params: <BRANCH>: The branch to deactivate
  * \li Origin: rgh, 27 May 2008
@@ -3319,7 +3319,7 @@ void LyXAction::init()
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_BRANCHES_RENAME
- * \li Action: Rename all branches of a given name in a document
+ * \li Action: Rename all branches of a given name in a document.
  * \li Syntax: branches-rename <OLDNAME> <NEWNAME>
  * \li Params: <OLDNAME>: Current name of the branch to be renamed
  *             <NEWNAME>: New name of the branch
