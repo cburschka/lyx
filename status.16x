@@ -182,6 +182,9 @@ What's new
 - Fix typesetting of chemical equations by adding support for the mhchem
   package (bugs 6047, 4043, and 5394).
 
+- Fix display of unknown math macros that become known after editing their
+  name. They are now correctly expanded and not left in red (bug 5923).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
