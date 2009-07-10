@@ -7,28 +7,258 @@
 
 DIRNAME0=`dirname "$0"`
 OUTDIR="$DIRNAME0/out"
+ROOT_OUTDIR="$DIRNAME0/out"
+THIS_PID=$$
+
+
+BORED_AFTER_SECS=3600 #If we have spend more than 3600 secs (an hour) replaying a file, without learning anything new, go and start looking for more bugs instead
+
+#############################
+# This section of code is LyX Specific
+#############################
+
+if [ ! -e lib/doc.orig ]
+then
+	mv lib/doc lib/doc.orig
+fi
+
+ensure_cannot_print () {
+lpq && ( 
+	echo We can print, this is bad!
+	echo use lpadmin to stop keytest from destroying a forest.
+	full_exit
+	sleep 999999 ; read
+)
+}
+
+extras_save () {
+ for f in `ls lib/doc`
+ do
+	if [ lib/doc/$f -nt lib/doc.orig/$f -o ! -e lib/doc.orig/$f ]
+	then 
+		echo making doc dir $OUTDIR/$SEC.doc
+		mkdir -p $OUTDIR/$SEC.doc
+		cp -a lib/doc/$f $OUTDIR/$SEC.doc/
+	fi
+ done
+}
+
+extras_prepare () {
+	mkdir -p lib/doc/
+	rm lib/doc/*.lyx
+	cp -p lib/doc.orig/*.lyx lib/doc/
+}
+
+get_crash_id () {
+  name=`(cat $GDB | grep -o ' in lyx::[[:alnum:]:]*' ; cat $GDB | grep -o ' [ai][nt] [[:alnum:]:]*' ) | head -n3 | sed s/in// | sed 's/ //g'`
+  echo $name | sed 's/ /__/g'
+}
+
+calc_confirm_file() {
+	id=`get_crash_id`
+	echo "$ROOT_OUTDIR/$id.reproduced"
+}
+
+full_exit() {
+	echo attempting to exit this entire script... normal exit may just exit one function
+
+	kill $THIS_PID
+	sleep 1
+	echo We should not get this far
+	sleep 1
+	kill -9 $THIS_PIS
+	echo We really should not get this far
+	exit
+}
+
+###########################
+
+get_pid () {
+	echo getting pidof "$1" 1>&2
+	PID=`ps a"$2" | grep "$1" | grep -v grep | sed 's/^ *//g'|  sed 's/ .*$//'`
+	echo "$PID" | ( grep " " > /dev/null && ( echo too many PIDs 1>&2 ; full_exit ) )
+	nPIDs=`echo PID "$PID" | wc -l`
+	if [ "$nPIDs" != "1" ]
+	then 
+		echo autolyx: Wrong number of PIDs "$nPIDs" 1>&2
+	fi
+	echo "$PID"
+}
+
+try_replay () {
+	id=`get_crash_id`
+	echo CRASH_ID 
+	export CONFIRM_FILE=`calc_confirm_file`
+	if [ ! -e "$CONFIRM_FILE" ]
+	then
+		echo $CONFIRM_FILE does not exist
+		echo This bug appears not to have been reproduced before
+		echo Will try to reproduce now
+		echo
+		do_replay
+		echo 
+		echo Finished attempt at replay
+	else
+		echo $CONFIRM_FILE exists
+		echo This bugs has already been reproduced
+		echo Will not attempt to reproduce again
+	fi
+}
+
+do_replay() {
+	(REPLAYFILE="$KEYCODEpure" TAIL_LINES=25 MAX_TAIL_LINES=10000 bash "$0")&
+	TEST_PID="$!"
+	echo Backgrounded $TEST_PID
+	echo waiting for $TEST_PID to finish
+	wait "$TEST_PID" 
+}
+
+do_queued_replays() {
+for f in `ls development/keytest/out/toreplay/*KEYCODEpure`
+do
+	if [ ! -e "$f.replay/last_crash_sec" ]
+	then
+		#./development/keytest/killtest
+		killall lyx
+		sleep 1
+		killall -9 lyx
+		KEYCODEpure="$f" do_replay
+	fi
+done
+}
+
+
+if [ ! -z "$REPLAYFILE" ]
+then
+	echo REPLAYMODE
+	OUTDIR="$REPLAYFILE.replay/"
+	mkdir -p $REPLAYFILE.replay/ || full_exit
+	export KEYTEST_INFILE=$REPLAYFILE
+	if [ ! -e "$REPLAYFILE" ]
+	then
+		echo "$REPLAYFILE" does not exist
+		echo exiting
+		full_exit 1
+	fi
+else
+	do_queued_replays
+	echo RANDOM MODE
+fi
+
+get_pid [0-9].x-session-manager"$" x
+export X_PID=`get_pid [0-9].x-session-manager x`
+echo X_PID $X_PID
+
+export TAIL_LINES=$TAIL_LINES
+echo TL $TAIL_LINES
+	
+
+BAK="$OUTDIR/backup"
+mkdir -p $BAK
 
 #rename other windows to avoid confusion.
 wmctrl -N __renamed__ -r lyx
 wmctrl -N __renamed__ -r lyx
 wmctrl -N __renamed__ -r lyx
 wmctrl -N __renamed__ -r lyx
-
+export PATH=`cd $DIRNAME0; pwd`/path:$PATH
 (
+echo TTL $TAIL_LINES
+
+LAST_EVENT=`date +%s` # Last time something interesting happened. If nothing interesting has happened for a while, we should quit.
+
+ensure_cannot_print
+echo X_PID $X_PID
+export X_PID=`get_pid [0-9].x-session-manager"$" x`
+echo PATH $PATH
 while true
 do
+ echo Currently running autolyx PID=$$
+ if [ ! -z "$TAIL_LINES" ] 
+ then
+  echo TAIL_LINES: "$TAIL_LINES"
+  TAIL_FILE=$OUTDIR/tail_"$TAIL_LINES"
+  tail -n "$TAIL_LINES" "$REPLAYFILE" > $TAIL_FILE
+  KEYTEST_INFILE=$TAIL_FILE
+  MAX_DROP=0
+ else
+  MAX_DROP=0.2
+ fi
+ export MAX_DROP
   SEC=`date +%s`
+ if [ ! -z "$REPLAYFILE" ] 
+ then
+	echo Boredom factor: $SEC-$LAST_EVENT'=' $(($SEC-$LAST_EVENT))
+	if [ $(($SEC-$LAST_EVENT)) -gt $BORED_AFTER_SECS ]
+	then
+		echo
+		echo Is is now $SEC seconds
+		echo The last time we managed to eliminate a keycode was at $LAST_EVENT
+		echo We get bored after $BORED_AFTER_SECS seconds
+		echo Giving up now.
+		echo
+		echo $LAST_CRASH_SEC > $OUTDIR/Finished
+		mkdir $OUTDIR/final
+		ln $OUTDIR/$SEC* $OUTDIR/final
+		CONFIRM_FILE=`calc_confirm_file`
+		echo Reproducible > "$CONFIRM_FILE"
+		
+		
+		full_exit
+	fi
+ fi
+
   GDB=$OUTDIR/$SEC.GDB
   KEYCODE=$OUTDIR/$SEC.KEYCODE
-  ( sleep 20 && python $DIRNAME0/test.py | tee $KEYCODE) &
+  KEYCODEpure=$OUTDIR/$SEC.KEYCODEpure
+  NEWHOME=~/kt.dir/$SEC.dir
+  mkdir -p $NEWHOME
+  NEWHOME=`cd $NEWHOME; pwd`
+  echo NEWHOME $NEWHOME
+  mkdir -p "$NEWHOME"
+  cp -rv ~/.lyx "$NEWHOME"/
+  killall -9 lyx
+  ( sleep 25 &&
+     ps a | grep lyx 
+	echo -- 1
+     LYX_PID=""
+     i=0
+     while [ -z "$LYX_PID" -a 200 -gt $i ]
+     do
+	     export LYX_PID=`ps a | grep /src/lyx | grep -v grep | sed 's/^ *//g'|  sed 's/ .*$//'`
+	     echo LYXPID "$LYX_PID"
+	     sleep 0.1
+	     i=$(($i+1))
+     done 
+     echo `ps a | grep /src/lyx`
+	echo -- 2
+     echo `ps a | grep /src/lyx | grep -v grep`
+	echo -- 3
+     echo `ps a | grep /src/lyx | grep -v grep | sed 's/ [a-z].*$//'`
+	echo -- 4
+     echo LYX_PID=$LYX_PID
+     echo XA_PRIMARY | xclip -selection XA_PRIMARY
+     echo XA_SECONDARY | xclip -selection XA_SECONDARY
+     echo XA_CLIPBOARD | xclip -selection XA_CLIPBOARD
+
+     if [ ! -z "$LYX_PID" ]
+     then
+	 kill `ps a | grep keytest.py | grep -v grep | cut -c 1-5`
+	 sleep 0.2
+	 kill -9 `ps a | grep keytest.py | grep -v grep | cut -c 1-5`
+         KEYTEST_OUTFILE="$KEYCODEpure" nice -19 python $DIRNAME0/keytest.py | tee $KEYCODE
+     fi
+     killall lyx) &
   CHILD_PID="$!"
   ls src/lyx ; sleep 1
    pwd
-  #sleep 10
   
   #You may want to use the following to simulate SIGFPE
   #(sleep 90 && killall -8 lyx) &
-
+  echo TTL $TAIL_LINES
+  extras_prepare
+  ensure_cannot_print
+  echo Starting GDB
   (echo "
   shell svn info src/
   run
@@ -43,18 +273,55 @@ do
   shell wmctrl -r term -b add,shaded
   shell wmctrl -R lyx 
   shell import -window root '$GDB..png'
- " ; yes q) | gdb src/lyx 2>&1 | strings|  tee $GDB
+ " ; yes q) | HOME="$NEWHOME" gdb src/lyx 2>&1 | strings|  tee $GDB
+  echo END gdb
   kill $CHILD_PID
-  #sleep 2 kill -9 $CHILD_PID
-  grep " signal " $GDB || (
-    rm $OUTDIR/*GDB*.bak
-    rm $OUTDIR/*KEYCODE*.bak
-    mv $KEYCODE $KEYCODE.bak
-    mv $GDB $GDB.bak
-    mv $GDB.png $GDB.png.bak
-    mv $GDB..png $GDB..png.bak
-    #rm $OUTDIR/KEYCODE.$SEC
-    #rm $OUTDIR/GDB.$SEC
-  )
+  sleep 0.3
+  kill -9 $CHILD_PID
+  # Or use "exited normally":
+  if grep " signal SIG[^T]" $GDB 
+  then
+    extras_save
+    LAST_CRASH_SEC=$SEC
+    echo $LAST_CRASH_SEC > $OUTDIR/last_crash_sec
+    if [ ! -z "$TAIL_LINES" ]
+    then
+    	LAST_EVENT="$SEC"
+	echo Reproducible > $OUTDIR/Reproducible
+    fi
+    TAIL_LINES="" 
+    if [ -z "$REPLAYFILE" ]
+    then
+	echo ATTEMPTING TO REPLAY
+	try_replay
+    else
+    	export KEYTEST_INFILE=$KEYCODEpure
+	NUM_KEYCODES=`wc -l < $KEYCODEpure`
+	echo NUM_KEYCODES $NUM_KEYCODES, was $LAST_NUM_KEYCODES
+	if [ "$NUM_KEYCODES" != "$LAST_NUM_KEYCODES" ]
+	then
+		LAST_EVENT="$SEC"
+		LAST_NUM_KEYCODES=$NUM_KEYCODES
+		echo "Hooray! we have eleminated some keycodes"
+	fi
+    fi
+  else
+    rm -r $BAK/* 
+    mv $OUTDIR/$SEC.* $BAK/
+    if [ ! -z "$TAIL_LINES" ]
+     then
+        echo TTL3 $TAIL_LINES
+	echo MAX_TAIL_LINES "$MAX_TAIL_LINES"
+	TAIL_LINES=$(($TAIL_LINES*2))
+        echo TTL4 $TAIL_LINES
+	if [ "$TAIL_LINES" -ge "0$MAX_TAIL_LINES" -a ! -z "$MAX_TAIL_LINES" ]
+	then
+		echo Giving up because $TAIL_LINES '>' $MAX_TAIL_LINES
+		echo Irreproducible > $OUTDIR/Irreproducible
+		full_exit
+	fi
+    fi
+    echo TTL2 $TAIL_LINES
+  fi
 done
 ) 2>&1 |tee $OUTDIR/log

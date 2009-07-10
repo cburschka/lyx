@@ -1,0 +1,12 @@
+HTML out with links.
+Try to get KEYCODES to be repeatible and useable (DONE)
+semi protect home dir for repeatibility.
+Support mouse clicks.
+Do not spend hours reproducing a bug that has already been reproduced. (DONE)
+Support other failure modes (e.g. freezes and Python tracebacks)
+Tally of failures vs successes
+If come across different bug when trying to reproduce another, reproduce *both* bugs
+Add report as to how easy bug is to reproduce
+Try e.g. electric fence
+Automatically update from svn every 24 hours, recheck if bugs have been fixed.
+Make it easy to use Xvfb instead of VM.

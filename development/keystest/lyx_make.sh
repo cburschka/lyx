@@ -11,7 +11,7 @@ if ! [ -d $LT ]; then
 fi
 
 mkdir -p $LT/out
-if which wmctrl xvkbd bash xterm python
+if which wmctrl xvkbd bash xterm python xclip
 then 
 
  if [ a"$1" == a--update ]; then

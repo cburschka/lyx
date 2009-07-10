@@ -1,0 +1,9 @@
+#!/bin/sh
+# Searchs for a string in all the final versions 
+
+for f in `find . -name "last_crash_sec"`
+do	
+	SEC=`cat $f`
+	g=`echo $f| sed s/last_crash_sec/$SEC/`
+	grep "$1" $g*
+done
