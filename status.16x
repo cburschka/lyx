@@ -196,3 +196,6 @@ What's new
 - Fix small documentation bug in configure.py (bug 5881).
 
 - LyX now recognizes both elyxer and elyxer.py.
+
+- SCons: assertions are now always disabled in mode=release and
+  enabled in mode=debug.
