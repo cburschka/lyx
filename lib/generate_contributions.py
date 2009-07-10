@@ -456,6 +456,14 @@ contributers = [
                  "",
                  u"Catalan translation"),
 
+     contributer(u"Sergiu Carpov",
+                 "ssmiler () gmail ! com",
+                 "GPL",
+                 "Re: Bug #5522",
+                 "m=124721248310586",
+                 "10 July 2009",
+                 u"Bug fixes"),
+
      contributer(u"Humberto Nicolás Castejón",
                  "beconico () gmail ! com",
                  "GPL",
