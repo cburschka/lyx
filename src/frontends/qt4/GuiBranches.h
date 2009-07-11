@@ -63,6 +63,7 @@ protected Q_SLOTS:
 	void on_renamePB_pressed();
 	void on_activatePB_pressed();
 	void on_branchesTW_itemDoubleClicked(QTreeWidgetItem *, int);
+	void on_branchesTW_itemSelectionChanged();
 	void on_colorPB_clicked();
 	void on_unknownPB_pressed();
 	void addUnknown();

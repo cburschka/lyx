@@ -108,6 +108,10 @@ void GuiBranches::updateView()
 		}
 	}
 	unknownPB->setEnabled(!unknown_branches_.isEmpty());
+	bool const have_sel =
+		!branchesTW->selectedItems().isEmpty();
+	removePB->setEnabled(have_sel);
+	renamePB->setEnabled(have_sel);
 	// emit signal
 	changed();
 }
@@ -154,7 +158,9 @@ void GuiBranches::on_renamePB_pressed()
 		docstring newname;
 		docstring const oldname = qstring_to_ucs4(sel_branch);
 		bool success = false;
-		if (Alert::askForText(newname, _("Enter new branch name"))) {
+		if (Alert::askForText(newname, _("Enter new branch name"), oldname)) {
+			if (newname.empty() || oldname == newname)
+				return;
 			if (branchlist_.find(newname)) {
 				docstring text = support::bformat(
 					_("A branch with the name \"%1$s\" already exists.\n"
@@ -190,6 +196,15 @@ void GuiBranches::on_branchesTW_itemDoubleClicked(QTreeWidgetItem * item, int co
 		toggleBranch(item);
 	else
 		toggleColor(item);
+}
+
+
+void GuiBranches::on_branchesTW_itemSelectionChanged()
+{
+	bool const have_sel =
+		!branchesTW->selectedItems().isEmpty();
+	removePB->setEnabled(have_sel);
+	renamePB->setEnabled(have_sel);
 }
 
 
