@@ -571,8 +571,10 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 					align = LYX_ALIGN_CENTER;
 					break;
 				case Inset::Inline:
-				case Inset::AlignRight:
 					// unchanged (use align)
+					break;
+				case Inset::AlignRight:
+					align = LYX_ALIGN_RIGHT;
 					break;
 			}
 		}
