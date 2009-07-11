@@ -935,6 +935,7 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_NOTES_MUTATE:
 	case LFUN_ALL_INSETS_TOGGLE:
 	case LFUN_STATISTICS:
+	case LFUN_BRANCH_ADD_INSERT:
 		flag.setEnabled(true);
 		break;
 
@@ -1503,6 +1504,29 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		processUpdateFlags(Update::Force | Update::FitCursor);
 		break;
 	}
+
+	case LFUN_BRANCH_ADD_INSERT: {
+		docstring branch_name = from_utf8(cmd.getArg(0));
+		if (branch_name.empty())
+			if (!Alert::askForText(branch_name, _("Branch name")) ||
+						branch_name.empty())
+				break;
+
+		DispatchResult drtmp;
+		buffer_.dispatch(FuncRequest(LFUN_BRANCH_ADD, branch_name), drtmp);
+		if (drtmp.error()) {
+			Alert::warning(_("Branch already exists"), drtmp.message());
+			break;
+		}
+		BranchList & branch_list = buffer_.params().branchlist();
+		Branch const * branch = branch_list.find(branch_name);
+		string const x11hexname = X11hexname(branch->color());
+		docstring const str = branch_name + ' ' + from_ascii(x11hexname);
+		lyx::dispatch(FuncRequest(LFUN_SET_COLOR, str));
+		lyx::dispatch(FuncRequest(LFUN_BRANCH_INSERT, branch_name));
+		break;
+	}
+
 
 	default:
 		return false;

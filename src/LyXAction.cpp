@@ -3327,6 +3327,17 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_BRANCHES_RENAME, "branches-rename", Noop, Buffer },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_BRANCH_ADD_INSERT
+ * \li Action: Create new branch and directly put the branch inset into
+               the document.
+ * \li Syntax: branch-add-insert [<NAME>]
+ * \li Params: <NAME>: Branch name. If it is not specified, you will be asked.
+ * \li Origin: sanda, 10 Jul 2009
+ * \endvar
+ */
+		{ LFUN_BRANCH_ADD_INSERT, "branch-add-insert", Noop, Buffer },
+
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_LABEL_COPY_AS_REF

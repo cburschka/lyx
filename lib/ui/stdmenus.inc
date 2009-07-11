@@ -463,6 +463,8 @@ Menuset
 
 	Menu "insert_branches"
 		Branches
+		Separator
+		Item "Insert New Branch...|I" "branch-add-insert"
 	End
 	
 	Menu "insert_phantom"
