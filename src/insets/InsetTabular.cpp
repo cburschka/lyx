@@ -1326,10 +1326,14 @@ void Tabular::write(ostream & os) const
 	os << "<features"
 	   << write_attribute("rotate", rotate)
 	   << write_attribute("booktabs", use_booktabs)
-	   << write_attribute("islongtable", is_long_tabular)
-	   << write_attribute("tabularvalignment", tabular_valignment)
-	   << write_attribute("longtabularalignment", longtabular_alignment)
-	   << write_attribute("firstHeadTopDL", endfirsthead.topDL)
+	   << write_attribute("islongtable", is_long_tabular);
+	// longtables cannot be aligned vertically
+    if (!is_long_tabular)
+	   os << write_attribute("tabularvalignment", tabular_valignment);
+	if (is_long_tabular)
+	   os << write_attribute("longtabularalignment",
+	                         longtabular_alignment);
+	os << write_attribute("firstHeadTopDL", endfirsthead.topDL)
 	   << write_attribute("firstHeadBottomDL", endfirsthead.bottomDL)
 	   << write_attribute("firstHeadEmpty", endfirsthead.empty)
 	   << write_attribute("headTopDL", endhead.topDL)
@@ -4166,6 +4170,8 @@ Inset::DisplayType InsetTabular::display() const
 				return AlignCenter;
 			case Tabular::LYX_LONGTABULAR_ALIGN_RIGHT:
 				return AlignRight;
+			default:
+				return AlignCenter;
 			}
 		} else
 			return Inline;
