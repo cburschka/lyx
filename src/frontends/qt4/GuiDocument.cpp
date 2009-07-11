@@ -2452,6 +2452,9 @@ void GuiDocument::paramsToDialog()
 	// Make sure that the bc is in the INITIAL state
 	if (bc().policy().buttonStatus(ButtonPolicy::RESTORE))
 		bc().restore();
+
+	// clear changed branches cache
+	changedBranches_.clear();
 }
 
 
@@ -2561,7 +2564,6 @@ bool GuiDocument::initialiseParams(string const &)
 	//selected, and that we don't have conflicts. If so, we could
 	//at least pop up a warning.
 	paramsToDialog();
-	changedBranches_.clear();
 	return true;
 }
 
@@ -2642,6 +2644,8 @@ void GuiDocument::dispatchParams()
 
 	// rename branches in the document
 	executeBranchRenaming();
+	// and clear changed branches cache
+	changedBranches_.clear();
 
 	// Apply the BufferParams. Note that this will set the base class
 	// and then update the buffer's layout.
