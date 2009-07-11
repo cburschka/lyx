@@ -207,38 +207,48 @@ def revert_tabularvalign(document):
            document.warning("Malformed LyX document: Could not find end of tabular.")
            i = j
            continue
+       # don't set a box for longtables, only delete tabularvalignment
+       p = find_token(document.body, "<features islongtable=", i)
+       if p > -1:
+           q = document.body[p].find("tabularvalignment")
+           if q > -1:
+               document.body[p] = document.body[p][:q-1]
+               document.body[p] = document.body[p] + '>'
+           i = i + 1
 
-       k = find_token(document.body, "<features tabularvalignment=", i)
-       if k == -1:
-           i = j
-           continue
+       # when no longtable
+       if p == -1:
+         k = find_token(document.body, "<features tabularvalignment=", i)
+         if k == -1:
+             i = j
+             continue
 
-       # which valignment is specified?
-       tabularvalignment_re = re.compile(r'<features tabularvalignment="(top|bottom)">')
-       m = tabularvalignment_re.match(document.body[k])
-       if not m:
-           i = j
-           continue
+         # which valignment is specified?
+         tabularvalignment_re = re.compile(r'<features tabularvalignment="(top|bottom)">')
+         m = tabularvalignment_re.match(document.body[k])
+         if not m:
+             i = j
+             continue
 
-       tabularvalignment = m.group(1)
+         tabularvalignment = m.group(1)
 
-       subst = ['\\end_layout', '\\end_inset']
-       document.body[j+1:j+1] = subst # just inserts those lines
-       subst = ['\\begin_inset Box Frameless',
-           'position "' + tabularvalignment[0] +'"',
-           'hor_pos "c"',
-           'has_inner_box 1',
-           'inner_pos "c"',
-           'use_parbox 0',
-           'width "0col%"',
-           'special "none"',
-           'height "1in"',
-           'height_special "totalheight"',
-           'status open',
-           '',
-           '\\begin_layout Plain Layout']
-       document.body[i:i] = subst # this just inserts the array at i
-       i += len(subst) + 2 # adjust i to save a few cycles
+         subst = ['\\end_layout', '\\end_inset']
+         document.body[j+1:j+1] = subst # just inserts those lines
+         subst = ['\\begin_inset Box Frameless',
+             'position "' + tabularvalignment[0] +'"',
+             'hor_pos "c"',
+             'has_inner_box 1',
+             'inner_pos "c"',
+             'use_parbox 0',
+             'width "0col%"',
+             'special "none"',
+             'height "1in"',
+             'height_special "totalheight"',
+             'status open',
+             '',
+             '\\begin_layout Plain Layout']
+         document.body[i:i] = subst # this just inserts the array at i
+         i += len(subst) + 2 # adjust i to save a few cycles
 
 
 def revert_phantom(document):
