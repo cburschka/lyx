@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>436</width>
-    <height>175</height>
+    <height>169</height>
    </rect>
   </property>
   <property name="sizePolicy" >
@@ -30,50 +30,7 @@
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="0" column="0" >
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <widget class="QRadioButton" name="childRB" >
-       <property name="toolTip" >
-        <string>Click to edit the settings of the child document</string>
-       </property>
-       <property name="text" >
-        <string>Child Settings</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QRadioButton" name="masterRB" >
-       <property name="toolTip" >
-        <string>Click to edit the settings of the Master document</string>
-       </property>
-       <property name="text" >
-        <string>Master Settings</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" >
-        <size>
-         <width>181</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-    </layout>
-   </item>
-   <item row="3" column="0" >
+   <item row="2" column="0" >
     <layout class="QHBoxLayout" >
      <property name="margin" >
       <number>0</number>
@@ -133,7 +90,7 @@
      </item>
     </layout>
    </item>
-   <item row="2" column="0" >
+   <item row="1" column="0" >
     <layout class="QHBoxLayout" >
      <property name="margin" >
       <number>0</number>
@@ -195,7 +152,7 @@
      </item>
     </layout>
    </item>
-   <item row="1" column="0" >
+   <item row="0" column="0" >
     <widget class="lyx::frontend::PanelStack" native="1" name="docPS" />
    </item>
   </layout>
