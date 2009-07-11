@@ -163,6 +163,9 @@ TabularFeature tabularFeature[] =
 	{ Tabular::TABULAR_VALIGN_TOP, "tabular-valign-top"},
 	{ Tabular::TABULAR_VALIGN_MIDDLE, "tabular-valign-middle"},
 	{ Tabular::TABULAR_VALIGN_BOTTOM, "tabular-valign-bottom"},
+	{ Tabular::LONGTABULAR_ALIGN_LEFT, "longtabular-align-left" },
+	{ Tabular::LONGTABULAR_ALIGN_CENTER, "longtabular-align-center" },
+	{ Tabular::LONGTABULAR_ALIGN_RIGHT, "longtabular-align-right" },	
 	{ Tabular::LAST_ACTION, "" }
 };
 
@@ -257,6 +260,20 @@ string const tostr(LyXAlignment const & num)
 }
 
 
+string const tostr(Tabular::HAlignment const & num)
+{
+	switch (num) {
+	case Tabular::LYX_LONGTABULAR_ALIGN_LEFT:
+		return "left";
+	case Tabular::LYX_LONGTABULAR_ALIGN_CENTER:
+		return "center";
+	case Tabular::LYX_LONGTABULAR_ALIGN_RIGHT:
+		return "right";
+	}
+	return string();
+}
+
+
 string const tostr(Tabular::VAlignment const & num)
 {
 	switch (num) {
@@ -298,6 +315,20 @@ bool string2type(string const str, LyXAlignment & num)
 		num = LYX_ALIGN_CENTER;
 	else if (str == "right")
 		num = LYX_ALIGN_RIGHT;
+	else
+		return false;
+	return true;
+}
+
+
+bool string2type(string const str, Tabular::HAlignment & num)
+{
+	if (str == "left")
+		num = Tabular::LYX_LONGTABULAR_ALIGN_LEFT;
+	else if (str == "center" )
+		num = Tabular::LYX_LONGTABULAR_ALIGN_CENTER;
+	else if (str == "right")
+		num = Tabular::LYX_LONGTABULAR_ALIGN_RIGHT;
 	else
 		return false;
 	return true;
@@ -387,6 +418,14 @@ bool getTokenValue(string const & str, char const * token, int & num)
 
 
 bool getTokenValue(string const & str, char const * token, LyXAlignment & num)
+{
+	string tmp;
+	return getTokenValue(str, token, tmp) && string2type(tmp, num);
+}
+
+
+bool getTokenValue(string const & str, char const * token,
+				   Tabular::HAlignment & num)
 {
 	string tmp;
 	return getTokenValue(str, token, tmp) && string2type(tmp, num);
@@ -598,6 +637,7 @@ void Tabular::init(Buffer & buf, row_type rows_arg,
 	updateIndexes();
 	is_long_tabular = false;
 	tabular_valignment = LYX_VALIGN_MIDDLE;
+	longtabular_alignment = LYX_LONGTABULAR_ALIGN_CENTER;
 	rotate = false;
 	use_booktabs = false;
 	size_t row_count = row_info.size();
@@ -1288,6 +1328,7 @@ void Tabular::write(ostream & os) const
 	   << write_attribute("booktabs", use_booktabs)
 	   << write_attribute("islongtable", is_long_tabular)
 	   << write_attribute("tabularvalignment", tabular_valignment)
+	   << write_attribute("longtabularalignment", longtabular_alignment)
 	   << write_attribute("firstHeadTopDL", endfirsthead.topDL)
 	   << write_attribute("firstHeadBottomDL", endfirsthead.bottomDL)
 	   << write_attribute("firstHeadEmpty", endfirsthead.empty)
@@ -1387,6 +1428,7 @@ void Tabular::read(Lexer & lex)
 	getTokenValue(line, "booktabs", use_booktabs);
 	getTokenValue(line, "islongtable", is_long_tabular);
 	getTokenValue(line, "tabularvalignment", tabular_valignment);
+	getTokenValue(line, "longtabularalignment", longtabular_alignment);
 	getTokenValue(line, "firstHeadTopDL", endfirsthead.topDL);
 	getTokenValue(line, "firstHeadBottomDL", endfirsthead.bottomDL);
 	getTokenValue(line, "firstHeadEmpty", endfirsthead.empty);
@@ -2313,20 +2355,30 @@ int Tabular::latex(odocstream & os, OutputParams const & runparams) const
 		os << "\\begin{sideways}\n";
 		++ret;
 	}
-	if (is_long_tabular)
+	if (is_long_tabular) {
 		os << "\\begin{longtable}";
-	else
+		switch (longtabular_alignment) {
+		case LYX_LONGTABULAR_ALIGN_LEFT:
+			os << "[l]";
+			break;
+		case LYX_LONGTABULAR_ALIGN_CENTER:
+			break;
+		case LYX_LONGTABULAR_ALIGN_RIGHT:
+			os << "[r]";
+			break;
+		}
+	} else {
 		os << "\\begin{tabular}";
-
-	switch (tabular_valignment) {
+		switch (tabular_valignment) {
 		case LYX_VALIGN_TOP:
 			os << "[t]";
+			break;
+		case LYX_VALIGN_MIDDLE:
 			break;
 		case LYX_VALIGN_BOTTOM:
 			os << "[b]";
 			break;
-		case LYX_VALIGN_MIDDLE:
-			break;
+		}
 	}
 	
 	os << "{";
@@ -3083,7 +3135,7 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 	BufferView * bv = pi.base.bv;
 	Cursor & cur = pi.base.bv->cursor();
 
-	// FIXME: As the full backrgound is painted in drawSelection(),
+	// FIXME: As the full background is painted in drawSelection(),
 	// we have no choice but to do a full repaint for the Text cells.
 	pi.full_repaint = true;
 
@@ -3915,6 +3967,19 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 				== Tabular::LYX_VALIGN_BOTTOM);
 			break;
 
+		case Tabular::LONGTABULAR_ALIGN_LEFT:
+			status.setOnOff(tabular.longtabular_alignment 
+				== Tabular::LYX_LONGTABULAR_ALIGN_LEFT);
+			break;
+		case Tabular::LONGTABULAR_ALIGN_CENTER:
+			status.setOnOff(tabular.longtabular_alignment 
+				== Tabular::LYX_LONGTABULAR_ALIGN_CENTER);
+			break;
+		case Tabular::LONGTABULAR_ALIGN_RIGHT:
+			status.setOnOff(tabular.longtabular_alignment 
+				== Tabular::LYX_LONGTABULAR_ALIGN_RIGHT);
+			break;
+
 		case Tabular::UNSET_ROTATE_TABULAR:
 			status.setOnOff(!tabular.rotate);
 			break;
@@ -4088,6 +4153,22 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 		// we try to handle this event in the insets dispatch function.
 		return cell(cur.idx())->getStatus(cur, cmd, status);
 	}
+}
+
+
+Inset::DisplayType InsetTabular::display() const
+{
+		if (tabular.is_long_tabular) {
+			switch (tabular.longtabular_alignment) {
+			case Tabular::LYX_LONGTABULAR_ALIGN_LEFT:
+				return AlignLeft;
+			case Tabular::LYX_LONGTABULAR_ALIGN_CENTER:
+				return AlignCenter;
+			case Tabular::LYX_LONGTABULAR_ALIGN_RIGHT:
+				return AlignRight;
+			}
+		} else
+			return Inline;
 }
 
 
@@ -4702,6 +4783,20 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	case Tabular::TABULAR_VALIGN_BOTTOM:
 		tabular.tabular_valignment = Tabular::LYX_VALIGN_BOTTOM;
 		break;
+
+	case Tabular::LONGTABULAR_ALIGN_LEFT:
+		tabular.longtabular_alignment = Tabular::LYX_LONGTABULAR_ALIGN_LEFT;
+		break;
+
+	case Tabular::LONGTABULAR_ALIGN_CENTER:
+		tabular.longtabular_alignment = Tabular::LYX_LONGTABULAR_ALIGN_CENTER;
+		break;
+
+	case Tabular::LONGTABULAR_ALIGN_RIGHT:
+		tabular.longtabular_alignment = Tabular::LYX_LONGTABULAR_ALIGN_RIGHT;
+		break;
+
+		
 
 	case Tabular::SET_ROTATE_CELL:
 		for (row_type i = sel_row_start; i <= sel_row_end; ++i)

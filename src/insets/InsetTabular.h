@@ -184,6 +184,12 @@ public:
 		///
 		TABULAR_VALIGN_BOTTOM,
 		///
+		LONGTABULAR_ALIGN_LEFT,
+		///
+		LONGTABULAR_ALIGN_CENTER,
+		///
+		LONGTABULAR_ALIGN_RIGHT,
+		///
 		LAST_ACTION
 	};
 	///
@@ -204,6 +210,15 @@ public:
 		LYX_VALIGN_BOTTOM = 1,
 		///
 		LYX_VALIGN_MIDDLE = 2
+	};
+	///
+	enum HAlignment {
+		///
+		LYX_LONGTABULAR_ALIGN_LEFT = 0,
+		///
+		LYX_LONGTABULAR_ALIGN_CENTER = 1,
+		///
+		LYX_LONGTABULAR_ALIGN_RIGHT = 2
 	};
 
 	enum BoxType {
@@ -569,6 +584,8 @@ public:
 	VAlignment tabular_valignment;
 	//
 	// for long tabulars
+	///
+	HAlignment longtabular_alignment;
 	//
 	bool is_long_tabular;
 	/// endhead data
@@ -750,7 +767,7 @@ public:
 	    insets that may contain several paragraphs */
 	bool noFontChange() const { return true; }
 	///
-	DisplayType display() const { return tabular.is_long_tabular ? AlignCenter : Inline; }
+	DisplayType display() const;
 	///
 	int latex(odocstream &, OutputParams const &) const;
 	///

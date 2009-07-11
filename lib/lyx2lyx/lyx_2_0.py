@@ -727,6 +727,23 @@ def revert_applemac(document):
             document.header[i] = "\\encoding auto"
 
 
+def revert_longtable_align(document):
+    " Remove longtable alignment setting "
+    i = 0
+    j = 0
+    while True:
+      i = find_token(document.body, "\\begin_inset Tabular", i)
+      if i == -1:
+          break
+      # the alignment is 2 lines below \\begin_inset Tabular 
+      j = document.body[i+2].find("longtabularalignment")
+      if j == -1:
+          break
+      document.body[i+2] = document.body[i+2][:j-1]
+      document.body[i+2] = document.body[i+2] + '>'
+      i = i + 1
+
+
 ##
 # Conversion hub
 #
@@ -748,10 +765,12 @@ convert = [[346, []],
            [359, [convert_nomencl_width]],
            [360, []],
            [361, []],
-           [362, []]
+           [362, []],
+           [363, []]
           ]
 
-revert =  [[361, [revert_applemac]],
+revert =  [[362, [revert_longtable_align]],
+           [361, [revert_applemac]],
            [360, []],
            [359, [revert_nomencl_cwidth]],
            [358, [revert_nomencl_width]],

@@ -49,6 +49,7 @@ private Q_SLOTS:
 	void rotateCell();
 	void hAlign_changed(int align);
 	void vAlign_changed(int align);
+	void tableAlignment_changed(int align);
 	void specialAlignment_changed();
 	void width_changed();
 	void longTabular();
@@ -67,6 +68,7 @@ private Q_SLOTS:
 	void ltLastFooterBorderAbove_clicked();
 	void ltLastFooterBorderBelow_clicked();
 	void ltLastFooterEmpty_clicked();
+	void ltAlignment_clicked();
 	void on_captionStatusCB_toggled();
 
 private:

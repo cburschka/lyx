@@ -82,6 +82,8 @@ GuiTabular::GuiTabular(GuiView & lv)
 		longtableGB, SLOT(setEnabled(bool)));
 	connect(longTabularCB, SIGNAL(toggled(bool)),
 		newpageCB, SLOT(setEnabled(bool)));
+	connect(longTabularCB, SIGNAL(toggled(bool)),
+		alignmentGB, SLOT(setEnabled(bool)));
 	connect(hAlignCB, SIGNAL(activated(int)),
 		this, SLOT(hAlign_changed(int)));
 	connect(vAlignCB, SIGNAL(activated(int)),
@@ -138,9 +140,17 @@ GuiTabular::GuiTabular(GuiView & lv)
 		this, SLOT(rotateTabular()));
 	connect(rotateCellCB, SIGNAL(clicked()),
 		this, SLOT(rotateCell()));
+	connect(TableAlignCB, SIGNAL(activated(int)),
+		this, SLOT(tableAlignment_changed(int)));
 	connect(longTabularCB, SIGNAL(clicked()),
 		this, SLOT(longTabular()));
-
+	connect(leftRB, SIGNAL(clicked()),
+		this, SLOT(ltAlignment_clicked()));
+	connect(centerRB, SIGNAL(clicked()),
+		this, SLOT(ltAlignment_clicked()));
+	connect(rightRB, SIGNAL(clicked()),
+		this, SLOT(ltAlignment_clicked()));
+		
 	bc().setPolicy(ButtonPolicy::IgnorantPolicy);
 	
 	bc().addReadOnly(topspaceED);
@@ -163,6 +173,7 @@ GuiTabular::GuiTabular(GuiView & lv)
 	bc().addReadOnly(widthUnit);
 	bc().addReadOnly(hAlignCB);
 	bc().addReadOnly(vAlignCB);
+	bc().addReadOnly(TableAlignCB);
 	bc().addReadOnly(borderSetPB);
 	bc().addReadOnly(borderUnsetPB);
 	bc().addReadOnly(borders);
@@ -182,7 +193,10 @@ GuiTabular::GuiTabular(GuiView & lv)
 	bc().addReadOnly(lastfooterBorderBelowCB);
 	bc().addReadOnly(lastfooterNoContentsCB);
 	bc().addReadOnly(newpageCB);
-
+	bc().addReadOnly(leftRB);
+	bc().addReadOnly(centerRB);
+	bc().addReadOnly(rightRB);
+	
 	// initialize the length validator
 	bc().addCheckedLineEdit(widthED, fixedWidthColLA);
 	bc().addCheckedLineEdit(topspaceED, topspaceLA);
@@ -420,6 +434,19 @@ void GuiTabular::vAlign_changed(int align)
 }
 
 
+void GuiTabular::tableAlignment_changed(int align)
+{
+	switch (align) {
+		case 0:	set(Tabular::TABULAR_VALIGN_TOP);
+			break;
+		case 1: set(Tabular::TABULAR_VALIGN_MIDDLE);
+			break;
+		case 2: set(Tabular::TABULAR_VALIGN_BOTTOM);
+			break;
+	}
+}
+
+
 void GuiTabular::longTabular()
 {
 	longTabular(longTabularCB->isChecked());
@@ -583,6 +610,18 @@ void GuiTabular::ltLastFooterEmpty_clicked()
 		set(Tabular::SET_LTLASTFOOT, "empty");
 	else
 		set(Tabular::UNSET_LTLASTFOOT, "empty");
+	changed();
+}
+
+
+void GuiTabular::ltAlignment_clicked()
+{
+	if (leftRB->isChecked())
+		set(Tabular::LONGTABULAR_ALIGN_LEFT);
+	else if (centerRB->isChecked())
+		set(Tabular::LONGTABULAR_ALIGN_CENTER);
+	else if (rightRB->isChecked())
+		set(Tabular::LONGTABULAR_ALIGN_RIGHT);
 	changed();
 }
 
@@ -787,6 +826,23 @@ void GuiTabular::updateContents()
 	hAlignCB->setEnabled(true);
 	vAlignCB->setEnabled(!pwidth.zero());
 
+	int tableValign = 0;
+	switch (tabular_.tabular_valignment) {
+	case Tabular::LYX_VALIGN_TOP:
+		tableValign = 0;
+		break;
+	case Tabular::LYX_VALIGN_MIDDLE:
+		tableValign = 1;
+		break;
+	case Tabular::LYX_VALIGN_BOTTOM:
+		tableValign = 2;
+		break;
+	default:
+		tableValign = 0;
+		break;
+	}
+	TableAlignCB->setCurrentIndex(tableValign);
+
 	if (!tabular_.is_long_tabular) {
 		headerStatusCB->setChecked(false);
 		headerBorderAboveCB->setChecked(false);
@@ -808,6 +864,21 @@ void GuiTabular::updateContents()
 		captionStatusCB->setChecked(false);
 		captionStatusCB->blockSignals(false);
 		return;
+	}
+
+	switch (tabular_.longtabular_alignment) {
+	case Tabular::LYX_LONGTABULAR_ALIGN_LEFT:
+		leftRB->setChecked(true);
+		break;
+	case Tabular::LYX_LONGTABULAR_ALIGN_CENTER:
+		centerRB->setChecked(true);
+		break;
+	case Tabular::LYX_LONGTABULAR_ALIGN_RIGHT:
+		rightRB->setChecked(true);
+		break;
+	default:
+		centerRB->setChecked(true);
+		break;
 	}
 	captionStatusCB->blockSignals(true);
 	captionStatusCB->setChecked(tabular_.ltCaption(row));
