@@ -2036,6 +2036,7 @@ void GuiDocument::applyView()
 	bp_.footskip = widgetsToLength(m->footskipLE, m->footskipUnit);
 	bp_.columnsep = widgetsToLength(m->columnsepLE, m->columnsepUnit);
 
+	// branches
 	branchesModule->apply(bp_);
 
 	// PDF support
@@ -2642,11 +2643,6 @@ void GuiDocument::dispatchParams()
 	// This must come first so that a language change is correctly noticed
 	setLanguage();
 
-	// rename branches in the document
-	executeBranchRenaming();
-	// and clear changed branches cache
-	changedBranches_.clear();
-
 	// Apply the BufferParams. Note that this will set the base class
 	// and then update the buffer's layout.
 	dispatch_bufferparams(*this, params(), LFUN_BUFFER_PARAMS_APPLY);
@@ -2690,6 +2686,11 @@ void GuiDocument::dispatchParams()
 		dispatch(FuncRequest(LFUN_ALL_INSETS_TOGGLE,
 			"assign branch"));
 	}
+	// rename branches in the document
+	executeBranchRenaming();
+	// and clear changed branches cache
+	changedBranches_.clear();
+	
 	// Generate the colours requested by indices.
 	IndicesList & indiceslist = params().indiceslist();
 	if (!indiceslist.empty()) {
