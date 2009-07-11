@@ -2438,6 +2438,7 @@ void Buffer::renameBranches(docstring const & oldname, docstring const & newname
 				// get buffer of external file
 				InsetBranch & br =
 					static_cast<InsetBranch &>(*iit->inset);
+				undo().recordUndo(it);
 				if (br.branch() == oldname)
 					br.rename(newname);
 				continue;
