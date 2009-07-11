@@ -127,7 +127,7 @@ GuiTabular::GuiTabular(GuiView & lv)
 		this, SLOT(specialAlignment_changed()));
 	connect(widthED, SIGNAL(editingFinished()),
 		this, SLOT(width_changed()));
-	connect(widthUnit, SIGNAL(selectionChanged(lyx::Length::UNIT)),
+	connect(widthUnitCB, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(width_changed()));
 	connect(closePB, SIGNAL(clicked()),
 		this, SLOT(close_clicked()));
@@ -173,7 +173,7 @@ GuiTabular::GuiTabular(GuiView & lv)
 	bc().addReadOnly(rotateTabularCB);
 	bc().addReadOnly(specialAlignmentED);
 	bc().addReadOnly(widthED);
-	bc().addReadOnly(widthUnit);
+	bc().addReadOnly(widthUnitCB);
 	bc().addReadOnly(hAlignCB);
 	bc().addReadOnly(vAlignCB);
 	bc().addReadOnly(TableAlignCB);
@@ -382,7 +382,7 @@ void GuiTabular::specialAlignment_changed()
 void GuiTabular::width_changed()
 {
 	changed();
-	string const width = widgetsToLength(widthED, widthUnit);
+	string const width = widgetsToLength(widthED, widthUnitCB);
 	setWidth(width);
 }
 
@@ -771,11 +771,11 @@ void GuiTabular::updateContents()
 	string colwidth;
 	if (!pwidth.zero())
 		colwidth = pwidth.asString();
-	lengthToWidgets(widthED, widthUnit,
+	lengthToWidgets(widthED, widthUnitCB,
 		colwidth, default_unit);
 
 	widthED->setEnabled(!isReadonly);
-	widthUnit->setEnabled(!isReadonly);
+	widthUnitCB->setEnabled(!isReadonly);
 
 	hAlignCB->clear();
 	hAlignCB->addItem(qt_("Left"));
@@ -1016,7 +1016,7 @@ void GuiTabular::closeGUI()
 	// apply the fixed width values
 	size_t const cell = getActiveCell();
 	bool const multicol = tabular_.isMultiColumn(cell);
-	string width = widgetsToLength(widthED, widthUnit);
+	string width = widgetsToLength(widthED, widthUnitCB);
 	string width2;
 
 	Length llen = getColumnPWidth(tabular_, cell);
