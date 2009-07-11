@@ -1508,7 +1508,13 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type c)
 		}
 
 		// leave macro mode and try again if necessary
-		cur.macroModeClose();
+		if (cur.macroModeClose()) {
+			MathAtom const atom = cur.prevAtom();
+			if (atom->asNestInset() && atom->isActive()) {
+				cur.posBackward();
+				cur.pushBackward(*cur.nextInset());
+			}
+		}
 		if (c == '{')
 			cur.niceInsert(MathAtom(new InsetMathBrace));
 		else if (c != ' ')
