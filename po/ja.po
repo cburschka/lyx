@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-07-09 11:52+0200\n"
-"PO-Revision-Date: 2009-04-19 00:02+0900\n"
+"POT-Creation-Date: 2009-07-10 09:24+0900\n"
+"PO-Revision-Date: 2009-07-11 23:55+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-doc@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -124,11 +124,11 @@ msgstr "キー(&K):"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:19
 msgid "Citation Style"
-msgstr "引用形式"
+msgstr "引用様式"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:28
 msgid "Use BibTeX's default numerical styles"
-msgstr "BibTeX既定の付番形式を使う"
+msgstr "BibTeX既定の付番様式を使う"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:31
 msgid "&Default (numerical)"
@@ -136,7 +136,7 @@ msgstr "既定値（連番）(&D)"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:38
 msgid "Use the natbib styles for natural sciences and arts"
-msgstr "自然科学及び教養分野向けのnatbib形式を使う"
+msgstr "自然科学及び教養分野向けのnatbib様式を使う"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:41
 msgid "&Natbib"
@@ -144,11 +144,11 @@ msgstr "&NatBib"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:59
 msgid "Natbib &style:"
-msgstr "Natbib形式(&S):"
+msgstr "Natbib様式(&S):"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:97
 msgid "Use the jurabib styles for law and humanities"
-msgstr "法律及び人文科学向けのjurabib形式を使用する"
+msgstr "法律及び人文科学向けのjurabib様式を使用する"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:100
 msgid "&Jurabib"
@@ -156,46 +156,43 @@ msgstr "&Jurabib"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:110
 msgid "Select this if you want to split your bibliography into sections"
-msgstr "参考文献を節ごとに分けたいときに選ぶ"
+msgstr "書誌情報を節ごとに分けたいときに選ぶ"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:113
 msgid "S&ectioned bibliography"
-msgstr "節分けされた参考文献(&E)"
+msgstr "節分けされた書誌情報(&E)"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:120
-msgid ""
-"Here you can define an alternative program to or specific options of bibtex."
+msgid "Here you can define an alternative program to or specific options of bibtex."
 msgstr ""
+"ここでは、bibtexの代替プログラムを指定したり、bibtexの特定のオプションを指定"
+"したりすることができます。"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:123
 #: src/frontends/qt4/ui/PrefLatexUi.ui:119
-#, fuzzy
 msgid "Bibliography generation"
-msgstr "参考文献標題"
+msgstr "書誌情報の生成"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:134 src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:130
-#: src/frontends/qt4/ui_IndicesUi.h:193
-#, fuzzy
 msgid "&Processor:"
-msgstr "進む(&P)"
+msgstr "処理器(&P):"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:144 src/frontends/qt4/ui/IndicesUi.ui:43
-#: src/frontends/qt4/ui_IndicesUi.h:195
-#, fuzzy
 msgid "Select a processor"
-msgstr "ファイルを選んでください"
+msgstr "処理器を選んでください"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:168 src/frontends/qt4/ui/IndicesUi.ui:54
 #: src/frontends/qt4/ui/PrefLatexUi.ui:147 src/frontends/qt4/GuiPrefs.cpp:646
-#: src/frontends/qt4/GuiPrefs.cpp:738 src/frontends/qt4/ui_IndicesUi.h:197
-#, fuzzy
+#: src/frontends/qt4/GuiPrefs.cpp:738
 msgid "&Options:"
-msgstr "オプション(&P):"
+msgstr "オプション(&O):"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:178
 msgid "Define options such as --min-crossrefs (see man bibtex)."
 msgstr ""
+"--min-crossrefsなどのオプションを指定してください（man bibtexをご参照下さ"
+"い）。"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:21
 msgid "LyX: Add BibTeX Database"
@@ -225,7 +222,6 @@ msgstr "BibTeXデータベース名を入力"
 #: src/frontends/qt4/ui/BranchesUi.ui:120
 #: src/frontends/qt4/ui/CitationUi.ui:540
 #: src/frontends/qt4/ui/IndicesUi.ui:134 src/CutAndPaste.cpp:296
-#: src/frontends/qt4/ui_IndicesUi.h:212
 msgid "&Add"
 msgstr "追加(&A)"
 
@@ -244,7 +240,7 @@ msgstr "BibTeXスタイル"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:84
 msgid "St&yle"
-msgstr "形式(&Y)"
+msgstr "様式(&Y)"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:94 src/frontends/qt4/ui/BibtexUi.ui:107
 msgid "Choose a style file"
@@ -487,25 +483,22 @@ msgid "Select your branch"
 msgstr "派生枝を選択してください"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25
-#, fuzzy
 msgid "Show undefined branches used in this document."
-msgstr "文書に派生枝が定義されていません！"
+msgstr "本文書中で使われている未定義の派生枝を表示する。"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:28
-#, fuzzy
 msgid "&Undefined Branches"
-msgstr "展開された派生枝差込枠"
+msgstr "未定義派生枝(&U)"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:64
 msgid "A&vailable Branches:"
-msgstr "利用可能な派生枝(&V):"
+msgstr "使用できる派生枝(&V):"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:74
 msgid "Remove the selected branch"
 msgstr "選択した派生枝を削除"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:77 src/frontends/qt4/ui/IndicesUi.ui:165
-#: src/frontends/qt4/ui_IndicesUi.h:219
 msgid "&Remove"
 msgstr "削除(&R)"
 
@@ -522,49 +515,43 @@ msgid "Define or change background color"
 msgstr "背景色を指定または変更する"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:97 src/frontends/qt4/ui/IndicesUi.ui:185
-#: src/frontends/qt4/ui_IndicesUi.h:227
 msgid "Alter Co&lor..."
 msgstr "色を変更(&L)..."
 
 #: src/frontends/qt4/ui/BranchesUi.ui:107
-#: src/frontends/qt4/ui/IndicesUi.ui:114 src/frontends/qt4/ui_IndicesUi.h:205
+#: src/frontends/qt4/ui/IndicesUi.ui:114
 msgid "&New:"
 msgstr "新規(&N):"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:117
-#: src/frontends/qt4/ui/IndicesUi.ui:131 src/frontends/qt4/ui_IndicesUi.h:210
+#: src/frontends/qt4/ui/IndicesUi.ui:131
 msgid "Add a new branch to the list"
-msgstr "新しい派生枝をリストに加える"
+msgstr "新しい派生枝を一覧に加える。"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:25
-#, fuzzy
 msgid "Add the selected branches to the list."
-msgstr "新しい派生枝をリストに加える"
+msgstr "選択した派生枝を一覧に加える。"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:28
-#, fuzzy
 msgid "&Add Selected"
-msgstr "選択済み(&E):"
+msgstr "選択要素を追加(&A)"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:35
-#, fuzzy
 msgid "Add all unknown branches to the list."
-msgstr "新しい派生枝をリストに加える"
+msgstr "新しい派生枝を一覧に加える。"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:38
 msgid "Add A&ll"
-msgstr ""
+msgstr "すべて追加(&L)"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:65
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:78
-#, fuzzy
 msgid "Undefined branches used in this document."
-msgstr "文書に派生枝が定義されていません！"
+msgstr "本文書中には、未定義の派生枝が使われています。"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:68
-#, fuzzy
 msgid "&Undefined Branches:"
-msgstr "利用可能な派生枝(&V):"
+msgstr "未定義派生枝(&U):"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:34
 msgid "&Font:"
@@ -778,9 +765,8 @@ msgid "Apply each change automatically"
 msgstr "変更するごとに自動的に適用する"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:321
-#, fuzzy
 msgid "Apply changes &immediately"
-msgstr "変更をすぐに適用"
+msgstr "変更をすぐに適用(&I)"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:390 src/frontends/qt4/ui/ERTUi.ui:100
 #: src/frontends/qt4/ui/GraphicsUi.ui:763
@@ -800,7 +786,7 @@ msgstr "検索引用"
 msgid "F&ind:"
 msgstr "検索(&I):"
 
-#: src/frontends/qt4/ui/CitationUi.ui:75
+#: src/frontends/qt4/ui/CitationUi.ui:75 src/frontends/qt4/ui/LogUi.ui:28
 msgid "Hit Enter to search, or click Go!"
 msgstr "検索するにはEnterを打鍵するか、開始！をクリックしてください。"
 
@@ -864,7 +850,7 @@ msgstr "強制的に大文字にする(&P)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:291
 msgid "Citation st&yle:"
-msgstr "引用形式(&Y):"
+msgstr "引用様式(&Y):"
 
 #: src/frontends/qt4/ui/CitationUi.ui:301
 msgid "Text &before:"
@@ -872,7 +858,7 @@ msgstr "前置文字列(&B):"
 
 #: src/frontends/qt4/ui/CitationUi.ui:335
 msgid "Natbib citation style to use"
-msgstr "使用するNatbib引用形式"
+msgstr "使用するNatbib引用様式"
 
 #: src/frontends/qt4/ui/CitationUi.ui:358
 msgid "Text to place before citation"
@@ -949,24 +935,20 @@ msgid "&Insert"
 msgstr "挿入(&I)"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:44
-#, fuzzy
 msgid "Click to edit the settings of the child document"
-msgstr "文書クラスの既定設定にリセットする"
+msgstr "クリックすると子文書の設定を編集できます"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:47
-#, fuzzy
 msgid "Child Settings"
-msgstr "設定"
+msgstr "子文書設定"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:54
-#, fuzzy
 msgid "Click to edit the settings of the Master document"
-msgstr "既定の親文書名を入力してください"
+msgstr "クリックするとマスター文書の設定を編集できます"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:57
-#, fuzzy
 msgid "Master Settings"
-msgstr "注釈の設定"
+msgstr "マスター文書設定"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:155
 msgid "Reset to the default settings for the document class"
@@ -1213,7 +1195,7 @@ msgstr "大文字/小文字を区別(&S)"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:215
 msgid "Ignore For&mat"
-msgstr "形式を無視(&M)"
+msgstr "様式を無視(&M)"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:237
 msgid "Match..."
@@ -1339,11 +1321,11 @@ msgstr "フォントUI"
 
 #: src/frontends/qt4/ui/FontUi.ui:41
 msgid "Use old style instead of lining figures"
-msgstr "図を並べない旧形式を使用する"
+msgstr "図を並べない旧様式を使用する"
 
 #: src/frontends/qt4/ui/FontUi.ui:44
 msgid "Use &Old Style Figures"
-msgstr "旧形式の図を使う(&O)"
+msgstr "旧様式の図を使う(&O)"
 
 #: src/frontends/qt4/ui/FontUi.ui:51
 msgid "Use a real small caps shape, if the font provides one"
@@ -1494,11 +1476,11 @@ msgstr "X:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:460
 msgid "Don't uncompress image before exporting to LaTeX"
-msgstr "LaTeXにエクスポートする前に画像を解凍しない"
+msgstr "LaTeXに書き出しする前に画像を解凍しない"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:463
 msgid "Don't un&zip on export"
-msgstr "エクスポートする際に解凍しない(&Z)"
+msgstr "書き出しする際に解凍しない(&Z)"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:491
 #: src/frontends/qt4/ui/GraphicsUi.ui:498
@@ -1740,70 +1722,63 @@ msgid "&Edit"
 msgstr "編集(&E)"
 
 #: src/frontends/qt4/ui/IndexUi.ui:59
-#, fuzzy
 msgid "A&vailable indices:"
-msgstr "利用可能な索引(&V):"
+msgstr "収録可能な索引(&V):"
 
 #: src/frontends/qt4/ui/IndexUi.ui:69
 msgid "Select the index this entry should be listed in."
-msgstr ""
+msgstr "この項目を収録する索引を選択してください。"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:19 src/frontends/qt4/ui_IndicesUi.h:190
-msgid ""
-"Here you can define an alternative index processor and specify its options."
+#: src/frontends/qt4/ui/IndicesUi.ui:19
+msgid "Here you can define an alternative index processor and specify its options."
 msgstr ""
+"ここでは、別の索引処理器を指定したり、その特定のオプションを指定したりするこ"
+"とができます。"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:198
-#: src/frontends/qt4/ui_IndicesUi.h:192
-#, fuzzy
 msgid "Index generation"
-msgstr "行頭下げ(&I)"
+msgstr "索引の生成"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:64 src/frontends/qt4/ui_IndicesUi.h:199
+#: src/frontends/qt4/ui/IndicesUi.ui:64
 msgid "Define program options of the selected processor."
-msgstr ""
+msgstr "選択した処理器のプログラムオプションを指定してください。"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:89 src/frontends/qt4/ui_IndicesUi.h:202
-#, fuzzy
+#: src/frontends/qt4/ui/IndicesUi.ui:89
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
-msgstr "複数の索引（たとえば氏名の索引など）が必要かどうか確認して下さい。"
+msgstr "複数の索引（たとえば氏名の索引など）が必要なときに有効にして下さい。"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:92 src/frontends/qt4/ui_IndicesUi.h:204
-#, fuzzy
+#: src/frontends/qt4/ui/IndicesUi.ui:92
 msgid "&Use multiple indexes"
-msgstr "複数の索引を使用する(&U)"
+msgstr "複数の索引を使用(&U)"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:124 src/frontends/qt4/ui_IndicesUi.h:207
-msgid ""
-"Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
+#: src/frontends/qt4/ui/IndicesUi.ui:124
+msgid "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
 msgstr ""
 "必要な索引名（たとえば「氏名の索引」など）を入力し、「追加」を押してくださ"
 "い。"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:143 src/frontends/qt4/ui_IndicesUi.h:213
-#, fuzzy
+#: src/frontends/qt4/ui/IndicesUi.ui:143
 msgid "A&vailable Indexes:"
-msgstr "利用可能な索引(&V):"
+msgstr "使用できる索引(&V):"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:154 src/frontends/qt4/ui_IndicesUi.h:215
-#, fuzzy
+#: src/frontends/qt4/ui/IndicesUi.ui:154
 msgid "1"
-msgstr "10"
+msgstr "1"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:162 src/frontends/qt4/ui_IndicesUi.h:217
+#: src/frontends/qt4/ui/IndicesUi.ui:162
 msgid "Remove the selected index"
 msgstr "選択した索引を削除"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:172 src/frontends/qt4/ui_IndicesUi.h:221
+#: src/frontends/qt4/ui/IndicesUi.ui:172
 msgid "Rename the selected index"
 msgstr "選択した索引名を変更する"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:175 src/frontends/qt4/ui_IndicesUi.h:223
+#: src/frontends/qt4/ui/IndicesUi.ui:175
 msgid "R&ename..."
 msgstr "名称変更(&E)..."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:182 src/frontends/qt4/ui_IndicesUi.h:225
+#: src/frontends/qt4/ui/IndicesUi.ui:182
 msgid "Define or change button color"
 msgstr "ボタンの色を定義ないし変更する"
 
@@ -1892,7 +1867,7 @@ msgstr "その他(&E):"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:109
 msgid "&Quote Style:"
-msgstr "引用形式(&Q):"
+msgstr "引用様式(&Q):"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 src/insets/InsetCaption.cpp:315
 #: src/insets/InsetListings.cpp:356 src/insets/InsetListings.cpp:358
@@ -1962,7 +1937,7 @@ msgstr "フォントの寸法を選択"
 #: src/frontends/qt4/ui/ListingsUi.ui:188
 #: src/frontends/qt4/ui/TabularUi.ui:298
 msgid "Style"
-msgstr "形式"
+msgstr "様式"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:194
 msgid "F&ont size:"
@@ -2071,31 +2046,25 @@ msgstr ""
 "リストのパラメーターを右側に入力してください。パラメーターの一覧を表示するに"
 "は？を入力してください。"
 
-#: src/frontends/qt4/ui/LogUi.ui:28
-msgid "Enter search string, hit return or thr \"Go!\" button."
-msgstr ""
-
 #: src/frontends/qt4/ui/LogUi.ui:35 src/frontends/qt4/ui/SearchUi.ui:28
 msgid "&Find:"
 msgstr "検索対象(&F):"
 
 #: src/frontends/qt4/ui/LogUi.ui:48
 msgid "Jump to the next error message."
-msgstr ""
+msgstr "次のエラーメッセージに飛びます。"
 
 #: src/frontends/qt4/ui/LogUi.ui:51
-#, fuzzy
 msgid "Next &Error"
-msgstr "読み込みエラー"
+msgstr "次のエラー(&E)"
 
 #: src/frontends/qt4/ui/LogUi.ui:58
 msgid "Jump to the next warning message."
-msgstr ""
+msgstr "次の警告メッセージに飛びます。"
 
 #: src/frontends/qt4/ui/LogUi.ui:61
-#, fuzzy
 msgid "Next &Warning"
-msgstr "エクスポートに関する警告！"
+msgstr "次の警告(&W)"
 
 #: src/frontends/qt4/ui/LogUi.ui:88
 msgid "Copy to Clip&board"
@@ -2254,7 +2223,7 @@ msgstr "LyX注釈(&N)"
 
 #: src/frontends/qt4/ui/NoteUi.ui:70
 msgid "Export to LaTeX/Docbook but don't print"
-msgstr "LaTeX/Doccbookにエクスポートし，印刷はしない"
+msgstr "LaTeX/Doccbookに書き出し，印刷はしない"
 
 #: src/frontends/qt4/ui/NoteUi.ui:73
 msgid "&Comment"
@@ -2306,8 +2275,7 @@ msgid "&General"
 msgstr "一般(&G)"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:99
-msgid ""
-"If not stated explicitly, fill title and author from appropriate environments"
+msgid "If not stated explicitly, fill title and author from appropriate environments"
 msgstr "明示的に指定しなければ、タイトルと著者を適当な環境から補完します"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:102
@@ -2431,11 +2399,11 @@ msgstr "ページレイアウト"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:215
 msgid "Headings &style:"
-msgstr "ヘディング形式(&S):"
+msgstr "ヘディング様式(&S):"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:231
 msgid "Style used for the page header and footer"
-msgstr "ページヘッダとフッタに使う形式"
+msgstr "ページヘッダとフッタに使う様式"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:251
 msgid "Lay out the page for double-sided printing"
@@ -2585,9 +2553,8 @@ msgid "Automatic p&opup"
 msgstr "自動ポップアップ(&O)"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:60
-#, fuzzy
 msgid "Autoco&rrection"
-msgstr "自動開始(&B)"
+msgstr "自動修正(&R)"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:70
 msgid "In Text"
@@ -2630,8 +2597,7 @@ msgstr "一般"
 msgid ""
 "After the cursor has not moved for this time, the inline completion is shown "
 "if it is available."
-msgstr ""
-"これだけの時間カーソルを動かさなかったとき、可能ならば補完入力を表示します。"
+msgstr "これだけの時間カーソルを動かさなかったとき、可能ならば補完入力を表示します。"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:154
 msgid "s inline completion dela&y"
@@ -2653,8 +2619,7 @@ msgstr "秒のポップアップ遅延(&E)"
 msgid ""
 "When the TAB completion is not unique, there won't be a delay of the popup. "
 "It will be shown right away."
-msgstr ""
-"タブ補完に複数候補がある場合、ポップアップに遅延を置かず、直ちに表示する。"
+msgstr "タブ補完に複数候補がある場合、ポップアップに遅延を置かず、直ちに表示する。"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:228
 msgid "Sho&w popup without delay for non-unique completions"
@@ -2785,9 +2750,8 @@ msgid "Screen used (&pixels):"
 msgstr "使用するスクリーン(ピクセル)(&P):"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:176
-#, fuzzy
 msgid "Hide &menubar"
-msgstr "タブバーを隠す(&T)"
+msgstr "メニューバーを隠す(&M)"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:183
 msgid "Hide &tabbar"
@@ -2823,7 +2787,7 @@ msgstr "短縮名(&H):"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:132
 msgid "Vector &graphics format"
-msgstr "ベクター画像形式(&G)"
+msgstr "ベクトル画像形式(&G)"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:149
 msgid "&Document format"
@@ -2904,7 +2868,7 @@ msgstr "操作画面用言語(&I):"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:35
 msgid "Select the language of the user interface (menus, dialogs, etc.)"
-msgstr ""
+msgstr "操作画面（メニューやダイアログなど）用言語を選択してください。"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:45
 msgid "Language pac&kage:"
@@ -2987,8 +2951,7 @@ msgid "Right-to-left language support"
 msgstr "右から左書きの言語をサポート"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:183 src/LyXRC.cpp:2846
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "右から左へ書く言語（ヘブライ語，アラビア語など）をサポートするときに選択して"
 "ください。"
@@ -3067,7 +3030,7 @@ msgstr "BibTeXコマンドとオプション"
 #: src/frontends/qt4/ui/PrefLatexUi.ui:168
 #: src/frontends/qt4/ui/PrefLatexUi.ui:247
 msgid "Processor for &Japanese:"
-msgstr ""
+msgstr "日本語用処理器(&J):"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:178
 msgid "Specific BibTeX command and options for pLaTeX (Japanese)"
@@ -3075,13 +3038,12 @@ msgstr "pLaTeX（日本語）で使用するBibTeXコマンドとオプション
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:209
 msgid "Pr&ocessor:"
-msgstr ""
+msgstr "処理器(&O):"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:226 src/frontends/qt4/GuiPrefs.cpp:671
 #: src/frontends/qt4/GuiPrefs.cpp:765
-#, fuzzy
 msgid "Op&tions:"
-msgstr "オプション(&P):"
+msgstr "オプション(&T):"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:236
 msgid "Index command and options (makeindex, xindy)"
@@ -3177,8 +3139,8 @@ msgid ""
 "0, paragraphs are output in a single line; if the line length is > 0, "
 "paragraphs are separated by a blank line."
 msgstr ""
-"エクスポートする平文/LaTeX/SGMLファイルの最大行数。0に設定すると，全ての段落"
-"は1行に出力されます。行数が>0ならば，段落同士は空白行によって分離されます。"
+"書き出す平文/LaTeX/SGMLファイルの最大行数。0に設定すると，全ての段落は1行に出"
+"力されます。行数が>0ならば，段落同士は空白行によって分離されます。"
 
 #: src/frontends/qt4/ui/PrefPlaintextUi.ui:67
 msgid "Output &line length:"
@@ -3506,23 +3468,21 @@ msgstr "保存(&S)"
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:24
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:37
 msgid "Define hanging indendation/label length for the nomenclature list."
-msgstr ""
+msgstr "用語集用の字下げおよびラベル長を指定して下さい。"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:27
-#, fuzzy
 msgid "&List Indendation:"
-msgstr "行頭下げ(&I)"
+msgstr "一覧表の字下げ(&L):"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:48
-#, fuzzy
 msgid "Custom &Width:"
-msgstr "列の幅"
+msgstr "任意設定幅(&W):"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:61
 msgid ""
 "Custom value. &quot;List Indendation&quot; needs to be set to &quot;"
 "Custom&quot;."
-msgstr ""
+msgstr "任意設定の値。「一覧表の字下げ」を「任意設定」に設定する必要があります。"
 
 #: src/frontends/qt4/ui/PrintUi.ui:28
 msgid "Pages"
@@ -3610,22 +3570,19 @@ msgstr "出力をファイルに送る"
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:61
 msgid "Check if this index should be part (e.g., a section) of the former one."
-msgstr ""
+msgstr "この索引を前の索引の一部（節など）にしたいときに有効にして下さい。"
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:64
-#, fuzzy
 msgid "&Subindex"
-msgstr "左右指定(&S):"
+msgstr "下位索引(&S)"
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:79
-#, fuzzy
 msgid "A&vailable indexes:"
-msgstr "利用可能な索引(&V):"
+msgstr "使用できる索引(&V):"
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:89
-#, fuzzy
 msgid "Select the index that shall be printed at this place of the document."
-msgstr "文書の既定フォント族を選択してください"
+msgstr "文書のこの場所に表示されるべき索引を選択して下さい。"
 
 #: src/frontends/qt4/ui/RefUi.ui:22
 msgid "La&bels in:"
@@ -3715,7 +3672,7 @@ msgstr "変換されたファイルをこのコマンドで処理する($$FName�
 
 #: src/frontends/qt4/ui/SendtoUi.ui:101
 msgid "&Export formats:"
-msgstr "エクスポート書式(&E):"
+msgstr "書き出し書式(&E):"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:111
 msgid "&Command:"
@@ -3764,7 +3721,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:13
 msgid "DockWidget"
-msgstr ""
+msgstr "DockWidget"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:20
 msgid "Unknown word:"
@@ -3781,9 +3738,8 @@ msgid "Replace word with current choice"
 msgstr "単語を現在の選択で置換する"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:40
-#, fuzzy
 msgid "&Find Next"
-msgstr "次候補(&N)"
+msgstr "次候補(&F)"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:47
 msgid "Replacement:"
@@ -3926,19 +3882,19 @@ msgstr "現在の（選択した）セルの全ての罫線を削除"
 
 #: src/frontends/qt4/ui/TabularUi.ui:310
 msgid "Use formal (a.k.a. booktabs) border style (no vertical borders)"
-msgstr "罫線にフォーマル（ブックタブ）形式（垂直線無し）を使う"
+msgstr "罫線にフォーマル（ブックタブ）様式（垂直線無し）を使う"
 
 #: src/frontends/qt4/ui/TabularUi.ui:313
 msgid "Fo&rmal"
-msgstr "フォーマル形式(&R)"
+msgstr "フォーマル様式(&R)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:323
 msgid "Use default (grid-like) border style"
-msgstr "既定（格子状）の罫線形式を使う"
+msgstr "既定（格子状）の罫線様式を使う"
 
 #: src/frontends/qt4/ui/TabularUi.ui:326
 msgid "De&fault"
-msgstr "既定の形式(&F)"
+msgstr "既定様式(&F)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:349
 msgid "Set Borders"
@@ -4094,8 +4050,7 @@ msgid "Rebuild the file lists"
 msgstr "ファイル一覧を再構築する"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:104
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
+msgid "Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "選択したフィルの中身を表示する。ファイルのパスが表示されている時のみ有効であ"
 "る。"
@@ -4178,8 +4133,7 @@ msgstr "検索(&O)"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:71
 msgid "Click to select a proposal, double click to look it up."
-msgstr ""
-"提示案を選択するにはクリック、提示案を検索するにはダブルクリックして下さい。"
+msgstr "提示案を選択するにはクリック、提示案を検索するにはダブルクリックして下さい。"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:86
 #: src/frontends/qt4/ui/ThesaurusUi.ui:99
@@ -4252,11 +4206,11 @@ msgstr "選択した項目を1つ上げる"
 
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:44
 msgid "If you check this, LyX will not warn you again in the given case."
-msgstr ""
+msgstr "これを有効にすると、LyXは当該ケースについて今後警告することはなくなります。"
 
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:47
 msgid "&Do not show this warning again!"
-msgstr ""
+msgstr "この警告を再表示しない！(&D)"
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:69
 msgid "Insert the spacing even after a page break"
@@ -8733,9 +8687,8 @@ msgid "\\arabic{enumi}."
 msgstr "\\arabic{enumi}."
 
 #: lib/layouts/stdcounters.inc:41
-#, fuzzy
 msgid "\\alph{enumii}."
-msgstr "(\\alph{enumii})"
+msgstr "\\alph{enumii}."
 
 #: lib/layouts/stdcounters.inc:46
 msgid "\\roman{enumiii}."
@@ -9227,56 +9180,52 @@ msgid "Redefines several insets (Index, Branch, URL) as being Minimalistic."
 msgstr "いくつかの差込枠（索引・派生枝・URL）を、簡素版に再定義します。"
 
 #: lib/layouts/noweb.module:2
-#, fuzzy
 msgid "Noweb literate programming"
-msgstr "文芸的プログラミングビルドログが見つかりません。"
+msgstr "Noweb文芸的プログラミング"
 
 #: lib/layouts/noweb.module:5
 msgid "Allows to use Noweb as a literate programming tool."
-msgstr ""
+msgstr "Nowebを文芸的プログラミングツールとして使用することを許可する。"
 
 #: lib/layouts/sweave.module:2
 msgid "Sweave - S/R literate programming"
-msgstr ""
+msgstr "Sweave - S/R文芸的プログラミング"
 
 #: lib/layouts/sweave.module:5
 msgid ""
 "Allows to use the statistical language S/R as a literate programming tool - "
 "Sweave."
 msgstr ""
+"統計言語S/R（Sweave）を文芸的プログラミングツールとして使用することを許可す"
+"る。"
 
 #: lib/layouts/sweave.module:16
 msgid "Chunk"
-msgstr ""
+msgstr "単位塊"
 
 #: lib/layouts/sweave.module:17 lib/configure.py:352
-#, fuzzy
 msgid "Sweave"
-msgstr "保存(&S)"
+msgstr "Sweave"
 
 #: lib/layouts/sweave.module:42
-#, fuzzy
 msgid "Sweave Options"
-msgstr "LaTeXオプション"
+msgstr "Sweaveオプション"
 
 #: lib/layouts/sweave.module:43
-#, fuzzy
 msgid "Sweave opts"
-msgstr "画面フォント"
+msgstr "Sweaveオプション"
 
 #: lib/layouts/sweave.module:62
-#, fuzzy
 msgid "S/R expression"
-msgstr "正規表現(&X)"
+msgstr "S/R表現"
 
 #: lib/layouts/sweave.module:63
-#, fuzzy
 msgid "S/R expr"
-msgstr "表現"
+msgstr "S/R表現"
 
 #: lib/layouts/sweave.module:82 lib/layouts/sweave.module:83
 msgid "Sweave Input File"
-msgstr ""
+msgstr "Sweaveインプットファイル"
 
 #: lib/layouts/theorems-ams-extended.module:2
 msgid "Theorems (AMS-Extended)"
@@ -9851,9 +9800,8 @@ msgid "South-Eastern European (ISO 8859-16)"
 msgstr "南東ヨーロッパ語(ISO 8859-16)"
 
 #: lib/encodings:64
-#, fuzzy
 msgid "Western European (Macintosh Roman)"
-msgstr "西欧語(CP 850)"
+msgstr "西欧語(Macintoshロマン語)"
 
 #: lib/encodings:67
 msgid "DOS (CP 437)"
@@ -10049,11 +9997,11 @@ msgstr "バージョン管理(V)|V"
 
 #: lib/ui/classic.ui:57 lib/ui/stdmenus.inc:55
 msgid "Import|I"
-msgstr "インポート(I)|I"
+msgstr "読み込み(I)|I"
 
 #: lib/ui/classic.ui:58 lib/ui/stdmenus.inc:56
 msgid "Export|E"
-msgstr "エクスポート(E)|E"
+msgstr "書き出し(E)|E"
 
 #: lib/ui/classic.ui:59 lib/ui/stdmenus.inc:57
 msgid "Print...|P"
@@ -10293,11 +10241,11 @@ msgstr "既定値(T)|T"
 
 #: lib/ui/classic.ui:183 lib/ui/stdmenus.inc:248
 msgid "Display|D"
-msgstr "別行建て形式(D)|D"
+msgstr "別行建て様式(D)|D"
 
 #: lib/ui/classic.ui:184 lib/ui/stdmenus.inc:249
 msgid "Inline|I"
-msgstr "行内形式(I)|I"
+msgstr "行内様式(I)|I"
 
 #: lib/ui/classic.ui:188
 msgid "Octave"
@@ -10713,15 +10661,15 @@ msgstr "表(T)...|T"
 
 #: lib/ui/classic.ui:344
 msgid "Emphasize Style|E"
-msgstr "強調形式(E)|E"
+msgstr "強調様式(E)|E"
 
 #: lib/ui/classic.ui:345
 msgid "Noun Style|N"
-msgstr "名詞形式|N"
+msgstr "名詞様式|N"
 
 #: lib/ui/classic.ui:346
 msgid "Bold Style|B"
-msgstr "太字形式(B)|B"
+msgstr "太字様式(B)|B"
 
 #: lib/ui/classic.ui:349
 msgid "Decrease Environment Depth|v"
@@ -10880,23 +10828,20 @@ msgid "AMS Environment|A"
 msgstr "AMS環境|A"
 
 #: lib/ui/stdcontext.inc:54 lib/ui/stdmenus.inc:208
-#, fuzzy
 msgid "Number Whole Formula|N"
 msgstr "数式全体を付番(N)|N"
 
 #: lib/ui/stdcontext.inc:55 lib/ui/stdmenus.inc:209
-#, fuzzy
 msgid "Number This Line|u"
-msgstr "この行を付番(U)|U"
+msgstr "現在行を付番(U)|U"
 
 #: lib/ui/stdcontext.inc:56
 msgid "Equation Label|L"
 msgstr "数式ラベル(L)|L"
 
 #: lib/ui/stdcontext.inc:57
-#, fuzzy
 msgid "Copy as Reference|R"
-msgstr "参照としてコピー(C)|C"
+msgstr "参照としてコピー(R)|R"
 
 #: lib/ui/stdcontext.inc:59 lib/ui/stdmenus.inc:219
 msgid "Split Cell|C"
@@ -10939,19 +10884,16 @@ msgid "Delete Line to Right"
 msgstr "右の罫線を削除"
 
 #: lib/ui/stdcontext.inc:73
-#, fuzzy
 msgid "Show Math Toolbar"
-msgstr "数式ツールバーを入切"
+msgstr "数式ツールバーを表示"
 
 #: lib/ui/stdcontext.inc:74
-#, fuzzy
 msgid "Show Math-Panels Toolbar"
-msgstr "数式パネルツールバーを入切"
+msgstr "数式パネルツールバーを表示"
 
 #: lib/ui/stdcontext.inc:75
-#, fuzzy
 msgid "Show Table Toolbar"
-msgstr "表ツールバーを入切"
+msgstr "表ツールバーを表示"
 
 #: lib/ui/stdcontext.inc:83 lib/ui/stdcontext.inc:100
 msgid "Next Cross-Reference|N"
@@ -10962,34 +10904,28 @@ msgid "Go to Label|G"
 msgstr "ラベルへ移動(G)|G"
 
 #: lib/ui/stdcontext.inc:86
-#, fuzzy
 msgid "<Reference>|R"
 msgstr "<参照(R)>|R"
 
 #: lib/ui/stdcontext.inc:87
-#, fuzzy
 msgid "(<Reference>)|E"
 msgstr "(<参照(E)>)|E"
 
 #: lib/ui/stdcontext.inc:88
-#, fuzzy
 msgid "<Page>|P"
 msgstr "<ページ(P)>|P"
 
 #: lib/ui/stdcontext.inc:89
-#, fuzzy
 msgid "On Page <Page>|o"
-msgstr "on page <ページ>|o"
+msgstr "On page <ページ>|O"
 
 #: lib/ui/stdcontext.inc:90
-#, fuzzy
 msgid "<Reference> on Page <Page>|f"
-msgstr "<参照(F)> on page <ページ>|F"
+msgstr "<参照(F)> on Page <ページ>|F"
 
 #: lib/ui/stdcontext.inc:91
-#, fuzzy
 msgid "Formatted Reference|t"
-msgstr "整形された参照(T)|T"
+msgstr "整形済み参照(T)|T"
 
 #: lib/ui/stdcontext.inc:93 lib/ui/stdcontext.inc:105
 #: lib/ui/stdcontext.inc:115 lib/ui/stdcontext.inc:123
@@ -11009,7 +10945,6 @@ msgid "Settings...|S"
 msgstr "設定(S)...|S"
 
 #: lib/ui/stdcontext.inc:101
-#, fuzzy
 msgid "Go Back|G"
 msgstr "戻る(G)|G"
 
@@ -11018,7 +10953,6 @@ msgid "Copy as Reference|C"
 msgstr "参照としてコピー(C)|C"
 
 #: lib/ui/stdcontext.inc:125
-#, fuzzy
 msgid "Edit Database(s) Externally...|x"
 msgstr "データベースを外部で編集(X)...|X"
 
@@ -11042,31 +10976,26 @@ msgid "Dissolve Inset|D"
 msgstr "差込枠を解体する(D)|D"
 
 #: lib/ui/stdcontext.inc:141
-#, fuzzy
 msgid "Show Label|L"
-msgstr "ラベルへ移動(L)|L"
+msgstr "ラベルを表示(L)|L"
 
 #: lib/ui/stdcontext.inc:152
 msgid "Frameless|l"
-msgstr "縁なし(L)|L"
+msgstr "枠なし(L)|L"
 
 #: lib/ui/stdcontext.inc:153
-#, fuzzy
 msgid "Simple Frame|F"
-msgstr "簡素な縁(F)|F"
+msgstr "簡素な枠(F)|F"
 
 #: lib/ui/stdcontext.inc:154
-#, fuzzy
 msgid "Simple Frame, Page Breaks|P"
-msgstr "簡素な縁・改頁(P)|P"
+msgstr "簡素な枠・改頁(P)|P"
 
 #: lib/ui/stdcontext.inc:155
-#, fuzzy
 msgid "Oval, Thin|a"
 msgstr "楕円形（細線）(A)|A"
 
 #: lib/ui/stdcontext.inc:156
-#, fuzzy
 msgid "Oval, Thick|v"
 msgstr "楕円形（太線）(V)|V"
 
@@ -11075,14 +11004,12 @@ msgid "Drop Shadow|w"
 msgstr "影付き(W)|W"
 
 #: lib/ui/stdcontext.inc:158
-#, fuzzy
 msgid "Shaded Background|B"
-msgstr "影の背景(B)|B"
+msgstr "影付き背景(B)|B"
 
 #: lib/ui/stdcontext.inc:159
-#, fuzzy
 msgid "Double Frame|u"
-msgstr "二重縁(U)|U"
+msgstr "二重枠(U)|U"
 
 #: lib/ui/stdcontext.inc:173 lib/ui/stdmenus.inc:459
 msgid "LyX Note|N"
@@ -11097,14 +11024,12 @@ msgid "Greyed Out|G"
 msgstr "淡色表示(G)|G"
 
 #: lib/ui/stdcontext.inc:180
-#, fuzzy
 msgid "Open All Notes|A"
-msgstr "全ての差込枠を展開(O)|O"
+msgstr "全ての注釈を展開(A)|A"
 
 #: lib/ui/stdcontext.inc:181
-#, fuzzy
 msgid "Close All Notes|l"
-msgstr "全ての差込枠を閉じる(C)|C"
+msgstr "全ての注釈を閉じる(L)|L"
 
 #: lib/ui/stdcontext.inc:192
 msgid "Horiz. Phantom"
@@ -11243,7 +11168,6 @@ msgid "Listing|L"
 msgstr "リスト(L)|L"
 
 #: lib/ui/stdcontext.inc:267 lib/ui/stdcontext.inc:510
-#, fuzzy
 msgid "Edit Included File...|E"
 msgstr "インクルードしたファイルを編集(E)...|E"
 
@@ -11314,12 +11238,10 @@ msgid "Demote Section|m"
 msgstr "節の階層を下げる(M)|M"
 
 #: lib/ui/stdcontext.inc:306
-#, fuzzy
 msgid "Move Section Down|D"
 msgstr "節を下げる(D)|D"
 
 #: lib/ui/stdcontext.inc:307 lib/ui/stdcontext.inc:574
-#, fuzzy
 msgid "Move Section Up|U"
 msgstr "節を上げる(U)|U"
 
@@ -11328,14 +11250,12 @@ msgid "Insert Short Title|T"
 msgstr "短縮タイトルを挿入(T)|T"
 
 #: lib/ui/stdcontext.inc:310 lib/ui/stdcontext.inc:563
-#, fuzzy
 msgid "Accept Change|c"
-msgstr "変更を承認(A)|A"
+msgstr "変更を承認(C)|C"
 
 #: lib/ui/stdcontext.inc:311
-#, fuzzy
 msgid "Reject Change|j"
-msgstr "変更を却下(R)|R"
+msgstr "変更を却下(J)|J"
 
 #: lib/ui/stdcontext.inc:313
 msgid "Apply Last Text Style|A"
@@ -11362,12 +11282,10 @@ msgid "Remove Last Argument"
 msgstr "最後の引数を削除"
 
 #: lib/ui/stdcontext.inc:328
-#, fuzzy
 msgid "Make First Non-Optional Into Optional Argument"
 msgstr "最初の必須引数を非必須引数にする"
 
 #: lib/ui/stdcontext.inc:329
-#, fuzzy
 msgid "Make Last Optional Into Non-Optional Argument"
 msgstr "最後の非必須引数を必須引数にする"
 
@@ -11380,23 +11298,19 @@ msgid "Remove Optional Argument"
 msgstr "非必須引数を削除"
 
 #: lib/ui/stdcontext.inc:333 lib/ui/stdmenus.inc:241
-#, fuzzy
 msgid "Append Argument Eating From the Right"
 msgstr "右から食べる形で引数を追加"
 
 #: lib/ui/stdcontext.inc:334 lib/ui/stdmenus.inc:242
-#, fuzzy
 msgid "Append Optional Argument Eating From the Right"
 msgstr "右から食べる形で非必須引数を追加"
 
 #: lib/ui/stdcontext.inc:335 lib/ui/stdmenus.inc:243
-#, fuzzy
 msgid "Remove Last Argument Spitting Out to the Right"
 msgstr "右に吐き出す形で最後の引数を削除"
 
 #: lib/ui/stdcontext.inc:362 lib/ui/stdcontext.inc:374
 #: lib/ui/stdcontext.inc:463
-#, fuzzy
 msgid "Edit Externally...|x"
 msgstr "外部で編集(X)...|X"
 
@@ -11437,37 +11351,32 @@ msgid "Insert Reference at Cursor Position|I"
 msgstr "カーソル位置に参照を挿入(I)|I"
 
 #: lib/ui/stdcontext.inc:541
-#, fuzzy
 msgid "All Indexes|A"
-msgstr "索引"
+msgstr "全索引(A)|A"
 
 #: lib/ui/stdcontext.inc:544
 msgid "Subindex|b"
-msgstr ""
+msgstr "下位索引(B)|B"
 
 #: lib/ui/stdcontext.inc:564 lib/ui/stdmenus.inc:498
 msgid "Reject Change|R"
 msgstr "変更を却下(R)|R"
 
 #: lib/ui/stdcontext.inc:572
-#, fuzzy
 msgid "Promote Section|P"
-msgstr "節の階層を上げる(R)|R"
+msgstr "節の階層を上げる(P)|P"
 
 #: lib/ui/stdcontext.inc:573
-#, fuzzy
 msgid "Demote Section|D"
-msgstr "節の階層を下げる(M)|M"
+msgstr "節の階層を下げる(D)|D"
 
 #: lib/ui/stdcontext.inc:575
-#, fuzzy
 msgid "Move Section Down|w"
-msgstr "節を下げる(D)|D"
+msgstr "節を下げる(W)|W"
 
 #: lib/ui/stdcontext.inc:577
-#, fuzzy
 msgid "Select Section|S"
-msgstr "選択(S)|S"
+msgstr "節を選択(S)|S"
 
 #: lib/ui/stdmenus.inc:33
 msgid "Document|D"
@@ -11503,7 +11412,7 @@ msgstr "ウィンドウを閉じる(D)|D"
 
 #: lib/ui/stdmenus.inc:77
 msgid "Use Locking Property|L"
-msgstr ""
+msgstr "ロック特性を使用(L)|L"
 
 #: lib/ui/stdmenus.inc:95
 msgid "Redo|R"
@@ -11570,14 +11479,12 @@ msgid "Box Settings...|x"
 msgstr "ボックスの設定(X)...|X"
 
 #: lib/ui/stdmenus.inc:135
-#, fuzzy
 msgid "Index Entry Settings...|y"
-msgstr "折返しの設定(W)...|W"
+msgstr "索引項目の設定(Y)...|Y"
 
 #: lib/ui/stdmenus.inc:136
-#, fuzzy
 msgid "Index Settings...|x"
-msgstr "TeXコードの設定(C)...|C"
+msgstr "索引の設定(X)...|X"
 
 #: lib/ui/stdmenus.inc:137
 msgid "Listings Settings...|g"
@@ -11604,27 +11511,22 @@ msgid "Selection, Join Lines|i"
 msgstr "選択(行を連結して)(I)|I"
 
 #: lib/ui/stdmenus.inc:151
-#, fuzzy
 msgid "Paste as LinkBack PDF"
 msgstr "LinkBack PDFとして貼り付け"
 
 #: lib/ui/stdmenus.inc:152
-#, fuzzy
 msgid "Paste as PDF"
 msgstr "PDFとして貼り付け"
 
 #: lib/ui/stdmenus.inc:153
-#, fuzzy
 msgid "Paste as PNG"
 msgstr "PNGとして貼り付け"
 
 #: lib/ui/stdmenus.inc:154
-#, fuzzy
 msgid "Paste as JPEG"
 msgstr "JPEGとして貼り付け"
 
 #: lib/ui/stdmenus.inc:162
-#, fuzzy
 msgid "Dissolve Text Style"
 msgstr "文字様式を解除"
 
@@ -11717,24 +11619,20 @@ msgid "Mathematica|a"
 msgstr "Mathematica|a"
 
 #: lib/ui/stdmenus.inc:282
-#, fuzzy
 msgid "Maple, Simplify|S"
-msgstr "Maple, simplify|s"
+msgstr "Maple, Simplify|S"
 
 #: lib/ui/stdmenus.inc:283
-#, fuzzy
 msgid "Maple, Factor|F"
-msgstr "Maple, factor|f"
+msgstr "Maple, Factor|F"
 
 #: lib/ui/stdmenus.inc:284
-#, fuzzy
 msgid "Maple, Evalm|E"
-msgstr "Maple, evalm|e"
+msgstr "Maple, Evalm|E"
 
 #: lib/ui/stdmenus.inc:285
-#, fuzzy
 msgid "Maple, Evalf|v"
-msgstr "Maple, evalf|v"
+msgstr "Maple, Evalf|v"
 
 #: lib/ui/stdmenus.inc:304
 msgid "Open All Insets|O"
@@ -11754,17 +11652,15 @@ msgstr "数式マクロを畳む"
 
 #: lib/ui/stdmenus.inc:310
 msgid "View Source|S"
-msgstr "ソースを見る(S)|S"
+msgstr "ソースを表示(S)|S"
 
 #: lib/ui/stdmenus.inc:311
-#, fuzzy
 msgid "View Output|V"
-msgstr "表示(V)|V"
+msgstr "出力を表示(V)|V"
 
 #: lib/ui/stdmenus.inc:312
-#, fuzzy
 msgid "Update Output|U"
-msgstr "日付（出力）"
+msgstr "出力を更新(U)|U"
 
 #: lib/ui/stdmenus.inc:313
 msgid "View Master Document|M"
@@ -11775,24 +11671,20 @@ msgid "Update Master Document|a"
 msgstr "マスター文書を更新(A)|A"
 
 #: lib/ui/stdmenus.inc:315
-#, fuzzy
 msgid "View (Other Formats)|F"
-msgstr "他の形式を見る"
+msgstr "表示（他の形式）(F)|F"
 
 #: lib/ui/stdmenus.inc:316
-#, fuzzy
 msgid "Update (Other Formats)|p"
 msgstr "更新（他の形式）(P)|P"
 
 #: lib/ui/stdmenus.inc:318
-#, fuzzy
 msgid "Split View Into Left and Right Half|i"
-msgstr "画面を左右半々に分割(I)|I"
+msgstr "表示を左右半々に分割(I)|I"
 
 #: lib/ui/stdmenus.inc:319
-#, fuzzy
 msgid "Split View Into Upper and Lower Half|e"
-msgstr "画面を上下半々に分割(E)|E"
+msgstr "表示を上下半々に分割(E)|E"
 
 #: lib/ui/stdmenus.inc:320
 msgid "Close Tab Group|G"
@@ -11827,7 +11719,6 @@ msgid "Branch|B"
 msgstr "派生枝(B)|B"
 
 #: lib/ui/stdmenus.inc:352
-#, fuzzy
 msgid "Custom Insets"
 msgstr "任意設定差込枠"
 
@@ -11928,12 +11819,10 @@ msgid "Comment|C"
 msgstr "コメント(C)|C"
 
 #: lib/ui/stdmenus.inc:470
-#, fuzzy
 msgid "Horizontal Phantom"
 msgstr "水平方向の埋め草"
 
 #: lib/ui/stdmenus.inc:471
-#, fuzzy
 msgid "Vertical Phantom"
 msgstr "垂直方向の埋め草"
 
@@ -11978,9 +11867,8 @@ msgid "Clear Bookmarks|C"
 msgstr "しおり消去(C)|C"
 
 #: lib/ui/stdmenus.inc:525
-#, fuzzy
 msgid "Navigate Back|B"
-msgstr "戻る"
+msgstr "元へ戻る(B)|B"
 
 #: lib/ui/stdmenus.inc:535
 msgid "Thesaurus...|T"
@@ -12024,7 +11912,7 @@ msgstr "点字用説明書(B)|B"
 
 #: lib/ui/stdmenus.inc:569
 msgid "XY-pic Manual|X"
-msgstr "XY-pic用説明書(X)|X"
+msgstr "XY-pic説明書|X"
 
 #: lib/ui/stdmenus.inc:570
 msgid "Multicolumn Manual|M"
@@ -12072,7 +11960,7 @@ msgstr "強調の入切"
 
 #: lib/ui/stdtoolbars.inc:85
 msgid "Toggle noun"
-msgstr "Noun形式の入切"
+msgstr "Noun様式の入切"
 
 #: lib/ui/stdtoolbars.inc:86
 msgid "Apply last"
@@ -12091,17 +11979,14 @@ msgid "Insert table"
 msgstr "表を挿入"
 
 #: lib/ui/stdtoolbars.inc:92
-#, fuzzy
 msgid "Toggle outline"
 msgstr "文書構造を入切"
 
 #: lib/ui/stdtoolbars.inc:93
-#, fuzzy
 msgid "Toggle math toolbar"
 msgstr "数式ツールバーを入切"
 
 #: lib/ui/stdtoolbars.inc:94
-#, fuzzy
 msgid "Toggle table toolbar"
 msgstr "表ツールバーを入切"
 
@@ -12170,7 +12055,6 @@ msgid "Insert box"
 msgstr "ボックスを挿入"
 
 #: lib/ui/stdtoolbars.inc:118
-#, fuzzy
 msgid "Insert hyperlink"
 msgstr "ハイパーリンクを挿入"
 
@@ -12339,56 +12223,46 @@ msgid "Insert cases environment"
 msgstr "Cases環境を挿入"
 
 #: lib/ui/stdtoolbars.inc:179
-#, fuzzy
 msgid "Toggle math panels"
-msgstr "数式パネル入切"
+msgstr "数式パネルを入切"
 
 #: lib/ui/stdtoolbars.inc:182
 msgid "Math Macros"
 msgstr "数式マクロ"
 
 #: lib/ui/stdtoolbars.inc:183
-#, fuzzy
 msgid "Remove last argument"
 msgstr "最後の引数を削除"
 
 #: lib/ui/stdtoolbars.inc:184
-#, fuzzy
 msgid "Append argument"
 msgstr "引数を追加"
 
 #: lib/ui/stdtoolbars.inc:186
-#, fuzzy
 msgid "Make first non-optional into optional argument"
 msgstr "最初の必須引数を非必須引数にする"
 
 #: lib/ui/stdtoolbars.inc:187
-#, fuzzy
 msgid "Make last optional into non-optional argument"
 msgstr "最後の非必須引数を必須引数にする"
 
 #: lib/ui/stdtoolbars.inc:189
-#, fuzzy
 msgid "Remove optional argument"
 msgstr "非必須引数を削除"
 
 #: lib/ui/stdtoolbars.inc:190
-#, fuzzy
 msgid "Insert optional argument"
 msgstr "非必須引数を挿入"
 
 #: lib/ui/stdtoolbars.inc:192
-#, fuzzy
 msgid "Remove last argument spitting out to the right"
 msgstr "右に吐き出す形で最後の引数を削除"
 
 #: lib/ui/stdtoolbars.inc:193
-#, fuzzy
 msgid "Append argument eating from the right"
 msgstr "右から食べる形で引数を追加"
 
 #: lib/ui/stdtoolbars.inc:194
-#, fuzzy
 msgid "Append optional argument eating from the right"
 msgstr "右から食べる形で非必須引数を追加"
 
@@ -12449,24 +12323,20 @@ msgid "Update"
 msgstr "更新"
 
 #: lib/ui/stdtoolbars.inc:220
-#, fuzzy
 msgid "View master document"
-msgstr "マスター文書を見る"
+msgstr "マスター文書を表示"
 
 #: lib/ui/stdtoolbars.inc:221
-#, fuzzy
 msgid "Update master document"
 msgstr "マスター文書を更新"
 
 #: lib/ui/stdtoolbars.inc:223
-#, fuzzy
 msgid "View other formats"
-msgstr "表示（他の形式）(F)|F"
+msgstr "他の形式で表示"
 
 #: lib/ui/stdtoolbars.inc:224
-#, fuzzy
 msgid "Update other formats"
-msgstr "更新（他の形式）(P)|P"
+msgstr "他の形式を更新"
 
 #: lib/ui/stdtoolbars.inc:227
 msgid "View Other Formats"
@@ -12502,20 +12372,19 @@ msgstr "変更を破棄"
 
 #: lib/ui/stdtoolbars.inc:258
 msgid "Use SVN file locking property"
-msgstr ""
+msgstr "SVNファイルロック特性を使用"
 
 #: lib/ui/stdtoolbars.inc:261
 msgid "Math Panels"
 msgstr "数式パネル"
 
 #: lib/ui/stdtoolbars.inc:262
-#, fuzzy
 msgid "Math spacings"
 msgstr "数式の空白"
 
 #: lib/ui/stdtoolbars.inc:263 lib/ui/stdtoolbars.inc:335
 msgid "Styles"
-msgstr "形式"
+msgstr "様式"
 
 #: lib/ui/stdtoolbars.inc:264 lib/ui/stdtoolbars.inc:342
 msgid "Fractions"
@@ -12716,19 +12585,19 @@ msgstr "その他のルート\t\\root"
 
 #: lib/ui/stdtoolbars.inc:336
 msgid "Display style\t\\displaystyle"
-msgstr "別行立て形式\t\\displaystyle"
+msgstr "別行立て様式\t\\displaystyle"
 
 #: lib/ui/stdtoolbars.inc:337
 msgid "Normal text style\t\\textstyle"
-msgstr "標準テキスト形式\t\\textstyle"
+msgstr "標準テキスト様式\t\\textstyle"
 
 #: lib/ui/stdtoolbars.inc:338
 msgid "Script (small) style\t\\scriptstyle"
-msgstr "Script(小)形式\t\\scriptstyle"
+msgstr "Script(小)様式\t\\scriptstyle"
 
 #: lib/ui/stdtoolbars.inc:339
 msgid "Scriptscript (smaller) style\t\\scriptscriptstyle"
-msgstr "Scriptscript(微小)形式\t\\scriptscriptstyle"
+msgstr "Scriptscript(微小)様式\t\\scriptscriptstyle"
 
 #: lib/ui/stdtoolbars.inc:343
 msgid "Standard\t\\frac"
@@ -12895,14 +12764,12 @@ msgid "ddot"
 msgstr "ddot"
 
 #: lib/ui/stdtoolbars.inc:393
-#, fuzzy
 msgid "dddot"
-msgstr "ddot"
+msgstr "dddot"
 
 #: lib/ui/stdtoolbars.inc:394
-#, fuzzy
 msgid "ddddot"
-msgstr "ddot"
+msgstr "ddddot"
 
 #: lib/ui/stdtoolbars.inc:395
 msgid "breve"
@@ -14955,9 +14822,8 @@ msgid "NoWeb|N"
 msgstr "NoWeb|N"
 
 #: lib/configure.py:352
-#, fuzzy
 msgid "Sweave|S"
-msgstr "保存(S)|S"
+msgstr "Sweave|S"
 
 #: lib/configure.py:353
 msgid "LilyPond music"
@@ -15004,9 +14870,8 @@ msgid "Plain Text, Join Lines"
 msgstr "平文(行を連結して)"
 
 #: lib/configure.py:364 lib/configure.py:366
-#, fuzzy
 msgid "LyX HTML"
-msgstr "HTML"
+msgstr "LyX HTML"
 
 #: lib/configure.py:373
 msgid "BibTeX"
@@ -15222,8 +15087,7 @@ msgstr "ディスクエラー: "
 
 #: src/Buffer.cpp:275
 #, c-format
-msgid ""
-"LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
+msgid "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
 msgstr ""
 "LyXは作業ディレクトリ'%1$s'を作ることができませんでした(ひょっとしてディスク"
 "がいっぱいですか？)。"
@@ -15443,17 +15307,17 @@ msgstr "Chktexをうまく実行することができませんでした。"
 #: src/Buffer.cpp:1611
 #, c-format
 msgid "Don't know how to export to format: %1$s"
-msgstr "%1$sという書式へのエクスポート方法を知りません"
+msgstr "%1$s書式への書き出し方法がわかりません"
 
 #: src/Buffer.cpp:1657
 #, c-format
 msgid "Error exporting to format: %1$s."
-msgstr "%1$sという書式へのエクスポート時にエラー発生"
+msgstr "%1$s書式への書き出し時にエラーが発生しました。"
 
 #: src/Buffer.cpp:1674
-#, fuzzy, c-format
+#, c-format
 msgid "Branch \"%1$s\" does already exist."
-msgstr "「%1$s」という派生枝は存在しません"
+msgstr "「%1$s」という派生枝はすでに存在します。"
 
 #: src/Buffer.cpp:1698
 #, c-format
@@ -15472,7 +15336,7 @@ msgstr "「%1$s」は未知のターゲットです"
 
 #: src/Buffer.cpp:1734
 msgid "Error exporting to DVI."
-msgstr "DVIにエクスポートするのに失敗しました。"
+msgstr "DVIに書き出しするのに失敗しました。"
 
 #: src/Buffer.cpp:1796 src/Exporter.cpp:44
 #, c-format
@@ -15522,12 +15386,12 @@ msgstr "現在の文書を自動保存しています..."
 
 #: src/Buffer.cpp:2875
 msgid "Couldn't export file"
-msgstr "ファイルをエクスポートすることができませんでした"
+msgstr "ファイルを書き出しすることができませんでした"
 
 #: src/Buffer.cpp:2876
 #, c-format
 msgid "No information for exporting the format %1$s."
-msgstr "%1$sというフォーマットをエクスポートするのに必要な情報がありません"
+msgstr "%1$s書式を書き出すのに必要な情報がありません。"
 
 #: src/Buffer.cpp:2915
 msgid "File name error"
@@ -15539,17 +15403,17 @@ msgstr "文書のパスには空白が含まれていてはなりません。"
 
 #: src/Buffer.cpp:2964
 msgid "Document export cancelled."
-msgstr "文書のエクスポートは取り消されました。"
+msgstr "文書の書き出しは取り消されました。"
 
 #: src/Buffer.cpp:2970
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
-msgstr "文書は%1$sとしてファイル「%2$s」にエクスポートされました。"
+msgstr "文書は%1$sとしてファイル「%2$s」に書き出されました。"
 
 #: src/Buffer.cpp:2976
 #, c-format
 msgid "Document exported as %1$s"
-msgstr "文書は%1$sとしてエクスポートされました。"
+msgstr "文書は%1$sとして書き出されました。"
 
 #: src/Buffer.cpp:3047
 #, c-format
@@ -16247,23 +16111,21 @@ msgid "An empty output file was generated."
 msgstr "空の出力ファイルが生成されました。"
 
 #: src/CutAndPaste.cpp:292
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The pasted branch \"%1$s\" is undefined.\n"
 "Do you want to add it to the document's branch list?"
 msgstr ""
-"文書「%1$s」には保存されていない変更部分があります。\n"
-"\n"
-"この文書を保存しますか？"
+"貼り付けられた派生枝「%1$s」は定義されていません。\n"
+"これを文書の派生枝一覧に追加しますか？"
 
 #: src/CutAndPaste.cpp:295
-#, fuzzy
 msgid "Unknown branch"
-msgstr "未知の動作です。"
+msgstr "未知の派生枝です"
 
 #: src/CutAndPaste.cpp:296
 msgid "&Don't Add"
-msgstr ""
+msgstr "追加しない(&D)"
 
 #: src/CutAndPaste.cpp:590
 #, c-format
@@ -16284,7 +16146,7 @@ msgstr "全て上書き(&A)"
 
 #: src/Exporter.cpp:50
 msgid "&Cancel export"
-msgstr "エクスポートを取消(&C)"
+msgstr "書き出しを取消(&C)"
 
 #: src/Exporter.cpp:90
 msgid "Couldn't copy file"
@@ -16369,19 +16231,19 @@ msgid "Underline %1$s, "
 msgstr "下線%1$s, "
 
 #: src/Font.cpp:179
-#, fuzzy, c-format
+#, c-format
 msgid "Strikeout %1$s, "
-msgstr "名詞%1$s, "
+msgstr "取消線%1$s, "
 
 #: src/Font.cpp:182
-#, fuzzy, c-format
+#, c-format
 msgid "Double underline %1$s, "
-msgstr "下線%1$s, "
+msgstr "二重下線%1$s, "
 
 #: src/Font.cpp:185
-#, fuzzy, c-format
+#, c-format
 msgid "Wavy underline %1$s, "
-msgstr "下線%1$s, "
+msgstr "波下線%1$s, "
 
 #: src/Font.cpp:188
 #, c-format
@@ -16587,7 +16449,6 @@ msgid "Setting debug level to %1$s"
 msgstr "デバッグレベルを%1$sに設定します"
 
 #: src/LyX.cpp:972
-#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -16624,14 +16485,14 @@ msgstr ""
 "\t-x [--execute] command\n"
 "                  commandはlyxコマンドです。\n"
 "\t-e [--export] fmt\n"
-"                  fmtはエクスポートの型を指定します。\n"
+"                  fmtは書き出しの型を指定します。\n"
 "                  どのパラメーターを渡すべきかについては\n"
 "                  ツール→設定→ファイル形式→書式を参照してください。\n"
 "                  -e と -x スイッチの順序には意味があることに注意して下さ"
 "い。\n"
 "\t-i [--import] fmt file.xxx\n"
-"                  fmtはインポートの型、file.xxxは\n"
-"                  インポートするファイルと指定します。\n"
+"                  fmtは読み込みの型、file.xxxは\n"
+"                  読み込みするファイルと指定します。\n"
 "\t--batch         コマンドを実行して終了します。\n"
 "\t-version        バージョンとビルド情報を表示\n"
 "詳細は LyX man ページを見て下さい。"
@@ -16799,7 +16660,7 @@ msgstr "更新管理エラー。"
 
 #: src/LyXFunc.cpp:1060
 msgid "Error when setting the locking property."
-msgstr ""
+msgstr "ロック特性を設定する際にエラーが発生しました。"
 
 #: src/LyXFunc.cpp:1286
 #, c-format
@@ -16882,8 +16743,7 @@ msgstr ""
 "は，チェックを外してください。"
 
 #: src/LyXRC.cpp:2531
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr "自動保存の間の間隔（秒単位)。0 は自動保存しないことを示します。"
 
 #: src/LyXRC.cpp:2538
@@ -16904,8 +16764,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2546
 msgid "Define the options of the bibtex program for PLaTeX (Japanese LaTeX)."
-msgstr ""
-"pLaTeX（日本語LaTeX）用のbibtexプログラムオプションを定義してください。"
+msgstr "pLaTeX（日本語LaTeX）用のbibtexプログラムオプションを定義してください。"
 
 #: src/LyXRC.cpp:2550
 msgid ""
@@ -16917,8 +16776,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2554
 msgid "Select to check whether the lastfiles still exist."
-msgstr ""
-"最後のファイルがまだ存在するかどうかをチェックするときには選んでください。"
+msgstr "最後のファイルがまだ存在するかどうかをチェックするときには選んでください。"
 
 #: src/LyXRC.cpp:2558
 msgid ""
@@ -16953,8 +16811,7 @@ msgstr "単語間のカーソル移動にMac OS X式の方法を使う。"
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
-msgstr ""
-"カーソルが内部にある時に、数式マクロをマクロ名のついた小さなボックスで囲む。"
+msgstr "カーソルが内部にある時に、数式マクロをマクロ名のついた小さなボックスで囲む。"
 
 #: src/LyXRC.cpp:2585
 #, no-c-format
@@ -17001,8 +16858,7 @@ msgstr "LyX が画像をどのように表示するかを選びます。"
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
-msgstr ""
-"文書への既定パス。空の値は，LyX を開始したディレクトリを選ぶことになります。"
+msgstr "文書への既定パス。空の値は，LyX を開始したディレクトリを選ぶことになります。"
 
 #: src/LyXRC.cpp:2618
 msgid "Specify additional chars that can be part of a word."
@@ -17066,8 +16922,7 @@ msgid ""
 msgstr "文書の最初に言語切換コマンドが必要なときに選んでください。"
 
 #: src/LyXRC.cpp:2662
-msgid ""
-"Select if a language switching command is needed at the end of the document."
+msgid "Select if a language switching command is needed at the end of the document."
 msgstr "文書の最後に言語切換コマンドが必要なときに選んでください。"
 
 #: src/LyXRC.cpp:2666
@@ -17113,8 +16968,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2690
 msgid "De-select if you do not want LyX to scroll to saved position."
-msgstr ""
-"LyXが保存位置までスクロールしないようにしたいときは，非選択にしてください。"
+msgstr "LyXが保存位置までスクロールしないようにしたいときは，非選択にしてください。"
 
 #: src/LyXRC.cpp:2694
 msgid "De-select to prevent loading files opened from the last LyX session."
@@ -17153,16 +17007,14 @@ msgid "Select to display the completion popup in text mode."
 msgstr "選択すると、テキストモードで補完ポップアップを表示します。"
 
 #: src/LyXRC.cpp:2723
-msgid ""
-"Show the completion popup without delay after non-unique completion attempt."
+msgid "Show the completion popup without delay after non-unique completion attempt."
 msgstr "複数の補完候補がある際、遅延なしに補完ポップアップを表示する。"
 
 #: src/LyXRC.cpp:2727
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
-msgstr ""
-"補完が利用可能であることを示すためにカーソル上に小さな三角形を表示します。"
+msgstr "補完が利用可能であることを示すためにカーソル上に小さな三角形を表示します。"
 
 #: src/LyXRC.cpp:2731
 msgid "The inline completion delay."
@@ -17187,8 +17039,7 @@ msgstr "=>を\\Rightarrowに変換するなどのTeXMacs用簡略記法を許可
 #: src/LyXRC.cpp:2751
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
-msgstr ""
-"最後に使ったファイルの最大表示数。%1$d までファイルメニューに表示できます。"
+msgstr "最後に使ったファイルの最大表示数。%1$d までファイルメニューに表示できます。"
 
 #: src/LyXRC.cpp:2756
 msgid ""
@@ -17307,8 +17158,7 @@ msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "お好みの印刷プログラム。例：\"dvips\", \"dvilj4\"。"
 
 #: src/LyXRC.cpp:2850
-msgid ""
-"Select to have visual bidi cursor movement, unselect for logical movement."
+msgid "Select to have visual bidi cursor movement, unselect for logical movement."
 msgstr ""
 "選択すると、視覚的な上下カーソル動作をします。選択を外すと、論理的な動作にな"
 "ります。"
@@ -17400,8 +17250,7 @@ msgid "Enable the automatic appearance of tool tips in the work area."
 msgstr "作業領域でのツールチップスの自動表示を有効にする。"
 
 #: src/LyXRC.cpp:2932
-msgid ""
-"Enable the pixmap cache that might improve performance on Mac and Windows."
+msgid "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 "pixmapのキャッシュを有効にします。MacやWindowsでのパフォーマンスが向上する可"
 "能性があります。"
@@ -17510,8 +17359,7 @@ msgstr "未知のトークン"
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
-msgstr ""
-"空白を段落の先頭に挿入することはできません。LyX入門篇を読んでください。"
+msgstr "空白を段落の先頭に挿入することはできません。LyX入門篇を読んでください。"
 
 #: src/Text.cpp:543
 msgid "You cannot type two spaces this way. Please read the Tutorial."
@@ -17643,8 +17491,7 @@ msgstr "破損ファイル"
 
 #: src/TextClass.cpp:683
 msgid "Could not read stdinsets.inc! This may lead to data loss!"
-msgstr ""
-"stdinsets.incを読むことができません！データ喪失につながる可能性があります！"
+msgstr "stdinsets.incを読むことができません！データ喪失につながる可能性があります！"
 
 #: src/TextClass.cpp:1180
 #, c-format
@@ -17748,19 +17595,19 @@ msgstr ""
 
 #: src/VCBackend.cpp:706
 msgid "VCN File Locking"
-msgstr ""
+msgstr "VCNファイルロック"
 
 #: src/VCBackend.cpp:707
 msgid "Locking property unset."
-msgstr ""
+msgstr "ロック特性を解除しました。"
 
 #: src/VCBackend.cpp:707 src/VCBackend.cpp:711
 msgid "Locking property set."
-msgstr ""
+msgstr "ロック特性を設定しました。"
 
 #: src/VCBackend.cpp:708
 msgid "Do not forget to commit the locking property into the repository."
-msgstr ""
+msgstr "ロック特性をレポジトリにコミットするのを忘れないでください。"
 
 #: src/VSpace.cpp:472
 msgid "Default skip"
@@ -18174,19 +18021,16 @@ msgid "Underbar"
 msgstr "下線"
 
 #: src/frontends/qt4/GuiCharacter.cpp:79
-#, fuzzy
 msgid "Double underbar"
-msgstr "二重縁(U)|U"
+msgstr "二重下線"
 
 #: src/frontends/qt4/GuiCharacter.cpp:80
-#, fuzzy
 msgid "Wavy underbar"
-msgstr "下線"
+msgstr "波下線"
 
 #: src/frontends/qt4/GuiCharacter.cpp:81
-#, fuzzy
 msgid "Strikeout"
-msgstr "通り"
+msgstr "取消線"
 
 #: src/frontends/qt4/GuiCharacter.cpp:82
 msgid "Noun"
@@ -18420,8 +18264,7 @@ msgstr "文書の設定"
 
 #: src/frontends/qt4/GuiDocument.cpp:583
 #: src/frontends/qt4/GuiDocument.cpp:1100
-msgid ""
-"Input listings parameters on the right. Enter ? for a list of parameters."
+msgid "Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 "リストのパラメーターを右側に入力してください。パラメーターの一覧を表示するに"
 "は？を入力してください。"
@@ -18537,7 +18380,6 @@ msgid "Numbering & TOC"
 msgstr "連番と目次"
 
 #: src/frontends/qt4/GuiDocument.cpp:1030
-#, fuzzy
 msgid "Indexes"
 msgstr "索引"
 
@@ -18937,8 +18779,7 @@ msgstr "子文書"
 #: src/frontends/qt4/GuiInclude.cpp:120 src/frontends/qt4/GuiInclude.cpp:182
 #: src/frontends/qt4/GuiListings.cpp:239 src/frontends/qt4/GuiListings.cpp:375
 #: src/frontends/qt4/GuiListings.cpp:450
-msgid ""
-"Input listing parameters on the right. Enter ? for a list of parameters."
+msgid "Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 "リストのパラメーターを右側に入力してください。パラメーターの一覧を表示するに"
 "は？を入力してください。"
@@ -18952,9 +18793,8 @@ msgid "LaTeX/LyX Documents (*.tex *.lyx)"
 msgstr "LaTeX/LyX文書(*.tex *.lyx)"
 
 #: src/frontends/qt4/GuiIndex.cpp:34
-#, fuzzy
 msgid "Index Entry Settings"
-msgstr "索引項目"
+msgstr "索引項目の設定"
 
 #: src/frontends/qt4/GuiIndices.cpp:52
 msgid "Label Color"
@@ -19150,9 +18990,8 @@ msgstr "入力補完"
 
 #: src/frontends/qt4/GuiPrefs.cpp:630 src/frontends/qt4/GuiPrefs.cpp:655
 #: src/frontends/qt4/GuiPrefs.cpp:742 src/frontends/qt4/GuiPrefs.cpp:769
-#, fuzzy
 msgid "Co&mmand:"
-msgstr "コマンド(&C):"
+msgstr "コマンド(&M):"
 
 #: src/frontends/qt4/GuiPrefs.cpp:794
 msgid "Screen fonts"
@@ -19354,24 +19193,20 @@ msgid "PostScript files (*.ps)"
 msgstr "PostScriptファイル(*.ps)"
 
 #: src/frontends/qt4/GuiPrintNomencl.cpp:39
-#, fuzzy
 msgid "Nomenclature settings"
-msgstr "用語集"
+msgstr "用語集の設定"
 
 #: src/frontends/qt4/GuiPrintNomencl.cpp:70
-#, fuzzy
 msgid "Longest label width"
-msgstr "最長のラベル(&N)"
+msgstr "最長のラベル幅"
 
 #: src/frontends/qt4/GuiPrintindex.cpp:37
-#, fuzzy
 msgid "Index Settings"
-msgstr "ボックスの設定"
+msgstr "索引の設定"
 
 #: src/frontends/qt4/GuiPrintindex.cpp:69
-#, fuzzy
 msgid "<All indexes>"
-msgstr "利用可能な索引(&V):"
+msgstr "<全索引>"
 
 #: src/frontends/qt4/GuiRef.cpp:43
 msgid "Cross-reference"
@@ -19912,7 +19747,7 @@ msgid "Invalid filename"
 msgstr "無効なファイル名"
 
 #: src/frontends/qt4/GuiView.cpp:1484
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The directory in the given path\n"
 "%1$s\n"
@@ -19943,17 +19778,17 @@ msgstr "文書%1$sを開くことができませんでした。"
 
 #: src/frontends/qt4/GuiView.cpp:1540
 msgid "Couldn't import file"
-msgstr "ファイルをインポートできません"
+msgstr "ファイルを読み込みできません"
 
 #: src/frontends/qt4/GuiView.cpp:1541
 #, c-format
 msgid "No information for importing the format %1$s."
-msgstr "書式%1$sをインポートするのに必要な情報がありません"
+msgstr "書式%1$sを読み込みするのに必要な情報がありません"
 
 #: src/frontends/qt4/GuiView.cpp:1592
 #, c-format
 msgid "Select %1$s file to import"
-msgstr "インポートするファイルとして%1$sを選択します"
+msgstr "読み込みするファイルとして%1$sを選択します"
 
 #: src/frontends/qt4/GuiView.cpp:1643 src/frontends/qt4/GuiView.cpp:1833
 #, c-format
@@ -19973,24 +19808,23 @@ msgstr "文書を上書きしますか？"
 #: src/frontends/qt4/GuiView.cpp:1654
 #, c-format
 msgid "Importing %1$s..."
-msgstr "%1$sをインポートしています..."
+msgstr "%1$sを読み込みしています..."
 
 #: src/frontends/qt4/GuiView.cpp:1657
 msgid "imported."
-msgstr "インポートされました。"
+msgstr "書き出されました。"
 
 #: src/frontends/qt4/GuiView.cpp:1659
 msgid "file not imported!"
-msgstr "ファイルはインポートされませんでした！"
+msgstr "ファイルは書き出されませんでした！"
 
 #: src/frontends/qt4/GuiView.cpp:1723
 msgid "Select LyX document to insert"
 msgstr "挿入するLyX文書を選択して下さい"
 
 #: src/frontends/qt4/GuiView.cpp:1757
-#, fuzzy
 msgid "Absolute filename expected."
-msgstr "値を入れなくてはなりません。"
+msgstr "絶対ファイル名が必要です。"
 
 #: src/frontends/qt4/GuiView.cpp:1769
 msgid "Select file to insert"
@@ -20114,7 +19948,7 @@ msgstr "グループがありません"
 
 #: src/frontends/qt4/Menus.cpp:730 src/frontends/qt4/Menus.cpp:731
 msgid "more spelling suggestions"
-msgstr ""
+msgstr "追加的綴り候補"
 
 #: src/frontends/qt4/Menus.cpp:770 src/frontends/qt4/Menus.cpp:771
 msgid "Invisible"
@@ -20178,24 +20012,24 @@ msgid "No action defined!"
 msgstr "動作が定義されていません！"
 
 #: src/frontends/qt4/Toolbars.cpp:217
-#, fuzzy, c-format
+#, c-format
 msgid "Export %1$s"
-msgstr "フォント: %1$s"
+msgstr "%1$sを書き出す"
 
 #: src/frontends/qt4/Toolbars.cpp:221
-#, fuzzy, c-format
+#, c-format
 msgid "Import %1$s"
-msgstr "%1$sをインポートしています..."
+msgstr "%1$sを読み込む"
 
 #: src/frontends/qt4/Toolbars.cpp:225
-#, fuzzy, c-format
+#, c-format
 msgid "Update %1$s"
-msgstr "更新"
+msgstr "%1$sを更新"
 
 #: src/frontends/qt4/Toolbars.cpp:229
-#, fuzzy, c-format
+#, c-format
 msgid "View %1$s"
-msgstr "表示"
+msgstr "%1$sを表示"
 
 #: src/frontends/qt4/Validator.cpp:149
 msgid "space"
@@ -20280,8 +20114,8 @@ msgid ""
 "The following filename is likely to cause trouble when running the exported "
 "file through LaTeX: "
 msgstr ""
-"以下のファイル名はエクスポートしたフィルをLaTeXにかけるときに問題を引き起こす"
-"可能性が高いです: "
+"以下のファイル名は書き出したファイルをLaTeXにかけるときに問題を引き起こす可能"
+"性が高いです: "
 
 #: src/insets/Inset.cpp:365
 msgid "Opened inset"
@@ -20339,7 +20173,7 @@ msgstr "目次に入れる"
 
 #: src/insets/InsetBibtex.cpp:307 src/insets/InsetBibtex.cpp:357
 msgid "Export Warning!"
-msgstr "エクスポートに関する警告！"
+msgstr "書き出しに関する警告！"
 
 #: src/insets/InsetBibtex.cpp:308
 msgid ""
@@ -20424,15 +20258,19 @@ msgstr "派生枝（%1$s）：%2$s"
 msgid "Branch: "
 msgstr "派生枝: "
 
-#: src/insets/InsetBranch.cpp:94
+#: src/insets/InsetBranch.cpp:95
 msgid "Branch (child only): "
 msgstr "派生枝（従属のみ）："
 
-#: src/insets/InsetBranch.cpp:99
+#: src/insets/InsetBranch.cpp:97
+msgid "Branch (undefined): "
+msgstr "派生枝（未定義）："
+
+#: src/insets/InsetBranch.cpp:102
 msgid "Undef: "
 msgstr "未定義："
 
-#: src/insets/InsetBranch.cpp:223
+#: src/insets/InsetBranch.cpp:226
 msgid "branch"
 msgstr "派生枝"
 
@@ -20609,13 +20447,15 @@ msgstr "モジュールが見つかりません"
 
 #: src/insets/InsetInclude.cpp:656
 msgid "Unsupported Inclusion"
-msgstr ""
+msgstr "このインクルードはサポートされていません"
 
 #: src/insets/InsetInclude.cpp:657
 msgid ""
 "LyX does not know how to include non-LyX files when generating HTML output. "
 "Offending file: "
 msgstr ""
+"HTML出力を生成するに際して、LyXは非LyXファイルのインクルードの仕方がわかりま"
+"せんでした。以下が問題のあるファイルです："
 
 #: src/insets/InsetIndex.cpp:140
 msgid "Index sorting failed"
@@ -20643,14 +20483,12 @@ msgid "Unknown index type!"
 msgstr "未知の索引型です！"
 
 #: src/insets/InsetIndex.cpp:415
-#, fuzzy
 msgid "All indices"
-msgstr "利用可能な索引(&V):"
+msgstr "全索引"
 
 #: src/insets/InsetIndex.cpp:419
-#, fuzzy
 msgid "subindex"
-msgstr "索引"
+msgstr "下位索引"
 
 #: src/insets/InsetInfo.cpp:115
 #, c-format
@@ -20801,8 +20639,7 @@ msgid "Should be composed of one or more of %1$s."
 msgstr "%1$sのうちの1つ以上で構成されなくてはなりません。"
 
 #: src/insets/InsetListingsParams.cpp:284
-msgid ""
-"Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
+msgid "Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
 msgstr "\\footnotesize, \\small, \\itshape, \\ttfamily 等を使ってください"
 
 #: src/insets/InsetListingsParams.cpp:286
@@ -21098,7 +20935,7 @@ msgstr "展開された表"
 
 #: src/insets/InsetTabular.cpp:4068
 msgid "Selection size should match clipboard content."
-msgstr ""
+msgstr "選択部位の大きさは、クリップボードの内容と一致していなくてはなりません。"
 
 #: src/insets/InsetText.cpp:233
 msgid "Opened Text Inset"
@@ -21487,9 +21324,8 @@ msgid "User commands"
 msgstr "ユーザーコマンド"
 
 #: src/support/debug.cpp:54
-#, fuzzy
 msgid "The LyX Lexer"
-msgstr "LyX Lexxer"
+msgstr "LyX Lexer"
 
 #: src/support/debug.cpp:55
 msgid "Dependency information"
@@ -21528,9 +21364,8 @@ msgid "RowPainter profiling"
 msgstr "RowPainterが輪郭を描いています"
 
 #: src/support/debug.cpp:64
-#, fuzzy
 msgid "Scrolling debugging"
-msgstr "スクロールデバッグ"
+msgstr "スクロールのデバッグ"
 
 #: src/support/debug.cpp:65
 msgid "Math macros"
@@ -21593,123 +21428,3 @@ msgstr ""
 msgid "Unknown user"
 msgstr "未知の"
 
-#~ msgid "Select the default language of your documents"
-#~ msgstr "作成する文書の既定言語を選択してください"
-
-#~ msgid "Personal &dictionary:"
-#~ msgstr "個人用辞書(&D):"
-
-#~ msgid "Specify a personal dictionary file other than the default"
-#~ msgstr "既定ではない個人用辞書を指定する。"
-
-#~ msgid "Use input encod&ing"
-#~ msgstr "入力文字コードを使う(&I)"
-
-#~ msgid "Toggle Label|L"
-#~ msgstr "ラベルを切り替える(L)|L"
-
-#~ msgid "Move Section down|d"
-#~ msgstr "節を下げる(D)|D"
-
-#~ msgid "Move Section up|u"
-#~ msgstr "節を上げる(U)|U"
-
-#~ msgid "The spellchecker has failed."
-#~ msgstr "スペルチェッカーでエラーが発生しました。"
-
-#~ msgid ""
-#~ "Specify an alternate personal dictionary file. E.g. \".aspell_english\"."
-#~ msgstr "代替の個人用辞書を指定してください。例：\".aspell_english\"。"
-
-#~ msgid ""
-#~ "Specify whether to pass the -T input encoding option to aspell. Enable "
-#~ "this if you cannot check the spelling of words containing accented "
-#~ "letters. This may not work with all dictionaries."
-#~ msgstr ""
-#~ "aspell に -T 入力文字コードオプションを渡すかどうかを指定してください。ア"
-#~ "クセント文字を含む単語の綴りをチェックできないときに，有効にしてください。"
-#~ "全ての辞書で動くとは限りません。"
-
-#~ msgid "Choose personal dictionary"
-#~ msgstr "個人用辞書を選んで下さい"
-
-#~ msgid "*.pws"
-#~ msgstr "*.pws"
-
-#, fuzzy
-#~ msgid "LyX binary not found"
-#~ msgstr "文字列が見つかりません！"
-
-#, fuzzy
-#~ msgid "File not found"
-#~ msgstr "モジュールが見つかりません"
-
-#, fuzzy
-#~ msgid "Directory not found"
-#~ msgstr "文字列が見つかりません！"
-
-#, fuzzy
-#~ msgid "Accept Change|C"
-#~ msgstr "変更を承認(A)|A"
-
-#, fuzzy
-#~ msgid "C&ommand:"
-#~ msgstr "コマンド(&C):"
-
-#~ msgid "&BibTeX command:"
-#~ msgstr "&BibTeXコマンド:"
-
-#~ msgid "&Index command:"
-#~ msgstr "索引コマンド(&I):"
-
-#~ msgid "BibTeX command (&Japanese):"
-#~ msgstr "BibTeXコマンド（日本語使用時） (&J):"
-
-#~ msgid "Index command (Ja&panese):"
-#~ msgstr "索引コマンド（日本語使用時）(&P):"
-
-#~ msgid "Toggle Labeling/Numbering|T"
-#~ msgstr "ラベル付け/番号付けを入切(T)|T"
-
-#~ msgid "Copy Label as Reference|C"
-#~ msgstr "ラベルを参照としてコピー(C)|C"
-
-#, fuzzy
-#~ msgid "View|V[[show]]"
-#~ msgstr "表示(V)|V"
-
-#~ msgid "View DVI"
-#~ msgstr "DVIを表示"
-
-#~ msgid "View PDF (pdflatex)"
-#~ msgstr "PDF(pdflatex)を表示"
-
-#~ msgid "View PostScript"
-#~ msgstr "PostScriptを表示"
-
-#~ msgid "Update DVI"
-#~ msgstr "DVIを更新"
-
-#~ msgid "Update PDF (pdflatex)"
-#~ msgstr "PDF(pdflatex)を更新"
-
-#~ msgid "Update PostScript"
-#~ msgstr "PostScriptを更新"
-
-#~ msgid "Thesaurus failure"
-#~ msgstr "類義語辞典のエラーです"
-
-#~ msgid ""
-#~ "Aiksaurus returned the following error:\n"
-#~ "\n"
-#~ "%1$s."
-#~ msgstr ""
-#~ "Aiksaurusが以下のエラーを返しました:\n"
-#~ "\n"
-#~ "%1$s。"
-
-#~ msgid "Indices"
-#~ msgstr "索引"
-
-#~ msgid "You cannot paste into a multicell selection."
-#~ msgstr "複数セルを選択しているところに貼り付けることはできません。"
