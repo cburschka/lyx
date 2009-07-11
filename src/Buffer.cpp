@@ -2390,51 +2390,27 @@ void Buffer::updateMacros() const
 
 void Buffer::getUsedBranches(std::list<docstring> & result, bool const from_master) const
 {
-	// Iterate over buffer, starting with first paragraph
-	// The scope must be bigger than any lookup DocIterator
-	// later. For the global lookup, lastpit+1 is used, hence
-	// we use lastpit+2 here.
-	DocIterator it = par_iterator_begin();
-	DocIterator scope = it;
-	scope.pit() = scope.lastpit() + 2;
-	pit_type lastpit = it.lastpit();
-
-	while (it.pit() <= lastpit) {
-		Paragraph & par = it.paragraph();
-
-		// iterate over the insets of the current paragraph
-		InsetList const & insets = par.insetList();
-		InsetList::const_iterator iit = insets.begin();
-		InsetList::const_iterator end = insets.end();
-		for (; iit != end; ++iit) {
-			it.pos() = iit->pos;
-
-			if (iit->inset->lyxCode() == BRANCH_CODE) {
-				// get buffer of external file
-				InsetBranch const & br =
-					static_cast<InsetBranch const &>(*iit->inset);
-				docstring const name = br.branch();
-				if (!from_master && !params().branchlist().find(name))
-					result.push_back(name);
-				else if (from_master && !masterBuffer()->params().branchlist().find(name))
-					result.push_back(name);
-				continue;
-			}
-
-			// is it an external file?
-			if (iit->inset->lyxCode() == INCLUDE_CODE) {
-				// get buffer of external file
-				InsetInclude const & inset =
-					static_cast<InsetInclude const &>(*iit->inset);
-				Buffer * child = inset.getChildBuffer();
-				if (!child)
-					continue;
-				child->getUsedBranches(result, true);
-			}
+	InsetIterator it  = inset_iterator_begin(inset());
+	InsetIterator const end = inset_iterator_end(inset());
+	for (; it != end; ++it) {
+		if (it->lyxCode() == BRANCH_CODE) {
+			InsetBranch & br = static_cast<InsetBranch &>(*it);
+			docstring const name = br.branch();
+			if (!from_master && !params().branchlist().find(name))
+				result.push_back(name);
+			else if (from_master && !masterBuffer()->params().branchlist().find(name))
+				result.push_back(name);
+			continue;
 		}
-		// next paragraph
-		it.pit()++;
-		it.pos() = 0;
+		if (it->lyxCode() == INCLUDE_CODE) {
+			// get buffer of external file
+			InsetInclude const & ins =
+				static_cast<InsetInclude const &>(*it);
+			Buffer * child = ins.getChildBuffer();
+			if (!child)
+				continue;
+			child->getUsedBranches(result, true);
+		}
 	}
 	// remove duplicates
 	result.unique();
