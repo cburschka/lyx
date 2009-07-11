@@ -1707,9 +1707,37 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 	}
 
 	case LFUN_BRANCHES_RENAME: {
+		if (func.argument().empty())
+			break;
+
 		docstring const oldname = from_utf8(func.getArg(0));
 		docstring const newname = from_utf8(func.getArg(1));
-		renameBranches(oldname, newname);
+		InsetIterator it  = inset_iterator_begin(inset());
+		InsetIterator const end = inset_iterator_end(inset());
+		bool success = false;
+		for (; it != end; ++it) {
+			if (it->lyxCode() == BRANCH_CODE) {
+				InsetBranch & ins = static_cast<InsetBranch &>(*it);
+				if (ins.branch() == oldname) {
+					undo().recordUndo(it);
+					ins.rename(newname);
+					success = true;
+					continue;
+				}
+			}
+			if (it->lyxCode() == INCLUDE_CODE) {
+				// get buffer of external file
+				InsetInclude const & ins =
+					static_cast<InsetInclude const &>(*it);
+				Buffer * child = ins.getChildBuffer();
+				if (!child)
+					continue;
+				child->dispatch(func, dr);
+			}
+		}
+
+		if (success)
+			dr.update(Update::Force);
 		break;
 	}
 
@@ -2410,55 +2438,6 @@ void Buffer::getUsedBranches(std::list<docstring> & result, bool const from_mast
 	}
 	// remove duplicates
 	result.unique();
-}
-
-
-void Buffer::renameBranches(docstring const & oldname, docstring const & newname)
-{
-	// Iterate over buffer, starting with first paragraph
-	// The scope must be bigger than any lookup DocIterator
-	// later. For the global lookup, lastpit+1 is used, hence
-	// we use lastpit+2 here.
-	DocIterator it = par_iterator_begin();
-	DocIterator scope = it;
-	scope.pit() = scope.lastpit() + 2;
-	pit_type lastpit = it.lastpit();
-
-	while (it.pit() <= lastpit) {
-		Paragraph & par = it.paragraph();
-
-		// iterate over the insets of the current paragraph
-		InsetList const & insets = par.insetList();
-		InsetList::const_iterator iit = insets.begin();
-		InsetList::const_iterator end = insets.end();
-		for (; iit != end; ++iit) {
-			it.pos() = iit->pos;
-
-			if (iit->inset->lyxCode() == BRANCH_CODE) {
-				// get buffer of external file
-				InsetBranch & br =
-					static_cast<InsetBranch &>(*iit->inset);
-				undo().recordUndo(it);
-				if (br.branch() == oldname)
-					br.rename(newname);
-				continue;
-			}
-
-			// is it an external file?
-			if (iit->inset->lyxCode() == INCLUDE_CODE) {
-				// get buffer of external file
-				InsetInclude const & inset =
-					static_cast<InsetInclude const &>(*iit->inset);
-				Buffer * child = inset.getChildBuffer();
-				if (!child)
-					continue;
-				child->renameBranches(oldname, newname);
-			}
-		}
-		// next paragraph
-		it.pit()++;
-		it.pos() = 0;
-	}
 }
 
 
