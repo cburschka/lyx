@@ -175,13 +175,14 @@ void GuiBranches::on_renamePB_pressed()
 				success = branchlist_.rename(oldname, newname);
 			newBranchLE->clear();
 			updateView();
+
+			if (!success)
+				Alert::error(_("Renaming failed"), 
+				      _("The branch could not be renamed."));
+			else
+				// emit signal
+				renameBranches(oldname, newname);
 		}
-		if (!success)
-			Alert::error(_("Renaming failed"), 
-			      _("The branch could not be renamed."));
-		else
-			// emit signal
-			renameBranches(oldname, newname);
 	}
 }
 
