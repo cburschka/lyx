@@ -1,4 +1,4 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -155,7 +155,7 @@ Haase
 
 \begin_layout Date
 letzte Änderung: 10.
- Januar 2009
+ Juli 2009
 \end_layout
 
 \begin_layout Standard
@@ -5332,6 +5332,79 @@ Datei!Export!OpenDocument
 \begin_layout Standard
 Hiermit können Sie Ihre LyX-Dokumente in ein Format exportieren, das von
  OpenOffice gelesen werden kann.
+ In 
+\family sans
+Werkzeuge\SpecialChar \menuseparator
+Einstellungen
+\family default
+\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+
+\family sans
+Datei-Handhabung\SpecialChar \menuseparator
+Konverter
+\family default
+ steht bei 
+\family sans
+LaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X
+\begin_inset space \space{}
+\end_inset
+
+(normal) -> OpenDocument
+\family default
+ im Feld 
+\family sans
+Konverter
+\family default
+ standardmäßig
+\end_layout
+
+\begin_layout LyX-Code
+mk4ht oolatex $$i
+\end_layout
+
+\begin_layout Standard
+oder wenn MiKTeX verwendet wird
+\end_layout
+
+\begin_layout LyX-Code
+oolatex $$i
+\end_layout
+
+\begin_layout Standard
+Wenn Sie damit oder dem Befehl 
+\family typewriter
+oolatex $$i
+\family default
+ in OpenOffice ein leeres Dokument sehen, könnten Sie es mit folgendem Befehl
+ versuchen (wie 
+\begin_inset CommandInset href
+LatexCommand href
+name "hier"
+target "http://www.cse.ohio-state.edu/~gurari/TeX4ht/mn-commands.html#QQ1-9-38"
+
+\end_inset
+
+ beschrieben):
+\end_layout
+
+\begin_layout LyX-Code
+htlatex $$i "xhtml,ooffice" "ooffice/! -cmozhtf" "-coo -cvalidate"
+\end_layout
+
+\begin_layout Standard
+Das funktioniert unter Kubuntu [9.04] jedoch nicht unter Windows mit MiKTeX.
 \end_layout
 
 \begin_layout Description
@@ -5347,7 +5420,7 @@ tex4ht
 \begin_layout Subsection
 Einfacher Text
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Datei!Export!einfacher Text
@@ -5375,7 +5448,7 @@ Form
 \begin_layout Subsection
 Einfacher Text (ps2ascii)
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Datei!Export!einfacher Text (ps2ascii)
