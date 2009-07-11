@@ -1326,14 +1326,8 @@ void Tabular::write(ostream & os) const
 	os << "<features"
 	   << write_attribute("rotate", rotate)
 	   << write_attribute("booktabs", use_booktabs)
-	   << write_attribute("islongtable", is_long_tabular);
-	// longtables cannot be aligned vertically
-	if (!is_long_tabular)
-	   os << write_attribute("tabularvalignment", tabular_valignment);
-	if (is_long_tabular)
-	   os << write_attribute("longtabularalignment",
-	                         longtabular_alignment);
-	os << write_attribute("firstHeadTopDL", endfirsthead.topDL)
+	   << write_attribute("islongtable", is_long_tabular)
+	   << write_attribute("firstHeadTopDL", endfirsthead.topDL)
 	   << write_attribute("firstHeadBottomDL", endfirsthead.bottomDL)
 	   << write_attribute("firstHeadEmpty", endfirsthead.empty)
 	   << write_attribute("headTopDL", endhead.topDL)
@@ -1342,8 +1336,14 @@ void Tabular::write(ostream & os) const
 	   << write_attribute("footBottomDL", endfoot.bottomDL)
 	   << write_attribute("lastFootTopDL", endlastfoot.topDL)
 	   << write_attribute("lastFootBottomDL", endlastfoot.bottomDL)
-	   << write_attribute("lastFootEmpty", endlastfoot.empty)
-	   << ">\n";
+	   << write_attribute("lastFootEmpty", endlastfoot.empty);
+	// longtables cannot be aligned vertically
+	if (!is_long_tabular)
+	   os << write_attribute("tabularvalignment", tabular_valignment);
+	if (is_long_tabular)
+	   os << write_attribute("longtabularalignment",
+	                         longtabular_alignment);
+	os << ">\n";
 	for (col_type j = 0; j < column_info.size(); ++j) {
 		os << "<column"
 		   << write_attribute("alignment", column_info[j].alignment)

@@ -84,6 +84,9 @@ GuiTabular::GuiTabular(GuiView & lv)
 		newpageCB, SLOT(setEnabled(bool)));
 	connect(longTabularCB, SIGNAL(toggled(bool)),
 		alignmentGB, SLOT(setEnabled(bool)));
+	// longtables cannot have a vertical alignment
+	connect(longTabularCB, SIGNAL(toggled(bool)),
+		TableAlignCB, SLOT(setDisabled(bool)));
 	connect(hAlignCB, SIGNAL(activated(int)),
 		this, SLOT(hAlign_changed(int)));
 	connect(vAlignCB, SIGNAL(activated(int)),
@@ -826,7 +829,7 @@ void GuiTabular::updateContents()
 	hAlignCB->setEnabled(true);
 	vAlignCB->setEnabled(!pwidth.zero());
 
-	int tableValign = 0;
+	int tableValign = 1;
 	switch (tabular_.tabular_valignment) {
 	case Tabular::LYX_VALIGN_TOP:
 		tableValign = 0;
@@ -864,7 +867,9 @@ void GuiTabular::updateContents()
 		captionStatusCB->setChecked(false);
 		captionStatusCB->blockSignals(false);
 		return;
-	}
+	} else
+		// longtables cannot have a vertical alignment
+		TableAlignCB->setCurrentIndex(Tabular::LYX_VALIGN_MIDDLE);
 
 	switch (tabular_.longtabular_alignment) {
 	case Tabular::LYX_LONGTABULAR_ALIGN_LEFT:

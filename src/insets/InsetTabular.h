@@ -207,9 +207,10 @@ public:
 		///
 		LYX_VALIGN_TOP = 0,
 		///
-		LYX_VALIGN_BOTTOM = 1,
+		LYX_VALIGN_MIDDLE = 1,
 		///
-		LYX_VALIGN_MIDDLE = 2
+		LYX_VALIGN_BOTTOM = 2
+		
 	};
 	///
 	enum HAlignment {
