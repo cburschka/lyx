@@ -1332,7 +1332,7 @@ void Tabular::write(ostream & os) const
 	   os << write_attribute("tabularvalignment", tabular_valignment);
 	if (is_long_tabular)
 	   os << write_attribute("longtabularalignment",
-							 longtabular_alignment);
+	                         longtabular_alignment);
 	os << write_attribute("firstHeadTopDL", endfirsthead.topDL)
 	   << write_attribute("firstHeadBottomDL", endfirsthead.bottomDL)
 	   << write_attribute("firstHeadEmpty", endfirsthead.empty)
