@@ -1328,11 +1328,11 @@ void Tabular::write(ostream & os) const
 	   << write_attribute("booktabs", use_booktabs)
 	   << write_attribute("islongtable", is_long_tabular);
 	// longtables cannot be aligned vertically
-    if (!is_long_tabular)
+	if (!is_long_tabular)
 	   os << write_attribute("tabularvalignment", tabular_valignment);
 	if (is_long_tabular)
 	   os << write_attribute("longtabularalignment",
-	                         longtabular_alignment);
+							 longtabular_alignment);
 	os << write_attribute("firstHeadTopDL", endfirsthead.topDL)
 	   << write_attribute("firstHeadBottomDL", endfirsthead.bottomDL)
 	   << write_attribute("firstHeadEmpty", endfirsthead.empty)
