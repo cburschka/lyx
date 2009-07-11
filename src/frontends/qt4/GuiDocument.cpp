@@ -2561,6 +2561,7 @@ bool GuiDocument::initialiseParams(string const &)
 	//selected, and that we don't have conflicts. If so, we could
 	//at least pop up a warning.
 	paramsToDialog();
+	changedBranches_.clear();
 	return true;
 }
 
@@ -2638,6 +2639,9 @@ void GuiDocument::dispatchParams()
 {
 	// This must come first so that a language change is correctly noticed
 	setLanguage();
+
+	// rename branches in the document
+	executeBranchRenaming();
 
 	// Apply the BufferParams. Note that this will set the base class
 	// and then update the buffer's layout.
@@ -2816,8 +2820,26 @@ void GuiDocument::updateUnknownBranches()
 
 void GuiDocument::branchesRename(docstring const & oldname, docstring const & newname)
 {
-	docstring const arg = '"' + oldname + '"' + " " + '"' + newname + '"';
-	dispatch(FuncRequest(LFUN_BRANCHES_RENAME, arg));
+	map<docstring, docstring>::iterator it = changedBranches_.begin();
+	for (; it != changedBranches_.end() ; ++it) {
+		if (it->second == oldname) {
+			// branch has already been renamed
+			it->second = newname;
+			return;
+		}
+	}
+	// store new name
+	changedBranches_[oldname] = newname;
+}
+
+
+void GuiDocument::executeBranchRenaming() const
+{
+	map<docstring, docstring>::const_iterator it = changedBranches_.begin();
+	for (; it != changedBranches_.end() ; ++it) {
+		docstring const arg = '"' + it->first + '"' + " " + '"' + it->second + '"';
+		dispatch(FuncRequest(LFUN_BRANCHES_RENAME, arg));
+	}
 }
 
 

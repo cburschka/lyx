@@ -212,6 +212,8 @@ private:
 	bool providesSC(std::string const & font) const;
 	/// does this font provide size adjustment?
 	bool providesScale(std::string const & font) const;
+	///
+	void executeBranchRenaming() const;
 private:
 	///
 	void loadModuleInfo();
@@ -221,6 +223,8 @@ private:
 	BufferParams bp_;
 	/// List of names of available modules
 	std::list<modInfoStruct> moduleNames_;
+	///
+	std::map<docstring, docstring> changedBranches_;
 };
 
 
