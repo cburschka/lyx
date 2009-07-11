@@ -150,8 +150,12 @@ void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 		Buffer const * buf = buffer().masterBuffer();
 		BranchList const & branchlist = buf->params().branchlist();
 		Branch * our_branch = const_cast<Branch *>(branchlist.find(params_.branch));
-		if (!our_branch)
-			break;
+		if (!our_branch) {
+			// child only?
+			our_branch = buffer().params().branchlist().find(params_.branch);
+			if (!our_branch)
+				break;
+		}
 		our_branch->setSelected(cmd.action == LFUN_BRANCH_ACTIVATE);
 		break;
 	}
