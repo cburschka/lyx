@@ -561,7 +561,7 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 				break;
 		}
 
-		// Display-style insets should always be on a centred row
+		// Display-style insets should always be on a centered row
 		if (Inset const * inset = par.getInset(row.pos())) {
 			switch (inset->display()) {
 				case Inset::AlignLeft:
