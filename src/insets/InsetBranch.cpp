@@ -205,8 +205,13 @@ bool InsetBranch::isBranchSelected() const
 	Buffer const & realbuffer = *buffer().masterBuffer();
 	BranchList const & branchlist = realbuffer.params().branchlist();
 	Branch const * ourBranch = branchlist.find(params_.branch);
-	if (!ourBranch)
-		return false;
+
+	if (!ourBranch) {
+		// this branch is defined in child only
+		ourBranch = buffer().params().branchlist().find(params_.branch);
+		if (!ourBranch)
+			return false;
+	}
 	return ourBranch->isSelected();
 }
 
