@@ -208,39 +208,45 @@ def revert_tabularvalign(document):
            i = j
            continue
        # don't set a box for longtables, only delete tabularvalignment
-       p = find_token(document.body, "<features islongtable=", i)
+       # the alignment is 2 lines below \\begin_inset Tabular
+       p = document.body[i+2].find("islongtable")
        if p > -1:
-           q = document.body[p].find("tabularvalignment")
+           q = document.body[i+2].find("tabularvalignment")
            if q > -1:
-               document.body[p] = document.body[p][:q-1]
-               document.body[p] = document.body[p] + '>'
+               document.body[i+2] = document.body[i+2][:q-1]
+               document.body[i+2] = document.body[i+2] + '>'
            i = i + 1
 
        # when no longtable
        if p == -1:
-         k = find_token(document.body, "<features tabularvalignment=", i)
-         if k == -1:
-             i = j
-             continue
-
+         tabularvalignment = 'c'
          # which valignment is specified?
-         tabularvalignment_re = re.compile(r'<features tabularvalignment="(top|bottom)">')
-         m = tabularvalignment_re.match(document.body[k])
-         if not m:
+         m = document.body[i+2].find('tabularvalignment="top"')
+         if m > -1:
+             tabularvalignment = 't'
+         m = document.body[i+2].find('tabularvalignment="bottom"')
+         if m > -1:
+             tabularvalignment = 'b'
+         # delete tabularvalignment
+         q = document.body[i+2].find("tabularvalignment")
+         if q > -1:
+             document.body[i+2] = document.body[i+2][:q-1]
+             document.body[i+2] = document.body[i+2] + '>'
+
+         # don't add a box when centered
+         if tabularvalignment == 'c':
              i = j
              continue
-
-         tabularvalignment = m.group(1)
-
          subst = ['\\end_layout', '\\end_inset']
          document.body[j+1:j+1] = subst # just inserts those lines
          subst = ['\\begin_inset Box Frameless',
-             'position "' + tabularvalignment[0] +'"',
+             'position "' + tabularvalignment +'"',
              'hor_pos "c"',
              'has_inner_box 1',
              'inner_pos "c"',
              'use_parbox 0',
-             'width "0col%"',
+             # we don't know the width, assume 50%
+             'width "50col%"',
              'special "none"',
              'height "1in"',
              'height_special "totalheight"',
@@ -735,7 +741,7 @@ def revert_longtable_align(document):
       i = find_token(document.body, "\\begin_inset Tabular", i)
       if i == -1:
           break
-      # the alignment is 2 lines below \\begin_inset Tabular 
+      # the alignment is 2 lines below \\begin_inset Tabular
       j = document.body[i+2].find("longtabularalignment")
       if j == -1:
           break
