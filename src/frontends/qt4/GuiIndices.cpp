@@ -123,6 +123,11 @@ void GuiIndices::updateView()
 			indicesTW->setItemSelected(newItem, true);
 		}
 	}
+	bool const have_sel =
+		!indicesTW->selectedItems().isEmpty();
+	removePB->setEnabled(have_sel);
+	renamePB->setEnabled(have_sel);
+	colorPB->setEnabled(have_sel);
 	// emit signal
 	changed();
 }
@@ -196,8 +201,11 @@ void GuiIndices::on_renamePB_clicked()
 		sel_index = selItem->text(0);
 	if (!sel_index.isEmpty()) {
 		docstring newname;
+		docstring const oldname = qstring_to_ucs4(sel_index);
 		bool success = false;
-		if (Alert::askForText(newname, _("Enter new index name"))) {
+		if (Alert::askForText(newname, _("Enter new index name"), oldname)) {
+			if (newname.empty() || oldname == newname)
+				return;
 			success = indiceslist_.rename(qstring_to_ucs4(sel_index), newname);
 			newIndexLE->clear();
 			updateView();
@@ -216,6 +224,16 @@ void GuiIndices::on_indicesTW_itemDoubleClicked(QTreeWidgetItem * item, int /*co
 }
 
 
+void GuiIndices::on_indicesTW_itemSelectionChanged()
+{
+	bool const have_sel =
+		!indicesTW->selectedItems().isEmpty();
+	removePB->setEnabled(have_sel);
+	renamePB->setEnabled(have_sel);
+	colorPB->setEnabled(have_sel);
+}
+
+
 void GuiIndices::on_colorPB_clicked()
 {
 	toggleColor(indicesTW->currentItem());
@@ -224,13 +242,16 @@ void GuiIndices::on_colorPB_clicked()
 
 void GuiIndices::on_multipleIndicesCB_toggled(bool const state)
 {
+	bool const have_sel =
+		!indicesTW->selectedItems().isEmpty();
 	indicesTW->setEnabled(state);
 	newIndexLE->setEnabled(state);
 	newIndexLA->setEnabled(state);
 	addIndexPB->setEnabled(state);
 	availableLA->setEnabled(state);
-	removePB->setEnabled(state);
-	colorPB->setEnabled(state);
+	removePB->setEnabled(state && have_sel);
+	colorPB->setEnabled(state && have_sel);
+	renamePB->setEnabled(state && have_sel);
 	// emit signal
 	changed();
 }

@@ -50,6 +50,7 @@ protected Q_SLOTS:
 	void on_renamePB_clicked();
 	void on_removePB_pressed();
 	void on_indicesTW_itemDoubleClicked(QTreeWidgetItem *, int);
+	void on_indicesTW_itemSelectionChanged();
 	void on_colorPB_clicked();
 	void on_multipleIndicesCB_toggled(bool);
 

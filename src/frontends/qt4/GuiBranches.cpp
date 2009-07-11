@@ -112,6 +112,8 @@ void GuiBranches::updateView()
 		!branchesTW->selectedItems().isEmpty();
 	removePB->setEnabled(have_sel);
 	renamePB->setEnabled(have_sel);
+	colorPB->setEnabled(have_sel);
+	activatePB->setEnabled(have_sel);
 	// emit signal
 	changed();
 }
@@ -205,6 +207,8 @@ void GuiBranches::on_branchesTW_itemSelectionChanged()
 		!branchesTW->selectedItems().isEmpty();
 	removePB->setEnabled(have_sel);
 	renamePB->setEnabled(have_sel);
+	colorPB->setEnabled(have_sel);
+	activatePB->setEnabled(have_sel);
 }
 
 
