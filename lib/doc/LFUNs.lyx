@@ -49,7 +49,7 @@ theorems-ams
 \begin_body
 
 \begin_layout Section*
-LFUNs documentation automatically generated 2009-06-28
+LFUNs documentation automatically generated 2009-07-11
 \end_layout
 
 \begin_layout Standard
@@ -512,11 +512,41 @@ Notion Apart from lfun arguments you can use the following method:
 Syntax info-insert <TYPE> <ARG>
 \end_layout
 \begin_layout Description
-Params <TYPE>: shortcut|lyxrc|package|textclass|menu|buffer
+Params <TYPE>: shortcut[s]|lyxrc|package|textclass|menu|buffer
 \begin_inset Newline newline
 \end_inset
 
 <ARG>: argument for a given type. Look into InsetInfo.h for detailed description.
+\begin_inset Newline newline
+\end_inset
+
+		      shortcut[s]: name of lfun (e.g math-insert 
+\backslash
+alpha)
+\begin_inset Newline newline
+\end_inset
+
+		      lyxrc: name of rc_entry (e.g. bind_file)
+\begin_inset Newline newline
+\end_inset
+
+		      package: name of latex package (e.g. listings)
+\begin_inset Newline newline
+\end_inset
+
+		      textclass: name of textclass (e.g. article)
+\begin_inset Newline newline
+\end_inset
+
+		      menu: name of lfun used in menu 
+\begin_inset Newline newline
+\end_inset
+
+		      icon: name of lfun used in toolbar
+\begin_inset Newline newline
+\end_inset
+
+		      buffer: "name"|"path"|"class"
 \end_layout
 \begin_layout Description
 Sample command-sequence info-insert buffer path; info-insert buffer name
@@ -1186,11 +1216,11 @@ Action Replace a string in the document.
 Syntax word-replace [<DATA>]
 \end_layout
 \begin_layout Description
-Params <DATA>: data is of the form "<search>
+Params <DATA>: data is of the form "<replace>
 \begin_inset Newline newline
 \end_inset
 
-<replace>
+<search>
 \begin_inset Newline newline
 \end_inset
 
@@ -4963,7 +4993,7 @@ Origin sts, Feb 19 2008
 LFUN_COMPLETION_CANCEL
 \end_layout
 \begin_layout Description
-Action Try to cancel completion, either the popup or the inline completion
+Action Try to cancel completion, either the popup or the inline completion.
 \end_layout
 \begin_layout Description
 Syntax completion-cancel
@@ -4986,10 +5016,26 @@ Origin sanda, Sep 08 2008
 \end_layout
 
 \begin_layout Subsection*
+LFUN_BRANCH_ADD
+\end_layout
+\begin_layout Description
+Action Add a branch to the buffer's BranchList.
+\end_layout
+\begin_layout Description
+Syntax branch-add <BRANCH>
+\end_layout
+\begin_layout Description
+Params <BRANCH>: Name of the branch to add
+\end_layout
+\begin_layout Description
+Origin spitz, 7 Jul 2009
+\end_layout
+
+\begin_layout Subsection*
 LFUN_BRANCH_ACTIVATE
 \end_layout
 \begin_layout Description
-Action Activate the branch
+Action Activate the branch.
 \end_layout
 \begin_layout Description
 Syntax branch-activate <BRANCH>
@@ -5012,7 +5058,7 @@ Origin rgh, 27 May 2008
 LFUN_BRANCH_DEACTIVATE
 \end_layout
 \begin_layout Description
-Action De-activate the branch
+Action De-activate the branch.
 \end_layout
 \begin_layout Description
 Syntax branch-deactivate <BRANCH>
@@ -5022,6 +5068,38 @@ Params <BRANCH>: The branch to deactivate
 \end_layout
 \begin_layout Description
 Origin rgh, 27 May 2008
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BRANCHES_RENAME
+\end_layout
+\begin_layout Description
+Action Rename all branches of a given name in a document.
+\end_layout
+\begin_layout Description
+Syntax branches-rename <OLDNAME> <NEWNAME>
+\end_layout
+\begin_layout Description
+Params <OLDNAME>: Current name of the branch to be renamed <NEWNAME>: New name of the branch
+\end_layout
+\begin_layout Description
+Origin spitz, 9 Jul 2009
+\end_layout
+
+\begin_layout Subsection*
+LFUN_BRANCH_ADD_INSERT
+\end_layout
+\begin_layout Description
+Action Create new branch and directly put the branch inset into the document.
+\end_layout
+\begin_layout Description
+Syntax branch-add-insert [<NAME>]
+\end_layout
+\begin_layout Description
+Params <NAME>: Branch name. If it is not specified, you will be asked.
+\end_layout
+\begin_layout Description
+Origin sanda, 10 Jul 2009
 \end_layout
 
 \begin_layout Subsection*
