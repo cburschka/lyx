@@ -487,8 +487,8 @@ string Buffer::logName(LogType * type) const
 		return bname.absFilename();
 	// If we have a newer master file log or only a master log, show this
 	} else if (fname != masterfname
-		   && (!fname.exists() && masterfname.exists()
-		   || fname.lastModified() < masterfname.lastModified())) {
+		   && (!fname.exists() && (masterfname.exists()
+		   || fname.lastModified() < masterfname.lastModified()))) {
 		LYXERR(Debug::FILES, "Log name calculated as: " << masterfname);
 		if (type)
 			*type = mtype;
