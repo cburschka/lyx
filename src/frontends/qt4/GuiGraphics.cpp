@@ -481,7 +481,7 @@ void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
 	rtXunit->clear();
 	rtYunit->clear();
 	
-	for (int i = 0; i < bb_size; i++) {
+	for (size_t i = 0; i < bb_size; i++) {
 		lbXunit->addItem(qt_(bb_units_gui[i]),
 			toqstr(bb_units[i]));
 		lbYunit->addItem(qt_(bb_units_gui[i]),
@@ -626,7 +626,7 @@ void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
 
 	origin->clear();
 
-	for (int i = 0; i < rorigin_size; i++) {
+	for (size_t i = 0; i < rorigin_size; i++) {
 		origin->addItem(qt_(rorigin_gui_strs[i]),
 			toqstr(rorigin_lyx_strs[i]));
 	}
