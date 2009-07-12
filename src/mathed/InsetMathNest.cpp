@@ -13,6 +13,7 @@
 #include "InsetMathNest.h"
 
 #include "InsetMathArray.h"
+#include "InsetMathAMSArray.h"
 #include "InsetMathBig.h"
 #include "InsetMathBox.h"
 #include "InsetMathBrace.h"
@@ -1017,6 +1018,22 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
+	case LFUN_MATH_AMS_MATRIX: {
+		cur.recordUndo();
+		unsigned int m = 1;
+		unsigned int n = 1;
+		docstring name;
+		idocstringstream is(cmd.argument());
+		is >> m >> n >> name;
+		if (m < 1)
+			m = 1;
+		if (n < 1)
+			n = 1;
+		cur.niceInsert(
+			MathAtom(new InsetMathAMSArray(name, m, n)));
+		break;
+	}
+
 	case LFUN_MATH_DELIM: {
 		docstring ls;
 		docstring rs = split(cmd.argument(), ls, ' ');
@@ -1279,6 +1296,7 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 		flag.setEnabled(currentMode() != TEXT_MODE);
 		break;
 
+	case LFUN_MATH_AMS_MATRIX:
 	case LFUN_MATH_MATRIX:
 		flag.setEnabled(currentMode() == MATH_MODE);
 		break;

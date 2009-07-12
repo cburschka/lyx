@@ -1623,6 +1623,16 @@ void LyXAction::init()
  */
 		{ LFUN_MATH_MATRIX, "math-matrix", Noop, Math },
 /*!
+ * \var lyx::FuncCode lyx::LFUN_MATH_AMS_MATRIX
+ * \li Action: Inserts a matrix.
+ * \li Syntax: math-matrix <COLS> <ROWS> [<DECORATION>]
+ * \li Params: <DECORATION>: Decoration determines the LaTeX name of the matrix
+                             that should be created.
+ * \li Sample: math-ams-matrix 3 3 bmatrix
+ * \endvar
+ */
+		{ LFUN_MATH_AMS_MATRIX, "math-ams-matrix", Noop, Math },
+/*!
  * \var lyx::FuncCode lyx::LFUN_MATH_MODE
  * \li Action: In text mode enters math mode (i.e. puts math insets on the current
                cursor position), in math mode enters text mode inside math expression.

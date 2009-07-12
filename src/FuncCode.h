@@ -439,6 +439,7 @@ enum FuncCode
 	LFUN_BRANCH_ADD_INSERT,
 	// 340
 	LFUN_BRANCHES_RENAME,           // spitz 20090709
+	LFUN_MATH_AMS_MATRIX,           // uwestoehr 12-07-2009
 
 	LFUN_LASTACTION                 // end of the table
 };

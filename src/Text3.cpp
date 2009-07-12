@@ -1751,6 +1751,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_MATH_INSERT:
+	case LFUN_MATH_AMS_MATRIX:
 	case LFUN_MATH_MATRIX:
 	case LFUN_MATH_DELIM:
 	case LFUN_MATH_BIGDELIM: {
@@ -2501,6 +2502,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 
 	case LFUN_MATH_INSERT:
+	case LFUN_MATH_AMS_MATRIX:
 	case LFUN_MATH_MATRIX:
 	case LFUN_MATH_DELIM:
 	case LFUN_MATH_BIGDELIM:

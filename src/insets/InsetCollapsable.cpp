@@ -782,6 +782,7 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_MARGINALNOTE_INSERT:
 	case LFUN_MATH_DISPLAY:
 	case LFUN_MATH_INSERT:
+	case LFUN_MATH_AMS_MATRIX:
 	case LFUN_MATH_MATRIX:
 	case LFUN_MATH_MODE:
 	case LFUN_MENU_OPEN:
