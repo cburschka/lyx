@@ -295,6 +295,11 @@ void GuiCompleter::updateVisibility(Cursor & cur, bool start, bool keep, bool cu
 	if (!inlineVisible() && possibleInlineState && start
 		&& cur.inset().automaticInlineCompletion())
 		inline_timer_.start(int(lyxrc.completion_inline_delay * 1000));
+	else {
+		// no inline completion, hence a metrics update is needed
+		if (!(cur.disp_.update() & Update::Force))
+			cur.updateFlags(cur.disp_.update() | Update::SinglePar);
+	}
 
 	// update prefix if any completion is possible
 	bool modelActive = modelActive_ && model()->rowCount() > 0;

@@ -199,6 +199,10 @@ What's new
 - Fix the pasting of multiple cells in a table when a range is selected
   (bug 4952).
 
+- Fix assertion in mathed when moving the cursor immediately after pressing
+  Ctrl-L (or '\' with inline completion disabled) in front of another
+  character (bug 6063).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
