@@ -211,6 +211,8 @@ What's new
 - Do not open files during startup that were closed in the previous
   session by Close View or Close Window (bug 5458).
 
+- Remove empty paragraphs and superfluous spaces when leaving an inset
+  (bug 5435).
 
 * DOCUMENTATION AND LOCALIZATION
 
