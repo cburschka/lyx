@@ -469,14 +469,6 @@ void GuiGraphics::on_angle_textChanged(const QString & filename)
 				 (filename != "0"));
 }
 
-// returns the number of the string s in the vector v
-static int itemNumber(const vector<string> & v, string const & s)
-{
-	vector<string>::const_iterator cit =
-		    find(v.begin(), v.end(), s);
-	return (cit != v.end()) ? int(cit - v.begin()) : 0;
-}
-
 
 void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
 {
