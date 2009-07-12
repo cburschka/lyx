@@ -49,6 +49,8 @@ public:
 	void updateView();
 	void enableView(bool enable);
 	bool wantInitialFocus() const { return false; }
+	void closeEvent(QCloseEvent * event);
+	bool isClosing() const { return is_closing_; }
 
 public:
 	/// clean-up on hide.
@@ -61,6 +63,8 @@ public:
 private:
 	///
 	TocWidget * widget_;
+	///
+	bool is_closing_;
 };
 
 } // namespace frontend

@@ -33,7 +33,7 @@ namespace lyx {
 namespace frontend {
 
 GuiToc::GuiToc(GuiView & parent, Qt::DockWidgetArea area, Qt::WindowFlags flags)
-	: DockView(parent, "toc", qt_("Outline"), area, flags)
+	: DockView(parent, "toc", qt_("Outline"), area, flags), is_closing_(false)
 {
 	widget_ = new TocWidget(parent, this);
 	setWidget(widget_);
@@ -89,6 +89,14 @@ void GuiToc::enableView(bool enable)
 	if (!enable)
 		// In the opposite case, updateView() will be called anyway.
 		widget_->updateView();
+}
+
+
+void GuiToc::closeEvent(QCloseEvent * event)
+{
+	is_closing_ = true;
+	((GuiView *)parent())->updateToolbars();
+	is_closing_ = false;
 }
 
 
