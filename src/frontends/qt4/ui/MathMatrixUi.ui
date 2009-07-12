@@ -5,7 +5,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>347</width>
+    <width>340</width>
     <height>372</height>
    </rect>
   </property>
@@ -15,7 +15,7 @@
   <property name="sizeGripEnabled">
    <bool>true</bool>
   </property>
-  <layout class="QGridLayout" name="gridLayout_2">
+  <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0" colspan="2">
     <layout class="QHBoxLayout">
      <property name="spacing">
@@ -150,7 +150,7 @@
      <property name="title">
       <string>Alignment</string>
      </property>
-     <layout class="QGridLayout">
+     <layout class="QGridLayout" name="grid_1">
       <property name="margin">
        <number>11</number>
       </property>
@@ -219,11 +219,11 @@
     </widget>
    </item>
    <item row="3" column="2">
-    <widget class="QGroupBox" name="alignmentGB_2">
+    <widget class="QGroupBox" name="decorationtGB">
      <property name="title">
       <string>Decoration</string>
      </property>
-     <layout class="QGridLayout" name="gridLayout">
+     <layout class="QGridLayout" name="grid_2">
       <item row="0" column="0">
        <widget class="QLabel" name="typeLA">
         <property name="text">
