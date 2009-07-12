@@ -208,19 +208,18 @@ pit_type Text::undoSpan(pit_type pit)
 
 
 void Text::setLayout(Buffer const & buffer, pit_type start, pit_type end,
-		docstring const & layout)
+		     docstring const & layout)
 {
 	LASSERT(start != end, /**/);
 
-	BufferParams const & bufparams = buffer.params();
-	Layout const & lyxlayout = bufparams.documentClass()[layout];
+	BufferParams const & bp = buffer.params();
+	Layout const & lyxlayout = bp.documentClass()[layout];
 
 	for (pit_type pit = start; pit != end; ++pit) {
 		Paragraph & par = pars_[pit];
 		par.applyLayout(lyxlayout);
 		if (lyxlayout.margintype == MARGIN_MANUAL)
-			par.setLabelWidthString(par.translateIfPossible(
-				lyxlayout.labelstring(), buffer.params()));
+			par.setLabelWidthString(par.expandLabel(lyxlayout, bp));
 	}
 }
 
@@ -392,8 +391,8 @@ void Text::toggleFree(Cursor & cur, Font const & font, bool toggleall)
 	// Try implicit word selection
 	// If there is a change in the language the implicit word selection
 	// is disabled.
-	CursorSlice resetCursor = cur.top();
-	bool implicitSelection =
+	CursorSlice const resetCursor = cur.top();
+	bool const implicitSelection =
 		font.language() == ignore_language
 		&& font.fontInfo().number() == FONT_IGNORE
 		&& selectWordWhenUnderCursor(cur, WHOLE_WORD_STRICT);

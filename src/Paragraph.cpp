@@ -1617,13 +1617,10 @@ docstring Paragraph::expandLabel(Layout const & layout,
 {
 	DocumentClass const & tclass = bparams.documentClass();
 	string const & lang = getParLanguage(bparams)->code();
-
-	docstring fmt;
-	if (process_appendix && d->params_.appendix())
-		fmt = lyx::translateIfPossible(layout.labelstring_appendix(),
-			lang);
-	else
-		fmt = lyx::translateIfPossible(layout.labelstring(), lang);
+	docstring fmt = 
+		lyx::translateIfPossible(layout.labelstring(process_appendix 
+							    && d->params_.appendix()),
+					 lang);
 
 	if (fmt.empty() && layout.labeltype == LABEL_COUNTER 
 	    && !layout.counter.empty())

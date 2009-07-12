@@ -3323,7 +3323,7 @@ static void setLabel(Buffer const & buf, ParIterator & it)
 	if (layout.margintype == MARGIN_MANUAL
 	    || layout.latextype == LATEX_BIB_ENVIRONMENT) {
 		if (par.params().labelWidthString().empty())
-			par.params().labelWidthString(par.translateIfPossible(layout.labelstring(), bp));
+			par.params().labelWidthString(par.expandLabel(layout, bp));
 	} else {
 		par.params().labelWidthString(docstring());
 	}
@@ -3424,8 +3424,7 @@ static void setLabel(Buffer const & buf, ParIterator & it)
 	case LABEL_CENTERED_TOP_ENVIRONMENT:
 	case LABEL_STATIC:	
 	case LABEL_BIBLIO:
-		par.params().labelString(
-			par.translateIfPossible(layout.labelstring(), bp));
+		par.params().labelString(par.expandLabel(layout, bp));
 		break;
 	}
 }

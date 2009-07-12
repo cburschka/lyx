@@ -85,7 +85,8 @@ public:
 	///
 	void setLatexName(std::string const & n) { latexname_ = n; }
 	///
-	docstring const & labelstring() const { return labelstring_; }
+	docstring const & labelstring(bool in_appendix) const 
+	{ return in_appendix ? labelstring_appendix_ : labelstring_; }
 	///
 	docstring const & endlabelstring() const { return endlabelstring_; }
 	///
@@ -126,10 +127,6 @@ public:
 	docstring const & htmlstyle() const { return htmlstyle_; }
 	/// 
 	docstring const & htmlpreamble() const { return htmlpreamble_; }
-	///
-	docstring const & labelstring_appendix() const {
-		return labelstring_appendix_;
-	}
 	///
 	bool isParagraph() const { return latextype == LATEX_PARAGRAPH; }
 	///
