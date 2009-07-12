@@ -2259,7 +2259,7 @@ int Tabular::TeXRow(odocstream & os, row_type i,
 	if (row_info[i].caption && !endfirsthead.empty && !haveLTFirstHead())
 		// if no first header and no empty first header is used,
 		// the caption needs to be terminated by \endfirsthead
-		// (bug 6056)
+		// (bug 6057)
 		os << "\\endfirsthead";
 	else
 		os << "\\tabularnewline";
