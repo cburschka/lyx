@@ -1,0 +1,40 @@
+// -*- C++ -*-
+/**
+ * \file HunspellSpellChecker.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Abdelrazak Younes
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
+#ifndef LYX_HUNSPELL_H
+#define LYX_HUNSPELL_H
+
+#include "SpellChecker.h"
+
+namespace lyx {
+
+
+class HunspellSpellChecker : public SpellChecker
+{
+public:
+	HunspellSpellChecker();
+	~HunspellSpellChecker();
+
+	SpellChecker::Result check(WordLangTuple const &);
+	void insert(WordLangTuple const &);
+	void accept(WordLangTuple const &);
+	docstring const nextMiss();
+	docstring const error();
+
+private:
+	struct Private;
+	Private * d;
+};
+
+
+} // namespace lyx
+
+#endif // LYX_Hunspell_H

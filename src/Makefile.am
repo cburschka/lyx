@@ -21,7 +21,7 @@ EXTRA_DIST = Section.h \
 	pch.h
 
 OTHERLIBS = $(BOOST_LIBS) $(INTLLIBS) $(MYTHES_LIBS) $(AIKSAURUS_LIBS) \
-	    @LIBS@ $(SOCKET_LIBS) $(LIBSHLWAPI) $(LIBPSAPI)
+		@LIBS@ $(SOCKET_LIBS) $(LIBSHLWAPI) $(LIBPSAPI)
 
 noinst_LIBRARIES = liblyxcore.a
 bin_PROGRAMS = lyx
@@ -36,7 +36,7 @@ lyx_LDADD = \
 	support/liblyxsupport.a \
 	$(OTHERLIBS) \
 	$(QT4_LDFLAGS) \
-	$(QT4_LIB) 
+	$(QT4_LIB)
 
 if LYX_WIN_RESOURCE
 .rc.o:
@@ -52,6 +52,10 @@ if USE_ASPELL
 ASPELL = ASpell.cpp ASpell_local.h
 endif
 
+if USE_HUNSPELL
+HUNSPELL = HunspellSpellChecker.cpp HunspellSpellChecker.h
+endif
+
 # These four objects are linked as object files as they are not
 # referenced within the core and therefore are not picked up
 # by the linker without looping over libs. We do not want that,
@@ -65,6 +69,7 @@ lyx_SOURCES = \
 	Box.h \
 	Dimension.cpp \
 	Dimension.h \
+	$(HUNSPELL) \
 	PrinterParams.cpp \
 	PrinterParams.h \
 	Thesaurus.cpp \
@@ -457,7 +462,7 @@ HEADERFILESMATHED = \
 	mathed/ReplaceData.h \
 	mathed/MathStream.h \
 	mathed/MathSupport.h \
-	mathed/TextPainter.h 
+	mathed/TextPainter.h
 
 lyxmathed.cpp:
 	@echo -e '$(SOURCEFILESMATHED:%=\n#include "%")\n' > $@
@@ -471,7 +476,7 @@ liblyxmathed_a_SOURCES = lyxmathed.cpp $(HEADERFILESMATHED)
 
 else
 
-liblyxmathed_a_SOURCES = $(SOURCEFILESMATHED) $(HEADERFILESMATHED) 
+liblyxmathed_a_SOURCES = $(SOURCEFILESMATHED) $(HEADERFILESMATHED)
 
 endif
 

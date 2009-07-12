@@ -2,33 +2,61 @@
 # Only checks for "new" aspell, > 0.50
 AC_DEFUN([CHECK_WITH_ASPELL],
 [
-    lyx_use_aspell=true
-    AC_ARG_WITH(aspell,	AC_HELP_STRING([--with-aspell],[use ASpell libraries]))
-    test "$with_aspell" = "no" && lyx_use_aspell=false
+	lyx_use_aspell=true
+	AC_ARG_WITH(aspell,	AC_HELP_STRING([--with-aspell],[use ASpell libraries]))
+	test "$with_aspell" = "no" && lyx_use_aspell=false
 
-    if $lyx_use_aspell ; then
-	AC_CHECK_HEADERS(aspell.h aspell/aspell.h,
-	    [lyx_use_aspell=true; break;],
-	    [lyx_use_aspell=false])
+	if $lyx_use_aspell ; then
+	AC_CHECK_HEADERS(aspell.h,
+		[lyx_use_aspell=true; break;],
+		[lyx_use_aspell=false])
 	AC_CHECK_LIB(aspell, new_aspell_config, LIBS="-laspell $LIBS", lyx_use_aspell=false)
 
 	AC_MSG_CHECKING([whether to use aspell])
 	if $lyx_use_aspell ; then
-	    AC_MSG_RESULT(yes)
-	    AC_DEFINE(USE_ASPELL, 1, [Define as 1 to use the aspell library])
-	    lyx_flags="$lyx_flags use-aspell"
+		AC_MSG_RESULT(yes)
+		AC_DEFINE(USE_ASPELL, 1, [Define as 1 to use the aspell library])
+		lyx_flags="$lyx_flags use-aspell"
 	else
-	    AC_MSG_RESULT(no)
+		AC_MSG_RESULT(no)
 	fi
-    fi
-    ])
+	fi
+	])
 
+# Macro to add for using hunspell spellchecker libraries!     -*- sh -*-
+AC_DEFUN([CHECK_WITH_HUNSPELL],
+[
+	lyx_use_hunspell=true
+	AC_ARG_WITH(hunspell,	AC_HELP_STRING([--with-hunspell],[use Hunspell libraries]))
+	test "$with_hunspell" = "no" && lyx_use_hunspell=false
 
-### Check if we want spell libraries, prefer new aspell
+	if $lyx_use_hunspell ; then
+	AC_CHECK_HEADERS(hunspell/hunspell.hxx,
+		[lyx_use_hunspell=true; break;],
+		[lyx_use_hunspell=false])
+	AC_CHECK_LIB(hunspell, main, LIBS="-lhunspell $LIBS", lyx_use_hunspell=false)
+
+	AC_MSG_CHECKING([whether to use hunspell])
+	if $lyx_use_hunspell ; then
+		AC_MSG_RESULT(yes)
+		AC_DEFINE(USE_HUNSPELL, 1, [Define as 1 to use the hunspell library])
+		lyx_flags="$lyx_flags use-hunspell"
+	else
+		AC_MSG_RESULT(no)
+	fi
+	fi
+	])
+
+### Check if we want spell libraries, prefer new aspell or hunspell
 AC_DEFUN([LYX_CHECK_SPELL_ENGINES],
 [
-    lyx_use_aspell=false
-    CHECK_WITH_ASPELL
+	lyx_use_aspell=false
+	CHECK_WITH_ASPELL
 
-    AM_CONDITIONAL(USE_ASPELL, $lyx_use_aspell)
-    ])
+	AM_CONDITIONAL(USE_ASPELL, $lyx_use_aspell)
+
+	lyx_use_hunspell=false
+	CHECK_WITH_HUNSPELL
+
+	AM_CONDITIONAL(USE_HUNSPELL, $lyx_use_hunspell)
+	])
