@@ -136,7 +136,7 @@ opts.AddVariables(
             ) ),
     #
     EnumVariable('spell', 'Choose spell checker to use.', 'auto',
-        allowed_values = ('aspell', 'pspell', 'ispell', 'auto', 'no') ),
+		allowed_values = ('aspell', 'hunspell', 'auto', 'no') ),
     # packaging method
     EnumVariable('packaging', 'Packaging method to use.', default_packaging_method,
         allowed_values = ('windows', 'posix', 'macosx')),
