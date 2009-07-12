@@ -2081,7 +2081,7 @@ int Tabular::TeXLongtableHeaderFooter(odocstream & os,
 
 	int ret = 0;
 	// caption handling
-	// the caption must be output befrore the headers
+	// the caption must be output before the headers
 	if (haveLTCaption()) {
 		for (row_type i = 0; i < row_info.size(); ++i) {
 			if (row_info[i].caption) {
@@ -2256,7 +2256,13 @@ int Tabular::TeXRow(odocstream & os, row_type i,
 		}
 		++cell;
 	}
-	os << "\\tabularnewline";
+	if (row_info[i].caption && !endfirsthead.empty && !haveLTFirstHead())
+		// if no first header and no empty first header is used,
+		// the caption needs to be terminated by \endfirsthead
+		// (bug 6056)
+		os << "\\endfirsthead";
+	else
+		os << "\\tabularnewline";
 	if (row_info[i].bottom_space_default) {
 		if (use_booktabs)
 			os << "\\addlinespace";
