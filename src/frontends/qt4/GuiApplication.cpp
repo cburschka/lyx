@@ -1394,6 +1394,10 @@ bool GuiApplication::closeAllViews()
 	if (d->views_.empty())
 		return true;
 
+	// When a view/window was closed before without quitting LyX, there
+	// are already entries in the lastOpened list.
+	theSession().lastOpened().clear();
+
 	QList<GuiView *> views = d->views_.values();
 	foreach (GuiView * view, views) {
 		if (!view->close())
