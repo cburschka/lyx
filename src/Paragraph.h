@@ -198,6 +198,8 @@ public:
 	bool isInserted(pos_type pos) const;
 	/// is there a deletion at the given pos ?
 	bool isDeleted(pos_type pos) const;
+	/// is the whole paragraph deleted ?
+	bool isFullyDeleted(pos_type start, pos_type end) const;
 
 	/// will the paragraph be physically merged with the next
 	/// one if the imaginary end-of-par character is logically deleted?

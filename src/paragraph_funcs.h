@@ -73,6 +73,8 @@ Font const outerFont(pit_type par_offset, ParagraphList const & pars);
 /// accept the changes within the complete ParagraphList
 void acceptChanges(ParagraphList & pars, BufferParams const & bparams);
 
+/// return true if the whole ParagraphList is deleted
+bool isFullyDeleted(ParagraphList const & pars);
 
 } // namespace lyx
 

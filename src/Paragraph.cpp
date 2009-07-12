@@ -286,6 +286,15 @@ void Paragraph::addChangesToToc(DocIterator const & cdit,
 }
 
 
+bool Paragraph::isFullyDeleted(pos_type start, pos_type end) const
+{
+	LASSERT(start >= 0 && start <= size(), /**/);
+	LASSERT(end > start && end <= size() + 1, /**/);
+
+	return d->changes_.isFullyDeleted(start, end);
+}
+
+
 bool Paragraph::isChanged(pos_type start, pos_type end) const
 {
 	LASSERT(start >= 0 && start <= size(), /**/);

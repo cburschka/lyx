@@ -305,6 +305,20 @@ Font const outerFont(pit_type par_offset, ParagraphList const & pars)
 }
 
 
+bool isFullyDeleted(ParagraphList const & pars)
+{
+	pit_type const pars_size = static_cast<pit_type>(pars.size());
+
+	// check all paragraphs
+	for (pit_type pit = 0; pit < pars_size; ++pit) {
+		if (!pars[pit].empty())   // prevent assertion failure
+			if (!pars[pit].isFullyDeleted(0, pars[pit].size()))
+				return false;
+	}
+	return true;
+}
+
+
 void acceptChanges(ParagraphList & pars, BufferParams const & bparams)
 {
 	pit_type pars_size = static_cast<pit_type>(pars.size());
