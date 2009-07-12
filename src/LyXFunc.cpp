@@ -1752,7 +1752,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			// processKeySym to avoid another redraw just for a
 			// changed inline completion
 			if (cmd.origin == FuncRequest::KEYBOARD) {
-				if (cmd.action == LFUN_SELF_INSERT)
+				if (cmd.action == LFUN_SELF_INSERT
+				    || (cmd.action == LFUN_ERT_INSERT && view()->cursor().inMathed()))
 					lyx_view_->updateCompletion(view()->cursor(), true, true);
 				else if (cmd.action == LFUN_CHAR_DELETE_BACKWARD)
 					lyx_view_->updateCompletion(view()->cursor(), false, true);
