@@ -744,7 +744,11 @@ void copySelectionToStack(Cursor const & cur, CutStack & cutstack)
 		copySelectionHelper(cur.buffer(), pars, par, cur.selEnd().pit(),
 			pos, cur.selEnd().pos(), 
 			cur.buffer().params().documentClassPtr(), cutstack);
-		dirtyTabularStack(false);
+
+		// Reset the dirty_tabular_stack_ flag only when something
+		// is copied to the clipboard (not to the selectionBuffer).
+		if (&cutstack == &theCuts)
+			dirtyTabularStack(false);
 	}
 
 	if (cur.inMathed()) {
