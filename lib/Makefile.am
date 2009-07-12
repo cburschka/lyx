@@ -430,7 +430,6 @@ dist_images_DATA = \
 
 imagesmathdir = $(imagesdir)/math
 dist_imagesmath_DATA = \
-	images/math/style.png \
 	images/math/font.png \
 	images/math/delim.png \
 	images/math/equation.png \
