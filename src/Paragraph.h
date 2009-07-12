@@ -250,9 +250,6 @@ public:
 	docstring const getLabelWidthString() const;
 	/// Set label width string.
 	void setLabelWidthString(docstring const & s);
-	/// translate \p label to the paragraph language if possible.
-	docstring const translateIfPossible(docstring const & label,
-		BufferParams const & bparams) const;
 	/// Expand the counters for the labelstring of \c layout
 	docstring expandLabel(Layout const &, BufferParams const &,
 		bool process_appendix = true) const;

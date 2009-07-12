@@ -1605,22 +1605,13 @@ void Paragraph::setLabelWidthString(docstring const & s)
 }
 
 
-docstring const Paragraph::translateIfPossible(docstring const & s,
-		BufferParams const & bparams) const
-{
-	return lyx::translateIfPossible(s, getParLanguage(bparams)->code());
-}
-
-
 docstring Paragraph::expandLabel(Layout const & layout,
 		BufferParams const & bparams, bool process_appendix) const
 {
 	DocumentClass const & tclass = bparams.documentClass();
 	string const & lang = getParLanguage(bparams)->code();
-	docstring fmt = 
-		lyx::translateIfPossible(layout.labelstring(process_appendix 
-							    && d->params_.appendix()),
-					 lang);
+	bool const in_appendix = process_appendix && d->params_.appendix();
+	docstring fmt = translateIfPossible(layout.labelstring(in_appendix), lang);
 
 	if (fmt.empty() && layout.labeltype == LABEL_COUNTER 
 	    && !layout.counter.empty())
