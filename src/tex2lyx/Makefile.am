@@ -58,7 +58,6 @@ tex2lyx_SOURCES = \
 	Context.h \
 	Font.cpp \
 	Font.h \
-	gettext.cpp \
 	Parser.cpp \
 	Parser.h \
 	tex2lyx.cpp \
@@ -70,6 +69,6 @@ tex2lyx_SOURCES = \
 
 tex2lyx_LDADD = \
 	$(top_builddir)/src/support/liblyxsupport.a \
-	$(LIBICONV) $(BOOST_LIBS) \
+	$(INTLLIBS) $(LIBICONV) $(BOOST_LIBS) \
 	$(QT4_LIB) $(QT4_LDFLAGS) \
 	@LIBS@ $(LIBSHLWAPI) $(LIBPSAPI)

@@ -595,7 +595,6 @@ src_tex2lyx_files = Split('''
     boost.cpp
     Context.cpp
     Font.cpp
-    gettext.cpp
     math.cpp
     Parser.cpp
     preamble.cpp

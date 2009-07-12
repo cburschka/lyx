@@ -25,6 +25,7 @@
 #include "support/filetools.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
+#include "support/Messages.h"
 #include "support/os.h"
 #include "support/Package.h"
 
@@ -40,6 +41,20 @@ using namespace lyx::support;
 using namespace lyx::support::os;
 
 namespace lyx {
+
+// Dummy translation support
+Messages messages_;
+Messages & getMessages(std::string const &)
+{
+	return messages_;
+}
+
+
+Messages & getGuiMessages()
+{
+	return messages_;
+}
+
 
 string const trim(string const & a, char const * p)
 {
