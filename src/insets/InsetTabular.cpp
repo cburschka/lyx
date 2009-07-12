@@ -3709,8 +3709,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (cur.selIsMultiCell()) {
 			cur.recordUndoInset(DELETE_UNDO);
 			cutSelection(cur);
-		}
-		else
+		} else
 			cell(cur.idx())->dispatch(cur, cmd);
 		break;
 
