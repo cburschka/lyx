@@ -538,12 +538,21 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 	GuiWorkArea * active_wa = currentMainWorkArea();
 	setCurrentWorkArea(active_wa);
 
+	// We might be in a situation that there is still a tabWorkArea, but
+	// there are no tabs anymore. This can happen when we get here after a 
+	// TabWorkArea::lastWorkAreaRemoved() signal. Therefore we count how
+	// many TabWorkArea's have no documents anymore.
+	int empty_twa = 0;
+
 	// We have to call count() each time, because it can happen that
 	// more than one splitter will disappear in one iteration (bug 5998).
-	for (; d.splitter_->count(); ) {
-		TabWorkArea * twa = d.tabWorkArea(0);
+	for (; d.splitter_->count() > empty_twa; ) {
+		TabWorkArea * twa = d.tabWorkArea(empty_twa);
 				
 		int twa_count = twa->count();
+		if (twa->count() == 0)
+			++empty_twa;
+
 		for (; twa_count; --twa_count) {
 			twa->setCurrentIndex(twa_count-1);
 
