@@ -45,7 +45,7 @@ void locale_init()
 
 docstring const translateIfPossible(docstring const & name)
 {
-	if (support::isAscii(name))
+	if (support::isAscii(name) && !name.empty())
 		// Probably from a standard configuration file, try to
 		// translate
 		return _(to_ascii(name));
@@ -59,7 +59,7 @@ docstring const translateIfPossible(docstring const & name)
 
 docstring const translateIfPossible(docstring const & name, std::string const & language)
 {
-	if (support::isAscii(name))
+	if (support::isAscii(name) && !name.empty())
 		// Probably from a standard configuration file, try to
 		// translate
 		return getMessages(language).get(to_ascii(name));
