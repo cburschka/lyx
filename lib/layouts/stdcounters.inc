@@ -38,7 +38,7 @@ End
 
 Counter enumii
 	Within               enumi
-	LabelString          "\alph{enumii}."
+	LabelString          "(\alph{enumii})"
 End
 
 Counter enumiii
