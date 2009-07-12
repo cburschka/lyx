@@ -140,6 +140,10 @@ What's new
 
 - Fix assertion when starting spellchecker in math mode and clicking 
   "replace" (bug 6013)
+  
+- Fix assertion in mathed when moving the cursor immediately after pressing
+  Ctrl-L (or '\' with inline completion disabled) in front of another
+  character (bug 6063).
 
 - Make Tools>Statistics ignore Note insets and inactive branches
   (bug 2566).
@@ -198,10 +202,6 @@ What's new
 
 - Fix the pasting of multiple cells in a table when a range is selected
   (bug 4952).
-
-- Fix assertion in mathed when moving the cursor immediately after pressing
-  Ctrl-L (or '\' with inline completion disabled) in front of another
-  character (bug 6063).
 
 - Make it possible to copy from a deleted section (bug 5390).
 
