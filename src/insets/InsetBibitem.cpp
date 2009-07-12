@@ -23,10 +23,12 @@
 #include "FuncRequest.h"
 #include "InsetIterator.h"
 #include "InsetList.h"
+#include "Language.h" 
 #include "Lexer.h"
 #include "output_xhtml.h"
 #include "Paragraph.h"
 #include "ParagraphList.h"
+#include "ParIterator.h"
 #include "TextClass.h"
 
 #include "frontends/alert.h"
@@ -253,13 +255,15 @@ void InsetBibitem::fillWithBibKeys(BiblioInfo & keys, InsetIterator const & it) 
 
 
 // Update the counters of this inset and of its contents
-void InsetBibitem::updateLabels(ParIterator const &) 
+void InsetBibitem::updateLabels(ParIterator const & it) 
 {
-	Counters & counters = buffer().masterBuffer()->params().documentClass().counters();
+	BufferParams const & bp = buffer().masterBuffer()->params();
+	Counters & counters = bp.documentClass().counters();
 	docstring const bibitem = from_ascii("bibitem");
 	if (counters.hasCounter(bibitem) && getParam("label").empty()) {
 		counters.step(bibitem);
-		autolabel_ = counters.theCounter(bibitem);
+		string const & lang = it.paragraph().getParLanguage(bp)->code();
+		autolabel_ = counters.theCounter(bibitem, lang);
 	} else {
 		autolabel_ = from_ascii("??");
 	}
