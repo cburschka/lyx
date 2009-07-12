@@ -16,8 +16,9 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "Counters.h"
-#include "Language.h"
 #include "Layout.h"
+// FIXME: the following is needed just to get the layout of the enclosing
+// paragraph. This seems a bit too much to me (JMarc)
 #include "OutputParams.h"
 #include "ParIterator.h"
 #include "TextClass.h"
@@ -32,7 +33,6 @@ using namespace std;
 
 namespace lyx {
 
-using support::bformat;
 
 InsetFoot::InsetFoot(Buffer const & buf)
 	: InsetFootlike(buf)
@@ -47,16 +47,16 @@ docstring InsetFoot::editMessage() const
 
 void InsetFoot::updateLabels(ParIterator const & it)
 {
-	BufferParams const & bp = buffer().masterBuffer()->params();
-	Counters & cnts = bp.documentClass().counters();
+	DocumentClass const & tclass = buffer().masterBuffer()->params().documentClass();
+	Counters & cnts = tclass.counters();
 	docstring const foot = from_ascii("footnote");
 	Paragraph const & outer =  it.paragraph();
 	if (!outer.layout().intitle && cnts.hasCounter(foot)) {
 		cnts.step(foot);
 		// FIXME: the counter should format itself.
-		custom_label_= bformat(from_utf8("%1$s %2$s"),
-				       translateIfPossible(getLayout(bp).labelstring()),
-				       cnts.theCounter(foot, outer.getParLanguage(bp)->code()));
+		custom_label_= support::bformat(from_utf8("%1$s %2$s"),
+					  translateIfPossible(getLayout(buffer().params()).labelstring()),
+					  cnts.theCounter(foot));
 		setLabel(custom_label_);
 	
 	}

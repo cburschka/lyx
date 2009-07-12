@@ -3389,8 +3389,7 @@ static void setLabel(Buffer const & buf, ParIterator & it)
 			counters.reset(enumcounter);
 		counters.step(enumcounter);
 
-		string const & lang = par.getParLanguage(bp)->code();
-		par.params().labelString(counters.theCounter(enumcounter, lang));
+		par.params().labelString(counters.theCounter(enumcounter));
 
 		break;
 	}
@@ -3403,11 +3402,10 @@ static void setLabel(Buffer const & buf, ParIterator & it)
 		else {
 			docstring name = buf.B_(textclass.floats().getType(type).name());
 			if (counters.hasCounter(from_utf8(type))) {
-				string const & lang = par.getParLanguage(bp)->code();
 				counters.step(from_utf8(type));
 				full_label = bformat(from_ascii("%1$s %2$s:"), 
 						     name, 
-						     counters.theCounter(from_utf8(type), lang));
+						     counters.theCounter(from_utf8(type)));
 			} else
 				full_label = bformat(from_ascii("%1$s #:"), name);	
 		}

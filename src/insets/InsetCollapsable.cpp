@@ -970,12 +970,11 @@ docstring InsetCollapsable::xhtml(odocstream & os, OutputParams const & runparam
 
 	bool const opened = html::openTag(os, il.htmltag(), il.htmlattr());
 	if (!il.counter().empty()) {
-		BufferParams const & bp = buffer().masterBuffer()->params();
-		Counters & cntrs = bp.documentClass().counters();
+		// FIXME Master buffer?
+		Counters & cntrs = buffer().params().documentClass().counters();
 		cntrs.step(il.counter());
-		// FIXME: translate to paragraph language
 		if (!il.htmllabel().empty())
-			os << cntrs.counterLabel(from_utf8(il.htmllabel()), bp.language->code());
+			os << cntrs.counterLabel(translateIfPossible(from_ascii(il.htmllabel())));
 	}
 	bool innertag_opened = false;
 	if (!il.htmlinnertag().empty())

@@ -41,7 +41,7 @@ LengthValidator::LengthValidator(QWidget * parent)
 QValidator::State LengthValidator::validate(QString & qtext, int &) const
 {
 	bool ok;
-	qtext.trimmed().toDouble(&ok);
+	double d = qtext.trimmed().toDouble(&ok);
 	if (qtext.isEmpty() || ok)
 		return QValidator::Acceptable;
 

@@ -26,7 +26,7 @@ fi
 AM_MAINTAINER_MODE
 
 save_PACKAGE=$PACKAGE
-AM_INIT_AUTOMAKE([foreign dist-bzip2 no-define 1.5 silent-rules])
+AM_INIT_AUTOMAKE([foreign dist-bzip2 no-define 1.5])
 PACKAGE=$save_PACKAGE
 
 ### Set the execute permissions of the various scripts correctly

@@ -18,7 +18,6 @@
 
 #include "support/convert.h"
 #include "support/debug.h"
-#include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
 
@@ -144,9 +143,16 @@ docstring const & Counter::labelString(bool in_appendix) const
 }
 
 
-Counter::StringMap & Counter::flatLabelStrings(bool in_appendix) const
+docstring const & Counter::flatLabelString(bool in_appendix) const
 {
 	return in_appendix ? flatlabelstringappendix_ : flatlabelstring_;
+}
+
+
+void Counter::setFlatLabelStrings(docstring const & fls, docstring const & flsa)
+{
+	flatlabelstring_ = fls;
+	flatlabelstringappendix_ = flsa;
 }
 
 
@@ -249,6 +255,20 @@ void Counters::reset()
 	appendix_ = false;
 	subfloat_ = false;
 	current_float_.erase();
+	CounterList::iterator it = counterList_.begin();
+	CounterList::iterator const end = counterList_.end();
+	std::vector<docstring> callers;
+	for (; it != end; ++it) {
+		it->second.reset();
+		// Compute the explicit counter labels without any
+		// \thexxx strings, in order to avoid recursion.  
+		// It only needs to be done when the textclass is
+		// updated, but in practice the extra work is probably
+		// not noticeable (JMarc)
+		docstring const fls = flattenLabelString(it->first, false, callers);
+		docstring const flsa = flattenLabelString(it->first, true, callers);
+		it->second.setFlatLabelStrings(fls, flsa);
+	}
 }
 
 
@@ -410,29 +430,18 @@ docstring Counters::labelItem(docstring const & ctr,
 }
 
 
-docstring Counters::theCounter(docstring const & counter,
-			       string const & lang) const
+docstring Counters::theCounter(docstring const & counter) const
 {
 	CounterList::const_iterator it = counterList_.find(counter); 
 	if (it == counterList_.end())
 		return from_ascii("??");
-	Counter const & ctr = it->second;
-	Counter::StringMap sm = ctr.flatLabelStrings(appendix());
-	Counter::StringMap::iterator smit = sm.find(lang);
-	if (smit != sm.end())
-		return counterLabel(smit->second, lang);
-
-	vector<docstring> callers;
-	docstring const & fls = flattenLabelString(counter, appendix(),
-						   lang, callers);
-	sm[lang] = fls;
-	return counterLabel(fls, lang);
+	// FIXME: this should get translated.
+	return counterLabel(it->second.flatLabelString(appendix()));
 }
 
 
 docstring Counters::flattenLabelString(docstring const & counter, 
-				       bool in_appendix,
-				       string const & lang,
+				       bool in_appendix, 
 				       vector<docstring> & callers) const
 {
 	docstring label;
@@ -450,12 +459,12 @@ docstring Counters::flattenLabelString(docstring const & counter,
 		return from_ascii("??");
 	Counter const & c = it->second;
 
-	docstring ls = translateIfPossible(c.labelString(in_appendix), lang);
+	docstring ls = c.labelString(in_appendix);
 
 	callers.push_back(counter);
 	if (ls.empty()) {
 		if (!c.master().empty())
-			ls = flattenLabelString(c.master(), in_appendix, lang, callers) 
+			ls = flattenLabelString(c.master(), in_appendix, callers) 
 				+ from_ascii(".");
 		callers.pop_back();
 		return ls + from_ascii("\\arabic{") + counter + "}";
@@ -472,8 +481,7 @@ docstring Counters::flattenLabelString(docstring const & counter,
 		       && lowercase(ls[k]) <= 'z')
 			++k;
 		docstring const newc = ls.substr(j, k - j);
-		docstring const repl = flattenLabelString(newc, in_appendix,
-							  lang, callers);
+		docstring const repl = flattenLabelString(newc, in_appendix, callers);
 		ls.replace(i, k - j + 4, repl);
 	}
 	callers.pop_back();
@@ -482,8 +490,7 @@ docstring Counters::flattenLabelString(docstring const & counter,
 }
 
 
-docstring Counters::counterLabel(docstring const & format,
-				 string const & lang) const
+docstring Counters::counterLabel(docstring const & format) const
 {
 	docstring label = format;
 
@@ -500,7 +507,7 @@ docstring Counters::counterLabel(docstring const & format,
 		       && lowercase(label[k]) <= 'z')
 			++k;
 		docstring const newc = label.substr(j, k - j);
-		docstring const repl = theCounter(newc, lang);
+		docstring const repl = theCounter(newc);
 		label.replace(i, k - j + 4, repl);
 	}
 	while (true) {

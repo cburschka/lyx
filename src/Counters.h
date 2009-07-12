@@ -49,19 +49,19 @@ public:
 	docstring const & master() const;
 	/// Returns a LaTeX-like string to format the counter. 
 	/** This is similar to what one gets in LaTeX when using
-	 *  "\the<counter>". The \c in_appendix bool tells whether we
-	 *  want the version shown in an appendix.
+	 *  "\the<counter>". The \c in_appendix bool tells whether
+	 *  we want the version shown in an appendix.
 	 */
 	docstring const & labelString(bool in_appendix) const;
-	/// Returns a map of LaTeX-like strings to format the counter. 
-	/** For each language, the string is similar to what one gets
-	 *  in LaTeX when using "\the<counter>". The \c in_appendix
-	 *  bool tells whether we want the version shown in an
-	 *  appendix. This version does not contain any \\the<counter>
-	 *  expression.
+	/// Returns a LaTeX-like string to format the counter. 
+	/** This is similar to what one gets in LaTeX when using
+	 *  "\the<counter>". The \c in_appendix bool tells whether
+	 *  we want the version shown in an appendix. This version does 
+	 * not contain any \\the<counter> expression.
 	 */
-	typedef std::map<std::string, docstring> StringMap;
-	StringMap & flatLabelStrings(bool in_appendix) const;
+	docstring const & flatLabelString(bool in_appendix) const;
+	/// set the \c flatLabelString values.
+	void setFlatLabelStrings(docstring const & fls, docstring const & flsa);
 private:
 	///
 	int value_;
@@ -75,12 +75,10 @@ private:
 	docstring labelstring_;
 	/// The same as labelstring_, but in appendices.
 	docstring labelstringappendix_;
-	/// Cache of the labelstring with \\the<counter> expressions expanded, 
-	/// indexed by language
-	mutable StringMap flatlabelstring_;
-	/// Cache of the appendix labelstring with \\the<counter> expressions expanded, 
-	/// indexed by language
-	mutable StringMap flatlabelstringappendix_;
+	/// A version of the labelstring with \\the<counter> expressions expanded
+	docstring flatlabelstring_;
+	/// A version of the appendix labelstring with \\the<counter> expressions expanded
+	docstring flatlabelstringappendix_;
 };
 
 
@@ -121,17 +119,11 @@ public:
 	/// the &to array of counters. Empty string matches all.
 	void copy(Counters & from, Counters & to,
 		  docstring const & match = docstring());
-	/** returns the expanded string representation of counter \c
-	 *  c. The \c lang code is used to translate the string.
-	 */
-	docstring theCounter(docstring const & c,
-			     std::string const & lang) const;
-	/** Replace in \c format all the LaTeX-like macros that depend
-	 * on counters. The \c lang code is used to translate the
-	 * string.
-	 */
-	docstring counterLabel(docstring const & format,
-			       std::string const & lang) const;
+	/// returns the expanded string representation of the counter.
+	docstring theCounter(docstring const & c) const;
+	/// Replace in \c format all the LaTeX-like macros that depend on
+	/// counters.
+	docstring counterLabel(docstring const & format) const;
 	/// Are we in appendix?
 	bool appendix() const { return appendix_; };
 	/// Set the state variable indicating whether we are in appendix.
@@ -145,12 +137,9 @@ public:
 	/// Set the state variable indicating whether we are in a subfloat.
 	void isSubfloat(bool s) { subfloat_ = s; };
 private:
-	/** expands recusrsively any \\the<counter> macro in the
-	 *  labelstring of \c counter.  The \c lang code is used to
-	 *  translate the string.
-	 */
-	docstring flattenLabelString(docstring const & counter, bool in_appendix,
-				     std::string const &lang,
+	/// expands recusrsively any \\the<counter> macro in the
+	/// labelstring of \c counter.
+	docstring flattenLabelString(docstring const & counter, bool in_appendix, 
 				     std::vector<docstring> & callers) const;
 	/// Returns the value of the counter according to the
 	/// numbering scheme numbertype.

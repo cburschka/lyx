@@ -58,6 +58,7 @@
 #include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
+#include "support/Messages.h"
 #include "support/textutils.h"
 
 #include <sstream>
@@ -1608,7 +1609,14 @@ void Paragraph::setLabelWidthString(docstring const & s)
 docstring const Paragraph::translateIfPossible(docstring const & s,
 		BufferParams const & bparams) const
 {
-	return lyx::translateIfPossible(s, getParLanguage(bparams)->code());
+	if (!isAscii(s) || s.empty()) {
+		// This must be a user defined layout. We cannot translate
+		// this, since gettext accepts only ascii keys.
+		return s;
+	}
+	// Probably standard layout, try to translate
+	Messages & m = getMessages(getParLanguage(bparams)->code());
+	return m.get(to_ascii(s));
 }
 
 
@@ -1616,18 +1624,17 @@ docstring Paragraph::expandLabel(Layout const & layout,
 		BufferParams const & bparams, bool process_appendix) const
 {
 	DocumentClass const & tclass = bparams.documentClass();
-	string const & lang = getParLanguage(bparams)->code();
 
 	docstring fmt;
 	if (process_appendix && d->params_.appendix())
-		fmt = lyx::translateIfPossible(layout.labelstring_appendix(),
-			lang);
+		fmt = translateIfPossible(layout.labelstring_appendix(),
+			bparams);
 	else
-		fmt = lyx::translateIfPossible(layout.labelstring(), lang);
+		fmt = translateIfPossible(layout.labelstring(), bparams);
 
 	if (fmt.empty() && layout.labeltype == LABEL_COUNTER 
 	    && !layout.counter.empty())
-		return tclass.counters().theCounter(layout.counter, lang);
+		return tclass.counters().theCounter(layout.counter);
 
 	// handle 'inherited level parts' in 'fmt',
 	// i.e. the stuff between '@' in   '@Section@.\arabic{subsection}'
@@ -1645,7 +1652,7 @@ docstring Paragraph::expandLabel(Layout const & layout,
 		}
 	}
 
-	return tclass.counters().counterLabel(fmt, lang);
+	return tclass.counters().counterLabel(fmt);
 }
 
 

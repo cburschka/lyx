@@ -25,7 +25,6 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "InsetList.h"
-#include "Language.h"
 #include "MetricsInfo.h"
 #include "output_latex.h"
 #include "OutputParams.h"
@@ -302,7 +301,6 @@ void InsetCaption::updateLabels(ParIterator const & it)
 {
 	Buffer const & master = *buffer().masterBuffer();
 	DocumentClass const & tclass = master.params().documentClass();
-	string const & lang = it.paragraph().getParLanguage(master.params())->code();
 	Counters & cnts = tclass.counters();
 	string const & type = cnts.current_float();
 	// Memorize type for addToToc().
@@ -327,7 +325,7 @@ void InsetCaption::updateLabels(ParIterator const & it)
 			cnts.step(counter);
 			full_label_ = bformat(from_ascii("%1$s %2$s:"), 
 					      name,
-					      cnts.theCounter(counter, lang));
+					      cnts.theCounter(counter));
 		} else
 			full_label_ = bformat(from_ascii("%1$s #:"), name);	
 	}
