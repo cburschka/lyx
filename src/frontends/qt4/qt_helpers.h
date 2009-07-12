@@ -52,6 +52,17 @@ std::string const & len, Length::UNIT default_unit);
 void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 docstring const & len, Length::UNIT default_unit);
 
+/// method to get a double value from a localized widget (QLineEdit)
+double widgetToDouble(QLineEdit const * input);
+/// method to get a double value from a localized widget (QLineEdit)
+std::string widgetToDoubleStr(QLineEdit const * input);
+/// method to set a (localized) double value in a widget (QLineEdit)
+void doubleToWidget(QLineEdit * input, double const & value,
+	char f = 'g', int prec = 6);
+/// method to set a (localized) double value in a widget (QLineEdit)
+void doubleToWidget(QLineEdit * input, std::string const & value,
+	char f = 'g', int prec = 6);
+
 /// colors a widget red if invalid
 void setValid(QWidget * widget, bool valid);
 

@@ -25,6 +25,7 @@
 #include "Length.h"
 #include "TextClass.h"
 
+#include "support/convert.h"
 #include "support/debug.h"
 #include "support/filetools.h"
 #include "support/foreach.h"
@@ -39,6 +40,7 @@
 #include <QCheckBox>
 #include <QComboBox>
 #include <QLineEdit>
+#include <QLocale>
 #include <QPalette>
 #include <QSet>
 
@@ -78,7 +80,7 @@ string widgetsToLength(QLineEdit const * input, LengthCombo const * combo)
 
 	Length::UNIT const unit = combo->currentLengthItem();
 
-	return Length(length.toDouble(), unit).asString();
+	return Length(length.trimmed().toDouble(), unit).asString();
 }
 
 
@@ -101,7 +103,7 @@ Length widgetsToLength(QLineEdit const * input, QComboBox const * combo)
 		}
 	}
 
-	return Length(length.toDouble(), unit);
+	return Length(length.trimmed().toDouble(), unit);
 }
 
 
@@ -109,7 +111,8 @@ void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
                      Length const & len, Length::UNIT /*defaultUnit*/)
 {
 	combo->setCurrentItem(len.unit());
-	input->setText(QString::number(Length(len).value()));
+	QLocale loc;
+	input->setText(loc.toString(Length(len).value()));
 }
 
 
@@ -134,6 +137,39 @@ void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 	docstring const & len, Length::UNIT defaultUnit)
 {
 	lengthToWidgets(input, combo, to_utf8(len), defaultUnit);
+}
+
+
+double widgetToDouble(QLineEdit const * input)
+{
+	QString const text = input->text();
+	if (text.isEmpty())
+		return 0.0;
+	
+	return text.trimmed().toDouble();
+}
+
+
+string widgetToDoubleStr(QLineEdit const * input)
+{
+	QString const text = input->text();
+	if (text.isEmpty())
+		return string();
+	
+	return convert<string>(text.trimmed().toDouble());
+}
+
+
+void doubleToWidget(QLineEdit * input, double const & value, char f, int prec)
+{
+	QLocale loc;
+	input->setText(loc.toString(value, f, prec));
+}
+
+
+void doubleToWidget(QLineEdit * input, string const & value, char f, int prec)
+{
+	doubleToWidget(input, convert<double>(value), f, prec);
 }
 
 

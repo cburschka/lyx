@@ -24,6 +24,7 @@
 #include "support/lstrings.h"
 
 #include <QLineEdit>
+#include <QLocale>
 #include <QWidget>
 
 using namespace std;
@@ -39,9 +40,12 @@ LengthValidator::LengthValidator(QWidget * parent)
 
 QValidator::State LengthValidator::validate(QString & qtext, int &) const
 {
-	string const text = fromqstr(qtext);
-	if (text.empty() || support::isStrDbl(text))
+	bool ok;
+	double d = qtext.trimmed().toDouble(&ok);
+	if (qtext.isEmpty() || ok)
 		return QValidator::Acceptable;
+
+	string const text = fromqstr(qtext);
 
 	if (glue_length_) {
 		GlueLength gl;

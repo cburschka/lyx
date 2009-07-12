@@ -213,23 +213,25 @@ bool GuiExternal::activateAspectratio() const
 	if (usingScale())
 		return false;
 
-	string const wstr = fromqstr(widthED->text());
-	if (wstr.empty())
+	QString const wstr = widthED->text();
+	if (wstr.isEmpty())
 		return false;
-	bool const wIsDbl = isStrDbl(wstr);
-	if (wIsDbl && float_equal(convert<double>(wstr), 0.0, 0.05))
+	bool wIsDbl;
+	double val = wstr.trimmed().toDouble(&wIsDbl);
+	if (wIsDbl && float_equal(val, 0.0, 0.05))
 		return false;
 	Length l;
-	if (!wIsDbl && (!isValidLength(wstr, &l) || l.zero()))
+	if (!wIsDbl && (!isValidLength(fromqstr(wstr), &l) || l.zero()))
 		return false;
 
-	string const hstr = fromqstr(heightED->text());
-	if (hstr.empty())
+	QString const hstr = heightED->text();
+	if (hstr.isEmpty())
 		return false;
-	bool const hIsDbl = isStrDbl(hstr);
-	if (hIsDbl && float_equal(convert<double>(hstr), 0.0, 0.05))
+	bool hIsDbl;
+	val = hstr.trimmed().toDouble(&hIsDbl);
+	if (hIsDbl && float_equal(val, 0.0, 0.05))
 		return false;
-	if (!hIsDbl && (!isValidLength(hstr, &l) || l.zero()))
+	if (!hIsDbl && (!isValidLength(fromqstr(hstr), &l) || l.zero()))
 		return false;
 
 	return true;
@@ -353,7 +355,7 @@ static void setRotation(QLineEdit & angleED, QComboBox & originCO,
 	external::RotationData const & data)
 {
 	originCO.setCurrentIndex(int(data.origin()));
-	angleED.setText(toqstr(data.angle));
+	doubleToWidget(&angleED, data.angle);
 }
 
 
@@ -363,7 +365,7 @@ static void getRotation(external::RotationData & data,
 	typedef external::RotationData::OriginType OriginType;
 
 	data.origin(static_cast<OriginType>(originCO.currentIndex()));
-	data.angle = fromqstr(angleED.text());
+	data.angle = widgetToDoubleStr(&angleED);
 }
 
 
@@ -381,7 +383,7 @@ static void setSize(QLineEdit & widthED, LengthCombo & widthUnitCO,
 	}
 
 	if (using_scale) {
-		widthED.setText(toqstr(scale));
+		doubleToWidget(&widthED, scale);
 		widthUnitCO.setCurrentItem("scale");
 	} else
 		lengthToWidgets(&widthED, &widthUnitCO,
@@ -408,11 +410,9 @@ static void getSize(external::ResizeData & data,
 	QLineEdit const & heightED, LengthCombo const & heightUnitCO,
 	QCheckBox const & aspectratioCB, bool const scaling)
 {
-	string const width = fromqstr(widthED.text());
-
 	if (scaling) {
 		// scaling instead of a width
-		data.scale = width;
+		data.scale = widgetToDoubleStr(&widthED);
 		data.width = Length();
 	} else {
 		data.width = Length(widgetsToLength(&widthED, &widthUnitCO));

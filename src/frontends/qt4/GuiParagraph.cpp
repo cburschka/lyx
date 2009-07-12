@@ -218,7 +218,7 @@ void GuiParagraph::applyView()
 		break;
 	case 4:
 		ls = Spacing::Other;
-		other = fromqstr(linespacingValue->text());
+		other = widgetToDoubleStr(linespacingValue);
 		break;
 	}
 
@@ -281,7 +281,7 @@ void GuiParagraph::updateView()
 	}
 	linespacing->setCurrentIndex(ls);
 	if (space.getSpace() == Spacing::Other) {
-		linespacingValue->setText(toqstr(space.getValueAsString()));
+		doubleToWidget(linespacingValue, space.getValue());
 		linespacingValue->setEnabled(true);
 	} else {
 		linespacingValue->setText(QString());

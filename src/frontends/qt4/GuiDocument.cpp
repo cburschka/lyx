@@ -1877,7 +1877,7 @@ void GuiDocument::applyView()
 		break;
 	case 3:
 		bp_.spacing().set(Spacing::Other,
-			fromqstr(textLayoutModule->lspacingLE->text()));
+			widgetToDoubleStr(textLayoutModule->lspacingLE));
 		break;
 	}
 
@@ -2201,8 +2201,8 @@ void GuiDocument::paramsToDialog()
 
 	textLayoutModule->lspacingCO->setCurrentIndex(nitem);
 	if (bp_.spacing().getSpace() == Spacing::Other) {
-		textLayoutModule->lspacingLE->setText(
-			toqstr(bp_.spacing().getValueAsString()));
+		doubleToWidget(textLayoutModule->lspacingLE,
+			bp_.spacing().getValueAsString());
 	}
 	setLSpacing(nitem);
 
