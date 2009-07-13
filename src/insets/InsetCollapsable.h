@@ -138,6 +138,8 @@ public:
 	///
 	ColorCode backgroundColor() const { return getLayout().bgcolor(); }
 	///
+	ColorCode labelColor() const { return getLayout().labelfont().color(); }
+	///
 	int latex(odocstream &, OutputParams const &) const;
 	///
 	int docbook(odocstream &, OutputParams const &) const;

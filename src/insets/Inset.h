@@ -497,6 +497,8 @@ public:
 	///
 	virtual ColorCode backgroundColor() const;
 	///
+	virtual ColorCode labelColor() const;
+	///
 	enum CollapseStatus {
 		Collapsed,
 		Open

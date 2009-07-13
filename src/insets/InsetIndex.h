@@ -51,6 +51,8 @@ private:
 	///
 	docstring name() const { return from_ascii("Index"); }
 	///
+	ColorCode labelColor() const;
+	///
 	void write(std::ostream & os) const;
 	///
 	void read(Lexer & lex);

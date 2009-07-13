@@ -254,6 +254,18 @@ docstring const InsetIndex::buttonLabel(BufferView const & bv) const
 }
 
 
+ColorCode InsetIndex::labelColor() const
+{
+	if (params_.index.empty() || params_.index == from_ascii("idx"))
+		return InsetCollapsable::labelColor();
+	// FIXME UNICODE
+	ColorCode c = lcolor.getFromLyXName(to_utf8(params_.index));
+	if (c == Color_none)
+		c = InsetCollapsable::labelColor();
+	return c;
+}
+
+
 docstring InsetIndex::toolTip(BufferView const &, int, int) const
 {
 	docstring tip = _("Index Entry");

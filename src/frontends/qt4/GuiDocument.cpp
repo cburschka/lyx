@@ -2697,8 +2697,8 @@ void GuiDocument::dispatchParams()
 		IndicesList::const_iterator it = indiceslist.begin();
 		IndicesList::const_iterator const end = indiceslist.end();
 		for (; it != end; ++it) {
-			docstring const & current_index = it->index();
-			Index const * index = indiceslist.find(current_index);
+			docstring const & current_index = it->shortcut();
+			Index const * index = indiceslist.findShortcut(current_index);
 			string const x11hexname = X11hexname(index->color());
 			// display the new color
 			docstring const str = current_index + ' ' + from_ascii(x11hexname);

@@ -466,6 +466,12 @@ ColorCode Inset::backgroundColor() const
 }
 
 
+ColorCode Inset::labelColor() const
+{
+	return Color_foreground;
+}
+
+
 void Inset::setPosCache(PainterInfo const & pi, int x, int y) const
 {
 	//LYXERR("Inset: set position cache to " << x << " " << y);
