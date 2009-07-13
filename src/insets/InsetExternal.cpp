@@ -682,8 +682,9 @@ int InsetExternal::docbook(odocstream & os,
 }
 
 
-docstring InsetExternal::xhtml(odocstream & os,
-			OutputParams const & rp) const {
+docstring InsetExternal::xhtml(odocstream & /*os*/,
+			OutputParams const & /*rp*/) const
+{
 //	external::writeExternal(params_, "XHTML", buffer(), os,
 //				       *(runparams.exportdata), false,
 //				       runparams.dryrun || runparams.inComment);
