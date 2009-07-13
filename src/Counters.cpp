@@ -493,9 +493,10 @@ docstring Counters::counterLabel(docstring const & format,
 
 	// FIXME: Using regexps would be better, but we compile boost without
 	// wide regexps currently.
+	docstring const the = from_ascii("\\the");
 	while (true) {
-		//lyxerr << "label=" << to_utf8(label) << endl;
-		size_t const i = label.find(from_ascii("\\the"), 0);
+		//lyxerr << "label=" << label << endl;
+		size_t const i = label.find(the, 0);
 		if (i == docstring::npos)
 			break;
 		size_t const j = i + 4;
@@ -503,12 +504,11 @@ docstring Counters::counterLabel(docstring const & format,
 		while (k < label.size() && lowercase(label[k]) >= 'a' 
 		       && lowercase(label[k]) <= 'z')
 			++k;
-		docstring const newc = label.substr(j, k - j);
-		docstring const repl = theCounter(newc, lang);
-		label.replace(i, k - j + 4, repl);
+		docstring const newc(label, j, k - j);
+		label.replace(i, k - i, theCounter(newc, lang));
 	}
 	while (true) {
-		//lyxerr << "label=" << to_utf8(label) << endl;
+		//lyxerr << "label=" << label << endl;
 
 		size_t const i = label.find('\\', 0);
 		if (i == docstring::npos)
@@ -521,11 +521,9 @@ docstring Counters::counterLabel(docstring const & format,
 			break;
 		docstring const numbertype(label, i + 1, j - i - 1);
 		docstring const counter(label, j + 1, k - j - 1);
-		docstring const rep = labelItem(counter, numbertype);
-		label = docstring(label, 0, i) + rep
-			+ docstring(label, k + 1, docstring::npos);
+		label.replace(i, k + 1 - i, labelItem(counter, numbertype));
 	}
-	//lyxerr << "DONE! label=" << to_utf8(label) << endl;
+	//lyxerr << "DONE! label=" << label << endl;
 	return label;
 }
 
