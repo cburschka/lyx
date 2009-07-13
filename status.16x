@@ -216,6 +216,11 @@ What's new
 - Remove empty paragraphs and superfluous spaces when leaving an inset
   (bug 5435).
 
+- Fix the scrolling problem that when scrolling with PgUp or PgDn, the
+  cursor could end up on a row that is only partly visible. This causes
+  the cursor to end up somewhere else when scrolling back (bug 5944).
+
+
 * DOCUMENTATION AND LOCALIZATION
 
 - Fix icon image files so that they appear correctly when the
