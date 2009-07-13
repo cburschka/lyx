@@ -74,7 +74,7 @@ src_header_files = Split('''
     FuncRequest.h
     FuncStatus.h
     Graph.h
-....HunspellSpellChecker.h
+    HunspellSpellChecker.h
     IndicesList.h
     InsetIterator.h
     InsetList.h
@@ -248,7 +248,7 @@ src_post_files = Split('''
 
 src_extra_src_files = Split('''
     ASpell.cpp
-....HunspellSpellChecker.cpp
+    HunspellSpellChecker.cpp
     main.cpp
     Section.cpp
     Variables.cpp
