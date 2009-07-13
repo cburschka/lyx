@@ -191,7 +191,7 @@ void InsetGraphics::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetGraphicsParams p = params();
 		if (!cmd.argument().empty())
 			string2params(to_utf8(cmd.argument()), buffer(), p);
-		editGraphics(p, buffer());
+		editGraphics(p);
 		break;
 	}
 
@@ -895,10 +895,9 @@ InsetGraphicsParams const & InsetGraphics::params() const
 }
 
 
-void InsetGraphics::editGraphics(InsetGraphicsParams const & p,
-				 Buffer const & buffer) const
+void InsetGraphics::editGraphics(InsetGraphicsParams const & p) const
 {
-	formats.edit(buffer, p.filename,
+	formats.edit(buffer(), p.filename,
 		     formats.getFormatFromFile(p.filename));
 }
 

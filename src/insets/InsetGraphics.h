@@ -87,7 +87,7 @@ private:
 	///
 	bool showInsetDialog(BufferView * bv) const;
 	///
-	void editGraphics(InsetGraphicsParams const &, Buffer const &) const;
+	void editGraphics(InsetGraphicsParams const &) const;
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///

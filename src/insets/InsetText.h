@@ -19,8 +19,6 @@
 
 namespace lyx {
 
-class Buffer;
-class BufferView;
 class CompletionList;
 class CursorSlice;
 class Dimension;
