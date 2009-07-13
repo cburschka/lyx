@@ -197,7 +197,7 @@ endif()
 find_file(HUNSPELL_FOUND hunspell.hxx)
 
 if (HUNSPELL_FOUND)
-    message(STATUS "----- Building with Hunspell)
+    message(STATUS "----- Building with Hunspell")
 else()
     message(STATUS "----- Hunspell not found, building without hunspell support")
 endif()
