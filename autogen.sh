@@ -16,7 +16,7 @@ test "$automake_version" != "" && {
 }
 
 case $automake_version in
-    *' '1.[5-9]*|*' '1.10*)
+    *' '1.[5-9]*|*' '1.1[01]*)
 	;;
     *)
 
