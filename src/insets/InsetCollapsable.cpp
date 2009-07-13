@@ -875,17 +875,7 @@ docstring InsetCollapsable::floatName(string const & type) const
 InsetLayout::InsetDecoration InsetCollapsable::decoration() const
 {
 	InsetLayout::InsetDecoration const dec = getLayout().decoration();
-	switch (dec) {
-	case InsetLayout::CLASSIC:
-	case InsetLayout::MINIMALISTIC:
-	case InsetLayout::CONGLOMERATE:
-		return dec;
-	case InsetLayout::DEFAULT:
-		break;
-	}
-	if (lyxCode() == FLEX_CODE)
-		return InsetLayout::CONGLOMERATE;
-	return InsetLayout::CLASSIC;
+	return dec == InsetLayout::DEFAULT ? InsetLayout::CLASSIC : dec;
 }
 
 

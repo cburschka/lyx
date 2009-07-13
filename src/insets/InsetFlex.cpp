@@ -41,6 +41,13 @@ InsetFlex::InsetFlex(InsetFlex const & in)
 {}
 
 
+InsetLayout::InsetDecoration InsetFlex::decoration() const
+{
+	InsetLayout::InsetDecoration const dec = getLayout().decoration();
+	return dec == InsetLayout::DEFAULT ? InsetLayout::CONGLOMERATE : dec;
+}
+
+
 docstring InsetFlex::editMessage() const
 {
 	return _("Opened Flex Inset");

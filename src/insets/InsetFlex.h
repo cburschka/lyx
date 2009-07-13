@@ -30,6 +30,8 @@ public:
 	docstring editMessage() const;
 	///
 	InsetCode lyxCode() const { return FLEX_CODE; }
+	/// Default looks
+	InsetLayout::InsetDecoration decoration() const;
 	///
 	void write(std::ostream &) const;
 	/// should paragraph indendation be ommitted in any case?
