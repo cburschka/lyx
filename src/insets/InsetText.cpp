@@ -316,15 +316,15 @@ void InsetText::setChange(Change const & change)
 }
 
 
-void InsetText::acceptChanges(BufferParams const & bparams)
+void InsetText::acceptChanges()
 {
-	text_.acceptChanges(bparams);
+	text_.acceptChanges(buffer().params());
 }
 
 
-void InsetText::rejectChanges(BufferParams const & bparams)
+void InsetText::rejectChanges()
 {
-	text_.rejectChanges(bparams);
+	text_.rejectChanges(buffer().params());
 }
 
 

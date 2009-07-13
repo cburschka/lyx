@@ -840,9 +840,9 @@ void Text::acceptOrRejectChanges(Cursor & cur, ChangeOp op)
 		pos_type right = (pit == endPit ? endPos : parSize);
 
 		if (op == ACCEPT) {
-			pars_[pit].acceptChanges(cur.buffer()->params(), left, right);
+			pars_[pit].acceptChanges(left, right);
 		} else {
-			pars_[pit].rejectChanges(cur.buffer()->params(), left, right);
+			pars_[pit].rejectChanges(left, right);
 		}
 	}
 
@@ -919,7 +919,7 @@ void Text::rejectChanges(BufferParams const & bparams)
 	// (do not consider end-of-par)
 	for (pit_type pit = 0; pit < pars_size; ++pit) {
 		if (!pars_[pit].empty())   // prevent assertion failure
-			pars_[pit].rejectChanges(bparams, 0, pars_[pit].size());
+			pars_[pit].rejectChanges(0, pars_[pit].size());
 	}
 
 	// next, reject imaginary end-of-par characters

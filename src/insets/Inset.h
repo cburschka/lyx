@@ -27,7 +27,6 @@ namespace lyx {
 
 class BiblioInfo;
 class Buffer;
-class BufferParams;
 class BufferView;
 class Change;
 class CompletionList;
@@ -487,9 +486,9 @@ public:
 	/// set the change for the entire inset
 	virtual void setChange(Change const &) {}
 	/// accept the changes within the inset
-	virtual void acceptChanges(BufferParams const &) {};
+	virtual void acceptChanges() {};
 	/// reject the changes within the inset
-	virtual void rejectChanges(BufferParams const &) {};
+	virtual void rejectChanges() {};
 
 	///
 	virtual Dimension const dimension(BufferView const &) const;

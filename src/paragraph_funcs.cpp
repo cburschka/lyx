@@ -354,7 +354,7 @@ void acceptChanges(ParagraphList & pars, BufferParams const & bparams)
 	// (do not consider end-of-par)
 	for (pit_type pit = 0; pit < pars_size; ++pit) {
 		if (!pars[pit].empty())   // prevent assertion failure
-			pars[pit].acceptChanges(bparams, 0, pars[pit].size());
+			pars[pit].acceptChanges(0, pars[pit].size());
 	}
 
 	// next, accept imaginary end-of-par characters
