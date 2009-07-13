@@ -160,6 +160,22 @@ docstring Inset::name() const
 }
 
 
+bool Inset::isFreeSpacing() const 
+{
+	return getLayout().isFreeSpacing();
+}
+
+
+bool Inset::allowEmpty() const
+{
+	return getLayout().isKeepEmpty();
+}
+
+bool Inset::forceLTR() const
+{
+	return getLayout().isForceLtr();
+}
+
 void Inset::initView()
 {
 	if (isLabeled())

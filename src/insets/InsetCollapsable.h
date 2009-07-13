@@ -126,8 +126,6 @@ public:
 	/// Returns the geometry disregarding auto_open_
 	Geometry geometry() const;
 	///
-	bool allowMultiPar() const;
-	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///
 	void setStatus(Cursor & cur, CollapseStatus st);
