@@ -192,13 +192,13 @@ void InsetIndex::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_MODIFY: {
 		if (cmd.getArg(0) == "changetype") {
 			params_.index = from_utf8(cmd.getArg(1));
-			setLayout(cur.buffer()->params());
+			setLayout();
 			break;
 		}
 		InsetIndexParams params;
 		InsetIndex::string2params(to_utf8(cmd.argument()), params);
 		params_.index = params.index;
-		setLayout(cur.buffer()->params());
+		setLayout();
 		break;
 	}
 

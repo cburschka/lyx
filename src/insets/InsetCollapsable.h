@@ -47,7 +47,7 @@ public:
 	///
 	InsetLayout const & getLayout() const { return *layout_; } 
 	///
-	void setLayout(BufferParams const &);
+	void setLayout();
 	/// (Re-)set the character style parameters from \p tc according
 	/// to name()
 	void setLayout(DocumentClass const * const tc);
@@ -176,7 +176,7 @@ protected:
 	///
 	Inset * editXY(Cursor & cur, int x, int y);
 	///
-	docstring floatName(std::string const & type, BufferParams const &) const;
+	docstring floatName(std::string const & type) const;
 	///
 	virtual void resetParagraphsFont();
 	///

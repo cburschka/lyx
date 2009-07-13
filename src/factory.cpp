@@ -161,7 +161,7 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 			string const argument = to_utf8(cmd.argument());
 			if (params.documentClass().floats().typeExist(argument)) {
 				auto_ptr<InsetFloat> p(new InsetFloat(buf, argument));
-				p->setWide(true, params);
+				p->setWide(true);
 				return p.release();
 			}
 			lyxerr << "Non-existent float type: " << argument << endl;

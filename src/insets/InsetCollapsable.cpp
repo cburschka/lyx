@@ -146,9 +146,9 @@ docstring InsetCollapsable::toolTip(BufferView const & bv, int x, int y) const
 }
 
 
-void InsetCollapsable::setLayout(BufferParams const & bp)
+void InsetCollapsable::setLayout()
 {
-	setLayout(bp.documentClassPtr());
+	setLayout(buffer().params().documentClassPtr());
 }
 
 
@@ -192,7 +192,7 @@ void InsetCollapsable::read(Lexer & lex)
 		status_ = Open;
 
 	// this must be set before we enter InsetText::read()
-	setLayout(buffer().params());
+	setLayout();
 	InsetText::read(lex);
 	// set button label again as the inset contents was not read yet at
 	// setLayout() time.
@@ -862,9 +862,9 @@ void InsetCollapsable::setStatus(Cursor & cur, CollapseStatus status)
 }
 
 
-docstring InsetCollapsable::floatName(
-		string const & type, BufferParams const & bp) const
+docstring InsetCollapsable::floatName(string const & type) const
 {
+	BufferParams const & bp = buffer().params();
 	FloatList const & floats = bp.documentClass().floats();
 	FloatList::const_iterator it = floats[type];
 	// FIXME UNICODE

@@ -60,13 +60,13 @@ public:
 	///
 	static std::string params2string(InsetFloatParams const &);
 	///
-	void setWide(bool w, BufferParams const &, bool update_label = true);
+	void setWide(bool w, bool update_label = true);
 	///
-	void setSideways(bool s, BufferParams const &, bool update_label = true);
+	void setSideways(bool s, bool update_label = true);
 	///
-	void setSubfloat(bool s, BufferParams const &, bool update_label = true);
+	void setSubfloat(bool s, bool update_label = true);
 	///
-	void setNewLabel(BufferParams const &);
+	void setNewLabel();
 	///
 	InsetFloatParams const & params() const { return params_; }
 private:

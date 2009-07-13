@@ -234,7 +234,7 @@ static bool doInsertInset(Cursor & cur, Text * text,
 		return false;
 
 	if (InsetCollapsable * ci = inset->asInsetCollapsable())
-		ci->setLayout(bparams);
+		ci->setLayout();
 
 	cur.recordUndo();
 	if (cmd.action == LFUN_INDEX_INSERT) {

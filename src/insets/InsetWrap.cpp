@@ -42,7 +42,7 @@ namespace lyx {
 InsetWrap::InsetWrap(Buffer const & buf, string const & type)
 	: InsetCollapsable(buf)
 {
-	setLabel(_("wrap: ") + floatName(type, buf.params()));
+	setLabel(_("wrap: ") + floatName(type));
 	params_.type = type;
 	params_.lines = 0;
 	params_.placement = "o";
@@ -115,7 +115,7 @@ bool InsetWrap::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetWrap::updateLabels(ParIterator const & it)
 {
-	setLabel(_("wrap: ") + floatName(params_.type, buffer().params()));
+	setLabel(_("wrap: ") + floatName(params_.type));
 	Counters & cnts =
 		buffer().masterBuffer()->params().documentClass().counters();
 	string const saveflt = cnts.current_float();
@@ -202,7 +202,7 @@ int InsetWrap::latex(odocstream & os, OutputParams const & runparams_in) const
 int InsetWrap::plaintext(odocstream & os, OutputParams const & runparams) const
 {
 	os << '[' << buffer().B_("wrap") << ' '
-		<< floatName(params_.type, buffer().params()) << ":\n";
+		<< floatName(params_.type) << ":\n";
 	InsetText::plaintext(os, runparams);
 	os << "\n]";
 

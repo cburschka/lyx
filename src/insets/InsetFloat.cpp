@@ -113,7 +113,7 @@ namespace lyx {
 InsetFloat::InsetFloat(Buffer const & buf, string const & type)
 	: InsetCollapsable(buf), name_(from_utf8(type))
 {
-	setLabel(_("float: ") + floatName(type, buf.params()));
+	setLabel(_("float: ") + floatName(type));
 	params_.type = type;
 }
 
@@ -153,11 +153,9 @@ void InsetFloat::doDispatch(Cursor & cur, FuncRequest & cmd)
 			params_.placement = params.placement;
 			params_.wide      = params.wide;
 			params_.sideways  = params.sideways;
-			setWide(params_.wide, cur.buffer()->params(), false);
-			setSideways(params_.sideways, cur.buffer()->params(), false);
 		}
 
-		setNewLabel(cur.buffer()->params());
+		setNewLabel();
 		break;
 	}
 
@@ -201,7 +199,7 @@ void InsetFloat::updateLabels(ParIterator const & it)
 	// floats can only embed subfloats of their own kind
 	if (subflt)
 		params_.type = saveflt;
-	setSubfloat(subflt, buffer().params());
+	setSubfloat(subflt);
 
 	// Tell to captions what the current float is
 	cnts.current_float(params().type);
@@ -383,7 +381,7 @@ int InsetFloat::latex(odocstream & os, OutputParams const & runparams_in) const
 int InsetFloat::plaintext(odocstream & os, OutputParams const & runparams) const
 {
 	os << '[' << buffer().B_("float") << ' '
-		<< floatName(params_.type, buffer().params()) << ":\n";
+		<< floatName(params_.type) << ":\n";
 	InsetText::plaintext(os, runparams);
 	os << "\n]";
 
@@ -420,38 +418,38 @@ bool InsetFloat::showInsetDialog(BufferView * bv) const
 }
 
 
-void InsetFloat::setWide(bool w, BufferParams const & bp, bool update_label)
+void InsetFloat::setWide(bool w, bool update_label)
 {
 	params_.wide = w;
 	if (update_label)
-		setNewLabel(bp);
+		setNewLabel();
 }
 
 
-void InsetFloat::setSideways(bool s, BufferParams const & bp, bool update_label)
+void InsetFloat::setSideways(bool s, bool update_label)
 {
 	params_.sideways = s;
 	if (update_label)
-		setNewLabel(bp);
+		setNewLabel();
 }
 
 
-void InsetFloat::setSubfloat(bool s, BufferParams const & bp, bool update_label)
+void InsetFloat::setSubfloat(bool s, bool update_label)
 {
 	params_.subfloat = s;
 	if (update_label)
-		setNewLabel(bp);
+		setNewLabel();
 }
 
 
-void InsetFloat::setNewLabel(BufferParams const & bp)
+void InsetFloat::setNewLabel()
 {
 	docstring lab = _("float: ");
 
 	if (params_.subfloat)
 		lab = _("subfloat: ");
 
-	lab += floatName(params_.type, bp);
+	lab += floatName(params_.type);
 
 	if (params_.wide)
 		lab += '*';
