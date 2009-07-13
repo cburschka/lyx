@@ -1677,7 +1677,7 @@ int InsetMathHull::docbook(odocstream & os, OutputParams const & runparams) cons
 }
 
 
-void InsetMathHull::textString(odocstream & os) const
+void InsetMathHull::tocString(odocstream & os) const
 {
 	plaintext(os, OutputParams(0));
 }

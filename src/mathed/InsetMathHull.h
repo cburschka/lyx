@@ -119,7 +119,7 @@ public:
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	/// the string that is passed to the TOC
-	void textString(odocstream &) const;
+	void tocString(odocstream &) const;
 
 	/// get notification when the cursor leaves this inset
 	bool notifyCursorLeaves(Cursor const & old, Cursor & cur);
