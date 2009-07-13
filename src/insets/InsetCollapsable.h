@@ -45,8 +45,6 @@ public:
 	///
 	docstring name() const { return from_ascii("Collapsable"); }
 	///
-	InsetLayout const & getLayout(BufferParams const &) const { return *layout_; }
-	///
 	InsetLayout const & getLayout() const { return *layout_; } 
 	///
 	void setLayout(BufferParams const &);
@@ -138,7 +136,7 @@ public:
 	///
 	bool setMouseHover(bool mouse_hover);
 	///
-	ColorCode backgroundColor() const { return layout_->bgcolor(); }
+	ColorCode backgroundColor() const { return getLayout().bgcolor(); }
 	///
 	int latex(odocstream &, OutputParams const &) const;
 	///
@@ -153,11 +151,11 @@ public:
 	InsetCode lyxCode() const { return COLLAPSABLE_CODE; }
 
 	/// Allow multiple blanks
-	virtual bool isFreeSpacing() const { return layout_->isFreeSpacing(); }
+	virtual bool isFreeSpacing() const { return getLayout().isFreeSpacing(); }
 	/// Don't eliminate empty paragraphs
-	virtual bool allowEmpty() const { return layout_->isKeepEmpty(); }
+	virtual bool allowEmpty() const { return getLayout().isKeepEmpty(); }
 	/// Force inset into LTR environment if surroundings are RTL?
-	virtual bool forceLTR() const { return layout_->isForceLtr(); }
+	virtual bool forceLTR() const { return getLayout().isForceLtr(); }
 	///
 	virtual bool usePlainLayout() const { return true; }
 	/// Is this inset's layout defined in the document's textclass?

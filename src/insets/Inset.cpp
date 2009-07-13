@@ -448,9 +448,9 @@ bool Inset::covers(BufferView const & bv, int x, int y) const
 }
 
 
-InsetLayout const & Inset::getLayout(BufferParams const & bp) const
+InsetLayout const & Inset::getLayout() const
 {
-	return bp.documentClass().insetLayout(name());
+	return buffer().params().documentClass().insetLayout(name());
 }
 
 

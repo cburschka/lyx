@@ -385,7 +385,7 @@ public:
 	///
 	virtual docstring name() const;
 	///
-	virtual InsetLayout const & getLayout(BufferParams const & bp) const;
+	virtual InsetLayout const & getLayout() const;
 	/// used to toggle insets
 	/// is the inset open?
 	/// should this inset be handled like a normal charater

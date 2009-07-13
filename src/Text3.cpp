@@ -1327,7 +1327,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		pos_type pos = cur.pos();
 		BufferParams const & bufparams = bv->buffer().params();
 		Layout const & style = par.layout();
-		InsetLayout const & ilayout = cur.inset().getLayout(bufparams);
+		InsetLayout const & ilayout = cur.inset().getLayout();
 		if (!style.pass_thru && !ilayout.isPassThru()
 		    && par.getFontSettings(bufparams, pos).language()->lang() != "hebrew") {
 			// this avoids a double undo
@@ -2443,7 +2443,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_INSET_DISSOLVE:
 		if (!cmd.argument().empty()) {
-			InsetLayout const & il = cur.inset().getLayout(cur.buffer()->params());
+			InsetLayout const & il = cur.inset().getLayout();
 			InsetLayout::InsetLyXType const type = 
 					translateLyXType(to_utf8(cmd.argument()));
 			enable = cur.inset().lyxCode() == FLEX_CODE
