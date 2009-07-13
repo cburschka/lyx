@@ -750,6 +750,16 @@ def revert_longtable_align(document):
       i = i + 1
 
 
+def revert_branch_filename(document):
+    " Remove \\filename_suffix parameter from branches "
+    i = 0
+    while True:
+        i = find_token(document.header, "\\filename_suffix", i)
+        if i == -1:
+            return
+        del document.header[i]
+
+
 ##
 # Conversion hub
 #
@@ -772,10 +782,12 @@ convert = [[346, []],
            [360, []],
            [361, []],
            [362, []],
-           [363, []]
+           [363, []],
+           [364, []]
           ]
 
-revert =  [[362, [revert_longtable_align]],
+revert =  [[363, [revert_branch_filename]],
+           [362, [revert_longtable_align]],
            [361, [revert_applemac]],
            [360, []],
            [359, [revert_nomencl_cwidth]],

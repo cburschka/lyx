@@ -53,6 +53,12 @@ public:
 	 *  \return true if the selection status changes.
 	 */
 	bool setSelected(bool);
+	/** If true, the branch name will be appended
+	 *  to the output file name.
+	 */
+	bool hasFilenameSuffix() const;
+	/// Select/deselect filename suffix property.
+	void setFilenameSuffix(bool);
 	///
 	RGBColor const & color() const;
 	///
@@ -70,6 +76,8 @@ private:
 	docstring branch_;
 	///
 	bool selected_;
+	///
+	bool filenameSuffix_;
 	///
 	RGBColor color_;
 };
@@ -111,6 +119,8 @@ public:
 	 * if a branch with the newname already exists.
 	 */
 	bool rename(docstring const &, docstring const &, bool const merge = false);
+	/// get the complete filename suffix
+	docstring getFilenameSuffix() const;
 
 private:
 	///

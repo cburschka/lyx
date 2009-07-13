@@ -49,6 +49,7 @@ GuiBranches::GuiBranches(QWidget * parent)
 	branchesTW->headerItem()->setText(0, qt_("Branch"));
 	branchesTW->headerItem()->setText(1, qt_("Activated"));
 	branchesTW->headerItem()->setText(2, qt_("Color"));
+	branchesTW->headerItem()->setText(3, qt_("Filename Suffix"));
 	branchesTW->setSortingEnabled(true);
 
 	undef_ = new BranchesUnknownDialog(this);
@@ -101,6 +102,7 @@ void GuiBranches::updateView()
 			coloritem.fill(itemcolor);
 			newItem->setIcon(2, QIcon(coloritem));
 		}
+		newItem->setText(3, it->hasFilenameSuffix() ? qt_("Yes") : qt_("No"));
 		// restore selected branch
 		if (bname == sel_branch) {
 			branchesTW->setCurrentItem(newItem);
@@ -114,6 +116,7 @@ void GuiBranches::updateView()
 	renamePB->setEnabled(have_sel);
 	colorPB->setEnabled(have_sel);
 	activatePB->setEnabled(have_sel);
+	suffixPB->setEnabled(have_sel);
 	// emit signal
 	changed();
 }
@@ -193,12 +196,20 @@ void GuiBranches::on_activatePB_pressed()
 }
 
 
+void GuiBranches::on_suffixPB_pressed()
+{
+	toggleSuffix(branchesTW->currentItem());
+}
+
+
 void GuiBranches::on_branchesTW_itemDoubleClicked(QTreeWidgetItem * item, int col)
 {
 	if (col < 2)
 		toggleBranch(item);
-	else
+	else if (col == 2)
 		toggleColor(item);
+	else if (col == 3)
+		toggleSuffix(item);
 }
 
 
@@ -210,6 +221,7 @@ void GuiBranches::on_branchesTW_itemSelectionChanged()
 	renamePB->setEnabled(have_sel);
 	colorPB->setEnabled(have_sel);
 	activatePB->setEnabled(have_sel);
+	suffixPB->setEnabled(have_sel);
 }
 
 
@@ -222,9 +234,8 @@ void GuiBranches::toggleBranch(QTreeWidgetItem * item)
 	if (sel_branch.isEmpty())
 		return;
 
-	bool const selected = (item->text(1) == qt_("Yes"));
 	Branch * branch = branchlist_.find(qstring_to_ucs4(sel_branch));
-	if (branch && branch->setSelected(!selected)) {
+	if (branch && branch->setSelected(!branch->isSelected())) {
 		newBranchLE->clear();
 		updateView();
 	}
@@ -260,6 +271,24 @@ void GuiBranches::toggleColor(QTreeWidgetItem * item)
 	branch->setColor(fromqstr(ncol.name()));
 	newBranchLE->clear();
 	updateView();
+}
+
+
+void GuiBranches::toggleSuffix(QTreeWidgetItem * item)
+{
+	if (item == 0)
+		return;
+
+	QString sel_branch = item->text(0);
+	if (sel_branch.isEmpty())
+		return;
+
+	Branch * branch = branchlist_.find(qstring_to_ucs4(sel_branch));
+	if (branch) {
+		branch->setFilenameSuffix(!branch->hasFilenameSuffix());
+		newBranchLE->clear();
+		updateView();
+	}
 }
 
 

@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Martin Vermeer
+ * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -14,6 +15,8 @@
 #include "Color.h"
 
 #include "frontends/Application.h"
+
+#include "support/lstrings.h"
 
 #include <algorithm>
 
@@ -39,7 +42,8 @@ private:
 }
 
 
-Branch::Branch() : selected_(false)
+Branch::Branch()
+	: selected_(false), filenameSuffix_(false)
 {
 	// no theApp() with command line export
 	if (theApp())
@@ -71,6 +75,18 @@ bool Branch::setSelected(bool b)
 		return false;
 	selected_ = b;
 	return true;
+}
+
+
+bool Branch::hasFilenameSuffix() const
+{
+	return filenameSuffix_;
+}
+
+
+void Branch::setFilenameSuffix(bool b)
+{
+	filenameSuffix_ = b;
 }
 
 
@@ -132,6 +148,7 @@ bool BranchList::add(docstring const & s)
 			Branch br;
 			br.setBranch(name);
 			br.setSelected(false);
+			br.setFilenameSuffix(false);
 			list.push_back(br);
 		}
 		if (j == docstring::npos)
@@ -170,5 +187,16 @@ bool BranchList::rename(docstring const & oldname,
 	return true;
 }
 
+
+docstring BranchList::getFilenameSuffix() const
+{
+	docstring result;
+	List::const_iterator it = list.begin();
+	for (; it != list.end(); ++it) {
+		if (it->isSelected() && it->hasFilenameSuffix())
+			result += "-" + it->branch();
+	}
+	return support::subst(result, from_ascii("/"), from_ascii("_"));
+}
 
 } // namespace lyx

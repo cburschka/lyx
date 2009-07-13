@@ -55,6 +55,7 @@ Q_SIGNALS:
 protected:
 	void toggleBranch(QTreeWidgetItem *);
 	void toggleColor(QTreeWidgetItem *);
+	void toggleSuffix(QTreeWidgetItem *);
 	void updateView();
 
 protected Q_SLOTS:
@@ -65,6 +66,7 @@ protected Q_SLOTS:
 	void on_branchesTW_itemDoubleClicked(QTreeWidgetItem *, int);
 	void on_branchesTW_itemSelectionChanged();
 	void on_colorPB_clicked();
+	void on_suffixPB_pressed();
 	void on_unknownPB_pressed();
 	void addUnknown();
 	void addAllUnknown();

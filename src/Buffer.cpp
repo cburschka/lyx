@@ -127,7 +127,7 @@ namespace {
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-int const LYX_FORMAT = 363;  // uwestoehr: support for longtable alignment
+int const LYX_FORMAT = 364;  // spitz: branch suffixes for filenames
 
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;
@@ -440,9 +440,26 @@ Undo & Buffer::undo()
 
 string Buffer::latexName(bool const no_path) const
 {
-	FileName latex_name = makeLatexName(d->filename);
+	FileName latex_name =
+		makeLatexName(exportFileName());
 	return no_path ? latex_name.onlyFileName()
 		: latex_name.absFilename();
+}
+
+
+FileName Buffer::exportFileName() const
+{
+	docstring const branch_suffix =
+		params().branchlist().getFilenameSuffix();
+	if (branch_suffix.empty())
+		return fileName();
+
+	string const name = fileName().onlyFileNameWithoutExt()
+		+ to_utf8(branch_suffix);
+	FileName res(fileName().onlyPath().absFilename() + "/" + name);
+	res.changeExtension(fileName().extension());
+
+	return res;
 }
 
 
@@ -2958,7 +2975,7 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 		return true;
 	}
 
-	result_file = changeExtension(absFileName(), ext);
+	result_file = changeExtension(exportFileName().absFilename(), ext);
 	// We need to copy referenced files (e. g. included graphics
 	// if format == "dvi") to the result dir.
 	vector<ExportedFile> const files =

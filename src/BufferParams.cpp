@@ -618,6 +618,11 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 				if (branch_ptr)
 					branch_ptr->setSelected(lex.getInteger());
 			}
+			if (tok == "\\filename_suffix") {
+				lex.next();
+				if (branch_ptr)
+					branch_ptr->setFilenameSuffix(lex.getInteger());
+			}
 			// not yet operational
 			if (tok == "\\color") {
 				lex.eatLine();
@@ -849,6 +854,7 @@ void BufferParams::writeFile(ostream & os) const
 	for (; it != end; ++it) {
 		os << "\\branch " << to_utf8(it->branch())
 		   << "\n\\selected " << it->isSelected()
+		   << "\n\\filename_suffix " << it->hasFilenameSuffix()
 		   << "\n\\color " << lyx::X11hexname(it->color())
 		   << "\n\\end_branch"
 		   << "\n";

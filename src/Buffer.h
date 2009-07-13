@@ -551,6 +551,11 @@ private:
 	ReadStatus readFile(Lexer &, support::FileName const & filename,
 			    bool fromString = false);
 
+	/** If we have branches that use the file suffix
+	    feature, return the file name with suffix appended.
+	*/
+	support::FileName exportFileName() const;
+
 	/// Use the Pimpl idiom to hide the internals.
 	class Impl;
 	/// The pointer never changes although *pimpl_'s contents may.
