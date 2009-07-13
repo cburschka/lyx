@@ -990,7 +990,7 @@ contributers = [
                  "Re: Randomly Generated Crash Reports Useful?",
                  "m=124515770509946",
                  "15 June 2009",
-                 u"Keys-test module"),
+                 u"Keys-test module, bug fixing"),
 
      contributer(u"Tino Meinen",
                  "a.t.meinen () chello ! nl",
