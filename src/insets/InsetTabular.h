@@ -815,8 +815,6 @@ public:
 	///
 	virtual bool forcePlainLayout(idx_type cell = 0) const;
 	///
-	virtual bool usePlainLayout() { return true; }
-	///
 	void addPreview(graphics::PreviewLoader &) const;
 
 	/// lock cell with given index

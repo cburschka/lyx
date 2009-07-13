@@ -91,8 +91,6 @@ private:
 	InsetBranchParams const & params() const { return params_; }
 	///
 	void setParams(InsetBranchParams const & params) { params_ = params; }
-	///
-	virtual bool usePlainLayout() { return false; }
 
 	/** \returns true if params_.branch is listed as 'selected' in
 	    \c buffer. This handles the case of child documents.

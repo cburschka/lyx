@@ -694,12 +694,6 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 }
 
 
-bool InsetCollapsable::allowMultiPar() const
-{
-	return getLayout().isMultiPar();
-}
-
-
 void InsetCollapsable::resetParagraphsFont()
 {
 	Font font(inherit_font, buffer().params().language);

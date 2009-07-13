@@ -44,15 +44,15 @@ public:
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 	///
 	docstring name() const { return from_ascii("Collapsable"); }
+#if 0
 	///
 	InsetLayout const & getLayout() const { return *layout_; } 
+#endif
 	///
 	void setLayout();
 	/// (Re-)set the character style parameters from \p tc according
 	/// to name()
 	void setLayout(DocumentClass const * const tc);
-	///
-	virtual bool usePlainLayout() { return true; }
 	///
 	void read(Lexer &);
 	///
@@ -125,8 +125,6 @@ public:
 	Geometry geometry(BufferView const & bv) const;
 	/// Returns the geometry disregarding auto_open_
 	Geometry geometry() const;
-	/// Allow spellchecking, except for insets with latex_language
-	bool allowSpellCheck() const { return !forceLTR(); }
 	///
 	bool allowMultiPar() const;
 	///
@@ -152,12 +150,6 @@ public:
 	///
 	InsetCode lyxCode() const { return COLLAPSABLE_CODE; }
 
-	/// Allow multiple blanks
-	virtual bool isFreeSpacing() const { return getLayout().isFreeSpacing(); }
-	/// Don't eliminate empty paragraphs
-	virtual bool allowEmpty() const { return getLayout().isKeepEmpty(); }
-	/// Force inset into LTR environment if surroundings are RTL?
-	virtual bool forceLTR() const { return getLayout().isForceLtr(); }
 	///
 	virtual bool usePlainLayout() const { return true; }
 	/// Is this inset's layout defined in the document's textclass?

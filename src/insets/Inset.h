@@ -205,12 +205,12 @@ public:
 	virtual void cursorPos(BufferView const & bv,
 		CursorSlice const & sl, bool boundary, int & x, int & y) const;
 
-	///
-	virtual bool isFreeSpacing() const { return false; }
-	///
-	virtual bool allowEmpty() const { return false; }
+	/// Allow multiple blanks
+	virtual bool isFreeSpacing() const { return getLayout().isFreeSpacing(); }
+	/// Don't eliminate empty paragraphs
+	virtual bool allowEmpty() const { return getLayout().isKeepEmpty(); }
 	/// Force inset into LTR environment if surroundings are RTL?
-	virtual bool forceLTR() const { return false; }
+	virtual bool forceLTR() const { return getLayout().isForceLtr(); }
 
 	/// Where should we go when we press the up or down cursor key?
 	virtual bool idxUpDown(Cursor & cur, bool up) const;

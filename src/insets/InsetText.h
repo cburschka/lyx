@@ -135,12 +135,12 @@ public:
 	ParagraphList const & paragraphs() const;
 	///
 	bool insetAllowed(InsetCode) const { return true; }
-	///
-	bool allowSpellCheck() const { return true; }
+	/// Allow spellchecking, except for insets with latex_language
+	bool allowSpellCheck() const { return !forceLTR(); }
 	///
 	virtual bool isMacroScope() const { return false; }
 	///
-	virtual bool allowMultiPar() const { return true; }
+	virtual bool allowMultiPar() const { return getLayout().isMultiPar(); }
 
 	/// Update the counters of this inset and of its contents
 	virtual void updateLabels(ParIterator const &);
