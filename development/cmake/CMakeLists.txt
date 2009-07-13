@@ -194,6 +194,14 @@ if(use_external_libintl)
 	add_definitions(-DHAVE_GETTEXT)
 endif()
 
+find_file(HUNSPELL_FOUND hunspell.hxx)
+
+if (HUNSPELL_FOUND)
+    message(STATUS "----- Building with Hunspell)
+else()
+    message(STATUS "----- Hunspell not found, building without hunspell support")
+endif()
+
 message(STATUS "")
 if(nls OR all)
 	set(nls TRUE CACHE TYPE STRING)

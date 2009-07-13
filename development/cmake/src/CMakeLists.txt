@@ -29,6 +29,10 @@ list(REMOVE_ITEM lyx_sources
 	${TOP_SRC_DIR}/src/Variables.cpp
 	${TOP_SRC_DIR}/src/Section.cpp)
 
+if (NOT HUNSPELL_FOUND)
+    list(REMOVE_ITEM lyx_sources ${TOP_SRC_DIR}/src/HunspellSpellChecker.cpp)
+endif()
+
 if (ASPELL_FOUND)
   include_directories(${ASPELL_INCLUDE_DIR})
   list(APPEND lyx_sources ${TOP_SRC_DIR}/src/ASpell.cpp)
