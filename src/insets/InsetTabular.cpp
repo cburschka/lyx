@@ -11,6 +11,7 @@
  * \author John Levon
  * \author André Pönitz
  * \author Jürgen Vigna
+ * \author Uwe Stöhr
  *
  * Full author contact details are available in file CREDITS.
  */

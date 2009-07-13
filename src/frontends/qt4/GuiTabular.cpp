@@ -6,6 +6,7 @@
  * \author John Levon
  * \author Jürgen Spitzmüller
  * \author Herbert Voß
+ * \author Uwe Stöhr
  *
  * Full author contact details are available in file CREDITS.
  */
