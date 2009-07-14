@@ -159,8 +159,6 @@ protected:
 	///
 	docstring floatName(std::string const & type) const;
 	///
-	virtual void resetParagraphsFont();
-	///
 	mutable CollapseStatus status_;
 private:
 	///

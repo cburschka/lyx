@@ -29,6 +29,7 @@
 #include "InsetCaption.h"
 #include "InsetList.h"
 #include "Intl.h"
+#include "Language.h"
 #include "Lexer.h"
 #include "lyxfind.h"
 #include "LyXRC.h"
@@ -265,12 +266,20 @@ void InsetText::doDispatch(Cursor & cur, FuncRequest & cmd)
 	LYXERR(Debug::ACTION, "InsetText::doDispatch()"
 		<< " [ cmd.action = " << cmd.action << ']');
 
-	// Dispatch only to text_ if the cursor is inside
-	// the text_. It is not for context menus (bug 5797).
-	if (cur.text() == &text_)
+	switch (cmd.action) {
+	case LFUN_PASTE:
+	case LFUN_CLIPBOARD_PASTE:
+	case LFUN_SELECTION_PASTE:
+	case LFUN_PRIMARY_SELECTION_PASTE:
 		text_.dispatch(cur, cmd);
-	else
-		cur.undispatched();
+		// If we we can only store plain text, we must reset all
+		// attributes.
+		// FIXME: Change only the pasted paragraphs
+		fixParagraphsFont();
+		break;
+	default:
+		text_.dispatch(cur, cmd);
+	}
 	
 	if (!cur.result().dispatched())
 		Inset::doDispatch(cur, cmd);
@@ -302,6 +311,23 @@ bool InsetText::getStatus(Cursor & cur, FuncRequest const & cmd,
 		if (!ret)
 			ret = Inset::getStatus(cur, cmd, status);
 		return ret;
+	}
+}
+
+
+void InsetText::fixParagraphsFont()
+{
+	Font font(inherit_font, buffer().params().language);
+	if (getLayout().isForceLtr())
+		font.setLanguage(latex_language);
+	if (getLayout().isPassThru()) {
+		ParagraphList::iterator par = paragraphs().begin();
+		ParagraphList::iterator const end = paragraphs().end();
+		while (par != end) {
+			par->resetFonts(font);
+			par->params().clear();
+			++par;
+		}
 	}
 }
 

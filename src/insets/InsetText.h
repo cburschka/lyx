@@ -111,6 +111,9 @@ public:
 	///
 	virtual bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 
+	///
+	void fixParagraphsFont();
+
 	/// set the change for the entire inset
 	void setChange(Change const & change);
 	/// accept the changes within the inset

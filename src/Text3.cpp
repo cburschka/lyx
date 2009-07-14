@@ -512,6 +512,13 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 {
 	LYXERR(Debug::ACTION, "Text::dispatch: cmd: " << cmd);
 
+	// Dispatch if the cursor is inside the text. It is not the
+	// case for context menus (bug 5797).
+	if (cur.text() != this) {
+		cur.undispatched();
+		return;
+	}
+
 	BufferView * bv = &cur.bv();
 	TextMetrics * tm = &bv->textMetrics(this);
 	if (!tm->contains(cur.pit())) {

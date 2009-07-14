@@ -180,7 +180,7 @@ void InsetCollapsable::read(Lexer & lex)
 	// since new text inherits the language from the last position of the
 	// existing text.  As a side effect this makes us also robust against
 	// bugs in LyX that might lead to font changes in ERT in .lyx files.
-	resetParagraphsFont();
+	fixParagraphsFont();
 }
 
 
@@ -557,19 +557,6 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.dispatched();
 		break;
 
-	case LFUN_PASTE:
-	case LFUN_CLIPBOARD_PASTE:
-	case LFUN_SELECTION_PASTE:
-	case LFUN_PRIMARY_SELECTION_PASTE: {
-		InsetText::doDispatch(cur, cmd);
-		// Since we can only store plain text, we must reset all
-		// attributes.
-		// FIXME: Change only the pasted paragraphs
-
-		resetParagraphsFont();
-		break;
-	}
-
 	case LFUN_TAB_INSERT: {
 		bool const multi_par_selection = cur.selection() &&
 			cur.selBegin().pit() != cur.selEnd().pit();
@@ -664,23 +651,6 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		InsetText::doDispatch(cur, cmd);
 		break;
-	}
-}
-
-
-void InsetCollapsable::resetParagraphsFont()
-{
-	Font font(inherit_font, buffer().params().language);
-	if (getLayout().isForceLtr())
-		font.setLanguage(latex_language);
-	if (getLayout().isPassThru()) {
-		ParagraphList::iterator par = paragraphs().begin();
-		ParagraphList::iterator const end = paragraphs().end();
-		while (par != end) {
-			par->resetFonts(font);
-			par->params().clear();
-			++par;
-		}
 	}
 }
 
