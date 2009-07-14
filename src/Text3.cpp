@@ -924,6 +924,91 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
+	case LFUN_TAB_INSERT: {
+		bool const multi_par_selection = cur.selection() &&
+			cur.selBegin().pit() != cur.selEnd().pit();
+		if (multi_par_selection) {
+			// If there is a multi-paragraph selection, a tab is inserted
+			// at the beginning of each paragraph.
+			cur.recordUndoSelection();
+			pit_type const pit_end = cur.selEnd().pit();
+			for (pit_type pit = cur.selBegin().pit(); pit <= pit_end; pit++) {
+				pars_[pit].insertChar(0, '\t', 
+						      bv->buffer().params().trackChanges);
+				// Update the selection pos to make sure the selection does not
+				// change as the inserted tab will increase the logical pos.
+				if (cur.anchor_.pit() == pit)
+					cur.anchor_.forwardPos();
+				if (cur.pit() == pit)
+					cur.forwardPos();
+			}
+			cur.finishUndo();
+		} else {
+			// Maybe we shouldn't allow tabs within a line, because they
+			// are not (yet) aligned as one might do expect.
+			FuncRequest cmd(LFUN_SELF_INSERT, from_ascii("\t"));
+			dispatch(cur, cmd);	
+		}
+		break;
+	}
+
+	case LFUN_TAB_DELETE: {
+		bool const tc = bv->buffer().params().trackChanges;
+		if (cur.selection()) {
+			// If there is a selection, a tab (if present) is removed from
+			// the beginning of each paragraph.
+			cur.recordUndoSelection();
+			pit_type const pit_end = cur.selEnd().pit();
+			for (pit_type pit = cur.selBegin().pit(); pit <= pit_end; pit++) {
+				Paragraph & par = paragraphs()[pit];
+				if (par.getChar(0) == '\t') {
+					if (cur.pit() == pit)
+						cur.posBackward();
+					if (cur.anchor_.pit() == pit && cur.anchor_.pos() > 0 )
+						cur.anchor_.backwardPos();
+					
+					par.eraseChar(0, tc);
+				} else 
+					// If no tab was present, try to remove up to four spaces.
+					for (int n_spaces = 0;
+					     par.getChar(0) == ' ' && n_spaces < 4; ++n_spaces) {
+						if (cur.pit() == pit)
+							cur.posBackward();
+						if (cur.anchor_.pit() == pit && cur.anchor_.pos() > 0 )
+							cur.anchor_.backwardPos();
+						
+						par.eraseChar(0, tc);
+					}
+			}
+			cur.finishUndo();
+		} else {
+			// If there is no selection, try to remove a tab or some spaces 
+			// before the position of the cursor.
+			Paragraph & par = paragraphs()[cur.pit()];
+			pos_type const pos = cur.pos();
+			
+			if (pos == 0)
+				break;
+			
+			char_type const c = par.getChar(pos - 1);
+			cur.recordUndo();
+			if (c == '\t') {
+				cur.posBackward();
+				par.eraseChar(cur.pos(), tc);
+			} else
+				for (int n_spaces = 0; 
+				     cur.pos() > 0
+					     && par.getChar(cur.pos() - 1) == ' ' 
+					     && n_spaces < 4;
+				     ++n_spaces) {
+					cur.posBackward();
+					par.eraseChar(cur.pos(), tc);
+				}
+			cur.finishUndo();
+		}
+		break;
+	}
+
 	case LFUN_CHAR_DELETE_FORWARD:
 		if (!cur.selection()) {
 			if (cur.pos() == cur.paragraph().size())
@@ -2128,7 +2213,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	if (!needsUpdate
 	    && &oldTopSlice.inset() == &cur.inset()
 	    && oldTopSlice.idx() == cur.idx()
-	    && !sel // sel is a backup of cur.selection() at the biginning of the function.
+	    && !sel // sel is a backup of cur.selection() at the beginning of the function.
 	    && !cur.selection())
 		// FIXME: it would be better if we could just do this
 		//
@@ -2489,6 +2574,11 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_NEWLINE_INSERT:
 		// LaTeX restrictions (labels or empty par)
 		enable = (cur.pos() > cur.paragraph().beginOfBody());
+		break;
+
+	case LFUN_TAB_INSERT:
+	case LFUN_TAB_DELETE:
+		enable = cur.inset().getLayout().isPassThru();
 		break;
 
 	case LFUN_SET_GRAPHICS_GROUP: {

@@ -547,87 +547,6 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.dispatched();
 		break;
 
-	case LFUN_TAB_INSERT: {
-		bool const multi_par_selection = cur.selection() &&
-			cur.selBegin().pit() != cur.selEnd().pit();
-		if (multi_par_selection) {
-			// If there is a multi-paragraph selection, a tab is inserted
-			// at the beginning of each paragraph.
-			cur.recordUndoSelection();
-			pit_type const pit_end = cur.selEnd().pit();
-			for (pit_type pit = cur.selBegin().pit(); pit <= pit_end; pit++) {
-				paragraphs()[pit].insertChar(0, '\t', 
-					buffer().params().trackChanges);
-				// Update the selection pos to make sure the selection does not
-				// change as the inserted tab will increase the logical pos.
-				if (cur.anchor_.pit() == pit)
-					cur.anchor_.forwardPos();
-				if (cur.pit() == pit)
-					cur.forwardPos();
-			}
-			cur.finishUndo();
-		} else {
-			// Maybe we shouldn't allow tabs within a line, because they
-			// are not (yet) aligned as one might do expect.
-			FuncRequest cmd(LFUN_SELF_INSERT, from_ascii("\t"));
-			dispatch(cur, cmd);	
-		}
-		break;
-	}
-
-	case LFUN_TAB_DELETE:
-		if (cur.selection()) {
-			// If there is a selection, a tab (if present) is removed from
-			// the beginning of each paragraph.
-			cur.recordUndoSelection();
-			pit_type const pit_end = cur.selEnd().pit();
-			for (pit_type pit = cur.selBegin().pit(); pit <= pit_end; pit++) {
-				Paragraph & par = paragraphs()[pit];
-				if (par.getChar(0) == '\t') {
-					if (cur.pit() == pit)
-						cur.posBackward();
-					if (cur.anchor_.pit() == pit && cur.anchor_.pos() > 0 )
-						cur.anchor_.backwardPos();
-
-					par.eraseChar(0, buffer().params().trackChanges);
-				} else 
-					// If no tab was present, try to remove up to four spaces.
-					for (int n_spaces = 0;
-						par.getChar(0) == ' ' && n_spaces < 4; ++n_spaces) {
-							if (cur.pit() == pit)
-								cur.posBackward();
-							if (cur.anchor_.pit() == pit && cur.anchor_.pos() > 0 )
-								cur.anchor_.backwardPos();
-
-							par.eraseChar(0, buffer().params().trackChanges);
-					}
-			}
-			cur.finishUndo();
-		} else {
-			// If there is no selection, try to remove a tab or some spaces 
-			// before the position of the cursor.
-			Paragraph & par = paragraphs()[cur.pit()];
-			pos_type const pos = cur.pos();
-
-			if (pos == 0)
-				break;
-
-			char_type const c = par.getChar(pos - 1);
-			cur.recordUndo();
-			if (c == '\t') {
-				cur.posBackward();
-				par.eraseChar(cur.pos(), buffer().params().trackChanges);
-			} else
-				for (int n_spaces = 0; cur.pos() > 0
-					&& par.getChar(cur.pos() - 1) == ' ' && n_spaces < 4;
-					++n_spaces) {
-						cur.posBackward();
-						par.eraseChar(cur.pos(), buffer().params().trackChanges);
-				}
-				cur.finishUndo();
-		}
-		break;
-
 	default:
 		InsetText::doDispatch(cur, cmd);
 		break;
@@ -748,14 +667,6 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_BREAK_PARAGRAPH:
 		flag.setEnabled(getLayout().isMultiPar());
 		return true;
-
-	case LFUN_TAB_INSERT:
-	case LFUN_TAB_DELETE:
-		if (getLayout().isPassThru()) {
-			flag.setEnabled(true);
-			return true;
-		}
-		return InsetText::getStatus(cur, cmd, flag);
 
 	default:
 		return InsetText::getStatus(cur, cmd, flag);
