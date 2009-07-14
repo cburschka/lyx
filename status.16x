@@ -68,7 +68,8 @@ What's new
 - Preferences about automatic popup and inline completion are now honoured
   when pressing Ctrl-L in math mode.
 
-- Fix selection of math insets on some archs.
+- Make it possible to copy from a deleted section (bug 5390).
+
 
 
 * DOCUMENTATION AND LOCALIZATION
@@ -208,8 +209,6 @@ What's new
 - Fix the pasting of multiple cells in a table when a range is selected
   (bug 4952).
 
-- Make it possible to copy from a deleted section (bug 5390).
-
 - Do not open files during startup that were closed in the previous
   session by Close View or Close Window (bug 5458).
 
@@ -221,6 +220,8 @@ What's new
   the cursor to end up somewhere else when scrolling back (bug 5944).
 
 - Copy as Reference is now implemented for equation labels too (bug 5948).
+
+- Fix selection of math insets on some archs.
 
 
 * DOCUMENTATION AND LOCALIZATION
