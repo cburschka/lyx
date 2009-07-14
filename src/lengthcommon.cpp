@@ -25,8 +25,8 @@ namespace lyx {
 
 // the latex units
 char const * const unit_name[] = {
-	"sp", "pt", "bp", "dd", "mm", "pc",
-	"cc", "cm", "in", "ex", "em", "mu",
+	"bp", "cc", "cm", "dd", "em", "ex", "in", "mm", "mu",
+	"pc", "pt", "sp",
 	"text%",  "col%", "page%", "line%",
 	"theight%", "pheight%", "" };
 
@@ -34,9 +34,9 @@ int const num_units = int(sizeof(unit_name) / sizeof(unit_name[0]) - 1);
 
 // the LyX gui units
 char const * const unit_name_gui[] = {
-	N_("sp"), N_("pt"), N_("bp"), N_("dd"), N_("mm"), N_("pc"),
-	N_("cc[[unit of measure]]"), N_("cm"), N_("in"), N_("ex"), N_("em"),
-	N_("mu[[unit of measure]]"), N_("Text Width %"),
+	N_("bp"), N_("cc[[unit of measure]]"), N_("cm"), N_("dd"), N_("em"),
+	N_("ex"), N_("in"), N_("mm"), N_("mu[[unit of measure]]"), N_("pc"),
+	N_("pt"), N_("sp"), N_("Text Width %"),
 	N_("Column Width %"), N_("Page Width %"), N_("Line Width %"),
 	N_("Text Height %"), N_("Page Height %"), "" };
 
