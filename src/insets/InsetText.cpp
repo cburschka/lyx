@@ -30,6 +30,7 @@
 #include "InsetList.h"
 #include "Intl.h"
 #include "Language.h"
+#include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "lyxfind.h"
 #include "LyXRC.h"
@@ -377,9 +378,48 @@ void InsetText::rejectChanges()
 
 int InsetText::latex(odocstream & os, OutputParams const & runparams) const
 {
+	// This implements the standard way of handling the LaTeX
+	// output of a text inset, either a command or an
+	// environment. Standard collapsable insets should not
+	// redefine this, non-standard ones may call this.
+	InsetLayout const & il = getLayout();
+	int rows = 0;
+	if (!il.latexname().empty()) {
+		if (il.latextype() == InsetLayout::COMMAND) {
+			// FIXME UNICODE
+			if (runparams.moving_arg)
+				os << "\\protect";
+			os << '\\' << from_utf8(il.latexname());
+			if (!il.latexparam().empty())
+				os << from_utf8(il.latexparam());
+			os << '{';
+		} else if (il.latextype() == InsetLayout::ENVIRONMENT) {
+			os << "%\n\\begin{" << from_utf8(il.latexname()) << "}\n";
+			if (!il.latexparam().empty())
+				os << from_utf8(il.latexparam());
+			rows += 2;
+		}
+	}
+	OutputParams rp = runparams;
+	if (il.isPassThru())
+		rp.verbatim = true;
+	if (il.isNeedProtect())
+		rp.moving_arg = true;
+
+	// Output the contents of the inset
 	TexRow texrow;
-	latexParagraphs(buffer(), text_, os, texrow, runparams);
-	return texrow.rows();
+	latexParagraphs(buffer(), text_, os, texrow, rp);
+	rows += texrow.rows();
+
+	if (!il.latexname().empty()) {
+		if (il.latextype() == InsetLayout::COMMAND) {
+			os << "}";
+		} else if (il.latextype() == InsetLayout::ENVIRONMENT) {
+			os << "\n\\end{" << from_utf8(il.latexname()) << "}\n";
+			rows += 2;
+		}
+	}
+	return rows;
 }
 
 
@@ -425,6 +465,7 @@ docstring InsetText::xhtml(odocstream & os, OutputParams const & runparams) cons
 
 void InsetText::validate(LaTeXFeatures & features) const
 {
+	features.useInsetLayout(getLayout());
 	for_each(paragraphs().begin(), paragraphs().end(),
 		 bind(&Paragraph::validate, _1, ref(features)));
 }

@@ -76,6 +76,7 @@ InsetLayout Marginal
 	  Size                Small
 	EndFont
 	MultiPar              true
+	NeedProtect           true
 	HTMLTag               span
 	HTMLAttr              class='marginal'
 	HTMLStyle
@@ -240,8 +241,6 @@ End
 
 InsetLayout Index
 	LabelString           Idx
-	LatexType             command
-	LatexName             index
 	Decoration            classic
 	Font
 	  Color               foreground
@@ -260,7 +259,6 @@ InsetLayout Index
 	MultiPar              false
 	CustomPars            false
 	ForcePlain            true
-	NeedProtect           true
 End
 
 InsetLayout Box
@@ -307,11 +305,16 @@ End
 
 InsetLayout URL
 	LyXType               standard
-	LatexName             url
-	LatexType             command
 	Decoration            classic
 	LabelString           URL
+	LatexName             url
+	LatexType             command
+	Requires              url
+	MultiPar              false
+	CustomPars            false
+	ForcePlain            true
 	PassThru              true
+	FreeSpacing           true
 	ForceLTR              true
 	Font
 	  Family              Typewriter
@@ -322,7 +325,6 @@ InsetLayout URL
 	  Color               urllabel
 	  Size                Small
 	EndFont
-	Requires              url
 End
 
 InsetLayout OptArg

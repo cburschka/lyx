@@ -26,10 +26,10 @@
 #include "InsetLayout.h"
 #include "InsetList.h"
 #include "Language.h"
-#include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "output_xhtml.h"
+#include "OutputParams.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "sgml.h"
@@ -616,47 +616,6 @@ InsetLayout::InsetDecoration InsetCollapsable::decoration() const
 }
 
 
-int InsetCollapsable::latex(odocstream & os,
-			  OutputParams const & runparams) const
-{
-	// This implements the standard way of handling the LaTeX output of
-	// a collapsable inset, either a command or an environment. Standard 
-	// collapsable insets should not redefine this, non-standard ones may
-	// call this.
-	InsetLayout const & il = getLayout();
-	if (!il.latexname().empty()) {
-		if (il.latextype() == InsetLayout::COMMAND) {
-			// FIXME UNICODE
-			if (runparams.moving_arg)
-				os << "\\protect";
-			os << '\\' << from_utf8(il.latexname());
-			if (!il.latexparam().empty())
-				os << from_utf8(il.latexparam());
-			os << '{';
-		} else if (il.latextype() == InsetLayout::ENVIRONMENT) {
-			os << "%\n\\begin{" << from_utf8(il.latexname()) << "}\n";
-			if (!il.latexparam().empty())
-				os << from_utf8(il.latexparam());
-		}
-	}
-	OutputParams rp = runparams;
-	if (il.isPassThru())
-		rp.verbatim = true;
-	if (il.isNeedProtect())
-		rp.moving_arg = true;
-	int i = InsetText::latex(os, rp);
-	if (!il.latexname().empty()) {
-		if (il.latextype() == InsetLayout::COMMAND) {
-			os << "}";
-		} else if (il.latextype() == InsetLayout::ENVIRONMENT) {
-			os << "\n\\end{" << from_utf8(il.latexname()) << "}\n";
-			i += 4;
-		}
-	}
-	return i;
-}
-
-
 // FIXME It seems as if it ought to be possible to do this more simply,
 // maybe by calling InsetText::docbook() in the middle there.
 int InsetCollapsable::docbook(odocstream & os, OutputParams const & runparams) const
@@ -706,13 +665,6 @@ docstring InsetCollapsable::xhtml(odocstream & os, OutputParams const & runparam
 	if (opened)
 		html::closeTag(os, il.htmltag());
 	return deferred;
-}
-
-
-void InsetCollapsable::validate(LaTeXFeatures & features) const
-{
-	features.useInsetLayout(getLayout());
-	InsetText::validate(features);
 }
 
 

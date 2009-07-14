@@ -31,8 +31,6 @@ public:
 	///
 	docstring name() const { return from_ascii("Marginal"); }
 	///
-	int latex(odocstream &, OutputParams const &) const;
-	///
 	int plaintext(odocstream &, OutputParams const & runparams) const;
 	///
 	int docbook(odocstream &, OutputParams const & runparams) const;

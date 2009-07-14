@@ -126,15 +126,11 @@ public:
 	///
 	ColorCode labelColor() const { return getLayout().labelfont().color(); }
 	///
-	int latex(odocstream &, OutputParams const &) const;
-	///
 	int docbook(odocstream &, OutputParams const &) const;
 	/// It will rarely be right to call this from subclasses, due
 	/// to the fact that it steps counters, etc. Instead, call
 	/// InsetText::xhtml().
 	docstring xhtml(odocstream &, OutputParams const &) const;
-	///
-	void validate(LaTeXFeatures &) const;
 	///
 	InsetCode lyxCode() const { return COLLAPSABLE_CODE; }
 
