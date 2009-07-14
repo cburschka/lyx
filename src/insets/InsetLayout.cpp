@@ -35,7 +35,7 @@ InsetLayout::InsetLayout() :
 	labelstring_(from_ascii("UNDEFINED")), decoration_(DEFAULT),
 	latextype_(NOLATEXTYPE), font_(sane_font), 
 	labelfont_(sane_font), bgcolor_(Color_error), 
-	multipar_(false), custompars_(false), forceplain_(true), 
+	multipar_(false), custompars_(true), forceplain_(false), 
 	passthru_(false), needprotect_(false), freespacing_(false), 
 	keepempty_(false), forceltr_(false), intoc_(false)
 { 
