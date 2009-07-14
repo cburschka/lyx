@@ -73,8 +73,7 @@ public:
 	///
 	virtual void setButtonLabel() {}
 	///
-	virtual docstring const buttonLabel(BufferView const &) const
-		{ return labelstring_; }
+	virtual docstring const buttonLabel(BufferView const &) const;
 	///
 	bool isOpen(BufferView const & bv) const 
 		{ return geometry(bv) != ButtonOnly; }

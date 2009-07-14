@@ -582,6 +582,12 @@ void InsetCollapsable::setLabel(docstring const & l)
 }
 
 
+docstring const InsetCollapsable::buttonLabel(BufferView const &) const
+{
+	return labelstring_.empty() ? getLayout().labelstring() : labelstring_;
+}
+
+
 void InsetCollapsable::setStatus(Cursor & cur, CollapseStatus status)
 {
 	status_ = status;
@@ -617,32 +623,33 @@ int InsetCollapsable::latex(odocstream & os,
 	// a collapsable inset, either a command or an environment. Standard 
 	// collapsable insets should not redefine this, non-standard ones may
 	// call this.
-	if (!getLayout().latexname().empty()) {
-		if (getLayout().latextype() == InsetLayout::COMMAND) {
+	InsetLayout const & il = getLayout();
+	if (!il.latexname().empty()) {
+		if (il.latextype() == InsetLayout::COMMAND) {
 			// FIXME UNICODE
 			if (runparams.moving_arg)
 				os << "\\protect";
-			os << '\\' << from_utf8(getLayout().latexname());
-			if (!getLayout().latexparam().empty())
-				os << from_utf8(getLayout().latexparam());
+			os << '\\' << from_utf8(il.latexname());
+			if (!il.latexparam().empty())
+				os << from_utf8(il.latexparam());
 			os << '{';
-		} else if (getLayout().latextype() == InsetLayout::ENVIRONMENT) {
-			os << "%\n\\begin{" << from_utf8(getLayout().latexname()) << "}\n";
-			if (!getLayout().latexparam().empty())
-				os << from_utf8(getLayout().latexparam());
+		} else if (il.latextype() == InsetLayout::ENVIRONMENT) {
+			os << "%\n\\begin{" << from_utf8(il.latexname()) << "}\n";
+			if (!il.latexparam().empty())
+				os << from_utf8(il.latexparam());
 		}
 	}
 	OutputParams rp = runparams;
-	if (getLayout().isPassThru())
+	if (il.isPassThru())
 		rp.verbatim = true;
-	if (getLayout().isNeedProtect())
+	if (il.isNeedProtect())
 		rp.moving_arg = true;
 	int i = InsetText::latex(os, rp);
-	if (!getLayout().latexname().empty()) {
-		if (getLayout().latextype() == InsetLayout::COMMAND) {
+	if (!il.latexname().empty()) {
+		if (il.latextype() == InsetLayout::COMMAND) {
 			os << "}";
-		} else if (getLayout().latextype() == InsetLayout::ENVIRONMENT) {
-			os << "\n\\end{" << from_utf8(getLayout().latexname()) << "}\n";
+		} else if (il.latextype() == InsetLayout::ENVIRONMENT) {
+			os << "\n\\end{" << from_utf8(il.latexname()) << "}\n";
 			i += 4;
 		}
 	}
