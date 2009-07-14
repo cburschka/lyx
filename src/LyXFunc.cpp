@@ -398,7 +398,22 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	//lyxerr << "LyXFunc::getStatus: cmd: " << cmd << endl;
 	FuncStatus flag;
 
-	Buffer * buf = lyx_view_ ? lyx_view_->buffer() : 0;
+	/* In LyX/Mac, when a dialog is open, the menus of the
+	   application can still be accessed without giving focus to
+	   the main window. In this case, we want to disable the menu
+	   entries that are buffer or view-related.
+
+	   If this code is moved somewhere else (like in
+	   GuiView::getStatus), then several functions will not be
+	   handled correctly.
+	*/
+	frontend::LyXView * lv = 0;
+	Buffer * buf = 0;
+	if (lyx_view_ 
+	    && (cmd.origin != FuncRequest::MENU || lyx_view_->hasFocus())) {
+		lv = lyx_view_;
+		buf = lyx_view_->buffer();
+	}
 
 	if (cmd.action == LFUN_NOACTION) {
 		flag.message(from_utf8(N_("Nothing to do")));
@@ -663,11 +678,11 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 			break;
 
 		// Does the view know something?
-		if (!lyx_view_) {
+		if (!lv) {
 			enable = false;
 			break;
 		}
-		if (lyx_view_->getStatus(cmd, flag))
+		if (lv->getStatus(cmd, flag))
 			break;
 
 		// If we do not have a BufferView, then other functions are disabled
