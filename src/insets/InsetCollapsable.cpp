@@ -629,16 +629,6 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	default:
-		if (getLayout().isForceLtr()) {
-			// Force any new text to latex_language
-			// FIXME: This should only be necessary in constructor, but
-			// new paragraphs that are created by pressing enter at the
-			// start of an existing paragraph get the buffer language
-			// and not latex_language, so we take this brute force
-			// approach.
-			cur.current_font.setLanguage(latex_language);
-			cur.real_current_font.setLanguage(latex_language);
-		}
 		InsetText::doDispatch(cur, cmd);
 		break;
 	}
