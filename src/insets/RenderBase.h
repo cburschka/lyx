@@ -52,12 +52,12 @@ public:
 	virtual RenderMonitoredPreview * asMonitoredPreview() { return 0; }
 
 protected:
-	RenderBase() {}
+	RenderBase() : state_(false) {}
 	RenderBase(RenderBase const &) {}
 	RenderBase & operator=(RenderBase const &) { return *this; }
 
 	/// render state. currently, render_button uses this to store mouse_hover_
-	int state_;
+	bool state_;
 	/// Cached
 	mutable Dimension dim_;
 };
