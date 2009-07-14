@@ -26,7 +26,8 @@ namespace lyx {
 namespace frontend {
 
 GuiDialog::GuiDialog(GuiView & lv, QString const & name, QString const & title)
-	: QDialog(&lv), Dialog(lv, name, "LyX: " + title), is_closing_(false)
+	: QDialog(&lv), Dialog(lv, name, "LyX: " + title), updating_(false), 
+	  is_closing_(false)
 {}
 
 
