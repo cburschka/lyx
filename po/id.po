@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-07-09 18:04+0200\n"
+"POT-Creation-Date: 2009-07-14 18:28+0200\n"
 "PO-Revision-Date: 2009-06-29 19:23+0730\n"
 "Last-Translator: Waluyo Adi Siswanto <was.uthm@gmail.com>\n"
 "Language-Team: \n"
@@ -9635,7 +9635,7 @@ msgstr "Sebagai Baris|b"
 msgid "Selection as Paragraphs|P"
 msgstr "Sebagai Paragraf|P"
 
-#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:365 lib/ui/stdmenus.inc:171
+#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:366 lib/ui/stdmenus.inc:171
 msgid "Multicolumn|M"
 msgstr "Multikolom|M"
 
@@ -9659,7 +9659,7 @@ msgstr "Garis Kanan|G"
 msgid "Alignment|i"
 msgstr "Pelurusan|P"
 
-#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:380 lib/ui/stdmenus.inc:189
+#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:381 lib/ui/stdmenus.inc:189
 msgid "Add Row|A"
 msgstr "Tambah Baris|s"
 
@@ -9675,7 +9675,7 @@ msgstr "Salin Baris"
 msgid "Swap Rows"
 msgstr "Tukar Baris"
 
-#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:385 lib/ui/stdmenus.inc:194
+#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:386 lib/ui/stdmenus.inc:194
 msgid "Add Column|u"
 msgstr "Tambah Kolom|l"
 
@@ -9691,27 +9691,27 @@ msgstr "Salin Kolom"
 msgid "Swap Columns"
 msgstr "Tukar Kolom"
 
-#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:372 lib/ui/stdmenus.inc:181
+#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:373 lib/ui/stdmenus.inc:181
 msgid "Left|L"
 msgstr "Rata kiri|r"
 
-#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:373 lib/ui/stdmenus.inc:182
+#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:374 lib/ui/stdmenus.inc:182
 msgid "Center|C"
 msgstr "Tengah Antara|T"
 
-#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:374 lib/ui/stdmenus.inc:183
+#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:375 lib/ui/stdmenus.inc:183
 msgid "Right|R"
 msgstr "Kanan|K"
 
-#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:376 lib/ui/stdmenus.inc:185
+#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:377 lib/ui/stdmenus.inc:185
 msgid "Top|T"
 msgstr "Rata Atas"
 
-#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:377 lib/ui/stdmenus.inc:186
+#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:378 lib/ui/stdmenus.inc:186
 msgid "Middle|M"
 msgstr "Tengah Garis"
 
-#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:378 lib/ui/stdmenus.inc:187
+#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:379 lib/ui/stdmenus.inc:187
 msgid "Bottom|B"
 msgstr "Rata Bawah|w"
 
@@ -9743,7 +9743,7 @@ msgstr "Pelurusan|a"
 msgid "Add Row|R"
 msgstr "Tambah Baris|B"
 
-#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:381 lib/ui/stdmenus.inc:190
+#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:382 lib/ui/stdmenus.inc:190
 msgid "Delete Row|D"
 msgstr "Hapus Baris|H"
 
@@ -9751,7 +9751,7 @@ msgstr "Hapus Baris|H"
 msgid "Add Column|C"
 msgstr "Tambah Kolom|o"
 
-#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:386 lib/ui/stdmenus.inc:195
+#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:387 lib/ui/stdmenus.inc:195
 msgid "Delete Column|e"
 msgstr "Hapus Kolom|p"
 
@@ -9944,7 +9944,7 @@ msgstr "Spasi Protected|r"
 msgid "Inter-word Space|w"
 msgstr "Spasi Antara Kata|p"
 
-#: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:192 lib/ui/stdcontext.inc:215
+#: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:193 lib/ui/stdcontext.inc:216
 #: lib/ui/stdmenus.inc:378
 msgid "Thin Space|T"
 msgstr "Spasi Tipis|T"
@@ -10351,481 +10351,486 @@ msgstr "Lingkungan AMS|M"
 msgid "Equation Label|L"
 msgstr "Label Rumus|L"
 
-#: lib/ui/stdcontext.inc:55 lib/ui/stdmenus.inc:201
+#: lib/ui/stdcontext.inc:55
+#, fuzzy
+msgid "Copy as Reference|R"
+msgstr "Referensi-Silang...|R"
+
+#: lib/ui/stdcontext.inc:56 lib/ui/stdmenus.inc:201
 msgid "Number Whole Formula|N"
 msgstr "Nomor Diseluruh Rumus|N"
 
-#: lib/ui/stdcontext.inc:56 lib/ui/stdmenus.inc:202
+#: lib/ui/stdcontext.inc:57 lib/ui/stdmenus.inc:202
 msgid "Number This Line|u"
 msgstr "Rumus Bernomor Dibaris Ini|u"
 
-#: lib/ui/stdcontext.inc:58 lib/ui/stdmenus.inc:212
+#: lib/ui/stdcontext.inc:59 lib/ui/stdmenus.inc:212
 msgid "Split Cell|C"
 msgstr "Memisah Sel|h"
 
-#: lib/ui/stdcontext.inc:60
+#: lib/ui/stdcontext.inc:61
 msgid "Insert|n"
 msgstr "Sisipan|n"
 
-#: lib/ui/stdcontext.inc:62
+#: lib/ui/stdcontext.inc:63
 msgid "Add Line Above|o"
 msgstr "Tambah Garis Diatas|a"
 
-#: lib/ui/stdcontext.inc:63 lib/ui/stdmenus.inc:215
+#: lib/ui/stdcontext.inc:64 lib/ui/stdmenus.inc:215
 msgid "Add Line Below|B"
 msgstr "Tambah Garis Dibawah|b"
 
-#: lib/ui/stdcontext.inc:64 lib/ui/stdmenus.inc:216
+#: lib/ui/stdcontext.inc:65 lib/ui/stdmenus.inc:216
 msgid "Delete Line Above|D"
 msgstr "Hapus Garis Diatas|D"
 
-#: lib/ui/stdcontext.inc:65 lib/ui/stdmenus.inc:217
+#: lib/ui/stdcontext.inc:66 lib/ui/stdmenus.inc:217
 msgid "Delete Line Below|e"
 msgstr "Hapus Garis Dibawah|w"
 
-#: lib/ui/stdcontext.inc:67 lib/ui/stdmenus.inc:219
+#: lib/ui/stdcontext.inc:68 lib/ui/stdmenus.inc:219
 msgid "Add Line to Left"
 msgstr "Tambah Garis ke Kiri"
 
-#: lib/ui/stdcontext.inc:68 lib/ui/stdmenus.inc:220
+#: lib/ui/stdcontext.inc:69 lib/ui/stdmenus.inc:220
 msgid "Add Line to Right"
 msgstr "Tambah Garis ke Kanan"
 
-#: lib/ui/stdcontext.inc:69 lib/ui/stdmenus.inc:221
+#: lib/ui/stdcontext.inc:70 lib/ui/stdmenus.inc:221
 msgid "Delete Line to Left"
 msgstr "Hapus Garis ke Kiri"
 
-#: lib/ui/stdcontext.inc:70 lib/ui/stdmenus.inc:222
+#: lib/ui/stdcontext.inc:71 lib/ui/stdmenus.inc:222
 msgid "Delete Line to Right"
 msgstr "Hapus Garis ke Kanan"
 
-#: lib/ui/stdcontext.inc:72
+#: lib/ui/stdcontext.inc:73
 msgid "Show Math Toolbar"
 msgstr "Tampilkan Kotak Bantuan Matematika"
 
-#: lib/ui/stdcontext.inc:73
+#: lib/ui/stdcontext.inc:74
 msgid "Show Math-Panels Toolbar"
 msgstr "Tampilkan Kotak Bantuan Panel Matematika"
 
-#: lib/ui/stdcontext.inc:74
+#: lib/ui/stdcontext.inc:75
 msgid "Show Table Toolbar"
 msgstr "Tampilkan Kotak Bantuan Tabel"
 
-#: lib/ui/stdcontext.inc:82 lib/ui/stdcontext.inc:99
+#: lib/ui/stdcontext.inc:83 lib/ui/stdcontext.inc:100
 msgid "Next Cross-Reference|N"
 msgstr "Referensi-Silang Selanjutnya|R"
 
-#: lib/ui/stdcontext.inc:83
+#: lib/ui/stdcontext.inc:84
 msgid "Go to Label|G"
 msgstr "Ke lokasi label|e"
 
-#: lib/ui/stdcontext.inc:85
+#: lib/ui/stdcontext.inc:86
 msgid "<Reference>|R"
 msgstr "<Referensi>|R"
 
-#: lib/ui/stdcontext.inc:86
+#: lib/ui/stdcontext.inc:87
 msgid "(<Reference>)|E"
 msgstr "(<Referensi>)|E"
 
-#: lib/ui/stdcontext.inc:87
+#: lib/ui/stdcontext.inc:88
 msgid "<Page>|P"
 msgstr "<Halaman>|H"
 
-#: lib/ui/stdcontext.inc:88
+#: lib/ui/stdcontext.inc:89
 msgid "On Page <Page>|o"
 msgstr "Pada Halaman <Halaman>d"
 
-#: lib/ui/stdcontext.inc:89
+#: lib/ui/stdcontext.inc:90
 msgid "<Reference> on Page <Page>|f"
 msgstr "<Referensi> Pada Halaman <Halaman>|f"
 
-#: lib/ui/stdcontext.inc:90
+#: lib/ui/stdcontext.inc:91
 msgid "Formatted Reference|t"
 msgstr "Referensi Format Lain|t"
 
-#: lib/ui/stdcontext.inc:92 lib/ui/stdcontext.inc:104
-#: lib/ui/stdcontext.inc:114 lib/ui/stdcontext.inc:122
-#: lib/ui/stdcontext.inc:136 lib/ui/stdcontext.inc:143
-#: lib/ui/stdcontext.inc:164 lib/ui/stdcontext.inc:208
-#: lib/ui/stdcontext.inc:226 lib/ui/stdcontext.inc:253
-#: lib/ui/stdcontext.inc:335 lib/ui/stdcontext.inc:343
-#: lib/ui/stdcontext.inc:355 lib/ui/stdcontext.inc:390
-#: lib/ui/stdcontext.inc:399 lib/ui/stdmenus.inc:468
+#: lib/ui/stdcontext.inc:93 lib/ui/stdcontext.inc:105
+#: lib/ui/stdcontext.inc:115 lib/ui/stdcontext.inc:123
+#: lib/ui/stdcontext.inc:137 lib/ui/stdcontext.inc:144
+#: lib/ui/stdcontext.inc:165 lib/ui/stdcontext.inc:209
+#: lib/ui/stdcontext.inc:227 lib/ui/stdcontext.inc:254
+#: lib/ui/stdcontext.inc:336 lib/ui/stdcontext.inc:344
+#: lib/ui/stdcontext.inc:356 lib/ui/stdcontext.inc:391
+#: lib/ui/stdcontext.inc:400 lib/ui/stdmenus.inc:468
 msgid "Settings...|S"
 msgstr "Pengaturan...|a"
 
-#: lib/ui/stdcontext.inc:100
+#: lib/ui/stdcontext.inc:101
 msgid "Go Back|G"
 msgstr "Kembali|b"
 
-#: lib/ui/stdcontext.inc:102
+#: lib/ui/stdcontext.inc:103
 msgid "Copy as Reference|C"
 msgstr "Referensi-Silang...|R"
 
-#: lib/ui/stdcontext.inc:124
+#: lib/ui/stdcontext.inc:125
 msgid "Edit Database(s) Externally...|x"
 msgstr "Sunting Basis Data Dengan Program Lain...|L"
 
-#: lib/ui/stdcontext.inc:132 lib/ui/stdcontext.inc:160
-#: lib/ui/stdcontext.inc:176 lib/ui/stdcontext.inc:331
+#: lib/ui/stdcontext.inc:133 lib/ui/stdcontext.inc:161
+#: lib/ui/stdcontext.inc:177 lib/ui/stdcontext.inc:332
 msgid "Open Inset|O"
 msgstr "Buka sisipan|B"
 
-#: lib/ui/stdcontext.inc:133 lib/ui/stdcontext.inc:161
-#: lib/ui/stdcontext.inc:177 lib/ui/stdcontext.inc:332
+#: lib/ui/stdcontext.inc:134 lib/ui/stdcontext.inc:162
+#: lib/ui/stdcontext.inc:178 lib/ui/stdcontext.inc:333
 msgid "Close Inset|C"
 msgstr "Tutup sisipan|u"
 
-#: lib/ui/stdcontext.inc:135 lib/ui/stdcontext.inc:141
-#: lib/ui/stdcontext.inc:163 lib/ui/stdcontext.inc:182
-#: lib/ui/stdcontext.inc:334
+#: lib/ui/stdcontext.inc:136 lib/ui/stdcontext.inc:142
+#: lib/ui/stdcontext.inc:164 lib/ui/stdcontext.inc:183
+#: lib/ui/stdcontext.inc:335
 msgid "Dissolve Inset|D"
 msgstr "Hapus sisipan|H"
 
-#: lib/ui/stdcontext.inc:140
+#: lib/ui/stdcontext.inc:141
 msgid "Show Label|L"
 msgstr "Tampilkan Label|L"
 
-#: lib/ui/stdcontext.inc:151
+#: lib/ui/stdcontext.inc:152
 msgid "Frameless|l"
 msgstr "Tanpa bingkai garis|T"
 
-#: lib/ui/stdcontext.inc:152
+#: lib/ui/stdcontext.inc:153
 msgid "Simple Frame|F"
 msgstr "Bingkai Garis|G"
 
-#: lib/ui/stdcontext.inc:153
+#: lib/ui/stdcontext.inc:154
 msgid "Simple Frame, Page Breaks|P"
 msgstr "Bingkai Garis, Pindah Halaman|P"
 
-#: lib/ui/stdcontext.inc:154
+#: lib/ui/stdcontext.inc:155
 msgid "Oval, Thin|a"
 msgstr "Bingkai Oval, Garis Tipis|O"
 
-#: lib/ui/stdcontext.inc:155
+#: lib/ui/stdcontext.inc:156
 msgid "Oval, Thick|v"
 msgstr "Bingkai Oval, Garis Tebal|O"
 
-#: lib/ui/stdcontext.inc:156
+#: lib/ui/stdcontext.inc:157
 msgid "Drop Shadow|w"
 msgstr "Bingkai bayangan|B"
 
-#: lib/ui/stdcontext.inc:157
+#: lib/ui/stdcontext.inc:158
 msgid "Shaded Background|B"
 msgstr "Latar Berwarna|w"
 
-#: lib/ui/stdcontext.inc:158
+#: lib/ui/stdcontext.inc:159
 msgid "Double Frame|u"
 msgstr "Bingkai Dua Garis|s"
 
-#: lib/ui/stdcontext.inc:172 lib/ui/stdmenus.inc:442
+#: lib/ui/stdcontext.inc:173 lib/ui/stdmenus.inc:442
 msgid "LyX Note|N"
 msgstr "Nota LyX|N"
 
-#: lib/ui/stdcontext.inc:173
+#: lib/ui/stdcontext.inc:174
 msgid "Comment|m"
 msgstr "Komentar|K"
 
-#: lib/ui/stdcontext.inc:174 lib/ui/stdmenus.inc:444
+#: lib/ui/stdcontext.inc:175 lib/ui/stdmenus.inc:444
 msgid "Greyed Out|G"
 msgstr "Nota Kelabu|b"
 
-#: lib/ui/stdcontext.inc:179
+#: lib/ui/stdcontext.inc:180
 msgid "Open All Notes|A"
 msgstr "Buka Semua Nota|B"
 
-#: lib/ui/stdcontext.inc:180
+#: lib/ui/stdcontext.inc:181
 msgid "Close All Notes|l"
 msgstr "Tutup Semua Nota|T"
 
-#: lib/ui/stdcontext.inc:190
+#: lib/ui/stdcontext.inc:191
 msgid "Interword Space|w"
 msgstr "Spasi Antara Kata|p"
 
-#: lib/ui/stdcontext.inc:191
+#: lib/ui/stdcontext.inc:192
 msgid "Protected Space|o"
 msgstr "Spasi Protected|"
 
-#: lib/ui/stdcontext.inc:193 lib/ui/stdcontext.inc:218
+#: lib/ui/stdcontext.inc:194 lib/ui/stdcontext.inc:219
 msgid "Negative Thin Space|N"
 msgstr "Spasi Tipis Negatif|N"
 
-#: lib/ui/stdcontext.inc:194 lib/ui/stdcontext.inc:221
+#: lib/ui/stdcontext.inc:195 lib/ui/stdcontext.inc:222
 msgid "Half Quad Space (Enskip)|k"
 msgstr "Spasi Setengah Quad (Enskip)|k"
 
-#: lib/ui/stdcontext.inc:195
+#: lib/ui/stdcontext.inc:196
 msgid "Protected Half Quad Space (Enspace)|E"
 msgstr "Spasi Setengah Quad Protected (Enspace)|E"
 
-#: lib/ui/stdcontext.inc:196 lib/ui/stdcontext.inc:222
+#: lib/ui/stdcontext.inc:197 lib/ui/stdcontext.inc:223
 msgid "Quad Space|Q"
 msgstr "Spasi Normal Quad|Q"
 
-#: lib/ui/stdcontext.inc:197 lib/ui/stdcontext.inc:223
+#: lib/ui/stdcontext.inc:198 lib/ui/stdcontext.inc:224
 msgid "Double Quad Space|u"
 msgstr "Spasi Duakali Quad|u"
 
-#: lib/ui/stdcontext.inc:198
+#: lib/ui/stdcontext.inc:199
 msgid "Horizontal Fill|F"
 msgstr "Isian Horisontal (Kosong)|g"
 
-#: lib/ui/stdcontext.inc:199
+#: lib/ui/stdcontext.inc:200
 msgid "Protected Horizontal Fill|i"
 msgstr "Isian Horisontal (Kosong) Protected|I"
 
-#: lib/ui/stdcontext.inc:200
+#: lib/ui/stdcontext.inc:201
 msgid "Horizontal Fill (Dots)|D"
 msgstr "Isian Horisontal (Dots)"
 
-#: lib/ui/stdcontext.inc:201
+#: lib/ui/stdcontext.inc:202
 msgid "Horizontal Fill (Rule)|R"
 msgstr "Isian Horisontal (Rule)"
 
-#: lib/ui/stdcontext.inc:202
+#: lib/ui/stdcontext.inc:203
 msgid "Horizontal Fill (Left Arrow)|L"
 msgstr "Isian Horisontal (Left Arrow)"
 
-#: lib/ui/stdcontext.inc:203
+#: lib/ui/stdcontext.inc:204
 msgid "Horizontal Fill (Right Arrow)|g"
 msgstr "Isian Horisontal (Right Arrow)"
 
-#: lib/ui/stdcontext.inc:204
+#: lib/ui/stdcontext.inc:205
 msgid "Horizontal Fill (Up Brace)|p"
 msgstr "Isian Horisontal (Up Brace)"
 
-#: lib/ui/stdcontext.inc:205
+#: lib/ui/stdcontext.inc:206
 msgid "Horizontal Fill (Down Brace)|B"
 msgstr "Isian Horisontal (Down Brace)"
 
-#: lib/ui/stdcontext.inc:206 lib/ui/stdcontext.inc:224
+#: lib/ui/stdcontext.inc:207 lib/ui/stdcontext.inc:225
 msgid "Custom Length|C"
 msgstr "Atur Lebar Isian"
 
-#: lib/ui/stdcontext.inc:216
+#: lib/ui/stdcontext.inc:217
 msgid "Medium Space|M"
 msgstr "Spasi Sedang|S"
 
-#: lib/ui/stdcontext.inc:217
+#: lib/ui/stdcontext.inc:218
 msgid "Thick Space|h"
 msgstr "Spasi Tebal|b"
 
-#: lib/ui/stdcontext.inc:219
+#: lib/ui/stdcontext.inc:220
 msgid "Negative Medium Space|u"
 msgstr "Spasi Sedang Negatif"
 
-#: lib/ui/stdcontext.inc:220
+#: lib/ui/stdcontext.inc:221
 msgid "Negative Thick Space|i"
 msgstr "Spasi Tebal Negatif"
 
-#: lib/ui/stdcontext.inc:233
+#: lib/ui/stdcontext.inc:234
 msgid "DefSkip|D"
 msgstr "Lompat Normal|N"
 
-#: lib/ui/stdcontext.inc:234
+#: lib/ui/stdcontext.inc:235
 msgid "SmallSkip|S"
 msgstr "Lompat Kecil|K"
 
-#: lib/ui/stdcontext.inc:235
+#: lib/ui/stdcontext.inc:236
 msgid "MedSkip|M"
 msgstr "Lompat Sedang|S"
 
-#: lib/ui/stdcontext.inc:236
+#: lib/ui/stdcontext.inc:237
 msgid "BigSkip|B"
 msgstr "Lompat Lebar|L"
 
-#: lib/ui/stdcontext.inc:237
+#: lib/ui/stdcontext.inc:238
 msgid "VFill|F"
 msgstr "Lompat Variabel|V"
 
-#: lib/ui/stdcontext.inc:238
+#: lib/ui/stdcontext.inc:239
 msgid "Custom|C"
 msgstr "Atur Lompatan|A"
 
-#: lib/ui/stdcontext.inc:240
+#: lib/ui/stdcontext.inc:241
 msgid "Settings...|e"
 msgstr "Pengaturan...|e"
 
-#: lib/ui/stdcontext.inc:247
+#: lib/ui/stdcontext.inc:248
 msgid "Include|c"
 msgstr "Berkas Ikutan|I"
 
-#: lib/ui/stdcontext.inc:248
+#: lib/ui/stdcontext.inc:249
 msgid "Input|p"
 msgstr "Kode Input|p"
 
-#: lib/ui/stdcontext.inc:249
+#: lib/ui/stdcontext.inc:250
 msgid "Verbatim|V"
 msgstr "Kode Verbatim|V"
 
-#: lib/ui/stdcontext.inc:250
+#: lib/ui/stdcontext.inc:251
 msgid "Verbatim (marked blanks)|b"
 msgstr "Verbatim (tandai spasi)|s"
 
-#: lib/ui/stdcontext.inc:251
+#: lib/ui/stdcontext.inc:252
 msgid "Listing|L"
 msgstr "Tipe Pemrograman|r"
 
-#: lib/ui/stdcontext.inc:255
+#: lib/ui/stdcontext.inc:256
 msgid "Edit Included File...|E"
 msgstr "Sunting Berkas Ikutan...|B"
 
-#: lib/ui/stdcontext.inc:262 lib/ui/stdmenus.inc:388
+#: lib/ui/stdcontext.inc:263 lib/ui/stdmenus.inc:388
 msgid "New Page|N"
 msgstr "Halaman Baru|B"
 
-#: lib/ui/stdcontext.inc:263 lib/ui/stdmenus.inc:389
+#: lib/ui/stdcontext.inc:264 lib/ui/stdmenus.inc:389
 msgid "Page Break|a"
 msgstr "Pemisah Halaman|m"
 
-#: lib/ui/stdcontext.inc:264 lib/ui/stdmenus.inc:390
+#: lib/ui/stdcontext.inc:265 lib/ui/stdmenus.inc:390
 msgid "Clear Page|C"
 msgstr "Halaman Kosong|K"
 
-#: lib/ui/stdcontext.inc:265 lib/ui/stdmenus.inc:391
+#: lib/ui/stdcontext.inc:266 lib/ui/stdmenus.inc:391
 msgid "Clear Double Page|D"
 msgstr "Dua Halaman Kosong|D"
 
-#: lib/ui/stdcontext.inc:272 lib/ui/stdmenus.inc:385
+#: lib/ui/stdcontext.inc:273 lib/ui/stdmenus.inc:385
 msgid "Ragged Line Break|R"
 msgstr "Pemisah Ragged Line|e"
 
-#: lib/ui/stdcontext.inc:273 lib/ui/stdmenus.inc:386
+#: lib/ui/stdcontext.inc:274 lib/ui/stdmenus.inc:386
 msgid "Justified Line Break|J"
 msgstr "Pemisah Justified Line|J"
 
-#: lib/ui/stdcontext.inc:280 lib/ui/stdcontext.inc:326 lib/ui/stdmenus.inc:97
-#: lib/ui/stdtoolbars.inc:78 src/Text3.cpp:1057
+#: lib/ui/stdcontext.inc:281 lib/ui/stdcontext.inc:327 lib/ui/stdmenus.inc:97
+#: lib/ui/stdtoolbars.inc:78 src/Text3.cpp:1083
 #: src/mathed/InsetMathNest.cpp:550
 msgid "Cut"
 msgstr "Potong"
 
-#: lib/ui/stdcontext.inc:281 lib/ui/stdcontext.inc:327 lib/ui/stdmenus.inc:98
-#: lib/ui/stdtoolbars.inc:79 src/Text3.cpp:1062
+#: lib/ui/stdcontext.inc:282 lib/ui/stdcontext.inc:328 lib/ui/stdmenus.inc:98
+#: lib/ui/stdtoolbars.inc:79 src/Text3.cpp:1088
 #: src/mathed/InsetMathNest.cpp:558
 msgid "Copy"
 msgstr "Salin"
 
-#: lib/ui/stdcontext.inc:282 lib/ui/stdcontext.inc:328 lib/ui/stdmenus.inc:99
-#: lib/ui/stdtoolbars.inc:80 src/Text3.cpp:1015
+#: lib/ui/stdcontext.inc:283 lib/ui/stdcontext.inc:329 lib/ui/stdmenus.inc:99
+#: lib/ui/stdtoolbars.inc:80 src/Text3.cpp:1041
 #: src/mathed/InsetMathGrid.cpp:1256 src/mathed/InsetMathNest.cpp:530
 msgid "Paste"
 msgstr "Tempelkan"
 
-#: lib/ui/stdcontext.inc:283 lib/ui/stdcontext.inc:329 lib/ui/stdmenus.inc:100
+#: lib/ui/stdcontext.inc:284 lib/ui/stdcontext.inc:330 lib/ui/stdmenus.inc:100
 msgid "Paste Recent|e"
 msgstr "Tempelkan yg terkini|i"
 
-#: lib/ui/stdcontext.inc:285
+#: lib/ui/stdcontext.inc:286
 msgid "Jump Back to Saved Bookmark|B"
 msgstr "Kembali ke Simpanan Batas Buku|B"
 
-#: lib/ui/stdcontext.inc:287 lib/ui/stdmenus.inc:107
+#: lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:107
 msgid "Move Paragraph Up|o"
 msgstr "Pindah Paragraf ke Atas|A"
 
-#: lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:108
+#: lib/ui/stdcontext.inc:289 lib/ui/stdmenus.inc:108
 msgid "Move Paragraph Down|v"
 msgstr "Pindah Paragraf ke Bawah|w"
 
-#: lib/ui/stdcontext.inc:290
+#: lib/ui/stdcontext.inc:291
 msgid "Promote Section|r"
 msgstr "Naik Tingkatan SubBab|N"
 
-#: lib/ui/stdcontext.inc:291
+#: lib/ui/stdcontext.inc:292
 msgid "Demote Section|m"
 msgstr "Turun Tingkatan SubBab|T"
 
-#: lib/ui/stdcontext.inc:292
+#: lib/ui/stdcontext.inc:293
 msgid "Move Section Down|D"
 msgstr "Pindahkan SubBab Keatas|d"
 
-#: lib/ui/stdcontext.inc:293
+#: lib/ui/stdcontext.inc:294
 msgid "Move Section Up|U"
 msgstr "Pindahkan SubBab Kebawah|h"
 
-#: lib/ui/stdcontext.inc:294
+#: lib/ui/stdcontext.inc:295
 msgid "Insert Short Title|T"
 msgstr "Sisipkan Judul Singkat|J"
 
-#: lib/ui/stdcontext.inc:296
+#: lib/ui/stdcontext.inc:297
 msgid "Apply Last Text Style|A"
 msgstr "Gunakan model teks terakhir|G"
 
-#: lib/ui/stdcontext.inc:297 lib/ui/stdmenus.inc:110
+#: lib/ui/stdcontext.inc:298 lib/ui/stdmenus.inc:110
 msgid "Text Style|S"
 msgstr "Corak dan Gaya Teks|C"
 
-#: lib/ui/stdcontext.inc:298 lib/ui/stdmenus.inc:111
+#: lib/ui/stdcontext.inc:299 lib/ui/stdmenus.inc:111
 msgid "Paragraph Settings...|P"
 msgstr "Pengaturan Paragraf...|f"
 
-#: lib/ui/stdcontext.inc:300
+#: lib/ui/stdcontext.inc:301
 msgid "Fullscreen Mode"
 msgstr "Tampilan layar penuh"
 
-#: lib/ui/stdcontext.inc:308 lib/ui/stdmenus.inc:226
+#: lib/ui/stdcontext.inc:309 lib/ui/stdmenus.inc:226
 msgid "Append Argument"
 msgstr "Tambahkan argumen"
 
-#: lib/ui/stdcontext.inc:309 lib/ui/stdmenus.inc:227
+#: lib/ui/stdcontext.inc:310 lib/ui/stdmenus.inc:227
 msgid "Remove Last Argument"
 msgstr "Hapus argumen terakhir"
 
-#: lib/ui/stdcontext.inc:311
+#: lib/ui/stdcontext.inc:312
 msgid "Make First Non-Optional Into Optional Argument"
 msgstr "Ubah Argumen Non-Optional Pertama menjadi Argumen Optional"
 
-#: lib/ui/stdcontext.inc:312
+#: lib/ui/stdcontext.inc:313
 msgid "Make Last Optional Into Non-Optional Argument"
 msgstr "Ubah Argumen Optional Terakhir menjadi Argumen Non-Optional"
 
-#: lib/ui/stdcontext.inc:313 lib/ui/stdmenus.inc:231
+#: lib/ui/stdcontext.inc:314 lib/ui/stdmenus.inc:231
 msgid "Insert Optional Argument"
 msgstr "Sisipkan Argumen Optional"
 
-#: lib/ui/stdcontext.inc:314 lib/ui/stdmenus.inc:232
+#: lib/ui/stdcontext.inc:315 lib/ui/stdmenus.inc:232
 msgid "Remove Optional Argument"
 msgstr "Hapus Argumen Optional"
 
-#: lib/ui/stdcontext.inc:316 lib/ui/stdmenus.inc:234
+#: lib/ui/stdcontext.inc:317 lib/ui/stdmenus.inc:234
 msgid "Append Argument Eating From the Right"
 msgstr "Tambahkan Argumen yang diambil Dari Kanan"
 
-#: lib/ui/stdcontext.inc:317 lib/ui/stdmenus.inc:235
+#: lib/ui/stdcontext.inc:318 lib/ui/stdmenus.inc:235
 msgid "Append Optional Argument Eating From the Right"
 msgstr "Tambahkan Argumen Optional Yang Diambil Dari Kanan"
 
-#: lib/ui/stdcontext.inc:318 lib/ui/stdmenus.inc:236
+#: lib/ui/stdcontext.inc:319 lib/ui/stdmenus.inc:236
 #, fuzzy
 msgid "Remove Last Argument Spitting Out to the Right"
 msgstr "Hapus Argumen Terakhir Yang Dikeluarkan Ke Kanan"
 
-#: lib/ui/stdcontext.inc:345 lib/ui/stdcontext.inc:357
+#: lib/ui/stdcontext.inc:346 lib/ui/stdcontext.inc:358
 msgid "Edit Externally...|x"
 msgstr "Buka Dengan Program Lain...|B"
 
-#: lib/ui/stdcontext.inc:367 lib/ui/stdmenus.inc:173
+#: lib/ui/stdcontext.inc:368 lib/ui/stdmenus.inc:173
 msgid "Top Line|T"
 msgstr "Garis Atas"
 
-#: lib/ui/stdcontext.inc:368 lib/ui/stdmenus.inc:174
+#: lib/ui/stdcontext.inc:369 lib/ui/stdmenus.inc:174
 msgid "Bottom Line|B"
 msgstr "Garis Bawah|B"
 
-#: lib/ui/stdcontext.inc:369 lib/ui/stdmenus.inc:175
+#: lib/ui/stdcontext.inc:370 lib/ui/stdmenus.inc:175
 msgid "Left Line|L"
 msgstr "Garis Kiri|i"
 
-#: lib/ui/stdcontext.inc:370 lib/ui/stdmenus.inc:176
+#: lib/ui/stdcontext.inc:371 lib/ui/stdmenus.inc:176
 msgid "Right Line|R"
 msgstr "Garis Kanan"
 
-#: lib/ui/stdcontext.inc:382 lib/ui/stdmenus.inc:191
+#: lib/ui/stdcontext.inc:383 lib/ui/stdmenus.inc:191
 msgid "Copy Row|o"
 msgstr "Salin Baris"
 
-#: lib/ui/stdcontext.inc:387 lib/ui/stdmenus.inc:196
+#: lib/ui/stdcontext.inc:388 lib/ui/stdmenus.inc:196
 msgid "Copy Column|p"
 msgstr "Salin kolom|o"
 
@@ -14951,22 +14956,22 @@ msgstr "Satu karakter (tidak termasuk spasi)"
 msgid "Statistics"
 msgstr "Statistik"
 
-#: src/BufferView.cpp:2145
+#: src/BufferView.cpp:2151
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Memasukkan dokumen %1$s..."
 
-#: src/BufferView.cpp:2156
+#: src/BufferView.cpp:2162
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokumen %1$s dimasukkan."
 
-#: src/BufferView.cpp:2158
+#: src/BufferView.cpp:2164
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Tidak dapat memasukkan dokumen %1$s"
 
-#: src/BufferView.cpp:2420
+#: src/BufferView.cpp:2426
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -14977,11 +14982,11 @@ msgstr ""
 "%1$s\n"
 "karena kesalahan: %2$s"
 
-#: src/BufferView.cpp:2422
+#: src/BufferView.cpp:2428
 msgid "Could not read file"
 msgstr "Tidak dapat membaca berkas"
 
-#: src/BufferView.cpp:2429
+#: src/BufferView.cpp:2435
 #, c-format
 msgid ""
 "%1$s\n"
@@ -14990,15 +14995,15 @@ msgstr ""
 "%1$s\n"
 "tidak bisa dibaca."
 
-#: src/BufferView.cpp:2430 src/output.cpp:39
+#: src/BufferView.cpp:2436 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Tidak bisa membuka berkas"
 
-#: src/BufferView.cpp:2437
+#: src/BufferView.cpp:2443
 msgid "Reading not UTF-8 encoded file"
 msgstr "Membaca berkas not UTF-8 encoded"
 
-#: src/BufferView.cpp:2438
+#: src/BufferView.cpp:2444
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -15413,7 +15418,7 @@ msgstr "Output kosong"
 msgid "An empty output file was generated."
 msgstr "Menghasilkan berkas output yang kosong"
 
-#: src/CutAndPaste.cpp:564
+#: src/CutAndPaste.cpp:566
 #, c-format
 msgid ""
 "Flex inset %1$s is undefined because of class conversion from\n"
@@ -15422,7 +15427,7 @@ msgstr ""
 "Sisipan flex  %1$s tidak terdefinisi karena konversi class dari\n"
 " %2$s to %3$s"
 
-#: src/CutAndPaste.cpp:571
+#: src/CutAndPaste.cpp:573
 msgid "Undefined flex inset"
 msgstr "Sisipan flex tidak terdefinisi"
 
@@ -15666,7 +15671,7 @@ msgstr "Menjalankan Makeindex untuk nomenklatur."
 msgid "Could not read configuration file"
 msgstr "Tidak dapat membaca berkas konfigurasi"
 
-#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1473
+#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1477
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -15996,7 +16001,7 @@ msgstr "Mengembalikan ke dokumen yang disimpan"
 msgid "&Revert"
 msgstr "&Kembalikan"
 
-#: src/LyXFunc.cpp:1067 src/Text3.cpp:1567
+#: src/LyXFunc.cpp:1067 src/Text3.cpp:1593
 msgid "Missing argument"
 msgstr "Argumen tidak lengkap"
 
@@ -16036,21 +16041,21 @@ msgstr "LyX KV: Catatan Pesan"
 msgid "Directory is not accessible."
 msgstr "Direktori ditak bisa diakses"
 
-#: src/LyXFunc.cpp:1855
+#: src/LyXFunc.cpp:1856
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokumen %1$s dimuat ulang."
 
-#: src/LyXFunc.cpp:1857
+#: src/LyXFunc.cpp:1858
 #, c-format
 msgid "Could not reload document %1$s"
 msgstr "Tidak bisa memuat ulang dokumen %1$s"
 
-#: src/LyXFunc.cpp:1894
+#: src/LyXFunc.cpp:1895
 msgid "Welcome to LyX!"
 msgstr "Selamat Datang di LyX!"
 
-#: src/LyXFunc.cpp:1915
+#: src/LyXFunc.cpp:1916
 msgid "Converting document to new document class..."
 msgstr "Mengkonversi dokumen ke class dokumen baru..."
 
@@ -16674,15 +16679,15 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Memanggil versi yang disimpan dari dokumen?"
 
-#: src/Paragraph.cpp:1585 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1594 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "Tidak memungkinkan pada layout ini!"
 
-#: src/Paragraph.cpp:1651
+#: src/Paragraph.cpp:1660
 msgid "Alignment not permitted"
 msgstr "Pelurusan tidak diijinkan"
 
-#: src/Paragraph.cpp:1652
+#: src/Paragraph.cpp:1661
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -16691,22 +16696,22 @@ msgstr ""
 "sebelumnya.\n"
 "Pengaturan dikembalikan ke default."
 
-#: src/Paragraph.cpp:2134 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2143 src/frontends/qt4/LaTeXHighlighter.cpp:108
 #: src/insets/InsetListings.cpp:185 src/insets/InsetListings.cpp:193
 #: src/insets/InsetListings.cpp:217 src/mathed/InsetMathString.cpp:165
 msgid "LyX Warning: "
 msgstr "Peringatan LyX: "
 
-#: src/Paragraph.cpp:2135 src/insets/InsetListings.cpp:186
+#: src/Paragraph.cpp:2144 src/insets/InsetListings.cpp:186
 #: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:166
 msgid "uncodable character"
 msgstr "Karakter tidak bisa di encode"
 
-#: src/Paragraph.cpp:2498
+#: src/Paragraph.cpp:2507
 msgid "Memory problem"
 msgstr "Masalah dengan memori"
 
-#: src/Paragraph.cpp:2498
+#: src/Paragraph.cpp:2507
 msgid "Paragraph not properly initialized"
 msgstr "Paragraf tidak diinisialisasi dengan tepat"
 
@@ -16819,7 +16824,7 @@ msgstr "Tidak ada yang ditulis dalam indeks!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Tidak bisa menuliskan indeks lebih dari satu paragraf!"
 
-#: src/Text3.cpp:186 src/mathed/InsetMathHull.cpp:1484
+#: src/Text3.cpp:186 src/mathed/InsetMathHull.cpp:1506
 msgid "Math editor mode"
 msgstr "Penyuntingan mode matematika"
 
@@ -16827,23 +16832,23 @@ msgstr "Penyuntingan mode matematika"
 msgid "No valid math formula"
 msgstr "Rumus matematika tidak valid"
 
-#: src/Text3.cpp:844
+#: src/Text3.cpp:870
 msgid "Unknown spacing argument: "
 msgstr "Argumen spasi tidak dikenal: "
 
-#: src/Text3.cpp:1122
+#: src/Text3.cpp:1148
 msgid "Layout "
 msgstr "Layout "
 
-#: src/Text3.cpp:1123
+#: src/Text3.cpp:1149
 msgid " not known"
 msgstr "tidak dikenal"
 
-#: src/Text3.cpp:1684 src/Text3.cpp:1696
+#: src/Text3.cpp:1710 src/Text3.cpp:1722
 msgid "Character set"
 msgstr "Atur Karakter"
 
-#: src/Text3.cpp:1844 src/Text3.cpp:1855
+#: src/Text3.cpp:1870 src/Text3.cpp:1881
 msgid "Paragraph layout set"
 msgstr "Pengaturan layout paragraf"
 
@@ -17235,7 +17240,7 @@ msgstr ""
 "LyX teleh mendeteksi hal yang sangat tidak wajar,sekarang akan menyimpan "
 "perubahan kemudian keluart."
 
-#: src/frontends/qt4/GuiApplication.cpp:1472
+#: src/frontends/qt4/GuiApplication.cpp:1476
 msgid "Could not find UI definition file"
 msgstr "Tidak bisa menemukan berkas definisi UI"
 
@@ -20168,13 +20173,13 @@ msgstr "Spasi Horizontal Protected (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Tipe Daftar Isi tidak dikenal"
 
-#: src/insets/InsetTabular.cpp:3207
+#: src/insets/InsetTabular.cpp:3213
 msgid "Opened table"
 msgstr "Tabel dibuka"
 
-#: src/insets/InsetTabular.cpp:4009
-msgid "You cannot paste into a multicell selection."
-msgstr "Anda tidak bisa menempelkan dalam seleksi multisel"
+#: src/insets/InsetTabular.cpp:4023
+msgid "Selection size should match clipboard content."
+msgstr ""
 
 #: src/insets/InsetText.cpp:227
 msgid "Opened Text Inset"
@@ -20341,7 +20346,7 @@ msgstr " Berbagai string sudah diganti."
 msgid " Macro: %1$s: "
 msgstr " Makro: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1393
+#: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1414
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -20378,34 +20383,34 @@ msgstr "Tidak ada garis vertikal yang dihapus"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Fitur tabular  '%1$s' tidak dikenal"
 
-#: src/mathed/InsetMathHull.cpp:1189 src/mathed/InsetMathHull.cpp:1197
+#: src/mathed/InsetMathHull.cpp:1190 src/mathed/InsetMathHull.cpp:1198
 msgid "No number"
 msgstr "Tanpa Nomor"
 
-#: src/mathed/InsetMathHull.cpp:1189 src/mathed/InsetMathHull.cpp:1197
+#: src/mathed/InsetMathHull.cpp:1190 src/mathed/InsetMathHull.cpp:1198
 msgid "Number"
 msgstr "Nomor"
 
-#: src/mathed/InsetMathHull.cpp:1366
+#: src/mathed/InsetMathHull.cpp:1387
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Tidak bisa merubah baris di '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1376
+#: src/mathed/InsetMathHull.cpp:1397
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Tidak bisa merubah kolom di '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1386
+#: src/mathed/InsetMathHull.cpp:1407
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Tidak bisa menambah garis grid horisontal di  '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:969
+#: src/mathed/InsetMathNest.cpp:964
 msgid "create new math text environment ($...$)"
 msgstr "Membuat lingkungan baru matematika ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:972
+#: src/mathed/InsetMathNest.cpp:967
 msgid "entered math text mode (textrm)"
 msgstr "Masuk dalam mode teks matematika (textrm)"
 
@@ -20610,6 +20615,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Pemakai tidak dikenal"
+
+#~ msgid "You cannot paste into a multicell selection."
+#~ msgstr "Anda tidak bisa menempelkan dalam seleksi multisel"
 
 #~ msgid "Check in Changes...|I"
 #~ msgstr "Masukkan Perubahan...|n"

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.xsvn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-07-09 18:04+0200\n"
+"POT-Creation-Date: 2009-07-14 18:28+0200\n"
 "PO-Revision-Date: 2009-05-31 23:54+0100\n"
 "Last-Translator: Szőke Sándor <alex@lyx.hu>\n"
 "Language-Team: LyX-hu <alex@lyx.hu>\n"
@@ -9644,7 +9644,7 @@ msgstr "Kijelölés sorokként|K"
 msgid "Selection as Paragraphs|P"
 msgstr "Kijelölés bekezdésekként|b"
 
-#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:365 lib/ui/stdmenus.inc:171
+#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:366 lib/ui/stdmenus.inc:171
 msgid "Multicolumn|M"
 msgstr "Cellaegyesítés|C"
 
@@ -9668,7 +9668,7 @@ msgstr "Jobb oldali vonal|b"
 msgid "Alignment|i"
 msgstr "Igazítás|a"
 
-#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:380 lib/ui/stdmenus.inc:189
+#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:381 lib/ui/stdmenus.inc:189
 msgid "Add Row|A"
 msgstr "Sor hozzáadása|d"
 
@@ -9684,7 +9684,7 @@ msgstr "Sor másolása"
 msgid "Swap Rows"
 msgstr "Sorok cseréje"
 
-#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:385 lib/ui/stdmenus.inc:194
+#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:386 lib/ui/stdmenus.inc:194
 msgid "Add Column|u"
 msgstr "Oszlop hozzáadása|h"
 
@@ -9700,27 +9700,27 @@ msgstr "Oszlop másolása"
 msgid "Swap Columns"
 msgstr "Oszlopok cseréje"
 
-#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:372 lib/ui/stdmenus.inc:181
+#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:373 lib/ui/stdmenus.inc:181
 msgid "Left|L"
 msgstr "Balra|r"
 
-#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:373 lib/ui/stdmenus.inc:182
+#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:374 lib/ui/stdmenus.inc:182
 msgid "Center|C"
 msgstr "Középre|K"
 
-#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:374 lib/ui/stdmenus.inc:183
+#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:375 lib/ui/stdmenus.inc:183
 msgid "Right|R"
 msgstr "Jobbra|J"
 
-#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:376 lib/ui/stdmenus.inc:185
+#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:377 lib/ui/stdmenus.inc:185
 msgid "Top|T"
 msgstr "Fent|F"
 
-#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:377 lib/ui/stdmenus.inc:186
+#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:378 lib/ui/stdmenus.inc:186
 msgid "Middle|M"
 msgstr "Középen|p"
 
-#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:378 lib/ui/stdmenus.inc:187
+#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:379 lib/ui/stdmenus.inc:187
 msgid "Bottom|B"
 msgstr "Lent|L"
 
@@ -9752,7 +9752,7 @@ msgstr "Igazítás|a"
 msgid "Add Row|R"
 msgstr "Sor hozzáadása|S"
 
-#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:381 lib/ui/stdmenus.inc:190
+#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:382 lib/ui/stdmenus.inc:190
 msgid "Delete Row|D"
 msgstr "Sor törlése|t"
 
@@ -9760,7 +9760,7 @@ msgstr "Sor törlése|t"
 msgid "Add Column|C"
 msgstr "Oszlop hozzáadása|O"
 
-#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:386 lib/ui/stdmenus.inc:195
+#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:387 lib/ui/stdmenus.inc:195
 msgid "Delete Column|e"
 msgstr "Oszlop törlése|z"
 
@@ -9953,7 +9953,7 @@ msgstr "Védett szóköz|s"
 msgid "Inter-word Space|w"
 msgstr "Betűköz|B"
 
-#: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:192 lib/ui/stdcontext.inc:215
+#: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:193 lib/ui/stdcontext.inc:216
 #: lib/ui/stdmenus.inc:378
 msgid "Thin Space|T"
 msgstr "Keskeny köz|K"
@@ -10360,511 +10360,516 @@ msgstr "AMS környezet|A"
 msgid "Equation Label|L"
 msgstr "Egyenlet címke|c"
 
-#: lib/ui/stdcontext.inc:55 lib/ui/stdmenus.inc:201
+#: lib/ui/stdcontext.inc:55
+#, fuzzy
+msgid "Copy as Reference|R"
+msgstr "Hivatkozásként másol|H"
+
+#: lib/ui/stdcontext.inc:56 lib/ui/stdmenus.inc:201
 #, fuzzy
 msgid "Number Whole Formula|N"
 msgstr "Számozza az egész képletet|p"
 
-#: lib/ui/stdcontext.inc:56 lib/ui/stdmenus.inc:202
+#: lib/ui/stdcontext.inc:57 lib/ui/stdmenus.inc:202
 #, fuzzy
 msgid "Number This Line|u"
 msgstr "Számozza ezt a sort|m"
 
-#: lib/ui/stdcontext.inc:58 lib/ui/stdmenus.inc:212
+#: lib/ui/stdcontext.inc:59 lib/ui/stdmenus.inc:212
 msgid "Split Cell|C"
 msgstr "Cella felosztása|s"
 
-#: lib/ui/stdcontext.inc:60
+#: lib/ui/stdcontext.inc:61
 msgid "Insert|n"
 msgstr "Beszúrás|B"
 
-#: lib/ui/stdcontext.inc:62
+#: lib/ui/stdcontext.inc:63
 msgid "Add Line Above|o"
 msgstr "Szegély fent|f"
 
-#: lib/ui/stdcontext.inc:63 lib/ui/stdmenus.inc:215
+#: lib/ui/stdcontext.inc:64 lib/ui/stdmenus.inc:215
 msgid "Add Line Below|B"
 msgstr "Szegély lent|g"
 
-#: lib/ui/stdcontext.inc:64 lib/ui/stdmenus.inc:216
+#: lib/ui/stdcontext.inc:65 lib/ui/stdmenus.inc:216
 msgid "Delete Line Above|D"
 msgstr "Fenti szegély törlése|n"
 
-#: lib/ui/stdcontext.inc:65 lib/ui/stdmenus.inc:217
+#: lib/ui/stdcontext.inc:66 lib/ui/stdmenus.inc:217
 msgid "Delete Line Below|e"
 msgstr "Lenti szegély törlése|e"
 
-#: lib/ui/stdcontext.inc:67 lib/ui/stdmenus.inc:219
+#: lib/ui/stdcontext.inc:68 lib/ui/stdmenus.inc:219
 msgid "Add Line to Left"
 msgstr "Bal oldali vonal"
 
-#: lib/ui/stdcontext.inc:68 lib/ui/stdmenus.inc:220
+#: lib/ui/stdcontext.inc:69 lib/ui/stdmenus.inc:220
 msgid "Add Line to Right"
 msgstr "Jobb oldali vonal"
 
-#: lib/ui/stdcontext.inc:69 lib/ui/stdmenus.inc:221
+#: lib/ui/stdcontext.inc:70 lib/ui/stdmenus.inc:221
 msgid "Delete Line to Left"
 msgstr "Sor törlése balra"
 
-#: lib/ui/stdcontext.inc:70 lib/ui/stdmenus.inc:222
+#: lib/ui/stdcontext.inc:71 lib/ui/stdmenus.inc:222
 msgid "Delete Line to Right"
 msgstr "Sor törlése jobbra"
 
-#: lib/ui/stdcontext.inc:72
+#: lib/ui/stdcontext.inc:73
 #, fuzzy
 msgid "Show Math Toolbar"
 msgstr "Képlet eszköztár mutatása/rejtése"
 
-#: lib/ui/stdcontext.inc:73
+#: lib/ui/stdcontext.inc:74
 #, fuzzy
 msgid "Show Math-Panels Toolbar"
 msgstr "Képlet eszköztár mutatása/rejtése"
 
-#: lib/ui/stdcontext.inc:74
+#: lib/ui/stdcontext.inc:75
 #, fuzzy
 msgid "Show Table Toolbar"
 msgstr "Táblázat eszköztár mutatása/rejtése"
 
-#: lib/ui/stdcontext.inc:82 lib/ui/stdcontext.inc:99
+#: lib/ui/stdcontext.inc:83 lib/ui/stdcontext.inc:100
 msgid "Next Cross-Reference|N"
 msgstr "Következő kereszthivatkozás|e"
 
-#: lib/ui/stdcontext.inc:83
+#: lib/ui/stdcontext.inc:84
 msgid "Go to Label|G"
 msgstr "Címkére ugrás|C"
 
-#: lib/ui/stdcontext.inc:85
+#: lib/ui/stdcontext.inc:86
 #, fuzzy
 msgid "<Reference>|R"
 msgstr "<hivatkozás>|h"
 
-#: lib/ui/stdcontext.inc:86
+#: lib/ui/stdcontext.inc:87
 #, fuzzy
 msgid "(<Reference>)|E"
 msgstr "(<hivatkozás>)|k"
 
-#: lib/ui/stdcontext.inc:87
+#: lib/ui/stdcontext.inc:88
 #, fuzzy
 msgid "<Page>|P"
 msgstr "<oldal>|o"
 
-#: lib/ui/stdcontext.inc:88
+#: lib/ui/stdcontext.inc:89
 #, fuzzy
 msgid "On Page <Page>|o"
 msgstr "a(z) <oldal>. oldalon|a"
 
-#: lib/ui/stdcontext.inc:89
+#: lib/ui/stdcontext.inc:90
 #, fuzzy
 msgid "<Reference> on Page <Page>|f"
 msgstr "<hivatkozás> a(z) <oldal>. oldalon|v"
 
-#: lib/ui/stdcontext.inc:90
+#: lib/ui/stdcontext.inc:91
 #, fuzzy
 msgid "Formatted Reference|t"
 msgstr "Formázott hivatkozás|t"
 
-#: lib/ui/stdcontext.inc:92 lib/ui/stdcontext.inc:104
-#: lib/ui/stdcontext.inc:114 lib/ui/stdcontext.inc:122
-#: lib/ui/stdcontext.inc:136 lib/ui/stdcontext.inc:143
-#: lib/ui/stdcontext.inc:164 lib/ui/stdcontext.inc:208
-#: lib/ui/stdcontext.inc:226 lib/ui/stdcontext.inc:253
-#: lib/ui/stdcontext.inc:335 lib/ui/stdcontext.inc:343
-#: lib/ui/stdcontext.inc:355 lib/ui/stdcontext.inc:390
-#: lib/ui/stdcontext.inc:399 lib/ui/stdmenus.inc:468
+#: lib/ui/stdcontext.inc:93 lib/ui/stdcontext.inc:105
+#: lib/ui/stdcontext.inc:115 lib/ui/stdcontext.inc:123
+#: lib/ui/stdcontext.inc:137 lib/ui/stdcontext.inc:144
+#: lib/ui/stdcontext.inc:165 lib/ui/stdcontext.inc:209
+#: lib/ui/stdcontext.inc:227 lib/ui/stdcontext.inc:254
+#: lib/ui/stdcontext.inc:336 lib/ui/stdcontext.inc:344
+#: lib/ui/stdcontext.inc:356 lib/ui/stdcontext.inc:391
+#: lib/ui/stdcontext.inc:400 lib/ui/stdmenus.inc:468
 msgid "Settings...|S"
 msgstr "Beállítások...|B"
 
-#: lib/ui/stdcontext.inc:100
+#: lib/ui/stdcontext.inc:101
 #, fuzzy
 msgid "Go Back|G"
 msgstr "Visszaugrás|g"
 
-#: lib/ui/stdcontext.inc:102
+#: lib/ui/stdcontext.inc:103
 msgid "Copy as Reference|C"
 msgstr "Hivatkozásként másol|H"
 
-#: lib/ui/stdcontext.inc:124
+#: lib/ui/stdcontext.inc:125
 #, fuzzy
 msgid "Edit Database(s) Externally...|x"
 msgstr "Adatbázis szerkesztése külsőleg...|A"
 
-#: lib/ui/stdcontext.inc:132 lib/ui/stdcontext.inc:160
-#: lib/ui/stdcontext.inc:176 lib/ui/stdcontext.inc:331
+#: lib/ui/stdcontext.inc:133 lib/ui/stdcontext.inc:161
+#: lib/ui/stdcontext.inc:177 lib/ui/stdcontext.inc:332
 msgid "Open Inset|O"
 msgstr "Betét kinyitása|k"
 
-#: lib/ui/stdcontext.inc:133 lib/ui/stdcontext.inc:161
-#: lib/ui/stdcontext.inc:177 lib/ui/stdcontext.inc:332
+#: lib/ui/stdcontext.inc:134 lib/ui/stdcontext.inc:162
+#: lib/ui/stdcontext.inc:178 lib/ui/stdcontext.inc:333
 msgid "Close Inset|C"
 msgstr "Betét becsukása|e"
 
-#: lib/ui/stdcontext.inc:135 lib/ui/stdcontext.inc:141
-#: lib/ui/stdcontext.inc:163 lib/ui/stdcontext.inc:182
-#: lib/ui/stdcontext.inc:334
+#: lib/ui/stdcontext.inc:136 lib/ui/stdcontext.inc:142
+#: lib/ui/stdcontext.inc:164 lib/ui/stdcontext.inc:183
+#: lib/ui/stdcontext.inc:335
 msgid "Dissolve Inset|D"
 msgstr "Betét megszüntetése|t"
 
-#: lib/ui/stdcontext.inc:140
+#: lib/ui/stdcontext.inc:141
 #, fuzzy
 msgid "Show Label|L"
 msgstr "Címkére ugrás|C"
 
-#: lib/ui/stdcontext.inc:151
+#: lib/ui/stdcontext.inc:152
 msgid "Frameless|l"
 msgstr "Keret nélkül|K"
 
-#: lib/ui/stdcontext.inc:152
+#: lib/ui/stdcontext.inc:153
 #, fuzzy
 msgid "Simple Frame|F"
 msgstr "Szimpla keret|S"
 
-#: lib/ui/stdcontext.inc:153
+#: lib/ui/stdcontext.inc:154
 #, fuzzy
 msgid "Simple Frame, Page Breaks|P"
 msgstr "Egyszerű keret, oldal törés|z"
 
-#: lib/ui/stdcontext.inc:154
+#: lib/ui/stdcontext.inc:155
 #, fuzzy
 msgid "Oval, Thin|a"
 msgstr "Ovális, vékony|O"
 
-#: lib/ui/stdcontext.inc:155
+#: lib/ui/stdcontext.inc:156
 #, fuzzy
 msgid "Oval, Thick|v"
 msgstr "Ovális, vastag|v"
 
-#: lib/ui/stdcontext.inc:156
+#: lib/ui/stdcontext.inc:157
 msgid "Drop Shadow|w"
 msgstr "Árnyék megszüntetése|m"
 
-#: lib/ui/stdcontext.inc:157
+#: lib/ui/stdcontext.inc:158
 #, fuzzy
 msgid "Shaded Background|B"
 msgstr "Árnyékolt háttérrel|h"
 
-#: lib/ui/stdcontext.inc:158
+#: lib/ui/stdcontext.inc:159
 #, fuzzy
 msgid "Double Frame|u"
 msgstr "Dupla keret|D"
 
-#: lib/ui/stdcontext.inc:172 lib/ui/stdmenus.inc:442
+#: lib/ui/stdcontext.inc:173 lib/ui/stdmenus.inc:442
 msgid "LyX Note|N"
 msgstr "LyX megjegyzés|z"
 
-#: lib/ui/stdcontext.inc:173
+#: lib/ui/stdcontext.inc:174
 msgid "Comment|m"
 msgstr "Megjegyzés|M"
 
-#: lib/ui/stdcontext.inc:174 lib/ui/stdmenus.inc:444
+#: lib/ui/stdcontext.inc:175 lib/ui/stdmenus.inc:444
 msgid "Greyed Out|G"
 msgstr "Kiszürkített|s"
 
-#: lib/ui/stdcontext.inc:179
+#: lib/ui/stdcontext.inc:180
 #, fuzzy
 msgid "Open All Notes|A"
 msgstr "Minden betét kinyitása|b"
 
-#: lib/ui/stdcontext.inc:180
+#: lib/ui/stdcontext.inc:181
 #, fuzzy
 msgid "Close All Notes|l"
 msgstr "Minden betét becsukása|c"
 
-#: lib/ui/stdcontext.inc:190
+#: lib/ui/stdcontext.inc:191
 msgid "Interword Space|w"
 msgstr "Betűköz|e"
 
-#: lib/ui/stdcontext.inc:191
+#: lib/ui/stdcontext.inc:192
 msgid "Protected Space|o"
 msgstr "Védett szóköz|s"
 
-#: lib/ui/stdcontext.inc:193 lib/ui/stdcontext.inc:218
+#: lib/ui/stdcontext.inc:194 lib/ui/stdcontext.inc:219
 msgid "Negative Thin Space|N"
 msgstr "Negatív vékony köz|a"
 
-#: lib/ui/stdcontext.inc:194 lib/ui/stdcontext.inc:221
+#: lib/ui/stdcontext.inc:195 lib/ui/stdcontext.inc:222
 msgid "Half Quad Space (Enskip)|k"
 msgstr "Fél négyszeres köz (Enskip)|F"
 
-#: lib/ui/stdcontext.inc:195
+#: lib/ui/stdcontext.inc:196
 msgid "Protected Half Quad Space (Enspace)|E"
 msgstr "Védett fél négyszeres köz (Enspace)|c"
 
-#: lib/ui/stdcontext.inc:196 lib/ui/stdcontext.inc:222
+#: lib/ui/stdcontext.inc:197 lib/ui/stdcontext.inc:223
 msgid "Quad Space|Q"
 msgstr "Négyszeres köz|N"
 
-#: lib/ui/stdcontext.inc:197 lib/ui/stdcontext.inc:223
+#: lib/ui/stdcontext.inc:198 lib/ui/stdcontext.inc:224
 msgid "Double Quad Space|u"
 msgstr "Dupla négyszeres köz|D"
 
-#: lib/ui/stdcontext.inc:198
+#: lib/ui/stdcontext.inc:199
 msgid "Horizontal Fill|F"
 msgstr "Vízszintes kitöltés|V"
 
-#: lib/ui/stdcontext.inc:199
+#: lib/ui/stdcontext.inc:200
 msgid "Protected Horizontal Fill|i"
 msgstr "Védett vízszintes kitöltés|i"
 
-#: lib/ui/stdcontext.inc:200
+#: lib/ui/stdcontext.inc:201
 msgid "Horizontal Fill (Dots)|D"
 msgstr "Vízszintes kitöltés (pontok)|p"
 
-#: lib/ui/stdcontext.inc:201
+#: lib/ui/stdcontext.inc:202
 msgid "Horizontal Fill (Rule)|R"
 msgstr "Vízszintes kitöltés (vonal)|o"
 
-#: lib/ui/stdcontext.inc:202
+#: lib/ui/stdcontext.inc:203
 msgid "Horizontal Fill (Left Arrow)|L"
 msgstr "Vízszintes kitöltés (balra nyíl)|z"
 
-#: lib/ui/stdcontext.inc:203
+#: lib/ui/stdcontext.inc:204
 msgid "Horizontal Fill (Right Arrow)|g"
 msgstr "Vízszintes kitöltés (jobbra nyíl)|j"
 
-#: lib/ui/stdcontext.inc:204
+#: lib/ui/stdcontext.inc:205
 msgid "Horizontal Fill (Up Brace)|p"
 msgstr "Vízszintes kitöltés (fel zárójel)|t"
 
-#: lib/ui/stdcontext.inc:205
+#: lib/ui/stdcontext.inc:206
 msgid "Horizontal Fill (Down Brace)|B"
 msgstr "Vízszintes kitöltés (le zárójel)|l"
 
-#: lib/ui/stdcontext.inc:206 lib/ui/stdcontext.inc:224
+#: lib/ui/stdcontext.inc:207 lib/ui/stdcontext.inc:225
 msgid "Custom Length|C"
 msgstr "Egyedi hossz|h"
 
-#: lib/ui/stdcontext.inc:216
+#: lib/ui/stdcontext.inc:217
 msgid "Medium Space|M"
 msgstr "Közepes köz|K"
 
-#: lib/ui/stdcontext.inc:217
+#: lib/ui/stdcontext.inc:218
 msgid "Thick Space|h"
 msgstr "Vastag köz|V"
 
-#: lib/ui/stdcontext.inc:219
+#: lib/ui/stdcontext.inc:220
 msgid "Negative Medium Space|u"
 msgstr "Negatív közepes köz|N"
 
-#: lib/ui/stdcontext.inc:220
+#: lib/ui/stdcontext.inc:221
 msgid "Negative Thick Space|i"
 msgstr "Negatív vékony köz|N"
 
-#: lib/ui/stdcontext.inc:233
+#: lib/ui/stdcontext.inc:234
 msgid "DefSkip|D"
 msgstr "Alap kihagyás|A"
 
-#: lib/ui/stdcontext.inc:234
+#: lib/ui/stdcontext.inc:235
 msgid "SmallSkip|S"
 msgstr "Kis kihagyás|s"
 
-#: lib/ui/stdcontext.inc:235
+#: lib/ui/stdcontext.inc:236
 msgid "MedSkip|M"
 msgstr "Közepes kihagyás|K"
 
-#: lib/ui/stdcontext.inc:236
+#: lib/ui/stdcontext.inc:237
 msgid "BigSkip|B"
 msgstr "Nagy kihagyás|N"
 
-#: lib/ui/stdcontext.inc:237
+#: lib/ui/stdcontext.inc:238
 msgid "VFill|F"
 msgstr "Függőleges kitöltés|F"
 
-#: lib/ui/stdcontext.inc:238
+#: lib/ui/stdcontext.inc:239
 msgid "Custom|C"
 msgstr "Egyéb|E"
 
-#: lib/ui/stdcontext.inc:240
+#: lib/ui/stdcontext.inc:241
 msgid "Settings...|e"
 msgstr "Beállítások...|B"
 
-#: lib/ui/stdcontext.inc:247
+#: lib/ui/stdcontext.inc:248
 msgid "Include|c"
 msgstr "Include|I"
 
-#: lib/ui/stdcontext.inc:248
+#: lib/ui/stdcontext.inc:249
 msgid "Input|p"
 msgstr "Input|p"
 
-#: lib/ui/stdcontext.inc:249
+#: lib/ui/stdcontext.inc:250
 msgid "Verbatim|V"
 msgstr "Verbatim|V"
 
-#: lib/ui/stdcontext.inc:250
+#: lib/ui/stdcontext.inc:251
 msgid "Verbatim (marked blanks)|b"
 msgstr "Verbatim (jelölt szünetek)|b"
 
-#: lib/ui/stdcontext.inc:251
+#: lib/ui/stdcontext.inc:252
 msgid "Listing|L"
 msgstr "Lista|L"
 
-#: lib/ui/stdcontext.inc:255
+#: lib/ui/stdcontext.inc:256
 #, fuzzy
 msgid "Edit Included File...|E"
 msgstr "Csatolt fájl szerkesztése...|C"
 
-#: lib/ui/stdcontext.inc:262 lib/ui/stdmenus.inc:388
+#: lib/ui/stdcontext.inc:263 lib/ui/stdmenus.inc:388
 msgid "New Page|N"
 msgstr "Új oldal|j"
 
-#: lib/ui/stdcontext.inc:263 lib/ui/stdmenus.inc:389
+#: lib/ui/stdcontext.inc:264 lib/ui/stdmenus.inc:389
 msgid "Page Break|a"
 msgstr "Oldaltörés|d"
 
-#: lib/ui/stdcontext.inc:264 lib/ui/stdmenus.inc:390
+#: lib/ui/stdcontext.inc:265 lib/ui/stdmenus.inc:390
 msgid "Clear Page|C"
 msgstr "Üres oldal|a"
 
-#: lib/ui/stdcontext.inc:265 lib/ui/stdmenus.inc:391
+#: lib/ui/stdcontext.inc:266 lib/ui/stdmenus.inc:391
 msgid "Clear Double Page|D"
 msgstr "Dupla üres oldal|u"
 
-#: lib/ui/stdcontext.inc:272 lib/ui/stdmenus.inc:385
+#: lib/ui/stdcontext.inc:273 lib/ui/stdmenus.inc:385
 msgid "Ragged Line Break|R"
 msgstr "Nyers sortörés|r"
 
-#: lib/ui/stdcontext.inc:273 lib/ui/stdmenus.inc:386
+#: lib/ui/stdcontext.inc:274 lib/ui/stdmenus.inc:386
 msgid "Justified Line Break|J"
 msgstr "Kiigazított sortörés|z"
 
-#: lib/ui/stdcontext.inc:280 lib/ui/stdcontext.inc:326 lib/ui/stdmenus.inc:97
-#: lib/ui/stdtoolbars.inc:78 src/Text3.cpp:1057
+#: lib/ui/stdcontext.inc:281 lib/ui/stdcontext.inc:327 lib/ui/stdmenus.inc:97
+#: lib/ui/stdtoolbars.inc:78 src/Text3.cpp:1083
 #: src/mathed/InsetMathNest.cpp:550
 msgid "Cut"
 msgstr "Kivágás"
 
-#: lib/ui/stdcontext.inc:281 lib/ui/stdcontext.inc:327 lib/ui/stdmenus.inc:98
-#: lib/ui/stdtoolbars.inc:79 src/Text3.cpp:1062
+#: lib/ui/stdcontext.inc:282 lib/ui/stdcontext.inc:328 lib/ui/stdmenus.inc:98
+#: lib/ui/stdtoolbars.inc:79 src/Text3.cpp:1088
 #: src/mathed/InsetMathNest.cpp:558
 msgid "Copy"
 msgstr "Másolás"
 
-#: lib/ui/stdcontext.inc:282 lib/ui/stdcontext.inc:328 lib/ui/stdmenus.inc:99
-#: lib/ui/stdtoolbars.inc:80 src/Text3.cpp:1015
+#: lib/ui/stdcontext.inc:283 lib/ui/stdcontext.inc:329 lib/ui/stdmenus.inc:99
+#: lib/ui/stdtoolbars.inc:80 src/Text3.cpp:1041
 #: src/mathed/InsetMathGrid.cpp:1256 src/mathed/InsetMathNest.cpp:530
 msgid "Paste"
 msgstr "Beillesztés"
 
-#: lib/ui/stdcontext.inc:283 lib/ui/stdcontext.inc:329 lib/ui/stdmenus.inc:100
+#: lib/ui/stdcontext.inc:284 lib/ui/stdcontext.inc:330 lib/ui/stdmenus.inc:100
 msgid "Paste Recent|e"
 msgstr "Utolsó beillesztések|o"
 
-#: lib/ui/stdcontext.inc:285
+#: lib/ui/stdcontext.inc:286
 msgid "Jump Back to Saved Bookmark|B"
 msgstr "Visszaugrás mentett könyvjelzőre|V"
 
-#: lib/ui/stdcontext.inc:287 lib/ui/stdmenus.inc:107
+#: lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:107
 msgid "Move Paragraph Up|o"
 msgstr "Bekezdés mozgatása fel|B"
 
-#: lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:108
+#: lib/ui/stdcontext.inc:289 lib/ui/stdmenus.inc:108
 msgid "Move Paragraph Down|v"
 msgstr "Bekezdés mozgatása le|l"
 
-#: lib/ui/stdcontext.inc:290
+#: lib/ui/stdcontext.inc:291
 msgid "Promote Section|r"
 msgstr "Szakasz előléptetése|S"
 
-#: lib/ui/stdcontext.inc:291
+#: lib/ui/stdcontext.inc:292
 msgid "Demote Section|m"
 msgstr "Szakasz visszaléptetése|v"
 
-#: lib/ui/stdcontext.inc:292
+#: lib/ui/stdcontext.inc:293
 #, fuzzy
 msgid "Move Section Down|D"
 msgstr "Szakasz mozgatása le|S"
 
-#: lib/ui/stdcontext.inc:293
+#: lib/ui/stdcontext.inc:294
 #, fuzzy
 msgid "Move Section Up|U"
 msgstr "Szakasz mozgatása fel|S"
 
-#: lib/ui/stdcontext.inc:294
+#: lib/ui/stdcontext.inc:295
 msgid "Insert Short Title|T"
 msgstr "Rövid cím beszúrása|d"
 
-#: lib/ui/stdcontext.inc:296
+#: lib/ui/stdcontext.inc:297
 msgid "Apply Last Text Style|A"
 msgstr "Utolsó szöveg stílus alkalmazása|U"
 
-#: lib/ui/stdcontext.inc:297 lib/ui/stdmenus.inc:110
+#: lib/ui/stdcontext.inc:298 lib/ui/stdmenus.inc:110
 msgid "Text Style|S"
 msgstr "Szöveg stílus|S"
 
-#: lib/ui/stdcontext.inc:298 lib/ui/stdmenus.inc:111
+#: lib/ui/stdcontext.inc:299 lib/ui/stdmenus.inc:111
 msgid "Paragraph Settings...|P"
 msgstr "Bekezdés beállításai...|e"
 
-#: lib/ui/stdcontext.inc:300
+#: lib/ui/stdcontext.inc:301
 msgid "Fullscreen Mode"
 msgstr "Teljesképernyő mód"
 
-#: lib/ui/stdcontext.inc:308 lib/ui/stdmenus.inc:226
+#: lib/ui/stdcontext.inc:309 lib/ui/stdmenus.inc:226
 msgid "Append Argument"
 msgstr "Paraméter hozzáfűzése"
 
-#: lib/ui/stdcontext.inc:309 lib/ui/stdmenus.inc:227
+#: lib/ui/stdcontext.inc:310 lib/ui/stdmenus.inc:227
 msgid "Remove Last Argument"
 msgstr "Utolsó paraméter eltávolítása"
 
-#: lib/ui/stdcontext.inc:311
+#: lib/ui/stdcontext.inc:312
 #, fuzzy
 msgid "Make First Non-Optional Into Optional Argument"
 msgstr "Az első nem opcionális paraméter legyen opcionális"
 
-#: lib/ui/stdcontext.inc:312
+#: lib/ui/stdcontext.inc:313
 #, fuzzy
 msgid "Make Last Optional Into Non-Optional Argument"
 msgstr "Az utolsó opcionális paraméter legyen nem opcionális"
 
-#: lib/ui/stdcontext.inc:313 lib/ui/stdmenus.inc:231
+#: lib/ui/stdcontext.inc:314 lib/ui/stdmenus.inc:231
 msgid "Insert Optional Argument"
 msgstr "Opcionális paraméter beszúrása"
 
-#: lib/ui/stdcontext.inc:314 lib/ui/stdmenus.inc:232
+#: lib/ui/stdcontext.inc:315 lib/ui/stdmenus.inc:232
 msgid "Remove Optional Argument"
 msgstr "Opcionális paraméter eltávolítása"
 
-#: lib/ui/stdcontext.inc:316 lib/ui/stdmenus.inc:234
+#: lib/ui/stdcontext.inc:317 lib/ui/stdmenus.inc:234
 #, fuzzy
 msgid "Append Argument Eating From the Right"
 msgstr "Paraméter hozzáfűzése jobbról táplálkozva"
 
-#: lib/ui/stdcontext.inc:317 lib/ui/stdmenus.inc:235
+#: lib/ui/stdcontext.inc:318 lib/ui/stdmenus.inc:235
 #, fuzzy
 msgid "Append Optional Argument Eating From the Right"
 msgstr "Opcionális paraméter hozzáfűzése jobbról táplálkozva"
 
-#: lib/ui/stdcontext.inc:318 lib/ui/stdmenus.inc:236
+#: lib/ui/stdcontext.inc:319 lib/ui/stdmenus.inc:236
 #, fuzzy
 msgid "Remove Last Argument Spitting Out to the Right"
 msgstr "Utolsó paraméter eltávolítása jobbról rakva azt"
 
-#: lib/ui/stdcontext.inc:345 lib/ui/stdcontext.inc:357
+#: lib/ui/stdcontext.inc:346 lib/ui/stdcontext.inc:358
 #, fuzzy
 msgid "Edit Externally...|x"
 msgstr "Szerkesztése külsőleg...|z"
 
-#: lib/ui/stdcontext.inc:367 lib/ui/stdmenus.inc:173
+#: lib/ui/stdcontext.inc:368 lib/ui/stdmenus.inc:173
 msgid "Top Line|T"
 msgstr "Felső vonal|e"
 
-#: lib/ui/stdcontext.inc:368 lib/ui/stdmenus.inc:174
+#: lib/ui/stdcontext.inc:369 lib/ui/stdmenus.inc:174
 msgid "Bottom Line|B"
 msgstr "Alsó vonal|A"
 
-#: lib/ui/stdcontext.inc:369 lib/ui/stdmenus.inc:175
+#: lib/ui/stdcontext.inc:370 lib/ui/stdmenus.inc:175
 msgid "Left Line|L"
 msgstr "Bal vonal|v"
 
-#: lib/ui/stdcontext.inc:370 lib/ui/stdmenus.inc:176
+#: lib/ui/stdcontext.inc:371 lib/ui/stdmenus.inc:176
 msgid "Right Line|R"
 msgstr "Jobb vonal|n"
 
-#: lib/ui/stdcontext.inc:382 lib/ui/stdmenus.inc:191
+#: lib/ui/stdcontext.inc:383 lib/ui/stdmenus.inc:191
 msgid "Copy Row|o"
 msgstr "Sor másolása|S"
 
-#: lib/ui/stdcontext.inc:387 lib/ui/stdmenus.inc:196
+#: lib/ui/stdcontext.inc:388 lib/ui/stdmenus.inc:196
 msgid "Copy Column|p"
 msgstr "Oszlop másolása|O"
 
@@ -15020,22 +15025,22 @@ msgstr "Egy karakter (szóközök nélkül)"
 msgid "Statistics"
 msgstr "Statisztika"
 
-#: src/BufferView.cpp:2145
+#: src/BufferView.cpp:2151
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Dokumentum beszúrása %1$s..."
 
-#: src/BufferView.cpp:2156
+#: src/BufferView.cpp:2162
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokumentum: %1$s beszúrása megtörtént."
 
-#: src/BufferView.cpp:2158
+#: src/BufferView.cpp:2164
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Nem tudom beszúrni a dokumentumot %1$s"
 
-#: src/BufferView.cpp:2420
+#: src/BufferView.cpp:2426
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15046,11 +15051,11 @@ msgstr ""
 "nem olvasható,\n"
 "%2$s hiba miatt"
 
-#: src/BufferView.cpp:2422
+#: src/BufferView.cpp:2428
 msgid "Could not read file"
 msgstr "A fájl nem olvasható"
 
-#: src/BufferView.cpp:2429
+#: src/BufferView.cpp:2435
 #, c-format
 msgid ""
 "%1$s\n"
@@ -15059,15 +15064,15 @@ msgstr ""
 "%1$s\n"
 " nem olvasható.."
 
-#: src/BufferView.cpp:2430 src/output.cpp:39
+#: src/BufferView.cpp:2436 src/output.cpp:39
 msgid "Could not open file"
 msgstr "A fájl nem nyitható meg"
 
-#: src/BufferView.cpp:2437
+#: src/BufferView.cpp:2443
 msgid "Reading not UTF-8 encoded file"
 msgstr "Nem UTF-8 kódolású fájl olvasása"
 
-#: src/BufferView.cpp:2438
+#: src/BufferView.cpp:2444
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -15482,7 +15487,7 @@ msgstr "A kimenet üres"
 msgid "An empty output file was generated."
 msgstr "Az eredmény fájl üres!"
 
-#: src/CutAndPaste.cpp:564
+#: src/CutAndPaste.cpp:566
 #, c-format
 msgid ""
 "Flex inset %1$s is undefined because of class conversion from\n"
@@ -15491,7 +15496,7 @@ msgstr ""
 "A %1$s flex betét ismeretlen, mert osztálykonverzió történt\n"
 "%2$s-ról %3$s-ra"
 
-#: src/CutAndPaste.cpp:571
+#: src/CutAndPaste.cpp:573
 msgid "Undefined flex inset"
 msgstr "Definiálatlan flex betét"
 
@@ -15730,7 +15735,7 @@ msgstr "MakeIndex futtatása nomencl-hez."
 msgid "Could not read configuration file"
 msgstr "Konfiguráció fájl nem olvasható"
 
-#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1473
+#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1477
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -16062,7 +16067,7 @@ msgstr "Mentett dokumentum visszaállítása?"
 msgid "&Revert"
 msgstr "&Visszatér"
 
-#: src/LyXFunc.cpp:1067 src/Text3.cpp:1567
+#: src/LyXFunc.cpp:1067 src/Text3.cpp:1593
 msgid "Missing argument"
 msgstr "Hiányzó paraméter"
 
@@ -16102,21 +16107,21 @@ msgstr "LyX VK: Napló üzenet"
 msgid "Directory is not accessible."
 msgstr "Könyvtár nem elérhető."
 
-#: src/LyXFunc.cpp:1855
+#: src/LyXFunc.cpp:1856
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "%1$s dokumentum újratöltve."
 
-#: src/LyXFunc.cpp:1857
+#: src/LyXFunc.cpp:1858
 #, c-format
 msgid "Could not reload document %1$s"
 msgstr "A(z) %1$s dokumentum nem olvasható"
 
-#: src/LyXFunc.cpp:1894
+#: src/LyXFunc.cpp:1895
 msgid "Welcome to LyX!"
 msgstr "Üdvözli a LyX!"
 
-#: src/LyXFunc.cpp:1915
+#: src/LyXFunc.cpp:1916
 msgid "Converting document to new document class..."
 msgstr "Dokumentum átalakítása másik dokumentumosztályra..."
 
@@ -16731,15 +16736,15 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Visszatérés a dokumentum korábbi tárolt változatához?"
 
-#: src/Paragraph.cpp:1585 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1594 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "Értelmetlen ezzel a formátummal!"
 
-#: src/Paragraph.cpp:1651
+#: src/Paragraph.cpp:1660
 msgid "Alignment not permitted"
 msgstr "Igazítás nincs engedlyezve"
 
-#: src/Paragraph.cpp:1652
+#: src/Paragraph.cpp:1661
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -16747,22 +16752,22 @@ msgstr ""
 "Az új formátumban nem engedélyezett az előző igazítás.\n"
 "Visszaállítva alapértékbe."
 
-#: src/Paragraph.cpp:2134 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2143 src/frontends/qt4/LaTeXHighlighter.cpp:108
 #: src/insets/InsetListings.cpp:185 src/insets/InsetListings.cpp:193
 #: src/insets/InsetListings.cpp:217 src/mathed/InsetMathString.cpp:165
 msgid "LyX Warning: "
 msgstr "LyX figyelmeztetés: "
 
-#: src/Paragraph.cpp:2135 src/insets/InsetListings.cpp:186
+#: src/Paragraph.cpp:2144 src/insets/InsetListings.cpp:186
 #: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:166
 msgid "uncodable character"
 msgstr "kódolhatatlan jel"
 
-#: src/Paragraph.cpp:2498
+#: src/Paragraph.cpp:2507
 msgid "Memory problem"
 msgstr "Memoria probléma"
 
-#: src/Paragraph.cpp:2498
+#: src/Paragraph.cpp:2507
 msgid "Paragraph not properly initialized"
 msgstr "Bekezdés nincs rendesen beállítva"
 
@@ -16873,7 +16878,7 @@ msgstr "Nincs mit a szójegyzékbe rakni!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Nem tudok szójegyzékbe rakni többet, mint egy bekezdés!"
 
-#: src/Text3.cpp:186 src/mathed/InsetMathHull.cpp:1484
+#: src/Text3.cpp:186 src/mathed/InsetMathHull.cpp:1506
 msgid "Math editor mode"
 msgstr "Képletszerkesztő mód"
 
@@ -16881,23 +16886,23 @@ msgstr "Képletszerkesztő mód"
 msgid "No valid math formula"
 msgstr "Nincs érvényes képlet formula"
 
-#: src/Text3.cpp:844
+#: src/Text3.cpp:870
 msgid "Unknown spacing argument: "
 msgstr "Ismeretlen térköz paraméter: "
 
-#: src/Text3.cpp:1122
+#: src/Text3.cpp:1148
 msgid "Layout "
 msgstr "Elrendezés "
 
-#: src/Text3.cpp:1123
+#: src/Text3.cpp:1149
 msgid " not known"
 msgstr " ismeretlen"
 
-#: src/Text3.cpp:1684 src/Text3.cpp:1696
+#: src/Text3.cpp:1710 src/Text3.cpp:1722
 msgid "Character set"
 msgstr "Betűkészlet"
 
-#: src/Text3.cpp:1844 src/Text3.cpp:1855
+#: src/Text3.cpp:1870 src/Text3.cpp:1881
 msgid "Paragraph layout set"
 msgstr "Bekezdés kinézetének beállítása"
 
@@ -17284,7 +17289,7 @@ msgstr ""
 "A LyX elkapott egy nagyon durva kivételt, meg fogja próbálni menteni a még "
 "mentetlen dokumentumokat és ki fog lépni."
 
-#: src/frontends/qt4/GuiApplication.cpp:1472
+#: src/frontends/qt4/GuiApplication.cpp:1476
 msgid "Could not find UI definition file"
 msgstr "Nem találom az UI definíciós fájlt"
 
@@ -20222,13 +20227,13 @@ msgstr "Védett vízszintes kitöltés (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Ismeretlen Tartalomjegyz. típus"
 
-#: src/insets/InsetTabular.cpp:3207
+#: src/insets/InsetTabular.cpp:3213
 msgid "Opened table"
 msgstr "Táblázat megnyitása"
 
-#: src/insets/InsetTabular.cpp:4009
-msgid "You cannot paste into a multicell selection."
-msgstr "Több cellás kijelölésbe nem lehet beilleszteni."
+#: src/insets/InsetTabular.cpp:4023
+msgid "Selection size should match clipboard content."
+msgstr ""
 
 #: src/insets/InsetText.cpp:227
 msgid "Opened Text Inset"
@@ -20395,7 +20400,7 @@ msgstr " szöveget cseréltem ki."
 msgid " Macro: %1$s: "
 msgstr " Makró: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1393
+#: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1414
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -20432,34 +20437,34 @@ msgstr "Nincs törlendő függőleges vonal"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Ismeretlen táblázat jellemző '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1189 src/mathed/InsetMathHull.cpp:1197
+#: src/mathed/InsetMathHull.cpp:1190 src/mathed/InsetMathHull.cpp:1198
 msgid "No number"
 msgstr "Nem szám"
 
-#: src/mathed/InsetMathHull.cpp:1189 src/mathed/InsetMathHull.cpp:1197
+#: src/mathed/InsetMathHull.cpp:1190 src/mathed/InsetMathHull.cpp:1198
 msgid "Number"
 msgstr "Szám"
 
-#: src/mathed/InsetMathHull.cpp:1366
+#: src/mathed/InsetMathHull.cpp:1387
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "A sorok száma itt: '%1$s' nem változtatható"
 
-#: src/mathed/InsetMathHull.cpp:1376
+#: src/mathed/InsetMathHull.cpp:1397
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Az oszlopok száma itt: '%1$s' nem változtatható"
 
-#: src/mathed/InsetMathHull.cpp:1386
+#: src/mathed/InsetMathHull.cpp:1407
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Nem tudok vízszintes rácsvonalat adni '%1$s'-hoz"
 
-#: src/mathed/InsetMathNest.cpp:969
+#: src/mathed/InsetMathNest.cpp:964
 msgid "create new math text environment ($...$)"
 msgstr "Új képlet környezet létrehozása ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:972
+#: src/mathed/InsetMathNest.cpp:967
 msgid "entered math text mode (textrm)"
 msgstr "képlet módba lépés (textrm)"
 
@@ -20664,6 +20669,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Ismeretlen felhasználó"
+
+#~ msgid "You cannot paste into a multicell selection."
+#~ msgstr "Több cellás kijelölésbe nem lehet beilleszteni."
 
 #, fuzzy
 #~ msgid "Check in Changes...|I"

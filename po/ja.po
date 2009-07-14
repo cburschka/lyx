@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-07-11 22:41+0900\n"
+"POT-Creation-Date: 2009-07-14 18:28+0200\n"
 "PO-Revision-Date: 2009-07-11 23:57+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-doc@lists.lyx.org>\n"
@@ -1972,7 +1972,8 @@ msgid "&General"
 msgstr "一般(&G)"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:99
-msgid "If not stated explicitly, fill title and author from appropriate environments"
+msgid ""
+"If not stated explicitly, fill title and author from appropriate environments"
 msgstr "明示的に指定しなければ、タイトルと著者を適当な環境から補完します"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:102
@@ -2249,7 +2250,8 @@ msgstr "一般"
 msgid ""
 "After the cursor has not moved for this time, the inline completion is shown "
 "if it is available."
-msgstr "これだけの時間カーソルを動かさなかったとき、可能ならば補完入力を表示します。"
+msgstr ""
+"これだけの時間カーソルを動かさなかったとき、可能ならば補完入力を表示します。"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:147
 msgid "s inline completion dela&y"
@@ -2271,7 +2273,8 @@ msgstr "秒のポップアップ遅延(&E)"
 msgid ""
 "When the TAB completion is not unique, there won't be a delay of the popup. "
 "It will be shown right away."
-msgstr "タブ補完に複数候補がある場合、ポップアップに遅延を置かず、直ちに表示する。"
+msgstr ""
+"タブ補完に複数候補がある場合、ポップアップに遅延を置かず、直ちに表示する。"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:221
 msgid "Sho&w popup without delay for non-unique completions"
@@ -2596,7 +2599,8 @@ msgid "Right-to-left language support"
 msgstr "右から左書きの言語をサポート"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:203 src/LyXRC.cpp:2796
-msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid ""
+"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "右から左へ書く言語（ヘブライ語，アラビア語など）をサポートするときに選択して"
 "ください。"
@@ -3667,7 +3671,8 @@ msgid "Rebuild the file lists"
 msgstr "ファイル一覧を再構築する"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:104
-msgid "Show contents of marked file. Only possible when files are shown with path"
+msgid ""
+"Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "選択したフィルの中身を表示する。ファイルのパスが表示されている時のみ有効であ"
 "る。"
@@ -3811,7 +3816,8 @@ msgstr "選択した項目を1つ上げる"
 
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:44
 msgid "If you check this, LyX will not warn you again in the given case."
-msgstr "これを有効にすると、LyXは当該ケースについて今後警告することはなくなります。"
+msgstr ""
+"これを有効にすると、LyXは当該ケースについて今後警告することはなくなります。"
 
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:47
 msgid "&Do not show this warning again!"
@@ -9606,7 +9612,7 @@ msgstr "選択部を行として(L)|L"
 msgid "Selection as Paragraphs|P"
 msgstr "選択部を段落として(P)|P"
 
-#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:365 lib/ui/stdmenus.inc:171
+#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:366 lib/ui/stdmenus.inc:171
 msgid "Multicolumn|M"
 msgstr "連結列(M)|M"
 
@@ -9630,7 +9636,7 @@ msgstr "右列(R)|R"
 msgid "Alignment|i"
 msgstr "配置(I)|I"
 
-#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:380 lib/ui/stdmenus.inc:189
+#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:381 lib/ui/stdmenus.inc:189
 msgid "Add Row|A"
 msgstr "行を追加(A)|A"
 
@@ -9646,7 +9652,7 @@ msgstr "行をコピー"
 msgid "Swap Rows"
 msgstr "行を交換"
 
-#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:385 lib/ui/stdmenus.inc:194
+#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:386 lib/ui/stdmenus.inc:194
 msgid "Add Column|u"
 msgstr "列を追加(U)|U"
 
@@ -9662,27 +9668,27 @@ msgstr "列をコピー"
 msgid "Swap Columns"
 msgstr "列を交換"
 
-#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:372 lib/ui/stdmenus.inc:181
+#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:373 lib/ui/stdmenus.inc:181
 msgid "Left|L"
 msgstr "左(L)|L"
 
-#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:373 lib/ui/stdmenus.inc:182
+#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:374 lib/ui/stdmenus.inc:182
 msgid "Center|C"
 msgstr "中央(C)|C"
 
-#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:374 lib/ui/stdmenus.inc:183
+#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:375 lib/ui/stdmenus.inc:183
 msgid "Right|R"
 msgstr "右(R)|R"
 
-#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:376 lib/ui/stdmenus.inc:185
+#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:377 lib/ui/stdmenus.inc:185
 msgid "Top|T"
 msgstr "上(T)|T"
 
-#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:377 lib/ui/stdmenus.inc:186
+#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:378 lib/ui/stdmenus.inc:186
 msgid "Middle|M"
 msgstr "中央(M)|M"
 
-#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:378 lib/ui/stdmenus.inc:187
+#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:379 lib/ui/stdmenus.inc:187
 msgid "Bottom|B"
 msgstr "下(B)|B"
 
@@ -9714,7 +9720,7 @@ msgstr "配置(A)|A"
 msgid "Add Row|R"
 msgstr "行を追加(R)|R"
 
-#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:381 lib/ui/stdmenus.inc:190
+#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:382 lib/ui/stdmenus.inc:190
 msgid "Delete Row|D"
 msgstr "行を削除(D)|D"
 
@@ -9722,7 +9728,7 @@ msgstr "行を削除(D)|D"
 msgid "Add Column|C"
 msgstr "列を追加(C)|C"
 
-#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:386 lib/ui/stdmenus.inc:195
+#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:387 lib/ui/stdmenus.inc:195
 msgid "Delete Column|e"
 msgstr "列を削除(E)|E"
 
@@ -9915,7 +9921,7 @@ msgstr "保護された空白(R)|R"
 msgid "Inter-word Space|w"
 msgstr "単語間の空白(W)|W"
 
-#: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:192 lib/ui/stdcontext.inc:215
+#: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:193 lib/ui/stdcontext.inc:216
 #: lib/ui/stdmenus.inc:378
 msgid "Thin Space|T"
 msgstr "小空白(T)|T"
@@ -10322,480 +10328,485 @@ msgstr "AMS環境|A"
 msgid "Equation Label|L"
 msgstr "数式ラベル(L)|L"
 
-#: lib/ui/stdcontext.inc:55 lib/ui/stdmenus.inc:201
+#: lib/ui/stdcontext.inc:55
+#, fuzzy
+msgid "Copy as Reference|R"
+msgstr "参照としてコピー(C)|C"
+
+#: lib/ui/stdcontext.inc:56 lib/ui/stdmenus.inc:201
 msgid "Number Whole Formula|N"
 msgstr "数式全体を付番(N)|N"
 
-#: lib/ui/stdcontext.inc:56 lib/ui/stdmenus.inc:202
+#: lib/ui/stdcontext.inc:57 lib/ui/stdmenus.inc:202
 msgid "Number This Line|u"
 msgstr "現在行を付番(U)|U"
 
-#: lib/ui/stdcontext.inc:58 lib/ui/stdmenus.inc:212
+#: lib/ui/stdcontext.inc:59 lib/ui/stdmenus.inc:212
 msgid "Split Cell|C"
 msgstr "セルを分割(C)|C"
 
-#: lib/ui/stdcontext.inc:60
+#: lib/ui/stdcontext.inc:61
 msgid "Insert|n"
 msgstr "挿入(N)|N"
 
-#: lib/ui/stdcontext.inc:62
+#: lib/ui/stdcontext.inc:63
 msgid "Add Line Above|o"
 msgstr "上に行を追加(O)|O"
 
-#: lib/ui/stdcontext.inc:63 lib/ui/stdmenus.inc:215
+#: lib/ui/stdcontext.inc:64 lib/ui/stdmenus.inc:215
 msgid "Add Line Below|B"
 msgstr "下に行を追加(B)|B"
 
-#: lib/ui/stdcontext.inc:64 lib/ui/stdmenus.inc:216
+#: lib/ui/stdcontext.inc:65 lib/ui/stdmenus.inc:216
 msgid "Delete Line Above|D"
 msgstr "上の罫線を削除(D)|D"
 
-#: lib/ui/stdcontext.inc:65 lib/ui/stdmenus.inc:217
+#: lib/ui/stdcontext.inc:66 lib/ui/stdmenus.inc:217
 msgid "Delete Line Below|e"
 msgstr "下の罫線を削除(E)|E"
 
-#: lib/ui/stdcontext.inc:67 lib/ui/stdmenus.inc:219
+#: lib/ui/stdcontext.inc:68 lib/ui/stdmenus.inc:219
 msgid "Add Line to Left"
 msgstr "左に罫線を追加"
 
-#: lib/ui/stdcontext.inc:68 lib/ui/stdmenus.inc:220
+#: lib/ui/stdcontext.inc:69 lib/ui/stdmenus.inc:220
 msgid "Add Line to Right"
 msgstr "右に罫線を追加"
 
-#: lib/ui/stdcontext.inc:69 lib/ui/stdmenus.inc:221
+#: lib/ui/stdcontext.inc:70 lib/ui/stdmenus.inc:221
 msgid "Delete Line to Left"
 msgstr "左の罫線を削除"
 
-#: lib/ui/stdcontext.inc:70 lib/ui/stdmenus.inc:222
+#: lib/ui/stdcontext.inc:71 lib/ui/stdmenus.inc:222
 msgid "Delete Line to Right"
 msgstr "右の罫線を削除"
 
-#: lib/ui/stdcontext.inc:72
+#: lib/ui/stdcontext.inc:73
 msgid "Show Math Toolbar"
 msgstr "数式ツールバーを表示"
 
-#: lib/ui/stdcontext.inc:73
+#: lib/ui/stdcontext.inc:74
 msgid "Show Math-Panels Toolbar"
 msgstr "数式パネルツールバーを表示"
 
-#: lib/ui/stdcontext.inc:74
+#: lib/ui/stdcontext.inc:75
 msgid "Show Table Toolbar"
 msgstr "表ツールバーを表示"
 
-#: lib/ui/stdcontext.inc:82 lib/ui/stdcontext.inc:99
+#: lib/ui/stdcontext.inc:83 lib/ui/stdcontext.inc:100
 msgid "Next Cross-Reference|N"
 msgstr "次の相互参照(N)|N"
 
-#: lib/ui/stdcontext.inc:83
+#: lib/ui/stdcontext.inc:84
 msgid "Go to Label|G"
 msgstr "ラベルへ移動(G)|G"
 
-#: lib/ui/stdcontext.inc:85
+#: lib/ui/stdcontext.inc:86
 msgid "<Reference>|R"
 msgstr "<参照(R)>|R"
 
-#: lib/ui/stdcontext.inc:86
+#: lib/ui/stdcontext.inc:87
 msgid "(<Reference>)|E"
 msgstr "(<参照(E)>)|E"
 
-#: lib/ui/stdcontext.inc:87
+#: lib/ui/stdcontext.inc:88
 msgid "<Page>|P"
 msgstr "<ページ(P)>|P"
 
-#: lib/ui/stdcontext.inc:88
+#: lib/ui/stdcontext.inc:89
 msgid "On Page <Page>|o"
 msgstr "On page <ページ>|O"
 
-#: lib/ui/stdcontext.inc:89
+#: lib/ui/stdcontext.inc:90
 msgid "<Reference> on Page <Page>|f"
 msgstr "<参照(F)> on page <ページ>|F"
 
-#: lib/ui/stdcontext.inc:90
+#: lib/ui/stdcontext.inc:91
 msgid "Formatted Reference|t"
 msgstr "整形済み参照(T)|T"
 
-#: lib/ui/stdcontext.inc:92 lib/ui/stdcontext.inc:104
-#: lib/ui/stdcontext.inc:114 lib/ui/stdcontext.inc:122
-#: lib/ui/stdcontext.inc:136 lib/ui/stdcontext.inc:143
-#: lib/ui/stdcontext.inc:164 lib/ui/stdcontext.inc:208
-#: lib/ui/stdcontext.inc:226 lib/ui/stdcontext.inc:253
-#: lib/ui/stdcontext.inc:335 lib/ui/stdcontext.inc:343
-#: lib/ui/stdcontext.inc:355 lib/ui/stdcontext.inc:390
-#: lib/ui/stdcontext.inc:399 lib/ui/stdmenus.inc:468
+#: lib/ui/stdcontext.inc:93 lib/ui/stdcontext.inc:105
+#: lib/ui/stdcontext.inc:115 lib/ui/stdcontext.inc:123
+#: lib/ui/stdcontext.inc:137 lib/ui/stdcontext.inc:144
+#: lib/ui/stdcontext.inc:165 lib/ui/stdcontext.inc:209
+#: lib/ui/stdcontext.inc:227 lib/ui/stdcontext.inc:254
+#: lib/ui/stdcontext.inc:336 lib/ui/stdcontext.inc:344
+#: lib/ui/stdcontext.inc:356 lib/ui/stdcontext.inc:391
+#: lib/ui/stdcontext.inc:400 lib/ui/stdmenus.inc:468
 msgid "Settings...|S"
 msgstr "設定(S)...|S"
 
-#: lib/ui/stdcontext.inc:100
+#: lib/ui/stdcontext.inc:101
 msgid "Go Back|G"
 msgstr "戻る(G)|G"
 
-#: lib/ui/stdcontext.inc:102
+#: lib/ui/stdcontext.inc:103
 msgid "Copy as Reference|C"
 msgstr "参照としてコピー(C)|C"
 
-#: lib/ui/stdcontext.inc:124
+#: lib/ui/stdcontext.inc:125
 msgid "Edit Database(s) Externally...|x"
 msgstr "データベースを外部で編集(X)...|X"
 
-#: lib/ui/stdcontext.inc:132 lib/ui/stdcontext.inc:160
-#: lib/ui/stdcontext.inc:176 lib/ui/stdcontext.inc:331
+#: lib/ui/stdcontext.inc:133 lib/ui/stdcontext.inc:161
+#: lib/ui/stdcontext.inc:177 lib/ui/stdcontext.inc:332
 msgid "Open Inset|O"
 msgstr "差込枠を展開(O)|O"
 
-#: lib/ui/stdcontext.inc:133 lib/ui/stdcontext.inc:161
-#: lib/ui/stdcontext.inc:177 lib/ui/stdcontext.inc:332
+#: lib/ui/stdcontext.inc:134 lib/ui/stdcontext.inc:162
+#: lib/ui/stdcontext.inc:178 lib/ui/stdcontext.inc:333
 msgid "Close Inset|C"
 msgstr "差込枠を閉じる(C)|C"
 
-#: lib/ui/stdcontext.inc:135 lib/ui/stdcontext.inc:141
-#: lib/ui/stdcontext.inc:163 lib/ui/stdcontext.inc:182
-#: lib/ui/stdcontext.inc:334
+#: lib/ui/stdcontext.inc:136 lib/ui/stdcontext.inc:142
+#: lib/ui/stdcontext.inc:164 lib/ui/stdcontext.inc:183
+#: lib/ui/stdcontext.inc:335
 msgid "Dissolve Inset|D"
 msgstr "差込枠を解体する(D)|D"
 
-#: lib/ui/stdcontext.inc:140
+#: lib/ui/stdcontext.inc:141
 msgid "Show Label|L"
 msgstr "ラベルを表示(L)|L"
 
-#: lib/ui/stdcontext.inc:151
+#: lib/ui/stdcontext.inc:152
 msgid "Frameless|l"
 msgstr "縁なし(L)|L"
 
-#: lib/ui/stdcontext.inc:152
+#: lib/ui/stdcontext.inc:153
 msgid "Simple Frame|F"
 msgstr "簡素な枠(F)|F"
 
-#: lib/ui/stdcontext.inc:153
+#: lib/ui/stdcontext.inc:154
 msgid "Simple Frame, Page Breaks|P"
 msgstr "簡素な枠・改頁(P)|P"
 
-#: lib/ui/stdcontext.inc:154
+#: lib/ui/stdcontext.inc:155
 msgid "Oval, Thin|a"
 msgstr "楕円形（細線）(A)|A"
 
-#: lib/ui/stdcontext.inc:155
+#: lib/ui/stdcontext.inc:156
 msgid "Oval, Thick|v"
 msgstr "楕円形（太線）(V)|V"
 
-#: lib/ui/stdcontext.inc:156
+#: lib/ui/stdcontext.inc:157
 msgid "Drop Shadow|w"
 msgstr "影付き(W)|W"
 
-#: lib/ui/stdcontext.inc:157
+#: lib/ui/stdcontext.inc:158
 msgid "Shaded Background|B"
 msgstr "影付き背景(B)|B"
 
-#: lib/ui/stdcontext.inc:158
+#: lib/ui/stdcontext.inc:159
 msgid "Double Frame|u"
 msgstr "二重枠(U)|U"
 
-#: lib/ui/stdcontext.inc:172 lib/ui/stdmenus.inc:442
+#: lib/ui/stdcontext.inc:173 lib/ui/stdmenus.inc:442
 msgid "LyX Note|N"
 msgstr "LyX注釈(N)|N"
 
-#: lib/ui/stdcontext.inc:173
+#: lib/ui/stdcontext.inc:174
 msgid "Comment|m"
 msgstr "コメント(M)|M"
 
-#: lib/ui/stdcontext.inc:174 lib/ui/stdmenus.inc:444
+#: lib/ui/stdcontext.inc:175 lib/ui/stdmenus.inc:444
 msgid "Greyed Out|G"
 msgstr "淡色表示(G)|G"
 
-#: lib/ui/stdcontext.inc:179
+#: lib/ui/stdcontext.inc:180
 msgid "Open All Notes|A"
 msgstr "全ての注釈を展開(A)|A"
 
-#: lib/ui/stdcontext.inc:180
+#: lib/ui/stdcontext.inc:181
 msgid "Close All Notes|l"
 msgstr "全ての注釈を閉じる(L)|L"
 
-#: lib/ui/stdcontext.inc:190
+#: lib/ui/stdcontext.inc:191
 msgid "Interword Space|w"
 msgstr "単語間の空白(W)|W"
 
-#: lib/ui/stdcontext.inc:191
+#: lib/ui/stdcontext.inc:192
 msgid "Protected Space|o"
 msgstr "保護された空白(O)|O"
 
-#: lib/ui/stdcontext.inc:193 lib/ui/stdcontext.inc:218
+#: lib/ui/stdcontext.inc:194 lib/ui/stdcontext.inc:219
 msgid "Negative Thin Space|N"
 msgstr "負の空白(N)|N"
 
-#: lib/ui/stdcontext.inc:194 lib/ui/stdcontext.inc:221
+#: lib/ui/stdcontext.inc:195 lib/ui/stdcontext.inc:222
 msgid "Half Quad Space (Enskip)|k"
 msgstr "8分の1空白(nスキップ)(K)|K"
 
-#: lib/ui/stdcontext.inc:195
+#: lib/ui/stdcontext.inc:196
 msgid "Protected Half Quad Space (Enspace)|E"
 msgstr "保護された8分の1空白(nスキップ)(E)|E"
 
-#: lib/ui/stdcontext.inc:196 lib/ui/stdcontext.inc:222
+#: lib/ui/stdcontext.inc:197 lib/ui/stdcontext.inc:223
 msgid "Quad Space|Q"
 msgstr "4分の1空白(Q)|Q"
 
-#: lib/ui/stdcontext.inc:197 lib/ui/stdcontext.inc:223
+#: lib/ui/stdcontext.inc:198 lib/ui/stdcontext.inc:224
 msgid "Double Quad Space|u"
 msgstr "2分の1空白(U)|U"
 
-#: lib/ui/stdcontext.inc:198
+#: lib/ui/stdcontext.inc:199
 msgid "Horizontal Fill|F"
 msgstr "水平フィル(F)|F"
 
-#: lib/ui/stdcontext.inc:199
+#: lib/ui/stdcontext.inc:200
 msgid "Protected Horizontal Fill|i"
 msgstr "保護された水平フィル(I)|I"
 
-#: lib/ui/stdcontext.inc:200
+#: lib/ui/stdcontext.inc:201
 msgid "Horizontal Fill (Dots)|D"
 msgstr "水平フィル（ドット）(D)|D"
 
-#: lib/ui/stdcontext.inc:201
+#: lib/ui/stdcontext.inc:202
 msgid "Horizontal Fill (Rule)|R"
 msgstr "水平フィル（ルール）(R)|R"
 
-#: lib/ui/stdcontext.inc:202
+#: lib/ui/stdcontext.inc:203
 msgid "Horizontal Fill (Left Arrow)|L"
 msgstr "水平フィル（左矢印）(L)|L"
 
-#: lib/ui/stdcontext.inc:203
+#: lib/ui/stdcontext.inc:204
 msgid "Horizontal Fill (Right Arrow)|g"
 msgstr "水平フィル（右矢印）(G)|G"
 
-#: lib/ui/stdcontext.inc:204
+#: lib/ui/stdcontext.inc:205
 msgid "Horizontal Fill (Up Brace)|p"
 msgstr "水平フィル（上中括弧）(P)|P"
 
-#: lib/ui/stdcontext.inc:205
+#: lib/ui/stdcontext.inc:206
 msgid "Horizontal Fill (Down Brace)|B"
 msgstr "水平フィル（下中括弧）(B)|B"
 
-#: lib/ui/stdcontext.inc:206 lib/ui/stdcontext.inc:224
+#: lib/ui/stdcontext.inc:207 lib/ui/stdcontext.inc:225
 msgid "Custom Length|C"
 msgstr "長さを設定(C)|C"
 
-#: lib/ui/stdcontext.inc:216
+#: lib/ui/stdcontext.inc:217
 msgid "Medium Space|M"
 msgstr "中空白(M)|M"
 
-#: lib/ui/stdcontext.inc:217
+#: lib/ui/stdcontext.inc:218
 msgid "Thick Space|h"
 msgstr "大空白(H)|H"
 
-#: lib/ui/stdcontext.inc:219
+#: lib/ui/stdcontext.inc:220
 msgid "Negative Medium Space|u"
 msgstr "負の中空白(U)|U"
 
-#: lib/ui/stdcontext.inc:220
+#: lib/ui/stdcontext.inc:221
 msgid "Negative Thick Space|i"
 msgstr "負の大空白(I)|I"
 
-#: lib/ui/stdcontext.inc:233
+#: lib/ui/stdcontext.inc:234
 msgid "DefSkip|D"
 msgstr "任意のスキップ(D)|D"
 
-#: lib/ui/stdcontext.inc:234
+#: lib/ui/stdcontext.inc:235
 msgid "SmallSkip|S"
 msgstr "小スキップ(S)|S"
 
-#: lib/ui/stdcontext.inc:235
+#: lib/ui/stdcontext.inc:236
 msgid "MedSkip|M"
 msgstr "中スキップ(M)|M"
 
-#: lib/ui/stdcontext.inc:236
+#: lib/ui/stdcontext.inc:237
 msgid "BigSkip|B"
 msgstr "大スキップ(B)|B"
 
-#: lib/ui/stdcontext.inc:237
+#: lib/ui/stdcontext.inc:238
 msgid "VFill|F"
 msgstr "垂直フィル(F)|F"
 
-#: lib/ui/stdcontext.inc:238
+#: lib/ui/stdcontext.inc:239
 msgid "Custom|C"
 msgstr "任意設定(C)|C"
 
-#: lib/ui/stdcontext.inc:240
+#: lib/ui/stdcontext.inc:241
 msgid "Settings...|e"
 msgstr "設定(E)...|E"
 
-#: lib/ui/stdcontext.inc:247
+#: lib/ui/stdcontext.inc:248
 msgid "Include|c"
 msgstr "Include|c"
 
-#: lib/ui/stdcontext.inc:248
+#: lib/ui/stdcontext.inc:249
 msgid "Input|p"
 msgstr "Input|p"
 
-#: lib/ui/stdcontext.inc:249
+#: lib/ui/stdcontext.inc:250
 msgid "Verbatim|V"
 msgstr "Verbatim|V"
 
-#: lib/ui/stdcontext.inc:250
+#: lib/ui/stdcontext.inc:251
 msgid "Verbatim (marked blanks)|b"
 msgstr "Verbatim (marked blanks)|b"
 
-#: lib/ui/stdcontext.inc:251
+#: lib/ui/stdcontext.inc:252
 msgid "Listing|L"
 msgstr "リスト(L)|L"
 
-#: lib/ui/stdcontext.inc:255
+#: lib/ui/stdcontext.inc:256
 msgid "Edit Included File...|E"
 msgstr "インクルードしたファイルを編集(E)...|E"
 
-#: lib/ui/stdcontext.inc:262 lib/ui/stdmenus.inc:388
+#: lib/ui/stdcontext.inc:263 lib/ui/stdmenus.inc:388
 msgid "New Page|N"
 msgstr "新規頁(N)|N"
 
-#: lib/ui/stdcontext.inc:263 lib/ui/stdmenus.inc:389
+#: lib/ui/stdcontext.inc:264 lib/ui/stdmenus.inc:389
 msgid "Page Break|a"
 msgstr "改頁(A)|A"
 
-#: lib/ui/stdcontext.inc:264 lib/ui/stdmenus.inc:390
+#: lib/ui/stdcontext.inc:265 lib/ui/stdmenus.inc:390
 msgid "Clear Page|C"
 msgstr "改段改頁(C)|C"
 
-#: lib/ui/stdcontext.inc:265 lib/ui/stdmenus.inc:391
+#: lib/ui/stdcontext.inc:266 lib/ui/stdmenus.inc:391
 msgid "Clear Double Page|D"
 msgstr "改段改丁(D)|D"
 
-#: lib/ui/stdcontext.inc:272 lib/ui/stdmenus.inc:385
+#: lib/ui/stdcontext.inc:273 lib/ui/stdmenus.inc:385
 msgid "Ragged Line Break|R"
 msgstr "整形なし改行(R)|R"
 
-#: lib/ui/stdcontext.inc:273 lib/ui/stdmenus.inc:386
+#: lib/ui/stdcontext.inc:274 lib/ui/stdmenus.inc:386
 msgid "Justified Line Break|J"
 msgstr "両端揃え改行(J)|J"
 
-#: lib/ui/stdcontext.inc:280 lib/ui/stdcontext.inc:326 lib/ui/stdmenus.inc:97
-#: lib/ui/stdtoolbars.inc:78 src/Text3.cpp:1057
+#: lib/ui/stdcontext.inc:281 lib/ui/stdcontext.inc:327 lib/ui/stdmenus.inc:97
+#: lib/ui/stdtoolbars.inc:78 src/Text3.cpp:1083
 #: src/mathed/InsetMathNest.cpp:550
 msgid "Cut"
 msgstr "切り取り"
 
-#: lib/ui/stdcontext.inc:281 lib/ui/stdcontext.inc:327 lib/ui/stdmenus.inc:98
-#: lib/ui/stdtoolbars.inc:79 src/Text3.cpp:1062
+#: lib/ui/stdcontext.inc:282 lib/ui/stdcontext.inc:328 lib/ui/stdmenus.inc:98
+#: lib/ui/stdtoolbars.inc:79 src/Text3.cpp:1088
 #: src/mathed/InsetMathNest.cpp:558
 msgid "Copy"
 msgstr "コピー"
 
-#: lib/ui/stdcontext.inc:282 lib/ui/stdcontext.inc:328 lib/ui/stdmenus.inc:99
-#: lib/ui/stdtoolbars.inc:80 src/Text3.cpp:1015
+#: lib/ui/stdcontext.inc:283 lib/ui/stdcontext.inc:329 lib/ui/stdmenus.inc:99
+#: lib/ui/stdtoolbars.inc:80 src/Text3.cpp:1041
 #: src/mathed/InsetMathGrid.cpp:1256 src/mathed/InsetMathNest.cpp:530
 msgid "Paste"
 msgstr "貼り付け"
 
-#: lib/ui/stdcontext.inc:283 lib/ui/stdcontext.inc:329 lib/ui/stdmenus.inc:100
+#: lib/ui/stdcontext.inc:284 lib/ui/stdcontext.inc:330 lib/ui/stdmenus.inc:100
 msgid "Paste Recent|e"
 msgstr "直近のものを貼り付け(E)|E"
 
-#: lib/ui/stdcontext.inc:285
+#: lib/ui/stdcontext.inc:286
 msgid "Jump Back to Saved Bookmark|B"
 msgstr "保存したしおりへ移動(B)|B"
 
-#: lib/ui/stdcontext.inc:287 lib/ui/stdmenus.inc:107
+#: lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:107
 msgid "Move Paragraph Up|o"
 msgstr "段落を上へ移動(O)|O"
 
-#: lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:108
+#: lib/ui/stdcontext.inc:289 lib/ui/stdmenus.inc:108
 msgid "Move Paragraph Down|v"
 msgstr "段落を下へ移動(V)|V"
 
-#: lib/ui/stdcontext.inc:290
+#: lib/ui/stdcontext.inc:291
 msgid "Promote Section|r"
 msgstr "節の階層を上げる(R)|R"
 
-#: lib/ui/stdcontext.inc:291
+#: lib/ui/stdcontext.inc:292
 msgid "Demote Section|m"
 msgstr "節の階層を下げる(M)|M"
 
-#: lib/ui/stdcontext.inc:292
+#: lib/ui/stdcontext.inc:293
 msgid "Move Section Down|D"
 msgstr "節を下げる(D)|D"
 
-#: lib/ui/stdcontext.inc:293
+#: lib/ui/stdcontext.inc:294
 msgid "Move Section Up|U"
 msgstr "節を上げる(U)|U"
 
-#: lib/ui/stdcontext.inc:294
+#: lib/ui/stdcontext.inc:295
 msgid "Insert Short Title|T"
 msgstr "短縮タイトルを挿入(T)|T"
 
-#: lib/ui/stdcontext.inc:296
+#: lib/ui/stdcontext.inc:297
 msgid "Apply Last Text Style|A"
 msgstr "最後の文字様式を適用する(A)|A"
 
-#: lib/ui/stdcontext.inc:297 lib/ui/stdmenus.inc:110
+#: lib/ui/stdcontext.inc:298 lib/ui/stdmenus.inc:110
 msgid "Text Style|S"
 msgstr "文字様式(S)|S"
 
-#: lib/ui/stdcontext.inc:298 lib/ui/stdmenus.inc:111
+#: lib/ui/stdcontext.inc:299 lib/ui/stdmenus.inc:111
 msgid "Paragraph Settings...|P"
 msgstr "段落設定(P)...|P"
 
-#: lib/ui/stdcontext.inc:300
+#: lib/ui/stdcontext.inc:301
 msgid "Fullscreen Mode"
 msgstr "全画面表示"
 
-#: lib/ui/stdcontext.inc:308 lib/ui/stdmenus.inc:226
+#: lib/ui/stdcontext.inc:309 lib/ui/stdmenus.inc:226
 msgid "Append Argument"
 msgstr "引数を追加"
 
-#: lib/ui/stdcontext.inc:309 lib/ui/stdmenus.inc:227
+#: lib/ui/stdcontext.inc:310 lib/ui/stdmenus.inc:227
 msgid "Remove Last Argument"
 msgstr "最後の引数を削除"
 
-#: lib/ui/stdcontext.inc:311
+#: lib/ui/stdcontext.inc:312
 msgid "Make First Non-Optional Into Optional Argument"
 msgstr "最初の必須引数を非必須引数にする"
 
-#: lib/ui/stdcontext.inc:312
+#: lib/ui/stdcontext.inc:313
 msgid "Make Last Optional Into Non-Optional Argument"
 msgstr "最後の非必須引数を必須引数にする"
 
-#: lib/ui/stdcontext.inc:313 lib/ui/stdmenus.inc:231
+#: lib/ui/stdcontext.inc:314 lib/ui/stdmenus.inc:231
 msgid "Insert Optional Argument"
 msgstr "非必須引数を挿入"
 
-#: lib/ui/stdcontext.inc:314 lib/ui/stdmenus.inc:232
+#: lib/ui/stdcontext.inc:315 lib/ui/stdmenus.inc:232
 msgid "Remove Optional Argument"
 msgstr "非必須引数を削除"
 
-#: lib/ui/stdcontext.inc:316 lib/ui/stdmenus.inc:234
+#: lib/ui/stdcontext.inc:317 lib/ui/stdmenus.inc:234
 msgid "Append Argument Eating From the Right"
 msgstr "右から喰う形で引数を追加"
 
-#: lib/ui/stdcontext.inc:317 lib/ui/stdmenus.inc:235
+#: lib/ui/stdcontext.inc:318 lib/ui/stdmenus.inc:235
 msgid "Append Optional Argument Eating From the Right"
 msgstr "右から喰う形で非必須引数を追加"
 
-#: lib/ui/stdcontext.inc:318 lib/ui/stdmenus.inc:236
+#: lib/ui/stdcontext.inc:319 lib/ui/stdmenus.inc:236
 msgid "Remove Last Argument Spitting Out to the Right"
 msgstr "右に吐き出す形で最後の引数を削除"
 
-#: lib/ui/stdcontext.inc:345 lib/ui/stdcontext.inc:357
+#: lib/ui/stdcontext.inc:346 lib/ui/stdcontext.inc:358
 msgid "Edit Externally...|x"
 msgstr "外部で編集(X)...|X"
 
-#: lib/ui/stdcontext.inc:367 lib/ui/stdmenus.inc:173
+#: lib/ui/stdcontext.inc:368 lib/ui/stdmenus.inc:173
 msgid "Top Line|T"
 msgstr "上の罫線(T)|T"
 
-#: lib/ui/stdcontext.inc:368 lib/ui/stdmenus.inc:174
+#: lib/ui/stdcontext.inc:369 lib/ui/stdmenus.inc:174
 msgid "Bottom Line|B"
 msgstr "下の罫線(B)|B"
 
-#: lib/ui/stdcontext.inc:369 lib/ui/stdmenus.inc:175
+#: lib/ui/stdcontext.inc:370 lib/ui/stdmenus.inc:175
 msgid "Left Line|L"
 msgstr "左の罫線(L)|L"
 
-#: lib/ui/stdcontext.inc:370 lib/ui/stdmenus.inc:176
+#: lib/ui/stdcontext.inc:371 lib/ui/stdmenus.inc:176
 msgid "Right Line|R"
 msgstr "右の罫線(R)|R"
 
-#: lib/ui/stdcontext.inc:382 lib/ui/stdmenus.inc:191
+#: lib/ui/stdcontext.inc:383 lib/ui/stdmenus.inc:191
 msgid "Copy Row|o"
 msgstr "行をコピー(O)|O"
 
-#: lib/ui/stdcontext.inc:387 lib/ui/stdmenus.inc:196
+#: lib/ui/stdcontext.inc:388 lib/ui/stdmenus.inc:196
 msgid "Copy Column|p"
 msgstr "列をコピー(P)|P"
 
@@ -14379,7 +14390,8 @@ msgstr "ディスクエラー: "
 
 #: src/Buffer.cpp:255
 #, c-format
-msgid "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
+msgid ""
+"LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
 msgstr ""
 "LyXは作業ディレクトリ'%1$s'を作ることができませんでした(ひょっとしてディスク"
 "がいっぱいですか？)。"
@@ -14921,22 +14933,22 @@ msgstr "1字(空白除く)"
 msgid "Statistics"
 msgstr "統計"
 
-#: src/BufferView.cpp:2145
+#: src/BufferView.cpp:2151
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "文書「%1$s」を挿入しています..."
 
-#: src/BufferView.cpp:2156
+#: src/BufferView.cpp:2162
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "文書「%1$s」が挿入されました。"
 
-#: src/BufferView.cpp:2158
+#: src/BufferView.cpp:2164
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "文書「%1$s」を挿入することができませんでした"
 
-#: src/BufferView.cpp:2420
+#: src/BufferView.cpp:2426
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -14947,11 +14959,11 @@ msgstr ""
 "%1$s\n"
 "を読むことができませんでした。"
 
-#: src/BufferView.cpp:2422
+#: src/BufferView.cpp:2428
 msgid "Could not read file"
 msgstr "ファイルを読むことができませんでした"
 
-#: src/BufferView.cpp:2429
+#: src/BufferView.cpp:2435
 #, c-format
 msgid ""
 "%1$s\n"
@@ -14960,15 +14972,15 @@ msgstr ""
 "%1$s\n"
 "は読み込み不能です。"
 
-#: src/BufferView.cpp:2430 src/output.cpp:39
+#: src/BufferView.cpp:2436 src/output.cpp:39
 msgid "Could not open file"
 msgstr "ファイルを開くことができませんでした"
 
-#: src/BufferView.cpp:2437
+#: src/BufferView.cpp:2443
 msgid "Reading not UTF-8 encoded file"
 msgstr "UTF-8でエンコードされていないファイルを読んでいます"
 
-#: src/BufferView.cpp:2438
+#: src/BufferView.cpp:2444
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -15382,7 +15394,7 @@ msgstr "出力が空です"
 msgid "An empty output file was generated."
 msgstr "空の出力ファイルが生成されました。"
 
-#: src/CutAndPaste.cpp:564
+#: src/CutAndPaste.cpp:566
 #, c-format
 msgid ""
 "Flex inset %1$s is undefined because of class conversion from\n"
@@ -15391,7 +15403,7 @@ msgstr ""
 "クラスを%2$sから%3$sに変えたため\n"
 "自由差込枠%1$sは未定義になりました"
 
-#: src/CutAndPaste.cpp:571
+#: src/CutAndPaste.cpp:573
 msgid "Undefined flex inset"
 msgstr "未定義の自由差込枠"
 
@@ -15633,7 +15645,7 @@ msgstr "nomencl用にMakeIndexを実行しています。"
 msgid "Could not read configuration file"
 msgstr "設定ファイルを読み込むことができませんでした"
 
-#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1473
+#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1477
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -15962,7 +15974,7 @@ msgstr "保存されている文書に復帰しますか？"
 msgid "&Revert"
 msgstr "元に戻す(&R)"
 
-#: src/LyXFunc.cpp:1067 src/Text3.cpp:1567
+#: src/LyXFunc.cpp:1067 src/Text3.cpp:1593
 msgid "Missing argument"
 msgstr "引数がありません"
 
@@ -16002,21 +16014,21 @@ msgstr "LyX VC: ログメッセージ"
 msgid "Directory is not accessible."
 msgstr "ディレクトリはアクセス不可です。"
 
-#: src/LyXFunc.cpp:1855
+#: src/LyXFunc.cpp:1856
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "文書%1$sを再読み込みしました。"
 
-#: src/LyXFunc.cpp:1857
+#: src/LyXFunc.cpp:1858
 #, c-format
 msgid "Could not reload document %1$s"
 msgstr "文書%1$sを読み込むことができませんでした"
 
-#: src/LyXFunc.cpp:1894
+#: src/LyXFunc.cpp:1895
 msgid "Welcome to LyX!"
 msgstr "LyXへようこそ！"
 
-#: src/LyXFunc.cpp:1915
+#: src/LyXFunc.cpp:1916
 msgid "Converting document to new document class..."
 msgstr "文書を新しい文書クラスに変換しています..."
 
@@ -16061,7 +16073,8 @@ msgstr ""
 "は，チェックを外してください。"
 
 #: src/LyXRC.cpp:2482
-msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid ""
+"The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr "自動保存の間の間隔（秒単位)。0 は自動保存しないことを示します。"
 
 #: src/LyXRC.cpp:2489
@@ -16082,7 +16095,8 @@ msgstr ""
 
 #: src/LyXRC.cpp:2497
 msgid "Define the options of the bibtex program for PLaTeX (Japanese LaTeX)."
-msgstr "pLaTeX(日本語LaTeX)用のbibtexプログラムのオプションを定義してください。"
+msgstr ""
+"pLaTeX(日本語LaTeX)用のbibtexプログラムのオプションを定義してください。"
 
 #: src/LyXRC.cpp:2501
 msgid ""
@@ -16094,7 +16108,8 @@ msgstr ""
 
 #: src/LyXRC.cpp:2505
 msgid "Select to check whether the lastfiles still exist."
-msgstr "最後のファイルがまだ存在するかどうかをチェックするときには選んでください。"
+msgstr ""
+"最後のファイルがまだ存在するかどうかをチェックするときには選んでください。"
 
 #: src/LyXRC.cpp:2509
 msgid ""
@@ -16120,7 +16135,8 @@ msgstr "単語間のカーソル移動にMac OS X式の方法を使う。"
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
-msgstr "カーソルが内部にある時に、数式マクロをマクロ名のついた小さなボックスで囲む。"
+msgstr ""
+"カーソルが内部にある時に、数式マクロをマクロ名のついた小さなボックスで囲む。"
 
 #: src/LyXRC.cpp:2538
 #, no-c-format
@@ -16163,7 +16179,8 @@ msgstr "LyX が画像をどのように表示するかを選びます。"
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
-msgstr "文書への既定パス。空の値は，LyX を開始したディレクトリを選ぶことになります。"
+msgstr ""
+"文書への既定パス。空の値は，LyX を開始したディレクトリを選ぶことになります。"
 
 #: src/LyXRC.cpp:2567
 msgid "Specify additional chars that can be part of a word."
@@ -16227,7 +16244,8 @@ msgid ""
 msgstr "文書の最初に言語切換コマンドが必要なときに選んでください。"
 
 #: src/LyXRC.cpp:2611
-msgid "Select if a language switching command is needed at the end of the document."
+msgid ""
+"Select if a language switching command is needed at the end of the document."
 msgstr "文書の最後に言語切換コマンドが必要なときに選んでください。"
 
 #: src/LyXRC.cpp:2615
@@ -16273,7 +16291,8 @@ msgstr ""
 
 #: src/LyXRC.cpp:2639
 msgid "De-select if you do not want LyX to scroll to saved position."
-msgstr "LyXが保存位置までスクロールしないようにしたいときは，非選択にしてください。"
+msgstr ""
+"LyXが保存位置までスクロールしないようにしたいときは，非選択にしてください。"
 
 #: src/LyXRC.cpp:2643
 msgid "De-select to prevent loading files opened from the last LyX session."
@@ -16312,14 +16331,16 @@ msgid "Select to display the completion popup in text mode."
 msgstr "選択すると、テキストモードで補完ポップアップを表示します。"
 
 #: src/LyXRC.cpp:2672
-msgid "Show the completion popup without delay after non-unique completion attempt."
+msgid ""
+"Show the completion popup without delay after non-unique completion attempt."
 msgstr "複数の補完候補がある際、遅延なしに補完ポップアップを表示する。"
 
 #: src/LyXRC.cpp:2676
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
-msgstr "補完が利用可能であることを示すためにカーソル上に小さな三角形を表示します。"
+msgstr ""
+"補完が利用可能であることを示すためにカーソル上に小さな三角形を表示します。"
 
 #: src/LyXRC.cpp:2680
 msgid "The inline completion delay."
@@ -16340,7 +16361,8 @@ msgstr "長い補完を短縮するのに\"...\"を使用する。"
 #: src/LyXRC.cpp:2696
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
-msgstr "最後に使ったファイルの最大表示数。%1$d までファイルメニューに表示できます。"
+msgstr ""
+"最後に使ったファイルの最大表示数。%1$d までファイルメニューに表示できます。"
 
 #: src/LyXRC.cpp:2701
 msgid ""
@@ -16351,7 +16373,8 @@ msgstr ""
 "マットを使ってください。"
 
 #: src/LyXRC.cpp:2708
-msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid ""
+"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "代替の個人用辞書を指定してください。例：\".ispell_english\"。"
 
 #: src/LyXRC.cpp:2712
@@ -16463,7 +16486,8 @@ msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "お好みの印刷プログラム。例：\"dvips\", \"dvilj4\"。"
 
 #: src/LyXRC.cpp:2800
-msgid "Select to have visual bidi cursor movement, unselect for logical movement."
+msgid ""
+"Select to have visual bidi cursor movement, unselect for logical movement."
 msgstr ""
 "選択すると、視覚的な上下カーソル動作をします。選択を外すと、論理的な動作にな"
 "ります。"
@@ -16565,7 +16589,8 @@ msgid "Enable the automatic appearance of tool tips in the work area."
 msgstr "作業領域でのツールチップスの自動表示を有効にする。"
 
 #: src/LyXRC.cpp:2886
-msgid "Enable the pixmap cache that might improve performance on Mac and Windows."
+msgid ""
+"Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 "pixmapのキャッシュを有効にします。MacやWindowsでのパフォーマンスが向上する可"
 "能性があります。"
@@ -16613,15 +16638,15 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "文書を保管されている版に戻しますか？"
 
-#: src/Paragraph.cpp:1585 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1594 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "このレイアウトでは意味を持ちません！"
 
-#: src/Paragraph.cpp:1651
+#: src/Paragraph.cpp:1660
 msgid "Alignment not permitted"
 msgstr "配置が使えません"
 
-#: src/Paragraph.cpp:1652
+#: src/Paragraph.cpp:1661
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -16629,22 +16654,22 @@ msgstr ""
 "新しいレイアウトでは，これまで使っていた配置を使うことが出来ません。\n"
 "既定値に設定します。"
 
-#: src/Paragraph.cpp:2134 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2143 src/frontends/qt4/LaTeXHighlighter.cpp:108
 #: src/insets/InsetListings.cpp:185 src/insets/InsetListings.cpp:193
 #: src/insets/InsetListings.cpp:217 src/mathed/InsetMathString.cpp:165
 msgid "LyX Warning: "
 msgstr "LyX警告: "
 
-#: src/Paragraph.cpp:2135 src/insets/InsetListings.cpp:186
+#: src/Paragraph.cpp:2144 src/insets/InsetListings.cpp:186
 #: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:166
 msgid "uncodable character"
 msgstr "コード化できない文字"
 
-#: src/Paragraph.cpp:2498
+#: src/Paragraph.cpp:2507
 msgid "Memory problem"
 msgstr "メモリ障害"
 
-#: src/Paragraph.cpp:2498
+#: src/Paragraph.cpp:2507
 msgid "Paragraph not properly initialized"
 msgstr "段落が正しく初期化されていません"
 
@@ -16678,7 +16703,8 @@ msgstr "未知のトークン"
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
-msgstr "空白を段落の先頭に挿入することはできません。LyX入門篇を読んでください。"
+msgstr ""
+"空白を段落の先頭に挿入することはできません。LyX入門篇を読んでください。"
 
 #: src/Text.cpp:533
 msgid "You cannot type two spaces this way. Please read the Tutorial."
@@ -16756,7 +16782,7 @@ msgstr "索引にするものがありません！"
 msgid "Cannot index more than one paragraph!"
 msgstr "一段落以上は索引にすることができません！"
 
-#: src/Text3.cpp:186 src/mathed/InsetMathHull.cpp:1484
+#: src/Text3.cpp:186 src/mathed/InsetMathHull.cpp:1506
 msgid "Math editor mode"
 msgstr "数式編集モード"
 
@@ -16764,23 +16790,23 @@ msgstr "数式編集モード"
 msgid "No valid math formula"
 msgstr "有効な数式ではありません"
 
-#: src/Text3.cpp:844
+#: src/Text3.cpp:870
 msgid "Unknown spacing argument: "
 msgstr "解釈不能な空白の引数です: "
 
-#: src/Text3.cpp:1122
+#: src/Text3.cpp:1148
 msgid "Layout "
 msgstr "割り付け"
 
-#: src/Text3.cpp:1123
+#: src/Text3.cpp:1149
 msgid " not known"
 msgstr "解釈不能"
 
-#: src/Text3.cpp:1684 src/Text3.cpp:1696
+#: src/Text3.cpp:1710 src/Text3.cpp:1722
 msgid "Character set"
 msgstr "文字が調整されました"
 
-#: src/Text3.cpp:1844 src/Text3.cpp:1855
+#: src/Text3.cpp:1870 src/Text3.cpp:1881
 msgid "Paragraph layout set"
 msgstr "段落を割り付けました。"
 
@@ -16802,7 +16828,8 @@ msgstr "破損ファイル"
 
 #: src/TextClass.cpp:643
 msgid "Could not read stdinsets.inc! This may lead to data loss!"
-msgstr "stdinsets.incを読むことができません！データ喪失につながる可能性があります！"
+msgstr ""
+"stdinsets.incを読むことができません！データ喪失につながる可能性があります！"
 
 #: src/Thesaurus.cpp:60
 msgid "Thesaurus failure"
@@ -17164,7 +17191,7 @@ msgstr ""
 "LyXは何か非常におかしな例外エラーを検出したので、保存されていない全ての文書の"
 "保存を試み、終了します。"
 
-#: src/frontends/qt4/GuiApplication.cpp:1472
+#: src/frontends/qt4/GuiApplication.cpp:1476
 msgid "Could not find UI definition file"
 msgstr "UI定義ファイルを見つけることができませんでした"
 
@@ -17549,7 +17576,8 @@ msgstr "文書の設定"
 
 #: src/frontends/qt4/GuiDocument.cpp:559
 #: src/frontends/qt4/GuiDocument.cpp:1058
-msgid "Input listings parameters on the right. Enter ? for a list of parameters."
+msgid ""
+"Input listings parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 "リストのパラメーターを右側に入力してください。パラメーターの一覧を表示するに"
 "は？を入力してください。"
@@ -18050,7 +18078,8 @@ msgstr "子文書"
 #: src/frontends/qt4/GuiInclude.cpp:120 src/frontends/qt4/GuiInclude.cpp:182
 #: src/frontends/qt4/GuiListings.cpp:239 src/frontends/qt4/GuiListings.cpp:375
 #: src/frontends/qt4/GuiListings.cpp:450
-msgid "Input listing parameters on the right. Enter ? for a list of parameters."
+msgid ""
+"Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 "リストのパラメーターを右側に入力してください。パラメーターの一覧を表示するに"
 "は？を入力してください。"
@@ -19831,7 +19860,8 @@ msgid "Should be composed of one or more of %1$s."
 msgstr "%1$sのうちの1つ以上で構成されなくてはなりません。"
 
 #: src/insets/InsetListingsParams.cpp:284
-msgid "Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
+msgid ""
+"Use \\footnotesize, \\small, \\itshape, \\ttfamily or something like that"
 msgstr "\\footnotesize, \\small, \\itshape, \\ttfamily 等を使ってください"
 
 #: src/insets/InsetListingsParams.cpp:286
@@ -20097,13 +20127,13 @@ msgstr "保護された水平スペース（%1$s）"
 msgid "Unknown TOC type"
 msgstr "未知の目次型"
 
-#: src/insets/InsetTabular.cpp:3207
+#: src/insets/InsetTabular.cpp:3213
 msgid "Opened table"
 msgstr "展開された表"
 
-#: src/insets/InsetTabular.cpp:4009
-msgid "You cannot paste into a multicell selection."
-msgstr "複数セルを選択しているところに貼り付けることはできません。"
+#: src/insets/InsetTabular.cpp:4023
+msgid "Selection size should match clipboard content."
+msgstr ""
 
 #: src/insets/InsetText.cpp:227
 msgid "Opened Text Inset"
@@ -20270,7 +20300,7 @@ msgstr "個の文字列が置換されました。"
 msgid " Macro: %1$s: "
 msgstr " マクロ: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1393
+#: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1414
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -20307,25 +20337,25 @@ msgstr "削除する vline はありません"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "「%1$s」は未知の表の特性です"
 
-#: src/mathed/InsetMathHull.cpp:1189 src/mathed/InsetMathHull.cpp:1197
+#: src/mathed/InsetMathHull.cpp:1190 src/mathed/InsetMathHull.cpp:1198
 msgid "No number"
 msgstr "番号なし"
 
-#: src/mathed/InsetMathHull.cpp:1189 src/mathed/InsetMathHull.cpp:1197
+#: src/mathed/InsetMathHull.cpp:1190 src/mathed/InsetMathHull.cpp:1198
 msgid "Number"
 msgstr "番号あり"
 
-#: src/mathed/InsetMathHull.cpp:1366
+#: src/mathed/InsetMathHull.cpp:1387
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "「%1$s」の行数を変えることができません。"
 
-#: src/mathed/InsetMathHull.cpp:1376
+#: src/mathed/InsetMathHull.cpp:1397
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "「%1$s」の列数を変えることができません。"
 
-#: src/mathed/InsetMathHull.cpp:1386
+#: src/mathed/InsetMathHull.cpp:1407
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "「%1$s」に水平境界線を加えることができません。"
@@ -20540,3 +20570,5 @@ msgstr ""
 msgid "Unknown user"
 msgstr "未知の"
 
+#~ msgid "You cannot paste into a multicell selection."
+#~ msgstr "複数セルを選択しているところに貼り付けることはできません。"

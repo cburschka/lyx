@@ -69,7 +69,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-07-09 18:04+0200\n"
+"POT-Creation-Date: 2009-07-14 18:28+0200\n"
 "PO-Revision-Date: 2009-04-19 17:14+0100\n"
 "Last-Translator: Martin Vermeer <martin.vermeer@tkk.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -10068,7 +10068,7 @@ msgstr "Riveinä|R"
 msgid "Selection as Paragraphs|P"
 msgstr "Kappaleina|K"
 
-#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:365 lib/ui/stdmenus.inc:171
+#: lib/ui/classic.ui:120 lib/ui/stdcontext.inc:366 lib/ui/stdmenus.inc:171
 msgid "Multicolumn|M"
 msgstr "Yhdistetyt sarakkeet|Y"
 
@@ -10092,7 +10092,7 @@ msgstr "Viiva oikealla|o"
 msgid "Alignment|i"
 msgstr "Tasaus|T"
 
-#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:380 lib/ui/stdmenus.inc:189
+#: lib/ui/classic.ui:129 lib/ui/stdcontext.inc:381 lib/ui/stdmenus.inc:189
 msgid "Add Row|A"
 msgstr "Lisää rivi|L"
 
@@ -10108,7 +10108,7 @@ msgstr "Kopioi rivi"
 msgid "Swap Rows"
 msgstr "Vaihda rivit"
 
-#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:385 lib/ui/stdmenus.inc:194
+#: lib/ui/classic.ui:134 lib/ui/stdcontext.inc:386 lib/ui/stdmenus.inc:194
 msgid "Add Column|u"
 msgstr "Lisää sarake|ä"
 
@@ -10124,27 +10124,27 @@ msgstr "Kopioi sarake"
 msgid "Swap Columns"
 msgstr "Vaihda sarakkeet"
 
-#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:372 lib/ui/stdmenus.inc:181
+#: lib/ui/classic.ui:141 lib/ui/stdcontext.inc:373 lib/ui/stdmenus.inc:181
 msgid "Left|L"
 msgstr "Vasen|#V"
 
-#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:373 lib/ui/stdmenus.inc:182
+#: lib/ui/classic.ui:142 lib/ui/stdcontext.inc:374 lib/ui/stdmenus.inc:182
 msgid "Center|C"
 msgstr "Keskellä"
 
-#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:374 lib/ui/stdmenus.inc:183
+#: lib/ui/classic.ui:143 lib/ui/stdcontext.inc:375 lib/ui/stdmenus.inc:183
 msgid "Right|R"
 msgstr "Oikea|#O"
 
-#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:376 lib/ui/stdmenus.inc:185
+#: lib/ui/classic.ui:145 lib/ui/stdcontext.inc:377 lib/ui/stdmenus.inc:185
 msgid "Top|T"
 msgstr "Yläreuna|#ä"
 
-#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:377 lib/ui/stdmenus.inc:186
+#: lib/ui/classic.ui:146 lib/ui/stdcontext.inc:378 lib/ui/stdmenus.inc:186
 msgid "Middle|M"
 msgstr "Keski"
 
-#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:378 lib/ui/stdmenus.inc:187
+#: lib/ui/classic.ui:147 lib/ui/stdcontext.inc:379 lib/ui/stdmenus.inc:187
 msgid "Bottom|B"
 msgstr "Alareuna|#A"
 
@@ -10176,7 +10176,7 @@ msgstr "Tasaus|T"
 msgid "Add Row|R"
 msgstr "Lisää rivi|L"
 
-#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:381 lib/ui/stdmenus.inc:190
+#: lib/ui/classic.ui:171 lib/ui/stdcontext.inc:382 lib/ui/stdmenus.inc:190
 msgid "Delete Row|D"
 msgstr "Poista rivi|r"
 
@@ -10184,7 +10184,7 @@ msgstr "Poista rivi|r"
 msgid "Add Column|C"
 msgstr "Lisää sarake|ä"
 
-#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:386 lib/ui/stdmenus.inc:195
+#: lib/ui/classic.ui:176 lib/ui/stdcontext.inc:387 lib/ui/stdmenus.inc:195
 msgid "Delete Column|e"
 msgstr "Poista sarake|e"
 
@@ -10379,7 +10379,7 @@ msgstr "Kova välilyönti|K"
 msgid "Inter-word Space|w"
 msgstr ""
 
-#: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:192 lib/ui/stdcontext.inc:215
+#: lib/ui/classic.ui:249 lib/ui/stdcontext.inc:193 lib/ui/stdcontext.inc:216
 #: lib/ui/stdmenus.inc:378
 msgid "Thin Space|T"
 msgstr "Ohut väli"
@@ -10792,562 +10792,567 @@ msgstr "Tasausympäristö|T"
 msgid "Equation Label|L"
 msgstr "Siirry nimikkeeseen"
 
-#: lib/ui/stdcontext.inc:55 lib/ui/stdmenus.inc:201
+#: lib/ui/stdcontext.inc:55
+#, fuzzy
+msgid "Copy as Reference|R"
+msgstr "Viittaus...|V"
+
+#: lib/ui/stdcontext.inc:56 lib/ui/stdmenus.inc:201
 #, fuzzy
 msgid "Number Whole Formula|N"
 msgstr "Numeroitu kaava"
 
-#: lib/ui/stdcontext.inc:56 lib/ui/stdmenus.inc:202
+#: lib/ui/stdcontext.inc:57 lib/ui/stdmenus.inc:202
 #, fuzzy
 msgid "Number This Line|u"
 msgstr "Rivin numerointi pois/päälle|r"
 
-#: lib/ui/stdcontext.inc:58 lib/ui/stdmenus.inc:212
+#: lib/ui/stdcontext.inc:59 lib/ui/stdmenus.inc:212
 msgid "Split Cell|C"
 msgstr "Jaa solu"
 
-#: lib/ui/stdcontext.inc:60
+#: lib/ui/stdcontext.inc:61
 #, fuzzy
 msgid "Insert|n"
 msgstr "Lisää|L"
 
-#: lib/ui/stdcontext.inc:62
+#: lib/ui/stdcontext.inc:63
 #, fuzzy
 msgid "Add Line Above|o"
 msgstr "Viiva yllä"
 
-#: lib/ui/stdcontext.inc:63 lib/ui/stdmenus.inc:215
+#: lib/ui/stdcontext.inc:64 lib/ui/stdmenus.inc:215
 msgid "Add Line Below|B"
 msgstr "Viiva alla"
 
-#: lib/ui/stdcontext.inc:64 lib/ui/stdmenus.inc:216
+#: lib/ui/stdcontext.inc:65 lib/ui/stdmenus.inc:216
 msgid "Delete Line Above|D"
 msgstr "Poista viiva yllä"
 
-#: lib/ui/stdcontext.inc:65 lib/ui/stdmenus.inc:217
+#: lib/ui/stdcontext.inc:66 lib/ui/stdmenus.inc:217
 msgid "Delete Line Below|e"
 msgstr "Poista viiva alla"
 
-#: lib/ui/stdcontext.inc:67 lib/ui/stdmenus.inc:219
+#: lib/ui/stdcontext.inc:68 lib/ui/stdmenus.inc:219
 msgid "Add Line to Left"
 msgstr "Viiva vasemmalla|i"
 
-#: lib/ui/stdcontext.inc:68 lib/ui/stdmenus.inc:220
+#: lib/ui/stdcontext.inc:69 lib/ui/stdmenus.inc:220
 msgid "Add Line to Right"
 msgstr "Viiva oikealla|o"
 
-#: lib/ui/stdcontext.inc:69 lib/ui/stdmenus.inc:221
+#: lib/ui/stdcontext.inc:70 lib/ui/stdmenus.inc:221
 msgid "Delete Line to Left"
 msgstr "Poista viiva vasemmalla"
 
-#: lib/ui/stdcontext.inc:70 lib/ui/stdmenus.inc:222
+#: lib/ui/stdcontext.inc:71 lib/ui/stdmenus.inc:222
 msgid "Delete Line to Right"
 msgstr "Poista viiva oikealla"
 
-#: lib/ui/stdcontext.inc:72
+#: lib/ui/stdcontext.inc:73
 #, fuzzy
 msgid "Show Math Toolbar"
 msgstr "Matematiikapalkki pois/päälle"
 
-#: lib/ui/stdcontext.inc:73
+#: lib/ui/stdcontext.inc:74
 #, fuzzy
 msgid "Show Math-Panels Toolbar"
 msgstr "Matematiikapalkki pois/päälle"
 
-#: lib/ui/stdcontext.inc:74
+#: lib/ui/stdcontext.inc:75
 #, fuzzy
 msgid "Show Table Toolbar"
 msgstr "Taulukkopalkki pois/päälle"
 
-#: lib/ui/stdcontext.inc:82 lib/ui/stdcontext.inc:99
+#: lib/ui/stdcontext.inc:83 lib/ui/stdcontext.inc:100
 #, fuzzy
 msgid "Next Cross-Reference|N"
 msgstr "Seuraava viite"
 
-#: lib/ui/stdcontext.inc:83
+#: lib/ui/stdcontext.inc:84
 #, fuzzy
 msgid "Go to Label|G"
 msgstr "Siirry nimikkeeseen"
 
-#: lib/ui/stdcontext.inc:85
+#: lib/ui/stdcontext.inc:86
 #, fuzzy
 msgid "<Reference>|R"
 msgstr "<viite>"
 
-#: lib/ui/stdcontext.inc:86
+#: lib/ui/stdcontext.inc:87
 #, fuzzy
 msgid "(<Reference>)|E"
 msgstr "(<viite>)"
 
-#: lib/ui/stdcontext.inc:87
+#: lib/ui/stdcontext.inc:88
 #, fuzzy
 msgid "<Page>|P"
 msgstr "<sivu>"
 
-#: lib/ui/stdcontext.inc:88
+#: lib/ui/stdcontext.inc:89
 #, fuzzy
 msgid "On Page <Page>|o"
 msgstr "sivulla <sivu>"
 
-#: lib/ui/stdcontext.inc:89
+#: lib/ui/stdcontext.inc:90
 #, fuzzy
 msgid "<Reference> on Page <Page>|f"
 msgstr "<viite> sivulla <sivu>"
 
-#: lib/ui/stdcontext.inc:90
+#: lib/ui/stdcontext.inc:91
 #, fuzzy
 msgid "Formatted Reference|t"
 msgstr "Muotoiltu viittaus"
 
-#: lib/ui/stdcontext.inc:92 lib/ui/stdcontext.inc:104
-#: lib/ui/stdcontext.inc:114 lib/ui/stdcontext.inc:122
-#: lib/ui/stdcontext.inc:136 lib/ui/stdcontext.inc:143
-#: lib/ui/stdcontext.inc:164 lib/ui/stdcontext.inc:208
-#: lib/ui/stdcontext.inc:226 lib/ui/stdcontext.inc:253
-#: lib/ui/stdcontext.inc:335 lib/ui/stdcontext.inc:343
-#: lib/ui/stdcontext.inc:355 lib/ui/stdcontext.inc:390
-#: lib/ui/stdcontext.inc:399 lib/ui/stdmenus.inc:468
+#: lib/ui/stdcontext.inc:93 lib/ui/stdcontext.inc:105
+#: lib/ui/stdcontext.inc:115 lib/ui/stdcontext.inc:123
+#: lib/ui/stdcontext.inc:137 lib/ui/stdcontext.inc:144
+#: lib/ui/stdcontext.inc:165 lib/ui/stdcontext.inc:209
+#: lib/ui/stdcontext.inc:227 lib/ui/stdcontext.inc:254
+#: lib/ui/stdcontext.inc:336 lib/ui/stdcontext.inc:344
+#: lib/ui/stdcontext.inc:356 lib/ui/stdcontext.inc:391
+#: lib/ui/stdcontext.inc:400 lib/ui/stdmenus.inc:468
 msgid "Settings...|S"
 msgstr "Asetukset..."
 
-#: lib/ui/stdcontext.inc:100
+#: lib/ui/stdcontext.inc:101
 #, fuzzy
 msgid "Go Back|G"
 msgstr "&Palaa"
 
-#: lib/ui/stdcontext.inc:102
+#: lib/ui/stdcontext.inc:103
 #, fuzzy
 msgid "Copy as Reference|C"
 msgstr "Viittaus...|V"
 
-#: lib/ui/stdcontext.inc:124
+#: lib/ui/stdcontext.inc:125
 #, fuzzy
 msgid "Edit Database(s) Externally...|x"
 msgstr "Muokkaa tiedostoa ulkoisesti"
 
-#: lib/ui/stdcontext.inc:132 lib/ui/stdcontext.inc:160
-#: lib/ui/stdcontext.inc:176 lib/ui/stdcontext.inc:331
+#: lib/ui/stdcontext.inc:133 lib/ui/stdcontext.inc:161
+#: lib/ui/stdcontext.inc:177 lib/ui/stdcontext.inc:332
 #, fuzzy
 msgid "Open Inset|O"
 msgstr "Avaa kaikki upotteet"
 
-#: lib/ui/stdcontext.inc:133 lib/ui/stdcontext.inc:161
-#: lib/ui/stdcontext.inc:177 lib/ui/stdcontext.inc:332
+#: lib/ui/stdcontext.inc:134 lib/ui/stdcontext.inc:162
+#: lib/ui/stdcontext.inc:178 lib/ui/stdcontext.inc:333
 #, fuzzy
 msgid "Close Inset|C"
 msgstr "Sulje kaikki upotteet"
 
-#: lib/ui/stdcontext.inc:135 lib/ui/stdcontext.inc:141
-#: lib/ui/stdcontext.inc:163 lib/ui/stdcontext.inc:182
-#: lib/ui/stdcontext.inc:334
+#: lib/ui/stdcontext.inc:136 lib/ui/stdcontext.inc:142
+#: lib/ui/stdcontext.inc:164 lib/ui/stdcontext.inc:183
+#: lib/ui/stdcontext.inc:335
 #, fuzzy
 msgid "Dissolve Inset|D"
 msgstr "Sulaa upote"
 
-#: lib/ui/stdcontext.inc:140
+#: lib/ui/stdcontext.inc:141
 #, fuzzy
 msgid "Show Label|L"
 msgstr "Siirry nimikkeeseen"
 
-#: lib/ui/stdcontext.inc:151
+#: lib/ui/stdcontext.inc:152
 #, fuzzy
 msgid "Frameless|l"
 msgstr "Kehyksetön"
 
-#: lib/ui/stdcontext.inc:152
+#: lib/ui/stdcontext.inc:153
 #, fuzzy
 msgid "Simple Frame|F"
 msgstr "upotteen kehys"
 
-#: lib/ui/stdcontext.inc:153
+#: lib/ui/stdcontext.inc:154
 #, fuzzy
 msgid "Simple Frame, Page Breaks|P"
 msgstr "upotteen kehys"
 
-#: lib/ui/stdcontext.inc:154
+#: lib/ui/stdcontext.inc:155
 #, fuzzy
 msgid "Oval, Thin|a"
 msgstr "Ovaalilaatikko"
 
-#: lib/ui/stdcontext.inc:155
+#: lib/ui/stdcontext.inc:156
 #, fuzzy
 msgid "Oval, Thick|v"
 msgstr "Ovaalilaatikko"
 
-#: lib/ui/stdcontext.inc:156
+#: lib/ui/stdcontext.inc:157
 msgid "Drop Shadow|w"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:157
+#: lib/ui/stdcontext.inc:158
 #, fuzzy
 msgid "Shaded Background|B"
 msgstr "muistiinpanon tausta"
 
-#: lib/ui/stdcontext.inc:158
+#: lib/ui/stdcontext.inc:159
 #, fuzzy
 msgid "Double Frame|u"
 msgstr "kaksinkertainen"
 
-#: lib/ui/stdcontext.inc:172 lib/ui/stdmenus.inc:442
+#: lib/ui/stdcontext.inc:173 lib/ui/stdmenus.inc:442
 msgid "LyX Note|N"
 msgstr "Muistiinpano|i"
 
-#: lib/ui/stdcontext.inc:173
+#: lib/ui/stdcontext.inc:174
 #, fuzzy
 msgid "Comment|m"
 msgstr "Huomautus"
 
-#: lib/ui/stdcontext.inc:174 lib/ui/stdmenus.inc:444
+#: lib/ui/stdcontext.inc:175 lib/ui/stdmenus.inc:444
 msgid "Greyed Out|G"
 msgstr "Harmaa teksti"
 
-#: lib/ui/stdcontext.inc:179
+#: lib/ui/stdcontext.inc:180
 #, fuzzy
 msgid "Open All Notes|A"
 msgstr "Avaa kaikki upotteet"
 
-#: lib/ui/stdcontext.inc:180
+#: lib/ui/stdcontext.inc:181
 #, fuzzy
 msgid "Close All Notes|l"
 msgstr "Sulje kaikki upotteet"
 
-#: lib/ui/stdcontext.inc:190
+#: lib/ui/stdcontext.inc:191
 #, fuzzy
 msgid "Interword Space|w"
 msgstr "sivulla <sivu>"
 
-#: lib/ui/stdcontext.inc:191
+#: lib/ui/stdcontext.inc:192
 #, fuzzy
 msgid "Protected Space|o"
 msgstr "Kova välilyönti|K"
 
-#: lib/ui/stdcontext.inc:193 lib/ui/stdcontext.inc:218
+#: lib/ui/stdcontext.inc:194 lib/ui/stdcontext.inc:219
 #, fuzzy
 msgid "Negative Thin Space|N"
 msgstr "Negatiivinen väli\t\\!"
 
-#: lib/ui/stdcontext.inc:194 lib/ui/stdcontext.inc:221
+#: lib/ui/stdcontext.inc:195 lib/ui/stdcontext.inc:222
 msgid "Half Quad Space (Enskip)|k"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:195
+#: lib/ui/stdcontext.inc:196
 #, fuzzy
 msgid "Protected Half Quad Space (Enspace)|E"
 msgstr "Kova välilyönti|K"
 
-#: lib/ui/stdcontext.inc:196 lib/ui/stdcontext.inc:222
+#: lib/ui/stdcontext.inc:197 lib/ui/stdcontext.inc:223
 #, fuzzy
 msgid "Quad Space|Q"
 msgstr "Väli"
 
-#: lib/ui/stdcontext.inc:197 lib/ui/stdcontext.inc:223
+#: lib/ui/stdcontext.inc:198 lib/ui/stdcontext.inc:224
 #, fuzzy
 msgid "Double Quad Space|u"
 msgstr "Väli"
 
-#: lib/ui/stdcontext.inc:198
+#: lib/ui/stdcontext.inc:199
 msgid "Horizontal Fill|F"
 msgstr "Vaakatäyte:|#V"
 
-#: lib/ui/stdcontext.inc:199
+#: lib/ui/stdcontext.inc:200
 #, fuzzy
 msgid "Protected Horizontal Fill|i"
 msgstr "Vaakakumi"
 
-#: lib/ui/stdcontext.inc:200
+#: lib/ui/stdcontext.inc:201
 #, fuzzy
 msgid "Horizontal Fill (Dots)|D"
 msgstr "Vaakakumi"
 
-#: lib/ui/stdcontext.inc:201
+#: lib/ui/stdcontext.inc:202
 #, fuzzy
 msgid "Horizontal Fill (Rule)|R"
 msgstr "Vaakakumi"
 
-#: lib/ui/stdcontext.inc:202
+#: lib/ui/stdcontext.inc:203
 #, fuzzy
 msgid "Horizontal Fill (Left Arrow)|L"
 msgstr "Vaakakumi"
 
-#: lib/ui/stdcontext.inc:203
+#: lib/ui/stdcontext.inc:204
 #, fuzzy
 msgid "Horizontal Fill (Right Arrow)|g"
 msgstr "Vaakakumi"
 
-#: lib/ui/stdcontext.inc:204
+#: lib/ui/stdcontext.inc:205
 #, fuzzy
 msgid "Horizontal Fill (Up Brace)|p"
 msgstr "Vaakakumi"
 
-#: lib/ui/stdcontext.inc:205
+#: lib/ui/stdcontext.inc:206
 #, fuzzy
 msgid "Horizontal Fill (Down Brace)|B"
 msgstr "Vaakakumi"
 
-#: lib/ui/stdcontext.inc:206 lib/ui/stdcontext.inc:224
+#: lib/ui/stdcontext.inc:207 lib/ui/stdcontext.inc:225
 #, fuzzy
 msgid "Custom Length|C"
 msgstr "Huomautus"
 
-#: lib/ui/stdcontext.inc:216
+#: lib/ui/stdcontext.inc:217
 #, fuzzy
 msgid "Medium Space|M"
 msgstr "Keskileveä väli\t\\:"
 
-#: lib/ui/stdcontext.inc:217
+#: lib/ui/stdcontext.inc:218
 #, fuzzy
 msgid "Thick Space|h"
 msgstr "Ohut väli"
 
-#: lib/ui/stdcontext.inc:219
+#: lib/ui/stdcontext.inc:220
 #, fuzzy
 msgid "Negative Medium Space|u"
 msgstr "Negatiivinen väli\t\\!"
 
-#: lib/ui/stdcontext.inc:220
+#: lib/ui/stdcontext.inc:221
 #, fuzzy
 msgid "Negative Thick Space|i"
 msgstr "Negatiivinen väli\t\\!"
 
-#: lib/ui/stdcontext.inc:233
+#: lib/ui/stdcontext.inc:234
 #, fuzzy
 msgid "DefSkip|D"
 msgstr "Oletusväli"
 
-#: lib/ui/stdcontext.inc:234
+#: lib/ui/stdcontext.inc:235
 #, fuzzy
 msgid "SmallSkip|S"
 msgstr "Pieni väli"
 
-#: lib/ui/stdcontext.inc:235
+#: lib/ui/stdcontext.inc:236
 #, fuzzy
 msgid "MedSkip|M"
 msgstr "Keskisuuri väli"
 
-#: lib/ui/stdcontext.inc:236
+#: lib/ui/stdcontext.inc:237
 #, fuzzy
 msgid "BigSkip|B"
 msgstr "Suuri väli"
 
-#: lib/ui/stdcontext.inc:237
+#: lib/ui/stdcontext.inc:238
 #, fuzzy
 msgid "VFill|F"
 msgstr "Pystytäyttö"
 
-#: lib/ui/stdcontext.inc:238
+#: lib/ui/stdcontext.inc:239
 #, fuzzy
 msgid "Custom|C"
 msgstr "Määr. oma"
 
-#: lib/ui/stdcontext.inc:240
+#: lib/ui/stdcontext.inc:241
 #, fuzzy
 msgid "Settings...|e"
 msgstr "Asetukset..."
 
-#: lib/ui/stdcontext.inc:247
+#: lib/ui/stdcontext.inc:248
 #, fuzzy
 msgid "Include|c"
 msgstr "Sisällytä"
 
-#: lib/ui/stdcontext.inc:248
+#: lib/ui/stdcontext.inc:249
 #, fuzzy
 msgid "Input|p"
 msgstr "Syötä"
 
-#: lib/ui/stdcontext.inc:249
+#: lib/ui/stdcontext.inc:250
 #, fuzzy
 msgid "Verbatim|V"
 msgstr "Sinänsä"
 
-#: lib/ui/stdcontext.inc:250
+#: lib/ui/stdcontext.inc:251
 msgid "Verbatim (marked blanks)|b"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:251
+#: lib/ui/stdcontext.inc:252
 #, fuzzy
 msgid "Listing|L"
 msgstr "Listaus"
 
-#: lib/ui/stdcontext.inc:255
+#: lib/ui/stdcontext.inc:256
 #, fuzzy
 msgid "Edit Included File...|E"
 msgstr "Sisällytä tiedosto...|y"
 
-#: lib/ui/stdcontext.inc:262 lib/ui/stdmenus.inc:388
+#: lib/ui/stdcontext.inc:263 lib/ui/stdmenus.inc:388
 #, fuzzy
 msgid "New Page|N"
 msgstr "Uusi|U"
 
-#: lib/ui/stdcontext.inc:263 lib/ui/stdmenus.inc:389
+#: lib/ui/stdcontext.inc:264 lib/ui/stdmenus.inc:389
 msgid "Page Break|a"
 msgstr "&Sivunvaihto"
 
-#: lib/ui/stdcontext.inc:264 lib/ui/stdmenus.inc:390
+#: lib/ui/stdcontext.inc:265 lib/ui/stdmenus.inc:390
 msgid "Clear Page|C"
 msgstr "Uusi sivu"
 
-#: lib/ui/stdcontext.inc:265 lib/ui/stdmenus.inc:391
+#: lib/ui/stdcontext.inc:266 lib/ui/stdmenus.inc:391
 msgid "Clear Double Page|D"
 msgstr "Uusi sivupari"
 
-#: lib/ui/stdcontext.inc:272 lib/ui/stdmenus.inc:385
+#: lib/ui/stdcontext.inc:273 lib/ui/stdmenus.inc:385
 #, fuzzy
 msgid "Ragged Line Break|R"
 msgstr "Rivinvaihto|R"
 
-#: lib/ui/stdcontext.inc:273 lib/ui/stdmenus.inc:386
+#: lib/ui/stdcontext.inc:274 lib/ui/stdmenus.inc:386
 #, fuzzy
 msgid "Justified Line Break|J"
 msgstr "Rivinvaihto|R"
 
-#: lib/ui/stdcontext.inc:280 lib/ui/stdcontext.inc:326 lib/ui/stdmenus.inc:97
-#: lib/ui/stdtoolbars.inc:78 src/Text3.cpp:1057
+#: lib/ui/stdcontext.inc:281 lib/ui/stdcontext.inc:327 lib/ui/stdmenus.inc:97
+#: lib/ui/stdtoolbars.inc:78 src/Text3.cpp:1083
 #: src/mathed/InsetMathNest.cpp:550
 msgid "Cut"
 msgstr "Leikkaa"
 
-#: lib/ui/stdcontext.inc:281 lib/ui/stdcontext.inc:327 lib/ui/stdmenus.inc:98
-#: lib/ui/stdtoolbars.inc:79 src/Text3.cpp:1062
+#: lib/ui/stdcontext.inc:282 lib/ui/stdcontext.inc:328 lib/ui/stdmenus.inc:98
+#: lib/ui/stdtoolbars.inc:79 src/Text3.cpp:1088
 #: src/mathed/InsetMathNest.cpp:558
 msgid "Copy"
 msgstr "Kopioi"
 
-#: lib/ui/stdcontext.inc:282 lib/ui/stdcontext.inc:328 lib/ui/stdmenus.inc:99
-#: lib/ui/stdtoolbars.inc:80 src/Text3.cpp:1015
+#: lib/ui/stdcontext.inc:283 lib/ui/stdcontext.inc:329 lib/ui/stdmenus.inc:99
+#: lib/ui/stdtoolbars.inc:80 src/Text3.cpp:1041
 #: src/mathed/InsetMathGrid.cpp:1256 src/mathed/InsetMathNest.cpp:530
 msgid "Paste"
 msgstr "Liitä"
 
-#: lib/ui/stdcontext.inc:283 lib/ui/stdcontext.inc:329 lib/ui/stdmenus.inc:100
+#: lib/ui/stdcontext.inc:284 lib/ui/stdcontext.inc:330 lib/ui/stdmenus.inc:100
 msgid "Paste Recent|e"
 msgstr "Liitä äskeinen"
 
-#: lib/ui/stdcontext.inc:285
+#: lib/ui/stdcontext.inc:286
 #, fuzzy
 msgid "Jump Back to Saved Bookmark|B"
 msgstr "Tallenna kirjanmerkki 1|T"
 
-#: lib/ui/stdcontext.inc:287 lib/ui/stdmenus.inc:107
+#: lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:107
 msgid "Move Paragraph Up|o"
 msgstr "Siirrä kappale ylöspäin"
 
-#: lib/ui/stdcontext.inc:288 lib/ui/stdmenus.inc:108
+#: lib/ui/stdcontext.inc:289 lib/ui/stdmenus.inc:108
 msgid "Move Paragraph Down|v"
 msgstr "Siirrä kappale alaspäin"
 
-#: lib/ui/stdcontext.inc:290
+#: lib/ui/stdcontext.inc:291
 #, fuzzy
 msgid "Promote Section|r"
 msgstr "Tyhjä Kappale"
 
-#: lib/ui/stdcontext.inc:291
+#: lib/ui/stdcontext.inc:292
 #, fuzzy
 msgid "Demote Section|m"
 msgstr "Tyhjä Kappale"
 
-#: lib/ui/stdcontext.inc:292
+#: lib/ui/stdcontext.inc:293
 #, fuzzy
 msgid "Move Section Down|D"
 msgstr "Sulje kappale"
 
-#: lib/ui/stdcontext.inc:293
+#: lib/ui/stdcontext.inc:294
 #, fuzzy
 msgid "Move Section Up|U"
 msgstr "Sulje kappale"
 
-#: lib/ui/stdcontext.inc:294
+#: lib/ui/stdcontext.inc:295
 #, fuzzy
 msgid "Insert Short Title|T"
 msgstr "Lyhyt otsikko"
 
-#: lib/ui/stdcontext.inc:296
+#: lib/ui/stdcontext.inc:297
 #, fuzzy
 msgid "Apply Last Text Style|A"
 msgstr "Tekstityyli"
 
-#: lib/ui/stdcontext.inc:297 lib/ui/stdmenus.inc:110
+#: lib/ui/stdcontext.inc:298 lib/ui/stdmenus.inc:110
 msgid "Text Style|S"
 msgstr "Tekstityyli"
 
-#: lib/ui/stdcontext.inc:298 lib/ui/stdmenus.inc:111
+#: lib/ui/stdcontext.inc:299 lib/ui/stdmenus.inc:111
 msgid "Paragraph Settings...|P"
 msgstr "Kappaleasetukset...|K"
 
-#: lib/ui/stdcontext.inc:300
+#: lib/ui/stdcontext.inc:301
 msgid "Fullscreen Mode"
 msgstr ""
 
-#: lib/ui/stdcontext.inc:308 lib/ui/stdmenus.inc:226
+#: lib/ui/stdcontext.inc:309 lib/ui/stdmenus.inc:226
 #, fuzzy
 msgid "Append Argument"
 msgstr "Lisäparametreja"
 
-#: lib/ui/stdcontext.inc:309 lib/ui/stdmenus.inc:227
+#: lib/ui/stdcontext.inc:310 lib/ui/stdmenus.inc:227
 #, fuzzy
 msgid "Remove Last Argument"
 msgstr "Listauksen parametrit"
 
-#: lib/ui/stdcontext.inc:311
+#: lib/ui/stdcontext.inc:312
 #, fuzzy
 msgid "Make First Non-Optional Into Optional Argument"
 msgstr "Listauksen parametrit"
 
-#: lib/ui/stdcontext.inc:312
+#: lib/ui/stdcontext.inc:313
 #, fuzzy
 msgid "Make Last Optional Into Non-Optional Argument"
 msgstr "Listauksen parametrit"
 
-#: lib/ui/stdcontext.inc:313 lib/ui/stdmenus.inc:231
+#: lib/ui/stdcontext.inc:314 lib/ui/stdmenus.inc:231
 #, fuzzy
 msgid "Insert Optional Argument"
 msgstr "Listauksen parametrit"
 
-#: lib/ui/stdcontext.inc:314 lib/ui/stdmenus.inc:232
+#: lib/ui/stdcontext.inc:315 lib/ui/stdmenus.inc:232
 #, fuzzy
 msgid "Remove Optional Argument"
 msgstr "Valinnaisen parametrin upote avattu"
 
-#: lib/ui/stdcontext.inc:316 lib/ui/stdmenus.inc:234
+#: lib/ui/stdcontext.inc:317 lib/ui/stdmenus.inc:234
 #, fuzzy
 msgid "Append Argument Eating From the Right"
 msgstr "Valinnaisen parametrin upote avattu"
 
-#: lib/ui/stdcontext.inc:317 lib/ui/stdmenus.inc:235
+#: lib/ui/stdcontext.inc:318 lib/ui/stdmenus.inc:235
 #, fuzzy
 msgid "Append Optional Argument Eating From the Right"
 msgstr "Valinnaisen parametrin upote avattu"
 
-#: lib/ui/stdcontext.inc:318 lib/ui/stdmenus.inc:236
+#: lib/ui/stdcontext.inc:319 lib/ui/stdmenus.inc:236
 #, fuzzy
 msgid "Remove Last Argument Spitting Out to the Right"
 msgstr "Valinnaisen parametrin upote avattu"
 
-#: lib/ui/stdcontext.inc:345 lib/ui/stdcontext.inc:357
+#: lib/ui/stdcontext.inc:346 lib/ui/stdcontext.inc:358
 #, fuzzy
 msgid "Edit Externally...|x"
 msgstr "Muokkaa tiedostoa ulkoisesti"
 
-#: lib/ui/stdcontext.inc:367 lib/ui/stdmenus.inc:173
+#: lib/ui/stdcontext.inc:368 lib/ui/stdmenus.inc:173
 msgid "Top Line|T"
 msgstr "Yläreuna|#ä"
 
-#: lib/ui/stdcontext.inc:368 lib/ui/stdmenus.inc:174
+#: lib/ui/stdcontext.inc:369 lib/ui/stdmenus.inc:174
 msgid "Bottom Line|B"
 msgstr "Alareuna|#A"
 
-#: lib/ui/stdcontext.inc:369 lib/ui/stdmenus.inc:175
+#: lib/ui/stdcontext.inc:370 lib/ui/stdmenus.inc:175
 msgid "Left Line|L"
 msgstr "Vasen reuna"
 
-#: lib/ui/stdcontext.inc:370 lib/ui/stdmenus.inc:176
+#: lib/ui/stdcontext.inc:371 lib/ui/stdmenus.inc:176
 msgid "Right Line|R"
 msgstr "Oikea reuna|#O"
 
-#: lib/ui/stdcontext.inc:382 lib/ui/stdmenus.inc:191
+#: lib/ui/stdcontext.inc:383 lib/ui/stdmenus.inc:191
 msgid "Copy Row|o"
 msgstr "Kopioi rivi"
 
-#: lib/ui/stdcontext.inc:387 lib/ui/stdmenus.inc:196
+#: lib/ui/stdcontext.inc:388 lib/ui/stdmenus.inc:196
 msgid "Copy Column|p"
 msgstr "Kopioi sarake"
 
@@ -15547,22 +15552,22 @@ msgstr ""
 msgid "Statistics"
 msgstr "Tila"
 
-#: src/BufferView.cpp:2145
+#: src/BufferView.cpp:2151
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Lisätään asiakirja %1$s..."
 
-#: src/BufferView.cpp:2156
+#: src/BufferView.cpp:2162
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Asiakirja %1$s lisätty."
 
-#: src/BufferView.cpp:2158
+#: src/BufferView.cpp:2164
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Asiakirjaa %1$s ei voi lisätä"
 
-#: src/BufferView.cpp:2420
+#: src/BufferView.cpp:2426
 #, fuzzy, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15570,26 +15575,26 @@ msgid ""
 "due to the error: %2$s"
 msgstr "Asiakirjan %1$s avaaminen epäonnistui."
 
-#: src/BufferView.cpp:2422
+#: src/BufferView.cpp:2428
 msgid "Could not read file"
 msgstr "Ei voitu lukea tiedostoa"
 
-#: src/BufferView.cpp:2429
+#: src/BufferView.cpp:2435
 #, fuzzy, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr "%1$s ei voitu lukea"
 
-#: src/BufferView.cpp:2430 src/output.cpp:39
+#: src/BufferView.cpp:2436 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Ei voitu avata tiedostoa"
 
-#: src/BufferView.cpp:2437
+#: src/BufferView.cpp:2443
 msgid "Reading not UTF-8 encoded file"
 msgstr "Luen ei-UTF-8-koodattua tiedostoa"
 
-#: src/BufferView.cpp:2438
+#: src/BufferView.cpp:2444
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -16030,7 +16035,7 @@ msgstr "tulostiedosto on tyhjä"
 msgid "An empty output file was generated."
 msgstr "Saatiin tyhjä tulostiedosto."
 
-#: src/CutAndPaste.cpp:564
+#: src/CutAndPaste.cpp:566
 #, fuzzy, c-format
 msgid ""
 "Flex inset %1$s is undefined because of class conversion from\n"
@@ -16039,7 +16044,7 @@ msgstr ""
 "Merkkityyli %1$s on määrittämätön luokkamuunnoksen johdosta \n"
 "luokasta %3$s luokaksi %4$s"
 
-#: src/CutAndPaste.cpp:571
+#: src/CutAndPaste.cpp:573
 #, fuzzy
 msgid "Undefined flex inset"
 msgstr "Tekstiupote avattiin"
@@ -16282,7 +16287,7 @@ msgstr "MakeIndex/nomencl on käynnissä."
 msgid "Could not read configuration file"
 msgstr "En voinut lukea asetustiedostoa"
 
-#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1473
+#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1477
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -16607,7 +16612,7 @@ msgstr "Perutaanko kaikki muokkaukset?"
 msgid "&Revert"
 msgstr "Hylkää muutokset"
 
-#: src/LyXFunc.cpp:1067 src/Text3.cpp:1567
+#: src/LyXFunc.cpp:1067 src/Text3.cpp:1593
 msgid "Missing argument"
 msgstr "Argumentti puuttuu"
 
@@ -16649,21 +16654,21 @@ msgstr "LyX VC: Lokiviesti"
 msgid "Directory is not accessible."
 msgstr "%1$s ei voitu lukea"
 
-#: src/LyXFunc.cpp:1855
+#: src/LyXFunc.cpp:1856
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "Asiakirja %1$s avautui."
 
-#: src/LyXFunc.cpp:1857
+#: src/LyXFunc.cpp:1858
 #, fuzzy, c-format
 msgid "Could not reload document %1$s"
 msgstr "Asiakirjan lukeminen epäonnistui"
 
-#: src/LyXFunc.cpp:1894
+#: src/LyXFunc.cpp:1895
 msgid "Welcome to LyX!"
 msgstr "Tervetuloa LyXiin!"
 
-#: src/LyXFunc.cpp:1915
+#: src/LyXFunc.cpp:1916
 msgid "Converting document to new document class..."
 msgstr "Asiakirja muuntuu toiseen asiakirjaluokkaan sopivaksi..."
 
@@ -17259,38 +17264,38 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Ladataanko levyllä oleva versio muistissa olevan asiakirjan päälle?"
 
-#: src/Paragraph.cpp:1585 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1594 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "Järjetöntä tällä kappaletyylillä!"
 
-#: src/Paragraph.cpp:1651
+#: src/Paragraph.cpp:1660
 msgid "Alignment not permitted"
 msgstr ""
 
-#: src/Paragraph.cpp:1652
+#: src/Paragraph.cpp:1661
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
 
-#: src/Paragraph.cpp:2134 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2143 src/frontends/qt4/LaTeXHighlighter.cpp:108
 #: src/insets/InsetListings.cpp:185 src/insets/InsetListings.cpp:193
 #: src/insets/InsetListings.cpp:217 src/mathed/InsetMathString.cpp:165
 #, fuzzy
 msgid "LyX Warning: "
 msgstr "LyX-versio "
 
-#: src/Paragraph.cpp:2135 src/insets/InsetListings.cpp:186
+#: src/Paragraph.cpp:2144 src/insets/InsetListings.cpp:186
 #: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:166
 #, fuzzy
 msgid "uncodable character"
 msgstr "erikoismerkki"
 
-#: src/Paragraph.cpp:2498
+#: src/Paragraph.cpp:2507
 msgid "Memory problem"
 msgstr ""
 
-#: src/Paragraph.cpp:2498
+#: src/Paragraph.cpp:2507
 msgid "Paragraph not properly initialized"
 msgstr ""
 
@@ -17400,7 +17405,7 @@ msgstr "Ei mitään hakemistossa!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Hakemistoon voi lisätä vain yhden kappaleen!"
 
-#: src/Text3.cpp:186 src/mathed/InsetMathHull.cpp:1484
+#: src/Text3.cpp:186 src/mathed/InsetMathHull.cpp:1506
 msgid "Math editor mode"
 msgstr "Matematiikkaeditoritila"
 
@@ -17408,23 +17413,23 @@ msgstr "Matematiikkaeditoritila"
 msgid "No valid math formula"
 msgstr ""
 
-#: src/Text3.cpp:844
+#: src/Text3.cpp:870
 msgid "Unknown spacing argument: "
 msgstr "Tuntematon väliparametri: "
 
-#: src/Text3.cpp:1122
+#: src/Text3.cpp:1148
 msgid "Layout "
 msgstr "Muotoilu "
 
-#: src/Text3.cpp:1123
+#: src/Text3.cpp:1149
 msgid " not known"
 msgstr " tuntematon"
 
-#: src/Text3.cpp:1684 src/Text3.cpp:1696
+#: src/Text3.cpp:1710 src/Text3.cpp:1722
 msgid "Character set"
 msgstr "Merkistö"
 
-#: src/Text3.cpp:1844 src/Text3.cpp:1855
+#: src/Text3.cpp:1870 src/Text3.cpp:1881
 msgid "Paragraph layout set"
 msgstr "Kappaletyyli asetettu"
 
@@ -17793,7 +17798,7 @@ msgid ""
 "unsaved documents and exit."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1472
+#: src/frontends/qt4/GuiApplication.cpp:1476
 #, fuzzy
 msgid "Could not find UI definition file"
 msgstr "En voinut lukea asetustiedostoa"
@@ -20895,14 +20900,13 @@ msgstr "Kova välilyönti|K"
 msgid "Unknown TOC type"
 msgstr "Tuntematon sisällysluettelotyyppi"
 
-#: src/insets/InsetTabular.cpp:3207
+#: src/insets/InsetTabular.cpp:3213
 msgid "Opened table"
 msgstr "Avaa taulukko"
 
-#: src/insets/InsetTabular.cpp:4009
-#, fuzzy
-msgid "You cannot paste into a multicell selection."
-msgstr "Monisarake ei toimi pystysuuntaan."
+#: src/insets/InsetTabular.cpp:4023
+msgid "Selection size should match clipboard content."
+msgstr ""
 
 #: src/insets/InsetText.cpp:227
 msgid "Opened Text Inset"
@@ -21069,7 +21073,7 @@ msgstr " merkkijonoa korvattu."
 msgid " Macro: %1$s: "
 msgstr " Makro: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1393
+#: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1414
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -21106,34 +21110,34 @@ msgstr "Ei ole vline poistettavana"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Tuntematon taulukon ominaisuus '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1189 src/mathed/InsetMathHull.cpp:1197
+#: src/mathed/InsetMathHull.cpp:1190 src/mathed/InsetMathHull.cpp:1198
 msgid "No number"
 msgstr "Ei numeroa"
 
-#: src/mathed/InsetMathHull.cpp:1189 src/mathed/InsetMathHull.cpp:1197
+#: src/mathed/InsetMathHull.cpp:1190 src/mathed/InsetMathHull.cpp:1198
 msgid "Number"
 msgstr "Numero"
 
-#: src/mathed/InsetMathHull.cpp:1366
+#: src/mathed/InsetMathHull.cpp:1387
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "En voi muuttaa rivien määrä kohteessa '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1376
+#: src/mathed/InsetMathHull.cpp:1397
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "En voi muuttaa sarakkeiden määrä kohteessa '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1386
+#: src/mathed/InsetMathHull.cpp:1407
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "En voi lisätä vaakaviivat kohteeseen '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:969
+#: src/mathed/InsetMathNest.cpp:964
 msgid "create new math text environment ($...$)"
 msgstr "luo uusi matematiikkatekstiympäristö ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:972
+#: src/mathed/InsetMathNest.cpp:967
 msgid "entered math text mode (textrm)"
 msgstr "siirryttiin matikkamoodiin (textrm)"
 
@@ -21342,6 +21346,10 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Tuntematon käyttäjä"
+
+#, fuzzy
+#~ msgid "You cannot paste into a multicell selection."
+#~ msgstr "Monisarake ei toimi pystysuuntaan."
 
 #, fuzzy
 #~ msgid "Check in Changes...|I"
