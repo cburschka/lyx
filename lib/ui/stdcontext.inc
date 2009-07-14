@@ -52,6 +52,7 @@ Menuset
 		Submenu "AMS Environment|A" "ams_environment"
 		Separator
 		OptItem "Equation Label|L" "label-insert"
+		OptItem "Copy as Reference|R" "copy-label-as-reference"
 		OptItem "Number Whole Formula|N" "math-number-toggle"
 		OptItem "Number This Line|u" "math-number-line-toggle"
 		Separator
