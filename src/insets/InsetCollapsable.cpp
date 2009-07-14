@@ -169,18 +169,8 @@ void InsetCollapsable::read(Lexer & lex)
 	if (tmp_token == "open")
 		status_ = Open;
 
-	// this must be set before we enter InsetText::read()
 	InsetText::read(lex);
 	setButtonLabel();
-
-	// Force default font, if so requested
-	// This avoids paragraphs in buffer language that would have a
-	// foreign language after a document language change, and it ensures
-	// that all new text in ERT and similar gets the "latex" language,
-	// since new text inherits the language from the last position of the
-	// existing text.  As a side effect this makes us also robust against
-	// bugs in LyX that might lead to font changes in ERT in .lyx files.
-	fixParagraphsFont();
 }
 
 
