@@ -2802,7 +2802,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_TEXTSTYLE_UPDATE:
 	case LFUN_TOC_INSERT:
 	case LFUN_WRAP_INSERT:
-		if (!cur.inset().getLayout().isPassThru())
+		if (cur.inset().getLayout().isPassThru())
 			enable = false;
 		break;
 	default:
