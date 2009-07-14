@@ -125,8 +125,6 @@ public:
 	ColorCode backgroundColor() const { return getLayout().bgcolor(); }
 	///
 	ColorCode labelColor() const { return getLayout().labelfont().color(); }
-	///
-	int docbook(odocstream &, OutputParams const &) const;
 	/// It will rarely be right to call this from subclasses, due
 	/// to the fact that it steps counters, etc. Instead, call
 	/// InsetText::xhtml().
@@ -136,9 +134,6 @@ public:
 
 	///
 	virtual bool usePlainLayout() const { return true; }
-	/// Is this inset's layout defined in the document's textclass?
-	/// May be wrong after textclass change or paste from another document
-	bool undefined() const;
 	/// the string that is passed to the TOC
 	void tocString(odocstream &) const;
 	///

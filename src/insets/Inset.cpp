@@ -465,6 +465,13 @@ InsetLayout const & Inset::getLayout() const
 }
 
 
+bool Inset::undefined() const
+{
+	docstring const & n = getLayout().name();
+	return n.empty() || n == DocumentClass::plainInsetLayout().name();
+}
+
+
 void Inset::dump() const
 {
 	write(lyxerr);

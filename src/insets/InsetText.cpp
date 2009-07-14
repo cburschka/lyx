@@ -445,7 +445,17 @@ int InsetText::plaintext(odocstream & os, OutputParams const & runparams) const
 
 int InsetText::docbook(odocstream & os, OutputParams const & runparams) const
 {
+	ParagraphList::const_iterator const beg = paragraphs().begin();
+
+	if (!undefined())
+		sgml::openTag(os, getLayout().latexname(),
+			      beg->getID(buffer(), runparams) + getLayout().latexparam());
+
 	docbookParagraphs(paragraphs(), buffer(), os, runparams);
+
+	if (!undefined())
+		sgml::closeTag(os, getLayout().latexname());
+
 	return 0;
 }
 

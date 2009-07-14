@@ -616,31 +616,6 @@ InsetLayout::InsetDecoration InsetCollapsable::decoration() const
 }
 
 
-// FIXME It seems as if it ought to be possible to do this more simply,
-// maybe by calling InsetText::docbook() in the middle there.
-int InsetCollapsable::docbook(odocstream & os, OutputParams const & runparams) const
-{
-	ParagraphList::const_iterator const beg = paragraphs().begin();
-	ParagraphList::const_iterator par = paragraphs().begin();
-	ParagraphList::const_iterator const end = paragraphs().end();
-
-	if (!undefined())
-		sgml::openTag(os, getLayout().latexname(),
-			      par->getID(buffer(), runparams) + getLayout().latexparam());
-
-	for (; par != end; ++par) {
-		par->simpleDocBookOnePar(buffer(), os, runparams,
-					 outerFont(distance(beg, par),
-						   paragraphs()));
-	}
-
-	if (!undefined())
-		sgml::closeTag(os, getLayout().latexname());
-
-	return 0;
-}
-
-
 docstring InsetCollapsable::xhtml(odocstream & os, OutputParams const & runparams) const
 {
 	InsetLayout const & il = getLayout();
@@ -665,13 +640,6 @@ docstring InsetCollapsable::xhtml(odocstream & os, OutputParams const & runparam
 	if (opened)
 		html::closeTag(os, il.htmltag());
 	return deferred;
-}
-
-
-bool InsetCollapsable::undefined() const
-{
-	docstring const & n = getLayout().name();
-	return n.empty() || n == DocumentClass::plainInsetLayout().name();
 }
 
 

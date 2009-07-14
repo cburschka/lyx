@@ -576,20 +576,17 @@ void switchBetweenClasses(DocumentClass const * const oldone,
 	// character styles
 	InsetIterator const i_end = inset_iterator_end(in);
 	for (InsetIterator it = inset_iterator_begin(in); it != i_end; ++it) {
-		InsetCollapsable * inset = it->asInsetCollapsable();
-		if (!inset)
-			continue;
-		if (inset->lyxCode() != FLEX_CODE)
+		if (it->lyxCode() != FLEX_CODE)
 			// FIXME: Should we verify all InsetCollapsable?
 			continue;
-		if (!inset->undefined())
+		if (!it->undefined())
 			continue;
 		// The flex inset is undefined in newtc
 		docstring const s = bformat(_(
 			"Flex inset %1$s is "
 			"undefined because of class "
 			"conversion from\n%2$s to %3$s"),
-			inset->name(), from_utf8(oldtc.name()),
+			it->name(), from_utf8(oldtc.name()),
 			from_utf8(newtc.name()));
 		// To warn the user that something had to be done.
 		errorlist.push_back(ErrorItem(

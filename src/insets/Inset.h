@@ -383,6 +383,8 @@ public:
 	virtual docstring name() const;
 	///
 	virtual InsetLayout const & getLayout() const;
+	/// Is this inset's layout defined in the document's textclass?
+	bool undefined() const;
 	/// used to toggle insets
 	/// is the inset open?
 	/// should this inset be handled like a normal charater
