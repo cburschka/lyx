@@ -1227,7 +1227,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetCommandParams p(REF_CODE, "ref");
 		p["reference"] = label(row);
 		cap::clearSelection();
-		cap::copyInset(cur, new InsetRef(*cur.buffer(), p), label(row));
+		cap::copyInset(cur, new InsetRef(cur.buffer(), p), label(row));
 		break;
 	}
 
