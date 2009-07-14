@@ -240,8 +240,8 @@ static bool doInsertInset(Cursor & cur, Text * text,
 		if (edit)
 			inset->edit(cur, true);
 		// Now put this into inset
-		static_cast<InsetCollapsable *>(inset)->
-				text().insertStringAsParagraphs(cur, ds);
+		cur.text()->insertStringAsLines(cur, ds);
+		cur.leaveInset(*inset);
 		return true;
 	}
 
