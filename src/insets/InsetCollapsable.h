@@ -125,17 +125,11 @@ public:
 	ColorCode backgroundColor() const { return getLayout().bgcolor(); }
 	///
 	ColorCode labelColor() const { return getLayout().labelfont().color(); }
-	/// It will rarely be right to call this from subclasses, due
-	/// to the fact that it steps counters, etc. Instead, call
-	/// InsetText::xhtml().
-	docstring xhtml(odocstream &, OutputParams const &) const;
 	///
 	InsetCode lyxCode() const { return COLLAPSABLE_CODE; }
 
 	///
 	virtual bool usePlainLayout() const { return true; }
-	/// the string that is passed to the TOC
-	void tocString(odocstream &) const;
 	///
 	virtual docstring contextMenu(BufferView const & bv, int x, int y) const;
 protected:
@@ -154,12 +148,6 @@ private:
 	///
 	Dimension dimensionCollapsed(BufferView const & bv) const;
 	///
-	/// should paragraphs be forced to use the empty layout?
-	virtual bool forcePlainLayout(idx_type = 0) const 
-		{ return getLayout().forcePlainLayout(); }
-	/// should the user be allowed to customize alignment, etc.?
-	virtual bool allowParagraphCustomization(idx_type = 0) const 
-		{ return getLayout().allowParagraphCustomization(); }
 	docstring labelstring_;
 	///
 	mutable Box button_dim;

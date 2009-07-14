@@ -139,14 +139,23 @@ public:
 	///
 	bool insetAllowed(InsetCode) const { return true; }
 	/// Allow spellchecking, except for insets with latex_language
-	bool allowSpellCheck() const { return !forceLTR(); }
+	bool allowSpellCheck() const { return !getLayout().isPassThru(); }
 	///
 	virtual bool isMacroScope() const { return false; }
 	///
 	virtual bool allowMultiPar() const { return getLayout().isMultiPar(); }
+	///
+	/// should paragraphs be forced to use the empty layout?
+	virtual bool forcePlainLayout(idx_type = 0) const 
+		{ return getLayout().forcePlainLayout(); }
+	/// should the user be allowed to customize alignment, etc.?
+	virtual bool allowParagraphCustomization(idx_type = 0) const 
+		{ return getLayout().allowParagraphCustomization(); }
 
 	/// Update the counters of this inset and of its contents
 	virtual void updateLabels(ParIterator const &);
+	/// the string that is passed to the TOC
+	void tocString(odocstream &) const;
 	///
 	void addToToc(DocIterator const &);
 	///

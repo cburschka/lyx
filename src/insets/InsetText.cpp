@@ -269,9 +269,7 @@ void InsetText::doDispatch(Cursor & cur, FuncRequest & cmd)
 	LYXERR(Debug::ACTION, "InsetText::doDispatch()"
 		<< " [ cmd.action = " << cmd.action << ']');
 
-	// FIXME this use of forceLTR is dubious
-	// introduced in http://www.lyx.org/trac/changeset/21285
-	if (forceLTR()) {
+	if (getLayout().isPassThru()) {
 		// Force any new text to latex_language FIXME: This
 		// should only be necessary in constructor, but new
 		// paragraphs that are created by pressing enter at
@@ -334,9 +332,8 @@ bool InsetText::getStatus(Cursor & cur, FuncRequest const & cmd,
 void InsetText::fixParagraphsFont()
 {
 	Font font(inherit_font, buffer().params().language);
-	if (getLayout().isForceLtr())
-		font.setLanguage(latex_language);
 	if (getLayout().isPassThru()) {
+		font.setLanguage(latex_language);
 		ParagraphList::iterator par = paragraphs().begin();
 		ParagraphList::iterator const end = paragraphs().end();
 		while (par != end) {
@@ -367,6 +364,14 @@ void InsetText::acceptChanges()
 void InsetText::rejectChanges()
 {
 	text_.rejectChanges(buffer().params());
+}
+
+
+void InsetText::validate(LaTeXFeatures & features) const
+{
+	features.useInsetLayout(getLayout());
+	for_each(paragraphs().begin(), paragraphs().end(),
+		 bind(&Paragraph::validate, _1, ref(features)));
 }
 
 
@@ -462,16 +467,32 @@ int InsetText::docbook(odocstream & os, OutputParams const & runparams) const
 
 docstring InsetText::xhtml(odocstream & os, OutputParams const & runparams) const
 {
+	InsetLayout const & il = getLayout();
+	if (undefined()) {
+		xhtmlParagraphs(paragraphs(), buffer(), os, runparams);
+		return docstring();
+	}
+
+	bool const opened = html::openTag(os, il.htmltag(), il.htmlattr());
+	if (!il.counter().empty()) {
+		BufferParams const & bp = buffer().masterBuffer()->params();
+		Counters & cntrs = bp.documentClass().counters();
+		cntrs.step(il.counter());
+		// FIXME: translate to paragraph language
+		if (!il.htmllabel().empty())
+			os << cntrs.counterLabel(from_utf8(il.htmllabel()), bp.language->code());
+	}
+	bool innertag_opened = false;
+	if (!il.htmlinnertag().empty())
+		innertag_opened = html::openTag(os, il.htmlinnertag(), il.htmlinnerattr());
+
 	xhtmlParagraphs(paragraphs(), buffer(), os, runparams);
+
+	if (innertag_opened)
+		html::closeTag(os, il.htmlinnertag());
+	if (opened)
+		html::closeTag(os, il.htmltag());
 	return docstring();
-}
-
-
-void InsetText::validate(LaTeXFeatures & features) const
-{
-	features.useInsetLayout(getLayout());
-	for_each(paragraphs().begin(), paragraphs().end(),
-		 bind(&Paragraph::validate, _1, ref(features)));
 }
 
 
@@ -597,6 +618,15 @@ void InsetText::updateLabels(ParIterator const & it)
 		tclass.counters() = savecnt;
 	}
 }
+
+
+void InsetText::tocString(odocstream & os) const
+{
+	if (!getLayout().isInToc())
+		return;
+	os << text().asString(0, 1, AS_STR_LABEL | AS_STR_INSETS);
+}
+
 
 
 void InsetText::addToToc(DocIterator const & cdit)

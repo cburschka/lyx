@@ -616,33 +616,6 @@ InsetLayout::InsetDecoration InsetCollapsable::decoration() const
 }
 
 
-docstring InsetCollapsable::xhtml(odocstream & os, OutputParams const & runparams) const
-{
-	InsetLayout const & il = getLayout();
-	if (undefined())
-		return InsetText::xhtml(os, runparams);
-
-	bool const opened = html::openTag(os, il.htmltag(), il.htmlattr());
-	if (!il.counter().empty()) {
-		BufferParams const & bp = buffer().masterBuffer()->params();
-		Counters & cntrs = bp.documentClass().counters();
-		cntrs.step(il.counter());
-		// FIXME: translate to paragraph language
-		if (!il.htmllabel().empty())
-			os << cntrs.counterLabel(from_utf8(il.htmllabel()), bp.language->code());
-	}
-	bool innertag_opened = false;
-	if (!il.htmlinnertag().empty())
-		innertag_opened = html::openTag(os, il.htmlinnertag(), il.htmlinnerattr());
-	docstring deferred = InsetText::xhtml(os, runparams);
-	if (innertag_opened)
-		html::closeTag(os, il.htmlinnertag());
-	if (opened)
-		html::closeTag(os, il.htmltag());
-	return deferred;
-}
-
-
 docstring InsetCollapsable::contextMenu(BufferView const & bv, int x,
 	int y) const
 {
@@ -658,13 +631,5 @@ docstring InsetCollapsable::contextMenu(BufferView const & bv, int x,
 
 	return InsetText::contextMenu(bv, x, y);
 }
-
-void InsetCollapsable::tocString(odocstream & os) const
-{
-	if (!getLayout().isInToc())
-		return;
-	os << text().asString(0, 1, AS_STR_LABEL | AS_STR_INSETS);
-}
-
 
 } // namespace lyx

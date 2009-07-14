@@ -111,7 +111,7 @@ public:
 	///
 	bool isKeepEmpty() const { return keepempty_; };
 	///
-	bool isForceLtr() const { return forceltr_; };
+	bool forceLTR() const { return forceltr_; };
 	///
 	bool isInToc() const { return intoc_; };
 private:

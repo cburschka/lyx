@@ -173,7 +173,7 @@ bool Inset::allowEmpty() const
 
 bool Inset::forceLTR() const
 {
-	return getLayout().isForceLtr();
+	return getLayout().forceLTR();
 }
 
 void Inset::initView()
