@@ -1,3 +1,5 @@
+#include <config.h>
+
 #include "../filetools.h"
 #include "../FileName.h"
 
