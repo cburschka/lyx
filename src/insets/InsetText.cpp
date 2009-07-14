@@ -238,12 +238,6 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-docstring InsetText::editMessage() const
-{
-	return _("Opened Text Inset");
-}
-
-
 void InsetText::edit(Cursor & cur, bool front, EntryDirection entry_from)
 {
 	pit_type const pit = front ? 0 : paragraphs().size() - 1;

@@ -47,8 +47,6 @@ private:
 	///
 	void write(std::ostream & os) const;
 	///
-	docstring editMessage() const;
-	///
 	bool insetAllowed(InsetCode code) const;
 	///
 	int plaintext(odocstream &, OutputParams const &) const;

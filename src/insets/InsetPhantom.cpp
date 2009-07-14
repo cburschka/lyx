@@ -126,12 +126,6 @@ InsetPhantom::~InsetPhantom()
 }
 
 
-docstring InsetPhantom::editMessage() const
-{
-	return _("Opened Phantom Inset");
-}
-
-
 docstring InsetPhantom::name() const 
 {
 	return from_ascii("Phantom:" + phantomtranslator().find(params_.type));

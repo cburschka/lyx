@@ -51,12 +51,6 @@ InsetBranch::~InsetBranch()
 }
 
 
-docstring InsetBranch::editMessage() const
-{
-	return _("Opened Branch Inset");
-}
-
-
 void InsetBranch::write(ostream & os) const
 {
 	params_.write(os);

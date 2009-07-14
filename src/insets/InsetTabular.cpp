@@ -3295,12 +3295,6 @@ void InsetTabular::drawCellLines(Painter & pain, int x, int y,
 }
 
 
-docstring InsetTabular::editMessage() const
-{
-	return _("Opened table");
-}
-
-
 void InsetTabular::edit(Cursor & cur, bool front, EntryDirection)
 {
 	//lyxerr << "InsetTabular::edit: " << this << endl;

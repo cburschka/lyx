@@ -751,8 +751,6 @@ public:
 	///
 	void drawSelection(PainterInfo & pi, int x, int y) const;
 	///
-	docstring editMessage() const;
-	///
 	bool editable() const { return true; }
 	///
 	bool hasSettings() const { return true; }

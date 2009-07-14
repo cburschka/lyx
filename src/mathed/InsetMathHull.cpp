@@ -1554,12 +1554,6 @@ void InsetMathHull::edit(Cursor & cur, bool front, EntryDirection entry_from)
 }
 
 
-docstring InsetMathHull::editMessage() const
-{
-	return _("Math editor mode");
-}
-
-
 void InsetMathHull::revealCodes(Cursor & cur) const
 {
 	if (!cur.inMathed())

@@ -46,12 +46,6 @@ InsetLayout::InsetDecoration InsetFlex::decoration() const
 }
 
 
-docstring InsetFlex::editMessage() const
-{
-	return _("Opened Flex Inset");
-}
-
-
 void InsetFlex::write(ostream & os) const
 {
 	os << "Flex " <<

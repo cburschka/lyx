@@ -58,8 +58,6 @@ public:
 	InsetNoteParams const & params() const { return params_; }
 private:
 	///
-	docstring editMessage() const;
-	///
 	InsetCode lyxCode() const { return NOTE_CODE; }
 	///
 	docstring name() const;

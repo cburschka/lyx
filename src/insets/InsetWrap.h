@@ -73,8 +73,6 @@ private:
 	///
 	docstring xhtml(odocstream &, OutputParams const &) const;
 	///
-	docstring editMessage() const;
-	///
 	bool insetAllowed(InsetCode) const;
 	///
 	bool showInsetDialog(BufferView *) const;

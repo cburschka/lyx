@@ -107,12 +107,6 @@ InsetBox::~InsetBox()
 }
 
 
-docstring InsetBox::editMessage() const
-{
-	return _("Opened Box Inset");
-}
-
-
 docstring InsetBox::name() const 
 {
 	// FIXME: UNICODE

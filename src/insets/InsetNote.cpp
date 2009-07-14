@@ -128,12 +128,6 @@ InsetNote::~InsetNote()
 }
 
 
-docstring InsetNote::editMessage() const
-{
-	return _("Opened Note Inset");
-}
-
-
 docstring InsetNote::name() const 
 {
 	return from_ascii("Note:" + notetranslator().find(params_.type));

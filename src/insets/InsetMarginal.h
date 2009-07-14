@@ -35,8 +35,6 @@ public:
 	///
 	int docbook(odocstream &, OutputParams const & runparams) const;
 	///
-	docstring editMessage() const;
-	///
 	void addToToc(DocIterator const &);
 private:
 	///

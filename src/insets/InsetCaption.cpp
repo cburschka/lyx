@@ -76,12 +76,6 @@ void InsetCaption::read(Lexer & lex)
 }
 
 
-docstring InsetCaption::editMessage() const
-{
-	return _("Opened Caption Inset");
-}
-
-
 void InsetCaption::cursorPos(BufferView const & bv,
 		CursorSlice const & sl, bool boundary, int & x, int & y) const
 {

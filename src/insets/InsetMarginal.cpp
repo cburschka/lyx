@@ -29,12 +29,6 @@ InsetMarginal::InsetMarginal(Buffer const & buf)
 {}
 
 
-docstring InsetMarginal::editMessage() const
-{
-	return _("Opened Marginal Note Inset");
-}
-
-
 int InsetMarginal::plaintext(odocstream & os,
 			     OutputParams const & runparams) const
 {

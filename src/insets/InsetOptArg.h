@@ -39,8 +39,6 @@ private:
 	InsetCode lyxCode() const { return OPTARG_CODE; }
 	///
 	docstring name() const { return from_ascii("OptArg"); }
-	/// return an message upon editing
-	docstring editMessage() const;
 	/// Standard LaTeX output -- short-circuited
 	int latex(odocstream &, OutputParams const &) const;
 	/// Standard plain text output -- short-circuited

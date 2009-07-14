@@ -91,8 +91,6 @@ private:
 	///
 	docstring xhtml(odocstream &, OutputParams const &) const;
 	///
-	docstring editMessage() const;
-	///
 	bool insetAllowed(InsetCode) const;
 	/** returns true if, when outputing LaTeX, font changes should
 	    be closed before generating this inset. This is needed for

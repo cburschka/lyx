@@ -62,8 +62,6 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	docstring editMessage() const;
-	///
 	bool editable() const { return true; }
 	///
 	bool canTrackChanges() const { return true; }

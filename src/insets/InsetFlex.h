@@ -27,8 +27,6 @@ public:
 	///
 	docstring name() const { return from_utf8(name_); }
 	///
-	docstring editMessage() const;
-	///
 	InsetCode lyxCode() const { return FLEX_CODE; }
 	/// Default looks
 	InsetLayout::InsetDecoration decoration() const;

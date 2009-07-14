@@ -63,12 +63,6 @@ void InsetERT::write(ostream & os) const
 }
 
 
-docstring InsetERT::editMessage() const
-{
-	return _("Opened ERT Inset");
-}
-
-
 int InsetERT::plaintext(odocstream &, OutputParams const &) const
 {
 	return 0; // do not output TeX code

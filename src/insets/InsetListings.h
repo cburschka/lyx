@@ -53,8 +53,6 @@ private:
 	///
 	void read(Lexer & lex);
 	///
-	docstring editMessage() const;
-	///
 	int latex(odocstream &, OutputParams const &) const;
 	///
 	docstring xhtml(odocstream &, OutputParams const &) const;

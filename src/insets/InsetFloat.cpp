@@ -274,12 +274,6 @@ void InsetFloat::validate(LaTeXFeatures & features) const
 }
 
 
-docstring InsetFloat::editMessage() const
-{
-	return _("Opened Float Inset");
-}
-
-
 docstring InsetFloat::xhtml(odocstream & os, OutputParams const & rp) const
 {
 	FloatList const & floats = buffer().params().documentClass().floats();

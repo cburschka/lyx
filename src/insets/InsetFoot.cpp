@@ -39,12 +39,6 @@ InsetFoot::InsetFoot(Buffer const & buf)
 {}
 
 
-docstring InsetFoot::editMessage() const
-{
-	return _("Opened Footnote Inset");
-}
-
-
 void InsetFoot::updateLabels(ParIterator const & it)
 {
 	BufferParams const & bp = buffer().masterBuffer()->params();

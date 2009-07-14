@@ -299,8 +299,6 @@ public:
 	/// the string that is passed to the TOC
 	virtual void tocString(odocstream &) const {}
 
-	/// what appears in the minibuffer when opening
-	virtual docstring editMessage() const;
 	/// can the contents of the inset be edited on screen ?
 	// true for InsetCollapsables (not ButtonOnly) (not InsetInfo), InsetText
 	virtual bool editable() const;

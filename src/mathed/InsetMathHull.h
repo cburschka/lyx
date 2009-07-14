@@ -205,8 +205,6 @@ private:
 // Incorporate me
 //
 public:
-	/// what appears in the minibuffer when opening
-	docstring editMessage() const;
 	///
 	virtual void mutateToText();
 	///

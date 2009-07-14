@@ -377,12 +377,6 @@ bool Inset::autoDelete() const
 }
 
 
-docstring Inset::editMessage() const
-{
-	return _("Opened inset");
-}
-
-
 void Inset::cursorPos(BufferView const & /*bv*/, CursorSlice const &,
 		bool, int & x, int & y) const
 {

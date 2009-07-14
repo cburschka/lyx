@@ -123,12 +123,6 @@ void InsetListings::read(Lexer & lex)
 }
 
 
-docstring InsetListings::editMessage() const
-{
-	return _("Opened Listing Inset");
-}
-
-
 int InsetListings::latex(odocstream & os, OutputParams const & runparams) const
 {
 	string param_string = params().params();

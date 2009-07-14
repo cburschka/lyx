@@ -49,6 +49,29 @@ using namespace std;
 
 namespace lyx {
 
+InsetCollapsable::InsetCollapsable(Buffer const & buf, InsetText::UsePlain ltype)
+	: InsetText(buf, ltype), status_(Inset::Open),
+	  openinlined_(false), mouse_hover_(false)
+{
+	setAutoBreakRows(true);
+	setDrawFrame(true);
+	setFrameColor(Color_collapsableframe);
+}
+
+
+InsetCollapsable::InsetCollapsable(InsetCollapsable const & rhs)
+	: InsetText(rhs),
+	  status_(rhs.status_),
+	  labelstring_(rhs.labelstring_),
+	  button_dim(rhs.button_dim),
+	  openinlined_(rhs.openinlined_),
+	  auto_open_(rhs.auto_open_),
+	  // the sole purpose of this copy constructor
+	  mouse_hover_(false)
+{
+}
+
+
 InsetCollapsable::CollapseStatus InsetCollapsable::status(BufferView const & bv) const
 {
 	if (decoration() == InsetLayout::CONGLOMERATE)
@@ -102,29 +125,6 @@ InsetCollapsable::Geometry InsetCollapsable::geometry() const
 	// dummy return value to shut down a warning,
 	// this is dead code.
 	return NoButton;
-}
-
-
-InsetCollapsable::InsetCollapsable(Buffer const & buf, InsetText::UsePlain ltype)
-	: InsetText(buf, ltype), status_(Inset::Open),
-	  openinlined_(false), mouse_hover_(false)
-{
-	setAutoBreakRows(true);
-	setDrawFrame(true);
-	setFrameColor(Color_collapsableframe);
-}
-
-
-InsetCollapsable::InsetCollapsable(InsetCollapsable const & rhs)
-	: InsetText(rhs),
-	  status_(rhs.status_),
-	  labelstring_(rhs.labelstring_),
-	  button_dim(rhs.button_dim),
-	  openinlined_(rhs.openinlined_),
-	  auto_open_(rhs.auto_open_),
-	  // the sole purpose of this copy constructor
-	  mouse_hover_(false)
-{
 }
 
 

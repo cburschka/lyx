@@ -173,12 +173,6 @@ void InsetWrap::validate(LaTeXFeatures & features) const
 }
 
 
-docstring InsetWrap::editMessage() const
-{
-	return _("Opened Wrap Inset");
-}
-
-
 int InsetWrap::latex(odocstream & os, OutputParams const & runparams_in) const
 {
 	OutputParams runparams(runparams_in);

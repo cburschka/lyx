@@ -87,8 +87,6 @@ private:
 	///
 	friend class InsetBoxParams;
 	///
-	docstring editMessage() const;
-	///
 	InsetCode lyxCode() const { return BOX_CODE; }
 	///
 	docstring name() const;

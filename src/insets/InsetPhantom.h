@@ -58,8 +58,6 @@ public:
 	InsetPhantomParams const & params() const { return params_; }
 private:
 	///
-	docstring editMessage() const;
-	///
 	InsetCode lyxCode() const { return PHANTOM_CODE; }
 	///
 	docstring name() const;

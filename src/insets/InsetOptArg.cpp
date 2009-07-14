@@ -26,12 +26,6 @@ InsetOptArg::InsetOptArg(Buffer const & buf)
 {}
 
 
-docstring InsetOptArg::editMessage() const
-{
-	return _("Opened Optional Argument Inset");
-}
-
-
 void InsetOptArg::write(ostream & os) const
 {
 	os << "OptArg" << "\n";

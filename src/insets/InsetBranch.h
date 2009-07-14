@@ -58,8 +58,6 @@ public:
 
 private:
 	///
-	docstring editMessage() const;
-	///
 	InsetCode lyxCode() const { return BRANCH_CODE; }
 	///
 	void write(std::ostream &) const;
