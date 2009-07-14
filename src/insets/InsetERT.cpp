@@ -128,12 +128,6 @@ docstring const InsetERT::buttonLabel(BufferView const & bv) const
 }
 
 
-bool InsetERT::insetAllowed(InsetCode /* code */) const
-{
-	return false;
-}
-
-
 bool InsetERT::showInsetDialog(BufferView * bv) const
 {
 	bv->showDialog("ert", params2string(status(*bv)), 

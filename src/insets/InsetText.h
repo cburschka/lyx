@@ -137,7 +137,7 @@ public:
 	///
 	ParagraphList const & paragraphs() const;
 	///
-	bool insetAllowed(InsetCode) const { return true; }
+	bool insetAllowed(InsetCode) const { return !getLayout().isPassThru(); }
 	/// Allow spellchecking, except for insets with latex_language
 	bool allowSpellCheck() const { return !getLayout().isPassThru(); }
 	///

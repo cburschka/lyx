@@ -2380,6 +2380,9 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_LABEL_INSERT:
 		code = LABEL_CODE;
 		break;
+	case LFUN_LINE_INSERT:
+		code = LINE_CODE;
+		break;
 	case LFUN_INFO_INSERT:
 		code = INFO_CODE;
 		break;
@@ -2431,6 +2434,19 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		// slight hack: we know this is allowed in math mode
 		if (cur.inTexted())
 			code = SPACE_CODE;
+		break;
+
+	case LFUN_MATH_INSERT:
+	case LFUN_MATH_AMS_MATRIX:
+	case LFUN_MATH_MATRIX:
+	case LFUN_MATH_DELIM:
+	case LFUN_MATH_BIGDELIM:
+	case LFUN_MATH_DISPLAY:
+	case LFUN_MATH_MODE:
+	case LFUN_MATH_MACRO:
+	case LFUN_MATH_SUBSCRIPT:
+	case LFUN_MATH_SUPERSCRIPT:
+		code = MATH_CODE;
 		break;
 
 	case LFUN_INSET_MODIFY:
@@ -2592,16 +2608,8 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_NEWPAGE_INSERT:
 		// not allowed in description items
+		code = NEWPAGE_CODE;
 		enable = !inDescriptionItem(cur);
-		break;
-
-	case LFUN_MATH_INSERT:
-	case LFUN_MATH_AMS_MATRIX:
-	case LFUN_MATH_MATRIX:
-	case LFUN_MATH_DELIM:
-	case LFUN_MATH_BIGDELIM:
-		// not allowed in ERT, for example.
-		enable = cur.inset().insetAllowed(MATH_CODE);
 		break;
 
 	case LFUN_DATE_INSERT: {
@@ -2664,12 +2672,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_SERVER_GET_LAYOUT:
 	case LFUN_LAYOUT:
 	case LFUN_SELF_INSERT:
-	case LFUN_LINE_INSERT:
-	case LFUN_MATH_DISPLAY:
-	case LFUN_MATH_MODE:
-	case LFUN_MATH_MACRO:
-	case LFUN_MATH_SUBSCRIPT:
-	case LFUN_MATH_SUPERSCRIPT:
 	case LFUN_FONT_DEFAULT:
 	case LFUN_FONT_UNDERLINE:
 	case LFUN_FONT_STRIKEOUT:
@@ -2718,7 +2720,9 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	}
 
 	if (code != NO_CODE
-	    && (cur.empty() || !cur.inset().insetAllowed(code)))
+	    && (cur.empty() 
+		|| !cur.inset().insetAllowed(code)
+		|| cur.paragraph().layout().pass_thru))
 		enable = false;
 
 	switch (cmd.action) {
@@ -2739,17 +2743,9 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_ACCENT_UNDERBAR:
 	case LFUN_ACCENT_UNDERDOT:
 	case LFUN_APPENDIX:
-	case LFUN_BOX_INSERT:
-	case LFUN_BRANCH_INSERT:
-	case LFUN_CAPTION_INSERT:
 	case LFUN_DEPTH_DECREMENT:
 	case LFUN_DEPTH_INCREMENT:
-	case LFUN_ERT_INSERT:
 	case LFUN_FILE_INSERT:
-	case LFUN_FLEX_INSERT:
-	case LFUN_FLOAT_INSERT:
-	case LFUN_FLOAT_LIST_INSERT:
-	case LFUN_FLOAT_WIDE_INSERT:
 	case LFUN_FONT_BOLD:
 	case LFUN_FONT_BOLDSYMBOL:
 	case LFUN_FONT_TYPEWRITER:
@@ -2766,42 +2762,17 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_FONT_STRIKEOUT:
 	case LFUN_FONT_UULINE:
 	case LFUN_FONT_UWAVE:
-	case LFUN_FOOTNOTE_INSERT:
-	case LFUN_HYPERLINK_INSERT:
-	case LFUN_INDEX_INSERT:
-	case LFUN_INDEX_PRINT:
-	case LFUN_INSET_INSERT:
 	case LFUN_LABEL_GOTO:
-	case LFUN_LABEL_INSERT:
 	case LFUN_LAYOUT_TABULAR:
-	case LFUN_LINE_INSERT:
-	case LFUN_MARGINALNOTE_INSERT:
-	case LFUN_MATH_DISPLAY:
-	case LFUN_MATH_INSERT:
-	case LFUN_MATH_AMS_MATRIX:
-	case LFUN_MATH_MATRIX:
-	case LFUN_MATH_MODE:
 	case LFUN_MENU_OPEN:
-	case LFUN_NEWLINE_INSERT:
-	case LFUN_NEWPAGE_INSERT:
 	case LFUN_NOACTION:
-	case LFUN_NOMENCL_INSERT:
-	case LFUN_NOMENCL_PRINT:
-	case LFUN_NOTE_INSERT:
 	case LFUN_NOTE_NEXT:
-	case LFUN_OPTIONAL_INSERT:
-	case LFUN_PHANTOM_INSERT:
 	case LFUN_REFERENCE_NEXT:
 	case LFUN_SERVER_GOTO_FILE_ROW:
 	case LFUN_SERVER_NOTIFY:
 	case LFUN_SERVER_SET_XY:
-	case LFUN_SPACE_INSERT:
-	case LFUN_SPECIALCHAR_INSERT:
-	case LFUN_TABULAR_INSERT:
 	case LFUN_TEXTSTYLE_APPLY:
 	case LFUN_TEXTSTYLE_UPDATE:
-	case LFUN_TOC_INSERT:
-	case LFUN_WRAP_INSERT:
 		if (cur.inset().getLayout().isPassThru())
 			enable = false;
 		break;
