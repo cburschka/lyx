@@ -365,12 +365,10 @@ void LaTeXFeatures::useInsetLayout(InsetLayout const & lay)
 {
 	docstring const & lname = lay.name();
 	DocumentClass const & tclass = params_.documentClass();
-	if (!tclass.hasInsetLayout(lname)) {
-		lyxerr << "LaTeXFeatures::useInsetLayout: layout `"
-		       << to_utf8(lname) << "' does not exist in this class"
-		       << endl;
+
+	// this is a default inset layout, nothing useful here
+	if (!tclass.hasInsetLayout(lname))
 		return;
-	}
 	// Is this layout already in usedInsetLayouts?
 	if (find(usedInsetLayouts_.begin(), usedInsetLayouts_.end(), lname) 
 			!= usedInsetLayouts_.end())
