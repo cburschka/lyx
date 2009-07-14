@@ -582,7 +582,6 @@ void switchBetweenClasses(DocumentClass const * const oldone,
 		if (inset->lyxCode() != FLEX_CODE)
 			// FIXME: Should we verify all InsetCollapsable?
 			continue;
-		inset->setLayout(newone);
 		if (!inset->undefined())
 			continue;
 		// The flex inset is undefined in newtc

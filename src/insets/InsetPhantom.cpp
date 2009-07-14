@@ -266,7 +266,6 @@ void InsetPhantom::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY:
 		string2params(to_utf8(cmd.argument()), params_);
-		setLayout();
 		break;
 
 	case LFUN_INSET_DIALOG_UPDATE:

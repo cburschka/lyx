@@ -44,15 +44,6 @@ public:
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 	///
 	docstring name() const { return from_ascii("Collapsable"); }
-#if 0
-	///
-	InsetLayout const & getLayout() const { return *layout_; } 
-#endif
-	///
-	void setLayout();
-	/// (Re-)set the character style parameters from \p tc according
-	/// to name()
-	void setLayout(DocumentClass const * const tc);
 	///
 	void read(Lexer &);
 	///
@@ -172,8 +163,6 @@ protected:
 	///
 	mutable CollapseStatus status_;
 private:
-	/// cache for the layout_. Make sure it is in sync with the document class!
-	InsetLayout const * layout_;
 	///
 	Dimension dimensionCollapsed(BufferView const & bv) const;
 	///

@@ -139,7 +139,6 @@ void InsetInfo::read(Lexer & lex)
 			_("Missing \\end_inset at this point."),
 			from_utf8(token));
 	}
-	setLayout();
 	updateInfo();
 }
 
@@ -244,7 +243,6 @@ void InsetInfo::setInfo(string const & name)
 	string type;
 	name_ = trim(split(name, type, ' '));
 	type_ = nameTranslator().find(type);
-	setLayout();
 	updateInfo();
 }
 

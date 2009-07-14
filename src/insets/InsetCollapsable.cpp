@@ -109,7 +109,6 @@ InsetCollapsable::InsetCollapsable(Buffer const & buf, InsetText::UsePlain ltype
 	: InsetText(buf, ltype), status_(Inset::Open),
 	  openinlined_(false), mouse_hover_(false)
 {
-	setLayout(&buf.params().documentClass());
 	setAutoBreakRows(true);
 	setDrawFrame(true);
 	setFrameColor(Color_collapsableframe);
@@ -119,7 +118,6 @@ InsetCollapsable::InsetCollapsable(Buffer const & buf, InsetText::UsePlain ltype
 InsetCollapsable::InsetCollapsable(InsetCollapsable const & rhs)
 	: InsetText(rhs),
 	  status_(rhs.status_),
-	  layout_(rhs.layout_),
 	  labelstring_(rhs.labelstring_),
 	  button_dim(rhs.button_dim),
 	  openinlined_(rhs.openinlined_),
@@ -143,26 +141,6 @@ docstring InsetCollapsable::toolTip(BufferView const & bv, int x, int y) const
 	InsetText::plaintext(ods, rp);
 	docstring const content_tip = ods.str();
 	return support::wrapParas(content_tip, 4);
-}
-
-
-void InsetCollapsable::setLayout()
-{
-	setLayout(buffer().params().documentClassPtr());
-}
-
-
-void InsetCollapsable::setLayout(DocumentClass const * const dc)
-{
-	if (dc) {
-		layout_ = &(dc->insetLayout(name()));
-		labelstring_ = translateIfPossible(getLayout().labelstring());
-	} else {
-		layout_ = &DocumentClass::plainInsetLayout();
-		labelstring_ = _("UNDEFINED");
-	}
-
-	setButtonLabel();
 }
 
 
@@ -192,10 +170,7 @@ void InsetCollapsable::read(Lexer & lex)
 		status_ = Open;
 
 	// this must be set before we enter InsetText::read()
-	setLayout();
 	InsetText::read(lex);
-	// set button label again as the inset contents was not read yet at
-	// setLayout() time.
 	setButtonLabel();
 
 	// Force default font, if so requested
@@ -211,7 +186,6 @@ void InsetCollapsable::read(Lexer & lex)
 
 Dimension InsetCollapsable::dimensionCollapsed(BufferView const & bv) const
 {
-	LASSERT(layout_, /**/);
 	Dimension dim;
 	theFontMetrics(getLayout().labelfont()).buttonText(
 		buttonLabel(bv), dim.wid, dim.asc, dim.des);

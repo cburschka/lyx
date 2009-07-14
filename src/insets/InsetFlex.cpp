@@ -30,8 +30,6 @@ namespace lyx {
 InsetFlex::InsetFlex(Buffer const & buf, string const & layoutName)
 	: InsetCollapsable(buf), name_(layoutName)
 {
-	// again, because now the name is initialized
-	setLayout(buf.params().documentClassPtr());
 	status_= Collapsed;
 }
 
