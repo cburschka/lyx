@@ -51,8 +51,6 @@ private:
 	///
 	bool insetAllowed(InsetCode code) const;
 	///
-	int latex(odocstream &, OutputParams const &) const;
-	///
 	int plaintext(odocstream &, OutputParams const &) const;
 	///
 	int docbook(odocstream &, OutputParams const &) const;

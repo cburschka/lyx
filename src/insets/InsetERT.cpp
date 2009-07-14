@@ -69,12 +69,6 @@ docstring InsetERT::editMessage() const
 }
 
 
-int InsetERT::latex(odocstream & os, OutputParams const & op) const
-{
-	return InsetCollapsable::latex(os, op);
-}
-
-
 int InsetERT::plaintext(odocstream &, OutputParams const &) const
 {
 	return 0; // do not output TeX code
@@ -105,23 +99,12 @@ int InsetERT::docbook(odocstream & os, OutputParams const &) const
 
 void InsetERT::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	BufferParams const & bp = cur.buffer()->params();
-	Layout const layout = bp.documentClass().plainLayout();
-	//lyxerr << "\nInsetERT::doDispatch (begin): cmd: " << cmd << endl;
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
 		setStatus(cur, string2params(to_utf8(cmd.argument())));
 		break;
 	}
 	default:
-		// Force any new text to latex_language
-		// FIXME: This should not be necessary but
-		// new paragraphs that are created by pressing enter at the
-		// start of an existing paragraph get the buffer language
-		// and not latex_language, so we take this brute force
-		// approach.
-		cur.current_font.fontInfo() = layout.font;
-		cur.real_current_font.fontInfo() = layout.font;
 		InsetCollapsable::doDispatch(cur, cmd);
 		break;
 	}
@@ -132,26 +115,12 @@ bool InsetERT::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
 	switch (cmd.action) {
-		case LFUN_CLIPBOARD_PASTE:
-		case LFUN_INSET_MODIFY:
-		case LFUN_PASTE:
-		case LFUN_PRIMARY_SELECTION_PASTE:
-		case LFUN_QUOTE_INSERT:
-			status.setEnabled(true);
-			return true;
-
-		// this one is difficult to get right. As a half-baked
-		// solution, we consider only the first action of the sequence
-		case LFUN_COMMAND_SEQUENCE: {
-			// argument contains ';'-terminated commands
-			string const firstcmd = token(to_utf8(cmd.argument()), ';', 0);
-			FuncRequest func(lyxaction.lookupFunc(firstcmd));
-			func.origin = cmd.origin;
-			return getStatus(cur, func, status);
-		}
-
-		default:
-			return InsetCollapsable::getStatus(cur, cmd, status);
+	case LFUN_INSET_MODIFY:
+		status.setEnabled(true);
+		return true;
+		
+	default:
+		return InsetCollapsable::getStatus(cur, cmd, status);
 	}
 }
 
