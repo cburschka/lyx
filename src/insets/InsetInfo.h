@@ -75,9 +75,7 @@ the command buffer (view->Toolbar->Command Buffer).
 
 namespace lyx {
 
-/** Used to insert index labels
-  */
-class InsetInfo : public InsetCollapsable {
+class InsetInfo : public InsetText {
 public:
 	enum info_type {
 		UNKNOWN_INFO,   // Invalid type
@@ -138,13 +136,12 @@ private:
 	///
 	void setText(docstring const & str);
 	// make sure that the other version of setText is still available.
-	using InsetCollapsable::setText;
+	using InsetText::setText;
 	///
 	info_type type_;
 	///
 	std::string name_;
 };
-
 
 
 } // namespace lyx
