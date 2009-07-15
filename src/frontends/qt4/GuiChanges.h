@@ -35,6 +35,8 @@ protected Q_SLOTS:
 	void rejectChange();
 	/// find the next change and highlight it
 	void nextChange();
+	/// find the previous change and highlight it
+	void previousChange();
 
 private:
 	///

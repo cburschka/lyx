@@ -964,6 +964,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 
 	case LFUN_CHANGES_MERGE:
 	case LFUN_CHANGE_NEXT:
+	case LFUN_CHANGE_PREVIOUS:
 	case LFUN_ALL_CHANGES_ACCEPT:
 	case LFUN_ALL_CHANGES_REJECT:
 		// TODO: context-sensitive enabling of LFUNs
@@ -1210,9 +1211,15 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		// FIXME: Move this LFUN to Buffer so that we don't have to do this:
 		processUpdateFlags(Update::Force | Update::FitCursor);
 		break;
+	
+	case LFUN_CHANGE_PREVIOUS:
+		findPreviousChange(this);
+		// FIXME: Move this LFUN to Buffer so that we don't have to do this:
+		processUpdateFlags(Update::Force | Update::FitCursor);
+		break;
 
 	case LFUN_CHANGES_MERGE:
-		if (findNextChange(this)) {
+		if (findNextChange(this) || findPreviousChange(this)) {
 			processUpdateFlags(Update::Force | Update::FitCursor);
 			showDialog("changes");
 		}

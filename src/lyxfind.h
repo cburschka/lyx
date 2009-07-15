@@ -58,6 +58,14 @@ void replace(BufferView * bv, FuncRequest const &, bool has_deleted = false);
 /// find the next change in the buffer
 bool findNextChange(BufferView * bv);
 
+/// find the previous change in the buffer
+bool findPreviousChange(BufferView * bv);
+
+/// find the change in the buffer
+/// \param next true to find the next change, otherwise the previous
+bool findChange(BufferView * bv, bool next);
+
+
 } // namespace lyx
 
 #endif // LYXFIND_H

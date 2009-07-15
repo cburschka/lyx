@@ -70,6 +70,7 @@ What's new
 
 - Make it possible to copy from a deleted section (bug 5390).
 
+- Reverse searching added to the merge changes dialog (bug 2213).
 
 
 * DOCUMENTATION AND LOCALIZATION
@@ -223,8 +224,9 @@ What's new
 
 - Fix selection of math insets on some archs.
 
-- Fix unitialized variable in Math, Dialog and inset painting code
-  (bugs 6082, 6081, 6077).
+- Fix of painter glitches caused by unitialized variables (bug 6077).
+
+- Fix unitialized variable in Dialog code (bug 6081).
 
 
 * DOCUMENTATION AND LOCALIZATION
