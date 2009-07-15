@@ -839,7 +839,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/CitationUi.ui:211
 msgid "Search As You &Type"
-msgstr "Während der Eingabe suchen"
+msgstr "&Während der Eingabe suchen"
 
 #: src/frontends/qt4/ui/CitationUi.ui:221
 msgid "Formatting"
@@ -1688,7 +1688,7 @@ msgstr "Kodierung"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:40
 msgid "Language &Default"
-msgstr "Voreinstellung der gewählten Sprache"
+msgstr "&Voreinstellung der gewählten Sprache"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:63
 msgid "&Other:"
@@ -2314,12 +2314,12 @@ msgid ""
 "Show the grey inline completion behind the cursor in math mode after the "
 "delay."
 msgstr ""
-"Zeige die graue Inline-Vervollständigung hinter dem Cursor im Mathemodus "
+"Zeige die graue Wortvervollständigung hinter dem Cursor im Mathemodus "
 "nach der Verzögerung."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:43
 msgid "Automatic in&line completion"
-msgstr "Automatische In&line-Vervollständigung"
+msgstr "Automatische Wortvervo&llständigung"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:50
 msgid "Show the popup in math mode after the delay."
@@ -2872,7 +2872,7 @@ msgstr "Optionaler Papiergrößen-Parameter (-paper) für einige DVI-Betrachter"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:262
 msgid "&DVI viewer paper size options:"
-msgstr "Papiergrößen-Optionen des DVI-Betrachters:"
+msgstr "Papiergrößen-Optionen des D&VI-Betrachters:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:25
 msgid "&Working directory:"
@@ -2998,7 +2998,7 @@ msgstr "&Querformat:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:182
 msgid "&Number of copies:"
-msgstr "Anzahl der Kopien"
+msgstr "Anzahl der &Kopien:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:192
 msgid "Option used to set number of copies."
@@ -3060,7 +3060,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:304
 msgid "Adapt &output to printer"
-msgstr "Ausgabe an den Drucker anpassen"
+msgstr "Ausgabe an den Drucker a&npassen"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:311
 msgid "Name of the default printer"
@@ -3080,11 +3080,11 @@ msgstr "S&erifenlose:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:107
 msgid "T&ypewriter:"
-msgstr "&Schreibmaschine:"
+msgstr "Schrei&bmaschine:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:117
 msgid "R&oman:"
-msgstr "Se&rifenschrift:"
+msgstr "Seri&fenschrift:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:169
 msgid "Screen &DPI:"
@@ -3101,43 +3101,43 @@ msgstr "Schriftgrößen"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:262
 msgid "&Large:"
-msgstr "Groß:"
+msgstr "&Groß:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:272
 msgid "&Larger:"
-msgstr "Größer:"
+msgstr "Gr&ößer:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:282
 msgid "&Largest:"
-msgstr "Noch größer:"
+msgstr "Noch grö&ßer:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:295
 msgid "&Huge:"
-msgstr "Riesig:"
+msgstr "&Riesig:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:305
 msgid "&Hugest:"
-msgstr "Gigantisch:"
+msgstr "Giga&ntisch:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:315
 msgid "S&mallest:"
-msgstr "Sehr klein:"
+msgstr "Se&hr klein:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:325
 msgid "S&maller:"
-msgstr "Kleiner:"
+msgstr "Kle&iner:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:335
 msgid "S&mall:"
-msgstr "Klein:"
+msgstr "&Klein:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:345
 msgid "&Normal:"
-msgstr "Normal:"
+msgstr "&Normal:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:355
 msgid "&Tiny:"
-msgstr "Winzig:"
+msgstr "&Winzig:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:368
 msgid ""
@@ -3150,7 +3150,7 @@ msgstr ""
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:371
 msgid "&Use pixmap cache to speed up font rendering"
 msgstr ""
-"Pixmap-Zwischenspeicher benutzen, um die Darstellung von Zeichen zu "
+"Pi&xmap-Zwischenspeicher benutzen, um die Darstellung von Zeichen zu "
 "beschleunigen"
 
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:90
@@ -3206,8 +3206,7 @@ msgstr "Sitzung"
 #: src/frontends/qt4/ui/PrefUi.ui:51
 msgid "Restore window layouts and &geometries"
 msgstr ""
-"Erlaube Speichern/Wiederherstellen des Aussehens  und der Abmessungen von "
-"Fenstern"
+"Aussehen und Größe von &Fenstern wiederherstellen"
 
 #: src/frontends/qt4/ui/PrefUi.ui:58
 msgid "Restore to the cursor position when the file was last closed"
@@ -3215,15 +3214,15 @@ msgstr "Positioniere den Cursor beim Öffnen der Datei dort, wo er zuetzt war"
 
 #: src/frontends/qt4/ui/PrefUi.ui:61
 msgid "Restore cursor &positions"
-msgstr "Cursor-Positionen wiederherstellen"
+msgstr "&Cursor-Positionen wiederherstellen"
 
 #: src/frontends/qt4/ui/PrefUi.ui:68
 msgid "&Load opened files from last session"
-msgstr "Geöffnete Dateien der letzten Sitzung laden"
+msgstr "Ge&öffnete Dateien der letzten Sitzung laden"
 
 #: src/frontends/qt4/ui/PrefUi.ui:75
 msgid "Clear all session &information"
-msgstr "Lösche alle Sitzungsinformationen"
+msgstr "&Lösche alle Sitzungsinformationen"
 
 #: src/frontends/qt4/ui/PrefUi.ui:85
 msgid "Documents"
@@ -3239,7 +3238,7 @@ msgstr "Minuten"
 
 #: src/frontends/qt4/ui/PrefUi.ui:170
 msgid "&Backup documents, every"
-msgstr "&Sicherung der Dokumente alle"
+msgstr "Sicherun&g der Dokumente alle"
 
 #: src/frontends/qt4/ui/PrefUi.ui:177
 msgid "&Open documents in tabs"
@@ -4822,7 +4821,7 @@ msgstr "Alt. Zugehörigkeit"
 
 #: lib/layouts/aastex.layout:288
 msgid "Alternative affiliation:"
-msgstr "Alternative Zugehörigkeit"
+msgstr "Alternative Zugehörigkeit:"
 
 #: lib/layouts/aastex.layout:295
 msgid "altaffilmark"
@@ -7090,7 +7089,7 @@ msgstr "Überschrift des Literaturverzeichnisses"
 
 #: lib/layouts/isprs.layout:37
 msgid "ABSTRACT:"
-msgstr "ZUSAMMENFASSUNG:"
+msgstr "ABSTRACT:"
 
 #: lib/layouts/isprs.layout:65
 msgid "KEY WORDS:"
@@ -7710,7 +7709,7 @@ msgstr "Autoren-Info:"
 
 #: lib/layouts/spie.layout:78
 msgid "ABSTRACT"
-msgstr "ZUSAMMENFASSUNG"
+msgstr "ABSTRACT"
 
 #: lib/layouts/spie.layout:93
 msgid "ACKNOWLEDGMENTS"
@@ -9647,7 +9646,7 @@ msgstr "Speichern unter...|u"
 
 #: lib/ui/classic.ui:54
 msgid "Revert|R"
-msgstr "Wieder herstellen|W"
+msgstr "Wiederherstellen|W"
 
 #: lib/ui/classic.ui:55 lib/ui/stdmenus.inc:53
 msgid "Version Control|V"
@@ -10121,7 +10120,7 @@ msgstr "Einfaches Anführungszeichen|E"
 
 #: lib/ui/classic.ui:258
 msgid "Ordinary Quote|O"
-msgstr "Gerades Anführungszeichen|A"
+msgstr "Nicht-typographisches Anführungszeichen|A"
 
 #: lib/ui/classic.ui:259 lib/ui/stdmenus.inc:368
 msgid "Menu Separator|M"
@@ -10684,7 +10683,7 @@ msgstr "Alle Notizen schließen|c"
 
 #: lib/ui/stdcontext.inc:191
 msgid "Interword Space|w"
-msgstr "Zwischenwort-Abstand|w"
+msgstr "Normales Leerzeichen|m"
 
 #: lib/ui/stdcontext.inc:192
 msgid "Protected Space|o"
@@ -10740,7 +10739,7 @@ msgstr "Variabler horiz. Abstand (Klammer oben)|r"
 
 #: lib/ui/stdcontext.inc:206
 msgid "Horizontal Fill (Down Brace)|B"
-msgstr "Variabler horiz. Abstand (Klammer unten)|m"
+msgstr "Variabler horiz. Abstand (Klammer unten)|u"
 
 #: lib/ui/stdcontext.inc:207 lib/ui/stdcontext.inc:225
 msgid "Custom Length|C"
@@ -11130,7 +11129,7 @@ msgstr "Makro-Definition"
 
 #: lib/ui/stdmenus.inc:208
 msgid "Text Style|T"
-msgstr "Text-Stil|T"
+msgstr "Textstil|T"
 
 #: lib/ui/stdmenus.inc:214
 msgid "Add Line Above|A"
@@ -11138,11 +11137,11 @@ msgstr "Linie oberhalb hinzufügen|o"
 
 #: lib/ui/stdmenus.inc:229
 msgid "Make First Non-Optional into Optional Argument"
-msgstr "Das erste nicht-optionale Argument in einen optionales ändern"
+msgstr "Das erste nicht-optionale Argument in ein optionales ändern"
 
 #: lib/ui/stdmenus.inc:230
 msgid "Make Last Optional into Non-Optional Argument"
-msgstr "Das letzte optionale Argument in einen nicht-optionales ändern"
+msgstr "Das letzte optionale Argument in ein nicht-optionales ändern"
 
 #: lib/ui/stdmenus.inc:246
 msgid "Math Normal Font|N"
@@ -11778,11 +11777,11 @@ msgstr "Argument hinzufügen"
 
 #: lib/ui/stdtoolbars.inc:186
 msgid "Make first non-optional into optional argument"
-msgstr "Das erste nicht-optionale Argument in einen optionales ändern"
+msgstr "Das erste nicht-optionale Argument in ein optionales ändern"
 
 #: lib/ui/stdtoolbars.inc:187
 msgid "Make last optional into non-optional argument"
-msgstr "Das letzte optionale Argument in einen nicht-optionales ändern"
+msgstr "Das letzte optionale Argument in ein nicht-optionales ändern"
 
 #: lib/ui/stdtoolbars.inc:189
 msgid "Remove optional argument"
@@ -16552,7 +16551,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2680
 msgid "The inline completion delay."
-msgstr "Verzögerung der Inline-Vervollständigung"
+msgstr "Verzögerung der Wortvervollständigung"
 
 #: src/LyXRC.cpp:2684
 msgid "Select to display the inline completion in math mode."
@@ -16560,7 +16559,7 @@ msgstr "Auswählen, um Inline-Vervollständigung im Mathe-Modus anzuzeigen."
 
 #: src/LyXRC.cpp:2688
 msgid "Select to display the inline completion in text mode."
-msgstr "Auswählen, um Inline-Vervollständigung im Text-Modus anzuzeigen."
+msgstr "Auswählen, um Wortvervollständigung im Text-Modus anzuzeigen."
 
 #: src/LyXRC.cpp:2692
 msgid "Use \"...\" to shorten long completions."
@@ -17408,8 +17407,10 @@ msgid ""
 "\n"
 "Exception: "
 msgstr ""
-"LyX hat einen Fehler entdeckt. Das Programm wird jetzt versuchen, alle "
-"ungespeicherten Dateien zu speichern, und dann beendet."
+"LyX hat einen Fehler (Exception) entdeckt. Das Programm wird jetzt versuchen, alle "
+"ungespeicherten Dateien zu speichern, und dann beendet.\n"
+"\n"
+"Exception: "
 
 #: src/frontends/qt4/GuiApplication.cpp:1311
 #: src/frontends/qt4/GuiApplication.cpp:1317
@@ -17982,7 +17983,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:1262
 msgid "&Set Layout"
-msgstr "Textformat"
+msgstr "&Layout übernehmen"
 
 #: src/frontends/qt4/GuiDocument.cpp:1275
 #: src/frontends/qt4/GuiDocument.cpp:1349
@@ -19550,7 +19551,7 @@ msgstr "Das Skript `%s' ist fehlgeschlagen."
 
 #: src/frontends/qt4/qt_helpers.cpp:433
 msgid "All Files "
-msgstr "Alle Dateien"
+msgstr "Alle Dateien "
 
 #: src/frontends/qt4/qt_helpers.cpp:506 src/insets/InsetTOC.cpp:49
 msgid "Table of Contents"
@@ -20197,19 +20198,19 @@ msgstr "Doppelseite leeren"
 
 #: src/insets/InsetNomencl.cpp:62
 msgid "Nom: "
-msgstr "Nom:"
+msgstr "Nom: "
 
 #: src/insets/InsetNomencl.cpp:73
 msgid "Nomenclature Symbol: "
-msgstr "Nomenklatursymbol:"
+msgstr "Nomenklatursymbol: "
 
 #: src/insets/InsetNomencl.cpp:74
 msgid "Description: "
-msgstr "Beschreibung:"
+msgstr "Beschreibung: "
 
 #: src/insets/InsetNomencl.cpp:77
 msgid "Sorting: "
-msgstr "Sortierung:"
+msgstr "Sortierung: "
 
 #: src/insets/InsetNote.cpp:66
 msgid "Note[[InsetNote]]"
