@@ -375,7 +375,6 @@ void InsetCollapsable::cursorPos(BufferView const & bv,
 {
 	if (geometry(bv) == ButtonOnly)
 		status_ = Open;
-	LASSERT(geometry(bv) != ButtonOnly, /**/);
 
 	InsetText::cursorPos(bv, sl, boundary, x, y);
 	Dimension const textdim = InsetText::dimension(bv);
