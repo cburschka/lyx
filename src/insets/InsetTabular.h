@@ -48,6 +48,7 @@
 namespace lyx {
 
 class Buffer;
+class BufferParams;
 class BufferView;
 class CompletionList;
 class CursorSlice;
@@ -802,9 +803,9 @@ public:
 	/// set the change for the entire inset
 	void setChange(Change const & change);
 	/// accept the changes within the inset
-	void acceptChanges();
+	void acceptChanges(BufferParams const & bparams);
 	/// reject the changes within the inset
-	void rejectChanges();
+	void rejectChanges(BufferParams const & bparams);
 
 	// this should return true if we have a "normal" cell, otherwise false.
 	// "normal" means without width set!

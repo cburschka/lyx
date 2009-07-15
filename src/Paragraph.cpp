@@ -362,7 +362,8 @@ Change const & Paragraph::lookupChange(pos_type pos) const
 }
 
 
-void Paragraph::acceptChanges(pos_type start, pos_type end)
+void Paragraph::acceptChanges(BufferParams const & bparams, pos_type start,
+		pos_type end)
 {
 	LASSERT(start >= 0 && start <= size(), /**/);
 	LASSERT(end > start && end <= size() + 1, /**/);
@@ -372,14 +373,14 @@ void Paragraph::acceptChanges(pos_type start, pos_type end)
 			case Change::UNCHANGED:
 				// accept changes in nested inset
 				if (Inset * inset = getInset(pos))
-					inset->acceptChanges();
+					inset->acceptChanges(bparams);
 				break;
 
 			case Change::INSERTED:
 				d->changes_.set(Change(Change::UNCHANGED), pos);
 				// also accept changes in nested inset
 				if (Inset * inset = getInset(pos))
-					inset->acceptChanges();
+					inset->acceptChanges(bparams);
 				break;
 
 			case Change::DELETED:
@@ -397,7 +398,8 @@ void Paragraph::acceptChanges(pos_type start, pos_type end)
 }
 
 
-void Paragraph::rejectChanges(pos_type start, pos_type end)
+void Paragraph::rejectChanges(BufferParams const & bparams,
+		pos_type start, pos_type end)
 {
 	LASSERT(start >= 0 && start <= size(), /**/);
 	LASSERT(end > start && end <= size() + 1, /**/);
@@ -407,7 +409,7 @@ void Paragraph::rejectChanges(pos_type start, pos_type end)
 			case Change::UNCHANGED:
 				// reject changes in nested inset
 				if (Inset * inset = getInset(pos))
-						inset->rejectChanges();
+						inset->rejectChanges(bparams);
 				break;
 
 			case Change::INSERTED:
