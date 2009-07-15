@@ -5,7 +5,7 @@
 # Kornel Benko <Kornel.Benko@berlin.de>, 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX-1.4.2\n"
+"Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-07-15 12:26+0200\n"
 "PO-Revision-Date: 2009-07-14 18:58+0200\n"
@@ -568,14 +568,12 @@ msgid "Change:"
 msgstr "Zmena:"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:49
-#, fuzzy
 msgid "Go to previous change"
-msgstr "Prejsť k ďalšej zmene"
+msgstr "Prejsť k predošlej zmene"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:52
-#, fuzzy
 msgid "&Previous change"
-msgstr "&Nasledujúca zmena"
+msgstr "&Predošlá zmena"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:62
 msgid "Go to next change"
