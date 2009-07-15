@@ -2747,13 +2747,14 @@ void LyXAction::init()
                line from LaTeX compilation. Note that before this function can be used
                export to LaTeX output must occur (in order to map the row numbers).
  * \li Syntax: server-goto-file-row <FILE[.ext]> <ROW_NUMBER>
- * \li Params: <FILE>: the filename. Environment variables are expaned in the path.
+ * \li Params: <FILE>: the filename. Environment variables are expanded in the path.
                        In case this LFUN does not work make sure you are giving correct
                        path to the file.\n
                        If the file is located inside LyX temporary directory it will be
                        mapped back into the appropriate opened buffer (e.g. for the case
                        of generated .tex file).
                  .ext: extensions will be automatically replaced by .lyx.
+                 <ROW_NUMBER> The row number of the LaTeX file to which to go.
  * \li Origin: Edmar, 23 Dec 1998
  * \endvar
  */
