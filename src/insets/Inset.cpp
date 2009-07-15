@@ -226,7 +226,7 @@ string insetName(InsetCode c)
 
 void Inset::dispatch(Cursor & cur, FuncRequest & cmd)
 {
-	//LASSERT(cur.buffer() == &buffer(), return);
+	LASSERT(cur.buffer() == buffer_, return);
 	cur.updateFlags(Update::Force | Update::FitCursor);
 	cur.dispatched();
 	doDispatch(cur, cmd);
