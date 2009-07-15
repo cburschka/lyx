@@ -75,7 +75,7 @@ the command buffer (view->Toolbar->Command Buffer).
 
 namespace lyx {
 
-class InsetInfo : public InsetText {
+class InsetInfo : public InsetCollapsable {
 public:
 	enum info_type {
 		UNKNOWN_INFO,   // Invalid type
@@ -136,7 +136,7 @@ private:
 	///
 	void setText(docstring const & str);
 	// make sure that the other version of setText is still available.
-	using InsetText::setText;
+	using InsetCollapsable::setText;
 	///
 	info_type type_;
 	///
