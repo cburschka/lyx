@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-07-14 18:28+0200\n"
+"POT-Creation-Date: 2009-07-15 12:26+0200\n"
 "PO-Revision-Date: 2009-04-19 18:13+0100\n"
 "Last-Translator: Ingar Pareliussen <ingarp_ved_samfundet.no>\n"
 "Language-Team: Nynorsk <nn@li.org>\n"
@@ -187,7 +187,7 @@ msgid "&Add"
 msgstr "&Legg til"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:127
-#: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:78
+#: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:91
 #: src/frontends/qt4/ui/LabelUi.ui:92 src/frontends/qt4/ui/NomenclUi.ui:105
 #: src/frontends/qt4/ui/SendtoUi.ui:92 src/frontends/qt4/ui/ShortcutUi.ui:65
 #: src/LyXFunc.cpp:826 src/buffer_funcs.cpp:107
@@ -572,26 +572,36 @@ msgid "Change:"
 msgstr "Endring:"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:49
-msgid "Go to next change"
+#, fuzzy
+msgid "Go to previous change"
 msgstr "Gå til neste endring"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:52
+#, fuzzy
+msgid "&Previous change"
+msgstr "&Neste endring"
+
+#: src/frontends/qt4/ui/ChangesUi.ui:62
+msgid "Go to next change"
+msgstr "Gå til neste endring"
+
+#: src/frontends/qt4/ui/ChangesUi.ui:65
 msgid "&Next change"
 msgstr "&Neste endring"
 
-#: src/frontends/qt4/ui/ChangesUi.ui:95
+#: src/frontends/qt4/ui/ChangesUi.ui:108
 msgid "Accept this change"
 msgstr "Godta endringa"
 
-#: src/frontends/qt4/ui/ChangesUi.ui:98
+#: src/frontends/qt4/ui/ChangesUi.ui:111
 msgid "&Accept"
 msgstr "&Godta"
 
-#: src/frontends/qt4/ui/ChangesUi.ui:108
+#: src/frontends/qt4/ui/ChangesUi.ui:121
 msgid "Reject this change"
 msgstr "Forkast endringa"
 
-#: src/frontends/qt4/ui/ChangesUi.ui:111
+#: src/frontends/qt4/ui/ChangesUi.ui:124
 msgid "&Reject"
 msgstr "&Forkast"
 
@@ -11862,11 +11872,11 @@ msgstr "Skriv ut dokument"
 msgid "Check spelling"
 msgstr "Sjekk rettskriving"
 
-#: lib/ui/stdtoolbars.inc:76 src/BufferView.cpp:1074
+#: lib/ui/stdtoolbars.inc:76 src/BufferView.cpp:1075
 msgid "Undo"
 msgstr "Angre"
 
-#: lib/ui/stdtoolbars.inc:77 src/BufferView.cpp:1083
+#: lib/ui/stdtoolbars.inc:77 src/BufferView.cpp:1084
 msgid "Redo"
 msgstr "Gjer om"
 
@@ -15000,12 +15010,12 @@ msgstr "\\begin_header manglar"
 msgid "\\begin_document is missing"
 msgstr "\\begin_document manglar"
 
-#: src/Buffer.cpp:584 src/Buffer.cpp:590 src/BufferView.cpp:1193
-#: src/BufferView.cpp:1199
+#: src/Buffer.cpp:584 src/Buffer.cpp:590 src/BufferView.cpp:1194
+#: src/BufferView.cpp:1200
 msgid "Changes not shown in LaTeX output"
 msgstr "Endring blir ikkje vist i LaTeX eksporten"
 
-#: src/Buffer.cpp:585 src/BufferView.cpp:1194
+#: src/Buffer.cpp:585 src/BufferView.cpp:1195
 #, fuzzy
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
@@ -15018,7 +15028,7 @@ msgstr ""
 "Ver venleg å instaler desse pakkane eller redefiner \\lyxadded og "
 "\\lyxdeleted i LaTeX fortekst."
 
-#: src/Buffer.cpp:591 src/BufferView.cpp:1200
+#: src/Buffer.cpp:591 src/BufferView.cpp:1201
 #, fuzzy
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
@@ -15442,93 +15452,93 @@ msgstr "Det er ikkje fleire innskot"
 msgid "Save bookmark"
 msgstr "Lagra bokmerke"
 
-#: src/BufferView.cpp:1077
+#: src/BufferView.cpp:1078
 msgid "No further undo information"
 msgstr "Ikkje meir \"Angre\" informasjon"
 
-#: src/BufferView.cpp:1086
+#: src/BufferView.cpp:1087
 msgid "No further redo information"
 msgstr "Ikkje meir \"Gjer om\" informasjon"
 
-#: src/BufferView.cpp:1255 src/lyxfind.cpp:295 src/lyxfind.cpp:313
+#: src/BufferView.cpp:1262 src/lyxfind.cpp:303 src/lyxfind.cpp:321
 msgid "String not found!"
 msgstr "Kan ikkje finne teksten."
 
-#: src/BufferView.cpp:1279
+#: src/BufferView.cpp:1286
 msgid "Mark off"
 msgstr "Merke slått av"
 
-#: src/BufferView.cpp:1286
+#: src/BufferView.cpp:1293
 msgid "Mark on"
 msgstr "Merke på"
 
-#: src/BufferView.cpp:1293
+#: src/BufferView.cpp:1300
 msgid "Mark removed"
 msgstr "Fjerna merke"
 
-#: src/BufferView.cpp:1296
+#: src/BufferView.cpp:1303
 msgid "Mark set"
 msgstr "Merke sett"
 
-#: src/BufferView.cpp:1347
+#: src/BufferView.cpp:1354
 #, fuzzy
 msgid "Statistics for the selection:"
 msgstr "&Byt til dokument"
 
-#: src/BufferView.cpp:1349
+#: src/BufferView.cpp:1356
 #, fuzzy
 msgid "Statistics for the document:"
 msgstr "&Byt til dokument"
 
-#: src/BufferView.cpp:1352
+#: src/BufferView.cpp:1359
 #, fuzzy, c-format
 msgid "%1$d words"
 msgstr "%1$d ord sjekka."
 
-#: src/BufferView.cpp:1354
+#: src/BufferView.cpp:1361
 #, fuzzy
 msgid "One word"
 msgstr "Nøkkelord"
 
-#: src/BufferView.cpp:1357
+#: src/BufferView.cpp:1364
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1360
+#: src/BufferView.cpp:1367
 msgid "One character (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1363
+#: src/BufferView.cpp:1370
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1366
+#: src/BufferView.cpp:1373
 msgid "One character (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1368
+#: src/BufferView.cpp:1375
 #, fuzzy
 msgid "Statistics"
 msgstr "Status"
 
-#: src/BufferView.cpp:2151
+#: src/BufferView.cpp:2158
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Set inn dokument %1$s..."
 
-#: src/BufferView.cpp:2162
+#: src/BufferView.cpp:2169
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s er sett inn."
 
-#: src/BufferView.cpp:2164
+#: src/BufferView.cpp:2171
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Kunne ikkje sette inn dokumentet %1$s"
 
-#: src/BufferView.cpp:2426
+#: src/BufferView.cpp:2433
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15539,26 +15549,26 @@ msgstr ""
 "%1$s\n"
 "på grunn av feilen: %2$s"
 
-#: src/BufferView.cpp:2428
+#: src/BufferView.cpp:2435
 msgid "Could not read file"
 msgstr "Kan ikkje lese fila"
 
-#: src/BufferView.cpp:2435
+#: src/BufferView.cpp:2442
 #, fuzzy, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr "Kunne ikkje lese %1$s."
 
-#: src/BufferView.cpp:2436 src/output.cpp:39
+#: src/BufferView.cpp:2443 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Kan ikkje opnafila"
 
-#: src/BufferView.cpp:2443
+#: src/BufferView.cpp:2450
 msgid "Reading not UTF-8 encoded file"
 msgstr "Les fil som ikkje er koda i UTF-8"
 
-#: src/BufferView.cpp:2444
+#: src/BufferView.cpp:2451
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -17887,7 +17897,7 @@ msgstr "Nei"
 msgid "Merge Changes"
 msgstr "Slå saman endringar"
 
-#: src/frontends/qt4/GuiChanges.cpp:63
+#: src/frontends/qt4/GuiChanges.cpp:64
 #, c-format
 msgid ""
 "Change by %1$s\n"
@@ -17896,7 +17906,7 @@ msgstr ""
 "Endra av %1$s\n"
 "\n"
 
-#: src/frontends/qt4/GuiChanges.cpp:65
+#: src/frontends/qt4/GuiChanges.cpp:66
 #, c-format
 msgid "Change made at %1$s\n"
 msgstr "Endringa gjort %1$s\n"
@@ -21019,19 +21029,19 @@ msgstr "Teksthøgd %"
 msgid "Page Height %"
 msgstr "Sidehøgd %"
 
-#: src/lyxfind.cpp:115
+#: src/lyxfind.cpp:123
 msgid "Search error"
 msgstr "Søk feil"
 
-#: src/lyxfind.cpp:115
+#: src/lyxfind.cpp:123
 msgid "Search string is empty"
 msgstr "Søkje strengen er tom"
 
-#: src/lyxfind.cpp:299
+#: src/lyxfind.cpp:307
 msgid "String has been replaced."
 msgstr "Teksten er bytta ut."
 
-#: src/lyxfind.cpp:302
+#: src/lyxfind.cpp:310
 msgid " strings have been replaced."
 msgstr " tekstane har blitt bytta ut."
 

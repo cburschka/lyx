@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-07-14 18:28+0200\n"
+"POT-Creation-Date: 2009-07-15 12:26+0200\n"
 "PO-Revision-Date: 2009-06-29 19:23+0730\n"
 "Last-Translator: Waluyo Adi Siswanto <was.uthm@gmail.com>\n"
 "Language-Team: \n"
@@ -186,7 +186,7 @@ msgid "&Add"
 msgstr "&Gabung"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:127
-#: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:78
+#: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:91
 #: src/frontends/qt4/ui/LabelUi.ui:92 src/frontends/qt4/ui/NomenclUi.ui:105
 #: src/frontends/qt4/ui/SendtoUi.ui:92 src/frontends/qt4/ui/ShortcutUi.ui:65
 #: src/LyXFunc.cpp:826 src/buffer_funcs.cpp:107
@@ -567,26 +567,36 @@ msgid "Change:"
 msgstr "Perubahan:"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:49
-msgid "Go to next change"
+#, fuzzy
+msgid "Go to previous change"
 msgstr "Ke perubahan selanjutnya"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:52
+#, fuzzy
+msgid "&Previous change"
+msgstr "&Perubahan selanjutnya"
+
+#: src/frontends/qt4/ui/ChangesUi.ui:62
+msgid "Go to next change"
+msgstr "Ke perubahan selanjutnya"
+
+#: src/frontends/qt4/ui/ChangesUi.ui:65
 msgid "&Next change"
 msgstr "&Perubahan selanjutnya"
 
-#: src/frontends/qt4/ui/ChangesUi.ui:95
+#: src/frontends/qt4/ui/ChangesUi.ui:108
 msgid "Accept this change"
 msgstr "Terima perubahan ini"
 
-#: src/frontends/qt4/ui/ChangesUi.ui:98
+#: src/frontends/qt4/ui/ChangesUi.ui:111
 msgid "&Accept"
 msgstr "&Terima"
 
-#: src/frontends/qt4/ui/ChangesUi.ui:108
+#: src/frontends/qt4/ui/ChangesUi.ui:121
 msgid "Reject this change"
 msgstr "Tolak perubahan ini"
 
-#: src/frontends/qt4/ui/ChangesUi.ui:111
+#: src/frontends/qt4/ui/ChangesUi.ui:124
 msgid "&Reject"
 msgstr "&Tolak"
 
@@ -11338,11 +11348,11 @@ msgstr "Cetak dokumen"
 msgid "Check spelling"
 msgstr "Periksa ejaan"
 
-#: lib/ui/stdtoolbars.inc:76 src/BufferView.cpp:1074
+#: lib/ui/stdtoolbars.inc:76 src/BufferView.cpp:1075
 msgid "Undo"
 msgstr "Batalkan"
 
-#: lib/ui/stdtoolbars.inc:77 src/BufferView.cpp:1083
+#: lib/ui/stdtoolbars.inc:77 src/BufferView.cpp:1084
 msgid "Redo"
 msgstr "Kembalikan"
 
@@ -14456,12 +14466,12 @@ msgstr "\\begin_header tidak ada"
 msgid "\\begin_document is missing"
 msgstr "\\begin_document tidak ada"
 
-#: src/Buffer.cpp:584 src/Buffer.cpp:590 src/BufferView.cpp:1193
-#: src/BufferView.cpp:1199
+#: src/Buffer.cpp:584 src/Buffer.cpp:590 src/BufferView.cpp:1194
+#: src/BufferView.cpp:1200
 msgid "Changes not shown in LaTeX output"
 msgstr "Perubahan tidak dimunculkan di output LaTeX"
 
-#: src/Buffer.cpp:585 src/BufferView.cpp:1194
+#: src/Buffer.cpp:585 src/BufferView.cpp:1195
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -14473,7 +14483,7 @@ msgstr ""
 "Silahkan paket tersebut diinstal terlebih dahulu atau definisikan \\lyxadded "
 "dan \\lyxdeleted dalam LaTeX preamble."
 
-#: src/Buffer.cpp:591 src/BufferView.cpp:1200
+#: src/Buffer.cpp:591 src/BufferView.cpp:1201
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -14889,89 +14899,89 @@ msgstr "Tidak ada lagi sisipan"
 msgid "Save bookmark"
 msgstr "Simpan batas buku"
 
-#: src/BufferView.cpp:1077
+#: src/BufferView.cpp:1078
 msgid "No further undo information"
 msgstr "Sudah tidak ada lagi informasi Batalkan"
 
-#: src/BufferView.cpp:1086
+#: src/BufferView.cpp:1087
 msgid "No further redo information"
 msgstr "Sudah tidak ada lagi informasi Kembalikan"
 
-#: src/BufferView.cpp:1255 src/lyxfind.cpp:295 src/lyxfind.cpp:313
+#: src/BufferView.cpp:1262 src/lyxfind.cpp:303 src/lyxfind.cpp:321
 msgid "String not found!"
 msgstr "String tidak ditemukan!"
 
-#: src/BufferView.cpp:1279
+#: src/BufferView.cpp:1286
 msgid "Mark off"
 msgstr "Tanda hilang"
 
-#: src/BufferView.cpp:1286
+#: src/BufferView.cpp:1293
 msgid "Mark on"
 msgstr "Tanda on"
 
-#: src/BufferView.cpp:1293
+#: src/BufferView.cpp:1300
 msgid "Mark removed"
 msgstr "Tanda dihilangkan"
 
-#: src/BufferView.cpp:1296
+#: src/BufferView.cpp:1303
 msgid "Mark set"
 msgstr "Beri Tanda"
 
-#: src/BufferView.cpp:1347
+#: src/BufferView.cpp:1354
 msgid "Statistics for the selection:"
 msgstr "Data statistik pilihan:"
 
-#: src/BufferView.cpp:1349
+#: src/BufferView.cpp:1356
 msgid "Statistics for the document:"
 msgstr "Data statistik dokumen:"
 
-#: src/BufferView.cpp:1352
+#: src/BufferView.cpp:1359
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d kata"
 
-#: src/BufferView.cpp:1354
+#: src/BufferView.cpp:1361
 msgid "One word"
 msgstr "Satu kata"
 
-#: src/BufferView.cpp:1357
+#: src/BufferView.cpp:1364
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d karakter (termasuk spasi)"
 
-#: src/BufferView.cpp:1360
+#: src/BufferView.cpp:1367
 msgid "One character (including blanks)"
 msgstr "Satu karakter (termasuk spasi)"
 
-#: src/BufferView.cpp:1363
+#: src/BufferView.cpp:1370
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d karakter (tidak termasuk spasi)"
 
-#: src/BufferView.cpp:1366
+#: src/BufferView.cpp:1373
 msgid "One character (excluding blanks)"
 msgstr "Satu karakter (tidak termasuk spasi)"
 
-#: src/BufferView.cpp:1368
+#: src/BufferView.cpp:1375
 msgid "Statistics"
 msgstr "Statistik"
 
-#: src/BufferView.cpp:2151
+#: src/BufferView.cpp:2158
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Memasukkan dokumen %1$s..."
 
-#: src/BufferView.cpp:2162
+#: src/BufferView.cpp:2169
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokumen %1$s dimasukkan."
 
-#: src/BufferView.cpp:2164
+#: src/BufferView.cpp:2171
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Tidak dapat memasukkan dokumen %1$s"
 
-#: src/BufferView.cpp:2426
+#: src/BufferView.cpp:2433
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -14982,11 +14992,11 @@ msgstr ""
 "%1$s\n"
 "karena kesalahan: %2$s"
 
-#: src/BufferView.cpp:2428
+#: src/BufferView.cpp:2435
 msgid "Could not read file"
 msgstr "Tidak dapat membaca berkas"
 
-#: src/BufferView.cpp:2435
+#: src/BufferView.cpp:2442
 #, c-format
 msgid ""
 "%1$s\n"
@@ -14995,15 +15005,15 @@ msgstr ""
 "%1$s\n"
 "tidak bisa dibaca."
 
-#: src/BufferView.cpp:2436 src/output.cpp:39
+#: src/BufferView.cpp:2443 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Tidak bisa membuka berkas"
 
-#: src/BufferView.cpp:2443
+#: src/BufferView.cpp:2450
 msgid "Reading not UTF-8 encoded file"
 msgstr "Membaca berkas not UTF-8 encoded"
 
-#: src/BufferView.cpp:2444
+#: src/BufferView.cpp:2451
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -17355,7 +17365,7 @@ msgstr "Tidak"
 msgid "Merge Changes"
 msgstr "Gabung Perubahan"
 
-#: src/frontends/qt4/GuiChanges.cpp:63
+#: src/frontends/qt4/GuiChanges.cpp:64
 #, c-format
 msgid ""
 "Change by %1$s\n"
@@ -17364,7 +17374,7 @@ msgstr ""
 "Perubahan oleh %1$s\n"
 "\n"
 
-#: src/frontends/qt4/GuiChanges.cpp:65
+#: src/frontends/qt4/GuiChanges.cpp:66
 #, c-format
 msgid "Change made at %1$s\n"
 msgstr "Perubahan dibuat pada %1$s\n"
@@ -20325,19 +20335,19 @@ msgstr "Tinggi teks %"
 msgid "Page Height %"
 msgstr "Tinggi halaman %"
 
-#: src/lyxfind.cpp:115
+#: src/lyxfind.cpp:123
 msgid "Search error"
 msgstr "Salah Pencarian"
 
-#: src/lyxfind.cpp:115
+#: src/lyxfind.cpp:123
 msgid "Search string is empty"
 msgstr "Pencarian kata kosong"
 
-#: src/lyxfind.cpp:299
+#: src/lyxfind.cpp:307
 msgid "String has been replaced."
 msgstr "String telah diganti"
 
-#: src/lyxfind.cpp:302
+#: src/lyxfind.cpp:310
 msgid " strings have been replaced."
 msgstr " Berbagai string sudah diganti."
 

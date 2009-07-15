@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-07-14 18:28+0200\n"
+"POT-Creation-Date: 2009-07-15 12:26+0200\n"
 "PO-Revision-Date: 2009-05-29 12:42-0400\n"
 "Last-Translator: Marius Ionescu <felijohn@gmail.com>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
@@ -188,7 +188,7 @@ msgid "&Add"
 msgstr "&Adaugă"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:127
-#: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:78
+#: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:91
 #: src/frontends/qt4/ui/LabelUi.ui:92 src/frontends/qt4/ui/NomenclUi.ui:105
 #: src/frontends/qt4/ui/SendtoUi.ui:92 src/frontends/qt4/ui/ShortcutUi.ui:65
 #: src/LyXFunc.cpp:826 src/buffer_funcs.cpp:107
@@ -570,26 +570,36 @@ msgid "Change:"
 msgstr "Modifică:"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:49
-msgid "Go to next change"
+#, fuzzy
+msgid "Go to previous change"
 msgstr "Salt la modificarea următoare"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:52
+#, fuzzy
+msgid "&Previous change"
+msgstr "Următoarea modificare"
+
+#: src/frontends/qt4/ui/ChangesUi.ui:62
+msgid "Go to next change"
+msgstr "Salt la modificarea următoare"
+
+#: src/frontends/qt4/ui/ChangesUi.ui:65
 msgid "&Next change"
 msgstr "Următoarea modificare"
 
-#: src/frontends/qt4/ui/ChangesUi.ui:95
+#: src/frontends/qt4/ui/ChangesUi.ui:108
 msgid "Accept this change"
 msgstr "Acceptă această modificare"
 
-#: src/frontends/qt4/ui/ChangesUi.ui:98
+#: src/frontends/qt4/ui/ChangesUi.ui:111
 msgid "&Accept"
 msgstr "Acceptă"
 
-#: src/frontends/qt4/ui/ChangesUi.ui:108
+#: src/frontends/qt4/ui/ChangesUi.ui:121
 msgid "Reject this change"
 msgstr "Respinge această modificare"
 
-#: src/frontends/qt4/ui/ChangesUi.ui:111
+#: src/frontends/qt4/ui/ChangesUi.ui:124
 msgid "&Reject"
 msgstr "Respinge"
 
@@ -11698,11 +11708,11 @@ msgstr "Importă document"
 msgid "Check spelling"
 msgstr "Verificare TeX"
 
-#: lib/ui/stdtoolbars.inc:76 src/BufferView.cpp:1074
+#: lib/ui/stdtoolbars.inc:76 src/BufferView.cpp:1075
 msgid "Undo"
 msgstr "Des-face"
 
-#: lib/ui/stdtoolbars.inc:77 src/BufferView.cpp:1083
+#: lib/ui/stdtoolbars.inc:77 src/BufferView.cpp:1084
 msgid "Redo"
 msgstr "Re-face"
 
@@ -14924,12 +14934,12 @@ msgstr ""
 msgid "\\begin_document is missing"
 msgstr ""
 
-#: src/Buffer.cpp:584 src/Buffer.cpp:590 src/BufferView.cpp:1193
-#: src/BufferView.cpp:1199
+#: src/Buffer.cpp:584 src/Buffer.cpp:590 src/BufferView.cpp:1194
+#: src/BufferView.cpp:1200
 msgid "Changes not shown in LaTeX output"
 msgstr ""
 
-#: src/Buffer.cpp:585 src/BufferView.cpp:1194
+#: src/Buffer.cpp:585 src/BufferView.cpp:1195
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -14937,7 +14947,7 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:591 src/BufferView.cpp:1200
+#: src/Buffer.cpp:591 src/BufferView.cpp:1201
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -15347,93 +15357,93 @@ msgstr "Nu mai există inset-uri"
 msgid "Save bookmark"
 msgstr "Salvează semnul de carte 2"
 
-#: src/BufferView.cpp:1077
+#: src/BufferView.cpp:1078
 msgid "No further undo information"
 msgstr "Nu mai există informaţii de des-facere"
 
-#: src/BufferView.cpp:1086
+#: src/BufferView.cpp:1087
 msgid "No further redo information"
 msgstr "Nu mai există informaţii de re-facere"
 
-#: src/BufferView.cpp:1255 src/lyxfind.cpp:295 src/lyxfind.cpp:313
+#: src/BufferView.cpp:1262 src/lyxfind.cpp:303 src/lyxfind.cpp:321
 #, fuzzy
 msgid "String not found!"
 msgstr "Reconfigurează|R"
 
-#: src/BufferView.cpp:1279
+#: src/BufferView.cpp:1286
 msgid "Mark off"
 msgstr "Marcaj inactiv"
 
-#: src/BufferView.cpp:1286
+#: src/BufferView.cpp:1293
 msgid "Mark on"
 msgstr "Marcaj activ"
 
-#: src/BufferView.cpp:1293
+#: src/BufferView.cpp:1300
 msgid "Mark removed"
 msgstr "Marcaj eliminat"
 
-#: src/BufferView.cpp:1296
+#: src/BufferView.cpp:1303
 msgid "Mark set"
 msgstr "Marcaj setat"
 
-#: src/BufferView.cpp:1347
+#: src/BufferView.cpp:1354
 msgid "Statistics for the selection:"
 msgstr ""
 
-#: src/BufferView.cpp:1349
+#: src/BufferView.cpp:1356
 #, fuzzy
 msgid "Statistics for the document:"
 msgstr "Trece la alt document deschis"
 
-#: src/BufferView.cpp:1352
+#: src/BufferView.cpp:1359
 #, fuzzy, c-format
 msgid "%1$d words"
 msgstr "Formatez documentul..."
 
-#: src/BufferView.cpp:1354
+#: src/BufferView.cpp:1361
 #, fuzzy
 msgid "One word"
 msgstr "CuvîntCheie"
 
-#: src/BufferView.cpp:1357
+#: src/BufferView.cpp:1364
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1360
+#: src/BufferView.cpp:1367
 msgid "One character (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1363
+#: src/BufferView.cpp:1370
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1366
+#: src/BufferView.cpp:1373
 msgid "One character (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1368
+#: src/BufferView.cpp:1375
 #, fuzzy
 msgid "Statistics"
 msgstr "Stare"
 
-#: src/BufferView.cpp:2151
+#: src/BufferView.cpp:2158
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Inserez documentul %1$s..."
 
-#: src/BufferView.cpp:2162
+#: src/BufferView.cpp:2169
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Am inserat documentul %1$s."
 
-#: src/BufferView.cpp:2164
+#: src/BufferView.cpp:2171
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Nu pot insera documentul %1$s"
 
-#: src/BufferView.cpp:2426
+#: src/BufferView.cpp:2433
 #, fuzzy, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15441,28 +15451,28 @@ msgid ""
 "due to the error: %2$s"
 msgstr "Nu pot insera documentul %1$s"
 
-#: src/BufferView.cpp:2428
+#: src/BufferView.cpp:2435
 #, fuzzy
 msgid "Could not read file"
 msgstr "Listă de slide-uri"
 
-#: src/BufferView.cpp:2435
+#: src/BufferView.cpp:2442
 #, fuzzy, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr "Documentul nu poate fi citit"
 
-#: src/BufferView.cpp:2436 src/output.cpp:39
+#: src/BufferView.cpp:2443 src/output.cpp:39
 #, fuzzy
 msgid "Could not open file"
 msgstr "Nu pot deschide fişierul"
 
-#: src/BufferView.cpp:2443
+#: src/BufferView.cpp:2450
 msgid "Reading not UTF-8 encoded file"
 msgstr ""
 
-#: src/BufferView.cpp:2444
+#: src/BufferView.cpp:2451
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -17735,14 +17745,14 @@ msgstr "Notă"
 msgid "Merge Changes"
 msgstr "Combină celulele"
 
-#: src/frontends/qt4/GuiChanges.cpp:63
+#: src/frontends/qt4/GuiChanges.cpp:64
 #, c-format
 msgid ""
 "Change by %1$s\n"
 "\n"
 msgstr ""
 
-#: src/frontends/qt4/GuiChanges.cpp:65
+#: src/frontends/qt4/GuiChanges.cpp:66
 #, c-format
 msgid "Change made at %1$s\n"
 msgstr ""
@@ -20974,22 +20984,22 @@ msgstr "Copyright"
 msgid "Page Height %"
 msgstr "Copyright"
 
-#: src/lyxfind.cpp:115
+#: src/lyxfind.cpp:123
 #, fuzzy
 msgid "Search error"
 msgstr "Caută"
 
-#: src/lyxfind.cpp:115
+#: src/lyxfind.cpp:123
 #, fuzzy
 msgid "Search string is empty"
 msgstr "Construieşte o listă nouă de fişiere"
 
-#: src/lyxfind.cpp:299
+#: src/lyxfind.cpp:307
 #, fuzzy
 msgid "String has been replaced."
 msgstr "Înlocuieşte"
 
-#: src/lyxfind.cpp:302
+#: src/lyxfind.cpp:310
 #, fuzzy
 msgid " strings have been replaced."
 msgstr "Înlocuieşte"

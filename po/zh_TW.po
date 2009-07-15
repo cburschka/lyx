@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-07-14 18:28+0200\n"
+"POT-Creation-Date: 2009-07-15 12:26+0200\n"
 "PO-Revision-Date: 2009-04-19 17:10+0100\n"
 "Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -186,7 +186,7 @@ msgid "&Add"
 msgstr "加入(&A)"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:127
-#: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:78
+#: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:91
 #: src/frontends/qt4/ui/LabelUi.ui:92 src/frontends/qt4/ui/NomenclUi.ui:105
 #: src/frontends/qt4/ui/SendtoUi.ui:92 src/frontends/qt4/ui/ShortcutUi.ui:65
 #: src/LyXFunc.cpp:826 src/buffer_funcs.cpp:107
@@ -571,26 +571,36 @@ msgid "Change:"
 msgstr "變更："
 
 #: src/frontends/qt4/ui/ChangesUi.ui:49
-msgid "Go to next change"
+#, fuzzy
+msgid "Go to previous change"
 msgstr "前往下一個變更"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:52
+#, fuzzy
+msgid "&Previous change"
+msgstr "下一個變更(&N)"
+
+#: src/frontends/qt4/ui/ChangesUi.ui:62
+msgid "Go to next change"
+msgstr "前往下一個變更"
+
+#: src/frontends/qt4/ui/ChangesUi.ui:65
 msgid "&Next change"
 msgstr "下一個變更(&N)"
 
-#: src/frontends/qt4/ui/ChangesUi.ui:95
+#: src/frontends/qt4/ui/ChangesUi.ui:108
 msgid "Accept this change"
 msgstr "接受此變更"
 
-#: src/frontends/qt4/ui/ChangesUi.ui:98
+#: src/frontends/qt4/ui/ChangesUi.ui:111
 msgid "&Accept"
 msgstr "接受(&A)"
 
-#: src/frontends/qt4/ui/ChangesUi.ui:108
+#: src/frontends/qt4/ui/ChangesUi.ui:121
 msgid "Reject this change"
 msgstr "拒絕此變更"
 
-#: src/frontends/qt4/ui/ChangesUi.ui:111
+#: src/frontends/qt4/ui/ChangesUi.ui:124
 msgid "&Reject"
 msgstr "拒絕(&R)"
 
@@ -11798,11 +11808,11 @@ msgstr "列印文件"
 msgid "Check spelling"
 msgstr "檢查拼寫"
 
-#: lib/ui/stdtoolbars.inc:76 src/BufferView.cpp:1074
+#: lib/ui/stdtoolbars.inc:76 src/BufferView.cpp:1075
 msgid "Undo"
 msgstr "復原"
 
-#: lib/ui/stdtoolbars.inc:77 src/BufferView.cpp:1083
+#: lib/ui/stdtoolbars.inc:77 src/BufferView.cpp:1084
 msgid "Redo"
 msgstr "重做"
 
@@ -14978,12 +14988,12 @@ msgstr "\\begin_header 缺少"
 msgid "\\begin_document is missing"
 msgstr "\\begin_document 缺少"
 
-#: src/Buffer.cpp:584 src/Buffer.cpp:590 src/BufferView.cpp:1193
-#: src/BufferView.cpp:1199
+#: src/Buffer.cpp:584 src/Buffer.cpp:590 src/BufferView.cpp:1194
+#: src/BufferView.cpp:1200
 msgid "Changes not shown in LaTeX output"
 msgstr "在 LaTeX 輸出中未顯示變更"
 
-#: src/Buffer.cpp:585 src/BufferView.cpp:1194
+#: src/Buffer.cpp:585 src/BufferView.cpp:1195
 #, fuzzy
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
@@ -14995,7 +15005,7 @@ msgstr ""
 "安裝。\n"
 "請安裝這些套件，或者在 LaTeX 前文中重新定義 \\lyxadded 和 \\lyxdeleted。"
 
-#: src/Buffer.cpp:591 src/BufferView.cpp:1200
+#: src/Buffer.cpp:591 src/BufferView.cpp:1201
 #, fuzzy
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
@@ -15407,93 +15417,93 @@ msgstr "沒有更多內欄"
 msgid "Save bookmark"
 msgstr "儲存書籤"
 
-#: src/BufferView.cpp:1077
+#: src/BufferView.cpp:1078
 msgid "No further undo information"
 msgstr "無進一步的復原資訊"
 
-#: src/BufferView.cpp:1086
+#: src/BufferView.cpp:1087
 msgid "No further redo information"
 msgstr "無進一步的重做資訊"
 
-#: src/BufferView.cpp:1255 src/lyxfind.cpp:295 src/lyxfind.cpp:313
+#: src/BufferView.cpp:1262 src/lyxfind.cpp:303 src/lyxfind.cpp:321
 msgid "String not found!"
 msgstr "找不到字串！"
 
-#: src/BufferView.cpp:1279
+#: src/BufferView.cpp:1286
 msgid "Mark off"
 msgstr "標記關閉"
 
-#: src/BufferView.cpp:1286
+#: src/BufferView.cpp:1293
 msgid "Mark on"
 msgstr "標記開啟"
 
-#: src/BufferView.cpp:1293
+#: src/BufferView.cpp:1300
 msgid "Mark removed"
 msgstr "標記移除"
 
-#: src/BufferView.cpp:1296
+#: src/BufferView.cpp:1303
 msgid "Mark set"
 msgstr "標記設定"
 
-#: src/BufferView.cpp:1347
+#: src/BufferView.cpp:1354
 #, fuzzy
 msgid "Statistics for the selection:"
 msgstr "切換至文件(&S)"
 
-#: src/BufferView.cpp:1349
+#: src/BufferView.cpp:1356
 #, fuzzy
 msgid "Statistics for the document:"
 msgstr "切換至文件(&S)"
 
-#: src/BufferView.cpp:1352
+#: src/BufferView.cpp:1359
 #, fuzzy, c-format
 msgid "%1$d words"
 msgstr "%1$d 個字詞已勾選。"
 
-#: src/BufferView.cpp:1354
+#: src/BufferView.cpp:1361
 #, fuzzy
 msgid "One word"
 msgstr "關鍵字"
 
-#: src/BufferView.cpp:1357
+#: src/BufferView.cpp:1364
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1360
+#: src/BufferView.cpp:1367
 msgid "One character (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1363
+#: src/BufferView.cpp:1370
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1366
+#: src/BufferView.cpp:1373
 msgid "One character (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1368
+#: src/BufferView.cpp:1375
 #, fuzzy
 msgid "Statistics"
 msgstr "狀態"
 
-#: src/BufferView.cpp:2151
+#: src/BufferView.cpp:2158
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "插入文件 %1$s…"
 
-#: src/BufferView.cpp:2162
+#: src/BufferView.cpp:2169
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "文件 %1$s 已插入。"
 
-#: src/BufferView.cpp:2164
+#: src/BufferView.cpp:2171
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "無法插入文件 %1$s"
 
-#: src/BufferView.cpp:2426
+#: src/BufferView.cpp:2433
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15504,26 +15514,26 @@ msgstr ""
 "%1$s\n"
 "由於錯誤：%2$s"
 
-#: src/BufferView.cpp:2428
+#: src/BufferView.cpp:2435
 msgid "Could not read file"
 msgstr "無法讀取檔案"
 
-#: src/BufferView.cpp:2435
+#: src/BufferView.cpp:2442
 #, fuzzy, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr "%1$s 無法讀取。"
 
-#: src/BufferView.cpp:2436 src/output.cpp:39
+#: src/BufferView.cpp:2443 src/output.cpp:39
 msgid "Could not open file"
 msgstr "無法開啟檔案"
 
-#: src/BufferView.cpp:2443
+#: src/BufferView.cpp:2450
 msgid "Reading not UTF-8 encoded file"
 msgstr "讀取非 UTF-8 編碼的檔案"
 
-#: src/BufferView.cpp:2444
+#: src/BufferView.cpp:2451
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -17799,7 +17809,7 @@ msgstr "否"
 msgid "Merge Changes"
 msgstr "合併變更"
 
-#: src/frontends/qt4/GuiChanges.cpp:63
+#: src/frontends/qt4/GuiChanges.cpp:64
 #, c-format
 msgid ""
 "Change by %1$s\n"
@@ -17808,7 +17818,7 @@ msgstr ""
 "變更經由 %1$s\n"
 "\n"
 
-#: src/frontends/qt4/GuiChanges.cpp:65
+#: src/frontends/qt4/GuiChanges.cpp:66
 #, c-format
 msgid "Change made at %1$s\n"
 msgstr "變更做於 %1$s\n"
@@ -20915,19 +20925,19 @@ msgstr "文字高度 %"
 msgid "Page Height %"
 msgstr "頁面高度 %"
 
-#: src/lyxfind.cpp:115
+#: src/lyxfind.cpp:123
 msgid "Search error"
 msgstr "搜尋錯誤"
 
-#: src/lyxfind.cpp:115
+#: src/lyxfind.cpp:123
 msgid "Search string is empty"
 msgstr "搜尋字串為空"
 
-#: src/lyxfind.cpp:299
+#: src/lyxfind.cpp:307
 msgid "String has been replaced."
 msgstr "已置換字串。"
 
-#: src/lyxfind.cpp:302
+#: src/lyxfind.cpp:310
 msgid " strings have been replaced."
 msgstr " 已置換字串。"
 
