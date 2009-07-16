@@ -95,7 +95,7 @@ public:
 	/// Output the surrogate pair formed by \p c and \p next to \p os.
 	/// \return the number of characters written.
 	int latexSurrogatePair(odocstream & os, char_type c, char_type next,
-			       Encoding const &);
+			       OutputParams const &);
 
 	/// Output a space in appropriate formatting (or a surrogate pair
 	/// if the next character is a combining character).
@@ -544,7 +544,7 @@ int Paragraph::eraseChars(pos_type start, pos_type end, bool trackChanges)
 
 
 int Paragraph::Private::latexSurrogatePair(odocstream & os, char_type c,
-		char_type next, Encoding const & encoding)
+		char_type next, OutputParams const & runparams)
 {
 	// Writing next here may circumvent a possible font change between
 	// c and next. Since next is only output if it forms a surrogate pair
@@ -553,11 +553,16 @@ int Paragraph::Private::latexSurrogatePair(odocstream & os, char_type c,
 	// hopefully impossible to input.
 	// FIXME: change tracking
 	// Is this correct WRT change tracking?
+	Encoding const & encoding = *(runparams.encoding);
 	docstring const latex1 = encoding.latexChar(next);
 	docstring const latex2 = encoding.latexChar(c);
 	if (docstring(1, next) == latex1) {
 		// the encoding supports the combination
 		os << latex2 << latex1;
+		return latex1.length() + latex2.length();
+	} else if (runparams.local_font->language()->lang() == "polutonikogreek") {
+		// polutonikogreek only works without the brackets
+		os << latex1 << latex2;
 		return latex1.length() + latex2.length();
 	} else
 		os << latex1 << '{' << latex2 << '}';
@@ -578,9 +583,8 @@ bool Paragraph::Private::simpleTeXBlanks(OutputParams const & runparams,
 	if (i + 1 < int(text_.size())) {
 		char_type next = text_[i + 1];
 		if (Encodings::isCombiningChar(next)) {
-			Encoding const & encoding = *(runparams.encoding);
 			// This space has an accent, so we must always output it.
-			column += latexSurrogatePair(os, ' ', next, encoding) - 1;
+			column += latexSurrogatePair(os, ' ', next, runparams) - 1;
 			return true;
 		}
 	}
@@ -962,7 +966,7 @@ void Paragraph::Private::latexSpecialChar(
 		if (i + 1 < int(text_.size())) {
 			char_type next = text_[i + 1];
 			if (Encodings::isCombiningChar(next)) {
-				column += latexSurrogatePair(os, c, next, encoding) - 1;
+				column += latexSurrogatePair(os, c, next, runparams) - 1;
 				++i;
 				break;
 			}

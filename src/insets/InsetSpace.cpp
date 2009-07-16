@@ -20,6 +20,7 @@
 #include "Dimension.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
+#include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Length.h"
 #include "Lexer.h"
@@ -534,7 +535,11 @@ int InsetSpace::latex(odocstream & os, OutputParams const & runparams) const
 		os << (runparams.free_spacing ? " " : "\\ ");
 		break;
 	case InsetSpaceParams::PROTECTED:
-		os << (runparams.free_spacing ? ' ' : '~');
+		if (runparams.local_font->language()->lang() == "polutonikogreek")
+			// in babel's polutonikogreek, ~ is active
+			os << (runparams.free_spacing ? " " : "\\nobreakspace{}");
+		else
+			os << (runparams.free_spacing ? ' ' : '~');
 		break;
 	case InsetSpaceParams::THIN:
 		os << (runparams.free_spacing ? " " : "\\,");

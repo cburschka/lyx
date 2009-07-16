@@ -195,8 +195,11 @@ static docstring const changetracking_none_def = from_ascii(
 	"\\newcommand{\\lyxdeleted}[3]{}\n");
 
 static docstring const textgreek_def = from_ascii(
-	"\\DeclareRobustCommand{\\greektext}{%\n"
-	"  \\fontencoding{LGR}\\selectfont\\def\\encodingdefault{LGR}}\n"
+	"\\providecommand*{\\perispomeni}{\\char126}\n"
+	"\\AtBeginDocument{\\DeclareRobustCommand{\\greektext}{%\n"
+	"  \\fontencoding{LGR}\\selectfont\\def\\encodingdefault{LGR}\n"
+	"  \\renewcommand{\\~}{\\perispomeni}\n"
+	"}}\n"
 	"\\DeclareRobustCommand{\\textgreek}[1]{\\leavevmode{\\greektext #1}}\n"
 	"\\DeclareFontEncoding{LGR}{}{}\n");
 
