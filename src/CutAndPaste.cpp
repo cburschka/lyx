@@ -456,19 +456,32 @@ void copySelectionHelper(Buffer const & buf, ParagraphList const & pars,
 	ParagraphList::iterator it_end = copy_pars.end();
 
 	for (; it != it_end; it++) {
-		// ERT paragraphs have the Language latex_language.
-		// This is invalid outside of ERT, so we need to change it
-		// to the buffer language.
-		if (it->ownerCode() == ERT_CODE || it->ownerCode() == LISTINGS_CODE)
-			it->changeLanguage(buf.params(), latex_language, buf.language());
-
-		it->setInsetOwner(0);
+		// Since we have a copy of the paragraphs, the insets
+		// do not have a proper buffer reference. It makes
+		// sense to add them temporarily, because the
+		// operations below depend on that (acceptChanges included).
+		it->setBuffer(const_cast<Buffer &>(buf));
+		// PassThru paragraphs have the Language
+		// latex_language. This is invalid for others, so we
+		// need to change it to the buffer language.
+		if (it->inInset().getLayout().isPassThru())
+			it->changeLanguage(buf.params(), 
+					   latex_language, buf.language());
 	}
 
-	// do not copy text (also nested in insets) which is marked as deleted,
-	// unless the whole selection was deleted
+	// do not copy text (also nested in insets) which is marked as
+	// deleted, unless the whole selection was deleted
 	if (!isFullyDeleted(copy_pars))
 		acceptChanges(copy_pars, buf.params());
+
+
+	// do some final cleanup now, to make sure that the paragraphs
+	// are not linked to something else.
+	it = copy_pars.begin();
+	for (; it != it_end; it++) {
+		it->setBuffer(*static_cast<Buffer *>(0));
+		it->setInsetOwner(0);
+	}
 
 	DocumentClass * d = const_cast<DocumentClass *>(dc);
 	cutstack.push(make_pair(copy_pars, d));

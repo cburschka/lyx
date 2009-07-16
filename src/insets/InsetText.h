@@ -21,7 +21,6 @@
 
 namespace lyx {
 
-class BufferParams;
 class CompletionList;
 class CursorSlice;
 class Dimension;
@@ -116,9 +115,9 @@ public:
 	/// set the change for the entire inset
 	void setChange(Change const & change);
 	/// accept the changes within the inset
-	void acceptChanges(BufferParams const & bparams);
+	void acceptChanges();
 	/// reject the changes within the inset
-	void rejectChanges(BufferParams const & bparams);
+	void rejectChanges();
 
 	/// append text onto the existing text
 	void appendParagraphs(ParagraphList &);

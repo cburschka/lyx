@@ -27,7 +27,6 @@ namespace lyx {
 
 class BiblioInfo;
 class Buffer;
-class BufferParams;
 class BufferView;
 class Change;
 class CompletionList;
@@ -97,8 +96,9 @@ public:
 	virtual ~Inset() {}
 
 	/// change associated Buffer
-	/// FIXME this should go.
 	virtual void setBuffer(Buffer & buffer);
+	/// remove the buffer reference
+	void resetBuffer() { setBuffer( *static_cast<Buffer *>(0)); }
 	/// retrieve associated Buffer
 	virtual Buffer & buffer();
 	virtual Buffer const & buffer() const;
@@ -487,9 +487,9 @@ public:
 	/// set the change for the entire inset
 	virtual void setChange(Change const &) {}
 	/// accept the changes within the inset
-	virtual void acceptChanges(BufferParams const &) {};
+	virtual void acceptChanges() {};
 	/// reject the changes within the inset
-	virtual void rejectChanges(BufferParams const &) {};
+	virtual void rejectChanges() {};
 
 	///
 	virtual Dimension const dimension(BufferView const &) const;
