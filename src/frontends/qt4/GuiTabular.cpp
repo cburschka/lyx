@@ -53,6 +53,8 @@ GuiTabular::GuiTabular(GuiView & lv)
 	bottomspaceED->setValidator(new LengthValidator(bottomspaceED));
 	interlinespaceED->setValidator(new LengthValidator(interlinespaceED));
 
+	widthUnitCB->setCurrentItem(Length::defaultUnit());
+
 	connect(topspaceED, SIGNAL(returnPressed()),
 		this, SLOT(topspace_changed()));
 	connect(topspaceUnit, SIGNAL(selectionChanged(lyx::Length::UNIT)),
@@ -770,10 +772,12 @@ void GuiTabular::updateContents()
 	interlinespaceCO->setEnabled(!isReadonly);
 
 	string colwidth;
-	if (!pwidth.zero())
+	if (!pwidth.zero()) {
 		colwidth = pwidth.asString();
-	lengthToWidgets(widthED, widthUnitCB,
-		colwidth, default_unit);
+
+		lengthToWidgets(widthED, widthUnitCB,
+			colwidth, default_unit);
+	}
 
 	widthED->setEnabled(!isReadonly);
 	widthUnitCB->setEnabled(!isReadonly);
