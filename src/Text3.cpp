@@ -2620,8 +2620,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	}
 
 	case LFUN_LANGUAGE:
-		// FIXME: use isPassThru() here?
-		enable = !cur.inset().forceLTR();
+		enable = !cur.inset().getLayout().isPassThru();
 
 	case LFUN_BREAK_PARAGRAPH:
 		enable = cur.inset().getLayout().isMultiPar();

@@ -1281,16 +1281,20 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 			if (!view())
 				enable = false;
 			else {
-				InsetCode ic = view()->cursor().inset().lyxCode();
-				enable = ic != ERT_CODE && ic != LISTINGS_CODE;
+				// FIXME we should consider passthru
+				// paragraphs too.
+				Inset const & in = view()->cursor().inset();
+				enable = !in.getLayout().isPassThru();
 			}
 		}
 		else if (name == "symbols") {
 			if (!view() || view()->cursor().inMathed())
 				enable = false;
 			else {
-				InsetCode ic = view()->cursor().inset().lyxCode();
-				enable = ic != ERT_CODE && ic != LISTINGS_CODE;
+				// FIXME we should consider passthru
+				// paragraphs too.
+				Inset const & in = view()->cursor().inset();
+				enable = !in.getLayout().isPassThru();
 			}
 		}
 		else if (name == "latexlog")

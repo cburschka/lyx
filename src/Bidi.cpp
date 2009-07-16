@@ -61,7 +61,7 @@ void Bidi::computeTables(Paragraph const & par,
 		return;
 	}
 
-	if (par.ownerCode() == ERT_CODE || par.ownerCode() == LISTINGS_CODE) {
+	if (par.inInset().forceLTR()) {
 		start_ = -1;
 		return;
 	}

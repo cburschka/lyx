@@ -1019,10 +1019,12 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 
 	case LFUN_DIALOG_SHOW_NEW_INSET:
+		// FIXME: this is wrong, but I do not understand the
+		// intent (JMarc)
 		if (cur.inset().lyxCode() == CAPTION_CODE)
 			return cur.inset().getStatus(cur, cmd, flag);
-		flag.setEnabled(cur.inset().lyxCode() != ERT_CODE &&
-			cur.inset().lyxCode() != LISTINGS_CODE);
+		// FIXME we should consider passthru paragraphs too.
+		flag.setEnabled(!cur.inset().getLayout().isPassThru());
 		break;
 
 	default:

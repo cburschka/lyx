@@ -772,10 +772,11 @@ void Paragraph::Private::latexInset(
 	bool close = false;
 	odocstream::pos_type const len = os.tellp();
 
-	if (inset->forceLTR() 
+	if (inset->forceLTR()
 	    && running_font.isRightToLeft()
-		// ERT is an exception, it should be output with no decorations at all
-		&& inset->lyxCode() != ERT_CODE) {
+	    // ERT is an exception, it should be output with no
+	    // decorations at all
+	    && inset->lyxCode() != ERT_CODE) {
 	    	if (running_font.language()->lang() == "farsi")
 			os << "\\beginL{}";
 		else
@@ -2194,6 +2195,8 @@ bool Paragraph::emptyTag() const
 	for (pos_type i = 0; i < size(); ++i) {
 		if (Inset const * inset = getInset(i)) {
 			InsetCode lyx_code = inset->lyxCode();
+			// FIXME testing like that is wrong. What is
+			// the intent?
 			if (lyx_code != TOC_CODE &&
 			    lyx_code != INCLUDE_CODE &&
 			    lyx_code != GRAPHICS_CODE &&
@@ -2492,8 +2495,7 @@ bool Paragraph::isRTL(BufferParams const & bparams) const
 {
 	return lyxrc.rtl_support
 		&& getParLanguage(bparams)->rightToLeft()
-		&& ownerCode() != ERT_CODE
-		&& ownerCode() != LISTINGS_CODE;
+		&& !inInset().getLayout().forceLTR();
 }
 
 
