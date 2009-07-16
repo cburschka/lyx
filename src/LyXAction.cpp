@@ -1935,7 +1935,7 @@ void LyXAction::init()
                Note that the "leftindent" indent setting is deprecated.
  * \li Syntax: paragraph-params [<INDENT>] [<SPACING>] [<ALIGN>] [<OTHERS>]
  * \li Params: <INDENT>:  \noindent|\indent|\indent-toggle|\leftindent LENGTH\n
-               <SPACING>: \paragraph_spacing default|single|onehalf|double|other\n
+               <SPACING>: \paragraph_spacing default|single|onehalf|double|other SIZE \n
                <ALIGN>:   \align block|left|right|center|default\n
                <OTHERS>:  \labelwidthstring WIDTH|\start_of_appendix
  * \li Origin: rgh, Aug 15 2007
