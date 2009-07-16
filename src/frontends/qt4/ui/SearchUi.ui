@@ -172,17 +172,11 @@
      <property name="default" >
       <bool>true</bool>
      </property>
-     <property name="autoDefault">
-      <bool>true</bool>
-     </property>
     </widget>
    </item>
    <item row="1" column="3" >
     <widget class="QPushButton" name="replacePB" >
      <property name="enabled" >
-      <bool>false</bool>
-     </property>
-     <property name="autoDefault">
       <bool>false</bool>
      </property>
      <property name="text" >
@@ -193,9 +187,6 @@
    <item rowspan="2" row="2" column="3" >
     <widget class="QPushButton" name="replaceallPB" >
      <property name="enabled" >
-      <bool>false</bool>
-     </property>
-     <property name="autoDefault">
       <bool>false</bool>
      </property>
      <property name="text" >
@@ -214,9 +205,6 @@
     <widget class="QPushButton" name="closePB" >
      <property name="text" >
       <string>&amp;Close</string>
-     </property>
-     <property name="autoDefault">
-      <bool>false</bool>
      </property>
     </widget>
    </item>
