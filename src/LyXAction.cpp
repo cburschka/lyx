@@ -1909,14 +1909,6 @@ void LyXAction::init()
  */
 		{ LFUN_PARAGRAPH_GOTO, "paragraph-goto", ReadOnly, Edit },
 /*!
- * \var lyx::FuncCode lyx::LFUN_PARAGRAPH_SPACING
- * \li Action: Adjusts the spacing of the paragraph.
- * \li Syntax: paragraph-spacing
- * \ii Notion: This LFUN is obsolete. Please use LFUN_PARAGRAPH_PARAMS.
- * \endvar
- */
-		{ LFUN_PARAGRAPH_SPACING, "paragraph-spacing", Noop, Edit },
-/*!
  * \var lyx::FuncCode lyx::LFUN_BREAK_PARAGRAPH
  * \li Action: Breaks the current paragraph at the current location.
  * \li Notion: Removes the selection.

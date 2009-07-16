@@ -1048,49 +1048,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		cur.resetAnchor();
 		break;
 
-	// TODO
-	// With the creation of LFUN_PARAGRAPH_PARAMS, this is now redundant,
-	// as its duties can be performed there. Should it be removed??
-	// FIXME For now, it can just dispatch LFUN_PARAGRAPH_PARAMS...
-	case LFUN_PARAGRAPH_SPACING: {
-		Paragraph & par = cur.paragraph();
-		Spacing::Space cur_spacing = par.params().spacing().getSpace();
-		string cur_value = "1.0";
-		if (cur_spacing == Spacing::Other)
-			cur_value = par.params().spacing().getValueAsString();
-
-		istringstream is(to_utf8(cmd.argument()));
-		string tmp;
-		is >> tmp;
-		Spacing::Space new_spacing = cur_spacing;
-		string new_value = cur_value;
-		if (tmp.empty()) {
-			lyxerr << "Missing argument to `paragraph-spacing'"
-			       << endl;
-		} else if (tmp == "single") {
-			new_spacing = Spacing::Single;
-		} else if (tmp == "onehalf") {
-			new_spacing = Spacing::Onehalf;
-		} else if (tmp == "double") {
-			new_spacing = Spacing::Double;
-		} else if (tmp == "other") {
-			new_spacing = Spacing::Other;
-			string tmpval = "0.0";
-			is >> tmpval;
-			lyxerr << "new_value = " << tmpval << endl;
-			if (tmpval != "0.0")
-				new_value = tmpval;
-		} else if (tmp == "default") {
-			new_spacing = Spacing::Default;
-		} else {
-			lyxerr << to_utf8(_("Unknown spacing argument: "))
-			       << to_utf8(cmd.argument()) << endl;
-		}
-		if (cur_spacing != new_spacing || cur_value != new_value)
-			par.params().spacing(Spacing(new_spacing, new_value));
-		break;
-	}
-
 	case LFUN_INSET_INSERT: {
 		cur.recordUndo();
 
@@ -2660,7 +2617,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_LINE_END:
 	case LFUN_CHAR_DELETE_FORWARD:
 	case LFUN_CHAR_DELETE_BACKWARD:
-	case LFUN_PARAGRAPH_SPACING:
 	case LFUN_INSET_INSERT:
 	case LFUN_WORD_UPCASE:
 	case LFUN_WORD_LOWCASE:

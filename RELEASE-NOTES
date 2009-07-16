@@ -73,6 +73,9 @@ The following LyX functions have been removed:
 
 - LFUN_NEXT_INSET_TOGGLE ("next-inset-toggle"): use "inset-toggle" instead.
 
+- LFUN_PARAGRAPH_SPACING ("paragraph-spacing"): use "paragraph-params" instead.
+
+
 The following LyX functions have been changed:
 
 - LFUN_INSET_TOGGLE ("inset-toggle"): For some insets, this function was used 

@@ -244,7 +244,7 @@ enum FuncCode
 	LFUN_LANGUAGE,                  // Dekel 20000203
 	LFUN_ERT_INSERT,                // Jug 20000218
 	LFUN_FOOTNOTE_INSERT,           // Jug 20000307
-	LFUN_PARAGRAPH_SPACING,         // Lgb 20000411
+	LFUN_MATH_AMS_MATRIX,           // uwestoehr 12-07-2009
 	// 180
 	LFUN_TABULAR_INSERT,            // Jug 20000412
 	LFUN_LOFVIEW,                   // Dekel 20000519
@@ -439,7 +439,6 @@ enum FuncCode
 	LFUN_BRANCH_ADD_INSERT,
 	// 340
 	LFUN_BRANCHES_RENAME,           // spitz 20090709
-	LFUN_MATH_AMS_MATRIX,           // uwestoehr 12-07-2009
 
 	LFUN_LASTACTION                 // end of the table
 };

@@ -311,7 +311,6 @@ bool InsetText::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_LAYOUT_PARAGRAPH:
 	case LFUN_PARAGRAPH_PARAMS:
 	case LFUN_PARAGRAPH_PARAMS_APPLY:
-	case LFUN_PARAGRAPH_SPACING:
 	case LFUN_PARAGRAPH_UPDATE:
 		status.setEnabled(allowParagraphCustomization());
 		return true;
