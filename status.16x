@@ -129,6 +129,8 @@ What's new
 - Assure that a longtable caption is in a first header even if the table
   does not have one. This assures the caption is not repeated after a
   page break and consequently in the list of tables (bug 6057).
+
+- Fix language settings after an environment (bug 5096).
   
 
 * USER INTERFACE

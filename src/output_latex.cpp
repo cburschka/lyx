@@ -345,11 +345,33 @@ TeXOnePar(Buffer const & buf,
 	// The previous language that was in effect is either the language of
 	// the previous paragraph, if there is one, or else the outer language
 	// if there is no previous paragraph
-	Language const * const prev_language =
+	Language const * prev_language =
 		(pit != paragraphs.begin()) ?
 			priorpit->getParLanguage(bparams) : outer_language;
 
-	if (par_language->babel() != prev_language->babel()
+	// When the language is changed at the very start of a LyX environment,
+	// the language switch in the LaTeX code occurs just before switching to
+	// the corresponding LaTeX environment. So, when the environment ends,
+	// we have to restore the language that was in effect.
+	bool env_lang_switch = false;
+	if (!priorpit->hasSameLayout(*pit)) {
+		ParagraphList::const_iterator outpit = priorpit;
+		while (outpit != paragraphs.begin()
+			&& (outpit->hasSameLayout(*priorpit)
+				|| outpit->getDepth() > priorpit->getDepth()))
+			outpit = boost::prior(outpit);
+		ParagraphList::const_iterator const inpit = boost::next(outpit);
+		Language const * const outenv_language
+					= outpit->getParLanguage(bparams);
+		Language const * const inenv_language
+					= inpit->getParLanguage(bparams);
+		if (outenv_language->babel() != inenv_language->babel())
+			env_lang_switch = true;
+		if (outenv_language->babel() != par_language->babel())
+			prev_language = outenv_language;
+	}
+
+	if ((par_language->babel() != prev_language->babel() || env_lang_switch)
 	    // check if we already put language command in TeXEnvironment()
 	    && !(style.isEnvironment()
 		 && (pit == paragraphs.begin() ||
