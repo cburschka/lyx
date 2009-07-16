@@ -23,6 +23,10 @@
 #include "support/docstream.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
+#include "support/gettext.h"
+#include "support/lstrings.h"
+
+#include "frontends/alert.h"
 
 #include <fstream>
 #include <sstream>
@@ -205,7 +209,36 @@ void KeyMap::clear()
 }
 
 
-bool KeyMap::read(string const & bind_file, KeyMap * unbind_map)
+bool KeyMap::read(string const & bind_file, KeyMap * unbind_map, BindReadType rt)
+{
+	FileName bf = i18nLibFileSearch("bind", bind_file, "bind");
+	if (bf.empty()) {
+		if (rt == MissingOK)
+			return true;
+		lyxerr << "Could not find bind file: " << bind_file;
+		if (rt == Default) {
+			frontend::Alert::warning(_("Could not find bind file"),
+				bformat(_("Unable to find the bind file\n%1$s.\n"
+						"Please check your installation."), from_utf8(bind_file)));
+			return false;
+		}
+		frontend::Alert::warning(_("Could not find bind file"),
+			bformat(_("Unable to find the bind file\n%1$s.\n"
+			          "Falling back to default."), from_utf8(bind_file)));
+		// So try it with the default file.
+		if (read("cua", unbind_map))
+			return true;
+		lyxerr << "Could not find cua bind file!";
+		frontend::Alert::warning(_("Could not find cua bind file"),
+				_("Unable to find the default bind file `cua'.\n"
+				  "Please check your installation."));
+		return false;
+	}
+	return read(bf, unbind_map);
+}
+
+
+bool KeyMap::read(FileName const & bind_file, KeyMap * unbind_map)
 {
 	enum {
 		BN_BIND,
@@ -223,14 +256,13 @@ bool KeyMap::read(string const & bind_file, KeyMap * unbind_map)
 	if (lyxerr.debugging(Debug::PARSER))
 		lexrc.printTable(lyxerr);
 
-	FileName const tmp = i18nLibFileSearch("bind", bind_file, "bind");
-	lexrc.setFile(tmp);
+	lexrc.setFile(bind_file);
 	if (!lexrc.isOK()) {
-		LYXERR0("KeyMap::read: cannot open bind file:" << tmp);
+		LYXERR0("KeyMap::read: cannot open bind file:" << bind_file.absFilename());
 		return false;
 	}
 
-	LYXERR(Debug::KBMAP, "Reading bind file:" << tmp);
+	LYXERR(Debug::KBMAP, "Reading bind file:" << bind_file.absFilename());
 
 	bool error = false;
 	while (lexrc.isOK()) {
@@ -313,7 +345,7 @@ bool KeyMap::read(string const & bind_file, KeyMap * unbind_map)
 	}
 
 	if (error)
-		LYXERR0("KeyMap::read: error while reading bind file:" << tmp);
+		LYXERR0("KeyMap::read: error while reading bind file:" << bind_file.absFilename());
 	return !error;
 }
 

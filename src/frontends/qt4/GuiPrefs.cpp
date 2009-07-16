@@ -2264,8 +2264,8 @@ void PrefShortcuts::apply(LyXRC & rc) const
 	// The good thing is that the menus are updated automatically.
 	theTopLevelKeymap().clear();
 	theTopLevelKeymap().read("site");
-	theTopLevelKeymap().read(rc.bind_file);
-	theTopLevelKeymap().read("user");
+	theTopLevelKeymap().read(rc.bind_file, 0, KeyMap::Fallback);
+	theTopLevelKeymap().read("user", 0, KeyMap::MissingOK);
 }
 
 
@@ -2279,7 +2279,7 @@ void PrefShortcuts::update(LyXRC const & rc)
 	system_bind_.read("site");
 	system_bind_.read(rc.bind_file);
 	// \unbind in user.bind is added to user_unbind_
-	user_bind_.read("user", &user_unbind_);
+	user_bind_.read("user", &user_unbind_, KeyMap::MissingOK);
 	updateShortcutsTW();
 }
 

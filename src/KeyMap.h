@@ -26,6 +26,10 @@
 
 namespace lyx {
 
+namespace support {
+	class FileName;	
+}
+
 /// Defines key maps and actions for key sequences
 class KeyMap {
 public:
@@ -36,6 +40,12 @@ public:
 		                //<    entry in system bind file
 		UserExtraUnbind	//< \unbind loaded from user.bind, without
 		                //<    corresponding entry in system bind file.
+	};
+	enum BindReadType {
+		MissingOK,      //< It's OK if this file is missing.
+		Fallback,       //< If missing, fallback to default "cua". This should only 
+		                //< be used when attempting to read the user-secified bind file.
+		Default         //< Report error and return.
 	};
 	/**
 	 * Bind/Unbind a key sequence to an action.
@@ -72,8 +82,10 @@ public:
 	 *
 	 * @param bind_file bind file
 	 * @param unbind_map pointer to a KeyMap that holds \unbind bindings
+	 * @param rt how to respond if the file can't be found
 	 */
-	bool read(std::string const & bind_file, KeyMap * unbind_map = 0);
+	bool read(std::string const & bind_file, KeyMap * unbind_map = 0, 
+			BindReadType rt = Default);
 
 	/** write to a bind file.
 	 * @param append append to the bind_file instead of overwrite it
@@ -155,6 +167,9 @@ private:
 		/// Action for !prefix keys
 		FuncRequest func;
 	};
+
+	///
+	bool read(support::FileName const & bind_file, KeyMap * unbind_map = 0);
 
 	/**
 	 * Given an action, find all keybindings
