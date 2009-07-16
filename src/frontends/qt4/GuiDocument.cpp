@@ -641,9 +641,9 @@ GuiDocument::GuiDocument(GuiView & lv)
 	pageLayoutModule = new UiWidget<Ui::PageLayoutUi>;
 	// page layout
 	connect(pageLayoutModule->papersizeCO, SIGNAL(activated(int)),
-		this, SLOT(setCustomPapersize(int)));
+		this, SLOT(papersizeChanged(int)));
 	connect(pageLayoutModule->papersizeCO, SIGNAL(activated(int)),
-		this, SLOT(setCustomPapersize(int)));
+		this, SLOT(papersizeChanged(int)));
 	connect(pageLayoutModule->portraitRB, SIGNAL(clicked()),
 		this, SLOT(portraitChanged()));
 	connect(pageLayoutModule->papersizeCO, SIGNAL(activated(int)),
@@ -1108,10 +1108,14 @@ void GuiDocument::setMargins(bool custom)
 }
 
 
-void GuiDocument::setCustomPapersize(int papersize)
+void GuiDocument::papersizeChanged(int paper_size)
 {
-	bool const custom = (papersize == 1);
+	setCustomPapersize(paper_size == 1);
+}
 
+
+void GuiDocument::setCustomPapersize(bool custom)
+{
 	pageLayoutModule->paperwidthL->setEnabled(custom);
 	pageLayoutModule->paperwidthLE->setEnabled(custom);
 	pageLayoutModule->paperwidthUnitCO->setEnabled(custom);
@@ -2101,7 +2105,7 @@ void GuiDocument::paramsToDialog()
 		documentClass().provides("geometry");
 	int const psize = bp_.papersize;
 	pageLayoutModule->papersizeCO->setCurrentIndex(psize);
-	setCustomPapersize(!extern_geometry && psize);
+	setCustomPapersize(!extern_geometry && psize == 1);
 	pageLayoutModule->papersizeCO->setEnabled(!extern_geometry);
 
 	bool const landscape =
