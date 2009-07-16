@@ -38,6 +38,9 @@ public:
 	void write(WriteStream & os) const;
 	///
 	void normalize(NormalStream & ns) const;
+	///
+	InsetCode lyxCode() const { return MATH_KERN_CODE; }
+
 private:
 	virtual Inset * clone() const;
 	/// width in em

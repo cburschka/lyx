@@ -59,6 +59,8 @@ public:
 	bool final() const;
 	///
 	int kerning(BufferView const *) const { return kerning_; }
+	///
+	InsetCode lyxCode() const { return MATH_UNKNOWN_CODE; }
 
 private:
 	///

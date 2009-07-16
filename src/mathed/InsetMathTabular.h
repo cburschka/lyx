@@ -45,6 +45,8 @@ public:
 	void normalize(NormalStream &) const;
 	///
 	void maple(MapleStream &) const;
+	///
+	InsetCode lyxCode() const { return MATH_TABULAR_CODE; }
 
 private:
 	Inset * clone() const;

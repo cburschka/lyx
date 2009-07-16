@@ -52,6 +52,8 @@ public:
 	docstring name() const { return name_; }
 	///
 	char_type getChar() const { return char_; }
+	///
+	InsetCode lyxCode() const { return MATH_SPECIALCHAR_CODE; }
 
 private:
 	virtual Inset * clone() const;

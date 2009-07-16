@@ -38,7 +38,8 @@ public:
 	void infoize2(odocstream & os) const;
 	///
 	static bool isBigInsetDelim(docstring const &);
-
+	///
+	InsetCode lyxCode() const { return MATH_BIG_CODE; }
 private:
 	virtual Inset * clone() const;
 	///

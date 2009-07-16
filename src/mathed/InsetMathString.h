@@ -50,6 +50,8 @@ public:
 	void mathmlize(MathStream &) const;
 	///
 	void write(WriteStream & os) const;
+	///
+	InsetCode lyxCode() const { return MATH_STRING_CODE; }
 
 private:
 	virtual Inset * clone() const;

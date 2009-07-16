@@ -248,6 +248,9 @@ protected:
 	std::vector<ColInfo> colinfo_;
 	/// cell info
 	std::vector<CellInfo> cellinfo_;
+	///
+	InsetCode lyxCode() const { return MATH_GRID_CODE; }
+
 private:
 	///
 	char v_align_; // add approp. type

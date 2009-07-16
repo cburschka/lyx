@@ -49,6 +49,8 @@ public:
 	void mathmlize(MathStream &) const;
 	///
 	void infoize(odocstream & os) const;
+	///
+	InsetCode lyxCode() const { return MATH_BRACE_CODE; }
 private:
 	virtual Inset * clone() const;
 };

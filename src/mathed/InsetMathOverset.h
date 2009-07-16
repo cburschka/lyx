@@ -35,6 +35,9 @@ public:
 	void normalize(NormalStream &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
+	///
+	InsetCode lyxCode() const { return MATH_OVERSET_CODE; }
+
 private:
 	virtual Inset * clone() const;
 };

@@ -32,6 +32,9 @@ public:
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	void infoize(odocstream & os) const;
+	///
+	InsetCode lyxCode() const { return MATH_LEFTEQN_CODE; }
+
 private:
 	virtual Inset * clone() const;
 };

@@ -35,6 +35,8 @@ public:
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void infoize(odocstream & os) const;
+	///
+	InsetCode lyxCode() const { return MATH_ENV_CODE; }
 
 private:
 	virtual Inset * clone() const;

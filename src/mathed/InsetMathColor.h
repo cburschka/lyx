@@ -42,6 +42,8 @@ public:
 	void normalize(NormalStream & ns) const;
 	///
 	void infoize(odocstream & os) const;
+	///
+	InsetCode lyxCode() const { return MATH_COLOR_CODE; }
 private:
 	virtual Inset * clone() const;
 	/// width of '[' in current font

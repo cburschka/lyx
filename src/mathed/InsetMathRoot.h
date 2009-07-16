@@ -43,6 +43,9 @@ public:
 	void mathematica(MathematicaStream &) const;
 	///
 	void octave(OctaveStream &) const;
+	///
+	InsetCode lyxCode() const { return MATH_ROOT_CODE; }
+
 private:
 	virtual Inset * clone() const;
 };

@@ -85,7 +85,7 @@ void MacroData::expand(vector<MathData> const & args, MathData & to) const
 	for (DocIterator it = doc_iterator_begin(buffer, &inset); it; it.forwardChar()) {
 		if (!it.nextInset())
 			continue;
-		if (it.nextInset()->lyxCode() != MATHMACROARG_CODE)
+		if (it.nextInset()->lyxCode() != MATH_MACROARG_CODE)
 			continue;
 		//it.cell().erase(it.pos());
 		//it.cell().insert(it.pos(), it.nextInset()->asInsetMath()

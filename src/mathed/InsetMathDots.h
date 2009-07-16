@@ -32,6 +32,8 @@ public:
 	docstring name() const;
 	/// request "external features"
 	void validate(LaTeXFeatures & features) const;
+	///
+	InsetCode lyxCode() const { return MATH_DOTS_CODE; }
 protected:
 	/// cache for the thing's height
 	mutable int dh_;

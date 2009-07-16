@@ -42,14 +42,14 @@ public:
 	void write(WriteStream & os) const;
 	///
 	void normalize(NormalStream &) const;
-
-public:
 	///
 	InsetMathXYMatrix const * targetMatrix() const;
 	///
 	MathData const & targetCell() const;
 	///
 	MathData const & sourceCell() const;
+	///
+	InsetCode lyxCode() const { return MATH_XYARROW_CODE; }
 
 	///
 	bool up_;

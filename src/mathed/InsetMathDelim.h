@@ -59,6 +59,8 @@ public:
 	///
 	void octave(OctaveStream &) const;
 	///
+	InsetCode lyxCode() const { return MATH_DELIM_CODE; }
+	///
 	docstring left_;
 	///
 	docstring right_;

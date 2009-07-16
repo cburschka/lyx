@@ -102,6 +102,9 @@ public:
 	void infoize(odocstream & os) const;
 	/// say whether we have displayed limits
 	void infoize2(odocstream & os) const;
+	///
+	InsetCode lyxCode() const { return MATH_SCRIPT_CODE; }
+
 protected:
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 private:

@@ -68,6 +68,8 @@ public:
 	void write(WriteStream & os) const;
 	///
 	void infoize2(odocstream & os) const;
+	///
+	InsetCode lyxCode() const { return MATH_SYMBOL_CODE; }
 
 private:
 	virtual Inset * clone() const;

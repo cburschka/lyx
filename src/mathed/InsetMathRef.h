@@ -55,6 +55,9 @@ public:
 	static int getType(docstring const & name);
 	///
 	static docstring const & getName(int type);
+	///
+	InsetCode lyxCode() const { return MATH_REF_CODE; }
+
 protected:
 	///
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);

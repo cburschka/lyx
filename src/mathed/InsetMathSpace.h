@@ -61,6 +61,9 @@ public:
 	docstring contextMenu(BufferView const &, int, int) const;
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
+	///
+	InsetCode lyxCode() const { return MATH_SPACE_CODE; }
+
 protected:
 	///
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);

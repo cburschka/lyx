@@ -45,6 +45,8 @@ public:
 	void infoize(odocstream & os) const;
 	///
 	int kerning(BufferView const * bv) const { return cell(0).kerning(bv); }
+	///
+	InsetCode lyxCode() const { return MATH_FONTOLD_CODE; }
 
 private:
 	virtual Inset * clone() const;

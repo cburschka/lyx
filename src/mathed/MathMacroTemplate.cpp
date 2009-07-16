@@ -635,7 +635,7 @@ void MathMacroTemplate::removeArguments(Cursor & cur, int from, int to)
 	for (DocIterator it = doc_iterator_begin(&buffer(), this); it; it.forwardChar()) {
 		if (!it.nextInset())
 			continue;
-		if (it.nextInset()->lyxCode() != MATHMACROARG_CODE)
+		if (it.nextInset()->lyxCode() != MATH_MACROARG_CODE)
 			continue;
 		MathMacroArgument * arg = static_cast<MathMacroArgument*>(it.nextInset());
 		int n = arg->number() - 1;
@@ -657,7 +657,7 @@ void MathMacroTemplate::shiftArguments(size_t from, int by)
 	for (DocIterator it = doc_iterator_begin(&buffer(), this); it; it.forwardChar()) {
 		if (!it.nextInset())
 			continue;
-		if (it.nextInset()->lyxCode() != MATHMACROARG_CODE)
+		if (it.nextInset()->lyxCode() != MATH_MACROARG_CODE)
 			continue;
 		MathMacroArgument * arg = static_cast<MathMacroArgument*>(it.nextInset());
 		if (arg->number() >= int(from) + 1)
@@ -676,7 +676,7 @@ int MathMacroTemplate::maxArgumentInDefinition() const
 	for (; it; it.forwardChar()) {
 		if (!it.nextInset())
 			continue;
-		if (it.nextInset()->lyxCode() != MATHMACROARG_CODE)
+		if (it.nextInset()->lyxCode() != MATH_MACROARG_CODE)
 			continue;
 		MathMacroArgument * arg = static_cast<MathMacroArgument*>(it.nextInset());
 		maxArg = std::max(int(arg->number()), maxArg);
@@ -696,7 +696,7 @@ void MathMacroTemplate::insertMissingArguments(int maxArg)
 	for (; it && it[0].idx() == idx; it.forwardChar()) {
 		if (!it.nextInset())
 			continue;
-		if (it.nextInset()->lyxCode() != MATHMACROARG_CODE)
+		if (it.nextInset()->lyxCode() != MATH_MACROARG_CODE)
 			continue;
 		MathMacroArgument * arg = static_cast<MathMacroArgument*>(it.nextInset());
 		found[arg->number() - 1] = true;

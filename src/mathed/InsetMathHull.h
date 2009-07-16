@@ -142,6 +142,8 @@ public:
 
 	///
 	virtual docstring contextMenu(BufferView const &, int, int) const;
+	///
+	InsetCode lyxCode() const { return MATH_HULL_CODE; }
 
 protected:
 	InsetMathHull(InsetMathHull const &);
@@ -218,8 +220,6 @@ public:
 	Inset * editXY(Cursor & cur, int x, int y);
 	///
 	DisplayType display() const;
-	///
-	InsetCode lyxCode() const;
 
 protected:
 	///

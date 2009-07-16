@@ -44,6 +44,9 @@ public:
 	void maple(MapleStream &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
+	///
+	InsetCode lyxCode() const { return MATH_XYMATRIX_CODE; }
+
 private:
 	///
 	virtual Inset * clone() const;

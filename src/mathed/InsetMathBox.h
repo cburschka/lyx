@@ -38,6 +38,8 @@ public:
 	void infoize(odocstream & os) const;
 	///
 	void validate(LaTeXFeatures & features) const;
+	///
+	InsetCode lyxCode() const { return MATH_BOX_CODE; }
 
 private:
 	Inset * clone() const { return new InsetMathBox(*this); }

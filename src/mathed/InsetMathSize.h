@@ -39,6 +39,9 @@ public:
 	void normalize(NormalStream &) const;
 	///
 	void infoize(odocstream & os) const;
+	///
+	InsetCode lyxCode() const { return MATH_SIZE_CODE; }
+
 private:
 	virtual Inset * clone() const;
 	///

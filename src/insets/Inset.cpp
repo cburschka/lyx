@@ -101,12 +101,65 @@ static TranslatorMap const build_translator()
 		InsetName("flex", FLEX_CODE),
 		InsetName("space", SPACE_CODE),
 		InsetName("vspace", VSPACE_CODE),
-		InsetName("mathmacroarg", MATHMACROARG_CODE),
+		InsetName("mathmacroarg", MATH_MACROARG_CODE),
 		InsetName("listings", LISTINGS_CODE),
 		InsetName("info", INFO_CODE),
 		InsetName("collapsable", COLLAPSABLE_CODE),
 		InsetName("newpage", NEWPAGE_CODE),
-		InsetName("tablecell", CELL_CODE)
+		InsetName("tablecell", CELL_CODE),
+		InsetName("mathamsarray", MATH_AMSARRAY_CODE),
+		InsetName("matharray", MATH_ARRAY_CODE),
+		InsetName("mathbig", MATH_BIG_CODE),
+		InsetName("mathboldsymbol", MATH_BOLDSYMBOL_CODE),
+		InsetName("mathbox", MATH_BOX_CODE),
+		InsetName("mathbrace", MATH_BRACE_CODE),
+		InsetName("mathcases", MATH_CASES_CODE),
+		InsetName("mathchar", MATH_CHAR_CODE),
+		InsetName("mathcolor", MATH_COLOR_CODE),
+		InsetName("mathcomment", MATH_COMMENT_CODE),
+		InsetName("mathdecoration", MATH_DECORATION_CODE),
+		InsetName("mathdelim", MATH_DELIM_CODE),
+		InsetName("mathdiff", MATH_DIFF_CODE),
+		InsetName("mathdots", MATH_DOTS_CODE),
+		InsetName("mathensuremath", MATH_ENSUREMATH_CODE),
+		InsetName("mathenv", MATH_ENV_CODE),
+		InsetName("mathexfunc", MATH_EXFUNC_CODE),
+		InsetName("mathexint", MATH_EXINT_CODE),
+		InsetName("mathfont", MATH_FONT_CODE),
+		InsetName("mathfontold", MATH_FONTOLD_CODE),
+		InsetName("mathfrac", MATH_FRAC_CODE),
+		InsetName("mathgrid", MATH_GRID_CODE),
+		InsetName("math", MATH_CODE),
+		InsetName("mathhull", MATH_HULL_CODE),
+		InsetName("mathkern", MATH_KERN_CODE),
+		InsetName("mathlefteqn", MATH_LEFTEQN_CODE),
+		InsetName("mathlim", MATH_LIM_CODE),
+		InsetName("mathmatrix", MATH_MATRIX_CODE),
+		InsetName("mathmbox", MATH_MBOX_CODE),
+		InsetName("mathnest", MATH_NEST_CODE),
+		InsetName("mathnumber", MATH_NUMBER_CODE),
+		InsetName("mathoverset", MATH_OVERSET_CODE),
+		InsetName("mathpar", MATH_PAR_CODE),
+		InsetName("mathphantom", MATH_PHANTOM_CODE),
+		InsetName("mathref", MATH_REF_CODE),
+		InsetName("mathroot", MATH_ROOT_CODE),
+		InsetName("mathscript", MATH_SCRIPT_CODE),
+		InsetName("mathsize", MATH_SIZE_CODE),
+		InsetName("mathspace", MATH_SPACE_CODE),
+		InsetName("mathspecialchar", MATH_SPECIALCHAR_CODE),
+		InsetName("mathsplit", MATH_SPLIT_CODE),
+		InsetName("mathsqrt", MATH_SQRT_CODE),
+		InsetName("mathstackrel", MATH_STACKREL_CODE),
+		InsetName("mathstring", MATH_STRING_CODE),
+		InsetName("mathsubstack", MATH_SUBSTACK_CODE),
+		InsetName("mathsymbol", MATH_SYMBOL_CODE),
+		InsetName("mathtabular", MATH_TABULAR_CODE),
+		InsetName("mathunderset", MATH_UNDERSET_CODE),
+		InsetName("mathunknown", MATH_UNKNOWN_CODE),
+		InsetName("mathxarrow", MATH_XARROW_CODE),
+		InsetName("mathxyarrow", MATH_XYARROW_CODE),
+		InsetName("mathxymatrix", MATH_XYMATRIX_CODE),
+		InsetName("mathmacro", MATH_MACRO_CODE),
 	};
 
 	size_t const insetnames_size =
@@ -132,7 +185,7 @@ Buffer & Inset::buffer()
 {
 	if (!buffer_) {
 		odocstringstream s;
-		lyxerr << "LyX Code: " << lyxCode() << " name: " << name() << std::endl;
+		lyxerr << "LyX Code: " << lyxCode() << " name: " << insetName(lyxCode()) << std::endl;
 		s << "LyX Code: " << lyxCode() << " name: " << name();
 		LASSERT(false, /**/);
 		throw ExceptionMessage(BufferException, 
@@ -226,7 +279,7 @@ string insetName(InsetCode c)
 
 void Inset::dispatch(Cursor & cur, FuncRequest & cmd)
 {
-	LASSERT(cur.buffer() == buffer_, return);
+	LASSERT(cur.buffer() == &buffer(), return);
 	cur.updateFlags(Update::Force | Update::FitCursor);
 	cur.dispatched();
 	doDispatch(cur, cmd);

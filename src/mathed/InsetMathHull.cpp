@@ -1590,12 +1590,6 @@ void InsetMathHull::revealCodes(Cursor & cur) const
 }
 
 
-InsetCode InsetMathHull::lyxCode() const
-{
-	return MATH_CODE;
-}
-
-
 /////////////////////////////////////////////////////////////////////
 
 

@@ -51,6 +51,9 @@ public:
 	///
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,
 		bool boundary, int & x, int & y) const;
+	///
+	InsetCode lyxCode() const { return MATH_MBOX_CODE; }
+
 protected:
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 

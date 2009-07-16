@@ -51,11 +51,13 @@ public:
 	int docbook(odocstream &, OutputParams const &) const;
 
 	///
-	InsetCode lyxCode() const { return MATHMACRO_CODE; }
+	InsetCode lyxCode() const { return MATHMACRO_CODE_CODE; }
 	///
 	docstring const & getInsetName() const { return name_; }
 	///
 	bool editable() const { return true; }
+	///
+	InsetCode lyxCode() const { return MATH_FORMULA_MACRO_CODE; }
 private:
 	///
 	MathAtom & tmpl() const;

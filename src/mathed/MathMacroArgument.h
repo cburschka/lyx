@@ -35,7 +35,7 @@ public:
 	///
 	void setNumber(int n);
 	///
-	InsetCode lyxCode() const { return MATHMACROARG_CODE; }
+	InsetCode lyxCode() const { return MATH_MACROARG_CODE; }
 
 	///
 	void normalize(NormalStream &) const;

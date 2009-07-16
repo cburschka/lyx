@@ -37,6 +37,9 @@ public:
 	int defaultColSpace(col_type) { return 0; }
 	///
 	char defaultColAlign(col_type);
+	///
+	InsetCode lyxCode() const { return MATH_SPLIT_CODE; }
+
 private:
 	///
 	virtual Inset * clone() const;

@@ -36,6 +36,9 @@ public:
 	void write(WriteStream & os) const;
 	///
 	void normalize(NormalStream &) const;
+	///
+	InsetCode lyxCode() const { return MATH_STACKREL_CODE; }
+
 private:
 	virtual Inset * clone() const;
 };

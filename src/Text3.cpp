@@ -2446,7 +2446,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_MATH_MACRO:
 	case LFUN_MATH_SUBSCRIPT:
 	case LFUN_MATH_SUPERSCRIPT:
-		code = MATH_CODE;
+		code = MATH_HULL_CODE;
 		break;
 
 	case LFUN_INSET_MODIFY:

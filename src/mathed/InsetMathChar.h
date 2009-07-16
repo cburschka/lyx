@@ -48,6 +48,8 @@ public:
 	char_type getChar() const { return char_; }
 	///
 	bool isRelOp() const;
+	///
+	InsetCode lyxCode() const { return MATH_CHAR_CODE; }
 
 private:
 	virtual Inset * clone() const;

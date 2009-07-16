@@ -39,6 +39,8 @@ public:
 	bool isScriptable() const;
 	///
 	void validate(LaTeXFeatures & features) const;
+	///
+	InsetCode lyxCode() const { return MATH_DECORATION_CODE; }
 
 private:
 	virtual Inset * clone() const;

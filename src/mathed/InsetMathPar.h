@@ -34,6 +34,9 @@ public:
 	void infoize(odocstream & os) const;
 	///
 	void write(WriteStream & os) const;
+	///
+	InsetCode lyxCode() const { return MATH_PAR_CODE; }
+
 private:
 	///
 	virtual Inset * clone() const;

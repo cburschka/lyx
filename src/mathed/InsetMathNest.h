@@ -127,6 +127,8 @@ public:
 	bool insertCompletion(Cursor & cur, docstring const & s, bool finished);
 	///
 	void completionPosAndDim(Cursor const &, int & x, int & y, Dimension & dim) const;
+	///
+	InsetCode lyxCode() const { return MATH_NEST_CODE; }
 
 protected:
 	///

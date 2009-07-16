@@ -44,6 +44,8 @@ public:
 	void maxima(MaximaStream &) const;
 	///
 	void write(WriteStream & os) const;
+	///
+	InsetCode lyxCode() const { return MATH_DIFF_CODE; }
 private:
 	virtual Inset * clone() const;
 };

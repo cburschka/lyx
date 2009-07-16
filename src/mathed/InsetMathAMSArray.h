@@ -44,6 +44,8 @@ public:
 	void normalize(NormalStream &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
+	///
+	InsetCode lyxCode() const { return MATH_AMSARRAY_CODE; }
 private:
 	virtual Inset * clone() const;
 	///

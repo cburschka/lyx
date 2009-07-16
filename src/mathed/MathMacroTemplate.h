@@ -100,7 +100,6 @@ public:
 	void infoize(odocstream & os) const;
 	///
 	docstring contextMenu(BufferView const &, int, int) const;
-
 protected:
 	///
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);

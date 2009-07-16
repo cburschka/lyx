@@ -45,6 +45,8 @@ public:
 	///
 	void infoize(odocstream & os) const;
 	///
+	InsetCode lyxCode() const { return MATH_BOLDSYMBOL_CODE; }
+	///
 	Kind kind_;
 private:
 	virtual Inset * clone() const;

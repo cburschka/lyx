@@ -37,6 +37,8 @@ public:
 	void write(WriteStream & os) const;
 	///
 	void infoize(odocstream & os) const;
+	///
+	InsetCode lyxCode() const { return MATH_ENSUREMATH_CODE; }
 private:
 	virtual Inset * clone() const;
 };

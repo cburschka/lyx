@@ -33,6 +33,8 @@ public:
 	void normalize(NormalStream & os) const;
 	///
 	void validate(LaTeXFeatures & features) const;
+	///
+	InsetCode lyxCode() const { return MATH_XARROW_CODE; }
 
 private:
 	virtual Inset * clone() const;

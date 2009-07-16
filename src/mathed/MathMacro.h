@@ -120,6 +120,8 @@ public:
 	}
 	/// Return the maximal number of arguments the macro is greedy for.
 	size_t appetite() const { return appetite_; }
+	///
+	InsetCode lyxCode() const { return MATH_MACRO_CODE; }
 
 protected:
 	friend class MathData;

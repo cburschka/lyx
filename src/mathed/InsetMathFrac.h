@@ -124,6 +124,8 @@ public:
 	void mathmlize(MathStream &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
+	///
+	InsetCode lyxCode() const { return MATH_FRAC_CODE; }
 private:
 	Inset * clone() const;
 	///

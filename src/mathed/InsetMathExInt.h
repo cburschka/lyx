@@ -45,6 +45,8 @@ public:
 	void mathmlize(MathStream &) const;
 	///
 	void write(WriteStream & os) const;
+	///
+	InsetCode lyxCode() const { return MATH_EXINT_CODE; }
 private:
 	virtual Inset * clone() const;
 	///
