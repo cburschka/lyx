@@ -254,9 +254,9 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 	// Draw button first -- top, left or only
 	Dimension dimc = dimensionCollapsed(bv);
 
-	if (geometry(*pi.base.bv) == TopButton ||
-	    geometry(*pi.base.bv) == LeftButton ||
-	    geometry(*pi.base.bv) == ButtonOnly) {
+	if (geometry(bv) == TopButton ||
+	    geometry(bv) == LeftButton ||
+	    geometry(bv) == ButtonOnly) {
 		button_dim.x1 = x + 0;
 		button_dim.x2 = x + dimc.width();
 		button_dim.y1 = y - dimc.asc;
