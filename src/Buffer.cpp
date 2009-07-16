@@ -1632,9 +1632,9 @@ bool Buffer::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 
 		case LFUN_BRANCH_ACTIVATE: 
 		case LFUN_BRANCH_DEACTIVATE: {
-		BranchList const & branchList = params().branchlist();
-		docstring const branchName = cmd.argument();
-		flag.setEnabled(!branchName.empty()
+			BranchList const & branchList = params().branchlist();
+			docstring const branchName = cmd.argument();
+			flag.setEnabled(!branchName.empty()
 				&& branchList.find(branchName));
 			break;
 		}
