@@ -87,7 +87,7 @@ private Q_SLOTS:
 	void useDefaultsClicked();
 	void setLSpacing(int);
 	void setMargins(bool);
-	void setCustomPapersize(int);
+	void papersizeChanged(int);
 	void setColSep();
 	void setCustomMargins(bool);
 	void romanChanged(int);
@@ -214,6 +214,8 @@ private:
 	bool providesScale(std::string const & font) const;
 	///
 	void executeBranchRenaming() const;
+	///
+	void setCustomPapersize(bool custom);
 private:
 	///
 	void loadModuleInfo();
