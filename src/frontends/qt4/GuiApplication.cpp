@@ -1506,7 +1506,7 @@ bool GuiApplication::readUIFile(QString const & name, bool include)
 		if (ui_path.empty()) {
 			LYXERR(Debug::INIT, "Could not find default UI file!!");
 			Alert::warning(_("Could not find default UI file"),
-				_("LyX coudl not find the default UI file!\n"
+				_("LyX could not find the default UI file!\n"
 					"Please check your installation."));
 			return false;
 		}
