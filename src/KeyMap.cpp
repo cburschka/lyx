@@ -215,6 +215,7 @@ bool KeyMap::read(string const & bind_file, KeyMap * unbind_map, BindReadType rt
 	if (bf.empty()) {
 		if (rt == MissingOK)
 			return true;
+
 		lyxerr << "Could not find bind file: " << bind_file;
 		if (rt == Default) {
 			frontend::Alert::warning(_("Could not find bind file"),
@@ -222,17 +223,20 @@ bool KeyMap::read(string const & bind_file, KeyMap * unbind_map, BindReadType rt
 						"Please check your installation."), from_utf8(bind_file)));
 			return false;
 		}
+
+		static string const defaultBindfile = "cua";
+		if (bind_file == defaultBindfile) {
+			frontend::Alert::warning(_("Could not find cua bind file"),
+				_("Unable to find the default bind file `cua'.\n"
+				   "Please check your installation."));
+			return false;
+		}
+
+		// Try it with the default file.
 		frontend::Alert::warning(_("Could not find bind file"),
 			bformat(_("Unable to find the bind file\n%1$s.\n"
 			          "Falling back to default."), from_utf8(bind_file)));
-		// So try it with the default file.
-		if (read("cua", unbind_map))
-			return true;
-		lyxerr << "Could not find cua bind file!";
-		frontend::Alert::warning(_("Could not find cua bind file"),
-				_("Unable to find the default bind file `cua'.\n"
-				  "Please check your installation."));
-		return false;
+		return read(defaultBindfile, unbind_map);
 	}
 	return read(bf, unbind_map);
 }
