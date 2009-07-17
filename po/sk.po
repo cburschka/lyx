@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-07-17 17:40+0200\n"
-"PO-Revision-Date: 2009-07-15 19:52+0200\n"
+"PO-Revision-Date: 2009-07-17 18:52+0200\n"
 "Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
 "Language-Team: Slowakisch <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -17202,14 +17202,13 @@ msgstr ""
 msgid "Could not find UI definition file"
 msgstr "Nemôžem nájsť súbor definíc pre UI"
 
-#: src/frontends/qt4/GuiApplication.cpp:1478
-#, fuzzy, c-format
+#: src/frontends/qt4/GuiApplication.cpp:1478, c-format
 msgid ""
 "Error while reading the included file\n"
 "\\%1$s.\n"
 "Please check your installation."
 msgstr ""
-"Chyba pri čítaní konfiguračného súboru\n"
+"Chyba pri čítaní vloženého súboru\n"
 "%1$s.\n"
 "Skontrolujte prosím vašu inštaláciu."
 
@@ -17222,20 +17221,22 @@ msgid ""
 "Please look under Tools>Preferences>User Interface and\n"
 "check which user interface file you are using."
 msgstr ""
+"Chyba pri čítaní konfiguračného súboru\n"
+"%1$s.\n"
+"Ustupujem na predvolené (default).\n"
+"Preskúmajte pod Nástroje->Preferencie...->Vzhľad->Užívateľské rozhranie a\n"
+"skontrolujte ktorý užívateľský súbor používate."
 
 #: src/frontends/qt4/GuiApplication.cpp:1490
-#, fuzzy
 msgid "Could not find default UI file"
-msgstr "Nemôžem nájsť súbor definíc pre UI"
+msgstr "Nemôžem nájsť predvolený UI-súbor"
 
 #: src/frontends/qt4/GuiApplication.cpp:1491
-#, fuzzy
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
 msgstr ""
-"Chyba pri čítaní konfiguračného súboru\n"
-"%1$s.\n"
+"LyX nenašiel predvolený UI súbor!\n"
 "Skontrolujte prosím vašu inštaláciu."
 
 #: src/frontends/qt4/GuiBibitem.cpp:28
