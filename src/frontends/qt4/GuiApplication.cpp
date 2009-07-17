@@ -1475,7 +1475,7 @@ bool GuiApplication::readUIFile(QString const & name, bool include)
 		LYXERR(Debug::INIT, "Could not find " << name);
 		if (include) {
 			Alert::warning(_("Could not find UI definition file"),
-				bformat(_("Error while reading the included file\n\%1$s.\n"
+				bformat(_("Error while reading the included file\n%1$s.\n"
 					"Please check your installation."), qstring_to_ucs4(name)));
 			return false;
 		}
