@@ -764,7 +764,7 @@ bool LyX::init()
 	pimpl_->toplevel_keymap_.read("site");
 	pimpl_->toplevel_keymap_.read(lyxrc.bind_file);
 	// load user bind file user.bind
-	pimpl_->toplevel_keymap_.read("user");
+	pimpl_->toplevel_keymap_.read("user", 0, KeyMap::MissingOK);
 
 	pimpl_->lyxfunc_.initKeySequences(&pimpl_->toplevel_keymap_);
 
