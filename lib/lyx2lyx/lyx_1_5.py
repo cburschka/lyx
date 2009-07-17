@@ -1597,7 +1597,7 @@ def revert_graphics_rotation(document):
 
 
 def convert_tableborder(document):
-    # The problematic is: LyX double the table cell border as it ignores the "|" character in
+    # The problem is: LyX doubles the table cell border as it ignores the "|" character in
     # the cell arguments. A fix takes care of this and therefore the "|" has to be removed
     i = 0
     while i < len(document.body):
@@ -1606,7 +1606,7 @@ def convert_tableborder(document):
         # the two tokens have to be in one line
         if (h != -1 and k != -1):
             # delete the "|"
-            document.body[i] = document.body[i][:k] + document.body[i][k+1:len(document.body[i])-1]
+            document.body[i] = document.body[i][:k] + document.body[i][k+1:len(document.body[i])]
         i = i + 1
 
 

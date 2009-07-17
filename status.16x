@@ -72,8 +72,6 @@ What's new
 
 - Reverse searching added to the merge changes dialog (bug 2213).
 
-- Fall back to default UI file if the specified one cannot be found (bug 6076).
-
 
 * DOCUMENTATION AND LOCALIZATION
 
@@ -112,6 +110,9 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fix conversion documents from LyX 1.4 which have multicolumn cells in
+  tabulars with expert border settings (bug 6018).
+
 - Fix output of alignment if default aligment is not justified (bug 5995).
 
 - Fix problem where updates in some child documents were not recognized
@@ -139,6 +140,9 @@ What's new
 
 - Fix bookmark navigation crash when multiple windows are used
   (bug 6000).
+  
+- Fall back to default UI file if the specified one cannot be found
+  (bug 6076).
 
 - Fix assertion when a nested math hull appears in a math macro
   (bug 5996).
