@@ -50,12 +50,12 @@ public:
 		PC, ///< Pica = 12pt = 4.218mm
 		PT, ///< Point = 1/72.27in = 0.351mm
 		SP, ///< Scaled point (65536sp = 1pt) TeX's smallest unit.
-		PCW, //< Percent of ColumnWidth
-		PLW, //< Percent of LineWidth
-		PPH, //< Percent of PaperHeight		// Herbert 2002-05-16
-		PPW, //< Percent of PageWidth
-		PTH, //< Percent of TextHeight		// Herbert 2002-05-16
 		PTW, //< Percent of TextWidth
+		PCW, //< Percent of ColumnWidth
+		PPW, //< Percent of PageWidth
+		PLW, //< Percent of LineWidth
+		PTH, //< Percent of TextHeight          // Herbert 2002-05-16
+		PPH, //< Percent of PaperHeight         // Herbert 2002-05-16
 		UNIT_NONE ///< no unit
 	};
 
@@ -100,6 +100,8 @@ public:
 	friend bool isValidLength(std::string const & data, Length * result);
 
 private:
+	/// This HSpace kind
+	HSpaceKind kind_;
 	///
 	double val_;
 	///
