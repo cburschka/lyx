@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-07-15 12:26+0200\n"
+"POT-Creation-Date: 2009-07-17 17:40+0200\n"
 "PO-Revision-Date: 2009-04-05 02:01+0100\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -88,7 +88,7 @@ msgstr "&OK"
 #: src/Buffer.cpp:2638 src/Buffer.cpp:2662 src/Buffer.cpp:2697
 #: src/LyXFunc.cpp:717 src/LyXFunc.cpp:856 src/LyXFunc.cpp:1030
 #: src/LyXVC.cpp:189 src/frontends/qt4/GuiClipboard.cpp:208
-#: src/frontends/qt4/GuiDocument.cpp:1262
+#: src/frontends/qt4/GuiDocument.cpp:1266
 #: src/frontends/qt4/GuiParagraph.cpp:69
 #: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1556
 #: src/frontends/qt4/GuiView.cpp:1748 src/frontends/qt4/GuiView.cpp:1800
@@ -372,8 +372,8 @@ msgstr "O&bnovit"
 #: src/frontends/qt4/ui/ParagraphUi.ui:92 src/frontends/qt4/ui/PrefsUi.ui:83
 #: src/frontends/qt4/ui/RefUi.ui:90 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/VSpaceUi.ui:49
-#: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1337
-#: src/frontends/qt4/GuiDocument.cpp:2235
+#: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1341
+#: src/frontends/qt4/GuiDocument.cpp:2239
 msgid "&Apply"
 msgstr "&Pou¾ít"
 
@@ -494,9 +494,9 @@ msgstr "Ve&likost:"
 #: src/frontends/qt4/GuiDocument.cpp:103 src/frontends/qt4/GuiDocument.cpp:119
 #: src/frontends/qt4/GuiDocument.cpp:132 src/frontends/qt4/GuiDocument.cpp:631
 #: src/frontends/qt4/GuiDocument.cpp:668 src/frontends/qt4/GuiDocument.cpp:680
-#: src/frontends/qt4/GuiDocument.cpp:1172
-#: src/frontends/qt4/GuiDocument.cpp:1217
-#: src/frontends/qt4/GuiDocument.cpp:2276 src/frontends/qt4/GuiExternal.cpp:75
+#: src/frontends/qt4/GuiDocument.cpp:1176
+#: src/frontends/qt4/GuiDocument.cpp:1221
+#: src/frontends/qt4/GuiDocument.cpp:2280 src/frontends/qt4/GuiExternal.cpp:75
 #: src/frontends/qt4/GuiGraphics.cpp:71 src/frontends/qt4/GuiListings.cpp:152
 #: src/frontends/qt4/GuiListings.cpp:159 src/frontends/qt4/GuiPrefs.cpp:1782
 msgid "Default"
@@ -4709,10 +4709,10 @@ msgstr "Subject headings:"
 msgid "[Acknowledgements]"
 msgstr "[Acknowledgements]"
 
-#: lib/layouts/aastex.layout:394 src/frontends/qt4/GuiDocument.cpp:1378
-#: src/frontends/qt4/GuiDocument.cpp:1389
-#: src/frontends/qt4/GuiDocument.cpp:1476
-#: src/frontends/qt4/GuiDocument.cpp:1495
+#: lib/layouts/aastex.layout:394 src/frontends/qt4/GuiDocument.cpp:1382
+#: src/frontends/qt4/GuiDocument.cpp:1393
+#: src/frontends/qt4/GuiDocument.cpp:1480
+#: src/frontends/qt4/GuiDocument.cpp:1499
 msgid "and"
 msgstr "and"
 
@@ -14389,7 +14389,7 @@ msgstr "MS Word|W"
 msgid "HTML (MS Word)"
 msgstr "HTML (MS Word)"
 
-#: src/BiblioInfo.cpp:235 src/frontends/qt4/GuiDocument.cpp:1377
+#: src/BiblioInfo.cpp:235 src/frontends/qt4/GuiDocument.cpp:1381
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s a %2$s"
@@ -15467,19 +15467,19 @@ msgid "Copying %1$s to %2$s failed."
 msgstr "Kopírování %1$s do %2$s selhalo."
 
 #: src/Font.cpp:49 src/frontends/qt4/GuiCharacter.cpp:118
-#: src/frontends/qt4/GuiDocument.cpp:2276
+#: src/frontends/qt4/GuiDocument.cpp:2280
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Roman"
 msgstr "Antikva (Roman)"
 
 #: src/Font.cpp:49 src/frontends/qt4/GuiCharacter.cpp:119
-#: src/frontends/qt4/GuiDocument.cpp:2276
+#: src/frontends/qt4/GuiDocument.cpp:2280
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Sans Serif"
 msgstr "Bezpatkové (Sans Serif)"
 
 #: src/Font.cpp:49 src/frontends/qt4/GuiCharacter.cpp:120
-#: src/frontends/qt4/GuiDocument.cpp:2276
+#: src/frontends/qt4/GuiDocument.cpp:2280
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Typewriter"
 msgstr "Strojopis"
@@ -15669,7 +15669,7 @@ msgstr "Spou¹tím MakeIndex pro nomencl."
 msgid "Could not read configuration file"
 msgstr "Nelze pøeèíst konfiguraèní soubor"
 
-#: src/LyX.cpp:102 src/frontends/qt4/GuiApplication.cpp:1477
+#: src/LyX.cpp:102
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -17207,9 +17207,46 @@ msgstr ""
 "LyX zachytil neobvyklou vyjímku a nyní se pokusí ulo¾it v¹echny neulo¾ené "
 "dokumenty a skonèit."
 
-#: src/frontends/qt4/GuiApplication.cpp:1476
+#: src/frontends/qt4/GuiApplication.cpp:1477
+#: src/frontends/qt4/GuiApplication.cpp:1482
 msgid "Could not find UI definition file"
 msgstr "Nelze pøeèíst definièní soubor u¾ivatelského rozhraní"
+
+#: src/frontends/qt4/GuiApplication.cpp:1478
+#, fuzzy, c-format
+msgid ""
+"Error while reading the included file\n"
+"\\%1$s.\n"
+"Please check your installation."
+msgstr ""
+"Chyba pøi ètení konfiguraèního souboru\n"
+"%1$s.\n"
+"Zkontrolujte prosím va¹i instalaci."
+
+#: src/frontends/qt4/GuiApplication.cpp:1483
+#, c-format
+msgid ""
+"Error while reading the configuration file\n"
+"%1$s.\n"
+"Falling back to default.\n"
+"Please look under Tools>Preferences>User Interface and\n"
+"check which user interface file you are using."
+msgstr ""
+
+#: src/frontends/qt4/GuiApplication.cpp:1490
+#, fuzzy
+msgid "Could not find default UI file"
+msgstr "Nelze pøeèíst definièní soubor u¾ivatelského rozhraní"
+
+#: src/frontends/qt4/GuiApplication.cpp:1491
+#, fuzzy
+msgid ""
+"LyX could not find the default UI file!\n"
+"Please check your installation."
+msgstr ""
+"Chyba pøi ètení konfiguraèního souboru\n"
+"%1$s.\n"
+"Zkontrolujte prosím va¹i instalaci."
 
 #: src/frontends/qt4/GuiBibitem.cpp:28
 msgid "Bibliography Entry Settings"
@@ -17220,7 +17257,7 @@ msgid "BibTeX Bibliography"
 msgstr "Bibliografie BibTeX-u"
 
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
-#: src/frontends/qt4/GuiDocument.cpp:1304
+#: src/frontends/qt4/GuiDocument.cpp:1308
 #: src/frontends/qt4/GuiExternal.cpp:670 src/frontends/qt4/GuiGraphics.cpp:847
 #: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1301
 #: src/frontends/qt4/GuiView.cpp:1359 src/frontends/qt4/GuiView.cpp:1506
@@ -17310,11 +17347,11 @@ msgid "Color"
 msgstr "Barevnì"
 
 #: src/frontends/qt4/GuiBranches.cpp:72 src/frontends/qt4/GuiBranches.cpp:146
-#: src/frontends/qt4/GuiDocument.cpp:1521
+#: src/frontends/qt4/GuiDocument.cpp:1525
 msgid "Yes"
 msgstr "Ano"
 
-#: src/frontends/qt4/GuiBranches.cpp:72 src/frontends/qt4/GuiDocument.cpp:1520
+#: src/frontends/qt4/GuiBranches.cpp:72 src/frontends/qt4/GuiDocument.cpp:1524
 msgid "No"
 msgstr "Ne"
 
@@ -17736,20 +17773,20 @@ msgstr "Vìtve"
 msgid "LaTeX Preamble"
 msgstr "Preambule LaTeXu"
 
-#: src/frontends/qt4/GuiDocument.cpp:1244
+#: src/frontends/qt4/GuiDocument.cpp:1248
 msgid "Layouts|#o#O"
 msgstr "Rozvr¾ení|#o#O"
 
-#: src/frontends/qt4/GuiDocument.cpp:1246
+#: src/frontends/qt4/GuiDocument.cpp:1250
 msgid "LyX Layout (*.layout)"
 msgstr "Rozvr¾ení dokumentu LyX-u (*.layout)"
 
-#: src/frontends/qt4/GuiDocument.cpp:1248
-#: src/frontends/qt4/GuiDocument.cpp:1257
+#: src/frontends/qt4/GuiDocument.cpp:1252
+#: src/frontends/qt4/GuiDocument.cpp:1261
 msgid "Local layout file"
 msgstr "Lokální soubor s rozvr¾ením"
 
-#: src/frontends/qt4/GuiDocument.cpp:1258
+#: src/frontends/qt4/GuiDocument.cpp:1262
 msgid ""
 "The layout file you have selected is a local layout\n"
 "file, not one in the system or user directory. Your\n"
@@ -17761,35 +17798,35 @@ msgstr ""
 "Vá¹ dokument mù¾e mít problémy pokud soubor s rozvr¾ením\n"
 "neponecháte ve stejném adresáøi."
 
-#: src/frontends/qt4/GuiDocument.cpp:1262
+#: src/frontends/qt4/GuiDocument.cpp:1266
 msgid "&Set Layout"
 msgstr "&Nastavit rozvr¾ení"
 
-#: src/frontends/qt4/GuiDocument.cpp:1275
-#: src/frontends/qt4/GuiDocument.cpp:1349
-#: src/frontends/qt4/GuiDocument.cpp:2243
+#: src/frontends/qt4/GuiDocument.cpp:1279
+#: src/frontends/qt4/GuiDocument.cpp:1353
+#: src/frontends/qt4/GuiDocument.cpp:2247
 msgid "Error"
 msgstr "Chyba"
 
-#: src/frontends/qt4/GuiDocument.cpp:1276
+#: src/frontends/qt4/GuiDocument.cpp:1280
 msgid "Unable to read local layout file."
 msgstr "Nepodaøilo se naèíst lokální soubor s rozvr¾ením dokumentu."
 
-#: src/frontends/qt4/GuiDocument.cpp:1298
+#: src/frontends/qt4/GuiDocument.cpp:1302
 msgid "Select master document"
 msgstr "Vybrat hlavní dokument"
 
-#: src/frontends/qt4/GuiDocument.cpp:1302
+#: src/frontends/qt4/GuiDocument.cpp:1306
 msgid "LyX Files (*.lyx)"
 msgstr "Dokumenty LyX-u (*.lyx)"
 
-#: src/frontends/qt4/GuiDocument.cpp:1334
-#: src/frontends/qt4/GuiDocument.cpp:2232
+#: src/frontends/qt4/GuiDocument.cpp:1338
+#: src/frontends/qt4/GuiDocument.cpp:2236
 msgid "Unapplied changes"
 msgstr "Neuplatnìné zmìny"
 
-#: src/frontends/qt4/GuiDocument.cpp:1335
-#: src/frontends/qt4/GuiDocument.cpp:2233
+#: src/frontends/qt4/GuiDocument.cpp:1339
+#: src/frontends/qt4/GuiDocument.cpp:2237
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
 "If you do not apply now, they will be lost after this action."
@@ -17797,76 +17834,76 @@ msgstr ""
 "Nìkteré zmìny v dialogovém oknì nebyly zatím uplatnìny.\n"
 "Pokud tak neuèiníte nyní, budou ztraceny po této akci."
 
-#: src/frontends/qt4/GuiDocument.cpp:1337
-#: src/frontends/qt4/GuiDocument.cpp:2235
+#: src/frontends/qt4/GuiDocument.cpp:1341
+#: src/frontends/qt4/GuiDocument.cpp:2239
 msgid "&Dismiss"
 msgstr "&Odmítnout"
 
-#: src/frontends/qt4/GuiDocument.cpp:1349
-#: src/frontends/qt4/GuiDocument.cpp:2243
+#: src/frontends/qt4/GuiDocument.cpp:1353
+#: src/frontends/qt4/GuiDocument.cpp:2247
 msgid "Unable to set document class."
 msgstr "Nelze nastavit tøídu dokumentu"
 
-#: src/frontends/qt4/GuiDocument.cpp:1383
+#: src/frontends/qt4/GuiDocument.cpp:1387
 #, c-format
 msgid "%1$s, %2$s"
 msgstr "%1$s, %2$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:1388
+#: src/frontends/qt4/GuiDocument.cpp:1392
 #, c-format
 msgid "%1$s, %2$s, and %3$s"
 msgstr "%1$s, %2$s a %3$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:1472
+#: src/frontends/qt4/GuiDocument.cpp:1476
 msgid "Module provided by document class."
 msgstr "Modul dodán tøídou dokumentu."
 
-#: src/frontends/qt4/GuiDocument.cpp:1480
+#: src/frontends/qt4/GuiDocument.cpp:1484
 #, c-format
 msgid "Package(s) required: %1$s."
 msgstr "Vy¾adované balíèky: %1$s."
 
 # TODO
-#: src/frontends/qt4/GuiDocument.cpp:1486
+#: src/frontends/qt4/GuiDocument.cpp:1490
 msgid "or"
 msgstr "nebo"
 
-#: src/frontends/qt4/GuiDocument.cpp:1489
+#: src/frontends/qt4/GuiDocument.cpp:1493
 #, c-format
 msgid "Module required: %1$s."
 msgstr "Vy¾adované moduly: %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:1498
+#: src/frontends/qt4/GuiDocument.cpp:1502
 #, c-format
 msgid "Modules excluded: %1$s."
 msgstr "Vylouèené moduly: %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:1504
+#: src/frontends/qt4/GuiDocument.cpp:1508
 msgid "WARNING: Some required packages are unavailable!"
 msgstr "Upozornìní: Nìkteré vy¾adované balíèky jsou nedostupné!"
 
-#: src/frontends/qt4/GuiDocument.cpp:2042
+#: src/frontends/qt4/GuiDocument.cpp:2046
 msgid "[No options predefined]"
 msgstr "[®ádné nastavení pøeddefinováno]"
 
-#: src/frontends/qt4/GuiDocument.cpp:2255
+#: src/frontends/qt4/GuiDocument.cpp:2259
 msgid "Can't set layout!"
 msgstr "Nelze nastavit rozvr¾ení!"
 
-#: src/frontends/qt4/GuiDocument.cpp:2256
+#: src/frontends/qt4/GuiDocument.cpp:2260
 #, c-format
 msgid "Unable to set layout for ID: %1$s"
 msgstr "Nelze nastavit rozvr¾ení pro ID: %1$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:2333
+#: src/frontends/qt4/GuiDocument.cpp:2337
 msgid "Not Found"
 msgstr "Nenalezeno"
 
-#: src/frontends/qt4/GuiDocument.cpp:2387
+#: src/frontends/qt4/GuiDocument.cpp:2391
 msgid "Assigned master does not include this file"
 msgstr "Hlavní dokument nezahrnuje tento soubor"
 
-#: src/frontends/qt4/GuiDocument.cpp:2388
+#: src/frontends/qt4/GuiDocument.cpp:2392
 #, c-format
 msgid ""
 "You must include this file in the document\n"
@@ -17876,11 +17913,11 @@ msgstr ""
 "Musíte zahrnout tento soubor do dokumentu\n"
 "'%1$s' pokud chcete pou¾ívat vlasností hlavního dokumentu."
 
-#: src/frontends/qt4/GuiDocument.cpp:2392
+#: src/frontends/qt4/GuiDocument.cpp:2396
 msgid "Could not load master"
 msgstr "Nelze naèíst hlavní dokument"
 
-#: src/frontends/qt4/GuiDocument.cpp:2393
+#: src/frontends/qt4/GuiDocument.cpp:2397
 #, c-format
 msgid ""
 "The master document '%1$s'\n"
