@@ -1473,10 +1473,25 @@ bool GuiApplication::readUIFile(QString const & name, bool include)
 
 	if (ui_path.empty()) {
 		LYXERR(Debug::INIT, "Could not find " << name);
+		if (include) {
+			Alert::warning(_("Could not find UI definition file"),
+				bformat(_("Error while reading the included file\n\%1$s.\n"
+					"Please check your installation."), qstring_to_ucs4(name)));
+			return false;
+		}
 		Alert::warning(_("Could not find UI definition file"),
-			       bformat(_("Error while reading the configuration file\n%1$s.\n"
-				   "Please check your installation."), qstring_to_ucs4(name)));
-		return false;
+			bformat(_("Error while reading the configuration file\n%1$s.\n"
+				"Falling back to default.\n"
+				"Please look under Tools>Preferences>User Interface and\n"
+				"check which User Interface file you are using."), qstring_to_ucs4(name)));
+		ui_path = libFileSearch("ui", "default", "ui");
+		if (ui_path.empty()) {
+			LYXERR(Debug::INIT, "Could not find default UI file!!");
+			Alert::warning(_("Could not find default UI file"),
+				_("LyX coudl not find the default UI file!\n"
+					"Please check your installation."));
+			return false;
+		}
 	}
 
 
