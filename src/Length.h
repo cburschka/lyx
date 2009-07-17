@@ -100,8 +100,6 @@ public:
 	friend bool isValidLength(std::string const & data, Length * result);
 
 private:
-	/// This HSpace kind
-	HSpaceKind kind_;
 	///
 	double val_;
 	///
