@@ -1463,21 +1463,6 @@ bool GuiApplication::searchMenu(FuncRequest const & func,
 
 bool GuiApplication::readUIFile(QString const & name, bool include)
 {
-	enum {
-		ui_menuset = 1,
-		ui_toolbars,
-		ui_toolbarset,
-		ui_include,
-		ui_last
-	};
-
-	LexerKeyword uitags[] = {
-		{ "include", ui_include },
-		{ "menuset", ui_menuset },
-		{ "toolbars", ui_toolbars },
-		{ "toolbarset", ui_toolbarset }
-	};
-
 	LYXERR(Debug::INIT, "About to read " << name << "...");
 
 	FileName ui_path;
@@ -1531,6 +1516,21 @@ bool GuiApplication::readUIFile(QString const & name, bool include)
 	uifiles.push_back(uifile);
 
 	LYXERR(Debug::INIT, "Found " << name << " in " << ui_path);
+
+	enum {
+		ui_menuset = 1,
+		ui_toolbars,
+		ui_toolbarset,
+		ui_include,
+		ui_last
+	};
+
+	LexerKeyword uitags[] = {
+		{ "include", ui_include },
+		{ "menuset", ui_menuset },
+		{ "toolbars", ui_toolbars },
+		{ "toolbarset", ui_toolbarset }
+	};
 
 	Lexer lex(uitags);
 	lex.setFile(ui_path);
