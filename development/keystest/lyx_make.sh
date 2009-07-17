@@ -30,5 +30,5 @@ then
 
 else
  echo NEEDS the following packages: 
- echo wmctrl xvkbd bash xterm python
+ echo wmctrl xvkbd bash xterm python xclip
 fi
