@@ -1490,6 +1490,7 @@ bool GuiApplication::readUIFile(QString const & name, bool include)
 	}
 
 	if (ui_path.empty()) {
+		static const QString defaultUIFile = "default";
 		LYXERR(Debug::INIT, "Could not find " << name);
 		if (include) {
 			Alert::warning(_("Could not find UI definition file"),
@@ -1497,7 +1498,7 @@ bool GuiApplication::readUIFile(QString const & name, bool include)
 					"Please check your installation."), qstring_to_ucs4(name)));
 			return false;
 		}
-		if (name == "default") {
+		if (name == defaultUIFile) {
 			LYXERR(Debug::INIT, "Could not find default UI file!!");
 			Alert::warning(_("Could not find default UI file"),
 				_("LyX could not find the default UI file!\n"
@@ -1509,7 +1510,7 @@ bool GuiApplication::readUIFile(QString const & name, bool include)
 			"Falling back to default.\n"
 			"Please look under Tools>Preferences>User Interface and\n"
 			"check which User Interface file you are using."), qstring_to_ucs4(name)));
-		return readUIFile("default", false);
+		return readUIFile(defaultUIFile, false);
 	}
 
 	// Ensure that a file is read only once (prevents include loops)
