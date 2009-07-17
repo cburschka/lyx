@@ -72,6 +72,8 @@ What's new
 
 - Reverse searching added to the merge changes dialog (bug 2213).
 
+- Copy as Reference is now implemented for equation labels too (bug 5948).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
@@ -228,8 +230,6 @@ What's new
   cursor could end up on a row that is only partly visible. This causes
   the cursor to end up somewhere else when scrolling back (bug 5944).
 
-- Copy as Reference is now implemented for equation labels too (bug 5948).
-
 - Fix selection of math insets on some archs.
 
 - Fix of painter glitches caused by unitialized variables (bug 6077).
@@ -238,6 +238,9 @@ What's new
 
 - Fix the enabling of the page height and width fields in the Document
   Settings dialog.
+  
+- The width unit of table cells can be set before entering the
+  value (bug 6070).
 
 
 * DOCUMENTATION AND LOCALIZATION
