@@ -523,16 +523,23 @@ string const replaceEnvironmentPath(string const & path)
 	static boost::regex envvar_br_re("(.*)" + envvar_br + "(.*)");
 	static boost::regex envvar_re("(.*)" + envvar + "(.*)");
 	boost::smatch what;
-
-	string result = path;
+	string result;
+	string remaining = path;
 	while (1) {
-		regex_match(result, what, envvar_br_re);
+		regex_match(remaining, what, envvar_br_re);
 		if (!what[0].matched) {
-			regex_match(result, what, envvar_re);
-			if (!what[0].matched)
+			regex_match(remaining, what, envvar_re);
+			if (!what[0].matched) {
+				result += remaining;
 				break;
+			}
 		}
-		result = what.str(1) + getEnv(what.str(2)) + what.str(3);
+		string env_var = getEnv(what.str(2));
+		if (!env_var.empty())
+			result += what.str(1) + env_var;
+		else
+			result += what.str(1) + "$" + what.str(2);
+		remaining = what.str(3);
 	}
 	return result;
 }
