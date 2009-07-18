@@ -92,7 +92,7 @@ void GuiSpellchecker::on_closePB_clicked()
 }
 
 
-void GuiSpellchecker::on_suggestionsLW_itemChanged(QListWidgetItem * item)
+void GuiSpellchecker::on_suggestionsLW_itemClicked(QListWidgetItem * item)
 {
 	if (d->ui.replaceCO->count() != 0)
 		d->ui.replaceCO->setItemText(0, item->text());
@@ -194,13 +194,13 @@ void GuiSpellchecker::updateSuggestions(docstring_list & words)
 	lw->clear();
 
 	if (words.empty()) {
-		on_suggestionsLW_itemChanged(new QListWidgetItem(suggestion));
+		on_suggestionsLW_itemClicked(new QListWidgetItem(suggestion));
 		return;
 	}
 	for (size_t i = 0; i != words.size(); ++i)
 		lw->addItem(toqstr(words[i]));
 
-	on_suggestionsLW_itemChanged(lw->item(0));
+	on_suggestionsLW_itemClicked(lw->item(0));
 	lw->setCurrentRow(0);
 }
 
