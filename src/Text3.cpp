@@ -233,6 +233,9 @@ static bool doInsertInset(Cursor & cur, Text * text,
 	if (!inset)
 		return false;
 
+	if (InsetCollapsable * ci = inset->asInsetCollapsable())
+		ci->setButtonLabel();
+
 	cur.recordUndo();
 	if (cmd.action == LFUN_INDEX_INSERT) {
 		docstring ds = subst(text->getStringToIndex(cur), '\n', ' ');
