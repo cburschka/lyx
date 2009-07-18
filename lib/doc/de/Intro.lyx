@@ -142,8 +142,8 @@ Peter Sütterlin
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 20.
- Juni 2009
+letzte Änderung: 18.
+ Juli 2009
 \end_layout
 
 \begin_layout Standard
@@ -278,7 +278,7 @@ In anderen Worten, wir haben gelernt und geübt, uns darum zu kümmern, welcher
  soll.
  Um eine Textstelle hervorzuheben, wird der Zeichensatz geändert, gleichsam
  wie das Auswechseln des Typenrades einer Schreibmaschine.
- Dies ist die Philosophie, die einer sogenannten WYSIWYG-Textverarbeitung
+ Dies ist die Philosophie, die einer so genannten WYSIWYG-Textverarbeitung
  zugrunde liegt: 
 \begin_inset Quotes gld
 \end_inset
@@ -327,8 +327,8 @@ Stil
 status collapsed
 
 \begin_layout Plain Layout
-Fairerweise muss man sagen, daß die meisten aktuellen Textverarbeitungsprogramme
- mittlerweile auch so etwas wie Stilvorlagen unterstützen, die ein ähnliches
+Fairerweise muss man sagen, dass die meisten aktuellen Textverarbeitungsprogramm
+e mittlerweile auch so etwas wie Stilvorlagen unterstützen, die ein ähnliches
  Konzept darstellen.
  Leider werden sie, so unsere Erfahrung, in der Realität kaum genutzt.
 \end_layout
@@ -364,7 +364,7 @@ Einleitung
 \end_inset
 
 .
- Wenn Sie natürlich zu einem späteren Zeitpunkt beschließen, daß dieses
+ Wenn Sie natürlich zu einem späteren Zeitpunkt beschließen, dass dieses
  Kapitel an einer anderen Stelle im Dokument erscheinen soll, oder wenn
  Sie ein weiteres Kapitel davor einfügen wollen, dann müssen Sie die Nummerierun
 g für dieses und alle folgenden Kapitel sowie die Einträge im Inhaltsverzeichnis
@@ -398,8 +398,8 @@ Ja, das ist wirklich alles.
 Und dann ist da noch das Problem mit der Konsistenz.
  Fünf Tage später laden Sie den Bericht wieder und schreiben ein Kapitel
  4.
- Sie erinnern sich nicht mehr, daß Sie in den ersten Kapiteln eine 18-Punkt-Schr
-ift für die Überschriften verwendet hatten, und wählen eine 16-Punkt-Schrift
+ Sie erinnern sich nicht mehr, dass Sie in den ersten Kapiteln eine 18-Punkt-Sch
+rift für die Überschriften verwendet hatten, und wählen eine 16-Punkt-Schrift
  aus.
  Dieses Problem existiert in LyX nicht, denn der Computer kümmert sich um
  solche Dinge.
@@ -723,12 +723,12 @@ device independent
 
 , 
 \family typewriter
-dvi
+DVI
 \family default
 ) bezeichnet.
  Eine solche 
 \family typewriter
-dvi
+DVI
 \family default
 -Datei kann von vielen Programmen, die dieses Format verstehen, gelesen
  und in andere Formate wie zum Beispiel PostScript oder PDF umgewandelt
@@ -737,7 +737,7 @@ dvi
 
 \begin_layout Standard
 Wäre das bereits alles, TeX wäre nichts anderes als ein primitiver Textsetzer.
- Aber in TeX ist es möglich, eigene Befehlssequenzen, sogenannte Makros,
+ Aber in TeX ist es möglich, eigene Befehlssequenzen, so genannte Makros,
  zu definieren.
  Und dadurch sind die Möglichkeiten von TeX schier unbegrenzt.
 \end_layout
@@ -909,20 +909,7 @@ Licks
 \begin_inset Quotes grd
 \end_inset
 
- — je nachdem, aus welchem Land man stammt, aber über die Aussprache wurden
- auf der Mailing-Liste schon endlose Diskussionen geführt, also sprechen
- Sie es einfach so aus, wie es Ihnen gefällt — nur nicht 
-\begin_inset Quotes gld
-\end_inset
-
-word
-\begin_inset Quotes grd
-\end_inset
-
-.
- 
-\family typewriter
-:-)
+ — je nachdem, aus welchem Land man stammt.
 \end_layout
 
 \begin_layout Section
@@ -1416,7 +1403,7 @@ Benutzerhandbuch
 Der Hauptteil der Dokumentation.
  Hier werden (möglichst) alle grundlegenden Funktionen und Fähigkeiten von
  LyX beschrieben.
- Der Text setzt voraus, daß Sie das 
+ Der Text setzt voraus, dass Sie das 
 \emph on
 Tutorium
 \emph default
@@ -1644,13 +1631,14 @@ Sie ersparen sich dadurch sicherlich einiges an Frustration und werden die
 \end_layout
 
 \begin_layout Section
+Wie helfe ich beim LyX-Projekt?
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Helfen"
 
 \end_inset
 
-Wie helfe ich beim LyX-Projekt?
+
 \end_layout
 
 \begin_layout Subsection
@@ -1930,15 +1918,6 @@ Benutzerhandbuch
 \begin_deeper
 \begin_layout Standard
 Dieser Schritt dient dazu, Ideen zu liefern.
- Das 
-\emph on
-Tutorium
-\emph default
- und das 
-\emph on
-Benutzerhandbuch
-\emph default
- sind die vollständigsten und aktuellsten Dokumente der Serie.
  Sie sollten Ihnen ein paar Hinweise geben, wie wir uns die Dokumentation
  vorstellen.
 \end_layout
