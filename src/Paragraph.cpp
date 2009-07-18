@@ -558,7 +558,8 @@ int Paragraph::Private::latexSurrogatePair(odocstream & os, char_type c,
 		// the encoding supports the combination
 		os << latex2 << latex1;
 		return latex1.length() + latex2.length();
-	} else if (runparams.local_font->language()->lang() == "polutonikogreek") {
+	} else if (runparams.local_font &&
+		   runparams.local_font->language()->lang() == "polutonikogreek") {
 		// polutonikogreek only works without the brackets
 		os << latex1 << latex2;
 		return latex1.length() + latex2.length();
