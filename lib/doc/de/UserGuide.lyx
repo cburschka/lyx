@@ -19170,8 +19170,12 @@ XCF
 
 \end_inset
 
- (das GIMP-eigene Dateiformat) mit 24 Bit Farbtiefe, Transparenz und verlustfrei
-er Kompression
+ (das 
+\family typewriter
+GIMP
+\family default
+-eigene Dateiformat) mit 24 Bit Farbtiefe, Transparenz und verlustfreier
+ Kompression
 \end_layout
 
 \begin_layout Description
@@ -19491,7 +19495,7 @@ Ein Schnabeltier in einer Gleitobjekt-Umgebung.
 
 \begin_layout Standard
 Das erscheint sehr einfach, aber bei der Positionierung des Bildtitels gibt
- es eine kleine Subtilität.
+ es eine kleine Besonderheit.
  Wenn Sie den Titel unter der Abbildung bevorzugen, müssen Sie die Abbildung
  oberhalb von 
 \emph on
@@ -20626,16 +20630,11 @@ reference "ErsteKopfzeile"
 
 \end_inset
 
-, oder Sie sehen sie sich an einem Beispiel an: 
-\family sans
-Datei\SpecialChar \menuseparator
-Öffnen\SpecialChar \ldots{}
-\SpecialChar \menuseparator
-Beispiele\SpecialChar \menuseparator
-de\SpecialChar \menuseparator
-TableExamples.lyx
-\family default
-.
+, oder im 
+\emph on
+Eingebettete Objekte
+\emph default
+ Handbuch.
 \end_layout
 
 \begin_layout Standard
@@ -23247,7 +23246,7 @@ Lange
 Tabelle
 \family default
  deren Eigenschaften sehen können.
- Die gesamte Tabelle finden Sie in 
+ Die gesamte Tabelle finden Sie im 
 \emph on
 Eingebettete
 \emph default
@@ -23255,7 +23254,7 @@ Eingebettete
 \emph on
 Objekte
 \emph default
-.
+ Handbuch.
 \end_layout
 
 \begin_layout Standard
@@ -23654,7 +23653,7 @@ Margit
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -23674,7 +23673,11 @@ siehe
 \series bold
 Beschriftungen langer Tabellen
 \series default
- im Handbuch Eingebettete Objekte.
+ im Handbuch 
+\emph on
+Eingebettete Objekte
+\emph default
+.
 \end_layout
 
 \end_inset
@@ -24372,13 +24375,17 @@ Eingebettete
 \begin_inset space \space{}
 \end_inset
 
-Objekte, Kapitel
+Objekte 
+\emph default
+in
+\emph on
+ 
+\emph default
+Kapitel
 \begin_inset space \space{}
 \end_inset
 
-5
-\emph default
- beschrieben.
+5 beschrieben.
 \end_layout
 
 \begin_layout Chapter
@@ -25368,7 +25375,7 @@ wasysym
 \family typewriter
 esint
 \family default
--Paket, damit Sie die unterschiedlichen Integralzeichen in der dvi-Vorschau
+-Paket, damit Sie die unterschiedlichen Integralzeichen in der DVI-Vorschau
  sehen können, weil das letztere nicht in allen LaTeX-Distributionen vorhanden
  ist.
 \end_layout
@@ -27736,7 +27743,7 @@ Alt+Z
 F
 \family default
 .
- Den kalligraphischen Schriftstil für Großbuchstaben, 
+ Den kalligrafischen Schriftstil für Großbuchstaben, 
 \begin_inset Formula $\mathcal{TEXT}$
 \end_inset
 
@@ -28862,47 +28869,17 @@ Weitergehende Literatur
 \end_layout
 
 \begin_layout Standard
-In 
+Im 
 \emph on
 Mathe
 \emph default
- gibt es eine sehr umfangreiche Beschreibung des Mathematik-Editors, die
- auch Hinweise für physikalische und chemische Formeln enthält.
+ Handbuch gibt es eine sehr umfangreiche Beschreibung des Mathematik-Editors,
+ die auch Hinweise für physikalische und chemische Formeln enthält.
  Außerdem gibt es Hinweise, wie man Formeln, die LyX nicht sehr sauber setzt,
  verfeinern kann.
- Für viele Befehle ist die LaTeX-Notation angegeben, weil der Autor meint:
- 
-\begin_inset Quotes gld
-\end_inset
-
-Wer aber viele Formeln zu schreiben hat, wird feststellen, dass man mit
- den LaTeX-Befehlen viel schneller eine Formel setzen kann.
-\begin_inset Quotes grd
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Allerdings ist sie sehr hilfreich um zu lernen, wie man die Formeln schreibt.
- Wenn Sie sich nur für die gedruckte Version interessieren, sollten Sie
- sich die Dateien 
-\family typewriter
-Ma\SpecialChar \-
-the\SpecialChar \-
-be\SpecialChar \-
-feh\SpecialChar \-
-le.pdf
-\family default
-, 
-\family typewriter
-Mathebefehle.ps
-\family default
- oder 
-\family typewriter
-Mathebefehle.dvi
-\family default
- holen.
+ Für viele Befehle ist die LaTeX-Notation angegeben, denn wer viele Formeln
+ zu schreiben hat, wird feststellen, dass man mit den LaTeX-Befehlen viel
+ schneller eine Formel setzen kann.
 \end_layout
 
 \begin_layout Chapter
@@ -29286,7 +29263,7 @@ Wenn Sie LaTeX-Benutzer sind, werden Sie sicher wissen, dass LaTeX unter
  LyX achtet selber darauf, dass LaTeX oft genug aufgerufen wird, damit alle
  Dinge in der 
 \family typewriter
-dvi
+DVI
 \family default
 -Vorschau richtig erscheinen.
 \end_layout
@@ -30431,7 +30408,7 @@ de zu zeigen.
 \family typewriter
 alphadin.bst
 \family default
- benutzt, damit das komplizierte deutsche Verweisschema benutzt werden konnte.
+ benutzt, um das komplizierte deutsche Verweisschema automatisch zu verwenden.
 \end_layout
 
 \begin_layout Subsection
@@ -31007,16 +30984,45 @@ en, wie es hinter @ steht.
 \end_layout
 
 \begin_layout Standard
-Geübte LaTeXniker haben natürlich auch noch die Möglichkeit, den Parameter
- 
+Verwendet man im Menü 
+\family sans
+Werkzeuge\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Ausgaben\SpecialChar \menuseparator
+LaTe
+\family default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+
+\family sans
+X
+\family default
+ zusätzlich den Parameter 
+\begin_inset Quotes gld
+\end_inset
+
+
 \family typewriter
 -g
 \family default
- von 
+
+\begin_inset Quotes grd
+\end_inset
+
+ für 
 \family typewriter
 makeindex
 \family default
- zu benutzen.
+, wird der Index gemäß den deutschen Regeln sortiert.
 \end_layout
 
 \begin_layout Standard
@@ -31323,7 +31329,7 @@ Sie können das Aussehen für das gesamte Stichwortverzeichnis ändern.
 Stichwortverzeichnis
 \family default
  am Ende des Dokumentes fett markieren, werden alle Stichworte fett gedruckt.
- Fortgeschrittenere Dinge finden Sie in 
+ Weiterführende Informationen finden Sie in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "makeindex,xindy"
@@ -31575,7 +31581,7 @@ Nomenklatureintrag\SpecialChar \ldots{}
  wählen.
  Ein graues Kästchen mit der Aufschrift 
 \family sans
-Glo
+Nom
 \family default
  wird eingefügt und das 
 \family sans
@@ -31965,7 +31971,7 @@ Nomenklatur
 \family default
  können Sie ein Glossar
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -32027,7 +32033,14 @@ Was Sie sonst noch machen müssen, um überhaupt ein Glossar zu bekommen,
 \family typewriter
 nomencl
 \family default
--Dokumentation nach.
+-Dokumentation nach, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "nomencl"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -32480,7 +32493,7 @@ hyperref
 \family sans
 Hyperlinks
 \family default
- können Sie festlegen, wie die Querverweise aussehen sollen, und ob Bibliografis
+ können Sie festlegen, wie die Querverweise aussehen sollen, und ob bibliografis
 che Rückverweise angelegt werden sollen.
 \end_layout
 
@@ -33072,7 +33085,7 @@ Manche Dokumentklassen haben eingebaute Lösungen für bekannte Probleme wie
  das obige.
  Wenn Sie zum Beispiel die Klasse 
 \family sans
-koma-script
+KOMA-script
 \family default
  benutzen, benötigen Sie das Paket 
 \family typewriter
@@ -33132,7 +33145,7 @@ key "latex-einführung,latex-praxisbuch,latexcompanion,latexguide"
 \end_layout
 
 \begin_layout Section
-Dokumentschnipsel ansehen
+Dokumentteile ansehen
 \end_layout
 
 \begin_layout Standard
@@ -33608,7 +33621,7 @@ ispell
 \family default
  kann man auch einen 
 \emph on
-link
+Link
 \emph default
  von zum Beispiel 
 \family typewriter
@@ -37177,8 +37190,8 @@ Datum fügt das heutige Datum ein.
 \begin_layout Description
 LilyPond erstellt Notenblätter, konvertiert sie nach .pdf oder .eps, um sie
  einzufügen.
- Zur Benutzung von .eps benötigt man mindestens lilypond 2.6, zur Benutzung
- von .pdf lilypond 2.9.
+ Zur Benutzung von .eps benötigt man mindestens LilyPond 2.6, zur Benutzung
+ von .pdf LilyPond 2.9.
 \end_layout
 
 \begin_layout Description
@@ -39157,15 +39170,6 @@ Wenn eine dieser Optionen angekreuzt ist, wird die entsprechende Leiste
 \end_layout
 
 \begin_layout Description
-Begrenze
-\begin_inset space ~
-\end_inset
-
-Textbreite
-\end_layout
-
-\begin_deeper
-\begin_layout Description
 Benutzter
 \begin_inset space ~
 \end_inset
@@ -39177,7 +39181,6 @@ Bildschirmbereich
 (Pixel) begrenzt die Breite der Darstellung auf die festgelegte Pixelzahl.
 \end_layout
 
-\end_deeper
 \end_deeper
 \end_deeper
 \begin_layout Subsection
@@ -39733,7 +39736,7 @@ n
  und Ihre 
 \family sans
 \series bold
-EMail
+Email
 \family default
 \series default
 -Adresse eintragen.
@@ -43103,8 +43106,8 @@ Das Paket
 \series bold
 babel
 \series default
- sorgt dafür, dass die Legendeen in der ausgewählten Sprache erscheinen.
- Ehe man Legendeen ändern kann, muss es geladen werden.
+ sorgt dafür, dass die Legenden in der ausgewählten Sprache erscheinen.
+ Ehe man Legenden ändern kann, muss es geladen werden.
  Außerdem wird 
 \series bold
 babel
@@ -43137,7 +43140,7 @@ http://www.tex.ac.uk/cgi-bin/texfaq2html?label=fixnam
 \end_layout
 
 \begin_layout Plain Layout
-Möchte man Legendeen für andere Sprachen ändern, ersetzt man 
+Möchte man Legenden für andere Sprachen ändern, ersetzt man 
 \series bold
 ngerman
 \series default
