@@ -430,25 +430,6 @@ dist_images_DATA = \
 
 imagesmathdir = $(imagesdir)/math
 dist_imagesmath_DATA = \
-	images/math/font.png \
-	images/math/delim.png \
-	images/math/equation.png \
-	images/math/matrix.png \
-	images/math/space.png \
-	images/math/sqrt-square.png \
-	images/math/style.png \
-	images/math/sub.png \
-	images/math/super.png \
-	images/math/Bbbk.png \
-	images/math/Finv.png \
-	images/math/Game.png \
-	images/math/Im.png \
-	images/math/Lleftarrow.png \
-	images/math/Rrightarrow.png \
-	images/math/Lsh.png \
-	images/math/Re.png \
-	images/math/Rsh.png \
-	images/math/Vvdash.png \
 	images/math/acute.png \
 	images/math/adots.png \
 	images/math/aleph.png \
@@ -466,6 +447,7 @@ dist_imagesmath_DATA = \
 	images/math/bar.png \
 	images/math/bars.png \
 	images/math/barwedge.png \
+	images/math/Bbbk.png \
 	images/math/because.png \
 	images/math/beta.png \
 	images/math/beth.png \
@@ -537,6 +519,7 @@ dist_imagesmath_DATA = \
 	images/math/dddot.png \
 	images/math/ddot.png \
 	images/math/ddots.png \
+	images/math/delim.png \
 	images/math/delta.png \
 	images/math/delta2.png \
 	images/math/diagdown.png \
@@ -565,6 +548,7 @@ dist_imagesmath_DATA = \
 	images/math/eqcirc.png \
 	images/math/eqslantgtr.png \
 	images/math/eqslantless.png \
+	images/math/equation.png \
 	images/math/equiv.png \
 	images/math/eta.png \
 	images/math/eth.png \
@@ -573,12 +557,15 @@ dist_imagesmath_DATA = \
 	images/math/fallingdotseq.png \
 	images/math/fint.png \
 	images/math/fintop.png \
+	images/math/Finv.png \
 	images/math/flat.png \
+	images/math/font.png \
 	images/math/forall.png \
 	images/math/frac.png \
 	images/math/frac-square.png \
 	images/math/frown.png \
 	images/math/functions.png \
+	images/math/Game.png \
 	images/math/gamma.png \
 	images/math/gamma2.png \
 	images/math/geq.png \
@@ -613,6 +600,7 @@ dist_imagesmath_DATA = \
 	images/math/iiintop.png \
 	images/math/iint.png \
 	images/math/iintop.png \
+	images/math/Im.png \
 	images/math/imath.png \
 	images/math/in.png \
 	images/math/infty.png \
@@ -661,6 +649,7 @@ dist_imagesmath_DATA = \
 	images/math/lfloor_rfloor.png \
 	images/math/ll.png \
 	images/math/llcorner.png \
+	images/math/Lleftarrow.png \
 	images/math/lll.png \
 	images/math/lnapprox.png \
 	images/math/lneq.png \
@@ -679,6 +668,7 @@ dist_imagesmath_DATA = \
 	images/math/lparen.png \
 	images/math/lparen_rparen.png \
 	images/math/lrcorner.png \
+	images/math/Lsh.png \
 	images/math/ltimes.png \
 	images/math/lvertneqq.png \
 	images/math/mapsto.png \
@@ -694,6 +684,7 @@ dist_imagesmath_DATA = \
 	images/math/mathcal_O.png \
 	images/math/mathcircumflex.png \
 	images/math/mathrm_T.png \
+	images/math/matrix.png \
 	images/math/measuredangle.png \
 	images/math/mho.png \
 	images/math/mid.png \
@@ -792,6 +783,7 @@ dist_imagesmath_DATA = \
 	images/math/rbrace.png \
 	images/math/rbracket.png \
 	images/math/rceil.png \
+	images/math/Re.png \
 	images/math/rfloor.png \
 	images/math/rho.png \
 	images/math/rightarrow.png \
@@ -807,6 +799,8 @@ dist_imagesmath_DATA = \
 	images/math/risingdotseq.png \
 	images/math/root.png \
 	images/math/rparen.png \
+	images/math/Rrightarrow.png \
+	images/math/Rsh.png \
 	images/math/rtimes.png \
 	images/math/searrow.png \
 	images/math/setminus.png \
@@ -822,6 +816,7 @@ dist_imagesmath_DATA = \
 	images/math/smallsetminus.png \
 	images/math/smallsmile.png \
 	images/math/smile.png \
+	images/math/space.png \
 	images/math/spadesuit.png \
 	images/math/sphericalangle.png \
 	images/math/sqcap.png \
@@ -831,12 +826,15 @@ dist_imagesmath_DATA = \
 	images/math/sqint.png \
 	images/math/sqintop.png \
 	images/math/sqrt.png \
+	images/math/sqrt-square.png \
 	images/math/sqsubset.png \
 	images/math/sqsubseteq.png \
 	images/math/sqsupset.png \
 	images/math/sqsupseteq.png \
 	images/math/square.png \
 	images/math/star.png \
+	images/math/style.png \
+	images/math/sub.png \
 	images/math/subset.png \
 	images/math/subset2.png \
 	images/math/subseteq.png \
@@ -851,6 +849,7 @@ dist_imagesmath_DATA = \
 	images/math/succnsim.png \
 	images/math/succsim.png \
 	images/math/sum.png \
+	images/math/super.png \
 	images/math/supset.png \
 	images/math/supset2.png \
 	images/math/supseteq.png \
@@ -926,6 +925,7 @@ dist_imagesmath_DATA = \
 	images/math/vert2.png \
 	images/math/view-others.png \
 	images/math/vphantom.png \
+	images/math/Vvdash.png \
 	images/math/wedge.png \
 	images/math/widehat.png \
 	images/math/widetilde.png \
