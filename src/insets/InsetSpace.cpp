@@ -535,7 +535,8 @@ int InsetSpace::latex(odocstream & os, OutputParams const & runparams) const
 		os << (runparams.free_spacing ? " " : "\\ ");
 		break;
 	case InsetSpaceParams::PROTECTED:
-		if (runparams.local_font->language()->lang() == "polutonikogreek")
+		if (runparams.local_font &&
+		    runparams.local_font->language()->lang() == "polutonikogreek")
 			// in babel's polutonikogreek, ~ is active
 			os << (runparams.free_spacing ? " " : "\\nobreakspace{}");
 		else
