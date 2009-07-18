@@ -1,4 +1,4 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -148,8 +148,8 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 17.
- Januar 2009
+letzte Änderung: 18.
+ Juli 2009
 \end_layout
 
 \begin_layout Standard
@@ -336,11 +336,11 @@ ausführliche Erklärungen zu LaTeX.
 \begin_layout Standard
 Dies ist nicht nötig.
  Wenn Sie ein paar nette LaTeX-Tricks für LyX kennenlernen wollen, schauen
- Sie in 
+ Sie in LyXs 
 \emph on
 Eingebette Objekte
 \emph default
-.
+ Handbuch.
  Ansonsten kaufen Sie sich ein spezielles LaTeX-Buch.
  Es gibt viele gute im Buchhandel.
 \end_layout
@@ -490,32 +490,7 @@ stal\SpecialChar \-
 la\SpecialChar \-
 tions\SpecialChar \-
 ord\SpecialChar \-
-ners (
-\family sans
-Datei
-\family default
-\SpecialChar \menuseparator
-
-\family sans
-Öffnen
-\family default
-\SpecialChar \menuseparator
-Schaltfläche 
-\family sans
-Beispiele
-\family default
-\SpecialChar \menuseparator
-Ver\SpecialChar \-
-zeich\SpecialChar \-
-nis 
-\series bold
-de
-\series default
-) (
-\family typewriter
-resources
-\family default
- bei Windows).
+ners.
  Laden Sie die nicht modifizierte Datei und verwenden Sie 
 \family sans
 Datei\SpecialChar \menuseparator
@@ -595,7 +570,7 @@ unter\SpecialChar \ldots{}
 \begin_layout Itemize
 Starten Sie LaTeX, um eine 
 \family typewriter
-dvi
+DVI
 \family default
 -Datei zu erzeugen: 
 \family sans
@@ -723,7 +698,7 @@ umbruch durch, wenn Sie über das Zeilenende
 \end_layout
 
 \begin_layout Description
-Rückgängig LyX unterstützt mehrfaches Rückgängigmachen.
+Rückgängig LyX unterstützt mehrfaches Rückgängig machen.
  Dies bedeutet, Sie können durch die wiederholte Auswahl von 
 \family sans
 Bearbeiten\SpecialChar \menuseparator
@@ -738,7 +713,7 @@ Rückgängig
 \end_inset
 
  alles, was Sie seit dem Öffnen des Dokumentes verändert haben, zurücknehmen.
- Falls Sie dabei einen oder mehrere Schritte zuviel tun – kein Problem.
+ Falls Sie dabei einen oder mehrere Schritte zu viel tun – kein Problem.
  
 \family sans
 Bearbeiten\SpecialChar \menuseparator
@@ -752,12 +727,12 @@ Wiederholen
 
 \end_inset
 
- macht das Rückgängigmachen wieder ungeschehen.
+ macht das Rückgängig machen wieder ungeschehen.
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-Derzeit ist das Rückgängigmachen auf 100 Schritte beschränkt.
+Derzeit ist das Rückgängig machen auf 100 Schritte beschränkt.
  Außerdem funktioniert es nicht für 
 \emph on
 alle
@@ -900,7 +875,7 @@ Drucken
  positionieren, erscheint ein kleines hellgelbes Feld, das seine Funktion
  beschreibt (genannt 
 \emph on
-tooltip
+Tooltip
 \emph default
 ).
 \end_layout
@@ -924,7 +899,7 @@ name "sub:Leerzeichen"
 
 \begin_layout Standard
 Die Art und Weise, wie LyX mit Leerzeichen umgeht, gehört für Neulinge mit
- Sicherheit zu den gewöhnungsbedürftigsten Punkten.
+ Sicherheit zu den gewöhnungsbedürftigen Punkten.
  Egal, wie oft Sie die 
 \family sans
 Eingabe
@@ -1058,7 +1033,7 @@ Leerzeichen
 
  erscheint.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Wenn Sie das 
@@ -1105,7 +1080,7 @@ Abschnitt
 
  in derselben Zeile stehen.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Im 
@@ -1195,7 +1170,7 @@ Einleitung
 \family sans
 Abschnitt.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Sie müssen die Zeile dazu nicht extra markieren.
@@ -1240,7 +1215,7 @@ Eingabe
 \family default
  beendet sind.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Im 
@@ -2334,7 +2309,7 @@ letter
 \family default
  auszuwählen.
  Dies ist zwar recht offensichtlich, könnte aber sicherlich einfacher gehen.
- Jedesmal, wenn Sie einen Geschäftsbrief schreiben, müssten Sie dann Ihre
+ Jedes Mal, wenn Sie einen Geschäftsbrief schreiben, müssten Sie dann Ihre
  Adresse, die Adresse des Angeschriebenen, den eigentlichen Brieftext, die
  Grußformel sowie vielleicht ein paar weitere, immer gleiche Dinge eintippen.
  LyX bietet deshalb die Möglichkeit, Briefe über eine 
@@ -2514,8 +2489,7 @@ Titel
 \family sans
 Autor
 \family default
-) Ihren Namen und in die darauf\SpecialChar \textcompwordmark{}
-folgende Zeile das aktuelle Datum (Umgebungstyp
+) Ihren Namen und in die darauf folgende Zeile das aktuelle Datum (Umgebungstyp
  
 \family sans
 Datum
@@ -2657,7 +2631,7 @@ OK
 \end_layout
 
 \begin_layout Standard
-Sie hätten diese Marke übrigens genausogut irgendwo anders im betreffenden
+Sie hätten diese Marke übrigens genauso gut irgendwo anders im betreffenden
  Kapitel einfügen können, denn Verweise auf einen Abschnitt beziehen sich
  immer auf die Abschnittsnummer, die als letzte vor der Marke definiert
  ist.
@@ -2670,7 +2644,7 @@ Gut.
  Bislang ist aber noch gar nichts geschehen.
  Wenn Sie sich die 
 \family typewriter
-dvi
+DVI
 \family default
 -Datei ansehen, werden Sie keinerlei Unterschied zu vorher feststellen,
  da die Marken in der Druckversion des Textes nicht auftauchen.
@@ -2780,7 +2754,7 @@ LyX stellt die Querverweise in einer grauen Schaltfläche dar, die an der
 chen Werte von Kapitel und Seitennummer ersetzt.
  Sehen Sie sich Ihren Text in der 
 \family typewriter
-dvi
+DVI
 \family default
 -Vorschau an, und Sie werden feststellen, dass der Eintrag durch 
 \begin_inset Quotes gld
@@ -2843,7 +2817,7 @@ vor
 \emph default
  dem referenzierten Unterkapitel ein, und aktualisieren Sie die 
 \family typewriter
-dvi
+DVI
 \family default
 -Vorschau.
  Voilà, dort steht nun 
@@ -2946,8 +2920,8 @@ herrscht.
 \end_layout
 
 \begin_layout Standard
-Wenn der Text länger als eine Zeile ist, wird das rotumrahmte Kästchen unter
- die Schaltfläche gesetzt.
+Wenn der Text länger als eine Zeile ist, wird das rot umrahmte Kästchen
+ unter die Schaltfläche gesetzt.
  Klicken Sie dann auf 
 \emph on
 Fußnote
@@ -3008,7 +2982,7 @@ Kopieren
  Sie können auch einfach gewöhnlichen, bereits geschriebenen Text in eine
  Fußnote umwandeln, indem Sie ihn markieren und dann die Fußnoten-Schaltfläche
  anklicken.
- Umgekehrt können Sie eine Fußnote in gewöhnlichen Text zurückwandeln, indem
+ Umgekehrt können Sie eine Fußnote in gewöhnlichen Text umwandeln, indem
  Sie den Cursor vor den Fußnotentext stellen und die 
 \begin_inset Graphics
 	filename ../../images/math/leftarrow.png
@@ -3069,7 +3043,7 @@ Randnotizen sind nicht nummeriert.
 Wandeln Sie normalen Text in eine Randnotiz.
  Aktualisieren Sie die 
 \family typewriter
-dvi
+DVI
 \family default
 -Vorschau um zu sehen, wie eine Randnotiz im Druck aussieht.
  
@@ -3204,7 +3178,7 @@ lyxtutorium
  aus (es sollte der einzige Eintrag im Literaturverzeichnis sein).
  Ein Blick auf die aktualisierte 
 \family typewriter
-dvi
+DVI
 \family default
 -Vorschau zeigt Ihnen, dass das Zitat in eckigen Klammern erscheint und
  auf den Eintrag in der Bibliographie am Textende verweist.
@@ -3303,7 +3277,7 @@ Inhaltsverzeichnis
 Das erscheint zunächst nicht sehr hilfreich.
  Wenn Sie nun jedoch die 
 \family typewriter
-dvi
+DVI
 \family default
 -Vorschau betrachten, werden Sie sehen, dass ein vollständiges Inhaltsverzeichni
 s erstellt wurde, welches die verschiedenen Kapitel und Unterkapitel Ihres
@@ -3420,7 +3394,7 @@ ist.
 \begin_layout Standard
 Nun, diese Gleichung sieht nicht gut aus, auch nicht in der 
 \family typewriter
-dvi
+DVI
 \family default
 -Vorschau; da ist kein Abstand zwischen den Buchstaben und dem Gleichheitszeiche
 n, und man möchte die 
@@ -3442,7 +3416,7 @@ Mathematische Ausdrücke werden im Mathematik-Editor geschrieben, auch bekannt
  als Mathe\SpecialChar \-
 matik-Modus.
  Um in den Mathematik-Modus zu kommen, müssen Sie nur den blau beschrifteten
- Schalter 
+ Knopf 
 \begin_inset Graphics
 	filename ../../images/math-mode.png
 	scale 70
@@ -3478,12 +3452,7 @@ E=mc^2
 \family sans
 Esc
 \family default
-, um den Mathematik-Editor zu verlassen (Merke: Ein nochmaliges Klicken
- auf den Mathematikschalter schließt den Mathematik-Editor 
-\emph on
-nicht
-\emph default
-).
+, um den Mathematik-Editor zu verlassen.
  Das purpurrote Rechteck verschwindet, der Cursor ist rechts neben dem Ausdruck.
  Wenn jetzt etwas geschrieben wird, dann wird es wieder normaler Text.
 \end_layout
@@ -3555,7 +3524,7 @@ Nun ist
 
  zu verwandeln.
  Hierzu müssen Sie die Pfeiltasten benutzen, um den Cursor in den Ausdruck
- hineinzubewegen.
+ hinein zu bewegen.
  Wenn Sie im Ausdruck angekommen sind, werden Sie sehen, dass das purpurrote
  Rechteck erscheint, das anzeigt, dass Sie sich im Mathematik-Editor befinden.
  Verwenden Sie nun die 
@@ -3655,7 +3624,7 @@ Was ist zu tun, um
 \begin_inset Formula $E=mc^{2.5}+1$
 \end_inset
 
- umzuändern? Wieder können Sie mit der Maus den richtigen Ort anklicken,
+ zu ändern? Wieder können Sie mit der Maus den richtigen Ort anklicken,
  jedoch können Sie auch die Pfeiltasten benutzen.
  Wenn der Cursor genau nach dem 
 \begin_inset Quotes gld
@@ -4029,8 +3998,8 @@ Eine Variable (
 \end_inset
 
  und wählen ein Symbol aus.
- Wenn Sie einen Ausdruck nachträglich verziehren wollen, müssen Sie ihn
- vorher markieren.
+ Wenn Sie einen Ausdruck nachträglich verzieren wollen, müssen Sie ihn vorher
+ markieren.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -4185,7 +4154,7 @@ Kontrollfläche
  schreiben, haben Sie bereits Ihren ersten einfachen Bruch geschrieben.
  Natürlich können Sie auch beliebige andere Ausdrücke in die zwei Quadrate
  schreiben: Variablen mit Exponenten, Quadratwurzeln, andere Brüche, usw.
- Wenn Sie nur einen Standarbruch benötigen, können Sie auch auf 
+ Wenn Sie nur einen Standardbruch benötigen, können Sie auch auf 
 \begin_inset Graphics
 	filename ../../images/math/frac.png
 	scale 50
@@ -4344,7 +4313,7 @@ x
  ein, dieses wird wie gewohnt blau und kursiv angezeigt.
  In der 
 \family typewriter
-dvi
+DVI
 \family default
 -Vorschau sehen Sie nun den Ausdruck in seiner ganzen Schönheit, versuchen
  Sie es!
@@ -4707,7 +4676,7 @@ name "sec:Gleichungssysteme"
 Versuchen Sie doch einmal, zwei zusammengehörende Gleichungen wie die folgenden
  zu schreiben, und sehen Sie sich das Ergebnis in der 
 \family typewriter
-dvi
+DVI
 \family default
 -Vorschau an.
  Sie werden dazu zwei getrennte Formeln im abgesetzten Modus schreiben müssen.
@@ -4852,7 +4821,7 @@ reference "sub:Matrizen"
 
 \begin_layout Standard
 Wenn Sie weitere Zeilen in Ihrem Gleichungssystem benötigen, drücken Sie
- einfach ein weiteres mal 
+ einfach ein weiteres Mal 
 \family sans
 Strg+Eingabe
 \family default
@@ -4980,7 +4949,7 @@ Benutzerhandbuch
 \emph default
  oder die 
 \emph on
-Hanbuchergänzungen
+Handbuchergänzungen
 \emph default
  zu Rate.
 \end_layout
@@ -4990,7 +4959,7 @@ Weitere mathematische Dinge
 \end_layout
 
 \begin_layout Standard
-Der Mathematik-Editor hat noch viel weitreichendere Fähigkeiten, bislang
+Der Mathematik-Editor hat noch viel weiter reichende Fähigkeiten, bislang
  haben Sie nur die Grundlagen kennengelernt.
  Im 
 \emph on
@@ -5119,23 +5088,6 @@ Grafik
 Sowohl Tabellen als auch Abbildungen können mit Unterschriften versehen
  werden, LyX legt auf Wunsch außerdem eine Liste der Tabellen und Abbildungen
  an.
-\end_layout
-
-\begin_layout Itemize
-Versions-Kontrolle wird unterstützt, dafür muss aber RCS installiert sein
- (weitere Informationen liefert 
-\family typewriter
-man rcs
-\family default
- bzw.
-\begin_inset space ~
-\end_inset
-
-
-\family typewriter
-man rcsintro
-\family default
-).
 \end_layout
 
 \begin_layout Itemize
@@ -5566,7 +5518,7 @@ bla.tex
  Temporär legt LyX immer eine LaTeX-Version des gerade editierten Dokumentes
  an, wenn Sie eine Datei drucken oder als 
 \family typewriter
-dvi
+DVI
 \family default
 -Datei betrachten.
  Deshalb ist die LaTeX-Generierung von LyX auch sehr ausgereift.
