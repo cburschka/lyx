@@ -1,4 +1,4 @@
-#LyX 1.6.3svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -3510,7 +3510,7 @@ isotopes
 status collapsed
 
 \begin_layout Plain Layout
-More about chemical symbols is written in 
+Typesetting isotopes and chemical symbols is described in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Chemical-Symbols-and"
@@ -30935,6 +30935,1198 @@ target "Formula-numbering.lyx"
 \end_layout
 
 \begin_layout Section
+Chemical Symbols and Equations
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Chemical-Symbols-and"
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Chemical characters ! Symbols
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Chemical equations
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Symbols ! chemical
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+An example text from chemistry:
+\end_layout
+
+\begin_layout Quote
+The 
+\begin_inset Formula $\mathrm{SO_{4}^{2-}}$
+\end_inset
+
+-ion reacts with two 
+\begin_inset Formula $\mathrm{Na^{+}}$
+\end_inset
+
+-ions to sodium sulfate 
+\begin_inset Formula $\left(\mathrm{Na_{2}SO_{4}}\right)$
+\end_inset
+
+.
+ The chemical equation for this is:
+\begin_inset Formula \begin{equation}
+\mathrm{2\, Na^{+}+SO_{4}^{2-}\longrightarrow Na_{2}SO_{4}}\label{eq:chem-reaction}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This chemical equation can directly be created as formula.
+ To avoid that the symbols appear italic, everything is highlighted and
+ changed by the shortcut 
+\begin_inset Info
+type  "shortcut"
+arg   "font-roman"
+\end_inset
+
+ to the upright font style.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+font styles
+\series bold
+ 
+\series default
+see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Font-Styles"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A more convenient way to typeset chemical formulas is to use the command
+ 
+\series bold
+
+\backslash
+ce
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Commands ! C ! 
+\backslash
+ce
+\end_layout
+
+\end_inset
+
+ that is available when the LaTeX-package 
+\series bold
+mhchem
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Packages ! mhchem
+\end_layout
+
+\end_inset
+
+ is installed.
+ After inserting 
+\series bold
+
+\backslash
+ce
+\series default
+ to a formula a new blue box appears where chemical formulas can be inserted
+ in an intuitive way.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="2">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Command
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Result
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\series bold
+
+\backslash
+raisebox
+\series default
+ is only used as spacer.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+ce
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+H2CO3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{4.5mm}{}\ce{H2CO3}\raisebox{-2mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+ce
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+SO4^2-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{5mm}{}\ce{SO4^{2-}}\raisebox{-2mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+ce
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+(NH4)2S
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{4.5mm}{}\ce{(NH4)2S}\raisebox{-2mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+ce
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+KCr(SO4)2.12H2O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{4.5mm}{}\ce{KCr(SO4)2.12H2O}\raisebox{-2mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+ce
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+A-B
+\backslash
+dbond
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+C
+\backslash
+tbond
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+D
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{4.5mm}{}\ce{A-B\dbond C\tbond D}\raisebox{-2mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+ce
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+^227
+\begin_inset Formula $\downarrow$
+\end_inset
+
+_90
+\begin_inset Formula $\to$
+\end_inset
+
+Th+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{5mm}{}\ce{_{90}^{227}Th+}\raisebox{-2mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+ce
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+CO2
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
++
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+C
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+<=>
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+2CO
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{4.5mm}{}\ce{CO2 + C <=> 2CO}\raisebox{-2mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+ce
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+CO2
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
++
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+C
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+->[
+\backslash
+alpha][
+\backslash
+beta]
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+2CO}
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{5mm}{}\ce{CO2 + C ->[\alpha][\beta] 2CO}\raisebox{-4mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ Inserting a formula to a 
+\series bold
+
+\backslash
+ce
+\series default
+ box will lead to LaTeX errors.
+ In this case TeX code has to be used like for 
+\series bold
+
+\backslash
+ce{$
+\backslash
+mu
+\backslash
+hyphen$Cl}
+\series default
+: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ce{$
+\backslash
+mu
+\backslash
+hyphen$Cl}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using 
+\series bold
+
+\backslash
+ce
+\series default
+ the command for equation
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:chem-reaction"
+
+\end_inset
+
+ is
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+ 
+\backslash
+ce
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+2Na+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
++
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+SO4^2-
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+->
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+Na2SO4
+\end_layout
+
+\begin_layout Standard
+Besides 
+\series bold
+
+\backslash
+ce
+\series default
+ the 
+\series bold
+mhchem
+\series default
+ package provides the command 
+\series bold
+
+\backslash
+cf
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Commands ! C ! 
+\backslash
+cf
+\end_layout
+
+\end_inset
+
+ that has to be used for special cases.
+ For more information about 
+\series bold
+
+\backslash
+cf
+\series default
+ and more examples have a look at the documentation of 
+\series bold
+mhchem
+\series default
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "mhchem"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Diagrams
+\end_layout
+
+\begin_layout Standard
+LyX supports two types of commutative diagrams: 
+\series bold
+amscd
+\series default
+ and 
+\series bold
+xymatrix
+\series default
+ that are explained in the following.
+\end_layout
+
+\begin_layout Subsection
+Amscd Diagrams
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Diagrams ! amscd
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Diagrams of this type visualize relations by vertical and horizontal lines
+ or arrows:
+\begin_inset Formula \[
+\begin{CD}A@>>>B@>>>C\\
+@AAA@.@VVV\\
+F@<<<E@<<<D\end{CD}\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To get them, the command 
+\series bold
+
+\backslash
+CD
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Commands ! C ! 
+\backslash
+CD
+\end_layout
+
+\end_inset
+
+
+\series default
+ is inserted to a formula.
+ A blue box appears with two dashed lines where further commands can be
+ inserted.
+ With 
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
+ a new line is created.
+ Horizontal relations are inserted in odd, vertical in even formula lines.
+\end_layout
+
+\begin_layout Standard
+To create the relations there are the following commands:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+@<<<
+\series default
+ creates a left arrow, 
+\series bold
+@>>>
+\series default
+ a right arrow, and 
+\series bold
+@=
+\series default
+ a long equal sign
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+@AAA
+\series default
+ creates an up arrow, 
+\series bold
+@VVV
+\series default
+ an down arrow, and 
+\series bold
+@|
+\series default
+ a vertical equal sign
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+@.
+
+\series default
+ is a placeholder for non-existent relations
+\end_layout
+
+\begin_layout Standard
+All arrows can be labeled as follows:
+\end_layout
+
+\begin_layout Itemize
+Is text inserted between the first and second < or >, resp., it is placed
+ above the arrow.
+ When it is inserted between the second and third one, it appears under
+ the arrow.
+\end_layout
+
+\begin_layout Itemize
+When text for vertical arrows is inserted between the first and second A
+ or V, resp., it is placed left beside the arrow.
+ When it is inserted between the second and third one, it appears right
+ beside the arrow.
+ If the text contains an A or V, these letters must be set into a TeX-brace.
+\end_layout
+
+\begin_layout Standard
+As example a diagram with all possible relations:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+\begin{CD}A@>j>>B@>>k>C@=F\\
+@AmAA@.@VV{V}V@|\\
+D@<<j<E@>k>>F@=C\end{CD}\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The command for this is:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+CD
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+A@>j>>B@>>k>C@=F Ctrl+Return
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+hphantom{
+\end_layout
+
+\end_inset
+
+
+\backslash
+CD
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+@AmAA@.@VV
+\backslash
+{V
+\series default
+
+\begin_inset Formula $\to$
+\end_inset
+
+
+\series bold
+V@| Ctrl+Return
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+hphantom{
+\end_layout
+
+\end_inset
+
+
+\backslash
+CD
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+D@<<j<E@>k>>F@=C
+\end_layout
+
+\begin_layout Subsection
+Xymatrix Diagrams
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Diagrams ! xymatrix
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To be able to use xymatrices, the LaTeX-package 
+\series bold
+xypic
+\series default
+ must be installed.
+ A xymatrix is created by inserting the command 
+\series bold
+
+\backslash
+xymatrix
+\series default
+ in a formula.
+ Then you are able to add new matrix columns and rows like for normal matrices,
+ see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Matrices"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In contrary to amscd diagrams, xymatrices supports diagonal and curved arrows,
+ and much more.
+ All possibilities to create commutative diagrams and decorations are explained
+ in detail in the 
+\emph on
+XY-pic manual
+\emph default
+ that you find in the menu 
+\family sans
+Help\SpecialChar \menuseparator
+Specific
+\begin_inset space ~
+\end_inset
+
+Manuals\SpecialChar \menuseparator
+XY-pic
+\begin_inset space ~
+\end_inset
+
+Manual
+\family default
+.
+\end_layout
+
+\begin_layout Section
 User-defined Commands
 \begin_inset Index
 status collapsed
@@ -32631,351 +33823,6 @@ Eating From The Right
 \end_layout
 
 \begin_layout Section
-Diagrams
-\end_layout
-
-\begin_layout Standard
-LyX supports two types of commutative diagrams: 
-\series bold
-amscd
-\series default
- and 
-\series bold
-xymatrix
-\series default
- that are explained in the following.
-\end_layout
-
-\begin_layout Subsection
-Amscd Diagrams
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Diagrams ! amscd
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Diagrams of this type visualize relations by vertical and horizontal lines
- or arrows:
-\begin_inset Formula \[
-\begin{CD}A@>>>B@>>>C\\
-@AAA@.@VVV\\
-F@<<<E@<<<D\end{CD}\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-To get them, the command 
-\series bold
-
-\backslash
-CD
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Commands ! C ! 
-\backslash
-CD
-\end_layout
-
-\end_inset
-
-
-\series default
- is inserted to a formula.
- A blue box appears with two dashed lines where further commands can be
- inserted.
- With 
-\begin_inset Info
-type  "shortcut"
-arg   "newline-insert newline"
-\end_inset
-
- a new line is created.
- Horizontal relations are inserted in odd, vertical in even formula lines.
-\end_layout
-
-\begin_layout Standard
-To create the relations there are the following commands:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-@<<<
-\series default
- creates a left arrow, 
-\series bold
-@>>>
-\series default
- a right arrow, and 
-\series bold
-@=
-\series default
- a long equal sign
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-@AAA
-\series default
- creates an up arrow, 
-\series bold
-@VVV
-\series default
- an down arrow, and 
-\series bold
-@|
-\series default
- a vertical equal sign
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-@.
-
-\series default
- is a placeholder for non-existent relations
-\end_layout
-
-\begin_layout Standard
-All arrows can be labeled as follows:
-\end_layout
-
-\begin_layout Itemize
-Is text inserted between the first and second < or >, resp., it is placed
- above the arrow.
- When it is inserted between the second and third one, it appears under
- the arrow.
-\end_layout
-
-\begin_layout Itemize
-When text for vertical arrows is inserted between the first and second A
- or V, resp., it is placed left beside the arrow.
- When it is inserted between the second and third one, it appears right
- beside the arrow.
- If the text contains an A or V, these letters must be set into a TeX-brace.
-\end_layout
-
-\begin_layout Standard
-As example a diagram with all possible relations:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula \[
-\begin{CD}A@>j>>B@>>k>C@=F\\
-@AmAA@.@VV{V}V@|\\
-D@<<j<E@>k>>F@=C\end{CD}\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The command for this is:
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-
-\backslash
-CD
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
-\end_inset
-
-A@>j>>B@>>k>C@=F Ctrl+Return
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-hphantom{
-\end_layout
-
-\end_inset
-
-
-\backslash
-CD
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-@AmAA@.@VV
-\backslash
-{V
-\series default
-
-\begin_inset Formula $\to$
-\end_inset
-
-
-\series bold
-V@| Ctrl+Return
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-hphantom{
-\end_layout
-
-\end_inset
-
-
-\backslash
-CD
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-D@<<j<E@>k>>F@=C
-\end_layout
-
-\begin_layout Subsection
-Xymatrix Diagrams
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Diagrams ! xymatrix
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-To be able to use xymatrices, the LaTeX-package 
-\series bold
-xypic
-\series default
- must be installed.
- A xymatrix is created by inserting the command 
-\series bold
-
-\backslash
-xymatrix
-\series default
- in a formula.
- Then you are able to add new matrix columns and rows like for normal matrices,
- see 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Matrices"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-In contrary to amscd diagrams, xymatrices supports diagonal and curved arrows,
- and much more.
- All possibilities to create commutative diagrams and decorations are explained
- in detail in the 
-\emph on
-XY-pic manual
-\emph default
- that you find in the menu 
-\family sans
-Help\SpecialChar \menuseparator
-Specific
-\begin_inset space ~
-\end_inset
-
-Manuals\SpecialChar \menuseparator
-XY-pic
-\begin_inset space ~
-\end_inset
-
-Manual
-\family default
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
 Tips
 \begin_inset ERT
 status collapsed
@@ -33076,107 +33923,6 @@ status collapsed
 
 }
 \end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Chemical Symbols and Equations
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Chemical-Symbols-and"
-
-\end_inset
-
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Chemical characters ! Symbols
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Chemical equations
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Symbols ! chemical
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-An example text from chemistry:
-\end_layout
-
-\begin_layout Quote
-The 
-\begin_inset Formula $\mathrm{SO_{4}^{2-}}$
-\end_inset
-
--ion reacts with two 
-\begin_inset Formula $\mathrm{Na^{+}}$
-\end_inset
-
--ions to sodium sulfate 
-\begin_inset Formula $\left(\mathrm{Na_{2}SO_{4}}\right)$
-\end_inset
-
-.
- The chemical equation for this is:
-\begin_inset Formula \[
-\mathrm{2\, Na^{+}+SO_{4}^{2-}\longrightarrow Na_{2}SO_{4}}\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-This chemical equation can directly be created as formula.
- To avoid that the symbols appear italic, everything is highlighted and
- changed by the shortcut 
-\begin_inset Info
-type  "shortcut"
-arg   "font-roman"
-\end_inset
-
- to the upright font style.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-font styles
-\series bold
- 
-\series default
-see 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Font-Styles"
 
 \end_inset
 
@@ -36384,6 +37130,38 @@ status collapsed
 
 \begin_layout Plain Layout
 Packages ! hyperref
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "mhchem"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Documentation"
+target "http://www.ctan.org/tex-archive/macros/latex/contrib/mhchem/mhchem.pdf"
+
+\end_inset
+
+ of the LaTeX-package 
+\series bold
+mhchem
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Packages ! mhchem
 \end_layout
 
 \end_inset
