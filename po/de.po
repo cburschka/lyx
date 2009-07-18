@@ -97,7 +97,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-07-17 17:40+0200\n"
+"POT-Creation-Date: 2009-07-18 09:37+0200\n"
 "PO-Revision-Date: 2009-07-17 17:42+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
@@ -389,19 +389,19 @@ msgstr "Horizontale Ausrichtung des Inhalts innerhalb der Box"
 
 #: src/frontends/qt4/ui/BoxUi.ui:65 src/frontends/qt4/ui/ListingsUi.ui:103
 #: src/frontends/qt4/ui/TabularUi.ui:142 src/frontends/qt4/ui/WrapUi.ui:209
-#: src/frontends/qt4/GuiParagraph.cpp:109 src/frontends/qt4/GuiTabular.cpp:757
+#: src/frontends/qt4/GuiParagraph.cpp:109 src/frontends/qt4/GuiTabular.cpp:759
 msgid "Left"
 msgstr "Links"
 
 #: src/frontends/qt4/ui/BoxUi.ui:70 src/frontends/qt4/ui/TabularUi.ui:147
 #: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:73
-#: src/frontends/qt4/GuiParagraph.cpp:111 src/frontends/qt4/GuiTabular.cpp:758
+#: src/frontends/qt4/GuiParagraph.cpp:111 src/frontends/qt4/GuiTabular.cpp:760
 msgid "Center"
 msgstr "Zentriert"
 
 #: src/frontends/qt4/ui/BoxUi.ui:75 src/frontends/qt4/ui/ListingsUi.ui:108
 #: src/frontends/qt4/ui/TabularUi.ui:152 src/frontends/qt4/ui/WrapUi.ui:214
-#: src/frontends/qt4/GuiParagraph.cpp:110 src/frontends/qt4/GuiTabular.cpp:759
+#: src/frontends/qt4/GuiParagraph.cpp:110 src/frontends/qt4/GuiTabular.cpp:761
 msgid "Right"
 msgstr "Rechts"
 
@@ -3592,7 +3592,7 @@ msgid "Horizontal alignment in column"
 msgstr "Horizontale Ausrichtung in der Spalte"
 
 #: src/frontends/qt4/ui/TabularUi.ui:137
-#: src/frontends/qt4/GuiParagraph.cpp:108 src/frontends/qt4/GuiTabular.cpp:761
+#: src/frontends/qt4/GuiParagraph.cpp:108 src/frontends/qt4/GuiTabular.cpp:763
 msgid "Justified"
 msgstr "Blocksatz"
 
@@ -17433,14 +17433,15 @@ msgstr "Die Benutzeroberflächen-Definitionsdatei konnte nicht gefunden werden"
 #, c-format
 msgid ""
 "Error while reading the included file\n"
-"\\%1$s.\n"
+"%1$s.\n"
 "Please check your installation."
 msgstr ""
 "Fehler beim Lesen der eingebetteten Datei\n"
 "%1$s.\n"
 "Bitte prüfen Sie Ihre Installation."
 
-#: src/frontends/qt4/GuiApplication.cpp:1483, c-format
+#: src/frontends/qt4/GuiApplication.cpp:1483
+#, c-format
 msgid ""
 "Error while reading the configuration file\n"
 "%1$s.\n"
