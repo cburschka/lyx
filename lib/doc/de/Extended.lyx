@@ -154,7 +154,7 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 10.
+letzte Änderung: 18.
  Juli 2009
 \end_layout
 
@@ -328,7 +328,7 @@ X
 \end_layout
 
 \begin_layout Standard
-Dieses Kapitel ist für LaTeX-niker und LaTeX-Sonderlinge gedacht.
+Dieses Kapitel ist für LaTeX-Benutzer gedacht.
  Hier werden wir erklären, wie LyX und LaTeX zusammenarbeiten, um eine Druckausg
 abe zu erzeugen.
  Dies ist die einzige Stelle in allen Handbüchern, an der wir einige LaTeX-Kennt
@@ -631,7 +631,7 @@ DVI (Strg+D
 \family sans
 )
 \family default
- gestartet wurde, wird LyX dann den dvi-Betrachter mit der 
+ gestartet wurde, wird LyX dann den DVI-Betrachter mit der 
 \family typewriter
 .dv
 \family default
@@ -705,7 +705,7 @@ dvips
 \family typewriter
 .dv
 \family default
-i-Datei nach PostScript® zu konvertieren:
+i-Datei nach PostScript zu konvertieren:
 \end_layout
 
 \begin_deeper
@@ -781,7 +781,7 @@ oder
 \family typewriter
 gv
 \family default
- ausführen oder die PostScript®-Datei an den Drucker schicken.
+ ausführen oder die PostScript-Datei an den Drucker schicken.
 \end_layout
 
 \begin_layout Standard
@@ -815,7 +815,11 @@ ps2pdf
 .pdf
 \family default
 -Datei konvertiert und mit einem pdf-Betrachter angezeigt (zum Beispiel
- Acrobat®Reader).
+ 
+\family typewriter
+Adobe Reader
+\family default
+).
  Bei den beiden anderen PDF-Betrachtern kommen andere Programme zum Einsatz.
 \end_layout
 
@@ -1522,7 +1526,7 @@ die Dokumentklasse festzulegen.
 
 \begin_deeper
 \begin_layout Standard
-Wenn Sie ein erfahrener LaTeX-niker sind und eine eigene Dokumentklasse
+Wenn Sie ein erfahrener LaTeX-Benutzer sind und eine eigene Dokumentklasse
  haben, die Sie benutzen wollen, lesen Sie im Handbuch 
 \emph on
 Anpassung
@@ -2551,7 +2555,7 @@ Leslie
 \noun default
  
 \noun on
-Lamport'
+Lamport
 \noun default
 s 
 \emph on
@@ -3547,7 +3551,7 @@ book
 
 
 \family sans
-(koma-script)
+(KOMA-script)
 \family default
  und erscheint daher bereits ein wenig aufwendiger, doch um wirklich 
 \emph on
@@ -3800,44 +3804,11 @@ n des LaTeX-Paketes
 fancyhdr
 \family default
  verwiesen.
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Wenn Sie teTeX installiert haben, finden Sie diese typischerweise hier:
- 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-/usr/local/teTeX/texmf/doc/latex/fancyhdr/fancyhdr.dvi
-\end_layout
-
-\end_inset
-
-, bei texlive hier: 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-/usr/share/doc/texlive-latex-base-doc/latex/fancyhdr/fancyhdr.pdf
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
 Als letztes Beispiel soll gezeigt werden, wie man eine Abbildung im Encapsulated
--PostScript®-Format in die Kopf- oder Fußzeile einbinden kann.
+-PostScript-Format in die Kopf- oder Fußzeile einbinden kann.
  Angenommen, Sie wollen Ihr Firmenlogo in die obere linke Ecke setzen, dann
  sollten Sie etwa folgendes versuchen:
 \end_layout
@@ -4721,7 +4692,7 @@ vollständig leer
 \begin_layout Subsection
 Tabelle (CSV)
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Tabelle!CSV
@@ -4735,7 +4706,7 @@ Tabelle!CSV
 \begin_layout Standard
 Hiermit kann man CSV-Tabellen
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 comma separated values
@@ -4789,9 +4760,9 @@ Konverter
 \SpecialChar \menuseparator
 
 \family sans
-Table (CSV) -> Ly
+Tabelle (CSV) -> Ly
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -5404,7 +5375,7 @@ htlatex $$i "xhtml,ooffice" "ooffice/! -cmozhtf" "-coo -cvalidate"
 \end_layout
 
 \begin_layout Standard
-Das funktioniert unter Kubuntu [9.04] jedoch nicht unter Windows mit MiKTeX.
+Das funktioniert unter Kubuntu [9.04], jedoch nicht unter Windows mit MiKTeX.
 \end_layout
 
 \begin_layout Description
@@ -5548,7 +5519,7 @@ Datei!Export!Rich Text Format
 \end_layout
 
 \begin_layout Standard
-Damit können Sie LyX-Documente in das bekannte Rich Text Format (RTF) exportiere
+Damit können Sie LyX-Dokumente in das bekannte Rich Text Format (RTF) exportiere
 n.
 \end_layout
 
@@ -5688,7 +5659,7 @@ X
 prüfen
 \family default
 .
- Er ist nur vorhanden, wenn das Program 
+ Er ist nur vorhanden, wenn das Programm 
 \family typewriter
 chktex
 \family default
@@ -5801,9 +5772,8 @@ Die Marke sollte am Text
 kleben
 \emph default
 , damit sie nicht auf die falsche Seite gerät.
- 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Diese Fußnote könnte auf der falschen Seite landen.
@@ -7774,7 +7744,7 @@ name "LyX-und-Literarische-Programmierung"
 
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -7900,7 +7870,7 @@ In LyX verwenden Sie zur Eingabe von Programmcode den Umgebungstyp
 \family sans
 Scrap.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Der entsprechende Terminus in NoWeb ist 
@@ -7992,7 +7962,7 @@ Eingabe
  abschließen.
  Das obige Beispiel sähe also so aus:
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 In der gedruckten Version dieses Textes sehen Sie keinen Unterschied.
@@ -8718,9 +8688,25 @@ ddd
 Umschalt+Strg+V
 \family default
 .
- Über den Menüpunkt Edit\SpecialChar \menuseparator
-Preferences\SpecialChar \menuseparator
-Helpers in  können Sie unter 
+ Über den Menüpunkt 
+\family sans
+Edit
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Preferences
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Helpers
+\family default
+ in 
+\family typewriter
+ddd
+\family default
+ können Sie unter 
 \begin_inset Quotes gld
 \end_inset
 
@@ -8810,7 +8796,7 @@ Abschnitt
 \family default
 , 
 \family sans
-LaT
+LaTe
 \begin_inset ERT
 status collapsed
 
@@ -8821,11 +8807,11 @@ status collapsed
 
 \end_inset
 
-eX
+X
 \family default
 , 
 \family sans
-L
+Ly
 \begin_inset ERT
 status collapsed
 
@@ -8836,7 +8822,7 @@ status collapsed
 
 \end_inset
 
-yX-Code
+X-Code
 \family default
 , und 
 \family sans
@@ -9677,12 +9663,12 @@ Textumflossene Bilder und Tabellen
 \end_layout
 
 \begin_layout Standard
-In 
+Im 
 \emph on
-Eigebettete Objekte
+Eingebettete Objekte
 \emph default
- werden Umflossene Gleitobjekte beschrieben.
- Sie liefern folgendes:
+ Handbuch werden Umflossene Gleitobjekte beschrieben.
+ Sie liefern Folgendes:
 \end_layout
 
 \begin_layout Standard
@@ -10361,7 +10347,7 @@ Text
 \noindent
 sollten Sie das LaTeX-Paket 
 \family sans
-pincinpar
+picinpar
 \family default
  benutzen.
  Hier ist ein Beispiel:
@@ -18499,8 +18485,8 @@ dvi
 \family default
 -Vorschau alle Seiten betrachten.
  Zum Ausdrucken können Sie dann jeweils eine der Zeilen aktivieren und die
- Dateien entweder sofort drucken oder aber in zwei getrennten PostScript®-Dateie
-n speichern.
+ Dateien entweder sofort drucken oder aber in zwei getrennten PostScript-Dateien
+ speichern.
 \end_layout
 
 \begin_layout Standard
