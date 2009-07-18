@@ -87,7 +87,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\amsart.layout"
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
- #File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx_1_6.py"
+ File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx_1_5.py"
  SetOutPath "$INSTDIR\Resources\scripts"
  File "${PRODUCT_SOURCEDIR}\Resources\scripts\layout2layout.py"
  SetOutPath "$INSTDIR\Resources\ui"
