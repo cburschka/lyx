@@ -74,6 +74,7 @@ src_header_files = Split('''
     FuncRequest.h
     FuncStatus.h
     Graph.h
+    HSpace.h
     HunspellSpellChecker.h
     IndicesList.h
     InsetIterator.h
@@ -177,6 +178,7 @@ src_pre_files = Split('''
     FuncRequest.cpp
     FuncStatus.cpp
     Graph.cpp
+    HSpace.cpp
     IndicesList.cpp
     InsetIterator.cpp
     InsetList.cpp

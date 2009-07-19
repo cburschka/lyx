@@ -34,6 +34,7 @@
 #include "FloatPlacement.h"
 #include "Format.h"
 #include "FuncRequest.h"
+#include "HSpace.h"
 #include "IndicesList.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
@@ -553,20 +554,38 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(setLSpacing(int)));
 	connect(textLayoutModule->lspacingLE, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
-	connect(textLayoutModule->skipRB, SIGNAL(clicked()),
-		this, SLOT(change_adaptor()));
+
 	connect(textLayoutModule->indentRB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
+	connect(textLayoutModule->indentRB, SIGNAL(toggled(bool)),
+		textLayoutModule->indentCO, SLOT(setEnabled(bool)));
+	connect(textLayoutModule->indentCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(textLayoutModule->indentCO, SIGNAL(activated(int)),
+		this, SLOT(setIndent(int)));
+	connect(textLayoutModule->indentLE, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
+	connect(textLayoutModule->indentLengthCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+
+	connect(textLayoutModule->skipRB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(textLayoutModule->skipRB, SIGNAL(toggled(bool)),
+		textLayoutModule->skipCO, SLOT(setEnabled(bool)));
 	connect(textLayoutModule->skipCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
+	connect(textLayoutModule->skipCO, SIGNAL(activated(int)),
+		this, SLOT(setSkip(int)));
 	connect(textLayoutModule->skipLE, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
 	connect(textLayoutModule->skipLengthCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
-	connect(textLayoutModule->skipCO, SIGNAL(activated(int)),
-		this, SLOT(setSkip(int)));
+
+	connect(textLayoutModule->indentRB, SIGNAL(toggled(bool)),
+		this, SLOT(enableIndent(bool)));
 	connect(textLayoutModule->skipRB, SIGNAL(toggled(bool)),
 		this, SLOT(enableSkip(bool)));
+
 	connect(textLayoutModule->twoColumnCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
 	connect(textLayoutModule->twoColumnCB, SIGNAL(clicked()),
@@ -583,9 +602,13 @@ GuiDocument::GuiDocument(GuiView & lv)
 		qt_("Input listings parameters on the right. Enter ? for a list of parameters."));
 	textLayoutModule->lspacingLE->setValidator(new QDoubleValidator(
 		textLayoutModule->lspacingLE));
+	textLayoutModule->indentLE->setValidator(unsignedLengthValidator(
+		textLayoutModule->indentLE));
 	textLayoutModule->skipLE->setValidator(unsignedLengthValidator(
 		textLayoutModule->skipLE));
 
+	textLayoutModule->indentCO->addItem(qt_("Default"));
+	textLayoutModule->indentCO->addItem(qt_("Custom"));
 	textLayoutModule->skipCO->addItem(qt_("SmallSkip"));
 	textLayoutModule->skipCO->addItem(qt_("MedSkip"));
 	textLayoutModule->skipCO->addItem(qt_("BigSkip"));
@@ -600,8 +623,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		Spacing::Double, qt_("Double"));
 	textLayoutModule->lspacingCO->insertItem(
 		Spacing::Other, qt_("Custom"));
-
 	// initialize the length validator
+	bc().addCheckedLineEdit(textLayoutModule->indentLE);
 	bc().addCheckedLineEdit(textLayoutModule->skipLE);
 
 	// output
@@ -1115,19 +1138,39 @@ void GuiDocument::setLSpacing(int item)
 }
 
 
+void GuiDocument::setIndent(int item)
+{
+	bool const enable = (item == 1);
+	textLayoutModule->indentLE->setEnabled(enable);
+	textLayoutModule->indentLengthCO->setEnabled(enable);
+	textLayoutModule->skipLE->setEnabled(false);
+	textLayoutModule->skipLengthCO->setEnabled(false);
+	isValid();
+}
+
+
+void GuiDocument::enableIndent(bool indent)
+{
+	textLayoutModule->skipLE->setEnabled(!indent);
+	textLayoutModule->skipLengthCO->setEnabled(!indent);
+	if (indent)
+		setIndent(textLayoutModule->indentCO->currentIndex());
+}
+
+
 void GuiDocument::setSkip(int item)
 {
 	bool const enable = (item == 3);
 	textLayoutModule->skipLE->setEnabled(enable);
 	textLayoutModule->skipLengthCO->setEnabled(enable);
+	isValid();
 }
 
 
 void GuiDocument::enableSkip(bool skip)
 {
-	textLayoutModule->skipCO->setEnabled(skip);
-	textLayoutModule->skipLE->setEnabled(skip);
-	textLayoutModule->skipLengthCO->setEnabled(skip);
+	textLayoutModule->indentLE->setEnabled(!skip);
+	textLayoutModule->indentLengthCO->setEnabled(!skip);
 	if (skip)
 		setSkip(textLayoutModule->skipCO->currentIndex());
 }
@@ -1894,35 +1937,53 @@ void GuiDocument::applyView()
 	bp_.listings_params =
 		InsetListingsParams(fromqstr(textLayoutModule->listingsED->toPlainText())).params();
 
-	if (textLayoutModule->indentRB->isChecked())
+	if (textLayoutModule->indentRB->isChecked()) {
+		// if paragraphs are separated by an indentation
 		bp_.paragraph_separation = BufferParams::ParagraphIndentSeparation;
-	else
+		switch (textLayoutModule->indentCO->currentIndex()) {
+		case 0:
+			bp_.setIndentation(HSpace(HSpace::DEFAULT));
+			break;
+		case 1:	{
+			HSpace indent = HSpace(
+				widgetsToLength(textLayoutModule->indentLE,
+				textLayoutModule->indentLengthCO)
+				);
+			bp_.setIndentation(indent);
+			break;
+			}
+		default:
+			// this should never happen
+			bp_.setIndentation(HSpace(HSpace::DEFAULT));
+			break;
+		}
+	} else {
+		// if paragraphs are separated by a skip
 		bp_.paragraph_separation = BufferParams::ParagraphSkipSeparation;
-
-	switch (textLayoutModule->skipCO->currentIndex()) {
-	case 0:
-		bp_.setDefSkip(VSpace(VSpace::SMALLSKIP));
-		break;
-	case 1:
-		bp_.setDefSkip(VSpace(VSpace::MEDSKIP));
-		break;
-	case 2:
-		bp_.setDefSkip(VSpace(VSpace::BIGSKIP));
-		break;
-	case 3:
-	{
-		VSpace vs = VSpace(
-			widgetsToLength(textLayoutModule->skipLE,
+		switch (textLayoutModule->skipCO->currentIndex()) {
+		case 0:
+			bp_.setDefSkip(VSpace(VSpace::SMALLSKIP));
+			break;
+		case 1:
+			bp_.setDefSkip(VSpace(VSpace::MEDSKIP));
+			break;
+		case 2:
+			bp_.setDefSkip(VSpace(VSpace::BIGSKIP));
+			break;
+		case 3:
+			{
+			VSpace vs = VSpace(
+				widgetsToLength(textLayoutModule->skipLE,
 				textLayoutModule->skipLengthCO)
-			);
-		bp_.setDefSkip(vs);
-		break;
-	}
-	default:
-		// DocumentDefskipCB assures that this never happens
-		// so Assert then !!!  - jbl
-		bp_.setDefSkip(VSpace(VSpace::MEDSKIP));
-		break;
+				);
+			bp_.setDefSkip(vs);
+			break;
+			}
+		default:
+			// this should never happen
+			bp_.setDefSkip(VSpace(VSpace::MEDSKIP));
+			break;
+		}
 	}
 
 	bp_.options =
@@ -2210,37 +2271,49 @@ void GuiDocument::paramsToDialog()
 	}
 	setLSpacing(nitem);
 
-	if (bp_.paragraph_separation == BufferParams::ParagraphIndentSeparation)
+	if (bp_.paragraph_separation == BufferParams::ParagraphIndentSeparation) {
 		textLayoutModule->indentRB->setChecked(true);
-	else
+		string indentation = bp_.getIndentation().asLyXCommand();
+		int indent = 0;
+		if (indentation == "default")
+			indent = 0;
+		else {
+			lengthToWidgets(textLayoutModule->indentLE,
+			textLayoutModule->indentLengthCO,
+			indentation, defaultUnit);
+			indent = 1;
+		}
+		textLayoutModule->indentCO->setCurrentIndex(indent);
+		setIndent(indent);
+	} else {
 		textLayoutModule->skipRB->setChecked(true);
-
-	int skip = 0;
-	switch (bp_.getDefSkip().kind()) {
-	case VSpace::SMALLSKIP:
-		skip = 0;
-		break;
-	case VSpace::MEDSKIP:
-		skip = 1;
-		break;
-	case VSpace::BIGSKIP:
-		skip = 2;
-		break;
-	case VSpace::LENGTH:
-	{
-		skip = 3;
-		string const length = bp_.getDefSkip().asLyXCommand();
-		lengthToWidgets(textLayoutModule->skipLE,
-			textLayoutModule->skipLengthCO,
-			length, defaultUnit);
-		break;
+		int skip = 0;
+		switch (bp_.getDefSkip().kind()) {
+		case VSpace::SMALLSKIP:
+			skip = 0;
+			break;
+		case VSpace::MEDSKIP:
+			skip = 1;
+			break;
+		case VSpace::BIGSKIP:
+			skip = 2;
+			break;
+		case VSpace::LENGTH:
+			{
+			skip = 3;
+			string const length = bp_.getDefSkip().asLyXCommand();
+			lengthToWidgets(textLayoutModule->skipLE,
+				textLayoutModule->skipLengthCO,
+				length, defaultUnit);
+			break;
+			}
+		default:
+			skip = 0;
+			break;
+		}
+		textLayoutModule->skipCO->setCurrentIndex(skip);
+		setSkip(skip);
 	}
-	default:
-		skip = 0;
-		break;
-	}
-	textLayoutModule->skipCO->setCurrentIndex(skip);
-	setSkip(skip);
 
 	textLayoutModule->twoColumnCB->setChecked(
 		bp_.columns == 2);
@@ -2539,7 +2612,11 @@ bool GuiDocument::isValid()
 {
 	return validateListingsParameters().isEmpty()
 		&& (textLayoutModule->skipCO->currentIndex() != 3
-			|| !textLayoutModule->skipLE->text().isEmpty());
+			|| !textLayoutModule->skipLE->text().isEmpty()
+			|| textLayoutModule->indentRB->isChecked())
+		&& (textLayoutModule->indentCO->currentIndex() != 1
+			|| !textLayoutModule->indentLE->text().isEmpty()
+			|| textLayoutModule->skipRB->isChecked());
 }
 
 

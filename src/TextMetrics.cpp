@@ -28,6 +28,7 @@
 #include "Cursor.h"
 #include "CutAndPaste.h"
 #include "FuncRequest.h"
+#include "HSpace.h"
 #include "InsetList.h"
 #include "Layout.h"
 #include "Length.h"
@@ -1949,11 +1950,16 @@ int TextMetrics::leftMargin(int max_width,
 	         || tclass.isPlainLayout(par.layout()))
 	        || buffer.params().paragraph_separation == BufferParams::ParagraphIndentSeparation)
 	    )
-	{
-		l_margin += theFontMetrics(buffer.params().getFont()).signedWidth(
-			parindent);
-	}
-
+		{
+			// use the parindent of the layout when the default indentation is used
+			// otherwise use the indentation set in the document settings
+			if (buffer.params().getIndentation().asLyXCommand() == "default")
+				l_margin += theFontMetrics(buffer.params().getFont()).signedWidth(
+				parindent);
+			else
+				l_margin += buffer.params().getIndentation().inPixels(*bv_);
+		}
+	
 	return l_margin;
 }
 

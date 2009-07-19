@@ -25,6 +25,7 @@
 #include "Color.h"
 #include "ColorSet.h"
 #include "Encoding.h"
+#include "HSpace.h"
 #include "IndicesList.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
@@ -289,6 +290,7 @@ public:
 	/** This is the amount of space used for paragraph_separation "skip",
 	 * and for detached paragraphs in "indented" documents.
 	 */
+	HSpace indentation;
 	VSpace defskip;
 	PDFOptions pdfoptions;
 	LayoutFileIndex baseClass_;
@@ -468,6 +470,18 @@ PDFOptions const & BufferParams::pdfoptions() const
 }
 
 
+HSpace const & BufferParams::getIndentation() const
+{
+	return pimpl_->indentation;
+}
+
+
+void BufferParams::setIndentation(HSpace const & indent)
+{
+	pimpl_->indentation = indent;
+}
+
+
 VSpace const & BufferParams::getDefSkip() const
 {
 	return pimpl_->defskip;
@@ -566,6 +580,10 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		string parsep;
 		lex >> parsep;
 		paragraph_separation = parseptranslator().find(parsep);
+	} else if (token == "\\paragraph_indentation") {
+		lex.next();
+		string indentation = lex.getString();
+		pimpl_->indentation = HSpace(indentation);
 	} else if (token == "\\defskip") {
 		lex.next();
 		string defskip = lex.getString();
@@ -903,9 +921,12 @@ void BufferParams::writeFile(ostream & os) const
 	os << "\\secnumdepth " << secnumdepth
 	   << "\n\\tocdepth " << tocdepth
 	   << "\n\\paragraph_separation "
-	   << string_paragraph_separation[paragraph_separation]
-	   << "\n\\defskip " << getDefSkip().asLyXCommand()
-	   << "\n\\quotes_language "
+	   << string_paragraph_separation[paragraph_separation];
+	if (!paragraph_separation)
+		os << "\n\\paragraph_indentation " << getIndentation().asLyXCommand();
+	else
+		os << "\n\\defskip " << getDefSkip().asLyXCommand();
+	os << "\n\\quotes_language "
 	   << string_quotes_language[quotes_language]
 	   << "\n\\papercolumns " << columns
 	   << "\n\\papersides " << sides
@@ -1370,6 +1391,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	}
 
 	if (paragraph_separation) {
+		// when skip separation
 		switch (getDefSkip().kind()) {
 		case VSpace::SMALLSKIP:
 			os << "\\setlength{\\parskip}{\\smallskipamount}\n";
@@ -1390,9 +1412,17 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			break;
 		}
 		texrow.newline();
-
 		os << "\\setlength{\\parindent}{0pt}\n";
 		texrow.newline();
+	} else {
+		// when separation by indentation
+		// only output something when a width is given
+		if (getIndentation().asLyXCommand() != "default") {
+			os << "\\setlength{\\parindent}{"
+				<< from_utf8(getIndentation().asLatexCommand())
+			   << "}\n";
+			texrow.newline();
+		}
 	}
 
 	// Now insert the LyX specific LaTeX commands...

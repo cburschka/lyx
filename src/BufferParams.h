@@ -36,6 +36,7 @@ class BranchList;
 class Bullet;
 class DocumentClass;
 class Encoding;
+class HSpace;
 class IndicesList;
 class Language;
 class LatexFeatures;
@@ -89,6 +90,10 @@ public:
 	///
 	bool hasClassDefaults() const;
 
+	///
+	HSpace const & getIndentation() const;
+	///
+	void setIndentation(HSpace const & indent);
 	///
 	VSpace const & getDefSkip() const;
 	///

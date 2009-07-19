@@ -116,6 +116,7 @@ SOURCEFILESCORE = \
 	FuncRequest.cpp \
 	FuncStatus.cpp \
 	Graph.cpp \
+	HSpace.cpp \
 	IndicesList.cpp \
 	InsetIterator.cpp \
 	InsetList.cpp \
@@ -216,6 +217,7 @@ HEADERFILESCORE = \
 	FuncRequest.h \
 	FuncStatus.h \
 	Graph.h \
+	HSpace.h \
 	IndicesList.h \
 	InsetIterator.h \
 	InsetList.h \

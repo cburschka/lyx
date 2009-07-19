@@ -93,6 +93,8 @@ private Q_SLOTS:
 	void romanChanged(int);
 	void sansChanged(int);
 	void ttChanged(int);
+	void setIndent(int);
+	void enableIndent(bool);
 	void setSkip(int);
 	void enableSkip(bool);
 	void portraitChanged();

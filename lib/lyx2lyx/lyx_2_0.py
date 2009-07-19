@@ -175,6 +175,50 @@ def lyx2latex(document, lines):
     return content
 
 
+def latex_length(string):
+    'Convert some LyX stuff into corresponding LaTeX stuff, as best we can.'
+    i = 0
+    percent = False
+    i = string.find("text%")
+    if i > -1:
+        percent = True
+        value = string[:i]
+        value = str(float(value)/100)
+        return value + "\\textwidth"
+    i = string.find("col%")
+    if i > -1:
+        percent = True
+        value = string[:i]
+        value = str(float(value)/100)
+        return value + "\\columnwidth"
+    i = string.find("page%")
+    if i > -1:
+        percent = True
+        value = string[:i]
+        value = str(float(value)/100)
+        return value + "\\paperwidth"
+    i = string.find("line%")
+    if i > -1:
+        percent = True
+        value = string[:i]
+        value = str(float(value)/100)
+        return value + "\\linewidth"
+    i = string.find("theight%")
+    if i > -1:
+        percent = True
+        value = string[:i]
+        value = str(float(value)/100)
+        return value + "\\textheight"
+    i = string.find("pheight%")
+    if i > -1:
+        percent = True
+        value = string[:i]
+        value = str(float(value)/100)
+        return value + "\\paperheight"
+    if percent ==  False:
+        return string
+
+
 ####################################################################
 
 
@@ -760,6 +804,32 @@ def revert_branch_filename(document):
         del document.header[i]
 
 
+def revert_paragraph_indentation(document):
+    " Revert custom paragraph indentation to preamble code "
+    i = 0
+    j = 0
+    while True:
+      i = find_token(document.header, "\\paragraph_indentation", i)
+      if i == -1:
+          break
+      # only remove the preamble line when default
+      # otherwise also write the value to the preamble  
+      j = document.header[i].find("default")
+      if j > -1:
+          del document.header[i]
+          break
+      else:
+          # search for the beginning of the value via the space
+          j = document.header[i].find(" ")
+          length = document.header[i][j+1:]
+          # handle percent lengths
+          length = latex_length(length) 
+          add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
+          add_to_preamble(document, ["\\setlength{\\parindent}{" + length + "}"])
+          del document.header[i]
+      i = i + 1
+
+
 ##
 # Conversion hub
 #
@@ -783,10 +853,12 @@ convert = [[346, []],
            [361, []],
            [362, []],
            [363, []],
-           [364, []]
+           [364, []],
+           [365, []]
           ]
 
-revert =  [[363, [revert_branch_filename]],
+revert =  [[364, [revert_paragraph_indentation]],
+           [363, [revert_branch_filename]],
            [362, [revert_longtable_align]],
            [361, [revert_applemac]],
            [360, []],
