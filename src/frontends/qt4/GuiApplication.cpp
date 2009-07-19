@@ -1214,9 +1214,18 @@ void GuiApplication::restoreGuiSession()
 	// Note that we open them in reverse order. This is because we close
 	// buffers also in reverse order (aesthetically motivated).
 	for (size_t i = lastopened.size(); i > 0; --i) {
-		current_view_->loadDocument(lastopened[i - 1].file_name, false);
+		FileName const & file_name = lastopened[i - 1].file_name;
+		if (d->views_.empty() || (!lyxrc.open_buffers_in_tabs
+			  && current_view_->buffer() != 0)) {
+			boost::crc_32_type crc;
+			string const & fname = file_name.absFilename();
+			crc = for_each(fname.begin(), fname.end(), crc);
+			createView(crc.checksum());
+		}
+		current_view_->loadDocument(file_name, false);
+
 		if (lastopened[i - 1].active)
-			active_file = lastopened[i - 1].file_name;
+			active_file = file_name;
 	}
 
 	// Restore last active buffer
