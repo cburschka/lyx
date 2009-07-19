@@ -427,13 +427,12 @@ string const GlueLength::asString() const
 string const GlueLength::asLatexString() const
 {
 	ostringstream buffer;
-
-	buffer << len_.value() << unit_name[len_.unit()];
-
+	// use Length::asLatexString() to handle also the percent lengths
+	buffer << len_.Length::asLatexString();
 	if (!plus_.zero())
-		buffer << " plus " << plus_.value() << unit_name[plus_.unit()];
+		buffer << " plus " << plus_.Length::asLatexString();
 	if (!minus_.zero())
-		buffer << " minus " << minus_.value() << unit_name[minus_.unit()];
+		buffer << " minus " << minus_.Length::asLatexString();
 	return buffer.str();
 }
 
