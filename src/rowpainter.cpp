@@ -22,7 +22,6 @@
 #include "BufferView.h"
 #include "Changes.h"
 #include "Encoding.h"
-#include "support/gettext.h"
 #include "Language.h"
 #include "Layout.h"
 #include "LyXRC.h"
@@ -41,6 +40,7 @@
 #include "insets/InsetText.h"
 
 #include "support/debug.h"
+#include "support/gettext.h"
 #include "support/textutils.h"
 
 #include "support/lassert.h"
