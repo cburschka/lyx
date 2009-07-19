@@ -807,8 +807,6 @@ def revert_branch_filename(document):
 def revert_paragraph_indentation(document):
     " Revert custom paragraph indentation to preamble code "
     i = 0
-    j = 0
-    k = 0
     while True:
       i = find_token(document.header, "\\paragraph_indentation", i)
       if i == -1:
@@ -837,9 +835,6 @@ def revert_paragraph_indentation(document):
 def revert_percent_skip_lengths(document):
     " Revert relative lengths for paragraph skip separation to preamble code "
     i = 0
-    j = 0
-    k = 0
-    l = 0
     while True:
       i = find_token(document.header, "\\defskip", i)
       if i == -1:
