@@ -1616,6 +1616,8 @@ lib_images_math_files = Split('''
     eth.png
     exists.png
     fallingdotseq.png
+    fint.png
+    fintop.png
     Finv.png
     flat.png
     font.png
@@ -1670,6 +1672,10 @@ lib_images_math_files = Split('''
     kappa.png
     lambda.png
     lambda2.png
+    landdownint.png
+    landdownintop.png
+    landupint.png
+    landupintop.png
     langle.png
     lbrace.png
     lbrace_rbrace.png
