@@ -127,7 +127,7 @@ namespace {
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-int const LYX_FORMAT = 365;  // uwestoehr: support for custom paragraph indentation
+int const LYX_FORMAT = 366; // uwestoehr: percent lengths for the paragraph skip separation
 
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;

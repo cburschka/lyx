@@ -184,39 +184,39 @@ def latex_length(string):
         percent = True
         value = string[:i]
         value = str(float(value)/100)
-        return value + "\\textwidth"
+        return "True," + value + "\\textwidth"
     i = string.find("col%")
     if i > -1:
         percent = True
         value = string[:i]
         value = str(float(value)/100)
-        return value + "\\columnwidth"
+        return "True," + value + "\\columnwidth"
     i = string.find("page%")
     if i > -1:
         percent = True
         value = string[:i]
         value = str(float(value)/100)
-        return value + "\\paperwidth"
+        return "True," + value + "\\paperwidth"
     i = string.find("line%")
     if i > -1:
         percent = True
         value = string[:i]
         value = str(float(value)/100)
-        return value + "\\linewidth"
+        return "True," + value + "\\linewidth"
     i = string.find("theight%")
     if i > -1:
         percent = True
         value = string[:i]
         value = str(float(value)/100)
-        return value + "\\textheight"
+        return "True," + value + "\\textheight"
     i = string.find("pheight%")
     if i > -1:
         percent = True
         value = string[:i]
         value = str(float(value)/100)
-        return value + "\\paperheight"
+        return "True," + value + "\\paperheight"
     if percent ==  False:
-        return string
+        return "False," +  string
 
 
 ####################################################################
@@ -808,6 +808,7 @@ def revert_paragraph_indentation(document):
     " Revert custom paragraph indentation to preamble code "
     i = 0
     j = 0
+    k = 0
     while True:
       i = find_token(document.header, "\\paragraph_indentation", i)
       if i == -1:
@@ -823,10 +824,48 @@ def revert_paragraph_indentation(document):
           j = document.header[i].find(" ")
           length = document.header[i][j+1:]
           # handle percent lengths
-          length = latex_length(length) 
+          length = latex_length(length)
+          # latex_length returns "bool,length"
+          k = length.find(",")
+          length = length[k+1:]
           add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
           add_to_preamble(document, ["\\setlength{\\parindent}{" + length + "}"])
           del document.header[i]
+      i = i + 1
+
+
+def revert_percent_skip_lengths(document):
+    " Revert relative lengths for paragraph skip separation to preamble code "
+    i = 0
+    j = 0
+    k = 0
+    l = 0
+    while True:
+      i = find_token(document.header, "\\defskip", i)
+      if i == -1:
+          break
+      # only revert when a custom length was set and when
+      # it used a percent length
+      j = document.header[i].find("smallskip")
+      k = document.header[i].find("medskip")
+      l = document.header[i].find("bigskip")
+      if (j > -1) or (k > -1) or (l > -1):
+          break
+      else:
+          # search for the beginning of the value via the space
+          j = document.header[i].find(" ")
+          length = document.header[i][j+1:]
+          # handle percent lengths
+          length = latex_length(length)
+          # latex_length returns "bool,length"
+          l = length.find(",")
+          percent = length[:l]
+          length = length[l+1:]
+          if percent == "True":
+              add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
+              add_to_preamble(document, ["\\setlength{\\parskip}{" + length + "}"])
+              # set defskip to medskip as default
+              document.header[i] = "\\defskip medskip"
       i = i + 1
 
 
@@ -854,10 +893,12 @@ convert = [[346, []],
            [362, []],
            [363, []],
            [364, []],
-           [365, []]
+           [365, []],
+           [366, []]
           ]
 
-revert =  [[364, [revert_paragraph_indentation]],
+revert =  [[365, [revert_percent_skip_lengths]],
+           [364, [revert_paragraph_indentation]],
            [363, [revert_branch_filename]],
            [362, [revert_longtable_align]],
            [361, [revert_applemac]],

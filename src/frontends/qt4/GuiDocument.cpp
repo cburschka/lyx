@@ -613,8 +613,6 @@ GuiDocument::GuiDocument(GuiView & lv)
 	textLayoutModule->skipCO->addItem(qt_("MedSkip"));
 	textLayoutModule->skipCO->addItem(qt_("BigSkip"));
 	textLayoutModule->skipCO->addItem(qt_("Length"));
-	// remove the %-items from the unit choice
-	textLayoutModule->skipLengthCO->noPercents();
 	textLayoutModule->lspacingCO->insertItem(
 		Spacing::Single, qt_("Single"));
 	textLayoutModule->lspacingCO->insertItem(
