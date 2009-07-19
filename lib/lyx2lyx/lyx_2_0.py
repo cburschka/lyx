@@ -176,7 +176,7 @@ def lyx2latex(document, lines):
 
 
 def latex_length(string):
-    'Convert some LyX stuff into corresponding LaTeX stuff, as best we can.'
+    'Convert lengths to their LaTeX representation.'
     i = 0
     percent = False
     i = string.find("text%")
