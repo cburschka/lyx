@@ -93,7 +93,7 @@ def put_cmd_in_ert(string):
     for rep in unicode_reps:
         string = string.replace(rep[1], rep[0].replace('\\\\', '\\'))
     string = string.replace('\\', "\\backslash\n")
-    string = "\\begin_inset ERT\nstatus collapsed\n\\begin_layout Standard\n" \
+    string = "\\begin_inset ERT\nstatus collapsed\n\\begin_layout Plain Layout\n" \
       + string + "\n\\end_layout\n\\end_inset"
     return string
 
@@ -864,6 +864,87 @@ def revert_percent_skip_lengths(document):
       i = i + 1
 
 
+def revert_percent_vspace_lengths(document):
+    " Revert relative VSpace lengths to ERT "
+    i = 0
+    while True:
+      i = find_token(document.body, "\\begin_inset VSpace", i)
+      if i == -1:
+          break
+      # only revert when a custom length was set and when
+      # it used a percent length
+      j = document.body[i].find("defskip")
+      k = document.body[i].find("smallskip")
+      l = document.body[i].find("medskip")
+      m = document.body[i].find("bigskip")
+      n = document.body[i].find("vfill")
+      if (j > -1) or (k > -1) or (l > -1) or (m > -1) or (n > -1):
+          break
+      else:
+          # search for the beginning of the value via the last space
+          o = document.body[i].rfind(" ")
+          length = document.body[i][o+1:]
+          # check if the space has a star (protected space)
+          p = document.body[i].rfind("*")
+          if p > -1:
+              length = length[:-1]
+          # handle percent lengths
+          length = latex_length(length)
+          # latex_length returns "bool,length"
+          q = length.find(",")
+          percent = length[:q]
+          length = length[q+1:]
+          # revert the VSpace inset to ERT
+          if percent == "True":
+              if p > -1:
+                  subst = [put_cmd_in_ert("\\vspace*{" + length + "}")]
+              else:
+                  subst = [put_cmd_in_ert("\\vspace{" + length + "}")]
+              document.body[i:i+2] = subst
+      i = i + 1
+
+
+def revert_percent_hspace_lengths(document):
+    " Revert relative HSpace lengths to ERT "
+    i = 0
+    j = 0
+    while True:
+      i = find_token(document.body, "\\begin_inset space \hspace{}", i)
+      if i == -1:
+          j = find_token(document.body, "\\begin_inset space \hspace*{}", j)
+          if j == -1:
+              break
+          else:
+              star = True
+              i = j
+      else:
+          star = False
+      # only revert when a custom length was set and when
+      # it used a percent length
+      o = document.body[i+1].find("\\length")
+      if o == -1:
+          document.warning("Error: Cannot find lenght for \\hspace!")
+          break
+      # search for the beginning of the value via the space
+      k = document.body[i+1].find(" ")
+      length = document.body[i+1][k+1:]
+      # handle percent lengths
+      length = latex_length(length)
+      # latex_length returns "bool,length"
+      m = length.find(",")
+      percent = length[:m]
+      length = length[m+1:]
+      # revert the HSpace inset to ERT
+      if percent == "True":
+          if star == True:
+              subst = [put_cmd_in_ert("\\hspace*{" + length + "}")]
+          else:
+              subst = [put_cmd_in_ert("\\hspace{" + length + "}")]
+          document.body[i:i+3] = subst
+      i = i + 2
+      j = i
+
+
 ##
 # Conversion hub
 #
@@ -889,10 +970,12 @@ convert = [[346, []],
            [363, []],
            [364, []],
            [365, []],
-           [366, []]
+           [366, []],
+           [367, []]
           ]
 
-revert =  [[365, [revert_percent_skip_lengths]],
+revert =  [[366, [revert_percent_vspace_lengths, revert_percent_hspace_lengths]],
+           [365, [revert_percent_skip_lengths]],
            [364, [revert_paragraph_indentation]],
            [363, [revert_branch_filename]],
            [362, [revert_longtable_align]],

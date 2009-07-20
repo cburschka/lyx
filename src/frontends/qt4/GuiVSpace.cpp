@@ -75,9 +75,6 @@ GuiVSpace::GuiVSpace(GuiView & lv)
 
 	// initialize the length validator
 	bc().addCheckedLineEdit(valueLE, valueL);
-
-	// remove the %-items from the unit choice
-	unitCO->noPercents();
 }
 
 
