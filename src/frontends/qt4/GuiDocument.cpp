@@ -2273,9 +2273,7 @@ void GuiDocument::paramsToDialog()
 		textLayoutModule->indentRB->setChecked(true);
 		string indentation = bp_.getIndentation().asLyXCommand();
 		int indent = 0;
-		if (indentation == "default")
-			indent = 0;
-		else {
+		if (indentation != "default") {
 			lengthToWidgets(textLayoutModule->indentLE,
 			textLayoutModule->indentLengthCO,
 			indentation, defaultUnit);
