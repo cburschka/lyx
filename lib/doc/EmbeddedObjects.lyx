@@ -1262,7 +1262,7 @@ reference "cha:Output-File-Formats"
 , every output document format allows only a few image formats.
  LyX uses therefore the program 
 \family typewriter
-Imagemagick
+ImageMagick
 \family default
  in the background to convert the images to the right format.
  To increase your work flow by avoiding these conversions in the background,
@@ -22522,14 +22522,14 @@ tableposition=top
 \series default
  has no effect when a 
 \series bold
-koma-script
+KOMA-script
 \series default
 
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-packages ! koma-script
+LaTeX-packages ! KOMA-script
 \end_layout
 
 \end_inset
@@ -22630,33 +22630,33 @@ thefigure
 
 If you are using a 
 \series bold
-koma-script
+KOMA-script
 \series default
 
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-packages ! koma-script
+LaTeX-packages ! KOMA-script
 \end_layout
 
 \end_inset
 
  document class (
 \family sans
-article (koma-script)
+article (KOMA-script)
 \family default
 , 
 \family sans
-book (koma-script)
+book (KOMA-script)
 \family default
 , 
 \family sans
-letter (koma-script)
+letter (KOMA-script)
 \family default
 , or 
 \family sans
-report (koma-script)
+report (KOMA-script)
 \family default
 
 \begin_inset space \thinspace{}
@@ -22668,7 +22668,7 @@ caption
 \series default
  package use 
 \series bold
-koma-script
+KOMA-script
 \series default
 's built-in command 
 \series bold
@@ -22700,7 +22700,7 @@ setkomafont
 \series default
  we refer to the 
 \series bold
-koma-script
+KOMA-script
 \series default
  documentation 
 \begin_inset CommandInset citation
@@ -23002,33 +23002,33 @@ tableposition=top
 \begin_layout Standard
 If you are using a 
 \series bold
-koma-script
+KOMA-script
 \series default
 
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-packages ! koma-script
+LaTeX-packages ! KOMA-script
 \end_layout
 
 \end_inset
 
  document class (
 \family sans
-article (koma-script)
+article (KOMA-script)
 \family default
 , 
 \family sans
-book (koma-script)
+book (KOMA-script)
 \family default
 , 
 \family sans
-letter (koma-script)
+letter (KOMA-script)
 \family default
 , or 
 \family sans
-report (koma-script)
+report (KOMA-script)
 \family default
 
 \begin_inset space \thinspace{}
@@ -34658,7 +34658,7 @@ LaTeX-packages ! hyperref
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "koma-script"
+key "KOMA-script"
 
 \end_inset
 
@@ -34667,7 +34667,7 @@ Documentation of the LaTeX-package
 
 \begin_inset CommandInset href
 LatexCommand href
-name "koma-script"
+name "KOMA-script"
 target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/koma-script/scrguien.pdf"
 
 \end_inset
@@ -34679,7 +34679,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/koma-script/scrg
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-packages ! koma-script
+LaTeX-packages ! KOMA-script
 \end_layout
 
 \end_inset
