@@ -926,6 +926,7 @@ src_frontends_qt4_ui_files = Split('''
     LaTeXUi.ui
     LanguageUi.ui
     ListingsUi.ui
+    ListingsSettingsUi.ui
     LogUi.ui
     MarginsUi.ui
     MathMatrixUi.ui

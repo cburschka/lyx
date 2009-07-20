@@ -590,16 +590,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(textLayoutModule->twoColumnCB, SIGNAL(clicked()),
 		this, SLOT(setColSep()));
-	connect(textLayoutModule->listingsED, SIGNAL(textChanged()),
-		this, SLOT(change_adaptor()));
-	connect(textLayoutModule->bypassCB, SIGNAL(clicked()), 
-		this, SLOT(change_adaptor()));
-	connect(textLayoutModule->bypassCB, SIGNAL(clicked()), 
-		this, SLOT(setListingsMessage()));
-	connect(textLayoutModule->listingsED, SIGNAL(textChanged()),
-		this, SLOT(setListingsMessage()));
-	textLayoutModule->listingsTB->setPlainText(
-		qt_("Input listings parameters on the right. Enter ? for a list of parameters."));
+
 	textLayoutModule->lspacingLE->setValidator(new QDoubleValidator(
 		textLayoutModule->lspacingLE));
 	textLayoutModule->indentLE->setValidator(unsignedLengthValidator(
@@ -1041,6 +1032,19 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(floatModule, SIGNAL(changed()),
 		this, SLOT(change_adaptor()));
 
+	// listings
+	listingsModule = new UiWidget<Ui::ListingsSettingsUi>;
+	connect(listingsModule->listingsED, SIGNAL(textChanged()),
+		this, SLOT(change_adaptor()));
+	connect(listingsModule->bypassCB, SIGNAL(clicked()), 
+		this, SLOT(change_adaptor()));
+	connect(listingsModule->bypassCB, SIGNAL(clicked()), 
+		this, SLOT(setListingsMessage()));
+	connect(listingsModule->listingsED, SIGNAL(textChanged()),
+		this, SLOT(setListingsMessage()));
+	listingsModule->listingsTB->setPlainText(
+		qt_("Input listings parameters below. Enter ? for a list of parameters."));
+
 	docPS->addPanel(latexModule, qt_("Document Class"));
 	docPS->addPanel(modulesModule, qt_("Modules"));
 	docPS->addPanel(fontModule, qt_("Fonts"));
@@ -1054,6 +1058,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	docPS->addPanel(pdfSupportModule, qt_("PDF Properties"));
 	docPS->addPanel(mathsModule, qt_("Math Options"));
 	docPS->addPanel(floatModule, qt_("Float Placement"));
+	docPS->addPanel(listingsModule, qt_("Listings"));
 	docPS->addPanel(bulletsModule, qt_("Bullets"));
 	docPS->addPanel(branchesModule, qt_("Branches"));
 	docPS->addPanel(outputModule, qt_("Output"));
@@ -1098,10 +1103,10 @@ QString GuiDocument::validateListingsParameters()
 	static string param_cache;
 	static QString msg_cache;
 	
-	if (textLayoutModule->bypassCB->isChecked())
+	if (listingsModule->bypassCB->isChecked())
 		return QString();
 
-	string params = fromqstr(textLayoutModule->listingsED->toPlainText());
+	string params = fromqstr(listingsModule->listingsED->toPlainText());
 	if (params != param_cache) {
 		param_cache = params;
 		msg_cache = toqstr(InsetListingsParams(params).validate());
@@ -1119,13 +1124,13 @@ void GuiDocument::setListingsMessage()
 			return;
 		isOK = true;
 		// listingsTB->setTextColor("black");
-		textLayoutModule->listingsTB->setPlainText(
-			qt_("Input listings parameters on the right. "
+		listingsModule->listingsTB->setPlainText(
+			qt_("Input listings parameters below. "
                 "Enter ? for a list of parameters."));
 	} else {
 		isOK = false;
 		// listingsTB->setTextColor("red");
-		textLayoutModule->listingsTB->setPlainText(msg);
+		listingsModule->listingsTB->setPlainText(msg);
 	}
 }
 
@@ -1883,6 +1888,7 @@ void GuiDocument::applyView()
 	// Modules
 	modulesToParams(bp_);
 
+	// Math
 	if (mathsModule->amsautoCB->isChecked()) {
 		bp_.use_amsmath = BufferParams::package_auto;
 	} else {
@@ -1901,6 +1907,7 @@ void GuiDocument::applyView()
 			bp_.use_esint = BufferParams::package_off;
 	}
 
+	// Page Layout
 	if (pageLayoutModule->pagestyleCO->currentIndex() == 0)
 		bp_.pagestyle = "default";
 	else {
@@ -1910,6 +1917,7 @@ void GuiDocument::applyView()
 				bp_.pagestyle = pagestyles[i].first;
 	}
 
+	// Text Layout
 	switch (textLayoutModule->lspacingCO->currentIndex()) {
 	case 0:
 		bp_.spacing().set(Spacing::Single);
@@ -1930,10 +1938,6 @@ void GuiDocument::applyView()
 		bp_.columns = 2;
 	else
 		bp_.columns = 1;
-
-	// text should have passed validation
-	bp_.listings_params =
-		InsetListingsParams(fromqstr(textLayoutModule->listingsED->toPlainText())).params();
 
 	if (textLayoutModule->indentRB->isChecked()) {
 		// if paragraphs are separated by an indentation
@@ -1996,7 +2000,13 @@ void GuiDocument::applyView()
 	else
 		bp_.master = string();
 
+	// Float Placement
 	bp_.float_placement = floatModule->get();
+
+	// Listings
+	// text should have passed validation
+	bp_.listings_params =
+		InsetListingsParams(fromqstr(listingsModule->listingsED->toPlainText())).params();
 
 	// output
 	bp_.defaultOutputFormat = fromqstr(outputModule->defaultFormatCO->itemData(
@@ -2314,11 +2324,6 @@ void GuiDocument::paramsToDialog()
 	textLayoutModule->twoColumnCB->setChecked(
 		bp_.columns == 2);
 
-	// break listings_params to multiple lines
-	string lstparams =
-		InsetListingsParams(bp_.listings_params).separatedParams();
-	textLayoutModule->listingsED->setPlainText(toqstr(lstparams));
-
 	if (!bp_.options.empty()) {
 		latexModule->optionsLE->setText(
 			toqstr(bp_.options));
@@ -2359,7 +2364,14 @@ void GuiDocument::paramsToDialog()
 		latexModule->childDocGB->setChecked(false);
 	}
 
+	// Float Settings
 	floatModule->set(bp_.float_placement);
+
+	// ListingsSettings
+	// break listings_params to multiple lines
+	string lstparams =
+		InsetListingsParams(bp_.listings_params).separatedParams();
+	listingsModule->listingsED->setPlainText(toqstr(lstparams));
 
 	// Output
 	// update combobox with formats

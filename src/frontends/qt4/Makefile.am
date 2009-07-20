@@ -270,6 +270,7 @@ UIFILES = \
 	LanguageUi.ui \
 	LaTeXUi.ui \
 	ListingsUi.ui \
+	ListingsSettingsUi.ui \
 	LogUi.ui \
 	MarginsUi.ui \
 	MathMatrixUi.ui \

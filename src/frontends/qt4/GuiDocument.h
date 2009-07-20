@@ -34,6 +34,7 @@
 #include "ui_PDFSupportUi.h"
 #include "ui_ModulesUi.h"
 #include "ui_OutputUi.h"
+#include "ui_ListingsSettingsUi.h"
 
 #include <list>
 #include <map>
@@ -124,6 +125,7 @@ private:
 	UiWidget<Ui::PDFSupportUi> *pdfSupportModule;
 	UiWidget<Ui::ModulesUi> *modulesModule;
 	UiWidget<Ui::OutputUi> *outputModule;
+	UiWidget<Ui::ListingsSettingsUi> *listingsModule;
 	PreambleModule * preambleModule;
 	
 	GuiBranches * branchesModule;
