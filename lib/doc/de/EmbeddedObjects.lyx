@@ -295,9 +295,8 @@ LatexCommand tableofcontents
 status open
 
 \begin_layout Plain Layout
-Um alle Teile diese Handbuches als DVI, HTML, PDF, PostScript oder Rich
- Text exportieren zu können oder es auszudrucken, benötigen Sie die LaTeX-Pakte
- 
+Um alle Teile diese Handbuches als DVI, HTML, PDF, PostScript oder RTF exportier
+en zu können oder es auszudrucken, benötigen Sie die LaTeX-Pakte 
 \series bold
 arydshln
 \series default
@@ -1220,7 +1219,7 @@ reference "kap:Ausgabedatei-Formate"
  beschrieben, erlaubt jedes Ausgabeformat nur ein paar Bildformate.
  LyX benutzt im Hintergrund das Programm
 \family typewriter
- Imagemagick
+ ImageMagick
 \family default
 , um Bilder ins richtige Ausgabeformat zu konvertieren.
  Sie beschleunigen Ihre Arbeit, wenn Sie solche Konvertierungen im Hintergrund
@@ -1541,7 +1540,7 @@ Pixelbilder können auch ins PDF- oder EPS-Format konvertiert werden, und
  In diesem Fall wird ein Kopf mit den Bildeigenschaften zum Originalbild
  hinzugefügt.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Bei PDF wird das Originalbild auch noch komprimiert.
@@ -1893,7 +1892,7 @@ Tabellen ! Einstellungen
 \begin_layout Standard
 Sie können das Aussehen einer Tabelle ändern, indem Sie mit der rechten
  Maustaste draufklicken.
- Dadurch wird ein Kontextmenü angezeigt, an derem Ende 
+ Dadurch wird ein Kontextmenü angezeigt, an dessem Ende 
 \family sans
 Einstellungen
 \family default
@@ -9376,7 +9375,7 @@ Tabellen ! lange ! Berechnung
 
 \begin_layout Standard
 LaTeX berechnet die Länge von Tabellenseiten und die Seitenumbrüche mit
- sogenannten 
+ so genannten 
 \emph on
 chunks
 \emph default
@@ -21402,7 +21401,7 @@ Sie können
 \series bold
 hypcap
 \series default
- auch für alle Gleitobjekte benutzen, aber das wird aus Stabilitätsgründen
+ auch für alle Gleitobjekte benutzen, aber das wird aus Gründen der Stabilität
  nicht empfohlen.
  Weitere Informationen finden Sie im
 \series bold
@@ -21706,8 +21705,8 @@ gleiten
 \end_layout
 
 \begin_layout Standard
-Es gibt keine Platzierungsoption für textumflossene [Gleit]Objekte, da diese
- immer vom Text eines bestimmten Absatzes umgeben sind.
+Es gibt keine Platzierungsoption für von Text umflossene [Gleit]Objekte,
+ da diese immer vom Text eines bestimmten Absatzes umgeben sind.
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -23015,14 +23014,14 @@ tableposition=top
 \series default
  hat keine Auswirkung, wenn eine 
 \series bold
-koma-script
+KOMA-script
 \series default
 
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-Pakete ! koma-script
+LaTeX-Pakete ! KOMA-script
 \end_layout
 
 \end_inset
@@ -23107,33 +23106,33 @@ thefigure
 
 Wenn Sie eine 
 \series bold
-koma-script
+KOMA-script
 \series default
 
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-Pakete ! koma-script
+LaTeX-Pakete ! KOMA-script
 \end_layout
 
 \end_inset
 
 -Dokumentklasse (
 \family sans
-article (koma-script)
+article (KOMA-script)
 \family default
 , 
 \family sans
-book (koma-script)
+book (KOMA-script)
 \family default
 , 
 \family sans
-letter (koma-script)
+letter (KOMA-script)
 \family default
  oder 
 \family sans
-report (koma-script)
+report (KOMA-script)
 \family default
 ) benutzen, können Sie anstatt des 
 \series bold
@@ -23147,7 +23146,7 @@ setkomafont
 \series default
  von 
 \series bold
-koma-script
+KOMA-script
 \series default
  benutzen.
  Der Befehl
@@ -23176,7 +23175,7 @@ setkomafont
 \series default
  finden Sie in der 
 \series bold
-koma-script
+KOMA-script
 \series default
 -Do\SpecialChar \-
 ku\SpecialChar \-
@@ -23493,33 +23492,33 @@ tableposition=top
 \begin_layout Standard
 Wenn Sie eine 
 \series bold
-koma-script
+KOMA-script
 \series default
 
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-Pakete ! koma-script
+LaTeX-Pakete ! KOMA-script
 \end_layout
 
 \end_inset
 
 -Dokumentklasse (
 \family sans
-article (koma-script)
+article (KOMA-script)
 \family default
 , 
 \family sans
-book (koma-script)
+book (KOMA-script)
 \family default
 , 
 \family sans
-letter (koma-script)
+letter (KOMA-script)
 \family default
  oder 
 \family sans
-report (koma-script)
+report (KOMA-script)
 \family default
 ) benutzen, können Sie alternativ zum 
 \series bold
@@ -24829,7 +24828,7 @@ Das Beispiel zeigt, dass die erste Zeile von Grauschrift-Notizen eingerückt
 \begin_inset VSpace bigskip
 \end_inset
 
-Wenn Sie auf den Werzeugleistenknopf 
+Wenn Sie auf den Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/note-insert.png
 	scale 85
@@ -24846,7 +24845,7 @@ LyX-Notiz
  Mit einem Rechts-Klick auf das Notiz-Kästchen können Sie eine der vier
  anderen Möglichkeiten auswählen.
  Wenn Sie einen vorhandenen Text in eine Notiz verwandeln wollen, markieren
- Sie ihn und klicken dann auf den Werzeugleistenknopf.
+ Sie ihn und klicken dann auf den Werkzeugleistenknopf.
  Um eine Notiz in Text zu verwandeln, drücken Sie die Backspace-Taste, wenn
  der Cursor am Beginn der Notiz ist oder die Entfernen-Taste, wenn der Cursor
  am Ende der Notiz ist.
@@ -25955,11 +25954,11 @@ ache übersetzt.
 \begin_inset Quotes gld
 \end_inset
 
-Notes 
+Notes
 \begin_inset Quotes grd
 \end_inset
 
-in 
+ in 
 \begin_inset Quotes gld
 \end_inset
 
@@ -27522,7 +27521,7 @@ Bemerkung:
 \end_inset
 
 B.
- schattiert ist, die andere abere nicht.
+ schattiert ist, die andere aber nicht.
 \end_layout
 
 \end_inset
@@ -30159,7 +30158,7 @@ Farbe ! für Text-Hintergrund
 
 \begin_layout Standard
 Um einen Text mit einer Hintergrundfarbe zu versehen, muss der Text in einer
- sogenannten 
+ so genannten 
 \begin_inset Quotes gld
 \end_inset
 
@@ -32470,7 +32469,7 @@ Einstellungen\SpecialChar \menuseparator
 Dokumentklasse
 \family default
  das Hauptdokument an.
- Dieses wird dann von LyX im Hintergrund benutzt, wenn Sie das Unterdokment
+ Dieses wird dann von LyX im Hintergrund benutzt, wenn Sie das Unterdokument
  bearbeiten.
 \end_layout
 
@@ -35094,7 +35093,7 @@ LaTeX-Pakete ! hyperref
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "koma-script"
+key "KOMA-script"
 
 \end_inset
 
@@ -35103,7 +35102,7 @@ Dokumentation des LaTeX-Pakets
 
 \begin_inset CommandInset href
 LatexCommand href
-name "koma-script"
+name "KOMA-script"
 target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/koma-script/scrguide.pdf"
 
 \end_inset
@@ -35115,7 +35114,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/koma-script/scrg
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-Pakete ! koma-script
+LaTeX-Pakete ! KOMA-script
 \end_layout
 
 \end_inset
