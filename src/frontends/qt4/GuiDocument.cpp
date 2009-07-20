@@ -603,7 +603,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	textLayoutModule->skipCO->addItem(qt_("SmallSkip"));
 	textLayoutModule->skipCO->addItem(qt_("MedSkip"));
 	textLayoutModule->skipCO->addItem(qt_("BigSkip"));
-	textLayoutModule->skipCO->addItem(qt_("Length"));
+	textLayoutModule->skipCO->addItem(qt_("Custom"));
 	textLayoutModule->lspacingCO->insertItem(
 		Spacing::Single, qt_("Single"));
 	textLayoutModule->lspacingCO->insertItem(
