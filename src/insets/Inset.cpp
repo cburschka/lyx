@@ -279,7 +279,11 @@ string insetName(InsetCode c)
 
 void Inset::dispatch(Cursor & cur, FuncRequest & cmd)
 {
-	LASSERT(cur.buffer() == &buffer(), return);
+	if (buffer_ == 0) {
+		lyxerr << "Unassigned buffer_ member in Inset::dispatch()" << std::endl;
+		lyxerr << "LyX Code: " << lyxCode() << " name: " << insetName(lyxCode()) << std::endl;
+	} else if (cur.buffer() != buffer_)
+		lyxerr << "cur.buffer() != buffer_ in Inset::dispatch()" << std::endl;
 	cur.updateFlags(Update::Force | Update::FitCursor);
 	cur.dispatched();
 	doDispatch(cur, cmd);
