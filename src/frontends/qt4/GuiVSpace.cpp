@@ -60,7 +60,7 @@ GuiVSpace::GuiVSpace(GuiView & lv)
 	connect(unitCO, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(change_adaptor()));
 
-	valueLE->setValidator(unsignedLengthValidator(valueLE));
+	valueLE->setValidator(unsignedGlueLengthValidator(valueLE));
 
 	// Manage the ok, apply, restore and cancel/close buttons
 	bc().setPolicy(ButtonPolicy::OkApplyCancelReadOnlyPolicy);

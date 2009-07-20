@@ -559,7 +559,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		qt_("Input listings parameters on the right. Enter ? for a list of parameters."));
 	textLayoutModule->lspacingLE->setValidator(new QDoubleValidator(
 		textLayoutModule->lspacingLE));
-	textLayoutModule->skipLE->setValidator(unsignedLengthValidator(
+	textLayoutModule->skipLE->setValidator(unsignedGlueLengthValidator(
 		textLayoutModule->skipLE));
 
 	textLayoutModule->skipCO->addItem(qt_("SmallSkip"));

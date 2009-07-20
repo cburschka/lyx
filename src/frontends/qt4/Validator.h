@@ -40,6 +40,7 @@ class LyXRC;
 
 namespace frontend {
 
+
 /** A class to ascertain whether the data passed to the @c validate()
  *  member function can be interpretted as a GlueLength.
  */
@@ -74,6 +75,13 @@ private:
 
 /// @returns a new @c LengthValidator that does not accept negative lengths.
 LengthValidator * unsignedLengthValidator(QLineEdit *);
+
+
+/** @returns a new @c LengthValidator that does not accept negative lengths.
+ *  but glue lengths.
+ */
+LengthValidator * unsignedGlueLengthValidator(QLineEdit *);
+
 
 //FIXME This should be generalized to take "text" as part of the
 //constructor and so to set what text we check for, rather than
