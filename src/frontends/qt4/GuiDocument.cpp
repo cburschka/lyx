@@ -604,7 +604,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		textLayoutModule->lspacingLE));
 	textLayoutModule->indentLE->setValidator(unsignedLengthValidator(
 		textLayoutModule->indentLE));
-	textLayoutModule->skipLE->setValidator(unsignedLengthValidator(
+	textLayoutModule->skipLE->setValidator(unsignedGlueLengthValidator(
 		textLayoutModule->skipLE));
 
 	textLayoutModule->indentCO->addItem(qt_("Default"));
