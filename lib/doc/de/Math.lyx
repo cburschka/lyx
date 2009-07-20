@@ -30429,7 +30429,7 @@ Zähler gibt an, welche Nummerierung betroffen ist.
 \end_layout
 
 \begin_layout Standard
-In unserem Fall gibt man demnach folgende LaTeX-Vorspann- oder ERT-Zeile
+In unserem Fall gibt man demnach folgende LaTeX-Vorspann- oder TeX-Code-Zeile
  ein:
 \end_layout
 
@@ -30483,7 +30483,7 @@ numberwithin{table}{part}
 \begin_layout Standard
 Um wieder auf Standardnummerierung umzuschalten oder um diese Art der Nummerieru
 ng zu vermeiden wenn sie von der Dokumentklasse vorgegeben ist, gibt man
- folgenden Befehl als ERT oder als LaTeX-Vorspannzeile ein:
+ folgenden Befehl als TeX-Code oder als LaTeX-Vorspannzeile ein:
 \end_layout
 
 \begin_layout Standard
