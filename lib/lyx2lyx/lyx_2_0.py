@@ -1075,10 +1075,10 @@ def revert_hspace_glue_lengths(document):
       length = latex_length(length)
       # latex_length returns "bool,length"
       m = length.find(",")
-      percent = length[:m]
       length = length[m+1:]
-      # revert the HSpace inset to ERT
-      if percent == "True":
+      document.warning("length: " + length)
+      # allow leading -
+      if length.rfind("-") <> 0 or (length.rfind("-") == 0 and length.rfind("+") > -1):
           if star == True:
               subst = [put_cmd_in_ert("\\hspace*{" + length + "}")]
           else:
