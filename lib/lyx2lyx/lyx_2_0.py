@@ -1076,7 +1076,7 @@ def revert_hspace_glue_lengths(document):
       # latex_length returns "bool,length"
       m = length.find(",")
       length = length[m+1:]
-      document.warning("length: " + length)
+      # revert the HSpace inset to ERT
       # allow leading -
       if length.rfind("-") <> 0 or (length.rfind("-") == 0 and length.rfind("+") > -1):
           if star == True:
