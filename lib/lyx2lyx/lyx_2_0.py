@@ -309,11 +309,23 @@ def latex_length(string):
             value = str(float(value)/100)
             begin = string[:minus+1]
             string = begin + value + "\\paperheight"
+    # replace + and -, but only when the - is not the first character
+    string = string.replace("+", " plus ")
+    if string.find("-") == 0:
+        minusstring = string[1:]
+        minusstring = minusstring.replace("-", " minus ")
+        string = "-" + minusstring
+    else:
+        string = string.replace("-", " minus ")
+    # handle the case that "+-1mm" was used because LaTeX only understands
+    # "plus 1mm minus 1mm"
+    if string.find("plus  minus"):
+        lastvaluepos = string.rfind(" ")
+        lastvalue = string[lastvaluepos:]
+        string = string.replace("  ", lastvalue + " ")
     if percent ==  False:
         return "False," + string
     else:
-        string = string.replace("+", " plus ")
-        string = string.replace("-", " minus ")
         return "True," + string
         
 
@@ -1078,7 +1090,8 @@ def revert_hspace_glue_lengths(document):
       length = length[m+1:]
       # revert the HSpace inset to ERT
       # allow leading -
-      if length.rfind("-") <> 0 or (length.rfind("-") == 0 and length.rfind("+") > -1):
+      n = length.find("-")
+      if n <> 0 or (n == 0 and (length.rfind("plus") > -1 or length.rfind("minus") > -1)):
           if star == True:
               subst = [put_cmd_in_ert("\\hspace*{" + length + "}")]
           else:
