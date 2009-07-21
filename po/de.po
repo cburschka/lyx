@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-07-21 10:28+0200\n"
-"PO-Revision-Date: 2009-07-15 16:13+0200\n"
+"POT-Creation-Date: 2009-07-21 10:46+0200\n"
+"PO-Revision-Date: 2009-07-21 10:37+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -5548,15 +5548,15 @@ msgstr "CRKat"
 
 #: lib/layouts/acmsiggraph.layout:89
 msgid "CR category"
-msgstr "CR Kategorie"
+msgstr "CR-Kategorie"
 
 #: lib/layouts/acmsiggraph.layout:135
 msgid "CR categories"
-msgstr "CR Kategorien"
+msgstr "CR-Kategorien"
 
 #: lib/layouts/acmsiggraph.layout:141
 msgid "Computing Review Categories"
-msgstr "EDV Review Kategorien"
+msgstr "EDV-Review-Kategorien"
 
 #: lib/layouts/acmsiggraph.layout:149 lib/layouts/acmsiggraph.layout:156
 #: lib/layouts/apa.layout:242 lib/layouts/iopart.layout:237
@@ -18322,19 +18322,19 @@ msgstr ""
 "Bitte prüfen Sie Ihre Installation."
 
 #: src/frontends/qt4/GuiApplication.cpp:1497
-#, fuzzy
 msgid "Could not find default UI file"
-msgstr "Die Benutzeroberflächen-Definitionsdatei konnte nicht gefunden werden"
+msgstr ""
+"Die Standard-Benutzeroberflächen-Definitionsdatei konnte nicht gefunden "
+"werden"
 
 #: src/frontends/qt4/GuiApplication.cpp:1498
-#, fuzzy
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
 msgstr ""
-"Fehler beim Lesen der Konfigurationsdatei\n"
-"%1$s.\n"
-"Bitte prüfen Sie Ihre Installation."
+"Fehler beim Lesen der Standard-Konfigurationsdatei\n"
+"für die Benutzeroberfläche!\n"
+"Bitte überprüfen Sie Ihre Installation."
 
 #: src/frontends/qt4/GuiApplication.cpp:1503
 #, c-format
@@ -20395,7 +20395,7 @@ msgstr "&Verwerfen"
 
 #: src/frontends/qt4/GuiView.cpp:2035
 msgid "Document not loaded"
-msgstr "Dokument nicht geladen"
+msgstr "Dokument nicht geladen."
 
 #: src/frontends/qt4/GuiView.cpp:2093
 msgid "Saving all documents..."
@@ -20464,7 +20464,7 @@ msgid "No Group"
 msgstr "Keine Gruppe"
 
 #: src/frontends/qt4/Menus.cpp:730 src/frontends/qt4/Menus.cpp:731
-msgid "more spelling suggestions"
+msgid "More Spelling Suggestions"
 msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:770 src/frontends/qt4/Menus.cpp:771
@@ -20472,19 +20472,23 @@ msgid "Invisible"
 msgstr "Unsichtbar"
 
 #: src/frontends/qt4/Menus.cpp:802
-msgid "<No documents open>"
+#, fuzzy
+msgid "<No Documents Open>"
 msgstr "<Keine Dokumente geöffnet>"
 
 #: src/frontends/qt4/Menus.cpp:822
-msgid "<No bookmarks saved yet>"
+#, fuzzy
+msgid "<No Bookmarks Saved Yet>"
 msgstr "<Noch keine Lesezeichen gespeichert>"
 
 #: src/frontends/qt4/Menus.cpp:959
-msgid "No custom insets defined!"
+#, fuzzy
+msgid "No Custom Insets Defined!"
 msgstr "Es gibt keine benutzerdefinierten Einfügungen!"
 
 #: src/frontends/qt4/Menus.cpp:1027
-msgid "<No document open>"
+#, fuzzy
+msgid "<No Document Open>"
 msgstr "<Kein Dokument geöffnet>"
 
 #: src/frontends/qt4/Menus.cpp:1037
@@ -20500,7 +20504,8 @@ msgid "Other Lists"
 msgstr "Andere Verzeichnisse"
 
 #: src/frontends/qt4/Menus.cpp:1088
-msgid "<Empty table of contents>"
+#, fuzzy
+msgid "<Empty Table of Contents>"
 msgstr "<Leeres Inhaltsverzeichnis>"
 
 #: src/frontends/qt4/Menus.cpp:1123
@@ -20508,7 +20513,8 @@ msgid "Other Toolbars"
 msgstr "Andere Werkzeugleisten"
 
 #: src/frontends/qt4/Menus.cpp:1138
-msgid "No branches set for document!"
+#, fuzzy
+msgid "No Branches Set for Document!"
 msgstr "Kein Zweig im Dokument gesetzt!"
 
 #: src/frontends/qt4/Menus.cpp:1198
@@ -20525,7 +20531,8 @@ msgid "No Citation in Scope!"
 msgstr "Keine Literaturverweis in Reichweite!"
 
 #: src/frontends/qt4/Menus.cpp:1828
-msgid "No action defined!"
+#, fuzzy
+msgid "No Action Defined!"
 msgstr "Keine Aktion definiert!"
 
 #: src/frontends/qt4/Toolbars.cpp:217

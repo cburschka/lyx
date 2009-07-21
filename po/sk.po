@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-07-21 10:28+0200\n"
+"POT-Creation-Date: 2009-07-21 10:46+0200\n"
 "PO-Revision-Date: 2009-04-19 16:33+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: German <kde-i18n-de@lists.kde.org>\n"
@@ -20395,7 +20395,7 @@ msgid "No Group"
 msgstr "Žiadna skupina"
 
 #: src/frontends/qt4/Menus.cpp:730 src/frontends/qt4/Menus.cpp:731
-msgid "more spelling suggestions"
+msgid "More Spelling Suggestions"
 msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:770 src/frontends/qt4/Menus.cpp:771
@@ -20405,20 +20405,21 @@ msgstr "Neviditeľný text"
 
 #: src/frontends/qt4/Menus.cpp:802
 #, fuzzy
-msgid "<No documents open>"
+msgid "<No Documents Open>"
 msgstr "Žiadne otvorené dokumenty!"
 
 #: src/frontends/qt4/Menus.cpp:822
-msgid "<No bookmarks saved yet>"
+msgid "<No Bookmarks Saved Yet>"
 msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:959
-msgid "No custom insets defined!"
+#, fuzzy
+msgid "No Custom Insets Defined!"
 msgstr "Niet vlastných definovaných vložiek!"
 
 #: src/frontends/qt4/Menus.cpp:1027
 #, fuzzy
-msgid "<No document open>"
+msgid "<No Document Open>"
 msgstr "Žiadny otvorený dokument!"
 
 #: src/frontends/qt4/Menus.cpp:1037
@@ -20435,7 +20436,7 @@ msgstr "Iné Listiny"
 
 #: src/frontends/qt4/Menus.cpp:1088
 #, fuzzy
-msgid "<Empty table of contents>"
+msgid "<Empty Table of Contents>"
 msgstr "Obsah"
 
 #: src/frontends/qt4/Menus.cpp:1123
@@ -20444,7 +20445,7 @@ msgstr "Iné lišty nástrojov"
 
 #: src/frontends/qt4/Menus.cpp:1138
 #, fuzzy
-msgid "No branches set for document!"
+msgid "No Branches Set for Document!"
 msgstr "Dokument neobsahuje vetvenie!"
 
 #: src/frontends/qt4/Menus.cpp:1198
@@ -20462,7 +20463,8 @@ msgid "No Citation in Scope!"
 msgstr "Žiadna citácia nablízku!"
 
 #: src/frontends/qt4/Menus.cpp:1828
-msgid "No action defined!"
+#, fuzzy
+msgid "No Action Defined!"
 msgstr "Žiadna akcia nebola definovaná!"
 
 #: src/frontends/qt4/Toolbars.cpp:217

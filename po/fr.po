@@ -215,7 +215,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-07-21 10:28+0200\n"
+"POT-Creation-Date: 2009-07-21 10:46+0200\n"
 "PO-Revision-Date: 2009-07-21 08:58+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
@@ -20565,7 +20565,8 @@ msgid "No Group"
 msgstr "Aucun groupe défini"
 
 #: src/frontends/qt4/Menus.cpp:730 src/frontends/qt4/Menus.cpp:731
-msgid "more spelling suggestions"
+#, fuzzy
+msgid "More Spelling Suggestions"
 msgstr "autres suggestions orthographiques"
 
 #: src/frontends/qt4/Menus.cpp:770 src/frontends/qt4/Menus.cpp:771
@@ -20573,19 +20574,23 @@ msgid "Invisible"
 msgstr "Invisible"
 
 #: src/frontends/qt4/Menus.cpp:802
-msgid "<No documents open>"
+#, fuzzy
+msgid "<No Documents Open>"
 msgstr "<Pas de documents ouverts>"
 
 #: src/frontends/qt4/Menus.cpp:822
-msgid "<No bookmarks saved yet>"
+#, fuzzy
+msgid "<No Bookmarks Saved Yet>"
 msgstr "<Aucun signet enregistré pour le moment>"
 
 #: src/frontends/qt4/Menus.cpp:959
-msgid "No custom insets defined!"
+#, fuzzy
+msgid "No Custom Insets Defined!"
 msgstr "Aucun insert paramétrable défini !"
 
 #: src/frontends/qt4/Menus.cpp:1027
-msgid "<No document open>"
+#, fuzzy
+msgid "<No Document Open>"
 msgstr "<Aucun document ouvert>"
 
 #: src/frontends/qt4/Menus.cpp:1037
@@ -20601,7 +20606,8 @@ msgid "Other Lists"
 msgstr "Autres listes"
 
 #: src/frontends/qt4/Menus.cpp:1088
-msgid "<Empty table of contents>"
+#, fuzzy
+msgid "<Empty Table of Contents>"
 msgstr "<Table des matières vide>"
 
 #: src/frontends/qt4/Menus.cpp:1123
@@ -20609,7 +20615,8 @@ msgid "Other Toolbars"
 msgstr "Autres barres d'outils"
 
 #: src/frontends/qt4/Menus.cpp:1138
-msgid "No branches set for document!"
+#, fuzzy
+msgid "No Branches Set for Document!"
 msgstr "Pas de branche dans le document !"
 
 #: src/frontends/qt4/Menus.cpp:1198
@@ -20626,7 +20633,8 @@ msgid "No Citation in Scope!"
 msgstr "Aucune citation accessible !"
 
 #: src/frontends/qt4/Menus.cpp:1828
-msgid "No action defined!"
+#, fuzzy
+msgid "No Action Defined!"
 msgstr "Aucune action définie !"
 
 #: src/frontends/qt4/Toolbars.cpp:217
