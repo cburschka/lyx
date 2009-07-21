@@ -1019,9 +1019,9 @@ def revert_percent_hspace_lengths(document):
     i = 0
     j = 0
     while True:
-      i = find_token(document.body, "\\begin_inset space \hspace{}", i)
+      i = find_token(document.body, "\\begin_inset space \\hspace{}", i)
       if i == -1:
-          j = find_token(document.body, "\\begin_inset space \hspace*{}", j)
+          j = find_token(document.body, "\\begin_inset space \\hspace*{}", j)
           if j == -1:
               break
           else:
@@ -1031,13 +1031,10 @@ def revert_percent_hspace_lengths(document):
           star = False
       # only revert when a custom length was set and when
       # it used a percent length
-      o = document.body[i+1].find("\\length")
-      if o == -1:
-          document.warning("Error: Cannot find lenght for \\hspace!")
-          break
-      # search for the beginning of the value via the space
-      k = document.body[i+1].find(" ")
-      length = document.body[i+1][k+1:]
+      length = get_value(document.body, '\\length', i+1)
+      if length == '':
+          document.warning("Malformed lyx document: Missing '\\length' in Space inset.")
+          return
       # handle percent lengths
       length = latex_length(length)
       # latex_length returns "bool,length"
@@ -1060,9 +1057,9 @@ def revert_hspace_glue_lengths(document):
     i = 0
     j = 0
     while True:
-      i = find_token(document.body, "\\begin_inset space \hspace{}", i)
+      i = find_token(document.body, "\\begin_inset space \\hspace{}", i)
       if i == -1:
-          j = find_token(document.body, "\\begin_inset space \hspace*{}", j)
+          j = find_token(document.body, "\\begin_inset space \\hspace*{}", j)
           if j == -1:
               break
           else:
@@ -1070,13 +1067,10 @@ def revert_hspace_glue_lengths(document):
               i = j
       else:
           star = False
-      o = document.body[i+1].find("\\length")
-      if o == -1:
-          document.warning("Error: Cannot find lenght for \\hspace!")
-          break
-      # search for the beginning of the value via the space
-      k = document.body[i+1].find(" ")
-      length = document.body[i+1][k+1:]
+      length = get_value(document.body, '\\length', i+1)
+      if length == '':
+          document.warning("Malformed lyx document: Missing '\\length' in Space inset.")
+          return
       # only revert when the length contains a plus or minus
       l = length.find("+")
       if l == -1:
