@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-07-21 10:46+0200\n"
-"PO-Revision-Date: 2009-07-21 10:37+0200\n"
+"PO-Revision-Date: 2009-07-21 11:22+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -225,11 +225,12 @@ msgid "&Default (numerical)"
 msgstr "&Standard (nummerisch)"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:38
-#, fuzzy
 msgid ""
 "Use the natbib styles for natural sciences and arts. Set additional "
 "parameters in document class options."
-msgstr "Verwenden Sie die Natbib-Stile für Natur- und Geisteswissenschaften"
+msgstr ""
+"Verwende Natbib-Stile für Natur- und Geisteswissenschaften. Natbib-Optionen "
+"können als Klassenoptionen übergeben werden."
 
 #: src/frontends/qt4/ui/BiblioUi.ui:41
 msgid "&Natbib"
@@ -263,8 +264,8 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/ui/BiblioUi.ui:123
-#: src/frontends/qt4/ui/PrefLatexUi.ui:119
 #, fuzzy
+#: src/frontends/qt4/ui/PrefLatexUi.ui:119
 msgid "Bibliography generation"
 msgstr "Überschrift des Literaturverzeichnisses"
 
@@ -601,9 +602,8 @@ msgid "Filename &Suffix"
 msgstr "Dateiname"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:61
-#, fuzzy
 msgid "Show undefined branches used in this document."
-msgstr "Kein Zweig im Dokument gesetzt!"
+msgstr "Zeige undefinierte Zweige, die in diesem Dokument verwendet werden."
 
 #: src/frontends/qt4/ui/BranchesUi.ui:64
 #, fuzzy
@@ -646,9 +646,8 @@ msgid "&Remove"
 msgstr "&Entfernen"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:140
-#, fuzzy
 msgid "Change the name of the selected branch"
-msgstr "Den ausgewählten Zweig entfernen"
+msgstr "Den Namen des ausgewählten Zweigs ändern."
 
 #: src/frontends/qt4/ui/BranchesUi.ui:143
 #, fuzzy
@@ -656,9 +655,8 @@ msgid "Re&name..."
 msgstr "&Umbenennen..."
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:25
-#, fuzzy
 msgid "Add the selected branches to the list."
-msgstr "Fügen Sie einen neuen Zweig zur Liste hinzu"
+msgstr "Fügen Sie den ausgewählten Zweig zur Liste hinzu"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:28
 #, fuzzy
@@ -666,9 +664,8 @@ msgid "&Add Selected"
 msgstr "Ausg&ewählt:"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:35
-#, fuzzy
 msgid "Add all unknown branches to the list."
-msgstr "Fügen Sie einen neuen Zweig zur Liste hinzu"
+msgstr "Fügen Sie alle nicht-definierten Zweige zur Liste hinzu"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:38
 msgid "Add A&ll"
@@ -676,9 +673,8 @@ msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:65
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:78
-#, fuzzy
 msgid "Undefined branches used in this document."
-msgstr "Kein Zweig im Dokument gesetzt!"
+msgstr "Nicht definierte Zweige, die in diesem Dokument verwendet werden."
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:68
 #, fuzzy
@@ -1862,11 +1858,14 @@ msgstr "&Verfügbare Indexe:"
 #: src/frontends/qt4/ui/IndexUi.ui:69
 msgid "Select the index this entry should be listed in."
 msgstr ""
+"Wählen Sie das Stichwortverzeichnis, zu dem dieser Eintrag hinzugefügt "
+"werden soll."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:19 src/frontends/qt4/ui_IndicesUi.h:190
 msgid ""
 "Here you can define an alternative index processor and specify its options."
 msgstr ""
+"Hier können Sie einen alternativen Indexprozessor und seine Optionen angeben."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:198
@@ -1877,26 +1876,28 @@ msgstr "&Einrückung"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:64 src/frontends/qt4/ui_IndicesUi.h:199
 msgid "Define program options of the selected processor."
-msgstr ""
+msgstr "Definieren Sie die Programmoptionen des ausgewählten Prozessors."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:89 src/frontends/qt4/ui_IndicesUi.h:202
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
 msgstr ""
+"Aktivieren Sie dies, wenn sie mehrere Stichwortverzeichnisse (z.B. einen "
+"Namensindex) benötigen."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:92 src/frontends/qt4/ui_IndicesUi.h:204
-#, fuzzy
 msgid "&Use multiple indexes"
-msgstr "&Mehrere Indexe verwenden"
+msgstr "&Mehrere Stichwortverzeichnisse verwenden"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:124 src/frontends/qt4/ui_IndicesUi.h:207
 msgid ""
 "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
 msgstr ""
+"Geben Sie den Namen des benötigten Verzeichnisses (z.B. "
+"\"Namensverzeichnis\") ein und drücken Sie \"Hinzufügen\"."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:143 src/frontends/qt4/ui_IndicesUi.h:213
-#, fuzzy
 msgid "A&vailable Indexes:"
-msgstr "&Verfügbare Indexe:"
+msgstr "&Verfügbare Stichwortverzeichnisse:"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154 src/frontends/qt4/ui_IndicesUi.h:215
 msgid "1"
@@ -2005,9 +2006,8 @@ msgid "&Quote Style:"
 msgstr "&Stil der Anführungszeichen:"
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:49
-#, fuzzy
 msgid "Input here the listings parameters"
-msgstr "Ungültiger (leerer) Listing-Parametername."
+msgstr "Geben Sie hier die Listings-Parameter ein."
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:67
 #: src/frontends/qt4/ui/ListingsUi.ui:477
@@ -2425,9 +2425,8 @@ msgid "Output Format"
 msgstr "Ausgabeformat"
 
 #: src/frontends/qt4/ui/OutputUi.ui:48 src/frontends/qt4/ui/OutputUi.ui:61
-#, fuzzy
 msgid "Specify the default output format (for view/update)"
-msgstr "Geben Sie die Standard-Papiergröße an."
+msgstr "Geben Sie das Standard-Ausgabeformat an."
 
 #: src/frontends/qt4/ui/OutputUi.ui:51
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:43
@@ -2556,11 +2555,10 @@ msgid "&Format:"
 msgstr "&Format:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:44
-#, fuzzy
 msgid "Choose a particular paper size, or set your own with &quot;Custom&quot;"
 msgstr ""
 "Wählen Sie eine bestimmte Papiergröße oder legen Sie Ihre eigene mittels "
-"\"Benutzerdefiniert\" fest"
+"\"Benutzerdefiniert\" fest."
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:125
 msgid "&Orientation:"
@@ -3788,20 +3786,22 @@ msgstr "In eine Datei drucken"
 #: src/frontends/qt4/ui/PrintindexUi.ui:61
 msgid "Check if this index should be part (e.g., a section) of the former one."
 msgstr ""
+"Wählen Sie dies, wenn dieses Stichwortverzeichnis (zum Beispiel als "
+"Abschnitt) in das vorherige eingebettet werden soll."
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:64
 msgid "&Subindex"
 msgstr "&Unterindex"
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:79
-#, fuzzy
 msgid "A&vailable indexes:"
-msgstr "&Verfügbare Indexe:"
+msgstr "&Verfügbare Stichwortverzeichnisse:"
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:89
-#, fuzzy
 msgid "Select the index that shall be printed at this place of the document."
-msgstr "Wählen Sie die Standardschriftfamilie des Dokuments"
+msgstr ""
+"Wählen Sie, welches Stichwortverzeichnis an dieser Stelle ausgegeben werden "
+"soll."
 
 #: src/frontends/qt4/ui/RefUi.ui:22
 msgid "La&bels in:"
@@ -4034,9 +4034,8 @@ msgid "&Table Settings"
 msgstr "&Tabellen-Einstellungen"
 
 #: src/frontends/qt4/ui/TabularUi.ui:137
-#, fuzzy
 msgid "Column settings"
-msgstr "Dokument-Einstellungen"
+msgstr "Spalteneinstellungen"
 
 #: src/frontends/qt4/ui/TabularUi.ui:143
 msgid "&Horizontal alignment:"
@@ -4076,9 +4075,8 @@ msgid "&Multicolumn"
 msgstr "&Mehrfachspalte"
 
 #: src/frontends/qt4/ui/TabularUi.ui:299
-#, fuzzy
 msgid "Cell setting"
-msgstr "Einstellungen"
+msgstr "Zelleneinstellungen"
 
 #: src/frontends/qt4/ui/TabularUi.ui:305
 msgid "Rotate this cell by 90 degrees"
@@ -4089,9 +4087,8 @@ msgid "Rotate &cell 90 degrees"
 msgstr "&Zelle um 90 Grad drehen"
 
 #: src/frontends/qt4/ui/TabularUi.ui:321
-#, fuzzy
 msgid "Table-wide settings"
-msgstr "Tabellen-Einstellungen"
+msgstr "Tabellenweite Einstellungen"
 
 #: src/frontends/qt4/ui/TabularUi.ui:327
 #, fuzzy
@@ -4099,9 +4096,8 @@ msgid "Verti&cal alignment:"
 msgstr "Vert. Ausrichtung"
 
 #: src/frontends/qt4/ui/TabularUi.ui:337
-#, fuzzy
 msgid "Vertical alignment of the table"
-msgstr "Vert. Ausrichtung"
+msgstr "Vertikale Ausrichtung der Tabelle"
 
 #: src/frontends/qt4/ui/TabularUi.ui:381
 msgid "Rotate the table by 90 degrees"
@@ -4193,9 +4189,8 @@ msgid "&Use long table"
 msgstr "&Lange Tabelle verwenden"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1211
-#, fuzzy
 msgid "Row settings"
-msgstr "Box-Einstellungen"
+msgstr "Zeileneinstellungen"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1217
 msgid "Status"
@@ -4292,14 +4287,12 @@ msgid "Page &break on current row"
 msgstr "&Seitenumbruch nach der aktuellen Zeile"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1428
-#, fuzzy
 msgid "Horizontal alignment of the longtable"
-msgstr "Horizontale Ausrichtung des Inhalts innerhalb der Box"
+msgstr "Horizontale Ausrichtung der langen Tabelle"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1431
-#, fuzzy
 msgid "Longtable alignment"
-msgstr "&Horizontale Ausrichtung:"
+msgstr "Ausrichtung der langen Tabelle"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:55
 msgid "Close this dialog"
@@ -4357,18 +4350,16 @@ msgid "&Indentation"
 msgstr "&Einrückung"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:89
-#, fuzzy
 msgid "Size of the indentation"
-msgstr "Gr&öße und Drehung"
+msgstr "Länge der Einrückung"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:152
 msgid "&Vertical space"
 msgstr "&Vertikaler Abstand"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:162
-#, fuzzy
 msgid "Size of the vertical space"
-msgstr "&Vertikaler Abstand"
+msgstr "Größe des vertikalen Abstands"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:256
 msgid "Spacing"
@@ -9510,7 +9501,6 @@ msgid "Theorems (AMS-Extended)"
 msgstr "Theoreme (AMS-erweitert)"
 
 #: lib/layouts/theorems-ams-extended.module:9
-#, fuzzy
 msgid ""
 "Defines some additional theorem environments for use with the AMS theorems "
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
@@ -9519,8 +9509,8 @@ msgid ""
 msgstr ""
 "Definiert einige zusätzliche Theorem-Umgebungen für AMS-Theoreme, "
 "einschließlich Criterion, Algorithm, Axiom, Condition, Note, Notation, "
-"Summary, Acknowledgement, Conclusion, Fact, Assumption und Case, mit und "
-"ohne Stern."
+"Summary, Acknowledgement, Conclusion, Fact, Assumption, Case und Question, "
+"mit und ohne Stern."
 
 #: lib/layouts/theorems-ams-extended.module:39
 msgid "Criterion \\thetheorem."
@@ -10083,9 +10073,8 @@ msgid "South-Eastern European (ISO 8859-16)"
 msgstr "Südosteuropäisch (ISO 8859-16)"
 
 #: lib/encodings:64
-#, fuzzy
 msgid "Western European (Macintosh Roman)"
-msgstr "Westeuropäisch (CP 850)"
+msgstr "Westeuropäisch (Macintosh Roman)"
 
 #: lib/encodings:67
 msgid "DOS (CP 437)"
@@ -11972,7 +11961,6 @@ msgid "Split View Into Left and Right Half|i"
 msgstr "Ansicht in linke und rechte Hälfte teilen|l"
 
 #: lib/ui/stdmenus.inc:319
-#, fuzzy
 msgid "Split View Into Upper and Lower Half|e"
 msgstr "Ansicht in obere und untere Hälfte teilen|o"
 
@@ -12113,14 +12101,12 @@ msgid "Insert New Branch...|I"
 msgstr ""
 
 #: lib/ui/stdmenus.inc:472
-#, fuzzy
 msgid "Horizontal Phantom"
-msgstr "Horiz. Phantom"
+msgstr "Horizontales Phantom"
 
 #: lib/ui/stdmenus.inc:473
-#, fuzzy
 msgid "Vertical Phantom"
-msgstr "Vert. Phantom"
+msgstr "Vertikales Phantom"
 
 #: lib/ui/stdmenus.inc:485
 msgid "Change Tracking|C"
@@ -12621,24 +12607,20 @@ msgid "Update"
 msgstr "Aktualisieren"
 
 #: lib/ui/stdtoolbars.inc:220
-#, fuzzy
 msgid "View master document"
 msgstr "Hauptdokument ansehen"
 
 #: lib/ui/stdtoolbars.inc:221
-#, fuzzy
 msgid "Update master document"
 msgstr "Hauptdokument aktualisieren"
 
 #: lib/ui/stdtoolbars.inc:223
-#, fuzzy
 msgid "View other formats"
-msgstr "Andere Formate ansehen"
+msgstr "In anderen Formaten ansehen"
 
 #: lib/ui/stdtoolbars.inc:224
-#, fuzzy
 msgid "Update other formats"
-msgstr "Anzeige aktualisieren"
+msgstr "Andere Formate aktualisieren"
 
 #: lib/ui/stdtoolbars.inc:227
 msgid "View Other Formats"
@@ -13066,14 +13048,12 @@ msgid "ddot"
 msgstr "ddot"
 
 #: lib/ui/stdtoolbars.inc:393
-#, fuzzy
 msgid "dddot"
-msgstr "ddot"
+msgstr "dddot"
 
 #: lib/ui/stdtoolbars.inc:394
-#, fuzzy
 msgid "ddddot"
-msgstr "ddot"
+msgstr "ddddot"
 
 #: lib/ui/stdtoolbars.inc:395
 msgid "breve"
@@ -15624,10 +15604,9 @@ msgstr "Keine Informationen vorhanden, um in das Format %1$s zu exportieren."
 msgid "Error exporting to format: %1$s."
 msgstr "Keine Informationen vorhanden, um in das Format %1$s zu exportieren."
 
-#: src/Buffer.cpp:1692
-#, fuzzy, c-format
+#: src/Buffer.cpp:1692, c-format
 msgid "Branch \"%1$s\" does already exist."
-msgstr "Zweig \"%1$s\" existiert nicht."
+msgstr "Zweig \"%1$s\" existiert bereits."
 
 #: src/Buffer.cpp:1716
 #, c-format
@@ -15959,14 +15938,12 @@ msgid "Statistics"
 msgstr "Statistik"
 
 #: src/BufferView.cpp:1513
-#, fuzzy
 msgid "Branch name"
-msgstr "Zweige"
+msgstr "Name des Zweigs"
 
 #: src/BufferView.cpp:1520 src/frontends/qt4/GuiBranches.cpp:174
-#, fuzzy
 msgid "Branch already exists"
-msgstr "Zweig \"%1$s\" existiert nicht."
+msgstr "Zweig existiert bereits."
 
 #: src/BufferView.cpp:2134
 #, c-format
@@ -16438,24 +16415,22 @@ msgstr "Die Ausgabe ist leer"
 msgid "An empty output file was generated."
 msgstr "Eine leere Ausgabedatei wurde erzeugt."
 
-#: src/CutAndPaste.cpp:292
-#, fuzzy, c-format
+#: src/CutAndPaste.cpp:292, c-format
 msgid ""
 "The pasted branch \"%1$s\" is undefined.\n"
 "Do you want to add it to the document's branch list?"
 msgstr ""
-"Das Dokument %1$s enthält ungespeicherte Änderungen.\n"
+"Der eingefügte Zweig \"%1$s\" ist nicht definiert.\n"
 "\n"
-"Möchten Sie das Dokument speichern?"
+"Möchten Sie ihn zur Liste der Zweige dieses Dokuments hinzufügen?"
 
 #: src/CutAndPaste.cpp:295
-#, fuzzy
 msgid "Unknown branch"
-msgstr "Unbekannte Aktion"
+msgstr "Unbekannter Zweig"
 
 #: src/CutAndPaste.cpp:296
 msgid "&Don't Add"
-msgstr ""
+msgstr "&Nicht hinzufügen"
 
 #: src/CutAndPaste.cpp:599
 #, c-format
@@ -16633,8 +16608,7 @@ msgstr "Das automatische Bearbeiten der Datei %1$s ist fehlgeschlagen"
 msgid "Could not find bind file"
 msgstr "Die Benutzeroberflächen-Definitionsdatei konnte nicht gefunden werden"
 
-#: src/KeyMap.cpp:222
-#, fuzzy, c-format
+#: src/KeyMap.cpp:222, c-format
 msgid ""
 "Unable to find the bind file\n"
 "%1$s.\n"
@@ -16819,7 +16793,6 @@ msgid "Setting debug level to %1$s"
 msgstr "Festlegen des Test-Levels auf %1$s"
 
 #: src/LyX.cpp:972
-#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -16845,10 +16818,10 @@ msgid ""
 "Check the LyX man page for more details."
 msgstr ""
 "Aufruf: lyx [ Befehlszeilenoptionen ] [ name.lyx ... ]\n"
-"Befehlszeilenoptionen (groß/klein beachten):\n"
-"\t-help              Fasst LyX-Benutzung zusammen\n"
-"\t-userdir dir       Setzt das Benutzerverzeichnis auf dir\n"
-"\t-sysdir dir        Setzt das Systemverzeichnis auf dir\n"
+"Befehlszeilenoptionen (Groß-/Kleinschreibung beachten):\n"
+"\t-help              Zusammenfassende Hilfshinweise\n"
+"\t-userdir dir      Setzt das Benutzerverzeichnis auf dir\n"
+"\t-sysdir dir       Setzt das Systemverzeichnis auf dir\n"
 "\t-geometry WxH+X+Y  Legt Höhe/Breite/Position des Fensters fest.\n"
 "\t-dbg Feature[,Feature]...\n"
 "                     Wählt die Themenbereiche aus, für die eine\n"
@@ -16856,11 +16829,20 @@ msgstr ""
 "                     Mit `lyx -dbg' erhalten Sie eine Liste der\n"
 "                     vorhandenen Bereiche.\n"
 "\t-x [--execute] command\n"
-"                     command ist ein LyX-Befehl.\n"
+"                     führt den LyX-Befehl command aus.\n"
 "\t-e [--export] fmt\n"
-"                     fmt ist das gewünschte Export-Format.\n"
+"                     Exportiert in das Format fmt.\n"
+"                     In Werkzeuge->Einstellungen->Dateiformate->Format\n"
+"                     können Sie nachsehen, welche Parameter hier sinnvoll "
+"sind.\n"
+"                     Beachten Sie, dass die Reihenfolge der Schalter -e und "
+"-x\n"
+"                     nicht beliebig ist!\n"
+"\t-i [--import] fmt file.xxx\n"
+"                     Importiert die Datei file.xxx aus dem Format fmt\n"
 "\t--batch         Führt Befehle aus und beendet sich anschließend\n"
-"\t-version           Fasst Version und Erstellungsdatum zusammen.\n"
+"\t-version           Fasst Informationen zur Version und zur Kompilation "
+"zusammen.\n"
 "Weitere Optionen sind in der LyX man Datei aufgeführt."
 
 #: src/LyX.cpp:1014
@@ -17648,6 +17630,7 @@ msgstr ""
 #: src/LyXRC.cpp:2901
 msgid "This is the place where the files of the thesaurus library reside."
 msgstr ""
+"Dies ist der Ort, an dem sich die Dateien des Thesaurusprogramms befinden."
 
 #: src/LyXRC.cpp:2905
 msgid ""
@@ -18440,9 +18423,8 @@ msgid "Color"
 msgstr "Farbe"
 
 #: src/frontends/qt4/GuiBranches.cpp:52
-#, fuzzy
 msgid "Filename Suffix"
-msgstr "Dateiname"
+msgstr "Erweitere Dateinamen"
 
 #: src/frontends/qt4/GuiBranches.cpp:97 src/frontends/qt4/GuiBranches.cpp:105
 #: src/frontends/qt4/GuiDocument.cpp:1729
@@ -18455,9 +18437,8 @@ msgid "No"
 msgstr "Nein"
 
 #: src/frontends/qt4/GuiBranches.cpp:166
-#, fuzzy
 msgid "Enter new branch name"
-msgstr "Neuen Indexnamen eingeben"
+msgstr "Neuen Namen für den Zweig eingeben"
 
 #: src/frontends/qt4/GuiBranches.cpp:171
 #, fuzzy, c-format
