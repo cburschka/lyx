@@ -146,8 +146,8 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 20.
- Juni 2009
+letzte Änderung: 21.
+ Juli 2009
 \end_layout
 
 \begin_layout Standard
@@ -173,8 +173,7 @@ rung, Installation neuer LaTeX-Klassen und LyX-Layouts usw.
 \end_inset
 
 behandelt.
- Es kann hier nicht alles beschrie\SpecialChar \-
-ben werden, das an LyX individuell eingestellt
+ Es kann hier nicht alles beschrieben werden, das an LyX individuell eingestellt
  und verändert werden kann --- die Entwickler fügen Neuerungen schneller
  ein, als wir sie dokumentieren können --- doch werden die grundlegenden
  Fähigkeiten von LyX dokumentiert sowie für einige der etwas obskureren
@@ -517,10 +516,7 @@ doc/
 \series default
  Enthält die Dateien der LyX-Dokumentation (einschließlich der, die Sie
  gerade lesen).
- Eine kleine Ausnahmestellung hat die bereits be\SpecialChar \-
-schrie\SpecialChar \-
-be\SpecialChar \-
-ne Datei 
+ Eine kleine Ausnahmestellung hat die bereits beschriebene Datei 
 \family typewriter
 LaTe
 \begin_inset ERT
@@ -1352,7 +1348,7 @@ Kopierer
 
 \begin_layout Standard
 Weil alle Konvertierungen im temporären Verzeichnis von LyX stattfinden,
- muß eine Datei manchmal geändert werden bevor sie ins temporäre Verzeichnis
+ muss eine Datei manchmal geändert werden bevor sie ins temporäre Verzeichnis
  kopiert wird, damit die Konvertierung durchgeführt werden kann.
 \begin_inset Foot
 status collapsed
@@ -2652,9 +2648,9 @@ DocName
 
 \begin_layout Itemize
 Werfen Sie einen Blick auf die Seiten des Übersetzungsteams auf der Homepage
- des LyX Developer Teams: 
+ des LyX-Entwickler-Teams: 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -4532,7 +4528,7 @@ name "sub:Layout-Module"
 \begin_layout Standard
 Seit LyX 1.6 gibt es, ähnlich wie Layout-Dateien, Layout-Module.
  Module sind für LaTeX-Pakete, was Layouts für LaTeX-Klassen sind, und einige
- Module -- wie zum Beispiel das Endnotizen-Modul -- unterstützen solch ein
+ Module -- wie zum Beispiel das Endnoten-Modul -- unterstützen solch ein
  Paket.
  Man kann sagen, dass Layout-Module ähnlich sind wie eingefügte Dateien
  -- Dateien wie 
@@ -4646,7 +4642,7 @@ Module
 #Requires:\SpecialChar \ldots{}
 
 \family default
- aufgeführten mus 
+ aufgeführten muss 
 \emph on
 mindestens
 \emph default
