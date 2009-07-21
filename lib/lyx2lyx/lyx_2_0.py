@@ -1017,18 +1017,11 @@ def revert_percent_vspace_lengths(document):
 def revert_percent_hspace_lengths(document):
     " Revert relative HSpace lengths to ERT "
     i = 0
-    j = 0
     while True:
-      i = find_token(document.body, "\\begin_inset space \\hspace{}", i)
+      i = find_token(document.body, "\\begin_inset space \\hspace", i)
       if i == -1:
-          j = find_token(document.body, "\\begin_inset space \\hspace*{}", j)
-          if j == -1:
-              break
-          else:
-              star = True
-              i = j
-      else:
-          star = False
+          break
+      star = (document.body[i].find("\\hspace*{}") != -1)
       # only revert when a custom length was set and when
       # it used a percent length
       length = get_value(document.body, '\\length', i+1)
@@ -1049,24 +1042,16 @@ def revert_percent_hspace_lengths(document):
               subst = [put_cmd_in_ert("\\hspace{" + length + "}")]
           document.body[i:i+3] = subst
       i = i + 2
-      j = i
 
 
 def revert_hspace_glue_lengths(document):
     " Revert HSpace glue lengths to ERT "
     i = 0
-    j = 0
     while True:
-      i = find_token(document.body, "\\begin_inset space \\hspace{}", i)
+      i = find_token(document.body, "\\begin_inset space \\hspace", i)
       if i == -1:
-          j = find_token(document.body, "\\begin_inset space \\hspace*{}", j)
-          if j == -1:
-              break
-          else:
-              star = True
-              i = j
-      else:
-          star = False
+          break
+      star = (document.body[i].find("\\hspace*{}") != -1)
       length = get_value(document.body, '\\length', i+1)
       if length == '':
           document.warning("Malformed lyx document: Missing '\\length' in Space inset.")
@@ -1085,14 +1070,13 @@ def revert_hspace_glue_lengths(document):
       # revert the HSpace inset to ERT
       # allow leading -
       n = length.find("-")
-      if n <> 0 or (n == 0 and (length.rfind("plus") > -1 or length.rfind("minus") > -1)):
+      if n != 0 or (n == 0 and (length.rfind("plus") > -1 or length.rfind("minus") > -1)):
           if star == True:
               subst = [put_cmd_in_ert("\\hspace*{" + length + "}")]
           else:
               subst = [put_cmd_in_ert("\\hspace{" + length + "}")]
           document.body[i:i+3] = subst
       i = i + 2
-      j = i
 
 
 ##
