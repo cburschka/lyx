@@ -67,8 +67,11 @@
    </item>
    <item row="4" column="0" colspan="3" >
     <widget class="QCheckBox" name="spellcheckContinuouslyCB" >
+     <property name="toolTip" >
+      <string>Mark misspelled words with a wavy underline.</string>
+     </property>
      <property name="text" >
-      <string>Spellcheck continuously (mark misspelled words with wavy underline)</string>
+      <string>S&amp;pellcheck continuously</string>
      </property>
     </widget>
    </item>
