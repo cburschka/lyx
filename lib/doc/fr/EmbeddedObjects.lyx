@@ -21785,16 +21785,12 @@ e
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Subfloats
+Sous-flottants
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Flottants ! 
-\lang english
-Subfloats
+Flottants ! Sous-flottants
 \end_layout
 
 \end_inset
@@ -21803,26 +21799,24 @@ Subfloats
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Subfloats are for example used when a figure consists of several images.
- They are created by inserting a float to an existing float.
- The placement of the subfloats can be controlled like for paragraphs as
- shown in table
+Un exemple de sous-flottant : une figure composée de plusieurs images.
+ On les crée en insérant un flottant dans un flottant existant.
+ Le positionnement des sous-flottants peut être contrôlé comme pour les
+ paragraphes comme on le voit avec les tableaux
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Two-subtables-side"
+reference "tab:Deux-sous-tableaux-cote-a-cote"
 
 \end_inset
 
- and 
+ et 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Two-subtables-upon"
+reference "tab:Deux-sous-tableaux-l-un-sur-l-autre"
 
 \end_inset
 
@@ -21830,34 +21824,33 @@ reference "tab:Two-subtables-upon"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Referencing subfloats works as for normal floats: Table
+On fait référence à des sous-flottants comme on le ferait avec des flottants
+ normaux : Les tableaux
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:This-is-subtable-a"
+reference "tab:Le-sous-tableau-a"
 
 \end_inset
 
- and 
+ et 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:This-is-subtable-b"
+reference "tab:Le-sous-tableau-b"
 
 \end_inset
 
- are subtables of table
+ sont des sous-tableaux du tableau
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Two-subtables-side"
+reference "tab:Deux-sous-tableaux-cote-a-cote"
 
 \end_inset
 
@@ -21865,28 +21858,22 @@ reference "tab:Two-subtables-side"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Float table
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Caption
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Two-subtables-side"
+name "tab:Deux-sous-tableaux-cote-a-cote"
 
 \end_inset
 
-Two subtables placed side by side.
+Deux sous-tableaux placés côte-à-côte.
 \end_layout
 
 \end_inset
@@ -21896,8 +21883,6 @@ Two subtables placed side by side.
 
 \begin_layout Plain Layout
 \align center
-
-\lang english
 \begin_inset space \hfill{}
 \end_inset
 
@@ -21905,23 +21890,19 @@ Two subtables placed side by side.
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Caption
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:This-is-subtable-a"
+name "tab:Le-sous-tableau-a"
 
 \end_inset
 
-This is subtable a.
+Le sous-tableau a
 \end_layout
 
 \end_inset
@@ -22003,23 +21984,19 @@ e
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Caption
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:This-is-subtable-b"
+name "tab:Le-sous-tableau-b"
 
 \end_inset
 
-This is subtable b.
+Le sous-tableau b.
 \end_layout
 
 \end_inset
@@ -22106,29 +22083,23 @@ test
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Float table
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Caption
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Two-subtables-upon"
+name "tab:Deux-sous-tableaux-l-un-sur-l-autre"
 
 \end_inset
 
-Two subtables placed one upon the other.
- (a) table with 4 cells, (b) table with 5 cells.
+Deux sous-tableaux placés l'un sur l'autre.
+ (a) un tableau avec 4 cellules, (b) un tableau avec 5 cellules.
 \end_layout
 
 \end_inset
