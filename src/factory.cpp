@@ -387,22 +387,22 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 			else if (name == "hrulefill")
 				isp.kind = InsetSpaceParams::HRULEFILL;
 			else if (name == "hspace") {
-				if (len.empty() || !isValidLength(len)) {
+				if (len.empty() || !isValidGlueLength(len)) {
 					lyxerr << "LyX function 'space-insert hspace' "
 					       << "needs a valid length argument." << endl;
 					break;
 				}
 				isp.kind = InsetSpaceParams::CUSTOM;
-				isp.length = Length(len);
+				isp.length = GlueLength(len);
 			}
 			else if (name == "hspace*") {
-				if (len.empty() || !isValidLength(len)) {
+				if (len.empty() || !isValidGlueLength(len)) {
 					lyxerr << "LyX function 'space-insert hspace*' "
 					       << "needs a valid length argument." << endl;
 					break;
 				}
 				isp.kind = InsetSpaceParams::CUSTOM_PROTECTED;
-				isp.length = Length(len);
+				isp.length = GlueLength(len);
 			}
 			else {
 				lyxerr << "Wrong argument for LyX function 'space-insert'." << endl;

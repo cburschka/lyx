@@ -182,42 +182,136 @@ def latex_length(string):
     i = string.find("text%")
     if i > -1:
         percent = True
-        value = string[:i]
-        value = str(float(value)/100)
-        return "True," + value + "\\textwidth"
+        minus = string.rfind("-", 0, i)
+        plus = string.rfind("+", 0, i)
+        if plus == -1 and minus == -1:
+            value = string[:i]
+            value = str(float(value)/100)
+            end = string[i+5:]
+            string = value + "\\textwidth" + end
+        if plus > minus:
+            value = string[plus+1:i]
+            value = str(float(value)/100)
+            begin = string[:plus+1]
+            end = string[i+5:]
+            string = begin + value + "\\textwidth" + end
+        if plus < minus:
+            value = string[minus+1:i]
+            value = str(float(value)/100)
+            begin = string[:minus+1]
+            string = begin + value + "\\textwidth"
     i = string.find("col%")
     if i > -1:
         percent = True
-        value = string[:i]
-        value = str(float(value)/100)
-        return "True," + value + "\\columnwidth"
+        minus = string.rfind("-", 0, i)
+        plus = string.rfind("+", 0, i)
+        if plus == -1 and minus == -1:
+            value = string[:i]
+            value = str(float(value)/100)
+            end = string[i+4:]
+            string = value + "\\columnwidth" + end
+        if plus > minus:
+            value = string[plus+1:i]
+            value = str(float(value)/100)
+            begin = string[:plus+1]
+            end = string[i+4:]
+            string = begin + value + "\\columnwidth" + end
+        if plus < minus:
+            value = string[minus+1:i]
+            value = str(float(value)/100)
+            begin = string[:minus+1]
+            string = begin + value + "\\columnwidth"
     i = string.find("page%")
     if i > -1:
         percent = True
-        value = string[:i]
-        value = str(float(value)/100)
-        return "True," + value + "\\paperwidth"
+        minus = string.rfind("-", 0, i)
+        plus = string.rfind("+", 0, i)
+        if plus == -1 and minus == -1:
+            value = string[:i]
+            value = str(float(value)/100)
+            end = string[i+5:]
+            string = value + "\\paperwidth" + end
+        if plus > minus:
+            value = string[plus+1:i]
+            value = str(float(value)/100)
+            begin = string[:plus+1]
+            end = string[i+5:]
+            string = begin + value + "\\paperwidth" + end
+        if plus < minus:
+            value = string[minus+1:i]
+            value = str(float(value)/100)
+            begin = string[:minus+1]
+            string = begin + value + "\\paperwidth"
     i = string.find("line%")
     if i > -1:
         percent = True
-        value = string[:i]
-        value = str(float(value)/100)
-        return "True," + value + "\\linewidth"
+        minus = string.rfind("-", 0, i)
+        plus = string.rfind("+", 0, i)
+        if plus == -1 and minus == -1:
+            value = string[:i]
+            value = str(float(value)/100)
+            end = string[i+5:]
+            string = value + "\\linewidth" + end
+        if plus > minus:
+            value = string[plus+1:i]
+            value = str(float(value)/100)
+            begin = string[:plus+1]
+            end = string[i+5:]
+            string = begin + value + "\\linewidth" + end
+        if plus < minus:
+            value = string[minus+1:i]
+            value = str(float(value)/100)
+            begin = string[:minus+1]
+            string = begin + value + "\\linewidth"
     i = string.find("theight%")
     if i > -1:
         percent = True
-        value = string[:i]
-        value = str(float(value)/100)
-        return "True," + value + "\\textheight"
+        minus = string.rfind("-", 0, i)
+        plus = string.rfind("+", 0, i)
+        if plus == -1 and minus == -1:
+            value = string[:i]
+            value = str(float(value)/100)
+            end = string[i+8:]
+            string = value + "\\textheight" + end
+        if plus > minus:
+            value = string[plus+1:i]
+            value = str(float(value)/100)
+            begin = string[:plus+1]
+            end = string[i+8:]
+            string = begin + value + "\\textheight" + end
+        if plus < minus:
+            value = string[minus+1:i]
+            value = str(float(value)/100)
+            begin = string[:minus+1]
+            string = begin + value + "\\textheight"
     i = string.find("pheight%")
     if i > -1:
         percent = True
-        value = string[:i]
-        value = str(float(value)/100)
-        return "True," + value + "\\paperheight"
+        minus = string.rfind("-", 0, i)
+        plus = string.rfind("+", 0, i)
+        if plus == -1 and minus == -1:
+            value = string[:i]
+            value = str(float(value)/100)
+            end = string[i+8:]
+            string = value + "\\paperheight" + end
+        if plus > minus:
+            value = string[plus+1:i]
+            value = str(float(value)/100)
+            begin = string[:plus+1]
+            end = string[i+8:]
+            string = begin + value + "\\paperheight" + end
+        if plus < minus:
+            value = string[minus+1:i]
+            value = str(float(value)/100)
+            begin = string[:minus+1]
+            string = begin + value + "\\paperheight"
     if percent ==  False:
-        return "False," +  string
-
+        return "False," + string
+    else:
+        string = string.replace("+", " plus ")
+        string = string.replace("-", " minus ")
+        return "True," + string
+        
 
 ####################################################################
 
@@ -945,6 +1039,53 @@ def revert_percent_hspace_lengths(document):
       j = i
 
 
+def revert_hspace_glue_lengths(document):
+    " Revert HSpace glue lengths to ERT "
+    i = 0
+    j = 0
+    while True:
+      i = find_token(document.body, "\\begin_inset space \hspace{}", i)
+      if i == -1:
+          j = find_token(document.body, "\\begin_inset space \hspace*{}", j)
+          if j == -1:
+              break
+          else:
+              star = True
+              i = j
+      else:
+          star = False
+      # only revert when a custom length was set and when
+      # it used a percent length
+      o = document.body[i+1].find("\\length")
+      if o == -1:
+          document.warning("Error: Cannot find lenght for \\hspace!")
+          break
+      # search for the beginning of the value via the space
+      k = document.body[i+1].find(" ")
+      length = document.body[i+1][k+1:]
+      # check if the length contains a plus or minus
+      l = length.find("+")
+      if l == -1:
+          l = length.find("-")
+          if l == -1:
+              break
+      # handle percent lengths
+      length = latex_length(length)
+      # latex_length returns "bool,length"
+      m = length.find(",")
+      percent = length[:m]
+      length = length[m+1:]
+      # revert the HSpace inset to ERT
+      if percent == "True":
+          if star == True:
+              subst = [put_cmd_in_ert("\\hspace*{" + length + "}")]
+          else:
+              subst = [put_cmd_in_ert("\\hspace{" + length + "}")]
+          document.body[i:i+3] = subst
+      i = i + 2
+      j = i
+
+
 ##
 # Conversion hub
 #
@@ -971,10 +1112,12 @@ convert = [[346, []],
            [364, []],
            [365, []],
            [366, []],
-           [367, []]
+           [367, []],
+           [368, []]
           ]
 
-revert =  [[366, [revert_percent_vspace_lengths, revert_percent_hspace_lengths]],
+revert =  [[367, [revert_hspace_glue_lengths]],
+           [366, [revert_percent_vspace_lengths, revert_percent_hspace_lengths]],
            [365, [revert_percent_skip_lengths]],
            [364, [revert_paragraph_indentation]],
            [363, [revert_branch_filename]],

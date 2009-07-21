@@ -53,7 +53,7 @@ InsetSpaceParams::Kind InsetSpace::kind() const
 }
 
 
-Length InsetSpace::length() const
+GlueLength InsetSpace::length() const
 {
 	return params_.length;
 }
@@ -130,12 +130,14 @@ docstring InsetSpace::toolTip(BufferView const &, int, int) const
 		message = _("Horizontal Fill (Down Brace)");
 		break;
 	case InsetSpaceParams::CUSTOM:
+		// FIXME unicode
 		message = support::bformat(_("Horizontal Space (%1$s)"),
-				params_.length.asDocstring());
+				from_ascii(params_.length.asString()));
 		break;
 	case InsetSpaceParams::CUSTOM_PROTECTED:
+		// FIXME unicode
 		message = support::bformat(_("Protected Horizontal Space (%1$s)"),
-				params_.length.asDocstring());
+				from_ascii(params_.length.asString()));
 		break;
 	}
 	return message;
@@ -238,7 +240,7 @@ void InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 		case InsetSpaceParams::CUSTOM:
 		case InsetSpaceParams::CUSTOM_PROTECTED: {
 			int const w = 
-				params_.length.inPixels(mi.base.textwidth,
+				params_.length.len().inPixels(mi.base.textwidth,
 							fm.width(char_type('M')));
 			int const minw = (w < 0) ? 3 * arrow_size : 4;
 			dim.wid = max(minw, abs(w));
@@ -264,7 +266,7 @@ void InsetSpace::draw(PainterInfo & pi, int x, int y) const
 {
 	Dimension const dim = dimension(*pi.base.bv);
 
-	if (isStretchableSpace() || params_.length.value() < 0) {
+	if (isStretchableSpace() || params_.length.len().value() < 0) {
 		int const asc = theFontMetrics(pi.base.font).ascent('M');
 		int const desc = theFontMetrics(pi.base.font).descent('M');
 		// Pixel height divisible by 2 for prettier fill graphics:
@@ -450,7 +452,7 @@ void InsetSpaceParams::write(ostream & os) const
 		break;
 	}
 	
-	if (!length.empty())
+	if (!length.len().empty())
 		os << "\n\\length " << length.asString();
 }
 

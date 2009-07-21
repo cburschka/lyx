@@ -57,7 +57,10 @@ GuiHSpace::GuiHSpace(GuiView & lv, bool math)
 	connect(fillPatternCO, SIGNAL(activated(int)),
 		this, SLOT(patternChanged()));
 
-	valueLE->setValidator(unsignedLengthValidator(valueLE));
+	if (params_.math)
+		valueLE->setValidator(unsignedLengthValidator(valueLE));
+	else
+		valueLE->setValidator(unsignedGlueLengthValidator(valueLE));
 
 	// Manage the ok, apply, restore and cancel/close buttons
 	bc().setPolicy(ButtonPolicy::OkApplyCancelReadOnlyPolicy);
@@ -245,9 +248,10 @@ static void setWidgetsFromHSpace(InsetSpaceParams const & params,
 	keep->setChecked(protect);
 
 	Length::UNIT const default_unit = Length::defaultUnit();
-	if (item == (params.math ? 9 : 7))
-		lengthToWidgets(value, unit, params.length, default_unit);
-	else
+	if (item == (params.math ? 9 : 7)) {
+		string length = params.length.asString();
+		lengthToWidgets(value, unit, length, default_unit);
+	} else
 		lengthToWidgets(value, unit, "", default_unit);
 }
 
@@ -269,7 +273,7 @@ static InsetSpaceParams setHSpaceFromWidgets(int spacing,
 		case 8: params.kind = InsetSpaceParams::QQUAD;     break;
 		case 9:
 			params.kind = InsetSpaceParams::CUSTOM;
-			params.length = Length(widgetsToLength(value, unit));
+			params.length = GlueLength(widgetsToLength(value, unit));
 			break;
 		}
 		return params;
@@ -323,7 +327,7 @@ static InsetSpaceParams setHSpaceFromWidgets(int spacing,
 				params.kind = InsetSpaceParams::CUSTOM_PROTECTED;
 			else
 				params.kind = InsetSpaceParams::CUSTOM;
-			params.length = Length(widgetsToLength(value, unit));
+			params.length = GlueLength(widgetsToLength(value, unit));
 			break;
 	}
 	return params;

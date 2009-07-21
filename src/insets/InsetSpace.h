@@ -81,7 +81,7 @@ public:
 	///
 	Kind kind;
 	///
-	Length length;
+	GlueLength length;
 	/**
 	 * Whether these params are to be used in mathed.
 	 * This determines the set of valid kinds.
@@ -110,7 +110,7 @@ public:
 	///
 	static std::string params2string(InsetSpaceParams const &);
 	///
-	Length length() const;
+	GlueLength length() const;
 
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;

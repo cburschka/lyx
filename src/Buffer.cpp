@@ -127,7 +127,7 @@ namespace {
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-int const LYX_FORMAT = 367; // uwestoehr: percent lengths for the VSpace dialog
+int const LYX_FORMAT = 368; // spitz, uwestoehr: glue lengths for the HSpace dialog
 
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;

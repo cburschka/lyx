@@ -214,7 +214,7 @@ string const InsetMathSpace::createDialogStr() const
 	LASSERT(space_info[space_].visible, /**/);
 	InsetSpaceParams isp(true);
 	isp.kind = space_info[space_].kind;
-	isp.length = length_;
+	isp.length = GlueLength(length_);
 	return InsetSpace::params2string(isp);
 }
 
