@@ -1022,7 +1022,7 @@ def revert_percent_hspace_lengths(document):
       if i == -1:
           break
       star = (document.body[i].find("\\hspace*{}") != -1)
-      # only revert when a custom length was set and when
+      # only revert if a custom length was set and when
       # it used a percent length
       length = get_value(document.body, '\\length', i+1)
       if length == '':
@@ -1031,9 +1031,8 @@ def revert_percent_hspace_lengths(document):
       # handle percent lengths
       length = latex_length(length)
       # latex_length returns "bool,length"
-      m = length.find(",")
-      percent = length[:m]
-      length = length[m+1:]
+      percent = length.split(",")[0]
+      length = length.split(",")[1]
       # revert the HSpace inset to ERT
       if percent == "True":
           if star == True:
@@ -1056,26 +1055,20 @@ def revert_hspace_glue_lengths(document):
       if length == '':
           document.warning("Malformed lyx document: Missing '\\length' in Space inset.")
           return
-      # only revert when the length contains a plus or minus
-      l = length.find("+")
-      if l == -1:
-          l = length.find("-")
-          if l == -1:
-              break
+      # only revert if the length contains a plus or minus at pos != 0
+      glue  = re.compile(r'.+[\+-]')
+      if glue.search(length) == None:
+          break
       # handle percent lengths
       length = latex_length(length)
       # latex_length returns "bool,length"
-      m = length.find(",")
-      length = length[m+1:]
+      length = length.split(",")[1]
       # revert the HSpace inset to ERT
-      # allow leading -
-      n = length.find("-")
-      if n != 0 or (n == 0 and (length.rfind("plus") > -1 or length.rfind("minus") > -1)):
-          if star == True:
-              subst = [put_cmd_in_ert("\\hspace*{" + length + "}")]
-          else:
-              subst = [put_cmd_in_ert("\\hspace{" + length + "}")]
-          document.body[i:i+3] = subst
+      if star == True:
+         subst = [put_cmd_in_ert("\\hspace*{" + length + "}")]
+      else:
+          subst = [put_cmd_in_ert("\\hspace{" + length + "}")]
+      document.body[i:i+3] = subst
       i = i + 2
 
 
