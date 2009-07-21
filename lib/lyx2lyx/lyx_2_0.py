@@ -179,6 +179,10 @@ def latex_length(string):
     'Convert lengths to their LaTeX representation.'
     i = 0
     percent = False
+    # the string has always the form
+    # ValueUnit+ValueUnit-ValueUnit
+    # the + and - lengths are optional
+    # the + is always before the -
     i = string.find("text%")
     if i > -1:
         percent = True
@@ -1054,8 +1058,6 @@ def revert_hspace_glue_lengths(document):
               i = j
       else:
           star = False
-      # only revert when a custom length was set and when
-      # it used a percent length
       o = document.body[i+1].find("\\length")
       if o == -1:
           document.warning("Error: Cannot find lenght for \\hspace!")
@@ -1063,7 +1065,7 @@ def revert_hspace_glue_lengths(document):
       # search for the beginning of the value via the space
       k = document.body[i+1].find(" ")
       length = document.body[i+1][k+1:]
-      # check if the length contains a plus or minus
+      # only revert when the length contains a plus or minus
       l = length.find("+")
       if l == -1:
           l = length.find("-")
