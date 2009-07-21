@@ -30990,7 +30990,7 @@ réagit avec deux ions
 .
  La réaction chimique peut être mise sous la forme:
 \begin_inset Formula \begin{equation}
-\mathrm{2\, Na^{+}+SO_{4}^{2-}\longrightarrow Na_{2}SO_{4}}\label{eq:réaction-chimique}\end{equation}
+\mathrm{2\, Na^{+}+SO_{4}^{2-}\longrightarrow Na_{2}SO_{4}}\label{eq:reaction-chimique}\end{equation}
 
 \end_inset
 
@@ -31030,11 +31030,8 @@ reference "sub:Styles-de-polices"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-A more convenient way to typeset chemical formulas is to use the command
-\lang french
- 
+Une méthode plus paratique pour mettre en forme des formules chimiques est
+ d'utiliser la commande 
 \series bold
 
 \backslash
@@ -31052,11 +31049,7 @@ ce
 
 \end_inset
 
- 
-\lang english
-that is available when the LaTeX-package
-\lang french
- 
+ qui est disponibles si le paquetage LaTeX 
 \series bold
 mhchem
 \series default
@@ -31070,17 +31063,15 @@ Paquetages ! mhchem
 
 \end_inset
 
- 
-\lang english
-is installed.
- After inserting 
+ est installé.
+ Quand on insère 
 \series bold
 
 \backslash
 ce
 \series default
- to a formula a new blue box appears where chemical formulas can be inserted
- in an intuitive way.
+ dans une formule, une boîte bleue apparaît dans laquelle on peut saisir
+ des formules chimiques de façon intuitive.
 \end_layout
 
 \begin_layout Standard
@@ -31592,19 +31583,16 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Note:
 \series default
- Inserting a formula to a 
+ L'insertion d'une formule mathématique dans une boîte 
 \series bold
 
 \backslash
 ce
 \series default
- box will lead to LaTeX errors.
- In this case TeX code has to be used like for
-\lang french
- 
+ va provoquer une erreur LaTeX.
+ Dans ce cas le code TeX devra être utilisé comme par exemple pour 
 \series bold
 
 \backslash
@@ -31640,32 +31628,24 @@ hyphen$Cl}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Using 
+L'utilisation de la commande 
 \series bold
 
 \backslash
 ce
 \series default
- the command for equation
-\lang french
-
+ pour l'équation
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand eqref
-reference "eq:réaction-chimique"
+reference "eq:reaction-chimique"
 
 \end_inset
 
- 
-\lang english
-is
-\lang french
-
+ donne
 \begin_inset Newline newline
 \end_inset
 
@@ -31755,21 +31735,17 @@ Na2SO4
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Besides 
+En plus de 
 \series bold
 
 \backslash
 ce
 \series default
- the 
+ le paquetage 
 \series bold
 mhchem
 \series default
- package provides the command
-\lang french
- 
+ fournit la commande 
 \series bold
 
 \backslash
@@ -31787,18 +31763,14 @@ cf
 
 \end_inset
 
- 
-\lang english
-that has to be used for special cases.
- For more information about 
+ qui doit être réservée à des cas spéciaux.
+ Pour avoir plus d'information au sujet de 
 \series bold
 
 \backslash
 cf
 \series default
- and more examples have a look at the documentation of
-\lang french
- 
+ et plus d'exemples, jetez un coup d'oeil à la documentation de 
 \series bold
 mhchem
 \series default
