@@ -727,8 +727,8 @@ void MenuDefinition::expandSpellingSuggestions(BufferView const * bv)
 		return;
 	LYXERR(Debug::GUI, "Misspelled Word! Suggested Words = ");
 	size_t i = 0;
-	MenuItem item(MenuItem::Submenu, qt_("more spelling suggestions"));
-	item.setSubmenu(MenuDefinition(qt_("more spelling suggestions")));
+	MenuItem item(MenuItem::Submenu, qt_("More Spelling Suggestions"));
+	item.setSubmenu(MenuDefinition(qt_("More Spelling Suggestions")));
 	for (; i != suggestions.size(); ++i) {
 		docstring const & suggestion = suggestions[i];
 		LYXERR(Debug::GUI, suggestion);
@@ -799,7 +799,7 @@ void MenuDefinition::expandDocuments()
 		if (!item.submenu().empty())
 			add(item);
 	} else
-		add(MenuItem(MenuItem::Info, qt_("<No documents open>")));
+		add(MenuItem(MenuItem::Info, qt_("<No Documents Open>")));
 }
 
 
@@ -819,7 +819,7 @@ void MenuDefinition::expandBookmarks()
 		}
 	}
 	if (empty)
-		add(MenuItem(MenuItem::Info, qt_("<No bookmarks saved yet>")));
+		add(MenuItem(MenuItem::Info, qt_("<No Bookmarks Saved Yet>")));
 }
 
 
@@ -956,7 +956,7 @@ void MenuDefinition::expandFlexInsert(
 	}
 	// FIXME This is a little clunky.
 	if (items_.empty() && type == InsetLayout::CUSTOM)
-		add(MenuItem(MenuItem::Help, qt_("No custom insets defined!")));
+		add(MenuItem(MenuItem::Help, qt_("No Custom Insets Defined!")));
 }
 
 
@@ -1024,7 +1024,7 @@ void MenuDefinition::expandToc(Buffer const * buf)
 	// OK, so we avoid this unnecessary overhead (JMarc)
 
 	if (!buf) {
-		add(MenuItem(MenuItem::Info, qt_("<No document open>")));
+		add(MenuItem(MenuItem::Info, qt_("<No Document Open>")));
 		return;
 	}
 
@@ -1085,7 +1085,7 @@ void MenuDefinition::expandToc(Buffer const * buf)
 		if (cit->second.size() > 0 ) 
 			expandToc2(cit->second, 0, cit->second.size(), 0);
 		else
-			add(MenuItem(MenuItem::Info, qt_("<Empty table of contents>")));
+			add(MenuItem(MenuItem::Info, qt_("<Empty Table of Contents>")));
 	}
 }
 
@@ -1135,7 +1135,7 @@ void MenuDefinition::expandBranches(Buffer const * buf)
 	BufferParams const & master_params = buf->masterBuffer()->params();
 	BufferParams const & params = buf->params();
 	if (params.branchlist().empty() && master_params.branchlist().empty() ) {
-		add(MenuItem(MenuItem::Help, qt_("No branches set for document!")));
+		add(MenuItem(MenuItem::Help, qt_("No Branches Set for Document!")));
 		return;
 	}
 
@@ -1825,7 +1825,7 @@ void Menus::updateMenu(Menu * qmenu)
 	theLyXFunc().setLyXView(qmenu->d->view);
 
 	if (!d->hasMenu(qmenu->d->name)) {
-		qmenu->addAction(qt_("No action defined!"));
+		qmenu->addAction(qt_("No Action Defined!"));
 		LYXERR(Debug::GUI, "\tWARNING: non existing menu: "
 			<< qmenu->d->name);
 		return;
