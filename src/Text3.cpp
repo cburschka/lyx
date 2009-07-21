@@ -56,6 +56,7 @@
 #include "insets/InsetCollapsable.h"
 #include "insets/InsetCommand.h"
 #include "insets/InsetExternal.h"
+#include "insets/InsetFloat.h"
 #include "insets/InsetFloatList.h"
 #include "insets/InsetGraphics.h"
 #include "insets/InsetGraphicsParams.h"
@@ -63,6 +64,7 @@
 #include "insets/InsetQuotes.h"
 #include "insets/InsetSpecialChar.h"
 #include "insets/InsetText.h"
+#include "insets/InsetWrap.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
@@ -2286,9 +2288,36 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 	case LFUN_FLOAT_INSERT:
 	case LFUN_FLOAT_WIDE_INSERT:
+		// FIXME: If there is a selection, we should check whether there
+		// are floats in the selection, but this has performance issues, see
+		// LFUN_CHANGE_ACCEPT/REJECT.
 		code = FLOAT_CODE;
-		// not allowed in description items
-		enable = !inDescriptionItem(cur);
+		if (inDescriptionItem(cur))
+			// not allowed in description items
+			enable = false;
+		else {
+			InsetCode const inset_code = cur.inset().lyxCode();
+
+			// algorithm floats cannot be put in another float
+			if (to_utf8(cmd.argument()) == "algorithm") {
+				enable = inset_code != WRAP_CODE && inset_code != FLOAT_CODE;
+				break;
+			}
+
+			// for figures and tables: only allow in another
+			// float or wrap if it is of the same type and
+			// not a subfloat already
+			if(cur.inset().lyxCode() == code) {
+				InsetFloat const & ins =
+					static_cast<InsetFloat const &>(cur.inset());
+				enable = ins.params().type == to_utf8(cmd.argument())
+					&& !ins.params().subfloat;
+			} else if(cur.inset().lyxCode() == WRAP_CODE) {
+				InsetWrap const & ins =
+					static_cast<InsetWrap const &>(cur.inset());
+				enable = ins.params().type == to_utf8(cmd.argument());
+			}
+		}
 		break;
 	case LFUN_WRAP_INSERT:
 		code = WRAP_CODE;

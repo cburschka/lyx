@@ -397,9 +397,16 @@ int InsetFloat::docbook(odocstream & os, OutputParams const & runparams) const
 
 bool InsetFloat::insetAllowed(InsetCode code) const
 {
-	return code != FOOT_CODE
-	    && code != MARGIN_CODE
-	    && (code != FLOAT_CODE || !params_.subfloat);
+	// The case that code == FLOAT_CODE is handled in Text3.cpp, 
+	// because we need to know what type of float is meant.
+	switch(code) {
+	case WRAP_CODE:
+	case FOOT_CODE:
+	case MARGIN_CODE:
+		return false;
+	default:
+		return InsetCollapsable::insetAllowed(code);
+	}
 }
 
 
