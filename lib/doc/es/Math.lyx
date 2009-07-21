@@ -31698,11 +31698,7 @@ reference "sub:Estilos-de-fuentes"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-A more convenient way to typeset chemical formulas is to use the command
-\lang spanish
- 
+Para escribir ecuaciones químicas es más conveniente usar el comando 
 \series bold
 
 \backslash
@@ -31720,11 +31716,7 @@ ce
 
 \end_inset
 
- 
-\lang english
-that is available when the LaTeX-package
-\lang spanish
- 
+, que está disponible si está instalado el paquete LaTeX 
 \series bold
 mhchem
 \series default
@@ -31738,17 +31730,15 @@ Paquetes ! mhchem
 
 \end_inset
 
- 
-\lang english
-is installed.
- After inserting 
+.
+ Al insertar  
 \series bold
 
 \backslash
 ce
 \series default
- to a formula a new blue box appears where chemical formulas can be inserted
- in an intuitive way.
+ en modo matemático aparece un un nuevo marco azul en el que se pueden escribir
+  ecuaciones químicas de una forma intuitiva.
 \end_layout
 
 \begin_layout Standard
@@ -32252,27 +32242,22 @@ spce
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Note:
+Nota:
 \series default
- Inserting a formula to a 
+ Insertar una ecuación en un marco  
 \series bold
 
 \backslash
 ce
 \series default
- box will lead to LaTeX errors.
- In this case TeX code has to be used like for
-\lang spanish
- 
+ provocará errores de LaTeX.
+ En estos casos hay que usar código TeX, como en  
 \series bold
 
 \backslash
@@ -32308,17 +32293,13 @@ hyphen$Cl}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Using 
+El comando 
 \series bold
 
 \backslash
 ce
 \series default
- the command for equation
-\lang spanish
-
+ para la ecuación
 \begin_inset space ~
 \end_inset
 
@@ -32329,11 +32310,7 @@ reference "eq:química-reacción"
 
 \end_inset
 
- 
-\lang english
-is
-\lang spanish
-
+ es
 \begin_inset Newline newline
 \end_inset
 
@@ -32423,21 +32400,17 @@ Na2SO4
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Besides 
+Además de 
 \series bold
 
 \backslash
 ce
 \series default
- the 
+ el paquete 
 \series bold
 mhchem
 \series default
- package provides the command
-\lang spanish
- 
+ suministra el comando 
 \series bold
 
 \backslash
@@ -32455,18 +32428,14 @@ cf
 
 \end_inset
 
- 
-\lang english
-that has to be used for special cases.
- For more information about 
+ que ha de utilizarse en casos especiales.
+ Para más información sobre 
 \series bold
 
 \backslash
 cf
 \series default
- and more examples have a look at the documentation of
-\lang spanish
- 
+ y más ejemplos echa un vistazo a la documentación de 
 \series bold
 mhchem
 \series default
