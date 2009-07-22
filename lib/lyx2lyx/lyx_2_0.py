@@ -921,21 +921,16 @@ def revert_paragraph_indentation(document):
       i = find_token(document.header, "\\paragraph_indentation", i)
       if i == -1:
           break
-      # only remove the preamble line when default
-      # otherwise also write the value to the preamble  
-      j = document.header[i].find("default")
-      if j > -1:
+      # only remove the preamble line if default
+      # otherwise also write the value to the preamble
+      length = get_value(document.header, "\\paragraph_indentation", i)
+      if length == "default":
           del document.header[i]
           break
       else:
-          # search for the beginning of the value via the space
-          j = document.header[i].find(" ")
-          length = document.header[i][j+1:]
           # handle percent lengths
-          length = latex_length(length)
           # latex_length returns "bool,length"
-          k = length.find(",")
-          length = length[k+1:]
+          length = latex_length(length).split(",")[1]
           add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
           add_to_preamble(document, ["\\setlength{\\parindent}{" + length + "}"])
           del document.header[i]
@@ -949,23 +944,15 @@ def revert_percent_skip_lengths(document):
       i = find_token(document.header, "\\defskip", i)
       if i == -1:
           break
+      length = get_value(document.header, "\\defskip", i)
       # only revert when a custom length was set and when
       # it used a percent length
-      j = document.header[i].find("smallskip")
-      k = document.header[i].find("medskip")
-      l = document.header[i].find("bigskip")
-      if (j > -1) or (k > -1) or (l > -1):
-          break
-      else:
-          # search for the beginning of the value via the space
-          j = document.header[i].find(" ")
-          length = document.header[i][j+1:]
+      if length not in ('smallskip', 'medskip', 'bigskip'):
           # handle percent lengths
           length = latex_length(length)
           # latex_length returns "bool,length"
-          l = length.find(",")
-          percent = length[:l]
-          length = length[l+1:]
+          percent = length.split(",")[0]
+          length = length.split(",")[1]
           if percent == "True":
               add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
               add_to_preamble(document, ["\\setlength{\\parskip}{" + length + "}"])
@@ -981,32 +968,25 @@ def revert_percent_vspace_lengths(document):
       i = find_token(document.body, "\\begin_inset VSpace", i)
       if i == -1:
           break
-      # only revert when a custom length was set and when
+      # only revert if a custom length was set and if
       # it used a percent length
-      j = document.body[i].find("defskip")
-      k = document.body[i].find("smallskip")
-      l = document.body[i].find("medskip")
-      m = document.body[i].find("bigskip")
-      n = document.body[i].find("vfill")
-      if (j > -1) or (k > -1) or (l > -1) or (m > -1) or (n > -1):
-          break
-      else:
-          # search for the beginning of the value via the last space
-          o = document.body[i].rfind(" ")
-          length = document.body[i][o+1:]
+      line = document.body[i]
+      r = re.compile(r'\\begin_inset VSpace (.*)$')
+      m = r.match(line)
+      length = m.group(1)
+      if length not in ('defskip', 'smallskip', 'medskip', 'bigskip', 'vfill'):
           # check if the space has a star (protected space)
-          p = document.body[i].rfind("*")
-          if p > -1:
-              length = length[:-1]
+          protected = (document.body[i].rfind("*") != -1)
+          if protected:
+              length = length.rstrip('*')
           # handle percent lengths
           length = latex_length(length)
           # latex_length returns "bool,length"
-          q = length.find(",")
-          percent = length[:q]
-          length = length[q+1:]
+          percent = length.split(",")[0]
+          length = length.split(",")[1]
           # revert the VSpace inset to ERT
           if percent == "True":
-              if p > -1:
+              if protected:
                   subst = [put_cmd_in_ert("\\vspace*{" + length + "}")]
               else:
                   subst = [put_cmd_in_ert("\\vspace{" + length + "}")]
@@ -1021,7 +1001,7 @@ def revert_percent_hspace_lengths(document):
       i = find_token(document.body, "\\begin_inset space \\hspace", i)
       if i == -1:
           break
-      star = (document.body[i].find("\\hspace*{}") != -1)
+      protected = (document.body[i].find("\\hspace*{}") != -1)
       # only revert if a custom length was set and if
       # it used a percent length
       length = get_value(document.body, '\\length', i+1)
@@ -1035,7 +1015,7 @@ def revert_percent_hspace_lengths(document):
       length = length.split(",")[1]
       # revert the HSpace inset to ERT
       if percent == "True":
-          if star == True:
+          if protected:
               subst = [put_cmd_in_ert("\\hspace*{" + length + "}")]
           else:
               subst = [put_cmd_in_ert("\\hspace{" + length + "}")]
@@ -1050,7 +1030,7 @@ def revert_hspace_glue_lengths(document):
       i = find_token(document.body, "\\begin_inset space \\hspace", i)
       if i == -1:
           break
-      star = (document.body[i].find("\\hspace*{}") != -1)
+      protected = (document.body[i].find("\\hspace*{}") != -1)
       length = get_value(document.body, '\\length', i+1)
       if length == '':
           document.warning("Malformed lyx document: Missing '\\length' in Space inset.")
@@ -1059,11 +1039,10 @@ def revert_hspace_glue_lengths(document):
       glue  = re.compile(r'.+[\+-]')
       if glue.search(length):
           # handle percent lengths
-          length = latex_length(length)
           # latex_length returns "bool,length"
-          length = length.split(",")[1]
+          length = latex_length(length).split(",")[1]
           # revert the HSpace inset to ERT
-          if star == True:
+          if protected:
               subst = [put_cmd_in_ert("\\hspace*{" + length + "}")]
           else:
               subst = [put_cmd_in_ert("\\hspace{" + length + "}")]
