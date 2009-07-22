@@ -1,4 +1,4 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -38,7 +38,7 @@
 \end_preamble
 \use_default_options false
 \language japanese
-\inputencoding EUC-JP-pLaTeX
+\inputencoding auto
 \font_roman default
 \font_sans default
 \font_typewriter default
@@ -374,7 +374,7 @@ example
 \end_layout
 
 \begin_layout Subsection
-文字の入力、表示、エクスポート
+文字の入力、表示、書き出し
 \end_layout
 
 \begin_layout Itemize
@@ -462,13 +462,13 @@ DVI
 \SpecialChar \menuseparator
 
 \family sans
-エクスポート
+書き出し
 \family default
 を選んで
 \family sans
 、
 \family default
-印刷する準備の整った文書を、適当なファイル形式にエクスポートしてください
+印刷する準備の整った文書を、適当なファイル形式に書き出してください
 \end_layout
 
 \begin_layout Standard
@@ -673,9 +673,9 @@ WYSIWYM: LyXでの空白
 \end_layout
 
 \begin_layout Standard
-新しいユーザーがLyXを使う場合に、もっとも難しく感じるのは、LyXの空白の扱いでしょう。何回もリターンキーを押したとしても、空白行は一行しか入りません。スペー
-スキーを何度押したとしても、空白は一つしか入りません。空白行では、LyXはスペース一個さえ入力することを許しません。タブキーを押しても、タブストップ分移動するこ
-とはありません。実は、タブストップなんてものは、存在しないのです！それに、タブやマージンをセットするためにページの一番上にあるはずのルーラーもないのです。
+新しいユーザーがLyXを使う場合に、もっとも難しく感じるのは、LyXの空白の扱いでしょう。何回もReturnキーを押したとしても、空白行は一行しか入りません。ス
+ペースキーを何度押したとしても、空白は一つしか入りません。空白行では、LyXはスペース一個さえ入力することを許しません。タブキーを押しても、タブストップ分移動す
+ることはありません。実は、タブストップなんてものは、存在しないのです！それに、タブやマージンをセットするためにページの一番上にあるはずのルーラーもないのです。
 \end_layout
 
 \begin_layout Standard
@@ -686,7 +686,7 @@ Mean
 \emph default
 （見ている状態は意図している状態）」です。あなたが 意図することを入力していくと、LyXはあなたに代わって、出力がすばらしくなるよう、組版を自動調整します。
 \family sans
-リターン
+Return
 \family default
 は文法的には段落を分けることを意味しますし、
 \family sans
@@ -812,13 +812,13 @@ status collapsed
 \family sans
 節
 \family default
-を選んでいることを確認してください。この2つの違いは後で説明します。LyXが「1」という節番号を入れ、節見出しとして大きなフォントで画面上に組版します。リターン
-キーを押してみてください。
+を選んでいることを確認してください。この2つの違いは後で説明します。LyXが「1」という節番号を入れ、節見出しとして大きなフォントで画面上に組版します。Retu
+rnキーを押してみてください。
 \family sans
 環境
 \family default
-ボックスの表示は「節」から「標準」へ戻ります。節タイトルは、ほとんどの環境がそうですが、リターンキーを押すとその環境が終わったものと仮定します。文章の導入部を次
-のように入力してみましょう:
+ボックスの表示は「節」から「標準」へ戻ります。節タイトルは、ほとんどの環境がそうですが、Returnキーを押すとその環境が終わったものと仮定します。文章の導入部
+を次のように入力してみましょう:
 \end_layout
 
 \begin_layout LyX-Code
@@ -826,7 +826,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-リターンキーを押してまた
+Returnキーを押してまた
 \family sans
 環境
 \family default
@@ -846,7 +846,7 @@ status collapsed
 \family typewriter
 最初のLyX文書です
 \family default
-」の後ろ）に戻って、リターンキーを押し、
+」の後ろ）に戻って、Returnキーを押し、
 \family sans
 環境
 \family default
@@ -863,7 +863,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-リターンキーを押して
+Returnキーを押して
 \family sans
 標準
 \family default
@@ -1039,7 +1039,7 @@ LyXは他のワープロよりも優れています。なぜなら
 \begin_layout Standard
 ここで
 \family sans
-リターン
+Return
 \family default
 を押して下さい。それから
 \family sans
@@ -1065,9 +1065,9 @@ LyXは他のワープロよりも優れています。なぜなら
 \end_layout
 
 \begin_layout Standard
-箇条書き環境では、見出しの場合と違って、
+箇条書き環境では、見出しの場合と違っ
 \family sans
-リターン
+Return
 \family default
 を押しても環境が終了しません。その代わり、LyXはあなたが引き続き、箇条書きの次項目を入力するものと仮定します。つまり、上のように理由を入力すると、三つの項目の
 箇条書きになるはずです。もし一つの箇条書き
@@ -1076,7 +1076,7 @@ LyXは他のワープロよりも優れています。なぜなら
 \emph default
 が二つ以上の段落を持つようにしたいときには、
 \family sans
-C-リターン
+Ctrl-Return
 \family default
 を入力して得られる
 \family sans
@@ -1088,11 +1088,11 @@ C-リターン
 \family default
 環境を再選択することが必要です（あるいはキー割当て
 \family sans
-M-p
+Alt+P
 \begin_inset space ~
 \end_inset
 
-s
+S
 \family default
 を使ってください）。
 \end_layout
@@ -1137,7 +1137,7 @@ LyXでは、箇条書きの
 の出力がどのようなものになるかを見るために、この箇条書きが選択された状態のまま、これらの環境に変更してみるとよろしいでしょう。これらの2つの環境では、箇条書きの
 各項目は、最初の単語が用語として表示され、段落の残り（
 \family sans
-リターン
+Return
 \family default
 を入力するまで）がその用語の定義として表示されるような形で構成されます。用語は、ボールド体で組版される（
 \family sans
@@ -1234,11 +1234,11 @@ status collapsed
 \family default
 環境を使えば、詩を書くことさえできます。この環境では
 \family sans
-リターン
+Return
 \family default
 で連（スタンザ）を分け、
 \family sans
-C-リターン
+Ctrl-Return
 \family default
 で連の中の行を分けます。利用可能なLyX環境すべてについてのより完全な説明については、
 \emph on
@@ -1605,8 +1605,8 @@ letter.lyx
 \family sans
 署名
 \family default
-環境では、実際の署名の前に「署名：」という単語が赤字で表示されることに気が付かれることでしょう。この単語は、ファイルを表示またはエクスポートしてみるとわかるよう
-に、実際の書簡には現れません。これは、署名行がどこにあるかをお知らせするだけのものです。さらに、
+環境では、実際の署名の前に「署名：」という単語が赤字で表示されることに気が付かれることでしょう。この単語は、ファイルを表示または書き出してみるとわかるように、実
+際の書簡には現れません。これは、署名行がどこにあるかをお知らせするだけのものです。さらに、
 \family sans
 署名
 \family default
@@ -2159,7 +2159,7 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Standard
-文書のはじめに目次を入れたいときもあるでしょう。LyXでは、簡単に目次を入れることができます。文書のタイトルの後ろ、最初の節見出しの前でリターンキーを押して
+文書のはじめに目次を入れたいときもあるでしょう。LyXでは、簡単に目次を入れることができます。文書のタイトルの後ろ、最初の節見出しの前でReturnキーを押して
 \family sans
 挿入
 \family default
@@ -2695,7 +2695,6 @@ OK
 行数や列数を変更する必要が生じた場合は、
 \family sans
 編集\SpecialChar \menuseparator
-数式\SpecialChar \menuseparator
 行と列
 \family default
 メニューか
@@ -2801,9 +2800,9 @@ OK
 \end_layout
 
 \begin_layout Standard
-最後に一つ、別行建て数式の組版に関して注意があります。数式を新段落にしたいのか否かに気をつけてください。数式を文や段落の途中に入れたいのならば、リターンキーを押
-さないで下さい。リターンキーを押すと、数式に続く本文が新段落のはじまりであると解釈されてしまいます。これは使用中の文書の段落設定によっては、字下げされることにな
-るので、望ましくありません。
+最後に一つ、別行建て数式の組版に関して注意があります。数式を新段落にしたいのか否かに気をつけてください。数式を文や段落の途中に入れたいのならば、Returnキー
+を押さないで下さい。Returnキーを押すと、数式に続く本文が新段落のはじまりであると解釈されてしまいます。これは使用中の文書の段落設定によっては、字下げされる
+ことになるので、望ましくありません。
 \end_layout
 
 \begin_layout Standard
@@ -2996,13 +2995,13 @@ LyXのメニューは、キー割り当て機能を持っています。
 \family default
 をマウスで選ぶ代わりに、キーボードから
 \family sans
-M-F
+Alt+F
 \family default
 に続けて
 \family sans
 O
 \family default
-と入力するか、メニュー項目の横に表示されているキー割り当て（既定ではC-O）を使うことができます。キー割り当ても設定が可能です。これに関する詳細は、
+と入力するか、メニュー項目の横に表示されているキー割り当て（既定ではCtrl+O）を使うことができます。キー割り当ても設定が可能です。これに関する詳細は、
 \family sans
 ヘルプ
 \family default
@@ -3056,9 +3055,9 @@ name "sec:latexusers"
 \emph on
 入門篇
 \emph default
-が長くなりすぎないように、ここでは最小限の情報だけを載せることにします。説明書
+が長くなりすぎないように、ここでは最小限の情報だけを載せることにします。取扱説明書の
 \emph on
-拡張機能篇
+高度な機能篇
 \emph default
 と
 \emph on
@@ -3159,7 +3158,7 @@ name "sec:tex2lyx"
 
 \family sans
 ファイル\SpecialChar \menuseparator
-インポート\SpecialChar \menuseparator
+読み込み\SpecialChar \menuseparator
 LaTeX
 \begin_inset space ~
 \end_inset
@@ -3218,7 +3217,7 @@ LyXの文章をLaTeXに変換
 LyX文書をLaTeX文書に変換したい場合もあるでしょう。例えば、LyXを持っていない共同研究者や共同執筆者に文書を読ませたい場合です。
 \family sans
 ファイル\SpecialChar \menuseparator
-エクスポート\SpecialChar \menuseparator
+書き出し\SpecialChar \menuseparator
 LaTeX
 \begin_inset space ~
 \end_inset
