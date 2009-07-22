@@ -218,7 +218,7 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 		par.insertInset(par.size(), new InsetLine, font, change);
 	} else if (token == "\\change_unchanged") {
 		change = Change(Change::UNCHANGED);
-	} else if (token == "\\change_inserted") {
+	} else if (token == "\\change_inserted" || token == "\\change_deleted") {
 		lex.eatLine();
 		istringstream is(lex.getString());
 		unsigned int aid;
@@ -226,24 +226,15 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 		is >> aid >> ct;
 		if (aid >= bp.author_map.size()) {
 			errorList.push_back(ErrorItem(_("Change tracking error"),
-					    bformat(_("Unknown author index for insertion: %1$d\n"), aid),
+					    bformat(_("Unknown author index for change: %1$d\n"), aid),
 					    par.id(), 0, par.size()));
 			change = Change(Change::UNCHANGED);
-		} else
-			change = Change(Change::INSERTED, bp.author_map[aid], ct);
-	} else if (token == "\\change_deleted") {
-		lex.eatLine();
-		istringstream is(lex.getString());
-		unsigned int aid;
-		time_t ct;
-		is >> aid >> ct;
-		if (aid >= bp.author_map.size()) {
-			errorList.push_back(ErrorItem(_("Change tracking error"),
-					    bformat(_("Unknown author index for deletion: %1$d\n"), aid),
-					    par.id(), 0, par.size()));
-			change = Change(Change::UNCHANGED);
-		} else
-			change = Change(Change::DELETED, bp.author_map[aid], ct);
+		} else {
+			if (token == "\\change_inserted")
+				change = Change(Change::INSERTED, bp.author_map[aid], ct);
+			else 
+				change = Change(Change::DELETED, bp.author_map[aid], ct);
+		}
 	} else {
 		lex.eatLine();
 		errorList.push_back(ErrorItem(_("Unknown token"),
