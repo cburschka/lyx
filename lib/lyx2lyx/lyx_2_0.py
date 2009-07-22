@@ -179,145 +179,43 @@ def latex_length(string):
     'Convert lengths to their LaTeX representation.'
     i = 0
     percent = False
-    # the string has always the form
-    # ValueUnit+ValueUnit-ValueUnit
-    # the + and - lengths are optional
-    # the + is always before the -
-    i = string.find("text%")
-    if i > -1:
-        percent = True
-        minus = string.rfind("-", 0, i)
-        plus = string.rfind("+", 0, i)
-        if plus == -1 and minus == -1:
-            value = string[:i]
-            value = str(float(value)/100)
-            end = string[i+5:]
-            string = value + "\\textwidth" + end
-        if plus > minus:
-            value = string[plus+1:i]
-            value = str(float(value)/100)
-            begin = string[:plus+1]
-            end = string[i+5:]
-            string = begin + value + "\\textwidth" + end
-        if plus < minus:
-            value = string[minus+1:i]
-            value = str(float(value)/100)
-            begin = string[:minus+1]
-            string = begin + value + "\\textwidth"
-    i = string.find("col%")
-    if i > -1:
-        percent = True
-        minus = string.rfind("-", 0, i)
-        plus = string.rfind("+", 0, i)
-        if plus == -1 and minus == -1:
-            value = string[:i]
-            value = str(float(value)/100)
-            end = string[i+4:]
-            string = value + "\\columnwidth" + end
-        if plus > minus:
-            value = string[plus+1:i]
-            value = str(float(value)/100)
-            begin = string[:plus+1]
-            end = string[i+4:]
-            string = begin + value + "\\columnwidth" + end
-        if plus < minus:
-            value = string[minus+1:i]
-            value = str(float(value)/100)
-            begin = string[:minus+1]
-            string = begin + value + "\\columnwidth"
-    i = string.find("page%")
-    if i > -1:
-        percent = True
-        minus = string.rfind("-", 0, i)
-        plus = string.rfind("+", 0, i)
-        if plus == -1 and minus == -1:
-            value = string[:i]
-            value = str(float(value)/100)
-            end = string[i+5:]
-            string = value + "\\paperwidth" + end
-        if plus > minus:
-            value = string[plus+1:i]
-            value = str(float(value)/100)
-            begin = string[:plus+1]
-            end = string[i+5:]
-            string = begin + value + "\\paperwidth" + end
-        if plus < minus:
-            value = string[minus+1:i]
-            value = str(float(value)/100)
-            begin = string[:minus+1]
-            string = begin + value + "\\paperwidth"
-    i = string.find("line%")
-    if i > -1:
-        percent = True
-        minus = string.rfind("-", 0, i)
-        plus = string.rfind("+", 0, i)
-        if plus == -1 and minus == -1:
-            value = string[:i]
-            value = str(float(value)/100)
-            end = string[i+5:]
-            string = value + "\\linewidth" + end
-        if plus > minus:
-            value = string[plus+1:i]
-            value = str(float(value)/100)
-            begin = string[:plus+1]
-            end = string[i+5:]
-            string = begin + value + "\\linewidth" + end
-        if plus < minus:
-            value = string[minus+1:i]
-            value = str(float(value)/100)
-            begin = string[:minus+1]
-            string = begin + value + "\\linewidth"
-    i = string.find("theight%")
-    if i > -1:
-        percent = True
-        minus = string.rfind("-", 0, i)
-        plus = string.rfind("+", 0, i)
-        if plus == -1 and minus == -1:
-            value = string[:i]
-            value = str(float(value)/100)
-            end = string[i+8:]
-            string = value + "\\textheight" + end
-        if plus > minus:
-            value = string[plus+1:i]
-            value = str(float(value)/100)
-            begin = string[:plus+1]
-            end = string[i+8:]
-            string = begin + value + "\\textheight" + end
-        if plus < minus:
-            value = string[minus+1:i]
-            value = str(float(value)/100)
-            begin = string[:minus+1]
-            string = begin + value + "\\textheight"
-    i = string.find("pheight%")
-    if i > -1:
-        percent = True
-        minus = string.rfind("-", 0, i)
-        plus = string.rfind("+", 0, i)
-        if plus == -1 and minus == -1:
-            value = string[:i]
-            value = str(float(value)/100)
-            end = string[i+8:]
-            string = value + "\\paperheight" + end
-        if plus > minus:
-            value = string[plus+1:i]
-            value = str(float(value)/100)
-            begin = string[:plus+1]
-            end = string[i+8:]
-            string = begin + value + "\\paperheight" + end
-        if plus < minus:
-            value = string[minus+1:i]
-            value = str(float(value)/100)
-            begin = string[:minus+1]
-            string = begin + value + "\\paperheight"
-    # replace + and -, but only when the - is not the first character
-    string = string.replace("+", " plus ")
-    if string.find("-") == 0:
-        minusstring = string[1:]
-        minusstring = minusstring.replace("-", " minus ")
-        string = "-" + minusstring
-    else:
-        string = string.replace("-", " minus ")
-    # handle the case that "+-1mm" was used because LaTeX only understands
+    # the string has the form
+    # ValueUnit+ValueUnit-ValueUnit or
+    # ValueUnit+-ValueUnit
+    # the + and - (glue lengths) are optional
+    # the + always precedes the -
+
+    # Convert relative lengths to LaTeX units
+    units = {"text%":"\\textwidth", "col%":"\\columnwidth",
+             "page%":"\\pagewidth", "line%":"\\linewidth",
+             "theight%":"\\textheight", "pheight%":"\\pageheight"}
+    for unit in units.keys():
+        i = string.find(unit)
+        if i != -1:
+            percent = True
+            minus = string.rfind("-", 1, i)
+            plus = string.rfind("+", 0, i)
+            latex_unit = units[unit]
+            if plus == -1 and minus == -1:
+                value = string[:i]
+                value = str(float(value)/100)
+                end = string[i + len(unit):]
+                string = value + latex_unit + end
+            if plus > minus:
+                value = string[plus+1:i]
+                value = str(float(value)/100)
+                begin = string[:plus+1]
+                end = string[i+len(unit):]
+                string = begin + value + latex_unit + end
+            if plus < minus:
+                value = string[minus+1:i]
+                value = str(float(value)/100)
+                begin = string[:minus+1]
+                string = begin + value + latex_unit
+
+    # replace + and -, but only if the - is not the first character
+    string = string[0] + string[1:].replace("+", " plus ").replace("-", " minus ")
+    # handle the case where "+-1mm" was used, because LaTeX only understands
     # "plus 1mm minus 1mm"
     if string.find("plus  minus"):
         lastvaluepos = string.rfind(" ")
