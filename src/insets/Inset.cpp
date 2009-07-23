@@ -185,7 +185,10 @@ Buffer & Inset::buffer()
 {
 	if (!buffer_) {
 		odocstringstream s;
-		lyxerr << "LyX Code: " << lyxCode() << " name: " << insetName(lyxCode()) << std::endl;
+		lyxerr << "Inset: " << this
+					<< " LyX Code: " << lyxCode()
+					<< " name: " << insetName(lyxCode())
+					<< std::endl;
 		s << "LyX Code: " << lyxCode() << " name: " << name();
 		LASSERT(false, /**/);
 		throw ExceptionMessage(BufferException, 
