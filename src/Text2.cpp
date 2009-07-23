@@ -443,16 +443,23 @@ void Text::setParagraphs(Cursor & cur, docstring arg, bool merge)
 
 	//FIXME UNICODE
 	string const argument = to_utf8(arg);
+	depth_type priordepth = -1;
+	Layout priorlayout;
 	for (pit_type pit = cur.selBegin().pit(), end = cur.selEnd().pit();
 	     pit <= end; ++pit) {
 		Paragraph & par = pars_[pit];
 		ParagraphParameters params = par.params();
 		params.read(argument, merge);
-		// changes to label width string apply to all
-		// paragraph with same layout in a sequence
-		setLabelWidthStringToSequence(pit, pars_,
-				params.labelWidthString());
+		// Changes to label width string apply to all paragraphs
+		// with same layout in a sequence.
+		// Do this only once for a selected range of paragraphs
+		// of the same layout and depth.
+		if (par.getDepth() != priordepth || par.layout() != priorlayout)
+			setLabelWidthStringToSequence(pit, pars_,
+					params.labelWidthString());
 		par.params().apply(params, par.layout());
+		priordepth = par.getDepth();
+		priorlayout = par.layout();
 	}
 }
 
@@ -467,15 +474,22 @@ void Text::setParagraphs(Cursor & cur, ParagraphParameters const & p)
 	pit_type undopit = undoSpan(cur.selEnd().pit());
 	recUndo(cur, cur.selBegin().pit(), undopit - 1);
 
+	depth_type priordepth = -1;
+	Layout priorlayout;
 	for (pit_type pit = cur.selBegin().pit(), end = cur.selEnd().pit();
 	     pit <= end; ++pit) {
 		Paragraph & par = pars_[pit];
-		// changes to label width string apply to all
-		// paragraph with same layout in a sequence
-		setLabelWidthStringToSequence(pit, pars_,
-				par.params().labelWidthString());
+		// Changes to label width string apply to all paragraphs
+		// with same layout in a sequence.
+		// Do this only once for a selected range of paragraphs
+		// of the same layout and depth.
+		if (par.getDepth() != priordepth || par.layout() != priorlayout)
+			setLabelWidthStringToSequence(pit, pars_,
+					par.params().labelWidthString());
 		par.params().apply(p, par.layout());
-	}	
+		priordepth = par.getDepth();
+		priorlayout = par.layout();
+	}
 }
 
 
