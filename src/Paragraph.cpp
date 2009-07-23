@@ -1194,7 +1194,7 @@ void Paragraph::write(ostream & os, BufferParams const & bparams,
 	for (pos_type i = 0; i <= size(); ++i) {
 
 		Change const change = lookupChange(i);
-		Changes::lyxMarkChange(os, column, running_change, change);
+		Changes::lyxMarkChange(os, bparams, column, running_change, change);
 		running_change = change;
 
 		if (i == size())

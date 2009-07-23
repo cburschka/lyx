@@ -947,6 +947,76 @@ def revert_hspace_glue_lengths(document):
           document.body[i:i+3] = subst
       i = i + 2
 
+def convert_author_id(document):
+    " Add the author_id to the \\author definition and make sure 0 is not used"
+    i = 0
+    j = 1
+    while True:
+        i = find_token(document.header, "\\author", i)
+        if i == -1:
+            break
+        
+        author = document.header[i].split(' ')
+        name = '\"\"'
+        if len(author) >= 2:
+            name = author[1]
+        email = ''
+        if len(author) == 3:
+            email = author[2]		    
+        document.header[i] = "\\author %i %s %s" % (j, name, email)
+        j = j + 1
+        i = i + 1
+        
+    k = 0
+    while True:
+        k = find_token(document.body, "\\change_", k)
+        if k == -1:
+            break
+
+        change = document.body[k].split(' ');
+        if len(change) == 3:
+            type = change[0]
+            author_id = int(change[1])
+            time = change[2]
+            document.body[k] = "%s %i %s" % (type, author_id + 1, time)
+        k = k + 1
+
+def revert_author_id(document):
+    " Remove the author_id from the \\author definition "
+    i = 0
+    j = 0
+    idmap = dict()
+    while True:
+        i = find_token(document.header, "\\author", i)
+        if i == -1:
+            break
+        author = document.header[i].split(' ')
+        name = '\"\"'
+        if len(author) >= 3:
+            author_id = int(author[1])
+            idmap[author_id] = j
+            name = author[2]
+        email = ''
+        if len(author) == 4:
+            email = author[3]
+        document.header[i] = "\\author %s %s" % (name, email)
+        i = i + 1
+        j = j + 1
+
+    k = 0
+    while True:
+        k = find_token(document.body, "\\change_", k)
+        if k == -1:
+            break
+
+        change = document.body[k].split(' ');
+        if len(change) == 3:
+            type = change[0]
+            author_id = int(change[1])
+            time = change[2]
+            document.body[k] = "%s %i %s" % (type, idmap[author_id], time)
+        k = k + 1
+
 
 ##
 # Conversion hub
@@ -975,10 +1045,12 @@ convert = [[346, []],
            [365, []],
            [366, []],
            [367, []],
-           [368, []]
+           [368, []],
+           [369, [convert_author_id]]
           ]
 
-revert =  [[367, [revert_hspace_glue_lengths]],
+revert =  [[368, [revert_author_id]],
+           [367, [revert_hspace_glue_lengths]],
            [366, [revert_percent_vspace_lengths, revert_percent_hspace_lengths]],
            [365, [revert_percent_skip_lengths]],
            [364, [revert_paragraph_indentation]],

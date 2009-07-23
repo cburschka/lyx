@@ -687,7 +687,7 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		istringstream ss(lex.getString());
 		Author a;
 		ss >> a;
-		author_map.push_back(pimpl_->authorlist.record(a));
+		author_map[a.buffer_id()] = pimpl_->authorlist.record(a);
 	} else if (token == "\\paperorientation") {
 		string orient;
 		lex >> orient;
@@ -954,14 +954,7 @@ void BufferParams::writeFile(ostream & os) const
 	os << "\\tracking_changes " << convert<string>(trackChanges) << "\n";
 	os << "\\output_changes " << convert<string>(outputChanges) << "\n";
 
-	AuthorList::Authors::const_iterator a_it = pimpl_->authorlist.begin();
-	AuthorList::Authors::const_iterator a_end = pimpl_->authorlist.end();
-	for (; a_it != a_end; ++a_it) {
-		if (a_it->second.used())
-			os << "\\author " << a_it->second << "\n";
-		else
-			os << "\\author " << Author() << "\n";
-	}
+	os << pimpl_->authorlist;
 }
 
 

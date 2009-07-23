@@ -127,7 +127,7 @@ namespace {
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-int const LYX_FORMAT = 368; // spitz, uwestoehr: glue lengths for the HSpace dialog
+int const LYX_FORMAT = 369; // vfr: add author ids to list of authors
 
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;
@@ -1014,7 +1014,7 @@ bool Buffer::write(ostream & ofs) const
 	AuthorList::Authors::const_iterator a_it = params().authors().begin();
 	AuthorList::Authors::const_iterator a_end = params().authors().end();
 	for (; a_it != a_end; ++a_it)
-		a_it->second.setUsed(false);
+		a_it->setUsed(false);
 
 	ParIterator const end = const_cast<Buffer *>(this)->par_iterator_end();
 	ParIterator it = const_cast<Buffer *>(this)->par_iterator_begin();

@@ -224,16 +224,17 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 		unsigned int aid;
 		time_t ct;
 		is >> aid >> ct;
-		if (aid >= bp.author_map.size()) {
+		map<unsigned int, int> const & am = bp.author_map;
+		if (am.find(aid) == am.end()) {
 			errorList.push_back(ErrorItem(_("Change tracking error"),
 					    bformat(_("Unknown author index for change: %1$d\n"), aid),
 					    par.id(), 0, par.size()));
 			change = Change(Change::UNCHANGED);
 		} else {
 			if (token == "\\change_inserted")
-				change = Change(Change::INSERTED, bp.author_map[aid], ct);
-			else 
-				change = Change(Change::DELETED, bp.author_map[aid], ct);
+				change = Change(Change::INSERTED, am.find(aid)->second, ct);
+			else
+				change = Change(Change::DELETED, am.find(aid)->second, ct);
 		}
 	} else {
 		lex.eatLine();

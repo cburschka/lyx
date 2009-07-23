@@ -369,7 +369,7 @@ int Changes::latexMarkChange(odocstream & os, BufferParams const & bparams,
 }
 
 
-void Changes::lyxMarkChange(ostream & os, int & column,
+void Changes::lyxMarkChange(ostream & os, BufferParams const & bparams, int & column,
 			    Change const & old, Change const & change)
 {
 	if (old == change)
@@ -377,19 +377,21 @@ void Changes::lyxMarkChange(ostream & os, int & column,
 
 	column = 0;
 
+	int const buffer_id = bparams.authors().get(change.author).buffer_id();
+
 	switch (change.type) {
 		case Change::UNCHANGED:
 			os << "\n\\change_unchanged\n";
 			break;
 
 		case Change::DELETED: {
-			os << "\n\\change_deleted " << change.author
+			os << "\n\\change_deleted " << buffer_id
 				<< " " << change.changetime << "\n";
 			break;
 		}
 
 		case Change::INSERTED: {
-			os << "\n\\change_inserted " << change.author
+			os << "\n\\change_inserted " << buffer_id
 				<< " " << change.changetime << "\n";
 			break;
 		}

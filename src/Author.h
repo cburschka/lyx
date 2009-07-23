@@ -25,11 +25,15 @@ public:
 	Author() {}
 	///
 	Author(docstring const & name, docstring const & email)
-		: name_(name), email_(email), used_(true) {}
+		: name_(name), email_(email), used_(true), buffer_id_(0) {}
 	///
 	docstring name() const { return name_; }
 	///
 	docstring email() const { return email_; }
+	///
+	unsigned int buffer_id() const { return buffer_id_; }
+	///
+	void setBufferId(unsigned int buffer_id) const { buffer_id_ = buffer_id; }
 	///
 	void setUsed(bool u) const { used_ = u; }
 	///
@@ -42,6 +46,8 @@ private:
 	docstring name_;
 	/// The author's email address
 	docstring email_;
+	/// The id of the author in the lyx-file
+	mutable unsigned int buffer_id_;
 	///
 	mutable bool used_;
 };
@@ -58,12 +64,16 @@ public:
 	///
 	Author const & get(int id) const;
 	///
-	typedef std::map<int, Author> Authors;
+	typedef std::vector<Author> Authors;
+	///
+	void sort();
 	///
 	Authors::const_iterator begin() const;
 	///
 	Authors::const_iterator end() const;
 	///
+	friend
+	std::ostream & operator<<(std::ostream & os, AuthorList const & a);
 private:
 	///
 	int last_id_;

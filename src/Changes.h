@@ -103,8 +103,8 @@ public:
 				   Change const & oldChange, Change const & change);
 
 	/// output .lyx file format for transitions between changes
-	static void lyxMarkChange(std::ostream & os, int & column,
-		Change const & old, Change const & change);
+	static void lyxMarkChange(std::ostream & os, BufferParams const & bparams,
+		int & column, Change const & old, Change const & change);
 
 	///
 	void checkAuthors(AuthorList const & authorList);

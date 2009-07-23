@@ -309,8 +309,8 @@ public:
 	AuthorList & authors();
 	AuthorList const & authors() const;
 
-	/// map of the file's author IDs to buffer author IDs
-	std::vector<unsigned int> author_map;
+	/// map of the file's author IDs to AuthorList indexes
+	std::map<unsigned int, int> author_map;
 	///
 	std::string const dvips_options() const;
 	/** The return value of paperSizeName() depends on the
