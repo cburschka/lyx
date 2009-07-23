@@ -46,10 +46,10 @@ private:
 	docstring name_;
 	/// The author's email address
 	docstring email_;
-	/// The id of the author in the lyx-file
-	mutable unsigned int buffer_id_;
 	///
 	mutable bool used_;
+	/// The id of the author in the lyx-file
+	mutable unsigned int buffer_id_;
 };
 
 
