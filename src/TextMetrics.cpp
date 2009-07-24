@@ -318,7 +318,7 @@ bool TextMetrics::isRTLBoundary(pit_type pit, pos_type pos) const
 	if (!lyxrc.rtl_support)
 		return false;
 
-	// no RTL boundary at line start
+	// no RTL boundary at paragraph start
 	if (pos == 0)
 		return false;
 
@@ -334,6 +334,23 @@ bool TextMetrics::isRTLBoundary(pit_type pit, pos_type pos,
 	if (!lyxrc.rtl_support)
 		return false;
 
+	// no RTL boundary at paragraph start
+	if (pos == 0)
+		return false;
+	
+	ParagraphMetrics & pm = par_metrics_[pit];
+	// no RTL boundary in empty paragraph
+	if (pm.rows().empty())
+		return false;
+
+	pos_type endpos = pm.getRow(pos - 1, false).endpos();
+	pos_type startpos = pm.getRow(pos, false).pos();
+	// no RTL boundary at line start:
+	// abc\n   -> toggle to RTL ->    abc\n     (and not:    abc\n|
+	// |                              |                               )
+	if (pos == startpos && pos == endpos) // start of cur row, end of prev row
+		return false;
+
 	Paragraph const & par = text_->getPar(pit);
 	bool left = font.isVisibleRightToLeft();
 	bool right;
@@ -341,6 +358,16 @@ bool TextMetrics::isRTLBoundary(pit_type pit, pos_type pos,
 		right = par.isRTL(bv_->buffer().params());
 	else
 		right = displayFont(pit, pos).isVisibleRightToLeft();
+	
+	// no RTL boundary at line break:
+	// abc|\n    -> move right ->   abc\n       (and not:    abc\n|
+	// FED                          FED|                     FED     )
+	if (startpos == pos && endpos == pos && endpos != par.size() 
+		&& (par.isNewline(pos - 1) 
+			|| par.isLineSeparator(pos - 1) 
+			|| par.isSeparator(pos - 1)))
+		return false;
+	
 	return left != right;
 }
 
