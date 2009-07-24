@@ -156,6 +156,9 @@ What's new
 
 - Fix bookmark navigation crash when multiple windows are used
   (bug 6000).
+
+- Disable the "sort" option in the outliner for the Table of Contents
+  which triggered a crash (bug 5983). Sorting the TOC didn't work anyway.
   
 - Fall back to default UI file if the specified one cannot be found
   (bug 6076).

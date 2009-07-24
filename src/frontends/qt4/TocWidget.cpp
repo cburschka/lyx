@@ -108,6 +108,7 @@ void TocWidget::on_sortCB_stateChanged(int state)
 	updateView();
 }
 
+
 void TocWidget::on_persistentCB_stateChanged(int state)
 {
 	persistent_ = state == Qt::Checked;
@@ -258,6 +259,13 @@ static bool canNavigate(QString const & type)
 }
 
 
+/// Test whether sorting is possible
+static bool isSortable(QString const & type)
+{
+	return type != "tableofcontents";
+}
+
+
 void TocWidget::updateView()
 {
 	if (!gui_view_.view()) {
@@ -272,7 +280,7 @@ void TocWidget::updateView()
 		depthSL->setEnabled(false);
 		return;
 	}
-	sortCB->setEnabled(true);
+	sortCB->setEnabled(isSortable(current_type_));
 	depthSL->setEnabled(true);
 	typeCO->setEnabled(true);
 	tocTV->setEnabled(false);
@@ -288,7 +296,8 @@ void TocWidget::updateView()
 	}
 
 	sortCB->blockSignals(true);
-	sortCB->setChecked(gui_view_.tocModels().isSorted(current_type_));
+	sortCB->setChecked(isSortable(current_type_)
+		&& gui_view_.tocModels().isSorted(current_type_));
 	sortCB->blockSignals(false);
 
 	bool const can_navigate_ = canNavigate(current_type_);

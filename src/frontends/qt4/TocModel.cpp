@@ -238,7 +238,7 @@ TocModels::TocModels()
 }
 
 
-void TocModels::clear()	
+void TocModels::clear()
 {
 	names_->blockSignals(true);
 	names_->clear();
