@@ -956,14 +956,15 @@ def convert_author_id(document):
         if i == -1:
             break
         
-        author = document.header[i].split(' ')
-        name = '\"\"'
-        if len(author) >= 2:
-            name = author[1]
-        email = ''
-        if len(author) == 3:
-            email = author[2]		    
-        document.header[i] = "\\author %i %s %s" % (j, name, email)
+        r = re.compile(r'(\\author) (\".*\")\s?(.*)$')
+        m = r.match(document.header[i])
+        if m != None:
+            name = m.group(2)
+            
+            email = ''
+            if m.lastindex == 3:
+                email = m.group(3)
+            document.header[i] = "\\author %i %s %s" % (j, name, email)
         j = j + 1
         i = i + 1
         
@@ -990,16 +991,18 @@ def revert_author_id(document):
         i = find_token(document.header, "\\author", i)
         if i == -1:
             break
-        author = document.header[i].split(' ')
-        name = '\"\"'
-        if len(author) >= 3:
-            author_id = int(author[1])
+        
+        r = re.compile(r'(\\author) (\d+) (\".*\")\s?(.*)$')
+        m = r.match(document.header[i])
+        if m != None:
+            author_id = int(m.group(2))
             idmap[author_id] = j
-            name = author[2]
-        email = ''
-        if len(author) == 4:
-            email = author[3]
-        document.header[i] = "\\author %s %s" % (name, email)
+            name = m.group(3)
+            
+            email = ''
+            if m.lastindex == 4:
+                email = m.group(4)
+            document.header[i] = "\\author %s %s" % (name, email)
         i = i + 1
         j = j + 1
 
