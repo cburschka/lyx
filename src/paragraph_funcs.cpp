@@ -256,22 +256,21 @@ bool isFirstInSequence(pit_type par_offset, ParagraphList const & pars)
 }
 
 
-void setLabelWidthStringToSequence(pit_type par_offset,
+void setLabelWidthStringToSequence(pit_type const par_offset,
 	ParagraphList & pars, docstring const & s)
 {
-	Paragraph & par = pars[par_offset];
+	pit_type offset = par_offset;
 	// Find first of same layout in sequence
-	while (!isFirstInSequence(par_offset, pars)) {
-		par_offset = depthHook(par_offset, pars, par.getDepth());
-		par = pars[par_offset];
+	while (!isFirstInSequence(offset, pars)) {
+		offset = depthHook(offset, pars, pars[offset].getDepth());
 	}
 
 	// now apply label width string to every par
 	// in sequence
 	pit_type const end = pars.size();
-	depth_type const depth = par.getDepth();
-	Layout const & layout = par.layout();
-	for (pit_type pit = par_offset; pit != end; ++pit) {
+	depth_type const depth = pars[offset].getDepth();
+	Layout const & layout = pars[offset].layout();
+	for (pit_type pit = offset; pit != end; ++pit) {
 		while (pars[pit].getDepth() > depth)
 			++pit;
 		if (pars[pit].getDepth() < depth)

@@ -63,7 +63,7 @@ bool isFirstInSequence(pit_type par, ParagraphList const & plist);
 
 /** Set Label Width string to all paragraphs of the same layout
     and depth in a sequence */
-void setLabelWidthStringToSequence(pit_type par_offset,
+void setLabelWidthStringToSequence(pit_type const par_offset,
 	ParagraphList & pars, docstring const & s);
 
 /** Check if the current paragraph is the last paragraph in a
