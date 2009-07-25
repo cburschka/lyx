@@ -125,6 +125,9 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fix the output of spaces that are at the beginning of a block with
+  a new textcolor (bug 4473).
+
 - Fix conversion documents from LyX 1.4 which have multicolumn cells in
   tabulars with expert border settings (bug 6018).
 

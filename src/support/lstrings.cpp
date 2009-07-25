@@ -899,6 +899,16 @@ string const rsplit(string const & a, string & piece, char delim)
 }
 
 
+docstring const rsplit(docstring const & a, char_type delim)
+{
+	docstring tmp;
+	size_t i = a.rfind(delim);
+	if (i != string::npos)
+		tmp = a.substr(i + 1);
+	return tmp;
+}
+
+
 docstring const escape(docstring const & lab)
 {
 	char_type hexdigit[16] = { '0', '1', '2', '3', '4', '5', '6', '7',

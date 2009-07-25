@@ -2092,9 +2092,14 @@ bool Paragraph::latex(BufferParams const & bparams,
 			running_font = font;
 			open_font = true;
 			docstring fontchange = ods.str();
+			docstring const last_modifier = rsplit(fontchange, '\\');
+			// check whether the fontchange ends with a \\textcolor
+			// modifier and the text starts with a space (bug 4473)
+			if (prefixIs(last_modifier, from_ascii("textcolor")) && c == ' ')
+				os << fontchange << from_ascii("{}");
 			// check if the fontchange ends with a trailing blank
 			// (like "\small " (see bug 3382)
-			if (suffixIs(fontchange, ' ') && c == ' ')
+			else if (suffixIs(fontchange, ' ') && c == ' ')
 				os << fontchange.substr(0, fontchange.size() - 1) 
 				   << from_ascii("{}");
 			else

@@ -221,6 +221,7 @@ std::string const split(std::string const & a, char delim);
 
 /// Same as split but uses the last delim.
 std::string const rsplit(std::string const & a, std::string & piece, char delim);
+docstring const rsplit(docstring const & a, char_type delim);
 
 /// Escapes non ASCII chars and other problematic characters that cause
 /// problems in latex labels.
