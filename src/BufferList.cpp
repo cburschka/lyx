@@ -316,7 +316,7 @@ Buffer * BufferList::getBuffer(support::FileName const & fname) const
 		bind(equal_to<FileName>(), bind(&Buffer::fileName, _1), fname));
 	if (it != bstore.end())
 			return *it;
-	// 2) possibly expensive test, using quivalence test of file names
+	// 2) possibly expensive test, using equivalence test of file names
 	it = find_if(bstore.begin(), bstore.end(),
 		bind(equivalent_to(), bind(&Buffer::fileName, _1), fname));
 	return it != bstore.end() ? (*it) : 0;
