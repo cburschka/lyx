@@ -624,6 +624,8 @@ int main(int argc, char * argv[])
 		if (iowatch.isset(0)) {
 			string command;
 			getline(cin, command);
+			if (command.empty())
+				continue;
 			if (command == "BYE:") {
 				server->writeln("BYE:");
 				saidbye = true;
