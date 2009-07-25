@@ -352,8 +352,8 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 		ParagraphList::const_iterator outpit = priorpit;
 		while (outpit != paragraphs.begin()
 		       && (outpit->hasSameLayout(*priorpit)
-			   || outpit->getDepth() > pit->getDepth())
-			   || outpit->getAlign() != outpit->layout().align)
+			   || outpit->getDepth() > pit->getDepth()
+			   || outpit->getAlign() != outpit->layout().align))
 			outpit = boost::prior(outpit);
 		ParagraphList::const_iterator inpit = boost::next(outpit);
 		bool topped = outpit == paragraphs.begin()
