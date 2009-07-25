@@ -359,7 +359,8 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 		bool topped = outpit == paragraphs.begin()
 			      && (outpit->hasSameLayout(*priorpit)
 				  || outpit->getDepth() > pit->getDepth()
-				  || outpit->getAlign() != outpit->layout().align);
+				  || outpit->getAlign() != outpit->layout().align
+				  || outpit->layout().isEnvironment());
 		Language const * const outenv_language = topped ?
 					outer_language
 					: outpit->getParLanguage(bparams);
