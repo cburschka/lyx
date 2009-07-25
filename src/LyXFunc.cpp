@@ -1618,6 +1618,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_LYXRC_APPLY: {
+			// reset active key sequences, since the bindings
+			// are updated (bug 6064)
+			keyseq.reset();
 			LyXRC const lyxrc_orig = lyxrc;
 
 			istringstream ss(argument);

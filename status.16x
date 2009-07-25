@@ -52,8 +52,8 @@ What's new
   actually be seen.
 
 - New commands inset-begin/end (bound to Ctrl-Alt-Home/End) allow to jump 
-  to begin/end of insets (and outside of the inset if the cursor is already 
-  in place). There are also versions that select text.
+  to begin/end of insets (and outside of the inset if the cursor is
+  already in place). There are also versions that select text.
 
 - The LaTeX Log File dialog has a search facility.
 
@@ -75,11 +75,13 @@ What's new
 
 - Reverse searching added to the merge changes dialog (bug 2213).
 
-- Copy as Reference is now implemented for equation labels too (bug 5948).
+- Copy as Reference is now implemented for equation labels too
+  (bug 5948).
 
 - Visual support for the integral signs \fint and \fintop in formulas.
 
-- Fix bug involving incorrect requests to overwrite external files (bug 5522).
+- Fix bug involving incorrect requests to overwrite external files
+  (bug 5522).
 
 
 * DOCUMENTATION AND LOCALIZATION
@@ -161,6 +163,8 @@ What's new
   which triggered a crash (bug 5983). Sorting the TOC didn't work anyway.
 
 - Fix a crash when closing a LyX window with split views (bug 5998).
+
+- Fix a crash when applying preference changes (bug 6064).
   
 - Fall back to default UI file if the specified one cannot be found
   (bug 6076).
@@ -177,9 +181,9 @@ What's new
 - Fix assertion when starting spellchecker in math mode and clicking 
   "replace" (bug 6013)
   
-- Fix assertion in mathed when moving the cursor immediately after pressing
-  Ctrl-L (or '\' with inline completion disabled) in front of another
-  character (bug 6063).
+- Fix assertion in mathed when moving the cursor immediately after
+  pressing Ctrl-L (or '\' with inline completion disabled) in front of
+  another character (bug 6063).
 
 - Make Tools>Statistics ignore Note insets and inactive branches
   (bug 2566).
