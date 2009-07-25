@@ -165,6 +165,9 @@ What's new
 - Fix a crash when closing a LyX window with split views (bug 5998).
 
 - Fix a crash when applying preference changes (bug 6064).
+
+- Fix a crash when accessing the Navigate menu after an empty inset has
+  been dissolved (bug 6003).
   
 - Fall back to default UI file if the specified one cannot be found
   (bug 6076).

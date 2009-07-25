@@ -1236,7 +1236,10 @@ bool Text::dissolveInset(Cursor & cur)
 		// restore position
 		cur.pit() = min(cur.lastpit(), spit);
 		cur.pos() = min(cur.lastpos(), spos);
-	}
+	} else
+		// this is the least that needs to be done (bug 6003)
+		// in the above case, pasteParagraphList handles this
+		updateLabels(cur.buffer());
 	cur.clearSelection();
 	cur.resetAnchor();
 	return true;
