@@ -155,6 +155,9 @@ What's new
 
 - Enable the possibility to read documents from a path containing a
   $-character (bug 4177).
+
+- Fix communication between lyxclient and server, which leads to the
+  crash once CTRL+D is used on the client side (bug 6106).
   
 
 * USER INTERFACE
