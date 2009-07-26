@@ -155,9 +155,6 @@ What's new
 
 - Enable the possibility to read documents from a path containing a
   $-character (bug 4177).
-
-- Fix communication between lyxclient and server, which leads to the
-  crash once CTRL+D is used on the client side (bug 6106).
   
 
 * USER INTERFACE
@@ -174,6 +171,9 @@ What's new
 
 - Fix a crash when accessing the Navigate menu after an empty inset has
   been dissolved (bug 6003).
+
+- Fix communication between lyxclient and server, which leads to a
+  crash once CTRL+D is used on the client side (bug 6106).
   
 - Fall back to default UI file if the specified one cannot be found
   (bug 6076).
