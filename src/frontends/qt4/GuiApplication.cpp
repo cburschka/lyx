@@ -1484,7 +1484,8 @@ bool GuiApplication::readUIFile(QString const & name, bool include)
 				"Falling back to default.\n"
 				"Please look under Tools>Preferences>User Interface and\n"
 				"check which user interface file you are using."), qstring_to_ucs4(name)));
-		ui_path = libFileSearch("ui", "default", "ui");
+		// QString to disambiguate for monolithic builds
+		ui_path = libFileSearch("ui", QString("default"), "ui");
 		if (ui_path.empty()) {
 			LYXERR(Debug::INIT, "Could not find default UI file!!");
 			Alert::warning(_("Could not find default UI file"),
