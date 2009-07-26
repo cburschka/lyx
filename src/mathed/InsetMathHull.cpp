@@ -1034,7 +1034,7 @@ void InsetMathHull::mutate(HullType newtype)
 }
 
 
-docstring InsetMathHull::eolString(row_type row, bool emptyline, bool fragile) const
+docstring InsetMathHull::eolString(row_type row, bool fragile) const
 {
 	docstring res;
 	if (numberedType()) {
@@ -1043,7 +1043,7 @@ docstring InsetMathHull::eolString(row_type row, bool emptyline, bool fragile) c
 		if (nonum_[row] && (type_ != hullMultline))
 			res += "\\nonumber ";
 	}
-	return res + InsetMathGrid::eolString(row, emptyline, fragile);
+	return res + InsetMathGrid::eolString(row, fragile);
 }
 
 
