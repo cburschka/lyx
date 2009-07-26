@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Lyx 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-07-19 17:20+0200\n"
-"PO-Revision-Date: 2009-04-05 02:01+0100\n"
+"PO-Revision-Date: 2009-07-25 02:01+0100\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -566,14 +566,12 @@ msgid "Change:"
 msgstr "Zmìnit:"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:49
-#, fuzzy
 msgid "Go to previous change"
-msgstr "Pøechod na dal¹í zmìnu"
+msgstr "Pøechod na pøedchozí zmìnu"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:52
-#, fuzzy
 msgid "&Previous change"
-msgstr "&Dal¹í zmìna"
+msgstr "&Pøedchozí zmìna"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:62
 msgid "Go to next change"
@@ -13052,33 +13050,28 @@ msgid "sqiintop"
 msgstr "sqiintop"
 
 #: lib/ui/stdtoolbars.inc:601
-#, fuzzy
 msgid "fint"
-msgstr "int"
+msgstr "fint"
 
 #: lib/ui/stdtoolbars.inc:602
-#, fuzzy
 msgid "fintop"
-msgstr "intop"
+msgstr "fintop"
 
 #: lib/ui/stdtoolbars.inc:603
-#, fuzzy
 msgid "landupint"
-msgstr "diamondsuit"
+msgstr "landupint"
 
 #: lib/ui/stdtoolbars.inc:604
-#, fuzzy
 msgid "landupintop"
-msgstr "intop"
+msgstr "landupintop"
 
 #: lib/ui/stdtoolbars.inc:605
 msgid "landdownint"
-msgstr ""
+msgstr "landdownint"
 
 #: lib/ui/stdtoolbars.inc:606
-#, fuzzy
 msgid "landdownintop"
-msgstr "dotsintop"
+msgstr "landdownintop"
 
 #: lib/ui/stdtoolbars.inc:607
 msgid "sum"
@@ -17241,13 +17234,13 @@ msgid "Could not find UI definition file"
 msgstr "Nelze pøeèíst definièní soubor u¾ivatelského rozhraní"
 
 #: src/frontends/qt4/GuiApplication.cpp:1478
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Error while reading the included file\n"
 "%1$s.\n"
 "Please check your installation."
 msgstr ""
-"Chyba pøi ètení konfiguraèního souboru\n"
+"Chyba pøi ètení souboru\n"
 "%1$s.\n"
 "Zkontrolujte prosím va¹i instalaci."
 
@@ -17260,20 +17253,21 @@ msgid ""
 "Please look under Tools>Preferences>User Interface and\n"
 "check which user interface file you are using."
 msgstr ""
+"Chyba pøi ètení konfigureèního souboru\n"
+"%1$s.\n"
+"Zkontrolujte prosím jaký soubor u¾ivatelského nastavení pou¾ívate\n
+v Nástroje>Nastavení>U¾ivatelské rozhraní."
 
 #: src/frontends/qt4/GuiApplication.cpp:1490
-#, fuzzy
 msgid "Could not find default UI file"
-msgstr "Nelze pøeèíst definièní soubor u¾ivatelského rozhraní"
+msgstr "Nelze nalézt standardní soubor u¾ivatelského rozhraní"
 
 #: src/frontends/qt4/GuiApplication.cpp:1491
-#, fuzzy
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
 msgstr ""
-"Chyba pøi ètení konfiguraèního souboru\n"
-"%1$s.\n"
+"LyX nena¹el standardní soubor u¾ivatelského rozhraní (.ui)!\n"
 "Zkontrolujte prosím va¹i instalaci."
 
 #: src/frontends/qt4/GuiBibitem.cpp:28
