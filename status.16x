@@ -159,6 +159,9 @@ What's new
 
 * USER INTERFACE
 
+- Prevent a crash when scaling down an image with an odd height
+  to 50% on screen (bug 5957).
+
 - Fix bookmark navigation crash when multiple windows are used
   (bug 6000).
 

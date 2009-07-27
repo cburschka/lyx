@@ -168,7 +168,17 @@ bool GuiImage::scale(Params const & params)
 	if (params.scale < 0 || params.scale == 100)
 		return false;
 
-	qreal const scale = qreal(params.scale) / 100.0;
+	qreal scale = qreal(params.scale) / 100.0;
+
+#if QT_VERSION >= 0x040500
+	// Due to a bug in Qt, LyX will crash when scaling an
+	// image with an odd height to 50%.
+	// see bug #5957: http://www.lyx.org/trac/ticket/5957
+	// FIXME: Add an upper version limit as soon as the bug is fixed in Qt.
+	if (params.scale == 50)
+		scale += 0.0001;
+#endif
+
 	QMatrix m;
 	m.scale(scale, scale);
 	transformed_ = image.transformed(m);
