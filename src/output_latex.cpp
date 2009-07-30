@@ -94,74 +94,6 @@ TeXDeeper(Buffer const & buf,
 }
 
 
-Language const *
-priorLanguage(ParagraphList::const_iterator const pit,
-	      ParagraphList::const_iterator const priorpit,
-	      ParagraphList::const_iterator const pars_begin,
-	      BufferParams const & bparams)
-{
-	ParagraphList::const_iterator outpit = priorpit;
-	ParagraphList::const_iterator refpit = priorpit;
-
-	// We go back until the depth kept increasing or the current layout
-	// matches the reference one. When the depth decreases, we should stop
-	// only if we started from inside the enclosing environment, otherwise
-	// we should continue to go back.
-
-	bool topped = false;
-	depth_type const refdepth =
-		priorpit->getDepth() ? priorpit->getDepth() - 1 : 0;
-	while (outpit != pars_begin
-	       && (outpit->hasSameLayout(*refpit)
-		   || outpit->getDepth() > pit->getDepth())) {
-		outpit = boost::prior(outpit);
-		if (outpit->getDepth() == pit->getDepth()
-		    && outpit->layout() == pit->layout()
-		    && (priorpit->getAlign() != priorpit->layout().align
-			    || priorpit->getDepth() > pit->getDepth())) {
-			// After skipping either a nested or non-default
-			// aligned environment, we ended at an environment with
-			// same layout and nesting depth as the current one.
-			break;
-		}
-		if (outpit->getDepth() == refdepth) {
-			if (outpit->getDepth() >= pit->getDepth()
-			    && (priorpit->getDepth() > pit->getDepth()
-				|| outpit->layout() == refpit->layout())) {
-				// The prior environment was nested in
-				// another one, or was enclosing some other
-				// one, or we are still in it. In any case,
-				// we still have to go back.
-				refpit = outpit;
-			} else {
-				topped = true;
-				break;
-			}
-		}
-	}
-	ParagraphList::const_iterator const inpit =
-					topped ? refpit : boost::next(outpit);
-	// Check if we stopped at the first paragraph,
-	// but we should still go back.
-	topped = !topped && (outpit == pars_begin
-			     && (outpit->hasSameLayout(*refpit)
-				 || outpit->getDepth() > pit->getDepth())
-			     && !(outpit->getDepth() == pit->getDepth()
-				  && outpit->layout() == pit->layout()
-				  && (priorpit->getAlign() != priorpit->layout().align
-					|| priorpit->getDepth() > pit->getDepth())));
-	Language const * const outenv_language =
-			 topped ? bparams.language
-				: outpit->getParLanguage(bparams);
-	Language const * const inenv_language =
-			 topped ? outpit->getParLanguage(bparams)
-				: inpit->getParLanguage(bparams);
-	if (outenv_language->babel() != inenv_language->babel())
-		return inenv_language;
-	return outenv_language;
-}
-
-
 ParagraphList::const_iterator
 TeXEnvironment(Buffer const & buf,
 	       Text const & text,
@@ -179,21 +111,13 @@ TeXEnvironment(Buffer const & buf,
 		bparams.documentClass().plainLayout() : pit->layout();
 
 	ParagraphList const & paragraphs = text.paragraphs();
-	ParagraphList::const_iterator const priorpit = 
-		pit == paragraphs.begin() ? pit : boost::prior(pit);
 
 	Language const * const par_language = pit->getParLanguage(bparams);
 	Language const * const doc_language = bparams.language;
-	Language const * const prior_language =
-		(pit != paragraphs.begin() && priorpit != paragraphs.begin()
-		 && priorpit->getDepth() >= pit->getDepth()
-		 && !priorpit->hasSameLayout(*pit)
-		 && !priorpit->layout().isParagraph())
-		? priorLanguage(pit, priorpit, paragraphs.begin(), bparams)
-		: priorpit->getParLanguage(bparams);
 	Language const * const prev_par_language =
-		(pit != paragraphs.begin()) ? prior_language : doc_language;
-
+		(pit != paragraphs.begin())
+		? boost::prior(pit)->getParLanguage(bparams)
+		: doc_language;
 	if (par_language->babel() != prev_par_language->babel()) {
 
 		if (!lyxrc.language_command_end.empty() &&
@@ -412,23 +336,12 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 	Language const * const outer_language =
 		(runparams.local_font != 0) ?
 			runparams.local_font->language() : doc_language;
-
-	// The language that was in effect before the current paragraph.
-	Language const * const prior_language =
-		(pit != paragraphs.begin() && priorpit != paragraphs.begin()
-		 && priorpit->getDepth() >= pit->getDepth()
-		 && !priorpit->hasSameLayout(*pit)
-		 && !priorpit->layout().isParagraph())
-		? priorLanguage(pit, priorpit, paragraphs.begin(), bparams)
-		: priorpit->getParLanguage(bparams);
-
-	// The previous language that was in effect is the language of the
-	// previous paragraph, unless the previous paragraph is inside an
-	// environment and the current one is nested in it but with a lower
-	// depth. If there is no previous paragraph, the previous language
-	// is the outer language.
+	// The previous language that was in effect is either the language of
+	// the previous paragraph, if there is one, or else the outer language
+	// if there is no previous paragraph
 	Language const * const prev_language =
-		(pit != paragraphs.begin()) ? prior_language : outer_language;
+		(pit != paragraphs.begin()) ?
+			priorpit->getParLanguage(bparams) : outer_language;
 
 	if (par_language->babel() != prev_language->babel()
 	    // check if we already put language command in TeXEnvironment()
