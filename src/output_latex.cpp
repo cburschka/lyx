@@ -52,6 +52,7 @@ enum OpenEncoding {
 
 static int open_encoding_ = none;
 static int cjk_inherited_ = 0;
+Language const * prev_env_language_ = 0;
 
 
 ParagraphList::const_iterator
@@ -111,12 +112,20 @@ TeXEnvironment(Buffer const & buf,
 		bparams.documentClass().plainLayout() : pit->layout();
 
 	ParagraphList const & paragraphs = text.paragraphs();
+	ParagraphList::const_iterator const priorpit =
+		pit == paragraphs.begin() ? pit : boost::prior(pit);
+
+	bool const use_prev_env_language = priorpit->layout().isEnvironment()
+			&& (priorpit->getDepth() > pit->getDepth()
+			    || (priorpit->getDepth() == pit->getDepth()
+				&& priorpit->layout() != pit->layout()));
 
 	Language const * const par_language = pit->getParLanguage(bparams);
 	Language const * const doc_language = bparams.language;
 	Language const * const prev_par_language =
 		(pit != paragraphs.begin())
-		? boost::prior(pit)->getParLanguage(bparams)
+		? (use_prev_env_language ? prev_env_language_
+					 : priorpit->getParLanguage(bparams))
 		: doc_language;
 	if (par_language->babel() != prev_par_language->babel()) {
 
@@ -240,6 +249,7 @@ TeXEnvironment(Buffer const & buf,
 	if (style.isEnvironment()) {
 		os << "\\end{" << from_ascii(style.latexname()) << "}\n";
 		texrow.newline();
+		prev_env_language_ = par_language;
 	}
 
 	if (leftindent_open) {
@@ -336,12 +346,21 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 	Language const * const outer_language =
 		(runparams.local_font != 0) ?
 			runparams.local_font->language() : doc_language;
-	// The previous language that was in effect is either the language of
-	// the previous paragraph, if there is one, or else the outer language
-	// if there is no previous paragraph
+
+	// The previous language that was in effect is the language of the
+	// previous paragraph, unless the previous paragraph is inside an
+	// environment with nesting depth greater than (or equal to, but with
+	// a different layout) the current one. If there is no previous
+	// paragraph, the previous language is the outer language.
+	bool const use_prev_env_language = priorpit->layout().isEnvironment()
+			&& (priorpit->getDepth() > pit->getDepth()
+			    || (priorpit->getDepth() == pit->getDepth()
+				&& priorpit->layout() != pit->layout()));
 	Language const * const prev_language =
-		(pit != paragraphs.begin()) ?
-			priorpit->getParLanguage(bparams) : outer_language;
+		(pit != paragraphs.begin())
+		? (use_prev_env_language ? prev_env_language_
+					 : priorpit->getParLanguage(bparams))
+		: outer_language;
 
 	if (par_language->babel() != prev_language->babel()
 	    // check if we already put language command in TeXEnvironment()
