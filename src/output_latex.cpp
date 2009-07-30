@@ -123,7 +123,8 @@ TeXEnvironment(Buffer const & buf,
 	ParagraphList::const_iterator const priorpit =
 		pit == paragraphs.begin() ? pit : boost::prior(pit);
 
-	bool const use_prev_env_language = priorpit->layout().isEnvironment()
+	bool const use_prev_env_language = prev_env_language_ != 0
+			&& priorpit->layout().isEnvironment()
 			&& (priorpit->getDepth() > pit->getDepth()
 			    || (priorpit->getDepth() == pit->getDepth()
 				&& priorpit->layout() != pit->layout()));
@@ -358,7 +359,8 @@ TeXOnePar(Buffer const & buf,
 	// environment with nesting depth greater than (or equal to, but with
 	// a different layout) the current one. If there is no previous
 	// paragraph, the previous language is the outer language.
-	bool const use_prev_env_language = priorpit->layout().isEnvironment()
+	bool const use_prev_env_language = prev_env_language_ != 0
+			&& priorpit->layout().isEnvironment()
 			&& (priorpit->getDepth() > pit->getDepth()
 			    || (priorpit->getDepth() == pit->getDepth()
 				&& priorpit->layout() != pit->layout()));
