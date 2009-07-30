@@ -239,7 +239,8 @@ GuiWorkArea::GuiWorkArea(QWidget *)
 	: buffer_view_(0), lyx_view_(0),
 	cursor_visible_(false),
 	need_resize_(false), schedule_redraw_(false),
-	preedit_lines_(1), completer_(new GuiCompleter(this))
+	preedit_lines_(1), completer_(new GuiCompleter(this)),
+	context_target_pos_()
 {
 }
 
@@ -248,7 +249,8 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & gv)
 	: buffer_view_(0), lyx_view_(0),
 	cursor_visible_(false),
 	need_resize_(false), schedule_redraw_(false),
-	preedit_lines_(1), completer_(new GuiCompleter(this))
+	preedit_lines_(1), completer_(new GuiCompleter(this)),
+	context_target_pos_()
 {
 	setGuiView(gv);
 	setBuffer(buffer);
@@ -661,7 +663,12 @@ bool GuiWorkArea::event(QEvent * e)
 
 void GuiWorkArea::contextMenuEvent(QContextMenuEvent * e)
 {
-	QPoint pos = e->pos();
+	QPoint pos;
+	if (e->reason() == QContextMenuEvent::Mouse)
+		// the position is set on mouse press
+		pos = context_target_pos_;
+	else
+		pos = e->pos();
 	Cursor const & cur = buffer_view_->cursor();
 	if (e->reason() == QContextMenuEvent::Keyboard && cur.inTexted()) {
 		// Do not access the context menu of math right in front of before
@@ -728,6 +735,9 @@ void GuiWorkArea::mousePressEvent(QMouseEvent * e)
 		e->accept();
 		return;
 	}
+
+	if (e->button() == Qt::RightButton)
+		context_target_pos_ = e->pos();
 
 	inputContext()->reset();
 
