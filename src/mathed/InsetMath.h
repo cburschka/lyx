@@ -95,6 +95,8 @@ class InsetMath : public Inset {
 public:
 	/// identification as math inset
 	InsetMath * asInsetMath() { return this; }
+	/// identification as math inset
+	InsetMath const * asInsetMath() const { return this; }
 	/// this is overridden in math text insets (i.e. mbox)
 	bool inMathed() const { return true; }
 
