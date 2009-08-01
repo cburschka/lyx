@@ -1277,18 +1277,8 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		else if (name == "print")
 			enable = buf->isExportable("dvi")
 				&& lyxrc.print_command != "none";
-		else if (name == "character") {
+		else if (name == "character" || name == "symbols") {
 			if (!view() || !view()->cursor().inTexted())
-				enable = false;
-			else {
-				// FIXME we should consider passthru
-				// paragraphs too.
-				Inset const & in = view()->cursor().inset();
-				enable = !in.getLayout().isPassThru();
-			}
-		}
-		else if (name == "symbols") {
-			if (!view() || view()->cursor().inMathed())
 				enable = false;
 			else {
 				// FIXME we should consider passthru
@@ -1300,11 +1290,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		else if (name == "latexlog")
 			enable = FileName(buf->logName()).isReadableFile();
 		else if (name == "spellchecker")
-#if defined (USE_ASPELL)
-			enable = !buf->isReadonly();
-#else
-			enable = false;
-#endif
+			enable = theSpellChecker() && !buf->isReadonly();
 		else if (name == "vclog")
 			enable = buf->lyxvc().inUse();
 		break;
