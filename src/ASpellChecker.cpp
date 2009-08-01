@@ -1,5 +1,5 @@
 /**
- * \file ASpell.cpp
+ * \file AspellChecker.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -15,7 +15,7 @@
 
 #include <aspell.h>
 
-#include "ASpell_local.h"
+#include "AspellChecker.h"
 #include "LyXRC.h"
 #include "WordLangTuple.h"
 
@@ -25,12 +25,12 @@ using namespace std;
 
 namespace lyx {
 
-ASpell::ASpell(): els(0), spell_error_object(0)
+AspellChecker::AspellChecker(): els(0), spell_error_object(0)
 {
 }
 
 
-ASpell::~ASpell()
+AspellChecker::~AspellChecker()
 {
 	if (spell_error_object) {
 		delete_aspell_can_have_error(spell_error_object);
@@ -51,7 +51,7 @@ ASpell::~ASpell()
 }
 
 
-void ASpell::addSpeller(string const & lang)
+void AspellChecker::addSpeller(string const & lang)
 {
 	AspellConfig * config = new_aspell_config();
 	// FIXME The aspell documentation says to use "lang"
@@ -86,7 +86,7 @@ void ASpell::addSpeller(string const & lang)
 }
 
 
-ASpell::Result ASpell::check(WordLangTuple const & word)
+AspellChecker::Result AspellChecker::check(WordLangTuple const & word)
 {
 	Result res = UNKNOWN_WORD;
 
@@ -124,7 +124,7 @@ ASpell::Result ASpell::check(WordLangTuple const & word)
 }
 
 
-void ASpell::insert(WordLangTuple const & word)
+void AspellChecker::insert(WordLangTuple const & word)
 {
 	Spellers::iterator it = spellers_.find(word.lang_code());
 	if (it != spellers_.end())
@@ -132,7 +132,7 @@ void ASpell::insert(WordLangTuple const & word)
 }
 
 
-void ASpell::accept(WordLangTuple const & word)
+void AspellChecker::accept(WordLangTuple const & word)
 {
 	Spellers::iterator it = spellers_.find(word.lang_code());
 	if (it != spellers_.end())
@@ -140,7 +140,7 @@ void ASpell::accept(WordLangTuple const & word)
 }
 
 
-docstring const ASpell::nextMiss()
+docstring const AspellChecker::nextMiss()
 {
 	char const * str = 0;
 
@@ -151,7 +151,7 @@ docstring const ASpell::nextMiss()
 }
 
 
-docstring const ASpell::error()
+docstring const AspellChecker::error()
 {
 	char const * err = 0;
 

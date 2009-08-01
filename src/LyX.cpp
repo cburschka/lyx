@@ -17,7 +17,7 @@
 
 #include "LyX.h"
 
-#include "ASpell_local.h"
+#include "AspellChecker.h"
 #include "Buffer.h"
 #include "BufferList.h"
 #include "CmdDef.h"
@@ -130,7 +130,7 @@ struct LyX::Impl
 		messages_["GUI"] = Messages();
 
 #if defined(USE_ASPELL)
-		spell_checker_ = new ASpell();
+		spell_checker_ = new AspellChecker();
 #else
 		spell_checker_ = 0;
 #endif

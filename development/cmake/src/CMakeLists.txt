@@ -23,19 +23,26 @@ file(GLOB lyx_sources ${TOP_SRC_DIR}/src/${LYX_CPP_FILES})
 file(GLOB lyx_headers ${TOP_SRC_DIR}/src/${LYX_HPP_FILES})
 
 list(REMOVE_ITEM lyx_sources
-	${TOP_SRC_DIR}/src/ASpell.cpp
-	${TOP_SRC_DIR}/src/PSpell.cpp
-	${TOP_SRC_DIR}/src/ISpell.cpp
+	${TOP_SRC_DIR}/src/AspellChecker.cpp
+	${TOP_SRC_DIR}/src/HunspellChecker.cpp
 	${TOP_SRC_DIR}/src/Variables.cpp
 	${TOP_SRC_DIR}/src/Section.cpp)
 
-if (NOT HUNSPELL_FOUND)
-    list(REMOVE_ITEM lyx_sources ${TOP_SRC_DIR}/src/HunspellSpellChecker.cpp)
+list(REMOVE_ITEM lyx_headers
+	${TOP_SRC_DIR}/src/AspellChecker.h
+	${TOP_SRC_DIR}/src/HunspellChecker.h
+	${TOP_SRC_DIR}/src/Variables.h
+	${TOP_SRC_DIR}/src/Section.h)
+
+if (HUNSPELL_FOUND)
+	list(APPEND lyx_sources ${TOP_SRC_DIR}/src/HunspellChecker.cpp)
+	list(APPEND lyx_headers ${TOP_SRC_DIR}/src/HunspellChecker.h)
 endif()
 
 if (ASPELL_FOUND)
-  include_directories(${ASPELL_INCLUDE_DIR})
-  list(APPEND lyx_sources ${TOP_SRC_DIR}/src/ASpell.cpp)
+	include_directories(${ASPELL_INCLUDE_DIR})
+	list(APPEND lyx_sources ${TOP_SRC_DIR}/src/AspellChecker.cpp)
+	list(APPEND lyx_headers ${TOP_SRC_DIR}/src/AspellChecker.h)
 endif()
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR}
@@ -45,8 +52,8 @@ lyx_add_msvc_pch(lyx)
 
 
 if (MERGE_FILES)
-  lyx_const_touched_files(_allinone  lyx_sources)
-  set(lyx_sources ${_allinone_files})
+	lyx_const_touched_files(_allinone  lyx_sources)
+	set(lyx_sources ${_allinone_files})
 endif()
 
 if (LYX_LEAK_DETECTION)

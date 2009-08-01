@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file ASpell_local.h
+ * \file AspellChecker.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -26,11 +26,11 @@ struct AspellConfig;
 namespace lyx {
 
 
-class ASpell : public SpellChecker
+class AspellChecker : public SpellChecker
 {
 public:
-	ASpell();
-	~ASpell();
+	AspellChecker();
+	~AspellChecker();
 
 	/// check the given word and return the result
 	enum Result check(WordLangTuple const &);

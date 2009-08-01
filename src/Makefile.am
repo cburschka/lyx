@@ -49,11 +49,11 @@ endif
 BUILT_SOURCES = $(PCH_FILE)
 
 if USE_ASPELL
-ASPELL = ASpell.cpp ASpell_local.h
+ASPELL = AspellChecker.cpp AspellChecker.h
 endif
 
 if USE_HUNSPELL
-HUNSPELL = HunspellSpellChecker.cpp HunspellSpellChecker.h
+HUNSPELL = HunspellChecker.cpp HunspellChecker.h
 endif
 
 # These four objects are linked as object files as they are not

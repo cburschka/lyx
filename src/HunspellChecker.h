@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file HunspellSpellChecker.h
+ * \file HunspellChecker.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -17,11 +17,11 @@
 namespace lyx {
 
 
-class HunspellSpellChecker : public SpellChecker
+class HunspellChecker : public SpellChecker
 {
 public:
-	HunspellSpellChecker();
-	~HunspellSpellChecker();
+	HunspellChecker();
+	~HunspellChecker();
 
 	SpellChecker::Result check(WordLangTuple const &);
 	void insert(WordLangTuple const &);

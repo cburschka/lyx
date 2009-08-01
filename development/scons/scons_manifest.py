@@ -28,7 +28,7 @@ TOP_extra_files = Split('''
 
 
 src_header_files = Split('''
-    ASpell_local.h
+    AspellChecker.h
     Author.h
     BiblioInfo.h
     Bidi.h
@@ -75,7 +75,7 @@ src_header_files = Split('''
     FuncStatus.h
     Graph.h
     HSpace.h
-    HunspellSpellChecker.h
+    HunspellChecker.h
     IndicesList.h
     InsetIterator.h
     InsetList.h
@@ -249,8 +249,8 @@ src_post_files = Split('''
 
 
 src_extra_src_files = Split('''
-    ASpell.cpp
-    HunspellSpellChecker.cpp
+    AspellChecker.cpp
+    HunspellChecker.cpp
     main.cpp
     Section.cpp
     Variables.cpp

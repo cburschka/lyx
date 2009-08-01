@@ -1,5 +1,5 @@
 /**
- * \file HunspellSpellChecker.cpp
+ * \file HunspellChecker.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "HunspellSpellChecker.h"
+#include "HunspellChecker.h"
 
 #include "LyXRC.h"
 #include "WordLangTuple.h"
@@ -31,47 +31,47 @@ namespace {
 typedef map<std::string, Hunspell *> Spellers;
 }
 
-class HunspellSpellChecker::Private
+class HunspellChecker::Private
 {
 	/// the spellers
 	Spellers spellers_;
 };
 
 
-HunspellSpellChecker::HunspellSpellChecker(): d(new Private)
+HunspellChecker::HunspellChecker(): d(new Private)
 {
 }
 
 
-HunspellSpellChecker::~HunspellSpellChecker()
+HunspellChecker::~HunspellChecker()
 {
 	delete d;
 }
 
 
-SpellChecker::Result HunspellSpellChecker::check(WordLangTuple const & word)
+SpellChecker::Result HunspellChecker::check(WordLangTuple const & word)
 {
 	return OK;
 }
 
 
-void HunspellSpellChecker::insert(WordLangTuple const & word)
+void HunspellChecker::insert(WordLangTuple const & word)
 {
 }
 
 
-void HunspellSpellChecker::accept(WordLangTuple const & word)
+void HunspellChecker::accept(WordLangTuple const & word)
 {
 }
 
 
-docstring const HunspellSpellChecker::nextMiss()
+docstring const HunspellChecker::nextMiss()
 {
 	return docstring();
 }
 
 
-docstring const HunspellSpellChecker::error()
+docstring const HunspellChecker::error()
 {
 	return docstring();
 }
