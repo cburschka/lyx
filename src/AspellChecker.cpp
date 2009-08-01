@@ -11,26 +11,53 @@
 
 #include <config.h>
 
-#include "support/debug.h"
-
-#include <aspell.h>
-
 #include "AspellChecker.h"
 #include "LyXRC.h"
 #include "WordLangTuple.h"
 
 #include "support/lassert.h"
+#include "support/debug.h"
+
+#include <aspell.h>
+
+#include <map>
+#include <string>
 
 using namespace std;
 
 namespace lyx {
 
-AspellChecker::AspellChecker(): els(0), spell_error_object(0)
+namespace {
+
+struct Speller {
+	AspellSpeller * speller;
+	AspellConfig * config;
+};
+
+typedef std::map<std::string, Speller> Spellers;
+
+} // anon namespace
+
+struct AspellChecker::Private
 {
-}
+	Private(): els(0), spell_error_object(0) {}
+
+	~Private();
+
+	/// add a speller of the given language
+	void addSpeller(std::string const & lang);
+
+	/// the spellers
+	Spellers spellers_;
+
+	/// FIXME
+	AspellStringEnumeration * els;
+	/// FIXME
+	AspellCanHaveError * spell_error_object;
+};
 
 
-AspellChecker::~AspellChecker()
+AspellChecker::Private::~Private()
 {
 	if (spell_error_object) {
 		delete_aspell_can_have_error(spell_error_object);
@@ -51,7 +78,7 @@ AspellChecker::~AspellChecker()
 }
 
 
-void AspellChecker::addSpeller(string const & lang)
+void AspellChecker::Private::addSpeller(string const & lang)
 {
 	AspellConfig * config = new_aspell_config();
 	// FIXME The aspell documentation says to use "lang"
@@ -86,16 +113,27 @@ void AspellChecker::addSpeller(string const & lang)
 }
 
 
-AspellChecker::Result AspellChecker::check(WordLangTuple const & word)
+AspellChecker::AspellChecker(): d(new Private)
+{
+}
+
+
+AspellChecker::~AspellChecker()
+{
+	delete d;
+}
+
+
+SpellChecker::Result AspellChecker::check(WordLangTuple const & word)
 {
 	Result res = UNKNOWN_WORD;
 
-	Spellers::iterator it = spellers_.find(word.lang_code());
-	if (it == spellers_.end()) {
-		addSpeller(word.lang_code());
-		it = spellers_.find(word.lang_code());
+	Spellers::iterator it = d->spellers_.find(word.lang_code());
+	if (it == d->spellers_.end()) {
+		d->addSpeller(word.lang_code());
+		it = d->spellers_.find(word.lang_code());
 		// FIXME
-		if (it == spellers_.end())
+		if (it == d->spellers_.end())
 			return res;
 	}
 
@@ -114,7 +152,7 @@ AspellChecker::Result AspellChecker::check(WordLangTuple const & word)
 	AspellWordList const * sugs =
 		aspell_speller_suggest(m, to_utf8(word.word()).c_str(), -1);
 	LASSERT(sugs != 0, /**/);
-	els = aspell_word_list_elements(sugs);
+	d->els = aspell_word_list_elements(sugs);
 	if (aspell_word_list_empty(sugs))
 		res = UNKNOWN_WORD;
 	else
@@ -126,16 +164,16 @@ AspellChecker::Result AspellChecker::check(WordLangTuple const & word)
 
 void AspellChecker::insert(WordLangTuple const & word)
 {
-	Spellers::iterator it = spellers_.find(word.lang_code());
-	if (it != spellers_.end())
+	Spellers::iterator it = d->spellers_.find(word.lang_code());
+	if (it != d->spellers_.end())
 		aspell_speller_add_to_personal(it->second.speller, to_utf8(word.word()).c_str(), -1);
 }
 
 
 void AspellChecker::accept(WordLangTuple const & word)
 {
-	Spellers::iterator it = spellers_.find(word.lang_code());
-	if (it != spellers_.end())
+	Spellers::iterator it = d->spellers_.find(word.lang_code());
+	if (it != d->spellers_.end())
 		aspell_speller_add_to_session(it->second.speller, to_utf8(word.word()).c_str(), -1);
 }
 
@@ -144,8 +182,8 @@ docstring const AspellChecker::nextMiss()
 {
 	char const * str = 0;
 
-	if (els)
-		str = aspell_string_enumeration_next(els);
+	if (d->els)
+		str = aspell_string_enumeration_next(d->els);
 
 	return (str ? from_utf8(str) : docstring());
 }
@@ -155,8 +193,8 @@ docstring const AspellChecker::error()
 {
 	char const * err = 0;
 
-	if (spell_error_object && aspell_error_number(spell_error_object) != 0)
-		err = aspell_error_message(spell_error_object);
+	if (d->spell_error_object && aspell_error_number(d->spell_error_object) != 0)
+		err = aspell_error_message(d->spell_error_object);
 
 	// FIXME UNICODE: err is not in UTF8, but probably the locale encoding
 	return (err ? from_utf8(err) : docstring());

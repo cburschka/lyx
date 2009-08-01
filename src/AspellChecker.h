@@ -15,16 +15,7 @@
 
 #include "SpellChecker.h"
 
-#include <map>
-#include <string>
-
-struct AspellSpeller;
-struct AspellStringEnumeration;
-struct AspellCanHaveError;
-struct AspellConfig;
-
 namespace lyx {
-
 
 class AspellChecker : public SpellChecker
 {
@@ -48,23 +39,8 @@ public:
 	docstring const error();
 
 private:
-	/// add a speller of the given language
-	void addSpeller(std::string const & lang);
-
-	struct Speller {
-		AspellSpeller * speller;
-		AspellConfig * config;
-	};
-
-	typedef std::map<std::string, Speller> Spellers;
-
-	/// the spellers
-	Spellers spellers_;
-
-	/// FIXME
-	AspellStringEnumeration * els;
-	/// FIXME
-	AspellCanHaveError * spell_error_object;
+	struct Private;
+	Private * d;
 };
 
 
