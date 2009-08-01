@@ -52,6 +52,7 @@
 #include "LyXRC.h"
 #include "LyXVC.h"
 #include "Paragraph.h"
+#include "SpellChecker.h"
 #include "TextClass.h"
 #include "Text.h"
 #include "Toolbars.h"
