@@ -28,10 +28,12 @@ using namespace std;
 namespace lyx {
 
 namespace {
-typedef map<std::string, Hunspell *> Spellers;
-}
 
-class HunspellChecker::Private
+typedef map<std::string, Hunspell *> Spellers;
+
+} // anon namespace
+
+struct HunspellChecker::Private
 {
 	/// the spellers
 	Spellers spellers_;
