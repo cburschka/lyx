@@ -1009,8 +1009,7 @@ void InsetMathGrid::write(WriteStream & os,
 		eol = eolString(row, os.fragile());
 		os << eol;
 		// append newline only if line wasn't completely empty
-		// and this was not the last line in the grid
-		if (!emptyline && row + 1 < end_row)
+		if (!(emptyline && eol.empty())) 
 			os << "\n";
 	}
 	// @TODO use end_row instead of nrows() ?
