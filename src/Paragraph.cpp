@@ -2554,8 +2554,11 @@ docstring Paragraph::asString(pos_type beg, pos_type end, int options) const
 		if (isPrintable(c) || c == '\t'
 		    || (c == '\n' && options & AS_STR_NEWLINES))
 			os.put(c);
-		else if (c == META_INSET && options & AS_STR_INSETS)
+		else if (c == META_INSET && options & AS_STR_INSETS) {
 			getInset(i)->tocString(os);
+			if (getInset(i)->asInsetMath())
+				os << " ";
+		}
 	}
 
 	return os.str();
