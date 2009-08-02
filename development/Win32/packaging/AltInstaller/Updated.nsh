@@ -18,6 +18,7 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources\doc"
  File /r "${PRODUCT_SOURCEDIR}\Resources\doc\ca"
  File /r "${PRODUCT_SOURCEDIR}\Resources\doc\da"
+ File /r "${PRODUCT_SOURCEDIR}\Resources\doc\he"
  File /r "${PRODUCT_SOURCEDIR}\Resources\doc\nb"
  File /r "${PRODUCT_SOURCEDIR}\Resources\doc\ro"
  File /r "${PRODUCT_SOURCEDIR}\Resources\doc\sk"
