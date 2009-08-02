@@ -1,4 +1,4 @@
-#LyX 1.6.3svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -34332,6 +34332,16 @@ Enregistre le document courant sous un nouveau nom pour en faire une copie.
 \end_layout
 
 \begin_layout Subsection
+Enregistrer tout
+\end_layout
+
+\begin_layout Standard
+Enregistre tout 
+\lang english
+opened documents.
+\end_layout
+
+\begin_layout Subsection
 Revenir à la sauvegarde
 \end_layout
 
@@ -34364,9 +34374,9 @@ Importer
 
 \begin_layout Standard
 Vous pouvez importer à partir de ce sous-menu des fichiers créés avec des
- versions anciennes de LyX, des fichiers LaTeX, des fichiers NoWeb, des
- fichiers de texte brut (fichiers ASCII) et des fichiers textes de données
- séparées par des virgules, comme des tableaux (CSV pour 
+ versions anciennes de LyX, des fichiers HTML, des fichiers LaTeX, des fichiers
+ NoWeb, des fichiers de texte brut (fichiers ASCII) et des fichiers textes
+ de données séparées par des virgules, comme des tableaux (CSV pour 
 \emph on
 comma separated values
 \emph default
@@ -34572,12 +34582,6 @@ Abiword
 \end_layout
 
 \begin_layout Description
-PDF format PDF en utilisant le programme 
-\family typewriter
-ps2pdf
-\end_layout
-
-\begin_layout Description
 PDF
 \begin_inset space ~
 \end_inset
@@ -34595,6 +34599,16 @@ PDF
 (pdflatex) format PDF en utilisant le programme 
 \family typewriter
 pdflatex
+\end_layout
+
+\begin_layout Description
+PDF
+\begin_inset space ~
+\end_inset
+
+(ps2pdf) format PDF en utilisant le programme 
+\family typewriter
+ps2pdf
 \end_layout
 
 \begin_layout Description
@@ -34680,7 +34694,7 @@ reference "sec:Config-LyX-de-base"
 
 .
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Reconfiguration de LyX
@@ -34708,8 +34722,11 @@ Imprimer
 Avec ce menu vous pouvez imprimer votre document dans un fichier PostScript
  ou l'envoyer à une imprimante.
  L'imprimante le recevra aussi sous forme PostScript.
- La conversion en PostScript est faite en interne par LyX en utilisant le
- programme 
+ La conversion en PostScript est
+\end_layout
+
+\begin_layout Standard
+faite en interne par LyX en utilisant le programme 
 \family typewriter
 dvips
 \family default
@@ -34733,16 +34750,19 @@ Nouvelle fenêtre et Ferme fenêtre
 \end_layout
 
 \begin_layout Standard
-Ouvre un nouvel exemplaire de LyX avec tous les documents ouverts actuellement.
- Vous pouvez la fermer plus tard en utilisant 
-\family sans
-Ferme
-\begin_inset space ~
-\end_inset
 
-Fenêtre
-\family default
-.
+\lang english
+Opens or closes a new instance of LyX.
+\end_layout
+
+\begin_layout Subsection
+Quitter
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Prompts you to save all unsaved documents and then exits.
 \end_layout
 
 \begin_layout Section
@@ -34946,7 +34966,7 @@ Texte.
 \end_layout
 
 \begin_layout Subsection
-Tableaux et Math
+Paramètres de tableau et Math
 \end_layout
 
 \begin_layout Standard
