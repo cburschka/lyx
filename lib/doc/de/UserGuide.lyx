@@ -173,7 +173,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 2.
+letzte Änderung: 3.
  August 2009
 \end_layout
 
@@ -34033,27 +34033,19 @@ Strg+Umschalt+E
 \end_layout
 
 \begin_layout Standard
-Änderungen werden dann im Text farbig markiert:
-\end_layout
-
-\begin_layout Itemize
-hinzugefügter Text wird 
+Änderungen im Dokument werden durch Striche und Farben hervorgehoben: 
+\bar under
 \color blue
-blau
+Unterstrichener Text 
+\bar default
 \color inherit
- markiert
-\end_layout
-
-\begin_layout Itemize
-gelöschter Text wird 
-\color red
-rot
+ist eine Einfügung, 
+\color blue
+durchgestrichener Text 
 \color inherit
- markiert.
-\end_layout
-
-\begin_layout Standard
-Die Farben können Sie in 
+eine Löschung.
+ Die Farbe hängt vom Autor der Änderung ab.
+ Die Farben können Sie in 
 \family sans
 Werkzeuge\SpecialChar \menuseparator
 Einstellungen\SpecialChar \menuseparator
