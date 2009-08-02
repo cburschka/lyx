@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 362
+\lyxformat 369
 \begin_document
 \begin_header
 \textclass scrbook
@@ -99,24 +99,24 @@
 \paperorientation portrait
 \branch Question
 \selected 1
+\filename_suffix 0
 \color #00ff00
 \end_branch
 \branch Answer
 \selected 0
+\filename_suffix 0
 \color #aa55ff
 \end_branch
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language english
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
 \end_header
 
 \begin_body
@@ -9137,7 +9137,8 @@ thin
 \end_inset
 
 space A line with a 
-\begin_inset Formula $\to$
+\begin_inset Formula $\to
+$
 \end_inset
 
 
@@ -9145,7 +9146,8 @@ space A line with a
 \end_inset
 
 
-\begin_inset Formula $\gets$
+\begin_inset Formula $\gets
+$
 \end_inset
 
  Negative thin space between the arrows.
@@ -9161,7 +9163,8 @@ Enspace
 \end_inset
 
 em) A line with a 
-\begin_inset Formula $\to$
+\begin_inset Formula $\to
+$
 \end_inset
 
 
@@ -9169,7 +9172,8 @@ em) A line with a
 \end_inset
 
 
-\begin_inset Formula $\gets$
+\begin_inset Formula $\gets
+$
 \end_inset
 
  Enspace (0.5
@@ -9189,7 +9193,8 @@ Quad
 \end_inset
 
 em) A line with a 
-\begin_inset Formula $\to$
+\begin_inset Formula $\to
+$
 \end_inset
 
 
@@ -9197,7 +9202,8 @@ em) A line with a
 \end_inset
 
 
-\begin_inset Formula $\gets$
+\begin_inset Formula $\gets
+$
 \end_inset
 
  Quad
@@ -9221,7 +9227,8 @@ QQuad
 \end_inset
 
 em) A line with a 
-\begin_inset Formula $\to$
+\begin_inset Formula $\to
+$
 \end_inset
 
 
@@ -9229,7 +9236,8 @@ em) A line with a
 \end_inset
 
 
-\begin_inset Formula $\gets$
+\begin_inset Formula $\gets
+$
 \end_inset
 
  QQuad
@@ -9249,7 +9257,8 @@ Custom
 \end_inset
 
 space A line with
-\begin_inset Formula $\to$
+\begin_inset Formula $\to
+$
 \end_inset
 
 
@@ -9258,7 +9267,8 @@ space A line with
 \end_inset
 
 
-\begin_inset Formula $\gets$
+\begin_inset Formula $\gets
+$
 \end_inset
 
  2
@@ -9609,7 +9619,8 @@ Quote
 \family default
  environment.
  Here
-\begin_inset Formula $\to$
+\begin_inset Formula $\to
+$
 \end_inset
 
 
@@ -9617,7 +9628,8 @@ Quote
 \end_inset
 
 
-\begin_inset Formula $\gets$
+\begin_inset Formula $\gets
+$
 \end_inset
 
 is one in a standard paragraph.
@@ -13467,7 +13479,8 @@ minus sign
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $-$
+\begin_inset Formula $-
+$
 \end_inset
 
 
@@ -13609,7 +13622,8 @@ em dash
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Formula $x^{2}-y^{2}=z^{2}$
+\begin_inset Formula $x^{2}-y^{2}=z^{2}
+$
 \end_inset
 
 
@@ -14672,7 +14686,8 @@ You might wonder why the LaTeX-version is
 \end_inset
 
 2
-\begin_inset Formula $\epsilon$
+\begin_inset Formula $\epsilon
+$
 \end_inset
 
 
@@ -14682,7 +14697,8 @@ You might wonder why the LaTeX-version is
 .
  It's an old tradition in the TeX-world to give programs geek version numbers.
  For example the version number of TeX converges to the number 
-\begin_inset Formula $\pi$
+\begin_inset Formula $\pi
+$
 \end_inset
 
 : The actual version is 
@@ -14806,7 +14822,8 @@ Here's an example to show the differences:
 \end_inset
 
 kW
-\begin_inset Formula $\cdot$
+\begin_inset Formula $\cdot
+$
 \end_inset
 
 h
@@ -14834,7 +14851,8 @@ space between number and unit
 \end_inset
 
 kW
-\begin_inset Formula $\cdot$
+\begin_inset Formula $\cdot
+$
 \end_inset
 
 h
@@ -16311,7 +16329,7 @@ one
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="4">
-<features tabularvalignment="middle" firstHeadTopDL="true" firstHeadBottomDL="true">
+<features firstHeadTopDL="true" firstHeadBottomDL="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="middle" width="0">
 <column alignment="center" valignment="top" width="0in">
@@ -16664,7 +16682,7 @@ header.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="69" columns="3">
-<features islongtable="true" tabularvalignment="middle">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="block" valignment="top" width="5cm">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
@@ -19836,7 +19854,8 @@ Ted
 \bar no
 \noun off
 \color none
-\begin_inset Formula $\int x^{2}dx$
+\begin_inset Formula $\int x^{2}dx
+$
 \end_inset
 
 
@@ -19859,7 +19878,9 @@ Ted
 \color none
 \begin_inset Formula $\left[\begin{array}{cc}
 a & b\\
-c & d\end{array}\right]$
+c & d
+\end{array}\right]
+$
 \end_inset
 
 
@@ -19880,7 +19901,8 @@ c & d\end{array}\right]$
 \bar no
 \noun off
 \color none
-\begin_inset Formula $1+1=2$
+\begin_inset Formula $1+1=2
+$
 \end_inset
 
 
@@ -20957,7 +20979,8 @@ There are two main types of formulas: Inline formulas appear within a text
 
 \begin_layout Standard
 This is a line with an inline formula 
-\begin_inset Formula $A=B$
+\begin_inset Formula $A=B
+$
 \end_inset
 
  in it.
@@ -20967,7 +20990,8 @@ This is a line with an inline formula
 Displayed formulas appear outside the text like as if they were in an own
  paragraph, like this one:
 \begin_inset Formula \[
-A=B\]
+A=B
+\]
 
 \end_inset
 
@@ -20999,7 +21023,8 @@ alpha
 \end_inset
 
 , followed by a space, in a formula will create the Greek letter 
-\begin_inset Formula $\alpha$
+\begin_inset Formula $\alpha
+$
 \end_inset
 
 .
@@ -21038,17 +21063,21 @@ The best control over the cursor position within an existing formula is
 Space
 \family default
  will leave a formula construct (a square root 
-\begin_inset Formula $\sqrt{2}$
+\begin_inset Formula $\sqrt{2}
+$
 \end_inset
 
 , or parentheses 
-\begin_inset Formula $\left(f\right)$
+\begin_inset Formula $\left(f\right)
+$
 \end_inset
 
 , or a matrix 
 \begin_inset Formula $\left[\begin{array}{cc}
 1 & 2\\
-3 & 4\end{array}\right]$
+3 & 4
+\end{array}\right]
+$
 \end_inset
 
 ).
@@ -21110,7 +21139,8 @@ Space
 \family default
 .
  For example, if you want 
-\begin_inset Formula $\sqrt{2x+1}$
+\begin_inset Formula $\sqrt{2x+1}
+$
 \end_inset
 
 , type 
@@ -21167,13 +21197,15 @@ spce
 , since in the latter case only the 
 \family typewriter
 
-\begin_inset Formula $2x$
+\begin_inset Formula $2x
+$
 \end_inset
 
 
 \family default
  will be under the square root sign: 
-\begin_inset Formula $\sqrt{2x}+1$
+\begin_inset Formula $\sqrt{2x}+1
+$
 \end_inset
 
 .
@@ -21186,7 +21218,9 @@ You can leave many parts of a formula, like this matrix, partially filled
 \left(\begin{array}{ccc}
 \lambda_{1}\\
  & \ddots\\
- &  & \lambda_{n}\end{array}\right)\]
+ &  & \lambda_{n}
+\end{array}\right)
+\]
 
 \end_inset
 
@@ -21239,7 +21273,8 @@ Math ! Subscripts
 You can use the math panel to add super- or subscripts, but the much easier
  way is to use a command.
  To get 
-\begin_inset Formula $x^{2}$
+\begin_inset Formula $x^{2}
+$
 \end_inset
 
 , type in a formula 
@@ -21270,11 +21305,13 @@ Space
 x^2y
 \series default
 , you will get 
-\begin_inset Formula $x^{2y}$
+\begin_inset Formula $x^{2y}
+$
 \end_inset
 
 , to get 
-\begin_inset Formula $x^{2}y$
+\begin_inset Formula $x^{2}y
+$
 \end_inset
 
 , type 
@@ -21318,7 +21355,8 @@ g.
 \end_inset
 
 if you want 
-\begin_inset Formula $x^{a}$
+\begin_inset Formula $x^{a}
+$
 \end_inset
 
 , type 
@@ -21340,7 +21378,8 @@ a
 \series default
 .
  Subscripts are similar: To get 
-\begin_inset Formula $a_{1}$
+\begin_inset Formula $a_{1}
+$
 \end_inset
 
 , type 
@@ -21416,7 +21455,9 @@ Up
 \begin_inset Formula \[
 \left[\frac{1}{\left(\begin{array}{cc}
 2 & 3\\
-4 & 5\end{array}\right)}\right]\]
+4 & 5
+\end{array}\right)}\right]
+\]
 
 \end_inset
 
@@ -21513,11 +21554,13 @@ name "sub:Operators-with-Limits"
 
 \begin_layout Standard
 Sum (
-\begin_inset Formula $\sum$
+\begin_inset Formula $\sum
+$
 \end_inset
 
 ) and integral (
-\begin_inset Formula $\int$
+\begin_inset Formula $\int
+$
 \end_inset
 
 ) operators are very often decorated with limits.
@@ -21534,12 +21577,14 @@ limits
  over and under the symbol in displayed formulas, and on the side in inline
  formulas.
  Such as 
-\begin_inset Formula $\sum_{n=0}^{\infty}\frac{1}{n!}=e$
+\begin_inset Formula $\sum_{n=0}^{\infty}\frac{1}{n!}=e
+$
 \end_inset
 
 , versus
 \begin_inset Formula \[
-\sum_{n=0}^{\infty}\frac{1}{n!}=e\]
+\sum_{n=0}^{\infty}\frac{1}{n!}=e
+\]
 
 \end_inset
 
@@ -21595,12 +21640,14 @@ Math ! Limits
 
 
 \begin_inset Formula \[
-\lim_{x\rightarrow\infty}f(x),\]
+\lim_{x\rightarrow\infty}f(x),
+\]
 
 \end_inset
 
 which will place the 
-\begin_inset Formula $x\rightarrow\infty$
+\begin_inset Formula $x\rightarrow\infty
+$
 \end_inset
 
  underneath the 
@@ -21613,7 +21660,8 @@ lim
 
  in display mode.
  In inline formulas it looks like this: 
-\begin_inset Formula $\lim_{x\rightarrow\infty}f(x)$
+\begin_inset Formula $\lim_{x\rightarrow\infty}f(x)
+$
 \end_inset
 
 .
@@ -21743,7 +21791,8 @@ Panel
 a Ctrl+Space b
 \series default
 : 
-\begin_inset Formula $a\, b$
+\begin_inset Formula $a\, b
+$
 \end_inset
 
  appears in LyX as 
@@ -21771,7 +21820,8 @@ a Ctrl+Space b
 Space
 \family default
 : 
-\begin_inset Formula $a\quad b$
+\begin_inset Formula $a\quad b
+$
 \end_inset
 
 
@@ -21787,7 +21837,8 @@ a Ctrl+Space b
 Space
 \family default
 : 
-\begin_inset Formula $a\! b$
+\begin_inset Formula $a\! b
+$
 \end_inset
 
 
@@ -21830,11 +21881,13 @@ Panel
 \end_inset
 
  a number of function macros, such as 
-\begin_inset Formula $\sin$
+\begin_inset Formula $\sin
+$
 \end_inset
 
 , 
-\begin_inset Formula $\lim$
+\begin_inset Formula $\lim
+$
 \end_inset
 
 , 
@@ -21851,11 +21904,13 @@ sin
  etc.).
  Standard mathematical practice is, that functions are printed upright to
  avoid confusions, because 
-\begin_inset Formula $sin$
+\begin_inset Formula $sin
+$
 \end_inset
 
  does normally mean 
-\begin_inset Formula $s·i·n$
+\begin_inset Formula $s·i·n
+$
 \end_inset
 
 .
@@ -21864,11 +21919,13 @@ sin
 \begin_layout Standard
 Using the function macros will also produce correct spacing around the function:
  
-\begin_inset Formula $a\sin x$
+\begin_inset Formula $a\sin x
+$
 \end_inset
 
  is different from 
-\begin_inset Formula $asinx$
+\begin_inset Formula $asinx
+$
 \end_inset
 
 
@@ -21917,7 +21974,8 @@ g.
 \end_inset
 
 enter 
-\begin_inset Formula $\hat{a}$
+\begin_inset Formula $\hat{a}
+$
 \end_inset
 
  even if your keyboard doesn't have hat-accents enabled.
@@ -22070,7 +22128,8 @@ hat
 \bar no
 \noun off
 \color none
-\begin_inset Formula $\hat{a}$
+\begin_inset Formula $\hat{a}
+$
 \end_inset
 
 
@@ -22124,7 +22183,8 @@ grave
 \bar no
 \noun off
 \color none
-\begin_inset Formula $\grave{a}$
+\begin_inset Formula $\grave{a}
+$
 \end_inset
 
 
@@ -22178,7 +22238,8 @@ acute
 \bar no
 \noun off
 \color none
-\begin_inset Formula $\acute{a}$
+\begin_inset Formula $\acute{a}
+$
 \end_inset
 
 
@@ -22232,7 +22293,8 @@ ddot
 \bar no
 \noun off
 \color none
-\begin_inset Formula $\ddot{a}$
+\begin_inset Formula $\ddot{a}
+$
 \end_inset
 
 
@@ -22286,7 +22348,8 @@ tilde
 \bar no
 \noun off
 \color none
-\begin_inset Formula $\tilde{a}$
+\begin_inset Formula $\tilde{a}
+$
 \end_inset
 
 
@@ -22340,7 +22403,8 @@ dot
 \bar no
 \noun off
 \color none
-\begin_inset Formula $\dot{a}$
+\begin_inset Formula $\dot{a}
+$
 \end_inset
 
 
@@ -22394,7 +22458,8 @@ breve
 \bar no
 \noun off
 \color none
-\begin_inset Formula $\breve{a}$
+\begin_inset Formula $\breve{a}
+$
 \end_inset
 
 
@@ -22448,7 +22513,8 @@ check
 \bar no
 \noun off
 \color none
-\begin_inset Formula $\check{a}$
+\begin_inset Formula $\check{a}
+$
 \end_inset
 
 
@@ -22502,7 +22568,8 @@ bar
 \bar no
 \noun off
 \color none
-\begin_inset Formula $\bar{a}$
+\begin_inset Formula $\bar{a}
+$
 \end_inset
 
 
@@ -22547,7 +22614,8 @@ vec
 \bar no
 \noun off
 \color none
-\begin_inset Formula $\vec{a}$
+\begin_inset Formula $\vec{a}
+$
 \end_inset
 
 
@@ -22639,13 +22707,16 @@ There are several brackets available through LyX.
 \begin_inset Formula \[
 \left[\begin{array}{cc}
 1 & 2\\
-3 & 4\end{array}\right]\]
+3 & 4
+\end{array}\right]
+\]
 
 \end_inset
 
 and to make it easier to see the layers of parentheses as in: 
 \begin_inset Formula \[
-\frac{1}{\left(1+\left(\frac{1}{1+\left(\frac{1}{1+x}\right)}\right)\right)}\]
+\frac{1}{\left(1+\left(\frac{1}{1+\left(\frac{1}{1+x}\right)}\right)\right)}
+\]
 
 \end_inset
 
@@ -22742,7 +22813,9 @@ Panel
 \left(\begin{array}{ccc}
 1 & 2 & 3\\
 4 & 5 & 6\\
-7 & 8 & 9\end{array}\right)\]
+7 & 8 & 9
+\end{array}\right)
+\]
 
 \end_inset
 
@@ -22834,7 +22907,9 @@ lrc
 \begin{array}{lcr}
 this & this\, column & this\, column\\
 column & has & has\, right\\
-has\, left\, alignment & center\, alignment & alignment\end{array}.\]
+has\, left\, alignment & center\, alignment & alignment
+\end{array}.
+\]
 
 \end_inset
 
@@ -22881,7 +22956,9 @@ cases
 f(x)=\begin{cases}
 -1 & x<0\\
 0 & x=0\\
-1 & x>0\end{cases}\]
+1 & x>0
+\end{cases}
+\]
 
 \end_inset
 
@@ -22928,7 +23005,8 @@ arg   "newline-insert newline"
  Here is an example:
 \begin_inset Formula \begin{eqnarray}
 a^{2} & = & (b^{2}+c^{2})(b^{2}-c^{2})\nonumber \\
-a & = & \sqrt{b^{4}-c^{4}}\label{eq:asquared}\end{eqnarray}
+a & = & \sqrt{b^{4}-c^{4}}\label{eq:asquared}
+\end{eqnarray}
 
 \end_inset
 
@@ -22943,7 +23021,8 @@ Ctrl-Tab.
  Note that the middle column is designed for relation signs, structures
  within this column will be printed in a smaller size:
 \begin_inset Formula \begin{eqnarray*}
-\frac{A}{B} & \frac{A}{B} & \frac{A}{B}\end{eqnarray*}
+\frac{A}{B} & \frac{A}{B} & \frac{A}{B}
+\end{eqnarray*}
 
 \end_inset
 
@@ -23054,7 +23133,8 @@ arg   "math-number-toggle"
  In this document the number is printed together with the chapter number,
  separated by a dot:
 \begin_inset Formula \begin{equation}
-1+1=2\end{equation}
+1+1=2
+\end{equation}
 
 \end_inset
 
@@ -23097,7 +23177,8 @@ arg   "math-number-line-toggle"
 \begin_inset Formula \begin{eqnarray}
 1 & = & 3-2\\
 2 & = & 4-2\nonumber \\
-4 & \leq & 7\end{eqnarray}
+4 & \leq & 7
+\end{eqnarray}
 
 \end_inset
 
@@ -23147,7 +23228,8 @@ eq:tanhExp
  in the second line:
 \begin_inset Formula \begin{eqnarray}
 \tanh(x) & = & \frac{\sinh(x)}{\cosh(x)}\nonumber \\
- & = & \frac{\mathrm{e}^{2x}-1}{\mathrm{e}^{2x}+1}\label{eq:tanhExp}\end{eqnarray}
+ & = & \frac{\mathrm{e}^{2x}-1}{\mathrm{e}^{2x}+1}\label{eq:tanhExp}
+\end{eqnarray}
 
 \end_inset
 
@@ -23362,7 +23444,8 @@ Command
 \bar no
 \noun off
 \color none
-\begin_inset Formula $\mathrm{Roman}$
+\begin_inset Formula $\mathrm{Roman}
+$
 \end_inset
 
 
@@ -23389,7 +23472,8 @@ mathrm
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\mathbf{\mathbf{Bold}}$
+\begin_inset Formula $\mathbf{\mathbf{Bold}}
+$
 \end_inset
 
 
@@ -23416,7 +23500,8 @@ mathbf
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\mathit{Italic}$
+\begin_inset Formula $\mathit{Italic}
+$
 \end_inset
 
 
@@ -23449,7 +23534,8 @@ mathit
 \bar no
 \noun off
 \color none
-\begin_inset Formula $\mathtt{Typewriter}$
+\begin_inset Formula $\mathtt{Typewriter}
+$
 \end_inset
 
 
@@ -23476,7 +23562,8 @@ mathtt
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\mathbf{\mathbb{BLACKBOARD}}$
+\begin_inset Formula $\mathbf{\mathbb{BLACKBOARD}}
+$
 \end_inset
 
 
@@ -23503,7 +23590,8 @@ mathbb
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\mathfrak{Fraktur}$
+\begin_inset Formula $\mathfrak{Fraktur}
+$
 \end_inset
 
 
@@ -23537,7 +23625,8 @@ mathfrak
 \bar no
 \noun off
 \color none
-\begin_inset Formula $\mathcal{CALLIGRAPHIC}$
+\begin_inset Formula $\mathcal{CALLIGRAPHIC}
+$
 \end_inset
 
 
@@ -23564,7 +23653,8 @@ mathcal
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\mathsf{SansSerif}$
+\begin_inset Formula $\mathsf{SansSerif}
+$
 \end_inset
 
 
@@ -23646,7 +23736,8 @@ Blackboard
 \family default
  denotes the set of numbers:
 \begin_inset Formula \[
-f(x)=\sqrt{x}\:;\: x\in\mathbb{N}\]
+f(x)=\sqrt{x}\:;\: x\in\mathbb{N}
+\]
 
 \end_inset
 
@@ -23672,7 +23763,8 @@ Fraktur
 Typewriter
 \family default
 : 
-\begin_inset Formula $\mathtt{abc\mathfrak{d}e}$
+\begin_inset Formula $\mathtt{abc\mathfrak{d}e}
+$
 \end_inset
 
  
@@ -23684,7 +23776,8 @@ So it is better not to use this feature.
 
 \begin_layout Standard
 The typefaces have no effect on Greek letters: 
-\begin_inset Formula $\mathfrak{abc\delta e}$
+\begin_inset Formula $\mathfrak{abc\delta e}
+$
 \end_inset
 
 
@@ -23698,7 +23791,8 @@ You can only print them emboldened using the command
 boldsymbol
 \series default
 , which works like the other typeface commands: 
-\begin_inset Formula $\alpha\beta\gamma\boldsymbol{\alpha\beta\gamma}$
+\begin_inset Formula $\alpha\beta\gamma\boldsymbol{\alpha\beta\gamma}
+$
 \end_inset
 
 
@@ -23785,7 +23879,9 @@ arg   "font-default"
 \begin_inset Formula \[
 f(x)=\begin{cases}
 x & \textrm{if I say so}\\
--x & \textrm{unter Umständen}\end{cases}\]
+-x & \textrm{unter Umständen}
+\end{cases}
+\]
 
 \end_inset
 
@@ -23852,7 +23948,8 @@ e.
 .
  A box for the size will be created in which you can insert the math structure.
  For example, you can set 
-\begin_inset Formula $\frac{1}{2}$
+\begin_inset Formula $\frac{1}{2}
+$
 \end_inset
 
 , which is normally in 
@@ -23864,7 +23961,8 @@ textstyle
 displaystyle
 \family default
 : 
-\begin_inset Formula ${\displaystyle \frac{1}{2}}$
+\begin_inset Formula ${\displaystyle \frac{1}{2}}
+$
 \end_inset
 
 .
@@ -23872,19 +23970,23 @@ displaystyle
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $displaystyle$
+\begin_inset Formula $displaystyle
+$
 \end_inset
 
 , 
-\begin_inset Formula ${\textstyle textstyle}$
+\begin_inset Formula ${\textstyle textstyle}
+$
 \end_inset
 
 , 
-\begin_inset Formula ${\scriptstyle scriptstyle}$
+\begin_inset Formula ${\scriptstyle scriptstyle}
+$
 \end_inset
 
 , 
-\begin_inset Formula ${\scriptscriptstyle scriptscriptstyle}$
+\begin_inset Formula ${\scriptscriptstyle scriptscriptstyle}
+$
 \end_inset
 
 .
@@ -23919,7 +24021,8 @@ largest
 
 \family roman
 \size largest
-\begin_inset Formula $\mathrm{e}=\sum_{n=0}^{\infty}\frac{1}{n!}$
+\begin_inset Formula $\mathrm{e}=\sum_{n=0}^{\infty}\frac{1}{n!}
+$
 \end_inset
 
 
@@ -26595,7 +26698,8 @@ Symbol
 \end_inset
 
 
-\begin_inset Formula $\sigma$
+\begin_inset Formula $\sigma
+$
 \end_inset
 
 
@@ -26677,7 +26781,8 @@ Style
 \end_inset
 
 
-\begin_inset Formula $\sigma$
+\begin_inset Formula $\sigma
+$
 \end_inset
 
 
@@ -26777,7 +26882,8 @@ description "dummy entry for the character \"a\""
 
 \emph default
  and 
-\begin_inset Formula $\sigma$
+\begin_inset Formula $\sigma
+$
 \end_inset
 
 
@@ -26817,7 +26923,8 @@ sigma$
 \end_inset
 
  – the 
-\begin_inset Formula $\sigma$
+\begin_inset Formula $\sigma
+$
 \end_inset
 
  will be sorted before the 
@@ -26852,7 +26959,8 @@ as
 sigma
 \family default
  in this field for the 
-\begin_inset Formula $\sigma$
+\begin_inset Formula $\sigma
+$
 \end_inset
 
 , then 
@@ -26860,7 +26968,8 @@ sigma
 a
 \emph default
  will be located before 
-\begin_inset Formula $\sigma$
+\begin_inset Formula $\sigma
+$
 \end_inset
 
 .
@@ -27544,7 +27653,8 @@ question
 \series default
  part appears:
 \begin_inset Formula \[
-x^{2}-2x-2\Rightarrow\question{x_{1}}\answer{x_{2}}=1\question{+\sqrt{3}}\answer{-\sqrt{3}}.\]
+x^{2}-2x-2\Rightarrow\question{x_{1}}\answer{x_{2}}=1\question{+\sqrt{3}}\answer{-\sqrt{3}}.
+\]
 
 \end_inset
 
@@ -28929,7 +29039,7 @@ The review toolbar as shown above contains from left to right the following
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features islongtable="true" tabularvalignment="middle">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <row interlinespace="2.5mm">
@@ -35498,7 +35608,8 @@ Here you can insert the following format constructs:
 
 \begin_layout Description
 Superscript Inserts an superscript: test
-\begin_inset Formula $^{\text{a,b}}$
+\begin_inset Formula $^{\text{a,b}}
+$
 \end_inset
 
 
@@ -35506,7 +35617,8 @@ Superscript Inserts an superscript: test
 
 \begin_layout Description
 Subscript Inserts an subscript: test
-\begin_inset Formula $_{\text{3x}}$
+\begin_inset Formula $_{\text{3x}}
+$
 \end_inset
 
 
@@ -36897,7 +37009,7 @@ Embedded Objects
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="2">
-<features islongtable="true" tabularvalignment="middle">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
@@ -36944,7 +37056,7 @@ pull-down box for the paragraph environments
 \align left
 \begin_inset Tabular
 <lyxtabular version="3" rows="21" columns="2">
-<features islongtable="true" tabularvalignment="middle">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <row interlinespace="2.5mm">
@@ -37644,7 +37756,7 @@ The extra toolbar as shown above contains from left to right the following
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="25" columns="2">
-<features islongtable="true" tabularvalignment="middle">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <row interlinespace="2.5mm">
@@ -38484,7 +38596,7 @@ The view / update toolbar as shown above contains from left to right the
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features islongtable="true" tabularvalignment="middle">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <row interlinespace="2.5mm">
@@ -42518,7 +42630,8 @@ didot (72
 \end_inset
 
 dd 
-\begin_inset Formula $\approx$
+\begin_inset Formula $\approx
+$
 \end_inset
 
  37.6
