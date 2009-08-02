@@ -34033,7 +34033,11 @@ Strg+Umschalt+E
 \end_layout
 
 \begin_layout Standard
-Änderungen im Dokument werden durch Striche und Farben hervorgehoben: 
+Änderungen im Dokument werden durch Striche und Farben hervorgehoben:
+\begin_inset Newline newline
+\end_inset
+
+
 \bar under
 \color blue
 Unterstrichener Text 
@@ -34061,6 +34065,19 @@ Handhabung\SpecialChar \menuseparator
 Farben
 \family default
  ändern.
+ Der Autor und das Datum der Änderung werden in LyXs Statusleiste angezeigt,
+ wenn sich der Cursor in geändertem Text befindet.
+ Die selbe Information erhalten Sie, wenn Sie den Werkzeugleistenknopf 
+\begin_inset Graphics
+	filename ../../images/changes-merge.png
+	scale 70
+	scaleBeforeRotation
+	BoundingBox 0bp 6bp 20bp 20bp
+	groupId Icon
+
+\end_inset
+
+ benutzen.
 \end_layout
 
 \begin_layout Standard
