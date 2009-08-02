@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 362
+\lyxformat 369
 \begin_document
 \begin_header
 \textclass scrbook
@@ -103,22 +103,19 @@ End
 \paperorientation portrait
 \branch OutDated
 \selected 0
+\filename_suffix 0
 \color #f5fae7
 \end_branch
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language english
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
-\author "" 
-\author "" 
 \end_header
 
 \begin_body
@@ -10289,7 +10286,8 @@ string=""
 
 ] If you put layouts into environments, the leftmargins are not simply added,
  but added with a factor 
-\begin_inset Formula $\frac{4}{depth+4}$
+\begin_inset Formula $\frac{4}{depth+4}
+$
 \end_inset
 
 .
@@ -12164,7 +12162,6 @@ URL
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Enumerate
