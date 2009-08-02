@@ -417,10 +417,11 @@ public:
 	///
 	void updateWords();
 
-	/// Spellcheck word at position \p from and fill in found misspelled word.
+	/// Spellcheck word at position \p from and fill in found misspelled word
+	/// and \p suggestions if \p do_suggestion is true.
 	/// \return true if pointed word is misspelled.
 	bool spellCheck(pos_type & from, pos_type & to, WordLangTuple & wl,
-		docstring_list & suggestions) const;
+		docstring_list & suggestions, bool do_suggestion =  true) const;
 
 	/// Spellcheck word at position \p pos.
 	/// \return true if pointed word is misspelled.

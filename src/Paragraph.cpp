@@ -3060,7 +3060,7 @@ void Paragraph::updateWords()
 
 
 bool Paragraph::spellCheck(pos_type & from, pos_type & to, WordLangTuple & wl,
-	docstring_list & suggestions) const
+	docstring_list & suggestions, bool do_suggestion) const
 {
 	SpellChecker * speller = theSpellChecker();
 	if (!speller)
@@ -3088,7 +3088,7 @@ bool Paragraph::spellCheck(pos_type & from, pos_type & to, WordLangTuple & wl,
 	if (lyxrc.spellcheck_continuously)
 		d->fontlist_.setMisspelled(from, to, misspelled);
 
-	if (misspelled)
+	if (misspelled && do_suggestion)
 		speller->suggest(wl, suggestions);
 	else
 		suggestions.clear();
@@ -3103,7 +3103,7 @@ bool Paragraph::isMisspelled(pos_type pos) const
 	pos_type to = pos;
 	WordLangTuple wl;
 	docstring_list suggestions;
-	return spellCheck(from, to, wl, suggestions);
+	return spellCheck(from, to, wl, suggestions, false);
 }
 
 
