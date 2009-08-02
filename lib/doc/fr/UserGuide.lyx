@@ -30461,16 +30461,23 @@ modifications.
 \end_layout
 
 \begin_layout Standard
-Les changements subis par le document seront alors mis en évidence par des
- couleurs: une portion de 
+
+\lang english
+Changes made in the document will then be highlighted by strokes and colors:
+ 
+\bar under
 \color blue
-texte en bleu
+underlined text
+\bar default
 \color inherit
- est un ajout, une portion de 
-\color red
-texte barré en rouge 
+ is an addition, 
+\color blue
+canceled text
 \color inherit
-est une suppression.
+ is a deletion.
+ The color depends on the author that made the change.
+
+\lang french
  Vous pouvez changer les couleurs dans les préférences de LyX dans la rubrique
  
 \family sans
@@ -30480,17 +30487,17 @@ Apparence
 \family sans
 Couleurs
 \family default
-
+.
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Couleurs ! Écran de LyX
+Couleurs ! Suivi des modifications
 \end_layout
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard

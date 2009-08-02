@@ -28952,15 +28952,21 @@ Changes
 \end_layout
 
 \begin_layout Standard
-Changes made in the document will then be highlighted by colors: 
+Changes made in the document will then be highlighted by strokes and colors:
+ 
+\bar under
 \color blue
-Blue text
+underlined text
+\bar default
 \color inherit
  is an addition, 
-\color red
-red canceled text
+\strikeout on
+\color blue
+canceled text
+\strikeout default
 \color inherit
  is a deletion.
+ The color depends on the author that made the change.
  You can change the color in LyX's preferences dialog under 
 \family sans
 Look
@@ -28982,7 +28988,7 @@ Colors
 status collapsed
 
 \begin_layout Plain Layout
-Color ! LyX screen
+Color ! Change tracking
 \end_layout
 
 \end_inset

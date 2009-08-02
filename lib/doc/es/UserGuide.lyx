@@ -29157,15 +29157,23 @@ cambios
 \end_layout
 
 \begin_layout Standard
-Los cambios realizados en el documento se resaltarán con colores: 
+
+\lang english
+Changes made in the document will then be highlighted by strokes and colors:
+ 
+\bar under
 \color blue
-Texto en azul
+underlined text
+\bar default
 \color inherit
- es texto añadido, 
-\color red
-texto tachado en rojo
+ is an addition, 
+\color blue
+canceled text
 \color inherit
- es texto borrado.
+ is a deletion.
+ The color depends on the author that made the change.
+
+\lang spanish
  Puedes cambiar estos colores en el diálogo de las preferencias de LyX,
  en 
 \family sans
@@ -29180,7 +29188,7 @@ Colores
 status collapsed
 
 \begin_layout Plain Layout
-Color ! Pantalla de LyX
+Color ! Seguimiento de cambios
 \end_layout
 
 \end_inset
