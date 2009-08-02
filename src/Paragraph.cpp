@@ -3088,10 +3088,11 @@ bool Paragraph::spellCheck(pos_type & from, pos_type & to, WordLangTuple & wl,
 	if (lyxrc.spellcheck_continuously)
 		d->fontlist_.setMisspelled(from, to, misspelled);
 
-	if (misspelled) {
-		while (!(word = speller->nextMiss()).empty())
-			suggestions.push_back(word);
-	}
+	if (misspelled)
+		speller->suggest(wl, suggestions);
+	else
+		suggestions.clear();
+
 	return misspelled;
 }
 

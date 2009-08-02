@@ -20,6 +20,7 @@ namespace lyx {
 
 class BufferParams;
 class WordLangTuple;
+class docstring_list;
 
 /**
  * Pure virtual base class of all spellchecker implementations.
@@ -37,8 +38,6 @@ public:
 		COMPOUND_WORD,
 		/// word not found
 		UNKNOWN_WORD,
-		/// not found, with suggestions
-		SUGGESTED_WORDS,
 		/// number of other ignored "word"
 		IGNORED_WORD
 	};
@@ -47,16 +46,15 @@ public:
 
 	/// check the given word of the given lang code and return the result
 	virtual enum Result check(WordLangTuple const &) = 0;
-
+	
+	/// Gives suggestions.
+	virtual void suggest(WordLangTuple const &, docstring_list & suggestions) = 0;
 
 	/// insert the given word into the personal dictionary
 	virtual void insert(WordLangTuple const &) = 0;
 
 	/// accept the given word temporarily
 	virtual void accept(WordLangTuple const &) = 0;
-
-	/// return the next near miss after a SUGGESTED_WORDS result
-	virtual docstring const nextMiss() = 0;
 
 	/// give an error message on messy exit
 	virtual docstring const error() = 0;

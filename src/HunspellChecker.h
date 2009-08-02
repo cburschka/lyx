@@ -23,11 +23,14 @@ public:
 	HunspellChecker();
 	~HunspellChecker();
 
-	SpellChecker::Result check(WordLangTuple const &);
+	/// SpellChecker inherited methods.
+	///@{
+	enum Result check(WordLangTuple const &);
+	void suggest(WordLangTuple const &, docstring_list &);
 	void insert(WordLangTuple const &);
 	void accept(WordLangTuple const &);
-	docstring const nextMiss();
 	docstring const error();
+	///@}
 
 private:
 	struct Private;

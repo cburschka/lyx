@@ -23,20 +23,14 @@ public:
 	AspellChecker();
 	~AspellChecker();
 
-	/// check the given word and return the result
+	/// SpellChecker inherited methods.
+	///@{
 	enum Result check(WordLangTuple const &);
-
-	/// insert the given word into the personal dictionary
+	void suggest(WordLangTuple const &, docstring_list &);
 	void insert(WordLangTuple const &);
-
-	/// accept the given word temporarily
 	void accept(WordLangTuple const &);
-
-	/// return the next near miss after a SUGGESTED_WORDS result
-	docstring const nextMiss();
-
-	/// give an error message on messy exit
 	docstring const error();
+	///@}
 
 private:
 	struct Private;
