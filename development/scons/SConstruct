@@ -1625,7 +1625,7 @@ Alias('tex2lyx', tex2lyx)
 # src/
 #
 if env.has_key('USE_ASPELL') and env['USE_ASPELL']:
-    src_post_files.append('ASpell.cpp')
+    src_post_files.append('AspellChecker.cpp')
 
 # msvc requires at least one source file with main()
 # so I exclude main.cpp from lyxbase
