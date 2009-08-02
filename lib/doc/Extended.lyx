@@ -110,11 +110,11 @@ End
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \author "" 
-\author "Enrico Forestieri" 
-\author "Jürgen Spitzmüller" 
+\author "" 
+\author "" 
 \author "" 
 \end_header
 
@@ -4615,52 +4615,24 @@ Some DVI/PDF viewers
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_deleted 2 1244215965
-Currently, only
-\change_inserted 2 1244216069
 The following viewers offer the reverse PDF search feature: Okular on KDE/Linux,
-\change_unchanged
- Skim on Mac OSX and SumatraPDF on Windows
-\change_deleted 2 1244216074
- offer the reverse PDF search feature
-\change_unchanged
-.
+ Skim on Mac OSX and SumatraPDF on Windows.
 \end_layout
 
 \end_inset
 
  provide 
-\change_deleted 2 1244266614
-the 
-\change_unchanged
-
 \emph on
 reverse search
 \emph default
- 
-\change_deleted 2 1244266618
-feature
-\change_inserted 2 1244266619
-facility
-\change_unchanged
- (also called 
+ facility (also called 
 \emph on
 inverse search
 \emph default
-)
-\change_inserted 2 1244266922
-.
+).
  This means that you can tell LyX to put the cursor to a specific line in
- the document by clicking at the respective position in the DVI/PDF output
-\change_deleted 2 1244266930
-, allowing the cursor in LyX to automatically jump to the point corresponding
- to a given position in the previewed DVI or PDF file
-\change_unchanged
-.
- 
-\change_inserted 2 1244269153
-To achieve this, the viewer must be able to communicate with LyX.
+ the document by clicking at the respective position in the DVI/PDF output.
+ To achieve this, the viewer must be able to communicate with LyX.
  This is done via the LyX server either by using the named pipe (
 \emph on
 lyxpipe
@@ -4674,8 +4646,6 @@ lyxsocket
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 2 1244267038
 lyxclient
 \end_layout
 
@@ -4691,91 +4661,20 @@ lyxclient
  specific viewers.
  Before we turn to this, though, we will explain what needs to be done generally
  to enable reverse search in the DVI/PDF output.
-\change_deleted 2 1244268951
-A program or script will be called by the viewer when initiating a reverse
- search.
- The way the search is triggered depends on the viewer (for example, 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-xdvi
-\end_layout
-
-\end_inset
-
- uses Ctrl-click (Alt-click on Mac OSX), 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-yap
-\end_layout
-
-\end_inset
-
- and 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-SumatraPDF
-\end_layout
-
-\end_inset
-
- use double-click, whereas 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-Skim
-\end_layout
-
-\end_inset
-
- uses COMMAND-SHIFT-click), but in general the program is called with two
- arguments, a filename and a line number, and, in turn, it should pass this
- info to a running instance of LyX.
- This can be done through the LyX server either by using the named pipe
- (lyxpipe), or the unix domain socket (lyxsocket) that lyx creates in its
- temporary directory (this is the way the 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-lyxclient
-\end_layout
-
-\end_inset
-
- program communicates with LyX).
-\change_inserted 2 1244267407
-
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted 2 1244267438
 Enabling reverse search
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 2 1244269521
 LaTeX provides several different methods for reverse search.
  Some are built-in in the 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 2 1244269436
 latex/pdflatex
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -4784,31 +4683,10 @@ latex/pdflatex
  Your choice depends on whether your LaTeX distribution already provides
  a given method (the built-in methods are rather new) and whether your viewer
  can cope with it.
-\change_deleted 2 1244269531
-The reverse search feature can be enabled in LyX as follows:
-\change_inserted 2 1244270128
- The available methods are
-\change_deleted 1 1244307656
-:
-\change_inserted 1 1244307667
- described in the following.
-\change_unchanged
-
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 2 1244269543
-The DVI or PDF file should be complemented by suitable info produced either
- by using appropriate options when calling the LaTeX compiler (method 1,
- DVI only), or by using an appropriate package (method 2, both DVI and PDF).
-\change_unchanged
-
+ The available methods are described in the following.
 \end_layout
 
 \begin_layout Subsubsection*
-
-\change_inserted 2 1244269681
 Built-in
 \begin_inset space ~
 \end_inset
@@ -4822,14 +4700,6 @@ via
 \end_inset
 
 src-specials
-\change_deleted 2 1244269683
-Method
-\begin_inset space ~
-\end_inset
-
-1
-\change_unchanged
-
 \begin_inset space ~
 \end_inset
 
@@ -4838,24 +4708,14 @@ Method
 \end_inset
 
 only) 
-\change_inserted 1 1244307484
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 2 1244269869
 This method provides the DVI file with the necessary information for reverse
  search.
  It is available in LaTeX since quite some time (any somewhat recent LaTeX
  distribution should include it), and it works reliably.
- 
-\change_deleted 2 1244269874
-If you use recent texlive or miktex distributions
-\change_inserted 2 1244269876
-To enable it
-\change_unchanged
-, change the 
+ To enable it, change the 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
@@ -4919,42 +4779,12 @@ latex -src-specials $$i
 
 \end_inset
 
-
-\change_inserted 2 1244269895
 .
-\change_deleted 2 1244269895
-,
-\change_unchanged
- 
-\change_inserted 2 1244269903
-If this doesn't work,
-\change_deleted 2 1244269905
-otherwise
-\change_unchanged
- check 
-\change_deleted 2 1244269920
-what is the appropriate option for
-\change_inserted 2 1244269920
-if
-\change_unchanged
- your TeX engine
-\change_inserted 2 1244269947
- needs different options (the syntax might differ in some distributions)
-\change_unchanged
-.
-\change_inserted 2 1244269953
-
+ If this doesn't work, check if your TeX engine needs different options
+ (the syntax might differ in some distributions).
 \end_layout
 
 \begin_layout Subsubsection*
-
-\change_deleted 2 1244269968
-Method
-\begin_inset space ~
-\end_inset
-
-2
-\change_inserted 2 1244270188
 External
 \begin_inset space ~
 \end_inset
@@ -4971,16 +4801,10 @@ and
 \begin_inset space ~
 \end_inset
 
-scrltx)
-\change_unchanged
- 
-\change_inserted 1 1244307759
-
+scrltx) 
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 2 1244270259
 The packages 
 \emph on
 pdfsync
@@ -4991,17 +4815,7 @@ scrltx
 \emph default
  provide reverse search facility for PDF output (via pdflatex) and DVI output,
  respectively.
- In order to enable it, 
-\change_deleted 2 1244270275
-Insert
-\change_inserted 2 1244270300
-load the packages in the LyX preamble:
-\change_unchanged
- 
-\change_deleted 2 1244270320
-in the preamble of the LyX file 
-\change_inserted 2 1244271270
-
+ In order to enable it, load the packages in the LyX preamble: 
 \end_layout
 
 \begin_layout Itemize
@@ -5017,16 +4831,9 @@ usepackage{pdfsync}
 \end_inset
 
  for reverse PDF search,
-\change_inserted 2 1244271278
-
 \end_layout
 
 \begin_layout Itemize
-
-\change_deleted 2 1244271277
- or (as an alternative to redefining the converters)
-\change_unchanged
- 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -5039,11 +4846,6 @@ usepackage[active]{srcltx}
 \end_inset
 
  for reverse DVI search.
-
-\change_deleted 2 1244271283
- 
-\change_inserted 2 1244271283
-
 \end_layout
 
 \begin_layout Standard
@@ -5088,28 +4890,16 @@ fi
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted 2 1244270356
-In t
-\change_inserted 2 1244270356
-T
-\change_unchanged
-his way, you can preview the file as either DVI or PDF (pdflatex) and the
+This way, you can preview the file as either DVI or PDF (pdflatex) and the
  right package will be used.
-\change_inserted 2 1244270363
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 2 1244270443
 Note that PDFSync might affect the output layout of your document.
  It is therefore advised to disable PDFsync for final documents.
 \end_layout
 
 \begin_layout Subsubsection*
-
-\change_inserted 2 1244271570
 Built-in
 \begin_inset space ~
 \end_inset
@@ -5138,49 +4928,21 @@ and
 \begin_inset space ~
 \end_inset
 
-PDF)
-\change_deleted 1 1244307176
-:
-\change_inserted 2 1244271570
- 
-\change_deleted 1 1244307228
-As of r
-\change_inserted 1 1244307913
-
+PDF) 
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1 1244307206
-R
-\change_inserted 2 1244271570
-ecent versions
-\change_deleted 1 1244307213
-,
-\change_inserted 1 1244307217
- of
-\change_inserted 2 1244271570
- 
+Recent versions of 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 2 1244270543
 (pdf)latex
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
- ha
-\change_deleted 1 1244307228
-s
-\change_inserted 1 1244307228
-ve
-\change_inserted 2 1244271570
- built-in support for both PDF and DVI reverse search.
+ have built-in support for both PDF and DVI reverse search.
  This so-called 
 \emph on
 SyncTeX
@@ -5198,22 +4960,16 @@ scr-specials
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 2 1244271640
 To enable SyncTeX for DVI output, change the 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 2 1244271770
 LaT
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 2 1244270793
 
 {}
 \end_layout
@@ -5230,15 +4986,11 @@ eX (plain) -> DVI
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 2 1244271780
 LaT
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 2 1244270793
 
 {}
 \end_layout
@@ -5255,8 +5007,6 @@ eX (plain) -> DraftDVI
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 2 1244270793
 Preferences\SpecialChar \menuseparator
 File Handling\SpecialChar \menuseparator
 Converters
@@ -5269,8 +5019,6 @@ Converters
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 2 1244270917
 latex -synctex=1 $$i
 \end_layout
 
@@ -5281,15 +5029,11 @@ latex -synctex=1 $$i
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 2 1244271784
 LaT
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 2 1244270964
 
 {}
 \end_layout
@@ -5306,8 +5050,6 @@ eX (pdflatex) -> PDF (pdflatex)
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 2 1244271018
 pdflatex -synctex=1 $$i
 \end_layout
 
@@ -5316,21 +5058,15 @@ pdflatex -synctex=1 $$i
 .
  Check the documentation of your viewer whether the viewer needs to be configure
 d for the use with SyncTeX.
-\change_inserted 1 1244308387
-
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1244308686
 The 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1244308387
 -synctex=1
 \end_layout
 
@@ -5342,8 +5078,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1244308387
 -synctex=-1
 \end_layout
 
@@ -5355,21 +5089,13 @@ status collapsed
 \end_inset
 
 
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted 2 1244267725
 Configuring and using specific viewers
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsubsection*
-
-\change_inserted 2 1244268079
 Xdvi (all platforms)
 \end_layout
 
@@ -5397,9 +5123,7 @@ lyxclient
 \end_inset
 
  program.
- 
-\change_inserted 2 1244271852
-Just setup your document as described above (reverse search is triggered
+ Just setup your document as described above (reverse search is triggered
  by Ctrl-click or Alt-click on Mac OSX, respectively).
 \end_layout
 
@@ -5494,22 +5218,16 @@ status collapsed
 \end_inset
 
  is the Ly
-\change_inserted 2 1244271936
-
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted 2 1244271936
 
 {}
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 XServer pipe path specified in 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
@@ -5522,24 +5240,16 @@ Paths
 \end_inset
 
 .
-\change_inserted 1 1244309066
-
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1244309205
 In the 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1244309176
 development/tools
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -5549,11 +5259,7 @@ development/tools
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1244309187
 lyxeditor
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -5563,43 +5269,19 @@ lyxeditor
 lyxpipe
 \emph default
  based on your preferences.
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
 \begin_layout Subsubsection*
-
-\change_inserted 2 1244268096
 MacDviX (Mac OSX)
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted 2 1244268154
-If you use Mac OSX and MacDviX as a DVI viewer, a
-\change_inserted 2 1244268154
-A
-\change_deleted 2 1244271959
-dd a
-\change_unchanged
-t the end of
-\change_inserted 2 1244268160
- 
-\change_deleted 2 1244268161
-
-\begin_inset Newline newline
-\end_inset
-
-
-\change_unchanged
-
+At the end of 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -5609,11 +5291,7 @@ status collapsed
 
 \end_inset
 
-
-\change_inserted 2 1244271963
-, add
-\change_unchanged
- the following lines:
+, add the following lines:
 \end_layout
 
 \begin_layout LyX-Code
@@ -5636,57 +5314,20 @@ exit 1
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted 2 1244272023
-(
-\change_unchanged
-Modify 
-\change_inserted 2 1244272048
-the lines 
-\change_deleted 2 1244272052
-as needed
-\change_inserted 2 1244272054
-accordingly
-\change_unchanged
- if you install LyX somewhere 
-\change_deleted 2 1244272071
-other
-\change_inserted 2 1244272071
-else
-\change_unchanged
- than 
-\change_inserted 2 1244272086
-in 
-\change_unchanged
-the Applications folder.
-\change_deleted 2 1244272025
-)
-\change_inserted 2 1244268176
-
+Modify the lines accordingly if you install LyX somewhere else than in the
+ Applications folder.
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 2 1244268597
 Reverse search is triggered by Alt-click (OPTION-click).
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsubsection*
-
-\change_inserted 2 1244268100
 Skim (Mac OSX)
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted 2 1244268617
-If you use Mac OSX and Skim as a PDF viewer, you should e
-\change_inserted 2 1244268617
-E
-\change_unchanged
-nter 
+Enter 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -5696,13 +5337,7 @@ open -a Skim.app $$i
 
 \end_inset
 
- 
-\change_deleted 2 1244272121
-in
-\change_inserted 2 1244272122
-to
-\change_unchanged
- the viewer setting in 
+ to the viewer setting in 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
@@ -5739,40 +5374,26 @@ status collapsed
 \end_inset
 
 X.
-\change_inserted 2 1244268646
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 2 1244268654
 Reverse search is triggered by COMMAND-SHIFT-click
 \end_layout
 
 \begin_layout Subsubsection*
-
-\change_inserted 2 1244274400
 Okular (KDE)
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 2 1244268705
 Go to 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 2 1244216734
 Settings\SpecialChar \menuseparator
 Configure Okular\SpecialChar \ldots{}
 \SpecialChar \menuseparator
 Editor
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -5790,11 +5411,7 @@ Custom Text Editor
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 2 1244216761
 lyxclient -g %f %l
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -5803,27 +5420,14 @@ lyxclient -g %f %l
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 2 1244268705
 Reverse search is triggered by SHIFT-click
 \end_layout
 
 \begin_layout Subsubsection*
-
-\change_inserted 2 1244268031
 YAP (Cygwin)
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted 2 1244268767
-If you use the Cygwin version of LyX and yap as a DVI viewer, you should
- set the name of the program that communicates with LyX directly in yap
- as follows.
- 
-\change_unchanged
 Launch yap, choose its 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
@@ -5836,122 +5440,51 @@ Options
 \end_inset
 
  menu and select the 
-\change_inserted 2 1244217872
-
 \begin_inset Quotes eld
 \end_inset
 
-
-\change_deleted 2 1244217872
-"
-\change_unchanged
 Inverse DVI Search
-\change_deleted 2 1244217874
-"
-\change_inserted 2 1244217875
-
 \begin_inset Quotes erd
 \end_inset
 
-
-\change_unchanged
  tab.
  Click on the 
-\change_inserted 2 1244219499
-
 \begin_inset Quotes eld
 \end_inset
 
-
-\change_deleted 2 1244219498
-"
-\change_unchanged
-New
-\change_deleted 2 1244217826
-...
-\change_inserted 2 1244217826
-\SpecialChar \ldots{}
-
-\change_deleted 2 1244219500
-"
-\change_inserted 2 1244219500
+New\SpecialChar \ldots{}
 
 \begin_inset Quotes erd
 \end_inset
 
-
-\change_unchanged
- button and, in the window 
-\change_deleted 2 1244272211
-which
-\change_inserted 2 1244272211
-that
-\change_unchanged
- opens, enter 
-\change_inserted 2 1244217853
-
+ button and, in the window that opens, enter 
 \begin_inset Quotes eld
 \end_inset
 
-
-\change_deleted 2 1244217850
-"
-\change_unchanged
 LyX Editor
-\change_inserted 2 1244217855
-
 \begin_inset Quotes erd
 \end_inset
 
-
-\change_deleted 2 1244217855
-"
-\change_unchanged
  (or any other name you like) in the 
-\change_inserted 2 1244217859
-
 \begin_inset Quotes eld
 \end_inset
 
-
-\change_deleted 2 1244217859
-"
-\change_unchanged
 Name:
-\change_inserted 2 1244217862
-
 \begin_inset Quotes erd
 \end_inset
 
-
-\change_deleted 2 1244217861
-"
-\change_unchanged
  field.
  Now click on the button labeled 
-\change_inserted 2 1244217865
-
 \begin_inset Quotes eld
 \end_inset
 
-
-\change_deleted 2 1244217864
-"...
-\change_inserted 2 1244217867
 \SpecialChar \ldots{}
 
 \begin_inset Quotes erd
 \end_inset
 
-
-\change_deleted 2 1244217866
-"
-\change_unchanged
- to open a file
-\change_inserted 2 1244268790
- 
-\change_unchanged
-dialog and navigate to the directory containing the batch file 
+ to open a file dialog and navigate to the directory containing the batch
+ file 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -6003,20 +5536,8 @@ lyxclient
 \end_inset
 
  program.
- 
-\change_deleted 2 1244272259
-As
-\change_inserted 2 1244272260
-Since
-\change_unchanged
- yap is a native Windows application, the filename it provides should be
- converted to 
-\change_deleted 2 1244268806
-posix
-\change_inserted 2 1244268806
-POSIX
-\change_unchanged
- style before being passed to 
+ Since yap is a native Windows application, the filename it provides should
+ be converted to POSIX style before being passed to 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -6096,37 +5617,19 @@ lyxclient.exe
 
  are in the command PATH, otherwise you have to use their full posix path
  in the above batch file.
-\change_inserted 2 1244268839
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 2 1244268860
 In yap, reverse search is triggered by double-click.
 \end_layout
 
 \begin_layout Subsubsection*
-
-\change_inserted 2 1244268052
 SumatraPDF (Cygwin)
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted 2 1244268889
-If you use the Cygwin version of LyX and
-\change_inserted 2 1244268889
-In
-\change_unchanged
- SumatraPDF
-\change_deleted 2 1244268894
- as a PDF viewer
-\change_unchanged
-, you can set the name of the program that communicates with LyX by simply
- launching SumatraPDF as 
+In SumatraPDF, you can set the name of the program that communicates with
+ LyX by simply launching SumatraPDF as 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -6148,14 +5651,10 @@ status collapsed
 \end_inset
 
  option will not be needed from now on
-\change_inserted 1 1244309584
-
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1244310035
 It has been reported that SumatraPDF is not able to remember the settings
  if it is installed in the Program Files system folder.
  This problem can be avoided by installing it somewhere else, for example
@@ -6164,24 +5663,16 @@ It has been reported that SumatraPDF is not able to remember the settings
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1244309811
 /usr/local/bin
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
 .
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
  (in this way you will be using the lyxsocket; omit the 
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -6237,25 +5728,15 @@ SumatraPDF.sh
 \end_inset
 
  is the following script (to be placed in your command PATH, 
-\change_deleted 1 1244309997
-/usr/local/bin
-\change_inserted 1 1244309997
-
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1244309997
 /usr/local/bin
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
  being the best choice):
 \end_layout
 
@@ -6274,31 +5755,10 @@ SumatraPDF.exe $(basename $1)
 \begin_layout Standard
 This is needed because SumatraPDF is a native Windows application and does
  not understand the posix paths used by the Cygwin version of LyX.
-\change_inserted 2 1244268868
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 2 1244268873
 Reverse search is triggered by double-click.
-\change_unchanged
-
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 2 1244268934
-If you did no mistakes and the DVI or PDF files are produced as previously
- described, whenever you Ctrl-click (Alt-click on Mac) in xdvi, double-click
- in yap and SumatraPDF, or COMMAND-SHIFT-click in Skim, the cursor in LyX
- should jump to the desired location.
-\change_unchanged
-
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \begin_layout Chapter
