@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 362
+\lyxformat 369
 \begin_document
 \begin_header
 \textclass scrbook
@@ -110,15 +110,13 @@ End
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language english
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
 \end_header
 
 \begin_body
@@ -2045,7 +2043,8 @@ sloppypar
 Did you go overboard with the nesting? LyX (currently) doesn't check to
  make sure you're in the limits for nesting environments.
  If you nested a bunch of environments to the 
-\begin_inset Formula $17^{\mathrm{th}}$
+\begin_inset Formula $17^{\mathrm{th}}
+$
 \end_inset
 
  level, that's the problem.
@@ -5166,7 +5165,7 @@ status collapsed
 
  is the Ly
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -7614,7 +7613,8 @@ Theorems (Order by Chapter)
 
 .
  These will number the results as 
-\begin_inset Formula $n.m$
+\begin_inset Formula $n.m
+$
 \end_inset
 
 , where the first number refers to the section (or chapter) and the second
@@ -14043,7 +14043,8 @@ Revtex
 4
 \family default
  textclass works with the American Physical Sociey's RevTeX 4.0 (the 
-\begin_inset Formula $\beta$
+\begin_inset Formula $\beta
+$
 \end_inset
 
  release of May, 1999) class.
@@ -16862,7 +16863,8 @@ x
 \end_inset
 
  instead of 
-\begin_inset Formula $\times$
+\begin_inset Formula $\times
+$
 \end_inset
 
  between numbers:
@@ -16870,7 +16872,8 @@ x
 \end_inset
 
 2x2 looks cheap compared to 
-\begin_inset Formula $2\times2$
+\begin_inset Formula $2\times2
+$
 \end_inset
 
 .
@@ -18626,11 +18629,13 @@ $Rev: 59 $
  There are more problems with this approach.
  Firstly, the '$' character is used in TeX world for math equations, so
  any occurence of math formula 
-\begin_inset Formula $Rev$
+\begin_inset Formula $Rev
+$
 \end_inset
 
  become 
-\begin_inset Formula $Rev:59$
+\begin_inset Formula $Rev:59
+$
 \end_inset
 
  in your LyX document.
