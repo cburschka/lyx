@@ -34684,6 +34684,16 @@ Guarda el documento en pantalla con la posibilidad de cambiarle el nombre.
 \end_layout
 
 \begin_layout Subsection
+Guardar todo
+\end_layout
+
+\begin_layout Standard
+Guarda todo 
+\lang english
+opened documents.
+\end_layout
+
+\begin_layout Subsection
 Revertir
 \end_layout
 
@@ -34721,9 +34731,9 @@ Importar
 \end_layout
 
 \begin_layout Standard
-Se pueden importar archivos de versiones anteriores de LyX, archivos de
- LaTeX, archivos NoWeb, archivos de texto simple y archivos de texto (CVS)
- separados por coma, tipo tabla.
+Se pueden importar archivos de versiones anteriores de LyX, archivos HTML,
+ archivos de LaTeX, archivos NoWeb, archivos de texto simple y archivos
+ de texto (CVS) separados por coma, tipo tabla.
  Los archivos serán importados como documento nuevo de LyX.
  
 \end_layout
@@ -34922,16 +34932,6 @@ Abiword
 
 \family sans
 PDF
-\family default
- formato PDF usando el programa 
-\family typewriter
-ps2pdf
-\end_layout
-
-\begin_layout Description
-
-\family sans
-PDF
 \begin_inset space ~
 \end_inset
 
@@ -34954,6 +34954,20 @@ PDF
  formato PDF usando el programa 
 \family typewriter
 pdflatex
+\end_layout
+
+\begin_layout Description
+
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(ps2pdf)
+\family default
+ formato PDF usando el programa 
+\family typewriter
+ps2pdf
 \end_layout
 
 \begin_layout Description
@@ -35113,12 +35127,19 @@ Ventana nueva y Cerrar ventana
 \end_layout
 
 \begin_layout Standard
-Abre otra ventana de LyX con todos los documentos que estén abiertos.
- El menú 
-\family sans
-Cerrar 
-\family default
-te permite cerrar dicha ventana.
+
+\lang english
+Opens or closes a new instance of LyX.
+\end_layout
+
+\begin_layout Subsection
+Salir
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Prompts you to save all unsaved documents and then exits.
 \end_layout
 
 \begin_layout Section
@@ -35267,7 +35288,7 @@ Configuración
 \end_layout
 
 \begin_layout Subsection
-Tablas y Ecuaciones
+Configratión de la tabla y Ecuaciones
 \end_layout
 
 \begin_layout Standard
