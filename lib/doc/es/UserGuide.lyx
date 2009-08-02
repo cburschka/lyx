@@ -36345,6 +36345,44 @@ reference "sec:Ramas"
 \end_layout
 
 \begin_layout Subsection
+Objeto personalizado
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Inserts document class-specific insets.
+ Such insets only exist when they are defined in the layout file for a certain
+ document class.
+ An example is the document class 
+\begin_inset Quotes eld
+\end_inset
+
+article (Elsevier)
+\begin_inset Quotes erd
+\end_inset
+
+ with three custom insets.
+ The section
+\lang spanish
+ 
+\emph on
+Recuadros flexibles y formato del recuadro
+\emph default
+ 
+\lang english
+of the
+\lang spanish
+ 
+\emph on
+Personalización
+\emph default
+ 
+\lang english
+manual explains how custom insets are defined.
+\end_layout
+
+\begin_layout Subsection
 Archivo
 \begin_inset Index
 status collapsed
