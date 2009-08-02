@@ -194,7 +194,10 @@ if(use_external_libintl)
 	add_definitions(-DHAVE_GETTEXT)
 endif()
 
-find_file(HUNSPELL_FOUND "hunspell/hunspell.hxx")
+find_library(HUNSPELL_LIBRARY "hunspell")
+if (HUNSPELL_LIBRARY)
+    find_file(HUNSPELL_FOUND "hunspell/hunspell.hxx")
+endif()
 
 if (HUNSPELL_FOUND)
     message(STATUS "----- Building with Hunspell")

@@ -81,6 +81,9 @@ target_link_libraries(${_lyx}
 	${QT_QTMAIN_LIBRARY}
 	${vld_dll})
 
+if (HUNSPELL_FOUND)
+        target_link_libraries(${_lyx} ${HUNSPELL_LIBRARY})
+endif()
 if (ASPELL_FOUND)
 	target_link_libraries(${_lyx} ${ASPELL_LIBRARY})
 endif()
