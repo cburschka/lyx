@@ -121,6 +121,7 @@ TeXEnvironment(Buffer const & buf,
 			    || (priorpit->getDepth() == pit->getDepth()
 				&& priorpit->layout() != pit->layout()));
 
+	Encoding const * const prev_encoding = runparams.encoding;
 	Language const * const par_language = pit->getParLanguage(bparams);
 	Language const * const doc_language = bparams.language;
 	Language const * const prev_par_language =
@@ -251,11 +252,14 @@ TeXEnvironment(Buffer const & buf,
 		os << "\\end{" << from_ascii(style.latexname()) << "}\n";
 		texrow.newline();
 		prev_env_language_ = par_language;
+		runparams.encoding = prev_encoding;
 	}
 
 	if (leftindent_open) {
 		os << "\\end{LyXParagraphLeftIndent}\n";
 		texrow.newline();
+		prev_env_language_ = par_language;
+		runparams.encoding = prev_encoding;
 	}
 
 	if (par != paragraphs.end())
@@ -501,6 +505,8 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 		}
 	}
 
+	Encoding const * const prev_encoding = runparams.encoding;
+
 	bool const useSetSpace = bparams.documentClass().provides("SetSpace");
 	if (pit->allowParagraphCustomization()) {
 		if (pit->params().startOfAppendix()) {
@@ -582,8 +588,10 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 		os << "\\" << from_ascii(font.latexSize()) << " \\par}";
 	} else if (need_par) {
 		os << "\\par}";
-	} else if (is_command)
+	} else if (is_command) {
 		os << '}';
+		runparams.encoding = prev_encoding;
+	}
 
 	bool pending_newline = false;
 	switch (style.latextype) {

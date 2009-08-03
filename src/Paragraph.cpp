@@ -1960,6 +1960,8 @@ bool Paragraph::latex(BufferParams const & bparams,
 
 	Change runningChange = Change(Change::UNCHANGED);
 
+	Encoding const * const prev_encoding = runparams.encoding;
+
 	texrow.start(id(), 0);
 
 	// if the paragraph is empty, the loop will not be entered at all
@@ -2186,10 +2188,8 @@ bool Paragraph::latex(BufferParams const & bparams,
 		return_value = false;
 	}
 
-	if (allowcust) {
-		column += d->endTeXParParams(bparams, os, texrow,
-					  runparams);
-	}
+	if (allowcust && d->endTeXParParams(bparams, os, texrow,runparams))
+		runparams.encoding = prev_encoding;
 
 	LYXERR(Debug::LATEX, "Paragraph::latex... done " << this);
 	return return_value;
