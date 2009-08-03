@@ -84,9 +84,9 @@ Menuset
 		Item "Go to Label|G" "label-goto"
 		Separator
 		Item "<Reference>|R" "next-inset-modify changetype ref"
-		Item "(<Reference>)|E" "next-inset-modify changetype eqref"
+		Item "(<Reference>)|e" "next-inset-modify changetype eqref"
 		Item "<Page>|P" "next-inset-modify changetype pageref"
-		Item "On Page <Page>|o" "next-inset-modify changetype vpageref"
+		Item "On Page <Page>|O" "next-inset-modify changetype vpageref"
 		Item "<Reference> on Page <Page>|f" "next-inset-modify changetype vref"
 		Item "Formatted Reference|t" "next-inset-modify changetype prettyref"
 		Separator
