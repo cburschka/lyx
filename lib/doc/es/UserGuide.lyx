@@ -104,7 +104,7 @@
 \tocdepth 3
 \paragraph_separation indent
 \defskip medskip
-\quotes_language english
+\quotes_language french
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
@@ -1131,10 +1131,11 @@ estrellado
 \end_layout
 
 \begin_layout Standard
-Objetos insertados como notas, flotantes, etc., se pueden disolver.
- Esto significa que el objeto insertado se elimina y su contenido se deja
- como texto normal.
- Para disolver un insertado se sitúa el cursor al comienzo del mismo y se
+Cosas como las notas, flotantes, etc., se insertan en recuadros que se pueden
+ disolver.
+ Esto significa que el recuadro se elimina y su contenido se deja como texto
+ normal.
+ Para disolver un recuadro se sitúa el cursor al comienzo del mismo y se
  pulsa 
 \family sans
 Retroceso
@@ -27864,7 +27865,7 @@ Pregunta: ¿Quién fue el primer Nobel de Física?
 
 \begin_layout Standard
 \begin_inset Branch Respuesta
-status open
+status collapsed
 
 \begin_layout Standard
 Respuesta: Wilhelm Conrad Röntgen
@@ -27956,7 +27957,7 @@ respuesta}[1]{#1}
 
 \begin_layout Standard
 \begin_inset Branch Pregunta
-status collapsed
+status open
 
 \begin_layout Standard
 \begin_inset ERT
@@ -29157,23 +29158,19 @@ cambios
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Changes made in the document will then be highlighted by strokes and colors:
+Los cambios realizados en el documento se resaltarán con trazos y colores:
  
 \bar under
 \color blue
-underlined text
+texto subrayado
 \bar default
 \color inherit
- is an addition, 
+ es texto añadido, 
 \color blue
-canceled text
+texto tachado
 \color inherit
- is a deletion.
- The color depends on the author that made the change.
-
-\lang spanish
+ es texto borrado.
+ El color depende del autor que hizo el cambio.
  Puedes cambiar estos colores en el diálogo de las preferencias de LyX,
  en 
 \family sans
@@ -29193,12 +29190,9 @@ Color ! Seguimiento de cambios
 
 \end_inset
 
- 
-\lang english
-The author and the date of the change are shown in LyX's status bar when
- the cursor is in changed text.
- The same information is shown when you use the toolbar button
-\lang spanish
+ El autor y la fecha del cambio se muestran en la barra de estado de LyX
+ cuando el cursor está en texto modificado.
+ Esta misma información se muestra usando el botón de la barra de herramientas
  
 \begin_inset Graphics
 	filename ../../images/changes-merge.png
@@ -34710,9 +34704,7 @@ Guardar todo
 \end_layout
 
 \begin_layout Standard
-Guarda todo 
-\lang english
-opened documents.
+Guarda todos los documentos abiertos.
 \end_layout
 
 \begin_layout Subsection
@@ -34755,7 +34747,7 @@ Importar
 \begin_layout Standard
 Se pueden importar archivos de versiones anteriores de LyX, archivos HTML,
  archivos de LaTeX, archivos NoWeb, archivos de texto simple y archivos
- de texto (CVS) separados por coma, tipo tabla.
+ de texto tipo tabla (CVS) con separación con comas.
  Los archivos serán importados como documento nuevo de LyX.
  
 \end_layout
@@ -35149,9 +35141,7 @@ Ventana nueva y Cerrar ventana
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Opens or closes a new instance of LyX.
+Abre una nueva ventana de LyX o cierra una ventana .
 \end_layout
 
 \begin_layout Subsection
@@ -35159,9 +35149,7 @@ Salir
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Prompts you to save all unsaved documents and then exits.
+Avisa si hay documentos no guardados y sale.
 \end_layout
 
 \begin_layout Section
@@ -35310,7 +35298,7 @@ Configuración
 \end_layout
 
 \begin_layout Subsection
-Configratión de la tabla y Ecuaciones
+Configuración de la tabla y Ecuaciones
 \end_layout
 
 \begin_layout Standard
@@ -36367,41 +36355,35 @@ reference "sec:Ramas"
 \end_layout
 
 \begin_layout Subsection
-Objeto personalizado
+Recuadro personalizado
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Inserts document class-specific insets.
- Such insets only exist when they are defined in the layout file for a certain
- document class.
- An example is the document class 
-\begin_inset Quotes eld
+Inserta recuadros específicos de la clase de documento.
+ Estos recuadros solo son posibles si están definidos en el archivo de formato
+ (
+\emph on
+layout
+\emph default
+) para una determinada clase de documento.
+ Un ejemplo es la clase de documento 
+\begin_inset Quotes fld
 \end_inset
 
 article (Elsevier)
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
- with three custom insets.
- The section
-\lang spanish
- 
+ con tres recuadros personalizados.
+ La sección 
 \emph on
 Recuadros flexibles y formato del recuadro
 \emph default
- 
-\lang english
-of the
-\lang spanish
- 
+ del manual 
 \emph on
 Personalización
 \emph default
- 
-\lang english
-manual explains how custom insets are defined.
+ explica cómo se definen los recuadros personalizados.
 \end_layout
 
 \begin_layout Subsection
@@ -41225,22 +41207,15 @@ Agrupar entornos por categorías
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The math macro editing option determines the editing style, see the section
-\lang spanish
- 
+La opción Editar macros de ecuación determina el estilo de edición, véase
+ la sección  
 \emph on
 Macros de ecuaciones
 \emph default
- 
-\lang english
-of the 
+ del manual 
 \emph on
-Math
+Ecuaciones
 \emph default
- manual
-\lang spanish
 .
 \end_layout
 
