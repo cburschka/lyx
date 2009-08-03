@@ -155,6 +155,9 @@ What's new
 
 - Fix language settings after an environment (bug 5096).
 
+- The file encoding is now properly restored after a LaTeX environment
+  or command with local scope (bug 5690).
+
 - Enable the possibility to read documents from a path containing a
   $-character (bug 4177).
   
