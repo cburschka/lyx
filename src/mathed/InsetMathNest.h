@@ -30,6 +30,8 @@ public:
 	explicit InsetMathNest(idx_type ncells);
 	///
 	virtual ~InsetMathNest() {}
+	///
+	void setBuffer(Buffer &);
 
 	/// the size is usually some sort of convex hull of the cells
 	/// hides inset::metrics() intentionally!
