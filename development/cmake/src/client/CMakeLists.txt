@@ -17,10 +17,14 @@ include_directories(BEFORE "${TOP_SRC_DIR}/src/client"
 
 add_executable(${_lyxclient} ${_lyxclient_sources} ${_lyxclient_headers})
 
+if(Boost_FOUND)
+  target_link_libraries(${_lyxclient} ${Boost_LIBRARIES})
+else()
+  target_link_libraries(${_lyxclient} boost_regex)
+endif()
 
 target_link_libraries(${_lyxclient}
 	support
-	boost_regex
 	${LIBINTL_LIBRARIES}
         ${ICONV_LIBRARY}
 	${QT_QTCORE_LIBRARY}

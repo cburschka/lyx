@@ -23,7 +23,11 @@ else()
 	add_library(frontends ${library_type} ${_allinone_files})
 endif()
 
-target_link_libraries(frontends boost_regex)
+if(Boost_FOUND)
+  target_link_libraries(frontends ${Boost_LIBRARIES})
+else()
+  target_link_libraries(frontends boost_regex)
+endif()
 
 project_source_group("${GROUP_CODE}" frontends_sources frontends_headers)
 

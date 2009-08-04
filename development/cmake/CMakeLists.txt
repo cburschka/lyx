@@ -195,19 +195,19 @@ if(use_external_libintl)
 endif()
 
 if(WIN32)
-    find_library(HUNSPELL_LIBRARY "libhunspell")
+  find_library(HUNSPELL_LIBRARY "libhunspell")
 else()
-    find_library(HUNSPELL_LIBRARY "hunspell")
+  find_library(HUNSPELL_LIBRARY "hunspell")
 endif()
 if (HUNSPELL_LIBRARY)
-    find_file(HUNSPELL_FOUND "hunspell/hunspell.hxx")
+  find_file(HUNSPELL_FOUND "hunspell/hunspell.hxx")
 endif()
 
 if (HUNSPELL_FOUND)
-	add_definitions(-DUSE_HUNSPELL=1)
-    message(STATUS "----- Building with USE_HUNSPELL")
+  add_definitions(-DUSE_HUNSPELL=1)
+  message(STATUS "----- Building with USE_HUNSPELL")
 else()
-    message(STATUS "----- Hunspell not found, building without hunspell support")
+  message(STATUS "----- Hunspell not found, building without hunspell support")
 endif()
 
 message(STATUS "")
@@ -258,8 +258,6 @@ foreach(_v PACKAGE PACKAGE_VERSION
 endforeach(_v)
 message(STATUS "")
 
-
-add_definitions(-DBOOST_USER_CONFIG="<config.h>")
 
 if(MSVC AND NOT disable-pch AND NOT MERGE_FILES)
 	message(STATUS "-----")
@@ -394,12 +392,28 @@ configure_file(config.h.cmake ${CMAKE_BINARY_DIR}/config.h)
 find_package(ICONV REQUIRED)
 add_definitions(-DHAVE_ICONV=1)
 
-include_directories(
-	${CMAKE_BINARY_DIR}
-	${TOP_SRC_DIR}/src
-	${TOP_SRC_DIR}/boost)
 
-add_subdirectory(boost)
+include_directories(
+  ${CMAKE_BINARY_DIR}
+  ${TOP_SRC_DIR}/src)
+if(UseExternalBoost)
+  message(STATUS "Searching for boost")
+  find_package(Boost COMPONENTS signals regex)
+else()
+  message(STATUS "----- Using internal boost. To build with installed version use -DUseExternalBoost:BOOL=ON")
+endif()
+
+if(Boost_FOUND)
+  message(STATUS "Boost found")
+  message(STATUS "Boost-libs = ${Boost_LIBRARIES}")
+else()
+  message(STATUS "Boost not found" ${Boost_ERROR_REASON})
+  add_definitions(-DBOOST_USER_CONFIG="<config.h>")
+  include_directories(${TOP_SRC_DIR}/boost)
+  add_subdirectory(boost)
+endif()
+
+
 if(NOT use_external_libintl)
 	add_subdirectory(intl)
 endif()
