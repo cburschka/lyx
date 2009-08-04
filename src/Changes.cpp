@@ -256,7 +256,7 @@ Change const & Changes::lookup(pos_type const pos) const
 }
 
 
-bool Changes::isFullyDeleted(pos_type start, pos_type end) const
+bool Changes::isDeleted(pos_type start, pos_type end) const
 {
 	ChangeTable::const_iterator it = table_.begin();
 	ChangeTable::const_iterator const itend = table_.end();

@@ -338,7 +338,7 @@ bool isFullyDeleted(ParagraphList const & pars)
 	// check all paragraphs
 	for (pit_type pit = 0; pit < pars_size; ++pit) {
 		if (!pars[pit].empty())   // prevent assertion failure
-			if (!pars[pit].isFullyDeleted(0, pars[pit].size()))
+			if (!pars[pit].isDeleted(0, pars[pit].size()))
 				return false;
 	}
 	return true;

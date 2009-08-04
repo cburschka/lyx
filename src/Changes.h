@@ -97,7 +97,7 @@ public:
 	bool isChanged(pos_type start, pos_type end) const;
 
 	/// return true if the whole range is deleted
-	bool isFullyDeleted(pos_type const start, pos_type const end) const;		
+	bool isDeleted(pos_type start, pos_type end) const;		
 
 	/// output latex to mark a transition between two change types
 	/// returns length of text outputted
