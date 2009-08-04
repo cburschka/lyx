@@ -795,8 +795,8 @@ void Text::acceptOrRejectChanges(Cursor & cur, ChangeOp op)
 	LASSERT(this == cur.text(), /**/);
 
 	if (!cur.selection()) {
-		Change const & change = cur.paragraph().lookupChange(cur.pos());
-		if (!(change.changed() && findNextChange(&cur.bv())))
+		bool const changed = cur.paragraph().isChanged(cur.pos());
+		if (!(changed && findNextChange(&cur.bv())))
 			return;
 	}
 
@@ -1356,7 +1356,7 @@ docstring Text::currentState(Cursor const & cur) const
 
 	Change change = par.lookupChange(cur.pos());
 
-	if (change.type != Change::UNCHANGED) {
+	if (change.changed()) {
 		Author const & a = buf.params().authors().get(change.author);
 		os << _("Change: ") << a.name();
 		if (!a.email().empty())

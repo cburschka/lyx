@@ -2557,10 +2557,9 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		// However, without proper optimizations, this will inevitably
 		// result in unacceptable performance - just imagine a user who
 		// wants to select the complete content of a long document.
-		if (!cur.selection()) {
-			Change const & change = cur.paragraph().lookupChange(cur.pos());
-			enable = change.changed();
-		} else
+		if (!cur.selection())
+			enable = cur.paragraph().isChanged(cur.pos());
+		else
 			// TODO: context-sensitive enabling of LFUN_CHANGE_ACCEPT/REJECT
 			// for selections.
 			enable = true;

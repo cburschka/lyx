@@ -759,7 +759,7 @@ void Paragraph::Private::latexInset(
 		column = 0;
 	}
 
-	if (owner_->lookupChange(i).deleted()) {
+	if (owner_->isDeleted(i)) {
 		if( ++runparams.inDeletedInset == 1)
 			runparams.changeOfDeletedInset = owner_->lookupChange(i);
 	}
@@ -848,7 +848,7 @@ void Paragraph::Private::latexInset(
 		column += os.tellp() - len;
 	}
 
-	if (owner_->lookupChange(i).deleted())
+	if (owner_->isDeleted(i))
 		--runparams.inDeletedInset;
 }
 

@@ -191,7 +191,7 @@ void mergeParagraph(BufferParams const & bparams,
 	// the imaginary end-of-paragraph character (at par.size()) has to be
 	// marked as unmodified. Otherwise, its change is adopted by the first
 	// character of the next paragraph.
-	if (par.lookupChange(par.size()).type != Change::UNCHANGED) {
+	if (par.isChanged(par.size())) {
 		LYXERR(Debug::CHANGES,
 		   "merging par with inserted/deleted end-of-par character");
 		par.setChange(par.size(), Change(Change::UNCHANGED));
