@@ -58,6 +58,8 @@ public:
 	bool deleted() const { return type == DELETED; }
 	///
 	void setDeleted() { type = DELETED; }
+	/// Is this change made by the current author ?
+	bool currentAuthor() const { return author == 0; }
 
 	Type type;
 
