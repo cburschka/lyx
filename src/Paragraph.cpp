@@ -2791,9 +2791,9 @@ void Paragraph::checkAuthors(AuthorList const & authorList)
 }
 
 
-bool Paragraph::isUnchanged(pos_type pos) const
+bool Paragraph::isChanged(pos_type pos) const
 {
-	return !lookupChange(pos).changed();
+	return lookupChange(pos).changed();
 }
 
 

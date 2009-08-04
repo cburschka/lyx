@@ -120,7 +120,7 @@ bool findChange(DocIterator & cur, bool next)
 	if (!next)
 		cur.backwardPos();
 	for (; cur; next ? cur.forwardPos() : cur.backwardPos())
-		if (cur.inTexted() && !cur.paragraph().isUnchanged(cur.pos())) {
+		if (cur.inTexted() && cur.paragraph().isChanged(cur.pos())) {
 			if (!next)
 				// if we search backwards, take a step forward
 				// to correctly set the anchor
