@@ -1009,7 +1009,9 @@ void InsetMathGrid::write(WriteStream & os,
 		eol = eolString(row, os.fragile());
 		os << eol;
 		// append newline only if line wasn't completely empty
-		if (!(emptyline && eol.empty())) 
+		// and the formula is not written on a single line
+		bool const empty = emptyline && eol.empty();
+		if (!empty && nrows() > 1)
 			os << "\n";
 	}
 	// @TODO use end_row instead of nrows() ?
