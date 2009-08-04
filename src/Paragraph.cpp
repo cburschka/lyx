@@ -2552,9 +2552,9 @@ docstring Paragraph::asString(pos_type beg, pos_type end, int options) const
 	for (pos_type i = beg; i < end; ++i) {
 		char_type const c = d->text_[i];
 		if (isPrintable(c) || c == '\t'
-		    || (c == '\n' && options & AS_STR_NEWLINES))
+		    || (c == '\n' && (options & AS_STR_NEWLINES)))
 			os.put(c);
-		else if (c == META_INSET && options & AS_STR_INSETS) {
+		else if (c == META_INSET && (options & AS_STR_INSETS)) {
 			getInset(i)->tocString(os);
 			if (getInset(i)->asInsetMath())
 				os << " ";
@@ -2577,9 +2577,9 @@ docstring Paragraph::stringify(pos_type beg, pos_type end, int options, OutputPa
 	for (pos_type i = beg; i < end; ++i) {
 		char_type const c = d->text_[i];
 		if (isPrintable(c) || c == '\t'
-		    || (c == '\n' && options & AS_STR_NEWLINES))
+		    || (c == '\n' && (options & AS_STR_NEWLINES)))
 			os.put(c);
-		else if (c == META_INSET && options & AS_STR_INSETS) {
+		else if (c == META_INSET && (options & AS_STR_INSETS)) {
 			getInset(i)->plaintext(os, runparams);
 		}
 	}
