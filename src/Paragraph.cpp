@@ -313,7 +313,7 @@ bool Paragraph::isMergedOnEndOfParDeletion(bool trackChanges) const
 		return true;
 
 	Change const change = d->changes_.lookup(size());
-	return change.type == Change::INSERTED && change.author == 0;
+	return change.inserted() && change.currentAuthor();
 }
 
 
@@ -334,7 +334,7 @@ void Paragraph::setChange(Change const & change)
 	 * Conclusion: An inset's content should remain untouched if you delete it
 	 */
 
-	if (change.type != Change::DELETED) {
+	if (!change.deleted()) {
 		for (pos_type pos = 0; pos < size(); ++pos) {
 			if (Inset * inset = getInset(pos))
 				inset->setChange(change);
@@ -349,7 +349,7 @@ void Paragraph::setChange(pos_type pos, Change const & change)
 	d->changes_.set(change, pos);
 
 	// see comment in setChange(Change const &) above
-	if (change.type != Change::DELETED && pos < size())
+	if (!change.deleted() && pos < size())
 			if (Inset * inset = getInset(pos))
 				inset->setChange(change);
 }
@@ -491,13 +491,13 @@ bool Paragraph::eraseChar(pos_type pos, bool trackChanges)
 		//  a) it was previously unchanged or
 		//  b) it was inserted by a co-author
 
-		if (change.type == Change::UNCHANGED ||
-		    (change.type == Change::INSERTED && change.author != 0)) {
+		if (!change.changed() ||
+		      (change.inserted() && !change.currentAuthor())) {
 			setChange(pos, Change(Change::DELETED));
 			return false;
 		}
 
-		if (change.type == Change::DELETED)
+		if (change.deleted())
 			return false;
 	}
 
@@ -759,7 +759,7 @@ void Paragraph::Private::latexInset(
 		column = 0;
 	}
 
-	if (owner_->lookupChange(i).type == Change::DELETED) {
+	if (owner_->lookupChange(i).deleted()) {
 		if( ++runparams.inDeletedInset == 1)
 			runparams.changeOfDeletedInset = owner_->lookupChange(i);
 	}
@@ -848,7 +848,7 @@ void Paragraph::Private::latexInset(
 		column += os.tellp() - len;
 	}
 
-	if (owner_->lookupChange(i).type == Change::DELETED)
+	if (owner_->lookupChange(i).deleted())
 		--runparams.inDeletedInset;
 }
 
@@ -2024,7 +2024,7 @@ bool Paragraph::latex(BufferParams const & bparams,
 
 		// do not output text which is marked deleted
 		// if change tracking output is disabled
-		if (!bparams.outputChanges && change.type == Change::DELETED) {
+		if (!bparams.outputChanges && change.deleted()) {
 			continue;
 		}
 
@@ -2793,19 +2793,19 @@ void Paragraph::checkAuthors(AuthorList const & authorList)
 
 bool Paragraph::isUnchanged(pos_type pos) const
 {
-	return lookupChange(pos).type == Change::UNCHANGED;
+	return !lookupChange(pos).changed();
 }
 
 
 bool Paragraph::isInserted(pos_type pos) const
 {
-	return lookupChange(pos).type == Change::INSERTED;
+	return lookupChange(pos).inserted();
 }
 
 
 bool Paragraph::isDeleted(pos_type pos) const
 {
-	return lookupChange(pos).type == Change::DELETED;
+	return lookupChange(pos).deleted();
 }
 
 
