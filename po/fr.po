@@ -230,12 +230,15 @@
 # 21 juillet 2009 mise a jour pour 1.6.4
 # Unification default -> implicite dans tous les messages
 # ------------------------------------------------------------------
+# 5 aout 2009 retour sur Editer et Visualiser pour la barre des menus: synchro avec les copies d'ecran du site web
+#             synchro de la doc pour visionner et implicite
+# ------------------------------------------------------------------
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-07-19 17:20+0200\n"
-"PO-Revision-Date: 2009-07-21 19:01+0100\n"
+"PO-Revision-Date: 2009-08-05 15:37+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "MIME-Version: 1.0\n"
@@ -3628,7 +3631,7 @@ msgstr "&Commande :"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:13
 msgid "Edit shortcut"
-msgstr "Modifier raccourci"
+msgstr "Modifier le raccourci"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:77
 msgid "Enter LyX function or command sequence"
@@ -8655,13 +8658,13 @@ msgstr "Prénom"
 #: lib/layouts/agu_stdclass.inc:63
 #: lib/layouts/db_stdcharstyles.inc:46
 msgid "Element:Surname"
-msgstr "Élément : surnom"
+msgstr "Élément : nom"
 
 #: lib/layouts/agu_stdclass.inc:65
 #: lib/layouts/db_stdcharstyles.inc:48
 #: lib/layouts/db_stdtitle.inc:98
 msgid "Surname"
-msgstr "Surnom"
+msgstr "Nom"
 
 #: lib/layouts/agu_stdclass.inc:78
 #: lib/layouts/db_stdcharstyles.inc:6
@@ -10504,7 +10507,7 @@ msgstr "Fichier|F"
 #: lib/ui/classic.ui:33
 #: lib/ui/stdmenus.inc:29
 msgid "Edit|E"
-msgstr "Modifier|e"
+msgstr "Éditer|e"
 
 #: lib/ui/classic.ui:34
 #: lib/ui/stdmenus.inc:31
@@ -10518,7 +10521,7 @@ msgstr "Format|t"
 #: lib/ui/classic.ui:36
 #: lib/ui/stdmenus.inc:30
 msgid "View|V"
-msgstr "Visionner|V"
+msgstr "Visualiser|V"
 
 #: lib/ui/classic.ui:37
 #: lib/ui/stdmenus.inc:32
@@ -12991,6 +12994,7 @@ msgid "Next note"
 msgstr "Note suivante"
 
 #: lib/ui/stdtoolbars.inc:217
+#, fuzzy
 msgid "View/Update"
 msgstr "Visionner/Mettre à jour"
 
@@ -16066,7 +16070,7 @@ msgstr "Voulez-vous reprendre le document %1$s depuis le contrôle de version ?"
 
 #: src/Buffer.cpp:2696
 msgid "Retrieve from version control?"
-msgstr "Éditer le fichier sous contrôle de version ?"
+msgstr "Modifier le fichier sous contrôle de version ?"
 
 #: src/Buffer.cpp:2697
 msgid "&Retrieve"
@@ -21909,3 +21913,4 @@ msgstr "Utilisateur inconnu"
 #~ msgstr "Rendre non optionnel le dernier paramètre optionnel"
 #~ msgid "Insert Optional Parameter"
 #~ msgstr "Insérer un paramètre optionnel"
+
