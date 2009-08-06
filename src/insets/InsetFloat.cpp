@@ -181,6 +181,13 @@ bool InsetFloat::getStatus(Cursor & cur, FuncRequest const & cmd,
 		flag.setEnabled(true);
 		return true;
 
+	case LFUN_INSET_SETTINGS:
+		if (InsetCollapsable::getStatus(cur, cmd, flag)) {
+			flag.setEnabled(flag.enabled() && !params_.subfloat);
+			return true;
+		} else
+			return false;
+
 	default:
 		return InsetCollapsable::getStatus(cur, cmd, flag);
 	}
