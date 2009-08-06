@@ -670,8 +670,10 @@ void MathMacroTemplate::shiftArguments(size_t from, int by)
 
 int MathMacroTemplate::maxArgumentInDefinition() const
 {
+	// We don't have a buffer when pasting from the clipboard (bug 6014).
+	Buffer const * macro_buffer = this->isBufferValid() ? &buffer() : 0;
 	int maxArg = 0;
-	DocIterator it = doc_iterator_begin(&buffer(), this);
+	DocIterator it = doc_iterator_begin(macro_buffer, this);
 	it.idx() = defIdx();
 	for (; it; it.forwardChar()) {
 		if (!it.nextInset())
