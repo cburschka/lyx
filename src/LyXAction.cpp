@@ -2842,7 +2842,7 @@ void LyXAction::init()
  * \li Action: Closes all buffers.
  * \li Notion: Closes all buffers, asking whether to save it, etc,
                if a buffer has been modified.
- * \li Syntax: buffer-close_all
+ * \li Syntax: buffer-close-all
  * \endvar
  */
 		{ LFUN_BUFFER_CLOSE_ALL, "buffer-close-all", ReadOnly, Buffer },
