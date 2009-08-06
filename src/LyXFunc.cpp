@@ -633,6 +633,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_CANCEL:
 	case LFUN_META_PREFIX:
 	case LFUN_BUFFER_CLOSE:
+	case LFUN_BUFFER_CLOSE_ALL:
 	case LFUN_BUFFER_IMPORT:
 	case LFUN_BUFFER_AUTO_SAVE:
 	case LFUN_RECONFIGURE:
@@ -875,6 +876,12 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		// --- Menus -----------------------------------------------
 		case LFUN_BUFFER_CLOSE:
 			lyx_view_->closeBuffer();
+			buffer = 0;
+			updateFlags = Update::None;
+			break;
+
+		case LFUN_BUFFER_CLOSE_ALL:
+			lyx_view_->closeBufferAll();
 			buffer = 0;
 			updateFlags = Update::None;
 			break;

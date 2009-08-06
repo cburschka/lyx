@@ -2838,6 +2838,15 @@ void LyXAction::init()
  */
 		{ LFUN_BUFFER_CLOSE, "buffer-close", ReadOnly, Buffer },
 /*!
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_CLOSE_ALL
+ * \li Action: Closes all buffers.
+ * \li Notion: Closes all buffers, asking whether to save it, etc,
+               if a buffer has been modified.
+ * \li Syntax: buffer-close_all
+ * \endvar
+ */
+		{ LFUN_BUFFER_CLOSE_ALL, "buffer-close-all", ReadOnly, Buffer },
+/*!
  * \var lyx::FuncCode lyx::LFUN_BUFFER_EXPORT
  * \li Action: Exports the current buffer (document) to the given format.
  * \li Syntax: buffer-export <FORMAT>
