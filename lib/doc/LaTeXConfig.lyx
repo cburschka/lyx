@@ -1,4 +1,4 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -4293,6 +4293,35 @@ listings
  is used by LyX to display program listings (source code snippets).
  It supports many program languages, syntax highlighting, line numbers,
  etc.
+\end_layout
+
+\begin_layout Subsection
+mhchem
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "mhchem"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/mhchem/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+mhchem
+\family default
+ is needed by LyX to produce chemical formulas and reaction equations in
+ math.
 \end_layout
 
 \begin_layout Subsection
