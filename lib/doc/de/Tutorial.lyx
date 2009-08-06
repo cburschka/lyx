@@ -1119,9 +1119,9 @@ Umgebungen
  Titel (Kapitel, Abschnitt, Unterabschnitt) teilen dem Leser mit, dass nun
  ein neues Thema behandelt wird, usw.
  Besondere Arten von Dokumenten besitzen besondere Umgebungen: Ein Artikel
- in einer Zeitschrift hat Überschrift und Zusammenfassung, ein Brief wird
- keine davon verwenden, hat dafür aber vielleicht eine andere Umgebung,
- in der die Adresse angegeben wird.
+ in einer Zeitschrift hat Überschrift und Abstract, ein Brief wird keine
+ davon verwenden, hat dafür aber vielleicht eine andere Umgebung, in der
+ die Adresse angegeben wird.
 \end_layout
 
 \begin_layout Standard
@@ -2442,9 +2442,8 @@ Dokumenttitel
 
 \begin_layout Standard
 Wie auch LaTeX betrachtet LyX den Titelblock – der aus der eigentlichen
- Überschrift, dem Namen des Autors, dem Datum und eventuell sogar der Kurzzusamm
-enfassung eines Artikels bestehen kann – als einen eigenständigen Teil des
- Dokumentes.
+ Überschrift, dem Namen des Autors, dem Datum und eventuell sogar dem Abstract
+ eines Artikels bestehen kann – als einen eigenständigen Teil des Dokumentes.
 \end_layout
 
 \begin_layout Standard
@@ -2497,9 +2496,9 @@ Datum
 ).
  Schreiben Sie nun einen kleinen Absatz im Umgebungstyp 
 \family sans
-Zusammenfassung
+Abstract
 \family default
- und betrachten dann das ganze in der Vorschau.
+ und betrachten dann das Ganze in der Vorschau.
 \end_layout
 
 \begin_layout Standard
