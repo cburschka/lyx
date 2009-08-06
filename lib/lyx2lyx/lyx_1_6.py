@@ -1322,13 +1322,13 @@ def convert_url(document):
       j = find_token(document.body, "target", i)
       if j == -1:
         document.warning("Malformed LyX document: Can't find target for url inset")
-        i = j
+        i += 1
         continue
       target = document.body[j][8:-1]
       k = find_token(document.body, "\\end_inset", j)
       if k == -1:
         document.warning("Malformed LyX document: Can't find end of url inset")
-        i = k
+        i = j
         continue
       newstuff = ["\\begin_inset Flex URL",
         "status collapsed", "",
@@ -1338,7 +1338,7 @@ def convert_url(document):
         "\\end_layout",
         ""]
       document.body[i:k] = newstuff
-      i = k
+      i = i + len(newstuff)
 
 def convert_ams_classes(document):
   tc = document.textclass

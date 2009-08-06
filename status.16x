@@ -127,11 +127,14 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fix the output of spaces that are at the beginning of a block with
-  a new textcolor (bug 4473).
+- Fix conversion of documents from LyX 1.5 with multiple URL insets
+  (bug 6121).
 
 - Fix conversion documents from LyX 1.4 which have multicolumn cells in
   tabulars with expert border settings (bug 6018).
+  
+- Fix the output of spaces that are at the beginning of a block with
+  a new textcolor (bug 4473).
 
 - Fix output of alignment if default aligment is not justified (bug 5995).
 
