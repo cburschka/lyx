@@ -451,9 +451,6 @@ void GuiTabular::ltHeaderStatus_clicked()
 		set(Tabular::SET_LTHEAD, "");
 	else
 		set(Tabular::UNSET_LTHEAD, "");
-	headerBorderAboveCB->setEnabled(enable);
-	headerBorderBelowCB->setEnabled(enable);
-	firstheaderNoContentsCB->setEnabled(enable);
 	changed();
 }
 
@@ -505,8 +502,6 @@ void GuiTabular::ltFirstHeaderStatus_clicked()
 		set(Tabular::SET_LTFIRSTHEAD, "");
 	else
 		set(Tabular::UNSET_LTFIRSTHEAD, "");
-	firstheaderBorderAboveCB->setEnabled(enable);
-	firstheaderBorderBelowCB->setEnabled(enable);
 	changed();
 }
 
@@ -518,9 +513,6 @@ void GuiTabular::ltFirstHeaderEmpty_clicked()
 		set(Tabular::SET_LTFIRSTHEAD, "empty");
 	else
 		set(Tabular::UNSET_LTFIRSTHEAD, "empty");
-	firstheaderStatusCB->setEnabled(!enable);
-	firstheaderBorderAboveCB->setEnabled(!enable);
-	firstheaderBorderBelowCB->setEnabled(!enable);
 	changed();
 }
 
@@ -532,9 +524,6 @@ void GuiTabular::ltFooterStatus_clicked()
 		set(Tabular::SET_LTFOOT, "");
 	else
 		set(Tabular::UNSET_LTFOOT, "");
-	footerBorderAboveCB->setEnabled(enable);
-	footerBorderBelowCB->setEnabled(enable);
-	lastfooterNoContentsCB->setEnabled(enable);
 	changed();
 }
 
@@ -566,8 +555,6 @@ void GuiTabular::ltLastFooterStatus_clicked()
 		set(Tabular::SET_LTLASTFOOT, "");
 	else
 		set(Tabular::UNSET_LTLASTFOOT, "");
-	lastfooterBorderAboveCB->setEnabled(enable);
-	lastfooterBorderBelowCB->setEnabled(enable);
 	changed();
 }
 
@@ -599,9 +586,6 @@ void GuiTabular::ltLastFooterEmpty_clicked()
 		set(Tabular::SET_LTLASTFOOT, "empty");
 	else
 		set(Tabular::UNSET_LTLASTFOOT, "empty");
-	lastfooterStatusCB->setEnabled(!enable);
-	lastfooterBorderAboveCB->setEnabled(!enable);
-	lastfooterBorderBelowCB->setEnabled(!enable);
 	changed();
 }
 
@@ -845,7 +829,6 @@ void GuiTabular::updateContents()
 	// a first header makes no sense
 	firstheaderStatusCB->setEnabled(funcEnabled(Tabular::SET_LTFIRSTHEAD)
 		&& !firstheaderNoContentsCB->isChecked());
-	//firstheaderStatusCB->setEnabled(!firstheaderNoContentsCB->isChecked());
 	headerBorderAboveCB->setEnabled(funcEnabled(Tabular::SET_LTHEAD));
 	headerBorderBelowCB->setEnabled(funcEnabled(Tabular::SET_LTHEAD));
 	headerStatusCB->setEnabled(funcEnabled(Tabular::SET_LTHEAD));
@@ -886,6 +869,12 @@ void GuiTabular::updateContents()
 	}
 
 	row_set = tabular_.getRowOfLTFirstHead(row, ltt);
+	// check if setting a first header is allowed
+	// additionally check firstheaderStatusCB because when this is the
+	// case a first header makes no sense
+	firstheaderStatusCB->setEnabled(
+		funcEnabled(Tabular::SET_LTFIRSTHEAD)
+		&& !firstheaderNoContentsCB->isChecked());
 	firstheaderStatusCB->setChecked(row_set);
 	if (ltt.set && (!ltt.empty || !use_empty)) {
 		firstheaderBorderAboveCB->setChecked(ltt.topDL);
@@ -918,6 +907,12 @@ void GuiTabular::updateContents()
 	}
 
 	row_set = tabular_.getRowOfLTLastFoot(row, ltt);
+	// check if setting a last footer is allowed
+	// additionally check lastfooterNoContentsCB because when this is
+	// the case a last footer makes no sense
+	lastfooterStatusCB->setEnabled(
+		funcEnabled(Tabular::SET_LTLASTFOOT)
+		&& !lastfooterNoContentsCB->isChecked());
 	lastfooterStatusCB->setChecked(row_set);
 	if (ltt.set && (!ltt.empty || !use_empty)) {
 		lastfooterBorderAboveCB->setChecked(ltt.topDL);
