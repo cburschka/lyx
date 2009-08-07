@@ -34,6 +34,11 @@ What's new
   * the alternative LaTeX document language names "portuguese" and
     "brazilian"
 
+- Partially resolve bug 5702, "tex2lyx cannot deal with modules". We
+  now treat the "DefaultModule" tag as if it were an "Input" tag. This
+  is not a general solution, but does deal with one of the most serious
+  cases of the bug.
+
 
 * USER INTERFACE
 

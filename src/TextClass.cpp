@@ -347,6 +347,9 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			readOutputType(lexrc);
 			break;
 
+#ifdef TEX2LYX
+		case TC_DEFAULTMODULE:
+#endif
 		case TC_INPUT: // Include file
 			if (lexrc.next()) {
 				string const inc = lexrc.getString();
@@ -493,6 +496,7 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			break;
 		}
 
+#ifndef TEX2LYX
 		case TC_DEFAULTMODULE: {
 			lexrc.next();
 			string const module = lexrc.getString();
@@ -500,6 +504,7 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 				default_modules_.push_back(module);
 			break;
 		}
+#endif
 
 		case TC_PROVIDESMODULE: {
 			lexrc.next();
