@@ -808,18 +808,7 @@ void GuiWorkArea::generateSyntheticMouseEvent()
 	if (synthetic_mouse_event_.restart_timeout)
 		synthetic_mouse_event_.timeout.start();
 
-	// Has anything changed on-screen since the last timeout signal
-	// was received?
-	int const min_scrollbar = verticalScrollBar()->minimum();
-	int const max_scrollbar = verticalScrollBar()->maximum();
-	if (min_scrollbar == synthetic_mouse_event_.min_scrollbar_old
-		&& max_scrollbar == synthetic_mouse_event_.max_scrollbar_old) {
-		return;
-	}
-	// Yes it has. Store the params used to check this.
-	synthetic_mouse_event_.min_scrollbar_old = min_scrollbar;
-	synthetic_mouse_event_.max_scrollbar_old = max_scrollbar;
-	// ... and dispatch the event to the LyX core.
+	// Dispatch the event to the LyX core.
 	dispatch(synthetic_mouse_event_.cmd);
 }
 
