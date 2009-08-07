@@ -1246,6 +1246,22 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		enable = buf;
 		break;
 
+	case LFUN_BUFFER_CLOSE_ALL: {
+		enable = false;
+		BufferList::iterator it = theBufferList().begin();
+		BufferList::iterator end = theBufferList().end();
+		int visible_buffers = 0;
+		for (; it != end; ++it) {
+			if (workArea(**it))
+				++visible_buffers;
+			if (visible_buffers > 1) {
+				enable = true;
+				break;
+			}
+		}
+		break;
+	}
+
 	case LFUN_SPLIT_VIEW:
 		if (cmd.getArg(0) == "vertical")
 			enable = buf && (d.splitter_->count() == 1 ||
