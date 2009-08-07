@@ -15,6 +15,7 @@ End
 
 Style Theorem
 	Preamble
+		\theoremstyle{plain}
 		\newtheorem{thm}{\protect\theoremname}[section]
 	EndPreamble
 	LangPreamble

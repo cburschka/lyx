@@ -20,10 +20,6 @@ Requires	amsmath,amsthm
 Counter theorem
 End
 
-AddToPreamble
-	\theoremstyle{plain}
-EndPreamble
-
 Input theorems-order.inc
 Input theorems-ams.inc
 Input theorems-starred.inc

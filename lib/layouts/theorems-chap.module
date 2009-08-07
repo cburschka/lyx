@@ -16,6 +16,7 @@ End
 
 Style Theorem
 	Preamble
+		\theoremstyle{plain}
 		\ifx\thechapter\undefined
 			\newtheorem{thm}{\protect\theoremname}
 		\else

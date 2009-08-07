@@ -49,6 +49,7 @@ Style Theorem
 	  Series              Bold
 	EndFont
 	Preamble
+		\theoremstyle{plain}
 		\newtheorem{thm}{\protect\theoremname}
 	EndPreamble
 	LangPreamble
@@ -67,7 +68,8 @@ Style Corollary
 	LatexName             cor
 	LabelString           "Corollary \thetheorem."
 	Preamble
-	  \newtheorem{cor}[thm]{\protect\corollaryname}
+		\theoremstyle{plain}
+		\newtheorem{cor}[thm]{\protect\corollaryname}
 	EndPreamble
 	LangPreamble
 		\providecommand{\corollaryname}{_(Corollary)}
@@ -84,7 +86,8 @@ Style Lemma
 	LatexName             lem
 	LabelString           "Lemma \thetheorem."
 	Preamble
-	  \newtheorem{lem}[thm]{\protect\lemmaname}
+		\theoremstyle{plain}
+		\newtheorem{lem}[thm]{\protect\lemmaname}
 	EndPreamble
 	LangPreamble
 		\providecommand{\lemmaname}{_(Lemma)}
@@ -101,7 +104,8 @@ Style Proposition
 	LatexName             prop
 	LabelString           "Proposition \thetheorem."
 	Preamble
-	  \newtheorem{prop}[thm]{\protect\propositionname}
+		\theoremstyle{plain}
+		\newtheorem{prop}[thm]{\protect\propositionname}
 	EndPreamble
 	LangPreamble
 		\providecommand{\propositionname}{_(Proposition)}
@@ -118,7 +122,8 @@ Style Conjecture
 	LatexName             conjecture
 	LabelString           "Conjecture \thetheorem."
 	Preamble
-	  \newtheorem{conjecture}[thm]{\protect\conjecturename}
+		\theoremstyle{plain}
+		\newtheorem{conjecture}[thm]{\protect\conjecturename}
 	EndPreamble
 	LangPreamble
 		\providecommand{\conjecturename}{_(Conjecture)}
@@ -135,7 +140,8 @@ Style Fact
 	LatexName             fact
 	LabelString           "Fact \thetheorem."
 	Preamble
-	  \newtheorem{fact}[thm]{\protect\factname}
+		\theoremstyle{plain}
+		\newtheorem{fact}[thm]{\protect\factname}
 	EndPreamble
 	LangPreamble
 		\providecommand{\factname}{_(Fact)}
@@ -159,8 +165,8 @@ Style Definition
 	  Series              Bold
 	EndFont
 	Preamble
-	  \theoremstyle{definition}
-	  \newtheorem{defn}[thm]{\protect\definitionname}
+		\theoremstyle{definition}
+		\newtheorem{defn}[thm]{\protect\definitionname}
 	EndPreamble
 	LangPreamble
 		\providecommand{\definitionname}{_(Definition)}
@@ -176,8 +182,8 @@ Style Example
 	LatexName             example
 	LabelString           "Example \thetheorem."
 	Preamble
-	  \theoremstyle{definition}
-	  \newtheorem{example}[thm]{\protect\examplename}
+		\theoremstyle{definition}
+		\newtheorem{example}[thm]{\protect\examplename}
 	EndPreamble
 	LangPreamble
 		\providecommand{\examplename}{_(Example)}
@@ -193,8 +199,8 @@ Style Problem
 	LatexName             problem
 	LabelString           "Problem \thetheorem."
 	Preamble
-	  \theoremstyle{definition}
-	  \newtheorem{problem}[thm]{\protect\problemname}
+		\theoremstyle{definition}
+		\newtheorem{problem}[thm]{\protect\problemname}
 	EndPreamble
 	LangPreamble
 		\providecommand{\problemname}{_(Problem)}
@@ -210,8 +216,8 @@ Style Exercise
 	LatexName             xca
 	LabelString           "Exercise \thetheorem."
 	Preamble
-	  \theoremstyle{definition}
-	  \newtheorem{xca}[thm]{\protect\exercisename}
+		\theoremstyle{definition}
+		\newtheorem{xca}[thm]{\protect\exercisename}
 	EndPreamble
 	LangPreamble
 		\providecommand{\exercisename}{_(Exercise)}
@@ -236,8 +242,8 @@ Style Remark
 	  Shape               Italic
 	EndFont
 	Preamble
-	  \theoremstyle{remark}
-	  \newtheorem{rem}[thm]{\protect\remarkname}
+		\theoremstyle{remark}
+		\newtheorem{rem}[thm]{\protect\remarkname}
 	EndPreamble
 	LangPreamble
 		\providecommand{\remarkname}{_(Remark)}
@@ -253,8 +259,8 @@ Style Claim
 	LatexName             claim
 	LabelString           "Claim \thetheorem."
 	Preamble
-	  \theoremstyle{remark}
-	  \newtheorem{claim}[thm]{\protect\claimname}
+		\theoremstyle{remark}
+		\newtheorem{claim}[thm]{\protect\claimname}
 	EndPreamble
 	LangPreamble
 		\providecommand{\claimname}{_(Claim)}
@@ -278,17 +284,17 @@ Style Case
 	  Shape               Italic
 	EndFont
 	Preamble
-	  \newcounter{casectr}
-	  \newenvironment{caseenv}
-	  {\begin{list}{{\itshape\ \protect\casename} \arabic{casectr}.}{%
-	   \setlength{\leftmargin}{\labelwidth}
-	   \addtolength{\leftmargin}{\parskip}
-	   \setlength{\itemindent}{\listparindent}
-	   \setlength{\itemsep}{\medskipamount}
-	   \setlength{\topsep}{\itemsep}}
-	   \setcounter{casectr}{0}
-	   \usecounter{casectr}}
-	  {\end{list}}
+		\newcounter{casectr}
+		\newenvironment{caseenv}
+		{\begin{list}{{\itshape\ \protect\casename} \arabic{casectr}.}{%
+		\setlength{\leftmargin}{\labelwidth}
+		\addtolength{\leftmargin}{\parskip}
+		\setlength{\itemindent}{\listparindent}
+		\setlength{\itemsep}{\medskipamount}
+		\setlength{\topsep}{\itemsep}}
+		\setcounter{casectr}{0}
+		\usecounter{casectr}}
+		{\end{list}}
 	EndPreamble
 	LangPreamble
 		\providecommand{\casename}{_(Case)}
