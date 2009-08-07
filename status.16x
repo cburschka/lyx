@@ -212,6 +212,9 @@ What's new
 - Fix assertion in mathed when moving the cursor immediately after
   pressing Ctrl-L (or '\' with inline completion disabled) in front of
   another character (bug 6063).
+  
+- Prevent a window resize when applying the Preferences when the 
+  LyX window is maximized (bug 6034).
 
 - Make Tools>Statistics ignore Note insets and inactive branches
   (bug 2566).
