@@ -82,6 +82,10 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources\layouts"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\amsbook.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\amsart.layout"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\theorems.inc"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\theorems-ams.module"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\theorems-chap.module"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\theorems-sec.module"
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx_1_5.py"
