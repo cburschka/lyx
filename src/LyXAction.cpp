@@ -1094,7 +1094,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_PASTE
  * \li Action: Pastes material from the active clipboard.
  * \li Syntax: paste [<TYPE>]
- * \li Params: <TYPE>: pdf|png|jpeg|linkback
+ * \li Params: <TYPE>: emf|pdf|png|jpeg|linkback|wmf
  * \endvar
  */
 		{ LFUN_PASTE, "paste", Noop, Edit },
