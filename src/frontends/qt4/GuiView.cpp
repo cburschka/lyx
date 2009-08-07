@@ -387,8 +387,12 @@ bool GuiView::restoreLayout()
 	resize(size);
 	move(pos);
 #else
-	if (!restoreGeometry(settings.value("geometry").toByteArray()))
-		setGeometry(50, 50, 690, 510);
+	// Work-around for bug #6034: the window ends up in an undetermined
+	// state when trying to restore a maximized window when it is
+	// already maximized.
+	if (!(windowState() & Qt::WindowMaximized))
+		if (!restoreGeometry(settings.value("geometry").toByteArray()))
+			setGeometry(50, 50, 690, 510);
 #endif
 	// Make sure layout is correctly oriented.
 	setLayoutDirection(qApp->layoutDirection());
