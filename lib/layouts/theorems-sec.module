@@ -6,6 +6,7 @@
 #Excludes: theorems-chap
 
 # Author: Richard Heck <rgheck@comcast.net>
+# Tweaked by Paul Rubin <rubin@msu.edu> June '09 (added theoremstyle)
 
 Format 11
 
@@ -15,6 +16,7 @@ End
 
 Style Theorem
 	Preamble
+		\theoremstyle{plain}
 		\newtheorem{thm}{Theorem}[section]
 	EndPreamble
 End

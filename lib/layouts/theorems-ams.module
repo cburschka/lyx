@@ -10,7 +10,7 @@
 # Original Author : David L. Johnson <dlj0@lehigh.edu>
 # Probably broken by Jean-Marc Lasgouttes <Jean-Marc.Lasgouttes@inria.fr>
 # modified and modularized by Emmanuel GUREGHIAN <gureghia@boston.bertin.fr>
-# Tinkered with Sep. '07 by Paul Rubin <rubin@msu.edu>
+# Tinkered with Sep. '07 and June '09 by Paul Rubin <rubin@msu.edu>
 # Modularized Jan 08 by Richard Heck <rgheck@comcast.net>
 
 Format 11
@@ -19,10 +19,6 @@ Requires	amsmath,amsthm
 
 Counter theorem
 End
-
-AddToPreamble
-	\theoremstyle{plain}
-EndPreamble
 
 Input theorems-order.inc
 Input theorems-ams.inc

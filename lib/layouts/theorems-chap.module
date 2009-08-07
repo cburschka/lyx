@@ -7,6 +7,7 @@
 #Excludes: theorems-sec
 
 # Author: Richard Heck <rgheck@comcast.net>
+# Tweaked by Paul Rubin <rubin@msu.edu> June '09 (added theoremstyle)
 
 Format 11
 
@@ -16,6 +17,7 @@ End
 
 Style Theorem
 	Preamble
+		\theoremstyle{plain}
 		\ifx\thechapter\undefined
 			\newtheorem{thm}{Theorem}
 		\else

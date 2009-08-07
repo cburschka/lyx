@@ -1,7 +1,7 @@
 # Original Author : David L. Johnson <dlj0@lehigh.edu>
 # Probably broken by Jean-Marc Lasgouttes <Jean-Marc.Lasgouttes@inria.fr>
 # modified and modularized by Emmanuel GUREGHIAN <gureghia@boston.bertin.fr>
-# Tinkered with Sep. '07 by Paul Rubin <rubin@msu.edu>
+# Tinkered with Sep. '07 and June '09 by Paul Rubin <rubin@msu.edu>
 # Modularized Jan 08 by Richard Heck <rgheck@comcast.net>
 
 # The environnements defined are :
@@ -49,6 +49,7 @@ Style Theorem
 	  Series              Bold
 	EndFont
 	Preamble
+		\theoremstyle{plain}
 		\newtheorem{thm}{Theorem}
 	EndPreamble
 	Requires              amsthm
@@ -61,7 +62,8 @@ Style Corollary
 	LatexName             cor
 	LabelString           "Corollary \thetheorem."
 	Preamble
-	  \newtheorem{cor}[thm]{Corollary}
+		\theoremstyle{plain}
+		\newtheorem{cor}[thm]{Corollary}
 	EndPreamble
 End
 
@@ -72,7 +74,8 @@ Style Lemma
 	LatexName             lem
 	LabelString           "Lemma \thetheorem."
 	Preamble
-	  \newtheorem{lem}[thm]{Lemma}
+		\theoremstyle{plain}
+		\newtheorem{lem}[thm]{Lemma}
 	EndPreamble
 End
 
@@ -83,7 +86,8 @@ Style Proposition
 	LatexName             prop
 	LabelString           "Proposition \thetheorem."
 	Preamble
-	  \newtheorem{prop}[thm]{Proposition}
+		\theoremstyle{plain}
+		\newtheorem{prop}[thm]{Proposition}
 	EndPreamble
 End
 
@@ -94,7 +98,8 @@ Style Conjecture
 	LatexName             conjecture
 	LabelString           "Conjecture \thetheorem."
 	Preamble
-	  \newtheorem{conjecture}[thm]{Conjecture}
+		\theoremstyle{plain}
+		\newtheorem{conjecture}[thm]{Conjecture}
 	EndPreamble
 End
 
@@ -105,7 +110,8 @@ Style Fact
 	LatexName             fact
 	LabelString           "Fact \thetheorem."
 	Preamble
-	  \newtheorem{fact}[thm]{Fact}
+		\theoremstyle{plain}
+		\newtheorem{fact}[thm]{Fact}
 	EndPreamble
 End
 
@@ -123,8 +129,8 @@ Style Definition
 	  Series              Bold
 	EndFont
 	Preamble
-	  \theoremstyle{definition}
-	  \newtheorem{defn}[thm]{Definition}
+		\theoremstyle{definition}
+		\newtheorem{defn}[thm]{Definition}
 	EndPreamble
 End
 
@@ -134,8 +140,8 @@ Style Example
 	LatexName             example
 	LabelString           "Example \thetheorem."
 	Preamble
-	  \theoremstyle{definition}
-	  \newtheorem{example}[thm]{Example}
+		\theoremstyle{definition}
+		\newtheorem{example}[thm]{Example}
 	EndPreamble
 	Requires              amsthm
 End
@@ -146,8 +152,8 @@ Style Problem
 	LatexName             problem
 	LabelString           "Problem \thetheorem."
 	Preamble
-	  \theoremstyle{definition}
-	  \newtheorem{problem}[thm]{Problem}
+		\theoremstyle{definition}
+		\newtheorem{problem}[thm]{Problem}
 	EndPreamble
 	Requires              amsthm
 End
@@ -158,8 +164,8 @@ Style Exercise
 	LatexName             xca
 	LabelString           "Exercise \thetheorem."
 	Preamble
-	  \theoremstyle{definition}
-	  \newtheorem{xca}[thm]{Exercise}
+		\theoremstyle{definition}
+		\newtheorem{xca}[thm]{Exercise}
 	EndPreamble
 	Requires              amsthm
 End
@@ -179,8 +185,8 @@ Style Remark
 	  Shape               Italic
 	EndFont
 	Preamble
-	  \theoremstyle{remark}
-	  \newtheorem{rem}[thm]{Remark}
+		\theoremstyle{remark}
+		\newtheorem{rem}[thm]{Remark}
 	EndPreamble
 End
 
@@ -190,8 +196,8 @@ Style Claim
 	LatexName             claim
 	LabelString           "Claim \thetheorem."
 	Preamble
-	  \theoremstyle{remark}
-	  \newtheorem{claim}[thm]{Claim}
+		\theoremstyle{remark}
+		\newtheorem{claim}[thm]{Claim}
 	EndPreamble
 	Requires              amsthm
 End
@@ -210,16 +216,16 @@ Style Case
 	  Shape               Italic
 	EndFont
 	Preamble
-	  \newcounter{casectr}
-	  \newenvironment{caseenv}
-	  {\begin{list}{{\itshape\ Case} \arabic{casectr}.}{%
-	   \setlength{\leftmargin}{\labelwidth}
-	   \addtolength{\leftmargin}{\parskip}
-	   \setlength{\itemindent}{\listparindent}
-	   \setlength{\itemsep}{\medskipamount}
-	   \setlength{\topsep}{\itemsep}}
-	   \setcounter{casectr}{0}
-	   \usecounter{casectr}}
-	  {\end{list}}
+		\newcounter{casectr}
+		\newenvironment{caseenv}
+		{\begin{list}{{\itshape\ Case} \arabic{casectr}.}{%
+		\setlength{\leftmargin}{\labelwidth}
+		\addtolength{\leftmargin}{\parskip}
+		\setlength{\itemindent}{\listparindent}
+		\setlength{\itemsep}{\medskipamount}
+		\setlength{\topsep}{\itemsep}}
+		\setcounter{casectr}{0}
+		\usecounter{casectr}}
+		{\end{list}}
 	EndPreamble
 End
