@@ -34582,6 +34582,49 @@ reference "sub:Printing-the-File"
 \end_layout
 
 \begin_layout Subsection
+Fax
+\end_layout
+
+\begin_layout Standard
+This menu entry will only appear when you have a fax program installed (on
+ Windows you additionally need to register its program path to LyX's PATH
+ prefix, see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Paths"
+
+\end_inset
+
+).
+ With this menu entry you can send your document to a fax program like 
+\family typewriter
+hylapex
+\family default
+ or 
+\family typewriter
+kdeprintfax
+\family default
+.
+ The default format of the sent file is PostScript.
+ The format can be changed in LyX's preferences as described in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Converters"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
 New and Close Window
 \end_layout
 
@@ -40859,6 +40902,13 @@ reference "sec:Input-Completion"
 
 \begin_layout Section
 Paths
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Paths"
+
+\end_inset
+
+
 \begin_inset Index
 status collapsed
 
@@ -42000,6 +42050,13 @@ File handling
 
 \begin_layout Subsection
 Converters
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Converters"
+
+\end_inset
+
+
 \begin_inset Index
 status collapsed
 
