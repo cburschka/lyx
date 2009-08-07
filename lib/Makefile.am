@@ -1127,6 +1127,7 @@ dist_layouts_DATA =\
 	layouts/theorems.inc \
 	layouts/theorems-order.inc \
 	layouts/theorems-proof.inc \
+	layouts/theorems-proof-std.inc \
 	layouts/theorems-sec.module \
 	layouts/theorems-starred-equivalents.inc \
 	layouts/theorems-starred.inc \
