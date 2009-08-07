@@ -301,6 +301,9 @@ What's new
 
 - Fix bug where multimedia keys were intercepted by LyX (bug 6043).
 
+- Disable some menu entries when the document windows does not have
+  focus on OS X (bug 1720).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
