@@ -854,8 +854,12 @@ void GuiWorkArea::keyPressEvent(QKeyEvent * ev)
 
 	KeySymbol sym;
 	setKeySymbol(&sym, ev);
-	processKeySym(sym, q_key_state(ev->modifiers()));
-	ev->accept();
+	if (sym.isOK()) {
+		processKeySym(sym, q_key_state(ev->modifiers()));
+		ev->accept();
+	} else {
+		ev->ignore();
+	}
 }
 
 
