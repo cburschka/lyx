@@ -467,7 +467,7 @@ def checkConverterEntries():
     else:
         addToRC(r'\converter lyxpreview png        ""	""')
     #  
-    checkProg('a fax program', ['kdeprintfax $$i', 'ksendfax $$i'],
+    checkProg('a fax program', ['kdeprintfax $$i', 'ksendfax $$i', 'hylapex $$i'],
         rc_entry = [ r'\converter ps         fax        "%%"	""'])
     #
     checkProg('a FIG -> EPS/PPM converter', ['fig2dev'],
