@@ -65,7 +65,7 @@ Inset * InsetFormulaMacro::clone() const
 void InsetFormulaMacro::write(ostream & os) const
 {
 	os << "FormulaMacro\n";
-	WriteStream wi(os, false, false, false);
+	WriteStream wi(os, false, false, WriteStream::wsDefault);
 	tmpl()->write(wi);
 }
 
@@ -74,8 +74,9 @@ int InsetFormulaMacro::latex(odocstream & os,
 			     OutputParams const & runparams) const
 {
 	//lyxerr << "InsetFormulaMacro::latex" << endl;
-	WriteStream wi(os, runparams.moving_arg, true, runparams.dryrun,
-			runparams.encoding);
+	WriteStream wi(os, runparams.moving_arg, true,
+		       runparams.dryrun ? WriteStream::wsDryrun: WriteStream::wsDefault,
+		       runparams.encoding);
 	tmpl()->write(wi);
 	return 2;
 }
@@ -84,7 +85,7 @@ int InsetFormulaMacro::latex(odocstream & os,
 int InsetFormulaMacro::plaintext(odocstream & os, OutputParams const & runparams) const
 {
 	odocstringstream oss;
-	WriteStream wi(oss, false, true, false, runparams.encoding);
+	WriteStream wi(oss, false, true, WriteStream::wsDefault, runparams.encoding);
 	tmpl()->write(wi);
 
 	docstring const str = oss.str();

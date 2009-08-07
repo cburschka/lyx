@@ -33,7 +33,13 @@ class MathData;
 class WriteStream {
 public:
 	///
-	WriteStream(odocstream & os, bool fragile, bool latex, bool dryrun,
+	enum OutputType {
+		wsDefault,
+		wsDryrun,
+		wsPreview
+	};
+	///
+	WriteStream(odocstream & os, bool fragile, bool latex, OutputType output,
 		Encoding const * encoding = 0);
 	///
 	explicit WriteStream(odocstream & os);
@@ -46,7 +52,7 @@ public:
 	///
 	bool latex() const { return latex_; }
 	///
-	bool dryrun() const { return dryrun_; }
+	OutputType output() const { return output_; }
 	///
 	odocstream & os() { return os_; }
 	///
@@ -80,8 +86,8 @@ private:
 	bool firstitem_;
 	/// are we writing to .tex?
 	int latex_;
-	/// is it for preview?
-	bool dryrun_;
+	/// output type (default, source preview, instant preview)?
+	OutputType output_;
 	/// do we have a space pending?
 	bool pendingspace_;
 	/// do we have a brace pending?

@@ -182,6 +182,9 @@ What's new
 
 - Fix a crash when accessing the Navigate menu after an empty inset has
   been dissolved (bug 6003).
+  
+- Fix a crash when performing instant preview on an uncodable character
+  (bug 6116).
 
 - Fix communication between lyxclient and server, which leads to a
   crash once CTRL+D is used on the client side (bug 6106).
