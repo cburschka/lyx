@@ -14189,13 +14189,6 @@ Tirets et Césures
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Tirets"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -24366,13 +24359,6 @@ Macros définies par l'utilisateur
 \end_inset
 
 Macros définies par l'utilisateur en mode mathématique
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Macros définies"
-
-\end_inset
-
-
 \begin_inset Index
 status collapsed
 
@@ -30216,7 +30202,7 @@ peut accéder directement au dictionnaire de synonymes de OpenOffice.
 .
  Le nom du fichier contient le code de la langue concernée
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Il ne semble pas encore y avoir de dictionnaire français (NdT).
@@ -31232,13 +31218,13 @@ Si vous avez un clavier français et que vous voulez écrire dans une autre
  un clavier finlandais.
  La fenêtre de dialogue de choix des préférences vous permet de choisir
  jusqu'à deux claviers, voir la section
-\begin_inset space \thinspace{}
+\begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Clavier"
+reference "sub:Clavier/Souris"
 
 \end_inset
 
@@ -34760,6 +34746,57 @@ dvips
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Imprimer"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Fax
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+This menu entry will only appear when you have a fax program installed (on
+ Windows you additionally need to register its program path to LyX's PATH
+ prefix, see section
+\lang french
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Répertoires"
+
+\end_inset
+
+).
+ 
+\lang english
+With this menu entry you can send your document to a fax program like 
+\family typewriter
+hylapex
+\family default
+ or 
+\family typewriter
+kdeprintfax
+\family default
+.
+ The default format of the sent file is PostScript.
+ The format can be changed in LyX's preferences as described in section
+\lang french
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Convertisseurs"
 
 \end_inset
 
@@ -41436,6 +41473,13 @@ reference "sec:Complétion-de-saisie"
 
 \begin_layout Section
 Répertoires
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Répertoires"
+
+\end_inset
+
+
 \begin_inset Index
 status collapsed
 
@@ -42044,13 +42088,6 @@ Sorties
 
 \begin_layout Subsection
 Imprimante
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Imprimante"
-
-\end_inset
-
-
 \begin_inset Index
 status collapsed
 
@@ -42359,7 +42396,7 @@ status collapsed
 eX
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:LaTeX-settings-1"
+name "sub:LaTeX-settings"
 
 \end_inset
 
@@ -42741,6 +42778,13 @@ Fichiers ! gestion
 
 \begin_layout Subsection
 Convertisseurs
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Convertisseurs"
+
+\end_inset
+
+
 \begin_inset Index
 status collapsed
 
@@ -42821,7 +42865,7 @@ Personnalisation
 Formats de Fichiers
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Formats-de-Fichiers-1"
+name "sec:Formats-de-Fichiers"
 
 \end_inset
 
