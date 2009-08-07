@@ -377,8 +377,9 @@ void InsetMathNest::normalize(NormalStream & os) const
 
 int InsetMathNest::latex(odocstream & os, OutputParams const & runparams) const
 {
-	WriteStream wi(os, runparams.moving_arg, true, runparams.dryrun,
-			runparams.encoding);
+	WriteStream wi(os, runparams.moving_arg, true,
+		       runparams.dryrun ? WriteStream::wsDryrun : WriteStream::wsDefault,
+		       runparams.encoding);
 	write(wi);
 	return wi.line();
 }

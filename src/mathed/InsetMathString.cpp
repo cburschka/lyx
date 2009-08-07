@@ -11,11 +11,13 @@
 #include <config.h>
 
 #include "InsetMathString.h"
+#include "MathFactory.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 
 #include "Encoding.h"
 
+#include "support/debug.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/textutils.h"
@@ -159,14 +161,24 @@ void InsetMathString::write(WriteStream & os) const
 			    && isAlphaASCII(command[command.size() - 1]))
 				os.pendingSpace(true);
 		} catch (EncodingException & e) {
-			if (os.dryrun()) {
-				// FIXME: this is OK for View->Source
-				// but math preview will likely fail.
+			switch (os.output()) {
+			case WriteStream::wsDryrun: {
 				os << "<" << _("LyX Warning: ")
 				   << _("uncodable character") << " '";
 				os << docstring(1, e.failed_char);
 				os << "'>";
-			} else {
+				break;
+			}
+			case WriteStream::wsPreview: {
+				// indicate the encoding error by a boxed '?'
+				os << "{\\fboxsep=1pt\\fbox{?}}";;
+				LYXERR0("Uncodable character" << " '"
+					<< docstring(1, e.failed_char)
+					<< "'");
+				break;
+			}
+			case WriteStream::wsDefault:
+			default:
 				// throw again
 				throw(e);
 			}
