@@ -325,9 +325,6 @@ void handle_package(Parser &p, string const & name, string const & opts)
 	else if (name == "amsmath" || name == "amssymb")
 		h_use_amsmath = "2";
 
-	else if (name == "amstext")
-		;
-
 	else if (name == "esint")
 		h_use_esint = "2";
 
