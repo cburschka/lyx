@@ -55,6 +55,7 @@
 #include "Row.h"
 #include "Server.h"
 #include "Session.h"
+#include "SpellChecker.h"
 
 #include "insets/InsetBox.h"
 #include "insets/InsetBranch.h"
