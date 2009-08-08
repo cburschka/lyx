@@ -139,6 +139,7 @@ private:
 	friend Session & theSession();
 	friend CmdDef & theTopLevelCmdDef();
 	friend SpellChecker * theSpellChecker();
+	friend void setSpellChecker();
 	friend void setRcGuiLanguage();
 	friend void emergencyCleanup();
 	friend void execBatchCommands();

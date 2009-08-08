@@ -15,20 +15,21 @@
 #include "LyXRC.h"
 #include "WordLangTuple.h"
 
-#include "support/lassert.h"
 #include "support/debug.h"
 #include "support/docstring_list.h"
+#include "support/FileName.h"
+#include "support/gettext.h"
+#include "support/lassert.h"
+#include "support/os.h"
 
 #include <hunspell/hunspell.hxx>
 
 #include <map>
 #include <string>
 
-// FIXME (Abdel): I still got linking problems but if anybody wants
-// to try, defines this to 1.
-#define TRY_HUNSPELL 0
-
 using namespace std;
+using namespace lyx::support;
+using namespace lyx::support::os;
 
 namespace lyx {
 
@@ -54,24 +55,40 @@ struct HunspellChecker::Private
 
 HunspellChecker::Private::~Private()
 {
-#if TRY_HUNSPELL
 	Spellers::iterator it = spellers_.begin();
 	Spellers::iterator end = spellers_.end();
 
 	for (; it != end; ++it) {
 		delete it->second;
 	}
-#endif
 }
 
 
 Hunspell * HunspellChecker::Private::addSpeller(string const & lang)
 {
-	// FIXME: not implemented!
+	string hunspell_path = external_path(lyxrc.hunspelldir_path);
+	LYXERR(Debug::FILES, "hunspell path: " << hunspell_path);
+	if (hunspell_path.empty())
+		return false;
 
-	// FIXME: We should we indicate somehow that this language is not
-	// supported.
-	return 0;
+	hunspell_path += "/" + lang;
+	// replace '_' with '-' as this is the convention used by hunspell.
+	hunspell_path[hunspell_path.size() - 3] = '-';
+	FileName const affix(hunspell_path + ".aff");
+	FileName const dict(hunspell_path + ".dic");
+	if (!affix.isReadableFile()) {
+		// FIXME: We should indicate somehow that this language is not
+		// supported.
+		LYXERR(Debug::FILES, "Hunspell affix file " << affix << " does not exist");
+		return 0;
+	}
+	if (!dict.isReadableFile()) {
+		LYXERR(Debug::FILES, "Hunspell dictionary file " << dict << " does not exist");
+		return 0;
+	}
+	Hunspell * h = new Hunspell(affix.absFilename().c_str(), dict.absFilename().c_str());
+	spellers_[lang] = h;
+	return h;
 }
 
 
@@ -99,31 +116,33 @@ HunspellChecker::~HunspellChecker()
 SpellChecker::Result HunspellChecker::check(WordLangTuple const & wl)
 {
 	string const word_to_check = to_utf8(wl.word());
-#if TRY_HUNSPELL
 	Hunspell * h = d->speller(wl.lang_code());
+	if (!h)
+		return OK;
 	int info;
 	if (h->spell(word_to_check.c_str(), &info))
 		return OK;
-	// FIXME: What to do with that?
-	switch (info) {
-	case SPELL_COMPOUND:
-	case SPELL_FORBIDDEN:
-	default:
-		return UNKNOWN_WORD;
+
+	if (info & SPELL_COMPOUND) {
+		// FIXME: What to do with that?
+		LYXERR(Debug::FILES, "Hunspell compound word found " << word_to_check);
 	}
+	if (info & SPELL_FORBIDDEN) {
+		// FIXME: What to do with that?
+		LYXERR(Debug::FILES, "Hunspell explicit forbidden word found " << word_to_check);
+	}
+
 	return UNKNOWN_WORD;
-#endif
-	return OK;
 }
 
 
 void HunspellChecker::insert(WordLangTuple const & wl)
 {
 	string const word_to_check = to_utf8(wl.word());
-#if TRY_HUNSPELL
 	Hunspell * h = d->speller(wl.lang_code());
+	if (!h)
+		return;
 	h->add(word_to_check.c_str());
-#endif
 }
 
 
@@ -138,14 +157,18 @@ void HunspellChecker::suggest(WordLangTuple const & wl,
 {
 	suggestions.clear();
 	string const word_to_check = to_utf8(wl.word());
-#if TRY_HUNSPELL
 	Hunspell * h = d->speller(wl.lang_code());
+	if (!h)
+		return;
 	char *** suggestion_list = 0;
+
+	// FIXME: Hunspell::suggest() crashes on Win/MSVC9
+	return;
+
 	int const suggestion_number = h->suggest(suggestion_list, word_to_check.c_str());
 	if (suggestion_number == 0)
 		return;
 	h->free_list(suggestion_list, suggestion_number);
-#endif
 }
 
 

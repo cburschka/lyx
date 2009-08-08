@@ -300,6 +300,7 @@ private Q_SLOTS:
 	void selectBackupdir();
 	void selectWorkingdir();
 	void selectThesaurusdir();
+	void selectHunspelldir();
 	void selectLyxPipe();
 
 };

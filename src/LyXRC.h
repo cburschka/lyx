@@ -84,6 +84,7 @@ public:
 		RC_GEOMETRY_SESSION,
 		RC_GROUP_LAYOUTS,
 		RC_GUI_LANGUAGE,
+		RC_HUNSPELLDIR_PATH,
 		RC_INDEX_ALTERNATIVES,
 		RC_INDEX_COMMAND,
 		RC_INPUT,
@@ -153,6 +154,7 @@ public:
 		RC_SORT_LAYOUTS,
 		RC_SPELL_COMMAND,
 		RC_SPELLCHECK_CONTINUOUSLY,
+		RC_SPELLCHECKER,
 		RC_SPLITINDEX_COMMAND,
 		RC_TEMPDIRPATH,
 		RC_TEMPLATEPATH,
@@ -276,6 +278,8 @@ public:
 	///
 	std::string thesaurusdir_path;
 	///
+	std::string hunspelldir_path;
+	///
 	bool auto_region_delete;
 	/// flag telling whether lastfiles should be checked for existance
 	bool auto_reset_options;
@@ -328,6 +332,8 @@ public:
 	bool use_tooltip;
 	/// Use pixmap cache?
 	bool use_pixmap_cache;
+	/// Spellchecker engine: aspell, hunspell, etc
+	std::string spellchecker;
 	/// Alternate language for spellchecker
 	std::string spellchecker_alt_lang;
 	/// Escape characters

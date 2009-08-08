@@ -29,6 +29,7 @@
 #include "ErrorList.h"
 #include "Format.h"
 #include "FuncStatus.h"
+#include "HunspellChecker.h"
 #include "KeyMap.h"
 #include "Language.h"
 #include "LayoutFile.h"
@@ -118,22 +119,15 @@ void reconfigureUserLyXDir()
 
 } // namespace anon
 
-
 /// The main application class private implementation.
 struct LyX::Impl
 {
-	Impl()
+	Impl() : spell_checker_(0), aspell_checker_(0), hunspell_checker_(0)
 	{
 		// Set the default User Interface language as soon as possible.
 		// The language used will be derived from the environment
 		// variables.
 		messages_["GUI"] = Messages();
-
-#if defined(USE_ASPELL)
-		spell_checker_ = new AspellChecker();
-#else
-		spell_checker_ = 0;
-#endif
 	}
 
 	~Impl()
@@ -184,6 +178,10 @@ struct LyX::Impl
 	graphics::Previews preview_;
 	///
 	SpellChecker * spell_checker_;
+	///
+	SpellChecker * aspell_checker_;
+	///
+	SpellChecker * hunspell_checker_;
 };
 
 ///
@@ -228,6 +226,7 @@ LyX::LyX()
 {
 	singleton_ = this;
 	pimpl_ = new Impl;
+	setSpellChecker();
 }
 
 
@@ -1276,6 +1275,28 @@ CmdDef & theTopLevelCmdDef()
 SpellChecker * theSpellChecker()
 {
 	return singleton_->pimpl_->spell_checker_;
+}
+
+
+void setSpellChecker()
+{
+#if defined(USE_ASPELL)
+	if (lyxrc.spellchecker == "aspell") {
+		if (!singleton_->pimpl_->aspell_checker_)
+			singleton_->pimpl_->aspell_checker_ = new AspellChecker();
+		singleton_->pimpl_->spell_checker_ = singleton_->pimpl_->aspell_checker_;
+		return;
+	}
+#endif
+#if defined(USE_HUNSPELL)
+	if (lyxrc.spellchecker == "hunspell") {
+		if (!singleton_->pimpl_->hunspell_checker_)
+			singleton_->pimpl_->hunspell_checker_ = new HunspellChecker();
+		singleton_->pimpl_->spell_checker_ = singleton_->pimpl_->hunspell_checker_;
+		return;
+	}
+#endif
+	singleton_->pimpl_->spell_checker_ = 0;
 }
 
 } // namespace lyx

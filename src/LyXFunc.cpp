@@ -1590,6 +1590,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 			actOnUpdatedPrefs(lyxrc_orig, lyxrc);
 
+			setSpellChecker();
+
 			theApp()->resetGui();
 
 			/// We force the redraw in any case because there might be
@@ -1969,6 +1971,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_FONT_ENCODING:
 	case LyXRC::RC_FORMAT:
 	case LyXRC::RC_GROUP_LAYOUTS:
+	case LyXRC::RC_HUNSPELLDIR_PATH:
 	case LyXRC::RC_INDEX_ALTERNATIVES:
 	case LyXRC::RC_INDEX_COMMAND:
 	case LyXRC::RC_JBIBTEX_COMMAND:
@@ -2036,6 +2039,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_SHOW_BANNER:
 	case LyXRC::RC_OPEN_BUFFERS_IN_TABS:
 	case LyXRC::RC_SPELL_COMMAND:
+	case LyXRC::RC_SPELLCHECKER:
 	case LyXRC::RC_SPELLCHECK_CONTINUOUSLY:
 	case LyXRC::RC_SPLITINDEX_COMMAND:
 	case LyXRC::RC_TEMPDIRPATH:

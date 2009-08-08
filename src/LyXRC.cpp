@@ -99,6 +99,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\fullscreen_width", LyXRC::RC_FULL_SCREEN_WIDTH },
 	{ "\\group_layouts", LyXRC::RC_GROUP_LAYOUTS },
 	{ "\\gui_language", LyXRC::RC_GUI_LANGUAGE },
+	{ "\\hunspelldir_path", LyXRC::RC_HUNSPELLDIR_PATH },
 	{ "\\index_alternatives", LyXRC::RC_INDEX_ALTERNATIVES },
 	{ "\\index_command", LyXRC::RC_INDEX_COMMAND },
 	{ "\\input", LyXRC::RC_INPUT },
@@ -168,6 +169,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\sort_layouts", LyXRC::RC_SORT_LAYOUTS },
 	{ "\\spell_command", LyXRC::RC_SPELL_COMMAND },
 	{ "\\spellcheck_continuously", LyXRC::RC_SPELLCHECK_CONTINUOUSLY },
+	{ "\\spellchecker", LyXRC::RC_SPELLCHECKER },
 	{ "\\splitindex_command", LyXRC::RC_SPLITINDEX_COMMAND },
 	{ "\\tempdir_path", LyXRC::RC_TEMPDIRPATH },
 	{ "\\template_path", LyXRC::RC_TEMPLATEPATH },
@@ -269,6 +271,7 @@ void LyXRC::setDefaults()
 	backupdir_path.erase();
 	display_graphics = true;
 	// Spellchecker settings:
+	spellchecker = "aspell";
 	spellchecker_accept_compound = false;
 	spellcheck_continuously = false;
 	use_kbmap = false;
@@ -704,6 +707,13 @@ int LyXRC::read(Lexer & lexrc)
 			}
 			break;
 
+		case RC_HUNSPELLDIR_PATH:
+			if (lexrc.next()) {
+				hunspelldir_path = os::internal_path(lexrc.getString());
+				hunspelldir_path = expandPath(hunspelldir_path);
+			}
+			break;
+
 		case RC_USELASTFILEPOS:
 			lexrc >> use_lastfilepos;
 			break;
@@ -874,6 +884,9 @@ int LyXRC::read(Lexer & lexrc)
 			break;
 		case RC_USE_PIXMAP_CACHE:
 			lexrc >> use_pixmap_cache;
+			break;
+		case RC_SPELLCHECKER:
+			lexrc >> spellchecker;
 			break;
 		case RC_ALT_LANG:
 			lexrc >> spellchecker_alt_lang;
@@ -2132,6 +2145,14 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
+	case RC_HUNSPELLDIR_PATH:
+		if (ignore_system_lyxrc ||
+		    hunspelldir_path != system_lyxrc.hunspelldir_path) {
+			string const path = os::external_path(hunspelldir_path);
+			os << "\\hunspelldir_path \"" << path << "\"\n";
+		}
+		if (tag != RC_LAST)
+			break;
 	case RC_USETEMPDIR:
 		if (tag != RC_LAST)
 			break;
@@ -2239,6 +2260,14 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		os << "\n#\n"
 		   << "# LANGUAGE SUPPORT SECTION ##########################\n"
 		   << "#\n\n";
+		if (tag != RC_LAST)
+			break;
+
+	case RC_SPELLCHECKER:
+		if (ignore_system_lyxrc ||
+		    spellchecker != system_lyxrc.spellchecker) {
+			os << "\\spellchecker " << spellchecker << '\n';
+		}
 		if (tag != RC_LAST)
 			break;
 

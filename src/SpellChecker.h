@@ -64,6 +64,10 @@ public:
 /// Implemented in LyX.cpp
 SpellChecker * theSpellChecker();
 
+/// Set the singleton SpellChecker engine.
+/// Implemented in LyX.cpp
+void setSpellChecker();
+
 } // namespace lyx
 
 #endif // SPELL_BASE_H

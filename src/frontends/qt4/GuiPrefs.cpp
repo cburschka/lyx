@@ -34,6 +34,7 @@
 #include "PanelStack.h"
 #include "paper.h"
 #include "Session.h"
+#include "SpellChecker.h"
 
 #include "support/debug.h"
 #include "support/FileName.h"
@@ -1129,6 +1130,7 @@ PrefPaths::PrefPaths(GuiPreferences * form)
 	connect(workingDirPB, SIGNAL(clicked()), this, SLOT(selectWorkingdir()));
 	connect(lyxserverDirPB, SIGNAL(clicked()), this, SLOT(selectLyxPipe()));
 	connect(thesaurusDirPB, SIGNAL(clicked()), this, SLOT(selectThesaurusdir()));
+	connect(hunspellDirPB, SIGNAL(clicked()), this, SLOT(selectHunspelldir()));
 	connect(workingDirED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 	connect(exampleDirED, SIGNAL(textChanged(QString)),
@@ -1156,6 +1158,7 @@ void PrefPaths::apply(LyXRC & rc) const
 	rc.backupdir_path = internal_path(fromqstr(backupDirED->text()));
 	rc.tempdir_path = internal_path(fromqstr(tempDirED->text()));
 	rc.thesaurusdir_path = internal_path(fromqstr(thesaurusDirED->text()));
+	rc.hunspelldir_path = internal_path(fromqstr(hunspellDirED->text()));
 	rc.path_prefix = internal_path_list(fromqstr(pathPrefixED->text()));
 	// FIXME: should be a checkbox only
 	rc.lyxpipes = internal_path(fromqstr(lyxserverDirED->text()));
@@ -1170,6 +1173,7 @@ void PrefPaths::update(LyXRC const & rc)
 	backupDirED->setText(toqstr(external_path(rc.backupdir_path)));
 	tempDirED->setText(toqstr(external_path(rc.tempdir_path)));
 	thesaurusDirED->setText(toqstr(external_path(rc.thesaurusdir_path)));
+	hunspellDirED->setText(toqstr(external_path(rc.hunspelldir_path)));
 	pathPrefixED->setText(toqstr(external_path_list(rc.path_prefix)));
 	// FIXME: should be a checkbox only
 	lyxserverDirED->setText(toqstr(external_path(rc.lyxpipes)));
@@ -1230,6 +1234,15 @@ void PrefPaths::selectThesaurusdir()
 }
 
 
+void PrefPaths::selectHunspelldir()
+{
+	QString file = browseDir(internalPath(hunspellDirED->text()),
+		qt_("Set the path to the Hunspell dictionaries"));
+	if (!file.isEmpty())
+		hunspellDirED->setText(file);
+}
+
+
 void PrefPaths::selectLyxPipe()
 {
 	QString file = form_->browse(internalPath(lyxserverDirED->text()),
@@ -1250,6 +1263,11 @@ PrefSpellchecker::PrefSpellchecker(GuiPreferences * form)
 {
 	setupUi(this);
 
+	spellcheckerCB->addItem("aspell");
+	spellcheckerCB->addItem("hunspell");
+
+	connect(spellcheckerCB, SIGNAL(currentIndexChanged(int)),
+		this, SIGNAL(changed()));
 	connect(altLanguageED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 	connect(escapeCharactersED, SIGNAL(textChanged(QString)),
@@ -1263,6 +1281,7 @@ PrefSpellchecker::PrefSpellchecker(GuiPreferences * form)
 
 void PrefSpellchecker::apply(LyXRC & rc) const
 {
+	rc.spellchecker = fromqstr(spellcheckerCB->currentText());
 	rc.spellchecker_alt_lang = fromqstr(altLanguageED->text());
 	rc.spellchecker_esc_chars = fromqstr(escapeCharactersED->text());
 	rc.spellchecker_accept_compound = compoundWordCB->isChecked();
@@ -1272,6 +1291,8 @@ void PrefSpellchecker::apply(LyXRC & rc) const
 
 void PrefSpellchecker::update(LyXRC const & rc)
 {
+	spellcheckerCB->setCurrentIndex(spellcheckerCB->findText(
+		toqstr(rc.spellchecker)));
 	altLanguageED->setText(toqstr(rc.spellchecker_alt_lang));
 	escapeCharactersED->setText(toqstr(rc.spellchecker_esc_chars));
 	compoundWordCB->setChecked(rc.spellchecker_accept_compound);
