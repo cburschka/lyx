@@ -112,6 +112,7 @@ void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 {
 	combo->setCurrentItem(len.unit());
 	QLocale loc;
+	loc.setNumberOptions(QLocale::OmitGroupSeparator);
 	input->setText(loc.toString(Length(len).value()));
 }
 
@@ -163,6 +164,7 @@ string widgetToDoubleStr(QLineEdit const * input)
 void doubleToWidget(QLineEdit * input, double const & value, char f, int prec)
 {
 	QLocale loc;
+	loc.setNumberOptions(QLocale::OmitGroupSeparator);
 	input->setText(loc.toString(value, f, prec));
 }
 
