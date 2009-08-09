@@ -138,11 +138,7 @@ enum EndLabelType {
 	///
 	END_LABEL_FILLED_BOX,
 	///
-	END_LABEL_STATIC,
-	///
-	END_LABEL_ENUM_FIRST = END_LABEL_NO_LABEL,
-	///
-	END_LABEL_ENUM_LAST = END_LABEL_STATIC
+	END_LABEL_STATIC
 };
 
 } // namespace lyx
