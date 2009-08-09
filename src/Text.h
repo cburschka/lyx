@@ -40,7 +40,7 @@ class Text {
 public:
 	/// constructor
 	explicit Text(InsetText * owner)
-		: autoBreakRows_(false), owner_(owner)
+		: owner_(owner), autoBreakRows_(false)
 	{}
 
 	/// \return true if there's no content at all.

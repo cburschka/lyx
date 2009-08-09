@@ -175,7 +175,7 @@ public:
 	bool isTextAt(string const & str, pos_type pos) const;
 
 
-	InsetCode Private::ownerCode() const
+	InsetCode ownerCode() const
 	{
 		return inset_owner_ ? inset_owner_->lyxCode() : NO_CODE;
 	}
