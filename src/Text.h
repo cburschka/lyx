@@ -47,8 +47,8 @@ public:
 	/// \warning a non standard layout on an empty paragraph doesn't
 	// count as empty.
 	bool empty() const;
-
-	InsetText const * inset() const { return owner_; }
+	/// Access to owner InsetText.
+	InsetText const & inset() const;
 
 	///
 	FontInfo layoutFont(pit_type pit) const;
@@ -315,11 +315,7 @@ public:
 private:
 	/// The InsetText owner shall have access to everything.
 	friend class InsetText;
-	///
-	ParagraphList pars_;
 
-	///
-	bool autoBreakRows_;
 	/// return past-the-last paragraph influenced by a layout
 	/// change on pit
 	pit_type undoSpan(pit_type pit);
@@ -353,7 +349,10 @@ private:
 
 	/// Owner Inset.
 	InsetText * owner_;
-
+	///
+	ParagraphList pars_;
+	///
+	bool autoBreakRows_;
 	/// position of the text in the buffer.
 	DocIterator macrocontext_position_;
 };

@@ -79,6 +79,12 @@ namespace lyx {
 using cap::cutSelection;
 using cap::pasteParagraphList;
 
+InsetText const & Text::inset() const
+{
+	return *owner_;
+}
+
+
 void Text::readParToken(Paragraph & par, Lexer & lex,
 	string const & token, Font & font, Change & change, ErrorList & errorList)
 {

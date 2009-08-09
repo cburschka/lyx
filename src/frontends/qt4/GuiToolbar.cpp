@@ -39,6 +39,8 @@
 #include "Paragraph.h"
 #include "TextClass.h"
 
+#include "insets/InsetText.h"
+
 #include "support/debug.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
@@ -609,7 +611,7 @@ void GuiLayoutBox::updateContents(bool reset)
 	// or we've moved from one inset to another
 	DocumentClass const * text_class = &buffer->params().documentClass();
 	Inset const * inset = 
-		&(owner_.view()->cursor().innerParagraph().inInset());
+		&(owner_.view()->cursor().innerText()->inset());
 	if (!reset && text_class_ == text_class && inset_ == inset) {
 		set(owner_.view()->cursor().innerParagraph().layout().name());
 		return;

@@ -42,6 +42,8 @@
 #include "TextClass.h"
 #include "VSpace.h"
 
+#include "insets/InsetText.h"
+
 #include "mathed/MacroTable.h"
 #include "mathed/MathMacroTemplate.h"
 
@@ -1965,7 +1967,7 @@ int TextMetrics::leftMargin(int max_width,
 	    && align == LYX_ALIGN_BLOCK
 	    && !par.params().noindent()
 	    // in some insets, paragraphs are never indented
-	    && !par.inInset().neverIndent()
+	    && !text_->inset().neverIndent()
 	    // display style insets are always centered, omit indentation
 	    && !(!par.empty()
 		    && par.isInset(pos)
