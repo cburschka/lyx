@@ -554,7 +554,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		pit_type const pit = cur.pit();
 		recUndo(cur, pit, pit + 1);
 		cur.finishUndo();
-		swap(pars_[pit], pars_[pit + 1]);
+		pars_.swap(pit, pit + 1);
 		cur.buffer()->updateLabels();
 		needsUpdate = true;
 		++cur.pit();
@@ -565,7 +565,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		pit_type const pit = cur.pit();
 		recUndo(cur, pit - 1, pit);
 		cur.finishUndo();
-		swap(pars_[pit], pars_[pit - 1]);
+		pars_.swap(pit, pit - 1);
 		cur.buffer()->updateLabels();
 		--cur.pit();
 		needsUpdate = true;

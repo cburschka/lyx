@@ -246,6 +246,15 @@ public:
 		return it;
 	}
 
+	void swap(size_t i, size_t j)
+	{
+		size_t const p = max(i, j);
+		size_t const q = min(i, j);
+		container_.splice(iterCont_[p], container_, iterCont_[q]);
+		container_.splice(iterCont_[q], container_, iterCont_[p]);
+		recreateVector();
+	}
+
 	void swap(RandomAccessList & x)
 	{
 		std::swap(container_, x.container_);
