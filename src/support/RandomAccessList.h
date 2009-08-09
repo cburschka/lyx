@@ -13,6 +13,7 @@
 #ifndef RANDOM_ACESS_LIST_H
 #define RANDOM_ACESS_LIST_H
 
+#include <algorithm>
 #include <vector>
 #include <list>
 
@@ -248,10 +249,16 @@ public:
 
 	void swap(size_t i, size_t j)
 	{
-		size_t const p = max(i, j);
-		size_t const q = min(i, j);
+		size_t const p = std::max(i, j);
+		size_t const q = std::min(i, j);
 		container_.splice(iterCont_[p], container_, iterCont_[q]);
 		container_.splice(iterCont_[q], container_, iterCont_[p]);
+		recreateVector();
+	}
+
+	void splice(iterator where, iterator first, iterator last)
+	{
+		container_.splice(where, container_, first, last);
 		recreateVector();
 	}
 
