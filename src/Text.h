@@ -312,13 +312,14 @@ public:
 	///
 	docstring completionPrefix(Cursor const & cur) const;
 
-public:
+private:
+	/// The InsetText owner shall have access to everything.
+	friend class InsetText;
 	///
 	ParagraphList pars_;
 
 	///
 	bool autoBreakRows_;
-private:
 	/// return past-the-last paragraph influenced by a layout
 	/// change on pit
 	pit_type undoSpan(pit_type pit);
