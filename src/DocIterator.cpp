@@ -249,12 +249,7 @@ MathData & DocIterator::cell() const
 Text * DocIterator::innerText() const
 {
 	LASSERT(!empty(), /**/);
-	// go up until first non-0 text is hit
-	// (innermost text is 0 in mathed)
-	for (int i = depth() - 1; i >= 0; --i)
-		if (slices_[i].text())
-			return slices_[i].text();
-	return 0;
+	return innerTextSlice().text();
 }
 
 
