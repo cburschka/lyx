@@ -178,8 +178,6 @@ public:
 	///
 	Inset const & inInset() const;
 	///
-	bool forcePlainLayout() const;
-	///
 	bool allowParagraphCustomization() const;
 	///
 	bool usePlainLayout() const;

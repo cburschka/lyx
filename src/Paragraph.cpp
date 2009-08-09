@@ -1701,12 +1701,6 @@ void Paragraph::setBeginOfBody()
 }
 
 
-bool Paragraph::forcePlainLayout() const
-{
-	return inInset().forcePlainLayout();
-}
-
-
 bool Paragraph::allowParagraphCustomization() const
 {
 	return inInset().allowParagraphCustomization();
@@ -1936,7 +1930,7 @@ bool Paragraph::latex(BufferParams const & bparams,
 
 	// FIXME This check should not be needed. Perhaps issue an
 	// error if it triggers.
-	Layout const & style = forcePlainLayout() ?
+	Layout const & style = inInset().forcePlainLayout() ?
 		bparams.documentClass().plainLayout() : *d->layout_;
 
 	// Current base font for all inherited font changes, without any

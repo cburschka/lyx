@@ -75,12 +75,13 @@ TeXDeeper(Buffer const & buf,
 
 	ParagraphList const & paragraphs = text.paragraphs();
 
+	bool const force_plain_layout = text.inset()->forcePlainLayout();
 	while (par != paragraphs.end() &&
 					par->params().depth() == pit->params().depth()) {
 		// FIXME This test should not be necessary.
 		// We should perhaps issue an error if it is.
-		Layout const & style = par->forcePlainLayout() ?
-			buf.params().documentClass().plainLayout() : par->layout();
+		Layout const & style = force_plain_layout
+			? buf.params().documentClass().plainLayout() : par->layout();
 		if (style.isEnvironment()) {
 			par = TeXEnvironment(buf, text, par,
 					     os, texrow, runparams);
@@ -108,7 +109,7 @@ TeXEnvironment(Buffer const & buf,
 
 	// FIXME This test should not be necessary.
 	// We should perhaps issue an error if it is.
-	Layout const & style = pit->forcePlainLayout() ?
+	Layout const & style = text.inset()->forcePlainLayout() ?
 		bparams.documentClass().plainLayout() : pit->layout();
 
 	ParagraphList const & paragraphs = text.paragraphs();
@@ -328,7 +329,7 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 
 	// FIXME This check should not really be needed.
 	// Perhaps we should issue an error if it is.
-	Layout const style = pit->forcePlainLayout() ?
+	Layout const style = text.inset()->forcePlainLayout() ?
 		bparams.documentClass().plainLayout() : pit->layout();
 
 	runparams.moving_arg |= style.needprotect;
@@ -829,7 +830,7 @@ void latexParagraphs(Buffer const & buf,
 		lastpar = par;
 		// FIXME This check should not be needed. We should
 		// perhaps issue an error if it is.
-		Layout const & layout = par->forcePlainLayout() ?
+		Layout const & layout = text.inset()->forcePlainLayout() ?
 				tclass.plainLayout() : par->layout();
 
 		if (layout.intitle) {

@@ -49,7 +49,7 @@ public:
 	// count as empty.
 	bool empty() const;
 
-	InsetText const * inset() { return owner_; }
+	InsetText const * inset() const { return owner_; }
 
 	///
 	FontInfo layoutFont(pit_type pit) const;
