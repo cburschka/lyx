@@ -38,6 +38,7 @@
 #include "BufferView.h"
 #include "Converter.h"
 #include "Cursor.h"
+#include "CutAndPaste.h"
 #include "Encoding.h"
 #include "ErrorList.h"
 #include "Format.h"
@@ -946,6 +947,8 @@ GuiWorkArea const * GuiView::currentWorkArea() const
 void GuiView::setCurrentWorkArea(GuiWorkArea * wa)
 {
 	LASSERT(wa, return);
+	if (view())
+		cap::saveSelection(view()->cursor());
 	d.current_work_area_ = wa;
 	for (int i = 0; i != d.splitter_->count(); ++i) {
 		if (d.tabWorkArea(i)->setCurrentWorkArea(wa))
