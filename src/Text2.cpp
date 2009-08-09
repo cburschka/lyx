@@ -85,7 +85,7 @@ FontInfo Text::layoutFont(pit_type const pit) const
 		// now, because Inset::getLayout() will return a default-constructed
 		// InsetLayout, and that e.g. sets the foreground color to red. So we
 		// need to do some work to make that possible.
-		InsetCollapsable const * icp = pars_[pit].inInset().asInsetCollapsable();
+		InsetCollapsable const * icp = owner_->asInsetCollapsable();
 		if (!icp)
 			return lf;
 		FontInfo icf = icp->getLayout().font();

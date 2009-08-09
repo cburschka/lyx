@@ -576,7 +576,7 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 			align = par.params().align();
 
 		// handle alignment inside tabular cells
-		Inset const & owner = par.inInset();
+		Inset const & owner = text_->inset();
 		switch (owner.contentAlignment()) {
 			case LYX_ALIGN_CENTER:
 			case LYX_ALIGN_LEFT:
@@ -1041,7 +1041,7 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 	++maxdesc;
 
 	ParagraphList const & pars = text_->paragraphs();
-	Inset const & inset = par.inInset();
+	Inset const & inset = text_->inset();
 
 	// is it a top line?
 	if (first == 0 && topBottomSpace) {
