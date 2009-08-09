@@ -76,7 +76,7 @@ RowPainter::RowPainter(PainterInfo & pi,
 
 FontInfo RowPainter::labelFont() const
 {
-	return text_.labelFont(pi_.base.bv->buffer(), par_);
+	return text_.labelFont(par_);
 }
 
 
@@ -393,7 +393,7 @@ void RowPainter::paintChangeBar()
 void RowPainter::paintAppendix()
 {
 	// only draw the appendix frame once (for the main text)
-	if (!par_.params().appendix() || !text_.isMainText(pi_.base.bv->buffer()))
+	if (!par_.params().appendix() || !text_.isMainText())
 		return;
 
 	int y = yo_ - row_.ascent();
@@ -433,7 +433,7 @@ void RowPainter::paintDepthBar()
 		int const w = nestMargin() / 5;
 		int x = int(xo_) + w * i;
 		// only consider the changebar space if we're drawing outermost text
-		if (text_.isMainText(pi_.base.bv->buffer()))
+		if (text_.isMainText())
 			x += changebarMargin();
 
 		int const starty = yo_ - row_.ascent();
@@ -503,7 +503,7 @@ void RowPainter::paintFirst()
 		}
 	}
 
-	bool const is_rtl = text_.isRTL(buffer, par_);
+	bool const is_rtl = text_.isRTL(par_);
 	bool const is_seq = isFirstInSequence(pit_, text_.paragraphs());
 	//lyxerr << "paintFirst: " << par_.id() << " is_seq: " << is_seq << endl;
 
@@ -596,7 +596,7 @@ void RowPainter::paintFirst()
 
 void RowPainter::paintLast()
 {
-	bool const is_rtl = text_.isRTL(pi_.base.bv->buffer(), par_);
+	bool const is_rtl = text_.isRTL(par_);
 	int const endlabel = getEndLabel(pit_, text_.paragraphs());
 
 	// paint imaginary end-of-paragraph character

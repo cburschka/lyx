@@ -153,7 +153,7 @@ Dimension const InsetText::dimension(BufferView const & bv) const
 void InsetText::write(ostream & os) const
 {
 	os << "Text\n";
-	text_.write(buffer(), os);
+	text_.write(os);
 }
 
 
@@ -166,7 +166,7 @@ void InsetText::read(Lexer & lex)
 	paragraphs().clear();
 	ErrorList errorList;
 	lex.setContext("InsetText::read");
-	bool res = text_.read(buffer(), lex, errorList, this);
+	bool res = text_.read(lex, errorList, this);
 
 	if (!res)
 		lex.printError("Missing \\end_inset at this point. ");

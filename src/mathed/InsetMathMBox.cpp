@@ -81,7 +81,7 @@ void InsetMathMBox::write(WriteStream & ws) const
 	} else {
 		ws << "\\mbox{\n";
 		ostringstream os;
-		text_.text().write(buffer(), os);
+		text_.text().write(os);
 		ws.os() << from_utf8(os.str());
 		ws << "}";
 	}

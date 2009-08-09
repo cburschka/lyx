@@ -690,7 +690,7 @@ bool Buffer::readDocument(Lexer & lex)
 	}
 
 	// read main text
-	bool const res = text().read(*this, lex, errorList, d->inset);
+	bool const res = text().read(lex, errorList, d->inset);
 
 	updateMacros();
 	updateMacroInstances();
@@ -1028,7 +1028,7 @@ bool Buffer::write(ostream & ofs) const
 
 	// write the text
 	ofs << "\n\\begin_body\n";
-	text().write(*this, ofs);
+	text().write(ofs);
 	ofs << "\n\\end_body\n";
 
 	// Write marker that shows file is complete

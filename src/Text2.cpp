@@ -63,14 +63,14 @@ using namespace std;
 
 namespace lyx {
 
-bool Text::isMainText(Buffer const & buffer) const
+bool Text::isMainText() const
 {
-	return &buffer.text() == this;
+	return &owner_->buffer().text() == this;
 }
 
 
 // Note that this is supposed to return a fully realized font.
-FontInfo Text::layoutFont(Buffer const & buffer, pit_type const pit) const
+FontInfo Text::layoutFont(pit_type const pit) const
 {
 	Layout const & layout = pars_[pit].layout();
 
@@ -78,7 +78,7 @@ FontInfo Text::layoutFont(Buffer const & buffer, pit_type const pit) const
 		FontInfo lf = layout.resfont;
 		// In case the default family has been customized
 		if (layout.font.family() == INHERIT_FAMILY)
-			lf.setFamily(buffer.params().getFont().fontInfo().family());
+			lf.setFamily(owner_->buffer().params().getFont().fontInfo().family());
 		// FIXME
 		// It ought to be possible here just to use Inset::getLayout() and skip
 		// the asInsetCollapsable() bit. Unfortunatley, that doesn't work right
@@ -96,15 +96,16 @@ FontInfo Text::layoutFont(Buffer const & buffer, pit_type const pit) const
 	FontInfo font = layout.font;
 	// Realize with the fonts of lesser depth.
 	//font.realize(outerFont(pit, paragraphs()));
-	font.realize(buffer.params().getFont().fontInfo());
+	font.realize(owner_->buffer().params().getFont().fontInfo());
 
 	return font;
 }
 
 
 // Note that this is supposed to return a fully realized font.
-FontInfo Text::labelFont(Buffer const & buffer, Paragraph const & par) const
+FontInfo Text::labelFont(Paragraph const & par) const
 {
+	Buffer const & buffer = owner_->buffer();
 	Layout const & layout = par.layout();
 
 	if (!par.getDepth()) {
@@ -123,9 +124,10 @@ FontInfo Text::labelFont(Buffer const & buffer, Paragraph const & par) const
 }
 
 
-void Text::setCharFont(Buffer const & buffer, pit_type pit,
+void Text::setCharFont(pit_type pit,
 		pos_type pos, Font const & fnt, Font const & display_font)
 {
+	Buffer const & buffer = owner_->buffer();
 	Font font = fnt;
 	Layout const & layout = pars_[pit].layout();
 
@@ -151,7 +153,7 @@ void Text::setCharFont(Buffer const & buffer, pit_type pit,
 
 	// Inside inset, apply the inset's font attributes if any
 	// (charstyle!)
-	if (!isMainText(buffer))
+	if (!isMainText())
 		layoutfont.realize(display_font.fontInfo());
 
 	layoutfont.realize(buffer.params().getFont().fontInfo());
@@ -202,11 +204,12 @@ pit_type Text::undoSpan(pit_type pit)
 }
 
 
-void Text::setLayout(Buffer const & buffer, pit_type start, pit_type end,
+void Text::setLayout(pit_type start, pit_type end,
 		     docstring const & layout)
 {
 	LASSERT(start != end, /**/);
 
+	Buffer const & buffer = owner_->buffer();
 	BufferParams const & bp = buffer.params();
 	Layout const & lyxlayout = bp.documentClass()[layout];
 
@@ -228,7 +231,7 @@ void Text::setLayout(Cursor & cur, docstring const & layout)
 	pit_type end = cur.selEnd().pit() + 1;
 	pit_type undopit = undoSpan(end - 1);
 	recUndo(cur, start, undopit - 1);
-	setLayout(*cur.buffer(), start, end, layout);
+	setLayout(start, end, layout);
 	cur.buffer()->updateLabels();
 }
 
@@ -300,9 +303,9 @@ void Text::setFont(Cursor & cur, Font const & font, bool toggleall)
 	FontInfo layoutfont;
 	pit_type pit = cur.pit();
 	if (cur.pos() < pars_[pit].beginOfBody())
-		layoutfont = labelFont(*cur.buffer(), pars_[pit]);
+		layoutfont = labelFont(pars_[pit]);
 	else
-		layoutfont = layoutFont(*cur.buffer(), pit);
+		layoutfont = layoutFont(pit);
 
 	// Update current font
 	cur.real_current_font.update(font,
@@ -354,7 +357,7 @@ void Text::setFont(BufferView const & bv, CursorSlice const & begin,
 		TextMetrics const & tm = bv.textMetrics(this);
 		Font f = tm.displayFont(pit, pos);
 		f.update(font, language, toggleall);
-		setCharFont(buffer, pit, pos, f, tm.font_);
+		setCharFont(pit, pos, f, tm.font_);
 	}
 }
 

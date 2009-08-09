@@ -1030,7 +1030,7 @@ void toggleFixedWidth(Cursor & cur, InsetTableCell * inset, bool fixedWidth)
 	// reset layout
 	cur.push(*inset);
 	// undo information has already been recorded
-	inset->getText(0)->setLayout(cur.bv().buffer(), 0, cur.lastpit() + 1,
+	inset->getText(0)->setLayout(0, cur.lastpit() + 1,
 			bp.documentClass().plainLayoutName());
 	cur.pop();
 }

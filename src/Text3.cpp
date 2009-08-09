@@ -507,8 +507,9 @@ void Text::number(Cursor & cur)
 }
 
 
-bool Text::isRTL(Buffer const & buffer, Paragraph const & par) const
+bool Text::isRTL(Paragraph const & par) const
 {
+	Buffer const & buffer = owner_->buffer();
 	return par.isRTL(buffer.params());
 }
 
@@ -1287,7 +1288,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		if (layout.empty())
 			layout = tclass.defaultLayoutName();
 
-		if (para.forcePlainLayout())
+		if (owner_->forcePlainLayout())
 			// in this case only the empty layout is allowed
 			layout = tclass.plainLayoutName();
 		else if (para.usePlainLayout()) {
@@ -2543,7 +2544,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 			enable = cur.inset().lyxCode() == FLEX_CODE
 			         && il.lyxtype() == type;
 		} else {
-			enable = ((!isMainText(cur.bv().buffer())
+			enable = ((!isMainText()
 			              && cur.inset().nargs() == 1)
 				  || (cur.nextInset()
 				      && cur.nextInset()->nargs() == 1));
@@ -2571,7 +2572,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_OUTLINE_OUT:
 	case LFUN_OUTLINE_DRAGMOVE:
 		// FIXME: LyX is not ready for outlining within inset.
-		enable = isMainText(cur.bv().buffer())
+		enable = isMainText()
 			&& cur.paragraph().layout().toclevel != Layout::NOT_IN_TOC;
 		break;
 

@@ -79,11 +79,10 @@ namespace lyx {
 using cap::cutSelection;
 using cap::pasteParagraphList;
 
-namespace {
-
-void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
+void Text::readParToken(Paragraph & par, Lexer & lex,
 	string const & token, Font & font, Change & change, ErrorList & errorList)
 {
+	Buffer const & buf = owner_->buffer();
 	BufferParams const & bp = buf.params();
 
 	if (token[0] != '\\') {
@@ -102,7 +101,7 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 		if (layoutname.empty())
 			layoutname = tclass.defaultLayoutName();
 
-		if (par.forcePlainLayout()) {
+		if (owner_->forcePlainLayout()) {
 			// in this case only the empty layout is allowed
 			layoutname = tclass.plainLayoutName();
 		} else if (par.usePlainLayout()) {
@@ -246,7 +245,7 @@ void readParToken(Buffer const & buf, Paragraph & par, Lexer & lex,
 }
 
 
-void readParagraph(Buffer const & buf, Paragraph & par, Lexer & lex,
+void Text::readParagraph(Paragraph & par, Lexer & lex,
 	ErrorList & errorList)
 {
 	lex.nextToken();
@@ -255,7 +254,7 @@ void readParagraph(Buffer const & buf, Paragraph & par, Lexer & lex,
 	Change change(Change::UNCHANGED);
 
 	while (lex.isOK()) {
-		readParToken(buf, par, lex, token, font, change, errorList);
+		readParToken(par, lex, token, font, change, errorList);
 
 		lex.nextToken();
 		token = lex.getString();
@@ -286,8 +285,6 @@ void readParagraph(Buffer const & buf, Paragraph & par, Lexer & lex,
 	par.setBeginOfBody();
 }
 
-
-} // namespace anon
 
 class TextCompletionList : public CompletionList
 {
@@ -328,10 +325,10 @@ bool Text::empty() const
 }
 
 
-double Text::spacing(Buffer const & buffer, Paragraph const & par) const
+double Text::spacing(Paragraph const & par) const
 {
 	if (par.params().spacing().isDefault())
-		return buffer.params().spacing().getValue();
+		return owner_->buffer().params().spacing().getValue();
 	return par.params().spacing().getValue();
 }
 
@@ -453,12 +450,12 @@ void Text::insertChar(Cursor & cur, char_type c)
 				     || par.isSeparator(cur.pos() - 2)
 				     || par.isNewline(cur.pos() - 2))
 				  ) {
-					setCharFont(buffer, pit, cur.pos() - 1, cur.current_font,
+					setCharFont(pit, cur.pos() - 1, cur.current_font,
 						tm.font_);
 				} else if (contains(number_seperators, c)
 				     && cur.pos() >= 2
 				     && tm.displayFont(pit, cur.pos() - 2).fontInfo().number() == FONT_ON) {
-					setCharFont(buffer, pit, cur.pos() - 1, cur.current_font,
+					setCharFont(pit, cur.pos() - 1, cur.current_font,
 						tm.font_);
 				}
 			}
@@ -1208,7 +1205,7 @@ bool Text::dissolveInset(Cursor & cur)
 {
 	LASSERT(this == cur.text(), return false);
 
-	if (isMainText(cur.bv().buffer()) || cur.inset().nargs() != 1)
+	if (isMainText() || cur.inset().nargs() != 1)
 		return false;
 
 	cur.recordUndoInset();
@@ -1259,8 +1256,9 @@ void Text::getWord(CursorSlice & from, CursorSlice & to,
 }
 
 
-void Text::write(Buffer const & buf, ostream & os) const
+void Text::write(ostream & os) const
 {
+	Buffer const & buf = owner_->buffer();
 	ParagraphList::const_iterator pit = paragraphs().begin();
 	ParagraphList::const_iterator end = paragraphs().end();
 	depth_type dth = 0;
@@ -1273,9 +1271,10 @@ void Text::write(Buffer const & buf, ostream & os) const
 }
 
 
-bool Text::read(Buffer const & buf, Lexer & lex, 
+bool Text::read(Lexer & lex, 
 		ErrorList & errorList, InsetText * insetPtr)
 {
+	Buffer const & buf = owner_->buffer();
 	depth_type depth = 0;
 	bool res = true;
 
@@ -1308,10 +1307,7 @@ bool Text::read(Buffer const & buf, Lexer & lex,
 			par.params().depth(depth);
 			par.setFont(0, Font(inherit_font, buf.params().language));
 			pars_.push_back(par);
-
-			// FIXME: goddamn InsetTabular makes us pass a Buffer
-			// not BufferParams
-			lyx::readParagraph(buf, pars_.back(), lex, errorList);
+			readParagraph(pars_.back(), lex, errorList);
 
 			// register the words in the global word list
 			CursorSlice sl = CursorSlice(*insetPtr);

@@ -333,7 +333,7 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 
 	runparams.moving_arg |= style.needprotect;
 
-	bool const maintext = text.isMainText(buf);
+	bool const maintext = text.isMainText();
 	// we are at the beginning of an inset and CJK is already open;
 	// we count inheritation levels to get the inset nesting right.
 	if (pit == paragraphs.begin() && !maintext
@@ -798,7 +798,7 @@ void latexParagraphs(Buffer const & buf,
 		const_cast<OutputParams&>(runparams).par_end = 0;
 	}
 
-	bool const maintext = text.isMainText(buf);
+	bool const maintext = text.isMainText();
 	bool const is_child = buf.masterBuffer() != &buf;
 
 	// Open a CJK environment at the beginning of the main buffer
