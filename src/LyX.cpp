@@ -132,7 +132,8 @@ struct LyX::Impl
 
 	~Impl()
 	{
-		delete spell_checker_;
+		delete aspell_checker_;
+		delete hunspell_checker_;
 	}
 
 	/// our function handler
