@@ -698,57 +698,6 @@ bool Buffer::readDocument(Lexer & lex)
 }
 
 
-// needed to insert the selection
-void Buffer::insertStringAsLines(ParagraphList & pars,
-	pit_type & pit, pos_type & pos,
-	Font const & fn, docstring const & str, bool autobreakrows)
-{
-	Font font = fn;
-
-	// insert the string, don't insert doublespace
-	bool space_inserted = true;
-	for (docstring::const_iterator cit = str.begin();
-	    cit != str.end(); ++cit) {
-		Paragraph & par = pars[pit];
-		if (*cit == '\n') {
-			if (autobreakrows && (!par.empty() || par.allowEmpty())) {
-				breakParagraph(params(), pars, pit, pos,
-					       par.layout().isEnvironment());
-				++pit;
-				pos = 0;
-				space_inserted = true;
-			} else {
-				continue;
-			}
-			// do not insert consecutive spaces if !free_spacing
-		} else if ((*cit == ' ' || *cit == '\t') &&
-			   space_inserted && !par.isFreeSpacing()) {
-			continue;
-		} else if (*cit == '\t') {
-			if (!par.isFreeSpacing()) {
-				// tabs are like spaces here
-				par.insertChar(pos, ' ', font, params().trackChanges);
-				++pos;
-				space_inserted = true;
-			} else {
-				par.insertChar(pos, *cit, font, params().trackChanges);
-				++pos;
-				space_inserted = true;
-			}
-		} else if (!isPrintable(*cit)) {
-			// Ignore unprintables
-			continue;
-		} else {
-			// just insert the character
-			par.insertChar(pos, *cit, font, params().trackChanges);
-			++pos;
-			space_inserted = (*cit == ' ');
-		}
-
-	}
-}
-
-
 bool Buffer::readString(string const & s)
 {
 	params().compressed = false;

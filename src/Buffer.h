@@ -156,10 +156,6 @@ public:
 	bool readDocument(Lexer &);
 
 	///
-	void insertStringAsLines(ParagraphList & plist,
-		pit_type &, pos_type &,
-		Font const &, docstring const &, bool);
-	///
 	DocIterator getParFromID(int id) const;
 	/// do we have a paragraph with this id?
 	bool hasParWithID(int id) const;

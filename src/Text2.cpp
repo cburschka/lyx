@@ -505,8 +505,51 @@ void Text::insertInset(Cursor & cur, Inset * inset)
 // needed to insert the selection
 void Text::insertStringAsLines(Cursor & cur, docstring const & str)
 {
-	cur.buffer()->insertStringAsLines(pars_, cur.pit(), cur.pos(),
-		cur.current_font, str, autoBreakRows_);
+	BufferParams const & bparams = owner_->buffer().params();
+	pit_type pit = cur.pit();
+	pos_type pos = cur.pos();
+	Font font = cur.current_font;
+
+	// insert the string, don't insert doublespace
+	bool space_inserted = true;
+	for (docstring::const_iterator cit = str.begin();
+	    cit != str.end(); ++cit) {
+		Paragraph & par = pars_[pit];
+		if (*cit == '\n') {
+			if (autoBreakRows_ && (!par.empty() || par.allowEmpty())) {
+				lyx::breakParagraph(bparams, pars_, pit, pos,
+					       par.layout().isEnvironment());
+				++pit;
+				pos = 0;
+				space_inserted = true;
+			} else {
+				continue;
+			}
+			// do not insert consecutive spaces if !free_spacing
+		} else if ((*cit == ' ' || *cit == '\t') &&
+			   space_inserted && !par.isFreeSpacing()) {
+			continue;
+		} else if (*cit == '\t') {
+			if (!par.isFreeSpacing()) {
+				// tabs are like spaces here
+				par.insertChar(pos, ' ', font, bparams.trackChanges);
+				++pos;
+				space_inserted = true;
+			} else {
+				par.insertChar(pos, *cit, font, bparams.trackChanges);
+				++pos;
+				space_inserted = true;
+			}
+		} else if (!isPrintable(*cit)) {
+			// Ignore unprintables
+			continue;
+		} else {
+			// just insert the character
+			par.insertChar(pos, *cit, font, bparams.trackChanges);
+			++pos;
+			space_inserted = (*cit == ' ');
+		}
+	}
 }
 
 
