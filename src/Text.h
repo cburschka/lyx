@@ -19,7 +19,6 @@
 
 namespace lyx {
 
-class BufferParams;
 class BufferView;
 class CompletionList;
 class CursorSlice;
@@ -164,9 +163,9 @@ public:
 	/// accept or reject the selected change
 	void acceptOrRejectChanges(Cursor & cur, ChangeOp op);
 	/// accept the changes within the complete Text
-	void acceptChanges(BufferParams const & bparams);
+	void acceptChanges();
 	/// reject the changes within the complete Text
-	void rejectChanges(BufferParams const & bparams);
+	void rejectChanges();
 
 	/// returns true if par was empty and was removed
 	bool setCursor(Cursor & cur, pit_type par, pos_type pos,

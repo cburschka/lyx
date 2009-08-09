@@ -357,13 +357,13 @@ void InsetText::setChange(Change const & change)
 
 void InsetText::acceptChanges()
 {
-	text_.acceptChanges(buffer().params());
+	text_.acceptChanges();
 }
 
 
 void InsetText::rejectChanges()
 {
-	text_.rejectChanges(buffer().params());
+	text_.rejectChanges();
 }
 
 

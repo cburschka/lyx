@@ -894,15 +894,17 @@ void Text::acceptOrRejectChanges(Cursor & cur, ChangeOp op)
 }
 
 
-void Text::acceptChanges(BufferParams const & bparams)
+void Text::acceptChanges()
 {
+	BufferParams const & bparams = owner_->buffer().params();
 	lyx::acceptChanges(pars_, bparams);
 	deleteEmptyParagraphMechanism(0, pars_.size() - 1, bparams.trackChanges);
 }
 
 
-void Text::rejectChanges(BufferParams const & bparams)
+void Text::rejectChanges()
 {
+	BufferParams const & bparams = owner_->buffer().params();
 	pit_type pars_size = static_cast<pit_type>(pars_.size());
 
 	// first, reject changes within each individual paragraph
