@@ -1931,51 +1931,47 @@ docstring Cursor::selectionAsString(bool with_label) const
 	if (!selection())
 		return docstring();
 
-	int const label = with_label
-		? AS_STR_LABEL | AS_STR_INSETS : AS_STR_INSETS;
-
-	if (inTexted()) {
-		idx_type const startidx = selBegin().idx();
-		idx_type const endidx = selEnd().idx();
-		if (startidx != endidx) {
-			// multicell selection
-			InsetTabular * table = inset().asInsetTabular();
-			LASSERT(table, return docstring());
-			return table->asString(startidx, endidx);
-		}
-		
-		ParagraphList const & pars = text()->paragraphs();
-
-		pit_type const startpit = selBegin().pit();
-		pit_type const endpit = selEnd().pit();
-		size_t const startpos = selBegin().pos();
-		size_t const endpos = selEnd().pos();
-
-		if (startpit == endpit)
-			return pars[startpit].asString(startpos, endpos, label);
-
-		// First paragraph in selection
-		docstring result = pars[startpit].
-			asString(startpos, pars[startpit].size(), label)
-				 + parbreak(inset().lyxCode());
-
-		// The paragraphs in between (if any)
-		for (pit_type pit = startpit + 1; pit != endpit; ++pit) {
-			Paragraph const & par = pars[pit];
-			result += par.asString(0, par.size(), label)
-				  + parbreak(inset().lyxCode());
-		}
-
-		// Last paragraph in selection
-		result += pars[endpit].asString(0, endpos, label);
-
-		return result;
-	}
-
 	if (inMathed())
 		return cap::grabSelection(*this);
 
-	return docstring();
+	int const label = with_label
+		? AS_STR_LABEL | AS_STR_INSETS : AS_STR_INSETS;
+
+	idx_type const startidx = selBegin().idx();
+	idx_type const endidx = selEnd().idx();
+	if (startidx != endidx) {
+		// multicell selection
+		InsetTabular * table = inset().asInsetTabular();
+		LASSERT(table, return docstring());
+		return table->asString(startidx, endidx);
+	}
+
+	ParagraphList const & pars = text()->paragraphs();
+
+	pit_type const startpit = selBegin().pit();
+	pit_type const endpit = selEnd().pit();
+	size_t const startpos = selBegin().pos();
+	size_t const endpos = selEnd().pos();
+
+	if (startpit == endpit)
+		return pars[startpit].asString(startpos, endpos, label);
+
+	// First paragraph in selection
+	docstring result = pars[startpit].
+		asString(startpos, pars[startpit].size(), label)
+		+ parbreak(inset().lyxCode());
+
+	// The paragraphs in between (if any)
+	for (pit_type pit = startpit + 1; pit != endpit; ++pit) {
+		Paragraph const & par = pars[pit];
+		result += par.asString(0, par.size(), label)
+			+ parbreak(inset().lyxCode());
+	}
+
+	// Last paragraph in selection
+	result += pars[endpit].asString(0, endpos, label);
+
+	return result;
 }
 
 
