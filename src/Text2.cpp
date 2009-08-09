@@ -431,6 +431,32 @@ docstring Text::getStringToIndex(Cursor const & cur)
 }
 
 
+void Text::setLabelWidthStringToSequence(pit_type const par_offset,
+		docstring const & s)
+{
+	pit_type offset = par_offset;
+	// Find first of same layout in sequence
+	while (!isFirstInSequence(offset, pars_)) {
+		offset = depthHook(offset, pars_, pars_[offset].getDepth());
+	}
+
+	// now apply label width string to every par
+	// in sequence
+	pit_type const end = pars_.size();
+	depth_type const depth = pars_[offset].getDepth();
+	Layout const & layout = pars_[offset].layout();
+	for (pit_type pit = offset; pit != end; ++pit) {
+		while (pars_[pit].getDepth() > depth)
+			++pit;
+		if (pars_[pit].getDepth() < depth)
+			return;
+		if (pars_[pit].layout() != layout)
+			return;
+		pars_[pit].setLabelWidthString(s);
+	}
+}
+
+
 void Text::setParagraphs(Cursor & cur, docstring arg, bool merge) 
 {
 	LASSERT(cur.text(), /**/);
@@ -452,8 +478,7 @@ void Text::setParagraphs(Cursor & cur, docstring arg, bool merge)
 		// Do this only once for a selected range of paragraphs
 		// of the same layout and depth.
 		if (par.getDepth() != priordepth || par.layout() != priorlayout)
-			setLabelWidthStringToSequence(pit, pars_,
-					params.labelWidthString());
+			setLabelWidthStringToSequence(pit, params.labelWidthString());
 		par.params().apply(params, par.layout());
 		priordepth = par.getDepth();
 		priorlayout = par.layout();
@@ -481,8 +506,8 @@ void Text::setParagraphs(Cursor & cur, ParagraphParameters const & p)
 		// Do this only once for a selected range of paragraphs
 		// of the same layout and depth.
 		if (par.getDepth() != priordepth || par.layout() != priorlayout)
-			setLabelWidthStringToSequence(pit, pars_,
-					par.params().labelWidthString());
+			setLabelWidthStringToSequence(pit,
+				par.params().labelWidthString());
 		par.params().apply(p, par.layout());
 		priordepth = par.getDepth();
 		priorlayout = par.layout();

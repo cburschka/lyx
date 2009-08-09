@@ -429,6 +429,21 @@ void putClipboard(ParagraphList const & paragraphs,
 }
 
 
+/// return true if the whole ParagraphList is deleted
+static bool isFullyDeleted(ParagraphList const & pars)
+{
+	pit_type const pars_size = static_cast<pit_type>(pars.size());
+
+	// check all paragraphs
+	for (pit_type pit = 0; pit < pars_size; ++pit) {
+		if (!pars[pit].empty())   // prevent assertion failure
+			if (!pars[pit].isDeleted(0, pars[pit].size()))
+				return false;
+	}
+	return true;
+}
+
+
 void copySelectionHelper(Buffer const & buf, Text const & text,
 	pit_type startpit, pit_type endpit,
 	int start, int end, DocumentClass const * const dc, CutStack & cutstack)

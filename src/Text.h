@@ -347,6 +347,9 @@ private:
 		Font & font, Change & change, ErrorList & errorList);
 	///
 	void readParagraph(Paragraph & par, Lexer & lex, ErrorList & errorList);
+	/// Set Label Width string to all paragraphs of the same layout
+    /// and depth in a sequence.
+	void setLabelWidthStringToSequence(pit_type const par_offset, docstring const & s);
 
 	/// Owner Inset.
 	InsetText * owner_;
@@ -382,11 +385,6 @@ pit_type outerHook(pit_type par, ParagraphList const & plist);
 /// Is it the first par with same depth and layout?
 bool isFirstInSequence(pit_type par, ParagraphList const & plist);
 
-/** Set Label Width string to all paragraphs of the same layout
-    and depth in a sequence */
-void setLabelWidthStringToSequence(pit_type const par_offset,
-	ParagraphList & pars, docstring const & s);
-
 /** Check if the current paragraph is the last paragraph in a
     proof environment */
 int getEndLabel(pit_type par, ParagraphList const & plist);
@@ -399,9 +397,6 @@ Font const outerFont(pit_type par_offset, ParagraphList const & pars);
 
 /// accept the changes within the complete ParagraphList
 void acceptChanges(ParagraphList & pars, BufferParams const & bparams);
-
-/// return true if the whole ParagraphList is deleted
-bool isFullyDeleted(ParagraphList const & pars);
 
 } // namespace lyx
 

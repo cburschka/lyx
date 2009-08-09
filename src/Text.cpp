@@ -214,32 +214,6 @@ bool isFirstInSequence(pit_type par_offset, ParagraphList const & pars)
 }
 
 
-void setLabelWidthStringToSequence(pit_type const par_offset,
-	ParagraphList & pars, docstring const & s)
-{
-	pit_type offset = par_offset;
-	// Find first of same layout in sequence
-	while (!isFirstInSequence(offset, pars)) {
-		offset = depthHook(offset, pars, pars[offset].getDepth());
-	}
-
-	// now apply label width string to every par
-	// in sequence
-	pit_type const end = pars.size();
-	depth_type const depth = pars[offset].getDepth();
-	Layout const & layout = pars[offset].layout();
-	for (pit_type pit = offset; pit != end; ++pit) {
-		while (pars[pit].getDepth() > depth)
-			++pit;
-		if (pars[pit].getDepth() < depth)
-			return;
-		if (pars[pit].layout() != layout)
-			return;
-		pars[pit].setLabelWidthString(s);
-	}
-}
-
-
 int getEndLabel(pit_type p, ParagraphList const & pars)
 {
 	pit_type pit = p;
@@ -286,20 +260,6 @@ Font const outerFont(pit_type par_offset, ParagraphList const & pars)
 	}
 
 	return Font(tmpfont);
-}
-
-
-bool isFullyDeleted(ParagraphList const & pars)
-{
-	pit_type const pars_size = static_cast<pit_type>(pars.size());
-
-	// check all paragraphs
-	for (pit_type pit = 0; pit < pars_size; ++pit) {
-		if (!pars[pit].empty())   // prevent assertion failure
-			if (!pars[pit].isDeleted(0, pars[pit].size()))
-				return false;
-	}
-	return true;
 }
 
 
