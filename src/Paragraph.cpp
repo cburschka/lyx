@@ -173,6 +173,12 @@ public:
 
 	/// match a string against a particular point in the paragraph
 	bool isTextAt(string const & str, pos_type pos) const;
+
+
+	InsetCode Private::ownerCode() const
+	{
+		return inset_owner_ ? inset_owner_->lyxCode() : NO_CODE;
+	}
 	
 	/// Which Paragraph owns us?
 	Paragraph * owner_;
@@ -1807,7 +1813,7 @@ int Paragraph::Private::startTeXParParams(BufferParams const & bparams,
 	}
 
 	string const begin_tag = "\\begin";
-	InsetCode code = owner_->ownerCode();
+	InsetCode code = ownerCode();
 	bool const lastpar = runparams.isLastPar;
 
 	switch (curAlign) {
@@ -1875,7 +1881,7 @@ int Paragraph::Private::endTeXParParams(BufferParams const & bparams,
 	}
 
 	string const end_tag = "\n\\par\\end";
-	InsetCode code = owner_->ownerCode();
+	InsetCode code = ownerCode();
 	bool const lastpar = runparams.isLastPar;
 
 	switch (curAlign) {
@@ -2638,12 +2644,6 @@ Inset const & Paragraph::inInset() const
 	LASSERT(d->inset_owner_, throw ExceptionMessage(BufferException,
 		_("Memory problem"), _("Paragraph not properly initialized")));
 	return *d->inset_owner_;
-}
-
-
-InsetCode Paragraph::ownerCode() const
-{
-	return d->inset_owner_ ? d->inset_owner_->lyxCode() : NO_CODE;
 }
 
 

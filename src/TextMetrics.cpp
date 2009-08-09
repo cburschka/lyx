@@ -1043,6 +1043,7 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 	++maxdesc;
 
 	ParagraphList const & pars = text_->paragraphs();
+	Inset const & inset = par.inInset();
 
 	// is it a top line?
 	if (first == 0 && topBottomSpace) {
@@ -1050,8 +1051,8 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 		// some parskips VERY EASY IMPLEMENTATION
 		if (bufparams.paragraph_separation
 		    == BufferParams::ParagraphSkipSeparation
-			&& par.ownerCode() != ERT_CODE
-			&& par.ownerCode() != LISTINGS_CODE
+			&& inset.lyxCode() != ERT_CODE
+			&& inset.lyxCode() != LISTINGS_CODE
 			&& pit > 0
 			&& ((layout.isParagraph() && par.getDepth() == 0)
 			    || (pars[pit - 1].layout().isParagraph()

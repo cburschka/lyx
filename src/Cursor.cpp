@@ -246,16 +246,6 @@ bool bruteFind3(Cursor & cur, int x, int y, bool up)
 	return true;
 }
 
-docstring parbreak(Paragraph const & par)
-{
-	odocstringstream os;
-	os << '\n';
-	// only add blank line if we're not in an ERT or Listings inset
-	if (par.ownerCode() != ERT_CODE && par.ownerCode() != LISTINGS_CODE)
-		os << '\n';
-	return os.str();
-}
-
 } // namespace anon
 
 
@@ -1925,6 +1915,17 @@ void Cursor::errorMessage(docstring const & msg) const
 }
 
 
+static docstring parbreak(InsetCode code)
+{
+	odocstringstream os;
+	os << '\n';
+	// only add blank line if we're not in an ERT or Listings inset
+	if (code != ERT_CODE && code != LISTINGS_CODE)
+		os << '\n';
+	return os.str();
+}
+
+
 docstring Cursor::selectionAsString(bool with_label) const
 {
 	if (!selection())
@@ -1956,13 +1957,13 @@ docstring Cursor::selectionAsString(bool with_label) const
 		// First paragraph in selection
 		docstring result = pars[startpit].
 			asString(startpos, pars[startpit].size(), label)
-				 + parbreak(pars[startpit]);
+				 + parbreak(inset().lyxCode());
 
 		// The paragraphs in between (if any)
 		for (pit_type pit = startpit + 1; pit != endpit; ++pit) {
 			Paragraph const & par = pars[pit];
 			result += par.asString(0, par.size(), label)
-				  + parbreak(pars[pit]);
+				  + parbreak(inset().lyxCode());
 		}
 
 		// Last paragraph in selection

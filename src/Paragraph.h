@@ -178,8 +178,6 @@ public:
 	///
 	Inset const & inInset() const;
 	///
-	InsetCode ownerCode() const;
-	///
 	bool forcePlainLayout() const;
 	///
 	bool allowParagraphCustomization() const;
