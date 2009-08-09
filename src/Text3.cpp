@@ -388,10 +388,6 @@ static void outline(OutlineOp mode, Cursor & cur)
 			break;
 	}
 
-	// Do we need to set insets' buffer_ members, because we copied
-	// some stuff? We'll assume we do and reset it otherwise.
-	bool set_buffers = true;
-
 	switch (mode) {
 		case OutlineUp: {
 			if (start == pars.begin())
@@ -415,10 +411,8 @@ static void outline(OutlineOp mode, Cursor & cur)
 			pit_type const len = distance(start, finish);
 			pit_type const deletepit = pit + len;
 			buf.undo().recordUndo(cur, ATOMIC_UNDO, newpit, deletepit - 1);
-			pars.insert(dest, start, finish);
-			start = boost::next(pars.begin(), deletepit);
-			pit = newpit;
-			pars.erase(start, finish);
+			pars.splice(dest, start, finish);
+			cur.pit() = newpit;
 			break;
 		}
 		case OutlineDown: {
@@ -436,12 +430,10 @@ static void outline(OutlineOp mode, Cursor & cur)
 			}
 			// One such was found:
 			pit_type newpit = distance(bgn, dest);
-			pit_type const len = distance(start, finish);
 			buf.undo().recordUndo(cur, ATOMIC_UNDO, pit, newpit - 1);
-			pars.insert(dest, start, finish);
-			start = boost::next(bgn, pit);
-			pit = newpit - len;
-			pars.erase(start, finish);
+			pit_type const len = distance(start, finish);
+			pars.splice(dest, start, finish);
+			cur.pit() = newpit - len;
 			break;
 		}
 		case OutlineIn: {
@@ -461,7 +453,6 @@ static void outline(OutlineOp mode, Cursor & cur)
 					}
 				}
 			}
-			set_buffers = false;
 			break;
 		}
 		case OutlineOut: {
@@ -481,20 +472,9 @@ static void outline(OutlineOp mode, Cursor & cur)
 					}
 				}
 			}
-			set_buffers = false;
 			break;
 		}
 	}
-	if (set_buffers)
-		// FIXME This only really needs doing for the newly introduced 
-		// paragraphs. Something like:
-		// 	pit_type const numpars = distance(start, finish);
-		// 	start = boost::next(bgn, pit);
-		// 	finish = boost::next(start, numpars);
-		// 	for (; start != finish; ++start)
-		// 		start->setBuffer(buf);
-		// But while this seems to work, it is kind of fragile.
-		buf.inset().setBuffer(buf);
 }
 
 
