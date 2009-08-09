@@ -39,6 +39,7 @@
 #include "BufferView.h"
 #include "Converter.h"
 #include "Cursor.h"
+#include "CutAndPaste.h"
 #include "Encoding.h"
 #include "ErrorList.h"
 #include "Format.h"
@@ -993,6 +994,9 @@ void GuiView::setCurrentWorkArea(GuiWorkArea * wa)
 	GuiWorkArea * old_gwa = theGuiApp()->currentView()->currentWorkArea();
 	if (old_gwa == wa)
 		return;
+
+	if (view())
+		cap::saveSelection(view()->cursor());
 
 	theGuiApp()->setCurrentView(this);
 	d.current_work_area_ = wa;
