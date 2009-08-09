@@ -226,7 +226,6 @@ LyX::LyX()
 {
 	singleton_ = this;
 	pimpl_ = new Impl;
-	setSpellChecker();
 }
 
 
@@ -1274,6 +1273,8 @@ CmdDef & theTopLevelCmdDef()
 
 SpellChecker * theSpellChecker()
 {
+	if (!singleton_->pimpl_->spell_checker_)
+		setSpellChecker();
 	return singleton_->pimpl_->spell_checker_;
 }
 
