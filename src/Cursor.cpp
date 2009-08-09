@@ -28,7 +28,6 @@
 #include "Language.h"
 #include "LyXFunc.h" // only for setMessage()
 #include "LyXRC.h"
-#include "paragraph_funcs.h"
 #include "Paragraph.h"
 #include "ParIterator.h"
 #include "Row.h"

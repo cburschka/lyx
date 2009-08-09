@@ -28,7 +28,6 @@
 #include "LyX.h"
 #include "TextClass.h"
 #include "Paragraph.h"
-#include "paragraph_funcs.h"
 #include "ParagraphList.h"
 #include "ParagraphParameters.h"
 #include "ParIterator.h"

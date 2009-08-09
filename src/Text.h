@@ -19,8 +19,11 @@
 
 namespace lyx {
 
+class Buffer;
+class BufferParams;
 class BufferView;
 class CompletionList;
+class Cursor;
 class CursorSlice;
 class DocIterator;
 class ErrorList;
@@ -29,11 +32,9 @@ class FontInfo;
 class FuncRequest;
 class FuncStatus;
 class Inset;
-class Cursor;
 class Lexer;
 class PainterInfo;
 class Spacing;
-
 
 /// This class encapsulates the main text data and operations in LyX
 class Text {
@@ -356,6 +357,51 @@ private:
 	/// position of the text in the buffer.
 	DocIterator macrocontext_position_;
 };
+
+
+///
+void breakParagraphConservative(BufferParams const & bparams,
+				ParagraphList & paragraphs,
+				pit_type par,
+				pos_type pos);
+
+/**
+ * Append the next paragraph onto the tail of this one.
+ * Be careful, this doesent make any check at all.
+ */
+void mergeParagraph(BufferParams const & bparams,
+	ParagraphList & paragraphs, pit_type par);
+
+
+/// for the environments
+pit_type depthHook(pit_type par,
+	ParagraphList const & plist, depth_type depth);
+
+pit_type outerHook(pit_type par, ParagraphList const & plist);
+
+/// Is it the first par with same depth and layout?
+bool isFirstInSequence(pit_type par, ParagraphList const & plist);
+
+/** Set Label Width string to all paragraphs of the same layout
+    and depth in a sequence */
+void setLabelWidthStringToSequence(pit_type const par_offset,
+	ParagraphList & pars, docstring const & s);
+
+/** Check if the current paragraph is the last paragraph in a
+    proof environment */
+int getEndLabel(pit_type par, ParagraphList const & plist);
+
+/**
+ * Get the font of the "environment" of paragraph \p par_offset in \p pars.
+ * All font changes of the paragraph are relative to this font.
+ */
+Font const outerFont(pit_type par_offset, ParagraphList const & pars);
+
+/// accept the changes within the complete ParagraphList
+void acceptChanges(ParagraphList & pars, BufferParams const & bparams);
+
+/// return true if the whole ParagraphList is deleted
+bool isFullyDeleted(ParagraphList const & pars);
 
 } // namespace lyx
 

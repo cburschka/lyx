@@ -40,7 +40,6 @@
 #include "output_xhtml.h"
 #include "OutputParams.h"
 #include "output_plaintext.h"
-#include "paragraph_funcs.h"
 #include "Paragraph.h"
 #include "ParagraphParameters.h"
 #include "ParIterator.h"

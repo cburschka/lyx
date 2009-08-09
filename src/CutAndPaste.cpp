@@ -33,7 +33,6 @@
 #include "LyXRC.h"
 #include "Text.h"
 #include "Paragraph.h"
-#include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "ParIterator.h"
 #include "Undo.h"

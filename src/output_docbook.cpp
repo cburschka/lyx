@@ -20,10 +20,10 @@
 #include "Layout.h"
 #include "OutputParams.h"
 #include "Paragraph.h"
-#include "paragraph_funcs.h"
 #include "ParagraphList.h"
 #include "ParagraphParameters.h"
 #include "sgml.h"
+#include "Text.h"
 #include "TextClass.h"
 
 #include "support/lassert.h"

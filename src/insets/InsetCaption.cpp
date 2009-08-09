@@ -30,7 +30,6 @@
 #include "output_latex.h"
 #include "OutputParams.h"
 #include "Paragraph.h"
-#include "paragraph_funcs.h"
 #include "TextClass.h"
 #include "TocBackend.h"
 

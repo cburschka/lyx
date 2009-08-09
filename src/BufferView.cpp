@@ -41,7 +41,6 @@
 #include "LyXRC.h"
 #include "MetricsInfo.h"
 #include "Paragraph.h"
-#include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "ParIterator.h"
 #include "Session.h"

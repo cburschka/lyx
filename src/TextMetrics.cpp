@@ -34,7 +34,6 @@
 #include "Length.h"
 #include "LyXRC.h"
 #include "MetricsInfo.h"
-#include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "ParIterator.h"
 #include "rowpainter.h"

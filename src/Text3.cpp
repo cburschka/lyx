@@ -41,7 +41,6 @@
 #include "Lexer.h"
 #include "LyXRC.h"
 #include "Paragraph.h"
-#include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "TextClass.h"
 #include "TextMetrics.h"

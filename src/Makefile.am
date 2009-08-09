@@ -147,7 +147,6 @@ SOURCEFILESCORE = \
 	OutputParams.cpp \
 	output_plaintext.cpp \
 	Paragraph.cpp \
-	paragraph_funcs.cpp \
 	ParagraphMetrics.cpp \
 	ParagraphParameters.cpp \
 	ParIterator.cpp \
@@ -249,7 +248,6 @@ HEADERFILESCORE = \
 	OutputParams.h \
 	output_plaintext.h \
 	paper.h \
-	paragraph_funcs.h \
 	Paragraph.h \
 	ParagraphList.h \
 	ParagraphMetrics.h \

@@ -109,7 +109,6 @@ src_header_files = Split('''
     paper.h
     ParIterator.h
     Paragraph.h
-    paragraph_funcs.h
     ParagraphList.h
     ParagraphMetrics.h
     ParagraphParameters.h
@@ -208,7 +207,6 @@ src_pre_files = Split('''
     output_latex.cpp
     output_plaintext.cpp
     output_xhtml.cpp
-    paragraph_funcs.cpp
     PDFOptions.cpp
     ParIterator.cpp
     Paragraph.cpp

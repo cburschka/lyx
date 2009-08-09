@@ -29,7 +29,6 @@
 #include "MetricsInfo.h"
 #include "Paragraph.h"
 #include "ParagraphMetrics.h"
-#include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "TextMetrics.h"
 #include "VSpace.h"

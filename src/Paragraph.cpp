@@ -36,7 +36,6 @@
 #include "OutputParams.h"
 #include "output_latex.h"
 #include "output_xhtml.h"
-#include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "SpellChecker.h"
 #include "sgml.h"
