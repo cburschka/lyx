@@ -32,14 +32,15 @@ using namespace std;
 namespace lyx {
 
 
-InsetMathMBox::InsetMathMBox()
+InsetMathMBox::InsetMathMBox(Buffer const & buffer) : text_(buffer)
 {
 	text_.paragraphs().clear();
 	text_.paragraphs().push_back(Paragraph());
 }
 
 
-InsetMathMBox::InsetMathMBox(Layout const & layout)
+InsetMathMBox::InsetMathMBox(Buffer const & buffer, Layout const & layout)
+	: text_(buffer)
 {
 	text_.paragraphs().clear();
 	text_.paragraphs().push_back(Paragraph());
@@ -55,7 +56,7 @@ Inset * InsetMathMBox::clone() const
 
 void InsetMathMBox::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	TextMetrics & tm = mi.base.bv->textMetrics(&text_);
+	TextMetrics & tm = mi.base.bv->textMetrics(&text_.text());
 	tm.metrics(mi, dim);
 	metricsMarkers2(dim);
 }
@@ -63,7 +64,7 @@ void InsetMathMBox::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathMBox::draw(PainterInfo & pi, int x, int y) const
 {
-	pi.base.bv->textMetrics(&text_).draw(pi, x + 1, y);
+	pi.base.bv->textMetrics(&text_.text()).draw(pi, x + 1, y);
 	drawMarkers(pi, x, y);
 }
 
@@ -74,13 +75,13 @@ void InsetMathMBox::write(WriteStream & ws) const
 		ws << "\\mbox{\n";
 		TexRow texrow;
 		OutputParams runparams(&buffer().params().encoding());
-		latexParagraphs(buffer(), text_, ws.os(), texrow, runparams);
+		latexParagraphs(buffer(), text_.text(), ws.os(), texrow, runparams);
 		ws.addlines(texrow.rows());
 		ws << "}";
 	} else {
 		ws << "\\mbox{\n";
 		ostringstream os;
-		text_.write(buffer(), os);
+		text_.text().write(buffer(), os);
 		ws.os() << from_utf8(os.str());
 		ws << "}";
 	}
@@ -91,7 +92,7 @@ int InsetMathMBox::latex(odocstream & os, OutputParams const & runparams) const
 {
 	os << "\\mbox{\n";
 	TexRow texrow;
-	latexParagraphs(buffer(), text_, os, texrow, runparams);
+	latexParagraphs(buffer(), text_.text(), os, texrow, runparams);
 	os << "}";
 	return texrow.rows();
 }
@@ -99,21 +100,21 @@ int InsetMathMBox::latex(odocstream & os, OutputParams const & runparams) const
 
 void InsetMathMBox::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	text_.dispatch(cur, cmd);
+	text_.text().dispatch(cur, cmd);
 }
 
 
 Text * InsetMathMBox::getText(int) const
 {
-	return &text_;
+	return &text_.text();
 }
 
 
 void InsetMathMBox::cursorPos(BufferView const & bv,
 		CursorSlice const & sl, bool boundary, int & x, int & y) const
 {
-	x = bv.textMetrics(&text_).cursorX(sl, boundary);
-	y = bv.textMetrics(&text_).cursorY(sl, boundary);
+	x = bv.textMetrics(&text_.text()).cursorX(sl, boundary);
+	y = bv.textMetrics(&text_.text()).cursorY(sl, boundary);
 }
 
 

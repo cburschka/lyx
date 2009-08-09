@@ -41,12 +41,16 @@ class Spacing;
 class Text {
 public:
 	/// constructor
-	explicit Text();
+	explicit Text(InsetText * owner)
+		: autoBreakRows_(false), owner_(owner)
+	{}
 
 	/// \return true if there's no content at all.
 	/// \warning a non standard layout on an empty paragraph doesn't
 	// count as empty.
 	bool empty() const;
+
+	InsetText const * inset() { return owner_; }
 
 	///
 	FontInfo layoutFont(Buffer const & buffer, pit_type pit) const;
@@ -343,6 +347,9 @@ private:
 	/// \param asParagraphs whether to paste as paragraphs or as lines
 	void pasteString(Cursor & cur, docstring const & str,
 			bool asParagraphs);
+
+	/// Owner Inset.
+	InsetText * owner_;
 
 	/// position of the text in the buffer.
 	DocIterator macrocontext_position_;

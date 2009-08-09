@@ -63,11 +63,6 @@ using namespace std;
 
 namespace lyx {
 
-Text::Text()
-	: autoBreakRows_(false)
-{}
-
-
 bool Text::isMainText(Buffer const & buffer) const
 {
 	return &buffer.text() == this;

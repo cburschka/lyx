@@ -17,7 +17,8 @@
 #define MATH_MBOXINSET_H
 
 #include "InsetMath.h"
-#include "Text.h"
+
+#include "insets/InsetText.h"
 
 
 namespace lyx {
@@ -30,8 +31,8 @@ class BufferView;
 class InsetMathMBox : public InsetMath {
 public:
 	///
-	explicit InsetMathMBox();
-	explicit InsetMathMBox(Layout const & layout);
+	explicit InsetMathMBox(Buffer const & buffer);
+	explicit InsetMathMBox(Buffer const & buffer, Layout const & layout);
 
 	/// this stores metrics information in cache_
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
@@ -58,7 +59,7 @@ protected:
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
 
 	///
-	mutable Text text_;
+	mutable InsetText text_;
 
 private:
 	virtual Inset * clone() const;

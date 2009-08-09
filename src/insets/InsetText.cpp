@@ -76,7 +76,7 @@ using graphics::PreviewLoader;
 /////////////////////////////////////////////////////////////////////
 
 InsetText::InsetText(Buffer const & buf, UsePlain type)
-	: drawFrame_(false), frame_color_(Color_insetframe)
+	: drawFrame_(false), frame_color_(Color_insetframe), text_(this)
 {
 	setBuffer(const_cast<Buffer &>(buf));
 	initParagraphs(type);
@@ -84,7 +84,7 @@ InsetText::InsetText(Buffer const & buf, UsePlain type)
 
 
 InsetText::InsetText(InsetText const & in)
-	: Inset(in), text_()
+	: Inset(in), text_(this)
 {
 	text_.autoBreakRows_ = in.text_.autoBreakRows_;
 	drawFrame_ = in.drawFrame_;
