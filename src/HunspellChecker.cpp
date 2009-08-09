@@ -160,15 +160,13 @@ void HunspellChecker::suggest(WordLangTuple const & wl,
 	Hunspell * h = d->speller(wl.lang_code());
 	if (!h)
 		return;
-	char *** suggestion_list = 0;
-
-	// FIXME: Hunspell::suggest() crashes on Win/MSVC9
-	return;
-
-	int const suggestion_number = h->suggest(suggestion_list, word_to_check.c_str());
-	if (suggestion_number == 0)
+	char ** suggestion_list;
+	int const suggestion_number = h->suggest(&suggestion_list, word_to_check.c_str());
+	if (suggestion_number <= 0)
 		return;
-	h->free_list(suggestion_list, suggestion_number);
+	for (int i = 0; i != suggestion_number; ++i)
+		suggestions.push_back(from_utf8(suggestion_list[i]));
+	h->free_list(&suggestion_list, suggestion_number);
 }
 
 
