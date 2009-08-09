@@ -13,7 +13,6 @@
 #ifndef RANDOM_ACESS_LIST_H
 #define RANDOM_ACESS_LIST_H
 
-#include <algorithm>
 #include <vector>
 #include <list>
 
