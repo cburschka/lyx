@@ -94,7 +94,7 @@ FontInfo Text::layoutFont(pit_type const pit) const
 
 	FontInfo font = layout.font;
 	// Realize with the fonts of lesser depth.
-	//font.realize(outerFont(pit, paragraphs()));
+	//font.realize(outerFont(pit));
 	font.realize(owner_->buffer().params().getFont().fontInfo());
 
 	return font;
@@ -144,7 +144,7 @@ void Text::setCharFont(pit_type pit,
 		while (!layoutfont.resolved() &&
 		       tp != pit_type(paragraphs().size()) &&
 		       pars_[tp].getDepth()) {
-			tp = outerHook(tp, paragraphs());
+			tp = outerHook(tp);
 			if (tp != pit_type(paragraphs().size()))
 				layoutfont.realize(pars_[tp].layout().font);
 		}
@@ -436,8 +436,8 @@ void Text::setLabelWidthStringToSequence(pit_type const par_offset,
 {
 	pit_type offset = par_offset;
 	// Find first of same layout in sequence
-	while (!isFirstInSequence(offset, pars_)) {
-		offset = depthHook(offset, pars_, pars_[offset].getDepth());
+	while (!isFirstInSequence(offset)) {
+		offset = depthHook(offset, pars_[offset].getDepth());
 	}
 
 	// now apply label width string to every par

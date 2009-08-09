@@ -171,91 +171,62 @@ void mergeParagraph(BufferParams const & bparams,
 }
 
 
-pit_type depthHook(pit_type pit, ParagraphList const & pars, depth_type depth)
+pit_type Text::depthHook(pit_type pit, depth_type depth) const
 {
 	pit_type newpit = pit;
 
 	if (newpit != 0)
 		--newpit;
 
-	while (newpit != 0 && pars[newpit].getDepth() > depth)
+	while (newpit != 0 && pars_[newpit].getDepth() > depth)
 		--newpit;
 
-	if (pars[newpit].getDepth() > depth)
+	if (pars_[newpit].getDepth() > depth)
 		return pit;
 
 	return newpit;
 }
 
 
-pit_type outerHook(pit_type par_offset, ParagraphList const & pars)
+pit_type Text::outerHook(pit_type par_offset) const
 {
-	Paragraph const & par = pars[par_offset];
+	Paragraph const & par = pars_[par_offset];
 
 	if (par.getDepth() == 0)
-		return pars.size();
-	return depthHook(par_offset, pars, depth_type(par.getDepth() - 1));
+		return pars_.size();
+	return depthHook(par_offset, depth_type(par.getDepth() - 1));
 }
 
 
-bool isFirstInSequence(pit_type par_offset, ParagraphList const & pars)
+bool Text::isFirstInSequence(pit_type par_offset) const
 {
-	Paragraph const & par = pars[par_offset];
+	Paragraph const & par = pars_[par_offset];
 
-	pit_type dhook_offset = depthHook(par_offset, pars, par.getDepth());
+	pit_type dhook_offset = depthHook(par_offset, par.getDepth());
 
 	if (dhook_offset == par_offset)
 		return true;
 
-	Paragraph const & dhook = pars[dhook_offset];
+	Paragraph const & dhook = pars_[dhook_offset];
 
 	return dhook.layout() != par.layout()
 		|| dhook.getDepth() != par.getDepth();
 }
 
 
-int getEndLabel(pit_type p, ParagraphList const & pars)
+Font const Text::outerFont(pit_type par_offset) const
 {
-	pit_type pit = p;
-	depth_type par_depth = pars[p].getDepth();
-	while (pit != pit_type(pars.size())) {
-		Layout const & layout = pars[pit].layout();
-		int const endlabeltype = layout.endlabeltype;
-
-		if (endlabeltype != END_LABEL_NO_LABEL) {
-			if (p + 1 == pit_type(pars.size()))
-				return endlabeltype;
-
-			depth_type const next_depth =
-				pars[p + 1].getDepth();
-			if (par_depth > next_depth ||
-			    (par_depth == next_depth && layout != pars[p + 1].layout()))
-				return endlabeltype;
-			break;
-		}
-		if (par_depth == 0)
-			break;
-		pit = outerHook(pit, pars);
-		if (pit != pit_type(pars.size()))
-			par_depth = pars[pit].getDepth();
-	}
-	return END_LABEL_NO_LABEL;
-}
-
-
-Font const outerFont(pit_type par_offset, ParagraphList const & pars)
-{
-	depth_type par_depth = pars[par_offset].getDepth();
+	depth_type par_depth = pars_[par_offset].getDepth();
 	FontInfo tmpfont = inherit_font;
 
 	// Resolve against environment font information
-	while (par_offset != pit_type(pars.size())
+	while (par_offset != pit_type(pars_.size())
 	       && par_depth
 	       && !tmpfont.resolved()) {
-		par_offset = outerHook(par_offset, pars);
-		if (par_offset != pit_type(pars.size())) {
-			tmpfont.realize(pars[par_offset].layout().font);
-			par_depth = pars[par_offset].getDepth();
+		par_offset = outerHook(par_offset);
+		if (par_offset != pit_type(pars_.size())) {
+			tmpfont.realize(pars_[par_offset].layout().font);
+			par_depth = pars_[par_offset].getDepth();
 		}
 	}
 
@@ -561,10 +532,11 @@ double Text::spacing(Paragraph const & par) const
  *    keep_layout == false  
  * - keep current depth and layout when keep_layout == true
  */
-static void breakParagraph(BufferParams const & bparams,
-		    ParagraphList & pars, pit_type par_offset, pos_type pos, 
+static void breakParagraph(Text & text, pit_type par_offset, pos_type pos, 
 		    bool keep_layout)
 {
+	BufferParams const & bparams = text.inset().buffer().params();
+	ParagraphList & pars = text.paragraphs();
 	// create a new paragraph, and insert into the list
 	ParagraphList::iterator tmp =
 		pars.insert(boost::next(pars.begin(), par_offset + 1),
@@ -584,7 +556,7 @@ static void breakParagraph(BufferParams const & bparams,
 		tmp->setLabelWidthString(par.params().labelWidthString());
 		tmp->params().depth(par.params().depth());
 	} else if (par.params().depth() > 0) {
-		Paragraph const & hook = pars[outerHook(par_offset, pars)];
+		Paragraph const & hook = pars[text.outerHook(par_offset)];
 		tmp->setLayout(hook.layout());
 		// not sure the line below is useful
 		tmp->setLabelWidthString(par.params().labelWidthString());
@@ -689,8 +661,7 @@ void Text::breakParagraph(Cursor & cur, bool inverse_logic)
 	// we need to set this before we insert the paragraph.
 	bool const isempty = cpar.allowEmpty() && cpar.empty();
 
-	lyx::breakParagraph(cur.buffer()->params(), paragraphs(), cpit,
-			 cur.pos(), keep_layout);
+	lyx::breakParagraph(*this, cpit, cur.pos(), keep_layout);
 
 	// After this, neither paragraph contains any rows!
 
@@ -743,8 +714,8 @@ void Text::insertStringAsLines(DocIterator const & dit, docstring const & str,
 		Paragraph & par = pars_[pit];
 		if (*cit == '\n') {
 			if (autoBreakRows_ && (!par.empty() || par.allowEmpty())) {
-				lyx::breakParagraph(bparams, pars_, pit, pos,
-					       par.layout().isEnvironment());
+				lyx::breakParagraph(*this, pit, pos,
+					par.layout().isEnvironment());
 				++pit;
 				pos = 0;
 				space_inserted = true;

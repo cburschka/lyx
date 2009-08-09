@@ -313,7 +313,7 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 
 	if (runparams.verbatim) {
 		int const dist = distance(paragraphs.begin(), pit);
-		Font const outerfont = outerFont(dist, paragraphs);
+		Font const outerfont = text.outerFont(dist);
 
 		// No newline if only one paragraph in this lyxtext
 		if (dist > 0) {
@@ -556,8 +556,7 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 		break;
 	}
 
-	Font const outerfont = outerFont(distance(paragraphs.begin(), pit),
-			  paragraphs);
+	Font const outerfont = text.outerFont(distance(paragraphs.begin(), pit));
 
 	// FIXME UNICODE
 	os << from_utf8(everypar);

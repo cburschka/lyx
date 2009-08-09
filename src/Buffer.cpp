@@ -1316,7 +1316,7 @@ void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 
 	sgml::openTag(os, top);
 	os << '\n';
-	docbookParagraphs(paragraphs(), *this, os, runparams);
+	docbookParagraphs(text(), *this, os, runparams);
 	sgml::closeTag(os, top_element);
 }
 
@@ -1374,7 +1374,7 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 	}
 
 	params().documentClass().counters().reset();
-	xhtmlParagraphs(paragraphs(), *this, os, runparams);
+	xhtmlParagraphs(text(), *this, os, runparams);
 	if (!only_body)
 		os << "</body>\n</html>\n";
 }
@@ -2580,7 +2580,7 @@ void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
 		texrow.newline();
 		// output paragraphs
 		if (isDocBook())
-			docbookParagraphs(paragraphs(), *this, os, runparams);
+			docbookParagraphs(text(), *this, os, runparams);
 		else 
 			// latex or literate
 			latexParagraphs(*this, text(), os, texrow, runparams);
@@ -3297,7 +3297,7 @@ static void setLabel(Buffer const & buf, ParIterator & it)
 	case LABEL_COUNTER:
 		if (layout.toclevel <= bp.secnumdepth
 		    && (layout.latextype != LATEX_ENVIRONMENT
-			|| isFirstInSequence(it.pit(), it.plist()))) {
+			|| it.text()->isFirstInSequence(it.pit()))) {
 			counters.step(layout.counter);
 			par.params().labelString(
 				par.expandLabel(layout, bp));

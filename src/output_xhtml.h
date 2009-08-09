@@ -18,10 +18,10 @@ namespace lyx {
 
 class Buffer;
 class OutputParams;
-class ParagraphList;
+class Text;
 
 ///
-void xhtmlParagraphs(ParagraphList const & subset,
+void xhtmlParagraphs(Text const & text,
 		       Buffer const & buf,
 		       odocstream & os,
 		       OutputParams const & runparams);

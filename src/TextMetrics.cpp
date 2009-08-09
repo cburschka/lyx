@@ -292,7 +292,7 @@ Font TextMetrics::displayFont(pit_type pit, pos_type pos) const
 	// NOTE: the cast to pit_type should be removed when pit_type
 	// changes to a unsigned integer.
 	if (pit < pit_type(pars.size()))
-		font.fontInfo().realize(outerFont(pit, pars).fontInfo());
+		font.fontInfo().realize(text_->outerFont(pit).fontInfo());
 
 	// Realize with the fonts of lesser depth.
 	font.fontInfo().realize(params.getFont().fontInfo());
@@ -1074,7 +1074,7 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 		if ((layout.labeltype == LABEL_TOP_ENVIRONMENT
 		     || layout.labeltype == LABEL_BIBLIO
 		     || layout.labeltype == LABEL_CENTERED_TOP_ENVIRONMENT)
-		    && isFirstInSequence(pit, pars)
+		    && text_->isFirstInSequence(pit)
 		    && !par.labelString().empty())
 		{
 			labeladdon = int(
@@ -1088,7 +1088,7 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 		// a section, or between the items of a itemize or enumerate
 		// environment.
 
-		pit_type prev = depthHook(pit, pars, par.getDepth());
+		pit_type prev = text_->depthHook(pit, par.getDepth());
 		Paragraph const & prevpar = pars[prev];
 		if (prev != pit
 		    && prevpar.layout() == layout
@@ -1101,7 +1101,7 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 				layoutasc = layout.topsep * dh;
 		}
 
-		prev = outerHook(pit, pars);
+		prev = text_->outerHook(pit);
 		if (prev != pit_type(pars.size())) {
 			maxasc += int(pars[prev].layout().parsep * dh);
 		} else if (pit != 0) {
@@ -1126,7 +1126,7 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 
 			if (pars[cpit].getDepth() > pars[nextpit].getDepth()) {
 				usual = pars[cpit].layout().bottomsep * dh;
-				cpit = depthHook(cpit, pars, pars[nextpit].getDepth());
+				cpit = text_->depthHook(cpit, pars[nextpit].getDepth());
 				if (pars[cpit].layout() != pars[nextpit].layout()
 					|| pars[nextpit].getLabelWidthString() != pars[cpit].getLabelWidthString())
 				{
@@ -1844,7 +1844,7 @@ int TextMetrics::leftMargin(int max_width,
 
 	if (par.getDepth() != 0) {
 		// find the next level paragraph
-		pit_type newpar = outerHook(pit, pars);
+		pit_type newpar = text_->outerHook(pit);
 		if (newpar != pit_type(pars.size())) {
 			if (pars[newpar].layout().isEnvironment()) {
 				l_margin = leftMargin(max_width, newpar);
@@ -1913,7 +1913,7 @@ int TextMetrics::leftMargin(int max_width,
 			   // theorems (JMarc)
 			   || (layout.labeltype == LABEL_STATIC
 			       && layout.latextype == LATEX_ENVIRONMENT
-			       && !isFirstInSequence(pit, pars))) {
+			       && !text_->isFirstInSequence(pit))) {
 			l_margin += labelfont_metrics.signedWidth(layout.leftmargin);
 		} else if (layout.labeltype != LABEL_TOP_ENVIRONMENT
 			   && layout.labeltype != LABEL_BIBLIO
@@ -1962,7 +1962,7 @@ int TextMetrics::leftMargin(int max_width,
 	       || layout.labeltype == LABEL_CENTERED_TOP_ENVIRONMENT
 	       || (layout.labeltype == LABEL_STATIC
 	           && layout.latextype == LATEX_ENVIRONMENT
-	           && !isFirstInSequence(pit, pars)))
+	           && !text_->isFirstInSequence(pit)))
 	    && align == LYX_ALIGN_BLOCK
 	    && !par.params().noindent()
 	    // in some insets, paragraphs are never indented

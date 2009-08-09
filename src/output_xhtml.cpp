@@ -192,10 +192,11 @@ ParagraphList::const_iterator searchEnvironment(
 ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 					    odocstream & os,
 					    OutputParams const & runparams,
-					    ParagraphList const & paragraphs,
+					    Text const & text,
 					    ParagraphList::const_iterator const & pbegin,
 					    ParagraphList::const_iterator const & pend)
 {
+	ParagraphList::const_iterator const begin = text.paragraphs().begin();
 	ParagraphList::const_iterator par = pbegin;
 	for (; par != pend; ++par) {
 		Layout const & lay = par->layout();
@@ -207,7 +208,7 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 			os << '\n';
 		bool const opened = openTag(os, lay);
 		docstring const deferred = par->simpleLyXHTMLOnePar(buf, os, runparams,
-				outerFont(distance(paragraphs.begin(), par), paragraphs));
+				text.outerFont(distance(begin, par)));
 		if (opened) {
 			closeTag(os, lay);
 			os << '\n';
@@ -222,7 +223,7 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 ParagraphList::const_iterator makeBibliography(Buffer const & buf,
 				odocstream & os,
 				OutputParams const & runparams,
-				ParagraphList const & paragraphs,
+				Text const & text,
 				ParagraphList::const_iterator const & pbegin,
 				ParagraphList::const_iterator const & pend) 
 {
@@ -230,7 +231,7 @@ ParagraphList::const_iterator makeBibliography(Buffer const & buf,
 	   << pbegin->layout().labelstring(false) 
 	   << "</h2>\n"
 	   << "<div class='bibliography'>\n";
-			makeParagraphs(buf, os, runparams, paragraphs, pbegin, pend);
+			makeParagraphs(buf, os, runparams, text, pbegin, pend);
 	os << "</div>";
 	return pend;
 }
@@ -239,10 +240,11 @@ ParagraphList::const_iterator makeBibliography(Buffer const & buf,
 ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 					      odocstream & os,
 					      OutputParams const & runparams,
-					      ParagraphList const & paragraphs,
+					      Text const & text,
 					      ParagraphList::const_iterator const & pbegin,
 					      ParagraphList::const_iterator const & pend) 
 {
+	ParagraphList::const_iterator const begin = text.paragraphs().begin();
 	ParagraphList::const_iterator par = pbegin;
 	Layout const & bstyle = par->layout();
 	depth_type const origdepth = pbegin->params().depth();
@@ -301,7 +303,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 				else
 					os << "<span class='item'>";
 				par->simpleLyXHTMLOnePar(buf, os, runparams, 
-					outerFont(distance(paragraphs.begin(), par), paragraphs), sep);
+					text.outerFont(distance(begin, par)), sep);
 				if (!labelfirst)
 					os << "</span>";
 				++par;
@@ -326,19 +328,19 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 			// case we need to recurse.
 			else {
 				send = searchEnvironment(par, pend);
-				par = makeEnvironment(buf, os, runparams, paragraphs, par, send);
+				par = makeEnvironment(buf, os, runparams, text, par, send);
 			}
 			break;
 		}
 		case LATEX_PARAGRAPH:
 			send = searchParagraph(par, pend);
-			par = makeParagraphs(buf, os, runparams, paragraphs, par, send);
+			par = makeParagraphs(buf, os, runparams, text, par, send);
 			break;
 		// Shouldn't happen
 		case LATEX_BIB_ENVIRONMENT:
 			send = par;
 			++send;
-			par = makeParagraphs(buf, os, runparams, paragraphs, par, send);
+			par = makeParagraphs(buf, os, runparams, text, par, send);
 			break;
 		// Shouldn't happen
 		case LATEX_COMMAND:
@@ -359,7 +361,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 void makeCommand(Buffer const & buf,
 					  odocstream & os,
 					  OutputParams const & runparams,
-					  ParagraphList const & paragraphs,
+					  Text const & text,
 					  ParagraphList::const_iterator const & pbegin)
 {
 	Layout const & style = pbegin->layout();
@@ -379,8 +381,9 @@ void makeCommand(Buffer const & buf,
 		os << ' ';
 	}
 
+	ParagraphList::const_iterator const begin = text.paragraphs().begin();
 	pbegin->simpleLyXHTMLOnePar(buf, os, runparams,
-			outerFont(distance(paragraphs.begin(), pbegin), paragraphs));
+			text.outerFont(distance(begin, pbegin)));
 	if (main_tag_opened)
 		closeTag(os, style);
 	os << '\n';
@@ -389,11 +392,12 @@ void makeCommand(Buffer const & buf,
 } // end anonymous namespace
 
 
-void xhtmlParagraphs(ParagraphList const & paragraphs,
+void xhtmlParagraphs(Text const & text,
 		       Buffer const & buf,
 		       odocstream & os,
 		       OutputParams const & runparams)
 {
+	ParagraphList const & paragraphs = text.paragraphs();
 	ParagraphList::const_iterator par = paragraphs.begin();
 	ParagraphList::const_iterator pend = paragraphs.end();
 
@@ -406,7 +410,7 @@ void xhtmlParagraphs(ParagraphList const & paragraphs,
 		case LATEX_COMMAND: {
 			// The files with which we are working never have more than
 			// one paragraph in a command structure.
-			makeCommand(buf, os, runparams, paragraphs, par);
+			makeCommand(buf, os, runparams, text, par);
 			++par;
 			break;
 		}
@@ -414,17 +418,17 @@ void xhtmlParagraphs(ParagraphList const & paragraphs,
 		case LATEX_LIST_ENVIRONMENT:
 		case LATEX_ITEM_ENVIRONMENT: {
 			send = searchEnvironment(par, pend);
-			par = makeEnvironment(buf, os, runparams, paragraphs, par, send);
+			par = makeEnvironment(buf, os, runparams, text, par, send);
 			break;
 		}
 		case LATEX_BIB_ENVIRONMENT: {
 			send = searchEnvironment(par, pend);
-			par = makeBibliography(buf, os, runparams, paragraphs, par, send);
+			par = makeBibliography(buf, os, runparams, text, par, send);
 			break;
 		}
 		case LATEX_PARAGRAPH:
 			send = searchParagraph(par, pend);
-			par = makeParagraphs(buf, os, runparams, paragraphs, par, send);
+			par = makeParagraphs(buf, os, runparams, text, par, send);
 			break;
 		}
 		// FIXME??

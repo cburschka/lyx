@@ -97,21 +97,22 @@ ParagraphList::const_iterator searchEnvironment(
 ParagraphList::const_iterator makeParagraph(Buffer const & buf,
 					    odocstream & os,
 					    OutputParams const & runparams,
-					    ParagraphList const & paragraphs,
+					    Text const & text,
 					    ParagraphList::const_iterator const & pbegin,
 					    ParagraphList::const_iterator const & pend)
 {
+	ParagraphList const & paragraphs = text.paragraphs();
 	for (ParagraphList::const_iterator par = pbegin; par != pend; ++par) {
 		if (par != pbegin)
 			os << '\n';
 		if (buf.params().documentClass().isDefaultLayout(par->layout()) 
 		    && par->emptyTag()) {
 			par->simpleDocBookOnePar(buf, os, runparams, 
-					outerFont(distance(paragraphs.begin(), par), paragraphs));
+					text.outerFont(distance(paragraphs.begin(), par)));
 		} else {
 			sgml::openTag(buf, os, runparams, *par);
 			par->simpleDocBookOnePar(buf, os, runparams, 
-					outerFont(distance(paragraphs.begin(), par), paragraphs));
+					text.outerFont(distance(paragraphs.begin(), par)));
 			sgml::closeTag(os, *par);
 		}
 	}
@@ -122,9 +123,11 @@ ParagraphList::const_iterator makeParagraph(Buffer const & buf,
 ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 					      odocstream & os,
 					      OutputParams const & runparams,
-					      ParagraphList const & paragraphs,
+					      Text const & text,
 					      ParagraphList::const_iterator const & pbegin,
-					      ParagraphList::const_iterator const & pend) {
+					      ParagraphList::const_iterator const & pend)
+{
+	ParagraphList const & paragraphs = text.paragraphs();
 	ParagraphList::const_iterator par = pbegin;
 
 	Layout const & defaultstyle = buf.params().documentClass().defaultLayout();
@@ -176,19 +179,20 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 		case LATEX_ITEM_ENVIRONMENT: {
 			if (par->params().depth() == pbegin->params().depth()) {
 				sgml::openTag(os, wrapper);
-				par->simpleDocBookOnePar(buf, os, runparams, outerFont(distance(paragraphs.begin(), par), paragraphs), sep);
+				par->simpleDocBookOnePar(buf, os, runparams,
+					text.outerFont(distance(paragraphs.begin(), par)), sep);
 				sgml::closeTag(os, wrapper);
 				++par;
 			}
 			else {
 				send = searchEnvironment(par, pend);
-				par = makeEnvironment(buf, os, runparams, paragraphs, par,send);
+				par = makeEnvironment(buf, os, runparams, text, par,send);
 			}
 			break;
 		}
 		case LATEX_PARAGRAPH:
 			send = searchParagraph(par, pend);
-			par = makeParagraph(buf, os, runparams, paragraphs, par,send);
+			par = makeParagraph(buf, os, runparams, text, par,send);
 			break;
 		case LATEX_LIST_ENVIRONMENT:
 		case LATEX_BIB_ENVIRONMENT:
@@ -240,10 +244,11 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 ParagraphList::const_iterator makeCommand(Buffer const & buf,
 					  odocstream & os,
 					  OutputParams const & runparams,
-					  ParagraphList const & paragraphs,
+					  Text const & text,
 					  ParagraphList::const_iterator const & pbegin,
 					  ParagraphList::const_iterator const & pend)
 {
+	ParagraphList const & paragraphs = text.paragraphs();
 	ParagraphList::const_iterator par = pbegin;
 	Layout const & bstyle = par->layout();
 
@@ -261,7 +266,8 @@ ParagraphList::const_iterator makeCommand(Buffer const & buf,
 
 	// Opend inner tag and	close inner tags
 	sgml::openTag(os, bstyle.innertag());
-	par->simpleDocBookOnePar(buf, os, runparams,  outerFont(distance(paragraphs.begin(), par), paragraphs));
+	par->simpleDocBookOnePar(buf, os, runparams,
+		text.outerFont(distance(paragraphs.begin(), par)));
 	sgml::closeTag(os, bstyle.innertag());
 	os << '\n';
 
@@ -273,18 +279,18 @@ ParagraphList::const_iterator makeCommand(Buffer const & buf,
 		switch (style.latextype) {
 		case LATEX_COMMAND: {
 			send = searchCommand(par, pend);
-			par = makeCommand(buf, os, runparams, paragraphs, par,send);
+			par = makeCommand(buf, os, runparams, text, par,send);
 			break;
 		}
 		case LATEX_ENVIRONMENT:
 		case LATEX_ITEM_ENVIRONMENT: {
 			send = searchEnvironment(par, pend);
-			par = makeEnvironment(buf, os, runparams, paragraphs, par,send);
+			par = makeEnvironment(buf, os, runparams, text, par,send);
 			break;
 		}
 		case LATEX_PARAGRAPH:
 			send = searchParagraph(par, pend);
-			par = makeParagraph(buf, os, runparams, paragraphs, par,send);
+			par = makeParagraph(buf, os, runparams, text, par,send);
 			break;
 		default:
 			break;
@@ -299,11 +305,12 @@ ParagraphList::const_iterator makeCommand(Buffer const & buf,
 } // end anonym namespace
 
 
-void docbookParagraphs(ParagraphList const & paragraphs,
+void docbookParagraphs(Text const & text,
 		       Buffer const & buf,
 		       odocstream & os,
 		       OutputParams const & runparams)
 {
+	ParagraphList const & paragraphs = text.paragraphs();
 	ParagraphList::const_iterator par = paragraphs.begin();
 	ParagraphList::const_iterator pend = paragraphs.end();
 
@@ -326,18 +333,18 @@ void docbookParagraphs(ParagraphList const & paragraphs,
 		switch (style.latextype) {
 		case LATEX_COMMAND: {
 			send = searchCommand(par, pend);
-			par = makeCommand(buf, os, runparams, paragraphs, par,send);
+			par = makeCommand(buf, os, runparams, text, par,send);
 			break;
 		}
 		case LATEX_ENVIRONMENT:
 		case LATEX_ITEM_ENVIRONMENT: {
 			send = searchEnvironment(par, pend);
-			par = makeEnvironment(buf, os, runparams, paragraphs, par,send);
+			par = makeEnvironment(buf, os, runparams, text, par,send);
 			break;
 		}
 		case LATEX_PARAGRAPH:
 			send = searchParagraph(par, pend);
-			par = makeParagraph(buf, os, runparams, paragraphs, par,send);
+			par = makeParagraph(buf, os, runparams, text, par,send);
 			break;
 		default:
 			break;

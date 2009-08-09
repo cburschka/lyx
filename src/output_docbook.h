@@ -19,10 +19,10 @@ namespace lyx {
 
 class Buffer;
 class OutputParams;
-class ParagraphList;
+class Text;
 
 ///
-void docbookParagraphs(ParagraphList const & subset,
+void docbookParagraphs(Text const & text,
 		       Buffer const & buf,
 		       odocstream & os,
 		       OutputParams const & runparams);

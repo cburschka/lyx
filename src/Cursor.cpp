@@ -2002,7 +2002,7 @@ Encoding const * Cursor::getEncoding() const
 	CursorSlice const & sl = innerTextSlice();
 	Text const & text = *sl.text();
 	Font font = text.getPar(sl.pit()).getFont(
-		bv().buffer().params(), sl.pos(), outerFont(sl.pit(), text.paragraphs()));
+		bv().buffer().params(), sl.pos(), text.outerFont(sl.pit()));
 	return font.language()->encoding();
 }
 
@@ -2059,7 +2059,7 @@ Font Cursor::getFont() const
 	
 	// get font at the position
 	Font font = par.getFont(buffer()->params(), pos,
-		outerFont(sl.pit(), text.paragraphs()));
+		text.outerFont(sl.pit()));
 
 	return font;
 }

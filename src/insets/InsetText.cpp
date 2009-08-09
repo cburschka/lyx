@@ -455,7 +455,7 @@ int InsetText::docbook(odocstream & os, OutputParams const & runparams) const
 		sgml::openTag(os, getLayout().latexname(),
 			      beg->getID(buffer(), runparams) + getLayout().latexparam());
 
-	docbookParagraphs(paragraphs(), buffer(), os, runparams);
+	docbookParagraphs(text_, buffer(), os, runparams);
 
 	if (!undefined())
 		sgml::closeTag(os, getLayout().latexname());
@@ -468,7 +468,7 @@ docstring InsetText::xhtml(odocstream & os, OutputParams const & runparams) cons
 {
 	InsetLayout const & il = getLayout();
 	if (undefined()) {
-		xhtmlParagraphs(paragraphs(), buffer(), os, runparams);
+		xhtmlParagraphs(text_, buffer(), os, runparams);
 		return docstring();
 	}
 
@@ -485,7 +485,7 @@ docstring InsetText::xhtml(odocstream & os, OutputParams const & runparams) cons
 	if (!il.htmlinnertag().empty())
 		innertag_opened = html::openTag(os, il.htmlinnertag(), il.htmlinnerattr());
 
-	xhtmlParagraphs(paragraphs(), buffer(), os, runparams);
+	xhtmlParagraphs(text_, buffer(), os, runparams);
 
 	if (innertag_opened)
 		html::closeTag(os, il.htmlinnertag());

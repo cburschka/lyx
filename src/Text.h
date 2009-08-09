@@ -312,6 +312,15 @@ public:
 	bool insertCompletion(Cursor & cur, docstring const & s, bool /*finished*/);
 	///
 	docstring completionPrefix(Cursor const & cur) const;
+	/// for the environments
+	pit_type depthHook(pit_type par, depth_type depth) const;
+	///
+	pit_type outerHook(pit_type par) const;
+	/// Is it the first par with same depth and layout?
+	bool isFirstInSequence(pit_type par) const;
+	/// Get the font of the "environment" of paragraph \p par_offset in \p pars.
+	/// All font changes of the paragraph are relative to this font.
+	Font const outerFont(pit_type par_offset) const;
 
 private:
 	/// The InsetText owner shall have access to everything.
@@ -374,26 +383,6 @@ void breakParagraphConservative(BufferParams const & bparams,
  */
 void mergeParagraph(BufferParams const & bparams,
 	ParagraphList & paragraphs, pit_type par);
-
-
-/// for the environments
-pit_type depthHook(pit_type par,
-	ParagraphList const & plist, depth_type depth);
-
-pit_type outerHook(pit_type par, ParagraphList const & plist);
-
-/// Is it the first par with same depth and layout?
-bool isFirstInSequence(pit_type par, ParagraphList const & plist);
-
-/** Check if the current paragraph is the last paragraph in a
-    proof environment */
-int getEndLabel(pit_type par, ParagraphList const & plist);
-
-/**
- * Get the font of the "environment" of paragraph \p par_offset in \p pars.
- * All font changes of the paragraph are relative to this font.
- */
-Font const outerFont(pit_type par_offset, ParagraphList const & pars);
 
 /// accept the changes within the complete ParagraphList
 void acceptChanges(ParagraphList & pars, BufferParams const & bparams);

@@ -503,7 +503,7 @@ void RowPainter::paintFirst()
 	}
 
 	bool const is_rtl = text_.isRTL(par_);
-	bool const is_seq = isFirstInSequence(pit_, text_.paragraphs());
+	bool const is_seq = text_.isFirstInSequence(pit_);
 	//lyxerr << "paintFirst: " << par_.id() << " is_seq: " << is_seq << endl;
 
 	// should we print a label?
@@ -593,10 +593,42 @@ void RowPainter::paintFirst()
 }
 
 
+/** Check if the current paragraph is the last paragraph in a
+    proof environment */
+static int getEndLabel(pit_type p, Text const & text)
+{
+	ParagraphList const & pars = text.paragraphs();
+	pit_type pit = p;
+	depth_type par_depth = pars[p].getDepth();
+	while (pit != pit_type(pars.size())) {
+		Layout const & layout = pars[pit].layout();
+		int const endlabeltype = layout.endlabeltype;
+
+		if (endlabeltype != END_LABEL_NO_LABEL) {
+			if (p + 1 == pit_type(pars.size()))
+				return endlabeltype;
+
+			depth_type const next_depth =
+				pars[p + 1].getDepth();
+			if (par_depth > next_depth ||
+			    (par_depth == next_depth && layout != pars[p + 1].layout()))
+				return endlabeltype;
+			break;
+		}
+		if (par_depth == 0)
+			break;
+		pit = text.outerHook(pit);
+		if (pit != pit_type(pars.size()))
+			par_depth = pars[pit].getDepth();
+	}
+	return END_LABEL_NO_LABEL;
+}
+
+
 void RowPainter::paintLast()
 {
 	bool const is_rtl = text_.isRTL(par_);
-	int const endlabel = getEndLabel(pit_, text_.paragraphs());
+	int const endlabel = getEndLabel(pit_, text_);
 
 	// paint imaginary end-of-paragraph character
 
