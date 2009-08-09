@@ -430,10 +430,12 @@ void putClipboard(ParagraphList const & paragraphs,
 }
 
 
-void copySelectionHelper(Buffer const & buf, ParagraphList const & pars,
+void copySelectionHelper(Buffer const & buf, Text const & text,
 	pit_type startpit, pit_type endpit,
 	int start, int end, DocumentClass const * const dc, CutStack & cutstack)
 {
+	ParagraphList const & pars = text.paragraphs();
+
 	LASSERT(0 <= start && start <= pars[startpit].size(), /**/);
 	LASSERT(0 <= end && end <= pars[endpit].size(), /**/);
 	LASSERT(startpit != endpit || start <= end, /**/);
@@ -464,7 +466,7 @@ void copySelectionHelper(Buffer const & buf, ParagraphList const & pars,
 		// PassThru paragraphs have the Language
 		// latex_language. This is invalid for others, so we
 		// need to change it to the buffer language.
-		if (it->inInset().getLayout().isPassThru())
+		if (text.inset().getLayout().isPassThru())
 			it->changeLanguage(buf.params(), 
 					   latex_language, buf.language());
 	}
@@ -674,7 +676,7 @@ void cutSelection(Cursor & cur, bool doclear, bool realcut)
 		BufferParams const & bp = cur.buffer()->params();
 		if (realcut) {
 			copySelectionHelper(*cur.buffer(),
-				text->paragraphs(),
+				*text,
 				begpit, endpit,
 				cur.selBegin().pos(), endpos,
 				bp.documentClassPtr(), theCuts);
@@ -776,7 +778,7 @@ void copySelectionToStack(Cursor const & cur, CutStack & cutstack)
 		       (par != cur.selEnd().pit() || pos < cur.selEnd().pos()))
 			++pos;
 
-		copySelectionHelper(*cur.buffer(), pars, par, cur.selEnd().pit(),
+		copySelectionHelper(*cur.buffer(), *text, par, cur.selEnd().pit(),
 			pos, cur.selEnd().pos(), 
 			cur.buffer()->params().documentClassPtr(), cutstack);
 
