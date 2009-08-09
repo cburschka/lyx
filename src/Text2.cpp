@@ -503,12 +503,12 @@ void Text::insertInset(Cursor & cur, Inset * inset)
 
 
 // needed to insert the selection
-void Text::insertStringAsLines(Cursor & cur, docstring const & str)
+void Text::insertStringAsLines(DocIterator const & dit, docstring const & str,
+		Font const & font)
 {
 	BufferParams const & bparams = owner_->buffer().params();
-	pit_type pit = cur.pit();
-	pos_type pos = cur.pos();
-	Font font = cur.current_font;
+	pit_type pit = dit.pit();
+	pos_type pos = dit.pos();
 
 	// insert the string, don't insert doublespace
 	bool space_inserted = true;
@@ -555,7 +555,8 @@ void Text::insertStringAsLines(Cursor & cur, docstring const & str)
 
 // turn double CR to single CR, others are converted into one
 // blank. Then insertStringAsLines is called
-void Text::insertStringAsParagraphs(Cursor & cur, docstring const & str)
+void Text::insertStringAsParagraphs(DocIterator const & dit, docstring const & str,
+		Font const & font)
 {
 	docstring linestr = str;
 	bool newline_inserted = false;
@@ -576,7 +577,7 @@ void Text::insertStringAsParagraphs(Cursor & cur, docstring const & str)
 			newline_inserted = false;
 		}
 	}
-	insertStringAsLines(cur, linestr);
+	insertStringAsLines(dit, linestr, font);
 }
 
 

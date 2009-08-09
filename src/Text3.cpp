@@ -245,7 +245,7 @@ static bool doInsertInset(Cursor & cur, Text * text,
 		if (edit)
 			inset->edit(cur, true);
 		// Now put this into inset
-		cur.text()->insertStringAsLines(cur, ds);
+		cur.text()->insertStringAsLines(cur, ds, cur.current_font);
 		cur.leaveInset(*inset);
 		return true;
 	}
@@ -2779,9 +2779,9 @@ void Text::pasteString(Cursor & cur, docstring const & clip,
 	if (!clip.empty()) {
 		cur.recordUndo();
 		if (asParagraphs)
-			insertStringAsParagraphs(cur, clip);
+			insertStringAsParagraphs(cur, clip, cur.current_font);
 		else
-			insertStringAsLines(cur, clip);
+			insertStringAsLines(cur, clip, cur.current_font);
 	}
 }
 

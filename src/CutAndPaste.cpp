@@ -941,9 +941,9 @@ void pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs)
 		return;
 	cur.recordUndo();
 	if (asParagraphs)
-		cur.text()->insertStringAsParagraphs(cur, text);
+		cur.text()->insertStringAsParagraphs(cur, text, cur.current_font);
 	else
-		cur.text()->insertStringAsLines(cur, text);
+		cur.text()->insertStringAsLines(cur, text, cur.current_font);
 }
 
 

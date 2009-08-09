@@ -252,11 +252,11 @@ public:
 	/* these things are for search and replace */
 
 	/// needed to insert the selection
-	/// FIXME: replace Cursor with DocIterator.
-	void insertStringAsLines(Cursor & cur, docstring const & str);
+	void insertStringAsLines(DocIterator const & dit, docstring const & str,
+		Font const & font);
 	/// needed to insert the selection
-	/// FIXME: replace Cursor with DocIterator.
-	void insertStringAsParagraphs(Cursor & cur, docstring const & str);
+	void insertStringAsParagraphs(DocIterator const & dit, docstring const & str,
+		Font const & font);
 
 	/// access to our paragraphs
 	ParagraphList const & paragraphs() const { return pars_; }

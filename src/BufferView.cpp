@@ -2447,9 +2447,9 @@ void BufferView::insertPlaintextFile(FileName const & f, bool asParagraph)
 	cap::replaceSelection(cur);
 	buffer_.undo().recordUndo(cur);
 	if (asParagraph)
-		cur.innerText()->insertStringAsParagraphs(cur, tmpstr);
+		cur.innerText()->insertStringAsParagraphs(cur, tmpstr, cur.current_font);
 	else
-		cur.innerText()->insertStringAsLines(cur, tmpstr);
+		cur.innerText()->insertStringAsLines(cur, tmpstr, cur.current_font);
 
 	updateMetrics();
 	buffer_.changed();
