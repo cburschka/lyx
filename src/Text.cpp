@@ -414,6 +414,85 @@ void Text::breakParagraph(Cursor & cur, bool inverse_logic)
 }
 
 
+// needed to insert the selection
+void Text::insertStringAsLines(DocIterator const & dit, docstring const & str,
+		Font const & font)
+{
+	BufferParams const & bparams = owner_->buffer().params();
+	pit_type pit = dit.pit();
+	pos_type pos = dit.pos();
+
+	// insert the string, don't insert doublespace
+	bool space_inserted = true;
+	for (docstring::const_iterator cit = str.begin();
+	    cit != str.end(); ++cit) {
+		Paragraph & par = pars_[pit];
+		if (*cit == '\n') {
+			if (autoBreakRows_ && (!par.empty() || par.allowEmpty())) {
+				lyx::breakParagraph(bparams, pars_, pit, pos,
+					       par.layout().isEnvironment());
+				++pit;
+				pos = 0;
+				space_inserted = true;
+			} else {
+				continue;
+			}
+			// do not insert consecutive spaces if !free_spacing
+		} else if ((*cit == ' ' || *cit == '\t') &&
+			   space_inserted && !par.isFreeSpacing()) {
+			continue;
+		} else if (*cit == '\t') {
+			if (!par.isFreeSpacing()) {
+				// tabs are like spaces here
+				par.insertChar(pos, ' ', font, bparams.trackChanges);
+				++pos;
+				space_inserted = true;
+			} else {
+				par.insertChar(pos, *cit, font, bparams.trackChanges);
+				++pos;
+				space_inserted = true;
+			}
+		} else if (!isPrintable(*cit)) {
+			// Ignore unprintables
+			continue;
+		} else {
+			// just insert the character
+			par.insertChar(pos, *cit, font, bparams.trackChanges);
+			++pos;
+			space_inserted = (*cit == ' ');
+		}
+	}
+}
+
+
+// turn double CR to single CR, others are converted into one
+// blank. Then insertStringAsLines is called
+void Text::insertStringAsParagraphs(DocIterator const & dit, docstring const & str,
+		Font const & font)
+{
+	docstring linestr = str;
+	bool newline_inserted = false;
+
+	for (string::size_type i = 0, siz = linestr.size(); i < siz; ++i) {
+		if (linestr[i] == '\n') {
+			if (newline_inserted) {
+				// we know that \r will be ignored by
+				// insertStringAsLines. Of course, it is a dirty
+				// trick, but it works...
+				linestr[i - 1] = '\r';
+				linestr[i] = '\n';
+			} else {
+				linestr[i] = ' ';
+				newline_inserted = true;
+			}
+		} else if (isPrintable(linestr[i])) {
+			newline_inserted = false;
+		}
+	}
+	insertStringAsLines(dit, linestr, font);
+}
+
+
 // insert a character, moves all the following breaks in the
 // same Paragraph one to the right and make a rebreak
 void Text::insertChar(Cursor & cur, char_type c)
