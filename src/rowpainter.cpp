@@ -362,7 +362,7 @@ void RowPainter::paintFromPos(pos_type & vpos)
 
 	paintForeignMark(orig_x, orig_font.language());
 
-	if (orig_font.isMisspelled())
+	if (lyxrc.spellcheck_continuously && orig_font.isMisspelled())
 		paintMisspelledMark(orig_x, 3);
 }
 
