@@ -946,7 +946,12 @@ int TextMetrics::rowWidth(int right_margin, pit_type const pit,
 					w -= singleWidth(pit, i - 1);
 				w = max(w, label_end);
 			}
-			w += pm.singleWidth(i, *fi);
+			
+			// a line separator at the end of a line (but not at the end of a 
+			// paragraph) will not be drawn and should therefore not count for
+			// the row width.
+			if (!par.isLineSeparator(i) || i != end - 1 || end == par.size())
+				w += pm.singleWidth(i, *fi);
 
 			// add inline completion width
 			if (inlineCompletionLPos == i) {
