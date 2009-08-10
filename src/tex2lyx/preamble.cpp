@@ -104,29 +104,6 @@ const char * const known_coded_paper_margins[] = { "leftmargin", "topmargin",
 "rightmargin", "bottommargin", "headheight", "headsep", "footskip",
 "columnsep", 0};
 
-const char * const known_lyx_commands[] = { "binom", "cedilla", "cyrtext",
-"dacute", "dgrave", "docedilla", "doogonek", "dosubhat", "dosubring",
-"dosubtilde", "greektext", "guillemotleft", "guillemotright", "guilsinglleft",
-"guilsinglright", "LyX", "lyxadded", "lyxaddress", "lyxarrow", "lyxcode",
-"lyxdeleted", "lyxdot", "lyxgreyedout", "lyxline", "lyxlist", "lyxmathsym",
-"LyXParagraphLeftIndent", "lyxrightaddress", "makenomenclature",
-"mathcircumflex", "noun", "ogonek", "printnomenclature", "quotedblbase",
-"quotesinglbase", "rcap", "subhat", "subring", "subtilde", "tabularnewline",
-"textcyr", "textgreek", 0};
-
-const char * const known_lyx_comments[] = { 
-"%% Binom macro for standard LaTeX users\n",
-"%% For printing a cirumflex inside a formula\n",
-"%% Because html converters don't know tabularnewline\n",
-"%% The greyedout annotation environment\n",
-"%% A simple dot to overcome graphicx limitations\n",
-"%% Change tracking with ulem\n",
-"% the following is useful when we have the old nomencl.sty package\n",
-"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.\n",
-"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.\n",
-"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.\n",
-0};
-
 // default settings
 ostringstream h_preamble;
 string h_textclass               = "article";
@@ -275,7 +252,8 @@ string const scale_as_percentage(string const & scale)
 }
 
 
-void handle_package(Parser &p, string const & name, string const & opts)
+void handle_package(Parser &p, string const & name, string const & opts,
+		    bool in_lyx_preamble)
 {
 	vector<string> options = split_options(opts);
 	add_package(name, options);
@@ -457,10 +435,7 @@ void handle_package(Parser &p, string const & name, string const & opts)
 	else if (name == "jurabib")
 		h_cite_engine = "jurabib";
 
-	else if (name == "babel")
-		; // ignore this
-
-	else {
+	else if (!in_lyx_preamble) {
 		if (options.empty())
 			h_preamble << "\\usepackage{" << name << "}";
 		else {
@@ -537,7 +512,8 @@ void parse_preamble(Parser & p, ostream & os,
 	// initialize fixed types
 	special_columns['D'] = 3;
 	bool is_full_document = false;
-	bool lyx_specific_preamble = false;
+	bool is_lyx_file = false;
+	bool in_lyx_preamble = false;
 
 	// determine whether this is a full document or a fragment for inclusion
 	while (p.good()) {
@@ -560,7 +536,8 @@ void parse_preamble(Parser & p, ostream & os,
 		//
 		// cat codes
 		//
-		if ((t.cat() == catLetter ||
+		if (!in_lyx_preamble &&
+		    (t.cat() == catLetter ||
 		     t.cat() == catSuper ||
 		     t.cat() == catSub ||
 		     t.cat() == catOther ||
@@ -572,11 +549,16 @@ void parse_preamble(Parser & p, ostream & os,
 		     t.cat() == catParameter))
 			h_preamble << t.character();
 
-		else if (t.cat() == catSpace || t.cat() == catNewline)
+		else if (!in_lyx_preamble && 
+			 (t.cat() == catSpace || t.cat() == catNewline))
 			h_preamble << t.asInput();
 
 		else if (t.cat() == catComment) {
+			static regex const islyxfile("%% LyX .* created this file");
+			static regex const usercommands("User specified LaTeX commands");
+			
 			string const comment = t.asInput();
+			
 			// magically switch encoding default if it looks like XeLaTeX
 			static string const magicXeLaTeX =
 				"% This document must be compiled with XeLaTeX ";
@@ -586,9 +568,15 @@ void parse_preamble(Parser & p, ostream & os,
 				cerr << "XeLaTeX comment found, switching to UTF8\n";
 				h_inputencoding = "utf8";
 			}
+
 			smatch sub;
-			// don't output LyX specific comments
-			if (!is_known(comment, known_lyx_comments))
+			if (regex_search(comment, sub, islyxfile)) {
+				is_lyx_file = true;
+				in_lyx_preamble = true;
+			} else if (is_lyx_file
+				   && regex_search(comment, sub, usercommands))
+				in_lyx_preamble = false;
+			else if (!in_lyx_preamble)
 				h_preamble << t.asInput();
 		}
 
@@ -596,20 +584,21 @@ void parse_preamble(Parser & p, ostream & os,
 			h_paperpagestyle = p.verbatim_item();
 
 		else if (t.cs() == "makeatletter") {
-			// LyX takes care of this
+			if (!is_lyx_file || !in_lyx_preamble
+			    || p.getCatCode('@') != catLetter)
+				h_preamble << "\\makeatletter";
 			p.setCatCode('@', catLetter);
 		}
 
 		else if (t.cs() == "makeatother") {
-			// LyX takes care of this
+			if (!is_lyx_file || !in_lyx_preamble
+			    || p.getCatCode('@') != catOther)
+				h_preamble << "\\makeatother";
 			p.setCatCode('@', catOther);
 		}
 
 		else if (t.cs() == "newcommand" || t.cs() == "renewcommand"
-			    || t.cs() == "providecommand"
-				|| t.cs() == "DeclareRobustCommand"
-				|| t.cs() == "ProvideTextCommandDefault"
-				|| t.cs() == "DeclareMathAccent") {
+			    || t.cs() == "providecommand") {
 			bool star = false;
 			if (p.next_token().character() == '*') {
 				p.get_token();
@@ -634,17 +623,8 @@ void parse_preamble(Parser & p, ostream & os,
 				// remove leading "\"
 				h_font_default_family = family.erase(0,1);
 			}
-			// LyX specific commands that will automatically be set by LyX
-			string lyx_command = name;
-			// remove the leading "\"
-			lyx_command.erase(0,1);
-			lyx_specific_preamble = false;
-			// allow redefinitions of LyX specific commands
-			if (is_known(lyx_command, known_lyx_commands)
-				&& (t.cs() != "renewcommand"))
-				lyx_specific_preamble = true;
 			// only non-lyxspecific stuff
-			if (!lyx_specific_preamble) {
+			if (!in_lyx_preamble) {
 				ostringstream ss;
 				ss << '\\' << t.cs();
 				if (star)
@@ -736,7 +716,8 @@ void parse_preamble(Parser & p, ostream & os,
 			vector<string>::const_iterator it  = vecnames.begin();
 			vector<string>::const_iterator end = vecnames.end();
 			for (; it != end; ++it)
-				handle_package(p, trim(*it), options);
+				handle_package(p, trim(*it), options, 
+					       in_lyx_preamble);
 		}
 
 		else if (t.cs() == "inputencoding") {
@@ -754,7 +735,7 @@ void parse_preamble(Parser & p, ostream & os,
 			ss << p.getOpt();
 			ss << '{' << p.verbatim_item() << '}';
 			ss << '{' << p.verbatim_item() << '}';
-			if (!is_known(name, known_lyx_commands))
+			if (!in_lyx_preamble)
 				h_preamble << ss.str();
 		}
 
@@ -762,7 +743,7 @@ void parse_preamble(Parser & p, ostream & os,
 			string name = p.get_token().cs();
 			while (p.next_token().cat() != catBegin)
 				name += p.get_token().asString();
-			if (!is_known(name, known_lyx_commands))
+			if (!in_lyx_preamble)
 				h_preamble << "\\def\\" << name << '{'
 					   << p.verbatim_item() << "}";
 		}
@@ -870,7 +851,7 @@ void parse_preamble(Parser & p, ostream & os,
 			}
 		}
 
-		else if (!t.cs().empty())
+		else if (!t.cs().empty() && !in_lyx_preamble)
 			h_preamble << '\\' << t.cs();
 
 		// remove the whitespace
