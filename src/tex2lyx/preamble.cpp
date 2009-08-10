@@ -598,7 +598,10 @@ void parse_preamble(Parser & p, ostream & os,
 		}
 
 		else if (t.cs() == "newcommand" || t.cs() == "renewcommand"
-			    || t.cs() == "providecommand") {
+			    || t.cs() == "providecommand"
+				|| t.cs() == "DeclareRobustCommand"
+				|| t.cs() == "ProvideTextCommandDefault"
+				|| t.cs() == "DeclareMathAccent") {
 			bool star = false;
 			if (p.next_token().character() == '*') {
 				p.get_token();
