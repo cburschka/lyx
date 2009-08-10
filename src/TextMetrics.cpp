@@ -2103,7 +2103,10 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 			static docstring_list suggestions;
 			pos_type from = row.pos();
 			pos_type to = row.endpos();
-			text_->getPar(pit).spellCheck(from, to, wl, suggestions, false);
+			while (from < row.endpos()) {
+				text_->getPar(pit).spellCheck(from, to, wl, suggestions, false);
+				from = to + 1;
+			}
 		}
 
 		// Don't paint the row if a full repaint has not been requested
