@@ -3015,8 +3015,6 @@ void Paragraph::locateWord(pos_type & from, pos_type & to,
 void Paragraph::collectWords()
 {
 	pos_type n = size();
-	WordLangTuple wl;
-	docstring_list suggestions;
 	for (pos_type pos = 0; pos < n; ++pos) {
 		if (isWordSeparator(pos))
 			continue;
@@ -3025,11 +3023,6 @@ void Paragraph::collectWords()
 		if (pos - from >= 6) {
 			docstring word = asString(from, pos, AS_STR_NONE);
 			d->words_.insert(word);
-		}
-		if (lyxrc.spellcheck_continuously
-		    && spellCheck(from, pos, wl, suggestions)) {
-			for (size_t i = 0; i != suggestions.size(); ++i)
-				d->words_.insert(suggestions[i]);
 		}
 	}
 }

@@ -40,6 +40,7 @@
 #include "Text.h"
 #include "TextClass.h"
 #include "VSpace.h"
+#include "WordLangTuple.h"
 
 #include "insets/InsetText.h"
 
@@ -50,8 +51,10 @@
 #include "frontends/Painter.h"
 
 #include "support/debug.h"
-#include <cstdlib>
+#include "support/docstring_list.h"
 #include "support/lassert.h"
+
+#include <cstdlib>
 
 using namespace std;
 
@@ -2092,6 +2095,16 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 		// Row signature; has row changed since last paint?
 		row.setCrc(pm.computeRowSignature(row, bparams));
 		bool row_has_changed = row.changed();
+
+		// Take this opportunity to spellcheck the row contents.
+		if (row_has_changed && lyxrc.spellcheck_continuously) {
+			WordLangTuple wl;
+			// dummy variable, not used.
+			static docstring_list suggestions;
+			pos_type from = row.pos();
+			pos_type to = row.endpos();
+			text_->getPar(pit).spellCheck(from, to, wl, suggestions, false);
+		}
 
 		// Don't paint the row if a full repaint has not been requested
 		// and if it has not changed.
