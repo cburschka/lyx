@@ -144,10 +144,10 @@ private:
 
 	/// sets row.end to the pos value *after* which a row should break.
 	/// for example, the pos after which isNewLine(pos) == true
-	pit_type rowBreakPoint(
+	pos_type rowBreakPoint(
 		int width,
 		pit_type const pit,
-		pit_type first
+		pos_type first
 		) const;
 
 	/// returns the minimum space a row needs on the screen in pixel

@@ -791,8 +791,8 @@ private:
 
 } // anon namespace
 
-pit_type TextMetrics::rowBreakPoint(int width, pit_type const pit,
-		pit_type pos) const
+pos_type TextMetrics::rowBreakPoint(int width, pit_type const pit,
+		pos_type pos) const
 {
 	ParagraphMetrics const & pm = par_metrics_[pit];
 	Paragraph const & par = text_->getPar(pit);
