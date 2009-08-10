@@ -92,8 +92,6 @@ End
 
 InsetLayout Foot
 	LabelString           foot
-	LatexType             command
-	LatexName             footnote
 	Counter               footnote
 	Font
 	  Color               foreground
