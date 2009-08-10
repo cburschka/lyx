@@ -1682,8 +1682,6 @@ bool Text::read(Lexer & lex,
 			readParagraph(pars_.back(), lex, errorList);
 
 			// register the words in the global word list
-			CursorSlice sl = CursorSlice(*insetPtr);
-			sl.pit() = pars_.size() - 1;
 			pars_.back().updateWords();
 		} else if (token == "\\begin_deeper") {
 			++depth;
