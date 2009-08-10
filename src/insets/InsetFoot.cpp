@@ -26,13 +26,10 @@
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
-#include "support/lstrings.h"
 
 using namespace std;
 
 namespace lyx {
-
-using support::bformat;
 
 InsetFoot::InsetFoot(Buffer const & buf)
 	: InsetFootlike(buf)
@@ -43,14 +40,12 @@ void InsetFoot::updateLabels(ParIterator const & it)
 {
 	BufferParams const & bp = buffer().masterBuffer()->params();
 	Counters & cnts = bp.documentClass().counters();
-	docstring const foot = from_ascii("footnote");
-	Paragraph const & outer =  it.paragraph();
+	static docstring const foot = from_ascii("footnote");
+	Paragraph const & outer = it.paragraph();
 	if (!outer.layout().intitle && cnts.hasCounter(foot)) {
 		cnts.step(foot);
-		// FIXME: the counter should format itself.
-		custom_label_= bformat(from_utf8("%1$s %2$s"),
-				       translateIfPossible(getLayout().labelstring()),
-				       cnts.theCounter(foot, outer.getParLanguage(bp)->code()));
+		custom_label_= translateIfPossible(getLayout().labelstring()) 
+			+ ' ' + cnts.theCounter(foot, outer.getParLanguage(bp)->code());
 		setLabel(custom_label_);
 	
 	}
