@@ -198,6 +198,11 @@ What's new
 - Fix communication between lyxclient and server, which leads to a
   crash once CTRL+D is used on the client side (bug 6106).
   
+- Display the filename suffix in the tab header if it is non-standard
+  (e.g. ".lyx15"). This avoids a crash when loading two files with
+  identical names but different extensions (bug 5946), and disambiguates
+  such files in the user interface.
+  
 - Fall back to default UI file if the specified one cannot be found
   (bug 6076).
 
