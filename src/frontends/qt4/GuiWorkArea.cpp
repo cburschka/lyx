@@ -1550,7 +1550,9 @@ public:
 	DisplayPath(int tab, FileName const & filename)
 		: tab_(tab)
 	{
-		filename_ = toqstr(filename.onlyFileNameWithoutExt());
+		filename_ = (filename.extension() == "lyx") ?
+			toqstr(filename.onlyFileNameWithoutExt())
+			: toqstr(filename.onlyFileName());
 		postfix_ = toqstr(filename.absoluteFilePath()).
 			split("/", QString::SkipEmptyParts);
 		postfix_.pop_back();
