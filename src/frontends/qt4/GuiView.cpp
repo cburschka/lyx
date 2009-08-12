@@ -25,6 +25,7 @@
 #include "GuiKeySymbol.h"
 #include "GuiToc.h"
 #include "GuiToolbar.h"
+#include "LayoutBox.h"
 #include "Menus.h"
 #include "TocModel.h"
 
@@ -266,7 +267,7 @@ public:
 	 * FIXME: replace that with a proper model so that we are not limited
 	 * to only one dialog.
 	 */
-	GuiLayoutBox * layout_;
+	LayoutBox * layout_;
 
 	///
 	map<string, Inset *> open_insets_;
@@ -1067,7 +1068,7 @@ void GuiView::removeWorkArea(GuiWorkArea * wa)
 }
 
 
-void GuiView::setLayoutDialog(GuiLayoutBox * layout)
+void GuiView::setLayoutDialog(LayoutBox * layout)
 {
 	d.layout_ = layout;
 }

@@ -18,14 +18,9 @@
 
 #include "Session.h"
 
-#include <QAbstractProxyModel>
-#include <QComboBox>
 #include <QList>
 #include <QToolBar>
 #include <QToolButton>
-
-class QSortFilterProxyModel;
-class QStandardItemModel;
 
 namespace lyx {
 
@@ -39,75 +34,9 @@ class GuiCommandBuffer;
 class GuiLayoutFilterModel;
 class GuiToolbar;
 class GuiView;
-class LayoutItemDelegate;
+class LayoutBox;
 class ToolbarInfo;
 class ToolbarItem;
-
-class GuiLayoutBox : public QComboBox
-{
-	Q_OBJECT
-public:
-	GuiLayoutBox(GuiToolbar * bar, GuiView &);
-
-	/// select the right layout in the combobox.
-	void set(docstring const & layout);
-	/// Populate the layout combobox.
-	void updateContents(bool reset);
-	/// Add Item to Layout box according to sorting settings from preferences
-	void addItemSort(docstring const & item, docstring const & category,
-		bool sorted, bool sortedByCat, bool unknown);
-
-	///
-	void showPopup();
-	
-	///
-	bool eventFilter(QObject * o, QEvent * e);
-	///
-	QString const & filter() { return filter_; }
-
-private Q_SLOTS:
-	///
-	void selected(int index);
-	///
-	void setIconSize(QSize size);
-
-private:
-	friend class LayoutItemDelegate;
-
-	///
-	void resetFilter();
-	///
-	void setFilter(QString const & s);
-	///
-	QString charFilterRegExp(QString const & filter);
-	///
-	void countCategories();
-	
-	///
-	GuiView & owner_;
-	///
-	GuiToolbar * bar_;
-	///
-	DocumentClass const * text_class_;
-	///
-	Inset const * inset_;
-	
-	/// the layout model: 1st column translated, 2nd column raw layout name
-	QStandardItemModel * model_;
-	/// the proxy model filtering \c model_
-	GuiLayoutFilterModel * filterModel_;
-	/// the (model-) index of the last successful selection
-	int lastSel_;
-	/// the character filter
-	QString filter_;
-	///
-	LayoutItemDelegate * layoutItemDelegate_;
-	///
-	unsigned visibleCategories_;
-	///
-	bool inShowPopup_;
-};
-
 
 class MenuButton : public QToolButton
 {
@@ -193,7 +122,7 @@ private:
 	///
 	GuiView & owner_;
 	///
-	GuiLayoutBox * layout_;
+	LayoutBox * layout_;
 	///
 	GuiCommandBuffer * command_buffer_;
 	///

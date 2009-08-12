@@ -132,6 +132,7 @@ SOURCEFILES = \
 	LengthCombo.cpp \
 	LyXFileDialog.cpp \
 	LaTeXHighlighter.cpp \
+	LayoutBox.cpp \
 	Menus.cpp \
 	PanelStack.cpp \
 	qt_helpers.cpp \
@@ -227,6 +228,7 @@ MOCHEADER = \
 	GuiWrap.h \
 	IconPalette.h \
 	InsertTableWidget.h \
+	LayoutBox.h \
 	LengthCombo.h \
 	LyXFileDialog.h \
 	Menus.h \

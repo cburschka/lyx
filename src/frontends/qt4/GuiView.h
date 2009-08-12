@@ -36,7 +36,7 @@ class Cursor;
 namespace frontend {
 
 class Dialog;
-class GuiLayoutBox;
+class LayoutBox;
 class GuiToolbar;
 class GuiWorkArea;
 class TabWorkArea;
@@ -82,7 +82,7 @@ public:
 	bool dispatch(FuncRequest const & cmd);
 
 	///
-	void setLayoutDialog(GuiLayoutBox *);
+	void setLayoutDialog(LayoutBox *);
 
 	/// \return the buffer currently shown in this window
 	Buffer * buffer();
