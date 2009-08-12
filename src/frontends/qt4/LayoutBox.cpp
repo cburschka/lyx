@@ -17,10 +17,8 @@
 
 #include "LayoutBox.h"
 
-#include "Action.h"
 #include "GuiView.h"
 #include "qt_helpers.h"
-#include "Toolbars.h"
 
 #include "Buffer.h"
 #include "BufferParams.h"
@@ -28,7 +26,6 @@
 #include "Cursor.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "Layout.h"
 #include "LyXFunc.h"
 #include "LyXRC.h"
 #include "Paragraph.h"
@@ -37,33 +34,18 @@
 #include "insets/InsetText.h"
 
 #include "support/debug.h"
-#include "support/filetools.h"
 #include "support/gettext.h"
+#include "support/lassert.h"
 #include "support/lstrings.h"
 
-#include <QAbstractItemDelegate>
 #include <QAbstractTextDocumentLayout>
-#include <QApplication>
-#include <QComboBox>
-#include <QFontMetrics>
 #include <QHeaderView>
 #include <QItemDelegate>
-#include <QKeyEvent>
-#include <QList>
-#include <QListView>
 #include <QPainter>
-#include <QPixmap>
-#include <QSettings>
 #include <QSortFilterProxyModel>
-#include <QStandardItem>
 #include <QStandardItemModel>
-#include <QString>
-#include <QTextDocument>
 #include <QTextFrame>
 #include <QToolBar>
-#include <QVariant>
-
-#include "support/lassert.h"
 
 using namespace std;
 using namespace lyx::support;
