@@ -1931,7 +1931,7 @@ bool GuiView::closeBuffer()
 
 
 bool GuiView::closeBuffer(Buffer & buf, bool close_buffer,
-						  bool tolastopened, bool mark_active)
+	bool tolastopened, bool mark_active)
 {
 	// goto bookmark to update bookmark pit.
 	//FIXME: we should update only the bookmarks related to this buffer!

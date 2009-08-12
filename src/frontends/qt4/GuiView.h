@@ -294,7 +294,7 @@ private:
 	///
 	bool saveBuffer(Buffer & b);
 	///
-	bool closeBuffer(Buffer & buf, bool keep_buffer,
+	bool closeBuffer(Buffer & buf, bool close_buffer,
 		bool tolastopened = false, bool mark_active = false);
 	///
 	bool saveBufferIfNeeded(Buffer & buf);
