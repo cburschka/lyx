@@ -13092,11 +13092,21 @@ to your layout file to get them to work.
 \end_layout
 
 \begin_layout LyX-Code
-Counter name
+Counter CounterName
 \end_layout
 
 \begin_layout Standard
-where of course `name' is replaced by the name of the counter.
+where of course `
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+CounterName
+\end_layout
+
+\end_inset
+
+' is replaced by the name of the counter.
  And it must end with 
 \begin_inset Quotes eld
 \end_inset
