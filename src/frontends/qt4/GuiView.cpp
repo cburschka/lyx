@@ -1306,7 +1306,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 			enable = buf->isExportable("dvi")
 				&& lyxrc.print_command != "none";
 		else if (name == "character" || name == "symbols") {
-			if (!view() || !view()->cursor().inTexted())
+			if (buf->isReadonly() || !view() || !view()->cursor().inTexted())
 				enable = false;
 			else {
 				// FIXME we should consider passthru
