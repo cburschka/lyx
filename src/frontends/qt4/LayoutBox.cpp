@@ -124,13 +124,14 @@ public:
 struct LayoutBox::Private
 {
 	Private(LayoutBox * parent, GuiView & gv) : p(parent), owner_(gv),
-		lastSel_(-1), visibleCategories_(0), inShowPopup_(false),
-		layoutItemDelegate_(new LayoutItemDelegate(parent)),
 		// set the layout model with two columns
 		// 1st: translated layout names
 		// 2nd: raw layout names
 		model_(new QStandardItemModel(0, 2, p)),
-		filterModel_(new GuiLayoutFilterModel(p))
+		filterModel_(new GuiLayoutFilterModel(p)),
+		lastSel_(-1),
+		layoutItemDelegate_(new LayoutItemDelegate(parent)),
+		visibleCategories_(0), inShowPopup_(false)
 	{
 		filterModel_->setSourceModel(model_);
 	}
