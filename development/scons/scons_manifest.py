@@ -773,6 +773,7 @@ src_frontends_qt4_header_files = Split('''
     IconPalette.h
     InsertTableWidget.h
     LaTeXHighlighter.h
+    LayoutBox.h
     LengthCombo.h
     LyXFileDialog.h
     Menus.h
@@ -870,6 +871,7 @@ src_frontends_qt4_files = Split('''
     InsertTableWidget.cpp
     LengthCombo.cpp
     LaTeXHighlighter.cpp
+    LayoutBox.cpp
     LyXFileDialog.cpp
     Menus.cpp
     PanelStack.cpp
