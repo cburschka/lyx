@@ -171,18 +171,20 @@ bool Counters::hasCounter(docstring const & c) const
 }
 
 
-bool Counters::read(Lexer & lex, docstring const & name)
+bool Counters::read(Lexer & lex, docstring const & name, bool makenew)
 {
 	if (hasCounter(name)) {
 		LYXERR(Debug::TCLASS, "Reading existing counter " << to_utf8(name));
 		return counterList_[name].read(lex);
 	}
+
 	LYXERR(Debug::TCLASS, "Reading new counter " << to_utf8(name));
 	Counter cnt;
 	bool success = cnt.read(lex);
-	if (success)
+	// if makenew is false, we will just discard what we read
+	if (success && makenew)
 		counterList_[name] = cnt;
-	else
+	else if (!success)
 		LYXERR0("Error reading counter `" << name << "'!");
 	return success;
 }

@@ -62,7 +62,7 @@ private:
 };
 
 // Keep the changes documented in the Customization manual. 
-int const FORMAT = 16;
+int const FORMAT = 17;
 
 
 bool layout2layout(FileName const & filename, FileName const & tempfile)
@@ -164,6 +164,7 @@ enum TextClassTags {
 	TC_OUTPUTFORMAT,
 	TC_INPUT,
 	TC_STYLE,
+	TC_IFSTYLE,
 	TC_DEFAULTSTYLE,
 	TC_INSETLAYOUT,
 	TC_NOSTYLE,
@@ -182,6 +183,7 @@ enum TextClassTags {
 	TC_RIGHTMARGIN,
 	TC_FLOAT,
 	TC_COUNTER,
+	TC_IFCOUNTER,
 	TC_NOFLOAT,
 	TC_TITLELATEXNAME,
 	TC_TITLELATEXTYPE,
@@ -209,6 +211,8 @@ namespace {
 		{ "float",             TC_FLOAT },
 		{ "format",            TC_FORMAT },
 		{ "htmlpreamble",      TC_HTMLPREAMBLE },
+		{ "ifcounter",         TC_IFCOUNTER },
+		{ "ifstyle",           TC_IFSTYLE },
 		{ "input",             TC_INPUT },
 		{ "insetlayout",       TC_INSETLAYOUT },
 		{ "leftmargin",        TC_LEFTMARGIN },
@@ -352,6 +356,10 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			break;
 		}
 
+		// used below to track whether we are in an IfStyle or IfCounter tag.
+		bool ifstyle    = false;
+		bool ifcounter  = false;
+
 		switch (static_cast<TextClassTags>(le)) {
 
 		case TC_FORMAT:
@@ -404,6 +412,9 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			}
 			break;
 
+		case TC_IFSTYLE:
+			ifstyle = true;
+			// fall through
 		case TC_STYLE: {
 			if (!lexrc.next()) {
 				lexrc.printError("No name given for style: `$$Token'.");
@@ -423,7 +434,7 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			} else if (hasLayout(name)) {
 				Layout & lay = operator[](name);
 				error = !readStyle(lexrc, lay);
-			} else {
+			} else if (!ifstyle) {
 				Layout layout;
 				layout.setName(name);
 				error = !readStyle(lexrc, layout);
@@ -436,6 +447,15 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 					defaultlayout_ = name;
 				}
 			}
+			else {
+				// scan the rest and discard it
+				Layout lay;
+				readStyle(lexrc, lay);
+				error = false;
+			}
+
+			// reset flag
+			ifstyle = false;
 			break;
 		}
 
@@ -605,6 +625,8 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			readFloat(lexrc);
 			break;
 
+		case TC_IFCOUNTER:
+			ifcounter = true;
 		case TC_COUNTER:
 			if (lexrc.next()) {
 				docstring const name = lexrc.getDocString();
@@ -617,12 +639,14 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 					// and discard it.
 					c.read(lexrc);
 				} else
-					error = !counters_.read(lexrc, name);
+					error = !counters_.read(lexrc, name, !ifcounter);
 			}
 			else {
 				lexrc.printError("No name given for style: `$$Token'.");
 				error = true;
 			}
+			// reset flag
+			ifcounter = false;
 			break;
 
 		case TC_TITLELATEXTYPE:

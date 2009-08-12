@@ -99,8 +99,10 @@ public:
 	/// Checks whether the given counter exists.
 	bool hasCounter(docstring const & c) const;
 	/// reads the counter name
+	/// \param makeNew whether to make a new counter if one 
+	///        doesn't already exist
 	/// \return true on success
-	bool read(Lexer & lex, docstring const & name);
+	bool read(Lexer & lex, docstring const & name, bool makenew);
 	///
 	void set(docstring const & ctr, int val);
 	///
