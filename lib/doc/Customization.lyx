@@ -6893,19 +6893,19 @@ Counter
 
 \end_inset
 
- This sequence defines a new counter.
- See Section
-\begin_inset space ~
-\end_inset
+ [
+\begin_inset Flex CharStyle:Code
+status collapsed
 
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Counters"
+\begin_layout Plain Layout
+string
+\end_layout
 
 \end_inset
 
- for details.
+] This sequence defines the properties for a counter.
+ If the counter does not yet exist, it is created; if it does exist, it
+ is modified.
  Must end with 
 \begin_inset Quotes eld
 \end_inset
@@ -6925,6 +6925,21 @@ End
 \end_inset
 
 .
+\begin_inset Newline newline
+\end_inset
+
+See Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Counters"
+
+\end_inset
+
+ for details on counters.
 \end_layout
 
 \begin_layout Description
@@ -7125,6 +7140,92 @@ reference "sub:Floats"
 \end_inset
 
  for details.
+ Must end with 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+End
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+IfCounter
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Modifies the properties of the given counter.
+ If the counter does not exist, the section is ignored.
+ Must end with 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+End
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+IfStyle
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Modifies the properties of the given paragraph style.
+ If the style does not exist, the section is ignored.
  Must end with 
 \begin_inset Quotes eld
 \end_inset
@@ -7757,21 +7858,9 @@ Style
 
 \end_inset
 
- This sequence defines a new paragraph style.
- If the style already exists, it will redefine some of its parameters instead.
- See Section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Paragraph-Styles"
-
-\end_inset
-
- for details.
- Must end with 
+ This sequence defines a paragraph style.
+ If the style does not yet exist, it is created; if it does exist, its parameter
+s are redefined Must end with 
 \begin_inset Quotes eld
 \end_inset
 
@@ -7790,6 +7879,21 @@ End
 \end_inset
 
 .
+\begin_inset Newline newline
+\end_inset
+
+See Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Paragraph-Styles"
+
+\end_inset
+
+ for details on paragraph styles.
 \end_layout
 
 \begin_layout Description
@@ -10286,8 +10390,7 @@ string=""
 
 ] If you put layouts into environments, the leftmargins are not simply added,
  but added with a factor 
-\begin_inset Formula $\frac{4}{depth+4}
-$
+\begin_inset Formula $\frac{4}{depth+4}$
 \end_inset
 
 .
