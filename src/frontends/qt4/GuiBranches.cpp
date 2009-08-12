@@ -51,6 +51,8 @@ GuiBranches::GuiBranches(QWidget * parent)
 	branchesTW->headerItem()->setText(2, qt_("Color"));
 	branchesTW->headerItem()->setText(3, qt_("Filename Suffix"));
 	branchesTW->setSortingEnabled(true);
+	branchesTW->resizeColumnToContents(1);
+	branchesTW->resizeColumnToContents(2);
 
 	undef_ = new BranchesUnknownDialog(this);
 	undef_bc_.setPolicy(ButtonPolicy::OkCancelPolicy);
