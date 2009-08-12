@@ -38,6 +38,7 @@
 #include "support/lstrings.h"
 
 #include <QSettings>
+#include <QShowEvent>
 #include <QString>
 #include <QToolBar>
 #include <QToolButton>
