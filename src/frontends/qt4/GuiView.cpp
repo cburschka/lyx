@@ -607,7 +607,7 @@ bool GuiView::closeBufferAll(bool tolastopened)
 			if (b->parent()) {
 				// This is a child document, just close the tab
 				// after saving but keep the file loaded.
-				if (!closeBuffer(*b, tolastopened, is_active_wa))
+				if (!closeBuffer(*b, false, tolastopened, is_active_wa))
 					return false;
 				continue;
 			}
@@ -620,7 +620,8 @@ bool GuiView::closeBufferAll(bool tolastopened)
 				Buffer * c = *it;
 				// If a child is dirty, do not close
 				// without user intervention
-				if (!closeBuffer(*c, false))
+				//FIXME: should buffers be closed or not?
+				if (!closeBuffer(*c, false, false))
 					return false;
 			}
 
@@ -644,7 +645,7 @@ bool GuiView::closeBufferAll(bool tolastopened)
 			}
 			// closeBuffer() needs buffer workArea still alive and
 			// set as currrent one, and destroys it
-			if (b && !closeBuffer(*b, tolastopened, is_active_wa))
+			if (b && !closeBuffer(*b, true, tolastopened, is_active_wa))
 				return false;
 		}
 	}
@@ -1925,11 +1926,12 @@ bool GuiView::saveBuffer(Buffer & b)
 bool GuiView::closeBuffer()
 {
 	Buffer * buf = buffer();
-	return buf && closeBuffer(*buf);
+	return buf && closeBuffer(*buf, !buf->parent());
 }
 
 
-bool GuiView::closeBuffer(Buffer & buf, bool tolastopened, bool mark_active)
+bool GuiView::closeBuffer(Buffer & buf, bool close_buffer,
+						  bool tolastopened, bool mark_active)
 {
 	// goto bookmark to update bookmark pit.
 	//FIXME: we should update only the bookmarks related to this buffer!
@@ -1943,8 +1945,7 @@ bool GuiView::closeBuffer(Buffer & buf, bool tolastopened, bool mark_active)
 		// is opened as well
 		if (tolastopened)
 			theSession().lastOpened().add(buf.fileName(), mark_active);
-		if (buf.parent())
-			// Don't close child documents.
+		if (!close_buffer)
 			removeWorkArea(currentMainWorkArea());
 		else
 			theBufferList().release(&buf);
