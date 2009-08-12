@@ -203,8 +203,8 @@ What's new
   identical names but different extensions (bug 5646), and disambiguates
   such files in the user interface.
 
-- Disable Symbols dialog for read-only dialog. This prevents a potential
-  crash.
+- Disable Symbols dialog for read-only documents. This prevents a
+  potential crash.
   
 - Fall back to default UI file if the specified one cannot be found
   (bug 6076).
