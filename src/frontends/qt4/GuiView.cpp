@@ -1210,7 +1210,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 			}
 		}
 		else if (name == "symbols") {
-			if (!view() || view()->cursor().inMathed())
+			if (buf->isReadonly() || !view() || view()->cursor().inMathed())
 				enable = false;
 			else {
 				InsetCode ic = view()->cursor().inset().lyxCode();

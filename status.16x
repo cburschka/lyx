@@ -202,6 +202,9 @@ What's new
   (e.g. ".lyx15"). This avoids a crash when loading two files with
   identical names but different extensions (bug 5646), and disambiguates
   such files in the user interface.
+
+- Disable Symbols dialog for read-only dialog. This prevents a potential
+  crash.
   
 - Fall back to default UI file if the specified one cannot be found
   (bug 6076).
