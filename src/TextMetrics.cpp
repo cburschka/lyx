@@ -1455,8 +1455,8 @@ Inset * TextMetrics::editXY(Cursor & cur, int x, int y,
 
 	// This should be just before or just behind the
 	// cursor position set above.
-	LASSERT((pos != 0 && inset == insetBefore)
-		|| inset == pars[pit].getInset(pos), /**/);
+	//LASSERT((pos != 0 && inset == insetBefore)
+	//	|| inset == pars[pit].getInset(pos), /**/);
 
 	// Make sure the cursor points to the position before
 	// this inset.
