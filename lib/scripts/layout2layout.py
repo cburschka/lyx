@@ -129,7 +129,7 @@ def convert(lines):
     re_End = re.compile(r'^(\s*)(End)(\s*)$', re.IGNORECASE)
     re_Provides = re.compile(r'^(\s*)Provides(\S+)(\s+)(\S+)', re.IGNORECASE)
     re_CharStyle = re.compile(r'^(\s*)CharStyle(\s+)(\S+)$', re.IGNORECASE)
-    re_AMSMaths = re.compile(r'^\s*Input amsmaths.inc\s*')
+    re_AMSMaths = re.compile(r'^\s*Input ams(?:math|def)s.inc\s*')
     re_AMSMathsPlain = re.compile(r'^\s*Input amsmaths-plain.inc\s*')
     re_AMSMathsSeq = re.compile(r'^\s*Input amsmaths-seq.inc\s*')
 
