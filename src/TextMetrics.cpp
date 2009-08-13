@@ -1406,7 +1406,7 @@ pit_type TextMetrics::getPitNearY(int y)
 }
 
 
-Row const & TextMetrics::getPitAndRowNearY(int y, pit_type & pit,
+Row const & TextMetrics::getPitAndRowNearY(int & y, pit_type & pit,
 	bool assert_in_view, bool up)
 {
 	ParagraphMetrics const & pm = par_metrics_[pit];
@@ -1422,23 +1422,27 @@ Row const & TextMetrics::getPitAndRowNearY(int y, pit_type & pit,
 
 	if (assert_in_view && yy + rit->height() != y) {
 		if (!up) {
-			if (rit != pm.rows().begin())
+			if (rit != pm.rows().begin()) {
+				y = yy;
 				--rit;
-			else if (pit != 0) {
+			} else if (pit != 0) {
 				--pit;
 				newParMetricsUp();
 				ParagraphMetrics const & pm2 = par_metrics_[pit];
 				rit = pm2.rows().end();
 				--rit;
+				y = yy;
 			}
 		} else  {
-			if (rit != rlast)
+			if (rit != rlast) {
+				y = yy + rit->height();
 				++rit;
-			else if (pit != int(par_metrics_.size())) {
+			} else if (pit != int(par_metrics_.size())) {
 				++pit;
 				newParMetricsDown();
 				ParagraphMetrics const & pm2 = par_metrics_[pit];
 				rit = pm2.rows().begin();
+				y = pm2.position();
 			}
 		}
 	}
@@ -1457,8 +1461,9 @@ Inset * TextMetrics::editXY(Cursor & cur, int x, int y,
 	}
 	pit_type pit = getPitNearY(y);
 	LASSERT(pit != -1, return 0);
-
-	Row const & row = getPitAndRowNearY(y, pit, assert_in_view, up);
+	
+	int yy = y; // is modified by getPitAndRowNearY
+	Row const & row = getPitAndRowNearY(yy, pit, assert_in_view, up);
 	bool bound = false;
 
 	int xx = x; // is modified by getColumnNearX
@@ -1470,7 +1475,7 @@ Inset * TextMetrics::editXY(Cursor & cur, int x, int y,
 	cur.setTargetX(x);
 
 	// try to descend into nested insets
-	Inset * inset = checkInsetHit(x, y);
+	Inset * inset = checkInsetHit(x, yy);
 	//lyxerr << "inset " << inset << " hit at x: " << x << " y: " << y << endl;
 	if (!inset) {
 		// Either we deconst editXY or better we move current_font
@@ -1498,7 +1503,7 @@ Inset * TextMetrics::editXY(Cursor & cur, int x, int y,
 	}
 
 	// Try to descend recursively inside the inset.
-	inset = inset->editXY(cur, x, y);
+	inset = inset->editXY(cur, x, yy);
 
 	if (cur.top().text() == text_)
 		cur.setCurrentFont();
