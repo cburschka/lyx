@@ -179,7 +179,7 @@ public:
 	/// returns the row near the specified y-coordinate in a given paragraph
 	/// (relative to the screen). If assert_in_view is true, it is made sure
 	/// that the row is on screen completely; this might change the given pit.
-	Row const & getPitAndRowNearY(int y, pit_type & pit,
+	Row const & getPitAndRowNearY(int & y, pit_type & pit,
 		bool assert_in_view, bool up);
 
 	/// returns the paragraph number closest to screen y-coordinate.
