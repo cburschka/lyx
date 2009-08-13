@@ -71,6 +71,9 @@
 #include <stdlib.h>
 #include <string>
 #include <vector>
+#if defined(_WIN32) || defined(__CYGWIN__)
+#include <windows.h>
+#endif
 
 using namespace std;
 using namespace lyx::support;
@@ -650,6 +653,18 @@ static void error_handler(int err_sig)
 	exit(0);
 }
 
+
+#if defined(_WIN32) || defined(__CYGWIN__)
+BOOL terminate_handler(DWORD event)
+{
+	if (event == CTRL_CLOSE_EVENT
+	    || event == CTRL_LOGOFF_EVENT
+	    || event == CTRL_SHUTDOWN_EVENT)
+		raise(SIGTERM);
+	return FALSE;
+}
+#endif
+
 }
 
 
@@ -671,6 +686,10 @@ bool LyX::init()
 	signal(SIGINT, error_handler);
 	signal(SIGTERM, error_handler);
 	// SIGPIPE can be safely ignored.
+#if defined(_WIN32) || defined(__CYGWIN__)
+	// On Windows we have also to catch logging off or closing the console.
+	SetConsoleCtrlHandler((PHANDLER_ROUTINE)terminate_handler, TRUE);
+#endif
 
 	lyxrc.tempdir_path = package().temp_dir().absFilename();
 	lyxrc.document_path = package().document_dir().absFilename();
