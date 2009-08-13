@@ -440,6 +440,7 @@ enum FuncCode
 	// 340
 	LFUN_BRANCHES_RENAME,           // spitz 20090709
 	LFUN_BUFFER_CLOSE_ALL,          // vfr 20090806
+	LFUN_GRAPHICS_RELOAD,           // vfr 20090810
 
 	LFUN_LASTACTION                 // end of the table
 };

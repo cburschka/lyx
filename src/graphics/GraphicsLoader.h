@@ -68,6 +68,10 @@ public:
 	 */
 	void startLoading() const;
 
+	/** Tries to reload the image. 
+	 */
+	void reload() const;
+
 	/** Monitor any changes to the file.
 	 *  There is no point monitoring the file before startLoading() is
 	 *  invoked.

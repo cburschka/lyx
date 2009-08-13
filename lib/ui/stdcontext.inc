@@ -358,6 +358,7 @@ Menuset
 
 	Menu "context-graphics"
 		Item "Settings...|S" "inset-settings"
+		Item "Reload...|U" "graphics-reload"
 		Separator
 		Item "Edit Externally...|x" "inset-edit"
 		Separator

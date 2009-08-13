@@ -35,6 +35,8 @@ public:
 
 	/// Refresh the info about which file to display and how to display it.
 	void update(graphics::Params const & params);
+	/// Reloads the image if necessary
+	void reload() const;
 
 	/// equivalent to dynamic_cast
 	virtual RenderGraphic * asGraphic() { return this; }
