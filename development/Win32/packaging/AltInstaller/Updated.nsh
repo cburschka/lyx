@@ -82,6 +82,7 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources\layouts"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\amsbook.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\amsart.layout"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\article-beamer.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\theorems.inc"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\theorems-ams.module"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\theorems-chap.module"
