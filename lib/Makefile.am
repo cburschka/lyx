@@ -1008,6 +1008,7 @@ dist_layouts_DATA =\
 	layouts/book.layout \
 	layouts/braille.module \
 	layouts/broadway.layout \
+	layouts/capitals.module \
 	layouts/chess.layout \
 	layouts/cl2emult.layout \
 	layouts/db_lyxmacros.inc \
