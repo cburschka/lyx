@@ -35038,7 +35038,7 @@ El programa
 \family typewriter
 dvipdfm
 \family default
- produce internamente un archivo dvi que es convertido después a pdf.
+ produce internamente un archivo DVI que es convertido después a PDF.
  Está algo obsoleto y la salida podría ser diferente de la esperada.
  
 \family typewriter
@@ -35137,13 +35137,9 @@ Fax
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This menu entry will only appear when you have a fax program installed (on
- Windows you additionally need to register its program path to LyX's PATH
- prefix, see section
-\lang spanish
-
+Esta entrada de menú solo aparece cuando está instalado un programa de fax
+ (en Windows, es necesario además registrar la ruta del programa en el prefijo
+ PATH de LyX, véase la sección
 \begin_inset space ~
 \end_inset
 
@@ -35155,21 +35151,18 @@ reference "sec:Rutas"
 \end_inset
 
 ).
- 
-\lang english
-With this menu entry you can send your document to a fax program like 
+ Con esta entrada puedes enviar tu documento a un programa de fax como 
 \family typewriter
 hylapex
 \family default
- or 
+ o 
 \family typewriter
 kdeprintfax
 \family default
 .
- The default format of the sent file is PostScript.
- The format can be changed in LyX's preferences as described in section
-\lang spanish
-
+ Por omisión, el archivo se envía en formato PostScript.
+ El formato se puede cambiar en las preferencias de LyX como se describe
+ en la sección
 \begin_inset space ~
 \end_inset
 
@@ -44687,7 +44680,7 @@ key "Vietnamese"
 
 \begin_inset CommandInset href
 LatexCommand href
-name "Wiki-page"
+name "Página Wiki"
 target "http://wiki.lyx.org/Windows/Vietnamese"
 
 \end_inset
@@ -44791,7 +44784,7 @@ key "spanish"
 \begin_inset CommandInset href
 LatexCommand href
 name "Página web"
-target "http://www.texytipografia.com/archive/spanish.pdf"
+target "http://www.tex-tipografia.com/spanish.html"
 
 \end_inset
 
