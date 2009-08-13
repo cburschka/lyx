@@ -380,7 +380,7 @@ void LayoutBox::Private::setFilter(QString const & s)
 		// on the QComboBox.
 		LASSERT(!inShowPopup_, /**/);
 		inShowPopup_ = true;
-		p->showPopup();
+		p->QComboBox::showPopup();
 		inShowPopup_ = false;
 
 		// The item delegate hack is off again. So trigger a relayout of the popup.
