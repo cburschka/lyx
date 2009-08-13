@@ -216,8 +216,6 @@ ConverterCache::ConverterCache()
 
 ConverterCache::~ConverterCache()
 {
-	if (!lyxrc.use_converter_cache)
-		return;
 	delete pimpl_;
 }
 
