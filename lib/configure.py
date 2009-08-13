@@ -385,7 +385,7 @@ def checkFormatEntries(dtl_tools):
 \Format pdf3       pdf    "PDF (dvipdfm)"         m  "%%"	""	"document,vector"
 \Format pdf4       pdf    "PDF (XeTeX)"           X  "%%"	""	"document,vector"'''])
     #
-    checkViewer('a DVI previewer', ['xdvi', 'kdvi', 'okular'],
+    checkViewer('a DVI previewer', ['xdvi', 'kdvi', 'okular', 'dviout -Set=!m'],
         rc_entry = [r'\Format dvi        dvi     DVI                    D  "%%"	""	"document,vector"'])
     if dtl_tools:
         # Windows only: DraftDVI
