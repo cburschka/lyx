@@ -35,9 +35,10 @@ ModuleList moduleList;
 
 LyXModule::LyXModule(string const & n, string const & i, 
 	                   string const & d, vector<string> const & p,
-	                   vector<string> const & r, vector<string> const & e):
-	name(n), id(i), description(d), 
-	packageList(p), requiredModules(r), excludedModules(e),
+	                   vector<string> const & r, vector<string> const & e,
+	                   string const & c):
+	name(n), id(i), description(d), packageList(p), 
+	requiredModules(r), excludedModules(e), category_(c),
 	checked(false)
 {
 	filename = id + ".module";
@@ -189,9 +190,13 @@ bool ModuleList::read()
 				str = split(str, p, '|');
 				exc.push_back(p);
 			}
+			if (!lex.next())
+				break;
+			string const catgy = lex.getString();
+			LYXERR(Debug::TCLASS, "Category: " << catgy);
 			// This code is run when we have
-			// modName, fname, desc, pkgs, req, and exc
-			addLayoutModule(modName, fname, desc, pkgs, req, exc);
+			// modName, fname, desc, pkgs, req, exc, and catgy
+			addLayoutModule(modName, fname, desc, pkgs, req, exc, catgy);
 		} // end switch
 	} //end while
 	
@@ -206,9 +211,9 @@ bool ModuleList::read()
 void ModuleList::addLayoutModule(string const & moduleName, 
 	string const & filename, string const & description,
 	vector<string> const & pkgs, vector<string> const & req,
-	vector<string> const & exc)
+	vector<string> const & exc, string const & catgy)
 {
-	LyXModule lm(moduleName, filename, description, pkgs, req, exc);
+	LyXModule lm(moduleName, filename, description, pkgs, req, exc, catgy);
 	modlist_.push_back(lm);
 }
 

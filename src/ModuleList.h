@@ -19,7 +19,7 @@
 namespace lyx {
 	
 /**
- *  This struct represents a particular LyX "module", which is a like a layout
+ *  This class represents a particular LyX "module", which is a like a layout
  *  file, except that it does not stand alone. In that sense, it is more like 
  *  a LaTeX package, where a layout file corresponds to a LaTeX class. Or, in 
  *  LyX's own terms, a module is more like an included file that can be used
@@ -37,9 +37,11 @@ namespace lyx {
  *   #DescriptionEnd
  *   #Requires: theorems-std | theorems-ams
  *   #Excludes: theorems-chap
+ *   #Category: theorems
  *  The description is used in the gui to give information to the user. The
- *  Requires and Excludes lines are read by the configuration script and
- *  written to a file lyxmodules.lst in the user configuration directory.
+ *  Requires, Excludes, and Categofy lines are read by the configuration script 
+ *  and written to a file lyxmodules.lst in the user configuration directory.
+ *  That file is then read on startup to populate the ModuleList, below.
  *
  *  Modules can also be "provided" or "excluded" by document classes, using
  *  the ProvidesModule and ExcludesModule tags.
@@ -51,7 +53,8 @@ public:
 	LyXModule(std::string const & n, std::string const & i, 
 	          std::string const & d, std::vector<std::string> const & p,
 	          std::vector<std::string> const & r, 
-	          std::vector<std::string> const & e);
+	          std::vector<std::string> const & e,
+	          std::string const & c);
 	/// whether the required packages are available
 	bool isAvailable();
 	///
@@ -71,6 +74,8 @@ public:
 	/// Modules this one excludes: the list should be treated disjunctively
 	std::vector<std::string> const & getExcludedModules() const 
 		{ return excludedModules; }
+	///
+	std::string category() const { return category_; }
 	/// \return true if the module is compatible with this one, i.e.,
 	/// it does not exclude us and we do not exclude it.
 	/// this will also return true if modName is unknown and we do not
@@ -94,6 +99,8 @@ private:
 	std::vector<std::string> requiredModules;
 	/// Modules this one excludes: none of these
 	std::vector<std::string> excludedModules;
+	///
+	std::string category_;
 	///
 	bool checked;
 	///
@@ -133,7 +140,8 @@ private:
 	/// add a module to the list
 	void addLayoutModule(std::string const &, std::string const &, 
 		std::string const &, std::vector<std::string> const &,
-		std::vector<std::string> const &, std::vector<std::string> const &);
+		std::vector<std::string> const &, std::vector<std::string> const &,
+		std::string const &);
 	///
 	std::vector<LyXModule> modlist_;
 };
