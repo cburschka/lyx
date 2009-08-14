@@ -243,7 +243,7 @@ vector<string> getPackageList(string const & modName)
 
 bool isModuleAvailable(string const & modName)
 {
-	LyXModule * mod = theModuleList[modName];
+	LyXModule const * const mod = theModuleList[modName];
 	if (!mod)
 		return false;
 	return mod->isAvailable();
@@ -2694,7 +2694,7 @@ list<GuiDocument::modInfoStruct> const
 	for (; it != end; ++it) {
 		modInfoStruct m;
 		m.id = *it;
-		LyXModule * mod = theModuleList[*it];
+		LyXModule const * const mod = theModuleList[*it];
 		if (mod)
 			// FIXME Unicode
 			m.name = toqstr(translateIfPossible(from_utf8(mod->getName())));

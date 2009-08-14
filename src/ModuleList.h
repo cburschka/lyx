@@ -57,7 +57,7 @@ public:
 	          std::vector<std::string> const & excludes,
 	          std::string const & catgy);
 	/// whether the required packages are available
-	bool isAvailable();
+	bool isAvailable() const;
 	///
 	std::string const & getName() const { return name_; }
 	///
@@ -102,10 +102,12 @@ private:
 	std::vector<std::string> excluded_modules_;
 	/// Category, also used in the UI
 	std::string category_;
+	// these are mutable because they are used to cache the results
+	// or an otherwise const operation.
 	///
-	bool checked_;
+	mutable bool checked_;
 	///
-	bool available_;
+	mutable bool available_;
 };
 
 typedef std::vector<LyXModule> LyXModuleList;
@@ -132,8 +134,10 @@ public:
 	bool empty() const { return modlist_.empty(); }
 	/// Returns a pointer to the LyXModule with filename str.
 	/// Returns a null pointer if no such module is found.
+	LyXModule const * operator[](std::string const & str) const;
+	/// 
 	LyXModule * operator[](std::string const & str);
-private:
+	private:
 	/// noncopyable
 	ModuleList(ModuleList const &);
 	///

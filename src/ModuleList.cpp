@@ -45,7 +45,7 @@ LyXModule::LyXModule(string const & n, string const & i,
 }
 
 
-bool LyXModule::isAvailable() {
+bool LyXModule::isAvailable() const {
 #ifdef TEX2LYX
 	return true;
 #else
@@ -242,15 +242,26 @@ LyXModuleList::iterator ModuleList::end()
 }
 
 
+LyXModule const * ModuleList::operator[](string const & str) const
+{
+	LyXModuleList::const_iterator it = modlist_.begin();
+	for (; it != modlist_.end(); ++it)
+		if (it->getID() == str) {
+			LyXModule const & mod = *it;
+			return &mod;
+		}
+	return 0;
+}
+
 LyXModule * ModuleList::operator[](string const & str)
 {
 	LyXModuleList::iterator it = modlist_.begin();
 	for (; it != modlist_.end(); ++it)
 		if (it->getID() == str) {
-			LyXModule & mod = *it;
-			return &mod;
+		LyXModule & mod = *it;
+		return &mod;
 		}
-	return 0;
+		return 0;
 }
 
 } // namespace lyx
