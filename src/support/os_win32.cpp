@@ -26,6 +26,7 @@
 
 #include "support/lassert.h"
 
+#include <csignal>
 #include <cstdlib>
 #include <vector>
 
@@ -79,6 +80,19 @@ namespace {
 bool windows_style_tex_paths_ = true;
 
 string cygdrive = "/cygdrive";
+
+BOOL terminate_handler(DWORD event)
+{
+	if (event == CTRL_CLOSE_EVENT
+	    || event == CTRL_LOGOFF_EVENT
+	    || event == CTRL_SHUTDOWN_EVENT) {
+		::raise(SIGTERM);
+		// Relinquish our time slice.
+		Sleep(0);
+		return TRUE;
+	}
+	return FALSE;
+}
 
 } // namespace anon
 
@@ -161,6 +175,9 @@ void init(int /* argc */, char * argv[])
 		if ((retVal == ERROR_SUCCESS) && (bufSize <= MAX_PATH))
 			cygdrive = rtrim(string(buf), "/");
 	}
+
+	// Catch shutdown events.
+	SetConsoleCtrlHandler((PHANDLER_ROUTINE)terminate_handler, TRUE);
 }
 
 
