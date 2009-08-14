@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>407</width>
-    <height>312</height>
+    <height>340</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -22,9 +22,7 @@
    <item row="1" column="0" >
     <widget class="QTextBrowser" name="infoML" >
      <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>7</hsizetype>
-       <vsizetype>4</vsizetype>
+      <sizepolicy vsizetype="Maximum" hsizetype="Expanding" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -55,6 +53,9 @@
        </property>
        <item>
         <widget class="QLabel" name="availmodL" >
+         <property name="frameShape" >
+          <enum>QFrame::NoFrame</enum>
+         </property>
          <property name="text" >
           <string>A&amp;vailable:</string>
          </property>
@@ -64,18 +65,9 @@
         </widget>
        </item>
        <item>
-        <widget class="QListView" name="availableLV" >
-         <property name="minimumSize" >
-          <size>
-           <width>0</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="horizontalScrollBarPolicy" >
-          <enum>Qt::ScrollBarAsNeeded</enum>
-         </property>
-         <property name="editTriggers" >
-          <set>QAbstractItemView::NoEditTriggers</set>
+        <widget class="QTreeView" name="availableLV" >
+         <property name="headerHidden" >
+          <bool>true</bool>
          </property>
         </widget>
        </item>

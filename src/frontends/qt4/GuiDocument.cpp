@@ -264,7 +264,7 @@ class ModuleSelectionManager : public GuiSelectionManager
 public:
 	///
 	ModuleSelectionManager(
-		QListView * availableLV, 
+		QTreeView * availableLV,
 		QListView * selectedLV,
 		QPushButton * addPB, 
 		QPushButton * delPB, 
