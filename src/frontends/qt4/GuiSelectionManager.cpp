@@ -28,7 +28,7 @@ namespace lyx {
 namespace frontend {
 
 GuiSelectionManager::GuiSelectionManager(
-	QListView * avail, 
+	QAbstractItemView * avail,
 	QListView * sel,
 	QPushButton * add, 
 	QPushButton * del, 

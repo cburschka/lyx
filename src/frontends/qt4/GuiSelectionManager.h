@@ -19,6 +19,7 @@ class QModelIndex;
 class QListView;
 class QPushButton;
 class QVariant;
+class QAbstractItemView;
 template <class T, class U> class QMap;
 
 namespace lyx {
@@ -39,7 +40,7 @@ class GuiSelectionManager : public QObject
 public:
 	///
 	GuiSelectionManager(
-		QListView * availableLV, 
+		QAbstractItemView * availableLV,
 		QListView * selectedLV,
 		QPushButton * addPB, 
 		QPushButton * delPB, 
@@ -84,7 +85,7 @@ protected:
 	///
  	bool insertRowToSelected(int i, QMap<int, QVariant> const & itemData);
 	///
-	QListView * availableLV;
+	QAbstractItemView * availableLV;
 	///
 	QListView * selectedLV;
 	///

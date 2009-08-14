@@ -1663,8 +1663,11 @@ void GuiDocument::updateModuleInfo()
 	
 	//Module description
 	bool const focus_on_selected = selectionManager->selectedFocused();
-	QListView const * const lv = 
-			focus_on_selected ? modulesModule->selectedLV : modulesModule->availableLV;
+	QAbstractItemView * lv;
+	if (focus_on_selected)
+		lv = modulesModule->selectedLV;
+	else
+		lv= modulesModule->availableLV;
 	if (lv->selectionModel()->selectedIndexes().isEmpty()) {
 		modulesModule->infoML->document()->clear();
 		return;
