@@ -259,6 +259,8 @@ public:
 	///
 	std::string master;
 	///
+	bool suppress_date;
+	///
 	std::string float_placement;
 	///
 	unsigned int columns;

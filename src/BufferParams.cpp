@@ -363,6 +363,7 @@ BufferParams::BufferParams()
 	columns = 1;
 	listings_params = string();
 	pagestyle = "default";
+	suppress_date = false;
 	// white is equal to no background color
 	backgroundcolor = lyx::rgbFromHexName("#ffffff");
 	compressed = false;
@@ -539,6 +540,8 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 	} else if (token == "\\master") {
 		lex.eatLine();
 		master = lex.getString();
+	} else if (token == "\\suppress_date") {
+		lex >> suppress_date;
 	} else if (token == "\\language") {
 		readLanguage(lex);
 	} else if (token == "\\inputencoding") {
@@ -863,6 +866,7 @@ void BufferParams::writeFile(ostream & os) const
 	   << "\n\\use_bibtopic " << convert<string>(use_bibtopic)
 	   << "\n\\use_indices " << convert<string>(use_indices)
 	   << "\n\\paperorientation " << string_orientation[orientation]
+	   << "\n\\suppress_date " << convert<string>(suppress_date)
 	   << '\n';
 	   if (backgroundcolor != lyx::rgbFromHexName("#ffffff"))
 		os << "\\backgroundcolor " << lyx::X11hexname(backgroundcolor) << '\n';
@@ -1458,6 +1462,10 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 
 	// Line spacing
 	lyxpreamble += from_utf8(spacing().writePreamble(tclass.provides("SetSpace")));
+
+	// date
+	if (suppress_date)
+		lyxpreamble += "\\date{}\n";
 
 	// PDF support.
 	// * Hyperref manual: "Make sure it comes last of your loaded

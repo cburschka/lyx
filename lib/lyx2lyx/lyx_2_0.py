@@ -1021,6 +1021,23 @@ def revert_author_id(document):
         k = k + 1
 
 
+def revert_suppress_date(document):
+    " Revert suppressing of default document date to preamble code "
+    i = 0
+    while True:
+      i = find_token(document.header, "\\suppress_date", i)
+      if i == -1:
+          break
+      # remove the preamble line and write to the preamble
+      # when suppress_date was true
+      date = get_value(document.header, "\\suppress_date", i)
+      if date == "true":
+          add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
+          add_to_preamble(document, ["\\date{}"])
+      del document.header[i]
+      i = i + 1
+
+
 ##
 # Conversion hub
 #
@@ -1049,10 +1066,12 @@ convert = [[346, []],
            [366, []],
            [367, []],
            [368, []],
-           [369, [convert_author_id]]
+           [369, [convert_author_id]],
+           [370, []],
           ]
 
-revert =  [[368, [revert_author_id]],
+revert =  [[369, [revert_suppress_date]],
+           [368, [revert_author_id]],
            [367, [revert_hspace_glue_lengths]],
            [366, [revert_percent_vspace_lengths, revert_percent_hspace_lengths]],
            [365, [revert_percent_skip_lengths]],

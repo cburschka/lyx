@@ -932,6 +932,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(latexModule->childDocPB, SIGNAL(clicked()),
 		this, SLOT(browseMaster()));
+	connect(latexModule->suppressDateCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
 
 	// postscript drivers
 	for (int n = 0; tex_graphics[n][0]; ++n) {
@@ -1777,6 +1779,9 @@ void GuiDocument::applyView()
 	// preamble
 	preambleModule->apply(bp_);
 
+	// date
+	bp_.suppress_date = latexModule->suppressDateCB->isChecked();
+
 	// biblio
 	bp_.setCiteEngine(ENGINE_BASIC);
 
@@ -2147,6 +2152,9 @@ void GuiDocument::paramsToDialog()
 
 	// preamble
 	preambleModule->update(bp_, id());
+
+	// date
+	latexModule->suppressDateCB->setChecked(bp_.suppress_date);
 
 	// biblio
 	biblioModule->citeDefaultRB->setChecked(
