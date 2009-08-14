@@ -20,8 +20,6 @@
 
 #include <QComboBox>
 
-class QToolBar;
-
 namespace lyx {
 
 class DocumentClass;
@@ -36,7 +34,7 @@ class LayoutBox : public QComboBox
 {
 	Q_OBJECT
 public:
-	LayoutBox(QToolBar *, GuiView &);
+	LayoutBox(GuiView &);
 
 	/// select the right layout in the combobox.
 	void set(docstring const & layout);

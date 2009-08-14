@@ -228,6 +228,8 @@ void GuiToolbar::add(ToolbarItem const & item)
 		break;
 	case ToolbarItem::LAYOUTS:
 		layout_ = new LayoutBox(this, owner_);
+		QObject::connect(this, SIGNAL(iconSizeChanged(QSize)),
+			layout_, SLOT(setIconSize(QSize)));
 		addWidget(layout_);
 		break;
 	case ToolbarItem::MINIBUFFER:

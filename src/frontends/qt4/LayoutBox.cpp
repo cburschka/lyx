@@ -45,7 +45,6 @@
 #include <QSortFilterProxyModel>
 #include <QStandardItemModel>
 #include <QTextFrame>
-#include <QToolBar>
 
 using namespace std;
 using namespace lyx::support;
@@ -398,7 +397,7 @@ void LayoutBox::Private::setFilter(QString const & s)
 }
 
 
-LayoutBox::LayoutBox(QToolBar * bar, GuiView & owner)
+LayoutBox::LayoutBox(GuiView & owner)
 	: d(new Private(this, owner))
 {
 	setSizeAdjustPolicy(QComboBox::AdjustToContents);
@@ -414,8 +413,6 @@ LayoutBox::LayoutBox(QToolBar * bar, GuiView & owner)
 	
 	QObject::connect(this, SIGNAL(activated(int)),
 		this, SLOT(selected(int)));
-	QObject::connect(bar, SIGNAL(iconSizeChanged(QSize)),
-		this, SLOT(setIconSize(QSize)));
 
 	d->owner_.setLayoutDialog(this);
 	updateContents(true);
