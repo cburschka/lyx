@@ -63,7 +63,7 @@ bool LayoutModuleList::moduleCanBeAdded(string const & modName,
 		if (*it == modName) 
 			return false;
 
-	LyXModule const * const lm = moduleList[modName];
+	LyXModule const * const lm = theModuleList[modName];
 	if (!lm)
 		return true;
 
@@ -236,7 +236,7 @@ bool LayoutModuleList::checkModuleConsistency(LayoutFile const * const lay)
 
 		// determine whether some provided module or some prior module
 		// satisfies our requirements
-		LyXModule const * const oldmod = moduleList[modname];
+		LyXModule const * const oldmod = theModuleList[modname];
 		if (!oldmod) {
 			LYXERR0("Default module " << modname << 
 					" added although it is unavailable and can't check requirements.");

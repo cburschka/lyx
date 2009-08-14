@@ -1198,7 +1198,7 @@ DocumentClass & DocumentClassBundle::makeDocumentClass(
 	LayoutModuleList::const_iterator en = modlist.end();
 	for (; it != en; it++) {
 		string const modName = *it;
-		LyXModule * lm = moduleList[modName];
+		LyXModule * lm = theModuleList[modName];
 		if (!lm) {
 			docstring const msg =
 						bformat(_("The module %1$s has been requested by\n"

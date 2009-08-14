@@ -206,7 +206,7 @@ namespace {
 
 vector<string> getRequiredList(string const & modName) 
 {
-	LyXModule const * const mod = moduleList[modName];
+	LyXModule const * const mod = theModuleList[modName];
 	if (!mod)
 		return vector<string>(); //empty such thing
 	return mod->getRequiredModules();
@@ -215,7 +215,7 @@ vector<string> getRequiredList(string const & modName)
 
 vector<string> getExcludedList(string const & modName)
 {
-	LyXModule const * const mod = moduleList[modName];
+	LyXModule const * const mod = theModuleList[modName];
 	if (!mod)
 		return vector<string>(); //empty such thing
 	return mod->getExcludedModules();
@@ -224,7 +224,7 @@ vector<string> getExcludedList(string const & modName)
 
 docstring getModuleDescription(string const & modName)
 {
-	LyXModule const * const mod = moduleList[modName];
+	LyXModule const * const mod = theModuleList[modName];
 	if (!mod)
 		return _("Module not found!");
 	// FIXME Unicode
@@ -234,7 +234,7 @@ docstring getModuleDescription(string const & modName)
 
 vector<string> getPackageList(string const & modName)
 {
-	LyXModule const * const mod = moduleList[modName];
+	LyXModule const * const mod = theModuleList[modName];
 	if (!mod)
 		return vector<string>(); //empty such thing
 	return mod->getPackageList();
@@ -243,7 +243,7 @@ vector<string> getPackageList(string const & modName)
 
 bool isModuleAvailable(string const & modName)
 {
-	LyXModule * mod = moduleList[modName];
+	LyXModule * mod = theModuleList[modName];
 	if (!mod)
 		return false;
 	return mod->isAvailable();
@@ -1606,7 +1606,7 @@ namespace {
 		vector<string>::const_iterator it  = idList.begin();
 		vector<string>::const_iterator end = idList.end();
 		for (; it != end; ++it) {
-			LyXModule const * const mod = moduleList[*it];
+			LyXModule const * const mod = theModuleList[*it];
 			if (!mod)
 				retval.push_back(*it + " (Unavailable)");
 			else
@@ -2694,7 +2694,7 @@ list<GuiDocument::modInfoStruct> const
 	for (; it != end; ++it) {
 		modInfoStruct m;
 		m.id = *it;
-		LyXModule * mod = moduleList[*it];
+		LyXModule * mod = theModuleList[*it];
 		if (mod)
 			// FIXME Unicode
 			m.name = toqstr(translateIfPossible(from_utf8(mod->getName())));
@@ -2886,8 +2886,8 @@ bool GuiDocument::providesScale(string const & font) const
 void GuiDocument::loadModuleInfo()
 {
 	moduleNames_.clear();
-	LyXModuleList::const_iterator it  = moduleList.begin();
-	LyXModuleList::const_iterator end = moduleList.end();
+	LyXModuleList::const_iterator it  = theModuleList.begin();
+	LyXModuleList::const_iterator end = theModuleList.end();
 	for (; it != end; ++it) {
 		modInfoStruct m;
 		m.id = it->getID();

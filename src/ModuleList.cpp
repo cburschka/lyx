@@ -30,7 +30,7 @@ namespace lyx {
 
 
 //global variable: module list
-ModuleList moduleList;
+ModuleList theModuleList;
 
 
 LyXModule::LyXModule(string const & n, string const & i, 
@@ -76,7 +76,7 @@ bool LyXModule::isCompatible(string const & modname) const
 			excluded_modules_.end())
 		return false;
 
-	LyXModule const * const lm = moduleList[modname];
+	LyXModule const * const lm = theModuleList[modname];
 	if (!lm)
 		return true;
 
@@ -91,10 +91,10 @@ bool LyXModule::isCompatible(string const & modname) const
 
 bool LyXModule::areCompatible(string const & mod1, string const & mod2)
 {
-	LyXModule const * const lm1 = moduleList[mod1];
+	LyXModule const * const lm1 = theModuleList[mod1];
 	if (lm1)
 		return lm1->isCompatible(mod2);
-	LyXModule const * const lm2 = moduleList[mod2];
+	LyXModule const * const lm2 = theModuleList[mod2];
 	if (lm2)
 		return lm2->isCompatible(mod1);
 	// Can't check it either way.
@@ -202,8 +202,8 @@ bool ModuleList::read()
 	
 	LYXERR(Debug::TCLASS, "End of parsing of lyxmodules.lst");
 
-	if (!moduleList.empty())
-		sort(moduleList.begin(), moduleList.end(), ModuleSorter());
+	if (!theModuleList.empty())
+		sort(theModuleList.begin(), theModuleList.end(), ModuleSorter());
 	return true;
 }
 

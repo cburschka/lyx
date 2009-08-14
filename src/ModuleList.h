@@ -147,6 +147,6 @@ private:
 	std::vector<LyXModule> modlist_;
 };
 
-extern ModuleList moduleList;
+extern ModuleList theModuleList;
 }
 #endif
