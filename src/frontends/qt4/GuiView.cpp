@@ -296,6 +296,8 @@ GuiView::GuiView(int id)
 	// GuiToolbars *must* be initialised before the menu bar.
 	normalSizedIcons(); // at least on Mac the default is 32 otherwise, which is huge
 	constructToolbars();
+	d.layout_ = new LayoutBox(*this);
+	d.stack_widget_->addWidget(d.layout_);	
 
 	// set ourself as the current view. This is needed for the menu bar
 	// filling, at least for the static special menu item on Mac. Otherwise
@@ -433,7 +435,6 @@ void GuiView::constructToolbars()
 	for (; it != d.toolbars_.end(); ++it)
 		delete it->second;
 	d.toolbars_.clear();
-	d.layout_ = 0;
 
 	// extracts the toolbars from the backend
 	Toolbars::Infos::iterator cit = guiApp->toolbars().begin();
@@ -1068,9 +1069,9 @@ void GuiView::removeWorkArea(GuiWorkArea * wa)
 }
 
 
-void GuiView::setLayoutDialog(LayoutBox * layout)
+LayoutBox * GuiView::getLayoutDialog() const
 {
-	d.layout_ = layout;
+	return d.layout_;
 }
 
 
@@ -2070,8 +2071,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			break;
 		}
 		case LFUN_DROP_LAYOUTS_CHOICE:
-			if (d.layout_)
-				d.layout_->showPopup();
+			d.layout_->showPopup();
 			break;
 
 		case LFUN_MENU_OPEN:
@@ -2480,8 +2480,7 @@ void GuiView::resetDialogs()
 	menuBar()->clear();
 	constructToolbars();
 	guiApp->menus().fillMenuBar(menuBar(), this, false);
-	if (d.layout_)
-		d.layout_->updateContents(true);
+	d.layout_->updateContents(true);
 	// Now update controls with current buffer.
 	theLyXFunc().setLyXView(this);
 	restoreLayout();

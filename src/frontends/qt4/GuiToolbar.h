@@ -122,8 +122,6 @@ private:
 	///
 	GuiView & owner_;
 	///
-	LayoutBox * layout_;
-	///
 	GuiCommandBuffer * command_buffer_;
 	///
 	ToolbarInfo const & tbinfo_;

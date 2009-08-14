@@ -82,7 +82,7 @@ public:
 	bool dispatch(FuncRequest const & cmd);
 
 	///
-	void setLayoutDialog(LayoutBox *);
+	LayoutBox * getLayoutDialog() const;
 
 	/// \return the buffer currently shown in this window
 	Buffer * buffer();

@@ -53,7 +53,7 @@ namespace frontend {
 
 GuiToolbar::GuiToolbar(ToolbarInfo const & tbinfo, GuiView & owner)
 	: QToolBar(toqstr(tbinfo.gui_name), &owner), visibility_(0),
-	  allowauto_(false), owner_(owner), layout_(0), command_buffer_(0),
+	  allowauto_(false), owner_(owner), command_buffer_(0),
 	  tbinfo_(tbinfo), filled_(false)
 {
 	setIconSize(owner.iconSize());
@@ -226,12 +226,14 @@ void GuiToolbar::add(ToolbarItem const & item)
 	case ToolbarItem::SEPARATOR:
 		addSeparator();
 		break;
-	case ToolbarItem::LAYOUTS:
-		layout_ = new LayoutBox(this, owner_);
+	case ToolbarItem::LAYOUTS: {
+		LayoutBox * layout = owner_.getLayoutDialog();
 		QObject::connect(this, SIGNAL(iconSizeChanged(QSize)),
-			layout_, SLOT(setIconSize(QSize)));
-		addWidget(layout_);
+			layout, SLOT(setIconSize(QSize)));
+		QAction * action = addWidget(layout);
+		action->setVisible(true);
 		break;
+	}
 	case ToolbarItem::MINIBUFFER:
 		command_buffer_ = new GuiCommandBuffer(&owner_);
 		addWidget(command_buffer_);
@@ -296,8 +298,9 @@ void GuiToolbar::update(bool in_math, bool in_table, bool in_review,
 	for (int i = 0; i < actions_.size(); ++i)
 		actions_[i]->update();
 
-	if (layout_)
-		layout_->setEnabled(lyx::getStatus(FuncRequest(LFUN_LAYOUT)).enabled());
+	LayoutBox * layout = owner_.getLayoutDialog();
+	if (layout)
+		layout->setEnabled(lyx::getStatus(FuncRequest(LFUN_LAYOUT)).enabled());
 
 	// emit signal
 	updated();

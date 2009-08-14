@@ -414,7 +414,6 @@ LayoutBox::LayoutBox(GuiView & owner)
 	QObject::connect(this, SIGNAL(activated(int)),
 		this, SLOT(selected(int)));
 
-	d->owner_.setLayoutDialog(this);
 	updateContents(true);
 }
 
