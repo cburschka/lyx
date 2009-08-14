@@ -65,6 +65,10 @@ using ::boost::scoped_ptr;
 
 namespace lyx {
 
+// Keep the linker happy on Windows
+void emergencyCleanup()
+{}
+
 namespace support {
 
 string itoa(unsigned int i)

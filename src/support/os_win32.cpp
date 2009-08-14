@@ -26,7 +26,6 @@
 
 #include "support/lassert.h"
 
-#include <csignal>
 #include <cstdlib>
 #include <vector>
 
@@ -72,6 +71,9 @@
 using namespace std;
 
 namespace lyx {
+
+void emergencyCleanup();
+
 namespace support {
 namespace os {
 
@@ -86,9 +88,7 @@ BOOL terminate_handler(DWORD event)
 	if (event == CTRL_CLOSE_EVENT
 	    || event == CTRL_LOGOFF_EVENT
 	    || event == CTRL_SHUTDOWN_EVENT) {
-		::raise(SIGTERM);
-		// Relinquish our time slice.
-		Sleep(0);
+		lyx::emergencyCleanup();
 		return TRUE;
 	}
 	return FALSE;

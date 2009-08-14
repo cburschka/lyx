@@ -56,6 +56,11 @@ Messages & getGuiMessages()
 }
 
 
+// Keep the linker happy on Windows
+void emergencyCleanup()
+{}
+
+
 string const trim(string const & a, char const * p)
 {
 	// LASSERT(p, /**/);
