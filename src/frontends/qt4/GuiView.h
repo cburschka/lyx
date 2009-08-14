@@ -91,6 +91,8 @@ public:
 	void setBuffer(Buffer * b); ///< \c Buffer to set.
 	///
 	bool closeBuffer();
+	/// hides the buffer and makes sure it is clean
+	bool hideBuffer();
 	/// load a document into the current workarea.
 	Buffer * loadDocument(support::FileName const &  name, ///< File to load.
 		bool tolastfiles = true);  ///< append to the "Open recent" menu?
@@ -296,8 +298,10 @@ private:
 	///
 	bool closeBuffer(Buffer & buf, bool close_buffer,
 		bool tolastopened = false, bool mark_active = false);
-	///
-	bool saveBufferIfNeeded(Buffer & buf);
+	/// gives the user the possibility to save his work 
+	/// or to discard the changes. If hiding is true, the
+	/// document will be reloaded.
+	bool saveBufferIfNeeded(Buffer & buf, bool hiding);
 	///
 	bool closeBufferAll(bool tolastopened = false);
 	///

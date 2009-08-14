@@ -1532,13 +1532,14 @@ void TabWorkArea::closeCurrentBuffer()
 
 void TabWorkArea::closeCurrentTab()
 {
+	GuiWorkArea * wa;
 	if (clicked_tab_ == -1)
-		removeWorkArea(currentWorkArea());
+		wa = currentWorkArea();
 	else {
-		GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(widget(clicked_tab_));
+		wa = dynamic_cast<GuiWorkArea *>(widget(clicked_tab_));
 		LASSERT(wa, /**/);
-		removeWorkArea(wa);
 	}
+	wa->view().hideBuffer();
 }
 
 ///

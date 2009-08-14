@@ -1925,6 +1925,13 @@ bool GuiView::saveBuffer(Buffer & b)
 }
 
 
+bool GuiView::hideBuffer()
+{
+	Buffer * buf = buffer();
+	return buf && closeBuffer(*buf, false);
+}
+
+
 bool GuiView::closeBuffer()
 {
 	Buffer * buf = buffer();
@@ -1941,7 +1948,7 @@ bool GuiView::closeBuffer(Buffer & buf, bool close_buffer,
 	for (size_t i = 0; i < theSession().bookmarks().size(); ++i)
 		theLyXFunc().gotoBookmark(i+1, false, false);
 
-	if (saveBufferIfNeeded(buf)) {
+	if (saveBufferIfNeeded(buf, !close_buffer)) {
 		// save in sessions if requested
 		// do not save childs if their master
 		// is opened as well
@@ -1957,7 +1964,7 @@ bool GuiView::closeBuffer(Buffer & buf, bool close_buffer,
 }
 
 
-bool GuiView::saveBufferIfNeeded(Buffer & buf)
+bool GuiView::saveBufferIfNeeded(Buffer & buf, bool hiding)
 {
 	if (buf.isClean() || buf.paragraphs().empty())
 		return true;
@@ -1976,10 +1983,21 @@ bool GuiView::saveBufferIfNeeded(Buffer & buf)
 	raise();
 	activateWindow();
 
-	docstring const text = bformat(_("The document %1$s has unsaved changes."
-		"\n\nDo you want to save the document or discard the changes?"), file);
-	int const ret = Alert::prompt(_("Save changed document?"),
-		text, 0, 2, _("&Save"), _("&Discard"), _("&Cancel"));
+	int ret;
+	if (hiding && buf.isUnnamed()) {
+		docstring const text = bformat(_("The document %1$s has not been "
+					     "saved yet.\n\nDo you want to save "
+					     "the document?"), file);
+		ret = Alert::prompt(_("Save new document?"), 
+			text, 0, 1, _("&Save"), _("&Cancel"));
+		if (ret == 1)
+			++ret;
+	} else {
+		docstring const text = bformat(_("The document %1$s has unsaved changes."
+			"\n\nDo you want to save the document or discard the changes?"), file);
+		ret = Alert::prompt(_("Save changed document?"),
+			text, 0, 2, _("&Save"), _("&Discard"), _("&Cancel"));
+	}
 
 	switch (ret) {
 	case 0:
@@ -1991,6 +2009,11 @@ bool GuiView::saveBufferIfNeeded(Buffer & buf)
 		// have no autosave file but I guess
 		// this is really improbable (Jug)
 		buf.removeAutosaveFile();
+		if (hiding) {
+			// revert all changes
+			buf.loadLyXFile(buf.fileName());
+			buf.markClean();
+		}
 		break;
 	case 2:
 		return false;
