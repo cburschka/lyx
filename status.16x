@@ -183,8 +183,8 @@ What's new
 
 * USER INTERFACE
 
-- Prevent a crash when scaling down an image with an odd height
-  to 50% on screen (part of bug 5957).
+- Prevent a crash in Qt when scaling images on screen. This could occur
+  only for certain scaling factors and image sizes (bug 5957).  
 
 - Fix bookmark navigation crash when multiple windows are used
   (bug 6000).
