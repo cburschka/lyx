@@ -84,6 +84,7 @@ def layouts_l10n(input_files, output, base):
     InsetLayout = re.compile(r'^InsetLayout\s+(.*)')
     DescBegin = re.compile(r'#+\s*DescriptionBegin\s*$')
     DescEnd = re.compile(r'#+\s*DescriptionEnd\s*$')
+    Category = re.compile(r'#Category: (.*)$')
     I18nPreamble = re.compile(r'\s*(Lang)|(Babel)Preamble\s*$')
     EndI18nPreamble = re.compile(r'\s*End(Lang)|(Babel)Preamble\s*$')
     I18nString = re.compile(r'_\(([^\)]+)\)')
@@ -162,6 +163,11 @@ def layouts_l10n(input_files, output, base):
             if res != None:
                 string = res.group(1)
                 string = string.replace('_', ' ')
+                writeString(out, src, base, lineno, string)
+                continue
+            res = Category.search(line)
+            if res != None:
+                string = res.group(1)
                 writeString(out, src, base, lineno, string)
                 continue
     out.close()
