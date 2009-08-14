@@ -50,61 +50,62 @@ namespace lyx {
 class LyXModule {
 public:
 	///
-	LyXModule(std::string const & n, std::string const & i, 
-	          std::string const & d, std::vector<std::string> const & p,
-	          std::vector<std::string> const & r, 
-	          std::vector<std::string> const & e,
-	          std::string const & c);
+	LyXModule(std::string const & name, std::string const & id, 
+	          std::string const & description, 
+	          std::vector<std::string> const & packagelist,
+	          std::vector<std::string> const & requires, 
+	          std::vector<std::string> const & excludes,
+	          std::string const & catgy);
 	/// whether the required packages are available
 	bool isAvailable();
 	///
-	std::string const & getName() const { return name; }
+	std::string const & getName() const { return name_; }
 	///
-	std::string const & getID() const { return id; }
+	std::string const & getID() const { return id_; }
 	///
-	std::string const & getFilename() const { return filename; }
+	std::string const & getFilename() const { return filename_; }
 	///
-	std::string const & getDescription() const { return description; }
+	std::string const & getDescription() const { return description_; }
 	///
 	std::vector<std::string> const & getPackageList() const
-		{ return packageList; }
+		{ return package_list_; }
 	///
 	std::vector<std::string> const & getRequiredModules() const 
-		{ return requiredModules; }
+		{ return required_modules_; }
 	/// Modules this one excludes: the list should be treated disjunctively
 	std::vector<std::string> const & getExcludedModules() const 
-		{ return excludedModules; }
+		{ return excluded_modules_; }
 	///
 	std::string category() const { return category_; }
 	/// \return true if the module is compatible with this one, i.e.,
 	/// it does not exclude us and we do not exclude it.
-	/// this will also return true if modName is unknown and we do not
+	/// this will also return true if modname is unknown and we do not
 	/// exclude it, since in that case we cannot check its exclusions.
-	bool isCompatible(std::string const & modName) const;
+	bool isCompatible(std::string const & modname) const;
 	///
 	static bool areCompatible(std::string const & mod1, std::string const & mod2);
 private:
 	/// what appears in the ui
-	std::string name;
+	std::string name_;
 	/// the module's unique identifier
 	/// at present, this is the filename, without the extension
-	std::string id;
+	std::string id_;
 	/// the filename
-	std::string filename;
+	std::string filename_;
 	/// a short description for use in the ui
-	std::string description;
+	std::string description_;
 	/// the LaTeX packages on which this depends, if any
-	std::vector<std::string> packageList;
+	std::vector<std::string> package_list_;
 	/// Modules this one requires: at least one
-	std::vector<std::string> requiredModules;
+	std::vector<std::string> required_modules_;
 	/// Modules this one excludes: none of these
-	std::vector<std::string> excludedModules;
-	///
+	std::vector<std::string> excluded_modules_;
+	/// Category, also used in the UI
 	std::string category_;
 	///
-	bool checked;
+	bool checked_;
 	///
-	bool available;
+	bool available_;
 };
 
 typedef std::vector<LyXModule> LyXModuleList;

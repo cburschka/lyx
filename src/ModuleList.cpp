@@ -37,11 +37,11 @@ LyXModule::LyXModule(string const & n, string const & i,
 	                   string const & d, vector<string> const & p,
 	                   vector<string> const & r, vector<string> const & e,
 	                   string const & c):
-	name(n), id(i), description(d), packageList(p), 
-	requiredModules(r), excludedModules(e), category_(c),
-	checked(false)
+	name_(n), id_(i), description_(d), package_list_(p), 
+	required_modules_(r), excluded_modules_(e), category_(c),
+	checked_(false)
 {
-	filename = id + ".module";
+	filename_ = id_ + ".module";
 }
 
 
@@ -49,40 +49,40 @@ bool LyXModule::isAvailable() {
 #ifdef TEX2LYX
 	return true;
 #else
-	if (packageList.empty())
+	if (package_list_.empty())
 		return true;
-	if (checked)
-		return available;
-	checked = true;
+	if (checked_)
+		return available_;
+	checked_ = true;
 	//check whether all of the required packages are available
-	vector<string>::const_iterator it  = packageList.begin();
-	vector<string>::const_iterator end = packageList.end(); 
+	vector<string>::const_iterator it  = package_list_.begin();
+	vector<string>::const_iterator end = package_list_.end(); 
 	for (; it != end; ++it) {
 		if (!LaTeXFeatures::isAvailable(*it)) {
-			available = false;
-			return available;
+			available_ = false;
+			return available_;
 		}
 	}
-	available = true;
-	return available;
+	available_ = true;
+	return available_;
 #endif
 }
 
 
-bool LyXModule::isCompatible(string const & modName) const
+bool LyXModule::isCompatible(string const & modname) const
 {
 	// do we exclude it?
-	if (find(excludedModules.begin(), excludedModules.end(), modName) !=
-			excludedModules.end())
+	if (find(excluded_modules_.begin(), excluded_modules_.end(), modname) !=
+			excluded_modules_.end())
 		return false;
 
-	LyXModule const * const lm = moduleList[modName];
+	LyXModule const * const lm = moduleList[modname];
 	if (!lm)
 		return true;
 
 	// does it exclude us?
-	vector<string> const excMods = lm->getExcludedModules();
-	if (find(excMods.begin(), excMods.end(), id) != excMods.end())
+	vector<string> const excmods = lm->getExcludedModules();
+	if (find(excmods.begin(), excmods.end(), id_) != excmods.end())
 		return false;
 
 	return true;
@@ -149,8 +149,8 @@ bool ModuleList::read()
 			finished = true;
 			break;
 		default:
-			string const modName = lex.getString();
-			LYXERR(Debug::TCLASS, "Module name: " << modName);
+			string const modname = lex.getString();
+			LYXERR(Debug::TCLASS, "Module name: " << modname);
 			if (!lex.next())
 				break;
 			string const fname = lex.getString();
@@ -196,7 +196,7 @@ bool ModuleList::read()
 			LYXERR(Debug::TCLASS, "Category: " << catgy);
 			// This code is run when we have
 			// modName, fname, desc, pkgs, req, exc, and catgy
-			addLayoutModule(modName, fname, desc, pkgs, req, exc, catgy);
+			addLayoutModule(modname, fname, desc, pkgs, req, exc, catgy);
 		} // end switch
 	} //end while
 	
@@ -208,12 +208,12 @@ bool ModuleList::read()
 }
 
 
-void ModuleList::addLayoutModule(string const & moduleName, 
+void ModuleList::addLayoutModule(string const & modname, 
 	string const & filename, string const & description,
 	vector<string> const & pkgs, vector<string> const & req,
 	vector<string> const & exc, string const & catgy)
 {
-	LyXModule lm(moduleName, filename, description, pkgs, req, exc, catgy);
+	LyXModule lm(modname, filename, description, pkgs, req, exc, catgy);
 	modlist_.push_back(lm);
 }
 
