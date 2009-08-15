@@ -91,8 +91,8 @@ public:
 	void setBuffer(Buffer * b); ///< \c Buffer to set.
 	///
 	bool closeBuffer();
-	/// hides the buffer and makes sure it is clean
-	bool hideBuffer();
+	/// hides the workarea and makes sure it is clean
+	bool hideWorkArea(GuiWorkArea * wa);
 	/// load a document into the current workarea.
 	Buffer * loadDocument(support::FileName const &  name, ///< File to load.
 		bool tolastfiles = true);  ///< append to the "Open recent" menu?

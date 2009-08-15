@@ -1925,10 +1925,10 @@ bool GuiView::saveBuffer(Buffer & b)
 }
 
 
-bool GuiView::hideBuffer()
+bool GuiView::hideWorkArea(GuiWorkArea * wa)
 {
-	Buffer * buf = buffer();
-	return buf && closeBuffer(*buf, false);
+	Buffer & buf = wa->bufferView().buffer();
+	return closeBuffer(buf, false);
 }
 
 

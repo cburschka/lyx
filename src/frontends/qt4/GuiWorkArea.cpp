@@ -1539,7 +1539,7 @@ void TabWorkArea::closeCurrentTab()
 		wa = dynamic_cast<GuiWorkArea *>(widget(clicked_tab_));
 		LASSERT(wa, /**/);
 	}
-	wa->view().hideBuffer();
+	wa->view().hideWorkArea(wa);
 }
 
 ///
