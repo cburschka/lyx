@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-08-15 15:12+0200\n"
-"PO-Revision-Date: 2009-08-15 15:17+0200\n"
+"PO-Revision-Date: 2009-08-15 17:10+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -266,9 +266,8 @@ msgstr ""
 
 #: src/frontends/qt4/ui/BiblioUi.ui:123
 #: src/frontends/qt4/ui/PrefLatexUi.ui:119
-#, fuzzy
 msgid "Bibliography generation"
-msgstr "Überschrift des Literaturverzeichnisses"
+msgstr "Erzeugung des Literaturverzeichnisses"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:134 src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:130
@@ -290,7 +289,7 @@ msgstr "&Optionen:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:178
 msgid "Define options such as --min-crossrefs (see man bibtex)."
-msgstr ""
+msgstr "Optionen wie --min-crossrefs festlegen (vgl. man bibtex)"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:21
 msgid "LyX: Add BibTeX Database"
@@ -596,6 +595,8 @@ msgid ""
 "Append the name of this branch to the output filename, given the branch is "
 "active."
 msgstr ""
+"Den Namen dieses Zweigs an den Dateinamen anhängen, falls der Zweig aktiv "
+"ist."
 
 #: src/frontends/qt4/ui/BranchesUi.ui:38
 #, fuzzy
@@ -18525,15 +18526,13 @@ msgstr "Nein"
 msgid "Enter new branch name"
 msgstr "Neuen Namen für den Zweig eingeben"
 
-#: src/frontends/qt4/GuiBranches.cpp:173
-#, fuzzy, c-format
+#: src/frontends/qt4/GuiBranches.cpp:173, c-format
 msgid ""
 "A branch with the name \"%1$s\" already exists.\n"
 "Do you want to merge branch \"%2$s\" with that one?"
 msgstr ""
-"Die Datei %1$s existiert bereits.\n"
-"\n"
-"Möchten Sie diese Datei überschreiben?"
+"Es gibt bereits einen Zweig mit dem Namen \"%1$s\".\n"
+"Möchten Sie den Zweig \"%2$s\" mit diesem zusammenführen?"
 
 #: src/frontends/qt4/GuiBranches.cpp:177
 #, fuzzy
@@ -18545,9 +18544,8 @@ msgid "Renaming failed"
 msgstr "Umbenennung fehlgeschlagen"
 
 #: src/frontends/qt4/GuiBranches.cpp:186
-#, fuzzy
 msgid "The branch could not be renamed."
-msgstr "Das Rechtschreibprogramm konnte nicht gestartet werden\n"
+msgstr "Der Zweig konnte nicht umbenannt werden."
 
 #: src/frontends/qt4/GuiChanges.cpp:39
 msgid "Merge Changes"
@@ -18949,7 +18947,7 @@ msgstr "Nummerierung & Inhaltsverzeichnis"
 
 #: src/frontends/qt4/GuiDocument.cpp:1059
 msgid "Indexes"
-msgstr "Stichwortverzeichnisse"
+msgstr "Stichwortverzeichnis"
 
 #: src/frontends/qt4/GuiDocument.cpp:1060
 msgid "PDF Properties"
@@ -19378,23 +19376,20 @@ msgid "LaTeX/LyX Documents (*.tex *.lyx)"
 msgstr "LaTeX/LyX-Dokumente (*.tex *.lyx)"
 
 #: src/frontends/qt4/GuiIndex.cpp:34
-#, fuzzy
 msgid "Index Entry Settings"
-msgstr "Stichwort|S"
+msgstr "Einstellungen zum Stichworteintrag"
 
 #: src/frontends/qt4/GuiIndices.cpp:52
 msgid "Label Color"
 msgstr "Farbe der Indexmarke"
 
 #: src/frontends/qt4/GuiIndices.cpp:185
-#, fuzzy
 msgid "Cannot remove standard index"
-msgstr "Das temporäre Verzeichnis konnte nicht entfernt werden"
+msgstr "Das Standard-Stichwortverzeichnis kann nicht entfernt werden."
 
 #: src/frontends/qt4/GuiIndices.cpp:186
-#, fuzzy
 msgid "The default index cannot be removed."
-msgstr "Die letzte zu druckende Zeile"
+msgstr "Das Standard-Stichwortverzeichnis kann nicht entfernt werden."
 
 #: src/frontends/qt4/GuiIndices.cpp:206
 msgid "Enter new index name"
@@ -19403,6 +19398,8 @@ msgstr "Neuen Indexnamen eingeben"
 #: src/frontends/qt4/GuiIndices.cpp:215
 msgid "The index could not be renamed. Check if the new name already exists."
 msgstr ""
+"Das Stichwortverzeichnis konnte nicht umbenannt werden. Überprüfen Sie, ob "
+"der Name schon existiert."
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "unknown"
@@ -19611,7 +19608,7 @@ msgstr "Wählen Sie ein Dokumentverzeichnis"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1231
 msgid "Set the path to the thesaurus dictionaries"
-msgstr ""
+msgstr "Den Pfad zum Thesaurus-Wörterbuch festlegen"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1240
 #, fuzzy
@@ -20535,7 +20532,7 @@ msgstr "Keine Gruppe"
 
 #: src/frontends/qt4/Menus.cpp:730 src/frontends/qt4/Menus.cpp:731
 msgid "More Spelling Suggestions"
-msgstr ""
+msgstr "Weitere Rechtschreibvorschläge"
 
 #: src/frontends/qt4/Menus.cpp:770 src/frontends/qt4/Menus.cpp:771
 msgid "Invisible"
