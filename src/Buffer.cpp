@@ -327,7 +327,13 @@ Buffer::~Buffer()
 		if (theBufferList().isLoaded(child))
 			theBufferList().releaseChild(this, child);
 	}
-	
+
+	if (!isClean()) {
+		docstring msg = _("Buffer had unsaved changes when destroyed!\n");
+		msg += emergencyWrite();
+		frontend::Alert::warning(_("Attempting to destroy dirty Buffer!"), msg);
+	}
+		
 	// clear references to children in macro tables
 	d->children_positions.clear();
 	d->position_to_children.clear();
