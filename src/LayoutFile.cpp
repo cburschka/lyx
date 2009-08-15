@@ -136,27 +136,27 @@ bool LayoutFileList::read()
 		default:
 			string const fname = lex.getString();
 			LYXERR(Debug::TCLASS, "Fname: " << fname);
-			if (lex.next()) {
-				string const clname = lex.getString();
-				LYXERR(Debug::TCLASS, "Clname: " << clname);
-				if (lex.next()) {
-					string const desc = lex.getString();
-					LYXERR(Debug::TCLASS, "Desc: " << desc);
-					if (lex.next()) {
-						bool avail = lex.getBool();
-						LYXERR(Debug::TCLASS, "Avail: " << avail);
-						// This code is run when we have
-						// fname, clname, desc, and avail
-						LayoutFile * tmpl = new LayoutFile(fname, clname, desc, avail);
-						if (lyxerr.debugging(Debug::TCLASS)) {
-							// only system layout files are loaded here so no
-							// buffer path is needed.
-							tmpl->load();
-						}
-						classmap_[fname] = tmpl;
-					}
-				}
+			if (!lex.next()) 
+				break;
+			string const clname = lex.getString();
+			LYXERR(Debug::TCLASS, "Clname: " << clname);
+			if (!lex.next()) 
+				break;
+			string const desc = lex.getString();
+			LYXERR(Debug::TCLASS, "Desc: " << desc);
+			if (!lex.next()) 
+				break;
+			bool avail = lex.getBool();
+			LYXERR(Debug::TCLASS, "Avail: " << avail);
+			// This code is run when we have
+			// fname, clname, desc, and avail
+			LayoutFile * tmpl = new LayoutFile(fname, clname, desc, avail);
+			if (lyxerr.debugging(Debug::TCLASS)) {
+				// only system layout files are loaded here so no
+				// buffer path is needed.
+				tmpl->load();
 			}
+			classmap_[fname] = tmpl;
 		}
 	}
 	LYXERR(Debug::TCLASS, "End of parsing of textclass.lst");
