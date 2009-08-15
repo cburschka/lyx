@@ -204,13 +204,14 @@ void regexpDispatch(Cursor & cur, FuncRequest const & cmd)
 		return;
 	}
 	cur.recordUndo();
-	docstring const save_selection = grabAndEraseSelection(cur);
-	selClearOrDel(cur);
-	// replaceSelection(cur);
+	docstring sel = cur.selectionAsString(false);
+
+	// It may happen that sel is empty but there is a selection
+	replaceSelection(cur);
 
 	cur.insert(new InsetMathHull(hullRegexp));
 	cur.nextInset()->edit(cur, true);
-	cur.niceInsert(save_selection);
+	cur.niceInsert(sel);
 
 	cur.message(_("Regexp editor mode"));
 }
