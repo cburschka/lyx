@@ -296,8 +296,6 @@ GuiView::GuiView(int id)
 	// GuiToolbars *must* be initialised before the menu bar.
 	normalSizedIcons(); // at least on Mac the default is 32 otherwise, which is huge
 	constructToolbars();
-	d.layout_ = new LayoutBox(*this);
-	d.stack_widget_->addWidget(d.layout_);	
 
 	// set ourself as the current view. This is needed for the menu bar
 	// filling, at least for the static special menu item on Mac. Otherwise
@@ -435,6 +433,12 @@ void GuiView::constructToolbars()
 	for (; it != d.toolbars_.end(); ++it)
 		delete it->second;
 	d.toolbars_.clear();
+
+	// I don't like doing this here, but the standard toolbar
+	// destroys this object when it's destroyed itself (vfr)
+	d.layout_ = new LayoutBox(*this);
+	d.stack_widget_->addWidget(d.layout_);
+	d.layout_->move(0,0);
 
 	// extracts the toolbars from the backend
 	Toolbars::Infos::iterator cit = guiApp->toolbars().begin();
