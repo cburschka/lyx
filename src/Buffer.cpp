@@ -967,7 +967,7 @@ docstring Buffer::emergencyWrite()
 		LYXERR0("  " << s);
 		if (writeFile(FileName(s))) {
 			markClean();
-			user_message += bformat(_("  Saved to %1$. Phew.\n"), from_utf8(s));
+			user_message += bformat(_("  Saved to %1$s. Phew.\n"), from_utf8(s));
 			return user_message;
 		} else {
 			user_message += _("  Save failed! Trying again...\n");
@@ -980,7 +980,7 @@ docstring Buffer::emergencyWrite()
 	lyxerr << ' ' << s << endl;
 	if (writeFile(FileName(s))) {
 		markClean();
-		user_message += bformat(_("  Saved to %1$. Phew.\n"), from_utf8(s));
+		user_message += bformat(_("  Saved to %1$s. Phew.\n"), from_utf8(s));
 		return user_message;
 	}
 
@@ -994,7 +994,7 @@ docstring Buffer::emergencyWrite()
 	lyxerr << ' ' << s << endl;
 	if (writeFile(FileName(s))) {
 		markClean();
-		user_message += bformat(_("  Saved to %1$. Phew.\n"), from_utf8(s));
+		user_message += bformat(_("  Saved to %1$s. Phew.\n"), from_utf8(s));
 		return user_message;
 	}
 

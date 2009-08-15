@@ -213,7 +213,7 @@ void rescanTexStyles()
 		return;
 	// FIXME UNICODE
 	frontend::Alert::error(_("Could not update TeX information"),
-		bformat(_("The script `%s' failed."), from_utf8(command.absFilename())));
+		bformat(_("The script `%1$s' failed."), from_utf8(command.absFilename())));
 }
 
 
