@@ -3718,6 +3718,79 @@ is needed by several modules to place footnotes at the end of sections,
 \end_layout
 
 \begin_layout Subsection
+Braille module
+\end_layout
+
+\begin_layout Subsubsection
+braille
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "braille"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/braille/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+braille 
+\family default
+makes it possible to typeset Braille, a character system for blind people.
+\end_layout
+
+\begin_layout Subsection
+Dropped Capitals module
+\end_layout
+
+\begin_layout Subsubsection
+lettrine
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "lettrine"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/lettrine/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+lettrine
+\family default
+\color none
+ is used to create 
+\begin_inset CommandInset href
+LatexCommand href
+name "initials"
+target "http://en.wikipedia.org/wiki/Initial"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
 Linguistics module
 \end_layout
 
@@ -3809,38 +3882,6 @@ enumitem
  itemize, description).
  It is used by the Linguistics module to fine tune the appearance of numbered
  subexamples.
-\end_layout
-
-\begin_layout Subsection
-Braille module
-\end_layout
-
-\begin_layout Subsubsection
-braille
-\end_layout
-
-\begin_layout Description
-Found: 
-\begin_inset Info
-type  "package"
-arg   "braille"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-CTAN: 
-\family typewriter
-macros/latex/contrib/braille/
-\end_layout
-
-\begin_layout Description
-Notes: The package 
-\family sans
-braille 
-\family default
-makes it possible to typeset Braille, a character system for blind people.
 \end_layout
 
 \begin_layout Section
@@ -4266,35 +4307,6 @@ natbib
  It supports cite styles which are common in human sciences and law studies,
  footcites, ibidems, and more.
  You'll need to have jurabib version 0.6 at least.
-\end_layout
-
-\begin_layout Subsection
-lettrine
-\end_layout
-
-\begin_layout Description
-Found: 
-\begin_inset Info
-type  "package"
-arg   "lettrine"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-CTAN: 
-\family typewriter
-macros/latex/contrib/lettrine/
-\end_layout
-
-\begin_layout Description
-Notes: The package 
-\family sans
-lettrine
-\family default
-\color none
- is used by LyX module capitals to display dropped capitals.
 \end_layout
 
 \begin_layout Subsection
