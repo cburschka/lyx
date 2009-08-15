@@ -3,19 +3,20 @@
 # Zdenko Podobný <zdpo@mailbox.sk>
 #
 # Kornel Benko <Kornel.Benko@berlin.de>, 2009.
+# Kornel Benko <kornel@lyx.org>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-08-08 09:16+0200\n"
-"PO-Revision-Date: 2009-08-08 15:05+0200\n"
-"Last-Translator: Kornel Benko <Kornel.Benko@berlin.de>\n"
-"Language-Team: Slowakisch <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2009-08-15 14:32+0200\n"
+"Last-Translator: Kornel Benko <kornel@lyx.org>\n"
+"Language-Team: Slowakisch <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 0.3\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
 msgid "Version"
@@ -8363,7 +8364,7 @@ msgstr "Rámok"
 
 #: lib/layouts/stdinsets.inc:222
 msgid "Box:Shaded"
-msgstr "Rámok:Stienený"
+msgstr "Rámok:Tieňovaný"
 
 #: lib/layouts/stdinsets.inc:231
 msgid "Float"
@@ -10517,7 +10518,7 @@ msgstr "S Tieňom"
 
 #: lib/ui/stdcontext.inc:158
 msgid "Shaded Background|B"
-msgstr "Stienené Pozadie|P"
+msgstr "Tieňované Pozadie|P"
 
 #: lib/ui/stdcontext.inc:159
 msgid "Double Frame|u"
@@ -15141,7 +15142,7 @@ msgstr "zosivelé pozadie vložky"
 
 #: src/Color.cpp:162
 msgid "shaded box"
-msgstr "stienený rámok"
+msgstr "tieňovaný rámok"
 
 #: src/Color.cpp:163
 msgid "listings background"
@@ -17319,7 +17320,7 @@ msgstr "S tieňom"
 
 #: src/frontends/qt4/GuiBox.cpp:58
 msgid "Shaded background"
-msgstr "Stienené pozadie"
+msgstr "Tieňované pozadie"
 
 #: src/frontends/qt4/GuiBox.cpp:59
 msgid "Double rectangular frame"
@@ -19543,7 +19544,7 @@ msgstr "s tieňom"
 
 #: src/insets/InsetBox.cpp:70
 msgid "shaded background"
-msgstr "stienené pozadie"
+msgstr "tieňované pozadie"
 
 #: src/insets/InsetBox.cpp:71
 msgid "double frame"
