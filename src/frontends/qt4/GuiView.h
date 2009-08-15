@@ -296,7 +296,7 @@ private:
 	///
 	bool saveBuffer(Buffer & b);
 	///
-	bool closeBuffer(Buffer & buf, bool close_buffer,
+	bool closeWorkArea(GuiWorkArea * wa, bool close_buffer,
 		bool tolastopened = false, bool mark_active = false);
 	/// gives the user the possibility to save his work 
 	/// or to discard the changes. If hiding is true, the

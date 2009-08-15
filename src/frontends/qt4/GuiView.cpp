@@ -613,7 +613,7 @@ bool GuiView::closeBufferAll(bool tolastopened)
 			if (b->parent()) {
 				// This is a child document, just close the tab
 				// after saving but keep the file loaded.
-				if (!closeBuffer(*b, false, tolastopened, is_active_wa))
+				if (!closeWorkArea(wa, false, tolastopened, is_active_wa))
 					return false;
 				continue;
 			}
@@ -627,7 +627,7 @@ bool GuiView::closeBufferAll(bool tolastopened)
 				// If a child is dirty, do not close
 				// without user intervention
 				//FIXME: should buffers be closed or not?
-				if (!closeBuffer(*c, false, false))
+				if (!closeWorkArea(workArea(*c), false, false))
 					return false;
 			}
 
@@ -637,7 +637,7 @@ bool GuiView::closeBufferAll(bool tolastopened)
 
 			// closeBuffer() needs buffer workArea still alive and
 			// set as currrent one, and destroys it
-			if (b && !closeBuffer(*b, close_buffer, tolastopened, is_active_wa))
+			if (b && !closeWorkArea(wa, close_buffer, tolastopened, is_active_wa))
 				return false;
 		}
 	}
@@ -1917,19 +1917,19 @@ bool GuiView::saveBuffer(Buffer & b)
 
 bool GuiView::hideWorkArea(GuiWorkArea * wa)
 {
-	Buffer & buf = wa->bufferView().buffer();
-	return closeBuffer(buf, false);
+	return closeWorkArea(wa, false);
 }
 
 
 bool GuiView::closeBuffer()
 {
-	Buffer * buf = buffer();
-	return buf && closeBuffer(*buf, !buf->parent());
+	GuiWorkArea * wa = currentMainWorkArea();
+	Buffer & buf = wa->bufferView().buffer();
+	return wa && closeWorkArea(wa, !buf.parent());
 }
 
 
-bool GuiView::closeBuffer(Buffer & buf, bool close_buffer,
+bool GuiView::closeWorkArea(GuiWorkArea * wa, bool close_buffer,
 	bool tolastopened, bool mark_active)
 {
 	// goto bookmark to update bookmark pit.
@@ -1938,6 +1938,7 @@ bool GuiView::closeBuffer(Buffer & buf, bool close_buffer,
 	for (size_t i = 0; i < theSession().bookmarks().size(); ++i)
 		theLyXFunc().gotoBookmark(i+1, false, false);
 
+	Buffer & buf = wa->bufferView().buffer();
 	if (saveBufferIfNeeded(buf, !close_buffer)) {
 		// save in sessions if requested
 		// do not save childs if their master
@@ -1945,7 +1946,7 @@ bool GuiView::closeBuffer(Buffer & buf, bool close_buffer,
 		if (tolastopened)
 			theSession().lastOpened().add(buf.fileName(), mark_active);
 		if (!close_buffer)
-			removeWorkArea(currentMainWorkArea());
+			removeWorkArea(wa);
 		else
 			theBufferList().release(&buf);
 		return true;
