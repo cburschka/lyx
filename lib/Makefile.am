@@ -1008,7 +1008,6 @@ dist_layouts_DATA =\
 	layouts/book.layout \
 	layouts/braille.module \
 	layouts/broadway.layout \
-	layouts/capitals.module \
 	layouts/chess.layout \
 	layouts/cl2emult.layout \
 	layouts/db_lyxmacros.inc \
@@ -1049,6 +1048,7 @@ dist_layouts_DATA =\
 	layouts/IEEEtran.layout \
 	layouts/ijmpc.layout \
 	layouts/ijmpd.layout \
+	layouts/initials.module \
 	layouts/iopart.layout \
 	layouts/isprs.layout \
 	layouts/jarticle.layout \

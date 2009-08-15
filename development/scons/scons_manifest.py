@@ -2777,10 +2777,10 @@ lib_layouts_inc_files = Split('''
 
 lib_layouts_module_files = Split('''
     braille.module
-    capitals.module
     endnotes.module
     foottoend.module
     hanging.module
+    initials.module
     linguistics.module
     logicalmkup.module
     minimalistic.module

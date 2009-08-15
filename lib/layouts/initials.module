@@ -1,0 +1,23 @@
+#\DeclareLyXModule{Initials}
+#DescriptionBegin
+#Define character style for initials.
+#Hint: try to use math and its artistic font styles like Fractur or the Calligraphic one.
+#DescriptionEnd
+#Category: charstyles
+
+Format 16
+
+InsetLayout CharStyle:Initial
+	LyxType			charstyle
+	LabelString		"Initial"
+	LatexType		command
+	LatexName		lettrine
+	Font
+	  Size			Large
+	EndFont
+	Requires		lettrine
+	Preamble
+		\usepackage{lettrine}
+	EndPreamble
+End
+
