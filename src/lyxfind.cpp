@@ -507,7 +507,7 @@ size_t find_matching_brace(string const & s, size_t pos)
 	return s.size();
 }
 
-/// Within \regex{} apply get_regex_escapes(), while outside apply get_lyx_unescapes().
+/// Within \regexp{} apply get_regex_escapes(), while outside apply get_lyx_unescapes().
 string escape_for_regex(string s)
 {
 	size_t pos = 0;
@@ -596,9 +596,6 @@ bool braces_match(string::const_iterator const & beg,
 }
 
 /** The class performing a match between a position in the document and the FindAdvOptions.
- **
- ** @todo The user-entered regexp expression(s) should be enclosed within something like \regexp{},
- **       to be written by a dedicated Inset, so to avoid escaping it in escape_for_regex().
  **/
 class MatchStringAdv {
 public:
@@ -768,8 +765,9 @@ string MatchStringAdv::normalize(docstring const & s) const
 	while ((pos = t.find("\n")) != string::npos)
 		t.replace(pos, 1, " ");
 	// Remove stale empty \emph{}, \textbf{} and similar blocks from latexify
-	while (regex_replace(t, t, "\\\\[a-zA-Z_]+(\\{\\})+", ""))
-		;
+	LYXERR(Debug::DEBUG, "Removing stale empty \emph{}, \textbf{} macros from: " << t);
+	while (regex_replace(t, t, "\\\\(emph|textbf)(\\{\\})+", ""))
+		LYXERR(Debug::DEBUG, "  further removing stale empty \emph{}, \textbf{} macros from: " << t);
 	return t;
 }
 

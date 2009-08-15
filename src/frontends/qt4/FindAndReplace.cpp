@@ -119,7 +119,6 @@ void FindAndReplaceWidget::findAndReplace(
 			searchString += it->stringify(pos_type(0), it->size(), AS_STR_INSETS, runparams);
 		}
 	}
-//	lyxerr << "Searching for '" << to_utf8(searchString) << "'" << std::endl;
 	if (to_utf8(searchString).empty()) {
 		buffer.message(_("Nothing to search"));
 		return;
@@ -132,6 +131,16 @@ void FindAndReplaceWidget::findAndReplace(
 	} else {
 		replaceString = from_utf8(LYX_FR_NULL_STRING);
 	}
+	LYXERR(Debug::DEBUG, "FindAndReplaceOptions: "
+	       << "searchstring=" << searchString
+	       << ", casesensitiv=" << casesensitive
+	       << ", matchword=" << matchword
+	       << ", backwards=" << backwards
+	       << ", expandmacros=" << expandmacros
+	       << ", ignoreformat=" << ignoreformat
+	       << ", regexp=" << regexp
+	       << ", replaceString" << replaceString
+	       << std::endl);
 	FindAndReplaceOptions opt(searchString, casesensitive, matchword, ! backwards,
 		expandmacros, ignoreformat, regexp, replaceString);
 	LYXERR(Debug::DEBUG, "Dispatching LFUN_WORD_FINDADV" << std::endl);

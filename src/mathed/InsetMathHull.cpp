@@ -1671,8 +1671,11 @@ int InsetMathHull::plaintext(odocstream & os, OutputParams const & runparams) co
 	} else {
 		odocstringstream oss;
 		WriteStream wi(oss, false, true, WriteStream::wsDefault, runparams.encoding);
-		wi << cell(0);
-
+		// Fix Bug #6139
+		if (type_ == hullRegexp)
+			write(wi);
+		else
+			wi << cell(0);
 		docstring const str = oss.str();
 		os << str;
 		return str.size();
