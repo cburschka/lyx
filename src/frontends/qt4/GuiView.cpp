@@ -631,27 +631,13 @@ bool GuiView::closeBufferAll(bool tolastopened)
 					return false;
 			}
 
-			QList<int> const ids = guiApp->viewIds();
-			for (int i = 0; i != ids.size(); ++i) {
-				if (id_ == ids[i])
-					continue;
-				if (guiApp->view(ids[i]).workArea(*b)) {
-					// FIXME 1: should we put an alert box here
-					// that the buffer is viewed elsewhere?
-					// FIXME 2: should we try to save this buffer in any case?
-					//saveBuffer(b);
+			// We only want to close the buffer if the same buffer is not in
+			// another view.
+			bool const close_buffer = !inMultiViews(wa);
 
-					// This buffer is also opened in another view, so
-					// close the associated work area...
-					removeWorkArea(wa);
-					// ... but don't close the buffer.
-					b = 0;
-					break;
-				}
-			}
 			// closeBuffer() needs buffer workArea still alive and
 			// set as currrent one, and destroys it
-			if (b && !closeBuffer(*b, true, tolastopened, is_active_wa))
+			if (b && !closeBuffer(*b, close_buffer, tolastopened, is_active_wa))
 				return false;
 		}
 	}
@@ -2023,6 +2009,23 @@ bool GuiView::saveBufferIfNeeded(Buffer & buf, bool hiding)
 		return false;
 	}
 	return true;
+}
+
+
+bool GuiView::inMultiViews(GuiWorkArea * wa)
+{
+	QList<int> const ids = guiApp->viewIds();
+	Buffer & buf = wa->bufferView().buffer();
+
+	int found_twa = 0;
+	for (int i = 0; i != ids.size() && found_twa <= 1; ++i) {
+		if (id_ == ids[i])
+			continue;
+		
+		if (guiApp->view(ids[i]).workArea(buf))
+			return true;
+	}
+	return false;
 }
 
 

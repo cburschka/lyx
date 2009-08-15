@@ -304,6 +304,8 @@ private:
 	bool saveBufferIfNeeded(Buffer & buf, bool hiding);
 	///
 	bool closeBufferAll(bool tolastopened = false);
+	/// is the buffer in this workarea also shown in another view ?
+	bool inMultiViews(GuiWorkArea * wa);
 	///
 	enum NextOrPrevious {
 		NEXTBUFFER,
