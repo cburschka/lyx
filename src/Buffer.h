@@ -171,6 +171,9 @@ public:
 
 	/// Write document to stream. Returns \c false if unsuccesful.
 	bool write(std::ostream &) const;
+	/// save emergency file
+	/// \return a status message towards the user.
+	docstring emergencyWrite();
 	/// Write file. Returns \c false if unsuccesful.
 	bool writeFile(support::FileName const &) const;
 
