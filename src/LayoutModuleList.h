@@ -19,6 +19,12 @@ namespace lyx {
 
 class LayoutFile;
 
+/**
+	Represents a list of modules, such as might be associated with 
+	a particular document. Provides methods for adding modules, checking
+	if a module can be added, and, importantly, adapting the list to a 
+	new DocumentClass.
+*/
 class LayoutModuleList {
 public:
 	///
