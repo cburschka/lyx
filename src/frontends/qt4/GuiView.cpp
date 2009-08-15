@@ -553,7 +553,7 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 		return;
 	}
 
-	// Make sure that nothing will use this close to be closed View.
+	// Make sure that nothing will use this to be closed View.
 	guiApp->unregisterView(this);
 
 	if (isFullScreen()) {
