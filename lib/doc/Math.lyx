@@ -30817,7 +30817,7 @@ Alph
 \series default
 
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Commands ! A ! 
@@ -31748,7 +31748,7 @@ reference "eq:chem-reaction"
 
 \end_inset
 
- is
+ is:
 \begin_inset Newline newline
 \end_inset
 
@@ -31835,6 +31835,48 @@ spce
 \end_inset
 
 Na2SO4
+\end_layout
+
+\begin_layout Standard
+To create multiline chemical equations first a multiline formula is created
+ as described in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Multiline-Formulas"
+
+\end_inset
+
+.
+ Afterwards the command 
+\series bold
+
+\backslash
+ce
+\series default
+ is used in every small blue box of the formula.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:TEOS-reaction-1"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:TEOS-reaction-2"
+
+\end_inset
+
+ are an example of a multi-stage chemical reaction where every equation
+ has its own number.
+\begin_inset Formula \begin{eqnarray}
+\ce{TEOS + 4O} & \ce{->} & \ce{Si(OH)4 + 4C2H4O}\label{eq:TEOS-reaction-1}\\
+\ce{Si(OH)4} & \ce{->} & \ce{SiO2 + 2H2O}\label{eq:TEOS-reaction-2}\end{eqnarray}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

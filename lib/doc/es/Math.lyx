@@ -31659,7 +31659,7 @@ El ión
 .
  La ecuación química es:
 \begin_inset Formula \begin{equation}
-\mathrm{2\, Na^{+}+SO_{4}^{2-}\longrightarrow Na_{2}SO_{4}}\label{eq:química-reacción}\end{equation}
+\mathrm{2\, Na^{+}+SO_{4}^{2-}\longrightarrow Na_{2}SO_{4}}\label{eq:quimica-reaccion}\end{equation}
 
 \end_inset
 
@@ -32306,7 +32306,7 @@ ce
 
 \begin_inset CommandInset ref
 LatexCommand eqref
-reference "eq:química-reacción"
+reference "eq:quimica-reaccion"
 
 \end_inset
 
@@ -32397,6 +32397,60 @@ spce
 \end_inset
 
 Na2SO4
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+To create multiline chemical equations first a multiline formula is created
+ as described in
+\lang spanish
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Ecuaciones-multilínea"
+
+\end_inset
+
+.
+ 
+\lang english
+Afterwards the command 
+\series bold
+
+\backslash
+ce
+\series default
+ is used in every small blue box of the formula.
+
+\lang spanish
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:TEOS-reaction-1"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:TEOS-reaction-2"
+
+\end_inset
+
+ 
+\lang english
+are an example of a multi-stage chemical reaction where every equation has
+ its own number.
+\lang spanish
+
+\begin_inset Formula \begin{eqnarray}
+\ce{TEOS + 4O} & \ce{->} & \ce{Si(OH)4 + 4C2H4O}\label{eq:TEOS-reaction-1}\\
+\ce{Si(OH)4} & \ce{->} & \ce{SiO2 + 2H2O}\label{eq:TEOS-reaction-2}\end{eqnarray}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

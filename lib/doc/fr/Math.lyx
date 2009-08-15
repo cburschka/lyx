@@ -27485,6 +27485,13 @@ reference "sub:Environnement-Flalign"
 
 \begin_layout Section
 Formules multi-lignes
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Formules-multi-lignes"
+
+\end_inset
+
+
 \begin_inset Index
 status collapsed
 
@@ -31575,8 +31582,6 @@ spce
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
@@ -31735,6 +31740,59 @@ Na2SO4
 \end_layout
 
 \begin_layout Standard
+
+\lang english
+To create multiline chemical equations first a multiline formula is created
+ as described in
+\lang french
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Formules-multi-lignes"
+
+\end_inset
+
+.
+ 
+\lang english
+Afterwards the command 
+\series bold
+
+\backslash
+ce
+\series default
+ is used in every small blue box of the formula.
+
+\lang french
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:TEOS-reaction-1"
+
+\end_inset
+
+ et 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:TEOS-reaction-2"
+
+\end_inset
+
+ sont un exemple 
+\lang english
+of a multi-stage chemical reaction where every equation has its own number.
+\lang french
+
+\begin_inset Formula \begin{eqnarray}
+\ce{TEOS + 4O} & \ce{->} & \ce{Si(OH)4 + 4C2H4O}\label{eq:TEOS-reaction-1}\\
+\ce{Si(OH)4} & \ce{->} & \ce{SiO2 + 2H2O}\label{eq:TEOS-reaction-2}\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 En plus de 
 \series bold
 
@@ -31782,6 +31840,13 @@ key "mhchem"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -32121,13 +32186,6 @@ pour
 XY-pic
 \family default
 .
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section

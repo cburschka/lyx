@@ -31743,7 +31743,7 @@ reference "eq:chemische-Reaktion"
 
 \end_inset
 
-
+:
 \begin_inset Newline newline
 \end_inset
 
@@ -31850,6 +31850,48 @@ leer
 
 \series bold
 Na2SO4
+\end_layout
+
+\begin_layout Standard
+Um mehrzeilige chemische Gleichungen zu erzeugen, wird zuerst eine mehrzeilige
+ Formel erstellt, wie in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Mehrzeilige-Formeln"
+
+\end_inset
+
+ beschrieben.
+ Anschließend wird in jeder kleinen blauen Box der Formel der Befehl 
+\series bold
+
+\backslash
+ce
+\series default
+ verwendet.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:TEOS-Reaktion-1"
+
+\end_inset
+
+ und 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:TEOS-Reaktion-2"
+
+\end_inset
+
+ sind ein Beispiel für eine mehrstufige chemische Reaktion, bei der jede
+ Gleichung eine eigene Nummer hat.
+\begin_inset Formula \begin{eqnarray}
+\ce{TEOS + 4O} & \ce{->} & \ce{Si(OH)4 + 4C2H4O}\label{eq:TEOS-Reaktion-1}\\
+\ce{Si(OH)4} & \ce{->} & \ce{SiO2 + 2H2O}\label{eq:TEOS-Reaktion-2}\end{eqnarray}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -32264,6 +32306,13 @@ Handbücher\SpecialChar \menuseparator
 XY-pic-Handbuch
 \family default
  zu finden ist.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
