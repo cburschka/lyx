@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 369
+\lyxformat 370
 \begin_document
 \begin_header
 \textclass article
@@ -31,6 +31,7 @@
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
+\suppress_date false
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -4265,6 +4266,35 @@ natbib
  It supports cite styles which are common in human sciences and law studies,
  footcites, ibidems, and more.
  You'll need to have jurabib version 0.6 at least.
+\end_layout
+
+\begin_layout Subsection
+lettrine
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "lettrine"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/lettrine/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+lettrine
+\family default
+\color none
+ is used by LyX module capitals to display dropped capitals.
 \end_layout
 
 \begin_layout Subsection
