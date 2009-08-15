@@ -609,8 +609,9 @@ bool GuiView::closeBufferAll(bool tolastopened)
 
 			GuiWorkArea * wa = twa->currentWorkArea();
 			bool const is_active_wa = active_wa == wa;
-			Buffer * b = &wa->bufferView().buffer();
-			if (b->parent()) {
+			Buffer & b = wa->bufferView().buffer();
+
+			if (b.parent()) {
 				// This is a child document, just close the tab
 				// after saving but keep the file loaded.
 				if (!closeWorkArea(wa, false, tolastopened, is_active_wa))
@@ -618,7 +619,7 @@ bool GuiView::closeBufferAll(bool tolastopened)
 				continue;
 			}
 
-			vector<Buffer *> clist = b->getChildren();
+			vector<Buffer *> clist = b.getChildren();
 			for (vector<Buffer *>::const_iterator it = clist.begin();
 				 it != clist.end(); ++it) {
 				if ((*it)->isClean())
@@ -637,7 +638,7 @@ bool GuiView::closeBufferAll(bool tolastopened)
 
 			// closeBuffer() needs buffer workArea still alive and
 			// set as currrent one, and destroys it
-			if (b && !closeWorkArea(wa, close_buffer, tolastopened, is_active_wa))
+			if (!closeWorkArea(wa, close_buffer, tolastopened, is_active_wa))
 				return false;
 		}
 	}
