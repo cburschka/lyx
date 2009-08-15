@@ -1463,10 +1463,6 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// Line spacing
 	lyxpreamble += from_utf8(spacing().writePreamble(tclass.provides("SetSpace")));
 
-	// date
-	if (suppress_date)
-		lyxpreamble += "\\date{}\n";
-
 	// PDF support.
 	// * Hyperref manual: "Make sure it comes last of your loaded
 	//   packages, to give it a fighting chance of not being over-written,
@@ -1499,6 +1495,12 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		atlyxpreamble += "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
 			"Textclass specific LaTeX commands.\n"
 			+ tmppreamble + '\n';
+
+	// suppress date if selected
+	// use \@ifundefined because we cannot be sure that every document class
+	// has a \date command
+	if (suppress_date)
+		atlyxpreamble += "\\@ifundefined{date}{}{\\date{}}\n";
 
 	/* the user-defined preamble */
 	if (!containsOnly(preamble, " \n\t"))
