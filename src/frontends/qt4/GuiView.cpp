@@ -1939,8 +1939,12 @@ bool GuiView::closeWorkArea(GuiWorkArea * wa, bool close_buffer,
 	for (size_t i = 0; i < theSession().bookmarks().size(); ++i)
 		theLyXFunc().gotoBookmark(i+1, false, false);
 
+	// if we are only hiding the buffer and there are multiple views
+	// of the buffer, then we do not need to ensure a clean buffer.
+	bool const allow_dirty = inMultiTabs(wa) && !close_buffer;
+
 	Buffer & buf = wa->bufferView().buffer();
-	if (saveBufferIfNeeded(buf, !close_buffer)) {
+	if (allow_dirty || saveBufferIfNeeded(buf, !close_buffer)) {
 		// save in sessions if requested
 		// do not save childs if their master
 		// is opened as well
@@ -2011,6 +2015,19 @@ bool GuiView::saveBufferIfNeeded(Buffer & buf, bool hiding)
 		return false;
 	}
 	return true;
+}
+
+
+bool GuiView::inMultiTabs(GuiWorkArea * wa)
+{
+	Buffer & buf = wa->bufferView().buffer();
+
+	for (int i = 0; i != d.splitter_->count(); ++i) {
+		GuiWorkArea * wa_ = d.tabWorkArea(i)->workArea(buf);
+		if (wa_ && wa_ != wa)
+			return true;
+	}
+	return inMultiViews(wa);
 }
 
 
