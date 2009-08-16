@@ -318,7 +318,8 @@ bool BufferList::releaseChild(Buffer * parent, Buffer * child)
 	LASSERT(parent->isChild(child), return false);
 
 	// Child document has a different parent, don't close it.
-	if (child->parent() != parent)
+	Buffer const * parent_ = child->parent();
+	if (parent_ && parent_ != parent)
 		return false;
 
 	BufferStorage::iterator it = bstore.begin();
