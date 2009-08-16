@@ -88,7 +88,6 @@
 \tracking_changes false
 \output_changes false
 \author "" 
-\author "" 
 \end_header
 
 \begin_body
@@ -101,7 +100,7 @@ u
 \begin_layout Author
 LyX Tím
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -151,13 +150,13 @@ u: poskytnúť skoro-WYSIWYG rozhranie pre
 Niektorí z vás sa už pravdepodobne pokúšali robiť niečo s týmto dokumentom,
  napr.
  vložiť dve medzery za bodku, alebo tri prázdne riadky medzi odseky.
- Po chvíli ste zistili, že to nejde.
+ Po chvíli ste zistili, že to neide.
  V podstate zistíte, že väčšina malých trikov, ktoré ste používali v iných
  textových procesoroch jednoducho v LyX\SpecialChar \nobreakdash-
 e nefunguje.
  Je to tak pretože väčšina textových procesorov ktoré ste v minulosti používali
  sú len vyčačkané písacie stroje.
- Vyžadujú od vás, aby ste vložili všetky medzery, veľkosti písiem atď.
+ Vyžadujú od vás, aby ste vložili všetky medzery, veľkosti písem atď.
  Takže skončíte nielen písaním textu, ale aj jeho formátovaním.
  A na to je LyX: formátuje za vás a to konzistentne v celom dokumente.
  Necháva vás zamerať sa na dôležité veci, ako napríklad obsah vášho textu.
@@ -266,7 +265,7 @@ Predpokladajme, že píšete správu.
 
 \begin_layout Standard
 V LyX\SpecialChar \nobreakdash-
-e sa nastavíte na rozbaľovacie menu v ľavej časti tlačítkovej lišty
+e sa nastavíte na rozbalovacie menu v ľavej časti tlačítkovej lišty
  a vyberiete 
 \begin_inset Quotes gld
 \end_inset
@@ -623,7 +622,7 @@ Väčšina ľudí, ktorí používajú TeX, v podstate používajú balík makie
 om, ktorý tvoria prosté sádzacie príkazy.
  To robia ľudia, ktorí vytvárajú nové balíky makier.
  A tam Leslie Lamport vstúpil do príbehu.
- Chcel balík makier, ktorý by bol užívateľsky orientovaný a nie orientovaný
+ Chcel balík makier, ktorý by bol užívateľský orientovaný a nie orientovaný
  na sádzanie.
  Chcel sadu príkazov, ktoré konzistentne vytvoria veci ako sekcie, alebo
  tabuľky, alebo matematické vzorce jednotným spôsobom a bez zbytočného zmätku.
@@ -827,9 +826,9 @@ status open
 
 \begin_layout Plain Layout
 
+
 \backslash
-mbox
-{
+mbox{
 \end_layout
 
 \end_inset
@@ -840,6 +839,7 @@ u
 status open
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -937,7 +937,7 @@ Niektorí drukujú manuály.
  Iní ich čítajú v LyX\SpecialChar \nobreakdash-
 e.
  Sú rozdiely medzi LyX-súborom a tlačenou verziou.
- Ako prvé, titul je na začiatku dokumentu, neformatovaný na separátnej strane
+ Ako prvé, titul je na začiatku dokumentu, neformátovaný na separátnej strane
  (ako je v tlačených verziách).
  Aj poznámky pod čiarou a obsah nevidno naplno.
  Na otvorenie poznámky pod čiarou, ktorá vyzerá ako toto: 
@@ -966,7 +966,7 @@ reference "sec:Contrib"
 \end_inset
 
 .
- Keď na to kliknete ľavým tlačidlom myši, objaví sa dialógové okienko, obsahujúc
+ Keď na to kliknite ľavým tlačidlom myši, objaví sa dialógové okienko, obsahujúc
 e lištu všetkých referencií v dokumente.
  Na referovanú sekciu sa môžte dostať kliknutím pravého tlačidla na políčko
  
@@ -1706,7 +1706,7 @@ Na nešťastie je to platné len pre anglickú verziu :(
 \end_layout
 
 \begin_layout Description
-Uživateľská
+Užívateľská
 \begin_inset space ~
 \end_inset
 
@@ -1731,7 +1731,7 @@ Vložené
 
 objekty Rozšírenie 
 \emph on
-Uživateľskej príručky
+Užívateľskej príručky
 \emph default
 .
  Dokumentuje detailne ako použiť tabuľky, grafiku, plávajúce objekty, poznámky,
@@ -1743,7 +1743,7 @@ u.
 \begin_layout Description
 Matematika Rozšírenie
 \emph on
- Uživateľskej príručky
+ Užívateľskej príručky
 \emph default
 .
  Dokumentuje detailne ako opísať ktorýkoľvek druh formúl.
@@ -1756,7 +1756,7 @@ Dodatočné
 
 vlastnosti Rozšírenie
 \emph on
- Uživateľskej príručky
+ Užívateľskej príručky
 \emph default
 .
  Dokumentuje ako použiť čisté LaTeX príkazy, prídavné rozloženia (layouts),
@@ -1791,7 +1791,7 @@ u LyX preskúma váš systém pri inštalácii.
 Tieto súbory sa referujú navzájom, podľa potreby.
  Napríklad, 
 \emph on
-Uživateľská príručka
+Užívateľská príručka
 \emph default
  obsahuje 
 \emph on
@@ -1866,8 +1866,8 @@ Oznámiť chybu
 \begin_layout Standard
 Používajúc LyX možno zbadáte správanie, ktoré považujete za chybné.
  Crash, aj keď zriedka, sa môže stať.
- Problémy s uživateľským rozhraním považuje LyX Tím za veľké chyby: Veľmi
- nám pomáha keď sa dozvieme, ktorá časť uživateľského interfejsu vás pletie
+ Problémy s užívateľským rozhraním považuje LyX Tím za veľké chyby: Veľmi
+ nám pomáha keď sa dozvieme, ktorá časť užívateľského interfejsu vás pletie
  alebo je nejasná.
 \end_layout
 
@@ -1931,7 +1931,7 @@ u s ktorým máte problém.
 \end_layout
 
 \begin_layout Subsubsection
-Prispieť opravou a novými vlastnosťmi
+Prispieť opravou a novými vlastnosťami
 \end_layout
 
 \begin_layout Standard
@@ -2021,7 +2021,7 @@ http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/doc
 \begin_layout Enumerate
 Potom, prečítajte si 
 \emph on
-Uživateľskú príručku
+Užívateľskú príručku
 \emph default
  a 
 \emph on
@@ -2054,7 +2054,7 @@ Príručka
 \emph default
  a 
 \emph on
-Uživateľská príručka
+Užívateľská príručka
 \emph default
  je pravdepodobne v pomerne najlepšom stave celej dokumentácie.
  Malo by vám pomôcť pri získaní pocitu toho, ako chceme manuály čítať a
