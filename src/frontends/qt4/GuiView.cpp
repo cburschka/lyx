@@ -604,7 +604,7 @@ bool GuiView::closeBufferAll(bool tolastopened)
 		if (twa->count() == 0)
 			++empty_twa;
 
-		for (; twa_count; --twa_count) {
+		for (; twa == d.tabWorkArea(empty_twa) && twa_count; --twa_count) {
 			twa->setCurrentIndex(twa_count-1);
 
 			GuiWorkArea * wa = twa->currentWorkArea();
