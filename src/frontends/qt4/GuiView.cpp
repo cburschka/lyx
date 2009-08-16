@@ -2005,11 +2005,10 @@ bool GuiView::saveBufferIfNeeded(Buffer & buf, bool hiding)
 		// have no autosave file but I guess
 		// this is really improbable (Jug)
 		buf.removeAutosaveFile();
-		if (hiding) {
+		if (hiding)
 			// revert all changes
 			buf.loadLyXFile(buf.fileName());
-			buf.markClean();
-		}
+		buf.markClean();
 		break;
 	case 2:
 		return false;
