@@ -396,7 +396,7 @@ add_definitions(-DHAVE_ICONV=1)
 include_directories(
   ${CMAKE_BINARY_DIR}
   ${TOP_SRC_DIR}/src)
-  
+
 option(UseExternalBoost "Use external boost" OFF)
 if(UseExternalBoost)
   message(STATUS "Searching for boost")
@@ -404,11 +404,13 @@ if(UseExternalBoost)
   if(Boost_FOUND)
     message(STATUS "Boost found")
     message(STATUS "Boost-libs = ${Boost_LIBRARIES}")
+    set(Lyx_Boost_Libraries ${Boost_LIBRARIES})
   else()
     message(FATAL_ERROR "Boost not found" ${Boost_ERROR_REASON})
   endif()
 else()
   message(STATUS "----- Using internal boost. To build with installed version use -DUseExternalBoost:BOOL=ON")
+  set(Lyx_Boost_Libraries boost_signals boost_regex)
   add_definitions(-DBOOST_USER_CONFIG="<config.h>")
   include_directories(${TOP_SRC_DIR}/boost)
   add_subdirectory(boost)
@@ -416,7 +418,7 @@ endif()
 
 
 if(NOT use_external_libintl)
-	add_subdirectory(intl)
+  add_subdirectory(intl)
 endif()
 add_subdirectory(src)
 

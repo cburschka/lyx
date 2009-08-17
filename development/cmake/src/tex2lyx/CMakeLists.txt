@@ -37,15 +37,9 @@ else()
 	add_executable(${_tex2lyx} ${_allinone_files} ${_allinone_linked_files})
 endif()
 
-
-if(Boost_FOUND)
-  target_link_libraries(${_tex2lyx} ${Boost_LIBRARIES})
-else()
-  target_link_libraries(${_tex2lyx} boost_regex)
-endif()
-
 target_link_libraries(${_tex2lyx}
 	support
+	${Lyx_Boost_Libraries}
 	${QT_QTCORE_LIBRARY}
 	${LIBINTL_LIBRARIES}
 	${ICONV_LIBRARY})

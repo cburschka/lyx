@@ -23,11 +23,7 @@ else()
 	add_library(frontends ${library_type} ${_allinone_files})
 endif()
 
-if(Boost_FOUND)
-  target_link_libraries(frontends ${Boost_LIBRARIES})
-else()
-  target_link_libraries(frontends boost_regex)
-endif()
+target_link_libraries(frontends ${Lyx_Boost_Libraries})
 
 project_source_group("${GROUP_CODE}" frontends_sources frontends_headers)
 

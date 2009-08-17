@@ -61,13 +61,7 @@ else()
 		${support_mythes_sources} ${support_linkback_sources} ${support_headers} ${dont_merge})
 endif()
 
-if(Boost_FOUND)
-  target_link_libraries(support ${Boost_LIBRARIES})
-else()
-  target_link_libraries(support boost_signals boost_regex)
-endif()
-
-target_link_libraries(support ${QT_QTCORE_LIBRARY} ${ZLIB_LIBRARY})
+target_link_libraries(support ${Lyx_Boost_Libraries} ${QT_QTCORE_LIBRARY} ${ZLIB_LIBRARY})
 
 if(APPLE)
 	target_link_libraries(support "objc" "-framework Appkit" "-framework CoreFoundation")

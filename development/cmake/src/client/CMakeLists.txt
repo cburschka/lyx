@@ -17,14 +17,9 @@ include_directories(BEFORE "${TOP_SRC_DIR}/src/client"
 
 add_executable(${_lyxclient} ${_lyxclient_sources} ${_lyxclient_headers})
 
-if(Boost_FOUND)
-  target_link_libraries(${_lyxclient} ${Boost_LIBRARIES})
-else()
-  target_link_libraries(${_lyxclient} boost_regex)
-endif()
-
 target_link_libraries(${_lyxclient}
 	support
+	${Lyx_Boost_Libraries}
 	${LIBINTL_LIBRARIES}
         ${ICONV_LIBRARY}
 	${QT_QTCORE_LIBRARY}
@@ -32,11 +27,11 @@ target_link_libraries(${_lyxclient}
 	)
 
 if (ASPELL_FOUND)
-        target_link_libraries(${_lyxclient} ${ASPELL_LIBRARY})
+  target_link_libraries(${_lyxclient} ${ASPELL_LIBRARY})
 endif()
 
 if (APPLE)
-	target_link_libraries(${_lyxclient} "-framework Carbon")
+  target_link_libraries(${_lyxclient} "-framework Carbon")
 endif()
 
 install(TARGETS ${_lyxclient} DESTINATION bin)
