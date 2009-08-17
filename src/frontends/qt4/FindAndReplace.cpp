@@ -59,7 +59,7 @@ FindAndReplaceWidget::FindAndReplaceWidget(GuiView & view)
 
 bool FindAndReplaceWidget::eventFilter(QObject *obj, QEvent *event)
 {
-	LYXERR(Debug::DEBUG, "FindAndReplace::eventFilter()" << std::endl);
+	LYXERR(Debug::FIND, "FindAndReplace::eventFilter()");
 	if (obj == find_work_area_ && event->type() == QEvent::KeyPress) {
 		QKeyEvent *e = static_cast<QKeyEvent *> (event);
 		if (e->key() == Qt::Key_Escape && e->modifiers() == Qt::NoModifier) {
@@ -92,7 +92,7 @@ static docstring buffer_to_latex(Buffer & buffer) {
 	ParagraphList::const_iterator const end = buffer.paragraphs().end();
 	for (; pit != end; ++pit) {
 		TeXOnePar(buffer, buffer.text(), pit, os, buffer.texrow(), runparams);
-		LYXERR(Debug::DEBUG, "searchString up to here: " << os.str());
+		LYXERR(Debug::FIND, "searchString up to here: " << os.str());
 	}
 	return os.str();
 }
@@ -115,7 +115,7 @@ void FindAndReplaceWidget::findAndReplace(
 		runparams.linelen = 100000; //lyxrc.plaintext_linelen;
 		runparams.dryrun = true;
 		for (; it != end; ++it) {
-			LYXERR(Debug::DEBUG, "Adding to search string: '" << it->asString(false) << "'");
+			LYXERR(Debug::FIND, "Adding to search string: '" << it->asString(false) << "'");
 			searchString += it->stringify(pos_type(0), it->size(), AS_STR_INSETS, runparams);
 		}
 	}
@@ -131,7 +131,7 @@ void FindAndReplaceWidget::findAndReplace(
 	} else {
 		replaceString = from_utf8(LYX_FR_NULL_STRING);
 	}
-	LYXERR(Debug::DEBUG, "FindAndReplaceOptions: "
+	LYXERR(Debug::FIND, "FindAndReplaceOptions: "
 	       << "searchstring=" << searchString
 	       << ", casesensitiv=" << casesensitive
 	       << ", matchword=" << matchword
@@ -139,14 +139,13 @@ void FindAndReplaceWidget::findAndReplace(
 	       << ", expandmacros=" << expandmacros
 	       << ", ignoreformat=" << ignoreformat
 	       << ", regexp=" << regexp
-	       << ", replaceString" << replaceString
-	       << std::endl);
+	       << ", replaceString" << replaceString);
 	FindAndReplaceOptions opt(searchString, casesensitive, matchword, ! backwards,
 		expandmacros, ignoreformat, regexp, replaceString);
-	LYXERR(Debug::DEBUG, "Dispatching LFUN_WORD_FINDADV" << std::endl);
+	LYXERR(Debug::FIND, "Dispatching LFUN_WORD_FINDADV");
 	std::ostringstream oss;
 	oss << opt;
-	LYXERR(Debug::DEBUG, "Dispatching LFUN_WORD_FINDADV" << std::endl);
+	LYXERR(Debug::FIND, "Dispatching LFUN_WORD_FINDADV");
 	dispatch(FuncRequest(LFUN_WORD_FINDADV, from_utf8(oss.str())));
 
 	//	findAdv(&theApp()->currentView()->currentWorkArea()->bufferView(),
@@ -175,7 +174,7 @@ void FindAndReplaceWidget::on_regexpInsertCombo_currentIndexChanged(int index)
 	static char const * regexps[] = {
 		".*", ".+", "[a-z]+", "[0-9]+"
 	};
-	//lyxerr << "Index: " << index << std::endl;
+	LYXERR(Debug::FIND, "Index: " << index);
 	if (index >= 1 && index < 1 + int(sizeof(regexps)/sizeof(regexps[0]))) {
 		find_work_area_->setFocus();
 		Cursor & cur = find_work_area_->bufferView().cursor();

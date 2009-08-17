@@ -99,6 +99,8 @@ namespace Debug {
 		LOCALE     = (1 << 28),
 		///	selection
 		SELECTION  = (1 << 29),
+		/// Find and Replace
+		FIND       = (1 << 30),
 		///
 		DEBUG      = (1 << 31),
 		///
