@@ -568,6 +568,8 @@ int Buffer::readHeader(Lexer & lex)
 	params().clearRemovedModules();
 	params().pdfoptions().clear();
 	params().indiceslist().clear();
+	// default index
+	params().indiceslist().addDefault(B_("Index"));
 	params().backgroundcolor = lyx::rgbFromHexName("#ffffff");
 
 	for (int i = 0; i < 4; ++i) {
