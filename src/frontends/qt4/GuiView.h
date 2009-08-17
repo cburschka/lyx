@@ -297,13 +297,13 @@ private:
 	bool saveBuffer(Buffer & b);
 	///
 	bool closeWorkArea(GuiWorkArea * wa, bool close_buffer,
-		bool tolastopened = false, bool mark_active = false);
+		bool in_close_event = false, bool mark_active = false);
 	/// gives the user the possibility to save his work 
 	/// or to discard the changes. If hiding is true, the
 	/// document will be reloaded.
 	bool saveBufferIfNeeded(Buffer & buf, bool hiding);
 	///
-	bool closeBufferAll(bool tolastopened = false);
+	bool closeBufferAll(bool in_close_event = false);
 	/// is the buffer in this workarea also shown in another tab ?
 	/// This tab can either be in the same view or in another one.
 	bool inMultiTabs(GuiWorkArea * wa);
