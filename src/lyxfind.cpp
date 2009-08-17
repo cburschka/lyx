@@ -697,11 +697,11 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer const & buf, FindAndReplaceOptions co
 		LYXERR(Debug::DEBUG, "Open braces: " << open_braces);
 		LYXERR(Debug::DEBUG, "Close .*?  : " << close_wildcards);
 		LASSERT(braces_match(par_as_string.begin(), par_as_string.end(), open_braces), /* */);
-		// Entered regexp must match at begin of searched string buffer
-		par_as_string = string("\\`") + par_as_string;
 		LYXERR(Debug::DEBUG, "Replaced text (to be used as regex): " << par_as_string);
-		regexp = boost::regex(par_as_string);
-		regexp2 = boost::regex(string(".*") + par_as_string);
+		// If entered regexp must match at begin of searched string buffer
+		regexp = boost::regex(string("\\`") + par_as_string);
+		// If entered regexp may match wherever in searched string buffer
+		regexp2 = boost::regex(string("\\`.*") + par_as_string);
 	}
 }
 
