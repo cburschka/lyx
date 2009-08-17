@@ -231,7 +231,7 @@ private:
 // cursor is at the top or bottom edge of the viewport. One scroll per 0.2 s
 SyntheticMouseEvent::SyntheticMouseEvent()
 	: timeout(200), restart_timeout(true),
-	  x_old(-1), y_old(-1), min_scrollbar_old(-1.0), max_scrollbar_old(-1.0)
+	  x_old(-1), y_old(-1), min_scrollbar_old(-1), max_scrollbar_old(-1)
 {}
 
 
