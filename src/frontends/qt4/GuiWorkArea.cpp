@@ -1519,14 +1519,14 @@ void TabWorkArea::on_currentTabChanged(int i)
 
 void TabWorkArea::closeCurrentBuffer()
 {
-	if (clicked_tab_ != -1)
-		setCurrentIndex(clicked_tab_);
-	else
-		// Before dispatching the LFUN we should be sure this
-		// is the current workarea.
-		currentWorkAreaChanged(currentWorkArea());
-
-	lyx::dispatch(FuncRequest(LFUN_BUFFER_CLOSE));
+	GuiWorkArea * wa;
+	if (clicked_tab_ == -1)
+		wa = currentWorkArea();
+	else {
+		wa = dynamic_cast<GuiWorkArea *>(widget(clicked_tab_));
+		LASSERT(wa, /**/);
+	}
+	wa->view().closeWorkArea(wa);
 }
 
 

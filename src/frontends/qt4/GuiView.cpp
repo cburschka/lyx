@@ -1901,6 +1901,12 @@ bool GuiView::hideWorkArea(GuiWorkArea * wa)
 }
 
 
+bool GuiView::closeWorkArea(GuiWorkArea * wa)
+{
+	return closeWorkArea(wa, true);
+}
+
+
 bool GuiView::closeBuffer()
 {
 	GuiWorkArea * wa = currentMainWorkArea();
