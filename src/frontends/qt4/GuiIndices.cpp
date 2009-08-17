@@ -123,6 +123,7 @@ void GuiIndices::updateView()
 			indicesTW->setItemSelected(newItem, true);
 		}
 	}
+	indicesTW->resizeColumnToContents(0);
 	bool const have_sel =
 		!indicesTW->selectedItems().isEmpty();
 	removePB->setEnabled(have_sel);
