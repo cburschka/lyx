@@ -1,7 +1,7 @@
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 #
-# Copyright (c) 2006, Peter Kümmel, <syntheticpp@gmx.net>
+# Copyright (c) 2006, Peter Kï¿½mmel, <syntheticpp@gmx.net>
 #
 
 project(support)
@@ -64,7 +64,7 @@ endif()
 if(Boost_FOUND)
   target_link_libraries(support ${Boost_LIBRARIES})
 else()
-  target_link_libraries(support boost_signals)
+  target_link_libraries(support boost_signals boost_regex)
 endif()
 
 target_link_libraries(support ${QT_QTCORE_LIBRARY} ${ZLIB_LIBRARY})
