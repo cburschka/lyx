@@ -976,10 +976,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 	// Modules
 	modulesModule = new UiWidget<Ui::ModulesUi>;
-
-#if (QT_VERSION >= 0x040400)
-	modulesModule->availableLV->setHeaderHidden(true);
-#endif
+	modulesModule->availableLV->header()->setVisible(false);
 	selectionManager =
 		new ModuleSelectionManager(modulesModule->availableLV,
 			modulesModule->selectedLV,
