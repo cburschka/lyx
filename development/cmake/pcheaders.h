@@ -18,11 +18,7 @@
 #include <boost/crc.hpp>
 #include <boost/cregex.hpp>
 #include <boost/current_function.hpp>
-//#include <boost/filesystem/operations.hpp>
 #include <boost/function.hpp>
-//#include <boost/iostreams/device/file.hpp>
-//#include <boost/iostreams/filter/gzip.hpp>
-//#include <boost/iostreams/filtering_streambuf.hpp>
 #include <boost/iterator/indirect_iterator.hpp>
 #include <boost/optional.hpp>
 #include <boost/regex.hpp>
@@ -35,11 +31,6 @@
 #include <boost/tuple/tuple.hpp>
 #include <boost/utility.hpp>
 #include <boost/version.hpp>
-#if BOOST_VERSION < 103300
-# include <boost/test/detail/nullstream.hpp>
-#else
-# include <boost/test/utils/nullstream.hpp>
-#endif
 #endif
 
 
