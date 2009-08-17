@@ -950,52 +950,78 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv const & match)
 	return 0;
 }
 
+/// Find the most backward consecutive match within same paragraph while searching backwards.
+void findMostBackwards(DocIterator & cur, MatchStringAdv const & match, int & len) {
+	DocIterator cur_begin = doc_iterator_begin(cur.buffer());
+	len = findAdvFinalize(cur, match);
+	if (cur != cur_begin) {
+		Inset & inset = cur.inset();
+		int old_len;
+		DocIterator old_cur;
+		DocIterator dit2;
+		do {
+			old_cur = cur;
+			old_len = len;
+			cur.backwardPos();
+			LYXERR(Debug::DEBUG, "findMostBackwards(): old_cur=" << old_cur << ", old_len=" << len << ", cur=" << cur);
+			dit2 = cur;
+		} while (cur != cur_begin && &cur.inset() == &inset && match(cur)
+			 && (len = findAdvFinalize(dit2, match)) > old_len);
+		cur = old_cur;
+		len = old_len;
+	}
+	LYXERR(Debug::DEBUG, "findMostBackwards(): cur=" << cur);
+}
 
 /// Finds backwards
 int findBackwardsAdv(DocIterator & cur, MatchStringAdv const & match) {
-	//	if (cur.pos() > 0 || cur.depth() > 0)
-	//		cur.backwardPos();
+	if (! cur)
+		return 0;
 	DocIterator cur_orig(cur);
-	if (match(cur_orig))
-		findAdvFinalize(cur_orig, match);
-	//	int total = cur.bottom().pit() + 1;
-	int wrap_answer;
+	DocIterator cur_begin = doc_iterator_begin(cur.buffer());
+/* 	if (match(cur_orig)) */
+/* 		findAdvFinalize(cur_orig, match); */
+	int wrap_answer = 0;
+	bool found_match;
 	do {
-		// TODO No ! così non va.
 		bool pit_changed = false;
-		while (cur && !match(cur, -1, false)) {
+		found_match = false;
+		// Search in current par occurs from start to end, but in next loop match is discarded if pos > original pos
+		cur.pos() = 0;
+		found_match = match(cur, -1, false);
+		LYXERR(Debug::DEBUG, "findBackAdv0: found_match=" << found_match << ", cur: " << cur);
+		while (cur != cur_begin) {
+			if (found_match)
+				break;
 			if (cur.pit() > 0)
 				--cur.pit();
-			else {
+			else
 				cur.backwardPos();
-				if (cur)
-					cur.pos() = 0;
-			}
 			pit_changed = true;
+			// Search in previous pars occurs from start to end
+			cur.pos() = 0;
+			found_match = match(cur, -1, false);
+			LYXERR(Debug::DEBUG, "findBackAdv1: found_match=" << found_match << ", cur: " << cur);
 		}
-		if (cur && pit_changed)
+		if (pit_changed)
 			cur.pos() = cur.lastpos();
-		for (; cur; cur.backwardPos()) {
-			if (match(cur)) {
-				// Find the most backward consecutive match within same paragraph while searching backwards.
-				int pit = cur.pit();
-				int old_len;
-				DocIterator old_cur;
-				int len = findAdvFinalize(cur, match);
-				do {
-					old_cur = cur;
-					old_len = len;
-					cur.backwardPos();
-					LYXERR(Debug::DEBUG, "old_cur: " << old_cur << ", old_len=" << len << ", cur: " << cur);
-				} while (cur && cur.pit() == pit && match(cur)
-					&& (len = findAdvFinalize(cur, match)) > old_len);
-				cur = old_cur;
-				len = old_len;
-				LYXERR(Debug::DEBUG, "cur_orig    : " << cur_orig);
-				LYXERR(Debug::DEBUG, "cur         : " << cur);
-				if (cur != cur_orig)
-					return len;
-			}
+		else
+			cur.pos() = cur_orig.pos();
+		LYXERR(Debug::DEBUG, "findBackAdv2: cur: " << cur);
+		if (found_match) {
+			while (true) {
+				found_match=match(cur);
+				LYXERR(Debug::DEBUG, "findBackAdv3: found_match=" << found_match << ", cur: " << cur);
+				if (found_match) {
+					int len;
+					findMostBackwards(cur, match, len);
+					if (&cur.inset() != &cur_orig.inset() || !(cur.pit()==cur_orig.pit()) || cur.pos() < cur_orig.pos())
+						return len;
+				}
+				if (cur == cur_begin)
+					break;
+				cur.backwardPos();
+			};
 		}
 		wrap_answer = frontend::Alert::prompt(
 			_("Wrap search ?"),
@@ -1006,6 +1032,7 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv const & match) {
 		cur = doc_iterator_end(&match.buf);
 		cur.backwardPos();
 	} while (wrap_answer == 0);
+	cur = cur_orig;
 	return 0;
 }
 
