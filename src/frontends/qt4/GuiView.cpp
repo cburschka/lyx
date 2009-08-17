@@ -619,19 +619,6 @@ bool GuiView::closeBufferAll(bool tolastopened)
 				continue;
 			}
 
-			vector<Buffer *> clist = b.getChildren();
-			for (vector<Buffer *>::const_iterator it = clist.begin();
-				 it != clist.end(); ++it) {
-				if ((*it)->isClean())
-					continue;
-				Buffer * c = *it;
-				// If a child is dirty, do not close
-				// without user intervention
-				//FIXME: should buffers be closed or not?
-				if (!closeWorkArea(workArea(*c), false, false))
-					return false;
-			}
-
 			// We only want to close the buffer if the same buffer is not in
 			// another view.
 			bool const close_buffer = !inMultiViews(wa);
@@ -1933,6 +1920,21 @@ bool GuiView::closeBuffer()
 bool GuiView::closeWorkArea(GuiWorkArea * wa, bool close_buffer,
 	bool tolastopened, bool mark_active)
 {
+	Buffer & buf = wa->bufferView().buffer();
+
+	if (close_buffer && !tolastopened) {
+		vector<Buffer *> clist = buf.getChildren();
+		for (vector<Buffer *>::const_iterator it = clist.begin();
+			 it != clist.end(); ++it) {
+			// If a child is dirty, do not close
+			// without user intervention
+			//FIXME: should buffers be closed or not?
+			//FIXME: should we look in other tabworkareas?
+			GuiWorkArea * child_wa = workArea(**it);
+			if (child_wa && !closeWorkArea(child_wa, !close_buffer, false))
+				return false;
+		}
+	}
 	// goto bookmark to update bookmark pit.
 	//FIXME: we should update only the bookmarks related to this buffer!
 	LYXERR(Debug::DEBUG, "GuiView::closeBuffer()");
@@ -1943,7 +1945,6 @@ bool GuiView::closeWorkArea(GuiWorkArea * wa, bool close_buffer,
 	// of the buffer, then we do not need to ensure a clean buffer.
 	bool const allow_dirty = inMultiTabs(wa) && !close_buffer;
 
-	Buffer & buf = wa->bufferView().buffer();
 	if (allow_dirty || saveBufferIfNeeded(buf, !close_buffer)) {
 		// save in sessions if requested
 		// do not save childs if their master
