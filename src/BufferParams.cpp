@@ -644,7 +644,6 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 				if (branch_ptr)
 					branch_ptr->setFilenameSuffix(lex.getInteger());
 			}
-			// not yet operational
 			if (tok == "\\color") {
 				lex.eatLine();
 				string color = lex.getString();
@@ -674,7 +673,6 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 				if (index_ptr)
 					index_ptr->setShortcut(shortcut);
 			}
-			// not yet operational
 			if (tok == "\\color") {
 				lex.eatLine();
 				string color = lex.getString();
