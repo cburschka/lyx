@@ -584,7 +584,7 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 }
 
 
-bool GuiView::closeBufferAll(bool tolastopened)
+bool GuiView::closeBufferAll(bool in_close_event)
 {
 	GuiWorkArea * active_wa = currentMainWorkArea();
 	setCurrentWorkArea(active_wa);
@@ -611,21 +611,13 @@ bool GuiView::closeBufferAll(bool tolastopened)
 			bool const is_active_wa = active_wa == wa;
 			Buffer & b = wa->bufferView().buffer();
 
-			if (b.parent()) {
-				// This is a child document, just close the tab
-				// after saving but keep the file loaded.
-				if (!closeWorkArea(wa, false, tolastopened, is_active_wa))
-					return false;
-				continue;
-			}
-
 			// We only want to close the buffer if the same buffer is not in
 			// another view.
-			bool const close_buffer = !inMultiViews(wa);
+			bool const close_buffer = !(inMultiViews(wa) || b.parent());
 
 			// closeBuffer() needs buffer workArea still alive and
 			// set as currrent one, and destroys it
-			if (!closeWorkArea(wa, close_buffer, tolastopened, is_active_wa))
+			if (!closeWorkArea(wa, close_buffer, in_close_event, is_active_wa))
 				return false;
 		}
 	}
@@ -1918,11 +1910,11 @@ bool GuiView::closeBuffer()
 
 
 bool GuiView::closeWorkArea(GuiWorkArea * wa, bool close_buffer,
-	bool tolastopened, bool mark_active)
+	bool in_close_event, bool mark_active)
 {
 	Buffer & buf = wa->bufferView().buffer();
 
-	if (close_buffer && !tolastopened) {
+	if (close_buffer && !in_close_event) {
 		vector<Buffer *> clist = buf.getChildren();
 		for (vector<Buffer *>::const_iterator it = clist.begin();
 			 it != clist.end(); ++it) {
@@ -1949,7 +1941,7 @@ bool GuiView::closeWorkArea(GuiWorkArea * wa, bool close_buffer,
 		// save in sessions if requested
 		// do not save childs if their master
 		// is opened as well
-		if (tolastopened)
+		if (in_close_event)
 			theSession().lastOpened().add(buf.fileName(), mark_active);
 		if (!close_buffer)
 			removeWorkArea(wa);
