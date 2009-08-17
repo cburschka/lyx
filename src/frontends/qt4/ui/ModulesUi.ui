@@ -65,11 +65,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QTreeView" name="availableLV" >
-         <property name="headerHidden" >
-          <bool>true</bool>
-         </property>
-        </widget>
+        <widget class="QTreeView" name="availableLV" />
        </item>
       </layout>
      </item>
