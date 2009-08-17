@@ -660,6 +660,7 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 	} else if (token == "\\index") {
 		lex.eatLine();
 		docstring index = lex.getDocString();
+		docstring shortcut;
 		indiceslist().add(index);
 		while (true) {
 			lex.next();
@@ -669,8 +670,9 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 			Index * index_ptr = indiceslist().find(index);
 			if (tok == "\\shortcut") {
 				lex.next();
+				shortcut = lex.getDocString();
 				if (index_ptr)
-					index_ptr->setShortcut(lex.getDocString());
+					index_ptr->setShortcut(shortcut);
 			}
 			// not yet operational
 			if (tok == "\\color") {
@@ -682,7 +684,8 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 				if (color == "none")
 					color = lcolor.getX11Name(Color_background);
 				// FIXME UNICODE
-				lcolor.setColor(to_utf8(index), color);
+				if (!shortcut.empty())
+					lcolor.setColor(to_utf8(shortcut), color);
 			}
 		}
 	} else if (token == "\\author") {
