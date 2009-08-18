@@ -3510,11 +3510,11 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 				&& cur.pos() == cur.lastpos())
 				|| (!next_cell && cur.pit() == 0 && cur.pos() == 0));
 
+			bool const empty_cell = cur.lastpos() == 0 && cur.lastpit() == 0;
+
 			// ...try to dispatch to the cell's inset.
 			cell(cur.idx())->dispatch(cur, cmd);
 
-			bool const empty_cell = cur.lastpos() == 0 && cur.lastpit() == 0;
-			
 			// When we already have a selection we want to select the whole cell
 			// before going to the next cell.
 			if (select_whole && !empty_cell){
