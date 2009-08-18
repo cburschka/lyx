@@ -140,6 +140,8 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fix data loss when shutting down Windows (part of bug 5525).
+
 - Fix conversion of documents from LyX 1.5 with multiple URL insets
   (bug 6121).
 
@@ -179,8 +181,6 @@ What's new
 
 - Enable document margin settings and hyperref settings in the
   article (beamer) class.
-
-- Fix data loss when shutting down Windows (part of bug 5525).
   
 
 * USER INTERFACE
