@@ -300,6 +300,9 @@ private:
 	///
 	bool closeWorkArea(GuiWorkArea * wa, bool close_buffer,
 		bool in_close_event = false, bool mark_active = false);
+	/// closes the tabworkarea and all tabs.
+	bool closeTabWorkArea(TabWorkArea * twa, bool in_close_event = false,
+		GuiWorkArea * main_work_area = 0);
 	/// gives the user the possibility to save his work 
 	/// or to discard the changes. If hiding is true, the
 	/// document will be reloaded.
