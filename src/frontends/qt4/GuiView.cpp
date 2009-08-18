@@ -3,10 +3,10 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Lars Gullik Bjï¿½nnes
+ * \author Lars Gullik Bjønnes
  * \author John Levon
  * \author Abdelrazak Younes
- * \author Peter Kï¿½mmel
+ * \author Peter Kümmel
  *
  * Full author contact details are available in file CREDITS.
  */

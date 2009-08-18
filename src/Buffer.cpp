@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Lars Gullik Bjï¿½nnes
+ * \author Lars Gullik Bjønnes
  * \author Stefan Schimanski
  *
  * Full author contact details are available in file CREDITS.
