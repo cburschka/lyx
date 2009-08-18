@@ -33,6 +33,9 @@
 using namespace std;
 
 namespace lyx {
+
+void emergencyCleanup();
+
 namespace support {
 namespace os {
 
@@ -122,15 +125,29 @@ string convert_path_list(string const & p, PathStyle const & target)
 	return subst(p, '\\', '/');
 }
 
+
+BOOL terminate_handler(DWORD event)
+{
+	if (event == CTRL_CLOSE_EVENT
+	    || event == CTRL_LOGOFF_EVENT
+	    || event == CTRL_SHUTDOWN_EVENT) {
+		lyx::emergencyCleanup();
+		return TRUE;
+	}
+	return FALSE;
+}
+
 } // namespace anon
 
 void init(int, char *[])
 {
 	// Make sure that the TEMP variable is set
 	// and sync the Windows environment.
-
 	setenv("TEMP", "/tmp", false);
 	cygwin_internal(CW_SYNC_WINENV);
+
+	// Catch shutdown events.
+	SetConsoleCtrlHandler((PHANDLER_ROUTINE)terminate_handler, TRUE);
 }
 
 
