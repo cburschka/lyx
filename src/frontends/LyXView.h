@@ -67,7 +67,7 @@ public:
 	///
 	virtual bool closeBuffer() = 0;
 	///
-	virtual bool closeBufferAll(bool tolastopened = false) = 0;
+	virtual bool closeBufferAll() = 0;
 	///
 	virtual bool hasFocus() const = 0;
 
