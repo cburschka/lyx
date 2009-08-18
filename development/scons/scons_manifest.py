@@ -2092,7 +2092,7 @@ lib_doc_files = Split('''
     DummyDocument2.lyx
     DummyTextDocument.txt
     EmbeddedObjects.lyx
-    Extended.lyx
+    Additional.lyx
     Formula-numbering.lyx
     Intro.lyx
     LaTeXConfig.lyx
@@ -2165,7 +2165,7 @@ lib_doc_de_files = Split('''
     DummyDocument2.lyx
     DummyTextDocument.txt
     EmbeddedObjects.lyx
-    Extended.lyx
+    Additional.lyx
     Formelnummerierung.lyx
     Intro.lyx
     Math.lyx
@@ -2201,7 +2201,7 @@ lib_doc_es_files = Split('''
     DocumentoPostizo2.lyx
     DocumentoTextoPostizo.txt
     EmbeddedObjects.lyx
-    Extended.lyx
+    Additional.lyx
     Formula-numbering.lyx
     Intro.lyx
     Math.lyx
@@ -2230,7 +2230,7 @@ lib_doc_es_clipart_files = Split('''
 
 lib_doc_eu_files = Split('''
     Customization.lyx
-    Extended.lyx
+    Additional.lyx
     Intro.lyx
     Tutorial.lyx
     UserGuide.lyx
@@ -2243,7 +2243,7 @@ lib_doc_fr_files = Split('''
     DocumentBidon2.lyx
     DocumentTexteBidon.txt
     EmbeddedObjects.lyx
-    Extended.lyx
+    Additional.lyx
     Formula-numbering.lyx
     Intro.lyx
     Math.lyx
@@ -2311,7 +2311,7 @@ lib_doc_it_clipart_files = Split('''
 
 
 lib_doc_ja_files = Split('''
-    Extended.lyx
+    Additional.lyx
     Intro.lyx
     LaTeXConfig.lyx
     Math.lyx
@@ -2342,7 +2342,7 @@ lib_doc_nl_files = Split('''
 
 
 lib_doc_pl_files = Split('''
-    Extended.lyx
+    Additional.lyx
     Intro.lyx
     Tutorial.lyx
 ''')
