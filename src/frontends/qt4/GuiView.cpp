@@ -584,34 +584,6 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 }
 
 
-bool GuiView::closeBufferAll(bool in_close_event)
-{
-	GuiWorkArea * active_wa = currentMainWorkArea();
-	setCurrentWorkArea(active_wa);
-
-	// We might be in a situation that there is still a tabWorkArea, but
-	// there are no tabs anymore. This can happen when we get here after a 
-	// TabWorkArea::lastWorkAreaRemoved() signal. Therefore we count how
-	// many TabWorkArea's have no documents anymore.
-	int empty_twa = 0;
-
-	// We have to call count() each time, because it can happen that
-	// more than one splitter will disappear in one iteration (bug 5998).
-	for (; d.splitter_->count() > empty_twa; ) {
-		TabWorkArea * twa = d.tabWorkArea(empty_twa);
-				
-		if (twa->count() == 0)
-			++empty_twa;
-		else {
-			setCurrentWorkArea(twa->currentWorkArea());
-			if (!closeTabWorkArea(twa, true, active_wa))
-				return false;
-		}
-	}
-	return true;
-}
-
-
 void GuiView::dragEnterEvent(QDragEnterEvent * event)
 {
 	if (event->mimeData()->hasUrls())
@@ -1900,6 +1872,48 @@ bool GuiView::closeBuffer()
 	GuiWorkArea * wa = currentMainWorkArea();
 	Buffer & buf = wa->bufferView().buffer();
 	return wa && closeWorkArea(wa, !buf.parent());
+}
+
+
+bool GuiView::closeBufferAll(bool in_close_event)
+{
+	// First close all workareas. This will make
+	// sure that dirty buffers are saved.
+	if (!closeWorkAreaAll(in_close_event))
+		return false;
+
+	// Now close the hidden buffers. We prevent hidden 
+	// buffers from being dirty, so we can just close them.
+	theBufferList().closeAll();
+	return true;
+}
+
+
+bool GuiView::closeWorkAreaAll(bool in_close_event)
+{
+	GuiWorkArea * active_wa = currentMainWorkArea();
+	setCurrentWorkArea(active_wa);
+
+	// We might be in a situation that there is still a tabWorkArea, but
+	// there are no tabs anymore. This can happen when we get here after a 
+	// TabWorkArea::lastWorkAreaRemoved() signal. Therefore we count how
+	// many TabWorkArea's have no documents anymore.
+	int empty_twa = 0;
+
+	// We have to call count() each time, because it can happen that
+	// more than one splitter will disappear in one iteration (bug 5998).
+	for (; d.splitter_->count() > empty_twa; ) {
+		TabWorkArea * twa = d.tabWorkArea(empty_twa);
+				
+		if (twa->count() == 0)
+			++empty_twa;
+		else {
+			setCurrentWorkArea(twa->currentWorkArea());
+			if (!closeTabWorkArea(twa, true, active_wa))
+				return false;
+		}
+	}
+	return true;
 }
 
 

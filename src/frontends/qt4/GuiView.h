@@ -309,6 +309,8 @@ private:
 	bool saveBufferIfNeeded(Buffer & buf, bool hiding);
 	///
 	bool closeBufferAll(bool in_close_event = false);
+	///
+	bool closeWorkAreaAll(bool in_close_event = false);
 	/// is the buffer in this workarea also shown in another tab ?
 	/// This tab can either be in the same view or in another one.
 	bool inMultiTabs(GuiWorkArea * wa);
