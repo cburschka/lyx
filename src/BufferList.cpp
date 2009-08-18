@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Lars Gullik Bjønnes
+ * \author Lars Gullik Bjï¿½nnes
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -282,6 +282,8 @@ docstring BufferList::emergencyWrite(Buffer * buf)
 	}
 
 	user_message += _("  Save failed! Bummer. Document is lost.");
+	// Don't try again
+	buf->markClean();
 	return user_message;
 }
 

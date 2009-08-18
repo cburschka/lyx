@@ -3,10 +3,10 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Lars Gullik Bjønnes
+ * \author Lars Gullik Bjï¿½nnes
  * \author John Levon
  * \author Abdelrazak Younes
- * \author Peter Kümmel
+ * \author Peter Kï¿½mmel
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -1875,6 +1875,7 @@ bool GuiView::closeBuffer(Buffer & buf, bool tolastopened, bool mark_active)
 		// have no autosave file but I guess
 		// this is really improbable (Jug)
 		buf.removeAutosaveFile();
+		buf.markClean();
 		break;
 	case 2:
 		return false;
