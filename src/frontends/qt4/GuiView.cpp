@@ -1923,17 +1923,24 @@ bool GuiView::closeWorkArea(GuiWorkArea * wa, bool close_buffer,
 {
 	Buffer & buf = wa->bufferView().buffer();
 
+	// If we are in a close_event all children will be closed in some time,
+	// so no need to do it here. This will ensure that the children end up
+	// in the session file in the correct order. If we close the master
+	// buffer, we can close or release the child buffers here too.
 	if (close_buffer && !closing_) {
 		vector<Buffer *> clist = buf.getChildren();
 		for (vector<Buffer *>::const_iterator it = clist.begin();
 			 it != clist.end(); ++it) {
 			// If a child is dirty, do not close
 			// without user intervention
-			//FIXME: should buffers be closed or not?
 			//FIXME: should we look in other tabworkareas?
-			GuiWorkArea * child_wa = workArea(**it);
-			if (child_wa && !closeWorkArea(child_wa, !close_buffer, false))
-				return false;
+			Buffer * child_buf = *it;
+			GuiWorkArea * child_wa = workArea(*child_buf);
+			if (child_wa) {
+				if (!closeWorkArea(child_wa, true))
+					return false;
+			} else
+				theBufferList().releaseChild(&buf, child_buf);
 		}
 	}
 	// goto bookmark to update bookmark pit.
