@@ -41,6 +41,9 @@ What's new
 
 - Fix layout conversion problem with AMS classes (bug 6140).
 
+- Partially resolve bug 5863, "LyX closes dirty buffers without asking".
+  We now ask to save modified buffers when they are destroyed.
+
 
 * USER INTERFACE
 
