@@ -2297,7 +2297,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 
 		case LFUN_CLOSE_TAB_GROUP:
 			if (TabWorkArea * twa = d.currentTabWorkArea()) {
-				delete twa;
+				closeTabWorkArea(twa, false);
 				d.current_work_area_ = 0;
 				twa = d.currentTabWorkArea();
 				// Switch to the next GuiWorkArea in the found TabWorkArea.
