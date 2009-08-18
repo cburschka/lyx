@@ -58,6 +58,7 @@
 #include "frontends/alert.h"
 
 #include <QAbstractItemModel>
+#include <QHeaderView>
 #include <QColor>
 #include <QColorDialog>
 #include <QCloseEvent>
