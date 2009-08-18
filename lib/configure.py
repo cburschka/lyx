@@ -678,7 +678,7 @@ def checkOtherEntries():
         alt_rc_entry = [ r'\index_alternatives "%%"' ])
     checkProg('an index processor appropriate to Japanese', ['mendex -c -q', 'makeindex -c -q'],
         rc_entry = [ r'\jindex_command "%%"' ])
-    checkProg('the splitindex processor', ['splitindex.pl', 'java splitindex', 'splitindex'],
+    checkProg('the splitindex processor', ['splitindex.pl', 'splitindex', 'java splitindex'],
         rc_entry = [ r'\splitindex_command "%%"' ])
     checkProg('a nomenclature processor', ['makeindex'],
         rc_entry = [ r'\nomencl_command "makeindex -s nomencl.ist"' ])
