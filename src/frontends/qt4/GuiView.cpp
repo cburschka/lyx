@@ -547,7 +547,7 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 	// it can happen that this event arrives without selecting the view,
 	// e.g. when clicking the close button on a background window.
 	setFocus();
-	if (!closeWorkAreaAll(true)) {
+	if (!closeWorkAreaAll()) {
 		closing_ = false;
 		close_event->ignore();
 		return;
@@ -1875,22 +1875,23 @@ bool GuiView::closeBuffer()
 }
 
 
-bool GuiView::closeBufferAll(bool in_close_event)
+bool GuiView::closeBufferAll()
 {
 	// First close all workareas. This will make
 	// sure that dirty buffers are saved.
-	if (!closeWorkAreaAll(in_close_event))
+	if (!closeWorkAreaAll())
 		return false;
 
-	// Now close the hidden buffers. We prevent hidden 
-	// buffers from being dirty, so we can just close them.
+	// Now close the hidden buffers. We prevent hidden buffers from being
+	// dirty, so we can just close them.
 	theBufferList().closeAll();
 	return true;
 }
 
 
-bool GuiView::closeWorkAreaAll(bool in_close_event)
+bool GuiView::closeWorkAreaAll()
 {
+	// To write in the session file which workarea was active.
 	GuiWorkArea * active_wa = currentMainWorkArea();
 	setCurrentWorkArea(active_wa);
 
@@ -1904,12 +1905,12 @@ bool GuiView::closeWorkAreaAll(bool in_close_event)
 	// more than one splitter will disappear in one iteration (bug 5998).
 	for (; d.splitter_->count() > empty_twa; ) {
 		TabWorkArea * twa = d.tabWorkArea(empty_twa);
-				
+
 		if (twa->count() == 0)
 			++empty_twa;
 		else {
 			setCurrentWorkArea(twa->currentWorkArea());
-			if (!closeTabWorkArea(twa, true, active_wa))
+			if (!closeTabWorkArea(twa, active_wa))
 				return false;
 		}
 	}
@@ -1918,11 +1919,11 @@ bool GuiView::closeWorkAreaAll(bool in_close_event)
 
 
 bool GuiView::closeWorkArea(GuiWorkArea * wa, bool close_buffer,
-	bool in_close_event, bool mark_active)
+	bool is_active)
 {
 	Buffer & buf = wa->bufferView().buffer();
 
-	if (close_buffer && !in_close_event) {
+	if (close_buffer && !closing_) {
 		vector<Buffer *> clist = buf.getChildren();
 		for (vector<Buffer *>::const_iterator it = clist.begin();
 			 it != clist.end(); ++it) {
@@ -1949,8 +1950,8 @@ bool GuiView::closeWorkArea(GuiWorkArea * wa, bool close_buffer,
 		// save in sessions if requested
 		// do not save childs if their master
 		// is opened as well
-		if (in_close_event)
-			theSession().lastOpened().add(buf.fileName(), mark_active);
+		if (closing_)
+			theSession().lastOpened().add(buf.fileName(), is_active);
 		if (!close_buffer)
 			removeWorkArea(wa);
 		else
@@ -1961,8 +1962,7 @@ bool GuiView::closeWorkArea(GuiWorkArea * wa, bool close_buffer,
 }
 
 
-bool GuiView::closeTabWorkArea(TabWorkArea * twa, bool in_close_event,
-							   GuiWorkArea * main_work_area)
+bool GuiView::closeTabWorkArea(TabWorkArea * twa, GuiWorkArea * main_work_area)
 {
 	while (twa == d.currentTabWorkArea()) {
 		twa->setCurrentIndex(twa->count()-1);
@@ -1975,11 +1975,9 @@ bool GuiView::closeTabWorkArea(TabWorkArea * twa, bool in_close_event,
 		// in another view, and if this is not a child and if we are closing
 		// a view (not a tabgroup).
 		bool const close_buffer = 
-			!inMultiViews(wa) && !b.parent() && in_close_event;
+			!inMultiViews(wa) && !b.parent() && closing_;
 
-		// closeBuffer() needs buffer workArea still alive and
-		// set as currrent one, and destroys it
-		if (!closeWorkArea(wa, close_buffer, true, is_active_wa))
+		if (!closeWorkArea(wa, close_buffer, is_active_wa))
 			return false;
 	}
 	return true;

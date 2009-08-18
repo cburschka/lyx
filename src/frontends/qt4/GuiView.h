@@ -89,7 +89,7 @@ public:
 	Buffer const * buffer() const;
 	/// set a buffer to the current workarea.
 	void setBuffer(Buffer * b); ///< \c Buffer to set.
-	///
+	/// closes the current active buffer
 	bool closeBuffer();
 	/// hides the workarea and makes sure it is clean
 	bool hideWorkArea(GuiWorkArea * wa);
@@ -297,20 +297,23 @@ private:
 	bool renameBuffer(Buffer & b, docstring const & newname);
 	///
 	bool saveBuffer(Buffer & b);
-	///
+	/// closes a workarea, if close_buffer is true the buffer will
+	/// also be released, otherwise the buffer will be hidden.
 	bool closeWorkArea(GuiWorkArea * wa, bool close_buffer,
-		bool in_close_event = false, bool mark_active = false);
-	/// closes the tabworkarea and all tabs.
-	bool closeTabWorkArea(TabWorkArea * twa, bool in_close_event = false,
+		bool is_active = false);
+	/// closes the tabworkarea and all tabs. If we are in a close event,
+	/// all buffers will be closed, otherwise they will be hidden.
+	/// main_work_area is the workarea marked in the session file as active.
+	bool closeTabWorkArea(TabWorkArea * twa,
 		GuiWorkArea * main_work_area = 0);
 	/// gives the user the possibility to save his work 
 	/// or to discard the changes. If hiding is true, the
 	/// document will be reloaded.
 	bool saveBufferIfNeeded(Buffer & buf, bool hiding);
-	///
-	bool closeBufferAll(bool in_close_event = false);
-	///
-	bool closeWorkAreaAll(bool in_close_event = false);
+	/// closes all workareas and all hidden buffers
+	bool closeBufferAll();
+	/// closes all workareas
+	bool closeWorkAreaAll();
 	/// is the buffer in this workarea also shown in another tab ?
 	/// This tab can either be in the same view or in another one.
 	bool inMultiTabs(GuiWorkArea * wa);
