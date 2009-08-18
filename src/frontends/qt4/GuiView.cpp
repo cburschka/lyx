@@ -1903,7 +1903,8 @@ bool GuiView::hideWorkArea(GuiWorkArea * wa)
 
 bool GuiView::closeWorkArea(GuiWorkArea * wa)
 {
-	return closeWorkArea(wa, true);
+	Buffer & buf = wa->bufferView().buffer();
+	return closeWorkArea(wa, !buf.parent());
 }
 
 
