@@ -600,24 +600,11 @@ bool GuiView::closeBufferAll(bool in_close_event)
 	for (; d.splitter_->count() > empty_twa; ) {
 		TabWorkArea * twa = d.tabWorkArea(empty_twa);
 				
-		int twa_count = twa->count();
 		if (twa->count() == 0)
 			++empty_twa;
-
-		for (; twa == d.tabWorkArea(empty_twa) && twa_count; --twa_count) {
-			twa->setCurrentIndex(twa_count-1);
-
-			GuiWorkArea * wa = twa->currentWorkArea();
-			bool const is_active_wa = active_wa == wa;
-			Buffer & b = wa->bufferView().buffer();
-
-			// We only want to close the buffer if the same buffer is not in
-			// another view.
-			bool const close_buffer = !(inMultiViews(wa) || b.parent());
-
-			// closeBuffer() needs buffer workArea still alive and
-			// set as currrent one, and destroys it
-			if (!closeWorkArea(wa, close_buffer, in_close_event, is_active_wa))
+		else {
+			setCurrentWorkArea(twa->currentWorkArea());
+			if (!closeTabWorkArea(twa, true, active_wa))
 				return false;
 		}
 	}
@@ -1957,6 +1944,31 @@ bool GuiView::closeWorkArea(GuiWorkArea * wa, bool close_buffer,
 		return true;
 	}
 	return false;
+}
+
+
+bool GuiView::closeTabWorkArea(TabWorkArea * twa, bool in_close_event,
+							   GuiWorkArea * main_work_area)
+{
+	while (twa == d.currentTabWorkArea()) {
+		twa->setCurrentIndex(twa->count()-1);
+
+		GuiWorkArea * wa = twa->currentWorkArea();
+		bool const is_active_wa = main_work_area == wa;
+		Buffer & b = wa->bufferView().buffer();
+
+		// We only want to close the buffer if the same buffer is not visible
+		// in another view, and if this is not a child and if we are closing
+		// a view (not a tabgroup).
+		bool const close_buffer = 
+			!inMultiViews(wa) && !b.parent() && in_close_event;
+
+		// closeBuffer() needs buffer workArea still alive and
+		// set as currrent one, and destroys it
+		if (!closeWorkArea(wa, close_buffer, true, is_active_wa))
+			return false;
+	}
+	return true;
 }
 
 
