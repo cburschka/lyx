@@ -92,7 +92,8 @@ Inset * DocIterator::nextInset() const
 	if (pos() == lastpos())
 		return 0;
 	if (pos() > lastpos()) {
-		LYXERR0("Should not happen, but it does. ");
+		LYXERR0("Should not happen, but it does: pos() = "
+			<< pos() << ", lastpos() = " << lastpos());
 		return 0;
 	}
 	if (inMathed())
