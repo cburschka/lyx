@@ -1066,11 +1066,12 @@ void PrefColors::changeLyxObjectsSelection()
 /////////////////////////////////////////////////////////////////////
 
 PrefDisplay::PrefDisplay(GuiPreferences * form)
-	: PrefModule(qt_(catLookAndFeel), qt_("Graphics"), form)
+	: PrefModule(qt_(catLookAndFeel), qt_("Display"), form)
 {
 	setupUi(this);
 	connect(displayGraphicsCB, SIGNAL(toggled(bool)), this, SIGNAL(changed()));
 	connect(instantPreviewCO, SIGNAL(activated(int)), this, SIGNAL(changed()));
+	connect(paragraphMarkerCB, SIGNAL(toggled(bool)), this, SIGNAL(changed())); 
 }
 
 
@@ -1083,6 +1084,7 @@ void PrefDisplay::apply(LyXRC & rc) const
 	}
 
 	rc.display_graphics = displayGraphicsCB->isChecked();
+	rc.paragraph_markers = paragraphMarkerCB->isChecked();
 
 	// FIXME!! The graphics cache no longer has a changeDisplay method.
 #if 0
@@ -1110,6 +1112,7 @@ void PrefDisplay::update(LyXRC const & rc)
 
 	displayGraphicsCB->setChecked(rc.display_graphics);
 	instantPreviewCO->setEnabled(rc.display_graphics);
+	paragraphMarkerCB->setChecked(rc.paragraph_markers);
 }
 
 

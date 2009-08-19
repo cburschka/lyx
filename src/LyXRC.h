@@ -111,6 +111,7 @@ public:
 		RC_NOMENCL_COMMAND,
 		RC_NUMLASTFILES,
 		RC_OPEN_BUFFERS_IN_TABS,
+		RC_PARAGRAPH_MARKERS,
 		RC_PATH_PREFIX,
 		RC_PERS_DICT,
 		RC_PLAINTEXT_LINELEN,
@@ -328,6 +329,8 @@ public:
 	unsigned int plaintext_linelen;
 	/// Accept compound words in spellchecker?
 	bool spellchecker_accept_compound;
+	/// End of paragraph markers?
+	bool paragraph_markers;
 	/// Use tooltips?
 	bool use_tooltip;
 	/// Use pixmap cache?

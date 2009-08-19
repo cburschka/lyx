@@ -189,6 +189,8 @@ enum ColorCode
 	Color_buttonbg,
 	/// Color used for buttom under focus
 	Color_buttonhoverbg,
+	/// Color used for the pilcrow sign to mark the end of a paragraph
+	Color_paragraphmarker,
 
 	// Logical attributes
 

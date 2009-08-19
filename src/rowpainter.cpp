@@ -687,6 +687,15 @@ void RowPainter::paintLast()
 	}
 
 	case END_LABEL_NO_LABEL:
+		if (lyxrc.paragraph_markers) {
+			docstring const s = docstring(1, char_type(0x00B6));
+			FontInfo f = FontInfo();
+			FontMetrics const & fm = theFontMetrics(f);
+			double const x = x_;
+			f.setColor(Color_paragraphmarker);
+			pi_.pain.text(int(x), yo_, s, f);
+			x_ += fm.width(s);
+		}
 		break;
 	}
 }
