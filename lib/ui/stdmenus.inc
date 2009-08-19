@@ -305,8 +305,8 @@ Menuset
 		Item "Open All Insets|O" "all-insets-toggle open"
 		Item "Close All Insets|C" "all-insets-toggle close"
 		Separator
-		Item "Unfold Math Macro" "math-macro-unfold"
-		Item "Fold Math Macro" "math-macro-fold"
+		Item "Unfold Math Macro|n" "math-macro-unfold"
+		Item "Fold Math Macro|d" "math-macro-fold"
 		Separator
 		Item "View Source|S" "dialog-toggle view-source"
 		Item "View Output|V" "buffer-view"
@@ -318,7 +318,7 @@ Menuset
 		Separator
 		Item "Split View Into Left and Right Half|i" "split-view horizontal"
 		Item "Split View Into Upper and Lower Half|e" "split-view vertical"
-		Item "Close Current View|G" "close-tab-group"
+		Item "Close Current View|w" "close-tab-group"
 		Item "Fullscreen|l" "ui-toggle fullscreen"
 		Submenu "Toolbars|b" "toolbars"
 		Separator
