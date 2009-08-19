@@ -1966,8 +1966,6 @@ bool GuiView::closeWorkArea(GuiWorkArea * wa, bool close_buffer,
 		// save in sessions if requested
 		// do not save childs if their master
 		// is opened as well
-		if (closing_)
-			theSession().lastOpened().add(buf.fileName(), is_active);
 		if (!close_buffer)
 			removeWorkArea(wa);
 		else
