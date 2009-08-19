@@ -2338,8 +2338,14 @@ void BufferView::draw(frontend::Painter & pain)
 		// and possibly grey out below
 		pair<pit_type, ParagraphMetrics const *> lastpm = tm.last();
 		int const y2 = lastpm.second->position() + lastpm.second->descent();
-		if (y2 < height_)
-			pain.fillRectangle(0, y2, width_, height_ - y2, Color_bottomarea);
+		
+		if (y2 < height_) {
+			bool const embedded_workarea = buffer().isUnnamed()
+				  && buffer().fileName().extension() == "internal";
+			Color color = embedded_workarea ? Color_background
+				  : Color_bottomarea;
+			pain.fillRectangle(0, y2, width_, height_ - y2, color);
+		}
 		break;
 	}
 	LYXERR(Debug::PAINTING, "\n\t\t*** END DRAWING  ***");
