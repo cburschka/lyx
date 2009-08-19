@@ -1051,12 +1051,65 @@ docstring stringifyFromForSearch(FindAndReplaceOptions const & opt,
 
 lyx::FindAndReplaceOptions::FindAndReplaceOptions(docstring const & search, bool casesensitive,
 	bool matchword, bool forward, bool expandmacros, bool ignoreformat,
-	bool regexp, docstring const & replace)
+	bool regexp, docstring const & replace, bool keep_case)
 	: search(search), casesensitive(casesensitive), matchword(matchword),
 	forward(forward), expandmacros(expandmacros), ignoreformat(ignoreformat),
-	regexp(regexp), replace(replace)
+	regexp(regexp), replace(replace), keep_case(keep_case)
 {
 }
+
+
+/** Checks if the supplied character is lower-case */
+static bool isLowerCase(char_type ch) {
+	return lowercase(ch) == ch;
+}
+
+
+/** Checks if the supplied character is upper-case */
+static bool isUpperCase(char_type ch) {
+	return uppercase(ch) == ch;
+}
+
+
+/** Check if 'len' letters following cursor are all non-lowercase */
+static bool allNonLowercase(DocIterator const & cur, int len) {
+	pos_type end_pos = cur.pos() + len;
+	for (pos_type pos = cur.pos(); pos != end_pos; ++pos)
+		if (isLowerCase(cur.paragraph().getChar(pos)))
+			return false;
+	return true;
+}
+
+
+/** Check if first letter is upper case and second one is lower case */
+static bool firstUppercase(DocIterator const & cur) {
+	char_type ch1, ch2;
+	if (cur.pos() >= cur.lastpos() - 1) {
+		LYXERR(Debug::FIND, "No upper-case at cur: " << cur);
+		return false;
+	}
+	ch1 = cur.paragraph().getChar(cur.pos());
+	ch2 = cur.paragraph().getChar(cur.pos()+1);
+	bool result = isUpperCase(ch1) && isLowerCase(ch2);
+	LYXERR(Debug::FIND, "firstUppercase(): "
+	       << "ch1=" << ch1 << "(" << char(ch1) << "), ch2=" << ch2 << "(" << char(ch2) << ")"
+	       << ", result=" << result << ", cur=" << cur);
+	return result;
+}
+
+
+/** Make first letter of supplied buffer upper-case, and the rest lower-case.
+ **
+ ** \fixme What to do with possible further paragraphs in replace buffer ?
+ **/
+static void changeFirstCase(Buffer & buffer, TextCase first_case, TextCase others_case) {
+	ParagraphList::iterator pit = buffer.paragraphs().begin();
+	pos_type right = pos_type(1);
+	pit->changeCase(buffer.params(), pos_type(0), right, first_case);
+	right = pit->size() + 1;
+	pit->changeCase(buffer.params(), right, right, others_case);
+}
+
 
 /// Perform a FindAdv operation.
 bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt)
@@ -1101,7 +1154,15 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt)
 		Buffer repl_buffer("", false);
 		repl_buffer.setUnnamed(true);
 		if (repl_buffer.readString(lyx)) {
-			cap::cutSelection(bv->cursor(), true, false);
+			if (opt.keep_case && match_len >= 2) {
+				if (cur.inTexted()) {
+					if (firstUppercase(cur))
+						changeFirstCase(repl_buffer, text_uppercase, text_lowercase);
+					else if (allNonLowercase(cur, match_len))
+						changeFirstCase(repl_buffer, text_uppercase, text_uppercase);
+				}
+			}
+			cap::cutSelection(bv->cursor(), false, false);
 			if (! cur.inMathed()) {
 				LYXERR(Debug::FIND, "Replacing by pasteParagraphList()ing repl_buffer");
 				cap::pasteParagraphList(bv->cursor(), repl_buffer.paragraphs(),
@@ -1158,7 +1219,8 @@ ostringstream & operator<<(ostringstream & os, lyx::FindAndReplaceOptions const 
 	   << opt.expandmacros << ' '
 	   << opt.ignoreformat << ' '
 	   << opt.regexp << ' '
-	   << to_utf8(opt.replace) << "\nEOSS\n";
+	   << to_utf8(opt.replace) << "\nEOSS\n"
+	   << opt.keep_case;
 
 	LYXERR(Debug::FIND, "built: " << os.str());
 
@@ -1193,8 +1255,9 @@ istringstream & operator>>(istringstream & is, lyx::FindAndReplaceOptions & opt)
 				break;
 		getline(is, line);
 	}
+	is >> opt.keep_case;
 	LYXERR(Debug::FIND, "parsed: " << opt.casesensitive << ' ' << opt.matchword << ' ' << opt.forward << ' '
-		   << opt.expandmacros << ' ' << opt.ignoreformat << ' ' << opt.regexp);
+		   << opt.expandmacros << ' ' << opt.ignoreformat << ' ' << opt.regexp << ' ' << opt.keep_case);
 	LYXERR(Debug::FIND, "replacing with: '" << s << "'");
 	opt.replace = from_utf8(s);
 	return is;
