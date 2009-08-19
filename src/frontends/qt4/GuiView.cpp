@@ -1188,21 +1188,9 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		enable = buf;
 		break;
 
-	case LFUN_BUFFER_CLOSE_ALL: {
-		enable = false;
-		BufferList::iterator it = theBufferList().begin();
-		BufferList::iterator end = theBufferList().end();
-		int visible_buffers = 0;
-		for (; it != end; ++it) {
-			if (workArea(**it))
-				++visible_buffers;
-			if (visible_buffers > 1) {
-				enable = true;
-				break;
-			}
-		}
+	case LFUN_BUFFER_CLOSE_ALL:
+		enable = theBufferList().last() != theBufferList().first();
 		break;
-	}
 
 	case LFUN_SPLIT_VIEW:
 		if (cmd.getArg(0) == "vertical")
@@ -1892,8 +1880,14 @@ void GuiView::writeSession() const {
 
 bool GuiView::closeBufferAll()
 {
-	// First close all workareas. This will make
-	// sure that dirty buffers are saved.
+	// Close the workareas in all other views
+	QList<int> const ids = guiApp->viewIds();
+	for (int i = 0; i != ids.size(); ++i) {
+		if (id_ != ids[i] && !guiApp->view(ids[i]).closeWorkAreaAll())
+			return false;
+	}
+
+	// Close our own workareas
 	if (!closeWorkAreaAll())
 		return false;
 
