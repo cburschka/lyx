@@ -318,7 +318,7 @@ Buffer::~Buffer()
 		return;
 	}
 
-	/*// loop over children
+	// loop over children
 	Impl::BufferPositionMap::iterator it = d->children_positions.begin();
 	Impl::BufferPositionMap::iterator end = d->children_positions.end();
 	for (; it != end; ++it) {
@@ -326,7 +326,7 @@ Buffer::~Buffer()
 		// The child buffer might have been closed already.
 		if (theBufferList().isLoaded(child))
 			theBufferList().releaseChild(this, child);
-	}*/
+	}
 
 	if (!isClean()) {
 		docstring msg = _("Buffer had unsaved changes when destroyed!\n");
