@@ -802,11 +802,11 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 	return docstring();
 }
 
+
 /** Computes the LaTeX export of buf starting from cur and ending len positions
  * after cur, if len is positive, or at the paragraph or innermost inset end
  * if len is -1.
  */
-
 docstring latexifyFromCursor(DocIterator const & cur, int len)
 {
 	LYXERR(Debug::FIND, "Latexifying with len=" << len << " from cursor at pos: " << cur);
@@ -1092,9 +1092,45 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt)
 
 	LYXERR(Debug::FIND, "Putting selection at " << cur << " with len: " << match_len);
 	bv->putSelectionAt(cur, match_len, ! opt.forward);
-	bv->message(_("Match found!"));
-	if (opt.replace != docstring(from_utf8(LYX_FR_NULL_STRING))) {
-		dispatch(FuncRequest(LFUN_SELF_INSERT, opt.replace));
+	if (opt.replace == docstring(from_utf8(LYX_FR_NULL_STRING))) {
+		bv->message(_("Match found !"));
+	} else {
+		string lyx = to_utf8(opt.replace);
+		// FIXME: Seems so stupid to me to rebuild a buffer here,
+		// when we already have one (replace_work_area_.buffer())
+		Buffer repl_buffer("", false);
+		repl_buffer.setUnnamed(true);
+		if (repl_buffer.readString(lyx)) {
+			cap::cutSelection(bv->cursor(), true, false);
+			if (! cur.inMathed()) {
+				LYXERR(Debug::FIND, "Replacing by pasteParagraphList()ing repl_buffer");
+				cap::pasteParagraphList(bv->cursor(), repl_buffer.paragraphs(),
+							repl_buffer.params().documentClassPtr(),
+							bv->buffer().errorList("Paste"));
+			} else {
+				odocstringstream ods;
+				OutputParams runparams(&repl_buffer.params().encoding());
+				runparams.nice = false;
+				runparams.flavor = OutputParams::LATEX;
+				runparams.linelen = 8000; //lyxrc.plaintext_linelen;
+				runparams.dryrun = true;
+				TexRow texrow;
+				TeXOnePar(repl_buffer, repl_buffer.text(), repl_buffer.paragraphs().begin(), ods, texrow, runparams);
+				//repl_buffer.getSourceCode(ods, 0, repl_buffer.paragraphs().size(), false);
+				docstring repl_latex = ods.str();
+				LYXERR(Debug::FIND, "Latexified replace_buffer: '" << repl_latex << "'");
+				string s;
+				regex_replace(to_utf8(repl_latex), s, "\\$(.*)\\$", "$1");
+				regex_replace(s, s, "\\\\\\[(.*)\\\\\\]", "$1");
+				repl_latex = from_utf8(s);
+				LYXERR(Debug::FIND, "Replacing by niceInsert()ing latex: '" << repl_latex << "'");
+				bv->cursor().niceInsert(repl_latex);
+			}
+			bv->putSelectionAt(cur, repl_buffer.paragraphs().begin()->size(), ! opt.forward);
+			bv->message(_("Match found and replaced !"));
+		} else
+			LASSERT(false, /**/);
+		// dispatch(FuncRequest(LFUN_SELF_INSERT, opt.replace));
 	}
 
 	return true;

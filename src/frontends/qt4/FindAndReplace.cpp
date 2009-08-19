@@ -126,8 +126,10 @@ void FindAndReplaceWidget::findAndReplace(
 	bool const regexp = to_utf8(searchString).find("\\regexp") != std::string::npos;
 	docstring replaceString;
 	if (replace) {
-		Buffer & replace_buffer = replace_work_area_->bufferView().buffer();
-		replaceString = buffer_to_latex(replace_buffer);
+		Buffer & repl_buffer = replace_work_area_->bufferView().buffer();
+		ostringstream oss;
+		repl_buffer.write(oss);
+		replaceString = from_utf8(oss.str()); //buffer_to_latex(replace_buffer);
 	} else {
 		replaceString = from_utf8(LYX_FR_NULL_STRING);
 	}
