@@ -843,6 +843,9 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 		// update bookmark pit of the current buffer before window close
 		for (size_t i = 0; i < theSession().bookmarks().size(); ++i)
 			theLyXFunc().gotoBookmark(i+1, false, false);
+		// clear the last opened list, because
+		// maybe this will end the session
+		theSession().lastOpened().clear();
 		current_view_->close();
 		break;
 
