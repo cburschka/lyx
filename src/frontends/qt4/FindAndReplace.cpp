@@ -99,7 +99,8 @@ static docstring buffer_to_latex(Buffer & buffer) {
 
 void FindAndReplaceWidget::findAndReplace(
 	bool casesensitive, bool matchword, bool backwards,
-	bool expandmacros, bool ignoreformat, bool replace)
+	bool expandmacros, bool ignoreformat, bool replace,
+	bool keep_case)
 {
 	Buffer & buffer = find_work_area_->bufferView().buffer();
 	docstring searchString;
@@ -141,17 +142,15 @@ void FindAndReplaceWidget::findAndReplace(
 	       << ", expandmacros=" << expandmacros
 	       << ", ignoreformat=" << ignoreformat
 	       << ", regexp=" << regexp
-	       << ", replaceString" << replaceString);
+	       << ", replaceString" << replaceString
+	       << ", keep_case=" << keep_case);
 	FindAndReplaceOptions opt(searchString, casesensitive, matchword, ! backwards,
-		expandmacros, ignoreformat, regexp, replaceString);
+		  expandmacros, ignoreformat, regexp, replaceString, keep_case);
 	LYXERR(Debug::FIND, "Dispatching LFUN_WORD_FINDADV");
 	std::ostringstream oss;
 	oss << opt;
 	LYXERR(Debug::FIND, "Dispatching LFUN_WORD_FINDADV");
 	dispatch(FuncRequest(LFUN_WORD_FINDADV, from_utf8(oss.str())));
-
-	//	findAdv(&theApp()->currentView()->currentWorkArea()->bufferView(),
-	// 			searchString, len, casesensitive, matchword, ! backwards, expandmacros);
 }
 
 
@@ -165,7 +164,8 @@ void FindAndReplaceWidget::findAndReplace(bool backwards, bool replace)
 		backwards,
 		expandMacrosCB->isChecked(),
 		ignoreFormatCB->isChecked(),
-		replace);
+		replace,
+		keepCaseCB->isChecked());
 	view_.currentMainWorkArea()->redraw();
 	find_work_area_->setFocus();
 }

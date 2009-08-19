@@ -46,10 +46,11 @@ private:
 	void remember(std::string const & find, QComboBox & combo);
 	void findAndReplace(
 		bool casesensitive, bool matchword, bool backwards,
-		bool expandmacros, bool ignoreformat, bool replace
+		bool expandmacros, bool ignoreformat, bool replace,
+		bool keep_case
 	);
-	void find(docstring const & str, int len, bool casesens,
-		  bool words, bool backwards, bool expandmacros);
+// 	void find(docstring const & str, int len, bool casesens,
+// 		  bool words, bool backwards, bool expandmacros);
 	void findAndReplace(bool backwards, bool replace);
 
 	bool eventFilter(QObject *obj, QEvent *event);
