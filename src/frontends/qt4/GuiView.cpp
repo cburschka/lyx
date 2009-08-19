@@ -544,6 +544,8 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 	LYXERR(Debug::DEBUG, "GuiView::closeEvent()");
 	closing_ = true;
 
+	writeSession();
+
 	// it can happen that this event arrives without selecting the view,
 	// e.g. when clicking the close button on a background window.
 	setFocus();
@@ -1872,6 +1874,19 @@ bool GuiView::closeBuffer()
 	GuiWorkArea * wa = currentMainWorkArea();
 	Buffer & buf = wa->bufferView().buffer();
 	return wa && closeWorkArea(wa, !buf.parent());
+}
+
+
+void GuiView::writeSession() const {
+	GuiWorkArea const * active_wa = currentMainWorkArea();
+	for (int i = 0; i < d.splitter_->count(); ++i) {
+		TabWorkArea * twa = d.tabWorkArea(i);
+		for (int j = 0; j < twa->count(); ++j) {
+			GuiWorkArea * wa = static_cast<GuiWorkArea *>(twa->widget(j));
+			Buffer & buf = wa->bufferView().buffer();
+			theSession().lastOpened().add(buf.fileName(), wa == active_wa);
+		}
+	}
 }
 
 

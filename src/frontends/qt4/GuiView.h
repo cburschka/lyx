@@ -314,6 +314,8 @@ private:
 	bool closeBufferAll();
 	/// closes all workareas
 	bool closeWorkAreaAll();
+	/// write all open workareas into the session file
+	void writeSession() const;
 	/// is the buffer in this workarea also shown in another tab ?
 	/// This tab can either be in the same view or in another one.
 	bool inMultiTabs(GuiWorkArea * wa);
