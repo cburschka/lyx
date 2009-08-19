@@ -121,12 +121,13 @@ dist_faexamples_DATA = \
 frexamplesdir = $(pkgdatadir)/examples/fr
 dist_frexamples_DATA = \
 	examples/fr/AlignementDecimal.lyx \
-	examples/fr/simplecv.lyx \
-	examples/fr/Foils.lyx \
-	examples/fr/ListesPuces.lyx \
+	examples/fr/Braille.lyx \
 	examples/fr/exemple_brut.lyx \
 	examples/fr/exemple_lyxifie.lyx \
+	examples/fr/Foils.lyx \
+	examples/fr/ListesPuces.lyx \
 	examples/fr/multicol.lyx \
+	examples/fr/simplecv.lyx \
 	examples/fr/splash.lyx
 
 glexamplesdir = $(pkgdatadir)/examples/gl

@@ -2491,6 +2491,7 @@ lib_examples_fa_files = Split('''
 
 lib_examples_fr_files = Split('''
     AlignementDecimal.lyx
+    Braille.lyx
     exemple_brut.lyx
     exemple_lyxifie.lyx
     Foils.lyx
