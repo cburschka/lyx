@@ -212,6 +212,8 @@ What's new
   (bug 6116).
   
 - Fix a crash when navigating in a table with math insets (bug 6158).
+  
+- Fix a crash when closing LyX while a master and its child were open.
 
 - Fix communication between lyxclient and server, which leads to a
   crash once CTRL+D is used on the client side (bug 6106).

@@ -545,12 +545,13 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 	for (; d.splitter_->count() > empty_twa; ) {
 		TabWorkArea * twa = d.tabWorkArea(empty_twa);
 				
-		int twa_count = twa->count();
-		if (twa_count == 0)
+		if (twa->count() == 0) {
 			++empty_twa;
+			continue;
+		}
 
-		for (; twa_count; --twa_count) {
-			twa->setCurrentIndex(twa_count-1);
+		for (; twa == d.tabWorkArea(empty_twa);) {
+			twa->setCurrentIndex(twa->count() - 1);
 
 			GuiWorkArea * wa = twa->currentWorkArea();
 			bool const is_active_wa = active_wa == wa;
