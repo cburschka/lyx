@@ -554,7 +554,7 @@ Menuset
 		Item "Introduction|I" "help-open Intro"
 		Item "Tutorial|T" "help-open Tutorial"
 		Item "User's Guide|U" "help-open UserGuide"
-		Item "Additional Features|F" "help-open Extended"
+		Item "Additional Features|F" "help-open Additional"
 		Item "Embedded Objects|O" "help-open EmbeddedObjects"
 		Item "Math|M" "help-open Math"
 		Item "Customization|C" "help-open Customization"
