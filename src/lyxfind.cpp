@@ -1052,6 +1052,9 @@ docstring stringifyFromForSearch(FindAndReplaceOptions const & opt,
 FindAndReplaceOptions::FindAndReplaceOptions(docstring const & search, bool casesensitive,
 	bool matchword, bool forward, bool expandmacros, bool ignoreformat,
 	bool regexp, docstring const & replace, bool keep_case)
+	: search(search), casesensitive(casesensitive), matchword(matchword),
+	forward(forward), expandmacros(expandmacros), ignoreformat(ignoreformat),
+	regexp(regexp), replace(replace), keep_case(keep_case)
 {
 }
 
