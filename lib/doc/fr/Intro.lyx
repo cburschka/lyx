@@ -808,7 +808,11 @@ pdf
 \begin_inset Quotes fld
 \end_inset
 
+
+\emph on
 device independent
+\emph default
+
 \begin_inset Foot
 status collapsed
 
@@ -945,7 +949,7 @@ classes: définitions d'un type de document, utilisant LaTeX\SpecialChar \@.
 \end_layout
 
 \begin_layout Description
-styles: modifications du comportement par défaut de LaTeX d'une façon donnée.
+styles: modifications du comportement implicite de LaTeX d'une façon donnée.
 \end_layout
 
 \begin_layout Description

@@ -1,4 +1,4 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -593,7 +593,7 @@ d'Apprentissage
 \end_layout
 
 \begin_layout Subsection
-Taper, visualiser, et exporter
+Taper, visionner, et exporter
 \end_layout
 
 \begin_layout Itemize
@@ -637,8 +637,8 @@ DVI
 \end_inset
 
  de la barre d'outils\SpecialChar \@.
- LyX lancera un programme de visualisation DVI qui
- affichera l'aspect de votre document une fois imprimé.
+ LyX lancera une visionneuse DVI qui affichera l'aspect
+ de votre document une fois imprimé.
 \begin_inset Foot
 status collapsed
 
@@ -1153,7 +1153,7 @@ Standard
 \begin_inset Quotes frd
 \end_inset
 
-, qui est l'environnement par défaut pour le texte.
+, qui est l'environnement implicite pour le texte.
  Vous pouvez maintenant en essayer d'autres dans votre document pour voir
  comment ils se comportent.
 \end_layout
@@ -1472,8 +1472,8 @@ s et
 \family sans
 Sous-Paragraphe
 \family default
-s ne sont par défaut pas numérotés, et que les sous-paragraphes sont en
- retrait : voir le 
+s ne sont implicitement pas numérotés, et que les sous-paragraphes sont
+ en retrait : voir le 
 \emph on
 Guide
 \begin_inset space ~
@@ -2073,7 +2073,7 @@ Article
 status collapsed
 
 \begin_layout Plain Layout
-C'est habituellement la classe de document par défaut.
+C'est habituellement la classe de document implicite.
 \end_layout
 
 \end_inset
@@ -2214,7 +2214,9 @@ article (AMS)
 \begin_inset Text
 
 \begin_layout Plain Layout
-mise en page et environnements propres à l'American Math Society
+mise en page et environnements propres à l'
+\emph on
+American Math Society
 \end_layout
 
 \end_inset
@@ -2727,7 +2729,7 @@ sec:a-propos-document
 \end_inset
 
 .
- Sélectionnez-la (elle devrait l'être par défaut) et cliquez sur le bouton
+ Sélectionnez-la (elle devrait l'être implicitement) et cliquez sur le bouton
  
 \family sans
 Appliquer
@@ -2766,25 +2768,24 @@ section
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Alternatively to that method, you can right-click on a label and use in
- the appearing context menu 
+Une autre façon de faire consiste à faire un clic droit sur une étiquette
+ et à utiliser 
 \family sans
-Copy as Reference
+Copier comme référence
 \family default
-.
- The cross-reference to this label is now in the clipboard and can be copied
- to the actual cursor position via the
-\lang french
- menu 
+ dans le menu qui apparaît.
+ La référence croisée à cette étiquette est copiée vers le presse-papier
+ et peut ensuite être copiée à la position courante du curseur via le menu
+ 
 \family sans
 Éditer\SpecialChar \menuseparator
-Coller
+Coller (
 \family default
- 
-\lang english
-(shortcut Ctrl+V).
+raccourci 
+\family sans
+Ctrl+V
+\family default
+).
 \end_layout
 
 \begin_layout Standard
@@ -3335,7 +3336,7 @@ Clé
 étiquette
 \family default
  apparaitra dans la sortie imprimée.
- Par défaut, quand vous ne mettez pas d'étiquette, vous verrez le numéro
+ Implicitement, quand vous ne mettez pas d'étiquette, vous verrez le numéro
  de l'entrée bibliographique dans la sortie imprimée.
  Pour le mémoriser plus facilement, remplacez le contenu du champ 
 \family sans
@@ -4267,9 +4268,9 @@ Délimiteurs.
 
 \family default
  Votre sélection courante de délimiteurs est affichée dans une boîte.
- Par défaut c'est une paire de parenthèses, mais vous pouvez choisir une
- paire de crochets, une accolade et une parenthèse, ou encore choisir le
- carré vide pour avoir quelque chose comme 
+ Implicitement c'est une paire de parenthèses, mais vous pouvez choisir
+ une paire de crochets, une accolade et une parenthèse, ou encore choisir
+ le carré vide pour avoir quelque chose comme 
 \begin_inset Quotes fld
 \end_inset
 
@@ -4825,7 +4826,7 @@ Le mode hors ligne diffère des formules ordinaires sur les points suivants
 \end_layout
 
 \begin_layout Itemize
-par défaut, la taille de police est plus grande pour certains symboles,
+implicitement, la taille de police est plus grande pour certains symboles,
  comme 
 \begin_inset Formula $\sum$
 \end_inset
@@ -5201,7 +5202,7 @@ O
 \family sans
 C-O
 \family default
- par défaut).
+ implicitement).
  Ces associations de touches sont également configurables (et ces raccourcis
  existent même pour certains menus traduits de l'anglais
 \begin_inset Foot
@@ -5561,7 +5562,7 @@ bidule.tex
 bidule.lyx
 \family default
  que vous êtes en train d'éditer.
- LyX crée un fichier LaTeX temporaire à chaque visualisation ou impression.
+ LyX crée un fichier LaTeX temporaire à chaque visionnement ou impression.
  
 \end_layout
 
@@ -5588,7 +5589,7 @@ documentclass
 \family default
 .
  C'est là qu'il faut modifier la classe du document, la taille de la police
- par défaut, et la taille du papier.
+ implicite, et la taille du papier.
  Entrez les options supplémentaires pour la commande 
 \family typewriter
 
