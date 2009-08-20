@@ -1076,7 +1076,7 @@ void GuiView::connectBuffer(Buffer & buf)
 void GuiView::disconnectBuffer()
 {
 	if (d.current_work_area_)
-		d.current_work_area_->bufferView().setGuiDelegate(0);
+		d.current_work_area_->bufferView().buffer().setGuiDelegate(0);
 }
 
 
