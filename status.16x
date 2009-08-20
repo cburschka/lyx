@@ -215,6 +215,9 @@ What's new
   
 - Fix a crash when closing LyX while a master and its child were open.
 
+- Fix a crash when documents were hidden, the view was closed, and 
+  the same documents were made visible in another view (bug 6162).
+
 - Fix communication between lyxclient and server, which leads to a
   crash once CTRL+D is used on the client side (bug 6106).
   
