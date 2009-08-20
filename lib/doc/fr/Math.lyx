@@ -187,7 +187,7 @@
 \tocdepth 3
 \paragraph_separation skip
 \defskip medskip
-\quotes_language english
+\quotes_language french
 \papercolumns 1
 \papersides 2
 \paperpagestyle plain
@@ -2044,31 +2044,26 @@ cfrac
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-It is possible to specify the alignment of the numerator.
- The command 
+On peut préciser l'alignement du numérateur.
+ On utilise la commande 
 \series bold
 
 \backslash
 cfracleft
 \series default
- is used to left align it, the command 
+ pour l'aligner à gauche, la commande 
 \series bold
 
 \backslash
 cfracright
 \series default
- to right-align it.
- 
+ pour l'aligner à droite et 
 \series bold
 
 \backslash
 cfrac
 \series default
- centers the numerator.
-
-\lang french
+ pour le centrer.
  Les fractions qui suivent illustrent les différents alignements:
 \end_layout
 
@@ -3521,8 +3516,8 @@ raisebox est là pour faire de la place
 \end_layout
 
 \begin_layout Standard
-L'indice le plus petit est placé par défaut au dessus ou en dessous du premier
- caractère le l'indice le plus long.
+L'indice le plus petit est placé implicitement au dessus ou en dessous du
+ premier caractère le l'indice le plus long.
  Pour éviter ce problème il y a la commande 
 \series bold
 
@@ -5020,7 +5015,7 @@ lccr
 \series default
  pour l'alignement horizontal.
  En principe, toutes les colonnes d'une matrice sont centrées, ce qui fait
- que l'alignement par défaut pour toutes les colonnes est un 
+ que l'alignement implicite pour toutes les colonnes est un 
 \series bold
 c
 \series default
@@ -13070,25 +13065,24 @@ status open
 \series bold
 Note:
 \series default
- 
-\lang english
-For 
+ Pour 
 \series bold
 
 \backslash
 raisebox
 \series default
- this extra formula is created by pressing 
+ cette formule supplémentaire esr créée en appuyant sur 
 \family sans
 Ctrl+M
 \family default
- twice instead of once because LyX doesn't yet support 
+ deux fois au lieu d'une parceque LyX ne supporte pas encore directement
+ la commande 
 \series bold
 
 \backslash
 raisebox
 \series default
- directly.
+.
 \end_layout
 
 \end_inset
@@ -15929,7 +15923,7 @@ L
 \end_layout
 
 \begin_layout Standard
-Par défaut les limites ont ce type:
+Implicitement les limites ont ce type:
 \begin_inset Formula \[
 \sum_{x=0}^{\infty}\frac{1}{x^{2}}\]
 
@@ -15965,7 +15959,7 @@ intop
 \backslash
 ointop
 \series default
- etc., les limites sont placées par défaut après l'opérateur.
+ etc., les limites sont placées implicitement après l'opérateur.
  Mais pour les intégrales multiples les limites sont souvent placées sous
  l'opérateur.
  Dans l'exemple suivant, le type de limites a donc été mis à 
@@ -19087,7 +19081,7 @@ A
 
 \begin_layout Standard
 Si un symbole ne peut pas être affiché dans plusieurs tailles, il sera toujours
- affiché dans la taille par défaut
+ affiché dans la taille implicite
 \end_layout
 
 \begin_layout Section
@@ -27762,7 +27756,7 @@ jot}{3pt}
 
 \end_inset
 
- Pour revenir à l'espacement par défaut, on remet la valeur de 
+ Pour revenir à l'espacement implicite, on remet la valeur de 
 \series bold
 
 \backslash
@@ -27861,7 +27855,7 @@ insérée en mode TeX, met pour toutes les formules qui la suivent, l'espacement
 \end_inset
 
 cm.
- Pour revenir à la valeur par défaut, on met 
+ Pour revenir à la valeur implicite, on met 
 \series bold
 
 \backslash
@@ -30791,7 +30785,7 @@ roman{equation}}
 
 \begin_layout Standard
 \begin_inset Formula \begin{equation}
-A=\textrm{romains minuscules}\label{eq:rom}\end{equation}
+A=\textrm{romains minuscules}\end{equation}
 
 \end_inset
 
@@ -30837,7 +30831,7 @@ alph{equation}}
 
 
 \begin_inset Formula \begin{equation}
-C=\textrm{latines minuscules}\label{eq:lat}\end{equation}
+C=\textrm{latines minuscules}\end{equation}
 
 \end_inset
 
@@ -30868,7 +30862,7 @@ D=\textrm{latines majuscules}\label{eq:Lat}\end{equation}
 \end_layout
 
 \begin_layout Standard
-Pour revenir à la numérotation par défaut, on insère la commande:
+Pour revenir à la numérotation implicite, on insère la commande:
 \end_layout
 
 \begin_layout Standard
@@ -30914,7 +30908,7 @@ arabic{equation}}
 
 
 \begin_inset Formula \begin{equation}
-E=\textrm{Arabes}\label{eq:arab}\end{equation}
+E=\textrm{Arabes}\end{equation}
 
 \end_inset
 
@@ -30939,7 +30933,8 @@ Comme vous pouvez le voir, les numéros d'équation se suivent, indépendemment
  On trouvera une description de cette opération dans le fichier 
 \begin_inset CommandInset href
 LatexCommand href
-target "Formula-numbering.lyx"
+name "Formula-numbering.lyx"
+target "run:Formula-numbering.lyx"
 
 \end_inset
 
@@ -31582,6 +31577,8 @@ spce
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset Note Greyedout
 status open
 
@@ -31854,9 +31851,13 @@ Diagrammes
 \end_layout
 
 \begin_layout Standard
-LyX gère deux types de diagrammes commutatifs; amscd
+LyX gère deux types de diagrammes commutatifs; 
 \series bold
- et xymatrix
+amscd
+\series default
+ et
+\series bold
+ xymatrix
 \series default
  qui sont décrits dans ce qui suit.
 \end_layout
@@ -32583,7 +32584,7 @@ cb
 \series bold
 white
 \series default
- est utilisée par défaut.
+ est utilisée implicitement.
 \end_layout
 
 \begin_layout Standard
@@ -33059,7 +33060,7 @@ Macro
 
 
 \backslash
-newmacroname est le nom qui est donné par défaut à la macro et qui doit
+newmacroname est le nom qui est donné implicitement à la macro et qui doit
  être remplacé par quelquechose de raisonable.
  La formule voulue est insérée dans la première boîte bleue.
  On insère une réservation pour un argument avec la commande 
@@ -33213,11 +33214,7 @@ Voici notre exemple avec les arguments
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-LyX offers in the menu
-\lang french
- 
+LyX propose dans le menu 
 \family sans
 Outils
 \family default
@@ -33240,11 +33237,9 @@ de
 modification\SpecialChar \menuseparator
 Contrôle
 \family default
- 
-\lang english
-different styles to edit macros.
- To find the style that suits you the most, choose a style and set the cursor
- in a macro formula to see the difference.
+ different styles pour éditer les macros.
+ Pour trouver le style qui vous convient le mieux, choisissez un style et
+ placez le curseur dans une macro pour voir la différence.
 \end_layout
 
 \begin_layout Standard
@@ -35309,7 +35304,7 @@ A=B
 \backslash
 cancelto
 \series default
- est particulièrement utile pour visualiser des simplifications de fractions
+ est particulièrement utile pour visionner des simplifications de fractions
  dans les formules:
 \begin_inset Formula \[
 \frac{\left(x_{0}+bB\right)^{2}}{\left(1+b^{2}\right)^{\cancelto{2}{3}}}=\frac{x_{0}^{2}+B^{2}-r_{g}^{2}}{\cancel{1+b^{2}}}\]

@@ -205,7 +205,7 @@
 \tocdepth 3
 \paragraph_separation skip
 \defskip medskip
-\quotes_language english
+\quotes_language french
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
@@ -512,19 +512,11 @@ proportions
 \end_inset
 
 Les images peuvent être modifiée en utilisant le programme de votre choix
- 
-\lang english
-by right-clicking on it choosing the entry
-\lang french
- 
+ en faisant un clic droit dessus et en choisissant 
 \family sans
 Éditer le fichier ailleurs
 \family default
- 
-\lang english
-in the appearing context menu.
-
-\lang french
+ dans le menu contextuel qui apparaît.
  Ce programme peut être sélectionné pour chaque format d'image dans la rubrique
  
 \family sans
@@ -1908,7 +1900,7 @@ Tableau
 \begin_inset Newline newline
 \end_inset
 
-Le tableau par défaut a une bordure au dessus et à gauche de chaque case,
+Le tableau a implicitementune bordure au dessus et à gauche de chaque case,
  une à droite de la colonne la plus à droite et une en bas de la rangée
  du bas, qui forment une boîte autour du tableau.
  En plus, la rangée supérieure a aussi une bordure en bas, ce qui fait qu'elle
@@ -5454,7 +5446,7 @@ Tableaux longs ! Alignement
 \end_layout
 
 \begin_layout Standard
-Par défaut les Tableaux Longs sont centrés.
+Implicitement les Tableaux Longs sont centrés.
  Contrairement à l'alignement dans les colonnes et les lignes, l'alignement
  du tableau ne peut actuellement pas être modifié à partir de la fenêtre
  de dialogue.
@@ -5516,7 +5508,7 @@ LTleft
 LTright
 \series default
  la distance au bord droit.
- La valeur par défaut des ces deux distances est 
+ La valeur implicite des ces deux distances est 
 \series bold
 
 \backslash
@@ -5881,15 +5873,10 @@ name "sub:Tableaux-longs-légende"
 Vous ne pouvez pas placer un tableau long dans un flottant de tableau puisque
  les flottants ne peuvent pas être sur plusieurs pages, mais l'environnement
  de légende des flottants de tableau peut aussi être utilisé pour les Tableaux
- Longs.
- 
-\lang english
-But the caption environment of floats can also be used for longtables when
- you use for a table row the longtable option 
+ Longs quand on utilise pour une ligne l'option de tableau long 
 \family sans
-Caption
+Légende
 \family default
-\lang french
 , comme c'est expliqué dans la section
 \begin_inset space ~
 \end_inset
@@ -6266,10 +6253,8 @@ addtocounter{table}{-1}
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
-This is not needed when none of your longtables have a caption and you add
- the following code to the document preamble:
+Ce n'est pas nécessaire quand aucun de vos tableaux longs n'a de légende
+ et que vous ajoutez le code suivant dans le préambule du document :
 \end_layout
 
 \begin_layout Plain Layout
@@ -6752,7 +6737,7 @@ La largeur maximale des lignes de légende est définie par la longueur
 LTcapwidth
 \series default
 .
- Sa valeur par défaut est 4
+ Sa valeur implicite est 4
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -6816,13 +6801,13 @@ Les tableaux suivants montrent la différence :
 \begin_inset Caption
 
 \begin_layout Plain Layout
-long titre complet avec la largeur par défaut long titre complet avec la
- largeur par défaut long titre complet avec la largeur par défaut
+long titre complet avec la largeur implicite long titre complet avec la
+ largeur implicite long titre complet avec la largeur implicite
 \begin_inset OptArg
 status open
 
 \begin_layout Plain Layout
-Légende avec largeur par défaut
+Légende avec largeur implicite
 \end_layout
 
 \end_inset
@@ -7513,7 +7498,7 @@ Paquetages LaTeX ! caption
 \end_inset
 
  , comme c'est les cas dans ce document, la légende prend toute la largeur
- de la page quand on utilise la largeur par défaut de 4
+ de la page quand on utilise la largeur implicite de 4
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -7576,12 +7561,9 @@ Tableaux longs ! Legendes@Légendes différentes par page
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-When the table captions for the following pages should differ from the one
- of the first table page, insert a caption with the TeX code
-\lang french
- commande
+Quand la légende du tableau pour les pages suivantes doit être différente
+ de celle de la première page, insérez une légende avec la commande suivante
+ en code TeX :
 \end_layout
 
 \begin_layout Standard
@@ -7597,11 +7579,7 @@ caption*{caption text}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-in a dummy caption row that is marked as header.
-
-\lang french
+dans une ligne de légende fictive qui sera marquée comme une entête.
  Le tableau
 \begin_inset space ~
 \end_inset
@@ -9551,7 +9529,7 @@ LaTeX calcule la hauteur de chaque page de tableau et leurs sauts de page
  en utilisant des blocs (chunks).
  Ces blocs sont des portions de tableau qui tiennent en une fois dans la
  mémoire de LaTeX.
- La valeur par défaut est fixée pour des raisons historiques à seulement
+ La valeur implicite est fixée pour des raisons historiques à seulement
  20 lignes de tableau.
  Si vous utilisez des tableaux longs couvrant de nombreuses pages, ceci
  peut ralentir la création de votre document.
@@ -9609,7 +9587,7 @@ Tableaux longs ! Sauts de pages forcés
 \end_layout
 
 \begin_layout Standard
-Par défaut les tableaux ne peuvent être coupés qu'entre deux lignes.
+Implicitement les tableaux ne peuvent être coupés qu'entre deux lignes.
  Si vous avez une cellule avec plusieurs lignes et que vous voulez avoir
  un saut de page à l'intérieur de cette cellule, insérez la commande LaTeX
  de saut de ligne 
@@ -9739,15 +9717,12 @@ Le
  dans la troisième colonne de la ligne a été supprimé.
  
 \series bold
-\lang english
 
 \backslash
 newpage
 \series default
- is only needed when a page break should definitively occur at this position,
- otherwise it is only a possibility to break.
-
-\lang french
+ est nécessaire seulement quand un saut de page doit impérativement avoir
+ lieu à cet endroit, sinon on n'a qu'une possibilité de saut.
  Si votre ligne de pied de tableau n'a pas de bordure supérieure pour une
  raison ou une autre mais que vous voulez une ligne à l'endroit où la cellule
  est coupée, utilisez cette commande à la place de la précédente :
@@ -12170,7 +12145,7 @@ Dans notre cas nous avons
 \begin_inset Formula $W_{g\,\mathrm{multicolonnen}}=2.5\,$
 \end_inset
 
-cm et les valeurs par défaut pour les autres longueurs, l'équation
+cm et les valeurs implicites pour les autres longueurs, l'équation
 \begin_inset space ~
 \end_inset
 
@@ -12591,8 +12566,8 @@ cm.
 \backslash
 multirow
 \series default
- aligne par défaut son contenu à gauche.
- Pour passer outre le comportement par défaut, vous devez redéfinir la commande
+ aligne implicitement son contenu à gauche.
+ Pour passer outre le comportement implicite, vous devez redéfinir la commande
  
 \series bold
 
@@ -13154,11 +13129,11 @@ Au contraire des tableaux normaux, les tableaux formels n'ont pas de lignes
 \begin_inset Newline newline
 \end_inset
 
-La première et la dernière ligne ont par défaut une épaisseur de 0.08
+La première et la dernière ligne ont implicitement une épaisseur de 0.08
 \begin_inset space \thinspace{}
 \end_inset
 
-em alors que les autres lignes ont par défaut une épaisseur de 0.05
+em alors que les autres lignes ont implicite une épaisseur de 0.05
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -13166,8 +13141,8 @@ em.
 \end_layout
 
 \begin_layout Standard
-Les épaisseurs prises par défaut peuvent être modifiées en utilisant les
- lignes de préambule suivantes :
+Les épaisseurs prises implicitement peuvent être modifiées en utilisant
+ les lignes de préambule suivantes :
 \end_layout
 
 \begin_layout Standard
@@ -13274,7 +13249,7 @@ mitrales
 \end_layout
 
 \begin_layout Standard
-La valeur par défaut pour l'épaisseur des lignes est de 0.03
+La valeur implicite pour l'épaisseur des lignes est de 0.03
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -13323,7 +13298,7 @@ pt à son extrémité gauche.
 \emph on
 largeurRognage
 \emph default
- les lignes sont par défaut rognées de 0.5
+ les lignes sont implicitement rognées de 0.5
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -16094,7 +16069,7 @@ sd
 \end_layout
 
 \begin_layout Standard
-Pour revenir à la couleur noire par défaut, insérez la commande suivante
+Pour revenir à la couleur noire implicite, insérez la commande suivante
  en code TeX, juste après le tableau ou le flottant de tableau :
 \end_layout
 
@@ -16393,7 +16368,7 @@ reference "sec:Tableaux-Formels"
 
 \end_inset
 
- LyX va insérer par défaut un espace de 0.5
+ LyX va insérer implicitement un espace de 0.5
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -16493,12 +16468,12 @@ de
 \end_inset
 
 ligne va ajouter de l'espace sous les caractères de la ligne.
- Si le tableau est un tableau formel LyX va insérer par défaut un espace
+ Si le tableau est un tableau formel LyX va insérer implicitement un espace
  de 0.5
 \begin_inset space \thinspace{}
 \end_inset
 
-em, pour les tableaux normaux, l'espace par défaut est de 2
+em, pour les tableaux normaux, l'espace implicite est de 2
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -16515,7 +16490,7 @@ les
 \end_inset
 
 lignes ajoute l'espace entre la ligne courante et la ligne suivante.
- Si le tableau est un tableau formel LyX va insérer par défaut un espace
+ Si le tableau est un tableau formel LyX va insérer implicitement un espace
  de 0.5
 \begin_inset space \thinspace{}
 \end_inset
@@ -16893,9 +16868,7 @@ name "tab:Plusieurs-exemples-alignements"
 
 \end_inset
 
-Plusieurs exemples d'alignement de cellules
-\lang english
-.
+Plusieurs exemples d'alignement de cellules.
 \end_layout
 
 \end_inset
@@ -17286,7 +17259,7 @@ name "tab:Alignements-avec-dcolumn"
 \end_inset
 
 Alignements quand on utilise le paquetage LaTeX dcolumn.
- Pour toutes les colonnes des astuces d'alignement ont du être utilisée
+ Pour toutes les colonnes des astuces d'alignement ont dû être utilisées
  pour obtenir la sortie.
 \end_layout
 
@@ -18065,7 +18038,7 @@ arrayrulewidth}{1.5pt}
 en code TeX avant le tableau ou le flottant de tableau.
  La nouvelle épaisseur de filet reste valable pour tous les tableaux qui
  suivent.
- pour revenir aux valeurs par défaut, mettez 
+ pour revenir aux valeurs implicites, mettez 
 \series bold
 
 \backslash
@@ -18309,7 +18282,7 @@ arrayrulewidth 0.4pt}}
 \end_layout
 
 \begin_layout Standard
-Pour revenir à l'épaisseur de filet par défaut, insérez les commandes suivantes
+Pour revenir à l'épaisseur de filet implicite, insérez les commandes suivantes
  en code TeX après le tableau ou le flottant de tableau :
 \end_layout
 
@@ -19601,12 +19574,8 @@ Algorithme
 \family default
 .
  Il peut être utilisé pour des morceaux de code source ou des descriptions
- d'algorithmes et 
-\lang english
-can be seen as an alternative to program code listings that are explained
- in chapter
-\lang french
-
+ d'algorithmes et peut être utilisé comme une alternative au listing de
+ code source qui est décrit au chapitre
 \begin_inset space ~
 \end_inset
 
@@ -19724,11 +19693,7 @@ des
 
 algorithmes
 \family default
- si votre document est en la même langue 
-\lang english
-as LyX's menu names
-\lang french
-.
+ si votre document est en la même langue que les menus de LyX.
  Pour les documents qui ne sont pas en anglais, utilisez la commande suivante
  en code TeX à la place:
 \end_layout
@@ -19770,8 +19735,8 @@ s
 \end_layout
 
 \begin_layout Standard
-Les flottants d'algorithme ne sont pas numérotés par défaut en suivant le
- schéma 
+Les flottants d'algorithme ne sont pas numérotés implicitement en suivant
+ le schéma 
 \begin_inset Quotes eld
 \end_inset
 
@@ -20417,7 +20382,7 @@ Il y a six types de références croisées :
 \begin_inset space ~
 \end_inset
 
-: affiche le numéro de l'élément, c'est le choix par défaut : 
+: affiche le numéro de l'élément, c'est le choix implicite : 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Deux-images-déformées"
@@ -21162,7 +21127,7 @@ LaTeX utilise
  toujours 
 \emph default
 les options dans l'ordre donné ci-dessus.
- Ce qui veut dire que si vous utilisez le placement par défaut, LaTeX va
+ Ce qui veut dire que si vous utilisez le placement implicite, LaTeX va
  d'abord essayer 
 \family sans
 Ici
@@ -21192,14 +21157,14 @@ la
 page
 \family default
 , et ainsi de suite.
- Si vous n'utilisez pas le placement par défaut, LaTeX va essayer les options
+ Si vous n'utilisez pas le placement implicite, LaTeX va essayer les options
  que vous avez cochées, mais dans l'ordre donné ci-dessus.
  Si aucune des quatre options de placement n'est possible, la procédure
  est répétée avec la possibilité de mettre les flottant sur la page suivante.
 \end_layout
 
 \begin_layout Standard
-Par défaut, chaque option a ses propres règles d'application:
+Implicitement, chaque option a ses propres règles d'application:
 \end_layout
 
 \begin_layout Standard
@@ -21310,7 +21275,7 @@ Vous pouvez aussi redéfinir les règles avec les commandes LaTeX qui sont
 \begin_inset space \thinspace{}
 \end_inset
 
-% la valeur de la règle de bas de page dont la valeur par défaut est souvent
+% la valeur de la règle de bas de page dont la valeur implicite est souvent
  trop petite, ajoutez cette ligne au préambule de votre document :
 \end_layout
 
@@ -22514,7 +22479,7 @@ L'environnement
 \family sans
 Légende
 \family default
- est l'environnement de paragraphe par défaut pour les 
+ est l'environnement de paragraphe implicite pour les 
 \family sans
 flottants
 \family default
@@ -22542,14 +22507,14 @@ Figure #:
 \end_inset
 
  étant remplacé par le numéro de référence réel.
- Par défaut l'étiquette et le numéro sont dans la même police de caractères
+ implicitement l'étiquette et le numéro sont dans la même police de caractères
  que le texte de la légende et deux points suivent le numéro pour séparer
  l'étiquette du texte.
  Ce format de légende n'est pas forcément adapté à tous les types de documents.
 \end_layout
 
 \begin_layout Standard
-Pour modifier le format par défaut des légendes, il faut charger le paquetage
+Pour modifier le format implicite des légendes, il faut charger le paquetage
  LaTeX 
 \series bold
 caption
@@ -22988,7 +22953,7 @@ name "tab:Légende-de-tab"
 
 Ceci est un exemple de légende de tableau qui est plus longue qu'une ligne
  pour montrer les différents types de formats de légendes.
- Ici on a utilisé le format de légende par défaut.
+ Ici on a utilisé le format de légende implicite.
 \end_layout
 
 \end_inset
@@ -25125,7 +25090,7 @@ Note:
 \end_layout
 
 \begin_layout Standard
-Pour revenir au style de numérotation par défaut quand vous en avez changé,
+Pour revenir au style de numérotation implicite quand vous en avez changé,
  utilisez 
 \series bold
 
@@ -25751,7 +25716,7 @@ Les notes de fin – notes de bas de page sont imprimées dans un paragraphe
 
 L'entête de paragraphe pour les notes de fin n'est pas traduit automatiquement
  dans la langue du document, cela doit être fait manuellement.
- Les lignes de préambule suivantes traduisent le nom en anglais par défaut
+ Les lignes de préambule suivantes traduisent implicitement le nom en anglais
  
 \begin_inset Quotes eld
 \end_inset
@@ -26074,7 +26039,7 @@ Note:
 \end_layout
 
 \begin_layout Standard
-Pour revenir au positionnement par défaut, ajoutez la commande :
+Pour revenir au positionnement implicite, ajoutez la commande :
 \end_layout
 
 \begin_layout Standard
@@ -26441,7 +26406,7 @@ Le texte de cette note en marge est centré.
 \end_inset
 
 .
- Le comportement par défaut est donné par
+ Le comportement implicite est donné par
 \end_layout
 
 \begin_layout Standard
@@ -26911,7 +26876,7 @@ Minipage
 \family sans
 Minipage
 \family default
- est le type par défaut pour les boîtes nouvellement créées et il est décrit
+ est le type implicite pour les boîtes nouvellement créées et il est décrit
  dans la section
 \begin_inset space ~
 \end_inset
@@ -28049,7 +28014,7 @@ Boîtes! Personnalisation
 \end_layout
 
 \begin_layout Standard
-La valeur par défaut pour la variable 
+La valeur implicite pour la variable 
 \series bold
 
 \backslash
@@ -28154,7 +28119,7 @@ fboxrule}{0.4pt}
 \end_inset
 
 L'espace entre le cadre et le contenu de la boîte est le même pour tous
- les types de cadres, par défaut il est de 3
+ les types de cadres, implicitement il est de 3
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -28312,7 +28277,7 @@ num
 minimum(largeur et hauteur de la boîte)
 \family default
 .
- La valeur par défaut est 
+ La valeur implicite est 
 \series bold
 
 \backslash
@@ -28496,7 +28461,7 @@ shadowsize}{4pt}
 \end_layout
 
 \begin_layout Standard
-La valeur par défaut pour la longueur 
+La valeur implicite pour la longueur 
 \series bold
 
 \backslash
@@ -28507,8 +28472,7 @@ FrameRule
 \end_inset
 
 pt.
- L'espacement par défaut entre le contenu de la note et le cadre est de
- 9
+ L'espacement implicite entre le contenu de la note et le cadre est de 9
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -28635,8 +28599,8 @@ Fond
 
 ombré
 \family default
-, l'espacement par défaut entre le contenu de la boîte et son cadre est
- de 3
+, l'espacement implicite entre le contenu de la boîte et son cadre est de
+ 3
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -28647,7 +28611,7 @@ pt et il peut être modifié avec la valeur de
 fboxsep
 \series default
 .
- La couleur rouge utilisée par défaut pour le fond peut soit être modifiée
+ La couleur rouge utilisée implicitement pour le fond peut soit être modifiée
  localement avec la commande 
 \series bold
 
@@ -31931,22 +31895,29 @@ La fonction d'insertion d'objets externes vous permet d'insérer le contenu
  qui va s'occuper des conversions.
  Ce mécanisme est semblable à celui qui permet d'insérer dans un document
  LyX des images dans des formats divers.
- 
-\lang english
-When you have enabled Instant Preview in LyX's preferences under 
+ Quand vous avez activé 
 \family sans
-Look
+Aperçu
 \begin_inset space ~
 \end_inset
 
-and
+sur
 \begin_inset space ~
 \end_inset
 
-feel\SpecialChar \menuseparator
-Graphics
+le
+\begin_inset space ~
+\end_inset
+
+vif
 \family default
-, the external material types Dia and Xfig is directly shown in LyX.
+ dans le menu des préférences de LyX, dans la rubrique 
+\family sans
+Apparence\SpecialChar \menuseparator
+Graphiques
+\family default
+, les objets externes de type Dia et Xfig sont affichés directement dans
+ LyX.
 \end_layout
 
 \begin_layout Standard
@@ -32007,8 +31978,6 @@ Jour-Mois-Année
 \end_inset
 
 
-\lang english
-
 \begin_inset space ~
 \end_inset
 
@@ -32017,15 +31986,15 @@ Jour-Mois-Année
 status open
 
 \begin_layout Plain Layout
+Retirer l'espace prot
+\begin_inset Quotes frd
+\end_inset
 
-\lang english
-Remove the protected space when bug 4398 is fixed!
+gé quand le bug 4398 sera résolu !
 \end_layout
 
 \end_inset
 
-
-\lang french
 
 \begin_inset Newline newline
 \end_inset
@@ -32058,9 +32027,7 @@ reference "tab:Comparaison-des-dates"
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Dia This template supports diagrams created with the program 
+Dia Ce modèle accepte les diagrammes créés avec le programme 
 \series bold
 
 \begin_inset CommandInset href
@@ -32474,10 +32441,8 @@ Les sous-documents sont utilisés quand on a un document très long qui peut
  Les différents documents sont ce que l'on appelle les sous-documents et
  un document maître les relie pour imprimer le document complet ou seulement
  une partie de celui-ci.
- 
-\lang english
-A child documents inherits contents of its master, for example the LaTeX
- preamble, the bibliography, and labels for cross-references.
+ Un sous-document hérite du contenu de son maître, par exemple le préambule
+ LaTeX, la bibliographie, et les étiquettes pour les références croisées.
 \end_layout
 
 \begin_layout Standard
@@ -32563,12 +32528,8 @@ reference "sub:Sous-section-externe-1"
 \begin_layout Standard
 Le préambule du sous-document est tout simplement ignoré, seul le préambule
  du document maître est utilisé.
- 
-\lang english
-Branches in child documents will be ignored by the master document as long
- as also the master document has a branch with the same name.
-
-\lang french
+ Les branches présentes dans le sous-document seront ignorées par le document
+ maître tant que le document maître possède une branche avec le même nom.
  Les documents inclus sont insérés en commençant une nouvelle page et sont
  suivis par un saut de page.
 \end_layout
@@ -32642,7 +32603,7 @@ Note:
 \series default
  Quand vous avez inclus un fichier LyX ou LaTeX, et que ce dernier utilise
  une classe de document différente de celle du document maître, vous recevez
- un avertissement quand vous tentez une visualisation ou une exportation,
+ un avertissement quand vous tentez un visionnement ou une exportation,
  vu que cela peut produire des résultats inattendus sur la sortie imprimée.
 \end_layout
 
@@ -32958,15 +32919,13 @@ Paquetages LaTeX ! listings
 \end_layout
 
 \begin_layout Standard
-Quand vous cliquez avec le bouton droit sur un insert de listings, 
-\lang english
-the context menu
-\lang french
- s'ouvre pour vous permettre de modifier le format du listing.
+Quand vous cliquez avec le bouton droit sur un insert de listings, un menu
+ contextuel s'ouvre pour vous permettre de modifier le format du listing.
 \end_layout
 
 \begin_layout Standard
-Par défaut, un listing commence un nouveau paragraphe dans la sortie imprimée.
+Implicitement, un listing commence un nouveau paragraphe dans la sortie
+ imprimée.
  L'option d'emplacement 
 \family sans
 Listing
@@ -34243,7 +34202,7 @@ device independent (DVI)
 , car il est complètement portable ; vous pouvez les recopier d'une machine
  à l'autre sans avoir à faire de conversion.
  À l'époque où ce format a été développé, c'était loin d'être évident.
- Les fichiers DVI sont utilisés pour une visualisation rapide et comme une
+ Les fichiers DVI sont utilisés pour un visionnement rapide et comme une
  étape préliminaire avant la conversion vers un autre format comme le PostScript.
 \end_layout
 
@@ -34270,9 +34229,8 @@ Note:
 \family default
 .
  Cette caractéristique peut aussi ralentir votre ordinateur quand vous visualise
-z le DVI puisque le programme de visualisation doit convertir les images
- en tâche de fond pour les rendre visibles quand vous faites défiler votre
- document.
+z le DVI puisque la visionneuse doit convertir les images en tâche de fond
+ pour les rendre visibles quand vous faites défiler votre document.
  C'est pourquoi nous recommandons d'utiliser des fichiers PDF pour les documents
  avec de nombreuses images.
 \end_layout
@@ -34286,7 +34244,7 @@ Exporter\SpecialChar \menuseparator
 DVI.
 
 \family default
- Vous pouvez visualiser votre document sous forme de DVI grâce au menu 
+ Vous pouvez visionner votre document sous forme de DVI grâce au menu 
 \family sans
 Visualiser
 \family default
@@ -34449,7 +34407,7 @@ Exporter\SpecialChar \menuseparator
 PostScript.
 
 \family default
- Vous pouvez visualiser votre document sous forme PostScript grâce au menu
+ Vous pouvez visionner votre document sous forme PostScript grâce au menu
  
 \family sans
 Visualiser
@@ -34646,7 +34604,7 @@ dvipdfm
 \end_layout
 
 \begin_layout Standard
-Vous pouvez visualiser votre document sous forme PDF grâce au menu 
+Vous pouvez visionner votre document sous forme PDF grâce au menu 
 \family sans
 Visualiser
 \family default
@@ -34729,7 +34687,7 @@ Où
 tabcolsep
 \series default
  est la largeur utilisée par LaTeX entre le texte de la cellule et la bordure,
- sa valeur par défaut est 6
+ sa valeur implicite est 6
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -34740,7 +34698,7 @@ pt.
 \backslash
 arrayrulewidth
 \series default
- est l'épaisseur de la bordure de la cellule, qui est par défaut de 0.4
+ est l'épaisseur de la bordure de la cellule, qui est implicitement de 0.4
 \begin_inset space \thinspace{}
 \end_inset
 
