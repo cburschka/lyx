@@ -86,7 +86,8 @@ public:
 		bool expandmacros,
 		bool ignoreformat,
 		bool regexp,
-		docstring const & replace
+		docstring const & replace,
+		bool keep_case
 	);
 	FindAndReplaceOptions() {  }
 	docstring search;
@@ -97,6 +98,7 @@ public:
 	bool ignoreformat;
 	bool regexp;
 	docstring replace;
+	bool keep_case;
 };
 
 /// Write a FindAdvOptions instance to a stringstream
