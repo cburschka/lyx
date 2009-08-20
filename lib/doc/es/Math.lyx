@@ -31365,7 +31365,7 @@ roman{equation}}
 
 
 \begin_inset Formula \begin{equation}
-A=\textrm{romanos en minúscula}\label{eq:rom}\end{equation}
+A=\textrm{romanos en minúscula}\end{equation}
 
 \end_inset
 
@@ -31411,7 +31411,7 @@ alph{equation}}
 
 
 \begin_inset Formula \begin{equation}
-C=\textrm{latinas en minúscula}\label{eq:lat}\end{equation}
+C=\textrm{latinas en minúscula}\end{equation}
 
 \end_inset
 
@@ -31488,7 +31488,7 @@ arabic{equation}}
 
 
 \begin_inset Formula \begin{equation}
-E=\mbox{arábigos}\label{eq:arab}\end{equation}
+E=\mbox{arábigos}\end{equation}
 
 \end_inset
 
@@ -31517,7 +31517,8 @@ Como ves, las ecuaciones se numeran consecutivamente independientemente
  Una descripción sobre esto se encuentra en el archivo 
 \begin_inset CommandInset href
 LatexCommand href
-target "Formula-numbering.lyx"
+name "Formula-numbering.lyx"
+target "run:Formula-numbering.lyx"
 
 \end_inset
 

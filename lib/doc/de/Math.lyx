@@ -30876,7 +30876,7 @@ roman{equation}}
 
 \begin_layout Standard
 \begin_inset Formula \begin{equation}
-A=\textrm{römisch}\label{eq:roem}\end{equation}
+A=\textrm{römisch}\end{equation}
 
 \end_inset
 
@@ -30922,7 +30922,7 @@ alph{equation}}
 
 
 \begin_inset Formula \begin{equation}
-C=\textrm{lateinisch}\label{eq:lat}\end{equation}
+C=\textrm{lateinisch}\end{equation}
 
 \end_inset
 
@@ -31000,7 +31000,7 @@ arabic{equation}}
 
 
 \begin_inset Formula \begin{equation}
-E=\textrm{arabisch}\label{eq:arab}\end{equation}
+E=\textrm{arabisch}\end{equation}
 
 \end_inset
 
@@ -31018,7 +31018,8 @@ riert.
  Eine Beschreibung dazu findet man in der Datei 
 \begin_inset CommandInset href
 LatexCommand href
-target "Formelnummerierung.lyx"
+name "Formelnummerierung.lyx"
+target "run:Formelnummerierung.lyx"
 
 \end_inset
 

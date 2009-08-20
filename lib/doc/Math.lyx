@@ -30878,7 +30878,7 @@ roman{equation}}
 
 \begin_layout Standard
 \begin_inset Formula \begin{equation}
-A=\textrm{small roman}\label{eq:rom}\end{equation}
+A=\textrm{small roman}\end{equation}
 
 \end_inset
 
@@ -30924,7 +30924,7 @@ alph{equation}}
 
 
 \begin_inset Formula \begin{equation}
-C=\textrm{small Latin}\label{eq:lat}\end{equation}
+C=\textrm{small Latin}\end{equation}
 
 \end_inset
 
@@ -31001,7 +31001,7 @@ arabic{equation}}
 
 
 \begin_inset Formula \begin{equation}
-E=\textrm{Arabic}\label{eq:arab}\end{equation}
+E=\textrm{Arabic}\end{equation}
 
 \end_inset
 
@@ -31026,7 +31026,8 @@ As you see, formulas are numbered serially independent from the numbering
  A description about this can be found in the file 
 \begin_inset CommandInset href
 LatexCommand href
-target "Formula-numbering.lyx"
+name "Formula-numbering.lyx"
+target "run:Formula-numbering.lyx"
 
 \end_inset
 
