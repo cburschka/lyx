@@ -299,13 +299,11 @@ private:
 	bool saveBuffer(Buffer & b);
 	/// closes a workarea, if close_buffer is true the buffer will
 	/// also be released, otherwise the buffer will be hidden.
-	bool closeWorkArea(GuiWorkArea * wa, bool close_buffer,
-		bool is_active = false);
+	bool closeWorkArea(GuiWorkArea * wa, bool close_buffer);
 	/// closes the tabworkarea and all tabs. If we are in a close event,
 	/// all buffers will be closed, otherwise they will be hidden.
 	/// main_work_area is the workarea marked in the session file as active.
-	bool closeTabWorkArea(TabWorkArea * twa,
-		GuiWorkArea * main_work_area = 0);
+	bool closeTabWorkArea(TabWorkArea * twa);
 	/// gives the user the possibility to save his work 
 	/// or to discard the changes. If hiding is true, the
 	/// document will be reloaded.

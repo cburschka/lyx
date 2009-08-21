@@ -1900,9 +1900,7 @@ bool GuiView::closeBufferAll()
 
 bool GuiView::closeWorkAreaAll()
 {
-	// To write in the session file which workarea was active.
-	GuiWorkArea * active_wa = currentMainWorkArea();
-	setCurrentWorkArea(active_wa);
+	setCurrentWorkArea(currentMainWorkArea());
 
 	// We might be in a situation that there is still a tabWorkArea, but
 	// there are no tabs anymore. This can happen when we get here after a 
@@ -1919,7 +1917,7 @@ bool GuiView::closeWorkAreaAll()
 			++empty_twa;
 		else {
 			setCurrentWorkArea(twa->currentWorkArea());
-			if (!closeTabWorkArea(twa, active_wa))
+			if (!closeTabWorkArea(twa))
 				return false;
 		}
 	}
@@ -1927,8 +1925,7 @@ bool GuiView::closeWorkAreaAll()
 }
 
 
-bool GuiView::closeWorkArea(GuiWorkArea * wa, bool close_buffer,
-	bool)
+bool GuiView::closeWorkArea(GuiWorkArea * wa, bool close_buffer)
 {
 	Buffer & buf = wa->bufferView().buffer();
 
@@ -1976,13 +1973,12 @@ bool GuiView::closeWorkArea(GuiWorkArea * wa, bool close_buffer,
 }
 
 
-bool GuiView::closeTabWorkArea(TabWorkArea * twa, GuiWorkArea * main_work_area)
+bool GuiView::closeTabWorkArea(TabWorkArea * twa)
 {
 	while (twa == d.currentTabWorkArea()) {
 		twa->setCurrentIndex(twa->count()-1);
 
 		GuiWorkArea * wa = twa->currentWorkArea();
-		bool const is_active_wa = main_work_area == wa;
 		Buffer & b = wa->bufferView().buffer();
 
 		// We only want to close the buffer if the same buffer is not visible
@@ -1991,7 +1987,7 @@ bool GuiView::closeTabWorkArea(TabWorkArea * twa, GuiWorkArea * main_work_area)
 		bool const close_buffer = 
 			!inMultiViews(wa) && !b.parent() && closing_;
 
-		if (!closeWorkArea(wa, close_buffer, is_active_wa))
+		if (!closeWorkArea(wa, close_buffer))
 			return false;
 	}
 	return true;
@@ -2323,7 +2319,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 
 		case LFUN_CLOSE_TAB_GROUP:
 			if (TabWorkArea * twa = d.currentTabWorkArea()) {
-				closeTabWorkArea(twa, false);
+				closeTabWorkArea(twa);
 				d.current_work_area_ = 0;
 				twa = d.currentTabWorkArea();
 				// Switch to the next GuiWorkArea in the found TabWorkArea.
