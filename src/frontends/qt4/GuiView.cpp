@@ -1928,7 +1928,7 @@ bool GuiView::closeWorkAreaAll()
 
 
 bool GuiView::closeWorkArea(GuiWorkArea * wa, bool close_buffer,
-	bool is_active)
+	bool)
 {
 	Buffer & buf = wa->bufferView().buffer();
 
