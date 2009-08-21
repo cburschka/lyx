@@ -23,9 +23,6 @@ Section -ProgramFiles SecProgramFiles
   # $PLUGINSDIR is automatically deleted when the installer exits.
   InitPluginsDir
   
-  # Delete stuff from previous version
-  Delete "$INSTDIR\bin\lyxc.exe"
-  
   # Binaries
   SetOutPath "$INSTDIR\bin"
   !insertmacro FileListLyXBin File "${FILES_LYX}\bin\"
@@ -81,23 +78,9 @@ Section -ProgramFiles SecProgramFiles
   !ifdef BUNDLE_GHOSTSCRIPT
   # Components of Ghostscript
   SetOutPath "$INSTDIR\ghostscript"
-  SetOutPath "$INSTDIR\ghostscript\bin"
-  !insertmacro FileListGhostscriptBin File "${FILES_GHOSTSCRIPT}\bin\"
+  !insertmacro FileListGhostscript File "${FILES_GHOSTSCRIPT}\"
   !insertmacro FileListMSVCBin File "${FILES_MSVC}\"
-  !insertmacro FileListMSVCManifest File "..\"  
-  SetOutPath "$INSTDIR\ghostscript\lib"
-  !insertmacro FileListGhostscriptLib File "${FILES_GHOSTSCRIPT}\lib\"
-  SetOutPath "$INSTDIR\ghostscript\fonts"
-  !insertmacro FileListGhostscriptFonts File "${FILES_GHOSTSCRIPT}\fonts\"
-  SetOutPath "$INSTDIR\ghostscript\Resource"
-  SetOutPath "$INSTDIR\ghostscript\Resource\CMap"
-  !insertmacro FileListGhostscriptResourceCMap File "${FILES_GHOSTSCRIPT}\Resource\CMap\"
-  SetOutPath "$INSTDIR\ghostscript\Resource\ColorSpace"
-  !insertmacro FileListGhostscriptResourceColorSpace File "${FILES_GHOSTSCRIPT}\Resource\ColorSpace\"
-  SetOutPath "$INSTDIR\ghostscript\Resource\Decoding"
-  !insertmacro FileListGhostscriptResourceDecoding File "${FILES_GHOSTSCRIPT}\Resource\Decoding\"
-  SetOutPath "$INSTDIR\ghostscript\Resource\Encoding"
-  !insertmacro FileListGhostscriptResourceEncoding File "${FILES_GHOSTSCRIPT}\Resource\Encoding\"
+  !insertmacro FileListMSVCManifest File "..\"
   
   !endif  
   
@@ -137,13 +120,13 @@ SectionEnd
   # FILENAME = Location to store file
   # APPEND = Filename to append to server location in settings.nsh
 
-  # Try first mirror server
+  # Try first time
   Inetc::get "${DOWNLOAD_${ID}}${APPEND}" "$PLUGINSDIR\${FILENAME}" /END
   Pop ${RET} # Return value (OK if succesful)
 
   ${If} ${RET} != "OK"
-    # Download failed, try second mirror server
-    Inetc::get "${DOWNLOADALT_${ID}}${APPEND}" "$PLUGINSDIR\${FILENAME}" /END
+    # Download failed, try again (usally we get a different mirror)
+    Inetc::get "${DOWNLOAD_${ID}}${APPEND}" "$PLUGINSDIR\${FILENAME}" /END
     Pop ${RET}
   ${EndIf}
 
