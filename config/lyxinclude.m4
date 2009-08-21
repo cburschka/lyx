@@ -611,6 +611,7 @@ AC_ARG_WITH(packaging,
 AC_MSG_RESULT($lyx_use_packaging)
 lyx_install_macosx=false
 lyx_install_cygwin=false
+lyx_install_windows=false
 case $lyx_use_packaging in
    macosx) AC_DEFINE(USE_MACOSX_PACKAGING, 1, [Define to 1 if LyX should use a MacOS X application bundle file layout])
 	   PACKAGE=LyX${version_suffix}
@@ -628,7 +629,8 @@ case $lyx_use_packaging in
 	   libdir='${prefix}/Resources'
 	   datarootdir='${prefix}/Resources'
 	   pkgdatadir='${datadir}'
-	   mandir='${prefix}/Resources/man' ;;
+	   mandir='${prefix}/Resources/man'
+	   lyx_install_windows=true ;;
     posix) AC_DEFINE(USE_POSIX_PACKAGING, 1, [Define to 1 if LyX should use a POSIX-style file layout])
 	   PACKAGE=lyx${version_suffix}
 	   program_suffix=$version_suffix
@@ -641,6 +643,7 @@ case $lyx_use_packaging in
 esac
 AM_CONDITIONAL(INSTALL_MACOSX, $lyx_install_macosx)
 AM_CONDITIONAL(INSTALL_CYGWIN, $lyx_install_cygwin)
+AM_CONDITIONAL(INSTALL_WINDOWS, $lyx_install_windows)
 dnl Next two lines are only for autoconf <= 2.59
 datadir='${datarootdir}'
 AC_SUBST(datarootdir)

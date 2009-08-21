@@ -6,6 +6,7 @@
  *
  * \author Lars Gullik Bjønnes
  * \author Jean-Marc Lasgouttes
+ * \author Enrico Forestieri
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -14,6 +15,12 @@
 #define SERVER_H
 
 #include <boost/signals/trackable.hpp>
+
+#ifdef _WIN32
+#include <windows.h>
+#include <QObject>
+#include <QEvent>
+#endif
 
 
 namespace lyx {
@@ -29,7 +36,12 @@ class Server;
  This class encapsulates all the dirty communication and thus provides
  a clean string interface.
  */
+#ifndef _WIN32
 class LyXComm : public boost::signals::trackable {
+#else
+class LyXComm : public QObject {
+	Q_OBJECT
+#endif
 public:
 	/** When we receive a message, we send it to a client.
 	  This is one of the small things that would have been a lot
@@ -50,7 +62,14 @@ public:
 	void send(std::string const &);
 
 	/// asynch ready-to-be-read notification
+#ifndef _WIN32
 	void read_ready();
+#else
+	void read_ready(HANDLE);
+
+	/// The pipe server
+	void pipeServer();
+#endif
 
 private:
 	/// the filename of the in pipe
@@ -65,6 +84,7 @@ private:
 	/// Close pipes
 	void closeConnection();
 
+#ifndef _WIN32
 	/// start a pipe
 	int startPipe(std::string const &, bool);
 
@@ -76,6 +96,9 @@ private:
 
 	/// This is -1 if not open
 	int outfd_;
+#else
+	HANDLE outpipe_;
+#endif
 
 	/// Are we up and running?
 	bool ready_;
@@ -88,6 +111,17 @@ private:
 
 	/// The client callback function
 	ClientCallbackfct clientcb_;
+
+#ifdef _WIN32
+	/// Catch pipe ready-to-be-read notification
+	bool event(QEvent *);
+
+	/// Check whether the pipe server must be stopped
+	BOOL checkStopServerEvent();
+
+	/// Windows event for stopping the pipe server
+	HANDLE stopserver_;
+#endif
 };
 
 

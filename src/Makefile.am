@@ -297,6 +297,22 @@ liblyxcore_a_SOURCES = $(SOURCEFILESCORE) $(STANDALONEFILES) $(HEADERFILESCORE)
 
 endif
 
+if INSTALL_WINDOWS
+
+MOCHEADER = Server.h
+
+MOCEDFILES = $(MOCHEADER:%.h=moc_%.cpp)
+
+BUILT_SOURCES += $(MOCEDFILES)
+CLEANFILES += $(MOCEDFILES)
+
+moc_%.cpp: %.h
+	$(MOC4) -D_WIN32 -o $@ $<
+
+liblyxcore_a_DEPENDENCIES = $(MOCEDFILES)
+
+endif
+
 ############################### Graphics ##############################
 
 noinst_LIBRARIES += liblyxgraphics.a
