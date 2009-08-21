@@ -16,11 +16,6 @@ http://magic.aladdin.cs.cmu.edu/2005/07/15/pdfopen-and-pdfclose/
 !include LogicLib.nsh
 !include FileFunc.nsh
 
-# Functions from FileFunc.nsh
-!insertmacro GetParameters
-!insertmacro GetFileName
-!insertmacro GetParent
-
 #--------------------------------
 # Settings
 
@@ -54,6 +49,7 @@ Var OriginalFileName
 Var OriginalDir
 
 Var PDFFile
+Var ViewerFileName
 Var Viewer
 
 Var ChangeNotification
@@ -122,8 +118,8 @@ Section "View PDF file"
 
   # Check whether the file will be opened with Adobe Reader or Adobe Acrobat
   !insertmacro SystemCall "shell32::FindExecutable(t '$OriginalFile', t '', t .s)"
-  Call GetFileName
-  Pop $Viewer
+  Pop $ViewerFileName
+  ${GetFileName} $ViewerFileName $Viewer
 
   ${If} $Viewer == ""
     MessageBox MB_OK|MB_ICONEXCLAMATION "No PDF viewer is installed. \

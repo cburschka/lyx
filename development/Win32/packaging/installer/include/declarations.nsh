@@ -65,16 +65,9 @@ SetCompressor /SOLID lzma
 # CTAN and SourceForge select a mirror automatically
 
 !define DOWNLOAD_LATEX "http://www.ctan.org/get/systems/win32/miktex/setup/${SETUPFILE_LATEX}"
-!define DOWNLOADALT_LATEX "http://www.ctan.org/get/systems/win32/miktex/setup/${SETUPFILE_LATEX}"
-
 !define DOWNLOAD_IMAGEMAGICK "http://downloads.sourceforge.net/imagemagick/${SETUPFILE_IMAGEMAGICK}"
-!define DOWNLOADALT_IMAGEMAGICK "http://downloads.sourceforge.net/imagemagick/${SETUPFILE_IMAGEMAGICK}"
-
 !define DOWNLOAD_GHOSTSCRIPT "http://downloads.sourceforge.net/imagemagick/${SETUPFILE_GHOSTSCRIPT}"
-!define DOWNLOADALT_GHOSTSCRIPT "http://downloads.sourceforge.net/imagemagick/${SETUPFILE_GHOSTSCRIPT}"
-
 !define DOWNLOAD_ASPELLDICTS "ftp://ftp.lyx.org/pub/lyx/contrib/aspell6-windows"
-!define DOWNLOADALT_ASPELLDICTS "http://www.lyx.org/~bpeng/aspell6-windows"
 
 #--------------------------------
 # Locations of setup files for components (for bundled setup)

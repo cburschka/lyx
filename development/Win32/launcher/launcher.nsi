@@ -16,8 +16,6 @@ also included.
 !include LogicLib.nsh
 !include FileFunc.nsh
 !include StrFunc.nsh
-!insertmacro GetParameters
-!insertmacro GetParent
 ${StrStr}
 
 # Configuration from installer
@@ -151,25 +149,14 @@ Section -Prepare
   Push "$LyXFolder\aiksaurus"
   Call SetEnvironmentVariable
 
-  # Location of Ghostscript
+  # Location of Ghostscript (for ImageMagick)
   Push LYX_GHOSTSCRIPT_EXE
-  Push "$LyXFolder\ghostscript\bin\gswin32c.exe"
+  Push "$LyXFolder\ghostscript\gswin32c.exe"
   Call SetEnvironmentVariable
   Push LYX_GHOSTSCRIPT_DLL
-  Push "$LyXFolder\ghostscript\bin\gsdll32.dll"
+  Push "$LyXFolder\ghostscript\gsdll32.dll"
   Call SetEnvironmentVariable
-  Push LYX_GHOSTSCRIPT_FONTS
-  Push "$LyXFolder\ghostscript\fonts"
-  Call SetEnvironmentVariable
-  
-  # Ghostscript resources
-  Push GS_DLL
-  Push "$LyXFolder\ghostscript\bin\gsdll32.dll"
-  Call SetEnvironmentVariable  
-  Push GS_LIB
-  Push "$LyXFolder\ghostscript\lib;$LyXFolder\ghostscript\fonts;$LyXFolder\ghostscript\Resource"
-  Call SetEnvironmentVariable
-
+ 
 SectionEnd
 
 Section -Launch
@@ -247,8 +234,7 @@ SectionEnd
 Function InitInterface
   
   #Command line parameters
-  Call GetParameters
-  Pop $Parameters
+  ${GetParameters} $Parameters
   
   #Check for debug mode
   ${StrStr} $R0 $Parameters "-dbg"
