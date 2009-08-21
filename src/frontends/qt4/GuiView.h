@@ -302,7 +302,6 @@ private:
 	bool closeWorkArea(GuiWorkArea * wa, bool close_buffer);
 	/// closes the tabworkarea and all tabs. If we are in a close event,
 	/// all buffers will be closed, otherwise they will be hidden.
-	/// main_work_area is the workarea marked in the session file as active.
 	bool closeTabWorkArea(TabWorkArea * twa);
 	/// gives the user the possibility to save his work 
 	/// or to discard the changes. If hiding is true, the
