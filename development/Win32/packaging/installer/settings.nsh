@@ -41,8 +41,8 @@ These typically need to be modified for each LyX release
 # File names of component installers
 
 !define SETUPFILE_LATEX "basic-miktex-2.7.3248.exe"
-!define SETUPFILE_IMAGEMAGEMAGICK "ImageMagick-6.5.1-0-Q16-windows-dll.exe"
-!define SETUPFILE_GHOSTSCRIPT "gs864w32.exe"
+!define SETUPFILE_IMAGEMAGEMAGICK "ImageMagick-6.4.1-0-Q16-windows-dll.exe"
+!define SETUPFILE_GHOSTSCRIPT "gs861w32.exe"
 
 #--------------------------------
 # Download size of components (in KB)

@@ -91,7 +91,7 @@ Section -Configure
     StrCpy $PathImageMagick "$INSTDIR\imagemagick"
   !endif
   !ifdef BUNDLE_GHOSTSCRIPT
-    StrCpy $PathGhostscript "$INSTDIR\ghostscript\bin"
+    StrCpy $PathGhostscript "$INSTDIR\ghostscript"
   !endif  
   
   ${If} $PathLaTeX != ""

@@ -49,23 +49,9 @@ Section "un.Program Files" un.SecProgramFiles
   RMDir "$INSTDIR\imagemagick"
   
   # Components of Ghostscript
-  !insertmacro FileListGhostscriptBin Delete "$INSTDIR\ghostscript\bin\"
-  !insertmacro FileListMSVCBin Delete "$INSTDIR\ghostscript\bin\"
-  !insertmacro FileListMSVCManifest Delete "$INSTDIR\ghostscript\bin\"
-  RMDir "$INSTDIR\ghostscript\bin"
-  !insertmacro FileListGhostscriptLib Delete "$INSTDIR\ghostscript\lib\"
-  RMDir "$INSTDIR\ghostscript\lib"
-  !insertmacro FileListGhostscriptFonts Delete "$INSTDIR\ghostscript\fonts\"
-  RMDir "$INSTDIR\ghostscript\fonts"
-  !insertmacro FileListGhostscriptResourceCMap Delete "$INSTDIR\ghostscript\Resource\CMap\"
-  RMDir "$INSTDIR\ghostscript\Resource\CMap"
-  !insertmacro FileListGhostscriptResourceColorSpace Delete "$INSTDIR\ghostscript\Resource\ColorSpace\"
-  RMDir "$INSTDIR\ghostscript\Resource\ColorSpace"
-  !insertmacro FileListGhostscriptResourceDecoding Delete "$INSTDIR\ghostscript\Resource\Decoding\"
-  RMDir "$INSTDIR\ghostscript\Resource\Decoding"
-  !insertmacro FileListGhostscriptResourceEncoding Delete "$INSTDIR\ghostscript\Resource\Encoding\"
-  RMDir "$INSTDIR\ghostscript\Resource\Encoding"
-  RMDir "$INSTDIR\ghostscript\Resource"
+  !insertmacro FileListGhostscript Delete "$INSTDIR\ghostscript\"
+  !insertmacro FileListMSVCBin Delete "$INSTDIR\ghostscript\"
+  !insertmacro FileListMSVCManifest Delete "$INSTDIR\ghostscript\"
   RMDir "$INSTDIR\ghostscript"
   
   # Aiksaurus Data
