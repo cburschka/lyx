@@ -942,7 +942,7 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_REGEXP_MODE: {
 		bool const embedded_workarea = buffer().isUnnamed()
 			&& buffer().fileName().extension() == "internal";
-		flag.setEnabled(embedded_workarea && ! this->cursor().inRegexped());
+		flag.setEnabled(embedded_workarea && !cur.inRegexped());
 		break;
 	}
 
