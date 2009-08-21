@@ -1,0 +1,369 @@
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 276
+\begin_document
+\begin_header
+\textclass article
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize default
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Introduction to the find advanced feature
+\end_layout
+
+\begin_layout Standard
+This is an introduction to the find advanced feature of LyX, that is activated
+ through the [C-S-f] sequence (Ctrl+Shift+f).
+\end_layout
+
+\begin_layout Standard
+First, leave the ignore format option 
+\series bold
+checked
+\series default
+.
+\end_layout
+
+\begin_layout Enumerate
+Search for the word 
+\series bold
+about
+\series default
+ and see how it is found both in text mode and in math mode, and both in
+ emphasized, bold or normal face, and both in section titles and in standard
+ text.
+ When finished typing the text to find in the 
+\noun on
+Find...
+
+\noun default
+ box, pressing repeatidly 
+\noun on
+[Enter]
+\noun default
+ will search for it forward, while pressing 
+\noun on
+[Shift+Enter]
+\noun default
+ will search backwards.
+\end_layout
+
+\begin_layout Enumerate
+Search for some math by typing in the 
+\noun on
+Find...
+
+\noun default
+ box a 
+\begin_inset Formula $x^{2}$
+\end_inset
+
+ in simple math (C-m) mode (you can directly copy it from this text and
+ paste into the 
+\noun on
+Find...
+
+\noun default
+ box), or also something more elaborate like 
+\begin_inset Formula $\frac{gh}{ij}$
+\end_inset
+
+.
+ See how it is found both when alone and when in subformulas and nested
+ parts of subformulas.
+\end_layout
+
+\begin_layout Standard
+Now, uncheck the ignore format option.
+\end_layout
+
+\begin_layout Enumerate
+Search for a plain 'about' word and see how emphasized and boldface instances,
+ as well as the ones in non-standard style, are not found anymore.
+\end_layout
+
+\begin_layout Enumerate
+Search for 
+\emph on
+emphasized about
+\emph default
+ or 
+\series bold
+boldface about
+\series default
+ and see how you can find the respective instances with same face only,
+ and within same text style only (e.g.
+ in order to find the words in this paragraph, you need to also add an enumerate
+ style).
+ Note that e.g.
+ emphasized text is found not only when alone, but also when it is in a
+ longer emphasized sentence.
+\end_layout
+
+\begin_layout Enumerate
+Search for the word 'about' (again plain face) giving it a Section style
+ from the style selection dropdown menu, and see how it is found only within
+ Section titles.
+ Repeat with the word '
+\emph on
+advanced
+\emph default
+' in emphasized face, with 
+\noun on
+Section
+\noun default
+ style, and see how its corresponding instance is found.
+\end_layout
+
+\begin_layout Enumerate
+Search for some math in centered line math (C-S-m) mode, like this 
+\begin_inset Formula \[
+x^{2}\]
+
+\end_inset
+
+and see how only instances of the text within the same kind of environment
+ are found.
+\end_layout
+
+\begin_layout Subsection
+About using regular expressions in the Find...
+ box
+\end_layout
+
+\begin_layout Standard
+Now you can try the regular expression based searching facility.
+ Users may arbitrarily insert, within text or math material, regexp-mode
+ insets that allow to enter regular subexpressions.
+ This is done either through 
+\noun on
+[Insert]->[Regexp]
+\noun default
+ or by typing [C-S-r].
+ Characters entered in the 
+\noun on
+[Find...]
+\noun default
+ box within regexp insets are matched according to the regular expression
+ matching rules
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+but under the constraint that any subexpression must match a well-formed
+ LyX text segment, i.e.
+ when matching LaTeX code, no segments with unbalanced {} braces are allowed
+ to match subexpressions entered by the user.
+\end_layout
+
+\end_inset
+
+, while text entered outside regexp insets is matched exactly against the
+ same text in the document.
+ Note that it is allowed to cut and paste regexp-mode insets as usual.
+ In order to try the feature, first leave the ignore format option checked.
+\end_layout
+
+\begin_layout Enumerate
+Search for the fraction 
+\begin_inset Formula $\frac{\regexp{.*}}{mn}$
+\end_inset
+
+, where the '.*' on the numerator is the match-everything regular expression
+ that may be added by pressing the 
+\noun on
+[Match...]->[Anything]
+\noun default
+ button, or entering the regexp-mode through C-S-r and by typing '.*'.
+ See how all fractions with the specified denominator are found.
+\end_layout
+
+\begin_layout Enumerate
+Now uncheck the Ignore Format option and search for '
+\series bold
+.*
+\series default
+' in boldface, or '
+\emph on
+.*
+\emph default
+' in emphasized face.
+ See how, respectively, all boldface and all emphasized text is found.
+\end_layout
+
+\begin_layout Enumerate
+Search for a plain '.*' giving it a Section style, and navigate across section
+ titles (similarly, navigate across enumerated or bulletted lists).
+\end_layout
+
+\begin_layout Enumerate
+You can use references to subexpressions as usual, enclosing parts of the
+ regex expression within round braces '()', and referring back to them through
+ 
+\backslash
+1, 
+\backslash
+2, etc...
+ (within either the same or another regexp-mode inset, where a '
+\backslash
+' symbol is entered by pressing twice the '
+\backslash
+' key).
+ For example, try searching for '
+\begin_inset Formula \regexp{[\^a-z]([a-z]+)}
+\end_inset
+
+ 
+\begin_inset Formula \regexp{\backslash1}
+\end_inset
+
+' in order to find word repetitions, if any.
+\end_layout
+
+\begin_layout Standard
+What follows is just a set of meaningless formulas and sentences useful
+ for for testing purposes.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $y+x+X^{2}+\frac{gh}{ij}-1+x_{j}^{i}+y_{jk}^{ip}+i$
+\end_inset
+
+ and 
+\begin_inset Formula $z+x_{j}^{i}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hi, world ! 
+\emph on
+what
+\emph default
+ about your 
+\begin_inset Formula $X+y^{2}+\frac{x+x^{2}+\frac{gh}{ij}}{y^{x+x^{2}}+\frac{kl}{mn}}-about$
+\end_inset
+
+ ?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+X+y^{2}+\frac{x+x^{2}+\frac{gh}{ij}}{y^{x+x^{2}}+\frac{kl}{mn}}-about\]
+
+\end_inset
+
+Hi, universe ! what 
+\emph on
+about
+\emph default
+ my 
+\begin_inset Formula $c+\frac{kl}{mn}+\frac{\sqrt{\frac{gh}{ij}}}{mn}-\frac{1+\sqrt{\frac{about}{mn}}}{mn}+\textrm{about}$
+\end_inset
+
+ ?
+\end_layout
+
+\begin_layout Section
+Conclusion and future work about the find 
+\emph on
+advanced
+\emph default
+ feature
+\end_layout
+
+\begin_layout Standard
+This feature seems very useful to me.
+ Hope others will find it useful as well.
+ Currently, I'm not really happy with the implementation, because it has
+ at least quadratic complexity (document size multiplied by maximum paragraph
+ size, plus regexp matching complexity, if enabled, and infact it is quite
+ slow), but hopefully that will be fixable by changing the TeXOnePar() function
+ and simpleTeXOnePar() method, and possibly other TeX related methods.
+\end_layout
+
+\begin_layout Standard
+Infact, a DocIterator could be used to keep track of the current position,
+ and an externally supplied functor could be called at each position providing
+ the DocIterator and LaTeX string translated so far to the external code.
+ This would allow to couple each DocIterator state with the position in
+ the output LaTeX string, allowing to recover the DocIterator positions
+ after a regexp-based find operation made (only once this time) on translated
+ LaTeX.
+\end_layout
+
+\begin_layout Standard
+Again, a few meaningless sentences useful for testing purposes on about.
+\end_layout
+
+\begin_layout Standard
+But 
+\emph on
+what about your
+\emph default
+ health ?
+\end_layout
+
+\begin_layout Standard
+But 
+\series bold
+what about your health
+\series default
+ ?
+\end_layout
+
+\begin_layout Itemize
+search for plain 'about'
+\end_layout
+
+\begin_layout Itemize
+search for 
+\emph on
+emphasized about
+\emph default
+ or 
+\series bold
+boldface about
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $y+x-x^{2}\cdot2$
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
