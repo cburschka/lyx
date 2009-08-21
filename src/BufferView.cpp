@@ -939,9 +939,12 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 
 	// @todo Test if current WorkArea is the search WorkArea
-	case LFUN_REGEXP_MODE:
-		flag.setEnabled(! this->cursor().inRegexped());
+	case LFUN_REGEXP_MODE: {
+		bool const embedded_workarea = buffer().isUnnamed()
+			&& buffer().fileName().extension() == "internal";
+		flag.setEnabled(embedded_workarea && ! this->cursor().inRegexped());
 		break;
+	}
 
 	case LFUN_LABEL_COPY_AS_REF: {
 		// if there is an inset at cursor, see whether it
