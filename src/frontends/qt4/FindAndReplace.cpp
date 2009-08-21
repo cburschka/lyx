@@ -59,7 +59,7 @@ FindAndReplaceWidget::FindAndReplaceWidget(GuiView & view)
 
 bool FindAndReplaceWidget::eventFilter(QObject *obj, QEvent *event)
 {
-	LYXERR(Debug::FIND, "FindAndReplace::eventFilter()");
+  LYXERR(Debug::FIND, "FindAndReplace::eventFilter(): obj=" << obj << ", fwa=" << find_work_area_ << ", rwa=" << replace_work_area_ << "fsa=" << find_scroll_area_ << ", rsa=" << replace_scroll_area_);
 	if (obj == find_work_area_ && event->type() == QEvent::KeyPress) {
 		QKeyEvent *e = static_cast<QKeyEvent *> (event);
 		if (e->key() == Qt::Key_Escape && e->modifiers() == Qt::NoModifier) {
@@ -73,6 +73,29 @@ bool FindAndReplaceWidget::eventFilter(QObject *obj, QEvent *event)
 				on_findNextPB_clicked();
 				return true;
 			}
+		} else if (e->key() == Qt::Key_Tab && e->modifiers() == Qt::NoModifier) {
+			LYXERR(Debug::FIND, "Focusing replace WA");
+			replace_work_area_->setFocus();
+			return true;
+		}
+	}
+	if (obj == replace_work_area_ && event->type() == QEvent::KeyPress) {
+		QKeyEvent *e = static_cast<QKeyEvent *> (event);
+		if (e->key() == Qt::Key_Escape && e->modifiers() == Qt::NoModifier) {
+			on_closePB_clicked();
+			return true;
+		} else if (e->key() == Qt::Key_Enter || e->key() == Qt::Key_Return) {
+			if (e->modifiers() == Qt::ShiftModifier) {
+				on_replacePrevPB_clicked();
+				return true;
+			} else if (e->modifiers() == Qt::NoModifier) {
+				on_replaceNextPB_clicked();
+				return true;
+			}
+		} else if (e->key() == Qt::Key_Backtab) {
+			LYXERR(Debug::FIND, "Focusing find WA");
+			find_work_area_->setFocus();
+			return true;
 		}
 	}
 	// standard event processing
@@ -158,7 +181,6 @@ void FindAndReplaceWidget::findAndReplace(bool backwards, bool replace)
 {
 	// FIXME: create a Dialog::returnFocus() or something instead of this:
 	view_.setCurrentWorkArea(view_.currentMainWorkArea());
-	// FIXME: This should be an LFUN.
 	findAndReplace(caseCB->isChecked(),
 		wordsCB->isChecked(),
 		backwards,
@@ -167,7 +189,6 @@ void FindAndReplaceWidget::findAndReplace(bool backwards, bool replace)
 		replace,
 		keepCaseCB->isChecked());
 	view_.currentMainWorkArea()->redraw();
-	find_work_area_->setFocus();
 }
 
 
@@ -196,45 +217,51 @@ void FindAndReplaceWidget::on_closePB_clicked()
 
 void FindAndReplaceWidget::on_findNextPB_clicked() {
 	findAndReplace(false, false);
+	find_work_area_->setFocus();
 }
 
 
 void FindAndReplaceWidget::on_findPrevPB_clicked() {
 	findAndReplace(true, false);
+	find_work_area_->setFocus();
 }
 
 
 void FindAndReplaceWidget::on_replaceNextPB_clicked()
 {
 	findAndReplace(false, true);
+	replace_work_area_->setFocus();
 }
 
 
 void FindAndReplaceWidget::on_replacePrevPB_clicked()
 {
 	findAndReplace(true, true);
+	replace_work_area_->setFocus();
 }
 
 
 void FindAndReplaceWidget::on_replaceallPB_clicked()
 {
+	replace_work_area_->setFocus();
 }
 
 
 void FindAndReplaceWidget::showEvent(QShowEvent * /* ev */)
 {
-	replace_work_area_->setEnabled(true);
 	replace_work_area_->redraw();
 	find_work_area_->setFocus();
 	dispatch(FuncRequest(LFUN_BUFFER_BEGIN));
 	dispatch(FuncRequest(LFUN_BUFFER_END_SELECT));
 	find_work_area_->redraw();
 	find_work_area_->installEventFilter(this);
+	replace_work_area_->installEventFilter(this);
 }
 
 
 void FindAndReplaceWidget::hideEvent(QHideEvent *ev)
 {
+	replace_work_area_->removeEventFilter(this);
 	find_work_area_->removeEventFilter(this);
 	this->QWidget::hideEvent(ev);
 }
@@ -243,7 +270,6 @@ void FindAndReplaceWidget::hideEvent(QHideEvent *ev)
 bool FindAndReplaceWidget::initialiseParams(std::string const & /* params */)
 {
 	find_work_area_->redraw();
-	replace_work_area_->setEnabled(true);
 	replace_work_area_->redraw();
 	find_work_area_->setFocus();
 	dispatch(FuncRequest(LFUN_BUFFER_BEGIN));
