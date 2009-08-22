@@ -1,3 +1,20 @@
+What's new in version 1.6.4?
+-------------------------------
+
+This is the fourth maintenance release in the 1.6.x series. This release
+covers, amongst many minor improvements, fixes to some rather severe 
+issues, such as:
+
+* A workaround to a nasty problem in recent Qt versions (Qt 4.5.0 up to
+  4.5.2) that made LyX crash if the document included images that were
+  scaled to certain sizes in the work area.
+* Fixes to problems that might result in the loss of data.
+* Many other stability improvements, thanks to a new debugging script that
+  helped to reveal uncovered critical bugs.
+* Further fixes to the LaTeX importer (tex2lyx) and the conversion of
+  older LyX documents (lyx2lyx).
+
+
 What's new in version 1.6.3?
 -------------------------------
 
