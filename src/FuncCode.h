@@ -422,7 +422,7 @@ enum FuncCode
 	// 325
 	LFUN_INSET_BEGIN_SELECT,        // JMarc, 20090316
 	LFUN_INSET_END_SELECT,          // JMarc, 20090316
-	LFUN_SCREEN_SHOW_CURSOR,        // vfr, 20090325
+	LFUN_INSET_SELECT_ALL,			// vfr, 20090822
 	LFUN_BUFFER_ZOOM_IN,            // vfr, 20090330
 	LFUN_BUFFER_ZOOM_OUT,           // vfr, 20090330
 	// 330
@@ -441,6 +441,7 @@ enum FuncCode
 	LFUN_BRANCHES_RENAME,           // spitz 20090709
 	LFUN_BUFFER_CLOSE_ALL,          // vfr 20090806
 	LFUN_GRAPHICS_RELOAD,           // vfr 20090810
+	LFUN_SCREEN_SHOW_CURSOR,        // vfr, 20090325
 
 	LFUN_LASTACTION                 // end of the table
 };

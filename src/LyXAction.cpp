@@ -1074,6 +1074,15 @@ void LyXAction::init()
 		{ LFUN_INSET_END_SELECT, "inset-end-select", ReadOnly, Edit },
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_INSET_SELECT_ALL
+ * \li Action: Selects all contents of an inset.
+ * \li Syntax: inset-select-all
+ * \li Origin: vfr, 22 Aug 2009
+ * \endvar
+ */
+		{ LFUN_INSET_SELECT_ALL, "inset-select-all", ReadOnly, Edit },
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_LINE_BEGIN
  * \li Action: Move the cursor to the begining of the (screen) line.
  * \li Syntax: line-begin
