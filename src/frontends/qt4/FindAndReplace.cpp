@@ -59,7 +59,9 @@ FindAndReplaceWidget::FindAndReplaceWidget(GuiView & view)
 
 bool FindAndReplaceWidget::eventFilter(QObject *obj, QEvent *event)
 {
-  LYXERR(Debug::FIND, "FindAndReplace::eventFilter(): obj=" << obj << ", fwa=" << find_work_area_ << ", rwa=" << replace_work_area_ << "fsa=" << find_scroll_area_ << ", rsa=" << replace_scroll_area_);
+	LYXERR(Debug::FIND, "FindAndReplace::eventFilter(): obj=" << obj
+	       << ", fwa=" << find_work_area_ << ", rwa=" << replace_work_area_
+	       << "fsa=" << find_scroll_area_ << ", rsa=" << replace_scroll_area_);
 	if (obj == find_work_area_ && event->type() == QEvent::KeyPress) {
 		QKeyEvent *e = static_cast<QKeyEvent *> (event);
 		if (e->key() == Qt::Key_Escape && e->modifiers() == Qt::NoModifier) {
@@ -179,6 +181,10 @@ void FindAndReplaceWidget::findAndReplace(
 
 void FindAndReplaceWidget::findAndReplace(bool backwards, bool replace)
 {
+	if (! view_.currentMainWorkArea()) {
+		view_.message(_("No open document(s) in which to search"));
+		return;
+	}
 	// FIXME: create a Dialog::returnFocus() or something instead of this:
 	view_.setCurrentWorkArea(view_.currentMainWorkArea());
 	findAndReplace(caseCB->isChecked(),

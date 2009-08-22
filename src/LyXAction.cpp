@@ -885,7 +885,7 @@ void LyXAction::init()
  * \li Origin: Tommaso, Nov 15 2007
  * \endvar
  */
-		{ LFUN_WORD_FINDADV, "word-findadv", ReadOnly, Edit },
+		{ LFUN_WORD_FINDADV, "word-findadv", ReadOnly | NoBuffer, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_WORD_FORWARD
  * \li Action: Moves the cursor to the logically next beginning of a word.
