@@ -765,8 +765,8 @@ string MatchStringAdv::normalize(docstring const & s) const
 	while ((pos = t.find("\n")) != string::npos)
 		t.replace(pos, 1, " ");
 	// Remove stale empty \emph{}, \textbf{} and similar blocks from latexify
-	LYXERR(Debug::FIND, "Removing stale empty \\emph{}, \\textbf{} macros from: " << t);
-	while (regex_replace(t, t, "\\\\(emph|textbf)(\\{\\})+", ""))
+	LYXERR(Debug::FIND, "Removing stale empty \\emph{}, \\textbf{}, \\*section{} macros from: " << t);
+	while (regex_replace(t, t, "\\\\(emph|textbf|subsubsection|subsection|section|subparagraph|paragraph)(\\{\\})+", ""))
 		LYXERR(Debug::FIND, "  further removing stale empty \\emph{}, \\textbf{} macros from: " << t);
 	return t;
 }
