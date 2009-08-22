@@ -170,7 +170,6 @@ void LyXComm::pipeServer()
 			CloseHandle(inpipe);
 	}
 	CloseHandle(outpipe_);
-	CloseHandle(stopserver_);
 }
 
 
@@ -246,6 +245,8 @@ void LyXComm::closeConnection()
 	if (hpipe != INVALID_HANDLE_VALUE)
 		CloseHandle(hpipe);
 
+	ResetEvent(stopserver_);
+	CloseHandle(stopserver_);
 	ready_ = false;
 }
 
