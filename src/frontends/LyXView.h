@@ -56,12 +56,19 @@ public:
 
 	//@{ generic accessor functions
 
-	/// \return the current buffer view.
+	/// \return the currently selected buffer view.
 	virtual BufferView * view() = 0;
+	/// \return the current document buffer view.
+	virtual BufferView * documentBufferView() = 0;
 
-	/// \return the buffer currently shown in this window
+	/// \return the buffer currently selected in this window
 	virtual Buffer * buffer() = 0;
 	virtual Buffer const * buffer() const = 0;
+
+	/// \return the document buffer in this window
+	virtual Buffer * documentBuffer() = 0;
+	virtual Buffer const * documentBuffer() const = 0;
+
 	/// set a buffer to the current workarea.
 	virtual void setBuffer(Buffer * b) = 0; ///< \c Buffer to set.
 	///

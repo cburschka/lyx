@@ -84,9 +84,14 @@ public:
 	///
 	LayoutBox * getLayoutDialog() const;
 
-	/// \return the buffer currently shown in this window
-	Buffer * buffer();
-	Buffer const * buffer() const;
+	/// \return the buffer currently selected in this window
+	virtual Buffer * buffer();
+	virtual Buffer const * buffer() const;
+
+	/// \return the document buffer in this window
+	virtual Buffer * documentBuffer();
+	virtual Buffer const * documentBuffer() const;
+
 	/// set a buffer to the current workarea.
 	void setBuffer(Buffer * b); ///< \c Buffer to set.
 	/// closes the current active buffer
@@ -119,8 +124,10 @@ public:
 	/// called on timeout
 	void autoSave();
 
-	/// \return the current buffer view.
+	/// \return the currently selected buffer view.
 	BufferView * view();
+	/// \return the current document buffer view.
+	BufferView * documentBufferView();
 
 	/** redraw \c inset in all the BufferViews in which it is currently
 	 *  visible. If successful return a pointer to the owning Buffer.
@@ -137,7 +144,7 @@ public:
 	/// \return the \c Workarea associated to \p  Buffer
 	/// \retval 0 if no \c WorkArea is found.
 	GuiWorkArea * addWorkArea(Buffer & buffer);
-	///
+	/// \param work_area The current \c WorkArea, or \c NULL
 	void setCurrentWorkArea(GuiWorkArea * work_area);
 	///
 	void removeWorkArea(GuiWorkArea * work_area);

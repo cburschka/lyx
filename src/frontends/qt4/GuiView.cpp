@@ -1051,6 +1051,24 @@ Buffer const * GuiView::buffer() const
 }
 
 
+Buffer * GuiView::documentBuffer()
+{
+	TabWorkArea * twa = d.currentTabWorkArea();
+	if (twa && twa->currentWorkArea())
+		return &twa->currentWorkArea()->bufferView().buffer();
+	return 0;
+}
+
+
+Buffer const * GuiView::documentBuffer() const
+{
+	TabWorkArea * twa = d.currentTabWorkArea();
+	if (twa && twa->currentWorkArea())
+		return &twa->currentWorkArea()->bufferView().buffer();
+	return 0;
+}
+
+
 void GuiView::setBuffer(Buffer * newBuffer)
 {
 	LYXERR(Debug::DEBUG, "Setting buffer: " << newBuffer << std::endl);
@@ -1120,7 +1138,7 @@ void GuiView::updateTocItem(std::string const & type, DocIterator const & dit)
 
 void GuiView::structureChanged()
 {
-	d.toc_models_.reset(view());
+	d.toc_models_.reset(documentBufferView());
 	// Navigator needs more than a simple update in this case. It needs to be
 	// rebuilt.
 	updateDialog("toc", "");
@@ -1139,6 +1157,14 @@ void GuiView::updateDialog(string const & name, string const & data)
 	Dialog * const dialog = it->second.get();
 	if (dialog->isVisibleView())
 		dialog->initialiseParams(data);
+}
+
+
+BufferView * GuiView::documentBufferView()
+{
+	return currentMainWorkArea()
+		? &currentMainWorkArea()->bufferView()
+		: 0;
 }
 
 

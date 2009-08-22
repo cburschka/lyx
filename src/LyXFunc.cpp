@@ -900,38 +900,42 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_BUFFER_UPDATE: {
-			LASSERT(lyx_view_ && buffer, /**/);
+			LASSERT(lyx_view_ && lyx_view_->documentBuffer(), /**/);
+			Buffer * doc_buffer = lyx_view_->documentBuffer();
 			string format = argument;
 			if (argument.empty())
-				format = buffer->getDefaultOutputFormat();
-			buffer->doExport(format, true);
+				format = doc_buffer->getDefaultOutputFormat();
+			doc_buffer->doExport(format, true);
 			break;
 		}
 
 		case LFUN_BUFFER_VIEW: {
-			LASSERT(lyx_view_ && buffer, /**/);
+			LASSERT(lyx_view_ && lyx_view_->documentBuffer(), /**/);
+			Buffer * doc_buffer = lyx_view_->documentBuffer();
 			string format = argument;
 			if (argument.empty())
-				format = buffer->getDefaultOutputFormat();
-			buffer->preview(format);
+				format = doc_buffer->getDefaultOutputFormat();
+			doc_buffer->preview(format);
 			break;
 		}
 
 		case LFUN_MASTER_BUFFER_UPDATE: {
-			LASSERT(lyx_view_ && buffer && buffer->masterBuffer(), /**/);
+			LASSERT(lyx_view_ && lyx_view_->documentBuffer() && lyx_view_->documentBuffer()->masterBuffer(), /**/);
+			Buffer * doc_buffer = lyx_view_->documentBuffer();
 			string format = argument;
 			if (argument.empty())
-				format = buffer->masterBuffer()->getDefaultOutputFormat();
-			buffer->masterBuffer()->doExport(format, true);
+				format = doc_buffer->masterBuffer()->getDefaultOutputFormat();
+			doc_buffer->masterBuffer()->doExport(format, true);
 			break;
 		}
 
 		case LFUN_MASTER_BUFFER_VIEW: {
-			LASSERT(lyx_view_ && buffer && buffer->masterBuffer(), /**/);
+			LASSERT(lyx_view_ && lyx_view_->documentBuffer() && lyx_view_->documentBuffer()->masterBuffer(), /**/);
+			Buffer * doc_buffer = lyx_view_->documentBuffer();
 			string format = argument;
 			if (argument.empty())
-				format = buffer->masterBuffer()->getDefaultOutputFormat();
-			buffer->masterBuffer()->preview(format);
+				format = doc_buffer->masterBuffer()->getDefaultOutputFormat();
+			doc_buffer->masterBuffer()->preview(format);
 			break;
 		}
 
