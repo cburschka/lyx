@@ -45,6 +45,8 @@ if (ASPELL_FOUND)
 	list(APPEND lyx_headers ${TOP_SRC_DIR}/src/AspellChecker.h)
 endif()
 
+lyx_automoc(${TOP_SRC_DIR}/src/Server.cpp)
+
 include_directories(${CMAKE_CURRENT_BINARY_DIR}
 	${ZLIB_INCLUDE_DIR} ${QT_INCLUDES})
 

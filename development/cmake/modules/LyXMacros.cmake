@@ -104,10 +104,13 @@ macro(LYX_AUTOMOC)
                #set(_header ${_abs_PATH}/${_basename}.h)
 
                set(_moc  ${CMAKE_CURRENT_BINARY_DIR}/${_current_MOC})
+               if (WIN32)
+                       set(_def -D_WIN32)
+               endif()
                #set(_moc ${_abs_PATH}/${_current_MOC})
                add_custom_command(OUTPUT ${_moc}
                        COMMAND ${QT_MOC_EXECUTABLE}
-                       ARGS ${_moc_INCS} ${_header} -o ${_moc}
+                       ARGS ${_def} ${_moc_INCS} ${_header} -o ${_moc}
                        MAIN_DEPENDENCY ${_header})
                macro_add_file_dependencies(${_abs_FILE} ${_moc})
             endforeach (_current_MOC_INC)
