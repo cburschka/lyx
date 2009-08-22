@@ -170,6 +170,7 @@ void LyXComm::pipeServer()
 			CloseHandle(inpipe);
 	}
 	CloseHandle(outpipe_);
+	CloseHandle(stopserver_);
 }
 
 
