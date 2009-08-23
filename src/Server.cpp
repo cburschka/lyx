@@ -127,7 +127,7 @@ DWORD WINAPI pipeServerWrapper(void * arg)
 } // namespace anon
 
 LyXComm::LyXComm(string const & pip, Server * cli, ClientCallbackfct ccb)
-	: pipename_(pip), client_(cli), clientcb_(ccb)
+	: pipename_(pip), client_(cli), clientcb_(ccb), stopserver_(0)
 {
 	// Ask Qt to notify us on quit.
 	qAddPostRoutine(closing);
@@ -147,7 +147,8 @@ void LyXComm::pipeServer()
 				   bufsize, 0, 0, NULL);
 	if (outpipe_ == INVALID_HANDLE_VALUE) {
 		lyxerr << "LyXComm: Could not create pipe "
-		       << outPipeName() << '\n' << errormsg() << endl;
+		       << external_path(outPipeName()) << '\n'
+		       << errormsg() << endl;
 		return;
 	}
 	ConnectNamedPipe(outpipe_, NULL);
@@ -162,7 +163,8 @@ void LyXComm::pipeServer()
 					 0, bufsize, 0, NULL);
 		if (inpipe == INVALID_HANDLE_VALUE) {
 			lyxerr << "LyXComm: Could not create pipe "
-			       << inPipeName() << '\n' << errormsg() << endl;
+			       << external_path(inPipeName()) << '\n'
+			       << errormsg() << endl;
 			break;
 		}
 
@@ -213,6 +215,16 @@ void LyXComm::openConnection()
 
 	if (pipename_.empty()) {
 		LYXERR(Debug::LYXSERVER, "LyXComm: server is disabled, nothing to do");
+		return;
+	}
+
+	// Check whether the pipe is being used by some other program.
+	if (!stopserver_ && WaitNamedPipe(inPipeName().c_str(), 0)) {
+		lyxerr << "LyXComm: Pipe " << external_path(inPipeName())
+		       << " already exists.\nMaybe another instance of LyX"
+			  " is using it."
+		       << endl;
+		pipename_.erase();
 		return;
 	}
 
