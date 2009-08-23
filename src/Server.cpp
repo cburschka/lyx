@@ -92,6 +92,14 @@ private:
 
 namespace {
 
+bool closing_ = false;
+
+void closing()
+{
+	closing_ = true;
+}
+
+
 char * errormsg()
 {
 	void * msgbuf;
@@ -121,6 +129,8 @@ DWORD WINAPI pipeServerWrapper(void * arg)
 LyXComm::LyXComm(string const & pip, Server * cli, ClientCallbackfct ccb)
 	: pipename_(pip), client_(cli), clientcb_(ccb)
 {
+	// Ask Qt to notify us on quit.
+	qAddPostRoutine(closing);
 	ready_ = false;
 	openConnection();
 }
@@ -185,7 +195,7 @@ bool LyXComm::event(QEvent * e)
 
 BOOL LyXComm::checkStopServerEvent()
 {
-	return WaitForSingleObject(stopserver_, 0) == WAIT_OBJECT_0;
+	return WaitForSingleObject(stopserver_, 0) == WAIT_OBJECT_0 || closing_;
 }
 
 
@@ -260,6 +270,9 @@ void LyXComm::emergencyCleanup()
 					  FILE_ATTRIBUTE_NORMAL, NULL);
 		if (hpipe != INVALID_HANDLE_VALUE)
 			CloseHandle(hpipe);
+
+		ResetEvent(stopserver_);
+		CloseHandle(stopserver_);
 	}
 }
 
@@ -350,14 +363,15 @@ void LyXComm::send(string const & msg)
 		}
 		Sleep(100);
 		++count;
-	} while (!success && count < 100);
+	} while (!success && count < 100 && !checkStopServerEvent());
 
 	if (!success) {
 		lyxerr << "LyXComm: Error sending message: " << msg
 		       << '\n' << errormsg()
 		       << "\nLyXComm: Resetting connection" << endl;
 		closeConnection();
-		openConnection();
+		if (!checkStopServerEvent())
+			openConnection();
 	}
 }
 
