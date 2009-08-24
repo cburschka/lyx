@@ -608,7 +608,10 @@ void switchBetweenClasses(DocumentClass const * const oldone,
 		if (it->lyxCode() != FLEX_CODE)
 			// FIXME: Should we verify all InsetCollapsable?
 			continue;
-		if (!it->undefined())
+		docstring const & n = newone->insetLayout(it->name()).name();
+		bool const is_undefined = n.empty() ||
+			n == DocumentClass::plainInsetLayout().name();
+		if (!is_undefined)
 			continue;
 		// The flex inset is undefined in newtc
 		docstring const s = bformat(_(
