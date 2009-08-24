@@ -154,7 +154,11 @@ Parser::~Parser()
 void Parser::setEncoding(std::string const & e)
 {
 	Encoding const * enc = encodings.fromLaTeXName(e);
-	//cerr << "setting encoding to " << enc->iconvName()<<std::endl;
+	if (!enc) {
+		cerr << "Unknown encoding " << e << ". Ignoring." << std::endl;
+		return;
+	}
+	//cerr << "setting encoding to " << enc->iconvName() << std::endl;
 	is_ << lyx::setEncoding(enc->iconvName());
 	encoding_latex_ = e;
 }
