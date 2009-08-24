@@ -75,7 +75,7 @@
        <string/>
       </property>
       <attribute name="title">
-       <string>Basic</string>
+       <string>&amp;Basic</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_3">
        <item row="2" column="0">
@@ -203,7 +203,7 @@
                 <string>Find next occurrence and replace it [Enter]</string>
                </property>
                <property name="text">
-                <string>Ne&amp;xt</string>
+                <string>Next</string>
                </property>
               </widget>
              </item>
@@ -222,7 +222,7 @@
                 <string>Find previous occurrence and replace it [Enter]</string>
                </property>
                <property name="text">
-                <string>Pr&amp;ev</string>
+                <string>Prev</string>
                </property>
               </widget>
              </item>
@@ -462,7 +462,7 @@
                 <string>Find next occurrence [Enter]</string>
                </property>
                <property name="text">
-                <string>&amp;Next</string>
+                <string>Next</string>
                </property>
                <property name="default">
                 <bool>true</bool>
@@ -484,7 +484,7 @@
                 <string>Find previous occurrence [Shift+Enter]</string>
                </property>
                <property name="text">
-                <string>&amp;Prev</string>
+                <string>Prev</string>
                </property>
                <property name="default">
                 <bool>true</bool>
@@ -532,7 +532,7 @@
        <string/>
       </property>
       <attribute name="title">
-       <string>Advanced</string>
+       <string>Ad&amp;vanced</string>
       </attribute>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
@@ -613,7 +613,7 @@
                <string>Document in current file</string>
               </property>
               <property name="text">
-               <string>Current Document</string>
+               <string>Current &amp;Document</string>
               </property>
               <property name="checked">
                <bool>true</bool>
@@ -623,7 +623,7 @@
             <item row="2" column="0">
              <widget class="QRadioButton" name="MasterDocument">
               <property name="enabled">
-               <bool>false</bool>
+               <bool>true</bool>
               </property>
               <property name="sizePolicy">
                <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
@@ -635,7 +635,7 @@
                <string>Current file and all other files belonging to the same Master Document</string>
               </property>
               <property name="text">
-               <string>Master Document</string>
+               <string>&amp;Master Document</string>
               </property>
              </widget>
             </item>
@@ -654,7 +654,7 @@
                <string>All open documents</string>
               </property>
               <property name="text">
-               <string>Open Documents</string>
+               <string>&amp;Open Documents</string>
               </property>
              </widget>
             </item>
@@ -670,7 +670,7 @@
                </sizepolicy>
               </property>
               <property name="text">
-               <string>All Manuals</string>
+               <string>All Ma&amp;nuals</string>
               </property>
              </widget>
             </item>
@@ -705,7 +705,7 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>Ignore For&amp;mat</string>
+            <string>Ignore &amp;Format</string>
            </property>
            <property name="checked">
             <bool>true</bool>
