@@ -210,11 +210,11 @@ void GuiIndices::on_renamePB_clicked()
 			success = indiceslist_.rename(qstring_to_ucs4(sel_index), newname);
 			newIndexLE->clear();
 			updateView();
+			if (!success)
+				Alert::error(_("Renaming failed"), 
+				      _("The index could not be renamed. "
+					"Check if the new name already exists."));
 		}
-		if (!success)
-			Alert::error(_("Renaming failed"), 
-			      _("The index could not be renamed. "
-			        "Check if the new name already exists."));
 	}
 }
 
