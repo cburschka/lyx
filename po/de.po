@@ -9898,7 +9898,7 @@ msgstr "Stichwortverzeichnis"
 #: lib/layouts/stdinsets.inc:241
 #: src/insets/InsetIndex.cpp:247
 msgid "Idx"
-msgstr "Indexeintrag"
+msgstr "Stichwort"
 
 #: lib/layouts/stdinsets.inc:262
 #: lib/layouts/stdinsets.inc:397
@@ -12825,7 +12825,7 @@ msgstr "Alles auswählen"
 
 #: lib/ui/stdmenus.inc:107
 msgid "Find LyX...|X"
-msgstr ""
+msgstr "LyX-Suche..."
 
 #: lib/ui/stdmenus.inc:116
 msgid "Table|T"
@@ -12877,7 +12877,7 @@ msgstr "Box-Einstellungen...|x"
 
 #: lib/ui/stdmenus.inc:136
 msgid "Index Entry Settings...|y"
-msgstr "Indexeintrags-Einstellungen...|l"
+msgstr "Stichwort-Einstellungen...|l"
 
 #: lib/ui/stdmenus.inc:137
 msgid "Index Settings...|x"
@@ -19110,7 +19110,7 @@ msgstr "Nichts zum suchen"
 
 #: src/frontends/qt4/FindAndReplace.cpp:255
 msgid "Find LyX Dialog"
-msgstr "Finde LyX Dialog"
+msgstr "LyX-Suche-Dialog"
 
 #: src/frontends/qt4/GuiAbout.cpp:49
 msgid "ERROR: LyX wasn't able to read CREDITS file\n"
@@ -19814,7 +19814,7 @@ msgstr "Nummerierung & Inhaltsverzeichnis"
 
 #: src/frontends/qt4/GuiDocument.cpp:1060
 msgid "Indexes"
-msgstr "Indexe"
+msgstr "Stichwortverzeichnis"
 
 #: src/frontends/qt4/GuiDocument.cpp:1061
 msgid "PDF Properties"
@@ -20266,7 +20266,7 @@ msgstr "LaTeX/LyX-Dokumente (*.tex *.lyx)"
 
 #: src/frontends/qt4/GuiIndex.cpp:34
 msgid "Index Entry Settings"
-msgstr "Indexeintrag-Einstellungen"
+msgstr "Stichwort-Einstellungen"
 
 #: src/frontends/qt4/GuiIndices.cpp:52
 msgid "Label Color"
@@ -21477,13 +21477,13 @@ msgstr "Keine Zweige im Dokument gesetzt!"
 
 #: src/frontends/qt4/Menus.cpp:1198
 msgid "Index Entry|d"
-msgstr "Indexeintrag|x"
+msgstr "Stichwort|x"
 
 #: src/frontends/qt4/Menus.cpp:1216
 #: src/frontends/qt4/Menus.cpp:1246
 #: src/insets/InsetIndex.cpp:269
 msgid "Index Entry"
-msgstr "Indexeintrag"
+msgstr "Stichwort"
 
 #: src/frontends/qt4/Menus.cpp:1264
 msgid "No Citation in Scope!"
@@ -21917,7 +21917,7 @@ msgid ""
 "Please specify the sorting of this entry manually, as\n"
 "explained in the User Guide."
 msgstr ""
-"Der Indexeintrag '%1$s' konnte nicht\n"
+"Das Stichwort '%1$s' konnte nicht\n"
 "automatisch sortiert werden.\n"
 "Bitte legen Sie die Sortierung manuell fest. Hinweise\n"
 "zum Vorgehen finden Sie im Benutzerhandbuch."
