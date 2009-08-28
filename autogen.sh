@@ -11,17 +11,17 @@ automake_version=`$AUTOMAKE --version 2>/dev/null | head -n 1`
 test "$automake_version" != "" && {
     echo "Using $automake_version"
 } || {
-    echo "LyX requires automake >= 1.5"
+    echo "LyX requires automake >= 1.8"
     exit 1
 }
 
 case $automake_version in
-    *' '1.[5-9]*|*' '1.1[01]*)
+    *' '1.[8-9]*|*' '1.1[01]*)
 	;;
     *)
 
 	echo "This automake version is not supported by LyX."
-	echo "LyX only supports automake 1.5 to 1.11."
+	echo "LyX only supports automake 1.8 to 1.11."
 	exit 1
 	;;
 esac
