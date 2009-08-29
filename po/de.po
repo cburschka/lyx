@@ -290,13 +290,12 @@ msgstr "&Abschnittsspezifisches Literaturverzeichnis"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:120
 msgid "Here you can define an alternative program to or specific options of bibtex."
-msgstr ""
+msgstr "Hier können Sie ein alternatives Programm oder BibTeX-Optionen angeben."
 
 #: src/frontends/qt4/ui/BiblioUi.ui:123
 #: src/frontends/qt4/ui/PrefLatexUi.ui:119
-#, fuzzy
 msgid "Bibliography generation"
-msgstr "Überschrift des Literaturverzeichnisses"
+msgstr "Literaturverzeichnis-Erzeugung"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:134
 #: src/frontends/qt4/ui/IndicesUi.ui:33
@@ -322,7 +321,7 @@ msgstr "&Optionen:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:178
 msgid "Define options such as --min-crossrefs (see man bibtex)."
-msgstr ""
+msgstr "Optionen wie --min-crossrefs (siehe man bibtex) definierebn"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:21
 msgid "LyX: Add BibTeX Database"
@@ -689,9 +688,8 @@ msgid "Append the name of this branch to the output filename, given the branch i
 msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUi.ui:38
-#, fuzzy
 msgid "Filename &Suffix"
-msgstr "Dateiname"
+msgstr "Dateinamen&sendung"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:61
 msgid "Show undefined branches used in this document."
@@ -764,7 +762,7 @@ msgstr "Fügen Sie alle nicht-definierten Zweige zur Liste hinzu"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:38
 msgid "Add A&ll"
-msgstr ""
+msgstr "Füge &alle hinzu"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:65
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:78
@@ -1401,7 +1399,7 @@ msgstr "y"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:37
 msgid "Find LyX Text"
-msgstr "Finde LyX Text"
+msgstr "Suche LyX-Text"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:62
 #, fuzzy
@@ -1469,7 +1467,7 @@ msgstr "Irgendeine Nummer"
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:282
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:315
 msgid "Enter the text to search for in this full-featured LyX editing area"
-msgstr ""
+msgstr "Geben Sie den Suchtext hier ein."
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:285
 msgid "Search for..."
@@ -1478,12 +1476,11 @@ msgstr "Suchen nach..."
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:362
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:395
 msgid "Enter the text to replace in this full-featured LyX editing area"
-msgstr ""
+msgstr "Geben Sie den Ersatztext hier ein."
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:365
-#, fuzzy
 msgid "Replace with..."
-msgstr "Ersetzen &durch:"
+msgstr "Ersetzen durch..."
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:433
 msgid "Advanced"
@@ -2145,7 +2142,7 @@ msgstr "Geben Sie den Namen des Hauptdokuments an"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:202
 msgid "Suppress default date on front page"
-msgstr ""
+msgstr "Datum auf der Titelseite nicht anzeigen"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:25
 msgid "Encoding"
@@ -2475,7 +2472,7 @@ msgstr "&Art:"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:243
 msgid "decoration type / matrix border"
-msgstr ""
+msgstr "Dekorationstyp / Matrixumrandung"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:252
 msgid "[x]"
@@ -2850,7 +2847,7 @@ msgstr "Benutzerdefiniert"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:60
 msgid "Horizontal and vertical space of the phantom content"
-msgstr ""
+msgstr "Waagerechter und senkrechter Leerraum des Phantom-Inhalts"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:63
 msgid "&Phantom"
@@ -2899,9 +2896,8 @@ msgid "Automatic p&opup"
 msgstr "Automatisches P&opup"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:60
-#, fuzzy
 msgid "Autoco&rrection"
-msgstr "A&uto-Beginn"
+msgstr "A&utomatische Korrektur"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:70
 msgid "In Text"
@@ -3053,9 +3049,8 @@ msgid "Cursor &follows scrollbar"
 msgstr "Cursor folgt Sc&rollbar"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:58
-#, fuzzy
 msgid "Scroll &below end of document"
-msgstr "Das Dokument konnte nicht gelesen werden"
+msgstr "&Unter das Ende des Dokuments scrollen"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:65
 msgid "Sort &environments alphabetically"
@@ -3090,9 +3085,8 @@ msgid "Screen used (&pixels):"
 msgstr "Benutzter &Bildschirmbereich (Pixel):"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:176
-#, fuzzy
 msgid "Hide &menubar"
-msgstr "Tabenleiste &verstecken"
+msgstr "Menüleiste &verstecken"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:183
 msgid "Hide &tabbar"
@@ -3427,7 +3421,7 @@ msgstr "Durchsuchen..."
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:64
 msgid "T&hesaurus dictionaries:"
-msgstr "T&hesaurus Wörterbücher:"
+msgstr "T&hesaurus-Wörterbücher:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:90
 msgid "&Temporary directory:"
@@ -3454,9 +3448,8 @@ msgid "&Working directory:"
 msgstr "&Arbeitsverzeichnis:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:215
-#, fuzzy
 msgid "Hunspell dictionaries:"
-msgstr "T&hesaurus Wörterbücher:"
+msgstr "Hunspell-Wörterbücher:"
 
 #: src/frontends/qt4/ui/PrefPlaintextUi.ui:57
 #: src/LyXRC.cpp:2544
@@ -3690,15 +3683,15 @@ msgstr "Zu &ignorierende Zeichen:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:52
 msgid "The characters inserted here are ignored by the spellchecker. "
-msgstr ""
+msgstr "Die hier eingefügten Zeichen werden von der Rechtschreibprüfung ignoriert."
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:75
 msgid "Mark misspelled words with a wavy underline."
-msgstr ""
+msgstr "Unterstreiche falsch geschriebene Wörter mit einer Wellenlinie."
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:78
 msgid "S&pellcheck continuously"
-msgstr ""
+msgstr "&Rechtschreibung kontinuierlich prüfen"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:101
 msgid "Accept words such as \"diskdrive\""
@@ -3709,9 +3702,8 @@ msgid "Accept compound &words"
 msgstr "&Zusammengesetzte Wörter akzeptieren"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:114
-#, fuzzy
 msgid "&Spellchecker engine:"
-msgstr "Rechtschreibprüfung"
+msgstr "&Programm für die Rechtschreibprüfung:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:33
 msgid "Session"
@@ -3794,13 +3786,12 @@ msgid "&List Indendation:"
 msgstr "&Einrückung der Liste:"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:48
-#, fuzzy
 msgid "Custom &Width:"
-msgstr "Spaltenbreite"
+msgstr "Benutzerdefinierte &Breite:"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:61
 msgid "Custom value. &quot;List Indendation&quot; needs to be set to &quot;Custom&quot;."
-msgstr ""
+msgstr "Benutzerdefinierter Wert. &quot;Listeneinrückung&quot; muss auf &quot;Benutzer&quot; gesetzt werden."
 
 #: src/frontends/qt4/ui/PrintUi.ui:28
 msgid "Pages"
@@ -3910,19 +3901,17 @@ msgstr "Ma&rken in:"
 
 #: src/frontends/qt4/ui/RefUi.ui:51
 msgid "Sort labels in alphabetical order (case-insensitively unless the Case-sensitive option is checked)"
-msgstr ""
+msgstr "Sortiert Marken alphabetisch (ohne Groß-/Kleinschreibung zu beachten, wenn die Option &quot;Groß-/Kleinschreibung beachten&quot; nicht verwendet wird)"
 
 #: src/frontends/qt4/ui/RefUi.ui:54
 msgid "&Sort"
 msgstr "&Sortieren"
 
 #: src/frontends/qt4/ui/RefUi.ui:64
-#, fuzzy
 msgid "Sort labels case-sensitively in alphabetical order"
-msgstr "Marken alphabetisch sortieren"
+msgstr "Sortiert Marken alphabetisch ohne Groß-/Kleinschreibung zu beachten"
 
 #: src/frontends/qt4/ui/RefUi.ui:67
-#, fuzzy
 msgid "Cas&e-sensitive"
 msgstr ""
 "&Groß-/Kleinschreibung\n"
@@ -4469,16 +4458,15 @@ msgstr "Sprache des Thesaurus"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:51
 msgid "Word to look up"
-msgstr "Wort nach dem gesucht werden soll"
+msgstr "Wort, nach dem gesucht werden soll"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:64
 msgid "L&ookup"
-msgstr ""
+msgstr "&Nachschlagen"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:71
-#, fuzzy
 msgid "Click to select a proposal, double click to look it up."
-msgstr "Hier klicken, um eine lokale Dokumentklassen-Datei auszuwählen"
+msgstr "Einmal klicken, um den Vorschlag auszuwählen, doppelt klicken, um ihn nachzuschlagen"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:86
 #: src/frontends/qt4/ui/ThesaurusUi.ui:99
