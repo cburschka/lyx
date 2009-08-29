@@ -1,4 +1,4 @@
-#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -1447,7 +1447,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Los índices se componen con un guión bajo 
+Los subíndices se componen con un guión bajo 
 \begin_inset Quotes fld
 \end_inset
 
@@ -1462,7 +1462,7 @@ _
 
 \end_inset
 
-, los exponentes con un circunflejo 
+, los superíndices con un circunflejo 
 \begin_inset Quotes fld
 \end_inset
 
@@ -1615,7 +1615,7 @@ A
 
 \begin_layout Standard
 Como en algunos idiomas la tecla circunflejo funciona como acento, en ese
- caso acentuará las vocales y no funcionará como exponente.
+ caso acentuará las vocales y no servirá para entrar en modo exponente.
 \begin_inset Foot
 status collapsed
 
@@ -1630,7 +1630,7 @@ Dependiendo de la configuración del teclado esto puede suceder también con
 \family sans
 Espacio
 \family default
- tras el circunflejo, como en el último ejemplo.
+ tras el circunflejo, como en el último ejemplo, o dos circunflejos seguidos.
  
 \end_layout
 
@@ -30922,15 +30922,11 @@ A+B=C\end{equation}
 \end_layout
 
 \begin_layout Standard
-Para numerar p.
+Para numerar tablas de modo que, p.
 \begin_inset space \thinspace{}
 \end_inset
 
-e.
-\begin_inset space ~
-\end_inset
-
-tablas de modo que 
+e., 
 \begin_inset Quotes fld
 \end_inset
 
@@ -30938,7 +30934,7 @@ sectioning
 \begin_inset Quotes frd
 \end_inset
 
- es el número de la parte se usa
+ sea el número de la parte se usa
 \begin_inset Newline newline
 \end_inset
 
@@ -31031,7 +31027,7 @@ numberwithin
 \backslash
 @addtoreset
 \series default
-, descrito arriba, que también necesita ser restaurado.
+, descrito arriba, que también debe ser restaurado.
 \begin_inset ERT
 status collapsed
 
@@ -31268,7 +31264,7 @@ roman
 \backslash
 Roman
 \series default
- 
+
 \begin_inset Index
 status collapsed
 
@@ -31347,6 +31343,9 @@ Nota:
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -31660,7 +31659,7 @@ El ión
 .
  La ecuación química es:
 \begin_inset Formula \begin{equation}
-\mathrm{2\, Na^{+}+SO_{4}^{2-}\longrightarrow Na_{2}SO_{4}}\label{eq:quimica-reaccion}\end{equation}
+\mathrm{2\, Na^{+}+SO_{4}^{2-}\longrightarrow Na_{2}SO_{4}}\label{eq:reaccion-quimica}\end{equation}
 
 \end_inset
 
@@ -31738,7 +31737,7 @@ Paquetes ! mhchem
 \backslash
 ce
 \series default
- en modo matemático aparece un un nuevo marco azul en el que se pueden escribir
+ en modo matemático aparece un nuevo marco azul en el que se pueden escribir
   ecuaciones químicas de una forma intuitiva.
 \end_layout
 
@@ -32307,7 +32306,7 @@ ce
 
 \begin_inset CommandInset ref
 LatexCommand eqref
-reference "eq:quimica-reaccion"
+reference "eq:reaccion-quimica"
 
 \end_inset
 
@@ -32401,12 +32400,8 @@ Na2SO4
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To create multiline chemical equations first a multiline formula is created
- as described in
-\lang spanish
- 
+Para componer ecuaciones químicas multilínea primero se crea una ecuación
+ multilínea, tal como se describe en la 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Ecuaciones-multilínea"
@@ -32414,40 +32409,30 @@ reference "sec:Ecuaciones-multilínea"
 \end_inset
 
 .
- 
-\lang english
-Afterwards the command 
+ Después se utiliza el comando 
 \series bold
-
-\backslash
-ce
+/ce
 \series default
- is used in every small blue box of the formula.
-
-\lang spanish
+ en cada cuadrito azul de la ecuación.
  
 \begin_inset CommandInset ref
 LatexCommand eqref
-reference "eq:TEOS-reaction-1"
+reference "eq:TEOS-reac-1"
 
 \end_inset
 
  y 
 \begin_inset CommandInset ref
 LatexCommand eqref
-reference "eq:TEOS-reaction-2"
+reference "eq:TEOS-reac-2"
 
 \end_inset
 
- 
-\lang english
-are an example of a multi-stage chemical reaction where every equation has
- its own number.
-\lang spanish
-
+ son un ejemplo de reacción química multifase en la que cada ecuación tiene
+ su propio número.
 \begin_inset Formula \begin{eqnarray}
-\ce{TEOS + 4O} & \ce{->} & \ce{Si(OH)4 + 4C2H4O}\label{eq:TEOS-reaction-1}\\
-\ce{Si(OH)4} & \ce{->} & \ce{SiO2 + 2H2O}\label{eq:TEOS-reaction-2}\end{eqnarray}
+\ce{TEOS + 4O} & \ce{->} & \ce{Si(OH)4 + 4C2H4O}\label{eq:TEOS-reac-1}\\
+\ce{Si(OH)4} & \ce{->} & \ce{SiO2 + 2H2O}\label{eq:TEOS-reac-2}\end{eqnarray}
 
 \end_inset
 
