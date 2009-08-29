@@ -41,6 +41,31 @@ class LyXComm : public boost::signals::trackable {
 #else
 class LyXComm : public QObject {
 	Q_OBJECT
+
+	/// Max number of (read) pipe instances
+	enum { MAX_PIPES = 10 };
+
+	/// I/O buffer size
+	enum { PIPE_BUFSIZE = 512 };
+
+	/// Pipe client time-out
+	enum { PIPE_TIMEOUT = 5000 };
+
+	/// Pipe states
+	enum PipeState {
+		CONNECTING_STATE,
+		READING_STATE,
+		WRITING_STATE
+	};
+
+	typedef struct {
+		OVERLAPPED overlap;
+		HANDLE handle;
+		char pipebuf[PIPE_BUFSIZE];
+		DWORD nbytes;
+		PipeState state;
+		bool pending_io;
+	} PipeInst;
 #endif
 public:
 	/** When we receive a message, we send it to a client.
@@ -65,7 +90,7 @@ public:
 #ifndef _WIN32
 	void read_ready();
 #else
-	void read_ready(HANDLE);
+	void read_ready(DWORD);
 
 	/// The pipe server
 	void pipeServer();
@@ -97,7 +122,29 @@ private:
 	/// This is -1 if not open
 	int outfd_;
 #else
-	HANDLE outpipe_;
+	/// Start an overlapped connection
+	void startPipe(DWORD);
+
+	/// Reset an overlapped connection
+	void resetPipe(DWORD, bool close_handle = false);
+
+	/// Close event and pipe handles
+	void closeHandles(DWORD);
+
+	/// The filename of a (in or out) pipe instance
+	std::string const pipeName(DWORD) const;
+
+	/// Pipe instances
+	PipeInst pipe_[MAX_PIPES + 1];
+
+	/// Pipe server control events
+	HANDLE event_[MAX_PIPES + 2];
+
+	/// Request buffers
+	std::string readbuf_[MAX_PIPES];
+
+	/// Reply buffer
+	std::string writebuf_;
 #endif
 
 	/// Are we up and running?
@@ -117,10 +164,13 @@ private:
 	bool event(QEvent *);
 
 	/// Check whether the pipe server must be stopped
-	BOOL checkStopServerEvent();
+	BOOL checkStopServer();
 
 	/// Windows event for stopping the pipe server
 	HANDLE stopserver_;
+
+	/// Pipe server thread handle
+	HANDLE server_thread_;
 #endif
 };
 
