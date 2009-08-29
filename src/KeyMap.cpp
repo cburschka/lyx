@@ -226,8 +226,8 @@ bool KeyMap::read(string const & bind_file, KeyMap * unbind_map, BindReadType rt
 
 		static string const defaultBindfile = "cua";
 		if (bind_file == defaultBindfile) {
-			frontend::Alert::warning(_("Could not find cua bind file"),
-				_("Unable to find the default bind file `cua'.\n"
+			frontend::Alert::warning(_("Could not find `cua.bind' file"),
+				_("Unable to find the default bind file `cua.bind'.\n"
 				   "Please check your installation."));
 			return false;
 		}
