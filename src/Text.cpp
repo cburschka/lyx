@@ -394,11 +394,11 @@ void Text::readParToken(Paragraph & par, Lexer & lex,
 		lex.next();
 		setLyXColor(lex.getString(), font.fontInfo());
 	} else if (token == "\\SpecialChar") {
-			auto_ptr<Inset> inset;
-			inset.reset(new InsetSpecialChar);
-			inset->read(lex);
-			par.insertInset(par.size(), inset.release(),
-					font, change);
+		auto_ptr<Inset> inset;
+		inset.reset(new InsetSpecialChar);
+		inset->read(lex);
+		inset->setBuffer(const_cast<Buffer &>(buf));
+		par.insertInset(par.size(), inset.release(), font, change);
 	} else if (token == "\\backslash") {
 		par.appendChar('\\', font, change);
 	} else if (token == "\\LyXTable") {
@@ -406,7 +406,10 @@ void Text::readParToken(Paragraph & par, Lexer & lex,
 		inset->read(lex);
 		par.insertInset(par.size(), inset.release(), font, change);
 	} else if (token == "\\lyxline") {
-		par.insertInset(par.size(), new InsetLine, font, change);
+		auto_ptr<Inset> inset;
+		inset.reset(new InsetLine);
+		inset->setBuffer(const_cast<Buffer &>(buf));
+		par.insertInset(par.size(), inset.release(), font, change);
 	} else if (token == "\\change_unchanged") {
 		change = Change(Change::UNCHANGED);
 	} else if (token == "\\change_inserted" || token == "\\change_deleted") {
