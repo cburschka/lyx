@@ -502,7 +502,12 @@ void LyXComm::closeConnection()
 		return;
 	}
 
-	emergencyCleanup();
+	SetEvent(stopserver_);
+	// Wait for the pipe server to finish
+	WaitForSingleObject(server_thread_, INFINITE);
+	CloseHandle(server_thread_);
+	ResetEvent(stopserver_);
+	CloseHandle(stopserver_);
 }
 
 
@@ -510,8 +515,10 @@ void LyXComm::emergencyCleanup()
 {
 	if (ready_) {
 		SetEvent(stopserver_);
-		// Wait for the pipe server to finish
-		WaitForSingleObject(server_thread_, INFINITE);
+		// Forcibly terminate the pipe server thread if it does
+		// not finish quickly.
+		if (WaitForSingleObject(server_thread_, 200) != WAIT_OBJECT_0)
+			TerminateThread(server_thread_, 0);
 		CloseHandle(server_thread_);
 		ResetEvent(stopserver_);
 		CloseHandle(stopserver_);
