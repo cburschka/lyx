@@ -93,14 +93,6 @@ private:
 
 namespace {
 
-bool closing_ = false;
-
-void closing()
-{
-	closing_ = true;
-}
-
-
 char * errormsg()
 {
 	void * msgbuf;
@@ -130,8 +122,6 @@ DWORD WINAPI pipeServerWrapper(void * arg)
 LyXComm::LyXComm(string const & pip, Server * cli, ClientCallbackfct ccb)
 	: pipename_(pip), client_(cli), clientcb_(ccb), stopserver_(0)
 {
-	// Ask Qt to notify us on quit.
-	qAddPostRoutine(closing);
 	ready_ = false;
 	openConnection();
 }
@@ -379,7 +369,7 @@ bool LyXComm::event(QEvent * e)
 
 BOOL LyXComm::checkStopServer()
 {
-	return WaitForSingleObject(stopserver_, 0) == WAIT_OBJECT_0 || closing_;
+	return WaitForSingleObject(stopserver_, 0) == WAIT_OBJECT_0;
 }
 
 
@@ -508,7 +498,7 @@ void LyXComm::closeConnection()
 	}
 
 	if (!ready_) {
-		LYXERR0("LyXComm: Already disconnected");
+		LYXERR(Debug::LYXSERVER, "LyXComm: Already disconnected");
 		return;
 	}
 
