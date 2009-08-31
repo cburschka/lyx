@@ -42,8 +42,13 @@ class LyXComm : public boost::signals::trackable {
 class LyXComm : public QObject {
 	Q_OBJECT
 
-	/// Max number of (read) pipe instances
-	enum { MAX_PIPES = 10 };
+public:
+	/// Max number of clients
+	enum { MAX_CLIENTS = 10 };
+
+private:
+	/// Max number of pipe instances
+	enum { MAX_PIPES = 2 * MAX_CLIENTS };
 
 	/// I/O buffer size
 	enum { PIPE_BUFSIZE = 512 };
@@ -58,10 +63,12 @@ class LyXComm : public QObject {
 		WRITING_STATE
 	};
 
+	/// Pipe instances
 	typedef struct {
 		OVERLAPPED overlap;
 		HANDLE handle;
-		char pipebuf[PIPE_BUFSIZE];
+		std::string iobuf;
+		char readbuf[PIPE_BUFSIZE];
 		DWORD nbytes;
 		PipeState state;
 		bool pending_io;
@@ -131,20 +138,32 @@ private:
 	/// Close event and pipe handles
 	void closeHandles(DWORD);
 
+	/// Catch pipe ready-to-be-read notification
+	bool event(QEvent *);
+
+	/// Check whether the pipe server must be stopped
+	BOOL checkStopServer();
+
 	/// The filename of a (in or out) pipe instance
 	std::string const pipeName(DWORD) const;
 
 	/// Pipe instances
-	PipeInst pipe_[MAX_PIPES + 1];
+	PipeInst pipe_[MAX_PIPES];
 
 	/// Pipe server control events
-	HANDLE event_[MAX_PIPES + 2];
-
-	/// Request buffers
-	std::string readbuf_[MAX_PIPES];
+	HANDLE event_[MAX_PIPES + 1];
 
 	/// Reply buffer
-	std::string writebuf_;
+	std::string outbuf_;
+
+	/// Synchronize access to outbuf_
+	HANDLE outbuf_mutex_;
+
+	/// Windows event for stopping the pipe server
+	HANDLE stopserver_;
+
+	/// Pipe server thread handle
+	HANDLE server_thread_;
 #endif
 
 	/// Are we up and running?
@@ -158,20 +177,6 @@ private:
 
 	/// The client callback function
 	ClientCallbackfct clientcb_;
-
-#ifdef _WIN32
-	/// Catch pipe ready-to-be-read notification
-	bool event(QEvent *);
-
-	/// Check whether the pipe server must be stopped
-	BOOL checkStopServer();
-
-	/// Windows event for stopping the pipe server
-	HANDLE stopserver_;
-
-	/// Pipe server thread handle
-	HANDLE server_thread_;
-#endif
 };
 
 
@@ -202,7 +207,11 @@ public:
 
 private:
 	/// Names and number of current clients
+#ifndef _WIN32
 	enum { MAX_CLIENTS = 10 };
+#else
+	enum { MAX_CLIENTS = LyXComm::MAX_CLIENTS };
+#endif
 	///
 	std::string clients_[MAX_CLIENTS];
 	///
