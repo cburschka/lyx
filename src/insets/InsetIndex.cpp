@@ -88,6 +88,9 @@ int InsetIndex::latex(odocstream & os,
 		// ...and erase that stuff from latexstr
 		latexstr = latexstr.erase(pos);
 		// ...and similarly from plainstr
+		// FIXME This utterly fails if the "|" is in ERT
+		// which is necessary with font encodings other
+		// than T1.
 		size_t ppos = plainstr.find(from_ascii("|"));
 		if (ppos < plainstr.size())
 			plainstr.erase(ppos);
@@ -97,6 +100,7 @@ int InsetIndex::latex(odocstream & os,
 
 	// Separate the entires and subentries, i.e., split on "!"
 	// FIXME This would do the wrong thing with escaped ! characters
+	// and with "!" in ERT.
 	std::vector<docstring> const levels =
 		getVectorFromString(latexstr, from_ascii("!"), true);
 	std::vector<docstring> const levels_plain =
