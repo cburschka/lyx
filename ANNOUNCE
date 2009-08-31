@@ -1,23 +1,19 @@
-Public release of LyX version 1.6.4
-===================================
+Public release of LyX version 1.6.4.1
+=====================================
 
-We are pleased to announce the release of LyX 1.6.4. This is the fourth
-maintenance release in the 1.6.x series. This release covers, amongst
-many minor improvements, fixes to some rather severe issues, such as:
+We are pleased to announce the release of LyX 1.6.4.1. This is a small
+update to LyX 1.6.4, which was the fourth maintenance release in the 1.6.x
+series.
 
-* A workaround to a nasty problem in recent Qt versions (Qt 4.5.0 up to
-  4.5.2) that made LyX crash if the document included images that were
-  scaled to certain sizes in the work area.
-* Fixes to problems that might result in the loss of data.
-* Many other stability improvements, thanks to a new debugging script that
-  helped to reveal uncovered critical bugs.
-* Further fixes to the LaTeX importer (tex2lyx) and the conversion of
-  older LyX documents (lyx2lyx).
+The only change over release 1.6.4 is the fix of a regression on the Mac,
+which made some dialogs (such as Preferences and About LyX) unaccessible
+via the menu. Other platforms than the Mac were not affected by the issue.
 
-A detailed list of changes is appended below, remaining known problems
-are listed in the file RELEASE-NOTES.
+A detailed list of changes in 1.6.4 and 1.6.4.1 is appended below, 
+remaining known problems are listed in the file RELEASE-NOTES.
 
-All users and distributors are urged to upgrade to this version.
+All Mac users are encouraged to upgrade to this version. For users of
+other platforms, there's no reason to upgrade from LyX 1.6.4.
 
 In case you are wondering what LyX is, here is what
 http://www.lyx.org/ has to say on the subject:
@@ -43,36 +39,34 @@ http://www.lyx.org/ has to say on the subject:
    internationalized application running natively on Unix/Linux, the
    Macintosh and modern Windows platforms.
 
-You can download LyX 1.6.4 here (the .bz2 are compressed with bzip2,
+You can download LyX 1.6.4.1 here (the .bz2 are compressed with bzip2,
 which yields smaller files):
 
-	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/lyx-1.6.4.tar.gz
-	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/lyx-1.6.4.tar.bz2
-	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.6.4.tar.gz
-	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.6.4.tar.bz2
+	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/lyx-1.6.4.1.tar.gz
+	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/lyx-1.6.4.1.tar.bz2
+	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.6.4.1.tar.gz
+	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.6.4.1.tar.bz2
 
 and it should propagate shortly to the following mirrors (which will
 also host the .bz2 versions):
 
-        ftp://ftp.lip6.fr/pub/lyx/stable/1.6.x/lyx-1.6.4.tar.gz
-	http://lyx.cybermirror.org/stable/1.6.x/lyx-1.6.4.tar.gz
-        ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/1.6.x/lyx-1.6.4.tar.gz
-        ftp://ftp.ntua.gr/pub/X11/LyX/stable/1.6.x/lyx-1.6.4.tar.gz
-	http://sunsite.icm.edu.pl/pub/unix/editors/lyx/stable/1.6.x/lyx-1.6.4.tar.gz
-        http://lyx.mirror.fr/stable/1.6.x/lyx-1.6.4.tar.gz
+	ftp://ftp.lip6.fr/pub/lyx/stable/1.6.x/lyx-1.6.4.1.tar.gz
+	http://lyx.cybermirror.org/stable/1.6.x/lyx-1.6.4.1.tar.gz
+	ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/1.6.x/lyx-1.6.4.1.tar.gz
+	ftp://ftp.ntua.gr/pub/X11/LyX/stable/1.6.x/lyx-1.6.4.1.tar.gz
+	http://sunsite.icm.edu.pl/pub/unix/editors/lyx/stable/1.6.x/lyx-1.6.4.1.tar.gz
+	http://lyx.mirror.fr/stable/1.6.x/lyx-1.6.4.1.tar.gz
 
-Prebuilt binaries (rpms for Linux distributions, Mac OS X and Windows
-installers) should soon be available at
+A prebuilt binary for Mac OS X should soon be available at
 	ftp://ftp.lyx.org/pub/lyx/bin/1.6.4/
 
 If you already have the sources of the previous release, you may want to apply
-one of the following patches instead
-	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/patch-1.6.4.gz
-	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/patch-1.6.4.bz2
+the following patch instead
+	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/patch-1.6.4.1.diff
 
-If you find what you think is a bug in LyX 1.6.4, you may either
+If you find what you think is a bug in LyX 1.6.4.1, you may either
 e-mail the LyX developers' mailing list (lyx-devel <at> lists.lyx.org),
-or open a bug report at http://bugzilla.lyx.org
+or open a bug report at http://www.lyx.org/trac/
 
 If you're having trouble using the new version of LyX, or have a
 question, first check out http://www.lyx.org/help/. If you can't find
@@ -81,6 +75,21 @@ the answer there, e-mail the LyX users' list (lyx-users <at> lists.lyx.org).
 Enjoy!
 
 The LyX team.
+
+
+What's new in version 1.6.4.1?
+------------------------------
+
+** Bug fixes:
+*************
+
+* USER INTERFACE
+
+- Revert an erroneous bugfix that was introduced with LyX 1.6.4:
+  "Disable some menu entries when the document windows does not have
+  focus on OS X (bug 1720)."
+  This re-enables the access to the Preferences and About LyX dialogs on
+  the Mac menu (other platforms were not affected).
 
 
 What's new in version 1.6.4?
