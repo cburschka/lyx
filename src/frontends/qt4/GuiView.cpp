@@ -1158,6 +1158,17 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	bool enable = true;
 	Buffer * buf = buffer();
 
+	/* In LyX/Mac, when a dialog is open, the menus of the
+	   application can still be accessed without giving focus to
+	   the main window. In this case, we want to disable the menu
+	   entries that are buffer-related.
+
+	   Note that this code is not perfect, as bug 1941 attests:
+	   http://bugzilla.lyx.org/show_bug.cgi?id=1941#c4
+	*/
+	if (cmd.origin == FuncRequest::MENU && !hasFocus())
+		buf = 0;
+
 	switch(cmd.action) {
 	case LFUN_BUFFER_WRITE:
 		enable = buf && (buf->isUnnamed() || !buf->isClean());
