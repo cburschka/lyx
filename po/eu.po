@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx_1.5.0_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-08-22 13:16+0200\n"
+"POT-Creation-Date: 2009-08-31 10:23+0200\n"
 "PO-Revision-Date: 2009-04-19 17:14+0100\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -88,13 +88,13 @@ msgstr "&Ados"
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:897
 #: src/Buffer.cpp:2652 src/Buffer.cpp:2676 src/Buffer.cpp:2711
-#: src/LyXFunc.cpp:732 src/LyXFunc.cpp:871 src/LyXFunc.cpp:1045
+#: src/LyXFunc.cpp:717 src/LyXFunc.cpp:856 src/LyXFunc.cpp:1030
 #: src/LyXVC.cpp:189 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1266
 #: src/frontends/qt4/GuiParagraph.cpp:69
-#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1563
-#: src/frontends/qt4/GuiView.cpp:1755 src/frontends/qt4/GuiView.cpp:1807
-#: src/frontends/qt4/GuiView.cpp:1867 src/insets/InsetBibtex.cpp:143
+#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1574
+#: src/frontends/qt4/GuiView.cpp:1766 src/frontends/qt4/GuiView.cpp:1818
+#: src/frontends/qt4/GuiView.cpp:1878 src/insets/InsetBibtex.cpp:143
 msgid "&Cancel"
 msgstr "&Utzi"
 
@@ -190,7 +190,7 @@ msgstr "&Gehitu"
 #: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:91
 #: src/frontends/qt4/ui/LabelUi.ui:92 src/frontends/qt4/ui/NomenclUi.ui:105
 #: src/frontends/qt4/ui/SendtoUi.ui:92 src/frontends/qt4/ui/ShortcutUi.ui:65
-#: src/LyXFunc.cpp:841 src/buffer_funcs.cpp:107
+#: src/LyXFunc.cpp:826 src/buffer_funcs.cpp:107
 #: src/frontends/qt4/ButtonController.cpp:231
 msgid "Cancel"
 msgstr "Utzi"
@@ -3323,8 +3323,8 @@ msgstr "Ara&katu..."
 msgid "&User interface file:"
 msgstr "&Erabiltzaile-interfazeko fitxategia:"
 
-#: src/frontends/qt4/ui/PrefsUi.ui:73 src/Buffer.cpp:320 src/LyXFunc.cpp:732
-#: src/frontends/qt4/GuiView.cpp:1867
+#: src/frontends/qt4/ui/PrefsUi.ui:73 src/Buffer.cpp:320 src/LyXFunc.cpp:717
+#: src/frontends/qt4/GuiView.cpp:1878
 msgid "&Save"
 msgstr "&Gorde"
 
@@ -15208,7 +15208,7 @@ msgid ""
 "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
 msgstr "Ezin izan da %1$s aldi-baterako direktorioa sortu"
 
-#: src/Buffer.cpp:317 src/frontends/qt4/GuiView.cpp:1864
+#: src/Buffer.cpp:317 src/frontends/qt4/GuiView.cpp:1875
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -15219,11 +15219,11 @@ msgstr ""
 "\n"
 "Nahi duzu dokumentua gordetzea edo aldaketak baztertu nahi dituzu?"
 
-#: src/Buffer.cpp:319 src/LyXFunc.cpp:724 src/frontends/qt4/GuiView.cpp:1866
+#: src/Buffer.cpp:319 src/LyXFunc.cpp:709 src/frontends/qt4/GuiView.cpp:1877
 msgid "Save changed document?"
 msgstr "Gorde aldatutako dokumentua?"
 
-#: src/Buffer.cpp:320 src/frontends/qt4/GuiView.cpp:1867
+#: src/Buffer.cpp:320 src/frontends/qt4/GuiView.cpp:1878
 msgid "&Discard"
 msgstr "&Baztertu"
 
@@ -15364,9 +15364,9 @@ msgstr ""
 msgid "Overwrite modified file?"
 msgstr "Gainidatzi fitxategia?"
 
-#: src/Buffer.cpp:897 src/Exporter.cpp:49 src/LyXFunc.cpp:1045
-#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1563
-#: src/frontends/qt4/GuiView.cpp:1755
+#: src/Buffer.cpp:897 src/Exporter.cpp:49 src/LyXFunc.cpp:1030
+#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1574
+#: src/frontends/qt4/GuiView.cpp:1766
 #, fuzzy
 msgid "&Overwrite"
 msgstr "&Gainidatzi"
@@ -15622,7 +15622,7 @@ msgstr ""
 msgid "Document class not found"
 msgstr "Dokumentu-klasea ez dago erabilgarri"
 
-#: src/BufferParams.cpp:1657 src/LyXFunc.cpp:763
+#: src/BufferParams.cpp:1657 src/LyXFunc.cpp:748
 #, fuzzy, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr ""
@@ -15630,7 +15630,7 @@ msgstr ""
 "%1$s\n"
 "ezin izan da irakurri."
 
-#: src/BufferParams.cpp:1659 src/LyXFunc.cpp:765
+#: src/BufferParams.cpp:1659 src/LyXFunc.cpp:750
 #, fuzzy
 msgid "Could not load class"
 msgstr "Ezin izan da klasea aldatu"
@@ -16259,7 +16259,7 @@ msgstr ""
 msgid "Undefined flex inset"
 msgstr "Testuen barnekoa irekita"
 
-#: src/Exporter.cpp:44 src/LyXFunc.cpp:1041
+#: src/Exporter.cpp:44 src/LyXFunc.cpp:1026
 #, fuzzy, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -16270,7 +16270,7 @@ msgstr ""
 "\n"
 "Nahi duzu fitxategi hori gainidaztea?"
 
-#: src/Exporter.cpp:47 src/LyXFunc.cpp:1044
+#: src/Exporter.cpp:47 src/LyXFunc.cpp:1029
 #, fuzzy
 msgid "Overwrite file?"
 msgstr "Gainidatzi fitxategia?"
@@ -16385,7 +16385,7 @@ msgstr "  Zenbakia %1$s"
 msgid "Cannot view file"
 msgstr "Ezin da fitxategia ikusi"
 
-#: src/Format.cpp:254 src/Format.cpp:325 src/LyXFunc.cpp:1214
+#: src/Format.cpp:254 src/Format.cpp:325 src/LyXFunc.cpp:1199
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "Fitxategia ez da existitzen: %1$s"
@@ -16744,31 +16744,31 @@ msgstr ""
 msgid "Unknown function."
 msgstr "Funtzio ezezaguna."
 
-#: src/LyXFunc.cpp:418
+#: src/LyXFunc.cpp:403
 msgid "Nothing to do"
 msgstr "Ezin ezer egin"
 
-#: src/LyXFunc.cpp:437
+#: src/LyXFunc.cpp:422
 msgid "Unknown action"
 msgstr "Ekintza ezezaguna"
 
-#: src/LyXFunc.cpp:443 src/LyXFunc.cpp:705
+#: src/LyXFunc.cpp:428 src/LyXFunc.cpp:690
 msgid "Command disabled"
 msgstr "Komandoa desgaitua"
 
-#: src/LyXFunc.cpp:450
+#: src/LyXFunc.cpp:435
 msgid "Command not allowed without any document open"
 msgstr "Ezin komandoa erabili dokumentu bat ireki arte"
 
-#: src/LyXFunc.cpp:690
+#: src/LyXFunc.cpp:675
 msgid "Document is read-only"
 msgstr "Dokumentua irakurtzeko soilik da"
 
-#: src/LyXFunc.cpp:699
+#: src/LyXFunc.cpp:684
 msgid "This portion of the document is deleted."
 msgstr "Dokumentuaren zati hau ezabatu egin da."
 
-#: src/LyXFunc.cpp:721
+#: src/LyXFunc.cpp:706
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -16779,7 +16779,7 @@ msgstr ""
 "\n"
 "Nahi duzu dokumentua gordetzea?"
 
-#: src/LyXFunc.cpp:727
+#: src/LyXFunc.cpp:712
 #, fuzzy, c-format
 msgid ""
 "The document %1$s has not been saved yet.\n"
@@ -16790,12 +16790,12 @@ msgstr ""
 "\n"
 "Nahi duzu dokumentua gordetzea?"
 
-#: src/LyXFunc.cpp:730
+#: src/LyXFunc.cpp:715
 #, fuzzy
 msgid "Save new document?"
 msgstr "Gorde aldatutako dokumentua?"
 
-#: src/LyXFunc.cpp:745
+#: src/LyXFunc.cpp:730
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
@@ -16804,11 +16804,11 @@ msgstr ""
 "Ezin izan da %1$s dokumentua inprimatu.\n"
 "Egiaztatu inprimagailua ongi konfiguratuta dagoela."
 
-#: src/LyXFunc.cpp:748
+#: src/LyXFunc.cpp:733
 msgid "Print document failed"
 msgstr "Huts egin du dokumentua inprimatzean"
 
-#: src/LyXFunc.cpp:868
+#: src/LyXFunc.cpp:853
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -16817,71 +16817,71 @@ msgstr ""
 "Edozein aldaketa galdu egingo da. Ziur zaude %1$s dokumentuaren gordetako "
 "bertsioa leheneratu nahi duzula?"
 
-#: src/LyXFunc.cpp:870
+#: src/LyXFunc.cpp:855
 msgid "Revert to saved document?"
 msgstr "Gordetako dokumentua berreskuratu?"
 
-#: src/LyXFunc.cpp:871 src/LyXVC.cpp:189
+#: src/LyXFunc.cpp:856 src/LyXVC.cpp:189
 msgid "&Revert"
 msgstr "&Berreskuratu"
 
-#: src/LyXFunc.cpp:1082 src/Text3.cpp:1598
+#: src/LyXFunc.cpp:1067 src/Text3.cpp:1598
 msgid "Missing argument"
 msgstr "Argumentua falta da"
 
-#: src/LyXFunc.cpp:1094
+#: src/LyXFunc.cpp:1079
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "%1$s laguntza-fitxategia irekitzen..."
 
-#: src/LyXFunc.cpp:1146 src/VCBackend.cpp:56 src/VCBackend.cpp:560
+#: src/LyXFunc.cpp:1131 src/VCBackend.cpp:56 src/VCBackend.cpp:560
 #: src/VCBackend.cpp:626 src/VCBackend.cpp:632 src/VCBackend.cpp:653
 #, fuzzy
 msgid "Revision control error."
 msgstr "Bertsio-kontrola"
 
-#: src/LyXFunc.cpp:1147
+#: src/LyXFunc.cpp:1132
 msgid "Error when setting the locking property."
 msgstr ""
 
-#: src/LyXFunc.cpp:1367
+#: src/LyXFunc.cpp:1352
 #, fuzzy, c-format
 msgid "Opening child document %1$s..."
 msgstr "%1$s dokumentua irekitzen..."
 
-#: src/LyXFunc.cpp:1529
+#: src/LyXFunc.cpp:1514
 #, fuzzy, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Dokumentuaren lehenetsiak hemen gordeta: "
 
-#: src/LyXFunc.cpp:1532
+#: src/LyXFunc.cpp:1517
 msgid "Unable to save document defaults"
 msgstr "Ezin dira dokumentuaren lehenetsiak gorde"
 
-#: src/LyXFunc.cpp:1679 src/LyXVC.cpp:151
+#: src/LyXFunc.cpp:1664 src/LyXVC.cpp:151
 msgid "LyX VC: Log Message"
 msgstr "LyX BK: egunkari-mezua"
 
-#: src/LyXFunc.cpp:1688
+#: src/LyXFunc.cpp:1673
 #, fuzzy
 msgid "Directory is not accessible."
 msgstr "Ezin izan da %1$s irakurri."
 
-#: src/LyXFunc.cpp:1874
+#: src/LyXFunc.cpp:1859
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "%1$s dokumentua irekita."
 
-#: src/LyXFunc.cpp:1876
+#: src/LyXFunc.cpp:1861
 #, fuzzy, c-format
 msgid "Could not reload document %1$s"
 msgstr "Ezin izan da dokumentua irakurri"
 
-#: src/LyXFunc.cpp:1913
+#: src/LyXFunc.cpp:1898
 msgid "Welcome to LyX!"
 msgstr "Ongi etorri LyX-era!"
 
-#: src/LyXFunc.cpp:1934
+#: src/LyXFunc.cpp:1919
 msgid "Converting document to new document class..."
 msgstr "Dokumentua klase berrira bihurtzen..."
 
@@ -18089,9 +18089,9 @@ msgstr "BibTex bibliografia"
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
 #: src/frontends/qt4/GuiDocument.cpp:1308
 #: src/frontends/qt4/GuiExternal.cpp:670 src/frontends/qt4/GuiGraphics.cpp:847
-#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1308
-#: src/frontends/qt4/GuiView.cpp:1366 src/frontends/qt4/GuiView.cpp:1513
-#: src/frontends/qt4/GuiView.cpp:1641 src/frontends/qt4/GuiView.cpp:1725
+#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1319
+#: src/frontends/qt4/GuiView.cpp:1377 src/frontends/qt4/GuiView.cpp:1524
+#: src/frontends/qt4/GuiView.cpp:1652 src/frontends/qt4/GuiView.cpp:1736
 msgid "Documents|#o#O"
 msgstr "Dokumentuak|#d#D"
 
@@ -18305,10 +18305,10 @@ msgstr "%1$s eta %2$s"
 msgid "Choose a filename to save the pasted graphic as"
 msgstr "Aukeratu izena dokumentua gordetzeko"
 
-#: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1385
-#: src/frontends/qt4/GuiView.cpp:1533 src/frontends/qt4/GuiView.cpp:1549
-#: src/frontends/qt4/GuiView.cpp:1566 src/frontends/qt4/GuiView.cpp:1658
-#: src/frontends/qt4/GuiView.cpp:1701
+#: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1396
+#: src/frontends/qt4/GuiView.cpp:1544 src/frontends/qt4/GuiView.cpp:1560
+#: src/frontends/qt4/GuiView.cpp:1577 src/frontends/qt4/GuiView.cpp:1669
+#: src/frontends/qt4/GuiView.cpp:1712
 msgid "Canceled."
 msgstr "Bertan behera utzita."
 
@@ -19977,60 +19977,60 @@ msgstr ""
 msgid "Unknown toolbar \"%1$s\""
 msgstr "'%1$s' taula-ezaugarri ezezaguna"
 
-#: src/frontends/qt4/GuiView.cpp:1307
+#: src/frontends/qt4/GuiView.cpp:1318
 msgid "Select template file"
 msgstr "Hautatu txantiloia"
 
-#: src/frontends/qt4/GuiView.cpp:1309 src/frontends/qt4/GuiView.cpp:1726
+#: src/frontends/qt4/GuiView.cpp:1320 src/frontends/qt4/GuiView.cpp:1737
 msgid "Templates|#T#t"
 msgstr "Txantiloiak|#T#t"
 
-#: src/frontends/qt4/GuiView.cpp:1312 src/frontends/qt4/GuiView.cpp:1370
-#: src/frontends/qt4/GuiView.cpp:1647 src/frontends/qt4/GuiView.cpp:1733
+#: src/frontends/qt4/GuiView.cpp:1323 src/frontends/qt4/GuiView.cpp:1381
+#: src/frontends/qt4/GuiView.cpp:1658 src/frontends/qt4/GuiView.cpp:1744
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX dokumentuak (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1329
+#: src/frontends/qt4/GuiView.cpp:1340
 #, fuzzy
 msgid "Document not loaded."
 msgstr "Dokumentua ez da gorde"
 
-#: src/frontends/qt4/GuiView.cpp:1365
+#: src/frontends/qt4/GuiView.cpp:1376
 msgid "Select document to open"
 msgstr "Hautatu dokumentua irekitzeko"
 
-#: src/frontends/qt4/GuiView.cpp:1367 src/frontends/qt4/GuiView.cpp:1514
-#: src/frontends/qt4/GuiView.cpp:1642
+#: src/frontends/qt4/GuiView.cpp:1378 src/frontends/qt4/GuiView.cpp:1525
+#: src/frontends/qt4/GuiView.cpp:1653
 msgid "Examples|#E#e"
 msgstr "Adibideak|#A#a"
 
-#: src/frontends/qt4/GuiView.cpp:1371
+#: src/frontends/qt4/GuiView.cpp:1382
 #, fuzzy
 msgid "LyX-1.3.x Documents (*.lyx13)"
 msgstr "LyX dokumentuak (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1372
+#: src/frontends/qt4/GuiView.cpp:1383
 #, fuzzy
 msgid "LyX-1.4.x Documents (*.lyx14)"
 msgstr "LyX dokumentuak (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1373
+#: src/frontends/qt4/GuiView.cpp:1384
 #, fuzzy
 msgid "LyX-1.5.x Documents (*.lyx15)"
 msgstr "LyX dokumentuak (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1374
+#: src/frontends/qt4/GuiView.cpp:1385
 #, fuzzy
 msgid "LyX-1.6.x Documents (*.lyx16)"
 msgstr "LyX dokumentuak (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1399 src/frontends/qt4/Validator.cpp:182
+#: src/frontends/qt4/GuiView.cpp:1410 src/frontends/qt4/Validator.cpp:182
 #: src/insets/ExternalSupport.cpp:367 src/insets/InsetBibtex.cpp:286
 #: src/insets/InsetGraphics.cpp:592 src/insets/InsetInclude.cpp:477
 msgid "Invalid filename"
 msgstr "Fitxategi-izen baliogabea"
 
-#: src/frontends/qt4/GuiView.cpp:1400
+#: src/frontends/qt4/GuiView.cpp:1411
 #, c-format
 msgid ""
 "The directory in the given path\n"
@@ -20038,41 +20038,41 @@ msgid ""
 "does not exist."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1414
+#: src/frontends/qt4/GuiView.cpp:1425
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "%1$s dokumentua irekitzen..."
 
-#: src/frontends/qt4/GuiView.cpp:1423
+#: src/frontends/qt4/GuiView.cpp:1434
 #, c-format
 msgid "Document %1$s opened."
 msgstr "%1$s dokumentua irekita."
 
-#: src/frontends/qt4/GuiView.cpp:1426
+#: src/frontends/qt4/GuiView.cpp:1437
 #, fuzzy
 msgid "Version control detected."
 msgstr "Bertsio-kontrola"
 
-#: src/frontends/qt4/GuiView.cpp:1428
+#: src/frontends/qt4/GuiView.cpp:1439
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Ezin izan da %1$s dokumentua ireki"
 
-#: src/frontends/qt4/GuiView.cpp:1457
+#: src/frontends/qt4/GuiView.cpp:1468
 msgid "Couldn't import file"
 msgstr "Ezin izan da fitxategia inportatu"
 
-#: src/frontends/qt4/GuiView.cpp:1458
+#: src/frontends/qt4/GuiView.cpp:1469
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr "Ez dago informaziorik %1$s formatutik inportatzeko."
 
-#: src/frontends/qt4/GuiView.cpp:1509
+#: src/frontends/qt4/GuiView.cpp:1520
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Hautatu %1$s fitxategia inportatzeko"
 
-#: src/frontends/qt4/GuiView.cpp:1560 src/frontends/qt4/GuiView.cpp:1750
+#: src/frontends/qt4/GuiView.cpp:1571 src/frontends/qt4/GuiView.cpp:1761
 #, fuzzy, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -20083,51 +20083,51 @@ msgstr ""
 "\n"
 "Nahi duzu dokumentua gainidaztea?"
 
-#: src/frontends/qt4/GuiView.cpp:1562 src/frontends/qt4/GuiView.cpp:1754
+#: src/frontends/qt4/GuiView.cpp:1573 src/frontends/qt4/GuiView.cpp:1765
 #, fuzzy
 msgid "Overwrite document?"
 msgstr "Gainidatzi dokumentua?"
 
-#: src/frontends/qt4/GuiView.cpp:1571
+#: src/frontends/qt4/GuiView.cpp:1582
 #, c-format
 msgid "Importing %1$s..."
 msgstr "%1$s inportatzen..."
 
-#: src/frontends/qt4/GuiView.cpp:1574
+#: src/frontends/qt4/GuiView.cpp:1585
 msgid "imported."
 msgstr "inportatua."
 
-#: src/frontends/qt4/GuiView.cpp:1576
+#: src/frontends/qt4/GuiView.cpp:1587
 #, fuzzy
 msgid "file not imported!"
 msgstr "Ez da katerik aurkitu!"
 
-#: src/frontends/qt4/GuiView.cpp:1640
+#: src/frontends/qt4/GuiView.cpp:1651
 msgid "Select LyX document to insert"
 msgstr "Hautatu LyX dokumentua txertatzeko"
 
-#: src/frontends/qt4/GuiView.cpp:1674
+#: src/frontends/qt4/GuiView.cpp:1685
 msgid "Absolute filename expected."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1686
+#: src/frontends/qt4/GuiView.cpp:1697
 msgid "Select file to insert"
 msgstr "Hautatu fitxategia txertatzeko"
 
-#: src/frontends/qt4/GuiView.cpp:1690
+#: src/frontends/qt4/GuiView.cpp:1701
 #, fuzzy
 msgid "All Files (*)"
 msgstr "Fitxategi guztiak (*)"
 
-#: src/frontends/qt4/GuiView.cpp:1723
+#: src/frontends/qt4/GuiView.cpp:1734
 msgid "Choose a filename to save document as"
 msgstr "Aukeratu izena dokumentua gordetzeko"
 
-#: src/frontends/qt4/GuiView.cpp:1755 src/frontends/qt4/GuiView.cpp:1807
+#: src/frontends/qt4/GuiView.cpp:1766 src/frontends/qt4/GuiView.cpp:1818
 msgid "&Rename"
 msgstr "&aldatu izenez"
 
-#: src/frontends/qt4/GuiView.cpp:1803
+#: src/frontends/qt4/GuiView.cpp:1814
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -20138,31 +20138,31 @@ msgstr ""
 "\n"
 "Nahi duzu dokumentua izenez aldatzea eta berriro saiatzea?"
 
-#: src/frontends/qt4/GuiView.cpp:1806
+#: src/frontends/qt4/GuiView.cpp:1817
 msgid "Rename and save?"
 msgstr "Aldatu izenez eta gorde?"
 
-#: src/frontends/qt4/GuiView.cpp:1807
+#: src/frontends/qt4/GuiView.cpp:1818
 #, fuzzy
 msgid "&Retry"
 msgstr "&Berrezarri"
 
-#: src/frontends/qt4/GuiView.cpp:1941
+#: src/frontends/qt4/GuiView.cpp:1952
 #, fuzzy
 msgid "Document not loaded"
 msgstr "Dokumentua ez da gorde"
 
-#: src/frontends/qt4/GuiView.cpp:1999
+#: src/frontends/qt4/GuiView.cpp:2010
 #, fuzzy
 msgid "Saving all documents..."
 msgstr "%1$s dokumentua gordetzen ..."
 
-#: src/frontends/qt4/GuiView.cpp:2009
+#: src/frontends/qt4/GuiView.cpp:2020
 #, fuzzy
 msgid "All documents saved."
 msgstr "Dokumentua ez da gorde"
 
-#: src/frontends/qt4/GuiView.cpp:2256
+#: src/frontends/qt4/GuiView.cpp:2267
 #, c-format
 msgid "%1$s unknown command!"
 msgstr ""
