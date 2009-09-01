@@ -422,12 +422,14 @@ dist_images_DATA = \
 	images/undo.png \
 	images/unknown.png \
 	images/up.png \
+	images/update-others.png \
 	images/url-insert.png \
 	images/vc-check-in.png \
 	images/vc-check-out.png \
 	images/vc-locking-toggle.png \
 	images/vc-register.png \
-	images/vc-revert.png
+	images/vc-revert.png \
+	images/view-others.png
 
 imagesmathdir = $(imagesdir)/math
 dist_imagesmath_DATA = \
@@ -889,7 +891,6 @@ dist_imagesmath_DATA = \
 	images/math/underset.png \
 	images/math/uparrow.png \
 	images/math/uparrow2.png \
-	images/math/update-others.png \
 	images/math/updownarrow.png \
 	images/math/updownarrow2.png \
 	images/math/upharpoonleft.png \
@@ -924,7 +925,6 @@ dist_imagesmath_DATA = \
 	images/math/veebar.png \
 	images/math/vert.png \
 	images/math/vert2.png \
-	images/math/view-others.png \
 	images/math/vphantom.png \
 	images/math/Vvdash.png \
 	images/math/wedge.png \

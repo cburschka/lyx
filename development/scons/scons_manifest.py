@@ -1521,12 +1521,14 @@ lib_images_files = Split('''
     undo.png
     unknown.png
     up.png
+    update-others.png
     url-insert.png
     vc-check-in.png
     vc-check-out.png
     vc-locking-toggle.png
     vc-register.png
     vc-revert.png
+    view-others.png
 ''')
 
 
@@ -1996,7 +1998,6 @@ lib_images_math_files = Split('''
     underset.png
     uparrow.png
     uparrow2.png
-    update-others.png
     updownarrow.png
     updownarrow2.png
     upharpoonleft.png
@@ -2031,7 +2032,6 @@ lib_images_math_files = Split('''
     veebar.png
     vert.png
     vert2.png
-    view-others.png
     vphantom.png
     Vvdash.png
     wedge.png
