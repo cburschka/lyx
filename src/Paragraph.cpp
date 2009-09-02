@@ -593,8 +593,8 @@ bool Paragraph::Private::simpleTeXBlanks(OutputParams const & runparams,
 		}
 	}
 
-	if (lyxrc.plaintext_linelen > 0
-	    && column > lyxrc.plaintext_linelen
+	if (runparams.linelen > 0
+	    && column > runparams.linelen
 	    && i
 	    && text_[i - 1] != ' '
 	    && (i + 1 < int(text_.size()))

@@ -135,7 +135,7 @@ public:
 	*/
 	mutable std::string index_command;
 
-	/** Line length to use with plaintext export.
+	/** Line length to use with plaintext or LaTeX export.
 	*/
 	size_type linelen;
 
