@@ -1,4 +1,4 @@
-#LyX 1.6.3svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -619,13 +619,6 @@ para recuperar los cambios.
 Actualmente, la instrucción deshacer está limitada a 100 pasos
 \emph on
 .
-
-\emph default
- Tampoco funciona 
-\emph on
-para todo
-\emph default
-, por ejemplo, para los cambios de formato de documento.
 \end_layout
 
 \end_deeper
@@ -2665,16 +2658,6 @@ pie
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-Te preguntarás por qué el marcador de nota es una palabra en vez de un número.
- La respuesta es que LyX se encarga también de la numeración de las notas
- en el texto impreso.
- Puedes comprobarlo tú mismo mirando la salida DVI o impresa.
- Si añades más notas, LyX las renumera.
- Como LyX (bueno, realmente LaTeX) se preocupa de esto, no hay necesidad
- de poner los números en el archivo LyX.
 \end_layout
 
 \begin_layout Standard

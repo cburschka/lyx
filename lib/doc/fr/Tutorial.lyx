@@ -1,4 +1,4 @@
-#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -754,16 +754,6 @@ Refaire
 \begin_layout Standard
 Actuellement, le nombre maximal d'opérations que l'on peut annuler est de
  100.
- En outre, 
-\family sans
-Annuler
-\family default
- ne marche pas pour 
-\emph on
-tout
-\emph default
- ; pas par exemple quand on change la classe de document, ce qui est un
- bug de LyX.
 \end_layout
 
 \end_deeper
@@ -3127,20 +3117,6 @@ bas
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-Vous vous demandez peut-être pourquoi on utilise un mot et non un numéro
- pour indiquer une note de bas de page.
- C'est parce que LyX se charge tout seul de numéroter ces notes lors de
- l'impression du document.
- Vous pouvez vous en rendre compte en jetant un œil sur la sortie DVI (ou
- sur une impression).
- Si vous ajoutez d'autres notes de bas de page, LyX mettra à jour le numéro
- de chaque note.
- Comme LyX (plus exactement LaTeX) prend en charge cette gestion, il n'y
- a pas lieu de les indiquer dans le fichier LyX.
- 
 \end_layout
 
 \begin_layout Standard
