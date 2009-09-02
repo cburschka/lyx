@@ -69,12 +69,6 @@ public:
 	/// emergency save for all buffers
 	void emergencyWriteAll();
 
-	/// save emergency file for the given buffer
-	/**
-	  * \return a status message towards the user.
-	  */
-	docstring emergencyWrite(Buffer * buf);
-
 	/// return true if no buffers loaded
 	bool empty() const;
 

@@ -219,72 +219,10 @@ void BufferList::updateIncludedTeXfiles(string const & masterTmpDir,
 
 void BufferList::emergencyWriteAll()
 {
-	for_each(bstore.begin(), bstore.end(),
-		 bind(&BufferList::emergencyWrite, this, _1));
-}
-
-
-docstring BufferList::emergencyWrite(Buffer * buf)
-{
-	// Use ::assert to avoid a loop, BOOST_ASSERT ends up calling ::assert
-	// compare with 0 to avoid pointer/interger comparison
-	// ::assert(buf != 0);
-	if (!buf)
-		return _("No file open!");
-
-	// No need to save if the buffer has not changed.
-	if (buf->isClean())
-		return docstring();
-
-	string const doc = buf->isUnnamed()
-		? onlyFilename(buf->absFileName()) : buf->absFileName();
-
-	docstring user_message = bformat(
-		_("LyX: Attempting to save document %1$s\n"), from_utf8(doc));
-
-	// We try to save three places:
-	// 1) Same place as document. Unless it is an unnamed doc.
-	if (!buf->isUnnamed()) {
-		string s = buf->absFileName();
-		s += ".emergency";
-		lyxerr << "  " << s << endl;
-		if (buf->writeFile(FileName(s))) {
-			buf->markClean();
-			user_message += _("  Save seems successful. Phew.\n");
-			return user_message;
-		} else {
-			user_message += _("  Save failed! Trying...\n");
-		}
-	}
-
-	// 2) In HOME directory.
-	string s = addName(package().home_dir().absFilename(), buf->absFileName());
-	s += ".emergency";
-	lyxerr << ' ' << s << endl;
-	if (buf->writeFile(FileName(s))) {
-		buf->markClean();
-		user_message += _("  Save seems successful. Phew.\n");
-		return user_message;
-	}
-
-	user_message += _("  Save failed! Trying...\n");
-
-	// 3) In "/tmp" directory.
-	// MakeAbsPath to prepend the current
-	// drive letter on OS/2
-	s = addName(package().temp_dir().absFilename(), buf->absFileName());
-	s += ".emergency";
-	lyxerr << ' ' << s << endl;
-	if (buf->writeFile(FileName(s))) {
-		buf->markClean();
-		user_message += _("  Save seems successful. Phew.\n");
-		return user_message;
-	}
-
-	user_message += _("  Save failed! Bummer. Document is lost.");
-	// Don't try again
-	buf->markClean();
-	return user_message;
+	BufferStorage::const_iterator it = bstore.begin();
+	BufferStorage::const_iterator const en = bstore.end();
+	for (; it != en; ++it)
+		 (*it)->emergencyWrite();
 }
 
 

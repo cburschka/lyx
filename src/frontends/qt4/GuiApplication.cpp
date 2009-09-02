@@ -1292,7 +1292,7 @@ bool GuiApplication::notify(QObject * receiver, QEvent * event)
 		case BufferException: {
 			Buffer * buf = current_view_->buffer();
 			docstring details = e.details_ + '\n';
-			details += theBufferList().emergencyWrite(buf);
+			details += buf->emergencyWrite();
 			theBufferList().release(buf);
 			details += "\n" + _("The current document was closed.");
 			Alert::error(e.title_, details);

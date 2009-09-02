@@ -309,6 +309,12 @@ Buffer::~Buffer()
 			theBufferList().releaseChild(this, child);
 	}
 
+	if (!isClean()) {
+		docstring msg = _("Buffer had unsaved changes when destroyed!\n");
+		msg += emergencyWrite();
+		frontend::Alert::warning(_("Attempting to destroy dirty Buffer!"), msg);
+	}
+		
 	// clear references to children in macro tables
 	d->children_positions.clear();
 	d->position_to_children.clear();
@@ -927,6 +933,63 @@ bool Buffer::writeFile(FileName const & fname) const
 	message(str + _(" done."));
 
 	return true;
+}
+
+
+docstring Buffer::emergencyWrite()
+{
+	// No need to save if the buffer has not changed.
+	if (isClean())
+		return docstring();
+
+	string const doc = isUnnamed() ? onlyFilename(absFileName()) : absFileName();
+
+	docstring user_message = bformat(
+		_("LyX: Attempting to save document %1$s\n"), from_utf8(doc));
+
+	// We try to save three places:
+	// 1) Same place as document. Unless it is an unnamed doc.
+	if (!isUnnamed()) {
+		string s = absFileName();
+		s += ".emergency";
+		LYXERR0("  " << s);
+		if (writeFile(FileName(s))) {
+			markClean();
+			user_message += bformat(_("  Saved to %1$. Phew.\n"), from_utf8(s));
+			return user_message;
+		} else {
+			user_message += _("  Save failed! Trying again...\n");
+		}
+	}
+
+	// 2) In HOME directory.
+	string s = addName(package().home_dir().absFilename(), absFileName());
+	s += ".emergency";
+	lyxerr << ' ' << s << endl;
+	if (writeFile(FileName(s))) {
+		markClean();
+		user_message += bformat(_("  Saved to %1$. Phew.\n"), from_utf8(s));
+		return user_message;
+	}
+
+	user_message += _("  Save failed! Trying yet again...\n");
+
+	// 3) In "/tmp" directory.
+	// MakeAbsPath to prepend the current
+	// drive letter on OS/2
+	s = addName(package().temp_dir().absFilename(), absFileName());
+	s += ".emergency";
+	lyxerr << ' ' << s << endl;
+	if (writeFile(FileName(s))) {
+		markClean();
+		user_message += bformat(_("  Saved to %1$. Phew.\n"), from_utf8(s));
+		return user_message;
+	}
+
+	user_message += _("  Save failed! Bummer. Document is lost.");
+	// Don't try again.
+	markClean();
+	return user_message;
 }
 
 
