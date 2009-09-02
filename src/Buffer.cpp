@@ -313,20 +313,6 @@ Buffer::~Buffer()
 	d->children_positions.clear();
 	d->position_to_children.clear();
 
-	if (!isClean()) {
-		docstring const text = bformat(_("The document %1$s has unsaved changes."
-				"\n\nDo you want to save the document or discard the changes?"), from_utf8(absFileName()));
-		int const ret = Alert::prompt(_("Save changed document?"),
-				text, 0, 2, _("&Save"), _("&Discard"));
-		switch (ret) {
-		case 0:
-			save();
-			break;
-		case 1:
-			break;
-		}
-	}
-
 	if (!d->temppath.destroyDirectory()) {
 		Alert::warning(_("Could not remove temporary directory"),
 			bformat(_("Could not remove the temporary directory %1$s"),
