@@ -465,8 +465,8 @@ def checkConverterEntries():
     checkProg('an MS Word -> LaTeX converter', ['wvCleanLatex $$i $$o'],
         rc_entry = [ r'\converter word       latex      "%%"	""' ])
     #
-    path, elyxer = checkProg('a LyX -> HTML converter', ['elyxer.py --directory $$r $$i $$o','elyxer --directory $$r $$i $$o'],
-      rc_entry = [ r'\converter lyx      html       "%%"	""' ])
+    path, elyxer = checkProg('a LyX -> HTML converter', ['elyxer.py', 'elyxer'],
+      rc_entry = [ r'\converter lyx      html       "python -tt $$s/scripts/elyxer.py --directory $$r $$i $$o"	""' ])
     if elyxer.find('elyxer') >= 0:
       addToRC(r'''\copier    html       "python -tt $$s/scripts/ext_copy.py -e html,png,jpg,jpeg,css $$i $$o"''')
     else:
