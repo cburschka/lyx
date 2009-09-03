@@ -24,13 +24,11 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Do an emergency save if LyX attempts to destroy a dirty document buffer.
-  This is a last resort to try to avoid data loss.
 
 
 * USER INTERFACE
 
-- Sort document classes case insensitively (bug 1492).
+
 
 
 * DOCUMENTATION AND LOCALIZATION
@@ -51,10 +49,13 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-  
+- Do an emergency save if LyX attempts to destroy a dirty document buffer.
+  This is a last resort to try to avoid data loss.
+
 
 * USER INTERFACE
 
+- Sort document classes case insensitively (bug 1492).
 
 
 * DOCUMENTATION AND LOCALIZATION
