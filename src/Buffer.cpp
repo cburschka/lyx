@@ -310,9 +310,9 @@ Buffer::~Buffer()
 	}
 
 	if (!isClean()) {
-		docstring msg = _("Buffer had unsaved changes when destroyed!\n");
+		docstring msg = _("LyX attempted to close a document that had unsaved changes!\n");
 		msg += emergencyWrite();
-		frontend::Alert::warning(_("Attempting to destroy dirty Buffer!"), msg);
+		frontend::Alert::warning(_("Attempting to close changed document!"), msg);
 	}
 		
 	// clear references to children in macro tables
