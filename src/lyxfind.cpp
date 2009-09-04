@@ -1039,10 +1039,10 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv const & match) {
 			};
 		}
 		wrap_answer = frontend::Alert::prompt(
-			_("Wrap search ?"),
+			_("Wrap search?"),
 			_("Beginning of document reached while searching backwards\n"
-				"\n"
-				"Continue searching from end ?"),
+			  "\n"
+			  "Continue searching from end?"),
 			0, 1, _("&Yes"), _("&No"));
 		cur = doc_iterator_end(&match.buf);
 		cur.backwardPos();
