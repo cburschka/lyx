@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx_1.5.0_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-08-31 10:23+0200\n"
+"POT-Creation-Date: 2009-09-04 15:45+0200\n"
 "PO-Revision-Date: 2009-04-19 17:14+0100\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -86,8 +86,8 @@ msgstr "&Ados"
 #: src/frontends/qt4/ui/AskForTextUi.ui:94
 #: src/frontends/qt4/ui/CitationUi.ui:461
 #: src/frontends/qt4/ui/DocumentUi.ui:152
-#: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:897
-#: src/Buffer.cpp:2652 src/Buffer.cpp:2676 src/Buffer.cpp:2711
+#: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:889
+#: src/Buffer.cpp:2701 src/Buffer.cpp:2725 src/Buffer.cpp:2760
 #: src/LyXFunc.cpp:717 src/LyXFunc.cpp:856 src/LyXFunc.cpp:1030
 #: src/LyXVC.cpp:189 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1266
@@ -3217,36 +3217,40 @@ msgstr ""
 msgid "Al&ternative language:"
 msgstr "Or&dezko hizkuntza:"
 
-#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:77
+#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:74
+msgid "The characters inserted here are ignored by the spellchecker"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:81
 msgid "Specify a personal dictionary file other than the default"
 msgstr "Zure hiztegi pertsonalaren fitxategia zehaztu, lehenetsiaren ordez."
 
-#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:87
+#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:91
 msgid "Personal &dictionary:"
 msgstr "Hiztegi &pertsonala:"
 
-#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:97
+#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:101
 #, fuzzy
 msgid "&Escape characters:"
 msgstr "Ihes iku&rrak:"
 
-#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:107
+#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:111
 msgid "Spellchec&ker executable:"
 msgstr "Zuzentzaile orto&grafikoa:"
 
-#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:117
+#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:121
 msgid "Override the language used for the spellchecker"
 msgstr "Zuzentzaileak erabiltzen duen hizkuntza gainidatzi"
 
-#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:124
+#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:128
 msgid "Use input encod&ing"
 msgstr "E&rabili sarrera kodetua"
 
-#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:131
+#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:135
 msgid "Accept words such as \"diskdrive\""
 msgstr "Onartu \"diskdrive\" bezalako hitzak"
 
-#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:134
+#: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:138
 msgid "Accept compound &words"
 msgstr "Onartu hitz &konposatuak"
 
@@ -3323,7 +3327,7 @@ msgstr "Ara&katu..."
 msgid "&User interface file:"
 msgstr "&Erabiltzaile-interfazeko fitxategia:"
 
-#: src/frontends/qt4/ui/PrefsUi.ui:73 src/Buffer.cpp:320 src/LyXFunc.cpp:717
+#: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:717
 #: src/frontends/qt4/GuiView.cpp:1878
 msgid "&Save"
 msgstr "&Gorde"
@@ -15208,66 +15212,56 @@ msgid ""
 "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
 msgstr "Ezin izan da %1$s aldi-baterako direktorioa sortu"
 
-#: src/Buffer.cpp:317 src/frontends/qt4/GuiView.cpp:1875
-#, c-format
-msgid ""
-"The document %1$s has unsaved changes.\n"
-"\n"
-"Do you want to save the document or discard the changes?"
+#: src/Buffer.cpp:313
+msgid "LyX attempted to close a document that had unsaved changes!\n"
 msgstr ""
-"%1$s dokumentuak gorde gabeko aldaketak ditu.\n"
-"\n"
-"Nahi duzu dokumentua gordetzea edo aldaketak baztertu nahi dituzu?"
 
-#: src/Buffer.cpp:319 src/LyXFunc.cpp:709 src/frontends/qt4/GuiView.cpp:1877
-msgid "Save changed document?"
-msgstr "Gorde aldatutako dokumentua?"
+#: src/Buffer.cpp:315
+#, fuzzy
+msgid "Attempting to close changed document!"
+msgstr "LyX: %1$s dokumentua gordetzen saiatzen"
 
-#: src/Buffer.cpp:320 src/frontends/qt4/GuiView.cpp:1878
-msgid "&Discard"
-msgstr "&Baztertu"
-
-#: src/Buffer.cpp:331
+#: src/Buffer.cpp:323
 msgid "Could not remove temporary directory"
 msgstr "Ezin izan da aldi-baterako direktorioa sortu"
 
-#: src/Buffer.cpp:332
+#: src/Buffer.cpp:324
 #, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "Ezin izan da %1$s aldi-baterako direktorioa sortu"
 
-#: src/Buffer.cpp:547
+#: src/Buffer.cpp:539
 msgid "Unknown document class"
 msgstr "Dokumentu-klase ezezaguna"
 
-#: src/Buffer.cpp:548
+#: src/Buffer.cpp:540
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "Dokumentu-klase lehenetsia erabiltzen, %1$s klasea ezezaguna delako."
 
-#: src/Buffer.cpp:552 src/Text.cpp:241
+#: src/Buffer.cpp:544 src/Text.cpp:241
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Token ezezaguna: %1$s %2$s\n"
 
-#: src/Buffer.cpp:556 src/Buffer.cpp:563 src/Buffer.cpp:583
+#: src/Buffer.cpp:548 src/Buffer.cpp:555 src/Buffer.cpp:575
 msgid "Document header error"
 msgstr "Dokumentuaren goiburuan errorea"
 
-#: src/Buffer.cpp:562
+#: src/Buffer.cpp:554
 msgid "\\begin_header is missing"
 msgstr "\\begin_header falta da"
 
-#: src/Buffer.cpp:582
+#: src/Buffer.cpp:574
 msgid "\\begin_document is missing"
 msgstr "\\begin_document falta da"
 
-#: src/Buffer.cpp:598 src/Buffer.cpp:604 src/BufferView.cpp:1194
+#: src/Buffer.cpp:590 src/Buffer.cpp:596 src/BufferView.cpp:1194
 #: src/BufferView.cpp:1200
 msgid "Changes not shown in LaTeX output"
 msgstr ""
 
-#: src/Buffer.cpp:599 src/BufferView.cpp:1195
+#: src/Buffer.cpp:591 src/BufferView.cpp:1195
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -15275,7 +15269,7 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:605 src/BufferView.cpp:1201
+#: src/Buffer.cpp:597 src/BufferView.cpp:1201
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -15283,20 +15277,20 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:766 src/Buffer.cpp:849
+#: src/Buffer.cpp:758 src/Buffer.cpp:841
 msgid "Document format failure"
 msgstr "Huts egitea dokumentu-formatuan"
 
-#: src/Buffer.cpp:767
+#: src/Buffer.cpp:759
 #, fuzzy, c-format
 msgid "%1$s is not a readable LyX document."
 msgstr "%1$s ez da LyX dokumentua."
 
-#: src/Buffer.cpp:804
+#: src/Buffer.cpp:796
 msgid "Conversion failed"
 msgstr "Bihurketak huts egin du"
 
-#: src/Buffer.cpp:805
+#: src/Buffer.cpp:797
 #, fuzzy, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
@@ -15305,11 +15299,11 @@ msgstr ""
 "%1$s LyX-en bertsio berriago batekoa da, baina ezin izan da aldi baterako "
 "fitxategia sortu bihurketa lantzeko."
 
-#: src/Buffer.cpp:814
+#: src/Buffer.cpp:806
 msgid "Conversion script not found"
 msgstr "Ez da bihurtzeko script-a aurkitu"
 
-#: src/Buffer.cpp:815
+#: src/Buffer.cpp:807
 #, fuzzy, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
@@ -15318,11 +15312,11 @@ msgstr ""
 "%1$s LyX-en bertsio berriago batekoa da, baina ezin izan da lyx2lyx script-a "
 "aurkitu."
 
-#: src/Buffer.cpp:834
+#: src/Buffer.cpp:826
 msgid "Conversion script failed"
 msgstr "Bihurtzeko script-ak huts egin du"
 
-#: src/Buffer.cpp:835
+#: src/Buffer.cpp:827
 #, fuzzy, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the lyx2lyx script failed to "
@@ -15331,16 +15325,16 @@ msgstr ""
 "%1$s LyX-en bertsio berriago batekoa da, baina lyx2lyx script-ak huts egin "
 "du hau bihurtzean."
 
-#: src/Buffer.cpp:850
+#: src/Buffer.cpp:842
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr "%1$s ustegabean amaitu da, hondatuta dagoela dirudi."
 
-#: src/Buffer.cpp:883
+#: src/Buffer.cpp:875
 msgid "Backup failure"
 msgstr "Babeskopiak huts egin du"
 
-#: src/Buffer.cpp:884
+#: src/Buffer.cpp:876
 #, fuzzy, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
@@ -15349,7 +15343,7 @@ msgstr ""
 "LyX-ek ezin izan du %1$s(r)en babeseko kopiarik egin.\n"
 "Egiaztatu direktorioa existitzen dela, eta bertan idatz daitekela."
 
-#: src/Buffer.cpp:894
+#: src/Buffer.cpp:886
 #, fuzzy, c-format
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
@@ -15359,49 +15353,73 @@ msgstr ""
 "\n"
 "Nahi duzu dokumentua gainidaztea?"
 
-#: src/Buffer.cpp:896
+#: src/Buffer.cpp:888
 #, fuzzy
 msgid "Overwrite modified file?"
 msgstr "Gainidatzi fitxategia?"
 
-#: src/Buffer.cpp:897 src/Exporter.cpp:49 src/LyXFunc.cpp:1030
+#: src/Buffer.cpp:889 src/Exporter.cpp:49 src/LyXFunc.cpp:1030
 #: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1574
 #: src/frontends/qt4/GuiView.cpp:1766
 #, fuzzy
 msgid "&Overwrite"
 msgstr "&Gainidatzi"
 
-#: src/Buffer.cpp:921
+#: src/Buffer.cpp:913
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "%1$s dokumentua gordetzen ..."
 
-#: src/Buffer.cpp:934
+#: src/Buffer.cpp:926
 #, fuzzy
 msgid " could not write file!"
 msgstr "Ezin izan da fitxategia irakurri"
 
-#: src/Buffer.cpp:941
+#: src/Buffer.cpp:933
 msgid " done."
 msgstr " eginda."
 
-#: src/Buffer.cpp:1020
+#: src/Buffer.cpp:948
+#, fuzzy, c-format
+msgid "LyX: Attempting to save document %1$s\n"
+msgstr "LyX: %1$s dokumentua gordetzen saiatzen"
+
+#: src/Buffer.cpp:958 src/Buffer.cpp:971 src/Buffer.cpp:985
+#, fuzzy
+msgid "  Saved to %1$. Phew.\n"
+msgstr "  Ongi gorde dela dirudi. Uffff."
+
+#: src/Buffer.cpp:961
+#, fuzzy
+msgid "  Save failed! Trying again...\n"
+msgstr " Huts egin du gordetzean! Saiatzen..."
+
+#: src/Buffer.cpp:975
+#, fuzzy
+msgid "  Save failed! Trying yet again...\n"
+msgstr " Huts egin du gordetzean! Saiatzen..."
+
+#: src/Buffer.cpp:989
+msgid "  Save failed! Bummer. Document is lost."
+msgstr "  Huts egin du gordetzean! Dokumentua galdu da."
+
+#: src/Buffer.cpp:1069
 msgid "Iconv software exception Detected"
 msgstr ""
 
-#: src/Buffer.cpp:1020
+#: src/Buffer.cpp:1069
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
 "installed"
 msgstr ""
 
-#: src/Buffer.cpp:1042
+#: src/Buffer.cpp:1091
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr ""
 
-#: src/Buffer.cpp:1045
+#: src/Buffer.cpp:1094
 #, fuzzy
 msgid ""
 "Some characters of your document are probably not representable in the "
@@ -15411,88 +15429,88 @@ msgstr ""
 "Dokumentuko zenbait karaktere ezin dira erabili aukeratutako kodeketarekin.\n"
 "Dokumentua UTF8 kodeketara bihurtzeak lagun dezake."
 
-#: src/Buffer.cpp:1052
+#: src/Buffer.cpp:1101
 #, fuzzy
 msgid "iconv conversion failed"
 msgstr "Bihurketak huts egin du"
 
-#: src/Buffer.cpp:1057
+#: src/Buffer.cpp:1106
 #, fuzzy
 msgid "conversion failed"
 msgstr "Bihurketak huts egin du"
 
-#: src/Buffer.cpp:1334
+#: src/Buffer.cpp:1383
 msgid "Running chktex..."
 msgstr "chktex exekutatzen..."
 
-#: src/Buffer.cpp:1347
+#: src/Buffer.cpp:1396
 msgid "chktex failure"
 msgstr "chktex-ek huts egin du"
 
-#: src/Buffer.cpp:1348
+#: src/Buffer.cpp:1397
 msgid "Could not run chktex successfully."
 msgstr "Ezin izan da chktex exekutatu"
 
-#: src/Buffer.cpp:2202
+#: src/Buffer.cpp:2251
 #, fuzzy
 msgid "Preview source code"
 msgstr "Aurrebista prest"
 
-#: src/Buffer.cpp:2216
+#: src/Buffer.cpp:2265
 #, fuzzy, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Aurrebista prest"
 
-#: src/Buffer.cpp:2220
+#: src/Buffer.cpp:2269
 #, fuzzy, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Aurrebista prest"
 
-#: src/Buffer.cpp:2329
+#: src/Buffer.cpp:2378
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Autogordetzea %1$s"
 
-#: src/Buffer.cpp:2373
+#: src/Buffer.cpp:2422
 msgid "Autosave failed!"
 msgstr "Huts egin du automatikoki gordetzean!"
 
-#: src/Buffer.cpp:2429
+#: src/Buffer.cpp:2478
 msgid "Autosaving current document..."
 msgstr "Uneko dokumentua autogordetzen..."
 
-#: src/Buffer.cpp:2472
+#: src/Buffer.cpp:2521
 msgid "Couldn't export file"
 msgstr "Ezin da fitxategia esportatu"
 
-#: src/Buffer.cpp:2473
+#: src/Buffer.cpp:2522
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Ez dago informaziorik %1$s formatua esportatzeko."
 
-#: src/Buffer.cpp:2510
+#: src/Buffer.cpp:2559
 msgid "File name error"
 msgstr "Fitxategi-izenean errorea"
 
-#: src/Buffer.cpp:2511
+#: src/Buffer.cpp:2560
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Dokumentuaren bide-izenak ezin du zuriunerik izan."
 
-#: src/Buffer.cpp:2553
+#: src/Buffer.cpp:2602
 msgid "Document export cancelled."
 msgstr "Dokumentua esportatzea bertan behera utzi da."
 
-#: src/Buffer.cpp:2559
+#: src/Buffer.cpp:2608
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokumentua %1$s gisa esportatuta '%2$s' fitxategira"
 
-#: src/Buffer.cpp:2565
+#: src/Buffer.cpp:2614
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokumentua %1$s gisa esportatuta"
 
-#: src/Buffer.cpp:2635
+#: src/Buffer.cpp:2684
 #, c-format
 msgid ""
 "The specified document\n"
@@ -15503,11 +15521,11 @@ msgstr ""
 "%1$s\n"
 "ezin izan da irakurri."
 
-#: src/Buffer.cpp:2637
+#: src/Buffer.cpp:2686
 msgid "Could not read document"
 msgstr "Ezin izan da dokumentua irakurri"
 
-#: src/Buffer.cpp:2647
+#: src/Buffer.cpp:2696
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -15518,19 +15536,19 @@ msgstr ""
 "\n"
 "Larrialdian gordetakoa berreskuratu?"
 
-#: src/Buffer.cpp:2650
+#: src/Buffer.cpp:2699
 msgid "Load emergency save?"
 msgstr "Larrialdian gordetakoa kargatu?"
 
-#: src/Buffer.cpp:2651
+#: src/Buffer.cpp:2700
 msgid "&Recover"
 msgstr "&Berreskuratu"
 
-#: src/Buffer.cpp:2651
+#: src/Buffer.cpp:2700
 msgid "&Load Original"
 msgstr "&Kargatu jatorrizkoa"
 
-#: src/Buffer.cpp:2671
+#: src/Buffer.cpp:2720
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -15541,54 +15559,30 @@ msgstr ""
 "\n"
 "Kargatu babeskopia horren ordez?"
 
-#: src/Buffer.cpp:2674
+#: src/Buffer.cpp:2723
 msgid "Load backup?"
 msgstr "Kargatu babeskopia?"
 
-#: src/Buffer.cpp:2675
+#: src/Buffer.cpp:2724
 msgid "&Load backup"
 msgstr "&Kargatu babeskopia"
 
-#: src/Buffer.cpp:2675
+#: src/Buffer.cpp:2724
 msgid "Load &original"
 msgstr "Kargatu &jatorrizkoa"
 
-#: src/Buffer.cpp:2708
+#: src/Buffer.cpp:2757
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "%1$s dokumentuaren bertsio-kontrola erabiliz eskuratzea nahi?"
 
-#: src/Buffer.cpp:2710
+#: src/Buffer.cpp:2759
 msgid "Retrieve from version control?"
 msgstr "Berreskuratu bertsio-kontroletik?"
 
-#: src/Buffer.cpp:2711
+#: src/Buffer.cpp:2760
 msgid "&Retrieve"
 msgstr "&Berreskuratu"
-
-#: src/BufferList.cpp:233
-#, fuzzy
-msgid "No file open!"
-msgstr "Ez da fitxategirik aurkitu!"
-
-#: src/BufferList.cpp:243
-#, fuzzy, c-format
-msgid "LyX: Attempting to save document %1$s\n"
-msgstr "LyX: %1$s dokumentua gordetzen saiatzen"
-
-#: src/BufferList.cpp:253 src/BufferList.cpp:266 src/BufferList.cpp:280
-#, fuzzy
-msgid "  Save seems successful. Phew.\n"
-msgstr "  Ongi gorde dela dirudi. Uffff."
-
-#: src/BufferList.cpp:256 src/BufferList.cpp:270
-#, fuzzy
-msgid "  Save failed! Trying...\n"
-msgstr " Huts egin du gordetzean! Saiatzen..."
-
-#: src/BufferList.cpp:284
-msgid "  Save failed! Bummer. Document is lost."
-msgstr "  Huts egin du gordetzean! Dokumentua galdu da."
 
 #: src/BufferParams.cpp:480
 #, c-format
@@ -16779,6 +16773,10 @@ msgstr ""
 "\n"
 "Nahi duzu dokumentua gordetzea?"
 
+#: src/LyXFunc.cpp:709 src/frontends/qt4/GuiView.cpp:1877
+msgid "Save changed document?"
+msgstr "Gorde aldatutako dokumentua?"
+
 #: src/LyXFunc.cpp:712
 #, fuzzy, c-format
 msgid ""
@@ -17494,38 +17492,38 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Leheneratu dokumentuaren gordetako bertsiora?"
 
-#: src/Paragraph.cpp:1594 src/frontends/qt4/GuiParagraph.cpp:246
+#: src/Paragraph.cpp:1599 src/frontends/qt4/GuiParagraph.cpp:246
 msgid "Senseless with this layout!"
 msgstr "Zentzurik ez diseinu honekin!"
 
-#: src/Paragraph.cpp:1660
+#: src/Paragraph.cpp:1665
 msgid "Alignment not permitted"
 msgstr ""
 
-#: src/Paragraph.cpp:1661
+#: src/Paragraph.cpp:1666
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
 
-#: src/Paragraph.cpp:2150 src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/Paragraph.cpp:2153 src/frontends/qt4/LaTeXHighlighter.cpp:108
 #: src/insets/InsetListings.cpp:185 src/insets/InsetListings.cpp:193
 #: src/insets/InsetListings.cpp:217 src/mathed/InsetMathString.cpp:166
 #, fuzzy
 msgid "LyX Warning: "
 msgstr "LyX bertsioa "
 
-#: src/Paragraph.cpp:2151 src/insets/InsetListings.cpp:186
+#: src/Paragraph.cpp:2154 src/insets/InsetListings.cpp:186
 #: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:167
 #, fuzzy
 msgid "uncodable character"
 msgstr "karaktere berezia"
 
-#: src/Paragraph.cpp:2512
+#: src/Paragraph.cpp:2515
 msgid "Memory problem"
 msgstr ""
 
-#: src/Paragraph.cpp:2512
+#: src/Paragraph.cpp:2515
 msgid "Paragraph not properly initialized"
 msgstr ""
 
@@ -18972,7 +18970,7 @@ msgstr "Bikoitza"
 msgid "Inter-word space"
 msgstr "Hitzen arteko tartea|H"
 
-#: src/frontends/qt4/GuiHSpace.cpp:160 src/insets/InsetSpace.cpp:108
+#: src/frontends/qt4/GuiHSpace.cpp:160 src/insets/InsetSpace.cpp:109
 msgid "Horizontal Fill"
 msgstr "Betegarri horizontala"
 
@@ -20147,6 +20145,21 @@ msgstr "Aldatu izenez eta gorde?"
 msgid "&Retry"
 msgstr "&Berrezarri"
 
+#: src/frontends/qt4/GuiView.cpp:1875
+#, c-format
+msgid ""
+"The document %1$s has unsaved changes.\n"
+"\n"
+"Do you want to save the document or discard the changes?"
+msgstr ""
+"%1$s dokumentuak gorde gabeko aldaketak ditu.\n"
+"\n"
+"Nahi duzu dokumentua gordetzea edo aldaketak baztertu nahi dituzu?"
+
+#: src/frontends/qt4/GuiView.cpp:1878
+msgid "&Discard"
+msgstr "&Baztertu"
+
 #: src/frontends/qt4/GuiView.cpp:1952
 #, fuzzy
 msgid "Document not loaded"
@@ -21055,107 +21068,107 @@ msgstr "ErrefGisakoa"
 msgid "FormatRef: "
 msgstr "F&ormatua:"
 
-#: src/insets/InsetSpace.cpp:72
+#: src/insets/InsetSpace.cpp:73
 #, fuzzy
 msgid "Interword Space"
 msgstr "Hitzen arteko tartea|H"
 
-#: src/insets/InsetSpace.cpp:75
+#: src/insets/InsetSpace.cpp:76
 #, fuzzy
 msgid "Protected Space"
 msgstr "Zuriune babestua|Z"
 
-#: src/insets/InsetSpace.cpp:78
+#: src/insets/InsetSpace.cpp:79
 #, fuzzy
 msgid "Thin Space"
 msgstr "Zuriune txikia|t"
 
-#: src/insets/InsetSpace.cpp:81
+#: src/insets/InsetSpace.cpp:82
 #, fuzzy
 msgid "Medium Space"
 msgstr "Zuriune ertaina\t\\:"
 
-#: src/insets/InsetSpace.cpp:84
+#: src/insets/InsetSpace.cpp:85
 #, fuzzy
 msgid "Thick Space"
 msgstr "Zuriune txikia|t"
 
-#: src/insets/InsetSpace.cpp:87
+#: src/insets/InsetSpace.cpp:88
 #, fuzzy
 msgid "Quad Space"
 msgstr "tartea"
 
-#: src/insets/InsetSpace.cpp:90
+#: src/insets/InsetSpace.cpp:91
 #, fuzzy
 msgid "QQuad Space"
 msgstr "tartea"
 
-#: src/insets/InsetSpace.cpp:93
+#: src/insets/InsetSpace.cpp:94
 #, fuzzy
 msgid "Enspace"
 msgstr "tartea"
 
-#: src/insets/InsetSpace.cpp:96
+#: src/insets/InsetSpace.cpp:97
 #, fuzzy
 msgid "Enskip"
 msgstr "tartea"
 
-#: src/insets/InsetSpace.cpp:99
+#: src/insets/InsetSpace.cpp:100
 #, fuzzy
 msgid "Negative Thin Space"
 msgstr "Zuriune negatiboa\t\\!"
 
-#: src/insets/InsetSpace.cpp:102
+#: src/insets/InsetSpace.cpp:103
 #, fuzzy
 msgid "Negative Medium Space"
 msgstr "Zuriune negatiboa\t\\!"
 
-#: src/insets/InsetSpace.cpp:105
+#: src/insets/InsetSpace.cpp:106
 #, fuzzy
 msgid "Negative Thick Space"
 msgstr "Zuriune negatiboa\t\\!"
 
-#: src/insets/InsetSpace.cpp:111
+#: src/insets/InsetSpace.cpp:112
 #, fuzzy
 msgid "Protected Horizontal Fill"
 msgstr "Betegarri horizontala"
 
-#: src/insets/InsetSpace.cpp:114
+#: src/insets/InsetSpace.cpp:115
 #, fuzzy
 msgid "Horizontal Fill (Dots)"
 msgstr "Betegarri horizontala"
 
-#: src/insets/InsetSpace.cpp:117
+#: src/insets/InsetSpace.cpp:118
 #, fuzzy
 msgid "Horizontal Fill (Rule)"
 msgstr "Betegarri horizontala"
 
-#: src/insets/InsetSpace.cpp:120
+#: src/insets/InsetSpace.cpp:121
 #, fuzzy
 msgid "Horizontal Fill (Left Arrow)"
 msgstr "Betegarri horizontala"
 
-#: src/insets/InsetSpace.cpp:123
+#: src/insets/InsetSpace.cpp:124
 #, fuzzy
 msgid "Horizontal Fill (Right Arrow)"
 msgstr "Betegarri horizontala"
 
-#: src/insets/InsetSpace.cpp:126
+#: src/insets/InsetSpace.cpp:127
 #, fuzzy
 msgid "Horizontal Fill (Up Brace)"
 msgstr "Betegarri horizontala"
 
-#: src/insets/InsetSpace.cpp:129
+#: src/insets/InsetSpace.cpp:130
 #, fuzzy
 msgid "Horizontal Fill (Down Brace)"
 msgstr "Betegarri horizontala"
 
-#: src/insets/InsetSpace.cpp:132
+#: src/insets/InsetSpace.cpp:133
 #, fuzzy, c-format
 msgid "Horizontal Space (%1$s)"
 msgstr "Marra horizontala"
 
-#: src/insets/InsetSpace.cpp:136
+#: src/insets/InsetSpace.cpp:137
 #, fuzzy, c-format
 msgid "Protected Horizontal Space (%1$s)"
 msgstr "Zuriune babestua|Z"
@@ -21610,6 +21623,10 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Erabiltzaile ezezaguna"
+
+#, fuzzy
+#~ msgid "No file open!"
+#~ msgstr "Ez da fitxategirik aurkitu!"
 
 #, fuzzy
 #~ msgid "You cannot paste into a multicell selection."
