@@ -1960,10 +1960,8 @@ bool Paragraph::latex(BufferParams const & bparams,
 	unsigned int column = 0;
 
 	if (body_pos > 0) {
-		// the optional argument is kept in curly brackets in
-		// case it contains a ']'
-		os << "[{";
-		column += 2;
+		os << '[';
+		column += 1;
 		basefont = getLabelFont(bparams, outerfont);
 	} else {
 		basefont = getLayoutFont(bparams, outerfont);
@@ -2008,8 +2006,8 @@ bool Paragraph::latex(BufferParams const & bparams,
 						runningChange, Change(Change::UNCHANGED));
 				runningChange = Change(Change::UNCHANGED);
 
-				os << "}] ";
-				column +=3;
+				os << "] ";
+				column +=2;
 			}
 			if (style.isCommand()) {
 				os << '{';
@@ -2195,7 +2193,7 @@ bool Paragraph::latex(BufferParams const & bparams,
 
 	// Needed if there is an optional argument but no contents.
 	if (body_pos > 0 && body_pos == size()) {
-		os << "}]~";
+		os << "]~";
 		return_value = false;
 	}
 
