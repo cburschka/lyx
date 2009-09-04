@@ -794,7 +794,7 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 			// No side effect of file copying and image conversion
 			runparams.dryrun = true;
 			LYXERR(Debug::FIND, "Stringifying with cur: " 
-				< cur << ", from pos: " << cur.pos() << ", end: " << end);
+				<< cur << ", from pos: " << cur.pos() << ", end: " << end);
 			return par.stringify(cur.pos(), end, AS_STR_INSETS, runparams);
 	} else if (cur.inMathed()) {
 			odocstringstream os;
