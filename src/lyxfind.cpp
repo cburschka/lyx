@@ -588,7 +588,9 @@ bool braces_match(string::const_iterator const & beg,
 		}
 	}
 	if (open_pars != unmatched) {
-	  LYXERR(Debug::FIND, "Found " << open_pars << " instead of " << unmatched << " unmatched open braces at the end of count");
+	  LYXERR(Debug::FIND, "Found " << open_pars 
+		 << " instead of " << unmatched 
+		 << " unmatched open braces at the end of count");
 			return false;
 	}
 	LYXERR(Debug::FIND, "Braces match as expected");
@@ -687,7 +689,8 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer const & buf, FindAndReplaceOptions co
 				// Insert .* before trailing '\\\]' ('\]' has been escaped by escape_for_regex)
 				|| regex_replace(par_as_string, par_as_string, "(.*[^\\\\])(\\\\\\\\\\\\\\])\\'", "$1(.*?)$2")
 				// Insert .* before trailing '\\end\{...}' ('\end{...}' has been escaped by escape_for_regex)
-				|| regex_replace(par_as_string, par_as_string, "(.*[^\\\\])(\\\\\\\\end\\\\\\{[a-zA-Z_]*\\\\\\})\\'", "$1(.*?)$2")
+				|| regex_replace(par_as_string, par_as_string, 
+					"(.*[^\\\\])(\\\\\\\\end\\\\\\{[a-zA-Z_]*\\\\\\})\\'", "$1(.*?)$2")
 				// Insert .* before trailing '\}' ('}' has been escaped by escape_for_regex)
 				|| regex_replace(par_as_string, par_as_string, "(.*[^\\\\])(\\\\\\})\\'", "$1(.*?)$2")
 		) {
@@ -722,7 +725,8 @@ int MatchStringAdv::operator()(DocIterator const & cur, int len, bool at_begin) 
 				return par_as_string.size();
 		}
 	} else {
-		// Try all possible regexp matches, until one that verifies the braces match test is found
+		// Try all possible regexp matches, 
+		//until one that verifies the braces match test is found
 		boost::regex const *p_regexp = at_begin ? &regexp : &regexp2;
 		boost::sregex_iterator re_it(str.begin(), str.end(), *p_regexp);
 		boost::sregex_iterator re_it_end;
@@ -736,7 +740,8 @@ int MatchStringAdv::operator()(DocIterator const & cur, int len, bool at_begin) 
 			for (size_t i = 1; i < m.size(); ++i)
 				if (! braces_match(m[i].first, m[i].second))
 					return false;
-			// Exclude from the returned match length any length due to close wildcards added at end of regexp
+			// Exclude from the returned match length any length 
+			// due to close wildcards added at end of regexp
 			if (close_wildcards == 0)
 				return m[0].second - m[0].first;
 			else
@@ -779,7 +784,8 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 			Paragraph const & par = cur.paragraph();
 			// TODO what about searching beyond/across paragraph breaks ?
 			// TODO Try adding a AS_STR_INSERTS as last arg
-			pos_type end = ( len == -1 || cur.pos() + len > int(par.size()) ) ? int(par.size()) : cur.pos() + len;
+			pos_type end = ( len == -1 || cur.pos() + len > int(par.size()) ) ?
+				int(par.size()) : cur.pos() + len;
 			OutputParams runparams(&cur.buffer()->params().encoding());
 			odocstringstream os;
 			runparams.nice = true;
@@ -787,13 +793,16 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 			runparams.linelen = 100000; //lyxrc.plaintext_linelen;
 			// No side effect of file copying and image conversion
 			runparams.dryrun = true;
-			LYXERR(Debug::FIND, "Stringifying with cur: " << cur << ", from pos: " << cur.pos() << ", end: " << end);
+			LYXERR(Debug::FIND, "Stringifying with cur: " 
+				< cur << ", from pos: " << cur.pos() << ", end: " << end);
 			return par.stringify(cur.pos(), end, AS_STR_INSETS, runparams);
 	} else if (cur.inMathed()) {
 			odocstringstream os;
 			CursorSlice cs = cur.top();
 			MathData md = cs.cell();
-			MathData::const_iterator it_end = ( ( len == -1 || cs.pos() + len > int(md.size()) ) ? md.end() : md.begin() + cs.pos() + len );
+			MathData::const_iterator it_end = 
+				( ( len == -1 || cs.pos() + len > int(md.size()) )
+					? md.end() : md.begin() + cs.pos() + len );
 			for (MathData::const_iterator it = md.begin() + cs.pos(); it != it_end; ++it)
 					os << *it;
 			return os.str();
@@ -939,10 +948,10 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv const & match)
 				return findAdvFinalize(cur, match);
 		}
 		wrap_answer = frontend::Alert::prompt(
-			_("Wrap search ?"),
-			_("End of document reached while searching forward\n"
+			_("Wrap search?"),
+			_("End of document reached while searching forward.\n"
 				"\n"
-				"Continue searching from beginning ?"),
+				"Continue searching from beginning?"),
 			0, 1, _("&Yes"), _("&No"));
 		cur.clear();
 		cur.push_back(CursorSlice(match.buf.inset()));
@@ -963,7 +972,8 @@ void findMostBackwards(DocIterator & cur, MatchStringAdv const & match, int & le
 			old_cur = cur;
 			old_len = len;
 			cur.backwardPos();
-			LYXERR(Debug::FIND, "findMostBackwards(): old_cur=" << old_cur << ", old_len=" << len << ", cur=" << cur);
+			LYXERR(Debug::FIND, "findMostBackwards(): old_cur=" 
+				<< old_cur << ", old_len=" << len << ", cur=" << cur);
 			dit2 = cur;
 		} while (cur != cur_begin && &cur.inset() == &inset && match(cur)
 			 && (len = findAdvFinalize(dit2, match)) > old_len);
@@ -986,7 +996,8 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv const & match) {
 	do {
 		bool pit_changed = false;
 		found_match = false;
-		// Search in current par occurs from start to end, but in next loop match is discarded if pos > original pos
+		// Search in current par occurs from start to end, 
+		// but in next loop match is discarded if pos > original pos
 		cur.pos() = 0;
 		found_match = match(cur, -1, false);
 		LYXERR(Debug::FIND, "findBackAdv0: found_match=" << found_match << ", cur: " << cur);
@@ -1001,7 +1012,8 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv const & match) {
 			// Search in previous pars occurs from start to end
 			cur.pos() = 0;
 			found_match = match(cur, -1, false);
-			LYXERR(Debug::FIND, "findBackAdv1: found_match=" << found_match << ", cur: " << cur);
+			LYXERR(Debug::FIND, "findBackAdv1: found_match=" 
+				<< found_match << ", cur: " << cur);
 		}
 		if (pit_changed)
 			cur.pos() = cur.lastpos();
@@ -1011,11 +1023,14 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv const & match) {
 		if (found_match) {
 			while (true) {
 				found_match=match(cur);
-				LYXERR(Debug::FIND, "findBackAdv3: found_match=" << found_match << ", cur: " << cur);
+				LYXERR(Debug::FIND, "findBackAdv3: found_match=" 
+					<< found_match << ", cur: " << cur);
 				if (found_match) {
 					int len;
 					findMostBackwards(cur, match, len);
-					if (&cur.inset() != &cur_orig.inset() || !(cur.pit()==cur_orig.pit()) || cur.pos() < cur_orig.pos())
+					if (&cur.inset() != &cur_orig.inset()
+					    || !(cur.pit()==cur_orig.pit())
+					    || cur.pos() < cur_orig.pos())
 						return len;
 				}
 				if (cur == cur_begin)
@@ -1092,7 +1107,8 @@ static bool firstUppercase(DocIterator const & cur) {
 	ch2 = cur.paragraph().getChar(cur.pos()+1);
 	bool result = isUpperCase(ch1) && isLowerCase(ch2);
 	LYXERR(Debug::FIND, "firstUppercase(): "
-	       << "ch1=" << ch1 << "(" << char(ch1) << "), ch2=" << ch2 << "(" << char(ch2) << ")"
+	       << "ch1=" << ch1 << "(" << char(ch1) << "), ch2=" 
+	       << ch2 << "(" << char(ch2) << ")"
 	       << ", result=" << result << ", cur=" << cur);
 	return result;
 }
@@ -1176,7 +1192,8 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt)
 				runparams.linelen = 8000; //lyxrc.plaintext_linelen;
 				runparams.dryrun = true;
 				TexRow texrow;
-				TeXOnePar(repl_buffer, repl_buffer.text(), repl_buffer.paragraphs().begin(), ods, texrow, runparams);
+				TeXOnePar(repl_buffer, repl_buffer.text(), 
+					  repl_buffer.paragraphs().begin(), ods, texrow, runparams);
 				//repl_buffer.getSourceCode(ods, 0, repl_buffer.paragraphs().size(), false);
 				docstring repl_latex = ods.str();
 				LYXERR(Debug::FIND, "Latexified replace_buffer: '" << repl_latex << "'");
