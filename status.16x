@@ -24,6 +24,7 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Add support for Extended Greek characters (bug 4997).
 
 
 * USER INTERFACE
@@ -51,6 +52,10 @@ What's new
 
 - Do an emergency save if LyX attempts to destroy a dirty document buffer.
   This is a last resort to try to avoid data loss.
+
+- Fix support for polytonic Greek with multiple diacritics (bug 5976).
+ 
+
 
 
 * USER INTERFACE
