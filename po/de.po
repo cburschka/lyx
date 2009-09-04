@@ -96,8 +96,8 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-08-29 21:44+0200\n"
-"PO-Revision-Date: 2009-08-29 21:54+0100\n"
-"Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
+"PO-Revision-Date: 2009-09-04 15:11+0200\n"
+"Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -289,7 +289,6 @@ msgid "S&ectioned bibliography"
 msgstr "&Abschnittsspezifisches Literaturverzeichnis"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:120
-#, fuzzy
 msgid "Here you can define an alternative program to or specific options of BibTeX."
 msgstr "Hier können Sie ein alternatives Programm oder BibTeX-Optionen angeben."
 
@@ -681,7 +680,7 @@ msgstr "&Neu:"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:35
 msgid "Append the name of this branch to the output filename, given the branch is active."
-msgstr ""
+msgstr "Den Namen dieses Zweigs an den Dateinamen anhängen, falls der Zweig aktiv ist."
 
 #: src/frontends/qt4/ui/BranchesUi.ui:38
 msgid "Filename &Suffix"
@@ -745,9 +744,8 @@ msgid "Add the selected branches to the list."
 msgstr "Fügen Sie den ausgewählten Zweig zur Liste hinzu"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:28
-#, fuzzy
 msgid "&Add Selected"
-msgstr "Ausg&ewählt:"
+msgstr "Ausge&wählte hinzufügen"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:35
 msgid "Add all unknown branches to the list."
@@ -755,7 +753,7 @@ msgstr "Fügen Sie alle nicht-definierten Zweige zur Liste hinzu"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:38
 msgid "Add A&ll"
-msgstr "Füge &alle hinzu"
+msgstr "A&lle hinzufügen"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:65
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:78
@@ -1396,9 +1394,8 @@ msgid "Find LyX Text"
 msgstr "Suche LyX-Text"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:78
-#, fuzzy
 msgid "&Basic"
-msgstr "Basis-Lateinisch"
+msgstr "&Grundeinstellungen"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:135
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:168
@@ -1438,9 +1435,8 @@ msgid "Keep the case of the replacement first letter as in each matching text fi
 msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:257
-#, fuzzy
 msgid "&Keep case"
-msgstr "&Zusammenpassend"
+msgstr "&Groß-/Kleinschreibung nicht ändern"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:270
 #, fuzzy
@@ -1477,11 +1473,11 @@ msgstr "Finde..."
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:430
 msgid "Anything"
-msgstr "Irgend etwas"
+msgstr "Beliebige Zeichensequenz"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:435
 msgid "Any non-empty"
-msgstr "Etwas nicht-leeres"
+msgstr "Alles außer Leerzeichen"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:440
 msgid "Any word"
@@ -1493,16 +1489,15 @@ msgstr "Irgendeine Nummer"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:462
 msgid "Find next occurrence [Enter]"
-msgstr ""
+msgstr "Nächster Treffer [Enter]"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:484
 msgid "Find previous occurrence [Shift+Enter]"
-msgstr ""
+msgstr "Vorhergehender Treffer [Shift+Enter]"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:506
-#, fuzzy
 msgid "Restrict search to whole words only"
-msgstr "Nur ganze &Wörter"
+msgstr "Suche auf vollständige Wörter beschränken"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:509
 msgid "Whole &words"
@@ -1522,55 +1517,46 @@ msgid "Sco&pe"
 msgstr "Bereic&h"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:591
-#, fuzzy
 msgid "Current paragraph"
-msgstr "Nur aktueller Absatz"
+msgstr "Aktueller Absatz"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:594
-#, fuzzy
 msgid "Current &Paragraph"
-msgstr "Nur aktueller Absatz"
+msgstr "Aktueller &Absatz"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:613
-#, fuzzy
 msgid "Document in current file"
-msgstr "Dokumentformat-Fehler"
+msgstr "Aktuelle Datei"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:616
-#, fuzzy
 msgid "Current &Document"
-msgstr "Dokument drucken"
+msgstr "Aktuelles &Dokument"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:635
-#, fuzzy
 msgid "Current file and all other files belonging to the same Master Document"
-msgstr "Geben Sie den Namen des Hauptdokuments an"
+msgstr "Alle Dokumente, die zum selben Hauptdokument wie das aktuelle gehören"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:638
-#, fuzzy
 msgid "&Master Document"
-msgstr "Hauptdokument"
+msgstr "&Hauptdokument"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:654
-#, fuzzy
 msgid "All open documents"
-msgstr "Dokument öffnen"
+msgstr "Alle geöffneten Dokumente"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:657
-#, fuzzy
 msgid "&Open Documents"
-msgstr "OpenDocument"
+msgstr "&Geöffnete Dokumente"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:673
 msgid "All Ma&nuals"
-msgstr "Alle Handb&ücher"
+msgstr "Alle LyX-Handb&ücher"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:692
 msgid "&Expand macros"
 msgstr "Makros &ausklappen"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:708
-#, fuzzy
 msgid "Ignore &Format"
 msgstr "Ignoriere For&mat"
 
@@ -3896,7 +3882,7 @@ msgstr "Wählen Sie, welcher Index an dieser Stelle ausgegeben werden soll."
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:24
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:37
 msgid "Define hanging indendation/label length for the nomenclature list."
-msgstr ""
+msgstr "Bestimmt die Länge des Einzugs/der Marke für die Nomenklaturliste."
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:27
 msgid "&List Indendation:"
@@ -4455,9 +4441,8 @@ msgid "&Line spacing:"
 msgstr "&Zeilenabstand:"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:306
-#, fuzzy
 msgid "Spacing type"
-msgstr "Abstand"
+msgstr "Größe des Abstands"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:327
 msgid "Number of lines"
@@ -12830,7 +12815,6 @@ msgid "Close Window|d"
 msgstr "Fenster schließen|t"
 
 #: lib/ui/stdmenus.inc:75
-#, fuzzy
 msgid "Revert to Repository Version|v"
 msgstr "Zuletzt eingecheckte Version wiederherstellen|w"
 
@@ -12851,14 +12835,12 @@ msgid "Select All"
 msgstr "Alles auswählen"
 
 #: lib/ui/stdmenus.inc:106
-#, fuzzy
 msgid "Find & Replace (Quick)...|F"
-msgstr "Suchen & Ersetzen...|S"
+msgstr "Suchen & Ersetzen (einfach)...|S"
 
 #: lib/ui/stdmenus.inc:107
-#, fuzzy
 msgid "Find & Replace (Advanced)..."
-msgstr "Suchen & Ersetzen...|S"
+msgstr "Suchen & Ersetzen (erweitert)...|n"
 
 #: lib/ui/stdmenus.inc:116
 msgid "Table|T"
@@ -13201,9 +13183,8 @@ msgid "Program Listing[[Menu]]"
 msgstr "Programmlisting"
 
 #: lib/ui/stdmenus.inc:374
-#, fuzzy
 msgid "Regular Expression"
-msgstr "&Regulärer Ausdruck"
+msgstr "Regulärer Ausdruck"
 
 #: lib/ui/stdmenus.inc:381
 msgid "Ordinary Quote|Q"
@@ -16754,9 +16735,8 @@ msgid "  Save failed! Trying again...\n"
 msgstr "  Speicherung fehlgeschlagen! Versuche es erneut...\n"
 
 #: src/Buffer.cpp:990
-#, fuzzy
 msgid "  Save failed! Trying yet again...\n"
-msgstr "  Speicherung fehlgeschlagen! Versuche es erneut...\n"
+msgstr "  Speichern fehlgeschlagen! Versuche es noch einmal...\n"
 
 #: src/Buffer.cpp:1004
 msgid "  Save failed! Bummer. Document is lost."
@@ -17556,9 +17536,8 @@ msgid "button background under focus"
 msgstr "Knopf (Hintergrund bei Fokus)"
 
 #: src/Color.cpp:242
-#, fuzzy
 msgid "paragraph marker"
-msgstr "Unterparagraph"
+msgstr "Absatzmarkierung"
 
 #: src/Color.cpp:243
 msgid "inherit"
@@ -17871,18 +17850,16 @@ msgstr ""
 "Bitte prüfen Sie Ihre Installation."
 
 #: src/KeyMap.cpp:229
-#, fuzzy
 msgid "Could not find `cua.bind' file"
 msgstr "Die Tastenkürzeldatei `cua.bind' konnte nicht gefunden werden."
 
 #: src/KeyMap.cpp:230
-#, fuzzy
 msgid ""
 "Unable to find the default bind file `cua.bind'.\n"
 "Please check your installation."
 msgstr ""
-"Kann die Standarddatei für Tastenkürzel `cua.bind' nicht finden.\n"
-"Bitte prüfen Sie Ihre Installation."
+"Kann die Standard-Tastenkürzeldatei `cua.bind' nicht finden.\n"
+"Bitte überprüfen Sie Ihre Installation."
 
 #: src/KeyMap.cpp:237
 #, c-format
@@ -18359,9 +18336,8 @@ msgid "LyX normally doesn't update the cursor position if you move the scrollbar
 msgstr "Normalerweise bleibt der LyX-Cursor an seiner Position im Dokument, auch wenn Sie im Dokument scrollen. Ist dieser Schalter aktiv, wird der Cursor `mitgenommen'."
 
 #: src/LyXRC.cpp:2612
-#, fuzzy
 msgid "LyX normally doesn't allow the user to scroll further than the bottom of the document. Set to true if you prefer to scroll the bottom of the document to the top of the screen"
-msgstr "Normalerweise bleibt der LyX-Cursor an seiner Position im Dokument, auch wenn Sie im Dokument scrollen. Ist dieser Schalter aktiv, wird der Cursor `mitgenommen'."
+msgstr "Normalerweise kann nur bis zum unteren Rand des Dokuments gescrollt werden. Ist dieser Schalter aktiv, kann man darüber hinaus scrollen."
 
 #: src/LyXRC.cpp:2616
 msgid "Use the Mac OS X conventions for the word-level cursor movement"
@@ -18382,7 +18358,7 @@ msgstr "Datei mit den Definitionen der Tastaturkürzel. Sie können entweder ein
 
 #: src/LyXRC.cpp:2633
 msgid "The default format used with LFUN_BUFFER_[VIEW|UPDATE]."
-msgstr ""
+msgstr "Das Standardformat, das LFUN_BUFFER_[VIEW|UPDATE] verwendet."
 
 #: src/LyXRC.cpp:2637
 msgid "New documents will be assigned this language."
@@ -18526,7 +18502,7 @@ msgstr "Benutze \"...\" um lange Vervollständigungen zu kürzen."
 
 #: src/LyXRC.cpp:2787
 msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
-msgstr ""
+msgstr "Erlaube TeXMacs-Shorthands (z.B. Konvertierung von => zu \\Rightarrow)."
 
 #: src/LyXRC.cpp:2791
 #, c-format
@@ -18868,13 +18844,12 @@ msgstr "Keine gültige Matheformel"
 
 #: src/Text3.cpp:203
 #: src/mathed/InsetMathNest.cpp:993
-#, fuzzy
 msgid "Already in regexp mode"
-msgstr "Im Vollbildmodus ö&ffnen"
+msgstr "Bereits im Regexp-Modus"
 
 #: src/Text3.cpp:216
-#: src/mathed/InsetMathNest.cpp:1003
 #, fuzzy
+#: src/mathed/InsetMathNest.cpp:1003
 msgid "Regexp editor mode"
 msgstr "Mathe-Editor-Modus"
 
@@ -19159,9 +19134,8 @@ msgid "Nothing to search"
 msgstr "Nichts zum suchen"
 
 #: src/frontends/qt4/FindAndReplace.cpp:185
-#, fuzzy
 msgid "No open document(s) in which to search"
-msgstr "Dokument in &Unterfenstern öffnen"
+msgstr "Keine Dokumente geöffnet, in denen gesucht werden kann"
 
 #: src/frontends/qt4/FindAndReplace.cpp:289
 msgid "Find LyX Dialog"
@@ -19290,16 +19264,15 @@ msgstr "LyX hat einen ziemlich seltsamen Fehler entdeckt. Das Programm wird jetz
 msgid "Could not find UI definition file"
 msgstr "Die Benutzeroberflächen-Definitionsdatei konnte nicht gefunden werden"
 
-#: src/frontends/qt4/GuiApplication.cpp:1492
-#, fuzzy, c-format
+#: src/frontends/qt4/GuiApplication.cpp:1492, c-format
 msgid ""
 "Error while reading the included file\n"
 "%1$s\n"
 "Please check your installation."
 msgstr ""
-"Fehler beim Lesen der Konfigurationsdatei\n"
+"Fehler beim Lesen der eingebetteten Datei\n"
 "%1$s.\n"
-"Bitte prüfen Sie Ihre Installation."
+"Bitte überprüfen Sie Ihre Installation."
 
 #: src/frontends/qt4/GuiApplication.cpp:1498
 msgid "Could not find default UI file"
@@ -19442,15 +19415,13 @@ msgstr "Nein"
 msgid "Enter new branch name"
 msgstr "Neuen Namen für den Zweig eingeben"
 
-#: src/frontends/qt4/GuiBranches.cpp:173
-#, fuzzy, c-format
+#: src/frontends/qt4/GuiBranches.cpp:173, c-format
 msgid ""
 "A branch with the name \"%1$s\" already exists.\n"
 "Do you want to merge branch \"%2$s\" with that one?"
 msgstr ""
-"Die Datei %1$s existiert bereits.\n"
-"\n"
-"Möchten Sie diese Datei überschreiben?"
+"Es gibt bereits einen Zweig mit dem Namen \"%1$s\".\n"
+"Möchten Sie den Zweig \"%2$s\" mit diesem zusammenführen?"
 
 #: src/frontends/qt4/GuiBranches.cpp:177
 msgid "&Merge"
@@ -20547,12 +20518,11 @@ msgstr "Wählen Sie ein Dokumentverzeichnis"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1234
 msgid "Set the path to the thesaurus dictionaries"
-msgstr ""
+msgstr "Den Pfad zum Thesaurus-Wörterbuch festlegen"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1243
-#, fuzzy
 msgid "Set the path to the Hunspell dictionaries"
-msgstr "Passe die Tiefe des Navigationsbaums an"
+msgstr "Den Pfad zu den Hunspell-Wörterbüchern festlegen"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1252
 msgid "Give a filename for the LyX server pipe"
@@ -21482,7 +21452,7 @@ msgstr "Keine Gruppe"
 #: src/frontends/qt4/Menus.cpp:730
 #: src/frontends/qt4/Menus.cpp:731
 msgid "More Spelling Suggestions"
-msgstr ""
+msgstr "Weitere Rechtschreibvorschläge"
 
 #: src/frontends/qt4/Menus.cpp:770
 #: src/frontends/qt4/Menus.cpp:771
@@ -22551,7 +22521,7 @@ msgstr " Zeichenketten wurden ersetzt."
 #: src/lyxfind.cpp:942
 #: src/lyxfind.cpp:1027
 msgid "Wrap search ?"
-msgstr ""
+msgstr "Von vorne suchen?"
 
 #: src/lyxfind.cpp:943
 msgid ""
@@ -22582,9 +22552,8 @@ msgid "Search text is empty!"
 msgstr "Der Suchtext ist leer!"
 
 #: src/lyxfind.cpp:1137
-#, fuzzy
 msgid "Invalid regular expression!"
-msgstr "Ungültiger LaTeX-Längen-Ausdruck."
+msgstr "Ungültiger regulärer Ausdruck!"
 
 #: src/lyxfind.cpp:1142
 msgid "Match not found!"
