@@ -1318,7 +1318,7 @@ bool GuiApplication::notify(QObject * receiver, QEvent * event)
 			this->exit(1);
 
 		case BufferException: {
-			if (current_view_->documentBufferView())
+			if (!current_view_->documentBufferView())
 				return false;
 			Buffer * buf = &current_view_->documentBufferView()->buffer();
 			docstring details = e.details_ + '\n';
