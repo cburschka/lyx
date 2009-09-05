@@ -617,14 +617,14 @@ void LayoutBox::updateContents(bool reset)
 {
 	d->resetFilter();
 	
-	if (!d->owner_.documentBufferView()) {
+	if (!d->owner_.currentBufferView()) {
 		d->model_->clear();
 		setEnabled(false);
 		d->text_class_ = 0;
 		d->inset_ = 0;
 		return;
 	}
-	Buffer const * buffer = &d->owner_.documentBufferView()->buffer();
+	Buffer const * buffer = &d->owner_.currentBufferView()->buffer();
 	// we'll only update the layout list if the text class has changed
 	// or we've moved from one inset to another
 	DocumentClass const * text_class = &buffer->params().documentClass();
