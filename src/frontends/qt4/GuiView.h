@@ -70,10 +70,6 @@ public:
 	BufferView const * currentBufferView() const;
 	BufferView * documentBufferView();
 	BufferView const * documentBufferView() const;
-	Buffer * buffer();
-	Buffer const * buffer() const;
-	Buffer * documentBuffer();
-	Buffer const * documentBuffer() const;
 	void setBuffer(Buffer * b);
 	bool closeBuffer();
 	bool closeBufferAll();

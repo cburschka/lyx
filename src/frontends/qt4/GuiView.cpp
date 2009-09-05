@@ -1035,40 +1035,6 @@ void GuiView::updateToolbars()
 }
 
 
-Buffer * GuiView::buffer()
-{
-	if (d.current_work_area_)
-		return &d.current_work_area_->bufferView().buffer();
-	return 0;
-}
-
-
-Buffer const * GuiView::buffer() const
-{
-	if (d.current_work_area_)
-		return &d.current_work_area_->bufferView().buffer();
-	return 0;
-}
-
-
-Buffer * GuiView::documentBuffer()
-{
-	TabWorkArea * twa = d.currentTabWorkArea();
-	if (twa && twa->currentWorkArea())
-		return &twa->currentWorkArea()->bufferView().buffer();
-	return 0;
-}
-
-
-Buffer const * GuiView::documentBuffer() const
-{
-	TabWorkArea * twa = d.currentTabWorkArea();
-	if (twa && twa->currentWorkArea())
-		return &twa->currentWorkArea()->bufferView().buffer();
-	return 0;
-}
-
-
 void GuiView::setBuffer(Buffer * newBuffer)
 {
 	LYXERR(Debug::DEBUG, "Setting buffer: " << newBuffer << std::endl);
@@ -1120,8 +1086,8 @@ void GuiView::disconnectBufferView()
 void GuiView::errors(string const & error_type, bool from_master)
 {
 	ErrorList & el = from_master ? 
-		buffer()->masterBuffer()->errorList(error_type)
-		: buffer()->errorList(error_type);
+		documentBufferView()->buffer().masterBuffer()->errorList(error_type)
+		: documentBufferView()->buffer().errorList(error_type);
 	string data = error_type;
 	if (from_master)
 		data = "from_master|" + error_type;
@@ -1207,7 +1173,8 @@ void GuiView::resetAutosaveTimers()
 bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 {
 	bool enable = true;
-	Buffer * buf = buffer();
+	Buffer * buf = currentBufferView()
+		? &currentBufferView()->buffer() : 0;
 
 	if (cmd.origin == FuncRequest::TOC) {
 		GuiToc * toc = static_cast<GuiToc*>(findOrBuild("toc", false));
@@ -1418,8 +1385,8 @@ void GuiView::openDocument(string const & fname)
 {
 	string initpath = lyxrc.document_path;
 
-	if (buffer()) {
-		string const trypath = buffer()->filePath();
+	if (documentBufferView()) {
+		string const trypath = documentBufferView()->buffer().filePath();
 		// If directory is writeable, use this as default.
 		if (FileName(trypath).isDirWritable())
 			initpath = trypath;
@@ -1563,10 +1530,8 @@ void GuiView::importDocument(string const & argument)
 	// need user interaction
 	if (filename.empty()) {
 		string initpath = lyxrc.document_path;
-
-		Buffer const * buf = buffer();
-		if (buf) {
-			string const trypath = buf->filePath();
+		if (documentBufferView()) {
+			string const trypath = documentBufferView()->buffer().filePath();
 			// If directory is writeable, use this as default.
 			if (FileName(trypath).isDirWritable())
 				initpath = trypath;
@@ -1648,9 +1613,8 @@ void GuiView::importDocument(string const & argument)
 void GuiView::newDocument(string const & filename, bool from_template)
 {
 	FileName initpath(lyxrc.document_path);
-	Buffer * buf = buffer();
-	if (buf) {
-		FileName const trypath(buf->filePath());
+	if (documentBufferView()) {
+		FileName const trypath(documentBufferView()->buffer().filePath());
 		// If directory is writeable, use this as default.
 		if (trypath.isDirWritable())
 			initpath = trypath;
@@ -2128,7 +2092,8 @@ bool GuiView::inMultiViews(GuiWorkArea * wa)
 
 void GuiView::gotoNextOrPreviousBuffer(NextOrPrevious np)
 {
-	Buffer * const curbuf = buffer();
+	Buffer * const curbuf = documentBufferView()
+		? &documentBufferView()->buffer() : 0;
 	Buffer * nextbuf = curbuf;
 	while (true) {
 		if (np == NEXTBUFFER)
@@ -2294,7 +2259,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 					showDialog("character", data);
 			} else if (name == "latexlog") {
 				Buffer::LogType type; 
-				string const logfile = buffer()->logName(&type);
+				string const logfile = documentBufferView()->buffer().logName(&type);
 				switch (type) {
 				case Buffer::latexlog:
 					data = "latex ";
@@ -2307,7 +2272,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 				showDialog("log", data);
 			} else if (name == "vclog") {
 				string const data = "vc " +
-					Lexer::quoteString(buffer()->lyxvc().getLogFile());
+					Lexer::quoteString(documentBufferView()->buffer().lyxvc().getLogFile());
 				showDialog("log", data);
 			} else if (name == "symbols") {
 				data = bv->cursor().getEncoding()->name();
@@ -2352,12 +2317,12 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_SPLIT_VIEW:
-			if (Buffer * buf = buffer()) {
+			if (documentBufferView()) {
 				string const orientation = cmd.getArg(0);
 				d.splitter_->setOrientation(orientation == "vertical"
 					? Qt::Vertical : Qt::Horizontal);
 				TabWorkArea * twa = addTabWorkArea();
-				GuiWorkArea * wa = twa->addWorkArea(*buf, *this);
+				GuiWorkArea * wa = twa->addWorkArea(documentBufferView()->buffer(), *this);
 				setCurrentWorkArea(wa);
 			}
 			break;

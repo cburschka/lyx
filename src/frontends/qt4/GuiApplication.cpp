@@ -877,7 +877,7 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 
 	case LFUN_BUFFER_NEW:
 		if (d->views_.empty()
-		    || (!lyxrc.open_buffers_in_tabs && current_view_->buffer() != 0)) {
+		    || (!lyxrc.open_buffers_in_tabs && current_view_->documentBufferView() != 0)) {
 			createView(QString(), false); // keep hidden
 			current_view_->newDocument(to_utf8(cmd.argument()), false);
 			current_view_->show();
@@ -889,10 +889,10 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 
 	case LFUN_BUFFER_NEW_TEMPLATE:
 		if (d->views_.empty()
-		    || (!lyxrc.open_buffers_in_tabs && current_view_->buffer() != 0)) {
+		    || (!lyxrc.open_buffers_in_tabs && current_view_->documentBufferView() != 0)) {
 			createView();
 			current_view_->newDocument(to_utf8(cmd.argument()), true);
-			if (!current_view_->buffer())
+			if (!current_view_->documentBufferView())
 				current_view_->close();
 		} else {
 			current_view_->newDocument(to_utf8(cmd.argument()), true);
@@ -901,7 +901,7 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 
 	case LFUN_FILE_OPEN:
 		if (d->views_.empty()
-		    || (!lyxrc.open_buffers_in_tabs && current_view_->buffer() != 0)) {
+		    || (!lyxrc.open_buffers_in_tabs && current_view_->documentBufferView() != 0)) {
 			string const fname = to_utf8(cmd.argument());
 			// We want the ui session to be saved per document and not per
 			// window number. The filename crc is a good enough identifier.
@@ -909,7 +909,7 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 			crc = for_each(fname.begin(), fname.end(), crc);
 			createView(crc.checksum());
 			current_view_->openDocument(fname);
-			if (current_view_ && !current_view_->buffer())
+			if (current_view_ && !current_view_->documentBufferView())
 				current_view_->close();
 		} else
 			current_view_->openDocument(to_utf8(cmd.argument()));
@@ -1217,7 +1217,7 @@ void GuiApplication::restoreGuiSession()
 	for (size_t i = 0; i < lastopened.size(); ++i) {
 		FileName const & file_name = lastopened[i].file_name;
 		if (d->views_.empty() || (!lyxrc.open_buffers_in_tabs
-			  && current_view_->buffer() != 0)) {
+			  && current_view_->documentBufferView() != 0)) {
 			boost::crc_32_type crc;
 			string const & fname = file_name.absFilename();
 			crc = for_each(fname.begin(), fname.end(), crc);
@@ -1318,7 +1318,9 @@ bool GuiApplication::notify(QObject * receiver, QEvent * event)
 			this->exit(1);
 
 		case BufferException: {
-			Buffer * buf = current_view_->buffer();
+			if (current_view_->documentBufferView())
+				return false;
+			Buffer * buf = &current_view_->documentBufferView()->buffer();
 			docstring details = e.details_ + '\n';
 			details += buf->emergencyWrite();
 			theBufferList().release(buf);

@@ -42,7 +42,7 @@ namespace frontend {
 GuiTabular::GuiTabular(GuiView & lv)
 	: GuiDialog(lv, "tabular", qt_("Table Settings")),
 	// tabular_ is initialised at dialog construction in initialiseParams()
-	tabular_(*lv.buffer(), 0, 0)
+	tabular_(lv.currentBufferView()->buffer(), 0, 0)
 {
 	active_cell_ = Tabular::npos;
 

@@ -77,15 +77,15 @@ void Dialog::disconnect() const
 
 bool Dialog::isBufferAvailable() const
 {
-	return lyxview_->buffer() != 0;
+	return lyxview_->currentBufferView() != 0;
 }
 
 
 bool Dialog::isBufferReadonly() const
 {
-	if (!lyxview_->buffer())
+	if (!lyxview_->documentBufferView())
 		return true;
-	return lyxview_->buffer()->isReadonly();
+	return lyxview_->documentBufferView()->buffer().isReadonly();
 }
 
 
@@ -114,8 +114,8 @@ BufferView const * Dialog::bufferview() const
 
 Buffer const & Dialog::buffer() const
 {
-	LASSERT(lyxview_->buffer(), /**/);
-	return *lyxview_->buffer();
+	LASSERT(lyxview_->currentBufferView(), /**/);
+	return lyxview_->currentBufferView()->buffer();
 }
 
 

@@ -19,6 +19,7 @@
 #include "TocModel.h"
 
 #include "Buffer.h"
+#include "BufferView.h"
 #include "CutAndPaste.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
@@ -440,7 +441,7 @@ void TocWidget::updateView()
 	persistentCB->setEnabled(can_navigate_);
 
 	bool controls_enabled = toc_model && toc_model->rowCount() > 0
-		&& !gui_view_.buffer()->isReadonly();
+		&& !gui_view_.documentBufferView()->buffer().isReadonly();
 	enableControls(controls_enabled);
 
 	depthSL->setMaximum(gui_view_.tocModels().depth(current_type_));
