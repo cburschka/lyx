@@ -94,9 +94,6 @@ public:
 
 private:
 	///
-	BufferView * view() const;
-
-	///
 	frontend::LyXView * lyx_view_;
 
 	/// the last character added to the key sequence, in UCS4 encoded form

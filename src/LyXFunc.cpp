@@ -227,15 +227,16 @@ void LyXFunc::handleKeyFunc(FuncCode action)
 		c = 0;
 
 	LASSERT(lyx_view_ && lyx_view_->currentBufferView(), /**/);
-	lyx_view_->currentBufferView()->getIntl().getTransManager().deadkey(
-		c, get_accent(action).accent, view()->cursor().innerText(),
-		view()->cursor());
+	BufferView * bv = lyx_view_->currentBufferView();
+	bv->getIntl().getTransManager().deadkey(
+		c, get_accent(action).accent, bv->cursor().innerText(),
+		bv->cursor());
 	// Need to clear, in case the minibuffer calls these
 	// actions
 	keyseq.clear();
 	// copied verbatim from do_accent_char
-	view()->cursor().resetAnchor();
-	view()->processUpdateFlags(Update::FitCursor);
+	bv->cursor().resetAnchor();
+	bv->processUpdateFlags(Update::FitCursor);
 }
 
 //FIXME: bookmark handling is a frontend issue. This code should be transferred
@@ -275,8 +276,8 @@ void LyXFunc::gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer)
 	}
 
 	// moveToPosition try paragraph id first and then paragraph (pit, pos).
-	if (!view()->moveToPosition(tmp.bottom_pit, tmp.bottom_pos,
-		tmp.top_id, tmp.top_pos))
+	if (!lyx_view_->documentBufferView()->moveToPosition(
+		tmp.bottom_pit, tmp.bottom_pos, tmp.top_id, tmp.top_pos))
 		return;
 
 	// bm changed
@@ -284,7 +285,7 @@ void LyXFunc::gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer)
 		return;
 
 	// Cursor jump succeeded!
-	Cursor const & cur = view()->cursor();
+	Cursor const & cur = lyx_view_->documentBufferView()->cursor();
 	pit_type new_pit = cur.pit();
 	pos_type new_pos = cur.pos();
 	int new_id = cur.paragraph().id();
@@ -317,7 +318,7 @@ void LyXFunc::processKeySym(KeySymbol const & keysym, KeyModifier state)
 		return;
 	}
 
-	//Encoding const * encoding = view()->cursor().getEncoding();
+	//Encoding const * encoding = lyx_view_->documentBufferView()->cursor().getEncoding();
 	//encoded_last_key = keysym.getISOEncoded(encoding ? encoding->name() : "");
 	// FIXME: encoded_last_key shadows the member variable of the same
 	// name. Is that intended?
@@ -689,25 +690,25 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		if (lv->getStatus(cmd, flag))
 			break;
 
+		BufferView * bv = lv->currentBufferView();
 		// If we do not have a BufferView, then other functions are disabled
-		if (!view()) {
+		if (!bv) {
 			enable = false;
 			break;
 		}
-
 		// Is this a function that acts on inset at point?
-		Inset * inset = view()->cursor().nextInset();
+		Inset * inset = bv->cursor().nextInset();
 		if (lyxaction.funcHasFlag(cmd.action, LyXAction::AtPoint)
-		    && inset && inset->getStatus(view()->cursor(), cmd, flag))
+		    && inset && inset->getStatus(bv->cursor(), cmd, flag))
 			break;
 
-		bool decided = getLocalStatus(view()->cursor(), cmd, flag);
+		bool decided = getLocalStatus(bv->cursor(), cmd, flag);
 		if (!decided)
 			// try the BufferView
-			decided = view()->getStatus(cmd, flag);
+			decided = bv->getStatus(cmd, flag);
 		if (!decided)
 			// try the Buffer
-			view()->buffer().getStatus(cmd, flag);
+			bv->buffer().getStatus(cmd, flag);
 	}
 
 	if (!enable)
@@ -722,8 +723,9 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	}
 
 	// Are we in a DELETED change-tracking region?
-	if (buf && view() 
-		&& lookupChangeType(view()->cursor(), true) == Change::DELETED
+	if (lyx_view_ && lyx_view_->documentBufferView()
+		&& (lookupChangeType(lyx_view_->documentBufferView()->cursor(), true)
+		    == Change::DELETED)
 	    && !lyxaction.funcHasFlag(cmd.action, LyXAction::ReadOnly)
 	    && !lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer)) {
 		flag.message(from_utf8(N_("This portion of the document is deleted.")));
@@ -828,7 +830,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_WORD_FIND_FORWARD:
 		case LFUN_WORD_FIND_BACKWARD: {
-			LASSERT(lyx_view_ && lyx_view_->currentBufferView(), /**/);
+			LASSERT(lyx_view_ && lyx_view_->documentBufferView(), /**/);
 			static docstring last_search;
 			docstring searched_string;
 
@@ -845,7 +847,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			bool const fw = action == LFUN_WORD_FIND_FORWARD;
 			docstring const data =
 				find2string(searched_string, true, false, fw);
-			find(view(), FuncRequest(LFUN_WORD_FIND, data));
+			find(lyx_view_->documentBufferView(),
+				FuncRequest(LFUN_WORD_FIND, data));
 			break;
 		}
 
@@ -1050,7 +1053,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		// --- version control -------------------------------
 		case LFUN_VC_REGISTER:
 			LASSERT(lyx_view_ && buffer, /**/);
-			if (!ensureBufferClean(view()))
+			if (!ensureBufferClean(lyx_view_->documentBufferView()))
 				break;
 			if (!buffer->lyxvc().inUse()) {
 				if (buffer->lyxvc().registrer())
@@ -1061,7 +1064,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_VC_CHECK_IN:
 			LASSERT(lyx_view_ && buffer, /**/);
-			if (!ensureBufferClean(view()))
+			if (!ensureBufferClean(lyx_view_->documentBufferView()))
 				break;
 			if (buffer->lyxvc().inUse()
 					&& !buffer->isReadonly()) {
@@ -1072,7 +1075,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_VC_CHECK_OUT:
 			LASSERT(lyx_view_ && buffer, /**/);
-			if (!ensureBufferClean(view()))
+			if (!ensureBufferClean(lyx_view_->documentBufferView()))
 				break;
 			if (buffer->lyxvc().inUse()) {
 				setMessage(from_utf8(buffer->lyxvc().checkOut()));
@@ -1082,7 +1085,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_VC_LOCKING_TOGGLE:
 			LASSERT(lyx_view_ && buffer, /**/);
-			if (!ensureBufferClean(view()) || buffer->isReadonly())
+			if (!ensureBufferClean(lyx_view_->documentBufferView())
+			    || buffer->isReadonly())
 				break;
 			if (buffer->lyxvc().inUse()) {
 				string res = buffer->lyxvc().lockingToggle();
@@ -1167,7 +1171,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 			buf->updateLabels();
 			lyx_view_->setBuffer(buf);
-			view()->setCursorFromRow(row);
+			lyx_view_->documentBufferView()->setCursorFromRow(row);
 			if (loaded)
 				buf->errors("Parse");
 			updateFlags = Update::FitCursor;
@@ -1309,7 +1313,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_BUFFER_CHILD_OPEN: {
 			LASSERT(lyx_view_ && buffer, /**/);
 			FileName filename = makeAbsPath(argument, buffer->filePath());
-			view()->saveBookmark(false);
+			lyx_view_->documentBufferView()->saveBookmark(false);
 			Buffer * child = 0;
 			bool parsed = false;
 			if (theBufferList().exists(filename)) {
@@ -1488,7 +1492,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			LASSERT(lyx_view_, /**/);
 			
 			DocumentClass const * const oldClass = buffer->params().documentClassPtr();
-			Cursor & cur = view()->cursor();
+			Cursor & cur = lyx_view_->documentBufferView()->cursor();
 			cur.recordUndoFullDocument();
 			
 			istringstream ss(argument);
@@ -1514,9 +1518,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 		
 		case LFUN_LAYOUT_MODULES_CLEAR: {
-			LASSERT(lyx_view_, /**/);
+			LASSERT(lyx_view_ && lyx_view_->documentBufferView(), /**/);
 			DocumentClass const * const oldClass = buffer->params().documentClassPtr();
-			view()->cursor().recordUndoFullDocument();
+			lyx_view_->documentBufferView()->cursor().recordUndoFullDocument();
 			buffer->params().clearLayoutModules();
 			buffer->params().makeDocumentClass();
 			updateLayout(oldClass, buffer);
@@ -1525,7 +1529,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 		
 		case LFUN_LAYOUT_MODULE_ADD: {
-			LASSERT(lyx_view_, /**/);
+			LASSERT(lyx_view_ && lyx_view_->documentBufferView(), /**/);
 			BufferParams const & params = buffer->params();
 			if (!params.moduleCanBeAdded(argument)) {
 				LYXERR0("Module `" << argument << 
@@ -1534,7 +1538,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				break;
 			}
 			DocumentClass const * const oldClass = params.documentClassPtr();
-			view()->cursor().recordUndoFullDocument();
+			lyx_view_->documentBufferView()->cursor().recordUndoFullDocument();
 			buffer->params().addLayoutModule(argument);
 			buffer->params().makeDocumentClass();
 			updateLayout(oldClass, buffer);
@@ -1543,7 +1547,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_TEXTCLASS_APPLY: {
-			LASSERT(lyx_view_, /**/);
+			LASSERT(lyx_view_ && lyx_view_->documentBufferView(), /**/);
 
 			if (!loadLayoutFile(argument, buffer->temppath()) &&
 				!loadLayoutFile(argument, buffer->filePath()))
@@ -1557,8 +1561,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				break;
 
 			//Save the old, possibly modular, layout for use in conversion.
-			DocumentClass const * const oldDocClass = buffer->params().documentClassPtr();
-			view()->cursor().recordUndoFullDocument();
+			DocumentClass const * const oldDocClass =
+				buffer->params().documentClassPtr();
+			lyx_view_->documentBufferView()->cursor().recordUndoFullDocument();
 			buffer->params().setBaseClass(argument);
 			buffer->params().makeDocumentClass();
 			updateLayout(oldDocClass, buffer);
@@ -1625,7 +1630,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_VC_COMMAND: {
 			string flag = cmd.getArg(0);
-			if (buffer && contains(flag, 'R') && !ensureBufferClean(view()))
+			if (buffer && contains(flag, 'R')
+				&& !ensureBufferClean(lyx_view_->documentBufferView()))
 				break;
 			docstring message;
 			if (contains(flag, 'M'))
@@ -1694,7 +1700,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			LASSERT(lyx_view_->currentBufferView(), /**/);
 
 			// Let the current BufferView dispatch its own actions.
-			if (view()->dispatch(cmd)) {
+			if (lyx_view_->currentBufferView()->dispatch(cmd)) {
 				// The BufferView took care of its own updates if needed.
 				updateFlags = Update::None;
 				if (theBufferList().isLoaded(buffer))
@@ -1704,38 +1710,39 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 			// OK, so try the Buffer itself
 			DispatchResult dr;
-			view()->buffer().dispatch(cmd, dr);
+			BufferView * bv = lyx_view_->currentBufferView();
+			bv->buffer().dispatch(cmd, dr);
 			if (dr.dispatched()) {
 				updateFlags = dr.update();
 				break;
 			}
 
 			// Is this a function that acts on inset at point?
-			Inset * inset = view()->cursor().nextInset();
+			Inset * inset = bv->cursor().nextInset();
 			if (lyxaction.funcHasFlag(action, LyXAction::AtPoint)
 			    && inset) {
-				view()->cursor().result().dispatched(true);
-				view()->cursor().result().update(Update::FitCursor | Update::Force);
+				bv->cursor().result().dispatched(true);
+				bv->cursor().result().update(Update::FitCursor | Update::Force);
 				FuncRequest tmpcmd = cmd;
-				inset->dispatch(view()->cursor(), tmpcmd);
-				if (view()->cursor().result().dispatched()) {
-					updateFlags = view()->cursor().result().update();
+				inset->dispatch(bv->cursor(), tmpcmd);
+				if (bv->cursor().result().dispatched()) {
+					updateFlags = bv->cursor().result().update();
 					break;
 				}
 			}
 
 			// Let the current Cursor dispatch its own actions.
-			Cursor old = view()->cursor();
-			view()->cursor().getPos(cursorPosBeforeDispatchX_,
+			Cursor old = bv->cursor();
+			bv->cursor().getPos(cursorPosBeforeDispatchX_,
 						cursorPosBeforeDispatchY_);
-			view()->cursor().dispatch(cmd);
+			bv->cursor().dispatch(cmd);
 
 			// notify insets we just left
-			if (view()->cursor() != old) {
+			if (bv->cursor() != old) {
 				old.fixIfBroken();
-				bool badcursor = notifyCursorLeavesOrEnters(old, view()->cursor());
+				bool badcursor = notifyCursorLeavesOrEnters(old, bv->cursor());
 				if (badcursor)
-					view()->cursor().fixIfBroken();
+					bv->cursor().fixIfBroken();
 			}
 
 			if (theBufferList().isLoaded(buffer))
@@ -1746,15 +1753,15 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			// changed inline completion
 			if (cmd.origin == FuncRequest::KEYBOARD) {
 				if (cmd.action == LFUN_SELF_INSERT
-				    || (cmd.action == LFUN_ERT_INSERT && view()->cursor().inMathed()))
-					lyx_view_->updateCompletion(view()->cursor(), true, true);
+				    || (cmd.action == LFUN_ERT_INSERT && bv->cursor().inMathed()))
+					lyx_view_->updateCompletion(bv->cursor(), true, true);
 				else if (cmd.action == LFUN_CHAR_DELETE_BACKWARD)
-					lyx_view_->updateCompletion(view()->cursor(), false, true);
+					lyx_view_->updateCompletion(bv->cursor(), false, true);
 				else
-					lyx_view_->updateCompletion(view()->cursor(), false, false);
+					lyx_view_->updateCompletion(bv->cursor(), false, false);
 			}
 
-			updateFlags = view()->cursor().result().update();
+			updateFlags = bv->cursor().result().update();
 		}
 
 		// if we executed a mutating lfun, mark the buffer as dirty
@@ -1768,10 +1775,11 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			// also initializes the position cache for all insets in
 			// (at least partially) visible top-level paragraphs.
 			// We will redraw the screen only if needed.
-			view()->processUpdateFlags(updateFlags);
+			lyx_view_->currentBufferView()->processUpdateFlags(updateFlags);
 
 			// Do we have a selection?
-			theSelection().haveSelection(view()->cursor().selection());
+			theSelection().haveSelection(
+				lyx_view_->currentBufferView()->cursor().selection());
 			
 			// update gui
 			lyx_view_->restartCursor();
@@ -1888,14 +1896,7 @@ docstring LyXFunc::viewStatusMessage()
 	if (!lyx_view_->currentBufferView())
 		return _("Welcome to LyX!");
 
-	return view()->cursor().currentState();
-}
-
-
-BufferView * LyXFunc::view() const
-{
-	LASSERT(lyx_view_, /**/);
-	return lyx_view_->currentBufferView();
+	return lyx_view_->currentBufferView()->cursor().currentState();
 }
 
 
@@ -1909,13 +1910,13 @@ void LyXFunc::updateLayout(DocumentClass const * const oldlayout, Buffer * buf)
 {
 	lyx_view_->message(_("Converting document to new document class..."));
 	
-	StableDocIterator backcur(view()->cursor());
+	StableDocIterator backcur(lyx_view_->currentBufferView()->cursor());
 	ErrorList & el = buf->errorList("Class Switch");
 	cap::switchBetweenClasses(
 			oldlayout, buf->params().documentClassPtr(),
 			static_cast<InsetText &>(buf->inset()), el);
 
-	view()->setCursor(backcur.asDocIterator(buf));
+	lyx_view_->currentBufferView()->setCursor(backcur.asDocIterator(buf));
 
 	buf->errors("Class Switch");
 	buf->updateLabels();
