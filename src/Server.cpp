@@ -93,43 +93,59 @@ private:
 
 namespace {
 
-char * errormsg()
+string errormsg(DWORD const error)
 {
 	void * msgbuf;
-	DWORD error = GetLastError();
-	FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER |
-		      FORMAT_MESSAGE_FROM_SYSTEM |
-		      FORMAT_MESSAGE_IGNORE_INSERTS,
-		      NULL, error, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
-		      (LPTSTR) &msgbuf, 0, NULL);
-	return static_cast<char *>(msgbuf);
-}
+	string message;
+	if (FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER |
+			  FORMAT_MESSAGE_FROM_SYSTEM |
+			  FORMAT_MESSAGE_IGNORE_INSERTS,
+			  NULL, error,
+			  MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
+			  (LPTSTR) &msgbuf, 0, NULL)) {
+		message = static_cast<char *>(msgbuf);
+		LocalFree(msgbuf);
+	} else
+		message = "Unknown error";
 
-
-extern "C" {
-
-DWORD WINAPI pipeServerWrapper(void * arg)
-{
-	LyXComm * lyxcomm = reinterpret_cast<LyXComm *>(arg);
-	lyxcomm->pipeServer();
-	return 1;
-}
-
+	return message;
 }
 
 } // namespace anon
 
+
+DWORD WINAPI pipeServerWrapper(void * arg)
+{
+	LyXComm * lyxcomm = reinterpret_cast<LyXComm *>(arg);
+	if (!lyxcomm->pipeServer()) {
+		// Error exit; perform cleanup.
+		lyxcomm->ready_ = false;
+		lyxcomm->closeHandles();
+		CloseHandle(lyxcomm->server_thread_);
+		CloseHandle(lyxcomm->stopserver_);
+		CloseHandle(lyxcomm->outbuf_mutex_);
+		lyxerr << "LyXComm: Closing connection" << endl;
+	}
+	return 1;
+}
+
+
 LyXComm::LyXComm(string const & pip, Server * cli, ClientCallbackfct ccb)
 	: pipename_(pip), client_(cli), clientcb_(ccb), stopserver_(0)
 {
+	for (int i = 0; i < MAX_PIPES; ++i) {
+		event_[i] = 0;
+		pipe_[i].handle = INVALID_HANDLE_VALUE;
+	}
 	ready_ = false;
 	openConnection();
 }
 
 
-void LyXComm::pipeServer()
+bool LyXComm::pipeServer()
 {
 	DWORD i;
+	DWORD error;
 
 	for (i = 0; i < MAX_PIPES; ++i) {
 		bool const is_outpipe = i >= MAX_CLIENTS;
@@ -140,11 +156,11 @@ void LyXComm::pipeServer()
 		// Manual-reset event, initial state = signaled
 		event_[i] = CreateEvent(NULL, TRUE, TRUE, NULL);
 		if (!event_[i]) {
+			error = GetLastError();
 			lyxerr << "LyXComm: Could not create event for pipe "
-			       << pipename.c_str() << "\nLyXComm: "
-			       << errormsg() << endl;
-			closeHandles(i);
-			return;
+			       << pipename << "\nLyXComm: "
+			       << errormsg(error) << endl;
+			return false;
 		}
 
 		pipe_[i].overlap.hEvent = event_[i];
@@ -155,14 +171,15 @@ void LyXComm::pipeServer()
 				PIPE_TIMEOUT, NULL);
 
 		if (pipe_[i].handle == INVALID_HANDLE_VALUE) {
+			error = GetLastError();
 			lyxerr << "LyXComm: Could not create pipe "
-			       << pipename.c_str() << "\nLyXComm: "
-			       << errormsg() << endl;
-			closeHandles(i);
-			return;
+			       << pipename << "\nLyXComm: "
+			       << errormsg(error) << endl;
+			return false;
 		}
 
-		startPipe(i);
+		if (!startPipe(i))
+			return false;
 		pipe_[i].state = pipe_[i].pending_io ?
 			CONNECTING_STATE : (is_outpipe ? WRITING_STATE
 						       : READING_STATE);
@@ -203,9 +220,11 @@ void LyXComm::pipeServer()
 			case CONNECTING_STATE:
 				// Pending connect operation
 				if (!success) {
+					error = GetLastError();
 					lyxerr << "LyXComm: "
-					       << errormsg() << endl;
-					resetPipe(i, true);
+					       << errormsg(error) << endl;
+					if (!resetPipe(i, true))
+						return false;
 					continue;
 				}
 				pipe_[i].state = is_outpipe ? WRITING_STATE
@@ -216,7 +235,8 @@ void LyXComm::pipeServer()
 				// Pending read operation
 				LASSERT(!is_outpipe, /**/);
 				if (!success || status == 0) {
-					resetPipe(i);
+					if (!resetPipe(i, !success))
+						return false;
 					continue;
 				}
 				pipe_[i].nbytes = status;
@@ -267,24 +287,28 @@ void LyXComm::pipeServer()
 				continue;
 			}
 
-			if (!success && GetLastError() == ERROR_IO_PENDING) {
+			error = GetLastError();
+
+			if (!success && error == ERROR_IO_PENDING) {
 				// The read operation is still pending.
 				pipe_[i].pending_io = true;
 				continue;
 			}
 
+			success = error == ERROR_BROKEN_PIPE;
+
 			// Client closed connection (ERROR_BROKEN_PIPE) or
 			// an error occurred; in either case, reset the pipe.
-			if (GetLastError() != ERROR_BROKEN_PIPE) {
-				lyxerr << "LyXComm: " << errormsg() << endl;
+			if (!success) {
+				lyxerr << "LyXComm: " << errormsg(error) << endl;
 				if (!pipe_[i].iobuf.empty()) {
 					lyxerr << "LyXComm: truncated command: "
 					       << pipe_[i].iobuf << endl;
 					pipe_[i].iobuf.erase();
 				}
-				resetPipe(i, true);
-			} else
-				resetPipe(i);
+			}
+			if (!resetPipe(i, !success))
+				return false;
 			break;
 
 		case WRITING_STATE:
@@ -318,11 +342,14 @@ void LyXComm::pipeServer()
 				// The write operation completed successfully.
 				pipe_[i].iobuf.erase();
 				pipe_[i].pending_io = false;
-				resetPipe(i);
+				if (!resetPipe(i))
+					return false;
 				continue;
 			}
 
-			if (GetLastError() == ERROR_IO_PENDING) {
+			error = GetLastError();
+
+			if (success && error == ERROR_IO_PENDING) {
 				// The write operation is still pending.
 				// We get here when a reader is started
 				// well before a reply is ready, so delay
@@ -332,33 +359,39 @@ void LyXComm::pipeServer()
 				continue;
 			}
 
+			success = error == ERROR_NO_DATA;
+
 			// Client closed connection (ERROR_NO_DATA) or
 			// an error occurred; in either case, reset the pipe.
-			if (GetLastError() != ERROR_NO_DATA) {
+			if (!success) {
 				lyxerr << "LyXComm: Error sending message: "
 				       << pipe_[i].iobuf << "\nLyXComm: "
-				       << errormsg() << endl;
-				resetPipe(i, true);
-			} else
-				resetPipe(i);
+				       << errormsg(error) << endl;
+			}
+			if (!resetPipe(i, !success))
+				return false;
 			break;
 		}
 	}
 
 	ready_ = false;
-	closeHandles(MAX_PIPES - 1);
+	closeHandles();
+	return true;
 }
 
 
-void LyXComm::closeHandles(DWORD index)
+void LyXComm::closeHandles()
 {
-	for (int i = 0; i <= int(index); ++i) {
+	for (int i = 0; i < MAX_PIPES; ++i) {
 		if (event_[i]) {
 			ResetEvent(event_[i]);
 			CloseHandle(event_[i]);
+			event_[i] = 0;
 		}
-		if (pipe_[i].handle != INVALID_HANDLE_VALUE)
+		if (pipe_[i].handle != INVALID_HANDLE_VALUE) {
 			CloseHandle(pipe_[i].handle);
+			pipe_[i].handle = INVALID_HANDLE_VALUE;
+		}
 	}
 }
 
@@ -373,23 +406,23 @@ bool LyXComm::event(QEvent * e)
 }
 
 
-BOOL LyXComm::checkStopServer()
+bool LyXComm::checkStopServer()
 {
 	return WaitForSingleObject(stopserver_, 0) == WAIT_OBJECT_0;
 }
 
 
-void LyXComm::startPipe(DWORD index)
+bool LyXComm::startPipe(DWORD index)
 {
 	pipe_[index].pending_io = false;
 
 	// Overlapped ConnectNamedPipe should return zero.
 	if (ConnectNamedPipe(pipe_[index].handle, &pipe_[index].overlap)) {
-		// FIXME: What to do? Maybe the pipe server should be reset.
+		DWORD const error = GetLastError();
 		lyxerr << "LyXComm: Could not connect pipe "
 		       << external_path(pipeName(index))
-		       << "\nLyXComm: " << errormsg() << endl;
-		return;
+		       << "\nLyXComm: " << errormsg(error) << endl;
+		return false;
 	}
 
 	switch (GetLastError()) {
@@ -402,26 +435,31 @@ void LyXComm::startPipe(DWORD index)
 		// Client is already connected, so signal an event.
 		if (SetEvent(pipe_[index].overlap.hEvent))
 			break;
+		// fall through
 	default:
 		// Anything else is an error.
-		// FIXME: What to do? Maybe the pipe server should be reset.
+		DWORD const error = GetLastError();
 		lyxerr << "LyXComm: An error occurred while connecting pipe "
 		       << external_path(pipeName(index))
-		       << "\nLyXComm: " << errormsg() << endl;
+		       << "\nLyXComm: " << errormsg(error) << endl;
+		return false;
 	}
+
+	return true;
 }
 
 
-void LyXComm::resetPipe(DWORD index, bool close_handle)
+bool LyXComm::resetPipe(DWORD index, bool close_handle)
 {
 	// This method is called when an error occurs or when a client
 	// closes the connection. We first disconnect the pipe instance,
 	// then reconnect it, ready to wait for another client.
 
 	if (!DisconnectNamedPipe(pipe_[index].handle)) {
+		DWORD const error = GetLastError();
 		lyxerr << "LyXComm: Could not disconnect pipe "
 		       << external_path(pipeName(index))
-		       << "\nLyXComm: " << errormsg() << endl;
+		       << "\nLyXComm: " << errormsg(error) << endl;
 		// What to do now? Let's try whether re-creating the pipe helps.
 		close_handle = true;
 	}
@@ -442,16 +480,19 @@ void LyXComm::resetPipe(DWORD index, bool close_handle)
 				PIPE_TIMEOUT, NULL);
 
 		if (pipe_[index].handle == INVALID_HANDLE_VALUE) {
+			DWORD const error = GetLastError();
 			lyxerr << "LyXComm: Could not reset pipe " << name
-			       << "\nLyXComm: " << errormsg() << endl;
-			return;
+			       << "\nLyXComm: " << errormsg(error) << endl;
+			return false;
 		}
 	}
 
-	startPipe(index);
+	if (!startPipe(index))
+		return false;
 	pipe_[index].state = pipe_[index].pending_io ?
 			CONNECTING_STATE : (is_outpipe ? WRITING_STATE
 						       : READING_STATE);
+	return true;
 }
 
 
@@ -464,8 +505,6 @@ void LyXComm::openConnection()
 		LYXERR(Debug::LYXSERVER, "LyXComm: Already connected");
 		return;
 	}
-	// We assume that we don't make it
-	ready_ = false;
 
 	if (pipename_.empty()) {
 		LYXERR(Debug::LYXSERVER, "LyXComm: server is disabled, nothing to do");
@@ -484,8 +523,9 @@ void LyXComm::openConnection()
 	// Mutex with no initial owner for synchronized access to outbuf_
 	outbuf_mutex_ = CreateMutex(NULL, FALSE, NULL);
 	if (!outbuf_mutex_) {
+		DWORD const error = GetLastError();
 		lyxerr << "LyXComm: Could not create output buffer mutex"
-		       << "\nLyXComm: " << errormsg() << endl;
+		       << "\nLyXComm: " << errormsg(error) << endl;
 		pipename_.erase();
 		return;
 	}
@@ -493,8 +533,9 @@ void LyXComm::openConnection()
 	// Manual-reset event, initial state = not signaled
 	stopserver_ = CreateEvent(NULL, TRUE, FALSE, NULL);
 	if (!stopserver_) {
+		DWORD const error = GetLastError();
 		lyxerr << "LyXComm: Could not create stop server event"
-		       << "\nLyXComm: " << errormsg() << endl;
+		       << "\nLyXComm: " << errormsg(error) << endl;
 		pipename_.erase();
 		CloseHandle(outbuf_mutex_);
 		return;
@@ -503,8 +544,9 @@ void LyXComm::openConnection()
 	server_thread_ = CreateThread(NULL, 0, pipeServerWrapper,
 				     static_cast<void *>(this), 0, NULL);
 	if (!server_thread_) {
+		DWORD const error = GetLastError();
 		lyxerr << "LyXComm: Could not create pipe server thread"
-		       << "\nLyXComm: " << errormsg() << endl;
+		       << "\nLyXComm: " << errormsg(error) << endl;
 		pipename_.erase();
 		CloseHandle(stopserver_);
 		CloseHandle(outbuf_mutex_);
@@ -544,8 +586,11 @@ void LyXComm::emergencyCleanup()
 		SetEvent(stopserver_);
 		// Forcibly terminate the pipe server thread if it does
 		// not finish quickly.
-		if (WaitForSingleObject(server_thread_, 200) != WAIT_OBJECT_0)
+		if (WaitForSingleObject(server_thread_, 200) != WAIT_OBJECT_0) {
 			TerminateThread(server_thread_, 0);
+			ready_ = false;
+			closeHandles();
+		}
 		CloseHandle(server_thread_);
 		ResetEvent(stopserver_);
 		CloseHandle(stopserver_);
@@ -613,9 +658,10 @@ void LyXComm::send(string const & msg)
 		ReleaseMutex(outbuf_mutex_);
 	} else {
 		// Something is fishy, better resetting the connection.
+		DWORD const error = GetLastError();
 		lyxerr << "LyXComm: Error sending message: " << msg
-		       << "\nLyXComm: " << errormsg()
-		       << "LyXComm: Resetting connection" << endl;
+		       << "\nLyXComm: " << errormsg(error)
+		       << "\nLyXComm: Resetting connection" << endl;
 		ReleaseMutex(outbuf_mutex_);
 		closeConnection();
 		if (!checkStopServer())

@@ -42,6 +42,8 @@ class LyXComm : public boost::signals::trackable {
 class LyXComm : public QObject {
 	Q_OBJECT
 
+	friend DWORD pipeServerWrapper(void *);
+
 public:
 	/// Max number of clients
 	enum { MAX_CLIENTS = 10 };
@@ -98,9 +100,6 @@ public:
 	void read_ready();
 #else
 	void read_ready(DWORD);
-
-	/// The pipe server
-	void pipeServer();
 #endif
 
 private:
@@ -129,20 +128,23 @@ private:
 	/// This is -1 if not open
 	int outfd_;
 #else
+	/// The pipe server returns false when exiting due to an error
+	bool pipeServer();
+
 	/// Start an overlapped connection
-	void startPipe(DWORD);
+	bool startPipe(DWORD);
 
 	/// Reset an overlapped connection
-	void resetPipe(DWORD, bool close_handle = false);
+	bool resetPipe(DWORD, bool close_handle = false);
 
 	/// Close event and pipe handles
-	void closeHandles(DWORD);
+	void closeHandles();
 
 	/// Catch pipe ready-to-be-read notification
 	bool event(QEvent *);
 
 	/// Check whether the pipe server must be stopped
-	BOOL checkStopServer();
+	bool checkStopServer();
 
 	/// The filename of a (in or out) pipe instance
 	std::string const pipeName(DWORD) const;
