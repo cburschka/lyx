@@ -8,9 +8,9 @@ Function UpdateModifiedFiles
  #File "${PRODUCT_SOURCEDIR}\bin\QtGui4.dll"
  SetOutPath "$INSTDIR\Resources" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
- #File "${PRODUCT_SOURCEDIR}\Resources\chkconfig.ltx"
  #File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
- #File "${PRODUCT_SOURCEDIR}\Resources\symbols"
+ File "${PRODUCT_SOURCEDIR}\Resources\languages"
+ File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"
  #SetOutPath "$INSTDIR\Resources\bind"
  #File "${PRODUCT_SOURCEDIR}\Resources\bind\cua.bind"
  SetOutPath "$INSTDIR\Resources\doc"
