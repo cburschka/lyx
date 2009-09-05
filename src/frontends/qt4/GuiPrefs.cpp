@@ -1632,6 +1632,10 @@ PrefFileformats::PrefFileformats(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(defaultFormatCB, SIGNAL(activated(QString)),
 		this, SIGNAL(changed()));
+	connect(viewerCO, SIGNAL(activated(int)),
+		this, SIGNAL(changed()));
+	connect(editorCO, SIGNAL(activated(int)),
+		this, SIGNAL(changed()));
 }
 
 
@@ -1660,6 +1664,8 @@ void PrefFileformats::apply(LyXRC & rc) const
 
 void PrefFileformats::update(LyXRC const & rc)
 {
+	viewer_alternatives = rc.viewer_alternatives;
+	editor_alternatives = rc.editor_alternatives;
 	bool const init = defaultFormatCB->currentText().isEmpty();
 	updateView();
 	if (init) {
@@ -1713,10 +1719,10 @@ void PrefFileformats::on_formatsCB_currentIndexChanged(int i)
 	extensionED->setText(toqstr(f.extension()));
 	shortcutED->setText(
 		toqstr(l10n_shortcut(f.prettyname(), f.shortcut())));
-	viewerED->setText(toqstr(f.viewer()));
-	editorED->setText(toqstr(f.editor()));
 	documentCB->setChecked((f.documentFormat()));
 	vectorCB->setChecked((f.vectorFormat()));
+	updateViewers();
+	updateEditors();
 }
 
 
@@ -1810,6 +1816,68 @@ void PrefFileformats::updatePrettyname()
 	formatsChanged();
 	updateView();
 	changed();
+}
+
+
+void PrefFileformats::updateViewers()
+{
+	Format const f = currentFormat();
+	viewerCO->clear();
+	viewerCO->addItem(qt_("None"), QString());
+	for (vector<pair<string, string> >::const_iterator it = viewer_alternatives.begin();
+			    it != viewer_alternatives.end(); ++it) {
+		if (it->first == f.name())
+			viewerCO->addItem(toqstr(it->second), toqstr(it->second));
+	}
+	viewerCO->addItem(qt_("Custom"), QString("custom viewer"));
+
+	int pos = viewerCO->findData(toqstr(f.viewer()));
+	if (pos != -1) {
+		viewerED->clear();
+		viewerED->setEnabled(false);
+		viewerCO->setCurrentIndex(pos);
+	} else {
+		viewerED->setEnabled(true);
+		viewerED->setText(toqstr(f.viewer()));
+		viewerCO->setCurrentIndex(viewerCO->findData(toqstr("custom viewer")));
+	}
+}
+
+
+void PrefFileformats::updateEditors()
+{
+	Format const f = currentFormat();
+	editorCO->clear();
+	editorCO->addItem(qt_("None"), QString());
+	for (vector<pair<string, string> >::const_iterator it = editor_alternatives.begin();
+			    it != editor_alternatives.end(); ++it) {
+		if (it->first == f.name())
+			editorCO->addItem(toqstr(it->second), toqstr(it->second));
+	}
+	editorCO->addItem(qt_("Custom"), QString("custom editor"));
+
+	int pos = editorCO->findData(toqstr(f.editor()));
+	if (pos != -1) {
+		editorED->clear();
+		editorED->setEnabled(false);
+		editorCO->setCurrentIndex(pos);
+	} else {
+		editorED->setEnabled(true);
+		editorED->setText(toqstr(f.viewer()));
+		editorCO->setCurrentIndex(viewerCO->findData(toqstr("custom editor")));
+	}
+}
+
+
+void PrefFileformats::on_viewerCO_currentIndexChanged(int i)
+{
+	viewerED->setEnabled(viewerCO->itemData(i).toString() == "custom viewer");
+}
+
+
+void PrefFileformats::on_editorCO_currentIndexChanged(int i)
+{
+	editorED->setEnabled(editorCO->itemData(i).toString() == "custom editor");
 }
 
 

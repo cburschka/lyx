@@ -367,11 +367,21 @@ private Q_SLOTS:
 	void on_formatsCB_editTextChanged(const QString &);
 	void on_formatNewPB_clicked();
 	void on_formatRemovePB_clicked();
+	void on_viewerCO_currentIndexChanged(int i);
+	void on_editorCO_currentIndexChanged(int i);
 	void setFlags();
 	void updatePrettyname();
 
 private:
 	Format & currentFormat();
+	///
+	void updateViewers();
+	///
+	void updateEditors();
+	///
+	std::vector<std::pair<std::string, std::string> > viewer_alternatives;
+	///
+	std::vector<std::pair<std::string, std::string> > editor_alternatives;
 };
 
 

@@ -87,6 +87,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\dialogs_iconify_with_main", LyXRC::RC_DIALOGS_ICONIFY_WITH_MAIN },
 	{ "\\display_graphics", LyXRC::RC_DISPLAY_GRAPHICS },
 	{ "\\document_path", LyXRC::RC_DOCUMENTPATH },
+	{ "\\editor_alternatives", LyXRC::RC_EDITOR_ALTERNATIVES },
 	{ "\\escape_chars", LyXRC::RC_ESC_CHARS },
 	{ "\\example_path", LyXRC::RC_EXAMPLEPATH },
 	{ "\\font_encoding", LyXRC::RC_FONT_ENCODING },
@@ -195,6 +196,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\view_dvi_paper_option", LyXRC::RC_VIEWDVI_PAPEROPTION },
 	// compatibility with versions older than 1.4.0 only
 	{ "\\viewer", LyXRC::RC_VIEWER},
+	{ "\\viewer_alternatives", LyXRC::RC_VIEWER_ALTERNATIVES },
 	{ "\\visual_cursor" ,LyXRC::RC_VISUAL_CURSOR}
 };
 
@@ -1032,6 +1034,19 @@ int LyXRC::read(Lexer & lexrc)
 			}
 			break;
 		}
+		case RC_VIEWER_ALTERNATIVES:  {
+			string format, command;
+			lexrc >> format >> command;
+			viewer_alternatives.push_back(make_pair(format, command));
+			break;
+		}
+		case RC_EDITOR_ALTERNATIVES:  {
+			string format, command;
+			lexrc >> format >> command;
+			editor_alternatives.push_back(make_pair(format, command));
+			break;
+		}
+
 		case RC_DEFAULT_VIEW_FORMAT:
 			lexrc >> default_view_format;
 			break;
@@ -2457,6 +2472,26 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 			if (!formats.getFormat(cit->name()))
 				os << "\\format \"" << cit->name()
 				   << "\" \"\" \"\" \"\" \"\" \"\" \"\"\n";
+		if (tag != RC_LAST)
+			break;
+	case RC_VIEWER_ALTERNATIVES:
+		if (ignore_system_lyxrc ||
+		    viewer_alternatives != system_lyxrc.viewer_alternatives) {
+			for (vector<pair<string, string> >::const_iterator it = viewer_alternatives.begin();
+			     it != viewer_alternatives.end(); ++it)
+			os << "\\viewer_alternatives "
+			   << it->first << " " << it->second << "\n";
+		}
+		if (tag != RC_LAST)
+			break;
+	case RC_EDITOR_ALTERNATIVES:
+		if (ignore_system_lyxrc ||
+		    editor_alternatives != system_lyxrc.editor_alternatives) {
+			for (vector<pair<string, string> >::const_iterator it = editor_alternatives.begin();
+			     it != editor_alternatives.end(); ++it)
+			os << "\\editor_alternatives "
+			   << it->first << " " << it->second << "\n";
+		}
 		if (tag != RC_LAST)
 			break;
 	case RC_DEFAULT_VIEW_FORMAT:

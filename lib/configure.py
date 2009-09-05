@@ -178,7 +178,6 @@ def checkProg(description, progs, rc_entry = [], path = [], not_found = ''):
     return ['', not_found]
 
 
-## Searching some useful programs
 def checkProgAlternatives(description, progs, rc_entry = [], alt_rc_entry = [], path = [], not_found = ''):
     ''' 
         The same as checkProg, but additionally, all found programs will be added
@@ -187,10 +186,6 @@ def checkProgAlternatives(description, progs, rc_entry = [], alt_rc_entry = [], 
     # one rc entry for each progs plus not_found entry
     if len(rc_entry) > 1 and len(rc_entry) != len(progs) + 1:
         logger.error("rc entry should have one item or item for each prog and not_found.")
-        sys.exit(2)
-    # check if alt rcs are given
-    if len(alt_rc_entry) > 1 and len(alt_rc_entry) != len(rc_entry):
-        logger.error("invalid alt_rc_entry specification.")
         sys.exit(2)
     logger.info('checking for ' + description + '...')
     ## print '(' + ','.join(progs) + ')',
@@ -221,9 +216,17 @@ def checkProgAlternatives(description, progs, rc_entry = [], alt_rc_entry = [], 
                         real_ac_word = ac_word
                         found_prime = True
                     if len(alt_rc_entry) == 1:
-                        addToRC(alt_rc_entry[0].replace('%%', ac_prog))
+                        alt_rc = alt_rc_entry[0]
+                        if alt_rc == "":
+                            # if no explicit alt_rc is given, construct one
+                            alt_rc = rc_entry[0] + "_alternatives"
+                        addToRC(alt_rc.replace('%%', ac_prog))
                     elif len(alt_rc_entry) > 1:
-                        addToRC(alt_rc_entry[idx].replace('%%', ac_prog))
+                        alt_rc = alt_rc_entry[idx]
+                        if alt_rc == "":
+                            # if no explicit alt_rc is given, construct one
+                            alt_rc = rc_entry[idx] + "_alternatives"
+                        addToRC(alt_rc.replace('%%', ac_prog))
                     found_alt = True
                     break
             if found_alt:
@@ -239,9 +242,128 @@ def checkProgAlternatives(description, progs, rc_entry = [], alt_rc_entry = [], 
     return ['', not_found]
 
 
+def addViewerAlternatives(rcs):
+    r = re.compile(r'\\Format (\S+).*$')
+    m = None
+    alt = ''
+    for idxx in range(len(rcs)):
+        if len(rcs) == 1:
+            m = r.match(rcs[0])
+            if m:
+                alt = r'\viewer_alternatives ' + m.group(1) + " %%"
+        elif len(rcs) > 1:
+            m = r.match(rcs[idxx])
+            if m:
+                if idxx > 0:
+                    alt += '\n'
+                alt += r'\viewer_alternatives ' + m.group(1) + " %%"
+    return alt
+
+
+def addEditorAlternatives(rcs):
+    r = re.compile(r'\\Format (\S+).*$')
+    m = None
+    alt = ''
+    for idxx in range(len(rcs)):
+        if len(rcs) == 1:
+            m = r.match(rcs[0])
+            if m:
+                alt = r'\editor_alternatives ' + m.group(1) + " %%"
+        elif len(rcs) > 1:
+            m = r.match(rcs[idxx])
+            if m:
+                if idxx > 0:
+                    alt += '\n'
+                alt += r'\editor_alternatives ' + m.group(1) + " %%"
+    return alt
+
+
 def checkViewer(description, progs, rc_entry = [], path = []):
-    ''' The same as checkProg, but for viewers and editors '''
-    return checkProg(description, progs, rc_entry, path, not_found = 'auto')
+    ''' The same as checkProgAlternatives, but for viewers '''
+    if len(rc_entry) > 1 and len(rc_entry) != len(progs) + 1:
+        logger.error("rc entry should have one item or item for each prog and not_found.")
+        sys.exit(2)
+    alt_rc_entry = []
+    for idx in range(len(progs)):
+        if len(rc_entry) == 1:
+            logger.info("rc_entry: " + rc_entry[0])
+            rcs = rc_entry[0].split('\n')
+            alt = addViewerAlternatives(rcs)
+            alt_rc_entry.insert(0, alt)
+        elif len(rc_entry) > 1:
+            logger.info("rc_entry: " + rc_entry[idx])
+            rcs = rc_entry[idx].split('\n')
+            alt = addViewerAlternatives(rcs)
+            alt_rc_entry.insert(idx, alt)
+    return checkProgAlternatives(description, progs, rc_entry, alt_rc_entry, path, not_found = 'auto')
+
+
+def checkEditor(description, progs, rc_entry = [], path = []):
+    ''' The same as checkProgAlternatives, but for editors '''
+    if len(rc_entry) > 1 and len(rc_entry) != len(progs) + 1:
+        logger.error("rc entry should have one item or item for each prog and not_found.")
+        sys.exit(2)
+    alt_rc_entry = []
+    for idx in range(len(progs)):
+        if len(rc_entry) == 1:
+            logger.info("rc_entry: " + rc_entry[0])
+            rcs = rc_entry[0].split('\n')
+            alt = addEditorAlternatives(rcs)
+            alt_rc_entry.insert(0, alt)
+        elif len(rc_entry) > 1:
+            logger.info("rc_entry: " + rc_entry[idx])
+            rcs = rc_entry[idx].split('\n')
+            alt = addEditorAlternatives(rcs)
+            alt_rc_entry.insert(idx, alt)
+    return checkProgAlternatives(description, progs, rc_entry, alt_rc_entry, path, not_found = 'auto')
+
+
+def checkViewerNoRC(description, progs, rc_entry = [], path = []):
+    ''' The same as checkViewer, but do not add rc entry '''
+    if len(rc_entry) > 1 and len(rc_entry) != len(progs) + 1:
+        logger.error("rc entry should have one item or item for each prog and not_found.")
+        sys.exit(2)
+    alt_rc_entry = []
+    for idx in range(len(progs)):
+        if len(rc_entry) == 1:
+            logger.info("rc_entry: " + rc_entry[0])
+            rcs = rc_entry[0].split('\n')
+            alt = addViewerAlternatives(rcs)
+            alt_rc_entry.insert(0, alt)
+        elif len(rc_entry) > 1:
+            logger.info("rc_entry: " + rc_entry[idx])
+            rcs = rc_entry[idx].split('\n')
+            alt = addViewerAlternatives(rcs)
+            alt_rc_entry.insert(idx, alt)
+    rc_entry = []
+    return checkProgAlternatives(description, progs, rc_entry, alt_rc_entry, path, not_found = 'auto')
+
+
+def checkEditorNoRC(description, progs, rc_entry = [], path = []):
+    ''' The same as checkViewer, but do not add rc entry '''
+    if len(rc_entry) > 1 and len(rc_entry) != len(progs) + 1:
+        logger.error("rc entry should have one item or item for each prog and not_found.")
+        sys.exit(2)
+    alt_rc_entry = []
+    for idx in range(len(progs)):
+        if len(rc_entry) == 1:
+            logger.info("rc_entry: " + rc_entry[0])
+            rcs = rc_entry[0].split('\n')
+            alt = addEditorAlternatives(rcs)
+            alt_rc_entry.insert(0, alt)
+        elif len(rc_entry) > 1:
+            logger.info("rc_entry: " + rc_entry[idx])
+            rcs = rc_entry[idx].split('\n')
+            alt = addEditorAlternatives(rcs)
+            alt_rc_entry.insert(idx, alt)
+    rc_entry = []
+    return checkProgAlternatives(description, progs, rc_entry, alt_rc_entry, path, not_found = 'auto')
+
+
+def checkViewerEditor(description, progs, rc_entry = [], path = []):
+    ''' The same as checkProgAlternatives, but for viewers and editors '''
+    checkEditorNoRC(description, progs, rc_entry, path)
+    return checkViewer(description, progs, rc_entry, path)
 
 
 def checkDTLtools():
@@ -309,23 +431,43 @@ def checkLatex(dtl_tools):
 
 def checkFormatEntries(dtl_tools):  
     ''' Check all formats (\Format entries) '''
-    checkViewer('a Tgif viewer and editor', ['tgif'],
+    checkViewerEditor('a Tgif viewer and editor', ['tgif'],
         rc_entry = [r'\Format tgif       obj     Tgif                   "" "%%"	"%%"	"vector"'])
     #
-    checkViewer('a FIG viewer and editor', ['xfig', 'jfig3-itext.jar', 'jfig3.jar'],
+    checkViewerEditor('a FIG viewer and editor', ['xfig', 'jfig3-itext.jar', 'jfig3.jar'],
         rc_entry = [r'\Format fig        fig     FIG                    "" "%%"	"%%"	"vector"'])
     #
-    checkViewer('a Dia viewer and editor', ['dia'],
+    checkViewerEditor('a Dia viewer and editor', ['dia'],
         rc_entry = [r'\Format dia        dia     DIA                    "" "%%"	"%%"	"vector"'])
     #
-    checkViewer('a Grace viewer and editor', ['xmgrace'],
+    checkViewerEditor('a Grace viewer and editor', ['xmgrace'],
         rc_entry = [r'\Format agr        agr     Grace                  "" "%%"	"%%"	"vector"'])
     #
-    checkViewer('a FEN viewer and editor', ['xboard -lpf $$i -mode EditPosition'],
+    checkViewerEditor('a FEN viewer and editor', ['xboard -lpf $$i -mode EditPosition'],
         rc_entry = [r'\Format fen        fen     FEN                    "" "%%"	"%%"	""'])
     #
-    path, iv = checkViewer('a raster image viewer', ['xv', 'kview', 'gimp-remote', 'gimp'])
-    path, ie = checkViewer('a raster image editor', ['gimp-remote', 'gimp'])
+    path, iv = checkViewerNoRC('a raster image viewer', ['xv', 'kview', 'gimp-remote', 'gimp'],
+        rc_entry = [r'''\Format bmp        bmp     BMP                    "" "%s"	"%s"	""
+\Format gif        gif     GIF                    "" "%s"	"%s"	""
+\Format jpg        jpg     JPEG                   "" "%s"	"%s"	""
+\Format pbm        pbm     PBM                    "" "%s"	"%s"	""
+\Format pgm        pgm     PGM                    "" "%s"	"%s"	""
+\Format png        png     PNG                    "" "%s"	"%s"	""
+\Format ppm        ppm     PPM                    "" "%s"	"%s"	""
+\Format tiff       tif     TIFF                   "" "%s"	"%s"	""
+\Format xbm        xbm     XBM                    "" "%s"	"%s"	""
+\Format xpm        xpm     XPM                    "" "%s"	"%s"	""'''])
+    path, ie = checkEditorNoRC('a raster image editor', ['gimp-remote', 'gimp'],
+        rc_entry = [r'''\Format bmp        bmp     BMP                    "" "%s"	"%s"	""
+\Format gif        gif     GIF                    "" "%s"	"%s"	""
+\Format jpg        jpg     JPEG                   "" "%s"	"%s"	""
+\Format pbm        pbm     PBM                    "" "%s"	"%s"	""
+\Format pgm        pgm     PGM                    "" "%s"	"%s"	""
+\Format png        png     PNG                    "" "%s"	"%s"	""
+\Format ppm        ppm     PPM                    "" "%s"	"%s"	""
+\Format tiff       tif     TIFF                   "" "%s"	"%s"	""
+\Format xbm        xbm     XBM                    "" "%s"	"%s"	""
+\Format xpm        xpm     XPM                    "" "%s"	"%s"	""'''])
     addToRC(r'''\Format bmp        bmp     BMP                    "" "%s"	"%s"	""
 \Format gif        gif     GIF                    "" "%s"	"%s"	""
 \Format jpg        jpg     JPEG                   "" "%s"	"%s"	""
@@ -338,7 +480,7 @@ def checkFormatEntries(dtl_tools):
 \Format xpm        xpm     XPM                    "" "%s"	"%s"	""''' % \
         (iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie) )
     #
-    checkViewer('a text editor', ['sensible-editor', 'xemacs', 'gvim', 'kedit', 'kwrite', 'kate', \
+    checkViewerEditor('a text editor', ['sensible-editor', 'xemacs', 'gvim', 'kedit', 'kwrite', 'kate', \
         'nedit', 'gedit', 'notepad'],
         rc_entry = [r'''\Format asciichess asc    "Plain text (chess output)"  "" ""	"%%"	""
 \Format asciiimage asc    "Plain text (image)"         "" ""	"%%"	""
@@ -365,7 +507,7 @@ def checkFormatEntries(dtl_tools):
     if xhtmlview == "":
         addToRC(r'\Format xhtml      html   "LyX HTML"              "" "" "%%"  "document"')
  #
-    checkViewer('a BibTeX editor', ['sensible-editor', 'jabref', 'JabRef', \
+    checkEditor('a BibTeX editor', ['sensible-editor', 'jabref', 'JabRef', \
         'pybliographic', 'bibdesk', 'gbib', 'kbib', \
         'kbibtex', 'sixpack', 'bibedit', 'tkbibtex' \
         'xemacs', 'gvim', 'kedit', 'kwrite', 'kate', \
@@ -394,10 +536,10 @@ def checkFormatEntries(dtl_tools):
     checkViewer('an HTML previewer', ['firefox', 'mozilla file://$$p$$i', 'netscape'],
         rc_entry = [r'\Format html       html    HTML                   H  "%%"	""	"document"'])
     #
-    checkViewer('Noteedit', ['noteedit'],
+    checkViewerEditor('Noteedit', ['noteedit'],
         rc_entry = [r'\Format noteedit   not     Noteedit               "" "%%"	"%%"	"vector"'])
     #
-    checkViewer('an OpenDocument viewer', ['swriter', 'oowriter'],
+    checkViewerEditor('an OpenDocument viewer', ['swriter', 'oowriter'],
         rc_entry = [r'\Format odt        odt     OpenDocument           "" "%%"	"%%"	"document,vector"'])
     #
     # entried that do not need checkProg

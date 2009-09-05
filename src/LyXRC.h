@@ -24,6 +24,7 @@
 
 #include <set>
 #include <string>
+#include <vector>
 
 
 namespace lyx {
@@ -71,6 +72,7 @@ public:
 		RC_DIALOGS_ICONIFY_WITH_MAIN,
 		RC_DISPLAY_GRAPHICS,
 		RC_DOCUMENTPATH,
+		RC_EDITOR_ALTERNATIVES,
 		RC_ESC_CHARS,
 		RC_EXAMPLEPATH,
 		RC_FONT_ENCODING,
@@ -177,6 +179,7 @@ public:
 		RC_USE_SPELL_LIB,
 		RC_VIEWDVI_PAPEROPTION,
 		RC_VIEWER,
+		RC_VIEWER_ALTERNATIVES,
 		RC_VISUAL_CURSOR,
 		RC_LAST
 	};
@@ -383,6 +386,10 @@ public:
 	std::string gui_language;
 	///
 	std::string default_view_format;
+	/// all available viewers
+	std::vector<std::pair<std::string, std::string> > viewer_alternatives;
+	/// all available editors
+	std::vector<std::pair<std::string, std::string> > editor_alternatives;
 	///
 	bool mac_like_word_movement;
 	///

@@ -1978,6 +1978,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 			if (path.exists() && path.isDirectory())
 				package().document_dir() = FileName(lyxrc.document_path);
 		}
+	case LyXRC::RC_EDITOR_ALTERNATIVES:
 	case LyXRC::RC_ESC_CHARS:
 	case LyXRC::RC_EXAMPLEPATH:
 	case LyXRC::RC_FONT_ENCODING:
@@ -2085,6 +2086,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_FULL_SCREEN_WIDTH:
 	case LyXRC::RC_VISUAL_CURSOR:
 	case LyXRC::RC_VIEWER:
+	case LyXRC::RC_VIEWER_ALTERNATIVES:
 	case LyXRC::RC_LAST:
 		break;
 	}
