@@ -42,7 +42,7 @@ class LyXComm : public boost::signals::trackable {
 class LyXComm : public QObject {
 	Q_OBJECT
 
-	friend DWORD pipeServerWrapper(void *);
+	friend DWORD WINAPI pipeServerWrapper(void *);
 
 public:
 	/// Max number of clients
