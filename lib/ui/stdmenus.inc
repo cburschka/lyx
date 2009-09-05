@@ -560,7 +560,6 @@ Menuset
 		Item "Customization|C" "help-open Customization"
 		Item "Shortcuts|S" "help-open Shortcuts"
 		Item "LyX Functions|y" "help-open LFUNs"
-		Item "Advanced Search" "help-open AdvancedSearch"
 		Item "LaTeX Configuration|L" "help-open LaTeXConfig"
 		Submenu "Specific Manuals|p" "examples"
 		Separator
