@@ -352,7 +352,7 @@ void LyXComm::pipeServer()
 
 void LyXComm::closeHandles(DWORD index)
 {
-	for (int i = 0; i <= index; ++i) {
+	for (int i = 0; i <= int(index); ++i) {
 		if (event_[i]) {
 			ResetEvent(event_[i]);
 			CloseHandle(event_[i]);
