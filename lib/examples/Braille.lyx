@@ -1,4 +1,4 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -70,18 +70,6 @@ How to write Braille with LyX
 
 \begin_layout Author
 Uwe Stöhr
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset CommandInset href
-LatexCommand href
-target "uwestoehr@web.de"
-type "mailto:"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -123,7 +111,7 @@ Braille
 
 (textsize)
 \family default
- from the end of LyX's environment selection box and write your text.
+ from LyX's environment selection box and write your text.
  The other Braille environments are only turn on/off some properties as
  described below; keep them empty!
 \end_layout
@@ -160,8 +148,8 @@ This is an example sentence written in Braille.
 \begin_inset VSpace bigskip
 \end_inset
 
-You can see that LaTeX is not able to hyphenate words written in Braille.
- You have to do this manually.
+You can see that LaTeX is not able to hyphenate words written in Braille;
+ you have to do this manually.
 \end_layout
 
 \begin_layout Standard
@@ -195,7 +183,7 @@ $
 \begin_inset Quotes erd
 \end_inset
 
-, accented characters like umlauts, and line breaks are not supported.
+, accented characters like umlauts, as well as line breaks are not supported.
 \end_layout
 
 \end_inset
@@ -216,7 +204,7 @@ status open
 \series bold
 Note:
 \series default
- LyX and LaTeX's proper names 
+ LyX's and LaTeX's proper names 
 \begin_inset Quotes eld
 \end_inset
 
@@ -248,7 +236,7 @@ LyX
 \begin_inset Quotes erd
 \end_inset
 
- must be inserted as ERT, as in the following example:
+ must be inserted as TeX code like in the following example:
 \end_layout
 
 \end_inset
@@ -318,7 +306,15 @@ This is Braille.
 \begin_inset VSpace bigskip
 \end_inset
 
-Default:
+
+\family sans
+Braille
+\begin_inset space ~
+\end_inset
+
+(default)
+\family default
+:
 \end_layout
 
 \begin_layout Braille (default)
@@ -326,7 +322,15 @@ This is Braille.
 \end_layout
 
 \begin_layout Standard
-Size that approximately matches the document's text size:
+
+\family sans
+Braille
+\begin_inset space ~
+\end_inset
+
+(textsize)
+\family default
+ - size that approximately matches the document's text size:
 \end_layout
 
 \begin_layout Braille (textsize)
@@ -337,7 +341,15 @@ This is Braille.
 \begin_inset VSpace bigskip
 \end_inset
 
-Tiny dots can be displayed at empty positions:
+
+\family sans
+Braille
+\begin_inset space ~
+\end_inset
+
+(dots on)
+\family default
+ - tiny dots can be displayed at empty positions:
 \end_layout
 
 \begin_layout Braille (dots on)
@@ -352,8 +364,8 @@ This is Braille.
 \begin_inset VSpace bigskip
 \end_inset
 
-The text can be printed mirrored to be later able to for "print" Braille
- by hand with a needle or another suitable method:
+Text can be printed mirrored to be later able to for "print" Braille by
+ hand with a needle or another suitable method:
 \end_layout
 
 \begin_layout Standard
@@ -365,7 +377,15 @@ This is Braille.
 \end_layout
 
 \begin_layout Standard
-Mirrored:
+
+\family sans
+Braille
+\begin_inset space ~
+\end_inset
+
+(mirror on)
+\family default
+:
 \end_layout
 
 \begin_layout Braille (mirror on)
@@ -396,12 +416,12 @@ Custom
 insets
 \family default
 .
- Every number that is in this box, turns on the corresponding Braille dot,
- for example the number
+ Every number in this box turns on the corresponding Braille dot.
+ For example leads the number
 \series bold
  6145
 \series default
- box leads to:
+ to:
 \begin_inset Newline newline
 \end_inset
 
@@ -433,8 +453,8 @@ dots can be turned on with the command
 brailleeightdotstrue
 \series default
 .
- But the two extra dots are only used when using a Braille box.
- For example the number
+ But the two extra dots are only printed when using a Braille box.
+ For example leads the number
 \series bold
  8175
 \series default
@@ -505,8 +525,7 @@ g.
 \begin_inset space \space{}
 \end_inset
 
-double-sized Braille where also the tiny dots have the double size, use
- this command in TeX code in your document:
+double-sized Braille use this command in TeX code in your document:
 \end_layout
 
 \begin_layout Standard
@@ -600,10 +619,14 @@ braille{#1}}
 \begin_inset VSpace bigskip
 \end_inset
 
-For more informations about the Braille cell dimensions have a look at 
+For more informations about the Braille cell dimensions have a look at
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset CommandInset href
 LatexCommand href
-name "Braille cell dimensions"
+name "http://www.tiresias.org/research/reports/braille_cell.htm"
 target "http://www.tiresias.org/research/reports/braille_cell.htm"
 
 \end_inset

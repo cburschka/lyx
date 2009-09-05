@@ -1,4 +1,4 @@
-#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -8,17 +8,17 @@
 \renewenvironment{lyxgreyedout}
  {\textcolor{blue}\bgroup}{\egroup}
 
-% évite les caractères actifs en français - JPC 17/09/2009
-%essai infructueux
-%\let\braillenormalorig\braillenormal
-%\renewcommand{\braillenormal}[1]{%
- %  \begin{otherlanguage{english}\braillenormalorig{#1}\end{otherlanguage}%
-%}
+%évite les caractères actifs en français - JPC 17/09/2009
+\let\braillenormalorig\braillenormal
+\renewcommand{\braillenormal}[1]{%
+   \begin{otherlanguage}{english}\braillenormalorig{#1}\end{otherlanguage}%
+}
 %\let\brailletextorig\brailletext
 %\renewcommand{\brailletext[1]{%
 %   \begin{otherlanguage{english}\brailletext{#1}\end{otherlanguage}%
 %}
 \end_preamble
+\options english
 \use_default_options false
 \begin_modules
 braille
@@ -83,7 +83,20 @@ status open
 \begin_layout Plain Layout
 Cette traduction met en évidence les limites du paquetage LaTeX Braille
  (anglophone) pour le français...
+ En particulier, notez que le préfixe majuscule est celui du Braille anglophone,
+ ce code est en français celui du préfixe numérique.
+ Pour tous les caractères spécifiques au français, il faut utiliser une
  
+\begin_inset Quotes fld
+\end_inset
+
+Boîte Braille
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Dans un but pédagogique, nous n'avons pas modifié l'exemple en ce sens,
+ le Braille produit est donc incorrect pour les majuscules.
 \end_layout
 
 \end_inset
@@ -92,25 +105,13 @@ Cette traduction met en évidence les limites du paquetage LaTeX Braille
 \end_layout
 
 \begin_layout Author
-Une Stöhr
+Uwe Stöhr
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
 Traduction Jean-Pierre Chrétien
 \end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset CommandInset href
-LatexCommand href
-target "uwestoehr@web.de"
-type "mailto:"
 
 \end_inset
 
@@ -316,11 +317,11 @@ LyX
 
 Braille:
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
-! est actif en babel french, produit une erreur.
- Un essai d'encapsulation en anglais a échoué (voir le préambule)
+! est actif en babel french, il est désactivé dans le préambule (le paquetage
+ Braille ne connaît pas babel).
 \end_layout
 
 \end_inset
@@ -339,7 +340,7 @@ LyX
 
 \end_inset
 
- est super 
+ est super! 
 \end_layout
 
 \begin_layout Standard
