@@ -64,7 +64,7 @@ public:
 
 	/// LyXView inherited methods.
 	///@{
-	int id() const;
+	int id() const { return id_; };
 	void setBusy(bool);
 	BufferView * currentBufferView();
 	BufferView const * currentBufferView() const;

@@ -63,14 +63,6 @@ public:
 	virtual BufferView * documentBufferView() = 0;
 	virtual BufferView const * documentBufferView() const = 0;
 
-	/// \return the buffer currently selected in this window
-	virtual Buffer * buffer() = 0;
-	virtual Buffer const * buffer() const = 0;
-
-	/// \return the document buffer in this window
-	virtual Buffer * documentBuffer() = 0;
-	virtual Buffer const * documentBuffer() const = 0;
-
 	/// set a buffer to the current workarea.
 	virtual void setBuffer(Buffer * b) = 0; ///< \c Buffer to set.
 	///

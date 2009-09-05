@@ -229,7 +229,7 @@ void LyXFunc::handleKeyFunc(FuncCode action)
 	LASSERT(lyx_view_ && lyx_view_->currentBufferView(), /**/);
 	lyx_view_->currentBufferView()->getIntl().getTransManager().deadkey(
 		c, get_accent(action).accent, view()->cursor().innerText(),
-		currentBufferView()->cursor());
+		view()->cursor());
 	// Need to clear, in case the minibuffer calls these
 	// actions
 	keyseq.clear();
@@ -267,7 +267,8 @@ void LyXFunc::gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer)
 		dispatch(FuncRequest(LFUN_BOOKMARK_SAVE, "0"));
 
 	// if the current buffer is not that one, switch to it.
-	if (!lyx_view_->buffer() || lyx_view_->buffer()->fileName() != tmp.filename) {
+	if (!lyx_view_->documentBufferView()
+		|| lyx_view_->documentBufferView()->buffer().fileName() != tmp.filename) {
 		if (!switchToBuffer)
 			return;
 		dispatch(FuncRequest(LFUN_BUFFER_SWITCH, file));
@@ -414,7 +415,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	if (lyx_view_ 
 	    && (cmd.origin != FuncRequest::MENU || lyx_view_->hasFocus())) {
 		lv = lyx_view_;
-		buf = lyx_view_->buffer();
+		if (lyx_view_->documentBufferView())
+			buf = &lyx_view_->documentBufferView()->buffer();
 	}
 
 	if (cmd.action == LFUN_NOACTION) {
@@ -819,7 +821,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		if (lyx_view_)
 			lyx_view_->restartCursor();
 	} else {
-		Buffer * buffer = lyx_view_ ? lyx_view_->buffer() : 0;
+		Buffer * buffer = 0;
+		if (lyx_view_ && lyx_view_->currentBufferView())
+			buffer = &lyx_view_->currentBufferView()->buffer();
 		switch (action) {
 
 		case LFUN_WORD_FIND_FORWARD:
@@ -901,42 +905,42 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_BUFFER_UPDATE: {
-			LASSERT(lyx_view_ && lyx_view_->documentBuffer(), /**/);
-			Buffer * doc_buffer = lyx_view_->documentBuffer();
+			LASSERT(lyx_view_ && lyx_view_->documentBufferView(), /**/);
+			Buffer & doc_buffer = lyx_view_->documentBufferView()->buffer();
 			string format = argument;
 			if (argument.empty())
-				format = doc_buffer->getDefaultOutputFormat();
-			doc_buffer->doExport(format, true);
+				format = doc_buffer.getDefaultOutputFormat();
+			doc_buffer.doExport(format, true);
 			break;
 		}
 
 		case LFUN_BUFFER_VIEW: {
-			LASSERT(lyx_view_ && lyx_view_->documentBuffer(), /**/);
-			Buffer * doc_buffer = lyx_view_->documentBuffer();
+			LASSERT(lyx_view_ && lyx_view_->documentBufferView(), /**/);
+			Buffer & doc_buffer = lyx_view_->documentBufferView()->buffer();
 			string format = argument;
 			if (argument.empty())
-				format = doc_buffer->getDefaultOutputFormat();
-			doc_buffer->preview(format);
+				format = doc_buffer.getDefaultOutputFormat();
+			doc_buffer.preview(format);
 			break;
 		}
 
 		case LFUN_MASTER_BUFFER_UPDATE: {
-			LASSERT(lyx_view_ && lyx_view_->documentBuffer() && lyx_view_->documentBuffer()->masterBuffer(), /**/);
-			Buffer * doc_buffer = lyx_view_->documentBuffer();
+			LASSERT(lyx_view_ && lyx_view_->documentBufferView(), /**/);
+			Buffer & doc_buffer = lyx_view_->documentBufferView()->buffer();
 			string format = argument;
 			if (argument.empty())
-				format = doc_buffer->masterBuffer()->getDefaultOutputFormat();
-			doc_buffer->masterBuffer()->doExport(format, true);
+				format = doc_buffer.masterBuffer()->getDefaultOutputFormat();
+			doc_buffer.masterBuffer()->doExport(format, true);
 			break;
 		}
 
 		case LFUN_MASTER_BUFFER_VIEW: {
-			LASSERT(lyx_view_ && lyx_view_->documentBuffer() && lyx_view_->documentBuffer()->masterBuffer(), /**/);
-			Buffer * doc_buffer = lyx_view_->documentBuffer();
+			LASSERT(lyx_view_ && lyx_view_->documentBufferView(), /**/);
+			Buffer & doc_buffer = lyx_view_->documentBufferView()->buffer();
 			string format = argument;
 			if (argument.empty())
-				format = doc_buffer->masterBuffer()->getDefaultOutputFormat();
-			doc_buffer->masterBuffer()->preview(format);
+				format = doc_buffer.masterBuffer()->getDefaultOutputFormat();
+			doc_buffer.masterBuffer()->preview(format);
 			break;
 		}
 
@@ -1341,7 +1345,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_KEYMAP_OFF:
-			LASSERT(lyx_view_ && lyx_view_->view(), /**/);
+			LASSERT(lyx_view_ && lyx_view_->currentBufferView(), /**/);
 			lyx_view_->currentBufferView()->getIntl().keyMapOn(false);
 			break;
 
@@ -1759,7 +1763,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		    && !lyxaction.funcHasFlag(action, LyXAction::ReadOnly))
 			buffer->markDirty();			
 
-		if (lyx_view_ && lyx_view_->buffer()) {
+		if (lyx_view_ && lyx_view_->currentBufferView()) {
 			// BufferView::update() updates the ViewMetricsInfo and
 			// also initializes the position cache for all insets in
 			// (at least partially) visible top-level paragraphs.
@@ -1828,14 +1832,15 @@ void LyXFunc::sendDispatchMessage(docstring const & msg, FuncRequest const & cmd
 
 void LyXFunc::reloadBuffer()
 {
-	FileName filename = lyx_view_->buffer()->fileName();
+	Buffer * buf = &lyx_view_->documentBufferView()->buffer();
+	FileName filename = buf->fileName();
 	// The user has already confirmed that the changes, if any, should
 	// be discarded. So we just release the Buffer and don't call closeBuffer();
-	theBufferList().release(lyx_view_->buffer());
+	theBufferList().release(buf);
 	// if the lyx_view_ has been destroyed, create a new one
 	if (!lyx_view_)
 		theApp()->dispatch(FuncRequest(LFUN_WINDOW_NEW));
-	Buffer * buf = lyx_view_->loadDocument(filename);
+	buf = lyx_view_->loadDocument(filename);
 	docstring const disp_fn = makeDisplayPath(filename.absFilename());
 	docstring str;
 	if (buf) {
@@ -1880,7 +1885,7 @@ docstring LyXFunc::viewStatusMessage()
 		return keyseq.printOptions(true);
 
 	LASSERT(lyx_view_, /**/);
-	if (!lyx_view_->buffer())
+	if (!lyx_view_->currentBufferView())
 		return _("Welcome to LyX!");
 
 	return view()->cursor().currentState();
