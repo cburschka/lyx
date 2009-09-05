@@ -1408,7 +1408,7 @@ msgstr "&Ersetzen durch..."
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:203
 msgid "Find next occurrence and replace it [Enter]"
-msgstr ""
+msgstr "Finde nächstes Vorkommen und ersetze es [Eingabe]"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:206
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:465
@@ -1417,7 +1417,7 @@ msgstr "Nächstes"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:222
 msgid "Find previous occurrence and replace it [Enter]"
-msgstr ""
+msgstr "Finde vorhergehendes Vorkommen und ersetze es [Eingabe]"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:225
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:487
@@ -1432,14 +1432,13 @@ msgstr "&Alles ersetzen"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:254
 msgid "Keep the case of the replacement first letter as in each matching text first letter"
-msgstr ""
+msgstr "Groß-/Kleinschreibung des ersten Buchstabens des gefundenen Textes beibehalten"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:257
 msgid "&Keep case"
 msgstr "&Groß-/Kleinschreibung nicht ändern"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:270
-#, fuzzy
 msgid "Close this panel"
 msgstr "Diesen Dialog schließen"
 
@@ -1454,7 +1453,7 @@ msgstr "&Suchen..."
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:402
 msgid "Perform a case-sensitive search"
-msgstr ""
+msgstr "Suche unter Beachtung der Groß-/Kleinschreibung"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:405
 #: src/frontends/qt4/ui/SearchUi.ui:105
@@ -1465,7 +1464,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:421
 msgid "Choose one of the pre-arranged regular expressions."
-msgstr ""
+msgstr "Einen der vorbereiteten regulären Ausdrücke wählen."
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:425
 msgid "Match..."
@@ -1510,7 +1509,7 @@ msgstr "Er&weitert"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:561
 msgid "Restrict the search horizon to:"
-msgstr ""
+msgstr "Den Suchbereich begrenzen auf:"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:567
 msgid "Sco&pe"
@@ -10196,7 +10195,7 @@ msgstr "Initialen"
 
 #: lib/layouts/initials.module:6
 msgid "Define character style for initials. Hint: try to use math and its artistic font styles like Fractur or the Calligraphic one."
-msgstr ""
+msgstr "Den Buchstabenstil für Initialen definieren. Tipp: Mathe und seine Schriftstile wie Fraktur oder Kalligraphie benutzen."
 
 #: lib/layouts/initials.module:6
 #: lib/layouts/logicalmkup.module:5
@@ -10342,17 +10341,16 @@ msgstr "Stellt verschiedene Einfügungen (Stichwörter, Zweige, URL) im 'minimal
 #: lib/layouts/noweb.module:2
 #, fuzzy
 msgid "Noweb literate programming"
-msgstr "Keine Erstellungsprotokolldatei für die literarische Programmierung gefunden."
+msgstr "Noweb literarische Programmierung"
 
 #: lib/layouts/noweb.module:5
 msgid "Allows to use Noweb as a literate programming tool."
-msgstr ""
+msgstr "Erlaubt Noweb als literarisches Programmierwerkzeug zu benutzen."
 
 #: lib/layouts/noweb.module:5
 #: lib/layouts/sweave.module:5
-#, fuzzy
 msgid "literate"
-msgstr "Eingebettete Aufzählung"
+msgstr "literarisch"
 
 #: lib/layouts/sweave.module:2
 #: lib/layouts/sweave.module:18
@@ -10362,11 +10360,11 @@ msgstr "Sweave"
 
 #: lib/layouts/sweave.module:5
 msgid "Allows to use the statistical language S/R as a literate programming tool."
-msgstr ""
+msgstr "Erlaubt die statistische Sprache S/R als literarisches Programmierwerkzeug zu benutzen."
 
 #: lib/layouts/sweave.module:17
 msgid "Chunk"
-msgstr ""
+msgstr "Stück"
 
 #: lib/layouts/sweave.module:43
 msgid "Sweave Options"
@@ -12747,7 +12745,7 @@ msgstr "Deaktiviere Zweig|Z"
 
 #: lib/ui/stdcontext.inc:441
 msgid "Insert Reference at Cursor Position|I"
-msgstr ""
+msgstr "Verweis an der Cursor-Position einfügen|V"
 
 #: lib/ui/stdcontext.inc:542
 msgid "All Indexes|A"
@@ -13055,14 +13053,12 @@ msgid "Close All Insets|C"
 msgstr "Alle Einfügungen schließen|s"
 
 #: lib/ui/stdmenus.inc:308
-#, fuzzy
 msgid "Unfold Math Macro|n"
-msgstr "Mathe-Makro aufklappen"
+msgstr "Mathe-Makro aufklappen|n"
 
 #: lib/ui/stdmenus.inc:309
-#, fuzzy
 msgid "Fold Math Macro|d"
-msgstr "Mathe-Makro zuklappen"
+msgstr "Mathe-Makro zuklappen|z"
 
 #: lib/ui/stdmenus.inc:311
 msgid "View Source|S"
@@ -13085,14 +13081,12 @@ msgid "Update Master Document|a"
 msgstr "Hauptdokument aktualisieren|p"
 
 #: lib/ui/stdmenus.inc:316
-#, fuzzy
 msgid "View (Other Formats)|F"
-msgstr "Andere Formate ansehen"
+msgstr "Andere Formate ansehen|F"
 
 #: lib/ui/stdmenus.inc:317
-#, fuzzy
 msgid "Update (Other Formats)|p"
-msgstr "Anzeige aktualisieren"
+msgstr "Andere Formate aktualisieren|n"
 
 #: lib/ui/stdmenus.inc:319
 msgid "Split View Into Left and Right Half|i"
@@ -16563,11 +16557,11 @@ msgstr "LyX konnte kein temporäres Verzeichnis '%1$s' erstellen (Festplatte ist
 
 #: src/Buffer.cpp:332
 msgid "Buffer had unsaved changes when destroyed!\n"
-msgstr ""
+msgstr "Der Speicher hat ungesicherte Änderungen, wenn er geleert wird!\n"
 
 #: src/Buffer.cpp:334
 msgid "Attempting to destroy dirty Buffer!"
-msgstr ""
+msgstr "Versuche, unsauberen Speicher zu leeren!"
 
 #: src/Buffer.cpp:342
 msgid "Could not remove temporary directory"
@@ -18849,10 +18843,9 @@ msgid "Already in regexp mode"
 msgstr "Bereits im Regexp-Modus"
 
 #: src/Text3.cpp:216
-#, fuzzy
 #: src/mathed/InsetMathNest.cpp:1003
 msgid "Regexp editor mode"
-msgstr "Mathe-Editor-Modus"
+msgstr "Regexp-Editor-Modus"
 
 #: src/Text3.cpp:1306
 msgid "Layout "
@@ -22546,7 +22539,9 @@ msgid ""
 "Beginning of document reached while searching backwards\n"
 "\n"
 "Continue searching from end ?"
-msgstr ""
+msgstr "Dokumentanfang bei der Rückwärtssuche erreicht\n"
+"\n"
+"Am Ende fortsetzen?"
 
 #: src/lyxfind.cpp:1121
 msgid "Search text is empty!"
@@ -22561,14 +22556,12 @@ msgid "Match not found!"
 msgstr "Die Zeichenkette wurde nicht gefunden!"
 
 #: src/lyxfind.cpp:1149
-#, fuzzy
 msgid "Match found !"
 msgstr "Die Zeichenkette wurde gefunden!"
 
 #: src/lyxfind.cpp:1191
-#, fuzzy
 msgid "Match found and replaced !"
-msgstr "Suchen und ersetzen"
+msgstr "Die Zeichenkette wurde gefunden und ersetzt!"
 
 #: src/mathed/InsetMathAMSArray.cpp:111
 #: src/mathed/InsetMathHull.cpp:1462
@@ -22868,9 +22861,8 @@ msgid "Selection copy/paste mechanism"
 msgstr "Auswahl kopieren/einfügen Mechanismus"
 
 #: src/support/debug.cpp:69
-#, fuzzy
 msgid "Find and replace mechanism"
-msgstr "Suchen und ersetzen"
+msgstr "Mechanismus für Suchen und Ersetzen"
 
 #: src/support/debug.cpp:70
 msgid "Developers' general debug messages"
@@ -22887,7 +22879,7 @@ msgstr "Testen von `%1$s' (%2$s)"
 
 #: src/support/filetools.cpp:252
 msgid "[[Replace with the code of your language]]"
-msgstr "de"
+msgstr "[[Mit dem Code Ihrer Sprache ersetzen]]"
 
 #: src/support/os_win32.cpp:392
 msgid "System file not found"
