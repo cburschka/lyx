@@ -1781,7 +1781,7 @@ void Menus::fillMenuBar(QMenuBar * qmb, GuiView * view, bool initial)
 	MenuDefinition menu;
 	BufferView * bv = 0;
 	if (view)
-		bv = view->view();
+		bv = view->currentBufferView();
 	d->expand(d->menubar_, menu, bv);
 
 	MenuDefinition::const_iterator m = menu.begin();
@@ -1834,7 +1834,7 @@ void Menus::updateMenu(Menu * qmenu)
 	MenuDefinition const & fromLyxMenu = d->getMenu(qmenu->d->name);
 	BufferView * bv = 0;
 	if (qmenu->d->view)
-		bv = qmenu->d->view->view();
+		bv = qmenu->d->view->currentBufferView();
 	d->expand(fromLyxMenu, *qmenu->d->top_level_menu, bv);
 	qmenu->d->populate(*qmenu, *qmenu->d->top_level_menu);
 }

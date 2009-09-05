@@ -404,7 +404,7 @@ static bool isSortable(QString const & type)
 
 void TocWidget::updateView()
 {
-	if (!gui_view_.view()) {
+	if (!gui_view_.currentBufferView()) {
 		enableControls(false);
 		typeCO->setEnabled(false);
 		tocTV->setModel(0);

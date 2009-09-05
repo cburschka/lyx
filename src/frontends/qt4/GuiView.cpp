@@ -929,8 +929,8 @@ void GuiView::setCurrentWorkArea(GuiWorkArea * wa)
 	if (old_gwa == wa)
 		return;
 
-	if (view())
-		cap::saveSelection(view()->cursor());
+	if (currentBufferView())
+		cap::saveSelection(currentBufferView()->cursor());
 
 	theGuiApp()->setCurrentView(this);
 	d.current_work_area_ = wa;
@@ -1168,7 +1168,21 @@ BufferView * GuiView::documentBufferView()
 }
 
 
-BufferView * GuiView::view()
+BufferView const * GuiView::documentBufferView() const 
+{
+	return currentMainWorkArea()
+		? &currentMainWorkArea()->bufferView()
+		: 0;
+}
+
+
+BufferView * GuiView::currentBufferView()
+{
+	return d.current_work_area_ ? &d.current_work_area_->bufferView() : 0;
+}
+
+
+BufferView const * GuiView::currentBufferView() const
 {
 	return d.current_work_area_ ? &d.current_work_area_->bufferView() : 0;
 }
@@ -1178,8 +1192,8 @@ void GuiView::autoSave()
 {
 	LYXERR(Debug::INFO, "Running autoSave()");
 
-	if (buffer())
-		view()->buffer().autoSave();
+	if (documentBufferView())
+		documentBufferView()->buffer().autoSave();
 }
 
 
@@ -1198,7 +1212,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	if (cmd.origin == FuncRequest::TOC) {
 		GuiToc * toc = static_cast<GuiToc*>(findOrBuild("toc", false));
 		FuncStatus fs;
-		if (toc->getStatus(view()->cursor(), cmd, fs))
+		if (toc->getStatus(documentBufferView()->cursor(), cmd, fs))
 			flag |= fs;
 		else
 			flag.setEnabled(false);
@@ -1254,12 +1268,13 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 			enable = buf->isExportable("dvi")
 				&& lyxrc.print_command != "none";
 		else if (name == "character" || name == "symbols") {
-			if (buf->isReadonly() || !view() || !view()->cursor().inTexted())
+			if (buf->isReadonly() || !currentBufferView() 
+				|| !currentBufferView()->cursor().inTexted())
 				enable = false;
 			else {
 				// FIXME we should consider passthru
 				// paragraphs too.
-				Inset const & in = view()->cursor().inset();
+				Inset const & in = currentBufferView()->cursor().inset();
 				enable = !in.getLayout().isPassThru();
 			}
 		}
@@ -1285,7 +1300,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		if (inset) {
 			FuncRequest fr(LFUN_INSET_MODIFY, cmd.argument());
 			FuncStatus fs;
-			if (!inset->getStatus(view()->cursor(), fr, fs)) {
+			if (!inset->getStatus(currentBufferView()->cursor(), fr, fs)) {
 				// Every inset is supposed to handle this
 				LASSERT(false, break);
 			}
@@ -1300,19 +1315,22 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 
 	case LFUN_COMPLETION_INLINE:
 		if (!d.current_work_area_
-		    || !d.current_work_area_->completer().inlinePossible(view()->cursor()))
+		    || !d.current_work_area_->completer().inlinePossible(
+			currentBufferView()->cursor()))
 		    enable = false;
 		break;
 
 	case LFUN_COMPLETION_POPUP:
 		if (!d.current_work_area_
-		    || !d.current_work_area_->completer().popupPossible(view()->cursor()))
+		    || !d.current_work_area_->completer().popupPossible(
+			currentBufferView()->cursor()))
 		    enable = false;
 		break;
 
 	case LFUN_COMPLETION_COMPLETE:
 		if (!d.current_work_area_
-			|| !d.current_work_area_->completer().inlinePossible(view()->cursor()))
+			|| !d.current_work_area_->completer().inlinePossible(
+			currentBufferView()->cursor()))
 		    enable = false;
 		break;
 
@@ -1385,7 +1403,7 @@ Buffer * GuiView::loadDocument(FileName const & filename, bool tolastfiles)
 	if (lyxrc.use_lastfilepos) {
 		LastFilePosSection::FilePos filepos =
 			theSession().lastFilePos().load(filename);
-		view()->moveToPosition(filepos.pit, filepos.pos, 0, 0);
+		documentBufferView()->moveToPosition(filepos.pit, filepos.pos, 0, 0);
 	}
 
 	if (tolastfiles)
@@ -1525,7 +1543,8 @@ static bool import(GuiView * lv, FileName const & filename,
 		string filename2 = (loader_format == format) ? filename.absFilename()
 			: support::changeExtension(filename.absFilename(),
 					  formats.extension(loader_format));
-		lv->view()->insertPlaintextFile(FileName(filename2), as_paragraphs);
+		lv->currentBufferView()->insertPlaintextFile(FileName(filename2),
+			as_paragraphs);
 		theLyXFunc().setLyXView(lv);
 		lyx::dispatch(FuncRequest(LFUN_MARK_OFF));
 	}
@@ -1655,15 +1674,15 @@ void GuiView::newDocument(string const & filename, bool from_template)
 
 	// If no new document could be created, it is unsure 
 	// whether there is a valid BufferView.
-	if (view())
+	if (currentBufferView())
 		// Ensure the cursor is correctly positioned on screen.
-		view()->showCursor();
+		currentBufferView()->showCursor();
 }
 
 
 void GuiView::insertLyXFile(docstring const & fname)
 {
-	BufferView * bv = view();
+	BufferView * bv = documentBufferView();
 	if (!bv)
 		return;
 
@@ -1713,7 +1732,7 @@ void GuiView::insertLyXFile(docstring const & fname)
 void GuiView::insertPlaintextFile(docstring const & fname,
 	bool asParagraph)
 {
-	BufferView * bv = view();
+	BufferView * bv = documentBufferView();
 	if (!bv)
 		return;
 
@@ -2131,7 +2150,7 @@ void GuiView::gotoNextOrPreviousBuffer(NextOrPrevious np)
 
 bool GuiView::dispatch(FuncRequest const & cmd)
 {
-	BufferView * bv = view();
+	BufferView * bv = currentBufferView();
 	// By default we won't need any update.
 	if (bv)
 		bv->cursor().updateFlags(Update::None);
@@ -2239,7 +2258,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			Inset * inset = getOpenInset(name);
 			if (inset) {
 				FuncRequest fr(LFUN_INSET_DIALOG_UPDATE, cmd.argument());
-				inset->dispatch(view()->cursor(), fr);
+				inset->dispatch(currentBufferView()->cursor(), fr);
 			} else if (name == "paragraph") {
 				lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
 			} else if (name == "prefs" || name == "document") {
@@ -2309,16 +2328,16 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			Inset * inset = getOpenInset(name);
 			if (inset) {
 				// put cursor in front of inset.
-				if (!view()->setCursorFromInset(inset)) {
+				if (!currentBufferView()->setCursorFromInset(inset)) {
 					LASSERT(false, break);
 				}
-				
+				BufferView * bv = currentBufferView();
 				// useful if we are called from a dialog.
-				view()->cursor().beginUndoGroup();
-				view()->cursor().recordUndo();
+				bv->cursor().beginUndoGroup();
+				bv->cursor().recordUndo();
 				FuncRequest fr(LFUN_INSET_MODIFY, cmd.argument());
-				inset->dispatch(view()->cursor(), fr);
-				view()->cursor().endUndoGroup();
+				inset->dispatch(bv->cursor(), fr);
+				bv->cursor().endUndoGroup();
 			} else {
 				FuncRequest fr(LFUN_INSET_INSERT, cmd.argument());
 				lyx::dispatch(fr);

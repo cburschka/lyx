@@ -297,7 +297,7 @@ string const GuiCommandBuffer::historyDown()
 
 docstring const GuiCommandBuffer::getCurrentState() const
 {
-	return view_->view()->cursor().currentState();
+	return view_->currentBufferView()->cursor().currentState();
 }
 
 

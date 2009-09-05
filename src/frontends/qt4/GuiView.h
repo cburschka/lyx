@@ -62,53 +62,54 @@ public:
 
 	~GuiView();
 
-	///
-	int id() const { return id_; }
-	void setFocus();
+	/// LyXView inherited methods.
+	///@{
+	int id() const;
 	void setBusy(bool);
-	/// returns true if this view has the focus.
+	BufferView * currentBufferView();
+	BufferView const * currentBufferView() const;
+	BufferView * documentBufferView();
+	BufferView const * documentBufferView() const;
+	Buffer * buffer();
+	Buffer const * buffer() const;
+	Buffer * documentBuffer();
+	Buffer const * documentBuffer() const;
+	void setBuffer(Buffer * b);
+	bool closeBuffer();
+	bool closeBufferAll();
 	bool hasFocus() const;
+	Buffer * loadDocument(support::FileName const &  name,
+		bool tolastfiles = true);
+	void newDocument(std::string const & filename,
+		bool fromTemplate);
+	void message(docstring const &);
+	bool getStatus(FuncRequest const & cmd, FuncStatus & flag);
+	bool dispatch(FuncRequest const & cmd);
+	void restartCursor();
+	void updateCompletion(Cursor & cur, bool start, bool keep);
+	void setFocus();
+	///@}
 
 	/// add toolbar, if newline==true, add a toolbar break before the toolbar
 	GuiToolbar * makeToolbar(ToolbarInfo const & tbinfo, bool newline);
-	virtual void updateStatusBar();
-	virtual void message(docstring const & str);
+	void updateStatusBar();
 
 	/// updates the possible layouts selectable
 	void updateLayoutList();
 	void updateToolbars();
 	QMenu * createPopupMenu();
-	bool getStatus(FuncRequest const & cmd, FuncStatus & flag);
-	bool dispatch(FuncRequest const & cmd);
 
 	///
 	LayoutBox * getLayoutDialog() const;
 
-	/// \return the buffer currently selected in this window
-	virtual Buffer * buffer();
-	virtual Buffer const * buffer() const;
-
-	/// \return the document buffer in this window
-	virtual Buffer * documentBuffer();
-	virtual Buffer const * documentBuffer() const;
-
-	/// set a buffer to the current workarea.
-	void setBuffer(Buffer * b); ///< \c Buffer to set.
-	/// closes the current active buffer
-	bool closeBuffer();
 	/// hides the workarea and makes sure it is clean
 	bool hideWorkArea(GuiWorkArea * wa);
 	/// closes the workarea
 	bool closeWorkArea(GuiWorkArea * wa);
-	/// load a document into the current workarea.
-	Buffer * loadDocument(support::FileName const &  name, ///< File to load.
-		bool tolastfiles = true);  ///< append to the "Open recent" menu?
 	///
 	void openDocument(std::string const & filename);
 	///
 	void importDocument(std::string const &);
-	///
-	void newDocument(std::string const & filename, bool fromTemplate);
 
 	/// GuiBufferDelegate.
 	///@{
@@ -124,17 +125,10 @@ public:
 	/// called on timeout
 	void autoSave();
 
-	/// \return the currently selected buffer view.
-	BufferView * view();
-	/// \return the current document buffer view.
-	BufferView * documentBufferView();
-
 	/** redraw \c inset in all the BufferViews in which it is currently
 	 *  visible. If successful return a pointer to the owning Buffer.
 	 */
 	Buffer const * updateInset(Inset const *);
-	///
-	void restartCursor();
 
 	/// \return the \c Workarea associated to \p  Buffer
 	/// \retval 0 if no \c WorkArea is found.
@@ -262,9 +256,6 @@ public:
 	///
 	void disconnectDialog(std::string const & name);
 
-	///
-	void updateCompletion(Cursor & cur, bool start, bool keep);
-
 private:
 	///
 	void saveLayout() const;
@@ -314,8 +305,6 @@ private:
 	/// or to discard the changes. If hiding is true, the
 	/// document will be reloaded.
 	bool saveBufferIfNeeded(Buffer & buf, bool hiding);
-	/// closes all workareas and all hidden buffers
-	bool closeBufferAll();
 	/// closes all workareas
 	bool closeWorkAreaAll();
 	/// write all open workareas into the session file

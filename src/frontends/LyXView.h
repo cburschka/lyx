@@ -57,9 +57,11 @@ public:
 	//@{ generic accessor functions
 
 	/// \return the currently selected buffer view.
-	virtual BufferView * view() = 0;
+	virtual BufferView * currentBufferView() = 0;
+	virtual BufferView const * currentBufferView() const = 0;
 	/// \return the current document buffer view.
 	virtual BufferView * documentBufferView() = 0;
+	virtual BufferView const * documentBufferView() const = 0;
 
 	/// \return the buffer currently selected in this window
 	virtual Buffer * buffer() = 0;

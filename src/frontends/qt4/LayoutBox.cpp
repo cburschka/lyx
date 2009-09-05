@@ -630,9 +630,9 @@ void LayoutBox::updateContents(bool reset)
 	// or we've moved from one inset to another
 	DocumentClass const * text_class = &buffer->params().documentClass();
 	Inset const * inset = 
-		&(d->owner_.view()->cursor().innerText()->inset());
+		&(d->owner_.currentBufferView()->cursor().innerText()->inset());
 	if (!reset && d->text_class_ == text_class && d->inset_ == inset) {
-		set(d->owner_.view()->cursor().innerParagraph().layout().name());
+		set(d->owner_.currentBufferView()->cursor().innerParagraph().layout().name());
 		return;
 	}
 
@@ -660,7 +660,7 @@ void LayoutBox::updateContents(bool reset)
 				lyxrc.group_layouts, lit->isUnknown());
 	}
 
-	set(d->owner_.view()->cursor().innerParagraph().layout().name());
+	set(d->owner_.currentBufferView()->cursor().innerParagraph().layout().name());
 	d->countCategories();
 	
 	// needed to recalculate size hint

@@ -108,7 +108,7 @@ KernelDocType Dialog::docType() const
 
 BufferView const * Dialog::bufferview() const
 {
-	return lyxview_->view();
+	return lyxview_->currentBufferView();
 }
 
 

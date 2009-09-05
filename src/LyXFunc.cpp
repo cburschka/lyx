@@ -211,10 +211,10 @@ void LyXFunc::initKeySequences(KeyMap * kb)
 
 void LyXFunc::setLyXView(LyXView * lv)
 {
-	if (lyx_view_ && lyx_view_->view() && lyx_view_ != lv)
+	if (lyx_view_ && lyx_view_->currentBufferView() && lyx_view_ != lv)
 		// save current selection to the selection buffer to allow
 		// middle-button paste in another window
-		cap::saveSelection(lyx_view_->view()->cursor());
+		cap::saveSelection(lyx_view_->currentBufferView()->cursor());
 	lyx_view_ = lv;
 }
 
@@ -226,9 +226,10 @@ void LyXFunc::handleKeyFunc(FuncCode action)
 	if (keyseq.length())
 		c = 0;
 
-	LASSERT(lyx_view_ && lyx_view_->view(), /**/);
-	lyx_view_->view()->getIntl().getTransManager().deadkey(
-		c, get_accent(action).accent, view()->cursor().innerText(), view()->cursor());
+	LASSERT(lyx_view_ && lyx_view_->currentBufferView(), /**/);
+	lyx_view_->currentBufferView()->getIntl().getTransManager().deadkey(
+		c, get_accent(action).accent, view()->cursor().innerText(),
+		currentBufferView()->cursor());
 	// Need to clear, in case the minibuffer calls these
 	// actions
 	keyseq.clear();
@@ -823,7 +824,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_WORD_FIND_FORWARD:
 		case LFUN_WORD_FIND_BACKWARD: {
-			LASSERT(lyx_view_ && lyx_view_->view(), /**/);
+			LASSERT(lyx_view_ && lyx_view_->currentBufferView(), /**/);
 			static docstring last_search;
 			docstring searched_string;
 
@@ -850,7 +851,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_CANCEL:
-			LASSERT(lyx_view_ && lyx_view_->view(), /**/);
+			LASSERT(lyx_view_ && lyx_view_->currentBufferView(), /**/);
 			keyseq.reset();
 			meta_fake_bit = NoModifier;
 			if (buffer)
@@ -865,7 +866,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_BUFFER_TOGGLE_READ_ONLY: {
-			LASSERT(lyx_view_ && lyx_view_->view() && buffer, /**/);
+			LASSERT(lyx_view_ && lyx_view_->currentBufferView() && buffer, /**/);
 			if (buffer->lyxvc().inUse())
 				buffer->lyxvc().toggleReadOnly();
 			else
@@ -1341,22 +1342,22 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_KEYMAP_OFF:
 			LASSERT(lyx_view_ && lyx_view_->view(), /**/);
-			lyx_view_->view()->getIntl().keyMapOn(false);
+			lyx_view_->currentBufferView()->getIntl().keyMapOn(false);
 			break;
 
 		case LFUN_KEYMAP_PRIMARY:
-			LASSERT(lyx_view_ && lyx_view_->view(), /**/);
-			lyx_view_->view()->getIntl().keyMapPrim();
+			LASSERT(lyx_view_ && lyx_view_->currentBufferView(), /**/);
+			lyx_view_->currentBufferView()->getIntl().keyMapPrim();
 			break;
 
 		case LFUN_KEYMAP_SECONDARY:
-			LASSERT(lyx_view_ && lyx_view_->view(), /**/);
-			lyx_view_->view()->getIntl().keyMapSec();
+			LASSERT(lyx_view_ && lyx_view_->currentBufferView(), /**/);
+			lyx_view_->currentBufferView()->getIntl().keyMapSec();
 			break;
 
 		case LFUN_KEYMAP_TOGGLE:
-			LASSERT(lyx_view_ && lyx_view_->view(), /**/);
-			lyx_view_->view()->getIntl().toggleKeyMap();
+			LASSERT(lyx_view_ && lyx_view_->currentBufferView(), /**/);
+			lyx_view_->currentBufferView()->getIntl().toggleKeyMap();
 			break;
 
 		case LFUN_REPEAT: {
@@ -1678,15 +1679,15 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				
 			// Let the current LyXView dispatch its own actions.
 			if (lyx_view_->dispatch(cmd)) {
-				if (lyx_view_->view()) {
-					updateFlags = lyx_view_->view()->cursor().result().update();
+				if (lyx_view_->currentBufferView()) {
+					updateFlags = lyx_view_->currentBufferView()->cursor().result().update();
 					if (theBufferList().isLoaded(buffer))
 						buffer->undo().endUndoGroup();
 				}
 				break;
 			}
 
-			LASSERT(lyx_view_->view(), /**/);
+			LASSERT(lyx_view_->currentBufferView(), /**/);
 
 			// Let the current BufferView dispatch its own actions.
 			if (view()->dispatch(cmd)) {
@@ -1889,7 +1890,7 @@ docstring LyXFunc::viewStatusMessage()
 BufferView * LyXFunc::view() const
 {
 	LASSERT(lyx_view_, /**/);
-	return lyx_view_->view();
+	return lyx_view_->currentBufferView();
 }
 
 
