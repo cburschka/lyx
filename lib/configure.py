@@ -206,6 +206,8 @@ def checkProgAlternatives(description, progs, rc_entry = [], alt_rc_entry = [], 
             for ext in extlist:
                 if os.path.isfile( os.path.join(ac_dir, ac_word + ext) ):
                     logger.info(msg + ' yes')
+                    pr = re.compile(r'(\\\S+)(.*)$')
+                    m = None
                     # write rc entries for this command
                     if found_prime == False:
                         if len(rc_entry) == 1:
@@ -219,13 +221,17 @@ def checkProgAlternatives(description, progs, rc_entry = [], alt_rc_entry = [], 
                         alt_rc = alt_rc_entry[0]
                         if alt_rc == "":
                             # if no explicit alt_rc is given, construct one
-                            alt_rc = rc_entry[0] + "_alternatives"
+                            m = pr.match(rc_entry[0])
+                            if m:
+                                alt_rc = m.group(1) + "_alternatives" + m.group(2)
                         addToRC(alt_rc.replace('%%', ac_prog))
                     elif len(alt_rc_entry) > 1:
                         alt_rc = alt_rc_entry[idx]
                         if alt_rc == "":
                             # if no explicit alt_rc is given, construct one
-                            alt_rc = rc_entry[idx] + "_alternatives"
+                            m = pr.match(rc_entry[idx])
+                            if m:
+                                alt_rc = m.group(1) + "_alternatives" + m.group(2)
                         addToRC(alt_rc.replace('%%', ac_prog))
                     found_alt = True
                     break
