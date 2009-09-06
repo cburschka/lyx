@@ -1864,7 +1864,7 @@ void PrefFileformats::updateEditors()
 	} else {
 		editorED->setEnabled(true);
 		editorED->setText(toqstr(f.viewer()));
-		editorCO->setCurrentIndex(viewerCO->findData(toqstr("custom editor")));
+		editorCO->setCurrentIndex(editorCO->findData(toqstr("custom editor")));
 	}
 }
 
