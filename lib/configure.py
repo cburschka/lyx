@@ -292,12 +292,10 @@ def checkViewer(description, progs, rc_entry = [], path = []):
     alt_rc_entry = []
     for idx in range(len(progs)):
         if len(rc_entry) == 1:
-            logger.info("rc_entry: " + rc_entry[0])
             rcs = rc_entry[0].split('\n')
             alt = addViewerAlternatives(rcs)
             alt_rc_entry.insert(0, alt)
         elif len(rc_entry) > 1:
-            logger.info("rc_entry: " + rc_entry[idx])
             rcs = rc_entry[idx].split('\n')
             alt = addViewerAlternatives(rcs)
             alt_rc_entry.insert(idx, alt)
@@ -312,12 +310,10 @@ def checkEditor(description, progs, rc_entry = [], path = []):
     alt_rc_entry = []
     for idx in range(len(progs)):
         if len(rc_entry) == 1:
-            logger.info("rc_entry: " + rc_entry[0])
             rcs = rc_entry[0].split('\n')
             alt = addEditorAlternatives(rcs)
             alt_rc_entry.insert(0, alt)
         elif len(rc_entry) > 1:
-            logger.info("rc_entry: " + rc_entry[idx])
             rcs = rc_entry[idx].split('\n')
             alt = addEditorAlternatives(rcs)
             alt_rc_entry.insert(idx, alt)
@@ -332,12 +328,10 @@ def checkViewerNoRC(description, progs, rc_entry = [], path = []):
     alt_rc_entry = []
     for idx in range(len(progs)):
         if len(rc_entry) == 1:
-            logger.info("rc_entry: " + rc_entry[0])
             rcs = rc_entry[0].split('\n')
             alt = addViewerAlternatives(rcs)
             alt_rc_entry.insert(0, alt)
         elif len(rc_entry) > 1:
-            logger.info("rc_entry: " + rc_entry[idx])
             rcs = rc_entry[idx].split('\n')
             alt = addViewerAlternatives(rcs)
             alt_rc_entry.insert(idx, alt)
@@ -353,12 +347,10 @@ def checkEditorNoRC(description, progs, rc_entry = [], path = []):
     alt_rc_entry = []
     for idx in range(len(progs)):
         if len(rc_entry) == 1:
-            logger.info("rc_entry: " + rc_entry[0])
             rcs = rc_entry[0].split('\n')
             alt = addEditorAlternatives(rcs)
             alt_rc_entry.insert(0, alt)
         elif len(rc_entry) > 1:
-            logger.info("rc_entry: " + rc_entry[idx])
             rcs = rc_entry[idx].split('\n')
             alt = addEditorAlternatives(rcs)
             alt_rc_entry.insert(idx, alt)
