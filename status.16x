@@ -26,6 +26,8 @@ What's new
 
 - Add support for Extended Greek characters (bug 4997).
 
+- Support GraphicsMagic when ImageMagick is not found (bug 6056).
+
 
 * USER INTERFACE
 
@@ -57,7 +59,7 @@ What's new
 - Fix support for polytonic Greek with multiple diacritics (bug 5976).
 
 - Do not unnecessarily enquote brackets in the LaTeX output (bug 5988).
- 
+
 
 * USER INTERFACE
 

@@ -25,19 +25,30 @@ fout = os.popen('convert -version 2>&1')
 output = fout.readline()
 fout.close()
 version = re_version.match(output)
-major = int(version.group(1))
-minor = int(version.group(2))
-patch = int(version.group(3))
-version = hex(major * 65536 + minor * 256 + patch)
+
+# Imagemagick by default
+gm = 0
+
+if version != None:
+    major = int(version.group(1))
+    minor = int(version.group(2))
+    patch = int(version.group(3))
+    version = hex(major * 65536 + minor * 256 + patch)
+else:
+    # Try GraphicsMagick
+    re_version = re.compile(r'^GraphicsMagick.*http:..www.GraphicsMagick.org.*$')
+    version = re_version.match(output)
+    if version != None:
+        gm = 1
 
 opts = "-depth 8"
 
 # If supported, add the -define option for pdf source formats 
-if sys.argv[1][:4] == 'pdf:' and version >= 0x060206:
+if sys.argv[1][:4] == 'pdf:' and (version >= 0x060206 or gm):
     opts = '-define pdf:use-cropbox=true ' + opts
 
 # If supported, add the -flatten option for ppm target formats (see bug 4749)
-if sys.argv[2][:4] == 'ppm:' and version >= 0x060305:
+if sys.argv[2][:4] == 'ppm:' and (version >= 0x060305 or gm):
     opts = opts + ' -flatten'
 
 if os.system(r'convert %s "%s" "%s"' % (opts, sys.argv[1], sys.argv[2])) != 0:
