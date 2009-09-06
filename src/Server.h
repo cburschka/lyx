@@ -144,7 +144,7 @@ private:
 	bool event(QEvent *);
 
 	/// Check whether the pipe server must be stopped
-	bool checkStopServer();
+	bool checkStopServer(DWORD timeout = 0);
 
 	/// The filename of a (in or out) pipe instance
 	std::string const pipeName(DWORD) const;

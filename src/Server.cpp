@@ -319,8 +319,8 @@ bool LyXComm::pipeServer()
 				QCoreApplication::postEvent(this,
 						static_cast<QEvent *>(event));
 				// Wait for completion
-				while (pipe_[i].nbytes && !checkStopServer())
-					Sleep(100);
+				while (pipe_[i].nbytes && !checkStopServer(100))
+					;
 				pipe_[i].pending_io = false;
 				pipe_[i].state = READING_STATE;
 				continue;
@@ -354,7 +354,7 @@ bool LyXComm::pipeServer()
 				// We get here when a reader is started
 				// well before a reply is ready, so delay
 				// a bit in order to not burden the cpu.
-				Sleep(100);
+				checkStopServer(100);
 				pipe_[i].pending_io = true;
 				continue;
 			}
@@ -406,9 +406,9 @@ bool LyXComm::event(QEvent * e)
 }
 
 
-bool LyXComm::checkStopServer()
+bool LyXComm::checkStopServer(DWORD timeout)
 {
-	return WaitForSingleObject(stopserver_, 0) == WAIT_OBJECT_0;
+	return WaitForSingleObject(stopserver_, timeout) == WAIT_OBJECT_0;
 }
 
 
