@@ -1036,7 +1036,10 @@ int LyXRC::read(Lexer & lexrc)
 		}
 		case RC_VIEWER_ALTERNATIVES:  {
 			string format, command;
-			lexrc >> format >> command;
+			if (lexrc.next())
+				format = lexrc.getString();
+			if (lexrc.eatLine())
+				command = lexrc.getString();
 			viewer_alternatives.push_back(make_pair(format, command));
 			break;
 		}
