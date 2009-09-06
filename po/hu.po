@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-08-29 21:44+0200\n"
+"POT-Creation-Date: 2009-09-06 02:32+0200\n"
 "PO-Revision-Date: 2008-11-06 07:25+0100\n"
 "Last-Translator: Szőke Sándor <alex@lyx.hu>\n"
 "Language-Team: LyX-hu <alex@lyx.hu>\n"
@@ -93,14 +93,14 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:904
 #: src/Buffer.cpp:1867 src/Buffer.cpp:3107 src/Buffer.cpp:3152
-#: src/Buffer.cpp:3187 src/LyXFunc.cpp:759 src/LyXFunc.cpp:895
+#: src/Buffer.cpp:3187 src/LyXFunc.cpp:764 src/LyXFunc.cpp:903
 #: src/LyXVC.cpp:189 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1466
 #: src/frontends/qt4/GuiParagraph.cpp:69
-#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1610
-#: src/frontends/qt4/GuiView.cpp:1802 src/frontends/qt4/GuiView.cpp:1857
-#: src/frontends/qt4/GuiView.cpp:2048 src/frontends/qt4/GuiView.cpp:2055
+#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1594
+#: src/frontends/qt4/GuiView.cpp:1785 src/frontends/qt4/GuiView.cpp:1840
+#: src/frontends/qt4/GuiView.cpp:2031 src/frontends/qt4/GuiView.cpp:2038
 #: src/insets/InsetBibtex.cpp:145
 msgid "&Cancel"
 msgstr "&Mégsem"
@@ -232,7 +232,7 @@ msgstr "Hozzáa&dás"
 #: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:91
 #: src/frontends/qt4/ui/LabelUi.ui:92 src/frontends/qt4/ui/NomenclUi.ui:105
 #: src/frontends/qt4/ui/SendtoUi.ui:92 src/frontends/qt4/ui/ShortcutUi.ui:65
-#: src/LyXFunc.cpp:859 src/buffer_funcs.cpp:107
+#: src/LyXFunc.cpp:867 src/buffer_funcs.cpp:107
 #: src/frontends/qt4/ButtonController.cpp:239
 msgid "Cancel"
 msgstr "Mégse"
@@ -464,6 +464,7 @@ msgstr "Inner box -- needed for fixed width & line breaks"
 #: src/frontends/qt4/ui/TabularUi.ui:1154 src/frontends/qt4/GuiBox.cpp:158
 #: src/frontends/qt4/GuiBox.cpp:303 src/frontends/qt4/GuiBox.cpp:384
 #: src/frontends/qt4/GuiDocument.cpp:112 src/frontends/qt4/GuiGraphics.cpp:580
+#: src/frontends/qt4/GuiPrefs.cpp:1826 src/frontends/qt4/GuiPrefs.cpp:1851
 msgid "None"
 msgstr "Nincs"
 
@@ -620,7 +621,7 @@ msgstr "&Méret:"
 #: src/frontends/qt4/GuiDocument.cpp:2649 src/frontends/qt4/GuiExternal.cpp:75
 #: src/frontends/qt4/GuiGraphics.cpp:71 src/frontends/qt4/GuiIndices.cpp:56
 #: src/frontends/qt4/GuiListings.cpp:152 src/frontends/qt4/GuiListings.cpp:159
-#: src/frontends/qt4/GuiPrefs.cpp:1898
+#: src/frontends/qt4/GuiPrefs.cpp:1966
 #: src/frontends/qt4/GuiPrintNomencl.cpp:68
 msgid "Default"
 msgstr "Alapérték"
@@ -748,7 +749,7 @@ msgstr "Betűtestesség"
 #: src/frontends/qt4/ui/CharacterUi.ui:114
 #: src/frontends/qt4/ui/CharacterUi.ui:160
 #: src/frontends/qt4/ui/ListingsUi.ui:339
-#: src/frontends/qt4/GuiDocument.cpp:1057 src/frontends/qt4/GuiPrefs.cpp:1860
+#: src/frontends/qt4/GuiDocument.cpp:1057 src/frontends/qt4/GuiPrefs.cpp:1928
 msgid "Language"
 msgstr "Nyelv"
 
@@ -1229,8 +1230,8 @@ msgstr "M&indet cseréli"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:254
 msgid ""
-"Keep the case of the replacement first letter as in each matching text first "
-"letter"
+"Keep the case of the replacement's first letter as in each matching text "
+"first letter"
 msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:257
@@ -2413,7 +2414,7 @@ msgid "Specify the default output format (for view/update)"
 msgstr "Adja meg az alapértelmezett papírméretet!"
 
 #: src/frontends/qt4/ui/OutputUi.ui:51
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:43
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:203
 #, fuzzy
 msgid "De&fault Output Format:"
 msgstr "Ala&p nyomtató:"
@@ -2432,7 +2433,7 @@ msgid "Paper Format"
 msgstr "Papír formátum"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:28
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:139
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:20
 #: src/frontends/qt4/ui/RefUi.ui:131
 msgid "&Format:"
 msgstr "Formá&tum:"
@@ -2543,7 +2544,7 @@ msgstr "Leghosszabb cí&mke"
 msgid "Line &spacing"
 msgstr "Sor&köz"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:246 src/Text.cpp:1755
+#: src/frontends/qt4/ui/ParagraphUi.ui:246 src/Text.cpp:1758
 #: src/frontends/qt4/GuiDocument.cpp:609
 msgid "Single"
 msgstr "Egyszeres"
@@ -2552,7 +2553,7 @@ msgstr "Egyszeres"
 msgid "1.5"
 msgstr "Másfélszeres"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:256 src/Text.cpp:1761
+#: src/frontends/qt4/ui/ParagraphUi.ui:256 src/Text.cpp:1764
 #: src/frontends/qt4/GuiDocument.cpp:613
 msgid "Double"
 msgstr "Kétszeres"
@@ -2565,7 +2566,9 @@ msgstr "Kétszeres"
 #: src/frontends/qt4/GuiDocument.cpp:607 src/frontends/qt4/GuiDocument.cpp:615
 #: src/frontends/qt4/GuiDocument.cpp:715 src/frontends/qt4/GuiHSpace.cpp:149
 #: src/frontends/qt4/GuiHSpace.cpp:160 src/frontends/qt4/GuiPrefs.cpp:721
-#: src/frontends/qt4/GuiPrefs.cpp:748 src/frontends/qt4/GuiPrintNomencl.cpp:72
+#: src/frontends/qt4/GuiPrefs.cpp:748 src/frontends/qt4/GuiPrefs.cpp:1832
+#: src/frontends/qt4/GuiPrefs.cpp:1857
+#: src/frontends/qt4/GuiPrintNomencl.cpp:72
 msgid "Custom"
 msgstr "Egyéb"
 
@@ -2846,7 +2849,7 @@ msgstr "&Módosít"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:209
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:61
-#: src/frontends/qt4/GuiPrefs.cpp:2461 src/frontends/qt4/GuiPrefs.cpp:2525
+#: src/frontends/qt4/GuiPrefs.cpp:2529 src/frontends/qt4/GuiPrefs.cpp:2593
 msgid "Remo&ve"
 msgstr "E&ltávolít"
 
@@ -2966,58 +2969,58 @@ msgstr "&Görgetősáv rejtése"
 msgid "&Hide toolbars"
 msgstr "&Eszköztárak rejtése"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:25
-#, fuzzy
-msgid "Specify the default output format when using (PDF)LaTeX"
-msgstr "Adja meg az alapértelmezett papírméretet!"
-
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:28
-#, fuzzy
-msgid "Default Format"
-msgstr "Dátumforma"
-
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:78
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:52
 msgid "&New..."
 msgstr "Ú&j..."
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:85
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:59
 #, fuzzy
 msgid "Re&move"
 msgstr "E&ltávolít"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:98
-msgid "S&hort Name:"
-msgstr "&Rövid név:"
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:66
+msgid "&Document format"
+msgstr "&Dokumentum formátum"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:132
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:73
 #, fuzzy
 msgid "Vector &graphics format"
 msgstr "Vektorgraf&ikus formátum"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:149
-msgid "&Document format"
-msgstr "&Dokumentum formátum"
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:80
+msgid "S&hort Name:"
+msgstr "&Rövid név:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:156
-msgid "&Viewer:"
-msgstr "Megjele&nítő:"
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:93
+msgid "E&xtension:"
+msgstr "&Kiterjesztés:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:169
-msgid "Ed&itor:"
-msgstr "Sz&erkesztő:"
-
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:179
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:106
 #, fuzzy
 msgid "Shortc&ut:"
 msgstr "&Rövidítés:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:189
-msgid "E&xtension:"
-msgstr "&Kiterjesztés:"
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:119
+msgid "Ed&itor:"
+msgstr "Sz&erkesztő:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:202
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:139
+msgid "&Viewer:"
+msgstr "Megjele&nítő:"
+
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:159
 msgid "Co&pier:"
 msgstr "Más&oló:"
+
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:185
+#, fuzzy
+msgid "Specify the default output format when using (PDF)LaTeX"
+msgstr "Adja meg az alapértelmezett papírméretet!"
+
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:188
+#, fuzzy
+msgid "Default Format"
+msgstr "Dátumforma"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:33
 msgid "&E-mail:"
@@ -3159,7 +3162,7 @@ msgstr "&Idegen nyelvek jelölése"
 msgid "Right-to-left language support"
 msgstr "Jobbról-balra író nyelv támogatása"
 
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:183 src/LyXRC.cpp:2886
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:183 src/LyXRC.cpp:2921
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
@@ -3355,7 +3358,7 @@ msgstr "&Munkakönyvtár:"
 msgid "Hunspell dictionaries:"
 msgstr "Tézaurusz hiba"
 
-#: src/frontends/qt4/ui/PrefPlaintextUi.ui:57 src/LyXRC.cpp:2559
+#: src/frontends/qt4/ui/PrefPlaintextUi.ui:57 src/LyXRC.cpp:2594
 msgid ""
 "The maximum line length of exported plain text/LaTeX/SGML files. If set to "
 "0, paragraphs are output in a single line; if the line length is > 0, "
@@ -3724,8 +3727,8 @@ msgstr "Talló&zás..."
 msgid "&User interface file:"
 msgstr "&Felhasználóifelület-fájl:"
 
-#: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:759
-#: src/frontends/qt4/GuiView.cpp:2048 src/frontends/qt4/GuiView.cpp:2055
+#: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:764
+#: src/frontends/qt4/GuiView.cpp:2031 src/frontends/qt4/GuiView.cpp:2038
 msgid "&Save"
 msgstr "Menté&s"
 
@@ -8144,7 +8147,7 @@ msgstr "Küldő címe:"
 msgid "Sender Phone:"
 msgstr "Küldő telefonszáma:"
 
-#: lib/layouts/scrlttr2.layout:189 lib/configure.py:406
+#: lib/layouts/scrlttr2.layout:189 lib/configure.py:548
 msgid "Fax"
 msgstr "Fax"
 
@@ -9148,11 +9151,11 @@ msgid "Branch"
 msgstr "Változat"
 
 #: lib/layouts/stdinsets.inc:240 lib/layouts/minimalistic.module:8
-#: src/Buffer.cpp:698 src/BufferParams.cpp:375 src/insets/InsetIndex.cpp:419
+#: src/Buffer.cpp:698 src/BufferParams.cpp:375 src/insets/InsetIndex.cpp:423
 msgid "Index"
 msgstr "Tárgymutató"
 
-#: lib/layouts/stdinsets.inc:241 src/insets/InsetIndex.cpp:247
+#: lib/layouts/stdinsets.inc:241 src/insets/InsetIndex.cpp:251
 msgid "Idx"
 msgstr "Tárgyszó"
 
@@ -9634,7 +9637,7 @@ msgid "literate"
 msgstr "Seriate"
 
 #: lib/layouts/sweave.module:2 lib/layouts/sweave.module:18
-#: lib/configure.py:352
+#: lib/configure.py:494
 #, fuzzy
 msgid "Sweave"
 msgstr "Menté&s"
@@ -11244,11 +11247,11 @@ msgstr "Beágyazott objektumok|m"
 msgid "Customization|C"
 msgstr "Testreszabás|e"
 
-#: lib/ui/classic.ui:415 lib/ui/stdmenus.inc:564
+#: lib/ui/classic.ui:415 lib/ui/stdmenus.inc:563
 msgid "LaTeX Configuration|L"
 msgstr "LaTeX információ|L"
 
-#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:567
+#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:566
 msgid "About LyX|X"
 msgstr "LyX névjegy|X"
 
@@ -12496,28 +12499,23 @@ msgstr "Gyorsbillentyűk|s"
 msgid "LyX Functions|y"
 msgstr "LyX funkciók|y"
 
-#: lib/ui/stdmenus.inc:563
-#, fuzzy
-msgid "Advanced Search"
-msgstr "To&vábbi beállítások"
-
-#: lib/ui/stdmenus.inc:565
+#: lib/ui/stdmenus.inc:564
 msgid "Specific Manuals|p"
 msgstr "Speciális kézikönyvek|S"
 
-#: lib/ui/stdmenus.inc:571
+#: lib/ui/stdmenus.inc:570
 msgid "Linguistics Manual|L"
 msgstr "Nyelvészeti kézikönyv|l"
 
-#: lib/ui/stdmenus.inc:572
+#: lib/ui/stdmenus.inc:571
 msgid "Braille Manual|B"
 msgstr "Braille-írás kézikönyv|B"
 
-#: lib/ui/stdmenus.inc:573
+#: lib/ui/stdmenus.inc:572
 msgid "XY-pic Manual|X"
 msgstr "XY-kép kézikönyv|X"
 
-#: lib/ui/stdmenus.inc:574
+#: lib/ui/stdmenus.inc:573
 msgid "Multicolumn Manual|M"
 msgstr "Többhasábos kézikönyv|T"
 
@@ -15362,333 +15360,335 @@ msgstr "Bitmap: $$AbsOrRelPathParent$$Basename"
 msgid "Dia diagram.\n"
 msgstr ""
 
-#: lib/configure.py:313
+#: lib/configure.py:435
 msgid "Tgif"
 msgstr "Tgif"
 
-#: lib/configure.py:316
+#: lib/configure.py:438
 msgid "FIG"
 msgstr "FIG"
 
-#: lib/configure.py:319
+#: lib/configure.py:441
 #, fuzzy
 msgid "DIA"
 msgstr "DVI"
 
-#: lib/configure.py:322
+#: lib/configure.py:444
 #, fuzzy
 msgid "Grace"
 msgstr "Szürkeskála"
 
-#: lib/configure.py:325
+#: lib/configure.py:447
 msgid "FEN"
 msgstr "FEN"
 
-#: lib/configure.py:329
+#: lib/configure.py:450 lib/configure.py:461 lib/configure.py:471
 msgid "BMP"
 msgstr "BMP"
 
-#: lib/configure.py:330
+#: lib/configure.py:451 lib/configure.py:462 lib/configure.py:472
 msgid "GIF"
 msgstr "GIF"
 
-#: lib/configure.py:331 src/frontends/qt4/GuiClipboard.cpp:138
+#: lib/configure.py:452 lib/configure.py:463 lib/configure.py:473
+#: src/frontends/qt4/GuiClipboard.cpp:138
 msgid "JPEG"
 msgstr "JPEG"
 
-#: lib/configure.py:332
+#: lib/configure.py:453 lib/configure.py:464 lib/configure.py:474
 msgid "PBM"
 msgstr "PBM"
 
-#: lib/configure.py:333
+#: lib/configure.py:454 lib/configure.py:465 lib/configure.py:475
 msgid "PGM"
 msgstr "PGM"
 
-#: lib/configure.py:334 src/frontends/qt4/GuiClipboard.cpp:137
+#: lib/configure.py:455 lib/configure.py:466 lib/configure.py:476
+#: src/frontends/qt4/GuiClipboard.cpp:137
 msgid "PNG"
 msgstr "PNG"
 
-#: lib/configure.py:335
+#: lib/configure.py:456 lib/configure.py:467 lib/configure.py:477
 msgid "PPM"
 msgstr "PPM"
 
-#: lib/configure.py:336
+#: lib/configure.py:457 lib/configure.py:468 lib/configure.py:478
 msgid "TIFF"
 msgstr "TIFF"
 
-#: lib/configure.py:337
+#: lib/configure.py:458 lib/configure.py:469 lib/configure.py:479
 msgid "XBM"
 msgstr "XBM"
 
-#: lib/configure.py:338
+#: lib/configure.py:459 lib/configure.py:470 lib/configure.py:480
 msgid "XPM"
 msgstr "XPM"
 
-#: lib/configure.py:343
+#: lib/configure.py:485
 msgid "Plain text (chess output)"
 msgstr "Sima szöveg (chess kimenet)"
 
-#: lib/configure.py:344
+#: lib/configure.py:486
 msgid "Plain text (image)"
 msgstr "Sima szöveg (kép)"
 
-#: lib/configure.py:345
+#: lib/configure.py:487
 msgid "Plain text (Xfig output)"
 msgstr "Sima szöveg (Xfig kimenet)"
 
-#: lib/configure.py:346
+#: lib/configure.py:488
 msgid "date (output)"
 msgstr "dátum (kimenet)"
 
-#: lib/configure.py:347
+#: lib/configure.py:489
 msgid "DocBook"
 msgstr "DocBook"
 
-#: lib/configure.py:347
+#: lib/configure.py:489
 msgid "DocBook|B"
 msgstr "DocBook|B"
 
-#: lib/configure.py:348
+#: lib/configure.py:490
 msgid "Docbook (XML)"
 msgstr "Docbook (XML)"
 
-#: lib/configure.py:349
+#: lib/configure.py:491
 #, fuzzy
 msgid "Graphviz Dot"
 msgstr "Grafika"
 
-#: lib/configure.py:350
+#: lib/configure.py:492
 msgid "LaTeX (pLaTeX)"
 msgstr "LaTeX (pLaTeX)"
 
-#: lib/configure.py:351
+#: lib/configure.py:493
 msgid "NoWeb"
 msgstr "NoWeb"
 
-#: lib/configure.py:351
+#: lib/configure.py:493
 msgid "NoWeb|N"
 msgstr "NoWeb|N"
 
-#: lib/configure.py:352
+#: lib/configure.py:494
 #, fuzzy
 msgid "Sweave|S"
 msgstr "Mentés|e"
 
-#: lib/configure.py:353
+#: lib/configure.py:495
 #, fuzzy
 msgid "LilyPond music"
 msgstr "LilyPond"
 
-#: lib/configure.py:354
+#: lib/configure.py:496
 msgid "LaTeX (plain)"
 msgstr "LaTeX (sima)"
 
-#: lib/configure.py:354
+#: lib/configure.py:496
 msgid "LaTeX (plain)|L"
 msgstr "LaTeX (sima)|L"
 
-#: lib/configure.py:355
+#: lib/configure.py:497
 msgid "LaTeX (pdflatex)"
 msgstr "LaTeX (pdflatex)"
 
-#: lib/configure.py:356
+#: lib/configure.py:498
 #, fuzzy
 msgid "LaTeX (XeTeX)"
 msgstr "LaTeX (pLaTeX)"
 
-#: lib/configure.py:357 src/frontends/qt4/GuiPrefs.cpp:335
+#: lib/configure.py:499 src/frontends/qt4/GuiPrefs.cpp:335
 msgid "Plain text"
 msgstr "Sima szöveg"
 
-#: lib/configure.py:357
+#: lib/configure.py:499
 msgid "Plain text|a"
 msgstr "Sima szöveg|a"
 
-#: lib/configure.py:358
+#: lib/configure.py:500
 msgid "Plain text (pstotext)"
 msgstr "Sima szöveg (pstotext)"
 
-#: lib/configure.py:359
+#: lib/configure.py:501
 msgid "Plain text (ps2ascii)"
 msgstr "Sima szöveg (ps2ascii)"
 
-#: lib/configure.py:360
+#: lib/configure.py:502
 msgid "Plain text (catdvi)"
 msgstr "Sima szöveg (catdvi)"
 
-#: lib/configure.py:361
+#: lib/configure.py:503
 msgid "Plain Text, Join Lines"
 msgstr "Sima szöveg, sorok befűzése"
 
-#: lib/configure.py:364 lib/configure.py:366
+#: lib/configure.py:506 lib/configure.py:508
 #, fuzzy
 msgid "LyX HTML"
 msgstr "HTML"
 
-#: lib/configure.py:373
+#: lib/configure.py:515
 msgid "BibTeX"
 msgstr "BibTeX"
 
-#: lib/configure.py:378
+#: lib/configure.py:520
 msgid "EPS"
 msgstr "EPS"
 
-#: lib/configure.py:379
+#: lib/configure.py:521
 msgid "Postscript"
 msgstr "Postscript"
 
-#: lib/configure.py:379
+#: lib/configure.py:521
 msgid "Postscript|t"
 msgstr "Postscript|t"
 
-#: lib/configure.py:383
+#: lib/configure.py:525
 msgid "PDF (ps2pdf)"
 msgstr "PDF (ps2pdf)"
 
-#: lib/configure.py:383
+#: lib/configure.py:525
 msgid "PDF (ps2pdf)|P"
 msgstr "PDF (ps2pdf)|P"
 
-#: lib/configure.py:384
+#: lib/configure.py:526
 msgid "PDF (pdflatex)"
 msgstr "PDF (pdflatex)"
 
-#: lib/configure.py:384
+#: lib/configure.py:526
 msgid "PDF (pdflatex)|F"
 msgstr "PDF (pdflatex)|F"
 
-#: lib/configure.py:385
+#: lib/configure.py:527
 msgid "PDF (dvipdfm)"
 msgstr "PDF (dvipdfm)"
 
-#: lib/configure.py:385
+#: lib/configure.py:527
 msgid "PDF (dvipdfm)|m"
 msgstr "PDF (dvipdfm)|m"
 
-#: lib/configure.py:386
+#: lib/configure.py:528
 msgid "PDF (XeTeX)"
 msgstr ""
 
-#: lib/configure.py:386
+#: lib/configure.py:528
 msgid "PDF (XeTeX)|X"
 msgstr ""
 
-#: lib/configure.py:389
+#: lib/configure.py:531
 msgid "DVI"
 msgstr "DVI"
 
-#: lib/configure.py:389
+#: lib/configure.py:531
 msgid "DVI|D"
 msgstr "DVI|D"
 
-#: lib/configure.py:392
+#: lib/configure.py:534
 msgid "DraftDVI"
 msgstr "DraftDVI"
 
-#: lib/configure.py:395
+#: lib/configure.py:537
 msgid "HTML"
 msgstr "HTML"
 
-#: lib/configure.py:395
+#: lib/configure.py:537
 msgid "HTML|H"
 msgstr "HTML|H"
 
-#: lib/configure.py:398
+#: lib/configure.py:540
 #, fuzzy
 msgid "Noteedit"
 msgstr "Megjegyzés a szerkesztőnek"
 
-#: lib/configure.py:401
+#: lib/configure.py:543
 msgid "OpenDocument"
 msgstr "OpenDocument"
 
-#: lib/configure.py:404
+#: lib/configure.py:546
 msgid "date command"
 msgstr "dátum parancs"
 
-#: lib/configure.py:405
+#: lib/configure.py:547
 msgid "Table (CSV)"
 msgstr "Táblázat (CSV)"
 
-#: lib/configure.py:407 src/frontends/qt4/GuiView.cpp:830
+#: lib/configure.py:549 src/frontends/qt4/GuiView.cpp:830
 #: src/frontends/qt4/GuiView.cpp:831 src/mathed/MathMacroTemplate.cpp:537
 msgid "LyX"
 msgstr "LyX"
 
-#: lib/configure.py:408
+#: lib/configure.py:550
 msgid "LyX 1.3.x"
 msgstr "LyX 1.3.x"
 
-#: lib/configure.py:409
+#: lib/configure.py:551
 msgid "LyX 1.4.x"
 msgstr "LyX 1.4.x"
 
-#: lib/configure.py:410
+#: lib/configure.py:552
 msgid "LyX 1.5.x"
 msgstr "LyX 1.5.x"
 
-#: lib/configure.py:411
+#: lib/configure.py:553
 #, fuzzy
 msgid "LyX 1.6.x"
 msgstr "LyX 1.3.x"
 
-#: lib/configure.py:412
+#: lib/configure.py:554
 msgid "CJK LyX 1.4.x (big5)"
 msgstr "CJK LyX 1.4.x (big5)"
 
-#: lib/configure.py:413
+#: lib/configure.py:555
 msgid "CJK LyX 1.4.x (euc-jp)"
 msgstr "CJK LyX 1.4.x (euc-jp)"
 
-#: lib/configure.py:414
+#: lib/configure.py:556
 msgid "CJK LyX 1.4.x (euc-kr)"
 msgstr "CJK LyX 1.4.x (euc-kr)"
 
-#: lib/configure.py:415
+#: lib/configure.py:557
 msgid "LyX Preview"
 msgstr "LyX előnézet"
 
-#: lib/configure.py:416
+#: lib/configure.py:558
 msgid "LyX Preview (pLaTeX)"
 msgstr "LyX előnézet (pLaTeX)"
 
-#: lib/configure.py:417
+#: lib/configure.py:559
 msgid "PDFTEX"
 msgstr "PDFTEX"
 
-#: lib/configure.py:418
+#: lib/configure.py:560
 msgid "Program"
 msgstr "Program"
 
-#: lib/configure.py:419
+#: lib/configure.py:561
 msgid "PSTEX"
 msgstr "PSTEX"
 
-#: lib/configure.py:420
+#: lib/configure.py:562
 msgid "Rich Text Format"
 msgstr "Rich Text Formátum"
 
-#: lib/configure.py:421
+#: lib/configure.py:563
 msgid "OpenOffice.Org (sxw)"
 msgstr "OpenOffice.Org (sxw)"
 
-#: lib/configure.py:422 src/frontends/qt4/GuiClipboard.cpp:134
+#: lib/configure.py:564 src/frontends/qt4/GuiClipboard.cpp:134
 msgid "Windows Metafile"
 msgstr "Windows Metafile"
 
-#: lib/configure.py:423 src/frontends/qt4/GuiClipboard.cpp:133
+#: lib/configure.py:565 src/frontends/qt4/GuiClipboard.cpp:133
 msgid "Enhanced Metafile"
 msgstr "Enhanced Metafile"
 
-#: lib/configure.py:424
+#: lib/configure.py:566
 msgid "MS Word"
 msgstr "MS Word"
 
-#: lib/configure.py:424
+#: lib/configure.py:566
 msgid "MS Word|W"
 msgstr "MS Word|W"
 
-#: lib/configure.py:425
+#: lib/configure.py:567
 msgid "HTML (MS Word)"
 msgstr "HTML (MS Word)"
 
@@ -15748,12 +15748,13 @@ msgstr ""
 "van?)"
 
 #: src/Buffer.cpp:332
-msgid "Buffer had unsaved changes when destroyed!\n"
+msgid "LyX attempted to close a document that had unsaved changes!\n"
 msgstr ""
 
 #: src/Buffer.cpp:334
-msgid "Attempting to destroy dirty Buffer!"
-msgstr ""
+#, fuzzy
+msgid "Attempting to close changed document!"
+msgstr "LyX: Megpróbálom menteni a dokumentumot: %1$s\n"
 
 #: src/Buffer.cpp:342
 msgid "Could not remove temporary directory"
@@ -15775,7 +15776,7 @@ msgstr ""
 "Alapértelmezett dokumentum osztály használata, mivel a %1$s oszály "
 "ismeretlen."
 
-#: src/Buffer.cpp:607 src/Text.cpp:433
+#: src/Buffer.cpp:607 src/Text.cpp:436
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Ismeretlen szimbólum: %1$s %2$s\n"
@@ -15903,8 +15904,8 @@ msgid "Overwrite modified file?"
 msgstr "Módosított fájl felülírása?"
 
 #: src/Buffer.cpp:904 src/Buffer.cpp:1867 src/Exporter.cpp:49
-#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1610
-#: src/frontends/qt4/GuiView.cpp:1802
+#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1594
+#: src/frontends/qt4/GuiView.cpp:1785
 msgid "&Overwrite"
 msgstr "&Felülírja"
 
@@ -16254,12 +16255,12 @@ msgstr ""
 msgid "Document class not found"
 msgstr "Dokumentum-osztály nem elérhető"
 
-#: src/BufferParams.cpp:1668 src/LyXFunc.cpp:781
+#: src/BufferParams.cpp:1668 src/LyXFunc.cpp:786
 #, c-format
 msgid "The document class %1$s could not be loaded."
 msgstr "A %1$s dokumentum-osztályt nem lehet betölteni."
 
-#: src/BufferParams.cpp:1670 src/LyXFunc.cpp:783
+#: src/BufferParams.cpp:1670 src/LyXFunc.cpp:788
 msgid "Could not load class"
 msgstr "Osztály nem tölthető be"
 
@@ -16986,7 +16987,7 @@ msgstr "  Szám %1$s"
 msgid "Cannot view file"
 msgstr "A fájl nem nézhető meg"
 
-#: src/Format.cpp:254 src/Format.cpp:325 src/LyXFunc.cpp:1154
+#: src/Format.cpp:254 src/Format.cpp:325 src/LyXFunc.cpp:1163
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "A fájl nem létezik: %1$s"
@@ -17331,35 +17332,35 @@ msgstr ""
 "Újra kell indítania a LyX-et az új beállítások\n"
 "használatba vételéhez."
 
-#: src/LyXFunc.cpp:376
+#: src/LyXFunc.cpp:379
 msgid "Unknown function."
 msgstr "Ismeretlen funkció."
 
-#: src/LyXFunc.cpp:420
+#: src/LyXFunc.cpp:424
 msgid "Nothing to do"
 msgstr "Nincs mit tenni"
 
-#: src/LyXFunc.cpp:436
+#: src/LyXFunc.cpp:440
 msgid "Unknown action"
 msgstr "Ismeretlen művelet"
 
-#: src/LyXFunc.cpp:442 src/LyXFunc.cpp:732
+#: src/LyXFunc.cpp:446 src/LyXFunc.cpp:737
 msgid "Command disabled"
 msgstr "Letiltott parancs"
 
-#: src/LyXFunc.cpp:449
+#: src/LyXFunc.cpp:453
 msgid "Command not allowed without any document open"
 msgstr "A parancsot csak nyitott dokumentum mellett használhatja"
 
-#: src/LyXFunc.cpp:717
+#: src/LyXFunc.cpp:721
 msgid "Document is read-only"
 msgstr "Csak olvasható dokumentum"
 
-#: src/LyXFunc.cpp:726
+#: src/LyXFunc.cpp:731
 msgid "This portion of the document is deleted."
 msgstr "A dokumentum ezen része törölve lett."
 
-#: src/LyXFunc.cpp:748
+#: src/LyXFunc.cpp:753
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -17370,11 +17371,11 @@ msgstr ""
 "\n"
 "Akarja menteni a dokumentumot vagy a módosítások elvetése?"
 
-#: src/LyXFunc.cpp:751 src/frontends/qt4/GuiView.cpp:2054
+#: src/LyXFunc.cpp:756 src/frontends/qt4/GuiView.cpp:2037
 msgid "Save changed document?"
 msgstr "Mentsem a megváltozott dokumentumot?"
 
-#: src/LyXFunc.cpp:754 src/frontends/qt4/GuiView.cpp:2044
+#: src/LyXFunc.cpp:759 src/frontends/qt4/GuiView.cpp:2027
 #, fuzzy, c-format
 msgid ""
 "The document %1$s has not been saved yet.\n"
@@ -17385,12 +17386,12 @@ msgstr ""
 "\n"
 "Akarja menteni a dokumentumot vagy a módosítások elvetése?"
 
-#: src/LyXFunc.cpp:757 src/frontends/qt4/GuiView.cpp:2047
+#: src/LyXFunc.cpp:762 src/frontends/qt4/GuiView.cpp:2030
 #, fuzzy
 msgid "Save new document?"
 msgstr "Mentsem a megváltozott dokumentumot?"
 
-#: src/LyXFunc.cpp:892
+#: src/LyXFunc.cpp:900
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -17399,73 +17400,73 @@ msgstr ""
 "A változtatások el fognak veszni. Biztos benne, hogy visszatér a %1$s "
 "dokumentum mentett változatához?"
 
-#: src/LyXFunc.cpp:894
+#: src/LyXFunc.cpp:902
 msgid "Revert to saved document?"
 msgstr "Mentett dokumentum visszaállítása?"
 
-#: src/LyXFunc.cpp:895 src/LyXVC.cpp:189
+#: src/LyXFunc.cpp:903 src/LyXVC.cpp:189
 msgid "&Revert"
 msgstr "&Visszatér"
 
-#: src/LyXFunc.cpp:1021 src/Text3.cpp:1767
+#: src/LyXFunc.cpp:1029 src/Text3.cpp:1767
 msgid "Missing argument"
 msgstr "Hiányzó paraméter"
 
-#: src/LyXFunc.cpp:1033
+#: src/LyXFunc.cpp:1041
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Súgófájl megnyitása %1$s..."
 
-#: src/LyXFunc.cpp:1085 src/VCBackend.cpp:56 src/VCBackend.cpp:560
+#: src/LyXFunc.cpp:1094 src/VCBackend.cpp:56 src/VCBackend.cpp:560
 #: src/VCBackend.cpp:626 src/VCBackend.cpp:632 src/VCBackend.cpp:653
 msgid "Revision control error."
 msgstr "Verziókövetési parancs hiba."
 
-#: src/LyXFunc.cpp:1086
+#: src/LyXFunc.cpp:1095
 msgid "Error when setting the locking property."
 msgstr ""
 
-#: src/LyXFunc.cpp:1313
+#: src/LyXFunc.cpp:1322
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "Aldokumentum megnyitása %1$s..."
 
-#: src/LyXFunc.cpp:1475
+#: src/LyXFunc.cpp:1484
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Dokumentum alapértékek mentése %1$s-ban."
 
-#: src/LyXFunc.cpp:1478
+#: src/LyXFunc.cpp:1487
 msgid "Unable to save document defaults"
 msgstr "Sikertelen mentése a dokumentum alapértékeknek"
 
-#: src/LyXFunc.cpp:1627 src/LyXVC.cpp:151
+#: src/LyXFunc.cpp:1638 src/LyXVC.cpp:151
 msgid "LyX VC: Log Message"
 msgstr "LyX VK: Napló üzenet"
 
-#: src/LyXFunc.cpp:1636
+#: src/LyXFunc.cpp:1647
 msgid "Directory is not accessible."
 msgstr ""
 
-#: src/LyXFunc.cpp:1844
+#: src/LyXFunc.cpp:1858
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "%1$s dokumentum újratöltve."
 
-#: src/LyXFunc.cpp:1846
+#: src/LyXFunc.cpp:1860
 #, c-format
 msgid "Could not reload document %1$s"
 msgstr "A(z) %1$s dokumentum nem olvasható"
 
-#: src/LyXFunc.cpp:1883
+#: src/LyXFunc.cpp:1897
 msgid "Welcome to LyX!"
 msgstr "Üdvözli a LyX!"
 
-#: src/LyXFunc.cpp:1904
+#: src/LyXFunc.cpp:1911
 msgid "Converting document to new document class..."
 msgstr "Dokumentum átalakítása másik dokumentumosztályra..."
 
-#: src/LyXRC.cpp:2546
+#: src/LyXRC.cpp:2581
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
@@ -17473,7 +17474,7 @@ msgstr ""
 "Vegye figyelembe az összetett szavakat, mint pl. \"lemezmeghajtó\" ahelyett, "
 "hogy \"lemez meghajtó\", mint helyes szavak?"
 
-#: src/LyXRC.cpp:2551
+#: src/LyXRC.cpp:2586
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
@@ -17481,7 +17482,7 @@ msgstr ""
 "Adjon meg egy alternatív nyelvet! Az alapértelmezett nyelv a dokumentum "
 "nyelve."
 
-#: src/LyXRC.cpp:2555
+#: src/LyXRC.cpp:2590
 msgid ""
 "Use to define an external program to render tables in plain text output. E."
 "g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"\" is "
@@ -17491,7 +17492,7 @@ msgstr ""
 "kimenetűre. Pl. \"groff -t -Tlatin1 $$FName\" ahol $$FName a bemeneti fájl "
 "neve. Ha \"\"-t adja meg, a belső rutint fogja használni."
 
-#: src/LyXRC.cpp:2563
+#: src/LyXRC.cpp:2598
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
@@ -17499,7 +17500,7 @@ msgstr ""
 "Törölje, ha nem akarja, hogy az aktuális kijelölés automatikusan cserélődjön "
 "azzal, amit gépel."
 
-#: src/LyXRC.cpp:2567
+#: src/LyXRC.cpp:2602
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
@@ -17507,14 +17508,14 @@ msgstr ""
 "Törölje, ha nem akarja az osztálybeállításokat alapállapotba hozni "
 "osztályváltozás után."
 
-#: src/LyXRC.cpp:2571
+#: src/LyXRC.cpp:2606
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "A biztonsági mentések között eltelt idő (másodpercben). 0 esetén nincs "
 "biztonsági mentés."
 
-#: src/LyXRC.cpp:2578
+#: src/LyXRC.cpp:2613
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
@@ -17522,7 +17523,7 @@ msgstr ""
 "Elérési út biztonsági másolatok tárolásához. Ha nincs semmi megadva, a LyX "
 "az eredeti fájl mellé készít biztonsági mentést."
 
-#: src/LyXRC.cpp:2582
+#: src/LyXRC.cpp:2617
 msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
@@ -17530,11 +17531,11 @@ msgstr ""
 "Kérem adja meg a bibtex kapscolóit (lásd. man bibtex) vagy válasszon egy "
 "másik fordítót (pl. mlbibtex vagy bibulus)."
 
-#: src/LyXRC.cpp:2586
+#: src/LyXRC.cpp:2621
 msgid "Define the options of the bibtex program for PLaTeX (Japanese LaTeX)."
 msgstr ""
 
-#: src/LyXRC.cpp:2590
+#: src/LyXRC.cpp:2625
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
@@ -17542,11 +17543,11 @@ msgstr ""
 "Billentyűkiosztás-fájl. Megadhat teljes elérési utat is, vagy a LyX a "
 "globális és helyi bind/ könyvtárban keres."
 
-#: src/LyXRC.cpp:2594
+#: src/LyXRC.cpp:2629
 msgid "Select to check whether the lastfiles still exist."
 msgstr "Válassza ki, az utoljára használt fájlok tárolásához használt fájlt."
 
-#: src/LyXRC.cpp:2598
+#: src/LyXRC.cpp:2633
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
@@ -17554,7 +17555,7 @@ msgstr ""
 "Adja meg, hogyan futtassa a chktex-et. Pl. \"chktex -n11 -n1 -n3 -n6 -n9 -22 "
 "-n25 -n30 -n38\". Nézze meg a ChkTeX dokumentációját."
 
-#: src/LyXRC.cpp:2608
+#: src/LyXRC.cpp:2643
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
@@ -17562,7 +17563,7 @@ msgstr ""
 "A LyX nem módosítja a kurzor pozícióját a görgetősáv mozgatásakor. Állítsa "
 "igazra, ha azt szeretné, hogy a kurzor mindig a képernyőn legyen."
 
-#: src/LyXRC.cpp:2612
+#: src/LyXRC.cpp:2647
 #, fuzzy
 msgid ""
 "LyX normally doesn't allow the user to scroll further than the bottom of the "
@@ -17572,17 +17573,17 @@ msgstr ""
 "A LyX nem módosítja a kurzor pozícióját a görgetősáv mozgatásakor. Állítsa "
 "igazra, ha azt szeretné, hogy a kurzor mindig a képernyőn legyen."
 
-#: src/LyXRC.cpp:2616
+#: src/LyXRC.cpp:2651
 msgid "Use the Mac OS X conventions for the word-level cursor movement"
 msgstr ""
 
-#: src/LyXRC.cpp:2620
+#: src/LyXRC.cpp:2655
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
 msgstr ""
 
-#: src/LyXRC.cpp:2625
+#: src/LyXRC.cpp:2660
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
@@ -17591,7 +17592,7 @@ msgstr ""
 "Elfogadja a szokásos strftime formát; lásd az strftime kézikönyvet a "
 "részletekért. Pl. \"%A, %e. %B %Y\"."
 
-#: src/LyXRC.cpp:2629
+#: src/LyXRC.cpp:2664
 msgid ""
 "Command definition file. Can either specify an absolute path, or LyX will "
 "look in its global and local commands/ directories."
@@ -17599,19 +17600,19 @@ msgstr ""
 "Parancs definíciós-fájl. Megadhat teljes elérési utat is, vagy a LyX a "
 "globális és helyi commands/ könyvtárakban keres."
 
-#: src/LyXRC.cpp:2633
+#: src/LyXRC.cpp:2668
 msgid "The default format used with LFUN_BUFFER_[VIEW|UPDATE]."
 msgstr ""
 
-#: src/LyXRC.cpp:2637
+#: src/LyXRC.cpp:2672
 msgid "New documents will be assigned this language."
 msgstr "Az új dokumentumokat ezen a nyelven fogja létrehozni."
 
-#: src/LyXRC.cpp:2641
+#: src/LyXRC.cpp:2676
 msgid "Specify the default paper size."
 msgstr "Adja meg az alapértelmezett papírméretet!"
 
-#: src/LyXRC.cpp:2645
+#: src/LyXRC.cpp:2680
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
@@ -17619,11 +17620,11 @@ msgstr ""
 "Ikonizálja a dialógusablakokat, amikor a főablak is ikonizálva van. (Csak a "
 "változás után mutatott dialógusablakokra van hatása.)"
 
-#: src/LyXRC.cpp:2649
+#: src/LyXRC.cpp:2684
 msgid "Select how LyX will display any graphics."
 msgstr "Válassza ki, hogyan kezelje LyX a grafikákat."
 
-#: src/LyXRC.cpp:2653
+#: src/LyXRC.cpp:2688
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
@@ -17631,13 +17632,13 @@ msgstr ""
 "A dokumentumainak alapértelmezett helye. Üres érték esetén, a LyX indítási "
 "könyvtára."
 
-#: src/LyXRC.cpp:2658
+#: src/LyXRC.cpp:2693
 msgid "Specify additional chars that can be part of a word."
 msgstr ""
 "Adjon meg további karaktereket (betűk, jelek), amelyek egy szó részei "
 "lehetnek."
 
-#: src/LyXRC.cpp:2662
+#: src/LyXRC.cpp:2697
 msgid ""
 "The path that LyX will set when offering to choose an example. An empty "
 "value selects the directory LyX was started from."
@@ -17645,7 +17646,7 @@ msgstr ""
 "A LyX által felajánlott elérési út példafájl választáshoz. Az üres érték a "
 "LyX indítási könyvtárát jelenti."
 
-#: src/LyXRC.cpp:2666
+#: src/LyXRC.cpp:2701
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
@@ -17653,7 +17654,7 @@ msgstr ""
 "A betűkészlet kódolása, amit a LaTeX2e csomaghoz használ. A T1 kódolás "
 "használata javasolt nem angol jellegű nyelvekhez."
 
-#: src/LyXRC.cpp:2673
+#: src/LyXRC.cpp:2708
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
@@ -17663,17 +17664,17 @@ msgstr ""
 "egy másik fordítót. Pl., használja a xindy/make-rules-t, a parancssor legyen "
 "\"makeindex.sh -m $$lang\"."
 
-#: src/LyXRC.cpp:2677
+#: src/LyXRC.cpp:2712
 msgid "Define the options of the index program for PLaTeX (Japanese LaTeX)."
 msgstr ""
 
-#: src/LyXRC.cpp:2681
+#: src/LyXRC.cpp:2716
 msgid ""
 "Define the options of makeindex (cf. man makeindex) to be used for "
 "nomenclatures. This might differ from the index processing options."
 msgstr ""
 
-#: src/LyXRC.cpp:2690
+#: src/LyXRC.cpp:2725
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
@@ -17681,22 +17682,22 @@ msgstr ""
 "Használja a megfelelő billentyűzetkiosztás beállításához. Szüksége lesz "
 "erre, ha például németül szeretne gépeli egy angol billentyűzeten."
 
-#: src/LyXRC.cpp:2694
+#: src/LyXRC.cpp:2729
 msgid "Maximum number of words in the initialization string for a new label"
 msgstr "Egy új címke inicializációja során használható szavak maximális száma"
 
-#: src/LyXRC.cpp:2698
+#: src/LyXRC.cpp:2733
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
 msgstr "Válassza ki, ha nyelvváltó parancs szükséges a dokumentum elején."
 
-#: src/LyXRC.cpp:2702
+#: src/LyXRC.cpp:2737
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr "Válassza ki, ha nyelvváltó parancs szükséges a dokumentum végén."
 
-#: src/LyXRC.cpp:2706
+#: src/LyXRC.cpp:2741
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
@@ -17706,15 +17707,15 @@ msgstr ""
 "\\selectlanguage{$$lang}, ahol a $$lang helyére kerül a második nyelv "
 "nevével."
 
-#: src/LyXRC.cpp:2710
+#: src/LyXRC.cpp:2745
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr "A dokumentum nyelvére visszaváltó LaTeX parancs."
 
-#: src/LyXRC.cpp:2714
+#: src/LyXRC.cpp:2749
 msgid "The LaTeX command for local changing of the language."
 msgstr "A helyi nyelvváltó LaTeX parancs."
 
-#: src/LyXRC.cpp:2718
+#: src/LyXRC.cpp:2753
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
@@ -17722,7 +17723,7 @@ msgstr ""
 "Törölje, ha nem akarja a nyelv(ek)et a \\documentclass paramétereként "
 "használni."
 
-#: src/LyXRC.cpp:2722
+#: src/LyXRC.cpp:2757
 msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
@@ -17730,7 +17731,7 @@ msgstr ""
 "A nyelvi csomagok betöltéséhez használt LaTeX parancs. Pl. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
 
-#: src/LyXRC.cpp:2726
+#: src/LyXRC.cpp:2761
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
@@ -17738,23 +17739,23 @@ msgstr ""
 "Törölje, ha nem akarja használni a babel-t, amikor a dokumentum nyelve az "
 "alapértelmezett nyelv."
 
-#: src/LyXRC.cpp:2730
+#: src/LyXRC.cpp:2765
 msgid "De-select if you do not want LyX to scroll to saved position."
 msgstr ""
 "Törölje, amennyiben nem szeretné ha a LyX a mentett pozícióba állítsa a "
 "kurzort."
 
-#: src/LyXRC.cpp:2734
+#: src/LyXRC.cpp:2769
 msgid "De-select to prevent loading files opened from the last LyX session."
 msgstr ""
 "Törölje, ha nem akarja betölteni a LyX-be, az előző kilépéskor még nyitott "
 "fájlokat."
 
-#: src/LyXRC.cpp:2738
+#: src/LyXRC.cpp:2773
 msgid "De-select if you don't want LyX to create backup files."
 msgstr "Törölje, amennyiben nem szeretne biztonsági mentés funkciót használni."
 
-#: src/LyXRC.cpp:2742
+#: src/LyXRC.cpp:2777
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
@@ -17762,63 +17763,63 @@ msgstr ""
 "Válassza ki a dokumentumétól eltérő nyelvi környezetek szavainak "
 "kiemeléséhez."
 
-#: src/LyXRC.cpp:2746
+#: src/LyXRC.cpp:2781
 msgid "The scrolling speed of the mouse wheel."
 msgstr "Az egérgörgő görgetési sebessége."
 
-#: src/LyXRC.cpp:2751
+#: src/LyXRC.cpp:2786
 msgid "The completion popup delay."
 msgstr "A kiegészítés felbukkanó ablak késleltetése."
 
-#: src/LyXRC.cpp:2755
+#: src/LyXRC.cpp:2790
 msgid "Select to display the completion popup in math mode."
 msgstr "Válassza a kiegészítés felbukkanó megjelenítéséhez képlet-módban."
 
-#: src/LyXRC.cpp:2759
+#: src/LyXRC.cpp:2794
 msgid "Select to display the completion popup in text mode."
 msgstr "Válassza a kiegészítés felbukkanó megjelenítéséhez szöveg-módban."
 
-#: src/LyXRC.cpp:2763
+#: src/LyXRC.cpp:2798
 msgid ""
 "Show the completion popup without delay after non-unique completion attempt."
 msgstr ""
 "Azonnal mutassa a kiegészítés felbukkanót nem egyedi kiegészítés kísérletek "
 "után."
 
-#: src/LyXRC.cpp:2767
+#: src/LyXRC.cpp:2802
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
 msgstr ""
 
-#: src/LyXRC.cpp:2771
+#: src/LyXRC.cpp:2806
 msgid "The inline completion delay."
 msgstr "Kiegészítés a sorban késleltetése."
 
-#: src/LyXRC.cpp:2775
+#: src/LyXRC.cpp:2810
 msgid "Select to display the inline completion in math mode."
 msgstr "Válassza a kiegészítés beszúrásához megjelenítéséhez képlet-módban."
 
-#: src/LyXRC.cpp:2779
+#: src/LyXRC.cpp:2814
 msgid "Select to display the inline completion in text mode."
 msgstr "Válassza a kiegészítés beszúrásához megjelenítéséhez szöveg-módban."
 
-#: src/LyXRC.cpp:2783
+#: src/LyXRC.cpp:2818
 msgid "Use \"...\" to shorten long completions."
 msgstr "Használjon \"...\"-t hosszú kiegészítésekhez."
 
-#: src/LyXRC.cpp:2787
+#: src/LyXRC.cpp:2822
 msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
 msgstr ""
 
-#: src/LyXRC.cpp:2791
+#: src/LyXRC.cpp:2826
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr ""
 "Az utoljára használt fájlok max. száma. Legfeljebb %1$d jelenhet meg a fájl "
 "menüben."
 
-#: src/LyXRC.cpp:2796
+#: src/LyXRC.cpp:2831
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
@@ -17826,27 +17827,27 @@ msgstr ""
 "Adja meg azokat a könyvtárakat, amiket a PATH környezeti változóba kell "
 "rakni. Használja rendszerének formátumát."
 
-#: src/LyXRC.cpp:2802
+#: src/LyXRC.cpp:2837
 msgid "Shows a typeset preview of things such as math"
 msgstr "Szedés előnézetének megjelenítése, mint képlet esetén."
 
-#: src/LyXRC.cpp:2806
+#: src/LyXRC.cpp:2841
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr "A képletek előnézetének \"(#)\" címkéje lesz, számozás helyett"
 
-#: src/LyXRC.cpp:2810
+#: src/LyXRC.cpp:2845
 msgid "Scale the preview size to suit."
 msgstr "Állítsa be az előnézet méretarányát megfelelően."
 
-#: src/LyXRC.cpp:2814
+#: src/LyXRC.cpp:2849
 msgid "The option for specifying whether the copies should be collated."
 msgstr "Kapcsoló, a példányok leválogatásához."
 
-#: src/LyXRC.cpp:2818
+#: src/LyXRC.cpp:2853
 msgid "The option for specifying the number of copies to print."
 msgstr "Kapcsoló, a nyomtatandó példányszám megadásához."
 
-#: src/LyXRC.cpp:2822
+#: src/LyXRC.cpp:2857
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
@@ -17854,11 +17855,11 @@ msgstr ""
 "Az alapértelmezett nyomtató. Ha nincs ilyen megadva, a LyX a PRINTER "
 "környezeti változót használja."
 
-#: src/LyXRC.cpp:2826
+#: src/LyXRC.cpp:2861
 msgid "The option to print only even pages."
 msgstr "Kapcsoló, páros oldalak nyomtatásához."
 
-#: src/LyXRC.cpp:2830
+#: src/LyXRC.cpp:2865
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
@@ -17866,35 +17867,35 @@ msgstr ""
 "Extra opciók, amiket meg kell adni a nyomtatóprogramnak, mielőtt megadjuk a "
 "DVI fájl nevét, amibe nyomtatunk."
 
-#: src/LyXRC.cpp:2834
+#: src/LyXRC.cpp:2869
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr "A fájlba nyomtatáshoz a fájl kiterjesztése. Rendszerint \".ps\"."
 
-#: src/LyXRC.cpp:2838
+#: src/LyXRC.cpp:2873
 msgid "The option to print out in landscape."
 msgstr "Kapcsoló, fekvő oldal nyomtatásához."
 
-#: src/LyXRC.cpp:2842
+#: src/LyXRC.cpp:2877
 msgid "The option to print only odd pages."
 msgstr "Kapcsoló, páratlan oldalak nyomtatásához."
 
-#: src/LyXRC.cpp:2846
+#: src/LyXRC.cpp:2881
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr "A nyomtatandó oldalak megadása egy vesszővel tagolt listával."
 
-#: src/LyXRC.cpp:2850
+#: src/LyXRC.cpp:2885
 msgid "Option to specify the dimensions of the print paper."
 msgstr "Opció, ahol meg tudja adni a nyomtatandó papírméretet."
 
-#: src/LyXRC.cpp:2854
+#: src/LyXRC.cpp:2889
 msgid "The option to specify paper type."
 msgstr "Kapcsoló, a papírtípus megadásához."
 
-#: src/LyXRC.cpp:2858
+#: src/LyXRC.cpp:2893
 msgid "The option to reverse the order of the pages printed."
 msgstr "Kapcsoló, az oldalak fordított sorrendű nyomtatásához."
 
-#: src/LyXRC.cpp:2862
+#: src/LyXRC.cpp:2897
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
@@ -17904,7 +17905,7 @@ msgstr ""
 "másik nyomtatóprogramot ezzel a fájllal, a megadott névvel és a beállított "
 "paraméterekkel."
 
-#: src/LyXRC.cpp:2866
+#: src/LyXRC.cpp:2901
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
@@ -17912,31 +17913,31 @@ msgstr ""
 "Ha megadja a nyomtató nevét az ablakban, a következő paramétert "
 "hozzácsatolja a nyomtató nevével a nyomtatási parancs után."
 
-#: src/LyXRC.cpp:2870
+#: src/LyXRC.cpp:2905
 msgid "Option to pass to the print program to print to a file."
 msgstr "A fájlba nyomtatás kapcsolója."
 
-#: src/LyXRC.cpp:2874
+#: src/LyXRC.cpp:2909
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr "Adott nyomtatón való nyomtatás kapcsolója."
 
-#: src/LyXRC.cpp:2878
+#: src/LyXRC.cpp:2913
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
 msgstr ""
 "Válassza, hogy megadhassa a nyomtatási parancsban használandó nyomtató nevét."
 
-#: src/LyXRC.cpp:2882
+#: src/LyXRC.cpp:2917
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "A kedvenc nyomtatóprogramja, pl. \"dvips\", \"dvilj4\"."
 
-#: src/LyXRC.cpp:2890
+#: src/LyXRC.cpp:2925
 msgid ""
 "Select to have visual bidi cursor movement, unselect for logical movement."
 msgstr ""
 
-#: src/LyXRC.cpp:2894
+#: src/LyXRC.cpp:2929
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
@@ -17944,11 +17945,11 @@ msgstr ""
 "A monitor felbontását (DPI = 2,54 cm-re eső pontok száma) a LyX "
 "automatikusan felismeri. Hibás esetben itt felülírhatja ezt."
 
-#: src/LyXRC.cpp:2900
+#: src/LyXRC.cpp:2935
 msgid "The screen fonts used to display the text while editing."
 msgstr "Szerkesztés közben a képernyőn megjelenő betűkészlet."
 
-#: src/LyXRC.cpp:2909
+#: src/LyXRC.cpp:2944
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
@@ -17959,12 +17960,12 @@ msgstr ""
 "Törölve ezt az opciót, a LyX ki fogja választani a legközelebbi bitmap "
 "betűkészletet az átméretezés helyett."
 
-#: src/LyXRC.cpp:2913
+#: src/LyXRC.cpp:2948
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr ""
 "A képernyőn megjelenő betűkészletek méretarányaihoz használt betűméretek."
 
-#: src/LyXRC.cpp:2918
+#: src/LyXRC.cpp:2953
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
@@ -17973,11 +17974,11 @@ msgstr ""
 "A képernyőn megjelenő betűkészletek nagyítása. 100% beállítása esetén "
 "nagyjából ugyanaz a méret jelenik meg a képernyőn, mint papíron."
 
-#: src/LyXRC.cpp:2922
+#: src/LyXRC.cpp:2957
 msgid "Allow session manager to save and restore windows geometry."
 msgstr "A munkamenet-kezelő mentheti és visszaállíthatja az ablak pozíciókat."
 
-#: src/LyXRC.cpp:2926
+#: src/LyXRC.cpp:2961
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
@@ -17985,11 +17986,11 @@ msgstr ""
 "Ez elindítja a lyxservert. A cső kap egy további kiterjesztést \".in\" és \"."
 "out\". Csak gyakorlott felhasználóknak."
 
-#: src/LyXRC.cpp:2933
+#: src/LyXRC.cpp:2968
 msgid "De-select if you don't want the startup banner."
 msgstr "Törölje, ha nem akarja látni a kezdőképet."
 
-#: src/LyXRC.cpp:2937
+#: src/LyXRC.cpp:2972
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
@@ -17997,11 +17998,11 @@ msgstr ""
 "A LyX által használt ideiglenes fájlok helye. A programból való kilépés után "
 "letörlődnek."
 
-#: src/LyXRC.cpp:2941
+#: src/LyXRC.cpp:2976
 msgid "This is the place where the files of the thesaurus library reside."
 msgstr ""
 
-#: src/LyXRC.cpp:2945
+#: src/LyXRC.cpp:2980
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
@@ -18009,7 +18010,7 @@ msgstr ""
 "A LyX által felajánlott elérési út sablonválasztáshoz. Az üres érték a LyX "
 "indítási könyvtárát jelenti."
 
-#: src/LyXRC.cpp:2955
+#: src/LyXRC.cpp:2990
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
@@ -18017,18 +18018,18 @@ msgstr ""
 "Az UI (felhasználói felület) fájl. Megadhat egy abszolút útvonalat, vagy a "
 "LyX a globális és lokális ui/ könyvtáraiban fog keresni."
 
-#: src/LyXRC.cpp:2968
+#: src/LyXRC.cpp:3003
 msgid "Enable the automatic appearance of tool tips in the work area."
 msgstr ""
 
-#: src/LyXRC.cpp:2972
+#: src/LyXRC.cpp:3007
 msgid ""
 "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 "Engedélyezze a pixmap cache-t, ez Mac-en és Windows-on növelheti a "
 "teljesítményt."
 
-#: src/LyXRC.cpp:2979
+#: src/LyXRC.cpp:3014
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 "Adja meg a papír parancsát a DVI-nézőhöz (hagyja üresen vagy használja a \"-"
@@ -18110,85 +18111,85 @@ msgstr ""
 msgid "Unknown Inset"
 msgstr "Ismeretlen betét"
 
-#: src/Text.cpp:420
+#: src/Text.cpp:423
 msgid "Change tracking error"
 msgstr "Változás követési hiba"
 
-#: src/Text.cpp:421
+#: src/Text.cpp:424
 #, fuzzy, c-format
 msgid "Unknown author index for change: %1$d\n"
 msgstr "Ismeretlen szerzőlista beszúráshoz: %1$d\n"
 
-#: src/Text.cpp:432
+#: src/Text.cpp:435
 msgid "Unknown token"
 msgstr "Ismeretlen szimbólum"
 
-#: src/Text.cpp:891
+#: src/Text.cpp:894
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr "Bekezdés nem kezdődhet szóközzel. Kérem, olvassa el a Tankönyvet."
 
-#: src/Text.cpp:902
+#: src/Text.cpp:905
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Két szóközt így nem üthet egymás mellé. Kérem, olvassa el a Tankönyvet."
 
-#: src/Text.cpp:1721
+#: src/Text.cpp:1724
 msgid "[Change Tracking] "
 msgstr "[Változás követés]"
 
-#: src/Text.cpp:1727
+#: src/Text.cpp:1730
 msgid "Change: "
 msgstr "Változás: "
 
-#: src/Text.cpp:1731
+#: src/Text.cpp:1734
 msgid " at "
 msgstr " itt "
 
-#: src/Text.cpp:1741
+#: src/Text.cpp:1744
 #, c-format
 msgid "Font: %1$s"
 msgstr "Betűkészlet: %1$s"
 
-#: src/Text.cpp:1746
+#: src/Text.cpp:1749
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Mélység: %1$d"
 
-#: src/Text.cpp:1752
+#: src/Text.cpp:1755
 msgid ", Spacing: "
 msgstr ", sorköz: "
 
-#: src/Text.cpp:1758 src/frontends/qt4/GuiDocument.cpp:611
+#: src/Text.cpp:1761 src/frontends/qt4/GuiDocument.cpp:611
 msgid "OneHalf"
 msgstr "Másfél"
 
-#: src/Text.cpp:1764
+#: src/Text.cpp:1767
 msgid "Other ("
 msgstr "Egyéb ("
 
-#: src/Text.cpp:1773
+#: src/Text.cpp:1776
 msgid ", Inset: "
 msgstr ", Betét: "
 
-#: src/Text.cpp:1774
+#: src/Text.cpp:1777
 msgid ", Paragraph: "
 msgstr ", Bekezdés: "
 
-#: src/Text.cpp:1775
+#: src/Text.cpp:1778
 msgid ", Id: "
 msgstr ", Azon.: "
 
-#: src/Text.cpp:1776
+#: src/Text.cpp:1779
 msgid ", Position: "
 msgstr ", Pozíció: "
 
-#: src/Text.cpp:1782
+#: src/Text.cpp:1785
 msgid ", Char: 0x"
 msgstr ", Betű: 0x"
 
-#: src/Text.cpp:1784
+#: src/Text.cpp:1787
 msgid ", Boundary: "
 msgstr ", Határ: "
 
@@ -18574,7 +18575,7 @@ msgid "About %1"
 msgstr "%1 névjegy"
 
 #: src/frontends/qt4/GuiApplication.cpp:451
-#: src/frontends/qt4/GuiPrefs.cpp:2730
+#: src/frontends/qt4/GuiPrefs.cpp:2798
 msgid "Preferences"
 msgstr "Beállítások"
 
@@ -18601,11 +18602,11 @@ msgstr ""
 "Set-color \"%1$s\" sikertelen - a szín nincs meghatározva vagy nem lehet "
 "újradefiniálni"
 
-#: src/frontends/qt4/GuiApplication.cpp:1325
+#: src/frontends/qt4/GuiApplication.cpp:1327
 msgid "The current document was closed."
 msgstr "Az aktuális dokumentum bezárva."
 
-#: src/frontends/qt4/GuiApplication.cpp:1335
+#: src/frontends/qt4/GuiApplication.cpp:1337
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -18617,12 +18618,12 @@ msgstr ""
 "\n"
 "Kivétel: "
 
-#: src/frontends/qt4/GuiApplication.cpp:1339
-#: src/frontends/qt4/GuiApplication.cpp:1345
+#: src/frontends/qt4/GuiApplication.cpp:1341
+#: src/frontends/qt4/GuiApplication.cpp:1347
 msgid "Software exception Detected"
 msgstr "Szoftveres kivétel történt"
 
-#: src/frontends/qt4/GuiApplication.cpp:1343
+#: src/frontends/qt4/GuiApplication.cpp:1345
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -18630,12 +18631,12 @@ msgstr ""
 "A LyX elkapott egy nagyon durva kivételt, meg fogja próbálni menteni a még "
 "mentetlen dokumentumokat és ki fog lépni."
 
-#: src/frontends/qt4/GuiApplication.cpp:1491
-#: src/frontends/qt4/GuiApplication.cpp:1503
+#: src/frontends/qt4/GuiApplication.cpp:1493
+#: src/frontends/qt4/GuiApplication.cpp:1505
 msgid "Could not find UI definition file"
 msgstr "Nem találom az UI definíciós fájlt"
 
-#: src/frontends/qt4/GuiApplication.cpp:1492
+#: src/frontends/qt4/GuiApplication.cpp:1494
 #, fuzzy, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -18646,12 +18647,12 @@ msgstr ""
 "a konfigurációs fájl olvasása közben.\n"
 "Ellenőrizze a programot. (Please check your installation.)"
 
-#: src/frontends/qt4/GuiApplication.cpp:1498
+#: src/frontends/qt4/GuiApplication.cpp:1500
 #, fuzzy
 msgid "Could not find default UI file"
 msgstr "Nem találom az UI definíciós fájlt"
 
-#: src/frontends/qt4/GuiApplication.cpp:1499
+#: src/frontends/qt4/GuiApplication.cpp:1501
 #, fuzzy
 msgid ""
 "LyX could not find the default UI file!\n"
@@ -18661,7 +18662,7 @@ msgstr ""
 "a konfigurációs fájl olvasása közben.\n"
 "Ellenőrizze a programot. (Please check your installation.)"
 
-#: src/frontends/qt4/GuiApplication.cpp:1504
+#: src/frontends/qt4/GuiApplication.cpp:1506
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -18682,9 +18683,9 @@ msgstr "BibTeX irodalomjegyzék"
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
 #: src/frontends/qt4/GuiDocument.cpp:1508
 #: src/frontends/qt4/GuiExternal.cpp:637 src/frontends/qt4/GuiGraphics.cpp:798
-#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1356
-#: src/frontends/qt4/GuiView.cpp:1414 src/frontends/qt4/GuiView.cpp:1560
-#: src/frontends/qt4/GuiView.cpp:1688 src/frontends/qt4/GuiView.cpp:1772
+#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1341
+#: src/frontends/qt4/GuiView.cpp:1399 src/frontends/qt4/GuiView.cpp:1544
+#: src/frontends/qt4/GuiView.cpp:1671 src/frontends/qt4/GuiView.cpp:1755
 msgid "Documents|#o#O"
 msgstr "Dokumentumok|#d#D"
 
@@ -18938,10 +18939,10 @@ msgstr "%1$s Files"
 msgid "Choose a filename to save the pasted graphic as"
 msgstr "Mentés másként..."
 
-#: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1433
-#: src/frontends/qt4/GuiView.cpp:1580 src/frontends/qt4/GuiView.cpp:1596
-#: src/frontends/qt4/GuiView.cpp:1613 src/frontends/qt4/GuiView.cpp:1705
-#: src/frontends/qt4/GuiView.cpp:1748
+#: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1418
+#: src/frontends/qt4/GuiView.cpp:1564 src/frontends/qt4/GuiView.cpp:1580
+#: src/frontends/qt4/GuiView.cpp:1597 src/frontends/qt4/GuiView.cpp:1688
+#: src/frontends/qt4/GuiView.cpp:1731
 msgid "Canceled."
 msgstr "Törölve."
 
@@ -19895,21 +19896,21 @@ msgstr "Átalakítók"
 msgid "File formats"
 msgstr "Fájlformátumok"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1839
+#: src/frontends/qt4/GuiPrefs.cpp:1907
 msgid "Format in use"
 msgstr "Használt formátumok"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1840
+#: src/frontends/qt4/GuiPrefs.cpp:1908
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 "A formátumot nem lehet eltávolítani, mert használja egy átalakító. Törölje "
 "először az átalakítót."
 
-#: src/frontends/qt4/GuiPrefs.cpp:1910
+#: src/frontends/qt4/GuiPrefs.cpp:1978
 msgid "LyX needs to be restarted!"
 msgstr "A LyX-et újra kell indítani!"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1911
+#: src/frontends/qt4/GuiPrefs.cpp:1979
 msgid ""
 "The change of user interface language will be fully effective only after a "
 "restart."
@@ -19917,70 +19918,70 @@ msgstr ""
 "A felhasználói felület nyelvváltása, csak a program újraindítása után lép "
 "életbe."
 
-#: src/frontends/qt4/GuiPrefs.cpp:1965
+#: src/frontends/qt4/GuiPrefs.cpp:2033
 msgid "Printer"
 msgstr "Nyomtató"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2063 src/frontends/qt4/GuiPrefs.cpp:2770
+#: src/frontends/qt4/GuiPrefs.cpp:2131 src/frontends/qt4/GuiPrefs.cpp:2838
 msgid "User interface"
 msgstr "Felhasználói felület"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2149
+#: src/frontends/qt4/GuiPrefs.cpp:2217
 msgid "Control"
 msgstr "Működés"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2229
+#: src/frontends/qt4/GuiPrefs.cpp:2297
 msgid "Shortcuts"
 msgstr "Gyorsbillentyűk"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2234
+#: src/frontends/qt4/GuiPrefs.cpp:2302
 msgid "Function"
 msgstr "Funkció"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2235
+#: src/frontends/qt4/GuiPrefs.cpp:2303
 msgid "Shortcut"
 msgstr "Gyorsbillentyű"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2316
+#: src/frontends/qt4/GuiPrefs.cpp:2384
 msgid "Cursor, Mouse and Editing functions"
 msgstr "Kurzor, egér és szerkesztő funkciók"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2320
+#: src/frontends/qt4/GuiPrefs.cpp:2388
 msgid "Mathematical Symbols"
 msgstr "Matematikai szimbólumok"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2324
+#: src/frontends/qt4/GuiPrefs.cpp:2392
 msgid "Document and Window"
 msgstr "Dokumentum és ablak"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2328
+#: src/frontends/qt4/GuiPrefs.cpp:2396
 msgid "Font, Layouts and Textclasses"
 msgstr "Betű, formátum és szövegosztályok"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2332
+#: src/frontends/qt4/GuiPrefs.cpp:2400
 msgid "System and Miscellaneous"
 msgstr "Rendszer és mindenféle"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2459 src/frontends/qt4/GuiPrefs.cpp:2505
+#: src/frontends/qt4/GuiPrefs.cpp:2527 src/frontends/qt4/GuiPrefs.cpp:2573
 #, fuzzy
 msgid "Res&tore"
 msgstr "&Visszaállítás"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2615 src/frontends/qt4/GuiPrefs.cpp:2622
-#: src/frontends/qt4/GuiPrefs.cpp:2633 src/frontends/qt4/GuiPrefs.cpp:2646
-#: src/frontends/qt4/GuiPrefs.cpp:2665
+#: src/frontends/qt4/GuiPrefs.cpp:2683 src/frontends/qt4/GuiPrefs.cpp:2690
+#: src/frontends/qt4/GuiPrefs.cpp:2701 src/frontends/qt4/GuiPrefs.cpp:2714
+#: src/frontends/qt4/GuiPrefs.cpp:2733
 msgid "Failed to create shortcut"
 msgstr "Nem sikerült létrehozni a gyorsbillentyűt"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2616
+#: src/frontends/qt4/GuiPrefs.cpp:2684
 msgid "Unknown or invalid LyX function"
 msgstr "Ismeretlen vagy érvénytelen LyX funkció"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2623
+#: src/frontends/qt4/GuiPrefs.cpp:2691
 msgid "Invalid or empty key sequence"
 msgstr "Rossz vagy üres kulcs szekvencia"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2634
+#: src/frontends/qt4/GuiPrefs.cpp:2702
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to:\n"
@@ -19989,7 +19990,7 @@ msgstr ""
 "A gyorsbillentyű `%1$s' már hozzá van rendelve:\n"
 "%2$s-hez"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2647
+#: src/frontends/qt4/GuiPrefs.cpp:2715
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to:\n"
@@ -20000,35 +20001,35 @@ msgstr ""
 "%2$s-hez.\n"
 "Az új összerendelés készítése előtt, meg kell szüntetnie a régit."
 
-#: src/frontends/qt4/GuiPrefs.cpp:2666
+#: src/frontends/qt4/GuiPrefs.cpp:2734
 msgid "Can not insert shortcut to the list"
 msgstr "Nem lehet beszúrni a gyorsbillentyűt a listába"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2697
+#: src/frontends/qt4/GuiPrefs.cpp:2765
 msgid "Identity"
 msgstr "Felhasználó"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2894
+#: src/frontends/qt4/GuiPrefs.cpp:2962
 msgid "Choose bind file"
 msgstr "Adja meg a kiosztásfájlt"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2895
+#: src/frontends/qt4/GuiPrefs.cpp:2963
 msgid "LyX bind files (*.bind)"
 msgstr "LyX bill. kötés fájlok (*.bind)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2901
+#: src/frontends/qt4/GuiPrefs.cpp:2969
 msgid "Choose UI file"
 msgstr "UI-fájl kiválasztása"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2902
+#: src/frontends/qt4/GuiPrefs.cpp:2970
 msgid "LyX UI files (*.ui)"
 msgstr "LyX UI fájlok (*.ui)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2908
+#: src/frontends/qt4/GuiPrefs.cpp:2976
 msgid "Choose keyboard map"
 msgstr "Válassza ki a billentyűzet kiosztást"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2909
+#: src/frontends/qt4/GuiPrefs.cpp:2977
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "LyX billentyűkiosztások (*.kmap)"
 
@@ -20549,56 +20550,56 @@ msgstr "Nagy-méretű ikonok"
 msgid "Unknown toolbar \"%1$s\""
 msgstr "Ismeretlen eszköztár \"%1$s\""
 
-#: src/frontends/qt4/GuiView.cpp:1355
+#: src/frontends/qt4/GuiView.cpp:1340
 msgid "Select template file"
 msgstr "Sablon kiválasztása"
 
-#: src/frontends/qt4/GuiView.cpp:1357 src/frontends/qt4/GuiView.cpp:1773
+#: src/frontends/qt4/GuiView.cpp:1342 src/frontends/qt4/GuiView.cpp:1756
 msgid "Templates|#T#t"
 msgstr "Sablonok|#a#A"
 
-#: src/frontends/qt4/GuiView.cpp:1360 src/frontends/qt4/GuiView.cpp:1418
-#: src/frontends/qt4/GuiView.cpp:1694 src/frontends/qt4/GuiView.cpp:1780
+#: src/frontends/qt4/GuiView.cpp:1345 src/frontends/qt4/GuiView.cpp:1403
+#: src/frontends/qt4/GuiView.cpp:1677 src/frontends/qt4/GuiView.cpp:1763
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX dokumentumok (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1377
+#: src/frontends/qt4/GuiView.cpp:1362
 msgid "Document not loaded."
 msgstr "A dokumentum nincs betöltve."
 
-#: src/frontends/qt4/GuiView.cpp:1413
+#: src/frontends/qt4/GuiView.cpp:1398
 msgid "Select document to open"
 msgstr "Megnyitandó dokumentum kiválasztása"
 
-#: src/frontends/qt4/GuiView.cpp:1415 src/frontends/qt4/GuiView.cpp:1561
-#: src/frontends/qt4/GuiView.cpp:1689
+#: src/frontends/qt4/GuiView.cpp:1400 src/frontends/qt4/GuiView.cpp:1545
+#: src/frontends/qt4/GuiView.cpp:1672
 msgid "Examples|#E#e"
 msgstr "Példák|#P#p"
 
-#: src/frontends/qt4/GuiView.cpp:1419
+#: src/frontends/qt4/GuiView.cpp:1404
 msgid "LyX-1.3.x Documents (*.lyx13)"
 msgstr "LyX-1.3.x dokumentumok (*.lyx13)"
 
-#: src/frontends/qt4/GuiView.cpp:1420
+#: src/frontends/qt4/GuiView.cpp:1405
 msgid "LyX-1.4.x Documents (*.lyx14)"
 msgstr "LyX-1.4.x dokumentumok (*.lyx14)"
 
-#: src/frontends/qt4/GuiView.cpp:1421
+#: src/frontends/qt4/GuiView.cpp:1406
 msgid "LyX-1.5.x Documents (*.lyx15)"
 msgstr "LyX-1.5.x dokumentumok (*.lyx15)"
 
-#: src/frontends/qt4/GuiView.cpp:1422
+#: src/frontends/qt4/GuiView.cpp:1407
 #, fuzzy
 msgid "LyX-1.6.x Documents (*.lyx16)"
 msgstr "LyX-1.3.x dokumentumok (*.lyx13)"
 
-#: src/frontends/qt4/GuiView.cpp:1447 src/frontends/qt4/Validator.cpp:188
+#: src/frontends/qt4/GuiView.cpp:1432 src/frontends/qt4/Validator.cpp:188
 #: src/insets/ExternalSupport.cpp:367 src/insets/InsetBibtex.cpp:287
 #: src/insets/InsetGraphics.cpp:587 src/insets/InsetInclude.cpp:483
 msgid "Invalid filename"
 msgstr "Érvénytelen fájlnév"
 
-#: src/frontends/qt4/GuiView.cpp:1448
+#: src/frontends/qt4/GuiView.cpp:1433
 #, fuzzy, c-format
 msgid ""
 "The directory in the given path\n"
@@ -20609,40 +20610,40 @@ msgstr ""
 "%1$s\n"
 "könyvtár nem létezik."
 
-#: src/frontends/qt4/GuiView.cpp:1462
+#: src/frontends/qt4/GuiView.cpp:1447
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Dokumentum megnyitása %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1470
+#: src/frontends/qt4/GuiView.cpp:1455
 #, c-format
 msgid "Document %1$s opened."
 msgstr "%1$s dokumentum megnyitva."
 
-#: src/frontends/qt4/GuiView.cpp:1473
+#: src/frontends/qt4/GuiView.cpp:1458
 msgid "Version control detected."
 msgstr "Verziókövetést detektáltam."
 
-#: src/frontends/qt4/GuiView.cpp:1475
+#: src/frontends/qt4/GuiView.cpp:1460
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "A dokumentum nem nyitható meg %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:1504
+#: src/frontends/qt4/GuiView.cpp:1489
 msgid "Couldn't import file"
 msgstr "A fájl nem importálható"
 
-#: src/frontends/qt4/GuiView.cpp:1505
+#: src/frontends/qt4/GuiView.cpp:1490
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr "Nincs információ az impotáláshoz innen: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:1556
+#: src/frontends/qt4/GuiView.cpp:1540
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Válasszon egy %1$s fájlt az importáláshoz"
 
-#: src/frontends/qt4/GuiView.cpp:1607 src/frontends/qt4/GuiView.cpp:1797
+#: src/frontends/qt4/GuiView.cpp:1591 src/frontends/qt4/GuiView.cpp:1780
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -20653,50 +20654,50 @@ msgstr ""
 "\n"
 "Szeretné felülírni a dokumentumot?"
 
-#: src/frontends/qt4/GuiView.cpp:1609 src/frontends/qt4/GuiView.cpp:1801
+#: src/frontends/qt4/GuiView.cpp:1593 src/frontends/qt4/GuiView.cpp:1784
 msgid "Overwrite document?"
 msgstr "Felülírjam a dokumentumot?"
 
-#: src/frontends/qt4/GuiView.cpp:1618
+#: src/frontends/qt4/GuiView.cpp:1602
 #, c-format
 msgid "Importing %1$s..."
 msgstr "Importálás %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1621
+#: src/frontends/qt4/GuiView.cpp:1605
 msgid "imported."
 msgstr "importálva."
 
-#: src/frontends/qt4/GuiView.cpp:1623
+#: src/frontends/qt4/GuiView.cpp:1607
 msgid "file not imported!"
 msgstr "fájl nincs importálva!"
 
-#: src/frontends/qt4/GuiView.cpp:1687
+#: src/frontends/qt4/GuiView.cpp:1670
 msgid "Select LyX document to insert"
 msgstr "Válassza ki a beszúrandó LyX dokumentumot"
 
-#: src/frontends/qt4/GuiView.cpp:1721
+#: src/frontends/qt4/GuiView.cpp:1704
 #, fuzzy
 msgid "Absolute filename expected."
 msgstr "Egy értéket vártam."
 
-#: src/frontends/qt4/GuiView.cpp:1733
+#: src/frontends/qt4/GuiView.cpp:1716
 msgid "Select file to insert"
 msgstr "Válassza ki a beszúrandó fájlt"
 
-#: src/frontends/qt4/GuiView.cpp:1737
+#: src/frontends/qt4/GuiView.cpp:1720
 #, fuzzy
 msgid "All Files (*)"
 msgstr "Minden fájl (*)"
 
-#: src/frontends/qt4/GuiView.cpp:1770
+#: src/frontends/qt4/GuiView.cpp:1753
 msgid "Choose a filename to save document as"
 msgstr "Mentés másként..."
 
-#: src/frontends/qt4/GuiView.cpp:1802 src/frontends/qt4/GuiView.cpp:1857
+#: src/frontends/qt4/GuiView.cpp:1785 src/frontends/qt4/GuiView.cpp:1840
 msgid "&Rename"
 msgstr "&Átnevezés"
 
-#: src/frontends/qt4/GuiView.cpp:1853
+#: src/frontends/qt4/GuiView.cpp:1836
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -20707,16 +20708,16 @@ msgstr ""
 "\n"
 "Átnevezi a dokumentumot és megpróbálja újra?"
 
-#: src/frontends/qt4/GuiView.cpp:1856
+#: src/frontends/qt4/GuiView.cpp:1839
 msgid "Rename and save?"
 msgstr "Átnevezzem és mentsem?"
 
-#: src/frontends/qt4/GuiView.cpp:1857
+#: src/frontends/qt4/GuiView.cpp:1840
 #, fuzzy
 msgid "&Retry"
 msgstr "&Visszaállítás"
 
-#: src/frontends/qt4/GuiView.cpp:2052
+#: src/frontends/qt4/GuiView.cpp:2035
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -20727,24 +20728,24 @@ msgstr ""
 "\n"
 "Akarja menteni a dokumentumot vagy elveti a módosításokat?"
 
-#: src/frontends/qt4/GuiView.cpp:2055
+#: src/frontends/qt4/GuiView.cpp:2038
 msgid "&Discard"
 msgstr "&Elvetés"
 
-#: src/frontends/qt4/GuiView.cpp:2158
+#: src/frontends/qt4/GuiView.cpp:2142
 #, fuzzy
 msgid "Document not loaded"
 msgstr "A dokumentum nincs betöltve."
 
-#: src/frontends/qt4/GuiView.cpp:2215
+#: src/frontends/qt4/GuiView.cpp:2199
 msgid "Saving all documents..."
 msgstr "Minden dokumentum mentése..."
 
-#: src/frontends/qt4/GuiView.cpp:2225
+#: src/frontends/qt4/GuiView.cpp:2209
 msgid "All documents saved."
 msgstr "Minden dokumentum mentve."
 
-#: src/frontends/qt4/GuiView.cpp:2470
+#: src/frontends/qt4/GuiView.cpp:2454
 #, c-format
 msgid "%1$s unknown command!"
 msgstr "%1$s ismeretlen parancs!"
@@ -20876,7 +20877,7 @@ msgid "Index Entry|d"
 msgstr "Tárgyszó|s"
 
 #: src/frontends/qt4/Menus.cpp:1216 src/frontends/qt4/Menus.cpp:1246
-#: src/insets/InsetIndex.cpp:269
+#: src/insets/InsetIndex.cpp:273
 msgid "Index Entry"
 msgstr "Tárgyszó"
 
@@ -21110,7 +21111,7 @@ msgstr "%1$s (%2$s, %3$s)"
 msgid "active"
 msgstr "acute"
 
-#: src/insets/InsetBranch.cpp:71 src/insets/InsetIndex.cpp:427
+#: src/insets/InsetBranch.cpp:71 src/insets/InsetIndex.cpp:431
 msgid "non-active"
 msgstr ""
 
@@ -21303,11 +21304,11 @@ msgid ""
 "Offending file: "
 msgstr ""
 
-#: src/insets/InsetIndex.cpp:140
+#: src/insets/InsetIndex.cpp:144
 msgid "Index sorting failed"
 msgstr "Tárgymutató rendezés sikertelen"
 
-#: src/insets/InsetIndex.cpp:141
+#: src/insets/InsetIndex.cpp:145
 #, c-format
 msgid ""
 "LyX's automatic index sorting algorithm faced\n"
@@ -21320,22 +21321,22 @@ msgstr ""
 "Kérem adja meg kézzel, hogyan rendezzük ezt a bejegyzést,\n"
 "ahogy az le van írva a felhasználói kézikönyvben."
 
-#: src/insets/InsetIndex.cpp:276
+#: src/insets/InsetIndex.cpp:280
 #, fuzzy
 msgid "unknown type!"
 msgstr "Ismeretlen Tartalomjegyz. típus"
 
-#: src/insets/InsetIndex.cpp:424
+#: src/insets/InsetIndex.cpp:428
 #, fuzzy
 msgid "Unknown index type!"
 msgstr "Ismeretlen Tartalomjegyz. típus"
 
-#: src/insets/InsetIndex.cpp:425
+#: src/insets/InsetIndex.cpp:429
 #, fuzzy
 msgid "All indices"
 msgstr "&Elérhető változatok:"
 
-#: src/insets/InsetIndex.cpp:429
+#: src/insets/InsetIndex.cpp:433
 #, fuzzy
 msgid "subindex"
 msgstr "Tárgymutató"
@@ -21913,55 +21914,55 @@ msgstr "Szöveget kicseréltem."
 msgid " strings have been replaced."
 msgstr " szöveget cseréltem ki."
 
-#: src/lyxfind.cpp:942 src/lyxfind.cpp:1027
-msgid "Wrap search ?"
+#: src/lyxfind.cpp:951 src/lyxfind.cpp:1042
+msgid "Wrap search?"
 msgstr ""
 
-#: src/lyxfind.cpp:943
+#: src/lyxfind.cpp:952
 msgid ""
-"End of document reached while searching forward\n"
+"End of document reached while searching forward.\n"
 "\n"
-"Continue searching from beginning ?"
+"Continue searching from beginning?"
 msgstr ""
 
-#: src/lyxfind.cpp:946 src/lyxfind.cpp:1031
+#: src/lyxfind.cpp:955 src/lyxfind.cpp:1046
 #, fuzzy
 msgid "&Yes"
 msgstr "Igen"
 
-#: src/lyxfind.cpp:946 src/lyxfind.cpp:1031
+#: src/lyxfind.cpp:955 src/lyxfind.cpp:1046
 #, fuzzy
 msgid "&No"
 msgstr "Nem"
 
-#: src/lyxfind.cpp:1028
+#: src/lyxfind.cpp:1043
 msgid ""
 "Beginning of document reached while searching backwards\n"
 "\n"
-"Continue searching from end ?"
+"Continue searching from end?"
 msgstr ""
 
-#: src/lyxfind.cpp:1121
+#: src/lyxfind.cpp:1137
 #, fuzzy
 msgid "Search text is empty!"
 msgstr "A keresendő szöveg üres"
 
-#: src/lyxfind.cpp:1137
+#: src/lyxfind.cpp:1153
 #, fuzzy
 msgid "Invalid regular expression!"
 msgstr "A LaTeX hosszúság kifejezés rossz."
 
-#: src/lyxfind.cpp:1142
+#: src/lyxfind.cpp:1158
 #, fuzzy
 msgid "Match not found!"
 msgstr "Nem találtam meg a szöveget!"
 
-#: src/lyxfind.cpp:1149
+#: src/lyxfind.cpp:1165
 #, fuzzy
 msgid "Match found !"
 msgstr "Nincs meg a modul!"
 
-#: src/lyxfind.cpp:1191
+#: src/lyxfind.cpp:1208
 #, fuzzy
 msgid "Match found and replaced !"
 msgstr "Keres és cserél"
@@ -22310,6 +22311,10 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Ismeretlen felhasználó"
+
+#, fuzzy
+#~ msgid "Advanced Search"
+#~ msgstr "To&vábbi beállítások"
 
 #, fuzzy
 #~ msgid "Replace Ne&xt"
