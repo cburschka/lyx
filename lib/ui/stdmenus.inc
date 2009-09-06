@@ -309,12 +309,10 @@ Menuset
 		Item "Fold Math Macro|d" "math-macro-fold"
 		Separator
 		Item "View Source|S" "dialog-toggle view-source"
-		Item "View Output|V" "buffer-view"
-		Item "Update Output|U" "buffer-update"
+		ViewFormats
+		UpdateFormats
 		OptItem "View Master Document|M" "master-buffer-view"
 		OptItem "Update Master Document|a" "master-buffer-update"
-		Submenu "View (Other Formats)|F" "view_others"
-		Submenu "Update (Other Formats)|p" "view_update"
 		Separator
 		Item "Split View Into Left and Right Half|i" "split-view horizontal"
 		Item "Split View Into Upper and Lower Half|e" "split-view vertical"
@@ -323,14 +321,6 @@ Menuset
 		Submenu "Toolbars|b" "toolbars"
 		Separator
 		Documents
-	End
-
-	Menu "view_others"
-		ViewFormats
-	End
-
-	Menu "view_update"
-		UpdateFormats
 	End
 
 	Menu "toolbars"

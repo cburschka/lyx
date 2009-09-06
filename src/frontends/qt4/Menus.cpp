@@ -851,6 +851,17 @@ void MenuDefinition::expandFormats(MenuItem::Kind kind, Buffer const * buf)
 	}
 	sort(formats.begin(), formats.end(), &compareFormat);
 
+	bool const view_update = (kind == MenuItem::ViewFormats
+			|| kind == MenuItem::UpdateFormats);
+
+	QString smenue;
+	if (view_update)
+		smenue = (kind == MenuItem::ViewFormats ?
+			qt_("View [Other Formats]|F")
+			: qt_("Update [Other Formats]|p"));
+	MenuItem item(MenuItem::Submenu, smenue);
+	item.setSubmenu(MenuDefinition(smenue));
+
 	Formats::const_iterator fit = formats.begin();
 	Formats::const_iterator end = formats.end();
 	for (; fit != end ; ++fit) {
@@ -878,8 +889,15 @@ void MenuDefinition::expandFormats(MenuItem::Kind kind, Buffer const * buf)
 			break;
 		case MenuItem::ViewFormats:
 		case MenuItem::UpdateFormats:
-			if ((*fit)->name() == buf->getDefaultOutputFormat())
+			if ((*fit)->name() == buf->getDefaultOutputFormat()) {
+				docstring lbl = (kind == MenuItem::ViewFormats ?
+					bformat(_("View [%1$s]"), qstring_to_ucs4(label))
+					: bformat(_("Update [%1$s]"), qstring_to_ucs4(label)));
+				MenuItem w(MenuItem::Command, toqstr(lbl),
+						FuncRequest(action, (*fit)->name()));
+				add(w);
 				continue;
+			}
 		case MenuItem::ExportFormats:
 			if (!(*fit)->documentFormat())
 				continue;
@@ -891,13 +909,24 @@ void MenuDefinition::expandFormats(MenuItem::Kind kind, Buffer const * buf)
 		if (!shortcut.isEmpty())
 			label += '|' + shortcut;
 
-		if (buf)
-			addWithStatusCheck(MenuItem(MenuItem::Command, label,
-				FuncRequest(action, (*fit)->name())));
-		else
-			add(MenuItem(MenuItem::Command, label,
-				FuncRequest(action, (*fit)->name())));
+		if (view_update) {
+			if (buf)
+				item.submenu().addWithStatusCheck(MenuItem(MenuItem::Command, label,
+					FuncRequest(action, (*fit)->name())));
+			else
+				item.submenu().add(MenuItem(MenuItem::Command, label,
+					FuncRequest(action, (*fit)->name())));
+		} else {
+			if (buf)
+				addWithStatusCheck(MenuItem(MenuItem::Command, label,
+					FuncRequest(action, (*fit)->name())));
+			else
+				add(MenuItem(MenuItem::Command, label,
+					FuncRequest(action, (*fit)->name())));
+		}
 	}
+	if (view_update)
+		add(item);
 }
 
 
