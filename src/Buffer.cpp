@@ -2700,11 +2700,32 @@ bool Buffer::readFileHelper(FileName const & s)
 				      _("&Recover"),  _("&Load Original"),
 				      _("&Cancel")))
 		{
-		case 0:
+		case 0: {
 			// the file is not saved if we load the emergency file.
 			markDirty();
-			return readFile(e);
+			docstring str;
+			bool res;
+
+			if ((res = readFile(e)) == success)
+				str = _("Document was successfully recovered.");
+			else
+				str = _("Document was NOT successfully recovered.");
+			str += "\n\n" + _("Remove emergency file now?");
+
+			if (!Alert::prompt(_("Delete emergency file?"), str, 1, 1,
+					_("&Remove"), _("&Keep it"))) {
+				e.removeFile();
+				if (res == success)
+					Alert::warning(_("Emergency file deleted"),
+						_("Do not forget to save your file now!"), true);
+				}
+			return res;
+		}
 		case 1:
+			if (!Alert::prompt(_("Delete emergency file?"),
+					_("Remove emergency file now?"), 1, 1,
+					_("&Remove"), _("&Keep it")))
+				e.removeFile();
 			break;
 		default:
 			return false;
