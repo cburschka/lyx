@@ -616,22 +616,20 @@ void LayoutBox::addItemSort(docstring const & item, docstring const & category,
 void LayoutBox::updateContents(bool reset)
 {
 	d->resetFilter();
-	
-	if (!d->owner_.currentBufferView()) {
+	BufferView const * bv = d->owner_.currentBufferView();
+	if (!bv) {
 		d->model_->clear();
 		setEnabled(false);
 		d->text_class_ = 0;
 		d->inset_ = 0;
 		return;
 	}
-	Buffer const * buffer = &d->owner_.currentBufferView()->buffer();
 	// we'll only update the layout list if the text class has changed
 	// or we've moved from one inset to another
-	DocumentClass const * text_class = &buffer->params().documentClass();
-	Inset const * inset = 
-		&(d->owner_.currentBufferView()->cursor().innerText()->inset());
+	DocumentClass const * text_class = &(bv->buffer().params().documentClass());
+	Inset const * inset = &(bv->cursor().innerText()->inset());
 	if (!reset && d->text_class_ == text_class && d->inset_ == inset) {
-		set(d->owner_.currentBufferView()->cursor().innerParagraph().layout().name());
+		set(bv->cursor().innerParagraph().layout().name());
 		return;
 	}
 
@@ -665,7 +663,7 @@ void LayoutBox::updateContents(bool reset)
 	// needed to recalculate size hint
 	hide();
 	setMinimumWidth(sizeHint().width());
-	setEnabled(!buffer->isReadonly() &&
+	setEnabled(!bv->buffer().isReadonly() &&
 		lyx::getStatus(FuncRequest(LFUN_LAYOUT)).enabled());
 	show();
 }
