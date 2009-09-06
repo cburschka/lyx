@@ -664,8 +664,7 @@ void LyXComm::send(string const & msg)
 		       << "\nLyXComm: Resetting connection" << endl;
 		ReleaseMutex(outbuf_mutex_);
 		closeConnection();
-		if (!checkStopServer())
-			openConnection();
+		openConnection();
 	}
 }
 
