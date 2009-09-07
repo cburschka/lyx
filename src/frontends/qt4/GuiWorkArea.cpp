@@ -239,7 +239,8 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & lv)
 	: buffer_view_(new BufferView(buffer)), lyx_view_(&lv),
 	cursor_visible_(false),
 	need_resize_(false), schedule_redraw_(false),
-	preedit_lines_(1), completer_(new GuiCompleter(this))
+	preedit_lines_(1), completer_(new GuiCompleter(this)),
+	context_target_pos_()
 {
 	buffer.workAreaManager().add(this);
 	// Setup the signals
@@ -629,7 +630,12 @@ bool GuiWorkArea::event(QEvent * e)
 
 void GuiWorkArea::contextMenuEvent(QContextMenuEvent * e)
 {
-	QPoint pos = e->pos();
+	QPoint pos;
+	if (e->reason() == QContextMenuEvent::Mouse)
+		// the position is set on mouse press
+		pos = context_target_pos_;
+	else
+		pos = e->pos();
 	docstring name = buffer_view_->contextMenu(pos.x(), pos.y());
 	if (name.empty()) {
 		QAbstractScrollArea::contextMenuEvent(e);
@@ -674,6 +680,9 @@ void GuiWorkArea::mousePressEvent(QMouseEvent * e)
 		e->accept();
 		return;
 	}
+
+	if (e->button() == Qt::RightButton)
+		context_target_pos_ = e->pos();
 
 	inputContext()->reset();
 
