@@ -306,7 +306,7 @@ Menuset
 		Separator
 		Item "Split View Into Left and Right Half|i" "split-view horizontal"
 		Item "Split View Into Upper and Lower Half|V" "split-view vertical"
-		Item "Close Tab Group|G" "close-tab-group"
+		Item "Close Current View|w" "close-tab-group"
 		Item "Fullscreen|l" "ui-toggle fullscreen"
 		Submenu "Toolbars|b" "toolbars"
 		Separator
