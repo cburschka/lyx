@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-09-07 15:15+0200\n"
-"PO-Revision-Date: 2009-09-04 19:30+0200\n"
+"PO-Revision-Date: 2009-09-07 19:32+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slowakisch <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -10812,7 +10812,6 @@ msgid "Remove Last Argument Spitting Out to the Right"
 msgstr "Odstráň Posledný Argument Sprava"
 
 #: lib/ui/stdcontext.inc:345
-#, fuzzy
 msgid "Reload|R"
 msgstr "Opäť načítať"
 
@@ -11102,7 +11101,7 @@ msgstr "Pohľad rozdeliť na vrchnú a spodnú polovičku"
 
 #: lib/ui/stdmenus.inc:309
 msgid "Close Current View|w"
-msgstr ""
+msgstr "Zavri aktuálny náhľad"
 
 #: lib/ui/stdmenus.inc:310
 msgid "Fullscreen|l"
@@ -11165,14 +11164,12 @@ msgid "Table...|T"
 msgstr "Tabuľka...|T"
 
 #: lib/ui/stdmenus.inc:350
-#, fuzzy
 msgid "URL|U"
-msgstr "URL...|U"
+msgstr "URL|U"
 
 #: lib/ui/stdmenus.inc:351
-#, fuzzy
 msgid "Hyperlink...|k"
-msgstr "Hyperlinka"
+msgstr "Hyperlinka..."
 
 #: lib/ui/stdmenus.inc:354
 msgid "Short Title|S"
@@ -14791,34 +14788,31 @@ msgstr "Nahrať Originál"
 
 #: src/Buffer.cpp:2710
 msgid "Document was successfully recovered."
-msgstr ""
+msgstr "Dokument bol úspešne obnovený."
 
 #: src/Buffer.cpp:2712
 msgid "Document was NOT successfully recovered."
-msgstr ""
+msgstr "Dokument nebol úspešne obnovený."
 
 #: src/Buffer.cpp:2713 src/Buffer.cpp:2726
-#, fuzzy
 msgid "Remove emergency file now?"
-msgstr "Nahrať núdzovú kópiu ?"
+msgstr "Zmazať núdzovú kópiu teraz?"
 
 #: src/Buffer.cpp:2715 src/Buffer.cpp:2725
-#, fuzzy
 msgid "Delete emergency file?"
-msgstr "Vyberte externý súbor"
+msgstr "Zmazať núdzový súbor?"
 
 #: src/Buffer.cpp:2716 src/Buffer.cpp:2727
-#, fuzzy
 msgid "&Keep it"
-msgstr "Drža&ť spárované"
+msgstr "Nezmazať"
 
 #: src/Buffer.cpp:2719
 msgid "Emergency file deleted"
-msgstr ""
+msgstr "Núdzový súbor vymazaný"
 
 #: src/Buffer.cpp:2720
 msgid "Do not forget to save your file now!"
-msgstr ""
+msgstr "Teraz nezabudnite uložiť váš súbor!"
 
 #: src/Buffer.cpp:2741
 #, c-format
