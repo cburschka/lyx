@@ -93,14 +93,15 @@
 #
 # Jürgen Spitzmüller <juergen.sp@t-online.de>, 2009.
 # Jürgen Spitzmüller <spitz@lyx.org>, 2009.
+# Jürgen Spitzmüller <spitzmueller@ds.uzh.ch>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-09-07 15:15+0200\n"
-"PO-Revision-Date: 2009-09-04 15:51+0200\n"
-"Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
-"Language-Team: German <lyx-docs@lists.lyx.org>\n"
+"PO-Revision-Date: 2009-09-07 15:22+0200\n"
+"Last-Translator: Jürgen Spitzmüller <spitzmueller@ds.uzh.ch>\n"
+"Language-Team: German <kde-i18n-de@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10949,9 +10950,8 @@ msgid "Remove Last Argument Spitting Out to the Right"
 msgstr "Letztes Argument rechts entfernen"
 
 #: lib/ui/stdcontext.inc:345
-#, fuzzy
 msgid "Reload|R"
-msgstr "Ne&u laden"
+msgstr "Neu laden|l"
 
 #: lib/ui/stdcontext.inc:347 lib/ui/stdcontext.inc:359
 msgid "Edit Externally...|x"
@@ -11239,7 +11239,7 @@ msgstr "Ansicht in obere und untere Hälfte teilen|o"
 
 #: lib/ui/stdmenus.inc:309
 msgid "Close Current View|w"
-msgstr ""
+msgstr "Aktuelle Ansicht schließen|ß"
 
 #: lib/ui/stdmenus.inc:310
 msgid "Fullscreen|l"
@@ -11302,14 +11302,12 @@ msgid "Table...|T"
 msgstr "Tabelle...|T"
 
 #: lib/ui/stdmenus.inc:350
-#, fuzzy
 msgid "URL|U"
-msgstr "URL...|U"
+msgstr "URL|U"
 
 #: lib/ui/stdmenus.inc:351
-#, fuzzy
 msgid "Hyperlink...|k"
-msgstr "Hyperlink|y"
+msgstr "Hyperlink...|y"
 
 #: lib/ui/stdmenus.inc:354
 msgid "Short Title|S"
@@ -14944,34 +14942,31 @@ msgstr "&Original laden"
 
 #: src/Buffer.cpp:2710
 msgid "Document was successfully recovered."
-msgstr ""
+msgstr "Dokument wurde erfolgreich wiederhergestellt."
 
 #: src/Buffer.cpp:2712
 msgid "Document was NOT successfully recovered."
-msgstr ""
+msgstr "Dokument wurde NICHT erfolgreich wiederhergestellt."
 
 #: src/Buffer.cpp:2713 src/Buffer.cpp:2726
-#, fuzzy
 msgid "Remove emergency file now?"
-msgstr "Notspeicherung laden?"
+msgstr "Notspeicherung nun entfernen?"
 
 #: src/Buffer.cpp:2715 src/Buffer.cpp:2725
-#, fuzzy
 msgid "Delete emergency file?"
-msgstr "Wählen Sie eine externe Datei"
+msgstr "Notspeicherung löschen?"
 
 #: src/Buffer.cpp:2716 src/Buffer.cpp:2727
-#, fuzzy
 msgid "&Keep it"
-msgstr "&Zusammenpassend"
+msgstr "&Nicht löschen"
 
 #: src/Buffer.cpp:2719
 msgid "Emergency file deleted"
-msgstr ""
+msgstr "Notspeicherung gelöscht"
 
 #: src/Buffer.cpp:2720
 msgid "Do not forget to save your file now!"
-msgstr ""
+msgstr "Vergessen Sie nicht, ihre Datei jetzt zu speichern!"
 
 #: src/Buffer.cpp:2741
 #, c-format
