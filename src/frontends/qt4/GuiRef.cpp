@@ -70,7 +70,7 @@ GuiRef::GuiRef(GuiView & lv)
 		this, SLOT(refHighlighted(QListWidgetItem *)));
 	connect(refsLW, SIGNAL(itemSelectionChanged()),
 		this, SLOT(selectionChanged()));
-	connect(refsLW, SIGNAL(itemActivated(QListWidgetItem *)),
+	connect(refsLW, SIGNAL(itemDoubleClicked(QListWidgetItem *)),
 		this, SLOT(refSelected(QListWidgetItem *)));
 	connect(sortCB, SIGNAL(clicked(bool)),
 		this, SLOT(sortToggled(bool)));
