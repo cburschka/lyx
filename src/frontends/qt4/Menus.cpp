@@ -857,8 +857,8 @@ void MenuDefinition::expandFormats(MenuItem::Kind kind, Buffer const * buf)
 	QString smenue;
 	if (view_update)
 		smenue = (kind == MenuItem::ViewFormats ?
-			qt_("View [Other Formats]|F")
-			: qt_("Update [Other Formats]|p"));
+			qt_("View (Other Formats)|F")
+			: qt_("Update (Other Formats)|p"));
 	MenuItem item(MenuItem::Submenu, smenue);
 	item.setSubmenu(MenuDefinition(smenue));
 
