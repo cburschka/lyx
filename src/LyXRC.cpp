@@ -446,10 +446,8 @@ int LyXRC::read(Lexer & lexrc)
 		case RC_KBMAP_PRIMARY:
 			if (lexrc.next()) {
 				string const kmap(os::internal_path(lexrc.getString()));
-				if (kmap.empty()) {
-					// nothing
-				} else if (!libFileSearch("kbd", kmap,
-							  "kmap").empty()) {
+				if (!libFileSearch("kbd", kmap, "kmap").empty()
+					  || kmap.empty()) {
 					primary_kbmap = kmap;
 				} else {
 					lexrc.printError("LyX: Keymap `$$Token' not found");
@@ -460,10 +458,8 @@ int LyXRC::read(Lexer & lexrc)
 		case RC_KBMAP_SECONDARY:
 			if (lexrc.next()) {
 				string const kmap(os::internal_path(lexrc.getString()));
-				if (kmap.empty()) {
-					// nothing
-				} else if (!libFileSearch("kbd", kmap,
-							  "kmap").empty()) {
+				if (!libFileSearch("kbd", kmap, "kmap").empty()
+					  || kmap.empty()) {
 					secondary_kbmap = kmap;
 				} else {
 					lexrc.printError("LyX: Keymap `$$Token' not found");
