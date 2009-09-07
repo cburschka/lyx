@@ -52,6 +52,10 @@ RenderBase * RenderGraphic::clone(Inset const * inset) const
 	return new RenderGraphic(*this, inset);
 }
 
+void RenderGraphic::reload() const
+{
+	loader_.reload();
+}
 
 void RenderGraphic::update(graphics::Params const & params)
 {

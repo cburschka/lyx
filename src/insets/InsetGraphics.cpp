@@ -4,7 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Baruch Even
- * \author Herbert Voß
+ * \author Herbert VoÃŸ
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -222,6 +222,10 @@ void InsetGraphics::doDispatch(Cursor & cur, FuncRequest & cmd)
 					    cur.bv().buffer()), this);
 		break;
 
+	case LFUN_GRAPHICS_RELOAD:
+		graphic_->reload();
+		break;
+
 	default:
 		Inset::doDispatch(cur, cmd);
 		break;
@@ -236,6 +240,7 @@ bool InsetGraphics::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_INSET_EDIT:
 	case LFUN_INSET_MODIFY:
 	case LFUN_INSET_DIALOG_UPDATE:
+	case LFUN_GRAPHICS_RELOAD:
 		flag.setEnabled(true);
 		return true;
 

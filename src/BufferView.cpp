@@ -923,6 +923,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 		flag.setEnabled(true);
 		break;
 
+	case LFUN_GRAPHICS_RELOAD:
 	case LFUN_COPY_LABEL_AS_REF: {
 		// if there is an inset at cursor, see whether it
 		// handles the lfun
@@ -1380,6 +1381,15 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		// turn compression on/off
 		buffer_.params().compressed = !buffer_.params().compressed;
 		break;
+
+	case LFUN_GRAPHICS_RELOAD: {
+		Inset * inset = cur.nextInset();
+		if (inset) {
+			FuncRequest tmpcmd = cmd;
+			inset->dispatch(cur, tmpcmd);
+		}
+		break;
+	}
 
 	case LFUN_COPY_LABEL_AS_REF: {
 		// if there is an inset at cursor, try to copy it

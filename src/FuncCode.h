@@ -425,6 +425,7 @@ enum FuncCode
  	LFUN_INSET_END_SELECT,          // JMarc, 20090316
 	LFUN_VC_LOCKING_TOGGLE,
  	LFUN_MATH_BIGDELIM,
+	LFUN_GRAPHICS_RELOAD,           // vfr 20090810
 
 	LFUN_LASTACTION                  // end of the table
 };

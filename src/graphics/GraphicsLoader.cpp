@@ -279,6 +279,12 @@ void Loader::startLoading() const
 }
 
 
+void Loader::reload() const 
+{
+	pimpl_->cached_item_->startLoading();
+}
+
+
 void Loader::startMonitoring() const
 {
 	if (!pimpl_->cached_item_.get())
