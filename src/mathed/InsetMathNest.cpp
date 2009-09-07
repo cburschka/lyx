@@ -941,6 +941,10 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		handleFont(cur, cmd.argument(), "textnormal");
 		break;
 
+	case LFUN_FONT_UNDERLINE:
+		cur.recordUndo();
+		cur.handleNest(createInsetMath("underline"));
+		break;
 	case LFUN_MATH_MODE: {
 #if 1
 		// ignore math-mode on when already in math mode
@@ -1243,6 +1247,7 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 		flag.setEnabled(true);
 		break;
 
+	case LFUN_FONT_UNDERLINE:
 	case LFUN_FONT_FRAK:
 		flag.setEnabled(currentMode() != TEXT_MODE);
 		break;
