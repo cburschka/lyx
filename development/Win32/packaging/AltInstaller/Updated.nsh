@@ -61,8 +61,9 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
  #SetOutPath "$INSTDIR\Resources\scripts"
  #File "${PRODUCT_SOURCEDIR}\Resources\scripts\layout2layout.py"
- #SetOutPath "$INSTDIR\Resources\ui"
- #File "${PRODUCT_SOURCEDIR}\Resources\ui\stdcontext.inc"
+ SetOutPath "$INSTDIR\Resources\ui"
+ File "${PRODUCT_SOURCEDIR}\Resources\ui\stdcontext.inc"
+ File "${PRODUCT_SOURCEDIR}\Resources\ui\stdmenus.inc"
 
 FunctionEnd
 
