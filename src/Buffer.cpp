@@ -312,7 +312,7 @@ Buffer::~Buffer()
 	// GuiView already destroyed
 	gui_ = 0;
 
-	if (d->unnamed && d->filename.extension() == "internal") {
+	if (isInternal()) {
 		// No need to do additional cleanups for internal buffer.
 		delete d;
 		return;
@@ -2037,6 +2037,17 @@ void Buffer::setUnnamed(bool flag)
 bool Buffer::isUnnamed() const
 {
 	return d->unnamed;
+}
+
+
+/// \note
+/// Don't check unnamed, here: isInternal() is used in
+/// newBuffer(), where the unnamed flag has not been set by anyone
+/// yet. Also, for an internal buffer, there should be no need for
+/// retrieving fileName() nor for checking if it is unnamed or not.
+bool Buffer::isInternal() const
+{
+	return fileName().extension() == "internal";
 }
 
 

@@ -119,7 +119,7 @@ Buffer * BufferList::newBuffer(string const & s, bool const ronly)
 		}
 	}
 	tmpbuf->params().useClassDefaults();
-	if (tmpbuf->fileName().extension() == "internal") {
+	if (tmpbuf->isInternal()) {
 		binternal.push_back(tmpbuf.get());
 	} else {
 		LYXERR(Debug::INFO, "Assigning to buffer " << bstore.size());

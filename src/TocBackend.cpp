@@ -163,8 +163,10 @@ bool TocBackend::updateItem(DocIterator const & dit)
 void TocBackend::update()
 {
 	tocs_.clear();
-	DocIterator dit;
-	buffer_->inset().addToToc(dit);
+	if (! buffer_->isInternal()) {
+		DocIterator dit;
+		buffer_->inset().addToToc(dit);
+	}
 }
 
 

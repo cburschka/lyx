@@ -262,8 +262,15 @@ public:
 	///
 	void setUnnamed(bool flag = true);
 
-	///
+	/// Whether or not a filename has been assigned to this buffer
 	bool isUnnamed() const;
+
+	/// Whether or not this buffer is internal.
+	///
+	/// An internal buffer does not contain a real document, but some auxiliary text segment.
+	/// It is not associated with a filename, it is never saved, thus it does not need to be
+	/// automatically saved, nor it needs to trigger any "do you want to save ?" question.
+	bool isInternal() const;
 
 	/// Mark this buffer as dirty.
 	void markDirty();
