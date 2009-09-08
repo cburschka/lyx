@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-09-07 15:15+0200\n"
+"POT-Creation-Date: 2009-09-08 15:04+0200\n"
 "PO-Revision-Date: 2009-08-20 13:59-0400\n"
 "Last-Translator: Marius Ionescu <felijohn@gmail.com>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
@@ -14913,7 +14913,8 @@ msgid "LyX: Attempting to save document %1$s\n"
 msgstr "Revine la ultima versiune salvată"
 
 #: src/Buffer.cpp:958 src/Buffer.cpp:971 src/Buffer.cpp:985
-msgid "  Saved to %1$. Phew.\n"
+#, c-format
+msgid "  Saved to %1$s. Phew.\n"
 msgstr ""
 
 #: src/Buffer.cpp:961
@@ -15312,22 +15313,22 @@ msgstr ""
 msgid "Statistics"
 msgstr "Stare"
 
-#: src/BufferView.cpp:2168
+#: src/BufferView.cpp:2169
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Inserez documentul %1$s..."
 
-#: src/BufferView.cpp:2179
+#: src/BufferView.cpp:2180
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Am inserat documentul %1$s."
 
-#: src/BufferView.cpp:2181
+#: src/BufferView.cpp:2182
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Nu pot insera documentul %1$s"
 
-#: src/BufferView.cpp:2443
+#: src/BufferView.cpp:2444
 #, fuzzy, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15335,28 +15336,28 @@ msgid ""
 "due to the error: %2$s"
 msgstr "Nu pot insera documentul %1$s"
 
-#: src/BufferView.cpp:2445
+#: src/BufferView.cpp:2446
 #, fuzzy
 msgid "Could not read file"
 msgstr "Listă de slide-uri"
 
-#: src/BufferView.cpp:2452
+#: src/BufferView.cpp:2453
 #, fuzzy, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr "Documentul nu poate fi citit"
 
-#: src/BufferView.cpp:2453 src/output.cpp:39
+#: src/BufferView.cpp:2454 src/output.cpp:39
 #, fuzzy
 msgid "Could not open file"
 msgstr "Nu pot deschide fişierul"
 
-#: src/BufferView.cpp:2460
+#: src/BufferView.cpp:2461
 msgid "Reading not UTF-8 encoded file"
 msgstr ""
 
-#: src/BufferView.cpp:2461
+#: src/BufferView.cpp:2462
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -19859,7 +19860,7 @@ msgstr "Nu mai există informaţii de re-facere"
 
 #: src/frontends/qt4/qt_helpers.cpp:181
 #, fuzzy, c-format
-msgid "The script `%s' failed."
+msgid "The script `%1$s' failed."
 msgstr "Dicţionar"
 
 #: src/frontends/qt4/qt_helpers.cpp:433

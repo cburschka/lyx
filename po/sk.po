@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-09-07 15:15+0200\n"
+"POT-Creation-Date: 2009-09-08 15:04+0200\n"
 "PO-Revision-Date: 2009-09-07 19:32+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slowakisch <lyx-docs@lists.lyx.org>\n"
@@ -14627,7 +14627,8 @@ msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX: Pokúšam sa uložiť dokument %1$s\n"
 
 #: src/Buffer.cpp:958 src/Buffer.cpp:971 src/Buffer.cpp:985
-msgid "  Saved to %1$. Phew.\n"
+#, fuzzy, c-format
+msgid "  Saved to %1$s. Phew.\n"
 msgstr "  Úspešne uložené do súboru %1$. Uf.\n"
 
 #: src/Buffer.cpp:961
@@ -15022,22 +15023,22 @@ msgstr "Jeden znak (bez medzier)"
 msgid "Statistics"
 msgstr "Štatistika"
 
-#: src/BufferView.cpp:2168
+#: src/BufferView.cpp:2169
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Vkladám dokument %1$s..."
 
-#: src/BufferView.cpp:2179
+#: src/BufferView.cpp:2180
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s bol vložený."
 
-#: src/BufferView.cpp:2181
+#: src/BufferView.cpp:2182
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Nie je možné vložiť dokument %1$s"
 
-#: src/BufferView.cpp:2443
+#: src/BufferView.cpp:2444
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15048,11 +15049,11 @@ msgstr ""
 "%1$s\n"
 "sa kvôli chybe: %2$s nedá čítať"
 
-#: src/BufferView.cpp:2445
+#: src/BufferView.cpp:2446
 msgid "Could not read file"
 msgstr "Nemôžem čítať súbor"
 
-#: src/BufferView.cpp:2452
+#: src/BufferView.cpp:2453
 #, c-format
 msgid ""
 "%1$s\n"
@@ -15061,15 +15062,15 @@ msgstr ""
 "%1$s\n"
 "je nečitateľné."
 
-#: src/BufferView.cpp:2453 src/output.cpp:39
+#: src/BufferView.cpp:2454 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Nemôžem otvoriť súbor"
 
-#: src/BufferView.cpp:2460
+#: src/BufferView.cpp:2461
 msgid "Reading not UTF-8 encoded file"
 msgstr "Čítaný súbor nie je kódovaný v UTF-8"
 
-#: src/BufferView.cpp:2461
+#: src/BufferView.cpp:2462
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -19424,8 +19425,8 @@ msgid "Could not update TeX information"
 msgstr "Nemohol som aktualizovať TeX informáciu"
 
 #: src/frontends/qt4/qt_helpers.cpp:181
-#, c-format
-msgid "The script `%s' failed."
+#, fuzzy, c-format
+msgid "The script `%1$s' failed."
 msgstr "Skript `%s' zlyhal."
 
 #: src/frontends/qt4/qt_helpers.cpp:433

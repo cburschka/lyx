@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-09-07 15:15+0200\n"
+"POT-Creation-Date: 2009-09-08 15:04+0200\n"
 "PO-Revision-Date: 2009-04-19 18:13+0100\n"
 "Last-Translator: Ingar Pareliussen <ingarp_ved_samfundet.no>\n"
 "Language-Team: Nynorsk <nn@li.org>\n"
@@ -15203,8 +15203,8 @@ msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX: Prøver å skrive dokumentet til fil %1$s"
 
 #: src/Buffer.cpp:958 src/Buffer.cpp:971 src/Buffer.cpp:985
-#, fuzzy
-msgid "  Saved to %1$. Phew.\n"
+#, fuzzy, c-format
+msgid "  Saved to %1$s. Phew.\n"
 msgstr "Vi klarte truleg å lagre dokumentet. :-)."
 
 #: src/Buffer.cpp:961
@@ -15608,22 +15608,22 @@ msgstr ""
 msgid "Statistics"
 msgstr "Status"
 
-#: src/BufferView.cpp:2168
+#: src/BufferView.cpp:2169
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Set inn dokument %1$s..."
 
-#: src/BufferView.cpp:2179
+#: src/BufferView.cpp:2180
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s er sett inn."
 
-#: src/BufferView.cpp:2181
+#: src/BufferView.cpp:2182
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Kunne ikkje sette inn dokumentet %1$s"
 
-#: src/BufferView.cpp:2443
+#: src/BufferView.cpp:2444
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15634,26 +15634,26 @@ msgstr ""
 "%1$s\n"
 "på grunn av feilen: %2$s"
 
-#: src/BufferView.cpp:2445
+#: src/BufferView.cpp:2446
 msgid "Could not read file"
 msgstr "Kan ikkje lese fila"
 
-#: src/BufferView.cpp:2452
+#: src/BufferView.cpp:2453
 #, fuzzy, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr "Kunne ikkje lese %1$s."
 
-#: src/BufferView.cpp:2453 src/output.cpp:39
+#: src/BufferView.cpp:2454 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Kan ikkje opnafila"
 
-#: src/BufferView.cpp:2460
+#: src/BufferView.cpp:2461
 msgid "Reading not UTF-8 encoded file"
 msgstr "Les fil som ikkje er koda i UTF-8"
 
-#: src/BufferView.cpp:2461
+#: src/BufferView.cpp:2462
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -20137,8 +20137,8 @@ msgid "Could not update TeX information"
 msgstr "Kan ikkje oppdatere TeX informasjon"
 
 #: src/frontends/qt4/qt_helpers.cpp:181
-#, c-format
-msgid "The script `%s' failed."
+#, fuzzy, c-format
+msgid "The script `%1$s' failed."
 msgstr "Køyringa av programmet %s gjekk gale."
 
 #: src/frontends/qt4/qt_helpers.cpp:433

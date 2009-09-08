@@ -69,7 +69,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-09-07 15:15+0200\n"
+"POT-Creation-Date: 2009-09-08 15:04+0200\n"
 "PO-Revision-Date: 2009-04-19 17:14+0100\n"
 "Last-Translator: Martin Vermeer <martin.vermeer@tkk.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -15245,8 +15245,8 @@ msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX yrittää tallentaa asiakirjaa %1$s"
 
 #: src/Buffer.cpp:958 src/Buffer.cpp:971 src/Buffer.cpp:985
-#, fuzzy
-msgid "  Saved to %1$. Phew.\n"
+#, fuzzy, c-format
+msgid "  Saved to %1$s. Phew.\n"
 msgstr "  Tallennus ilmeisesti onnistui. Huh."
 
 #: src/Buffer.cpp:961
@@ -15647,22 +15647,22 @@ msgstr ""
 msgid "Statistics"
 msgstr "Tila"
 
-#: src/BufferView.cpp:2168
+#: src/BufferView.cpp:2169
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Lisätään asiakirja %1$s..."
 
-#: src/BufferView.cpp:2179
+#: src/BufferView.cpp:2180
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Asiakirja %1$s lisätty."
 
-#: src/BufferView.cpp:2181
+#: src/BufferView.cpp:2182
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Asiakirjaa %1$s ei voi lisätä"
 
-#: src/BufferView.cpp:2443
+#: src/BufferView.cpp:2444
 #, fuzzy, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15670,26 +15670,26 @@ msgid ""
 "due to the error: %2$s"
 msgstr "Asiakirjan %1$s avaaminen epäonnistui."
 
-#: src/BufferView.cpp:2445
+#: src/BufferView.cpp:2446
 msgid "Could not read file"
 msgstr "Ei voitu lukea tiedostoa"
 
-#: src/BufferView.cpp:2452
+#: src/BufferView.cpp:2453
 #, fuzzy, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr "%1$s ei voitu lukea"
 
-#: src/BufferView.cpp:2453 src/output.cpp:39
+#: src/BufferView.cpp:2454 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Ei voitu avata tiedostoa"
 
-#: src/BufferView.cpp:2460
+#: src/BufferView.cpp:2461
 msgid "Reading not UTF-8 encoded file"
 msgstr "Luen ei-UTF-8-koodattua tiedostoa"
 
-#: src/BufferView.cpp:2461
+#: src/BufferView.cpp:2462
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -20182,8 +20182,8 @@ msgid "Could not update TeX information"
 msgstr "Ei muuta uudelleen tehtävää"
 
 #: src/frontends/qt4/qt_helpers.cpp:181
-#, c-format
-msgid "The script `%s' failed."
+#, fuzzy, c-format
+msgid "The script `%1$s' failed."
 msgstr "Skriptin '%s' ajo epäonnistui."
 
 #: src/frontends/qt4/qt_helpers.cpp:433

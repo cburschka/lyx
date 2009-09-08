@@ -98,8 +98,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-09-07 15:15+0200\n"
-"PO-Revision-Date: 2009-09-07 15:22+0200\n"
+"POT-Creation-Date: 2009-09-08 15:04+0200\n"
+"PO-Revision-Date: 2009-09-08 15:13+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -14778,9 +14778,9 @@ msgstr " fertig."
 msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX: Versuche Dokument %1$s zu speichern\n"
 
-#: src/Buffer.cpp:958 src/Buffer.cpp:971 src/Buffer.cpp:985
-msgid "  Saved to %1$. Phew.\n"
-msgstr "  Als %1$ gespeichert. Glück gehabt!\n"
+#: src/Buffer.cpp:958 src/Buffer.cpp:971 src/Buffer.cpp:985, c-format
+msgid "  Saved to %1$s. Phew.\n"
+msgstr "  Als %1$s gespeichert. Glück gehabt!\n"
 
 #: src/Buffer.cpp:961
 msgid "  Save failed! Trying again...\n"
@@ -14805,8 +14805,9 @@ msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
 "installed"
 msgstr ""
-"Bitte überprüfen Sie dass Softwareunterstützung für die Zeichenkodierung (%1"
-"$s) richtig installiert ist"
+"Bitte überprüfen Sie, dass die Softwareunterstützung für die "
+"Zeichenkodierung "
+"(%1$s) richtig installiert ist"
 
 #: src/Buffer.cpp:1091
 #, c-format
@@ -14994,7 +14995,7 @@ msgstr "&Original laden"
 #: src/Buffer.cpp:2778
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
-msgstr "Möchten Sie das Dokument %1$s von der Versionskontrolle abrufen?"
+msgstr "Möchten Sie das Dokument %1$s aus der Versionskontrolle abrufen?"
 
 #: src/Buffer.cpp:2780
 msgid "Retrieve from version control?"
@@ -15179,22 +15180,22 @@ msgstr "Ein Zeichen (ohne Leerzeichen)"
 msgid "Statistics"
 msgstr "Statistik"
 
-#: src/BufferView.cpp:2168
+#: src/BufferView.cpp:2169
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Füge Dokument %1$s ein..."
 
-#: src/BufferView.cpp:2179
+#: src/BufferView.cpp:2180
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s ist eingefügt."
 
-#: src/BufferView.cpp:2181
+#: src/BufferView.cpp:2182
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Das Dokument %1$s konnte nicht eingefügt werden"
 
-#: src/BufferView.cpp:2443
+#: src/BufferView.cpp:2444
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15205,26 +15206,28 @@ msgstr ""
 "konnte aufgrund des folgenden Fehlers\n"
 "nicht gelesen werden: %2$s"
 
-#: src/BufferView.cpp:2445
+#: src/BufferView.cpp:2446
 msgid "Could not read file"
 msgstr "Die Datei konnte nicht gelesen werden"
 
-#: src/BufferView.cpp:2452
+#: src/BufferView.cpp:2453
 #, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
-msgstr "%1$s ist nicht lesbar."
+msgstr ""
+"%1$s\n"
+"ist nicht lesbar."
 
-#: src/BufferView.cpp:2453 src/output.cpp:39
+#: src/BufferView.cpp:2454 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Die Datei konnte nicht geöffnet werden"
 
-#: src/BufferView.cpp:2460
+#: src/BufferView.cpp:2461
 msgid "Reading not UTF-8 encoded file"
 msgstr "Lese nicht-UTF-8-kodierte Datei"
 
-#: src/BufferView.cpp:2461
+#: src/BufferView.cpp:2462
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -19661,10 +19664,9 @@ msgstr ""
 msgid "Could not update TeX information"
 msgstr "Die TeX-Informationen konnten nicht aktualisiert werden"
 
-#: src/frontends/qt4/qt_helpers.cpp:181
-#, c-format
-msgid "The script `%s' failed."
-msgstr "Das Skript `%s' ist fehlgeschlagen."
+#: src/frontends/qt4/qt_helpers.cpp:181, c-format
+msgid "The script `%1$s' failed."
+msgstr "Das Skript `%1$s' ist fehlgeschlagen."
 
 #: src/frontends/qt4/qt_helpers.cpp:433
 msgid "All Files "
