@@ -1914,6 +1914,7 @@ int BufferView::workHeight() const
 
 void BufferView::setCursor(DocIterator const & dit)
 {
+	d->cursor_.reset(buffer().inset());
 	size_t const n = dit.depth();
 	for (size_t i = 0; i < n; ++i)
 		dit[i].inset().edit(d->cursor_, true);

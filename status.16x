@@ -75,6 +75,9 @@ What's new
 
 * USER INTERFACE
 
+- Fix a crash when searching for a string that is found in a table,
+  while the cursor is in math (bug 6112).
+
 - Sort document classes case insensitively (bug 1492).
 
 - Disable to insert floats into another float when this is not
