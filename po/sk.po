@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-09-08 15:04+0200\n"
-"PO-Revision-Date: 2009-09-07 19:32+0200\n"
+"PO-Revision-Date: 2009-09-08 19:00+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slowakisch <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -14626,10 +14626,9 @@ msgstr " hotové."
 msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX: Pokúšam sa uložiť dokument %1$s\n"
 
-#: src/Buffer.cpp:958 src/Buffer.cpp:971 src/Buffer.cpp:985
-#, fuzzy, c-format
+#: src/Buffer.cpp:958 src/Buffer.cpp:971 src/Buffer.cpp:985, c-format
 msgid "  Saved to %1$s. Phew.\n"
-msgstr "  Úspešne uložené do súboru %1$. Uf.\n"
+msgstr "  Úspešne uložené do súboru %1$s. Uf.\n"
 
 #: src/Buffer.cpp:961
 msgid "  Save failed! Trying again...\n"
@@ -19424,10 +19423,9 @@ msgstr ""
 msgid "Could not update TeX information"
 msgstr "Nemohol som aktualizovať TeX informáciu"
 
-#: src/frontends/qt4/qt_helpers.cpp:181
-#, fuzzy, c-format
+#: src/frontends/qt4/qt_helpers.cpp:181, c-format
 msgid "The script `%1$s' failed."
-msgstr "Skript `%s' zlyhal."
+msgstr "Skript `%1$s' zlyhal."
 
 #: src/frontends/qt4/qt_helpers.cpp:433
 msgid "All Files "
