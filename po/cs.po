@@ -3052,7 +3052,7 @@ msgstr "&Alternativní jazyk:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:74
 msgid "The characters inserted here are ignored by the spellchecker"
-msgstr ""
+msgstr "Kontrola pravopisu ignoruje znaky vlo¾ené do tohoto pole"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:81
 msgid "Specify a personal dictionary file other than the default"
@@ -10817,9 +10817,8 @@ msgid "Remove Last Argument Spitting Out to the Right"
 msgstr "Odstranit vyplivnutí posledního argumentu doprava"
 
 #: lib/ui/stdcontext.inc:345
-#, fuzzy
 msgid "Reload|R"
-msgstr "&Znovunaèíst"
+msgstr "Znovunaèíst|Z"
 
 #: lib/ui/stdcontext.inc:347 lib/ui/stdcontext.inc:359
 msgid "Edit Externally...|x"
@@ -11107,11 +11106,11 @@ msgstr "Horizontální rozdìlení|r"
 
 #: lib/ui/stdmenus.inc:309
 msgid "Close Current View|w"
-msgstr ""
+msgstr "Uzavøít skupinu panelù|U"
 
 #: lib/ui/stdmenus.inc:310
 msgid "Fullscreen|l"
-msgstr "Celoobrazovkový mód"
+msgstr "Celoobrazovkový mód|C"
 
 #: lib/ui/stdmenus.inc:311
 msgid "Toolbars|b"
@@ -11170,15 +11169,13 @@ msgid "Table...|T"
 msgstr "Tabulka...|T"
 
 #: lib/ui/stdmenus.inc:350
-#, fuzzy
 msgid "URL|U"
-msgstr "URL...|U"
+msgstr "URL|U"
 
 # TODO
 #: lib/ui/stdmenus.inc:351
-#, fuzzy
 msgid "Hyperlink...|k"
-msgstr "Odkaz (hyperlink)|l"
+msgstr "Odkaz (hyperlink)...|l"
 
 #: lib/ui/stdmenus.inc:354
 msgid "Short Title|S"
@@ -14468,12 +14465,11 @@ msgstr "LyX nemohl vytvoøit pomocný adresáø '%1$s' (mo¾ná je zaplnìn disk?)"
 
 #: src/Buffer.cpp:313
 msgid "LyX attempted to close a document that had unsaved changes!\n"
-msgstr ""
+msgstr "LyX se pokusil uzavøít dokument, který obsahuje neulo¾ené zmìny!\n"
 
 #: src/Buffer.cpp:315
-#, fuzzy
 msgid "Attempting to close changed document!"
-msgstr "LyX: Pokus o ulo¾ení dokumentu %1$s\n"
+msgstr "Pokus o uzavøení zmìnìného dokumentu!"
 
 #: src/Buffer.cpp:323
 msgid "Could not remove temporary directory"
@@ -14639,19 +14635,16 @@ msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX: Pokus o ulo¾ení dokumentu %1$s\n"
 
 #: src/Buffer.cpp:958 src/Buffer.cpp:971 src/Buffer.cpp:985
-#, fuzzy
-msgid "  Saved to %1$. Phew.\n"
-msgstr " Ulo¾ení, zdá se, probìhlo úspì¹nì.\n"
+msgid "  Saved to %1$s. Phew.\n"
+msgstr " Úspì¹nì ulo¾eno do %1$s.\n"
 
 #: src/Buffer.cpp:961
-#, fuzzy
 msgid "  Save failed! Trying again...\n"
 msgstr " Ulo¾ení se nepovedlo! Nový pokus...\n"
 
 #: src/Buffer.cpp:975
-#, fuzzy
 msgid "  Save failed! Trying yet again...\n"
-msgstr " Ulo¾ení se nepovedlo! Nový pokus...\n"
+msgstr " Ulo¾ení se nepovedlo! Dal¹í pokus...\n"
 
 #: src/Buffer.cpp:989
 msgid "  Save failed! Bummer. Document is lost."
@@ -14803,34 +14796,31 @@ msgstr "&Naèíst pùvodní"
 
 #: src/Buffer.cpp:2710
 msgid "Document was successfully recovered."
-msgstr ""
+msgstr "Dokument byl úspì¹nì obnoven."
 
 #: src/Buffer.cpp:2712
 msgid "Document was NOT successfully recovered."
-msgstr ""
+msgstr "Dokument NEBYL úspì¹nì obnoven."
 
 #: src/Buffer.cpp:2713 src/Buffer.cpp:2726
-#, fuzzy
 msgid "Remove emergency file now?"
-msgstr "Naèíst nouzové ulo¾ení ?"
+msgstr "Smazat nyní soubor s nouzovým ulo¾ením ?"
 
 #: src/Buffer.cpp:2715 src/Buffer.cpp:2725
-#, fuzzy
 msgid "Delete emergency file?"
-msgstr "Vybrat externí soubor"
+msgstr "Smazat nouzové ulo¾ení ?"
 
 #: src/Buffer.cpp:2716 src/Buffer.cpp:2727
-#, fuzzy
 msgid "&Keep it"
-msgstr "Dr¾e&t spárované"
+msgstr "&Ponechat"
 
 #: src/Buffer.cpp:2719
 msgid "Emergency file deleted"
-msgstr ""
+msgstr "Soubor s nouzovým ulo¾ením smazán."
 
 #: src/Buffer.cpp:2720
 msgid "Do not forget to save your file now!"
-msgstr ""
+msgstr "Nezapomeòte ulo¾it nyní vá¹ soubor!"
 
 #: src/Buffer.cpp:2741
 #, c-format
