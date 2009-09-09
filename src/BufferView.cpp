@@ -938,13 +938,10 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		flag.setEnabled(true);
 		break;
 
-	// @todo Test if current WorkArea is the search WorkArea
-	case LFUN_REGEXP_MODE: {
-		bool const embedded_workarea = buffer().isUnnamed()
-			&& buffer().fileName().extension() == "internal";
-		flag.setEnabled(embedded_workarea && !cur.inRegexped());
+	case LFUN_REGEXP_MODE:
+		// FIXME: Test if current WorkArea is the search WorkArea
+		flag.setEnabled(buffer().isInternal() && !cur.inRegexped());
 		break;
-	}
 
 	case LFUN_LABEL_COPY_AS_REF: {
 		// if there is an inset at cursor, see whether it
@@ -2344,10 +2341,8 @@ void BufferView::draw(frontend::Painter & pain)
 		int const y2 = lastpm.second->position() + lastpm.second->descent();
 		
 		if (y2 < height_) {
-			bool const embedded_workarea = buffer().isUnnamed()
-				  && buffer().fileName().extension() == "internal";
-			Color color = embedded_workarea ? Color_background
-				  : Color_bottomarea;
+			Color color = buffer().isInternal() 
+				? Color_background : Color_bottomarea;
 			pain.fillRectangle(0, y2, width_, height_ - y2, color);
 		}
 		break;
