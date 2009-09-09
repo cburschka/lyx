@@ -25,7 +25,6 @@
 #include "support/docstream.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
-#include "support/FileName.h"
 
 using namespace lyx::support;
 using namespace std;
@@ -143,19 +142,9 @@ void InsetRef::updateLabels(ParIterator const & it)
 }
 
 
-/** \note
- ** If inset belongs to an Embedded WorkArea's Buffer, ref is likely
- ** to point to some documentBuffer's label.  Don't know how to
- ** retrieve the corresponding documentBuffer (so as to check if the
- ** label exists or not), so the "BROKEN:" indication is disabled in
- ** Embedded WorkArea(s).
- **/
 void InsetRef::addToToc(DocIterator const & cpit)
 {
 	docstring const & label = getParam("reference");
-	if (buffer().fileName().extension() == "internal")
-		return;
-
 	if (buffer().insetLabel(label))
 		// This InsetRef has already been taken care of in InsetLabel::addToToc().
 		return;
