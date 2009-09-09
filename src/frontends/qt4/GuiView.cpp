@@ -1323,6 +1323,14 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_BUFFER_ZOOM_IN:
 		enable = buf;
 		break;
+	
+	case LFUN_BUFFER_SWITCH:
+		// toggle on the current buffer, but do not toggle off
+		// the other ones (is that a good idea?)
+		buf = &documentBufferView()->buffer();
+		if (buf && to_utf8(cmd.argument()) == buf->absFileName())
+			flag.setOnOff(true);
+		break;
 
 	default:
 		return false;

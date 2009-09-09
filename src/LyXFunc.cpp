@@ -467,13 +467,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		flag.setOnOff(buf->isReadonly());
 		break;
 
-	case LFUN_BUFFER_SWITCH:
-		// toggle on the current buffer, but do not toggle off
-		// the other ones (is that a good idea?)
-		if (buf && to_utf8(cmd.argument()) == buf->absFileName())
-			flag.setOnOff(true);
-		break;
-
 	case LFUN_BUFFER_CHKTEX:
 		enable = buf->isLatex() && !lyxrc.chktex_command.empty();
 		break;
