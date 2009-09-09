@@ -922,6 +922,8 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_NOTE_NEXT:
 	case LFUN_REFERENCE_NEXT:
 	case LFUN_WORD_FIND:
+	case LFUN_WORD_FIND_FORWARD:
+	case LFUN_WORD_FIND_BACKWARD:
 	case LFUN_WORD_FINDADV:
 	case LFUN_WORD_REPLACE:
 	case LFUN_MARK_OFF:
@@ -1224,6 +1226,28 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		// FIXME: Move this LFUN to Buffer so that we don't have to do this:
 		processUpdateFlags(Update::Force | Update::FitCursor);
 		break;
+
+	case LFUN_WORD_FIND_FORWARD:
+	case LFUN_WORD_FIND_BACKWARD: {
+		static docstring last_search;
+		docstring searched_string;
+
+		if (!cmd.argument().empty()) {
+			last_search = cmd.argument();
+			searched_string = cmd.argument();
+		} else {
+			searched_string = last_search;
+		}
+
+		if (searched_string.empty())
+			break;
+
+		bool const fw = cmd.action == LFUN_WORD_FIND_FORWARD;
+		docstring const data =
+			find2string(searched_string, true, false, fw);
+		find(this, FuncRequest(LFUN_WORD_FIND, data));
+		break;
+	}
 
 	case LFUN_WORD_FIND: {
 		FuncRequest req = cmd;

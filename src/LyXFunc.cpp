@@ -630,8 +630,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 	}
 
-	case LFUN_WORD_FIND_FORWARD:
-	case LFUN_WORD_FIND_BACKWARD:
 	case LFUN_WORD_FINDADV:
 	case LFUN_COMMAND_PREFIX:
 	case LFUN_COMMAND_EXECUTE:
@@ -827,30 +825,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		if (lyx_view_ && lyx_view_->currentBufferView())
 			buffer = &lyx_view_->currentBufferView()->buffer();
 		switch (action) {
-
-		case LFUN_WORD_FIND_FORWARD:
-		case LFUN_WORD_FIND_BACKWARD: {
-			LASSERT(lyx_view_ && lyx_view_->documentBufferView(), /**/);
-			static docstring last_search;
-			docstring searched_string;
-
-			if (!cmd.argument().empty()) {
-				last_search = cmd.argument();
-				searched_string = cmd.argument();
-			} else {
-				searched_string = last_search;
-			}
-
-			if (searched_string.empty())
-				break;
-
-			bool const fw = action == LFUN_WORD_FIND_FORWARD;
-			docstring const data =
-				find2string(searched_string, true, false, fw);
-			find(lyx_view_->documentBufferView(),
-				FuncRequest(LFUN_WORD_FIND, data));
-			break;
-		}
 
 		case LFUN_COMMAND_PREFIX:
 			LASSERT(lyx_view_, /**/);
