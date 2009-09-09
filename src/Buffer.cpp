@@ -2051,7 +2051,6 @@ bool Buffer::isInternal() const
 }
 
 
-// FIXME: this function should be moved to buffer_pimpl.C
 void Buffer::markDirty()
 {
 	if (d->lyx_clean) {
