@@ -1,8 +1,7 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass powerdot
 \begin_preamble
 \usepackage{listings}
@@ -11,7 +10,8 @@
   rf=right footer
 }
 \end_preamble
-\options nopsheader,style=fyma,display=slidesnotes
+\options style=fyma,display=slidesnotes
+\use_default_options false
 \language english
 \inputencoding auto
 \font_roman default
@@ -22,12 +22,13 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize size=10
 \spacing single
 \use_hyperref false
 \papersize letterpaper
-\use_geometry false
+\use_geometry true
 \use_amsmath 1
 \use_esint 0
 \cite_engine basic
@@ -43,7 +44,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body

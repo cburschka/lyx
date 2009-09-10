@@ -50,6 +50,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\UserGuide.lyx"
  SetOutPath "$INSTDIR\Resources\examples"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\Braille.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\powerdot-example.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\xypic.lyx"
  SetOutPath "$INSTDIR\Resources\examples\de"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\de\Braille.lyx"
