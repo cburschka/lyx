@@ -25,6 +25,7 @@
 #include "Lexer.h"
 #include "LyXAction.h"
 #include "MetricsInfo.h"
+#include "OutputParams.h"
 #include "ParagraphParameters.h"
 #include "Paragraph.h"
 #include "TextClass.h"
@@ -63,9 +64,33 @@ void InsetERT::write(ostream & os) const
 }
 
 
-int InsetERT::plaintext(odocstream &, OutputParams const &) const
+int InsetERT::plaintext(odocstream & os, OutputParams const & rp) const
 {
-	return 0; // do not output TeX code
+	if (!rp.inIndexEntry)
+		// do not output TeX code
+		return 0;
+
+	ParagraphList::const_iterator par = paragraphs().begin();
+	ParagraphList::const_iterator end = paragraphs().end();
+
+	while (par != end) {
+		pos_type siz = par->size();
+		for (pos_type i = 0; i < siz; ++i) {
+			char_type const c = par->getChar(i);
+			// output the active characters
+			switch (c) {
+			case '|':
+			case '!':
+			case '@':
+				os.put(c);
+				break;
+			default:
+				break;
+			}
+		}
+		++par;
+	}
+	return 0;
 }
 
 
