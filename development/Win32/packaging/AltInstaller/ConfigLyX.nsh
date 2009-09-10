@@ -31,7 +31,7 @@ Function ConfigureLyX
    StrCpy $PathPrefix "$PathPrefix;$WMFPath"
   ${endif}
   # eLyXer is always available
-  #StrCpy $PathPrefix "$PathPrefix;${PRODUCT_SOURCEDIR}\etc\elyxer"
+  StrCpy $PathPrefix "$PathPrefix;${PRODUCT_SOURCEDIR}\Resources\scripts"
   
   # Create a batch file to start LyX with the environment variables set
   ClearErrors
