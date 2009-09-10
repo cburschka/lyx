@@ -1,4 +1,4 @@
-#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -289,7 +289,78 @@ LatexCommand tableofcontents
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
+
+\begin_layout Plain Layout
+Si votre distribution LaTeX est un peu ancienne (TeXLive 2007 par exemple),
+ 
+\begin_inset Quotes fld
+\end_inset
+
+Visionner
+\begin_inset Quotes frd
+\end_inset
+
+ ou 
+\begin_inset Quotes fld
+\end_inset
+
+Exporter
+\begin_inset Quotes frd
+\end_inset
+
+ en PDF ne fonctionnera pas du fait d'un conflit entre 
+\family typewriter
+varioref/hyperref
+\family default
+ et le caractère 
+\begin_inset Quotes fld
+\end_inset
+
+:
+\begin_inset Quotes frd
+\end_inset
+
+ apparaissant dans certaines étiquettes.
+ Pour résoudre ce problème, vous pouvez:
+\end_layout
+
+\begin_layout Itemize
+soit désactiver 
+\family typewriter
+hyperref
+\family default
+ dans le menu 
+\family sans
+Document\SpecialChar \menuseparator
+Paramètres\SpecialChar \menuseparator
+Propriété PDF
+\family default
+;
+\end_layout
+
+\begin_layout Itemize
+Vous pouvez trouver la dernière version au format PDF de ce manuel ici :
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+http://wiki.lyx.org/LyX/DocumentationDevelopment#UserGuide
+\series default
+;
+\end_layout
+
+\begin_layout Itemize
+soit mettre à jour votre distribution (en installant par exemple au moins
+ TeXLive 2008)
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
 
 \begin_layout Plain Layout
 Pour pouvoir exporter ce document en PDF, PS ou DVI, les paquetages LaTeX
@@ -323,12 +394,6 @@ Vous pouvez trouver la dernière version au format PDF de ce manuel ici :
 
 \series bold
 http://wiki.lyx.org/LyX/DocumentationDevelopment#EmbeddedObjects
-\begin_inset Newline newline
-\end_inset
-
-
-\series default
-(version anglaise)
 \end_layout
 
 \end_inset
@@ -723,7 +788,7 @@ groupe
 \family default
  vous permet de définir ou de choisir un groupe de paramètres d'image
 \begin_inset Index
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Figures ! Groupes de paramétrisation
@@ -740,7 +805,7 @@ Figures ! Groupes de paramétrisation
  On peut rattacher une image à un groupe existant en utilisant le menu contextue
 l de l'image et en cochant le nom du groupe dans la liste
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 La liste des groupes n'apparaît que si au moins un groupe a été défini (N.d.T.)
