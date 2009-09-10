@@ -147,6 +147,11 @@ public:
 	 */
 	Float inFloat;
 
+	/** Whether we are inside an index inset.
+	 *  ERT needs to know this, due to the active chars.
+	 */
+	bool inIndexEntry;
+
 	/** Whether we are inside an inset that is logically deleted.
 	 *  A value > 0 indicates a deleted inset.
          */

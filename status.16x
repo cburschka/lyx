@@ -69,8 +69,12 @@ What's new
 
 - Do not unnecessarily enquote brackets in the LaTeX output (bug 5988).
 
-- Remove the last '//' in the output of multiline equations. This caused
+- Remove the last '\\' in the output of multiline equations. This caused
   labels to appear double (bug 2969).
+ 
+- Put "|" characters in index entries in ERT when converting old documents
+  to LyX 1.6.x format, to assure the character is treated verbatim
+  (bug 6179).
 
 
 * USER INTERFACE

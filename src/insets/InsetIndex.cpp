@@ -48,8 +48,10 @@ InsetIndex::InsetIndex(Buffer const & buf)
 
 
 int InsetIndex::latex(odocstream & os,
-		      OutputParams const & runparams) const
+		      OutputParams const & runparams_in) const
 {
+	OutputParams runparams(runparams_in);
+	runparams.inIndexEntry = true;
 	os << "\\index";
 	os << '{';
 	int i = 0;

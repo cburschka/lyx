@@ -209,7 +209,7 @@ def extract_argument(line):
     return (line[:pos + 1], line[pos + 1:])
 
 
-def latex2ert(line):
+def latex2ert(line, isindex):
     '''Converts LaTeX commands into ERT. line may well be a multi-line
        string when it is returned.'''
     if not line:
@@ -246,6 +246,9 @@ def latex2ert(line):
     # put all remaining braces in ERT
     line = wrap_into_ert(line, '}', '}')
     line = wrap_into_ert(line, '{', '{')
+    if isindex:
+        # active character that is not available in all font encodings
+        line = wrap_into_ert(line, '|', '|')
     retval += line
     return retval
 
@@ -257,10 +260,12 @@ unicode_reps = read_unicodesymbols()
 #end up inside ERT. That routine could be modified so that it returned
 #a list of lines, and we could then skip ERT bits and only deal with
 #the other bits.
-def latex2lyx(data):
+def latex2lyx(data, isindex):
     '''Takes a string, possibly multi-line, and returns the result of
     converting LaTeX constructs into LyX constructs. Returns a list of
-    lines, suitable for insertion into document.body.'''
+    lines, suitable for insertion into document.body.
+    The bool isindex specifies whether we are in an index macro (which
+    has some specific active characters that need to be ERTed).'''
 
     if not data:
         return [""]
@@ -309,14 +314,14 @@ def latex2lyx(data):
             g = m.group(3)
             if s:
                 # this is non-math!
-                s = latex2ert(s)
+                s = latex2ert(s, isindex)
                 subst = s.split('\n')
                 retval += subst
             retval.append("\\begin_inset Formula " + f)
             retval.append("\\end_inset")
             m = mathre.match(g)
         # Handle whatever is left, which is just text
-        g = latex2ert(g)
+        g = latex2ert(g, isindex)
         subst = g.split('\n')
         retval += subst
     return retval
@@ -1097,7 +1102,7 @@ def convert_latexcommand_index(document):
             linelist = [""]
         else:
             fullcontent = m.group(1)
-            linelist = latex2lyx(fullcontent)
+            linelist = latex2lyx(fullcontent, True)
         #document.warning(fullcontent)
 
         linelist = ["\\begin_inset Index", "status collapsed", "\\begin_layout Standard", ""] + \
@@ -2177,7 +2182,7 @@ def convert_subfig(document):
         addedLines -= 1
         subst = ['\\begin_inset Float figure', 'wide false', 'sideways false',
                  'status open', '', '\\begin_layout Plain Layout', '\\begin_inset Caption',
-                 '', '\\begin_layout Plain Layout'] + latex2lyx(caption) + \
+                 '', '\\begin_layout Plain Layout'] + latex2lyx(caption, False) + \
                  [ '\\end_layout', '', '\\end_inset', '',
                  '\\end_layout', '', '\\begin_layout Plain Layout']
         document.body[i : i] = subst
