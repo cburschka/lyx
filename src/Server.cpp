@@ -415,6 +415,8 @@ bool LyXComm::checkStopServer(DWORD timeout)
 bool LyXComm::startPipe(DWORD index)
 {
 	pipe_[index].pending_io = false;
+	pipe_[index].overlap.Offset = 0;
+	pipe_[index].overlap.OffsetHigh = 0;
 
 	// Overlapped ConnectNamedPipe should return zero.
 	if (ConnectNamedPipe(pipe_[index].handle, &pipe_[index].overlap)) {
