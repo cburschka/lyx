@@ -1004,10 +1004,9 @@ void GuiApplication::createView(QString const & geometry_arg, bool autoShow,
 
 	// create new view
 	int id = view_id;
-	if (id == 0) {
-		while (d->views_.find(id) != d->views_.end())
-			id++;
-	}
+	while (d->views_.find(id) != d->views_.end())
+		id++;
+
 	LYXERR(Debug::GUI, "About to create new window with ID " << id);
 	GuiView * view = new GuiView(id);
 	// register view
