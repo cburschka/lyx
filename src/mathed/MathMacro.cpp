@@ -634,7 +634,7 @@ bool MathMacro::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 			cur.recordUndoInset();
 			cur.popForward();
 			cur.backspace();
-			cur.niceInsert(createInsetMath(unfolded_name));
+			cur.insert(createInsetMath(unfolded_name));
 			if (left)
 				cur.backwardPos();
 			cur.updateFlags(Update::Force);
