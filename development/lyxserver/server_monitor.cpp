@@ -24,6 +24,11 @@
  * 3) Compile using the following command:
  *    g++ server_monitor.cpp -o monitor -I. `pkg-config --cflags --libs QtGui`
  *
+ * Alternatively, you can create a Makefile with the following commands:
+ *    qmake -project
+ *    qmake
+ * and then run make (or nmake, if you use msvc).
+ *
  * Usage:
  * 1) Set the LyXserver pipe path in the LyX preferences (on *nix you can use
  *    any path, for example ~/.lyx/lyxpipe, whereas on Windows the path has
@@ -33,11 +38,11 @@
  *    push the button labeled "Open pipes" and then try issuing some commands.
  */
 
-#include "server_monitor.h"
-
 #include <QApplication>
 #include <QtGui>
 #include <QtDebug>
+
+#include "server_monitor.h"
 
 class ReadPipe : public QThread {
 public:
