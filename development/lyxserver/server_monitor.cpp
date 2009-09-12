@@ -87,7 +87,7 @@ LyXServerMonitor::LyXServerMonitor()
 	connect(submitCommandPB, SIGNAL(clicked()), this, SLOT(submitCommand()));
 	connect(donePB, SIGNAL(clicked()), this, SLOT(reject()));
 
-	QVBoxLayout *mainLayout = new QVBoxLayout;
+	QVBoxLayout * mainLayout = new QVBoxLayout;
 	mainLayout->addWidget(gridGB);
 	mainLayout->addWidget(horizontalGB);
 	setLayout(mainLayout);
@@ -338,7 +338,7 @@ void LyXServerMonitor::closePipes()
 				buffer[BUFSIZE - 1] = '\0';
 				::write(pipein, buffer, strlen(buffer));
 			}
-			/* Say goodbye */
+			// Say goodbye
 			snprintf(buffer, BUFSIZE - 1, "LYXSRV:%s:bye\n",
 				 clientname.toUtf8().constData());
 			buffer[BUFSIZE - 1] = '\0';
@@ -377,7 +377,7 @@ void LyXServerMonitor::submitCommand()
 }
 
 
-int main(int argc, char *argv[])
+int main(int argc, char * argv[])
 {
 	QApplication app(argc, argv);
 	LyXServerMonitor dialog;
