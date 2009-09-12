@@ -24,10 +24,10 @@
  * 3) Compile using the following command:
  *    g++ server_monitor.cpp -o monitor -I. `pkg-config --cflags --libs QtGui`
  *
- * Alternatively, you can create a Makefile with the following commands:
- *    qmake -project
+ * Alternatively, you can create a Makefile with qmake and then build
+ * the executable by running make (or nmake, if you use msvc):
  *    qmake
- * and then run make (or nmake, if you use msvc).
+ *    make
  *
  * Usage:
  * 1) Set the LyXserver pipe path in the LyX preferences (on *nix you can use
