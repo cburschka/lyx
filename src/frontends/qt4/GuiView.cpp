@@ -1199,11 +1199,11 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 
 	case LFUN_BUFFER_WRITE:
-		enable = buf && (buf->isUnnamed() || !buf->isClean());
+		enable = doc_buffer && (doc_buffer->isUnnamed() || !doc_buffer->isClean());
 		break;
 
 	case LFUN_BUFFER_WRITE_AS:
-		enable = buf;
+		enable = doc_buffer;
 		break;
 
 	case LFUN_BUFFER_CLOSE_ALL:
@@ -1212,10 +1212,10 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 
 	case LFUN_SPLIT_VIEW:
 		if (cmd.getArg(0) == "vertical")
-			enable = buf && (d.splitter_->count() == 1 ||
+			enable = doc_buffer && (d.splitter_->count() == 1 ||
 					 d.splitter_->orientation() == Qt::Vertical);
 		else
-			enable = buf && (d.splitter_->count() == 1 ||
+			enable = doc_buffer && (d.splitter_->count() == 1 ||
 					 d.splitter_->orientation() == Qt::Horizontal);
 		break;
 
@@ -1237,16 +1237,16 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		// fall through to set "enable"
 	case LFUN_DIALOG_SHOW: {
 		string const name = cmd.getArg(0);
-		if (!buf)
+		if (!doc_buffer)
 			enable = name == "aboutlyx"
 				|| name == "file" //FIXME: should be removed.
 				|| name == "prefs"
 				|| name == "texinfo";
 		else if (name == "print")
-			enable = buf->isExportable("dvi")
+			enable = doc_buffer->isExportable("dvi")
 				&& lyxrc.print_command != "none";
 		else if (name == "character" || name == "symbols") {
-			if (buf->isReadonly() || !currentBufferView() 
+			if (!buf || buf->isReadonly()
 				|| !currentBufferView()->cursor().inTexted())
 				enable = false;
 			else {
@@ -1257,11 +1257,11 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 			}
 		}
 		else if (name == "latexlog")
-			enable = FileName(buf->logName()).isReadableFile();
+			enable = FileName(doc_buffer->logName()).isReadableFile();
 		else if (name == "spellchecker")
-			enable = theSpellChecker() && !buf->isReadonly();
+			enable = theSpellChecker() && !doc_buffer->isReadonly();
 		else if (name == "vclog")
-			enable = buf->lyxvc().inUse();
+			enable = doc_buffer->lyxvc().inUse();
 		break;
 	}
 
@@ -1328,11 +1328,11 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 
 	case LFUN_BUFFER_ZOOM_OUT:
-		enable = buf && lyxrc.zoom > 10;
+		enable = doc_buffer && lyxrc.zoom > 10;
 		break;
 
 	case LFUN_BUFFER_ZOOM_IN:
-		enable = buf;
+		enable = doc_buffer;
 		break;
 	
 	case LFUN_BUFFER_SWITCH:
@@ -2393,7 +2393,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_BUFFER_RELOAD: {
-			LASSERT(doc_buffer, /**/);
+			LASSERT(doc_buffer, break);
 			docstring const file = makeDisplayPath(doc_buffer->absFileName(), 20);
 			docstring text = bformat(_("Any changes will be lost. Are you sure "
 							     "you want to revert to the saved version of the document %1$s?"), file);
@@ -2406,13 +2406,13 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_BUFFER_WRITE:
-			if (bv)
-				saveBuffer(bv->buffer());
+			LASSERT(doc_buffer, break);
+			saveBuffer(*doc_buffer);
 			break;
 
 		case LFUN_BUFFER_WRITE_AS:
-			if (bv)
-				renameBuffer(bv->buffer(), cmd.argument());
+			LASSERT(doc_buffer, break);
+			renameBuffer(*doc_buffer, cmd.argument());
 			break;
 
 		case LFUN_BUFFER_WRITE_ALL: {
@@ -2482,7 +2482,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 					showDialog("character", data);
 			} else if (name == "latexlog") {
 				Buffer::LogType type; 
-				string const logfile = documentBufferView()->buffer().logName(&type);
+				string const logfile = doc_buffer->logName(&type);
 				switch (type) {
 				case Buffer::latexlog:
 					data = "latex ";
@@ -2495,7 +2495,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 				showDialog("log", data);
 			} else if (name == "vclog") {
 				string const data = "vc " +
-					Lexer::quoteString(documentBufferView()->buffer().lyxvc().getLogFile());
+					Lexer::quoteString(doc_buffer->lyxvc().getLogFile());
 				showDialog("log", data);
 			} else if (name == "symbols") {
 				data = bv->cursor().getEncoding()->name();
@@ -2539,17 +2539,16 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			setFocus();
 			break;
 
-		case LFUN_SPLIT_VIEW:
-			if (documentBufferView()) {
-				string const orientation = cmd.getArg(0);
-				d.splitter_->setOrientation(orientation == "vertical"
-					? Qt::Vertical : Qt::Horizontal);
-				TabWorkArea * twa = addTabWorkArea();
-				GuiWorkArea * wa = twa->addWorkArea(documentBufferView()->buffer(), *this);
-				setCurrentWorkArea(wa);
-			}
+		case LFUN_SPLIT_VIEW: {
+			LASSERT(doc_buffer, break);
+			string const orientation = cmd.getArg(0);
+			d.splitter_->setOrientation(orientation == "vertical"
+				? Qt::Vertical : Qt::Horizontal);
+			TabWorkArea * twa = addTabWorkArea();
+			GuiWorkArea * wa = twa->addWorkArea(*doc_buffer, *this);
+			setCurrentWorkArea(wa);
 			break;
-
+		}
 		case LFUN_CLOSE_TAB_GROUP:
 			if (TabWorkArea * twa = d.currentTabWorkArea()) {
 				closeTabWorkArea(twa);
