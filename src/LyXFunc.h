@@ -121,11 +121,6 @@ private:
 	/// send a post-dispatch status message
 	void sendDispatchMessage(docstring const & msg,
 		FuncRequest const & ev);
-
-	///
-	void reloadBuffer();
-	/// make sure the document is saved
-	bool ensureBufferClean(BufferView * bv);
 	///
 	void updateLayout(DocumentClass const * const oldlayout, Buffer * buffer);
 };

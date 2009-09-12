@@ -475,30 +475,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		enable = buf->isExportable("program");
 		break;
 
-	case LFUN_VC_REGISTER:
-		enable = !buf->lyxvc().inUse();
-		break;
-	case LFUN_VC_CHECK_IN:
-		enable = buf->lyxvc().checkInEnabled();
-		break;
-	case LFUN_VC_CHECK_OUT:
-		enable = buf->lyxvc().checkOutEnabled();
-		break;
-	case LFUN_VC_LOCKING_TOGGLE:
-		enable = !buf->isReadonly() && buf->lyxvc().lockingToggleEnabled();
-		flag.setOnOff(enable && !buf->lyxvc().locker().empty());
-		break;
-	case LFUN_VC_REVERT:
-		enable = buf->lyxvc().inUse();
-		break;
-	case LFUN_VC_UNDO_LAST:
-		enable = buf->lyxvc().undoLastEnabled();
-		break;
-	case LFUN_BUFFER_RELOAD:
-		enable = !buf->isUnnamed() && buf->fileName().exists()
-			&& (!buf->isClean() || buf->isExternallyModified(Buffer::timestamp_method));
-		break;
-
 	case LFUN_CITATION_INSERT: {
 		FuncRequest fr(LFUN_INSET_INSERT, "citation");
 		enable = getStatus(fr).enabled();
@@ -587,15 +563,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 			// enabled
 			enable = true;
 		}
-		break;
-	}
-
-	case LFUN_VC_COMMAND: {
-		if (cmd.argument().empty())
-			enable = false;
-
-		if (!buf && contains(cmd.getArg(0), 'D'))
-			enable = false;
 		break;
 	}
 
@@ -731,36 +698,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 }
 
 
-bool LyXFunc::ensureBufferClean(BufferView * bv)
-{
-	Buffer & buf = bv->buffer();
-	if (buf.isClean() && !buf.isUnnamed())
-		return true;
-
-	docstring const file = buf.fileName().displayName(30);
-	docstring title;
-	docstring text;
-	if (!buf.isUnnamed()) {
-		text = bformat(_("The document %1$s has unsaved "
-					     "changes.\n\nDo you want to save "
-					     "the document?"), file);
-		title = _("Save changed document?");
-		
-	} else {
-		text = bformat(_("The document %1$s has not been "
-					     "saved yet.\n\nDo you want to save "
-					     "the document?"), file);
-		title = _("Save new document?");
-	}
-	int const ret = Alert::prompt(title, text, 0, 1, _("&Save"), _("&Cancel"));
-
-	if (ret == 0)
-		lyx_view_->dispatch(FuncRequest(LFUN_BUFFER_WRITE));
-
-	return buf.isClean() && !buf.isUnnamed();
-}
-
-
 namespace {
 
 bool loadLayoutFile(string const & name, string const & buf_path)
@@ -860,19 +797,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			buffer = 0;
 			updateFlags = Update::None;
 			break;
-
-		case LFUN_BUFFER_RELOAD: {
-			LASSERT(lyx_view_ && buffer, /**/);
-			docstring const file = makeDisplayPath(buffer->absFileName(), 20);
-			docstring text = bformat(_("Any changes will be lost. Are you sure "
-							     "you want to revert to the saved version of the document %1$s?"), file);
-			int const ret = Alert::prompt(_("Revert to saved document?"),
-				text, 1, 1, _("&Revert"), _("&Cancel"));
-
-			if (ret == 0)
-				reloadBuffer();
-			break;
-		}
 
 		case LFUN_BUFFER_UPDATE: {
 			LASSERT(lyx_view_ && lyx_view_->documentBufferView(), /**/);
@@ -1016,68 +940,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			updateFlags = Update::None;
 			break;
 		}
-
-		// --- version control -------------------------------
-		case LFUN_VC_REGISTER:
-			LASSERT(lyx_view_ && buffer, /**/);
-			if (!ensureBufferClean(lyx_view_->documentBufferView()))
-				break;
-			if (!buffer->lyxvc().inUse()) {
-				if (buffer->lyxvc().registrer())
-					reloadBuffer();
-			}
-			updateFlags = Update::Force;
-			break;
-
-		case LFUN_VC_CHECK_IN:
-			LASSERT(lyx_view_ && buffer, /**/);
-			if (!ensureBufferClean(lyx_view_->documentBufferView()))
-				break;
-			if (buffer->lyxvc().inUse()
-					&& !buffer->isReadonly()) {
-				setMessage(from_utf8(buffer->lyxvc().checkIn()));
-				reloadBuffer();
-			}
-			break;
-
-		case LFUN_VC_CHECK_OUT:
-			LASSERT(lyx_view_ && buffer, /**/);
-			if (!ensureBufferClean(lyx_view_->documentBufferView()))
-				break;
-			if (buffer->lyxvc().inUse()) {
-				setMessage(from_utf8(buffer->lyxvc().checkOut()));
-				reloadBuffer();
-			}
-			break;
-
-		case LFUN_VC_LOCKING_TOGGLE:
-			LASSERT(lyx_view_ && buffer, /**/);
-			if (!ensureBufferClean(lyx_view_->documentBufferView())
-			    || buffer->isReadonly())
-				break;
-			if (buffer->lyxvc().inUse()) {
-				string res = buffer->lyxvc().lockingToggle();
-				if (res.empty())
-					frontend::Alert::error(_("Revision control error."),
-						_("Error when setting the locking property."));
-				else {
-					setMessage(from_utf8(res));
-					reloadBuffer();
-				}
-			}
-			break;
-
-		case LFUN_VC_REVERT:
-			LASSERT(lyx_view_ && buffer, /**/);
-			buffer->lyxvc().revert();
-			reloadBuffer();
-			break;
-
-		case LFUN_VC_UNDO_LAST:
-			LASSERT(lyx_view_ && buffer, /**/);
-			buffer->lyxvc().undoLast();
-			reloadBuffer();
-			break;
 
 		// --- lyxserver commands ----------------------------
 		case LFUN_SERVER_GET_FILENAME:
@@ -1595,49 +1457,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			theSession().bookmarks().clear();
 			break;
 
-		case LFUN_VC_COMMAND: {
-			string flag = cmd.getArg(0);
-			if (buffer && contains(flag, 'R')
-				&& !ensureBufferClean(lyx_view_->documentBufferView()))
-				break;
-			docstring message;
-			if (contains(flag, 'M'))
-				if (!Alert::askForText(message, _("LyX VC: Log Message")))
-					break;
-
-			string path = cmd.getArg(1);
-			if (contains(path, "$$p") && buffer)
-				path = subst(path, "$$p", buffer->filePath());
-			LYXERR(Debug::LYXVC, "Directory: " << path);
-			FileName pp(path);
-			if (!pp.isReadableDirectory()) {
-				lyxerr << _("Directory is not accessible.") << endl;
-				break;
-			}
-			support::PathChanger p(pp);
-
-			string command = cmd.getArg(2);
-			if (command.empty())
-				break;
-			if (buffer) {
-				command = subst(command, "$$i", buffer->absFileName());
-				command = subst(command, "$$p", buffer->filePath());
-			}
-			command = subst(command, "$$m", to_utf8(message));
-			LYXERR(Debug::LYXVC, "Command: " << command);
-			Systemcall one;
-			one.startscript(Systemcall::Wait, command);
-
-			if (!buffer)
-				break;
-			if (contains(flag, 'I'))
-				buffer->markDirty();
-			if (contains(flag, 'R'))
-				reloadBuffer();
-
-			break;
-		}
-
 		default:
 			LASSERT(theApp(), /**/);
 			// Let the frontend dispatch its own actions.
@@ -1804,30 +1623,6 @@ void LyXFunc::sendDispatchMessage(docstring const & msg, FuncRequest const & cmd
 		lyx_view_->message(dispatch_msg);
 }
 
-
-void LyXFunc::reloadBuffer()
-{
-	Buffer * buf = &lyx_view_->documentBufferView()->buffer();
-	FileName filename = buf->fileName();
-	// The user has already confirmed that the changes, if any, should
-	// be discarded. So we just release the Buffer and don't call closeBuffer();
-	theBufferList().release(buf);
-	// if the lyx_view_ has been destroyed, create a new one
-	if (!lyx_view_)
-		theApp()->dispatch(FuncRequest(LFUN_WINDOW_NEW));
-	buf = lyx_view_->loadDocument(filename);
-	docstring const disp_fn = makeDisplayPath(filename.absFilename());
-	docstring str;
-	if (buf) {
-		buf->updateLabels();
-		lyx_view_->setBuffer(buf);
-		buf->errors("Parse");
-		str = bformat(_("Document %1$s reloaded."), disp_fn);
-	} else {
-		str = bformat(_("Could not reload document %1$s"), disp_fn);
-	}
-	lyx_view_->message(str);
-}
 
 // Each "lyx_view_" should have it's own message method. lyxview and
 // the minibuffer would use the minibuffer, but lyxserver would

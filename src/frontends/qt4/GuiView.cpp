@@ -71,6 +71,8 @@
 #include "support/lstrings.h"
 #include "support/os.h"
 #include "support/Package.h"
+#include "support/Path.h"
+#include "support/Systemcall.h"
 #include "support/Timeout.h"
 
 #include <QAction>
@@ -1175,6 +1177,8 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	bool enable = true;
 	Buffer * buf = currentBufferView()
 		? &currentBufferView()->buffer() : 0;
+	Buffer * doc_buffer = documentBufferView()
+		? &(documentBufferView()->buffer()) : 0;
 
 	if (cmd.origin == FuncRequest::TOC) {
 		GuiToc * toc = static_cast<GuiToc*>(findOrBuild("toc", false));
@@ -1187,6 +1191,13 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	}
 
 	switch(cmd.action) {
+	case LFUN_BUFFER_RELOAD:
+		enable = doc_buffer && !doc_buffer->isUnnamed()
+			&& doc_buffer->fileName().exists()
+			&& (!doc_buffer->isClean()
+			   || doc_buffer->isExternallyModified(Buffer::timestamp_method));
+		break;
+
 	case LFUN_BUFFER_WRITE:
 		enable = buf && (buf->isUnnamed() || !buf->isClean());
 		break;
@@ -1327,10 +1338,38 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_BUFFER_SWITCH:
 		// toggle on the current buffer, but do not toggle off
 		// the other ones (is that a good idea?)
-		buf = &documentBufferView()->buffer();
-		if (buf && to_utf8(cmd.argument()) == buf->absFileName())
+		if (doc_buffer
+			&& to_utf8(cmd.argument()) == doc_buffer->absFileName())
 			flag.setOnOff(true);
 		break;
+
+	case LFUN_VC_REGISTER:
+		enable = doc_buffer && !doc_buffer->lyxvc().inUse();
+		break;
+	case LFUN_VC_CHECK_IN:
+		enable = doc_buffer && doc_buffer->lyxvc().checkInEnabled();
+		break;
+	case LFUN_VC_CHECK_OUT:
+		enable = doc_buffer && doc_buffer->lyxvc().checkOutEnabled();
+		break;
+	case LFUN_VC_LOCKING_TOGGLE:
+		enable = doc_buffer && !doc_buffer->isReadonly()
+			&& doc_buffer->lyxvc().lockingToggleEnabled();
+		flag.setOnOff(enable && !doc_buffer->lyxvc().locker().empty());
+		break;
+	case LFUN_VC_REVERT:
+		enable = doc_buffer && doc_buffer->lyxvc().inUse();
+		break;
+	case LFUN_VC_UNDO_LAST:
+		enable = doc_buffer && doc_buffer->lyxvc().undoLastEnabled();
+		break;
+	case LFUN_VC_COMMAND: {
+		if (cmd.argument().empty())
+			enable = false;
+		if (!doc_buffer && contains(cmd.getArg(0), 'D'))
+			enable = false;
+		break;
+	}
 
 	default:
 		return false;
@@ -2121,12 +2160,175 @@ void GuiView::gotoNextOrPreviousBuffer(NextOrPrevious np)
 }
 
 
+/// make sure the document is saved
+static bool ensureBufferClean(Buffer * buffer)
+{
+	LASSERT(buffer, return false);
+	if (buffer->isClean() && !buffer->isUnnamed())
+		return true;
+
+	docstring const file = buffer->fileName().displayName(30);
+	docstring title;
+	docstring text;
+	if (!buffer->isUnnamed()) {
+		text = bformat(_("The document %1$s has unsaved "
+					     "changes.\n\nDo you want to save "
+					     "the document?"), file);
+		title = _("Save changed document?");
+		
+	} else {
+		text = bformat(_("The document %1$s has not been "
+					     "saved yet.\n\nDo you want to save "
+					     "the document?"), file);
+		title = _("Save new document?");
+	}
+	int const ret = Alert::prompt(title, text, 0, 1, _("&Save"), _("&Cancel"));
+
+	if (ret == 0)
+		dispatch(FuncRequest(LFUN_BUFFER_WRITE));
+
+	return buffer->isClean() && !buffer->isUnnamed();
+}
+
+
+void GuiView::reloadBuffer()
+{
+	Buffer * buf = &documentBufferView()->buffer();
+	FileName filename = buf->fileName();
+	// The user has already confirmed that the changes, if any, should
+	// be discarded. So we just release the Buffer and don't call closeBuffer();
+	theBufferList().release(buf);
+	buf = loadDocument(filename);
+	docstring const disp_fn = makeDisplayPath(filename.absFilename());
+	docstring str;
+	if (buf) {
+		buf->updateLabels();
+		setBuffer(buf);
+		buf->errors("Parse");
+		str = bformat(_("Document %1$s reloaded."), disp_fn);
+	} else {
+		str = bformat(_("Could not reload document %1$s"), disp_fn);
+	}
+	message(str);
+}
+
+
+void GuiView::dispatchVC(FuncRequest const & cmd)
+{
+	Buffer * buffer = documentBufferView()
+		? &(documentBufferView()->buffer()) : 0;
+
+	switch (cmd.action) {
+	case LFUN_VC_REGISTER:
+		if (!buffer || !ensureBufferClean(buffer))
+			break;
+		if (!buffer->lyxvc().inUse()) {
+			if (buffer->lyxvc().registrer())
+				reloadBuffer();
+		}
+		break;
+
+	case LFUN_VC_CHECK_IN:
+		if (!buffer || !ensureBufferClean(buffer))
+			break;
+		if (buffer->lyxvc().inUse() && !buffer->isReadonly()) {
+			message(from_utf8(buffer->lyxvc().checkIn()));
+			reloadBuffer();
+		}
+		break;
+
+	case LFUN_VC_CHECK_OUT:
+		if (!buffer || !ensureBufferClean(buffer))
+			break;
+		if (buffer->lyxvc().inUse()) {
+			message(from_utf8(buffer->lyxvc().checkOut()));
+			reloadBuffer();
+		}
+		break;
+
+	case LFUN_VC_LOCKING_TOGGLE:
+		LASSERT(buffer, return);
+		if (!ensureBufferClean(buffer) || buffer->isReadonly())
+			break;
+		if (buffer->lyxvc().inUse()) {
+			string res = buffer->lyxvc().lockingToggle();
+			if (res.empty()) {
+				frontend::Alert::error(_("Revision control error."),
+				_("Error when setting the locking property."));
+			} else {
+				message(from_utf8(res));
+				reloadBuffer();
+			}
+		}
+		break;
+
+	case LFUN_VC_REVERT:
+		LASSERT(buffer, return);
+		buffer->lyxvc().revert();
+		reloadBuffer();
+		break;
+
+	case LFUN_VC_UNDO_LAST:
+		LASSERT(buffer, return);
+		buffer->lyxvc().undoLast();
+		reloadBuffer();
+		break;
+
+	case LFUN_VC_COMMAND: {
+		string flag = cmd.getArg(0);
+		if (buffer && contains(flag, 'R') && !ensureBufferClean(buffer))
+			break;
+		docstring message;
+		if (contains(flag, 'M')) {
+			if (!Alert::askForText(message, _("LyX VC: Log Message")))
+				break;
+		}
+		string path = cmd.getArg(1);
+		if (contains(path, "$$p") && buffer)
+			path = subst(path, "$$p", buffer->filePath());
+		LYXERR(Debug::LYXVC, "Directory: " << path);
+		FileName pp(path);
+		if (!pp.isReadableDirectory()) {
+			lyxerr << _("Directory is not accessible.") << endl;
+			break;
+		}
+		support::PathChanger p(pp);
+
+		string command = cmd.getArg(2);
+		if (command.empty())
+			break;
+		if (buffer) {
+			command = subst(command, "$$i", buffer->absFileName());
+			command = subst(command, "$$p", buffer->filePath());
+		}
+		command = subst(command, "$$m", to_utf8(message));
+		LYXERR(Debug::LYXVC, "Command: " << command);
+		Systemcall one;
+		one.startscript(Systemcall::Wait, command);
+
+		if (!buffer)
+			break;
+		if (contains(flag, 'I'))
+			buffer->markDirty();
+		if (contains(flag, 'R'))
+			reloadBuffer();
+
+		break;
+		}
+	}
+}
+
+
 bool GuiView::dispatch(FuncRequest const & cmd)
 {
 	BufferView * bv = currentBufferView();
 	// By default we won't need any update.
 	if (bv)
 		bv->cursor().updateFlags(Update::None);
+
+	Buffer * doc_buffer = documentBufferView()
+		? &(documentBufferView()->buffer()) : 0;
+
 	bool dispatched = true;
 
 	if (cmd.origin == FuncRequest::TOC) {
@@ -2189,6 +2391,19 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 		case LFUN_FILE_INSERT_PLAINTEXT:
 			insertPlaintextFile(cmd.argument(), false);
 			break;
+
+		case LFUN_BUFFER_RELOAD: {
+			LASSERT(doc_buffer, /**/);
+			docstring const file = makeDisplayPath(doc_buffer->absFileName(), 20);
+			docstring text = bformat(_("Any changes will be lost. Are you sure "
+							     "you want to revert to the saved version of the document %1$s?"), file);
+			int const ret = Alert::prompt(_("Revert to saved document?"),
+				text, 1, 1, _("&Revert"), _("&Cancel"));
+
+			if (ret == 0)
+				reloadBuffer();
+			break;
+		}
 
 		case LFUN_BUFFER_WRITE:
 			if (bv)
@@ -2398,6 +2613,16 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			QPixmapCache::clear();
 			guiApp->fontLoader().update();
 			lyx::dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
+			break;
+
+		case LFUN_VC_REGISTER:
+		case LFUN_VC_CHECK_IN:
+		case LFUN_VC_CHECK_OUT:
+		case LFUN_VC_LOCKING_TOGGLE:
+		case LFUN_VC_REVERT:
+		case LFUN_VC_UNDO_LAST:
+		case LFUN_VC_COMMAND:
+			dispatchVC(cmd);
 			break;
 
 		default:

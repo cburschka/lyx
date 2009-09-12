@@ -327,6 +327,10 @@ private:
 	Dialog * findOrBuild(std::string const & name, bool hide_it);
 	///
 	Dialog * build(std::string const & name);
+	///
+	void reloadBuffer();
+	///
+	void dispatchVC(FuncRequest const & cmd);
 
 	/// This view ID.
 	int id_;
