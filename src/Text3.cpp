@@ -2740,7 +2740,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_FONT_UWAVE:
 	case LFUN_LABEL_GOTO:
 	case LFUN_LAYOUT_TABULAR:
-	case LFUN_MENU_OPEN:
 	case LFUN_NOACTION:
 	case LFUN_NOTE_NEXT:
 	case LFUN_REFERENCE_NEXT:

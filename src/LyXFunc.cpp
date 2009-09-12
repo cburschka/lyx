@@ -590,7 +590,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 	}
 
-	case LFUN_WORD_FINDADV:
 	case LFUN_COMMAND_PREFIX:
 	case LFUN_COMMAND_EXECUTE:
 	case LFUN_CANCEL:
@@ -601,12 +600,9 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_RECONFIGURE:
 	case LFUN_HELP_OPEN:
 	case LFUN_DROP_LAYOUTS_CHOICE:
-	case LFUN_MENU_OPEN:
 	case LFUN_SERVER_GET_FILENAME:
 	case LFUN_SERVER_NOTIFY:
 	case LFUN_SERVER_GOTO_FILE_ROW:
-	case LFUN_DIALOG_HIDE:
-	case LFUN_DIALOG_DISCONNECT_INSET:
 	case LFUN_BUFFER_CHILD_OPEN:
 	case LFUN_CURSOR_FOLLOWS_SCROLLBAR_TOGGLE:
 	case LFUN_KEYMAP_OFF:
@@ -627,8 +623,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_LAYOUT_MODULE_ADD:
 	case LFUN_LAYOUT_RELOAD:
 	case LFUN_LYXRC_APPLY:
-	case LFUN_BUFFER_NEXT:
-	case LFUN_BUFFER_PREVIOUS:
 		// these are handled in our dispatch()
 		break;
 

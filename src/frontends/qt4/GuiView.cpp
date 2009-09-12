@@ -1232,6 +1232,13 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		flag.setOnOff(isFullScreen());
 		break;
 
+	case LFUN_DIALOG_DISCONNECT_INSET:
+		break;
+
+	case LFUN_DIALOG_HIDE:
+		// FIXME: should we check if the dialog is shown?
+		break;
+
 	case LFUN_DIALOG_TOGGLE:
 		flag.setOnOff(isDialogVisible(cmd.getArg(0)));
 		// fall through to set "enable"
@@ -1271,6 +1278,10 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 			enable = name == "prefs";
 		break;
 	}
+	
+	case LFUN_MENU_OPEN:
+		// Nothing to check.
+		break;
 
 	case LFUN_INSET_APPLY: {
 		string const name = cmd.getArg(0);
@@ -1335,6 +1346,10 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		enable = doc_buffer;
 		break;
 	
+	case LFUN_BUFFER_NEXT:
+	case LFUN_BUFFER_PREVIOUS:
+		// FIXME: should we check is there is an previous or next buffer?
+		break;
 	case LFUN_BUFFER_SWITCH:
 		// toggle on the current buffer, but do not toggle off
 		// the other ones (is that a good idea?)
