@@ -106,7 +106,7 @@ LyXServerMonitor::~LyXServerMonitor()
 void LyXServerMonitor::createGridGroupBox()
 {
 	gridGB = new QGroupBox;
-	QGridLayout *layout = new QGridLayout;
+	QGridLayout * layout = new QGridLayout;
 
 	labels[0] = new QLabel("Pipe name");
 	pipeNameLE = new QLineEdit;
@@ -151,7 +151,7 @@ void LyXServerMonitor::createGridGroupBox()
 void LyXServerMonitor::createCmdsGroupBox()
 {
 	horizontalGB = new QGroupBox;
-	QHBoxLayout *layout = new QHBoxLayout;
+	QHBoxLayout * layout = new QHBoxLayout;
 
 	openPipesPB = new QPushButton("&Open pipes");
 	layout->addWidget(openPipesPB);
