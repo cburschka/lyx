@@ -44,34 +44,6 @@
 
 #include "server_monitor.h"
 
-class ReadPipe : public QThread {
-public:
-	///
-	ReadPipe(LyXServerMonitor * monitor) : lyxmonitor(monitor) {}
-	///
-	void run() { lyxmonitor->readPipe(); }
-
-private:
-	///
-	LyXServerMonitor * lyxmonitor;
-};
-
-
-class DeleteThread : public QEvent {
-public:
-	///
-	DeleteThread(ReadPipe * thread)
-	: QEvent(QEvent::User), pipethread(thread)
-	{}
-	///
-	ReadPipe * pipeThread() const { return pipethread; }
-
-private:
-	///
-	ReadPipe * pipethread;
-};
-
-
 LyXServerMonitor::LyXServerMonitor()
 	: pipein(-1), pipeout(-1), thread_exit(false), lyx_listen(false)
 {
@@ -190,8 +162,7 @@ void LyXServerMonitor::readPipe()
 				if (fromLyX.contains("bye")) {
 					qWarning() << "monitor: LyX has closed "
 						      "connection!";
-					infoLB->clear();
-					notifyLB->setText(fromLyX);
+					pipethread->emitNotice(fromLyX);
 					notified = true;
 					break;
 				}
@@ -202,13 +173,10 @@ void LyXServerMonitor::readPipe()
 					submitCommandPB->setDisabled(false);
 				}
 			}
-			if (fromLyX[0] == QLatin1Char('I')) {
-				infoLB->setText(fromLyX);
-				notifyLB->clear();
-			} else {
-				infoLB->clear();
-				notifyLB->setText(fromLyX);
-			}
+			if (fromLyX[0] == QLatin1Char('I'))
+				pipethread->emitInfo(fromLyX);
+			else
+				pipethread->emitNotice(fromLyX);
 #ifdef _WIN32
 			// On Windows, we have to close and reopen
 			// the pipe after each use.
@@ -218,9 +186,8 @@ void LyXServerMonitor::readPipe()
 				O_RDONLY);
 			if (pipeout < 0) {
 				perror("monitor");
-				infoLB->clear();
-				notifyLB->setText("An error occurred, "
-						  "closing pipes");
+				pipethread->emitNotice("An error occurred, "
+							"closing pipes");
 				notified = true;
 				break;
 			}
@@ -241,8 +208,7 @@ void LyXServerMonitor::readPipe()
 			}
 #endif
 			perror("monitor");
-			infoLB->clear();
-			notifyLB->setText("An error occurred, closing pipes");
+			pipethread->emitNotice("An error occurred, closing pipes");
 			notified = true;
 			break;
 		} else
@@ -252,32 +218,43 @@ void LyXServerMonitor::readPipe()
 	if (!notified) {
 		if (thread_exit) {
 			qWarning() << "monitor: Closing pipes";
-			infoLB->clear();
-			notifyLB->setText("Closing pipes");
+			pipethread->emitNotice("Closing pipes");
 		} else {
 			qWarning() << "monitor: LyX has closed connection!";
-			infoLB->clear();
-			notifyLB->setText("LyX has closed connection!");
+			pipethread->emitNotice("LyX has closed connection!");
 		}
 	}
-	DeleteThread * event = new DeleteThread(pipethread);
-	QCoreApplication::postEvent(this, static_cast<QEvent *>(event));
+	QEvent * event = new QEvent(QEvent::User);
+	QCoreApplication::postEvent(this, event);
 	lyx_listen = false;
-	closePipes();
+	if (!thread_exit)
+		pipethread->emitClosing();
 }
 
 
 bool LyXServerMonitor::event(QEvent * e)
 {
 	if (e->type() == QEvent::User) {
-		ReadPipe * pipeThread =
-			static_cast<DeleteThread *>(e)->pipeThread();
-		pipeThread->wait();
+		pipethread->wait();
 		thread_exit = false;
-		delete pipeThread;
+		delete pipethread;
 		return true;
 	}
 	return QDialog::event(e);
+}
+
+
+void LyXServerMonitor::showInfo(QString const & msg)
+{
+	infoLB->setText(msg);
+	notifyLB->clear();
+}
+
+
+void LyXServerMonitor::showNotice(QString const & msg)
+{
+	infoLB->clear();
+	notifyLB->setText(msg);
 }
 
 
@@ -307,6 +284,12 @@ void LyXServerMonitor::openPipes()
 			closePipes();
 			return;
 		}
+		connect(pipethread, SIGNAL(info(QString const &)),
+			this, SLOT(showInfo(QString const &)));
+		connect(pipethread, SIGNAL(notice(QString const &)),
+			this, SLOT(showNotice(QString const &)));
+		connect(pipethread, SIGNAL(closing()),
+			this, SLOT(closePipes()));
 		openPipesPB->setDisabled(true);
 		closePipesPB->setDisabled(false);
 		// greet LyX

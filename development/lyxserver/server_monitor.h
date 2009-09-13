@@ -58,6 +58,8 @@ public Q_SLOTS:
 	void openPipes();
 	void closePipes();
 	void submitCommand();
+	void showInfo(QString const &);
+	void showNotice(QString const &);
 
 private:
 	void createCmdsGroupBox();
@@ -85,6 +87,31 @@ private:
 	char buffer[BUFSIZE];
 	char pipedata[BUFSIZE];
 	ReadPipe * pipethread;
+};
+
+
+class ReadPipe : public QThread
+{
+	Q_OBJECT
+
+public:
+	ReadPipe(LyXServerMonitor * monitor) : lyxmonitor(monitor) {}
+	///
+	void run() { lyxmonitor->readPipe(); }
+	///
+	void emitInfo(QString const & msg) { emit info(msg); }
+	///
+	void emitNotice(QString const & msg) { emit notice(msg); }
+	///
+	void emitClosing() { emit closing(); }
+
+signals:
+	void info(QString const &);
+	void notice(QString const &);
+	void closing();
+
+private:
+	LyXServerMonitor * lyxmonitor;
 };
 
 #endif
