@@ -1168,6 +1168,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			int row;
 			istringstream is(argument);
 			is >> file_name >> row;
+			file_name = os::internal_path(file_name);
 			Buffer * buf = 0;
 			bool loaded = false;
 			string const abstmp = package().temp_dir().absFilename();

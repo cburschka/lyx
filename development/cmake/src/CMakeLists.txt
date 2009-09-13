@@ -34,8 +34,10 @@ if (ASPELL_FOUND)
 	set(lyx_sources ${lyx_sources} ${TOP_SRC_DIR}/src/ASpell.cpp)
 endif()
 
+lyx_automoc(${TOP_SRC_DIR}/src/Server.cpp)
+
 include_directories(${CMAKE_CURRENT_BINARY_DIR}
-	${ZLIB_INCLUDE_DIR})
+	${ZLIB_INCLUDE_DIR} ${QT_INCLUDES})
 
 lyx_add_msvc_pch(lyx)
 

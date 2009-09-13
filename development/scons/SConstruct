@@ -903,6 +903,7 @@ result = utils.createConfigFile(conf,
         ('locale.h', 'HAVE_LOCALE_H', 'c'),
         ('process.h', 'HAVE_PROCESS_H', 'c'),
         ('stdlib.h', 'HAVE_STDLIB_H', 'c'),
+        ('string.h', 'HAVE_STRING_H', 'c'),
         ('sys/stat.h', 'HAVE_SYS_STAT_H', 'c'),
         ('sys/time.h', 'HAVE_SYS_TIME_H', 'c'),
         ('sys/types.h', 'HAVE_SYS_TYPES_H', 'c'),
@@ -1287,30 +1288,29 @@ if platform_name == 'cygwin':
 # to be built with all the include directories etc
 #
 if frontend == 'qt4':
-    frontend_env = env.Clone()
-    frontend_env['BUILDERS']['qtResource'] = Builder(action = utils.env_qtResource)
+    env['BUILDERS']['qtResource'] = Builder(action = utils.env_qtResource)
 
     # handle qt related user specified paths
     # set environment so that moc etc can be found even if its path is not set properly
-    if frontend_env.has_key('qt_dir') and frontend_env['qt_dir']:
-        frontend_env['QTDIR'] = frontend_env['qt_dir']
-        if os.path.isdir(os.path.join(frontend_env['qt_dir'], 'bin')):
-            os.environ['PATH'] += os.pathsep + os.path.join(frontend_env['qt_dir'], 'bin')
-            frontend_env.PrependENVPath('PATH', os.path.join(frontend_env['qt_dir'], 'bin'))
-        if os.path.isdir(os.path.join(frontend_env['qt_dir'], 'lib')):
-            frontend_env.PrependENVPath('PKG_CONFIG_PATH', os.path.join(frontend_env['qt_dir'], 'lib'))
+    if env.has_key('qt_dir') and env['qt_dir']:
+        env['QTDIR'] = env['qt_dir']
+        if os.path.isdir(os.path.join(env['qt_dir'], 'bin')):
+            os.environ['PATH'] += os.pathsep + os.path.join(env['qt_dir'], 'bin')
+            env.PrependENVPath('PATH', os.path.join(env['qt_dir'], 'bin'))
+        if os.path.isdir(os.path.join(env['qt_dir'], 'lib')):
+            env.PrependENVPath('PKG_CONFIG_PATH', os.path.join(env['qt_dir'], 'lib'))
 
     # if separate qt_lib_path is given
-    if frontend_env.has_key('qt_lib_path') and frontend_env['qt_lib_path']:
-        qt_lib_path = frontend_env.subst('$qt_lib_path')
-        frontend_env.AppendUnique(LIBPATH = [qt_lib_path])
-        frontend_env.PrependENVPath('PKG_CONFIG_PATH', qt_lib_path)
+    if env.has_key('qt_lib_path') and env['qt_lib_path']:
+        qt_lib_path = env.subst('$qt_lib_path')
+        env.AppendUnique(LIBPATH = [qt_lib_path])
+        env.PrependENVPath('PKG_CONFIG_PATH', qt_lib_path)
     else:
         qt_lib_path = None
 
     # if separate qt_inc_path is given
-    if frontend_env.has_key('qt_inc_path') and frontend_env['qt_inc_path']:
-        qt_inc_path = frontend_env['qt_inc_path']
+    if env.has_key('qt_inc_path') and env['qt_inc_path']:
+        qt_inc_path = env['qt_inc_path']
     else:
         qt_inc_path = None
 
@@ -1320,18 +1320,20 @@ if frontend == 'qt4':
     # NOTE: I have to patch qt4.py since it does not automatically
     # process .C file!!! (add to cxx_suffixes )
     #
-    frontend_env.Tool('qt4', [scons_dir])
-    frontend_env['QT_AUTOSCAN'] = 0
-    frontend_env['QT4_AUTOSCAN'] = 0
-    frontend_env['QT4_UICDECLFLAGS'] = '-tr lyx::qt_'
+    env.Tool('qt4', [scons_dir])
+    env['QT_AUTOSCAN'] = 0
+    env['QT4_AUTOSCAN'] = 0
+    env['QT4_UICDECLFLAGS'] = '-tr lyx::qt_'
+    if platform_name == 'win32':
+        env['QT4_MOCFROMHFLAGS'] = '-D_WIN32'
 
     if qt_lib_path is None:
-        qt_lib_path = os.path.join(frontend_env.subst('$QTDIR'), 'lib')
+        qt_lib_path = os.path.join(env.subst('$QTDIR'), 'lib')
     if qt_inc_path is None:
-        qt_inc_path = os.path.join(frontend_env.subst('$QTDIR'), 'include')
+        qt_inc_path = os.path.join(env.subst('$QTDIR'), 'include')
 
 
-    conf = Configure(frontend_env,
+    conf = Configure(env,
         custom_tests = { 
             'CheckPackage' : utils.checkPackage,
             'CheckCommand' : utils.checkCommand,
@@ -1340,10 +1342,10 @@ if frontend == 'qt4':
 
     succ = False
     # first: try pkg_config
-    if frontend_env['HAS_PKG_CONFIG']:
+    if env['HAS_PKG_CONFIG']:
         succ = conf.CheckPackage('QtCore') or conf.CheckPackage('QtCore4')
         # FIXME: use pkg_config information?
-        #frontend_env['QT4_PKG_CONFIG'] = succ
+        #env['QT4_PKG_CONFIG'] = succ
     # second: try to link to it
     if not succ:
         # Under linux, I can test the following perfectly
@@ -1375,7 +1377,7 @@ if frontend == 'qt4':
         else:
             qt_lib_suffix = ''
             use_qt_debug_libs = False
-    frontend_env.EnableQt4Modules(qt_libs, debug = (mode == 'debug' and use_qt_debug_libs))
+    env.EnableQt4Modules(qt_libs, debug = (mode == 'debug' and use_qt_debug_libs))
     frontend_libs = [x + qt_lib_suffix for x in qt_libs]
     qtcore_lib = ['QtCore' + qt_lib_suffix]
 
@@ -1388,11 +1390,11 @@ if frontend == 'qt4':
     # NOTE: previously, lyx.exe had to be linked to some qt manifest to work.
     # For some unknown changes in msvc or qt, this is no longer needed.
     if use_vc:
-        frontend_env['LINKCOM'] = [frontend_env['LINKCOM'], \
+        env['LINKCOM'] = [env['LINKCOM'], \
             'mt.exe /MANIFEST %s /outputresource:$TARGET;1' % \
             env.File('$BUILDDIR/lyx.exe.manifest').path]
 
-    frontend_env = conf.Finish()
+    env = conf.Finish()
 
 #
 # Report results
@@ -1435,7 +1437,7 @@ env.SConsignFile(os.path.join(Dir(env['BUILDDIR']).abspath, '.sconsign'))
 env.BuildDir('$BUILDDIR/boost', '$TOP_SRCDIR/boost/libs', duplicate = 0)
 env.BuildDir('$BUILDDIR/intl', '$TOP_SRCDIR/intl', duplicate = 0)
 env.BuildDir('$BUILDDIR/src', '$TOP_SRCDIR/src', duplicate = 0)
-frontend_env.BuildDir('$BUILDDIR/src', '$TOP_SRCDIR/src', duplicate = 0)
+env.BuildDir('$BUILDDIR/src', '$TOP_SRCDIR/src', duplicate = 0)
 
 print "Building all targets recursively"
 
@@ -1493,12 +1495,12 @@ if (included_gettext and not libExists('included_intl')) or 'intl' in BUILD_TARG
 #
 # src/support
 #
-frontend_env['QT4_MOCHPREFIX'] = ''
-frontend_env['QT4_MOCHSUFFIX'] = '_moc.cpp'
+env['QT4_MOCHPREFIX'] = ''
+env['QT4_MOCHSUFFIX'] = '_moc.cpp'
 
-support_moced_files = [frontend_env.Moc4('$BUILDDIR/src/support/%s' % x)
+support_moced_files = [env.Moc4('$BUILDDIR/src/support/%s' % x)
     for x in src_support_header_files ]
-support = frontend_env.StaticLibrary(
+support = env.StaticLibrary(
     target = '$LOCALLIBPATH/support',
     source = ['$BUILDDIR/src/support/%s' % x for x in src_support_files],
     CCFLAGS =  [
@@ -1511,67 +1513,81 @@ support = frontend_env.StaticLibrary(
 )
 Alias('support', support)
 
+#
+# lyxclient
+#
+if env['HAVE_FCNTL']:
+    client = env.Program(
+        target = '$BUILDDIR/src/client/lyxclient',
+        LIBS = ['support'] + intl_libs + system_libs +
+            socket_libs + boost_libraries + qtcore_lib,
+        source = ['$BUILDDIR/src/client/%s' % x for x in src_client_files] + \
+            utils.createResFromIcon(env, 'lyx.ico', '$LOCALLIBPATH/client.rc')
+    )
+    Alias('client', env.Command(os.path.join('$BUILDDIR', os.path.split(str(client[0]))[1]),
+        client, [Copy('$TARGET', '$SOURCE')]))
+else:
+    client = None
+Alias('client', client)
+
 
 #
-# src/mathed
+# tex2lyx
 #
-mathed = env.StaticLibrary(
-    target = '$LOCALLIBPATH/mathed',
-    source = ['$BUILDDIR/src/mathed/%s' % x for x in src_mathed_files]
+for file in src_tex2lyx_copied_files + src_tex2lyx_copied_header_files:
+    env.Command('$BUILDDIR/src/tex2lyx/'+file, '$TOP_SRCDIR/src/'+file,
+        [Copy('$TARGET', '$SOURCE')])
+
+tex2lyx = env.Program(
+    target = '$BUILDDIR/src/tex2lyx/tex2lyx',
+    LIBS = ['support'] + boost_libraries + intl_libs + system_libs + qtcore_lib,
+    source = ['$BUILDDIR/src/tex2lyx/%s' % x for x in src_tex2lyx_files + src_tex2lyx_copied_files] + \
+        utils.createResFromIcon(env, 'lyx.ico', '$LOCALLIBPATH/tex2lyx.rc'),
+    CPPPATH = ['$BUILDDIR/src/tex2lyx', '$BUILDDIR/src', '$CPPPATH'],
+    LIBPATH = ['#$LOCALLIBPATH', '$LIBPATH'],
+    CCFLAGS = ['$CCFLAGS', '-DTEX2LYX'],
 )
-Alias('mathed', mathed)
+Alias('tex2lyx', env.Command(os.path.join('$BUILDDIR', os.path.split(str(tex2lyx[0]))[1]),
+    tex2lyx, [Copy('$TARGET', '$SOURCE')]))
+Alias('tex2lyx', tex2lyx)
 
 
 #
-# src/insets
+# Build lyx with given frontend
 #
-insets = env.StaticLibrary(
-    target = '$LOCALLIBPATH/insets',
-    source = ['$BUILDDIR/src/insets/%s' % x for x in src_insets_files]
-)
-Alias('insets', insets)
+if env.has_key('USE_ASPELL') and env['USE_ASPELL']:
+    src_post_files.append('ASpell.cpp')
+elif env.has_key('USE_PSPELL') and env['USE_PSPELL']:
+    src_post_files.append('PSpell.cpp')
+elif env.has_key('USE_ISPELL') and env['USE_ISPELL']:
+    src_post_files.append('ISpell.cpp')
 
-
-#
-# src/frontends
-#
-frontends = env.StaticLibrary(
-    target = '$LOCALLIBPATH/frontends',
-    source = ['$BUILDDIR/src/frontends/%s' % x for x in src_frontends_files]
-)
-Alias('frontends', frontends)
-
-
-#
-# src/graphics
-#
-graphics = env.StaticLibrary(
-    target = '$LOCALLIBPATH/graphics',
-    source = ['$BUILDDIR/src/graphics/%s' % x for x in src_graphics_files]
-)
-Alias('graphics', graphics)
-
-
-#
-# src/frontend/qt4
-#
 # tells scons how to get these moced files, although not all moced files are needed
 # (or are actually generated).
-qt4_moced_files = [frontend_env.Moc4('$BUILDDIR/src/frontends/qt4/%s' % x)
+qt4_moced_files = [env.Moc4('$BUILDDIR/src/frontends/qt4/%s' % x)
     for x in src_frontends_qt4_header_files ]
-ui_files = [frontend_env.Uic4('$BUILDDIR/src/frontends/qt4/ui/%s' % x.split('.')[0])
+src_moced_files = [env.Moc4('$BUILDDIR/src/%s' % x)
+    for x in src_header_files ]
+ui_files = [env.Uic4('$BUILDDIR/src/frontends/qt4/ui/%s' % x.split('.')[0])
     for x in src_frontends_qt4_ui_files]
-resource = frontend_env.Qrc(frontend_env.qtResource(
+resource = env.Qrc(env.qtResource(
     '$BUILDDIR/src/frontends/qt4/Resource.qrc',
     ['$TOP_SRCDIR/lib/images/%s' % x for x in lib_images_files] +
     ['$TOP_SRCDIR/lib/images/math/%s' % x for x in lib_images_math_files] +
     ['$TOP_SRCDIR/lib/images/commands/%s' % x for x in lib_images_commands_files]))
-#
-# moc qt4_moc_files, the moced files are included in the original files
-#
-qt4 = frontend_env.StaticLibrary(
-    target = '$LOCALLIBPATH/qt4',
-    source = ['$BUILDDIR/src/frontends/qt4/%s' % x for x in src_frontends_qt4_files] + resource,
+
+lyx = env.Program(
+    target = '$BUILDDIR/lyx',
+    source = ['$BUILDDIR/src/main.cpp'] +
+	['$BUILDDIR/src/frontends/qt4/%s' % x for x in src_frontends_qt4_files] +
+	resource +
+    	['$BUILDDIR/src/graphics/%s' % x for x in src_graphics_files] +
+    	['$BUILDDIR/src/mathed/%s' % x for x in src_mathed_files] +
+    	['$BUILDDIR/src/insets/%s' % x for x in src_insets_files] +
+    	['$BUILDDIR/src/frontends/%s' % x for x in src_frontends_files] +
+    	['$BUILDDIR/src/%s' % x for x in src_pre_files] +
+    	["$BUILDDIR/src/%s" % x for x in src_post_files] +
+        utils.createResFromIcon(env, 'lyx.ico', '$LOCALLIBPATH/lyx.rc'),
     CPPPATH = [
         '$CPPPATH',
         '$BUILDDIR/src',
@@ -1585,91 +1601,11 @@ qt4 = frontend_env.StaticLibrary(
         '-DHAVE_CONFIG_H',
         '-DQT_NO_STL',
         '-DQT_NO_KEYWORDS',
-    ]
-)
-Alias('qt4', qt4)
-
-
-#
-# src/client
-#
-if env['HAVE_FCNTL']:
-    client = frontend_env.Program(
-        target = '$BUILDDIR/src/client/lyxclient',
-        LIBS = ['support'] + intl_libs + system_libs +
-            socket_libs + boost_libraries + qtcore_lib,
-        source = ['$BUILDDIR/src/client/%s' % x for x in src_client_files] + \
-            utils.createResFromIcon(frontend_env, 'lyx.ico', '$LOCALLIBPATH/client.rc')
-    )
-    Alias('client', frontend_env.Command(os.path.join('$BUILDDIR', os.path.split(str(client[0]))[1]),
-        client, [Copy('$TARGET', '$SOURCE')]))
-else:
-    client = None
-Alias('client', client)
-
-
-#
-# tex2lyx
-#
-for file in src_tex2lyx_copied_files + src_tex2lyx_copied_header_files:
-    frontend_env.Command('$BUILDDIR/src/tex2lyx/'+file, '$TOP_SRCDIR/src/'+file,
-        [Copy('$TARGET', '$SOURCE')])
-
-tex2lyx = frontend_env.Program(
-    target = '$BUILDDIR/src/tex2lyx/tex2lyx',
-    LIBS = ['support'] + boost_libraries + intl_libs + system_libs + qtcore_lib,
-    source = ['$BUILDDIR/src/tex2lyx/%s' % x for x in src_tex2lyx_files + src_tex2lyx_copied_files] + \
-        utils.createResFromIcon(frontend_env, 'lyx.ico', '$LOCALLIBPATH/tex2lyx.rc'),
-    CPPPATH = ['$BUILDDIR/src/tex2lyx', '$BUILDDIR/src', '$CPPPATH'],
-    LIBPATH = ['#$LOCALLIBPATH', '$LIBPATH'],
-    CCFLAGS = ['$CCFLAGS', '-DTEX2LYX'],
-)
-Alias('tex2lyx', frontend_env.Command(os.path.join('$BUILDDIR', os.path.split(str(tex2lyx[0]))[1]),
-    tex2lyx, [Copy('$TARGET', '$SOURCE')]))
-Alias('tex2lyx', tex2lyx)
-
-
-#
-# src/
-#
-if env.has_key('USE_ASPELL') and env['USE_ASPELL']:
-    src_post_files.append('ASpell.cpp')
-elif env.has_key('USE_PSPELL') and env['USE_PSPELL']:
-    src_post_files.append('PSpell.cpp')
-elif env.has_key('USE_ISPELL') and env['USE_ISPELL']:
-    src_post_files.append('ISpell.cpp')
-
-# msvc requires at least one source file with main()
-# so I exclude main.cpp from lyxbase
-lyxbase_pre = env.StaticLibrary(
-    target = '$LOCALLIBPATH/lyxbase_pre',
-    source = ['$BUILDDIR/src/%s' % x for x in src_pre_files]
-)
-lyxbase_post = env.StaticLibrary(
-    target = '$LOCALLIBPATH/lyxbase_post',
-    source = ["$BUILDDIR/src/%s" % x for x in src_post_files]
-)
-Alias('lyxbase', lyxbase_pre)
-Alias('lyxbase', lyxbase_post)
-
-
-#
-# Build lyx with given frontend
-#
-lyx = frontend_env.Program(
-    target = '$BUILDDIR/lyx',
-    source = ['$BUILDDIR/src/main.cpp'] + \
-        utils.createResFromIcon(frontend_env, 'lyx.ico', '$LOCALLIBPATH/lyx.rc'),
+    ],
     LIBS = [
-        'lyxbase_pre',
-        'mathed',
-        'insets',
-        'frontends',
-        frontend,
-        'graphics',
         'support',
         ] +
-        boost_libraries + ['lyxbase_post'] +
+        boost_libraries + 
         frontend_libs +
         intl_libs +
         socket_libs +

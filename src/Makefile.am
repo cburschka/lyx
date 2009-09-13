@@ -5,6 +5,7 @@ include $(top_srcdir)/config/common.am
 DISTCLEANFILES += config.h libintl.h
 
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(top_srcdir)/src $(BOOST_INCLUDES)
+AM_CPPFLAGS += $(QT4_CPPFLAGS) $(QT4_CORE_INCLUDES)
 
 if BUILD_CLIENT_SUBDIR
 CLIENT = client
@@ -286,6 +287,22 @@ liblyxcore_la_SOURCES = lyxcore.cpp $(STANDALONEFILES) $(HEADERFILESCORE)
 else
 
 liblyxcore_la_SOURCES = $(SOURCEFILESCORE) $(STANDALONEFILES) $(HEADERFILESCORE)
+
+endif
+
+if INSTALL_WINDOWS
+
+MOCHEADER = Server.h
+
+MOCEDFILES = $(MOCHEADER:%.h=%_moc.cpp)
+
+BUILT_SOURCES += $(MOCEDFILES)
+CLEANFILES += $(MOCEDFILES)
+
+%_moc.cpp: %.h
+	$(MOC4) -D_WIN32 -o $@ $<
+
+liblyxcore_la_DEPENDENCIES = $(MOCEDFILES)
 
 endif
 
