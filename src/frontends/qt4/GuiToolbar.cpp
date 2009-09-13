@@ -175,7 +175,12 @@ MenuButton::MenuButton(GuiToolbar * bar, ToolbarItem const & item, bool const st
 	setToolTip(label);
 	setStatusTip(label);
 	setText(label);
-	setIcon(QIcon(getPixmap("images/math/", toqstr(tbitem_.name_), "png")));
+	QString const name = toqstr(tbitem_.name_);
+	FileName fname = libFileSearch("images/math/", name, "png");
+	if (fname.exists())
+	    setIcon(QIcon(getPixmap("images/math/", name, "png")));
+	else
+	    setIcon(QIcon(getPixmap("images/", name, "png")));
 	if (sticky)
 		connect(this, SIGNAL(triggered(QAction *)),
 			this, SLOT(actionTriggered(QAction *)));
