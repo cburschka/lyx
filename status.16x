@@ -80,6 +80,9 @@ What's new
 
 * USER INTERFACE
 
+- Fix crash when finishing certain math macros such as \frac or font
+  changing commands (bug 6110).
+
 - Fix a crash when searching for a string that is found in a table,
   while the cursor is in math (bug 6112).
 
