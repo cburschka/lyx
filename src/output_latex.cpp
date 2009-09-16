@@ -252,14 +252,22 @@ TeXEnvironment(Buffer const & buf,
 		os << "\\end{" << from_ascii(style.latexname()) << "}\n";
 		texrow.newline();
 		prev_env_language_ = par_language;
-		runparams.encoding = prev_encoding;
+		if (runparams.encoding != prev_encoding) {
+			runparams.encoding = prev_encoding;
+			if (!bparams.useXetex)
+				os << setEncoding(prev_encoding->iconvName());
+		}
 	}
 
 	if (leftindent_open) {
 		os << "\\end{LyXParagraphLeftIndent}\n";
 		texrow.newline();
 		prev_env_language_ = par_language;
-		runparams.encoding = prev_encoding;
+		if (runparams.encoding != prev_encoding) {
+			runparams.encoding = prev_encoding;
+			if (!bparams.useXetex)
+				os << setEncoding(prev_encoding->iconvName());
+		}
 	}
 
 	if (par != paragraphs.end())
@@ -589,7 +597,11 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 		os << "\\par}";
 	} else if (is_command) {
 		os << '}';
-		runparams.encoding = prev_encoding;
+		if (runparams.encoding != prev_encoding) {
+			runparams.encoding = prev_encoding;
+			if (!bparams.useXetex)
+				os << setEncoding(prev_encoding->iconvName());
+		}
 	}
 
 	bool pending_newline = false;
