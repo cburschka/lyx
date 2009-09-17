@@ -1,4 +1,4 @@
-#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -81,6 +81,9 @@
 
 % benutzt in Kap. 19.4
 \usepackage{remreset}
+
+% für das Fourier-Transformationssymbol
+\usepackage{mathrsfs}
 
 %Mehrfachzeilen zentriert ausrichten (z.B. in Kap. 13.3)
 \renewcommand{\multirowsetup}{\centering}
@@ -36454,14 +36457,19 @@ cm, verwendet man das gelegte Kreuz
 \begin_inset Quotes grd
 \end_inset
 
-, dass über den LaTeX-Befehl 
+, dass entweder über den Befehl 
 \series bold
 
 \backslash
-texttimes
+times
 \series default
- verfügbar ist, mit einigen Tastaturdefinitionen aber auch direkt eingegeben
- werden kann.
+ oder über das Menü 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Sonderzeichen\SpecialChar \menuseparator
+Symbole
+\family default
+ verfügbar ist.
 \end_layout
 
 \begin_layout Itemize
@@ -36510,6 +36518,92 @@ Komponenten von Matrizen werden kursiv gesetzt:
 Der Ableitungs-/Integrationsoperator 'd', die Eulersche Zahl 'e' und die
  Imaginäre Zahl 'i' sollten aufrecht gesetzt werden, um sie nicht mit anderen
  Variablen zu verwechseln.
+\end_layout
+
+\begin_layout Itemize
+Das Symbol für eine 
+\noun on
+Fourier
+\noun default
+-Transformation kann entweder mit dem Befehl 
+\series bold
+
+\backslash
+mathscr
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+leer 
+\end_layout
+
+\end_inset
+
+
+\backslash
+{F
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Befehle ! M ! 
+\backslash
+mathscr
+\end_layout
+
+\end_inset
+
+ oder über das Menü 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Sonderzeichen\SpecialChar \menuseparator
+Symbole\SpecialChar \menuseparator
+Buchstabenähnliche
+\begin_inset space ~
+\end_inset
+
+Symbole
+\family default
+ eingefügt werden: 
+\begin_inset Formula $\mathscr{F}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Um den Befehl 
+\series bold
+
+\backslash
+mathscr
+\series default
+ benutzen zu können, muss das LaTeX-Paket 
+\series bold
+mathrsfs
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Pakete ! mathrsfs
+\end_layout
+
+\end_inset
+
+ mit der LaTeX-Vorspannzeile 
+\series bold
+
+\backslash
+usepackage{mathrsfs}
+\series default
+ geladen werden.
 \end_layout
 
 \begin_layout Standard

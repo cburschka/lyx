@@ -1,4 +1,4 @@
-#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -81,6 +81,9 @@
 
 % needed in sec. 19.4
 \usepackage{remreset}
+
+% for the Fourier transformation symbol
+\usepackage{mathrsfs}
 
 % center multirows (e.g. in sec. 13.3)
 \renewcommand{\multirowsetup}{\centering}
@@ -37001,7 +37004,17 @@ cm se usa el aspa de multiplicar
 \end_inset
 
 .
- Está disponible en el menú 
+ 
+\lang english
+It is available either via the command 
+\series bold
+
+\backslash
+times
+\series default
+ or via
+\lang spanish
+ el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
 Carácter especial
@@ -37048,6 +37061,111 @@ El operador de diferenciación/integración 'd', el número de Euler 'e' y
  el número imaginario 'i' deberían escribirse en redonda para evitar confundirlo
 s con otras variables.
  
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+The character that denotes a 
+\noun on
+Fourier
+\noun default
+ transformation is inserted either by the command
+\lang spanish
+ 
+\series bold
+
+\backslash
+mathscr
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
+\backslash
+{F
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Comandos ! M ! 
+\backslash
+mathscr
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+or via the menu 
+\family sans
+\lang spanish
+Insertar\SpecialChar \menuseparator
+Carácter especial
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Símbolos\SpecialChar \menuseparator
+
+\lang english
+Letterlike
+\begin_inset space ~
+\end_inset
+
+Symbols
+\family default
+: 
+\begin_inset Formula $\mathscr{F}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+To be able to use the command 
+\series bold
+
+\backslash
+mathscr
+\series default
+, the LaTeX package
+\lang spanish
+ 
+\series bold
+mathrsfs
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Paquetes ! mathrsfs
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+needs to be loaded with the LaTeX-preamble line
+\lang spanish
+ 
+\series bold
+
+\backslash
+usepackage{mathrsfs}
+\series default
+.
 \end_layout
 
 \begin_layout Standard
