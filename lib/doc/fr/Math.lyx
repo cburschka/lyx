@@ -1,4 +1,4 @@
-#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -82,6 +82,9 @@
 
 % needed in sec. 19.4
 \usepackage{remreset}
+
+% for the Fourier transformation symbol
+\usepackage{mathrsfs}
 
 % center multirows (e.g. in sec. 13.3)
 \renewcommand{\multirowsetup}{\centering}
@@ -36511,7 +36514,17 @@ cm on utilise le signe de la multiplication
 \end_inset
 
  .
- On peut l'obtenir avec le menu 
+ 
+\lang english
+It is available either via the command 
+\series bold
+
+\backslash
+times
+\series default
+ or via
+\lang french
+ le menu 
 \family sans
 Insérer\SpecialChar \menuseparator
 Caractère
@@ -36571,6 +36584,115 @@ Les composants de matrices sont en italiques:
 L'opérateur 'd' de différentiation/intégration, la constante d'Euler 'e',
  et la base des nombre imaginaires 'i' devraient être écrits en caractères
  droits pour éviter de les mélanger avec les autres variables.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+The character that denotes a 
+\noun on
+Fourier
+\noun default
+ transformation is inserted either by the command
+\lang french
+ 
+\series bold
+
+\backslash
+mathscr
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
+\backslash
+{F
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Commandes ! M ! 
+\backslash
+mathscr
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+or via
+\lang french
+ le menu
+\lang english
+ 
+\family sans
+\lang french
+Insérer\SpecialChar \menuseparator
+Caractère
+\begin_inset space ~
+\end_inset
+
+spécial\SpecialChar \menuseparator
+Symbole\SpecialChar \menuseparator
+
+\lang english
+Letterlike
+\begin_inset space ~
+\end_inset
+
+Symbols
+\family default
+: 
+\begin_inset Formula $\mathscr{F}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+To be able to use the command 
+\series bold
+
+\backslash
+mathscr
+\series default
+, the LaTeX package
+\lang french
+ 
+\series bold
+mathrsfs
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages ! mathrsfs
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+needs to be loaded with the LaTeX-preamble line
+\lang french
+ 
+\series bold
+
+\backslash
+usepackage{mathrsfs}
+\series default
+.
 \end_layout
 
 \begin_layout Standard

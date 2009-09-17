@@ -1,4 +1,4 @@
-#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -81,6 +81,9 @@
 
 % needed in sec. 19.4
 \usepackage{remreset}
+
+% for the Fourier transformation symbol
+\usepackage{mathrsfs}
 
 % center multirows (e.g. in sec. 13.3)
 \renewcommand{\multirowsetup}{\centering}
@@ -36455,14 +36458,19 @@ cm the multiplication sign
 \end_inset
 
  is used.
- It is available via the menu 
+ It is available either via the command 
+\series bold
+
+\backslash
+times
+\series default
+ or via the menu 
 \family sans
 Insert\SpecialChar \menuseparator
 Special Character\SpecialChar \menuseparator
 Symbols
 \family default
 .
- With some keyboard definitions it can also be inserted directly.
 \end_layout
 
 \begin_layout Itemize
@@ -36497,6 +36505,92 @@ Components of matrices are set italic:
 The differentiation/integration operator 'd', the Euler's number 'e', and
  the imaginary unit 'i' should be set upright, to avoid mixing them up with
  other variables.
+\end_layout
+
+\begin_layout Itemize
+The character that denotes a 
+\noun on
+Fourier
+\noun default
+ transformation is inserted either by the command 
+\series bold
+
+\backslash
+mathscr
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+spce 
+\end_layout
+
+\end_inset
+
+
+\backslash
+{F
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Commands ! M ! 
+\backslash
+mathscr
+\end_layout
+
+\end_inset
+
+ or via the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Special Character\SpecialChar \menuseparator
+Symbols\SpecialChar \menuseparator
+Letterlike
+\begin_inset space ~
+\end_inset
+
+Symbols
+\family default
+: 
+\begin_inset Formula $\mathscr{F}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+To be able to use the command 
+\series bold
+
+\backslash
+mathscr
+\series default
+, the LaTeX package 
+\series bold
+mathrsfs
+\series default
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Packages ! mathrsfs
+\end_layout
+
+\end_inset
+
+ needs to be loaded with the LaTeX-preamble line 
+\series bold
+
+\backslash
+usepackage{mathrsfs}
+\series default
+.
 \end_layout
 
 \begin_layout Standard
