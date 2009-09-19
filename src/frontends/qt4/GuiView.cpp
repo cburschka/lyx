@@ -66,6 +66,7 @@
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
+#include "support/filetools.h"
 #include "support/ForkedCalls.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
@@ -1199,6 +1200,10 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 			&& doc_buffer->fileName().exists()
 			&& (!doc_buffer->isClean()
 			   || doc_buffer->isExternallyModified(Buffer::timestamp_method));
+		break;
+
+	case LFUN_BUFFER_CHILD_OPEN:
+		enable = doc_buffer;
 		break;
 
 	case LFUN_BUFFER_WRITE:
@@ -2343,6 +2348,36 @@ void GuiView::dispatchVC(FuncRequest const & cmd)
 }
 
 
+void GuiView::openChildDocument(string const & fname)
+{
+	LASSERT(documentBufferView(), return);
+	Buffer & buffer = documentBufferView()->buffer();
+	FileName const filename = support::makeAbsPath(fname, buffer.filePath());
+	documentBufferView()->saveBookmark(false);
+	Buffer * child = 0;
+	bool parsed = false;
+	if (theBufferList().exists(filename)) {
+		child = theBufferList().getBuffer(filename);
+	} else {
+		message(bformat(_("Opening child document %1$s..."),
+		makeDisplayPath(filename.absFilename())));
+		child = loadDocument(filename, false);
+		parsed = true;
+	}
+	if (!child)
+		return;
+
+	// Set the parent name of the child document.
+	// This makes insertion of citations and references in the child work,
+	// when the target is in the parent or another child document.
+	child->setParent(&buffer);
+	child->masterBuffer()->updateLabels();
+	setBuffer(child);
+	if (parsed)
+		child->errors("Parse");
+}
+
+
 bool GuiView::dispatch(FuncRequest const & cmd)
 {
 	BufferView * bv = currentBufferView();
@@ -2362,6 +2397,10 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 	}
 
 	switch(cmd.action) {
+		case LFUN_BUFFER_CHILD_OPEN:
+			openChildDocument(to_utf8(cmd.argument()));
+			break;
+
 		case LFUN_BUFFER_IMPORT:
 			importDocument(to_utf8(cmd.argument()));
 			break;

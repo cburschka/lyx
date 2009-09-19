@@ -171,6 +171,8 @@ private Q_SLOTS:
 	void bigSizedIcons();
 
 private:
+	/// Open given child document in current buffer directory.
+	void openChildDocument(std::string const & filename);
 	/// Close current document buffer.
 	bool closeBuffer();
 	/// Close all document buffers.

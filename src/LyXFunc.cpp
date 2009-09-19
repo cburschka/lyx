@@ -563,7 +563,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_SERVER_GET_FILENAME:
 	case LFUN_SERVER_NOTIFY:
 	case LFUN_SERVER_GOTO_FILE_ROW:
-	case LFUN_BUFFER_CHILD_OPEN:
 	case LFUN_CURSOR_FOLLOWS_SCROLLBAR_TOGGLE:
 	case LFUN_KEYMAP_OFF:
 	case LFUN_KEYMAP_PRIMARY:
@@ -961,39 +960,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				dispatch(fr);
 			} else
 				dispatch(FuncRequest(LFUN_DIALOG_SHOW_NEW_INSET, "citation"));
-			break;
-		}
-
-		case LFUN_BUFFER_CHILD_OPEN: {
-			LASSERT(lyx_view_ && buffer, /**/);
-			FileName filename = makeAbsPath(argument, buffer->filePath());
-			lyx_view_->documentBufferView()->saveBookmark(false);
-			Buffer * child = 0;
-			bool parsed = false;
-			if (theBufferList().exists(filename)) {
-				child = theBufferList().getBuffer(filename);
-			} else {
-				setMessage(bformat(_("Opening child document %1$s..."),
-					makeDisplayPath(filename.absFilename())));
-				child = lyx_view_->loadDocument(filename, false);
-				parsed = true;
-			}
-			if (child) {
-				// Set the parent name of the child document.
-				// This makes insertion of citations and references in the child work,
-				// when the target is in the parent or another child document.
-				child->setParent(buffer);
-				child->masterBuffer()->updateLabels();
-				lyx_view_->setBuffer(child);
-				if (parsed)
-					child->errors("Parse");
-			}
-
-			// If a screen update is required (in case where auto_open is false), 
-			// setBuffer() would have taken care of it already. Otherwise we shall 
-			// reset the update flag because it can cause a circular problem.
-			// See bug 3970.
-			updateFlags = Update::None;
 			break;
 		}
 
