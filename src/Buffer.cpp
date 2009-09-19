@@ -1709,6 +1709,10 @@ bool Buffer::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 			// if no Buffer is present, then of course we won't be called!
 			break;
 
+		case LFUN_BUFFER_LANGUAGE:
+			enable = !isReadonly();
+			break;
+
 		default:
 			return false;
 	}
@@ -2042,6 +2046,16 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 			dr.setMessage(_("Error running external commands."));
 			showPrintError(absFileName());
 		}
+		break;
+	}
+
+	case LFUN_BUFFER_LANGUAGE: {
+		Language const * oldL = params().language;
+		Language const * newL = languages.getLanguage(argument);
+		if (!newL || oldL == newL)
+			break;
+		if (oldL->rightToLeft() == newL->rightToLeft() && !isMultiLingual())
+			changeLanguage(oldL, newL);
 		break;
 	}
 

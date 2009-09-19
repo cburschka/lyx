@@ -573,7 +573,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_REPEAT:
 	case LFUN_PREFERENCES_SAVE:
 	case LFUN_INSET_EDIT:
-	case LFUN_BUFFER_LANGUAGE:
 	case LFUN_TEXTCLASS_APPLY:
 	case LFUN_TEXTCLASS_LOAD:
 	case LFUN_BUFFER_SAVE_AS_DEFAULT:
@@ -1109,19 +1108,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			lyxrc.write(makeAbsPath("preferences",
 						package().user_support().absFilename()),
 				    false);
-			break;
-		}
-
-		case LFUN_BUFFER_LANGUAGE: {
-			LASSERT(lyx_view_, /**/);
-			Language const * oldL = buffer->params().language;
-			Language const * newL = languages.getLanguage(argument);
-			if (!newL || oldL == newL)
-				break;
-
-			if (oldL->rightToLeft() == newL->rightToLeft()
-			    && !buffer->isMultiLingual())
-				buffer->changeLanguage(oldL, newL);
 			break;
 		}
 
