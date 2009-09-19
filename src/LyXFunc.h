@@ -92,6 +92,9 @@ public:
 	/// cursor y position before dispatch started
 	int cursorBeforeDispatchY() const { return cursorPosBeforeDispatchY_; }
 
+	///
+	void updateLayout(DocumentClass const * const oldlayout, Buffer * buffer);
+
 private:
 	///
 	frontend::LyXView * lyx_view_;
@@ -121,8 +124,6 @@ private:
 	/// send a post-dispatch status message
 	void sendDispatchMessage(docstring const & msg,
 		FuncRequest const & ev);
-	///
-	void updateLayout(DocumentClass const * const oldlayout, Buffer * buffer);
 };
 
 /// Implementation is in LyX.cpp

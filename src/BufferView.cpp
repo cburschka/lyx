@@ -34,6 +34,7 @@
 #include "InsetIterator.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
+#include "Lexer.h"
 #include "LyX.h"
 #include "lyxfind.h"
 #include "LyXFunc.h"
@@ -899,6 +900,9 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	Cursor & cur = d->cursor_;
 
 	switch (cmd.action) {
+	case LFUN_BUFFER_PARAMS_APPLY:
+		flag.setEnabled(!buffer_.isReadonly());
+		break;
 
 	case LFUN_UNDO:
 		flag.setEnabled(buffer_.undo().hasUndoStack());
@@ -1056,6 +1060,27 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 
 	switch (cmd.action) {
 
+	case LFUN_BUFFER_PARAMS_APPLY: {
+		DocumentClass const * const oldClass = buffer_.params().documentClassPtr();
+		cur.recordUndoFullDocument();
+		istringstream ss(to_utf8(cmd.argument()));
+		Lexer lex;
+		lex.setStream(ss);
+		int const unknown_tokens = buffer_.readHeader(lex);
+		if (unknown_tokens != 0) {
+			LYXERR0("Warning in LFUN_BUFFER_PARAMS_APPLY!\n"
+						<< unknown_tokens << " unknown token"
+						<< (unknown_tokens == 1 ? "" : "s"));
+		}
+		theLyXFunc().updateLayout(oldClass, &buffer_);
+			
+		// We are most certainly here because of a change in the document
+		// It is then better to make sure that all dialogs are in sync with
+		// current document settings.
+		processUpdateFlags(Update::Force | Update::FitCursor);
+		break;
+	}
+		
 	case LFUN_UNDO:
 		cur.message(_("Undo"));
 		cur.clearSelection();

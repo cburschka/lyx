@@ -570,7 +570,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_TEXTCLASS_APPLY:
 	case LFUN_TEXTCLASS_LOAD:
 	case LFUN_BUFFER_SAVE_AS_DEFAULT:
-	case LFUN_BUFFER_PARAMS_APPLY:
 	case LFUN_LAYOUT_MODULES_CLEAR:
 	case LFUN_LAYOUT_MODULE_ADD:
 	case LFUN_LAYOUT_RELOAD:
@@ -1066,35 +1065,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 		}
 
-		case LFUN_BUFFER_PARAMS_APPLY: {
-			LASSERT(lyx_view_, /**/);
-			
-			DocumentClass const * const oldClass = buffer->params().documentClassPtr();
-			Cursor & cur = lyx_view_->documentBufferView()->cursor();
-			cur.recordUndoFullDocument();
-			
-			istringstream ss(argument);
-			Lexer lex;
-			lex.setStream(ss);
-			int const unknown_tokens = buffer->readHeader(lex);
-
-			if (unknown_tokens != 0) {
-				lyxerr << "Warning in LFUN_BUFFER_PARAMS_APPLY!\n"
-						<< unknown_tokens << " unknown token"
-						<< (unknown_tokens == 1 ? "" : "s")
-						<< endl;
-			}
-			
-			updateLayout(oldClass, buffer);
-			
-			updateFlags = Update::Force | Update::FitCursor;
-			// We are most certainly here because of a change in the document
-			// It is then better to make sure that all dialogs are in sync with
-			// current document settings. LyXView::restartCursor() achieve this.
-			lyx_view_->restartCursor();
-			break;
-		}
-		
 		case LFUN_LAYOUT_MODULES_CLEAR: {
 			LASSERT(lyx_view_ && lyx_view_->documentBufferView(), /**/);
 			DocumentClass const * const oldClass = buffer->params().documentClassPtr();
