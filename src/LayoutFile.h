@@ -124,6 +124,10 @@ public:
 		addLocalLayout(std::string const & textclass, std::string const & path);
 	/// a list of the available classes
 	std::vector<LayoutFileIndex> classList() const;
+
+	///
+	bool load(std::string const & name, std::string const & buf_path);
+
 private:
 	///
 	typedef std::map<std::string, LayoutFile *> ClassMap;

@@ -32,6 +32,7 @@ class Change;
 class CoordCache;
 class Cursor;
 class DocIterator;
+class DocumentClass;
 class FuncRequest;
 class FuncStatus;
 class Intl;
@@ -327,6 +328,8 @@ private:
 		int y  //< y-coordinate on screen
 		) const;
 
+	///
+	void updateLayout(DocumentClass const * const oldlayout);
 	///
 	int width_;
 	///

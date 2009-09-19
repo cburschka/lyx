@@ -34,6 +34,7 @@
 #include "InsetIterator.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
+#include "LayoutFile.h"
 #include "Lexer.h"
 #include "LyX.h"
 #include "lyxfind.h"
@@ -895,12 +896,43 @@ bool BufferView::scrollToCursor(DocIterator const & dit, bool recenter)
 }
 
 
+void BufferView::updateLayout(DocumentClass const * const oldlayout)
+{
+	message(_("Converting document to new document class..."));
+	
+	StableDocIterator backcur(d->cursor_);
+	ErrorList & el = buffer_.errorList("Class Switch");
+	cap::switchBetweenClasses(
+			oldlayout, buffer_.params().documentClassPtr(),
+			static_cast<InsetText &>(buffer_.inset()), el);
+
+	setCursor(backcur.asDocIterator(&buffer_));
+
+	buffer_.errors("Class Switch");
+	buffer_.updateLabels();
+}
+
+
 bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 {
 	Cursor & cur = d->cursor_;
 
 	switch (cmd.action) {
+
+	// FIXME: This is a bit problematic because we don't check is this is a
+	// document BufferView or not for these LFUNs. We probably have to
+	// dispatch both to currentBufferView() and, if that fails,
+	// to documentBufferView(); same as we do know for current Buffer and
+	// document Buffer. Ideally those LFUN should go to Buffer as they*
+	// operate on the full Buffer and the cursor is only needed either for
+	// an Undo record or to restore a cursor position. But we don't know
+	// how to do that inside Buffer of course.
 	case LFUN_BUFFER_PARAMS_APPLY:
+	case LFUN_LAYOUT_MODULES_CLEAR:
+	case LFUN_LAYOUT_MODULE_ADD:
+	case LFUN_LAYOUT_RELOAD:
+	case LFUN_TEXTCLASS_APPLY:
+	case LFUN_TEXTCLASS_LOAD:
 		flag.setEnabled(!buffer_.isReadonly());
 		break;
 
@@ -1056,6 +1088,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		<< " y[" << cmd.y << ']'
 		<< " button[" << cmd.button() << ']');
 
+	string const argument = to_utf8(cmd.argument());
 	Cursor & cur = d->cursor_;
 
 	switch (cmd.action) {
@@ -1072,7 +1105,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 						<< unknown_tokens << " unknown token"
 						<< (unknown_tokens == 1 ? "" : "s"));
 		}
-		theLyXFunc().updateLayout(oldClass, &buffer_);
+		updateLayout(oldClass);
 			
 		// We are most certainly here because of a change in the document
 		// It is then better to make sure that all dialogs are in sync with
@@ -1081,6 +1114,73 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		break;
 	}
 		
+	case LFUN_LAYOUT_MODULES_CLEAR: {
+		DocumentClass const * const oldClass =
+			buffer_.params().documentClassPtr();
+		cur.recordUndoFullDocument();
+		buffer_.params().clearLayoutModules();
+		buffer_.params().makeDocumentClass();
+		updateLayout(oldClass);
+		processUpdateFlags(Update::Force | Update::FitCursor);
+		break;
+	}
+
+	case LFUN_LAYOUT_MODULE_ADD: {
+		BufferParams const & params = buffer_.params();
+		if (!params.moduleCanBeAdded(argument)) {
+			LYXERR0("Module `" << argument << 
+				"' cannot be added due to failed requirements or "
+				"conflicts with installed modules.");
+			break;
+		}
+		DocumentClass const * const oldClass = params.documentClassPtr();
+		cur.recordUndoFullDocument();
+		buffer_.params().addLayoutModule(argument);
+		buffer_.params().makeDocumentClass();
+		updateLayout(oldClass);
+		processUpdateFlags(Update::Force | Update::FitCursor);
+		break;
+	}
+
+	case LFUN_TEXTCLASS_APPLY: {
+		if (!LayoutFileList::get().load(argument, buffer_.temppath()) &&
+			!LayoutFileList::get().load(argument, buffer_.filePath()))
+			break;
+
+		LayoutFile const * old_layout = buffer_.params().baseClass();
+		LayoutFile const * new_layout = &(LayoutFileList::get()[argument]);
+
+		if (old_layout == new_layout)
+			// nothing to do
+			break;
+
+		//Save the old, possibly modular, layout for use in conversion.
+		DocumentClass const * const oldDocClass =
+			buffer_.params().documentClassPtr();
+		cur.recordUndoFullDocument();
+		buffer_.params().setBaseClass(argument);
+		buffer_.params().makeDocumentClass();
+		updateLayout(oldDocClass);
+		processUpdateFlags(Update::Force | Update::FitCursor);
+		break;
+	}
+
+	case LFUN_TEXTCLASS_LOAD:
+		LayoutFileList::get().load(argument, buffer_.temppath()) ||
+		LayoutFileList::get().load(argument, buffer_.filePath());
+		break;
+
+	case LFUN_LAYOUT_RELOAD: {
+		DocumentClass const * const oldClass = buffer_.params().documentClassPtr();
+		LayoutFileIndex bc = buffer_.params().baseClassID();
+		LayoutFileList::get().reset(bc);
+		buffer_.params().setBaseClass(bc);
+		buffer_.params().makeDocumentClass();
+		updateLayout(oldClass);
+		processUpdateFlags(Update::Force | Update::FitCursor);
+		break;
+	}
+
 	case LFUN_UNDO:
 		cur.message(_("Undo"));
 		cur.clearSelection();

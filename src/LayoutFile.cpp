@@ -18,11 +18,14 @@
 #include "Lexer.h"
 #include "TextClass.h"
 
-#include "support/lassert.h"
+#include "frontends/alert.h"
+
 #include "support/debug.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
+#include "support/lassert.h"
+#include "support/lstrings.h"
 
 #include <boost/bind.hpp>
 #include <boost/regex.hpp>
@@ -285,6 +288,24 @@ LayoutFileIndex
 	}
 	// If .layout is not in local directory, or an invalid layout is found, return null
 	return string();
+}
+
+
+bool LayoutFileList::load(string const & name, string const & buf_path)
+{
+	if (!haveClass(name)) {
+		LYXERR0("Document class \"" << name << "\" does not exist.");
+		return false;
+	}
+
+	LayoutFile * tc = classmap_[name];
+	if (!tc->load(buf_path)) {
+		docstring s = bformat(_("The document class %1$s "
+				   "could not be loaded."), from_utf8(name));
+		frontend::Alert::error(_("Could not load class"), s);
+		return false;
+	}
+	return true;
 }
 
 

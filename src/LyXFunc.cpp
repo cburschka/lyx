@@ -567,12 +567,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_REPEAT:
 	case LFUN_PREFERENCES_SAVE:
 	case LFUN_INSET_EDIT:
-	case LFUN_TEXTCLASS_APPLY:
-	case LFUN_TEXTCLASS_LOAD:
 	case LFUN_BUFFER_SAVE_AS_DEFAULT:
-	case LFUN_LAYOUT_MODULES_CLEAR:
-	case LFUN_LAYOUT_MODULE_ADD:
-	case LFUN_LAYOUT_RELOAD:
 	case LFUN_LYXRC_APPLY:
 		// these are handled in our dispatch()
 		break;
@@ -648,26 +643,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 
 
 namespace {
-
-bool loadLayoutFile(string const & name, string const & buf_path)
-{
-	if (!LayoutFileList::get().haveClass(name)) {
-		lyxerr << "Document class \"" << name
-		       << "\" does not exist."
-		       << endl;
-		return false;
-	}
-
-	LayoutFile & tc = LayoutFileList::get()[name];
-	if (!tc.load(buf_path)) {
-		docstring s = bformat(_("The document class %1$s "
-				   "could not be loaded."), from_utf8(name));
-		Alert::error(_("Could not load class"), s);
-		return false;
-	}
-	return true;
-}
-
 
 void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new);
 
@@ -1065,77 +1040,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 		}
 
-		case LFUN_LAYOUT_MODULES_CLEAR: {
-			LASSERT(lyx_view_ && lyx_view_->documentBufferView(), /**/);
-			DocumentClass const * const oldClass = buffer->params().documentClassPtr();
-			lyx_view_->documentBufferView()->cursor().recordUndoFullDocument();
-			buffer->params().clearLayoutModules();
-			buffer->params().makeDocumentClass();
-			updateLayout(oldClass, buffer);
-			updateFlags = Update::Force | Update::FitCursor;
-			break;
-		}
-		
-		case LFUN_LAYOUT_MODULE_ADD: {
-			LASSERT(lyx_view_ && lyx_view_->documentBufferView(), /**/);
-			BufferParams const & params = buffer->params();
-			if (!params.moduleCanBeAdded(argument)) {
-				LYXERR0("Module `" << argument << 
-						"' cannot be added due to failed requirements or "
-						"conflicts with installed modules.");
-				break;
-			}
-			DocumentClass const * const oldClass = params.documentClassPtr();
-			lyx_view_->documentBufferView()->cursor().recordUndoFullDocument();
-			buffer->params().addLayoutModule(argument);
-			buffer->params().makeDocumentClass();
-			updateLayout(oldClass, buffer);
-			updateFlags = Update::Force | Update::FitCursor;
-			break;
-		}
-
-		case LFUN_TEXTCLASS_APPLY: {
-			LASSERT(lyx_view_ && lyx_view_->documentBufferView(), /**/);
-
-			if (!loadLayoutFile(argument, buffer->temppath()) &&
-				!loadLayoutFile(argument, buffer->filePath()))
-				break;
-
-			LayoutFile const * old_layout = buffer->params().baseClass();
-			LayoutFile const * new_layout = &(LayoutFileList::get()[argument]);
-
-			if (old_layout == new_layout)
-				// nothing to do
-				break;
-
-			//Save the old, possibly modular, layout for use in conversion.
-			DocumentClass const * const oldDocClass =
-				buffer->params().documentClassPtr();
-			lyx_view_->documentBufferView()->cursor().recordUndoFullDocument();
-			buffer->params().setBaseClass(argument);
-			buffer->params().makeDocumentClass();
-			updateLayout(oldDocClass, buffer);
-			updateFlags = Update::Force | Update::FitCursor;
-			break;
-		}
-		
-		case LFUN_LAYOUT_RELOAD: {
-			LASSERT(lyx_view_, /**/);
-			DocumentClass const * const oldClass = buffer->params().documentClassPtr();
-			LayoutFileIndex bc = buffer->params().baseClassID();
-			LayoutFileList::get().reset(bc);
-			buffer->params().setBaseClass(bc);
-			buffer->params().makeDocumentClass();
-			updateLayout(oldClass, buffer);
-			updateFlags = Update::Force | Update::FitCursor;
-			break;
-		}
-
-		case LFUN_TEXTCLASS_LOAD:
-			loadLayoutFile(argument, buffer->temppath()) ||
-			loadLayoutFile(argument, buffer->filePath());
-			break;
-
 		case LFUN_LYXRC_APPLY: {
 			// reset active key sequences, since the bindings
 			// are updated (bug 6064)
@@ -1394,23 +1298,6 @@ docstring LyXFunc::viewStatusMessage()
 bool LyXFunc::wasMetaKey() const
 {
 	return (meta_fake_bit != NoModifier);
-}
-
-
-void LyXFunc::updateLayout(DocumentClass const * const oldlayout, Buffer * buf)
-{
-	lyx_view_->message(_("Converting document to new document class..."));
-	
-	StableDocIterator backcur(lyx_view_->currentBufferView()->cursor());
-	ErrorList & el = buf->errorList("Class Switch");
-	cap::switchBetweenClasses(
-			oldlayout, buf->params().documentClassPtr(),
-			static_cast<InsetText &>(buf->inset()), el);
-
-	lyx_view_->currentBufferView()->setCursor(backcur.asDocIterator(buf));
-
-	buf->errors("Class Switch");
-	buf->updateLabels();
 }
 
 

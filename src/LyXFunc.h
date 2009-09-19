@@ -92,9 +92,6 @@ public:
 	/// cursor y position before dispatch started
 	int cursorBeforeDispatchY() const { return cursorPosBeforeDispatchY_; }
 
-	///
-	void updateLayout(DocumentClass const * const oldlayout, Buffer * buffer);
-
 private:
 	///
 	frontend::LyXView * lyx_view_;
