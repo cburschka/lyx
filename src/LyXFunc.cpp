@@ -463,14 +463,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	bool enable = true;
 	switch (cmd.action) {
 
-	case LFUN_BUFFER_CHKTEX:
-		enable = buf->isLatex() && !lyxrc.chktex_command.empty();
-		break;
-
-	case LFUN_BUILD_PROGRAM:
-		enable = buf->isExportable("program");
-		break;
-
 	case LFUN_CITATION_INSERT: {
 		FuncRequest fr(LFUN_INSET_INSERT, "citation");
 		enable = getStatus(fr).enabled();
@@ -562,36 +554,10 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 	}
 
-	case LFUN_MASTER_BUFFER_UPDATE:
-	case LFUN_MASTER_BUFFER_VIEW: 
-		if (!buf->parent()) {
-			enable = false;
-			break;
-		}
-	case LFUN_BUFFER_UPDATE:
-	case LFUN_BUFFER_VIEW: {
-		string format = to_utf8(cmd.argument());
-		if (cmd.argument().empty())
-			format = buf->getDefaultOutputFormat();
-		typedef vector<Format const *> Formats;
-		Formats formats;
-		formats = buf->exportableFormats(true);
-		Formats::const_iterator fit = formats.begin();
-		Formats::const_iterator end = formats.end();
-		enable = false;
-		for (; fit != end ; ++fit) {
-			if ((*fit)->name() == format)
-				enable = true;
-		}
-		break;
-	}
-
 	case LFUN_COMMAND_PREFIX:
 	case LFUN_CANCEL:
 	case LFUN_META_PREFIX:
 	case LFUN_BUFFER_CLOSE:
-	case LFUN_BUFFER_IMPORT:
-	case LFUN_BUFFER_AUTO_SAVE:
 	case LFUN_RECONFIGURE:
 	case LFUN_HELP_OPEN:
 	case LFUN_DROP_LAYOUTS_CHOICE:
@@ -605,7 +571,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_KEYMAP_SECONDARY:
 	case LFUN_KEYMAP_TOGGLE:
 	case LFUN_REPEAT:
-	case LFUN_BUFFER_EXPORT_CUSTOM:
 	case LFUN_PREFERENCES_SAVE:
 	case LFUN_INSET_EDIT:
 	case LFUN_BUFFER_LANGUAGE:
@@ -637,6 +602,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 			break;
 
 		BufferView * bv = lv->currentBufferView();
+		BufferView * doc_bv = lv->documentBufferView();
 		// If we do not have a BufferView, then other functions are disabled
 		if (!bv) {
 			enable = false;
@@ -654,7 +620,10 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 			decided = bv->getStatus(cmd, flag);
 		if (!decided)
 			// try the Buffer
-			bv->buffer().getStatus(cmd, flag);
+			decided = bv->buffer().getStatus(cmd, flag);
+		if (!decided && doc_bv)
+			// try the Document Buffer
+			decided = doc_bv->buffer().getStatus(cmd, flag);
 	}
 
 	if (!enable)
@@ -775,115 +744,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			lyx_view_->closeBufferAll();
 			buffer = 0;
 			updateFlags = Update::None;
-			break;
-
-		case LFUN_BUFFER_UPDATE: {
-			LASSERT(lyx_view_ && lyx_view_->documentBufferView(), /**/);
-			Buffer & doc_buffer = lyx_view_->documentBufferView()->buffer();
-			string format = argument;
-			if (argument.empty())
-				format = doc_buffer.getDefaultOutputFormat();
-			doc_buffer.doExport(format, true);
-			break;
-		}
-
-		case LFUN_BUFFER_VIEW: {
-			LASSERT(lyx_view_ && lyx_view_->documentBufferView(), /**/);
-			Buffer & doc_buffer = lyx_view_->documentBufferView()->buffer();
-			string format = argument;
-			if (argument.empty())
-				format = doc_buffer.getDefaultOutputFormat();
-			doc_buffer.preview(format);
-			break;
-		}
-
-		case LFUN_MASTER_BUFFER_UPDATE: {
-			LASSERT(lyx_view_ && lyx_view_->documentBufferView(), /**/);
-			Buffer & doc_buffer = lyx_view_->documentBufferView()->buffer();
-			string format = argument;
-			if (argument.empty())
-				format = doc_buffer.masterBuffer()->getDefaultOutputFormat();
-			doc_buffer.masterBuffer()->doExport(format, true);
-			break;
-		}
-
-		case LFUN_MASTER_BUFFER_VIEW: {
-			LASSERT(lyx_view_ && lyx_view_->documentBufferView(), /**/);
-			Buffer & doc_buffer = lyx_view_->documentBufferView()->buffer();
-			string format = argument;
-			if (argument.empty())
-				format = doc_buffer.masterBuffer()->getDefaultOutputFormat();
-			doc_buffer.masterBuffer()->preview(format);
-			break;
-		}
-
-		case LFUN_BUILD_PROGRAM:
-			LASSERT(lyx_view_ && buffer, /**/);
-			buffer->doExport("program", true);
-			break;
-
-		case LFUN_BUFFER_CHKTEX:
-			LASSERT(lyx_view_ && buffer, /**/);
-			buffer->runChktex();
-			break;
-
-		case LFUN_BUFFER_EXPORT:
-			LASSERT(lyx_view_ && buffer, /**/);
-			if (argument == "custom")
-				dispatch(FuncRequest(LFUN_DIALOG_SHOW, "sendto"));
-			else
-				buffer->doExport(argument, false);
-			break;
-
-		case LFUN_BUFFER_EXPORT_CUSTOM: {
-			LASSERT(lyx_view_ && buffer, /**/);
-			string format_name;
-			string command = split(argument, format_name, ' ');
-			Format const * format = formats.getFormat(format_name);
-			if (!format) {
-				lyxerr << "Format \"" << format_name
-				       << "\" not recognized!"
-				       << endl;
-				break;
-			}
-
-			// The name of the file created by the conversion process
-			string filename;
-
-			// Output to filename
-			if (format->name() == "lyx") {
-				string const latexname = buffer->latexName(false);
-				filename = changeExtension(latexname,
-							   format->extension());
-				filename = addName(buffer->temppath(), filename);
-
-				if (!buffer->writeFile(FileName(filename)))
-					break;
-
-			} else {
-				buffer->doExport(format_name, true, filename);
-			}
-
-			// Substitute $$FName for filename
-			if (!contains(command, "$$FName"))
-				command = "( " + command + " ) < $$FName";
-			command = subst(command, "$$FName", filename);
-
-			// Execute the command in the background
-			Systemcall call;
-			call.startscript(Systemcall::DontWait, command);
-			break;
-		}
-
-		// FIXME: There is need for a command-line import.
-		/*
-		case LFUN_BUFFER_IMPORT:
-			doImport(argument);
-			break;
-		*/
-
-		case LFUN_BUFFER_AUTO_SAVE:
-			buffer->autoSave();
 			break;
 
 		case LFUN_RECONFIGURE:
@@ -1475,6 +1335,16 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			if (dr.dispatched()) {
 				updateFlags = dr.update();
 				break;
+			}
+			// OK, so try with the document Buffer.
+			BufferView * doc_bv = lyx_view_->documentBufferView();
+			if (doc_bv) {
+				buffer = &(doc_bv->buffer());
+				buffer->dispatch(cmd, dr);
+				if (dr.dispatched()) {
+					updateFlags = dr.update();
+					break;
+				}
 			}
 
 			// Is this a function that acts on inset at point?

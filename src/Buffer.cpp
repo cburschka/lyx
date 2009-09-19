@@ -1633,27 +1633,73 @@ void Buffer::markDepClean(string const & name)
 
 bool Buffer::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 {
+	if (isInternal()) {
+		// FIXME? if there is an Buffer LFUN that can be dispatched even
+		// if internal, put a switch '(cmd.action)' here.
+		return false;
+	}
+
+	bool enable = true;
+
 	switch (cmd.action) {
+
 		case LFUN_BUFFER_TOGGLE_READ_ONLY:
 			flag.setOnOff(isReadonly());
 			break;
 
+		// FIXME: There is need for a command-line import.
+		//case LFUN_BUFFER_IMPORT:
+
+		case LFUN_BUFFER_AUTO_SAVE:
+			break;
+
+		case LFUN_BUFFER_EXPORT_CUSTOM:
+			// FIXME: Nothing to check here?
+			break;
+
 		case LFUN_BUFFER_EXPORT: {
 			docstring const arg = cmd.argument();
-			bool enable = arg == "custom" || isExportable(to_utf8(arg));
+			enable = arg == "custom" || isExportable(to_utf8(arg));
 			if (!enable)
 				flag.message(bformat(
 					_("Don't know how to export to format: %1$s"), arg));
-			flag.setEnabled(enable);
 			break;
 		}
+
+		case LFUN_MASTER_BUFFER_UPDATE:
+		case LFUN_MASTER_BUFFER_VIEW: 
+			enable = parent() != 0;
+			break;
+		case LFUN_BUFFER_UPDATE:
+		case LFUN_BUFFER_VIEW: {
+			string format = to_utf8(cmd.argument());
+			if (cmd.argument().empty())
+				format = getDefaultOutputFormat();
+			typedef vector<Format const *> Formats;
+			Formats formats;
+			formats = exportableFormats(true);
+			Formats::const_iterator fit = formats.begin();
+			Formats::const_iterator end = formats.end();
+			enable = false;
+			for (; fit != end ; ++fit) {
+				if ((*fit)->name() == format)
+					enable = true;
+			}
+			break;
+		}
+		case LFUN_BUFFER_CHKTEX:
+			enable = isLatex() && !lyxrc.chktex_command.empty();
+			break;
+
+		case LFUN_BUILD_PROGRAM:
+			enable = isExportable("program");
+			break;
 
 		case LFUN_BRANCH_ACTIVATE: 
 		case LFUN_BRANCH_DEACTIVATE: {
 			BranchList const & branchList = params().branchlist();
 			docstring const branchName = cmd.argument();
-			flag.setEnabled(!branchName.empty()
-				&& branchList.find(branchName));
+			enable = !branchName.empty() && branchList.find(branchName);
 			break;
 		}
 
@@ -1661,12 +1707,12 @@ bool Buffer::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		case LFUN_BRANCHES_RENAME:
 		case LFUN_BUFFER_PRINT:
 			// if no Buffer is present, then of course we won't be called!
-			flag.setEnabled(true);
 			break;
 
 		default:
 			return false;
 	}
+	flag.setEnabled(enable);
 	return true;
 }
 
@@ -1682,6 +1728,13 @@ void Buffer::dispatch(string const & command, DispatchResult & result)
 // whether we have a GUI or not. The boolean use_gui holds this information.
 void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 {
+	if (isInternal()) {
+		// FIXME? if there is an Buffer LFUN that can be dispatched even
+		// if internal, put a switch '(cmd.action)' here.
+		dr.dispatched(false);
+		return;
+	}
+	string const argument = to_utf8(func.argument());
 	// We'll set this back to false if need be.
 	bool dispatched = true;
 
@@ -1694,13 +1747,108 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 		break;
 
 	case LFUN_BUFFER_EXPORT: {
-		bool success = doExport(to_utf8(func.argument()), false);
+		if (argument == "custom") {
+			lyx::dispatch(FuncRequest(LFUN_DIALOG_SHOW, "sendto"));
+			break;
+		}
+		doExport(argument, false);
+		bool success = doExport(argument, false);
 		dr.setError(success);
 		if (!success)
 			dr.setMessage(bformat(_("Error exporting to format: %1$s."), 
 					      func.argument()));
 		break;
 	}
+
+	case LFUN_BUFFER_UPDATE: {
+		string format = argument;
+		if (argument.empty())
+			format = getDefaultOutputFormat();
+		doExport(format, true);
+		break;
+	}
+
+	case LFUN_BUFFER_VIEW: {
+		string format = argument;
+		if (argument.empty())
+			format = getDefaultOutputFormat();
+		preview(format);
+		break;
+	}
+
+	case LFUN_MASTER_BUFFER_UPDATE: {
+		string format = argument;
+		if (argument.empty())
+			format = masterBuffer()->getDefaultOutputFormat();
+		masterBuffer()->doExport(format, true);
+		break;
+	}
+
+	case LFUN_MASTER_BUFFER_VIEW: {
+		string format = argument;
+		if (argument.empty())
+			format = masterBuffer()->getDefaultOutputFormat();
+		masterBuffer()->preview(format);
+		break;
+	}
+
+	case LFUN_BUILD_PROGRAM:
+		doExport("program", true);
+		break;
+
+	case LFUN_BUFFER_CHKTEX:
+		runChktex();
+		break;
+
+	case LFUN_BUFFER_EXPORT_CUSTOM: {
+		string format_name;
+		string command = split(argument, format_name, ' ');
+		Format const * format = formats.getFormat(format_name);
+		if (!format) {
+			lyxerr << "Format \"" << format_name
+				<< "\" not recognized!"
+				<< endl;
+			break;
+		}
+
+		// The name of the file created by the conversion process
+		string filename;
+
+		// Output to filename
+		if (format->name() == "lyx") {
+			string const latexname = latexName(false);
+			filename = changeExtension(latexname,
+				format->extension());
+			filename = addName(temppath(), filename);
+
+			if (!writeFile(FileName(filename)))
+				break;
+
+		} else {
+			doExport(format_name, true, filename);
+		}
+
+		// Substitute $$FName for filename
+		if (!contains(command, "$$FName"))
+			command = "( " + command + " ) < $$FName";
+		command = subst(command, "$$FName", filename);
+
+		// Execute the command in the background
+		Systemcall call;
+		call.startscript(Systemcall::DontWait, command);
+		break;
+	}
+
+	// FIXME: There is need for a command-line import.
+	/*
+	case LFUN_BUFFER_IMPORT:
+		doImport(argument);
+		break;
+	*/
+
+	case LFUN_BUFFER_AUTO_SAVE:
+		autoSave();
+		break;
 
 	case LFUN_BRANCH_ADD: {
 		BranchList & branchList = params().branchlist();

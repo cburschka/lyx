@@ -1191,6 +1191,9 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	}
 
 	switch(cmd.action) {
+	case LFUN_BUFFER_IMPORT:
+		break;
+
 	case LFUN_BUFFER_RELOAD:
 		enable = doc_buffer && !doc_buffer->isUnnamed()
 			&& doc_buffer->fileName().exists()
