@@ -937,6 +937,10 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_ALL_INSETS_TOGGLE:
 	case LFUN_STATISTICS:
 	case LFUN_BRANCH_ADD_INSERT:
+	case LFUN_KEYMAP_OFF:
+	case LFUN_KEYMAP_PRIMARY:
+	case LFUN_KEYMAP_SECONDARY:
+	case LFUN_KEYMAP_TOGGLE:
 		flag.setEnabled(true);
 		break;
 
@@ -1552,6 +1556,21 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		break;
 	}
 
+	case LFUN_KEYMAP_OFF:
+		getIntl().keyMapOn(false);
+		break;
+
+	case LFUN_KEYMAP_PRIMARY:
+		getIntl().keyMapPrim();
+		break;
+
+	case LFUN_KEYMAP_SECONDARY:
+		getIntl().keyMapSec();
+		break;
+
+	case LFUN_KEYMAP_TOGGLE:
+		getIntl().toggleKeyMap();
+		break;
 
 	default:
 		return false;

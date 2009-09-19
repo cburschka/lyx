@@ -564,10 +564,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_SERVER_NOTIFY:
 	case LFUN_SERVER_GOTO_FILE_ROW:
 	case LFUN_CURSOR_FOLLOWS_SCROLLBAR_TOGGLE:
-	case LFUN_KEYMAP_OFF:
-	case LFUN_KEYMAP_PRIMARY:
-	case LFUN_KEYMAP_SECONDARY:
-	case LFUN_KEYMAP_TOGGLE:
 	case LFUN_REPEAT:
 	case LFUN_PREFERENCES_SAVE:
 	case LFUN_INSET_EDIT:
@@ -966,26 +962,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_CURSOR_FOLLOWS_SCROLLBAR_TOGGLE:
 			LASSERT(lyx_view_, /**/);
 			lyxrc.cursor_follows_scrollbar = !lyxrc.cursor_follows_scrollbar;
-			break;
-
-		case LFUN_KEYMAP_OFF:
-			LASSERT(lyx_view_ && lyx_view_->currentBufferView(), /**/);
-			lyx_view_->currentBufferView()->getIntl().keyMapOn(false);
-			break;
-
-		case LFUN_KEYMAP_PRIMARY:
-			LASSERT(lyx_view_ && lyx_view_->currentBufferView(), /**/);
-			lyx_view_->currentBufferView()->getIntl().keyMapPrim();
-			break;
-
-		case LFUN_KEYMAP_SECONDARY:
-			LASSERT(lyx_view_ && lyx_view_->currentBufferView(), /**/);
-			lyx_view_->currentBufferView()->getIntl().keyMapSec();
-			break;
-
-		case LFUN_KEYMAP_TOGGLE:
-			LASSERT(lyx_view_ && lyx_view_->currentBufferView(), /**/);
-			lyx_view_->currentBufferView()->getIntl().toggleKeyMap();
 			break;
 
 		case LFUN_REPEAT: {
