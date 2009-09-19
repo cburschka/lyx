@@ -463,10 +463,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	bool enable = true;
 	switch (cmd.action) {
 
-	case LFUN_BUFFER_TOGGLE_READ_ONLY:
-		flag.setOnOff(buf->isReadonly());
-		break;
-
 	case LFUN_BUFFER_CHKTEX:
 		enable = buf->isLatex() && !lyxrc.chktex_command.empty();
 		break;
@@ -767,15 +763,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			meta_fake_bit = AltModifier;
 			setMessage(keyseq.print(KeySequence::ForGui));
 			break;
-
-		case LFUN_BUFFER_TOGGLE_READ_ONLY: {
-			LASSERT(lyx_view_ && lyx_view_->currentBufferView() && buffer, /**/);
-			if (buffer->lyxvc().inUse())
-				buffer->lyxvc().toggleReadOnly();
-			else
-				buffer->setReadonly(!buffer->isReadonly());
-			break;
-		}
 
 		// --- Menus -----------------------------------------------
 		case LFUN_BUFFER_CLOSE:

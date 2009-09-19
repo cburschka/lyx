@@ -1634,6 +1634,10 @@ void Buffer::markDepClean(string const & name)
 bool Buffer::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 {
 	switch (cmd.action) {
+		case LFUN_BUFFER_TOGGLE_READ_ONLY:
+			flag.setOnOff(isReadonly());
+			break;
+
 		case LFUN_BUFFER_EXPORT: {
 			docstring const arg = cmd.argument();
 			bool enable = arg == "custom" || isExportable(to_utf8(arg));
@@ -1682,6 +1686,13 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 	bool dispatched = true;
 
 	switch (func.action) {
+	case LFUN_BUFFER_TOGGLE_READ_ONLY:
+		if (lyxvc().inUse())
+			lyxvc().toggleReadOnly();
+		else
+			setReadonly(!isReadonly());
+		break;
+
 	case LFUN_BUFFER_EXPORT: {
 		bool success = doExport(to_utf8(func.argument()), false);
 		dr.setError(success);
