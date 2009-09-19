@@ -66,10 +66,6 @@ public:
 	/// set a buffer to the current workarea.
 	virtual void setBuffer(Buffer * b) = 0; ///< \c Buffer to set.
 	///
-	virtual bool closeBuffer() = 0;
-	///
-	virtual bool closeBufferAll() = 0;
-	///
 	virtual bool hasFocus() const = 0;
 
 	/// load a document into the current workarea.

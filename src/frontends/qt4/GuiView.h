@@ -71,8 +71,6 @@ public:
 	BufferView * documentBufferView();
 	BufferView const * documentBufferView() const;
 	void setBuffer(Buffer * b);
-	bool closeBuffer();
-	bool closeBufferAll();
 	bool hasFocus() const;
 	Buffer * loadDocument(support::FileName const &  name,
 		bool tolastfiles = true);
@@ -173,6 +171,10 @@ private Q_SLOTS:
 	void bigSizedIcons();
 
 private:
+	/// Close current document buffer.
+	bool closeBuffer();
+	/// Close all document buffers.
+	bool closeBufferAll();
 	///
 	TabWorkArea * addTabWorkArea();
 
