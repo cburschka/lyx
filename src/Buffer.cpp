@@ -42,6 +42,7 @@
 #include "Lexer.h"
 #include "LyXAction.h"
 #include "LyX.h"
+#include "LyXFunc.h"
 #include "LyXRC.h"
 #include "LyXVC.h"
 #include "output_docbook.h"
