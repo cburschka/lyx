@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-09-09 18:03+0200\n"
-"PO-Revision-Date: 2009-09-19 17:01+0100\n"
+"PO-Revision-Date: 2009-09-19 17:24+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -13077,7 +13077,7 @@ msgstr "Alle Einfügungen schließen|s"
 
 #: lib/ui/stdmenus.inc:308
 msgid "Unfold Math Macro|n"
-msgstr "Mathe-Makro aufklappen|n"
+msgstr "Mathe-Makro aufklappen|M"
 
 #: lib/ui/stdmenus.inc:309
 msgid "Fold Math Macro|d"
@@ -21496,12 +21496,12 @@ msgstr "Andere Formate aktualisieren|n"
 #: src/frontends/qt4/Menus.cpp:894
 #, c-format
 msgid "View [%1$s]|V"
-msgstr "[%1$s] ansehen|V"
+msgstr "[%1$s] ansehen|h"
 
 #: src/frontends/qt4/Menus.cpp:895
 #, c-format
 msgid "Update [%1$s]|U"
-msgstr "Update [%1$s] aktualisieren|U"
+msgstr "[%1$s] aktualisieren|u"
 
 #: src/frontends/qt4/Menus.cpp:988
 msgid "No Custom Insets Defined!"
