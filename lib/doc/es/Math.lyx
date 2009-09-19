@@ -37004,17 +37004,7 @@ cm se usa el aspa de multiplicar
 \end_inset
 
 .
- 
-\lang english
-It is available either via the command 
-\series bold
-
-\backslash
-times
-\series default
- or via
-\lang spanish
- el menú 
+ Está disponible en el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
 Carácter especial
@@ -37024,6 +37014,12 @@ Carácter especial
 \family sans
 Símbolos
 \family default
+ o bien mediante el comando 
+\series bold
+
+\backslash
+times
+\series default
 .
  Se puede insertar directamente con cierta combinación de teclas.
 \end_layout
@@ -37060,19 +37056,14 @@ Los componentes de una matriz se escriben en cursiva:
 El operador de diferenciación/integración 'd', el número de Euler 'e' y
  el número imaginario 'i' deberían escribirse en redonda para evitar confundirlo
 s con otras variables.
- 
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-The character that denotes a 
+El carácter que indica una transformación 
 \noun on
 Fourier
 \noun default
- transformation is inserted either by the command
-\lang spanish
- 
+ se inserta con el comando 
 \series bold
 
 \backslash
@@ -37105,25 +37096,16 @@ mathscr
 
 \end_inset
 
- 
-\lang english
-or via the menu 
+ o mediante el menú
 \family sans
-\lang spanish
-Insertar\SpecialChar \menuseparator
+ Insertar\SpecialChar \menuseparator
 Carácter especial
 \family default
 \SpecialChar \menuseparator
 
 \family sans
 Símbolos\SpecialChar \menuseparator
-
-\lang english
-Letterlike
-\begin_inset space ~
-\end_inset
-
-Symbols
+Símbolos de letra
 \family default
 : 
 \begin_inset Formula $\mathscr{F}$
@@ -37133,17 +37115,15 @@ Symbols
 \begin_inset Newline newline
 \end_inset
 
-To be able to use the command 
+Para poder usar el comando 
 \series bold
 
 \backslash
 mathscr
 \series default
-, the LaTeX package
-\lang spanish
- 
+, hay que cargar el paquete LaTeX
 \series bold
-mathrsfs
+ mathrsfs
 \series default
 
 \begin_inset Index
@@ -37155,11 +37135,7 @@ Paquetes ! mathrsfs
 
 \end_inset
 
- 
-\lang english
-needs to be loaded with the LaTeX-preamble line
-\lang spanish
- 
+ en el preámbulo LaTeX mediante la línea 
 \series bold
 
 \backslash
