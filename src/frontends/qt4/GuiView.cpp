@@ -1209,6 +1209,10 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		enable = doc_buffer;
 		break;
 
+	case LFUN_BUFFER_CLOSE:
+		enable = doc_buffer;
+		break;
+
 	case LFUN_BUFFER_CLOSE_ALL:
 		enable = theBufferList().last() != theBufferList().first();
 		break;
@@ -2452,6 +2456,14 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			message(_("All documents saved."));
 			break;
 		}
+
+		case LFUN_BUFFER_CLOSE:
+			closeBuffer();
+			break;
+
+		case LFUN_BUFFER_CLOSE_ALL:
+			closeBufferAll();
+			break;
 
 		case LFUN_TOOLBAR_TOGGLE: {
 			string const name = cmd.getArg(0);

@@ -557,7 +557,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_COMMAND_PREFIX:
 	case LFUN_CANCEL:
 	case LFUN_META_PREFIX:
-	case LFUN_BUFFER_CLOSE:
 	case LFUN_RECONFIGURE:
 	case LFUN_HELP_OPEN:
 	case LFUN_DROP_LAYOUTS_CHOICE:
@@ -733,18 +732,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		// --- Menus -----------------------------------------------
-		case LFUN_BUFFER_CLOSE:
-			lyx_view_->closeBuffer();
-			buffer = 0;
-			updateFlags = Update::None;
-			break;
-
-		case LFUN_BUFFER_CLOSE_ALL:
-			lyx_view_->closeBufferAll();
-			buffer = 0;
-			updateFlags = Update::None;
-			break;
-
 		case LFUN_RECONFIGURE:
 			// argument is any additional parameter to the configure.py command
 			reconfigure(lyx_view_, argument);
