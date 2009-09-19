@@ -2197,8 +2197,11 @@ bool Paragraph::latex(BufferParams const & bparams,
 		return_value = false;
 	}
 
-	if (allowcust && d->endTeXParParams(bparams, os, texrow, runparams))
+	if (allowcust && d->endTeXParParams(bparams, os, texrow, runparams)
+	    && runparams.encoding != prev_encoding) {
 		runparams.encoding = prev_encoding;
+		os << setEncoding(prev_encoding->iconvName());
+	}
 
 	LYXERR(Debug::LATEX, "Paragraph::latex... done " << this);
 	return return_value;

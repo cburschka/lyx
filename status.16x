@@ -82,6 +82,9 @@ What's new
   to LyX 1.6.x format, to assure the character is treated verbatim
   (bug 6179).
 
+- Properly reset the stream encoding after an environment in order to
+  match the required file encoding when exporting to LaTeX (bug 6216).
+
 
 * USER INTERFACE
 
