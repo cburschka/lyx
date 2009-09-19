@@ -591,7 +591,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	}
 
 	case LFUN_COMMAND_PREFIX:
-	case LFUN_COMMAND_EXECUTE:
 	case LFUN_CANCEL:
 	case LFUN_META_PREFIX:
 	case LFUN_BUFFER_CLOSE:
@@ -612,7 +611,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_REPEAT:
 	case LFUN_BUFFER_EXPORT_CUSTOM:
 	case LFUN_PREFERENCES_SAVE:
-	case LFUN_MESSAGE:
 	case LFUN_INSET_EDIT:
 	case LFUN_BUFFER_LANGUAGE:
 	case LFUN_TEXTCLASS_APPLY:
@@ -1266,11 +1264,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				    false);
 			break;
 		}
-
-		case LFUN_MESSAGE:
-			LASSERT(lyx_view_, /**/);
-			lyx_view_->message(from_utf8(argument));
-			break;
 
 		case LFUN_BUFFER_LANGUAGE: {
 			LASSERT(lyx_view_, /**/);

@@ -1278,7 +1278,9 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 			enable = name == "prefs";
 		break;
 	}
-	
+
+	case LFUN_COMMAND_EXECUTE:
+	case LFUN_MESSAGE:
 	case LFUN_MENU_OPEN:
 		// Nothing to check.
 		break;
@@ -2525,6 +2527,10 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 				showDialog(name, data);
 			break;
 		}
+
+		case LFUN_MESSAGE:
+			message(cmd.argument());
+			break;
 
 		case LFUN_INSET_APPLY: {
 			string const name = cmd.getArg(0);
