@@ -43,11 +43,14 @@ Input stdlayouts.inc
 Input stdlists.inc
 Input stdfloats.inc
 Input stdcounters.inc
+Input stdtitle.inc
 
 NoStyle Part
 NoStyle Part*
 NoStyle Chapter
 NoStyle Chapter*
+NoStyle Subparagraph
+NoStyle Subparagraph*
 
 
 Style Section
@@ -86,15 +89,6 @@ Style Paragraph
 End
 
 
-Style Subparagraph
-	Font
-	  Series              Medium
-	  Shape               Up
-	  Size                Normal
-	EndFont
-End
-
-
 Style Headnote
 	Margin                Static
 	LatexType             Command
@@ -119,114 +113,79 @@ End
 
 
 Style Dedication
-	CopyStyle             Headnote
-	LatexName             dedication
-	LeftMargin            Dedication:xxx
-	LabelString           "Dedication:"
+	CopyStyle		Headnote
+	LatexName		dedication
+	LeftMargin		Dedication:xxx
+	LabelString		"Dedication:"
 End
 
 
 Style Title
-	Margin                Static
-	LatexType             Command
-	InTitle               1
-	LatexName             title
-	NextNoIndent          1
-	ParSkip               0.4
-	TopSep                1.3
-	BottomSep             0.7
-	ParSep                0.7
-	Align                 Left
-	AlignPossible         Block, Center, Left, Right, Center
-	LabelType             No_Label
-	Fill_Top              1
-	Fill_Bottom           1
+	Align			Left
+	AlignPossible		Block, Center, Left, Right, Center
+	Fill_Top		1
+	Fill_Bottom		1
 	Font
-	  Family              Sans
-	  Series              Bold
-	  Size                Largest
+	  Family		Sans
+	  Series		Bold
 	EndFont
 End
 
 
 Style Subtitle
-	Margin                Static
-	LatexType             Command
-	InTitle               1
-	LatexName             subtitle
-	NextNoIndent          1
-	ParSkip               0.4
-	ItemSep               0
-	TopSep                0
-	BottomSep             0
-	ParSep                0
-	Align                 Left
-	LabelType             No_Label
+	CopyStyle		Title
+	LatexName		subtitle
+	NextNoIndent		1
+	BottomSep		0
+	ParSep			0
 	Font
-	  Family              Sans
-	  Series              Bold
-	  Size                Large
+	  Size			Large
 	EndFont
 End
 
 
 Style Running_LaTeX_Title
-	CopyStyle             Headnote
-	LatexName             titlerunning
-	LeftMargin            "Running title:xxx"
-	LabelString           "Running title:"
+	CopyStyle		Headnote
+	LatexName		titlerunning
+	LeftMargin		"Running title:xxx"
+	LabelString		"Running title:"
 End
 
 
 Style Author
-	Margin                Static
-	LatexType             Command
-	InTitle               1
-	LatexName             author
-	NextNoIndent          1
-	ParSkip               0.4
-	TopSep                0.7
-	BottomSep             0.7
-	ItemSep               0
-	ParSep                0
-	Align                 Left
-	LabelType             No_Label
+	NextNoIndent		1
+	Align			Left
 	Font
-	  Series              Bold
-	  Shape               Italic
+	  Series		Bold
+	  Shape			Italic
 	EndFont
 End
 
 
 Style Author_Running
-	CopyStyle             Headnote
-	LatexName             authorrunning
-	LeftMargin            "Author Running:xxx"
-	LabelString           "Author Running:"
+	CopyStyle		Headnote
+	LatexName		authorrunning
+	LeftMargin		"Author Running:xxx"
+	LabelString		"Author Running:"
 End
 
 
 Style Institute
-	Margin                Static
-	LatexType             Command
-	InTitle               1
-	LatexName             institute
-	NextNoIndent          1
-	ParSkip               0.4
-	TopSep                1.3
-	BottomSep             0.7
-	ParSep                0.7
-	Align                 Left
-	LabelType             No_Label
+	CopyStyle		Author
+	LatexName		institute
 	Font
-	  Size                Small
+	  Series		Medium
+	  Shape			Up
+	  Size			Normal
 	EndFont
 End
 
 
 Style Date
-	CopyStyle             Institute
-	LatexName             date
+	Align			Left
+	Font
+	  Size			Small
+	EndFont
 End
 
 
@@ -324,6 +283,7 @@ Style Bibliography
 	Margin                First_Dynamic
 	LatexType             Bib_Environment
 	LatexName             thebibliography
+	Category              BackMatter
 	NextNoIndent          1
 	LeftMargin            MM
 	ParSkip               0.4
@@ -346,6 +306,7 @@ Style Claim
 	Margin                First_Dynamic
 	LatexType             Environment
 	LatexName             claim
+	Category              MainText
 	NextNoIndent          0
 	ParIndent             MM
 	LabelSep              xx
