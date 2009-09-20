@@ -966,7 +966,7 @@ vector<docstring> wrapToVec(docstring const & str, int ind,
 		}
 		retval.push_back(s.substr(0, i));
 		s = indent + s.substr(i);
-		ind = 0;
+		ind = indent.size();
 	}
 	if (!s.empty())
 		retval.push_back(s);
