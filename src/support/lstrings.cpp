@@ -941,37 +941,34 @@ docstring const escape(docstring const & lab)
 namespace {
 
 // this doesn't check whether str is empty, so do that first.
-vector<docstring> wrapToVec(docstring const & str, int const ind, 
-                            size_t const width)
+vector<docstring> wrapToVec(docstring const & str, int ind,
+			    size_t const width)
 {
 	docstring s = trim(str);
-	if (s.empty()) 
+	if (s.empty())
 		return vector<docstring>();
 
 	docstring indent;
-	if (ind < 0)
-		for (int j = 0; j > ind; --j)
-			indent += " ";
-	else if (ind > 0)
-		for (int j = 0; j < ind; ++j)
-			s = " " + s;
+	if (ind < 0) {
+		indent.insert(0, -ind, ' ');
+		ind = 0;
+	} else if (ind > 0)
+		s.insert(0, ind, ' ');
 
 	vector<docstring> retval;
 	while (s.size() > width) {
-		int i = width - 1;
-		// find the last space
-		for (; i >= 0; --i)
-			if (s[i] == ' ')
-				break;
-		if (i < 0) { 
+		// find the last space within the first 'width' chars
+		int i = s.find_last_of(' ', width - 1);
+		if (i == docstring::npos || i <= ind) {
 			// no space found
 			s = s.substr(0, width - 3) + "...";
 			break;
 		}
 		retval.push_back(s.substr(0, i));
 		s = indent + s.substr(i);
+		ind = indent.size();
 	}
-	if (!s.empty()) 
+	if (!s.empty())
 		retval.push_back(s);
 	return retval;
 }

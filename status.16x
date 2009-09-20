@@ -96,6 +96,8 @@ What's new
 
 - Fix a number of assertions when displaying error messages (bug 6205). 
 
+- Fix bad allocation exception when displaying long tool tips (bug 6215).
+
 - Fixed problem involving inability to turn off auto-save (bug 6227).
 
 - Sort document classes case insensitively (bug 1492).
