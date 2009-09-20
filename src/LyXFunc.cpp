@@ -1091,7 +1091,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			if (lyx_view_ == 0)
 				break;
 
-			BufferView * bv = lyx_view_->documentBufferView();
+			BufferView * bv = lyx_view_->currentBufferView();
 			BufferView * doc_bv = lyx_view_->documentBufferView();
 
 			// Start an undo group. This may be needed for
