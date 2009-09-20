@@ -30,16 +30,13 @@ Format 11
 Input scrclass.inc
 Input numreport.inc
 
-Sides			1
-Sides			2
+# Global parameters.
+SecNumDepth		2
+TocDepth		3
 PageStyle		Headings
 
 # There is no abstract environment in scrbook.cls
 NoStyle Abstract
-
-# Global parameters.
-SecNumDepth		2
-TocDepth		3
 
 Style Chapter
   LabelString		"\thechapter"
@@ -55,10 +52,6 @@ Style Bibliography
 End
 
 Preamble
-
-\setcounter{secnumdepth}{2}	% subsubsections not numbered
-\setcounter{tocdepth}{3}	% subsubsections in the .toc file
-
 \newcommand{\rechead}
     {\centering\normalfont\Large\sffamily\bfseries}
 
