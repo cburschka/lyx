@@ -1091,6 +1091,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			if (lyx_view_ == 0)
 				break;
 
+			BufferView * bv = lyx_view_->documentBufferView();
+			BufferView * doc_bv = lyx_view_->documentBufferView();
+
 			// Start an undo group. This may be needed for
 			// some stuff like inset-apply on labels.
 			if (theBufferList().isLoaded(buffer))
@@ -1098,38 +1101,44 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				
 			// Let the current LyXView dispatch its own actions.
 			if (lyx_view_->dispatch(cmd)) {
-				if (lyx_view_->currentBufferView()) {
-					updateFlags = lyx_view_->currentBufferView()->cursor().result().update();
+				if (bv) {
+					updateFlags = bv->cursor().result().update();
 					if (theBufferList().isLoaded(buffer))
 						buffer->undo().endUndoGroup();
 				}
 				break;
 			}
 
-			LASSERT(lyx_view_->currentBufferView(), /**/);
+			LASSERT(bv, /**/);
 
 			// Let the current BufferView dispatch its own actions.
-			if (lyx_view_->currentBufferView()->dispatch(cmd)) {
+			if (bv->dispatch(cmd)) {
 				// The BufferView took care of its own updates if needed.
 				updateFlags = Update::None;
 				if (theBufferList().isLoaded(buffer))
 					buffer->undo().endUndoGroup();
 				break;
 			}
+			// Try with the document BufferView dispatch if any.
+			if (doc_bv && doc_bv->dispatch(cmd)) {
+				// The BufferView took care of its own updates if needed.
+				buffer = &(doc_bv->buffer());
+				updateFlags = Update::None;
+				if (theBufferList().isLoaded(buffer))
+					buffer->undo().endUndoGroup();
+				break;
+			}
 
-			// OK, so try the Buffer itself
+			// OK, so try the current Buffer itself...
 			DispatchResult dr;
-			BufferView * bv = lyx_view_->currentBufferView();
 			bv->buffer().dispatch(cmd, dr);
 			if (dr.dispatched()) {
 				updateFlags = dr.update();
 				break;
 			}
-			// OK, so try with the document Buffer.
-			BufferView * doc_bv = lyx_view_->documentBufferView();
+			// and with the document Buffer.
 			if (doc_bv) {
-				buffer = &(doc_bv->buffer());
-				buffer->dispatch(cmd, dr);
+				doc_bv->buffer().dispatch(cmd, dr);
 				if (dr.dispatched()) {
 					updateFlags = dr.update();
 					break;

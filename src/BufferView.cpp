@@ -1095,6 +1095,8 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 	switch (cmd.action) {
 
 	case LFUN_BUFFER_PARAMS_APPLY: {
+		if (buffer_.isInternal())
+			return false;
 		DocumentClass const * const oldClass = buffer_.params().documentClassPtr();
 		cur.recordUndoFullDocument();
 		istringstream ss(to_utf8(cmd.argument()));
@@ -1116,6 +1118,8 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 	}
 		
 	case LFUN_LAYOUT_MODULES_CLEAR: {
+		if (buffer_.isInternal())
+			return false;
 		DocumentClass const * const oldClass =
 			buffer_.params().documentClassPtr();
 		cur.recordUndoFullDocument();
@@ -1127,6 +1131,8 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_LAYOUT_MODULE_ADD: {
+		if (buffer_.isInternal())
+			return false;
 		BufferParams const & params = buffer_.params();
 		if (!params.moduleCanBeAdded(argument)) {
 			LYXERR0("Module `" << argument << 
@@ -1144,6 +1150,8 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_TEXTCLASS_APPLY: {
+		if (buffer_.isInternal())
+			return false;
 		if (!LayoutFileList::get().load(argument, buffer_.temppath()) &&
 			!LayoutFileList::get().load(argument, buffer_.filePath()))
 			break;
@@ -1167,11 +1175,15 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_TEXTCLASS_LOAD:
+		if (buffer_.isInternal())
+			return false;
 		LayoutFileList::get().load(argument, buffer_.temppath()) ||
 		LayoutFileList::get().load(argument, buffer_.filePath());
 		break;
 
 	case LFUN_LAYOUT_RELOAD: {
+		if (buffer_.isInternal())
+			return false;
 		DocumentClass const * const oldClass = buffer_.params().documentClassPtr();
 		LayoutFileIndex bc = buffer_.params().baseClassID();
 		LayoutFileList::get().reset(bc);
