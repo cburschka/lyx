@@ -1972,6 +1972,8 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(autoSaveCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
+	connect(backupCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
 	connect(lastfilesSB, SIGNAL(valueChanged(int)),
 		this, SIGNAL(changed()));
 	connect(tooltipCB, SIGNAL(toggled(bool)),
@@ -1986,8 +1988,8 @@ void PrefUserInterface::apply(LyXRC & rc) const
 	rc.use_lastfilepos = restoreCursorCB->isChecked();
 	rc.load_session = loadSessionCB->isChecked();
 	rc.allow_geometry_session = allowGeometrySessionCB->isChecked();
-	rc.autosave = autoSaveSB->value() * 60;
-	rc.make_backup = autoSaveCB->isChecked();
+	rc.autosave = autoSaveCB->isChecked()?  autoSaveSB->value() * 60 : 0;
+	rc.make_backup = backupCB->isChecked();
 	rc.num_lastfiles = lastfilesSB->value();
 	rc.use_tooltip = tooltipCB->isChecked();
 	rc.open_buffers_in_tabs = openDocumentsInTabsCB->isChecked();
@@ -2001,11 +2003,14 @@ void PrefUserInterface::update(LyXRC const & rc)
 	loadSessionCB->setChecked(rc.load_session);
 	allowGeometrySessionCB->setChecked(rc.allow_geometry_session);
 	// convert to minutes
-	int mins(rc.autosave / 60);
-	if (rc.autosave && !mins)
-		mins = 1;
+	bool autosave = rc.autosave > 0;
+	int mins = rc.autosave / 60;
+	if (!mins)
+		mins = 5;
 	autoSaveSB->setValue(mins);
-	autoSaveCB->setChecked(rc.make_backup);
+	autoSaveCB->setChecked(autosave);
+	autoSaveSB->setEnabled(autosave);
+	backupCB->setChecked(rc.make_backup);
 	lastfilesSB->setValue(rc.num_lastfiles);
 	tooltipCB->setChecked(rc.use_tooltip);
 	openDocumentsInTabsCB->setChecked(rc.open_buffers_in_tabs);
