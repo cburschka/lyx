@@ -1162,7 +1162,8 @@ dist_templates_DATA = \
 	templates/README.new_templates \
 	templates/revtex.lyx \
 	templates/revtex4.lyx \
-	templates/slides.lyx
+	templates/slides.lyx \
+	templates/svjour3.lyx
 
 texdir = $(pkgdatadir)/tex
 dist_tex_DATA = \

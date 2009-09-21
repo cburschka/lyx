@@ -46,6 +46,9 @@ What's new
 
 * DOCUMENTATION AND LOCALIZATION
 
+- New template file "svjour3.lyx" for article submissions
+  to journals published by the Springer group.
+
 - Updated French manual how to write Braille with LyX.
 
 - Updated Czech, French, German, Italian, Slovak and Spanish
@@ -84,6 +87,8 @@ What's new
 
 - Properly reset the stream encoding after an environment in order to
   match the required file encoding when exporting to LaTeX (bug 6216).
+
+- Fixed layout file for the document class svjour3 (bug6198).
 
 
 * USER INTERFACE

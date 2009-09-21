@@ -1311,6 +1311,7 @@ lib_templates_files = Split('''
     revtex.lyx
     revtex4.lyx
     slides.lyx
+    svjour3.lyx
 ''')
 
 

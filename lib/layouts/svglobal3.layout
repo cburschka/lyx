@@ -6,45 +6,83 @@
 #
 # Taken from initial LyX source code
 # Author : Matthias Ettrich <ettrich@informatik.uni-tuebingen.de>
+# Adapted from svjour/jog by Cengiz Gunay in 2003.
 # Transposed by Pascal André <andre@via.ecp.fr>
 # Heavily modified and enhanced by serveral developers.
+# Last revision for svjour version 3.2 by Uwe Stöhr in September 2009
 #
-# --------
-# Adapted from svjour/jog by Cengiz Gunay in 2003.
-#
-# General textclass parameters
-# (global) ?
-#
-# see www.springer.de/author/tex/help-journals.html for class files
-#
-# The standard Springer Journal sections
-Format 11
-Input svjour.inc
+# see ftp://ftp.springer.de/pub/tex/latex/svjour3/ for class files
 
-ClassOptions
-  Other		global
+Format 11
+
+Input svjour.inc
+NoStyle Acknowledgement
+NoStyle Headnote
+NoStyle Dedication
+NoStyle Running_LaTeX_Title
+NoStyle Author_Running
+NoStyle Mail
+NoStyle Offprints
+NoStyle Keywords
+
+Preamble
+	\smartqed  % flush right qed marks, e.g. at end of proof
+EndPreamble
+
+
+InsetLayout Email
+	LyxType			custom
+	LatexType		command
+	LatexName		email
+	LabelString		"Email"
+	Font
+	  Color			foreground
+	  Size			Small
+	  Family		Roman
+	  Shape			Up
+	  Series		Medium
+	  Misc			No_Emph
+	  Misc			No_Noun
+	  Misc			No_Bar
+	EndFont
+	LabelFont
+	  Color			green
+	  Size			Small
+	EndFont
 End
 
-# Abstract style definition
-Style Abstract
-  Margin		First_Dynamic
-  LatexType		Command
-  LatexName		abstract
-  Newline		1
-  NextNoIndent		0
-  ParIndent		MM
-  LabelSep		xx
-  ItemSep		0
-  TopSep		0.7
-  BottomSep		0.7
-  ParSep		0
-  Align			Block
-  AlignPossible		Block, Left
-  LabelType		Top_Environment
-  LabelString		"Abstract."
 
-  # label font definition
-  LabelFont
-    Series		Bold
-  EndFont
+InsetLayout Keywords
+	CopyStyle		Email
+	LatexName		keywords
+	LabelString		"Keywords"
+End
+
+
+InsetLayout PACS
+	CopyStyle		Email
+	LatexName		PACS
+	LabelString		"PACS"
+End
+
+
+InsetLayout Subclass
+	CopyStyle		Email
+	LatexName		subclass
+	LabelString		"Subclass"
+End
+
+
+Style Abstract
+  Category		FrontMatter
+  Newline		1
+  LabelType		Static
+  LabelString		"Abstract"
+End
+
+Style Acknowledgements
+  CopyStyle		Abstract
+  LatexName		acknowledgements
+  Category		BackMatter
+  LabelString		"Acknowledgements"
 End

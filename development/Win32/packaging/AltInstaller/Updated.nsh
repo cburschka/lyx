@@ -58,11 +58,15 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\examples\fr\Braille.lyx"
  SetOutPath "$INSTDIR\Resources\layouts"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\recipebook.layout"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\svglobal3.layout"
+ File "${PRODUCT_SOURCEDIR}\Resources\layouts\svjour.inc"
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx_1_6.py"
  SetOutPath "$INSTDIR\Resources\scripts"
  File "${PRODUCT_SOURCEDIR}\Resources\scripts\elyxer.py"
+ SetOutPath "$INSTDIR\Resources\templates"
+ File "${PRODUCT_SOURCEDIR}\Resources\templates\svjour3.lyx"
  SetOutPath "$INSTDIR\Resources\ui"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\stdcontext.inc"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\stdmenus.inc"
