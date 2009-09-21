@@ -1091,9 +1091,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			if (lyx_view_ == 0)
 				break;
 
-			BufferView * bv = lyx_view_->currentBufferView();
-			BufferView * doc_bv = lyx_view_->documentBufferView();
-
 			// Start an undo group. This may be needed for
 			// some stuff like inset-apply on labels.
 			if (theBufferList().isLoaded(buffer))
@@ -1101,7 +1098,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				
 			// Let the current LyXView dispatch its own actions.
 			if (lyx_view_->dispatch(cmd)) {
+				BufferView * bv = lyx_view_->currentBufferView();
 				if (bv) {
+					buffer = &(bv->buffer());
 					updateFlags = bv->cursor().result().update();
 					if (theBufferList().isLoaded(buffer))
 						buffer->undo().endUndoGroup();
@@ -1109,16 +1108,20 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				break;
 			}
 
+			BufferView * bv = lyx_view_->currentBufferView();
 			LASSERT(bv, /**/);
 
 			// Let the current BufferView dispatch its own actions.
 			if (bv->dispatch(cmd)) {
 				// The BufferView took care of its own updates if needed.
+				buffer = &(bv->buffer());
 				updateFlags = Update::None;
 				if (theBufferList().isLoaded(buffer))
 					buffer->undo().endUndoGroup();
 				break;
 			}
+
+			BufferView * doc_bv = lyx_view_->documentBufferView();
 			// Try with the document BufferView dispatch if any.
 			if (doc_bv && doc_bv->dispatch(cmd)) {
 				// The BufferView took care of its own updates if needed.
