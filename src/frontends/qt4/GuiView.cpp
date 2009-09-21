@@ -2344,6 +2344,8 @@ void GuiView::dispatchVC(FuncRequest const & cmd)
 
 		break;
 		}
+	default:
+		break;
 	}
 }
 
