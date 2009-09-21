@@ -405,7 +405,7 @@ public:
 	///
 	bool preview_hashed_labels;
 	///
-	std::string preview_scale_factor;
+	double preview_scale_factor;
 	/// user name
 	std::string user_name;
 	/// user email

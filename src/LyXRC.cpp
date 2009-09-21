@@ -296,7 +296,7 @@ void LyXRC::setDefaults()
 	label_init_length = 3;
 	preview = PREVIEW_OFF;
 	preview_hashed_labels  = false;
-	preview_scale_factor = "0.9";
+	preview_scale_factor = 1.0;
 	use_converter_cache = true;
 	use_tooltip = true;
 	use_pixmap_cache = false;

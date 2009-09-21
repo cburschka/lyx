@@ -942,6 +942,20 @@ PrefDisplay::PrefDisplay(GuiPreferences * form)
 	setupUi(this);
 	connect(displayGraphicsCB, SIGNAL(toggled(bool)), this, SIGNAL(changed()));
 	connect(instantPreviewCO, SIGNAL(activated(int)), this, SIGNAL(changed()));
+	connect(previewSizeSB, SIGNAL(valueChanged(double)), this, SIGNAL(changed()));
+	if (instantPreviewCO->currentIndex() == 0)
+		previewSizeSB->setEnabled(false);
+	else
+		previewSizeSB->setEnabled(true);
+}
+
+
+void PrefDisplay::on_instantPreviewCO_currentIndexChanged(int index)
+{
+	if (index == 0)
+		previewSizeSB->setEnabled(false);
+	else
+		previewSizeSB->setEnabled(true);
 }
 
 
@@ -954,6 +968,7 @@ void PrefDisplay::apply(LyXRC & rc) const
 	}
 
 	rc.display_graphics = displayGraphicsCB->isChecked();
+	rc.preview_scale_factor = previewSizeSB->value();
 
 	// FIXME!! The graphics cache no longer has a changeDisplay method.
 #if 0
@@ -981,6 +996,7 @@ void PrefDisplay::update(LyXRC const & rc)
 
 	displayGraphicsCB->setChecked(rc.display_graphics);
 	instantPreviewCO->setEnabled(rc.display_graphics);
+	previewSizeSB->setValue(rc.preview_scale_factor);
 }
 
 
