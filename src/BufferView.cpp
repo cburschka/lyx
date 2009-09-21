@@ -1256,6 +1256,8 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_PARAGRAPH_GOTO: {
+		if (buffer_.isInternal())
+			return false;
 		int const id = convert<int>(cmd.getArg(0));
 		int const pos = convert<int>(cmd.getArg(1));
 		int i = 0;
