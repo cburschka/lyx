@@ -243,7 +243,7 @@ void LyXRC::setDefaults()
 	index_command = "makeindex -c -q";
 	nomencl_command = "makeindex -s nomencl.ist";
 	dpi = 75;
-	// Because a screen typically is wider than a piece of paper:
+	// Because a screen is typically wider than a piece of paper:
 	zoom = 150;
 	allow_geometry_session = true;
 	// Default LaTeX font size:
@@ -306,7 +306,7 @@ void LyXRC::setDefaults()
 	label_init_length = 3;
 	preview = PREVIEW_OFF;
 	preview_hashed_labels  = false;
-	preview_scale_factor = "0.9";
+	preview_scale_factor = 1.0;
 	use_converter_cache = true;
 	use_tooltip = true;
 	use_pixmap_cache = false;
