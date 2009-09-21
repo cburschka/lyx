@@ -37,6 +37,7 @@
 #include "LayoutFile.h"
 #include "Lexer.h"
 #include "LyX.h"
+#include "LyXAction.h"
 #include "lyxfind.h"
 #include "LyXFunc.h"
 #include "Layout.h"
@@ -1092,11 +1093,13 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 	string const argument = to_utf8(cmd.argument());
 	Cursor & cur = d->cursor_;
 
+	// Don't dispatch function that does not apply to internal buffers.
+	if (buffer_.isInternal() && lyxaction.funcHasFlag(cmd.action, LyXAction::NoInternal))
+		return false;
+
 	switch (cmd.action) {
 
 	case LFUN_BUFFER_PARAMS_APPLY: {
-		if (buffer_.isInternal())
-			return false;
 		DocumentClass const * const oldClass = buffer_.params().documentClassPtr();
 		cur.recordUndoFullDocument();
 		istringstream ss(to_utf8(cmd.argument()));
@@ -1118,8 +1121,6 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 	}
 		
 	case LFUN_LAYOUT_MODULES_CLEAR: {
-		if (buffer_.isInternal())
-			return false;
 		DocumentClass const * const oldClass =
 			buffer_.params().documentClassPtr();
 		cur.recordUndoFullDocument();
@@ -1131,8 +1132,6 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_LAYOUT_MODULE_ADD: {
-		if (buffer_.isInternal())
-			return false;
 		BufferParams const & params = buffer_.params();
 		if (!params.moduleCanBeAdded(argument)) {
 			LYXERR0("Module `" << argument << 
@@ -1150,8 +1149,6 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_TEXTCLASS_APPLY: {
-		if (buffer_.isInternal())
-			return false;
 		if (!LayoutFileList::get().load(argument, buffer_.temppath()) &&
 			!LayoutFileList::get().load(argument, buffer_.filePath()))
 			break;
@@ -1175,15 +1172,11 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_TEXTCLASS_LOAD:
-		if (buffer_.isInternal())
-			return false;
 		LayoutFileList::get().load(argument, buffer_.temppath()) ||
 		LayoutFileList::get().load(argument, buffer_.filePath());
 		break;
 
 	case LFUN_LAYOUT_RELOAD: {
-		if (buffer_.isInternal())
-			return false;
 		DocumentClass const * const oldClass = buffer_.params().documentClassPtr();
 		LayoutFileIndex bc = buffer_.params().baseClassID();
 		LayoutFileList::get().reset(bc);
@@ -1256,8 +1249,6 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_PARAGRAPH_GOTO: {
-		if (buffer_.isInternal())
-			return false;
 		int const id = convert<int>(cmd.getArg(0));
 		int const pos = convert<int>(cmd.getArg(1));
 		int i = 0;

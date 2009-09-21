@@ -1440,7 +1440,7 @@ void LyXAction::init()
  * \li Origin: rgh, 25 August 2007
  * \endvar
  */
-		{ LFUN_LAYOUT_MODULES_CLEAR, "layout-modules-clear", Noop, Layout },
+		{ LFUN_LAYOUT_MODULES_CLEAR, "layout-modules-clear", NoInternal, Layout },
 /*!
  * \var lyx::FuncCode lyx::LFUN_LAYOUT_MODULE_ADD
  * \li Action: Adds a module.
@@ -1450,7 +1450,7 @@ void LyXAction::init()
  * \li Origin: rgh, 25 August 2007
  * \endvar
  */
-		{ LFUN_LAYOUT_MODULE_ADD, "layout-module-add", Noop, Layout },
+		{ LFUN_LAYOUT_MODULE_ADD, "layout-module-add", NoInternal, Layout },
 /*!
  * \var lyx::FuncCode lyx::LFUN_LAYOUT_RELOAD
  * \li Action: Reloads layout information.
@@ -1462,7 +1462,7 @@ void LyXAction::init()
  * \li Origin: rgh, 3 September 2007
  * \endvar
  */
-		{ LFUN_LAYOUT_RELOAD, "layout-reload", Noop, Layout },
+		{ LFUN_LAYOUT_RELOAD, "layout-reload", NoInternal, Layout },
 /*!
  * \var lyx::FuncCode lyx::LFUN_TEXTCLASS_APPLY
  * \li Action: Sets the text class for the current buffer.
@@ -1471,7 +1471,7 @@ void LyXAction::init()
                    the filename, minus the ".layout" extension.
  * \endvar
  */
-		{ LFUN_TEXTCLASS_APPLY, "textclass-apply", Noop, Layout },
+		{ LFUN_TEXTCLASS_APPLY, "textclass-apply", NoInternal, Layout },
 /*!
  * \var lyx::FuncCode lyx::LFUN_TEXTCLASS_LOAD
  * \li Action: Loads information for a textclass from disk.
@@ -1480,7 +1480,7 @@ void LyXAction::init()
                    the filename, minus the ".layout" extension.
  * \endvar
  */
-		{ LFUN_TEXTCLASS_LOAD, "textclass-load", Noop, Layout },
+		{ LFUN_TEXTCLASS_LOAD, "textclass-load", NoInternal, Layout },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_MARK_OFF
@@ -1916,7 +1916,7 @@ void LyXAction::init()
  * \li Origin: Dekel, 26 Aug 2000
  * \endvar
  */
-		{ LFUN_PARAGRAPH_GOTO, "paragraph-goto", ReadOnly, Edit },
+		{ LFUN_PARAGRAPH_GOTO, "paragraph-goto", ReadOnly | NoInternal, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_BREAK_PARAGRAPH
  * \li Action: Breaks the current paragraph at the current location.
@@ -3090,7 +3090,7 @@ void LyXAction::init()
  * \li Origin: leeming, 30 Mar 2004
  * \endvar
  */
-		{ LFUN_BUFFER_PARAMS_APPLY, "buffer-params-apply", Noop, Buffer },
+		{ LFUN_BUFFER_PARAMS_APPLY, "buffer-params-apply", NoInternal, Buffer },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_FILE_INSERT

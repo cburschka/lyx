@@ -70,6 +70,7 @@ public:
 		NoUpdate = 8, //< Does not (usually) require update
 		SingleParUpdate = 16, //< Usually only requires this par updated
 		AtPoint = 32, //< dispatch first to inset at cursor if there is one
+		NoInternal = 64, //< Cannot be used for internal, non-document Buffers
 	};
 
 	LyXAction();
