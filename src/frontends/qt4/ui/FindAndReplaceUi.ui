@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>FindAndReplaceUi</class>
  <widget class="QWidget" name="FindAndReplaceUi">
@@ -11,7 +10,9 @@
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+   <sizepolicy>
+    <hsizetype>1</hsizetype>
+    <vsizetype>7</vsizetype>
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -59,7 +60,9 @@
        <item row="0" column="0">
         <widget class="QTabWidget" name="tabWidget">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <sizepolicy>
+           <hsizetype>7</hsizetype>
+           <vsizetype>7</vsizetype>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -78,7 +81,9 @@
          </property>
          <widget class="QWidget" name="tab_3">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+           <sizepolicy>
+            <hsizetype>5</hsizetype>
+            <vsizetype>7</vsizetype>
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -96,7 +101,9 @@
            <item row="2" column="0">
             <widget class="QFrame" name="replace_frame">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <sizepolicy>
+               <hsizetype>7</hsizetype>
+               <vsizetype>7</vsizetype>
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
@@ -111,16 +118,7 @@
               <enum>QFrame::Raised</enum>
              </property>
              <layout class="QGridLayout" name="gridLayout_7">
-              <property name="leftMargin">
-               <number>4</number>
-              </property>
-              <property name="topMargin">
-               <number>0</number>
-              </property>
-              <property name="rightMargin">
-               <number>4</number>
-              </property>
-              <property name="bottomMargin">
+              <property name="margin">
                <number>4</number>
               </property>
               <property name="spacing">
@@ -129,7 +127,9 @@
               <item row="1" column="0">
                <widget class="QGroupBox" name="groupBox_3">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                 <sizepolicy>
+                  <hsizetype>7</hsizetype>
+                  <vsizetype>7</vsizetype>
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
@@ -153,17 +153,8 @@
                  <string>&amp;Replace with...</string>
                 </property>
                 <layout class="QGridLayout" name="gridLayout_6">
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
+                 <property name="margin">
                   <number>4</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>4</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
                  </property>
                  <item row="0" column="0" colspan="2">
                   <widget class="lyx::frontend::EmbeddedWorkArea" name="replace_work_area_">
@@ -195,7 +186,9 @@
                      </rect>
                     </property>
                     <property name="sizePolicy">
-                     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                     <sizepolicy>
+                      <hsizetype>7</hsizetype>
+                      <vsizetype>7</vsizetype>
                       <horstretch>0</horstretch>
                       <verstretch>0</verstretch>
                      </sizepolicy>
@@ -209,7 +202,9 @@
                     <bool>true</bool>
                    </property>
                    <property name="sizePolicy">
-                    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                    <sizepolicy>
+                     <hsizetype>7</hsizetype>
+                     <vsizetype>1</vsizetype>
                      <horstretch>1</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
@@ -228,7 +223,9 @@
                     <bool>true</bool>
                    </property>
                    <property name="sizePolicy">
-                    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                    <sizepolicy>
+                     <hsizetype>7</hsizetype>
+                     <vsizetype>1</vsizetype>
                      <horstretch>1</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
@@ -247,7 +244,9 @@
                     <bool>false</bool>
                    </property>
                    <property name="sizePolicy">
-                    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                    <sizepolicy>
+                     <hsizetype>7</hsizetype>
+                     <vsizetype>1</vsizetype>
                      <horstretch>0</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
@@ -260,7 +259,9 @@
                  <item row="1" column="0" colspan="2">
                   <widget class="QCheckBox" name="keepCaseCB">
                    <property name="sizePolicy">
-                    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                    <sizepolicy>
+                     <hsizetype>7</hsizetype>
+                     <vsizetype>1</vsizetype>
                      <horstretch>1</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
@@ -276,7 +277,9 @@
                  <item row="3" column="1">
                   <widget class="QPushButton" name="closePB">
                    <property name="sizePolicy">
-                    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                    <sizepolicy>
+                     <hsizetype>7</hsizetype>
+                     <vsizetype>1</vsizetype>
                      <horstretch>1</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
@@ -298,7 +301,9 @@
            <item row="0" column="0">
             <widget class="QFrame" name="find_frame">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <sizepolicy>
+               <hsizetype>7</hsizetype>
+               <vsizetype>7</vsizetype>
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
@@ -310,22 +315,15 @@
               <enum>QFrame::Raised</enum>
              </property>
              <layout class="QGridLayout" name="gridLayout_8">
-              <property name="leftMargin">
-               <number>4</number>
-              </property>
-              <property name="topMargin">
-               <number>0</number>
-              </property>
-              <property name="rightMargin">
-               <number>4</number>
-              </property>
-              <property name="bottomMargin">
+              <property name="margin">
                <number>4</number>
               </property>
               <item row="0" column="0">
                <widget class="QGroupBox" name="groupBox">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                 <sizepolicy>
+                  <hsizetype>7</hsizetype>
+                  <vsizetype>7</vsizetype>
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
@@ -355,17 +353,8 @@
                  <string>&amp;Find...</string>
                 </property>
                 <layout class="QGridLayout" name="gridLayout_5">
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
+                 <property name="margin">
                   <number>4</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>4</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
                  </property>
                  <item row="0" column="0" colspan="2">
                   <widget class="lyx::frontend::EmbeddedWorkArea" name="find_work_area_">
@@ -397,7 +386,9 @@
                      </rect>
                     </property>
                     <property name="sizePolicy">
-                     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                     <sizepolicy>
+                      <hsizetype>7</hsizetype>
+                      <vsizetype>7</vsizetype>
                       <horstretch>0</horstretch>
                       <verstretch>0</verstretch>
                      </sizepolicy>
@@ -408,7 +399,9 @@
                  <item row="1" column="0">
                   <widget class="QCheckBox" name="caseCB">
                    <property name="sizePolicy">
-                    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                    <sizepolicy>
+                     <hsizetype>7</hsizetype>
+                     <vsizetype>1</vsizetype>
                      <horstretch>0</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
@@ -427,7 +420,9 @@
                     <bool>true</bool>
                    </property>
                    <property name="sizePolicy">
-                    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                    <sizepolicy>
+                     <hsizetype>7</hsizetype>
+                     <vsizetype>1</vsizetype>
                      <horstretch>0</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
@@ -473,7 +468,9 @@
                     <bool>true</bool>
                    </property>
                    <property name="sizePolicy">
-                    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                    <sizepolicy>
+                     <hsizetype>7</hsizetype>
+                     <vsizetype>1</vsizetype>
                      <horstretch>0</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
@@ -495,7 +492,9 @@
                     <bool>true</bool>
                    </property>
                    <property name="sizePolicy">
-                    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                    <sizepolicy>
+                     <hsizetype>7</hsizetype>
+                     <vsizetype>1</vsizetype>
                      <horstretch>0</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
@@ -517,7 +516,9 @@
                     <bool>false</bool>
                    </property>
                    <property name="sizePolicy">
-                    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                    <sizepolicy>
+                     <hsizetype>7</hsizetype>
+                     <vsizetype>1</vsizetype>
                      <horstretch>0</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
@@ -540,7 +541,9 @@
          </widget>
          <widget class="QWidget" name="tab_4">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <sizepolicy>
+            <hsizetype>7</hsizetype>
+            <vsizetype>7</vsizetype>
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -566,7 +569,9 @@
                 <bool>true</bool>
                </property>
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                <sizepolicy>
+                 <hsizetype>7</hsizetype>
+                 <vsizetype>1</vsizetype>
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
@@ -602,7 +607,9 @@
                    <bool>false</bool>
                   </property>
                   <property name="sizePolicy">
-                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                   <sizepolicy>
+                    <hsizetype>1</hsizetype>
+                    <vsizetype>1</vsizetype>
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
@@ -624,7 +631,9 @@
                    <bool>true</bool>
                   </property>
                   <property name="sizePolicy">
-                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                   <sizepolicy>
+                    <hsizetype>1</hsizetype>
+                    <vsizetype>1</vsizetype>
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
@@ -646,7 +655,9 @@
                    <bool>true</bool>
                   </property>
                   <property name="sizePolicy">
-                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                   <sizepolicy>
+                    <hsizetype>1</hsizetype>
+                    <vsizetype>1</vsizetype>
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
@@ -665,7 +676,9 @@
                    <bool>false</bool>
                   </property>
                   <property name="sizePolicy">
-                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                   <sizepolicy>
+                    <hsizetype>1</hsizetype>
+                    <vsizetype>1</vsizetype>
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
@@ -684,7 +697,9 @@
                    <bool>false</bool>
                   </property>
                   <property name="sizePolicy">
-                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                   <sizepolicy>
+                    <hsizetype>1</hsizetype>
+                    <vsizetype>1</vsizetype>
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
@@ -703,7 +718,9 @@
                 <bool>false</bool>
                </property>
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                <sizepolicy>
+                 <hsizetype>7</hsizetype>
+                 <vsizetype>1</vsizetype>
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
@@ -719,7 +736,9 @@
                 <bool>true</bool>
                </property>
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                <sizepolicy>
+                 <hsizetype>7</hsizetype>
+                 <vsizetype>1</vsizetype>
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
