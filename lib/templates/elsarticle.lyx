@@ -1,4 +1,4 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -8,6 +8,9 @@
 \journal{Example: Nuclear Physics B}
 \end_preamble
 \use_default_options false
+\begin_modules
+theorems-std
+\end_modules
 \language english
 \inputencoding auto
 \font_roman default
@@ -679,6 +682,18 @@ A & = & \prod_{i=1}^{\infty}B\nonumber \\
 \end_inset
 
 
+\end_layout
+
+\begin_layout Theorem
+Theorem 1
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Theorem
+Theorem 2
 \end_layout
 
 \begin_layout Subsection
