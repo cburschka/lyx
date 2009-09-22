@@ -104,7 +104,7 @@ Menuset
 		Item "Select All" "command-sequence buffer-begin ; buffer-end-select"
 		Separator
 		Item "Find & Replace (Quick)...|F" "dialog-show findreplace"
-		Item "Find & Replace (Advanced)..." "dialog-toggle findreplaceadv"
+		Item "Find & Replace (Advanced)..." "dialog-show findreplaceadv"
 		Separator
 		Item "Move Paragraph Up|o" "paragraph-move-up"
 		Item "Move Paragraph Down|v" "paragraph-move-down"
