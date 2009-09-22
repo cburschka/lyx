@@ -1211,6 +1211,25 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		enable = doc_buffer && (doc_buffer->isUnnamed() || !doc_buffer->isClean());
 		break;
 
+	//FIXME: This LFUN should be moved to GuiApplication.
+	case LFUN_BUFFER_WRITE_ALL: {
+		// We enable the command only if there are some modified buffers
+		Buffer * first = theBufferList().first();
+		enable = false;
+		if (!first)
+			break;
+		Buffer * b = first;
+		// We cannot use a for loop as the buffer list is a cycle.
+		do {
+			if (!b->isClean()) {
+				enable = true;
+				break;
+			}
+			b = theBufferList().next(b);
+		} while (b != first); 
+		break;
+	}
+
 	case LFUN_BUFFER_WRITE_AS:
 		enable = doc_buffer;
 		break;

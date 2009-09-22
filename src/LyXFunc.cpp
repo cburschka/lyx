@@ -474,24 +474,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	}
 	*/
 
-	case LFUN_BUFFER_WRITE_ALL: {
-		// We enable the command only if there are some modified buffers
-		Buffer * first = theBufferList().first();
-		enable = false;
-		if (!first)
-			break;
-		Buffer * b = first;
-		// We cannot use a for loop as the buffer list is a cycle.
-		do {
-			if (!b->isClean()) {
-				enable = true;
-				break;
-			}
-			b = theBufferList().next(b);
-		} while (b != first); 
-		break;
-	}
-
 	case LFUN_BOOKMARK_GOTO: {
 		const unsigned int num = convert<unsigned int>(to_utf8(cmd.argument()));
 		enable = theSession().bookmarks().isValid(num);
