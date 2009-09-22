@@ -167,7 +167,8 @@ public:
 	Application() {}
 	///
 	virtual ~Application() {}
-
+	///
+	virtual LyXView * currentWindow() = 0;
 	///
 	virtual bool getStatus(FuncRequest const & cmd, FuncStatus & flag) const = 0;
 	/// dispatch command.

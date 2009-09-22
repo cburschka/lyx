@@ -455,8 +455,6 @@ void GuiWorkArea::processKeySym(KeySymbol const & key, KeyModifier mod)
 	// we better stop the blinking cursor...
 	// the cursor gets restarted in GuiView::restartCursor()
 	stopBlinkingCursor();
-
-	theLyXFunc().setLyXView(lyx_view_);
 	theLyXFunc().processKeySym(key, mod);
 }
 
@@ -468,8 +466,6 @@ void GuiWorkArea::dispatch(FuncRequest const & cmd0, KeyModifier mod)
 		lyx_view_->dispatch(cmd0);
 		return;
 	}
-
-	theLyXFunc().setLyXView(lyx_view_);
 
 	FuncRequest cmd;
 

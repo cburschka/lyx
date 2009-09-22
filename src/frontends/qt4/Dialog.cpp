@@ -58,7 +58,6 @@ bool Dialog::canApply() const
 
 void Dialog::dispatch(FuncRequest const & fr) const
 {
-	theLyXFunc().setLyXView(lyxview_);
 	lyx::dispatch(fr);
 }
 

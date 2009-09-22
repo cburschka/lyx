@@ -54,9 +54,6 @@ public:
 	void dispatch(FuncRequest const &);
 
 	///
-	void setLyXView(frontend::LyXView * lv);
-	
-	///
 	void initKeySequences(KeyMap * kb);
 
 	/// return the status bar state string
@@ -93,9 +90,6 @@ public:
 	int cursorBeforeDispatchY() const { return cursorPosBeforeDispatchY_; }
 
 private:
-	///
-	frontend::LyXView * lyx_view_;
-
 	/// the last character added to the key sequence, in UCS4 encoded form
 	char_type encoded_last_key;
 

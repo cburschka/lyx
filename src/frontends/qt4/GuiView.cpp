@@ -303,7 +303,7 @@ GuiView::GuiView(int id)
 	// set ourself as the current view. This is needed for the menu bar
 	// filling, at least for the static special menu item on Mac. Otherwise
 	// they are greyed out.
-	theLyXFunc().setLyXView(this);
+	guiApp->setCurrentView(this);
 	
 	// Fill up the menu bar.
 	guiApp->menus().fillMenuBar(menuBar(), this, true);
@@ -512,7 +512,6 @@ void GuiView::setFocus()
 	LYXERR(Debug::DEBUG, "GuiView::setFocus()" << this);
 	// Make sure LyXFunc points to the correct view.
 	guiApp->setCurrentView(this);
-	theLyXFunc().setLyXView(this);
 	QMainWindow::setFocus();
 	if (d.current_work_area_)
 		d.current_work_area_->setFocus();
@@ -653,7 +652,6 @@ void GuiView::clearMessage()
 {
 	if (!hasFocus())
 		return;
-	theLyXFunc().setLyXView(this);
 	statusBar()->showMessage(toqstr(theLyXFunc().viewStatusMessage()));
 	d.statusbar_timer_.stop();
 }
@@ -731,7 +729,6 @@ void GuiView::updateStatusBar()
 	if (d.statusbar_timer_.isActive())
 		return;
 
-	theLyXFunc().setLyXView(this);
 	statusBar()->showMessage(toqstr(theLyXFunc().viewStatusMessage()));
 }
 
@@ -762,12 +759,17 @@ bool GuiView::event(QEvent * e)
 	//	break;
 
 	case QEvent::WindowActivate: {
-		if (this == guiApp->currentView()) {
+		GuiView * old_view = guiApp->currentView();
+		if (this == old_view) {
 			setFocus();
 			return QMainWindow::event(e);
 		}
+		if (old_view) {
+			// save current selection to the selection buffer to allow
+			// middle-button paste in this window.
+			cap::saveSelection(old_view->currentBufferView()->cursor());
+		}
 		guiApp->setCurrentView(this);
-		theLyXFunc().setLyXView(this);
 		if (d.current_work_area_) {
 			BufferView & bv = d.current_work_area_->bufferView();
 			connectBufferView(bv);
@@ -815,7 +817,6 @@ bool GuiView::event(QEvent * e)
 
 		// Allow processing of shortcuts that are allowed even when no Buffer
 		// is viewed.
-		theLyXFunc().setLyXView(this);
 		KeySymbol sym;
 		setKeySymbol(&sym, ke);
 		theLyXFunc().processKeySym(sym, q_key_state(ke->modifiers()));
@@ -1588,7 +1589,7 @@ static bool import(GuiView * lv, FileName const & filename,
 					  formats.extension(loader_format));
 		lv->currentBufferView()->insertPlaintextFile(FileName(filename2),
 			as_paragraphs);
-		theLyXFunc().setLyXView(lv);
+		guiApp->setCurrentView(lv);
 		lyx::dispatch(FuncRequest(LFUN_MARK_OFF));
 	}
 
@@ -2877,14 +2878,14 @@ bool isValidName(string const & name)
 void GuiView::resetDialogs()
 {
 	// Make sure that no LFUN uses any LyXView.
-	theLyXFunc().setLyXView(0);
+	guiApp->setCurrentView(0);
 	saveLayout();
 	menuBar()->clear();
 	constructToolbars();
 	guiApp->menus().fillMenuBar(menuBar(), this, false);
 	d.layout_->updateContents(true);
 	// Now update controls with current buffer.
-	theLyXFunc().setLyXView(this);
+	guiApp->setCurrentView(this);
 	restoreLayout();
 	restartCursor();
 }

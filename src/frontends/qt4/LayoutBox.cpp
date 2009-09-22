@@ -687,7 +687,6 @@ void LayoutBox::selected(int index)
 	// find corresponding text class
 	if (d->text_class_->hasLayout(layoutName)) {
 		FuncRequest const func(LFUN_LAYOUT, layoutName, FuncRequest::TOOLBAR);
-		theLyXFunc().setLyXView(&d->owner_);
 		lyx::dispatch(func);
 		updateContents(false);
 		d->resetFilter();

@@ -57,6 +57,7 @@ public:
 
 	/// Method inherited from \c Application class
 	//@{
+	LyXView * currentWindow();
 	bool getStatus(FuncRequest const & cmd, FuncStatus & flag) const;
 	bool dispatch(FuncRequest const &);
 	void dispatchDelayed(FuncRequest const &);

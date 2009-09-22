@@ -304,7 +304,6 @@ docstring const GuiCommandBuffer::getCurrentState() const
 void GuiCommandBuffer::hide() const
 {
 	FuncRequest cmd(LFUN_COMMAND_EXECUTE, "off");
-	theLyXFunc().setLyXView(view_);
 	lyx::dispatch(cmd);
 }
 
@@ -359,7 +358,6 @@ void GuiCommandBuffer::dispatch(string const & str)
 	downPB->setEnabled(history_pos_ != history_.end());
 	FuncRequest func = lyxaction.lookupFunc(str);
 	func.origin = FuncRequest::COMMANDBUFFER;
-	theLyXFunc().setLyXView(view_);
 	lyx::dispatch(func);
 }
 

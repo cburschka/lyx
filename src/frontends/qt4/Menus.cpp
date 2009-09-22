@@ -1850,9 +1850,6 @@ void Menus::updateMenu(Menu * qmenu)
 	if (qmenu->d->name.isEmpty())
 		return;
 
-	// Here, We make sure that theLyXFunc points to the correct LyXView.
-	theLyXFunc().setLyXView(qmenu->d->view);
-
 	if (!d->hasMenu(qmenu->d->name)) {
 		qmenu->addAction(qt_("No Action Defined!"));
 		LYXERR(Debug::GUI, "\tWARNING: non existing menu: "
