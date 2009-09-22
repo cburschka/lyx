@@ -50,7 +50,7 @@ map<string, vector<string> > used_packages;
 bool one_language = true;
 
 // to avoid that the babel options overwrite the documentclass options
-bool documentclass_language;
+bool documentclass_language = false;
 
 namespace {
 
@@ -141,11 +141,13 @@ string h_output_changes          = "false";
 string h_margins                 = "";
 
 
-void handle_opt(vector<string> & opts, char const * const * what, string & target)
+// returns true if at least one of the options in what has been found
+bool handle_opt(vector<string> & opts, char const * const * what, string & target)
 {
 	if (opts.empty())
-		return;
+		return false;
 
+	bool found = false;
 	// the last language option is the document language (for babel and LyX)
 	// the last size option is the document font size
 	vector<string>::iterator it;
@@ -153,13 +155,14 @@ void handle_opt(vector<string> & opts, char const * const * what, string & targe
 	for (; *what; ++what) {
 		it = find(opts.begin(), opts.end(), *what);
 		if (it != opts.end()) {
-			documentclass_language = true;
 			if (it >= position) {
+				found = true;
 				target = *what;
 				position = it;
 			}
 		}
 	}
+	return found;
 }
 
 
@@ -169,8 +172,7 @@ void delete_opt(vector<string> & opts, char const * const * what)
 		return;
 
 	// remove found options from the list
-	// do this after handle_opt to avoid potential memory leaks and to be able
-	// to find in every case the last language option
+	// do this after handle_opt to avoid potential memory leaks
 	vector<string>::iterator it;
 	for (; *what; ++what) {
 		it = find(opts.begin(), opts.end(), *what);
@@ -652,8 +654,8 @@ void parse_preamble(Parser & p, ostream & os,
 			if (i != string::npos)
 				h_paperfontsize.erase(i);
 			// to avoid that the babel options overwrite the documentclass options
-			documentclass_language = false;
-			handle_opt(opts, known_languages, h_language);
+			documentclass_language = 
+				handle_opt(opts, known_languages, h_language);
 			delete_opt(opts, known_languages);
 			if (is_known(h_language, known_brazilian_languages))
 				h_language = "brazilian";
