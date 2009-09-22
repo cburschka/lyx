@@ -558,7 +558,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_CANCEL:
 	case LFUN_META_PREFIX:
 	case LFUN_RECONFIGURE:
-	case LFUN_HELP_OPEN:
 	case LFUN_DROP_LAYOUTS_CHOICE:
 	case LFUN_SERVER_GET_FILENAME:
 	case LFUN_SERVER_NOTIFY:
@@ -705,35 +704,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			// argument is any additional parameter to the configure.py command
 			reconfigure(lyx_view_, argument);
 			break;
-
-		case LFUN_HELP_OPEN: {
-			if (lyx_view_ == 0)
-				theApp()->dispatch(FuncRequest(LFUN_WINDOW_NEW));
-			string const arg = argument;
-			if (arg.empty()) {
-				setErrorMessage(from_utf8(N_("Missing argument")));
-				break;
-			}
-			FileName fname = i18nLibFileSearch("doc", arg, "lyx");
-			if (fname.empty()) 
-				fname = i18nLibFileSearch("examples", arg, "lyx");
-
-			if (fname.empty()) {
-				lyxerr << "LyX: unable to find documentation file `"
-							 << arg << "'. Bad installation?" << endl;
-				break;
-			}
-			lyx_view_->message(bformat(_("Opening help file %1$s..."),
-				makeDisplayPath(fname.absFilename())));
-			Buffer * buf = lyx_view_->loadDocument(fname, false);
-			if (buf) {
-				buf->updateLabels();
-				lyx_view_->setBuffer(buf);
-				buf->errors("Parse");
-			}
-			updateFlags = Update::None;
-			break;
-		}
 
 		// --- lyxserver commands ----------------------------
 		case LFUN_SERVER_GET_FILENAME:

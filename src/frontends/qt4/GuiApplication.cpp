@@ -50,6 +50,7 @@
 #include "support/debug.h"
 #include "support/ExceptionMessage.h"
 #include "support/FileName.h"
+#include "support/filetools.h"
 #include "support/foreach.h"
 #include "support/ForkedCalls.h"
 #include "support/gettext.h"
@@ -813,6 +814,7 @@ bool GuiApplication::getStatus(FuncRequest const & cmd, FuncStatus & flag) const
 	case LFUN_BUFFER_NEW:
 	case LFUN_BUFFER_NEW_TEMPLATE:
 	case LFUN_FILE_OPEN:
+	case LFUN_HELP_OPEN:
 	case LFUN_SCREEN_FONT_UPDATE:
 	case LFUN_SET_COLOR:
 	case LFUN_WINDOW_NEW:
@@ -900,6 +902,7 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_FILE_OPEN:
+		// FIXME: create a new method shared with LFUN_HELP_OPEN.
 		if (d->views_.empty()
 		    || (!lyxrc.open_buffers_in_tabs && current_view_->documentBufferView() != 0)) {
 			string const fname = to_utf8(cmd.argument());
@@ -914,6 +917,35 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 		} else
 			current_view_->openDocument(to_utf8(cmd.argument()));
 		break;
+
+	case LFUN_HELP_OPEN: {
+		// FIXME: create a new method shared with LFUN_FILE_OPEN.
+		if (current_view_ == 0)
+			createView();
+		string const arg = to_utf8(cmd.argument());
+		if (arg.empty()) {
+			current_view_->message(_("Missing argument"));
+			break;
+		}
+		FileName fname = i18nLibFileSearch("doc", arg, "lyx");
+		if (fname.empty()) 
+			fname = i18nLibFileSearch("examples", arg, "lyx");
+
+		if (fname.empty()) {
+			lyxerr << "LyX: unable to find documentation file `"
+				<< arg << "'. Bad installation?" << endl;
+			break;
+		}
+		current_view_->message(bformat(_("Opening help file %1$s..."),
+			makeDisplayPath(fname.absFilename())));
+		Buffer * buf = current_view_->loadDocument(fname, false);
+		if (buf) {
+			current_view_->setBuffer(buf);
+			buf->updateLabels();
+			buf->errors("Parse");
+		}
+		break;
+	}
 
 	case LFUN_SET_COLOR: {
 		string lyx_name;
