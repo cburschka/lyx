@@ -34,10 +34,6 @@ namespace support {
 class FileName;
 }
 
-namespace frontend {
-class LyXView;
-}
-
 /** This class encapsulates all the LyX command operations.
     This is the class of the LyX's "high level event handler".
     Every user command is processed here, either invocated from
