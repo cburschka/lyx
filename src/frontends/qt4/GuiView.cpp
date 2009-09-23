@@ -764,7 +764,7 @@ bool GuiView::event(QEvent * e)
 			setFocus();
 			return QMainWindow::event(e);
 		}
-		if (old_view) {
+		if (old_view && old_view->currentBufferView()) {
 			// save current selection to the selection buffer to allow
 			// middle-button paste in this window.
 			cap::saveSelection(old_view->currentBufferView()->cursor());
