@@ -201,6 +201,9 @@ private:
 	bool focusNextPrevChild(bool);
 
 	///
+	bool goToFileRow(std::string const & argument);
+
+	///
 	struct GuiViewPrivate;
 	GuiViewPrivate & d;
 

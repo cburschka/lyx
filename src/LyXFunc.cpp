@@ -458,7 +458,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_DROP_LAYOUTS_CHOICE:
 	case LFUN_SERVER_GET_FILENAME:
 	case LFUN_SERVER_NOTIFY:
-	case LFUN_SERVER_GOTO_FILE_ROW:
 	case LFUN_CURSOR_FOLLOWS_SCROLLBAR_TOGGLE:
 	case LFUN_REPEAT:
 	case LFUN_PREFERENCES_SAVE:
@@ -591,60 +590,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			dispatch_buffer = keyseq.print(KeySequence::Portable);
 			theServer().notifyClient(to_utf8(dispatch_buffer));
 			break;
-
-		case LFUN_SERVER_GOTO_FILE_ROW: {
-			LASSERT(lv, /**/);
-			string file_name;
-			int row;
-			istringstream is(argument);
-			is >> file_name >> row;
-			file_name = os::internal_path(file_name);
-			Buffer * buf = 0;
-			bool loaded = false;
-			string const abstmp = package().temp_dir().absFilename();
-			string const realtmp = package().temp_dir().realPath();
-			// We have to use os::path_prefix_is() here, instead of
-			// simply prefixIs(), because the file name comes from
-			// an external application and may need case adjustment.
-			if (os::path_prefix_is(file_name, abstmp, os::CASE_ADJUSTED)
-			    || os::path_prefix_is(file_name, realtmp, os::CASE_ADJUSTED)) {
-				// Needed by inverse dvi search. If it is a file
-				// in tmpdir, call the apropriated function.
-				// If tmpdir is a symlink, we may have the real
-				// path passed back, so we correct for that.
-				if (!prefixIs(file_name, abstmp))
-					file_name = subst(file_name, realtmp, abstmp);
-				buf = theBufferList().getBufferFromTmp(file_name);
-			} else {
-				// Must replace extension of the file to be .lyx
-				// and get full path
-				FileName const s = fileSearch(string(), changeExtension(file_name, ".lyx"), "lyx");
-				// Either change buffer or load the file
-				if (theBufferList().exists(s))
-					buf = theBufferList().getBuffer(s);
-				else if (s.exists()) {
-					buf = lv->loadDocument(s);
-					loaded = true;
-				} else
-					lv->message(bformat(
-						_("File does not exist: %1$s"),
-						makeDisplayPath(file_name)));
-			}
-
-			if (!buf) {
-				updateFlags = Update::None;
-				break;
-			}
-
-			buf->updateLabels();
-			lv->setBuffer(buf);
-			lv->documentBufferView()->setCursorFromRow(row);
-			if (loaded)
-				buf->errors("Parse");
-			updateFlags = Update::FitCursor;
-			break;
-		}
-
 
 		case LFUN_DIALOG_SHOW_NEW_INSET: {
 			LASSERT(lv, /**/);

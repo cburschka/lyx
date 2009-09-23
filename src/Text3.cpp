@@ -2743,7 +2743,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_NOACTION:
 	case LFUN_NOTE_NEXT:
 	case LFUN_REFERENCE_NEXT:
-	case LFUN_SERVER_GOTO_FILE_ROW:
 	case LFUN_SERVER_NOTIFY:
 	case LFUN_SERVER_SET_XY:
 	case LFUN_TEXTSTYLE_APPLY:

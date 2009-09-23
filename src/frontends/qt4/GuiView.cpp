@@ -1424,6 +1424,9 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 	}
 
+	case LFUN_SERVER_GOTO_FILE_ROW:
+		break;
+
 	default:
 		return false;
 	}
@@ -2404,6 +2407,53 @@ void GuiView::openChildDocument(string const & fname)
 }
 
 
+bool GuiView::goToFileRow(string const & argument)
+{
+	string file_name;
+	int row;
+	istringstream is(argument);
+	is >> file_name >> row;
+	file_name = os::internal_path(file_name);
+	Buffer * buf = 0;
+	string const abstmp = package().temp_dir().absFilename();
+	string const realtmp = package().temp_dir().realPath();
+	// We have to use os::path_prefix_is() here, instead of
+	// simply prefixIs(), because the file name comes from
+	// an external application and may need case adjustment.
+	if (os::path_prefix_is(file_name, abstmp, os::CASE_ADJUSTED)
+		|| os::path_prefix_is(file_name, realtmp, os::CASE_ADJUSTED)) {
+		// Needed by inverse dvi search. If it is a file
+		// in tmpdir, call the apropriated function.
+		// If tmpdir is a symlink, we may have the real
+		// path passed back, so we correct for that.
+		if (!prefixIs(file_name, abstmp))
+			file_name = subst(file_name, realtmp, abstmp);
+		buf = theBufferList().getBufferFromTmp(file_name);
+	} else {
+		// Must replace extension of the file to be .lyx
+		// and get full path
+		FileName const s = fileSearch(string(),
+					      support::changeExtension(file_name, ".lyx"), "lyx");
+		// Either change buffer or load the file
+		if (theBufferList().exists(s))
+			buf = theBufferList().getBuffer(s);
+		else if (s.exists()) {
+			buf = loadDocument(s);
+			buf->updateLabels();
+			buf->errors("Parse");
+		} else {
+			message(bformat(
+					_("File does not exist: %1$s"),
+					makeDisplayPath(file_name)));
+			return false;
+		}
+	}
+	setBuffer(buf);
+	documentBufferView()->setCursorFromRow(row);
+	return true;
+}
+
+
 bool GuiView::dispatch(FuncRequest const & cmd)
 {
 	BufferView * bv = currentBufferView();
@@ -2723,6 +2773,10 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 		case LFUN_VC_UNDO_LAST:
 		case LFUN_VC_COMMAND:
 			dispatchVC(cmd);
+			break;
+
+		case LFUN_SERVER_GOTO_FILE_ROW:
+			goToFileRow(to_utf8(cmd.argument()));
 			break;
 
 		default:
