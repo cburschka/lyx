@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-09-21 14:01+0200\n"
-"PO-Revision-Date: 2009-09-08 19:00+0200\n"
+"PO-Revision-Date: 2009-09-23 21:35+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slowakisch <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -2383,14 +2383,12 @@ msgid "On"
 msgstr "Zapnuté"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:68
-#, fuzzy
 msgid "Preview Si&ze:"
-msgstr "Náhľad zlyhal"
+msgstr "Rozmer náhľadu:"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:84
-#, fuzzy
 msgid "factor for the preview size"
-msgstr "Nastavte mierku pre vhodný náhľad."
+msgstr "Faktor pre rozmer náhľadu"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:33 src/frontends/qt4/GuiPrefs.cpp:225
 msgid "Editing"
@@ -3124,9 +3122,8 @@ msgid "&Maximum last files:"
 msgstr "Maximum posledných súborov:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:140
-#, fuzzy
 msgid "Backup original documents when saving"
-msgstr "Zálohovať dokumenty, každých"
+msgstr "Zálohovať originálne dokumenty pri uložení"
 
 #: src/frontends/qt4/ui/PrefUi.ui:160
 msgid "minutes"
@@ -7606,9 +7603,8 @@ msgid "ACKNOWLEDGMENTS"
 msgstr "POĎAKOVANIA"
 
 #: lib/layouts/svglobal3.layout:69 lib/layouts/svglobal3.layout:72
-#, fuzzy
 msgid "Subclass"
-msgstr "TematickáTrieda"
+msgstr "Podtrieda"
 
 #: lib/layouts/aapaper.inc:54
 msgid "email:"
