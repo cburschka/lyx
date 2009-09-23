@@ -48,11 +48,6 @@ public:
 	LyXView() {}
 	///
 	virtual ~LyXView() {}
-	///
-	virtual int id() const = 0;
-
-	/// show busy cursor
-	virtual void setBusy(bool) = 0;
 
 	//@{ generic accessor functions
 
@@ -62,6 +57,7 @@ public:
 	/// \return the current document buffer view.
 	virtual BufferView * documentBufferView() = 0;
 	virtual BufferView const * documentBufferView() const = 0;
+	//@}
 
 	/// set a buffer to the current workarea.
 	virtual void setBuffer(Buffer * b) = 0; ///< \c Buffer to set.
@@ -71,11 +67,6 @@ public:
 		support::FileName const &  name, ///< File to load.
 		bool tolastfiles = true  ///< append to the "Open recent" menu?
 		) = 0;
-	///
-	virtual void newDocument(std::string const & filename,
-		bool fromTemplate) = 0;
-
-	//@}
 
 	/// display a message in the view
 	virtual void message(docstring const &) = 0;
