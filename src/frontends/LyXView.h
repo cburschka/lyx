@@ -45,8 +45,6 @@ class LyXView
 {
 public:
 	///
-	LyXView() {}
-	///
 	virtual ~LyXView() {}
 
 	//@{ generic accessor functions
@@ -86,11 +84,6 @@ public:
 	/// even though the cursor moved. The update flags of \c cur might
 	/// be changed.
 	virtual void updateCompletion(Cursor & cur, bool start, bool keep) = 0;
-
-private:
-	/// noncopyable
-	LyXView(LyXView const &);
-	void operator=(LyXView const &);
 };
 
 } // namespace frontend
