@@ -48,9 +48,7 @@
 
 #include "frontends/Application.h"
 #include "frontends/Clipboard.h"
-#include "frontends/LyXView.h"
 #include "frontends/Selection.h"
-#include "frontends/WorkArea.h"
 
 #include "insets/InsetCollapsable.h"
 #include "insets/InsetCommand.h"
