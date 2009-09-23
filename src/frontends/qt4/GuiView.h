@@ -71,7 +71,6 @@ public:
 	BufferView * documentBufferView();
 	BufferView const * documentBufferView() const;
 	void setBuffer(Buffer * b);
-	bool hasFocus() const;
 	Buffer * loadDocument(support::FileName const &  name,
 		bool tolastfiles = true);
 	void newDocument(std::string const & filename,

@@ -734,12 +734,6 @@ void GuiView::updateStatusBar()
 }
 
 
-bool GuiView::hasFocus() const
-{
-	return qApp->activeWindow() == this;
-}
-
-
 bool GuiView::event(QEvent * e)
 {
 	switch (e->type())
