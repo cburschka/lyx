@@ -197,7 +197,7 @@ static docstring const changetracking_none_def = from_ascii(
 static docstring const textgreek_def = from_ascii(
 	"\\providecommand*{\\perispomeni}{\\char126}\n"
 	"\\AtBeginDocument{\\DeclareRobustCommand{\\greektext}{%\n"
-	"  \\fontencoding{LGR}\\selectfont\\def\\encodingdefault{LGR}\n"
+	"  \\fontencoding{LGR}\\selectfont\\def\\encodingdefault{LGR}%\n"
 	"  \\renewcommand{\\~}{\\perispomeni}\n"
 	"}}\n"
 	"\\DeclareRobustCommand{\\textgreek}[1]{\\leavevmode{\\greektext #1}}\n"
