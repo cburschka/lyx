@@ -802,6 +802,15 @@ docstring GuiApplication::iconName(FuncRequest const & f, bool unknown)
 
 LyXView * GuiApplication::currentWindow()
 {
+#ifdef Q_WS_MACX
+	/* In LyX/Mac, when a dialog is open, the menus of the
+	   application can still be accessed without giving focus to
+	   the main window. In this case, we want to disable the menu
+	   entries that are buffer or view-related.
+	*/
+	if (current_view_ && !current_view_->hasFocus())
+		return 0;
+#endif
 	return current_view_;
 }
 

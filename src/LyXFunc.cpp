@@ -142,57 +142,6 @@ void reconfigure(LyXView * lv, string const & option)
 			     "updated document class specifications."));
 }
 
-
-bool getLocalStatus(Cursor cursor, FuncRequest const & cmd, FuncStatus & status)
-{
-	// Try to fix cursor in case it is broken.
-	cursor.fixIfBroken();
-
-	// This is, of course, a mess. Better create a new doc iterator and use
-	// this in Inset::getStatus. This might require an additional
-	// BufferView * arg, though (which should be avoided)
-	//Cursor safe = *this;
-	bool res = false;
-	for ( ; cursor.depth(); cursor.pop()) {
-		//lyxerr << "\nCursor::getStatus: cmd: " << cmd << endl << *this << endl;
-		LASSERT(cursor.idx() <= cursor.lastidx(), /**/);
-		LASSERT(cursor.pit() <= cursor.lastpit(), /**/);
-		LASSERT(cursor.pos() <= cursor.lastpos(), /**/);
-
-		// The inset's getStatus() will return 'true' if it made
-		// a definitive decision on whether it want to handle the
-		// request or not. The result of this decision is put into
-		// the 'status' parameter.
-		if (cursor.inset().getStatus(cursor, cmd, status)) {
-			res = true;
-			break;
-		}
-	}
-	return res;
-}
-
-
-/** Return the change status at cursor position, taking in account the
- * status at each level of the document iterator (a table in a deleted
- * footnote is deleted).
- * When \param outer is true, the top slice is not looked at.
- */
-Change::Type lookupChangeType(DocIterator const & dit, bool outer = false)
-{
-	size_t const depth = dit.depth() - (outer ? 1 : 0);
-
-	for (size_t i = 0 ; i < depth ; ++i) {
-		CursorSlice const & slice = dit[i];
-		if (!slice.inset().inMathed()
-		    && slice.pos() < slice.paragraph().size()) {
-			Change::Type const ch = slice.paragraph().lookupChange(slice.pos()).type;
-			if (ch != Change::UNCHANGED)
-				return ch;
-		}
-	}
-	return Change::UNCHANGED;
-}
-
 }
 
 
@@ -395,25 +344,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	//lyxerr << "LyXFunc::getStatus: cmd: " << cmd << endl;
 	FuncStatus flag;
 
-	/* In LyX/Mac, when a dialog is open, the menus of the
-	   application can still be accessed without giving focus to
-	   the main window. In this case, we want to disable the menu
-	   entries that are buffer or view-related.
-
-	   If this code is moved somewhere else (like in
-	   GuiView::getStatus), then several functions will not be
-	   handled correctly.
-	*/
-	frontend::LyXView * lv_current = theApp()->currentWindow();
-	frontend::LyXView * lv = 0;
-	Buffer * buf = 0;
-	if (lv_current 
-	    && (cmd.origin != FuncRequest::MENU || lv_current->hasFocus())) {
-		lv = lv_current;
-		if (lv_current->documentBufferView())
-			buf = &lv_current->documentBufferView()->buffer();
-	}
-
 	if (cmd.action == LFUN_NOACTION) {
 		flag.message(from_utf8(N_("Nothing to do")));
 		flag.setEnabled(false);
@@ -438,15 +368,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	if (!flag.enabled()) {
 		if (flag.message().empty())
 			flag.message(from_utf8(N_("Command disabled")));
-		return flag;
-	}
-
-	// Check whether we need a buffer
-	if (!lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer) && !buf) {
-		// no, exit directly
-		flag.message(from_utf8(N_("Command not allowed with"
-				    "out any document open")));
-		flag.setEnabled(false);
 		return flag;
 	}
 
@@ -556,6 +477,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 			break;
 
 		// Does the view know something?
+		LyXView * lv = theApp()->currentWindow();
 		if (!lv) {
 			enable = false;
 			break;
@@ -570,16 +492,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 			enable = false;
 			break;
 		}
-		// Is this a function that acts on inset at point?
-		Inset * inset = bv->cursor().nextInset();
-		if (lyxaction.funcHasFlag(cmd.action, LyXAction::AtPoint)
-		    && inset && inset->getStatus(bv->cursor(), cmd, flag))
-			break;
-
-		bool decided = getLocalStatus(bv->cursor(), cmd, flag);
-		if (!decided)
-			// try the BufferView
-			decided = bv->getStatus(cmd, flag);
+		// try the BufferView
+		bool decided = bv->getStatus(cmd, flag);
 		if (!decided)
 			// try the Buffer
 			decided = bv->buffer().getStatus(cmd, flag);
@@ -590,24 +504,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 
 	if (!enable)
 		flag.setEnabled(false);
-
-	// Can we use a readonly buffer?
-	if (buf && buf->isReadonly()
-	    && !lyxaction.funcHasFlag(cmd.action, LyXAction::ReadOnly)
-	    && !lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer)) {
-		flag.message(from_utf8(N_("Document is read-only")));
-		flag.setEnabled(false);
-	}
-
-	// Are we in a DELETED change-tracking region?
-	if (lv && lv->documentBufferView()
-		&& (lookupChangeType(lv->documentBufferView()->cursor(), true)
-		    == Change::DELETED)
-	    && !lyxaction.funcHasFlag(cmd.action, LyXAction::ReadOnly)
-	    && !lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer)) {
-		flag.message(from_utf8(N_("This portion of the document is deleted.")));
-		flag.setEnabled(false);
-	}
 
 	// the default error message if we disable the command
 	if (!flag.enabled() && flag.message().empty())

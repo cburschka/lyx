@@ -49,6 +49,7 @@
 #include "Intl.h"
 #include "Layout.h"
 #include "Lexer.h"
+#include "LyXAction.h"
 #include "LyXFunc.h"
 #include "LyX.h"
 #include "LyXRC.h"
@@ -1181,6 +1182,15 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		? &currentBufferView()->buffer() : 0;
 	Buffer * doc_buffer = documentBufferView()
 		? &(documentBufferView()->buffer()) : 0;
+
+	// Check whether we need a buffer
+	if (!lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer) && !buf) {
+		// no, exit directly
+		flag.message(from_utf8(N_("Command not allowed with"
+				    "out any document open")));
+		flag.setEnabled(false);
+		return true;
+	}
 
 	if (cmd.origin == FuncRequest::TOC) {
 		GuiToc * toc = static_cast<GuiToc*>(findOrBuild("toc", false));
