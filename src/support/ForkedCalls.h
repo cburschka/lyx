@@ -135,7 +135,7 @@ private:
 };
 
 
-/* 
+/**
  * An instance of class ForkedCall represents a single child process.
  *
  * Class ForkedCall uses fork() and execvp() to lauch the child process.
