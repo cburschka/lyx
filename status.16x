@@ -111,6 +111,9 @@ What's new
 
 - Fix a crash when searching for a string that is found in a table,
   while the cursor is in math (bug 6112).
+  
+- Fix a crash when closing a window after a document was opened
+  multiple times and each time a new window was opened (bug 6188).
 
 - Fix a number of assertions when displaying error messages (bug 6205). 
 
