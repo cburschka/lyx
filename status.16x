@@ -80,6 +80,9 @@ What's new
 - Fix a tex2lyx crash when importing a LaTeX file using an unknown encoding
   (bug 6142)
 
+- add encoding "ansinew" as a synonym of "cp1252" for the benefit of 
+  tex2lyx (bug 6142)
+
 - Fix support for polytonic Greek with multiple diacritics (bug 5976).
 
 - Do not unnecessarily enquote brackets in the LaTeX output (bug 5988).

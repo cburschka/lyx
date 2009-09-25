@@ -696,8 +696,14 @@ Encoding const * Encodings::fromLyXName(string const & name) const
 }
 
 
-Encoding const * Encodings::fromLaTeXName(string const & name) const
+Encoding const * Encodings::fromLaTeXName(string const & n) const
 {
+	string name = n;
+	// FIXME: if we have to test for too many of these synonyms,
+	// we should instead extend the format of lib/encodings
+	if (n == "ansinew")
+		name = "cp1252";
+
 	// We don't use find_if because it makes copies of the pairs in
 	// the map.
 	// This linear search is OK since we don't have many encodings.
