@@ -533,12 +533,10 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		switch (action) {
 
 		case LFUN_COMMAND_PREFIX:
-			LASSERT(lv, /**/);
-			lv->message(keyseq.printOptions(true));
+			dispatch(FuncRequest(LFUN_MESSAGE, keyseq.printOptions(true)));
 			break;
 
 		case LFUN_CANCEL:
-			LASSERT(lv && lv->currentBufferView(), /**/);
 			keyseq.reset();
 			meta_fake_bit = NoModifier;
 			if (buffer)
@@ -572,7 +570,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_CURSOR_FOLLOWS_SCROLLBAR_TOGGLE:
-			LASSERT(lv, /**/);
 			lyxrc.cursor_follows_scrollbar = !lyxrc.cursor_follows_scrollbar;
 			break;
 
