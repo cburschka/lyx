@@ -527,9 +527,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		if (lv)
 			lv->restartCursor();
 	} else {
-		Buffer * buffer = 0;
-		if (lv && lv->currentBufferView())
-			buffer = &lv->currentBufferView()->buffer();
 		switch (action) {
 
 		case LFUN_COMMAND_PREFIX:
@@ -539,7 +536,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_CANCEL:
 			keyseq.reset();
 			meta_fake_bit = NoModifier;
-			if (buffer)
+			if (lv && lv->currentBufferView())
 				// cancel any selection
 				dispatch(FuncRequest(LFUN_MARK_OFF));
 			setMessage(from_ascii(N_("Cancel")));
@@ -557,13 +554,14 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		// --- lyxserver commands ----------------------------
-		case LFUN_SERVER_GET_FILENAME:
-			LASSERT(lv && buffer, /**/);
-			setMessage(from_utf8(buffer->absFileName()));
-			LYXERR(Debug::INFO, "FNAME["
-				<< buffer->absFileName() << ']');
+		case LFUN_SERVER_GET_FILENAME: {
+			LASSERT(lv && lv->documentBufferView(), return);
+			docstring const fname = from_utf8(
+				lv->documentBufferView()->buffer().absFileName());
+			setMessage(fname);
+			LYXERR(Debug::INFO, "FNAME[" << fname << ']');
 			break;
-
+		}
 		case LFUN_SERVER_NOTIFY:
 			dispatch_buffer = keyseq.print(KeySequence::Portable);
 			theServer().notifyClient(to_utf8(dispatch_buffer));
@@ -589,7 +587,13 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_COMMAND_SEQUENCE: {
 			// argument contains ';'-terminated commands
 			string arg = argument;
-			if (theBufferList().isLoaded(buffer))
+			// FIXME: this LFUN should also work without any view.
+			Buffer * buffer = (lv && lv->documentBufferView())
+				? &(lv->documentBufferView()->buffer()) : 0;
+			buffer = &lv->currentBufferView()->buffer();
+			if (buffer && !theBufferList().isLoaded(buffer))
+				buffer = 0;
+			if (buffer)
 				buffer->undo().beginUndoGroup();
 			while (!arg.empty()) {
 				string first;
@@ -598,7 +602,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				func.origin = cmd.origin;
 				dispatch(func);
 			}
-			if (theBufferList().isLoaded(buffer))
+			if (buffer)
 				buffer->undo().endUndoGroup();
 			break;
 		}
@@ -726,18 +730,22 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			if (lv == 0)
 				break;
 
+			Buffer * doc_buffer = (lv && lv->documentBufferView())
+				? &(lv->documentBufferView()->buffer()) : 0;
+			if (doc_buffer && !theBufferList().isLoaded(doc_buffer))
+				doc_buffer = 0;
 			// Start an undo group. This may be needed for
 			// some stuff like inset-apply on labels.
-			if (theBufferList().isLoaded(buffer))
-				buffer->undo().beginUndoGroup();
-				
+			if (doc_buffer)
+				doc_buffer->undo().beginUndoGroup();
+
 			// Let the current LyXView dispatch its own actions.
 			if (lv->dispatch(cmd)) {
 				BufferView * bv = lv->currentBufferView();
 				if (bv) {
-					buffer = &(bv->buffer());
+					Buffer * buffer = &(bv->buffer());
 					updateFlags = bv->cursor().result().update();
-					if (theBufferList().isLoaded(buffer))
+					if (buffer == doc_buffer && theBufferList().isLoaded(buffer))
 						buffer->undo().endUndoGroup();
 				}
 				break;
@@ -749,9 +757,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			// Let the current BufferView dispatch its own actions.
 			if (bv->dispatch(cmd)) {
 				// The BufferView took care of its own updates if needed.
-				buffer = &(bv->buffer());
+				Buffer * buffer = &(bv->buffer());
 				updateFlags = Update::None;
-				if (theBufferList().isLoaded(buffer))
+				if (buffer == doc_buffer && theBufferList().isLoaded(buffer))
 					buffer->undo().endUndoGroup();
 				break;
 			}
@@ -760,9 +768,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			// Try with the document BufferView dispatch if any.
 			if (doc_bv && doc_bv->dispatch(cmd)) {
 				// The BufferView took care of its own updates if needed.
-				buffer = &(doc_bv->buffer());
+				Buffer * buffer = &(doc_bv->buffer());
 				updateFlags = Update::None;
-				if (theBufferList().isLoaded(buffer))
+				if (buffer == doc_buffer && theBufferList().isLoaded(buffer))
 					buffer->undo().endUndoGroup();
 				break;
 			}
@@ -810,8 +818,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				if (badcursor)
 					bv->cursor().fixIfBroken();
 			}
-
-			if (theBufferList().isLoaded(buffer))
+			Buffer * buffer = &(bv->buffer());
+			if (buffer == doc_buffer && theBufferList().isLoaded(buffer))
 				buffer->undo().endUndoGroup();
 
 			// update completion. We do it here and not in
@@ -831,10 +839,13 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		// if we executed a mutating lfun, mark the buffer as dirty
-		if (theBufferList().isLoaded(buffer) && flag.enabled()
+		Buffer * doc_buffer = (lv && lv->documentBufferView())
+			? &(lv->documentBufferView()->buffer()) : 0;
+		if (doc_buffer && theBufferList().isLoaded(doc_buffer)
+			&& flag.enabled()
 		    && !lyxaction.funcHasFlag(action, LyXAction::NoBuffer)
 		    && !lyxaction.funcHasFlag(action, LyXAction::ReadOnly))
-			buffer->markDirty();			
+			doc_buffer->markDirty();			
 
 		if (lv && lv->currentBufferView()) {
 			// BufferView::update() updates the ViewMetricsInfo and
