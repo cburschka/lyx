@@ -120,6 +120,9 @@ private:
 	mutable RenderButton button_;
 };
 
+/// Decode InsetCommand considering Inset name and data.
+bool decodeInsetParam(std::string const & name, std::string & data,
+	Buffer const & buffer);
 
 } // namespace lyx
 

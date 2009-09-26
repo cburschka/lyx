@@ -1779,6 +1779,17 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		getIntl().toggleKeyMap();
 		break;
 
+	case LFUN_DIALOG_SHOW_NEW_INSET: {
+		string const name = cmd.getArg(0);
+		string data = trim(to_utf8(cmd.argument()).substr(name.size()));
+		if (decodeInsetParam(name, data, buffer_))
+			lyx::dispatch(FuncRequest(LFUN_DIALOG_SHOW, name + " " + data));
+		else
+			lyxerr << "Inset type '" << name << 
+			"' not recognized in LFUN_DIALOG_SHOW_NEW_INSET" <<  endl;
+		break;
+	}
+
 	default:
 		return false;
 	}

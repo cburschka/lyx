@@ -21,6 +21,22 @@
 #include "Lexer.h"
 #include "MetricsInfo.h"
 
+#include "insets/InsetBox.h"
+#include "insets/InsetBranch.h"
+#include "insets/InsetCommand.h"
+#include "insets/InsetERT.h"
+#include "insets/InsetExternal.h"
+#include "insets/InsetFloat.h"
+#include "insets/InsetGraphics.h"
+#include "insets/InsetInclude.h"
+#include "insets/InsetListings.h"
+#include "insets/InsetNote.h"
+#include "insets/InsetPhantom.h"
+#include "insets/InsetSpace.h"
+#include "insets/InsetTabular.h"
+#include "insets/InsetVSpace.h"
+#include "insets/InsetWrap.h"
+
 #include "support/debug.h"
 #include "support/gettext.h"
 
@@ -217,5 +233,104 @@ string InsetCommand::params2string(string const & name,
 	return data.str();
 }
 
+
+bool decodeInsetParam(string const & name, string & data,
+	Buffer const & buffer)
+{
+	InsetCode const code = insetCode(name);
+	switch (code) {
+	case BIBITEM_CODE:
+	case BIBTEX_CODE:
+	case INDEX_CODE:
+	case LABEL_CODE:
+	case NOMENCL_CODE:
+	case NOMENCL_PRINT_CODE:
+	case REF_CODE:
+	case TOC_CODE:
+	case HYPERLINK_CODE: {
+		InsetCommandParams p(code);
+		data = InsetCommand::params2string(name, p);
+		break;
+	}
+	case INCLUDE_CODE: {
+		// data is the include type: one of "include",
+		// "input", "verbatiminput" or "verbatiminput*"
+		if (data.empty())
+			// default type is requested
+			data = "include";
+		InsetCommandParams p(INCLUDE_CODE, data);
+		data = InsetCommand::params2string("include", p);
+		break;
+	}
+	case BOX_CODE: {
+		// \c data == "Boxed" || "Frameless" etc
+		InsetBoxParams p(data);
+		data = InsetBox::params2string(p);
+		break;
+	}
+	case BRANCH_CODE: {
+		InsetBranchParams p;
+		data = InsetBranch::params2string(p);
+		break;
+	}
+	case CITE_CODE: {
+		InsetCommandParams p(CITE_CODE);
+		data = InsetCommand::params2string(name, p);
+		break;
+	}
+	case ERT_CODE: {
+		data = InsetERT::params2string(InsetCollapsable::Open);
+		break;
+	}
+	case EXTERNAL_CODE: {
+		InsetExternalParams p;
+		data = InsetExternal::params2string(p, buffer);
+		break;
+	}
+	case FLOAT_CODE:  {
+		InsetFloatParams p;
+		data = InsetFloat::params2string(p);
+		break;
+	}
+	case LISTINGS_CODE: {
+		InsetListingsParams p;
+		data = InsetListings::params2string(p);
+		break;
+	}
+	case GRAPHICS_CODE: {
+		InsetGraphicsParams p;
+		data = InsetGraphics::params2string(p, buffer);
+		break;
+	}
+	case NOTE_CODE: {
+		InsetNoteParams p;
+		data = InsetNote::params2string(p);
+		break;
+	}
+	case PHANTOM_CODE: {
+		InsetPhantomParams p;
+		data = InsetPhantom::params2string(p);
+		break;
+	}
+	case SPACE_CODE: {
+		InsetSpaceParams p;
+		data = InsetSpace::params2string(p);
+		break;
+	}
+	case VSPACE_CODE: {
+		VSpace space;
+		data = InsetVSpace::params2string(space);
+		break;
+	}
+	case WRAP_CODE: {
+		InsetWrapParams p;
+		data = InsetWrap::params2string(p);
+		break;
+	}
+	default:
+		return false;
+	} // end switch(code)
+	return true;
+}
 
 } // namespace lyx
