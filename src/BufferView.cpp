@@ -1146,6 +1146,14 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		flag.setEnabled(!cur.inset().getLayout().isPassThru());
 		break;
 
+	case LFUN_CITATION_INSERT: {
+		FuncRequest fr(LFUN_INSET_INSERT, "citation");
+		// FIXME: This could turn in a recursive hell.
+		// Shouldn't we use Buffer::getStatus() instead?
+		flag.setEnabled(lyx::getStatus(fr).enabled());
+		break;
+	}
+
 	default:
 		flag.setEnabled(false);
 		return false;
@@ -1787,6 +1795,31 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		else
 			lyxerr << "Inset type '" << name << 
 			"' not recognized in LFUN_DIALOG_SHOW_NEW_INSET" <<  endl;
+		break;
+	}
+
+	case LFUN_CITATION_INSERT: {
+		if (argument.empty()) {
+			lyx::dispatch(FuncRequest(LFUN_DIALOG_SHOW_NEW_INSET, "citation"));
+			break;
+		}
+		// we can have one optional argument, delimited by '|'
+		// citation-insert <key>|<text_before>
+		// this should be enhanced to also support text_after
+		// and citation style
+		string arg = argument;
+		string opt1;
+		if (contains(argument, "|")) {
+			arg = token(argument, '|', 0);
+			opt1 = token(argument, '|', 1);
+		}
+		InsetCommandParams icp(CITE_CODE);
+		icp["key"] = from_utf8(arg);
+		if (!opt1.empty())
+			icp["before"] = from_utf8(opt1);
+		string icstr = InsetCommand::params2string("citation", icp);
+		FuncRequest fr(LFUN_INSET_INSERT, icstr);
+		lyx::dispatch(fr);
 		break;
 	}
 

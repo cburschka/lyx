@@ -58,8 +58,6 @@
 #include "Session.h"
 #include "SpellChecker.h"
 
-#include "insets/InsetCommand.h"
-
 #include "frontends/alert.h"
 #include "frontends/Application.h"
 #include "frontends/KeySymbol.h"
@@ -366,12 +364,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	bool enable = true;
 	switch (cmd.action) {
 
-	case LFUN_CITATION_INSERT: {
-		FuncRequest fr(LFUN_INSET_INSERT, "citation");
-		enable = getStatus(fr).enabled();
-		break;
-	}
-	
 	// This could be used for the no-GUI version. The GUI version is handled in
 	// LyXView::getStatus(). See above.
 	/*
@@ -578,31 +570,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			dispatch_buffer = keyseq.print(KeySequence::Portable);
 			theServer().notifyClient(to_utf8(dispatch_buffer));
 			break;
-
-		case LFUN_CITATION_INSERT: {
-			LASSERT(lv, /**/);
-			if (!argument.empty()) {
-				// we can have one optional argument, delimited by '|'
-				// citation-insert <key>|<text_before>
-				// this should be enhanced to also support text_after
-				// and citation style
-				string arg = argument;
-				string opt1;
-				if (contains(argument, "|")) {
-					arg = token(argument, '|', 0);
-					opt1 = token(argument, '|', 1);
-				}
-				InsetCommandParams icp(CITE_CODE);
-				icp["key"] = from_utf8(arg);
-				if (!opt1.empty())
-					icp["before"] = from_utf8(opt1);
-				string icstr = InsetCommand::params2string("citation", icp);
-				FuncRequest fr(LFUN_INSET_INSERT, icstr);
-				dispatch(fr);
-			} else
-				dispatch(FuncRequest(LFUN_DIALOG_SHOW_NEW_INSET, "citation"));
-			break;
-		}
 
 		case LFUN_CURSOR_FOLLOWS_SCROLLBAR_TOGGLE:
 			LASSERT(lv, /**/);
