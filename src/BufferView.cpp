@@ -276,6 +276,9 @@ struct BufferView::Private
 
 	/// Cache for Find Next
 	FuncRequest search_request_cache_;
+
+	///
+	map<string, Inset *> edited_insets_;
 };
 
 
@@ -1153,6 +1156,23 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		flag.setEnabled(lyx::getStatus(fr).enabled());
 		break;
 	}
+	case LFUN_INSET_APPLY: {
+		string const name = cmd.getArg(0);
+		Inset * inset = editedInset(name);
+		if (inset) {
+			FuncRequest fr(LFUN_INSET_MODIFY, cmd.argument());
+			FuncStatus fs;
+			if (!inset->getStatus(cur, fr, fs)) {
+				// Every inset is supposed to handle this
+				LASSERT(false, break);
+			}
+			flag |= fs;
+		} else {
+			FuncRequest fr(LFUN_INSET_INSERT, cmd.argument());
+			flag |= lyx::getStatus(fr);
+		}
+		break;
+	}
 
 	default:
 		flag.setEnabled(false);
@@ -1160,6 +1180,19 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	}
 
 	return true;
+}
+
+
+Inset * BufferView::editedInset(string const & name) const
+{
+	map<string, Inset *>::const_iterator it = d->edited_insets_.find(name);
+	return it == d->edited_insets_.end() ? 0 : it->second;
+}
+
+
+void BufferView::editInset(string const & name, Inset * inset)
+{
+	d->edited_insets_[name] = inset;
 }
 
 
@@ -1822,6 +1855,28 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		lyx::dispatch(fr);
 		break;
 	}
+
+	case LFUN_INSET_APPLY: {
+		string const name = cmd.getArg(0);
+		Inset * inset = editedInset(name);
+		if (!inset) {
+			FuncRequest fr(LFUN_INSET_INSERT, cmd.argument());
+			lyx::dispatch(fr);
+			break;
+		}
+		// put cursor in front of inset.
+		if (!setCursorFromInset(inset))
+			LASSERT(false, break);
+		// useful if we are called from a dialog.
+		cur.beginUndoGroup();
+		cur.recordUndo();
+		FuncRequest fr(LFUN_INSET_MODIFY, cmd.argument());
+		inset->dispatch(cur, fr);
+		cur.endUndoGroup();
+		processUpdateFlags(Update::SinglePar | Update::FitCursor);
+		break;
+	}
+
 
 	default:
 		return false;

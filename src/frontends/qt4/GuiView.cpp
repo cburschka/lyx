@@ -276,9 +276,6 @@ public:
 	LayoutBox * layout_;
 
 	///
-	map<string, Inset *> open_insets_;
-
-	///
 	map<string, DialogPtr> dialogs_;
 
 	unsigned int smallIconSize;
@@ -1322,25 +1319,6 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_MENU_OPEN:
 		// Nothing to check.
 		break;
-
-	case LFUN_INSET_APPLY: {
-		string const name = cmd.getArg(0);
-		Inset * inset = getOpenInset(name);
-		if (inset) {
-			FuncRequest fr(LFUN_INSET_MODIFY, cmd.argument());
-			FuncStatus fs;
-			if (!inset->getStatus(currentBufferView()->cursor(), fr, fs)) {
-				// Every inset is supposed to handle this
-				LASSERT(false, break);
-			}
-			flag |= fs;
-		} else {
-			FuncRequest fr(LFUN_INSET_INSERT, cmd.argument());
-			flag |= lyx::getStatus(fr);
-		}
-		enable = flag.enabled();
-		break;
-	}
 
 	case LFUN_COMPLETION_INLINE:
 		if (!d.current_work_area_
@@ -2591,9 +2569,11 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 
 		case LFUN_DIALOG_UPDATE: {
 			string const name = to_utf8(cmd.argument());
-			// Can only update a dialog connected to an existing inset
-			Inset * inset = getOpenInset(name);
-			if (inset) {
+			if (currentBufferView()) {
+				Inset * inset = currentBufferView()->editedInset(name);
+				// Can only update a dialog connected to an existing inset
+				if (!inset)
+					break;
 				FuncRequest fr(LFUN_INSET_DIALOG_UPDATE, cmd.argument());
 				inset->dispatch(currentBufferView()->cursor(), fr);
 			} else if (name == "paragraph") {
@@ -2663,28 +2643,6 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 		case LFUN_MESSAGE:
 			message(cmd.argument());
 			break;
-
-		case LFUN_INSET_APPLY: {
-			string const name = cmd.getArg(0);
-			Inset * inset = getOpenInset(name);
-			if (inset) {
-				// put cursor in front of inset.
-				if (!currentBufferView()->setCursorFromInset(inset)) {
-					LASSERT(false, break);
-				}
-				BufferView * bv = currentBufferView();
-				// useful if we are called from a dialog.
-				bv->cursor().beginUndoGroup();
-				bv->cursor().recordUndo();
-				FuncRequest fr(LFUN_INSET_MODIFY, cmd.argument());
-				inset->dispatch(bv->cursor(), fr);
-				bv->cursor().endUndoGroup();
-			} else {
-				FuncRequest fr(LFUN_INSET_INSERT, cmd.argument());
-				lyx::dispatch(fr);
-			}
-			break;
-		}
 
 		case LFUN_UI_TOGGLE:
 			lfunUiToggle(cmd);
@@ -3004,8 +2962,8 @@ void GuiView::showDialog(string const & name, string const & data,
 		Dialog * dialog = findOrBuild(name, false);
 		if (dialog) {
 			dialog->showData(data);
-			if (inset)
-				d.open_insets_[name] = inset;
+			if (inset && currentBufferView())
+				currentBufferView()->editInset(name, inset);
 		}
 	}
 	catch (ExceptionMessage const & ex) {
@@ -3031,13 +2989,15 @@ void GuiView::hideDialog(string const & name, Inset * inset)
 	if (it == d.dialogs_.end())
 		return;
 
-	if (inset && inset != getOpenInset(name))
+	if (inset && currentBufferView()
+		&& inset != currentBufferView()->editedInset(name))
 		return;
 
 	Dialog * const dialog = it->second.get();
 	if (dialog->isVisibleView())
 		dialog->hideView();
-	d.open_insets_[name] = 0;
+	if (currentBufferView())
+		currentBufferView()->editInset(name, 0);
 }
 
 
@@ -3045,19 +3005,8 @@ void GuiView::disconnectDialog(string const & name)
 {
 	if (!isValidName(name))
 		return;
-
-	if (d.open_insets_.find(name) != d.open_insets_.end())
-		d.open_insets_[name] = 0;
-}
-
-
-Inset * GuiView::getOpenInset(string const & name) const
-{
-	if (!isValidName(name))
-		return 0;
-
-	map<string, Inset *>::const_iterator it = d.open_insets_.find(name);
-	return it == d.open_insets_.end() ? 0 : it->second;
+	if (currentBufferView())
+		currentBufferView()->editInset(name, 0);
 }
 
 

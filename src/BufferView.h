@@ -304,6 +304,10 @@ public:
 	void insertLyXFile(support::FileName const & f);
 	/// save temporary bookmark for jump back navigation
 	void bookmarkEditPosition();
+	/// Find and return the inset associated with given dialog name.
+	Inset * editedInset(std::string const & name) const;
+	/// Associate an inset associated with given dialog name.
+	void editInset(std::string const & name, Inset * inset);
 
 private:
 	/// noncopyable

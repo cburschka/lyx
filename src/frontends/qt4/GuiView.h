@@ -324,9 +324,6 @@ private:
 	///
 	void gotoNextOrPreviousBuffer(NextOrPrevious np);
 
-	///
-	Inset * getOpenInset(std::string const & name) const;
-
 	/// Is the dialog currently visible?
 	bool isDialogVisible(std::string const & name) const;
 	///
