@@ -2468,7 +2468,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 				if (buffer)
 					setBuffer(buffer);
 				else
-					bv->cursor().message(_("Document not loaded"));
+					message(_("Document not loaded"));
 			}
 			break;
 
@@ -2574,6 +2574,8 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 				// Can only update a dialog connected to an existing inset
 				if (!inset)
 					break;
+				// FIXME: get rid of this indirection; GuiView ask the inset
+				// if he is kind enough to update itself...
 				FuncRequest fr(LFUN_INSET_DIALOG_UPDATE, cmd.argument());
 				inset->dispatch(currentBufferView()->cursor(), fr);
 			} else if (name == "paragraph") {
