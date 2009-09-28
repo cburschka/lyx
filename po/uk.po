@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: uk-163\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-09-21 14:01+0200\n"
+"POT-Creation-Date: 2009-09-28 13:12+0200\n"
 "PO-Revision-Date: 2009-08-13 20:00+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
@@ -1978,6 +1978,109 @@ msgstr "&Список у Змісті"
 msgid "&Numbering"
 msgstr "&Нумерація"
 
+#: src/frontends/qt4/ui/PDFSupportUi.ui:28
+msgid "&Use hyperref support"
+msgstr "&Використовувати підтримку hyperref"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:53
+msgid "&General"
+msgstr "&Загальне"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:99
+msgid ""
+"If not stated explicitly, fill title and author from appropriate environments"
+msgstr ""
+"Якщо не вказано явно, заповнювати поля заголовка і автора з відповідних "
+"середовищ"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:102
+msgid "Automatically fi&ll header"
+msgstr "Автоматично з&аповнювати шапку"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:109
+msgid "Enable fullscreen PDF presentation"
+msgstr "Увімкнути повноекранну презентацію PDF"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:112
+msgid "Load in &fullscreen mode"
+msgstr "Завантажити у &повноекранному режимі"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:121
+msgid "Header Information"
+msgstr "Відомості шапки"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:133
+msgid "&Title:"
+msgstr "&Заголовок:"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:146
+msgid "&Author:"
+msgstr "&Автор:"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:159
+msgid "&Subject:"
+msgstr "&Тема:"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:172
+msgid "&Keywords:"
+msgstr "&Ключові слова:"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:189
+msgid "H&yperlinks"
+msgstr "&Гіперпосилання"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:222
+msgid "Allows link text to break across lines."
+msgstr "Дозволити розбиття тексту посилання на рядки."
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:225
+msgid "B&reak links over lines"
+msgstr "&Розбивати посилання на рядки"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:232
+msgid "No &frames around links"
+msgstr "Без &рамок навколо посилань"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:242
+msgid "C&olor links"
+msgstr "Роз&фарбовані посилання"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:249
+msgid "Bibliographical backreferences"
+msgstr "Зворотні посилання у бібліографії"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:252
+msgid "B&ackreferences:"
+msgstr "Зворотні п&осилання:"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:281
+msgid "&Bookmarks"
+msgstr "&Закладки"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:293
+msgid "G&enerate Bookmarks"
+msgstr "&Створити закладки"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:314
+msgid "&Numbered bookmarks"
+msgstr "&Нумеровані закладки"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:339
+msgid "Number of levels"
+msgstr "Кількість рівнів"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:348
+msgid "&Open bookmarks"
+msgstr "&Відкрити закладки"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:388
+msgid "Additional o&ptions"
+msgstr "Додаткові п&араметри"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:417
+msgid "e.g.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+msgstr "наприклад: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+
 #: src/frontends/qt4/ui/PageLayoutUi.ui:33
 #: src/frontends/qt4/GuiDocument.cpp:985
 msgid "Page Layout"
@@ -2097,109 +2200,6 @@ msgstr "Подвійна"
 #: src/frontends/qt4/GuiHSpace.cpp:161
 msgid "Custom"
 msgstr "Нетиповий"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:28
-msgid "&Use hyperref support"
-msgstr "&Використовувати підтримку hyperref"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:53
-msgid "&General"
-msgstr "&Загальне"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:99
-msgid ""
-"If not stated explicitly, fill title and author from appropriate environments"
-msgstr ""
-"Якщо не вказано явно, заповнювати поля заголовка і автора з відповідних "
-"середовищ"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:102
-msgid "Automatically fi&ll header"
-msgstr "Автоматично з&аповнювати шапку"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:109
-msgid "Enable fullscreen PDF presentation"
-msgstr "Увімкнути повноекранну презентацію PDF"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:112
-msgid "Load in &fullscreen mode"
-msgstr "Завантажити у &повноекранному режимі"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:121
-msgid "Header Information"
-msgstr "Відомості шапки"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:133
-msgid "&Title:"
-msgstr "&Заголовок:"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:146
-msgid "&Author:"
-msgstr "&Автор:"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:159
-msgid "&Subject:"
-msgstr "&Тема:"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:172
-msgid "&Keywords:"
-msgstr "&Ключові слова:"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:189
-msgid "H&yperlinks"
-msgstr "&Гіперпосилання"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:222
-msgid "Allows link text to break across lines."
-msgstr "Дозволити розбиття тексту посилання на рядки."
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:225
-msgid "B&reak links over lines"
-msgstr "&Розбивати посилання на рядки"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:232
-msgid "No &frames around links"
-msgstr "Без &рамок навколо посилань"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:242
-msgid "C&olor links"
-msgstr "Роз&фарбовані посилання"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:249
-msgid "Bibliographical backreferences"
-msgstr "Зворотні посилання у бібліографії"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:252
-msgid "B&ackreferences:"
-msgstr "Зворотні п&осилання:"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:281
-msgid "&Bookmarks"
-msgstr "&Закладки"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:293
-msgid "G&enerate Bookmarks"
-msgstr "&Створити закладки"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:314
-msgid "&Numbered bookmarks"
-msgstr "&Нумеровані закладки"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:339
-msgid "Number of levels"
-msgstr "Кількість рівнів"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:348
-msgid "&Open bookmarks"
-msgstr "&Відкрити закладки"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:388
-msgid "Additional o&ptions"
-msgstr "Додаткові п&араметри"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:417
-msgid "e.g.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
-msgstr "наприклад: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
 msgid "A&lter..."
@@ -3966,17 +3966,17 @@ msgstr "Позначте цей пункт, щоб дозволити гнучк
 msgid "Allow &floating"
 msgstr "Дозволити &пересування"
 
-#: lib/layouts/aa.layout:27 lib/layouts/aapaper.layout:34
-#: lib/layouts/aastex.layout:52 lib/layouts/achemso.layout:30
-#: lib/layouts/acmsiggraph.layout:34 lib/layouts/amsart.layout:24
-#: lib/layouts/amsbook.layout:25 lib/layouts/apa.layout:24
-#: lib/layouts/beamer.layout:31 lib/layouts/broadway.layout:173
-#: lib/layouts/chess.layout:29 lib/layouts/cl2emult.layout:125
-#: lib/layouts/dtk.layout:31 lib/layouts/egs.layout:18
-#: lib/layouts/elsart.layout:47 lib/layouts/elsarticle.layout:31
-#: lib/layouts/europecv.layout:16 lib/layouts/foils.layout:30
-#: lib/layouts/g-brief2.layout:31 lib/layouts/hollywood.layout:345
-#: lib/layouts/IEEEtran.layout:18 lib/layouts/iopart.layout:34
+#: lib/layouts/IEEEtran.layout:18 lib/layouts/aa.layout:27
+#: lib/layouts/aapaper.layout:34 lib/layouts/aastex.layout:52
+#: lib/layouts/achemso.layout:30 lib/layouts/acmsiggraph.layout:34
+#: lib/layouts/amsart.layout:27 lib/layouts/amsbook.layout:28
+#: lib/layouts/apa.layout:24 lib/layouts/beamer.layout:31
+#: lib/layouts/broadway.layout:173 lib/layouts/chess.layout:29
+#: lib/layouts/cl2emult.layout:125 lib/layouts/dtk.layout:31
+#: lib/layouts/egs.layout:18 lib/layouts/elsart.layout:47
+#: lib/layouts/elsarticle.layout:31 lib/layouts/europecv.layout:16
+#: lib/layouts/foils.layout:30 lib/layouts/g-brief2.layout:31
+#: lib/layouts/hollywood.layout:345 lib/layouts/iopart.layout:34
 #: lib/layouts/kluwer.layout:33 lib/layouts/llncs.layout:23
 #: lib/layouts/ltugboat.layout:30 lib/layouts/memoir.layout:30
 #: lib/layouts/moderncv.layout:19 lib/layouts/paper.layout:14
@@ -3992,14 +3992,251 @@ msgstr "Дозволити &пересування"
 msgid "Standard"
 msgstr "Стандартний"
 
-#: lib/layouts/aa.layout:42 lib/layouts/aa.layout:222
-#: lib/layouts/aapaper.layout:64 lib/layouts/aapaper.layout:130
-#: lib/layouts/aastex.layout:67 lib/layouts/aastex.layout:170
-#: lib/layouts/amsart.layout:64 lib/layouts/amsbook.layout:50
-#: lib/layouts/apa.layout:307 lib/layouts/beamer.layout:110
-#: lib/layouts/beamer.layout:139 lib/layouts/beamer.layout:140
-#: lib/layouts/beamer.layout:182 lib/layouts/egs.layout:30
-#: lib/layouts/europecv.layout:29 lib/layouts/IEEEtran.layout:272
+#: lib/layouts/IEEEtran.layout:49
+msgid "TheoremTemplate"
+msgstr "ШаблонТеореми"
+
+#: lib/layouts/IEEEtran.layout:65 lib/layouts/beamer.layout:1051
+#: lib/layouts/elsart.layout:285 lib/layouts/foils.layout:278
+#: lib/layouts/heb-article.layout:95 lib/layouts/ijmpc.layout:211
+#: lib/layouts/ijmpd.layout:211 lib/layouts/llncs.layout:371
+#: lib/layouts/siamltex.layout:150 lib/layouts/svjour.inc:394
+#: lib/layouts/theorems-order.inc:76 lib/layouts/theorems-proof.inc:13
+#: lib/layouts/theorems-std.module:20
+msgid "Proof"
+msgstr "На коректуру"
+
+#: lib/layouts/IEEEtran.layout:68 lib/layouts/heb-article.layout:110
+msgid "Proof:"
+msgstr "Доведення:"
+
+#: lib/layouts/IEEEtran.layout:73 lib/layouts/beamer.layout:1057
+#: lib/layouts/elsart.layout:256 lib/layouts/foils.layout:218
+#: lib/layouts/heb-article.layout:18 lib/layouts/ijmpc.layout:190
+#: lib/layouts/ijmpd.layout:193 lib/layouts/llncs.layout:412
+#: lib/layouts/siamltex.layout:62 lib/layouts/siamltex.layout:112
+#: lib/layouts/svjour.inc:436 lib/layouts/theorems-ams.inc:24
+#: lib/layouts/theorems-ams.inc:25 lib/layouts/theorems-ams.inc:208
+#: lib/layouts/theorems-order.inc:7 lib/layouts/theorems-proof.inc:14
+#: lib/layouts/theorems-starred-equivalents.inc:6
+#: lib/layouts/theorems-starred.inc:24 lib/layouts/theorems.inc:24
+#: lib/layouts/theorems.inc:25 lib/layouts/theorems.inc:208
+#: lib/layouts/theorems-chap.module:18 lib/layouts/theorems-sec.module:17
+msgid "Theorem"
+msgstr "Теорема"
+
+#: lib/layouts/IEEEtran.layout:76
+msgid "Theorem #:"
+msgstr "Теорема #:"
+
+#: lib/layouts/IEEEtran.layout:83 lib/layouts/elsart.layout:312
+#: lib/layouts/foils.layout:243 lib/layouts/heb-article.layout:45
+#: lib/layouts/ijmpc.layout:238 lib/layouts/ijmpd.layout:243
+#: lib/layouts/llncs.layout:351 lib/layouts/siamltex.layout:82
+#: lib/layouts/svjour.inc:373 lib/layouts/theorems-ams.inc:71
+#: lib/layouts/theorems-order.inc:19
+#: lib/layouts/theorems-starred-equivalents.inc:20 lib/layouts/theorems.inc:71
+msgid "Lemma"
+msgstr "Лема"
+
+#: lib/layouts/IEEEtran.layout:86
+msgid "Lemma #:"
+msgstr "Лема #:"
+
+#: lib/layouts/IEEEtran.layout:93 lib/layouts/beamer.layout:987
+#: lib/layouts/elsart.layout:319 lib/layouts/foils.layout:250
+#: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:229
+#: lib/layouts/ijmpd.layout:230 lib/layouts/llncs.layout:316
+#: lib/layouts/siamltex.layout:72 lib/layouts/svjour.inc:334
+#: lib/layouts/theorems-ams.inc:59 lib/layouts/theorems-order.inc:13
+#: lib/layouts/theorems-starred-equivalents.inc:13 lib/layouts/theorems.inc:59
+msgid "Corollary"
+msgstr "Наслідок"
+
+#: lib/layouts/IEEEtran.layout:96
+msgid "Corollary #:"
+msgstr "Наслідок #:"
+
+#: lib/layouts/IEEEtran.layout:103 lib/layouts/elsart.layout:326
+#: lib/layouts/foils.layout:257 lib/layouts/ijmpc.layout:247
+#: lib/layouts/ijmpd.layout:253 lib/layouts/llncs.layout:385
+#: lib/layouts/siamltex.layout:92 lib/layouts/svjour.inc:408
+#: lib/layouts/theorems-ams.inc:83 lib/layouts/theorems-order.inc:25
+#: lib/layouts/theorems-starred-equivalents.inc:27 lib/layouts/theorems.inc:83
+msgid "Proposition"
+msgstr "Твердження"
+
+#: lib/layouts/IEEEtran.layout:106
+msgid "Proposition #:"
+msgstr "Твердження #:"
+
+#: lib/layouts/IEEEtran.layout:113 lib/layouts/elsart.layout:361
+#: lib/layouts/ijmpc.layout:283 lib/layouts/ijmpd.layout:293
+#: lib/layouts/llncs.layout:309 lib/layouts/siamltex.layout:102
+#: lib/layouts/svjour.inc:327 lib/layouts/theorems-ams.inc:95
+#: lib/layouts/theorems-order.inc:31
+#: lib/layouts/theorems-starred-equivalents.inc:34 lib/layouts/theorems.inc:95
+msgid "Conjecture"
+msgstr "Припущення"
+
+#: lib/layouts/IEEEtran.layout:116
+msgid "Conjecture #:"
+msgstr "Припущення #:"
+
+#: lib/layouts/IEEEtran.layout:123 lib/layouts/elsart.layout:333
+#: lib/layouts/theorems-ams-extended.module:33
+msgid "Criterion"
+msgstr "Критерій"
+
+#: lib/layouts/IEEEtran.layout:126
+msgid "Criterion #:"
+msgstr "Критерій #:"
+
+#: lib/layouts/IEEEtran.layout:133 lib/layouts/beamer.layout:1045
+#: lib/layouts/theorems-ams.inc:107 lib/layouts/theorems.inc:107
+msgid "Fact"
+msgstr "Факт"
+
+#: lib/layouts/IEEEtran.layout:136
+msgid "Fact #:"
+msgstr "Факт #:"
+
+#: lib/layouts/IEEEtran.layout:143 lib/layouts/theorems-ams-extended.module:78
+msgid "Axiom"
+msgstr "Аксіома"
+
+#: lib/layouts/IEEEtran.layout:146
+msgid "Axiom #:"
+msgstr "Аксіома #:"
+
+#: lib/layouts/IEEEtran.layout:153 lib/layouts/beamer.layout:1015
+#: lib/layouts/elsart.layout:347 lib/layouts/foils.layout:264
+#: lib/layouts/heb-article.layout:75 lib/layouts/ijmpc.layout:131
+#: lib/layouts/ijmpd.layout:128 lib/layouts/llncs.layout:330
+#: lib/layouts/siamltex.layout:121 lib/layouts/svjour.inc:348
+#: lib/layouts/theorems-ams.inc:119 lib/layouts/theorems-order.inc:37
+#: lib/layouts/theorems-starred-equivalents.inc:41
+#: lib/layouts/theorems.inc:119
+msgid "Definition"
+msgstr "Визначення"
+
+#: lib/layouts/IEEEtran.layout:156
+msgid "Definition #:"
+msgstr "Визначення #:"
+
+#: lib/layouts/IEEEtran.layout:163 lib/layouts/beamer.layout:1027
+#: lib/layouts/elsart.layout:368 lib/layouts/ijmpc.layout:163
+#: lib/layouts/ijmpd.layout:160 lib/layouts/llncs.layout:337
+#: lib/layouts/svjour.inc:355 lib/layouts/theorems-ams.inc:138
+#: lib/layouts/theorems-order.inc:43
+#: lib/layouts/theorems-starred-equivalents.inc:48
+#: lib/layouts/theorems.inc:138 src/frontends/qt4/GuiDocument.cpp:820
+msgid "Example"
+msgstr "Приклад"
+
+#: lib/layouts/IEEEtran.layout:166
+msgid "Example #:"
+msgstr "Приклад #:"
+
+#: lib/layouts/IEEEtran.layout:173
+#: lib/layouts/theorems-ams-extended.module:101
+msgid "Condition"
+msgstr "Умова"
+
+#: lib/layouts/IEEEtran.layout:176
+msgid "Condition #:"
+msgstr "Умова #:"
+
+#: lib/layouts/IEEEtran.layout:183 lib/layouts/elsart.layout:375
+#: lib/layouts/llncs.layout:364 lib/layouts/svjour.inc:387
+#: lib/layouts/theorems-ams.inc:150 lib/layouts/theorems-order.inc:49
+#: lib/layouts/theorems-starred-equivalents.inc:55
+#: lib/layouts/theorems.inc:150
+msgid "Problem"
+msgstr "Проблема"
+
+#: lib/layouts/IEEEtran.layout:186
+msgid "Problem #:"
+msgstr "Задача #:"
+
+#: lib/layouts/IEEEtran.layout:193 lib/layouts/llncs.layout:344
+#: lib/layouts/svjour.inc:362 lib/layouts/theorems-ams.inc:162
+#: lib/layouts/theorems-order.inc:55
+#: lib/layouts/theorems-starred-equivalents.inc:62
+#: lib/layouts/theorems.inc:162
+msgid "Exercise"
+msgstr "Вправа"
+
+#: lib/layouts/IEEEtran.layout:196
+msgid "Exercise #:"
+msgstr "Вправа #:"
+
+#: lib/layouts/IEEEtran.layout:203 lib/layouts/elsart.layout:382
+#: lib/layouts/ijmpc.layout:172 lib/layouts/ijmpd.layout:170
+#: lib/layouts/llncs.layout:398 lib/layouts/svjour.inc:422
+#: lib/layouts/theorems-ams.inc:174 lib/layouts/theorems-order.inc:61
+#: lib/layouts/theorems-starred-equivalents.inc:69
+#: lib/layouts/theorems.inc:174
+msgid "Remark"
+msgstr "Помітка"
+
+#: lib/layouts/IEEEtran.layout:206
+msgid "Remark #:"
+msgstr "Помітка #:"
+
+#: lib/layouts/IEEEtran.layout:213 lib/layouts/elsart.layout:396
+#: lib/layouts/heb-article.layout:65 lib/layouts/ijmpc.layout:274
+#: lib/layouts/ijmpd.layout:283 lib/layouts/llncs.layout:302
+#: lib/layouts/svjour.inc:305 lib/layouts/theorems-ams.inc:194
+#: lib/layouts/theorems-order.inc:67
+#: lib/layouts/theorems-starred-equivalents.inc:76
+#: lib/layouts/theorems.inc:194
+msgid "Claim"
+msgstr "Твердження"
+
+#: lib/layouts/IEEEtran.layout:216
+msgid "Claim #:"
+msgstr "Твердження #:"
+
+#: lib/layouts/IEEEtran.layout:223 lib/layouts/apa.layout:212
+#: lib/layouts/elsart.layout:389 lib/layouts/iopart.layout:93
+#: lib/layouts/llncs.layout:357 lib/layouts/powerdot.layout:198
+#: lib/layouts/slides.layout:167 lib/layouts/svjour.inc:380
+#: lib/layouts/theorems-ams-extended.module:123
+msgid "Note"
+msgstr "Примітка"
+
+#: lib/layouts/IEEEtran.layout:226
+msgid "Note #:"
+msgstr "Примітка #:"
+
+#: lib/layouts/IEEEtran.layout:233 lib/layouts/ijmpc.layout:181
+#: lib/layouts/ijmpd.layout:180 lib/layouts/theorems-ams-extended.module:145
+msgid "Notation"
+msgstr "Позначення"
+
+#: lib/layouts/IEEEtran.layout:236
+msgid "Notation #:"
+msgstr "Позначення #:"
+
+#: lib/layouts/IEEEtran.layout:243 lib/layouts/elsart.layout:411
+#: lib/layouts/llncs.layout:281 lib/layouts/theorems-ams.inc:207
+#: lib/layouts/theorems-order.inc:73 lib/layouts/theorems.inc:207
+msgid "Case"
+msgstr "Варіант"
+
+#: lib/layouts/IEEEtran.layout:246
+msgid "Case #:"
+msgstr "Варіант #:"
+
+#: lib/layouts/IEEEtran.layout:272 lib/layouts/aa.layout:42
+#: lib/layouts/aa.layout:222 lib/layouts/aapaper.layout:64
+#: lib/layouts/aapaper.layout:130 lib/layouts/aastex.layout:67
+#: lib/layouts/aastex.layout:170 lib/layouts/amsart.layout:60
+#: lib/layouts/amsbook.layout:51 lib/layouts/apa.layout:307
+#: lib/layouts/beamer.layout:110 lib/layouts/beamer.layout:139
+#: lib/layouts/beamer.layout:140 lib/layouts/beamer.layout:182
+#: lib/layouts/egs.layout:30 lib/layouts/europecv.layout:29
 #: lib/layouts/ijmpc.layout:95 lib/layouts/ijmpd.layout:91
 #: lib/layouts/isprs.layout:155 lib/layouts/kluwer.layout:58
 #: lib/layouts/latex8.layout:41 lib/layouts/llncs.layout:45
@@ -4017,12 +4254,12 @@ msgstr "Стандартний"
 msgid "Section"
 msgstr "Розділ"
 
-#: lib/layouts/aa.layout:45 lib/layouts/aa.layout:232
-#: lib/layouts/aapaper.layout:67 lib/layouts/aapaper.layout:139
-#: lib/layouts/aastex.layout:70 lib/layouts/aastex.layout:182
-#: lib/layouts/amsart.layout:84 lib/layouts/amsbook.layout:59
-#: lib/layouts/apa.layout:317 lib/layouts/beamer.layout:181
-#: lib/layouts/egs.layout:51 lib/layouts/IEEEtran.layout:282
+#: lib/layouts/IEEEtran.layout:282 lib/layouts/aa.layout:45
+#: lib/layouts/aa.layout:232 lib/layouts/aapaper.layout:67
+#: lib/layouts/aapaper.layout:139 lib/layouts/aastex.layout:70
+#: lib/layouts/aastex.layout:182 lib/layouts/amsart.layout:80
+#: lib/layouts/amsbook.layout:60 lib/layouts/apa.layout:317
+#: lib/layouts/beamer.layout:181 lib/layouts/egs.layout:51
 #: lib/layouts/ijmpc.layout:109 lib/layouts/ijmpd.layout:105
 #: lib/layouts/isprs.layout:166 lib/layouts/kluwer.layout:66
 #: lib/layouts/latex8.layout:49 lib/layouts/llncs.layout:53
@@ -4037,11 +4274,11 @@ msgstr "Розділ"
 msgid "Subsection"
 msgstr "Підрозділ"
 
-#: lib/layouts/aa.layout:48 lib/layouts/aa.layout:244
-#: lib/layouts/aapaper.layout:70 lib/layouts/aapaper.layout:150
-#: lib/layouts/aastex.layout:73 lib/layouts/aastex.layout:194
-#: lib/layouts/amsart.layout:100 lib/layouts/amsbook.layout:67
-#: lib/layouts/apa.layout:326 lib/layouts/IEEEtran.layout:290
+#: lib/layouts/IEEEtran.layout:290 lib/layouts/aa.layout:48
+#: lib/layouts/aa.layout:244 lib/layouts/aapaper.layout:70
+#: lib/layouts/aapaper.layout:150 lib/layouts/aastex.layout:73
+#: lib/layouts/aastex.layout:194 lib/layouts/amsart.layout:96
+#: lib/layouts/amsbook.layout:68 lib/layouts/apa.layout:326
 #: lib/layouts/ijmpc.layout:117 lib/layouts/ijmpd.layout:113
 #: lib/layouts/isprs.layout:175 lib/layouts/kluwer.layout:75
 #: lib/layouts/llncs.layout:61 lib/layouts/ltugboat.layout:83
@@ -4053,6 +4290,132 @@ msgstr "Підрозділ"
 #: lib/layouts/stdsections.inc:100 lib/layouts/svjour.inc:74
 msgid "Subsubsection"
 msgstr "Підпідрозділ"
+
+#: lib/layouts/IEEEtran.layout:298 lib/layouts/amsart.layout:70
+#: lib/layouts/amsbook.layout:79 lib/layouts/beamer.layout:171
+#: lib/layouts/egs.layout:576 lib/layouts/ijmpc.layout:102
+#: lib/layouts/ijmpd.layout:98 lib/layouts/isprs.layout:184
+#: lib/layouts/spie.layout:29 lib/layouts/aguplus.inc:34
+#: lib/layouts/db_stdstarsections.inc:36 lib/layouts/stdstarsections.inc:34
+msgid "Section*"
+msgstr "Розділ*"
+
+#: lib/layouts/IEEEtran.layout:308 lib/layouts/amsart.layout:88
+#: lib/layouts/amsbook.layout:88 lib/layouts/beamer.layout:214
+#: lib/layouts/egs.layout:596 lib/layouts/isprs.layout:195
+#: lib/layouts/aguplus.inc:48 lib/layouts/db_stdstarsections.inc:48
+#: lib/layouts/stdstarsections.inc:45
+msgid "Subsection*"
+msgstr "Підрозділ*"
+
+#: lib/layouts/IEEEtran.layout:316 lib/layouts/amsart.layout:104
+#: lib/layouts/amsbook.layout:96 lib/layouts/isprs.layout:204
+#: lib/layouts/db_stdstarsections.inc:60 lib/layouts/stdstarsections.inc:56
+msgid "Subsubsection*"
+msgstr "Підпідрозділ*"
+
+#: lib/layouts/IEEEtran.layout:331 lib/layouts/aa.layout:85
+#: lib/layouts/aa.layout:312 lib/layouts/aa.layout:328
+#: lib/layouts/aapaper.layout:97 lib/layouts/aapaper.layout:193
+#: lib/layouts/aastex.layout:109 lib/layouts/aastex.layout:242
+#: lib/layouts/achemso.layout:115 lib/layouts/achemso.layout:132
+#: lib/layouts/acmsiggraph.layout:107 lib/layouts/acmsiggraph.layout:123
+#: lib/layouts/apa.layout:69 lib/layouts/cl2emult.layout:80
+#: lib/layouts/cl2emult.layout:91 lib/layouts/egs.layout:481
+#: lib/layouts/elsart.layout:202 lib/layouts/elsart.layout:217
+#: lib/layouts/elsarticle.layout:220 lib/layouts/elsarticle.layout:237
+#: lib/layouts/entcs.layout:84 lib/layouts/foils.layout:147
+#: lib/layouts/ijmpc.layout:63 lib/layouts/ijmpd.layout:66
+#: lib/layouts/iopart.layout:168 lib/layouts/iopart.layout:185
+#: lib/layouts/isprs.layout:24 lib/layouts/kluwer.layout:251
+#: lib/layouts/latex8.layout:100 lib/layouts/llncs.layout:237
+#: lib/layouts/ltugboat.layout:166 lib/layouts/ltugboat.layout:180
+#: lib/layouts/paper.layout:124 lib/layouts/revtex.layout:135
+#: lib/layouts/revtex4.layout:216 lib/layouts/siamltex.layout:246
+#: lib/layouts/sigplanconf.layout:150 lib/layouts/sigplanconf.layout:166
+#: lib/layouts/spie.layout:73 lib/layouts/svglobal.layout:29
+#: lib/layouts/svglobal3.layout:76 lib/layouts/svglobal3.layout:80
+#: lib/layouts/svjog.layout:34 lib/layouts/agu_stdtitle.inc:193
+#: lib/layouts/amsdefs.inc:96 lib/layouts/db_stdstruct.inc:11
+#: lib/layouts/scrclass.inc:216 lib/layouts/stdstruct.inc:12
+#: lib/layouts/stdstruct.inc:27 lib/layouts/svjour.inc:208
+#: src/output_plaintext.cpp:133
+msgid "Abstract"
+msgstr "Резюме"
+
+#: lib/layouts/IEEEtran.layout:337
+msgid "Abstract---"
+msgstr "Анотація---"
+
+#: lib/layouts/IEEEtran.layout:351 lib/layouts/aa.layout:342
+#: lib/layouts/aastex.layout:112 lib/layouts/aastex.layout:317
+#: lib/layouts/elsart.layout:62 lib/layouts/elsarticle.layout:249
+#: lib/layouts/ijmpc.layout:73 lib/layouts/ijmpd.layout:76
+#: lib/layouts/iopart.layout:197 lib/layouts/isprs.layout:51
+#: lib/layouts/kluwer.layout:274 lib/layouts/paper.layout:163
+#: lib/layouts/revtex4.layout:255 lib/layouts/siamltex.layout:298
+#: lib/layouts/sigplanconf.layout:143 lib/layouts/spie.layout:39
+#: lib/layouts/svglobal3.layout:55 lib/layouts/svglobal3.layout:58
+#: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:166
+#: lib/layouts/svjour.inc:229
+msgid "Keywords"
+msgstr "Ключові слова"
+
+#: lib/layouts/IEEEtran.layout:362
+msgid "Index Terms---"
+msgstr "Записи в покажчику---"
+
+#: lib/layouts/IEEEtran.layout:374 lib/layouts/aa.layout:91
+#: lib/layouts/aa.layout:371 lib/layouts/aapaper.layout:103
+#: lib/layouts/aapaper.layout:210 lib/layouts/achemso.layout:167
+#: lib/layouts/beamer.layout:883 lib/layouts/book.layout:21
+#: lib/layouts/book.layout:23 lib/layouts/cl2emult.layout:102
+#: lib/layouts/egs.layout:552 lib/layouts/elsarticle.layout:270
+#: lib/layouts/foils.layout:210 lib/layouts/ijmpc.layout:331
+#: lib/layouts/ijmpd.layout:342 lib/layouts/latex8.layout:118
+#: lib/layouts/llncs.layout:258 lib/layouts/memoir.layout:144
+#: lib/layouts/memoir.layout:146 lib/layouts/moderncv.layout:148
+#: lib/layouts/mwbk.layout:22 lib/layouts/mwbk.layout:24
+#: lib/layouts/mwrep.layout:13 lib/layouts/mwrep.layout:15
+#: lib/layouts/powerdot.layout:292 lib/layouts/recipebook.layout:45
+#: lib/layouts/recipebook.layout:47 lib/layouts/report.layout:12
+#: lib/layouts/report.layout:14 lib/layouts/scrbook.layout:21
+#: lib/layouts/scrbook.layout:23 lib/layouts/scrreprt.layout:11
+#: lib/layouts/scrreprt.layout:13 lib/layouts/siamltex.layout:312
+#: lib/layouts/simplecv.layout:139 lib/layouts/aguplus.inc:167
+#: lib/layouts/aguplus.inc:169 lib/layouts/amsdefs.inc:201
+#: lib/layouts/scrclass.inc:223 lib/layouts/stdstruct.inc:39
+#: lib/layouts/svjour.inc:282 src/frontends/qt4/GuiDocument.cpp:989
+msgid "Bibliography"
+msgstr "Список літератури"
+
+#: lib/layouts/IEEEtran.layout:383 lib/layouts/IEEEtran.layout:394
+#: lib/layouts/aastex.layout:118 lib/layouts/aastex.layout:443
+#: lib/layouts/ijmpc.layout:309 lib/layouts/ijmpd.layout:320
+#: lib/layouts/kluwer.layout:313 lib/layouts/kluwer.layout:326
+#: src/rowpainter.cpp:472
+msgid "Appendix"
+msgstr "Додаток"
+
+#: lib/layouts/IEEEtran.layout:406 lib/layouts/IEEEtran.layout:409
+msgid "Appendices"
+msgstr "Додатки"
+
+#: lib/layouts/IEEEtran.layout:413
+msgid "Biography"
+msgstr "Біографія"
+
+#: lib/layouts/IEEEtran.layout:423
+msgid "BiographyNoPhoto"
+msgstr "БіографіяБезФото"
+
+#: lib/layouts/IEEEtran.layout:442 lib/layouts/IEEEtran.layout:453
+msgid "Footernote"
+msgstr "Примітка в підвал"
+
+#: lib/layouts/IEEEtran.layout:465
+msgid "MarkBoth"
+msgstr "MarkBoth"
 
 #: lib/layouts/aa.layout:51 lib/layouts/aapaper.layout:48
 #: lib/layouts/aastex.layout:79 lib/layouts/apa.layout:354
@@ -4099,7 +4462,7 @@ msgstr "Список"
 #: lib/layouts/broadway.layout:185 lib/layouts/cl2emult.layout:40
 #: lib/layouts/docbook-book.layout:11 lib/layouts/docbook-chapter.layout:9
 #: lib/layouts/docbook-section.layout:9 lib/layouts/egs.layout:246
-#: lib/layouts/elsart.layout:91 lib/layouts/elsarticle.layout:52
+#: lib/layouts/elsart.layout:91 lib/layouts/elsarticle.layout:53
 #: lib/layouts/entcs.layout:39 lib/layouts/foils.layout:125
 #: lib/layouts/hollywood.layout:331 lib/layouts/ijmpc.layout:33
 #: lib/layouts/ijmpd.layout:36 lib/layouts/iopart.layout:55
@@ -4131,7 +4494,7 @@ msgstr "Підзаголовок"
 #: lib/layouts/apa.layout:113 lib/layouts/beamer.layout:795
 #: lib/layouts/broadway.layout:198 lib/layouts/cl2emult.layout:57
 #: lib/layouts/egs.layout:288 lib/layouts/elsart.layout:111
-#: lib/layouts/elsarticle.layout:114 lib/layouts/entcs.layout:49
+#: lib/layouts/elsarticle.layout:115 lib/layouts/entcs.layout:49
 #: lib/layouts/foils.layout:133 lib/layouts/hollywood.layout:318
 #: lib/layouts/ijmpc.layout:40 lib/layouts/ijmpd.layout:43
 #: lib/layouts/iopart.layout:124 lib/layouts/isprs.layout:75
@@ -4148,7 +4511,7 @@ msgstr "Автор"
 
 #: lib/layouts/aa.layout:73 lib/layouts/aa.layout:134
 #: lib/layouts/aapaper.layout:82 lib/layouts/dinbrief.layout:247
-#: lib/layouts/egs.layout:233 lib/layouts/elsarticle.layout:192
+#: lib/layouts/egs.layout:233 lib/layouts/elsarticle.layout:193
 #: lib/layouts/entcs.layout:59 lib/layouts/g-brief-en.layout:180
 #: lib/layouts/g-brief2.layout:716 lib/layouts/ijmpc.layout:48
 #: lib/layouts/ijmpd.layout:51 lib/layouts/iopart.layout:143
@@ -4188,65 +4551,12 @@ msgstr "Пошта"
 msgid "Date"
 msgstr "Дата"
 
-#: lib/layouts/aa.layout:85 lib/layouts/aa.layout:312
-#: lib/layouts/aa.layout:328 lib/layouts/aapaper.layout:97
-#: lib/layouts/aapaper.layout:193 lib/layouts/aastex.layout:109
-#: lib/layouts/aastex.layout:242 lib/layouts/achemso.layout:115
-#: lib/layouts/achemso.layout:132 lib/layouts/acmsiggraph.layout:107
-#: lib/layouts/acmsiggraph.layout:123 lib/layouts/apa.layout:69
-#: lib/layouts/cl2emult.layout:80 lib/layouts/cl2emult.layout:91
-#: lib/layouts/egs.layout:481 lib/layouts/elsart.layout:202
-#: lib/layouts/elsart.layout:217 lib/layouts/elsarticle.layout:219
-#: lib/layouts/elsarticle.layout:236 lib/layouts/entcs.layout:84
-#: lib/layouts/foils.layout:147 lib/layouts/IEEEtran.layout:331
-#: lib/layouts/ijmpc.layout:63 lib/layouts/ijmpd.layout:66
-#: lib/layouts/iopart.layout:168 lib/layouts/iopart.layout:185
-#: lib/layouts/isprs.layout:24 lib/layouts/kluwer.layout:251
-#: lib/layouts/latex8.layout:100 lib/layouts/llncs.layout:237
-#: lib/layouts/ltugboat.layout:166 lib/layouts/ltugboat.layout:180
-#: lib/layouts/paper.layout:124 lib/layouts/revtex.layout:135
-#: lib/layouts/revtex4.layout:216 lib/layouts/siamltex.layout:246
-#: lib/layouts/sigplanconf.layout:150 lib/layouts/sigplanconf.layout:166
-#: lib/layouts/spie.layout:73 lib/layouts/svglobal.layout:29
-#: lib/layouts/svglobal3.layout:76 lib/layouts/svglobal3.layout:80
-#: lib/layouts/svjog.layout:34 lib/layouts/agu_stdtitle.inc:193
-#: lib/layouts/amsdefs.inc:96 lib/layouts/db_stdstruct.inc:11
-#: lib/layouts/scrclass.inc:216 lib/layouts/stdstruct.inc:12
-#: lib/layouts/stdstruct.inc:27 lib/layouts/svjour.inc:208
-#: src/output_plaintext.cpp:133
-msgid "Abstract"
-msgstr "Резюме"
-
 #: lib/layouts/aa.layout:88 lib/layouts/aa.layout:198
 #: lib/layouts/aapaper.layout:100 lib/layouts/egs.layout:527
 #: lib/layouts/elsart.layout:421 lib/layouts/aapaper.inc:80
 #: lib/layouts/svjour.inc:275 lib/layouts/theorems-ams-extended.module:189
 msgid "Acknowledgement"
 msgstr "Подяка"
-
-#: lib/layouts/aa.layout:91 lib/layouts/aa.layout:371
-#: lib/layouts/aapaper.layout:103 lib/layouts/aapaper.layout:210
-#: lib/layouts/achemso.layout:167 lib/layouts/beamer.layout:883
-#: lib/layouts/book.layout:21 lib/layouts/book.layout:23
-#: lib/layouts/cl2emult.layout:102 lib/layouts/egs.layout:552
-#: lib/layouts/elsarticle.layout:269 lib/layouts/foils.layout:210
-#: lib/layouts/IEEEtran.layout:374 lib/layouts/ijmpc.layout:331
-#: lib/layouts/ijmpd.layout:342 lib/layouts/latex8.layout:118
-#: lib/layouts/llncs.layout:258 lib/layouts/memoir.layout:144
-#: lib/layouts/memoir.layout:146 lib/layouts/moderncv.layout:148
-#: lib/layouts/mwbk.layout:22 lib/layouts/mwbk.layout:24
-#: lib/layouts/mwrep.layout:13 lib/layouts/mwrep.layout:15
-#: lib/layouts/powerdot.layout:292 lib/layouts/recipebook.layout:45
-#: lib/layouts/recipebook.layout:47 lib/layouts/report.layout:12
-#: lib/layouts/report.layout:14 lib/layouts/scrbook.layout:21
-#: lib/layouts/scrbook.layout:23 lib/layouts/scrreprt.layout:11
-#: lib/layouts/scrreprt.layout:13 lib/layouts/siamltex.layout:312
-#: lib/layouts/simplecv.layout:139 lib/layouts/aguplus.inc:167
-#: lib/layouts/aguplus.inc:169 lib/layouts/amsdefs.inc:201
-#: lib/layouts/scrclass.inc:223 lib/layouts/stdstruct.inc:39
-#: lib/layouts/svjour.inc:282 src/frontends/qt4/GuiDocument.cpp:989
-msgid "Bibliography"
-msgstr "Список літератури"
 
 #: lib/layouts/aa.layout:117 lib/layouts/aa.layout:140
 #: lib/layouts/aa.layout:155 lib/layouts/aa.layout:179
@@ -4255,9 +4565,9 @@ msgstr "Список літератури"
 #: lib/layouts/aastex.layout:349 lib/layouts/aastex.layout:388
 #: lib/layouts/achemso.layout:119 lib/layouts/acmsiggraph.layout:65
 #: lib/layouts/acmsiggraph.layout:111 lib/layouts/acmsiggraph.layout:138
-#: lib/layouts/elsarticle.layout:56 lib/layouts/elsarticle.layout:98
-#: lib/layouts/elsarticle.layout:117 lib/layouts/elsarticle.layout:195
-#: lib/layouts/elsarticle.layout:223 lib/layouts/elsarticle.layout:252
+#: lib/layouts/elsarticle.layout:57 lib/layouts/elsarticle.layout:99
+#: lib/layouts/elsarticle.layout:118 lib/layouts/elsarticle.layout:196
+#: lib/layouts/elsarticle.layout:224 lib/layouts/elsarticle.layout:253
 #: lib/layouts/entcs.layout:73 lib/layouts/iopart.layout:59
 #: lib/layouts/iopart.layout:128 lib/layouts/iopart.layout:147
 #: lib/layouts/iopart.layout:172 lib/layouts/iopart.layout:201
@@ -4283,7 +4593,7 @@ msgstr "Відповідність:"
 
 #: lib/layouts/aa.layout:202 lib/layouts/aastex.layout:447
 #: lib/layouts/aastex.layout:479 lib/layouts/acmsiggraph.layout:152
-#: lib/layouts/beamer.layout:884 lib/layouts/elsarticle.layout:273
+#: lib/layouts/beamer.layout:884 lib/layouts/elsarticle.layout:274
 #: lib/layouts/iopart.layout:241 lib/layouts/iopart.layout:263
 #: lib/layouts/iopart.layout:286 lib/layouts/siamltex.layout:313
 #: lib/layouts/sigplanconf.layout:181 lib/layouts/svglobal3.layout:86
@@ -4304,20 +4614,6 @@ msgstr "позначкаустанови"
 msgid "institute mark"
 msgstr "позначка установи"
 
-#: lib/layouts/aa.layout:342 lib/layouts/aastex.layout:112
-#: lib/layouts/aastex.layout:317 lib/layouts/elsart.layout:62
-#: lib/layouts/elsarticle.layout:248 lib/layouts/IEEEtran.layout:351
-#: lib/layouts/ijmpc.layout:73 lib/layouts/ijmpd.layout:76
-#: lib/layouts/iopart.layout:197 lib/layouts/isprs.layout:51
-#: lib/layouts/kluwer.layout:274 lib/layouts/paper.layout:163
-#: lib/layouts/revtex4.layout:255 lib/layouts/siamltex.layout:298
-#: lib/layouts/sigplanconf.layout:143 lib/layouts/spie.layout:39
-#: lib/layouts/svglobal3.layout:55 lib/layouts/svglobal3.layout:58
-#: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:166
-#: lib/layouts/svjour.inc:229
-msgid "Keywords"
-msgstr "Ключові слова"
-
 #: lib/layouts/aa.layout:357
 msgid "Key words."
 msgstr "Ключові слова"
@@ -4332,7 +4628,7 @@ msgstr "СтильСимволів:Ел.пошта"
 
 #: lib/layouts/aa.layout:400 lib/layouts/aapaper.layout:85
 #: lib/layouts/aastex.layout:100 lib/layouts/aastex.layout:344
-#: lib/layouts/elsarticle.layout:209 lib/layouts/iopart.layout:158
+#: lib/layouts/elsarticle.layout:210 lib/layouts/iopart.layout:158
 #: lib/layouts/latex8.layout:57 lib/layouts/llncs.layout:229
 #: lib/layouts/svglobal3.layout:33 lib/layouts/svglobal3.layout:37
 #: lib/layouts/aapaper.inc:46 lib/layouts/amsdefs.inc:150
@@ -4354,7 +4650,7 @@ msgstr "LaTeX"
 msgid "Thesaurus"
 msgstr "Тезаурус"
 
-#: lib/layouts/aastex.layout:76 lib/layouts/amsbook.layout:122
+#: lib/layouts/aastex.layout:76 lib/layouts/amsbook.layout:123
 #: lib/layouts/apa.layout:335 lib/layouts/egs.layout:69
 #: lib/layouts/kluwer.layout:84 lib/layouts/llncs.layout:69
 #: lib/layouts/ltugboat.layout:102 lib/layouts/memoir.layout:75
@@ -4386,18 +4682,10 @@ msgstr "Та"
 msgid "Acknowledgements"
 msgstr "Подяки"
 
-#: lib/layouts/aastex.layout:118 lib/layouts/aastex.layout:443
-#: lib/layouts/IEEEtran.layout:383 lib/layouts/IEEEtran.layout:394
-#: lib/layouts/ijmpc.layout:309 lib/layouts/ijmpd.layout:320
-#: lib/layouts/kluwer.layout:313 lib/layouts/kluwer.layout:326
-#: src/rowpainter.cpp:472
-msgid "Appendix"
-msgstr "Додаток"
-
 #: lib/layouts/aastex.layout:121 lib/layouts/aastex.layout:475
 #: lib/layouts/aastex.layout:488 lib/layouts/achemso.layout:181
 #: lib/layouts/beamer.layout:897 lib/layouts/cl2emult.layout:116
-#: lib/layouts/egs.layout:566 lib/layouts/elsarticle.layout:284
+#: lib/layouts/egs.layout:566 lib/layouts/elsarticle.layout:285
 #: lib/layouts/iopart.layout:274 lib/layouts/iopart.layout:289
 #: lib/layouts/kluwer.layout:334 lib/layouts/kluwer.layout:346
 #: lib/layouts/llncs.layout:272 lib/layouts/moderncv.layout:162
@@ -4618,7 +4906,7 @@ msgstr "Категорії Computing Review"
 msgid "Acknowledgments"
 msgstr "Подяки"
 
-#: lib/layouts/amsart.layout:25 lib/layouts/amsbook.layout:26
+#: lib/layouts/amsart.layout:28 lib/layouts/amsbook.layout:29
 #: lib/layouts/beamer.layout:32 lib/layouts/beamer.layout:908
 #: lib/layouts/beamer.layout:927 lib/layouts/beamer.layout:946
 #: lib/layouts/beamer.layout:1066 lib/layouts/beamer.layout:1090
@@ -4630,30 +4918,7 @@ msgstr "Подяки"
 msgid "MainText"
 msgstr "ЗвичайнийТекст"
 
-#: lib/layouts/amsart.layout:74 lib/layouts/amsbook.layout:78
-#: lib/layouts/beamer.layout:171 lib/layouts/egs.layout:576
-#: lib/layouts/IEEEtran.layout:298 lib/layouts/ijmpc.layout:102
-#: lib/layouts/ijmpd.layout:98 lib/layouts/isprs.layout:184
-#: lib/layouts/spie.layout:29 lib/layouts/aguplus.inc:34
-#: lib/layouts/db_stdstarsections.inc:36 lib/layouts/stdstarsections.inc:34
-msgid "Section*"
-msgstr "Розділ*"
-
-#: lib/layouts/amsart.layout:92 lib/layouts/amsbook.layout:87
-#: lib/layouts/beamer.layout:214 lib/layouts/egs.layout:596
-#: lib/layouts/IEEEtran.layout:308 lib/layouts/isprs.layout:195
-#: lib/layouts/aguplus.inc:48 lib/layouts/db_stdstarsections.inc:48
-#: lib/layouts/stdstarsections.inc:45
-msgid "Subsection*"
-msgstr "Підрозділ*"
-
-#: lib/layouts/amsart.layout:108 lib/layouts/amsbook.layout:95
-#: lib/layouts/IEEEtran.layout:316 lib/layouts/isprs.layout:204
-#: lib/layouts/db_stdstarsections.inc:60 lib/layouts/stdstarsections.inc:56
-msgid "Subsubsection*"
-msgstr "Підпідрозділ*"
-
-#: lib/layouts/amsbook.layout:130
+#: lib/layouts/amsbook.layout:131
 msgid "Chapter Exercises"
 msgstr "Вправи до глави"
 
@@ -4713,14 +4978,6 @@ msgstr "Журнал"
 #: lib/layouts/apa.layout:205
 msgid "CopNum"
 msgstr "CopNum"
-
-#: lib/layouts/apa.layout:212 lib/layouts/elsart.layout:389
-#: lib/layouts/IEEEtran.layout:223 lib/layouts/iopart.layout:93
-#: lib/layouts/llncs.layout:357 lib/layouts/powerdot.layout:198
-#: lib/layouts/slides.layout:167 lib/layouts/svjour.inc:380
-#: lib/layouts/theorems-ams-extended.module:123
-msgid "Note"
-msgstr "Примітка"
 
 #: lib/layouts/apa.layout:233
 msgid "Acknowledgements:"
@@ -4786,6 +5043,11 @@ msgstr "LatinOff"
 msgid "Latin off"
 msgstr "Вимкнути латиницю"
 
+#: lib/layouts/article-beamer.layout:26 lib/layouts/beamer.layout:224
+#: lib/layouts/scrarticle-beamer.layout:22
+msgid "BeginFrame"
+msgstr "BeginFrame"
+
 #: lib/layouts/article.layout:18 lib/layouts/beamer.layout:109
 #: lib/layouts/beamer.layout:124 lib/layouts/mwart.layout:23
 #: lib/layouts/paper.layout:40 lib/layouts/scrartcl.layout:20
@@ -4800,11 +5062,6 @@ msgstr "Частина"
 #: lib/layouts/stdstarsections.inc:13
 msgid "Part*"
 msgstr "Частина*"
-
-#: lib/layouts/article-beamer.layout:26 lib/layouts/beamer.layout:224
-#: lib/layouts/scrarticle-beamer.layout:22
-msgid "BeginFrame"
-msgstr "BeginFrame"
 
 #: lib/layouts/beamer.layout:99 lib/layouts/egs.layout:196
 #: lib/layouts/stdlists.inc:65
@@ -5018,17 +5275,6 @@ msgstr "Вірші"
 msgid "TitleGraphic"
 msgstr "TitleGraphic"
 
-#: lib/layouts/beamer.layout:987 lib/layouts/elsart.layout:319
-#: lib/layouts/foils.layout:250 lib/layouts/heb-article.layout:55
-#: lib/layouts/IEEEtran.layout:93 lib/layouts/ijmpc.layout:229
-#: lib/layouts/ijmpd.layout:230 lib/layouts/llncs.layout:316
-#: lib/layouts/siamltex.layout:72 lib/layouts/svjour.inc:334
-#: lib/layouts/theorems.inc:59 lib/layouts/theorems-ams.inc:59
-#: lib/layouts/theorems-order.inc:13
-#: lib/layouts/theorems-starred-equivalents.inc:13
-msgid "Corollary"
-msgstr "Наслідок"
-
 #: lib/layouts/beamer.layout:988 lib/layouts/theorems-std.module:2
 msgid "Theorems"
 msgstr "Теореми"
@@ -5037,17 +5283,6 @@ msgstr "Теореми"
 #: lib/layouts/theorems-starred.inc:60
 msgid "Corollary."
 msgstr "Наслідок"
-
-#: lib/layouts/beamer.layout:1015 lib/layouts/elsart.layout:347
-#: lib/layouts/foils.layout:264 lib/layouts/heb-article.layout:75
-#: lib/layouts/IEEEtran.layout:153 lib/layouts/ijmpc.layout:131
-#: lib/layouts/ijmpd.layout:128 lib/layouts/llncs.layout:330
-#: lib/layouts/siamltex.layout:121 lib/layouts/svjour.inc:348
-#: lib/layouts/theorems.inc:119 lib/layouts/theorems-ams.inc:119
-#: lib/layouts/theorems-order.inc:37
-#: lib/layouts/theorems-starred-equivalents.inc:41
-msgid "Definition"
-msgstr "Визначення"
 
 #: lib/layouts/beamer.layout:1018 lib/layouts/foils.layout:323
 #: lib/layouts/theorems-starred.inc:121
@@ -5062,16 +5297,6 @@ msgstr "Визначення"
 msgid "Definitions."
 msgstr "Визначення."
 
-#: lib/layouts/beamer.layout:1027 lib/layouts/elsart.layout:368
-#: lib/layouts/IEEEtran.layout:163 lib/layouts/ijmpc.layout:163
-#: lib/layouts/ijmpd.layout:160 lib/layouts/llncs.layout:337
-#: lib/layouts/svjour.inc:355 lib/layouts/theorems.inc:138
-#: lib/layouts/theorems-ams.inc:138 lib/layouts/theorems-order.inc:43
-#: lib/layouts/theorems-starred-equivalents.inc:48
-#: src/frontends/qt4/GuiDocument.cpp:820
-msgid "Example"
-msgstr "Приклад"
-
 #: lib/layouts/beamer.layout:1030 lib/layouts/theorems-starred.inc:140
 msgid "Example."
 msgstr "Приклад."
@@ -5084,24 +5309,9 @@ msgstr "Приклади"
 msgid "Examples."
 msgstr "Приклади."
 
-#: lib/layouts/beamer.layout:1045 lib/layouts/IEEEtran.layout:133
-#: lib/layouts/theorems.inc:107 lib/layouts/theorems-ams.inc:107
-msgid "Fact"
-msgstr "Факт"
-
 #: lib/layouts/beamer.layout:1048 lib/layouts/theorems-starred.inc:108
 msgid "Fact."
 msgstr "Факт."
-
-#: lib/layouts/beamer.layout:1051 lib/layouts/elsart.layout:285
-#: lib/layouts/foils.layout:278 lib/layouts/heb-article.layout:95
-#: lib/layouts/IEEEtran.layout:65 lib/layouts/ijmpc.layout:211
-#: lib/layouts/ijmpd.layout:211 lib/layouts/llncs.layout:371
-#: lib/layouts/siamltex.layout:150 lib/layouts/svjour.inc:394
-#: lib/layouts/theorems-order.inc:76 lib/layouts/theorems-proof.inc:13
-#: lib/layouts/theorems-std.module:20
-msgid "Proof"
-msgstr "На коректуру"
 
 #: lib/layouts/beamer.layout:1054 lib/layouts/foils.layout:281
 #: lib/layouts/ijmpc.layout:219 lib/layouts/ijmpd.layout:219
@@ -5109,21 +5319,6 @@ msgstr "На коректуру"
 #: lib/layouts/svjour.inc:397 lib/layouts/theorems-proof.inc:30
 msgid "Proof."
 msgstr "Доведення."
-
-#: lib/layouts/beamer.layout:1057 lib/layouts/elsart.layout:256
-#: lib/layouts/foils.layout:218 lib/layouts/heb-article.layout:18
-#: lib/layouts/IEEEtran.layout:73 lib/layouts/ijmpc.layout:190
-#: lib/layouts/ijmpd.layout:193 lib/layouts/llncs.layout:412
-#: lib/layouts/siamltex.layout:62 lib/layouts/siamltex.layout:112
-#: lib/layouts/svjour.inc:436 lib/layouts/theorems.inc:24
-#: lib/layouts/theorems.inc:25 lib/layouts/theorems.inc:208
-#: lib/layouts/theorems-ams.inc:24 lib/layouts/theorems-ams.inc:25
-#: lib/layouts/theorems-ams.inc:208 lib/layouts/theorems-order.inc:7
-#: lib/layouts/theorems-proof.inc:14 lib/layouts/theorems-starred.inc:24
-#: lib/layouts/theorems-starred-equivalents.inc:6
-#: lib/layouts/theorems-chap.module:18 lib/layouts/theorems-sec.module:17
-msgid "Theorem"
-msgstr "Теорема"
 
 #: lib/layouts/beamer.layout:1060 lib/layouts/foils.layout:295
 #: lib/layouts/theorems-starred.inc:29
@@ -5786,16 +5981,6 @@ msgstr "Теорема \\arabic{theorem}"
 msgid "PROOF."
 msgstr "Доведення."
 
-#: lib/layouts/elsart.layout:312 lib/layouts/foils.layout:243
-#: lib/layouts/heb-article.layout:45 lib/layouts/IEEEtran.layout:83
-#: lib/layouts/ijmpc.layout:238 lib/layouts/ijmpd.layout:243
-#: lib/layouts/llncs.layout:351 lib/layouts/siamltex.layout:82
-#: lib/layouts/svjour.inc:373 lib/layouts/theorems.inc:71
-#: lib/layouts/theorems-ams.inc:71 lib/layouts/theorems-order.inc:19
-#: lib/layouts/theorems-starred-equivalents.inc:20
-msgid "Lemma"
-msgstr "Лема"
-
 #: lib/layouts/elsart.layout:315
 msgid "Lemma \\arabic{theorem}"
 msgstr "Лема \\arabic{theorem}"
@@ -5804,24 +5989,9 @@ msgstr "Лема \\arabic{theorem}"
 msgid "Corollary \\arabic{theorem}"
 msgstr "Наслідок \\arabic{theorem}"
 
-#: lib/layouts/elsart.layout:326 lib/layouts/foils.layout:257
-#: lib/layouts/IEEEtran.layout:103 lib/layouts/ijmpc.layout:247
-#: lib/layouts/ijmpd.layout:253 lib/layouts/llncs.layout:385
-#: lib/layouts/siamltex.layout:92 lib/layouts/svjour.inc:408
-#: lib/layouts/theorems.inc:83 lib/layouts/theorems-ams.inc:83
-#: lib/layouts/theorems-order.inc:25
-#: lib/layouts/theorems-starred-equivalents.inc:27
-msgid "Proposition"
-msgstr "Твердження"
-
 #: lib/layouts/elsart.layout:329
 msgid "Proposition \\arabic{theorem}"
 msgstr "Твердження \\arabic{theorem}"
-
-#: lib/layouts/elsart.layout:333 lib/layouts/IEEEtran.layout:123
-#: lib/layouts/theorems-ams-extended.module:33
-msgid "Criterion"
-msgstr "Критерій"
 
 #: lib/layouts/elsart.layout:336
 msgid "Criterion \\arabic{theorem}"
@@ -5841,15 +6011,6 @@ msgstr "Алгоритм \\arabic{theorem}"
 msgid "Definition \\arabic{theorem}"
 msgstr "Означення \\arabic{theorem}"
 
-#: lib/layouts/elsart.layout:361 lib/layouts/IEEEtran.layout:113
-#: lib/layouts/ijmpc.layout:283 lib/layouts/ijmpd.layout:293
-#: lib/layouts/llncs.layout:309 lib/layouts/siamltex.layout:102
-#: lib/layouts/svjour.inc:327 lib/layouts/theorems.inc:95
-#: lib/layouts/theorems-ams.inc:95 lib/layouts/theorems-order.inc:31
-#: lib/layouts/theorems-starred-equivalents.inc:34
-msgid "Conjecture"
-msgstr "Припущення"
-
 #: lib/layouts/elsart.layout:364
 msgid "Conjecture \\arabic{theorem}"
 msgstr "Припущення \\arabic{theorem}"
@@ -5858,26 +6019,9 @@ msgstr "Припущення \\arabic{theorem}"
 msgid "Example \\arabic{theorem}"
 msgstr "Приклад \\arabic{theorem}"
 
-#: lib/layouts/elsart.layout:375 lib/layouts/IEEEtran.layout:183
-#: lib/layouts/llncs.layout:364 lib/layouts/svjour.inc:387
-#: lib/layouts/theorems.inc:150 lib/layouts/theorems-ams.inc:150
-#: lib/layouts/theorems-order.inc:49
-#: lib/layouts/theorems-starred-equivalents.inc:55
-msgid "Problem"
-msgstr "Проблема"
-
 #: lib/layouts/elsart.layout:378
 msgid "Problem \\arabic{theorem}"
 msgstr "Задача \\arabic{theorem}"
-
-#: lib/layouts/elsart.layout:382 lib/layouts/IEEEtran.layout:203
-#: lib/layouts/ijmpc.layout:172 lib/layouts/ijmpd.layout:170
-#: lib/layouts/llncs.layout:398 lib/layouts/svjour.inc:422
-#: lib/layouts/theorems.inc:174 lib/layouts/theorems-ams.inc:174
-#: lib/layouts/theorems-order.inc:61
-#: lib/layouts/theorems-starred-equivalents.inc:69
-msgid "Remark"
-msgstr "Помітка"
 
 #: lib/layouts/elsart.layout:385
 msgid "Remark \\arabic{theorem}"
@@ -5886,15 +6030,6 @@ msgstr "Зауваження \\arabic{theorem}"
 #: lib/layouts/elsart.layout:392
 msgid "Note \\arabic{theorem}"
 msgstr "Примітка \\arabic{theorem}"
-
-#: lib/layouts/elsart.layout:396 lib/layouts/heb-article.layout:65
-#: lib/layouts/IEEEtran.layout:213 lib/layouts/ijmpc.layout:274
-#: lib/layouts/ijmpd.layout:283 lib/layouts/llncs.layout:302
-#: lib/layouts/svjour.inc:305 lib/layouts/theorems.inc:194
-#: lib/layouts/theorems-ams.inc:194 lib/layouts/theorems-order.inc:67
-#: lib/layouts/theorems-starred-equivalents.inc:76
-msgid "Claim"
-msgstr "Твердження"
 
 #: lib/layouts/elsart.layout:399
 msgid "Claim \\arabic{theorem}"
@@ -5908,65 +6043,59 @@ msgstr "Зведення"
 msgid "Summary \\arabic{summ}"
 msgstr "Резюме \\arabic{summ}"
 
-#: lib/layouts/elsart.layout:411 lib/layouts/IEEEtran.layout:243
-#: lib/layouts/llncs.layout:281 lib/layouts/theorems.inc:207
-#: lib/layouts/theorems-ams.inc:207 lib/layouts/theorems-order.inc:73
-msgid "Case"
-msgstr "Варіант"
-
 #: lib/layouts/elsart.layout:415
 msgid "Case \\arabic{case}"
 msgstr "Варіант \\arabic{case}"
 
-#: lib/layouts/elsarticle.layout:72
+#: lib/layouts/elsarticle.layout:73
 msgid "Titlenotemark"
 msgstr "ПозначкаПриміткиЗаголовка"
 
-#: lib/layouts/elsarticle.layout:76
+#: lib/layouts/elsarticle.layout:77
 msgid "Titlenote mark"
 msgstr "Позначка примітки заголовка"
 
-#: lib/layouts/elsarticle.layout:94
+#: lib/layouts/elsarticle.layout:95
 msgid "Title footnote"
 msgstr "Примітка заголовка"
 
-#: lib/layouts/elsarticle.layout:106
+#: lib/layouts/elsarticle.layout:107
 msgid "Title footnote:"
 msgstr "Примітка заголовка:"
 
-#: lib/layouts/elsarticle.layout:134
+#: lib/layouts/elsarticle.layout:135
 msgid "Authormark"
 msgstr "Позначкаавтора"
 
-#: lib/layouts/elsarticle.layout:138
+#: lib/layouts/elsarticle.layout:139
 msgid "Author mark"
 msgstr "Позначка автора"
 
-#: lib/layouts/elsarticle.layout:156
+#: lib/layouts/elsarticle.layout:157
 msgid "Author footnote"
 msgstr "Примітка до поля автора"
 
-#: lib/layouts/elsarticle.layout:159
+#: lib/layouts/elsarticle.layout:160
 msgid "Author footnote:"
 msgstr "Примітка про автора:"
 
-#: lib/layouts/elsarticle.layout:163
+#: lib/layouts/elsarticle.layout:164
 msgid "CorAuthormark"
 msgstr "CorAuthormark"
 
-#: lib/layouts/elsarticle.layout:167
+#: lib/layouts/elsarticle.layout:168
 msgid "CorAuthor mark"
 msgstr "Позначка автора для кореспонденції"
 
-#: lib/layouts/elsarticle.layout:185
+#: lib/layouts/elsarticle.layout:186
 msgid "Corresponding author"
 msgstr "Автор для листування"
 
-#: lib/layouts/elsarticle.layout:188
+#: lib/layouts/elsarticle.layout:189
 msgid "Corresponding author text:"
 msgstr "Текст для поля автора для листування:"
 
-#: lib/layouts/elsarticle.layout:261 lib/layouts/ijmpc.layout:79
+#: lib/layouts/elsarticle.layout:262 lib/layouts/ijmpc.layout:79
 #: lib/layouts/ijmpd.layout:82 lib/layouts/iopart.layout:208
 #: lib/layouts/kluwer.layout:281 lib/layouts/paper.layout:166
 #: lib/layouts/revtex4.layout:260 lib/layouts/sigplanconf.layout:146
@@ -6683,10 +6812,6 @@ msgstr "Помітки"
 msgid "Remarks #."
 msgstr "Зауваження #."
 
-#: lib/layouts/heb-article.layout:110 lib/layouts/IEEEtran.layout:68
-msgid "Proof:"
-msgstr "Доведення:"
-
 #: lib/layouts/hollywood.layout:55
 msgid "More"
 msgstr "Більше"
@@ -6739,131 +6864,6 @@ msgstr "FADE_OUT"
 msgid "Scene"
 msgstr "Сцена"
 
-#: lib/layouts/IEEEtran.layout:49
-msgid "TheoremTemplate"
-msgstr "ШаблонТеореми"
-
-#: lib/layouts/IEEEtran.layout:76
-msgid "Theorem #:"
-msgstr "Теорема #:"
-
-#: lib/layouts/IEEEtran.layout:86
-msgid "Lemma #:"
-msgstr "Лема #:"
-
-#: lib/layouts/IEEEtran.layout:96
-msgid "Corollary #:"
-msgstr "Наслідок #:"
-
-#: lib/layouts/IEEEtran.layout:106
-msgid "Proposition #:"
-msgstr "Твердження #:"
-
-#: lib/layouts/IEEEtran.layout:116
-msgid "Conjecture #:"
-msgstr "Припущення #:"
-
-#: lib/layouts/IEEEtran.layout:126
-msgid "Criterion #:"
-msgstr "Критерій #:"
-
-#: lib/layouts/IEEEtran.layout:136
-msgid "Fact #:"
-msgstr "Факт #:"
-
-#: lib/layouts/IEEEtran.layout:143 lib/layouts/theorems-ams-extended.module:78
-msgid "Axiom"
-msgstr "Аксіома"
-
-#: lib/layouts/IEEEtran.layout:146
-msgid "Axiom #:"
-msgstr "Аксіома #:"
-
-#: lib/layouts/IEEEtran.layout:156
-msgid "Definition #:"
-msgstr "Визначення #:"
-
-#: lib/layouts/IEEEtran.layout:166
-msgid "Example #:"
-msgstr "Приклад #:"
-
-#: lib/layouts/IEEEtran.layout:173
-#: lib/layouts/theorems-ams-extended.module:101
-msgid "Condition"
-msgstr "Умова"
-
-#: lib/layouts/IEEEtran.layout:176
-msgid "Condition #:"
-msgstr "Умова #:"
-
-#: lib/layouts/IEEEtran.layout:186
-msgid "Problem #:"
-msgstr "Задача #:"
-
-#: lib/layouts/IEEEtran.layout:193 lib/layouts/llncs.layout:344
-#: lib/layouts/svjour.inc:362 lib/layouts/theorems.inc:162
-#: lib/layouts/theorems-ams.inc:162 lib/layouts/theorems-order.inc:55
-#: lib/layouts/theorems-starred-equivalents.inc:62
-msgid "Exercise"
-msgstr "Вправа"
-
-#: lib/layouts/IEEEtran.layout:196
-msgid "Exercise #:"
-msgstr "Вправа #:"
-
-#: lib/layouts/IEEEtran.layout:206
-msgid "Remark #:"
-msgstr "Помітка #:"
-
-#: lib/layouts/IEEEtran.layout:216
-msgid "Claim #:"
-msgstr "Твердження #:"
-
-#: lib/layouts/IEEEtran.layout:226
-msgid "Note #:"
-msgstr "Примітка #:"
-
-#: lib/layouts/IEEEtran.layout:233 lib/layouts/ijmpc.layout:181
-#: lib/layouts/ijmpd.layout:180 lib/layouts/theorems-ams-extended.module:145
-msgid "Notation"
-msgstr "Позначення"
-
-#: lib/layouts/IEEEtran.layout:236
-msgid "Notation #:"
-msgstr "Позначення #:"
-
-#: lib/layouts/IEEEtran.layout:246
-msgid "Case #:"
-msgstr "Варіант #:"
-
-#: lib/layouts/IEEEtran.layout:337
-msgid "Abstract---"
-msgstr "Анотація---"
-
-#: lib/layouts/IEEEtran.layout:362
-msgid "Index Terms---"
-msgstr "Записи в покажчику---"
-
-#: lib/layouts/IEEEtran.layout:406 lib/layouts/IEEEtran.layout:409
-msgid "Appendices"
-msgstr "Додатки"
-
-#: lib/layouts/IEEEtran.layout:413
-msgid "Biography"
-msgstr "Біографія"
-
-#: lib/layouts/IEEEtran.layout:423
-msgid "BiographyNoPhoto"
-msgstr "БіографіяБезФото"
-
-#: lib/layouts/IEEEtran.layout:442 lib/layouts/IEEEtran.layout:453
-msgid "Footernote"
-msgstr "Примітка в підвал"
-
-#: lib/layouts/IEEEtran.layout:465
-msgid "MarkBoth"
-msgstr "MarkBoth"
-
 #: lib/layouts/ijmpc.layout:88
 msgid "Classification Codes"
 msgstr "Коди класифікації"
@@ -6893,7 +6893,7 @@ msgid "Notation \\thenotation."
 msgstr "Позначення \\thenotation."
 
 #: lib/layouts/ijmpc.layout:200 lib/layouts/ijmpd.layout:203
-#: lib/layouts/theorems.inc:42 lib/layouts/theorems-ams.inc:42
+#: lib/layouts/theorems-ams.inc:42 lib/layouts/theorems.inc:42
 msgid "Theorem \\thetheorem."
 msgstr "Теорема \\thetheorem."
 
@@ -7083,8 +7083,8 @@ msgstr "Автор змісту"
 msgid "TOC Author:"
 msgstr "Автор змісту:"
 
-#: lib/layouts/llncs.layout:295 lib/layouts/theorems.inc:213
-#: lib/layouts/theorems-ams.inc:223
+#: lib/layouts/llncs.layout:295 lib/layouts/theorems-ams.inc:223
+#: lib/layouts/theorems.inc:213
 msgid "Case #."
 msgstr "Варіант #."
 
@@ -8495,47 +8495,47 @@ msgstr "Окремі відбитки"
 msgid "Offprints:"
 msgstr "Окремі відбитки:"
 
-#: lib/layouts/theorems.inc:63 lib/layouts/theorems-ams.inc:63
+#: lib/layouts/theorems-ams.inc:63 lib/layouts/theorems.inc:63
 msgid "Corollary \\thetheorem."
 msgstr "Наслідок \\thetheorem."
 
-#: lib/layouts/theorems.inc:75 lib/layouts/theorems-ams.inc:75
+#: lib/layouts/theorems-ams.inc:75 lib/layouts/theorems.inc:75
 msgid "Lemma \\thetheorem."
 msgstr "Лема \\thetheorem."
 
-#: lib/layouts/theorems.inc:87 lib/layouts/theorems-ams.inc:87
+#: lib/layouts/theorems-ams.inc:87 lib/layouts/theorems.inc:87
 msgid "Proposition \\thetheorem."
 msgstr "Твердження \\thetheorem."
 
-#: lib/layouts/theorems.inc:99 lib/layouts/theorems-ams.inc:99
+#: lib/layouts/theorems-ams.inc:99 lib/layouts/theorems.inc:99
 msgid "Conjecture \\thetheorem."
 msgstr "Припущення \\thetheorem."
 
-#: lib/layouts/theorems.inc:111 lib/layouts/theorems-ams.inc:111
+#: lib/layouts/theorems-ams.inc:111 lib/layouts/theorems.inc:111
 msgid "Fact \\thetheorem."
 msgstr "Факт \\thetheorem."
 
-#: lib/layouts/theorems.inc:123 lib/layouts/theorems-ams.inc:123
+#: lib/layouts/theorems-ams.inc:123 lib/layouts/theorems.inc:123
 msgid "Definition \\thetheorem."
 msgstr "Означення \\thetheorem."
 
-#: lib/layouts/theorems.inc:141 lib/layouts/theorems-ams.inc:141
+#: lib/layouts/theorems-ams.inc:141 lib/layouts/theorems.inc:141
 msgid "Example \\thetheorem."
 msgstr "Приклад \\thetheorem."
 
-#: lib/layouts/theorems.inc:153 lib/layouts/theorems-ams.inc:153
+#: lib/layouts/theorems-ams.inc:153 lib/layouts/theorems.inc:153
 msgid "Problem \\thetheorem."
 msgstr "Задача \\thetheorem."
 
-#: lib/layouts/theorems.inc:165 lib/layouts/theorems-ams.inc:165
+#: lib/layouts/theorems-ams.inc:165 lib/layouts/theorems.inc:165
 msgid "Exercise \\thetheorem."
 msgstr "Вправа \\thetheorem."
 
-#: lib/layouts/theorems.inc:178 lib/layouts/theorems-ams.inc:178
+#: lib/layouts/theorems-ams.inc:178 lib/layouts/theorems.inc:178
 msgid "Remark \\thetheorem."
 msgstr "Зауваження \\thetheorem."
 
-#: lib/layouts/theorems.inc:197 lib/layouts/theorems-ams.inc:197
+#: lib/layouts/theorems-ams.inc:197 lib/layouts/theorems.inc:197
 msgid "Claim \\thetheorem."
 msgstr "Вимога \\thetheorem."
 
@@ -8663,6 +8663,27 @@ msgstr "Нетипове:Кінцева примітка"
 #: lib/layouts/endnotes.module:18
 msgid "endnote"
 msgstr "кінцева примітка"
+
+#: lib/layouts/eqs-within-sections.module:2
+msgid "Number Equations by Section"
+msgstr ""
+
+#: lib/layouts/eqs-within-sections.module:6
+msgid ""
+"Resets the equation number at section start and prepends the section number "
+"to the equation number, as in '(2.1)'."
+msgstr ""
+
+#: lib/layouts/figs-within-sections.module:2
+#, fuzzy
+msgid "Number Figures by Section"
+msgstr "Теореми (впорядковані за розділами)"
+
+#: lib/layouts/figs-within-sections.module:6
+msgid ""
+"Resets the figure number at section start and prepends the section number to "
+"the figure number, as in 'fig. 2.1'."
+msgstr ""
 
 #: lib/layouts/foottoend.module:2
 msgid "Foot to End"
@@ -8828,6 +8849,17 @@ msgstr "Minimalistic"
 msgid "Redefines several insets (Index, Branch, URL) as being Minimalistic."
 msgstr ""
 "Перевизначає декілька вкладок (Index, Branch, URL) у стилі Minimalistic."
+
+#: lib/layouts/tabs-within-sections.module:2
+#, fuzzy
+msgid "Number Tables by Section"
+msgstr "Теореми (впорядковані за розділами)"
+
+#: lib/layouts/tabs-within-sections.module:6
+msgid ""
+"Resets the table number at section start and prepends the section number to "
+"the table number, as in 'Table 2.1'."
+msgstr ""
 
 #: lib/layouts/theorems-ams-extended.module:2
 msgid "Theorems (AMS-Extended)"
@@ -9426,87 +9458,87 @@ msgstr "Центральноєвропейське (CP 1250)"
 msgid "Cyrillic (CP 1251)"
 msgstr "Кирилиця (CP 1251)"
 
-#: lib/encodings:98
+#: lib/encodings:99
 msgid "Western European (CP 1252)"
 msgstr "Західноєвропейське (CP 1252)"
 
-#: lib/encodings:101
+#: lib/encodings:102
 msgid "Hebrew (CP 1255)"
 msgstr "Іврит (CP 1255)"
 
-#: lib/encodings:105
+#: lib/encodings:106
 msgid "Arabic (CP 1256)"
 msgstr "Арабське (CP 1256)"
 
-#: lib/encodings:108
+#: lib/encodings:109
 msgid "Baltic (CP 1257)"
 msgstr "Балтійське (CP 1257)"
 
-#: lib/encodings:111
+#: lib/encodings:112
 msgid "Cyrillic (KOI8-R)"
 msgstr "Кирилиця (KOI8-R)"
 
-#: lib/encodings:114
+#: lib/encodings:115
 msgid "Cyrillic (KOI8-U)"
 msgstr "Кирилиця (KOI8-U)"
 
-#: lib/encodings:117
+#: lib/encodings:118
 msgid "Cyrillic (pt 154)"
 msgstr "Кирилиця (pt 154)"
 
-#: lib/encodings:120
+#: lib/encodings:121
 msgid "Cyrillic (pt 254)"
 msgstr "Кирилиця (pt 254)"
 
-#: lib/encodings:145
+#: lib/encodings:146
 msgid "Chinese (simplified) (EUC-CN)"
 msgstr "Китайське (спрощене) (EUC-CN)"
 
-#: lib/encodings:149
+#: lib/encodings:150
 msgid "Chinese (simplified) (GBK)"
 msgstr "Китайське (спрощене) (GBK)"
 
-#: lib/encodings:153
+#: lib/encodings:154
 msgid "Japanese (CJK) (JIS)"
 msgstr "Японське (CJK) (JIS)"
 
-#: lib/encodings:157
+#: lib/encodings:158
 msgid "Korean (EUC-KR)"
 msgstr "Корейське (EUC-KR)"
 
-#: lib/encodings:161
+#: lib/encodings:162
 msgid "Unicode (CJK) (utf8)"
 msgstr "Unicode (CJK) (utf8)"
 
-#: lib/encodings:165
+#: lib/encodings:166
 msgid "Chinese (traditional) (EUC-TW)"
 msgstr "Китайське (традиційне) (EUC-TW)"
 
-#: lib/encodings:169
+#: lib/encodings:170
 msgid "Japanese (CJK) (EUC-JP)"
 msgstr "Японське (CJK) (EUC-JP)"
 
-#: lib/encodings:176
+#: lib/encodings:177
 msgid "Japanese (non-CJK) (EUC-JP)"
 msgstr "Японське (не-CJK) (EUC-JP)"
 
-#: lib/encodings:178
+#: lib/encodings:179
 msgid "Japanese (non-CJK) (JIS)"
 msgstr "Японське (не-CJK) (JIS)"
 
-#: lib/encodings:180
+#: lib/encodings:181
 msgid "Japanese (non-CJK) (SJIS)"
 msgstr "Японське (не-CJK) (SJIS)"
 
-#: lib/encodings:187
+#: lib/encodings:188
 msgid "Thai (TIS 620-0)"
 msgstr "Тайське (TIS 620-0)"
 
-#: lib/encodings:192
+#: lib/encodings:193
 msgid "Unicode (XeTeX) (utf8)"
 msgstr "Unicode (XeTeX) (utf8)"
 
-#: lib/encodings:196
+#: lib/encodings:197
 msgid "ASCII"
 msgstr "ASCII"
 
@@ -15756,8 +15788,8 @@ msgid ""
 "Could not check word `%1$s' because it could not be converted to encoding `%2"
 "$s'."
 msgstr ""
-"Не вдалося перевірити слово «%1$s», оскільки його кодування неможливо "
-"змінити на кодування «%2$s»."
+"Не вдалося перевірити слово «%1$s», оскільки його кодування неможливо змінити "
+"на кодування «%2$s»."
 
 #: src/ISpell.cpp:406
 msgid "Could not communicate with the ispell spellchecker process."
@@ -15976,7 +16008,7 @@ msgstr ""
 "\t-version        резюме відомостей про версію і збірку\n"
 "Докладніший опис командного рядка можна знайти в документації (man)."
 
-#: src/LyX.cpp:996 src/support/Package.cpp:552
+#: src/LyX.cpp:996
 msgid "No system directory"
 msgstr "Відсутня системна тека"
 
@@ -17334,11 +17366,11 @@ msgstr ""
 "Встановлення кольору не вдалося \"%1$s\" - колір не визначено або не може "
 "бути перевизначено"
 
-#: src/frontends/qt4/GuiApplication.cpp:1297
+#: src/frontends/qt4/GuiApplication.cpp:1296
 msgid "The current document was closed."
 msgstr "Поточний документ було закрито."
 
-#: src/frontends/qt4/GuiApplication.cpp:1307
+#: src/frontends/qt4/GuiApplication.cpp:1306
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -17350,12 +17382,12 @@ msgstr ""
 "\n"
 "Виключення: "
 
-#: src/frontends/qt4/GuiApplication.cpp:1311
-#: src/frontends/qt4/GuiApplication.cpp:1317
+#: src/frontends/qt4/GuiApplication.cpp:1310
+#: src/frontends/qt4/GuiApplication.cpp:1316
 msgid "Software exception Detected"
 msgstr "Виявлено виключення у програмі"
 
-#: src/frontends/qt4/GuiApplication.cpp:1315
+#: src/frontends/qt4/GuiApplication.cpp:1314
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -17363,12 +17395,12 @@ msgstr ""
 "У LyX сталося якесь дуже дивне виключення, зараз програма спробує зберегти "
 "всі незбережені документи і завершити роботу."
 
-#: src/frontends/qt4/GuiApplication.cpp:1477
-#: src/frontends/qt4/GuiApplication.cpp:1482
+#: src/frontends/qt4/GuiApplication.cpp:1476
+#: src/frontends/qt4/GuiApplication.cpp:1481
 msgid "Could not find UI definition file"
 msgstr "Не вдалося знайти файл налаштувань інтерфейсу"
 
-#: src/frontends/qt4/GuiApplication.cpp:1478
+#: src/frontends/qt4/GuiApplication.cpp:1477
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -17379,7 +17411,7 @@ msgstr ""
 "%1$s.\n"
 "Будь ласка перевірте встановлене."
 
-#: src/frontends/qt4/GuiApplication.cpp:1483
+#: src/frontends/qt4/GuiApplication.cpp:1482
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -17395,11 +17427,11 @@ msgstr ""
 "користувача\n"
 "і перевірте, чи належний файл інтерфейсу користувача використовує програма."
 
-#: src/frontends/qt4/GuiApplication.cpp:1491
+#: src/frontends/qt4/GuiApplication.cpp:1490
 msgid "Could not find default UI file"
 msgstr "Не вдалося знайти типовий файл налаштувань інтерфейсу"
 
-#: src/frontends/qt4/GuiApplication.cpp:1492
+#: src/frontends/qt4/GuiApplication.cpp:1491
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -20505,6 +20537,11 @@ msgstr "Рядок було замінено."
 msgid " strings have been replaced."
 msgstr " рядків було замінено."
 
+#: src/mathed/InsetFormulaMacro.cpp:120
+#, c-format
+msgid " Macro: %1$s: "
+msgstr "Макрос: %1$s: "
+
 #: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1421
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
@@ -20605,57 +20642,6 @@ msgstr "Анотація: "
 #: src/output_plaintext.cpp:148
 msgid "References: "
 msgstr "Посилання: "
-
-#: src/support/Package.cpp:433
-#, fuzzy
-msgid "LyX binary not found"
-msgstr "Рядок не знайдено!"
-
-#: src/support/Package.cpp:434
-#, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1$s"
-msgstr ""
-
-#: src/support/Package.cpp:553
-#, c-format
-msgid ""
-"Unable to determine the system directory having searched\n"
-"\t%1$s\n"
-"Use the '-sysdir' command line parameter or set the environment variable\n"
-"%2$s to the LyX system directory containing the file `chkconfig.ltx'."
-msgstr ""
-
-#: src/support/Package.cpp:634 src/support/Package.cpp:661
-#, fuzzy
-msgid "File not found"
-msgstr "Модуль не знайдено"
-
-#: src/support/Package.cpp:635
-#, c-format
-msgid ""
-"Invalid %1$s switch.\n"
-"Directory %2$s does not contain %3$s."
-msgstr ""
-
-#: src/support/Package.cpp:662
-#, c-format
-msgid ""
-"Invalid %1$s environment variable.\n"
-"Directory %2$s does not contain %3$s."
-msgstr ""
-
-#: src/support/Package.cpp:686
-#, c-format
-msgid ""
-"Invalid %1$s environment variable.\n"
-"%2$s is not a directory."
-msgstr ""
-
-#: src/support/Package.cpp:688
-#, fuzzy
-msgid "Directory not found"
-msgstr "Рядок не знайдено!"
 
 #: src/support/debug.cpp:38
 msgid "No debugging message"
@@ -20826,8 +20812,17 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Невідомий користувач"
 
-#~ msgid " Macro: %1$s: "
-#~ msgstr "Макрос: %1$s: "
+#, fuzzy
+#~ msgid "LyX binary not found"
+#~ msgstr "Рядок не знайдено!"
+
+#, fuzzy
+#~ msgid "File not found"
+#~ msgstr "Модуль не знайдено"
+
+#, fuzzy
+#~ msgid "Directory not found"
+#~ msgstr "Рядок не знайдено!"
 
 #~ msgid "Close Tab Group|G"
 #~ msgstr "Закрити групу вкладок|г"
