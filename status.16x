@@ -150,6 +150,8 @@ What's new
 - Fix the painting of RTL text. All rows except the last one of a
   paragraph were painted slightly too far to the left (bug 3997).
 
+- Fix the \kern primitive in mathed (bug 6246).
+
 
 * DOCUMENTATION AND LOCALIZATION
 

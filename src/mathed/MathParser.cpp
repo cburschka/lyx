@@ -1552,17 +1552,24 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		else if (t.cs() == "kern") {
 			// FIXME: A hack...
 			docstring s;
+			int num_tokens = 0;
 			while (true) {
 				Token const & t = getToken();
+				++num_tokens;
 				if (!good()) {
-					putback();
+					s.clear();
+					while (num_tokens--)
+						putback();
 					break;
 				}
 				s += t.character();
 				if (isValidLength(to_utf8(s)))
 					break;
 			}
-			cell->push_back(MathAtom(new InsetMathKern(s)));
+			if (s.empty())
+				cell->push_back(MathAtom(new InsetMathKern));
+			else
+				cell->push_back(MathAtom(new InsetMathKern(s)));
 		}
 
 		else if (t.cs() == "label") {

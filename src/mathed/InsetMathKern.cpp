@@ -57,13 +57,19 @@ void InsetMathKern::draw(PainterInfo &, int, int) const
 
 void InsetMathKern::write(WriteStream & os) const
 {
-	os << "\\kern" << from_utf8(wid_.asLatexString()) << ' ';
+	if (wid_.empty())
+		os << "\\kern" << ' ';
+	else
+		os << "\\kern" << from_utf8(wid_.asLatexString()) << ' ';
 }
 
 
 void InsetMathKern::normalize(NormalStream & os) const
 {
-	os << "[kern " << from_utf8(wid_.asLatexString()) << ']';
+	if (wid_.empty())
+		os << "[kern]";
+	else
+		os << "[kern " << from_utf8(wid_.asLatexString()) << ']';
 }
 
 
