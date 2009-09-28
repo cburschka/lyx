@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-09-28 13:12+0200\n"
-"PO-Revision-Date: 2009-09-23 21:35+0200\n"
+"PO-Revision-Date: 2009-09-28 20:37+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slowakisch <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -8636,24 +8636,27 @@ msgstr "koncová poznámka"
 
 #: lib/layouts/eqs-within-sections.module:2
 msgid "Number Equations by Section"
-msgstr ""
+msgstr "Očísluj rovnice podľa sekcie"
 
 #: lib/layouts/eqs-within-sections.module:6
 msgid ""
 "Resets the equation number at section start and prepends the section number "
 "to the equation number, as in '(2.1)'."
 msgstr ""
+"Vynuluj číslovanie rovníc na začiatku sekcie a"
+"predčísli ich sekciou, ako pri '(2.1)'."
 
 #: lib/layouts/figs-within-sections.module:2
-#, fuzzy
 msgid "Number Figures by Section"
-msgstr "Teorémy (Podľa sekcie)"
+msgstr "Očísluj obrázky podľa sekcie"
 
 #: lib/layouts/figs-within-sections.module:6
 msgid ""
 "Resets the figure number at section start and prepends the section number to "
 "the figure number, as in 'fig. 2.1'."
 msgstr ""
+"Vynuluj číslovanie obrázkov na začiatku sekcie a"
+"predčísli ich sekciou, ako pri 'Obrázok 2.1'."
 
 #: lib/layouts/foottoend.module:2
 msgid "Foot to End"
@@ -8821,15 +8824,16 @@ msgstr ""
 "Predefinovať niektoré z vložiek ako minimalistické (Index, Vetva, URL)."
 
 #: lib/layouts/tabs-within-sections.module:2
-#, fuzzy
 msgid "Number Tables by Section"
-msgstr "Teorémy (Podľa sekcie)"
+msgstr "Očísluj tabuľky podľa sekcie"
 
 #: lib/layouts/tabs-within-sections.module:6
 msgid ""
 "Resets the table number at section start and prepends the section number to "
 "the table number, as in 'Table 2.1'."
 msgstr ""
+"Vynuluj číslovanie tabuliek na začiatku sekcie a"
+"predčísli ich sekciou, ako pri 'Tabuľka 2.1'."
 
 #: lib/layouts/theorems-ams-extended.module:2
 msgid "Theorems (AMS-Extended)"
