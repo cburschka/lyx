@@ -8,6 +8,7 @@
 # modified and modularized by Emmanuel GUREGHIAN <gureghia@boston.bertin.fr>
 # Tinkered with Sep. '07 by Paul Rubin <rubin@msu.edu>
 # Modularized Jan '08 by Richard Heck <rgheck@brown.edu>
+# Moved "number within sections" to modules Aug '09 (Paul Rubin <rubin@msu.edu>)
 
 Format 11
 Columns                 1
@@ -20,6 +21,8 @@ ClassOptions
 End
 
 DefaultModule theorems-ams
+DefaultModule eqs-within-sections
+DefaultModule figs-within-sections
 
 Style Standard
 	Category              MainText
@@ -32,13 +35,6 @@ Style Standard
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
 End
-
-
-Preamble
-	\numberwithin{equation}{section} %% Comment out for sequentially-numbered
-	\numberwithin{figure}{section} %% Comment out for sequentially-numbered
-EndPreamble
-
 
 Input stdfloats.inc
 Input stdcounters.inc

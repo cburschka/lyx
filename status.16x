@@ -46,6 +46,10 @@ What's new
 - The size of previews (InstantPreview) can now be specified in the
   LyX preferences (bug 6176).
 
+- Include new modules to do equation/figure/table numbering sectionwise.
+  These modules are now used in the AMS classes instead of the previous
+  preamble hardcoding (bug 6123).
+
 
 * DOCUMENTATION AND LOCALIZATION
 

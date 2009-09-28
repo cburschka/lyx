@@ -1,0 +1,18 @@
+#\DeclareLyXModule{Number Figures by Section}
+#DescriptionBegin
+#Resets the figure number at section start and prepends
+#the section number to the figure number, as in 'fig. 2.1'.
+#DescriptionEnd
+
+Format 11
+
+Requires amsmath
+
+AddToPreamble
+	\numberwithin{figure}{section}
+EndPreamble
+
+Float
+	Type                  figure
+	NumberWithin          section
+End
