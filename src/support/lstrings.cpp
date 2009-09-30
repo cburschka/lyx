@@ -958,8 +958,8 @@ vector<docstring> wrapToVec(docstring const & str, int ind,
 	vector<docstring> retval;
 	while (s.size() > width) {
 		// find the last space within the first 'width' chars
-		int i = s.find_last_of(' ', width - 1);
-		if (i == docstring::npos || i <= ind) {
+		size_t i = s.find_last_of(' ', width - 1);
+		if (i == docstring::npos || i <= size_t(ind)) {
 			// no space found
 			s = s.substr(0, width - 3) + "...";
 			break;

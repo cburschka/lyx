@@ -1865,8 +1865,9 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 			break;
 		}
 		// put cursor in front of inset.
-		if (!setCursorFromInset(inset))
+		if (!setCursorFromInset(inset)) {
 			LASSERT(false, break);
+		}
 		// useful if we are called from a dialog.
 		cur.beginUndoGroup();
 		cur.recordUndo();
