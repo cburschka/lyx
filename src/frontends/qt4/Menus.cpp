@@ -781,7 +781,8 @@ void MenuDefinition::expandDocuments()
 			QString label = toqstr(b->fileName().displayName(20));
 			if (!b->isClean())
 				label += "*";
-			bool const shown = guiApp->currentView()->workArea(*b);
+			bool const shown = guiApp->currentView()
+					   ? guiApp->currentView()->workArea(*b) : false;
 			int ii = shown ? vis : invis;
 			if (ii < 10)
 				label = QString::number(ii) + ". " + label + '|' + QString::number(ii);

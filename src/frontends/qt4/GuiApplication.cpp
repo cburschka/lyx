@@ -1026,6 +1026,7 @@ void GuiApplication::resetGui()
 	QHash<int, GuiView *>::iterator it;
 	for (it = d->views_.begin(); it != d->views_.end(); ++it) {
 		GuiView * gv = *it;
+		setCurrentView(gv);
 		gv->setLayoutDirection(layoutDirection());
 		gv->resetDialogs();
 	}
