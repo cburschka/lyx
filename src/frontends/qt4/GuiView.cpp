@@ -652,7 +652,7 @@ void GuiView::clearMessage()
 {
 	if (!hasFocus())
 		return;
-	statusBar()->showMessage(toqstr(theLyXFunc().viewStatusMessage()));
+	showMessage();
 	d.statusbar_timer_.stop();
 }
 
@@ -729,7 +729,21 @@ void GuiView::updateStatusBar()
 	if (d.statusbar_timer_.isActive())
 		return;
 
-	statusBar()->showMessage(toqstr(theLyXFunc().viewStatusMessage()));
+	showMessage();
+}
+
+
+void GuiView::showMessage()
+{
+	QString msg = toqstr(theLyXFunc().viewStatusMessage());
+	if (msg.isEmpty()) {
+		BufferView const * bv = currentBufferView();
+		if (bv)
+			msg = toqstr(bv->cursor().currentState());
+		else
+			msg = qt_("Welcome to LyX!");
+	}
+	statusBar()->showMessage(msg);
 }
 
 

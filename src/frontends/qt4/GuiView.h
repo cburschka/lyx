@@ -334,6 +334,8 @@ private:
 	void reloadBuffer();
 	///
 	void dispatchVC(FuncRequest const & cmd);
+	///
+	void showMessage();
 
 	/// This view ID.
 	int id_;

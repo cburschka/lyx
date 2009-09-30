@@ -946,12 +946,7 @@ docstring LyXFunc::viewStatusMessage()
 	if (keyseq.length() > 0 && !keyseq.deleted())
 		return keyseq.printOptions(true);
 
-	LyXView * lv = theApp()->currentWindow();
-	LASSERT(lv, /**/);
-	if (!lv->currentBufferView())
-		return _("Welcome to LyX!");
-
-	return lv->currentBufferView()->cursor().currentState();
+	return docstring();
 }
 
 
