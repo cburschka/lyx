@@ -1445,8 +1445,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.check_layout(os);
 			begin_inset(os, "LatexCommand ");
 			os << t.cs() << "\n";
-			os << p.getOpt();
-			os << "key " << '"' << p.verbatim_item() << '"' << "\n";
+			os << "label \"" << p.getOptContent() << "\"\n";
+			os << "key \"" << p.verbatim_item() << "\"\n";
 			end_inset(os);
 		}
 

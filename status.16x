@@ -82,10 +82,12 @@ What's new
   This is a last resort to try to avoid data loss.
 
 - Fix a tex2lyx crash when importing a LaTeX file using an unknown encoding
-  (bug 6142)
+  (bug 6142).
 
-- add encoding "ansinew" as a synonym of "cp1252" for the benefit of 
-  tex2lyx (bug 6142)
+- Add encoding "ansinew" as a synonym of "cp1252" for the benefit of 
+  tex2lyx (bug 6142).
+
+- Fix support for optional argument of \bibitem in tex2lyx (bug 6249).
 
 - Fix support for polytonic Greek with multiple diacritics (bug 5976).
 
@@ -101,11 +103,11 @@ What's new
 - Properly reset the stream encoding after an environment in order to
   match the required file encoding when exporting to LaTeX (bug 6216).
 
-- Fixed layout file for the document class svjour3 (bug6198).
+- Fixed layout file for the document class svjour3 (bug 6198).
 
 - Added the separator style to the layout file for the document class
   elsarticle and adapted the elsarticle.lyx template file accordingly
-  (bug6189).
+  (bug 6189).
 
 
 * USER INTERFACE
