@@ -41,7 +41,7 @@ class Text {
 public:
 	/// constructor
 	explicit Text(InsetText * owner)
-		: owner_(owner), autoBreakRows_(false)
+		: owner_(owner), autoBreakRows_(false), undo_counter_(0)
 	{}
 
 	/// \return true if there's no content at all.
@@ -368,6 +368,8 @@ private:
 	bool autoBreakRows_;
 	/// position of the text in the buffer.
 	DocIterator macrocontext_position_;
+	///
+	unsigned int undo_counter_;
 };
 
 

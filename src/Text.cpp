@@ -927,12 +927,11 @@ void Text::charInserted(Cursor & cur)
 
 	// Here we call finishUndo for every 20 characters inserted.
 	// This is from my experience how emacs does it. (Lgb)
-	static unsigned int counter;
-	if (counter < 20) {
-		++counter;
+	if (undo_counter_ < 20) {
+		++undo_counter_;
 	} else {
 		cur.finishUndo();
-		counter = 0;
+		undo_counter_ = 0;
 	}
 
 	// register word if a non-letter was entered
