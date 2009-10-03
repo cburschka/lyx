@@ -2387,14 +2387,12 @@ msgid "On"
 msgstr "Zapnuto"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:68
-#, fuzzy
 msgid "Preview Si&ze:"
-msgstr "Náhled selhal"
+msgstr "&Velikost náhledu:"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:84
-#, fuzzy
-msgid "factor for the preview size"
-msgstr "Nastavte mìøítko pro náhled."
+msgid "Factor for the preview size"
+msgstr "Mìøítko pro náhled"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:33 src/frontends/qt4/GuiPrefs.cpp:225
 msgid "Editing"
@@ -3129,9 +3127,8 @@ msgid "&Maximum last files:"
 msgstr "&Maximum posledních souborù:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:140
-#, fuzzy
 msgid "Backup original documents when saving"
-msgstr "Zá&lohovat dokumenty, ka¾dých"
+msgstr "Zálohovat pùvodní dokumenty pøi ukládání"
 
 #: src/frontends/qt4/ui/PrefUi.ui:160
 msgid "minutes"
@@ -7610,9 +7607,8 @@ msgid "ACKNOWLEDGMENTS"
 msgstr "ACKNOWLEDGMENTS"
 
 #: lib/layouts/svglobal3.layout:69 lib/layouts/svglobal3.layout:72
-#, fuzzy
 msgid "Subclass"
-msgstr "Subjectclass"
+msgstr "Subclass"
 
 #: lib/layouts/aapaper.inc:54
 msgid "email:"
@@ -8644,24 +8640,25 @@ msgstr "koncová poznámka"
 
 #: lib/layouts/eqs-within-sections.module:2
 msgid "Number Equations by Section"
-msgstr ""
+msgstr "Rovnice (èísla dle sekcí)"
 
 #: lib/layouts/eqs-within-sections.module:6
 msgid ""
 "Resets the equation number at section start and prepends the section number "
 "to the equation number, as in '(2.1)'."
 msgstr ""
+"Zaèít èíslování pro ka¾dou sekci nanovo a jako prefix pou¾ít èíslo sekce, napø. (2.1)"
 
 #: lib/layouts/figs-within-sections.module:2
-#, fuzzy
 msgid "Number Figures by Section"
-msgstr "Teorémy (dle sekcí)"
+msgstr "Obrázky (èísla dle sekcí)"
 
 #: lib/layouts/figs-within-sections.module:6
 msgid ""
 "Resets the figure number at section start and prepends the section number to "
 "the figure number, as in 'fig. 2.1'."
 msgstr ""
+"Zaèít èíslování pro ka¾dou sekci nanovo a jako prefix pou¾ít èíslo sekce, napø. 'fig. 2.1'"
 
 #: lib/layouts/foottoend.module:2
 msgid "Foot to End"
@@ -8829,15 +8826,15 @@ msgid "Redefines several insets (Index, Branch, URL) as being Minimalistic."
 msgstr "Pøedefinovat nìkteré z vlo¾ek jako minimalistické (Index, Vìtev, URL)."
 
 #: lib/layouts/tabs-within-sections.module:2
-#, fuzzy
 msgid "Number Tables by Section"
-msgstr "Teorémy (dle sekcí)"
+msgstr "Tabulky (èísla dle sekcí)"
 
 #: lib/layouts/tabs-within-sections.module:6
 msgid ""
 "Resets the table number at section start and prepends the section number to "
 "the table number, as in 'Table 2.1'."
 msgstr ""
+"Zaèít èíslování pro ka¾dou sekci nanovo a jako prefix pou¾ít èíslo sekce, napø. 'Table 2.1'"
 
 #: lib/layouts/theorems-ams-extended.module:2
 msgid "Theorems (AMS-Extended)"
