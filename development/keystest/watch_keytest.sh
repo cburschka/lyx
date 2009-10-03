@@ -8,9 +8,23 @@ echo $LATEST_FILE | (
 	ls out/* -lotd | head
  )
 )
-ls out/* -tdo -1 | grep replay  
+ls out/* -tdo -1 | grep replay |head -n4
 
 LATEST_FILE=`ls out/* -td -1 | grep replay  | head -n1`
+if  [ $LATEST_FILE = "out/toreplay" ]
+then
+	#echo foo
+	LATEST_FILE=`ls out/toreplay/* -td -1 | grep replay  | head -n1`	
+fi
+
+if  [ $LATEST_FILE = "out/toreplay/replayed" ]
+then
+	echo foo
+	LATEST_FILE=`ls out/toreplay/replayed/* -td -1 | grep replay  | head -n1`	
+else
+	echo oof
+fi
+
 echo  LATEST_FILE $LATEST_FILE 
 echo $LATEST_FILE | (
  grep replay > /dev/null && (
@@ -19,12 +33,12 @@ echo $LATEST_FILE | (
 	ls $LATEST_FILE/*re -lotd | head
 	SEC=`cat $LATEST_FILE/last_crash_sec`
 	echo $SEC $(($NOW_SEC-$SEC))
-	ls -l $LATEST_FILE/$SEC.KEYCODEpure
+	ls -l $LATEST_FILE/$SEC.KEYCODEpure | head -n4
 	echo `cat $LATEST_FILE/$SEC.KEYCODEpure | sed s/KK:\//g`
 	cat $LATEST_FILE/$SEC.GDB | grep "signal SIG" -A 15
   else
 	ls $LATEST_FILE -lot | head
-	cat `echo $LATEST_FILE | sed s/KEYCODEpure.replay/GDB/` | grep "signal SIG" -A 9
+	cat `echo $LATEST_FILE | sed s/KEYCODEpure.replay/GDB/` | grep "signal SIG" -A 29
   fi
 	cat $LATEST_FILE/log | grep Bore | tail -n2
  ) || (
@@ -38,10 +52,10 @@ Trace
 reproduced
 X_PID
 x-session" out/log | grep -v kill | grep -v Terminated | tail -n 9
-exit
+#exit
 echo autolyx crashes ---------
 grep autolyx: out/log | grep -v kill | grep -v Terminated #-A 5
 echo python crashes ---------
-grep -i Trace out/log -A 5
-echo misc ----
-grep reproduced out/log | tail -n5
+grep -i -a Trace out/log -A 7 | tail -n8
+#echo misc ----
+#grep reproduced out/log | tail -n5

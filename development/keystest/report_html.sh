@@ -1,28 +1,18 @@
 #!/bin/bash
-LT=development/keystest
+#LT=development/keystest
+LT=`dirname $0`
 
 GEOM=320x200
-convert -normalize -scale $GEOM -quality $QUALITY $f $GEOM/$f
+QUALITY=85
+if [ -z "$KEYCODE_DIR" ]
+then
+	KEYCODE_DIR=out
+fi
+#convert -normalize -scale $GEOM -quality $QUALITY $f $GEOM/$f
 
 UNIQUE_LINE=1
-SRC=
 
-
-if [ -e out/log ]
-then	
-   LT=.
-fi
-
-while [ ! -e $LT/out/log ]
-do
-  cd ..
-  if [ `pwd` = '/' ]
-  then
-     exit
-  fi
-done
-
-OUT=$LT/out/html
+OUT=$LT/out/html4
 mkdir -p $OUT
 rm $OUT/index*.html
 ls $OUT/*.html
@@ -46,7 +36,7 @@ do
 	then
 		echo -n '\[!Loop]'
 	else
-		echo -n "$k" | sed s/^KK:\ //
+		echo -n "$k" | sed 's/^KK: //'
 	fi
 done
 }
@@ -55,24 +45,33 @@ html_keycode() {
 	  cat "$f_base.KEYCODEpure" | tidy_keycode 
 	  echo -n '<font color=gray>'
 	  cat "$f_base.KEYCODEpure+" | tidy_keycode 
-	  echo -n '</font><br/>'
+	  echo -n '</font>'
+
 }
 
 gdb2html() {
+echo g $g
 cat $g | sed 's/&/&amp/g' | sed 's/</&lt/g'  | while read -r l
 do
+	#c=`echo $l | grep -i -o "at [[:alnum:]./]*:[0-9]*"`
+	#We may want to support slashes later, but we'd have to support browsing
+	#Qt source for that to be useful for LyX
+ 
 	c=`echo $l | grep -i -o "at [[:alnum:].]*:[0-9]*"`
 	if [ -z "$c" ]
 	then
 		echo -- "$l" | sed s/--//
 	else
-		cpp=`echo "$c" | sed s/at\ // | sed s/:.*//g`
-		lineno=`echo "$c" | sed s/.*://g`
+		cpp=`echo "$c" | sed 's/at //' | sed 's/:.*//g'`
+		#cpp=`basename $cpp`
+		echo cpp $cpp
+		lineno=`echo "$c" | sed 's/.*://g'`
 		echo $cpp,$lineno 1>&2
 		#if [ -e "$CPP_HTML_DIR/$cpp.html" ]
 		if true
 		then
-			echo "$l" | sed "s/$c/<a href=$CPP_HTML_DIR_REL\/$cpp.html\#line$lineno>$c<\/a>/"
+			#echo "$l" | sed "s/$c/<a href=$CPP_HTML_DIR_REL\/$cpp.html\#line$lineno>$c<\/a>/"
+			echo "$l" | sed "s?$c?<a href=$CPP_HTML_DIR_REL\/$cpp.html\#line$lineno>$c<\/a>?"
 		else
 			echo "$l"
 		fi
@@ -80,12 +79,24 @@ do
 done | sed 's/^/<br\/>/'
 }
 
-for file in `find $LT/out/ | grep replay/last_crash_sec`
+echo beginning
+#for file in `find $LT/out/ -anewer $LT/out/html | grep replay/last_crash_sec`
+#for file in `find $KEYCODE_DIR | grep save/.*KEYCODEpure`
+for file in `find $KEYCODE_DIR -anewer oldfile | grep save/.*KEYCODEpure$`
 do
- echo last_crash_sec file: $file
- SEC=`cat $file`
+ lcs_file=`echo $file | sed 's/save\/.*//g'`last_crash_sec
+ echo last_crash_sec file: $lcs_file
+ SEC2=`cat $lcs_file`
+ SEC=`basename $file | sed s/[.].*$//g`
+ echo SEC .$SEC. .$SEC2.
+ #if [ ! $SEC -eq $SEC2 ]
+ #then
+	#break
+ #fi
  echo SEC $SEC
- f_base=`echo $file | sed s/last_crash_sec/$SEC/g`
+ #f_base=`echo $file | sed s/last_crash_sec/$SEC/g`
+ f_base=`dirname $file`'/'$SEC
+ echo f_base $f_base
  NUM_KEYCODES=`wc -l < "$f_base.KEYCODEpure"`
  echo NUM_KEYCODES=$NUM_KEYCODES...
  if [ "$NUM_KEYCODES" -lt 80 ]  
@@ -94,7 +105,6 @@ do
   f=$f_base.GDB
   echo $f
   g=$f.short
-  #if egrep '([Ii][Nn] .*[:[:alnum:]][:][0-9]*[^0-9]|#0 | signal SIG[^T])' -A9999  <$f >$g
   egrep '([Ii][Nn] .*[:[:alnum:]][:][0-9]*[^0-9]|#0 | signal SIG[^T])' -A9999  <$f >$g
   if true
   then
@@ -109,13 +119,22 @@ do
 	echo '<html>' >> $LT/out/$INDEX
 	echo -n "<a href=\"$SEC.html\">$TITLE</a> " >> $OUT/indexreport.html
 	html_keycode >> $OUT/indexreport.html
+	if ls $f_base.s*.png 
+	then
+		echo -n "<a href=\"$SEC.screenshot.html\">screenshots</a>" >> $OUT/indexreport.html
+	fi
+	echo -n '<br/> '>> $OUT/indexreport.html
 	echo >> $OUT/indexreport.html
+	echo -n '<br> '>> $LT/out/$INDEX
+	echo >> $LT/out/$INDEX
+
 	( echo '<html>'
 	  echo "<h1>$TITLE</h1>"
 	  html_keycode
 	  echo "<a href=$SEC.KEYCODE>KEYCODES</a> "
-	  echo "<a href=$SEC.GDB>GDB</a><br/>"
-	  echo "<a href=$SEC.GDB.png><img src=$SEC.small.png/></a><br/><br/>"
+	  echo "<a href=$SEC.GDB>GDB</a>"
+	  #echo "<a href=$SEC.GDB.png><img src=$SEC.small.png/></a><br/><br/>"
+	  echo "<a href=$SEC.screenshot.html><img src=$SEC.small.png/></a><br/><br/>"
 	  gdb2html
 	) > $OUT/$SEC.html
 	echo '<a href="'"$SEC.html"'">'$SEC'</a><br/>' >> $OUT/$INDEX
@@ -124,8 +143,12 @@ do
 	then  
 		convert -normalize -scale $GEOM $f.png $OUT/$SEC.small.png -quality 85
 	fi
-	chmod a+r $f $f.png $f_base.KEYCODE $f_base.html $OUT/indexreport.html
-	ln $f $f.png $f_base.KEYCODE $f_base.html $OUT/
+	chmod a+r $f $f.png $f_base.KEYCODE* $f_base.html $OUT/indexreport.html
+	ln $f $f.png $f_base.KEYCODE* $f_base.html $f_base.s*.png  $OUT/
+	if ls $f_base.s*.png 
+	then
+		$LT/make_screenshot_html.py $OUT $SEC > $OUT/$SEC.screenshot.html
+	fi
   fi
  fi
 done
@@ -134,5 +157,4 @@ echo "<html>" >> $OUT/indexreport.html
 echo "<h1>List of bugs found</h1>" >> $OUT/indexreport.html
 sort -k 2 -t '>' < $OUT/indexreport.html.bak >> $OUT/indexreport.html
 
-$OUT/
-exit
+firefox $OUT/indexreport.html
