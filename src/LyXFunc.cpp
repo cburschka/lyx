@@ -496,6 +496,49 @@ namespace {
 
 void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new);
 
+/// send a post-dispatch status message
+docstring sendDispatchMessage(docstring const & msg, FuncRequest const & cmd)
+{
+	const bool verbose = (cmd.origin == FuncRequest::MENU
+			      || cmd.origin == FuncRequest::TOOLBAR
+			      || cmd.origin == FuncRequest::COMMANDBUFFER);
+
+	if (cmd.action == LFUN_SELF_INSERT || !verbose) {
+		LYXERR(Debug::ACTION, "dispatch msg is " << msg);
+		return msg;
+	}
+
+	docstring dispatch_msg = msg;
+	if (!dispatch_msg.empty())
+		dispatch_msg += ' ';
+
+	docstring comname = from_utf8(lyxaction.getActionName(cmd.action));
+
+	bool argsadded = false;
+
+	if (!cmd.argument().empty()) {
+		if (cmd.action != LFUN_UNKNOWN_ACTION) {
+			comname += ' ' + cmd.argument();
+			argsadded = true;
+		}
+	}
+	docstring const shortcuts = theTopLevelKeymap().
+		printBindings(cmd, KeySequence::ForGui);
+
+	if (!shortcuts.empty())
+		comname += ": " + shortcuts;
+	else if (!argsadded && !cmd.argument().empty())
+		comname += ' ' + cmd.argument();
+
+	if (!comname.empty()) {
+		comname = rtrim(comname);
+		dispatch_msg += '(' + rtrim(comname) + ')';
+	}
+	LYXERR(Debug::ACTION, "verbose dispatch msg " << to_utf8(dispatch_msg));
+	return dispatch_msg;
+}
+
+
 } //namespace anon
 
 
@@ -730,11 +773,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			if (lv == 0)
 				break;
 
-			Buffer * doc_buffer = (lv && lv->documentBufferView())
-				? &(lv->documentBufferView()->buffer()) : 0;
-			if (doc_buffer && !theBufferList().isLoaded(doc_buffer))
-				doc_buffer = 0;
-
 			// Let the current LyXView dispatch its own actions.
 			if (lv->dispatch(cmd)) {
 				BufferView * bv = lv->currentBufferView();
@@ -846,55 +884,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 	}
 	if (lv) {
 		// Some messages may already be translated, so we cannot use _()
-		sendDispatchMessage(translateIfPossible(getMessage()), cmd);
+		lv->message(sendDispatchMessage(
+			translateIfPossible(getMessage()), cmd));
 	}
-}
-
-
-void LyXFunc::sendDispatchMessage(docstring const & msg, FuncRequest const & cmd)
-{
-	const bool verbose = (cmd.origin == FuncRequest::MENU
-			      || cmd.origin == FuncRequest::TOOLBAR
-			      || cmd.origin == FuncRequest::COMMANDBUFFER);
-
-	LyXView * lv = theApp()->currentWindow();
-	if (cmd.action == LFUN_SELF_INSERT || !verbose) {
-		LYXERR(Debug::ACTION, "dispatch msg is " << to_utf8(msg));
-		if (!msg.empty())
-			lv->message(msg);
-		return;
-	}
-
-	docstring dispatch_msg = msg;
-	if (!dispatch_msg.empty())
-		dispatch_msg += ' ';
-
-	docstring comname = from_utf8(lyxaction.getActionName(cmd.action));
-
-	bool argsadded = false;
-
-	if (!cmd.argument().empty()) {
-		if (cmd.action != LFUN_UNKNOWN_ACTION) {
-			comname += ' ' + cmd.argument();
-			argsadded = true;
-		}
-	}
-
-	docstring const shortcuts = theTopLevelKeymap().printBindings(cmd, KeySequence::ForGui);
-
-	if (!shortcuts.empty())
-		comname += ": " + shortcuts;
-	else if (!argsadded && !cmd.argument().empty())
-		comname += ' ' + cmd.argument();
-
-	if (!comname.empty()) {
-		comname = rtrim(comname);
-		dispatch_msg += '(' + rtrim(comname) + ')';
-	}
-
-	LYXERR(Debug::ACTION, "verbose dispatch msg " << to_utf8(dispatch_msg));
-	if (!dispatch_msg.empty())
-		lv->message(dispatch_msg);
 }
 
 

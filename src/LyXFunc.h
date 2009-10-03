@@ -107,10 +107,6 @@ private:
 	    good reason to have this one as static in Dispatch? (Ale)
 	*/
 	mutable docstring dispatch_buffer;
-
-	/// send a post-dispatch status message
-	void sendDispatchMessage(docstring const & msg,
-		FuncRequest const & ev);
 };
 
 /// Implementation is in LyX.cpp
