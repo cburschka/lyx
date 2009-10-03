@@ -174,6 +174,9 @@ void TocWidget::doDispatch(Cursor & cur, FuncRequest const & cmd)
 	TocItem const & item =
 		gui_view_.tocModels().currentItem(current_type_, index);
 
+	// Start an undo group.
+	cur.beginUndoGroup();
+
 	switch (cmd.action)
 	{
 	case LFUN_CHANGE_ACCEPT:
@@ -202,6 +205,7 @@ void TocWidget::doDispatch(Cursor & cur, FuncRequest const & cmd)
 		if (inset)
 			inset->dispatch(cur, tmpcmd);
 	}
+	cur.endUndoGroup();
 }
 
 

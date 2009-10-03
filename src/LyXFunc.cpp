@@ -734,20 +734,12 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				? &(lv->documentBufferView()->buffer()) : 0;
 			if (doc_buffer && !theBufferList().isLoaded(doc_buffer))
 				doc_buffer = 0;
-			// Start an undo group. This may be needed for
-			// some stuff like inset-apply on labels.
-			if (doc_buffer)
-				doc_buffer->undo().beginUndoGroup();
 
 			// Let the current LyXView dispatch its own actions.
 			if (lv->dispatch(cmd)) {
 				BufferView * bv = lv->currentBufferView();
-				if (bv) {
-					Buffer * buffer = &(bv->buffer());
+				if (bv)
 					updateFlags = bv->cursor().result().update();
-					if (buffer == doc_buffer && theBufferList().isLoaded(buffer))
-						buffer->undo().endUndoGroup();
-				}
 				break;
 			}
 
@@ -757,21 +749,14 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			// Let the current BufferView dispatch its own actions.
 			if (bv->dispatch(cmd)) {
 				// The BufferView took care of its own updates if needed.
-				Buffer * buffer = &(bv->buffer());
 				updateFlags = Update::None;
-				if (buffer == doc_buffer && theBufferList().isLoaded(buffer))
-					buffer->undo().endUndoGroup();
 				break;
 			}
 
 			BufferView * doc_bv = lv->documentBufferView();
 			// Try with the document BufferView dispatch if any.
 			if (doc_bv && doc_bv->dispatch(cmd)) {
-				// The BufferView took care of its own updates if needed.
-				Buffer * buffer = &(doc_bv->buffer());
 				updateFlags = Update::None;
-				if (buffer == doc_buffer && theBufferList().isLoaded(buffer))
-					buffer->undo().endUndoGroup();
 				break;
 			}
 
@@ -818,9 +803,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				if (badcursor)
 					bv->cursor().fixIfBroken();
 			}
-			Buffer * buffer = &(bv->buffer());
-			if (buffer == doc_buffer && theBufferList().isLoaded(buffer))
-				buffer->undo().endUndoGroup();
 
 			// update completion. We do it here and not in
 			// processKeySym to avoid another redraw just for a

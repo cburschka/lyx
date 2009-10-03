@@ -1742,6 +1742,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 	string const argument = to_utf8(func.argument());
 	// We'll set this back to false if need be.
 	bool dispatched = true;
+	undo().beginUndoGroup();
 
 	switch (func.action) {
 	case LFUN_BUFFER_TOGGLE_READ_ONLY:
@@ -2065,6 +2066,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 		break;
 	}
 	dr.dispatched(dispatched);
+	undo().endUndoGroup();
 }
 
 

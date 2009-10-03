@@ -286,6 +286,8 @@ void Cursor::dispatch(FuncRequest const & cmd0)
 	fixIfBroken();
 	FuncRequest cmd = cmd0;
 	Cursor safe = *this;
+
+	buffer()->undo().beginUndoGroup();
 	
 	// store some values to be used inside of the handlers
 	beforeDispatchCursor_ = *this;
@@ -327,6 +329,7 @@ void Cursor::dispatch(FuncRequest const & cmd0)
 		// are possible which would change it
 		beforeDispatchCursor_ = safe.beforeDispatchCursor_;
 	}
+	buffer()->undo().endUndoGroup();
 }
 
 

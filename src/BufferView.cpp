@@ -1214,6 +1214,11 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 	if (buffer_.isInternal() && lyxaction.funcHasFlag(cmd.action, LyXAction::NoInternal))
 		return false;
 
+	// We'll set this back to false if need be.
+	bool dispatched = true;
+	if (cmd.action != LFUN_UNDO && cmd.action != LFUN_REDO)
+		buffer_.undo().beginUndoGroup();
+
 	switch (cmd.action) {
 
 	case LFUN_BUFFER_PARAMS_APPLY: {
@@ -1868,22 +1873,21 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		if (!setCursorFromInset(inset)) {
 			LASSERT(false, break);
 		}
-		// useful if we are called from a dialog.
-		cur.beginUndoGroup();
 		cur.recordUndo();
 		FuncRequest fr(LFUN_INSET_MODIFY, cmd.argument());
 		inset->dispatch(cur, fr);
-		cur.endUndoGroup();
 		processUpdateFlags(Update::SinglePar | Update::FitCursor);
 		break;
 	}
 
-
 	default:
-		return false;
+		dispatched = false;
+		break;
 	}
 
-	return true;
+	if (cmd.action != LFUN_UNDO && cmd.action != LFUN_REDO)
+		buffer_.undo().endUndoGroup();
+	return dispatched;
 }
 
 
