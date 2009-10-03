@@ -491,13 +491,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	return flag;
 }
 
-
-namespace {
-
-void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new);
-
 /// send a post-dispatch status message
-docstring sendDispatchMessage(docstring const & msg, FuncRequest const & cmd)
+static docstring sendDispatchMessage(docstring const & msg, FuncRequest const & cmd)
 {
 	const bool verbose = (cmd.origin == FuncRequest::MENU
 			      || cmd.origin == FuncRequest::TOOLBAR
@@ -537,9 +532,6 @@ docstring sendDispatchMessage(docstring const & msg, FuncRequest const & cmd)
 	LYXERR(Debug::ACTION, "verbose dispatch msg " << to_utf8(dispatch_msg));
 	return dispatch_msg;
 }
-
-
-} //namespace anon
 
 
 void LyXFunc::dispatch(FuncRequest const & cmd)
@@ -931,174 +923,6 @@ bool LyXFunc::wasMetaKey() const
 
 
 namespace {
-
-void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
-{
-	// Why the switch you might ask. It is a trick to ensure that all
-	// the elements in the LyXRCTags enum is handled. As you can see
-	// there are no breaks at all. So it is just a huge fall-through.
-	// The nice thing is that we will get a warning from the compiler
-	// if we forget an element.
-	LyXRC::LyXRCTags tag = LyXRC::RC_LAST;
-	switch (tag) {
-	case LyXRC::RC_ACCEPT_COMPOUND:
-	case LyXRC::RC_ALT_LANG:
-	case LyXRC::RC_PLAINTEXT_LINELEN:
-	case LyXRC::RC_PLAINTEXT_ROFF_COMMAND:
-	case LyXRC::RC_AUTOCORRECTION_MATH:
-	case LyXRC::RC_AUTOREGIONDELETE:
-	case LyXRC::RC_AUTORESET_OPTIONS:
-	case LyXRC::RC_AUTOSAVE:
-	case LyXRC::RC_AUTO_NUMBER:
-	case LyXRC::RC_BACKUPDIR_PATH:
-	case LyXRC::RC_BIBTEX_ALTERNATIVES:
-	case LyXRC::RC_BIBTEX_COMMAND:
-	case LyXRC::RC_BINDFILE:
-	case LyXRC::RC_CHECKLASTFILES:
-	case LyXRC::RC_COMPLETION_CURSOR_TEXT:
-	case LyXRC::RC_COMPLETION_INLINE_DELAY:
-	case LyXRC::RC_COMPLETION_INLINE_DOTS:
-	case LyXRC::RC_COMPLETION_INLINE_MATH:
-	case LyXRC::RC_COMPLETION_INLINE_TEXT:
-	case LyXRC::RC_COMPLETION_POPUP_AFTER_COMPLETE:
-	case LyXRC::RC_COMPLETION_POPUP_DELAY:
-	case LyXRC::RC_COMPLETION_POPUP_MATH:
-	case LyXRC::RC_COMPLETION_POPUP_TEXT:
-	case LyXRC::RC_USELASTFILEPOS:
-	case LyXRC::RC_LOADSESSION:
-	case LyXRC::RC_CHKTEX_COMMAND:
-	case LyXRC::RC_CONVERTER:
-	case LyXRC::RC_CONVERTER_CACHE_MAXAGE:
-	case LyXRC::RC_COPIER:
-	case LyXRC::RC_CURSOR_FOLLOWS_SCROLLBAR:
-	case LyXRC::RC_SCROLL_BELOW_DOCUMENT:
-	case LyXRC::RC_DATE_INSERT_FORMAT:
-	case LyXRC::RC_DEFAULT_LANGUAGE:
-	case LyXRC::RC_GUI_LANGUAGE:
-	case LyXRC::RC_DEFAULT_PAPERSIZE:
-	case LyXRC::RC_DEFAULT_VIEW_FORMAT:
-	case LyXRC::RC_DEFFILE:
-	case LyXRC::RC_DIALOGS_ICONIFY_WITH_MAIN:
-	case LyXRC::RC_DISPLAY_GRAPHICS:
-	case LyXRC::RC_DOCUMENTPATH:
-		if (lyxrc_orig.document_path != lyxrc_new.document_path) {
-			FileName path(lyxrc_new.document_path);
-			if (path.exists() && path.isDirectory())
-				package().document_dir() = FileName(lyxrc.document_path);
-		}
-	case LyXRC::RC_EDITOR_ALTERNATIVES:
-	case LyXRC::RC_ESC_CHARS:
-	case LyXRC::RC_EXAMPLEPATH:
-	case LyXRC::RC_FONT_ENCODING:
-	case LyXRC::RC_FORMAT:
-	case LyXRC::RC_GROUP_LAYOUTS:
-	case LyXRC::RC_HUNSPELLDIR_PATH:
-	case LyXRC::RC_INDEX_ALTERNATIVES:
-	case LyXRC::RC_INDEX_COMMAND:
-	case LyXRC::RC_JBIBTEX_COMMAND:
-	case LyXRC::RC_JINDEX_COMMAND:
-	case LyXRC::RC_NOMENCL_COMMAND:
-	case LyXRC::RC_INPUT:
-	case LyXRC::RC_KBMAP:
-	case LyXRC::RC_KBMAP_PRIMARY:
-	case LyXRC::RC_KBMAP_SECONDARY:
-	case LyXRC::RC_LABEL_INIT_LENGTH:
-	case LyXRC::RC_LANGUAGE_AUTO_BEGIN:
-	case LyXRC::RC_LANGUAGE_AUTO_END:
-	case LyXRC::RC_LANGUAGE_COMMAND_BEGIN:
-	case LyXRC::RC_LANGUAGE_COMMAND_END:
-	case LyXRC::RC_LANGUAGE_COMMAND_LOCAL:
-	case LyXRC::RC_LANGUAGE_GLOBAL_OPTIONS:
-	case LyXRC::RC_LANGUAGE_PACKAGE:
-	case LyXRC::RC_LANGUAGE_USE_BABEL:
-	case LyXRC::RC_MAC_LIKE_WORD_MOVEMENT:
-	case LyXRC::RC_MACRO_EDIT_STYLE:
-	case LyXRC::RC_MAKE_BACKUP:
-	case LyXRC::RC_MARK_FOREIGN_LANGUAGE:
-	case LyXRC::RC_MOUSE_WHEEL_SPEED:
-	case LyXRC::RC_NUMLASTFILES:
-	case LyXRC::RC_PARAGRAPH_MARKERS:
-	case LyXRC::RC_PATH_PREFIX:
-		if (lyxrc_orig.path_prefix != lyxrc_new.path_prefix) {
-			prependEnvPath("PATH", lyxrc.path_prefix);
-		}
-	case LyXRC::RC_PERS_DICT:
-	case LyXRC::RC_PREVIEW:
-	case LyXRC::RC_PREVIEW_HASHED_LABELS:
-	case LyXRC::RC_PREVIEW_SCALE_FACTOR:
-	case LyXRC::RC_PRINTCOLLCOPIESFLAG:
-	case LyXRC::RC_PRINTCOPIESFLAG:
-	case LyXRC::RC_PRINTER:
-	case LyXRC::RC_PRINTEVENPAGEFLAG:
-	case LyXRC::RC_PRINTEXSTRAOPTIONS:
-	case LyXRC::RC_PRINTFILEEXTENSION:
-	case LyXRC::RC_PRINTLANDSCAPEFLAG:
-	case LyXRC::RC_PRINTODDPAGEFLAG:
-	case LyXRC::RC_PRINTPAGERANGEFLAG:
-	case LyXRC::RC_PRINTPAPERDIMENSIONFLAG:
-	case LyXRC::RC_PRINTPAPERFLAG:
-	case LyXRC::RC_PRINTREVERSEFLAG:
-	case LyXRC::RC_PRINTSPOOL_COMMAND:
-	case LyXRC::RC_PRINTSPOOL_PRINTERPREFIX:
-	case LyXRC::RC_PRINTTOFILE:
-	case LyXRC::RC_PRINTTOPRINTER:
-	case LyXRC::RC_PRINT_ADAPTOUTPUT:
-	case LyXRC::RC_PRINT_COMMAND:
-	case LyXRC::RC_RTL_SUPPORT:
-	case LyXRC::RC_SCREEN_DPI:
-	case LyXRC::RC_SCREEN_FONT_ROMAN:
-	case LyXRC::RC_SCREEN_FONT_ROMAN_FOUNDRY:
-	case LyXRC::RC_SCREEN_FONT_SANS:
-	case LyXRC::RC_SCREEN_FONT_SANS_FOUNDRY:
-	case LyXRC::RC_SCREEN_FONT_SCALABLE:
-	case LyXRC::RC_SCREEN_FONT_SIZES:
-	case LyXRC::RC_SCREEN_FONT_TYPEWRITER:
-	case LyXRC::RC_SCREEN_FONT_TYPEWRITER_FOUNDRY:
-	case LyXRC::RC_GEOMETRY_SESSION:
-	case LyXRC::RC_SCREEN_ZOOM:
-	case LyXRC::RC_SERVERPIPE:
-	case LyXRC::RC_SET_COLOR:
-	case LyXRC::RC_SHOW_BANNER:
-	case LyXRC::RC_OPEN_BUFFERS_IN_TABS:
-	case LyXRC::RC_SPELL_COMMAND:
-	case LyXRC::RC_SPELLCHECKER:
-	case LyXRC::RC_SPELLCHECK_CONTINUOUSLY:
-	case LyXRC::RC_SPLITINDEX_COMMAND:
-	case LyXRC::RC_TEMPDIRPATH:
-	case LyXRC::RC_TEMPLATEPATH:
-	case LyXRC::RC_TEX_ALLOWS_SPACES:
-	case LyXRC::RC_TEX_EXPECTS_WINDOWS_PATHS:
-		if (lyxrc_orig.windows_style_tex_paths != lyxrc_new.windows_style_tex_paths) {
-			os::windows_style_tex_paths(lyxrc_new.windows_style_tex_paths);
-		}
-	case LyXRC::RC_THESAURUSDIRPATH:
-	case LyXRC::RC_UIFILE:
-	case LyXRC::RC_USER_EMAIL:
-	case LyXRC::RC_USER_NAME:
-	case LyXRC::RC_USETEMPDIR:
-	case LyXRC::RC_USE_ALT_LANG:
-	case LyXRC::RC_USE_CONVERTER_CACHE:
-	case LyXRC::RC_USE_ESC_CHARS:
-	case LyXRC::RC_USE_INP_ENC:
-	case LyXRC::RC_USE_PERS_DICT:
-	case LyXRC::RC_USE_TOOLTIP:
-	case LyXRC::RC_USE_PIXMAP_CACHE:
-	case LyXRC::RC_USE_SPELL_LIB:
-	case LyXRC::RC_VIEWDVI_PAPEROPTION:
-	case LyXRC::RC_SORT_LAYOUTS:
-	case LyXRC::RC_FULL_SCREEN_LIMIT:
-	case LyXRC::RC_FULL_SCREEN_SCROLLBAR:
-	case LyXRC::RC_FULL_SCREEN_MENUBAR:
-	case LyXRC::RC_FULL_SCREEN_TABBAR:
-	case LyXRC::RC_FULL_SCREEN_TOOLBARS:
-	case LyXRC::RC_FULL_SCREEN_WIDTH:
-	case LyXRC::RC_VISUAL_CURSOR:
-	case LyXRC::RC_VIEWER:
-	case LyXRC::RC_VIEWER_ALTERNATIVES:
-	case LyXRC::RC_LAST:
-		break;
-	}
-}
 
 } // namespace anon
 } // namespace lyx

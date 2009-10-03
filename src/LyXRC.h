@@ -492,6 +492,7 @@ public:
 	operator LyXRC::PreviewStatus() const { return val_; }
 };
 
+void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new);
 
 ///
 extern LyXRC lyxrc;
