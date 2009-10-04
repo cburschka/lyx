@@ -1855,11 +1855,11 @@ void LyXFunc::reloadBuffer()
 	Buffer * buf = lyx_view_->loadDocument(filename);
 	docstring const disp_fn = makeDisplayPath(filename.absFilename());
 	docstring str;
-	// re-allocate master if necessary
-	if (is_child && theBufferList().isLoaded(master)
-	    && buf->masterBuffer() != master)
-		buf->setParent(master);
 	if (buf) {
+		// re-allocate master if necessary
+		if (is_child && theBufferList().isLoaded(master)
+		    && buf->masterBuffer() != master)
+			buf->setParent(master);
 		updateLabels(*buf);
 		lyx_view_->setBuffer(buf);
 		buf->errors("Parse");
