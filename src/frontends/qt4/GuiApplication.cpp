@@ -38,6 +38,7 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "Intl.h"
+#include "KeyMap.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
@@ -47,6 +48,7 @@
 #include "LyXRC.h"
 #include "Server.h"
 #include "Session.h"
+#include "SpellChecker.h"
 #include "version.h"
 
 #include "support/lassert.h"
