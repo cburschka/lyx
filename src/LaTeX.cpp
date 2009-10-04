@@ -659,7 +659,9 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				retval |= RERUN;
 			}
 		} else if (prefixIs(token, "! ") ||
-			   fle_style && regex_match(token, sub, file_line_error)) {
+			   (fle_style &&
+			    regex_match(token, sub, file_line_error) &&
+			    !contains(token, "pdfTeX warning"))) {
 			   // Ok, we have something that looks like a TeX Error
 			   // but what do we really have.
 
