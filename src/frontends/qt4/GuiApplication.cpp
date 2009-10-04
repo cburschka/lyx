@@ -1172,7 +1172,7 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 {
 	LYXERR(Debug::KEY, "KeySym is " << keysym.getSymbolName());
 
-	LyXView * lv = theApp()->currentWindow();
+	GuiView * lv = currentView();
 
 	// Do nothing if we have nothing (JMarc)
 	if (!keysym.isOK()) {
