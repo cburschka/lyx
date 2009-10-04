@@ -2657,6 +2657,7 @@ lib_layouts_files = Split('''
     docbook-chapter.layout
     docbook-section.layout
     docbook.layout
+    doublecol.layout
     dtk.layout
     egs.layout
     elsart.layout
@@ -2716,6 +2717,7 @@ lib_layouts_files = Split('''
     sigplanconf.layout
     simplecv.layout
     singlecol.layout
+    singlecol-new.layout
     slides.layout
     spie.layout
     svglobal.layout

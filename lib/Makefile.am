@@ -1026,6 +1026,7 @@ dist_layouts_DATA =\
 	layouts/docbook-chapter.layout \
 	layouts/docbook-section.layout \
 	layouts/docbook.layout \
+	layouts/doublecol.layout \
 	layouts/dtk.layout \
 	layouts/egs.layout \
 	layouts/elsart.layout \
@@ -1099,6 +1100,7 @@ dist_layouts_DATA =\
 	layouts/sigplanconf.layout \
 	layouts/simplecv.layout \
 	layouts/singlecol.layout \
+	layouts/singlecol-new.layout \
 	layouts/slides.layout \
 	layouts/spie.layout \
 	layouts/stdclass.inc \
