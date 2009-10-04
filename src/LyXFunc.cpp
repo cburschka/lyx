@@ -162,24 +162,10 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		return flag;
 	}
 
-	switch (cmd.action) {
-	case LFUN_UNKNOWN_ACTION:
+	if (cmd.action == LFUN_UNKNOWN_ACTION) {
 		flag.unknown(true);
 		flag.setEnabled(false);
-		break;
-
-	default:
-		break;
-	}
-
-	if (flag.unknown()) {
 		flag.message(from_utf8(N_("Unknown action")));
-		return flag;
-	}
-
-	if (!flag.enabled()) {
-		if (flag.message().empty())
-			flag.message(from_utf8(N_("Command disabled")));
 		return flag;
 	}
 
