@@ -37,12 +37,15 @@
 #include "Font.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
+#include "Intl.h"
 #include "Language.h"
+#include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "LyX.h"
 #include "LyXAction.h"
 #include "LyXFunc.h"
 #include "LyXRC.h"
+#include "Server.h"
 #include "Session.h"
 #include "version.h"
 
@@ -59,6 +62,8 @@
 #include "support/Messages.h"
 #include "support/os.h"
 #include "support/Package.h"
+#include "support/Path.h"
+#include "support/Systemcall.h"
 
 #ifdef Q_WS_MACX
 #include "support/linkback/LinkBackProxy.h"
@@ -471,7 +476,7 @@ public:
 			QKeyEvent * ke = static_cast<QKeyEvent*>(e);
 			KeySymbol sym;
 			setKeySymbol(&sym, ke);
-			theLyXFunc().processKeySym(sym, q_key_state(ke->modifiers()));
+			guiApp->processKeySym(sym, q_key_state(ke->modifiers()));
 			e->accept();
 			return true;
 		}
@@ -644,12 +649,20 @@ public:
 
 struct GuiApplication::Private
 {
-	Private(): language_model_(0), global_menubar_(0) 
+	Private(): language_model_(0), global_menubar_(0),
+		encoded_last_key(0), meta_fake_bit(NoModifier)
 	{
 	#ifdef Q_WS_WIN
 		/// WMF Mime handler for Windows clipboard.
 		wmf_mime_ = new QWindowsMimeMetafile();
 	#endif
+		initKeySequences(&theTopLevelKeymap());
+	}
+
+	void initKeySequences(KeyMap * kb)
+	{
+		keyseq = KeySequence(kb, kb);
+		cancel_meta_seq = KeySequence(kb, kb);
 	}
 
 	///
@@ -679,6 +692,16 @@ struct GuiApplication::Private
 
 	/// delayed FuncRequests
 	std::queue<FuncRequest> func_request_queue_;
+
+	/// the last character added to the key sequence, in UCS4 encoded form
+	char_type encoded_last_key;
+
+	///
+	KeySequence keyseq;
+	///
+	KeySequence cancel_meta_seq;
+	///
+	KeyModifier meta_fake_bit;
 
 	/// Multiple views container.
 	/**
@@ -833,6 +856,13 @@ bool GuiApplication::getStatus(FuncRequest const & cmd, FuncStatus & flag) const
 	case LFUN_SET_COLOR:
 	case LFUN_WINDOW_NEW:
 	case LFUN_LYX_QUIT:
+	case LFUN_LYXRC_APPLY:
+	case LFUN_COMMAND_PREFIX:
+	case LFUN_CANCEL:
+	case LFUN_META_PREFIX:
+	case LFUN_RECONFIGURE:
+	case LFUN_SERVER_GET_FILENAME:
+	case LFUN_SERVER_NOTIFY:
 		enable = true;
 		break;
 
@@ -846,8 +876,45 @@ bool GuiApplication::getStatus(FuncRequest const & cmd, FuncStatus & flag) const
 	return true;
 }
 
-	
-bool GuiApplication::dispatch(FuncRequest const & cmd)
+
+// This function runs "configure" and then rereads lyx.defaults to
+// reconfigure the automatic settings.
+static void reconfigure(LyXView * lv, string const & option)
+{
+	// emit message signal.
+	if (lv)
+		lv->message(_("Running configure..."));
+
+	// Run configure in user lyx directory
+	PathChanger p(package().user_support());
+	string configure_command = package().configure_command();
+	configure_command += option;
+	Systemcall one;
+	int ret = one.startscript(Systemcall::Wait, configure_command);
+	p.pop();
+	// emit message signal.
+	if (lv)
+		lv->message(_("Reloading configuration..."));
+	lyxrc.read(libFileSearch(QString(), "lyxrc.defaults"));
+	// Re-read packages.lst
+	LaTeXFeatures::getAvailable();
+
+	if (ret)
+		Alert::information(_("System reconfiguration failed"),
+			   _("The system reconfiguration has failed.\n"
+				  "Default textclass is used but LyX may "
+				  "not be able to work properly.\n"
+				  "Please reconfigure again if needed."));
+	else
+
+		Alert::information(_("System reconfigured"),
+			   _("The system has been reconfigured.\n"
+			     "You need to restart LyX to make use of any\n"
+			     "updated document class specifications."));
+}
+
+
+void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 {
 	switch (cmd.action) {
 
@@ -993,13 +1060,213 @@ bool GuiApplication::dispatch(FuncRequest const & cmd)
 		break;
 	}
 
+	case LFUN_LYXRC_APPLY: {
+		// reset active key sequences, since the bindings
+		// are updated (bug 6064)
+		d->keyseq.reset();
+		LyXRC const lyxrc_orig = lyxrc;
+
+		istringstream ss(to_utf8(cmd.argument()));
+		bool const success = lyxrc.read(ss) == 0;
+
+		if (!success) {
+			lyxerr << "Warning in LFUN_LYXRC_APPLY!\n"
+				<< "Unable to read lyxrc data"
+				<< endl;
+			break;
+		}
+
+		actOnUpdatedPrefs(lyxrc_orig, lyxrc);
+		setSpellChecker();
+		resetGui();
+
+		break;
+	}
+
+	case LFUN_COMMAND_PREFIX:
+		lyx::dispatch(FuncRequest(LFUN_MESSAGE, d->keyseq.printOptions(true)));
+		break;
+
+	case LFUN_CANCEL: {
+		d->keyseq.reset();
+		d->meta_fake_bit = NoModifier;
+		GuiView * gv = currentView();
+		if (gv && gv->currentBufferView())
+			// cancel any selection
+			lyx::dispatch(FuncRequest(LFUN_MARK_OFF));
+		dr.setMessage(from_ascii(N_("Cancel")));
+		break;
+	}
+	case LFUN_META_PREFIX:
+		d->meta_fake_bit = AltModifier;
+		dr.setMessage(d->keyseq.print(KeySequence::ForGui));
+		break;
+
+	// --- Menus -----------------------------------------------
+	case LFUN_RECONFIGURE:
+		// argument is any additional parameter to the configure.py command
+		reconfigure(currentView(), to_utf8(cmd.argument()));
+		break;
+
+	// --- lyxserver commands ----------------------------
+	case LFUN_SERVER_GET_FILENAME: {
+		GuiView * lv = currentView();
+		LASSERT(lv && lv->documentBufferView(), return);
+		docstring const fname = from_utf8(
+			lv->documentBufferView()->buffer().absFileName());
+		dr.setMessage(fname);
+		LYXERR(Debug::INFO, "FNAME[" << fname << ']');
+		break;
+	}
+	case LFUN_SERVER_NOTIFY: {
+		docstring const dispatch_buffer = d->keyseq.print(KeySequence::Portable);
+		dr.setMessage(dispatch_buffer);
+		theServer().notifyClient(to_utf8(dispatch_buffer));
+		break;
+	}
 	default:
 		// Notify the caller that the action has not been dispatched.
-		return false;
+		dr.dispatched(false);
+		return;
 	}
 
 	// The action has been dispatched.
-	return true;
+	dr.dispatched(true);
+}
+
+
+docstring GuiApplication::viewStatusMessage()
+{
+	// When meta-fake key is pressed, show the key sequence so far + "M-".
+	if (d->meta_fake_bit != NoModifier)
+		return d->keyseq.print(KeySequence::ForGui) + "M-";
+
+	// Else, when a non-complete key sequence is pressed,
+	// show the available options.
+	if (d->keyseq.length() > 0 && !d->keyseq.deleted())
+		return d->keyseq.printOptions(true);
+
+	return docstring();
+}
+
+
+void GuiApplication::handleKeyFunc(FuncCode action)
+{
+	char_type c = d->encoded_last_key;
+
+	if (d->keyseq.length())
+		c = 0;
+	GuiView * gv = currentView();
+	LASSERT(gv && gv->currentBufferView(), return);
+	BufferView * bv = gv->currentBufferView();
+	bv->getIntl().getTransManager().deadkey(
+		c, get_accent(action).accent, bv->cursor().innerText(),
+		bv->cursor());
+	// Need to clear, in case the minibuffer calls these
+	// actions
+	d->keyseq.clear();
+	// copied verbatim from do_accent_char
+	bv->cursor().resetAnchor();
+	bv->processUpdateFlags(Update::FitCursor);
+}
+
+
+void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
+{
+	LYXERR(Debug::KEY, "KeySym is " << keysym.getSymbolName());
+
+	LyXView * lv = theApp()->currentWindow();
+
+	// Do nothing if we have nothing (JMarc)
+	if (!keysym.isOK()) {
+		LYXERR(Debug::KEY, "Empty kbd action (probably composing)");
+		lv->restartCursor();
+		return;
+	}
+
+	if (keysym.isModifier()) {
+		LYXERR(Debug::KEY, "isModifier true");
+		if (lv)
+			lv->restartCursor();
+		return;
+	}
+
+	//Encoding const * encoding = lv->documentBufferView()->cursor().getEncoding();
+	//encoded_last_key = keysym.getISOEncoded(encoding ? encoding->name() : "");
+	// FIXME: encoded_last_key shadows the member variable of the same
+	// name. Is that intended?
+	char_type encoded_last_key = keysym.getUCSEncoded();
+
+	// Do a one-deep top-level lookup for
+	// cancel and meta-fake keys. RVDK_PATCH_5
+	d->cancel_meta_seq.reset();
+
+	FuncRequest func = d->cancel_meta_seq.addkey(keysym, state);
+	LYXERR(Debug::KEY, "action first set to [" << func.action << ']');
+
+	// When not cancel or meta-fake, do the normal lookup.
+	// Note how the meta_fake Mod1 bit is OR-ed in and reset afterwards.
+	// Mostly, meta_fake_bit = NoModifier. RVDK_PATCH_5.
+	if ((func.action != LFUN_CANCEL) && (func.action != LFUN_META_PREFIX)) {
+		// remove Caps Lock and Mod2 as a modifiers
+		func = d->keyseq.addkey(keysym, (state | d->meta_fake_bit));
+		LYXERR(Debug::KEY, "action now set to [" << func.action << ']');
+	}
+
+	// Dont remove this unless you know what you are doing.
+	d->meta_fake_bit = NoModifier;
+
+	// Can this happen now ?
+	if (func.action == LFUN_NOACTION)
+		func = FuncRequest(LFUN_COMMAND_PREFIX);
+
+	LYXERR(Debug::KEY, " Key [action=" << func.action << "]["
+		<< d->keyseq.print(KeySequence::Portable) << ']');
+
+	// already here we know if it any point in going further
+	// why not return already here if action == -1 and
+	// num_bytes == 0? (Lgb)
+
+	if (d->keyseq.length() > 1)
+		lv->message(d->keyseq.print(KeySequence::ForGui));
+
+
+	// Maybe user can only reach the key via holding down shift.
+	// Let's see. But only if shift is the only modifier
+	if (func.action == LFUN_UNKNOWN_ACTION && state == ShiftModifier) {
+		LYXERR(Debug::KEY, "Trying without shift");
+		func = d->keyseq.addkey(keysym, NoModifier);
+		LYXERR(Debug::KEY, "Action now " << func.action);
+	}
+
+	if (func.action == LFUN_UNKNOWN_ACTION) {
+		// Hmm, we didn't match any of the keysequences. See
+		// if it's normal insertable text not already covered
+		// by a binding
+		if (keysym.isText() && d->keyseq.length() == 1) {
+			LYXERR(Debug::KEY, "isText() is true, inserting.");
+			func = FuncRequest(LFUN_SELF_INSERT,
+					   FuncRequest::KEYBOARD);
+		} else {
+			LYXERR(Debug::KEY, "Unknown, !isText() - giving up");
+			lv->message(_("Unknown function."));
+			lv->restartCursor();
+			return;
+		}
+	}
+
+	if (func.action == LFUN_SELF_INSERT) {
+		if (encoded_last_key != 0) {
+			docstring const arg(1, encoded_last_key);
+			lyx::dispatch(FuncRequest(LFUN_SELF_INSERT, arg,
+					     FuncRequest::KEYBOARD));
+			LYXERR(Debug::KEY, "SelfInsert arg[`" << to_utf8(arg) << "']");
+		}
+	} else {
+		lyx::dispatch(func);
+		if (!lv)
+			return;
+	}
 }
 
 
@@ -1031,7 +1298,7 @@ void GuiApplication::resetGui()
 		gv->resetDialogs();
 	}
 
-	dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
+	lyx::dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
 }
 
 

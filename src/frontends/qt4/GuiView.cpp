@@ -735,7 +735,7 @@ void GuiView::updateStatusBar()
 
 void GuiView::showMessage()
 {
-	QString msg = toqstr(theLyXFunc().viewStatusMessage());
+	QString msg = toqstr(theGuiApp()->viewStatusMessage());
 	if (msg.isEmpty()) {
 		BufferView const * bv = currentBufferView();
 		if (bv)
@@ -827,7 +827,7 @@ bool GuiView::event(QEvent * e)
 		// is viewed.
 		KeySymbol sym;
 		setKeySymbol(&sym, ke);
-		theLyXFunc().processKeySym(sym, q_key_state(ke->modifiers()));
+		guiApp->processKeySym(sym, q_key_state(ke->modifiers()));
 		e->accept();
 		return true;
 	}

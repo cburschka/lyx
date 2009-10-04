@@ -40,10 +40,8 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "InsetIterator.h"
-#include "Intl.h"
 #include "KeyMap.h"
 #include "Language.h"
-#include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "LyXAction.h"
 #include "lyxfind.h"
@@ -54,7 +52,6 @@
 #include "ParagraphParameters.h"
 #include "ParIterator.h"
 #include "Row.h"
-#include "Server.h"
 #include "Session.h"
 #include "SpellChecker.h"
 
@@ -71,9 +68,7 @@
 #include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
-#include "support/Path.h"
 #include "support/Package.h"
-#include "support/Systemcall.h"
 #include "support/convert.h"
 #include "support/os.h"
 
@@ -89,80 +84,10 @@ using frontend::LyXView;
 
 namespace Alert = frontend::Alert;
 
-namespace {
-
-
-// This function runs "configure" and then rereads lyx.defaults to
-// reconfigure the automatic settings.
-void reconfigure(LyXView * lv, string const & option)
-{
-	// emit message signal.
-	if (lv)
-		lv->message(_("Running configure..."));
-
-	// Run configure in user lyx directory
-	PathChanger p(package().user_support());
-	string configure_command = package().configure_command();
-	configure_command += option;
-	Systemcall one;
-	int ret = one.startscript(Systemcall::Wait, configure_command);
-	p.pop();
-	// emit message signal.
-	if (lv)
-		lv->message(_("Reloading configuration..."));
-	lyxrc.read(libFileSearch(string(), "lyxrc.defaults"));
-	// Re-read packages.lst
-	LaTeXFeatures::getAvailable();
-
-	if (ret)
-		Alert::information(_("System reconfiguration failed"),
-			   _("The system reconfiguration has failed.\n"
-				  "Default textclass is used but LyX may "
-				  "not be able to work properly.\n"
-				  "Please reconfigure again if needed."));
-	else
-
-		Alert::information(_("System reconfigured"),
-			   _("The system has been reconfigured.\n"
-			     "You need to restart LyX to make use of any\n"
-			     "updated document class specifications."));
-}
-
-}
-
-
 LyXFunc::LyXFunc()
-	: encoded_last_key(0), meta_fake_bit(NoModifier)
 {
 }
 
-
-void LyXFunc::initKeySequences(KeyMap * kb)
-{
-	keyseq = KeySequence(kb, kb);
-	cancel_meta_seq = KeySequence(kb, kb);
-}
-
-
-void LyXFunc::handleKeyFunc(FuncCode action)
-{
-	char_type c = encoded_last_key;
-
-	if (keyseq.length())
-		c = 0;
-	LyXView * lv = theApp()->currentWindow();
-	LASSERT(lv && lv->currentBufferView(), /**/);
-	BufferView * bv = lv->currentBufferView();
-	bv->getIntl().getTransManager().deadkey(
-		c, get_accent(action).accent, bv->cursor().innerText(),
-		bv->cursor());
-	// Need to clear, in case the minibuffer calls these
-	// actions
-	keyseq.clear();
-	// copied verbatim from do_accent_char
-	bv->cursor().resetAnchor();
-	bv->processUpdateFlags(Update::FitCursor);
-}
 
 //FIXME: bookmark handling is a frontend issue. This code should be transferred
 // to GuiView and be GuiView and be window dependent.
@@ -222,105 +147,6 @@ void LyXFunc::gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer)
 		|| bm.top_id != new_id) {
 		const_cast<BookmarksSection::Bookmark &>(bm).updatePos(
 			new_pit, new_pos, new_id);
-	}
-}
-
-
-void LyXFunc::processKeySym(KeySymbol const & keysym, KeyModifier state)
-{
-	LYXERR(Debug::KEY, "KeySym is " << keysym.getSymbolName());
-
-	LyXView * lv = theApp()->currentWindow();
-
-	// Do nothing if we have nothing (JMarc)
-	if (!keysym.isOK()) {
-		LYXERR(Debug::KEY, "Empty kbd action (probably composing)");
-		lv->restartCursor();
-		return;
-	}
-
-	if (keysym.isModifier()) {
-		LYXERR(Debug::KEY, "isModifier true");
-		if (lv)
-			lv->restartCursor();
-		return;
-	}
-
-	//Encoding const * encoding = lv->documentBufferView()->cursor().getEncoding();
-	//encoded_last_key = keysym.getISOEncoded(encoding ? encoding->name() : "");
-	// FIXME: encoded_last_key shadows the member variable of the same
-	// name. Is that intended?
-	char_type encoded_last_key = keysym.getUCSEncoded();
-
-	// Do a one-deep top-level lookup for
-	// cancel and meta-fake keys. RVDK_PATCH_5
-	cancel_meta_seq.reset();
-
-	FuncRequest func = cancel_meta_seq.addkey(keysym, state);
-	LYXERR(Debug::KEY, "action first set to [" << func.action << ']');
-
-	// When not cancel or meta-fake, do the normal lookup.
-	// Note how the meta_fake Mod1 bit is OR-ed in and reset afterwards.
-	// Mostly, meta_fake_bit = NoModifier. RVDK_PATCH_5.
-	if ((func.action != LFUN_CANCEL) && (func.action != LFUN_META_PREFIX)) {
-		// remove Caps Lock and Mod2 as a modifiers
-		func = keyseq.addkey(keysym, (state | meta_fake_bit));
-		LYXERR(Debug::KEY, "action now set to [" << func.action << ']');
-	}
-
-	// Dont remove this unless you know what you are doing.
-	meta_fake_bit = NoModifier;
-
-	// Can this happen now ?
-	if (func.action == LFUN_NOACTION)
-		func = FuncRequest(LFUN_COMMAND_PREFIX);
-
-	LYXERR(Debug::KEY, " Key [action=" << func.action << "]["
-		<< keyseq.print(KeySequence::Portable) << ']');
-
-	// already here we know if it any point in going further
-	// why not return already here if action == -1 and
-	// num_bytes == 0? (Lgb)
-
-	if (keyseq.length() > 1)
-		lv->message(keyseq.print(KeySequence::ForGui));
-
-
-	// Maybe user can only reach the key via holding down shift.
-	// Let's see. But only if shift is the only modifier
-	if (func.action == LFUN_UNKNOWN_ACTION && state == ShiftModifier) {
-		LYXERR(Debug::KEY, "Trying without shift");
-		func = keyseq.addkey(keysym, NoModifier);
-		LYXERR(Debug::KEY, "Action now " << func.action);
-	}
-
-	if (func.action == LFUN_UNKNOWN_ACTION) {
-		// Hmm, we didn't match any of the keysequences. See
-		// if it's normal insertable text not already covered
-		// by a binding
-		if (keysym.isText() && keyseq.length() == 1) {
-			LYXERR(Debug::KEY, "isText() is true, inserting.");
-			func = FuncRequest(LFUN_SELF_INSERT,
-					   FuncRequest::KEYBOARD);
-		} else {
-			LYXERR(Debug::KEY, "Unknown, !isText() - giving up");
-			lv->message(_("Unknown function."));
-			lv->restartCursor();
-			return;
-		}
-	}
-
-	if (func.action == LFUN_SELF_INSERT) {
-		if (encoded_last_key != 0) {
-			docstring const arg(1, encoded_last_key);
-			dispatch(FuncRequest(LFUN_SELF_INSERT, arg,
-					     FuncRequest::KEYBOARD));
-			LYXERR(Debug::KEY, "SelfInsert arg[`" << to_utf8(arg) << "']");
-		}
-	} else {
-		dispatch(func);
-		if (!lv)
-			return;
 	}
 }
 
@@ -431,19 +257,12 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 	}
 
-	case LFUN_COMMAND_PREFIX:
-	case LFUN_CANCEL:
-	case LFUN_META_PREFIX:
-	case LFUN_RECONFIGURE:
 	case LFUN_DROP_LAYOUTS_CHOICE:
-	case LFUN_SERVER_GET_FILENAME:
-	case LFUN_SERVER_NOTIFY:
 	case LFUN_CURSOR_FOLLOWS_SCROLLBAR_TOGGLE:
 	case LFUN_REPEAT:
 	case LFUN_PREFERENCES_SAVE:
 	case LFUN_INSET_EDIT:
 	case LFUN_BUFFER_SAVE_AS_DEFAULT:
-	case LFUN_LYXRC_APPLY:
 		// these are handled in our dispatch()
 		break;
 
@@ -564,44 +383,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 	} else {
 		switch (action) {
 
-		case LFUN_COMMAND_PREFIX:
-			dispatch(FuncRequest(LFUN_MESSAGE, keyseq.printOptions(true)));
-			break;
-
-		case LFUN_CANCEL:
-			keyseq.reset();
-			meta_fake_bit = NoModifier;
-			if (lv && lv->currentBufferView())
-				// cancel any selection
-				dispatch(FuncRequest(LFUN_MARK_OFF));
-			setMessage(from_ascii(N_("Cancel")));
-			break;
-
-		case LFUN_META_PREFIX:
-			meta_fake_bit = AltModifier;
-			setMessage(keyseq.print(KeySequence::ForGui));
-			break;
-
-		// --- Menus -----------------------------------------------
-		case LFUN_RECONFIGURE:
-			// argument is any additional parameter to the configure.py command
-			reconfigure(lv, argument);
-			break;
-
-		// --- lyxserver commands ----------------------------
-		case LFUN_SERVER_GET_FILENAME: {
-			LASSERT(lv && lv->documentBufferView(), return);
-			docstring const fname = from_utf8(
-				lv->documentBufferView()->buffer().absFileName());
-			setMessage(fname);
-			LYXERR(Debug::INFO, "FNAME[" << fname << ']');
-			break;
-		}
-		case LFUN_SERVER_NOTIFY:
-			dispatch_buffer = keyseq.print(KeySequence::Portable);
-			theServer().notifyClient(to_utf8(dispatch_buffer));
-			break;
-
 		case LFUN_CURSOR_FOLLOWS_SCROLLBAR_TOGGLE:
 			lyxrc.cursor_follows_scrollbar = !lyxrc.cursor_follows_scrollbar;
 			break;
@@ -714,36 +495,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 		}
 
-		case LFUN_LYXRC_APPLY: {
-			// reset active key sequences, since the bindings
-			// are updated (bug 6064)
-			keyseq.reset();
-			LyXRC const lyxrc_orig = lyxrc;
-
-			istringstream ss(argument);
-			bool const success = lyxrc.read(ss) == 0;
-
-			if (!success) {
-				lyxerr << "Warning in LFUN_LYXRC_APPLY!\n"
-				       << "Unable to read lyxrc data"
-				       << endl;
-				break;
-			}
-
-			actOnUpdatedPrefs(lyxrc_orig, lyxrc);
-
-			setSpellChecker();
-
-			theApp()->resetGui();
-
-			/// We force the redraw in any case because there might be
-			/// some screen font changes.
-			/// FIXME: only the current view will be updated. the Gui
-			/// class is able to furnish the list of views.
-			updateFlags = Update::Force;
-			break;
-		}
-
 		case LFUN_BOOKMARK_GOTO:
 			// go to bookmark, open unopened file and switch to buffer if necessary
 			gotoBookmark(convert<unsigned int>(to_utf8(cmd.argument())), true, true);
@@ -755,11 +506,14 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		default:
+			DispatchResult dr;
+
 			LASSERT(theApp(), /**/);
 			// Let the frontend dispatch its own actions.
-			if (theApp()->dispatch(cmd))
+			theApp()->dispatch(cmd, dr);
+			if (dr.dispatched())
 				// Nothing more to do.
-				return;
+				break;
 
 			// Everything below is only for active window
 			if (lv == 0)
@@ -791,7 +545,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			}
 
 			// OK, so try the current Buffer itself...
-			DispatchResult dr;
 			bv->buffer().dispatch(cmd, dr);
 			if (dr.dispatched()) {
 				updateFlags = dr.update();
@@ -901,28 +654,4 @@ void LyXFunc::setMessage(docstring const & m) const
 }
 
 
-docstring LyXFunc::viewStatusMessage()
-{
-	// When meta-fake key is pressed, show the key sequence so far + "M-".
-	if (wasMetaKey())
-		return keyseq.print(KeySequence::ForGui) + "M-";
-
-	// Else, when a non-complete key sequence is pressed,
-	// show the available options.
-	if (keyseq.length() > 0 && !keyseq.deleted())
-		return keyseq.printOptions(true);
-
-	return docstring();
-}
-
-
-bool LyXFunc::wasMetaKey() const
-{
-	return (meta_fake_bit != NoModifier);
-}
-
-
-namespace {
-
-} // namespace anon
 } // namespace lyx

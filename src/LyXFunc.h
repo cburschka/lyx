@@ -50,19 +50,7 @@ public:
 	void dispatch(FuncRequest const &);
 
 	///
-	void initKeySequences(KeyMap * kb);
-
-	/// return the status bar state string
-	docstring viewStatusMessage();
-
-	///
-	void processKeySym(KeySymbol const & key, KeyModifier state);
-
-	///
 	FuncStatus getStatus(FuncRequest const & action) const;
-
-	/// The last key was meta
-	bool wasMetaKey() const;
 
 	/// True if lyxfunc reports an error
 	bool errorStat() const { return errorstat; }
@@ -72,8 +60,6 @@ public:
 	void setErrorMessage(docstring const &) const;
 	/// Buffer to store result messages
 	docstring const getMessage() const { return dispatch_buffer; }
-	/// Handle a accented char key sequence
-	void handleKeyFunc(FuncCode action);
 	/// goto a bookmark
 	/// openFile: whether or not open a file if the file is not opened
 	/// switchToBuffer: whether or not switch to buffer if the buffer is
@@ -86,16 +72,6 @@ public:
 	int cursorBeforeDispatchY() const { return cursorPosBeforeDispatchY_; }
 
 private:
-	/// the last character added to the key sequence, in UCS4 encoded form
-	char_type encoded_last_key;
-
-	///
-	KeySequence keyseq;
-	///
-	KeySequence cancel_meta_seq;
-	///
-	KeyModifier meta_fake_bit;
-
 	/// cursor position before dispatch started
 	int cursorPosBeforeDispatchX_;
 	int cursorPosBeforeDispatchY_;

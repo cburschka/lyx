@@ -12,6 +12,9 @@
 #define APPLICATION_H
 
 #include "ColorCode.h"
+#include "FuncCode.h"
+
+#include "KeyModifier.h"
 
 #include "support/strfwd.h"
 
@@ -24,6 +27,7 @@ namespace lyx {
 
 class BufferView;
 class Buffer;
+class DispatchResult;
 class docstring_list;
 class FuncRequest;
 class FuncStatus;
@@ -172,8 +176,7 @@ public:
 	///
 	virtual bool getStatus(FuncRequest const & cmd, FuncStatus & flag) const = 0;
 	/// dispatch command.
-	/// \return true if the \c FuncRequest has been dispatched.
-	virtual bool dispatch(FuncRequest const & cmd) = 0;
+	virtual void dispatch(FuncRequest const & cmd, DispatchResult & dr) = 0;
 
 	///
 	virtual void resetGui() = 0;
@@ -228,6 +231,10 @@ public:
 
 	/// \return the icon file name for the given action.
 	virtual docstring iconName(FuncRequest const & f, bool unknown) = 0;
+
+	/// Handle a accented char key sequence
+	/// FIXME: this is only needed for LFUN_ACCENT_* in Text::dispatch()
+	virtual void handleKeyFunc(FuncCode action) = 0;
 };
 
 /// Return the list of loadable formats.

@@ -1996,7 +1996,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_ACCENT_HUNGARIAN_UMLAUT:
 	case LFUN_ACCENT_CIRCLE:
 	case LFUN_ACCENT_OGONEK:
-		theLyXFunc().handleKeyFunc(cmd.action);
+		theApp()->handleKeyFunc(cmd.action);
 		if (!cmd.argument().empty())
 			// FIXME: Are all these characters encoded in one byte in utf8?
 			bv->translateAndInsert(cmd.argument()[0], this, cur);
@@ -2741,7 +2741,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_NOACTION:
 	case LFUN_NOTE_NEXT:
 	case LFUN_REFERENCE_NEXT:
-	case LFUN_SERVER_NOTIFY:
 	case LFUN_SERVER_SET_XY:
 	case LFUN_TEXTSTYLE_APPLY:
 	case LFUN_TEXTSTYLE_UPDATE:

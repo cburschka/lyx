@@ -28,6 +28,7 @@ namespace lyx {
 
 class BufferView;
 class ColorCache;
+class KeySymbol;
 
 namespace frontend {
 
@@ -59,7 +60,7 @@ public:
 	//@{
 	LyXView * currentWindow();
 	bool getStatus(FuncRequest const & cmd, FuncStatus & flag) const;
-	bool dispatch(FuncRequest const &);
+	void dispatch(FuncRequest const &, DispatchResult & dr);
 	void dispatchDelayed(FuncRequest const &);
 	void resetGui();
 	void restoreGuiSession();
@@ -77,6 +78,7 @@ public:
 	docstring iconName(FuncRequest const & f, bool unknown);
 	void hideDialogs(std::string const & name, Inset * inset) const;
 	Buffer const * updateInset(Inset const * inset) const;
+	void handleKeyFunc(FuncCode action);
 	//@}
 
 	Toolbars const & toolbars() const;
@@ -125,6 +127,10 @@ public:
 	void unregisterView(GuiView * gv);
 	///
 	GuiView & view(int id) const;
+	///
+	void processKeySym(KeySymbol const & key, KeyModifier state);
+	/// return the status bar state string
+	docstring viewStatusMessage();
 
 private Q_SLOTS:
 	///
