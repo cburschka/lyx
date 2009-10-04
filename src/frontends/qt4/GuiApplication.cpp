@@ -651,8 +651,8 @@ public:
 
 struct GuiApplication::Private
 {
-	Private(): language_model_(0), global_menubar_(0),
-		meta_fake_bit(NoModifier)
+	Private(): language_model_(0), meta_fake_bit(NoModifier),
+		global_menubar_(0)
 	{
 	#ifdef Q_WS_WIN
 		/// WMF Mime handler for Windows clipboard.
