@@ -257,11 +257,9 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 	}
 
-	case LFUN_DROP_LAYOUTS_CHOICE:
 	case LFUN_CURSOR_FOLLOWS_SCROLLBAR_TOGGLE:
 	case LFUN_REPEAT:
 	case LFUN_PREFERENCES_SAVE:
-	case LFUN_INSET_EDIT:
 	case LFUN_BUFFER_SAVE_AS_DEFAULT:
 		// these are handled in our dispatch()
 		break;

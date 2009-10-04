@@ -1277,6 +1277,10 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 			flag.setOnOff(t->isVisible());
 		break;
 
+	case LFUN_DROP_LAYOUTS_CHOICE:
+		enable = buf; 
+		break;
+
 	case LFUN_UI_TOGGLE:
 		flag.setOnOff(isFullScreen());
 		break;
