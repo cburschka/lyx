@@ -125,11 +125,14 @@ What's new
 - Fix a crash when closing a window after a document was opened
   multiple times and each time a new window was opened (bug 6188).
 
+- Fix a crash when navigating to a child's heading with the outliner after
+  the child was reloaded (bug 6233).
+
 - Fix a crash when navigating to a label in a child document (bug 6252).
 
 - Fix a number of assertions when displaying error messages (bug 6205). 
 
-- Fix bad allocation exception when displaying long tool tips (bug 6215).
+- Fix bad allocation exception when displaying long tooltips (bug 6215).
 
 - Fixed problem involving inability to turn off auto-save (bug 6227).
 

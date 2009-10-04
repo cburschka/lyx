@@ -1844,6 +1844,8 @@ void LyXFunc::sendDispatchMessage(docstring const & msg, FuncRequest const & cmd
 void LyXFunc::reloadBuffer()
 {
 	FileName filename = lyx_view_->buffer()->fileName();
+	Buffer const * master = lyx_view_->buffer()->masterBuffer();
+	bool const is_child = master != lyx_view_->buffer();
 	// The user has already confirmed that the changes, if any, should
 	// be discarded. So we just release the Buffer and don't call closeBuffer();
 	theBufferList().release(lyx_view_->buffer());
@@ -1853,6 +1855,10 @@ void LyXFunc::reloadBuffer()
 	Buffer * buf = lyx_view_->loadDocument(filename);
 	docstring const disp_fn = makeDisplayPath(filename.absFilename());
 	docstring str;
+	// re-allocate master if necessary
+	if (is_child && theBufferList().isLoaded(master)
+	    && buf->masterBuffer() != master)
+		buf->setParent(master);
 	if (buf) {
 		updateLabels(*buf);
 		lyx_view_->setBuffer(buf);
