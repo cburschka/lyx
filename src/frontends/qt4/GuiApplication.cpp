@@ -650,7 +650,7 @@ public:
 struct GuiApplication::Private
 {
 	Private(): language_model_(0), global_menubar_(0),
-		encoded_last_key(0), meta_fake_bit(NoModifier)
+		meta_fake_bit(NoModifier)
 	{
 	#ifdef Q_WS_WIN
 		/// WMF Mime handler for Windows clipboard.
@@ -692,9 +692,6 @@ struct GuiApplication::Private
 
 	/// delayed FuncRequests
 	std::queue<FuncRequest> func_request_queue_;
-
-	/// the last character added to the key sequence, in UCS4 encoded form
-	char_type encoded_last_key;
 
 	///
 	KeySequence keyseq;
@@ -1152,7 +1149,7 @@ docstring GuiApplication::viewStatusMessage()
 
 void GuiApplication::handleKeyFunc(FuncCode action)
 {
-	char_type c = d->encoded_last_key;
+	char_type c = 0;
 
 	if (d->keyseq.length())
 		c = 0;
@@ -1191,10 +1188,6 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 		return;
 	}
 
-	//Encoding const * encoding = lv->documentBufferView()->cursor().getEncoding();
-	//encoded_last_key = keysym.getISOEncoded(encoding ? encoding->name() : "");
-	// FIXME: encoded_last_key shadows the member variable of the same
-	// name. Is that intended?
 	char_type encoded_last_key = keysym.getUCSEncoded();
 
 	// Do a one-deep top-level lookup for
