@@ -1874,8 +1874,10 @@ void BufferView::gotoLabel(docstring const & label)
 	TocIterator toc_it = toc.begin();
 	TocIterator end = toc.end();
 	for (; toc_it != end; ++toc_it) {
-		if (label == toc_it->str())
+		if (label == toc_it->str()) {
 			dispatch(toc_it->action());
+			break;
+		}
 	}
 	//FIXME: We could do a bit more searching thanks to this:
 	//InsetLabel const * inset = buffer_.insetLabel(label);
