@@ -186,6 +186,10 @@ ruexamplesdir = $(pkgdatadir)/examples/ru
 dist_ruexamples_DATA = \
 	examples/ru/splash.lyx
 
+skexamplesdir = $(pkgdatadir)/examples/sk
+dist_skexamples_DATA = \
+	examples/sk/splash.lyx
+
 slexamplesdir = $(pkgdatadir)/examples/sl
 dist_slexamples_DATA = \
 	examples/sl/primer_lyxan.lyx \
