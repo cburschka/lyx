@@ -35,8 +35,6 @@ class WorkArea
 {
 public:
 	///
-	WorkArea() : lyx_view_(0) {}
-	///
 	virtual ~WorkArea() {}
 
 	/// redraw the screen, without using existing pixmap
@@ -50,10 +48,6 @@ public:
 
 	/// Update window titles of all users.
 	virtual void updateWindowTitle() = 0;
-
-private:
-
-	LyXView * lyx_view_;
 };
 
 } // namespace frontend
