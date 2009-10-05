@@ -879,7 +879,7 @@ bool GuiApplication::getStatus(FuncRequest const & cmd, FuncStatus & flag) const
 
 // This function runs "configure" and then rereads lyx.defaults to
 // reconfigure the automatic settings.
-static void reconfigure(LyXView * lv, string const & option)
+static void reconfigure(GuiView * lv, string const & option)
 {
 	// emit message signal.
 	if (lv)
