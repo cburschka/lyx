@@ -636,6 +636,19 @@ void GuiWorkArea::contextMenuEvent(QContextMenuEvent * e)
 		pos = context_target_pos_;
 	else
 		pos = e->pos();
+	Cursor const & cur = buffer_view_->cursor();
+	if (e->reason() == QContextMenuEvent::Keyboard && cur.inTexted()) {
+		// Do not access the context menu of math right in front of before
+		// the cursor. This does not work when the cursor is in text.
+		Inset * inset = cur.paragraph().getInset(cur.pos());
+		if (inset && inset->asInsetMath())
+			--pos.rx();
+		else if (cur.pos() > 0) {
+			Inset * inset = cur.paragraph().getInset(cur.pos() - 1);
+			if (inset)
+				++pos.rx();
+		}
+	}
 	docstring name = buffer_view_->contextMenu(pos.x(), pos.y());
 	if (name.empty()) {
 		QAbstractScrollArea::contextMenuEvent(e);
@@ -1097,7 +1110,8 @@ QVariant GuiWorkArea::inputMethodQuery(Qt::InputMethodQuery query) const
 			cur_r = cursor_->rect();
 			if (preedit_lines_ != 1)
 				cur_r.moveLeft(10);
-			cur_r.moveBottom(cur_r.bottom() + cur_r.height() * preedit_lines_);
+			cur_r.moveBottom(cur_r.bottom()
+				+ cur_r.height() * (preedit_lines_ - 1));
 			// return lower right of cursor in LyX.
 			return cur_r;
 		default:
