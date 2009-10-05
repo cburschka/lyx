@@ -336,10 +336,8 @@ private Q_SLOTS:
 private:
 	///
 	int clicked_tab_;
-#if QT_VERSION < 0x040500
 	///
 	QToolButton * closeBufferButton;
-#endif
 }; // TabWorkArea
 
 

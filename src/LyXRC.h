@@ -113,6 +113,7 @@ public:
 		RC_NOMENCL_COMMAND,
 		RC_NUMLASTFILES,
 		RC_OPEN_BUFFERS_IN_TABS,
+		RC_SINGLE_CLOSE_TAB_BUTTON,
 		RC_PARAGRAPH_MARKERS,
 		RC_PATH_PREFIX,
 		RC_PERS_DICT,
@@ -478,6 +479,8 @@ public:
 	bool completion_popup_after_complete;
 	///
 	bool open_buffers_in_tabs;
+	///
+	bool single_close_tab_button;
 };
 
 
