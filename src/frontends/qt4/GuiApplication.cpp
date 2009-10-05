@@ -122,6 +122,7 @@
 #include <boost/crc.hpp>
 
 #include <exception>
+#include <sstream>
 #include <vector>
 
 using namespace std;
