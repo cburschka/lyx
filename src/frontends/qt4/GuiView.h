@@ -70,9 +70,6 @@ public:
 	BufferView const * currentBufferView() const;
 	BufferView * documentBufferView();
 	BufferView const * documentBufferView() const;
-	void setBuffer(Buffer * b);
-	Buffer * loadDocument(support::FileName const &  name,
-		bool tolastfiles = true);
 	void newDocument(std::string const & filename,
 		bool fromTemplate);
 	void message(docstring const &);
@@ -82,6 +79,15 @@ public:
 	void updateCompletion(Cursor & cur, bool start, bool keep);
 	void setFocus();
 	///@}
+
+	/// set a buffer to the current workarea.
+	void setBuffer(Buffer * b); ///< \c Buffer to set.
+
+	/// load a document into the current workarea.
+	Buffer * loadDocument(
+		support::FileName const &  name, ///< File to load.
+		bool tolastfiles = true  ///< append to the "Open recent" menu?
+		);
 
 	/// add toolbar, if newline==true, add a toolbar break before the toolbar
 	GuiToolbar * makeToolbar(ToolbarInfo const & tbinfo, bool newline);

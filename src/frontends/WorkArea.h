@@ -42,14 +42,6 @@ public:
 	/// redraw the screen, without using existing pixmap
 	virtual void redraw() = 0;
 
-	/// Process Key pressed event.
-	/// This needs to be public because it is accessed externally by GuiView.
-	virtual void processKeySym(KeySymbol const & key, KeyModifier mod) = 0;
-
-	/// Return the LyXView this workArea belongs to
-	LyXView const & view() const { return *lyx_view_; }
-	LyXView & view() { return *lyx_view_; }
-
 	/// close this work area.
 	/// Slot for Buffer::closing signal.
 	virtual void close() = 0;

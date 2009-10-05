@@ -57,15 +57,6 @@ public:
 	virtual BufferView const * documentBufferView() const = 0;
 	//@}
 
-	/// set a buffer to the current workarea.
-	virtual void setBuffer(Buffer * b) = 0; ///< \c Buffer to set.
-
-	/// load a document into the current workarea.
-	virtual Buffer * loadDocument(
-		support::FileName const &  name, ///< File to load.
-		bool tolastfiles = true  ///< append to the "Open recent" menu?
-		) = 0;
-
 	/// display a message in the view
 	virtual void message(docstring const &) = 0;
 
