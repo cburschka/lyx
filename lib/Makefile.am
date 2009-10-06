@@ -428,6 +428,7 @@ dist_images_DATA = \
 	images/vc-check-out.png \
 	images/vc-locking-toggle.png \
 	images/vc-register.png \
+	images/vc-repo-synchro.png \
 	images/vc-revert.png \
 	images/view-others.png
 
