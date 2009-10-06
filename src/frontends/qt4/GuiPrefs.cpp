@@ -2155,7 +2155,7 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form)
 	connect(openDocumentsInTabsCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 #if QT_VERSION < 0x040500
-	openDocumentsInTabsCB->setEnabled(false);
+	singleCloseTabButtonCB->setEnabled(false);
 #endif
 	connect(singleCloseTabButtonCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
