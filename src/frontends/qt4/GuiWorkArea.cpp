@@ -1384,7 +1384,9 @@ void TabWorkArea::showBar(bool show)
 	tabBar()->setEnabled(show);
 	tabBar()->setVisible(show);
 	closeBufferButton->setVisible(show && lyxrc.single_close_tab_button);
+#if QT_VERSION >= 0x040500
 	setTabsClosable(!lyxrc.single_close_tab_button);
+#endif
 }
 
 
