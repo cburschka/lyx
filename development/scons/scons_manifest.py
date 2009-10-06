@@ -1174,7 +1174,6 @@ config_extra_files = Split('''
     config.sub
     depcomp
     install-sh
-    libtool.m4
     ltmain.sh
     lyxinclude.m4
     Makefile.am

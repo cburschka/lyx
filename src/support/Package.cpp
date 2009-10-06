@@ -120,12 +120,7 @@ Package::Package(string const & command_line_arg0,
 	document_dir_ = get_document_dir(home_dir_);
 
 	FileName const abs_binary = abs_path_from_binary_name(command_line_arg0);
-	string const bdir = onlyPath(abs_binary.absFilename());
-	// We may be using libtools
-	if (suffixIs(bdir, ".libs/"))
-		binary_dir_ = FileName(addPath(bdir, "../"));
-	else
-		binary_dir_ = FileName(bdir);
+	binary_dir_ = FileName(onlyPath(abs_binary.absFilename()));
 
 	// Is LyX being run in-place from the build tree?
 	buildDirs(abs_binary, top_build_dir_location,
@@ -276,9 +271,6 @@ void buildDirs(FileName const & abs_binary,
 	while (true) {
 		// Try and find "lyxrc.defaults".
 		string binary_dir = onlyPath(binary.absFilename());
-		// We may be using libtools with static linking.
-		if (suffixIs(binary_dir, ".libs/"))
-			binary_dir = addPath(binary_dir, "../");
 		build_support_dir = buildSupportDir(binary_dir, top_build_dir_location);
 		if (!fileSearch(build_support_dir.absFilename(), "Makefile").empty()) {
 			// Try and find "chkconfig.ltx".
