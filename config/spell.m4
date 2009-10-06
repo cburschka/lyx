@@ -3,7 +3,7 @@
 AC_DEFUN([CHECK_WITH_ASPELL],
 [
 	lyx_use_aspell=true
-	AC_ARG_WITH(aspell,	AC_HELP_STRING([--with-aspell],[use ASpell libraries]))
+	AC_ARG_WITH(aspell, AC_HELP_STRING([--without-aspell],[do not check for ASpell library]))
 	test "$with_aspell" = "no" && lyx_use_aspell=false
 
 	if $lyx_use_aspell ; then
@@ -27,7 +27,7 @@ AC_DEFUN([CHECK_WITH_ASPELL],
 AC_DEFUN([CHECK_WITH_HUNSPELL],
 [
 	lyx_use_hunspell=true
-	AC_ARG_WITH(hunspell,	AC_HELP_STRING([--with-hunspell],[use Hunspell libraries]))
+	AC_ARG_WITH(hunspell, AC_HELP_STRING([--without-hunspell],[do not check for Hunspell library]))
 	test "$with_hunspell" = "no" && lyx_use_hunspell=false
 
 	if $lyx_use_hunspell ; then
