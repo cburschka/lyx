@@ -27,9 +27,6 @@ Eran Tromer:
  majority of cases.
 
 
-- cut&paste inside math-mode doesn't work the X fashion (middle button doesn't
- paste anything).
-
 
 Jules Bean:
 
@@ -61,25 +58,6 @@ idempotent, (and you need 'M-c space' to get back into normal) whereas in
 text-mode 'M-c e' is self-inverse. These are the two possibilities I listed
 as acceptable before, but consistency would be nice ;-) IMO, self-inverse
 would be best for both.
-
-5) Proposal : a 'ligatures' or 'autocorrect' system
-
-One of the very minor, but useful, features of TeX is the way it lets you
-type the nearest approximation to what you want using a 'typewriter
-keyboard', and substitutes the typographically neat equivalent. In
-particular, 'fancy' quotes (") and en and em dashes (---). I propose that
-this UI element could be taken up a level into LyX, with a system that does
-the following (for example):
-
--> becomes \rightarrow
-<- becomes \leftarrow
-=> becomes \Rightarrow (etc..)
-==> becomes \Longrightarrow (etc..)
-
-This may only be appropriate in math mode, of course.  This family bug me
-in particular because they take ages to type using a \-escape. Undoubtedly
-sharp minds will think of others, and also we need some way of actually
-typing those sequences as literals when we want them.
 
 6) Scope macros:
 
