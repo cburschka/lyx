@@ -2171,6 +2171,16 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_VC_LOCKING_TOGGLE, "vc-locking-toggle", ReadOnly, System },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_VC_REPO_SYNCHRO
+ * \li Action: Synchronize the local archive directory in which resides
+               the current document with the repository.
+ * \li Notion: This is currently implemented only for SVN as revert + update operation.
+ * \li Syntax: vc-repo-synchro
+ * \li Origin: sanda, 16 Oct 2009
+ * \endvar
+ */
+		{ LFUN_VC_REPO_SYNCHRO, "vc-repo-synchro", ReadOnly, System },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_CHANGES_TRACK

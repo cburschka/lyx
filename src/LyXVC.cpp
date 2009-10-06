@@ -170,6 +170,13 @@ string LyXVC::checkOut()
 }
 
 
+string LyXVC::repoSynchro()
+{
+	LYXERR(Debug::LYXVC, "LyXVC: repoSynchro");
+	return vcs->repoSynchro();
+}
+
+
 string LyXVC::lockingToggle()
 {
 	LYXERR(Debug::LYXVC, "LyXVC: toggle locking property");
