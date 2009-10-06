@@ -1026,7 +1026,7 @@ dist_layouts_DATA =\
 	layouts/docbook-chapter.layout \
 	layouts/docbook-section.layout \
 	layouts/docbook.layout \
-	layouts/doublecol.layout \
+	layouts/doublecol-new.layout \
 	layouts/dtk.layout \
 	layouts/egs.layout \
 	layouts/elsart.layout \
