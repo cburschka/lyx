@@ -94,13 +94,13 @@ AC_DEFUN([QT4_DO_IT_ALL],
 	dnl oprofile.
 	FATAL=0
 
-	AC_ARG_WITH(qt4-dir, [  --with-qt4-dir           where the root of Qt 4 is installed ],
+	AC_ARG_WITH(qt4-dir, [AC_HELP_STRING([--with-qt4-dir], [where the root of Qt 4 is installed])],
 		[ qt4_cv_dir=`eval echo "$withval"/` ])
 
-	AC_ARG_WITH(qt4-includes, [  --with-qt4-includes      where the Qt 4 includes are. ],
+	AC_ARG_WITH(qt4-includes, [AC_HELP_STRING([--with-qt4-includes], [where the Qt 4 includes are])],
 		[ qt4_cv_includes=`eval echo "$withval"` ])
 
-	AC_ARG_WITH(qt4-libraries, [  --with-qt4-libraries     where the Qt 4 library is installed.],
+	AC_ARG_WITH(qt4-libraries, [AC_HELP_STRING([--with-qt4-libraries], [where the Qt 4 library is installed])],
 		[  qt4_cv_libraries=`eval echo "$withval"` ])
 
 	dnl pay attention to $QT4DIR unless overridden

@@ -44,7 +44,7 @@ AC_MSG_CHECKING([for version suffix])
 dnl We need the literal double quotes in the rpm spec file
 RPM_VERSION_SUFFIX='""'
 AC_ARG_WITH(version-suffix,
-  [  --with-version-suffix[=<version>]  install lyx files as lyx<version>],
+  [AC_HELP_STRING([--with-version-suffix@<:@=VERSION@:>@], install lyx files as lyxVERSION (VERSION=-AC_PACKAGE_VERSION))],
   [if test "x$withval" = "xyes";
    then
      withval="-"AC_PACKAGE_VERSION
@@ -425,7 +425,7 @@ dnl        be used.
 AC_DEFUN([LYX_USE_INCLUDED_BOOST],[
 	AC_MSG_CHECKING([whether to use boost included library])
 	AC_ARG_WITH(included-boost,
-	    [  --without-included-boost  do not use the boost lib supplied with LyX, try to find one in the system directories - compilation will abort if nothing suitable is found],
+	    [AC_HELP_STRING([--without-included-boost], [do not use the boost lib supplied with LyX, try to find one in the system directories - compilation will abort if nothing suitable is found])],
 	    [lyx_cv_with_included_boost=$withval],
 	    [lyx_cv_with_included_boost=yes])
 	AM_CONDITIONAL(USE_INCLUDED_BOOST, test x$lyx_cv_with_included_boost = xyes)
@@ -581,8 +581,8 @@ rm -f conftest*])
 AC_DEFUN([LYX_USE_FRONTENDS],
 [AC_MSG_CHECKING([what frontend should be used for the GUI])
 AC_ARG_WITH(frontend,
-  [  --with-frontend=THIS    Use THIS frontend as main GUI:
-			    Possible values: qt4],
+  [AC_HELP_STRING([--with-frontend=THIS], [use THIS frontend as main GUI:
+			    Possible values: qt4])],
   [FRONTENDS="$withval"],[FRONTENDS="qt4"])
 if test "x$FRONTENDS" = x ; then
   AC_MSG_RESULT(none)
@@ -600,8 +600,8 @@ AC_SUBST(FRONTENDS_PROGS)
 AC_DEFUN([LYX_USE_PACKAGING],
 [AC_MSG_CHECKING([what packaging should be used])
 AC_ARG_WITH(packaging,
-  [  --with-packaging=THIS   Use THIS packaging for installation:
-			    Possible values: posix, windows, macosx],
+  [AC_HELP_STRING([--with-packaging=THIS], [use THIS packaging for installation:
+			    Possible values: posix, windows, macosx])],
   [lyx_use_packaging="$withval"], [
   case $host in
     *-apple-darwin*) lyx_use_packaging=macosx ;;
