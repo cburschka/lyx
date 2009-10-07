@@ -18566,6 +18566,117 @@ svn revert -q
 \end_layout
 
 \begin_layout Subsubsection
+Synchronization of local directory checkout with repository
+\end_layout
+
+\begin_layout Standard
+All the commands above have one shortcomming - they deal with the current
+ document only.
+ Once your document contains pictures, includes external 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+.tex
+\end_layout
+
+\end_inset
+
+ files and so on administration becomes more complicate.
+ LyX now supports updating the whole tree in which resides the document
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+One need to organize the files structure so that all external files are
+ in the same directory or subdirectories of the document.
+ 
+\end_layout
+
+\end_inset
+
+.
+ This become especially useful once you cooperate with people which neither
+ know about subversion management nor they have ambition to commit additional
+ material to the repository.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Synchronize local directory with repository
+\end_layout
+
+\end_inset
+
+ command firstly reverts all local changes (to avoid merge conflicts aftwards)
+ and then updates the whole directory structure from the archive.
+ If local changes are detected user is warned before reversion starts.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+SVN
+\begin_inset space ~
+\end_inset
+
+commands: 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+svn diff $path
+\end_layout
+
+\end_inset
+
+ (Ask if changes are detected.)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+svn revert -R $path
+\begin_inset Newline newline
+\end_inset
+
+svn update $path
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+$path
+\end_layout
+
+\end_inset
+
+ stands for the path to the document.
+\end_layout
+
+\begin_layout Subsubsection
 
 \family sans
 Show History
