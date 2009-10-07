@@ -36,12 +36,14 @@ using boost::smatch;
 namespace lyx {
 
 
-int VCS::doVCCommandCall(string const & cmd, FileName const & path){
+int VCS::doVCCommandCall(string const & cmd, FileName const & path)
+{
 	LYXERR(Debug::LYXVC, "doVCCommandCall: " << cmd);
 	Systemcall one;
 	support::PathChanger p(path);
 	return one.startscript(Systemcall::Wait, cmd);
 }
+
 
 int VCS::doVCCommand(string const & cmd, FileName const & path)
 {
@@ -185,10 +187,12 @@ string RCS::checkIn(string const & msg)
 	return ret ? string() : "RCS: Proceeded";
 }
 
+
 bool RCS::checkInEnabled()
 {
 	return owner_ && !owner_->isReadonly();
 }
+
 
 string RCS::checkOut()
 {
@@ -457,6 +461,7 @@ void CVS::getLog(FileName const & tmpf)
 		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
 		    FileName(owner_->filePath()));
 }
+
 
 bool CVS::toggleReadOnlyEnabled()
 {
@@ -792,6 +797,7 @@ bool SVN::lockingToggleEnabled()
 {
 	return true;
 }
+
 
 void SVN::revert()
 {
