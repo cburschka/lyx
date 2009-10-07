@@ -49,7 +49,7 @@ theorems-ams
 \begin_body
 
 \begin_layout Section*
-LFUNs documentation automatically generated 2009-08-09
+LFUNs documentation automatically generated 2009-10-07
 \end_layout
 
 \begin_layout Standard
@@ -1485,6 +1485,19 @@ Syntax inset-end-select
 \end_layout
 \begin_layout Description
 Origin lasgouttes, 16 Mar 2009
+\end_layout
+
+\begin_layout Subsection*
+LFUN_INSET_SELECT_ALL
+\end_layout
+\begin_layout Description
+Action Selects all contents of an inset.
+\end_layout
+\begin_layout Description
+Syntax inset-select-all
+\end_layout
+\begin_layout Description
+Origin vfr, 22 Aug 2009
 \end_layout
 
 \begin_layout Subsection*
@@ -3228,6 +3241,22 @@ Syntax vc-locking-toggle
 \end_layout
 \begin_layout Description
 Origin sanda, 25 Jun 2009
+\end_layout
+
+\begin_layout Subsection*
+LFUN_VC_REPO_SYNCHRO
+\end_layout
+\begin_layout Description
+Action Synchronize the local archive directory in which resides the current document with the repository.
+\end_layout
+\begin_layout Description
+Notion This is currently implemented only for SVN as revert + update operation.
+\end_layout
+\begin_layout Description
+Syntax vc-repo-synchro
+\end_layout
+\begin_layout Description
+Origin sanda, 16 Oct 2009
 \end_layout
 
 \begin_layout Subsection*
@@ -5196,6 +5225,19 @@ Syntax section-select
 \end_layout
 \begin_layout Description
 Origin vfr, 05 May 2009
+\end_layout
+
+\begin_layout Subsection*
+LFUN_GRAPHICS_RELOAD
+\end_layout
+\begin_layout Description
+Action Reloads the image if necessary.
+\end_layout
+\begin_layout Description
+Syntax graphics-reload
+\end_layout
+\begin_layout Description
+Origin vfr, 10 Aug 2009
 \end_layout
 
 \end_body
