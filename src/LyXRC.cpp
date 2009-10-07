@@ -160,6 +160,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\serverpipe", LyXRC::RC_SERVERPIPE },
 	{ "\\set_color", LyXRC::RC_SET_COLOR },
 	{ "\\show_banner", LyXRC::RC_SHOW_BANNER },
+	{ "\\single_close_tab_button", LyXRC::RC_SINGLE_CLOSE_TAB_BUTTON },
 	{ "\\sort_layouts", LyXRC::RC_SORT_LAYOUTS },
 	{ "\\spell_command", LyXRC::RC_SPELL_COMMAND },
 	{ "\\tempdir_path", LyXRC::RC_TEMPDIRPATH },
@@ -304,6 +305,7 @@ void LyXRC::setDefaults()
 	user_name = to_utf8(support::user_name());
 	user_email = to_utf8(support::user_email());
 	open_buffers_in_tabs = true;
+	single_close_tab_button = false;
 
 	// Fullscreen settings
 	full_screen_limit = false;
@@ -1096,6 +1098,9 @@ int LyXRC::read(Lexer & lexrc)
 		case RC_OPEN_BUFFERS_IN_TABS:
 			lexrc >> open_buffers_in_tabs;
 			break;
+		case RC_SINGLE_CLOSE_TAB_BUTTON:
+			lexrc >> single_close_tab_button;
+			break;
 
 		case RC_LAST:
 			break; // this is just a dummy
@@ -1711,6 +1716,13 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		    open_buffers_in_tabs != system_lyxrc.open_buffers_in_tabs) {
 			os << "\\open_buffers_in_tabs "
 			   << convert<string>(open_buffers_in_tabs)
+			   << '\n';
+		}
+	case RC_SINGLE_CLOSE_TAB_BUTTON:
+		if (ignore_system_lyxrc ||
+		    single_close_tab_button != system_lyxrc.single_close_tab_button) {
+			os << "\\single_close_tab_button "
+			   << convert<string>(single_close_tab_button)
 			   << '\n';
 		}
 		if (tag != RC_LAST)

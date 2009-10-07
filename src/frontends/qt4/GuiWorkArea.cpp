@@ -1209,6 +1209,9 @@ TabWorkArea::TabWorkArea(QWidget * parent)
 #ifdef Q_WS_MACX
 	setStyle(&noTabFrameMacStyle);
 #endif
+#if QT_VERSION < 0x040500
+	lyxrc.single_close_tab_button = true;
+#endif
 
 	QPalette pal = palette();
 	pal.setColor(QPalette::Active, QPalette::Button,
@@ -1221,7 +1224,6 @@ TabWorkArea::TabWorkArea(QWidget * parent)
 	QObject::connect(this, SIGNAL(currentChanged(int)),
 		this, SLOT(on_currentTabChanged(int)));
 
-#if QT_VERSION < 0x040500
 	closeBufferButton = new QToolButton(this);
 	closeBufferButton->setPalette(pal);
 	// FIXME: rename the icon to closebuffer.png
@@ -1234,7 +1236,6 @@ TabWorkArea::TabWorkArea(QWidget * parent)
 	QObject::connect(closeBufferButton, SIGNAL(clicked()),
 		this, SLOT(closeCurrentBuffer()));
 	setCornerWidget(closeBufferButton, Qt::TopRightCorner);
-#endif
 
 	// setup drag'n'drop
 	QTabBar* tb = new DragTabBar;
@@ -1272,8 +1273,9 @@ void TabWorkArea::showBar(bool show)
 {
 	tabBar()->setEnabled(show);
 	tabBar()->setVisible(show);
-#if QT_VERSION < 0x040500
-	closeBufferButton->setVisible(show);	
+	closeBufferButton->setVisible(show && lyxrc.single_close_tab_button);
+#if QT_VERSION >= 0x040500
+	setTabsClosable(!lyxrc.single_close_tab_button);
 #endif
 }
 
@@ -1664,7 +1666,7 @@ DragTabBar::DragTabBar(QWidget* parent)
 {
 	setAcceptDrops(true);
 #if QT_VERSION >= 0x040500
-	setTabsClosable(true);
+	setTabsClosable(!lyxrc.single_close_tab_button);
 #endif
 }
 

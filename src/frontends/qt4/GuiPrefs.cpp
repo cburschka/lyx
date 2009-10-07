@@ -1974,6 +1974,11 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form)
 		TextLabel1, SLOT(setEnabled(bool)));
 	connect(openDocumentsInTabsCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
+#if QT_VERSION < 0x040500
+	singleCloseTabButtonCB->setEnabled(false);
+#endif
+	connect(singleCloseTabButtonCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
 	connect(uiFilePB, SIGNAL(clicked()),
 		this, SLOT(select_ui()));
 	connect(uiFileED, SIGNAL(textChanged(QString)),
@@ -2009,6 +2014,10 @@ void PrefUserInterface::apply(LyXRC & rc) const
 	rc.num_lastfiles = lastfilesSB->value();
 	rc.use_tooltip = tooltipCB->isChecked();
 	rc.open_buffers_in_tabs = openDocumentsInTabsCB->isChecked();
+	rc.single_close_tab_button = singleCloseTabButtonCB->isChecked();
+#if QT_VERSION < 0x040500
+	rc.single_close_tab_button = true;
+#endif
 }
 
 
@@ -2030,6 +2039,7 @@ void PrefUserInterface::update(LyXRC const & rc)
 	lastfilesSB->setValue(rc.num_lastfiles);
 	tooltipCB->setChecked(rc.use_tooltip);
 	openDocumentsInTabsCB->setChecked(rc.open_buffers_in_tabs);
+	singleCloseTabButtonCB->setChecked(rc.single_close_tab_button);
 }
 
 
