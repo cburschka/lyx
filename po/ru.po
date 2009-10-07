@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-10-04 11:25+0200\n"
+"POT-Creation-Date: 2009-10-07 14:20+0200\n"
 "PO-Revision-Date: 2009-07-21 19:48+0300\n"
 "Last-Translator: Nick A. Gusev <guusev@yandex.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -2441,7 +2441,7 @@ msgstr "&Изменить"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:209
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:61
-#: src/frontends/qt4/GuiPrefs.cpp:2362 src/frontends/qt4/GuiPrefs.cpp:2426
+#: src/frontends/qt4/GuiPrefs.cpp:2372 src/frontends/qt4/GuiPrefs.cpp:2436
 msgid "Remo&ve"
 msgstr "&Удалить"
 
@@ -2758,7 +2758,7 @@ msgstr "Помечать &другие языки"
 msgid "Right-to-left language support"
 msgstr "Поддержка &языка \"Справа налево\""
 
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:203 src/LyXRC.cpp:2792
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:203 src/LyXRC.cpp:2804
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
@@ -2953,7 +2953,7 @@ msgstr "&Временный каталог:"
 msgid "&PATH prefix:"
 msgstr "Префикс &пути:"
 
-#: src/frontends/qt4/ui/PrefPlaintextUi.ui:57 src/LyXRC.cpp:2466
+#: src/frontends/qt4/ui/PrefPlaintextUi.ui:57 src/LyXRC.cpp:2478
 msgid ""
 "The maximum line length of exported plain text/LaTeX/SGML files. If set to "
 "0, paragraphs are output in a single line; if the line length is > 0, "
@@ -3316,12 +3316,20 @@ msgstr "Создавать &резервные копии документов �
 msgid "&Open documents in tabs"
 msgstr "Открыть документ"
 
-#: src/frontends/qt4/ui/PrefUi.ui:207
+#: src/frontends/qt4/ui/PrefUi.ui:191
+msgid "Whether to place close button on each tab or only one in the top left."
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefUi.ui:194
+msgid "&Single close-tab button"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefUi.ui:217
 #, fuzzy
 msgid "Automatic help"
 msgstr "Автоматическое обновление"
 
-#: src/frontends/qt4/ui/PrefUi.ui:225
+#: src/frontends/qt4/ui/PrefUi.ui:235
 #, fuzzy
 msgid ""
 "Checking this allow the automatic display of helpful comments for insets in "
@@ -3330,15 +3338,15 @@ msgstr ""
 "Отметьте для показа полезных комментариев для вкладок в главной рабочей "
 "области редактируемого документа"
 
-#: src/frontends/qt4/ui/PrefUi.ui:228
+#: src/frontends/qt4/ui/PrefUi.ui:238
 msgid "&Enable tool tips in main work area"
 msgstr "&Разрешить подсказки в главной рабочей области"
 
-#: src/frontends/qt4/ui/PrefUi.ui:238
+#: src/frontends/qt4/ui/PrefUi.ui:248
 msgid "Bro&wse..."
 msgstr "&Выбрать..."
 
-#: src/frontends/qt4/ui/PrefUi.ui:248
+#: src/frontends/qt4/ui/PrefUi.ui:258
 msgid "&User interface file:"
 msgstr "&Файл пользовательского интерфейса:"
 
@@ -16179,23 +16187,23 @@ msgid "Statistics"
 msgstr "Состояние"
 
 # c-format
-#: src/BufferView.cpp:2169
+#: src/BufferView.cpp:2171
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Документ вставляется %1$s..."
 
-#: src/BufferView.cpp:2180
+#: src/BufferView.cpp:2182
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Документ %1$s вставлен."
 
 # c-format
-#: src/BufferView.cpp:2182
+#: src/BufferView.cpp:2184
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Невозможно вставить документ %1$s"
 
-#: src/BufferView.cpp:2444
+#: src/BufferView.cpp:2446
 #, fuzzy, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -16205,11 +16213,11 @@ msgstr ""
 "Невозможно открыть указанный документ\n"
 "%1$s."
 
-#: src/BufferView.cpp:2446
+#: src/BufferView.cpp:2448
 msgid "Could not read file"
 msgstr "Нельзя прочесть файл"
 
-#: src/BufferView.cpp:2453
+#: src/BufferView.cpp:2455
 #, c-format
 msgid ""
 "%1$s\n"
@@ -16218,15 +16226,15 @@ msgstr ""
 "%1$s\n"
 " невозможно прочесть."
 
-#: src/BufferView.cpp:2454 src/output.cpp:39
+#: src/BufferView.cpp:2456 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Невозможно открыть файл"
 
-#: src/BufferView.cpp:2461
+#: src/BufferView.cpp:2463
 msgid "Reading not UTF-8 encoded file"
 msgstr "Считывается файл не в кодировке UTF-8"
 
-#: src/BufferView.cpp:2462
+#: src/BufferView.cpp:2464
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -17282,25 +17290,25 @@ msgstr ""
 "%1$s\n"
 " невозможно прочесть."
 
-#: src/LyXFunc.cpp:1860
+#: src/LyXFunc.cpp:1866
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Документ %1$s перезагружен."
 
-#: src/LyXFunc.cpp:1862
+#: src/LyXFunc.cpp:1868
 #, fuzzy, c-format
 msgid "Could not reload document %1$s"
 msgstr "Невозможно открыть документ "
 
-#: src/LyXFunc.cpp:1899
+#: src/LyXFunc.cpp:1905
 msgid "Welcome to LyX!"
 msgstr "Добро пожаловать в LyX!"
 
-#: src/LyXFunc.cpp:1920
+#: src/LyXFunc.cpp:1926
 msgid "Converting document to new document class..."
 msgstr "Преобразую документ к новому классу документа..."
 
-#: src/LyXRC.cpp:2453
+#: src/LyXRC.cpp:2465
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
@@ -17308,13 +17316,13 @@ msgstr ""
 "Определяет, считать ли раздельно написанные слова, например \"diskdrive\" "
 "для \"disk drive\", допустимыми словами."
 
-#: src/LyXRC.cpp:2458
+#: src/LyXRC.cpp:2470
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
 msgstr "Укажите дополнительный язык. По умолчанию используется язык документа."
 
-#: src/LyXRC.cpp:2462
+#: src/LyXRC.cpp:2474
 #, fuzzy
 msgid ""
 "Use to define an external program to render tables in plain text output. E."
@@ -17326,7 +17334,7 @@ msgstr ""
 "-- название входного файла. Если указано  \"none\" используется внутренняя "
 "подпрограмма."
 
-#: src/LyXRC.cpp:2470
+#: src/LyXRC.cpp:2482
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
@@ -17334,7 +17342,7 @@ msgstr ""
 "Снимите отметку, если вы не хотите, чтобы выделенный текст автоматически "
 "замещался тем, что вы печатаете."
 
-#: src/LyXRC.cpp:2474
+#: src/LyXRC.cpp:2486
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
@@ -17342,14 +17350,14 @@ msgstr ""
 "Снимите отметку, если не хотите, чтобы параметры класса устанавливались по "
 "умолчанию после изменения класса."
 
-#: src/LyXRC.cpp:2478
+#: src/LyXRC.cpp:2490
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Промежуток времени между автосохранениями (в секундах). 0 означает не "
 "выполнять автосохранение."
 
-#: src/LyXRC.cpp:2485
+#: src/LyXRC.cpp:2497
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
@@ -17358,17 +17366,17 @@ msgstr ""
 "пустая строка, LyX будет создавать резервный файл в том каталоге, где "
 "находится редактируемый файл."
 
-#: src/LyXRC.cpp:2489
+#: src/LyXRC.cpp:2501
 msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
 msgstr ""
 
-#: src/LyXRC.cpp:2493
+#: src/LyXRC.cpp:2505
 msgid "Define the options of the bibtex program for PLaTeX (Japanese LaTeX)."
 msgstr ""
 
-#: src/LyXRC.cpp:2497
+#: src/LyXRC.cpp:2509
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
@@ -17378,13 +17386,13 @@ msgstr ""
 "эту возможность, если X-сервер не поддерживает переключение нужных вам "
 "раскладок."
 
-#: src/LyXRC.cpp:2501
+#: src/LyXRC.cpp:2513
 msgid "Select to check whether the lastfiles still exist."
 msgstr ""
 "Отметьте, чтобы осуществлялась проверка, существует ли ещё файл, который "
 "есть в списке недавних."
 
-#: src/LyXRC.cpp:2505
+#: src/LyXRC.cpp:2517
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
@@ -17392,7 +17400,7 @@ msgstr ""
 "Определяет как запускать chktex. Например, \"chktex -n11 -n1 -n3 -n6 -n9 -22 "
 "-n25 -n30 -n38\" Обращайтесь к документации по ChkTeX."
 
-#: src/LyXRC.cpp:2515
+#: src/LyXRC.cpp:2527
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
@@ -17401,17 +17409,17 @@ msgstr ""
 "курсора не обновляется. Отметьте этот пункт, если вы предпочитаете всегда "
 "видеть курсор на экране."
 
-#: src/LyXRC.cpp:2519
+#: src/LyXRC.cpp:2531
 msgid "Use the Mac OS X conventions for the word-level cursor movement"
 msgstr ""
 
-#: src/LyXRC.cpp:2523
+#: src/LyXRC.cpp:2535
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
 msgstr ""
 
-#: src/LyXRC.cpp:2534
+#: src/LyXRC.cpp:2546
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
@@ -17420,7 +17428,7 @@ msgstr ""
 "Здесь используется обыкновенный формат strftime; смотрите man strftime для "
 "подробной информации. Например \"%A, %e. %B %Y\"."
 
-#: src/LyXRC.cpp:2538
+#: src/LyXRC.cpp:2550
 #, fuzzy
 msgid ""
 "Command definition file. Can either specify an absolute path, or LyX will "
@@ -17431,15 +17439,15 @@ msgstr ""
 "эту возможность, если X-сервер не поддерживает переключение нужных вам "
 "раскладок."
 
-#: src/LyXRC.cpp:2542
+#: src/LyXRC.cpp:2554
 msgid "New documents will be assigned this language."
 msgstr "Новые документы будут создаваться на этом языке."
 
-#: src/LyXRC.cpp:2546
+#: src/LyXRC.cpp:2558
 msgid "Specify the default paper size."
 msgstr "Укажите размер бумаги по умолчанию."
 
-#: src/LyXRC.cpp:2550
+#: src/LyXRC.cpp:2562
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
@@ -17447,11 +17455,11 @@ msgstr ""
 "Сворачивать ли диалоги при сворачивании главного окна программы. "
 "(Подействует только на вновь открываемые диалоги.)"
 
-#: src/LyXRC.cpp:2554
+#: src/LyXRC.cpp:2566
 msgid "Select how LyX will display any graphics."
 msgstr "Укажите как LyX будет показывать всю графику в документе."
 
-#: src/LyXRC.cpp:2558
+#: src/LyXRC.cpp:2570
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
@@ -17459,11 +17467,11 @@ msgstr ""
 "Путь по умолчанию для ваших документов. Пустое значение выбирает каталог, из "
 "которого будет запускаться LyX."
 
-#: src/LyXRC.cpp:2563
+#: src/LyXRC.cpp:2575
 msgid "Specify additional chars that can be part of a word."
 msgstr "Укажите дополнительные символы, которые могут быть частью слова."
 
-#: src/LyXRC.cpp:2567
+#: src/LyXRC.cpp:2579
 #, fuzzy
 msgid ""
 "The path that LyX will set when offering to choose an example. An empty "
@@ -17473,7 +17481,7 @@ msgstr ""
 "Пустое значение означает, что будет выбран каталог, из которого LyX был "
 "запущен."
 
-#: src/LyXRC.cpp:2571
+#: src/LyXRC.cpp:2583
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
@@ -17481,24 +17489,24 @@ msgstr ""
 "Кодировка символов, используемая пакетом fontenc LaTeX. Для всех языков, "
 "кроме английского, особенно рекомендуется кодировка T1."
 
-#: src/LyXRC.cpp:2578
+#: src/LyXRC.cpp:2590
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
 "\"makeindex.sh -m $$lang\"."
 msgstr ""
 
-#: src/LyXRC.cpp:2582
+#: src/LyXRC.cpp:2594
 msgid "Define the options of the index program for PLaTeX (Japanese LaTeX)."
 msgstr ""
 
-#: src/LyXRC.cpp:2586
+#: src/LyXRC.cpp:2598
 msgid ""
 "Define the options of makeindex (cf. man makeindex) to be used for "
 "nomenclatures. This might differ from the index processing options."
 msgstr ""
 
-#: src/LyXRC.cpp:2595
+#: src/LyXRC.cpp:2607
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
@@ -17507,23 +17515,23 @@ msgstr ""
 "потребуется эта возможность, если вы, например, захотите набирать документы "
 "на немецком языке на американской клавиатуре."
 
-#: src/LyXRC.cpp:2599
+#: src/LyXRC.cpp:2611
 msgid "Maximum number of words in the initialization string for a new label"
 msgstr "Максимальное число слов в инициализационной строке для новой метки."
 
-#: src/LyXRC.cpp:2603
+#: src/LyXRC.cpp:2615
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
 msgstr ""
 "Отметьте, если в начале документа требуется команда переключения языка."
 
-#: src/LyXRC.cpp:2607
+#: src/LyXRC.cpp:2619
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr "Отметьте, если в конце документа требуется команда переключения языка."
 
-#: src/LyXRC.cpp:2611
+#: src/LyXRC.cpp:2623
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
@@ -17532,22 +17540,22 @@ msgstr ""
 "Команда LaTeX для переключения от языка документа к другому языку. Например "
 "\\selectlanguage{$$lang}, где $$lang заменяется названием другого языка."
 
-#: src/LyXRC.cpp:2615
+#: src/LyXRC.cpp:2627
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr "Команда LaTeX для возвращения обратно к языку документа."
 
-#: src/LyXRC.cpp:2619
+#: src/LyXRC.cpp:2631
 msgid "The LaTeX command for local changing of the language."
 msgstr "Команда LaTeX для локального изменения языка."
 
-#: src/LyXRC.cpp:2623
+#: src/LyXRC.cpp:2635
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
 msgstr ""
 "Снимите отметку чтобы язык(и) использовался как аргумент в \\documentclass."
 
-#: src/LyXRC.cpp:2627
+#: src/LyXRC.cpp:2639
 msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
@@ -17555,7 +17563,7 @@ msgstr ""
 "Команда LaTeX для загрузки языкового пакета. Например \"\\usepackage{babel}"
 "\", \"\\usepackage{omega}\"."
 
-#: src/LyXRC.cpp:2631
+#: src/LyXRC.cpp:2643
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
@@ -17563,21 +17571,21 @@ msgstr ""
 "Снимите отметку, чтобы babel использовался, когда язык документа совпадает с "
 "языком по умолчанию"
 
-#: src/LyXRC.cpp:2635
+#: src/LyXRC.cpp:2647
 #, fuzzy
 msgid "De-select if you do not want LyX to scroll to saved position."
 msgstr "Снимите отметку, чтобы LyX не создавал резервные файлы."
 
-#: src/LyXRC.cpp:2639
+#: src/LyXRC.cpp:2651
 msgid "De-select to prevent loading files opened from the last LyX session."
 msgstr ""
 "Снимите отметку, чтобы не загружать файлы, открытые в последней сессии LyX."
 
-#: src/LyXRC.cpp:2643
+#: src/LyXRC.cpp:2655
 msgid "De-select if you don't want LyX to create backup files."
 msgstr "Снимите отметку, чтобы LyX не создавал резервные файлы."
 
-#: src/LyXRC.cpp:2647
+#: src/LyXRC.cpp:2659
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
@@ -17585,62 +17593,62 @@ msgstr ""
 "Отметьте для включения подчёркивания слов, написанных в языке, отличном от "
 "языка документа."
 
-#: src/LyXRC.cpp:2651
+#: src/LyXRC.cpp:2663
 msgid "The scrolling speed of the mouse wheel."
 msgstr "Скорость прокрутки колёсика мышки."
 
-#: src/LyXRC.cpp:2656
+#: src/LyXRC.cpp:2668
 #, fuzzy
 msgid "The completion popup delay."
 msgstr "&В строке"
 
-#: src/LyXRC.cpp:2660
+#: src/LyXRC.cpp:2672
 msgid "Select to display the completion popup in math mode."
 msgstr ""
 "Выберите для показа всплывающего окна дополнения в математическом режиме."
 
-#: src/LyXRC.cpp:2664
+#: src/LyXRC.cpp:2676
 msgid "Select to display the completion popup in text mode."
 msgstr "Выберите для показа всплывающего окна дополнения в текстовом режиме."
 
-#: src/LyXRC.cpp:2668
+#: src/LyXRC.cpp:2680
 msgid ""
 "Show the completion popup without delay after non-unique completion attempt."
 msgstr ""
 "Показывать всплывающее окно дополнения без задержки после попытки "
 "неединственного дополнения"
 
-#: src/LyXRC.cpp:2672
+#: src/LyXRC.cpp:2684
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
 msgstr ""
 
-#: src/LyXRC.cpp:2676
+#: src/LyXRC.cpp:2688
 #, fuzzy
 msgid "The inline completion delay."
 msgstr "&В строке"
 
-#: src/LyXRC.cpp:2680
+#: src/LyXRC.cpp:2692
 msgid "Select to display the inline completion in math mode."
 msgstr "Выберите для показа встроенного дополнения в математическом режиме."
 
-#: src/LyXRC.cpp:2684
+#: src/LyXRC.cpp:2696
 msgid "Select to display the inline completion in text mode."
 msgstr "Выберите для показа встроенного дополнения в текстовом режиме."
 
-#: src/LyXRC.cpp:2688
+#: src/LyXRC.cpp:2700
 msgid "Use \"...\" to shorten long completions."
 msgstr ""
 
-#: src/LyXRC.cpp:2692
+#: src/LyXRC.cpp:2704
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr ""
 "Максимальное количество недавних файлов (%1$d), которые будут показываться в "
 "меню Файл."
 
-#: src/LyXRC.cpp:2697
+#: src/LyXRC.cpp:2709
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
@@ -17648,34 +17656,34 @@ msgstr ""
 "Эти каталоги будут использованы до обработки переменной среды PATH. "
 "Указывайте их в том виде, как принято в вашей операционной системе."
 
-#: src/LyXRC.cpp:2704
+#: src/LyXRC.cpp:2716
 msgid ""
 "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 "Укажите дополнительный личный словарный файл. Например \".ispell_english\"."
 
-#: src/LyXRC.cpp:2708
+#: src/LyXRC.cpp:2720
 msgid "Shows a typeset preview of things such as math"
 msgstr "Показывать формулы так, как они будут выглядеть при печати"
 
-#: src/LyXRC.cpp:2712
+#: src/LyXRC.cpp:2724
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr ""
 "У предварительно показываемых формул будут метки \"(#)\" вместо номеров"
 
-#: src/LyXRC.cpp:2716
+#: src/LyXRC.cpp:2728
 msgid "Scale the preview size to suit."
 msgstr "Изменить размер предварительного показа до подходящего ."
 
-#: src/LyXRC.cpp:2720
+#: src/LyXRC.cpp:2732
 msgid "The option for specifying whether the copies should be collated."
 msgstr "Параметр, указывающий нужно ли собирать страницы каждой копии вместе."
 
-#: src/LyXRC.cpp:2724
+#: src/LyXRC.cpp:2736
 msgid "The option for specifying the number of copies to print."
 msgstr "Параметр для указания числа копий для печати."
 
-#: src/LyXRC.cpp:2728
+#: src/LyXRC.cpp:2740
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
@@ -17683,11 +17691,11 @@ msgstr ""
 "Принтер для использования по умолчанию. Если ничего не указано, LyX будет "
 "использовать переменную окружения PRINTER."
 
-#: src/LyXRC.cpp:2732
+#: src/LyXRC.cpp:2744
 msgid "The option to print only even pages."
 msgstr "Параметр для печати только чётных страниц."
 
-#: src/LyXRC.cpp:2736
+#: src/LyXRC.cpp:2748
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
@@ -17695,35 +17703,35 @@ msgstr ""
 "Дополнительные параметры, которые будут переданы программе печати после всех "
 "остальных, но перед названием файла DVI, который должен быть распечатан."
 
-#: src/LyXRC.cpp:2740
+#: src/LyXRC.cpp:2752
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr "Расширение выходного файла печатающей программы. Обычно \".ps\"."
 
-#: src/LyXRC.cpp:2744
+#: src/LyXRC.cpp:2756
 msgid "The option to print out in landscape."
 msgstr "Параметр для печати в ландшафтной ориентации."
 
-#: src/LyXRC.cpp:2748
+#: src/LyXRC.cpp:2760
 msgid "The option to print only odd pages."
 msgstr "Параметр для печати только нечётных страниц."
 
-#: src/LyXRC.cpp:2752
+#: src/LyXRC.cpp:2764
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr "Параметр для указания разделённого запятыми списка страниц для печати."
 
-#: src/LyXRC.cpp:2756
+#: src/LyXRC.cpp:2768
 msgid "Option to specify the dimensions of the print paper."
 msgstr "Параметр для задания размеров бумаги."
 
-#: src/LyXRC.cpp:2760
+#: src/LyXRC.cpp:2772
 msgid "The option to specify paper type."
 msgstr "Параметр, указывающий формат бумаги."
 
-#: src/LyXRC.cpp:2764
+#: src/LyXRC.cpp:2776
 msgid "The option to reverse the order of the pages printed."
 msgstr "Параметр для задания обратного порядка печати страниц."
 
-#: src/LyXRC.cpp:2768
+#: src/LyXRC.cpp:2780
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
@@ -17732,7 +17740,7 @@ msgstr ""
 "Когда этот параметр отмечен, документ печатается в файл, а потом вызывается "
 "отдельная программа печати для этого файла с данным названием и параметрами."
 
-#: src/LyXRC.cpp:2772
+#: src/LyXRC.cpp:2784
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
@@ -17740,31 +17748,31 @@ msgstr ""
 "Если вы укажете название принтера в диалоге печати, следующий аргумент "
 "prepended along с названием принтера после команды печати."
 
-#: src/LyXRC.cpp:2776
+#: src/LyXRC.cpp:2788
 msgid "Option to pass to the print program to print to a file."
 msgstr "Параметр для указания печатающей программе печатать в файл."
 
-#: src/LyXRC.cpp:2780
+#: src/LyXRC.cpp:2792
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr "Параметр для указания программе печати печатать на указанном принтере."
 
-#: src/LyXRC.cpp:2784
+#: src/LyXRC.cpp:2796
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
 msgstr "Отметьте, чтобы LyX передавал название принтера вашей команде печати."
 
-#: src/LyXRC.cpp:2788
+#: src/LyXRC.cpp:2800
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr ""
 "Программа печати, которой вы пользуетесь, например \"dvips\", \"dvilj4\"."
 
-#: src/LyXRC.cpp:2796
+#: src/LyXRC.cpp:2808
 msgid ""
 "Select to have visual bidi cursor movement, unselect for logical movement."
 msgstr ""
 
-#: src/LyXRC.cpp:2800
+#: src/LyXRC.cpp:2812
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
@@ -17773,11 +17781,11 @@ msgstr ""
 "автоматически.Если LyX сделал это неправильно, вы можете указать правильное "
 "значение здесь."
 
-#: src/LyXRC.cpp:2806
+#: src/LyXRC.cpp:2818
 msgid "The screen fonts used to display the text while editing."
 msgstr "Экранные шрифты, используемые для показа текста при редактировании."
 
-#: src/LyXRC.cpp:2815
+#: src/LyXRC.cpp:2827
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
@@ -17788,11 +17796,11 @@ msgstr ""
 "вместо масштабирования будет использовать ближайший по размеру доступный "
 "шрифт."
 
-#: src/LyXRC.cpp:2819
+#: src/LyXRC.cpp:2831
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr "Размеры шрифтов, используемые для вычисления размера экранных шрифтов."
 
-#: src/LyXRC.cpp:2824
+#: src/LyXRC.cpp:2836
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
@@ -17801,12 +17809,12 @@ msgstr ""
 "Масштабирования для экранных шрифтов. Указание 100% будет давать шрифты "
 "такого же размера, как и на бумаге."
 
-#: src/LyXRC.cpp:2828
+#: src/LyXRC.cpp:2840
 #, fuzzy
 msgid "Allow session manager to save and restore windows geometry."
 msgstr "Разрешить менеджеру сеансов сохранять и восстанавливать размеры окна."
 
-#: src/LyXRC.cpp:2832
+#: src/LyXRC.cpp:2844
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
@@ -17814,15 +17822,15 @@ msgstr ""
 "Указание названия здесь запускает lyxserver. Трубы получают дополнительное "
 "расширение \"in\" и \"out\". Только для продвинутых пользователей."
 
-#: src/LyXRC.cpp:2839
+#: src/LyXRC.cpp:2851
 msgid "De-select if you don't want the startup banner."
 msgstr "Снимите отметку, если вы не хотите видеть заставку при запуске."
 
-#: src/LyXRC.cpp:2843
+#: src/LyXRC.cpp:2855
 msgid "What command runs the spellchecker?"
 msgstr "Выберите требуемую программу проверки правописания"
 
-#: src/LyXRC.cpp:2847
+#: src/LyXRC.cpp:2859
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
@@ -17830,7 +17838,7 @@ msgstr ""
 "LyX будет размещать свои временные каталоги по этому пути. Они будут удалены "
 "при выходе из LyX."
 
-#: src/LyXRC.cpp:2851
+#: src/LyXRC.cpp:2863
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
@@ -17839,7 +17847,7 @@ msgstr ""
 "Пустое значение означает, что будет выбран каталог, из которого LyX был "
 "запущен."
 
-#: src/LyXRC.cpp:2861
+#: src/LyXRC.cpp:2873
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
@@ -17847,7 +17855,7 @@ msgstr ""
 "Файл пользовательского интерфейса (UI). Может быть либо указан абсолютный "
 "путь, либо LyX будет искать его в глобальном или локальном каталоге ui/."
 
-#: src/LyXRC.cpp:2874
+#: src/LyXRC.cpp:2886
 msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
 "if you cannot check the spelling of words containing accented letters. This "
@@ -17857,16 +17865,16 @@ msgstr ""
 "этот пункт, если вы не можете проверить правописания слов с неанглийскими "
 "буквами в них. Это может работать не со всеми словарями."
 
-#: src/LyXRC.cpp:2878
+#: src/LyXRC.cpp:2890
 msgid "Enable the automatic appearance of tool tips in the work area."
 msgstr ""
 
-#: src/LyXRC.cpp:2882
+#: src/LyXRC.cpp:2894
 msgid ""
 "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 
-#: src/LyXRC.cpp:2889
+#: src/LyXRC.cpp:2901
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 "Укажите команду установки формата бумаги для просмотрщика DVI (оставьте "
@@ -18406,7 +18414,7 @@ msgid "About %1"
 msgstr "О %1"
 
 #: src/frontends/qt4/GuiApplication.cpp:440
-#: src/frontends/qt4/GuiPrefs.cpp:2631
+#: src/frontends/qt4/GuiPrefs.cpp:2641
 msgid "Preferences"
 msgstr "Настройки"
 
@@ -18433,12 +18441,12 @@ msgstr ""
 "Установка цвета не удалась \"%1$s\" - цвет не определён или не может быть "
 "переопределён"
 
-#: src/frontends/qt4/GuiApplication.cpp:1296
+#: src/frontends/qt4/GuiApplication.cpp:1305
 #, fuzzy
 msgid "The current document was closed."
 msgstr "Печатать в файл"
 
-#: src/frontends/qt4/GuiApplication.cpp:1306
+#: src/frontends/qt4/GuiApplication.cpp:1315
 #, fuzzy
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
@@ -18451,13 +18459,13 @@ msgstr ""
 "\n"
 "Ошибка: "
 
-#: src/frontends/qt4/GuiApplication.cpp:1310
-#: src/frontends/qt4/GuiApplication.cpp:1316
+#: src/frontends/qt4/GuiApplication.cpp:1319
+#: src/frontends/qt4/GuiApplication.cpp:1325
 #, fuzzy
 msgid "Software exception Detected"
 msgstr "Обнаружено исключение программы iconv"
 
-#: src/frontends/qt4/GuiApplication.cpp:1314
+#: src/frontends/qt4/GuiApplication.cpp:1323
 #, fuzzy
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
@@ -18466,13 +18474,13 @@ msgstr ""
 "LyX получил сообщение о серьёзной ошибке, сейчас он попытается сохранить все "
 "документы и выйти."
 
-#: src/frontends/qt4/GuiApplication.cpp:1476
-#: src/frontends/qt4/GuiApplication.cpp:1481
+#: src/frontends/qt4/GuiApplication.cpp:1485
+#: src/frontends/qt4/GuiApplication.cpp:1490
 #, fuzzy
 msgid "Could not find UI definition file"
 msgstr "Не удаётся прочитать файл конфигурации"
 
-#: src/frontends/qt4/GuiApplication.cpp:1477
+#: src/frontends/qt4/GuiApplication.cpp:1486
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -18480,7 +18488,7 @@ msgid ""
 "Please check your installation."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1482
+#: src/frontends/qt4/GuiApplication.cpp:1491
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -18490,12 +18498,12 @@ msgid ""
 "check which user interface file you are using."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1490
+#: src/frontends/qt4/GuiApplication.cpp:1499
 #, fuzzy
 msgid "Could not find default UI file"
 msgstr "Не удаётся прочитать файл конфигурации"
 
-#: src/frontends/qt4/GuiApplication.cpp:1491
+#: src/frontends/qt4/GuiApplication.cpp:1500
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -19698,77 +19706,77 @@ msgstr ""
 msgid "Printer"
 msgstr "Принтер"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1967 src/frontends/qt4/GuiPrefs.cpp:2671
+#: src/frontends/qt4/GuiPrefs.cpp:1967 src/frontends/qt4/GuiPrefs.cpp:2681
 msgid "User interface"
 msgstr "Интерфейс пользователя"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2058
+#: src/frontends/qt4/GuiPrefs.cpp:2068
 #, fuzzy
 msgid "Control"
 msgstr "Вхождение"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2130
+#: src/frontends/qt4/GuiPrefs.cpp:2140
 msgid "Shortcuts"
 msgstr "Горячие клавиши"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2135
+#: src/frontends/qt4/GuiPrefs.cpp:2145
 msgid "Function"
 msgstr "Функция"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2136
+#: src/frontends/qt4/GuiPrefs.cpp:2146
 msgid "Shortcut"
 msgstr "Горячая &клавиша"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2217
+#: src/frontends/qt4/GuiPrefs.cpp:2227
 msgid "Cursor, Mouse and Editing functions"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2221
+#: src/frontends/qt4/GuiPrefs.cpp:2231
 #, fuzzy
 msgid "Mathematical Symbols"
 msgstr "Символы фонетики"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2225
+#: src/frontends/qt4/GuiPrefs.cpp:2235
 #, fuzzy
 msgid "Document and Window"
 msgstr "Ошибка в заголовке документа"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2229
+#: src/frontends/qt4/GuiPrefs.cpp:2239
 msgid "Font, Layouts and Textclasses"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2233
+#: src/frontends/qt4/GuiPrefs.cpp:2243
 #, fuzzy
 msgid "System and Miscellaneous"
 msgstr "Различное AMS"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2360 src/frontends/qt4/GuiPrefs.cpp:2406
+#: src/frontends/qt4/GuiPrefs.cpp:2370 src/frontends/qt4/GuiPrefs.cpp:2416
 #, fuzzy
 msgid "Res&tore"
 msgstr "&Восстановить"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2516 src/frontends/qt4/GuiPrefs.cpp:2523
-#: src/frontends/qt4/GuiPrefs.cpp:2534 src/frontends/qt4/GuiPrefs.cpp:2547
-#: src/frontends/qt4/GuiPrefs.cpp:2566
+#: src/frontends/qt4/GuiPrefs.cpp:2526 src/frontends/qt4/GuiPrefs.cpp:2533
+#: src/frontends/qt4/GuiPrefs.cpp:2544 src/frontends/qt4/GuiPrefs.cpp:2557
+#: src/frontends/qt4/GuiPrefs.cpp:2576
 msgid "Failed to create shortcut"
 msgstr "Ошибка при создании горячей клавиши"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2517
+#: src/frontends/qt4/GuiPrefs.cpp:2527
 msgid "Unknown or invalid LyX function"
 msgstr "Неизвестная или неправильная функция LyX"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2524
+#: src/frontends/qt4/GuiPrefs.cpp:2534
 msgid "Invalid or empty key sequence"
 msgstr "Неверная или пустая горячая клавиша"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2535
+#: src/frontends/qt4/GuiPrefs.cpp:2545
 #, fuzzy, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to:\n"
 "%2$s"
 msgstr "Горячая клавиша уже определена"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2548
+#: src/frontends/qt4/GuiPrefs.cpp:2558
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to:\n"
@@ -19776,47 +19784,47 @@ msgid ""
 "You need to remove that binding before creating a new one."
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2567
+#: src/frontends/qt4/GuiPrefs.cpp:2577
 msgid "Can not insert shortcut to the list"
 msgstr "Невозможно добавить горячую клавишу в список"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2598
+#: src/frontends/qt4/GuiPrefs.cpp:2608
 msgid "Identity"
 msgstr "Личные данные"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2795
+#: src/frontends/qt4/GuiPrefs.cpp:2805
 msgid "Choose bind file"
 msgstr "Выберите файл клавиатурных сокращений"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2796
+#: src/frontends/qt4/GuiPrefs.cpp:2806
 msgid "LyX bind files (*.bind)"
 msgstr "Привязки клавиш LyX (*.bind)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2802
+#: src/frontends/qt4/GuiPrefs.cpp:2812
 msgid "Choose UI file"
 msgstr "Выберите файл интерфейса (UI)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2803
+#: src/frontends/qt4/GuiPrefs.cpp:2813
 msgid "LyX UI files (*.ui)"
 msgstr "Файлы интерфейса LyX (*.ui)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2809
+#: src/frontends/qt4/GuiPrefs.cpp:2819
 msgid "Choose keyboard map"
 msgstr "Выберите раскладку клавиатуры"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2810
+#: src/frontends/qt4/GuiPrefs.cpp:2820
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "Раскладки клавиатуры LyX (*.kmap)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2816
+#: src/frontends/qt4/GuiPrefs.cpp:2826
 msgid "Choose personal dictionary"
 msgstr "Выберите личный словарь"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2817
+#: src/frontends/qt4/GuiPrefs.cpp:2827
 msgid "*.pws"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2817
+#: src/frontends/qt4/GuiPrefs.cpp:2827
 #, fuzzy
 msgid "*.ispell"
 msgstr "ispell"
@@ -20605,35 +20613,35 @@ msgstr "Исходный текст DocBook"
 msgid "Literate Source"
 msgstr "Грамотный исходный текст"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1121
+#: src/frontends/qt4/GuiWorkArea.cpp:1135
 #, fuzzy
 msgid " (version control)"
 msgstr "Управление версиями"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1123
+#: src/frontends/qt4/GuiWorkArea.cpp:1137
 #, fuzzy
 msgid " (version control, locking)"
 msgstr "Управление версиями"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1126
+#: src/frontends/qt4/GuiWorkArea.cpp:1140
 msgid " (changed)"
 msgstr " (Изменено)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1130
+#: src/frontends/qt4/GuiWorkArea.cpp:1144
 msgid " (read only)"
 msgstr " (только для чтения)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1218
+#: src/frontends/qt4/GuiWorkArea.cpp:1234
 #, fuzzy
 msgid "Close File"
 msgstr "Закрыть"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1626
+#: src/frontends/qt4/GuiWorkArea.cpp:1642
 #, fuzzy
 msgid "Hide tab"
 msgstr "дельта"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1628
+#: src/frontends/qt4/GuiWorkArea.cpp:1644
 #, fuzzy
 msgid "Close tab"
 msgstr "Закрыть"

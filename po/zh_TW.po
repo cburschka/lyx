@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-10-04 11:25+0200\n"
+"POT-Creation-Date: 2009-10-07 14:20+0200\n"
 "PO-Revision-Date: 2009-04-19 17:10+0100\n"
 "Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -2392,7 +2392,7 @@ msgstr "修改(&M)"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:209
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:61
-#: src/frontends/qt4/GuiPrefs.cpp:2362 src/frontends/qt4/GuiPrefs.cpp:2426
+#: src/frontends/qt4/GuiPrefs.cpp:2372 src/frontends/qt4/GuiPrefs.cpp:2436
 msgid "Remo&ve"
 msgstr "移除(&V)"
 
@@ -2702,7 +2702,7 @@ msgstr "標記外來語言集(&F)"
 msgid "Right-to-left language support"
 msgstr "從右到左語言支援(&R)"
 
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:203 src/LyXRC.cpp:2792
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:203 src/LyXRC.cpp:2804
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr "選取啟用從右到左語言集的支援 (例如：希伯來語、阿拉伯語)。"
@@ -2892,7 +2892,7 @@ msgstr "暫存目錄(&T)："
 msgid "&PATH prefix:"
 msgstr "&PATH 前綴："
 
-#: src/frontends/qt4/ui/PrefPlaintextUi.ui:57 src/LyXRC.cpp:2466
+#: src/frontends/qt4/ui/PrefPlaintextUi.ui:57 src/LyXRC.cpp:2478
 msgid ""
 "The maximum line length of exported plain text/LaTeX/SGML files. If set to "
 "0, paragraphs are output in a single line; if the line length is > 0, "
@@ -3243,26 +3243,34 @@ msgstr "備份文件(&A)"
 msgid "&Open documents in tabs"
 msgstr "開啟文件"
 
-#: src/frontends/qt4/ui/PrefUi.ui:207
+#: src/frontends/qt4/ui/PrefUi.ui:191
+msgid "Whether to place close button on each tab or only one in the top left."
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefUi.ui:194
+msgid "&Single close-tab button"
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefUi.ui:217
 #, fuzzy
 msgid "Automatic help"
 msgstr "自動更新"
 
-#: src/frontends/qt4/ui/PrefUi.ui:225
+#: src/frontends/qt4/ui/PrefUi.ui:235
 msgid ""
 "Checking this allow the automatic display of helpful comments for insets in "
 "the main work area of an edited document"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefUi.ui:228
+#: src/frontends/qt4/ui/PrefUi.ui:238
 msgid "&Enable tool tips in main work area"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefUi.ui:238
+#: src/frontends/qt4/ui/PrefUi.ui:248
 msgid "Bro&wse..."
 msgstr "瀏覽(&W)…"
 
-#: src/frontends/qt4/ui/PrefUi.ui:248
+#: src/frontends/qt4/ui/PrefUi.ui:258
 msgid "&User interface file:"
 msgstr "使用者介面檔案(&U)："
 
@@ -15631,22 +15639,22 @@ msgstr ""
 msgid "Statistics"
 msgstr "狀態"
 
-#: src/BufferView.cpp:2169
+#: src/BufferView.cpp:2171
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "插入文件 %1$s…"
 
-#: src/BufferView.cpp:2180
+#: src/BufferView.cpp:2182
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "文件 %1$s 已插入。"
 
-#: src/BufferView.cpp:2182
+#: src/BufferView.cpp:2184
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "無法插入文件 %1$s"
 
-#: src/BufferView.cpp:2444
+#: src/BufferView.cpp:2446
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15657,26 +15665,26 @@ msgstr ""
 "%1$s\n"
 "由於錯誤：%2$s"
 
-#: src/BufferView.cpp:2446
+#: src/BufferView.cpp:2448
 msgid "Could not read file"
 msgstr "無法讀取檔案"
 
-#: src/BufferView.cpp:2453
+#: src/BufferView.cpp:2455
 #, fuzzy, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr "%1$s 無法讀取。"
 
-#: src/BufferView.cpp:2454 src/output.cpp:39
+#: src/BufferView.cpp:2456 src/output.cpp:39
 msgid "Could not open file"
 msgstr "無法開啟檔案"
 
-#: src/BufferView.cpp:2461
+#: src/BufferView.cpp:2463
 msgid "Reading not UTF-8 encoded file"
 msgstr "讀取非 UTF-8 編碼的檔案"
 
-#: src/BufferView.cpp:2462
+#: src/BufferView.cpp:2464
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -16728,37 +16736,37 @@ msgstr "LyX VC：記錄檔訊息"
 msgid "Directory is not accessible."
 msgstr "%1$s 無法讀取。"
 
-#: src/LyXFunc.cpp:1860
+#: src/LyXFunc.cpp:1866
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "文件 %1$s 已開啟。"
 
-#: src/LyXFunc.cpp:1862
+#: src/LyXFunc.cpp:1868
 #, fuzzy, c-format
 msgid "Could not reload document %1$s"
 msgstr "無法讀取文件"
 
-#: src/LyXFunc.cpp:1899
+#: src/LyXFunc.cpp:1905
 msgid "Welcome to LyX!"
 msgstr "歡迎使用 LyX！"
 
-#: src/LyXFunc.cpp:1920
+#: src/LyXFunc.cpp:1926
 msgid "Converting document to new document class..."
 msgstr "轉換文件到新文件類別…"
 
-#: src/LyXRC.cpp:2453
+#: src/LyXRC.cpp:2465
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
 msgstr "將共同作用的字詞 (像是「diskdrive」用於「磁碟機」)視為合法的字詞？"
 
-#: src/LyXRC.cpp:2458
+#: src/LyXRC.cpp:2470
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
 msgstr "指定替代語言。預設是使用文件的語言。"
 
-#: src/LyXRC.cpp:2462
+#: src/LyXRC.cpp:2474
 msgid ""
 "Use to define an external program to render tables in plain text output. E."
 "g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"\" is "
@@ -16767,25 +16775,25 @@ msgstr ""
 "做為在純文字輸出中定義外部程式以潤算表格。例如：「groff -t -Tlatin1 $$FName」"
 "其中 $$FName 為輸入檔案。如果指定為「」，就使用內部例程。"
 
-#: src/LyXRC.cpp:2470
+#: src/LyXRC.cpp:2482
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
 msgstr "如果您不想要讓目前所選，自動被您所輸入的置換，就取消選取。"
 
-#: src/LyXRC.cpp:2474
+#: src/LyXRC.cpp:2486
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
 msgstr ""
 "取消選取如果您不想要讓類別選項，在類別變更之後被重置為預設值，就取消選取。。"
 
-#: src/LyXRC.cpp:2478
+#: src/LyXRC.cpp:2490
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr "自動儲存之間的時間間隔 (秒)。0 表示沒有自動儲存。"
 
-#: src/LyXRC.cpp:2485
+#: src/LyXRC.cpp:2497
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
@@ -16793,7 +16801,7 @@ msgstr ""
 "用於儲存備份檔案的路徑。如果它是空字串，LyX 將以原來的檔案在相同目錄中儲存備"
 "份。"
 
-#: src/LyXRC.cpp:2489
+#: src/LyXRC.cpp:2501
 msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
@@ -16801,22 +16809,22 @@ msgstr ""
 "定義 bibtex 的選項(參考 man bibtex) 或選取一個替代編譯器(例如 mlbibtex 或 "
 "bibulus)。"
 
-#: src/LyXRC.cpp:2493
+#: src/LyXRC.cpp:2505
 msgid "Define the options of the bibtex program for PLaTeX (Japanese LaTeX)."
 msgstr ""
 
-#: src/LyXRC.cpp:2497
+#: src/LyXRC.cpp:2509
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
 msgstr ""
 "按鍵聯結檔案。可以指定絕對路徑，或者 LyX 將在它的全域和本地連結/目錄中查找。"
 
-#: src/LyXRC.cpp:2501
+#: src/LyXRC.cpp:2513
 msgid "Select to check whether the lastfiles still exist."
 msgstr "選取以檢查是否上一個檔案仍然存在。"
 
-#: src/LyXRC.cpp:2505
+#: src/LyXRC.cpp:2517
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
@@ -16824,7 +16832,7 @@ msgstr ""
 "定義如何運行 chktex。例如：「chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -n38」"
 "參考 ChkTeX 文件。"
 
-#: src/LyXRC.cpp:2515
+#: src/LyXRC.cpp:2527
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
@@ -16832,17 +16840,17 @@ msgstr ""
 "如果您移動捲動軸，LyX 通常不會更新游標位置。如果您較偏好螢幕上總是有游標，就"
 "設定為真。"
 
-#: src/LyXRC.cpp:2519
+#: src/LyXRC.cpp:2531
 msgid "Use the Mac OS X conventions for the word-level cursor movement"
 msgstr ""
 
-#: src/LyXRC.cpp:2523
+#: src/LyXRC.cpp:2535
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
 msgstr ""
 
-#: src/LyXRC.cpp:2534
+#: src/LyXRC.cpp:2546
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
@@ -16851,7 +16859,7 @@ msgstr ""
 "這裏接受一般的 strftime 格式；參看 man strftime 以獲得全部細節。例如：「%A, %"
 "e. %B %Y」。"
 
-#: src/LyXRC.cpp:2538
+#: src/LyXRC.cpp:2550
 #, fuzzy
 msgid ""
 "Command definition file. Can either specify an absolute path, or LyX will "
@@ -16859,48 +16867,48 @@ msgid ""
 msgstr ""
 "按鍵聯結檔案。可以指定絕對路徑，或者 LyX 將在它的全域和本地連結/目錄中查找。"
 
-#: src/LyXRC.cpp:2542
+#: src/LyXRC.cpp:2554
 msgid "New documents will be assigned this language."
 msgstr "新文件將指派此語言。"
 
-#: src/LyXRC.cpp:2546
+#: src/LyXRC.cpp:2558
 msgid "Specify the default paper size."
 msgstr "指定預設紙張大小。"
 
-#: src/LyXRC.cpp:2550
+#: src/LyXRC.cpp:2562
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
 msgstr "主視窗最小化時也最小化對話框。(只影響變更完成之後所顯示的對話框。)"
 
-#: src/LyXRC.cpp:2554
+#: src/LyXRC.cpp:2566
 msgid "Select how LyX will display any graphics."
 msgstr "選取 LyX 顯示任何圖形的方式。"
 
-#: src/LyXRC.cpp:2558
+#: src/LyXRC.cpp:2570
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
 msgstr "您文件的預設路徑。空白值將選取 LyX 開始時的目錄。"
 
-#: src/LyXRC.cpp:2563
+#: src/LyXRC.cpp:2575
 msgid "Specify additional chars that can be part of a word."
 msgstr "可以用部分的字詞指定額外字元。"
 
-#: src/LyXRC.cpp:2567
+#: src/LyXRC.cpp:2579
 #, fuzzy
 msgid ""
 "The path that LyX will set when offering to choose an example. An empty "
 "value selects the directory LyX was started from."
 msgstr "提供您選擇模板時 LyX 將會設定的路徑。空值將會選取 LyX 開始時的目錄。"
 
-#: src/LyXRC.cpp:2571
+#: src/LyXRC.cpp:2583
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
 msgstr "用於 LaTeX2e fontenc 套件的字型編碼。強烈建議 T1 用於非英語語言。"
 
-#: src/LyXRC.cpp:2578
+#: src/LyXRC.cpp:2590
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
@@ -16909,17 +16917,17 @@ msgstr ""
 "定義 makeindex 的選項 (參看 man makeindex) 或選取替代編譯器。例如：使用 "
 "xindy/make-rules 時，命令字串則是「makeindex.sh -m $$ lang」。"
 
-#: src/LyXRC.cpp:2582
+#: src/LyXRC.cpp:2594
 msgid "Define the options of the index program for PLaTeX (Japanese LaTeX)."
 msgstr ""
 
-#: src/LyXRC.cpp:2586
+#: src/LyXRC.cpp:2598
 msgid ""
 "Define the options of makeindex (cf. man makeindex) to be used for "
 "nomenclatures. This might differ from the index processing options."
 msgstr ""
 
-#: src/LyXRC.cpp:2595
+#: src/LyXRC.cpp:2607
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
@@ -16927,22 +16935,22 @@ msgstr ""
 "使用這個以設定用於您鍵盤的正確對映檔案。舉例來說，如果您要以美式鍵盤輸入德語"
 "文件，您將會需要它。"
 
-#: src/LyXRC.cpp:2599
+#: src/LyXRC.cpp:2611
 msgid "Maximum number of words in the initialization string for a new label"
 msgstr "在新標籤初始字串中的最大字詞數量"
 
-#: src/LyXRC.cpp:2603
+#: src/LyXRC.cpp:2615
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
 msgstr "如果文件起始處需要語言切換命令就選取它。"
 
-#: src/LyXRC.cpp:2607
+#: src/LyXRC.cpp:2619
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr "如果文件結束處需要語言切換命令就選取它。"
 
-#: src/LyXRC.cpp:2611
+#: src/LyXRC.cpp:2623
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
@@ -16951,21 +16959,21 @@ msgstr ""
 "用於將文件語言變更到其他語言的 LaTeX 命令。例如：\\selectlanguage{$$lang} 中 "
 "$$lang 將由第二語言的名稱所替代。"
 
-#: src/LyXRC.cpp:2615
+#: src/LyXRC.cpp:2627
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr "用於變回文件語言的 LaTeX 命令。"
 
-#: src/LyXRC.cpp:2619
+#: src/LyXRC.cpp:2631
 msgid "The LaTeX command for local changing of the language."
 msgstr "用於語言本地變更的 LaTeX 命令。"
 
-#: src/LyXRC.cpp:2623
+#: src/LyXRC.cpp:2635
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
 msgstr "如果您不想要該語言做為 \\documentclass 的引數就取消選取。"
 
-#: src/LyXRC.cpp:2627
+#: src/LyXRC.cpp:2639
 msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
@@ -16973,157 +16981,157 @@ msgstr ""
 "用於載入語言套裝模組的 LaTeX 命令。例如：「\\usepackage{babel}」、"
 "「\\usepackage{omega}」。"
 
-#: src/LyXRC.cpp:2631
+#: src/LyXRC.cpp:2643
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
 msgstr "當文件的語言為預設語言時，如果您不想要使用 babel 就取消選取。"
 
-#: src/LyXRC.cpp:2635
+#: src/LyXRC.cpp:2647
 msgid "De-select if you do not want LyX to scroll to saved position."
 msgstr "如果您不想要 LyX 捲動到儲存的位置就取消選取。"
 
-#: src/LyXRC.cpp:2639
+#: src/LyXRC.cpp:2651
 msgid "De-select to prevent loading files opened from the last LyX session."
 msgstr "取消選取以防止載入於最後一次 LyX 執行階段所開啟的檔案。"
 
-#: src/LyXRC.cpp:2643
+#: src/LyXRC.cpp:2655
 msgid "De-select if you don't want LyX to create backup files."
 msgstr "如果您不想要 LyX 建立備份檔案就取消選取。"
 
-#: src/LyXRC.cpp:2647
+#: src/LyXRC.cpp:2659
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
 msgstr "選取以控制對於該文件是外來語言字詞的高亮度顯示。"
 
-#: src/LyXRC.cpp:2651
+#: src/LyXRC.cpp:2663
 msgid "The scrolling speed of the mouse wheel."
 msgstr ""
 
-#: src/LyXRC.cpp:2656
+#: src/LyXRC.cpp:2668
 #, fuzzy
 msgid "The completion popup delay."
 msgstr "內聯列表(&I)"
 
-#: src/LyXRC.cpp:2660
+#: src/LyXRC.cpp:2672
 msgid "Select to display the completion popup in math mode."
 msgstr ""
 
-#: src/LyXRC.cpp:2664
+#: src/LyXRC.cpp:2676
 msgid "Select to display the completion popup in text mode."
 msgstr ""
 
-#: src/LyXRC.cpp:2668
+#: src/LyXRC.cpp:2680
 msgid ""
 "Show the completion popup without delay after non-unique completion attempt."
 msgstr ""
 
-#: src/LyXRC.cpp:2672
+#: src/LyXRC.cpp:2684
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
 msgstr ""
 
-#: src/LyXRC.cpp:2676
+#: src/LyXRC.cpp:2688
 #, fuzzy
 msgid "The inline completion delay."
 msgstr "內聯列表(&I)"
 
-#: src/LyXRC.cpp:2680
+#: src/LyXRC.cpp:2692
 msgid "Select to display the inline completion in math mode."
 msgstr ""
 
-#: src/LyXRC.cpp:2684
+#: src/LyXRC.cpp:2696
 msgid "Select to display the inline completion in text mode."
 msgstr ""
 
-#: src/LyXRC.cpp:2688
+#: src/LyXRC.cpp:2700
 msgid "Use \"...\" to shorten long completions."
 msgstr ""
 
-#: src/LyXRC.cpp:2692
+#: src/LyXRC.cpp:2704
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr "上近使用檔案的最大數量。最多可以在檔案選單中出現 %1$d 個。"
 
-#: src/LyXRC.cpp:2697
+#: src/LyXRC.cpp:2709
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
 msgstr "指定那些應該前置於 PATH 環境變數的目錄。使用 OS 的原生格式。"
 
-#: src/LyXRC.cpp:2704
+#: src/LyXRC.cpp:2716
 msgid ""
 "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "指定替代個人字典的檔案。例如：「.ispell_english」。"
 
-#: src/LyXRC.cpp:2708
+#: src/LyXRC.cpp:2720
 msgid "Shows a typeset preview of things such as math"
 msgstr "顯示諸如數學的排版預覽"
 
-#: src/LyXRC.cpp:2712
+#: src/LyXRC.cpp:2724
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr "預覽的方程式將有「(#)」標籤而非編號"
 
-#: src/LyXRC.cpp:2716
+#: src/LyXRC.cpp:2728
 msgid "Scale the preview size to suit."
 msgstr "伸縮預覽大小至合適比例。"
 
-#: src/LyXRC.cpp:2720
+#: src/LyXRC.cpp:2732
 msgid "The option for specifying whether the copies should be collated."
 msgstr "用於指定複本是否應該排序的選項。"
 
-#: src/LyXRC.cpp:2724
+#: src/LyXRC.cpp:2736
 msgid "The option for specifying the number of copies to print."
 msgstr "用於指定列印份數的選項。"
 
-#: src/LyXRC.cpp:2728
+#: src/LyXRC.cpp:2740
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
 msgstr "預設用來列印的印表機。如果沒有指定，LyX 將使用環境變數 PRINTER。"
 
-#: src/LyXRC.cpp:2732
+#: src/LyXRC.cpp:2744
 msgid "The option to print only even pages."
 msgstr "只有列印偶數頁面的選項。"
 
-#: src/LyXRC.cpp:2736
+#: src/LyXRC.cpp:2748
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
 msgstr ""
 "於其他東西之後傳遞給列印程式的額外選項，但是位於要列印的 DVI 檔名之前。"
 
-#: src/LyXRC.cpp:2740
+#: src/LyXRC.cpp:2752
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr "印表機程式輸出檔案的延伸檔名。常常是「.ps」。"
 
-#: src/LyXRC.cpp:2744
+#: src/LyXRC.cpp:2756
 msgid "The option to print out in landscape."
 msgstr "橫式列印的選項。"
 
-#: src/LyXRC.cpp:2748
+#: src/LyXRC.cpp:2760
 msgid "The option to print only odd pages."
 msgstr "只列印奇數頁面的選項。"
 
-#: src/LyXRC.cpp:2752
+#: src/LyXRC.cpp:2764
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr "用於指定以逗號分隔的列印頁面清單的選項。"
 
-#: src/LyXRC.cpp:2756
+#: src/LyXRC.cpp:2768
 msgid "Option to specify the dimensions of the print paper."
 msgstr "指定列印紙張尺寸的選項。"
 
-#: src/LyXRC.cpp:2760
+#: src/LyXRC.cpp:2772
 msgid "The option to specify paper type."
 msgstr "指定紙張型態的選項。"
 
-#: src/LyXRC.cpp:2764
+#: src/LyXRC.cpp:2776
 msgid "The option to reverse the order of the pages printed."
 msgstr "反向排序列印頁面的選項。"
 
-#: src/LyXRC.cpp:2768
+#: src/LyXRC.cpp:2780
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
@@ -17132,7 +17140,7 @@ msgstr ""
 "設定時，此印表機選項會自動列印到檔案，然後呼叫另外的列印暫存作業程式，並以給"
 "定的名稱和引數用於該檔案。"
 
-#: src/LyXRC.cpp:2772
+#: src/LyXRC.cpp:2784
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
@@ -17140,30 +17148,30 @@ msgstr ""
 "如果您在列印對話框中指定印表機名稱，下列引數將在暫存命令之後前置於印表機名"
 "稱。"
 
-#: src/LyXRC.cpp:2776
+#: src/LyXRC.cpp:2788
 msgid "Option to pass to the print program to print to a file."
 msgstr "傳遞給列印程式以列印檔案的選項。"
 
-#: src/LyXRC.cpp:2780
+#: src/LyXRC.cpp:2792
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr "傳遞給列印程式以列印於特定印表機的選項。"
 
-#: src/LyXRC.cpp:2784
+#: src/LyXRC.cpp:2796
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
 msgstr "選取以傳遞目的印表機名稱給您的 LyX 列印命令。"
 
-#: src/LyXRC.cpp:2788
+#: src/LyXRC.cpp:2800
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "您偏愛的列印程式，例如：「dvips」、「dvilj4」。"
 
-#: src/LyXRC.cpp:2796
+#: src/LyXRC.cpp:2808
 msgid ""
 "Select to have visual bidi cursor movement, unselect for logical movement."
 msgstr ""
 
-#: src/LyXRC.cpp:2800
+#: src/LyXRC.cpp:2812
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
@@ -17171,11 +17179,11 @@ msgstr ""
 "您監視器的 DPI (點/英吋) 是由 LyX 自動偵測。如果出現了錯誤，就在此強制變更設"
 "定。"
 
-#: src/LyXRC.cpp:2806
+#: src/LyXRC.cpp:2818
 msgid "The screen fonts used to display the text while editing."
 msgstr "編輯時用來顯示文字的螢幕字型。"
 
-#: src/LyXRC.cpp:2815
+#: src/LyXRC.cpp:2827
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
@@ -17185,23 +17193,23 @@ msgstr ""
 "型外觀在 LyX 中呈現鋸齒狀。取消這個選項會讓 LyX 使用最接近的可用點陣圖字型尺"
 "寸，以代替縮放。"
 
-#: src/LyXRC.cpp:2819
+#: src/LyXRC.cpp:2831
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr "用於計算螢幕字型縮放的字型大小。"
 
-#: src/LyXRC.cpp:2824
+#: src/LyXRC.cpp:2836
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
 "roughly the same size as on paper."
 msgstr "用於螢幕字型的縮放比例。設定為 100% 將使字型與紙張上的大小大致相同。"
 
-#: src/LyXRC.cpp:2828
+#: src/LyXRC.cpp:2840
 #, fuzzy
 msgid "Allow session manager to save and restore windows geometry."
 msgstr "允許執行階段管理員去儲存和還原視窗位置。"
 
-#: src/LyXRC.cpp:2832
+#: src/LyXRC.cpp:2844
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
@@ -17209,27 +17217,27 @@ msgstr ""
 "這將啟動 lyxserver。輸出入管道會取得額外的延伸名稱「.in」和「.out」。只供進階"
 "使用者。"
 
-#: src/LyXRC.cpp:2839
+#: src/LyXRC.cpp:2851
 msgid "De-select if you don't want the startup banner."
 msgstr "如果您不想要啟動橫幅就取消選取。"
 
-#: src/LyXRC.cpp:2843
+#: src/LyXRC.cpp:2855
 msgid "What command runs the spellchecker?"
 msgstr "用什麼命令運行拼寫檢查器？"
 
-#: src/LyXRC.cpp:2847
+#: src/LyXRC.cpp:2859
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
 msgstr "LyX 將它的暫存目錄置放在此路徑中。當您離開 LyX 時它們將被刪除。"
 
-#: src/LyXRC.cpp:2851
+#: src/LyXRC.cpp:2863
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
 msgstr "提供您選擇模板時 LyX 將會設定的路徑。空值將會選取 LyX 開始時的目錄。"
 
-#: src/LyXRC.cpp:2861
+#: src/LyXRC.cpp:2873
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
@@ -17237,7 +17245,7 @@ msgstr ""
 "UI (使用者介面) 檔案。可以指定絕對路徑，或是 LyX 將在它的全域和本地 ui/目錄中"
 "查找。"
 
-#: src/LyXRC.cpp:2874
+#: src/LyXRC.cpp:2886
 msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
 "if you cannot check the spelling of words containing accented letters. This "
@@ -17246,16 +17254,16 @@ msgstr ""
 "指定是否要傳遞 -T 輸入編碼選項給 ispell。啟用此如果您無法檢查包含揚音字母的字"
 "詞拼寫，就啟用它。這可能不適用於所有字典。"
 
-#: src/LyXRC.cpp:2878
+#: src/LyXRC.cpp:2890
 msgid "Enable the automatic appearance of tool tips in the work area."
 msgstr ""
 
-#: src/LyXRC.cpp:2882
+#: src/LyXRC.cpp:2894
 msgid ""
 "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 
-#: src/LyXRC.cpp:2889
+#: src/LyXRC.cpp:2901
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr "指定紙張命令給 DVI 檢視器 (保留為空或使用「-paper」)"
 
@@ -17781,7 +17789,7 @@ msgid "About %1"
 msgstr "關於 %1"
 
 #: src/frontends/qt4/GuiApplication.cpp:440
-#: src/frontends/qt4/GuiPrefs.cpp:2631
+#: src/frontends/qt4/GuiPrefs.cpp:2641
 msgid "Preferences"
 msgstr "偏好設定"
 
@@ -17806,12 +17814,12 @@ msgstr "語法：set-color <lyx_name> <x11_name>"
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr "Set-color「%1$s」失敗 - 顏色未定義或是不可重新定義"
 
-#: src/frontends/qt4/GuiApplication.cpp:1296
+#: src/frontends/qt4/GuiApplication.cpp:1305
 #, fuzzy
 msgid "The current document was closed."
 msgstr "列印文件失敗"
 
-#: src/frontends/qt4/GuiApplication.cpp:1306
+#: src/frontends/qt4/GuiApplication.cpp:1315
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -17819,24 +17827,24 @@ msgid ""
 "Exception: "
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1310
-#: src/frontends/qt4/GuiApplication.cpp:1316
+#: src/frontends/qt4/GuiApplication.cpp:1319
+#: src/frontends/qt4/GuiApplication.cpp:1325
 msgid "Software exception Detected"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1314
+#: src/frontends/qt4/GuiApplication.cpp:1323
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1476
-#: src/frontends/qt4/GuiApplication.cpp:1481
+#: src/frontends/qt4/GuiApplication.cpp:1485
+#: src/frontends/qt4/GuiApplication.cpp:1490
 #, fuzzy
 msgid "Could not find UI definition file"
 msgstr "無法讀取組態檔案"
 
-#: src/frontends/qt4/GuiApplication.cpp:1477
+#: src/frontends/qt4/GuiApplication.cpp:1486
 #, fuzzy, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -17847,7 +17855,7 @@ msgstr ""
 "%1$s。\n"
 "請檢查您的安裝。"
 
-#: src/frontends/qt4/GuiApplication.cpp:1482
+#: src/frontends/qt4/GuiApplication.cpp:1491
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -17857,12 +17865,12 @@ msgid ""
 "check which user interface file you are using."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1490
+#: src/frontends/qt4/GuiApplication.cpp:1499
 #, fuzzy
 msgid "Could not find default UI file"
 msgstr "無法讀取組態檔案"
 
-#: src/frontends/qt4/GuiApplication.cpp:1491
+#: src/frontends/qt4/GuiApplication.cpp:1500
 #, fuzzy
 msgid ""
 "LyX could not find the default UI file!\n"
@@ -19067,82 +19075,82 @@ msgstr ""
 msgid "Printer"
 msgstr "印表機"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1967 src/frontends/qt4/GuiPrefs.cpp:2671
+#: src/frontends/qt4/GuiPrefs.cpp:1967 src/frontends/qt4/GuiPrefs.cpp:2681
 msgid "User interface"
 msgstr "使用者介面"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2058
+#: src/frontends/qt4/GuiPrefs.cpp:2068
 #, fuzzy
 msgid "Control"
 msgstr "項目"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2130
+#: src/frontends/qt4/GuiPrefs.cpp:2140
 #, fuzzy
 msgid "Shortcuts"
 msgstr "捷徑(&H)："
 
-#: src/frontends/qt4/GuiPrefs.cpp:2135
+#: src/frontends/qt4/GuiPrefs.cpp:2145
 #, fuzzy
 msgid "Function"
 msgstr "函數"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2136
+#: src/frontends/qt4/GuiPrefs.cpp:2146
 #, fuzzy
 msgid "Shortcut"
 msgstr "捷徑(&H)："
 
-#: src/frontends/qt4/GuiPrefs.cpp:2217
+#: src/frontends/qt4/GuiPrefs.cpp:2227
 msgid "Cursor, Mouse and Editing functions"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2221
+#: src/frontends/qt4/GuiPrefs.cpp:2231
 #, fuzzy
 msgid "Mathematical Symbols"
 msgstr "音標符號|y"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2225
+#: src/frontends/qt4/GuiPrefs.cpp:2235
 #, fuzzy
 msgid "Document and Window"
 msgstr "文件頁首錯誤"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2229
+#: src/frontends/qt4/GuiPrefs.cpp:2239
 msgid "Font, Layouts and Textclasses"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2233
+#: src/frontends/qt4/GuiPrefs.cpp:2243
 #, fuzzy
 msgid "System and Miscellaneous"
 msgstr "AMS 雜項"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2360 src/frontends/qt4/GuiPrefs.cpp:2406
+#: src/frontends/qt4/GuiPrefs.cpp:2370 src/frontends/qt4/GuiPrefs.cpp:2416
 #, fuzzy
 msgid "Res&tore"
 msgstr "還原(&R)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2516 src/frontends/qt4/GuiPrefs.cpp:2523
-#: src/frontends/qt4/GuiPrefs.cpp:2534 src/frontends/qt4/GuiPrefs.cpp:2547
-#: src/frontends/qt4/GuiPrefs.cpp:2566
+#: src/frontends/qt4/GuiPrefs.cpp:2526 src/frontends/qt4/GuiPrefs.cpp:2533
+#: src/frontends/qt4/GuiPrefs.cpp:2544 src/frontends/qt4/GuiPrefs.cpp:2557
+#: src/frontends/qt4/GuiPrefs.cpp:2576
 #, fuzzy
 msgid "Failed to create shortcut"
 msgstr "建立目錄時失敗。離開中。"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2517
+#: src/frontends/qt4/GuiPrefs.cpp:2527
 #, fuzzy
 msgid "Unknown or invalid LyX function"
 msgstr "不明的函數。"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2524
+#: src/frontends/qt4/GuiPrefs.cpp:2534
 msgid "Invalid or empty key sequence"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2535
+#: src/frontends/qt4/GuiPrefs.cpp:2545
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to:\n"
 "%2$s"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2548
+#: src/frontends/qt4/GuiPrefs.cpp:2558
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to:\n"
@@ -19150,48 +19158,48 @@ msgid ""
 "You need to remove that binding before creating a new one."
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2567
+#: src/frontends/qt4/GuiPrefs.cpp:2577
 #, fuzzy
 msgid "Can not insert shortcut to the list"
 msgstr "加入新的分支到清單"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2598
+#: src/frontends/qt4/GuiPrefs.cpp:2608
 msgid "Identity"
 msgstr "身分"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2795
+#: src/frontends/qt4/GuiPrefs.cpp:2805
 msgid "Choose bind file"
 msgstr "選擇連結檔案"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2796
+#: src/frontends/qt4/GuiPrefs.cpp:2806
 msgid "LyX bind files (*.bind)"
 msgstr "LyX 連結檔案 (*.bind)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2802
+#: src/frontends/qt4/GuiPrefs.cpp:2812
 msgid "Choose UI file"
 msgstr "選擇 UI 檔案"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2803
+#: src/frontends/qt4/GuiPrefs.cpp:2813
 msgid "LyX UI files (*.ui)"
 msgstr "LyX UI 檔案 (*.ui)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2809
+#: src/frontends/qt4/GuiPrefs.cpp:2819
 msgid "Choose keyboard map"
 msgstr "選擇鍵盤對映"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2810
+#: src/frontends/qt4/GuiPrefs.cpp:2820
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "LyX 鍵盤對映 (*.kmap)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2816
+#: src/frontends/qt4/GuiPrefs.cpp:2826
 msgid "Choose personal dictionary"
 msgstr "選擇個人字典"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2817
+#: src/frontends/qt4/GuiPrefs.cpp:2827
 msgid "*.pws"
 msgstr "*.pws"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2817
+#: src/frontends/qt4/GuiPrefs.cpp:2827
 msgid "*.ispell"
 msgstr "*.ispell"
 
@@ -19983,35 +19991,35 @@ msgstr "書籤|B"
 msgid "Literate Source"
 msgstr "LaTeX 來源"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1121
+#: src/frontends/qt4/GuiWorkArea.cpp:1135
 #, fuzzy
 msgid " (version control)"
 msgstr "版本控制"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1123
+#: src/frontends/qt4/GuiWorkArea.cpp:1137
 #, fuzzy
 msgid " (version control, locking)"
 msgstr "版本控制"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1126
+#: src/frontends/qt4/GuiWorkArea.cpp:1140
 msgid " (changed)"
 msgstr " (已變更)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1130
+#: src/frontends/qt4/GuiWorkArea.cpp:1144
 msgid " (read only)"
 msgstr " (唯讀)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1218
+#: src/frontends/qt4/GuiWorkArea.cpp:1234
 #, fuzzy
 msgid "Close File"
 msgstr "關閉"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1626
+#: src/frontends/qt4/GuiWorkArea.cpp:1642
 #, fuzzy
 msgid "Hide tab"
 msgstr "δ"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1628
+#: src/frontends/qt4/GuiWorkArea.cpp:1644
 #, fuzzy
 msgid "Close tab"
 msgstr "關閉"
