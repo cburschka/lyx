@@ -2611,7 +2611,7 @@ lib_layouts_files = Split('''
     docbook-chapter.layout
     docbook-section.layout
     docbook.layout
-    doublecol.layout
+    doublecol-new.layout
     dtk.layout
     egs.layout
     elsart.layout
