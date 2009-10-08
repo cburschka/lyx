@@ -675,11 +675,13 @@ bool InsetMathScript::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 	if (nargs() > 2 && (!cell(1).empty() || !cell(2).empty())) {
 		if (cell(2).empty()) {
 			// must be a subscript...
+			old.recordUndoInset();
 			removeScript(false);
 			cur.updateFlags(cur.disp_.update() | Update::SinglePar);
 			return true;
 		} else if (cell(1).empty()) {
 			// must be a superscript...
+			old.recordUndoInset();
 			removeScript(true);
 			cur.updateFlags(cur.disp_.update() | Update::SinglePar);
 			return true;
