@@ -494,7 +494,7 @@ void GuiExternal::updateContents()
 		params_.filename.outputFilename(fromqstr(bufferFilepath()));
 	fileED->setText(toqstr(name));
 
-	int index = -1;
+	int index = 0;
 	external::TemplateManager::Templates::const_iterator i1, i2;
 	i1 = external::TemplateManager::get().getTemplates().begin();
 	i2 = external::TemplateManager::get().getTemplates().end();
