@@ -104,7 +104,8 @@ InsetExternalParams::InsetExternalParams()
 	if (defaultTemplateName.empty()) {
 		external::TemplateManager const & etm =
 			external::TemplateManager::get();
-		templatename_ = etm.getTemplates().begin()->first;
+		if (!etm.getTemplates().empty())
+			templatename_ = etm.getTemplates().begin()->first;
 	} else
 		templatename_ = defaultTemplateName;
 }
