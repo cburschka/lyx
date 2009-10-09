@@ -80,6 +80,8 @@ char const * const origin_gui_strs[] = {
 
 external::Template getTemplate(int i)
 {
+	if (external::TemplateManager::get().getTemplates().empty())
+		return Template();
 	external::TemplateManager::Templates::const_iterator i1
 		= external::TemplateManager::get().getTemplates().begin();
 	advance(i1, i);

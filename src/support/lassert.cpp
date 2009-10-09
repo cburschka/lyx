@@ -20,7 +20,9 @@ void doAssert(char const * expr,  char const * file, long line)
 {
 	LYXERR0("ASSERTION " << expr << " VIOLATED IN " << file << ":" << line);
 	// comment this out if not needed
+#ifdef ENABLE_ASSERTIONS
 	BOOST_ASSERT(false);
+#endif
 }
 
 } // namespace lyx

@@ -89,6 +89,8 @@ What's new
 
 - Fix a tex2lyx crash when importing a LaTeX file using an unknown encoding
   (bug 6142).
+  
+- Fix a crash when no external templates are defined (bug 3974).
 
 - Add encoding "ansinew" as a synonym of "cp1252" for the benefit of 
   tex2lyx (bug 6142).
