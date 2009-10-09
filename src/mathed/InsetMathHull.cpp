@@ -30,6 +30,7 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "CutAndPaste.h"
+#include "Encoding.h"
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
 #include "Cursor.h"
@@ -1656,7 +1657,7 @@ bool InsetMathHull::readQuiet(Lexer & lex)
 }
 
 
-int InsetMathHull::plaintext(odocstream & os, OutputParams const & runparams) const
+int InsetMathHull::plaintext(odocstream & os, OutputParams const &) const
 {
 	if (0 && display()) {
 		Dimension dim;
@@ -1670,7 +1671,8 @@ int InsetMathHull::plaintext(odocstream & os, OutputParams const & runparams) co
 		return tpain.textheight();
 	} else {
 		odocstringstream oss;
-		WriteStream wi(oss, false, true, WriteStream::wsDefault, runparams.encoding);
+		Encoding const * const enc = encodings.fromLyXName("utf8");
+		WriteStream wi(oss, false, true, WriteStream::wsDefault, enc);
 		// Fix Bug #6139
 		if (type_ == hullRegexp)
 			write(wi);
