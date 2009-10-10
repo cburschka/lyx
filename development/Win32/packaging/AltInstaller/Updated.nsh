@@ -8,11 +8,13 @@ Function UpdateModifiedFiles
  #File "${PRODUCT_SOURCEDIR}\bin\QtGui4.dll"
  SetOutPath "$INSTDIR\Resources" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
+ File /r "${PRODUCT_SOURCEDIR}\Resources\layouts"
  File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
+ File "${PRODUCT_SOURCEDIR}\Resources\encodings"
  File "${PRODUCT_SOURCEDIR}\Resources\languages"
  File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"
- #SetOutPath "$INSTDIR\Resources\bind"
- #File "${PRODUCT_SOURCEDIR}\Resources\bind\cua.bind"
+ SetOutPath "$INSTDIR\Resources\bind"
+ File "${PRODUCT_SOURCEDIR}\Resources\bind\cua.bind"
  SetOutPath "$INSTDIR\Resources\doc"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\Customization.lyx"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
@@ -22,7 +24,7 @@ Function UpdateModifiedFiles
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\LFUNs.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Math.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Tutorial.lyx"
- #File "${PRODUCT_SOURCEDIR}\Resources\doc\UserGuide.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\UserGuide.lyx"
  SetOutPath "$INSTDIR\Resources\doc\clipart"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\clipart\StandardToolbar.png"
  SetOutPath "$INSTDIR\Resources\doc\de"
@@ -56,11 +58,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\examples\de\Braille.lyx"
  SetOutPath "$INSTDIR\Resources\examples\fr"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\fr\Braille.lyx"
- SetOutPath "$INSTDIR\Resources\layouts"
- File "${PRODUCT_SOURCEDIR}\Resources\layouts\elsarticle.layout"
- File "${PRODUCT_SOURCEDIR}\Resources\layouts\recipebook.layout"
- File "${PRODUCT_SOURCEDIR}\Resources\layouts\svglobal3.layout"
- File "${PRODUCT_SOURCEDIR}\Resources\layouts\svjour.inc"
+ SetOutPath "$INSTDIR\Resources\examples\sk"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\sk\splash.lyx"
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx_1_6.py"
