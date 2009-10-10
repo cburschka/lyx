@@ -192,6 +192,10 @@ dist_slexamples_DATA = \
 	examples/sl/primer_surov.lyx \
 	examples/sl/splash.lyx
 
+skexamplesdir = $(pkgdatadir)/examples/sk
+dist_skexamples_DATA = \
+	examples/sk/splash.lyx
+
 ukexamplesdir = $(pkgdatadir)/examples/uk
 dist_ukexamples_DATA = \
 	examples/uk/splash.lyx
