@@ -1423,7 +1423,8 @@ bool Cursor::macroModeClose()
 	InsetMathUnknown * p = activeMacro();
 	p->finalize();
 	MathData selection;
-	asArray(p->selection(), selection);
+	// enclose selection in braces (bug #6270)
+	asArray('{' + p->selection() + '}', selection);
 	docstring const s = p->name();
 	--pos();
 	cell().erase(pos());
