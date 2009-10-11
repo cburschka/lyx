@@ -140,6 +140,10 @@ What's new
 - Fix a crash when trying to launch the settings dialog of an unknown
   external inset (bug 6259).
 
+- Fix crash when copying a math inset containing a non-ascii character
+  which is missing a LaTeX command representation in the unicodesymbols
+  file (bug 6250).
+
 - Fix a number of assertions when displaying error messages (bug 6205). 
 
 - Fix bad allocation exception when displaying long tooltips (bug 6215).
