@@ -186,6 +186,8 @@ What's new
 
 - Fix undo of removed script in mathed when both super- and subscript
   are present (bug 6264).
+
+- Fix parsing of selection when used as argument of a math macro (bug 6270).
   
 
 * DOCUMENTATION AND LOCALIZATION
