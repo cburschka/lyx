@@ -418,12 +418,33 @@ Preferences\SpecialChar \menuseparator
 Look and Feel\SpecialChar \menuseparator
 Graphics
 \family default
- and place a check-mark at 
+ and turn 
 \emph on
 Instant Preview
 \emph default
+ on.
+\end_layout
+
+\begin_layout Enumerate
+In 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Math
+\begin_inset space ~
+\end_inset
+
+Options
+\family default
+, uncheck 
+\emph on
+Use AMS Math package automatically
+\emph default
+ and check 
+\emph on
+Use AMS Math package
+\emph default
 .
- 
 \end_layout
 
 \begin_layout Enumerate
