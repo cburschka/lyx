@@ -99,7 +99,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-10-07 14:20+0200\n"
-"PO-Revision-Date: 2009-10-07 14:34+0200\n"
+"PO-Revision-Date: 2009-10-11 11:57+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -2861,8 +2861,7 @@ msgstr "Befehl für das St&ichwortverzeichnis:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:221
 msgid "Specific index command and options for pLaTeX (Japanese)"
-msgstr ""
-"Spezieller Index-Prozessor-Befehl (mit Optionen) für pLaTeX (Japanisch)"
+msgstr "Spezieller Indexprozessor-Befehl (mit Optionen) für pLaTeX (Japanisch)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:228
 msgid "Specific BibTeX command and options for pLaTeX (Japanese)"
@@ -4481,7 +4480,7 @@ msgstr "Schlagwörter"
 
 #: lib/layouts/IEEEtran.layout:362
 msgid "Index Terms---"
-msgstr "Stichwörter---"
+msgstr "Indexterms---"
 
 #: lib/layouts/IEEEtran.layout:374 lib/layouts/aa.layout:91
 #: lib/layouts/aa.layout:371 lib/layouts/aapaper.layout:103
@@ -14857,7 +14856,7 @@ msgstr "  Speichern fehlgeschlagen! Versuche es erneut...\n"
 
 #: src/Buffer.cpp:975
 msgid "  Save failed! Trying yet again...\n"
-msgstr "  Speicherung fehlgeschlagen! Versuche es noch einmal...\n"
+msgstr "  Speichern fehlgeschlagen! Versuche es noch einmal...\n"
 
 #: src/Buffer.cpp:989
 msgid "  Save failed! Bummer. Document is lost."
@@ -15019,7 +15018,7 @@ msgstr "Dokument wurde NICHT erfolgreich wiederhergestellt."
 
 #: src/Buffer.cpp:2713 src/Buffer.cpp:2726
 msgid "Remove emergency file now?"
-msgstr "Notspeicherung nun entfernen?"
+msgstr "Notspeicherungsdatei jetzt löschen?"
 
 #: src/Buffer.cpp:2715 src/Buffer.cpp:2725
 msgid "Delete emergency file?"
@@ -16210,8 +16209,8 @@ msgid ""
 "updated document class specifications."
 msgstr ""
 "Das System wurde neu konfiguriert.\n"
-"Sie müssen LyX neu starten, um die aktualisierten Spezifikationenfür die "
-"Dokumentklassen zu nutzen."
+"Sie müssen LyX neu starten, um die aktualisierten\n"
+"Spezifikationen für die Dokumentklassen zu nutzen."
 
 #: src/LyXFunc.cpp:374
 msgid "Unknown function."
