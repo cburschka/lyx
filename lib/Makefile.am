@@ -335,6 +335,7 @@ dist_images_DATA = \
 	images/dialog-show_print.png \
 	images/dialog-show_spellchecker.png \
 	images/dialog-show_vclog.png \
+	images/dialog-toggle_findreplaceadv.png \
 	images/dialog-toggle_toc.png \
 	images/down.png \
 	images/ert-insert.png \

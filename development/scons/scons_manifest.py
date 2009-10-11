@@ -1430,6 +1430,7 @@ lib_images_files = Split('''
     dialog-show_print.png
     dialog-show_spellchecker.png
     dialog-show_vclog.png
+    dialog-toggle_findreplaceadv.png
     dialog-toggle_toc.png
     down.png
     ert-insert.png
