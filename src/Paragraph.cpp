@@ -766,7 +766,7 @@ void Paragraph::Private::latexInset(
 
 	if (inset->canTrackChanges()) {
 		column += Changes::latexMarkChange(os, bparams, running_change,
-			Change(Change::UNCHANGED));
+			Change(Change::UNCHANGED), runparams);
 		running_change = Change(Change::UNCHANGED);
 	}
 
@@ -2003,7 +2003,8 @@ bool Paragraph::latex(BufferParams const & bparams,
 				running_font = basefont;
 
 				column += Changes::latexMarkChange(os, bparams,
-						runningChange, Change(Change::UNCHANGED));
+						runningChange, Change(Change::UNCHANGED),
+						runparams);
 				runningChange = Change(Change::UNCHANGED);
 
 				os << "] ";
@@ -2032,7 +2033,8 @@ bool Paragraph::latex(BufferParams const & bparams,
 			basefont = getLayoutFont(bparams, outerfont);
 			running_font = basefont;
 
-			column += Changes::latexMarkChange(os, bparams, runningChange, change);
+			column += Changes::latexMarkChange(os, bparams, runningChange,
+							   change, runparams);
 			runningChange = change;
 		}
 
@@ -2189,7 +2191,8 @@ bool Paragraph::latex(BufferParams const & bparams,
 #endif
 	}
 
-	column += Changes::latexMarkChange(os, bparams, runningChange, Change(Change::UNCHANGED));
+	column += Changes::latexMarkChange(os, bparams, runningChange,
+					   Change(Change::UNCHANGED), runparams);
 
 	// Needed if there is an optional argument but no contents.
 	if (body_pos > 0 && body_pos == size()) {

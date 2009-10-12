@@ -17,6 +17,7 @@
 
 #include "Color.h"
 
+#include "support/docstream.h"
 #include "support/strfwd.h"
 #include "support/types.h"
 #include "support/lyxtime.h"
@@ -29,6 +30,7 @@ namespace lyx {
 class AuthorList;
 class Buffer;
 class DocIterator;
+class OutputParams;
 
 class Change {
 public:
@@ -95,12 +97,13 @@ public:
 	bool isChanged(pos_type start, pos_type end) const;
 
 	/// return true if the whole range is deleted
-	bool isFullyDeleted(pos_type const start, pos_type const end) const;		
+	bool isFullyDeleted(pos_type const start, pos_type const end) const;
 
 	/// output latex to mark a transition between two change types
 	/// returns length of text outputted
 	static int latexMarkChange(odocstream & os, BufferParams const & bparams,
-				   Change const & oldChange, Change const & change);
+				   Change const & oldChange, Change const & change,
+				   OutputParams const & runparams);
 
 	/// output .lyx file format for transitions between changes
 	static void lyxMarkChange(std::ostream & os, int & column,

@@ -102,10 +102,13 @@ What's new
 
 - Fix support for polytonic Greek with multiple diacritics (bug 5976).
 
+- Assure the author name is encoded correctly in the LaTeX output of
+  change tracking markup (bug 6225).
+
 - Do not unnecessarily enquote brackets in the LaTeX output (bug 5988).
 
 - Remove the last '\\' in the output of multiline equations. This caused
-  labels to appear double (bug 2969).
+  labels to appear twice (bug 2969).
  
 - Put "|" characters in index entries in ERT when converting old documents
   to LyX 1.6.x format, to assure the character is treated verbatim
