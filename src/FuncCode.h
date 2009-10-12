@@ -415,7 +415,7 @@ enum FuncCode
 	LFUN_VC_COMMAND,
 	// 320
 	LFUN_MATH_FONT_STYLE,
-	LFUN_SCREEN_SHOW_CURSOR,        // vfr, 20090325
+	LFUN_INSET_SELECT_ALL,			// vfr, 20090822
 	LFUN_BUFFER_ZOOM_IN,            // vfr, 20090330
 	LFUN_BUFFER_ZOOM_OUT,           // vfr, 20090330
  	LFUN_INSET_BEGIN,               // JMarc, 20090316
@@ -426,6 +426,7 @@ enum FuncCode
 	LFUN_VC_LOCKING_TOGGLE,
  	LFUN_MATH_BIGDELIM,
 	LFUN_GRAPHICS_RELOAD,           // vfr 20090810
+	LFUN_SCREEN_SHOW_CURSOR,        // vfr, 20090325
 
 	LFUN_LASTACTION                  // end of the table
 };

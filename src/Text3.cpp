@@ -561,6 +561,18 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		cur.updateFlags(Update::FitCursor);
 		break;
 
+	case LFUN_INSET_SELECT_ALL:
+		if (cur.depth() == 1 || !cur.selection() || !cur.selBegin().at_begin()
+			  || !cur.selEnd().at_end()) {
+			needsUpdate |= cur.selHandle(false);
+			needsUpdate |= cursorTop(cur);
+			needsUpdate |= cur.selHandle(true);
+			needsUpdate |= cursorBottom(cur);
+		} else 
+			cur.undispatched();
+		cur.updateFlags(Update::FitCursor);
+		break;
+
 	case LFUN_CHAR_FORWARD:
 	case LFUN_CHAR_FORWARD_SELECT:
 		//LYXERR0(" LFUN_CHAR_FORWARD[SEL]:\n" << cur);
@@ -2445,6 +2457,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_INSET_END:
 	case LFUN_INSET_BEGIN_SELECT:
 	case LFUN_INSET_END_SELECT:
+	case LFUN_INSET_SELECT_ALL:
 	case LFUN_UNICODE_INSERT:
 		// these are handled in our dispatch()
 		enable = true;
