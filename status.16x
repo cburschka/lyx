@@ -191,7 +191,10 @@ What's new
   are present (bug 6264).
 
 - Fix parsing of selection when used as argument of a math macro (bug 6270).
-  
+
+- Fix inset-[begin|end][-select] when the cursor is at the beginning or
+  end of a paragraph.
+
 
 * DOCUMENTATION AND LOCALIZATION
 

@@ -544,7 +544,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_BEGIN:
 	case LFUN_INSET_BEGIN_SELECT:
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_INSET_BEGIN_SELECT);
-		if (cur.depth() == 1 || cur.pos() > 0)
+		if (cur.depth() == 1 || !cur.top().at_begin())
 			needsUpdate |= cursorTop(cur);
 		else
 			cur.undispatched();
@@ -554,7 +554,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_END:
 	case LFUN_INSET_END_SELECT:
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_INSET_END_SELECT);
-		if (cur.depth() == 1 || cur.pos() < cur.lastpos())
+		if (cur.depth() == 1 || !cur.top().at_end())
 			needsUpdate |= cursorBottom(cur);
 		else
 			cur.undispatched();
