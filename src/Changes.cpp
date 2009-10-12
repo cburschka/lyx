@@ -17,13 +17,18 @@
 #include "Author.h"
 #include "Buffer.h"
 #include "BufferParams.h"
+#include "Encoding.h"
 #include "LaTeXFeatures.h"
+#include "OutputParams.h"
 #include "Paragraph.h"
 #include "TocBackend.h"
 
 #include "support/debug.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
+#include "support/lstrings.h"
+
+#include "frontends/alert.h"
 
 #include <ostream>
 
@@ -334,8 +339,61 @@ void Changes::merge()
 }
 
 
+namespace {
+docstring getLaTeXMarkup(docstring const macro, docstring const author,
+			 docstring const chgTime,
+			 OutputParams const & runparams)
+{
+	if (macro.empty())
+		return docstring();
+
+	static docstring warned_author = docstring();
+	docstring uncodable_author = warned_author;
+	odocstringstream ods;
+
+	ods << macro;
+	// convert utf8 author name to something representable
+	// in the current encoding
+	docstring author_latexed;
+	for (size_t n = 0; n < author.size(); ++n) {
+		try {
+			author_latexed += runparams.encoding->latexChar(author[n]);
+		} catch (EncodingException & /* e */) {
+			if (runparams.dryrun) {
+				ods << "<" << _("LyX Warning: ")
+				    << _("uncodable character") << " '";
+				ods.put(author[n]);
+				ods << "'>";
+			} else {
+				LYXERR0("Ommitting uncodable character '"
+					<< docstring(1, author[n])
+					<< "' in change author name!");
+				uncodable_author = author;
+			}
+		}
+	}
+	ods << author_latexed << "}{" << chgTime << "}{";
+
+	// warn user (once) if we found uncodable glyphs.
+	if (uncodable_author != warned_author) {
+		frontend::Alert::warning(_("Uncodable character in author name"),
+				support::bformat(_("The author name '%1$s',\n"
+				  "used for change tracking, contains glyphs that cannot be\n"
+				  "represented in the current encoding. The respective glyphs\n"
+				  "will be ommitted in the exported LaTeX file.\n\n"
+				  "Chose an appropriate document encoding (such as utf8)\n"
+				  "or change the spelling of the author name."), uncodable_author));
+		warned_author = uncodable_author;
+	}
+
+	return ods.str();
+}
+} //namespace anon
+
+
 int Changes::latexMarkChange(odocstream & os, BufferParams const & bparams,
-			     Change const & oldChange, Change const & change)
+			     Change const & oldChange, Change const & change,
+			     OutputParams const & runparams)
 {
 	if (!bparams.outputChanges || oldChange == change)
 		return 0;
@@ -343,27 +401,28 @@ int Changes::latexMarkChange(odocstream & os, BufferParams const & bparams,
 	int column = 0;
 
 	if (oldChange.type != Change::UNCHANGED) {
-		os << '}'; // close \lyxadded or \lyxdeleted
+		// close \lyxadded or \lyxdeleted
+		os << '}';
 		column++;
 	}
 
 	docstring chgTime;
 	chgTime += ctime(&change.changetime);
-	chgTime.erase(chgTime.end() - 1); // remove trailing '\n'
+	// remove trailing '\n'
+	chgTime.erase(chgTime.end() - 1);
 
-	if (change.type == Change::DELETED) {
-		docstring str = "\\lyxdeleted{" +
-			bparams.authors().get(change.author).name() + "}{" +
-			chgTime + "}{";
-		os << str;
-		column += str.size();
-	} else if (change.type == Change::INSERTED) {
-		docstring str = "\\lyxadded{" +
-			bparams.authors().get(change.author).name() + "}{" +
-			chgTime + "}{";
-		os << str;
-		column += str.size();
-	}
+	docstring macro_beg;
+	if (change.type == Change::DELETED)
+		macro_beg = from_ascii("\\lyxdeleted{");
+	else if (change.type == Change::INSERTED)
+		macro_beg = from_ascii("\\lyxadded{");
+	
+	docstring str = getLaTeXMarkup(macro_beg,
+				       bparams.authors().get(change.author).name(),
+				       chgTime, runparams);
+	
+	os << str;
+	column += str.size();
 
 	return column;
 }
