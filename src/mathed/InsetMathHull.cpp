@@ -1235,7 +1235,8 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_WORD_DELETE_FORWARD:
 	case LFUN_CHAR_DELETE_FORWARD:
 		if (col(cur.idx()) + 1 == ncols()
-		    && cur.pos() == cur.lastpos()) {
+		    && cur.pos() == cur.lastpos()
+		    && !cur.selection()) {
 			if (!label(row(cur.idx())).empty()) {
 				cur.recordUndoInset();
 				label(row(cur.idx()), docstring());

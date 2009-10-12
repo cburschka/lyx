@@ -180,6 +180,9 @@ What's new
 
 - Fix the \kern primitive in mathed (bug 6246).
 
+- When pressing <del> at the end of a math formula, do not remove
+  label or numbering when selection is set (bug 6273).
+
 - Fix Ctrl-Shift-Tab shortcut for tabs (bug 6194).
 
 - When starting LyX, open each document in a new view when "Open documents
