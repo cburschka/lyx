@@ -340,8 +340,8 @@ void Changes::merge()
 
 
 namespace {
-docstring getLaTeXMarkup(docstring const macro, docstring const author,
-			 docstring const chgTime,
+docstring getLaTeXMarkup(docstring const & macro, docstring const & author,
+			 docstring const & chgTime,
 			 OutputParams const & runparams)
 {
 	if (macro.empty())
