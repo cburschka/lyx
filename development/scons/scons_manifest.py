@@ -2735,11 +2735,14 @@ lib_layouts_inc_files = Split('''
 lib_layouts_module_files = Split('''
     braille.module
     endnotes.module
+    eqs-within-sections.module
+    figs-within-sections.module
     foottoend.module
     hanging.module
     linguistics.module
     logicalmkup.module
     minimalistic.module
+    tabs-within-sections.module
     theorems-ams-extended.module
     theorems-ams.module
     theorems-chap.module

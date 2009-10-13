@@ -1015,11 +1015,13 @@ dist_layouts_DATA =\
 	layouts/elsarticle.layout \
 	layouts/endnotes.module \
 	layouts/entcs.layout \
+	layouts/eqs-within-sections.module \
 	layouts/europecv.layout \
 	layouts/extarticle.layout \
 	layouts/extbook.layout \
 	layouts/extletter.layout \
 	layouts/extreport.layout \
+	layouts/figs-within-sections.module \
 	layouts/foils.layout \
 	layouts/foottoend.module \
 	layouts/g-brief-de.layout \
@@ -1101,6 +1103,7 @@ dist_layouts_DATA =\
 	layouts/svjog.layout \
 	layouts/svjour.inc \
 	layouts/svprobth.layout \
+	layouts/tabs-within-sections.module \
 	layouts/tarticle.layout \
 	layouts/tbook.layout \
 	layouts/theorems-ams-extended.module \
