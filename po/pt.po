@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-10-07 14:20+0200\n"
+"POT-Creation-Date: 2009-10-12 19:11+0200\n"
 "PO-Revision-Date: 2009-08-19 17:08+0100\n"
 "Last-Translator: susana barbosa <sabarbosa@fc.ul.pt>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -10860,19 +10860,19 @@ msgid "Justified Line Break|J"
 msgstr "Quebra de Linha Justificada|J"
 
 #: lib/ui/stdcontext.inc:281 lib/ui/stdcontext.inc:327 lib/ui/stdmenus.inc:97
-#: lib/ui/stdtoolbars.inc:78 src/Text3.cpp:1090
+#: lib/ui/stdtoolbars.inc:78 src/Text3.cpp:1102
 #: src/mathed/InsetMathNest.cpp:551
 msgid "Cut"
 msgstr "Cortar"
 
 #: lib/ui/stdcontext.inc:282 lib/ui/stdcontext.inc:328 lib/ui/stdmenus.inc:98
-#: lib/ui/stdtoolbars.inc:79 src/Text3.cpp:1095
+#: lib/ui/stdtoolbars.inc:79 src/Text3.cpp:1107
 #: src/mathed/InsetMathNest.cpp:559
 msgid "Copy"
 msgstr "Copiar"
 
 #: lib/ui/stdcontext.inc:283 lib/ui/stdcontext.inc:329 lib/ui/stdmenus.inc:99
-#: lib/ui/stdtoolbars.inc:80 src/Text3.cpp:1043
+#: lib/ui/stdtoolbars.inc:80 src/Text3.cpp:1055
 #: src/mathed/InsetMathGrid.cpp:1256 src/mathed/InsetMathNest.cpp:531
 msgid "Paste"
 msgstr "Colar"
@@ -15303,6 +15303,35 @@ msgstr ""
 "por favor alterar a codificação do ficheiro\n"
 "para UTF-8 com outro programa que não o LyX.\n"
 
+#: src/Changes.cpp:363 src/Paragraph.cpp:2155
+#: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetListings.cpp:185
+#: src/insets/InsetListings.cpp:193 src/insets/InsetListings.cpp:217
+#: src/mathed/InsetMathString.cpp:166
+msgid "LyX Warning: "
+msgstr "Aviso do LyX:"
+
+#: src/Changes.cpp:364 src/Paragraph.cpp:2156 src/insets/InsetListings.cpp:186
+#: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:167
+msgid "uncodable character"
+msgstr "caracter não codificável"
+
+#: src/Changes.cpp:379
+#, fuzzy
+msgid "Uncodable character in author name"
+msgstr "Caracteres não codificáveis em insertos de listagens"
+
+#: src/Changes.cpp:380
+#, c-format
+msgid ""
+"The author name '%1$s',\n"
+"used for change tracking, contains glyphs that cannot be\n"
+"represented in the current encoding. The respective glyphs\n"
+"will be ommitted in the exported LaTeX file.\n"
+"\n"
+"Chose an appropriate document encoding (such as utf8)\n"
+"or change the spelling of the author name."
+msgstr ""
+
 #: src/Chktex.cpp:63
 #, c-format
 msgid "ChkTeX warning id # %1$d"
@@ -16288,7 +16317,7 @@ msgstr "Reverter para o documento guardado?"
 msgid "&Revert"
 msgstr "&Reverter"
 
-#: src/LyXFunc.cpp:1067 src/Text3.cpp:1600
+#: src/LyXFunc.cpp:1067 src/Text3.cpp:1612
 msgid "Missing argument"
 msgstr "Argumento em falta"
 
@@ -16993,22 +17022,11 @@ msgstr ""
 "A nova disposição não permite o alinhamento usado préviamente.\n"
 "A usar o pré-definido."
 
-#: src/Paragraph.cpp:2153 src/frontends/qt4/LaTeXHighlighter.cpp:108
-#: src/insets/InsetListings.cpp:185 src/insets/InsetListings.cpp:193
-#: src/insets/InsetListings.cpp:217 src/mathed/InsetMathString.cpp:166
-msgid "LyX Warning: "
-msgstr "Aviso do LyX:"
-
-#: src/Paragraph.cpp:2154 src/insets/InsetListings.cpp:186
-#: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:167
-msgid "uncodable character"
-msgstr "caracter não codificável"
-
-#: src/Paragraph.cpp:2518
+#: src/Paragraph.cpp:2521
 msgid "Memory problem"
 msgstr "Problema de memória"
 
-#: src/Paragraph.cpp:2518
+#: src/Paragraph.cpp:2521
 msgid "Paragraph not properly initialized"
 msgstr "Parágrafo não inicializado adequadamente"
 
@@ -17122,7 +17140,7 @@ msgstr "Nada para o índice remissivo!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Não é possível indexar mais do que um parágrafo!"
 
-#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1513
+#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1515
 msgid "Math editor mode"
 msgstr "Modo editor mat."
 
@@ -17130,23 +17148,23 @@ msgstr "Modo editor mat."
 msgid "No valid math formula"
 msgstr "Formula mat. não valida"
 
-#: src/Text3.cpp:872
+#: src/Text3.cpp:884
 msgid "Unknown spacing argument: "
 msgstr "Argumento de espaçamento desconhecido: "
 
-#: src/Text3.cpp:1155
+#: src/Text3.cpp:1167
 msgid "Layout "
 msgstr "Layout"
 
-#: src/Text3.cpp:1156
+#: src/Text3.cpp:1168
 msgid " not known"
 msgstr " desconhecido"
 
-#: src/Text3.cpp:1717 src/Text3.cpp:1729
+#: src/Text3.cpp:1729 src/Text3.cpp:1741
 msgid "Character set"
 msgstr "Conjunto de caracteres"
 
-#: src/Text3.cpp:1877 src/Text3.cpp:1888
+#: src/Text3.cpp:1889 src/Text3.cpp:1900
 msgid "Paragraph layout set"
 msgstr "Conjunto disposição de parágrafo"
 
@@ -17588,7 +17606,7 @@ msgstr "Bibliografia BibTeX"
 
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
 #: src/frontends/qt4/GuiDocument.cpp:1308
-#: src/frontends/qt4/GuiExternal.cpp:670 src/frontends/qt4/GuiGraphics.cpp:847
+#: src/frontends/qt4/GuiExternal.cpp:672 src/frontends/qt4/GuiGraphics.cpp:847
 #: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1319
 #: src/frontends/qt4/GuiView.cpp:1377 src/frontends/qt4/GuiView.cpp:1524
 #: src/frontends/qt4/GuiView.cpp:1652 src/frontends/qt4/GuiView.cpp:1736
@@ -18304,15 +18322,15 @@ msgstr "Baixo direita"
 msgid "Baseline right"
 msgstr "Linha-de-base direita"
 
-#: src/frontends/qt4/GuiExternal.cpp:93
+#: src/frontends/qt4/GuiExternal.cpp:95
 msgid "External Material"
 msgstr "Material Externo"
 
-#: src/frontends/qt4/GuiExternal.cpp:207
+#: src/frontends/qt4/GuiExternal.cpp:209
 msgid "Scale%"
 msgstr "Redimensionar%"
 
-#: src/frontends/qt4/GuiExternal.cpp:666
+#: src/frontends/qt4/GuiExternal.cpp:668
 msgid "Select external file"
 msgstr "Selecionar ficheiro externo"
 
@@ -19967,7 +19985,7 @@ msgstr "Em falta \\end_inset neste ponto."
 msgid "Opened ERT Inset"
 msgstr "Inserto ERT Aberto"
 
-#: src/insets/InsetExternal.cpp:491
+#: src/insets/InsetExternal.cpp:492
 #, c-format
 msgid "External template %1$s is not installed"
 msgstr "Modelo externo %1$s não está instalado"
@@ -20689,7 +20707,7 @@ msgstr " cadeias alfanuméricas foram substituidas."
 msgid " Macro: %1$s: "
 msgstr " Macro: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1421
+#: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1423
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -20726,25 +20744,25 @@ msgstr "Não há vline para apagar"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Característica tabular desconhecida '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1190 src/mathed/InsetMathHull.cpp:1198
+#: src/mathed/InsetMathHull.cpp:1191 src/mathed/InsetMathHull.cpp:1199
 msgid "No number"
 msgstr "Sem número"
 
-#: src/mathed/InsetMathHull.cpp:1190 src/mathed/InsetMathHull.cpp:1198
+#: src/mathed/InsetMathHull.cpp:1191 src/mathed/InsetMathHull.cpp:1199
 msgid "Number"
 msgstr "Número"
 
-#: src/mathed/InsetMathHull.cpp:1394
+#: src/mathed/InsetMathHull.cpp:1396
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Não é possível alterar o número de linhas em %1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1404
+#: src/mathed/InsetMathHull.cpp:1406
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Não é possível alterar o número de colunas em %1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1414
+#: src/mathed/InsetMathHull.cpp:1416
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Não é possível adicionar linhas de grelha horizontal em '%1$s'"

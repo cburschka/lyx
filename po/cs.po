@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-10-07 14:20+0200\n"
+"POT-Creation-Date: 2009-10-12 19:11+0200\n"
 "PO-Revision-Date: 2009-07-25 02:01+0100\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -10777,19 +10777,19 @@ msgid "Justified Line Break|J"
 msgstr "Konec øádku se zarovnáním"
 
 #: lib/ui/stdcontext.inc:281 lib/ui/stdcontext.inc:327 lib/ui/stdmenus.inc:97
-#: lib/ui/stdtoolbars.inc:78 src/Text3.cpp:1090
+#: lib/ui/stdtoolbars.inc:78 src/Text3.cpp:1102
 #: src/mathed/InsetMathNest.cpp:551
 msgid "Cut"
 msgstr "Vyjmout"
 
 #: lib/ui/stdcontext.inc:282 lib/ui/stdcontext.inc:328 lib/ui/stdmenus.inc:98
-#: lib/ui/stdtoolbars.inc:79 src/Text3.cpp:1095
+#: lib/ui/stdtoolbars.inc:79 src/Text3.cpp:1107
 #: src/mathed/InsetMathNest.cpp:559
 msgid "Copy"
 msgstr "Zkopírovat"
 
 #: lib/ui/stdcontext.inc:283 lib/ui/stdcontext.inc:329 lib/ui/stdmenus.inc:99
-#: lib/ui/stdtoolbars.inc:80 src/Text3.cpp:1043
+#: lib/ui/stdtoolbars.inc:80 src/Text3.cpp:1055
 #: src/mathed/InsetMathGrid.cpp:1256 src/mathed/InsetMathNest.cpp:531
 msgid "Paste"
 msgstr "Vlo¾it"
@@ -15158,6 +15158,35 @@ msgstr ""
 "zmìnte prosím kódování souboru na\n"
 "UTF-8 jiným programem.\n"
 
+#: src/Changes.cpp:363 src/Paragraph.cpp:2155
+#: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetListings.cpp:185
+#: src/insets/InsetListings.cpp:193 src/insets/InsetListings.cpp:217
+#: src/mathed/InsetMathString.cpp:166
+msgid "LyX Warning: "
+msgstr "Výstraha LyX-u: "
+
+#: src/Changes.cpp:364 src/Paragraph.cpp:2156 src/insets/InsetListings.cpp:186
+#: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:167
+msgid "uncodable character"
+msgstr "nekódovatelný znak"
+
+#: src/Changes.cpp:379
+#, fuzzy
+msgid "Uncodable character in author name"
+msgstr "Nekódovatelné znaky ve výpisu zdrojového kódu"
+
+#: src/Changes.cpp:380
+#, c-format
+msgid ""
+"The author name '%1$s',\n"
+"used for change tracking, contains glyphs that cannot be\n"
+"represented in the current encoding. The respective glyphs\n"
+"will be ommitted in the exported LaTeX file.\n"
+"\n"
+"Chose an appropriate document encoding (such as utf8)\n"
+"or change the spelling of the author name."
+msgstr ""
+
 #: src/Chktex.cpp:63
 #, c-format
 msgid "ChkTeX warning id # %1$d"
@@ -16136,7 +16165,7 @@ msgstr "Vrátit se k pùvodnímu dokumentu ?"
 msgid "&Revert"
 msgstr "&Pùvodní verze"
 
-#: src/LyXFunc.cpp:1067 src/Text3.cpp:1600
+#: src/LyXFunc.cpp:1067 src/Text3.cpp:1612
 msgid "Missing argument"
 msgstr "Chybí argument"
 
@@ -16806,22 +16835,11 @@ msgstr ""
 "Nové rozvr¾ení nepovoluje pou¾ívané zarovnání.\n"
 "Pøepnuto na standardní."
 
-#: src/Paragraph.cpp:2153 src/frontends/qt4/LaTeXHighlighter.cpp:108
-#: src/insets/InsetListings.cpp:185 src/insets/InsetListings.cpp:193
-#: src/insets/InsetListings.cpp:217 src/mathed/InsetMathString.cpp:166
-msgid "LyX Warning: "
-msgstr "Výstraha LyX-u: "
-
-#: src/Paragraph.cpp:2154 src/insets/InsetListings.cpp:186
-#: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:167
-msgid "uncodable character"
-msgstr "nekódovatelný znak"
-
-#: src/Paragraph.cpp:2518
+#: src/Paragraph.cpp:2521
 msgid "Memory problem"
 msgstr "Interní chyba"
 
-#: src/Paragraph.cpp:2518
+#: src/Paragraph.cpp:2521
 msgid "Paragraph not properly initialized"
 msgstr "Odstavec není správnì inicializován"
 
@@ -16934,7 +16952,7 @@ msgstr "Nic k indexaci !"
 msgid "Cannot index more than one paragraph!"
 msgstr "Nelze indexovat víc ne¾ jeden odstavec !"
 
-#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1513
+#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1515
 msgid "Math editor mode"
 msgstr "Mód matematického editoru"
 
@@ -16942,23 +16960,23 @@ msgstr "Mód matematického editoru"
 msgid "No valid math formula"
 msgstr "®ádný platný matematický vzorec"
 
-#: src/Text3.cpp:872
+#: src/Text3.cpp:884
 msgid "Unknown spacing argument: "
 msgstr "Neznámý argument mezery: "
 
-#: src/Text3.cpp:1155
+#: src/Text3.cpp:1167
 msgid "Layout "
 msgstr "Rozvr¾ení "
 
-#: src/Text3.cpp:1156
+#: src/Text3.cpp:1168
 msgid " not known"
 msgstr " neznámý"
 
-#: src/Text3.cpp:1717 src/Text3.cpp:1729
+#: src/Text3.cpp:1729 src/Text3.cpp:1741
 msgid "Character set"
 msgstr "Znaková sada"
 
-#: src/Text3.cpp:1877 src/Text3.cpp:1888
+#: src/Text3.cpp:1889 src/Text3.cpp:1900
 msgid "Paragraph layout set"
 msgstr "Nastavení rozvr¾ení odstavce"
 
@@ -17396,7 +17414,7 @@ msgstr "Bibliografie BibTeX-u"
 
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
 #: src/frontends/qt4/GuiDocument.cpp:1308
-#: src/frontends/qt4/GuiExternal.cpp:670 src/frontends/qt4/GuiGraphics.cpp:847
+#: src/frontends/qt4/GuiExternal.cpp:672 src/frontends/qt4/GuiGraphics.cpp:847
 #: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1319
 #: src/frontends/qt4/GuiView.cpp:1377 src/frontends/qt4/GuiView.cpp:1524
 #: src/frontends/qt4/GuiView.cpp:1652 src/frontends/qt4/GuiView.cpp:1736
@@ -18113,15 +18131,15 @@ msgstr "Vpravo dole"
 msgid "Baseline right"
 msgstr "Základní linka vpravo"
 
-#: src/frontends/qt4/GuiExternal.cpp:93
+#: src/frontends/qt4/GuiExternal.cpp:95
 msgid "External Material"
 msgstr "Externí materiál"
 
-#: src/frontends/qt4/GuiExternal.cpp:207
+#: src/frontends/qt4/GuiExternal.cpp:209
 msgid "Scale%"
 msgstr "Mìøítko%"
 
-#: src/frontends/qt4/GuiExternal.cpp:666
+#: src/frontends/qt4/GuiExternal.cpp:668
 msgid "Select external file"
 msgstr "Vybrat externí soubor"
 
@@ -19771,7 +19789,7 @@ msgstr "V tomto místì postrádám \\end_inset ."
 msgid "Opened ERT Inset"
 msgstr "ERT - otevøená vlo¾ka"
 
-#: src/insets/InsetExternal.cpp:491
+#: src/insets/InsetExternal.cpp:492
 #, c-format
 msgid "External template %1$s is not installed"
 msgstr "Externí ¹ablona %1$s není instalovaná"
@@ -20488,7 +20506,7 @@ msgstr " øetìzcù bylo nahrazeno."
 msgid " Macro: %1$s: "
 msgstr " Makro: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1421
+#: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1423
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -20525,25 +20543,25 @@ msgstr "®ádná vertikální linka (vline) ke smazání"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Neznámá vlastnost tabulky '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1190 src/mathed/InsetMathHull.cpp:1198
+#: src/mathed/InsetMathHull.cpp:1191 src/mathed/InsetMathHull.cpp:1199
 msgid "No number"
 msgstr "®ádné èíslo"
 
-#: src/mathed/InsetMathHull.cpp:1190 src/mathed/InsetMathHull.cpp:1198
+#: src/mathed/InsetMathHull.cpp:1191 src/mathed/InsetMathHull.cpp:1199
 msgid "Number"
 msgstr "Èíslo"
 
-#: src/mathed/InsetMathHull.cpp:1394
+#: src/mathed/InsetMathHull.cpp:1396
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Nelze zmìnit poèet øádkù v '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1404
+#: src/mathed/InsetMathHull.cpp:1406
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Nelze zmìnit poèet sloupcù v '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1414
+#: src/mathed/InsetMathHull.cpp:1416
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Nelze pøidat horizontální linky møí¾ky v '%1$s'"
