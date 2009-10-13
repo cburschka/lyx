@@ -347,9 +347,6 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			readOutputType(lexrc);
 			break;
 
-#ifdef TEX2LYX
-		case TC_DEFAULTMODULE:
-#endif
 		case TC_INPUT: // Include file
 			if (lexrc.next()) {
 				string const inc = lexrc.getString();
@@ -496,7 +493,24 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			break;
 		}
 
-#ifndef TEX2LYX
+#ifdef TEX2LYX
+		case TC_DEFAULTMODULE: // Include file
+			if (lexrc.next()) {
+				string const inc = lexrc.getString();
+				FileName tmp = libFileSearch("layouts", inc,
+							    "module");
+
+				if (tmp.empty()) {
+					lexrc.printError("Could not find module: " + inc);
+					error = true;
+				} else if (!read(tmp, MERGE)) {
+					lexrc.printError("Error reading module"
+							 "file: " + tmp.absFilename());
+					error = true;
+				}
+			}
+			break;
+#else
 		case TC_DEFAULTMODULE: {
 			lexrc.next();
 			string const module = lexrc.getString();

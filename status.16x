@@ -100,6 +100,8 @@ What's new
 
 - Fix support for optional argument of \bibitem in tex2lyx (bug 6249).
 
+- Fix (again!) reading of default modules by tex2lyx (part of bug 5702).
+
 - Fix support for polytonic Greek with multiple diacritics (bug 5976).
 
 - Assure the author name is encoded correctly in the LaTeX output of
