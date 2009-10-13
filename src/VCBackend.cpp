@@ -719,7 +719,7 @@ string SVN::repoSynchro()
 	if (!res.empty()) {
 		LYXERR(Debug::LYXVC, "Diff detected:\n" << res);
 		docstring const file = from_utf8(owner_->filePath());
-		docstring text = bformat(_("There were detected changes"
+		docstring text = bformat(_("There were detected changes "
 		                "in the working directory.\n"
 				"Synchronizing with repository will discard "
 				"any uncommitted changes in the directory:\n%1$s"
