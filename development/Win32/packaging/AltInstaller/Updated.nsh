@@ -15,6 +15,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\unicodesymbols"
  SetOutPath "$INSTDIR\Resources\bind"
  File "${PRODUCT_SOURCEDIR}\Resources\bind\cua.bind"
+ File "${PRODUCT_SOURCEDIR}\Resources\bind\mac.bind"
  SetOutPath "$INSTDIR\Resources\doc"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\Customization.lyx"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
