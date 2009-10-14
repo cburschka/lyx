@@ -36,12 +36,14 @@ using boost::smatch;
 namespace lyx {
 
 
-int VCS::doVCCommandCall(string const & cmd, FileName const & path){
+int VCS::doVCCommandCall(string const & cmd, FileName const & path)
+{
 	LYXERR(Debug::LYXVC, "doVCCommandCall: " << cmd);
 	Systemcall one;
 	support::PathChanger p(path);
 	return one.startscript(Systemcall::Wait, cmd);
 }
+
 
 int VCS::doVCCommand(string const & cmd, FileName const & path)
 {
@@ -185,10 +187,12 @@ string RCS::checkIn(string const & msg)
 	return ret ? string() : "RCS: Proceeded";
 }
 
+
 bool RCS::checkInEnabled()
 {
 	return owner_ && !owner_->isReadonly();
 }
+
 
 string RCS::checkOut()
 {
@@ -203,6 +207,20 @@ bool RCS::checkOutEnabled()
 {
 	return owner_ && owner_->isReadonly();
 }
+
+
+string RCS::repoUpdate()
+{
+	lyxerr << "Sorry, not implemented." << endl;
+	return string();
+}
+
+
+bool RCS::repoUpdateEnabled()
+{
+	return false;
+}
+
 
 string RCS::lockingToggle()
 {
@@ -379,6 +397,19 @@ bool CVS::checkOutEnabled()
 }
 
 
+string CVS::repoUpdate()
+{
+	lyxerr << "Sorry, not implemented." << endl;
+	return string();
+}
+
+
+bool CVS::repoUpdateEnabled()
+{
+	return false;
+}
+
+
 string CVS::lockingToggle()
 {
 	lyxerr << "Sorry, not implemented." << endl;
@@ -430,6 +461,7 @@ void CVS::getLog(FileName const & tmpf)
 		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
 		    FileName(owner_->filePath()));
 }
+
 
 bool CVS::toggleReadOnlyEnabled()
 {
@@ -672,6 +704,56 @@ bool SVN::checkOutEnabled()
 }
 
 
+string SVN::repoUpdate()
+{
+	FileName tmpf = FileName::tempName("lyxvcout");
+	if (tmpf.empty()) {
+		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
+		return N_("Error: Could not generate logfile.");
+	}
+
+	doVCCommand("svn diff " + quoteName(owner_->filePath())
+	+ " > " + quoteName(tmpf.toFilesystemEncoding()),
+	FileName(owner_->filePath()));
+	docstring res = tmpf.fileContents("UTF-8");
+	if (!res.empty()) {
+		LYXERR(Debug::LYXVC, "Diff detected:\n" << res);
+		docstring const file = from_utf8(owner_->filePath());
+		docstring text = bformat(_("There were detected changes"
+				"in the working directory:\n%1$s\n\n"
+				"In case of file conflict version of the local directory files "
+				"will be preferred."
+				"\n\nContinue?"), file);
+		int const ret = frontend::Alert::prompt(_("Changes detected"),
+				text, 0, 1, _("&Yes"), _("&No"));
+		if (ret) {
+			tmpf.erase();
+			return string();
+		}
+	}
+
+	// Reverting looks too harsh, see bug #6255.
+	// doVCCommand("svn revert -R " + quoteName(owner_->filePath())
+	// + " > " + quoteName(tmpf.toFilesystemEncoding()),
+	// FileName(owner_->filePath()));
+	// res = "Revert log:\n" + tmpf.fileContents("UTF-8");
+	doVCCommand("svn update --accept mine-full " + quoteName(owner_->filePath())
+	+ " > " + quoteName(tmpf.toFilesystemEncoding()),
+	FileName(owner_->filePath()));
+	res += "Update log:\n" + tmpf.fileContents("UTF-8");
+
+	LYXERR(Debug::LYXVC, res);
+	tmpf.erase();
+	return to_utf8(res);
+}
+
+
+bool SVN::repoUpdateEnabled()
+{
+	return true;
+}
+
+
 string SVN::lockingToggle()
 {
 	FileName tmpf = FileName::tempName("lyxvcout");
@@ -716,6 +798,7 @@ bool SVN::lockingToggleEnabled()
 {
 	return true;
 }
+
 
 void SVN::revert()
 {

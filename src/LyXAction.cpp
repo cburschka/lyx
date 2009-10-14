@@ -2072,6 +2072,16 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_VC_LOCKING_TOGGLE, "vc-locking-toggle", ReadOnly, System },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_VC_REPO_UPDATE
+ * \li Action: Update the local archive directory in which resides
+               the current document with the remote repository.
+ * \li Notion: This is currently implemented only for SVN.
+ * \li Syntax: vc-repo-update
+ * \li Origin: sanda, 16 Oct 2009
+ * \endvar
+ */
+		{ LFUN_VC_REPO_UPDATE, "vc-repo-update", ReadOnly, System },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_CHANGES_TRACK

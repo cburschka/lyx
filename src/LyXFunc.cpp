@@ -582,6 +582,10 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 	}
 
+	case LFUN_VC_REPO_UPDATE:
+		enable = buf->lyxvc().inUse();
+		break;
+
 	case LFUN_VC_COMMAND: {
 		if (cmd.argument().empty())
 			enable = false;
@@ -1654,6 +1658,15 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_BOOKMARK_CLEAR:
 			theSession().bookmarks().clear();
+			break;
+
+		case LFUN_VC_REPO_UPDATE:
+			LASSERT(lyx_view_ && buffer, /**/);
+			if (ensureBufferClean(view())) {
+				string res = buffer->lyxvc().repoUpdate();
+				setMessage(from_utf8(res));
+				reloadBuffer();
+			}
 			break;
 
 		case LFUN_VC_COMMAND: {

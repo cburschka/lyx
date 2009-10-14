@@ -77,6 +77,11 @@ public:
 	/// Does the current VC supports this operation?
 	bool checkOutEnabled();
 
+	/// Synchronize the whole archive with repository
+	std::string repoUpdate();
+	/// Does the current VC supports this operation?
+	bool repoUpdateEnabled();
+
 	/**
 	 * Toggle locking property of the edited file,
 	 * i.e. whether the file uses locking mechanism.

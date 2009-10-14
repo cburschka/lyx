@@ -112,8 +112,9 @@ End
 \paperpagestyle headings
 \tracking_changes true
 \output_changes false
-\author "Enrico Forestieri" 
 \author "" 
+\author "" 
+\author "Enrico Forestieri" 
 \end_header
 
 \begin_body
@@ -4119,13 +4120,13 @@ push
 \end_inset
 
  citations to LyX.
-\change_deleted 0 1252876894
+\change_deleted 2 1252876894
 
 \end_layout
 
 \begin_layout Standard
 
-\change_deleted 0 1252876894
+\change_deleted 2 1252876894
 Please note that, at present, 
 \emph on
 the server does not work natively on Windows
@@ -4164,14 +4165,14 @@ UserDir
 \end_inset
 
 
-\change_inserted 0 1252876936
+\change_inserted 2 1252876936
 
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1252876998
+\change_inserted 2 1252876998
 On Windows, 
 \emph on
 local
@@ -4182,7 +4183,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1252876991
+\change_inserted 2 1252876991
 
 \backslash
 
@@ -4248,7 +4249,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_deleted 0 1252877016
+\change_deleted 2 1252877016
 .
 \change_unchanged
 lyxpipe.in
@@ -4262,7 +4263,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_deleted 0 1252877019
+\change_deleted 2 1252877019
 .
 \change_unchanged
 lyxpipe.out
@@ -4293,14 +4294,14 @@ status collapsed
 \end_inset
 
 
-\change_inserted 0 1252877084
+\change_inserted 2 1252877084
 , or 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1252877072
+\change_inserted 2 1252877072
 "
 \backslash
 
@@ -4349,11 +4350,11 @@ status collapsed
  If one of the pipes already exists, LyX will assume that another LyX process
  is already running and will not start the server.
  
-\change_inserted 0 1252877129
+\change_inserted 2 1252877129
 On POSIX (Unix like) systems, 
-\change_deleted 0 1252877142
+\change_deleted 2 1252877142
 I
-\change_inserted 0 1252877142
+\change_inserted 2 1252877142
 i
 \change_unchanged
 f for some other reason, an unused 
@@ -4369,7 +4370,7 @@ stale
  If this fails for some reason, you will need to delete the pipes manually
  and then restart LyX.
 
-\change_inserted 0 1252877192
+\change_inserted 2 1252877192
  On Windows, pipes are deleted by the OS on program termination or crash,
  so “stale” pipes should not be possible.
 \change_unchanged
@@ -5513,26 +5514,26 @@ lyxclient -g %f %l
 
 \begin_layout Standard
 Reverse search is triggered by SHIFT-click
-\change_inserted 0 1252877832
+\change_inserted 2 1252877832
 
 \end_layout
 
 \begin_layout Subsubsection*
 
-\change_inserted 0 1252877839
+\change_inserted 2 1252877839
 YAP (Windows)
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 0 1252877839
+\change_inserted 2 1252877839
 Launch yap, choose its 
 \begin_inset Flex CharStyle:MenuItem
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1252877839
+\change_inserted 2 1252877839
 View\SpecialChar \menuseparator
 Options
 \end_layout
@@ -5590,7 +5591,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1252877839
+\change_inserted 2 1252877839
 lyxeditor.bat
 \end_layout
 
@@ -5603,7 +5604,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1252877839
+\change_inserted 2 1252877839
 lyxeditor.bat
 \end_layout
 
@@ -5615,7 +5616,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1252877839
+\change_inserted 2 1252877839
 %f %l
 \end_layout
 
@@ -5628,7 +5629,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1252877839
+\change_inserted 2 1252877839
 lyxeditor.bat
 \end_layout
 
@@ -5643,7 +5644,7 @@ lyxpipe
 
 \begin_layout LyX-Code
 
-\change_inserted 0 1252877839
+\change_inserted 2 1252877839
 @echo off
 \begin_inset Newline newline
 \end_inset
@@ -5673,14 +5674,14 @@ lyxpipe.out
 
 \begin_layout Standard
 
-\change_inserted 0 1252877839
+\change_inserted 2 1252877839
 Make sure that the LyXServer pipe path you specified in LyX is 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1252877839
+\change_inserted 2 1252877839
 
 \backslash
 
@@ -5700,7 +5701,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1252877839
+\change_inserted 2 1252877839
 lyxeditor.bat
 \end_layout
 
@@ -5713,7 +5714,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1252877839
+\change_inserted 2 1252877839
 Preferences\SpecialChar \menuseparator
 Paths
 \end_layout
@@ -5726,26 +5727,26 @@ Paths
 
 \begin_layout Standard
 
-\change_inserted 0 1252877839
+\change_inserted 2 1252877839
 In yap, reverse search is triggered by double-click.
 \end_layout
 
 \begin_layout Subsubsection*
 
-\change_inserted 0 1252877839
+\change_inserted 2 1252877839
 SumatraPDF (Windows)
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 0 1252877839
+\change_inserted 2 1252877839
 In order to use SumatraPDF for inverse search, enter 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1252877839
+\change_inserted 2 1252877839
 SumatraPDF -inverse-search "lyxeditor.bat %f %l"
 \end_layout
 
@@ -5757,7 +5758,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1252877839
+\change_inserted 2 1252877839
 Preferences\SpecialChar \menuseparator
 File Handling\SpecialChar \menuseparator
 File formats\SpecialChar \menuseparator
@@ -5772,7 +5773,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1252877839
+\change_inserted 2 1252877839
 lyxeditor.bat
 \end_layout
 
@@ -5786,7 +5787,7 @@ lyxeditor.bat
 
 \begin_layout Standard
 
-\change_inserted 0 1252877839
+\change_inserted 2 1252877839
 Reverse search is triggered by double-click.
 \change_unchanged
 
@@ -5798,9 +5799,9 @@ YAP (Cygwin)
 
 \begin_layout Standard
 
-\change_deleted 0 1252877959
+\change_deleted 2 1252877959
 Launch yap
-\change_inserted 0 1252877972
+\change_inserted 2 1252877972
 First of all, make sure that yap is your default DVI viewer in the Windows
  environment, then launch it
 \change_unchanged
@@ -5860,7 +5861,7 @@ Name:
 \end_inset
 
  to open a file dialog and navigate to the directory containing the 
-\change_deleted 0 1252878023
+\change_deleted 2 1252878023
 batch file
 \change_unchanged
  
@@ -5869,9 +5870,9 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_deleted 0 1252878035
+\change_deleted 2 1252878035
 lyxeditor.bat
-\change_inserted 0 1252878039
+\change_inserted 2 1252878039
 lyxclient.exe
 \change_unchanged
 
@@ -5880,9 +5881,9 @@ lyxclient.exe
 \end_inset
 
  
-\change_inserted 0 1252878054
+\change_inserted 2 1252878054
 program
-\change_deleted 0 1252878057
+\change_deleted 2 1252878057
 (see below)
 \change_unchanged
 .
@@ -5892,9 +5893,9 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_deleted 0 1252878070
+\change_deleted 2 1252878070
 lyxeditor.bat
-\change_inserted 0 1252878074
+\change_inserted 2 1252878074
 lyxclient.exe
 \change_unchanged
 
@@ -5908,7 +5909,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1252878092
+\change_inserted 2 1252878092
 -g 
 \change_unchanged
 %f %l
@@ -5917,7 +5918,7 @@ status collapsed
 \end_inset
 
 
-\change_inserted 0 1252878278
+\change_inserted 2 1252878278
 .
  In this way, you will be using the 
 \emph on
@@ -5934,7 +5935,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1252878278
+\change_inserted 2 1252878278
 bash.exe
 \end_layout
 
@@ -5946,7 +5947,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1252878278
+\change_inserted 2 1252878278
 lyxclient.exe
 \end_layout
 
@@ -5958,7 +5959,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1252878278
+\change_inserted 2 1252878278
 -c 'lyxeditor.sh "%f" %l'
 \end_layout
 
@@ -5970,7 +5971,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1252878278
+\change_inserted 2 1252878278
 %f
 \end_layout
 
@@ -5982,7 +5983,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1252878278
+\change_inserted 2 1252878278
 lyxeditor.sh
 \end_layout
 
@@ -5994,7 +5995,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1252878278
+\change_inserted 2 1252878278
 lyxeditor.sh
 \end_layout
 
@@ -6004,7 +6005,7 @@ lyxeditor.sh
 
 \change_unchanged
  
-\change_deleted 0 1252878253
+\change_deleted 2 1252878253
 if you want to use the shell script above, or as 
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -6062,7 +6063,7 @@ lyxeditor.bat
 
 \begin_layout LyX-Code
 
-\change_deleted 0 1252878253
+\change_deleted 2 1252878253
 @echo off
 \begin_inset Newline newline
 \end_inset
@@ -6088,7 +6089,7 @@ bash -c 'lyxclient %1 $(cygpath -a "%2") %3'
 
 \begin_layout Standard
 
-\change_deleted 0 1252878253
+\change_deleted 2 1252878253
 You have to make sure that both 
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -6125,15 +6126,15 @@ SumatraPDF (Cygwin)
 
 \begin_layout Standard
 In 
-\change_inserted 0 1252878383
+\change_inserted 2 1252878383
 order to use 
 \change_unchanged
 SumatraPDF
-\change_inserted 0 1252878392
+\change_inserted 2 1252878392
  for inverse search
 \change_unchanged
 , 
-\change_deleted 0 1252878413
+\change_deleted 2 1252878413
 you can set the name of the program that communicates with LyX by simply
  launching SumatraPDF as 
 \begin_inset Flex CharStyle:Code
@@ -6258,11 +6259,11 @@ cd $(dirname $1)
 \end_inset
 
 SumatraPDF
-\change_deleted 0 1252878468
+\change_deleted 2 1252878468
 .exe
 \change_unchanged
  
-\change_inserted 0 1252878472
+\change_inserted 2 1252878472
 -inverse-search "lyxclient -g %f %l" 
 \change_unchanged
 $(basename $1)
@@ -6272,7 +6273,7 @@ $(basename $1)
 This is needed because SumatraPDF is a native Windows application and does
  not understand the posix paths used by the Cygwin version of LyX.
 
-\change_inserted 0 1252878517
+\change_inserted 2 1252878517
  If SumatraPDF is not in your command PATH, use its full posix path in the
  script above.
  Again, if you want to use the 
@@ -6289,7 +6290,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1252878517
+\change_inserted 2 1252878517
 "lyxclient -g %f %l"
 \end_layout
 
@@ -6301,7 +6302,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1252878517
+\change_inserted 2 1252878517
 "bash -c 'lyxeditor.sh 
 \backslash
 "%f
@@ -18812,7 +18813,24 @@ Control
  submenu.
  Please note that if you use password protected access to repository via
  ssh, you will be asked in terminal window.
- LyX was tested against SVN 1.4 and 1.5.
+ LyX was tested against SVN 1.5 and 1.6
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Most of the commands will work with 1.4 too, see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:SVN-update-from-repo"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -18972,6 +18990,122 @@ svn revert -q
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:SVN-update-from-repo"
+
+\end_inset
+
+Synchronization of the local directory checkout from repository
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Note that this command will work only with subversion 
+\begin_inset Formula $\geqq1.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+All the commands above have one shortcomming - they deal with the current
+ document only.
+ Once your document contains pictures, includes external 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+.tex
+\end_layout
+
+\end_inset
+
+ files and so on administration becomes more complicate.
+ LyX now supports updating the whole tree in which resides the document
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+One need to organize the files structure so that all external files are
+ in the same directory or subdirectories of the document.
+\end_layout
+
+\end_inset
+
+.
+ This become especially useful once you cooperate with people which neither
+ know about subversion management nor they have ambition to commit additional
+ material to the repository.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Synchronize local directory with repository
+\end_layout
+
+\end_inset
+
+ command updates the whole directory and in case of merge conflicts local
+ version of the files are left, so no unintended data loss occurs.
+ If local changes are detected user is warned before update starts.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+SVN
+\begin_inset space ~
+\end_inset
+
+commands: 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+svn diff $path (Ask if changes are detected.)
+\begin_inset Newline newline
+\end_inset
+
+svn update --accept mine-full $path
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+$path
+\end_layout
+
+\end_inset
+
+ stands for the path to the document.
 \end_layout
 
 \begin_layout Subsubsection

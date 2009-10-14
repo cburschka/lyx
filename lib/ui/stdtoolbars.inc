@@ -231,6 +231,8 @@ ToolbarSet
 		Item "Revert changes" "vc-revert"
 		Separator
 		Item "Use SVN file locking property" "vc-locking-toggle"
+		Separator
+		Item "Update local directory from repository" "vc-repo-update"
 	End
 
 	Toolbar "math_panels" "Math Panels"
