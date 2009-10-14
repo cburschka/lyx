@@ -22,7 +22,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Extended.lyx"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\Intro.lyx"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\LaTeXConfig.lyx"
- #File "${PRODUCT_SOURCEDIR}\Resources\doc\LFUNs.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\LFUNs.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Math.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Tutorial.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\UserGuide.lyx"
@@ -61,6 +61,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\examples\fr\Braille.lyx"
  SetOutPath "$INSTDIR\Resources\examples\sk"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\sk\splash.lyx"
+ SetOutPath "$INSTDIR\Resources\images"
+ File "${PRODUCT_SOURCEDIR}\Resources\images\vc-repo-update.png"
  SetOutPath "$INSTDIR\Resources\lyx2lyx" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx_1_6.py"
@@ -72,6 +74,7 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources\ui"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\stdcontext.inc"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\stdmenus.inc"
+ File "${PRODUCT_SOURCEDIR}\Resources\ui\stdtoolbars.inc"
 
 FunctionEnd
 
