@@ -1,4 +1,4 @@
-#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -49,7 +49,7 @@ theorems-ams
 \begin_body
 
 \begin_layout Section*
-LFUNs documentation automatically generated 09.08.2009.
+LFUNs documentation automatically generated 15.10.2009.
 \end_layout
 
 \begin_layout Standard
@@ -1952,6 +1952,23 @@ Syntax inset-end-select
 
 \begin_layout Description
 Origin JMarc, 2009/03/16 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_INSET_SELECT_ALL 
+\end_layout
+
+\begin_layout Description
+Action Selects all contents of an inset.
+  
+\end_layout
+
+\begin_layout Description
+Syntax inset-select-all 
+\end_layout
+
+\begin_layout Description
+Origin vfr, 22 Aug 2009 
 \end_layout
 
 \begin_layout Subsection*
@@ -4227,6 +4244,29 @@ Syntax vc-locking-toggle
 
 \begin_layout Description
 Origin sanda, 25 Jun 2009 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_VC_REPO_UPDATE 
+\end_layout
+
+\begin_layout Description
+Action Update the local archive directory in which resides the current document
+ with the remote repository.
+  
+\end_layout
+
+\begin_layout Description
+Notion This is currently implemented only for SVN.
+  
+\end_layout
+
+\begin_layout Description
+Syntax vc-repo-update 
+\end_layout
+
+\begin_layout Description
+Origin sanda, 16 Oct 2009 
 \end_layout
 
 \begin_layout Subsection*
@@ -6891,6 +6931,23 @@ Params <ZOOM>: The zoom in %, the default is 20.
 
 \begin_layout Description
 Origin vfr, 30 Mar 2009 
+\end_layout
+
+\begin_layout Subsection*
+LFUN_GRAPHICS_RELOAD 
+\end_layout
+
+\begin_layout Description
+Action Reloads the image if necessary.
+  
+\end_layout
+
+\begin_layout Description
+Syntax graphics-reload 
+\end_layout
+
+\begin_layout Description
+Origin vfr, 10 Aug 2009 
 \end_layout
 
 \end_body
