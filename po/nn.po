@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-10-14 23:15+0200\n"
+"POT-Creation-Date: 2009-10-14 23:23+0200\n"
 "PO-Revision-Date: 2009-04-19 18:13+0100\n"
 "Last-Translator: Ingar Pareliussen <ingarp_ved_samfundet.no>\n"
 "Language-Team: Nynorsk <nn@li.org>\n"
@@ -15740,6 +15740,37 @@ msgstr ""
 "Om dette gir feil teikn må du endre fila \n"
 "til UTF-8 i eit anna program.\n"
 
+#: src/Changes.cpp:363 src/Paragraph.cpp:2155
+#: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetListings.cpp:185
+#: src/insets/InsetListings.cpp:193 src/insets/InsetListings.cpp:217
+#: src/mathed/InsetMathString.cpp:166
+#, fuzzy
+msgid "LyX Warning: "
+msgstr "LyX Versjon "
+
+#: src/Changes.cpp:364 src/Paragraph.cpp:2156 src/insets/InsetListings.cpp:186
+#: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:167
+#, fuzzy
+msgid "uncodable character"
+msgstr "spesial teikn"
+
+#: src/Changes.cpp:379
+#, fuzzy
+msgid "Uncodable character in author name"
+msgstr "spesial teikn"
+
+#: src/Changes.cpp:380
+#, c-format
+msgid ""
+"The author name '%1$s',\n"
+"used for change tracking, contains glyphs that cannot be\n"
+"represented in the current encoding. The respective glyphs\n"
+"will be ommitted in the exported LaTeX file.\n"
+"\n"
+"Chose an appropriate document encoding (such as utf8)\n"
+"or change the spelling of the author name."
+msgstr ""
+
 #: src/Chktex.cpp:63
 #, c-format
 msgid "ChkTeX warning id # %1$d"
@@ -17403,19 +17434,6 @@ msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
 msgstr ""
-
-#: src/Paragraph.cpp:2155 src/frontends/qt4/LaTeXHighlighter.cpp:108
-#: src/insets/InsetListings.cpp:185 src/insets/InsetListings.cpp:193
-#: src/insets/InsetListings.cpp:217 src/mathed/InsetMathString.cpp:166
-#, fuzzy
-msgid "LyX Warning: "
-msgstr "LyX Versjon "
-
-#: src/Paragraph.cpp:2156 src/insets/InsetListings.cpp:186
-#: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:167
-#, fuzzy
-msgid "uncodable character"
-msgstr "spesial teikn"
 
 #: src/Paragraph.cpp:2521
 msgid "Memory problem"
@@ -21545,10 +21563,6 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "ukjend brukar"
-
-#, fuzzy
-#~ msgid "Uncodable character in author name"
-#~ msgstr "spesial teikn"
 
 #~ msgid "LyX binary not found"
 #~ msgstr "Fann ikkje LyX-programmet"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-10-14 23:15+0200\n"
+"POT-Creation-Date: 2009-10-14 23:23+0200\n"
 "PO-Revision-Date: 2009-10-11 13:51+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slowakisch <lyx-docs@lists.lyx.org>\n"
@@ -15158,6 +15158,35 @@ msgstr ""
 "zmeňte prosím kódovanie súboru na\n"
 "UTF-8 iným programom.\n"
 
+#: src/Changes.cpp:363 src/Paragraph.cpp:2155
+#: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetListings.cpp:185
+#: src/insets/InsetListings.cpp:193 src/insets/InsetListings.cpp:217
+#: src/mathed/InsetMathString.cpp:166
+msgid "LyX Warning: "
+msgstr "LyX varovanie: "
+
+#: src/Changes.cpp:364 src/Paragraph.cpp:2156 src/insets/InsetListings.cpp:186
+#: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:167
+msgid "uncodable character"
+msgstr "Nekódovatelný znak"
+
+#: src/Changes.cpp:379
+#, fuzzy
+msgid "Uncodable character in author name"
+msgstr "Nekódovateľné znaky vo výpise zdrojového kódu"
+
+#: src/Changes.cpp:380
+#, c-format
+msgid ""
+"The author name '%1$s',\n"
+"used for change tracking, contains glyphs that cannot be\n"
+"represented in the current encoding. The respective glyphs\n"
+"will be ommitted in the exported LaTeX file.\n"
+"\n"
+"Chose an appropriate document encoding (such as utf8)\n"
+"or change the spelling of the author name."
+msgstr ""
+
 #: src/Chktex.cpp:63
 #, c-format
 msgid "ChkTeX warning id # %1$d"
@@ -16806,17 +16835,6 @@ msgid ""
 msgstr ""
 "Nový formát nepovoľuje používané zarovnanie.\n"
 "Prepnuté na štandardné."
-
-#: src/Paragraph.cpp:2155 src/frontends/qt4/LaTeXHighlighter.cpp:108
-#: src/insets/InsetListings.cpp:185 src/insets/InsetListings.cpp:193
-#: src/insets/InsetListings.cpp:217 src/mathed/InsetMathString.cpp:166
-msgid "LyX Warning: "
-msgstr "LyX varovanie: "
-
-#: src/Paragraph.cpp:2156 src/insets/InsetListings.cpp:186
-#: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:167
-msgid "uncodable character"
-msgstr "Nekódovatelný znak"
 
 #: src/Paragraph.cpp:2521
 msgid "Memory problem"
@@ -20784,10 +20802,6 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
-
-#, fuzzy
-#~ msgid "Uncodable character in author name"
-#~ msgstr "Nekódovateľné znaky vo výpise zdrojového kódu"
 
 #~ msgid "LyX binary not found"
 #~ msgstr "Spustiteľný súbor LyX nebol nájdený!"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-10-14 23:15+0200\n"
+"POT-Creation-Date: 2009-10-14 23:23+0200\n"
 "PO-Revision-Date: 2009-10-14 14:43+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@lyx.org>\n"
 "Language-Team: italiano <it@li.org>\n"
@@ -15209,6 +15209,41 @@ msgstr ""
 "siete pregati di cambiare la codifica del file in\n"
 "UTF-8 usando un programma esterno a LyX.\n"
 
+#: src/Changes.cpp:363 src/Paragraph.cpp:2155
+#: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetListings.cpp:185
+#: src/insets/InsetListings.cpp:193 src/insets/InsetListings.cpp:217
+#: src/mathed/InsetMathString.cpp:166
+msgid "LyX Warning: "
+msgstr "Avviso di LyX: "
+
+#: src/Changes.cpp:364 src/Paragraph.cpp:2156 src/insets/InsetListings.cpp:186
+#: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:167
+msgid "uncodable character"
+msgstr "carattere intraducibile"
+
+#: src/Changes.cpp:379
+msgid "Uncodable character in author name"
+msgstr "Carattere intraducibile nel nome dell'autore"
+
+#: src/Changes.cpp:380
+#, c-format
+msgid ""
+"The author name '%1$s',\n"
+"used for change tracking, contains glyphs that cannot be\n"
+"represented in the current encoding. The respective glyphs\n"
+"will be ommitted in the exported LaTeX file.\n"
+"\n"
+"Chose an appropriate document encoding (such as utf8)\n"
+"or change the spelling of the author name."
+msgstr ""
+"Il nome dell'autore '%1$s',\n"
+"usato per tracciare le modifiche, contiene caratteri che non\n"
+"possono essere rappresentati nella codifica corrente. Tali\n"
+"caratteri saranno omessi nel file LaTeX esportato.\n"
+"\n"
+"Sciegliete una codifica appropriata per il documento\n"
+"(per esempio utf8) o modificate il nome dell'autore."
+
 #: src/Chktex.cpp:63
 #, c-format
 msgid "ChkTeX warning id # %1$d"
@@ -16903,17 +16938,6 @@ msgid ""
 msgstr ""
 "Il nuovo layout non permette l'allineamento usato in precedenza.\n"
 "Uso quello predefinito."
-
-#: src/Paragraph.cpp:2155 src/frontends/qt4/LaTeXHighlighter.cpp:108
-#: src/insets/InsetListings.cpp:185 src/insets/InsetListings.cpp:193
-#: src/insets/InsetListings.cpp:217 src/mathed/InsetMathString.cpp:166
-msgid "LyX Warning: "
-msgstr "Avviso di LyX: "
-
-#: src/Paragraph.cpp:2156 src/insets/InsetListings.cpp:186
-#: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:167
-msgid "uncodable character"
-msgstr "carattere intraducibile"
 
 #: src/Paragraph.cpp:2521
 msgid "Memory problem"
@@ -20892,26 +20916,6 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Utente sconosciuto"
-
-#~ msgid "Uncodable character in author name"
-#~ msgstr "Carattere intraducibile nel nome dell'autore"
-
-#~ msgid ""
-#~ "The author name '%1$s',\n"
-#~ "used for change tracking, contains glyphs that cannot be\n"
-#~ "represented in the current encoding. The respective glyphs\n"
-#~ "will be ommitted in the exported LaTeX file.\n"
-#~ "\n"
-#~ "Chose an appropriate document encoding (such as utf8)\n"
-#~ "or change the spelling of the author name."
-#~ msgstr ""
-#~ "Il nome dell'autore '%1$s',\n"
-#~ "usato per tracciare le modifiche, contiene caratteri che non\n"
-#~ "possono essere rappresentati nella codifica corrente. Tali\n"
-#~ "caratteri saranno omessi nel file LaTeX esportato.\n"
-#~ "\n"
-#~ "Sciegliete una codifica appropriata per il documento\n"
-#~ "(per esempio utf8) o modificate il nome dell'autore."
 
 #~ msgid "LyX binary not found"
 #~ msgstr "Eseguibile di LyX non trovato"

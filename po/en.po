@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-10-14 23:15+0200\n"
+"POT-Creation-Date: 2009-10-14 23:23+0200\n"
 "PO-Revision-Date: 2008-08-04 17:40+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -14978,6 +14978,34 @@ msgid ""
 "to UTF-8 with a program other than LyX.\n"
 msgstr ""
 
+#: src/Changes.cpp:363 src/Paragraph.cpp:2155
+#: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetListings.cpp:185
+#: src/insets/InsetListings.cpp:193 src/insets/InsetListings.cpp:217
+#: src/mathed/InsetMathString.cpp:166
+msgid "LyX Warning: "
+msgstr ""
+
+#: src/Changes.cpp:364 src/Paragraph.cpp:2156 src/insets/InsetListings.cpp:186
+#: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:167
+msgid "uncodable character"
+msgstr ""
+
+#: src/Changes.cpp:379
+msgid "Uncodable character in author name"
+msgstr ""
+
+#: src/Changes.cpp:380
+#, c-format
+msgid ""
+"The author name '%1$s',\n"
+"used for change tracking, contains glyphs that cannot be\n"
+"represented in the current encoding. The respective glyphs\n"
+"will be ommitted in the exported LaTeX file.\n"
+"\n"
+"Chose an appropriate document encoding (such as utf8)\n"
+"or change the spelling of the author name."
+msgstr ""
+
 #: src/Chktex.cpp:63
 #, c-format
 msgid "ChkTeX warning id # %1$d"
@@ -16465,17 +16493,6 @@ msgstr ""
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
-msgstr ""
-
-#: src/Paragraph.cpp:2155 src/frontends/qt4/LaTeXHighlighter.cpp:108
-#: src/insets/InsetListings.cpp:185 src/insets/InsetListings.cpp:193
-#: src/insets/InsetListings.cpp:217 src/mathed/InsetMathString.cpp:166
-msgid "LyX Warning: "
-msgstr ""
-
-#: src/Paragraph.cpp:2156 src/insets/InsetListings.cpp:186
-#: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:167
-msgid "uncodable character"
 msgstr ""
 
 #: src/Paragraph.cpp:2521

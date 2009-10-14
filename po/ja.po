@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-10-14 23:15+0200\n"
+"POT-Creation-Date: 2009-10-14 23:23+0200\n"
 "PO-Revision-Date: 2009-08-18 01:48+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <kde-i18n-doc@kde.org>\n"
@@ -15157,6 +15157,35 @@ msgstr ""
 "もし，結果が正しくないならば，ファイルの文字コードを\n"
 "LyX以外のプログラムでUTF-8に変更してください。\n"
 
+#: src/Changes.cpp:363 src/Paragraph.cpp:2155
+#: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetListings.cpp:185
+#: src/insets/InsetListings.cpp:193 src/insets/InsetListings.cpp:217
+#: src/mathed/InsetMathString.cpp:166
+msgid "LyX Warning: "
+msgstr "LyX警告: "
+
+#: src/Changes.cpp:364 src/Paragraph.cpp:2156 src/insets/InsetListings.cpp:186
+#: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:167
+msgid "uncodable character"
+msgstr "コード化できない文字"
+
+#: src/Changes.cpp:379
+#, fuzzy
+msgid "Uncodable character in author name"
+msgstr "リスト差込枠にコード化できない文字があります"
+
+#: src/Changes.cpp:380
+#, c-format
+msgid ""
+"The author name '%1$s',\n"
+"used for change tracking, contains glyphs that cannot be\n"
+"represented in the current encoding. The respective glyphs\n"
+"will be ommitted in the exported LaTeX file.\n"
+"\n"
+"Chose an appropriate document encoding (such as utf8)\n"
+"or change the spelling of the author name."
+msgstr ""
+
 #: src/Chktex.cpp:63
 #, c-format
 msgid "ChkTeX warning id # %1$d"
@@ -16817,17 +16846,6 @@ msgid ""
 msgstr ""
 "新しいレイアウトでは，これまで使っていた配置を使うことが出来ません。\n"
 "既定値に設定します。"
-
-#: src/Paragraph.cpp:2155 src/frontends/qt4/LaTeXHighlighter.cpp:108
-#: src/insets/InsetListings.cpp:185 src/insets/InsetListings.cpp:193
-#: src/insets/InsetListings.cpp:217 src/mathed/InsetMathString.cpp:166
-msgid "LyX Warning: "
-msgstr "LyX警告: "
-
-#: src/Paragraph.cpp:2156 src/insets/InsetListings.cpp:186
-#: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:167
-msgid "uncodable character"
-msgstr "コード化できない文字"
 
 #: src/Paragraph.cpp:2521
 msgid "Memory problem"
@@ -20798,10 +20816,6 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "未知の"
-
-#, fuzzy
-#~ msgid "Uncodable character in author name"
-#~ msgstr "リスト差込枠にコード化できない文字があります"
 
 #, fuzzy
 #~ msgid "LyX binary not found"

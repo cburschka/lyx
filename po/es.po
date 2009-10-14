@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-10-14 23:15+0200\n"
+"POT-Creation-Date: 2009-10-14 23:23+0200\n"
 "PO-Revision-Date: 2009-09-28 18:10+0100\n"
 "Last-Translator: Ignacio García  <ignacio.gmorales@gmail.com>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -15199,6 +15199,35 @@ msgstr ""
 "entonces por favor cambie la codificación del archivo\n"
 "a UTF-8 con otro programa que no sea LyX.\n"
 
+#: src/Changes.cpp:363 src/Paragraph.cpp:2155
+#: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetListings.cpp:185
+#: src/insets/InsetListings.cpp:193 src/insets/InsetListings.cpp:217
+#: src/mathed/InsetMathString.cpp:166
+msgid "LyX Warning: "
+msgstr "Aviso de LyX: "
+
+#: src/Changes.cpp:364 src/Paragraph.cpp:2156 src/insets/InsetListings.cpp:186
+#: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:167
+msgid "uncodable character"
+msgstr "carácter no codificable"
+
+#: src/Changes.cpp:379
+#, fuzzy
+msgid "Uncodable character in author name"
+msgstr "Caracteres no codificables en el listado insertado"
+
+#: src/Changes.cpp:380
+#, c-format
+msgid ""
+"The author name '%1$s',\n"
+"used for change tracking, contains glyphs that cannot be\n"
+"represented in the current encoding. The respective glyphs\n"
+"will be ommitted in the exported LaTeX file.\n"
+"\n"
+"Chose an appropriate document encoding (such as utf8)\n"
+"or change the spelling of the author name."
+msgstr ""
+
 #: src/Chktex.cpp:63
 #, c-format
 msgid "ChkTeX warning id # %1$d"
@@ -16888,17 +16917,6 @@ msgid ""
 msgstr ""
 "El nuevo diseño no permite la alineación usada previamente.\n"
 "Poniendo la predeterminada."
-
-#: src/Paragraph.cpp:2155 src/frontends/qt4/LaTeXHighlighter.cpp:108
-#: src/insets/InsetListings.cpp:185 src/insets/InsetListings.cpp:193
-#: src/insets/InsetListings.cpp:217 src/mathed/InsetMathString.cpp:166
-msgid "LyX Warning: "
-msgstr "Aviso de LyX: "
-
-#: src/Paragraph.cpp:2156 src/insets/InsetListings.cpp:186
-#: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:167
-msgid "uncodable character"
-msgstr "carácter no codificable"
 
 #: src/Paragraph.cpp:2521
 msgid "Memory problem"
@@ -20875,10 +20893,6 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Usuario desconocido"
-
-#, fuzzy
-#~ msgid "Uncodable character in author name"
-#~ msgstr "Caracteres no codificables en el listado insertado"
 
 #~ msgid "LyX binary not found"
 #~ msgstr "Binario LyX no encontrado"
