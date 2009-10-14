@@ -18589,7 +18589,7 @@ name "sub:SVN-Repo-Update"
 
 \end_inset
 
-Update of the local directory checkout with repository
+Update of the local directory checkout from repository
 \begin_inset Foot
 status collapsed
 
@@ -18644,14 +18644,15 @@ One need to organize the files structure so that all external files are
 status collapsed
 
 \begin_layout Plain Layout
-Synchronize local directory with repository
+Update local directory from repository
 \end_layout
 
 \end_inset
 
- command firstly reverts all local changes (to avoid merge conflicts aftwards)
- and then updates the whole directory structure from the archive.
- If local changes are detected user is warned before reversion starts.
+ command updates the whole directory in which resides your document.
+ In case of merge conflicts local version of the files are left, so no unintende
+d data loss occurs.
+ If local changes are detected user is warned before update starts.
 \end_layout
 
 \begin_layout Labeling
