@@ -3144,11 +3144,11 @@ msgstr "Otevírat dokumenty v &panelech"
 
 #: src/frontends/qt4/ui/PrefUi.ui:191
 msgid "Whether to place close button on each tab or only one in the top left."
-msgstr ""
+msgstr "Má se zavírací tlaèítko objevit na ka¾dém panelu zvlá¹»?"
 
 #: src/frontends/qt4/ui/PrefUi.ui:194
 msgid "&Single close-tab button"
-msgstr ""
+msgstr "&Jediné tlaèítko pro zavírání panelu"
 
 #: src/frontends/qt4/ui/PrefUi.ui:217
 msgid "Automatic help"
@@ -10948,7 +10948,7 @@ msgstr "Zavøít okno|a"
 
 #: lib/ui/stdmenus.inc:74
 msgid "Update local directory from repository|d"
-msgstr ""
+msgstr "Aktualizovat celý adresáø z repositáøe|a"
 
 #: lib/ui/stdmenus.inc:78
 msgid "Use Locking Property|L"
@@ -11857,7 +11857,7 @@ msgstr "Pou¾ívat zamykání souborù pod správou SVN"
 
 #: lib/ui/stdtoolbars.inc:235
 msgid "Update local directory from repository"
-msgstr ""
+msgstr "Aktualizovat celý adresáø z repositáøe"
 
 #: lib/ui/stdtoolbars.inc:238
 msgid "Math Panels"
@@ -15179,9 +15179,8 @@ msgid "uncodable character"
 msgstr "nekódovatelný znak"
 
 #: src/Changes.cpp:379
-#, fuzzy
 msgid "Uncodable character in author name"
-msgstr "Nekódovatelné znaky ve výpisu zdrojového kódu"
+msgstr "Nekódovatelné znaky ve jménu autora"
 
 #: src/Changes.cpp:380
 #, c-format
@@ -15194,6 +15193,11 @@ msgid ""
 "Chose an appropriate document encoding (such as utf8)\n"
 "or change the spelling of the author name."
 msgstr ""
+"Jméno autora '%1$s',\n"
+"pou¾ité pro revize, obsahuje znaky, které nelze reprezentovat\n"
+"v aktuálním kódování. Pøíslu¹né znaky budou pøi exportu do LaTeX-u"
+" vynechány.\n\nVyberte vhodné kódování dokumentu (napø. utf8)\n"
+"nebo zmìnte jméno autora."
 
 #: src/Chktex.cpp:63
 #, c-format
@@ -17087,7 +17091,7 @@ msgstr ""
 #: src/VCBackend.cpp:722
 #, c-format
 msgid ""
-"There were detected changesin the working directory:\n"
+"There were detected changes in the working directory:\n"
 "%1$s\n"
 "\n"
 "In case of file conflict version of the local directory files will be "
@@ -17095,20 +17099,23 @@ msgid ""
 "\n"
 "Continue?"
 msgstr ""
+"Byly detekovány zmìny v pracovním adresáøi:\n"
+"%1$s\n"
+"\n"
+"V pøípadì konfliktu pøi aktualizaci bude preferována verze souboru z "
+"pracovního adresáøe.\n\nPokraèovat?"
 
 #: src/VCBackend.cpp:727
 msgid "Changes detected"
-msgstr ""
+msgstr "Detekovány zmìny"
 
 #: src/VCBackend.cpp:728
-#, fuzzy
 msgid "&Yes"
-msgstr "Ano"
+msgstr "&Ano"
 
 #: src/VCBackend.cpp:728
-#, fuzzy
 msgid "&No"
-msgstr "Ne"
+msgstr "&Ne"
 
 #: src/VCBackend.cpp:788
 msgid "VCN File Locking"
