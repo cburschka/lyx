@@ -258,7 +258,7 @@ ToolbarSet
 		Separator
 		Item "Use SVN file locking property" "vc-locking-toggle"
 		Separator
-		Item "Synchronize local directory with repository" "vc-repo-update"
+		Item "Update local directory with repository" "vc-repo-update"
 	End
 
 	Toolbar "math_panels" "Math Panels"
