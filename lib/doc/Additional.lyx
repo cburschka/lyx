@@ -18405,7 +18405,7 @@ Control
  ssh, you will be asked in terminal window.
  LyX was tested against SVN 1.5 and 1.6
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Most of the commands will work with 1.4 too, see 
@@ -18649,9 +18649,8 @@ Update local directory from repository
 
 \end_inset
 
- command updates the whole directory in which resides your document.
- In case of merge conflicts local version of the files are left, so no unintende
-d data loss occurs.
+ command updates the whole directory and in case of merge conflicts local
+ version of the files are left, so no unintended data loss occurs.
  If local changes are detected user is warned before update starts.
 \end_layout
 

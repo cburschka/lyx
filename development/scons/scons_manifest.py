@@ -1528,7 +1528,7 @@ lib_images_files = Split('''
     vc-check-out.png
     vc-locking-toggle.png
     vc-register.png
-    vc-repo-synchro.png
+    vc-repo-update.png
     vc-revert.png
     view-others.png
 ''')
