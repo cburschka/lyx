@@ -719,7 +719,7 @@ string SVN::repoUpdate()
 	if (!res.empty()) {
 		LYXERR(Debug::LYXVC, "Diff detected:\n" << res);
 		docstring const file = from_utf8(owner_->filePath());
-		docstring text = bformat(_("There were detected changes"
+		docstring text = bformat(_("There were detected changes "
 				"in the working directory:\n%1$s\n\n"
 				"In case of file conflict version of the local directory files "
 				"will be preferred."
