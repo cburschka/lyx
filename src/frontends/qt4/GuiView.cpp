@@ -1414,7 +1414,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_VC_UNDO_LAST:
 		enable = doc_buffer && doc_buffer->lyxvc().undoLastEnabled();
 		break;
-	case LFUN_VC_REPO_SYNCHRO:
+	case LFUN_VC_REPO_UPDATE:
 		enable = doc_buffer && doc_buffer->lyxvc().inUse();
 		break;
 	case LFUN_VC_COMMAND: {
@@ -2337,10 +2337,10 @@ void GuiView::dispatchVC(FuncRequest const & cmd)
 		reloadBuffer();
 		break;
 
-	case LFUN_VC_REPO_SYNCHRO:
+	case LFUN_VC_REPO_UPDATE:
 		LASSERT(buffer, return);
 		if (ensureBufferClean(buffer)) {
-			string res = buffer->lyxvc().repoSynchro();
+			string res = buffer->lyxvc().repoUpdate();
 			message(from_utf8(res));
 			reloadBuffer();
 		}
@@ -2766,7 +2766,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 		case LFUN_VC_REGISTER:
 		case LFUN_VC_CHECK_IN:
 		case LFUN_VC_CHECK_OUT:
-		case LFUN_VC_REPO_SYNCHRO:
+		case LFUN_VC_REPO_UPDATE:
 		case LFUN_VC_LOCKING_TOGGLE:
 		case LFUN_VC_REVERT:
 		case LFUN_VC_UNDO_LAST:

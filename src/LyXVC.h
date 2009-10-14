@@ -78,9 +78,9 @@ public:
 	bool checkOutEnabled();
 
 	/// Synchronize the whole archive with repository
-	std::string repoSynchro();
+	std::string repoUpdate();
 	/// Does the current VC supports this operation?
-	bool repoSynchroEnabled();
+	bool repoUpdateEnabled();
 
 	/**
 	 * Toggle locking property of the edited file,

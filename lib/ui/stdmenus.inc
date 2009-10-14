@@ -72,7 +72,7 @@ Menuset
 		OptItem "Register...|R" "vc-register"
 		OptItem "Check In Changes...|I" "vc-check-in"
 		OptItem "Check Out for Edit|O" "vc-check-out"
-		OptItem "Synchronize local directory with repository" "vc-repo-synchro"
+		OptItem "Update local directory with repository" "vc-repo-synchro"
 		OptItem "Revert to Repository Version|v" "vc-revert"
 		OptItem "Undo Last Check In|U" "vc-undo-last"
 		OptItem "Show History...|H" "dialog-show vclog"

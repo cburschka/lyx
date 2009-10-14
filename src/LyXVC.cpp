@@ -170,10 +170,10 @@ string LyXVC::checkOut()
 }
 
 
-string LyXVC::repoSynchro()
+string LyXVC::repoUpdate()
 {
-	LYXERR(Debug::LYXVC, "LyXVC: repoSynchro");
-	return vcs->repoSynchro();
+	LYXERR(Debug::LYXVC, "LyXVC: repoUpdate");
+	return vcs->repoUpdate();
 }
 
 

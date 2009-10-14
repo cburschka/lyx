@@ -209,14 +209,14 @@ bool RCS::checkOutEnabled()
 }
 
 
-string RCS::repoSynchro()
+string RCS::repoUpdate()
 {
 	lyxerr << "Sorry, not implemented." << endl;
 	return string();
 }
 
 
-bool RCS::repoSynchroEnabled()
+bool RCS::repoUpdateEnabled()
 {
 	return false;
 }
@@ -397,14 +397,14 @@ bool CVS::checkOutEnabled()
 }
 
 
-string CVS::repoSynchro()
+string CVS::repoUpdate()
 {
 	lyxerr << "Sorry, not implemented." << endl;
 	return string();
 }
 
 
-bool CVS::repoSynchroEnabled()
+bool CVS::repoUpdateEnabled()
 {
 	return false;
 }
@@ -704,7 +704,7 @@ bool SVN::checkOutEnabled()
 }
 
 
-string SVN::repoSynchro()
+string SVN::repoUpdate()
 {
 	FileName tmpf = FileName::tempName("lyxvcout");
 	if (tmpf.empty()) {
@@ -720,9 +720,9 @@ string SVN::repoSynchro()
 		LYXERR(Debug::LYXVC, "Diff detected:\n" << res);
 		docstring const file = from_utf8(owner_->filePath());
 		docstring text = bformat(_("There were detected changes "
-		                "in the working directory.\n"
-				"Synchronizing with repository will discard "
-				"any uncommitted changes in the directory:\n%1$s"
+		                "in the working directory:\n%1$s\n\n"
+				"In case of file conflict version of the local directory files "
+				"will be preferred."
 				"\n\nContinue?"), file);
 		int const ret = frontend::Alert::prompt(_("Changes detected"),
 				text, 0, 1, _("&Yes"), _("&No"));
@@ -732,11 +732,12 @@ string SVN::repoSynchro()
 		}
 	}
 
-	doVCCommand("svn revert -R " + quoteName(owner_->filePath())
-	+ " > " + quoteName(tmpf.toFilesystemEncoding()),
-	FileName(owner_->filePath()));
-	res = "Revert log:\n" + tmpf.fileContents("UTF-8");
-	doVCCommand("svn update " + quoteName(owner_->filePath())
+	// Reverting looks too harsh, see bug #6255.
+	// doVCCommand("svn revert -R " + quoteName(owner_->filePath())
+	// + " > " + quoteName(tmpf.toFilesystemEncoding()),
+	// FileName(owner_->filePath()));
+	// res = "Revert log:\n" + tmpf.fileContents("UTF-8");
+	doVCCommand("svn update --accept mine-full " + quoteName(owner_->filePath())
 	+ " > " + quoteName(tmpf.toFilesystemEncoding()),
 	FileName(owner_->filePath()));
 	res += "Update log:\n" + tmpf.fileContents("UTF-8");
@@ -747,7 +748,7 @@ string SVN::repoSynchro()
 }
 
 
-bool SVN::repoSynchroEnabled()
+bool SVN::repoUpdateEnabled()
 {
 	return true;
 }

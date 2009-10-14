@@ -44,9 +44,9 @@ public:
 	// can be this operation processed in the current RCS?
 	virtual bool checkOutEnabled() = 0;
 	/// synchronize with repository, returns log
-	virtual std::string repoSynchro() = 0;
+	virtual std::string repoUpdate() = 0;
 	// can be this operation processed in the current RCS?
-	virtual bool repoSynchroEnabled() = 0;
+	virtual bool repoUpdateEnabled() = 0;
 	// toggle locking property of the file
 	virtual std::string lockingToggle() = 0;
 	// can be this operation processed in the current RCS?
@@ -135,9 +135,9 @@ public:
 
 	virtual bool checkOutEnabled();
 
-	virtual std::string repoSynchro();
+	virtual std::string repoUpdate();
 
-	virtual bool repoSynchroEnabled();
+	virtual bool repoUpdateEnabled();
 
 	virtual std::string lockingToggle();
 
@@ -182,9 +182,9 @@ public:
 
 	virtual bool checkOutEnabled();
 
-	virtual std::string repoSynchro();
+	virtual std::string repoUpdate();
 
-	virtual bool repoSynchroEnabled();
+	virtual bool repoUpdateEnabled();
 
 	virtual std::string lockingToggle();
 
@@ -232,9 +232,9 @@ public:
 
 	virtual bool checkOutEnabled();
 
-	virtual std::string repoSynchro();
+	virtual std::string repoUpdate();
 
-	virtual bool repoSynchroEnabled();
+	virtual bool repoUpdateEnabled();
 
 	virtual std::string lockingToggle();
 
