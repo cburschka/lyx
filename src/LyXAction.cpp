@@ -2180,7 +2180,7 @@ void LyXAction::init()
  * \li Origin: sanda, 16 Oct 2009
  * \endvar
  */
-		{ LFUN_VC_REPO_UPDATE, "vc-repo-synchro", ReadOnly, System },
+		{ LFUN_VC_REPO_UPDATE, "vc-repo-update", ReadOnly, System },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_CHANGES_TRACK
