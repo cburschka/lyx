@@ -1573,11 +1573,16 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "caption") {
+			// FIXME: this should get some cleanup. All
+			// the \begin_layout:s are output by the
+			// Context class!
 			p.skip_spaces();
 			context.check_layout(os);
 			p.skip_spaces();
 			begin_inset(os, "Caption\n\n");
-			os << "\\begin_layout Standard";
+			os << "\\begin_layout " 
+			   << to_utf8(context.textclass.defaultLayout().name()) 
+			   << '\n';
 			if (p.next_token().character() == '[') {
 				p.get_token(); // eat '['
 				begin_inset(os, "OptArg\n");
