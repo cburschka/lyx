@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-10-15 09:39+0200\n"
-"PO-Revision-Date: 2009-10-11 13:51+0200\n"
+"PO-Revision-Date: 2009-10-15 18:22+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slowakisch <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -10943,7 +10943,7 @@ msgstr "Zavrieť okno|r"
 
 #: lib/ui/stdmenus.inc:74
 msgid "Update local directory from repository|d"
-msgstr ""
+msgstr "Aktualizuj lokálny adresár z repositáru"
 
 #: lib/ui/stdmenus.inc:78
 msgid "Use Locking Property|L"
@@ -11851,7 +11851,7 @@ msgstr "Použiť blokovanie súborov z SVN"
 
 #: lib/ui/stdtoolbars.inc:235
 msgid "Update local directory from repository"
-msgstr ""
+msgstr "Aktualizuj lokálny adresár z repositáru"
 
 #: lib/ui/stdtoolbars.inc:238
 msgid "Math Panels"
@@ -15171,9 +15171,8 @@ msgid "uncodable character"
 msgstr "Nekódovatelný znak"
 
 #: src/Changes.cpp:379
-#, fuzzy
 msgid "Uncodable character in author name"
-msgstr "Nekódovateľné znaky vo výpise zdrojového kódu"
+msgstr "Nekódovateľný znak v mene autora"
 
 #: src/Changes.cpp:380
 #, c-format
@@ -15186,6 +15185,14 @@ msgid ""
 "Chose an appropriate document encoding (such as utf8)\n"
 "or change the spelling of the author name."
 msgstr ""
+"Meno autora '%1$s',\n"
+"použité na sledovanie zmien, obsahuje znaky,\n"
+"ktoré sa v aktuálnom kódovaní nedajú reprezentovať.\n"
+"Príslušné znaky budú pri exporte do LaTeX-u "
+"vynechané.\n"
+"\n"
+"Vyberte vhodné kódovanie dokumentu (napr. utf8)\n"
+"alebo zmeňte písanie mena autora."
 
 #: src/Chktex.cpp:63
 #, c-format
@@ -17086,20 +17093,24 @@ msgid ""
 "\n"
 "Continue?"
 msgstr ""
+"Zbadané zmeny v pracovnom adresári:\n"
+"%1$s\n"
+"\n"
+"Prednosť pri sporných častí dostane verzia v lokálnom adresáre.\n"
+"\n"
+"Pokračovať?"
 
 #: src/VCBackend.cpp:727
 msgid "Changes detected"
-msgstr ""
+msgstr "Našli sa zmeny"
 
 #: src/VCBackend.cpp:728
-#, fuzzy
 msgid "&Yes"
-msgstr "Áno"
+msgstr "áno"
 
 #: src/VCBackend.cpp:728
-#, fuzzy
 msgid "&No"
-msgstr "Nie"
+msgstr "nie"
 
 #: src/VCBackend.cpp:788
 msgid "VCN File Locking"
