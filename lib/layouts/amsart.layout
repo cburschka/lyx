@@ -62,7 +62,7 @@ Style Section
 	Font
 	  Series              Medium
 	  Shape               Smallcaps
-	  Size                Large
+	  Size                Normal
 	EndFont
 End
 
@@ -77,10 +77,33 @@ Style Section*
 End
 
 
+Style SpecialSection
+	CopyStyle	      Section
+	LatexName	      specialsection
+	Font
+	  Shape               Roman
+	EndFont
+End
+
+
+Style SpecialSection*
+	CopyStyle	      SpecialSection
+	Category              Unnumbered
+	LatexName	      specialsection*
+	Margin                Static
+	LabelType             No_Label
+	LabelCounter	      ""	
+	OptionalArgs          0
+End
+
+
 Style Subsection
 	Font
 	  Series              Bold
 	  Size                Normal
+	EndFont
+	LabelFont
+	  Series	      Medium
 	EndFont
 End
 
@@ -90,12 +113,16 @@ Style Subsection*
 	  Series              Bold
 	  Size                Normal
 	EndFont
+	LabelFont
+	  Series	      Medium
+	EndFont
 End
 
 
 Style Subsubsection
 	Font
 	  Shape               Italic
+	  Series	      Medium
 	  Size                Normal
 	EndFont
 End
@@ -104,6 +131,7 @@ End
 Style Subsubsection*
 	Font
 	  Shape               Italic
+	  Series	      Medium
 	  Size                Normal
 	EndFont
 End
