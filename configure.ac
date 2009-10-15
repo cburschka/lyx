@@ -183,7 +183,7 @@ AC_TYPE_SIZE_T
 AC_TYPE_UID_T
 
 AC_CHECK_FUNCS(strerror)
-AC_CHECK_FUNCS(chmod close _close getpid _getpid lstat mkfifo mkstemp mktemp open _open pclose _pclose popen _popen readlink strerror)
+AC_CHECK_FUNCS(chmod close _close fork getpid _getpid lstat mkfifo mkstemp mktemp open _open pclose _pclose popen _popen readlink strerror)
 LYX_CHECK_DECL(istreambuf_iterator, iterator)
 LYX_CHECK_DECL(mkstemp,[unistd.h stdlib.h])
 # Check the form of mkdir()
