@@ -104,6 +104,8 @@ What's new
 
 - Fix (again!) reading of default modules by tex2lyx (part of bug 5702).
 
+- Fix reading of caption texts, which got broken in 1.6.4 (bug 6276).
+
 - Fix support for polytonic Greek with multiple diacritics (bug 5976).
 
 - Assure the author name is encoded correctly in the LaTeX output of
