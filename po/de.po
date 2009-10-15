@@ -99,7 +99,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-10-15 09:39+0200\n"
-"PO-Revision-Date: 2009-10-12 19:25+0200\n"
+"PO-Revision-Date: 2009-10-15 09:55+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -9763,7 +9763,7 @@ msgstr "Zuletzt eingecheckte Version wiederherstellen|w"
 
 #: lib/ui/classic.ui:72 lib/ui/stdmenus.inc:76
 msgid "Undo Last Check In|U"
-msgstr "Letztes Einchecken widerrufen|w"
+msgstr "Letztes Einchecken widerrufen|r"
 
 #: lib/ui/classic.ui:73 lib/ui/stdmenus.inc:77
 msgid "Show History...|H"
@@ -11082,7 +11082,7 @@ msgstr "Fenster schließen|t"
 
 #: lib/ui/stdmenus.inc:74
 msgid "Update local directory from repository|d"
-msgstr ""
+msgstr "Lokales Verzeichnis aus dem Repositorium aktualisieren|a"
 
 #: lib/ui/stdmenus.inc:78
 msgid "Use Locking Property|L"
@@ -11992,7 +11992,7 @@ msgstr "SVN-Dateisperrung verwenden"
 
 #: lib/ui/stdtoolbars.inc:235
 msgid "Update local directory from repository"
-msgstr ""
+msgstr "Lokales Verzeichnis aus dem Repositorium aktualisieren"
 
 #: lib/ui/stdtoolbars.inc:238
 msgid "Math Panels"
@@ -16582,8 +16582,8 @@ msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
 msgstr ""
-"Die verwendete Schriftkodierung für das LaTeX2e-Paket fontenc. Für nicht-"
-"englische Sprachen wird unbedingt T1 empfohlen."
+"Die verwendete Schriftkodierung für das LaTeX2e-Paket fontenc. Für andere "
+"als die englische Sprache wird unbedingt T1 empfohlen."
 
 #: src/LyXRC.cpp:2590
 msgid ""
@@ -16598,7 +16598,7 @@ msgstr ""
 #: src/LyXRC.cpp:2594
 msgid "Define the options of the index program for PLaTeX (Japanese LaTeX)."
 msgstr ""
-"Definiert die Optionen des Index-Prozessors für pLaTeX (japanisches LaTeX)."
+"Definiert die Optionen des Indexprozessors für pLaTeX (japanisches LaTeX)."
 
 #: src/LyXRC.cpp:2598
 msgid ""
@@ -17321,20 +17321,24 @@ msgid ""
 "\n"
 "Continue?"
 msgstr ""
+"Im Arbeitsverzeichnis wurden Änderungen gefunden:\n"
+"%1$s\n"
+"\n"
+"Im Fall eines Dateikonflikts werden die lokalen Versionen bevorzugt.\n"
+"\n"
+"Fortfahren?"
 
 #: src/VCBackend.cpp:727
 msgid "Changes detected"
-msgstr ""
+msgstr "Änderungen gefunden"
 
 #: src/VCBackend.cpp:728
-#, fuzzy
 msgid "&Yes"
-msgstr "Ja"
+msgstr "&Ja"
 
 #: src/VCBackend.cpp:728
-#, fuzzy
 msgid "&No"
-msgstr "Nein"
+msgstr "&Nein"
 
 #: src/VCBackend.cpp:788
 msgid "VCN File Locking"
@@ -19649,8 +19653,8 @@ msgid ""
 "\n"
 "Do you want to save the document or discard the changes?"
 msgstr ""
-"Die Änderungen am Dokument %1$s sind nicht gespeichert.\n"
-"\n"
+"Die Änderungen am Dokument %1$s\n"
+"sind nicht gespeichert.\n"
 "Möchten Sie das Dokument speichern oder die Änderungen verwerfen?"
 
 #: src/frontends/qt4/GuiView.cpp:1878
@@ -20184,7 +20188,7 @@ msgstr "Modul nicht gefunden"
 
 #: src/insets/InsetIndex.cpp:129
 msgid "Index sorting failed"
-msgstr "Index-Sortierung fehlgeschlagen"
+msgstr "Indexsortierung fehlgeschlagen"
 
 #: src/insets/InsetIndex.cpp:130
 #, c-format
