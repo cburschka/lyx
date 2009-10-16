@@ -13,10 +13,8 @@
 #define _CONFIG_COMPILER_H
 
 
-#cmakedefine HAVE_IO_H 1
 #cmakedefine HAVE_LIMITS_H 1
 #cmakedefine HAVE_LOCALE_H 1
-#cmakedefine HAVE_PROCESS_H 1
 #cmakedefine HAVE_STDLIB_H 1
 #cmakedefine HAVE_SYS_STAT_H 1
 #cmakedefine HAVE_SYS_TIME_H 1
@@ -27,7 +25,6 @@
 #cmakedefine HAVE_INTTYPES_H 1
 #cmakedefine HAVE_UTIME_H 1
 #cmakedefine HAVE_STRING_H 1
-#cmakedefine HAVE_STRINGS_H 1
 #cmakedefine HAVE_ISTREAM 1
 #cmakedefine HAVE_OSTREAM 1
 #cmakedefine HAVE_IOS 1
@@ -48,8 +45,6 @@
 #cmakedefine HAVE_MKDIR 1
 #cmakedefine HAVE__MKDIR 1
 #cmakedefine HAVE_PUTENV 1
-#cmakedefine HAVE_MKTEMP 1
-#cmakedefine HAVE_MKSTEMP 1
 #cmakedefine HAVE_STRERROR 1
 #cmakedefine HAVE_STD_COUNT 1
 #cmakedefine HAVE_ASPRINTF 1
@@ -59,7 +54,6 @@
 #cmakedefine HAVE_FCNTL 1
 #cmakedefine HAVE_INTMAX_T 1
 #cmakedefine HAVE_INTTYPES_H_WITH_UINTMAX 1
-#cmakedefine HAVE_DECL_ISTREAMBUF_ITERATOR 1
 #cmakedefine CXX_GLOBAL_CSTD 1
 #cmakedefine HAVE_GETCWD 1
 #cmakedefine HAVE_STPCPY 1

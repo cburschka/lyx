@@ -25,10 +25,8 @@ check_include_file_cxx(aspell/aspell.h HAVE_ASPELL_ASPELL_H)
 #check_include_file_cxx(sstream HAVE_SSTREAM)
 #check_include_file_cxx(locale HAVE_LOCALE)
 
-check_include_files(io.h HAVE_IO_H)
 check_include_files(limits.h HAVE_LIMITS_H)
 check_include_files(locale.h HAVE_LOCALE_H)
-check_include_files(process.h HAVE_PROCESS_H)
 check_include_files(stdlib.h HAVE_STDLIB_H)
 check_include_files(sys/stat.h HAVE_SYS_STAT_H)
 check_include_files(sys/time.h HAVE_SYS_TIME_H)
@@ -39,7 +37,6 @@ check_include_files(unistd.h HAVE_UNISTD_H)
 check_include_files(inttypes.h HAVE_INTTYPES_H)
 check_include_files(utime.h HAVE_UTIME_H)
 check_include_files(string.h HAVE_STRING_H)
-check_include_files(strings.h HAVE_STRINGS_H)
 check_include_files(argz.h HAVE_ARGZ_H)
 
 
@@ -59,8 +56,6 @@ check_function_exists(_getpid HAVE__GETPID)
 check_function_exists(mkdir  HAVE_MKDIR)
 check_function_exists(_mkdir HAVE__MKDIR)
 check_function_exists(putenv HAVE_PUTENV)
-check_function_exists(mktemp HAVE_MKTEMP)
-check_function_exists(mkstemp HAVE_MKSTEMP)
 check_function_exists(fcntl HAVE_FCNTL)
 check_function_exists(strerror HAVE_STRERROR)
 check_function_exists(getcwd HAVE_GETCWD)
@@ -112,15 +107,6 @@ check_type_size(wint_t  HAVE_WINT_T)
 #	int main(){return 0;}
 #	"
 #HAVE_STD_COUNT)
-
-check_cxx_source_compiles(
-	"
-	#include <streambuf>
-	#include <istream>
-	typedef std::istreambuf_iterator<char> type;
-	int main(){return 0;}
-	"
-HAVE_DECL_ISTREAMBUF_ITERATOR)
 
 #check_cxx_source_compiles(
 #	"
