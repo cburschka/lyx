@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-10-15 09:39+0200\n"
+"POT-Creation-Date: 2009-10-16 12:13+0200\n"
 "PO-Revision-Date: 2009-08-19 17:08+0100\n"
 "Last-Translator: susana barbosa <sabarbosa@fc.ul.pt>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -4261,7 +4261,7 @@ msgstr "Secção"
 #: lib/layouts/IEEEtran.layout:282 lib/layouts/aa.layout:45
 #: lib/layouts/aa.layout:232 lib/layouts/aapaper.layout:67
 #: lib/layouts/aapaper.layout:139 lib/layouts/aastex.layout:70
-#: lib/layouts/aastex.layout:182 lib/layouts/amsart.layout:80
+#: lib/layouts/aastex.layout:182 lib/layouts/amsart.layout:100
 #: lib/layouts/amsbook.layout:60 lib/layouts/apa.layout:317
 #: lib/layouts/beamer.layout:181 lib/layouts/egs.layout:51
 #: lib/layouts/ijmpc.layout:109 lib/layouts/ijmpd.layout:105
@@ -4281,7 +4281,7 @@ msgstr "Subsecção"
 #: lib/layouts/IEEEtran.layout:290 lib/layouts/aa.layout:48
 #: lib/layouts/aa.layout:244 lib/layouts/aapaper.layout:70
 #: lib/layouts/aapaper.layout:150 lib/layouts/aastex.layout:73
-#: lib/layouts/aastex.layout:194 lib/layouts/amsart.layout:96
+#: lib/layouts/aastex.layout:194 lib/layouts/amsart.layout:122
 #: lib/layouts/amsbook.layout:68 lib/layouts/apa.layout:326
 #: lib/layouts/ijmpc.layout:117 lib/layouts/ijmpd.layout:113
 #: lib/layouts/isprs.layout:175 lib/layouts/kluwer.layout:75
@@ -4304,7 +4304,7 @@ msgstr "Subsubsecção"
 msgid "Section*"
 msgstr "Secção*"
 
-#: lib/layouts/IEEEtran.layout:308 lib/layouts/amsart.layout:88
+#: lib/layouts/IEEEtran.layout:308 lib/layouts/amsart.layout:111
 #: lib/layouts/amsbook.layout:88 lib/layouts/beamer.layout:214
 #: lib/layouts/egs.layout:596 lib/layouts/isprs.layout:195
 #: lib/layouts/aguplus.inc:48 lib/layouts/db_stdstarsections.inc:48
@@ -4312,7 +4312,7 @@ msgstr "Secção*"
 msgid "Subsection*"
 msgstr "Subsecção*"
 
-#: lib/layouts/IEEEtran.layout:316 lib/layouts/amsart.layout:104
+#: lib/layouts/IEEEtran.layout:316 lib/layouts/amsart.layout:131
 #: lib/layouts/amsbook.layout:96 lib/layouts/isprs.layout:204
 #: lib/layouts/db_stdstarsections.inc:60 lib/layouts/stdstarsections.inc:56
 msgid "Subsubsection*"
@@ -4931,6 +4931,24 @@ msgstr "Agradecimentos"
 msgid "MainText"
 msgstr "TextoPrincipal"
 
+#: lib/layouts/amsart.layout:80
+#, fuzzy
+msgid "SpecialSection"
+msgstr "Secção-especial"
+
+#: lib/layouts/amsart.layout:89
+#, fuzzy
+msgid "SpecialSection*"
+msgstr "Secção-especial"
+
+#: lib/layouts/amsart.layout:91 lib/layouts/beamer.layout:173
+#: lib/layouts/beamer.layout:216 lib/layouts/stdstarsections.inc:15
+#: lib/layouts/stdstarsections.inc:25 lib/layouts/stdstarsections.inc:36
+#: lib/layouts/stdstarsections.inc:47 lib/layouts/stdstarsections.inc:58
+#: lib/layouts/stdstarsections.inc:69 lib/layouts/stdstarsections.inc:80
+msgid "Unnumbered"
+msgstr "Não-numerado"
+
 #: lib/layouts/amsbook.layout:131
 msgid "Chapter Exercises"
 msgstr "Exercícios de capítulo"
@@ -5089,14 +5107,6 @@ msgstr "Secção \\arabic{section}"
 #: lib/layouts/numarticle.inc:10
 msgid "\\Alph{section}"
 msgstr "\\Alph{section}"
-
-#: lib/layouts/beamer.layout:173 lib/layouts/beamer.layout:216
-#: lib/layouts/stdstarsections.inc:15 lib/layouts/stdstarsections.inc:25
-#: lib/layouts/stdstarsections.inc:36 lib/layouts/stdstarsections.inc:47
-#: lib/layouts/stdstarsections.inc:58 lib/layouts/stdstarsections.inc:69
-#: lib/layouts/stdstarsections.inc:80
-msgid "Unnumbered"
-msgstr "Não-numerado"
 
 #: lib/layouts/beamer.layout:196
 msgid "Subsection \\arabic{section}.\\arabic{subsection}"
@@ -17180,20 +17190,20 @@ msgstr "Conjunto disposição de parágrafo"
 msgid "Plain Layout"
 msgstr "Disposição Simples"
 
-#: src/TextClass.cpp:657
+#: src/TextClass.cpp:654
 msgid "Missing File"
 msgstr "Ficheiro em Falta"
 
-#: src/TextClass.cpp:658
+#: src/TextClass.cpp:655
 msgid "Could not find stdinsets.inc! This may lead to data loss!"
 msgstr ""
 "Não foi possível encontrar stdinsets.inc! Isto pode levar a perda de dados!"
 
-#: src/TextClass.cpp:661
+#: src/TextClass.cpp:658
 msgid "Corrupt File"
 msgstr "Ficheiro Corrompido"
 
-#: src/TextClass.cpp:662
+#: src/TextClass.cpp:659
 msgid "Could not read stdinsets.inc! This may lead to data loss!"
 msgstr "Não foi possível ler stdinsets.inc! Isto pode levar a perda de dados!"
 
