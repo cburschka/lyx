@@ -59,19 +59,6 @@
 #include <cerrno>
 #include <fcntl.h>
 
-#if defined(HAVE_MKSTEMP) && ! defined(HAVE_DECL_MKSTEMP)
-extern "C" int mkstemp(char *);
-#endif
-
-#if !defined(HAVE_MKSTEMP) && defined(HAVE_MKTEMP)
-# ifdef HAVE_IO_H
-#  include <io.h>
-# endif
-# ifdef HAVE_PROCESS_H
-#  include <process.h>
-# endif
-#endif
-
 // Three implementations of checksum(), depending on having mmap support or not.
 #if defined(HAVE_MMAP) && defined(HAVE_MUNMAP)
 #define SUM_WITH_MMAP

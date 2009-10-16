@@ -168,7 +168,7 @@ AC_LANG_POP(C)
 
 # some standard header files
 AC_HEADER_MAJOR
-AC_CHECK_HEADERS(sys/time.h sys/types.h sys/select.h strings.h locale.h io.h process.h NewAPIs.h utime.h sys/utime.h)
+AC_CHECK_HEADERS(sys/time.h sys/types.h sys/select.h locale.h NewAPIs.h utime.h sys/utime.h)
 
 # some standard structures
 AC_HEADER_STAT
@@ -182,10 +182,7 @@ AC_TYPE_SIGNAL
 AC_TYPE_SIZE_T
 AC_TYPE_UID_T
 
-AC_CHECK_FUNCS(strerror)
-AC_CHECK_FUNCS(chmod close _close fork getpid _getpid lstat mkfifo mkstemp mktemp open _open pclose _pclose popen _popen readlink strerror)
-LYX_CHECK_DECL(istreambuf_iterator, iterator)
-LYX_CHECK_DECL(mkstemp,[unistd.h stdlib.h])
+AC_CHECK_FUNCS(chmod close _close fork getpid _getpid lstat mkfifo open _open pclose _pclose popen _popen readlink strerror)
 # Check the form of mkdir()
 AC_FUNC_MKDIR
 AC_FUNC_SELECT_ARGTYPES
