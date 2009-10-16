@@ -1887,13 +1887,19 @@ void PrefFileformats::updateEditors()
 
 void PrefFileformats::on_viewerCO_currentIndexChanged(int i)
 {
-	viewerED->setEnabled(viewerCO->itemData(i).toString() == "custom viewer");
+	bool const custom = viewerCO->itemData(i).toString() == "custom viewer";
+	viewerED->setEnabled(custom);
+	if (!custom)
+		currentFormat().setViewer(fromqstr(viewerCO->itemData(i).toString()));
 }
 
 
 void PrefFileformats::on_editorCO_currentIndexChanged(int i)
 {
-	editorED->setEnabled(editorCO->itemData(i).toString() == "custom editor");
+	bool const custom = editorCO->itemData(i).toString() == "custom viewer";
+	editorED->setEnabled(custom);
+	if (!custom)
+		currentFormat().setViewer(fromqstr(editorCO->itemData(i).toString()));
 }
 
 
