@@ -1,4 +1,4 @@
-#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -154,8 +154,8 @@ Haase
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 18.
- Juli 2009
+letzte Änderung: 13.
+ Oktober 2009
 \end_layout
 
 \begin_layout Standard
@@ -5109,6 +5109,38 @@ tex4ht
 , 
 \family typewriter
 latex2html
+\end_layout
+
+\begin_layout Standard
+Wenn Sie die Kodierung von 
+\family sans
+HTML (MS Word)
+\family default
+ auch hier haben wollen, müssen Sie den Konverter-Befehl 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+htlatex $$i
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+ durch 
+\family typewriter
+
+\begin_inset Quotes gld
+\end_inset
+
+htlatex $$i '' 'symbol/!'
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+ ersetzen.
 \end_layout
 
 \begin_layout Subsection
