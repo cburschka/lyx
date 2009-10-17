@@ -1835,24 +1835,33 @@ void PrefFileformats::updatePrettyname()
 }
 
 
+namespace {
+	void updateComboBox(LyXRC::Alternatives const & alts,
+	                    string const & fmt, QComboBox * combo)
+	{
+		LyXRC::Alternatives::const_iterator it = 
+				alts.find(fmt);
+		if (it != alts.end()) {
+			LyXRC::CommandSet const & cmds = it->second;
+			LyXRC::CommandSet::const_iterator sit = 
+					cmds.begin();
+			LyXRC::CommandSet::const_iterator const sen = 
+					cmds.end();
+			for (; sit != sen; ++sit) {
+				QString const qcmd = toqstr(*sit);
+				combo->addItem(qcmd, qcmd);
+			}
+		}
+	}
+}
+
+
 void PrefFileformats::updateViewers()
 {
 	Format const f = currentFormat();
 	viewerCO->clear();
 	viewerCO->addItem(qt_("None"), QString());
-	LyXRC::Alternatives::const_iterator it = 
-			viewer_alternatives.find(f.name());
-	if (it != viewer_alternatives.end()) {
-		LyXRC::CommandSet const & cmds = it->second;
-		LyXRC::CommandSet::const_iterator sit = 
-				cmds.begin();
-		LyXRC::CommandSet::const_iterator const sen = 
-				cmds.end();
-		for (; sit != sen; ++sit) {
-			QString const qcmd = toqstr(*sit);
-			viewerCO->addItem(qcmd, qcmd);
-		}
-	}
+	updateComboBox(viewer_alternatives, f.name(), viewerCO);
 	viewerCO->addItem(qt_("Custom"), QString("custom viewer"));
 
 	int pos = viewerCO->findData(toqstr(f.viewer()));
@@ -1873,19 +1882,7 @@ void PrefFileformats::updateEditors()
 	Format const f = currentFormat();
 	editorCO->clear();
 	editorCO->addItem(qt_("None"), QString());
-	LyXRC::Alternatives::const_iterator it = 
-			editor_alternatives.find(f.name());
-	if (it != editor_alternatives.end()) {
-		LyXRC::CommandSet const & cmds = it->second;
-		LyXRC::CommandSet::const_iterator sit = 
-				cmds.begin();
-		LyXRC::CommandSet::const_iterator const sen = 
-				cmds.end();
-		for (; sit != sen; ++sit) {
-			QString const qcmd = toqstr(*sit);
-			editorCO->addItem(qcmd, qcmd);
-		}
-	}
+	updateComboBox(editor_alternatives, f.name(), editorCO);
 	editorCO->addItem(qt_("Custom"), QString("custom editor"));
 
 	int pos = editorCO->findData(toqstr(f.editor()));
