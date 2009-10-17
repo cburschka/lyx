@@ -2491,26 +2491,36 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 				   << "\" \"\" \"\" \"\" \"\" \"\" \"\"\n";
 		if (tag != RC_LAST)
 			break;
-	case RC_VIEWER_ALTERNATIVES:
-		if (ignore_system_lyxrc ||
-		    viewer_alternatives != system_lyxrc.viewer_alternatives) {
-			for (vector<pair<string, string> >::const_iterator it = viewer_alternatives.begin();
-			     it != viewer_alternatives.end(); ++it)
-			os << "\\viewer_alternatives "
-			   << it->first << " " << it->second << "\n";
+	case RC_VIEWER_ALTERNATIVES: {
+		vector<pair<string, string> >::const_iterator it = viewer_alternatives.begin();
+		vector<pair<string, string> >::const_iterator const en = viewer_alternatives.end();
+		vector<pair<string, string> >::const_iterator const sysbeg = 
+				system_lyxrc.viewer_alternatives.begin();
+		vector<pair<string, string> >::const_iterator const sysend = 
+				system_lyxrc.viewer_alternatives.end();
+ 		for ( ; it != en; ++it) {
+ 			if (ignore_system_lyxrc || find(sysbeg, sysend, *it) == sysend)
+				os << "\\viewer_alternatives "
+						<< it->first << " " << it->second << "\n";
 		}
 		if (tag != RC_LAST)
 			break;
-	case RC_EDITOR_ALTERNATIVES:
-		if (ignore_system_lyxrc ||
-		    editor_alternatives != system_lyxrc.editor_alternatives) {
-			for (vector<pair<string, string> >::const_iterator it = editor_alternatives.begin();
-			     it != editor_alternatives.end(); ++it)
-			os << "\\editor_alternatives "
-			   << it->first << " " << it->second << "\n";
+	}
+	case RC_EDITOR_ALTERNATIVES: {
+		vector<pair<string, string> >::const_iterator it = editor_alternatives.begin();
+		vector<pair<string, string> >::const_iterator const en = editor_alternatives.end();
+		vector<pair<string, string> >::const_iterator const sysbeg = 
+				system_lyxrc.editor_alternatives.begin();
+		vector<pair<string, string> >::const_iterator const sysend = 
+				system_lyxrc.editor_alternatives.end();
+		for ( ; it != en; ++it) {
+			if (ignore_system_lyxrc || find(sysbeg, sysend, *it) == sysend)
+				os << "\\editor_alternatives "
+						<< it->first << " " << it->second << "\n";
 		}
 		if (tag != RC_LAST)
 			break;
+	}
 	case RC_DEFAULT_VIEW_FORMAT:
 		if (ignore_system_lyxrc ||
 		    default_view_format != system_lyxrc.default_view_format) {
