@@ -631,7 +631,7 @@ void PrefLatex::on_latexBibtexCO_activated(int n)
 		latexBibtexOptionsLA->setText(qt_("Co&mmand:"));
 		return;
 	}
-	for (set<string>::const_iterator it = bibtex_alternatives.begin();
+	for (LyXRC::CommandSet::const_iterator it = bibtex_alternatives.begin();
 	     it != bibtex_alternatives.end(); ++it) {
 		QString const bib = toqstr(*it);
 		int ind = bib.indexOf(" ");
@@ -656,7 +656,7 @@ void PrefLatex::on_latexIndexCO_activated(int n)
 		latexIndexOptionsLA->setText(qt_("Co&mmand:"));
 		return;
 	}
-	for (set<string>::const_iterator it = index_alternatives.begin();
+	for (LyXRC::CommandSet::const_iterator it = index_alternatives.begin();
 	     it != index_alternatives.end(); ++it) {
 		QString const idx = toqstr(*it);
 		int ind = idx.indexOf(" ");
@@ -719,7 +719,7 @@ void PrefLatex::update(LyXRC const & rc)
 	latexBibtexCO->clear();
 
 	latexBibtexCO->addItem(qt_("Custom"), QString());
-	for (set<string>::const_iterator it = rc.bibtex_alternatives.begin();
+	for (LyXRC::CommandSet::const_iterator it = rc.bibtex_alternatives.begin();
 			     it != rc.bibtex_alternatives.end(); ++it) {
 		QString const command = toqstr(*it).left(toqstr(*it).indexOf(" "));
 		latexBibtexCO->addItem(command, command);
@@ -746,7 +746,7 @@ void PrefLatex::update(LyXRC const & rc)
 	latexIndexCO->clear();
 
 	latexIndexCO->addItem(qt_("Custom"), QString());
-	for (set<string>::const_iterator it = rc.index_alternatives.begin();
+	for (LyXRC::CommandSet::const_iterator it = rc.index_alternatives.begin();
 			     it != rc.index_alternatives.end(); ++it) {
 		QString const command = toqstr(*it).left(toqstr(*it).indexOf(" "));
 		latexIndexCO->addItem(command, command);
@@ -1840,10 +1840,18 @@ void PrefFileformats::updateViewers()
 	Format const f = currentFormat();
 	viewerCO->clear();
 	viewerCO->addItem(qt_("None"), QString());
-	for (vector<pair<string, string> >::const_iterator it = viewer_alternatives.begin();
-			    it != viewer_alternatives.end(); ++it) {
-		if (it->first == f.name())
-			viewerCO->addItem(toqstr(it->second), toqstr(it->second));
+	LyXRC::Alternatives::const_iterator it = 
+			viewer_alternatives.find(f.name());
+	if (it != viewer_alternatives.end()) {
+		LyXRC::CommandSet const & cmds = it->second;
+		LyXRC::CommandSet::const_iterator sit = 
+				cmds.begin();
+		LyXRC::CommandSet::const_iterator const sen = 
+				cmds.end();
+		for (; sit != sen; ++sit) {
+			QString const qcmd = toqstr(*sit);
+			viewerCO->addItem(qcmd, qcmd);
+		}
 	}
 	viewerCO->addItem(qt_("Custom"), QString("custom viewer"));
 
@@ -1865,10 +1873,18 @@ void PrefFileformats::updateEditors()
 	Format const f = currentFormat();
 	editorCO->clear();
 	editorCO->addItem(qt_("None"), QString());
-	for (vector<pair<string, string> >::const_iterator it = editor_alternatives.begin();
-			    it != editor_alternatives.end(); ++it) {
-		if (it->first == f.name())
-			editorCO->addItem(toqstr(it->second), toqstr(it->second));
+	LyXRC::Alternatives::const_iterator it = 
+			editor_alternatives.find(f.name());
+	if (it != editor_alternatives.end()) {
+		LyXRC::CommandSet const & cmds = it->second;
+		LyXRC::CommandSet::const_iterator sit = 
+				cmds.begin();
+		LyXRC::CommandSet::const_iterator const sen = 
+				cmds.end();
+		for (; sit != sen; ++sit) {
+			QString const qcmd = toqstr(*sit);
+			editorCO->addItem(qcmd, qcmd);
+		}
 	}
 	editorCO->addItem(qt_("Custom"), QString("custom editor"));
 

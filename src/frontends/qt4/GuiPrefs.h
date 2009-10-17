@@ -382,9 +382,9 @@ private:
 	///
 	void updateEditors();
 	///
-	std::vector<std::pair<std::string, std::string> > viewer_alternatives;
+	LyXRC::Alternatives viewer_alternatives;
 	///
-	std::vector<std::pair<std::string, std::string> > editor_alternatives;
+	LyXRC::Alternatives editor_alternatives;
 };
 
 

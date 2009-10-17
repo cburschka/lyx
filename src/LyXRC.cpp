@@ -1044,13 +1044,13 @@ int LyXRC::read(Lexer & lexrc)
 				format = lexrc.getString();
 			if (lexrc.eatLine())
 				command = lexrc.getString();
-			viewer_alternatives.push_back(make_pair(format, command));
+			viewer_alternatives[format].insert(command);
 			break;
 		}
 		case RC_EDITOR_ALTERNATIVES:  {
 			string format, command;
 			lexrc >> format >> command;
-			editor_alternatives.push_back(make_pair(format, command));
+			editor_alternatives[format].insert(command);
 			break;
 		}
 
@@ -1393,8 +1393,8 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		if (tag != RC_LAST)
 			break;
 	case RC_BIBTEX_ALTERNATIVES: {
-		set<string>::const_iterator it = bibtex_alternatives.begin();
-		set<string>::const_iterator end = bibtex_alternatives.end();
+		CommandSet::const_iterator it = bibtex_alternatives.begin();
+		CommandSet::const_iterator end = bibtex_alternatives.end();
 		for ( ; it != end; ++it) {
 			if (ignore_system_lyxrc
 			    || !system_lyxrc.bibtex_alternatives.count(*it))
@@ -1419,8 +1419,8 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		if (tag != RC_LAST)
 			break;
 	case RC_INDEX_ALTERNATIVES: {
-		set<string>::const_iterator it = index_alternatives.begin();
-		set<string>::const_iterator end = index_alternatives.end();
+		CommandSet::const_iterator it = index_alternatives.begin();
+		CommandSet::const_iterator end = index_alternatives.end();
 		for ( ; it != end; ++it) {
 			if (ignore_system_lyxrc
 			    || !system_lyxrc.index_alternatives.count(*it))
@@ -2492,31 +2492,51 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		if (tag != RC_LAST)
 			break;
 	case RC_VIEWER_ALTERNATIVES: {
-		vector<pair<string, string> >::const_iterator it = viewer_alternatives.begin();
-		vector<pair<string, string> >::const_iterator const en = viewer_alternatives.end();
-		vector<pair<string, string> >::const_iterator const sysbeg = 
-				system_lyxrc.viewer_alternatives.begin();
-		vector<pair<string, string> >::const_iterator const sysend = 
+		Alternatives::const_iterator it = viewer_alternatives.begin();
+		Alternatives::const_iterator const en = viewer_alternatives.end();
+		Alternatives::const_iterator const sysend = 
 				system_lyxrc.viewer_alternatives.end();
- 		for ( ; it != en; ++it) {
- 			if (ignore_system_lyxrc || find(sysbeg, sysend, *it) == sysend)
-				os << "\\viewer_alternatives "
-						<< it->first << " " << it->second << "\n";
+ 		for (; it != en; ++it) {
+			string const & fmt = it->first;
+			CommandSet const & cmd = it->second;
+			CommandSet::const_iterator sit = cmd.begin();
+			CommandSet::const_iterator const sen = cmd.end();
+			Alternatives::const_iterator const sysfmt = ignore_system_lyxrc ? 
+					system_lyxrc.viewer_alternatives.begin() : // we won't use it in this case
+					system_lyxrc.viewer_alternatives.find(fmt);
+			for (; sit != sen; ++sit) {
+				string const & cmd = *sit;
+				if (ignore_system_lyxrc 
+				    || sysfmt == sysend               // format not found
+					 || sysfmt->second.count(cmd) == 0 // this command not found
+				   )
+					os << "\\viewer_alternatives " << fmt << " " << cmd << "\n";
+			}
 		}
 		if (tag != RC_LAST)
 			break;
 	}
 	case RC_EDITOR_ALTERNATIVES: {
-		vector<pair<string, string> >::const_iterator it = editor_alternatives.begin();
-		vector<pair<string, string> >::const_iterator const en = editor_alternatives.end();
-		vector<pair<string, string> >::const_iterator const sysbeg = 
-				system_lyxrc.editor_alternatives.begin();
-		vector<pair<string, string> >::const_iterator const sysend = 
+		Alternatives::const_iterator it = editor_alternatives.begin();
+		Alternatives::const_iterator const en = editor_alternatives.end();
+		Alternatives::const_iterator const sysend = 
 				system_lyxrc.editor_alternatives.end();
-		for ( ; it != en; ++it) {
-			if (ignore_system_lyxrc || find(sysbeg, sysend, *it) == sysend)
-				os << "\\editor_alternatives "
-						<< it->first << " " << it->second << "\n";
+		for (; it != en; ++it) {
+			string const & fmt = it->first;
+			CommandSet const & cmd = it->second;
+			CommandSet::const_iterator sit = cmd.begin();
+			CommandSet::const_iterator const sen = cmd.end();
+			Alternatives::const_iterator const sysfmt = ignore_system_lyxrc ? 
+					system_lyxrc.editor_alternatives.begin() : // we won't use it in this case
+					system_lyxrc.editor_alternatives.find(fmt);
+			for (; sit != sen; ++sit) {
+				string const & cmd = *sit;
+				if (ignore_system_lyxrc 
+				    || sysfmt == sysend               // format not found
+				    || sysfmt->second.count(cmd) == 0 // this command not found
+				   )
+					os << "\\editor_alternatives " << fmt << " " << cmd << "\n";
+			}
 		}
 		if (tag != RC_LAST)
 			break;

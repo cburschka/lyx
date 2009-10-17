@@ -22,6 +22,7 @@
 
 #include "support/strfwd.h"
 
+#include <map>
 #include <set>
 #include <string>
 #include <vector>
@@ -197,6 +198,11 @@ private:
 	///
 	int read(Lexer &);
 public:
+	/// 
+	typedef std::set<std::string> CommandSet;
+	/// maps a format to a set of commands that can be used to 
+	/// edit or view it.
+	typedef std::map<std::string, CommandSet> Alternatives;
 	///
 	void write(support::FileName const & filename,
 		   bool ignore_system_lyxrc) const;
@@ -257,13 +263,13 @@ public:
 	/// command to run chktex incl. options
 	std::string chktex_command;
 	/// all available commands to run bibtex incl. options
-	std::set<std::string> bibtex_alternatives;
+	CommandSet bibtex_alternatives;
 	/// command to run bibtex incl. options
 	std::string bibtex_command;
 	/// command to run japanese bibtex incl. options
 	std::string jbibtex_command;
 	/// all available index commands incl. options
-	std::set<std::string> index_alternatives;
+	CommandSet index_alternatives;
 	/// command to run makeindex incl. options or other index programs
 	std::string index_command;
 	/// command to run japanese index program incl. options
@@ -388,9 +394,9 @@ public:
 	///
 	std::string default_view_format;
 	/// all available viewers
-	std::vector<std::pair<std::string, std::string> > viewer_alternatives;
+	Alternatives viewer_alternatives;
 	/// all available editors
-	std::vector<std::pair<std::string, std::string> > editor_alternatives;
+	Alternatives editor_alternatives;
 	///
 	bool mac_like_word_movement;
 	///
