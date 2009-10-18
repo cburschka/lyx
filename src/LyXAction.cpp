@@ -3311,7 +3311,7 @@ string const LyXAction::getActionName(FuncCode action) const
 }
 
 
-LyXAction::func_type const LyXAction::getActionType(FuncCode action) const
+LyXAction::func_type LyXAction::getActionType(FuncCode action) const
 {
 	info_map::const_iterator const it = lyx_info_map.find(action);
 	return it != lyx_info_map.end() ? it->second.type : Hidden;
