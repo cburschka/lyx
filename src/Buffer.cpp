@@ -3302,8 +3302,8 @@ bool Buffer::readFileHelper(FileName const & s)
 				str = _("Document was successfully recovered.");
 			else
 				str = _("Document was NOT successfully recovered.");
-			str += "\n\n" + _("Remove emergency file now?") +
-				"\n(" + from_utf8(e.absFilename())+")";
+			str += "\n\n" + bformat(_("Remove emergency file now?\n(%1$s)"),
+						from_utf8(e.absFilename()));
 
 			if (!Alert::prompt(_("Delete emergency file?"), str, 1, 1,
 					_("&Remove"), _("&Keep it"))) {
