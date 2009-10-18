@@ -816,7 +816,7 @@ def checkOtherEntries():
     checkProgAlternatives('available index processors', ['texindy', 'makeindex -c -q'],
         rc_entry = [ r'\index_command "%%"' ],
         alt_rc_entry = [ r'\index_alternatives "%%"' ])
-    checkProg('an index processor appropriate to Japanese', ['mendex -c -q', 'makeindex -c -q'],
+    checkProg('an index processor appropriate to Japanese', ['mendex -c -q', 'jmakeindex -c -q', 'makeindex -c -q'],
         rc_entry = [ r'\jindex_command "%%"' ])
     path, splitindex = checkProg('the splitindex processor', ['splitindex.pl', 'splitindex'],
         rc_entry = [ r'\splitindex_command "%%"' ])
