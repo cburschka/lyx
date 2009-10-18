@@ -5712,23 +5712,23 @@ Name:
 status collapsed
 
 \begin_layout Plain Layout
-lyxclient.exe
+lyxeditor.exe
 \end_layout
 
 \end_inset
 
- program.
+ program (which is installed by default on Cygwin along with the LyX executable).
  Select 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-lyxclient.exe
+lyxeditor.exe
 \end_layout
 
 \end_inset
 
- and then specify the program arguments as as 
+ and then specify the program arguments as 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -5748,67 +5748,17 @@ lyxsocket
 \emph on
 lyxpipe
 \emph default
-, select 
+, omit the 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
 \begin_layout Plain Layout
-bash.exe
+-g
 \end_layout
 
 \end_inset
 
- instead of 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-lyxclient.exe
-\end_layout
-
-\end_inset
-
- and specify 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
--c 'lyxeditor.sh "%f" %l'
-\end_layout
-
-\end_inset
-
- as program arguments (here, don't forget the double quotes around 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-%f
-\end_layout
-
-\end_inset
-
- as they are essential), where 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-lyxeditor.sh
-\end_layout
-
-\end_inset
-
- is the previously introduced shell script (make sure that 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-lyxeditor.sh
-\end_layout
-
-\end_inset
-
- is in the bash command PATH, otherwise use its full posix name).
+ option and be sure to specify the LyXServer pipe path in the LyX preferences.
 \end_layout
 
 \begin_layout Standard
@@ -5875,47 +5825,44 @@ cd $(dirname $1)
 \begin_inset Newline newline
 \end_inset
 
-SumatraPDF -inverse-search "lyxclient -g %f %l" $(basename $1)
+SumatraPDF -inverse-search "lyxeditor -g %f %l" $(basename $1)
 \end_layout
 
 \begin_layout Standard
-This is needed because SumatraPDF is a native Windows application and does
- not understand the posix paths used by the Cygwin version of LyX.
- If SumatraPDF is not in your command PATH, use its full posix path in the
- script above.
- Again, if you want to use the 
-\emph on
-lyxpipe
-\emph default
- instead of the 
+This wrapper script is needed because SumatraPDF is a native Windows application
+ and does not understand the posix paths used by the Cygwin version of LyX.
+ If SumatraPDF.exe is not in your command PATH, use its full posix path in
+ the script above.
+ The 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+-g
+\end_layout
+
+\end_inset
+
+ enables communication via the 
 \emph on
 lyxsocket
 \emph default
-, replace 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-"lyxclient -g %f %l"
-\end_layout
-
-\end_inset
-
- with 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-"bash -c 'lyxeditor.sh 
-\backslash
-"%f
-\backslash
-" %l'"
-\end_layout
-
-\end_inset
-
 .
+ Again, omit the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+-g
+\end_layout
+
+\end_inset
+
+ option if you want to use the 
+\emph on
+lyxpipe
+\emph default
+, and be sure to specify the LyXServer pipe path in the LyX preferences.
 \end_layout
 
 \begin_layout Standard
