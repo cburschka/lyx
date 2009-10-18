@@ -671,11 +671,18 @@ ParagraphList::const_iterator TeXOnePar(Buffer const & buf,
 		// when the paragraph uses CJK, the language has to be closed earlier
 		if (font.language()->encoding()->package() != Encoding::CJK) {
 			if (lyxrc.language_command_end.empty()) {
-				if (!prev_language->babel().empty()) {
+				// If this is a child, we should restore the
+				// master language after the last paragraph.
+				Language const * const current_language =
+					(nextpit == paragraphs.end()
+					&& runparams.master_language)
+						? runparams.master_language
+						: prev_language;
+				if (!current_language->babel().empty()) {
 					os << from_ascii(subst(
 						lyxrc.language_command_begin,
 						"$$lang",
-						prev_language->babel()));
+						current_language->babel()));
 					pending_newline = true;
 				}
 			} else if (!par_language->babel().empty()) {
