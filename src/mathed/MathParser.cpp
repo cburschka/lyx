@@ -1777,8 +1777,15 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				if (mode == InsetMath::TEXT_MODE) {
 					int num_tokens = 0;
 					docstring cmd = prevToken().asInput();
-					skipSpaces();
+					// Check whether we have a macro
+					// argument, taking into account that
+					// it may come after some spaces.
 					CatCode cat = nextToken().cat();
+					while (cat == catSpace) {
+						getToken();
+						++num_tokens;
+						cat = nextToken().cat();
+					}
 					if (cat == catBegin) {
 						int count = 0;
 						while (good() && (count || cat != catEnd)) {
@@ -1790,6 +1797,12 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 							else if (cat == catEnd)
 								--count;
 						}
+					} else {
+						// No macro argument is present,
+						// so put back the spaces that
+						// we may have read.
+						for (; num_tokens; --num_tokens)
+							putback();
 					}
 					bool is_combining;
 					char_type c =
