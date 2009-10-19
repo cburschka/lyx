@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-10-16 12:13+0200\n"
+"POT-Creation-Date: 2009-10-19 09:53+0200\n"
 "PO-Revision-Date: 2009-10-10 19:49+0730\n"
 "Last-Translator: Waluyo Adi Siswanto <was.uthm@gmail.com>\n"
 "Language-Team: \n"
@@ -85,7 +85,7 @@ msgstr "&Setuju"
 #: src/frontends/qt4/ui/CitationUi.ui:461
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:889
-#: src/Buffer.cpp:2701 src/Buffer.cpp:2746 src/Buffer.cpp:2781
+#: src/Buffer.cpp:2701 src/Buffer.cpp:2747 src/Buffer.cpp:2782
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:860 src/LyXFunc.cpp:1034
 #: src/LyXVC.cpp:196 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1266
@@ -457,8 +457,8 @@ msgstr "&Baru:"
 msgid "Remove the selected branch"
 msgstr "Hapus branch yang sudah dipilih"
 
-#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2716
-#: src/Buffer.cpp:2727
+#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2717
+#: src/Buffer.cpp:2728
 msgid "&Remove"
 msgstr "&Hapus"
 
@@ -4623,7 +4623,7 @@ msgstr "Email"
 msgid "email"
 msgstr "email"
 
-#: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:612
+#: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:612 lib/languages:4
 #: src/frontends/qt4/GuiPrefs.cpp:589
 msgid "LaTeX"
 msgstr "LaTeX"
@@ -9058,10 +9058,6 @@ msgstr ""
 #: src/Font.cpp:63 src/Font.cpp:66
 msgid "Ignore"
 msgstr "Lewati"
-
-#: lib/languages:4
-msgid "Latex"
-msgstr "Latex"
 
 #: lib/languages:6
 msgid "Afrikaans"
@@ -14892,27 +14888,34 @@ msgstr "Dokumen berhasil diselamatkan."
 msgid "Document was NOT successfully recovered."
 msgstr "Dokumen TIDAK berhasil diselamatkan."
 
-#: src/Buffer.cpp:2713 src/Buffer.cpp:2726
-msgid "Remove emergency file now?"
+#: src/Buffer.cpp:2713
+#, fuzzy, c-format
+msgid ""
+"Remove emergency file now?\n"
+"(%1$s)"
 msgstr "Akan menghapus berkas darurat?"
 
-#: src/Buffer.cpp:2715 src/Buffer.cpp:2725
+#: src/Buffer.cpp:2716 src/Buffer.cpp:2726
 msgid "Delete emergency file?"
 msgstr "Hapus berkas darurat?"
 
-#: src/Buffer.cpp:2716 src/Buffer.cpp:2727
+#: src/Buffer.cpp:2717 src/Buffer.cpp:2728
 msgid "&Keep it"
 msgstr "Abai&kan saja"
 
-#: src/Buffer.cpp:2719
+#: src/Buffer.cpp:2720
 msgid "Emergency file deleted"
 msgstr "Berkas darurat sudah dihapus"
 
-#: src/Buffer.cpp:2720
+#: src/Buffer.cpp:2721
 msgid "Do not forget to save your file now!"
 msgstr "Jangan lupa menyimpan berkas sekarang juga!"
 
-#: src/Buffer.cpp:2741
+#: src/Buffer.cpp:2727
+msgid "Remove emergency file now?"
+msgstr "Akan menghapus berkas darurat?"
+
+#: src/Buffer.cpp:2742
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -14923,28 +14926,28 @@ msgstr ""
 "\n"
 "Akan memuat backup?"
 
-#: src/Buffer.cpp:2744
+#: src/Buffer.cpp:2745
 msgid "Load backup?"
 msgstr "Memuat backup?"
 
-#: src/Buffer.cpp:2745
+#: src/Buffer.cpp:2746
 msgid "&Load backup"
 msgstr "&Muat backup"
 
-#: src/Buffer.cpp:2745
+#: src/Buffer.cpp:2746
 msgid "Load &original"
 msgstr "Muat &Aslinya"
 
-#: src/Buffer.cpp:2778
+#: src/Buffer.cpp:2779
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "Apakah anda ingin menerima dokumen %1$s dari kontrol versi?"
 
-#: src/Buffer.cpp:2780
+#: src/Buffer.cpp:2781
 msgid "Retrieve from version control?"
 msgstr "Menerima dari kontrol versi?"
 
-#: src/Buffer.cpp:2781
+#: src/Buffer.cpp:2782
 msgid "&Retrieve"
 msgstr "Mene&rima"
 
@@ -20864,6 +20867,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Pemakai tidak dikenal"
+
+#~ msgid "Latex"
+#~ msgstr "Latex"
 
 #, fuzzy
 #~ msgid "LyX binary not found"

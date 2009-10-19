@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-10-16 12:13+0200\n"
+"POT-Creation-Date: 2009-10-19 09:53+0200\n"
 "PO-Revision-Date: 2008-08-04 17:40+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -84,7 +84,7 @@ msgstr ""
 #: src/frontends/qt4/ui/CitationUi.ui:461
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:889
-#: src/Buffer.cpp:2701 src/Buffer.cpp:2746 src/Buffer.cpp:2781
+#: src/Buffer.cpp:2701 src/Buffer.cpp:2747 src/Buffer.cpp:2782
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:860 src/LyXFunc.cpp:1034
 #: src/LyXVC.cpp:196 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1266
@@ -455,8 +455,8 @@ msgstr ""
 msgid "Remove the selected branch"
 msgstr ""
 
-#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2716
-#: src/Buffer.cpp:2727
+#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2717
+#: src/Buffer.cpp:2728
 msgid "&Remove"
 msgstr ""
 
@@ -4560,7 +4560,7 @@ msgstr ""
 msgid "email"
 msgstr ""
 
-#: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:612
+#: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:612 lib/languages:4
 #: src/frontends/qt4/GuiPrefs.cpp:589
 msgid "LaTeX"
 msgstr ""
@@ -8952,10 +8952,6 @@ msgstr ""
 #: lib/languages:3 src/Font.cpp:51 src/Font.cpp:54 src/Font.cpp:58
 #: src/Font.cpp:63 src/Font.cpp:66
 msgid "Ignore"
-msgstr ""
-
-#: lib/languages:4
-msgid "Latex"
 msgstr ""
 
 #: lib/languages:6
@@ -14725,27 +14721,34 @@ msgstr ""
 msgid "Document was NOT successfully recovered."
 msgstr ""
 
-#: src/Buffer.cpp:2713 src/Buffer.cpp:2726
-msgid "Remove emergency file now?"
+#: src/Buffer.cpp:2713
+#, c-format
+msgid ""
+"Remove emergency file now?\n"
+"(%1$s)"
 msgstr ""
 
-#: src/Buffer.cpp:2715 src/Buffer.cpp:2725
+#: src/Buffer.cpp:2716 src/Buffer.cpp:2726
 msgid "Delete emergency file?"
 msgstr ""
 
-#: src/Buffer.cpp:2716 src/Buffer.cpp:2727
+#: src/Buffer.cpp:2717 src/Buffer.cpp:2728
 msgid "&Keep it"
 msgstr ""
 
-#: src/Buffer.cpp:2719
+#: src/Buffer.cpp:2720
 msgid "Emergency file deleted"
 msgstr ""
 
-#: src/Buffer.cpp:2720
+#: src/Buffer.cpp:2721
 msgid "Do not forget to save your file now!"
 msgstr ""
 
-#: src/Buffer.cpp:2741
+#: src/Buffer.cpp:2727
+msgid "Remove emergency file now?"
+msgstr ""
+
+#: src/Buffer.cpp:2742
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -14753,28 +14756,28 @@ msgid ""
 "Load the backup instead?"
 msgstr ""
 
-#: src/Buffer.cpp:2744
+#: src/Buffer.cpp:2745
 msgid "Load backup?"
 msgstr ""
 
-#: src/Buffer.cpp:2745
+#: src/Buffer.cpp:2746
 msgid "&Load backup"
 msgstr ""
 
-#: src/Buffer.cpp:2745
+#: src/Buffer.cpp:2746
 msgid "Load &original"
 msgstr ""
 
-#: src/Buffer.cpp:2778
+#: src/Buffer.cpp:2779
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr ""
 
-#: src/Buffer.cpp:2780
+#: src/Buffer.cpp:2781
 msgid "Retrieve from version control?"
 msgstr ""
 
-#: src/Buffer.cpp:2781
+#: src/Buffer.cpp:2782
 msgid "&Retrieve"
 msgstr ""
 

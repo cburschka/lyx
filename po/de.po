@@ -98,8 +98,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-10-16 12:13+0200\n"
-"PO-Revision-Date: 2009-10-16 12:15+0200\n"
+"POT-Creation-Date: 2009-10-19 09:53+0200\n"
+"PO-Revision-Date: 2009-10-19 09:54+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -179,7 +179,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/CitationUi.ui:461
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:889
-#: src/Buffer.cpp:2701 src/Buffer.cpp:2746 src/Buffer.cpp:2781
+#: src/Buffer.cpp:2701 src/Buffer.cpp:2747 src/Buffer.cpp:2782
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:860 src/LyXFunc.cpp:1034
 #: src/LyXVC.cpp:196 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1266
@@ -552,8 +552,8 @@ msgstr "&Neu:"
 msgid "Remove the selected branch"
 msgstr "Den ausgewählten Zweig entfernen"
 
-#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2716
-#: src/Buffer.cpp:2727
+#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2717
+#: src/Buffer.cpp:2728
 msgid "&Remove"
 msgstr "&Entfernen"
 
@@ -4757,7 +4757,7 @@ msgstr "E-Mail"
 msgid "email"
 msgstr "E-Mail"
 
-#: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:612
+#: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:612 lib/languages:4
 #: src/frontends/qt4/GuiPrefs.cpp:589
 msgid "LaTeX"
 msgstr "LaTeX"
@@ -9187,10 +9187,6 @@ msgstr ""
 #: src/Font.cpp:63 src/Font.cpp:66
 msgid "Ignore"
 msgstr "Ignorieren"
-
-#: lib/languages:4
-msgid "Latex"
-msgstr "Latex"
 
 #: lib/languages:6
 msgid "Afrikaans"
@@ -15032,27 +15028,36 @@ msgstr "Dokument wurde erfolgreich wiederhergestellt."
 msgid "Document was NOT successfully recovered."
 msgstr "Dokument wurde NICHT erfolgreich wiederhergestellt."
 
-#: src/Buffer.cpp:2713 src/Buffer.cpp:2726
-msgid "Remove emergency file now?"
-msgstr "Notspeicherungsdatei jetzt löschen?"
+#: src/Buffer.cpp:2713, c-format
+msgid ""
+"Remove emergency file now?\n"
+"(%1$s)"
+msgstr ""
+"Notspeicherungsdatei\n"
+"%1$s\n"
+"jetzt löschen?"
 
-#: src/Buffer.cpp:2715 src/Buffer.cpp:2725
+#: src/Buffer.cpp:2716 src/Buffer.cpp:2726
 msgid "Delete emergency file?"
 msgstr "Notspeicherung löschen?"
 
-#: src/Buffer.cpp:2716 src/Buffer.cpp:2727
+#: src/Buffer.cpp:2717 src/Buffer.cpp:2728
 msgid "&Keep it"
 msgstr "&Nicht löschen"
 
-#: src/Buffer.cpp:2719
+#: src/Buffer.cpp:2720
 msgid "Emergency file deleted"
 msgstr "Notspeicherung gelöscht"
 
-#: src/Buffer.cpp:2720
+#: src/Buffer.cpp:2721
 msgid "Do not forget to save your file now!"
 msgstr "Vergessen Sie nicht, ihre Datei jetzt zu speichern!"
 
-#: src/Buffer.cpp:2741
+#: src/Buffer.cpp:2727
+msgid "Remove emergency file now?"
+msgstr "Notspeicherungsdatei jetzt löschen?"
+
+#: src/Buffer.cpp:2742
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -15063,28 +15068,28 @@ msgstr ""
 "\n"
 "Stattdessen die Sicherung laden?"
 
-#: src/Buffer.cpp:2744
+#: src/Buffer.cpp:2745
 msgid "Load backup?"
 msgstr "Sicherung laden?"
 
-#: src/Buffer.cpp:2745
+#: src/Buffer.cpp:2746
 msgid "&Load backup"
 msgstr "&Sicherung laden"
 
-#: src/Buffer.cpp:2745
+#: src/Buffer.cpp:2746
 msgid "Load &original"
 msgstr "&Original laden"
 
-#: src/Buffer.cpp:2778
+#: src/Buffer.cpp:2779
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "Möchten Sie das Dokument %1$s aus der Versionskontrolle abrufen?"
 
-#: src/Buffer.cpp:2780
+#: src/Buffer.cpp:2781
 msgid "Retrieve from version control?"
 msgstr "Von der Versionskontrolle abrufen?"
 
-#: src/Buffer.cpp:2781
+#: src/Buffer.cpp:2782
 msgid "&Retrieve"
 msgstr "&Abrufen"
 
@@ -21070,6 +21075,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid "Latex"
+#~ msgstr "Latex"
 
 #~ msgid "LyX binary not found"
 #~ msgstr "LyX binär nicht gefunden"

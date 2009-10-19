@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-10-16 12:13+0200\n"
+"POT-Creation-Date: 2009-10-19 09:53+0200\n"
 "PO-Revision-Date: 2009-04-19 17:10+0100\n"
 "Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -86,7 +86,7 @@ msgstr "確定(&O)"
 #: src/frontends/qt4/ui/CitationUi.ui:461
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:889
-#: src/Buffer.cpp:2701 src/Buffer.cpp:2746 src/Buffer.cpp:2781
+#: src/Buffer.cpp:2701 src/Buffer.cpp:2747 src/Buffer.cpp:2782
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:860 src/LyXFunc.cpp:1034
 #: src/LyXVC.cpp:196 src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1266
@@ -461,8 +461,8 @@ msgstr "新增(&N)："
 msgid "Remove the selected branch"
 msgstr "移除已選取的分支"
 
-#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2716
-#: src/Buffer.cpp:2727
+#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2717
+#: src/Buffer.cpp:2728
 msgid "&Remove"
 msgstr "移除(&R)"
 
@@ -4746,7 +4746,7 @@ msgstr "電子郵件"
 msgid "email"
 msgstr "電子郵件："
 
-#: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:612
+#: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:612 lib/languages:4
 #: src/frontends/qt4/GuiPrefs.cpp:589
 msgid "LaTeX"
 msgstr "LaTeX"
@@ -9366,11 +9366,6 @@ msgstr ""
 #: src/Font.cpp:63 src/Font.cpp:66
 msgid "Ignore"
 msgstr "忽略"
-
-#: lib/languages:4
-#, fuzzy
-msgid "Latex"
-msgstr "日期"
 
 #: lib/languages:6
 msgid "Afrikaans"
@@ -15421,30 +15416,37 @@ msgstr ""
 msgid "Document was NOT successfully recovered."
 msgstr ""
 
-#: src/Buffer.cpp:2713 src/Buffer.cpp:2726
-#, fuzzy
-msgid "Remove emergency file now?"
+#: src/Buffer.cpp:2713
+#, fuzzy, c-format
+msgid ""
+"Remove emergency file now?\n"
+"(%1$s)"
 msgstr "載入緊急儲存？"
 
-#: src/Buffer.cpp:2715 src/Buffer.cpp:2725
+#: src/Buffer.cpp:2716 src/Buffer.cpp:2726
 #, fuzzy
 msgid "Delete emergency file?"
 msgstr "選取外部檔案"
 
-#: src/Buffer.cpp:2716 src/Buffer.cpp:2727
+#: src/Buffer.cpp:2717 src/Buffer.cpp:2728
 #, fuzzy
 msgid "&Keep it"
 msgstr "保持媒合(&K)"
 
-#: src/Buffer.cpp:2719
+#: src/Buffer.cpp:2720
 msgid "Emergency file deleted"
 msgstr ""
 
-#: src/Buffer.cpp:2720
+#: src/Buffer.cpp:2721
 msgid "Do not forget to save your file now!"
 msgstr ""
 
-#: src/Buffer.cpp:2741
+#: src/Buffer.cpp:2727
+#, fuzzy
+msgid "Remove emergency file now?"
+msgstr "載入緊急儲存？"
+
+#: src/Buffer.cpp:2742
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -15455,28 +15457,28 @@ msgstr ""
 "\n"
 "載入備份做為替代？"
 
-#: src/Buffer.cpp:2744
+#: src/Buffer.cpp:2745
 msgid "Load backup?"
 msgstr "載入備份？"
 
-#: src/Buffer.cpp:2745
+#: src/Buffer.cpp:2746
 msgid "&Load backup"
 msgstr "載入備份(&L)"
 
-#: src/Buffer.cpp:2745
+#: src/Buffer.cpp:2746
 msgid "Load &original"
 msgstr "載入原件(&O)"
 
-#: src/Buffer.cpp:2778
+#: src/Buffer.cpp:2779
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "您要從版本控制取回文件 %1$s 嗎？"
 
-#: src/Buffer.cpp:2780
+#: src/Buffer.cpp:2781
 msgid "Retrieve from version control?"
 msgstr "從版本控制取回？"
 
-#: src/Buffer.cpp:2781
+#: src/Buffer.cpp:2782
 msgid "&Retrieve"
 msgstr "取回(&R)"
 
@@ -21469,6 +21471,10 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "不明的使用者"
+
+#, fuzzy
+#~ msgid "Latex"
+#~ msgstr "日期"
 
 #~ msgid "LyX binary not found"
 #~ msgstr "找不到 LyX 執行程式"
