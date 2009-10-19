@@ -4,8 +4,12 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\bin" # always here
  File "${PRODUCT_SOURCEDIR}\bin\lyx.exe" # always here
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
- #File "${PRODUCT_SOURCEDIR}\bin\QtCore4.dll"
- #File "${PRODUCT_SOURCEDIR}\bin\QtGui4.dll"
+ File "${PRODUCT_SOURCEDIR}\bin\python.exe"
+ File "${PRODUCT_SOURCEDIR}\bin\python26.dll"
+ File "${PRODUCT_SOURCEDIR}\bin\QtCore4.dll"
+ File "${PRODUCT_SOURCEDIR}\bin\QtGui4.dll"
+ File /r "${PRODUCT_SOURCEDIR}\bin\DLLs"
+ File /r "${PRODUCT_SOURCEDIR}\bin\Lib"
  SetOutPath "$INSTDIR\Resources" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\layouts"
