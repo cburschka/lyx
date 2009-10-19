@@ -48,6 +48,16 @@ LFUNS_HEADER = """# gen_lfuns.py generated this file. For more info see http://w
 \\begin_document
 \\begin_header
 \\textclass article
+\\begin_preamble
+\\renewcommand{\\descriptionlabel}[1]{\\hspace\\labelsep\\upshape\\bfseries #1:}
+\\renewenvironment{description}{\\list{}{%
+  \\setlength{\\itemsep}{-2pt}
+  \\advance\\leftmargini6\\p@ \\itemindent-12\\p@
+  \\labelwidth\\z@ \\let\\makelabel\\descriptionlabel}%
+}{
+  \\endlist
+}
+\\end_preamble
 \\use_default_options false
 \\language english
 \\inputencoding auto
