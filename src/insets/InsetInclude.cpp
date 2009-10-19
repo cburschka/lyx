@@ -544,7 +544,7 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 		Encoding const * const oldEnc = runparams.encoding;
 		Language const * const oldLang = runparams.master_language;
 		runparams.encoding = &tmp->params().encoding();
-		runparams.master_language = masterBuffer->params().language;
+		runparams.master_language = buffer().params().language;
 		tmp->makeLaTeXFile(writefile,
 				   masterFileName(buffer()).onlyPath().absFilename(),
 				   runparams, false);
