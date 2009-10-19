@@ -47,11 +47,8 @@ LFUNS_HEADER = """# gen_lfuns.py generated this file. For more info see http://w
 \\lyxformat 345
 \\begin_document
 \\begin_header
-\\textclass amsart
+\\textclass article
 \\use_default_options false
-\\begin_modules
-theorems-ams
-\\end_modules
 \\language english
 \\inputencoding auto
 \\font_roman default
@@ -65,6 +62,7 @@ theorems-ams
 
 \\graphics default
 \\paperfontsize default
+\\spacing single
 \\use_hyperref false
 \\papersize default
 \\use_geometry true
