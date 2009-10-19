@@ -534,12 +534,16 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 // argument. Should we set it to string(), or should makeLaTeXFile
 // make use of it somehow? (JMarc 20031002)
 		// The included file might be written in a different encoding
+		// and language.
 		Encoding const * const oldEnc = runparams.encoding;
+		Language const * const oldLang = runparams.master_language;
 		runparams.encoding = &tmp->params().encoding();
+		runparams.master_language = buffer().params().language;
 		tmp->makeLaTeXFile(writefile,
 				   masterFileName(buffer()).onlyPath().absFilename(),
 				   runparams, false);
 		runparams.encoding = oldEnc;
+		runparams.master_language = oldLang;
 	} else {
 		// In this case, it's not a LyX file, so we copy the file
 		// to the temp dir, so that .aux files etc. are not created

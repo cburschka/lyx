@@ -137,6 +137,10 @@ What's new
 - Correctly distinguish warnings from errors when using teTeX with
   file:line:error style (bug 6258).
 
+- When including a child document whose language is different from
+  the master document language, restore the master language at the
+  end of the child rather than the child language.
+
 
 * USER INTERFACE
 
