@@ -49,9 +49,6 @@ map<string, vector<string> > used_packages;
 // needed to handle encodings with babel
 bool one_language = true;
 
-// to avoid that the babel options overwrite the documentclass options
-bool documentclass_language;
-
 namespace {
 
 const char * const known_languages[] = { "afrikaans", "american", "arabic",
@@ -153,7 +150,6 @@ void handle_opt(vector<string> & opts, char const * const * what, string & targe
 	for (; *what; ++what) {
 		it = find(opts.begin(), opts.end(), *what);
 		if (it != opts.end()) {
-			documentclass_language = true;
 			if (it >= position) {
 				target = *what;
 				position = it;
@@ -169,8 +165,7 @@ void delete_opt(vector<string> & opts, char const * const * what)
 		return;
 
 	// remove found options from the list
-	// do this after handle_opt to avoid potential memory leaks and to be able
-	// to find in every case the last language option
+	// do this after handle_opt to avoid potential memory leaks
 	vector<string>::iterator it;
 	for (; *what; ++what) {
 		it = find(opts.begin(), opts.end(), *what);
@@ -313,30 +308,29 @@ void handle_package(Parser &p, string const & name, string const & opts,
 			one_language = false;
 			h_inputencoding = "auto";
 		}
-		// only set the document language when there was not already one set
-		// via the documentclass options
-		// babel takes the the last language given in the documentclass options
-		// as document language. If there is no such language option, the last
-		// option of its \usepackage call is used.
-		if (documentclass_language == false) {
-			handle_opt(options, known_languages, h_language);
-			delete_opt(options, known_languages);
-			if (is_known(h_language, known_brazilian_languages))
-				h_language = "brazilian";
-			else if (is_known(h_language, known_french_languages))
-				h_language = "french";
-			else if (is_known(h_language, known_german_languages))
-				h_language = "german";
-			else if (is_known(h_language, known_ngerman_languages))
-				h_language = "ngerman";
-			else if (is_known(h_language, known_portuguese_languages))
-				h_language = "portuguese";
-			else if (is_known(h_language, known_russian_languages))
-				h_language = "russian";
-			else if (is_known(h_language, known_ukrainian_languages))
-				h_language = "ukrainian";
-			h_quotes_language = h_language;
-		}
+		// babel takes the the last language of the option of its \usepackage
+		// call as document language. If there is no such language option, the
+		// last language in the documentclass options is used.
+		handle_opt(options, known_languages, h_language);
+		delete_opt(options, known_languages);
+		if (is_known(h_language, known_brazilian_languages))
+			h_language = "brazilian";
+		else if (is_known(h_language, known_french_languages))
+			h_language = "french";
+		else if (is_known(h_language, known_german_languages))
+			h_language = "german";
+		else if (is_known(h_language, known_ngerman_languages))
+			h_language = "ngerman";
+		else if (is_known(h_language, known_portuguese_languages))
+			h_language = "portuguese";
+		else if (is_known(h_language, known_russian_languages))
+			h_language = "russian";
+		else if (is_known(h_language, known_ukrainian_languages))
+			h_language = "ukrainian";
+		h_quotes_language = h_language;
+		// there is only the quotes language "german"
+		if (h_quotes_language == "ngerman")
+			h_quotes_language = "german";
 	}
 
 	else if (name == "fontenc")
@@ -369,7 +363,7 @@ void handle_package(Parser &p, string const & name, string const & opts,
 	else if (name == "varioref")
 		; // ignore this
 
-	else if (name == "verbatim")		
+	else if (name == "verbatim")
 		; // ignore this
 
 	else if (name == "nomencl")
@@ -415,6 +409,9 @@ void handle_package(Parser &p, string const & name, string const & opts,
 		else
 			h_language = name;
 		h_quotes_language = h_language;
+		// there is only the quotes language "german"
+		if (h_quotes_language == "ngerman")
+			h_quotes_language = "german";
 	}
 
 	else if (name == "natbib") {
@@ -655,8 +652,9 @@ void parse_preamble(Parser & p, ostream & os,
 			string::size_type i = h_paperfontsize.find("pt");
 			if (i != string::npos)
 				h_paperfontsize.erase(i);
-			// to avoid that the babel options overwrite the documentclass options
-			documentclass_language = false;
+			// The documentclass options are always parsed before the options
+			// of the babel call so that a language cannot overwrite the babel
+			// options.
 			handle_opt(opts, known_languages, h_language);
 			delete_opt(opts, known_languages);
 			if (is_known(h_language, known_brazilian_languages))
