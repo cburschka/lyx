@@ -176,12 +176,12 @@ static string const changetracking_dvipost_def =
 
 static string const changetracking_xcolor_ulem_def =
 	"%% Change tracking with ulem\n"
-	"\\newcommand{\\lyxadded}[3]{{\\color{lyxadded}#3}}\n"
+	"\\newcommand{\\lyxadded}[3]{{\\color{lyxadded}{}#3}}\n"
 	"\\newcommand{\\lyxdeleted}[3]{{\\color{lyxdeleted}\\sout{#3}}}\n";
 
 static string const changetracking_xcolor_ulem_hyperref_def =
 	"%% Change tracking with ulem\n"
-	"\\newcommand{\\lyxadded}[3]{{\\texorpdfstring{\\color{lyxadded}}{}#3}}\n"
+	"\\newcommand{\\lyxadded}[3]{{\\texorpdfstring{\\color{lyxadded}{}}{}#3}}\n"
 	"\\newcommand{\\lyxdeleted}[3]{{\\texorpdfstring{\\color{lyxdeleted}\\sout{#3}}{}}}\n";
 
 static string const changetracking_none_def =
