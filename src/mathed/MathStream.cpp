@@ -93,6 +93,8 @@ WriteStream & operator<<(WriteStream & ws, docstring const & s)
 	} else if (ws.pendingSpace() && s.length() > 0) {
 		if (isAlphaASCII(s[0]))
 			ws.os() << ' ';
+		else if (s[0] == ' ' && ws.textMode())
+			ws.os() << '\\';
 		ws.pendingSpace(false);
 	}
 	ws.os() << s;
@@ -185,6 +187,8 @@ WriteStream & operator<<(WriteStream & ws, char const * s)
 	} else if (ws.pendingSpace() && strlen(s) > 0) {
 		if (isAlphaASCII(s[0]))
 			ws.os() << ' ';
+		else if (s[0] == ' ' && ws.textMode())
+			ws.os() << '\\';
 		ws.pendingSpace(false);
 	}
 	ws.os() << s;
@@ -203,6 +207,8 @@ WriteStream & operator<<(WriteStream & ws, char c)
 	} else if (ws.pendingSpace()) {
 		if (isAlphaASCII(c))
 			ws.os() << ' ';
+		else if (c == ' ' && ws.textMode())
+			ws.os() << '\\';
 		ws.pendingSpace(false);
 	}
 	ws.os() << c;
