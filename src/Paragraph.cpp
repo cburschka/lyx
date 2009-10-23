@@ -1168,6 +1168,18 @@ Paragraph::~Paragraph()
 }
 
 
+namespace {
+
+// this shall be called just before every "os << ..." action.
+void flushString(ostream & os, docstring & s)
+{
+	os << to_utf8(s);
+	s.erase();
+}
+
+}
+
+
 void Paragraph::write(ostream & os, BufferParams const & bparams,
 	depth_type & dth) const
 {
@@ -1195,10 +1207,16 @@ void Paragraph::write(ostream & os, BufferParams const & bparams,
 
 	Change running_change = Change(Change::UNCHANGED);
 
+	// this string is used as a buffer to avoid repetitive calls
+	// to to_utf8(), which turn out to be expensive (JMarc)
+	docstring write_buffer;
+
 	int column = 0;
 	for (pos_type i = 0; i <= size(); ++i) {
 
 		Change const change = lookupChange(i);
+		if (change != running_change)
+			flushString(os, write_buffer);
 		Changes::lyxMarkChange(os, bparams, column, running_change, change);
 		running_change = change;
 
@@ -1209,6 +1227,7 @@ void Paragraph::write(ostream & os, BufferParams const & bparams,
 		Font font2 = getFontSettings(bparams, i);
 		font2.setMisspelled(false);
 		if (font2 != font1) {
+			flushString(os, write_buffer);
 			font2.lyxWriteChanges(font1, os);
 			column = 0;
 			font1 = font2;
@@ -1218,6 +1237,7 @@ void Paragraph::write(ostream & os, BufferParams const & bparams,
 		switch (c) {
 		case META_INSET:
 			if (Inset const * inset = getInset(i)) {
+				flushString(os, write_buffer);
 				if (inset->directWrite()) {
 					// international char, let it write
 					// code directly so it's shorter in
@@ -1234,10 +1254,12 @@ void Paragraph::write(ostream & os, BufferParams const & bparams,
 			}
 			break;
 		case '\\':
+			flushString(os, write_buffer);
 			os << "\n\\backslash\n";
 			column = 0;
 			break;
 		case '.':
+			flushString(os, write_buffer);
 			if (i + 1 < size() && d->text_[i + 1] == ' ') {
 				os << ".\n";
 				column = 0;
@@ -1247,13 +1269,14 @@ void Paragraph::write(ostream & os, BufferParams const & bparams,
 		default:
 			if ((column > 70 && c == ' ')
 			    || column > 79) {
+				flushString(os, write_buffer);
 				os << '\n';
 				column = 0;
 			}
 			// this check is to amend a bug. LyX sometimes
 			// inserts '\0' this could cause problems.
 			if (c != '\0')
-				os << to_utf8(docstring(1, c));
+				write_buffer.push_back(c);
 			else
 				LYXERR0("NUL char in structure.");
 			++column;
@@ -1261,6 +1284,7 @@ void Paragraph::write(ostream & os, BufferParams const & bparams,
 		}
 	}
 
+	flushString(os, write_buffer);
 	os << "\n\\end_layout\n";
 }
 
