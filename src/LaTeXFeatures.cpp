@@ -182,12 +182,12 @@ static docstring const changetracking_dvipost_def = from_ascii(
 
 static docstring const changetracking_xcolor_ulem_def = from_ascii(
 	"%% Change tracking with ulem\n"
-	"\\newcommand{\\lyxadded}[3]{{\\color{lyxadded}#3}}\n"
+	"\\newcommand{\\lyxadded}[3]{{\\color{lyxadded}{}#3}}\n"
 	"\\newcommand{\\lyxdeleted}[3]{{\\color{lyxdeleted}\\sout{#3}}}\n");
 
 static docstring const changetracking_xcolor_ulem_hyperref_def = from_ascii(
 	"%% Change tracking with ulem\n"
-	"\\newcommand{\\lyxadded}[3]{{\\texorpdfstring{\\color{lyxadded}}{}#3}}\n"
+	"\\newcommand{\\lyxadded}[3]{{\\texorpdfstring{\\color{lyxadded}{}}{}#3}}\n"
 	"\\newcommand{\\lyxdeleted}[3]{{\\texorpdfstring{\\color{lyxdeleted}\\sout{#3}}{}}}\n");
 
 static docstring const changetracking_none_def = from_ascii(
