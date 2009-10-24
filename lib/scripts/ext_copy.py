@@ -56,7 +56,10 @@ def main(argv):
     if not os.path.isabs(to_dir):
       error("%s is not an absolute file name.\n%s" % to_dir, usage(progname))
 
-    return copy_all(from_dir, to_dir, exts) != True
+    if not copy_all(from_dir, to_dir, exts):
+      # some kind of failure
+      return 1
+    return 0
 
 
 def copy_all(from_dir, to_dir, exts):
@@ -80,7 +83,7 @@ def copy_all(from_dir, to_dir, exts):
         shutil.copymode(from_file, to_file)
       except:
         pass
-    return 0
+    return True
 
 
 def create_dir(new_dir):
