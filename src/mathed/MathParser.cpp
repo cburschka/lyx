@@ -70,7 +70,6 @@ following hack as starting point to write some macros:
 #include "support/debug.h"
 #include "support/convert.h"
 #include "support/docstream.h"
-#include "support/lstrings.h"
 
 #include <sstream>
 
@@ -79,8 +78,6 @@ following hack as starting point to write some macros:
 using namespace std;
 
 namespace lyx {
-
-using support::subst;
 
 namespace {
 
@@ -102,23 +99,52 @@ bool stared(docstring const & s)
 }
 
 
+docstring const repl(docstring const & oldstr, char_type const c,
+		     docstring const & macro, bool textmode = false)
+{
+	docstring newstr;
+	size_t i;
+	size_t j;
+
+	for (i = 0, j = 0; i < oldstr.size(); ++i) {
+		if (c == oldstr[i]) {
+			newstr.append(oldstr, j, i - j);
+			newstr.append(macro);
+			j = i + 1;
+			if (macro.size() > 2 && j < oldstr.size())
+				newstr += (textmode && oldstr[j] == ' ' ? '\\' : ' ');
+		}
+	}
+
+	// Any substitution?
+	if (j == 0)
+		return oldstr;
+
+	newstr.append(oldstr, j, i - j);
+	return newstr;
+}
+
+
 docstring escapeSpecialChars(docstring const & str, bool textmode)
 {
-	docstring const backslash = textmode ? from_ascii("\\textbackslash ")
-					     : from_ascii("\\backslash ");
-	docstring const caret = textmode ? from_ascii("\\textasciicircum ")
-					 : from_ascii("\\mathcircumflex ");
+	docstring const backslash = textmode ? from_ascii("\\textbackslash")
+					     : from_ascii("\\backslash");
+	docstring const caret = textmode ? from_ascii("\\textasciicircum")
+					 : from_ascii("\\mathcircumflex");
+	docstring const tilde = textmode ? from_ascii("\\textasciitilde")
+					 : from_ascii("\\sim");
 
-	return subst(subst(subst(subst(subst(subst(subst(subst(subst(str,
-			from_ascii("\\"), backslash),
-			from_ascii("^"), caret),
-			from_ascii("_"), from_ascii("\\_")),
-			from_ascii("$"), from_ascii("\\$")),
-			from_ascii("#"), from_ascii("\\#")),
-			from_ascii("&"), from_ascii("\\&")),
-			from_ascii("%"), from_ascii("\\%")),
-			from_ascii("{"), from_ascii("\\{")),
-			from_ascii("}"), from_ascii("\\}"));
+	return repl(repl(repl(repl(repl(repl(repl(repl(repl(repl(str,
+			'\\', backslash, textmode),
+			'^', caret, textmode),
+			'~', tilde, textmode),
+			'_', from_ascii("\\_")),
+			'$', from_ascii("\\$")),
+			'#', from_ascii("\\#")),
+			'&', from_ascii("\\&")),
+			'%', from_ascii("\\%")),
+			'{', from_ascii("\\{")),
+			'}', from_ascii("\\}"));
 }
 
 
