@@ -28,12 +28,12 @@ class Language;
 class Lexer;
 class TextClass;
 
-/* Fix labels are printed flushright, manual labels flushleft.
+/* Fixed labels are printed flushright, manual labels flushleft.
  * MARGIN_MANUAL and MARGIN_FIRST_DYNAMIC are *only* for LABEL_MANUAL,
  * MARGIN_DYNAMIC and MARGIN_STATIC are *not* for LABEL_MANUAL.
  * This seems a funny restriction, but I think other combinations are
  * not needed, so I will not change it yet.
- * Correction: MARGIN_FIRST_DYNAMIC also usable with LABEL_STATIC
+ * Correction: MARGIN_FIRST_DYNAMIC also usable with LABEL_STATIC.
  */
 
 
