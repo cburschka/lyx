@@ -254,6 +254,7 @@ UIFILES = \
 	ChangesUi.ui \
 	CharacterUi.ui \
 	CitationUi.ui \
+	CompareUi.ui \
 	DelimiterUi.ui \
 	DocumentUi.ui \
 	ErrorListUi.ui \
