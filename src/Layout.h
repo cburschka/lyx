@@ -282,9 +282,9 @@ private:
 	std::string latexparam_;
 	/// Internal tag to use (e.g., <title></title> for sect header)
 	std::string innertag_;
-	/// Internal tag to use e.g. to surround varlistentry label)
+	/// Internal tag to use (e.g. to surround varentrylist label)
 	std::string labeltag_;
-	/// Internal tag to surround the item text in a list)
+	/// Internal tag to surround the item text in a list.
 	std::string itemtag_;
 	/// Tag for HTML output, e.g., h2.
 	std::string htmltag_;
