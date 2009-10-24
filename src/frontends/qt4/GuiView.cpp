@@ -1733,7 +1733,7 @@ void GuiView::newDocument(string const & filename, bool from_template)
 	
 	Buffer * b;
 	if (filename.empty())
-		b = newUnnamedFile(templatefile, initpath);
+		b = newUnnamedFile(initpath, to_utf8(_("newfile")), templatefile);
 	else
 		b = newFile(filename, templatefile, true);
 

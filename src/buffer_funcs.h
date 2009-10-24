@@ -36,11 +36,11 @@ Buffer * checkAndLoadLyXFile(support::FileName const & filename,
 Buffer * newFile(std::string const & filename, std::string const & templatename,
 		 bool isNamed = false);
 
-/** Make a new unnamed file (buffer) based on a template
- *  named \c templatename
+/** Make a new unnamed file (buffer) with prefix \c prefix
+ *  based on a template named \c templatename
  */
-Buffer * newUnnamedFile(std::string const & templatename,
-	support::FileName const & path);
+Buffer * newUnnamedFile(support::FileName const & path,
+	std::string const & prefix, std::string const & templatename = "");
 
 /// Count the number of words in the text between these two iterators
 int countWords(DocIterator const & from, DocIterator const & to);

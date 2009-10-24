@@ -152,20 +152,22 @@ Buffer * newFile(string const & filename, string const & templatename,
 }
 
 
-Buffer * newUnnamedFile(string const & templatename, FileName const & path)
+Buffer * newUnnamedFile(FileName const & path, string const & prefix,
+						string const & templatename)
 {
-	static int newfile_number;
+	static map<string, int> file_number;
 
-	FileName filename(path, 
-		"newfile" + convert<string>(++newfile_number) + ".lyx");
-	while (theBufferList().exists(filename)
-		|| filename.isReadableFile()) {
-		++newfile_number;
-		filename.set(path,
-			"newfile" +	convert<string>(newfile_number) + ".lyx");
+	FileName filename;
+
+	do {
+		filename.set(path, 
+			prefix + convert<string>(++file_number[prefix]) + ".lyx");
 	}
-	return newFile(filename.absFilename(), templatename, false);
+	while (theBufferList().exists(filename) || filename.isReadableFile());
+		
+	return newFile(filename.absFilename(), "", false);
 }
+
 
 /* 
  * FIXME : merge with countChars. The structures of the two functions
