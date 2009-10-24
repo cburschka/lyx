@@ -235,6 +235,9 @@ What's new
 - Fix the painting of the last character of a paragraph, e.g. 
   added/deleted paragraph breaks in change tracking.
 
+- Do not swallow spaces after a LaTeX macro appearing in text mode
+  inside mathed (bug 6284).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
