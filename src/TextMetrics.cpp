@@ -2103,11 +2103,16 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 		rp.paintAppendix();
 		rp.paintDepthBar();
 		rp.paintChangeBar();
-		if (i == 0)
+		bool const is_rtl = text_->isRTL(bv_->buffer(), text_->getPar(pit));
+		if (i == 0 && !is_rtl)
 			rp.paintFirst();
-		rp.paintText();
-		if (i == nrows - 1)
+		if (i == nrows - 1 && is_rtl)
 			rp.paintLast();
+		rp.paintText();
+		if (i == nrows - 1 && !is_rtl)
+			rp.paintLast();
+		if (i == 0 && is_rtl)
+			rp.paintFirst();
 		y += row.descent();
 		// Restore full_repaint status.
 		pi.full_repaint = tmp;
