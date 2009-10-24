@@ -40,7 +40,7 @@ namespace frontend {
 
 GuiCompare::GuiCompare(GuiView & lv)
 	: GuiDialog(lv, "compare", qt_("Compare LyX files")),
-	compare_(0), dest_buffer_(0)
+	dest_buffer_(0)
 {
 	setupUi(this);
 	setModal(Qt::WindowModal);

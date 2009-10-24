@@ -16,8 +16,6 @@
 #include "ui_CompareUi.h"
 #include "qt_helpers.h"
 
-#include "Compare.h"
-
 namespace lyx {
 namespace frontend {
 
@@ -81,9 +79,6 @@ private:
 	int run();
 
 private:
-	/// the object that will do the comparison
-	Compare * compare_;
-
 	/// the buffer that will contain the result
 	Buffer * dest_buffer_;
 	/// the buffer that will contain the result
