@@ -9,9 +9,9 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-10-19 09:53+0200\n"
-"PO-Revision-Date: 2009-10-19 10:05+0200\n"
+"PO-Revision-Date: 2009-10-24 08:52+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
-"Language-Team: Slowakisch <lyx-docs@lists.lyx.org>\n"
+"Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -243,7 +243,7 @@ msgstr "Presuň označenú databázu v listine dole"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:228 src/frontends/qt4/ui/ModulesUi.ui:129
 msgid "Do&wn"
-msgstr "&Dole"
+msgstr "Na&dol"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:235
 msgid "Move the selected database upwards in the list"
@@ -252,7 +252,7 @@ msgstr "Presuň označenú databázu v listine hore"
 #: src/frontends/qt4/ui/BibtexUi.ui:238 src/frontends/qt4/ui/CitationUi.ui:597
 #: src/frontends/qt4/ui/ModulesUi.ui:122
 msgid "&Up"
-msgstr "&Nahor"
+msgstr "Na&hor"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:253
 msgid "BibTeX database to use"
@@ -822,11 +822,11 @@ msgstr "Presunúť označenú citáciu nahor (skús Ctrl-Up)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:618
 msgid "Move the selected citation down (try Ctrl-Down)"
-msgstr "Presunúť označenú citáciu dole (skús Ctrl-Down)"
+msgstr "Presunúť označenú citáciu nadol (skús Ctrl-Down)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:621
 msgid "&Down"
-msgstr "&Dole"
+msgstr "Na&dol"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:143
 #: src/frontends/qt4/GuiDelimiter.cpp:275
@@ -3851,7 +3851,7 @@ msgstr "Zväčšiť hĺbku zanorenia označeného člena"
 
 #: src/frontends/qt4/ui/TocUi.ui:218
 msgid "Move selected item down by one"
-msgstr "Presuň označenú položku dole"
+msgstr "Presuň označenú položku nadol"
 
 #: src/frontends/qt4/ui/TocUi.ui:238
 msgid "Move selected item up by one"
@@ -10673,11 +10673,11 @@ msgstr "Horizontálne zarovnanie (šípka doprava)"
 
 #: lib/ui/stdcontext.inc:205
 msgid "Horizontal Fill (Up Brace)|p"
-msgstr "Horizontálne zarovnanie(svorka hore)"
+msgstr "Horizontálne zarovnanie(svorka nahor)"
 
 #: lib/ui/stdcontext.inc:206
 msgid "Horizontal Fill (Down Brace)|B"
-msgstr "Horizontálne zarovnanie(svorka dole)"
+msgstr "Horizontálne zarovnanie(svorka nadol)"
 
 #: lib/ui/stdcontext.inc:207 lib/ui/stdcontext.inc:225
 msgid "Custom Length|C"
@@ -10807,7 +10807,7 @@ msgstr "Presunúť odstavec nahor|h"
 
 #: lib/ui/stdcontext.inc:289 lib/ui/stdmenus.inc:109
 msgid "Move Paragraph Down|v"
-msgstr "Presunúť odstavec dolu|d"
+msgstr "Presunúť odstavec nadol|d"
 
 #: lib/ui/stdcontext.inc:291
 msgid "Promote Section|r"
@@ -10819,7 +10819,7 @@ msgstr "Znížiť úroveň sekcie"
 
 #: lib/ui/stdcontext.inc:293
 msgid "Move Section Down|D"
-msgstr "Presunúť sekciu dole|D"
+msgstr "Presunúť sekciu nadol|D"
 
 #: lib/ui/stdcontext.inc:294
 msgid "Move Section Up|U"
@@ -14877,7 +14877,8 @@ msgstr "Dokument nebol úspešne obnovený."
 msgid ""
 "Remove emergency file now?\n"
 "(%1$s)"
-msgstr "Zmazať núdzovú kópiu teraz?\n"
+msgstr ""
+"Zmazať núdzovú kópiu teraz?\n"
 "(%1$s)"
 
 #: src/Buffer.cpp:2716 src/Buffer.cpp:2726
@@ -20361,11 +20362,11 @@ msgstr "Horizontálne zarovnanie (šípka doprava)"
 
 #: src/insets/InsetSpace.cpp:127
 msgid "Horizontal Fill (Up Brace)"
-msgstr "Horizontálne zarovnanie(svorka hore)"
+msgstr "Horizontálne zarovnanie(svorka nahor)"
 
 #: src/insets/InsetSpace.cpp:130
 msgid "Horizontal Fill (Down Brace)"
-msgstr "Horizontálne zarovnanie(svorka dole)"
+msgstr "Horizontálne zarovnanie(svorka nadol)"
 
 #: src/insets/InsetSpace.cpp:133
 #, c-format
