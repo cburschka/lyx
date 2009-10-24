@@ -1,0 +1,103 @@
+// -*- C++ -*-
+/**
+ * \file GuiCompare.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Vincent van Ravesteijn
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
+#ifndef GUICOMPARE_H
+#define GUICOMPARE_H
+
+#include "GuiDialog.h"
+#include "ui_CompareUi.h"
+#include "qt_helpers.h"
+
+#include "Compare.h"
+
+namespace lyx {
+namespace frontend {
+
+
+class GuiCompare : public GuiDialog, public Ui::CompareUi
+{
+	Q_OBJECT
+
+public:
+	///
+	GuiCompare(GuiView & lv);
+	~GuiCompare();
+
+	void closeEvent(QCloseEvent *);
+		
+private Q_SLOTS:
+	///
+	void slotOK();
+	///
+	void slotCancel();
+	///
+	void change_adaptor();
+	///
+	void select_newfile();
+	///
+	void select_oldfile();
+
+	///
+	void finished(bool aborted);
+	///
+	void nextIt(int);
+	///
+	void progress_max(int) const;
+
+private:
+	///
+	void updateContents();
+	///
+	bool isValid();
+	///
+	bool initialiseParams(std::string const &) { return true; }
+	///
+	bool isBufferDependent() const { return false; }
+	///
+	void clearParams() {}
+	///
+	void dispatchParams() {}
+	///
+	void apply() {}
+
+
+	/// enable or disable all controls and rename the Close/Cancel button
+	void enableControls(bool enable) const;
+	
+	/// browse for a file
+	QString browse(QString const & in_name) const;
+	/// retrieve the buffer from the specified filename
+	Buffer const * bufferFromFileName(std::string const & file) const;
+
+	/// create the compare object and run the comparison
+	int run();
+
+private:
+	/// the object that will do the comparison
+	Compare * compare_;
+
+	/// the buffer that will contain the result
+	Buffer * dest_buffer_;
+	/// the buffer that will contain the result
+	Buffer const * old_buffer_;
+	/// the buffer that will contain the result
+	Buffer const * new_buffer_;
+
+	/// the window title
+	mutable QString window_title_;
+};
+
+
+
+} // namespace frontend
+} // namespace lyx
+
+#endif // GUICOMPARE_H

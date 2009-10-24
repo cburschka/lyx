@@ -11,6 +11,7 @@ uic BulletsUi.ui -o BulletsUi.h
 uic ChangesUi.ui -o ChangesUi.h
 uic CharacterUi.ui -o CharacterUi.h
 uic CitationUi.ui -o CitationUi.h
+uic CompareUi.ui -o CompareUi.h
 uic DelimiterUi.ui -o DelimiterUi.h
 uic DocumentUi.ui -o DocumentUi.h
 uic ErrorListUi.ui -o ErrorListUi.h

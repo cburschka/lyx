@@ -716,6 +716,7 @@ src_frontends_qt4_header_files = Split('''
     GuiClipboard.h
     GuiCommandBuffer.h
     GuiCommandEdit.h
+    GuiCompare.h
     GuiCompleter.h
     GuiDelimiter.h
     GuiDialog.h
@@ -813,6 +814,7 @@ src_frontends_qt4_files = Split('''
     GuiClipboard.cpp
     GuiCommandBuffer.cpp
     GuiCommandEdit.cpp
+    GuiCompare.cpp
     GuiCompleter.cpp
     GuiDelimiter.cpp
     GuiDialog.cpp

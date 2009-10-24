@@ -1301,7 +1301,8 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 			enable = name == "aboutlyx"
 				|| name == "file" //FIXME: should be removed.
 				|| name == "prefs"
-				|| name == "texinfo";
+				|| name == "texinfo"
+				|| name == "compare";
 		else if (name == "print")
 			enable = doc_buffer->isExportable("dvi")
 				&& lyxrc.print_command != "none";
@@ -2920,9 +2921,9 @@ namespace {
 
 char const * const dialognames[] = {
 "aboutlyx", "bibitem", "bibtex", "box", "branch", "changes", "character",
-"citation", "document", "errorlist", "ert", "external", "file", "findreplace",
-"findreplaceadv", "float", "graphics", "href", "include", "index",
-"index_print", "info", "listings", "label", "log", "mathdelimiter",
+"citation", "compare", "document", "errorlist", "ert", "external", "file",
+"findreplace", "findreplaceadv", "float", "graphics", "href", "include",
+"index", "index_print", "info", "listings", "label", "log", "mathdelimiter",
 "mathmatrix", "mathspace", "nomenclature", "nomencl_print", "note",
 "paragraph", "phantom", "prefs", "print", "ref", "sendto", "space",
 "spellchecker", "symbols", "tabular", "tabularcreate", "thesaurus", "texinfo",
@@ -3083,6 +3084,7 @@ Dialog * createGuiBranch(GuiView & lv);
 Dialog * createGuiChanges(GuiView & lv);
 Dialog * createGuiCharacter(GuiView & lv);
 Dialog * createGuiCitation(GuiView & lv);
+Dialog * createGuiCompare(GuiView & lv);
 Dialog * createGuiDelimiter(GuiView & lv);
 Dialog * createGuiDocument(GuiView & lv);
 Dialog * createGuiErrorList(GuiView & lv);
@@ -3145,6 +3147,8 @@ Dialog * GuiView::build(string const & name)
 		return createGuiCharacter(*this);
 	if (name == "citation")
 		return createGuiCitation(*this);
+	if (name == "compare")
+		return createGuiCompare(*this);
 	if (name == "document")
 		return createGuiDocument(*this);
 	if (name == "errorlist")
