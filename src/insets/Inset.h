@@ -309,7 +309,7 @@ public:
 	virtual bool hasSettings() const;
 	/// can we go further down on mouse click?
 	// true for InsetCaption, InsetCollapsables (not ButtonOnly), InsetTabular
-	virtual bool descendable() const { return false; }
+	virtual bool descendable(BufferView const &) const { return false; }
 	/// is this an inset that can be moved into?
 	/// FIXME: merge with editable()
 	// true for InsetTabular & InsetText

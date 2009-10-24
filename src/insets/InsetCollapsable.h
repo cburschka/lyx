@@ -67,7 +67,7 @@ public:
 	///
 	bool hasSettings() const { return true; }
 	/// can we go further down on mouse click?
-	bool descendable() const;
+	bool descendable(BufferView const & bv) const;
 	///
 	void setLabel(docstring const & l);
 	///

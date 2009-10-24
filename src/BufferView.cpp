@@ -1950,7 +1950,7 @@ Inset const * BufferView::getCoveringInset(Text const & text,
 	if (!inset)
 		return 0;
 
-	if (!inset->descendable())
+	if (!inset->descendable(*this))
 		// No need to go further down if the inset is not
 		// descendable.
 		return inset;
