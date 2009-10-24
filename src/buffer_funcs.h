@@ -42,6 +42,10 @@ Buffer * newFile(std::string const & filename, std::string const & templatename,
 Buffer * newUnnamedFile(support::FileName const & path,
 	std::string const & prefix, std::string const & templatename = "");
 
+/// Load the file with name \c fname, and returns the buffer. If the
+/// file was already loaded it just returns the associated buffer.
+Buffer * loadIfNeeded(support::FileName const & fname);
+
 /// Count the number of words in the text between these two iterators
 int countWords(DocIterator const & from, DocIterator const & to);
 

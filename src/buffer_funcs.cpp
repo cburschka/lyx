@@ -249,4 +249,27 @@ int countChars(DocIterator const & from, DocIterator const & to,
 	return chars + blanks;
 }
 
+
+Buffer * loadIfNeeded(FileName const & fname)
+{
+	Buffer * buffer = theBufferList().getBuffer(fname);
+	if (!buffer) {
+		if (!fname.exists())
+			return 0;
+
+		buffer = theBufferList().newBuffer(fname.absFilename());
+		if (!buffer)
+			// Buffer creation is not possible.
+			return 0;
+
+		if (!buffer->loadLyXFile(fname)) {
+			//close the buffer we just opened
+			theBufferList().release(buffer);
+			return 0;
+		}
+	}
+	return buffer;
+}
+
+
 } // namespace lyx
