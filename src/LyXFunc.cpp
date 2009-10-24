@@ -2033,6 +2033,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_MARK_FOREIGN_LANGUAGE:
 	case LyXRC::RC_MOUSE_WHEEL_SPEED:
 	case LyXRC::RC_NUMLASTFILES:
+	case LyXRC::RC_PARAGRAPH_MARKERS:
 	case LyXRC::RC_PATH_PREFIX:
 		if (lyxrc_orig.path_prefix != lyxrc_new.path_prefix) {
 			prependEnvPath("PATH", lyxrc.path_prefix);

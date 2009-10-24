@@ -800,11 +800,24 @@ pit_type TextMetrics::rowBreakPoint(int width, pit_type const pit,
 	// pixel width since last breakpoint
 	int chunkwidth = 0;
 
+	docstring const s(1, char_type(0x00B6));
+	Font f;
+	int par_marker_width = theFontMetrics(f).width(s);
+
 	FontIterator fi = FontIterator(*this, par, pit, pos);
 	pos_type point = end;
 	pos_type i = pos;
+
+	ParagraphList const & pars_ = text_->paragraphs();
+	bool const draw_par_end_marker = lyxrc.paragraph_markers
+		&& size_type(pit + 1) < pars_.size();
+				
 	for ( ; i < end; ++i, ++fi) {
 		int thiswidth = pm.singleWidth(i, *fi);
+		
+		if (draw_par_end_marker && i == end - 1)
+			// enlarge the last character to hold the end-of-par marker
+			thiswidth += par_marker_width;
 
 		// add inline completion width
 		if (inlineCompletionLPos == i) {
@@ -932,6 +945,18 @@ int TextMetrics::rowWidth(int right_margin, pit_type const pit,
 				if (completion.length() > 0)
 					w += theFontMetrics(*fi).width(completion);
 			}
+		}
+	}
+
+	// count the paragraph end marker.
+	if (end == par.size() && lyxrc.paragraph_markers) {
+		ParagraphList const & pars_ = text_->paragraphs();
+		if (size_type(pit + 1) < pars_.size()) {
+			// enlarge the last character to hold the
+			// end-of-par marker
+			docstring const s(1, char_type(0x00B6));
+			Font f;
+			w += theFontMetrics(f).width(s);
 		}
 	}
 
@@ -1631,6 +1656,15 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 	// it's in the last row of a paragraph; see skipped_sep_vpos declaration
 	if (end > 0 && end < par.size() && par.isSeparator(end - 1))
 		skipped_sep_vpos = bidi.log2vis(end - 1);
+
+	if (lyxrc.paragraph_markers && text_->isRTL(buffer, par)) {
+		ParagraphList const & pars_ = text_->paragraphs();
+		if (size_type(pit + 1) < pars_.size()) {
+			FontInfo f;
+			docstring const s = docstring(1, char_type(0x00B6));
+			x += theFontMetrics(f).width(s);
+		}
+	}
 
 	// Inline completion RTL special case row_pos == cursor_pos:
 	// "__|b" => cursor_pos is right of __

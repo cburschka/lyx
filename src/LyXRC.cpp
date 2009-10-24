@@ -121,6 +121,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\nomencl_command", LyXRC::RC_NOMENCL_COMMAND },
 	{ "\\num_lastfiles", LyXRC::RC_NUMLASTFILES },
 	{ "\\open_buffers_in_tabs", LyXRC::RC_OPEN_BUFFERS_IN_TABS },
+	{ "\\paragraph_markers", LyXRC::RC_PARAGRAPH_MARKERS },
 	{ "\\path_prefix", LyXRC::RC_PATH_PREFIX },
 	{ "\\personal_dictionary", LyXRC::RC_PERS_DICT },
 	{ "\\plaintext_linelen", LyXRC::RC_PLAINTEXT_LINELEN },
@@ -291,6 +292,7 @@ void LyXRC::setDefaults()
 	tex_allows_spaces = false;
 	date_insert_format = "%x";
 	cursor_follows_scrollbar = false;
+	paragraph_markers = false;
 	mac_like_word_movement = false;
 	macro_edit_style = MACRO_EDIT_INLINE_BOX;
 	dialogs_iconify_with_main = false;
@@ -820,6 +822,10 @@ int LyXRC::read(Lexer & lexrc)
 
 		case RC_CURSOR_FOLLOWS_SCROLLBAR:
 			lexrc >> cursor_follows_scrollbar;
+			break;
+
+		case RC_PARAGRAPH_MARKERS:
+			lexrc >> paragraph_markers;
 			break;
 
 		case RC_MAC_LIKE_WORD_MOVEMENT:
@@ -1535,6 +1541,15 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		    != system_lyxrc.cursor_follows_scrollbar) {
 			os << "\\cursor_follows_scrollbar "
 			   << convert<string>(cursor_follows_scrollbar) << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+	case RC_PARAGRAPH_MARKERS:
+		if (ignore_system_lyxrc ||
+			paragraph_markers
+		    != system_lyxrc.paragraph_markers) {
+			os << "\\paragraph_markers "
+			   << convert<string>(paragraph_markers) << '\n';
 		}
 		if (tag != RC_LAST)
 			break;

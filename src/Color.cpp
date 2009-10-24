@@ -215,6 +215,7 @@ ColorSet::ColorSet()
 	{ Color_buttonframe, N_("frame of button"), "buttonframe", "#dcd2c8", "buttonframe" },
 	{ Color_buttonbg, N_("button background"), "buttonbg", "#dcd2c8", "buttonbg" },
 	{ Color_buttonhoverbg, N_("button background under focus"), "buttonhoverbg", "#C7C7CA", "buttonhoverbg" },
+	{ Color_paragraphmarker, N_("paragraph marker"), "paragraphmarker", grey80, "paragraphmarker"},
 	{ Color_inherit, N_("inherit"), "inherit", "black", "inherit" },
 	{ Color_ignore, N_("ignore"), "ignore", "black", "ignore" },
 	{ Color_ignore, 0, 0, 0, 0 }

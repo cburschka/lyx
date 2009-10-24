@@ -107,6 +107,7 @@ public:
 		RC_MOUSE_WHEEL_SPEED,
 		RC_NOMENCL_COMMAND,
 		RC_NUMLASTFILES,
+		RC_PARAGRAPH_MARKERS,
 		RC_PATH_PREFIX,
 		RC_PERS_DICT,
 		RC_PREVIEW,
@@ -325,6 +326,8 @@ public:
 	bool isp_use_alt_lang;
 	/// Use personal dictionary?
 	bool isp_use_pers_dict;
+	/// End of paragraph markers?
+	bool paragraph_markers;
 	/// Use tooltips?
 	bool use_tooltip;
 	/// Use pixmap cache?
