@@ -246,3 +246,6 @@ What's new
 
 - Clarify that we require automake 1.8 (this was already the case, but
   nobody noticed).
+
+- The script ext_copy.py can now also copy files in subdirectories.
+  (useful for external converters)

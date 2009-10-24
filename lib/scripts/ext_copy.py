@@ -5,7 +5,7 @@
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 
-# author Richard Heck
+# author Richard Heck, Alex Fernandez, Uwe Stöhr
 
 # Full author contact details are available in file CREDITS
 
@@ -23,15 +23,11 @@
 # The -t argument determines the extension added, the default being "LyXconv".
 # If just . is given, no extension is added.
 
-# KNOWN BUG: This script is not aware of generated subdirectories.
-
-import os, sys, getopt
+import getopt, os, shutil, sys
 from lyxpreview_tools import error
-
 
 def usage(prog_name):
     return "Usage: %s [-e extensions] [-t target extension] <from file> <to file>" % prog_name
-
 
 def main(argv):
     progname = argv[0]
@@ -60,27 +56,26 @@ def main(argv):
     if not os.path.isabs(to_dir):
       error("%s is not an absolute file name.\n%s" % to_dir, usage(progname))
 
-    # try to create the output directory if it doesn't exist
-    if not os.path.isdir(to_dir):
-      try:
-        os.makedirs(to_dir)
-      except:
-        error("Unable to create %s" % to_dir)
+    if not copy_all(from_dir, to_dir, exts):
+      # some kind of failure
+      return 1
+    return 0
 
-    import shutil
 
-    # copy all matching files in from_dir to to_dir
+def copy_all(from_dir, to_dir, exts):
+    "Copy all matching files in from_dir to to_dir"
     for file in os.listdir(from_dir):
-      if os.path.isdir(file):
+      if os.path.isdir(os.path.join(from_dir, file)):
+        copy_all(os.path.join(from_dir, file), os.path.join(to_dir, file), exts)
         continue
       junk, ext = os.path.splitext(os.path.basename(file))
       ext = ext.lower()[1:] #strip the leading dot
-      try:
-        # if exts is empty we ignore it
-        # otherwise check if the extension is in the list
-        not exts or exts.index(ext)
-      except:
-        continue #not found
+      # only create a directory and copy files when either
+      # exts is empty or when ext is in the exts list
+      if (exts) and (ext not in exts):
+        continue
+      if not create_dir(to_dir):
+        return False
       from_file = os.path.join(from_dir, file)
       to_file  = os.path.join(to_dir, file)
       shutil.copyfile(from_file, to_file)
@@ -88,7 +83,18 @@ def main(argv):
         shutil.copymode(from_file, to_file)
       except:
         pass
-    return 0
+    return True
+
+
+def create_dir(new_dir):
+    "Try to create the output directory if it doesn't exist"
+    if not os.path.isdir(new_dir):
+      try:
+        os.makedirs(new_dir)
+      except:
+        error("Unable to create %s" % new_dir)
+        return False
+    return True
 
 if __name__ == "__main__":
     main(sys.argv)
