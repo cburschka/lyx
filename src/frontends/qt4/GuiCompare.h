@@ -37,18 +37,18 @@ private Q_SLOTS:
 	///
 	void slotCancel();
 	///
-	void change_adaptor();
+	void changeAdaptor();
 	///
-	void select_newfile();
+	void selectNewFile();
 	///
-	void select_oldfile();
+	void selectOldFile();
 
 	///
 	void finished(bool aborted);
 	///
 	void nextIt(int);
 	///
-	void progress_max(int) const;
+	void progressMax(int) const;
 
 private:
 	///

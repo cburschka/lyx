@@ -48,17 +48,17 @@ GuiCompare::GuiCompare(GuiView & lv)
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotCancel()));
 
-	connect(newFilePB, SIGNAL(clicked()), this, SLOT(select_newfile()));
-	connect(oldFilePB, SIGNAL(clicked()), this, SLOT(select_oldfile()));
+	connect(newFilePB, SIGNAL(clicked()), this, SLOT(selectNewFile()));
+	connect(oldFilePB, SIGNAL(clicked()), this, SLOT(selectOldFile()));
 
 	connect(newFileCB, SIGNAL(currentIndexChanged(int)),
-		this, SLOT(change_adaptor()));
+		this, SLOT(changeAdaptor()));
 	connect(newFileCB, SIGNAL(editTextChanged(const QString &)),
-		this, SLOT(change_adaptor()));
+		this, SLOT(changeAdaptor()));
 	connect(oldFileCB, SIGNAL(currentIndexChanged(int)),
-		this, SLOT(change_adaptor()));
+		this, SLOT(changeAdaptor()));
 	connect(oldFileCB, SIGNAL(editTextChanged(const QString &)),
-		this, SLOT(change_adaptor()));
+		this, SLOT(changeAdaptor()));
 
 	newSettingsRB->setChecked(true);
 
@@ -79,7 +79,7 @@ void GuiCompare::closeEvent(QCloseEvent *)
 }
 
 
-void GuiCompare::change_adaptor()
+void GuiCompare::changeAdaptor()
 {
 	changed();
 }
@@ -124,7 +124,7 @@ void GuiCompare::updateContents()
 }
 
 
-void GuiCompare::select_newfile()
+void GuiCompare::selectNewFile()
 {
 	QString name = browse(newFileCB->currentText());
 	if (!name.isEmpty())
@@ -133,7 +133,7 @@ void GuiCompare::select_newfile()
 }
 
 
-void GuiCompare::select_oldfile()
+void GuiCompare::selectOldFile()
 {
 	QString name = browse(oldFileCB->currentText());
 	if (!name.isEmpty())
@@ -205,7 +205,7 @@ void GuiCompare::nextIt(int val)
 }
 
 
-void GuiCompare::progress_max(int max) const
+void GuiCompare::progressMax(int max) const
 {
 	progressBar->setMaximum(max);
 }
