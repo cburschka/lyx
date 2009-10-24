@@ -226,6 +226,9 @@ What's new
 - Fix inset-[begin|end][-select] when the cursor is at the beginning or
   end of a paragraph.
 
+- If a static EndLabelString is defined in a layout file it is now 
+  correctly displayed on screen (bug 2972).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
