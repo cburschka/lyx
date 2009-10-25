@@ -318,7 +318,7 @@ public:
 	bool isReadonly() const;
 
 	/// Set buffer read-only flag
-	void setReadonly(bool flag = true) const;
+	void setReadonly(bool flag = true);
 
 	/// returns \c true if the buffer contains a LaTeX document
 	bool isLatex() const;

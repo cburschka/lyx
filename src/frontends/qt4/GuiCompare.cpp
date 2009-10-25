@@ -198,11 +198,7 @@ void GuiCompare::error()
 void GuiCompare::finished(bool aborted)
 {
 	enableControls(true);
-	if (old_buffer_)
-		old_buffer_->setReadonly(false);
-	if (new_buffer_)
-		new_buffer_->setReadonly(false);
-	
+
 	if (compare_) {
 		delete compare_;
 		compare_ = 0;
@@ -292,11 +288,6 @@ int GuiCompare::run()
 
 	dest_buffer_->changed();
 	dest_buffer_->markDirty();
-
-	// the comparison is done in a separate thread, so don't let
-	// the user change the buffers
-	old_buffer_->setReadonly(true);
-	new_buffer_->setReadonly(true);
 
 	// get the options from the dialog
 	CompareOptions options;

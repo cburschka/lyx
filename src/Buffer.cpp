@@ -2261,7 +2261,7 @@ string Buffer::filePath() const
 }
 
 
-bool Buffer::isReadonly() const
+bool Buffer::isReadonly()
 {
 	return d->read_only;
 }
