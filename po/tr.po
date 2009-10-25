@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-10-19 09:53+0200\n"
+"POT-Creation-Date: 2009-10-25 09:50+0100\n"
 "PO-Revision-Date: 2009-10-18 16:49+0100\n"
 "Last-Translator: H. İbrahim Güngör <h.ibrahim.gungor@gmail.com>\n"
 "Language-Team: Turkish <kde-i18n-doc@kde.org>\n"
@@ -502,7 +502,7 @@ msgstr "&Boyut:"
 #: src/frontends/qt4/GuiDocument.cpp:1221
 #: src/frontends/qt4/GuiDocument.cpp:2280 src/frontends/qt4/GuiExternal.cpp:75
 #: src/frontends/qt4/GuiGraphics.cpp:71 src/frontends/qt4/GuiListings.cpp:152
-#: src/frontends/qt4/GuiListings.cpp:159 src/frontends/qt4/GuiPrefs.cpp:1798
+#: src/frontends/qt4/GuiListings.cpp:159 src/frontends/qt4/GuiPrefs.cpp:1801
 msgid "Default"
 msgstr "Öntanımlı"
 
@@ -630,7 +630,7 @@ msgstr "Font serileri"
 #: src/frontends/qt4/ui/CharacterUi.ui:160
 #: src/frontends/qt4/ui/ListingsUi.ui:339 lib/layouts/europecv.layout:118
 #: lib/layouts/moderncv.layout:114 src/frontends/qt4/GuiDocument.cpp:987
-#: src/frontends/qt4/GuiPrefs.cpp:1756
+#: src/frontends/qt4/GuiPrefs.cpp:1759
 msgid "Language"
 msgstr "Dil"
 
@@ -872,7 +872,7 @@ msgstr "Ayarları LyX'in öntanımlı belge ayarları olarak kaydet"
 msgid "Save as Document Defaults"
 msgstr "Belge öntanımlarına kaydet"
 
-#: src/frontends/qt4/ui/ERTUi.ui:31
+#: src/frontends/qt4/ui/ERTUi.ui:31 src/frontends/qt4/GuiPrefs.cpp:940
 msgid "Display"
 msgstr "Görünüm"
 
@@ -1495,8 +1495,8 @@ msgstr "Giriş"
 msgid "Verbatim"
 msgstr "Olduğu gibi"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:970
-#: src/insets/InsetInclude.cpp:976
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:974
+#: src/insets/InsetInclude.cpp:980
 msgid "Program Listing"
 msgstr "Program Listeleme"
 
@@ -2324,7 +2324,7 @@ msgstr "&Değiştir"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:209
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:61
-#: src/frontends/qt4/GuiPrefs.cpp:2372 src/frontends/qt4/GuiPrefs.cpp:2436
+#: src/frontends/qt4/GuiPrefs.cpp:2375 src/frontends/qt4/GuiPrefs.cpp:2439
 msgid "Remo&ve"
 msgstr "&Kaldır"
 
@@ -2382,6 +2382,11 @@ msgstr "Önizleme başarılı değil"
 #, fuzzy
 msgid "Factor for the preview size"
 msgstr "Uyması için önizleme boyutunu ölçekle."
+
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:106
+#, fuzzy
+msgid "&Mark end of paragraphs"
+msgstr "Paragrafı &Girintile"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:33 src/frontends/qt4/GuiPrefs.cpp:225
 msgid "Editing"
@@ -2617,7 +2622,7 @@ msgstr "&Yabancı dilleri işaretle"
 msgid "Right-to-left language support"
 msgstr "Sağdan sola dil desteği"
 
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:203 src/LyXRC.cpp:2804
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:203 src/LyXRC.cpp:2819
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr "Sağdan-sola dil desteğini açmak için seçin (ör. İbranice, Arapça)."
@@ -2797,7 +2802,7 @@ msgstr "&Geçici dizin:"
 msgid "&PATH prefix:"
 msgstr "&PATH öneki:"
 
-#: src/frontends/qt4/ui/PrefPlaintextUi.ui:57 src/LyXRC.cpp:2478
+#: src/frontends/qt4/ui/PrefPlaintextUi.ui:57 src/LyXRC.cpp:2493
 msgid ""
 "The maximum line length of exported plain text/LaTeX/SGML files. If set to "
 "0, paragraphs are output in a single line; if the line length is > 0, "
@@ -15527,10 +15532,15 @@ msgid "button background under focus"
 msgstr "aktif buton arkaplanı"
 
 #: src/Color.cpp:218
+#, fuzzy
+msgid "paragraph marker"
+msgstr "Alt paragraf"
+
+#: src/Color.cpp:219
 msgid "inherit"
 msgstr "miras"
 
-#: src/Color.cpp:219
+#: src/Color.cpp:220
 msgid "ignore"
 msgstr "yoksay"
 
@@ -16236,13 +16246,13 @@ msgstr "LyX'e Hoşgeldiniz!"
 msgid "Converting document to new document class..."
 msgstr "Belge yeni sınıfa çevriliyor..."
 
-#: src/LyXRC.cpp:2465
+#: src/LyXRC.cpp:2480
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
 msgstr ""
 
-#: src/LyXRC.cpp:2470
+#: src/LyXRC.cpp:2485
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
@@ -16250,32 +16260,32 @@ msgstr ""
 "Alternatif bir dil seçin. Öntanımlı olan bu belgenin dili olarak "
 "kullanılıyor."
 
-#: src/LyXRC.cpp:2474
+#: src/LyXRC.cpp:2489
 msgid ""
 "Use to define an external program to render tables in plain text output. E."
 "g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"\" is "
 "specified, an internal routine is used."
 msgstr ""
 
-#: src/LyXRC.cpp:2482
+#: src/LyXRC.cpp:2497
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
 msgstr ""
 
-#: src/LyXRC.cpp:2486
+#: src/LyXRC.cpp:2501
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
 msgstr ""
 
-#: src/LyXRC.cpp:2490
+#: src/LyXRC.cpp:2505
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Otomatik kayıtlar arasındaki süre (saniye cinsinden). 0 otokayıtı kapatır."
 
-#: src/LyXRC.cpp:2497
+#: src/LyXRC.cpp:2512
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
@@ -16283,7 +16293,7 @@ msgstr ""
 "Yedek dosyalarının saklanacağı dizin. Eğer dizgi boşsa, LyX yedek "
 "dosyalarını orijinal dosyanın bulunduğu dizinde saklayacak."
 
-#: src/LyXRC.cpp:2501
+#: src/LyXRC.cpp:2516
 msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
@@ -16291,21 +16301,21 @@ msgstr ""
 "bibtex seçeneklerini (cf. man bibtex) tanımlayın ya da alternatif derleyici "
 "(ör. mlbibtex veya bibulus) seçin."
 
-#: src/LyXRC.cpp:2505
+#: src/LyXRC.cpp:2520
 msgid "Define the options of the bibtex program for PLaTeX (Japanese LaTeX)."
 msgstr ""
 
-#: src/LyXRC.cpp:2509
+#: src/LyXRC.cpp:2524
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
 msgstr ""
 
-#: src/LyXRC.cpp:2513
+#: src/LyXRC.cpp:2528
 msgid "Select to check whether the lastfiles still exist."
 msgstr ""
 
-#: src/LyXRC.cpp:2517
+#: src/LyXRC.cpp:2532
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
@@ -16313,7 +16323,7 @@ msgstr ""
 "chktex in nasıl çalıştırılacağını tanımlayın. Ör. \"chktex -n11 -n1 -n3 -n6 -"
 "n9 -n22 -n25 -n30 -n38\" ChkTeX belgesine bakın."
 
-#: src/LyXRC.cpp:2527
+#: src/LyXRC.cpp:2542
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
@@ -16321,11 +16331,11 @@ msgstr ""
 "LyX normalde kaydırma çubuğunu oynatsanız da imlecin pozisyonunu "
 "güncellemez. İmlecin sürekli ekranda görünmesini istiyorsanız aktif yapın."
 
-#: src/LyXRC.cpp:2531
+#: src/LyXRC.cpp:2546
 msgid "Use the Mac OS X conventions for the word-level cursor movement"
 msgstr "Kelime seviyesinde imlec hareketi için Mac OSX tarzını kullan"
 
-#: src/LyXRC.cpp:2535
+#: src/LyXRC.cpp:2550
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
@@ -16333,7 +16343,7 @@ msgstr ""
 "İmleç makro adının içerisinde olduğunda Matematik Makrosunun etrafında küçük "
 "bir kutu göster."
 
-#: src/LyXRC.cpp:2546
+#: src/LyXRC.cpp:2561
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
@@ -16342,7 +16352,7 @@ msgstr ""
 "Normal strftime biçimlerini kabul eder; detaylar için man strftime'a bakın. "
 "Ör.\"%A, %e, %B %Y\"."
 
-#: src/LyXRC.cpp:2550
+#: src/LyXRC.cpp:2565
 msgid ""
 "Command definition file. Can either specify an absolute path, or LyX will "
 "look in its global and local commands/ directories."
@@ -16350,15 +16360,15 @@ msgstr ""
 "Komut tanım dosyası. Tam yolu belirtebilirsiniz veya LyX genel ve yerel "
 "komutlar/ dizinine bakacaktır."
 
-#: src/LyXRC.cpp:2554
+#: src/LyXRC.cpp:2569
 msgid "New documents will be assigned this language."
 msgstr "Yeni belgeler bu dile atanacak."
 
-#: src/LyXRC.cpp:2558
+#: src/LyXRC.cpp:2573
 msgid "Specify the default paper size."
 msgstr "Öntanımlı kağıt boyunu belirleyin."
 
-#: src/LyXRC.cpp:2562
+#: src/LyXRC.cpp:2577
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
@@ -16366,28 +16376,28 @@ msgstr ""
 "Ana pencere simge durumuna küçüldüğünde diyalogları da simge durumuna "
 "küçült. (Değişiklik yapıldıktan sonraki diyalogları etkiler.)"
 
-#: src/LyXRC.cpp:2566
+#: src/LyXRC.cpp:2581
 msgid "Select how LyX will display any graphics."
 msgstr "LyX'in grafikleri nasıl göstereceğini seçin."
 
-#: src/LyXRC.cpp:2570
+#: src/LyXRC.cpp:2585
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
 msgstr ""
 "Belgeleriniz için öntanımlı yol. Değer girilmezse LyX açıldığı dizini seçer."
 
-#: src/LyXRC.cpp:2575
+#: src/LyXRC.cpp:2590
 msgid "Specify additional chars that can be part of a word."
 msgstr "Bir kelimenin parçası olabilecek ek karakterleri belirt."
 
-#: src/LyXRC.cpp:2579
+#: src/LyXRC.cpp:2594
 msgid ""
 "The path that LyX will set when offering to choose an example. An empty "
 "value selects the directory LyX was started from."
 msgstr ""
 
-#: src/LyXRC.cpp:2583
+#: src/LyXRC.cpp:2598
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
@@ -16395,7 +16405,7 @@ msgstr ""
 "LaTeX2e fontenc paketinin kullandığı font kodlaması. İngilizce dışındaki "
 "dillerde T1 şiddetle tavsiye edilir."
 
-#: src/LyXRC.cpp:2590
+#: src/LyXRC.cpp:2605
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
@@ -16405,11 +16415,11 @@ msgstr ""
 "derleyici seçin Ör., xindy/make-rules kullanıyorsanız, komut şu şekilde "
 "olmalı \"makeindex.sh -m $$lang\"."
 
-#: src/LyXRC.cpp:2594
+#: src/LyXRC.cpp:2609
 msgid "Define the options of the index program for PLaTeX (Japanese LaTeX)."
 msgstr ""
 
-#: src/LyXRC.cpp:2598
+#: src/LyXRC.cpp:2613
 msgid ""
 "Define the options of makeindex (cf. man makeindex) to be used for "
 "nomenclatures. This might differ from the index processing options."
@@ -16417,28 +16427,28 @@ msgstr ""
 "Terminoloji için kullanılan makeindex seçeneklerini tanımlayın. İndeks "
 "işleme seçeneklerinden farklılık gösterebilir."
 
-#: src/LyXRC.cpp:2607
+#: src/LyXRC.cpp:2622
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
 msgstr ""
 
-#: src/LyXRC.cpp:2611
+#: src/LyXRC.cpp:2626
 msgid "Maximum number of words in the initialization string for a new label"
 msgstr "Yeni bir etiketin ismindeki azami kelime saysıı"
 
-#: src/LyXRC.cpp:2615
+#: src/LyXRC.cpp:2630
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
 msgstr "Belgenin başında dil değişim komutu gerekirse seçin."
 
-#: src/LyXRC.cpp:2619
+#: src/LyXRC.cpp:2634
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr "Belgenin sonunda dil değişim komutu gerekirse seçin."
 
-#: src/LyXRC.cpp:2623
+#: src/LyXRC.cpp:2638
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
@@ -16447,21 +16457,21 @@ msgstr ""
 "Belgenin dilinden başka bir dile geçmek için kullanılan LaTeX komutu. Ör. "
 "\\selectlanguage{$$lang} $$lang ikinci dilin adı."
 
-#: src/LyXRC.cpp:2627
+#: src/LyXRC.cpp:2642
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr "Belgenin diline geri dönmek için kullanılan LaTeX komutu."
 
-#: src/LyXRC.cpp:2631
+#: src/LyXRC.cpp:2646
 msgid "The LaTeX command for local changing of the language."
 msgstr "Dili yerel değiştirmek için LaTeX komutu."
 
-#: src/LyXRC.cpp:2635
+#: src/LyXRC.cpp:2650
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
 msgstr ""
 
-#: src/LyXRC.cpp:2639
+#: src/LyXRC.cpp:2654
 msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
@@ -16469,26 +16479,26 @@ msgstr ""
 "Dil paketini yüklemek için LaTeX komutu. Ör. \"\\usepackage{babel}\", "
 "\"\\usepackage{omega}\"."
 
-#: src/LyXRC.cpp:2643
+#: src/LyXRC.cpp:2658
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
 msgstr ""
 
-#: src/LyXRC.cpp:2647
+#: src/LyXRC.cpp:2662
 msgid "De-select if you do not want LyX to scroll to saved position."
 msgstr "LyX'in kayıtlı pozisyona gitmesini istemiyorsanız seçimi kaldırın."
 
-#: src/LyXRC.cpp:2651
+#: src/LyXRC.cpp:2666
 msgid "De-select to prevent loading files opened from the last LyX session."
 msgstr ""
 "Son LyX oturumundaki dosyaların yüklenmesini istemiyorsanız seçimi kaldırın."
 
-#: src/LyXRC.cpp:2655
+#: src/LyXRC.cpp:2670
 msgid "De-select if you don't want LyX to create backup files."
 msgstr "LyX'in yedek dosya oluşturmasını istemiyorsanız seçimi kaldırın."
 
-#: src/LyXRC.cpp:2659
+#: src/LyXRC.cpp:2674
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
@@ -16496,28 +16506,28 @@ msgstr ""
 "Belgenin dilinin dışındaki yabancı dillere ait kelimelerin ışıklandırmasını "
 "kontrol etmek için seçin."
 
-#: src/LyXRC.cpp:2663
+#: src/LyXRC.cpp:2678
 msgid "The scrolling speed of the mouse wheel."
 msgstr "Farenin kaydırma çubuğunun dönüş hızı."
 
-#: src/LyXRC.cpp:2668
+#: src/LyXRC.cpp:2683
 msgid "The completion popup delay."
 msgstr "Tamamlama açılır pencere gecikmesi"
 
-#: src/LyXRC.cpp:2672
+#: src/LyXRC.cpp:2687
 msgid "Select to display the completion popup in math mode."
 msgstr "Matematik modunda tamamlama açılır penceresini göster."
 
-#: src/LyXRC.cpp:2676
+#: src/LyXRC.cpp:2691
 msgid "Select to display the completion popup in text mode."
 msgstr "Metin modunda tamamlama açılır penceresini göster."
 
-#: src/LyXRC.cpp:2680
+#: src/LyXRC.cpp:2695
 msgid ""
 "Show the completion popup without delay after non-unique completion attempt."
 msgstr "Özgün olmayan tamamlamadan sonra gecikmesiz açılır pencere göster."
 
-#: src/LyXRC.cpp:2684
+#: src/LyXRC.cpp:2699
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
@@ -16525,59 +16535,59 @@ msgstr ""
 "Tamamlamanın varolduğunu belirtmek için imlecin üzerinde küçük bir üçgen "
 "göster."
 
-#: src/LyXRC.cpp:2688
+#: src/LyXRC.cpp:2703
 msgid "The inline completion delay."
 msgstr "Satıriçi tamamlama gecikmesi"
 
-#: src/LyXRC.cpp:2692
+#: src/LyXRC.cpp:2707
 msgid "Select to display the inline completion in math mode."
 msgstr "Satıriçi tamamlamayı matematik modunda göstermek için seç."
 
-#: src/LyXRC.cpp:2696
+#: src/LyXRC.cpp:2711
 msgid "Select to display the inline completion in text mode."
 msgstr "Satıriçi tamamlamayı metin modunda göstermek için seç."
 
-#: src/LyXRC.cpp:2700
+#: src/LyXRC.cpp:2715
 msgid "Use \"...\" to shorten long completions."
 msgstr "Uzun tamamlamaları kısaltmak için \"...\" kullan."
 
-#: src/LyXRC.cpp:2704
+#: src/LyXRC.cpp:2719
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr ""
 
-#: src/LyXRC.cpp:2709
+#: src/LyXRC.cpp:2724
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
 msgstr ""
 
-#: src/LyXRC.cpp:2716
+#: src/LyXRC.cpp:2731
 msgid ""
 "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 
-#: src/LyXRC.cpp:2720
+#: src/LyXRC.cpp:2735
 msgid "Shows a typeset preview of things such as math"
 msgstr "Matematik gibi şeylerin dizgi önizlemesini gösterir"
 
-#: src/LyXRC.cpp:2724
+#: src/LyXRC.cpp:2739
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr "Önizlenen denklemler numara yerine \"(#)\" etiketli olacak"
 
-#: src/LyXRC.cpp:2728
+#: src/LyXRC.cpp:2743
 msgid "Scale the preview size to suit."
 msgstr "Uyması için önizleme boyutunu ölçekle."
 
-#: src/LyXRC.cpp:2732
+#: src/LyXRC.cpp:2747
 msgid "The option for specifying whether the copies should be collated."
 msgstr ""
 
-#: src/LyXRC.cpp:2736
+#: src/LyXRC.cpp:2751
 msgid "The option for specifying the number of copies to print."
 msgstr "Kaç kopya yazdırılacağını belirleme seçeneği."
 
-#: src/LyXRC.cpp:2740
+#: src/LyXRC.cpp:2755
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
@@ -16585,81 +16595,81 @@ msgstr ""
 "Yazdırmada kullanılan öntanımlı yazıcı. Birşey seçilmezse PRINTER ortam "
 "değişkeni kullanılacak."
 
-#: src/LyXRC.cpp:2744
+#: src/LyXRC.cpp:2759
 msgid "The option to print only even pages."
 msgstr "Yalnızca çift sayfaları yazdırma seçeneği."
 
-#: src/LyXRC.cpp:2748
+#: src/LyXRC.cpp:2763
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
 msgstr ""
 
-#: src/LyXRC.cpp:2752
+#: src/LyXRC.cpp:2767
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr "Yazıcı programı çıktı dosyası uzantısı. Genellikle \".ps\"."
 
-#: src/LyXRC.cpp:2756
+#: src/LyXRC.cpp:2771
 msgid "The option to print out in landscape."
 msgstr "Yatay yazdırma seçeneği."
 
-#: src/LyXRC.cpp:2760
+#: src/LyXRC.cpp:2775
 msgid "The option to print only odd pages."
 msgstr "Yalnızca tek sayfaları yazdırma seçeneği."
 
-#: src/LyXRC.cpp:2764
+#: src/LyXRC.cpp:2779
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr "Basılacak sayfaları virgülle ayrılmış listeyle belirleme seçeneği."
 
-#: src/LyXRC.cpp:2768
+#: src/LyXRC.cpp:2783
 msgid "Option to specify the dimensions of the print paper."
 msgstr "Yazdırılacak kağıdığın boyutlarını belirtme seçeneği."
 
-#: src/LyXRC.cpp:2772
+#: src/LyXRC.cpp:2787
 msgid "The option to specify paper type."
 msgstr "Kağıt tipini belirtme seçeneği."
 
-#: src/LyXRC.cpp:2776
+#: src/LyXRC.cpp:2791
 msgid "The option to reverse the order of the pages printed."
 msgstr "Sayfaları ters sırada basma seçeneği."
 
-#: src/LyXRC.cpp:2780
+#: src/LyXRC.cpp:2795
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
 "arguments."
 msgstr ""
 
-#: src/LyXRC.cpp:2784
+#: src/LyXRC.cpp:2799
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
 msgstr ""
 
-#: src/LyXRC.cpp:2788
+#: src/LyXRC.cpp:2803
 msgid "Option to pass to the print program to print to a file."
 msgstr ""
 
-#: src/LyXRC.cpp:2792
+#: src/LyXRC.cpp:2807
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr ""
 
-#: src/LyXRC.cpp:2796
+#: src/LyXRC.cpp:2811
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
 msgstr ""
 
-#: src/LyXRC.cpp:2800
+#: src/LyXRC.cpp:2815
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "Beğendiğiniz yazdırma programı, ör. \"dvips\", \"dvilj4\"."
 
-#: src/LyXRC.cpp:2808
+#: src/LyXRC.cpp:2823
 msgid ""
 "Select to have visual bidi cursor movement, unselect for logical movement."
 msgstr ""
 
-#: src/LyXRC.cpp:2812
+#: src/LyXRC.cpp:2827
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
@@ -16667,22 +16677,22 @@ msgstr ""
 "Ekranınızın DPI'yı(inç başına düşen nokta) LyX tarafından otomatik olarak "
 "algılandı. Ters giderse, ayarları buradan değiştirin."
 
-#: src/LyXRC.cpp:2818
+#: src/LyXRC.cpp:2833
 msgid "The screen fonts used to display the text while editing."
 msgstr "Düzenleme sırasında metni göstermek için kullanılacak ekran fontları."
 
-#: src/LyXRC.cpp:2827
+#: src/LyXRC.cpp:2842
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
 "makes LyX use the nearest bitmap font size available, instead of scaling."
 msgstr ""
 
-#: src/LyXRC.cpp:2831
+#: src/LyXRC.cpp:2846
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr "Ekran fontlarını ölçekleme işleminde kullanılan font büyüklükleri."
 
-#: src/LyXRC.cpp:2836
+#: src/LyXRC.cpp:2851
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
@@ -16691,13 +16701,13 @@ msgstr ""
 "Ekran fontları için yakınlaştırma yüzdesi. %100'e ayarlamak kağıtta nasıl "
 "görünüyorsa aynı boyutta gösterir."
 
-#: src/LyXRC.cpp:2840
+#: src/LyXRC.cpp:2855
 msgid "Allow session manager to save and restore windows geometry."
 msgstr ""
 "Oturum yöneticisinin pencere geometrisini kaydetmesine ve geri yüklemesine "
 "izin ver"
 
-#: src/LyXRC.cpp:2844
+#: src/LyXRC.cpp:2859
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
@@ -16705,28 +16715,28 @@ msgstr ""
 "lyxserver'ı başlatır. Borular \".in\" ve \".out\" ek uzantılarını alırlar. "
 "Sadece gelişmiş kullanıcılar içindir."
 
-#: src/LyXRC.cpp:2851
+#: src/LyXRC.cpp:2866
 msgid "De-select if you don't want the startup banner."
 msgstr "Bannerı başlatmak istemiyorsanız seçimi kaldırın."
 
-#: src/LyXRC.cpp:2855
+#: src/LyXRC.cpp:2870
 msgid "What command runs the spellchecker?"
 msgstr "Hecelemeyi hangi komut çalıştırıyor?"
 
-#: src/LyXRC.cpp:2859
+#: src/LyXRC.cpp:2874
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
 msgstr ""
 "LyX geçici dizinlerini bu yola yerleştirecek. LyX'den çıkarken silinecekler."
 
-#: src/LyXRC.cpp:2863
+#: src/LyXRC.cpp:2878
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
 msgstr ""
 
-#: src/LyXRC.cpp:2873
+#: src/LyXRC.cpp:2888
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
@@ -16734,23 +16744,23 @@ msgstr ""
 "UI (kullanıcı arabirim) dosyası. Tam yolu belirtebilirsiniz ya da LyX genel "
 "ve yerel ui/ dizinlerini arar."
 
-#: src/LyXRC.cpp:2886
+#: src/LyXRC.cpp:2901
 msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
 "if you cannot check the spelling of words containing accented letters. This "
 "may not work with all dictionaries."
 msgstr ""
 
-#: src/LyXRC.cpp:2890
+#: src/LyXRC.cpp:2905
 msgid "Enable the automatic appearance of tool tips in the work area."
 msgstr "Çalışma alanındaki araç ipuçlarının görünümünü otomatik yap"
 
-#: src/LyXRC.cpp:2894
+#: src/LyXRC.cpp:2909
 msgid ""
 "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr "Mac ve Windows'da performansı artıran pixmap önbelleğini aç."
 
-#: src/LyXRC.cpp:2901
+#: src/LyXRC.cpp:2916
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 "DVI görüntüleyiciye kağıt komutunu belirtin (boş bırakın ya da \"-paper\" "
@@ -17293,7 +17303,7 @@ msgid "About %1"
 msgstr "%1 Hakkında"
 
 #: src/frontends/qt4/GuiApplication.cpp:440
-#: src/frontends/qt4/GuiPrefs.cpp:2641
+#: src/frontends/qt4/GuiPrefs.cpp:2644
 msgid "Preferences"
 msgstr "Tercihler"
 
@@ -17305,26 +17315,26 @@ msgstr "Yeniden yapılandır"
 msgid "Quit %1"
 msgstr "%1 Çıkılıyor"
 
-#: src/frontends/qt4/GuiApplication.cpp:835
+#: src/frontends/qt4/GuiApplication.cpp:838
 msgid "Exiting."
 msgstr "Çıkılıyor."
 
-#: src/frontends/qt4/GuiApplication.cpp:902
+#: src/frontends/qt4/GuiApplication.cpp:905
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntax: set-color <lyx_name> <x11_name>"
 
-#: src/frontends/qt4/GuiApplication.cpp:918
+#: src/frontends/qt4/GuiApplication.cpp:921
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Set-color \"%1$s\" başarısız - renk tanımlı değil ya da yeniden "
 "tanımlanmayabilir"
 
-#: src/frontends/qt4/GuiApplication.cpp:1305
+#: src/frontends/qt4/GuiApplication.cpp:1308
 msgid "The current document was closed."
 msgstr "Mevcut belge kapatıldı."
 
-#: src/frontends/qt4/GuiApplication.cpp:1315
+#: src/frontends/qt4/GuiApplication.cpp:1318
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -17336,12 +17346,12 @@ msgstr ""
 "\n"
 "İstisna: "
 
-#: src/frontends/qt4/GuiApplication.cpp:1319
-#: src/frontends/qt4/GuiApplication.cpp:1325
+#: src/frontends/qt4/GuiApplication.cpp:1322
+#: src/frontends/qt4/GuiApplication.cpp:1328
 msgid "Software exception Detected"
 msgstr "Yazılım İstisnası Yakalandı"
 
-#: src/frontends/qt4/GuiApplication.cpp:1323
+#: src/frontends/qt4/GuiApplication.cpp:1326
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -17349,12 +17359,12 @@ msgstr ""
 "Lyx çok garip kural dışı durum yakaladı, kaydedilmemiş tüm belgeleri "
 "kaydetmeye çalışacak ve çıkacak."
 
-#: src/frontends/qt4/GuiApplication.cpp:1485
-#: src/frontends/qt4/GuiApplication.cpp:1490
+#: src/frontends/qt4/GuiApplication.cpp:1488
+#: src/frontends/qt4/GuiApplication.cpp:1493
 msgid "Could not find UI definition file"
 msgstr "Arabirim tanımlama dosyası bulunamadı"
 
-#: src/frontends/qt4/GuiApplication.cpp:1486
+#: src/frontends/qt4/GuiApplication.cpp:1489
 #, fuzzy, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -17365,7 +17375,7 @@ msgstr ""
 "okunurken hata oluştur.\n"
 "Lütfen kurulumunuzu kontrol edin."
 
-#: src/frontends/qt4/GuiApplication.cpp:1491
+#: src/frontends/qt4/GuiApplication.cpp:1494
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -17375,12 +17385,12 @@ msgid ""
 "check which user interface file you are using."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1499
+#: src/frontends/qt4/GuiApplication.cpp:1502
 #, fuzzy
 msgid "Could not find default UI file"
 msgstr "Arabirim tanımlama dosyası bulunamadı"
 
-#: src/frontends/qt4/GuiApplication.cpp:1500
+#: src/frontends/qt4/GuiApplication.cpp:1503
 #, fuzzy
 msgid ""
 "LyX could not find the default UI file!\n"
@@ -18127,7 +18137,7 @@ msgstr "Harici dosya seçin"
 msgid "Float Settings"
 msgstr "Yüzen Ayarları"
 
-#: src/frontends/qt4/GuiGraphics.cpp:154 src/frontends/qt4/GuiPrefs.cpp:940
+#: src/frontends/qt4/GuiGraphics.cpp:154
 msgid "Graphics"
 msgstr "Grafik"
 
@@ -18438,151 +18448,151 @@ msgstr "Ekran fontları"
 msgid "Colors"
 msgstr "Renkler"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1010
+#: src/frontends/qt4/GuiPrefs.cpp:1013
 msgid "Paths"
 msgstr "Yollar"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1065
+#: src/frontends/qt4/GuiPrefs.cpp:1068
 msgid "Select directory for example files"
 msgstr "Örnek dosyalar için dizin seçin"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1074
+#: src/frontends/qt4/GuiPrefs.cpp:1077
 msgid "Select a document templates directory"
 msgstr "Belge şablonu dizini seçin"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1083
+#: src/frontends/qt4/GuiPrefs.cpp:1086
 msgid "Select a temporary directory"
 msgstr "Geçici dizin seçin"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1092
+#: src/frontends/qt4/GuiPrefs.cpp:1095
 msgid "Select a backups directory"
 msgstr "Yedekleme dizini seçin"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1101
+#: src/frontends/qt4/GuiPrefs.cpp:1104
 msgid "Select a document directory"
 msgstr "Belge dizini seçin"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1110
+#: src/frontends/qt4/GuiPrefs.cpp:1113
 msgid "Give a filename for the LyX server pipe"
 msgstr "LyX sunucu borusu için bir isim verin"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1123
+#: src/frontends/qt4/GuiPrefs.cpp:1126
 #: src/frontends/qt4/GuiSpellchecker.cpp:57
 msgid "Spellchecker"
 msgstr "Yazım denetimi"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1145
+#: src/frontends/qt4/GuiPrefs.cpp:1148
 msgid "ispell"
 msgstr "ispell"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1146
+#: src/frontends/qt4/GuiPrefs.cpp:1149
 msgid "aspell"
 msgstr "aspell"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1147
+#: src/frontends/qt4/GuiPrefs.cpp:1150
 msgid "hspell"
 msgstr "hspell"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1149
+#: src/frontends/qt4/GuiPrefs.cpp:1152
 msgid "pspell (library)"
 msgstr "pspell (kitaplık)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1152
+#: src/frontends/qt4/GuiPrefs.cpp:1155
 msgid "aspell (library)"
 msgstr "aspell (kitaplık)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1232
+#: src/frontends/qt4/GuiPrefs.cpp:1235
 msgid "Converters"
 msgstr "Çeviriciler"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1537
+#: src/frontends/qt4/GuiPrefs.cpp:1540
 msgid "File formats"
 msgstr "Dosya biçimleri"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1735
+#: src/frontends/qt4/GuiPrefs.cpp:1738
 msgid "Format in use"
 msgstr "Kullanılan biçim"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1736
+#: src/frontends/qt4/GuiPrefs.cpp:1739
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 "Bir çevirici tarafından kullanılan biçimi silemezsiniz. Önce çeviriciyi "
 "silin."
 
-#: src/frontends/qt4/GuiPrefs.cpp:1810
+#: src/frontends/qt4/GuiPrefs.cpp:1813
 msgid "LyX needs to be restarted!"
 msgstr "LyX'in baştan başlatılması gerekiyor!"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1811
+#: src/frontends/qt4/GuiPrefs.cpp:1814
 msgid ""
 "The change of user interface language will be fully effective only after a "
 "restart."
 msgstr ""
 "Kullanıcı arabirim dili, yeniden başlatıldıktan sonra tam olarak değişecek."
 
-#: src/frontends/qt4/GuiPrefs.cpp:1869
+#: src/frontends/qt4/GuiPrefs.cpp:1872
 msgid "Printer"
 msgstr "Yazıcı"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1967 src/frontends/qt4/GuiPrefs.cpp:2681
+#: src/frontends/qt4/GuiPrefs.cpp:1970 src/frontends/qt4/GuiPrefs.cpp:2684
 msgid "User interface"
 msgstr "Kullanıcı Arabirimi"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2068
+#: src/frontends/qt4/GuiPrefs.cpp:2071
 msgid "Control"
 msgstr "Kontrol"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2140
+#: src/frontends/qt4/GuiPrefs.cpp:2143
 msgid "Shortcuts"
 msgstr "Kısayollar"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2145
+#: src/frontends/qt4/GuiPrefs.cpp:2148
 msgid "Function"
 msgstr "Fonksiyon"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2146
+#: src/frontends/qt4/GuiPrefs.cpp:2149
 msgid "Shortcut"
 msgstr "Kısayol"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2227
+#: src/frontends/qt4/GuiPrefs.cpp:2230
 msgid "Cursor, Mouse and Editing functions"
 msgstr "İmleç, Fare ve Düzenleme fonksiyonları"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2231
+#: src/frontends/qt4/GuiPrefs.cpp:2234
 msgid "Mathematical Symbols"
 msgstr "Matematiksel Semboller"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2235
+#: src/frontends/qt4/GuiPrefs.cpp:2238
 msgid "Document and Window"
 msgstr "Belge ve Pencere"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2239
+#: src/frontends/qt4/GuiPrefs.cpp:2242
 msgid "Font, Layouts and Textclasses"
 msgstr "Font, Yerleşim ve Metin Sınıfları"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2243
+#: src/frontends/qt4/GuiPrefs.cpp:2246
 msgid "System and Miscellaneous"
 msgstr "Sistem ve Çeşitli"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2370 src/frontends/qt4/GuiPrefs.cpp:2416
+#: src/frontends/qt4/GuiPrefs.cpp:2373 src/frontends/qt4/GuiPrefs.cpp:2419
 msgid "Res&tore"
 msgstr "&Geri yükle"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2526 src/frontends/qt4/GuiPrefs.cpp:2533
-#: src/frontends/qt4/GuiPrefs.cpp:2544 src/frontends/qt4/GuiPrefs.cpp:2557
-#: src/frontends/qt4/GuiPrefs.cpp:2576
+#: src/frontends/qt4/GuiPrefs.cpp:2529 src/frontends/qt4/GuiPrefs.cpp:2536
+#: src/frontends/qt4/GuiPrefs.cpp:2547 src/frontends/qt4/GuiPrefs.cpp:2560
+#: src/frontends/qt4/GuiPrefs.cpp:2579
 msgid "Failed to create shortcut"
 msgstr "Kısayol oluşturulamadı"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2527
+#: src/frontends/qt4/GuiPrefs.cpp:2530
 msgid "Unknown or invalid LyX function"
 msgstr "Bilinmeyen veya geçersiz LyX fonksiyonu"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2534
+#: src/frontends/qt4/GuiPrefs.cpp:2537
 msgid "Invalid or empty key sequence"
 msgstr "Geçersiz ya da boş anahtar dizisi"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2545
+#: src/frontends/qt4/GuiPrefs.cpp:2548
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to:\n"
@@ -18591,7 +18601,7 @@ msgstr ""
 "`%1$s' kısayolu zaten şuna atanmış:\n"
 "%2$s"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2558
+#: src/frontends/qt4/GuiPrefs.cpp:2561
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to:\n"
@@ -18602,47 +18612,47 @@ msgstr ""
 "%2$s\n"
 "Yenisini oluşturmadan önce öncekinin silmeniz gerekli."
 
-#: src/frontends/qt4/GuiPrefs.cpp:2577
+#: src/frontends/qt4/GuiPrefs.cpp:2580
 msgid "Can not insert shortcut to the list"
 msgstr "Kısayol listeye eklenemez"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2608
+#: src/frontends/qt4/GuiPrefs.cpp:2611
 msgid "Identity"
 msgstr "Kimlik"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2805
+#: src/frontends/qt4/GuiPrefs.cpp:2808
 msgid "Choose bind file"
 msgstr "Bağlama dosyası seçin"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2806
+#: src/frontends/qt4/GuiPrefs.cpp:2809
 msgid "LyX bind files (*.bind)"
 msgstr "LyX bağlama dosyası (*.bind)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2812
+#: src/frontends/qt4/GuiPrefs.cpp:2815
 msgid "Choose UI file"
 msgstr "Arabirim dosyası seçin"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2813
+#: src/frontends/qt4/GuiPrefs.cpp:2816
 msgid "LyX UI files (*.ui)"
 msgstr "LyX arabirim dosyaları (*.ui)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2819
+#: src/frontends/qt4/GuiPrefs.cpp:2822
 msgid "Choose keyboard map"
 msgstr "Klavye haritası seçin"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2820
+#: src/frontends/qt4/GuiPrefs.cpp:2823
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "LyX klavye haritası (*.kmap)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2826
+#: src/frontends/qt4/GuiPrefs.cpp:2829
 msgid "Choose personal dictionary"
 msgstr "Kişisel sözlüğü değiştir"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2827
+#: src/frontends/qt4/GuiPrefs.cpp:2830
 msgid "*.pws"
 msgstr "*.pws"
 
-#: src/frontends/qt4/GuiPrefs.cpp:2827
+#: src/frontends/qt4/GuiPrefs.cpp:2830
 msgid "*.ispell"
 msgstr "*.ispell"
 
@@ -19797,7 +19807,7 @@ msgstr "Açık Dipnot Ekleme"
 msgid "footnote"
 msgstr "dipnot"
 
-#: src/insets/InsetGraphics.cpp:475 src/insets/InsetInclude.cpp:555
+#: src/insets/InsetGraphics.cpp:475 src/insets/InsetInclude.cpp:559
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -19826,11 +19836,11 @@ msgstr "Tam Girdi"
 msgid "Verbatim Input*"
 msgstr "Olduğu Gibi Girdi*"
 
-#: src/insets/InsetInclude.cpp:444 src/insets/InsetInclude.cpp:643
+#: src/insets/InsetInclude.cpp:444 src/insets/InsetInclude.cpp:647
 msgid "Recursive input"
 msgstr "Özyinelemeli girdi"
 
-#: src/insets/InsetInclude.cpp:445 src/insets/InsetInclude.cpp:644
+#: src/insets/InsetInclude.cpp:445 src/insets/InsetInclude.cpp:648
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr "%1$s i kendine dahil etmeye çalışıldı! İşlem yoksayıldı."
