@@ -555,10 +555,6 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 	if (runparams.dryrun)
 		return stripExtensionIfPossible(rel_file, runparams.nice);
 
-	// temp_file will contain the file for LaTeX to act on if, for example,
-	// we move it to a temp dir or uncompress it.
-	FileName temp_file = params().filename;
-
 	// The master buffer. This is useful when there are multiple levels
 	// of include files
 	Buffer const * masterBuffer = buffer().masterBuffer();
@@ -575,6 +571,9 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 	// This is necessary for DVI export.
 	string const temp_path = masterBuffer->temppath();
 
+	// temp_file will contain the file for LaTeX to act on if, for example,
+	// we move it to a temp dir or uncompress it.
+	FileName temp_file;
 	GraphicsCopyStatus status;
 	boost::tie(status, temp_file) =
 			copyToDirIfNeeded(params().filename, temp_path);
@@ -669,6 +668,7 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 	LYXERR(Debug::GRAPHICS, "\tthe orig file is: " << orig_file);
 
 	if (from == to) {
+		// source and destination formats are the same
 		if (!runparams.nice && !FileName(temp_file).hasExtension(ext)) {
 			// The LaTeX compiler will not be able to determine
 			// the file format from the extension, so we must
@@ -693,6 +693,7 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 		return stripExtensionIfPossible(output_file, to, runparams.nice);
 	}
 
+	// so the source and destination formats are different
 	FileName const to_file = FileName(changeExtension(temp_file.absFilename(), ext));
 	string const output_to_file = changeExtension(output_file, ext);
 
