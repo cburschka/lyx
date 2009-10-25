@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-10-25 09:50+0100\n"
+"POT-Creation-Date: 2009-10-25 10:15+0100\n"
 "PO-Revision-Date: 2009-04-19 17:10+0100\n"
 "Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -2421,39 +2421,43 @@ msgstr "日期格式(&D)："
 msgid "Date format for strftime output"
 msgstr "用於 strftime 輸出的日期格式"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:19
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:25
 #, fuzzy
 msgid "Display &Graphics"
 msgstr "顯示圖形(&G)："
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:39
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:45
 msgid "Instant &Preview:"
 msgstr "即時預覽(&P)："
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:50 src/Font.cpp:66
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:56 src/Font.cpp:66
 #: src/frontends/qt4/GuiDocument.cpp:146
 msgid "Off"
 msgstr "關閉"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:55
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:61
 msgid "No math"
 msgstr "無數學"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:60 src/Font.cpp:66
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:66 src/Font.cpp:66
 msgid "On"
 msgstr "開"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:68
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:74
 #, fuzzy
 msgid "Preview Si&ze:"
 msgstr "預覽失敗"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:84
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:92
 #, fuzzy
 msgid "Factor for the preview size"
 msgstr "伸縮預覽大小至合適比例。"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:106
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:114
+msgid "Mark end of paragraphs on screen with a pilcrow character."
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:117
 #, fuzzy
 msgid "&Mark end of paragraphs"
 msgstr "縮排段落(&P)"

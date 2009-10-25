@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-10-25 09:50+0100\n"
+"POT-Creation-Date: 2009-10-25 10:15+0100\n"
 "PO-Revision-Date: 2009-10-19 17:35+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@lyx.org>\n"
 "Language-Team: italiano <it@li.org>\n"
@@ -2372,36 +2372,40 @@ msgstr "&Formato data:"
 msgid "Date format for strftime output"
 msgstr "Formato della data per l'output strftime"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:19
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:25
 msgid "Display &Graphics"
 msgstr "Visualizzazione &grafica"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:39
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:45
 msgid "Instant &Preview:"
 msgstr "&Anteprima istantanea:"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:50 src/Font.cpp:66
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:56 src/Font.cpp:66
 #: src/frontends/qt4/GuiDocument.cpp:146
 msgid "Off"
 msgstr "Non attiva"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:55
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:61
 msgid "No math"
 msgstr "Escluso matematica"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:60 src/Font.cpp:66
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:66 src/Font.cpp:66
 msgid "On"
 msgstr "Attiva"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:68
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:74
 msgid "Preview Si&ze:"
 msgstr "Sca&la"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:84
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:92
 msgid "Factor for the preview size"
 msgstr "Fattore di scala dell'anteprima"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:106
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:114
+msgid "Mark end of paragraphs on screen with a pilcrow character."
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:117
 #, fuzzy
 msgid "&Mark end of paragraphs"
 msgstr "&Indenta il paragrafo"

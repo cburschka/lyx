@@ -98,8 +98,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-10-25 09:50+0100\n"
-"PO-Revision-Date: 2009-10-25 09:53+0100\n"
+"POT-Creation-Date: 2009-10-25 10:15+0100\n"
+"PO-Revision-Date: 2009-10-25 10:16+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -2468,36 +2468,40 @@ msgstr "&Datumsformat:"
 msgid "Date format for strftime output"
 msgstr "Datumsformat für die 'strftime'-Ausgabe"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:19
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:25
 msgid "Display &Graphics"
 msgstr "&Grafiken anzeigen"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:39
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:45
 msgid "Instant &Preview:"
 msgstr "Sofortige &Vorschau:"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:50 src/Font.cpp:66
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:56 src/Font.cpp:66
 #: src/frontends/qt4/GuiDocument.cpp:146
 msgid "Off"
 msgstr "Aus"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:55
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:61
 msgid "No math"
 msgstr "Kein Mathe"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:60 src/Font.cpp:66
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:66 src/Font.cpp:66
 msgid "On"
 msgstr "An"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:68
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:74
 msgid "Preview Si&ze:"
 msgstr "Vorschaugr&öße:"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:84
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:92
 msgid "Factor for the preview size"
 msgstr "Faktor für die Vorschaugröße"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:106
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:114
+msgid "Mark end of paragraphs on screen with a pilcrow character."
+msgstr "Absatzende auf dem Bildschirm mit einem Alinea-Zeichen markieren."
+
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:117
 msgid "&Mark end of paragraphs"
 msgstr "Absatzende &markieren"
 

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-10-25 09:50+0100\n"
+"POT-Creation-Date: 2009-10-25 10:15+0100\n"
 "PO-Revision-Date: 2009-10-19 16:19+0100\n"
 "Last-Translator: Ignacio García  <ignacio.gmorales@gmail.com>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -2369,36 +2369,40 @@ msgstr "Formato de &fecha:"
 msgid "Date format for strftime output"
 msgstr "Formato de fecha para la salida de strftime"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:19
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:25
 msgid "Display &Graphics"
 msgstr "Mostrar &gráficos"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:39
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:45
 msgid "Instant &Preview:"
 msgstr "Vista &preliminar inmediata:"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:50 src/Font.cpp:66
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:56 src/Font.cpp:66
 #: src/frontends/qt4/GuiDocument.cpp:146
 msgid "Off"
 msgstr "Desactivada"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:55
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:61
 msgid "No math"
 msgstr "Ecuaciones no"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:60 src/Font.cpp:66
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:66 src/Font.cpp:66
 msgid "On"
 msgstr "Activada"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:68
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:74
 msgid "Preview Si&ze:"
 msgstr "Tamaño de la &Vista preliminar:"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:84
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:92
 msgid "Factor for the preview size"
 msgstr "Factor para el tamaño de la vista preliminar"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:106
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:114
+msgid "Mark end of paragraphs on screen with a pilcrow character."
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:117
 #, fuzzy
 msgid "&Mark end of paragraphs"
 msgstr "S&angrar párrafo"
