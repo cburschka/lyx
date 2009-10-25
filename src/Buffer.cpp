@@ -1392,7 +1392,7 @@ void Buffer::makeLyXHTMLFile(FileName const & fname,
 			      OutputParams const & runparams,
 			      bool const body_only) const
 {
-	LYXERR(Debug::LATEX, "makeLYXHTMLFile...");
+	LYXERR(Debug::LATEX, "makeLyXHTMLFile...");
 
 	ofdocstream ofs;
 	if (!openFileWrite(ofs, fname))
@@ -3124,10 +3124,11 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 	// Plain text backend
 	if (backend_format == "text")
 		writePlaintextFile(*this, FileName(filename), runparams);
-	// no backend
-	else if (backend_format == "xhtml")
+	// HTML backend
+	else if (backend_format == "xhtml") {
+		runparams.flavor = OutputParams::HTML;
 		makeLyXHTMLFile(FileName(filename), runparams);
-	else if (backend_format == "lyx")
+	}	else if (backend_format == "lyx")
 		writeFile(FileName(filename));
 	// Docbook backend
 	else if (isDocBook()) {

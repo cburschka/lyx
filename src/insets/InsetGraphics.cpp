@@ -115,6 +115,12 @@ string findTargetFormat(string const & format, OutputParams const & runparams)
 		// Convert everything else to png
 		return "png";
 	}
+	// for HTML, we leave the known formats and otherwise convert to png
+	if (runparams.flavor == OutputParams::HTML) {
+		if (format == "jpg" || format == "png" || format == "gif")
+			return format;
+		return "png";
+	}
 	// If it's postscript, we always do eps.
 	LYXERR(Debug::GRAPHICS, "findTargetFormat: PostScript mode");
 	if (format != "ps")
