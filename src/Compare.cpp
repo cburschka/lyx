@@ -55,8 +55,10 @@ Compare::Compare(Buffer const * new_buf, Buffer const * old_buf,
 
 void Compare::run()
 {
-	if (!dest_buffer || !new_buffer || !old_buffer)
+	if (!dest_buffer || !new_buffer || !old_buffer) {
+		error();
 		return;
+	}
 
 	// Copy the buffer params to the new buffer
 	dest_buffer->params() = options_.settings_from_new
@@ -64,9 +66,9 @@ void Compare::run()
 	
 	// do the real work
 	if (!doCompare())
-		return;
-	
-	finished(pimpl_->abort_);
+		error();
+	else
+		finished(pimpl_->abort_);
 	return;
 }
 
@@ -82,7 +84,7 @@ void Compare::abort()
 
 int Compare::doCompare()
 {
-	return 1;
+	return 0;
 }
 
 

@@ -60,8 +60,11 @@ public:
 	}
 
 Q_SIGNALS:
+	/// The thread has finished due to an error.
+	void error() const;
+
 	/// The thread has finished. If the thread is cancelled
-	/// by the user or due to an error \c aborted is true.
+	/// by the user \c aborted is true.
 	void finished(bool aborted) const;
 
 	/// Adds \c progress to the value of the progress bar in the dialog

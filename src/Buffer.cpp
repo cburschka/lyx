@@ -524,7 +524,7 @@ string Buffer::logName(LogType * type) const
 }
 
 
-void Buffer::setReadonly(bool const flag)
+void Buffer::setReadonly(bool const flag) const
 {
 	if (d->read_only != flag) {
 		d->read_only = flag;

@@ -16,6 +16,7 @@
 #include "BufferView.h"
 #include "BufferList.h"
 #include "buffer_funcs.h"
+#include "Compare.h"
 #include "FuncRequest.h"
 #include "GuiView.h"
 #include "LyXRC.h"
@@ -40,7 +41,7 @@ namespace frontend {
 
 GuiCompare::GuiCompare(GuiView & lv)
 	: GuiDialog(lv, "compare", qt_("Compare LyX files")),
-	dest_buffer_(0)
+	compare_(0), dest_buffer_(0), old_buffer_(0), new_buffer_(0)
 {
 	setupUi(this);
 	setModal(Qt::WindowModal);
@@ -71,6 +72,8 @@ GuiCompare::GuiCompare(GuiView & lv)
 
 GuiCompare::~GuiCompare()
 {
+	if (compare_)
+		delete compare_;
 }
 
 void GuiCompare::closeEvent(QCloseEvent *)
@@ -95,6 +98,9 @@ bool GuiCompare::isValid()
 
 void GuiCompare::updateContents()
 {
+	if (compare_ && compare_->isRunning())
+		return;
+
 	QString restore_filename1 = newFileCB->currentText();
 	QString restore_filename2 = oldFileCB->currentText();
 	newFileCB->clear();
@@ -182,24 +188,45 @@ void GuiCompare::enableControls(bool enable) const
 }
 
 
+void GuiCompare::error()
+{
+	Alert::error(_("Error"), _("Error while comparing documents."));
+	window_title_ = windowTitle();
+	finished(true);
+}
+
 void GuiCompare::finished(bool aborted)
 {
 	enableControls(true);
+	if (old_buffer_)
+		old_buffer_->setReadonly(false);
+	if (new_buffer_)
+		new_buffer_->setReadonly(false);
+	
+	if (compare_) {
+		delete compare_;
+		compare_ = 0;
+	}
 	
 	if (aborted) {
-		dest_buffer_->markClean();
-		theBufferList().release(dest_buffer_);
+		if (dest_buffer_) {
+			dest_buffer_->markClean();
+			theBufferList().release(dest_buffer_);
+		}
 		setWindowTitle(window_title_);
 		progressBar->setValue(0);
 	} else {
 		hideView();
 		bc().ok();
-		dispatch(FuncRequest(LFUN_BUFFER_SWITCH, dest_buffer_->absFileName()));
+		if (dest_buffer_) {
+			dispatch(FuncRequest(LFUN_BUFFER_SWITCH,
+				dest_buffer_->absFileName()));
+		}
 	}
 }
 
 
-void GuiCompare::nextIt(int val)
+void GuiCompare::progress(int val)
 {
 	progressBar->setValue(progressBar->value() + val);
 }
@@ -214,18 +241,21 @@ void GuiCompare::progressMax(int max) const
 void GuiCompare::slotOK()
 {
 	enableControls(false);
-	if (!run()) {
-		Alert::error(_("Error"),
-			_("Unable to compare files."));
-		finished(true);
-	}
+	if (!run())
+		error();
 }
 
 
 void GuiCompare::slotCancel()
 {
-	GuiDialog::slotClose();
-	progressBar->setValue(0);
+	if (compare_ && compare_->isRunning()) {
+		window_title_ = windowTitle();
+		setWindowTitle(window_title_ + " " + qt_("(cancelling)"));
+		compare_->abort();
+	} else {
+		GuiDialog::slotClose();
+		progressBar->setValue(0);
+	}
 }
 
 
@@ -256,10 +286,30 @@ int GuiCompare::run()
 	// new buffer that will carry the output
 	FileName initpath(lyxrc.document_path);
 	dest_buffer_ = newUnnamedFile(initpath, to_utf8(_("differences")));
+
+	if (!new_buffer_ || !old_buffer_ || !dest_buffer_)
+		return 0;
+
 	dest_buffer_->changed();
 	dest_buffer_->markDirty();
 
-	return 0;
+	// the comparison is done in a separate thread, so don't let
+	// the user change the buffers
+	old_buffer_->setReadonly(true);
+	new_buffer_->setReadonly(true);
+
+	// get the options from the dialog
+	CompareOptions options;
+	options.settings_from_new = newSettingsRB->isChecked();
+
+	// init the compare object and start it
+	compare_ = new Compare(new_buffer_, old_buffer_, dest_buffer_, options);
+	connect(compare_, SIGNAL(error()), this, SLOT(error()));
+	connect(compare_, SIGNAL(finished(bool)), this, SLOT(finished(bool)));
+	connect(compare_, SIGNAL(progress(int)), this, SLOT(progress(int)));
+	connect(compare_, SIGNAL(progressMax(int)), this, SLOT(progressMax(int)));
+	compare_->start(QThread::LowPriority);
+	return 1;
 }
 
 
