@@ -94,6 +94,7 @@ SOURCEFILESCORE = \
 	Chktex.cpp \
 	CmdDef.cpp \
 	Color.cpp \
+	Compare.cpp \
 	ConverterCache.cpp \
 	Converter.cpp \
 	CoordCache.cpp \
@@ -190,6 +191,7 @@ HEADERFILESCORE = \
 	ColorCode.h \
 	Color.h \
 	ColorSet.h \
+	Compare.h \
 	CompletionList.h \
 	ConverterCache.h \
 	Converter.h \
@@ -297,9 +299,16 @@ liblyxcore_a_SOURCES = $(SOURCEFILESCORE) $(STANDALONEFILES) $(HEADERFILESCORE)
 
 endif
 
+#########################  Qt stuff  ##############################
+
+MOCHEADER = Compare.h
+
 if INSTALL_WINDOWS
 
-MOCHEADER = Server.h
+MOCHEADER += Server.h
+MOCFLAG = -D_WIN32
+
+endif
 
 MOCEDFILES = $(MOCHEADER:%.h=moc_%.cpp)
 
@@ -307,11 +316,9 @@ BUILT_SOURCES += $(MOCEDFILES)
 CLEANFILES += $(MOCEDFILES)
 
 moc_%.cpp: %.h
-	$(MOC4) -D_WIN32 -o $@ $<
+	$(MOC4) $(MOCFLAG) -o $@ $<
 
 liblyxcore_a_DEPENDENCIES = $(MOCEDFILES)
-
-endif
 
 ############################### Graphics ##############################
 

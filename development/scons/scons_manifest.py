@@ -47,6 +47,7 @@ src_header_files = Split('''
     Color.h
     ColorSet.h
     ColorCode.h
+    Compare.h
     CompletionList.h
     Converter.h
     ConverterCache.h
@@ -155,6 +156,7 @@ src_pre_files = Split('''
     Chktex.cpp
     CmdDef.cpp
     Color.cpp
+    Compare.cpp
     Converter.cpp
     ConverterCache.cpp
     CoordCache.cpp
