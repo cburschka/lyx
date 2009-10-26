@@ -2394,9 +2394,6 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 	FontInfo font_old =
 		style.labeltype == LABEL_MANUAL ? style.labelfont : style.font;
 
-	//if (style.pass_thru && !d->onlyText(buf, outerfont, initial))
-	//	os << "]]>";
-
 	// parsing main loop
 	for (pos_type i = initial; i < size(); ++i) {
 		Font font = getFont(buf.params(), i, outerfont);
@@ -2423,8 +2420,13 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 		}
 		// FIXME Other such tags? 
 
-		if (Inset const * inset = getInset(i)) {
-			retval += inset->xhtml(os, runparams);
+		Inset const * inset = getInset(i);
+		if (inset) {
+			InsetLayout const & il = inset->getLayout();
+			OutputParams np = runparams;
+			if (!il.htmlisblock())
+				np.html_in_par = true;
+			retval += inset->xhtml(os, np);
 		} else {
 			char_type c = d->text_[i];
 

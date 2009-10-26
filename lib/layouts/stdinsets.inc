@@ -145,6 +145,7 @@ InsetLayout Note:Comment
 	EndFont
 	MultiPar              true
 	HTMLTag               !--
+	HTMLIsBlock           false
 End
 
 
@@ -158,6 +159,7 @@ InsetLayout Note:Note
 	  Size                Small
 	EndFont
 	MultiPar              true
+	HTMLIsBlock           false
 End
 
 InsetLayout Note:Greyedout
@@ -175,6 +177,7 @@ InsetLayout Note:Greyedout
 	HTMLStyle
 		span.notegrey { color: gray; }
 	EndHTMLStyle
+	HTMLIsBlock           false
 End
 
 InsetLayout ERT
@@ -235,6 +238,7 @@ InsetLayout Branch
 	EndFont
 	MultiPar              true
 	InToc                 true
+	HTMLIsBlock           false
 End
 
 InsetLayout Index

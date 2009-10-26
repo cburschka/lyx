@@ -38,6 +38,7 @@ public:
 		CONGLOMERATE,
 		DEFAULT
 	};
+	///
 	enum InsetLyXType {
 		NOLYXTYPE,
 		CHARSTYLE,
@@ -46,6 +47,7 @@ public:
 		END,
 		STANDARD
 	};
+	///
 	enum InsetLaTeXType {
 		NOLATEXTYPE,
 		COMMAND,
@@ -95,6 +97,8 @@ public:
 	/// 
 	docstring htmlpreamble() const { return htmlpreamble_; }
 	///
+	bool htmlisblock() const { return htmlisblock_; }
+	///
 	std::set<std::string> requires() const { return requires_; };
 	///
 	bool isMultiPar() const { return multipar_; };
@@ -143,20 +147,29 @@ private:
 	docstring counter_;
 	///
 	docstring preamble_;
-	/// 
+	/// The tag enclosing all the material in this inset.
 	std::string htmltag_;
-	/// 
+	/// Additional attributes for inclusion with the start tag.
 	std::string htmlattr_;
-	///
+	/// Tag for individual paragraphs in the inset.
 	std::string htmlinnertag_;
-	/// 
+	/// Attributes for that tag.
 	std::string htmlinnerattr_;
-	///
+	/// A label for this environment, possibly including a reference
+	/// to a counter. E.g., for footnote, it might be:
+	///    <span class='notenum'>\arabic{footnote}</span>
 	std::string htmllabel_;
-	/// 
+	/// CSS associated with this inset.
 	docstring htmlstyle_;
-	/// 
+	/// Additional material for the header.
 	docstring htmlpreamble_;
+	/// Whether this inset represents a "block" of material, i.e., a set
+	/// of paragraphs of its own (true), or should be run into the previous
+	/// paragraph (false). Examples:
+	///   For branches, this is false.
+	///   For footnotes, this is true.
+	/// Defaults to true.
+	bool htmlisblock_;
 	///
 	std::set<std::string> requires_;
 	///

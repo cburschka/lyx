@@ -77,12 +77,6 @@ bool openTag(odocstream & os, string const & tag, string const & attr)
 {
 	if (tag.empty())
 		return false;
-	// FIXME This is completely primitive. We need something
-	// a lot better.
-	// Now do some checks on nesting of tags.
-	if (tag == "p")
-		if (find(taglist.begin(), taglist.end(), "p") != taglist.end())
-			return false;
 	os << from_ascii("<" + tag + (attr.empty() ? "" : " " + attr) + ">");
 	taglist.push_back(tag);
 	return true;
@@ -206,10 +200,27 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 		// do something with it.
 		if (par != pbegin)
 			os << '\n';
-		bool const opened = openTag(os, lay);
+
+		// FIXME Should we really allow anything other than 'p' here?
+		
+		// If we are already in a paragraph, and this is the first one, then we
+		// do not want to open the paragraph tag.
+		bool const opened = 
+			(par == pbegin && runparams.html_in_par) ? false : openTag(os, lay);
 		docstring const deferred = par->simpleLyXHTMLOnePar(buf, os, runparams,
 				text.outerFont(distance(begin, par)));
-		if (opened) {
+
+		// We want to issue the closing tag if either:
+		//   (i)  We opened it, and either html_in_par is false,
+		//        or we're not in the last paragraph, anyway.
+		//   (ii) We didn't open it and html_in_par is true, 
+		//        but we are in the first par, and there is a next par.
+		ParagraphList::const_iterator nextpar = par;
+		nextpar++;
+		bool const needClose = 
+			(opened && (!runparams.html_in_par || nextpar != pend))
+			|| (!opened && runparams.html_in_par && par == pbegin && nextpar != pend);
+		if (needClose) {
 			closeTag(os, lay);
 			os << '\n';
 		}
@@ -427,6 +438,7 @@ void xhtmlParagraphs(Text const & text,
 	ParagraphList::const_iterator par = paragraphs.begin();
 	ParagraphList::const_iterator pend = paragraphs.end();
 
+	OutputParams ourparams = runparams;
 	while (par != pend) {
 		Layout const & style = par->layout();
 		ParagraphList::const_iterator lastpar = par;
@@ -436,25 +448,34 @@ void xhtmlParagraphs(Text const & text,
 		case LATEX_COMMAND: {
 			// The files with which we are working never have more than
 			// one paragraph in a command structure.
-			makeCommand(buf, os, runparams, text, par);
+			// FIXME 
+			// if (ourparams.html_in_par)
+			//   fix it so we don't get sections inside standard, e.g.
+			// note that we may then need to make runparams not const, so we
+			// can communicate that back.
+			// FIXME Maybe this fix should be in the routines themselves, in case
+			// they are called from elsewhere.
+			makeCommand(buf, os, ourparams, text, par);
 			++par;
 			break;
 		}
 		case LATEX_ENVIRONMENT:
 		case LATEX_LIST_ENVIRONMENT:
 		case LATEX_ITEM_ENVIRONMENT: {
+			// FIXME Same fix here.
 			send = searchEnvironmentHtml(par, pend);
-			par = makeEnvironmentHtml(buf, os, runparams, text, par, send);
+			par = makeEnvironmentHtml(buf, os, ourparams, text, par, send);
 			break;
 		}
 		case LATEX_BIB_ENVIRONMENT: {
+			// FIXME Same fix here.
 			send = searchEnvironmentHtml(par, pend);
-			par = makeBibliography(buf, os, runparams, text, par, send);
+			par = makeBibliography(buf, os, ourparams, text, par, send);
 			break;
 		}
 		case LATEX_PARAGRAPH:
 			send = searchParagraphHtml(par, pend);
-			par = makeParagraphs(buf, os, runparams, text, par, send);
+			par = makeParagraphs(buf, os, ourparams, text, par, send);
 			break;
 		}
 		// FIXME??

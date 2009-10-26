@@ -86,6 +86,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		IL_HTMLATTR,
 		IL_HTMLINNERTAG,
 		IL_HTMLINNERATTR,
+		IL_HTMLISBLOCK,
 		IL_HTMLLABEL,
 		IL_HTMLSTYLE,
 		IL_HTMLPREAMBLE,
@@ -120,6 +121,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		{ "htmlattr", IL_HTMLATTR },
 		{ "htmlinnerattr", IL_HTMLINNERATTR},
 		{ "htmlinnertag", IL_HTMLINNERTAG},
+		{ "htmlisblock", IL_HTMLISBLOCK},
 		{ "htmllabel", IL_HTMLLABEL },
 		{ "htmlpreamble", IL_HTMLPREAMBLE },
 		{ "htmlstyle", IL_HTMLSTYLE },
@@ -291,6 +293,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			break;
 		case IL_HTMLLABEL:
 			lex >> htmllabel_;
+			break;
+		case IL_HTMLISBLOCK:
+			lex >> htmlisblock_;
 			break;
 		case IL_HTMLSTYLE:
 			htmlstyle_ = from_utf8(lex.getLongString("EndHTMLStyle"));
