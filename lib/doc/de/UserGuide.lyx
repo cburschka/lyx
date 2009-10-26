@@ -1,4 +1,4 @@
-#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -33165,8 +33165,7 @@ DVI
  
 \family sans
 Werkzeuge\SpecialChar \menuseparator
-Einstellungen\SpecialChar \ldots{}
-\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
 Aussehen
 \begin_inset space \space{}
 \end_inset
@@ -33176,7 +33175,7 @@ Aussehen
 \end_inset
 
 Handhabung\SpecialChar \menuseparator
-Grafik
+Anzeige
 \family default
  
 \family sans
@@ -33191,36 +33190,21 @@ Vorschau
 An
 \family default
  setzen.
- Vorschauen werden erzeugt, wenn Sie ein Dokument öffnen und etwas eingefügt
+ Die 
+\family sans
+Vorschaugröße
+\family default
+ ist der Multiplikationsfaktor für die Größe.
+\end_layout
+
+\begin_layout Standard
+Vorschauen werden erzeugt, wenn Sie ein Dokument öffnen und etwas eingefügt
  haben.
  Von einem bereits geöffneten Dokument werden 
 \emph on
 keine
 \emph default
  Vorschauen erzeugt.
-\end_layout
-
-\begin_layout Standard
-Vorschauen werden erzeugt, wenn Sie ein Dokument öffnen und wenn Sie eine
- Einfügung beendet haben.
- Vorschauen werden allein durch Setzen von 
-\family sans
-Sofortige
-\begin_inset space \space{}
-\end_inset
-
-Vorschau
-\family default
- auf 
-\family sans
-An
-\family default
- 
-\emph on
-nicht
-\emph default
- gezeigt.
- Sie müssen die Dokumente neu laden.
 \end_layout
 
 \begin_layout Standard
@@ -38952,7 +38936,7 @@ Zweig
 \end_layout
 
 \begin_layout Subsection
-Grafik
+Anzeige
 \end_layout
 
 \begin_layout Description
@@ -38960,8 +38944,7 @@ Grafiken
 \begin_inset space ~
 \end_inset
 
-anzeigen Hier legen Sie fest, wie Grafiken in LyX dargestellt werden sollen.
- Ist Ihr PC langsam, können Sie auch auf eine Darstellung verzichten.
+anzeigen Hier legen Sie fest, ob Grafiken in LyX dargestellt werden sollen.
 \end_layout
 
 \begin_layout Description
@@ -38971,6 +38954,14 @@ Sofortige
 
 Vorschau Hier legen Sie fest, wie schnell Grafiken in LyX dargestellt werden
  sollen.
+\end_layout
+
+\begin_layout Description
+Absatzenden
+\begin_inset space ~
+\end_inset
+
+markieren Zeigt hinter jedem Absatz ein Absatzzeichen an.
 \end_layout
 
 \begin_layout Section

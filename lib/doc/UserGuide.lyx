@@ -28152,9 +28152,18 @@ and
 \end_inset
 
 feel\SpecialChar \menuseparator
-Graphics
+Display
 \family default
 .
+ The 
+\family sans
+Preview
+\begin_inset space ~
+\end_inset
+
+Size
+\family default
+ is the multiplication factor for the size.
 \end_layout
 
 \begin_layout Standard
@@ -40433,12 +40442,12 @@ Alter
 \end_layout
 
 \begin_layout Subsection
-Graphics
+Display
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Settings ! Graphics
+Settings ! Display
 \end_layout
 
 \end_inset
@@ -40447,7 +40456,7 @@ Settings ! Graphics
 \end_layout
 
 \begin_layout Standard
-Here you can specify how graphics inside LyX are displayed.
+Here you can specify if graphics inside LyX are displayed.
 \end_layout
 
 \begin_layout Standard
@@ -40468,6 +40477,26 @@ reference "sec:Previewing-snippets-of"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+The option 
+\family sans
+Mark
+\begin_inset space ~
+\end_inset
+
+end
+\begin_inset space ~
+\end_inset
+
+of
+\begin_inset space ~
+\end_inset
+
+paragraphs
+\family default
+ displays a pilcrow at the end of every paragraph.
 \end_layout
 
 \begin_layout Section

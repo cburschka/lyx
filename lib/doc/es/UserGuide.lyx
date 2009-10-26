@@ -1,4 +1,4 @@
-#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -28631,9 +28631,16 @@ inmediata
 \family sans
 Herramientas\SpecialChar \menuseparator
 Preferencias\SpecialChar \menuseparator
-Gráficos
+Pantalla
 \family default
 .
+ El 
+\family sans
+Tamaño de la vista preliminar
+\family default
+ 
+\lang english
+is the multiplication factor for the size.
 \end_layout
 
 \begin_layout Standard
@@ -41149,12 +41156,12 @@ Cambiar
 \end_layout
 
 \begin_layout Subsection
-Gráficos
+Pantalla
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Gráficos ! Configuración
+Configuración ! Pantalla
 \end_layout
 
 \end_inset
@@ -41163,7 +41170,7 @@ Gráficos ! Configuración
 \end_layout
 
 \begin_layout Standard
-Esta opción permite decidir cómo se mostrarán los gráficos en la pantalla
+Esta opción permite decidir si se mostrarán los gráficos en la pantalla
  de LyX.
 \end_layout
 
@@ -41201,6 +41208,28 @@ reference "sec:Vista-preliminar-inmediata"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The option 
+\family sans
+Mark
+\begin_inset space ~
+\end_inset
+
+end
+\begin_inset space ~
+\end_inset
+
+of
+\begin_inset space ~
+\end_inset
+
+paragraphs
+\family default
+ displays a pilcrow at the end of every paragraph.
 \end_layout
 
 \begin_layout Section
