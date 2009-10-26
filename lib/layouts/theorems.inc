@@ -59,10 +59,6 @@ Style Theorem
 		\addto\captions$$lang{\renewcommand{\theoremname}{_(Theorem)}}
 	EndBabelPreamble
 	Requires              amsthm
-	HTMLTag               div
-	HTMLAttr              class="theorem"
-	HTMLLabel             span
-	HTMLLabelAttr         class="theoremlabel"
 End
 
 
