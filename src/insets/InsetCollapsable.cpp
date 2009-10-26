@@ -441,9 +441,9 @@ Inset::EDITABLE InsetCollapsable::editable() const
 }
 
 
-bool InsetCollapsable::descendable() const
+bool InsetCollapsable::descendable(BufferView const & bv) const
 {
-	return geometry() != ButtonOnly;
+	return geometry(bv) != ButtonOnly;
 }
 
 

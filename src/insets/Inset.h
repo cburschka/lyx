@@ -314,7 +314,7 @@ public:
 	///
 	virtual EDITABLE editable() const;
 	/// can we go further down on mouse click?
-	virtual bool descendable() const { return false; }
+	virtual bool descendable(BufferView const &) const { return false; }
 	/// does this contain text that can be change track marked in DVI?
 	virtual bool canTrackChanges() const { return false; }
 	/// return true if the inset should be removed automatically

@@ -242,6 +242,9 @@ What's new
 - Do not swallow spaces after a LaTeX macro appearing in text mode
   inside mathed (bug 6284).
 
+- Show the correct context menu for Insets nested in closed Insets
+  that are opened by the navigate or search functionality (bug 6820).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
