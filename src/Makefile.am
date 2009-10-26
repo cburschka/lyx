@@ -67,6 +67,8 @@ lyx_SOURCES = \
 	BiblioInfo.cpp \
 	Box.cpp \
 	Box.h \
+	Compare.cpp \
+	Compare.h \
 	Dimension.cpp \
 	Dimension.h \
 	$(HUNSPELL) \
@@ -94,7 +96,6 @@ SOURCEFILESCORE = \
 	Chktex.cpp \
 	CmdDef.cpp \
 	Color.cpp \
-	Compare.cpp \
 	ConverterCache.cpp \
 	Converter.cpp \
 	CoordCache.cpp \
@@ -191,7 +192,6 @@ HEADERFILESCORE = \
 	ColorCode.h \
 	Color.h \
 	ColorSet.h \
-	Compare.h \
 	CompletionList.h \
 	ConverterCache.h \
 	Converter.h \
