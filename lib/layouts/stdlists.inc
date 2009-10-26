@@ -27,6 +27,7 @@ Style Itemize
 	LabelString           "*"
 	HTMLTag               ul
 	HTMLItem              li
+	HTMLLabel             NONE
 End
 
 

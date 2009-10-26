@@ -302,6 +302,7 @@ private:
 	/// descriptions, in which case it would be: dt. Another use is to
 	/// customize the display of, say, the auto-generated label for 
 	/// sections. Defaults to "span".
+	/// If set to "NONE", this suppresses the printing of the label.
 	std::string htmllabel_;
 	/// Attributes for the label. Defaults to: class="layoutnamelabel".
 	std::string htmllabelattr_;

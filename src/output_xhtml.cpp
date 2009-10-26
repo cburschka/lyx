@@ -307,11 +307,12 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 				}
 				bool item_tag_opened = false;
 				bool const labelfirst = style.htmllabelfirst();
+				bool madelabel = false;
 				if (isNormalEnv(style)) {
 					// in this case, we print the label only for the first 
 					// paragraph (as in a theorem).
 					item_tag_opened = openItemTag(os, style);
-					if (par == pbegin) {
+					if (par == pbegin && style.htmllabel() != "NONE") {
 						docstring const lbl = 
 								pbegin->expandLabel(style, buf.params(), false);
 						if (!lbl.empty()) {
@@ -325,28 +326,30 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 				}	else { // some kind of list
 					if (!labelfirst)
 						item_tag_opened = openItemTag(os, style);
-					if (style.labeltype == LABEL_MANUAL) {
-						bool const label_tag_opened = openLabelTag(os, style);
+					if (style.labeltype == LABEL_MANUAL
+					    && style.htmllabel() != "NONE") {
+						madelabel = openLabelTag(os, style);
 						sep = par->firstWordLyXHTML(os, runparams);
-						if (label_tag_opened)
+						if (madelabel)
 							closeLabelTag(os, style);
 						os << '\n';
 					}
-					else if (style.labeltype != LABEL_NO_LABEL) {
-						bool const label_tag_opened = openLabelTag(os, style);
+					else if (style.labeltype != LABEL_NO_LABEL
+					         && style.htmllabel() != "NONE") {
+						madelabel = openLabelTag(os, style);
 						os << par->expandLabel(style, buf.params(), false);
-						if (label_tag_opened)
+						if (madelabel)
 							closeLabelTag(os, style);
 						os << '\n';
 					}
 					if (labelfirst)
 						item_tag_opened = openItemTag(os, style);
-					else
-						os << "<span class='item'>";
+					else if (madelabel)
+						os << "<span class='" << style.name() << "inneritem'>";
 				}
 				par->simpleLyXHTMLOnePar(buf, os, runparams, 
 					text.outerFont(distance(begin, par)), sep);
-				if (!isNormalEnv(style) && labelfirst)
+				if (!isNormalEnv(style) && !labelfirst && madelabel)
 					os << "</span>";
 				++par;
 				if (item_tag_opened) {
