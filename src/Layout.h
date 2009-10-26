@@ -124,7 +124,7 @@ public:
 	///
 	bool htmllabelfirst() const { return htmllabelfirst_; }
 	/// 
-	docstring const & htmlstyle() const { return htmlstyle_; }
+	docstring htmlstyle() const;
 	/// 
 	docstring const & htmlpreamble() const { return htmlpreamble_; }
 	///
@@ -249,6 +249,9 @@ public:
 
 
 private:
+	/// generates the default CSS for this layout
+	void makeDefaultCSS() const;
+	
 	/// Name of the layout/paragraph environment
 	docstring name_;
 
@@ -315,6 +318,13 @@ private:
 	bool htmllabelfirst_;
 	/// CSS information needed by this layout.
 	docstring htmlstyle_;
+	/// Should we generate the default CSS for this layout, even if HTMLStyle
+	/// has been given? Default is false.
+	/// Note that the default CSS is output first, then the user CSS, so it is
+	/// possible to override what one does not want.
+	bool htmlforcedefault_;
+	/// A cache for the default style info so generated.
+	mutable docstring htmldefaultstyle_;
 	/// Any other info for the HTML header.
 	docstring htmlpreamble_;
 	/// This is the `category' for this layout. The following are
