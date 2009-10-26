@@ -116,37 +116,55 @@ namespace {
 
 bool openTag(odocstream & os, Layout const & lay)
 {
-	return html::openTag(os, lay.htmltag(), lay.htmlattr());
+	string const tag = lay.htmltag().empty() 
+			? "div" : lay.htmltag();
+	string const attr = lay.htmlattr().empty()
+			? "class=\"" + to_utf8(lay.name()) + "\"" : lay.htmlattr();
+	return html::openTag(os, tag, attr);
 }
 
 
 bool closeTag(odocstream & os, Layout const & lay)
 {
-	return html::closeTag(os, lay.htmltag());
+	string const tag = lay.htmltag().empty() 
+			? "div" : lay.htmltag();
+	return html::closeTag(os, tag);
 }
 
 
 bool openLabelTag(odocstream & os, Layout const & lay)
 {
-	return html::openTag(os, lay.htmllabel(), lay.htmllabelattr());
+	string const tag = lay.htmllabel().empty() 
+			? "span" : lay.htmllabel();
+	string const attr = lay.htmlattr().empty()
+			? "class=\"" + to_utf8(lay.name()) + "label\"" : lay.htmllabelattr();
+	return html::openTag(os, tag, attr);
 }
 
 
 bool closeLabelTag(odocstream & os, Layout const & lay)
 {
-	return html::closeTag(os, lay.htmllabel());
+	string const tag = lay.htmllabel().empty() 
+			? "span" : lay.htmllabel();
+	return html::closeTag(os, tag);
 }
 
 
 bool openItemTag(odocstream & os, Layout const & lay)
 {
-	return html::openTag(os, lay.htmlitem(), lay.htmlitemattr());
+	string const tag = lay.htmlitem().empty() 
+			? "div" : lay.htmlitem();
+	string const attr = lay.htmlitemattr().empty()
+			? "class=\"" + to_utf8(lay.name()) + "item\"" : lay.htmllabelattr();
+	return html::openTag(os, tag, attr);
 }
 
 
 bool closeItemTag(odocstream & os, Layout const & lay)
 {
-	return html::closeTag(os, lay.htmlitem());
+	string const tag = lay.htmlitem().empty() 
+			? "div" : lay.htmlitem();
+	return html::closeTag(os, tag);
 }
 
 ParagraphList::const_iterator searchParagraphHtml(
@@ -161,9 +179,10 @@ ParagraphList::const_iterator searchParagraphHtml(
 
 
 ParagraphList::const_iterator searchEnvironmentHtml(
-		ParagraphList::const_iterator p,
+		ParagraphList::const_iterator const pstart,
 		ParagraphList::const_iterator const & pend)
 {
+	ParagraphList::const_iterator p = pstart;
 	Layout const & bstyle = p->layout();
 	size_t const depth = p->params().depth();
 	for (++p; p != pend; ++p) {
@@ -183,7 +202,6 @@ ParagraphList::const_iterator searchEnvironmentHtml(
 		if (style.latextype == LATEX_PARAGRAPH
 		    || style.latexname() != bstyle.latexname())
 			return p;
-
 	}
 	return pend;
 }
@@ -237,6 +255,13 @@ ParagraphList::const_iterator makeBibliography(Buffer const & buf,
 }
 
 
+namespace {
+	bool isNormalEnv(Layout const & lay)
+	{
+		return lay.latextype == LATEX_ENVIRONMENT;
+	}
+}
+
 ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 					      odocstream & os,
 					      OutputParams const & runparams,
@@ -258,7 +283,9 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 
 	while (par != pend) {
 		Layout const & style = par->layout();
-		if (!style.counter.empty())
+		// the counter only gets stepped if we're in some kind of list,
+		// or if it's the first time through.
+		if (!style.counter.empty() && (par == pbegin || !isNormalEnv(style)))
 			buf.params().documentClass().counters().step(style.counter);
 		ParagraphList::const_iterator send;
 		// this will be positive, if we want to skip the initial word
@@ -273,38 +300,49 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 			// One is that we are still in the environment in which we 
 			// started---which we will be if the depth is the same.
 			if (par->params().depth() == origdepth) {
-				Layout const & cstyle = par->layout();
+				LASSERT(bstyle == style, /* */);
 				if (lastlay != 0) {
 					closeItemTag(os, *lastlay);
 					lastlay = 0;
 				}
-				bool const labelfirst = cstyle.htmllabelfirst();
 				bool item_tag_opened = false;
-				if (!labelfirst)
-					item_tag_opened = openItemTag(os, cstyle);
-				if (cstyle.labeltype == LABEL_MANUAL) {
-					bool const label_tag_opened = openLabelTag(os, cstyle);
-					sep = par->firstWordLyXHTML(os, runparams);
-					if (label_tag_opened)
-						closeLabelTag(os, cstyle);
-					os << '\n';
+				bool const labelfirst = style.htmllabelfirst();
+				if (isNormalEnv(style)) {
+					// in this case, we print the label only for the first 
+					// paragraph (as in a theorem).
+					item_tag_opened = openItemTag(os, style);
+					if (par == pbegin) {
+						bool const label_tag_opened = openLabelTag(os, style);
+						os << pbegin->expandLabel(style, buf.params(), false);
+						if (label_tag_opened)
+							closeLabelTag(os, style);
+						os << '\n';
+					}
+				}	else { // some kind of list
+					if (!labelfirst)
+						item_tag_opened = openItemTag(os, style);
+					if (style.labeltype == LABEL_MANUAL) {
+						bool const label_tag_opened = openLabelTag(os, style);
+						sep = par->firstWordLyXHTML(os, runparams);
+						if (label_tag_opened)
+							closeLabelTag(os, style);
+						os << '\n';
+					}
+					else if (style.labeltype != LABEL_NO_LABEL) {
+						bool const label_tag_opened = openLabelTag(os, style);
+						os << par->expandLabel(style, buf.params(), false);
+						if (label_tag_opened)
+							closeLabelTag(os, style);
+						os << '\n';
+					}
+					if (labelfirst)
+						item_tag_opened = openItemTag(os, style);
+					else
+						os << "<span class='item'>";
 				}
-				// FIXME Why did I put that first condition??
-				else if (style.latextype == LATEX_ENVIRONMENT 
-				           && style.labeltype != LABEL_NO_LABEL) {
-					bool const label_tag_opened = openLabelTag(os, cstyle);
-					os << pbegin->expandLabel(style, buf.params(), false);
-					if (label_tag_opened)
-						closeLabelTag(os, cstyle);
-					os << '\n';
-				}
-				if (labelfirst)
-					item_tag_opened = openItemTag(os, cstyle);
-				else
-					os << "<span class='item'>";
 				par->simpleLyXHTMLOnePar(buf, os, runparams, 
 					text.outerFont(distance(begin, par)), sep);
-				if (!labelfirst)
+				if (!isNormalEnv(style) && labelfirst)
 					os << "</span>";
 				++par;
 				if (item_tag_opened) {
@@ -317,10 +355,9 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 				     && par->params().depth() != origdepth) {
 				     // then we'll save this layout for later, and close it when
 				     // we get another item.
-						lastlay = &cstyle;
-					} else {
-						closeItemTag(os, cstyle);
-					}
+						lastlay = &style;
+					} else
+						closeItemTag(os, style);
 					os << '\n';
 				}
 			}

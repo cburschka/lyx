@@ -286,24 +286,24 @@ private:
 	std::string labeltag_;
 	/// Internal tag to surround the item text in a list.
 	std::string itemtag_;
-	/// Tag for HTML output, e.g., h2.
+	/// Tag for HTML output, e.g., h2. Defaults to "div".
 	std::string htmltag_;
-	/// Additional attributes for inclusion with the start tag, 
-	/// e.g.: class='section'.
+	/// Additional attributes for inclusion with the start tag. Defaults
+	/// to: class="layoutname".
 	std::string htmlattr_;
 	/// Tag for individual paragraphs in an environment. In lists, this
 	/// would be something like "li". But it also needs to be set for
 	/// quotation, e.g., since the paragraphs in a quote need to be 
-	/// in "p" tags.
+	/// in "p" tags. Default is "div".
 	std::string htmlitem_;
-	/// Attributes for htmlitem_
+	/// Attributes for htmlitem_. Default is: class="layoutnameitem".
 	std::string htmlitemattr_;
 	/// Tag for labels, of whatever sort. One use for this is in setting
 	/// descriptions, in which case it would be: dt. Another use is to
 	/// customize the display of, say, the auto-generated label for 
-	/// sections (in that case, it might be: span).
+	/// sections. Defaults to "span".
 	std::string htmllabel_;
-	/// Attributes for the label.
+	/// Attributes for the label. Defaults to: class="layoutnamelabel".
 	std::string htmllabelattr_;
 	/// Whether to put the label before the item, or within the item.
 	/// I.e., do we have (true):
