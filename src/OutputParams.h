@@ -209,8 +209,10 @@ public:
 	bool dryrun;
 	/// Should we output verbatim or escape LaTeX's special chars?
 	bool verbatim;
-	/// Should we output captions? (Used in HTML output.)
-	bool disable_captions;
+	/// Should we output captions?
+	bool html_disable_captions;
+	/// Are we already in a paragraph?
+	bool html_in_par;
 };
 
 

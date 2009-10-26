@@ -253,7 +253,7 @@ int InsetCaption::docbook(odocstream & os,
 docstring InsetCaption::xhtml(odocstream & os,
 			  OutputParams const & rp) const
 {
-	if (rp.disable_captions)
+	if (rp.html_disable_captions)
 		return docstring();
 	os << "<div class='float-caption'>\n";
 	docstring def = getCaptionAsHTML(os, rp);
