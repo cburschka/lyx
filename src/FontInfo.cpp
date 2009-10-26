@@ -17,6 +17,7 @@
 #include "FontInfo.h"
 
 #include "support/debug.h"
+#include "support/docstring.h"
 
 using namespace std;
 
@@ -313,6 +314,111 @@ Color FontInfo::realColor() const
 	if (color_ == Color_none)
 		return Color_foreground;
 	return color_;
+}
+
+
+namespace {
+
+	void appendSep(string & s1, string const & s2) {
+		if (s2.empty()) 
+			return;
+		s1 += s1.empty() ? "" : "\n";
+		s1 += s2;
+	}
+
+
+	string makeCSSTag(string const & key, string const & val)
+	{
+		return key + ": " + val + ";";
+	}
+
+
+	string getFamily(FontFamily const & f)
+	{
+		switch (f) {
+		case ROMAN_FAMILY: return "serif";
+		case SANS_FAMILY: return "sans-serif";
+		case TYPEWRITER_FAMILY: return "monospace";
+		case INHERIT_FAMILY: return "inherit";
+		default: break;
+		}
+		return "";
+	}
+
+
+	string getSeries(FontSeries const & s)
+	{
+		switch (s) {
+		case MEDIUM_SERIES: return "normal";
+		case BOLD_SERIES: return "bold";
+		case INHERIT_SERIES: return "inherit";
+		default: break;
+		}
+		return "";
+	}
+
+
+	string getShape(FontShape const & s)
+	{
+		string fs = "normal";
+		string fv = "normal";
+		switch (s) {
+		case UP_SHAPE: break;
+		case ITALIC_SHAPE: fs = "italic"; break;
+		case SLANTED_SHAPE: fs = "oblique"; break;
+		case SMALLCAPS_SHAPE: fv = "small-caps"; break;
+		case INHERIT_SHAPE: fs = "inherit"; fv = "inherit"; break;
+		case IGNORE_SHAPE: fs = ""; fv = ""; break;
+		}
+		string retval;
+		if (!fs.empty())
+			appendSep(retval, makeCSSTag("font-style", fs));
+		if (!fv.empty())
+			appendSep(retval, makeCSSTag("font-variant", fv));
+		return retval;
+	}
+
+
+	string getSize(FontSize const & s)
+	{
+		switch (s) {
+		case FONT_SIZE_TINY: return "xx-small";
+		case FONT_SIZE_SCRIPT: return "x-small";
+		case FONT_SIZE_FOOTNOTE: 
+		case FONT_SIZE_SMALL: return "small";
+		case FONT_SIZE_NORMAL: return "medium";
+		case FONT_SIZE_LARGE: return "large";
+		case FONT_SIZE_LARGER: 
+		case FONT_SIZE_LARGEST: return "x-large";
+		case FONT_SIZE_HUGE: 
+		case FONT_SIZE_HUGER: return "xx-large";
+		case FONT_SIZE_INCREASE: return "larger";
+		case FONT_SIZE_DECREASE: return "smaller";
+		case FONT_SIZE_INHERIT: return "inherit";
+		case FONT_SIZE_IGNORE: return "";
+		}	
+		// squash warning
+		return "";
+	}
+	
+} // namespace anonymous
+
+
+// FIXME This does not yet handle color
+docstring FontInfo::asCSS() const 
+{
+	string retval;
+	string tmp = getFamily(family_);
+	if (!tmp.empty())
+		appendSep(retval, makeCSSTag("font-family", tmp));
+	tmp = getSeries(series_);
+	if (!tmp.empty())
+		appendSep(retval, makeCSSTag("font-series", tmp));
+	appendSep(retval, getShape(shape_));
+	tmp = getSize(size_);
+	if (!tmp.empty())
+		appendSep(retval, makeCSSTag("font-size", tmp));
+	return from_ascii(retval);	
 }
 
 } // namespace lyx

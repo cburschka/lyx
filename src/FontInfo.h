@@ -22,6 +22,7 @@
 #include "Color.h"
 #include "ColorCode.h"
 #include "FontEnums.h"
+#include "support/strfwd.h"
 
 namespace lyx {
 
@@ -104,6 +105,9 @@ public:
 	Color realColor() const;
 	/// Sets the color which is used during painting
 	void setPaintColor(Color c) { paint_color_ = c; }
+
+	///
+	docstring asCSS() const;
 
 	/// Converts logical attributes to concrete shape attribute
 	/// Try hard to inline this as it shows up with 4.6 % in the profiler.
