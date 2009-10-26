@@ -29696,12 +29696,29 @@ vif
  dans la rubrique 
 \family sans
 Apparence\SpecialChar \menuseparator
-Graphique
+Affichage écran
 \family default
  du menu 
 \family sans
 Outils\SpecialChar \menuseparator
 Préférences.
+ 
+\family default
+La 
+\family sans
+Taille
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+l'aperçu
+\family default
+ 
+\lang english
+is the multiplication factor for the size.
 \end_layout
 
 \begin_layout Standard
@@ -40986,12 +41003,12 @@ Modifier
 \end_layout
 
 \begin_layout Subsection
-Graphique
+Affichage écran
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Préférences ! Graphique
+Préférences ! Affichage écran
 \end_layout
 
 \end_inset
@@ -41000,7 +41017,7 @@ Préférences ! Graphique
 \end_layout
 
 \begin_layout Standard
-Ici, vous pouvez préciser comment LyX doit afficher les graphiques.
+Ici, vous pouvez préciser si LyX doit afficher les graphiques.
 \end_layout
 
 \begin_layout Standard
@@ -41021,6 +41038,28 @@ reference "sec:Aperçu-de-morceaux"
 \end_inset
 
  pour plus de détails.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The option 
+\family sans
+Mark
+\begin_inset space ~
+\end_inset
+
+end
+\begin_inset space ~
+\end_inset
+
+of
+\begin_inset space ~
+\end_inset
+
+paragraphs
+\family default
+ displays a pilcrow at the end of every paragraph.
 \end_layout
 
 \begin_layout Section

@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 370
+\lyxformat 371
 \begin_document
 \begin_header
 \textclass scrbook
@@ -120,9 +120,8 @@
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
-\author 1 "Jürgen Spitzmüller" 
 \end_header
 
 \begin_body
@@ -25582,25 +25581,13 @@ Entry
 \end_inset
 
 .
- A 
-\change_deleted 1 1250501350
-gray 
-\change_unchanged
-box labeled 
+ A box labeled 
 \begin_inset Quotes eld
 \end_inset
 
 
 \family sans
-I
-\change_inserted 1 1250501353
-n
-\change_unchanged
-d
-\change_inserted 1 1250501354
-e
-\change_unchanged
-x
+Index
 \family default
 
 \begin_inset Quotes erd
@@ -25622,12 +25609,6 @@ key "latexcompanion,latexguide,latexbook"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 1 1250501388
-You can change index entries by clicking on the index box.
 \end_layout
 
 \begin_layout Standard
@@ -26384,8 +26365,6 @@ key "makeindex,xindy"
 \end_inset
 
 .
-\change_inserted 1 1250502076
-
 \end_layout
 
 \begin_layout Subsection
@@ -26410,33 +26389,19 @@ name "sub:Index-Program"
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted 1 1250501423
-When
-\change_inserted 1 1250501423
-If
-\change_unchanged
- the index entry program 
+If the index entry program 
 \family sans
 xindy
-\change_deleted 1 1250501596
-
 \family default
-, which is only available for Linux,
-\change_unchanged
  is installed, LyX uses it for index generation; otherwise the program 
 \family sans
 makeindex
 \family default
 , that is part of every LaTeX distribution, is used.
-\change_inserted 1 1250501973
-
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1250502015
 
 \family sans
 Makeindex
@@ -26451,14 +26416,10 @@ Makeindex
 xindy
 \family default
 .
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
  Both programs can be controlled by options that can be set in LyX's preferences
  dialog, see section
 \begin_inset space ~
@@ -26480,28 +26441,11 @@ key "makeindex,xindy"
 \end_inset
 
 .
- 
-\change_inserted 1 1250501656
-In this dialog, 
-\change_deleted 1 1250501657
-Y
-\change_inserted 1 1250501657
-y
-\change_unchanged
-ou can also specify 
-\change_deleted 1 1250501665
-there another
-\change_inserted 1 1250501676
-an alternative
-\change_unchanged
- program to generate the index.
-\change_inserted 1 1250501450
-
+ In this dialog, you can also specify an alternative program to generate
+ the index.
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1 1250501906
 If you need specific options or an alternative index program only for a
  given document, you can define the programm and\SpecialChar \slash{}
 or the options in 
@@ -26514,40 +26458,13 @@ Indexes
 .
  This is especially useful if you need to pass language-specific options
  to the index program or if you need a specific layout style.
-\change_deleted 1 1250501980
-
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 1 1250501966
-
-\family sans
-makeindex
-\family default
- is very old, no longer under development and has many pitfalls, notably
- that it was developed with only the English language in mind.
- So it fails to sort anything other than a monolingual English text correctly.
- We have shown above how to fix this sorting.
- However, if you are writing in another language and using Linux, consider
- to use 
-\family sans
-xindy
-\family default
-.
-\change_inserted 1 1250502093
-
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted 1 1250502212
 Multiple Indexes
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1 1250502759
 In many fields, it is common to have more than one index.
  For instance, you might need to set up a separate 
 \begin_inset Quotes eld
@@ -26569,8 +26486,6 @@ splitidx
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1250502516
 LaTeX-packages ! splitidx
 \end_layout
 
@@ -26592,8 +26507,6 @@ key "TeXCatalogue"
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1 1250503374
 To set up LyX for the use of multiple indexes, go to 
 \family sans
 Document\SpecialChar \menuseparator
@@ -26654,8 +26567,6 @@ Alter Color\SpecialChar \ldots{}
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1 1250503916
 Once the document changes have been applied, you can find the new index
  list in 
 \family sans
@@ -26680,15 +26591,11 @@ Insert
 \end_layout
 
 \begin_layout Itemize
-
-\change_inserted 1 1250503922
 If you want to change the attribution of a specific index entry, right-clicking
  on the entry will open a dialog where you can do that.
 \end_layout
 
 \begin_layout Itemize
-
-\change_inserted 1 1250504088
 By right-clicking on an index, you can change its type.
  Furthermore, you can specify an index list to be a 
 \begin_inset Quotes eld
@@ -28428,9 +28335,7 @@ preview
 Tools\SpecialChar \menuseparator
 Preferences 
 \family default
-dialog under 
-\family sans
-Look
+dialog under Look
 \begin_inset space ~
 \end_inset
 
@@ -28439,9 +28344,16 @@ and
 \end_inset
 
 feel\SpecialChar \menuseparator
-Graphics
+Display.
+ The 
+\family sans
+Preview
+\begin_inset space ~
+\end_inset
+
+Size
 \family default
-.
+ is the multiplication factor for the size.
 \end_layout
 
 \begin_layout Standard
@@ -40127,13 +40039,7 @@ Bibliography
 \end_layout
 
 \begin_layout Standard
-You can specify here a citation style using the LaTeX
-\change_inserted 1 1250501112
- 
-\change_deleted 1 1250501112
--
-\change_unchanged
-packages 
+You can specify here a citation style using the LaTeX packages 
 \series bold
 natbib
 \series default
@@ -40161,8 +40067,6 @@ LaTeX-packages ! jurabib
 
 \end_inset
 
-
-\change_inserted 1 1250501161
 , you can enable subdivided bibliographies using the LaTeX package 
 \series bold
 bibtopic
@@ -40172,17 +40076,13 @@ bibtopic
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1 1250501123
 LaTeX-packages ! bibtopic
 \end_layout
 
 \end_inset
 
  and you can customize how the bibliography of the given document is being
- generated
-\change_unchanged
-.
+ generated.
  For a further description see section
 \begin_inset space ~
 \end_inset
@@ -40195,19 +40095,13 @@ reference "sec:Bibliography"
 \end_inset
 
 .
-\change_inserted 1 1250501100
-
 \end_layout
 
 \begin_layout Section
-
-\change_inserted 1 1250500845
 Indexes
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1 1250501193
 Here, you can customize how the index of your document is being generated
  and you can define additional indexes.
  Please refer to section
@@ -40222,8 +40116,6 @@ reference "sec:Index"
 \end_inset
 
  for details.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Section
@@ -40956,12 +40848,12 @@ Alter
 \end_layout
 
 \begin_layout Subsection
-Graphics
+Display
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Settings ! Graphics
+Settings ! Display
 \end_layout
 
 \end_inset
@@ -40970,7 +40862,7 @@ Settings ! Graphics
 \end_layout
 
 \begin_layout Standard
-Here you can specify how graphics inside LyX are displayed.
+Here you can specify if graphics inside LyX are displayed.
 \end_layout
 
 \begin_layout Standard
@@ -40991,6 +40883,26 @@ reference "sec:Previewing-snippets-of"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+The option 
+\family sans
+Mark
+\begin_inset space ~
+\end_inset
+
+end
+\begin_inset space ~
+\end_inset
+
+of
+\begin_inset space ~
+\end_inset
+
+paragraphs
+\family default
+ displays a pilcrow at the end of every paragraph.
 \end_layout
 
 \begin_layout Section
