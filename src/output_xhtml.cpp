@@ -116,60 +116,42 @@ namespace {
 
 bool openTag(odocstream & os, Layout const & lay)
 {
-	string const tag = lay.htmltag().empty() 
-			? "div" : lay.htmltag();
-	string const attr = lay.htmlattr().empty()
-			? "class=\"" + to_utf8(lay.name()) + "\"" : lay.htmlattr();
-	return html::openTag(os, tag, attr);
+	return html::openTag(os, lay.htmltag(), lay.htmlattr());
 }
 
 
 bool closeTag(odocstream & os, Layout const & lay)
 {
-	string const tag = lay.htmltag().empty() 
-			? "div" : lay.htmltag();
-	return html::closeTag(os, tag);
+	return html::closeTag(os, lay.htmltag());
 }
 
 
 bool openLabelTag(odocstream & os, Layout const & lay)
 {
-	string const tag = lay.htmllabel().empty() 
-			? "span" : lay.htmllabel();
-	string const attr = lay.htmllabelattr().empty()
-			? "class=\"" + to_utf8(lay.name()) + "label\"" : lay.htmllabelattr();
-	return html::openTag(os, tag, attr);
+	return html::openTag(os, lay.htmllabel(), lay.htmllabelattr());
 }
 
 
 bool closeLabelTag(odocstream & os, Layout const & lay)
 {
-	string const tag = lay.htmllabel().empty() 
-			? "span" : lay.htmllabel();
-	return html::closeTag(os, tag);
+	return html::closeTag(os, lay.htmllabel());
 }
 
 
 bool openItemTag(odocstream & os, Layout const & lay)
 {
-	string const tag = lay.htmlitem().empty() 
-			? "div" : lay.htmlitem();
-	string const attr = lay.htmlitemattr().empty()
-			? "class=\"" + to_utf8(lay.name()) + "item\"" : lay.htmllabelattr();
-	return html::openTag(os, tag, attr);
+	return html::openTag(os, lay.htmlitem(), lay.htmlitemattr());
 }
 
 
 bool closeItemTag(odocstream & os, Layout const & lay)
 {
-	string const tag = lay.htmlitem().empty() 
-			? "div" : lay.htmlitem();
-	return html::closeTag(os, tag);
+	return html::closeTag(os, lay.htmlitem());
 }
 
 ParagraphList::const_iterator searchParagraphHtml(
 	ParagraphList::const_iterator p,
-  ParagraphList::const_iterator const & pend)
+	ParagraphList::const_iterator const & pend)
 {
 	for (++p; p != pend && p->layout().latextype == LATEX_PARAGRAPH; ++p)
 		;

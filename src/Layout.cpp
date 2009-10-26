@@ -869,6 +869,54 @@ docstring const Layout::babelpreamble(Language const * lang) const
 }
 
 
+string const Layout::htmltag() const 
+{ 
+	if (htmltag_.empty())
+		htmltag_ = "div";
+	return htmltag_;
+}
+
+
+string const & Layout::htmlattr() const 
+{ 
+	if (htmlattr_.empty())
+		htmlattr_ = "class=\"" + to_utf8(name()) + "\"";
+	return htmlattr_; 
+}
+
+
+string const & Layout::htmlitem() const 
+{ 
+	if (htmlitem_.empty())
+		htmlitem_ = "div";
+	return htmlitem_; 
+}
+
+
+string const & Layout::htmlitemattr() const 
+{ 
+	if (htmlitemattr_.empty())
+		htmlitemattr_ = "class=\"" + to_utf8(name()) + "item\"";
+	return htmlitemattr_; 
+}
+
+
+string const & Layout::htmllabel() const 
+{ 
+	if (htmllabel_.empty())
+		htmllabel_ = "span";
+	return htmllabel_; 
+}
+
+
+string const & Layout::htmllabelattr() const 
+{ 
+	if (htmllabelattr_.empty())
+		htmllabelattr_ = "class=\"" + to_utf8(name()) + "label\"";
+	return htmllabelattr_; 
+}
+
+
 docstring Layout::htmlstyle() const {
 	if (!htmlstyle_.empty() && !htmlforcedefault_)
 		return htmlstyle_;

@@ -110,17 +110,17 @@ public:
 	///
 	std::string const & itemtag() const { return itemtag_; }
 	/// 
-	std::string const & htmltag() const { return htmltag_; }
+	std::string const htmltag() const;
 	/// 
-	std::string const & htmlattr() const { return htmlattr_; }
+	std::string const & htmlattr() const;
 	/// 
-	std::string const & htmlitem() const { return htmlitem_; }
+	std::string const & htmlitem() const;
 	/// 
-	std::string const & htmlitemattr() const { return htmlitemattr_; }
+	std::string const & htmlitemattr() const;
 	/// 
-	std::string const & htmllabel() const { return htmllabel_; }
+	std::string const & htmllabel() const;
 	/// 
-	std::string const & htmllabelattr() const { return htmllabelattr_; }
+	std::string const & htmllabelattr() const;
 	///
 	bool htmllabelfirst() const { return htmllabelfirst_; }
 	/// 
@@ -289,26 +289,38 @@ private:
 	std::string labeltag_;
 	/// Internal tag to surround the item text in a list.
 	std::string itemtag_;
-	/// Tag for HTML output, e.g., h2. Defaults to "div".
-	std::string htmltag_;
+	/// The interpretation of this tag varies depending upon the latextype.
+	/// In an environment, it is the tag enclosing all content for this set of 
+	/// paragraphs. So for quote, e.g,. it would be: blockquote. For itemize, 
+	/// it would be: ul. (You get the idea.)
+	///
+	/// For a command, it is the tag enclosing the content of the command.
+	/// So, for section, it might be: h2.
+	/// 
+	/// For the paragraph type, it is the tag that will enclose each paragraph.
+	///
+	/// Defaults to "div".
+	mutable std::string htmltag_;
 	/// Additional attributes for inclusion with the start tag. Defaults
 	/// to: class="layoutname".
-	std::string htmlattr_;
+	mutable std::string htmlattr_;
 	/// Tag for individual paragraphs in an environment. In lists, this
 	/// would be something like "li". But it also needs to be set for
 	/// quotation, e.g., since the paragraphs in a quote need to be 
 	/// in "p" tags. Default is "div".
-	std::string htmlitem_;
+	/// Note that when I said "environment", I meant it: This has no
+	/// effect for LATEX_PARAGRAPH type layouts.
+	mutable std::string htmlitem_;
 	/// Attributes for htmlitem_. Default is: class="layoutnameitem".
-	std::string htmlitemattr_;
+	mutable std::string htmlitemattr_;
 	/// Tag for labels, of whatever sort. One use for this is in setting
 	/// descriptions, in which case it would be: dt. Another use is to
 	/// customize the display of, say, the auto-generated label for 
 	/// sections. Defaults to "span".
 	/// If set to "NONE", this suppresses the printing of the label.
-	std::string htmllabel_;
+	mutable std::string htmllabel_;
 	/// Attributes for the label. Defaults to: class="layoutnamelabel".
-	std::string htmllabelattr_;
+	mutable std::string htmllabelattr_;
 	/// Whether to put the label before the item, or within the item.
 	/// I.e., do we have (true):
 	///    <label>...</label><item>...</item>
