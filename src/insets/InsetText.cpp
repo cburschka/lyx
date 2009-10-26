@@ -290,6 +290,26 @@ void InsetText::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// FIXME: Change only the pasted paragraphs
 		fixParagraphsFont();
 		break;
+
+	case LFUN_INSET_DISSOLVE: {
+		bool const main_inset = &buffer().inset() == this;
+		bool const target_inset = cmd.argument().empty() 
+			|| cmd.getArg(0) == insetName(lyxCode());
+		bool const one_cell = cur.inset().nargs() == 1;
+
+		if (!main_inset && target_inset && one_cell) {
+			// Text::dissolveInset assumes that the cursor
+			// is inside the Inset.
+			if (&cur.inset() != this)
+				cur.pushBackward(*this);
+			cur.beginUndoGroup();
+			text_.dispatch(cur, cmd);
+			cur.endUndoGroup();
+		} else
+			cur.undispatched();
+		break;
+	}
+
 	default:
 		text_.dispatch(cur, cmd);
 	}
@@ -313,6 +333,16 @@ bool InsetText::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_PARAGRAPH_UPDATE:
 		status.setEnabled(allowParagraphCustomization());
 		return true;
+
+	case LFUN_INSET_DISSOLVE: {
+		bool const main_inset = &buffer().inset() == this;
+		bool const target_inset = cmd.argument().empty() 
+			|| cmd.getArg(0) == insetName(lyxCode());
+		bool const one_cell = cur.inset().nargs() == 1;
+
+		return !main_inset && target_inset && one_cell;
+	}
+
 	default:
 		// Dispatch only to text_ if the cursor is inside
 		// the text_. It is not for context menus (bug 5797).

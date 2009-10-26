@@ -1094,26 +1094,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_INSET_DISSOLVE: {
-		// first, try if there's an inset at cursor
-		// FIXME: this first part should be moved to
-		// a LFUN_NEXT_INSET_DISSOLVE, or be called via
-		// some generic "next-inset inset-dissolve"
-		Inset * inset = cur.nextInset();
-		if (inset && inset->isActive()) {
-			Cursor tmpcur = cur;
-			tmpcur.pushBackward(*inset);
-			inset->dispatch(tmpcur, cmd);
-			if (tmpcur.result().dispatched()) {
-				cur.dispatched();
-				break;
-			}
-		}
-		// if it did not work, try the underlying inset
-		if (dissolveInset(cur)) {
+		if (dissolveInset(cur))
 			needsUpdate = true;
-			break;
-		}
-		// if it did not work, do nothing.
 		break;
 	}
 
@@ -2520,21 +2502,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_PARAGRAPH_MOVE_DOWN:
 		enable = cur.pit() < cur.lastpit() && !cur.selection();
-		break;
-
-	case LFUN_INSET_DISSOLVE:
-		if (!cmd.argument().empty()) {
-			InsetLayout const & il = cur.inset().getLayout();
-			InsetLayout::InsetLyXType const type = 
-					translateLyXType(to_utf8(cmd.argument()));
-			enable = cur.inset().lyxCode() == FLEX_CODE
-			         && il.lyxtype() == type;
-		} else {
-			enable = ((!isMainText()
-			              && cur.inset().nargs() == 1)
-				  || (cur.nextInset()
-				      && cur.nextInset()->nargs() == 1));
-		}
 		break;
 
 	case LFUN_CHANGE_ACCEPT:

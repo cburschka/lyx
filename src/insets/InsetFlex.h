@@ -36,11 +36,18 @@ public:
 	bool neverIndent() const { return true; }
 	///
 	bool hasSettings() const { return false; }
+	///
+	bool getStatus(Cursor & cur, FuncRequest const & cmd,
+		FuncStatus &) const;
+	///
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
 
 protected:
+	///
 	InsetFlex(InsetFlex const &);
 
 private:
+	///
 	Inset * clone() const { return new InsetFlex(*this); }
 	///
 	std::string name_;

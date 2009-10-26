@@ -2282,7 +2282,7 @@ void LyXAction::init()
  * \li Origin: JSpitz, 7 Aug 2006
  * \endvar
  */
-		{ LFUN_INSET_DISSOLVE, "inset-dissolve", Noop, Edit },
+		{ LFUN_INSET_DISSOLVE, "inset-dissolve", AtPoint, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_INSET_INSERT
  * \li Action: Insert new inset (type given by the parameters).
