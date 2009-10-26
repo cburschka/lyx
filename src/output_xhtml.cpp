@@ -136,7 +136,7 @@ bool openLabelTag(odocstream & os, Layout const & lay)
 {
 	string const tag = lay.htmllabel().empty() 
 			? "span" : lay.htmllabel();
-	string const attr = lay.htmlattr().empty()
+	string const attr = lay.htmllabelattr().empty()
 			? "class=\"" + to_utf8(lay.name()) + "label\"" : lay.htmllabelattr();
 	return html::openTag(os, tag, attr);
 }
@@ -312,10 +312,14 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 					// paragraph (as in a theorem).
 					item_tag_opened = openItemTag(os, style);
 					if (par == pbegin) {
-						bool const label_tag_opened = openLabelTag(os, style);
-						os << pbegin->expandLabel(style, buf.params(), false);
-						if (label_tag_opened)
-							closeLabelTag(os, style);
+						docstring const lbl = 
+								pbegin->expandLabel(style, buf.params(), false);
+						if (!lbl.empty()) {
+							bool const label_tag_opened = openLabelTag(os, style);
+							os << lbl;
+							if (label_tag_opened)
+								closeLabelTag(os, style);
+						}
 						os << '\n';
 					}
 				}	else { // some kind of list
