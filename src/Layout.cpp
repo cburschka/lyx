@@ -16,7 +16,7 @@
 #include "Language.h"
 #include "TextClass.h"
 #include "Lexer.h"
-#include "Font.h"
+#include "FontInfo.h"
 
 #include "support/Messages.h"
 #include "support/debug.h"
@@ -955,10 +955,6 @@ string Layout::defaultCSSClass() const
 // sorts of margins or padding, for example. But for now we are
 // going to keep it simple.
 void Layout::makeDefaultCSS() const {
-#ifdef TEX2LYX
-	// tex2lyx does not have FontInfo::asCSS()
-	return;
-#else
 	// this never needs to be redone, since reloading layouts will
 	// wipe out what we did before.
 	if (!htmldefaultstyle_.empty()) 
@@ -975,7 +971,6 @@ void Layout::makeDefaultCSS() const {
 		htmldefaultstyle_ +=
 			from_ascii(htmllabeltag() + "." + defaultCSSLabelClass() + " {\n") +
 			labelfontCSS + from_ascii("\n}\n");
-#endif
 }
 
 

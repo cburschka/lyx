@@ -14,14 +14,41 @@
 
 #include <config.h>
 
+#include "ColorSet.h"
 #include "FontInfo.h"
+#include "Lexer.h"
 
 #include "support/debug.h"
 #include "support/docstring.h"
+#include "support/lstrings.h"
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
+
+//
+// Strings used to read and write .lyx format files
+//
+char const * LyXFamilyNames[NUM_FAMILIES + 2 /* default & error */] =
+{ "roman", "sans", "typewriter", "symbol",
+  "cmr", "cmsy", "cmm", "cmex", "msa", "msb", "eufrak", "wasy", "esint",
+  "default", "error" };
+
+char const * LyXSeriesNames[4] =
+{ "medium", "bold", "default", "error" };
+
+char const * LyXShapeNames[6] =
+{ "up", "italic", "slanted", "smallcaps", "default", "error" };
+
+char const * LyXSizeNames[14] =
+{ "tiny", "scriptsize", "footnotesize", "small", "normal", "large",
+  "larger", "largest", "huge", "giant",
+  "increase", "decrease", "default", "error" };
+
+char const * LyXMiscNames[5] =
+{ "off", "on", "toggle", "default", "error" };
+
 
 FontInfo const sane_font(
 	ROMAN_FAMILY,
@@ -447,5 +474,161 @@ docstring FontInfo::asCSS() const
 		appendSep(retval, makeCSSTag("font-size", tmp));
 	return from_ascii(retval);	
 }
+
+// Set family according to lyx format string
+void setLyXFamily(string const & fam, FontInfo & f)
+{
+	string const s = ascii_lowercase(fam);
+
+	int i = 0;
+	while (LyXFamilyNames[i] != s &&
+	       LyXFamilyNames[i] != string("error"))
+		++i;
+	if (s == LyXFamilyNames[i])
+		f.setFamily(FontFamily(i));
+	else
+		LYXERR0("Unknown family `" << s << '\'');
+}
+
+
+// Set series according to lyx format string
+void setLyXSeries(string const & ser, FontInfo & f)
+{
+	string const s = ascii_lowercase(ser);
+
+	int i = 0;
+	while (LyXSeriesNames[i] != s &&
+	       LyXSeriesNames[i] != string("error")) ++i;
+	if (s == LyXSeriesNames[i]) {
+		f.setSeries(FontSeries(i));
+	} else
+		LYXERR0("Unknown series `" << s << '\'');
+}
+
+
+// Set shape according to lyx format string
+void setLyXShape(string const & sha, FontInfo & f)
+{
+	string const s = ascii_lowercase(sha);
+
+	int i = 0;
+	while (LyXShapeNames[i] != s && LyXShapeNames[i] != string("error"))
+			++i;
+	if (s == LyXShapeNames[i])
+		f.setShape(FontShape(i));
+	else
+		LYXERR0("Unknown shape `" << s << '\'');
+}
+
+
+// Set size according to lyx format string
+void setLyXSize(string const & siz, FontInfo & f)
+{
+	string const s = ascii_lowercase(siz);
+	int i = 0;
+	while (LyXSizeNames[i] != s && LyXSizeNames[i] != string("error"))
+		++i;
+	if (s == LyXSizeNames[i]) {
+		f.setSize(FontSize(i));
+	} else
+		LYXERR0("Unknown size `" << s << '\'');
+}
+
+
+// Set size according to lyx format string
+FontState setLyXMisc(string const & siz)
+{
+	string const s = ascii_lowercase(siz);
+	int i = 0;
+	while (LyXMiscNames[i] != s &&
+	       LyXMiscNames[i] != string("error")) ++i;
+	if (s == LyXMiscNames[i])
+		return FontState(i);
+	LYXERR0("Unknown misc flag `" << s << '\'');
+	return FONT_OFF;
+}
+
+
+/// Sets color after LyX text format
+void setLyXColor(string const & col, FontInfo & f)
+{
+	f.setColor(lcolor.getFromLyXName(col));
+}
+
+
+// Read a font definition from given file in lyx format
+// Used for layouts
+FontInfo lyxRead(Lexer & lex, FontInfo const & fi)
+{
+	FontInfo f = fi;
+	bool error = false;
+	bool finished = false;
+	while (!finished && lex.isOK() && !error) {
+		lex.next();
+		string const tok = ascii_lowercase(lex.getString());
+
+		if (tok.empty()) {
+			continue;
+		} else if (tok == "endfont") {
+			finished = true;
+		} else if (tok == "family") {
+			lex.next();
+			string const ttok = lex.getString();
+			setLyXFamily(ttok, f);
+		} else if (tok == "series") {
+			lex.next();
+			string const ttok = lex.getString();
+			setLyXSeries(ttok, f);
+		} else if (tok == "shape") {
+			lex.next();
+			string const ttok = lex.getString();
+			setLyXShape(ttok, f);
+		} else if (tok == "size") {
+			lex.next();
+			string const ttok = lex.getString();
+			setLyXSize(ttok, f);
+		} else if (tok == "misc") {
+			lex.next();
+			string const ttok = ascii_lowercase(lex.getString());
+
+			if (ttok == "no_bar") {
+				f.setUnderbar(FONT_OFF);
+			} else if (ttok == "no_strikeout") {
+				f.setStrikeout(FONT_OFF);
+			} else if (ttok == "no_uuline") {
+				f.setUuline(FONT_OFF);
+			} else if (ttok == "no_uwave") {
+				f.setUwave(FONT_OFF);
+			} else if (ttok == "no_emph") {
+				f.setEmph(FONT_OFF);
+			} else if (ttok == "no_noun") {
+				f.setNoun(FONT_OFF);
+			} else if (ttok == "emph") {
+				f.setEmph(FONT_ON);
+			} else if (ttok == "underbar") {
+				f.setUnderbar(FONT_ON);
+			} else if (ttok == "strikeout") {
+				f.setStrikeout(FONT_ON);
+			} else if (ttok == "uuline") {
+				f.setUuline(FONT_ON);
+			} else if (ttok == "uwave") {
+				f.setUwave(FONT_ON);
+			} else if (ttok == "noun") {
+				f.setNoun(FONT_ON);
+			} else {
+				lex.printError("Illegal misc type");
+			}
+		} else if (tok == "color") {
+			lex.next();
+			string const ttok = lex.getString();
+			setLyXColor(ttok, f);
+		} else {
+			lex.printError("Unknown tag");
+			error = true;
+		}
+	}
+	return f;
+}
+
 
 } // namespace lyx

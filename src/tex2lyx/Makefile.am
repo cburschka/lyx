@@ -29,42 +29,40 @@ TEST_FILES = \
 	test/test-structure.tex
 
 LINKED_FILES = \
+	../Color.cpp \
+	../Counters.cpp \
+	../Encoding.cpp \
 	../FloatList.cpp \
 	../Floating.cpp \
-	../Counters.cpp \
+	../FontInfo.cpp \
 	../insets/InsetLayout.cpp \
 	../LayoutFile.h \
 	../Layout.h \
 	../Layout.cpp \
 	../LayoutModuleList.h \
 	../LayoutModuleList.cpp \
+	../lengthcommon.cpp \
+	../Lexer.cpp \
 	../ModuleList.h \
 	../ModuleList.cpp \
 	../TextClass.cpp \
-	../TextClass.h \
-	../Lexer.cpp \
-	../lengthcommon.cpp \
-	../Color.cpp \
-	../Color.h \
-	../Encoding.cpp
+	../TextClass.h
 
 BUILT_SOURCES = $(PCH_FILE)
 
 tex2lyx_SOURCES = \
 	$(LINKED_FILES) \
-	Spacing.h \
 	boost.cpp \
 	Context.cpp \
 	Context.h \
-	Font.cpp \
-	Font.h \
+	math.cpp \
 	Parser.cpp \
 	Parser.h \
+	preamble.cpp \
+	Spacing.h \
+	table.cpp \
 	tex2lyx.cpp \
 	tex2lyx.h \
-	preamble.cpp \
-	math.cpp \
-	table.cpp \
 	text.cpp
 
 tex2lyx_LDADD = \

@@ -361,10 +361,10 @@ void Text::readParToken(Paragraph & par, Lexer & lex,
 		}
 	} else if (token == "\\numeric") {
 		lex.next();
-		font.fontInfo().setNumber(font.setLyXMisc(lex.getString()));
+		font.fontInfo().setNumber(setLyXMisc(lex.getString()));
 	} else if (token == "\\emph") {
 		lex.next();
-		font.fontInfo().setEmph(font.setLyXMisc(lex.getString()));
+		font.fontInfo().setEmph(setLyXMisc(lex.getString()));
 	} else if (token == "\\bar") {
 		lex.next();
 		string const tok = lex.getString();
@@ -380,16 +380,16 @@ void Text::readParToken(Paragraph & par, Lexer & lex,
 				       "`$$Token'");
 	} else if (token == "\\strikeout") {
 		lex.next();
-		font.fontInfo().setStrikeout(font.setLyXMisc(lex.getString()));
+		font.fontInfo().setStrikeout(setLyXMisc(lex.getString()));
 	} else if (token == "\\uuline") {
 		lex.next();
-		font.fontInfo().setUuline(font.setLyXMisc(lex.getString()));
+		font.fontInfo().setUuline(setLyXMisc(lex.getString()));
 	} else if (token == "\\uwave") {
 		lex.next();
-		font.fontInfo().setUwave(font.setLyXMisc(lex.getString()));
+		font.fontInfo().setUwave(setLyXMisc(lex.getString()));
 	} else if (token == "\\noun") {
 		lex.next();
-		font.fontInfo().setNoun(font.setLyXMisc(lex.getString()));
+		font.fontInfo().setNoun(setLyXMisc(lex.getString()));
 	} else if (token == "\\color") {
 		lex.next();
 		setLyXColor(lex.getString(), font.fontInfo());

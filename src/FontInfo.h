@@ -15,16 +15,14 @@
 #ifndef FONT_PROPERTIES_H
 #define FONT_PROPERTIES_H
 
-#ifdef TEX2LYX
-#include "tex2lyx/Font.h"
-#else
-
 #include "Color.h"
 #include "ColorCode.h"
 #include "FontEnums.h"
 #include "support/strfwd.h"
 
 namespace lyx {
+
+class Lexer;
 
 ///
 class FontInfo
@@ -201,7 +199,27 @@ extern FontInfo const inherit_font;
 /// All ignore font.
 extern FontInfo const ignore_font;
 
+/// Set family after LyX text format
+void setLyXFamily(std::string const &, FontInfo &);
+
+/// Set series after LyX text format
+void setLyXSeries(std::string const &, FontInfo &);
+
+/// Set shape after LyX text format
+void setLyXShape(std::string const &, FontInfo &);
+
+/// Set size after LyX text format
+void setLyXSize(std::string const &, FontInfo &);
+
+/// Sets color after LyX text format
+void setLyXColor(std::string const &, FontInfo &);
+
+/// Returns misc flag after LyX text format
+FontState setLyXMisc(std::string const &);
+
+/// Read a font specification from Lexer. Used for layout files.
+FontInfo lyxRead(Lexer &, FontInfo const & fi = sane_font);
+
 } // namespace lyx
 
-#endif // TEX2LYX_FONT_H
 #endif

@@ -15,10 +15,6 @@
 #ifndef FONT_H
 #define FONT_H
 
-#ifdef TEX2LYX
-#include "tex2lyx/Font.h"
-#else
-
 #include "ColorCode.h"
 #include "FontInfo.h"
 
@@ -27,7 +23,6 @@
 
 namespace lyx {
 
-class Lexer;
 class BufferParams;
 class Language;
 class LaTeXFeatures;
@@ -56,10 +51,6 @@ public:
 	bool isVisibleRightToLeft() const;
 	///
 	void setLanguage(Language const * l);
-
-	/// Returns misc flag after LyX text format
-	FontState setLyXMisc(std::string const &);
-
 
 	/// Returns size of font in LaTeX text notation
 	std::string const latexSize() const;
@@ -153,26 +144,6 @@ bool operator!=(Font const & font1, Font const & font2)
  */
 std::string const freefont2string();
 
-
-/// Set family after LyX text format
-void setLyXFamily(std::string const &, FontInfo &);
-
-/// Set series after LyX text format
-void setLyXSeries(std::string const &, FontInfo &);
-
-/// Set shape after LyX text format
-void setLyXShape(std::string const &, FontInfo &);
-
-/// Set size after LyX text format
-void setLyXSize(std::string const &, FontInfo &);
-
-/// Sets color after LyX text format
-void setLyXColor(std::string const &, FontInfo &);
-
-/// Read a font specification from Lexer. Used for layout files.
-FontInfo lyxRead(Lexer &, FontInfo const & fi = sane_font);
-
 } // namespace lyx
 
-#endif // TEX2LYX
 #endif
