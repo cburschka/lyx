@@ -336,11 +336,25 @@ namespace {
 	string getFamilyCSS(FontFamily const & f)
 	{
 		switch (f) {
-		case ROMAN_FAMILY: return "serif";
-		case SANS_FAMILY: return "sans-serif";
-		case TYPEWRITER_FAMILY: return "monospace";
-		case INHERIT_FAMILY: return "inherit";
-		default: break;
+		case ROMAN_FAMILY: 
+			return "serif";
+		case SANS_FAMILY: 
+			return "sans-serif";
+		case TYPEWRITER_FAMILY: 
+			return "monospace";
+		case SYMBOL_FAMILY:
+		case CMR_FAMILY:
+		case CMSY_FAMILY:
+		case CMM_FAMILY:
+		case CMEX_FAMILY:
+		case MSA_FAMILY:
+		case MSB_FAMILY:
+		case EUFRAK_FAMILY:
+		case WASY_FAMILY:
+		case ESINT_FAMILY:
+		case INHERIT_FAMILY:
+		case IGNORE_FAMILY:
+			break;
 		}
 		return "";
 	}
@@ -349,10 +363,13 @@ namespace {
 	string getSeriesCSS(FontSeries const & s)
 	{
 		switch (s) {
-		case MEDIUM_SERIES: return "normal";
-		case BOLD_SERIES: return "bold";
-		case INHERIT_SERIES: return "inherit";
-		default: break;
+		case MEDIUM_SERIES: 
+			return "normal";
+		case BOLD_SERIES: 
+			return "bold";
+		case INHERIT_SERIES:
+		case IGNORE_SERIES:
+		  break;
 		}
 		return "";
 	}
@@ -367,8 +384,9 @@ namespace {
 		case ITALIC_SHAPE: fs = "italic"; break;
 		case SLANTED_SHAPE: fs = "oblique"; break;
 		case SMALLCAPS_SHAPE: fv = "small-caps"; break;
-		case INHERIT_SHAPE: fs = "inherit"; fv = "inherit"; break;
-		case IGNORE_SHAPE: fs = ""; fv = ""; break;
+		case IGNORE_SHAPE: 
+		case INHERIT_SHAPE:
+			fs = ""; fv = ""; break;
 		}
 		string retval;
 		if (!fs.empty())
@@ -382,22 +400,31 @@ namespace {
 	string getSizeCSS(FontSize const & s)
 	{
 		switch (s) {
-		case FONT_SIZE_TINY: return "xx-small";
-		case FONT_SIZE_SCRIPT: return "x-small";
+		case FONT_SIZE_TINY: 
+			return "xx-small";
+		case FONT_SIZE_SCRIPT: 
+			return "x-small";
 		case FONT_SIZE_FOOTNOTE: 
-		case FONT_SIZE_SMALL: return "small";
-		case FONT_SIZE_NORMAL: return "medium";
-		case FONT_SIZE_LARGE: return "large";
+		case FONT_SIZE_SMALL: 
+			return "small";
+		case FONT_SIZE_NORMAL: 
+			return "medium";
+		case FONT_SIZE_LARGE: 
+			return "large";
 		case FONT_SIZE_LARGER: 
-		case FONT_SIZE_LARGEST: return "x-large";
+		case FONT_SIZE_LARGEST: 
+			return "x-large";
 		case FONT_SIZE_HUGE: 
-		case FONT_SIZE_HUGER: return "xx-large";
-		case FONT_SIZE_INCREASE: return "larger";
-		case FONT_SIZE_DECREASE: return "smaller";
-		case FONT_SIZE_INHERIT: return "inherit";
-		case FONT_SIZE_IGNORE: return "";
+		case FONT_SIZE_HUGER: 
+			return "xx-large";
+		case FONT_SIZE_INCREASE: 
+			return "larger";
+		case FONT_SIZE_DECREASE: 
+			return "smaller";
+		case FONT_SIZE_IGNORE: 
+		case FONT_SIZE_INHERIT: 
+				break;
 		}	
-		// squash warning
 		return "";
 	}
 	
