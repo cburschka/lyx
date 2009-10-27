@@ -84,7 +84,7 @@ public:
 	///
 	docstring counter() const { return counter_; }
 	///
-	std::string const & htmltag() const { return htmltag_; }
+	std::string const & htmltag() const;
 	/// 
 	std::string const & htmlattr() const;
 	/// 
@@ -160,8 +160,8 @@ private:
 	docstring counter_;
 	///
 	docstring preamble_;
-	/// The tag enclosing all the material in this inset. Default is none.
-	std::string htmltag_;
+	/// The tag enclosing all the material in this inset. Default is "span".
+	mutable std::string htmltag_;
 	/// Additional attributes for inclusion with the start tag. Default (if
 	/// a tag is provided) is: class="name".
 	mutable std::string htmlattr_;

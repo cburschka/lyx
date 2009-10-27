@@ -351,6 +351,14 @@ InsetLayout::InsetLyXType translateLyXType(std::string const & str)
 }
 
 
+string const & InsetLayout::htmltag() const
+{
+	if (htmltag_.empty())
+		htmltag_ = "span";
+	return htmltag_; 
+}
+
+
 string const & InsetLayout::htmlattr() const
 {
 	if (htmlattr_.empty())
@@ -393,13 +401,11 @@ void InsetLayout::makeDefaultCSS() const
 {
 	if (!htmldefaultstyle_.empty()) 
 		return;
-	if (!htmltag_.empty()) {
-		docstring const mainfontCSS = font_.asCSS();
-		if (!mainfontCSS.empty())
-			htmldefaultstyle_ = 
-					from_ascii(htmltag() + "." + defaultCSSClass() + " {\n") +
-					mainfontCSS + from_ascii("\n}\n");
-	}
+	docstring const mainfontCSS = font_.asCSS();
+	if (!mainfontCSS.empty())
+		htmldefaultstyle_ = 
+				from_ascii(htmltag() + "." + defaultCSSClass() + " {\n") +
+				mainfontCSS + from_ascii("\n}\n");
 	/* 
 	At present, we do not have default tags, etc, for the label.
 	if (labelfont_ == font_)
@@ -407,20 +413,21 @@ void InsetLayout::makeDefaultCSS() const
 	docstring const labelfontCSS = labelfont_.asCSS();
 	if (!labelfontCSS.empty())
 		htmldefaultstyle_ +=
-.				from_ascii(htmllabeltag() + "." + defaultCSSLabelClass() + " {\n") +
-				labelfontCSS + from_ascii("\n}\n");
+			from_ascii(htmllabeltag() + "." + defaultCSSLabelClass() + " {\n") +
+			labelfontCSS + from_ascii("\n}\n");
 	*/
 }
+
 
 docstring InsetLayout::htmlstyle() const 
 { 
 	if (!htmlstyle_.empty() && !htmlforcecss_)
 		return htmlstyle_;
-	if (htmldefaultstyle_.empty()) 
+	if (htmldefaultstyle_.empty())
 		makeDefaultCSS();
 	docstring retval = htmldefaultstyle_;
 	if (!htmlstyle_.empty())
-		retval += '\n' + htmlstyle_;
+		retval += '\n' + htmlstyle_ + '\n';
 	return retval;
 }
 

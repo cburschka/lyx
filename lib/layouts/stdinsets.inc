@@ -327,6 +327,7 @@ InsetLayout URL
 	  Color               urllabel
 	  Size                Small
 	EndFont
+	HTMLIsBlock           false
 End
 
 InsetLayout OptArg
@@ -340,8 +341,6 @@ End
 
 InsetLayout Info
 	Decoration	      conglomerate
-	HTMLTag           span
-	HTMLAttr          class='info'
 	HTMLStyle
 		span.info { font-family: sans-serif; }
 	EndHTMLStyle
