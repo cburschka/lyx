@@ -2454,6 +2454,7 @@ lib_examples_files = Split('''
     splash.lyx
     sweave.lyx
     tufte-book.lyx
+    tufte-handout.lyx
     xyfigure.png
     xypic.lyx
 ''')
@@ -2740,6 +2741,7 @@ lib_layouts_files = Split('''
     tbook.layout
     treport.layout
     tufte-book.layout
+    tufte-handout.layout
 ''')
 
 

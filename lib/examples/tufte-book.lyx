@@ -43,12 +43,53 @@
 
 \begin_body
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Important note:
+\series default
+ The menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Hyperlinks
+\family default
+ and the 
+\family sans
+PDF properties
+\family default
+ in the 
+\family sans
+Document\SpecialChar \menuseparator
+Settings
+\family default
+ menu cannot be used for tufte document classes!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Title
 Random Tufte Examples
 \end_layout
 
 \begin_layout Author
 Fake Author
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+author of this example file: Jason Waskiewicz
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -65,23 +106,11 @@ The Features of the Tufte-book Class
 \end_layout
 
 \begin_layout Standard
-In this document, I endeavor to show some of the features of the Tufte-book
- class.
- In the first chapter, I outline their use.
- In the second chapter, I demonstrate their use through a handout I created
- in my Calculus class.
- For those who are viewing the .lyx file, I had to remove the figures and
- replace them by boxes so that the download would not become overwhelming.
-\begin_inset Flex Sidenote
-status collapsed
-
-\begin_layout Plain Layout
-I created the figures with a combination of RLPlot and Inkscape.
-\end_layout
-
-\end_inset
-
-
+In this document, it was endeavored to show some of the features of the
+ Tufte-book class.
+ In the first chapter, their use is outlined.
+ In the second chapter, their use through a handout thjat was created in
+ a calculus class is demonstrated.
 \end_layout
 
 \begin_layout Section
@@ -90,7 +119,9 @@ Features
 
 \begin_layout Standard
 The Tufte-book class is based on the work of Edward Tufte.
- His documents consist of a column of text beside a wide column of margin
+ It provides the same functionality as the Tufte-handout class with book-specifi
+c additions.
+ Tufte's documents consist of a column of text beside a wide column of margin
  notes and margin figures.
  This is to improve readability.
 \end_layout
@@ -127,8 +158,19 @@ Limited layers of sections and subsections
 \end_layout
 
 \begin_layout Standard
-In this sample document, I will demonstrate some of these features.
- For a full demonstration, visit the webpage.
+In this sample document, some of these features are demonstrated.
+ For a full demonstration, visit the tufte-latex webpage: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://code.google.com/p/tufte-latex
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -184,6 +226,16 @@ Finally, by default, Tufte does not number his chapters or his sections.
  Since I like to refer to sections by number, I changed this section in
  the Document Settings by moving the slider under the Numbering and TOC
  section.
+\begin_inset Flex Marginnote
+status collapsed
+
+\begin_layout Plain Layout
+marginnote
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -366,26 +418,33 @@ Working with Text
 \end_layout
 
 \begin_layout Standard
-Tufte provides a number of innovations for use with his text.
- The first is the extensive use of margin notes.
-\begin_inset Flex Sidenote
+One of the most prominent and distinctive features of this style is the
+ extensive use of sidenotes.
+ There is a wide margin to provide ample room for sidenotes and small figures.
+ Any footnotes will automatically be converted to sidenotes.
+\begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-This is an example of a Tufte style margin note.
+This is a sidenote that was entered using a 
+\family typewriter
+footnote
+\family default
+.
 \end_layout
 
 \end_inset
 
- Tufte's margin notes use a slightly smaller font and they have the added
- benefit of reference by a superscript.
- Ordinary margin notes do not have this.
- Both types are shown.
-\begin_inset Marginal
+ Alternatively, you can also use directly the sidenote inset.
+\begin_inset Flex Sidenote
 status open
 
 \begin_layout Plain Layout
-This is an ordinary margin note.
+This is a sidenote that was entered using a 
+\family typewriter
+sidenote
+\family default
+.
 \end_layout
 
 \end_inset
@@ -394,7 +453,40 @@ This is an ordinary margin note.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Newthought
+If you like to place ancillary information in the margin without the sidenote
+ mark (the superscript number), you can use the 
+\family typewriter
+Marginnote
+\family default
+ inset.
+ 
+\begin_inset Flex Marginnote
+status open
+
+\begin_layout Plain Layout
+This is Tufte's margin note.
+ Notice that there isn't a number preceding the note, and there is no number
+ in the main text where this note was written.
+\end_layout
+
+\end_inset
+
+ The normal margin note will work as well, but it will look rather odd.
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+This is a normal margin note.
+ Don't use it.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex NewThought
 status open
 
 \begin_layout Plain Layout
@@ -409,26 +501,108 @@ new thought
 \series default
  command.
  It introduces new thoughts, such as this paragraph, with small capitals.
+ To accomplish this, use the 
+\family typewriter
+NewThought
+\family default
+ character style (
+\family sans
+Edit\SpecialChar \menuseparator
+TextStyle\SpecialChar \menuseparator
+NewThought
+\family default
+).
 \end_layout
 
 \begin_layout Standard
-Finally, Tufte has a setting to print full-width text.
- This spreads it from margin to margin.
- I believe this might be useful for quoting a text.
+The Tufte document classes includes two new character styles and some improvemen
+ts on existing commands for letterspacing.
 \end_layout
 
 \begin_layout Standard
-Another available style is 
-\begin_inset Flex Allcaps
+When setting strings of 
+\begin_inset Flex AllCaps
 status open
 
 \begin_layout Plain Layout
-allcaps
+ALL CAPS
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex SmallCaps
+status open
+
+\begin_layout Plain Layout
+Small Caps
+\end_layout
+
+\end_inset
+
+, the letterspacing---that is, the spacing between the letters---should
+ be increased slightly.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bringhurst2005"
+
+\end_inset
+
+ The 
+\emph on
+AllCaps
+\emph default
+ character style (
+\family sans
+Edit\SpecialChar \menuseparator
+TextStyle\SpecialChar \menuseparator
+AllCaps
+\family default
+) has proper letterspacing for strings of 
+\begin_inset Flex AllCaps
+status open
+
+\begin_layout Plain Layout
+FULL CAPITAL LETTERS
+\end_layout
+
+\end_inset
+
+, and the 
+\emph on
+SmallCaps
+\emph default
+ character style (
+\family sans
+Edit\SpecialChar \menuseparator
+TextStyle\SpecialChar \menuseparator
+SmallCaps
+\family default
+) has letterspacing for 
+\begin_inset Flex SmallCaps
+status open
+
+\begin_layout Plain Layout
+small capital letters
 \end_layout
 
 \end_inset
 
 .
+ These commands will also automatically convert the case of the text to
+ upper- or lowercase, respectively.
+\end_layout
+
+\begin_layout Standard
+The normal 
+\emph on
+Small Caps
+\emph default
+ shape has also been redefined to include letterspacing.
+ Its case is left as is, however.
+ This allows one to use both uppercase and lowercase letters: 
+\shape smallcaps
+The Initial Letters Of The Words In This Sentence Are Capitalized.
 \end_layout
 
 \begin_layout Full Width
@@ -440,10 +614,6 @@ This is full width text.
  Instead, I decided to just type for a while and fill up 3 lines on my screen
  with whatever nonsense came into my head.
  
-\end_layout
-
-\begin_layout Standard
-I've honestly not found a use for the fullwidth setting in my own materials.
 \end_layout
 
 \begin_layout Section
@@ -782,7 +952,7 @@ In the specific example, over the interval
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex Newthought
+\begin_inset Flex NewThought
 status open
 
 \begin_layout Plain Layout
@@ -998,6 +1168,17 @@ Homework
 
 \begin_layout Itemize
 p114: 1, 4, 5, 6, 8, 10, 12, 15
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "biblioExample"
+options "plainnat"
+
+\end_inset
+
+
 \end_layout
 
 \end_body
