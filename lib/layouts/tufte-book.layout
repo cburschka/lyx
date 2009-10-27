@@ -1,0 +1,124 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[tufte-book]{book (Tufte)}
+# tufte-book textclass definition file.
+# Jason Waskiewicz <jason.waskiewicz@sendit.nodak.edu>, 2009/10/18
+# Modified by Uwe Stöhr <uwestoehr@web.de>, 2009/10/24
+
+Format 11
+
+Provides geometry 1
+Provides natbib-internal 1
+
+Style Standard
+	Margin		Static
+	LatexType	Paragraph
+	LatexName	dummy
+	ParIndent	MM
+	ParSkip		0.4
+	Align		Block
+	AlignPossible	Block, Left, Right, Center
+	LabelType	No_Label
+End
+
+# import other layouts
+Input stdlayouts.inc
+Input book.layout
+
+NoStyle Subsubsection
+NoStyle Subsubsection*
+NoStyle Paragraph
+NoStyle Paragraph*
+NoStyle Subparagraph
+NoStyle Subparagraph*
+
+InsetLayout Sidenote
+	LyxType		custom
+	LatexType	command
+	LatexName	sidenote
+	Decoration	classic
+	LabelString	"sidenote"
+	Font
+	  Color		foreground
+	  Size		Small
+	  Misc		No_Emph
+	  Misc		No_Noun
+	  Misc		No_Bar
+	EndFont
+	LabelFont
+	  Color		marginlabel
+	  Size		Small
+	EndFont
+End
+
+InsetLayout Allcaps
+	CopyStyle	Sidenote
+	Decoration	Conglomerate
+	LatexName	allcaps
+	LabelString	"allcaps"
+	Font
+	  Misc		Noun
+	EndFont
+	LabelFont
+	  Color		blue
+	EndFont
+End
+
+InsetLayout Newthought
+	CopyStyle	Sidenote
+	Decoration	Conglomerate
+	LatexName	newthought
+	LabelString	"new thought"
+	Font
+	  Shape		SmallCaps
+	EndFont
+	LabelFont
+	  Color		red
+	EndFont
+End
+
+Style Full_Width
+	Margin		Static
+	LaTeXType	environment
+	LaTeXName	fullwidth
+	Category	MainText
+	NextNoIndent	1
+	ParSkip		0
+	ItemSep		0
+	TopSep		0.5
+	BottomSep	0.5
+	ParSep		0
+	Align		Block
+	AlignPossible	Block, Left, Right, Center
+	LabelType	No_Label
+End
+
+# this steps the counters
+Counter
+  Name          marginfigure
+End
+Counter
+  Name          margintable
+End
+
+# define the floats
+Float
+	Type		margintable
+	GuiName		MarginTable
+	Placement	tbp
+	Extension	lot
+	NumberWithin	none
+	Style		plain
+	ListName	"List of Tables"
+	LaTeXBuiltin	true
+End
+
+Float
+	Type		marginfigure
+	GuiName		MarginFigure
+	Placement	tbp
+	Extension	lof
+	NumberWithin	none
+	Style		plain
+	ListName	"List of Figures"
+	LaTeXBuiltin	true
+End

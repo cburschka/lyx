@@ -1520,6 +1520,14 @@ contributers = [
                  "22 February 2005",
                  u"Bug fixes, feedback on LyX behaviour on the Mac, and improvements to DocBook export"),
 
+     contributer(u"Jason Waskiewicz",
+                 "jason.waskiewicz () sendit ! nodak ! edu",
+                 "GPL",
+                 "[Fwd: Re: tufte-book layout for LyX]",
+                 "m=125659179116032",
+                 "26 October 2009",
+                 u"Layouts for the Tufte document classes"),
+
      contributer(u"John P. Weiss",
                  "jpweiss () frontiernet ! net",
                  "Artistic",

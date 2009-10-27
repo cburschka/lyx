@@ -253,6 +253,7 @@ dist_examples_DATA = \
 	examples/simplecv.lyx \
 	examples/splash.lyx \
 	examples/sweave.lyx \
+	examples/tufte-book.lyx \
 	examples/xyfigure.png \
 	examples/xypic.lyx
 
@@ -1146,7 +1147,8 @@ dist_layouts_DATA =\
 	layouts/theorems-starred.inc \
 	layouts/theorems-starred.module \
 	layouts/theorems-std.module \
-	layouts/treport.layout
+	layouts/treport.layout \
+	layouts/tufte-book.layout
 
 scriptsdir = $(pkgdatadir)/scripts
 # Note that we "chmod 755" manually these files in install-data-hook.

@@ -2453,6 +2453,7 @@ lib_examples_files = Split('''
     simplecv.lyx
     splash.lyx
     sweave.lyx
+    tufte-book.lyx
     xyfigure.png
     xypic.lyx
 ''')
@@ -2738,6 +2739,7 @@ lib_layouts_files = Split('''
     tarticle.layout
     tbook.layout
     treport.layout
+    tufte-book.layout
 ''')
 
 
