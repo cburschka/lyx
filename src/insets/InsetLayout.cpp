@@ -406,16 +406,6 @@ void InsetLayout::makeDefaultCSS() const
 		htmldefaultstyle_ = 
 				from_ascii(htmltag() + "." + defaultCSSClass() + " {\n") +
 				mainfontCSS + from_ascii("\n}\n");
-	/* 
-	At present, we do not have default tags, etc, for the label.
-	if (labelfont_ == font_)
-			return;
-	docstring const labelfontCSS = labelfont_.asCSS();
-	if (!labelfontCSS.empty())
-		htmldefaultstyle_ +=
-			from_ascii(htmllabeltag() + "." + defaultCSSLabelClass() + " {\n") +
-			labelfontCSS + from_ascii("\n}\n");
-	*/
 }
 
 
