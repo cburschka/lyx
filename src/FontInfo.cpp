@@ -413,7 +413,7 @@ docstring FontInfo::asCSS() const
 		appendSep(retval, makeCSSTag("font-family", tmp));
 	tmp = getSeriesCSS(series_);
 	if (!tmp.empty())
-		appendSep(retval, makeCSSTag("font-series", tmp));
+		appendSep(retval, makeCSSTag("font-weight", tmp));
 	appendSep(retval, getShapeCSS(shape_));
 	tmp = getSizeCSS(size_);
 	if (!tmp.empty())
