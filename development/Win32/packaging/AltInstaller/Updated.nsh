@@ -13,6 +13,7 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\locale" # always here
  File /r "${PRODUCT_SOURCEDIR}\Resources\layouts"
+ File "${PRODUCT_SOURCEDIR}\Resources\CREDITS"
  File "${PRODUCT_SOURCEDIR}\Resources\configure.py"
  File "${PRODUCT_SOURCEDIR}\Resources\encodings"
  File "${PRODUCT_SOURCEDIR}\Resources\languages"
@@ -56,8 +57,11 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\Tutorial.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\UserGuide.lyx"
  SetOutPath "$INSTDIR\Resources\examples"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\biblioExample.bib"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\Braille.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\powerdot-example.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\tufte-book.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\tufte-handout.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\xypic.lyx"
  SetOutPath "$INSTDIR\Resources\examples\de"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\de\Braille.lyx"

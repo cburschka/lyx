@@ -1,0 +1,1185 @@
+#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass tufte-book
+\options justified
+\use_default_options true
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Important note:
+\series default
+ The menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Hyperlinks
+\family default
+ and the 
+\family sans
+PDF properties
+\family default
+ in the 
+\family sans
+Document\SpecialChar \menuseparator
+Settings
+\family default
+ menu cannot be used for tufte document classes!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Random Tufte Examples
+\end_layout
+
+\begin_layout Author
+Fake Author
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+author of this example file: Jason Waskiewicz
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+The Features of the Tufte-book Class
+\end_layout
+
+\begin_layout Standard
+In this document, it was endeavored to show some of the features of the
+ Tufte-book class.
+ In the first chapter, their use is outlined.
+ In the second chapter, their use through a handout thjat was created in
+ a calculus class is demonstrated.
+\end_layout
+
+\begin_layout Section
+Features
+\end_layout
+
+\begin_layout Standard
+The Tufte-book class is based on the work of Edward Tufte.
+ It provides the same functionality as the Tufte-handout class with book-specifi
+c additions.
+ Tufte's documents consist of a column of text beside a wide column of margin
+ notes and margin figures.
+ This is to improve readability.
+\end_layout
+
+\begin_layout Standard
+Features included in this format include:
+\end_layout
+
+\begin_layout Itemize
+Margin figures
+\end_layout
+
+\begin_layout Itemize
+Ordinary figures in text with captions in margins
+\end_layout
+
+\begin_layout Itemize
+Full width figures and text when needed
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+Footnotes
+\begin_inset Quotes erd
+\end_inset
+
+ in margins
+\end_layout
+
+\begin_layout Itemize
+Limited layers of sections and subsections
+\end_layout
+
+\begin_layout Standard
+In this sample document, some of these features are demonstrated.
+ For a full demonstration, visit the tufte-latex webpage: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://code.google.com/p/tufte-latex
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Page Layout
+\end_layout
+
+\begin_layout Standard
+Tufte's margins are 
+\begin_inset Quotes eld
+\end_inset
+
+ragged right
+\begin_inset Quotes erd
+\end_inset
+
+ rather than justified.
+\begin_inset Flex Sidenote
+status collapsed
+
+\begin_layout Plain Layout
+This document is justified.
+ Add the option "justified" to the Custom line of the Document Class part
+ of the Document Settings.
+\end_layout
+
+\end_inset
+
+ The ragged right is used in most of his works, but the option exists for
+ justified text.
+\end_layout
+
+\begin_layout Standard
+Tufte also formats his pages so that they are not symmetric.
+ Instead, each page is the same and all the marginalia appear on the right
+ side of each page.
+ After experimentation, I agree that this option is best.
+ A symmetric layout appeared strange, to say the least.
+\begin_inset Flex Sidenote
+status collapsed
+
+\begin_layout Plain Layout
+To create a symmetric layout, add the option "symmetric" to the Custom line
+ of the Document Class part of the Document Settings.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finally, by default, Tufte does not number his chapters or his sections.
+ Since I like to refer to sections by number, I changed this section in
+ the Document Settings by moving the slider under the Numbering and TOC
+ section.
+\begin_inset Flex Marginnote
+status collapsed
+
+\begin_layout Plain Layout
+marginnote
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Figures
+\end_layout
+
+\begin_layout Standard
+Tufte uses ordinary figure floats like this:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Imagine your favorite figure inside this box instead of this boring text.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+An ordinary figure float.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tufte also uses margin figures, a feature I wish I could apply to the Memoir
+ class.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float marginfigure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Imagine your favorite photograph of a squirrel inside this box instead of
+ this boring text.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+A margin figure
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Naturally, the Tufte-book class also allows the use of tables in the margins
+ and in the text in the same way that the figures are used.
+ I would use the margin tables for a small set of data to illustrate a concept
+ such as 
+\begin_inset Quotes eld
+\end_inset
+
+Look, distance-time data is quadratic when the object is falling.
+\begin_inset Quotes erd
+\end_inset
+
+ I might put flame test results and comments in a full-width table.
+\end_layout
+
+\begin_layout Standard
+I did attempt to use the figure-wrap float with Tufte.
+ LyX interpreted it as a figure float and sometimes didn't show it at all.
+ With only the narrow column of text available, I think that it should probably
+ be suppressed when someone edits the layout file!
+\end_layout
+
+\begin_layout Standard
+A final type of figure is a full-width figure.
+ This is one which takes up the entire width of the page: text and margin
+ alike.
+ I'm proud of this because this was my one original contribution as it does
+ not seem to be in the Tufte-handout.layout file.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide true
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Imagine a photograph of a squirrel stretched out on its side in this box.
+ One of the bugs in my layout is that this only works with pictures, not
+ with frames around minipages, the way it's set up here.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+A full-width figure.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Working with Text
+\end_layout
+
+\begin_layout Standard
+One of the most prominent and distinctive features of this style is the
+ extensive use of sidenotes.
+ There is a wide margin to provide ample room for sidenotes and small figures.
+ Any footnotes will automatically be converted to sidenotes.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+This is a sidenote that was entered using a 
+\family typewriter
+footnote
+\family default
+.
+\end_layout
+
+\end_inset
+
+ Alternatively, you can also use directly the sidenote inset.
+\begin_inset Flex Sidenote
+status open
+
+\begin_layout Plain Layout
+This is a sidenote that was entered using a 
+\family typewriter
+sidenote
+\family default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If you like to place ancillary information in the margin without the sidenote
+ mark (the superscript number), you can use the 
+\family typewriter
+Marginnote
+\family default
+ inset.
+ 
+\begin_inset Flex Marginnote
+status open
+
+\begin_layout Plain Layout
+This is Tufte's margin note.
+ Notice that there isn't a number preceding the note, and there is no number
+ in the main text where this note was written.
+\end_layout
+
+\end_inset
+
+ The normal margin note will work as well, but it will look rather odd.
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+This is a normal margin note.
+ Don't use it.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex NewThought
+status open
+
+\begin_layout Plain Layout
+Another useful
+\end_layout
+
+\end_inset
+
+ innovation is Tufte's 
+\series bold
+new thought
+\series default
+ command.
+ It introduces new thoughts, such as this paragraph, with small capitals.
+ To accomplish this, use the 
+\family typewriter
+NewThought
+\family default
+ character style (
+\family sans
+Edit\SpecialChar \menuseparator
+TextStyle\SpecialChar \menuseparator
+NewThought
+\family default
+).
+\end_layout
+
+\begin_layout Standard
+The Tufte document classes includes two new character styles and some improvemen
+ts on existing commands for letterspacing.
+\end_layout
+
+\begin_layout Standard
+When setting strings of 
+\begin_inset Flex AllCaps
+status open
+
+\begin_layout Plain Layout
+ALL CAPS
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex SmallCaps
+status open
+
+\begin_layout Plain Layout
+Small Caps
+\end_layout
+
+\end_inset
+
+, the letterspacing---that is, the spacing between the letters---should
+ be increased slightly.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bringhurst2005"
+
+\end_inset
+
+ The 
+\emph on
+AllCaps
+\emph default
+ character style (
+\family sans
+Edit\SpecialChar \menuseparator
+TextStyle\SpecialChar \menuseparator
+AllCaps
+\family default
+) has proper letterspacing for strings of 
+\begin_inset Flex AllCaps
+status open
+
+\begin_layout Plain Layout
+FULL CAPITAL LETTERS
+\end_layout
+
+\end_inset
+
+, and the 
+\emph on
+SmallCaps
+\emph default
+ character style (
+\family sans
+Edit\SpecialChar \menuseparator
+TextStyle\SpecialChar \menuseparator
+SmallCaps
+\family default
+) has letterspacing for 
+\begin_inset Flex SmallCaps
+status open
+
+\begin_layout Plain Layout
+small capital letters
+\end_layout
+
+\end_inset
+
+.
+ These commands will also automatically convert the case of the text to
+ upper- or lowercase, respectively.
+\end_layout
+
+\begin_layout Standard
+The normal 
+\emph on
+Small Caps
+\emph default
+ shape has also been redefined to include letterspacing.
+ Its case is left as is, however.
+ This allows one to use both uppercase and lowercase letters: 
+\shape smallcaps
+The Initial Letters Of The Words In This Sentence Are Capitalized.
+\end_layout
+
+\begin_layout Full Width
+This is full width text.
+ I'm not going to quote a text because I don't want to mess with citations
+ and I haven't yet figured out how to use BiBTeX.
+ I thought about quoting from some of my own materials, but then I decided
+ not to.
+ Instead, I decided to just type for a while and fill up 3 lines on my screen
+ with whatever nonsense came into my head.
+ 
+\end_layout
+
+\begin_layout Section
+Conclusions
+\end_layout
+
+\begin_layout Standard
+I like a lot of what Tufte has done.
+ At the moment, however, I only use his style in my Calculus class.
+ I have a good Calculus book, but it requires extensive notes to adapt it
+ for the high school level.
+ For my Physics, Chemistry, and Biology courses, the Memoir class seems
+ more suited.
+ I wish it were possible to take the idea of margin figures from Tufte and
+ put it into Memoir.
+ I also prefer Tufte's method of dealing with margin notes.
+\end_layout
+
+\begin_layout Chapter
+Calculation of Volume: Sections 2.12-2.13
+\end_layout
+
+\begin_layout Abstract
+Imagine taking a function like 
+\begin_inset Formula $y=\sqrt{x}$
+\end_inset
+
+ and rotating it in 3 dimensions around the x-axis.
+ The resulting shape would look somewhat like a cup (on its side).
+ Interestingly, integration empowers us to do exactly this and to find out
+ how much water that cup could hold.
+\end_layout
+
+\begin_layout Section
+Visualizing Rotation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float marginfigure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+I had a graph of the square root function here.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "mar:A-graph-of"
+
+\end_inset
+
+A graph of 
+\begin_inset Formula $f(x)=\sqrt{x}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float marginfigure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Here I rotated the square root function and then drew a disk on the figure
+ to illustrate how I would calculate the volume of the figure.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "mar:rotated"
+
+\end_inset
+
+A graph of 
+\begin_inset Formula $f(x)=\sqrt{x}$
+\end_inset
+
+ rotated about the x-axis and with additional remarks for integration.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "mar:A-graph-of"
+
+\end_inset
+
+ shows the plot of the function 
+\begin_inset Formula $f(x)=\sqrt{x}.$
+\end_inset
+
+ Now, imagine that we rotate that function about the x-axis.
+ The resulting figure would be somewhat like figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "mar:rotated"
+
+\end_inset
+
+.
+ This is akin to a cup lying on its side.
+ For the sake of clarity, the artist (me) drew a circle on the end of the
+ figure to show that it is indeed rotated.
+\end_layout
+
+\begin_layout Standard
+Now, suppose we wished to find the volume of the figure.
+ When we integrated the original square root function to find its area,
+ we imagined a series of rectangles inside the figure.
+ Their height was 
+\begin_inset Formula $h=f(x)$
+\end_inset
+
+ and their width was 
+\begin_inset Formula $dx$
+\end_inset
+
+.
+ Since height multiplied by width was the area of each rectangle, we summed
+ these areas and rewrote this as 
+\begin_inset Formula $\int\, f(x)\, dx$
+\end_inset
+
+, or, in this specific case, 
+\begin_inset Formula $\int\,\sqrt{x}\, dx$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+To find the volume of our rotated figure the prodecure is quite similar.
+ Begin by rotating each rectangle about the x-axis.
+ This creates a series of cylinders.
+\begin_inset Flex Sidenote
+status collapsed
+
+\begin_layout Plain Layout
+The text refers to these cylinders as "disks".
+ This is standard practice in all the Calculus books I checked.
+\end_layout
+
+\end_inset
+
+ Then, we can find the volume of each cylinder/disk.
+ The basic formula is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+V=hA\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+where 
+\begin_inset Formula $h$
+\end_inset
+
+ is the height of the cylinder (width of the rectangle) 
+\begin_inset Formula $dx$
+\end_inset
+
+.
+ The area of each figure is a circle where 
+\begin_inset Formula $A=\pi r^{2}$
+\end_inset
+
+.
+ The radius in this case is the function 
+\begin_inset Formula $f(x)$
+\end_inset
+
+.
+ By substitution
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+A=\pi f^{2}(x)\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+In our specific case, 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray*}
+A & = & \pi\left(\sqrt{x}\right)^{2}\\
+ & = & \pi x\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To calculate the volume of one disk, we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+V=\pi x\, dx\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+or, in the general case
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+V=\pi f^{2}(x)\, dx\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To find the volume of the figure between points 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+ we sum the volumes by means of integration:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\int_{a}^{b}\,\pi f^{2}(x)\, dx\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+In the specific example, over the interval 
+\begin_inset Formula $[0,4]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray*}
+\int_{0}^{4}\,\pi x\, dx & = & \pi\int_{0}^{4}\, x\, dx\\
+ & = & \pi\left.\left(\frac{x^{2}}{2}\right)\right|_{0}^{4}\\
+ & = & \pi\left(\frac{4^{2}}{2}-0\right)\\
+ & = & 8\pi\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex NewThought
+status open
+
+\begin_layout Plain Layout
+Suppose I drill
+\end_layout
+
+\end_inset
+
+ a special hole down the length of the cup we just worked with.
+ It is made with a quadratic shaped bit.
+\begin_inset Flex Sidenote
+status collapsed
+
+\begin_layout Plain Layout
+I have no idea how I'd do this in real life, but I'm making a point.
+\end_layout
+
+\end_inset
+
+ I find that the hole the bit makes can be modeled with the function 
+\begin_inset Formula $g(x)=\frac{x^{2}}{16}$
+\end_inset
+
+.
+ I would need to subtract the volume of the material removed from the volume
+ of the entire 
+\begin_inset Quotes eld
+\end_inset
+
+cup
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Each individual cylinder would become like a 
+\begin_inset Quotes eld
+\end_inset
+
+washer
+\begin_inset Quotes erd
+\end_inset
+
+.
+ To get the area of one washer, I would use the formula
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float marginfigure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Here I used RLPlot to draw the square root function and the quadratic function.
+ Then I used Inkscape to shade the area between them.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+The functions 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ and 
+\begin_inset Formula $g(x)$
+\end_inset
+
+ and the area left by 
+\begin_inset Formula $f(x)-g(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray*}
+A_{washer} & = & A_{cup}-A_{drill}\\
+ & = & \pi f^{2}(x)-\pi g^{2}(x)\\
+ & = & \pi\left(f^{2}(x)-g^{2}(x)\right)\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The volume of each washer would be
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray*}
+V_{washer} & = & A_{washer}\, dx\\
+ & = & \pi\left(f^{2}(x)-g^{2}(x)\right)\, dx\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Then, by summing the volumes of all the washers between points 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+, the integral is derived:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\int_{a}^{b}\,\pi\left(f^{2}(x)-g^{2}(x)\right)\, dx\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the case of our quadratic drill bit::
+\begin_inset Float marginfigure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+This was the rotated set of 2 functions.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+The cup with a quadratic hole drilled down its length
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray*}
+\int_{0}^{4}\,\pi\left(\left(\sqrt{x}\right)^{2}-\left(\frac{x^{2}}{16}\right)\right)\, dx & = & \pi\int_{0}^{4}\,\left(x-\frac{x^{4}}{256}\right)\, dx\\
+ & = & \pi\left(\int_{0}^{4}\, x\, dx-\int_{0}^{4}\,\frac{x^{4}}{256}\, dx\right)\\
+ & = & \pi\left(\left.\left(\frac{x^{2}}{2}\right)\right|_{0}^{4}-\left.\left(\frac{x^{5}}{1280}\right)\right|_{0}^{4}\right)\\
+ & = & \pi\left(\left(\frac{4^{2}}{2}-0\right)-\left(\frac{4^{5}}{1280}-0\right)\right)\\
+ & = & \pi\left(8-0.8\right)\\
+ & = & 7.2\pi\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Section
+Homework 
+\end_layout
+
+\begin_layout Itemize
+p114: 1, 4, 5, 6, 8, 10, 12, 15
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "biblioExample"
+options "plainnat"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

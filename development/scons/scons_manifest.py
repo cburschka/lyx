@@ -2398,6 +2398,8 @@ lib_examples_files = Split('''
     serial_letter3.lyx
     simplecv.lyx
     splash.lyx
+    tufte-book.lyx
+    tufte-handout.lyx
     xyfigure.png
     xypic.lyx
 ''')
@@ -2682,6 +2684,8 @@ lib_layouts_files = Split('''
     tarticle.layout
     tbook.layout
     treport.layout
+    tufte-book.layout
+    tufte-handout.layout
 ''')
 
 
