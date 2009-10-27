@@ -929,9 +929,32 @@ docstring Layout::htmlstyle() const {
 }
 
 
+// NOTE There is a whole ton of stuff that could go into this.
+// Things like bottomsep, topsep, and parsep could become various
+// sorts of margins or padding, for example. But for now we are
+// going to keep it simple.
 void Layout::makeDefaultCSS() const {
-// FIXME just an empty hook for now. 
-// i'll get to this shortly.
+#ifdef TEX2LYX
+	// tex2lyx does not have FontInfo::asCSS()
+	return;
+#else
+	// this never needs to be redone, since reloading layouts will
+	// wipe out what we did before.
+	if (!htmldefaultstyle_.empty()) 
+		return;
+	docstring const mainfontCSS = font.asCSS();
+	if (!mainfontCSS.empty())
+		htmldefaultstyle_ = 
+			from_ascii(htmltag() + "." + defaultCSSClass() + " {\n") +
+			mainfontCSS + from_ascii("\n}\n");
+	if (labelfont == font || htmllabeltag() == "NONE")
+		return;
+	docstring const labelfontCSS = labelfont.asCSS();
+	if (!labelfontCSS.empty())
+		htmldefaultstyle_ +=
+			from_ascii(htmllabeltag() + "." + defaultCSSLabelClass() + " {\n") +
+			labelfontCSS + from_ascii("\n}\n");
+#endif
 }
 
 
