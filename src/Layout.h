@@ -254,9 +254,9 @@ private:
 	///
 	std::string defaultCSSClass() const;
 	///
-	std::string defaultCSSItemClass() const { return to_utf8(name()) + "_item"; }
+	std::string defaultCSSItemClass() const { return defaultCSSClass() + "_item"; }
 	///
-	std::string defaultCSSLabelClass() const { return to_utf8(name()) + "_label"; }
+	std::string defaultCSSLabelClass() const { return defaultCSSClass() + "_label"; }
 	
 	/// Name of the layout/paragraph environment
 	docstring name_;
