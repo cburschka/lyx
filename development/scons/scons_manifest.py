@@ -588,7 +588,6 @@ src_mathed_extra_files = Split('''
 
 src_tex2lyx_header_files = Split('''
     Context.h
-    Font.h
     Parser.h
     Spacing.h
     tex2lyx.h
@@ -598,7 +597,6 @@ src_tex2lyx_header_files = Split('''
 src_tex2lyx_files = Split('''
     boost.cpp
     Context.cpp
-    Font.cpp
     math.cpp
     Parser.cpp
     preamble.cpp
@@ -609,6 +607,11 @@ src_tex2lyx_files = Split('''
 
 
 src_tex2lyx_copied_header_files = Split('''
+    Layout.h
+    LayoutFile.h
+    LayoutModuleList.h
+    ModuleList.h
+    TextClass.h
     insets/InsetLayout.h
 ''')
 
@@ -619,7 +622,9 @@ src_tex2lyx_copied_files = Split('''
     Encoding.cpp
     FloatList.cpp
     Floating.cpp
+    FontInfo.cpp
     Layout.cpp
+    LayoutModuleList.cpp
     lengthcommon.cpp
     Lexer.cpp
     ModuleList.cpp
