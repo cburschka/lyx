@@ -17,6 +17,7 @@
 #include "FontInfo.h"
 
 #include "support/docstring.h"
+#include "support/debug.h"
 
 #include <set>
 #include <string>
@@ -82,16 +83,21 @@ public:
 	docstring preamble() const { return preamble_; }
 	///
 	docstring counter() const { return counter_; }
-	/// 
-	std::string const & htmlinnertag() const { return htmlinnertag_; }
-	/// 
-	std::string const & htmlinnerattr() const { return htmlinnerattr_; }
 	///
 	std::string const & htmltag() const { return htmltag_; }
 	/// 
-	std::string const & htmlattr() const { return htmlattr_; }
+	std::string const & htmlattr() const;
+	/// 
+	std::string const & htmlinnertag() const { return htmlinnertag_; }
+	/// 
+	std::string const & htmlinnerattr() const;
 	///
 	std::string const & htmllabel() const { return htmllabel_; }
+	///
+	inline std::string htmllabeltag() const { return "span"; }
+	///
+	std::string htmllabelattr() const 
+		{ return "class=\"" + defaultCSSClass() + "_label\""; }
 	/// 
 	docstring htmlstyle() const;
 	/// 
@@ -158,12 +164,12 @@ private:
 	std::string htmltag_;
 	/// Additional attributes for inclusion with the start tag. Default (if
 	/// a tag is provided) is: class="name".
-	std::string htmlattr_;
+	mutable std::string htmlattr_;
 	/// Tag for individual paragraphs in the inset. Default is none.
 	std::string htmlinnertag_;
 	/// Attributes for that tag. Default (if a tag is provided) is: 
 	/// class="name_inner".
-	std::string htmlinnerattr_;
+	mutable std::string htmlinnerattr_;
 	/// A label for this environment, possibly including a reference
 	/// to a counter. E.g., for footnote, it might be:
 	///    <span class='notenum'>\arabic{footnote}</span>

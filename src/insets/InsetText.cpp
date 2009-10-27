@@ -496,21 +496,31 @@ int InsetText::docbook(odocstream & os, OutputParams const & runparams) const
 
 docstring InsetText::xhtml(odocstream & os, OutputParams const & runparams) const
 {
-	InsetLayout const & il = getLayout();
 	if (undefined()) {
 		xhtmlParagraphs(text_, buffer(), os, runparams);
 		return docstring();
 	}
 
+	InsetLayout const & il = getLayout();
 	bool const opened = html::openTag(os, il.htmltag(), il.htmlattr());
 	if (!il.counter().empty()) {
 		BufferParams const & bp = buffer().masterBuffer()->params();
 		Counters & cntrs = bp.documentClass().counters();
 		cntrs.step(il.counter());
 		// FIXME: translate to paragraph language
-		if (!il.htmllabel().empty())
-			os << cntrs.counterLabel(from_utf8(il.htmllabel()), bp.language->code());
+		if (!il.htmllabel().empty()) {
+			docstring const lbl = 
+				cntrs.counterLabel(from_utf8(il.htmllabel()), bp.language->code());
+			// FIXME is this check necessary?
+			if (!lbl.empty()) {
+				bool const lopen = html::openTag(os, il.htmllabeltag(), il.htmllabelattr());
+				os << lbl;
+				if (lopen)
+					html::closeTag(os, il.htmllabeltag());
+			}
+		}
 	}
+
 	bool innertag_opened = false;
 	if (!il.htmlinnertag().empty())
 		innertag_opened = html::openTag(os, il.htmlinnertag(), il.htmlinnerattr());

@@ -53,7 +53,7 @@
 #                         be comma-separated.
 #End
 
-Format 16
+Format 18
 
 Provides stdinsets 1
 
@@ -108,23 +108,19 @@ InsetLayout Foot
 	EndFont
 	MultiPar              true
 	HTMLTag               span
-	HTMLAttr              class='footwrapper'
-	HTMLLabel             "<span class='notenum'>\arabic{footnote}</span>"
+	HTMLLabel             \arabic{footnote}
 	HTMLInnerTag          span
-	HTMLInnerAttr         class='footnote'
 	HTMLStyle
-		span.notenum { 
-			vertical-align: super; 
-			font-size: smaller; 
+		span.foot_label {
+			vertical-align: super;
+			font-size: smaller;
+			font-weight: bold;
+			text-decoration: underline;
 		}
-		span.footnote {
+		span.foot_inner {
 			display: none;
-			font-size: medium;
-			font-weight: normal;
-			font-style: normal;
-			font-variant: normal;
 		}
-		span.footwrapper:hover span.footnote { 
+		span.foot:hover span.foot_inner { 
 			display: block; 
 			border: 1px double black; 
 			margin: 0em 1em;
@@ -174,9 +170,12 @@ InsetLayout Note:Greyedout
 	EndFont
 	MultiPar              true
 	HTMLTag               span
-	HTMLAttr              class='notegrey'
 	HTMLStyle
-		span.notegrey { color: gray; }
+		span.note_greyedout { 
+			background-color: #A0A0A0; 
+			padding-left: 1ex;
+			padding-right: 1ex;
+		}
 	EndHTMLStyle
 	HTMLIsBlock           false
 End

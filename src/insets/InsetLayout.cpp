@@ -351,23 +351,40 @@ InsetLayout::InsetLyXType translateLyXType(std::string const & str)
 }
 
 
+string const & InsetLayout::htmlattr() const
+{
+	if (htmlattr_.empty())
+		htmlattr_ = "class=\"" + defaultCSSClass() + "\"";
+	return htmlattr_; 
+}
+
+
+string const & InsetLayout::htmlinnerattr() const
+{
+	if (htmlinnerattr_.empty())
+		htmlinnerattr_ = "class=\"" + defaultCSSClass() + "_inner\"";
+	return htmlinnerattr_; 
+}
+
+
 string InsetLayout::defaultCSSClass() const
 { 
 	if (!defaultcssclass_.empty())
 		return defaultcssclass_;
-	docstring d;
-	docstring::const_iterator it = name().begin();
-	docstring::const_iterator en = name().end();
+	string d;
+	string n = to_utf8(name());
+	string::const_iterator it = n.begin();
+	string::const_iterator en = n.end();
 	for (; it != en; ++it) {
 		if (!isalpha(*it))
-			continue;
-		if (islower(*it))
+			d += "_";
+		else if (islower(*it))
 			d += *it;
-		else 
+		else
 			d += support::lowercase(*it);
 	}
 	// are there other characters we need to remove?
-	defaultcssclass_ = to_utf8(d);
+	defaultcssclass_ = d;
 	return defaultcssclass_;
 }
 
