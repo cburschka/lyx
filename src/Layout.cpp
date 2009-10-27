@@ -101,7 +101,7 @@ enum LayoutTags {
 	LT_HTMLLABELFIRST,
 	LT_HTMLPREAMBLE,
 	LT_HTMLSTYLE,
-	LT_HTMLFORCEDEFAULT,
+	LT_HTMLFORCECSS,
 	LT_INTITLE // keep this last!
 };
 
@@ -141,7 +141,7 @@ Layout::Layout()
 	toclevel = NOT_IN_TOC;
 	commanddepth = 0;
 	htmllabelfirst_ = false;
-	htmlforcedefault_ = false;
+	htmlforcecss_ = false;
 }
 
 
@@ -165,7 +165,7 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 		{ "font",           LT_FONT },
 		{ "freespacing",    LT_FREE_SPACING },
 		{ "htmlattr",       LT_HTMLATTR },
-		{ "htmlforcedefault", LT_HTMLFORCEDEFAULT },
+		{ "htmlforcecss",   LT_HTMLFORCECSS },
 		{ "htmlitem",       LT_HTMLITEM },
 		{ "htmlitemattr",   LT_HTMLITEMATTR },
 		{ "htmllabel",      LT_HTMLLABEL },
@@ -517,8 +517,8 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 			htmlstyle_ = from_utf8(lex.getLongString("EndHTMLStyle"));
 			break;
 
-		case LT_HTMLFORCEDEFAULT:
-			lex >> htmlforcedefault_;
+		case LT_HTMLFORCECSS:
+			lex >> htmlforcecss_;
 
 		case LT_HTMLPREAMBLE:
 			htmlpreamble_ = from_utf8(lex.getLongString("EndPreamble"));
@@ -918,7 +918,7 @@ string const & Layout::htmllabelattr() const
 
 
 docstring Layout::htmlstyle() const {
-	if (!htmlstyle_.empty() && !htmlforcedefault_)
+	if (!htmlstyle_.empty() && !htmlforcecss_)
 		return htmlstyle_;
 	if (htmldefaultstyle_.empty()) 
 		makeDefaultCSS();

@@ -254,9 +254,9 @@ private:
 	///
 	std::string defaultCSSClass() const;
 	///
-	std::string defaultCSSItemClass() const { return to_utf8(name()) + "item"; }
+	std::string defaultCSSItemClass() const { return to_utf8(name()) + "_item"; }
 	///
-	std::string defaultCSSLabelClass() const { return to_utf8(name()) + "label"; }
+	std::string defaultCSSLabelClass() const { return to_utf8(name()) + "_label"; }
 	
 	/// Name of the layout/paragraph environment
 	docstring name_;
@@ -317,7 +317,7 @@ private:
 	/// Note that when I said "environment", I meant it: This has no
 	/// effect for LATEX_PARAGRAPH type layouts.
 	mutable std::string htmlitemtag_;
-	/// Attributes for htmlitemtag_. Default is: class="layoutnameitem".
+	/// Attributes for htmlitemtag_. Default is: class="layoutname_item".
 	mutable std::string htmlitemattr_;
 	/// Tag for labels, of whatever sort. One use for this is in setting
 	/// descriptions, in which case it would be: dt. Another use is to
@@ -325,7 +325,7 @@ private:
 	/// sections. Defaults to "span".
 	/// If set to "NONE", this suppresses the printing of the label.
 	mutable std::string htmllabeltag_;
-	/// Attributes for the label. Defaults to: class="layoutnamelabel".
+	/// Attributes for the label. Defaults to: class="layoutname_label".
 	mutable std::string htmllabelattr_;
 	/// Whether to put the label before the item, or within the item.
 	/// I.e., do we have (true):
@@ -340,7 +340,7 @@ private:
 	/// has been given? Default is false.
 	/// Note that the default CSS is output first, then the user CSS, so it is
 	/// possible to override what one does not want.
-	bool htmlforcedefault_;
+	bool htmlforcecss_;
 	/// A cache for the default style info so generated.
 	mutable docstring htmldefaultstyle_;
 	/// Any other info for the HTML header.
