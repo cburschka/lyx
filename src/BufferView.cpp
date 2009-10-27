@@ -2284,6 +2284,8 @@ bool BufferView::mouseSetCursor(Cursor & cur, bool select)
 		// persistent selection
 		cap::saveSelection(cursor());
 
+	d->cursor_.macroModeClose();
+
 	// Has the cursor just left the inset?
 	bool leftinset = (&d->cursor_.inset() != &cur.inset());
 	if (leftinset)
@@ -2299,7 +2301,6 @@ bool BufferView::mouseSetCursor(Cursor & cur, bool select)
 	bool update = leftinset;
 	if (!do_selection && d->cursor_.inTexted())
 		update |= checkDepm(cur, d->cursor_);
-	d->cursor_.macroModeClose();
 
 	d->cursor_.resetAnchor();
 	d->cursor_.setCursor(cur);
