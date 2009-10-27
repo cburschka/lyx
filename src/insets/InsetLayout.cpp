@@ -374,10 +374,6 @@ string InsetLayout::defaultCSSClass() const
 
 void InsetLayout::makeDefaultCSS() const
 {
-#ifdef TEX2LYX
-	// tex2lyx does not have FontInfo::asCSS()
-	return;
-#else
 	if (!htmldefaultstyle_.empty()) 
 		return;
 	if (!htmltag_.empty()) {
@@ -397,7 +393,6 @@ void InsetLayout::makeDefaultCSS() const
 .				from_ascii(htmllabeltag() + "." + defaultCSSLabelClass() + " {\n") +
 				labelfontCSS + from_ascii("\n}\n");
 	*/
-#endif
 }
 
 docstring InsetLayout::htmlstyle() const 

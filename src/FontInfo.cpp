@@ -475,6 +475,7 @@ docstring FontInfo::asCSS() const
 	return from_ascii(retval);	
 }
 
+
 // Set family according to lyx format string
 void setLyXFamily(string const & fam, FontInfo & f)
 {
