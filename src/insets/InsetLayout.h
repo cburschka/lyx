@@ -93,7 +93,7 @@ public:
 	///
 	std::string const & htmllabel() const { return htmllabel_; }
 	/// 
-	docstring htmlstyle() const { return htmlstyle_; }
+	docstring htmlstyle() const;
 	/// 
 	docstring htmlpreamble() const { return htmlpreamble_; }
 	///
@@ -118,7 +118,14 @@ public:
 	bool forceLTR() const { return forceltr_; };
 	///
 	bool isInToc() const { return intoc_; };
+	///
 private:
+	///
+	void makeDefaultCSS() const;
+	///
+	std::string defaultCSSClass() const;
+	///
+	std::string defaultCSSLabelClass() const { return defaultCSSClass() + "_label"; }
 	///
 	docstring name_;
 	/**
@@ -147,20 +154,31 @@ private:
 	docstring counter_;
 	///
 	docstring preamble_;
-	/// The tag enclosing all the material in this inset.
+	/// The tag enclosing all the material in this inset. Default is none.
 	std::string htmltag_;
-	/// Additional attributes for inclusion with the start tag.
+	/// Additional attributes for inclusion with the start tag. Default (if
+	/// a tag is provided) is: class="name".
 	std::string htmlattr_;
-	/// Tag for individual paragraphs in the inset.
+	/// Tag for individual paragraphs in the inset. Default is none.
 	std::string htmlinnertag_;
-	/// Attributes for that tag.
+	/// Attributes for that tag. Default (if a tag is provided) is: 
+	/// class="name_inner".
 	std::string htmlinnerattr_;
 	/// A label for this environment, possibly including a reference
 	/// to a counter. E.g., for footnote, it might be:
 	///    <span class='notenum'>\arabic{footnote}</span>
+	/// No default.
+	/// FIXME Could we get this from the layout?
 	std::string htmllabel_;
 	/// CSS associated with this inset.
 	docstring htmlstyle_;
+	/// Cache for default CSS info for this inset.
+	mutable docstring htmldefaultstyle_;
+	/// 
+	mutable std::string defaultcssclass_;
+	/// Whether to force generation of default CSS even if some is given.
+	/// False by default.
+	bool htmlforcecss_;
 	/// Additional material for the header.
 	docstring htmlpreamble_;
 	/// Whether this inset represents a "block" of material, i.e., a set

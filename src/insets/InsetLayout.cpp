@@ -35,6 +35,7 @@ InsetLayout::InsetLayout() :
 	labelstring_(from_ascii("UNDEFINED")), decoration_(DEFAULT),
 	latextype_(NOLATEXTYPE), font_(sane_font), 
 	labelfont_(sane_font), bgcolor_(Color_error), 
+	htmlforcecss_ (false), htmlisblock_(true),
 	multipar_(false), custompars_(true), forceplain_(false), 
 	passthru_(false), needprotect_(false), freespacing_(false), 
 	keepempty_(false), forceltr_(false), intoc_(false)
@@ -84,6 +85,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		IL_FREESPACING,
 		IL_HTMLTAG,
 		IL_HTMLATTR,
+		IL_HTMLFORCECSS,
 		IL_HTMLINNERTAG,
 		IL_HTMLINNERATTR,
 		IL_HTMLISBLOCK,
@@ -119,6 +121,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		{ "forceplain", IL_FORCEPLAIN },
 		{ "freespacing", IL_FREESPACING },
 		{ "htmlattr", IL_HTMLATTR },
+		{ "htmlforcecss", IL_HTMLFORCECSS },
 		{ "htmlinnerattr", IL_HTMLINNERATTR},
 		{ "htmlinnertag", IL_HTMLINNERTAG},
 		{ "htmlisblock", IL_HTMLISBLOCK},
@@ -285,6 +288,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		case IL_HTMLATTR:
 			lex >> htmlattr_;
 			break;
+		case IL_HTMLFORCECSS:
+			lex >> htmlforcecss_;
+			break;
 		case IL_HTMLINNERTAG:
 			lex >> htmlinnertag_;
 			break;
@@ -344,5 +350,68 @@ InsetLayout::InsetLyXType translateLyXType(std::string const & str)
 		return InsetLayout::STANDARD;
 	return InsetLayout::NOLYXTYPE;
 }
+
+
+string InsetLayout::defaultCSSClass() const
+{ 
+	if (!defaultcssclass_.empty())
+		return defaultcssclass_;
+	docstring d;
+	docstring::const_iterator it = name().begin();
+	docstring::const_iterator en = name().end();
+	for (; it != en; ++it) {
+		if (!isalpha(*it))
+			continue;
+		if (islower(*it))
+			d += *it;
+		else 
+			d += support::lowercase(*it);
+	}
+	// are there other characters we need to remove?
+	defaultcssclass_ = to_utf8(d);
+	return defaultcssclass_;
+}
+
+
+void InsetLayout::makeDefaultCSS() const
+{
+#ifdef TEX2LYX
+	// tex2lyx does not have FontInfo::asCSS()
+	return;
+#else
+	if (!htmldefaultstyle_.empty()) 
+		return;
+	if (!htmltag_.empty()) {
+		docstring const mainfontCSS = font_.asCSS();
+		if (!mainfontCSS.empty())
+			htmldefaultstyle_ = 
+					from_ascii(htmltag() + "." + defaultCSSClass() + " {\n") +
+					mainfontCSS + from_ascii("\n}\n");
+	}
+	/* 
+	At present, we do not have default tags, etc, for the label.
+	if (labelfont_ == font_)
+			return;
+	docstring const labelfontCSS = labelfont_.asCSS();
+	if (!labelfontCSS.empty())
+		htmldefaultstyle_ +=
+.				from_ascii(htmllabeltag() + "." + defaultCSSLabelClass() + " {\n") +
+				labelfontCSS + from_ascii("\n}\n");
+	*/
+#endif
+}
+
+docstring InsetLayout::htmlstyle() const 
+{ 
+	if (!htmlstyle_.empty() && !htmlforcecss_)
+		return htmlstyle_;
+	if (htmldefaultstyle_.empty()) 
+		makeDefaultCSS();
+	docstring retval = htmldefaultstyle_;
+	if (!htmlstyle_.empty())
+		retval += '\n' + htmlstyle_;
+	return retval;
+}
+
 
 } //namespace lyx
