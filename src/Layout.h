@@ -252,11 +252,11 @@ private:
 	/// generates the default CSS for this layout
 	void makeDefaultCSS() const;
 	///
-	inline std::string defaultCSSClass() const { return to_utf8(name()); }
+	std::string defaultCSSClass() const;
 	///
-	inline std::string defaultCSSItemClass() const { return to_utf8(name()) + "item"; }
+	std::string defaultCSSItemClass() const { return to_utf8(name()) + "item"; }
 	///
-	inline std::string defaultCSSLabelClass() const { return to_utf8(name()) + "label"; }
+	std::string defaultCSSLabelClass() const { return to_utf8(name()) + "label"; }
 	
 	/// Name of the layout/paragraph environment
 	docstring name_;
@@ -345,6 +345,8 @@ private:
 	mutable docstring htmldefaultstyle_;
 	/// Any other info for the HTML header.
 	docstring htmlpreamble_;
+	/// calculating this is expensive, so we cache it.
+	mutable std::string defaultcssclass_;
 	/// This is the `category' for this layout. The following are
 	/// recommended basic categories: FrontMatter, BackMatter, MainText,
 	/// Section, Starred, List, Theorem.

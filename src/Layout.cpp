@@ -929,6 +929,27 @@ docstring Layout::htmlstyle() const {
 }
 
 
+string Layout::defaultCSSClass() const
+{ 
+	if (!defaultcssclass_.empty())
+		return defaultcssclass_;
+	docstring d;
+	docstring::const_iterator it = name().begin();
+	docstring::const_iterator en = name().end();
+	for (; it != en; ++it) {
+		if (!isalpha(*it))
+			continue;
+		if (islower(*it))
+			d += *it;
+		else 
+			d += lowercase(*it);
+	}
+	// are there other characters we need to remove?
+	defaultcssclass_ = to_utf8(d);
+	return defaultcssclass_;
+}
+
+
 // NOTE There is a whole ton of stuff that could go into this.
 // Things like bottomsep, topsep, and parsep could become various
 // sorts of margins or padding, for example. But for now we are
