@@ -245,6 +245,9 @@ What's new
 - Show the correct context menu for Insets nested in closed Insets
   that are opened by the navigate or search functionality (bug 6820).
 
+- Fix the positioning of the cursor in some cases with mixed RTL
+  and LTR text (bug 5061).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
