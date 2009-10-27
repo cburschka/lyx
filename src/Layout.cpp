@@ -494,7 +494,7 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 			break;
 
 		case LT_HTMLITEM:
-			lex >> htmlitem_;
+			lex >> htmlitemtag_;
 			break;
 	
 		case LT_HTMLITEMATTR:
@@ -502,7 +502,7 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 			break;
 	
 		case LT_HTMLLABEL:
-			lex >> htmllabel_;
+			lex >> htmllabeltag_;
 			break;
 
 		case LT_HTMLLABELATTR: 
@@ -869,10 +869,10 @@ docstring const Layout::babelpreamble(Language const * lang) const
 }
 
 
-string const Layout::htmltag() const 
+string const & Layout::htmltag() const 
 { 
 	if (htmltag_.empty())
-		htmltag_ = "div";
+		htmltag_ =  "div";
 	return htmltag_;
 }
 
@@ -880,39 +880,39 @@ string const Layout::htmltag() const
 string const & Layout::htmlattr() const 
 { 
 	if (htmlattr_.empty())
-		htmlattr_ = "class=\"" + to_utf8(name()) + "\"";
+		htmlattr_ = "class=\"" + defaultCSSClass() + "\"";
 	return htmlattr_; 
 }
 
 
-string const & Layout::htmlitem() const 
+string const & Layout::htmlitemtag() const 
 { 
-	if (htmlitem_.empty())
-		htmlitem_ = "div";
-	return htmlitem_; 
+	if (htmlitemtag_.empty())
+		htmlitemtag_ = "div";
+	return htmlitemtag_; 
 }
 
 
 string const & Layout::htmlitemattr() const 
 { 
 	if (htmlitemattr_.empty())
-		htmlitemattr_ = "class=\"" + to_utf8(name()) + "item\"";
+		htmlitemattr_ = "class=\"" + defaultCSSItemClass() + "\"";
 	return htmlitemattr_; 
 }
 
 
-string const & Layout::htmllabel() const 
+string const & Layout::htmllabeltag() const 
 { 
-	if (htmllabel_.empty())
-		htmllabel_ = "span";
-	return htmllabel_; 
+	if (htmllabeltag_.empty())
+		htmllabeltag_ = "span";
+	return htmllabeltag_; 
 }
 
 
 string const & Layout::htmllabelattr() const 
 { 
 	if (htmllabelattr_.empty())
-		htmllabelattr_ = "class=\"" + to_utf8(name()) + "label\"";
+		htmllabelattr_ = "class=\"" + defaultCSSLabelClass() + "\"";
 	return htmllabelattr_; 
 }
 

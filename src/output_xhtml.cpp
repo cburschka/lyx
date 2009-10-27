@@ -122,25 +122,25 @@ bool closeTag(odocstream & os, Layout const & lay)
 
 bool openLabelTag(odocstream & os, Layout const & lay)
 {
-	return html::openTag(os, lay.htmllabel(), lay.htmllabelattr());
+	return html::openTag(os, lay.htmllabeltag(), lay.htmllabelattr());
 }
 
 
 bool closeLabelTag(odocstream & os, Layout const & lay)
 {
-	return html::closeTag(os, lay.htmllabel());
+	return html::closeTag(os, lay.htmllabeltag());
 }
 
 
 bool openItemTag(odocstream & os, Layout const & lay)
 {
-	return html::openTag(os, lay.htmlitem(), lay.htmlitemattr());
+	return html::openTag(os, lay.htmlitemtag(), lay.htmlitemattr());
 }
 
 
 bool closeItemTag(odocstream & os, Layout const & lay)
 {
-	return html::closeTag(os, lay.htmlitem());
+	return html::closeTag(os, lay.htmlitemtag());
 }
 
 ParagraphList::const_iterator searchParagraphHtml(
@@ -305,7 +305,7 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 					// in this case, we print the label only for the first 
 					// paragraph (as in a theorem).
 					item_tag_opened = openItemTag(os, style);
-					if (par == pbegin && style.htmllabel() != "NONE") {
+					if (par == pbegin && style.htmllabeltag() != "NONE") {
 						docstring const lbl = 
 								pbegin->expandLabel(style, buf.params(), false);
 						if (!lbl.empty()) {
@@ -320,7 +320,7 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 					if (!labelfirst)
 						item_tag_opened = openItemTag(os, style);
 					if (style.labeltype == LABEL_MANUAL
-					    && style.htmllabel() != "NONE") {
+					    && style.htmllabeltag() != "NONE") {
 						madelabel = openLabelTag(os, style);
 						sep = par->firstWordLyXHTML(os, runparams);
 						if (madelabel)
@@ -328,7 +328,7 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 						os << '\n';
 					}
 					else if (style.labeltype != LABEL_NO_LABEL
-					         && style.htmllabel() != "NONE") {
+					         && style.htmllabeltag() != "NONE") {
 						madelabel = openLabelTag(os, style);
 						os << par->expandLabel(style, buf.params(), false);
 						if (madelabel)

@@ -110,15 +110,15 @@ public:
 	///
 	std::string const & itemtag() const { return itemtag_; }
 	/// 
-	std::string const htmltag() const;
+	std::string const & htmltag() const;
 	/// 
 	std::string const & htmlattr() const;
 	/// 
-	std::string const & htmlitem() const;
+	std::string const & htmlitemtag() const;
 	/// 
 	std::string const & htmlitemattr() const;
 	/// 
-	std::string const & htmllabel() const;
+	std::string const & htmllabeltag() const;
 	/// 
 	std::string const & htmllabelattr() const;
 	///
@@ -251,6 +251,12 @@ public:
 private:
 	/// generates the default CSS for this layout
 	void makeDefaultCSS() const;
+	///
+	inline std::string defaultCSSClass() const { return to_utf8(name()); }
+	///
+	inline std::string defaultCSSItemClass() const { return to_utf8(name()) + "item"; }
+	///
+	inline std::string defaultCSSLabelClass() const { return to_utf8(name()) + "label"; }
 	
 	/// Name of the layout/paragraph environment
 	docstring name_;
@@ -310,15 +316,15 @@ private:
 	/// in "p" tags. Default is "div".
 	/// Note that when I said "environment", I meant it: This has no
 	/// effect for LATEX_PARAGRAPH type layouts.
-	mutable std::string htmlitem_;
-	/// Attributes for htmlitem_. Default is: class="layoutnameitem".
+	mutable std::string htmlitemtag_;
+	/// Attributes for htmlitemtag_. Default is: class="layoutnameitem".
 	mutable std::string htmlitemattr_;
 	/// Tag for labels, of whatever sort. One use for this is in setting
 	/// descriptions, in which case it would be: dt. Another use is to
 	/// customize the display of, say, the auto-generated label for 
 	/// sections. Defaults to "span".
 	/// If set to "NONE", this suppresses the printing of the label.
-	mutable std::string htmllabel_;
+	mutable std::string htmllabeltag_;
 	/// Attributes for the label. Defaults to: class="layoutnamelabel".
 	mutable std::string htmllabelattr_;
 	/// Whether to put the label before the item, or within the item.
