@@ -333,7 +333,7 @@ namespace {
 	}
 
 
-	string getFamily(FontFamily const & f)
+	string getFamilyCSS(FontFamily const & f)
 	{
 		switch (f) {
 		case ROMAN_FAMILY: return "serif";
@@ -346,7 +346,7 @@ namespace {
 	}
 
 
-	string getSeries(FontSeries const & s)
+	string getSeriesCSS(FontSeries const & s)
 	{
 		switch (s) {
 		case MEDIUM_SERIES: return "normal";
@@ -358,7 +358,7 @@ namespace {
 	}
 
 
-	string getShape(FontShape const & s)
+	string getShapeCSS(FontShape const & s)
 	{
 		string fs = "normal";
 		string fv = "normal";
@@ -379,7 +379,7 @@ namespace {
 	}
 
 
-	string getSize(FontSize const & s)
+	string getSizeCSS(FontSize const & s)
 	{
 		switch (s) {
 		case FONT_SIZE_TINY: return "xx-small";
@@ -408,14 +408,14 @@ namespace {
 docstring FontInfo::asCSS() const 
 {
 	string retval;
-	string tmp = getFamily(family_);
+	string tmp = getFamilyCSS(family_);
 	if (!tmp.empty())
 		appendSep(retval, makeCSSTag("font-family", tmp));
-	tmp = getSeries(series_);
+	tmp = getSeriesCSS(series_);
 	if (!tmp.empty())
 		appendSep(retval, makeCSSTag("font-series", tmp));
-	appendSep(retval, getShape(shape_));
-	tmp = getSize(size_);
+	appendSep(retval, getShapeCSS(shape_));
+	tmp = getSizeCSS(size_);
 	if (!tmp.empty())
 		appendSep(retval, makeCSSTag("font-size", tmp));
 	return from_ascii(retval);	
