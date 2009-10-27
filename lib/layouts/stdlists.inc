@@ -50,6 +50,7 @@ Style Enumerate
 	LabelCounter          "enum"
 	HTMLTag               ol
 	HTMLItem              li
+	HTMLLabel             NONE
 End
 
 Style Description

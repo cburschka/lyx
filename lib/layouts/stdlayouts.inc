@@ -26,7 +26,6 @@ Style Quotation
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
 	HTMLTag               blockquote
-	HTMLAttr              class='quotation'
 	HTMLItem              p
 End
 
@@ -46,7 +45,6 @@ Style Quote
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
 	HTMLTag               blockquote
-	HTMLAttr              class='quote'
 	HTMLItem              p
 End
 
@@ -69,7 +67,6 @@ Style Verse
 	AlignPossible         Block, Left
 	LabelType             No_Label
 	HTMLTag               blockquote
-	HTMLAttr              class='verse'
 	HTMLItem              p
 End
 
@@ -90,4 +87,5 @@ Style --Separator--
 	  Size                Normal
 	  Color               Blue
 	EndFont
+	HTMLLabel             NONE
 End

@@ -57,6 +57,7 @@ Style Bibliography
 	  Series              Bold
 	  Size                Larger
 	EndFont
-	HTMLTag               p
-	HTMLAttr              class='bibliography'
+	HTMLTag               div
+	HTMLItem              p
+# FIXME HTML We should have some CSS here to format the items as hanging.
 End

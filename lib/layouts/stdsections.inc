@@ -32,7 +32,6 @@ Style Part
 	  Size                Huge
 	EndFont
 	HTMLTag               h1
-	HTMLAttr              class='part'
 End
 
 
@@ -59,7 +58,6 @@ Style Chapter
 	  Size                Huge
 	EndFont
 	HTMLTag               h1
-	HTMLAttr              class='chapter'
 End
 
 
@@ -85,10 +83,6 @@ Style Section
 	  Size                Larger
 	EndFont
 	HTMLTag               h2
-	HTMLAttr              class='section'
-	HTMLStyle
-		h2.section { font-family: sans-serif; }
-	EndHTMLStyle
 End
 
 
@@ -105,7 +99,6 @@ Style Subsection
 	  Size                Large
 	EndFont
 	HTMLTag               h3
-	HTMLAttr              class='subsection'
 End
 
 
@@ -121,7 +114,6 @@ Style Subsubsection
 	  Size                Normal
 	EndFont
 	HTMLTag               h4
-	HTMLAttr              class='subsubsection'
 End
 
 
@@ -145,7 +137,6 @@ Style Subparagraph
 	NextNoIndent          0
 	LeftMargin            MM
 	HTMLTag               span
-	HTMLAttr              class='subparagraph'
 End
 
 Input numarticle.inc

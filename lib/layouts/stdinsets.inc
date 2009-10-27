@@ -78,7 +78,6 @@ InsetLayout Marginal
 	MultiPar              true
 	NeedProtect           true
 	HTMLTag               span
-	HTMLAttr              class='marginal'
 	HTMLStyle
 		span.marginal {
 			border: 2px solid black; 
@@ -160,7 +159,9 @@ InsetLayout Note:Note
 	EndFont
 	MultiPar              true
 	HTMLIsBlock           false
+# FIXME HTML Need CSS
 End
+
 
 InsetLayout Note:Greyedout
 	LabelString           greyedout

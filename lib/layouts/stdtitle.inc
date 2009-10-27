@@ -27,7 +27,6 @@ Style Title
 	  Size                Largest
 	EndFont
 	HTMLTag               h1
-	HTMLAttr              class='title'
 End
 
 
@@ -47,8 +46,6 @@ Style Author
 	Font
 	  Size                Large
 	EndFont
-	HTMLTag               h2
-	HTMLAttr              class='author'
 End
 
 
@@ -68,6 +65,4 @@ Style Date
 	Font
 	  Size                Large
 	EndFont
-	HTMLTag               h2
-	HTMLAttr              class='date'
 End
