@@ -35,6 +35,7 @@ Style Standard
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
+	HTMLTag               p
 End
 
 #Input stdcharstyles.inc
