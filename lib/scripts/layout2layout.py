@@ -49,7 +49,7 @@ import os, re, string, sys
 # Rename I18NPreamble to BabelPreamble and add LangPreamble
 
 # Incremented to format 15, 28 May 2009 by lasgouttes
-# Add new tag OutputFormat; modules can be conditionned on feature 
+# Add new tag OutputFormat; modules can be conditioned on feature 
 # "from->to".
 
 # Incremented to format 16, 5 June 2009 by rgh
@@ -64,10 +64,16 @@ import os, re, string, sys
 #   HTMLType, HTMLClass, HTMLStyle
 # These are still to be documented, once everything stabilizes.
 
+# Incremented to format 17, 12 August 2009 by rgh
+# Add IfStyle and IfCounter tags for layout.
+
+# Incremented to format 18, 27 October 2009 by rgh
+# Added some new tags for HTML output. Documentation still to follow.
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
-currentFormat = 17
+currentFormat = 18
 
 
 def usage(prog_name):
@@ -256,7 +262,7 @@ def convert(lines):
             continue
 
         # This just involved new features, not any changes to old ones
-        if format == 14 or format == 15 or format == 16:
+        if format == 14 or format == 15 or format == 16 or format == 17:
           i += 1
           continue
 
