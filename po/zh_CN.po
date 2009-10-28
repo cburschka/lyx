@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zh_CN\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-10-25 10:15+0100\n"
+"POT-Creation-Date: 2009-10-28 10:10+0100\n"
 "PO-Revision-Date: 2009-10-18 22:58+0000\n"
 "Last-Translator: mgc <mgcgogo@gmail.com>\n"
 "Language-Team: 简体中文 <lyx-docs@lists.lyx.org>\n"
@@ -2165,7 +2165,7 @@ msgstr "最长标签(&n)"
 msgid "Line &spacing"
 msgstr "行间距(&s)"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:246 src/Text.cpp:1415
+#: src/frontends/qt4/ui/ParagraphUi.ui:246 src/Text.cpp:1416
 #: src/frontends/qt4/GuiDocument.cpp:572
 msgid "Single"
 msgstr "单倍行距"
@@ -2174,7 +2174,7 @@ msgstr "单倍行距"
 msgid "1.5"
 msgstr "1.5倍行距"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:256 src/Text.cpp:1421
+#: src/frontends/qt4/ui/ParagraphUi.ui:256 src/Text.cpp:1422
 #: src/frontends/qt4/GuiDocument.cpp:576
 msgid "Double"
 msgstr "两倍行距"
@@ -3950,11 +3950,11 @@ msgstr "允许浮动(&f)"
 #: lib/layouts/revtex4.layout:40 lib/layouts/scrlettr.layout:7
 #: lib/layouts/scrlttr2.layout:8 lib/layouts/siamltex.layout:31
 #: lib/layouts/sigplanconf.layout:37 lib/layouts/simplecv.layout:16
-#: lib/layouts/slides.layout:60 lib/layouts/agu_stdclass.inc:22
-#: lib/layouts/db_stdclass.inc:22 lib/layouts/scrclass.inc:15
-#: lib/layouts/stdclass.inc:28 lib/layouts/stdletter.inc:12
-#: lib/layouts/svjour.inc:27 lib/ui/stdtoolbars.inc:67
-#: src/insets/InsetRef.cpp:171
+#: lib/layouts/slides.layout:60 lib/layouts/tufte-book.layout:12
+#: lib/layouts/agu_stdclass.inc:22 lib/layouts/db_stdclass.inc:22
+#: lib/layouts/scrclass.inc:15 lib/layouts/stdclass.inc:28
+#: lib/layouts/stdletter.inc:12 lib/layouts/svjour.inc:27
+#: lib/ui/stdtoolbars.inc:67 src/insets/InsetRef.cpp:171
 msgid "Standard"
 msgstr "标准"
 
@@ -4891,6 +4891,7 @@ msgstr "致谢"
 #: lib/layouts/beamer.layout:927 lib/layouts/beamer.layout:946
 #: lib/layouts/beamer.layout:1066 lib/layouts/beamer.layout:1090
 #: lib/layouts/beamer.layout:1128 lib/layouts/siamltex.layout:32
+#: lib/layouts/tufte-book.layout:106 lib/layouts/tufte-handout.layout:95
 #: lib/layouts/lyxmacros.inc:13 lib/layouts/stdclass.inc:29
 #: lib/layouts/stdlayouts.inc:12 lib/layouts/stdlayouts.inc:31
 #: lib/layouts/stdlayouts.inc:50 lib/layouts/stdlayouts.inc:68
@@ -5380,6 +5381,7 @@ msgid "Table"
 msgstr "表"
 
 #: lib/layouts/beamer.layout:1204 lib/layouts/powerdot.layout:382
+#: lib/layouts/tufte-book.layout:134 lib/layouts/tufte-handout.layout:123
 #: lib/layouts/stdfloats.inc:15
 msgid "List of Tables"
 msgstr "表格列表"
@@ -5390,6 +5392,7 @@ msgid "Figure"
 msgstr "图"
 
 #: lib/layouts/beamer.layout:1216 lib/layouts/powerdot.layout:392
+#: lib/layouts/tufte-book.layout:145 lib/layouts/tufte-handout.layout:134
 #: lib/layouts/stdfloats.inc:27
 msgid "List of Figures"
 msgstr "图像列表"
@@ -7691,6 +7694,69 @@ msgstr "致谢"
 #, fuzzy
 msgid "Subclass"
 msgstr "Subjectclass"
+
+#: lib/layouts/tufte-book.layout:34 lib/layouts/tufte-handout.layout:23
+#, fuzzy
+msgid "Sidenote"
+msgstr "记事"
+
+#: lib/layouts/tufte-book.layout:39 lib/layouts/tufte-handout.layout:28
+#, fuzzy
+msgid "sidenote"
+msgstr "记事"
+
+#: lib/layouts/tufte-book.layout:53 lib/layouts/tufte-handout.layout:42
+#, fuzzy
+msgid "Marginnote"
+msgstr "页边注(M)|M"
+
+#: lib/layouts/tufte-book.layout:57 lib/layouts/tufte-handout.layout:46
+#, fuzzy
+msgid "marginnote"
+msgstr "边框"
+
+#: lib/layouts/tufte-book.layout:66 lib/layouts/tufte-handout.layout:55
+msgid "NewThought"
+msgstr ""
+
+#: lib/layouts/tufte-book.layout:70 lib/layouts/tufte-handout.layout:59
+msgid "new thought"
+msgstr ""
+
+#: lib/layouts/tufte-book.layout:80 lib/layouts/tufte-handout.layout:69
+#, fuzzy
+msgid "AllCaps"
+msgstr "小号大写字体"
+
+#: lib/layouts/tufte-book.layout:83 lib/layouts/tufte-handout.layout:72
+#, fuzzy
+msgid "allcaps"
+msgstr "小号大写"
+
+#: lib/layouts/tufte-book.layout:93 lib/layouts/tufte-handout.layout:82
+#, fuzzy
+msgid "SmallCaps"
+msgstr "小号大写字体"
+
+#: lib/layouts/tufte-book.layout:96 lib/layouts/tufte-handout.layout:85
+#, fuzzy
+msgid "smallcaps"
+msgstr "小号大写"
+
+#: lib/layouts/tufte-book.layout:102 lib/layouts/tufte-handout.layout:91
+#, fuzzy
+msgid "Full Width"
+msgstr "标签宽度"
+
+#: lib/layouts/tufte-book.layout:129 lib/layouts/tufte-handout.layout:118
+#, fuzzy
+msgid "MarginTable"
+msgstr "边框"
+
+#: lib/layouts/tufte-book.layout:140 lib/layouts/tufte-handout.layout:129
+#, fuzzy
+msgid "MarginFigure"
+msgstr "FitFigure"
 
 #: lib/layouts/aapaper.inc:54
 msgid "email:"
@@ -17275,61 +17341,61 @@ msgstr "您不能在段首输入空格。请参阅功能简介。"
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "您不能如此输入两个空格。请参阅功能简介。"
 
-#: src/Text.cpp:1381
+#: src/Text.cpp:1382
 msgid "[Change Tracking] "
 msgstr "[追踪改变] "
 
-#: src/Text.cpp:1387
+#: src/Text.cpp:1388
 msgid "Change: "
 msgstr "改变: "
 
-#: src/Text.cpp:1391
+#: src/Text.cpp:1392
 msgid " at "
 msgstr "在"
 
-#: src/Text.cpp:1401
+#: src/Text.cpp:1402
 #, c-format
 msgid "Font: %1$s"
 msgstr "字体: %1$s"
 
-#: src/Text.cpp:1406
+#: src/Text.cpp:1407
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", 深度: %1$d"
 
-#: src/Text.cpp:1412
+#: src/Text.cpp:1413
 msgid ", Spacing: "
 msgstr ", 间隔: "
 
-#: src/Text.cpp:1418 src/frontends/qt4/GuiDocument.cpp:574
+#: src/Text.cpp:1419 src/frontends/qt4/GuiDocument.cpp:574
 msgid "OneHalf"
 msgstr "OneHalf"
 
-#: src/Text.cpp:1424
+#: src/Text.cpp:1425
 msgid "Other ("
 msgstr "其他 ("
 
-#: src/Text.cpp:1433
+#: src/Text.cpp:1434
 msgid ", Inset: "
 msgstr ", 嵌入项: "
 
-#: src/Text.cpp:1434
+#: src/Text.cpp:1435
 msgid ", Paragraph: "
 msgstr ", 段落: "
 
-#: src/Text.cpp:1435
+#: src/Text.cpp:1436
 msgid ", Id: "
 msgstr ", Id:"
 
-#: src/Text.cpp:1436
+#: src/Text.cpp:1437
 msgid ", Position: "
 msgstr ", 位置:　"
 
-#: src/Text.cpp:1442
+#: src/Text.cpp:1443
 msgid ", Char: 0x"
 msgstr ", Char: 0x"
 
-#: src/Text.cpp:1444
+#: src/Text.cpp:1445
 msgid ", Boundary: "
 msgstr ", 边界: "
 

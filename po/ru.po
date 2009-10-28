@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-10-25 10:15+0100\n"
+"POT-Creation-Date: 2009-10-28 10:10+0100\n"
 "PO-Revision-Date: 2009-10-18 17:04+0100\n"
 "Last-Translator: Nick A. Gusev <guusev@yandex.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -2272,7 +2272,7 @@ msgstr "Длин&нейшая метка"
 msgid "Line &spacing"
 msgstr "Интер&линьяж"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:246 src/Text.cpp:1415
+#: src/frontends/qt4/ui/ParagraphUi.ui:246 src/Text.cpp:1416
 #: src/frontends/qt4/GuiDocument.cpp:572
 msgid "Single"
 msgstr "Одинарный"
@@ -2281,7 +2281,7 @@ msgstr "Одинарный"
 msgid "1.5"
 msgstr "Полуторный"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:256 src/Text.cpp:1421
+#: src/frontends/qt4/ui/ParagraphUi.ui:256 src/Text.cpp:1422
 #: src/frontends/qt4/GuiDocument.cpp:576
 msgid "Double"
 msgstr "Двойной"
@@ -4189,11 +4189,11 @@ msgstr "Включить подвижный режим"
 #: lib/layouts/revtex4.layout:40 lib/layouts/scrlettr.layout:7
 #: lib/layouts/scrlttr2.layout:8 lib/layouts/siamltex.layout:31
 #: lib/layouts/sigplanconf.layout:37 lib/layouts/simplecv.layout:16
-#: lib/layouts/slides.layout:60 lib/layouts/agu_stdclass.inc:22
-#: lib/layouts/db_stdclass.inc:22 lib/layouts/scrclass.inc:15
-#: lib/layouts/stdclass.inc:28 lib/layouts/stdletter.inc:12
-#: lib/layouts/svjour.inc:27 lib/ui/stdtoolbars.inc:67
-#: src/insets/InsetRef.cpp:171
+#: lib/layouts/slides.layout:60 lib/layouts/tufte-book.layout:12
+#: lib/layouts/agu_stdclass.inc:22 lib/layouts/db_stdclass.inc:22
+#: lib/layouts/scrclass.inc:15 lib/layouts/stdclass.inc:28
+#: lib/layouts/stdletter.inc:12 lib/layouts/svjour.inc:27
+#: lib/ui/stdtoolbars.inc:67 src/insets/InsetRef.cpp:171
 msgid "Standard"
 msgstr "Обычный"
 
@@ -5172,6 +5172,7 @@ msgstr "Благодарности"
 #: lib/layouts/beamer.layout:927 lib/layouts/beamer.layout:946
 #: lib/layouts/beamer.layout:1066 lib/layouts/beamer.layout:1090
 #: lib/layouts/beamer.layout:1128 lib/layouts/siamltex.layout:32
+#: lib/layouts/tufte-book.layout:106 lib/layouts/tufte-handout.layout:95
 #: lib/layouts/lyxmacros.inc:13 lib/layouts/stdclass.inc:29
 #: lib/layouts/stdlayouts.inc:12 lib/layouts/stdlayouts.inc:31
 #: lib/layouts/stdlayouts.inc:50 lib/layouts/stdlayouts.inc:68
@@ -5693,6 +5694,7 @@ msgid "Table"
 msgstr "Таблица"
 
 #: lib/layouts/beamer.layout:1204 lib/layouts/powerdot.layout:382
+#: lib/layouts/tufte-book.layout:134 lib/layouts/tufte-handout.layout:123
 #: lib/layouts/stdfloats.inc:15
 msgid "List of Tables"
 msgstr "Список таблиц"
@@ -5703,6 +5705,7 @@ msgid "Figure"
 msgstr "Изображение"
 
 #: lib/layouts/beamer.layout:1216 lib/layouts/powerdot.layout:392
+#: lib/layouts/tufte-book.layout:145 lib/layouts/tufte-handout.layout:134
 #: lib/layouts/stdfloats.inc:27
 msgid "List of Figures"
 msgstr "Список рисунков"
@@ -8199,6 +8202,69 @@ msgstr "БЛАГОДАРНОСТИ"
 #, fuzzy
 msgid "Subclass"
 msgstr "Subjectclass"
+
+#: lib/layouts/tufte-book.layout:34 lib/layouts/tufte-handout.layout:23
+#, fuzzy
+msgid "Sidenote"
+msgstr "Заметка"
+
+#: lib/layouts/tufte-book.layout:39 lib/layouts/tufte-handout.layout:28
+#, fuzzy
+msgid "sidenote"
+msgstr "Заметка"
+
+#: lib/layouts/tufte-book.layout:53 lib/layouts/tufte-handout.layout:42
+#, fuzzy
+msgid "Marginnote"
+msgstr "Примечание на полях|я"
+
+#: lib/layouts/tufte-book.layout:57 lib/layouts/tufte-handout.layout:46
+#, fuzzy
+msgid "marginnote"
+msgstr "примечание на полях"
+
+#: lib/layouts/tufte-book.layout:66 lib/layouts/tufte-handout.layout:55
+msgid "NewThought"
+msgstr ""
+
+#: lib/layouts/tufte-book.layout:70 lib/layouts/tufte-handout.layout:59
+msgid "new thought"
+msgstr ""
+
+#: lib/layouts/tufte-book.layout:80 lib/layouts/tufte-handout.layout:69
+#, fuzzy
+msgid "AllCaps"
+msgstr "Капитель"
+
+#: lib/layouts/tufte-book.layout:83 lib/layouts/tufte-handout.layout:72
+#, fuzzy
+msgid "allcaps"
+msgstr "Прописной"
+
+#: lib/layouts/tufte-book.layout:93 lib/layouts/tufte-handout.layout:82
+#, fuzzy
+msgid "SmallCaps"
+msgstr "Капитель"
+
+#: lib/layouts/tufte-book.layout:96 lib/layouts/tufte-handout.layout:85
+#, fuzzy
+msgid "smallcaps"
+msgstr "Прописной"
+
+#: lib/layouts/tufte-book.layout:102 lib/layouts/tufte-handout.layout:91
+#, fuzzy
+msgid "Full Width"
+msgstr "Ширина метки"
+
+#: lib/layouts/tufte-book.layout:129 lib/layouts/tufte-handout.layout:118
+#, fuzzy
+msgid "MarginTable"
+msgstr "примечание на полях"
+
+#: lib/layouts/tufte-book.layout:140 lib/layouts/tufte-handout.layout:129
+#, fuzzy
+msgid "MarginFigure"
+msgstr "FitFigure"
 
 #: lib/layouts/aapaper.inc:54
 #, fuzzy
@@ -17884,68 +17950,68 @@ msgstr ""
 "Вы не можете вводить два пробела подряд таким способом.  Пожалуйста, "
 "прочитайте Самоучитель."
 
-#: src/Text.cpp:1381
+#: src/Text.cpp:1382
 #, fuzzy
 msgid "[Change Tracking] "
 msgstr "Изменить язык"
 
-#: src/Text.cpp:1387
+#: src/Text.cpp:1388
 #, fuzzy
 msgid "Change: "
 msgstr "Стр. от:"
 
-#: src/Text.cpp:1391
+#: src/Text.cpp:1392
 #, fuzzy
 msgid " at "
 msgstr " в "
 
 # c-format
-#: src/Text.cpp:1401
+#: src/Text.cpp:1402
 #, c-format
 msgid "Font: %1$s"
 msgstr "Шрифт: %1$s"
 
 # c-format
-#: src/Text.cpp:1406
+#: src/Text.cpp:1407
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Уровень: %1$d"
 
-#: src/Text.cpp:1412
+#: src/Text.cpp:1413
 msgid ", Spacing: "
 msgstr ", Промежутки: "
 
-#: src/Text.cpp:1418 src/frontends/qt4/GuiDocument.cpp:574
+#: src/Text.cpp:1419 src/frontends/qt4/GuiDocument.cpp:574
 msgid "OneHalf"
 msgstr "Полуторный"
 
-#: src/Text.cpp:1424
+#: src/Text.cpp:1425
 msgid "Other ("
 msgstr "Другой ("
 
-#: src/Text.cpp:1433
+#: src/Text.cpp:1434
 #, fuzzy
 msgid ", Inset: "
 msgstr ", Уровень: "
 
-#: src/Text.cpp:1434
+#: src/Text.cpp:1435
 msgid ", Paragraph: "
 msgstr ", Абзац: "
 
-#: src/Text.cpp:1435
+#: src/Text.cpp:1436
 #, fuzzy
 msgid ", Id: "
 msgstr ", Уровень: "
 
-#: src/Text.cpp:1436
+#: src/Text.cpp:1437
 msgid ", Position: "
 msgstr ", Расположение: "
 
-#: src/Text.cpp:1442
+#: src/Text.cpp:1443
 msgid ", Char: 0x"
 msgstr ""
 
-#: src/Text.cpp:1444
+#: src/Text.cpp:1445
 msgid ", Boundary: "
 msgstr ", Граница: "
 
