@@ -606,10 +606,6 @@ src_tex2lyx_files = Split('''
 
 
 src_tex2lyx_copied_header_files = Split('''
-    Layout.h
-    LayoutFile.h
-    LayoutModuleList.h
-    ModuleList.h
     TextClass.h
     insets/InsetLayout.h
 ''')
