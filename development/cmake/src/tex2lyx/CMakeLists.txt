@@ -23,6 +23,9 @@ file(GLOB tex2lyx_sources ${TOP_SRC_DIR}/src/tex2lyx/${LYX_CPP_FILES})
 
 file(GLOB tex2lyx_headers ${TOP_SRC_DIR}/src/tex2lyx/${LYX_HPP_FILES})
 
+list(APPEND tex2lyx_sources ${TOP_SRC_DIR}/src/FontInfo.cpp)
+list(APPEND tex2lyx_headers ${TOP_SRC_DIR}/src/FontInfo.h)
+
 include_directories(BEFORE ${TOP_SRC_DIR}/src/tex2lyx
   ${TOP_SRC_DIR}/src/support/minizip ${ZLIB_INCLUDE_DIR})
 
