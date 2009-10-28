@@ -36,15 +36,12 @@ LINKED_FILES = \
 	../Floating.cpp \
 	../FontInfo.cpp \
 	../insets/InsetLayout.cpp \
-	../LayoutFile.h \
-	../Layout.h \
 	../Layout.cpp \
-	../LayoutModuleList.h \
 	../LayoutModuleList.cpp \
 	../lengthcommon.cpp \
 	../Lexer.cpp \
-	../ModuleList.h \
 	../ModuleList.cpp \
+	../Spacing.cpp \
 	../TextClass.cpp \
 	../TextClass.h
 
@@ -59,7 +56,6 @@ tex2lyx_SOURCES = \
 	Parser.cpp \
 	Parser.h \
 	preamble.cpp \
-	Spacing.h \
 	table.cpp \
 	tex2lyx.cpp \
 	tex2lyx.h \

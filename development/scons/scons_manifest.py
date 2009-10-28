@@ -589,7 +589,6 @@ src_mathed_extra_files = Split('''
 src_tex2lyx_header_files = Split('''
     Context.h
     Parser.h
-    Spacing.h
     tex2lyx.h
 ''')
 
@@ -628,6 +627,7 @@ src_tex2lyx_copied_files = Split('''
     lengthcommon.cpp
     Lexer.cpp
     ModuleList.cpp
+    Spacing.cpp
     TextClass.cpp
     insets/InsetLayout.cpp
 ''')
