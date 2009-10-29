@@ -1616,6 +1616,9 @@ bool Text::dissolveInset(Cursor & cur)
 		// this is the least that needs to be done (bug 6003)
 		// in the above case, pasteParagraphList handles this
 		cur.buffer()->updateLabels();
+
+	// Ensure the current language is set correctly (bug 6292)
+	cur.text()->setCursor(cur, cur.pit(), cur.pos());
 	cur.clearSelection();
 	cur.resetAnchor();
 	return true;
