@@ -1423,8 +1423,7 @@ bool Cursor::macroModeClose()
 	InsetMathUnknown * p = activeMacro();
 	p->finalize();
 	MathData selection;
-	// enclose selection in braces (bug #6270)
-	asArray('{' + p->selection() + '}', selection);
+	asArray(p->selection(), selection);
 	docstring const s = p->name();
 	--pos();
 	cell().erase(pos());
@@ -1467,7 +1466,7 @@ bool Cursor::macroModeClose()
 
 	// finally put the macro argument behind, if needed
 	if (macroArg) {
-		if (selection.size() > 1)
+		if (selection.size() > 1 || selection[0]->asScriptInset())
 			plainInsert(MathAtom(new InsetMathBrace(selection)));
 		else
 			insert(selection);
