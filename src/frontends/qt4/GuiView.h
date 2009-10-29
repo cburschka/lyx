@@ -105,6 +105,8 @@ public:
 	bool hideWorkArea(GuiWorkArea * wa);
 	/// closes the workarea
 	bool closeWorkArea(GuiWorkArea * wa);
+	/// closes the buffer
+	bool closeBuffer(Buffer & buf);
 	///
 	void openDocument(std::string const & filename);
 	///

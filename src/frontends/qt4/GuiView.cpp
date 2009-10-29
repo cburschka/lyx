@@ -2041,13 +2041,30 @@ bool GuiView::closeWorkAreaAll()
 
 bool GuiView::closeWorkArea(GuiWorkArea * wa, bool close_buffer)
 {
+	if (!wa)
+		return false;
+
 	Buffer & buf = wa->bufferView().buffer();
 
+	if (close_buffer)
+		return closeBuffer(buf);
+	else {
+		if (!inMultiTabs(wa))
+			if (!saveBufferIfNeeded(buf, true))
+				return false;
+		removeWorkArea(wa);
+		return true;
+	}
+}
+
+
+bool GuiView::closeBuffer(Buffer & buf)
+{
 	// If we are in a close_event all children will be closed in some time,
 	// so no need to do it here. This will ensure that the children end up
 	// in the session file in the correct order. If we close the master
 	// buffer, we can close or release the child buffers here too.
-	if (close_buffer && !closing_) {
+	if (!closing_) {
 		vector<Buffer *> clist = buf.getChildren();
 		for (vector<Buffer *>::const_iterator it = clist.begin();
 			 it != clist.end(); ++it) {
@@ -2069,18 +2086,8 @@ bool GuiView::closeWorkArea(GuiWorkArea * wa, bool close_buffer)
 	for (size_t i = 0; i < theSession().bookmarks().size(); ++i)
 		theLyXFunc().gotoBookmark(i+1, false, false);
 
-	// if we are only hiding the buffer and there are multiple views
-	// of the buffer, then we do not need to ensure a clean buffer.
-	bool const allow_dirty = inMultiTabs(wa) && !close_buffer;
-
-	if (allow_dirty || saveBufferIfNeeded(buf, !close_buffer)) {
-		// save in sessions if requested
-		// do not save childs if their master
-		// is opened as well
-		if (!close_buffer)
-			removeWorkArea(wa);
-		else
-			theBufferList().release(&buf);
+	if (saveBufferIfNeeded(buf, false)) {
+		theBufferList().release(&buf);
 		return true;
 	}
 	return false;
