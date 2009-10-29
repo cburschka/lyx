@@ -311,8 +311,8 @@ public:
 	/// \return true if \p child is a child of this \c Buffer.
 	bool isChild(Buffer * child) const;
 	
-	/// return a vector with all children and grandchildren
-	std::vector<Buffer *> getChildren() const;
+	/// return a vector with all children (and grandchildren)
+	std::vector<Buffer *> getChildren(bool grand_children = true) const;
 
 	/// Is buffer read-only?
 	bool isReadonly() const;

@@ -2065,7 +2065,7 @@ bool GuiView::closeBuffer(Buffer & buf)
 	// in the session file in the correct order. If we close the master
 	// buffer, we can close or release the child buffers here too.
 	if (!closing_) {
-		vector<Buffer *> clist = buf.getChildren();
+		vector<Buffer *> clist = buf.getChildren(false);
 		for (vector<Buffer *>::const_iterator it = clist.begin();
 			 it != clist.end(); ++it) {
 			// If a child is dirty, do not close

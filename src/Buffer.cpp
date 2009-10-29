@@ -2337,7 +2337,7 @@ DocIterator Buffer::firstChildPosition(Buffer const * child)
 }
 
 
-std::vector<Buffer *> Buffer::getChildren() const
+std::vector<Buffer *> Buffer::getChildren(bool grand_children) const
 {
 	std::vector<Buffer *> clist;
 	// loop over children
@@ -2346,11 +2346,13 @@ std::vector<Buffer *> Buffer::getChildren() const
 	for (; it != end; ++it) {
 		Buffer * child = const_cast<Buffer *>(it->first);
 		clist.push_back(child);
-		// there might be grandchildren
-		std::vector<Buffer *> glist = child->getChildren();
-		for (vector<Buffer *>::const_iterator git = glist.begin();
-		     git != glist.end(); ++git)
-			clist.push_back(*git);
+		if (grand_children) {
+			// there might be grandchildren
+			std::vector<Buffer *> glist = child->getChildren();
+			for (vector<Buffer *>::const_iterator git = glist.begin();
+				 git != glist.end(); ++git)
+				clist.push_back(*git);
+		}
 	}
 	return clist;
 }
