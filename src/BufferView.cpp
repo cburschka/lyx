@@ -1800,11 +1800,6 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 			Alert::warning(_("Branch already exists"), drtmp.message());
 			break;
 		}
-		BranchList & branch_list = buffer_.params().branchlist();
-		Branch const * branch = branch_list.find(branch_name);
-		string const x11hexname = X11hexname(branch->color());
-		docstring const str = branch_name + ' ' + from_ascii(x11hexname);
-		lyx::dispatch(FuncRequest(LFUN_SET_COLOR, str));
 		lyx::dispatch(FuncRequest(LFUN_BRANCH_INSERT, branch_name));
 		break;
 	}

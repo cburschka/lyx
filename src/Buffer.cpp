@@ -1857,21 +1857,25 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 		break;
 
 	case LFUN_BRANCH_ADD: {
-		BranchList & branchList = params().branchlist();
-		docstring const branchName = func.argument();
-		if (branchName.empty()) {
+		docstring const branch_name = func.argument();
+		if (branch_name.empty()) {
 			dispatched = false;
 			break;
 		}
-		Branch * branch = branchList.find(branchName);
+		BranchList & branch_list = params().branchlist();
+		Branch * branch = branch_list.find(branch_name);
 		if (branch) {
-			LYXERR0("Branch " << branchName << " does already exist.");
+			LYXERR0("Branch " << branch_name << " already exists.");
 			dr.setError(true);
 			docstring const msg = 
-				bformat(_("Branch \"%1$s\" does already exist."), branchName);
+				bformat(_("Branch \"%1$s\" already exists."), branch_name);
 			dr.setMessage(msg);
 		} else {
-			branchList.add(branchName);
+			branch_list.add(branch_name);
+			branch = branch_list.find(branch_name);
+			string const x11hexname = X11hexname(branch->color());
+			docstring const str = branch_name + ' ' + from_ascii(x11hexname);
+			lyx::dispatch(FuncRequest(LFUN_SET_COLOR, str));	
 			dr.setError(false);
 			dr.update(Update::Force);
 		}
