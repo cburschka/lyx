@@ -2685,10 +2685,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_ACCENT_UMLAUT:
 	case LFUN_ACCENT_UNDERBAR:
 	case LFUN_ACCENT_UNDERDOT:
-	case LFUN_APPENDIX:
-	case LFUN_DEPTH_DECREMENT:
-	case LFUN_DEPTH_INCREMENT:
-	case LFUN_FILE_INSERT:
 	case LFUN_FONT_BOLD:
 	case LFUN_FONT_BOLDSYMBOL:
 	case LFUN_FONT_TYPEWRITER:
@@ -2705,12 +2701,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_FONT_STRIKEOUT:
 	case LFUN_FONT_UULINE:
 	case LFUN_FONT_UWAVE:
-	case LFUN_LABEL_GOTO:
-	case LFUN_LAYOUT_TABULAR:
-	case LFUN_NOACTION:
-	case LFUN_NOTE_NEXT:
-	case LFUN_REFERENCE_NEXT:
-	case LFUN_SERVER_SET_XY:
 	case LFUN_TEXTSTYLE_APPLY:
 	case LFUN_TEXTSTYLE_UPDATE:
 		if (cur.inset().getLayout().isPassThru())
