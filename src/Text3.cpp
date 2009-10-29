@@ -2563,9 +2563,11 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_LANGUAGE:
 		enable = !cur.inset().getLayout().isPassThru();
+		break;
 
 	case LFUN_BREAK_PARAGRAPH:
 		enable = cur.inset().getLayout().isMultiPar();
+		break;
 
 	case LFUN_WORD_DELETE_FORWARD:
 	case LFUN_WORD_DELETE_BACKWARD:
