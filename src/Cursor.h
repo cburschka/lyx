@@ -204,9 +204,9 @@ public:
 	void info(odocstream & os) const;
 	/// are we in math mode (2), text mode (1) or unsure (0)?
 	int currentMode();
-	/// reset cursor bottom to the beginning of the given inset
+	/// reset cursor bottom to the beginning of the top inset
 	// (sort of 'chroot' environment...)
-	void reset(Inset &);
+	void reset();
 	/// for spellchecking
 	void replaceWord(std::string const & replacestring);
 	/**

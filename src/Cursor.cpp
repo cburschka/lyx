@@ -258,11 +258,11 @@ Cursor::Cursor(BufferView & bv)
 {}
 
 
-void Cursor::reset(Inset & inset)
+void Cursor::reset()
 {
 	clear();
-	push_back(CursorSlice(inset));
-	anchor_ = doc_iterator_begin(&inset.buffer(), &inset);
+	push_back(CursorSlice(buffer()->inset()));
+	anchor_ = doc_iterator_begin(buffer());
 	anchor_.clear();
 	clearTargetX();
 	selection_ = false;

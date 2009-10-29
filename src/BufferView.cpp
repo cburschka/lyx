@@ -646,7 +646,7 @@ void BufferView::setCursorFromScrollbar()
 	// We reset the cursor because cursorStatus() does not
 	// work when the cursor is within mathed.
 	Cursor cur(*this);
-	cur.reset(buffer_.inset());
+	cur.reset();
 	tm.setCursorFromCoordinates(cur, 0, newy);
 
 	// update the bufferview cursor and notify insets
@@ -1463,7 +1463,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 
 	case LFUN_ALL_CHANGES_ACCEPT:
 		// select complete document
-		cur.reset(buffer_.inset());
+		cur.reset();
 		cur.selHandle(true);
 		buffer_.text().cursorBottom(cur);
 		// accept everything in a single step to support atomic undo
@@ -1474,7 +1474,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 
 	case LFUN_ALL_CHANGES_REJECT:
 		// select complete document
-		cur.reset(buffer_.inset());
+		cur.reset();
 		cur.selHandle(true);
 		buffer_.text().cursorBottom(cur);
 		// reject everything in a single step to support atomic undo
@@ -1701,7 +1701,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 			p = Point(width_, height_);
 		Cursor old = cur;
 		bool const in_texted = cur.inTexted();
-		cur.reset(buffer_.inset());
+		cur.reset();
 		updateMetrics();
 		buffer_.changed();
 		d->text_metrics_[&buffer_.text()].editXY(cur, p.x_, p.y_,
@@ -2152,7 +2152,7 @@ void BufferView::setCursorFromRow(int row)
 
 	buffer_.texrow().getIdFromRow(row, tmpid, tmppos);
 
-	d->cursor_.reset(buffer_.inset());
+	d->cursor_.reset();
 	if (tmpid == -1)
 		buffer_.text().setCursor(d->cursor_, 0, 0);
 	else
@@ -2169,7 +2169,7 @@ bool BufferView::setCursorFromInset(Inset const * inset)
 
 	// Inset is not at cursor position. Find it in the document.
 	Cursor cur(*this);
-	cur.reset(buffer().inset());
+	cur.reset();
 	while (cur && cur.nextInset() != inset)
 		cur.forwardInset();
 
@@ -2234,7 +2234,7 @@ int BufferView::workHeight() const
 
 void BufferView::setCursor(DocIterator const & dit)
 {
-	d->cursor_.reset(buffer().inset());
+	d->cursor_.reset();
 	size_t const n = dit.depth();
 	for (size_t i = 0; i < n; ++i)
 		dit[i].inset().edit(d->cursor_, true);
