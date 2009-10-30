@@ -43,11 +43,11 @@ namespace lyx {
 // Strings used to read and write .lyx format files
 //
 // These are defined in FontInfo.cpp
-extern char const ** LyXFamilyNames;
-extern char const ** LyXSeriesNames;
-extern char const ** LyXShapeNames;
-extern char const ** LyXSizeNames;
-extern char const ** LyXMiscNames;
+extern char const * LyXFamilyNames[NUM_FAMILIES + 2];
+extern char const * LyXSeriesNames[4];
+extern char const * LyXShapeNames[6];
+extern char const * LyXSizeNames[14];
+extern char const * LyXMiscNames[5];
 
 //
 // Names for the GUI
