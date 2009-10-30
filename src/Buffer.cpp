@@ -253,7 +253,11 @@ public:
 		return parent_buffer; 
 	}
 	///
-	void setParent(Buffer const * pb) { parent_buffer = pb; }
+	void setParent(Buffer const * pb) {
+		if (parent_buffer != pb)
+			LYXERR0("Warning: a buffer should not have two parents!");
+		parent_buffer = pb;
+	}
 private:
 	/// So we can force access via the accessors.
 	mutable Buffer const * parent_buffer;
