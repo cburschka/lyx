@@ -2517,7 +2517,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_TOOLBAR_TOGGLE
  * \li Action: Toggles visibility of a given toolbar between on/off/auto.
- * \li Notion: Skiping "auto" when allowauto is false.
+ * \li Notion: Skipping "auto" when allowauto is false.
  * \li Syntax: toolbar-toggle <NAME> [allowauto]
  * \li Params: <NAME>: standard|extra|table|math|mathmacrotemplate|
                        minibuffer|review|view/update|math_panels|vcs
@@ -3173,12 +3173,14 @@ void LyXAction::init()
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_COMMAND_EXECUTE
- * \li Action: Opens the minibuffer toolbar so that the user can type in there.
+ * \li Action: Switches the focus to the minibuffer so that the user can type
+               in there. If necessary, it opens the minibuffer toolbar.
  * \li Notion: Usually bound to M-x shortcut.
  * \li Syntax: command-execute
  * \endvar
  */
 		{ LFUN_COMMAND_EXECUTE, "command-execute", NoBuffer, Edit },
+
 /*!
  * \var lyx::FuncCode lyx::LFUN_COMMAND_PREFIX
  * \li Action: Return the current key sequence and available options as a string.
