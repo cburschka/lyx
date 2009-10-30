@@ -4,6 +4,8 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\bin" # always here
  File "${PRODUCT_SOURCEDIR}\bin\lyx.exe" # always here
  File "${PRODUCT_SOURCEDIR}\bin\tex2lyx.exe" # always here
+ File "${PRODUCT_SOURCEDIR}\bin\elyxer.py"
+ File "${PRODUCT_SOURCEDIR}\bin\lyx.css"
  File "${PRODUCT_SOURCEDIR}\bin\python.exe"
  File "${PRODUCT_SOURCEDIR}\bin\python26.dll"
  File "${PRODUCT_SOURCEDIR}\bin\QtCore4.dll"
@@ -75,7 +77,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx2lyx_version.py" # always here
  File "${PRODUCT_SOURCEDIR}\Resources\lyx2lyx\lyx_1_6.py"
  SetOutPath "$INSTDIR\Resources\scripts"
- File "${PRODUCT_SOURCEDIR}\Resources\scripts\elyxer.py"
+ File "${PRODUCT_SOURCEDIR}\Resources\scripts\ext_copy.py"
  SetOutPath "$INSTDIR\Resources\templates"
  File "${PRODUCT_SOURCEDIR}\Resources\templates\elsarticle.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\templates\svjour3.lyx"
