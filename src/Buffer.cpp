@@ -254,7 +254,7 @@ public:
 	}
 	///
 	void setParent(Buffer const * pb) {
-		if (parent_buffer != pb)
+		if (parent_buffer && pb && parent_buffer != pb)
 			LYXERR0("Warning: a buffer should not have two parents!");
 		parent_buffer = pb;
 	}
