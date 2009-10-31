@@ -1360,7 +1360,7 @@ TabWorkArea::TabWorkArea(QWidget * parent)
 		this, SLOT(showContextMenu(const QPoint &)));
 #if QT_VERSION >= 0x040500
 	connect(tb, SIGNAL(tabCloseRequested(int)),
-		tb, SLOT(on_tabCloseRequested(int)));
+		this, SLOT(closeTab(int)));
 #endif
 
 	setUsesScrollButtons(true);
@@ -1539,6 +1539,21 @@ void TabWorkArea::closeCurrentTab()
 	}
 	wa->view().hideWorkArea(wa);
 }
+
+
+void TabWorkArea::closeTab(int index)
+{
+	on_currentTabChanged(index);
+	GuiWorkArea * wa;
+	if (index == -1)
+		wa = currentWorkArea();
+	else {
+		wa = dynamic_cast<GuiWorkArea *>(widget(index));
+		LASSERT(wa, /**/);
+	}
+	wa->view().hideWorkArea(wa);
+}
+
 
 ///
 class DisplayPath {
@@ -1777,13 +1792,6 @@ DragTabBar::DragTabBar(QWidget* parent)
 #if QT_VERSION >= 0x040500
 	setTabsClosable(!lyxrc.single_close_tab_button);
 #endif
-}
-
-
-void DragTabBar::on_tabCloseRequested(int index)
-{
-	setCurrentIndex(index);
-	lyx::dispatch(FuncRequest(LFUN_BUFFER_CLOSE));
 }
 
 

@@ -322,6 +322,8 @@ public Q_SLOTS:
 	void closeCurrentBuffer();
 	/// close current tab, or the one given by \c clicked_tab_
 	void closeCurrentTab();
+	/// close the tab given by \c index
+	void closeTab(int index);
 	///
 	void updateTabTexts();
 	
@@ -372,10 +374,6 @@ private:
 Q_SIGNALS:
 	///
 	void tabMoveRequested(int fromIndex, int toIndex);
-
-private Q_SLOTS:
-	///
-	void on_tabCloseRequested(int index);
 };
 
 } // namespace frontend
