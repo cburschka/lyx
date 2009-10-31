@@ -320,8 +320,8 @@ Q_SIGNALS:
 public Q_SLOTS:
 	/// close current buffer, or the one given by \c clicked_tab_
 	void closeCurrentBuffer();
-	/// close current tab, or the one given by \c clicked_tab_
-	void closeCurrentTab();
+	/// hide current tab, or the one given by \c clicked_tab_
+	void hideCurrentTab();
 	/// close the tab given by \c index
 	void closeTab(int index);
 	///

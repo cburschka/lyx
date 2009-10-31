@@ -1528,7 +1528,7 @@ void TabWorkArea::closeCurrentBuffer()
 }
 
 
-void TabWorkArea::closeCurrentTab()
+void TabWorkArea::hideCurrentTab()
 {
 	GuiWorkArea * wa;
 	if (clicked_tab_ == -1)
@@ -1551,7 +1551,7 @@ void TabWorkArea::closeTab(int index)
 		wa = dynamic_cast<GuiWorkArea *>(widget(index));
 		LASSERT(wa, /**/);
 	}
-	wa->view().hideWorkArea(wa);
+	wa->view().closeWorkArea(wa);
 }
 
 
@@ -1763,7 +1763,7 @@ void TabWorkArea::showContextMenu(const QPoint & pos)
 	// show tab popup
 	QMenu popup;
 	popup.addAction(QIcon(getPixmap("images/", "hidetab", "png")),
-		qt_("Hide tab"), this, SLOT(closeCurrentTab()));
+		qt_("Hide tab"), this, SLOT(hideCurrentTab()));
 	popup.addAction(QIcon(getPixmap("images/", "closetab", "png")),
 		qt_("Close tab"), this, SLOT(closeCurrentBuffer()));
 	popup.exec(tabBar()->mapToGlobal(pos));
