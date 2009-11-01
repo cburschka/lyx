@@ -2,12 +2,9 @@
 #  \DeclareLaTeXClass[tufte-handout]{handout (Tufte)}
 # tufte-handout textclass definition file.
 # Juergen Spitzmueller <juergen@spitzmueller.org>, 2008/10/22
-# Modified by Uwe Stöhr <uwestoehr@web.de>, 2009/10/29
+# Modified by Uwe Stöhr <uwestoehr@web.de>, 2009/11/01
 
 Format 11
-
-Provides geometry 1
-Provides natbib-internal 1
 
 # import other layouts
 Input stdlayouts.inc
