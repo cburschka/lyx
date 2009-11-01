@@ -320,7 +320,7 @@ void GuiBox::applyView()
 		params_.width = Length(widgetsToLength(widthED, widthUnitsLC));
 	}
 
-	// the height parameter is omitted in if the value
+	// the height parameter is omitted if the value
 	// is "1in" and "Total Height" is used as unit.
 	// 1in + "Total Height" means "1\height" which is the LaTeX default
 	// if no height is given
