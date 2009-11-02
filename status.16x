@@ -252,6 +252,9 @@ What's new
 - Fix the positioning of the cursor in some cases with mixed RTL
   and LTR text (bug 5061).
 
+- Set the correct language after dissolving an Inset. This can give
+  strange effect especially when dissolving an ERT (bug 6292).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
