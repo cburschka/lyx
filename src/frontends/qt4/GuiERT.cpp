@@ -26,7 +26,7 @@ namespace lyx {
 namespace frontend {
 
 GuiERT::GuiERT(GuiView & lv)
-	: GuiDialog(lv, "ert", qt_("TeX Code Settings")), status_(InsetERT::Collapsed)
+	: GuiDialog(lv, "ert", qt_("TeX Code Settings")), status_(InsetCollapsable::Collapsed)
 {
 	setupUi(this);
 
@@ -50,17 +50,17 @@ void GuiERT::change_adaptor()
 void GuiERT::applyView()
 {
 	if (openRB->isChecked())
-		status_ = Inset::Open;
+		status_ = InsetCollapsable::Open;
 	else
-		status_ = Inset::Collapsed;
+		status_ = InsetCollapsable::Collapsed;
 }
 
 
 void GuiERT::updateContents()
 {
 	switch (status_) {
-		case InsetERT::Open: openRB->setChecked(true); break;
-		case InsetERT::Collapsed: collapsedRB->setChecked(true); break;
+		case InsetCollapsable::Open: openRB->setChecked(true); break;
+		case InsetCollapsable::Collapsed: collapsedRB->setChecked(true); break;
 	}
 }
 
@@ -74,7 +74,7 @@ bool GuiERT::initialiseParams(string const & data)
 
 void GuiERT::clearParams()
 {
-	status_ = InsetERT::Collapsed;
+	status_ = InsetCollapsable::Collapsed;
 }
 
 

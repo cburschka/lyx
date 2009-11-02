@@ -501,13 +501,6 @@ public:
 	virtual ColorCode backgroundColor() const;
 	///
 	virtual ColorCode labelColor() const;
-	///
-	enum CollapseStatus {
-		Collapsed,
-		Open
-	};
-	///
-	virtual void setStatus(Cursor &, CollapseStatus) {}
 	//
 	enum { TEXT_TO_INSET_OFFSET = 4 };
 

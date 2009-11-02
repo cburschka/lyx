@@ -42,7 +42,7 @@ using namespace std;
 namespace lyx {
 
 InsetCollapsable::InsetCollapsable(Buffer const & buf, InsetText::UsePlain ltype)
-	: InsetText(buf, ltype), status_(Inset::Open),
+	: InsetText(buf, ltype), status_(Open),
 	  openinlined_(false), mouse_hover_(false)
 {
 	setAutoBreakRows(true);

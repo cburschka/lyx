@@ -78,6 +78,13 @@ public:
 	bool isOpen(BufferView const & bv) const 
 		{ return geometry(bv) != ButtonOnly; }
 	///
+	enum CollapseStatus {
+		Collapsed,
+		Open
+	};
+	///
+	virtual void setStatus(Cursor & cur, CollapseStatus st);
+	///
 	CollapseStatus status(BufferView const & bv) const;
 	/** Of the old CollapseStatus we only keep the values  
 	 *  Open and Collapsed.
@@ -117,8 +124,6 @@ public:
 	Geometry geometry() const;
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
-	///
-	void setStatus(Cursor & cur, CollapseStatus st);
 	///
 	bool setMouseHover(bool mouse_hover);
 	///

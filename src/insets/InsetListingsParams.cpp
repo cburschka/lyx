@@ -715,7 +715,7 @@ void InsetListingsParams::write(ostream & os) const
 void InsetListingsParams::read(Lexer & lex)
 {
 	lex >> inline_;
-	int s = Inset::Collapsed;
+	int s = InsetCollapsable::Collapsed;
 	lex >> s;
 	status_ = static_cast<InsetCollapsable::CollapseStatus>(s);
 	string par;
