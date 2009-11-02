@@ -30,7 +30,7 @@ class Compare::Impl {
 public:
 	///
 	Impl(Compare const & compare) 
-		: compare_(compare), abort_(false)
+		: abort_(false), compare_(compare)
 	{}
 
 	///
