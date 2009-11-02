@@ -64,9 +64,6 @@
          <property name="toolTip" >
           <string>Font shape</string>
          </property>
-         <property name="sizeAdjustPolicy" >
-          <enum>QComboBox::AdjustToContents</enum>
-         </property>
         </widget>
        </item>
        <item row="2" column="0" >
@@ -95,9 +92,6 @@
          <property name="toolTip" >
           <string>Font series</string>
          </property>
-         <property name="sizeAdjustPolicy" >
-          <enum>QComboBox::AdjustToContents</enum>
-         </property>
         </widget>
        </item>
        <item row="4" column="1" >
@@ -112,9 +106,6 @@
          </property>
          <property name="toolTip" >
           <string>Language</string>
-         </property>
-         <property name="sizeAdjustPolicy" >
-          <enum>QComboBox::AdjustToContents</enum>
          </property>
         </widget>
        </item>
@@ -131,9 +122,6 @@
          <property name="toolTip" >
           <string>Font family</string>
          </property>
-         <property name="sizeAdjustPolicy" >
-          <enum>QComboBox::AdjustToContents</enum>
-         </property>
         </widget>
        </item>
        <item row="3" column="1" >
@@ -148,9 +136,6 @@
          </property>
          <property name="toolTip" >
           <string>Font color</string>
-         </property>
-         <property name="sizeAdjustPolicy" >
-          <enum>QComboBox::AdjustToContents</enum>
          </property>
         </widget>
        </item>
@@ -235,7 +220,7 @@
            <widget class="QComboBox" name="sizeCO" >
             <property name="sizePolicy" >
              <sizepolicy>
-              <hsizetype>1</hsizetype>
+              <hsizetype>3</hsizetype>
               <vsizetype>0</vsizetype>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
@@ -243,9 +228,6 @@
             </property>
             <property name="toolTip" >
              <string>Font size</string>
-            </property>
-            <property name="sizeAdjustPolicy" >
-             <enum>QComboBox::AdjustToContents</enum>
             </property>
            </widget>
           </item>
@@ -279,11 +261,16 @@
           </item>
           <item>
            <widget class="QComboBox" name="miscCO" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>3</hsizetype>
+              <vsizetype>0</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>           
             <property name="toolTip" >
              <string>Other font settings</string>
-            </property>
-            <property name="sizeAdjustPolicy" >
-             <enum>QComboBox::AdjustToContents</enum>
             </property>
            </widget>
           </item>
