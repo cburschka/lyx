@@ -716,6 +716,9 @@ void InsetExternal::validate(LaTeXFeatures & features) const
 	case OutputParams::XML:
 		format = "DocBook";
 		break;
+	case OutputParams::HTML:
+		format = "html";
+		break;
 	}
 	external::Template::Formats::const_iterator cit =
 		et.formats.find(format);
