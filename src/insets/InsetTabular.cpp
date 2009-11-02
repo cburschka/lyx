@@ -1797,9 +1797,10 @@ Tabular::idx_type Tabular::setLTCaption(row_type row, bool what)
 		setRightLine(i, false);
 	} else {
 		unsetMultiColumn(i);
-		// FIXME: when unsetting a caption row, also all existing captions
-		// in this row must be dissolved, see (bug 5754)
-		// dispatch(FuncRequest(LFUN_INSET_DISSOLVE, "caption-insert"));
+		// When unsetting a caption row, also all existing
+		// captions in this row must be dissolved.
+		lyx::dispatch(FuncRequest(LFUN_INSET_BEGIN));
+		lyx::dispatch(FuncRequest(LFUN_INSET_DISSOLVE, "caption"));
 	}
 	row_info[row].caption = what;
 	return i;
