@@ -289,6 +289,7 @@ void InsetMathBoxed::infoize(odocstream & os) const
 void InsetMathBoxed::validate(LaTeXFeatures & features) const
 {
 	features.require("amsmath");
+	InsetMathNest::validate(features);
 }
 
 
