@@ -362,7 +362,6 @@ Menuset
 		Item "TeX Code|X" "ert-insert"
 		Item "Program Listing[[Menu]]" "listing-insert"
 		Item "Date" "date-insert"
-		OptItem "Regular Expression" "regexp-mode"
 	End
 
 	Menu "insert_special"

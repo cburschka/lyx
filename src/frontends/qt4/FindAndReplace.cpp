@@ -204,7 +204,7 @@ void FindAndReplaceWidget::findAndReplace(bool backwards, bool replace)
 void FindAndReplaceWidget::on_regexpInsertCombo_currentIndexChanged(int index)
 {
 	static char const * regexps[] = {
-		".*", ".+", "[a-z]+", "[0-9]+"
+		".*", ".+", "[a-z]+", "[0-9]+", ""
 	};
 	LYXERR(Debug::FIND, "Index: " << index);
 	if (index >= 1 && index < 1 + int(sizeof(regexps)/sizeof(regexps[0]))) {
