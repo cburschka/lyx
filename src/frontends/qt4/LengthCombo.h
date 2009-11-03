@@ -46,6 +46,8 @@ public:
 	virtual void addItem(lyx::Length::UNIT unit);
 	/// add an item to the combo
 	virtual void addItem(QString const item);
+	/// reset to initial state
+	virtual void reset();
 
 protected Q_SLOTS:
 	virtual void has_activated(int index);

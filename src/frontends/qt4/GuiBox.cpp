@@ -423,11 +423,8 @@ void GuiBox::setSpecial(bool ibox)
 		for (int i = 1; i < gui_names_spec_.size(); ++i)
 			widthUnitsLC->addItem(gui_names_spec_[i]);
 	// ... or remove 'em if needed
-	} else if (ibox && has_special) {
-		widthUnitsLC->clear();
-		for (int i = 0; i != num_units; ++i)
-			widthUnitsLC->addItem(qt_(unit_name_gui[i]));
-	}
+	} else if (ibox && has_special)
+		widthUnitsLC->reset();
 	// restore selected text, if possible
 	int const idx = widthUnitsLC->findText(current_text);
 	if (idx != -1)

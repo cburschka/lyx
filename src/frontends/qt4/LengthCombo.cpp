@@ -24,14 +24,7 @@
 LengthCombo::LengthCombo(QWidget * parent)
 	: QComboBox(parent)
 {
-	for (int i = 0; i < lyx::num_units; i++) {
-		// mu does not make sense usually
-		// so it must be added manually, if needed
-		if (lyx::unit_name[i] == "mu")
-			continue;
-		QComboBox::addItem(lyx::qt_(lyx::unit_name_gui[i]),
-			lyx::toqstr(lyx::unit_name[i]));
-	}
+	reset();
 
 	connect(this, SIGNAL(activated(int)),
 		this, SLOT(has_activated(int)));
@@ -127,6 +120,20 @@ void LengthCombo::addItem(lyx::Length::UNIT unit)
 void LengthCombo::addItem(QString const item)
 {
 	QComboBox::addItem(item);
+}
+
+
+void LengthCombo::reset()
+{
+	clear();
+	for (int i = 0; i < lyx::num_units; i++) {
+		// mu does not make sense usually
+		// so it must be added manually, if needed
+		if (lyx::unit_name[i] == "mu")
+			continue;
+		QComboBox::addItem(lyx::qt_(lyx::unit_name_gui[i]),
+			lyx::toqstr(lyx::unit_name[i]));
+	}
 }
 
 #include "LengthCombo_moc.cpp"

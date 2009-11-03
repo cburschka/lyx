@@ -188,6 +188,9 @@ What's new
 
 - Fix bad allocation exception when displaying long tooltips (bug 6215).
 
+- Fix width definition in the box dialog after a box inset was transformed
+  from "Inner Box" type "None" to "Parbox" or "Minipage" (bug 6298).
+
 - Fixed problem involving inability to turn off auto-save (bug 6227).
 
 - Sort document classes case insensitively (bug 1492).
