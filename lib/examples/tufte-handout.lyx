@@ -92,7 +92,7 @@ An Example of the Usage of the Tufte-Handout Style
 \end_layout
 
 \begin_layout Author
-Tufte-LaT
+Tufte-LaTe
 \begin_inset ERT
 status collapsed
 
@@ -103,7 +103,7 @@ status collapsed
 
 \end_inset
 
-eX Developers and The Ly
+X Developers and The Ly
 \begin_inset ERT
 status collapsed
 
@@ -217,7 +217,7 @@ section
 \emph on
 subsection
 \emph default
-) demonstrated above.
+, both numbered and non-numbered), as demonstrated above.
 \end_layout
 
 \begin_layout Standard
@@ -227,7 +227,7 @@ If you need more than two levels of section headings, you'll have to define
 status collapsed
 
 \begin_layout Plain Layout
-See see 
+See 
 \begin_inset Quotes eld
 \end_inset
 
@@ -347,7 +347,16 @@ footnote
 
 \end_inset
 
- Alternatively, you can also use directly the sidenote inset.
+ Alternatively, you can also use the 
+\family typewriter
+Sidenote
+\family default
+ inset directly; you'll find it in the 
+\family sans
+Insert\SpecialChar \menuseparator
+Custom Insets
+\family default
+ menu.
 \begin_inset Flex Sidenote
 status open
 
@@ -429,13 +438,21 @@ BibTeX
 Bibliography
 \family default
  (see the end of this document for an example.) If you do not want to print
- a bibliography at the end of your document, use the LaTeX command 
+ a bibliography at the end of your document, place the 
+\family sans
+BibTeX
+\begin_inset space ~
+\end_inset
+
+Bibliography
+\family default
+ inset inside a LyX note and use the LaTeX command 
 \family typewriter
 
 \backslash
 nobibliography
 \family default
- in its place.
+ the text.
 \end_layout
 
 \begin_layout Section*
@@ -1523,7 +1540,7 @@ subsection
 \end_layout
 
 \begin_layout Standard
-If you wanted to define, say, a 
+If you want to define, say, a 
 \emph on
 paragraph
 \emph default
@@ -1614,7 +1631,7 @@ Companion
 ,
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Mittelbach2004"
+key "LComp2004"
 
 \end_inset
 
@@ -1744,7 +1761,7 @@ http://code.google.com/p/tufte-latex/
 \end_inset
 
 .
- On our website, you'll find links to our 
+ On this website, you'll find links to the 
 \begin_inset Flex SmallCaps
 status open
 
@@ -1754,7 +1771,8 @@ svn
 
 \end_inset
 
- repository, mailing lists, bug tracker, and documentation.
+ repository of the tufte-latex project, mailing lists, bug tracker, and
+ documentation.
 \end_layout
 
 \begin_layout Standard
