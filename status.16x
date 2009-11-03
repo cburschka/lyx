@@ -42,8 +42,6 @@ What's new
 
 - Paragraph ends can now be marked by a pilcrow character (bug 6129).
 
-- Complete tooltips in Spellchecker preferences (bug 6185).
-
 - A "Reload" menu item is added to the Graphics context menu to
   manually force a reload and conversion of the image (bug 6134).
 
@@ -58,12 +56,15 @@ What's new
   These modules are now used in the AMS classes instead of the previous
   preamble hardcoding (bug 6123).
 
-- Close button on tabs is now configurable (bug 5977).
+- It is now configurable whether each tab has an own close button
+  (bug 5977).
 
 - New LFUN inset-select-all allows to select the whole content of
   an inset (bug 5991).
 
-- SVN support: synchronization for the whole directories (bug 6255).
+- SVN support: synchronization for whole directories (bug 6255).
+
+- Complete tooltips in Spellchecker preferences (bug 6185).
 
 
 * DOCUMENTATION AND LOCALIZATION
@@ -102,8 +103,8 @@ What's new
 - Do an emergency save if LyX attempts to destroy a dirty document buffer.
   This is a last resort to try to avoid data loss.
 
-- Fix a tex2lyx crash when importing a LaTeX file using an unknown encoding
-  (bug 6142).
+- Fix a tex2lyx crash when importing a LaTeX file using an unknown
+  encoding (bug 6142).
   
 - Fix a crash when no external templates are defined (bug 3974).
 
@@ -135,8 +136,8 @@ What's new
 
 - Fixed layout file for the document class svjour3 (bug 6198).
 
-- Add support for \specialsection in amsart layout; improve fonts for 
-  headings.
+- Add support for \specialsection in amsart layout; improve on-screen
+  appearance of headings.
 
 - Added the separator style to the layout file for the document class
   elsarticle and adapted the elsarticle.lyx template file accordingly
@@ -191,8 +192,8 @@ What's new
 
 - Sort document classes case insensitively (bug 1492).
 
-- Disable to insert floats into another float when this is not
-  allowed (bug 6045).
+- Disable to insert floats into another float when this is not allowed
+  (bug 6045).
   
 - Disable the float positioning dialog for subfloats (bug 6125).
 
@@ -229,7 +230,8 @@ What's new
 - Fix undo of removed script in mathed when both super- and subscript
   are present (bug 6264).
 
-- Fix parsing of selection when used as argument of a math macro (bug 6270).
+- Fix parsing of selection when used as argument of a math macro
+  (bug 6270).
 
 - Fix inset-[begin|end][-select] when the cursor is at the beginning or
   end of a paragraph.
@@ -246,16 +248,16 @@ What's new
 - Do not swallow spaces after a LaTeX macro appearing in text mode
   inside mathed (bug 6284).
 
-- Show the correct context menu for Insets nested in closed Insets
+- Show the correct context menu for insets nested in closed insets
   that are opened by the navigate or search functionality (bug 6820).
 
 - Fix the positioning of the cursor in some cases with mixed RTL
   and LTR text (bug 5061).
 
-- Set the correct language after dissolving an Inset. This can give
-  strange effect especially when dissolving an ERT (bug 6292).
+- Set the correct language after dissolving an inset, which could have
+  given strange effects especially when dissolving an ERT (bug 6292).
 
-- Fix the appaerance of the combo boxes in the Text Style dialog
+- Fix the appearance of the combo boxes in the Text Style dialog
   (bug 5063).
 
 
