@@ -1800,7 +1800,7 @@ Tabular::idx_type Tabular::setLTCaption(row_type row, bool what)
 		unsetMultiColumn(i);
 		// When unsetting a caption row, also all existing
 		// captions in this row must be dissolved.
-		lyx::dispatch(FuncRequest(LFUN_INSET_BEGIN));
+		lyx::dispatch(FuncRequest(LFUN_LINE_BEGIN));
 		lyx::dispatch(FuncRequest(LFUN_INSET_DISSOLVE, "caption"));
 	}
 	row_info[row].caption = what;
