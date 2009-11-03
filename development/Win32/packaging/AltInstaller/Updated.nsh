@@ -67,6 +67,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\examples\xypic.lyx"
  SetOutPath "$INSTDIR\Resources\examples\de"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\de\Braille.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\de\tufte-handout.lyx"
  SetOutPath "$INSTDIR\Resources\examples\fr"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\fr\Braille.lyx"
  SetOutPath "$INSTDIR\Resources\examples\sk"
