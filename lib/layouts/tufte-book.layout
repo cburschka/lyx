@@ -117,11 +117,10 @@ Style Full_Width
 End
 
 # this steps the counters
-Counter
-  Name		marginfigure
+Counter		marginfigure
 End
-Counter
-  Name		margintable
+
+Counter		margintable
 End
 
 # define the floats

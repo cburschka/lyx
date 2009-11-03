@@ -22,7 +22,7 @@
 \papersize default
 \use_geometry true
 \use_amsmath 1
-\use_esint 0
+\use_esint 1
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -43,34 +43,6 @@
 \begin_body
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Important note:
-\series default
- The menu 
-\family sans
-Insert\SpecialChar \menuseparator
-Hyperlinks
-\family default
- and the 
-\family sans
-PDF properties
-\family default
- in the 
-\family sans
-Document\SpecialChar \menuseparator
-Settings
-\family default
- menu cannot be used for tufte document classes!
-\end_layout
-
-\end_inset
-
-
 \begin_inset Note Note
 status open
 
@@ -754,20 +726,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
 <features booktabs="true">
@@ -807,64 +766,7 @@ Paper width
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-unit
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\end_layout
-
-\end_inset
-
-8
-\begin_inset Formula $\nicefrac{1}{2}$
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-inches
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+\begin_inset Formula $\unit[8\nicefrac{1}{2}]{inches}$
 \end_inset
 
  
@@ -887,63 +789,10 @@ Paper height
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-unit
-\end_layout
-
+\begin_inset Formula $\unit[11]{inches}$
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\end_layout
-
-\end_inset
-
-11
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-inches
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- 
 \end_layout
 
 \end_inset
@@ -963,64 +812,7 @@ Textblock width
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-unit
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\end_layout
-
-\end_inset
-
-6
-\begin_inset Formula $\nicefrac{1}{2}$
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-inches
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
+\begin_inset Formula $\unit[6\nicefrac{1}{2}]{inches}$
 \end_inset
 
  
@@ -1043,67 +835,10 @@ Textblock/sidenote gutter
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-unit
-\end_layout
-
+\begin_inset Formula $\unit[\nicefrac{3}{8}]{inches}$
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula $\nicefrac{3}{8}$
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-inches
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- 
 \end_layout
 
 \end_inset
@@ -1123,63 +858,10 @@ Sidenote width
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-unit
-\end_layout
-
+\begin_inset Formula $\unit[2]{inches}$
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\end_layout
-
-\end_inset
-
-2
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-inches
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- 
 \end_layout
 
 \end_inset
