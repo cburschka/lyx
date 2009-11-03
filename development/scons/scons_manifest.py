@@ -2491,6 +2491,7 @@ lib_examples_de_files = Split('''
     serienbrief2.lyx
     serienbrief3.lyx
     splash.lyx
+    tufte-handout.lyx
 ''')
 
 

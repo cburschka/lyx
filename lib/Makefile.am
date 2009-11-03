@@ -96,7 +96,8 @@ dist_deexamples_DATA = \
 	examples/de/serienbrief1.lyx \
 	examples/de/serienbrief2.lyx \
 	examples/de/serienbrief3.lyx \
-	examples/de/splash.lyx
+	examples/de/splash.lyx \
+	examples/de/tufte-handout.lyx
 
 esexamplesdir = $(pkgdatadir)/examples/es
 dist_esexamples_DATA = \
