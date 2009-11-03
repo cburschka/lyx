@@ -464,18 +464,21 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
-width "100col%"
+width "100line%"
 special "none"
 height "1in"
 height_special "totalheight"
 status open
 
 \begin_layout Plain Layout
-Imagine a photograph of a squirrel stretched out on its side in this box.
- One of the bugs in my layout is that this only works with pictures, not
- with frames around minipages, the way it's set up here.
+Imagine your favorite photograph of a squirrel inside this box instead of
+ this boring text.
 \end_layout
 
+\end_inset
+
+
+\begin_inset VSpace defskip
 \end_inset
 
 
