@@ -1,0 +1,1780 @@
+#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass tufte-handout
+\use_default_options false
+\language ngerman
+\inputencoding auto
+\font_roman default
+\font_sans helvet
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\defskip medskip
+\quotes_language german
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Wenn Sie kein 
+\emph on
+Datum
+\emph default
+ angeben, wird das aktuelle Datum automatisch eingefügt.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Ein Beispiel zur Verwendung der Tufte-Handout-Klasse
+\end_layout
+
+\begin_layout Author
+Die Tufte-LaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X-Entwickler und das Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X-Team
+\end_layout
+
+\begin_layout Abstract
+\noindent
+Dieses Dokument beschreibt die Dokumentklasse 
+\emph on
+Tufte Handout
+\emph default
+.
+ Es zeigt anhand von Beispielen, wie die Klasse verwendet wird.
+ Das Dokument basiert auf der Beispieldatei, die mit der LaTeX-Klasse 
+\emph on
+tufte-handout.cls
+\emph default
+ vertrieben wird, wurde aber an LyX-Spezifika angepasst.
+\end_layout
+
+\begin_layout Standard
+Der Stil der 
+\family sans
+Tufte-Handout-Klasse
+\family default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Vgl.
+ 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://ctan.org/tex-archive/macros/latex/contrib/tufte-latex
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ ist an jenen angelehnt, den 
+\noun on
+Edward Tufte
+\noun default
+ in seinen Büchern und Handouts verwendet.
+ Tuftes Stil zeichnet sich durch einen extensiven Gebrauch von Marginalien,
+ eine starke Verknüpfung von Grafiken und Text und gute, reflektierte Typographi
+e aus.
+ Dieses Dokument soll die Besonderheiten der 
+\family sans
+Tufte-Handout-Klasse
+\family default
+ demonstrieren und gleichzeitig in seine Benutzung einführen.
+\end_layout
+
+\begin_layout Part*
+Erster Teil
+\end_layout
+
+\begin_layout Section*
+Seitengestaltung
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Seitengestaltung"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsection*
+Überschriften- und Absatzgestaltung
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:ueberschriften"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Der vorliegende Stil bietet 
+\shape smallcaps
+a
+\shape default
+- and 
+\shape smallcaps
+b
+\shape default
+-Überschriften (d.
+\begin_inset space \thinspace{}
+\end_inset
+
+h.
+ 
+\emph on
+Abschnitte
+\emph default
+ und 
+\emph on
+Unterabschnitte
+\emph default
+, jeweils nummeriert und nicht-nummeriert), wie man an diesem Abschnitt
+ sehen kann.
+\end_layout
+
+\begin_layout Standard
+Wenn Sie mehr als zwei Überschriftenebenen benötigen, müssen Sie diese derzeit
+ selbst definieren; Überschriften unterhalb der Ebene 
+\emph on
+Unterabschnitt
+\emph default
+ sind nicht vordefiniert.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Vgl.
+ 
+\begin_inset Quotes pld
+\end_inset
+
+Neue Abschnittsüberschriften definieren
+\begin_inset Quotes grd
+\end_inset
+
+ auf S.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "sec:abschnitte-definieren"
+
+\end_inset
+
+ für Hinweise dazu.
+\end_layout
+
+\end_inset
+
+ Wie 
+\noun on
+Bringhurst
+\noun default
+ in 
+\shape italic
+The Elements of Typographic Style
+\shape default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bringhurst2005"
+
+\end_inset
+
+ betont, sollten sie 
+\begin_inset Quotes gld
+\end_inset
+
+so viele Überschriftenebenen verwenden, wie Sie brauchen: nicht mehr, und
+ nicht weniger
+\begin_inset Quotes grd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex NewThought
+status open
+
+\begin_layout Plain Layout
+In seinen späteren Büchern
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Tufte2006"
+
+\end_inset
+
+ beginnt Tufte jeden Abschnitt mit etwas vertikalem Abstand, ohne Absatzeinrücku
+ng, und er zeichnet die ersten paar Wörter des Abschnittes in 
+\shape smallcaps
+Kapitälchen
+\shape default
+ aus (sog.
+ 
+\emph on
+Spitzkolumne
+\emph default
+).
+ Wenn Sie dies auch tun wollen, verwenden Sie den Zeichenstil 
+\family typewriter
+Neuer Gedanke
+\family default
+ (
+\family sans
+Bearbeiten\SpecialChar \menuseparator
+Textstil\SpecialChar \menuseparator
+Neuer Gedanke
+\family default
+).
+\end_layout
+
+\begin_layout Subsection*
+Randnotizen
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Randnotizen"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Eine der auf\SpecialChar \textcompwordmark{}
+fälligsten Eigenschaften der vorliegenden Klasse ist seine extensive
+ Nutzung von Randnotizen.
+ Der Stil definiert einen breiten rechten Rand, der viel Raum für Randnotizen
+ und kleine Abbildungen bietet.
+ Jede Fußnote wird automatisch als nummerierte Randnotiz ausgegeben.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Dies ist eine nummerierte Randnotiz, die als 
+\family typewriter
+Fußnote
+\family default
+ eingegeben wurde.
+\end_layout
+
+\end_inset
+
+ Alternativ können Sie nummerierte Randnotizen auch direkt eingeben, und
+ zwar über 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Benutzerdefinierte Einfügungen\SpecialChar \menuseparator
+Randnotiz (nummeriert)
+\family default
+.
+\begin_inset Flex Sidenote
+status collapsed
+
+\begin_layout Plain Layout
+Dies ist eine nummerierte Randnotiz, eingegeben über 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Benutzerdefinierte Einfügungen\SpecialChar \menuseparator
+Randnotiz (nummeriert)
+\family default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nicht nummerierte Randnotizen gibt es ebenfalls; Sie finden Sie in 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Benutzerdefinierte Einfügungen\SpecialChar \menuseparator
+Randnotiz (nicht nummeriert)
+\family default
+.
+\begin_inset Flex Marginnote
+status collapsed
+
+\begin_layout Plain Layout
+Dies ist eine nicht-nummerierte Randnotiz.
+ Weder vor der Randnotiz selbst noch im Text findet sich eine Nummer.
+\end_layout
+
+\end_inset
+
+ Die normale Randnotiz, die Sie aus anderen LyX-Klassen kennen (
+\family sans
+Einfügen\SpecialChar \menuseparator
+Randnotiz
+\family default
+), funktioniert ebenfalls, sie sieht aber nicht sehr elegant aus.
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+Das ist die normale Randnotiz.
+ Verwenden Sie sie besser nicht.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Literaturverweise
+\end_layout
+
+\begin_layout Standard
+Literaturhinweise werden ebenfalls -- als Randnotizen neben den Literaturverweis
+en -- im Rand platziert.
+ Verwenden Sie hierfür einfach den normalen Literaturverweis-Befehl.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Der erste Abschnitt dieses Dokuments enthält einen solchen Literaturverweis.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Eine vollständige Bibliographie können sie ebenfalls ausgeben, und zwar
+ über 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Liste
+\begin_inset space ~
+\end_inset
+
+/
+\begin_inset space \space{}
+\end_inset
+
+Inhaltsverzeichnis\SpecialChar \menuseparator
+BibTeX-Literaturverzeichnis
+\family default
+ (am Ende dieses Dokuments sehen Sie ein Beispiel).
+ Wenn Sie keine vollständige Bibliographie ausgeben möchten, platzieren
+ Sie das BibTeX-Literaturverzeichnis in eine LyX-Notiz und setzen Sie in
+ den Text 
+\family typewriter
+
+\backslash
+nobibliography
+\family default
+ im TeX-Modus.
+\end_layout
+
+\begin_layout Section*
+Abbildungen und Tabellen
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Abbildungen-Tabellen"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Abbildungen und Grafiken spielen in Tuftes Arbeiten eine zentrale Rolle.
+ Ergänzend zu den Standard-Gleitobjekten für Abbildungen und Tabellen stellt
+ diese Klasse daher spezifische Gleitobjekte für Abbildungen und Tabellen,
+ die den Rand mitnutzen.
+\end_layout
+
+\begin_layout Standard
+Abbildungen und Tabellen, die in den Rand hineinragen, bekommen Sie, wenn
+ Sie 
+\emph on
+Spalten überspannen 
+\emph default
+im Gleitobjekt-Dialog aktivieren.
+ Um Abbildungen und Tabellen in den Rand zu setzen, verwenden Sie die spezifisch
+en Gleitobjekte 
+\emph on
+Randabbildung
+\emph default
+ oder 
+\emph on
+Randtabelle
+\emph default
+ (vgl.
+ Abb.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Randabbildung"
+
+\end_inset
+
+).
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Leider ist die Zählung im LyX-Arbeitsfenster falsch.
+ Normale und Rand-Gleitabbildungen werden separat gezählt, Sie verwenden
+ aber in der Ausgabe denselben Zähler.
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Float marginfigure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100line%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\align center
+Ersetzen Sie die Box durch Ihre Abbildung!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Dies ist eine Randabbildung.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Randabbildung"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Abbildung
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Ganzabbildung"
+
+\end_inset
+
+ zeigt eine Abbildung, die den Rand mitnutzt und Abbildung
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Textabbildung"
+
+\end_inset
+
+ eine, die dies nicht tut (normale Gleitabbildung).
+ 
+\begin_inset Float figure
+wide true
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100line%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\align center
+Ersetzen Sie die Box durch Ihre Abbildung!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Eine weite Abbildung (
+\emph on
+Spalten überspannend
+\emph default
+).
+ 
+\emph on
+Beachten Sie, dass diese den Rand mitnutzt.
+\emph default
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Ganzabbildung"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100line%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\align center
+Ersetzen Sie die Box durch Ihre Abbildung!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Dies ist eine normale Abbildung.
+ 
+\emph on
+Beachten Sie, dass diese nur die Textbreite nutzt.
+\emph default
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Textabbildung"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tabelle
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:normaltab"
+
+\end_inset
+
+ zeigt eine Tabelle, die das 
+\family typewriter
+booktabs-
+\family default
+Paket verwendet (das entspricht dem Rahmenstil 
+\begin_inset Quotes gld
+\end_inset
+
+formal
+\begin_inset Quotes grd
+\end_inset
+
+ in den Tabellen-Einstellungen).
+ Beachten Sie, dass es keine vertikalen Tabellenlinien gibt -- diese zerstören
+ ohnehin nur das Tabellenbild.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement ht
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features booktabs="true">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Element 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maß
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Papierbreite 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+unit
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[
+\end_layout
+
+\end_inset
+
+8
+\begin_inset Formula $\nicefrac{1}{2}$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+inches
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Paperhöhe
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+unit
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[
+\end_layout
+
+\end_inset
+
+11
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+inches
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Textbreite 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+unit
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[
+\end_layout
+
+\end_inset
+
+6
+\begin_inset Formula $\nicefrac{1}{2}$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+inches
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Abstand Textblock/Randnotiz
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+unit
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\nicefrac{3}{8}$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+inches
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Randnotiz 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+unit
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[
+\end_layout
+
+\end_inset
+
+2
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+inches
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Die verschiedenen Maße der 
+\emph on
+Tufte-Handout-
+\emph default
+Klasse.
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:normaltab"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Vollbreite Textblöcke
+\end_layout
+
+\begin_layout Standard
+Ergänzend zu den neuen Gleitobjekten gibt es auch eine Absatzumgebung 
+\emph on
+Volle Breite.
+
+\emph default
+ Diese erstreckt sich über den Textblock hinaus und nutzt den Randbereich
+ mit.
+ Außerdem ist sie linksbündig:
+\end_layout
+
+\begin_layout Full Width
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+ Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis.
+ Curabitur dictum gravida mauris.
+ Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna.
+ Donec vehicula augue eu neque.
+ Pellentesque habitant morbi tristique senectus et netus et malesuada fames
+ ac turpis egestas.
+ Mauris ut leo.
+ Cras viverra metus rhoncus sem.
+ Nulla et lectus vestibulum urna fringilla ultrices.
+ Phasellus eu tellus sit amet tortor gravida placerat.
+ Integer sapien est, iaculis in, pretium quis, viverra ac, nunc.
+ Praesent eget sem vel leo ultrices bibendum.
+ Aenean faucibus.
+ Morbi dolor nulla, malesuada eu, pulvinar at, mollis ac, nulla.
+ Curabitur auctor semper nulla.
+ Donec varius orci eget risus.
+ Duis nibh mi, congue eu, accumsan eleifend, sagittis quis, diam.
+ Duis eget orci sit amet orci dignissim rutrum.
+\end_layout
+
+\begin_layout Part*
+Zweiter Teil
+\end_layout
+
+\begin_layout Section*
+Typographie
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Typographie"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Schriften
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:typefaces"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Wenn 
+\emph on
+Palatino
+\emph default
+ und 
+\emph on
+Bera Mono
+\emph default
+ installiert sind, werden sie automatisch verwendet.
+ Andernfalls greift die Klasse auf die 
+\emph on
+Computer-Modern-
+\emph default
+Schriften zurück.
+\end_layout
+
+\begin_layout Subsection*
+Zeichenabstand
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Zeichenabstand"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Diese Dokumentklasse beinhaltet zwei neue Zeichenstile, und sie verbessert
+ einige vorhandene Zeichenstildefinitionen.
+\end_layout
+
+\begin_layout Standard
+Wenn Text in 
+\begin_inset Flex AllCaps
+status open
+
+\begin_layout Plain Layout
+GROSSBUCHSTABEN (VERSALIEN)
+\end_layout
+
+\end_inset
+
+ oder 
+\begin_inset Flex SmallCaps
+status open
+
+\begin_layout Plain Layout
+Kapitälchen
+\end_layout
+
+\end_inset
+
+ ausgezeichnet wird, sollte der Abstand zwischen den einzelnen Zeichen leicht
+ erhöht werden (leichte 
+\emph on
+Sperrung
+\emph default
+).
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bringhurst2005"
+
+\end_inset
+
+ Der Zeichenstil 
+\emph on
+Versalien
+\emph default
+ (
+\family sans
+Bearbeiten\SpecialChar \menuseparator
+Textstil\SpecialChar \menuseparator
+Versalien
+\family default
+) bietet einen solchen optimierten Zeichenabstand für 
+\begin_inset Flex AllCaps
+status open
+
+\begin_layout Plain Layout
+VERSALBUCHSTABEN
+\end_layout
+
+\end_inset
+
+ und der Zeichenstil 
+\emph on
+Kapitälchen
+\emph default
+ (
+\family sans
+Bearbeiten\SpecialChar \menuseparator
+Textstil\SpecialChar \menuseparator
+Kapitälchen
+\family default
+) sperrt die 
+\begin_inset Flex SmallCaps
+status open
+
+\begin_layout Plain Layout
+Kapitälchen
+\end_layout
+
+\end_inset
+
+ leicht.
+ Innerhalb dieser Zeichenstile werden die Buchstaben auch automatisch in
+ Klein- (in 
+\emph on
+Kapitälchen
+\emph default
+) bzw.
+ Großbuchstaben (in 
+\emph on
+Versalien
+\emph default
+) umgewandelt.
+\end_layout
+
+\begin_layout Standard
+Der normale Kapitälchenstil wurde ebenfalls so umdefiniert, dass die Zeichen
+ leicht gesperrt werden.
+ Die Groß-\SpecialChar \slash{}
+Kleinschreibung wurde allerdings nicht angetastet.
+ Das ermöglicht die (im Deutschen übliche) Verwendung von Groß- und Kleinbuchsta
+ben innerhalb von Kapitälchensequenzen: 
+\shape smallcaps
+Die Anfangsbuchstaben der Nomina in diesem Satz sind Grossbuchstaben.
+\end_layout
+
+\begin_layout Section*
+Anpassung
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Anpassung"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Optionen der Dokumentklasse
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Optionen"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die 
+\family sans
+Tufte-Handout
+\family default
+-Klasse basiert auf der Dokumentklasse 
+\family sans
+article
+\family default
+.
+ Daher können Sie alle aus dieser Klasse bekannten Optionen verwenden.
+ Hinzu kommen jedoch noch einige spezifische Optionen der 
+\family sans
+Tufte-Handout
+\family default
+-Klasse.
+\end_layout
+
+\begin_layout Itemize
+Die Option 
+\emph on
+a4paper
+\emph default
+ verwendet als Papiergröße A4 anstelle des Klassenstandards US letter.
+\end_layout
+
+\begin_layout Itemize
+Die Option 
+\emph on
+sfsidenotes
+\emph default
+ bewirkt, dass Randnotizenin 
+\family sans
+serifenloser Schrift
+\family default
+ anstelle von Serifenschrift (Antiqua) gesetzt werden.
+\end_layout
+
+\begin_layout Itemize
+Die Option 
+\emph on
+twoside
+\emph default
+ verändert die Kolumnentitel dahingehend, dass die Seitenzahl am jeweils
+ äußeren Rand (und nicht, wie im 
+\emph on
+oneside-
+\emph default
+Modus, immer 
+\emph on
+rechts
+\emph default
+) ausgegeben wird.
+\end_layout
+
+\begin_layout Itemize
+Die Option 
+\emph on
+symmetric
+\emph default
+ setzt die Randnotizen an den jeweils äußeren Rand der Seite.
+ Das entspricht der üblichen Konvention im Buchdruck, widerspricht aber
+ Tuftes Buchdesign, in dem Randnotizen immer rechts erscheinen.
+ Diese Option aktiviert auch automatisch die Option 
+\emph on
+twoside
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+Die Option 
+\emph on
+justified
+\emph default
+ setzt den Text im Blocksatz.
+ Der Standard hingegen ist linksbündig, was unnötige Zeilentrennung vermeidet
+ und den Text in den relativ engen Spalten besser lesbar macht.
+\end_layout
+
+\begin_layout Subsection*
+Neue Abschnittsüberschriften definieren
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:abschnitte-definieren"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Wie auf S.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "sec:ueberschriften"
+
+\end_inset
+
+ erwähnt, definiert die 
+\family sans
+Tufte-Handout
+\family default
+-Klasse nur zwei Abschnittsüberschriften: 
+\emph on
+Abschnitt
+\emph default
+ und 
+\emph on
+Unterabschnitt
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Wenn Sie beispielsweise eine Abschnittsüberschrift 
+\emph on
+Paragraph
+\emph default
+ definieren möchten, können Sie dies folgendermaßen tun:
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+makeatletter
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+renewcommand
+\backslash
+paragraph{%
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+@startsection{paragraph}% der Name des neuen Abschnitts 
+\end_layout
+
+\begin_layout LyX-Code
+{4}% Die Abschnittsnummer 
+\end_layout
+
+\begin_layout LyX-Code
+{0em}% Einrückungsmaß
+\end_layout
+
+\begin_layout LyX-Code
+{
+\backslash
+baselineskip}% Abstand vor der Überschrift
+\end_layout
+
+\begin_layout LyX-Code
+{-1.5em}% Abstand nach der Überschrift
+\end_layout
+
+\begin_layout LyX-Code
+{
+\backslash
+normalfont
+\backslash
+itshape}% Textstil
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+makeatother
+\end_layout
+
+\begin_layout Standard
+Nachdem Sie diesen Code in 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+LaTeX-Vorspann
+\family default
+ eingegeben haben, können Sie 
+\family typewriter
+
+\backslash
+paragraph
+\family default
+ im LaTeX-Modus verwenden.
+\end_layout
+
+\begin_layout Standard
+Für weitere Informationen zur Definition von Abschnittsüberschriften lesen
+ Sie bitte 
+\shape italic
+The LaTeX
+\begin_inset space \space{}
+\end_inset
+
+Companion
+\shape default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "LComp2004"
+
+\end_inset
+
+ oder verwenden Sie das Paket 
+\emph on
+titlesec
+\emph default
+.
+\end_layout
+
+\begin_layout Section*
+Unterstützung
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Unterstuetzung"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Paketabhängigkeiten
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Abhaengigkeiten"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Im Folgenden werden die Pakete aufgelistet, auf die die 
+\family sans
+Tufte-Handout
+\family default
+-Klasse angewiesen ist.
+ Mit Sternchen markierte Pakete sind optional.
+\end_layout
+
+\begin_layout Itemize
+geometry 
+\end_layout
+
+\begin_layout Itemize
+ragged2e 
+\end_layout
+
+\begin_layout Itemize
+chngpage 
+\end_layout
+
+\begin_layout Itemize
+paralist 
+\end_layout
+
+\begin_layout Itemize
+textcase 
+\end_layout
+
+\begin_layout Itemize
+footmisc 
+\end_layout
+
+\begin_layout Itemize
+natbib und bibentry 
+\end_layout
+
+\begin_layout Itemize
+placeins 
+\end_layout
+
+\begin_layout Itemize
+caption 
+\end_layout
+
+\begin_layout Itemize
+fancyhdr 
+\end_layout
+
+\begin_layout Itemize
+microtype* 
+\end_layout
+
+\begin_layout Itemize
+soul* 
+\end_layout
+
+\begin_layout Itemize
+palatino* 
+\end_layout
+
+\begin_layout Itemize
+beramono* 
+\end_layout
+
+\begin_layout Subsection*
+Tufte-LaTeX-Website
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Website"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Website des Tufte-LaTeX-Paketes finden Sie unter 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://code.google.com/p/tufte-latex/
+\end_layout
+
+\end_inset
+
+.
+ Hier finden Sie Links zum 
+\begin_inset Flex SmallCaps
+status open
+
+\begin_layout Plain Layout
+svn
+\end_layout
+
+\end_inset
+
+-Archiv, eine Mailingliste, eine Fehlerdatenbank und weitere Dokumentation.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "../biblioExample"
+options "plainnat"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
