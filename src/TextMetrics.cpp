@@ -1655,6 +1655,8 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 	else if (ppos >= end)
 		cursor_vpos = text_->isRTL(par) ? row_pos : end;
 	else if (ppos > row_pos && ppos >= end)
+		//FIXME: this code is never reached!
+		//       (see http://www.lyx.org/trac/changeset/8251)
 		// Place cursor after char at (logical) position pos - 1
 		cursor_vpos = (bidi.level(ppos - 1) % 2 == 0)
 			? bidi.log2vis(ppos - 1) + 1 : bidi.log2vis(ppos - 1);
