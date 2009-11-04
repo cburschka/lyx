@@ -390,9 +390,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			// FIXME: this LFUN should also work without any view.
 			Buffer * buffer = (lv && lv->documentBufferView())
 				? &(lv->documentBufferView()->buffer()) : 0;
-			buffer = &lv->currentBufferView()->buffer();
-			if (buffer && !theBufferList().isLoaded(buffer))
-				buffer = 0;
 			if (buffer)
 				buffer->undo().beginUndoGroup();
 			while (!arg.empty()) {
@@ -402,7 +399,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				func.origin = cmd.origin;
 				dispatch(func);
 			}
-			if (buffer)
+			// the buffer may have been closed by one action
+			if (theBufferList().isLoaded(buffer))
 				buffer->undo().endUndoGroup();
 			break;
 		}
