@@ -184,6 +184,8 @@ What's new
   which is missing a LaTeX command representation in the unicodesymbols
   file (bug 6250).
 
+- Fix a crash when leaving an empty superscript or subscript (bug 6193).
+
 - Fix a number of assertions when displaying error messages (bug 6205). 
 
 - Fix bad allocation exception when displaying long tooltips (bug 6215).
