@@ -108,6 +108,9 @@ What's new
   
 - Fix a crash when no external templates are defined (bug 3974).
 
+- Fix a crash when loading a document that specifies mutltiple labels
+  for an equation (bug 5968).
+
 - Add encoding "ansinew" as a synonym of "cp1252" for the benefit of 
   tex2lyx (bug 6142).
 
