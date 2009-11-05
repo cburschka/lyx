@@ -1841,8 +1841,6 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 		if (up) {
 			if (row > 0) {
 				--next_row;
-				top().pos() 
-					= min(tm.x2pos(pit(), next_row, xo), top().lastpos());
 			} else if (pit() > 0) {
 				--pit();
 				TextMetrics & tm = bv_->textMetrics(text());
@@ -1850,24 +1848,19 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 					tm.newParMetricsUp();
 				ParagraphMetrics const & pmcur = tm.parMetrics(pit());
 				next_row = pmcur.rows().size() - 1;
-				top().pos() 
-					= min(tm.x2pos(pit(), next_row, xo), top().lastpos());
 			}
 		} else {
 			if (row + 1 < int(pm.rows().size())) {
 				++next_row;
-				top().pos() 
-					= min(tm.x2pos(pit(), next_row, xo), top().lastpos());			
 			} else if (pit() + 1 < int(text()->paragraphs().size())) {
 				++pit();
 				TextMetrics & tm = bv_->textMetrics(text());
 				if (!tm.contains(pit()))
 					tm.newParMetricsDown();
 				next_row = 0;
-				top().pos() 
-					= min(tm.x2pos(pit(), next_row, xo), top().lastpos());
 			}
 		}
+		top().pos() = min(tm.x2pos(pit(), next_row, xo), top().lastpos());
 
 		boundary(tm.x2pos(pit(), next_row, xo) 
 			== tm.x2pos(pit(), next_row, tm.width()));
