@@ -1834,31 +1834,43 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 			operator=(dummy);
 		}
 	} else {
-		// if there is a selection, we stay out of any inset, and just jump to the right position:
+		// if there is a selection, we stay out of any inset,
+		// and just jump to the right position:
 		Cursor old = *this;
+		int next_row = row;
 		if (up) {
 			if (row > 0) {
-				top().pos() = min(tm.x2pos(pit(), row - 1, xo), top().lastpos());
+				--next_row;
+				top().pos() 
+					= min(tm.x2pos(pit(), next_row, xo), top().lastpos());
 			} else if (pit() > 0) {
 				--pit();
 				TextMetrics & tm = bv_->textMetrics(text());
 				if (!tm.contains(pit()))
 					tm.newParMetricsUp();
 				ParagraphMetrics const & pmcur = tm.parMetrics(pit());
-				top().pos() = min(tm.x2pos(pit(), pmcur.rows().size() - 1, xo), top().lastpos());
+				next_row = pmcur.rows().size() - 1;
+				top().pos() 
+					= min(tm.x2pos(pit(), next_row, xo), top().lastpos());
 			}
 		} else {
 			if (row + 1 < int(pm.rows().size())) {
-				top().pos() = min(tm.x2pos(pit(), row + 1, xo), top().lastpos());
+				++next_row;
+				top().pos() 
+					= min(tm.x2pos(pit(), next_row, xo), top().lastpos());			
 			} else if (pit() + 1 < int(text()->paragraphs().size())) {
 				++pit();
 				TextMetrics & tm = bv_->textMetrics(text());
 				if (!tm.contains(pit()))
 					tm.newParMetricsDown();
-				top().pos() = min(tm.x2pos(pit(), 0, xo), top().lastpos());
+				next_row = 0;
+				top().pos() 
+					= min(tm.x2pos(pit(), next_row, xo), top().lastpos());
 			}
 		}
 
+		boundary(tm.x2pos(pit(), next_row, xo) 
+			== tm.x2pos(pit(), next_row, tm.width()));
 		updateNeeded |= bv().checkDepm(*this, old);
 	}
 
