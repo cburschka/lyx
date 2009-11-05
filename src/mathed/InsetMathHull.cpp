@@ -507,9 +507,13 @@ void InsetMathHull::label(row_type row, docstring const & label)
 			label_[row] = dummy_pointer;
 			// We need an update of the Buffer reference cache.
 			// This is achieved by updateLabels().
-			buffer().updateLabels();
+			if (buffer_)
+				buffer().updateLabels();
 		} else {
-			label_[row]->updateCommand(label);
+			if (buffer_)
+				label_[row]->updateCommand(label);
+			else
+				label_[row]->setParam("name", label);
 		}
 		return;
 	}
