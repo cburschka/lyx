@@ -1216,8 +1216,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 
 	// We'll set this back to false if need be.
 	bool dispatched = true;
-	if (cmd.action != LFUN_UNDO && cmd.action != LFUN_REDO)
-		buffer_.undo().beginUndoGroup();
+	buffer_.undo().beginUndoGroup();
 
 	switch (cmd.action) {
 
@@ -1880,8 +1879,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		break;
 	}
 
-	if (cmd.action != LFUN_UNDO && cmd.action != LFUN_REDO)
-		buffer_.undo().endUndoGroup();
+	buffer_.undo().endUndoGroup();
 	return dispatched;
 }
 
