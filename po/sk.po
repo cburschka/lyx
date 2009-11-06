@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-11-06 13:23+0100\n"
-"PO-Revision-Date: 2009-10-30 16:13+0100\n"
+"PO-Revision-Date: 2009-11-06 20:42+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slowakisch <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -6127,11 +6127,11 @@ msgstr "položka:"
 
 #: lib/layouts/europecv.layout:65
 msgid "BulletedItem"
-msgstr "BulletedItem"
+msgstr "OdrážkováPoložka"
 
 #: lib/layouts/europecv.layout:68
 msgid "Bulleted Item:"
-msgstr "Bulleted Item:"
+msgstr "Odrážková Položka:"
 
 #: lib/layouts/europecv.layout:71
 msgid "Begin"
@@ -7647,38 +7647,32 @@ msgid "Subclass"
 msgstr "Podtrieda"
 
 #: lib/layouts/svmono.layout:16 lib/layouts/svmult.layout:80
-#, fuzzy
 msgid "Petit"
-msgstr "TitulBásne"
+msgstr "Petit"
 
 #: lib/layouts/svmono.layout:28 lib/layouts/svmult.layout:171
-#, fuzzy
 msgid "Front Matter"
-msgstr "FrontMatter"
+msgstr "Front Matter"
 
 #: lib/layouts/svmono.layout:44 lib/layouts/svmult.layout:187
-#, fuzzy
 msgid "--- Front Matter ---"
-msgstr "FrontMatter"
+msgstr "--- Front Matter ---"
 
 #: lib/layouts/svmono.layout:54 lib/layouts/svmult.layout:196
-#, fuzzy
 msgid "Main Matter"
-msgstr "BackMatter"
+msgstr "Main Matter"
 
 #: lib/layouts/svmono.layout:58 lib/layouts/svmult.layout:200
 msgid "--- Main Matter ---"
-msgstr ""
+msgstr "--- Main Matter ---"
 
 #: lib/layouts/svmono.layout:61 lib/layouts/svmult.layout:203
-#, fuzzy
 msgid "Back Matter"
-msgstr "BackMatter"
+msgstr "Back Matter"
 
 #: lib/layouts/svmono.layout:65 lib/layouts/svmult.layout:207
-#, fuzzy
 msgid "--- Back Matter ---"
-msgstr "BackMatter"
+msgstr "--- Back Matter ---"
 
 #: lib/layouts/svmono.layout:71 lib/layouts/svmult.layout:213
 #: lib/layouts/stdsections.inc:14
@@ -7696,74 +7690,64 @@ msgid "Appendix \\thechapter"
 msgstr "Príloha \\thechapter"
 
 #: lib/layouts/svmono.layout:135 lib/layouts/svmult.layout:118
-#, fuzzy
 msgid "Preface"
-msgstr "Miesto"
+msgstr "Predslov"
 
 #: lib/layouts/svmono.layout:145 lib/layouts/svmult.layout:128
-#, fuzzy
 msgid "Preface:"
-msgstr "Miesto:"
+msgstr "Predslov:"
 
 #: lib/layouts/svmono.layout:174 lib/layouts/svmult.layout:99
-#, fuzzy
 msgid "Proof(QED)"
-msgstr "Dôkaz"
+msgstr "Dôkaz(QED)"
 
 #: lib/layouts/svmono.layout:183 lib/layouts/svmult.layout:108
 msgid "Proof(smartQED)"
-msgstr ""
+msgstr "Dôkaz(smartQED)"
 
 #: lib/layouts/svmult.layout:24
 msgid "Contributor \\Roman{svmultlsti}:"
-msgstr ""
+msgstr "Prispievateľ \\Roman{svmultlsti}:"
 
 #: lib/layouts/svmult.layout:28
-#, fuzzy
 msgid "Title*"
-msgstr "Titul"
+msgstr "Titul*"
 
 #: lib/layouts/svmult.layout:55
-#, fuzzy
 msgid "Institute and e-mail: "
-msgstr "Institute mark"
+msgstr "Inštitút a e-mail:"
 
 #: lib/layouts/svmult.layout:62
 msgid "MiniTOC"
-msgstr ""
+msgstr "Mini obsah"
 
 #: lib/layouts/svmult.layout:67
 msgid "TOC depth (provide a number):"
-msgstr ""
+msgstr "Hĺbka obsahu (určite číslo):"
 
 #: lib/layouts/svmult.layout:73
-#, fuzzy
 msgid "List of Abbreviations & Symbols"
-msgstr "Zoznam citácií"
+msgstr "Zoznam skratiek a symbolov"
 
 #: lib/layouts/svmult.layout:120 lib/layouts/svmult.layout:138
 #: lib/layouts/svmult.layout:172 lib/layouts/svmult.layout:198
 #: lib/layouts/svmult.layout:205 lib/layouts/svmult.layout:211
 #: lib/layouts/svmult.layout:236 lib/layouts/svmult.layout:245
 #: lib/layouts/svmult.layout:269
-#, fuzzy
 msgid "For editors"
-msgstr "Spolupracovali"
+msgstr "Pre vydavateľov"
 
 #: lib/layouts/svmult.layout:137
-#, fuzzy
 msgid "List of Contributors"
-msgstr "Zoznam nákresov"
+msgstr "Zoznam prispievateľov"
 
 #: lib/layouts/svmult.layout:277
-#, fuzzy
 msgid "Inst"
-msgstr "Vlož&iť"
+msgstr "Inst"
 
 #: lib/layouts/svmult.layout:279
-#, fuzzy
 msgid "Institute #"
-msgstr "Inštitút"
+msgstr "Inštitút #"
 
 #: lib/layouts/tufte-book.layout:35
 msgid "Sidenote"
