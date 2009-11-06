@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-10-28 10:10+0100\n"
+"POT-Creation-Date: 2009-11-06 13:23+0100\n"
 "PO-Revision-Date: 2009-10-18 17:17+0100\n"
 "Last-Translator: susana barbosa <sabarbosa@fc.ul.pt>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -66,7 +66,7 @@ msgstr "Tes&te"
 #: src/frontends/qt4/ui/AskForTextUi.ui:84
 #: src/frontends/qt4/ui/BibitemUi.ui:111 src/frontends/qt4/ui/BibtexUi.ui:200
 #: src/frontends/qt4/ui/BoxUi.ui:234 src/frontends/qt4/ui/BranchUi.ui:31
-#: src/frontends/qt4/ui/CharacterUi.ui:370
+#: src/frontends/qt4/ui/CharacterUi.ui:357
 #: src/frontends/qt4/ui/CitationUi.ui:438
 #: src/frontends/qt4/ui/DocumentUi.ui:135 src/frontends/qt4/ui/ERTUi.ui:90
 #: src/frontends/qt4/ui/ExternalUi.ui:52 src/frontends/qt4/ui/FloatUi.ui:68
@@ -368,7 +368,7 @@ msgstr "Horizontal"
 msgid "&Restore"
 msgstr "&Restaurar"
 
-#: src/frontends/qt4/ui/BoxUi.ui:247 src/frontends/qt4/ui/CharacterUi.ui:380
+#: src/frontends/qt4/ui/BoxUi.ui:247 src/frontends/qt4/ui/CharacterUi.ui:367
 #: src/frontends/qt4/ui/DocumentUi.ui:145
 #: src/frontends/qt4/ui/ExternalUi.ui:62 src/frontends/qt4/ui/FloatUi.ui:78
 #: src/frontends/qt4/ui/GraphicsUi.ui:742 src/frontends/qt4/ui/HSpaceUi.ui:164
@@ -416,19 +416,19 @@ msgstr "Caixa interior -- necessário para largura fixa e quebra de linhas"
 #: src/frontends/qt4/ui/ListingsUi.ui:98 src/frontends/qt4/ui/TabularUi.ui:903
 #: src/frontends/qt4/ui/TabularUi.ui:922 src/frontends/qt4/ui/TabularUi.ui:970
 #: src/frontends/qt4/GuiBox.cpp:159 src/frontends/qt4/GuiBox.cpp:324
-#: src/frontends/qt4/GuiBox.cpp:452 src/frontends/qt4/GuiDocument.cpp:89
+#: src/frontends/qt4/GuiBox.cpp:449 src/frontends/qt4/GuiDocument.cpp:89
 #: src/frontends/qt4/GuiGraphics.cpp:633
 msgid "None"
 msgstr "Nenhum"
 
 #: src/frontends/qt4/ui/BoxUi.ui:366 src/frontends/qt4/GuiBox.cpp:325
-#: src/frontends/qt4/GuiBox.cpp:444 src/frontends/qt4/GuiBox.cpp:453
+#: src/frontends/qt4/GuiBox.cpp:441 src/frontends/qt4/GuiBox.cpp:450
 #: src/insets/InsetBox.cpp:148
 msgid "Parbox"
 msgstr "Parbox"
 
-#: src/frontends/qt4/ui/BoxUi.ui:371 src/frontends/qt4/GuiBox.cpp:445
-#: src/frontends/qt4/GuiBox.cpp:454 src/insets/InsetBox.cpp:150
+#: src/frontends/qt4/ui/BoxUi.ui:371 src/frontends/qt4/GuiBox.cpp:442
+#: src/frontends/qt4/GuiBox.cpp:451 src/insets/InsetBox.cpp:150
 msgid "Minipage"
 msgstr "Mini-página"
 
@@ -486,7 +486,7 @@ msgid "&Font:"
 msgstr "Tipo de &letra:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:44
-#: src/frontends/qt4/ui/CharacterUi.ui:227
+#: src/frontends/qt4/ui/CharacterUi.ui:212
 msgid "Si&ze:"
 msgstr "Ta&manho:"
 
@@ -603,7 +603,7 @@ msgid "&Reject"
 msgstr "&Rejeitar"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:44
-#: src/frontends/qt4/ui/CharacterUi.ui:132
+#: src/frontends/qt4/ui/CharacterUi.ui:123
 msgid "Font family"
 msgstr "Família de tipos de letra"
 
@@ -612,84 +612,84 @@ msgid "&Family:"
 msgstr "&Família:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:65
-#: src/frontends/qt4/ui/CharacterUi.ui:75
+#: src/frontends/qt4/ui/CharacterUi.ui:72
 msgid "Font shape"
 msgstr "Forma do tipo de letra"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:78
+#: src/frontends/qt4/ui/CharacterUi.ui:75
 msgid "S&hape:"
 msgstr "F&orma:"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:96
-#: src/frontends/qt4/ui/CharacterUi.ui:173
+#: src/frontends/qt4/ui/CharacterUi.ui:93
+#: src/frontends/qt4/ui/CharacterUi.ui:158
 msgid "Font series"
 msgstr "Série de tipo de letra"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:114
-#: src/frontends/qt4/ui/CharacterUi.ui:160
+#: src/frontends/qt4/ui/CharacterUi.ui:108
+#: src/frontends/qt4/ui/CharacterUi.ui:145
 #: src/frontends/qt4/ui/ListingsUi.ui:339 lib/layouts/europecv.layout:118
 #: lib/layouts/moderncv.layout:114 src/frontends/qt4/GuiDocument.cpp:987
 #: src/frontends/qt4/GuiPrefs.cpp:1759
 msgid "Language"
 msgstr "Lingua"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:150
-#: src/frontends/qt4/ui/CharacterUi.ui:189
+#: src/frontends/qt4/ui/CharacterUi.ui:138
+#: src/frontends/qt4/ui/CharacterUi.ui:174
 msgid "Font color"
 msgstr "Côr do tipo de letra"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:163
+#: src/frontends/qt4/ui/CharacterUi.ui:148
 #: src/frontends/qt4/ui/LanguageUi.ui:99
 msgid "&Language:"
 msgstr "&Lingua:"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:176
+#: src/frontends/qt4/ui/CharacterUi.ui:161
 msgid "&Series:"
 msgstr "&Séries"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:192
+#: src/frontends/qt4/ui/CharacterUi.ui:177
 msgid "&Color:"
 msgstr "&Côr:"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:212
+#: src/frontends/qt4/ui/CharacterUi.ui:197
 msgid "Never Toggled"
 msgstr "Nunca alterna"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:224
-#: src/frontends/qt4/ui/CharacterUi.ui:245
+#: src/frontends/qt4/ui/CharacterUi.ui:209
+#: src/frontends/qt4/ui/CharacterUi.ui:230
 msgid "Font size"
 msgstr "Tamanho da letra"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:258
-#: src/frontends/qt4/ui/CharacterUi.ui:283
+#: src/frontends/qt4/ui/CharacterUi.ui:240
+#: src/frontends/qt4/ui/CharacterUi.ui:273
 msgid "Other font settings"
 msgstr "Outras configurações do tipo de letra"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:261
+#: src/frontends/qt4/ui/CharacterUi.ui:243
 msgid "Always Toggled"
 msgstr "Alterna sempre"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:273
+#: src/frontends/qt4/ui/CharacterUi.ui:255
 msgid "&Misc:"
 msgstr "&Misc:"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:308
+#: src/frontends/qt4/ui/CharacterUi.ui:295
 msgid "toggle font on all of the above"
 msgstr "alternar tipo de letra em tudo acima"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:311
+#: src/frontends/qt4/ui/CharacterUi.ui:298
 msgid "&Toggle all"
 msgstr "Alternar todos"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:318
+#: src/frontends/qt4/ui/CharacterUi.ui:305
 msgid "Apply each change automatically"
 msgstr "Aplicar automáticamente cada alteração"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:321
+#: src/frontends/qt4/ui/CharacterUi.ui:308
 msgid "Apply changes immediately"
 msgstr "Aplicar alterações imediatamente"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:390 src/frontends/qt4/ui/ERTUi.ui:100
+#: src/frontends/qt4/ui/CharacterUi.ui:377 src/frontends/qt4/ui/ERTUi.ui:100
 #: src/frontends/qt4/ui/GraphicsUi.ui:763
 #: src/frontends/qt4/ui/MathMatrixUi.ui:174 src/frontends/qt4/ui/NoteUi.ui:28
 #: src/frontends/qt4/ui/PrintUi.ui:243
@@ -2180,7 +2180,7 @@ msgstr "Etiqueta mais lo&nga"
 msgid "Line &spacing"
 msgstr "&Espaçamento entre linhas"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:246 src/Text.cpp:1416
+#: src/frontends/qt4/ui/ParagraphUi.ui:246 src/Text.cpp:1419
 #: src/frontends/qt4/GuiDocument.cpp:572
 msgid "Single"
 msgstr "Simples"
@@ -2189,7 +2189,7 @@ msgstr "Simples"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:256 src/Text.cpp:1422
+#: src/frontends/qt4/ui/ParagraphUi.ui:256 src/Text.cpp:1425
 #: src/frontends/qt4/GuiDocument.cpp:576
 msgid "Double"
 msgstr "Duplo"
@@ -3997,7 +3997,7 @@ msgstr "Permitir &flutuante"
 #: lib/layouts/revtex4.layout:40 lib/layouts/scrlettr.layout:7
 #: lib/layouts/scrlttr2.layout:8 lib/layouts/siamltex.layout:31
 #: lib/layouts/sigplanconf.layout:37 lib/layouts/simplecv.layout:16
-#: lib/layouts/slides.layout:60 lib/layouts/tufte-book.layout:12
+#: lib/layouts/slides.layout:60 lib/layouts/tufte-book.layout:13
 #: lib/layouts/agu_stdclass.inc:22 lib/layouts/db_stdclass.inc:22
 #: lib/layouts/scrclass.inc:15 lib/layouts/stdclass.inc:28
 #: lib/layouts/stdletter.inc:12 lib/layouts/svjour.inc:27
@@ -4161,8 +4161,9 @@ msgid "Condition #:"
 msgstr "Condição #:"
 
 #: lib/layouts/IEEEtran.layout:183 lib/layouts/elsart.layout:375
-#: lib/layouts/llncs.layout:364 lib/layouts/svjour.inc:387
-#: lib/layouts/theorems-ams.inc:150 lib/layouts/theorems-order.inc:49
+#: lib/layouts/llncs.layout:364 lib/layouts/svmono.layout:161
+#: lib/layouts/svjour.inc:387 lib/layouts/theorems-ams.inc:150
+#: lib/layouts/theorems-order.inc:49
 #: lib/layouts/theorems-starred-equivalents.inc:55
 #: lib/layouts/theorems.inc:150
 msgid "Problem"
@@ -4233,7 +4234,8 @@ msgid "Notation #:"
 msgstr "Notação #:"
 
 #: lib/layouts/IEEEtran.layout:243 lib/layouts/elsart.layout:411
-#: lib/layouts/llncs.layout:281 lib/layouts/theorems-ams.inc:207
+#: lib/layouts/llncs.layout:281 lib/layouts/svmono.layout:155
+#: lib/layouts/svmult.layout:93 lib/layouts/theorems-ams.inc:207
 #: lib/layouts/theorems-order.inc:73 lib/layouts/theorems.inc:207
 msgid "Case"
 msgstr "Caso"
@@ -4258,6 +4260,7 @@ msgstr "Caso #:"
 #: lib/layouts/powerdot.layout:224 lib/layouts/revtex.layout:38
 #: lib/layouts/revtex4.layout:59 lib/layouts/siamltex.layout:349
 #: lib/layouts/simplecv.layout:28 lib/layouts/spie.layout:19
+#: lib/layouts/svmono.layout:69 lib/layouts/svmono.layout:103
 #: lib/layouts/agu_stdsections.inc:30 lib/layouts/aguplus.inc:27
 #: lib/layouts/db_stdsections.inc:28 lib/layouts/numrevtex.inc:6
 #: lib/layouts/scrclass.inc:62 lib/layouts/stdsections.inc:12
@@ -4933,11 +4936,11 @@ msgstr "Agradecimentos"
 #: lib/layouts/beamer.layout:927 lib/layouts/beamer.layout:946
 #: lib/layouts/beamer.layout:1066 lib/layouts/beamer.layout:1090
 #: lib/layouts/beamer.layout:1128 lib/layouts/siamltex.layout:32
-#: lib/layouts/tufte-book.layout:106 lib/layouts/tufte-handout.layout:95
-#: lib/layouts/lyxmacros.inc:13 lib/layouts/stdclass.inc:29
-#: lib/layouts/stdlayouts.inc:12 lib/layouts/stdlayouts.inc:31
-#: lib/layouts/stdlayouts.inc:50 lib/layouts/stdlayouts.inc:68
-#: lib/layouts/svjour.inc:309
+#: lib/layouts/svmono.layout:18 lib/layouts/svmult.layout:82
+#: lib/layouts/tufte-book.layout:107 lib/layouts/lyxmacros.inc:13
+#: lib/layouts/stdclass.inc:29 lib/layouts/stdlayouts.inc:12
+#: lib/layouts/stdlayouts.inc:31 lib/layouts/stdlayouts.inc:50
+#: lib/layouts/stdlayouts.inc:68 lib/layouts/svjour.inc:309
 msgid "MainText"
 msgstr "TextoPrincipal"
 
@@ -4952,10 +4955,12 @@ msgid "SpecialSection*"
 msgstr "Secção-especial"
 
 #: lib/layouts/amsart.layout:91 lib/layouts/beamer.layout:173
-#: lib/layouts/beamer.layout:216 lib/layouts/stdstarsections.inc:15
-#: lib/layouts/stdstarsections.inc:25 lib/layouts/stdstarsections.inc:36
-#: lib/layouts/stdstarsections.inc:47 lib/layouts/stdstarsections.inc:58
-#: lib/layouts/stdstarsections.inc:69 lib/layouts/stdstarsections.inc:80
+#: lib/layouts/beamer.layout:216 lib/layouts/svmono.layout:94
+#: lib/layouts/svmono.layout:127 lib/layouts/svmono.layout:137
+#: lib/layouts/stdstarsections.inc:15 lib/layouts/stdstarsections.inc:25
+#: lib/layouts/stdstarsections.inc:36 lib/layouts/stdstarsections.inc:47
+#: lib/layouts/stdstarsections.inc:58 lib/layouts/stdstarsections.inc:69
+#: lib/layouts/stdstarsections.inc:80
 msgid "Unnumbered"
 msgstr "Não-numerado"
 
@@ -5092,6 +5097,7 @@ msgstr "InícioMoldura"
 #: lib/layouts/article.layout:18 lib/layouts/beamer.layout:109
 #: lib/layouts/beamer.layout:124 lib/layouts/mwart.layout:23
 #: lib/layouts/paper.layout:40 lib/layouts/scrartcl.layout:20
+#: lib/layouts/svmono.layout:68 lib/layouts/svmult.layout:210
 #: lib/layouts/agu_stdsections.inc:12 lib/layouts/db_stdsections.inc:12
 #: lib/layouts/numreport.inc:6 lib/layouts/scrclass.inc:47
 #: lib/layouts/stdsections.inc:11
@@ -5099,7 +5105,8 @@ msgid "Part"
 msgstr "Parte"
 
 #: lib/layouts/article.layout:29 lib/layouts/mwart.layout:33
-#: lib/layouts/scrartcl.layout:29 lib/layouts/db_stdstarsections.inc:13
+#: lib/layouts/scrartcl.layout:29 lib/layouts/svmono.layout:92
+#: lib/layouts/svmult.layout:234 lib/layouts/db_stdstarsections.inc:13
 #: lib/layouts/stdstarsections.inc:13
 msgid "Part*"
 msgstr "Parte*"
@@ -5277,7 +5284,8 @@ msgid "Title (Plain Frame)"
 msgstr "Título (Moldura Simples)"
 
 #: lib/layouts/beamer.layout:817 lib/layouts/cl2emult.layout:69
-#: lib/layouts/llncs.layout:211 lib/layouts/svjour.inc:173
+#: lib/layouts/llncs.layout:211 lib/layouts/svmult.layout:47
+#: lib/layouts/svjour.inc:173
 msgid "Institute"
 msgstr "Instituição"
 
@@ -5392,7 +5400,8 @@ msgstr "Alerta"
 msgid "CharStyle:Structure"
 msgstr "EstiloCar:Estrutura"
 
-#: lib/layouts/beamer.layout:1168
+#: lib/layouts/beamer.layout:1168 lib/layouts/svmono.layout:29
+#: lib/layouts/svmono.layout:56 lib/layouts/svmono.layout:63
 msgid "Structure"
 msgstr "Estrutura"
 
@@ -5418,8 +5427,7 @@ msgid "Table"
 msgstr "Tabela"
 
 #: lib/layouts/beamer.layout:1204 lib/layouts/powerdot.layout:382
-#: lib/layouts/tufte-book.layout:134 lib/layouts/tufte-handout.layout:123
-#: lib/layouts/stdfloats.inc:15
+#: lib/layouts/tufte-book.layout:134 lib/layouts/stdfloats.inc:15
 msgid "List of Tables"
 msgstr "Lista de Tabelas"
 
@@ -5429,8 +5437,7 @@ msgid "Figure"
 msgstr "Figura"
 
 #: lib/layouts/beamer.layout:1216 lib/layouts/powerdot.layout:392
-#: lib/layouts/tufte-book.layout:145 lib/layouts/tufte-handout.layout:134
-#: lib/layouts/stdfloats.inc:27
+#: lib/layouts/tufte-book.layout:145 lib/layouts/stdfloats.inc:27
 msgid "List of Figures"
 msgstr "Lista de Figuras"
 
@@ -7111,6 +7118,7 @@ msgstr "E-mail:"
 
 #: lib/layouts/llncs.layout:39 lib/layouts/memoir.layout:51
 #: lib/layouts/recipebook.layout:41 lib/layouts/scrbook.layout:16
+#: lib/layouts/svmono.layout:101 lib/layouts/svmult.layout:243
 #: lib/layouts/agu_stdsections.inc:21 lib/layouts/db_stdsections.inc:20
 #: lib/layouts/scrclass.inc:54 lib/layouts/stdsections.inc:36
 msgid "Chapter"
@@ -7120,11 +7128,11 @@ msgstr "Capítulo"
 msgid "Running LaTeX Title"
 msgstr "Título Corrido LaTeX"
 
-#: lib/layouts/llncs.layout:167
+#: lib/layouts/llncs.layout:167 lib/layouts/svmult.layout:33
 msgid "TOC Title"
 msgstr "Título TOC"
 
-#: lib/layouts/llncs.layout:171
+#: lib/layouts/llncs.layout:171 lib/layouts/svmult.layout:37
 msgid "TOC title:"
 msgstr "Título TOC:"
 
@@ -7136,15 +7144,16 @@ msgstr "Autor Corrido"
 msgid "Author Running:"
 msgstr "Autor Corrido:"
 
-#: lib/layouts/llncs.layout:203
+#: lib/layouts/llncs.layout:203 lib/layouts/svmult.layout:40
 msgid "TOC Author"
 msgstr "Autor TOC"
 
-#: lib/layouts/llncs.layout:207
+#: lib/layouts/llncs.layout:207 lib/layouts/svmult.layout:44
 msgid "TOC Author:"
 msgstr "Autor TOC:"
 
-#: lib/layouts/llncs.layout:295 lib/layouts/theorems-ams.inc:223
+#: lib/layouts/llncs.layout:295 lib/layouts/svmono.layout:158
+#: lib/layouts/svmult.layout:96 lib/layouts/theorems-ams.inc:223
 #: lib/layouts/theorems.inc:213
 msgid "Case #."
 msgstr "Caso #."
@@ -7170,7 +7179,8 @@ msgstr "Exercício #."
 msgid "Note #."
 msgstr "Nota #."
 
-#: lib/layouts/llncs.layout:367 lib/layouts/svjour.inc:390
+#: lib/layouts/llncs.layout:367 lib/layouts/svmono.layout:164
+#: lib/layouts/svjour.inc:390
 msgid "Problem #."
 msgstr "Problema #."
 
@@ -7190,15 +7200,18 @@ msgstr "Questão #."
 msgid "Remark #."
 msgstr "Observação #."
 
-#: lib/layouts/llncs.layout:405 lib/layouts/svjour.inc:429
+#: lib/layouts/llncs.layout:405 lib/layouts/svmono.layout:167
+#: lib/layouts/svjour.inc:429
 msgid "Solution"
 msgstr "Solução"
 
-#: lib/layouts/llncs.layout:408 lib/layouts/svjour.inc:432
+#: lib/layouts/llncs.layout:408 lib/layouts/svmono.layout:170
+#: lib/layouts/svjour.inc:432
 msgid "Solution #."
 msgstr "Solução #."
 
-#: lib/layouts/memoir.layout:55 lib/layouts/db_stdstarsections.inc:24
+#: lib/layouts/memoir.layout:55 lib/layouts/svmono.layout:125
+#: lib/layouts/svmult.layout:267 lib/layouts/db_stdstarsections.inc:24
 #: lib/layouts/stdstarsections.inc:23
 msgid "Chapter*"
 msgstr "Capítulo*"
@@ -7704,65 +7717,184 @@ msgstr "AGRADECIMENTOS"
 msgid "Subclass"
 msgstr "Classedeassunto"
 
-#: lib/layouts/tufte-book.layout:34 lib/layouts/tufte-handout.layout:23
+#: lib/layouts/svmono.layout:16 lib/layouts/svmult.layout:80
+#, fuzzy
+msgid "Petit"
+msgstr "TítuloPoema"
+
+#: lib/layouts/svmono.layout:28 lib/layouts/svmult.layout:171
+#, fuzzy
+msgid "Front Matter"
+msgstr "Frontíspicio"
+
+#: lib/layouts/svmono.layout:44 lib/layouts/svmult.layout:187
+#, fuzzy
+msgid "--- Front Matter ---"
+msgstr "Frontíspicio"
+
+#: lib/layouts/svmono.layout:54 lib/layouts/svmult.layout:196
+#, fuzzy
+msgid "Main Matter"
+msgstr "BackMatter"
+
+#: lib/layouts/svmono.layout:58 lib/layouts/svmult.layout:200
+msgid "--- Main Matter ---"
+msgstr ""
+
+#: lib/layouts/svmono.layout:61 lib/layouts/svmult.layout:203
+#, fuzzy
+msgid "Back Matter"
+msgstr "BackMatter"
+
+#: lib/layouts/svmono.layout:65 lib/layouts/svmult.layout:207
+#, fuzzy
+msgid "--- Back Matter ---"
+msgstr "BackMatter"
+
+#: lib/layouts/svmono.layout:71 lib/layouts/svmult.layout:213
+#: lib/layouts/stdsections.inc:14
+msgid "Part \\thepart"
+msgstr "Parte \\thepart"
+
+#: lib/layouts/svmono.layout:104 lib/layouts/svmult.layout:246
+#: lib/layouts/stdsections.inc:39
+msgid "Chapter \\thechapter"
+msgstr "Capítulo \\thechapter"
+
+#: lib/layouts/svmono.layout:105 lib/layouts/svmult.layout:247
+#: lib/layouts/stdsections.inc:40
+msgid "Appendix \\thechapter"
+msgstr "Apêndice  \\thechapter"
+
+#: lib/layouts/svmono.layout:135 lib/layouts/svmult.layout:118
+#, fuzzy
+msgid "Preface"
+msgstr "Colocar"
+
+#: lib/layouts/svmono.layout:145 lib/layouts/svmult.layout:128
+#, fuzzy
+msgid "Preface:"
+msgstr "Colocar:"
+
+#: lib/layouts/svmono.layout:174 lib/layouts/svmult.layout:99
+#, fuzzy
+msgid "Proof(QED)"
+msgstr "Prova"
+
+#: lib/layouts/svmono.layout:183 lib/layouts/svmult.layout:108
+msgid "Proof(smartQED)"
+msgstr ""
+
+#: lib/layouts/svmult.layout:24
+msgid "Contributor \\Roman{svmultlsti}:"
+msgstr ""
+
+#: lib/layouts/svmult.layout:28
+#, fuzzy
+msgid "Title*"
+msgstr "Título"
+
+#: lib/layouts/svmult.layout:55
+#, fuzzy
+msgid "Institute and e-mail: "
+msgstr "Marca instituição"
+
+#: lib/layouts/svmult.layout:62
+msgid "MiniTOC"
+msgstr ""
+
+#: lib/layouts/svmult.layout:67
+msgid "TOC depth (provide a number):"
+msgstr ""
+
+#: lib/layouts/svmult.layout:73
+#, fuzzy
+msgid "List of Abbreviations & Symbols"
+msgstr "Lista de Citações"
+
+#: lib/layouts/svmult.layout:120 lib/layouts/svmult.layout:138
+#: lib/layouts/svmult.layout:172 lib/layouts/svmult.layout:198
+#: lib/layouts/svmult.layout:205 lib/layouts/svmult.layout:211
+#: lib/layouts/svmult.layout:236 lib/layouts/svmult.layout:245
+#: lib/layouts/svmult.layout:269
+#, fuzzy
+msgid "For editors"
+msgstr "Créditos"
+
+#: lib/layouts/svmult.layout:137
+#, fuzzy
+msgid "List of Contributors"
+msgstr "Lista de Citações"
+
+#: lib/layouts/svmult.layout:277
+#, fuzzy
+msgid "Inst"
+msgstr "&Inserir"
+
+#: lib/layouts/svmult.layout:279
+#, fuzzy
+msgid "Institute #"
+msgstr "Instituição"
+
+#: lib/layouts/tufte-book.layout:35
 #, fuzzy
 msgid "Sidenote"
 msgstr "nota"
 
-#: lib/layouts/tufte-book.layout:39 lib/layouts/tufte-handout.layout:28
+#: lib/layouts/tufte-book.layout:40
 #, fuzzy
 msgid "sidenote"
 msgstr "nota"
 
-#: lib/layouts/tufte-book.layout:53 lib/layouts/tufte-handout.layout:42
+#: lib/layouts/tufte-book.layout:54
 #, fuzzy
 msgid "Marginnote"
 msgstr "Nota Marginal|M"
 
-#: lib/layouts/tufte-book.layout:57 lib/layouts/tufte-handout.layout:46
+#: lib/layouts/tufte-book.layout:58
 #, fuzzy
 msgid "marginnote"
 msgstr "margem"
 
-#: lib/layouts/tufte-book.layout:66 lib/layouts/tufte-handout.layout:55
+#: lib/layouts/tufte-book.layout:67
 msgid "NewThought"
 msgstr ""
 
-#: lib/layouts/tufte-book.layout:70 lib/layouts/tufte-handout.layout:59
+#: lib/layouts/tufte-book.layout:71
 msgid "new thought"
 msgstr ""
 
-#: lib/layouts/tufte-book.layout:80 lib/layouts/tufte-handout.layout:69
+#: lib/layouts/tufte-book.layout:81
 #, fuzzy
 msgid "AllCaps"
 msgstr "Caixa Baixa"
 
-#: lib/layouts/tufte-book.layout:83 lib/layouts/tufte-handout.layout:72
+#: lib/layouts/tufte-book.layout:84
 #, fuzzy
 msgid "allcaps"
 msgstr "Caixa Baixa"
 
-#: lib/layouts/tufte-book.layout:93 lib/layouts/tufte-handout.layout:82
+#: lib/layouts/tufte-book.layout:94
 #, fuzzy
 msgid "SmallCaps"
 msgstr "Caixa Baixa"
 
-#: lib/layouts/tufte-book.layout:96 lib/layouts/tufte-handout.layout:85
+#: lib/layouts/tufte-book.layout:97
 #, fuzzy
 msgid "smallcaps"
 msgstr "Caixa Baixa"
 
-#: lib/layouts/tufte-book.layout:102 lib/layouts/tufte-handout.layout:91
+#: lib/layouts/tufte-book.layout:103
 #, fuzzy
 msgid "Full Width"
 msgstr "Largura da Etiqueta"
 
-#: lib/layouts/tufte-book.layout:129 lib/layouts/tufte-handout.layout:118
+#: lib/layouts/tufte-book.layout:129
 #, fuzzy
 msgid "MarginTable"
 msgstr "Marginal"
 
-#: lib/layouts/tufte-book.layout:140 lib/layouts/tufte-handout.layout:129
+#: lib/layouts/tufte-book.layout:140
 #, fuzzy
 msgid "MarginFigure"
 msgstr "AjustarFigura"
@@ -8599,18 +8731,6 @@ msgstr "--Separador--"
 #: lib/layouts/stdlayouts.inc:76
 msgid "--- Separate Environment ---"
 msgstr "--- Ambiente Separado ---"
-
-#: lib/layouts/stdsections.inc:14
-msgid "Part \\thepart"
-msgstr "Parte \\thepart"
-
-#: lib/layouts/stdsections.inc:39
-msgid "Chapter \\thechapter"
-msgstr "Capítulo \\thechapter"
-
-#: lib/layouts/stdsections.inc:40
-msgid "Appendix \\thechapter"
-msgstr "Apêndice  \\thechapter"
 
 #: lib/layouts/svjour.inc:92
 msgid "Headnote"
@@ -15315,22 +15435,22 @@ msgstr "Um caracter (excluindo espaços)"
 msgid "Statistics"
 msgstr "Estatísticas"
 
-#: src/BufferView.cpp:2171
+#: src/BufferView.cpp:2172
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "A inserir documento %1$s..."
 
-#: src/BufferView.cpp:2182
+#: src/BufferView.cpp:2183
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Documento %1$s inserido."
 
-#: src/BufferView.cpp:2184
+#: src/BufferView.cpp:2185
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Não é possível inserir documento %1$s"
 
-#: src/BufferView.cpp:2446
+#: src/BufferView.cpp:2447
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15341,11 +15461,11 @@ msgstr ""
 "%1$s\n"
 "devido ao erro: %2$s"
 
-#: src/BufferView.cpp:2448
+#: src/BufferView.cpp:2449
 msgid "Could not read file"
 msgstr "Não foi possível ler ficheiro"
 
-#: src/BufferView.cpp:2455
+#: src/BufferView.cpp:2456
 #, c-format
 msgid ""
 "%1$s\n"
@@ -15354,15 +15474,15 @@ msgstr ""
 "%1$s\n"
 "não é legível."
 
-#: src/BufferView.cpp:2456 src/output.cpp:39
+#: src/BufferView.cpp:2457 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Não foi possível abrir ficheiro"
 
-#: src/BufferView.cpp:2463
+#: src/BufferView.cpp:2464
 msgid "Reading not UTF-8 encoded file"
 msgstr "A ler ficheiro sem codificação UTF-8"
 
-#: src/BufferView.cpp:2464
+#: src/BufferView.cpp:2465
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -17148,61 +17268,61 @@ msgstr ""
 "Não é possível escrever dois espaços desta maneira. Por favor leia o "
 "Tutorial."
 
-#: src/Text.cpp:1382
+#: src/Text.cpp:1385
 msgid "[Change Tracking] "
 msgstr "[Alterar Registo] "
 
-#: src/Text.cpp:1388
+#: src/Text.cpp:1391
 msgid "Change: "
 msgstr "Alterar: "
 
-#: src/Text.cpp:1392
+#: src/Text.cpp:1395
 msgid " at "
 msgstr " a"
 
-#: src/Text.cpp:1402
+#: src/Text.cpp:1405
 #, c-format
 msgid "Font: %1$s"
 msgstr "Fonte: %1$s"
 
-#: src/Text.cpp:1407
+#: src/Text.cpp:1410
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Profundidade: %1$d"
 
-#: src/Text.cpp:1413
+#: src/Text.cpp:1416
 msgid ", Spacing: "
 msgstr ", Espaçamento: "
 
-#: src/Text.cpp:1419 src/frontends/qt4/GuiDocument.cpp:574
+#: src/Text.cpp:1422 src/frontends/qt4/GuiDocument.cpp:574
 msgid "OneHalf"
 msgstr "Um-e-meio"
 
-#: src/Text.cpp:1425
+#: src/Text.cpp:1428
 msgid "Other ("
 msgstr "Outro ("
 
-#: src/Text.cpp:1434
+#: src/Text.cpp:1437
 msgid ", Inset: "
 msgstr ", Inserto: "
 
-#: src/Text.cpp:1435
+#: src/Text.cpp:1438
 msgid ", Paragraph: "
 msgstr ", Parágrafo: "
 
-#: src/Text.cpp:1436
+#: src/Text.cpp:1439
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/Text.cpp:1437
+#: src/Text.cpp:1440
 msgid ", Position: "
 msgstr ", Posição: "
 
-#: src/Text.cpp:1443
+#: src/Text.cpp:1446
 msgid ", Char: 0x"
 msgstr ", Char: 0x"
 
-#: src/Text.cpp:1445
+#: src/Text.cpp:1448
 msgid ", Boundary: "
 msgstr ", Limite: "
 
@@ -17218,7 +17338,7 @@ msgstr "Nada para o índice remissivo!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Não é possível indexar mais do que um parágrafo!"
 
-#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1515
+#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1520
 msgid "Math editor mode"
 msgstr "Modo editor mat."
 
@@ -20802,7 +20922,7 @@ msgstr " cadeias alfanuméricas foram substituidas."
 msgid " Macro: %1$s: "
 msgstr " Macro: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1423
+#: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1428
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -20839,25 +20959,25 @@ msgstr "Não há vline para apagar"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Característica tabular desconhecida '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1191 src/mathed/InsetMathHull.cpp:1199
+#: src/mathed/InsetMathHull.cpp:1196 src/mathed/InsetMathHull.cpp:1204
 msgid "No number"
 msgstr "Sem número"
 
-#: src/mathed/InsetMathHull.cpp:1191 src/mathed/InsetMathHull.cpp:1199
+#: src/mathed/InsetMathHull.cpp:1196 src/mathed/InsetMathHull.cpp:1204
 msgid "Number"
 msgstr "Número"
 
-#: src/mathed/InsetMathHull.cpp:1396
+#: src/mathed/InsetMathHull.cpp:1401
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Não é possível alterar o número de linhas em %1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1406
+#: src/mathed/InsetMathHull.cpp:1411
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Não é possível alterar o número de colunas em %1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1416
+#: src/mathed/InsetMathHull.cpp:1421
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Não é possível adicionar linhas de grelha horizontal em '%1$s'"
