@@ -1131,6 +1131,8 @@ dist_layouts_DATA =\
 	layouts/svglobal3.layout \
 	layouts/svjog.layout \
 	layouts/svjour.inc \
+	layouts/svmono.layout \
+	layouts/svmult.layout \
 	layouts/svprobth.layout \
 	layouts/sweave.module \
 	layouts/tabs-within-sections.module \
@@ -1205,7 +1207,11 @@ dist_templates_DATA = \
 	templates/revtex.lyx \
 	templates/revtex4.lyx \
 	templates/slides.lyx \
-	templates/svjour3.lyx
+	templates/svjour3.lyx \
+	templates/svmono_book.lyx \
+	templates/svmult_appendix.lyx \
+	templates/svmult_author.lyx \
+	templates/svmult_editor.lyx
 
 texdir = $(pkgdatadir)/tex
 dist_tex_DATA = \

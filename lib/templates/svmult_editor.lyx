@@ -1,0 +1,703 @@
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass svmult
+\begin_preamble
+%%%%%%%%%%%%%%%%%%%% file editor.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% sample root file for a complete "contributed book"
+%
+% "contributed book"
+%
+% Copy it to a new file with a new name and
+% use it as a template for your own input.
+%
+%%%%%%%%%%%%%%%%%%%%%%%% Springer-Verlag %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+% choose options for [] as required from the list
+% in the Reference Guide, Sect. 2.2
+
+%\usepackage{grossdruck}      % switches to 11pt style - output same as
+                             % with [11pt] \documentclass option
+                             
+         % allows index generation
+        % standard LaTeX graphics tool
+                             % when including figure files
+\usepackage{multicol}        % used for the two-column index
+\usepackage[bottom]{footmisc}% places footnotes at page bottom
+% etc.
+% see the list of further useful packages
+% in the Reference Guide, Sects. 2.3, 3.1-3.3
+
+\makeindex             % used for the subject index
+                       % please use the style sprmidx.sty with
+                       % your makeindex program
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_preamble
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\use_geometry false
+\use_amsmath 0
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The editor should organize contents by using 
+\begin_inset Quotes eld
+\end_inset
+
+Front Matter
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Main Matter
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+Back Matter
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+Each contribution must be saved in an independent LyX file and included
+ to this 
+\begin_inset Quotes eld
+\end_inset
+
+root
+\begin_inset Quotes erd
+\end_inset
+
+ file.
+\end_layout
+
+\begin_layout Plain Layout
+Indices in each included file should be commented out to Note or deleted.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Front Matter
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Front matter should contain:
+\end_layout
+
+\begin_layout Plain Layout
+- dedication,
+\end_layout
+
+\begin_layout Plain Layout
+- foreword,
+\end_layout
+
+\begin_layout Plain Layout
+- preface,
+\end_layout
+
+\begin_layout Plain Layout
+- introduction to the volume,
+\end_layout
+
+\begin_layout Plain Layout
+- table of contents and
+\end_layout
+
+\begin_layout Plain Layout
+- the list of contributors if applicable.
+\end_layout
+
+\begin_layout Plain Layout
+It is sometimes easier to edit them as child documents and include them
+ to this file.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+%%%%%%%%%%%%%%%%%%%%%%% dedication %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+% sample dedication
+\end_layout
+
+\begin_layout Plain Layout
+% Use this as a template for your own input.
+\end_layout
+
+\begin_layout Plain Layout
+%%%%%%%%%%%%%%%%%%%%%%%% Springer-Verlag %%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset VSpace 3.5cm*
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\align right
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+write your text here
+\end_layout
+
+\end_inset
+
+
+\size large
+Your dedication goes here
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+% sample preface
+\end_layout
+
+\begin_layout Plain Layout
+%%%%%%%%%%%%%%%%%%%%%%%% Springer-Verlag %%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Preface
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Please write your preface here
+\end_layout
+
+\end_inset
+
+Here come the golden words
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 1cm
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align right
+place(s),
+\begin_inset space \hfill{}
+\end_inset
+
+
+\shape italic
+Firstname Surname
+\shape default
+
+\begin_inset Newline newline
+\end_inset
+
+ month year
+\begin_inset space \hfill{}
+\end_inset
+
+
+\shape italic
+Firstname Surname
+\shape default
+
+\begin_inset Newline newline
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+% sample for a complete "list of contributors"
+\end_layout
+
+\begin_layout Plain Layout
+% Use it as a template for your own input.
+\end_layout
+
+\begin_layout Plain Layout
+% please note that this environment makes use of the
+\end_layout
+
+\begin_layout Plain Layout
+% "obeylines"-function.
+\end_layout
+
+\begin_layout Plain Layout
+%%%%%%%%%%%%%%%%%%%%%%%% Springer-Verlag %%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout List of Contributors
+
+\series bold
+Author Name
+\series default
+ University/Institute Name Street No.
+ X - Place, Postal Code 
+\family typewriter
+name@e-mail.*
+\family default
+ 
+\end_layout
+
+\begin_layout List of Contributors
+
+\series bold
+Author Name
+\series default
+ University/Institute Name Street No.
+ X - Place, Postal Code 
+\family typewriter
+name@e-mail.*
+\end_layout
+
+\begin_layout List of Contributors
+
+\series bold
+Author Name
+\series default
+ University/Institute Name Street No.
+ X - Place, Postal Code 
+\family typewriter
+name@e-mail.*
+\end_layout
+
+\begin_layout List of Contributors
+
+\series bold
+Author Name
+\series default
+ University/Institute Name Street No.
+ X - Place, Postal Code 
+\family typewriter
+name@e-mail.*
+\end_layout
+
+\begin_layout List of Contributors
+
+\series bold
+Author Name
+\series default
+ University/Institute Name Street No.
+ X - Place, Postal Code 
+\family typewriter
+name@e-mail.*
+\end_layout
+
+\begin_layout List of Contributors
+
+\series bold
+Author Name
+\series default
+ University/Institute Name Street No.
+ X - Place, Postal Code 
+\family typewriter
+name@e-mail.*
+\end_layout
+
+\begin_layout List of Contributors
+
+\series bold
+Author Name
+\series default
+ University/Institute Name Street No.
+ X - Place, Postal Code 
+\family typewriter
+name@e-mail.*
+\end_layout
+
+\begin_layout List of Contributors
+
+\series bold
+Author Name
+\series default
+ University/Institute Name Street No.
+ X - Place, Postal Code 
+\family typewriter
+name@e-mail.*
+\end_layout
+
+\begin_layout List of Contributors
+
+\series bold
+Author Name
+\series default
+ University/Institute Name Street No.
+ X - Place, Postal Code 
+\family typewriter
+name@e-mail.*
+\end_layout
+
+\begin_layout List of Contributors
+
+\series bold
+Author Name
+\series default
+ University/Institute Name Street No.
+ X - Place, Postal Code 
+\family typewriter
+name@e-mail.*
+\end_layout
+
+\begin_layout List of Contributors
+
+\series bold
+Author Name
+\series default
+ University/Institute Name Street No.
+ X - Place, Postal Code 
+\family typewriter
+name@e-mail.*
+\end_layout
+
+\begin_layout List of Contributors
+
+\series bold
+Author Name
+\series default
+ University/Institute Name Street No.
+ X - Place, Postal Code 
+\family typewriter
+name@e-mail.*
+\end_layout
+
+\begin_layout List of Contributors
+
+\series bold
+Author Name
+\series default
+ University/Institute Name Street No.
+ X - Place, Postal Code 
+\family typewriter
+name@e-mail.*
+\end_layout
+
+\begin_layout List of Contributors
+
+\series bold
+Author Name
+\series default
+ University/Institute Name Street No.
+ X - Place, Postal Code 
+\family typewriter
+name@e-mail.*
+\end_layout
+
+\begin_layout List of Contributors
+
+\series bold
+Author Name
+\series default
+ University/Institute Name Street No.
+ X - Place, Postal Code 
+\family typewriter
+name@e-mail.*
+\end_layout
+
+\begin_layout List of Contributors
+
+\series bold
+Author Name
+\series default
+ University/Institute Name Street No.
+ X - Place, Postal Code 
+\family typewriter
+name@e-mail.*
+\end_layout
+
+\begin_layout List of Contributors
+
+\series bold
+Author Name
+\series default
+ University/Institute Name Street No.
+ X - Place, Postal Code 
+\family typewriter
+name@e-mail.*
+\end_layout
+
+\begin_layout List of Contributors
+
+\series bold
+Author Name
+\series default
+ University/Institute Name Street No.
+ X - Place, Postal Code 
+\family typewriter
+name@e-mail.*
+\end_layout
+
+\begin_layout List of Contributors
+
+\series bold
+Author Name
+\series default
+ University/Institute Name Street No.
+ X - Place, Postal Code 
+\family typewriter
+name@e-mail.*
+\end_layout
+
+\begin_layout List of Contributors
+
+\series bold
+Author Name
+\series default
+ University/Institute Name Street No.
+ X - Place, Postal Code 
+\family typewriter
+name@e-mail.*
+\end_layout
+
+\begin_layout List of Contributors
+
+\series bold
+Author Name
+\series default
+ University/Institute Name Street No.
+ X - Place, Postal Code 
+\family typewriter
+name@e-mail.*
+\end_layout
+
+\begin_layout List of Contributors
+
+\series bold
+Author Name
+\series default
+ University/Institute Name Street No.
+ X - Place, Postal Code 
+\family typewriter
+name@e-mail.*
+\end_layout
+
+\begin_layout Main Matter
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Main matter should contain individual contributions.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+% sample part title
+\end_layout
+
+\begin_layout Plain Layout
+%%%%%%%%%%%%%%%%%%%%%%%% Springer-Verlag %%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part
+Part Title
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "svmult_author.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Back Matter
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Back matter should contain:
+\end_layout
+
+\begin_layout Plain Layout
+- common appendix if any,
+\end_layout
+
+\begin_layout Plain Layout
+- bibliography,
+\end_layout
+
+\begin_layout Plain Layout
+- index,
+\end_layout
+
+\begin_layout Plain Layout
+- list of symbols, etc.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\start_of_appendix
+\begin_inset CommandInset include
+LatexCommand include
+filename "svmult_appendix.lyx"
+
+\end_inset
+
+ 
+\begin_inset CommandInset index_print
+LatexCommand printindex
+name "  "
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

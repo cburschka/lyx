@@ -1,0 +1,287 @@
+#% Do not delete the line below; configure depends on this
+#	\DeclareLaTeXClass[svmult]{book (Springer svmult)}
+# Author: Koji Yokota <yokota@res.otaru-uc.ac.jp>
+#
+#  Class and style files and templates are found at:
+#       ftp://ftp.springer.de/pub/tex/latex/svmultgl/
+#
+
+Format 11
+Input svjour.inc
+
+ClassOptions
+	FontSize	 10
+End
+
+NoStyle Acknowledgements
+NoStyle Date
+NoStyle Dedication
+NoStyle Headnote
+NoStyle Mail
+NoStyle Offprints
+
+Counter svmultlsti
+	LabelString	"Contributor \Roman{svmultlsti}:"
+End
+
+# Additional headings
+Style Title*
+	CopyStyle	Title
+	LatexName	title*
+End
+
+Style TOC_Title
+	CopyStyle	Running_LaTeX_Title
+	LatexName	toctitle
+	LeftMargin	"TOC title:xxx"
+	LabelString	"TOC title:"
+End
+
+Style TOC_Author
+	CopyStyle	Running_LaTeX_Title
+	LatexName	tocauthor
+	LeftMargin	"TOC Author:xxx"
+	LabelString	"TOC Author:"
+End
+
+Style Institute
+	LatexType	Command
+	InTitle		1
+	LatexName	institute
+	Margin		Static
+	LeftMargin	"Institute and e-mail:xxx"
+	LabelSep	xxx
+	LabelType	Static
+	LabelString	"Institute and e-mail: "
+	LabelFont
+	  Shape		Italic
+	EndFont
+	Requires	url
+End
+
+Style MiniTOC
+	CopyStyle	Running_LaTeX_Title
+	LatexType	Command
+	LatexName	svmulttoc
+	LeftMargin	"TOC depth (provide a number):xxx"
+	LabelString	"TOC depth (provide a number):"
+	Preamble
+	    \newcommand{\svmulttoc}[1]{\setcounter{minitocdepth}{#1}\dominitoc}
+	EndPreamble
+End
+
+Style List_of_Abbreviations_&_Symbols
+	InTitle		1
+	CopyStyle	Description
+	LatexName	abbrsymblist
+End
+
+# Additional paragraphs
+Style Petit
+	CopyStyle	Standard
+	Category	MainText
+	LatexType	Environment
+	LatexName	petit
+	LeftMargin	MMM
+	RightMargin	MMM
+	Font
+	  Size		Small
+	FontEnd
+End
+
+# Additional math environments
+Style Case
+	CopyStyle	Claim
+	LatexName	case
+	LabelString	"Case #."
+End
+
+Style Proof(QED)
+	CopyStyle	Proof
+	LatexName	svmultproof
+	EndLabelType	Box
+	Preamble
+	  \newenvironment{svmultproof}{\begin{proof}}{\qed\end{proof}}
+	EndPreamble
+End
+
+Style Proof(smartQED)
+	CopyStyle	Proof
+	LatexName	svmultproof2
+	EndLabelType	Filled_Box
+	Preamble
+	  \newenvironment{svmultproof2}{\begin{proof}}{\smartqed\qed\end{proof}}
+	EndPreamble
+End
+
+# Styles for editors
+Style Preface
+	CopyStyle	Title
+	Category	"For editors"
+	LatexName	svmultpreface
+	KeepEmpty	1
+	OptionalArgs	1
+	InTitle		0
+	Margin		Static
+	LeftMargin	"PPrreeffaaccee:xxx"
+	LabelType	Static
+	LabelString	"Preface:"
+	LabelSep	xxx
+	Align		Left
+	Preamble
+	  \newcommand{\svmultpreface}[1]{\ifthenelse{\equal{#1}{}}{\preface}{\preface[#1]}}
+	EndPreamble
+	Requires	ifthen
+End
+
+Style List_of_Contributors
+	Category	"For editors"
+	Margin		First_Dynamic
+	LatexType	Item_Environment
+	LatexName	svmultlstcnt
+	NextNoIndent	1
+	InTitle		0
+	LabelType	Counter
+	LabelCounter	svmultlsti
+	LabelSep	xxx
+	LabelFont
+	  Series	Bold
+	  Shape		Italic
+	  Color		Blue
+	EndFont
+	ParSkip		0.0
+	ItemSep		0.2
+	TopSep		0.7
+	BottomSep	0.7
+	ParSep		0.3
+	Align		Block
+	AlignPossible	Block, Left
+	Preamble
+	  \newenvironment{svmultlstcnt}{%
+	    \let\svmultitem\item%
+	    \renewcommand{\item}{%
+	      \ifthenelse{\value{svmultlsti} = 0}{}{\and}%
+	      \stepcounter{svmultlsti}}%
+	    \newcounter{svmultlsti}\begin{thecontriblist}}{%
+	  \end{thecontriblist}\let\item\svmultitem}
+	EndPreamble
+	Requires	ifthen
+End
+
+Style Front_Matter
+	Category	"For editors"
+	LatexType	Environment
+	LatexName	frontmatter
+	KeepEmpty	1
+	OptionalArgs	0
+	Margin		First_Dynamic
+	NextNoIndent	1
+	ParSkip		0
+	TopSep		2.5
+	BottomSep	0.5
+	ParSep		0
+	Align		Center
+	LabelType	Static
+	LabelBottomSep	0
+	LeftMargin	M
+	LabelString	"--- Front Matter ---"
+	Font
+	  Family	Sans
+	  Series	Bold
+	  Size		Largest
+	  Color		Blue
+	EndFont
+End
+
+Style Main_Matter
+	CopyStyle	Front_Matter
+	Category	"For editors"
+	LatexName	mainmatter
+	LabelString	"--- Main Matter ---"
+End
+
+Style Back_Matter
+	CopyStyle	Front_Matter
+	Category	"For editors"
+	LatexName	backmatter
+	LabelString	"--- Back Matter ---"
+End
+
+Style Part
+	Category	"For editors"
+	Margin		Dynamic
+	LabelString	"Part \thepart"
+	LabelType	Counter
+	TocLevel	0
+	LabelCounter	part
+	LatexType	Command
+	LatexName	part
+	NeedProtect	1
+	NextNoIndent	1
+	Labelsep	xxx
+	ParSkip		0.4
+	TopSep		4
+	BottomSep	4
+	ParSep		0.8
+	Align		Center
+	Alignpossible	Center
+	Font
+	  Series	Bold
+	  Size		Huge
+	EndFont
+End
+
+Style Part*
+	CopyStyle	Part
+	Category	"For editors"
+	Margin		Static
+	LatexName	part*
+	LabelType	No_Label
+	LabelCounter	""
+End
+
+Style Chapter
+	Margin		Static
+	Category	"For editors"
+	LabelString	"Chapter \thechapter"
+	LabelStringAppendix  "Appendix \thechapter"
+	LabelType	Counter
+	LabelCounter	chapter
+	TocLevel	0
+	LatexType	Command
+	LatexName	chapter
+	NeedProtect	1
+	NextNoIndent	1
+	ParSkip		0.4
+	TopSep		4
+	BottomSep	0.8
+	ParSep		0.8
+	Align		Left
+	OptionalArgs	1
+	Font
+	  Series	Bold
+	  Size		Huge
+	EndFont
+End
+
+Style Chapter*
+	CopyStyle	Chapter
+	Category	"For editors"
+	Margin		Static
+	LatexName	chapter*
+	LabelType	No_Label
+	LabelCounter	""
+	OptionalArgs	0
+End
+
+InsetLayout Inst
+	Decoration	Classic
+	LabelString	"Institute #"
+	LatexType	Command
+	LatexName	inst
+	LyxType		custom
+	Font
+	  Size		Small
+	  Color		Green
+	EndFont
+End

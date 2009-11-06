@@ -1345,6 +1345,10 @@ lib_templates_files = Split('''
     revtex4.lyx
     slides.lyx
     svjour3.lyx
+    svmono_book.lyx
+    svmult_appendix.lyx
+    svmult_author.lyx
+    svmult_editor.lyx
 ''')
 
 
@@ -2738,6 +2742,8 @@ lib_layouts_files = Split('''
     svglobal.layout
     svglobal3.layout
     svjog.layout
+    svmono.layout
+    svmult.layout
     svprobth.layout
     tarticle.layout
     tbook.layout
