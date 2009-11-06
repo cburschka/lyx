@@ -26,15 +26,15 @@ namespace lyx {
 class MathMacroTemplate : public InsetMathNest {
 public:
 	///
-	MathMacroTemplate();
+	MathMacroTemplate(Buffer * buf = 0);
 	///
 	MathMacroTemplate(docstring const & name, int nargs, int optional, 
-	       	MacroType type,
+	       	MacroType type, Buffer * buf = 0,
 		std::vector<MathData> const & optionalValues = std::vector<MathData>(),
 		MathData const & def = MathData(),
 		MathData const & display = MathData());
 	///
-	explicit MathMacroTemplate(const docstring & str);
+	explicit MathMacroTemplate(const docstring & str, Buffer * buf = 0);
 	///
 	bool editable() const { return true; }
 	///

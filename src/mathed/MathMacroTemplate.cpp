@@ -390,22 +390,24 @@ void InsetNameWrapper::draw(PainterInfo & pi, int x, int y) const
 ///////////////////////////////////////////////////////////////////////
 
 
-MathMacroTemplate::MathMacroTemplate()
+MathMacroTemplate::MathMacroTemplate(Buffer * buf)
 	: InsetMathNest(3), numargs_(0), argsInLook_(0), optionals_(0),
 	  type_(MacroTypeNewcommand), lookOutdated_(true)
 {
+	buffer_ = buf;
 	initMath();
 }
 
 
 MathMacroTemplate::MathMacroTemplate(docstring const & name, int numargs,
-	int optionals, MacroType type,
+	int optionals, MacroType type, Buffer * buf,
 	vector<MathData> const & optionalValues,
 	MathData const & def, MathData const & display)
 	: InsetMathNest(optionals + 3), numargs_(numargs), argsInLook_(numargs),
 	  optionals_(optionals), optionalValues_(optionalValues),
 	  type_(type), lookOutdated_(true)
 {
+	buffer_ = buf;
 	initMath();
 
 	if (numargs_ > 9)
@@ -423,14 +425,15 @@ MathMacroTemplate::MathMacroTemplate(docstring const & name, int numargs,
 }
 
 
-MathMacroTemplate::MathMacroTemplate(docstring const & str)
+MathMacroTemplate::MathMacroTemplate(docstring const & str, Buffer * buf)
 	: InsetMathNest(3), numargs_(0), optionals_(0),
 	type_(MacroTypeNewcommand), lookOutdated_(true)
 {
+	buffer_ = buf;
 	initMath();
 
 	MathData ar;
-	mathed_parse_cell(ar, str);
+	mathed_parse_cell(ar, str, Parse::NORMAL, buf);
 	if (ar.size() != 1 || !ar[0]->asMacroTemplate()) {
 		lyxerr << "Cannot read macro from '" << ar << "'" << endl;
 		asArray(from_ascii("invalidmacro"), cell(0));
@@ -1106,7 +1109,7 @@ bool MathMacroTemplate::getStatus(Cursor & /*cur*/, FuncRequest const & cmd,
 void MathMacroTemplate::read(Lexer & lex)
 {
 	MathData ar;
-	mathed_parse_cell(ar, lex.getStream());
+	mathed_parse_cell(ar, lex.getStream(), Parse::NORMAL, &buffer());
 	if (ar.size() != 1 || !ar[0]->asMacroTemplate()) {
 		lyxerr << "Cannot read macro from '" << ar << "'" << endl;
 		lyxerr << "Read: " << to_utf8(asString(ar)) << endl;

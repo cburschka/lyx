@@ -977,7 +977,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 #else
 		if (currentMode() == Inset::TEXT_MODE) {
 			cur.recordUndoSelection();
-			cur.niceInsert(MathAtom(new InsetMathHull("simple")));
+			cur.niceInsert(MathAtom(new InsetMathHull("simple", cur.buffer())));
 			cur.message(_("create new math text environment ($...$)"));
 		} else {
 			handleFont(cur, cmd.argument(), "textrm");
@@ -996,7 +996,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.macroModeClose();
 		docstring const save_selection = grabAndEraseSelection(cur);
 		selClearOrDel(cur);
-		cur.plainInsert(MathAtom(new InsetMathHull(hullRegexp)));
+		cur.plainInsert(MathAtom(new InsetMathHull(hullRegexp, cur.buffer())));
 		cur.posBackward();
 		cur.pushBackward(*cur.nextInset());
 		cur.niceInsert(save_selection);

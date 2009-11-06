@@ -149,7 +149,7 @@ docstring hullName(HullType type)
 
 static InsetLabel * dummy_pointer = 0;
 
-InsetMathHull::InsetMathHull()
+InsetMathHull::InsetMathHull(Buffer * buf)
 	: InsetMathGrid(1, 1), type_(hullNone), nonum_(1, false),
 	  label_(1, dummy_pointer), preview_(new RenderPreview(this))
 {
@@ -157,15 +157,17 @@ InsetMathHull::InsetMathHull()
 	//lyxerr << "sizeof MetricsInfo: " << sizeof(MetricsInfo) << endl;
 	//lyxerr << "sizeof InsetMathChar: " << sizeof(InsetMathChar) << endl;
 	//lyxerr << "sizeof FontInfo: " << sizeof(FontInfo) << endl;
+	buffer_ = buf;
 	initMath();
 	setDefaults();
 }
 
 
-InsetMathHull::InsetMathHull(HullType type)
+InsetMathHull::InsetMathHull(HullType type, Buffer * buf)
 	: InsetMathGrid(getCols(type), 1), type_(type), nonum_(1, false),
 	  label_(1, dummy_pointer), preview_(new RenderPreview(this))
 {
+	buffer_ = buf;
 	initMath();
 	setDefaults();
 }
@@ -197,6 +199,7 @@ InsetMathHull & InsetMathHull::operator=(InsetMathHull const & other)
 	InsetMathGrid::operator=(other);
 	type_  = other.type_;
 	nonum_ = other.nonum_;
+	buffer_ = other.buffer_;
 	for (size_t i = 0; i < label_.size(); ++i)
 		delete label_[i];
 	label_ = other.label_;
@@ -811,7 +814,7 @@ void InsetMathHull::glueall()
 	MathData ar;
 	for (idx_type i = 0; i < nargs(); ++i)
 		ar.append(cell(i));
-	*this = InsetMathHull(hullSimple);
+	*this = InsetMathHull(hullSimple, &buffer());
 	cell(0) = ar;
 	setDefaults();
 }
@@ -1610,7 +1613,7 @@ bool InsetMathHull::searchForward(BufferView * bv, string const & str,
 		laststr = str;
 		current	= ibegin(nucleus());
 		ar.clear();
-		mathed_parse_cell(ar, str);
+		mathed_parse_cell(ar, str, Parse::NORMAL, &buffer());
 	} else {
 		increment(current);
 	}
@@ -1648,7 +1651,7 @@ void InsetMathHull::write(ostream & os) const
 void InsetMathHull::read(Lexer & lex)
 {
 	MathAtom at;
-	mathed_parse_normal(at, lex);
+	mathed_parse_normal(at, lex, Parse::NORMAL, &buffer());
 	operator=(*at->asHullInset());
 }
 
@@ -1656,9 +1659,10 @@ void InsetMathHull::read(Lexer & lex)
 bool InsetMathHull::readQuiet(Lexer & lex)
 {
 	MathAtom at;
-	bool result = mathed_parse_normal(at, lex, Parse::QUIET);
-	operator=(*at->asHullInset());
-	return result;
+	bool success = mathed_parse_normal(at, lex, Parse::QUIET, &buffer());
+	if (success)
+		operator=(*at->asHullInset());
+	return success;
 }
 
 

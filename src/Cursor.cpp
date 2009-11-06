@@ -1440,7 +1440,8 @@ bool Cursor::macroModeClose()
 	InsetMathNest * const in = inset().asInsetMath()->asNestInset();
 	if (in && in->interpretString(*this, s))
 		return true;
-	MathAtom atom = createInsetMath(name);
+	MathAtom atom = buffer()->getMacro(name, *this, false) ?
+		MathAtom(new MathMacro(name)) : createInsetMath(name);
 
 	// try to put argument into macro, if we just inserted a macro
 	bool macroArg = false;

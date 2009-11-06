@@ -531,9 +531,9 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 		} else if (tmptok == "External") {
 			inset.reset(new InsetExternal(const_cast<Buffer &>(buf)));
 		} else if (tmptok == "FormulaMacro") {
-			inset.reset(new MathMacroTemplate);
+			inset.reset(new MathMacroTemplate(&const_cast<Buffer &>(buf)));
 		} else if (tmptok == "Formula") {
-			inset.reset(new InsetMathHull);
+			inset.reset(new InsetMathHull(&const_cast<Buffer &>(buf)));
 		} else if (tmptok == "Graphics") {
 			inset.reset(new InsetGraphics(const_cast<Buffer &>(buf)));
 		} else if (tmptok == "Note") {

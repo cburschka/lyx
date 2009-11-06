@@ -59,7 +59,9 @@ InsetMathArray::InsetMathArray(docstring const & name, docstring const & str)
 		addCol(0);
 	for (row_type row = 0; row < dat.size(); ++row)
 		for (col_type col = 0; col < dat[0].size(); ++col)
-			mathed_parse_cell(cell(index(row, col)), from_utf8(dat[row][col]));
+			mathed_parse_cell(cell(index(row, col)),
+					  from_utf8(dat[row][col]),
+					  Parse::NORMAL, &buffer());
 }
 
 
