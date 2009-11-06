@@ -1,0 +1,191 @@
+#% Do not delete the line below; configure depends on this
+#	\DeclareLaTeXClass[svmono]{book (Springer svmono)}
+#  Author: Koji Yokota <yokota@res.otaru-uc.ac.jp>
+#
+#  Class and style files and templates are found at:
+#       ftp://ftp.springer.de/pub/tex/latex/svmonogl/
+#
+Format 11
+Input svjour.inc
+
+ClassOptions
+	FontSize	 10
+End
+
+# Additional paragraphs
+Style Petit
+	CopyStyle	Standard
+	Category	MainText
+	LatexType	Environment
+	LatexName	petit
+	LeftMargin	MMM
+	RightMargin	MMM
+	Font
+	  Size		Small
+	FontEnd
+End
+
+Style Front_Matter
+	Category	Structure
+	LatexType	Environment
+	LatexName	frontmatter
+	KeepEmpty	1
+	OptionalArgs	0
+	Margin		First_Dynamic
+	NextNoIndent	1
+	ParSkip		0
+	TopSep		2.5
+	BottomSep	0.5
+	ParSep		0
+	Align		Center
+	LabelType	Static
+	LabelBottomSep	0
+	LeftMargin	M
+	LabelString	"--- Front Matter ---"
+
+	Font
+	  Family	Sans
+	  Series	Bold
+	  Size		Largest
+	  Color		Blue
+	EndFont
+End
+
+Style Main_Matter
+	CopyStyle	Front_Matter
+	Category	Structure
+	LatexName	mainmatter
+	LabelString	"--- Main Matter ---"
+End
+
+Style Back_Matter
+	CopyStyle	Front_Matter
+	Category	Structure
+	LatexName	backmatter
+	LabelString	"--- Back Matter ---"
+End
+
+Style Part
+	Category	Section
+	Margin		Dynamic
+	LabelString	"Part \thepart"
+	LabelType	Counter
+	TocLevel	0
+	LabelCounter	part
+	LatexType	Command
+	LatexName	part
+	NeedProtect	1
+	NextNoIndent	1
+	Labelsep	xxx
+	ParSkip		0.4
+	TopSep		4
+	BottomSep	4
+	ParSep		0.8
+	Align		Center
+	Alignpossible	Center
+	Font
+	  Series	Bold
+	  Size		Huge
+	EndFont
+End
+
+Style Part*
+	CopyStyle	Part
+	Category	Unnumbered
+	Margin		Static
+	LatexName	part*
+	LabelType	No_Label
+	LabelCounter	""
+End
+
+Style Chapter
+	Margin		Static
+	Category	Section
+	LabelString	"Chapter \thechapter"
+	LabelStringAppendix	"Appendix \thechapter"
+	LabelType	Counter
+	LabelCounter	chapter
+	TocLevel	0
+	LatexType	Command
+	LatexName	chapter
+	NeedProtect	1
+	NextNoIndent	1
+	ParSkip		0.4
+	TopSep		4
+	BottomSep	0.8
+	ParSep		0.8
+	Align		Left
+	OptionalArgs	1
+	Font
+	  Series	Bold
+	  Size		Huge
+	EndFont
+End
+
+Style Chapter*
+	CopyStyle	Chapter
+	Category	Unnumbered
+	Margin		Static
+	LatexName	chapter*
+	LabelType	No_Label
+	LabelCounter	""
+	OptionalArgs	0
+End
+
+Style Preface
+	CopyStyle	Title
+	Category	Unnumbered
+	LatexName	svmultpreface
+	KeepEmpty	1
+	OptionalArgs	1
+	InTitle		0
+	Margin		Static
+	LeftMargin	"PPrreeffaaccee:xxx"
+	LabelType	Static
+	LabelString	"Preface:"
+	LabelSep	xxx
+	Align		Left
+	Preamble
+	  \newcommand{\svmultpreface}[1]{\ifthenelse{\equal{#1}{}}{\preface}{\preface[#1]}}
+	EndPreamble
+	Requires	ifthen
+End
+
+# Additional math environments
+Style Case
+	CopyStyle	Claim
+	LatexName	case
+	LabelString	"Case #."
+End
+
+Style Problem
+	CopyStyle	Claim
+	LatexName	prob
+	LabelString	"Problem #."
+End
+
+Style Solution
+	CopyStyle	Claim
+	LatexName	sol
+	LabelString	"Solution #."
+	OptionalArgs	1
+End
+
+Style Proof(QED)
+	CopyStyle	Proof
+	LatexName	svmultproof
+	EndLabelType	Box
+	Preamble
+		\newenvironment{svmultproof}{\begin{proof}}{\qed\end{proof}}
+	EndPreamble
+End
+
+Style Proof(smartQED)
+	CopyStyle	Proof
+	LatexName	svmultproof2
+	EndLabelType	Filled_Box
+	Preamble
+	  \newenvironment{svmultproof2}{\begin{proof}}{\smartqed\qed\end{proof}}
+	EndPreamble
+End
+

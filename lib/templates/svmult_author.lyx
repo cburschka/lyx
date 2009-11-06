@@ -1,0 +1,798 @@
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass svmult
+\begin_preamble
+%%%%%%%%%%%%%%%%%%% author.tex %%%%%%%%%%%%%%%%%%%%
+%
+% sample root file for your contribution to a "contributed book"
+%
+% "contributed book"
+%
+% Use this file as a template for your own input.
+%
+%%%%%%%%%%%%%%%%%% Springer-Verlag %%%%%%%%%%%%%%%%%%%%
+
+
+% RECOMMENDED %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% choose options for [] as required from the list
+% in the Reference Guide, Sect. 2.2
+
+%\usepackage{grossdruck}          % switches to 11pt style - output same as
+                                          % with [11pt] \documentclass option
+\usepackage{multicol}              % used for the two-column index
+\usepackage[bottom]{footmisc} % places footnotes at page bottom
+% etc.
+% see the list of further useful packages
+% in the Reference Guide, Sects. 2.3, 3.1-3.3
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_preamble
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\use_geometry false
+\use_amsmath 0
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title*
+Contribution Title
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Fill in a short title in a new paragraph and choose 
+\begin_inset Quotes eld
+\end_inset
+
+Running LaTeX Title
+\begin_inset Quotes erd
+\end_inset
+
+from the style menu (this corresponds LaTeX command 
+\backslash
+titlerunning{Short Title}) for an abbreviated version of your contribution
+ title if the original one is too long
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Name of Author
+\begin_inset Flex Inst
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+and 
+\end_layout
+
+\end_inset
+
+Name of Author
+\begin_inset Flex Inst
+status collapsed
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Fill in a short title in a new paragraph and choose 
+\begin_inset Quotes eld
+\end_inset
+
+Author Running
+\begin_inset Quotes erd
+\end_inset
+
+from the style menu (this corresponds LaTeX command 
+\backslash
+authorrunning{Short Title}) for an abbreviated version of your contribution
+ title if the original one is too long
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+LaTeX command 
+\backslash
+inst{1} corresponds to the first entry in 
+\begin_inset Quotes eld
+\end_inset
+
+Institute
+\begin_inset Quotes erd
+\end_inset
+
+ style and 
+\backslash
+inst{2} corresponds to the second.
+ Authors and institutions in 
+\begin_inset Quotes eld
+\end_inset
+
+Author
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+Institute
+\begin_inset Quotes erd
+\end_inset
+
+ styles, respectively, must be delimited by the 
+\backslash
+and LaTeX command.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Institute
+Name and Address of your Institute 
+\family typewriter
+name@email.address
+\family default
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ Name and Address of your Institute 
+\family typewriter
+name@email.address
+\end_layout
+
+\begin_layout Standard
+Your text goes here.
+ Separate text sections with the standard LaTeX sectioning commands.
+\end_layout
+
+\begin_layout Section
+Section Heading
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:1"
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Always give a unique label
+\end_layout
+
+\begin_layout Plain Layout
+and use 
+\begin_inset Quotes eld
+\end_inset
+
+Insert -> Cross References
+\begin_inset Quotes erd
+\end_inset
+
+ for cross-references
+\end_layout
+
+\begin_layout Plain Layout
+and 
+\begin_inset Quotes eld
+\end_inset
+
+Insert -> Citation
+\begin_inset Quotes erd
+\end_inset
+
+ for bibliographic references
+\end_layout
+
+\begin_layout Plain Layout
+use LaTeX command 
+\backslash
+sectionmark{} to alter or adjust the section heading in the running head
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Your text goes here.
+ Use the LaTeX
+\begin_inset space \space{}
+\end_inset
+
+automatism for your citations 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "monograph"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Subsection Heading
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:2"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Your text goes here.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\vec{a}\times\vec{b}=\vec{c}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Subsubsection Heading
+\end_layout
+
+\begin_layout Standard
+Your text goes here.
+ Use the LaTeX
+\begin_inset space \space{}
+\end_inset
+
+automatism for cross-references as well as for your citations, see Sect.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:1"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Paragraph Heading
+\end_layout
+
+\begin_layout Standard
+Your text goes here.
+\end_layout
+
+\begin_layout Subparagraph
+Subparagraph Heading.
+\end_layout
+
+\begin_layout Standard
+Your text goes here.
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+paragraph
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Use 
+\begin_inset Quotes eld
+\end_inset
+
+Insert -> Index Entry
+\begin_inset Quotes erd
+\end_inset
+
+ menu to code your index words
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+For tables use
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Please write your table caption here
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:1"
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Give a unique label
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+For LaTeX tables use
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features>
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row topspace="default" bottomspace="default">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+first 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+second 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+third 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="default">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+number 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+number 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+number 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row bottomspace="default">
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+number 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+number 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+number 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+For figures use figure float instead.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+For built-in environments use
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+Theorem text
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Footnote
+\end_layout
+
+\end_inset
+
+ goes here.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+or
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+Lemma text goes here.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+BibTeX users please use 
+\begin_inset Quotes eld
+\end_inset
+
+Insert -> List/TOC -> BibTeX Bibliography
+\begin_inset Quotes erd
+\end_inset
+
+ menu
+\end_layout
+
+\begin_layout Plain Layout
+Non-BibTeX users please follow the syntax of "referenc.lyx" for your own
+ citations
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+%%%%%%%%%%%%%%%%%%%%%%%%% reference %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+sample references
+\end_layout
+
+\begin_layout Plain Layout
+"economics"
+\end_layout
+
+\begin_layout Plain Layout
+Use this as a template for your own input.
+\end_layout
+
+\begin_layout Plain Layout
+%%%%%%%%%%%%%%%%%%%%%%%% Springer-Verlag %%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+BibTeX users please use 
+\begin_inset Quotes eld
+\end_inset
+
+Insert -> List/TOC -> BibTeX Bibliography
+\begin_inset Quotes erd
+\end_inset
+
+ menu.
+\end_layout
+
+\begin_layout Plain Layout
+Non-BibTeX users please use 
+\begin_inset Quotes eld
+\end_inset
+
+Bibliography
+\begin_inset Quotes erd
+\end_inset
+
+ style to create references as follows.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "monograph"
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Monographs
+\end_layout
+
+\end_inset
+
+ Mikhailov AS, Calenbuhr V (2002) From cells to societies.
+ Springer, Berlin Heidelberg New York
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "contribution"
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Contributed Works
+\end_layout
+
+\end_inset
+
+ Knolmayer GF (2002) On the economics of mass customization.
+ In: Rautenstrauch C, Seelmann-Eggebert R, Turowski K (eds) Moving into
+ mass customization.
+ Springer, Berlin Heidelberg New York
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "journal"
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Journal
+\end_layout
+
+\end_inset
+
+ Kekre S, Srinivasan K (1990) Broader product line: a necessity to achieve
+ success? Management Science 36:1216--1231
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "thesis"
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Theses
+\end_layout
+
+\end_inset
+
+ Ross DW (1977) Lysosomes and storage diseases.
+ MA Thesis, Columbia University, New York
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset index_print
+LatexCommand printindex
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
