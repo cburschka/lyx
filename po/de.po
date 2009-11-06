@@ -99,7 +99,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-11-06 13:23+0100\n"
-"PO-Revision-Date: 2009-10-28 10:29+0100\n"
+"PO-Revision-Date: 2009-11-06 13:31+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -7785,38 +7785,32 @@ msgid "Subclass"
 msgstr "Unterklasse"
 
 #: lib/layouts/svmono.layout:16 lib/layouts/svmult.layout:80
-#, fuzzy
 msgid "Petit"
-msgstr "Gedichttitel"
+msgstr "Petit"
 
 #: lib/layouts/svmono.layout:28 lib/layouts/svmult.layout:171
-#, fuzzy
 msgid "Front Matter"
 msgstr "Vorspann"
 
 #: lib/layouts/svmono.layout:44 lib/layouts/svmult.layout:187
-#, fuzzy
 msgid "--- Front Matter ---"
-msgstr "Vorspann"
+msgstr "--- Vorspann ---"
 
 #: lib/layouts/svmono.layout:54 lib/layouts/svmult.layout:196
-#, fuzzy
 msgid "Main Matter"
-msgstr "Nachspann"
+msgstr "Hauptteil"
 
 #: lib/layouts/svmono.layout:58 lib/layouts/svmult.layout:200
 msgid "--- Main Matter ---"
-msgstr ""
+msgstr "--- Hauptteil ---"
 
 #: lib/layouts/svmono.layout:61 lib/layouts/svmult.layout:203
-#, fuzzy
 msgid "Back Matter"
 msgstr "Nachspann"
 
 #: lib/layouts/svmono.layout:65 lib/layouts/svmult.layout:207
-#, fuzzy
 msgid "--- Back Matter ---"
-msgstr "Nachspann"
+msgstr "--- Nachspann ---"
 
 #: lib/layouts/svmono.layout:71 lib/layouts/svmult.layout:213
 #: lib/layouts/stdsections.inc:14
@@ -7834,74 +7828,64 @@ msgid "Appendix \\thechapter"
 msgstr "Anhang \\thechapter"
 
 #: lib/layouts/svmono.layout:135 lib/layouts/svmult.layout:118
-#, fuzzy
 msgid "Preface"
-msgstr "Ort"
+msgstr "Vorwort"
 
 #: lib/layouts/svmono.layout:145 lib/layouts/svmult.layout:128
-#, fuzzy
 msgid "Preface:"
-msgstr "Ort:"
+msgstr "Vorwort:"
 
 #: lib/layouts/svmono.layout:174 lib/layouts/svmult.layout:99
-#, fuzzy
 msgid "Proof(QED)"
-msgstr "Beweis"
+msgstr "Beweis (QED)"
 
 #: lib/layouts/svmono.layout:183 lib/layouts/svmult.layout:108
 msgid "Proof(smartQED)"
-msgstr ""
+msgstr "Beweis (smartQED)"
 
 #: lib/layouts/svmult.layout:24
 msgid "Contributor \\Roman{svmultlsti}:"
-msgstr ""
+msgstr "Beiträger \\Roman{svmultlsti}:"
 
 #: lib/layouts/svmult.layout:28
-#, fuzzy
 msgid "Title*"
-msgstr "Titel"
+msgstr "Titel*"
 
 #: lib/layouts/svmult.layout:55
-#, fuzzy
 msgid "Institute and e-mail: "
-msgstr "Institutsfußnotenmarke"
+msgstr "Institut und E-Mail: "
 
 #: lib/layouts/svmult.layout:62
 msgid "MiniTOC"
-msgstr ""
+msgstr "Mini-Inhaltsverzeichnis"
 
 #: lib/layouts/svmult.layout:67
 msgid "TOC depth (provide a number):"
-msgstr ""
+msgstr "Tiefe des Inhaltsverzeichnisses (Zahl angeben):"
 
 #: lib/layouts/svmult.layout:73
-#, fuzzy
 msgid "List of Abbreviations & Symbols"
-msgstr "Literaturverweise"
+msgstr "Liste der Abkürzungen und Symbole"
 
 #: lib/layouts/svmult.layout:120 lib/layouts/svmult.layout:138
 #: lib/layouts/svmult.layout:172 lib/layouts/svmult.layout:198
 #: lib/layouts/svmult.layout:205 lib/layouts/svmult.layout:211
 #: lib/layouts/svmult.layout:236 lib/layouts/svmult.layout:245
 #: lib/layouts/svmult.layout:269
-#, fuzzy
 msgid "For editors"
-msgstr "Mitwirkende"
+msgstr "Für Herausgeber"
 
 #: lib/layouts/svmult.layout:137
-#, fuzzy
 msgid "List of Contributors"
-msgstr "Liste der Zeichnungen"
+msgstr "Liste der Beitragenden"
 
 #: lib/layouts/svmult.layout:277
-#, fuzzy
 msgid "Inst"
-msgstr "&Einfügen"
+msgstr "Inst"
 
 #: lib/layouts/svmult.layout:279
-#, fuzzy
 msgid "Institute #"
-msgstr "Institut"
+msgstr "Institut #"
 
 #: lib/layouts/tufte-book.layout:35
 msgid "Sidenote"
