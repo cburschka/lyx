@@ -149,6 +149,7 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 		this, SLOT(change_adaptor()));
 
 	filename->setValidator(new PathValidator(true, filename));
+	setFocusProxy(filename);
 
 	QDoubleValidator * scaleValidator = 
 		new DoubleAutoValidator(Scale, qt_(autostr));
