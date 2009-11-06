@@ -71,6 +71,7 @@ void GuiNomenclature::paramsToDialog(InsetCommandParams const & /*icp*/)
 	QString description = toqstr(params_["description"]);
 	description.replace("\\\\","\n");
 	descriptionTE->setPlainText(description);
+	descriptionTE->setFocus();
 
 	bc().setValid(isValid());
 }
