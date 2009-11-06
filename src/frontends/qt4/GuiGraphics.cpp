@@ -688,6 +688,8 @@ void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
 
 	// latex section
 	latexoptions->setText(toqstr(igp.special));
+	// cf bug #3852
+	filename->setFocus();
 }
 
 
