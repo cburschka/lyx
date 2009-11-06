@@ -149,7 +149,6 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 		this, SLOT(change_adaptor()));
 
 	filename->setValidator(new PathValidator(true, filename));
-	setFocusProxy(filename);
 
 	QDoubleValidator * scaleValidator = 
 		new DoubleAutoValidator(Scale, qt_(autostr));
@@ -638,6 +637,8 @@ void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
 
 	// latex section
 	latexoptions->setText(toqstr(igp.special));
+	// cf bug #3852
+	filename->setFocus();
 }
 
 
