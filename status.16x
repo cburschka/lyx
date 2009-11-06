@@ -192,6 +192,9 @@ What's new
 
 - Fix a crash when leaving an empty superscript or subscript (bug 6193).
 
+- Fix an infinite loop when selecting multiple displayed equation right
+  after each other with LFUN_SCREEN_UP (bug 6237).
+
 - Fix a number of assertions when displaying error messages (bug 6205). 
 
 - Fix bad allocation exception when displaying long tooltips (bug 6215).
