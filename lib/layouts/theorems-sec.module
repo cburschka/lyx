@@ -1,6 +1,7 @@
-#\DeclareLyXModule{Theorems (By Section)}
+#\DeclareLyXModule{Theorems (Numbered by Section)}
 #DescriptionBegin
-#Numbers theorems and the like by section.
+#Numbers theorems and the like by section (i.e., the counter is reset at
+#each section start).
 #DescriptionEnd
 #Requires: theorems-std | theorems-ams
 #Excludes: theorems-chap

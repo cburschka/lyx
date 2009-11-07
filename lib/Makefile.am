@@ -1112,11 +1112,18 @@ dist_layouts_DATA =\
 	layouts/tabs-within-sections.module \
 	layouts/tarticle.layout \
 	layouts/tbook.layout \
-	layouts/theorems-ams-extended.module \
 	layouts/theorems-ams.inc \
 	layouts/theorems-ams.module \
+	layouts/theorems-ams-bytype.inc \
+	layouts/theorems-ams-bytype.module \
+	layouts/theorems-ams-extended.module \
+	layouts/theorems-ams-extended-bytype.module \
 	layouts/theorems-chap.module \
 	layouts/theorems.inc \
+	layouts/theorems-bytype.inc \
+	layouts/theorems-bytype.module \
+	layouts/theorems-chap-bytype.module \
+	layouts/theorems-sec-bytype.module \
 	layouts/theorems-order.inc \
 	layouts/theorems-proof.inc \
 	layouts/theorems-sec.module \

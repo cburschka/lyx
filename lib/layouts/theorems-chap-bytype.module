@@ -1,0 +1,195 @@
+#\DeclareLyXModule{Theorems (Numbered by Type within Chapters)}
+#DescriptionBegin
+#Defines some theorem environments for use with non-AMS classes. Contrary to the
+#plain Theorem module, the different theorem types provided here each have a separate
+#counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, theorem 3, lemma 2, ...,
+#as opposed to theorem 1, theorem 2, lemma 3, proposition 4, ...). The numbering is reset
+#at each chapter start.
+#DescriptionEnd
+#Requires: theorems-bytype | theorems-ams-bytype
+#Excludes: theorems-std | theorems-ams | theorems-starred | theorems-sec | theorems-sec-bytype
+
+# Author: Paul Rubin <rubin@msu.edu> (hacked from Richard Heck's various modules)
+
+Format 11
+
+# We need separate counters for each theorem-like style.
+Counter theorem
+	Within         chapter
+End
+Counter corollary
+	Within         chapter
+End
+Counter lemma
+	Within         chapter
+End
+Counter proposition
+	Within         chapter
+End
+Counter conjecture
+	Within         chapter
+End
+Counter fact
+	Within         chapter
+End
+Counter definition
+	Within         chapter
+End
+Counter example
+	Within         chapter
+End
+Counter problem
+	Within         chapter
+End
+Counter exercise
+	Within         chapter
+End
+Counter remark
+	Within         chapter
+End
+Counter claim
+	Within         chapter
+End
+
+Style Theorem
+	Preamble
+	  \theoremstyle{plain}
+	  \ifx\thechapter\undefined
+	    \newtheorem{thm}{Theorem}
+	  \else
+	    \newtheorem{thm}{Theorem}[chapter]
+	  \fi
+	EndPreamble
+End
+
+
+Style Corollary
+	Preamble
+	  \theoremstyle{plain}
+	  \ifx\thechapter\undefined
+	    \newtheorem{cor}{Corollary}
+	  \else
+	    \newtheorem{cor}{Corollary}[chapter]
+	  \fi
+	EndPreamble
+End
+
+
+Style Lemma
+	Preamble
+	  \theoremstyle{plain}
+	  \ifx\thechapter\undefined
+	    \newtheorem{lem}{Lemma}
+	  \else
+	    \newtheorem{lem}{Lemma}[chapter]
+	  \fi
+	EndPreamble
+End
+
+
+Style Proposition
+	Preamble
+	  \theoremstyle{plain}
+	  \ifx\thechapter\undefined
+	    \newtheorem{prop}{Proposition}
+	  \else
+	    \newtheorem{prop}{Proposition}[chapter]
+	  \fi
+	EndPreamble
+End
+
+
+Style Conjecture
+	Preamble
+	  \theoremstyle{plain}
+	  \ifx\thechapter\undefined
+	    \newtheorem{conjecture}{Conjecture}
+	  \else
+	    \newtheorem{conjecture}{Conjecture}[chapter]
+	  \fi
+	EndPreamble
+End
+
+
+Style Fact
+	Preamble
+	  \theoremstyle{plain}
+	  \ifx\thechapter\undefined
+	    \newtheorem{fact}{Fact}
+	  \else
+	    \newtheorem{fact}{Fact}[chapter]
+	  \fi
+	EndPreamble
+End
+
+
+Style Definition
+	Preamble
+	  \theoremstyle{definition}
+	  \ifx\thechapter\undefined
+	    \newtheorem{defn}{Definition}
+	  \else
+	    \newtheorem{defn}{Definition}[chapter]
+	  \fi
+	EndPreamble
+End
+
+
+Style Example
+	Preamble
+	  \theoremstyle{definition}
+	  \ifx\thechapter\undefined
+	    \newtheorem{example}{Example}
+	  \else
+	    \newtheorem{example}{Example}[chapter]
+	  \fi
+	EndPreamble
+End
+
+
+Style Problem
+	Preamble
+	  \theoremstyle{definition}
+	  \ifx\thechapter\undefined
+	    \newtheorem{problem}{Problem}
+	  \else
+	    \newtheorem{problem}{Problem}[chapter]
+	  \fi
+	EndPreamble
+End
+
+
+Style Exercise
+	Preamble
+	  \theoremstyle{definition}
+	  \ifx\thechapter\undefined
+	    \newtheorem{xca}{Exercise}
+	  \else
+	    \newtheorem{xca}{Exercise}[chapter]
+	  \fi
+	EndPreamble
+End
+
+
+Style Remark
+	Preamble
+	  \theoremstyle{remark}
+	  \ifx\thechapter\undefined
+	    \newtheorem{rem}{Remark}
+	  \else
+	    \newtheorem{rem}{Remark}[chapter]
+	  \fi
+	EndPreamble
+End
+
+
+Style Claim
+	Preamble
+	  \theoremstyle{remark}
+	  \ifx\thechapter\undefined
+	    \newtheorem{claim}{Claim}
+	  \else
+	    \newtheorem{claim}{Claim}[chapter]
+	  \fi
+	EndPreamble
+End

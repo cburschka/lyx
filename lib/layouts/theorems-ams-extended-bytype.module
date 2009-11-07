@@ -1,17 +1,22 @@
-#\DeclareLyXModule{Theorems (AMS-Extended)}
+#\DeclareLyXModule{Theorems (AMS-Extended, Numbered by Type)}
 #DescriptionBegin
 #Defines some additional theorem environments for use with the
 #AMS theorems packages. Includes Criterion, Algorithm, Axiom,
 #Condition, Note, Notation, Summary, Acknowledgement, Conclusion,
-#Fact, Assumption, and Case, in both numbered and non-numbered forms.
+#Assumption, and Case, in both numbered and non-numbered forms.
+#Contrary to the plain AMS-Extended module, the different theorem 
+#types provided here each have a separate counter (e.g., criterion 1,
+#criterion 2, axiom 1, assumption 1, criterion 3, ...,
+#as opposed to criterion 1, criterion 2, axiom 3, assumption 4, ...).
 #DescriptionEnd
-#Requires: theorems-ams
+#Requires: theorems-ams-bytype
 
 # Original Author : David L. Johnson <dlj0@lehigh.edu>
 # Probably broken by Jean-Marc Lasgouttes <Jean-Marc.Lasgouttes@inria.fr>
 # modified and modularized by Emmanuel GUREGHIAN <gureghia@boston.bertin.fr>
 # Tinkered with Sep. '07 by Paul Rubin <rubin@msu.edu>
 # Modularized Jan 08 by Richard Heck <rgheck@comcast.net>
+# Hacked June '09 by Paul Rubin <rubin@msu.edu> to use separate counters
 
 Format 11
 
@@ -27,18 +32,40 @@ Requires	amsmath
 # - Summary
 # - Acknowledgement
 # - Conclusion
-# - Fact
 # - Assumption
+
+# We need separate counters for each theorem-like style.
+Counter criterion
+End
+Counter algorithm
+End
+Counter axiom
+End
+Counter condition
+End
+Counter note
+End
+Counter notation
+End
+Counter summary
+End
+Counter acknowledgement
+End
+Counter conclusion
+End
+Counter assumption
+End
+
 
 Style Criterion
 	CopyStyle             Theorem
-	DependsOn	            Theorem
 	LatexName             criterion
-	LabelString           "Criterion \thetheorem."
+	LabelString           "Criterion \thecriterion."
 	Preamble
 	  \theoremstyle{plain}
-	  \newtheorem{criterion}[thm]{Criterion}
+	  \newtheorem{criterion}{Criterion}
 	EndPreamble
+	LabelCounter          criterion
 End
 
 Style Criterion*
@@ -54,13 +81,13 @@ End
 
 Style Algorithm
 	CopyStyle             Theorem
-	DependsOn	           Theorem
 	LatexName             algorithm
-	LabelString           "Algorithm \thetheorem."
+	LabelString           "Algorithm \thealgorithm."
 	Preamble
 	  \theoremstyle{plain}
-	  \newtheorem{algorithm}[thm]{Algorithm}
+	  \newtheorem{algorithm}{Algorithm}
 	EndPreamble
+	LabelCounter          algorithm
 End
 
 
@@ -77,13 +104,13 @@ End
 
 Style Axiom
 	CopyStyle             Theorem
-	DependsOn	            Theorem
 	LatexName             ax
-	LabelString           "Axiom \thetheorem."
+	LabelString           "Axiom \theaxiom."
 	Preamble
 	  \theoremstyle{plain}
-	  \newtheorem{ax}[thm]{Axiom}
+	  \newtheorem{ax}{Axiom}
 	EndPreamble
+	LabelCounter          axiom
 End
 
 
@@ -101,11 +128,12 @@ End
 Style Condition
 	CopyStyle             Definition
 	LatexName             condition
-	LabelString           "Condition \thetheorem."
+	LabelString           "Condition \thecondition."
 	Preamble
 	  \theoremstyle{definition}
-	  \newtheorem{condition}[thm]{Condition}
+	  \newtheorem{condition}{Condition}
 	EndPreamble
+	LabelCounter          condition
 End
 
 
@@ -123,11 +151,12 @@ End
 Style Note
 	CopyStyle             Remark
 	LatexName             note
-	LabelString           "Note \thetheorem."
+	LabelString           "Note \thenote."
 	Preamble
 	  \theoremstyle{remark}
-	  \newtheorem{note}[thm]{Note}
+	  \newtheorem{note}{Note}
 	EndPreamble
+	LabelCounter          note
 End
 
 
@@ -145,11 +174,12 @@ End
 Style Notation
 	CopyStyle             Remark
 	LatexName             notation
-	LabelString           "Notation \thetheorem."
+	LabelString           "Notation \thenotation."
 	Preamble
 	  \theoremstyle{remark}
-	  \newtheorem{notation}[thm]{Notation}
+	  \newtheorem{notation}{Notation}
 	EndPreamble
+	LabelCounter          notation
 End
 
 
@@ -167,11 +197,12 @@ End
 Style Summary
 	CopyStyle             Remark
 	LatexName             summary
-	LabelString           "Summary \thetheorem."
+	LabelString           "Summary \thesummary."
 	Preamble
 	  \theoremstyle{remark}
-	  \newtheorem{summary}[thm]{Summary}
+	  \newtheorem{summary}{Summary}
 	EndPreamble
+	LabelCounter          summary
 End
 
 
@@ -189,11 +220,12 @@ End
 Style Acknowledgement
 	CopyStyle             Remark
 	LatexName             acknowledgement
-	LabelString           "Acknowledgement \thetheorem."
+	LabelString           "Acknowledgement \theacknowledgement."
 	Preamble
 	  \theoremstyle{remark}
-	  \newtheorem{acknowledgement}[thm]{Acknowledgement}
+	  \newtheorem{acknowledgement}{Acknowledgement}
 	EndPreamble
+	LabelCounter          acknowledgement
 End
 
 
@@ -211,11 +243,12 @@ End
 Style Conclusion
 	CopyStyle             Remark
 	LatexName             conclusion
-	LabelString           "Conclusion \thetheorem."
+	LabelString           "Conclusion \theconclusion."
 	Preamble
 	  \theoremstyle{remark}
-	  \newtheorem{conclusion}[thm]{Conclusion}
+	  \newtheorem{conclusion}{Conclusion}
 	EndPreamble
+	LabelCounter          conclusion
 End
 
 
@@ -232,13 +265,13 @@ End
 
 Style Assumption
 	CopyStyle             Theorem
-	DependsOn	            Theorem
 	LatexName             assumption
-	LabelString           "Assumption \thetheorem."
+	LabelString           "Assumption \theassumption."
 	Preamble
 	  \theoremstyle{plain}
-	  \newtheorem{assumption}[thm]{Assumption}
+	  \newtheorem{assumption}{Assumption}
 	EndPreamble
+	LabelCounter          assumption
 End
 
 
