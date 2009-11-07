@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-11-06 13:23+0100\n"
+"POT-Creation-Date: 2009-11-07 11:48+0100\n"
 "PO-Revision-Date: 2009-11-02 02:01+0100\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -3993,7 +3993,7 @@ msgstr "TheoremTemplate"
 #: lib/layouts/ijmpd.layout:211 lib/layouts/llncs.layout:371
 #: lib/layouts/siamltex.layout:150 lib/layouts/svjour.inc:394
 #: lib/layouts/theorems-order.inc:76 lib/layouts/theorems-proof.inc:13
-#: lib/layouts/theorems-std.module:20
+#: lib/layouts/theorems-bytype.module:46 lib/layouts/theorems-std.module:20
 msgid "Proof"
 msgstr "Proof"
 
@@ -4006,13 +4006,20 @@ msgstr "Proof:"
 #: lib/layouts/heb-article.layout:18 lib/layouts/ijmpc.layout:190
 #: lib/layouts/ijmpd.layout:193 lib/layouts/llncs.layout:412
 #: lib/layouts/siamltex.layout:62 lib/layouts/siamltex.layout:112
-#: lib/layouts/svjour.inc:436 lib/layouts/theorems-ams.inc:24
+#: lib/layouts/svjour.inc:436 lib/layouts/theorems-ams-bytype.inc:51
+#: lib/layouts/theorems-ams-bytype.inc:52
+#: lib/layouts/theorems-ams-bytype.inc:239 lib/layouts/theorems-ams.inc:24
 #: lib/layouts/theorems-ams.inc:25 lib/layouts/theorems-ams.inc:208
-#: lib/layouts/theorems-order.inc:7 lib/layouts/theorems-proof.inc:14
+#: lib/layouts/theorems-bytype.inc:26 lib/layouts/theorems-bytype.inc:27
+#: lib/layouts/theorems-bytype.inc:214 lib/layouts/theorems-order.inc:7
+#: lib/layouts/theorems-proof.inc:14
 #: lib/layouts/theorems-starred-equivalents.inc:6
 #: lib/layouts/theorems-starred.inc:24 lib/layouts/theorems.inc:24
 #: lib/layouts/theorems.inc:25 lib/layouts/theorems.inc:208
-#: lib/layouts/theorems-chap.module:18 lib/layouts/theorems-sec.module:17
+#: lib/layouts/theorems-chap-bytype.module:54
+#: lib/layouts/theorems-chap.module:19
+#: lib/layouts/theorems-sec-bytype.module:54
+#: lib/layouts/theorems-sec.module:18
 msgid "Theorem"
 msgstr "Theorem"
 
@@ -4024,9 +4031,12 @@ msgstr "Theorem #::"
 #: lib/layouts/foils.layout:243 lib/layouts/heb-article.layout:45
 #: lib/layouts/ijmpc.layout:238 lib/layouts/ijmpd.layout:243
 #: lib/layouts/llncs.layout:351 lib/layouts/siamltex.layout:82
-#: lib/layouts/svjour.inc:373 lib/layouts/theorems-ams.inc:71
+#: lib/layouts/svjour.inc:373 lib/layouts/theorems-ams-bytype.inc:98
+#: lib/layouts/theorems-ams.inc:71 lib/layouts/theorems-bytype.inc:73
 #: lib/layouts/theorems-order.inc:19
 #: lib/layouts/theorems-starred-equivalents.inc:20 lib/layouts/theorems.inc:71
+#: lib/layouts/theorems-chap-bytype.module:78
+#: lib/layouts/theorems-sec-bytype.module:70
 msgid "Lemma"
 msgstr "Lemma"
 
@@ -4039,8 +4049,11 @@ msgstr "Lemma #:"
 #: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:229
 #: lib/layouts/ijmpd.layout:230 lib/layouts/llncs.layout:316
 #: lib/layouts/siamltex.layout:72 lib/layouts/svjour.inc:334
-#: lib/layouts/theorems-ams.inc:59 lib/layouts/theorems-order.inc:13
+#: lib/layouts/theorems-ams-bytype.inc:86 lib/layouts/theorems-ams.inc:59
+#: lib/layouts/theorems-bytype.inc:61 lib/layouts/theorems-order.inc:13
 #: lib/layouts/theorems-starred-equivalents.inc:13 lib/layouts/theorems.inc:59
+#: lib/layouts/theorems-chap-bytype.module:66
+#: lib/layouts/theorems-sec-bytype.module:62
 msgid "Corollary"
 msgstr "Corollary"
 
@@ -4052,8 +4065,11 @@ msgstr "Corollary #:"
 #: lib/layouts/foils.layout:257 lib/layouts/ijmpc.layout:247
 #: lib/layouts/ijmpd.layout:253 lib/layouts/llncs.layout:385
 #: lib/layouts/siamltex.layout:92 lib/layouts/svjour.inc:408
-#: lib/layouts/theorems-ams.inc:83 lib/layouts/theorems-order.inc:25
+#: lib/layouts/theorems-ams-bytype.inc:110 lib/layouts/theorems-ams.inc:83
+#: lib/layouts/theorems-bytype.inc:85 lib/layouts/theorems-order.inc:25
 #: lib/layouts/theorems-starred-equivalents.inc:27 lib/layouts/theorems.inc:83
+#: lib/layouts/theorems-chap-bytype.module:90
+#: lib/layouts/theorems-sec-bytype.module:78
 msgid "Proposition"
 msgstr "Proposition"
 
@@ -4064,9 +4080,12 @@ msgstr "Proposition #:"
 #: lib/layouts/IEEEtran.layout:113 lib/layouts/elsart.layout:361
 #: lib/layouts/ijmpc.layout:283 lib/layouts/ijmpd.layout:293
 #: lib/layouts/llncs.layout:309 lib/layouts/siamltex.layout:102
-#: lib/layouts/svjour.inc:327 lib/layouts/theorems-ams.inc:95
+#: lib/layouts/svjour.inc:327 lib/layouts/theorems-ams-bytype.inc:122
+#: lib/layouts/theorems-ams.inc:95 lib/layouts/theorems-bytype.inc:97
 #: lib/layouts/theorems-order.inc:31
 #: lib/layouts/theorems-starred-equivalents.inc:34 lib/layouts/theorems.inc:95
+#: lib/layouts/theorems-chap-bytype.module:102
+#: lib/layouts/theorems-sec-bytype.module:86
 msgid "Conjecture"
 msgstr "Conjecture"
 
@@ -4075,6 +4094,7 @@ msgid "Conjecture #:"
 msgstr "Conjecture #:"
 
 #: lib/layouts/IEEEtran.layout:123 lib/layouts/elsart.layout:333
+#: lib/layouts/theorems-ams-extended-bytype.module:60
 #: lib/layouts/theorems-ams-extended.module:33
 msgid "Criterion"
 msgstr "Criterion"
@@ -4084,7 +4104,10 @@ msgid "Criterion #:"
 msgstr "Criterion #:"
 
 #: lib/layouts/IEEEtran.layout:133 lib/layouts/beamer.layout:1045
-#: lib/layouts/theorems-ams.inc:107 lib/layouts/theorems.inc:107
+#: lib/layouts/theorems-ams-bytype.inc:134 lib/layouts/theorems-ams.inc:107
+#: lib/layouts/theorems-bytype.inc:109 lib/layouts/theorems.inc:107
+#: lib/layouts/theorems-chap-bytype.module:114
+#: lib/layouts/theorems-sec-bytype.module:94
 msgid "Fact"
 msgstr "Fact"
 
@@ -4092,7 +4115,9 @@ msgstr "Fact"
 msgid "Fact #:"
 msgstr "Fact #:"
 
-#: lib/layouts/IEEEtran.layout:143 lib/layouts/theorems-ams-extended.module:78
+#: lib/layouts/IEEEtran.layout:143
+#: lib/layouts/theorems-ams-extended-bytype.module:105
+#: lib/layouts/theorems-ams-extended.module:78
 msgid "Axiom"
 msgstr "Axiom"
 
@@ -4105,9 +4130,11 @@ msgstr "Axiom #:"
 #: lib/layouts/heb-article.layout:75 lib/layouts/ijmpc.layout:131
 #: lib/layouts/ijmpd.layout:128 lib/layouts/llncs.layout:330
 #: lib/layouts/siamltex.layout:121 lib/layouts/svjour.inc:348
-#: lib/layouts/theorems-ams.inc:119 lib/layouts/theorems-order.inc:37
+#: lib/layouts/theorems-ams-bytype.inc:146 lib/layouts/theorems-ams.inc:119
+#: lib/layouts/theorems-bytype.inc:121 lib/layouts/theorems-order.inc:37
 #: lib/layouts/theorems-starred-equivalents.inc:41
-#: lib/layouts/theorems.inc:119
+#: lib/layouts/theorems.inc:119 lib/layouts/theorems-chap-bytype.module:126
+#: lib/layouts/theorems-sec-bytype.module:102
 msgid "Definition"
 msgstr "Definition"
 
@@ -4118,10 +4145,13 @@ msgstr "Definition #:"
 #: lib/layouts/IEEEtran.layout:163 lib/layouts/beamer.layout:1027
 #: lib/layouts/elsart.layout:368 lib/layouts/ijmpc.layout:163
 #: lib/layouts/ijmpd.layout:160 lib/layouts/llncs.layout:337
-#: lib/layouts/svjour.inc:355 lib/layouts/theorems-ams.inc:138
+#: lib/layouts/svjour.inc:355 lib/layouts/theorems-ams-bytype.inc:165
+#: lib/layouts/theorems-ams.inc:138 lib/layouts/theorems-bytype.inc:140
 #: lib/layouts/theorems-order.inc:43
 #: lib/layouts/theorems-starred-equivalents.inc:48
-#: lib/layouts/theorems.inc:138 src/frontends/qt4/GuiDocument.cpp:820
+#: lib/layouts/theorems.inc:138 lib/layouts/theorems-chap-bytype.module:138
+#: lib/layouts/theorems-sec-bytype.module:110
+#: src/frontends/qt4/GuiDocument.cpp:820
 msgid "Example"
 msgstr "Pøíklad"
 
@@ -4130,6 +4160,7 @@ msgid "Example #:"
 msgstr "Example #:"
 
 #: lib/layouts/IEEEtran.layout:173
+#: lib/layouts/theorems-ams-extended-bytype.module:128
 #: lib/layouts/theorems-ams-extended.module:101
 msgid "Condition"
 msgstr "Condition"
@@ -4140,10 +4171,12 @@ msgstr "Condition #:"
 
 #: lib/layouts/IEEEtran.layout:183 lib/layouts/elsart.layout:375
 #: lib/layouts/llncs.layout:364 lib/layouts/svmono.layout:161
-#: lib/layouts/svjour.inc:387 lib/layouts/theorems-ams.inc:150
+#: lib/layouts/svjour.inc:387 lib/layouts/theorems-ams-bytype.inc:178
+#: lib/layouts/theorems-ams.inc:150 lib/layouts/theorems-bytype.inc:153
 #: lib/layouts/theorems-order.inc:49
 #: lib/layouts/theorems-starred-equivalents.inc:55
-#: lib/layouts/theorems.inc:150
+#: lib/layouts/theorems.inc:150 lib/layouts/theorems-chap-bytype.module:150
+#: lib/layouts/theorems-sec-bytype.module:118
 msgid "Problem"
 msgstr "Problem"
 
@@ -4152,10 +4185,12 @@ msgid "Problem #:"
 msgstr "Problem #:"
 
 #: lib/layouts/IEEEtran.layout:193 lib/layouts/llncs.layout:344
-#: lib/layouts/svjour.inc:362 lib/layouts/theorems-ams.inc:162
+#: lib/layouts/svjour.inc:362 lib/layouts/theorems-ams-bytype.inc:191
+#: lib/layouts/theorems-ams.inc:162 lib/layouts/theorems-bytype.inc:166
 #: lib/layouts/theorems-order.inc:55
 #: lib/layouts/theorems-starred-equivalents.inc:62
-#: lib/layouts/theorems.inc:162
+#: lib/layouts/theorems.inc:162 lib/layouts/theorems-chap-bytype.module:162
+#: lib/layouts/theorems-sec-bytype.module:126
 msgid "Exercise"
 msgstr "Exercise"
 
@@ -4166,9 +4201,11 @@ msgstr "Exercise #:"
 #: lib/layouts/IEEEtran.layout:203 lib/layouts/elsart.layout:382
 #: lib/layouts/ijmpc.layout:172 lib/layouts/ijmpd.layout:170
 #: lib/layouts/llncs.layout:398 lib/layouts/svjour.inc:422
-#: lib/layouts/theorems-ams.inc:174 lib/layouts/theorems-order.inc:61
+#: lib/layouts/theorems-ams-bytype.inc:204 lib/layouts/theorems-ams.inc:174
+#: lib/layouts/theorems-bytype.inc:179 lib/layouts/theorems-order.inc:61
 #: lib/layouts/theorems-starred-equivalents.inc:69
-#: lib/layouts/theorems.inc:174
+#: lib/layouts/theorems.inc:174 lib/layouts/theorems-chap-bytype.module:174
+#: lib/layouts/theorems-sec-bytype.module:134
 msgid "Remark"
 msgstr "Remark"
 
@@ -4179,10 +4216,12 @@ msgstr "Remark #:"
 #: lib/layouts/IEEEtran.layout:213 lib/layouts/elsart.layout:396
 #: lib/layouts/heb-article.layout:65 lib/layouts/ijmpc.layout:274
 #: lib/layouts/ijmpd.layout:283 lib/layouts/llncs.layout:302
-#: lib/layouts/svjour.inc:305 lib/layouts/theorems-ams.inc:194
+#: lib/layouts/svjour.inc:305 lib/layouts/theorems-ams-bytype.inc:224
+#: lib/layouts/theorems-ams.inc:194 lib/layouts/theorems-bytype.inc:199
 #: lib/layouts/theorems-order.inc:67
 #: lib/layouts/theorems-starred-equivalents.inc:76
-#: lib/layouts/theorems.inc:194
+#: lib/layouts/theorems.inc:194 lib/layouts/theorems-chap-bytype.module:186
+#: lib/layouts/theorems-sec-bytype.module:142
 msgid "Claim"
 msgstr "Claim"
 
@@ -4194,6 +4233,7 @@ msgstr "Claim #:"
 #: lib/layouts/elsart.layout:389 lib/layouts/iopart.layout:93
 #: lib/layouts/llncs.layout:357 lib/layouts/powerdot.layout:198
 #: lib/layouts/slides.layout:167 lib/layouts/svjour.inc:380
+#: lib/layouts/theorems-ams-extended-bytype.module:151
 #: lib/layouts/theorems-ams-extended.module:123
 msgid "Note"
 msgstr "Note"
@@ -4203,7 +4243,9 @@ msgid "Note #:"
 msgstr "Note #:"
 
 #: lib/layouts/IEEEtran.layout:233 lib/layouts/ijmpc.layout:181
-#: lib/layouts/ijmpd.layout:180 lib/layouts/theorems-ams-extended.module:145
+#: lib/layouts/ijmpd.layout:180
+#: lib/layouts/theorems-ams-extended-bytype.module:174
+#: lib/layouts/theorems-ams-extended.module:145
 msgid "Notation"
 msgstr "Notation"
 
@@ -4213,7 +4255,8 @@ msgstr "Notace #:"
 
 #: lib/layouts/IEEEtran.layout:243 lib/layouts/elsart.layout:411
 #: lib/layouts/llncs.layout:281 lib/layouts/svmono.layout:155
-#: lib/layouts/svmult.layout:93 lib/layouts/theorems-ams.inc:207
+#: lib/layouts/svmult.layout:93 lib/layouts/theorems-ams-bytype.inc:238
+#: lib/layouts/theorems-ams.inc:207 lib/layouts/theorems-bytype.inc:213
 #: lib/layouts/theorems-order.inc:73 lib/layouts/theorems.inc:207
 msgid "Case"
 msgstr "Case"
@@ -4548,7 +4591,9 @@ msgstr "Datum"
 #: lib/layouts/aa.layout:88 lib/layouts/aa.layout:198
 #: lib/layouts/aapaper.layout:100 lib/layouts/egs.layout:527
 #: lib/layouts/elsart.layout:421 lib/layouts/aapaper.inc:80
-#: lib/layouts/svjour.inc:275 lib/layouts/theorems-ams-extended.module:189
+#: lib/layouts/svjour.inc:275
+#: lib/layouts/theorems-ams-extended-bytype.module:220
+#: lib/layouts/theorems-ams-extended.module:189
 msgid "Acknowledgement"
 msgstr "Acknowledgement"
 
@@ -5944,6 +5989,7 @@ msgid "Abstract."
 msgstr "Abstract."
 
 #: lib/layouts/egs.layout:541 lib/layouts/svjour.inc:278
+#: lib/layouts/theorems-ams-extended-bytype.module:235
 #: lib/layouts/theorems-ams-extended.module:203
 msgid "Acknowledgement."
 msgstr "Acknowledgement."
@@ -6008,6 +6054,7 @@ msgstr "Criterion \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:340 lib/layouts/powerdot.layout:398
 #: lib/layouts/siamltex.layout:111 lib/layouts/stdfloats.inc:34
+#: lib/layouts/theorems-ams-extended-bytype.module:82
 #: lib/layouts/theorems-ams-extended.module:55
 msgid "Algorithm"
 msgstr "Algoritmus"
@@ -6044,7 +6091,9 @@ msgstr "Note \\arabic{theorem}"
 msgid "Claim \\arabic{theorem}"
 msgstr "Claim \\arabic{theorem}"
 
-#: lib/layouts/elsart.layout:403 lib/layouts/theorems-ams-extended.module:167
+#: lib/layouts/elsart.layout:403
+#: lib/layouts/theorems-ams-extended-bytype.module:197
+#: lib/layouts/theorems-ams-extended.module:167
 msgid "Summary"
 msgstr "Summary"
 
@@ -6878,6 +6927,7 @@ msgid "Classification Codes"
 msgstr "Classification Codes"
 
 #: lib/layouts/ijmpc.layout:140 lib/layouts/ijmpd.layout:137
+#: lib/layouts/theorems-ams-bytype.inc:149 lib/layouts/theorems-bytype.inc:124
 msgid "Definition \\thedefinition."
 msgstr "Definition \\thedefinition."
 
@@ -6890,31 +6940,38 @@ msgid "Step \\thestep."
 msgstr "Step \\thestep."
 
 #: lib/layouts/ijmpc.layout:167 lib/layouts/ijmpd.layout:164
+#: lib/layouts/theorems-ams-bytype.inc:168 lib/layouts/theorems-bytype.inc:143
 msgid "Example \\theexample."
 msgstr "Example \\theexample."
 
 #: lib/layouts/ijmpc.layout:176 lib/layouts/ijmpd.layout:174
+#: lib/layouts/theorems-ams-bytype.inc:207 lib/layouts/theorems-bytype.inc:182
 msgid "Remark \\theremark."
 msgstr "Remark \\theremark."
 
 #: lib/layouts/ijmpc.layout:185 lib/layouts/ijmpd.layout:184
+#: lib/layouts/theorems-ams-extended-bytype.module:177
 msgid "Notation \\thenotation."
 msgstr "Notation \\thenotation."
 
 #: lib/layouts/ijmpc.layout:200 lib/layouts/ijmpd.layout:203
-#: lib/layouts/theorems-ams.inc:42 lib/layouts/theorems.inc:42
+#: lib/layouts/theorems-ams-bytype.inc:69 lib/layouts/theorems-ams.inc:42
+#: lib/layouts/theorems-bytype.inc:44 lib/layouts/theorems.inc:42
 msgid "Theorem \\thetheorem."
 msgstr "Theorem \\thetheorem."
 
 #: lib/layouts/ijmpc.layout:233 lib/layouts/ijmpd.layout:234
+#: lib/layouts/theorems-ams-bytype.inc:89 lib/layouts/theorems-bytype.inc:64
 msgid "Corollary \\thecorollary."
 msgstr "Corollary \\thecorollary."
 
 #: lib/layouts/ijmpc.layout:242 lib/layouts/ijmpd.layout:247
+#: lib/layouts/theorems-ams-bytype.inc:101 lib/layouts/theorems-bytype.inc:76
 msgid "Lemma \\thelemma."
 msgstr "Lemma \\thelemma."
 
 #: lib/layouts/ijmpc.layout:251 lib/layouts/ijmpd.layout:257
+#: lib/layouts/theorems-ams-bytype.inc:113 lib/layouts/theorems-bytype.inc:88
 msgid "Proposition \\theproposition."
 msgstr "Proposition \\theproposition."
 
@@ -6936,10 +6993,12 @@ msgid "Question \\thequestion."
 msgstr "Question \\thequestion."
 
 #: lib/layouts/ijmpc.layout:278 lib/layouts/ijmpd.layout:287
+#: lib/layouts/theorems-ams-bytype.inc:227 lib/layouts/theorems-bytype.inc:202
 msgid "Claim \\theclaim."
 msgstr "Claim \\theclaim."
 
 #: lib/layouts/ijmpc.layout:287 lib/layouts/ijmpd.layout:297
+#: lib/layouts/theorems-ams-bytype.inc:125 lib/layouts/theorems-bytype.inc:100
 msgid "Conjecture \\theconjecture."
 msgstr "Conjecture \\theconjecture."
 
@@ -7094,7 +7153,8 @@ msgid "TOC Author:"
 msgstr "TOC Author:"
 
 #: lib/layouts/llncs.layout:295 lib/layouts/svmono.layout:158
-#: lib/layouts/svmult.layout:96 lib/layouts/theorems-ams.inc:223
+#: lib/layouts/svmult.layout:96 lib/layouts/theorems-ams-bytype.inc:254
+#: lib/layouts/theorems-ams.inc:223 lib/layouts/theorems-bytype.inc:219
 #: lib/layouts/theorems.inc:213
 msgid "Case #."
 msgstr "Case #."
@@ -7542,7 +7602,9 @@ msgstr "[Progress Contents]"
 msgid "Conjecture*"
 msgstr "Conjecture*"
 
-#: lib/layouts/siamltex.layout:117 lib/layouts/theorems-ams-extended.module:67
+#: lib/layouts/siamltex.layout:117
+#: lib/layouts/theorems-ams-extended-bytype.module:94
+#: lib/layouts/theorems-ams-extended.module:67
 msgid "Algorithm*"
 msgstr "Algoritm*"
 
@@ -8652,6 +8714,21 @@ msgstr "Offprints"
 msgid "Offprints:"
 msgstr "Offprints:"
 
+#: lib/layouts/theorems-ams-bytype.inc:137 lib/layouts/theorems-bytype.inc:112
+#, fuzzy
+msgid "Fact \\thefact."
+msgstr "Fact \\thetheorem."
+
+#: lib/layouts/theorems-ams-bytype.inc:181 lib/layouts/theorems-bytype.inc:156
+#, fuzzy
+msgid "Problem \\theproblem."
+msgstr "Problem \\thetheorem."
+
+#: lib/layouts/theorems-ams-bytype.inc:194 lib/layouts/theorems-bytype.inc:169
+#, fuzzy
+msgid "Exercise \\theexercise."
+msgstr "Exercise \\thetheorem."
+
 #: lib/layouts/theorems-ams.inc:63 lib/layouts/theorems.inc:63
 msgid "Corollary \\thetheorem."
 msgstr "Corollary \\thetheorem."
@@ -9022,16 +9099,200 @@ msgstr ""
 "Zaèít èíslování pro ka¾dou sekci nanovo a jako prefix pou¾ít èíslo sekce, "
 "napø. 'Table 2.1'"
 
+#: lib/layouts/theorems-ams-bytype.module:2
+#, fuzzy
+msgid "Theorems (AMS, Numbered by Type)"
+msgstr "Teorémy (roz¹íøení AMS)"
+
+#: lib/layouts/theorems-ams-bytype.module:11
+msgid ""
+"Defines theorem environments and the proof environment using the extended "
+"AMS machinery. Both numbered and unnumbered types are provided. Contrary to "
+"the plain AMS Theorem module, the different theorem types provided here each "
+"have a separate counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, "
+"theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, "
+"proposition 4, ...). The numbering's scope is the whole document. For "
+"chapter- and section-wide numbering, use one of the 'within "
+"Sections'/'within Chapters' modules, respectively."
+msgstr ""
+
+#: lib/layouts/theorems-ams-extended-bytype.module:2
+#, fuzzy
+msgid "Theorems (AMS-Extended, Numbered by Type)"
+msgstr "Teorémy (roz¹íøení AMS)"
+
+#: lib/layouts/theorems-ams-extended-bytype.module:12
+#, fuzzy
+msgid ""
+"Defines some additional theorem environments for use with the AMS theorems "
+"packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
+"Summary, Acknowledgement, Conclusion, Assumption, and Case, in both numbered "
+"and non-numbered forms. Contrary to the plain AMS-Extended module, the "
+"different theorem types provided here each have a separate counter (e.g., "
+"criterion 1, criterion 2, axiom 1, assumption 1, criterion 3, ..., as "
+"opposed to criterion 1, criterion 2, axiom 3, assumption 4, ...)."
+msgstr ""
+"Definuje nìkterá pøídavná matematická prostøedí pro pou¾ití s balíèky AMS. "
+"Zahrnuje Criterion, Algorithm, Axiom, Condition, Note, Notation, Summary, "
+"Acknowledgement, Conclusion, Fact, Assumption, and Case v obou formách "
+"(èíslované/neèísované)."
+
+#: lib/layouts/theorems-ams-extended-bytype.module:63
+#, fuzzy
+msgid "Criterion \\thecriterion."
+msgstr "Criterion \\arabic{criterion}."
+
+#: lib/layouts/theorems-ams-extended-bytype.module:71
+#: lib/layouts/theorems-ams-extended.module:44
+msgid "Criterion*"
+msgstr "Criterion*"
+
+#: lib/layouts/theorems-ams-extended-bytype.module:74
+#: lib/layouts/theorems-ams-extended.module:47
+msgid "Criterion."
+msgstr "Criterion."
+
+#: lib/layouts/theorems-ams-extended-bytype.module:85
+#, fuzzy
+msgid "Algorithm \\thealgorithm."
+msgstr "Algorithm \\arabic{algorithm}."
+
+#: lib/layouts/theorems-ams-extended-bytype.module:97
+#: lib/layouts/theorems-ams-extended.module:70
+msgid "Algorithm."
+msgstr "Algorithm."
+
+#: lib/layouts/theorems-ams-extended-bytype.module:108
+#, fuzzy
+msgid "Axiom \\theaxiom."
+msgstr "Axiom \\thetheorem."
+
+#: lib/layouts/theorems-ams-extended-bytype.module:117
+#: lib/layouts/theorems-ams-extended.module:90
+msgid "Axiom*"
+msgstr "Axiom*"
+
+#: lib/layouts/theorems-ams-extended-bytype.module:120
+#: lib/layouts/theorems-ams-extended.module:93
+msgid "Axiom."
+msgstr "Axiom."
+
+#: lib/layouts/theorems-ams-extended-bytype.module:131
+#, fuzzy
+msgid "Condition \\thecondition."
+msgstr "Condition \\arabic{condition}."
+
+#: lib/layouts/theorems-ams-extended-bytype.module:140
+#: lib/layouts/theorems-ams-extended.module:112
+msgid "Condition*"
+msgstr "Condition*"
+
+#: lib/layouts/theorems-ams-extended-bytype.module:143
+#: lib/layouts/theorems-ams-extended.module:115
+msgid "Condition."
+msgstr "Condition."
+
+#: lib/layouts/theorems-ams-extended-bytype.module:154
+#, fuzzy
+msgid "Note \\thenote."
+msgstr "Note \\thetheorem."
+
+#: lib/layouts/theorems-ams-extended-bytype.module:163
+#: lib/layouts/theorems-ams-extended.module:134
+msgid "Note*"
+msgstr "Note*"
+
+#: lib/layouts/theorems-ams-extended-bytype.module:166
+#: lib/layouts/theorems-ams-extended.module:137
+msgid "Note."
+msgstr "Note."
+
+#: lib/layouts/theorems-ams-extended-bytype.module:186
+#: lib/layouts/theorems-ams-extended.module:156
+msgid "Notation*"
+msgstr "Notation*"
+
+#: lib/layouts/theorems-ams-extended-bytype.module:189
+#: lib/layouts/theorems-ams-extended.module:159
+msgid "Notation."
+msgstr "Notation."
+
+#: lib/layouts/theorems-ams-extended-bytype.module:200
+#, fuzzy
+msgid "Summary \\thesummary."
+msgstr "Summary \\arabic{summary}."
+
+#: lib/layouts/theorems-ams-extended-bytype.module:209
+#: lib/layouts/theorems-ams-extended.module:178
+msgid "Summary*"
+msgstr "Summary*"
+
+#: lib/layouts/theorems-ams-extended-bytype.module:212
+#: lib/layouts/theorems-ams-extended.module:181
+msgid "Summary."
+msgstr "Summary."
+
+#: lib/layouts/theorems-ams-extended-bytype.module:223
+#, fuzzy
+msgid "Acknowledgement \\theacknowledgement."
+msgstr "Acknowledgement \\arabic{acknowledgement}."
+
+#: lib/layouts/theorems-ams-extended-bytype.module:232
+#: lib/layouts/theorems-ams-extended.module:200
+msgid "Acknowledgement*"
+msgstr "Acknowledgement*"
+
+#: lib/layouts/theorems-ams-extended-bytype.module:243
+#: lib/layouts/theorems-ams-extended.module:211
+msgid "Conclusion"
+msgstr "Conclusion"
+
+#: lib/layouts/theorems-ams-extended-bytype.module:246
+#, fuzzy
+msgid "Conclusion \\theconclusion."
+msgstr "Conclusion \\arabic{conclusion}."
+
+#: lib/layouts/theorems-ams-extended-bytype.module:255
+#: lib/layouts/theorems-ams-extended.module:222
+msgid "Conclusion*"
+msgstr "Conclusion*"
+
+#: lib/layouts/theorems-ams-extended-bytype.module:258
+#: lib/layouts/theorems-ams-extended.module:225
+msgid "Conclusion."
+msgstr "Conclusion."
+
+#: lib/layouts/theorems-ams-extended-bytype.module:266
+#: lib/layouts/theorems-ams-extended.module:233
+msgid "Assumption"
+msgstr "Assumption"
+
+#: lib/layouts/theorems-ams-extended-bytype.module:269
+#, fuzzy
+msgid "Assumption \\theassumption."
+msgstr "Assumption \\arabic{assumption}."
+
+#: lib/layouts/theorems-ams-extended-bytype.module:278
+#: lib/layouts/theorems-ams-extended.module:245
+msgid "Assumption*"
+msgstr "Assumption*"
+
+#: lib/layouts/theorems-ams-extended-bytype.module:281
+#: lib/layouts/theorems-ams-extended.module:248
+msgid "Assumption."
+msgstr "Assumption."
+
 #: lib/layouts/theorems-ams-extended.module:2
 msgid "Theorems (AMS-Extended)"
 msgstr "Teorémy (roz¹íøení AMS)"
 
 #: lib/layouts/theorems-ams-extended.module:8
+#, fuzzy
 msgid ""
 "Defines some additional theorem environments for use with the AMS theorems "
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
 "Summary, Acknowledgement, Conclusion, Fact, Assumption, and Case, in both "
-"starred and non-starred forms."
+"numbered and non-numbered forms."
 msgstr ""
 "Definuje nìkterá pøídavná matematická prostøedí pro pou¾ití s balíèky AMS. "
 "Zahrnuje Criterion, Algorithm, Axiom, Condition, Note, Notation, Summary, "
@@ -9042,160 +9303,135 @@ msgstr ""
 msgid "Criterion \\thetheorem."
 msgstr "Criterion \\thetheorem."
 
-#: lib/layouts/theorems-ams-extended.module:44
-msgid "Criterion*"
-msgstr "Criterion*"
-
-#: lib/layouts/theorems-ams-extended.module:47
-msgid "Criterion."
-msgstr "Criterion."
-
 #: lib/layouts/theorems-ams-extended.module:59
 msgid "Algorithm \\thetheorem."
 msgstr "Algorithm \\thetheorem."
-
-#: lib/layouts/theorems-ams-extended.module:70
-msgid "Algorithm."
-msgstr "Algorithm."
 
 #: lib/layouts/theorems-ams-extended.module:82
 msgid "Axiom \\thetheorem."
 msgstr "Axiom \\thetheorem."
 
-#: lib/layouts/theorems-ams-extended.module:90
-msgid "Axiom*"
-msgstr "Axiom*"
-
-#: lib/layouts/theorems-ams-extended.module:93
-msgid "Axiom."
-msgstr "Axiom."
-
 #: lib/layouts/theorems-ams-extended.module:104
 msgid "Condition \\thetheorem."
 msgstr "Condition \\thetheorem."
-
-#: lib/layouts/theorems-ams-extended.module:112
-msgid "Condition*"
-msgstr "Condition*"
-
-#: lib/layouts/theorems-ams-extended.module:115
-msgid "Condition."
-msgstr "Condition."
 
 #: lib/layouts/theorems-ams-extended.module:126
 msgid "Note \\thetheorem."
 msgstr "Note \\thetheorem."
 
-#: lib/layouts/theorems-ams-extended.module:134
-msgid "Note*"
-msgstr "Note*"
-
-#: lib/layouts/theorems-ams-extended.module:137
-msgid "Note."
-msgstr "Note."
-
 #: lib/layouts/theorems-ams-extended.module:148
 msgid "Notation \\thetheorem."
 msgstr "Notation \\thetheorem."
-
-#: lib/layouts/theorems-ams-extended.module:156
-msgid "Notation*"
-msgstr "Notation*"
-
-#: lib/layouts/theorems-ams-extended.module:159
-msgid "Notation."
-msgstr "Notation."
 
 #: lib/layouts/theorems-ams-extended.module:170
 msgid "Summary \\thetheorem."
 msgstr "Summary \\thetheorem."
 
-#: lib/layouts/theorems-ams-extended.module:178
-msgid "Summary*"
-msgstr "Summary*"
-
-#: lib/layouts/theorems-ams-extended.module:181
-msgid "Summary."
-msgstr "Summary."
-
 #: lib/layouts/theorems-ams-extended.module:192
 msgid "Acknowledgement \\thetheorem."
 msgstr "Acknowledgement \\thetheorem."
-
-#: lib/layouts/theorems-ams-extended.module:200
-msgid "Acknowledgement*"
-msgstr "Acknowledgement*"
-
-#: lib/layouts/theorems-ams-extended.module:211
-msgid "Conclusion"
-msgstr "Conclusion"
 
 #: lib/layouts/theorems-ams-extended.module:214
 msgid "Conclusion \\thetheorem."
 msgstr "Conclusion \\thetheorem."
 
-#: lib/layouts/theorems-ams-extended.module:222
-msgid "Conclusion*"
-msgstr "Conclusion*"
-
-#: lib/layouts/theorems-ams-extended.module:225
-msgid "Conclusion."
-msgstr "Conclusion."
-
-#: lib/layouts/theorems-ams-extended.module:233
-msgid "Assumption"
-msgstr "Assumption"
-
 #: lib/layouts/theorems-ams-extended.module:237
 msgid "Assumption \\thetheorem."
 msgstr "Assumption \\thetheorem."
-
-#: lib/layouts/theorems-ams-extended.module:245
-msgid "Assumption*"
-msgstr "Assumption*"
-
-#: lib/layouts/theorems-ams-extended.module:248
-msgid "Assumption."
-msgstr "Assumption."
 
 #: lib/layouts/theorems-ams.module:2
 msgid "Theorems (AMS)"
 msgstr "Theorems (AMS)"
 
 #: lib/layouts/theorems-ams.module:8
+#, fuzzy
 msgid ""
 "Defines theorem environments and the proof environment using the extended "
 "AMS machinery. Both numbered and unnumbered types are provided. By default, "
 "the theorems are numbered consecutively throughout the document. This can be "
-"changed by loading one of the Theorems (By ...) modules."
+"changed by loading one of the 'Theorems (Numbered by ...)' modules."
 msgstr ""
 "Definuje prostøedí mat. vìt a dùkazù za pou¾ití ro¹íøení AMS. K dispozici "
 "jsou oba èíslované a neoèíslované typy. Implicitnì jsou vìty èíslovány "
 "postupnì bez ohledu na strukturu dokumentu. To lze zmìnit volbou dal¹ích "
 "teorém. modulù."
 
-#: lib/layouts/theorems-chap.module:2
-msgid "Theorems (By Chapter)"
+#: lib/layouts/theorems-bytype.module:2
+#, fuzzy
+msgid "Theorems (Numbered by Type)"
 msgstr "Teorémy (dle kapitol)"
 
-#: lib/layouts/theorems-chap.module:6
+#: lib/layouts/theorems-bytype.module:10
 msgid ""
-"Numbers theorems and the like by chapter. Use this module only with layouts "
-"that provide a chapter environment."
+"Defines some theorem environments for use with non-AMS classes. Contrary to "
+"the plain Theorem module, the different theorem types provided here each "
+"have a separate counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, "
+"theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, "
+"proposition 4, ...). The numbering's scope is the whole document. For "
+"chapter- and section-wide numbering, use one of the 'within "
+"Sections'/'within Chapters' modules, respectively."
+msgstr ""
+
+#: lib/layouts/theorems-chap-bytype.module:2
+#, fuzzy
+msgid "Theorems (Numbered by Type within Chapters)"
+msgstr "Teorémy (dle kapitol)"
+
+#: lib/layouts/theorems-chap-bytype.module:9
+msgid ""
+"Defines some theorem environments for use with non-AMS classes. Contrary to "
+"the plain Theorem module, the different theorem types provided here each "
+"have a separate counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, "
+"theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, "
+"proposition 4, ...). The numbering is reset at each chapter start."
+msgstr ""
+
+#: lib/layouts/theorems-chap.module:2
+#, fuzzy
+msgid "Theorems (Numbered by Chapter)"
+msgstr "Teorémy (dle kapitol)"
+
+#: lib/layouts/theorems-chap.module:7
+#, fuzzy
+msgid ""
+"Numbers theorems and the like by chapter (i.e., the counter is reset at each "
+"chapter start). Use this module only with layouts that provide a chapter "
+"environment."
 msgstr ""
 "Oèísluje vìty apod. dle kapitoly. Pou¾ijte tento modul pouze s rozvr¾ením, "
 "je¾ podporuje prostøedí Vìty."
 
-#: lib/layouts/theorems-sec.module:2
-msgid "Theorems (By Section)"
+#: lib/layouts/theorems-sec-bytype.module:2
+#, fuzzy
+msgid "Theorems (Numbered by Type within Sections)"
 msgstr "Teorémy (dle sekcí)"
 
-#: lib/layouts/theorems-sec.module:5
-msgid "Numbers theorems and the like by section."
-msgstr "Oèísluje vìty apod. podle sekce."
+#: lib/layouts/theorems-sec-bytype.module:9
+msgid ""
+"Defines some theorem environments for use with non-AMS classes. Contrary to "
+"the plain Theorem module, the different theorem types provided here each "
+"have a separate counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, "
+"theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, "
+"proposition 4, ...). The numbering is reset at each section start."
+msgstr ""
+
+#: lib/layouts/theorems-sec.module:2
+#, fuzzy
+msgid "Theorems (Numbered by Section)"
+msgstr "Teorémy (dle sekcí)"
+
+#: lib/layouts/theorems-sec.module:6
+#, fuzzy
+msgid ""
+"Numbers theorems and the like by section (i.e., the counter is reset at each "
+"section start)."
+msgstr ""
+"Oèísluje vìty apod. dle kapitoly. Pou¾ijte tento modul pouze s rozvr¾ením, "
+"je¾ podporuje prostøedí Vìty."
 
 #: lib/layouts/theorems-starred.module:2
-msgid "Theorems (Starred)"
+#, fuzzy
+msgid "Theorems (Unnumbered)"
 msgstr "Teorémy (*)"
 
 #: lib/layouts/theorems-starred.module:6
@@ -9207,10 +9443,11 @@ msgstr ""
 "roz¹íøení AMS."
 
 #: lib/layouts/theorems-std.module:7
+#, fuzzy
 msgid ""
 "Defines some theorem environments for use with non-AMS classes. By default, "
 "the theorems are numbered consecutively throughout the document. This can be "
-"changed by loading one of the Theorems (Ordered By ...) modules."
+"changed by loading one of the 'Theorems (Numbered by ...)' modules."
 msgstr ""
 "Definuje nìkterá prostøedí mat. vìt pro pou¾ití v tøídách neodvozených od "
 "AMS.Implicitnì jsou vìty èíslovány postupnì bez ohledu na strukturu "
@@ -17643,7 +17880,7 @@ msgstr "Bibliografie BibTeX-u"
 
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
 #: src/frontends/qt4/GuiDocument.cpp:1308
-#: src/frontends/qt4/GuiExternal.cpp:672 src/frontends/qt4/GuiGraphics.cpp:847
+#: src/frontends/qt4/GuiExternal.cpp:672 src/frontends/qt4/GuiGraphics.cpp:849
 #: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1319
 #: src/frontends/qt4/GuiView.cpp:1377 src/frontends/qt4/GuiView.cpp:1524
 #: src/frontends/qt4/GuiView.cpp:1652 src/frontends/qt4/GuiView.cpp:1736
@@ -18438,11 +18675,11 @@ msgstr "Skupina je ji¾ definována!"
 msgid "A graphics group with the name '%1$s' already exists."
 msgstr "Skupina obrázkù se jménem '%1$s' ji¾ existuje."
 
-#: src/frontends/qt4/GuiGraphics.cpp:834
+#: src/frontends/qt4/GuiGraphics.cpp:836
 msgid "Select graphics file"
 msgstr "Vybrat soubor s obrázkem"
 
-#: src/frontends/qt4/GuiGraphics.cpp:846
+#: src/frontends/qt4/GuiGraphics.cpp:848
 msgid "Clipart|#C#c"
 msgstr "Klipart|#K#k"
 
@@ -21005,6 +21242,9 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámý u¾ivatel"
 
+#~ msgid "Numbers theorems and the like by section."
+#~ msgstr "Oèísluje vìty apod. podle sekce."
+
 #~ msgid "Latex"
 #~ msgstr "Latex"
 
@@ -21734,38 +21974,17 @@ msgstr "Neznámý u¾ivatel"
 #~ msgid "Theorem \\arabic{thm}."
 #~ msgstr "Theorem \\arabic{thm}."
 
-#~ msgid "Criterion \\arabic{criterion}."
-#~ msgstr "Criterion \\arabic{criterion}."
-
-#~ msgid "Algorithm \\arabic{algorithm}."
-#~ msgstr "Algorithm \\arabic{algorithm}."
-
 #~ msgid "Fact \\arabic{fact}."
 #~ msgstr "Fact \\arabic{fact}."
 
 #~ msgid "Axiom \\arabic{axiom}."
 #~ msgstr "Axiom \\arabic{axiom}."
 
-#~ msgid "Condition \\arabic{condition}."
-#~ msgstr "Condition \\arabic{condition}."
-
 #~ msgid "Problem \\arabic{problem}."
 #~ msgstr "Problem \\arabic{problem}."
 
 #~ msgid "Exercise \\arabic{exercise}."
 #~ msgstr "Exercise \\arabic{exercise}."
-
-#~ msgid "Summary \\arabic{summary}."
-#~ msgstr "Summary \\arabic{summary}."
-
-#~ msgid "Acknowledgement \\arabic{acknowledgement}."
-#~ msgstr "Acknowledgement \\arabic{acknowledgement}."
-
-#~ msgid "Conclusion \\arabic{conclusion}."
-#~ msgstr "Conclusion \\arabic{conclusion}."
-
-#~ msgid "Assumption \\arabic{assumption}."
-#~ msgstr "Assumption \\arabic{assumption}."
 
 #~ msgid "Corollary @Section@.\\arabic{theorem}."
 #~ msgstr "Corollary @Section@.\\arabic{theorem}."
