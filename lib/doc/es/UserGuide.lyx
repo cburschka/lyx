@@ -1407,7 +1407,7 @@ reference "sec:IG"
 .
  Con un clic puedes saltar a la parte del documento correspondiente.
  En la parte superior hay un cuadro desplegable en el que puedes escoger
- entre varias listas e índices de objetos, como notas al pie.
+ entre varias listas e índices de recuadros insertados, como notas al pie.
  Algunos de éstos, como los índices de tablas, de figuras y de algoritmos,
  se pueden añadir al documento, véase
 \begin_inset space ~
@@ -9802,12 +9802,12 @@ Proteger
 \end_layout
 
 \begin_layout Subsubsection
-Espacio reservado
+Espacio fantasma
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
-Espacios ! Reservado
+Espacios ! fantasma
 \end_layout
 
 \end_inset
@@ -28638,9 +28638,7 @@ Pantalla
 \family sans
 Tamaño de la vista preliminar
 \family default
- 
-\lang english
-is the multiplication factor for the size.
+ es el factor de multiplicación para el tamaño.
 \end_layout
 
 \begin_layout Standard
@@ -35605,7 +35603,7 @@ Pantalla completa
 \end_layout
 
 \begin_layout Standard
-Esta opción del menú o pulsando F11 se muestra la ventana principal de LyX
+Esta opción del menú o pulsando F11 muestra la ventana principal de LyX
  en modo pantalla completa, ocultando la barra de menú y las barras de herramien
 tas.
  Para volver a vista normal pulsa F11 o haz clic derecha en el ratón y desmarca
@@ -41195,7 +41193,7 @@ preliminar
 
 
 \family sans
-instantánea
+inmediata
 \family default
  sirve para ver directamente en la pantalla de LyX objetos gráficos como
  imágenes o ecuaciones, como se explica en la sección
@@ -41213,25 +41211,23 @@ reference "sec:Vista-preliminar-inmediata"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The option 
+La opción  
 \family sans
-Mark
+Marcar
 \begin_inset space ~
 \end_inset
 
-end
+final
 \begin_inset space ~
 \end_inset
 
-of
+de
 \begin_inset space ~
 \end_inset
 
-paragraphs
+párrafos
 \family default
- displays a pilcrow at the end of every paragraph.
+ muestra un calderón (¶) al final de cada párrafo.
 \end_layout
 
 \begin_layout Section
