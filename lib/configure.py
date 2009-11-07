@@ -247,6 +247,16 @@ def checkLatex(dtl_tools):
     return ''
 
 
+def checkModule(module):
+    ''' Check for a Python module, return the status '''
+    msg = 'checking for "' + module + ' module"... '
+    try:
+      __import__(module)
+      return True
+    except ImportError:
+      return False
+
+
 def checkFormatEntries(dtl_tools):  
     ''' Check all formats (\Format entries) '''
     checkViewer('a Tgif viewer and editor', ['tgif'],
@@ -388,10 +398,17 @@ def checkConverterEntries():
     #
     checkProg('an MS Word -> LaTeX converter', ['wvCleanLatex $$i $$o'],
         rc_entry = [ r'\converter word       latex      "%%"	""' ])
-    #
-    path, elyxer = checkProg('a LyX -> HTML converter', ['elyxer.py', 'elyxer'],
-      rc_entry = [ r'\converter lyx      html       "python -tt $$s/scripts/elyxer.py --directory $$r $$i $$o"	""' ])
-    if elyxer.find('elyxer') >= 0:
+    # eLyXer: search as a Python module and then as an executable (elyxer.py, elyxer)
+    elyxerfound = checkModule('elyxer')
+    if elyxerfound:
+      addToRC(r'''\converter lyx      html       "python -m elyxer --directory $$r $$i $$o"	""''')
+    else:
+      path, elyxer = checkProg('a LyX -> HTML converter', ['elyxer.py', 'elyxer'],
+        rc_entry = [ r'\converter lyx      html       "python -tt elyxer.py --directory $$r $$i $$o"	""' ])
+      if elyxer.find('elyxer') >= 0:
+        elyxerfound = True
+
+    if elyxerfound:
       addToRC(r'''\copier    html       "python -tt $$s/scripts/ext_copy.py -e html,png,jpg,jpeg,css $$i $$o"''')
     else:
       # On SuSE the scripts have a .sh suffix, and on debian they are in /usr/share/tex4ht/
