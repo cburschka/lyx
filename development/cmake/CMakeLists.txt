@@ -15,6 +15,8 @@ set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 
 project(lyx)
 
+option(lyxinstall "Build install projects/rules" ON)
+
 # where to look first for cmake modules, before ${CMAKE_ROOT}/Modules/
 # is checked
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/modules")
@@ -423,14 +425,18 @@ if(NOT use_external_libintl)
 endif()
 add_subdirectory(src)
 
-add_subdirectory(man)
-if(NOT ${_PERL_EXECUTABLE} MATCHES "-NOTFOUND")
-    add_subdirectory(doc)
+if(lyxinstall)
+	add_subdirectory(man)
+	if(NOT ${_PERL_EXECUTABLE} MATCHES "-NOTFOUND")
+		add_subdirectory(doc)
+	endif()
 endif()
 add_subdirectory(lyx2lyx)
 add_subdirectory(scripts)
 
-include(../Install)
+if(lyxinstall)
+	include(../Install)
+endif()
 
 SET(CPACK_PACKAGE_VERSION_MAJOR "${LYX_MAJOR_VERSION}")
 SET(CPACK_PACKAGE_VERSION_MINOR "${LYX_MINOR_VERSION}")
@@ -475,7 +481,10 @@ endif()
 # so we do not provide infofiles for
 # CPACK_RESOURCE_FILE_README and CPACK_RESOURCE_FILE_WELCOME
 
-include(CPack)
+if(lyxinstall)
+	include(CPack)
+endif()
+
 #Now it is possible to create some packages
 # cd <BuildDir>
 # make package
