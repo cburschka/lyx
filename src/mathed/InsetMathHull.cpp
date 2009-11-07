@@ -12,36 +12,23 @@
 
 #include "InsetMathHull.h"
 
-#include "InsetMathArray.h"
 #include "InsetMathChar.h"
 #include "InsetMathColor.h"
-#include "InsetMathDelim.h"
-#include "InsetMathRef.h"
-#include "InsetMathSpace.h"
-#include "MathData.h"
 #include "MathExtern.h"
 #include "MathFactory.h"
-#include "MathParser.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 
 #include "Buffer.h"
-#include "buffer_funcs.h"
 #include "BufferParams.h"
 #include "BufferView.h"
-#include "Cursor.h"
 #include "CutAndPaste.h"
-#include "DispatchResult.h"
 #include "Encoding.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
-#include "Language.h"
 #include "LyXRC.h"
-#include "OutputParams.h"
-#include "ParIterator.h"
 #include "sgml.h"
-#include "Text.h"
 #include "TextPainter.h"
 #include "TocBackend.h"
 
@@ -50,7 +37,6 @@
 #include "insets/RenderPreview.h"
 
 #include "graphics/PreviewImage.h"
-#include "graphics/PreviewLoader.h"
 
 #include "frontends/Painter.h"
 
