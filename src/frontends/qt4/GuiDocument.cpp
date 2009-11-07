@@ -1869,7 +1869,7 @@ void GuiDocument::applyView()
 
 	QString const lang = langModule->languageCO->itemData(
 		langModule->languageCO->currentIndex()).toString();
-	bp_.language = languages.getLanguage(fromqstr(lang));
+	bp_.language = lyx::languages.getLanguage(fromqstr(lang));
 
 	// numbering
 	if (bp_.documentClass().hasTocLevels()) {

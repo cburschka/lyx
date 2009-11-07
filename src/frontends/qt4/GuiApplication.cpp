@@ -1492,8 +1492,8 @@ QAbstractItemModel * GuiApplication::languageModel()
 	QStandardItemModel * lang_model = new QStandardItemModel(this);
 	lang_model->insertColumns(0, 1);
 	int current_row;
-	Languages::const_iterator it = languages.begin();
-	Languages::const_iterator end = languages.end();
+	Languages::const_iterator it = lyx::languages.begin();
+	Languages::const_iterator end = lyx::languages.end();
 	for (; it != end; ++it) {
 		current_row = lang_model->rowCount();
 		lang_model->insertRows(current_row, 1);

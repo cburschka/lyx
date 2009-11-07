@@ -23,6 +23,14 @@
 #include <QPushButton>
 #include <QAbstractListModel>
 
+#ifdef KeyPress
+#undef KeyPress
+#endif
+
+#ifdef ControlModifier
+#undef ControlModifier
+#endif
+
 
 namespace lyx {
 namespace frontend {
