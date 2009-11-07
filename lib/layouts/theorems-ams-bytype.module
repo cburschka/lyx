@@ -1,0 +1,53 @@
+#\DeclareLyXModule{Theorems (AMS, Numbered by Type)}
+#DescriptionBegin
+#Defines theorem environments and the proof environment using the extended 
+#AMS machinery. Both numbered and unnumbered types are provided. Contrary to the
+#plain AMS Theorem module, the different theorem types provided here each have 
+#a separate counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, theorem 3,
+#lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, proposition 4, ...).
+#The numbering's scope is the whole document. For chapter- and section-wide numbering,
+#use one of the 'within Sections'/'within Chapters' modules, respectively.
+#DescriptionEnd
+#Excludes: theorems-std | theorems-starred | theorems-ams | theorems-bytype
+
+# Original Author : David L. Johnson <dlj0@lehigh.edu>
+# Probably broken by Jean-Marc Lasgouttes <Jean-Marc.Lasgouttes@inria.fr>
+# modified and modularized by Emmanuel GUREGHIAN <gureghia@boston.bertin.fr>
+# Tinkered with Sep. '07 by Paul Rubin <rubin@msu.edu>
+# Modularized Jan 08 by Richard Heck <rgheck@comcast.net>
+# Hacked June '09 by Paul Rubin <rubin@msu.edu> to use separate counters
+
+Format 11
+
+Requires	amsmath,amsthm
+
+# We need separate counters for each theorem-like style.
+Counter theorem
+End
+Counter corollary
+End
+Counter lemma
+End
+Counter proposition
+End
+Counter conjecture
+End
+Counter fact
+End
+Counter definition
+End
+Counter example
+End
+Counter problem
+End
+Counter exercise
+End
+Counter remark
+End
+Counter claim
+End
+
+Input theorems-order.inc
+Input theorems-ams-bytype.inc
+Input theorems-starred.inc
+Input theorems-proof.inc

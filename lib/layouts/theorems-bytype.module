@@ -1,0 +1,62 @@
+#\DeclareLyXModule{Theorems (Numbered by Type)}
+#DescriptionBegin
+#Defines some theorem environments for use with non-AMS classes. Contrary to the
+#plain Theorem module, the different theorem types provided here each have a separate
+#counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, theorem 3, lemma 2, ...,
+#as opposed to theorem 1, theorem 2, lemma 3, proposition 4, ...).
+#The numbering's scope is the whole document. For chapter- and section-wide numbering,
+#use one of the 'within Sections'/'within Chapters' modules, respectively.
+#DescriptionEnd
+#Excludes: theorems-std | theorems-ams | theorems-starred | theorems-ams-bytype
+
+# Author: Paul Rubin <rubin@msu.edu> (hacked from Richard Heck's theorems-std.module)
+
+Format 11
+
+# We need separate counters for each theorem-like style.
+Counter theorem
+End
+Counter corollary
+End
+Counter lemma
+End
+Counter proposition
+End
+Counter conjecture
+End
+Counter fact
+End
+Counter definition
+End
+Counter example
+End
+Counter problem
+End
+Counter exercise
+End
+Counter remark
+End
+Counter claim
+End
+
+Input theorems-bytype.inc
+Input theorems-proof.inc
+
+#This is just a hacked version of the AMS proof environment
+Style Proof
+  Preamble
+    \ifx\proof\undefined\
+      \newenvironment{proof}[1][\proofname]{\par
+        \normalfont\topsep6\p@\@plus6\p@\relax
+        \trivlist
+        \itemindent\parindent
+        \item[\hskip\labelsep
+              \scshape
+          #1]\ignorespaces
+      }{%
+        \endtrivlist\@endpefalse
+      }
+      \providecommand{\proofname}{Proof}
+    \fi
+  EndPreamble
+End

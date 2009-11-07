@@ -2794,6 +2794,8 @@ lib_layouts_inc_files = Split('''
     svjour.inc
     theorems.inc
     theorems-ams.inc
+    theorems-ams-bytype.inc
+    theorems-bytype.inc
     theorems-order.inc
     theorems-proof.inc
     theorems-proof-std.inc
@@ -2816,9 +2818,14 @@ lib_layouts_module_files = Split('''
     noweb.module
     sweave.module
     tabs-within-sections.module
+    theorems-ams-bytype.module
     theorems-ams-extended.module
+    theorems-ams-extended-bytype.module
     theorems-ams.module
+    theorems-bytype.module
+    theorems-chap-bytype.module
     theorems-chap.module
+    theorems-sec-bytype.module
     theorems-sec.module
     theorems-starred.module
     theorems-std.module
