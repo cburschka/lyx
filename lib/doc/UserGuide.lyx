@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 370
+\lyxformat 371
 \begin_document
 \begin_header
 \textclass scrbook
@@ -92,7 +92,8 @@
 \papersize default
 \use_geometry false
 \use_amsmath 1
-\use_esint 0
+\use_esint 1
+\use_mhchem 1
 \cite_engine basic
 \use_bibtopic false
 \use_indices false
@@ -40902,7 +40903,7 @@ of
 
 paragraphs
 \family default
- displays a pilcrow at the end of every paragraph.
+ displays a pilcrow (¶) at the end of every paragraph.
 \end_layout
 
 \begin_layout Section
