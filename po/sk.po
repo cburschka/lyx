@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-11-07 11:48+0100\n"
-"PO-Revision-Date: 2009-11-06 20:42+0100\n"
+"PO-Revision-Date: 2009-11-07 16:24+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slowakisch <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -8711,19 +8711,16 @@ msgid "Offprints:"
 msgstr "Odtlačky:"
 
 #: lib/layouts/theorems-ams-bytype.inc:137 lib/layouts/theorems-bytype.inc:112
-#, fuzzy
 msgid "Fact \\thefact."
-msgstr "Fakt \\thetheorem."
+msgstr "Fakt \\thefact."
 
 #: lib/layouts/theorems-ams-bytype.inc:181 lib/layouts/theorems-bytype.inc:156
-#, fuzzy
 msgid "Problem \\theproblem."
-msgstr "Problém \\thetheorem"
+msgstr "Problém \\theproblem."
 
 #: lib/layouts/theorems-ams-bytype.inc:194 lib/layouts/theorems-bytype.inc:169
-#, fuzzy
 msgid "Exercise \\theexercise."
-msgstr "Úloha \\thetheorem"
+msgstr "Úloha \\theexercise."
 
 #: lib/layouts/theorems-ams.inc:63 lib/layouts/theorems.inc:63
 msgid "Corollary \\thetheorem."
@@ -9096,9 +9093,8 @@ msgstr ""
 "pri 'Tabuľka 2.1'."
 
 #: lib/layouts/theorems-ams-bytype.module:2
-#, fuzzy
 msgid "Theorems (AMS, Numbered by Type)"
-msgstr "Teorémy (rozšírenie AMS)"
+msgstr "Teorémy (AMS, číslované podľa typu)"
 
 #: lib/layouts/theorems-ams-bytype.module:11
 msgid ""
@@ -9111,14 +9107,20 @@ msgid ""
 "chapter- and section-wide numbering, use one of the 'within "
 "Sections'/'within Chapters' modules, respectively."
 msgstr ""
+"Definuje prostredie mat. viet a dôkazov používajúce rozšírenie AMS. K "
+"dispozícii sú číslované a nečíslované typy. Opačne k jednoduchému modulu "
+"rozšírenia AMS, "
+"má tu každý poskytnutý typ teorémov svoje vlastné číslovanie (čiže "
+"veta 1, veta 2, lemma 1, predpoklad 1, veta 3, lemma 2, ..., oproti "
+"veta 1, veta 2, lemma 3, predpoklad 4...). Číslovanie je postupne bez ohľadu "
+"na štruktúru dokumentu. "
+"To sa dá zmeniť voľbou jedného z 'Teorémy (Číslované podľa ...)' modulu."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:2
-#, fuzzy
 msgid "Theorems (AMS-Extended, Numbered by Type)"
-msgstr "Teorémy (rozšírenie AMS)"
+msgstr "Teorémy (rozšírenie AMS, číslované podľa typu)"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:12
-#, fuzzy
 msgid ""
 "Defines some additional theorem environments for use with the AMS theorems "
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
@@ -9128,15 +9130,18 @@ msgid ""
 "criterion 1, criterion 2, axiom 1, assumption 1, criterion 3, ..., as "
 "opposed to criterion 1, criterion 2, axiom 3, assumption 4, ...)."
 msgstr ""
-"Definuje niektoré prídavné matematické prostredie pre použitie s balíkmi "
+"Definuje niektoré prídavné prostredie teorémov pre použitie s balíkmi "
 "AMS. Zahrňuje Criterion, Algorithm, Axiom, Condition, Note, Notation, "
-"Summary, Acknowledgement, Conclusion, Fact, Assumption, and Case v oboch "
-"formách (číslované/nečíslované)."
+"Summary, Acknowledgement, Conclusion, Assumption, a Case v oboch "
+"formách (číslované/nečíslované). Opačne k jednoduchému modulu rozšírenia "
+"AMS, "
+"má tu každý poskytnutý typ teorémov svoje vlastné číslovanie (čiže "
+"kritérium 1, kritérium 2, axióma 1, predpoklad 1, kritérium 3, ..., oproti "
+"kritérium 1, kritérium 2, axióma 3, predpoklad 4, ...)."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:63
-#, fuzzy
 msgid "Criterion \\thecriterion."
-msgstr "Kritérium \\thetheorem."
+msgstr "Kritérium \\thecriterion."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:71
 #: lib/layouts/theorems-ams-extended.module:44
@@ -9149,9 +9154,8 @@ msgid "Criterion."
 msgstr "Kritérium."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:85
-#, fuzzy
 msgid "Algorithm \\thealgorithm."
-msgstr "Algoritmus \\thetheorem."
+msgstr "Algoritmus \\thealgorithm."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:97
 #: lib/layouts/theorems-ams-extended.module:70
@@ -9159,9 +9163,8 @@ msgid "Algorithm."
 msgstr "Algoritmus."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:108
-#, fuzzy
 msgid "Axiom \\theaxiom."
-msgstr "Axiom \\thetheorem."
+msgstr "Axióma \\theaxiom."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:117
 #: lib/layouts/theorems-ams-extended.module:90
@@ -9174,9 +9177,8 @@ msgid "Axiom."
 msgstr "Axióma."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:131
-#, fuzzy
 msgid "Condition \\thecondition."
-msgstr "Podmienka \\thetheorem."
+msgstr "Podmienka \\thecondition."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:140
 #: lib/layouts/theorems-ams-extended.module:112
@@ -9189,9 +9191,8 @@ msgid "Condition."
 msgstr "Podmienka."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:154
-#, fuzzy
 msgid "Note \\thenote."
-msgstr "Poznámka \\thetheorem."
+msgstr "Poznámka \\thenote."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:163
 #: lib/layouts/theorems-ams-extended.module:134
@@ -9214,9 +9215,8 @@ msgid "Notation."
 msgstr "Notácia."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:200
-#, fuzzy
 msgid "Summary \\thesummary."
-msgstr "Súhrn \\thetheorem."
+msgstr "Súhrn \\thesummary."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:209
 #: lib/layouts/theorems-ams-extended.module:178
@@ -9229,9 +9229,8 @@ msgid "Summary."
 msgstr "Súhrn."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:223
-#, fuzzy
 msgid "Acknowledgement \\theacknowledgement."
-msgstr "Poďakovanie \\thetheorem."
+msgstr "Poďakovanie \\theacknowledgement."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:232
 #: lib/layouts/theorems-ams-extended.module:200
@@ -9244,9 +9243,8 @@ msgid "Conclusion"
 msgstr "Záver"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:246
-#, fuzzy
 msgid "Conclusion \\theconclusion."
-msgstr "Záver \\thetheorem."
+msgstr "Záver \\theconclusion."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:255
 #: lib/layouts/theorems-ams-extended.module:222
@@ -9264,9 +9262,8 @@ msgid "Assumption"
 msgstr "Predpoklad"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:269
-#, fuzzy
 msgid "Assumption \\theassumption."
-msgstr "Pododdiel"
+msgstr "Predpoklad \\theassumption."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:278
 #: lib/layouts/theorems-ams-extended.module:245
@@ -9283,14 +9280,13 @@ msgid "Theorems (AMS-Extended)"
 msgstr "Teorémy (rozšírenie AMS)"
 
 #: lib/layouts/theorems-ams-extended.module:8
-#, fuzzy
 msgid ""
 "Defines some additional theorem environments for use with the AMS theorems "
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
 "Summary, Acknowledgement, Conclusion, Fact, Assumption, and Case, in both "
 "numbered and non-numbered forms."
 msgstr ""
-"Definuje niektoré prídavné matematické prostredie pre použitie s balíkmi "
+"Definuje niektoré prídavné prostredie teorémov pre použitie s balíkmi "
 "AMS. Zahrňuje Criterion, Algorithm, Axiom, Condition, Note, Notation, "
 "Summary, Acknowledgement, Conclusion, Fact, Assumption, and Case v oboch "
 "formách (číslované/nečíslované)."
@@ -9340,22 +9336,20 @@ msgid "Theorems (AMS)"
 msgstr "Teorémy (AMS)"
 
 #: lib/layouts/theorems-ams.module:8
-#, fuzzy
 msgid ""
 "Defines theorem environments and the proof environment using the extended "
 "AMS machinery. Both numbered and unnumbered types are provided. By default, "
 "the theorems are numbered consecutively throughout the document. This can be "
 "changed by loading one of the 'Theorems (Numbered by ...)' modules."
 msgstr ""
-"Definuje prostredie mat. viet a dôkazov použitím rozšírenia AMS. K "
-"dispozícii sú číslované a neočíslované typy. Implicitne sú vety číslované "
+"Definuje prostredie mat. viet a dôkazov používajúce rozšírenie AMS. K "
+"dispozícii sú číslované a nečíslované typy. Implicitne sú vety číslované "
 "postupne bez ohľadu na štruktúru dokumentu. To sa dá zmeniť voľbou jedného z "
-"Teoréma (Podľa ...) modulov."
+"'Teorémy (Číslované podľa ...)' modulu."
 
 #: lib/layouts/theorems-bytype.module:2
-#, fuzzy
 msgid "Theorems (Numbered by Type)"
-msgstr "Teorémy (Podľa Kapitoly)"
+msgstr "Teorémy (Číslované podľa Typu)"
 
 #: lib/layouts/theorems-bytype.module:10
 msgid ""
@@ -9367,11 +9361,17 @@ msgid ""
 "chapter- and section-wide numbering, use one of the 'within "
 "Sections'/'within Chapters' modules, respectively."
 msgstr ""
+"Definuje niektoré prostredia mat. viet nepoužívajúce AMS. Opačne k "
+"jednoduchému modulu teorémov, "
+"má tu každý poskytnutý typ teorémov svoje vlastné číslovanie (čiže "
+"veta 1, veta 2, lemma 1, predpoklad 1, veta 3, lemma 2, ..., oproti "
+"veta 1, veta 2, lemma 3, predpoklad 4...). Číslovanie je postupne bez ohľadu "
+"na štruktúru dokumentu. "
+"To sa dá zmeniť voľbou jedného z 'Teorémy (Číslované podľa ...)' modulu."
 
 #: lib/layouts/theorems-chap-bytype.module:2
-#, fuzzy
 msgid "Theorems (Numbered by Type within Chapters)"
-msgstr "Teorémy (Podľa Kapitoly)"
+msgstr "Teorémy (Číslované podľa Typu vnútri Kapitôl)"
 
 #: lib/layouts/theorems-chap-bytype.module:9
 msgid ""
@@ -9381,26 +9381,31 @@ msgid ""
 "theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, "
 "proposition 4, ...). The numbering is reset at each chapter start."
 msgstr ""
+"Definuje niektoré prostredia mat. viet nepoužívajúce AMS. Opačne k "
+"jednoduchému modulu teorémov, "
+"má tu každý poskytnutý typ teorémov svoje vlastné číslovanie (čiže "
+"veta 1, veta 2, lemma 1, predpoklad 1, veta 3, lemma 2, ..., oproti "
+"veta 1, veta 2, lemma 3, predpoklad 4...). Číslovanie sa nuluje na začiatku "
+"každej kapitoly."
 
 #: lib/layouts/theorems-chap.module:2
-#, fuzzy
 msgid "Theorems (Numbered by Chapter)"
-msgstr "Teorémy (Podľa Kapitoly)"
+msgstr "Teorémy (Číslované podľa Kapitoly)"
 
 #: lib/layouts/theorems-chap.module:7
-#, fuzzy
 msgid ""
 "Numbers theorems and the like by chapter (i.e., the counter is reset at each "
 "chapter start). Use this module only with layouts that provide a chapter "
 "environment."
 msgstr ""
-"Očísluje vety apod. podľa kapitoly. Použite tento modul len s formátom, "
+"Očísluje mat. vety apod. podľa kapitoly. (čiže číslovanie sa nuluje "
+"začiatkom každej kapitoly). "
+"Použite tento modul len s formátom, "
 "ktorý podporuje prostredie kapitoly."
 
 #: lib/layouts/theorems-sec-bytype.module:2
-#, fuzzy
 msgid "Theorems (Numbered by Type within Sections)"
-msgstr "Teorémy (Podľa sekcie)"
+msgstr "Teorémy (Číslovanie podľa Typu vnútri Sekcií)"
 
 #: lib/layouts/theorems-sec-bytype.module:9
 msgid ""
@@ -9410,25 +9415,28 @@ msgid ""
 "theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, "
 "proposition 4, ...). The numbering is reset at each section start."
 msgstr ""
+"Definuje niektoré prostredia mat. viet nepoužívajúce AMS. Opačne k "
+"jednoduchému modulu teorémov, "
+"má tu každý poskytnutý typ teorémov svoje vlastné číslovanie (čiže "
+"veta 1, veta 2, lemma 1, predpoklad 1, veta 3, lemma 2, ..., oproti "
+"veta 1, veta 2, lemma 3, predpoklad 4...). Číslovanie sa nuluje na začiatku "
+"každej sekcie."
 
 #: lib/layouts/theorems-sec.module:2
-#, fuzzy
 msgid "Theorems (Numbered by Section)"
-msgstr "Teorémy (Podľa sekcie)"
+msgstr "Teorémy (Číslovanie podľa Sekcie)"
 
 #: lib/layouts/theorems-sec.module:6
-#, fuzzy
 msgid ""
 "Numbers theorems and the like by section (i.e., the counter is reset at each "
 "section start)."
 msgstr ""
-"Očísluje vety apod. podľa kapitoly. Použite tento modul len s formátom, "
-"ktorý podporuje prostredie kapitoly."
+"Očísluje vety apod. podľa sekcie (čiže číslovanie sa nuluje začiatkom každej "
+"sekcie)."
 
 #: lib/layouts/theorems-starred.module:2
-#, fuzzy
 msgid "Theorems (Unnumbered)"
-msgstr "Teorémy (s hviezdou)"
+msgstr "Teorémy (Nečíslované)"
 
 #: lib/layouts/theorems-starred.module:6
 msgid ""
@@ -9439,7 +9447,6 @@ msgstr ""
 "AMS."
 
 #: lib/layouts/theorems-std.module:7
-#, fuzzy
 msgid ""
 "Defines some theorem environments for use with non-AMS classes. By default, "
 "the theorems are numbered consecutively throughout the document. This can be "
@@ -9447,8 +9454,8 @@ msgid ""
 msgstr ""
 "Definuje niektoré prostredia mat. viet pre použitie v triedach neodvodených "
 "od AMS. Implicitne sú vety číslované postupne bez ohľadu na štruktúru "
-"dokumentu.To sa dá zmeniť voľbou jedného z Teorémov (usporiadané podľa ...) "
-"modulov."
+"dokumentu.To sa dá zmeniť voľbou jedného z 'Teorémy (Číslované podľa ...)' "
+"modulu."
 
 #: lib/languages:3 src/Font.cpp:51 src/Font.cpp:54 src/Font.cpp:58
 #: src/Font.cpp:63 src/Font.cpp:66
