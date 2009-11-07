@@ -101,6 +101,15 @@ Building with GCC/Linux
 
 
 
+Ubuntu packages
+----------------
+    You need additionally these packages:
+      * g++
+      * cmake
+      * qt4-dev-tools
+
+
+
 Building with Xcode/Mac
 -----------------------
 
