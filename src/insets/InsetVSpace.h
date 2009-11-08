@@ -22,7 +22,7 @@ class InsetVSpace : public Inset
 {
 public:
 	///
-	InsetVSpace() {}
+	InsetVSpace() : Inset(0) {}
 	///
 	InsetVSpace(VSpace const &);
 	///

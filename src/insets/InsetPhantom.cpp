@@ -112,7 +112,7 @@ void InsetPhantomParams::read(Lexer & lex)
 //
 /////////////////////////////////////////////////////////////////////
 
-InsetPhantom::InsetPhantom(Buffer const & buf, string const & label)
+InsetPhantom::InsetPhantom(Buffer * buf, string const & label)
 	: InsetCollapsable(buf)
 {
 	setDrawFrame(false);

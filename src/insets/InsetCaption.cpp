@@ -47,7 +47,7 @@ using namespace lyx::support;
 namespace lyx {
 
 
-InsetCaption::InsetCaption(Buffer const & buf)
+InsetCaption::InsetCaption(Buffer * buf)
 	: InsetText(buf, InsetText::PlainLayout)
 {
 	setAutoBreakRows(true);

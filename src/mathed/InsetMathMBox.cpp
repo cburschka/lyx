@@ -32,15 +32,15 @@ using namespace std;
 namespace lyx {
 
 
-InsetMathMBox::InsetMathMBox(Buffer const & buffer) : text_(buffer)
+InsetMathMBox::InsetMathMBox(Buffer * buffer) : InsetMath(buffer), text_(buffer)
 {
 	text_.paragraphs().clear();
 	text_.paragraphs().push_back(Paragraph());
 }
 
 
-InsetMathMBox::InsetMathMBox(Buffer const & buffer, Layout const & layout)
-	: text_(buffer)
+InsetMathMBox::InsetMathMBox(Buffer * buffer, Layout const & layout)
+	: InsetMath(buffer), text_(buffer)
 {
 	text_.paragraphs().clear();
 	text_.paragraphs().push_back(Paragraph());

@@ -32,7 +32,7 @@ namespace lyx {
 
 
 InsetSpecialChar::InsetSpecialChar(Kind k)
-	: kind_(k)
+	: Inset(0), kind_(k)
 {}
 
 

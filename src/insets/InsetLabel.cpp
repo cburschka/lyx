@@ -176,7 +176,7 @@ void InsetLabel::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetCommandParams p(REF_CODE, "ref");
 		p["reference"] = getParam("name");
 		cap::clearSelection();
-		cap::copyInset(cur, new InsetRef(buffer(), p), getParam("name"));
+		cap::copyInset(cur, new InsetRef(buffer_, p), getParam("name"));
 		break;
 	}
 

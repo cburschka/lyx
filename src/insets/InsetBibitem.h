@@ -32,7 +32,7 @@ class InsetBibitem : public InsetCommand
 {
 public:
 	///
-	InsetBibitem(Buffer const &, InsetCommandParams const &);
+	InsetBibitem(Buffer *, InsetCommandParams const &);
 	///
 	virtual ~InsetBibitem();
 	///

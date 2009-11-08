@@ -42,7 +42,7 @@ public:
 	/// \param useplain whether to use the plain layout
 	/// This is needed because we cannot call the virtual function
 	/// usePlainLayout() from within the constructor.
-	explicit InsetText(Buffer const & buffer, UsePlain type = DefaultLayout);
+	explicit InsetText(Buffer * buffer, UsePlain type = DefaultLayout);
 	///
 	InsetText(InsetText const &);
 	///

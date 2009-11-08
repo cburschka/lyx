@@ -506,7 +506,7 @@ public:
 
 protected:
 	/// Constructors
-	Inset(Buffer * buf = 0) : buffer_(buf) {}
+	Inset(Buffer * buf) : buffer_(buf) {}
 	Inset(Inset const &) : buffer_(0) {}
 
 	/// replicate ourselves

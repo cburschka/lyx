@@ -21,7 +21,7 @@ namespace lyx {
 class InsetCaption : public InsetText {
 public:
 	///
-	InsetCaption(Buffer const &);
+	InsetCaption(Buffer *);
 	///
 	std::string const & type() const { return type_; }
 	/// return the mandatory argument (LaTeX format) only

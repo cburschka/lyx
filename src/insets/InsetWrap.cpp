@@ -39,7 +39,7 @@ using namespace std;
 
 namespace lyx {
 
-InsetWrap::InsetWrap(Buffer const & buf, string const & type)
+InsetWrap::InsetWrap(Buffer * buf, string const & type)
 	: InsetCollapsable(buf)
 {
 	setLabel(_("wrap: ") + floatName(type));

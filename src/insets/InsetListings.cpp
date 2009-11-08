@@ -51,7 +51,7 @@ using boost::regex;
 char const lstinline_delimiters[] =
 	"!*()-=+|;:'\"`,<.>/?QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm";
 
-InsetListings::InsetListings(Buffer const & buf, InsetListingsParams const & par)
+InsetListings::InsetListings(Buffer * buf, InsetListingsParams const & par)
 	: InsetCollapsable(buf)
 {
 	status_ = par.status();

@@ -41,7 +41,7 @@ using namespace std;
 
 namespace lyx {
 
-InsetCollapsable::InsetCollapsable(Buffer const & buf, InsetText::UsePlain ltype)
+InsetCollapsable::InsetCollapsable(Buffer * buf, InsetText::UsePlain ltype)
 	: InsetText(buf, ltype), status_(Open),
 	  openinlined_(false), mouse_hover_(false)
 {

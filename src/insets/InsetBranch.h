@@ -43,7 +43,7 @@ class InsetBranch : public InsetCollapsable
 {
 public:
 	///
-	InsetBranch(Buffer const &, InsetBranchParams const &);
+	InsetBranch(Buffer *, InsetBranchParams const &);
 	///
 	~InsetBranch();
 

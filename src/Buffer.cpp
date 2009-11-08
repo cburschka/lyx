@@ -302,7 +302,7 @@ Buffer::Buffer(string const & file, bool readonly)
 {
 	LYXERR(Debug::INFO, "Buffer::Buffer()");
 
-	d->inset = new InsetText(*this);
+	d->inset = new InsetText(this);
 	d->inset->setAutoBreakRows(true);
 	d->inset->getText(0)->setMacrocontextPosition(par_iterator_begin());
 }

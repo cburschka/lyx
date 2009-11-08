@@ -21,7 +21,7 @@ namespace lyx {
 class InsetLine : public Inset {
 public:
 	///
-	InsetLine() {}
+	InsetLine() : Inset(0) {}
 	///
 	InsetCode lyxCode() const { return LINE_CODE; }
 	///

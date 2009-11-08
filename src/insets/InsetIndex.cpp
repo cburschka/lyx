@@ -48,7 +48,7 @@ namespace lyx {
 ///////////////////////////////////////////////////////////////////////
 
 
-InsetIndex::InsetIndex(Buffer const & buf, InsetIndexParams const & params)
+InsetIndex::InsetIndex(Buffer * buf, InsetIndexParams const & params)
 	: InsetCollapsable(buf), params_(params)
 {}
 

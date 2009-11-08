@@ -75,9 +75,9 @@ namespace lyx {
 namespace Alert = frontend::Alert;
 
 
-Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
+Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 {
-	BufferParams const & params = buf.params();
+	BufferParams const & params = buf->params();
 
 	try {
 
@@ -151,7 +151,7 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 		case LFUN_FLOAT_INSERT: {
 			// check if the float type exists
 			string const argument = to_utf8(cmd.argument());
-			if (buf.params().documentClass().floats().typeExist(argument))
+			if (params.documentClass().floats().typeExist(argument))
 				return new InsetFloat(buf, argument);
 			lyxerr << "Non-existent float type: " << argument << endl;
 		}
@@ -263,16 +263,16 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 			
 			case EXTERNAL_CODE: {
 				InsetExternalParams iep;
-				InsetExternal::string2params(to_utf8(cmd.argument()), buf, iep);
+				InsetExternal::string2params(to_utf8(cmd.argument()), *buf, iep);
 				auto_ptr<InsetExternal> inset(new InsetExternal(buf));
-				inset->setBuffer(buf);
+				inset->setBuffer(*buf);
 				inset->setParams(iep);
 				return inset.release();
 			}
 			
 			case GRAPHICS_CODE: {
 				InsetGraphicsParams igp;
-				InsetGraphics::string2params(to_utf8(cmd.argument()), buf, igp);
+				InsetGraphics::string2params(to_utf8(cmd.argument()), *buf, igp);
 				auto_ptr<InsetGraphics> inset(new InsetGraphics(buf));
 				inset->setParams(igp);
 				return inset.release();
@@ -431,16 +431,16 @@ Inset * createInsetHelper(Buffer & buf, FuncRequest const & cmd)
 }
 
 
-Inset * createInset(Buffer & buf, FuncRequest const & cmd)
+Inset * createInset(Buffer * buf, FuncRequest const & cmd)
 {
 	Inset * inset = createInsetHelper(buf, cmd);
 	if (inset)
-		inset->setBuffer(buf);
+		inset->setBuffer(*buf);
 	return inset;
 }
 
 
-Inset * readInset(Lexer & lex, Buffer const & buf)
+Inset * readInset(Lexer & lex, Buffer * buf)
 {
 	// consistency check
 	if (lex.getString() != "\\begin_inset")
@@ -518,7 +518,7 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 					lex.next();
 				return 0;
 		}
-		inset->setBuffer(const_cast<Buffer &>(buf));
+		inset->setBuffer(*buf);
 	} else { 
 		// FIXME This branch should be made to use inset codes as the preceding 
 		// branch does. Unfortunately, that will take some doing. It requires
@@ -529,13 +529,13 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 		if (tmptok == "Quotes") {
 			inset.reset(new InsetQuotes(buf));
 		} else if (tmptok == "External") {
-			inset.reset(new InsetExternal(const_cast<Buffer &>(buf)));
+			inset.reset(new InsetExternal(buf));
 		} else if (tmptok == "FormulaMacro") {
-			inset.reset(new MathMacroTemplate(&const_cast<Buffer &>(buf)));
+			inset.reset(new MathMacroTemplate(buf));
 		} else if (tmptok == "Formula") {
-			inset.reset(new InsetMathHull(&const_cast<Buffer &>(buf)));
+			inset.reset(new InsetMathHull(buf));
 		} else if (tmptok == "Graphics") {
-			inset.reset(new InsetGraphics(const_cast<Buffer &>(buf)));
+			inset.reset(new InsetGraphics(buf));
 		} else if (tmptok == "Note") {
 			inset.reset(new InsetNote(buf, tmptok));
 		} else if (tmptok == "Box") {
@@ -555,7 +555,7 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 		} else if (tmptok == "space") {
 			inset.reset(new InsetSpace);
 		} else if (tmptok == "Tabular") {
-			inset.reset(new InsetTabular(const_cast<Buffer &>(buf)));
+			inset.reset(new InsetTabular(buf));
 		} else if (tmptok == "Text") {
 			inset.reset(new InsetText(buf));
 		} else if (tmptok == "VSpace") {
@@ -596,11 +596,11 @@ Inset * readInset(Lexer & lex, Buffer const & buf)
 
 		// Set the buffer reference for proper parsing of some insets
 		// (InsetCollapsable for example)
-		inset->setBuffer(const_cast<Buffer &>(buf));
+		inset->setBuffer(*buf);
 		inset->read(lex);
 		// Set again the buffer for insets that are created inside this inset
 		// (InsetMathHull for example).
-		inset->setBuffer(const_cast<Buffer &>(buf));
+		inset->setBuffer(*buf);
 	}
 	return inset.release();
 }

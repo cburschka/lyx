@@ -30,7 +30,7 @@ class InsetListings : public InsetCollapsable
 {
 public:
 	///
-	InsetListings(Buffer const &, InsetListingsParams const & par = InsetListingsParams());
+	InsetListings(Buffer *, InsetListingsParams const & par = InsetListingsParams());
 	///
 	~InsetListings();
 	///

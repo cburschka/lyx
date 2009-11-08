@@ -36,7 +36,7 @@ public:
 	static std::string const & getName(int type);
 
 
-	InsetRef(Buffer const & buffer, InsetCommandParams const &);
+	InsetRef(Buffer * buffer, InsetCommandParams const &);
 
 	///
 	bool isLabeled() const { return true; }

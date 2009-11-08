@@ -21,10 +21,10 @@ class Lexer;
 
 
 /// creates inset according to 'cmd'
-Inset * createInset(Buffer & buf, FuncRequest const & cmd);
+Inset * createInset(Buffer * buf, FuncRequest const & cmd);
 
 /// read inset from a file
-Inset * readInset(Lexer & lex, Buffer const & buf);
+Inset * readInset(Lexer & lex, Buffer * buf);
 
 
 } // namespace lyx

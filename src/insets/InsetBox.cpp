@@ -96,7 +96,7 @@ BoxTranslatorLoc const & boxtranslator_loc()
 //
 /////////////////////////////////////////////////////////////////////////
 
-InsetBox::InsetBox(Buffer const & buffer, string const & label)
+InsetBox::InsetBox(Buffer * buffer, string const & label)
 	: InsetCollapsable(buffer), params_(label)
 {}
 

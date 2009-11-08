@@ -34,7 +34,7 @@ namespace lyx {
 class InsetCommand : public Inset
 {
 public:
-	///
+	/// FIXME: pass Buffer here!
 	InsetCommand(InsetCommandParams const &, std::string const & mailer_name);
 	///
 	~InsetCommand();

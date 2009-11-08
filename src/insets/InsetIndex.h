@@ -38,7 +38,7 @@ public:
 class InsetIndex : public InsetCollapsable {
 public:
 	///
-	InsetIndex(Buffer const &, InsetIndexParams const &);
+	InsetIndex(Buffer *, InsetIndexParams const &);
 	///
 	static std::string params2string(InsetIndexParams const &);
 	///

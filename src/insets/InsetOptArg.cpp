@@ -21,7 +21,7 @@ using namespace std;
 namespace lyx {
 
 
-InsetOptArg::InsetOptArg(Buffer const & buf)
+InsetOptArg::InsetOptArg(Buffer * buf)
 	: InsetCollapsable(buf)
 {}
 

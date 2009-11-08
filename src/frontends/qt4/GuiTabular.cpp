@@ -42,7 +42,7 @@ namespace frontend {
 GuiTabular::GuiTabular(GuiView & lv)
 	: GuiDialog(lv, "tabular", qt_("Table Settings")),
 	// tabular_ is initialised at dialog construction in initialiseParams()
-	tabular_(lv.currentBufferView()->buffer(), 0, 0)
+	tabular_(&(lv.currentBufferView()->buffer()), 0, 0)
 {
 	active_cell_ = Tabular::npos;
 
@@ -1126,7 +1126,7 @@ bool GuiTabular::initialiseParams(string const & data)
 		return true;
 	}
 
-	InsetTabular tmp(const_cast<Buffer &>(buffer()));
+	InsetTabular tmp(const_cast<Buffer *>(&buffer()));
 	InsetTabular::string2params(data, tmp);
 	tabular_ = Tabular(tmp.tabular);
 	return true;
@@ -1139,7 +1139,7 @@ void GuiTabular::clearParams()
 	// is still open. At that time, the buffer might not be available
 	// anymore.
 	if (isBufferAvailable()) {
-		InsetTabular tmp(const_cast<Buffer &>(buffer()));
+		InsetTabular tmp(const_cast<Buffer *>(&buffer()));
 		tabular_ = tmp.tabular;
 	}
 	active_cell_ = Tabular::npos;

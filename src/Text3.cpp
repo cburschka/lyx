@@ -229,7 +229,7 @@ static bool doInsertInset(Cursor & cur, Text * text,
 {
 	Buffer & buffer = cur.bv().buffer();
 	BufferParams const & bparams = buffer.params();
-	Inset * inset = createInset(buffer, cmd);
+	Inset * inset = createInset(&buffer, cmd);
 	if (!inset)
 		return false;
 
@@ -1051,7 +1051,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// before inserting into the document. See bug #5626.
 		bool loaded = bv->buffer().isFullyLoaded();
 		bv->buffer().setFullyLoaded(false);
-		Inset * inset = createInset(bv->buffer(), cmd);
+		Inset * inset = createInset(&bv->buffer(), cmd);
 		bv->buffer().setFullyLoaded(loaded);
 
 		if (inset) {
@@ -1368,7 +1368,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			else
 				c = par.getChar(pos - 1);
 			string arg = to_utf8(cmd.argument());
-			cur.insert(new InsetQuotes(bv->buffer(), c, (arg == "single")
+			cur.insert(new InsetQuotes(cur.buffer(), c, (arg == "single")
 				? InsetQuotes::SingleQuotes : InsetQuotes::DoubleQuotes));
 			cur.posForward();
 		}
@@ -1595,9 +1595,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			docstring ds = cur.selectionAsString(false);
 			cutSelection(cur, true, false);
 			FuncRequest cmd0(cmd, ds);
-			inset = createInset(cur.bv().buffer(), cmd0);
+			inset = createInset(cur.buffer(), cmd0);
 		} else {
-			inset = createInset(cur.bv().buffer(), cmd);
+			inset = createInset(cur.buffer(), cmd);
 		}
 		if (!inset)
 			break;

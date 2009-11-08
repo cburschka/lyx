@@ -274,8 +274,8 @@ InsetText const & Text::inset() const
 void Text::readParToken(Paragraph & par, Lexer & lex,
 	string const & token, Font & font, Change & change, ErrorList & errorList)
 {
-	Buffer const & buf = owner_->buffer();
-	BufferParams const & bp = buf.params();
+	Buffer * buf = const_cast<Buffer *>(&owner_->buffer());
+	BufferParams const & bp = buf->params();
 
 	if (token[0] != '\\') {
 		docstring dstr = lex.getDocString();
@@ -397,18 +397,18 @@ void Text::readParToken(Paragraph & par, Lexer & lex,
 		auto_ptr<Inset> inset;
 		inset.reset(new InsetSpecialChar);
 		inset->read(lex);
-		inset->setBuffer(const_cast<Buffer &>(buf));
+		inset->setBuffer(*buf);
 		par.insertInset(par.size(), inset.release(), font, change);
 	} else if (token == "\\backslash") {
 		par.appendChar('\\', font, change);
 	} else if (token == "\\LyXTable") {
-		auto_ptr<Inset> inset(new InsetTabular(const_cast<Buffer &>(buf)));
+		auto_ptr<Inset> inset(new InsetTabular(buf));
 		inset->read(lex);
 		par.insertInset(par.size(), inset.release(), font, change);
 	} else if (token == "\\lyxline") {
 		auto_ptr<Inset> inset;
 		inset.reset(new InsetLine);
-		inset->setBuffer(const_cast<Buffer &>(buf));
+		inset->setBuffer(*buf);
 		par.insertInset(par.size(), inset.release(), font, change);
 	} else if (token == "\\change_unchanged") {
 		change = Change(Change::UNCHANGED);

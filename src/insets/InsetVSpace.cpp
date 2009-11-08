@@ -47,7 +47,7 @@ int const ADD_TO_VSPACE_WIDTH = 5;
 
 
 InsetVSpace::InsetVSpace(VSpace const & space)
-	: space_(space)
+	: Inset(0), space_(space)
 {}
 
 

@@ -40,7 +40,7 @@ using namespace std;
 
 namespace lyx {
 
-InsetBranch::InsetBranch(Buffer const & buf, InsetBranchParams const & params)
+InsetBranch::InsetBranch(Buffer * buf, InsetBranchParams const & params)
 	: InsetCollapsable(buf, InsetText::DefaultLayout), params_(params)
 {}
 

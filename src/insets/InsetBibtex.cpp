@@ -51,10 +51,10 @@ namespace Alert = frontend::Alert;
 namespace os = support::os;
 
 
-InsetBibtex::InsetBibtex(Buffer const & buf, InsetCommandParams const & p)
+InsetBibtex::InsetBibtex(Buffer * buf, InsetCommandParams const & p)
 	: InsetCommand(p, "bibtex")
 {
-	Inset::setBuffer(const_cast<Buffer &>(buf));
+	Inset::setBuffer(const_cast<Buffer &>(*buf));
 	buffer_->invalidateBibinfoCache();
 }
 

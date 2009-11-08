@@ -45,7 +45,7 @@ public:
 	};
 
 	///
-	InsetSpecialChar() {}
+	InsetSpecialChar() : Inset(0) {}
 	///
 	explicit InsetSpecialChar(Kind k);
 	///

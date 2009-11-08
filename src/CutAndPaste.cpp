@@ -163,7 +163,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 		}
 	}
 
-	InsetText in(buffer);
+	InsetText in(cur.buffer());
 	// Make sure there is no class difference.
 	in.paragraphs().clear();
 	// This works without copying any paragraph data because we have
@@ -975,7 +975,7 @@ void pasteClipboardGraphics(Cursor & cur, ErrorList & /* errorList */,
 		return;
 
 	// create inset for graphic
-	InsetGraphics * inset = new InsetGraphics(*cur.buffer());
+	InsetGraphics * inset = new InsetGraphics(cur.buffer());
 	InsetGraphicsParams params;
 	params.filename = support::DocFileName(filename.absFilename());
 	inset->setParams(params);

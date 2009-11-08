@@ -48,10 +48,10 @@ int InsetBibitem::key_counter = 0;
 docstring const key_prefix = from_ascii("key-");
 
 
-InsetBibitem::InsetBibitem(Buffer const & buf, InsetCommandParams const & p)
+InsetBibitem::InsetBibitem(Buffer * buf, InsetCommandParams const & p)
 	: InsetCommand(p, "bibitem")
 {
-	Inset::setBuffer(const_cast<Buffer &>(buf));
+	Inset::setBuffer(*buf);
 	buffer_->invalidateBibinfoCache();
 	if (getParam("key").empty())
 		setParam("key", key_prefix + convert<docstring>(++key_counter));

@@ -160,11 +160,10 @@ void readInsetGraphics(Lexer & lex, string const & bufpath,
 } // namespace anon
 
 
-InsetGraphics::InsetGraphics(Buffer & buf)
-	: graphic_label(sgml::uniqueID(from_ascii("graph"))),
+InsetGraphics::InsetGraphics(Buffer * buf)
+	: Inset(buf), graphic_label(sgml::uniqueID(from_ascii("graph"))),
 	  graphic_(new RenderGraphic(this))
 {
-	Inset::setBuffer(buf);
 }
 
 

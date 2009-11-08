@@ -74,10 +74,9 @@ using graphics::PreviewLoader;
 
 /////////////////////////////////////////////////////////////////////
 
-InsetText::InsetText(Buffer const & buf, UsePlain type)
-	: drawFrame_(false), frame_color_(Color_insetframe), text_(this)
+InsetText::InsetText(Buffer * buf, UsePlain type)
+	: Inset(buf), drawFrame_(false), frame_color_(Color_insetframe), text_(this)
 {
-	setBuffer(const_cast<Buffer &>(buf));
 	initParagraphs(type);
 }
 

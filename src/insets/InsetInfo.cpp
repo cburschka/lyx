@@ -82,7 +82,7 @@ NameTranslator const & nameTranslator()
 
 
 	
-InsetInfo::InsetInfo(Buffer const & buf, string const & name) 
+InsetInfo::InsetInfo(Buffer * buf, string const & name) 
 	: InsetCollapsable(buf), type_(UNKNOWN_INFO), name_()
 {
 	setAutoBreakRows(true);
@@ -355,7 +355,7 @@ void InsetInfo::updateInfo()
 		FileName file(to_utf8(icon_name));
 		if (!file.exists())
 			break;
-		InsetGraphics * inset = new InsetGraphics(buffer());
+		InsetGraphics * inset = new InsetGraphics(buffer_);
 		InsetGraphicsParams igp;
 		igp.filename = file;
 		inset->setParams(igp);

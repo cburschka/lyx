@@ -95,7 +95,7 @@ class InsetSpace : public Inset
 {
 public:
 	///
-	InsetSpace() {}
+	InsetSpace() : Inset(0) {}
 	///
 	explicit InsetSpace(InsetSpaceParams const & par);
 	///

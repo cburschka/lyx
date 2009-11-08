@@ -90,7 +90,7 @@ public:
 	};
 
 	///
-	InsetInfo(Buffer const & buf, std::string const & info = std::string());
+	InsetInfo(Buffer * buf, std::string const & info = std::string());
 	///
 	InsetCode lyxCode() const { return INFO_CODE; }
 	///

@@ -47,7 +47,7 @@ class InsetPhantom : public InsetCollapsable
 {
 public:
 	///
-	InsetPhantom(Buffer const &, std::string const &);
+	InsetPhantom(Buffer *, std::string const &);
 	///
 	~InsetPhantom();
 	///

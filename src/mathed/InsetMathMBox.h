@@ -31,8 +31,8 @@ class BufferView;
 class InsetMathMBox : public InsetMath {
 public:
 	///
-	explicit InsetMathMBox(Buffer const & buffer);
-	explicit InsetMathMBox(Buffer const & buffer, Layout const & layout);
+	explicit InsetMathMBox(Buffer * buffer);
+	explicit InsetMathMBox(Buffer * buffer, Layout const & layout);
 
 	/// this stores metrics information in cache_
 	void metrics(MetricsInfo & mi, Dimension & dim) const;

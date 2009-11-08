@@ -32,7 +32,7 @@ using namespace std;
 
 namespace lyx {
 
-InsetNewline::InsetNewline()
+InsetNewline::InsetNewline() : Inset(0)
 {}
 
 

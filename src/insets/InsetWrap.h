@@ -44,7 +44,7 @@ public:
 class InsetWrap : public InsetCollapsable {
 public:
 	///
-	InsetWrap(Buffer const &, std::string const &);
+	InsetWrap(Buffer *, std::string const &);
 	///
 	~InsetWrap();
 	///

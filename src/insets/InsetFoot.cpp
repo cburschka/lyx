@@ -31,7 +31,7 @@ using namespace std;
 
 namespace lyx {
 
-InsetFoot::InsetFoot(Buffer const & buf)
+InsetFoot::InsetFoot(Buffer * buf)
 	: InsetFootlike(buf)
 {}
 

@@ -256,7 +256,7 @@ public:
 	static const idx_type npos = static_cast<idx_type>(-1);
 
 	/// constructor
-	Tabular(Buffer &, col_type columns_arg, row_type rows_arg);
+	Tabular(Buffer * buf, col_type columns_arg, row_type rows_arg);
 
 	/// Returns true if there is a topline, returns false if not
 	bool topLine(idx_type cell) const;
@@ -465,7 +465,7 @@ public:
 	class CellData {
 	public:
 		///
-		CellData(Buffer &);
+		CellData(Buffer *);
 		///
 		CellData(CellData const &);
 		///
@@ -598,7 +598,7 @@ public:
 	ltType endlastfoot;
 
 	///
-	void init(Buffer &, row_type rows_arg,
+	void init(Buffer *, row_type rows_arg,
 		  col_type columns_arg);
 	///
 	void updateIndexes();
@@ -662,7 +662,7 @@ class InsetTableCell : public InsetText
 {
 public:
 	///
-	InsetTableCell(Buffer & buf);
+	InsetTableCell(Buffer * buf);
 	///
 	InsetCode lyxCode() const { return CELL_CODE; }
 	///
@@ -729,7 +729,7 @@ class InsetTabular : public Inset
 {
 public:
 	///
-	InsetTabular(Buffer &, row_type rows = 1,
+	InsetTabular(Buffer *, row_type rows = 1,
 		     col_type columns = 1);
 	///
 	~InsetTabular();

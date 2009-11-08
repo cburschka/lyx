@@ -24,7 +24,7 @@
 namespace lyx {
 
 
-InsetMarginal::InsetMarginal(Buffer const & buf)
+InsetMarginal::InsetMarginal(Buffer * buf)
 	: InsetFootlike(buf)
 {}
 

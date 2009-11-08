@@ -27,7 +27,7 @@ class InsetOptArg : public InsetCollapsable
 {
 public:
 	///
-	InsetOptArg(Buffer const &);
+	InsetOptArg(Buffer *);
 
 	/// Outputting the optional parameter of a LaTeX command
 	int latexOptional(odocstream &, OutputParams const &) const;

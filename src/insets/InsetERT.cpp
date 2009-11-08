@@ -44,7 +44,7 @@ using namespace lyx::support;
 
 namespace lyx {
 
-InsetERT::InsetERT(Buffer const & buf, CollapseStatus status)
+InsetERT::InsetERT(Buffer * buf, CollapseStatus status)
 	: InsetCollapsable(buf)
 {
 	status_ = status;

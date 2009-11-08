@@ -53,7 +53,7 @@ namespace lyx {
 // place of the mailer name and recover that information?
 InsetCommand::InsetCommand(InsetCommandParams const & p,
 			   string const & mailer_name)
-	: p_(p),
+	: Inset(0), p_(p),
 	  mailer_name_(mailer_name),
 	  mouse_hover_(false)
 {}

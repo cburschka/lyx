@@ -76,7 +76,7 @@ public:
 		Doublebox
 	};
 	///
-	InsetBox(Buffer const &, std::string const &);
+	InsetBox(Buffer *, std::string const &);
 	///
 	~InsetBox();
 	///

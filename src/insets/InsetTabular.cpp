@@ -514,7 +514,7 @@ string const featureAsString(Tabular::Feature feature)
 /////////////////////////////////////////////////////////////////////
 
 
-Tabular::CellData::CellData(Buffer & buf)
+Tabular::CellData::CellData(Buffer * buf)
 	: cellno(0),
 	  width(0),
 	  multicolumn(Tabular::CELL_NORMAL),
@@ -528,7 +528,7 @@ Tabular::CellData::CellData(Buffer & buf)
 	  rotate(false),
 	  inset(new InsetTableCell(buf))
 {
-	inset->setBuffer(const_cast<Buffer &>(buf));
+	inset->setBuffer(*buf);
 }
 
 
@@ -605,7 +605,7 @@ Tabular::ltType::ltType()
 {}
 
 
-Tabular::Tabular(Buffer & buffer, row_type rows_arg, col_type columns_arg)
+Tabular::Tabular(Buffer * buffer, row_type rows_arg, col_type columns_arg)
 {
 	init(buffer, rows_arg, columns_arg);
 }
@@ -624,10 +624,10 @@ void Tabular::setBuffer(Buffer & buffer)
 
 
 // activates all lines and sets all widths to 0
-void Tabular::init(Buffer & buf, row_type rows_arg,
+void Tabular::init(Buffer * buf, row_type rows_arg,
 		      col_type columns_arg)
 {
-	buffer_ = &buf;
+	buffer_ = buf;
 	row_info = row_vector(rows_arg);
 	column_info = column_vector(columns_arg);
 	cell_info = cell_vvector(rows_arg, cell_vector(columns_arg, CellData(buf)));
@@ -656,7 +656,7 @@ void Tabular::init(Buffer & buf, row_type rows_arg,
 
 void Tabular::appendRow(idx_type const cell)
 {
-	BufferParams const & bp = buffer().params();
+	BufferParams const & bp = buffer_->params();
 	row_type const row = cellRow(cell);
 
 	row_vector::iterator rit = row_info.begin() + row;
@@ -671,7 +671,7 @@ void Tabular::appendRow(idx_type const cell)
 	for (row_type i = 0; i < nrows - 1; ++i)
 		swap(cell_info[i], old[i]);
 
-	cell_info = cell_vvector(nrows, cell_vector(ncols, CellData(buffer())));
+	cell_info = cell_vvector(nrows, cell_vector(ncols, CellData(buffer_)));
 
 	for (row_type i = 0; i <= row; ++i)
 		swap(cell_info[i], old[i]);
@@ -733,7 +733,7 @@ void Tabular::appendColumn(idx_type const cell)
 
 	for (row_type r = 0; r < nrows; ++r) {
 		cell_info[r].insert(cell_info[r].begin() + c + 1, 
-			CellData(buffer()));
+			CellData(buffer_));
 #if 0
 // FIXME: This code does not work. It deletes the cell's content and
 // it triggers an assertion if the cursor is at pos > 0.
@@ -1421,7 +1421,7 @@ void Tabular::read(Lexer & lex)
 	int columns_arg;
 	if (!getTokenValue(line, "columns", columns_arg))
 		return;
-	init(buffer(), rows_arg, columns_arg);
+	init(buffer_, rows_arg, columns_arg);
 	l_getline(is, line);
 	if (!prefixIs(line, "<features")) {
 		lyxerr << "Wrong tabular format (expected <features ...> got"
@@ -2902,7 +2902,7 @@ Tabular::BoxType Tabular::useParbox(idx_type cell) const
 //
 /////////////////////////////////////////////////////////////////////
 
-InsetTableCell::InsetTableCell(Buffer & buf)
+InsetTableCell::InsetTableCell(Buffer * buf)
 	: InsetText(buf, InsetText::PlainLayout), isFixedWidth(false),
 	  contentAlign(LYX_ALIGN_CENTER)
 {}
@@ -2964,12 +2964,11 @@ docstring InsetTableCell::asString(bool intoInsets)
 //
 /////////////////////////////////////////////////////////////////////
 
-InsetTabular::InsetTabular(Buffer & buf, row_type rows,
+InsetTabular::InsetTabular(Buffer * buf, row_type rows,
 			   col_type columns)
-	: tabular(buf, max(rows, row_type(1)), max(columns, col_type(1))), scx_(0), 
+	: Inset(buf), tabular(buf, max(rows, row_type(1)), max(columns, col_type(1))), scx_(0), 
 	rowselect_(false), colselect_(false)
 {
-	setBuffer(buf); // FIXME: remove later
 }
 
 
@@ -5211,7 +5210,7 @@ bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 	col_type ocol = 0;
 	row_type row = 0;
 	if (usePaste) {
-		paste_tabular.reset(new Tabular(buffer(), rows, maxCols));
+		paste_tabular.reset(new Tabular(buffer_, rows, maxCols));
 		loctab = paste_tabular.get();
 		cols = 0;
 		dirtyTabularStack(true);
