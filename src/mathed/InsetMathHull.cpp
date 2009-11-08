@@ -1637,7 +1637,7 @@ void InsetMathHull::write(ostream & os) const
 void InsetMathHull::read(Lexer & lex)
 {
 	MathAtom at;
-	mathed_parse_normal(buffer_, at, lex, Parse::NORMAL);
+	mathed_parse_normal(buffer_, at, lex, Parse::TRACKMACRO);
 	operator=(*at->asHullInset());
 }
 

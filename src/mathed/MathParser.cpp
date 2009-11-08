@@ -442,8 +442,6 @@ Parser::Parser(Lexer & lexer, parse_mode mode, Buffer * buf)
 	: lineno_(lexer.lineNumber()), pos_(0), mode_(mode), success_(true),
 	  buffer_(buf)
 {
-	if (buf)
-		buf->updateMacros();
 	tokenize(lexer.getStream());
 	lexer.eatLine();
 }
@@ -452,8 +450,6 @@ Parser::Parser(Lexer & lexer, parse_mode mode, Buffer * buf)
 Parser::Parser(istream & is, parse_mode mode, Buffer * buf)
 	: lineno_(0), pos_(0), mode_(mode), success_(true), buffer_(buf)
 {
-	if (buf)
-		buf->updateMacros();
 	tokenize(is);
 }
 
@@ -461,8 +457,6 @@ Parser::Parser(istream & is, parse_mode mode, Buffer * buf)
 Parser::Parser(docstring const & str, parse_mode mode, Buffer * buf)
 	: lineno_(0), pos_(0), mode_(mode), success_(true), buffer_(buf)
 {
-	if (buf)
-		buf->updateMacros();
 	tokenize(str);
 }
 
@@ -1021,6 +1015,9 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			cell->push_back(MathAtom(new MathMacroTemplate(buf,
 				name, nargs, 0, MacroTypeDef,
 				vector<MathData>(), def, display)));
+
+			if (buf && (mode_ & Parse::TRACKMACRO))
+				buf->usermacros.insert(name);
 		}
 		
 		else if (t.cs() == "newcommand" ||
@@ -1066,6 +1063,9 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			cell->push_back(MathAtom(new MathMacroTemplate(buf,
 				name, nargs, optionals, MacroTypeNewcommand,
 				optionalValues, def, display)));
+
+			if (buf && (mode_ & Parse::TRACKMACRO))
+				buf->usermacros.insert(name);
 		}
 		
 		else if (t.cs() == "newcommandx" ||
@@ -1184,6 +1184,9 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			cell->push_back(MathAtom(new MathMacroTemplate(buf,
 				name, nargs, optionals, MacroTypeNewcommandx,
 				optionalValues, def, display)));
+
+			if (buf && (mode_ & Parse::TRACKMACRO))
+				buf->usermacros.insert(name);
 		}
 
 		else if (t.cs() == "(") {
@@ -1763,7 +1766,9 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 		else if (t.cs().size()) {
 			bool const is_user_macro =
-				buf && buf->getMacro(t.cs(), false);
+				buf && (mode_ & Parse::TRACKMACRO
+					? buf->usermacros.count(t.cs()) != 0
+					: buf->getMacro(t.cs(), false) != 0);
 			latexkeys const * l = in_word_set(t.cs());
 			if (l && !is_user_macro) {
 				if (l->inset == "big") {

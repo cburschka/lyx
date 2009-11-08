@@ -21,6 +21,7 @@
 #include "support/SignalSlot.h"
 
 #include <list>
+#include <set>
 #include <string>
 #include <vector>
 
@@ -428,6 +429,10 @@ public:
 	MacroData const * getMacro(docstring const & name, bool global = true) const;
 	/// Return macro defined before the inclusion of the child
 	MacroData const * getMacro(docstring const & name, Buffer const & child, bool global = true) const;
+
+	/// Collect user macro names at loading time
+	typedef std::set<docstring> UserMacroSet;
+	UserMacroSet usermacros;
 
 	/// Replace the inset contents for insets which InsetCode is equal
 	/// to the passed \p inset_code.

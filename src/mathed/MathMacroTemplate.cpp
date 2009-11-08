@@ -1108,7 +1108,7 @@ bool MathMacroTemplate::getStatus(Cursor & /*cur*/, FuncRequest const & cmd,
 void MathMacroTemplate::read(Lexer & lex)
 {
 	MathData ar(buffer_);
-	mathed_parse_cell(ar, lex.getStream(), Parse::NORMAL);
+	mathed_parse_cell(ar, lex.getStream(), Parse::TRACKMACRO);
 	if (ar.size() != 1 || !ar[0]->asMacroTemplate()) {
 		lyxerr << "Cannot read macro from '" << ar << "'" << endl;
 		lyxerr << "Read: " << to_utf8(asString(ar)) << endl;

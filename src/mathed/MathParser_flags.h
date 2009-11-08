@@ -26,7 +26,9 @@ enum flags {
 	/// Quiet operation (no warnigs or errors).
 	QUIET = 0x04,
 	/// Wrap unicode symbols in \text{}.
-	USETEXT = 0x08
+	USETEXT = 0x08,
+	/// Track macro creation while loading a document
+	TRACKMACRO = 0x10
 };
 
 
