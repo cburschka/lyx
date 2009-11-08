@@ -23,7 +23,7 @@ namespace lyx {
 class InsetMathFracBase : public InsetMathNest {
 public:
 	///
-	explicit InsetMathFracBase(idx_type ncells = 2);
+	InsetMathFracBase(Buffer * buf, idx_type ncells = 2);
 	///
 	bool idxUpDown(Cursor &, bool up) const;
 	///
@@ -52,7 +52,7 @@ public:
 		UNIT
 	};
 	///
-	explicit InsetMathFrac(Kind kind = FRAC, idx_type ncells = 2);
+	explicit InsetMathFrac(Buffer * buf, Kind kind = FRAC, idx_type ncells = 2);
 	///
 	bool idxForward(Cursor &) const;
 	///
@@ -106,7 +106,7 @@ public:
 		BRACK
 	};
 	///
-	explicit InsetMathBinom(Kind kind = BINOM);
+	explicit InsetMathBinom(Buffer * buf, Kind kind = BINOM);
 	///
 	void write(WriteStream & os) const;
 	///

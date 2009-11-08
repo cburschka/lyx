@@ -27,7 +27,7 @@ namespace lyx {
 class InsetMathNest : public InsetMath {
 public:
 	/// nestinsets have a fixed size to start with
-	explicit InsetMathNest(idx_type ncells);
+	InsetMathNest(Buffer * buf, idx_type ncells);
 	///
 	virtual ~InsetMathNest() {}
 	///

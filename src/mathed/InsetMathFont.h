@@ -24,7 +24,7 @@ class latexkeys;
 class InsetMathFont : public InsetMathNest {
 public:
 	///
-	explicit InsetMathFont(latexkeys const * key);
+	explicit InsetMathFont(Buffer * buf, latexkeys const * key);
 	///
 	InsetMathFont * asFontInset() { return this; }
 	///

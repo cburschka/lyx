@@ -20,9 +20,10 @@
 namespace lyx {
 
 
-InsetMathXYMatrix::InsetMathXYMatrix(Length const & s, char c)
-	: InsetMathGrid(1, 1), spacing_(s), spacing_code_(c)
-{}
+InsetMathXYMatrix::InsetMathXYMatrix(Buffer * buf, Length const & s, char c)
+	: InsetMathGrid(buf, 1, 1), spacing_(s), spacing_code_(c)
+{
+}
 
 
 Inset * InsetMathXYMatrix::clone() const

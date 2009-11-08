@@ -141,7 +141,7 @@ static void mathDispatch(Cursor & cur, FuncRequest const & cmd, bool display)
 #ifdef ENABLE_ASSERTIONS
 		const int old_pos = cur.pos();
 #endif
-		cur.insert(new InsetMathHull(hullSimple, cur.buffer()));
+		cur.insert(new InsetMathHull(cur.buffer(), hullSimple));
 #ifdef ENABLE_ASSERTIONS
 		LASSERT(old_pos == cur.pos(), /**/);
 #endif
@@ -184,7 +184,7 @@ static void mathDispatch(Cursor & cur, FuncRequest const & cmd, bool display)
 			} else
 				cur.insert(formula);
 		} else {
-			cur.insert(new MathMacroTemplate(sel, cur.buffer()));
+			cur.insert(new MathMacroTemplate(cur.buffer(), sel));
 		}
 	}
 	if (valid)
@@ -207,7 +207,7 @@ void regexpDispatch(Cursor & cur, FuncRequest const & cmd)
 	// It may happen that sel is empty but there is a selection
 	replaceSelection(cur);
 
-	cur.insert(new InsetMathHull(hullRegexp, cur.buffer()));
+	cur.insert(new InsetMathHull(cur.buffer(), hullRegexp));
 	cur.nextInset()->edit(cur, true);
 	cur.niceInsert(sel);
 
@@ -1753,7 +1753,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			MacroType type = MacroTypeNewcommand;
 			if (s2 == "def")
 				type = MacroTypeDef;
-			MathMacroTemplate * inset = new MathMacroTemplate(from_utf8(token(s, ' ', 0)), nargs, false, type, cur.buffer());
+			MathMacroTemplate * inset = new MathMacroTemplate(cur.buffer(),
+				from_utf8(token(s, ' ', 0)), nargs, false, type);
 			inset->setBuffer(bv->buffer());
 			insertInset(cur, inset);
 
@@ -1781,7 +1782,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_MATH_BIGDELIM: {
 		cur.recordUndo();
 		cap::replaceSelection(cur);
-		cur.insert(new InsetMathHull(hullSimple, cur.buffer()));
+		cur.insert(new InsetMathHull(cur.buffer(), hullSimple));
 		checkAndActivateInset(cur, true);
 		LASSERT(cur.inMathed(), /**/);
 		cur.dispatch(cmd);

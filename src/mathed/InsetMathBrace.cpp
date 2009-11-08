@@ -26,13 +26,13 @@ using namespace std;
 
 namespace lyx {
 
-InsetMathBrace::InsetMathBrace()
-	: InsetMathNest(1)
+InsetMathBrace::InsetMathBrace(Buffer * buf)
+	: InsetMathNest(buf, 1)
 {}
 
 
 InsetMathBrace::InsetMathBrace(MathData const & ar)
-	: InsetMathNest(1)
+	: InsetMathNest(const_cast<Buffer *>(ar.buffer()), 1)
 {
 	cell(0) = ar;
 }

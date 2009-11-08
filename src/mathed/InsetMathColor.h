@@ -23,10 +23,9 @@ namespace lyx {
 class InsetMathColor : public InsetMathNest {
 public:
 	/// Create a color inset from LyX color number
-	explicit InsetMathColor(bool oldstyle,
-		ColorCode color = Color_none);
+	InsetMathColor(Buffer * buf, bool oldstyle, ColorCode color = Color_none);
 	/// Create a color inset from LaTeX color name
-	explicit InsetMathColor(bool oldstyle, docstring const & color);
+	InsetMathColor(Buffer * buf, bool oldstyle, docstring const & color);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	/// we write extra braces in any case...

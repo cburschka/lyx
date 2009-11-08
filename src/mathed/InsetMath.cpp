@@ -29,7 +29,7 @@ namespace lyx {
 
 MathData & InsetMath::cell(idx_type)
 {
-	static MathData dummyCell;
+	static MathData dummyCell(&buffer());
 	LYXERR0("I don't have any cell");
 	return dummyCell;
 }

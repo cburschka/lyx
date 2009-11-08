@@ -24,13 +24,13 @@ using namespace std;
 namespace lyx {
 
 
-InsetMathExFunc::InsetMathExFunc(docstring const & name)
-	: InsetMathNest(1), name_(name)
+InsetMathExFunc::InsetMathExFunc(Buffer * buf, docstring const & name)
+	: InsetMathNest(buf, 1), name_(name)
 {}
 
 
-InsetMathExFunc::InsetMathExFunc(docstring const & name, MathData const & ar)
-	: InsetMathNest(1), name_(name)
+InsetMathExFunc::InsetMathExFunc(Buffer * buf, docstring const & name, MathData const & ar)
+	: InsetMathNest(buf, 1), name_(name)
 {
 	cell(0) = ar;
 }

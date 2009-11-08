@@ -23,9 +23,9 @@ class Buffer;
 class InsetMathRef : public CommandInset {
 public:
 	///
-	InsetMathRef();
+	InsetMathRef(Buffer * buf);
 	///
-	explicit InsetMathRef(docstring const & data);
+	explicit InsetMathRef(Buffer * buf, docstring const & data);
 	///
 	//void write(WriteStream & os) const;
 	///

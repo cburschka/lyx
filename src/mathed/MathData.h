@@ -25,6 +25,7 @@
 
 namespace lyx {
 
+class Buffer;
 class BufferView;
 class Cursor;
 class DocIterator;
@@ -61,9 +62,13 @@ public:
 
 public:
 	///
-	MathData() {}
+	MathData(Buffer * buf = 0) : buffer_(buf) {}
 	///
-	MathData(const_iterator from, const_iterator to);
+	MathData(Buffer * buf, const_iterator from, const_iterator to);
+	///
+	Buffer * buffer() { return buffer_; }
+	///
+	Buffer const * buffer() const { return buffer_; }
 	///
 	void append(MathData const & ar);
 
@@ -167,7 +172,8 @@ protected:
 	mutable int slevel_;
 	mutable int sshift_;
 	mutable int kerning_;
-	
+	Buffer * buffer_;
+
 private:
 	/// is this an exact match at this position?
 	bool find1(MathData const & ar, size_type pos) const;

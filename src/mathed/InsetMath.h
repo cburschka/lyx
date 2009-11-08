@@ -93,6 +93,8 @@ class ReplaceData;
 
 class InsetMath : public Inset {
 public:
+	///
+	InsetMath(Buffer * buf = 0) : Inset(buf) {}
 	/// identification as math inset
 	InsetMath * asInsetMath() { return this; }
 	/// identification as math inset

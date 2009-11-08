@@ -145,7 +145,7 @@ void initSymbols()
 			string macro;
 			string requires;
 			is >> macro >> requires;
-			MacroTable::globalMacros().insert(from_utf8(macro), requires);
+			MacroTable::globalMacros().insert(0, from_utf8(macro), requires);
 			continue;
 		}
 
@@ -300,13 +300,13 @@ latexkeys const * in_word_set(docstring const & str)
 }
 
 
-MathAtom createInsetMath(char const * const s)
+MathAtom createInsetMath(char const * const s, Buffer * buf)
 {
-	return createInsetMath(from_utf8(s));
+	return createInsetMath(from_utf8(s), buf);
 }
 
 
-MathAtom createInsetMath(docstring const & s)
+MathAtom createInsetMath(docstring const & s, Buffer * buf)
 {
 	//lyxerr << "creating inset with name: '" << to_utf8(s) << '\'' << endl;
 	latexkeys const * l = in_word_set(s);
@@ -314,13 +314,13 @@ MathAtom createInsetMath(docstring const & s)
 		docstring const & inset = l->inset;
 		//lyxerr << " found inset: '" << inset << '\'' << endl;
 		if (inset == "ref")
-			return MathAtom(new InsetMathRef(l->name));
+			return MathAtom(new InsetMathRef(buf, l->name));
 		if (inset == "overset")
-			return MathAtom(new InsetMathOverset);
+			return MathAtom(new InsetMathOverset(buf));
 		if (inset == "underset")
-			return MathAtom(new InsetMathUnderset);
+			return MathAtom(new InsetMathUnderset(buf));
 		if (inset == "decoration")
-			return MathAtom(new InsetMathDecoration(l));
+			return MathAtom(new InsetMathDecoration(buf, l));
 		if (inset == "space")
 			return MathAtom(new InsetMathSpace(to_ascii(l->name), ""));
 		if (inset == "dots")
@@ -330,19 +330,19 @@ MathAtom createInsetMath(docstring const & s)
 			// InsetMathMBox is proposed to replace InsetMathBox,
 			// but is not ready yet (it needs a BufferView for
 			// construction)
-			return MathAtom(new InsetMathBox(l->name));
+			return MathAtom(new InsetMathBox(buf, l->name));
 //		if (inset == "fbox")
 //			return MathAtom(new InsetMathFBox(l));
 		if (inset == "style")
-			return MathAtom(new InsetMathSize(l));
+			return MathAtom(new InsetMathSize(buf, l));
 		if (inset == "font")
-			return MathAtom(new InsetMathFont(l));
+			return MathAtom(new InsetMathFont(buf, l));
 		if (inset == "oldfont")
-			return MathAtom(new InsetMathFontOld(l));
+			return MathAtom(new InsetMathFontOld(buf, l));
 		if (inset == "matrix")
-			return MathAtom(new InsetMathAMSArray(s));
+			return MathAtom(new InsetMathAMSArray(buf, s));
 		if (inset == "split")
-			return MathAtom(new InsetMathSplit(s));
+			return MathAtom(new InsetMathSplit(buf, s));
 		if (inset == "big")
 			// we can't create a InsetMathBig, since the argument
 			// is missing.
@@ -356,13 +356,13 @@ MathAtom createInsetMath(docstring const & s)
 			&& s[2] >= '1' && s[2] <= '9')
 		return MathAtom(new MathMacroArgument(s[2] - '0'));
 	if (s == "boxed")
-		return MathAtom(new InsetMathBoxed());
+		return MathAtom(new InsetMathBoxed(buf));
 	if (s == "fbox")
-		return MathAtom(new InsetMathFBox());
+		return MathAtom(new InsetMathFBox(buf));
 	if (s == "framebox")
-		return MathAtom(new InsetMathMakebox(true));
+		return MathAtom(new InsetMathMakebox(buf, true));
 	if (s == "makebox")
-		return MathAtom(new InsetMathMakebox(false));
+		return MathAtom(new InsetMathMakebox(buf, false));
 	if (s == "kern")
 		return MathAtom(new InsetMathKern);
 	if (s.substr(0, 8) == "xymatrix") {
@@ -390,94 +390,94 @@ MathAtom createInsetMath(docstring const & s)
 				spacing = Length(to_ascii(s.substr(i)));
 			}
 		}
-		return MathAtom(new InsetMathXYMatrix(spacing, spacing_code));
+		return MathAtom(new InsetMathXYMatrix(buf, spacing, spacing_code));
 	}
 	if (s == "xrightarrow" || s == "xleftarrow")
-		return MathAtom(new InsetMathXArrow(s));
+		return MathAtom(new InsetMathXArrow(buf, s));
 	if (s == "split" || s == "gathered" || s == "aligned" || s == "alignedat")
-		return MathAtom(new InsetMathSplit(s));
+		return MathAtom(new InsetMathSplit(buf, s));
 	if (s == "cases")
-		return MathAtom(new InsetMathCases);
+		return MathAtom(new InsetMathCases(buf));
 	if (s == "substack")
-		return MathAtom(new InsetMathSubstack);
+		return MathAtom(new InsetMathSubstack(buf));
 	if (s == "subarray" || s == "array")
-		return MathAtom(new InsetMathArray(s, 1, 1));
+		return MathAtom(new InsetMathArray(buf, s, 1, 1));
 	if (s == "sqrt")
-		return MathAtom(new InsetMathSqrt);
+		return MathAtom(new InsetMathSqrt(buf));
 	if (s == "root")
-		return MathAtom(new InsetMathRoot);
+		return MathAtom(new InsetMathRoot(buf));
 	if (s == "tabular")
-		return MathAtom(new InsetMathTabular(s, 1, 1));
+		return MathAtom(new InsetMathTabular(buf, s, 1, 1));
 	if (s == "stackrel")
-		return MathAtom(new InsetMathStackrel);
+		return MathAtom(new InsetMathStackrel(buf));
 	if (s == "binom")
-		return MathAtom(new InsetMathBinom(InsetMathBinom::BINOM));
+		return MathAtom(new InsetMathBinom(buf, InsetMathBinom::BINOM));
 	if (s == "dbinom")
-		return MathAtom(new InsetMathBinom(InsetMathBinom::DBINOM));
+		return MathAtom(new InsetMathBinom(buf, InsetMathBinom::DBINOM));
 	if (s == "tbinom")
-		return MathAtom(new InsetMathBinom(InsetMathBinom::TBINOM));
+		return MathAtom(new InsetMathBinom(buf, InsetMathBinom::TBINOM));
 	if (s == "choose")
-		return MathAtom(new InsetMathBinom(InsetMathBinom::CHOOSE));
+		return MathAtom(new InsetMathBinom(buf, InsetMathBinom::CHOOSE));
 	if (s == "brace")
-		return MathAtom(new InsetMathBinom(InsetMathBinom::BRACE));
+		return MathAtom(new InsetMathBinom(buf, InsetMathBinom::BRACE));
 	if (s == "brack")
-		return MathAtom(new InsetMathBinom(InsetMathBinom::BRACK));
+		return MathAtom(new InsetMathBinom(buf, InsetMathBinom::BRACK));
 	if (s == "frac")
-		return MathAtom(new InsetMathFrac);
+		return MathAtom(new InsetMathFrac(buf));
 	if (s == "cfrac")
-		return MathAtom(new InsetMathFrac(InsetMathFrac::CFRAC));
+		return MathAtom(new InsetMathFrac(buf, InsetMathFrac::CFRAC));
 	if (s == "dfrac")
-		return MathAtom(new InsetMathFrac(InsetMathFrac::DFRAC));
+		return MathAtom(new InsetMathFrac(buf, InsetMathFrac::DFRAC));
 	if (s == "tfrac")
-		return MathAtom(new InsetMathFrac(InsetMathFrac::TFRAC));
+		return MathAtom(new InsetMathFrac(buf, InsetMathFrac::TFRAC));
 	if (s == "over")
-		return MathAtom(new InsetMathFrac(InsetMathFrac::OVER));
+		return MathAtom(new InsetMathFrac(buf, InsetMathFrac::OVER));
 	if (s == "nicefrac")
-		return MathAtom(new InsetMathFrac(InsetMathFrac::NICEFRAC));
+		return MathAtom(new InsetMathFrac(buf, InsetMathFrac::NICEFRAC));
 	if (s == "unitfrac")
-		return MathAtom(new InsetMathFrac(InsetMathFrac::UNITFRAC));
+		return MathAtom(new InsetMathFrac(buf, InsetMathFrac::UNITFRAC));
 	// These string values are only for math toolbar use, no LaTeX names
 	if (s == "unitfracthree")
-		return MathAtom(new InsetMathFrac(InsetMathFrac::UNITFRAC, 3));
+		return MathAtom(new InsetMathFrac(buf, InsetMathFrac::UNITFRAC, 3));
 	if (s == "unitone")
-		return MathAtom(new InsetMathFrac(InsetMathFrac::UNIT, 1));
+		return MathAtom(new InsetMathFrac(buf, InsetMathFrac::UNIT, 1));
 	if (s == "unittwo")
-		return MathAtom(new InsetMathFrac(InsetMathFrac::UNIT));
+		return MathAtom(new InsetMathFrac(buf, InsetMathFrac::UNIT));
 	if (s == "cfracleft")
-		return MathAtom(new InsetMathFrac(InsetMathFrac::CFRACLEFT));
+		return MathAtom(new InsetMathFrac(buf, InsetMathFrac::CFRACLEFT));
 	if (s == "cfracright")
-		return MathAtom(new InsetMathFrac(InsetMathFrac::CFRACRIGHT));
+		return MathAtom(new InsetMathFrac(buf, InsetMathFrac::CFRACRIGHT));
 	//if (s == "infer")
 	//	return MathAtom(new MathInferInset);
 	if (s == "atop")
-		return MathAtom(new InsetMathFrac(InsetMathFrac::ATOP));
+		return MathAtom(new InsetMathFrac(buf, InsetMathFrac::ATOP));
 	if (s == "lefteqn")
-		return MathAtom(new InsetMathLefteqn);
+		return MathAtom(new InsetMathLefteqn(buf));
 	if (s == "boldsymbol")
-		return MathAtom(new InsetMathBoldSymbol(InsetMathBoldSymbol::AMS_BOLD));
+		return MathAtom(new InsetMathBoldSymbol(buf, InsetMathBoldSymbol::AMS_BOLD));
 	if (s == "bm")
-		return MathAtom(new InsetMathBoldSymbol(InsetMathBoldSymbol::BM_BOLD));
+		return MathAtom(new InsetMathBoldSymbol(buf, InsetMathBoldSymbol::BM_BOLD));
 	if (s == "heavysymbol" || s == "hm")
-		return MathAtom(new InsetMathBoldSymbol(InsetMathBoldSymbol::BM_HEAVY));
+		return MathAtom(new InsetMathBoldSymbol(buf, InsetMathBoldSymbol::BM_HEAVY));
 	if (s == "color" || s == "normalcolor")
-		return MathAtom(new InsetMathColor(true));
+		return MathAtom(new InsetMathColor(buf, true));
 	if (s == "textcolor")
-		return MathAtom(new InsetMathColor(false));
+		return MathAtom(new InsetMathColor(buf, false));
 	if (s == "hphantom")
-		return MathAtom(new InsetMathPhantom(InsetMathPhantom::hphantom));
+		return MathAtom(new InsetMathPhantom(buf, InsetMathPhantom::hphantom));
 	if (s == "phantom")
-		return MathAtom(new InsetMathPhantom(InsetMathPhantom::phantom));
+		return MathAtom(new InsetMathPhantom(buf, InsetMathPhantom::phantom));
 	if (s == "vphantom")
-		return MathAtom(new InsetMathPhantom(InsetMathPhantom::vphantom));
+		return MathAtom(new InsetMathPhantom(buf, InsetMathPhantom::vphantom));
 	if (s == "ensuremath")
-		return MathAtom(new InsetMathEnsureMath);
+		return MathAtom(new InsetMathEnsureMath(buf));
 	if (isSpecialChar(s))
 		return MathAtom(new InsetMathSpecialChar(s));
 
 	if (s == "regexp")
-		return MathAtom(new InsetMathHull(hullRegexp));
+		return MathAtom(new InsetMathHull(buf, hullRegexp));
 
-	return MathAtom(new MathMacro(s));
+	return MathAtom(new MathMacro(buf, s));
 }
 
 

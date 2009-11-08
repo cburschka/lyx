@@ -22,7 +22,7 @@ namespace lyx {
 class InsetMathBrace : public InsetMathNest {
 public:
 	///
-	InsetMathBrace();
+	InsetMathBrace(Buffer * buf);
 	///
 	InsetMathBrace(MathData const & ar);
 	/// identifies brace insets

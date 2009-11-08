@@ -26,9 +26,9 @@ namespace lyx {
 class InsetMathExFunc : public InsetMathNest {
 public:
 	///
-	explicit InsetMathExFunc(docstring const & name);
+	InsetMathExFunc(Buffer * buf, docstring const & name);
 	///
-	InsetMathExFunc(docstring const & name, MathData const & ar);
+	InsetMathExFunc(Buffer * buf, docstring const & name, MathData const & ar);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

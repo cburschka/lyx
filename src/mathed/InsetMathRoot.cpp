@@ -23,8 +23,8 @@ using namespace std;
 namespace lyx {
 
 
-InsetMathRoot::InsetMathRoot()
-	: InsetMathNest(2)
+InsetMathRoot::InsetMathRoot(Buffer * buf)
+	: InsetMathNest(buf, 2)
 {}
 
 

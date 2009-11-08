@@ -2569,7 +2569,7 @@ void Buffer::updateMacros(DocIterator & it, DocIterator & scope) const
 			// get macro data
 			MathMacroTemplate & macroTemplate =
 				static_cast<MathMacroTemplate &>(*iit->inset);
-			MacroContext mc(*this, it);
+			MacroContext mc(this, it);
 			macroTemplate.updateToContext(mc);
 
 			// valid?
@@ -2581,8 +2581,10 @@ void Buffer::updateMacros(DocIterator & it, DocIterator & scope) const
 				continue;
 
 			// register macro
+			// FIXME (Abdel), I don't understandt why we pass 'it' here
+			// instead of 'macroTemplate' defined above... is this correct?
 			d->macros[macroTemplate.name()][it] =
-				Impl::ScopeMacro(scope, MacroData(*this, it));
+				Impl::ScopeMacro(scope, MacroData(const_cast<Buffer *>(this), it));
 		}
 
 		// next paragraph
@@ -2662,7 +2664,7 @@ void Buffer::updateMacroInstances() const
 
 		// update macro in all cells of the InsetMathNest
 		DocIterator::idx_type n = minset->nargs();
-		MacroContext mc = MacroContext(*this, it);
+		MacroContext mc = MacroContext(this, it);
 		for (DocIterator::idx_type i = 0; i < n; ++i) {
 			MathData & data = minset->cell(i);
 			data.updateMacros(0, mc);

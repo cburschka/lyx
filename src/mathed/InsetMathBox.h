@@ -23,7 +23,7 @@ namespace lyx {
 class InsetMathBox : public InsetMathNest {
 public:
 	///
-	explicit InsetMathBox(docstring const & name);
+	explicit InsetMathBox(Buffer * buf, docstring const & name);
 	///
 	mode_type currentMode() const { return TEXT_MODE; }
 	///
@@ -52,7 +52,7 @@ private:
 class InsetMathFBox : public InsetMathNest {
 public:
 	///
-	InsetMathFBox();
+	InsetMathFBox(Buffer * buf);
 	///
 	mode_type currentMode() const { return TEXT_MODE; }
 	///
@@ -75,7 +75,7 @@ private:
 class InsetMathMakebox : public InsetMathNest {
 public:
 	///
-	InsetMathMakebox(bool framebox);
+	InsetMathMakebox(Buffer * buf, bool framebox);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -100,7 +100,7 @@ private:
 class InsetMathBoxed : public InsetMathNest {
 public:
 	///
-	InsetMathBoxed();
+	InsetMathBoxed(Buffer * buf);
 	///
 	void validate(LaTeXFeatures & features) const;
 	///

@@ -22,7 +22,7 @@ namespace lyx {
 /// Inset for ensuring math mode
 class InsetMathEnsureMath : public InsetMathNest {
 public:
-	InsetMathEnsureMath();
+	InsetMathEnsureMath(Buffer * buf);
 	///
 	mode_type currentMode() const { return MATH_MODE; }
 	///

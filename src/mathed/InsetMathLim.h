@@ -24,7 +24,8 @@ namespace lyx {
 class InsetMathLim : public InsetMathNest {
 public:
 	///
-	InsetMathLim(MathData const & f, MathData const & x, MathData const & x0);
+	InsetMathLim(Buffer * buf, MathData const & f, MathData const & x,
+		MathData const & x0);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

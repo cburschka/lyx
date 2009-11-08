@@ -21,9 +21,9 @@ namespace lyx {
 class InsetMathAMSArray : public InsetMathGrid {
 public:
 	///
-	InsetMathAMSArray(docstring const &, int m, int n);
+	InsetMathAMSArray(Buffer * buf, docstring const &, int m, int n);
 	///
-	InsetMathAMSArray(docstring const &);
+	InsetMathAMSArray(Buffer * buf, docstring const &);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

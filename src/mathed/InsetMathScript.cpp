@@ -32,18 +32,18 @@ using namespace std;
 namespace lyx {
 
 
-InsetMathScript::InsetMathScript()
-	: InsetMathNest(1), cell_1_is_up_(false), limits_(0)
+InsetMathScript::InsetMathScript(Buffer * buf)
+	: InsetMathNest(buf, 1), cell_1_is_up_(false), limits_(0)
 {}
 
 
-InsetMathScript::InsetMathScript(bool up)
-	: InsetMathNest(2), cell_1_is_up_(up), limits_(0)
+InsetMathScript::InsetMathScript(Buffer * buf, bool up)
+	: InsetMathNest(buf, 2), cell_1_is_up_(up), limits_(0)
 {}
 
 
-InsetMathScript::InsetMathScript(MathAtom const & at, bool up)
-	: InsetMathNest(2), cell_1_is_up_(up), limits_(0)
+InsetMathScript::InsetMathScript(Buffer * buf, MathAtom const & at, bool up)
+	: InsetMathNest(buf, 2), cell_1_is_up_(up), limits_(0)
 {
 	LASSERT(nargs() >= 1, /**/);
 	cell(0).push_back(at);

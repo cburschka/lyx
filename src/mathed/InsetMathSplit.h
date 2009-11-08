@@ -21,7 +21,8 @@ namespace lyx {
 class InsetMathSplit : public InsetMathGrid {
 public:
 	///
-	explicit InsetMathSplit(docstring const & name, char valign = 'c');
+	explicit InsetMathSplit(Buffer * buf, docstring const & name,
+		char valign = 'c');
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///

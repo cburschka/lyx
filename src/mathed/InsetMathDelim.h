@@ -24,9 +24,10 @@ namespace lyx {
 class InsetMathDelim : public InsetMathNest {
 public:
 	///
-	InsetMathDelim(docstring const & left, docstring const & right);
+	InsetMathDelim(Buffer * buf, docstring const & left, docstring const & right);
 	///
-	InsetMathDelim(docstring const & left, docstring const & right, MathData const &);
+	InsetMathDelim(Buffer * buf, docstring const & left, docstring const & right,
+		MathData const &);
 	///
 	InsetMathDelim * asDelimInset() { return this; }
 	///

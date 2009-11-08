@@ -24,8 +24,8 @@ class MathAtom;
 class MathData;
 
 
-MathAtom createInsetMath(docstring const &);
-MathAtom createInsetMath(char const * const);
+MathAtom createInsetMath(docstring const &, Buffer * buf);
+MathAtom createInsetMath(char const * const, Buffer * buf);
 
 /** Fills ar with the contents of str.
  *  str is created by the frontend dialog's and returned to the LyX core.

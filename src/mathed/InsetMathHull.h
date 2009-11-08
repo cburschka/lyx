@@ -28,9 +28,9 @@ class RenderPreview;
 class InsetMathHull : public InsetMathGrid {
 public:
 	///
-	InsetMathHull(Buffer * buf = 0);
+	InsetMathHull(Buffer * buf);
 	///
-	explicit InsetMathHull(HullType type, Buffer * buf = 0);
+	InsetMathHull(Buffer * buf, HullType type);
 	///
 	~InsetMathHull();
 	///

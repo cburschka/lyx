@@ -29,9 +29,9 @@ class Lexer;
 class InsetFormulaMacro : public InsetMathNest {
 public:
 	///
-	InsetFormulaMacro();
+	InsetFormulaMacro(Buffer * buf);
 	/// construct a macro hull from its name and the number of arguments
-	InsetFormulaMacro(docstring const & name, int nargs, docstring const & t);
+	InsetFormulaMacro(Buffer * buf, docstring const & name, int nargs, docstring const & t);
 	/// constructs a mocro from its LaTeX definition
 	explicit InsetFormulaMacro(docstring const & s);
 	///

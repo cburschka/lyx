@@ -23,7 +23,7 @@ class LaTeXFeatures;
 class InsetMathCases : public InsetMathGrid {
 public:
 	///
-	explicit InsetMathCases(row_type rows = 1u);
+	explicit InsetMathCases(Buffer * buf, row_type rows = 1u);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

@@ -447,7 +447,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 			- right_margin;
 		Font const & font = ii->inset->noFontChange() ?
 			bufferfont : displayFont(pit, ii->pos);
-		MacroContext mc(buffer, parPos);
+		MacroContext mc(&buffer, parPos);
 		MetricsInfo mi(bv_, font.fontInfo(), w, mc);
 		ii->inset->metrics(mi, dim);
 		Dimension const old_dim = pm.insetDimension(ii->inset);

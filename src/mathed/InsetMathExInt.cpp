@@ -22,8 +22,8 @@
 
 namespace lyx {
 
-InsetMathExInt::InsetMathExInt(docstring const & name)
-	: InsetMathNest(4), symbol_(name)
+InsetMathExInt::InsetMathExInt(Buffer * buf, docstring const & name)
+	: InsetMathNest(buf, 4), symbol_(name)
 {}
 
 // 0 - core

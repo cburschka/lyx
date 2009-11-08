@@ -1441,7 +1441,7 @@ bool Cursor::macroModeClose()
 	if (in && in->interpretString(*this, s))
 		return true;
 	MathAtom atom = buffer()->getMacro(name, *this, false) ?
-		MathAtom(new MathMacro(name)) : createInsetMath(name);
+		MathAtom(new MathMacro(buffer(), name)) : createInsetMath(name, buffer());
 
 	// try to put argument into macro, if we just inserted a macro
 	bool macroArg = false;
@@ -1895,8 +1895,8 @@ void Cursor::handleFont(string const & font)
 		} else {
 			// cursor in between. split cell
 			MathData::iterator bt = cell().begin();
-			MathAtom at = createInsetMath(from_utf8(font));
-			at.nucleus()->cell(0) = MathData(bt, bt + pos());
+			MathAtom at = createInsetMath(from_utf8(font), buffer());
+			at.nucleus()->cell(0) = MathData(buffer(), bt, bt + pos());
 			cell().erase(bt, bt + pos());
 			popBackward();
 			plainInsert(at);

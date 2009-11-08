@@ -21,8 +21,8 @@
 
 namespace lyx {
 
-InsetMathEnsureMath::InsetMathEnsureMath()
-	: InsetMathNest(1)
+InsetMathEnsureMath::InsetMathEnsureMath(Buffer * buf)
+	: InsetMathNest(buf, 1)
 {}
 
 

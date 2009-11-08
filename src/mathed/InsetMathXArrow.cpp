@@ -23,8 +23,8 @@ using namespace std;
 namespace lyx {
 
 
-InsetMathXArrow::InsetMathXArrow(docstring const & name)
-	: InsetMathFracBase(), name_(name)
+InsetMathXArrow::InsetMathXArrow(Buffer * buf, docstring const & name)
+	: InsetMathFracBase(buf), name_(name)
 {}
 
 

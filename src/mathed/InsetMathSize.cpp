@@ -23,8 +23,8 @@
 
 namespace lyx {
 
-InsetMathSize::InsetMathSize(latexkeys const * l)
-	: InsetMathNest(1), key_(l), style_(Styles(convert<int>(l->extra)))
+InsetMathSize::InsetMathSize(Buffer * buf, latexkeys const * l)
+	: InsetMathNest(buf, 1), key_(l), style_(Styles(convert<int>(l->extra)))
 {}
 
 
