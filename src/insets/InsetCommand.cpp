@@ -51,9 +51,9 @@ namespace lyx {
 
 // FIXME Would it now be possible to use the InsetCode in 
 // place of the mailer name and recover that information?
-InsetCommand::InsetCommand(Buffer *, InsetCommandParams const & p,
+InsetCommand::InsetCommand(Buffer * buf, InsetCommandParams const & p,
 			   string const & mailer_name)
-	: Inset(0), p_(p),
+	: Inset(buf), p_(p),
 	  mailer_name_(mailer_name),
 	  mouse_hover_(false)
 {}
