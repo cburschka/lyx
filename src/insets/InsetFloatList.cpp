@@ -36,13 +36,13 @@ using namespace lyx::support;
 namespace lyx {
 
 
-InsetFloatList::InsetFloatList()
-	: InsetCommand(InsetCommandParams(FLOAT_LIST_CODE), "toc")
+InsetFloatList::InsetFloatList(Buffer * buf)
+	: InsetCommand(buf, InsetCommandParams(FLOAT_LIST_CODE), "toc")
 {}
 
 
-InsetFloatList::InsetFloatList(string const & type)
-	: InsetCommand(InsetCommandParams(FLOAT_LIST_CODE), "toc")
+InsetFloatList::InsetFloatList(Buffer * buf, string const & type)
+	: InsetCommand(buf, InsetCommandParams(FLOAT_LIST_CODE), "toc")
 {
 	setParam("type", from_ascii(type));
 }

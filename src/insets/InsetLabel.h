@@ -20,7 +20,7 @@ namespace lyx {
 class InsetLabel : public InsetCommand {
 public:
 	///
-	InsetLabel(InsetCommandParams const &);
+	InsetLabel(Buffer * buf, InsetCommandParams const &);
 
 	/// verify label and update references.
 	/**

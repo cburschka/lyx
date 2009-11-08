@@ -22,7 +22,7 @@ namespace lyx {
 class InsetTOC : public InsetCommand {
 public:
 	///
-	explicit InsetTOC(InsetCommandParams const &);
+	InsetTOC(Buffer * buf, InsetCommandParams const &);
 	///
 	docstring screenLabel() const;
 	///

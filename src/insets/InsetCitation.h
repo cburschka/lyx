@@ -32,7 +32,7 @@ class InsetCitation : public InsetCommand
 {
 public:
 	///
-	explicit InsetCitation(InsetCommandParams const &);
+	explicit InsetCitation(Buffer * buf, InsetCommandParams const &);
 	///
 	bool isLabeled() const { return true; }
 	///

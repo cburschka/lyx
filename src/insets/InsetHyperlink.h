@@ -23,7 +23,7 @@ class InsetHyperlink : public InsetCommand
 {
 public:
 	///
-	explicit InsetHyperlink(InsetCommandParams const &);
+	explicit InsetHyperlink(Buffer * buf, InsetCommandParams const &);
 	///
 	InsetCode lyxCode() const { return HYPERLINK_CODE; }
 	///

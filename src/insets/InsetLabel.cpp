@@ -42,8 +42,8 @@ using namespace lyx::support;
 namespace lyx {
 
 
-InsetLabel::InsetLabel(InsetCommandParams const & p)
-	: InsetCommand(p, "label")
+InsetLabel::InsetLabel(Buffer * buf, InsetCommandParams const & p)
+	: InsetCommand(buf, p, "label")
 {}
 
 

@@ -184,7 +184,7 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 		case LFUN_NOMENCL_INSERT: {
 			InsetCommandParams icp(NOMENCL_CODE);
 			icp["symbol"] = cmd.argument();
-			return new InsetNomencl(icp);
+			return new InsetNomencl(buf, icp);
 		}
 
 		case LFUN_TABULAR_INSERT: {
@@ -206,17 +206,17 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 		case LFUN_INDEX_PRINT:  {
 			InsetCommandParams icp(INDEX_PRINT_CODE);
 			icp["type"] = cmd.argument();
-			return new InsetPrintIndex(icp);
+			return new InsetPrintIndex(buf, icp);
 		}
 
 		case LFUN_NOMENCL_PRINT: {
 			InsetCommandParams icp(NOMENCL_PRINT_CODE);
 			icp["set_width"] = from_ascii("auto");
-			return new InsetPrintNomencl(icp);
+			return new InsetPrintNomencl(buf, icp);
 		}
 
 		case LFUN_TOC_INSERT:
-			return new InsetTOC(InsetCommandParams(TOC_CODE));
+			return new InsetTOC(buf, InsetCommandParams(TOC_CODE));
 
 		case LFUN_INFO_INSERT: {
 			InsetInfo * inset = new InsetInfo(buf, to_utf8(cmd.argument()));
@@ -247,7 +247,7 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 			case CITE_CODE: {
 				InsetCommandParams icp(code);
 				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
-				return new InsetCitation(icp);
+				return new InsetCitation(buf, icp);
 			}
 			
 			case ERT_CODE: {
@@ -281,13 +281,13 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 			case HYPERLINK_CODE: {
 				InsetCommandParams icp(code);
 				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
-				return new InsetHyperlink(icp);
+				return new InsetHyperlink(buf, icp);
 			}
 			
 			case INCLUDE_CODE: {
 				InsetCommandParams icp(code);
 				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
-				return new InsetInclude(icp);
+				return new InsetInclude(buf, icp);
 			}
 			
 			case INDEX_CODE: {
@@ -298,19 +298,19 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 			case INDEX_PRINT_CODE:  {
 				InsetCommandParams icp(code);
 				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
-				return new InsetPrintIndex(icp);
+				return new InsetPrintIndex(buf, icp);
 			}
 			
 			case NOMENCL_CODE: {
 				InsetCommandParams icp(code);
 				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
-				return new InsetNomencl(icp);
+				return new InsetNomencl(buf, icp);
 			}
 			
 			case LABEL_CODE: {
 				InsetCommandParams icp(code);
 				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
-				return new InsetLabel(icp);
+				return new InsetLabel(buf, icp);
 			}
 			
 			case REF_CODE: {
@@ -328,7 +328,7 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 			case TOC_CODE: {
 				InsetCommandParams icp(code);
 				InsetCommand::string2params(name, to_utf8(cmd.argument()), icp);
-				return new InsetTOC(icp);
+				return new InsetTOC(buf, icp);
 			}
 			
 			case VSPACE_CODE: {
@@ -482,25 +482,25 @@ Inset * readInset(Lexer & lex, Buffer * buf)
 				inset.reset(new InsetBibtex(buf, inscmd));
 				break;
 			case CITE_CODE: 
-				inset.reset(new InsetCitation(inscmd));
+				inset.reset(new InsetCitation(buf, inscmd));
 				break;
 			case HYPERLINK_CODE:
-				inset.reset(new InsetHyperlink(inscmd));
+				inset.reset(new InsetHyperlink(buf, inscmd));
 				break;
 			case INCLUDE_CODE:
-				inset.reset(new InsetInclude(inscmd));
+				inset.reset(new InsetInclude(buf, inscmd));
 				break;
 			case INDEX_PRINT_CODE:
-				inset.reset(new InsetPrintIndex(inscmd));
+				inset.reset(new InsetPrintIndex(buf, inscmd));
 				break;
 			case LABEL_CODE:
-				inset.reset(new InsetLabel(inscmd));
+				inset.reset(new InsetLabel(buf, inscmd));
 				break;
 			case NOMENCL_CODE:
-				inset.reset(new InsetNomencl(inscmd));
+				inset.reset(new InsetNomencl(buf, inscmd));
 				break;
 			case NOMENCL_PRINT_CODE:
-				inset.reset(new InsetPrintNomencl(inscmd));
+				inset.reset(new InsetPrintNomencl(buf, inscmd));
 				break;
 			case REF_CODE:
 				if (inscmd["name"].empty() && inscmd["reference"].empty())
@@ -508,7 +508,7 @@ Inset * readInset(Lexer & lex, Buffer * buf)
 				inset.reset(new InsetRef(buf, inscmd));
 				break;
 			case TOC_CODE:
-				inset.reset(new InsetTOC(inscmd));
+				inset.reset(new InsetTOC(buf, inscmd));
 				break;
 			case NO_CODE:
 			default:
@@ -583,7 +583,7 @@ Inset * readInset(Lexer & lex, Buffer * buf)
 		} else if (tmptok == "Index") {
 			inset.reset(new InsetIndex(buf, InsetIndexParams()));
 		} else if (tmptok == "FloatList") {
-			inset.reset(new InsetFloatList);
+			inset.reset(new InsetFloatList(buf));
 		} else if (tmptok == "Info") {
 			inset.reset(new InsetInfo(buf));
 		} else {

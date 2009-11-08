@@ -28,8 +28,8 @@ using namespace lyx::support;
 namespace lyx {
 
 
-InsetHyperlink::InsetHyperlink(InsetCommandParams const & p)
-	: InsetCommand(p, "href")
+InsetHyperlink::InsetHyperlink(Buffer * buf, InsetCommandParams const & p)
+	: InsetCommand(buf, p, "href")
 {}
 
 

@@ -23,9 +23,9 @@ namespace lyx {
 class InsetFloatList : public InsetCommand {
 public:
 	///
-	InsetFloatList();
+	InsetFloatList(Buffer *);
 	///
-	InsetFloatList(std::string const & type);
+	InsetFloatList(Buffer *, std::string const & type);
 	///
 	docstring screenLabel() const;
 	///

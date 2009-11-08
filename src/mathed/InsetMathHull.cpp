@@ -508,7 +508,7 @@ void InsetMathHull::label(row_type row, docstring const & label)
 	}
 	InsetCommandParams p(LABEL_CODE);
 	p["name"] = label;
-	label_[row] = new InsetLabel(p);
+	label_[row] = new InsetLabel(buffer_, p);
 	if (buffer_)
 		label_[row]->setBuffer(buffer());
 }

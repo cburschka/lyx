@@ -26,7 +26,7 @@ class LaTeXFeatures;
 class InsetNomencl : public InsetCommand {
 public:
 	///
-	InsetNomencl(InsetCommandParams const &);
+	InsetNomencl(Buffer * buf, InsetCommandParams const &);
 	///
 	docstring screenLabel() const;
 	///
@@ -60,7 +60,7 @@ private:
 class InsetPrintNomencl : public InsetCommand {
 public:
 	///
-	InsetPrintNomencl(InsetCommandParams const &);
+	InsetPrintNomencl(Buffer * buf, InsetCommandParams const &);
 	/// Updates needed features for this inset.
 	void validate(LaTeXFeatures & features) const;
 	///

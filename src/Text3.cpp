@@ -2008,7 +2008,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			setParagraphs(cur, p);
 			// FIXME This should be simplified when InsetFloatList takes a
 			// Buffer in its constructor.
-			InsetFloatList * ifl = new InsetFloatList(to_utf8(cmd.argument()));
+			InsetFloatList * ifl = new InsetFloatList(cur.buffer(), to_utf8(cmd.argument()));
 			ifl->setBuffer(bv->buffer());
 			insertInset(cur, ifl);
 			cur.posForward();

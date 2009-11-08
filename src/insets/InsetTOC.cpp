@@ -28,8 +28,8 @@ using namespace std;
 namespace lyx {
 
 
-InsetTOC::InsetTOC(InsetCommandParams const & p)
-	: InsetCommand(p, "toc")
+InsetTOC::InsetTOC(Buffer * buf, InsetCommandParams const & p)
+	: InsetCommand(buf, p, "toc")
 {}
 
 

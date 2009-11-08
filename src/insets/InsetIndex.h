@@ -94,7 +94,7 @@ private:
 class InsetPrintIndex : public InsetCommand {
 public:
 	///
-	InsetPrintIndex(InsetCommandParams const &);
+	InsetPrintIndex(Buffer * buf, InsetCommandParams const &);
 	///
 	InsetCode lyxCode() const { return INDEX_PRINT_CODE; }
 

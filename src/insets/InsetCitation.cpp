@@ -355,8 +355,8 @@ docstring basicLabel(docstring const & keyList, docstring const & after)
 ParamInfo InsetCitation::param_info_;
 
 
-InsetCitation::InsetCitation(InsetCommandParams const & p)
-	: InsetCommand(p, "citation")
+InsetCitation::InsetCitation(Buffer * buf, InsetCommandParams const & p)
+	: InsetCommand(buf, p, "citation")
 {}
 
 

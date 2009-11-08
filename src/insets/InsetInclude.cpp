@@ -147,20 +147,20 @@ FileName const includedFilename(Buffer const & buffer,
 }
 
 
-InsetLabel * createLabel(docstring const & label_str)
+InsetLabel * createLabel(Buffer * buf, docstring const & label_str)
 {
 	if (label_str.empty())
 		return 0;
 	InsetCommandParams icp(LABEL_CODE);
 	icp["name"] = label_str;
-	return new InsetLabel(icp);
+	return new InsetLabel(buf, icp);
 }
 
 } // namespace anon
 
 
-InsetInclude::InsetInclude(InsetCommandParams const & p)
-	: InsetCommand(p, "include"), include_label(uniqueID()),
+InsetInclude::InsetInclude(Buffer * buf, InsetCommandParams const & p)
+	: InsetCommand(buf, p, "include"), include_label(uniqueID()),
 	  preview_(new RenderMonitoredPreview(this)), failedtoload_(false),
 	  set_label_(false), label_(0), child_buffer_(0)
 {
@@ -168,7 +168,7 @@ InsetInclude::InsetInclude(InsetCommandParams const & p)
 
 	if (isListings(params())) {
 		InsetListingsParams listing_params(to_utf8(p["lstparams"]));
-		label_ = createLabel(from_utf8(listing_params.getParamValue("label")));
+		label_ = createLabel(buffer_, from_utf8(listing_params.getParamValue("label")));
 	}
 }
 
@@ -252,7 +252,7 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 					if (label_) 
 						old_label = label_->getParam("name");
 					else {
-						label_ = createLabel(new_label);
+						label_ = createLabel(buffer_, new_label);
 						label_->setBuffer(buffer());
 					}					
 
