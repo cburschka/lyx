@@ -156,7 +156,7 @@ Graph::getPath(int from, int t)
 			break;
 		}
 
-		vector<int>::const_iterator beg =
+		vector<int>::const_iterator const beg =
 			vertices_[i].out_vertices.begin();
 		vector<int>::const_iterator cit = beg;
 		vector<int>::const_iterator end =
