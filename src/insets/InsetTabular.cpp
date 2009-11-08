@@ -548,7 +548,6 @@ Tabular::CellData::CellData(CellData const & cs)
 	  p_width(cs.p_width),
 	  inset(dynamic_cast<InsetTableCell *>(cs.inset->clone()))
 {
-	inset->setBuffer(cs.inset->buffer());
 }
 
 Tabular::CellData & Tabular::CellData::operator=(CellData cs)
