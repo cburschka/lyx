@@ -249,11 +249,13 @@ def checkLatex(dtl_tools):
 
 def checkModule(module):
     ''' Check for a Python module, return the status '''
-    msg = 'checking for "' + module + ' module"... '
+    print 'checking for "' + module + ' module"... '
     try:
       __import__(module)
+      print "yes"
       return True
     except ImportError:
+      print "no"
       return False
 
 
