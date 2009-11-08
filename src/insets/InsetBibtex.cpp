@@ -54,7 +54,6 @@ namespace os = support::os;
 InsetBibtex::InsetBibtex(Buffer * buf, InsetCommandParams const & p)
 	: InsetCommand(buf, p, "bibtex")
 {
-	Inset::setBuffer(const_cast<Buffer &>(*buf));
 	buffer_->invalidateBibinfoCache();
 }
 
