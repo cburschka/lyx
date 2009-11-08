@@ -165,7 +165,7 @@ Buffer * newUnnamedFile(FileName const & path, string const & prefix,
 	}
 	while (theBufferList().exists(filename) || filename.isReadableFile());
 		
-	return newFile(filename.absFilename(), "", false);
+	return newFile(filename.absFilename(), templatename, false);
 }
 
 
