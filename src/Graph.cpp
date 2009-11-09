@@ -52,7 +52,8 @@ vector<int> const
 	// Q_ holds a list of nodes we have been able to reach (in this
 	// case, reach backwards). It is initailized to the current node
 	// by bfs_init, and then we recurse, adding the nodes we can reach
-	// from the current node as we go.
+	// from the current node as we go. That makes it a breadth-first
+	// search.
 	while (!Q_.empty()) {
 		int const current = Q_.front();
 		Q_.pop();
