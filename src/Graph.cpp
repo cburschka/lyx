@@ -50,7 +50,7 @@ vector<int> const
 
 	// Here's the logic, which is shared by the other routines.
 	// Q_ holds a list of nodes we have been able to reach (in this
-	// case, reach backwards). It is initailized to the current node
+	// case, reach backwards). It is initialized to the current node
 	// by bfs_init, and then we recurse, adding the nodes we can reach
 	// from the current node as we go. That makes it a breadth-first
 	// search.
@@ -60,12 +60,13 @@ vector<int> const
 		if (current != target || formats.get(target).name() != "lyx")
 			result.push_back(current);
 
-		vector<int>::iterator it = vertices_[current].in_vertices.begin();
-		vector<int>::iterator end = vertices_[current].in_vertices.end();
+		vector<Arrow>::iterator it = vertices_[current].in_arrows.begin();
+		vector<Arrow>::iterator const end = vertices_[current].in_arrows.end();
 		for (; it != end; ++it) {
-			if (!vertices_[*it].visited) {
-				vertices_[*it].visited = true;
-				Q_.push(*it);
+			const int cv = it->vertex;
+			if (!vertices_[cv].visited) {
+				vertices_[cv].visited = true;
+				Q_.push(cv);
 			}
 		}
 	}
@@ -95,9 +96,9 @@ vector<int> const
 				result.push_back(current);
 		}
 
-		vector<OutEdge>::const_iterator cit =
+		vector<Arrow>::const_iterator cit =
 			vertices_[current].out_arrows.begin();
-		vector<OutEdge>::const_iterator end =
+		vector<Arrow>::const_iterator end =
 			vertices_[current].out_arrows.end();
 		for (; cit != end; ++cit) {
 			int const cv = cit->vertex;
@@ -126,9 +127,9 @@ bool Graph::isReachable(int from, int to)
 		if (current == to)
 			return true;
 
-		vector<OutEdge>::const_iterator cit =
+		vector<Arrow>::const_iterator cit =
 			vertices_[current].out_arrows.begin();
-		vector<OutEdge>::const_iterator end =
+		vector<Arrow>::const_iterator end =
 			vertices_[current].out_arrows.end();
 		for (; cit != end; ++cit) {
 			int const cv = cit->vertex;
@@ -160,10 +161,10 @@ Graph::EdgePath const Graph::getPath(int from, int to)
 		int const current = Q_.front();
 		Q_.pop();
 
-		vector<OutEdge>::const_iterator const beg =
+		vector<Arrow>::const_iterator const beg =
 			vertices_[current].out_arrows.begin();
-		vector<OutEdge>::const_iterator cit = beg;
-		vector<OutEdge>::const_iterator end =
+		vector<Arrow>::const_iterator cit = beg;
+		vector<Arrow>::const_iterator end =
 			vertices_[current].out_arrows.end();
 		for (; cit != end; ++cit) {
 			int const cv = cit->vertex;
@@ -193,7 +194,7 @@ Graph::EdgePath const Graph::getPath(int from, int to)
 	return path;
 }
 
-
+	
 void Graph::init(int size)
 {
 	vertices_ = vector<Vertex>(size);
@@ -203,8 +204,9 @@ void Graph::init(int size)
 
 void Graph::addEdge(int from, int to)
 {
-	vertices_[to].in_vertices.push_back(from);
-	vertices_[from].out_arrows.push_back(OutEdge(to, numedges_++));
+	vertices_[to].in_arrows.push_back(Arrow(from, numedges_));
+	vertices_[from].out_arrows.push_back(Arrow(to, numedges_));
+	++numedges_;
 }
 
 

@@ -44,18 +44,21 @@ private:
 	///
 	bool bfs_init(int, bool clear_visited = true);
 
-	///
-	struct OutEdge {
-		OutEdge(int v, int e): vertex(v), edge(e) {}
+	/// 
+	struct Arrow {
+		///
+		Arrow(int v, int e): vertex(v), edge(e) {}
+		///
 		int vertex;
+		///
 		int edge;
 	};
 	///
 	struct Vertex {
 		/// vertices that point at this one
-		std::vector<int> in_vertices;
+		std::vector<Arrow> in_arrows;
 		/// paths out from here
-		std::vector<OutEdge> out_arrows;
+		std::vector<Arrow> out_arrows;
 		///
 		bool visited;
 	};
