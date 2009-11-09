@@ -118,7 +118,9 @@ enum syntax_element_type
    syntax_element_backstep = syntax_element_long_set_rep + 1,
    // an assertion that a mark was matched:
    syntax_element_assert_backref = syntax_element_backstep + 1,
-   syntax_element_toggle_case = syntax_element_assert_backref + 1
+   syntax_element_toggle_case = syntax_element_assert_backref + 1,
+   // a recursive expression:
+   syntax_element_recurse = syntax_element_toggle_case + 1
 };
 
 #ifdef BOOST_REGEX_DEBUG
@@ -156,6 +158,7 @@ struct re_brace : public re_syntax_base
    // The index to match, can be zero (don't mark the sub-expression)
    // or negative (for perl style (?...) extentions):
    int index;
+   bool icase;
 };
 
 /*** struct re_dot **************************************************
@@ -240,7 +243,7 @@ Repeat a section of the machine
 struct re_repeat : public re_alt
 {
    std::size_t   min, max;  // min and max allowable repeats
-   int           id;        // Unique identifier for this repeat
+   int           state_id;        // Unique identifier for this repeat
    bool          leading;   // True if this repeat is at the start of the machine (lets us optimize some searches)
    bool          greedy;    // True if this is a greedy repeat
 };
