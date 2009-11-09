@@ -107,8 +107,7 @@ bool Graph::isReachable(int from, int to)
 	if (from == to)
 		return true;
 
-	int const s = bfs_init(from);
-	if (s < 0 || to < 0)
+	if (to < 0 || bfs_init(from) < 0)
 		return false;
 
 	while (!Q_.empty()) {
@@ -133,15 +132,14 @@ bool Graph::isReachable(int from, int to)
 }
 
 
-Graph::EdgePath const
-Graph::getPath(int from, int t)
+Graph::EdgePath const Graph::getPath(int from, int to)
 {
 	EdgePath path;
-	if (from == t)
+	if (from == to)
 		return path;
 
 	int const s = bfs_init(from);
-	if (s < 0 || t < 0)
+	if (s < 0 || to < 0)
 		return path;
 
 	vector<int> prev_edge(formats.size());
@@ -151,7 +149,7 @@ Graph::getPath(int from, int t)
 	while (!Q_.empty()) {
 		int const i = Q_.front();
 		Q_.pop();
-		if (i == t) {
+		if (i == to) {
 			found = true;
 			break;
 		}
@@ -174,13 +172,14 @@ Graph::getPath(int from, int t)
 	if (!found)
 		return path;
 
-	while (t != s) {
-		path.push_back(prev_edge[t]);
-		t = prev_vertex[t];
+	while (to != s) {
+		path.push_back(prev_edge[to]);
+		to = prev_vertex[to];
 	}
 	reverse(path.begin(), path.end());
 	return path;
 }
+
 
 void Graph::init(int size)
 {
@@ -189,12 +188,14 @@ void Graph::init(int size)
 	numedges_ = 0;
 }
 
-void Graph::addEdge(int s, int t)
+
+void Graph::addEdge(int from, int to)
 {
-	vertices_[t].in_vertices.push_back(s);
-	vertices_[s].out_vertices.push_back(t);
-	vertices_[s].out_edges.push_back(numedges_++);
+	vertices_[to].in_vertices.push_back(from);
+	vertices_[from].out_vertices.push_back(to);
+	vertices_[from].out_edges.push_back(numedges_++);
 }
+
 
 vector<Graph::Vertex> Graph::vertices_;
 

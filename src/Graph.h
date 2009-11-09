@@ -24,20 +24,18 @@ public:
 	Graph() : numedges_(0) {};
 	///
 	typedef std::vector<int> EdgePath;
-	///
+	/// \return a vector of the vertices from which "to" can be reached
+	std::vector<int> const getReachableTo(int to, bool clear_visited);
+	/// \return a vector of the vertices that can be reached from "from"
 	std::vector<int> const
-	getReachableTo(int, bool clear_visited);
-	///
-	std::vector<int> const
-	getReachable(int, bool only_viewable,
-		     bool clear_visited);
-	///
-	bool isReachable(int, int);
-	///
-	EdgePath const getPath(int, int);
-	///
-	void addEdge(int s, int t);
-	///
+		getReachable(int from, bool only_viewable, bool clear_visited);
+	/// Can "from" be reached from "to"?
+	bool isReachable(int from, int to);
+	/// Find a path from "from" to "to".
+	EdgePath const getPath(int from, int to);
+	/// Called repeatedly to build the graph.
+	void addEdge(int from, int to);
+	/// Reset the internal data structures.
 	void init(int size);
 
 private:
@@ -52,8 +50,7 @@ private:
 		std::vector<int> out_edges;
 	};
 	///
-	static
-	std::vector<Vertex> vertices_;
+	static std::vector<Vertex> vertices_;
 	///
 	std::vector<bool> visited_;
 	///

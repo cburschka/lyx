@@ -635,13 +635,17 @@ bool Converters::runLaTeX(Buffer const & buffer, string const & command,
 
 void Converters::buildGraph()
 {
+	// clear graph's data structures
 	G_.init(formats.size());
 	ConverterList::iterator beg = converterlist_.begin();
 	ConverterList::iterator const end = converterlist_.end();
+	// each of the converters knows how to convert one format to another
+	// so, for each of them, we create an arrow on the graph, going from 
+	// the one to the other
 	for (ConverterList::iterator it = beg; it != end ; ++it) {
-		int const s = formats.getNumber(it->from);
-		int const t = formats.getNumber(it->to);
-		G_.addEdge(s,t);
+		int const from = formats.getNumber(it->from);
+		int const to   = formats.getNumber(it->to);
+		G_.addEdge(from, to);
 	}
 }
 
