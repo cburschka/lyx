@@ -72,8 +72,6 @@ public:
 class Converters {
 public:
 	///
-	typedef std::vector<int> EdgePath; // to be removed SOON
-	///
 	typedef std::vector<Converter> ConverterList;
 	///
 	typedef ConverterList::const_iterator const_iterator;

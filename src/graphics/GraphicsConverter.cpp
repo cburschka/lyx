@@ -260,7 +260,7 @@ static void build_script(FileName const & from_file,
 {
 	LASSERT(from_format != to_format, /**/);
 	LYXERR(Debug::GRAPHICS, "build_script ... ");
-	typedef Converters::EdgePath EdgePath;
+	typedef Graph::EdgePath EdgePath;
 
 	script << "#!/usr/bin/env python\n"
 		  "# -*- coding: utf-8 -*-\n"
