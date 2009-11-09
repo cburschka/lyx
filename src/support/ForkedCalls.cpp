@@ -192,7 +192,13 @@ void ForkedProcess::kill(int tol)
 
 
 pid_t ForkedProcess::fork() {
-#if !defined (HAVE_FORK)
+/* FIXME fork() is not usable on Mac OS X 10.6 (snow leopard) 
+ *   Use something else like threads.
+ *
+ * Since I do not know how to determine at run time what is the OS X
+ * version, I just disable forking altogether for now (JMarc)
+ */
+#if !defined (HAVE_FORK) || defined(__APPLE__)
 	return -1;
 #else
 	pid_t pid = ::fork();

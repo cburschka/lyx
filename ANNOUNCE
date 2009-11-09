@@ -1,19 +1,18 @@
-Public release of LyX version 1.6.4.1
+Public release of LyX version 1.6.4.2
 =====================================
 
-We are pleased to announce the release of LyX 1.6.4.1. This is a small
-update to LyX 1.6.4, which was the fourth maintenance release in the 1.6.x
-series.
+We are pleased to announce the release of LyX 1.6.4.2. This is the second
+service update to LyX 1.6.4, which was the fourth maintenance release in
+the 1.6.x series.
 
-The only change over release 1.6.4 is the fix of a regression on the Mac,
-which made some dialogs (such as Preferences and About LyX) unaccessible
-via the menu. Other platforms than the Mac were not affected by the issue.
+The only change over release 1.6.4.1 is the disabling of the fork()
+meachanism on the Mac, which caused regularly pseudo-crashes on the
+new Mac OS X release (10.6 a.k.a. Snow Leopard). Note that the fix has
+performance effects on the Mac while autosaving, so we recommend the
+upgrade to this version of LyX only to Snow Leopard users.
 
-A detailed list of changes in 1.6.4 and 1.6.4.1 is appended below, 
-remaining known problems are listed in the file RELEASE-NOTES.
-
-All Mac users are encouraged to upgrade to this version. For users of
-other platforms, there's no reason to upgrade from LyX 1.6.4.
+A detailed list of changes in 1.6.4, 1.6.4.1 and 1.6.4.2 is appended
+below, remaining known problems are listed in the file RELEASE-NOTES.
 
 In case you are wondering what LyX is, here is what
 http://www.lyx.org/ has to say on the subject:
@@ -39,33 +38,33 @@ http://www.lyx.org/ has to say on the subject:
    internationalized application running natively on Unix/Linux, the
    Macintosh and modern Windows platforms.
 
-You can download LyX 1.6.4.1 here (the .bz2 are compressed with bzip2,
+You can download LyX 1.6.4.2 here (the .bz2 are compressed with bzip2,
 which yields smaller files):
 
-	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/lyx-1.6.4.1.tar.gz
-	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/lyx-1.6.4.1.tar.bz2
-	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.6.4.1.tar.gz
-	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.6.4.1.tar.bz2
+	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/lyx-1.6.4.2.tar.gz
+	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/lyx-1.6.4.2.tar.bz2
+	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.6.4.2.tar.gz
+	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.6.4.2.tar.bz2
 
 and it should propagate shortly to the following mirrors (which will
 also host the .bz2 versions):
 
-	ftp://ftp.lip6.fr/pub/lyx/stable/1.6.x/lyx-1.6.4.1.tar.gz
-	http://lyx.cybermirror.org/stable/1.6.x/lyx-1.6.4.1.tar.gz
-	ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/1.6.x/lyx-1.6.4.1.tar.gz
-	ftp://ftp.ntua.gr/pub/X11/LyX/stable/1.6.x/lyx-1.6.4.1.tar.gz
-	http://sunsite.icm.edu.pl/pub/unix/editors/lyx/stable/1.6.x/lyx-1.6.4.1.tar.gz
-	http://lyx.mirror.fr/stable/1.6.x/lyx-1.6.4.1.tar.gz
+	ftp://ftp.lip6.fr/pub/lyx/stable/1.6.x/lyx-1.6.4.2.tar.gz
+	http://lyx.cybermirror.org/stable/1.6.x/lyx-1.6.4.2.tar.gz
+	ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/1.6.x/lyx-1.6.4.2.tar.gz
+	ftp://ftp.ntua.gr/pub/X11/LyX/stable/1.6.x/lyx-1.6.4.2.tar.gz
+	http://sunsite.icm.edu.pl/pub/unix/editors/lyx/stable/1.6.x/lyx-1.6.4.2.tar.gz
+	http://lyx.mirror.fr/stable/1.6.x/lyx-1.6.4.2.tar.gz
 
 A prebuilt binary for Mac OS X should soon be available at
 	ftp://ftp.lyx.org/pub/lyx/bin/1.6.4/
 
 If you already have the sources of the previous release, you may want to apply
 one of the following patches instead
-	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/patch-1.6.4.1.gz
-	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/patch-1.6.4.1.bz2
+	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/patch-1.6.4.2.gz
+	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/patch-1.6.4.2.bz2
 
-If you find what you think is a bug in LyX 1.6.4.1, you may either
+If you find what you think is a bug in LyX 1.6.4.2, you may either
 e-mail the LyX developers' mailing list (lyx-devel <at> lists.lyx.org),
 or open a bug report at http://www.lyx.org/trac/
 
@@ -76,6 +75,18 @@ the answer there, e-mail the LyX users' list (lyx-users <at> lists.lyx.org).
 Enjoy!
 
 The LyX team.
+
+
+What's new in version 1.6.4.2?
+------------------------------
+
+** Bug fixes:
+*************
+
+* USER INTERFACE
+
+- Disable fork() on Mac OS X. This fixes pseudo-crashes while autosaving
+  on Mac OSX 10.6 (bug 6168).
 
 
 What's new in version 1.6.4.1?

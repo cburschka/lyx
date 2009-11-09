@@ -1,3 +1,12 @@
+What's new in version 1.6.4.2?
+-------------------------------
+
+The only change over release 1.6.4.1 is the disabling of the fork()
+meachanism on the Mac, which caused regularly pseudo-crashes on the
+new Mac OS X release (10.6 a.k.a. Snow Leopard). Note that the fix has
+performance effects on the Mac while autosaving.
+
+
 What's new in version 1.6.4.1?
 -------------------------------
 
