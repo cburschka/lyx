@@ -56,11 +56,11 @@ private:
 		std::vector<int> in_vertices;
 		/// paths out from here
 		std::vector<OutEdge> out_arrows;
+		///
+		bool visited;
 	};
 	///
-	static std::vector<Vertex> vertices_;
-	/// used to keep track of which vertices we have seen
-	std::vector<bool> visited_;
+	std::vector<Vertex> vertices_;
 	///
 	std::queue<int> Q_;
 

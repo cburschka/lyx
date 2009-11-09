@@ -27,11 +27,15 @@ bool Graph::bfs_init(int s, bool clear_visited)
 
 	Q_ = queue<int>();
 
-	if (clear_visited)
-		fill(visited_.begin(), visited_.end(), false);
-	if (visited_[s] == false) {
+	if (clear_visited) {
+		vector<Vertex>::iterator it = vertices_.begin();
+		vector<Vertex>::iterator en = vertices_.end();
+		for (; it != en; ++it)
+			it->visited = false;
+	}
+	if (!vertices_[s].visited) {
 		Q_.push(s);
-		visited_[s] = true;
+		vertices_[s].visited = true;
 	}
 	return true;
 }
@@ -58,8 +62,8 @@ vector<int> const
 		vector<int>::iterator it = vertices_[current].in_vertices.begin();
 		vector<int>::iterator end = vertices_[current].in_vertices.end();
 		for (; it != end; ++it) {
-			if (!visited_[*it]) {
-				visited_[*it] = true;
+			if (!vertices_[*it].visited) {
+				vertices_[*it].visited = true;
 				Q_.push(*it);
 			}
 		}
@@ -96,8 +100,8 @@ vector<int> const
 			vertices_[current].out_arrows.end();
 		for (; cit != end; ++cit) {
 			int const cv = cit->vertex;
-			if (!visited_[cv]) {
-				visited_[cv] = true;
+			if (!vertices_[cv].visited) {
+				vertices_[cv].visited = true;
 				Q_.push(cv);
 			}
 		}
@@ -127,8 +131,8 @@ bool Graph::isReachable(int from, int to)
 			vertices_[current].out_arrows.end();
 		for (; cit != end; ++cit) {
 			int const cv = cit->vertex;
-			if (!visited_[cv]) {
-				visited_[cv] = true;
+			if (!vertices_[cv].visited) {
+				vertices_[cv].visited = true;
 				Q_.push(cv);
 			}
 		}
@@ -162,8 +166,8 @@ Graph::EdgePath const Graph::getPath(int from, int to)
 			vertices_[current].out_arrows.end();
 		for (; cit != end; ++cit) {
 			int const cv = cit->vertex;
-			if (!visited_[cv]) {
-				visited_[cv] = true;
+			if (!vertices_[cv].visited) {
+				vertices_[cv].visited = true;
 				Q_.push(cv);
 				// FIXME This will not do for finding multiple paths.
 				// Perhaps we need a vector, or a set. We'll also want
@@ -192,7 +196,6 @@ Graph::EdgePath const Graph::getPath(int from, int to)
 void Graph::init(int size)
 {
 	vertices_ = vector<Vertex>(size);
-	visited_.resize(size);
 	numedges_ = 0;
 }
 
@@ -202,9 +205,6 @@ void Graph::addEdge(int from, int to)
 	vertices_[to].in_vertices.push_back(from);
 	vertices_[from].out_arrows.push_back(OutEdge(to, numedges_++));
 }
-
-
-vector<Graph::Vertex> Graph::vertices_;
 
 
 } // namespace lyx
