@@ -20,10 +20,10 @@ using namespace std;
 namespace lyx {
 
 
-int Graph::bfs_init(int s, bool clear_visited)
+bool Graph::bfs_init(int s, bool clear_visited)
 {
-	if (s < 0)
-		return s;
+	if (s < 0 || s >= vertices_.size())
+		return false;
 
 	Q_ = queue<int>();
 
@@ -33,7 +33,7 @@ int Graph::bfs_init(int s, bool clear_visited)
 		Q_.push(s);
 		visited_[s] = true;
 	}
-	return s;
+	return true;
 }
 
 
@@ -41,14 +41,13 @@ vector<int> const
 Graph::getReachableTo(int target, bool clear_visited)
 {
 	vector<int> result;
-	int const s = bfs_init(target, clear_visited);
-	if (s < 0)
+	if (!bfs_init(target, clear_visited))
 		return result;
 
 	while (!Q_.empty()) {
 		int const i = Q_.front();
 		Q_.pop();
-		if (i != s || formats.get(target).name() != "lyx") {
+		if (i != target || formats.get(target).name() != "lyx") {
 			result.push_back(i);
 		}
 
@@ -71,7 +70,7 @@ Graph::getReachable(int from, bool only_viewable,
 		    bool clear_visited)
 {
 	vector<int> result;
-	if (bfs_init(from, clear_visited) < 0)
+	if (!bfs_init(from, clear_visited))
 		return result;
 
 	while (!Q_.empty()) {
@@ -107,19 +106,19 @@ bool Graph::isReachable(int from, int to)
 	if (from == to)
 		return true;
 
-	if (to < 0 || bfs_init(from) < 0)
+	if (to < 0 || to >= vertices_.size() || !bfs_init(from))
 		return false;
 
 	while (!Q_.empty()) {
-		int const i = Q_.front();
+		int const current = Q_.front();
 		Q_.pop();
-		if (i == to)
+		if (current == to)
 			return true;
 
 		vector<int>::const_iterator cit =
-			vertices_[i].out_vertices.begin();
+			vertices_[current].out_vertices.begin();
 		vector<int>::const_iterator end =
-			vertices_[i].out_vertices.end();
+			vertices_[current].out_vertices.end();
 		for (; cit != end; ++cit) {
 			if (!visited_[*cit]) {
 				visited_[*cit] = true;
@@ -138,8 +137,7 @@ Graph::EdgePath const Graph::getPath(int from, int to)
 	if (from == to)
 		return path;
 
-	int const s = bfs_init(from);
-	if (s < 0 || to < 0)
+	if (to < 0 || to >= vertices_.size() || !bfs_init(from))
 		return path;
 
 	vector<int> prev_edge(formats.size());
@@ -147,32 +145,32 @@ Graph::EdgePath const Graph::getPath(int from, int to)
 
 	bool found = false;
 	while (!Q_.empty()) {
-		int const i = Q_.front();
+		int const current = Q_.front();
 		Q_.pop();
-		if (i == to) {
+		if (current == to) {
 			found = true;
 			break;
 		}
 
 		vector<int>::const_iterator const beg =
-			vertices_[i].out_vertices.begin();
+			vertices_[current].out_vertices.begin();
 		vector<int>::const_iterator cit = beg;
 		vector<int>::const_iterator end =
-			vertices_[i].out_vertices.end();
+			vertices_[current].out_vertices.end();
 		for (; cit != end; ++cit)
 			if (!visited_[*cit]) {
 				int const j = *cit;
 				visited_[j] = true;
 				Q_.push(j);
 				int const k = cit - beg;
-				prev_edge[j] = vertices_[i].out_edges[k];
-				prev_vertex[j] = i;
+				prev_edge[j] = vertices_[current].out_edges[k];
+				prev_vertex[j] = current;
 			}
 	}
 	if (!found)
 		return path;
 
-	while (to != s) {
+	while (to != from) {
 		path.push_back(prev_edge[to]);
 		to = prev_vertex[to];
 	}

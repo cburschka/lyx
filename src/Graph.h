@@ -19,9 +19,11 @@
 namespace lyx {
 
 
+/// Represents a directed graph, possibly with multiple edges
+/// connecting the vertices.
 class Graph {
 public:
-	Graph() : numedges_(0) {};
+	Graph() : numedges_(0) {}
 	///
 	typedef std::vector<int> EdgePath;
 	/// \return a vector of the vertices from which "to" can be reached
@@ -40,18 +42,21 @@ public:
 
 private:
 	///
-	int bfs_init(int, bool clear_visited = true);
+	bool bfs_init(int, bool clear_visited = true);
 
 	///
 	class Vertex {
 	public:
+		/// vertices that point at this one
 		std::vector<int> in_vertices;
+		/// vertices immediately accessible from this one
 		std::vector<int> out_vertices;
+		/// a set of indices corresponding to the out_vertices
 		std::vector<int> out_edges;
 	};
 	///
 	static std::vector<Vertex> vertices_;
-	///
+	/// used to keep track of which vertices we have seen
 	std::vector<bool> visited_;
 	///
 	std::queue<int> Q_;
