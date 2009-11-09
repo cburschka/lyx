@@ -671,13 +671,13 @@ string citationStyleToString(const CitationStyle & s)
 	string cite = citeCommands[s.style];
 	if (s.full) {
 		CiteStyle const * last = citeStylesFull + nCiteStylesFull;
-		if (find(citeStylesFull, last, s.style) != last)
+		if (std::find(citeStylesFull, last, s.style) != last)
 			cite += '*';
 	}
 
 	if (s.forceUpperCase) {
 		CiteStyle const * last = citeStylesUCase + nCiteStylesUCase;
-		if (find(citeStylesUCase, last, s.style) != last)
+		if (std::find(citeStylesUCase, last, s.style) != last)
 			cite[0] = 'C';
 	}
 
