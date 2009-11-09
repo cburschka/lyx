@@ -38,7 +38,7 @@ bool Graph::bfs_init(int s, bool clear_visited)
 
 
 vector<int> const
-Graph::getReachableTo(int target, bool clear_visited)
+	Graph::getReachableTo(int target, bool clear_visited)
 {
 	vector<int> result;
 	if (!bfs_init(target, clear_visited))
@@ -47,9 +47,8 @@ Graph::getReachableTo(int target, bool clear_visited)
 	while (!Q_.empty()) {
 		int const current = Q_.front();
 		Q_.pop();
-		if (current != target || formats.get(target).name() != "lyx") {
+		if (current != target || formats.get(target).name() != "lyx")
 			result.push_back(current);
-		}
 
 		vector<int>::iterator it = vertices_[current].in_vertices.begin();
 		vector<int>::iterator end = vertices_[current].in_vertices.end();
@@ -66,35 +65,37 @@ Graph::getReachableTo(int target, bool clear_visited)
 
 
 vector<int> const
-Graph::getReachable(int from, bool only_viewable,
-		    bool clear_visited)
+	Graph::getReachable(int from, bool only_viewable,
+		bool clear_visited)
 {
 	vector<int> result;
 	if (!bfs_init(from, clear_visited))
 		return result;
 
 	while (!Q_.empty()) {
-		int const i = Q_.front();
+		int const current = Q_.front();
 		Q_.pop();
-		Format const & format = formats.get(i);
+		Format const & format = formats.get(current);
 		if (!only_viewable || !format.viewer().empty())
-			result.push_back(i);
+			result.push_back(current);
 		else if (format.isChildFormat()) {
 			Format const * const parent =
 				formats.getFormat(format.parentFormat());
 			if (parent && !parent->viewer().empty())
-				result.push_back(i);
+				result.push_back(current);
 		}
 
-		vector<int>::const_iterator cit =
-			vertices_[i].out_vertices.begin();
-		vector<int>::const_iterator end =
-			vertices_[i].out_vertices.end();
-		for (; cit != end; ++cit)
-			if (!visited_[*cit]) {
-				visited_[*cit] = true;
-				Q_.push(*cit);
+		vector<OutEdge>::const_iterator cit =
+			vertices_[current].out_arrows.begin();
+		vector<OutEdge>::const_iterator end =
+			vertices_[current].out_arrows.end();
+		for (; cit != end; ++cit) {
+			int const cv = cit->vertex;
+			if (!visited_[cv]) {
+				visited_[cv] = true;
+				Q_.push(cv);
 			}
+		}
 	}
 
 	return result;
@@ -115,14 +116,15 @@ bool Graph::isReachable(int from, int to)
 		if (current == to)
 			return true;
 
-		vector<int>::const_iterator cit =
-			vertices_[current].out_vertices.begin();
-		vector<int>::const_iterator end =
-			vertices_[current].out_vertices.end();
+		vector<OutEdge>::const_iterator cit =
+			vertices_[current].out_arrows.begin();
+		vector<OutEdge>::const_iterator end =
+			vertices_[current].out_arrows.end();
 		for (; cit != end; ++cit) {
-			if (!visited_[*cit]) {
-				visited_[*cit] = true;
-				Q_.push(*cit);
+			int const cv = cit->vertex;
+			if (!visited_[cv]) {
+				visited_[cv] = true;
+				Q_.push(cv);
 			}
 		}
 	}
@@ -152,20 +154,20 @@ Graph::EdgePath const Graph::getPath(int from, int to)
 			break;
 		}
 
-		vector<int>::const_iterator const beg =
-			vertices_[current].out_vertices.begin();
-		vector<int>::const_iterator cit = beg;
-		vector<int>::const_iterator end =
-			vertices_[current].out_vertices.end();
-		for (; cit != end; ++cit)
-			if (!visited_[*cit]) {
-				int const j = *cit;
-				visited_[j] = true;
-				Q_.push(j);
-				int const k = cit - beg;
-				prev_edge[j] = vertices_[current].out_edges[k];
-				prev_vertex[j] = current;
+		vector<OutEdge>::const_iterator const beg =
+			vertices_[current].out_arrows.begin();
+		vector<OutEdge>::const_iterator cit = beg;
+		vector<OutEdge>::const_iterator end =
+			vertices_[current].out_arrows.end();
+		for (; cit != end; ++cit) {
+			int const cv = cit->vertex;
+			if (!visited_[cv]) {
+				visited_[cv] = true;
+				Q_.push(cv);
+				prev_edge[cv] = cit->edge;
+				prev_vertex[cv] = current;
 			}
+		}
 	}
 	if (!found)
 		return path;
@@ -190,8 +192,7 @@ void Graph::init(int size)
 void Graph::addEdge(int from, int to)
 {
 	vertices_[to].in_vertices.push_back(from);
-	vertices_[from].out_vertices.push_back(to);
-	vertices_[from].out_edges.push_back(numedges_++);
+	vertices_[from].out_arrows.push_back(OutEdge(to, numedges_++));
 }
 
 

@@ -45,14 +45,17 @@ private:
 	bool bfs_init(int, bool clear_visited = true);
 
 	///
-	class Vertex {
-	public:
+	struct OutEdge {
+		OutEdge(int v, int e): vertex(v), edge(e) {}
+		int vertex;
+		int edge;
+	};
+	///
+	struct Vertex {
 		/// vertices that point at this one
 		std::vector<int> in_vertices;
-		/// vertices immediately accessible from this one
-		std::vector<int> out_vertices;
-		/// a set of indices corresponding to the out_vertices
-		std::vector<int> out_edges;
+		/// paths out from here
+		std::vector<OutEdge> out_arrows;
 	};
 	///
 	static std::vector<Vertex> vertices_;
