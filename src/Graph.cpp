@@ -44,6 +44,11 @@ vector<int> const
 	if (!bfs_init(target, clear_visited))
 		return result;
 
+	// Here's the logic, which is shared by the other routines.
+	// Q_ holds a list of nodes we have been able to reach (in this
+	// case, reach backwards). It is initailized to the current node
+	// by bfs_init, and then we recurse, adding the nodes we can reach
+	// from the current node as we go.
 	while (!Q_.empty()) {
 		int const current = Q_.front();
 		Q_.pop();
@@ -142,8 +147,8 @@ Graph::EdgePath const Graph::getPath(int from, int to)
 	if (to < 0 || !bfs_init(from))
 		return path;
 
-	vector<int> prev_edge(formats.size());
-	vector<int> prev_vertex(formats.size());
+	// pair<vertex, edge>
+	vector<pair<int, int> > prev(vertices_.size());
 
 	bool found = false;
 	while (!Q_.empty()) {
@@ -164,8 +169,9 @@ Graph::EdgePath const Graph::getPath(int from, int to)
 			if (!visited_[cv]) {
 				visited_[cv] = true;
 				Q_.push(cv);
-				prev_edge[cv] = cit->edge;
-				prev_vertex[cv] = current;
+				// FIXME This will not do for finding multiple paths.
+				// Perhaps we need a vector, or a set.
+				prev[cv] = pair<int, int>(current, cit->edge);
 			}
 		}
 	}
@@ -173,8 +179,8 @@ Graph::EdgePath const Graph::getPath(int from, int to)
 		return path;
 
 	while (to != from) {
-		path.push_back(prev_edge[to]);
-		to = prev_vertex[to];
+		path.push_back(prev[to].second);
+		to = prev[to].first;
 	}
 	reverse(path.begin(), path.end());
 	return path;
