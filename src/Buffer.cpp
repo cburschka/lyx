@@ -3253,7 +3253,7 @@ bool Buffer::isExportable(string const & format) const
 
 vector<Format const *> Buffer::exportableFormats(bool only_viewable) const
 {
-	vector<string> backs = backends();
+	vector<string> const backs = backends();
 	vector<Format const *> result =
 		theConverters().getReachable(backs[0], only_viewable, true);
 	for (vector<string>::const_iterator it = backs.begin() + 1;
