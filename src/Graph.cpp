@@ -22,7 +22,7 @@ namespace lyx {
 
 bool Graph::bfs_init(int s, bool clear_visited)
 {
-	if (s < 0 || s >= vertices_.size())
+	if (s < 0)
 		return false;
 
 	Q_ = queue<int>();
@@ -45,14 +45,14 @@ Graph::getReachableTo(int target, bool clear_visited)
 		return result;
 
 	while (!Q_.empty()) {
-		int const i = Q_.front();
+		int const current = Q_.front();
 		Q_.pop();
-		if (i != target || formats.get(target).name() != "lyx") {
-			result.push_back(i);
+		if (current != target || formats.get(target).name() != "lyx") {
+			result.push_back(current);
 		}
 
-		vector<int>::iterator it = vertices_[i].in_vertices.begin();
-		vector<int>::iterator end = vertices_[i].in_vertices.end();
+		vector<int>::iterator it = vertices_[current].in_vertices.begin();
+		vector<int>::iterator end = vertices_[current].in_vertices.end();
 		for (; it != end; ++it) {
 			if (!visited_[*it]) {
 				visited_[*it] = true;
@@ -106,7 +106,7 @@ bool Graph::isReachable(int from, int to)
 	if (from == to)
 		return true;
 
-	if (to < 0 || to >= vertices_.size() || !bfs_init(from))
+	if (to < 0 || !bfs_init(from))
 		return false;
 
 	while (!Q_.empty()) {
@@ -137,7 +137,7 @@ Graph::EdgePath const Graph::getPath(int from, int to)
 	if (from == to)
 		return path;
 
-	if (to < 0 || to >= vertices_.size() || !bfs_init(from))
+	if (to < 0 || !bfs_init(from))
 		return path;
 
 	vector<int> prev_edge(formats.size());
