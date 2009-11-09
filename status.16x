@@ -287,6 +287,9 @@ What's new
 
 * BUILD/INSTALLATION
 
+- The internal boost libraries have been updated to version 1.40. Now
+  LyX builds with gcc 4.4 without the need to use --without-included-boost.
+
 - Clarify that we require automake 1.8 (this was already the case, but
   nobody noticed).
 
