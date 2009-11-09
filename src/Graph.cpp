@@ -154,10 +154,6 @@ Graph::EdgePath const Graph::getPath(int from, int to)
 	while (!Q_.empty()) {
 		int const current = Q_.front();
 		Q_.pop();
-		if (current == to) {
-			found = true;
-			break;
-		}
 
 		vector<OutEdge>::const_iterator const beg =
 			vertices_[current].out_arrows.begin();
@@ -170,8 +166,14 @@ Graph::EdgePath const Graph::getPath(int from, int to)
 				visited_[cv] = true;
 				Q_.push(cv);
 				// FIXME This will not do for finding multiple paths.
-				// Perhaps we need a vector, or a set.
+				// Perhaps we need a vector, or a set. We'll also want
+				// to add this info, even if the node is visited, so
+				// outside this conditional.
 				prev[cv] = pair<int, int>(current, cit->edge);
+			}
+			if (cv == to) {
+				found = true;
+				break;
 			}
 		}
 	}
