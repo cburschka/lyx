@@ -4,7 +4,8 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Dekel Tsur
+ * \author Dekel Tsur (original code)
+ * \author Richard Heck (re-implementation)
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -12,6 +13,7 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
+#include <list>
 #include <queue>
 #include <vector>
 
@@ -31,44 +33,74 @@ public:
 	/// \return a vector of the vertices that can be reached from "from"
 	std::vector<int> const
 		getReachable(int from, bool only_viewable, bool clear_visited);
-	/// Can "from" be reached from "to"?
+	/// can "from" be reached from "to"?
 	bool isReachable(int from, int to);
-	/// Find a path from "from" to "to".
+	/// find a path from "from" to "to". always returns one of the
+	/// shortest such paths.
 	EdgePath const getPath(int from, int to);
-	/// Called repeatedly to build the graph.
+	/// called repeatedly to build the graph
 	void addEdge(int from, int to);
-	/// Reset the internal data structures.
+	/// reset the internal data structures
 	void init(int size);
 
 private:
 	///
 	bool bfs_init(int, bool clear_visited = true);
-
-	/// 
+	/// clears the "marks" on the arrows. should be called
+	/// before any new marking begins.
+	void clearMarks();
+	/// used to recover a marked path 
+	void getMarkedPath(int from, int to, EdgePath & path);
+	/// these represent the arrows connecting the nodes of the graph.
+	/// this is the basic representation of the graph: as a bunch of 
+	/// arrows.
 	struct Arrow {
 		///
-		Arrow(int v, int e): vertex(v), edge(e) {}
-		///
-		int vertex;
-		///
-		int edge;
+		Arrow(int f, int t, int i): 
+			from(f), to(t), id(i), marked(false) {}
+		/// the vertex at the tail of the arrow
+		int from;
+		/// the vertex at the head
+		int to;
+		/// an id for this arrow, e.g., for use in describing paths 
+		/// through the graph
+		int id;
+		/// used for "marking" paths, i.e., constructing sub-graphs
+		/// without really doing so.
+		bool marked;
 	};
-	///
+	/// a container for the arrows
+	/// we use a list because we want pointers to the arrows,
+	/// and a vector might invalidate them
+	typedef std::list<Arrow> Arrows;
+	Arrows arrows_;
+	/// Represents a vertex of the graph. Note that we could recover
+	/// the in_arrows and out_arrows from the Arrows, so these are in
+	/// effect a kind of cache.
 	struct Vertex {
-		/// vertices that point at this one
-		std::vector<Arrow> in_arrows;
-		/// paths out from here
-		std::vector<Arrow> out_arrows;
-		///
+		/// arrows that point at this one
+		std::vector<Arrow *> in_arrows;
+		/// arrows out from here
+		std::vector<Arrow *> out_arrows;
+		/// used in the search routines
 		bool visited;
 	};
-	///
+	/// a container for the vertices
+	/// the index into the vector functions as the identifier by which
+	/// these are referenced in the Arrow struct
+	/// the code making use of the Graph must keep track of the relation
+	/// between these indices and the objects they represent. (in the case
+	/// of Format, this is easy, since the Format objects already have ints
+	/// as identifiers.)
 	std::vector<Vertex> vertices_;
 	///
 	std::queue<int> Q_;
-
+	/// a counter that we use to assign id's to the arrows
+	/// FIXME This technique assumes a correspondence between the
+	/// ids of the arrows and ids associated with Converters that
+	/// seems kind of fragile. Perhaps a better solution would be
+	/// to pass the ids as we create the arrows.
 	int numedges_;
-
 };
 
 

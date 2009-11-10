@@ -3,7 +3,8 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Dekel Tsur
+ * \author Dekel Tsur (original code)
+ * \author Richard Heck (re-implementation)
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -12,6 +13,9 @@
 
 #include "Graph.h"
 #include "Format.h"
+
+#include "support/debug.h"
+#include "support/lassert.h"
 
 #include <algorithm>
 
@@ -41,6 +45,15 @@ bool Graph::bfs_init(int s, bool clear_visited)
 }
 
 
+void Graph::clearMarks()
+{
+	Arrows::iterator it = arrows_.begin();
+	Arrows::iterator const en = arrows_.end();
+	for (; it != en; ++it)
+		it->marked = false;
+}
+
+
 vector<int> const
 	Graph::getReachableTo(int target, bool clear_visited)
 {
@@ -60,10 +73,10 @@ vector<int> const
 		if (current != target || formats.get(target).name() != "lyx")
 			result.push_back(current);
 
-		vector<Arrow>::iterator it = vertices_[current].in_arrows.begin();
-		vector<Arrow>::iterator const end = vertices_[current].in_arrows.end();
+		vector<Arrow *>::iterator it = vertices_[current].in_arrows.begin();
+		vector<Arrow *>::iterator const end = vertices_[current].in_arrows.end();
 		for (; it != end; ++it) {
-			const int cv = it->vertex;
+			const int cv = (*it)->from;
 			if (!vertices_[cv].visited) {
 				vertices_[cv].visited = true;
 				Q_.push(cv);
@@ -96,12 +109,12 @@ vector<int> const
 				result.push_back(current);
 		}
 
-		vector<Arrow>::const_iterator cit =
+		vector<Arrow *>::const_iterator cit =
 			vertices_[current].out_arrows.begin();
-		vector<Arrow>::const_iterator end =
+		vector<Arrow *>::const_iterator end =
 			vertices_[current].out_arrows.end();
 		for (; cit != end; ++cit) {
-			int const cv = cit->vertex;
+			int const cv = (*cit)->to;
 			if (!vertices_[cv].visited) {
 				vertices_[cv].visited = true;
 				Q_.push(cv);
@@ -127,12 +140,12 @@ bool Graph::isReachable(int from, int to)
 		if (current == to)
 			return true;
 
-		vector<Arrow>::const_iterator cit =
+		vector<Arrow *>::const_iterator cit =
 			vertices_[current].out_arrows.begin();
-		vector<Arrow>::const_iterator end =
+		vector<Arrow *>::const_iterator end =
 			vertices_[current].out_arrows.end();
 		for (; cit != end; ++cit) {
-			int const cv = cit->vertex;
+			int const cv = (*cit)->to;
 			if (!vertices_[cv].visited) {
 				vertices_[cv].visited = true;
 				Q_.push(cv);
@@ -153,29 +166,29 @@ Graph::EdgePath const Graph::getPath(int from, int to)
 	if (to < 0 || !bfs_init(from))
 		return path;
 
-	// pair<vertex, edge>
-	vector<pair<int, int> > prev(vertices_.size());
-
+	// In effect, the way this works is that we construct a sub-graph
+	// by starting at "from" and following the arrows outward. Instead
+	// of actually constructing a sub-graph, though, we "mark" the
+	// arrows we traverse as we go. Once we hit "to", we abort the 
+	// marking process and then call getMarkedPath() to reconstruct
+	// the marked path.
 	bool found = false;
+	clearMarks();
 	while (!Q_.empty()) {
 		int const current = Q_.front();
 		Q_.pop();
 
-		vector<Arrow>::const_iterator const beg =
+		vector<Arrow *>::const_iterator const beg =
 			vertices_[current].out_arrows.begin();
-		vector<Arrow>::const_iterator cit = beg;
-		vector<Arrow>::const_iterator end =
+		vector<Arrow *>::const_iterator cit = beg;
+		vector<Arrow *>::const_iterator end =
 			vertices_[current].out_arrows.end();
 		for (; cit != end; ++cit) {
-			int const cv = cit->vertex;
+			int const cv = (*cit)->to;
 			if (!vertices_[cv].visited) {
 				vertices_[cv].visited = true;
 				Q_.push(cv);
-				// FIXME This will not do for finding multiple paths.
-				// Perhaps we need a vector, or a set. We'll also want
-				// to add this info, even if the node is visited, so
-				// outside this conditional.
-				prev[cv] = pair<int, int>(current, cit->edge);
+				(*cit)->marked = true;
 			}
 			if (cv == to) {
 				found = true;
@@ -186,27 +199,53 @@ Graph::EdgePath const Graph::getPath(int from, int to)
 	if (!found)
 		return path;
 
-	while (to != from) {
-		path.push_back(prev[to].second);
-		to = prev[to].first;
-	}
-	reverse(path.begin(), path.end());
+	getMarkedPath(from, to, path);
 	return path;
+}
+
+
+// We assume we have marked the graph, as in getPath(). We also
+// assume that we have done so in such a way as to guarantee a
+// marked path from "from" to "to".
+// We then start at "to" and find the arrow leading to it that
+// has been marked. We add that to the path we are constructing,
+// step back on that arrow, and continue the process (i.e., recurse).
+void Graph::getMarkedPath(int from, int to, EdgePath & path) {
+	if (from == to) {
+		reverse(path.begin(), path.end());
+		return;
+	}
+	// find marked in_arrow
+	vector<Arrow *>::const_iterator it = vertices_[to].in_arrows.begin();
+	vector<Arrow *>::const_iterator en = vertices_[to].in_arrows.end();
+	for (; it != en; ++it)
+		if ((*it)->marked) 
+			break;
+	if (it == en) {
+		LASSERT(false, /* */);
+		return;
+	}
+	int const newnode = (*it)->from;
+	path.push_back(newnode);
+	getMarkedPath(from, newnode, path);
 }
 
 	
 void Graph::init(int size)
 {
 	vertices_ = vector<Vertex>(size);
+	arrows_.clear();
 	numedges_ = 0;
 }
 
 
 void Graph::addEdge(int from, int to)
 {
-	vertices_[to].in_arrows.push_back(Arrow(from, numedges_));
-	vertices_[from].out_arrows.push_back(Arrow(to, numedges_));
-	++numedges_;
+	arrows_.push_back(Arrow(from, to, numedges_));
+	numedges_++;
+	Arrow * ar = &(arrows_.back());
+	vertices_[to].in_arrows.push_back(ar);
+	vertices_[from].out_arrows.push_back(ar);
 }
 
 
