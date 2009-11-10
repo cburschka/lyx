@@ -31,6 +31,9 @@
   # install Aspell if not already installed
   Call InstallAspell # function from Aspell.nsh
 
+  # install eLyXer as Python module
+  Call eLyXer # function from InstallThirdPartyProgs.nsh
+  
   # install Aiksaurus if not already installed
   Call Aiksaurus # function from InstallThirdPartyProgs.nsh
   

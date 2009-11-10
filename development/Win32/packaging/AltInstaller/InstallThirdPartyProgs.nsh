@@ -56,6 +56,29 @@ FunctionEnd
 
 # -------------------------------------------
 
+Function eLyXer
+
+  # install eLyXer as Python module
+  ${if} $PythonPath != ""
+   # a Python module cannot simply started with
+   # ExecWait '$PythonPath\python.exe "$INSTDIR\bin\setup.py" install'
+   # therefore run a script
+   StrCpy $1 $INSTDIR 2 # get drive letter
+   FileOpen $R1 "$INSTDIR\bin\eLyXer.bat" w
+   FileWrite $R1 '$1$\r$\n\
+		  cd "$INSTDIR\bin"$\r$\n\
+		  "$PythonPath\python.exe" setup.py install'
+   FileClose $R1
+   ExecWait '"$INSTDIR\bin\eLyXer.bat"'
+   Delete "$INSTDIR\bin\eLyXer.bat"
+  ${else}
+   ExecWait '"$INSTDIR\bin\python.exe" "$INSTDIR\bin\setup.py" install'
+  ${endif}
+
+FunctionEnd
+
+# -------------------------------------------
+
 Function Aiksaurus
 
   # if Aiksaurus is not installed
