@@ -1376,6 +1376,14 @@ contributers = [
                  "22 February 2005",
                  u"noweb2lyx and reLyX integration of noweb files. added Import->Noweb and key bindings to menus"),
 
+     contributer(u"TaoWang (mgc)",
+                 "mgcgogo () gmail ! com",
+                 "GPL",
+                 "Re: Chinese Version of Tutorial.lyx",
+                 "m=125785021631705",
+                 "10 November 2009",
+                 u"translation of documentation and user interface to Simplified Chinese"),
+
      contributer(u"Reuben Thomas",
                  "rrt () sc3d ! org",
                  "GPL",
