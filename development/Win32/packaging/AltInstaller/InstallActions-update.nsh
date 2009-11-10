@@ -214,6 +214,9 @@ Function RefreshRegUninst
    WriteRegStr HKLM "SOFTWARE\Aspell" "OnlyWithLyX" "Yes${PRODUCT_VERSION_SHORT}"
   ${endif}
   
+  # install eLyXer as Python module
+  Call eLyXer # function from InstallThirdPartyProgs.nsh
+  
   # Metafile2eps
   Var /GLOBAL RegLocation
   StrCpy $RegLocation "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Metafile to EPS Converter"

@@ -8,7 +8,7 @@ Function LaTeXActions
   Call LaTeXCheck # sets the path to the latex.exe to $LatexPath # Function from LyXUtils.nsh
   
   ${if} $LatexPath != ""
-   # check if MiKTeX 2.5 or 2.6 and newer is installed
+   # check if MiKTeX 2.6 or newer is installed
    StrCpy $0 0
    loopA:
     EnumRegKey $1 HKLM "SOFTWARE\MiKTeX.org\MiKTeX" $0 # check the last subkey
@@ -17,10 +17,6 @@ Function LaTeXActions
     IntOp $0 $0 + 1
     Goto loopA
    doneA:
-   ${if} $String == "2.5"
-    StrCpy $MiKTeXVersion "2.5"
-    StrCpy $LaTeXName "MiKTeX 2.5"
-   ${endif}
    ${if} $String == "2.6"
     StrCpy $MiKTeXVersion "2.6"
     StrCpy $LaTeXName "MiKTeX 2.6"
@@ -28,6 +24,10 @@ Function LaTeXActions
    ${if} $String == "2.7"
     StrCpy $MiKTeXVersion "2.7"
     StrCpy $LaTeXName "MiKTeX 2.7"
+   ${endif}
+   ${if} $String == "2.8"
+    StrCpy $MiKTeXVersion "2.8"
+    StrCpy $LaTeXName "MiKTeX 2.8"
    ${endif}
   ${endif}
   
@@ -48,10 +48,6 @@ Function LaTeXActions
     IntOp $0 $0 + 1
     Goto loopB
    doneB:
-   ${if} $String == "2.5"
-    StrCpy $MiKTeXVersion "2.5"
-    StrCpy $LaTeXName "MiKTeX 2.5"
-   ${endif}
    ${if} $String == "2.6"
     StrCpy $MiKTeXVersion "2.6"
     StrCpy $LaTeXName "MiKTeX 2.6"
@@ -59,6 +55,10 @@ Function LaTeXActions
    ${if} $String == "2.7"
     StrCpy $MiKTeXVersion "2.7"
     StrCpy $LaTeXName "MiKTeX 2.7"
+   ${endif}
+   ${if} $String == "2.8"
+    StrCpy $MiKTeXVersion "2.8"
+    StrCpy $LaTeXName "MiKTeX 2.8"
    ${endif}
   ${endif}
     
@@ -94,9 +94,9 @@ Function LaTeXActions
    ${endif}
   ${endif}
   ${if} $LatexPath != ""
-  ${andif} $LaTeXName != "MiKTeX 2.5"
   ${andif} $LaTeXName != "MiKTeX 2.6"
   ${andif} $LaTeXName != "MiKTeX 2.7"
+  ${andif} $LaTeXName != "MiKTeX 2.8"
    StrCpy $LaTeXName "TeXLive"
   ${endif}
   
@@ -178,45 +178,25 @@ Function ConfigureMiKTeX
    # install LaTeX-package dvipost (dvipost is not available for MiKTeX)
    SetOutPath "$String\tex\latex"
    File /r "${DVIPostFileDir}"
-
+   
    # refresh MiKTeX's file name database
    ExecWait "$LaTeXPath\initexmf --update-fndb"
-    
-   ${if} $MiKTeXVersion == "2.5"
-    # enable package installation without asking (t = Yes, f = No)
-    WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoInstall" "1" # if only for current user
-    ${if} $MiKTeXUser != "HKCU"
-     WriteRegStr SHCTX "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "MIKTEX_AUTOINSTALL" "t"
-    ${endif}
-    # set package repository (MiKTeX's primary package repository)
-    WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RemoteRepository" "${MiKTeXRepo}" # if only for current user
-    WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RepositoryType" "remote" # if only for current user
-    ${if} $MiKTeXUser != "HKCU"
-     WriteRegStr SHCTX "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "MIKTEX_REPOSITORY" "${MiKTeXRepo}"
-    ${endif}
    
-   ${else} # if MiKTeX 2.6 or above
-    # enable package installation without asking (1 = Yes, 0 = No, 2 = Ask me first)
-    WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoInstall" "1" # if only for current user
-    ${if} $MiKTeXUser != "HKCU"
-     WriteRegStr SHCTX "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoInstall" "1"
-    ${endif}
-    # set package repository (MiKTeX's primary package repository)
-    WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RemoteRepository" "${MiKTeXRepo}" # if only for current user
-    WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RepositoryType" "remote" # if only for current user
-    ${if} $MiKTeXUser != "HKCU"
-     WriteRegStr SHCTX "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RemoteRepository" "${MiKTeXRepo}"
-     WriteRegStr SHCTX "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RepositoryType" "remote"
-    ${endif}
-    
-   ${endif} # end if $MiKTeXVersion == "2.5"
+   # enable package installation without asking (1 = Yes, 0 = No, 2 = Ask me first)
+   WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoInstall" "1" # if only for current user
+   ${if} $MiKTeXUser != "HKCU"
+    WriteRegStr SHCTX "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoInstall" "1"
+   ${endif}
+   # set package repository (MiKTeX's primary package repository)
+   WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RemoteRepository" "${MiKTeXRepo}" # if only for current user
+   WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RepositoryType" "remote" # if only for current user
+   ${if} $MiKTeXUser != "HKCU"
+    WriteRegStr SHCTX "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RemoteRepository" "${MiKTeXRepo}"
+    WriteRegStr SHCTX "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RepositoryType" "remote"
+   ${endif}
    
    # enable MiKTeX's automatic package installation
-   ${if} $MiKTeXVersion == "2.5"
-    ExecWait '$LaTeXPath\mpm.com --update-fndb'
-   ${else} # MiKTeX 2.6 or newer
-    ExecWait '$LaTeXPath\mpm.exe --update-fndb'
-   ${endif}
+   ExecWait '$LaTeXPath\mpm.exe --update-fndb'
    # the following feature is planned to be used for a possible CD-version
    # copy LaTeX-packages needed by LyX
    # SetOutPath "$INSTDIR"

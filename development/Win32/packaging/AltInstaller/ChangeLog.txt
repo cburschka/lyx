@@ -1,8 +1,12 @@
 ﻿Version 4.21
 - new converter to export LyX files as HTML:
-  eLyXer 0.34 (http://www.nongnu.org/elyxer)
-- updated to ImageMagick 6.x.y-z
+  eLyXer 0.35 (http://www.nongnu.org/elyxer)
+- updated to MiKTeX 2.8 (needed to run LyX under Windows 7)
+- updated to ImageMagick 6.5.7-5
 - updated to Python 2.6.4
+- downgraded to Ghostscript 8.64 due to a regression bug
+  with cropped PDF images
+- fix bug that an installed Python 3.x was ignored
 
 
 Version 4.20

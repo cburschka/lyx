@@ -91,6 +91,12 @@ Function MissingPrograms
   ${if} $PythonPath == ""
    ReadRegStr $PythonPath HKLM "Software\Python\PythonCore\2.6\InstallPath" ""
   ${endif}
+  ${if} $PythonPath == ""
+   ReadRegStr $PythonPath HKLM "Software\Python\PythonCore\3.0\InstallPath" ""
+  ${endif}
+  ${if} $PythonPath == ""
+   ReadRegStr $PythonPath HKLM "Software\Python\PythonCore\3.1\InstallPath" ""
+  ${endif}
   ${if} $PythonPath != ""
    StrCpy $PythonPath $PythonPath -1 # remove the "\" at the end
    StrCpy $DelPythonFiles "True"

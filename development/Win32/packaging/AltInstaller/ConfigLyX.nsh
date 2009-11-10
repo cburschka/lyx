@@ -30,8 +30,6 @@ Function ConfigureLyX
   ${if} $WMFPath != ""
    StrCpy $PathPrefix "$PathPrefix;$WMFPath"
   ${endif}
-  # eLyXer is always available
-  StrCpy $PathPrefix "$PathPrefix;$INSTDIR\Resources\scripts"
   
   # Create a batch file to start LyX with the environment variables set
   ClearErrors
@@ -69,7 +67,8 @@ Function ConfigureLyX
   ${endif}
   FileClose $R1
   IfErrors 0 +2
-  MessageBox MB_OK|MB_ICONEXCLAMATION "$(ModifyingConfigureFailed)"
+   MessageBox MB_OK|MB_ICONEXCLAMATION "$(ModifyingConfigureFailed)"
+  ClearErrors
   
   # register LyX
   ${if} $CreateFileAssociations == "true"

@@ -10,6 +10,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\bin\python26.dll"
  File "${PRODUCT_SOURCEDIR}\bin\QtCore4.dll"
  File "${PRODUCT_SOURCEDIR}\bin\QtGui4.dll"
+ File "${PRODUCT_SOURCEDIR}\bin\setup.py"
+ File "${PRODUCT_SOURCEDIR}\bin\toc.css"
  File /r "${PRODUCT_SOURCEDIR}\bin\DLLs"
  File /r "${PRODUCT_SOURCEDIR}\bin\Lib"
  SetOutPath "$INSTDIR\Resources" # always here
