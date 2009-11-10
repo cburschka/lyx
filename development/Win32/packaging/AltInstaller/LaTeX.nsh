@@ -218,9 +218,15 @@ Function UpdateMiKTeX
    UpdateNow:
     StrCpy $0 $LaTeXPath -4 # remove "\bin"
     # the update wizard is either started by the copystart.exe or the copystart_admin.exe
-    # the latter replaces copystart.exe since miktex-2.6.2742
+    # (the latter replaces copystart.exe since miktex-2.6.2742) or the miktex-update.exe
+    # (since MiKTeX 2.8)
     ExecWait '"$LaTeXPath\copystart.exe" "$0\config\update.dat"' # run MiKTeX's update wizard
     ExecWait '"$LaTeXPath\copystart_admin.exe" "$0\config\update.dat"' # run MiKTeX's update wizard
+    ${if} $MiKTeXUser != "HKCU" # call the admin version when the user is admin
+     ExecWait '"$LaTeXPath\internal\miktex-update_admin.exe"' # run MiKTeX's update wizard
+    ${else} 
+     ExecWait '"$LaTeXPath\internal\miktex-update.exe"' # run MiKTeX's update wizard
+    ${endif} 
    UpdateLater:
   ${endif}
 
