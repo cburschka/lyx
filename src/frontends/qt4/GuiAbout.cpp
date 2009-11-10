@@ -58,9 +58,14 @@ static QString credits()
 			line = ts.readLine();
 			if (line.startsWith("@b"))
 				out << "<b>" << line.mid(2) << "</b>";
-			else if (line.startsWith("@i"))
+			else if (line.startsWith("@i")) {
+				if (line.startsWith("@iE-mail")) {
+					// unmask email
+					line.replace(QString(" () "), QString("@"));
+					line.replace(QString(" ! "), QString("."));
+				}
 				out << "<i>" << line.mid(2) << "</i>";
-			else
+			} else
 				out << line;
 			out << "<br>";
 		} while (!line.isNull());
