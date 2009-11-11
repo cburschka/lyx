@@ -44,16 +44,14 @@ and jump the cursor to the location in the document where the error occured.</st
    <item row="3" column="0" colspan="2" >
     <widget class="QTextBrowser" name="descriptionTB" >
      <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>7</hsizetype>
-       <vsizetype>5</vsizetype>
+      <sizepolicy vsizetype="Preferred" hsizetype="Expanding" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
     </widget>
    </item>
-   <item row="4" column="0" >
+   <item row="5" column="0" >
     <spacer>
      <property name="orientation" >
       <enum>Qt::Horizontal</enum>
@@ -69,10 +67,17 @@ and jump the cursor to the location in the document where the error occured.</st
      </property>
     </spacer>
    </item>
-   <item row="4" column="1" >
+   <item row="5" column="1" >
     <widget class="QPushButton" name="closePB" >
      <property name="text" >
       <string>&amp;Close</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" >
+    <widget class="QLabel" name="label" >
+     <property name="text" >
+      <string>For more information, see Document -> LaTeX log.</string>
      </property>
     </widget>
    </item>
