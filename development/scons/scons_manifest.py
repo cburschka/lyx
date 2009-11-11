@@ -2406,6 +2406,11 @@ lib_doc_uk_clipart_files = Split('''
 ''')
 
 
+lib_doc_zhCN_files = Split('''
+    Tutorial.lyx
+''')
+
+
 lib_examples_files = Split('''
     aa_sample.lyx
     aas_sample.lyx

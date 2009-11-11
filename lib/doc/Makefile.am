@@ -271,6 +271,10 @@ ukclipartdocdir = $(ukdocdir)/clipart
 dist_ukclipartdoc_DATA = \
 	uk/clipart/FootnoteQT4.png
 
+zhCNdocdir = $(docdir)/zh_CN
+dist_zhCNdoc_DATA = \
+	zh_CN/Tutorial.lyx
+
 doc_files = \
 	    $(dist_doc_DATA) \
 	    $(dist_cadoc_DATA) \
@@ -294,7 +298,8 @@ doc_files = \
 	    $(dist_skdoc_DATA) \
 	    $(dist_sldoc_DATA) \
 	    $(dist_svdoc_DATA) \
-	    $(dist_ukdoc_DATA)
+	    $(dist_ukdoc_DATA) \
+	    $(dist_zhCNdoc_DATA)
 
 install-data-hook:
 	for i in $(doc_files); \
