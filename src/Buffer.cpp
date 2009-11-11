@@ -3275,8 +3275,8 @@ vector<string> Buffer::backends() const
 		if (v.back() == "latex")
 			v.push_back("pdflatex");
 	}
-	v.push_back("text");
 	v.push_back("xhtml");
+	v.push_back("text");
 	v.push_back("lyx");
 	return v;
 }
