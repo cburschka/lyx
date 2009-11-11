@@ -405,8 +405,8 @@ def checkConverterEntries():
     if elyxerfound:
       addToRC(r'''\converter lyx      html       "python -m elyxer --directory $$r $$i $$o"	""''')
     else:
-      path, elyxer = checkProg('a LyX -> HTML converter', ['elyxer.py', 'elyxer'],
-        rc_entry = [ r'\converter lyx      html       "python -tt elyxer.py --directory $$r $$i $$o"	""' ])
+      path, elyxer = checkProg('a LyX -> HTML converter', ['elyxer.py --directory $$r $$i $$o', 'elyxer --directory $$r $$i $$o'],
+        rc_entry = [ r'\converter lyx      html       "%%"	""' ])
       if elyxer.find('elyxer') >= 0:
         elyxerfound = True
 
