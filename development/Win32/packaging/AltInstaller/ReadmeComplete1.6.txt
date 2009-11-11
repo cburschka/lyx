@@ -3,7 +3,8 @@ Description
 This is the readme of the variant "complete" of the LyXWinInstaller. Please read
 this file carefully to prevent troubles with the installer.
 The LyXWinInstaller installs a complete LaTeX-environment together with the
-wordprocessor "LyX" (www.lyx.org) and needed programs on Windows 2000/XP/XPx64/Vista.
+wordprocessor "LyX" (www.lyx.org) and needed programs on
+Windows 2000/XP/XPx64/Vista/7.
 ! Win95, Win98, and WinME are NOT supported. !
 
 ---
@@ -30,6 +31,7 @@ if needed, a fully functional version of:
 - Aspell, a spellchecker
 - Ghostscript, an interpreter for Postscript and PDF
 - ImageMagick, an image converter
+- eLyXer, a LyX to HTML converter
 - (optional) GSview, a viewer for Postscript and PDF-documents
 - (optional) JabRef, an editor for BibTeX database files
 
@@ -39,6 +41,7 @@ use them with LyX. But if you decide to install another version of the programs
 you can do this without problems and without uninstalling LyX.
 If you want to install GSview manually later you can do this without a new
 installation of Ghostscript.
+If Python is installed on the system, elyXer is installed as Python module.
 
 ---
 After the Installation
@@ -47,7 +50,7 @@ To view/edit external files like images LyX uses the default program set in the 
 for a file extension. This installer checks for many programs so that you only need to type
 the name of their executables in LyX's preferences to change this.
 For example the default viewer for PNG-images on Windows is "Paint". To change it to Gimp,
-set "gimp-2.2" as viewer/editor for the PNG file format in LyX's preferences.
+set e.g. "gimp-2.2" as viewer/editor for the PNG file format in LyX's preferences.
 
 ---
 Known Problems
