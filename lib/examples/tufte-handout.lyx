@@ -3,7 +3,7 @@
 \begin_document
 \begin_header
 \textclass tufte-handout
-\use_default_options false
+\use_default_options true
 \language english
 \inputencoding auto
 \font_roman default
@@ -18,7 +18,16 @@
 \graphics default
 \paperfontsize default
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
 \papersize default
 \use_geometry true
 \use_amsmath 1
@@ -146,11 +155,11 @@ tufte-handout
  document class and a style guide to its use.
 \end_layout
 
-\begin_layout Part*
+\begin_layout Part
 First part
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Page Layout
 \begin_inset CommandInset label
 LatexCommand label
@@ -158,10 +167,10 @@ name "sec:page-layout"
 
 \end_inset
 
- 
+
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 Headings and paragraph design
 \begin_inset CommandInset label
 LatexCommand label
@@ -169,7 +178,7 @@ name "sec:headings"
 
 \end_inset
 
- 
+
 \end_layout
 
 \begin_layout Standard
@@ -290,7 +299,7 @@ NewThought
 ).
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 Sidenotes
 \begin_inset CommandInset label
 LatexCommand label
@@ -298,7 +307,7 @@ name "sec:sidenotes"
 
 \end_inset
 
- 
+
 \end_layout
 
 \begin_layout Standard
@@ -378,7 +387,7 @@ This is a normal margin note.
 
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 References
 \end_layout
 
@@ -427,7 +436,7 @@ nobibliography
  the text.
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Figures and Tables
 \begin_inset CommandInset label
 LatexCommand label
@@ -435,7 +444,7 @@ name "sec:figures-and-tables"
 
 \end_inset
 
- 
+
 \end_layout
 
 \begin_layout Standard
@@ -902,7 +911,7 @@ name "tab:normaltab"
 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Full-width text blocks
 \end_layout
 
@@ -937,11 +946,11 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
  Duis eget orci sit amet orci dignissim rutrum.
 \end_layout
 
-\begin_layout Part*
+\begin_layout Part
 Second part
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Typography
 \begin_inset CommandInset label
 LatexCommand label
@@ -952,7 +961,7 @@ name "sec:typography"
 
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 Typefaces
 \begin_inset CommandInset label
 LatexCommand label
@@ -980,7 +989,7 @@ Computer Modern
  typefaces.
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 Letterspacing
 \begin_inset CommandInset label
 LatexCommand label
@@ -1082,7 +1091,7 @@ Small Caps
 The Initial Letters Of The Words In This Sentence Are Capitalized.
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Customization
 \begin_inset CommandInset label
 LatexCommand label
@@ -1093,7 +1102,7 @@ name "sec:customization"
 
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 Document class options
 \begin_inset CommandInset label
 LatexCommand label
@@ -1183,7 +1192,7 @@ justified
  in the slightly narrower column.
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 Defining new sections
 \begin_inset CommandInset label
 LatexCommand label
@@ -1324,7 +1333,7 @@ titlesec
  package.
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Support
 \begin_inset CommandInset label
 LatexCommand label
@@ -1335,7 +1344,7 @@ name "sec:support"
 
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 Package Dependencies
 \begin_inset CommandInset label
 LatexCommand label
@@ -1411,7 +1420,7 @@ palatino*
 beramono* 
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 Tufte-LaTeX
 \begin_inset space \space{}
 \end_inset

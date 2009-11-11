@@ -7,8 +7,11 @@
 Format 11
 
 Provides geometry 1
-Provides hyperref 1
 Provides natbib-internal 1
+
+ClassOptions
+	Other		nohyper
+end
 
 Style Standard
 	Margin		Static
@@ -25,12 +28,73 @@ End
 Input stdlayouts.inc
 Input book.layout
 
+NoStyle Chapter
+NoStyle Section
+NoStyle Subsection
 NoStyle Subsubsection
 NoStyle Subsubsection*
 NoStyle Paragraph
 NoStyle Paragraph*
 NoStyle Subparagraph
 NoStyle Subparagraph*
+
+Style Chapter
+	Margin		Static
+	Category	Section
+	LabelType	None
+	LabelCounter	chapter
+	TocLevel	0
+	LatexType	Command
+	LatexName	chapter
+	NeedProtect	1
+	NextNoIndent	1
+	ParSkip		0.4
+	TopSep		4
+	BottomSep	0.8
+	ParSep		0.8
+	Align		Block
+	OptionalArgs	1
+	Font
+	  Series	Bold
+	  Size		Huge
+	EndFont
+End
+
+Style Section
+	Category	Section
+	Margin		Dynamic
+	LabelType	None
+	LabelCounter	section
+	TocLevel	1
+	LatexType	Command
+	LatexName	section
+	NeedProtect	1
+	NextNoIndent	1
+	LabelSep	xxx
+	ParSkip		0.4
+	TopSep		1.3
+	BottomSep	0.7
+	ParSep		0.7
+	Align		Block
+	OptionalArgs	1
+	Font
+	  Series	Bold
+	  Size		Larger
+	EndFont
+End
+
+Style Subsection
+	CopyStyle	Section
+	TocLevel	2
+	LatexName	subsection
+	TopSep		0.9
+	BottomSep	0.5
+	ParSep		0.5
+	Font
+	  Series	Bold
+	  Size		Large
+	EndFont
+End
 
 InsetLayout Sidenote
 	LyxType		custom
