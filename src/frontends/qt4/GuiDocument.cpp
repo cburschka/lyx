@@ -901,6 +901,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		mathsModule->amsCB, SLOT(setDisabled(bool)));
 	connect(mathsModule->esintautoCB, SIGNAL(toggled(bool)),
 		mathsModule->esintCB, SLOT(setDisabled(bool)));
+	connect(mathsModule->mhchemautoCB, SIGNAL(toggled(bool)),
+		mathsModule->mhchemCB, SLOT(setDisabled(bool)));
 	// maths
 	connect(mathsModule->amsCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
@@ -909,6 +911,10 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(mathsModule->esintCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
 	connect(mathsModule->esintautoCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(mathsModule->mhchemCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(mathsModule->mhchemautoCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
 
 	latexModule = new UiWidget<Ui::LaTeXUi>;
@@ -1906,7 +1912,6 @@ void GuiDocument::applyView()
 		else
 			bp_.use_amsmath = BufferParams::package_off;
 	}
-
 	if (mathsModule->esintautoCB->isChecked())
 		bp_.use_esint = BufferParams::package_auto;
 	else {
@@ -1914,6 +1919,14 @@ void GuiDocument::applyView()
 			bp_.use_esint = BufferParams::package_on;
 		else
 			bp_.use_esint = BufferParams::package_off;
+	}
+	if (mathsModule->mhchemautoCB->isChecked())
+		bp_.use_mhchem = BufferParams::package_auto;
+	else {
+		if (mathsModule->mhchemCB->isChecked())
+			bp_.use_mhchem = BufferParams::package_on;
+		else
+			bp_.use_mhchem = BufferParams::package_off;
 	}
 
 	// Page Layout
@@ -2269,6 +2282,11 @@ void GuiDocument::paramsToDialog()
 		bp_.use_esint == BufferParams::package_on);
 	mathsModule->esintautoCB->setChecked(
 		bp_.use_esint == BufferParams::package_auto);
+
+	mathsModule->mhchemCB->setChecked(
+		bp_.use_mhchem == BufferParams::package_on);
+	mathsModule->mhchemautoCB->setChecked(
+		bp_.use_mhchem == BufferParams::package_auto);
 
 	switch (bp_.spacing().getSpace()) {
 		case Spacing::Other: nitem = 3; break;

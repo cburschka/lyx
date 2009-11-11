@@ -336,6 +336,7 @@ BufferParams::BufferParams()
 	use_geometry = false;
 	use_amsmath = package_auto;
 	use_esint = package_auto;
+	use_mhchem = package_auto;
 	cite_engine_ = ENGINE_BASIC;
 	use_bibtopic = false;
 	use_indices = false;
@@ -612,6 +613,10 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		int useesint;
 		lex >> useesint;
 		use_esint = packagetranslator().find(useesint);
+	} else if (token == "\\use_mhchem") {
+		int usemhchem;
+		lex >> usemhchem;
+		use_mhchem = packagetranslator().find(usemhchem);
 	} else if (token == "\\cite_engine") {
 		string engine;
 		lex >> engine;
@@ -863,6 +868,7 @@ void BufferParams::writeFile(ostream & os) const
 	   << "\n\\use_geometry " << convert<string>(use_geometry)
 	   << "\n\\use_amsmath " << use_amsmath
 	   << "\n\\use_esint " << use_esint
+	   << "\n\\use_mhchem " << use_mhchem
 	   << "\n\\cite_engine " << citeenginetranslator().find(cite_engine_)
 	   << "\n\\use_bibtopic " << convert<string>(use_bibtopic)
 	   << "\n\\use_indices " << convert<string>(use_indices)
@@ -1012,6 +1018,8 @@ void BufferParams::validate(LaTeXFeatures & features) const
 		features.require("amsmath");
 	if (use_esint == package_on)
 		features.require("esint");
+	if (use_mhchem == package_on)
+		features.require("mhchem");
 
 	// Document-level line spacing
 	if (spacing().getSpace() != Spacing::Single && !spacing().isDefault())

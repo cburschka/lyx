@@ -127,7 +127,7 @@ namespace {
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-int const LYX_FORMAT = 370; // uwestoehr: option to suppress default date
+int const LYX_FORMAT = 371; // uwestoehr: option to turn off mhchem
 
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;

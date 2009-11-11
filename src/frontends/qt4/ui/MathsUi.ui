@@ -1,7 +1,7 @@
 <ui version="4.0" >
  <class>MathsUi</class>
- <widget class="QWidget" name="MathsUi" >
-  <property name="geometry" >
+ <widget class="QWidget" name="MathsUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -9,59 +9,70 @@
     <height>233</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string/>
   </property>
-  <layout class="QVBoxLayout" >
-   <property name="margin" >
-    <number>11</number>
-   </property>
-   <property name="spacing" >
-    <number>6</number>
-   </property>
-   <item>
-    <widget class="QCheckBox" name="amsautoCB" >
-     <property name="text" >
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QCheckBox" name="amsautoCB">
+     <property name="text">
       <string>&amp;Use AMS math package automatically</string>
      </property>
-     <property name="checked" >
+     <property name="checked">
       <bool>false</bool>
      </property>
     </widget>
    </item>
-   <item>
-    <widget class="QCheckBox" name="amsCB" >
-     <property name="text" >
+   <item row="1" column="0">
+    <widget class="QCheckBox" name="amsCB">
+     <property name="text">
       <string>Use AMS &amp;math package</string>
      </property>
     </widget>
    </item>
-   <item>
-    <widget class="QCheckBox" name="esintautoCB" >
-     <property name="text" >
+   <item row="2" column="0">
+    <widget class="QCheckBox" name="esintautoCB">
+     <property name="text">
       <string>Use esint package &amp;automatically</string>
      </property>
-     <property name="checked" >
+     <property name="checked">
       <bool>false</bool>
      </property>
     </widget>
    </item>
-   <item>
-    <widget class="QCheckBox" name="esintCB" >
-     <property name="text" >
+   <item row="3" column="0">
+    <widget class="QCheckBox" name="esintCB">
+     <property name="text">
       <string>Use &amp;esint package</string>
      </property>
     </widget>
    </item>
-   <item>
+   <item row="4" column="0">
+    <widget class="QCheckBox" name="mhchemautoCB">
+     <property name="text">
+      <string>Use mhchem &amp;package automatically</string>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QCheckBox" name="mhchemCB">
+     <property name="text">
+      <string>Use mh&amp;chem package</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0">
     <spacer>
-     <property name="orientation" >
+     <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
-     <property name="sizeType" >
+     <property name="sizeType">
       <enum>QSizePolicy::Expanding</enum>
      </property>
-     <property name="sizeHint" >
+     <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
        <height>20</height>
@@ -71,14 +82,13 @@
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
- <includes>
-  <include location="local" >qt_i18n.h</include>
- </includes>
  <tabstops>
   <tabstop>amsautoCB</tabstop>
   <tabstop>esintautoCB</tabstop>
  </tabstops>
+ <includes>
+  <include location="local">qt_i18n.h</include>
+ </includes>
  <resources/>
  <connections/>
 </ui>

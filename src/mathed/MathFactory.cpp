@@ -62,6 +62,8 @@
 
 #include "frontends/FontLoader.h"
 
+#include "Buffer.h"
+#include "BufferParams.h"
 #include "Encoding.h"
 #include "LyX.h" // use_gui
 #include "OutputParams.h"
@@ -309,6 +311,10 @@ MathAtom createInsetMath(char const * const s, Buffer * buf)
 MathAtom createInsetMath(docstring const & s, Buffer * buf)
 {
 	//lyxerr << "creating inset with name: '" << to_utf8(s) << '\'' << endl;
+	if ((s == "ce" || s == "cf") && buf
+	    && buf->params().use_mhchem == BufferParams::package_off)
+		return MathAtom(new MathMacro(buf, s));
+
 	latexkeys const * l = in_word_set(s);
 	if (l) {
 		docstring const & inset = l->inset;

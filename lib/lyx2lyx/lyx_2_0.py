@@ -1038,6 +1038,37 @@ def revert_suppress_date(document):
       i = i + 1
 
 
+def revert_mhchem(document):
+    "Revert mhchem loading to preamble code"
+    i = 0
+    j = 0
+    k = 0
+    i = find_token(document.header, "\\use_mhchem 1", 0)
+    if i != -1:
+        mhchem = "auto"
+    else:
+        i = find_token(document.header, "\\use_mhchem 2", 0)
+        if i != -1:
+            mhchem = "on"
+    if mhchem == "auto":
+        j = find_token(document.body, "\\cf{", 0)
+        if j != -1:
+            mhchem = "on"
+        else:
+            j = find_token(document.body, "\\ce{", 0)
+            if j != -1:
+                mhchem = "on"
+    if mhchem == "on":
+        add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
+        add_to_preamble(document, ["\\PassOptionsToPackage{version=3}{mhchem}"])
+        add_to_preamble(document, ["\\usepackage{mhchem}"])
+    k = find_token(document.header, "\\use_mhchem", 0)
+    if k == -1:
+        document.warning("Malformed LyX document: Could not find mhchem setting.")
+        return
+    del document.header[k]
+
+
 ##
 # Conversion hub
 #
@@ -1068,9 +1099,11 @@ convert = [[346, []],
            [368, []],
            [369, [convert_author_id]],
            [370, []],
+           [371, []]
           ]
 
-revert =  [[369, [revert_suppress_date]],
+revert =  [[370, [revert_mhchem]],
+           [369, [revert_suppress_date]],
            [368, [revert_author_id]],
            [367, [revert_hspace_glue_lengths]],
            [366, [revert_percent_vspace_lengths, revert_percent_hspace_lengths]],

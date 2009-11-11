@@ -65,6 +65,7 @@ following hack as starting point to write some macros:
 #include "MathSupport.h"
 
 #include "Buffer.h"
+#include "BufferParams.h"
 #include "Encoding.h"
 #include "Lexer.h"
 
@@ -1765,10 +1766,13 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		}
 
 		else if (t.cs().size()) {
-			bool const is_user_macro =
-				buf && (mode_ & Parse::TRACKMACRO
+			bool const no_mhchem =
+				(t.cs() == "ce" || t.cs() == "cf") && buf
+				&& buf->params().use_mhchem == BufferParams::package_off;
+			bool const is_user_macro = no_mhchem ||
+				(buf && (mode_ & Parse::TRACKMACRO
 					? buf->usermacros.count(t.cs()) != 0
-					: buf->getMacro(t.cs(), false) != 0);
+					: buf->getMacro(t.cs(), false) != 0));
 			latexkeys const * l = in_word_set(t.cs());
 			if (l && !is_user_macro) {
 				if (l->inset == "big") {

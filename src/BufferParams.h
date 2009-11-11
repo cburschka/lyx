@@ -294,6 +294,8 @@ public:
 	Package use_amsmath;
 	/// Whether and how to load esint
 	Package use_esint;
+	/// Whether and how to load mhchem
+	Package use_mhchem;
 	/// Split bibliography?
 	bool use_bibtopic;
 	/// Split the index?
