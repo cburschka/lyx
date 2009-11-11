@@ -62,6 +62,8 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\doc\fr\UserGuide.lyx"
  SetOutPath "$INSTDIR\Resources\doc\ja"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\ja\LaTeXConfig.lyx"
+ SetOutPath "$INSTDIR\Resources\doc\zh_CN"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\zh_CN\Tutorial.lyx"
  SetOutPath "$INSTDIR\Resources\examples"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\biblioExample.bib"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\Braille.lyx"
