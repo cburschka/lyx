@@ -225,9 +225,8 @@ void Graph::getMarkedPath(int from, int to, EdgePath & path) {
 		LASSERT(false, /* */);
 		return;
 	}
-	int const newnode = (*it)->from;
-	path.push_back(newnode);
-	getMarkedPath(from, newnode, path);
+	path.push_back((*it)->id);
+	getMarkedPath(from, (*it)->from, path);
 }
 
 	
