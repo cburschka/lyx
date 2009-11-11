@@ -432,8 +432,10 @@ def checkModule(module):
     msg = 'checking for "' + module + ' module"... '
     try:
       __import__(module)
+      logger.info(msg + ' yes')
       return True
     except ImportError:
+      logger.info(msg + ' no')
       return False
 
 
@@ -620,13 +622,15 @@ def checkConverterEntries():
       addToRC(r'''\converter lyx      html       "python -m elyxer --directory $$r $$i $$o"	""''')
     else:
       path, elyxer = checkProg('a LyX -> HTML converter', ['elyxer.py', 'elyxer'],
-        rc_entry = [ r'\converter lyx      html       "python -tt elyxer.py --directory $$r $$i $$o"	""' ])
+        rc_entry = '')
       if elyxer.find('elyxer') >= 0:
         elyxerfound = True
+        addToRC(r'''\converter lyx      html       "python -tt elyxer.py --directory $$r $$i $$o"	""''')
 
     if elyxerfound:
       addToRC(r'''\copier    html       "python -tt $$s/scripts/ext_copy.py -e html,png,jpg,jpeg,css $$i $$o"''')
     else:
+      # search for other converters than eLyXer
       # On SuSE the scripts have a .sh suffix, and on debian they are in /usr/share/tex4ht/
       path, htmlconv = checkProg('a LaTeX -> HTML converter', ['htlatex $$i', 'htlatex.sh $$i', \
           '/usr/share/tex4ht/htlatex $$i', 'tth  -t -e2 -L$$b < $$i > $$o', \
