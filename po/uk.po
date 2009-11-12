@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: uk-163\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-11-07 11:48+0100\n"
-"PO-Revision-Date: 2009-10-18 16:48+0100\n"
+"PO-Revision-Date: 2009-11-12 11:06+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 0.3\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
+"=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
 msgid "Version"
@@ -2247,8 +2247,7 @@ msgstr "Автоматичне &завершення у рядку"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:88
 msgid "Show the popup after the set delay in text mode."
-msgstr ""
-"Показувати з встановленою затримкою вікно підказки у текстовому режимі."
+msgstr "Показувати з встановленою затримкою вікно підказки у текстовому режимі."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:91
 msgid "Automatic &popup"
@@ -2388,23 +2387,20 @@ msgid "On"
 msgstr "Увімкнено"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:74
-#, fuzzy
 msgid "Preview Si&ze:"
-msgstr "Автозбереження не вдалося!"
+msgstr "&Розмір попереднього перегляду:"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:92
-#, fuzzy
 msgid "Factor for the preview size"
-msgstr "Змінити розмір попереднього показу до зручного."
+msgstr "Масштаб попереднього перегляду"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:114
 msgid "Mark end of paragraphs on screen with a pilcrow character."
-msgstr ""
+msgstr "Позначати завершення абзаців символами абзацу."
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:117
-#, fuzzy
 msgid "&Mark end of paragraphs"
-msgstr "Робити абзацний &відступ"
+msgstr "П&означати кінці абзаців"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:33 src/frontends/qt4/GuiPrefs.cpp:225
 msgid "Editing"
@@ -3084,7 +3080,7 @@ msgstr "&Інша мова:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:74
 msgid "The characters inserted here are ignored by the spellchecker"
-msgstr ""
+msgstr "Вказані тут символи буде проігноровано інструментом перевірки правопису"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:81
 msgid "Specify a personal dictionary file other than the default"
@@ -3151,9 +3147,8 @@ msgid "&Maximum last files:"
 msgstr "&Кількість недавніх файлів:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:140
-#, fuzzy
 msgid "Backup original documents when saving"
-msgstr "Створювати &резервні копії документів кожні"
+msgstr "Створювати резервні копії під час збереження"
 
 #: src/frontends/qt4/ui/PrefUi.ui:160
 msgid "minutes"
@@ -3170,10 +3165,12 @@ msgstr "Відкривати документи у в&кладках"
 #: src/frontends/qt4/ui/PrefUi.ui:191
 msgid "Whether to place close button on each tab or only one in the top left."
 msgstr ""
+"Визначає, слід додавати кнопку закриття на кожній вкладці чи лише одну кнопку "
+"закриття вгорі праворуч."
 
 #: src/frontends/qt4/ui/PrefUi.ui:194
 msgid "&Single close-tab button"
-msgstr ""
+msgstr "&Єдина кнопка закриття вкладок"
 
 #: src/frontends/qt4/ui/PrefUi.ui:217
 msgid "Automatic help"
@@ -3372,8 +3369,7 @@ msgstr "Зворотній &пошук"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:42
 msgid "Process the converted file with this command ($$FName = file name)"
-msgstr ""
-"Обробити перетворений файл за допомогою команди ($$FName = назва файла)"
+msgstr "Обробити перетворений файл за допомогою команди ($$FName = назва файла)"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:101
 msgid "&Export formats:"
@@ -4925,11 +4921,11 @@ msgstr "графіка"
 
 #: lib/layouts/achemso.layout:144
 msgid "Bibnote"
-msgstr "Бібліографічна помітка"
+msgstr "Бібліографічна примітка"
 
 #: lib/layouts/achemso.layout:148
 msgid "bibnote"
-msgstr "бібліографічна помітка"
+msgstr "бібліографічна примітка"
 
 #: lib/layouts/achemso.layout:190
 msgid "Chemistry"
@@ -4985,14 +4981,12 @@ msgid "MainText"
 msgstr "ЗвичайнийТекст"
 
 #: lib/layouts/amsart.layout:80
-#, fuzzy
 msgid "SpecialSection"
 msgstr "Особливий-розділ"
 
 #: lib/layouts/amsart.layout:89
-#, fuzzy
 msgid "SpecialSection*"
-msgstr "Особливий-розділ"
+msgstr "Особливий-розділ*"
 
 #: lib/layouts/amsart.layout:91 lib/layouts/beamer.layout:173
 #: lib/layouts/beamer.layout:216 lib/layouts/svmono.layout:94
@@ -7737,43 +7731,36 @@ msgid "ACKNOWLEDGMENTS"
 msgstr "ПОДЯКИ"
 
 #: lib/layouts/svglobal3.layout:69 lib/layouts/svglobal3.layout:72
-#, fuzzy
 msgid "Subclass"
-msgstr "Subjectclass"
+msgstr "Підклас"
 
 #: lib/layouts/svmono.layout:16 lib/layouts/svmult.layout:80
-#, fuzzy
 msgid "Petit"
-msgstr "НазваПоеми"
+msgstr "Петит"
 
 #: lib/layouts/svmono.layout:28 lib/layouts/svmult.layout:171
-#, fuzzy
 msgid "Front Matter"
-msgstr "Вступ"
+msgstr "Вступна частина"
 
 #: lib/layouts/svmono.layout:44 lib/layouts/svmult.layout:187
-#, fuzzy
 msgid "--- Front Matter ---"
-msgstr "Вступ"
+msgstr "--- Вступна частина ---"
 
 #: lib/layouts/svmono.layout:54 lib/layouts/svmult.layout:196
-#, fuzzy
 msgid "Main Matter"
-msgstr "BackMatter"
+msgstr "Основна частина"
 
 #: lib/layouts/svmono.layout:58 lib/layouts/svmult.layout:200
 msgid "--- Main Matter ---"
-msgstr ""
+msgstr "--- Основна частина ---"
 
 #: lib/layouts/svmono.layout:61 lib/layouts/svmult.layout:203
-#, fuzzy
 msgid "Back Matter"
-msgstr "BackMatter"
+msgstr "Апарат"
 
 #: lib/layouts/svmono.layout:65 lib/layouts/svmult.layout:207
-#, fuzzy
 msgid "--- Back Matter ---"
-msgstr "BackMatter"
+msgstr "--- Апарат ---"
 
 #: lib/layouts/svmono.layout:71 lib/layouts/svmult.layout:213
 #: lib/layouts/stdsections.inc:14
@@ -7791,137 +7778,116 @@ msgid "Appendix \\thechapter"
 msgstr "Додаток \\thechapter"
 
 #: lib/layouts/svmono.layout:135 lib/layouts/svmult.layout:118
-#, fuzzy
 msgid "Preface"
-msgstr "Місце"
+msgstr "Передмова"
 
 #: lib/layouts/svmono.layout:145 lib/layouts/svmult.layout:128
-#, fuzzy
 msgid "Preface:"
-msgstr "Розташування:"
+msgstr "Передмова:"
 
 #: lib/layouts/svmono.layout:174 lib/layouts/svmult.layout:99
-#, fuzzy
 msgid "Proof(QED)"
-msgstr "На коректуру"
+msgstr "Коректура(QED)"
 
 #: lib/layouts/svmono.layout:183 lib/layouts/svmult.layout:108
 msgid "Proof(smartQED)"
-msgstr ""
+msgstr "Коректура(smartQED)"
 
 #: lib/layouts/svmult.layout:24
 msgid "Contributor \\Roman{svmultlsti}:"
-msgstr ""
+msgstr "Співавтор \\Roman{svmultlsti}:"
 
 #: lib/layouts/svmult.layout:28
-#, fuzzy
 msgid "Title*"
-msgstr "Заголовок"
+msgstr "Звання*"
 
 #: lib/layouts/svmult.layout:55
-#, fuzzy
 msgid "Institute and e-mail: "
-msgstr "Позначка інституту"
+msgstr "Установа і ел. пошта: "
 
 #: lib/layouts/svmult.layout:62
 msgid "MiniTOC"
-msgstr ""
+msgstr "Мінізміст"
 
 #: lib/layouts/svmult.layout:67
 msgid "TOC depth (provide a number):"
-msgstr ""
+msgstr "Рівень вкладеності змісту (ціле число):"
 
 #: lib/layouts/svmult.layout:73
-#, fuzzy
 msgid "List of Abbreviations & Symbols"
-msgstr "Список цитат"
+msgstr "Список абревіатур і позначень"
 
 #: lib/layouts/svmult.layout:120 lib/layouts/svmult.layout:138
 #: lib/layouts/svmult.layout:172 lib/layouts/svmult.layout:198
 #: lib/layouts/svmult.layout:205 lib/layouts/svmult.layout:211
 #: lib/layouts/svmult.layout:236 lib/layouts/svmult.layout:245
 #: lib/layouts/svmult.layout:269
-#, fuzzy
 msgid "For editors"
-msgstr "Подяки"
+msgstr "Для редакторів"
 
 #: lib/layouts/svmult.layout:137
-#, fuzzy
 msgid "List of Contributors"
-msgstr "Список діаграм"
+msgstr "Список співавторів"
 
 #: lib/layouts/svmult.layout:277
-#, fuzzy
 msgid "Inst"
-msgstr "&Вставити"
+msgstr "Установа"
 
 #: lib/layouts/svmult.layout:279
-#, fuzzy
 msgid "Institute #"
-msgstr "Інститут"
+msgstr "Установа #"
 
 #: lib/layouts/tufte-book.layout:35
-#, fuzzy
 msgid "Sidenote"
-msgstr "Бібліографічна помітка"
+msgstr "Бічна примітка"
 
 #: lib/layouts/tufte-book.layout:40
-#, fuzzy
 msgid "sidenote"
-msgstr "Бібліографічна помітка"
+msgstr "бічна примітка"
 
 #: lib/layouts/tufte-book.layout:54
-#, fuzzy
 msgid "Marginnote"
-msgstr "Примітку на полях|л"
+msgstr "Примітка на полях"
 
 #: lib/layouts/tufte-book.layout:58
-#, fuzzy
 msgid "marginnote"
-msgstr "поле"
+msgstr "примітка на полях"
 
 #: lib/layouts/tufte-book.layout:67
 msgid "NewThought"
-msgstr ""
+msgstr "Нова думка"
 
 #: lib/layouts/tufte-book.layout:71
 msgid "new thought"
-msgstr ""
+msgstr "нова думка"
 
 #: lib/layouts/tufte-book.layout:81
-#, fuzzy
 msgid "AllCaps"
-msgstr "Малі прописні"
+msgstr "Всі капітеллю"
 
 #: lib/layouts/tufte-book.layout:84
-#, fuzzy
 msgid "allcaps"
-msgstr "Капітель"
+msgstr "всі капітеллю"
 
 #: lib/layouts/tufte-book.layout:94
-#, fuzzy
 msgid "SmallCaps"
-msgstr "Малі прописні"
+msgstr "Мала капітель"
 
 #: lib/layouts/tufte-book.layout:97
-#, fuzzy
 msgid "smallcaps"
-msgstr "Капітель"
+msgstr "мала капітель"
 
 #: lib/layouts/tufte-book.layout:103
-#, fuzzy
 msgid "Full Width"
-msgstr "Ширина мітки"
+msgstr "Максимальна ширина"
 
 #: lib/layouts/tufte-book.layout:129
-#, fuzzy
 msgid "MarginTable"
-msgstr "Неповна"
+msgstr "MarginTable"
 
 #: lib/layouts/tufte-book.layout:140
-#, fuzzy
 msgid "MarginFigure"
-msgstr "FitFigure"
+msgstr "MarginFigure"
 
 #: lib/layouts/aapaper.inc:54
 msgid "email:"
@@ -8752,7 +8718,7 @@ msgstr "--- Середовище Separate ---"
 
 #: lib/layouts/svjour.inc:92
 msgid "Headnote"
-msgstr "Помітка в шапці"
+msgstr "Примітка в шапці"
 
 #: lib/layouts/svjour.inc:106
 msgid "Headnote (optional):"
@@ -8771,19 +8737,16 @@ msgid "Offprints:"
 msgstr "Окремі відбитки:"
 
 #: lib/layouts/theorems-ams-bytype.inc:137 lib/layouts/theorems-bytype.inc:112
-#, fuzzy
 msgid "Fact \\thefact."
-msgstr "Факт \\thetheorem."
+msgstr "Факт \\thefact."
 
 #: lib/layouts/theorems-ams-bytype.inc:181 lib/layouts/theorems-bytype.inc:156
-#, fuzzy
 msgid "Problem \\theproblem."
-msgstr "Задача \\thetheorem."
+msgstr "Задача \\theproblem."
 
 #: lib/layouts/theorems-ams-bytype.inc:194 lib/layouts/theorems-bytype.inc:169
-#, fuzzy
 msgid "Exercise \\theexercise."
-msgstr "Вправа \\thetheorem."
+msgstr "Вправа \\theexercise."
 
 #: lib/layouts/theorems-ams.inc:63 lib/layouts/theorems.inc:63
 msgid "Corollary \\thetheorem."
@@ -8956,24 +8919,27 @@ msgstr "кінцева примітка"
 
 #: lib/layouts/eqs-within-sections.module:2
 msgid "Number Equations by Section"
-msgstr ""
+msgstr "Нумерувати формули за розділами"
 
 #: lib/layouts/eqs-within-sections.module:6
 msgid ""
 "Resets the equation number at section start and prepends the section number "
 "to the equation number, as in '(2.1)'."
 msgstr ""
+"Починати нумерацію формул у розділах з початку, додавати до номера рівняння "
+"номер розділу. Приклад: (2.1)."
 
 #: lib/layouts/figs-within-sections.module:2
-#, fuzzy
 msgid "Number Figures by Section"
-msgstr "Теореми (впорядковані за розділами)"
+msgstr "Нумерувати рисунки за розділами"
 
 #: lib/layouts/figs-within-sections.module:6
 msgid ""
 "Resets the figure number at section start and prepends the section number to "
 "the figure number, as in 'fig. 2.1'."
 msgstr ""
+"Починати нумерацію рисунків у розділах з початку, додавати до номера рисунка "
+"номер розділу. Приклад: (2.1)."
 
 #: lib/layouts/foottoend.module:2
 msgid "Foot to End"
@@ -9141,20 +9107,20 @@ msgstr ""
 "Перевизначає декілька вкладок (Index, Branch, URL) у стилі Minimalistic."
 
 #: lib/layouts/tabs-within-sections.module:2
-#, fuzzy
 msgid "Number Tables by Section"
-msgstr "Теореми (впорядковані за розділами)"
+msgstr "Нумерувати таблиці за розділами"
 
 #: lib/layouts/tabs-within-sections.module:6
 msgid ""
 "Resets the table number at section start and prepends the section number to "
 "the table number, as in 'Table 2.1'."
 msgstr ""
+"Починати нумерацію таблиць у розділах з початку, додавати до номера таблиці "
+"номер розділу. Приклад: (2.1)."
 
 #: lib/layouts/theorems-ams-bytype.module:2
-#, fuzzy
 msgid "Theorems (AMS, Numbered by Type)"
-msgstr "Теореми (AMS-Extended)"
+msgstr "Теореми (AMS, нумерація за типом)"
 
 #: lib/layouts/theorems-ams-bytype.module:11
 msgid ""
@@ -9167,14 +9133,20 @@ msgid ""
 "chapter- and section-wide numbering, use one of the 'within "
 "Sections'/'within Chapters' modules, respectively."
 msgstr ""
+"Надає змогу користуватися середовищами «theorem» (теорема) та «proof» "
+"(доведення) з використанням алгоритмів класів AMS. Підтримуються нумеровані "
+"та ненумеровані типи. На відміну від звичайного модуля теорем AMS, "
+"передбачено окрему нумерацію для кожного з типів теорем (наприклад, теорема "
+"1, теорема 2, лема 1, твердження 1, теорема 3, лема 2..., а не теорема 1, "
+"теорема 2, лема 3, твердження 4...). Нумерація є наскрізною для цілого "
+"документа. Щоб отримати окрему нумерацію у межах глави або розділу, "
+"скористайтеся одним з модулів «у межах розділів»/«у межах глав», відповідно."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:2
-#, fuzzy
 msgid "Theorems (AMS-Extended, Numbered by Type)"
-msgstr "Теореми (AMS-Extended)"
+msgstr "Теореми (AMS-Extended, нумерація за типом)"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:12
-#, fuzzy
 msgid ""
 "Defines some additional theorem environments for use with the AMS theorems "
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
@@ -9187,12 +9159,14 @@ msgstr ""
 "Визначає декілька додаткових середовищ, які можна використовувати у пакунках "
 "теорем AMS. Зокрема Criterion, Algorithm, Axiom, Condition, Note, Notation, "
 "Summary, Acknowledgement, Conclusion, Fact, Assumption і Case, у варіантах з "
-"зірочкою і без."
+"нумерацією і без. На відміну від звичайного модуля AMS-Extended, передбачено "
+"окрему нумерацію різних типів теорем (наприклад, критерій 1, критерій 2, "
+"аксіома 1, припущення 1, критерій 3..., а не критерій 1, критерій 2, аксіома "
+"3, припущення 4...)."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:63
-#, fuzzy
 msgid "Criterion \\thecriterion."
-msgstr "Критерій \\thetheorem."
+msgstr "Критерій \\thecriterion."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:71
 #: lib/layouts/theorems-ams-extended.module:44
@@ -9205,9 +9179,8 @@ msgid "Criterion."
 msgstr "Критерій."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:85
-#, fuzzy
 msgid "Algorithm \\thealgorithm."
-msgstr "Алгоритм \\thetheorem."
+msgstr "Алгоритм \\thealgorithm."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:97
 #: lib/layouts/theorems-ams-extended.module:70
@@ -9215,9 +9188,8 @@ msgid "Algorithm."
 msgstr "Алгоритм."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:108
-#, fuzzy
 msgid "Axiom \\theaxiom."
-msgstr "Аксіома \\thetheorem."
+msgstr "Аксіома \\theaxiom."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:117
 #: lib/layouts/theorems-ams-extended.module:90
@@ -9230,9 +9202,8 @@ msgid "Axiom."
 msgstr "Аксіома."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:131
-#, fuzzy
 msgid "Condition \\thecondition."
-msgstr "Умова \\thetheorem."
+msgstr "Умова \\thecondition."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:140
 #: lib/layouts/theorems-ams-extended.module:112
@@ -9245,19 +9216,18 @@ msgid "Condition."
 msgstr "Умова."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:154
-#, fuzzy
 msgid "Note \\thenote."
-msgstr "Помітка \\thetheorem."
+msgstr "Примітка \\thenote."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:163
 #: lib/layouts/theorems-ams-extended.module:134
 msgid "Note*"
-msgstr "Помітка*"
+msgstr "Примітка*"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:166
 #: lib/layouts/theorems-ams-extended.module:137
 msgid "Note."
-msgstr "Помітка."
+msgstr "Примітка."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:186
 #: lib/layouts/theorems-ams-extended.module:156
@@ -9270,9 +9240,8 @@ msgid "Notation."
 msgstr "Позначення."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:200
-#, fuzzy
 msgid "Summary \\thesummary."
-msgstr "Резюме \\thetheorem."
+msgstr "Резюме \\thesummary."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:209
 #: lib/layouts/theorems-ams-extended.module:178
@@ -9285,9 +9254,8 @@ msgid "Summary."
 msgstr "Резюме."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:223
-#, fuzzy
 msgid "Acknowledgement \\theacknowledgement."
-msgstr "Подяка \\thetheorem."
+msgstr "Подяка \\theacknowledgement."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:232
 #: lib/layouts/theorems-ams-extended.module:200
@@ -9300,9 +9268,8 @@ msgid "Conclusion"
 msgstr "Висновки"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:246
-#, fuzzy
 msgid "Conclusion \\theconclusion."
-msgstr "Висновок \\thetheorem."
+msgstr "Висновок \\theconclusion."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:255
 #: lib/layouts/theorems-ams-extended.module:222
@@ -9320,9 +9287,8 @@ msgid "Assumption"
 msgstr "Припущення"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:269
-#, fuzzy
 msgid "Assumption \\theassumption."
-msgstr "Припущення \\thetheorem."
+msgstr "Припущення \\theassumption."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:278
 #: lib/layouts/theorems-ams-extended.module:245
@@ -9339,7 +9305,6 @@ msgid "Theorems (AMS-Extended)"
 msgstr "Теореми (AMS-Extended)"
 
 #: lib/layouts/theorems-ams-extended.module:8
-#, fuzzy
 msgid ""
 "Defines some additional theorem environments for use with the AMS theorems "
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
@@ -9349,7 +9314,7 @@ msgstr ""
 "Визначає декілька додаткових середовищ, які можна використовувати у пакунках "
 "теорем AMS. Зокрема Criterion, Algorithm, Axiom, Condition, Note, Notation, "
 "Summary, Acknowledgement, Conclusion, Fact, Assumption і Case, у варіантах з "
-"зірочкою і без."
+"нумерацією і без."
 
 #: lib/layouts/theorems-ams-extended.module:37
 msgid "Criterion \\thetheorem."
@@ -9369,7 +9334,7 @@ msgstr "Умова \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:126
 msgid "Note \\thetheorem."
-msgstr "Помітка \\thetheorem."
+msgstr "Примітка \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:148
 msgid "Notation \\thetheorem."
@@ -9396,7 +9361,6 @@ msgid "Theorems (AMS)"
 msgstr "Теореми (AMS)"
 
 #: lib/layouts/theorems-ams.module:8
-#, fuzzy
 msgid ""
 "Defines theorem environments and the proof environment using the extended "
 "AMS machinery. Both numbered and unnumbered types are provided. By default, "
@@ -9404,14 +9368,13 @@ msgid ""
 "changed by loading one of the 'Theorems (Numbered by ...)' modules."
 msgstr ""
 "Визначає середовища для теорем і доведень, які використовують розширені "
-"механізми AMS. Підтримується типи з номерами і без номерів. Типово, теореми "
+"механізми AMS. Підтримуються типи з номерами і без номерів. Типово, теореми "
 "нумеруються у документі послідовно. Змінити спосіб нумерації можна "
-"завантаженням одного з модулів «Теореми (впорядковані за ...)»."
+"завантаженням одного з модулів «Теореми (нумерація за ...)»."
 
 #: lib/layouts/theorems-bytype.module:2
-#, fuzzy
 msgid "Theorems (Numbered by Type)"
-msgstr "Теореми (впорядковані за главами)"
+msgstr "Теореми (нумерація за типом)"
 
 #: lib/layouts/theorems-bytype.module:10
 msgid ""
@@ -9423,11 +9386,17 @@ msgid ""
 "chapter- and section-wide numbering, use one of the 'within "
 "Sections'/'within Chapters' modules, respectively."
 msgstr ""
+"Визначає декілька середовищ «theorem» для використання поза межами класів AMS."
+" На відміну від звичайного модуля теорем, передбачено окрему нумерацію для "
+"кожного з типів теорем (наприклад, теорема 1, теорема 2, лема 1, твердження "
+"1, теорема 3, лема 2..., а не теорема 1, теорема 2, лема 3, твердження 4...). "
+"Нумерація є наскрізною для цілого документа. Щоб отримати окрему нумерацію у "
+"межах глави або розділу, скористайтеся одним з модулів «у межах розділів»/«у "
+"межах глав», відповідно."
 
 #: lib/layouts/theorems-chap-bytype.module:2
-#, fuzzy
 msgid "Theorems (Numbered by Type within Chapters)"
-msgstr "Теореми (впорядковані за главами)"
+msgstr "Теореми (нумерація за типом у межах глав)"
 
 #: lib/layouts/theorems-chap-bytype.module:9
 msgid ""
@@ -9437,26 +9406,30 @@ msgid ""
 "theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, "
 "proposition 4, ...). The numbering is reset at each chapter start."
 msgstr ""
+"Визначає деякі середовища теорем, які буде використано для класів, що не "
+"належать до класів AMS. На відміну від звичайного модуля «Theorem», "
+"передбачено окремі типи теорем з окремими лічильниками (наприклад, теорема 1, "
+"теорема 2, лема 1, твердження 1, теорема 3, лема 2..., а не теорема 1, "
+"теорема 2, лема 3, твердження 4...). Нумерація теорем розпочинатиметься з "
+"початку у кожній з глав."
 
 #: lib/layouts/theorems-chap.module:2
-#, fuzzy
 msgid "Theorems (Numbered by Chapter)"
-msgstr "Теореми (впорядковані за главами)"
+msgstr "Теореми (нумерація за главами)"
 
 #: lib/layouts/theorems-chap.module:7
-#, fuzzy
 msgid ""
 "Numbers theorems and the like by chapter (i.e., the counter is reset at each "
 "chapter start). Use this module only with layouts that provide a chapter "
 "environment."
 msgstr ""
-"Нумерує теореми і подібні середовища за главами. Цей модуль використовується "
-"лише для форматів з середовищем глав."
+"Нумерує теореми і подібні середовища за главами (тобто відлік ведеться у "
+"кожній з глав окремо). Цей модуль використовується лише для форматів з "
+"середовищем «chapter»."
 
 #: lib/layouts/theorems-sec-bytype.module:2
-#, fuzzy
 msgid "Theorems (Numbered by Type within Sections)"
-msgstr "Теореми (впорядковані за розділами)"
+msgstr "Теореми (нумерація за типом у межах розділів)"
 
 #: lib/layouts/theorems-sec-bytype.module:9
 msgid ""
@@ -9466,25 +9439,28 @@ msgid ""
 "theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, "
 "proposition 4, ...). The numbering is reset at each section start."
 msgstr ""
+"Визначає деякі середовища теорем, які буде використано для класів, що не "
+"належать до класів AMS. На відміну від звичайного модуля «Theorem», "
+"передбачено окремі типи теорем з окремими лічильниками (наприклад, теорема 1, "
+"теорема 2, лема 1, твердження 1, теорема 3, лема 2..., а не теорема 1, "
+"теорема 2, лема 3, твердження 4...). Нумерація теорем розпочинатиметься з "
+"початку у кожному з розділів."
 
 #: lib/layouts/theorems-sec.module:2
-#, fuzzy
 msgid "Theorems (Numbered by Section)"
-msgstr "Теореми (впорядковані за розділами)"
+msgstr "Теореми (нумерація за розділами)"
 
 #: lib/layouts/theorems-sec.module:6
-#, fuzzy
 msgid ""
 "Numbers theorems and the like by section (i.e., the counter is reset at each "
 "section start)."
 msgstr ""
-"Нумерує теореми і подібні середовища за главами. Цей модуль використовується "
-"лише для форматів з середовищем глав."
+"Нумерує теореми і подібні середовища за розділами (тобто відлік ведеться для "
+"кожного з розділів окремо)."
 
 #: lib/layouts/theorems-starred.module:2
-#, fuzzy
 msgid "Theorems (Unnumbered)"
-msgstr "Теореми (з зірочками)"
+msgstr "Теореми (без нумерації)"
 
 #: lib/layouts/theorems-starred.module:6
 msgid ""
@@ -9495,16 +9471,15 @@ msgstr ""
 "внутрішніх додаткових механізмів AMS."
 
 #: lib/layouts/theorems-std.module:7
-#, fuzzy
 msgid ""
 "Defines some theorem environments for use with non-AMS classes. By default, "
 "the theorems are numbered consecutively throughout the document. This can be "
 "changed by loading one of the 'Theorems (Numbered by ...)' modules."
 msgstr ""
 "Визначає середовища для теорем і доведень, які не використовують класів AMS. "
-"Підтримується типи з номерами і без номерів. Типово, теореми нумеруються у "
-"документі послідовно. Змінити спосіб нумерації можна завантаженням одного з "
-"модулів «Теореми (впорядковані за ...)»."
+"Типово, теореми нумеруються у документі послідовно. Змінити спосіб нумерації "
+"можна завантаженням одного з "
+"модулів «Теореми (нумерація за ...)»."
 
 #: lib/languages:3 src/Font.cpp:51 src/Font.cpp:54 src/Font.cpp:58
 #: src/Font.cpp:63 src/Font.cpp:66
@@ -11342,9 +11317,8 @@ msgid "Remove Last Argument Spitting Out to the Right"
 msgstr "Вилучити останній параметр з посуванням праворуч"
 
 #: lib/ui/stdcontext.inc:345
-#, fuzzy
 msgid "Reload|R"
-msgstr "&Перезавантажити"
+msgstr "Перезавантажити|П"
 
 #: lib/ui/stdcontext.inc:347 lib/ui/stdcontext.inc:359
 msgid "Edit Externally...|x"
@@ -11408,7 +11382,7 @@ msgstr "Закрити вікно|р"
 
 #: lib/ui/stdmenus.inc:74
 msgid "Update local directory from repository|d"
-msgstr ""
+msgstr "Оновити локальний каталог зі сховища|к"
 
 #: lib/ui/stdmenus.inc:78
 msgid "Use Locking Property|L"
@@ -11636,7 +11610,7 @@ msgstr "Розділити перегляд на верхню і нижню ча
 
 #: lib/ui/stdmenus.inc:310
 msgid "Close Current View|w"
-msgstr ""
+msgstr "Закрити поточну панель|ь"
 
 #: lib/ui/stdmenus.inc:311
 msgid "Fullscreen|l"
@@ -11703,9 +11677,8 @@ msgid "URL|U"
 msgstr "URL|U"
 
 #: lib/ui/stdmenus.inc:352
-#, fuzzy
 msgid "Hyperlink...|k"
-msgstr "Гіперпосилання|Г"
+msgstr "Гіперпосилання...|Г"
 
 #: lib/ui/stdmenus.inc:355
 msgid "Short Title|S"
@@ -12317,7 +12290,7 @@ msgstr "Використати властивість блокування фа�
 
 #: lib/ui/stdtoolbars.inc:235
 msgid "Update local directory from repository"
-msgstr ""
+msgstr "Оновити локальний каталог зі сховища"
 
 #: lib/ui/stdtoolbars.inc:238
 msgid "Math Panels"
@@ -15001,12 +14974,11 @@ msgstr ""
 
 #: src/Buffer.cpp:313
 msgid "LyX attempted to close a document that had unsaved changes!\n"
-msgstr ""
+msgstr "LyX намагається закрити документ, у який внесено незбережені зміни!\n"
 
 #: src/Buffer.cpp:315
-#, fuzzy
 msgid "Attempting to close changed document!"
-msgstr "LyX: Спроба зберегти документ  %1$s\n"
+msgstr "Спроба закрити документ зі змінами!"
 
 #: src/Buffer.cpp:323
 msgid "Could not remove temporary directory"
@@ -15175,20 +15147,17 @@ msgstr " виконано."
 msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX: Спроба зберегти документ  %1$s\n"
 
-#: src/Buffer.cpp:958 src/Buffer.cpp:971 src/Buffer.cpp:985
-#, fuzzy, c-format
+#: src/Buffer.cpp:958 src/Buffer.cpp:971 src/Buffer.cpp:985, c-format
 msgid "  Saved to %1$s. Phew.\n"
-msgstr "  Здається, вдалося його врятувати. Уфф...\n"
+msgstr "  Здається, вдалося зберегти до %1$s. Уфф...\n"
 
 #: src/Buffer.cpp:961
-#, fuzzy
 msgid "  Save failed! Trying again...\n"
-msgstr "  Помилка збереження файла! Намагаюсь...\n"
+msgstr "  Помилка збереження файла! Повторна спроба...\n"
 
 #: src/Buffer.cpp:975
-#, fuzzy
 msgid "  Save failed! Trying yet again...\n"
-msgstr "  Помилка збереження файла! Намагаюсь...\n"
+msgstr "  Помилка збереження файла! Ще одна спроба...\n"
 
 #: src/Buffer.cpp:989
 msgid "  Save failed! Bummer. Document is lost."
@@ -15340,41 +15309,39 @@ msgstr "&Завантажити оригінал"
 
 #: src/Buffer.cpp:2710
 msgid "Document was successfully recovered."
-msgstr ""
+msgstr "Документ було успішно відновлено."
 
 #: src/Buffer.cpp:2712
 msgid "Document was NOT successfully recovered."
-msgstr ""
+msgstr "Не вдалося відновити документ."
 
-#: src/Buffer.cpp:2713
-#, fuzzy, c-format
+#: src/Buffer.cpp:2713, c-format
 msgid ""
 "Remove emergency file now?\n"
 "(%1$s)"
-msgstr "Завантажити аварійну копію?"
+msgstr ""
+"Вилучити аварійну копію?\n"
+"(%1$s)"
 
 #: src/Buffer.cpp:2716 src/Buffer.cpp:2726
-#, fuzzy
 msgid "Delete emergency file?"
-msgstr "Виокремити зовнішній файл"
+msgstr "Вилучити файл аварійної копії?"
 
 #: src/Buffer.cpp:2717 src/Buffer.cpp:2728
-#, fuzzy
 msgid "&Keep it"
-msgstr "&Зберігати відповідники"
+msgstr "&Не вилучати"
 
 #: src/Buffer.cpp:2720
 msgid "Emergency file deleted"
-msgstr ""
+msgstr "Аварійну копію вилучено"
 
 #: src/Buffer.cpp:2721
 msgid "Do not forget to save your file now!"
-msgstr ""
+msgstr "Не забудьте зберегти ваш файл!"
 
 #: src/Buffer.cpp:2727
-#, fuzzy
 msgid "Remove emergency file now?"
-msgstr "Завантажити аварійну копію?"
+msgstr "Вилучити аварійну копію?"
 
 #: src/Buffer.cpp:2742
 #, c-format
@@ -15660,9 +15627,8 @@ msgid "uncodable character"
 msgstr "непридатний для кодування символ"
 
 #: src/Changes.cpp:379
-#, fuzzy
 msgid "Uncodable character in author name"
-msgstr "Непридатні для кодування символи у вкладці тексту програми"
+msgstr "Непридатні для кодування символи у імені автора"
 
 #: src/Changes.cpp:380
 #, c-format
@@ -15675,6 +15641,13 @@ msgid ""
 "Chose an appropriate document encoding (such as utf8)\n"
 "or change the spelling of the author name."
 msgstr ""
+"Ім’я автора, «%1$s»,\n"
+"використане для стеження за змінами, містить символи, які\n"
+"неможливо показати за поточного кодування. Відповідні\n"
+"символи буде пропущено під час експортування до файла LaTeX.\n"
+"\n"
+"Оберіть відповідне кодування документа (наприклад, utf8)\n"
+"або змініть запис імені автора."
 
 #: src/Chktex.cpp:63
 #, c-format
@@ -15999,9 +15972,8 @@ msgid "button background under focus"
 msgstr "тло кнопки під фокусом"
 
 #: src/Color.cpp:218
-#, fuzzy
 msgid "paragraph marker"
-msgstr "Підпараграф"
+msgstr "позначка абзацу"
 
 #: src/Color.cpp:219
 msgid "inherit"
@@ -16763,8 +16735,7 @@ msgstr ""
 "типово після зміни класу."
 
 #: src/LyXRC.cpp:2505
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Проміжок часу між автозбереженнями (в секундах). 0 означає не виконувати "
 "автозбереження."
@@ -16988,8 +16959,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2662
 msgid "De-select if you do not want LyX to scroll to saved position."
-msgstr ""
-"Не позначайте, якщо ви не бажаєте щоб LyX гортав до збереженої позиції."
+msgstr "Не позначайте, якщо ви не бажаєте щоб LyX гортав до збереженої позиції."
 
 #: src/LyXRC.cpp:2666
 msgid "De-select to prevent loading files opened from the last LyX session."
@@ -17028,8 +16998,7 @@ msgstr "Позначте для показу підказки-доповненн
 #: src/LyXRC.cpp:2695
 msgid ""
 "Show the completion popup without delay after non-unique completion attempt."
-msgstr ""
-"Показувати підказку без затримки після неоднозначної спроби доповнення."
+msgstr "Показувати підказку без затримки після неоднозначної спроби доповнення."
 
 #: src/LyXRC.cpp:2699
 msgid ""
@@ -17069,8 +17038,7 @@ msgstr ""
 "тому вигляді, як прийнято в вашій операційній системі."
 
 #: src/LyXRC.cpp:2731
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 "Вкажіть додатковий особистий словниковий файл. Наприклад, \".ispell_english"
 "\"."
@@ -17167,8 +17135,7 @@ msgstr "Параметр для зазначення програмі друку
 
 #: src/LyXRC.cpp:2807
 msgid "Option to pass to the print program to print on a specific printer."
-msgstr ""
-"Параметр для зазначення програмі друку друкувати на вказаному принтері."
+msgstr "Параметр для зазначення програмі друку друкувати на вказаному принтері."
 
 #: src/LyXRC.cpp:2811
 msgid ""
@@ -17600,20 +17567,25 @@ msgid ""
 "\n"
 "Continue?"
 msgstr ""
+"У робочому каталозі виявлено зміни:\n"
+"%1$s\n"
+"\n"
+"У разі виникнення конфліктів перевага надаватиметься версіям з локального "
+"каталогу.\n"
+"\n"
+"Продовжити?"
 
 #: src/VCBackend.cpp:727
 msgid "Changes detected"
-msgstr ""
+msgstr "Виявлено зміни"
 
 #: src/VCBackend.cpp:728
-#, fuzzy
 msgid "&Yes"
-msgstr "Так"
+msgstr "&Так"
 
 #: src/VCBackend.cpp:728
-#, fuzzy
 msgid "&No"
-msgstr "Ні"
+msgstr "&Ні"
 
 #: src/VCBackend.cpp:788
 msgid "VCN File Locking"
@@ -17679,8 +17651,7 @@ msgstr "&Зберегти зміни"
 #: src/buffer_funcs.cpp:86
 #, c-format
 msgid "The file %1$s exists but is not readable by the current user."
-msgstr ""
-"Файл %1$s існує, але він недоступний для читання поточним користувачем."
+msgstr "Файл %1$s існує, але він недоступний для читання поточним користувачем."
 
 #: src/buffer_funcs.cpp:89
 msgid "File not readable!"
@@ -18833,8 +18804,7 @@ msgstr "Спадковий документ"
 #: src/frontends/qt4/GuiInclude.cpp:120 src/frontends/qt4/GuiInclude.cpp:182
 #: src/frontends/qt4/GuiListings.cpp:239 src/frontends/qt4/GuiListings.cpp:375
 #: src/frontends/qt4/GuiListings.cpp:450
-msgid ""
-"Input listing parameters on the right. Enter ? for a list of parameters."
+msgid "Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 "Введіть параметри текстів програм праворуч. Введіть «?», щоб побачити список "
 "команд."
@@ -20060,10 +20030,9 @@ msgstr ""
 msgid "Could not update TeX information"
 msgstr "Неможливо оновити TeX інформацію"
 
-#: src/frontends/qt4/qt_helpers.cpp:181
-#, fuzzy, c-format
+#: src/frontends/qt4/qt_helpers.cpp:181, c-format
 msgid "The script `%1$s' failed."
-msgstr "Скрипт `%s' зазнав помилки."
+msgstr "Спроба виконання скрипту `%s' зазнала невдачі."
 
 #: src/frontends/qt4/qt_helpers.cpp:433
 msgid "All Files "
