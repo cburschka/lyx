@@ -621,11 +621,11 @@ def checkConverterEntries():
     if elyxerfound:
       addToRC(r'''\converter lyx      html       "python -m elyxer --directory $$r $$i $$o"	""''')
     else:
-      path, elyxer = checkProg('a LyX -> HTML converter', ['elyxer.py', 'elyxer'],
-        rc_entry = '')
+      path, elyxer = checkProg('a LyX -> HTML converter',
+        ['elyxer.py --directory $$r $$i $$o', 'elyxer --directory $$r $$i $$o'],
+        rc_entry = [ r'\converter lyx      html       "%%"	""' ])
       if elyxer.find('elyxer') >= 0:
         elyxerfound = True
-        addToRC(r'''\converter lyx      html       "python -tt elyxer.py --directory $$r $$i $$o"	""''')
 
     if elyxerfound:
       addToRC(r'''\copier    html       "python -tt $$s/scripts/ext_copy.py -e html,png,jpg,jpeg,css $$i $$o"''')
