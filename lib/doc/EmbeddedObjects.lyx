@@ -1,4 +1,4 @@
-#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -25410,7 +25410,7 @@ In some scientific literature it is usual to collect the footnotes and print
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Endnotes----footnotes"
+reference "fig:Endnotes"
 
 \end_inset
 
@@ -25433,44 +25433,27 @@ Endnotes
 
 \end_inset
 
- To use endnotes instead of footnotes in your document, load the LaTeX-package
+ To use endnotes instead of footnotes in your document, load in the menu
  
-\series bold
-endnotes
-\series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-packages ! endnotes
-\end_layout
-
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \menuseparator
+Modules 
+\family default
+the module 
+\family sans
+Foot
+\begin_inset space ~
 \end_inset
 
- with the document preamble lines
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-usepackage{endnotes}
-\begin_inset Newline newline
+to
+\begin_inset space ~
 \end_inset
 
-
-\backslash
-let
-\backslash
-footnote
-\backslash
-endnote
-\end_layout
-
-\begin_layout Standard
-To insert the collected footnotes, insert the command
+End
+\family default
+.
+ To insert the collected footnotes, insert the command
 \end_layout
 
 \begin_layout Standard
@@ -25532,7 +25515,7 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Endnotes----footnotes"
+name "fig:Endnotes"
 
 \end_inset
 
