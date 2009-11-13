@@ -939,35 +939,6 @@ static Change::Type lookupChangeType(DocIterator const & dit, bool outer = false
 }
 
 
-static bool getLocalStatus(Cursor cursor, FuncRequest const & cmd, FuncStatus & status)
-{
-	// Try to fix cursor in case it is broken.
-	cursor.fixIfBroken();
-
-	// This is, of course, a mess. Better create a new doc iterator and use
-	// this in Inset::getStatus. This might require an additional
-	// BufferView * arg, though (which should be avoided)
-	//Cursor safe = *this;
-	bool res = false;
-	for ( ; cursor.depth(); cursor.pop()) {
-		//lyxerr << "\nCursor::getStatus: cmd: " << cmd << endl << *this << endl;
-		LASSERT(cursor.idx() <= cursor.lastidx(), /**/);
-		LASSERT(cursor.pit() <= cursor.lastpit(), /**/);
-		LASSERT(cursor.pos() <= cursor.lastpos(), /**/);
-
-		// The inset's getStatus() will return 'true' if it made
-		// a definitive decision on whether it want to handle the
-		// request or not. The result of this decision is put into
-		// the 'status' parameter.
-		if (cursor.inset().getStatus(cursor, cmd, status)) {
-			res = true;
-			break;
-		}
-	}
-	return res;
-}
-
-
 bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 {
 	// Can we use a readonly buffer?
@@ -989,13 +960,7 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 
 	Cursor & cur = d->cursor_;
 
-	// Is this a function that acts on inset at point?
-	Inset * inset = cur.nextInset();
-	if (lyxaction.funcHasFlag(cmd.action, LyXAction::AtPoint)
-	    && inset && inset->getStatus(cur, cmd, flag))
-		return true;
-
-	if (getLocalStatus(cur, cmd, flag))
+	if (cur.getStatus(cmd, flag))
 		return true;
 
 	switch (cmd.action) {
@@ -1211,7 +1176,8 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 	Cursor & cur = d->cursor_;
 
 	// Don't dispatch function that does not apply to internal buffers.
-	if (buffer_.isInternal() && lyxaction.funcHasFlag(cmd.action, LyXAction::NoInternal))
+	if (buffer_.isInternal() 
+	    && lyxaction.funcHasFlag(cmd.action, LyXAction::NoInternal))
 		return false;
 
 	// We'll set this back to false if need be.

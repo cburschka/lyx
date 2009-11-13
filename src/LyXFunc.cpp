@@ -541,20 +541,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				}
 			}
 
-			// Is this a function that acts on inset at point?
-			Inset * inset = bv->cursor().nextInset();
-			if (lyxaction.funcHasFlag(action, LyXAction::AtPoint)
-			    && inset) {
-				bv->cursor().result().dispatched(true);
-				bv->cursor().result().update(Update::FitCursor | Update::Force);
-				FuncRequest tmpcmd = cmd;
-				inset->dispatch(bv->cursor(), tmpcmd);
-				if (bv->cursor().result().dispatched()) {
-					updateFlags = bv->cursor().result().update();
-					break;
-				}
-			}
-
 			// Let the current Cursor dispatch its own actions.
 			Cursor old = bv->cursor();
 			bv->cursor().getPos(cursorPosBeforeDispatchX_,

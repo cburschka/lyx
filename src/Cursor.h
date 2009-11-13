@@ -45,6 +45,8 @@ public:
 	/// create the cursor of a BufferView
 	explicit Cursor(BufferView & bv);
 
+	/// returns true if we made a decision
+	bool getStatus(FuncRequest const & cmd, FuncStatus & flag) const;
 	/// dispatch from innermost inset upwards
 	void dispatch(FuncRequest const & cmd);
 	/// get the resut of the last dispatch

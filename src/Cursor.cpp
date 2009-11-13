@@ -26,6 +26,7 @@
 #include "FuncCode.h"
 #include "FuncRequest.h"
 #include "Language.h"
+#include "LyXAction.h"
 #include "LyXFunc.h" // only for setMessage()
 #include "LyXRC.h"
 #include "Paragraph.h"
@@ -277,6 +278,43 @@ void Cursor::setCursor(DocIterator const & cur)
 }
 
 
+bool Cursor::getStatus(FuncRequest const & cmd, FuncStatus & status) const
+{
+	Cursor cur = *this;
+
+	// Try to fix cursor in case it is broken.
+	cur.fixIfBroken();
+
+	// Is this a function that acts on inset at point?
+	Inset * inset = cur.nextInset();
+	if (lyxaction.funcHasFlag(cmd.action, LyXAction::AtPoint)
+	    && inset && inset->getStatus(cur, cmd, status))
+		return true;
+
+	// This is, of course, a mess. Better create a new doc iterator and use
+	// this in Inset::getStatus. This might require an additional
+	// BufferView * arg, though (which should be avoided)
+	//Cursor safe = *this;
+	bool res = false;
+	for ( ; cur.depth(); cur.pop()) {
+		//lyxerr << "\nCursor::getStatus: cmd: " << cmd << endl << *this << endl;
+		LASSERT(cur.idx() <= cur.lastidx(), /**/);
+		LASSERT(cur.pit() <= cur.lastpit(), /**/);
+		LASSERT(cur.pos() <= cur.lastpos(), /**/);
+
+		// The inset's getStatus() will return 'true' if it made
+		// a definitive decision on whether it want to handle the
+		// request or not. The result of this decision is put into
+		// the 'status' parameter.
+		if (cur.inset().getStatus(cur, cmd, status)) {
+			res = true;
+			break;
+		}
+	}
+	return res;
+}
+
+
 void Cursor::dispatch(FuncRequest const & cmd0)
 {
 	LYXERR(Debug::DEBUG, "cmd: " << cmd0 << '\n' << *this);
@@ -289,6 +327,19 @@ void Cursor::dispatch(FuncRequest const & cmd0)
 
 	buffer()->undo().beginUndoGroup();
 	
+	// Is this a function that acts on inset at point?
+	if (lyxaction.funcHasFlag(cmd.action, LyXAction::AtPoint)
+	    && nextInset()) {
+		result().dispatched(true);
+		result().update(Update::FitCursor | Update::Force);
+		FuncRequest tmpcmd = cmd;
+		LYXERR(Debug::DEBUG, "Cursor::dispatch: (AtPoint) cmd: "
+			<< cmd0 << endl << *this);
+		nextInset()->dispatch(*this, tmpcmd);
+		if (result().dispatched())
+			return;
+	}
+
 	// store some values to be used inside of the handlers
 	beforeDispatchCursor_ = *this;
 	for (; depth(); pop(), boundary(false)) {
