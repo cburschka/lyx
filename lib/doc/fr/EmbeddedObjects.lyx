@@ -25625,7 +25625,7 @@ Dans certaines publications scientifiques, il est courant de rassembler
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Notes-de-fin---notes-de-bas-de-page"
+reference "fig:Notes-de-fin"
 
 \end_inset
 
@@ -25639,16 +25639,6 @@ notes de fin
 \end_inset
 
 .
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-J'ai pas trouvé mieux pour endnotes (NdT)
-\end_layout
-
-\end_inset
-
-
 \begin_inset Index
 status collapsed
 
@@ -25659,43 +25649,25 @@ Notes de fin
 \end_inset
 
  Pour utiliser des notes de fin à la place des notes de bas de page dans
- votre document, chargez le paquetage LaTeX 
-\series bold
-endnotes
-\series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Paquetages LaTeX ! endnotes
-\end_layout
-
-\end_inset
-
- avec ces lignes dans le préambule du document
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-usepackage{endnotes}
-\begin_inset Newline newline
-\end_inset
-
-
-\backslash
-let
-\backslash
-footnote
-\backslash
-endnote
-\end_layout
-
-\begin_layout Standard
-Pour insérer les notes qui ont ainsi été rassemblées, mettez la commande
+ votre document, 
+\lang english
+load in the menu
+\lang french
+ 
+\family sans
+Document\SpecialChar \menuseparator
+Paramètres\SpecialChar \menuseparator
+Modules 
+\family default
+\lang english
+the module
+\lang french
+ 
+\family sans
+Note de bas de page en fin de document
+\family default
+.
+ Pour insérer les notes qui ont ainsi été rassemblées, mettez la commande
 \end_layout
 
 \begin_layout Standard
@@ -25757,7 +25729,7 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Notes-de-fin---notes-de-bas-de-page"
+name "fig:Notes-de-fin"
 
 \end_inset
 
