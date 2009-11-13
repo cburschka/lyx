@@ -25773,15 +25773,19 @@ In einigen wissenschaftlichen Veröffentlichungen werden alle Fußnoten am
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "abb:endnotes----Die"
+reference "abb:endnotes"
 
 \end_inset
 
  gedruckt.
  Man nennt sie dann 
-\emph on
+\begin_inset Quotes gld
+\end_inset
+
 Endnoten
-\emph default
+\begin_inset Quotes grd
+\end_inset
+
 .
 \begin_inset Index
 status collapsed
@@ -25792,49 +25796,38 @@ Endnoten
 
 \end_inset
 
- Um das zu erreichen, müssen Sie das LaTeX-Paket 
-\series bold
-endnotes
-\series default
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX-Pakete ! endnotes
-\end_layout
-
+ Um das zu erreichen, laden Sie im Menü 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Module 
+\family default
+das Modul 
+\family sans
+Fußnote
+\begin_inset space ~
 \end_inset
 
- mit folgendem Befehl im LaTeX-Vorspann einfügen: 
+als
+\begin_inset space ~
+\end_inset
+
+Endnote
+\family default
+.
+ Um die gesammelten Fußnoten zu drucken, fügen Sie den Befehl
 \end_layout
 
 \begin_layout Standard
 
 \series bold
 
-\backslash
-usepackage{endnotes}
-\begin_inset Newline newline
-\end_inset
-
-
-\backslash
-let
-\backslash
-footnote
-\backslash
-endnote
-\end_layout
-
-\begin_layout Standard
-Um die gesammelten Fußnoten zu drucken, fügen Sie den TeX-Code
-\series bold
- 
 \backslash
 theendnotes
-\series default
- am Ende des Abschnitts oder Kapitels ein.
+\end_layout
+
+\begin_layout Standard
+als TeX-Code am Ende des Abschnitts oder Kapitels ein.
 \end_layout
 
 \begin_layout Standard
@@ -25884,7 +25877,7 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "abb:endnotes----Die"
+name "abb:endnotes"
 
 \end_inset
 
