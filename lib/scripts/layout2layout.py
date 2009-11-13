@@ -105,12 +105,12 @@ def trim_bom(line):
         return line
 
 
-def read(input):
+def read(source):
     " Read input file and strip lineendings."
     lines = list()
     first_line = 1
     while 1:
-        line = input.readline()
+        line = source.readline()
         if not line:
             break
         if (first_line):
@@ -585,16 +585,16 @@ def main(argv):
 
     # Open files
     if len(argv) == 1:
-        input = sys.stdin
+        source = sys.stdin
         output = sys.stdout
     elif len(argv) == 3:
-        input = open(argv[1], 'rb')
+        source = open(argv[1], 'rb')
         output = open(argv[2], 'wb')
     else:
         error(usage(argv[0]))
 
     # Do the real work
-    lines = read(input)
+    lines = read(source)
     format = 1
     while (format < currentFormat):
         format = convert(lines)
@@ -602,7 +602,7 @@ def main(argv):
 
     # Close files
     if len(argv) == 3:
-        input.close()
+        source.close()
         output.close()
 
     return 0
