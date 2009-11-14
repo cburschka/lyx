@@ -128,21 +128,28 @@
   \setboolean{eurosym}{true}}
  {\setboolean{eurosym}{false}}
 
-% needed in sec. 22.4
 % check for package braket
+% used for physical vectors
 \newboolean{braket}
 \IfFileExists{braket.sty}
  {\usepackage{braket}
   \setboolean{braket}{true}}
  {\setboolean{braket}{false}}
 
-% needed in sec. 22.10
 % check for package upgreek
 \newboolean{upgreek}
 \IfFileExists{upgreek.sty}
  {\usepackage{upgreek}
   \setboolean{upgreek}{true}}
  {\setboolean{upgreek}{false}}
+
+% check for package mhchem
+% used for chemical equations
+\newboolean{mhchem}
+\IfFileExists{mhchem.sty}
+ {\usepackage{mhchem}
+  \setboolean{mhchem}{true}}
+ {\setboolean{mhchem}{false}}
 \end_preamble
 \options bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
 \use_default_options false
@@ -31173,7 +31180,34 @@ Packages ! mhchem
 \end_inset
 
  is installed.
- After inserting 
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ifmhchem 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The following will only be displayed when the LaTeX-package 
+\series bold
+mhchem
+\series default
+ is installed:
+\end_layout
+
+\end_inset
+
+After inserting 
 \series bold
 
 \backslash
@@ -31931,6 +31965,60 @@ key "mhchem"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+else
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The following will be displayed when the LaTeX-package 
+\series bold
+mhchem
+\series default
+ is not installed:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You need to install the package 
+\series bold
+mhchem
+\series default
+ to see the content of this section in the output.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fi
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -36033,7 +36121,7 @@ The following table will only be displayed when the LaTeX-package
 \series bold
 upgreek
 \series default
- is installed.
+ is installed:
 \end_layout
 
 \end_inset
