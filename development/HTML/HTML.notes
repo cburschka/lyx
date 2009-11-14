@@ -5,12 +5,11 @@ Known issues:
 	<p>, in violation of the DTD. I guess we could close the paragraph and then do
 	the <hr />, but isn't there a better solution? There's actually a LyX bug here, 
 	I think, since a line surely ought not appear in a normal paragraph?
-* The same issue arises with InsetVSpace, unsurprisingly. And also with the inline
+  The same issue arises with InsetVSpace, unsurprisingly. And also with the inline
 	version of InsetListings. 
-* One option here, actually, would be to use just <div> and never use <p>, setting
-	the spacing and such via CSS.
-* The code that manages the nesting of tags is pretty primitive. It needs a lot
-	of work.
+  The solution to both of these problems, and others, is to use a custom stream,
+	the way Andre does in mathed. Then we can cache the tags and only output them
+	when appropriate.
 
 These insets are basically done, though there are probably issues here and there,
 	and there are even some FIXMEs:
@@ -47,6 +46,10 @@ These insets work but still need work:
 		the bbl file, which of course is the only fully general solution.
 	InsetFlex: I think this one is OK, but it needs some testing.
 	InsetFloat: This seems to work OK, but it will need testing and tweaking.
+	InsetGraphics: This works in a pretty primitive way, in that it outputs the graphic
+	  and appropriate img tag. But we don't yet do any sort of scaling, rotating, and
+		so forth. That won't be hard, since we can just call ImageMagick to do this for 
+		us, but appropriate routines will need to be written.
 
 These insets do not work and are not yet scheduled to work:
 	InsetExternal: It may be that this won't be too hard, but I don't understand 
@@ -60,10 +63,6 @@ May need to make use here of TocWidget::itemInset, which should then be moved
 to TocBackend.
 
 These do not yet work and need some attention:
-	InsetGraphics: This should be fairly straightforward, but I'll need to learn a bit
-		about export formats, etc, to get it completely right. We'll also want to make
-		some use of the params, eg, on width and height. I guess there is also some
-		issue about converting the graphics formats?
 	InsetRef: Presumably, this is an internal link. But what should the text be, and how
 		should we get it? Probably some validation thing again, where labels tell us where 
 		they are. Alternatively, we could parse the aux file.

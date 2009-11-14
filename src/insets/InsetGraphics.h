@@ -74,6 +74,8 @@ private:
 	int plaintext(odocstream &, OutputParams const &) const;
 	///
 	int docbook(odocstream &, OutputParams const &) const;
+	///
+	docstring xhtml(odocstream & os, OutputParams const &) const;
 	/** Tell LyX what the latex features you need i.e. what latex packages
 	    you need to be included.
 	 */
@@ -109,7 +111,13 @@ private:
 	/// Create the atributes for docbook export.
 	docstring createDocBookAttributes() const;
 	/// Convert the file if needed, and return the location of the file.
+	/// This version is for use with LaTeX-style output.
 	std::string prepareFile(OutputParams const &) const;
+	/// Convert the file if needed, and return the location of the file.
+	/// This version is for use with HTML-style output.
+	/// \return the new filename, relative to the location of the HTML file,
+	/// or an empty string on error.
+	std::string prepareHTMLFile(OutputParams const & runparams) const;
 
 	///
 	InsetGraphicsParams params_;

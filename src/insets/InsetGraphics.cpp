@@ -862,6 +862,103 @@ int InsetGraphics::docbook(odocstream & os,
 }
 
 
+string InsetGraphics::prepareHTMLFile(OutputParams const & runparams) const
+{
+	// The following code depends on non-empty filenames
+	if (params().filename.empty())
+		return string();
+
+	string const orig_file = params().filename.absFilename();
+
+	// The master buffer. This is useful when there are multiple levels
+	// of include files
+	Buffer const * masterBuffer = buffer().masterBuffer();
+
+	if (!params().filename.isReadableFile())
+		return string();
+
+	// We place all temporary files in the master buffer's temp dir.
+	// This is possible because we use mangled file names.
+	// FIXME We may want to put these files in some special temporary
+	// directory.
+	string const temp_path = masterBuffer->temppath();
+
+	// Copy to temporary directory.
+	FileName temp_file;
+	GraphicsCopyStatus status;
+	boost::tie(status, temp_file) =
+			copyToDirIfNeeded(params().filename, temp_path);
+
+	if (status == FAILURE)
+		return string();
+
+	string output_file = onlyFilename(temp_file.absFilename());
+
+	string const from = formats.getFormatFromFile(temp_file);
+	if (from.empty())
+		LYXERR(Debug::GRAPHICS, "\tCould not get file format.");
+
+	string const to   = findTargetFormat(from, runparams);
+	string const ext  = formats.extension(to);
+	LYXERR(Debug::GRAPHICS, "\t we have: from " << from << " to " << to);
+	LYXERR(Debug::GRAPHICS, "\tthe orig file is: " << orig_file);
+
+	if (from == to) {
+		// source and destination formats are the same
+		runparams.exportdata->addExternalFile("xhtml", temp_file, output_file);
+		return output_file;
+	}
+
+	// so the source and destination formats are different
+	FileName const to_file = FileName(changeExtension(temp_file.absFilename(), ext));
+	string const output_to_file = changeExtension(output_file, ext);
+
+	// Do we need to perform the conversion?
+	// Yes if to_file does not exist or if temp_file is newer than to_file
+	if (compare_timestamps(temp_file, to_file) < 0) {
+		// FIXME UNICODE
+		LYXERR(Debug::GRAPHICS,
+			to_utf8(bformat(_("No conversion of %1$s is needed after all"),
+				   from_utf8(orig_file))));
+		runparams.exportdata->addExternalFile("xhtml", to_file, output_to_file);
+		return output_to_file;
+	}
+
+	LYXERR(Debug::GRAPHICS,"\tThe original file is " << orig_file << "\n"
+		<< "\tA copy has been made and convert is to be called with:\n"
+		<< "\tfile to convert = " << temp_file << '\n'
+		<< "\t from " << from << " to " << to);
+
+	// FIXME (Abdel 12/08/06): Is there a need to show these errors?
+	ErrorList el;
+	bool const success = 
+		theConverters().convert(&buffer(), temp_file, to_file, params().filename,
+			from, to, el, Converters::try_default | Converters::try_cache);
+	if (!success)	
+		return string();
+	runparams.exportdata->addExternalFile("xhtml", to_file, output_to_file);
+	return output_to_file;
+}
+
+
+docstring InsetGraphics::xhtml(odocstream & os, OutputParams const & op) const
+{
+	string output_file = prepareHTMLFile(op);
+	if (output_file.empty()) {
+		LYXERR0("InsetGraphics::xhtml: File `" << params().filename 
+						<< "' not found.");
+		os << "<img src=\"" << params().filename.absFilename() << "\" />";
+		return docstring();
+	}
+
+	// FIXME Do we want to do something with the parameters, other than
+	// use them to do another conversion?
+	// FIXME Do the other conversion! Cropping, rotating, etc.
+	os << "<img src=\"" << from_utf8(output_file) << "\" />";
+	return docstring();
+}
+
+
 void InsetGraphics::validate(LaTeXFeatures & features) const
 {
 	// If we have no image, we should not require anything.
