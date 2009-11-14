@@ -35,6 +35,8 @@ public:
 	///
 	void normalize(NormalStream & ns) const;
 	///
+	void mathmlize(MathStream & ms) const;
+	///
 	void infoize(odocstream & os) const;
 	///
 	void validate(LaTeXFeatures & features) const;
@@ -64,6 +66,8 @@ public:
 	/// write normalized content
 	void normalize(NormalStream & ns) const;
 	///
+	//void mathmlize(MathStream & ms) const;
+	///
 	void infoize(odocstream & os) const;
 private:
 	///
@@ -84,6 +88,8 @@ public:
 	void write(WriteStream & os) const;
 	/// write normalized content
 	void normalize(NormalStream & ns) const;
+	///
+	//void mathmlize(MathStream & ms) const;
 	///
 	mode_type currentMode() const { return TEXT_MODE; }
 	///
@@ -109,6 +115,8 @@ public:
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	void write(WriteStream & os) const;
+	///
+	//void mathmlize(MathStream & ms) const;
 	/// write normalized content
 	void normalize(NormalStream & ns) const;
 	///
