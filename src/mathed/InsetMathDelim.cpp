@@ -163,8 +163,8 @@ void InsetMathDelim::mathematica(MathematicaStream & os) const
 
 void InsetMathDelim::mathmlize(MathStream & os) const
 {
-	os << "<fenced open=\"" << left_ << "\" close=\""
-		<< right_ << "\">" << cell(0) << "</fenced>";
+	os << "<mfenced open=\"" << left_ << "\" close=\""
+		<< right_ << "\">" << cell(0) << "</mfenced>";
 }
 
 
