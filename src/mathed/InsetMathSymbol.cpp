@@ -175,19 +175,24 @@ void InsetMathSymbol::mathematica(MathematicaStream & os) const
 }
 
 
+// FIXME This will likely need some work.
 char const * MathMLtype(docstring const & s)
 {
-	if (s == "mathop")
-		return "mo";
-	return "mi";
+	if (s == "mathord")
+		return "mi";
+	return "mo";
 }
 
 
 void InsetMathSymbol::mathmlize(MathStream & os) const
 {
+	// FIXME To get this working properly, we need to do add the 
+	// XML entity definitions to lib/symbols. And probably do more
+	// interesting things with MathMLtype
 	char const * type = MathMLtype(sym_->extra);
 	os << '<' << type << "> ";
-	if (sym_->xmlname == "x") // unknown so far
+	if (sym_->xmlname == "x") 
+		// unknown so far
 		os << name();
 	else
 		os << sym_->xmlname;
