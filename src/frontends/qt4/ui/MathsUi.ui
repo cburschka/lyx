@@ -1,4 +1,4 @@
-<ui version="4.0" >
+<ui version="4.0">
  <class>MathsUi</class>
  <widget class="QWidget" name="MathsUi">
   <property name="geometry">
@@ -15,6 +15,9 @@
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QCheckBox" name="amsautoCB">
+     <property name="toolTip">
+      <string>The AMS LaTeX packages are only used when symbols from the AMS math toolbars are inserted into formulas</string>
+     </property>
      <property name="text">
       <string>&amp;Use AMS math package automatically</string>
      </property>
@@ -25,6 +28,9 @@
    </item>
    <item row="1" column="0">
     <widget class="QCheckBox" name="amsCB">
+     <property name="toolTip">
+      <string>The AMS LateX packages are always used</string>
+     </property>
      <property name="text">
       <string>Use AMS &amp;math package</string>
      </property>
@@ -32,6 +38,9 @@
    </item>
    <item row="2" column="0">
     <widget class="QCheckBox" name="esintautoCB">
+     <property name="toolTip">
+      <string>The LaTeX package esint is only used when special integral commands are inserted to formulas</string>
+     </property>
      <property name="text">
       <string>Use esint package &amp;automatically</string>
      </property>
@@ -42,6 +51,9 @@
    </item>
    <item row="3" column="0">
     <widget class="QCheckBox" name="esintCB">
+     <property name="toolTip">
+      <string>The LaTeX package esint is always used</string>
+     </property>
      <property name="text">
       <string>Use &amp;esint package</string>
      </property>
@@ -49,6 +61,9 @@
    </item>
    <item row="4" column="0">
     <widget class="QCheckBox" name="mhchemautoCB">
+     <property name="toolTip">
+      <string>The LaTeX package mhchem is only used when either the command \ce or \cf is inserted to formulas</string>
+     </property>
      <property name="text">
       <string>Use mhchem &amp;package automatically</string>
      </property>
@@ -59,6 +74,9 @@
    </item>
    <item row="5" column="0">
     <widget class="QCheckBox" name="mhchemCB">
+     <property name="toolTip">
+      <string>The LaTeX package mhchem is always used</string>
+     </property>
      <property name="text">
       <string>Use mh&amp;chem package</string>
      </property>
