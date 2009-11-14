@@ -159,14 +159,23 @@ void InsetMathChar::octave(OctaveStream & os) const
 }
 
 
+// We have a bit of a problem here. MathML wants to know whether the
+// character represents an "identifier" or an "operator", and we have
+// no general way of telling. So we shall guess: If it's mathalpha,
+// then we'll treat it as an identifier, otherwise as an operator.
+// Worst case: We get bad spacing.
 void InsetMathChar::mathmlize(MathStream & ms) const
 {
 	switch (char_) {
-		case '<': ms << "&lt;"; break;
-		case '>': ms << "&gt;"; break;
-		case '&': ms << "&amp;"; break;
-		default: ms.os().put(char_); break;
+		case '<': ms << "<mo>&lt;</mo>"; break;
+		case '>': ms << "<mo>&gt;</mo>"; break;
+		case '&': ms << "<mo>&amp;</mo>"; break;
+		default: break;
 	}
+	
+	char const * type = (isalpha(char_) || Encodings::isMathAlpha(char_)) ? "mi" : "mo";
+	// we don't use MTag and ETag because we do not want the spacing
+	ms << "<" << type << ">" << char_ << "</" << type << ">";	
 }
 
 
