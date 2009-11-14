@@ -1735,6 +1735,19 @@ int InsetMathHull::docbook(odocstream & os, OutputParams const & runparams) cons
 }
 
 
+docstring InsetMathHull::xhtml(odocstream & os, OutputParams const &) const
+{
+	if (getType() == hullSimple)
+		os << "<math xmlns=\"&mathml;\">";
+	else 
+		os << "<math display=\"block\" xmlns=\"&mathml;\">";
+	MathStream ms(os);
+	InsetMathGrid::mathmlize(ms);
+	os << "</math>";
+	return docstring();
+}
+
+
 void InsetMathHull::tocString(odocstream & os) const
 {
 	plaintext(os, OutputParams(0));
