@@ -18,6 +18,7 @@
 #include "LaTeXFeatures.h"
 #include "LyXFunc.h"
 #include "OutputParams.h"
+#include "output_xhtml.h"
 #include "ParIterator.h"
 #include "sgml.h"
 #include "TocBackend.h"
@@ -114,6 +115,16 @@ int InsetRef::docbook(odocstream & os, OutputParams const & runparams) const
 	return 0;
 }
 
+
+docstring InsetRef::xhtml(odocstream & os, OutputParams const &) const
+{
+	// FIXME What we'd really like to do is to be able to output some
+	// appropriate sort of text here. But to do that, we need to associate
+	// some sort of counter with the label, and we don't have that yet.
+	docstring const ref = html::htmlize(getParam("reference"));
+	os << "<a href=\"" << ref << "\">[" << ref << "]</a>";
+	return docstring();
+}
 
 void InsetRef::tocString(odocstream & os) const
 {

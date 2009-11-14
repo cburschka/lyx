@@ -54,6 +54,8 @@ public:
 	int plaintext(odocstream &, OutputParams const &) const;
 	///
 	int docbook(odocstream &, OutputParams const &) const;
+	///
+	docstring xhtml(odocstream &, OutputParams const &) const;
 	/// the string that is passed to the TOC
 	void tocString(odocstream &) const;
 	///
@@ -61,7 +63,7 @@ public:
 	///
 	static ParamInfo const & findInfo(std::string const &);
 	///
-	static std::string defaultCommand() { return "ref"; };
+	static std::string defaultCommand() { return "ref"; }
 	///
 	static bool isCompatibleCommand(std::string const & s);
 	///
