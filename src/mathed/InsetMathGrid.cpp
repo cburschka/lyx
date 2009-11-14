@@ -967,6 +967,9 @@ void InsetMathGrid::normalize(NormalStream & os) const
 }
 
 
+// FIXME We might want to check here if we actually have any
+// kind of table structure, and only output the surrounding
+// tags if we do, otherwise just outputting <mrow>.
 void InsetMathGrid::mathmlize(MathStream & os) const
 {
 	os << MTag("mtable");
