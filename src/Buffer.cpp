@@ -1421,10 +1421,10 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 	d->texrow.reset();
 
 	if (!only_body) {
-		os << "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"" <<
-			" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n";
+		os << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+		os << "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN\" \"http://www.w3.org/TR/MathML2/dtd/xhtml-math11-f.dtd\">\n";
 		// FIXME Language should be set properly.
-		os << "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n";
+		os << "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n";
 		// FIXME Header
 		os << "<head>\n";
 		// FIXME Presumably need to set this right
