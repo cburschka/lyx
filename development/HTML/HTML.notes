@@ -50,6 +50,9 @@ These insets work but still need work:
 	  and appropriate img tag. But we don't yet do any sort of scaling, rotating, and
 		so forth. That won't be hard, since we can just call ImageMagick to do this for 
 		us, but appropriate routines will need to be written.
+	InsetRef: At present, we just  use the label name as associated text, and put it 
+	into square brackets. It'd be nice to be able to do more, but for that we'd need to 
+	associate counters with the labels, and we don't have that yet.
 
 These insets do not work and are not yet scheduled to work:
 	InsetExternal: It may be that this won't be too hard, but I don't understand 
@@ -63,9 +66,6 @@ May need to make use here of TocWidget::itemInset, which should then be moved
 to TocBackend.
 
 These do not yet work and need some attention:
-	InsetRef: Presumably, this is an internal link. But what should the text be, and how
-		should we get it? Probably some validation thing again, where labels tell us where 
-		they are. Alternatively, we could parse the aux file.
 	InsetTabular: This shouldn't be too hard, but will need doing.
 	InsetTOC: We should just be able to use what we have in the TOC. To get links to
 		work, though, we'll need to co-ordinate the writing of anchors in the sections,
