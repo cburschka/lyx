@@ -192,6 +192,27 @@ void InsetMathSpace::octave(OctaveStream & os) const
 }
 
 
+void InsetMathSpace::mathmlize(MathStream & ms) const
+{
+	SpaceInfo const & si = space_info[space_];
+	if (si.negative || !si.visible)
+		return;
+	string l;
+	if (si.custom)
+		l = length_.asHTMLString();
+	else if (si.kind != InsetSpaceParams::MEDIUM) {
+		stringstream ss;
+		ss << si.width;
+		l = ss.str() + "px";
+	}
+	
+	ms << "<mspace";
+	if (!l.empty())
+		ms << " width=\"" << from_ascii(l) << "\"";
+	ms << " />";
+}
+
+	
 void InsetMathSpace::normalize(NormalStream & os) const
 {
 	os << "[space " << int(space_) << "] ";
