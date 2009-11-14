@@ -48,7 +48,7 @@ class InsetMath;
 class MathAtom {
 public:
 	/// default constructor, object is useless, but we need it to put it into
-	// std::containers
+	/// std::containers
 	MathAtom();
 	/// the "real constructor"
 	explicit MathAtom(Inset * p);
