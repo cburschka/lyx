@@ -128,21 +128,28 @@
   \setboolean{eurosym}{true}}
  {\setboolean{eurosym}{false}}
 
-% needed in sec. 22.4
 % check for package braket
+% used for physical vectors
 \newboolean{braket}
 \IfFileExists{braket.sty}
  {\usepackage{braket}
   \setboolean{braket}{true}}
  {\setboolean{braket}{false}}
 
-% needed in sec. 22.10
 % check for package upgreek
 \newboolean{upgreek}
 \IfFileExists{upgreek.sty}
  {\usepackage{upgreek}
   \setboolean{upgreek}{true}}
  {\setboolean{upgreek}{false}}
+
+% check for package mhchem
+% used for chemical equations
+\newboolean{mhchem}
+\IfFileExists{mhchem.sty}
+ {\usepackage{mhchem}
+  \setboolean{mhchem}{true}}
+ {\setboolean{mhchem}{false}}
 \end_preamble
 \options bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
 \use_default_options false
@@ -31734,7 +31741,34 @@ Paquetes ! mhchem
 \end_inset
 
 .
- Al insertar  
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ifmhchem 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Lo siguiente sólo se podrá ver si está instalado el paquete LaTeX 
+\series bold
+mhchem
+\series default
+:
+\end_layout
+
+\end_inset
+
+Al insertar  
 \series bold
 
 \backslash
@@ -32490,6 +32524,60 @@ key "mhchem"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+else
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Lo que sigue se verá en la salida si el paquete LaTeX 
+\series bold
+mhchem
+\series default
+ no está instalado:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Debes instalar el paquete LaTeX 
+\series bold
+mhchem
+\series default
+ para ver en la salida el resto de esta subsección.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fi
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -34922,7 +35010,7 @@ ifbraket
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 La tabla siguiente sólo se mostrará en la salida si el paquete LaTeX 
@@ -35088,7 +35176,7 @@ else
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Lo que sigue se verá en la salida si el paquete LaTeX 
@@ -36557,15 +36645,14 @@ ifupgreek
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
-La tabla siguiente sólo se podrá ver si está instalado el paquete LaTeX
- 
+Lo siguinente sólo se podrá ver si está instalado el paquete LaTeX 
 \series bold
 upgreek
 \series default
-.
+:
 \end_layout
 
 \end_inset
@@ -36627,7 +36714,7 @@ else
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Lo siguiente se mostrará si el paquete LaTeX 
