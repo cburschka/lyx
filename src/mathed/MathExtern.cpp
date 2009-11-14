@@ -50,6 +50,17 @@ using namespace lyx::support;
 
 namespace lyx {
 
+namespace {
+
+enum ExternalMath {
+	MAPLE,
+	MAXIMA,
+	MATHEMATICA,
+	MATHML,
+	OCTAVE
+};
+
+
 static char const * function_names[] = {
 	"arccos", "arcsin", "arctan", "arg", "bmod",
 	"cos", "cosh", "cot", "coth", "csc", "deg",
@@ -96,7 +107,8 @@ bool extractScript(MathData & ar,
 // try to extract an "argument" to some function.
 // returns position behind the argument
 MathData::iterator extractArgument(MathData & ar,
-	MathData::iterator pos, MathData::iterator last, bool function = false)
+	MathData::iterator pos, MathData::iterator last, 
+	ExternalMath kind, bool function = false)
 {
 	// nothing to get here
 	if (pos == last)
@@ -105,7 +117,7 @@ MathData::iterator extractArgument(MathData & ar,
 	// something delimited _is_ an argument
 	if ((*pos)->asDelimInset()) {
 		// leave out delimiters if this is a function argument
-		if (function) {
+		if (function && kind != MATHML) {
 			MathData const & arg = (*pos)->asDelimInset()->cell(0);
 			MathData::const_iterator cur = arg.begin();
 			MathData::const_iterator end = arg.end();
@@ -244,23 +256,6 @@ bool extractFunctionName(MathAtom const & at, docstring & str)
 		return ar.size() == str.size();
 	}
 	return false;
-}
-
-
-// convert this inset somehow to a number
-bool extractNumber(MathData const & ar, int & i)
-{
-	idocstringstream is(charSequence(ar.begin(), ar.end()));
-	is >> i;
-	return is;
-}
-
-
-bool extractNumber(MathData const & ar, double & d)
-{
-	idocstringstream is(charSequence(ar.begin(), ar.end()));
-	is >> d;
-	return is;
 }
 
 
@@ -525,7 +520,7 @@ void extractDelims(MathData & ar)
 
 // replace 'f' '(...)' and 'f' '^n' '(...)' sequences by a real InsetMathExFunc
 // assume 'extractDelims' ran before
-void extractFunctions(MathData & ar)
+void extractFunctions(MathData & ar, ExternalMath kind)
 {
 	// we need at least two items...
 	if (ar.size() < 2)
@@ -566,7 +561,8 @@ void extractFunctions(MathData & ar)
 		auto_ptr<InsetMathExFunc> p(new InsetMathExFunc(buf, name));
 
 		// jt points to the "argument". Get hold of this.
-		MathData::iterator st = extractArgument(p->cell(0), jt, ar.end(), true);
+		MathData::iterator st = 
+				extractArgument(p->cell(0), jt, ar.end(), kind, true);
 
 		// replace the function name by a real function inset
 		*it = MathAtom(p.release());
@@ -622,7 +618,7 @@ bool testIntDiff(MathAtom const & at)
 
 // replace '\int' ['_^'] x 'd''x'(...)' sequences by a real InsetMathExInt
 // assume 'extractDelims' ran before
-void extractIntegrals(MathData & ar)
+void extractIntegrals(MathData & ar, ExternalMath kind)
 {
 	// we need at least three items...
 	if (ar.size() < 3)
@@ -657,7 +653,7 @@ void extractIntegrals(MathData & ar)
 		p->cell(0) = MathData(buf, it + 1, jt);
 
 		// use the "thing" behind the 'd' as differential
-		MathData::iterator tt = extractArgument(p->cell(1), jt + 1, ar.end());
+		MathData::iterator tt = extractArgument(p->cell(1), jt + 1, ar.end(), kind);
 
 		// remove used parts
 		ar.erase(it + 1, tt);
@@ -935,97 +931,24 @@ void extractLims(MathData & ar)
 // combine searches
 //
 
-void extractStructure(MathData & ar)
+void extractStructure(MathData & ar, ExternalMath kind)
 {
 	//lyxerr << "\nStructure from: " << ar << endl;
 	splitScripts(ar);
 	extractDelims(ar);
-	extractIntegrals(ar);
+	extractIntegrals(ar, kind);
 	extractSums(ar);
 	extractNumbers(ar);
 	extractMatrices(ar);
-	extractFunctions(ar);
+	extractFunctions(ar, kind);
 	extractDets(ar);
 	extractDiff(ar);
 	extractExps(ar);
 	extractLims(ar);
-	extractStrings(ar);
+	if (kind != MATHML)
+		extractStrings(ar);
 	//lyxerr << "\nStructure to: " << ar << endl;
 }
-
-
-void write(MathData const & dat, WriteStream & wi)
-{
-	MathData ar = dat;
-	extractStrings(ar);
-	wi.firstitem() = true;
-	for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it) {
-		(*it)->write(wi);
-		wi.firstitem() = false;
-	}
-}
-
-
-void normalize(MathData const & ar, NormalStream & os)
-{
-	for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
-		(*it)->normalize(os);
-}
-
-
-void octave(MathData const & dat, OctaveStream & os)
-{
-	MathData ar = dat;
-	extractStructure(ar);
-	for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
-		(*it)->octave(os);
-}
-
-
-void maple(MathData const & dat, MapleStream & os)
-{
-	MathData ar = dat;
-	extractStructure(ar);
-	for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
-		(*it)->maple(os);
-}
-
-
-void maxima(MathData const & dat, MaximaStream & os)
-{
-	MathData ar = dat;
-	extractStructure(ar);
-	for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
-		(*it)->maxima(os);
-}
-
-
-void mathematica(MathData const & dat, MathematicaStream & os)
-{
-	MathData ar = dat;
-	extractStructure(ar);
-	for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
-		(*it)->mathematica(os);
-}
-
-
-void mathmlize(MathData const & dat, MathStream & os)
-{
-	MathData ar = dat;
-	extractStructure(ar);
-	if (ar.size() == 0)
-		os << "<mrow/>";
-	else if (ar.size() == 1)
-		os << ar.front();
-	else {
-		os << MTag("mrow");
-		for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
-			(*it)->mathmlize(os);
-		os << ETag("mrow");
-	}
-}
-
-
 
 
 namespace {
@@ -1415,6 +1338,95 @@ namespace {
 		return res;
 	}
 
+}
+
+} // anon namespace
+
+void write(MathData const & dat, WriteStream & wi)
+{
+	MathData ar = dat;
+	extractStrings(ar);
+	wi.firstitem() = true;
+	for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it) {
+		(*it)->write(wi);
+		wi.firstitem() = false;
+	}
+}
+
+
+void normalize(MathData const & ar, NormalStream & os)
+{
+	for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
+		(*it)->normalize(os);
+}
+
+
+void octave(MathData const & dat, OctaveStream & os)
+{
+	MathData ar = dat;
+	extractStructure(ar, OCTAVE);
+	for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
+		(*it)->octave(os);
+}
+
+
+void maple(MathData const & dat, MapleStream & os)
+{
+	MathData ar = dat;
+	extractStructure(ar, MAPLE);
+	for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
+		(*it)->maple(os);
+}
+
+
+void maxima(MathData const & dat, MaximaStream & os)
+{
+	MathData ar = dat;
+	extractStructure(ar, MAXIMA);
+	for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
+		(*it)->maxima(os);
+}
+
+
+void mathematica(MathData const & dat, MathematicaStream & os)
+{
+	MathData ar = dat;
+	extractStructure(ar, MATHEMATICA);
+	for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
+		(*it)->mathematica(os);
+}
+
+
+void mathmlize(MathData const & dat, MathStream & os)
+{
+	MathData ar = dat;
+	extractStructure(ar, MATHML);
+	if (ar.size() == 0)
+		os << "<mrow/>";
+	else if (ar.size() == 1)
+		os << ar.front();
+	else {
+		os << MTag("mrow");
+		for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
+			(*it)->mathmlize(os);
+		os << ETag("mrow");
+	}
+}
+
+// convert this inset somehow to a number
+bool extractNumber(MathData const & ar, int & i)
+{
+	idocstringstream is(charSequence(ar.begin(), ar.end()));
+	is >> i;
+	return is;
+}
+
+
+bool extractNumber(MathData const & ar, double & d)
+{
+	idocstringstream is(charSequence(ar.begin(), ar.end()));
+	is >> d;
+	return is;
 }
 
 

@@ -19,6 +19,7 @@
 
 #include "support/debug.h"
 #include "support/gettext.h"
+#include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/textutils.h"
 
@@ -90,16 +91,8 @@ void InsetMathString::octave(OctaveStream & os) const
 
 void InsetMathString::mathmlize(MathStream & os) const
 {
-/*
-	if (code_ == LM_TC_VAR)
-		os << "<mi> " << str_ << " </mi>";
-	else if (code_ == LM_TC_CONST)
-		os << "<mn> " << str_ << " </mn>";
-	else if (code_ == LM_TC_RM || code_ == LM_TC_TEXTRM)
-		os << "<mtext> " << str_ <<  " </mtext>";
-	else
-*/
-		os << str_;
+	// useless, no doubt, but we should not be here
+	LASSERT(false, /* */);
 }
 
 
