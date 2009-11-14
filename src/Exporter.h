@@ -81,13 +81,13 @@ public:
 			     support::FileName const & sourceName);
 	/// get referenced files for \p format
 	std::vector<ExportedFile> const
-	externalFiles(std::string const & format) const;
+		externalFiles(std::string const & format) const;
 private:
 	typedef std::map<std::string, std::vector<ExportedFile> > FileMap;
 	/** Files that are referenced by the export result in the
 	 *  different formats.
 	 */
-	FileMap externalfiles;
+	FileMap externalfiles_;
 };
 
 

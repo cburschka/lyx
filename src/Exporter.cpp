@@ -115,7 +115,7 @@ void ExportData::addExternalFile(string const & format,
 {
 	// Make sure that we have every file only once, otherwise copyFile()
 	// would ask several times if it should overwrite a file.
-	vector<ExportedFile> & files = externalfiles[format];
+	vector<ExportedFile> & files = externalfiles_[format];
 	ExportedFile file(sourceName, exportName);
 	if (find(files.begin(), files.end(), file) == files.end())
 		files.push_back(file);
@@ -132,8 +132,8 @@ void ExportData::addExternalFile(string const & format,
 vector<ExportedFile> const
 ExportData::externalFiles(string const & format) const
 {
-	FileMap::const_iterator cit = externalfiles.find(format);
-	if (cit != externalfiles.end())
+	FileMap::const_iterator cit = externalfiles_.find(format);
+	if (cit != externalfiles_.end())
 		return cit->second;
 	return vector<ExportedFile>();
 }
