@@ -65,9 +65,14 @@ docstring escapeChar(char_type c)
 }
 
 
-// FIXME do something here.
+// escape what needs escaping
 docstring htmlize(docstring const & str) {
-	return str;
+	odocstringstream d;
+	docstring::const_iterator it = str.begin();
+	docstring::const_iterator en = str.end();
+	for (; it != en; ++it)
+		d << escapeChar(*it);
+	return d.str();
 }
 
 // FIXME This needs to be protected somehow.
