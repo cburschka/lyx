@@ -3135,8 +3135,10 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 	updateMacroInstances();
 
 	// Plain text backend
-	if (backend_format == "text")
+	if (backend_format == "text") {
+		runparams.flavor = OutputParams::TEXT;
 		writePlaintextFile(*this, FileName(filename), runparams);
+	}
 	// HTML backend
 	else if (backend_format == "xhtml") {
 		runparams.flavor = OutputParams::HTML;
@@ -3269,12 +3271,10 @@ vector<Format const *> Buffer::exportableFormats(bool only_viewable) const
 vector<string> Buffer::backends() const
 {
 	vector<string> v;
-	if (params().baseClass()->isTeXClassAvailable()) {
-		v.push_back(bufferFormat());
-		// FIXME: Don't hardcode format names here, but use a flag
-		if (v.back() == "latex")
-			v.push_back("pdflatex");
-	}
+	v.push_back(bufferFormat());
+	// FIXME: Don't hardcode format names here, but use a flag
+	if (v.back() == "latex")
+		v.push_back("pdflatex");
 	v.push_back("xhtml");
 	v.push_back("text");
 	v.push_back("lyx");

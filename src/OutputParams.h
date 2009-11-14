@@ -35,7 +35,8 @@ public:
 		PDFLATEX,
 		XETEX,
 		XML,
-		HTML
+		HTML,
+		TEXT
 	};
 
 	enum TableCell {
