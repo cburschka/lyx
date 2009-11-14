@@ -31,6 +31,8 @@ public:
 public Q_SLOTS:
 	/// select an entry
 	void select();
+	/// open the LaTeX log
+	void viewLog();
 
 private:
 	///

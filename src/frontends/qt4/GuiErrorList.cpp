@@ -16,6 +16,7 @@
 
 #include "Buffer.h"
 #include "BufferView.h"
+#include "FuncRequest.h"
 #include "ParIterator.h"
 #include "Text.h"
 
@@ -41,6 +42,8 @@ GuiErrorList::GuiErrorList(GuiView & lv)
 
 	connect(closePB, SIGNAL(clicked()),
 		this, SLOT(slotClose()));
+	connect(viewLogPB, SIGNAL(clicked()),
+		this, SLOT(viewLog()));
 	connect(errorsLW, SIGNAL(currentRowChanged(int)),
 		this, SLOT(select()));
 
@@ -65,6 +68,12 @@ void GuiErrorList::select()
 	goTo(item);
 	descriptionTB->setPlainText(
 		toqstr(errorList()[item].description));
+}
+
+
+void GuiErrorList::viewLog()
+{
+	dispatch(FuncRequest(LFUN_DIALOG_SHOW, "latexlog"));
 }
 
 
