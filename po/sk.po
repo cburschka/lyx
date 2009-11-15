@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-11-07 11:48+0100\n"
-"PO-Revision-Date: 2009-11-13 19:42+0100\n"
+"PO-Revision-Date: 2009-11-15 14:39+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenský <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -2543,7 +2543,7 @@ msgstr "Jazyk pre užívateľské rozhranie:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:35
 msgid "Select the language of the user interface (menus, dialogs, etc.)"
-msgstr "Výber jazyka pre užívateľské rozhranie (menu, dialogy, apod.)"
+msgstr "Výber jazyka pre užívateľské rozhranie (menu, dialogy, a pod.)"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:45
 msgid "&Default language:"
@@ -9107,8 +9107,8 @@ msgstr ""
 "dispozícii sú číslované a nečíslované typy. Opačne k jednoduchému modulu "
 "rozšírenia AMS, "
 "má tu každý poskytnutý typ teorémov svoje vlastné číslovanie (čiže "
-"veta 1, veta 2, lemma 1, predpoklad 1, veta 3, lemma 2, ..., oproti "
-"veta 1, veta 2, lemma 3, predpoklad 4...). Číslovanie je postupne bez ohľadu "
+"veta 1, veta 2, lemma 1, tvrdenie 1, veta 3, lemma 2, ..., oproti "
+"veta 1, veta 2, lemma 3, tvrdenie 4...). Číslovanie je postupne bez ohľadu "
 "na štruktúru dokumentu. "
 "To sa dá zmeniť voľbou jedného z 'Teorémy (Číslované podľa ...)' modulu."
 
@@ -9360,8 +9360,8 @@ msgstr ""
 "Definuje niektoré prostredia mat. viet nepoužívajúce AMS. Opačne k "
 "jednoduchému modulu teorémov, "
 "má tu každý poskytnutý typ teorémov svoje vlastné číslovanie (čiže "
-"veta 1, veta 2, lemma 1, predpoklad 1, veta 3, lemma 2, ..., oproti "
-"veta 1, veta 2, lemma 3, predpoklad 4...). Číslovanie je postupne bez ohľadu "
+"veta 1, veta 2, lemma 1, tvrdenie 1, veta 3, lemma 2, ..., oproti "
+"veta 1, veta 2, lemma 3, tvrdenie 4...). Číslovanie je postupne bez ohľadu "
 "na štruktúru dokumentu. "
 "To sa dá zmeniť voľbou jedného z 'Teorémy (Číslované podľa ...)' modulu."
 
@@ -9380,8 +9380,8 @@ msgstr ""
 "Definuje niektoré prostredia mat. viet nepoužívajúce AMS. Opačne k "
 "jednoduchému modulu teorémov, "
 "má tu každý poskytnutý typ teorémov svoje vlastné číslovanie (čiže "
-"veta 1, veta 2, lemma 1, predpoklad 1, veta 3, lemma 2, ..., oproti "
-"veta 1, veta 2, lemma 3, predpoklad 4...). Číslovanie sa nuluje na začiatku "
+"veta 1, veta 2, lemma 1, tvrdenie 1, veta 3, lemma 2, ..., oproti "
+"veta 1, veta 2, lemma 3, tvrdenie 4...). Číslovanie sa nuluje na začiatku "
 "každej kapitoly."
 
 #: lib/layouts/theorems-chap.module:2
@@ -9394,8 +9394,8 @@ msgid ""
 "chapter start). Use this module only with layouts that provide a chapter "
 "environment."
 msgstr ""
-"Očísluje mat. vety apod. podľa kapitoly. (čiže číslovanie sa nuluje "
-"začiatkom každej kapitoly). "
+"Očísluje mat. vety a pod. podľa kapitoly. (čiže číslovanie sa nuluje "
+"na začiatku každej kapitoly). "
 "Použite tento modul len s formátom, "
 "ktorý podporuje prostredie kapitoly."
 
@@ -9414,8 +9414,8 @@ msgstr ""
 "Definuje niektoré prostredia mat. viet nepoužívajúce AMS. Opačne k "
 "jednoduchému modulu teorémov, "
 "má tu každý poskytnutý typ teorémov svoje vlastné číslovanie (čiže "
-"veta 1, veta 2, lemma 1, predpoklad 1, veta 3, lemma 2, ..., oproti "
-"veta 1, veta 2, lemma 3, predpoklad 4...). Číslovanie sa nuluje na začiatku "
+"veta 1, veta 2, lemma 1, tvrdenie 1, veta 3, lemma 2, ..., oproti "
+"veta 1, veta 2, lemma 3, tvrdenie 4...). Číslovanie sa nuluje na začiatku "
 "každej sekcie."
 
 #: lib/layouts/theorems-sec.module:2
@@ -9427,7 +9427,8 @@ msgid ""
 "Numbers theorems and the like by section (i.e., the counter is reset at each "
 "section start)."
 msgstr ""
-"Očísluje vety apod. podľa sekcie (čiže číslovanie sa nuluje začiatkom každej "
+"Očísluje vety a pod. podľa sekcie (čiže číslovanie sa nuluje na začiatku "
+"každej "
 "sekcie)."
 
 #: lib/layouts/theorems-starred.module:2
@@ -16998,7 +16999,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2735
 msgid "Shows a typeset preview of things such as math"
-msgstr "Zobrazuje náhľad na sadu vecí typu matematiky apod."
+msgstr "Zobrazuje náhľad na sadu vecí typu matematiky a pod."
 
 #: src/LyXRC.cpp:2739
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
@@ -18133,7 +18134,7 @@ msgstr "(Žiadne)"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:206
 msgid "Variable"
-msgstr "Variabilný"
+msgstr "Variabilná"
 
 #: src/frontends/qt4/GuiDocument.cpp:103
 msgid "Computer Modern Roman"
