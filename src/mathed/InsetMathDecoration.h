@@ -24,7 +24,7 @@ class latexkeys;
 class InsetMathDecoration : public InsetMathNest {
 public:
 	///
-	explicit InsetMathDecoration(latexkeys const * key);
+	explicit InsetMathDecoration(Buffer * buf, latexkeys const * key);
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///

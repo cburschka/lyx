@@ -112,8 +112,8 @@ InsetMathGrid::ColInfo::ColInfo()
 //////////////////////////////////////////////////////////////
 
 
-InsetMathGrid::InsetMathGrid()
-	: InsetMathNest(1),
+InsetMathGrid::InsetMathGrid(Buffer * buf)
+	: InsetMathNest(buf, 1),
 	  rowinfo_(1 + 1),
 		colinfo_(1 + 1),
 		cellinfo_(1),
@@ -123,8 +123,8 @@ InsetMathGrid::InsetMathGrid()
 }
 
 
-InsetMathGrid::InsetMathGrid(col_type m, row_type n)
-	: InsetMathNest(m * n),
+InsetMathGrid::InsetMathGrid(Buffer * buf, col_type m, row_type n)
+	: InsetMathNest(buf, m * n),
 	  rowinfo_(n + 1),
 		colinfo_(m + 1),
 		cellinfo_(m * n),
@@ -134,8 +134,9 @@ InsetMathGrid::InsetMathGrid(col_type m, row_type n)
 }
 
 
-InsetMathGrid::InsetMathGrid(col_type m, row_type n, char v, docstring const & h)
-	: InsetMathNest(m * n),
+InsetMathGrid::InsetMathGrid(Buffer * buf, col_type m, row_type n, char v,
+			     docstring const & h)
+	: InsetMathNest(buf, m * n),
 	  rowinfo_(n + 1),
 	  colinfo_(m + 1),
 		cellinfo_(m * n),
@@ -1264,7 +1265,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 			is >> n;
 			topaste = cap::selection(n);
 		}
-		InsetMathGrid grid(1, 1);
+		InsetMathGrid grid(buffer_, 1, 1);
 		if (!topaste.empty())
 			if ((topaste.size() == 1 && topaste.at(0) < 0x80)
 			    || !mathed_parse_normal(grid, topaste, parseflg)) {

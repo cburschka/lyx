@@ -25,7 +25,7 @@ public:
 	///
 	explicit InsetMathMatrix(InsetMathGrid const &);
 	///
-	explicit InsetMathMatrix(docstring const & str);
+	explicit InsetMathMatrix(Buffer * buf, docstring const & str);
 	/// identifies MatrixInsets
 	InsetMathMatrix const * asMatrixInset() const { return this; }
 

@@ -32,10 +32,9 @@ namespace lyx {
 using support::bformat;
 
 
-InsetMathSplit::InsetMathSplit(docstring const & name, char valign)
-	: InsetMathGrid(1, 1, valign, docstring()), name_(name)
-{
-}
+InsetMathSplit::InsetMathSplit(Buffer * buf, docstring const & name, char valign)
+	: InsetMathGrid(buf, 1, 1, valign, docstring()), name_(name)
+{}
 
 
 Inset * InsetMathSplit::clone() const

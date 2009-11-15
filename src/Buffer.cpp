@@ -634,6 +634,7 @@ bool Buffer::readDocument(Lexer & lex)
 	// read main text
 	bool const res = text().read(*this, lex, errorList, d->inset);
 
+	usermacros.clear();
 	updateMacros();
 	updateMacroInstances();
 	return res;
@@ -2032,9 +2033,9 @@ void Buffer::updateMacros(DocIterator & it, DocIterator & scope) const
 				continue;
 
 			// get macro data
-			MathMacroTemplate & macroTemplate
-			= static_cast<MathMacroTemplate &>(*iit->inset);
-			MacroContext mc(*this, it);
+			MathMacroTemplate & macroTemplate =
+				static_cast<MathMacroTemplate &>(*iit->inset);
+			MacroContext mc(this, it);
 			macroTemplate.updateToContext(mc);
 
 			// valid?
@@ -2046,8 +2047,9 @@ void Buffer::updateMacros(DocIterator & it, DocIterator & scope) const
 				continue;
 
 			// register macro
+			Buffer * buf = const_cast<Buffer *>(this);
 			d->macros[macroTemplate.name()][it] =
-				Impl::ScopeMacro(scope, MacroData(*this, it));
+				Impl::ScopeMacro(scope, MacroData(buf, it));
 		}
 
 		// next paragraph
@@ -2098,7 +2100,7 @@ void Buffer::updateMacroInstances() const
 
 		// update macro in all cells of the InsetMathNest
 		DocIterator::idx_type n = minset->nargs();
-		MacroContext mc = MacroContext(*this, it);
+		MacroContext mc = MacroContext(this, it);
 		for (DocIterator::idx_type i = 0; i < n; ++i) {
 			MathData & data = minset->cell(i);
 			data.updateMacros(0, mc);

@@ -22,14 +22,15 @@
 
 namespace lyx {
 
-InsetMathTabular::InsetMathTabular(docstring const & name, int m, int n)
-	: InsetMathGrid(m, n), name_(name)
+InsetMathTabular::InsetMathTabular(Buffer * buf, docstring const & name, int m,
+				   int n)
+	: InsetMathGrid(buf, m, n), name_(name)
 {}
 
 
-InsetMathTabular::InsetMathTabular(docstring const & name, int m, int n,
-		char valign, docstring const & halign)
-	: InsetMathGrid(m, n, valign, halign), name_(name)
+InsetMathTabular::InsetMathTabular(Buffer * buf, docstring const & name, int m,
+				   int n, char valign, docstring const & halign)
+	: InsetMathGrid(buf, m, n, valign, halign), name_(name)
 {}
 
 

@@ -22,7 +22,7 @@ namespace lyx {
 class InsetMathXArrow : public InsetMathFracBase {
 public:
 	///
-	explicit InsetMathXArrow(docstring const & name);
+	explicit InsetMathXArrow(Buffer * buf, docstring const & name);
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///

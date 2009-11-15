@@ -23,9 +23,9 @@ class latexkeys;
 class InsetMathComment : public InsetMathNest {
 public:
 	///
-	InsetMathComment();
+	InsetMathComment(Buffer * buf);
 	///
-	explicit InsetMathComment(docstring const &);
+	explicit InsetMathComment(Buffer * buf, docstring const &);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

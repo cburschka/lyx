@@ -24,7 +24,7 @@ namespace lyx {
 class InsetMathDiff : public InsetMathNest {
 public:
 	///
-	InsetMathDiff();
+	InsetMathDiff(Buffer * buf);
 	///
 	void addDer(MathData const & der);
 	///

@@ -35,8 +35,8 @@ namespace lyx {
 /////////////////////////////////////////////////////////////////////
 
 
-InsetMathFracBase::InsetMathFracBase(idx_type ncells)
-	: InsetMathNest(ncells)
+InsetMathFracBase::InsetMathFracBase(Buffer * buf, idx_type ncells)
+	: InsetMathNest(buf, ncells)
 {}
 
 
@@ -59,8 +59,8 @@ bool InsetMathFracBase::idxUpDown(Cursor & cur, bool up) const
 /////////////////////////////////////////////////////////////////////
 
 
-InsetMathFrac::InsetMathFrac(Kind kind, InsetMath::idx_type ncells)
-	: InsetMathFracBase(ncells), kind_(kind)
+InsetMathFrac::InsetMathFrac(Buffer * buf, Kind kind, InsetMath::idx_type ncells)
+	: InsetMathFracBase(buf, ncells), kind_(kind)
 {}
 
 
@@ -499,8 +499,8 @@ void InsetMathTFrac::validate(LaTeXFeatures & features) const
 /////////////////////////////////////////////////////////////////////
 
 
-InsetMathBinom::InsetMathBinom(Kind kind)
-	: kind_(kind)
+InsetMathBinom::InsetMathBinom(Buffer * buf, Kind kind)
+	: InsetMathFracBase(buf), kind_(kind)
 {}
 
 

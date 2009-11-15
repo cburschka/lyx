@@ -25,7 +25,7 @@ namespace lyx {
 class InsetMathExInt : public InsetMathNest {
 public:
 	///
-	explicit InsetMathExInt(docstring const & name_);
+	explicit InsetMathExInt(Buffer * buf, docstring const & name_);
 	///
 	void symbol(docstring const &);
 	///

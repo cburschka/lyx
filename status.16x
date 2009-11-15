@@ -206,6 +206,9 @@ What's new
 
 - Fix bad allocation exception when displaying long tooltips (bug 6215).
 
+- Fix shadowing of user-defined math macros by internal ones and make
+  LyX behave as LaTeX, i.e., user macros take precedence (bug 5530).
+
 - Fix width definition in the box dialog after a box inset was transformed
   from "Inner Box" type "None" to "Parbox" or "Minipage" (bug 6298).
 

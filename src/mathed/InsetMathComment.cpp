@@ -21,13 +21,13 @@
 
 namespace lyx {
 
-InsetMathComment::InsetMathComment()
-	: InsetMathNest(1)
+InsetMathComment::InsetMathComment(Buffer * buf)
+	: InsetMathNest(buf, 1)
 {}
 
 
-InsetMathComment::InsetMathComment(docstring const & str)
-	: InsetMathNest(1)
+InsetMathComment::InsetMathComment(Buffer * buf, docstring const & str)
+	: InsetMathNest(buf, 1)
 {
 	// FIXME UNICODE
 	asArray(str, cell(0));

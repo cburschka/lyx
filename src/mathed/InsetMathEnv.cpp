@@ -21,8 +21,8 @@
 
 namespace lyx {
 
-InsetMathEnv::InsetMathEnv(docstring const & name)
-	: InsetMathNest(1), name_(name)
+InsetMathEnv::InsetMathEnv(Buffer * buf, docstring const & name)
+	: InsetMathNest(buf, 1), name_(name)
 {}
 
 

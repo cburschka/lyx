@@ -23,7 +23,7 @@ namespace lyx {
 class InsetMathFracBase : public InsetMathNest {
 public:
 	///
-	explicit InsetMathFracBase(idx_type ncells = 2);
+	InsetMathFracBase(Buffer * buf, idx_type ncells = 2);
 	///
 	bool idxUpDown(Cursor &, bool up) const;
 	///
@@ -51,7 +51,7 @@ public:
 	};
 
 	///
-	explicit InsetMathFrac(Kind kind = FRAC, idx_type ncells = 2);
+	explicit InsetMathFrac(Buffer * buf, Kind kind = FRAC, idx_type ncells = 2);
 	///
 	bool idxForward(Cursor &) const;
 	///
@@ -96,7 +96,7 @@ public:
 class InsetMathDFrac : public InsetMathFrac {
 public:
 	///
-	InsetMathDFrac() {}
+	InsetMathDFrac(Buffer * buf) : InsetMathFrac(buf) {}
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -116,7 +116,7 @@ private:
 class InsetMathTFrac : public InsetMathFrac {
 public:
 	///
-	InsetMathTFrac() {}
+	InsetMathTFrac(Buffer * buf) : InsetMathFrac(buf) {}
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -144,7 +144,7 @@ public:
 	};
 
 	///
-	explicit InsetMathBinom(Kind kind = BINOM);
+	explicit InsetMathBinom(Buffer * buf, Kind kind = BINOM);
 	///
 	void write(WriteStream & os) const;
 	///
@@ -175,7 +175,7 @@ private:
 class InsetMathDBinom : public InsetMathFracBase {
 public:
 	///
-	InsetMathDBinom() {}
+	InsetMathDBinom(Buffer * buf) : InsetMathFracBase(buf) {}
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -197,7 +197,7 @@ private:
 class InsetMathTBinom : public InsetMathFracBase {
 public:
 	///
-	InsetMathTBinom() {}
+	InsetMathTBinom(Buffer * buf) : InsetMathFracBase(buf) {}
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

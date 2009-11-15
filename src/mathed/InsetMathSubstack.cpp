@@ -31,8 +31,8 @@ namespace lyx {
 using support::bformat;
 
 
-InsetMathSubstack::InsetMathSubstack()
-	: InsetMathGrid(1, 1)
+InsetMathSubstack::InsetMathSubstack(Buffer * buf)
+	: InsetMathGrid(buf, 1, 1)
 {}
 
 

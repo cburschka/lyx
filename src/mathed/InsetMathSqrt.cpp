@@ -19,8 +19,8 @@
 
 namespace lyx {
 
-InsetMathSqrt::InsetMathSqrt()
-	: InsetMathNest(1)
+InsetMathSqrt::InsetMathSqrt(Buffer * buf)
+	: InsetMathNest(buf, 1)
 {}
 
 

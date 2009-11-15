@@ -1052,7 +1052,8 @@ docstring grabSelection(Cursor const & cur)
 	if (i1.idx() == i2.idx()) {
 		if (i1.inset().asInsetMath()) {
 			MathData::const_iterator it = i1.cell().begin();
-			return asString(MathData(it + i1.pos(), it + i2.pos()));
+			Buffer * buf = &cur.buffer();
+			return asString(MathData(buf, it + i1.pos(), it + i2.pos()));
 		} else {
 			return from_ascii("unknown selection 1");
 		}

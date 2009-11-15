@@ -26,7 +26,7 @@ public:
 		hphantom
 	};
 	///
-	explicit InsetMathPhantom(Kind);
+	explicit InsetMathPhantom(Buffer * buf, Kind);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

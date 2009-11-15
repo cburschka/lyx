@@ -25,7 +25,8 @@ namespace lyx {
 class CommandInset : public InsetMathNest {
 public:
 	///
-	explicit CommandInset(docstring const & name, bool needs_math_mode = true);
+	explicit CommandInset(Buffer * buf, docstring const & name,
+			      bool needs_math_mode = true);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

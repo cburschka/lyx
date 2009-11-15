@@ -28,19 +28,21 @@ using namespace std;
 namespace lyx {
 
 
-InsetMathArray::InsetMathArray(docstring const & name, int m, int n)
-	: InsetMathGrid(m, n), name_(name)
+InsetMathArray::InsetMathArray(Buffer * buf, docstring const & name, int m,
+			       int n)
+	: InsetMathGrid(buf, m, n), name_(name)
 {}
 
 
-InsetMathArray::InsetMathArray(docstring const & name, int m, int n,
-		char valign, docstring const & halign)
-	: InsetMathGrid(m, n, valign, halign), name_(name)
+InsetMathArray::InsetMathArray(Buffer * buf, docstring const & name, int m,
+			       int n, char valign, docstring const & halign)
+	: InsetMathGrid(buf, m, n, valign, halign), name_(name)
 {}
 
 
-InsetMathArray::InsetMathArray(docstring const & name, docstring const & str)
-	: InsetMathGrid(1, 1), name_(name)
+InsetMathArray::InsetMathArray(Buffer * buf, docstring const & name,
+			       docstring const & str)
+	: InsetMathGrid(buf, 1, 1), name_(name)
 {
 	vector< vector<string> > dat;
 	istringstream is(to_utf8(str));
@@ -59,7 +61,8 @@ InsetMathArray::InsetMathArray(docstring const & name, docstring const & str)
 		addCol(0);
 	for (row_type row = 0; row < dat.size(); ++row)
 		for (col_type col = 0; col < dat[0].size(); ++col)
-			mathed_parse_cell(cell(index(row, col)), from_utf8(dat[row][col]));
+			mathed_parse_cell(cell(index(row, col)),
+					  from_utf8(dat[row][col]));
 }
 
 

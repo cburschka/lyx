@@ -92,6 +92,8 @@ class ReplaceData;
 
 class InsetMath : public Inset {
 public:
+	///
+	InsetMath(Buffer * buf = 0) : Inset(buf) {}
 	/// identification as math inset
 	InsetMath * asInsetMath() { return this; }
 	/// this is overridden in math text insets (i.e. mbox)

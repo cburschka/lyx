@@ -18,7 +18,7 @@ using namespace std;
 
 namespace lyx {
 
-InsetMathStackrel::InsetMathStackrel()
+InsetMathStackrel::InsetMathStackrel(Buffer * buf) : InsetMathFracBase(buf)
 {}
 
 

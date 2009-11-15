@@ -38,14 +38,15 @@ static docstring convertDelimToLatexName(docstring const & name)
 }
 
 
-InsetMathDelim::InsetMathDelim(docstring const & l, docstring const & r)
-	: InsetMathNest(1), left_(l), right_(r)
+InsetMathDelim::InsetMathDelim(Buffer * buf, docstring const & l,
+			       docstring const & r)
+	: InsetMathNest(buf, 1), left_(l), right_(r)
 {}
 
 
-InsetMathDelim::InsetMathDelim
-		(docstring const & l, docstring const & r, MathData const & ar)
-	: InsetMathNest(1), left_(l), right_(r)
+InsetMathDelim::InsetMathDelim(Buffer * buf, docstring const & l,
+			       docstring const & r, MathData const & ar)
+	: InsetMathNest(buf, 1), left_(l), right_(r)
 {
 	cell(0) = ar;
 }

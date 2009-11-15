@@ -20,8 +20,8 @@
 namespace lyx {
 
 
-InsetMathPhantom::InsetMathPhantom(Kind k)
-	: InsetMathNest(1), kind_(k)
+InsetMathPhantom::InsetMathPhantom(Buffer * buf, Kind k)
+	: InsetMathNest(buf, 1), kind_(k)
 {}
 
 

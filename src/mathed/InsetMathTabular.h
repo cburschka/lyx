@@ -22,10 +22,10 @@ namespace lyx {
 class InsetMathTabular : public InsetMathGrid {
 public:
 	///
-	InsetMathTabular(docstring const &, int m, int n);
+	InsetMathTabular(Buffer * buf, docstring const &, int m, int n);
 	///
-	InsetMathTabular(docstring const &, int m, int n,
-		char valign, docstring const & halign);
+	InsetMathTabular(Buffer * buf, docstring const &, int m, int n,
+			 char valign, docstring const & halign);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

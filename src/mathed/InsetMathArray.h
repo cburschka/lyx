@@ -22,12 +22,12 @@ namespace lyx {
 class InsetMathArray : public InsetMathGrid {
 public:
 	///
-	InsetMathArray(docstring const &, int m, int n);
+	InsetMathArray(Buffer * buf, docstring const &, int m, int n);
 	///
-	InsetMathArray(docstring const &, int m, int n,
-		char valign, docstring const & halign);
+	InsetMathArray(Buffer * buf, docstring const &, int m, int n,
+		       char valign, docstring const & halign);
 	/// convenience constructor from whitespace/newline separated data
-	InsetMathArray(docstring const &, docstring const & str);
+	InsetMathArray(Buffer * buf, docstring const &, docstring const & str);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

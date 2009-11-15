@@ -35,13 +35,13 @@ using namespace std;
 
 namespace lyx {
 
-InsetMathRef::InsetMathRef()
-	: CommandInset(from_ascii("ref"), false)
+InsetMathRef::InsetMathRef(Buffer * buf)
+	: CommandInset(buf, from_ascii("ref"), false)
 {}
 
 
-InsetMathRef::InsetMathRef(docstring const & data)
-	: CommandInset(data, false)
+InsetMathRef::InsetMathRef(Buffer * buf, docstring const & data)
+	: CommandInset(buf, data, false)
 {}
 
 

@@ -40,24 +40,23 @@ namespace lyx {
 //
 /////////////////////////////////////////////////////////////////////
 
-MacroData::MacroData()
-	: queried_(true), numargs_(0), optionals_(0), lockCount_(0),
-	  redefinition_(false), type_(MacroTypeNewcommand)
+MacroData::MacroData(Buffer * buf)
+	: buffer_(buf), queried_(true), numargs_(0), optionals_(0),
+	  lockCount_(0), redefinition_(false), type_(MacroTypeNewcommand)
 {}
 
 	
 	
-MacroData::MacroData(Buffer const & buf, DocIterator const & pos)
-	: buffer_(&buf), pos_(pos), queried_(false), numargs_(0),
+MacroData::MacroData(Buffer * buf, DocIterator const & pos)
+	: buffer_(buf), pos_(pos), queried_(false), numargs_(0),
 	  optionals_(0), lockCount_(0), redefinition_(false),
 	  type_(MacroTypeNewcommand)
-{
-}
+{}
 	
 	
-MacroData::MacroData(MathMacroTemplate const & macro)
-	: queried_(false), numargs_(0), optionals_(0), lockCount_(0),
-	  redefinition_(false), type_(MacroTypeNewcommand)
+MacroData::MacroData(Buffer * buf, MathMacroTemplate const & macro)
+	: buffer_(buf), queried_(false), numargs_(0), optionals_(0),
+	  lockCount_(0), redefinition_(false), type_(MacroTypeNewcommand)
 {
 	queryData(macro);
 }
@@ -67,7 +66,9 @@ void MacroData::expand(vector<MathData> const & args, MathData & to) const
 {
 	updateData();
 
-	InsetMathSqrt inset; // Hack. Any inset with a cell would do.
+	// Hack. Any inset with a cell would do.
+	static InsetMathSqrt inset(0);
+	inset.setBuffer(const_cast<Buffer &>(*buffer_));
 	// FIXME UNICODE
 	asArray(display_.empty() ? definition_ : display_, inset.cell(0));
 	//lyxerr << "MathData::expand: args: " << args << endl;
@@ -196,11 +197,11 @@ void MacroTable::insert(docstring const & name, MacroData const & data)
 }
 
 
-void MacroTable::insert(docstring const & def, string const & requires)
+void MacroTable::insert(Buffer * buf, docstring const & def, string const & requires)
 {
 	//lyxerr << "MacroTable::insert, def: " << to_utf8(def) << endl;
-	MathMacroTemplate mac(def);
-	MacroData data(mac);
+	MathMacroTemplate mac(buf, def);
+	MacroData data(buf, mac);
 	data.requires() = requires;
 	insert(mac.name(), data);
 }
@@ -231,7 +232,7 @@ void MacroTable::dump()
 //
 /////////////////////////////////////////////////////////////////////
 
-MacroContext::MacroContext(Buffer const & buf, DocIterator const & pos)
+MacroContext::MacroContext(Buffer const * buf, DocIterator const & pos)
 	: buf_(buf), pos_(pos)
 {
 }
@@ -239,7 +240,7 @@ MacroContext::MacroContext(Buffer const & buf, DocIterator const & pos)
 
 MacroData const * MacroContext::get(docstring const & name) const
 {
-	return buf_.getMacro(name, pos_);
+	return buf_->getMacro(name, pos_);
 }
 
 } // namespace lyx

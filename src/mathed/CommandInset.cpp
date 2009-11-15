@@ -23,8 +23,8 @@ using namespace std;
 namespace lyx {
 
 
-CommandInset::CommandInset(docstring const & name, bool needs_math_mode)
-	: InsetMathNest(2), name_(name), needs_math_mode_(needs_math_mode),
+CommandInset::CommandInset(Buffer * buf, docstring const & name, bool needs_math_mode)
+	: InsetMathNest(buf, 2), name_(name), needs_math_mode_(needs_math_mode),
 	  set_label_(false)
 {
 	lock_ = true;

@@ -19,7 +19,8 @@
 
 namespace lyx {
 
-InsetMathPar::InsetMathPar(MathData const & ar)
+InsetMathPar::InsetMathPar(Buffer * buf, MathData const & ar)
+	: InsetMathHull(buf)
 {
 	cells_[0] = ar;
 }

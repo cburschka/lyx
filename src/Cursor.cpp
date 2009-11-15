@@ -1275,7 +1275,7 @@ void Cursor::insert(Inset * inset0)
 
 void Cursor::niceInsert(docstring const & t, Parse::flags f)
 {
-	MathData ar;
+	MathData ar(&buffer());
 	asArray(t, ar, f);
 	if (ar.size() == 1)
 		niceInsert(ar[0]);
@@ -1296,7 +1296,7 @@ void Cursor::niceInsert(MathAtom const & t)
 		// push the clone, not the original
 		pushBackward(*nextInset());
 		// We may not use niceInsert here (recursion)
-		MathData ar;
+		MathData ar(&buffer());
 		asArray(safe, ar);
 		insert(ar);
 	}
@@ -1447,7 +1447,7 @@ bool Cursor::macroModeClose()
 		return false;
 	InsetMathUnknown * p = activeMacro();
 	p->finalize();
-	MathData selection;
+	MathData selection(&buffer());
 	asArray(p->selection(), selection);
 	docstring const s = p->name();
 	--pos();
@@ -1465,7 +1465,8 @@ bool Cursor::macroModeClose()
 	InsetMathNest * const in = inset().asInsetMath()->asNestInset();
 	if (in && in->interpretString(*this, s))
 		return true;
-	MathAtom atom = createInsetMath(name);
+	MathAtom atom = buffer().getMacro(name, *this, false) ?
+		MathAtom(new MathMacro(&buffer(), name)) : createInsetMath(name, &buffer());
 
 	// try to put argument into macro, if we just inserted a macro
 	bool macroArg = false;
@@ -1926,8 +1927,8 @@ void Cursor::handleFont(string const & font)
 		} else {
 			// cursor in between. split cell
 			MathData::iterator bt = cell().begin();
-			MathAtom at = createInsetMath(from_utf8(font));
-			at.nucleus()->cell(0) = MathData(bt, bt + pos());
+			MathAtom at = createInsetMath(from_utf8(font), &buffer());
+			at.nucleus()->cell(0) = MathData(&buffer(), bt, bt + pos());
 			cell().erase(bt, bt + pos());
 			popBackward();
 			plainInsert(at);

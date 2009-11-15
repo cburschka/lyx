@@ -23,8 +23,8 @@
 
 namespace lyx {
 
-InsetMathFont::InsetMathFont(latexkeys const * key)
-	: InsetMathNest(1), key_(key)
+InsetMathFont::InsetMathFont(Buffer * buf, latexkeys const * key)
+	: InsetMathNest(buf, 1), key_(key)
 {}
 
 

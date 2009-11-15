@@ -92,11 +92,12 @@ public:
 
 public:
 	/// sets nrows and ncols to 1, vertical alingment to 'c'
-	InsetMathGrid();
+	InsetMathGrid(Buffer * buf);
 	/// Note: columns first!
-	InsetMathGrid(col_type m, row_type n);
+	InsetMathGrid(Buffer * buf, col_type m, row_type n);
 	///
-	InsetMathGrid(col_type m, row_type n, char valign, docstring const & halign);
+	InsetMathGrid(Buffer * buf, col_type m, row_type n, char valign,
+		      docstring const & halign);
 	///
 	void metrics(MetricsInfo & mi, Dimension &) const;
 	///

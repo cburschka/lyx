@@ -17,8 +17,8 @@
 
 namespace lyx {
 
-InsetMathLefteqn::InsetMathLefteqn()
-	: InsetMathNest(1)
+InsetMathLefteqn::InsetMathLefteqn(Buffer * buf)
+	: InsetMathNest(buf, 1)
 {}
 
 

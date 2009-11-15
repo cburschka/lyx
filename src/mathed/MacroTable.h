@@ -39,11 +39,11 @@ enum MacroType {
 class MacroData {
 public:
 	/// Constructor to make STL containers happy
-	MacroData();
+	MacroData(Buffer * buf = 0);
 	/// Create lazy MacroData which only queries the macro template when needed
-	MacroData(Buffer const & buf, DocIterator const & pos);
+	MacroData(Buffer * buf, DocIterator const & pos);
 	/// Create non-lazy MacroData which directly queries the macro template
-	MacroData(MathMacroTemplate const & macro);
+	MacroData(Buffer * buf, MathMacroTemplate const & macro);
 
 	///
 	docstring const & definition() const { updateData(); return definition_; }
@@ -153,7 +153,7 @@ class MacroTable : public std::map<docstring, MacroData>
 {
 public:
 	/// Parse full "\\def..." or "\\newcommand..." or ...
-	void insert(docstring const & definition, std::string const &);
+	void insert(Buffer * buf, docstring const & definition, std::string const &);
 	/// Insert pre-digested macro definition
 	void insert(docstring const & name, MacroData const & data);
 	///
@@ -179,14 +179,14 @@ public:
 class MacroContext {
 public:
 	/// construct context for the insets at pos
-	MacroContext(Buffer const & buf, DocIterator const & pos);
+	MacroContext(Buffer const * buf, DocIterator const & pos);
 	
 	/// Lookup macro
 	MacroData const * get(docstring const & name) const;
 	
 private:
 	///
-	Buffer const & buf_;
+	Buffer const * buf_;
 	///
 	DocIterator const & pos_;
 };

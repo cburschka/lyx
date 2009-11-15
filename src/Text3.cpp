@@ -138,7 +138,7 @@ static void mathDispatch(Cursor & cur, FuncRequest const & cmd, bool display)
 #ifdef ENABLE_ASSERTIONS
 		const int old_pos = cur.pos();
 #endif
-		cur.insert(new InsetMathHull(hullSimple));
+		cur.insert(new InsetMathHull(&cur.buffer(), hullSimple));
 #ifdef ENABLE_ASSERTIONS
 		LASSERT(old_pos == cur.pos(), /**/);
 #endif
@@ -162,7 +162,7 @@ static void mathDispatch(Cursor & cur, FuncRequest const & cmd, bool display)
 				&& sel.find(from_ascii("\\newlyxcommand")) == string::npos
 				&& sel.find(from_ascii("\\def")) == string::npos)
 		{
-			InsetMathHull * formula = new InsetMathHull;
+			InsetMathHull * formula = new InsetMathHull(&cur.buffer());
 			string const selstr = to_utf8(sel);
 			istringstream is(selstr);
 			Lexer lex;
@@ -181,7 +181,7 @@ static void mathDispatch(Cursor & cur, FuncRequest const & cmd, bool display)
 			} else
 				cur.insert(formula);
 		} else {
-			cur.insert(new MathMacroTemplate(sel));
+			cur.insert(new MathMacroTemplate(&cur.buffer(), sel));
 		}
 	}
 	if (valid)
@@ -1618,7 +1618,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			MacroType type = MacroTypeNewcommand;
 			if (s2 == "def")
 				type = MacroTypeDef;
-			MathMacroTemplate * inset = new MathMacroTemplate(from_utf8(token(s, ' ', 0)), nargs, false, type);
+			MathMacroTemplate * inset = new MathMacroTemplate(&cur.buffer(),
+				from_utf8(token(s, ' ', 0)), nargs, false, type);
 			inset->setBuffer(bv->buffer());
 			insertInset(cur, inset);
 
@@ -1645,7 +1646,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_MATH_BIGDELIM: {
 		cur.recordUndo();
 		cap::replaceSelection(cur);
-		cur.insert(new InsetMathHull(hullSimple));
+		cur.insert(new InsetMathHull(&cur.buffer(), hullSimple));
 		checkAndActivateInset(cur, true);
 		LASSERT(cur.inMathed(), /**/);
 		cur.dispatch(cmd);

@@ -26,7 +26,7 @@ namespace lyx {
 class MathMacro : public InsetMathNest {
 public:
 	/// A macro can be built from an existing template
-	MathMacro(docstring const & name);
+	MathMacro(Buffer * buf, docstring const & name);
 	///
 	virtual MathMacro * asMacro() { return this; }
 	///

@@ -32,13 +32,14 @@ namespace lyx {
 using support::bformat;
 
 
-InsetMathAMSArray::InsetMathAMSArray(docstring const & name, int m, int n)
-	: InsetMathGrid(m, n), name_(name)
+InsetMathAMSArray::InsetMathAMSArray(Buffer * buf, docstring const & name,
+				     int m, int n)
+	: InsetMathGrid(buf, m, n), name_(name)
 {}
 
 
-InsetMathAMSArray::InsetMathAMSArray(docstring const & name)
-	: InsetMathGrid(1, 1), name_(name)
+InsetMathAMSArray::InsetMathAMSArray(Buffer * buf, docstring const & name)
+	: InsetMathGrid(buf, 1, 1), name_(name)
 {}
 
 

@@ -21,6 +21,7 @@
 
 namespace lyx {
 
+class Buffer;
 class MathAtom;
 class MathData;
 class InsetMathGrid;
@@ -61,17 +62,25 @@ public:
 latexkeys const * in_word_set(docstring const & str);
 
 /// parse formula from a string
-bool mathed_parse_normal(MathAtom &, docstring const &, Parse::flags f = Parse::NORMAL);
-/// ... the LyX lexxer
-bool mathed_parse_normal(MathAtom &, Lexer &, Parse::flags f = Parse::NORMAL);
+bool mathed_parse_normal(Buffer * buf, MathAtom &, docstring const &,
+		Parse::flags f = Parse::NORMAL);
+
+/// parse formula from the LyX lexxer
+bool mathed_parse_normal(Buffer * buf, MathAtom &, Lexer &,
+		Parse::flags f = Parse::NORMAL);
+
 /// parse formula from a string into a grid
-bool mathed_parse_normal(InsetMathGrid &, docstring const &, Parse::flags f = Parse::NORMAL);
+bool mathed_parse_normal(InsetMathGrid &, docstring const &,
+		Parse::flags f = Parse::NORMAL);
 
 /// parse a single cell from a string
-bool mathed_parse_cell(MathData & ar, docstring const &, Parse::flags f = Parse::NORMAL);
+bool mathed_parse_cell(MathData & ar, docstring const &,
+		Parse::flags f = Parse::NORMAL);
+
 /// parse a single cell from a stream. Only use this for reading from .lyx
 /// file format, for the reason see Parser::tokenize(std::istream &).
-bool mathed_parse_cell(MathData & ar, std::istream &, Parse::flags f = Parse::NORMAL);
+bool mathed_parse_cell(MathData & ar, std::istream &,
+		Parse::flags f = Parse::NORMAL);
 
 void initParser();
 

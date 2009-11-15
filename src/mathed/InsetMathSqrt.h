@@ -23,7 +23,7 @@ namespace lyx {
 class InsetMathSqrt : public InsetMathNest {
 public:
 	///
-	InsetMathSqrt();
+	InsetMathSqrt(Buffer * buf);
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///

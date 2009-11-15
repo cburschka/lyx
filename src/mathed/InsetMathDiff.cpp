@@ -19,8 +19,8 @@
 
 namespace lyx {
 
-InsetMathDiff::InsetMathDiff()
-	: InsetMathNest(1)
+InsetMathDiff::InsetMathDiff(Buffer * buf)
+	: InsetMathNest(buf, 1)
 {}
 
 

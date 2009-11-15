@@ -24,7 +24,7 @@ class latexkeys;
 class InsetMathFontOld : public InsetMathNest {
 public:
 	///
-	explicit InsetMathFontOld(latexkeys const * key);
+	explicit InsetMathFontOld(Buffer * buf, latexkeys const * key);
 	/// we are in text mode.
 	mode_type currentMode() const { return TEXT_MODE; }
 	/// we write extra braces in any case...

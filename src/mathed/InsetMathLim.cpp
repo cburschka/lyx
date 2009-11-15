@@ -19,9 +19,9 @@
 
 namespace lyx {
 
-InsetMathLim::InsetMathLim
-	(MathData const & f, MathData const & x, MathData const & x0)
-	: InsetMathNest(3)
+InsetMathLim::InsetMathLim(Buffer * buf, MathData const & f, MathData const & x,
+			   MathData const & x0)
+	: InsetMathNest(buf, 3)
 {
 	cell(0) = f;
 	cell(1) = x;

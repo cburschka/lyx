@@ -57,9 +57,9 @@ using support::bformat;
 class InsetLabelBox : public InsetMathNest {
 public:
 	///
-	InsetLabelBox(MathAtom const & atom, docstring label,
+	InsetLabelBox(Buffer * buf, MathAtom const & atom, docstring label,
 		      MathMacroTemplate const & parent, bool frame = false);
-	InsetLabelBox(docstring label, MathMacroTemplate const & parent,
+	InsetLabelBox(Buffer * buf, docstring label, MathMacroTemplate const & parent,
 		      bool frame = false);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
@@ -78,19 +78,18 @@ protected:
 };
 
 
-InsetLabelBox::InsetLabelBox(MathAtom const & atom, docstring label,
+InsetLabelBox::InsetLabelBox(Buffer * buf, MathAtom const & atom, docstring label,
 	MathMacroTemplate const & parent, bool frame)
-	: InsetMathNest(1), parent_(parent), label_(label), frame_(frame)
+	: InsetMathNest(buf, 1), parent_(parent), label_(label), frame_(frame)
 {
 	cell(0).insert(0, atom);
 }
 
 
-InsetLabelBox::InsetLabelBox(docstring label,
+InsetLabelBox::InsetLabelBox(Buffer * buf, docstring label,
 			     MathMacroTemplate const & parent, bool frame)
-	: InsetMathNest(1), parent_(parent), label_(label), frame_(frame)
-{
-}
+	: InsetMathNest(buf, 1), parent_(parent), label_(label), frame_(frame)
+{}
 
 
 Inset * InsetLabelBox::clone() const
@@ -181,7 +180,7 @@ void InsetLabelBox::draw(PainterInfo & pi, int x, int y) const
 class DisplayLabelBox : public InsetLabelBox {
 public:
 	///
-	DisplayLabelBox(MathAtom const & atom, docstring label,
+	DisplayLabelBox(Buffer * buf, MathAtom const & atom, docstring label,
 			MathMacroTemplate const & parent);
 
 	///
@@ -195,12 +194,11 @@ protected:
 };
 
 
-DisplayLabelBox::DisplayLabelBox(MathAtom const & atom,
+DisplayLabelBox::DisplayLabelBox(Buffer * buf, MathAtom const & atom,
 				 docstring label,
 				 MathMacroTemplate const & parent)
-	: InsetLabelBox(atom, label, parent, true)
-{
-}
+	: InsetLabelBox(buf, atom, label, parent, true)
+{}
 
 
 
@@ -279,9 +277,9 @@ void InsetMathWrapper::draw(PainterInfo & pi, int x, int y) const
 class InsetColoredCell : public InsetMathNest {
 public:
 	///
-	InsetColoredCell(ColorCode min, ColorCode max);
+	InsetColoredCell(Buffer * buf, ColorCode min, ColorCode max);
 	///
-	InsetColoredCell(ColorCode min, ColorCode max, MathAtom const & atom);
+	InsetColoredCell(Buffer * buf, ColorCode min, ColorCode max, MathAtom const & atom);
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///
@@ -297,14 +295,13 @@ protected:
 };
 
 
-InsetColoredCell::InsetColoredCell(ColorCode min, ColorCode max)
-	: InsetMathNest(1), min_(min), max_(max)
-{
-}
+InsetColoredCell::InsetColoredCell(Buffer * buf, ColorCode min, ColorCode max)
+	: InsetMathNest(buf, 1), min_(min), max_(max)
+{}
 
 
-InsetColoredCell::InsetColoredCell(ColorCode min, ColorCode max, MathAtom const & atom)
-	: InsetMathNest(1), min_(min), max_(max)
+InsetColoredCell::InsetColoredCell(Buffer * buf, ColorCode min, ColorCode max, MathAtom const & atom)
+	: InsetMathNest(buf, 1), min_(min), max_(max)
 {
 	cell(0).insert(0, atom);
 }
@@ -390,21 +387,22 @@ void InsetNameWrapper::draw(PainterInfo & pi, int x, int y) const
 ///////////////////////////////////////////////////////////////////////
 
 
-MathMacroTemplate::MathMacroTemplate()
-	: InsetMathNest(3), numargs_(0), argsInLook_(0), optionals_(0),
+MathMacroTemplate::MathMacroTemplate(Buffer * buf)
+	: InsetMathNest(buf, 3), numargs_(0), argsInLook_(0), optionals_(0),
 	  type_(MacroTypeNewcommand), lookOutdated_(true)
 {
 	initMath();
 }
 
 
-MathMacroTemplate::MathMacroTemplate(docstring const & name, int numargs,
-	int optionals, MacroType type,
-	vector<MathData> const & optionalValues,
-	MathData const & def, MathData const & display)
-	: InsetMathNest(optionals + 3), numargs_(numargs), argsInLook_(numargs),
-	  optionals_(optionals), optionalValues_(optionalValues),
-	  type_(type), lookOutdated_(true)
+MathMacroTemplate::MathMacroTemplate(Buffer * buf, docstring const & name,
+				     int numargs, int optionals, MacroType type,
+				     vector<MathData> const & optionalValues,
+				     MathData const & def,
+				     MathData const & display)
+	: InsetMathNest(buf, optionals + 3), numargs_(numargs),
+	  argsInLook_(numargs), optionals_(optionals),
+	  optionalValues_(optionalValues), type_(type), lookOutdated_(true)
 {
 	initMath();
 
@@ -423,13 +421,14 @@ MathMacroTemplate::MathMacroTemplate(docstring const & name, int numargs,
 }
 
 
-MathMacroTemplate::MathMacroTemplate(docstring const & str)
-	: InsetMathNest(3), numargs_(0), optionals_(0),
-	type_(MacroTypeNewcommand), lookOutdated_(true)
+MathMacroTemplate::MathMacroTemplate(Buffer * buf, docstring const & str)
+	: InsetMathNest(buf, 3), numargs_(0), optionals_(0),
+	  type_(MacroTypeNewcommand), lookOutdated_(true)
 {
+	buffer_ = buf;
 	initMath();
 
-	MathData ar;
+	MathData ar(buf);
 	mathed_parse_cell(ar, str);
 	if (ar.size() != 1 || !ar[0]->asMacroTemplate()) {
 		lyxerr << "Cannot read macro from '" << ar << "'" << endl;
@@ -479,21 +478,23 @@ void MathMacroTemplate::createLook(int args) const
 	argsInLook_ = args;
 
 	// \foo
-	look_.push_back(MathAtom(new InsetLabelBox(_("Name"), *this, false)));
+	look_.push_back(MathAtom(
+		new InsetLabelBox(buffer_, _("Name"), *this, false)));
 	MathData & nameData = look_[look_.size() - 1].nucleus()->cell(0);
 	nameData.push_back(MathAtom(new InsetNameWrapper(&cell(0), *this)));
 
 	// [#1][#2]
 	int i = 0;
 	if (optionals_ > 0) {
-		look_.push_back(MathAtom(new InsetLabelBox(_("optional"), *this, false)));
+		look_.push_back(MathAtom(
+			new InsetLabelBox(buffer_, _("optional"), *this, false)));
 		
 		MathData * optData = &look_[look_.size() - 1].nucleus()->cell(0);
 		for (; i < optionals_; ++i) {
 			// color it light grey, if it is to be removed when the cursor leaves
 			if (i == argsInLook_) {
 				optData->push_back(MathAtom(
-					new InsetColoredCell(Color_mathbg, Color_mathmacrooldarg)));
+					new InsetColoredCell(buffer_, Color_mathbg, Color_mathmacrooldarg)));
 				optData = &(*optData)[optData->size() - 1].nucleus()->cell(0);
 			}
 
@@ -508,7 +509,7 @@ void MathMacroTemplate::createLook(int args) const
 		MathData arg;
 		arg.push_back(MathAtom(new MathMacroArgument(i + 1)));
 		if (i >= argsInLook_) {
-			look_.push_back(MathAtom(new InsetColoredCell(
+			look_.push_back(MathAtom(new InsetColoredCell(buffer_,
 				Color_mathbg, Color_mathmacrooldarg,
 				MathAtom(new InsetMathBrace(arg)))));
 		} else
@@ -517,7 +518,7 @@ void MathMacroTemplate::createLook(int args) const
 	for (; i < argsInLook_; ++i) {
 		MathData arg;
 		arg.push_back(MathAtom(new MathMacroArgument(i + 1)));
-		look_.push_back(MathAtom(new InsetColoredCell(
+		look_.push_back(MathAtom(new InsetColoredCell(buffer_,
 			Color_mathbg, Color_mathmacronewarg,
 			MathAtom(new InsetMathBrace(arg)))));
 	}
@@ -528,12 +529,12 @@ void MathMacroTemplate::createLook(int args) const
 
 	// definition
 	look_.push_back(MathAtom(
-		new InsetLabelBox(MathAtom(
+		new InsetLabelBox(buffer_, MathAtom(
 			new InsetMathWrapper(&cell(defIdx()))), _("TeX"), *this,	true)));
 
 	// display
 	look_.push_back(MathAtom(
-		new DisplayLabelBox(MathAtom(
+		new DisplayLabelBox(buffer_, MathAtom(
 			new InsetMathWrapper(&cell(displayIdx()))), _("LyX"), *this)));
 }
 
@@ -1102,8 +1103,8 @@ bool MathMacroTemplate::getStatus(Cursor & /*cur*/, FuncRequest const & cmd,
 
 void MathMacroTemplate::read(Lexer & lex)
 {
-	MathData ar;
-	mathed_parse_cell(ar, lex.getStream());
+	MathData ar(buffer_);
+	mathed_parse_cell(ar, lex.getStream(), Parse::TRACKMACRO);
 	if (ar.size() != 1 || !ar[0]->asMacroTemplate()) {
 		lyxerr << "Cannot read macro from '" << ar << "'" << endl;
 		lyxerr << "Read: " << to_utf8(asString(ar)) << endl;

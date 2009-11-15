@@ -27,7 +27,7 @@ public:
 		BM_HEAVY
 	};
 	///
-	InsetMathBoldSymbol(Kind kind = AMS_BOLD);
+	InsetMathBoldSymbol(Buffer * buf, Kind kind = AMS_BOLD);
 	///
 	docstring name() const;
 	///

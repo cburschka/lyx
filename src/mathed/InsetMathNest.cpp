@@ -77,9 +77,11 @@ using cap::replaceSelection;
 using cap::selClearOrDel;
 
 
-InsetMathNest::InsetMathNest(idx_type nargs)
-	: cells_(nargs), lock_(false), mouse_hover_(false)
-{}
+InsetMathNest::InsetMathNest(Buffer * buf, idx_type nargs)
+	: InsetMath(buf), cells_(nargs), lock_(false), mouse_hover_(false)
+{
+	setBuffer(*buf);
+}
 
 
 InsetMathNest::InsetMathNest(InsetMathNest const & inset)
@@ -427,7 +429,7 @@ void InsetMathNest::handleFont(Cursor & cur, docstring const & arg,
 	if (cur.inset().asInsetMath()->name() == font)
 		cur.handleFont(to_utf8(font));
 	else
-		handleNest(cur, createInsetMath(font), arg);
+		handleNest(cur, createInsetMath(font, &cur.buffer()), arg);
 }
 
 
@@ -507,7 +509,7 @@ void InsetMathNest::handleFont2(Cursor & cur, docstring const & arg)
 	font.fromString(to_utf8(arg), b);
 	if (font.fontInfo().color() != Color_inherit &&
 	    font.fontInfo().color() != Color_ignore)
-		handleNest(cur, MathAtom(new InsetMathColor(true, font.fontInfo().color())));
+		handleNest(cur, MathAtom(new InsetMathColor(buffer_, true, font.fontInfo().color())));
 
 	// FIXME: support other font changes here as well?
 }
@@ -943,7 +945,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_FONT_UNDERLINE:
 		cur.recordUndo();
-		cur.handleNest(createInsetMath("underline"));
+		cur.handleNest(createInsetMath("underline", &cur.buffer()));
 		break;
 	case LFUN_MATH_MODE: {
 #if 1
@@ -956,16 +958,16 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		selClearOrDel(cur);
 		//cur.plainInsert(MathAtom(new InsetMathMBox(cur.bv())));
 		if (currentMode() <= Inset::TEXT_MODE)
-			cur.plainInsert(MathAtom(new InsetMathEnsureMath));
+			cur.plainInsert(MathAtom(new InsetMathEnsureMath(buffer_)));
 		else
-			cur.plainInsert(MathAtom(new InsetMathBox(from_ascii("mbox"))));
+			cur.plainInsert(MathAtom(new InsetMathBox(buffer_, from_ascii("mbox"))));
 		cur.posBackward();
 		cur.pushBackward(*cur.nextInset());
 		cur.niceInsert(save_selection);
 #else
 		if (currentMode() == Inset::TEXT_MODE) {
 			cur.recordUndoSelection();
-			cur.niceInsert(MathAtom(new InsetMathHull("simple")));
+			cur.niceInsert(MathAtom(new InsetMathHull("simple", &cur.buffer())));
 			cur.message(_("create new math text environment ($...$)"));
 		} else {
 			handleFont(cur, cmd.argument(), "textrm");
@@ -1000,8 +1002,8 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (n < 1)
 			n = 1;
 		v_align += 'c';
-		cur.niceInsert(
-			MathAtom(new InsetMathArray(from_ascii("array"), m, n, (char)v_align[0], h_align)));
+		cur.niceInsert(MathAtom(new InsetMathArray(buffer_,
+			from_ascii("array"), m, n, (char)v_align[0], h_align)));
 		break;
 	}
 
@@ -1014,7 +1016,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (rs.empty())
 			rs = ')';
 		cur.recordUndo();
-		cur.handleNest(MathAtom(new InsetMathDelim(ls, rs)));
+		cur.handleNest(MathAtom(new InsetMathDelim(buffer_, ls, rs)));
 		break;
 	}
 
@@ -1128,7 +1130,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		docstring const & name = cmd.argument();
 		string data;
 		if (name == "ref") {
-			InsetMathRef tmp(name);
+			InsetMathRef tmp(buffer_, name);
 			data = tmp.createDialogStr(to_utf8(name));
 		} else if (name == "mathspace") {
 			InsetMathSpace tmp;
@@ -1427,6 +1429,7 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type c)
 		save_selection = grabAndEraseSelection(cur);
 
 	cur.clearTargetX();
+	Buffer * buf = &cur.buffer();
 
 	// handle macroMode
 	if (cur.inMacroMode()) {
@@ -1457,24 +1460,24 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type c)
 			if (c == '\\') {
 				cur.backspace();
 				if (currentMode() <= InsetMath::TEXT_MODE)
-					cur.niceInsert(createInsetMath("textbackslash"));
+					cur.niceInsert(createInsetMath("textbackslash", buf));
 				else
-					cur.niceInsert(createInsetMath("backslash"));
+					cur.niceInsert(createInsetMath("backslash", buf));
 			} else if (c == '^' && currentMode() == InsetMath::MATH_MODE) {
 				cur.backspace();
-				cur.niceInsert(createInsetMath("mathcircumflex"));
+				cur.niceInsert(createInsetMath("mathcircumflex", buf));
 			} else if (c == '{') {
 				cur.backspace();
-				cur.niceInsert(MathAtom(new InsetMathBrace));
+				cur.niceInsert(MathAtom(new InsetMathBrace(buf)));
 			} else if (c == '%') {
 				cur.backspace();
-				cur.niceInsert(MathAtom(new InsetMathComment));
+				cur.niceInsert(MathAtom(new InsetMathComment(buf)));
 			} else if (c == '#') {
 				LASSERT(cur.activeMacro(), /**/);
 				cur.activeMacro()->setName(name + docstring(1, c));
 			} else {
 				cur.backspace();
-				cur.niceInsert(createInsetMath(docstring(1, c)));
+				cur.niceInsert(createInsetMath(docstring(1, c), buf));
 			}
 			return true;
 		}
@@ -1518,7 +1521,7 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type c)
 			}
 		}
 		if (c == '{')
-			cur.niceInsert(MathAtom(new InsetMathBrace));
+			cur.niceInsert(MathAtom(new InsetMathBrace(buf)));
 		else if (c != ' ')
 			interpretChar(cur, c);
 		return true;
@@ -1609,11 +1612,11 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type c)
 			return true;
 		}
 		if (c == '~') {
-			cur.niceInsert(createInsetMath("sim"));
+			cur.niceInsert(createInsetMath("sim", buf));
 			return true;
 		}
 		if (currentMode() == InsetMath::MATH_MODE && !isAsciiOrMathAlpha(c)) {
-			MathAtom at = createInsetMath("text");
+			MathAtom at = createInsetMath("text", buf);
 			at.nucleus()->cell(0).push_back(MathAtom(new InsetMathChar(c)));
 			cur.niceInsert(at);
 			cur.posForward();
@@ -1621,18 +1624,18 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type c)
 		}
 	} else {
 		if (c == '^') {
-			cur.niceInsert(createInsetMath("textasciicircum"));
+			cur.niceInsert(createInsetMath("textasciicircum", buf));
 			return true;
 		}
 		if (c == '~') {
-			cur.niceInsert(createInsetMath("textasciitilde"));
+			cur.niceInsert(createInsetMath("textasciitilde", buf));
 			return true;
 		}
 	}
 
 	if (c == '{' || c == '}' || c == '&' || c == '$' || c == '#' ||
 	    c == '%' || c == '_') {
-		cur.niceInsert(createInsetMath(docstring(1, c)));
+		cur.niceInsert(createInsetMath(docstring(1, c), buf));
 		return true;
 	}
 
@@ -1684,7 +1687,7 @@ bool InsetMathNest::script(Cursor & cur, bool up,
 	//lyxerr << "handling script: up: " << up << endl;
 	if (cur.inMacroMode() && cur.macroName() == "\\") {
 		if (up)
-			cur.niceInsert(createInsetMath("mathcircumflex"));
+			cur.niceInsert(createInsetMath("mathcircumflex", &cur.buffer()));
 		else
 			interpretChar(cur, '_');
 		return true;
@@ -1710,10 +1713,10 @@ bool InsetMathNest::script(Cursor & cur, bool up,
 		// one if in the very first position of the array
 		if (cur.pos() == 0) {
 			//lyxerr << "new scriptinset" << endl;
-			cur.insert(new InsetMathScript(up));
+			cur.insert(new InsetMathScript(buffer_, up));
 		} else {
 			//lyxerr << "converting prev atom " << endl;
-			cur.prevAtom() = MathAtom(new InsetMathScript(cur.prevAtom(), up));
+			cur.prevAtom() = MathAtom(new InsetMathScript(buffer_, cur.prevAtom(), up));
 		}
 		--cur.pos();
 		InsetMathScript * inset = cur.nextAtom().nucleus()->asScriptInset();

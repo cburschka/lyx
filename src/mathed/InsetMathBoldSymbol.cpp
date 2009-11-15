@@ -21,8 +21,8 @@
 
 namespace lyx {
 
-InsetMathBoldSymbol::InsetMathBoldSymbol(Kind kind)
-	: InsetMathNest(1), kind_(kind)
+InsetMathBoldSymbol::InsetMathBoldSymbol(Buffer * buf, Kind kind)
+	: InsetMathNest(buf, 1), kind_(kind)
 {}
 
 

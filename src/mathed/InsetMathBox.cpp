@@ -32,8 +32,8 @@ namespace lyx {
 //
 /////////////////////////////////////////////////////////////////////
 
-InsetMathBox::InsetMathBox(docstring const & name)
-	: InsetMathNest(1), name_(name)
+InsetMathBox::InsetMathBox(Buffer * buf, docstring const & name)
+	: InsetMathNest(buf, 1), name_(name)
 {}
 
 
@@ -90,8 +90,8 @@ void InsetMathBox::validate(LaTeXFeatures & features) const
 /////////////////////////////////////////////////////////////////////
 
 
-InsetMathFBox::InsetMathFBox()
-	: InsetMathNest(1)
+InsetMathFBox::InsetMathFBox(Buffer * buf)
+	: InsetMathNest(buf, 1)
 {}
 
 
@@ -140,8 +140,8 @@ void InsetMathFBox::infoize(odocstream & os) const
 /////////////////////////////////////////////////////////////////////
 
 
-InsetMathMakebox::InsetMathMakebox(bool framebox)
-	: InsetMathNest(3), framebox_(framebox)
+InsetMathMakebox::InsetMathMakebox(Buffer * buf, bool framebox)
+	: InsetMathNest(buf, 3), framebox_(framebox)
 {}
 
 
@@ -245,8 +245,8 @@ void InsetMathMakebox::infoize(odocstream & os) const
 //
 /////////////////////////////////////////////////////////////////////
 
-InsetMathBoxed::InsetMathBoxed()
-	: InsetMathNest(1)
+InsetMathBoxed::InsetMathBoxed(Buffer * buf)
+	: InsetMathNest(buf, 1)
 {}
 
 

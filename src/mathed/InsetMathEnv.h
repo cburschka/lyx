@@ -24,7 +24,7 @@ namespace lyx {
 class InsetMathEnv : public InsetMathNest {
 public:
 	///
-	InsetMathEnv(docstring const & name_);
+	InsetMathEnv(Buffer * buf, docstring const & name_);
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///

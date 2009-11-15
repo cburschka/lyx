@@ -22,6 +22,8 @@ namespace lyx {
 class InsetMathUnderset : public InsetMathFracBase {
 public:
 	///
+	InsetMathUnderset(Buffer * buf) : InsetMathFracBase(buf) {}
+	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;

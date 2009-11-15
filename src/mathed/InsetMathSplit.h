@@ -21,12 +21,13 @@ namespace lyx {
 class InsetMathSplit : public InsetMathGrid {
 public:
 	///
-	explicit InsetMathSplit(docstring const & name, char valign = 'c');
+	explicit InsetMathSplit(Buffer * buf, docstring const & name,
+				char valign = 'c');
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd,
-		FuncStatus & flag) const;
+		       FuncStatus & flag) const;
 
 	void write(WriteStream & os) const;
 	///

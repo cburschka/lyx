@@ -25,7 +25,7 @@ class latexkeys;
 class InsetMathSize : public InsetMathNest {
 public:
 	///
-	explicit InsetMathSize(latexkeys const * l);
+	explicit InsetMathSize(Buffer * buf, latexkeys const * l);
 	/// we write extra braces in any case...
 	bool extraBraces() const { return true; }
 	///
