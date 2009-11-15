@@ -73,7 +73,7 @@ public:
 	///
 	void readSpacing(Lexer &);
 	///
-	docstring const & name() const { return name_; };
+	docstring const & name() const { return name_; }
 	///
 	void setName(docstring const & n) { name_ = n; }
 	///
