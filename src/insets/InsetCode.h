@@ -218,6 +218,8 @@ enum InsetCode {
 	MATH_XYMATRIX_CODE,
 	///
 	MATH_MACRO_CODE,
+	///
+	ARGUMENT_PROXY_CODE, // 100
 };
 
 } // namespace lyx

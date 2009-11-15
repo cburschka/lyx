@@ -59,6 +59,8 @@ public:
 			asArray(def, def_);
 	}
 	///
+	InsetCode lyxCode() const { return ARGUMENT_PROXY_CODE; }
+	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const {
 		mathMacro_.macro()->unlock();
 		mathMacro_.cell(idx_).metrics(mi, dim);
@@ -69,6 +71,9 @@ public:
 
 		mathMacro_.macro()->lock();
 	}
+	// FIXME Other external things need similar treatment.
+	///
+	void mathmlize(MathStream & ms) const { ms << mathMacro_.cell(idx_); }
 	///
 	void draw(PainterInfo & pi, int x, int y) const {
 		if (mathMacro_.editMetrics(pi.base.bv)) {
@@ -127,7 +132,7 @@ Inset * MathMacro::clone() const
 {
 	MathMacro * copy = new MathMacro(*this);
 	copy->needsUpdate_ = true;
-	copy->expanded_.cell(0).clear();
+	//copy->expanded_.cell(0).clear();
 	return copy;
 }
 
@@ -325,10 +330,9 @@ void MathMacro::updateRepresentation()
 			proxy = new ArgumentProxy(*this, i);
 		values[i].insert(0, MathAtom(proxy));
 	}
-	
 	// expanding macro with the values
 	macro_->expand(values, expanded_.cell(0));
-		// get definition for list edit mode
+	// get definition for list edit mode
 	docstring const & display = macro_->display();
 	asArray(display.empty() ? macro_->definition() : display, definition_);
 }
@@ -710,7 +714,7 @@ void MathMacro::write(WriteStream & os) const
 	// skip the tailing empty optionals
 	i = optionals_;
 	
-	// Print remaining macros 
+	// Print remaining arguments
 	for (; i < cells_.size(); ++i) {
 		if (cell(i).size() == 1 
 			&& cell(i)[0].nucleus()->asCharInset()
@@ -737,7 +741,7 @@ void MathMacro::maple(MapleStream & os) const
 
 void MathMacro::mathmlize(MathStream & os) const
 {
-	lyx::mathmlize(expanded_.cell(0), os);
+	os << expanded_.cell(0);
 }
 
 
