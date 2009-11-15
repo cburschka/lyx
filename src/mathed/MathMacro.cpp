@@ -633,15 +633,16 @@ bool MathMacro::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 		docstring const & unfolded_name = name();
 		if (unfolded_name != name_) {
 			// The macro name was changed
-			cur = old;
-			bool left = cur.pos() == 0;
-			cur.recordUndoInset();
-			cur.popForward();
-			cur.backspace();
-			cur.insert(createInsetMath(unfolded_name, cur.buffer()));
-			if (left)
-				cur.backwardPos();
-			cur.updateFlags(Update::Force);
+			Cursor insetCur = old;
+			int macroSlice = insetCur.find(this);
+			LASSERT(macroSlice != -1, /**/);
+			insetCur.cutOff(macroSlice);
+			insetCur.recordUndoInset();
+			insetCur.pop();
+			insetCur.cell().erase(insetCur.pos());
+			insetCur.cell().insert(insetCur.pos(),
+				createInsetMath(unfolded_name, cur.buffer()));
+			cur.updateFlags(cur.disp_.update() | Update::SinglePar);
 			return true;
 		}
 	}
