@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-11-07 11:48+0100\n"
-"PO-Revision-Date: 2009-11-15 14:39+0100\n"
+"PO-Revision-Date: 2009-11-15 15:11+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenský <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -9361,7 +9361,7 @@ msgstr ""
 "jednoduchému modulu teorémov, "
 "má tu každý poskytnutý typ teorémov svoje vlastné číslovanie (čiže "
 "veta 1, veta 2, lemma 1, tvrdenie 1, veta 3, lemma 2, ..., oproti "
-"veta 1, veta 2, lemma 3, tvrdenie 4...). Číslovanie je postupne bez ohľadu "
+"veta 1, veta 2, lemma 3, tvrdenie 4...). Číslovanie je usporiadané bez ohľadu "
 "na štruktúru dokumentu. "
 "To sa dá zmeniť voľbou jedného z 'Teorémy (Číslované podľa ...)' modulu."
 
@@ -17011,11 +17011,11 @@ msgstr "Nastavte mierku pre vhodný náhľad."
 
 #: src/LyXRC.cpp:2747
 msgid "The option for specifying whether the copies should be collated."
-msgstr "Nastavenie pre určenie, či sa kópie majú usporiadať."
+msgstr "Voľba špecifikuje, či sa kópie majú usporiadať."
 
 #: src/LyXRC.cpp:2751
 msgid "The option for specifying the number of copies to print."
-msgstr "Nastavenie pre špecifikáciu počtu kópií pre tlač."
+msgstr "Voľba špecifikuje počet kópií pre tlač."
 
 #: src/LyXRC.cpp:2755
 msgid ""
@@ -17027,7 +17027,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2759
 msgid "The option to print only even pages."
-msgstr "Nastavenie, či tlačiť iba párne strany."
+msgstr "Voľba na tlač iba párnych strán."
 
 #: src/LyXRC.cpp:2763
 msgid ""
@@ -17042,15 +17042,15 @@ msgstr "Prípona výstupu tlače. Obyčajne \".ps\"."
 
 #: src/LyXRC.cpp:2771
 msgid "The option to print out in landscape."
-msgstr "Nastavenie tlače na šírku."
+msgstr "Voľba tlače na šírku."
 
 #: src/LyXRC.cpp:2775
 msgid "The option to print only odd pages."
-msgstr "Voľba, či tlačiť iba nepárne strany."
+msgstr "Voľba na tlač iba nepárnych strán."
 
 #: src/LyXRC.cpp:2779
 msgid "The option for specifying a comma-separated list of pages to print."
-msgstr "Voľba pre špecifikáciu tlače listiny čiarkou oddelených strán."
+msgstr "Voľba špecifikuje čiarkami oddelený zoznam strán pre tlač."
 
 #: src/LyXRC.cpp:2783
 msgid "Option to specify the dimensions of the print paper."
@@ -17058,7 +17058,7 @@ msgstr "Voľba špecifikujúca veľkosti tlačenej stránky."
 
 #: src/LyXRC.cpp:2787
 msgid "The option to specify paper type."
-msgstr "Voľba špecifikujúca typ stránky."
+msgstr "Voľba špecifikuje typ stránky."
 
 #: src/LyXRC.cpp:2791
 msgid "The option to reverse the order of the pages printed."
