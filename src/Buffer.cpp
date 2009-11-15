@@ -3554,9 +3554,9 @@ static bool needEnumCounterReset(ParIterator const & it)
 
 
 // set the label of a paragraph. This includes the counters.
-static void setLabel(Buffer const & buf, ParIterator & it)
+void Buffer::setLabel(ParIterator & it) const
 {
-	BufferParams const & bp = buf.masterBuffer()->params();
+	BufferParams const & bp = this->masterBuffer()->params();
 	DocumentClass const & textclass = bp.documentClass();
 	Paragraph & par = it.paragraph();
 	Layout const & layout = par.layout();
@@ -3652,9 +3652,9 @@ static void setLabel(Buffer const & buf, ParIterator & it)
 		string const & type = counters.current_float();
 		docstring full_label;
 		if (type.empty())
-			full_label = buf.B_("Senseless!!! ");
+			full_label = this->B_("Senseless!!! ");
 		else {
-			docstring name = buf.B_(textclass.floats().getType(type).name());
+			docstring name = this->B_(textclass.floats().getType(type).name());
 			if (counters.hasCounter(from_utf8(type))) {
 				string const & lang = par.getParLanguage(bp)->code();
 				counters.step(from_utf8(type));
@@ -3701,7 +3701,7 @@ void Buffer::updateLabels(ParIterator & parit) const
 		maxdepth = parit->getMaxDepthAfter();
 
 		// set the counter for this paragraph
-		setLabel(*this, parit);
+		setLabel(parit);
 
 		// Now the insets
 		InsetList::const_iterator iit = parit->insetList().begin();

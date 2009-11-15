@@ -548,7 +548,8 @@ private:
 	*/
 	void updateMacros(DocIterator & it,
 				     DocIterator & scope) const;
-
+	///
+	void setLabel(ParIterator & it) const;
 	///
 	void collectRelatives(BufferSet & bufs) const;
 
