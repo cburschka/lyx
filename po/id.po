@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-11-07 11:48+0100\n"
+"POT-Creation-Date: 2009-11-15 16:09+0100\n"
 "PO-Revision-Date: 2009-11-06 23:22+0730\n"
 "Last-Translator: Waluyo Adi Siswanto <was.uthm@gmail.com>\n"
 "Language-Team: \n"
@@ -1886,18 +1886,38 @@ msgid "&Horizontal:"
 msgstr "&Horisontal:"
 
 #: src/frontends/qt4/ui/MathsUi.ui:25
+msgid ""
+"The AMS LaTeX packages are only used when symbols from the AMS math toolbars "
+"are inserted into formulas"
+msgstr ""
+
+#: src/frontends/qt4/ui/MathsUi.ui:28
 msgid "&Use AMS math package automatically"
 msgstr "G&unakan paket matematika AMS secara otomatis"
 
-#: src/frontends/qt4/ui/MathsUi.ui:35
+#: src/frontends/qt4/ui/MathsUi.ui:38
+msgid "The AMS LaTeX packages are always used"
+msgstr ""
+
+#: src/frontends/qt4/ui/MathsUi.ui:41
 msgid "Use AMS &math package"
 msgstr "Gunakan paket AMS &matematika"
 
-#: src/frontends/qt4/ui/MathsUi.ui:42
+#: src/frontends/qt4/ui/MathsUi.ui:48
+msgid ""
+"The LaTeX package esint is only used when special integral symbols are "
+"inserted into formulas"
+msgstr ""
+
+#: src/frontends/qt4/ui/MathsUi.ui:51
 msgid "Use esint package &automatically"
 msgstr "gun&akan paket esint secara otomatis"
 
-#: src/frontends/qt4/ui/MathsUi.ui:52
+#: src/frontends/qt4/ui/MathsUi.ui:61
+msgid "The LaTeX package esint is always used"
+msgstr ""
+
+#: src/frontends/qt4/ui/MathsUi.ui:64
 msgid "Use &esint package"
 msgstr "Gunakan paket &esint"
 
@@ -1966,109 +1986,6 @@ msgstr "Penomoran dalam Daftar Isi"
 #: src/frontends/qt4/ui/NumberingUi.ui:70
 msgid "&Numbering"
 msgstr "Pe&nomoran"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:28
-msgid "&Use hyperref support"
-msgstr "&Pengaturan isian hyperref"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:53
-msgid "&General"
-msgstr "&Umum"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:99
-msgid ""
-"If not stated explicitly, fill title and author from appropriate environments"
-msgstr ""
-"Apabila tidak dituliskan, judul dan penulis akan diambil dari lingkungan "
-"yang ada judul dan penulisnya"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:102
-msgid "Automatically fi&ll header"
-msgstr "D&iisikan pada header secara otomatis"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:109
-msgid "Enable fullscreen PDF presentation"
-msgstr "PDF akan langsung muncul di layar penuh yang siap untuk presentasi."
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:112
-msgid "Load in &fullscreen mode"
-msgstr "Ditampilan pada layar pe&nuh"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:121
-msgid "Header Information"
-msgstr "Informasi Header"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:133
-msgid "&Title:"
-msgstr "&Judul:"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:146
-msgid "&Author:"
-msgstr "&Penulis:"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:159
-msgid "&Subject:"
-msgstr "&Subyek:"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:172
-msgid "&Keywords:"
-msgstr "&Katakunci:"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:189
-msgid "H&yperlinks"
-msgstr "H&yperlinks"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:222
-msgid "Allows link text to break across lines."
-msgstr "Membolehkan teks link dipisahkan bila melebihi garis batas."
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:225
-msgid "B&reak links over lines"
-msgstr "&Memotong link bila melebihi garis batas"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:232
-msgid "No &frames around links"
-msgstr "Tanpa &kotak bingkai link"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:242
-msgid "C&olor links"
-msgstr "Link ber&warna"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:249
-msgid "Bibliographical backreferences"
-msgstr "Referensi di akhir dokumen Bibliografi"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:252
-msgid "B&ackreferences:"
-msgstr "Referensi di &akhir:"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:281
-msgid "&Bookmarks"
-msgstr "&Batas buku"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:293
-msgid "G&enerate Bookmarks"
-msgstr "Men&ghasilkan Batas Buku"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:314
-msgid "&Numbered bookmarks"
-msgstr "Batas Buku Bernomor"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:339
-msgid "Number of levels"
-msgstr "Jumlah Level"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:348
-msgid "&Open bookmarks"
-msgstr "Bu&ka batas buku"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:388
-msgid "Additional o&ptions"
-msgstr "Pengaturan tamba&han"
-
-#: src/frontends/qt4/ui/PDFSupportUi.ui:417
-msgid "e.g.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
-msgstr "contoh: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:33
 #: src/frontends/qt4/GuiDocument.cpp:985
@@ -2189,6 +2106,109 @@ msgstr "Dua"
 #: src/frontends/qt4/GuiHSpace.cpp:161
 msgid "Custom"
 msgstr "AturSendiri"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:28
+msgid "&Use hyperref support"
+msgstr "&Pengaturan isian hyperref"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:53
+msgid "&General"
+msgstr "&Umum"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:99
+msgid ""
+"If not stated explicitly, fill title and author from appropriate environments"
+msgstr ""
+"Apabila tidak dituliskan, judul dan penulis akan diambil dari lingkungan "
+"yang ada judul dan penulisnya"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:102
+msgid "Automatically fi&ll header"
+msgstr "D&iisikan pada header secara otomatis"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:109
+msgid "Enable fullscreen PDF presentation"
+msgstr "PDF akan langsung muncul di layar penuh yang siap untuk presentasi."
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:112
+msgid "Load in &fullscreen mode"
+msgstr "Ditampilan pada layar pe&nuh"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:121
+msgid "Header Information"
+msgstr "Informasi Header"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:133
+msgid "&Title:"
+msgstr "&Judul:"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:146
+msgid "&Author:"
+msgstr "&Penulis:"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:159
+msgid "&Subject:"
+msgstr "&Subyek:"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:172
+msgid "&Keywords:"
+msgstr "&Katakunci:"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:189
+msgid "H&yperlinks"
+msgstr "H&yperlinks"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:222
+msgid "Allows link text to break across lines."
+msgstr "Membolehkan teks link dipisahkan bila melebihi garis batas."
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:225
+msgid "B&reak links over lines"
+msgstr "&Memotong link bila melebihi garis batas"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:232
+msgid "No &frames around links"
+msgstr "Tanpa &kotak bingkai link"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:242
+msgid "C&olor links"
+msgstr "Link ber&warna"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:249
+msgid "Bibliographical backreferences"
+msgstr "Referensi di akhir dokumen Bibliografi"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:252
+msgid "B&ackreferences:"
+msgstr "Referensi di &akhir:"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:281
+msgid "&Bookmarks"
+msgstr "&Batas buku"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:293
+msgid "G&enerate Bookmarks"
+msgstr "Men&ghasilkan Batas Buku"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:314
+msgid "&Numbered bookmarks"
+msgstr "Batas Buku Bernomor"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:339
+msgid "Number of levels"
+msgstr "Jumlah Level"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:348
+msgid "&Open bookmarks"
+msgstr "Bu&ka batas buku"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:388
+msgid "Additional o&ptions"
+msgstr "Pengaturan tamba&han"
+
+#: src/frontends/qt4/ui/PDFSupportUi.ui:417
+msgid "e.g.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+msgstr "contoh: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
 msgid "A&lter..."
@@ -3957,17 +3977,17 @@ msgstr "Pilih floating untuk penempatan gambar yang fleksible"
 msgid "Allow &floating"
 msgstr "Posisi &floating"
 
-#: lib/layouts/IEEEtran.layout:18 lib/layouts/aa.layout:27
-#: lib/layouts/aapaper.layout:34 lib/layouts/aastex.layout:52
-#: lib/layouts/achemso.layout:30 lib/layouts/acmsiggraph.layout:34
-#: lib/layouts/amsart.layout:27 lib/layouts/amsbook.layout:28
-#: lib/layouts/apa.layout:24 lib/layouts/beamer.layout:31
-#: lib/layouts/broadway.layout:173 lib/layouts/chess.layout:29
-#: lib/layouts/cl2emult.layout:125 lib/layouts/dtk.layout:31
-#: lib/layouts/egs.layout:18 lib/layouts/elsart.layout:47
-#: lib/layouts/elsarticle.layout:31 lib/layouts/europecv.layout:16
-#: lib/layouts/foils.layout:30 lib/layouts/g-brief2.layout:31
-#: lib/layouts/hollywood.layout:345 lib/layouts/iopart.layout:34
+#: lib/layouts/aa.layout:27 lib/layouts/aapaper.layout:34
+#: lib/layouts/aastex.layout:52 lib/layouts/achemso.layout:30
+#: lib/layouts/acmsiggraph.layout:34 lib/layouts/amsart.layout:27
+#: lib/layouts/amsbook.layout:28 lib/layouts/apa.layout:24
+#: lib/layouts/beamer.layout:31 lib/layouts/broadway.layout:173
+#: lib/layouts/chess.layout:29 lib/layouts/cl2emult.layout:125
+#: lib/layouts/dtk.layout:31 lib/layouts/egs.layout:18
+#: lib/layouts/elsart.layout:47 lib/layouts/elsarticle.layout:31
+#: lib/layouts/europecv.layout:16 lib/layouts/foils.layout:30
+#: lib/layouts/g-brief2.layout:31 lib/layouts/hollywood.layout:345
+#: lib/layouts/IEEEtran.layout:18 lib/layouts/iopart.layout:34
 #: lib/layouts/kluwer.layout:33 lib/layouts/llncs.layout:23
 #: lib/layouts/ltugboat.layout:30 lib/layouts/memoir.layout:30
 #: lib/layouts/moderncv.layout:19 lib/layouts/paper.layout:14
@@ -3983,296 +4003,14 @@ msgstr "Posisi &floating"
 msgid "Standard"
 msgstr "Standar"
 
-#: lib/layouts/IEEEtran.layout:49
-msgid "TheoremTemplate"
-msgstr "TheoremTemplate"
-
-#: lib/layouts/IEEEtran.layout:65 lib/layouts/beamer.layout:1051
-#: lib/layouts/elsart.layout:285 lib/layouts/foils.layout:278
-#: lib/layouts/heb-article.layout:95 lib/layouts/ijmpc.layout:211
-#: lib/layouts/ijmpd.layout:211 lib/layouts/llncs.layout:371
-#: lib/layouts/siamltex.layout:150 lib/layouts/svjour.inc:394
-#: lib/layouts/theorems-order.inc:76 lib/layouts/theorems-proof.inc:13
-#: lib/layouts/theorems-bytype.module:46 lib/layouts/theorems-std.module:20
-msgid "Proof"
-msgstr "Proof"
-
-#: lib/layouts/IEEEtran.layout:68 lib/layouts/heb-article.layout:110
-msgid "Proof:"
-msgstr "Proof:"
-
-#: lib/layouts/IEEEtran.layout:73 lib/layouts/beamer.layout:1057
-#: lib/layouts/elsart.layout:256 lib/layouts/foils.layout:218
-#: lib/layouts/heb-article.layout:18 lib/layouts/ijmpc.layout:190
-#: lib/layouts/ijmpd.layout:193 lib/layouts/llncs.layout:412
-#: lib/layouts/siamltex.layout:62 lib/layouts/siamltex.layout:112
-#: lib/layouts/svjour.inc:436 lib/layouts/theorems-ams-bytype.inc:51
-#: lib/layouts/theorems-ams-bytype.inc:52
-#: lib/layouts/theorems-ams-bytype.inc:239 lib/layouts/theorems-ams.inc:24
-#: lib/layouts/theorems-ams.inc:25 lib/layouts/theorems-ams.inc:208
-#: lib/layouts/theorems-bytype.inc:26 lib/layouts/theorems-bytype.inc:27
-#: lib/layouts/theorems-bytype.inc:214 lib/layouts/theorems-order.inc:7
-#: lib/layouts/theorems-proof.inc:14
-#: lib/layouts/theorems-starred-equivalents.inc:6
-#: lib/layouts/theorems-starred.inc:24 lib/layouts/theorems.inc:24
-#: lib/layouts/theorems.inc:25 lib/layouts/theorems.inc:208
-#: lib/layouts/theorems-chap-bytype.module:54
-#: lib/layouts/theorems-chap.module:19
-#: lib/layouts/theorems-sec-bytype.module:54
-#: lib/layouts/theorems-sec.module:18
-msgid "Theorem"
-msgstr "Teorema"
-
-#: lib/layouts/IEEEtran.layout:76
-msgid "Theorem #:"
-msgstr "Teorema #:"
-
-#: lib/layouts/IEEEtran.layout:83 lib/layouts/elsart.layout:312
-#: lib/layouts/foils.layout:243 lib/layouts/heb-article.layout:45
-#: lib/layouts/ijmpc.layout:238 lib/layouts/ijmpd.layout:243
-#: lib/layouts/llncs.layout:351 lib/layouts/siamltex.layout:82
-#: lib/layouts/svjour.inc:373 lib/layouts/theorems-ams-bytype.inc:98
-#: lib/layouts/theorems-ams.inc:71 lib/layouts/theorems-bytype.inc:73
-#: lib/layouts/theorems-order.inc:19
-#: lib/layouts/theorems-starred-equivalents.inc:20 lib/layouts/theorems.inc:71
-#: lib/layouts/theorems-chap-bytype.module:78
-#: lib/layouts/theorems-sec-bytype.module:70
-msgid "Lemma"
-msgstr "Lemma"
-
-#: lib/layouts/IEEEtran.layout:86
-msgid "Lemma #:"
-msgstr "Lemma #:"
-
-#: lib/layouts/IEEEtran.layout:93 lib/layouts/beamer.layout:987
-#: lib/layouts/elsart.layout:319 lib/layouts/foils.layout:250
-#: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:229
-#: lib/layouts/ijmpd.layout:230 lib/layouts/llncs.layout:316
-#: lib/layouts/siamltex.layout:72 lib/layouts/svjour.inc:334
-#: lib/layouts/theorems-ams-bytype.inc:86 lib/layouts/theorems-ams.inc:59
-#: lib/layouts/theorems-bytype.inc:61 lib/layouts/theorems-order.inc:13
-#: lib/layouts/theorems-starred-equivalents.inc:13 lib/layouts/theorems.inc:59
-#: lib/layouts/theorems-chap-bytype.module:66
-#: lib/layouts/theorems-sec-bytype.module:62
-msgid "Corollary"
-msgstr "Corollary"
-
-#: lib/layouts/IEEEtran.layout:96
-msgid "Corollary #:"
-msgstr "Corollary #:"
-
-#: lib/layouts/IEEEtran.layout:103 lib/layouts/elsart.layout:326
-#: lib/layouts/foils.layout:257 lib/layouts/ijmpc.layout:247
-#: lib/layouts/ijmpd.layout:253 lib/layouts/llncs.layout:385
-#: lib/layouts/siamltex.layout:92 lib/layouts/svjour.inc:408
-#: lib/layouts/theorems-ams-bytype.inc:110 lib/layouts/theorems-ams.inc:83
-#: lib/layouts/theorems-bytype.inc:85 lib/layouts/theorems-order.inc:25
-#: lib/layouts/theorems-starred-equivalents.inc:27 lib/layouts/theorems.inc:83
-#: lib/layouts/theorems-chap-bytype.module:90
-#: lib/layouts/theorems-sec-bytype.module:78
-msgid "Proposition"
-msgstr "Rencana"
-
-#: lib/layouts/IEEEtran.layout:106
-msgid "Proposition #:"
-msgstr "Rencana #:"
-
-#: lib/layouts/IEEEtran.layout:113 lib/layouts/elsart.layout:361
-#: lib/layouts/ijmpc.layout:283 lib/layouts/ijmpd.layout:293
-#: lib/layouts/llncs.layout:309 lib/layouts/siamltex.layout:102
-#: lib/layouts/svjour.inc:327 lib/layouts/theorems-ams-bytype.inc:122
-#: lib/layouts/theorems-ams.inc:95 lib/layouts/theorems-bytype.inc:97
-#: lib/layouts/theorems-order.inc:31
-#: lib/layouts/theorems-starred-equivalents.inc:34 lib/layouts/theorems.inc:95
-#: lib/layouts/theorems-chap-bytype.module:102
-#: lib/layouts/theorems-sec-bytype.module:86
-msgid "Conjecture"
-msgstr "Dugaan"
-
-#: lib/layouts/IEEEtran.layout:116
-msgid "Conjecture #:"
-msgstr "Dugaan #:"
-
-#: lib/layouts/IEEEtran.layout:123 lib/layouts/elsart.layout:333
-#: lib/layouts/theorems-ams-extended-bytype.module:60
-#: lib/layouts/theorems-ams-extended.module:33
-msgid "Criterion"
-msgstr "Kriteria"
-
-#: lib/layouts/IEEEtran.layout:126
-msgid "Criterion #:"
-msgstr "Kriteria #:"
-
-#: lib/layouts/IEEEtran.layout:133 lib/layouts/beamer.layout:1045
-#: lib/layouts/theorems-ams-bytype.inc:134 lib/layouts/theorems-ams.inc:107
-#: lib/layouts/theorems-bytype.inc:109 lib/layouts/theorems.inc:107
-#: lib/layouts/theorems-chap-bytype.module:114
-#: lib/layouts/theorems-sec-bytype.module:94
-msgid "Fact"
-msgstr "Fakta"
-
-#: lib/layouts/IEEEtran.layout:136
-msgid "Fact #:"
-msgstr "Fakta #:"
-
-#: lib/layouts/IEEEtran.layout:143
-#: lib/layouts/theorems-ams-extended-bytype.module:105
-#: lib/layouts/theorems-ams-extended.module:78
-msgid "Axiom"
-msgstr "Axiom"
-
-#: lib/layouts/IEEEtran.layout:146
-msgid "Axiom #:"
-msgstr "Axiom #:"
-
-#: lib/layouts/IEEEtran.layout:153 lib/layouts/beamer.layout:1015
-#: lib/layouts/elsart.layout:347 lib/layouts/foils.layout:264
-#: lib/layouts/heb-article.layout:75 lib/layouts/ijmpc.layout:131
-#: lib/layouts/ijmpd.layout:128 lib/layouts/llncs.layout:330
-#: lib/layouts/siamltex.layout:121 lib/layouts/svjour.inc:348
-#: lib/layouts/theorems-ams-bytype.inc:146 lib/layouts/theorems-ams.inc:119
-#: lib/layouts/theorems-bytype.inc:121 lib/layouts/theorems-order.inc:37
-#: lib/layouts/theorems-starred-equivalents.inc:41
-#: lib/layouts/theorems.inc:119 lib/layouts/theorems-chap-bytype.module:126
-#: lib/layouts/theorems-sec-bytype.module:102
-msgid "Definition"
-msgstr "Definisi"
-
-#: lib/layouts/IEEEtran.layout:156
-msgid "Definition #:"
-msgstr "Definisi #:"
-
-#: lib/layouts/IEEEtran.layout:163 lib/layouts/beamer.layout:1027
-#: lib/layouts/elsart.layout:368 lib/layouts/ijmpc.layout:163
-#: lib/layouts/ijmpd.layout:160 lib/layouts/llncs.layout:337
-#: lib/layouts/svjour.inc:355 lib/layouts/theorems-ams-bytype.inc:165
-#: lib/layouts/theorems-ams.inc:138 lib/layouts/theorems-bytype.inc:140
-#: lib/layouts/theorems-order.inc:43
-#: lib/layouts/theorems-starred-equivalents.inc:48
-#: lib/layouts/theorems.inc:138 lib/layouts/theorems-chap-bytype.module:138
-#: lib/layouts/theorems-sec-bytype.module:110
-#: src/frontends/qt4/GuiDocument.cpp:820
-msgid "Example"
-msgstr "Contoh"
-
-#: lib/layouts/IEEEtran.layout:166
-msgid "Example #:"
-msgstr "Contoh #:"
-
-#: lib/layouts/IEEEtran.layout:173
-#: lib/layouts/theorems-ams-extended-bytype.module:128
-#: lib/layouts/theorems-ams-extended.module:101
-msgid "Condition"
-msgstr "Kondisi"
-
-#: lib/layouts/IEEEtran.layout:176
-msgid "Condition #:"
-msgstr "Kondisi #:"
-
-#: lib/layouts/IEEEtran.layout:183 lib/layouts/elsart.layout:375
-#: lib/layouts/llncs.layout:364 lib/layouts/svmono.layout:161
-#: lib/layouts/svjour.inc:387 lib/layouts/theorems-ams-bytype.inc:178
-#: lib/layouts/theorems-ams.inc:150 lib/layouts/theorems-bytype.inc:153
-#: lib/layouts/theorems-order.inc:49
-#: lib/layouts/theorems-starred-equivalents.inc:55
-#: lib/layouts/theorems.inc:150 lib/layouts/theorems-chap-bytype.module:150
-#: lib/layouts/theorems-sec-bytype.module:118
-msgid "Problem"
-msgstr "Masalah"
-
-#: lib/layouts/IEEEtran.layout:186
-msgid "Problem #:"
-msgstr "Masalah #:"
-
-#: lib/layouts/IEEEtran.layout:193 lib/layouts/llncs.layout:344
-#: lib/layouts/svjour.inc:362 lib/layouts/theorems-ams-bytype.inc:191
-#: lib/layouts/theorems-ams.inc:162 lib/layouts/theorems-bytype.inc:166
-#: lib/layouts/theorems-order.inc:55
-#: lib/layouts/theorems-starred-equivalents.inc:62
-#: lib/layouts/theorems.inc:162 lib/layouts/theorems-chap-bytype.module:162
-#: lib/layouts/theorems-sec-bytype.module:126
-msgid "Exercise"
-msgstr "Latihan"
-
-#: lib/layouts/IEEEtran.layout:196
-msgid "Exercise #:"
-msgstr "Latihan #:"
-
-#: lib/layouts/IEEEtran.layout:203 lib/layouts/elsart.layout:382
-#: lib/layouts/ijmpc.layout:172 lib/layouts/ijmpd.layout:170
-#: lib/layouts/llncs.layout:398 lib/layouts/svjour.inc:422
-#: lib/layouts/theorems-ams-bytype.inc:204 lib/layouts/theorems-ams.inc:174
-#: lib/layouts/theorems-bytype.inc:179 lib/layouts/theorems-order.inc:61
-#: lib/layouts/theorems-starred-equivalents.inc:69
-#: lib/layouts/theorems.inc:174 lib/layouts/theorems-chap-bytype.module:174
-#: lib/layouts/theorems-sec-bytype.module:134
-msgid "Remark"
-msgstr "Catatan"
-
-#: lib/layouts/IEEEtran.layout:206
-msgid "Remark #:"
-msgstr "Catatan #:"
-
-#: lib/layouts/IEEEtran.layout:213 lib/layouts/elsart.layout:396
-#: lib/layouts/heb-article.layout:65 lib/layouts/ijmpc.layout:274
-#: lib/layouts/ijmpd.layout:283 lib/layouts/llncs.layout:302
-#: lib/layouts/svjour.inc:305 lib/layouts/theorems-ams-bytype.inc:224
-#: lib/layouts/theorems-ams.inc:194 lib/layouts/theorems-bytype.inc:199
-#: lib/layouts/theorems-order.inc:67
-#: lib/layouts/theorems-starred-equivalents.inc:76
-#: lib/layouts/theorems.inc:194 lib/layouts/theorems-chap-bytype.module:186
-#: lib/layouts/theorems-sec-bytype.module:142
-msgid "Claim"
-msgstr "Klaim"
-
-#: lib/layouts/IEEEtran.layout:216
-msgid "Claim #:"
-msgstr "Klaim #:"
-
-#: lib/layouts/IEEEtran.layout:223 lib/layouts/apa.layout:212
-#: lib/layouts/elsart.layout:389 lib/layouts/iopart.layout:93
-#: lib/layouts/llncs.layout:357 lib/layouts/powerdot.layout:198
-#: lib/layouts/slides.layout:167 lib/layouts/svjour.inc:380
-#: lib/layouts/theorems-ams-extended-bytype.module:151
-#: lib/layouts/theorems-ams-extended.module:123
-msgid "Note"
-msgstr "Nota"
-
-#: lib/layouts/IEEEtran.layout:226
-msgid "Note #:"
-msgstr "Nota #:"
-
-#: lib/layouts/IEEEtran.layout:233 lib/layouts/ijmpc.layout:181
-#: lib/layouts/ijmpd.layout:180
-#: lib/layouts/theorems-ams-extended-bytype.module:174
-#: lib/layouts/theorems-ams-extended.module:145
-msgid "Notation"
-msgstr "Notasi"
-
-#: lib/layouts/IEEEtran.layout:236
-msgid "Notation #:"
-msgstr "Notasi #:"
-
-#: lib/layouts/IEEEtran.layout:243 lib/layouts/elsart.layout:411
-#: lib/layouts/llncs.layout:281 lib/layouts/svmono.layout:155
-#: lib/layouts/svmult.layout:93 lib/layouts/theorems-ams-bytype.inc:238
-#: lib/layouts/theorems-ams.inc:207 lib/layouts/theorems-bytype.inc:213
-#: lib/layouts/theorems-order.inc:73 lib/layouts/theorems.inc:207
-msgid "Case"
-msgstr "Kasus"
-
-#: lib/layouts/IEEEtran.layout:246
-msgid "Case #:"
-msgstr "Kasus #:"
-
-#: lib/layouts/IEEEtran.layout:272 lib/layouts/aa.layout:42
-#: lib/layouts/aa.layout:222 lib/layouts/aapaper.layout:64
-#: lib/layouts/aapaper.layout:130 lib/layouts/aastex.layout:67
-#: lib/layouts/aastex.layout:170 lib/layouts/amsart.layout:60
-#: lib/layouts/amsbook.layout:51 lib/layouts/apa.layout:307
-#: lib/layouts/beamer.layout:110 lib/layouts/beamer.layout:139
-#: lib/layouts/beamer.layout:140 lib/layouts/beamer.layout:182
-#: lib/layouts/egs.layout:30 lib/layouts/europecv.layout:29
+#: lib/layouts/aa.layout:42 lib/layouts/aa.layout:222
+#: lib/layouts/aapaper.layout:64 lib/layouts/aapaper.layout:130
+#: lib/layouts/aastex.layout:67 lib/layouts/aastex.layout:170
+#: lib/layouts/amsart.layout:60 lib/layouts/amsbook.layout:51
+#: lib/layouts/apa.layout:307 lib/layouts/beamer.layout:110
+#: lib/layouts/beamer.layout:139 lib/layouts/beamer.layout:140
+#: lib/layouts/beamer.layout:182 lib/layouts/egs.layout:30
+#: lib/layouts/europecv.layout:29 lib/layouts/IEEEtran.layout:272
 #: lib/layouts/ijmpc.layout:95 lib/layouts/ijmpd.layout:91
 #: lib/layouts/isprs.layout:155 lib/layouts/kluwer.layout:58
 #: lib/layouts/latex8.layout:41 lib/layouts/llncs.layout:45
@@ -4282,6 +4020,8 @@ msgstr "Kasus #:"
 #: lib/layouts/revtex4.layout:59 lib/layouts/siamltex.layout:349
 #: lib/layouts/simplecv.layout:28 lib/layouts/spie.layout:19
 #: lib/layouts/svmono.layout:69 lib/layouts/svmono.layout:103
+#: lib/layouts/tufte-book.layout:40 lib/layouts/tufte-book.layout:60
+#: lib/layouts/tufte-book.layout:61 lib/layouts/tufte-handout.layout:19
 #: lib/layouts/agu_stdsections.inc:30 lib/layouts/aguplus.inc:27
 #: lib/layouts/db_stdsections.inc:28 lib/layouts/numrevtex.inc:6
 #: lib/layouts/scrclass.inc:62 lib/layouts/stdsections.inc:12
@@ -4291,12 +4031,12 @@ msgstr "Kasus #:"
 msgid "Section"
 msgstr "SubBab"
 
-#: lib/layouts/IEEEtran.layout:282 lib/layouts/aa.layout:45
-#: lib/layouts/aa.layout:232 lib/layouts/aapaper.layout:67
-#: lib/layouts/aapaper.layout:139 lib/layouts/aastex.layout:70
-#: lib/layouts/aastex.layout:182 lib/layouts/amsart.layout:100
-#: lib/layouts/amsbook.layout:60 lib/layouts/apa.layout:317
-#: lib/layouts/beamer.layout:181 lib/layouts/egs.layout:51
+#: lib/layouts/aa.layout:45 lib/layouts/aa.layout:232
+#: lib/layouts/aapaper.layout:67 lib/layouts/aapaper.layout:139
+#: lib/layouts/aastex.layout:70 lib/layouts/aastex.layout:182
+#: lib/layouts/amsart.layout:100 lib/layouts/amsbook.layout:60
+#: lib/layouts/apa.layout:317 lib/layouts/beamer.layout:181
+#: lib/layouts/egs.layout:51 lib/layouts/IEEEtran.layout:282
 #: lib/layouts/ijmpc.layout:109 lib/layouts/ijmpd.layout:105
 #: lib/layouts/isprs.layout:166 lib/layouts/kluwer.layout:66
 #: lib/layouts/latex8.layout:49 lib/layouts/llncs.layout:53
@@ -4304,18 +4044,18 @@ msgstr "SubBab"
 #: lib/layouts/moderncv.layout:52 lib/layouts/paper.layout:61
 #: lib/layouts/revtex.layout:49 lib/layouts/revtex4.layout:70
 #: lib/layouts/siamltex.layout:359 lib/layouts/simplecv.layout:48
-#: lib/layouts/agu_stdsections.inc:40 lib/layouts/aguplus.inc:41
-#: lib/layouts/db_stdsections.inc:36 lib/layouts/numrevtex.inc:15
-#: lib/layouts/scrclass.inc:69 lib/layouts/stdsections.inc:85
-#: lib/layouts/svjour.inc:65
+#: lib/layouts/tufte-book.layout:83 lib/layouts/agu_stdsections.inc:40
+#: lib/layouts/aguplus.inc:41 lib/layouts/db_stdsections.inc:36
+#: lib/layouts/numrevtex.inc:15 lib/layouts/scrclass.inc:69
+#: lib/layouts/stdsections.inc:85 lib/layouts/svjour.inc:65
 msgid "Subsection"
 msgstr "Sub-SubBab"
 
-#: lib/layouts/IEEEtran.layout:290 lib/layouts/aa.layout:48
-#: lib/layouts/aa.layout:244 lib/layouts/aapaper.layout:70
-#: lib/layouts/aapaper.layout:150 lib/layouts/aastex.layout:73
-#: lib/layouts/aastex.layout:194 lib/layouts/amsart.layout:122
-#: lib/layouts/amsbook.layout:68 lib/layouts/apa.layout:326
+#: lib/layouts/aa.layout:48 lib/layouts/aa.layout:244
+#: lib/layouts/aapaper.layout:70 lib/layouts/aapaper.layout:150
+#: lib/layouts/aastex.layout:73 lib/layouts/aastex.layout:194
+#: lib/layouts/amsart.layout:122 lib/layouts/amsbook.layout:68
+#: lib/layouts/apa.layout:326 lib/layouts/IEEEtran.layout:290
 #: lib/layouts/ijmpc.layout:117 lib/layouts/ijmpd.layout:113
 #: lib/layouts/isprs.layout:175 lib/layouts/kluwer.layout:75
 #: lib/layouts/llncs.layout:61 lib/layouts/ltugboat.layout:83
@@ -4327,132 +4067,6 @@ msgstr "Sub-SubBab"
 #: lib/layouts/stdsections.inc:100 lib/layouts/svjour.inc:74
 msgid "Subsubsection"
 msgstr "Sub-SubSubBab"
-
-#: lib/layouts/IEEEtran.layout:298 lib/layouts/amsart.layout:70
-#: lib/layouts/amsbook.layout:79 lib/layouts/beamer.layout:171
-#: lib/layouts/egs.layout:576 lib/layouts/ijmpc.layout:102
-#: lib/layouts/ijmpd.layout:98 lib/layouts/isprs.layout:184
-#: lib/layouts/spie.layout:29 lib/layouts/aguplus.inc:34
-#: lib/layouts/db_stdstarsections.inc:36 lib/layouts/stdstarsections.inc:34
-msgid "Section*"
-msgstr "SubBab*"
-
-#: lib/layouts/IEEEtran.layout:308 lib/layouts/amsart.layout:111
-#: lib/layouts/amsbook.layout:88 lib/layouts/beamer.layout:214
-#: lib/layouts/egs.layout:596 lib/layouts/isprs.layout:195
-#: lib/layouts/aguplus.inc:48 lib/layouts/db_stdstarsections.inc:48
-#: lib/layouts/stdstarsections.inc:45
-msgid "Subsection*"
-msgstr "Sub-SubBab*"
-
-#: lib/layouts/IEEEtran.layout:316 lib/layouts/amsart.layout:131
-#: lib/layouts/amsbook.layout:96 lib/layouts/isprs.layout:204
-#: lib/layouts/db_stdstarsections.inc:60 lib/layouts/stdstarsections.inc:56
-msgid "Subsubsection*"
-msgstr "Sub-SubSubBab*"
-
-#: lib/layouts/IEEEtran.layout:331 lib/layouts/aa.layout:85
-#: lib/layouts/aa.layout:312 lib/layouts/aa.layout:328
-#: lib/layouts/aapaper.layout:97 lib/layouts/aapaper.layout:193
-#: lib/layouts/aastex.layout:109 lib/layouts/aastex.layout:242
-#: lib/layouts/achemso.layout:115 lib/layouts/achemso.layout:132
-#: lib/layouts/acmsiggraph.layout:107 lib/layouts/acmsiggraph.layout:123
-#: lib/layouts/apa.layout:69 lib/layouts/cl2emult.layout:80
-#: lib/layouts/cl2emult.layout:91 lib/layouts/egs.layout:481
-#: lib/layouts/elsart.layout:202 lib/layouts/elsart.layout:217
-#: lib/layouts/elsarticle.layout:220 lib/layouts/elsarticle.layout:237
-#: lib/layouts/entcs.layout:84 lib/layouts/foils.layout:147
-#: lib/layouts/ijmpc.layout:63 lib/layouts/ijmpd.layout:66
-#: lib/layouts/iopart.layout:168 lib/layouts/iopart.layout:185
-#: lib/layouts/isprs.layout:24 lib/layouts/kluwer.layout:251
-#: lib/layouts/latex8.layout:100 lib/layouts/llncs.layout:237
-#: lib/layouts/ltugboat.layout:166 lib/layouts/ltugboat.layout:180
-#: lib/layouts/paper.layout:124 lib/layouts/revtex.layout:135
-#: lib/layouts/revtex4.layout:216 lib/layouts/siamltex.layout:246
-#: lib/layouts/sigplanconf.layout:150 lib/layouts/sigplanconf.layout:166
-#: lib/layouts/spie.layout:73 lib/layouts/svglobal.layout:29
-#: lib/layouts/svglobal3.layout:76 lib/layouts/svglobal3.layout:80
-#: lib/layouts/svjog.layout:34 lib/layouts/agu_stdtitle.inc:193
-#: lib/layouts/amsdefs.inc:96 lib/layouts/db_stdstruct.inc:11
-#: lib/layouts/scrclass.inc:216 lib/layouts/stdstruct.inc:12
-#: lib/layouts/stdstruct.inc:27 lib/layouts/svjour.inc:208
-#: src/output_plaintext.cpp:133
-msgid "Abstract"
-msgstr "Abstrak"
-
-#: lib/layouts/IEEEtran.layout:337
-msgid "Abstract---"
-msgstr "Abstrak---"
-
-#: lib/layouts/IEEEtran.layout:351 lib/layouts/aa.layout:342
-#: lib/layouts/aastex.layout:112 lib/layouts/aastex.layout:317
-#: lib/layouts/elsart.layout:62 lib/layouts/elsarticle.layout:249
-#: lib/layouts/ijmpc.layout:73 lib/layouts/ijmpd.layout:76
-#: lib/layouts/iopart.layout:197 lib/layouts/isprs.layout:51
-#: lib/layouts/kluwer.layout:274 lib/layouts/paper.layout:163
-#: lib/layouts/revtex4.layout:255 lib/layouts/siamltex.layout:298
-#: lib/layouts/sigplanconf.layout:143 lib/layouts/spie.layout:39
-#: lib/layouts/svglobal3.layout:55 lib/layouts/svglobal3.layout:58
-#: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:166
-#: lib/layouts/svjour.inc:229
-msgid "Keywords"
-msgstr "Kata kunci"
-
-#: lib/layouts/IEEEtran.layout:362
-msgid "Index Terms---"
-msgstr "Index Terms---"
-
-#: lib/layouts/IEEEtran.layout:374 lib/layouts/aa.layout:91
-#: lib/layouts/aa.layout:371 lib/layouts/aapaper.layout:103
-#: lib/layouts/aapaper.layout:210 lib/layouts/achemso.layout:167
-#: lib/layouts/beamer.layout:883 lib/layouts/book.layout:21
-#: lib/layouts/book.layout:23 lib/layouts/cl2emult.layout:102
-#: lib/layouts/egs.layout:552 lib/layouts/elsarticle.layout:270
-#: lib/layouts/foils.layout:210 lib/layouts/ijmpc.layout:331
-#: lib/layouts/ijmpd.layout:342 lib/layouts/latex8.layout:118
-#: lib/layouts/llncs.layout:258 lib/layouts/memoir.layout:144
-#: lib/layouts/memoir.layout:146 lib/layouts/moderncv.layout:148
-#: lib/layouts/mwbk.layout:22 lib/layouts/mwbk.layout:24
-#: lib/layouts/mwrep.layout:13 lib/layouts/mwrep.layout:15
-#: lib/layouts/powerdot.layout:292 lib/layouts/recipebook.layout:45
-#: lib/layouts/recipebook.layout:47 lib/layouts/report.layout:12
-#: lib/layouts/report.layout:14 lib/layouts/scrbook.layout:21
-#: lib/layouts/scrbook.layout:23 lib/layouts/scrreprt.layout:11
-#: lib/layouts/scrreprt.layout:13 lib/layouts/siamltex.layout:312
-#: lib/layouts/simplecv.layout:139 lib/layouts/aguplus.inc:167
-#: lib/layouts/aguplus.inc:169 lib/layouts/amsdefs.inc:201
-#: lib/layouts/scrclass.inc:223 lib/layouts/stdstruct.inc:39
-#: lib/layouts/svjour.inc:282 src/frontends/qt4/GuiDocument.cpp:989
-msgid "Bibliography"
-msgstr "Bibliografi"
-
-#: lib/layouts/IEEEtran.layout:383 lib/layouts/IEEEtran.layout:394
-#: lib/layouts/aastex.layout:118 lib/layouts/aastex.layout:443
-#: lib/layouts/ijmpc.layout:309 lib/layouts/ijmpd.layout:320
-#: lib/layouts/kluwer.layout:313 lib/layouts/kluwer.layout:326
-#: src/rowpainter.cpp:472
-msgid "Appendix"
-msgstr "Lampiran"
-
-#: lib/layouts/IEEEtran.layout:406 lib/layouts/IEEEtran.layout:409
-msgid "Appendices"
-msgstr "Lampiran"
-
-#: lib/layouts/IEEEtran.layout:413
-msgid "Biography"
-msgstr "Biografi"
-
-#: lib/layouts/IEEEtran.layout:423
-msgid "BiographyNoPhoto"
-msgstr "BiographyNoPhoto"
-
-#: lib/layouts/IEEEtran.layout:442 lib/layouts/IEEEtran.layout:453
-msgid "Footernote"
-msgstr "Footernote"
-
-#: lib/layouts/IEEEtran.layout:465
-msgid "MarkBoth"
-msgstr "MarkBoth"
 
 #: lib/layouts/aa.layout:51 lib/layouts/aapaper.layout:48
 #: lib/layouts/aastex.layout:79 lib/layouts/apa.layout:354
@@ -4588,14 +4202,67 @@ msgstr "Surat"
 msgid "Date"
 msgstr "Tanggal"
 
+#: lib/layouts/aa.layout:85 lib/layouts/aa.layout:312
+#: lib/layouts/aa.layout:328 lib/layouts/aapaper.layout:97
+#: lib/layouts/aapaper.layout:193 lib/layouts/aastex.layout:109
+#: lib/layouts/aastex.layout:242 lib/layouts/achemso.layout:115
+#: lib/layouts/achemso.layout:132 lib/layouts/acmsiggraph.layout:107
+#: lib/layouts/acmsiggraph.layout:123 lib/layouts/apa.layout:69
+#: lib/layouts/cl2emult.layout:80 lib/layouts/cl2emult.layout:91
+#: lib/layouts/egs.layout:481 lib/layouts/elsart.layout:202
+#: lib/layouts/elsart.layout:217 lib/layouts/elsarticle.layout:220
+#: lib/layouts/elsarticle.layout:237 lib/layouts/entcs.layout:84
+#: lib/layouts/foils.layout:147 lib/layouts/IEEEtran.layout:331
+#: lib/layouts/ijmpc.layout:63 lib/layouts/ijmpd.layout:66
+#: lib/layouts/iopart.layout:168 lib/layouts/iopart.layout:185
+#: lib/layouts/isprs.layout:24 lib/layouts/kluwer.layout:251
+#: lib/layouts/latex8.layout:100 lib/layouts/llncs.layout:237
+#: lib/layouts/ltugboat.layout:166 lib/layouts/ltugboat.layout:180
+#: lib/layouts/paper.layout:124 lib/layouts/revtex.layout:135
+#: lib/layouts/revtex4.layout:216 lib/layouts/siamltex.layout:246
+#: lib/layouts/sigplanconf.layout:150 lib/layouts/sigplanconf.layout:166
+#: lib/layouts/spie.layout:73 lib/layouts/svglobal.layout:29
+#: lib/layouts/svglobal3.layout:76 lib/layouts/svglobal3.layout:80
+#: lib/layouts/svjog.layout:34 lib/layouts/tufte-handout.layout:41
+#: lib/layouts/tufte-handout.layout:56 lib/layouts/agu_stdtitle.inc:193
+#: lib/layouts/amsdefs.inc:96 lib/layouts/db_stdstruct.inc:11
+#: lib/layouts/scrclass.inc:216 lib/layouts/stdstruct.inc:12
+#: lib/layouts/stdstruct.inc:27 lib/layouts/svjour.inc:208
+#: src/output_plaintext.cpp:133
+msgid "Abstract"
+msgstr "Abstrak"
+
 #: lib/layouts/aa.layout:88 lib/layouts/aa.layout:198
 #: lib/layouts/aapaper.layout:100 lib/layouts/egs.layout:527
 #: lib/layouts/elsart.layout:421 lib/layouts/aapaper.inc:80
-#: lib/layouts/svjour.inc:275
+#: lib/layouts/svjour.inc:275 lib/layouts/theorems-ams-extended.module:189
 #: lib/layouts/theorems-ams-extended-bytype.module:220
-#: lib/layouts/theorems-ams-extended.module:189
 msgid "Acknowledgement"
 msgstr "Acknowledgement"
+
+#: lib/layouts/aa.layout:91 lib/layouts/aa.layout:371
+#: lib/layouts/aapaper.layout:103 lib/layouts/aapaper.layout:210
+#: lib/layouts/achemso.layout:167 lib/layouts/beamer.layout:883
+#: lib/layouts/book.layout:21 lib/layouts/book.layout:23
+#: lib/layouts/cl2emult.layout:102 lib/layouts/egs.layout:552
+#: lib/layouts/elsarticle.layout:270 lib/layouts/foils.layout:210
+#: lib/layouts/IEEEtran.layout:374 lib/layouts/ijmpc.layout:331
+#: lib/layouts/ijmpd.layout:342 lib/layouts/latex8.layout:118
+#: lib/layouts/llncs.layout:258 lib/layouts/memoir.layout:144
+#: lib/layouts/memoir.layout:146 lib/layouts/moderncv.layout:148
+#: lib/layouts/mwbk.layout:22 lib/layouts/mwbk.layout:24
+#: lib/layouts/mwrep.layout:13 lib/layouts/mwrep.layout:15
+#: lib/layouts/powerdot.layout:292 lib/layouts/recipebook.layout:45
+#: lib/layouts/recipebook.layout:47 lib/layouts/report.layout:12
+#: lib/layouts/report.layout:14 lib/layouts/scrbook.layout:21
+#: lib/layouts/scrbook.layout:23 lib/layouts/scrreprt.layout:11
+#: lib/layouts/scrreprt.layout:13 lib/layouts/siamltex.layout:312
+#: lib/layouts/simplecv.layout:139 lib/layouts/aguplus.inc:167
+#: lib/layouts/aguplus.inc:169 lib/layouts/amsdefs.inc:201
+#: lib/layouts/scrclass.inc:223 lib/layouts/stdstruct.inc:39
+#: lib/layouts/svjour.inc:282 src/frontends/qt4/GuiDocument.cpp:989
+msgid "Bibliography"
+msgstr "Bibliografi"
 
 #: lib/layouts/aa.layout:117 lib/layouts/aa.layout:140
 #: lib/layouts/aa.layout:155 lib/layouts/aa.layout:179
@@ -4613,12 +4280,12 @@ msgstr "Acknowledgement"
 #: lib/layouts/siamltex.layout:274 lib/layouts/siamltex.layout:294
 #: lib/layouts/sigplanconf.layout:68 lib/layouts/sigplanconf.layout:121
 #: lib/layouts/sigplanconf.layout:154 lib/layouts/svglobal3.layout:77
-#: lib/layouts/amsdefs.inc:31 lib/layouts/amsdefs.inc:53
-#: lib/layouts/amsdefs.inc:73 lib/layouts/amsdefs.inc:97
-#: lib/layouts/amsdefs.inc:124 lib/layouts/lyxmacros.inc:45
-#: lib/layouts/lyxmacros.inc:66 lib/layouts/stdstruct.inc:16
-#: lib/layouts/stdtitle.inc:15 lib/layouts/stdtitle.inc:34
-#: lib/layouts/stdtitle.inc:53
+#: lib/layouts/tufte-handout.layout:45 lib/layouts/amsdefs.inc:31
+#: lib/layouts/amsdefs.inc:53 lib/layouts/amsdefs.inc:73
+#: lib/layouts/amsdefs.inc:97 lib/layouts/amsdefs.inc:124
+#: lib/layouts/lyxmacros.inc:45 lib/layouts/lyxmacros.inc:66
+#: lib/layouts/stdstruct.inc:16 lib/layouts/stdtitle.inc:15
+#: lib/layouts/stdtitle.inc:34 lib/layouts/stdtitle.inc:53
 msgid "FrontMatter"
 msgstr "BagianDepan"
 
@@ -4652,6 +4319,20 @@ msgstr "institutemark"
 #: lib/layouts/aa.layout:293
 msgid "institute mark"
 msgstr "institute mark"
+
+#: lib/layouts/aa.layout:342 lib/layouts/aastex.layout:112
+#: lib/layouts/aastex.layout:317 lib/layouts/elsart.layout:62
+#: lib/layouts/elsarticle.layout:249 lib/layouts/IEEEtran.layout:351
+#: lib/layouts/ijmpc.layout:73 lib/layouts/ijmpd.layout:76
+#: lib/layouts/iopart.layout:197 lib/layouts/isprs.layout:51
+#: lib/layouts/kluwer.layout:274 lib/layouts/paper.layout:163
+#: lib/layouts/revtex4.layout:255 lib/layouts/siamltex.layout:298
+#: lib/layouts/sigplanconf.layout:143 lib/layouts/spie.layout:39
+#: lib/layouts/svglobal3.layout:55 lib/layouts/svglobal3.layout:58
+#: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:166
+#: lib/layouts/svjour.inc:229
+msgid "Keywords"
+msgstr "Kata kunci"
 
 #: lib/layouts/aa.layout:357
 msgid "Key words."
@@ -4720,6 +4401,14 @@ msgstr "Dan"
 #: lib/layouts/aapaper.inc:91 lib/layouts/svjour.inc:250
 msgid "Acknowledgements"
 msgstr "UcapanTerimaKasih"
+
+#: lib/layouts/aastex.layout:118 lib/layouts/aastex.layout:443
+#: lib/layouts/IEEEtran.layout:383 lib/layouts/IEEEtran.layout:394
+#: lib/layouts/ijmpc.layout:309 lib/layouts/ijmpd.layout:320
+#: lib/layouts/kluwer.layout:313 lib/layouts/kluwer.layout:326
+#: src/rowpainter.cpp:472
+msgid "Appendix"
+msgstr "Lampiran"
 
 #: lib/layouts/aastex.layout:121 lib/layouts/aastex.layout:475
 #: lib/layouts/aastex.layout:488 lib/layouts/achemso.layout:181
@@ -4951,12 +4640,21 @@ msgstr "Ucapan terima kasih"
 #: lib/layouts/beamer.layout:1066 lib/layouts/beamer.layout:1090
 #: lib/layouts/beamer.layout:1128 lib/layouts/siamltex.layout:32
 #: lib/layouts/svmono.layout:18 lib/layouts/svmult.layout:82
-#: lib/layouts/tufte-book.layout:107 lib/layouts/lyxmacros.inc:13
+#: lib/layouts/tufte-book.layout:168 lib/layouts/lyxmacros.inc:13
 #: lib/layouts/stdclass.inc:29 lib/layouts/stdlayouts.inc:12
 #: lib/layouts/stdlayouts.inc:31 lib/layouts/stdlayouts.inc:50
 #: lib/layouts/stdlayouts.inc:68 lib/layouts/svjour.inc:309
 msgid "MainText"
 msgstr "TeksUtama"
+
+#: lib/layouts/amsart.layout:70 lib/layouts/amsbook.layout:79
+#: lib/layouts/beamer.layout:171 lib/layouts/egs.layout:576
+#: lib/layouts/IEEEtran.layout:298 lib/layouts/ijmpc.layout:102
+#: lib/layouts/ijmpd.layout:98 lib/layouts/isprs.layout:184
+#: lib/layouts/spie.layout:29 lib/layouts/aguplus.inc:34
+#: lib/layouts/db_stdstarsections.inc:36 lib/layouts/stdstarsections.inc:34
+msgid "Section*"
+msgstr "SubBab*"
 
 #: lib/layouts/amsart.layout:80
 msgid "SpecialSection"
@@ -4975,6 +4673,20 @@ msgstr "SubBab-khusus"
 #: lib/layouts/stdstarsections.inc:80
 msgid "Unnumbered"
 msgstr "Tanpa Nomor"
+
+#: lib/layouts/amsart.layout:111 lib/layouts/amsbook.layout:88
+#: lib/layouts/beamer.layout:214 lib/layouts/egs.layout:596
+#: lib/layouts/IEEEtran.layout:308 lib/layouts/isprs.layout:195
+#: lib/layouts/aguplus.inc:48 lib/layouts/db_stdstarsections.inc:48
+#: lib/layouts/stdstarsections.inc:45
+msgid "Subsection*"
+msgstr "Sub-SubBab*"
+
+#: lib/layouts/amsart.layout:131 lib/layouts/amsbook.layout:96
+#: lib/layouts/IEEEtran.layout:316 lib/layouts/isprs.layout:204
+#: lib/layouts/db_stdstarsections.inc:60 lib/layouts/stdstarsections.inc:56
+msgid "Subsubsection*"
+msgstr "Sub-SubSubBab*"
 
 #: lib/layouts/amsbook.layout:131
 msgid "Chapter Exercises"
@@ -5036,6 +4748,15 @@ msgstr "Jurnal"
 #: lib/layouts/apa.layout:205
 msgid "CopNum"
 msgstr "CopNum"
+
+#: lib/layouts/apa.layout:212 lib/layouts/elsart.layout:389
+#: lib/layouts/IEEEtran.layout:223 lib/layouts/iopart.layout:93
+#: lib/layouts/llncs.layout:357 lib/layouts/powerdot.layout:198
+#: lib/layouts/slides.layout:167 lib/layouts/svjour.inc:380
+#: lib/layouts/theorems-ams-extended.module:123
+#: lib/layouts/theorems-ams-extended-bytype.module:151
+msgid "Note"
+msgstr "Nota"
 
 #: lib/layouts/apa.layout:233
 msgid "Acknowledgements:"
@@ -5101,18 +4822,13 @@ msgstr "LatinOff"
 msgid "Latin off"
 msgstr "Latin off"
 
-#: lib/layouts/article-beamer.layout:26 lib/layouts/beamer.layout:224
-#: lib/layouts/scrarticle-beamer.layout:22
-msgid "BeginFrame"
-msgstr "BeginFrame"
-
 #: lib/layouts/article.layout:18 lib/layouts/beamer.layout:109
 #: lib/layouts/beamer.layout:124 lib/layouts/mwart.layout:23
 #: lib/layouts/paper.layout:40 lib/layouts/scrartcl.layout:20
 #: lib/layouts/svmono.layout:68 lib/layouts/svmult.layout:210
-#: lib/layouts/agu_stdsections.inc:12 lib/layouts/db_stdsections.inc:12
-#: lib/layouts/numreport.inc:6 lib/layouts/scrclass.inc:47
-#: lib/layouts/stdsections.inc:11
+#: lib/layouts/tufte-handout.layout:18 lib/layouts/agu_stdsections.inc:12
+#: lib/layouts/db_stdsections.inc:12 lib/layouts/numreport.inc:6
+#: lib/layouts/scrclass.inc:47 lib/layouts/stdsections.inc:11
 msgid "Part"
 msgstr "Bagian"
 
@@ -5122,6 +4838,11 @@ msgstr "Bagian"
 #: lib/layouts/stdstarsections.inc:13
 msgid "Part*"
 msgstr "Bagian*"
+
+#: lib/layouts/article-beamer.layout:26 lib/layouts/beamer.layout:224
+#: lib/layouts/scrarticle-beamer.layout:22
+msgid "BeginFrame"
+msgstr "BeginFrame"
 
 #: lib/layouts/beamer.layout:99 lib/layouts/egs.layout:196
 #: lib/layouts/stdlists.inc:65
@@ -5328,6 +5049,20 @@ msgstr "Verse"
 msgid "TitleGraphic"
 msgstr "TitleGraphic"
 
+#: lib/layouts/beamer.layout:987 lib/layouts/elsart.layout:319
+#: lib/layouts/foils.layout:250 lib/layouts/heb-article.layout:55
+#: lib/layouts/IEEEtran.layout:93 lib/layouts/ijmpc.layout:229
+#: lib/layouts/ijmpd.layout:230 lib/layouts/llncs.layout:316
+#: lib/layouts/siamltex.layout:72 lib/layouts/svjour.inc:334
+#: lib/layouts/theorems.inc:59 lib/layouts/theorems-ams.inc:59
+#: lib/layouts/theorems-ams-bytype.inc:86 lib/layouts/theorems-bytype.inc:61
+#: lib/layouts/theorems-order.inc:13
+#: lib/layouts/theorems-starred-equivalents.inc:13
+#: lib/layouts/theorems-chap-bytype.module:66
+#: lib/layouts/theorems-sec-bytype.module:62
+msgid "Corollary"
+msgstr "Corollary"
+
 #: lib/layouts/beamer.layout:988 lib/layouts/theorems-std.module:2
 msgid "Theorems"
 msgstr "Teorema"
@@ -5336,6 +5071,20 @@ msgstr "Teorema"
 #: lib/layouts/theorems-starred.inc:60
 msgid "Corollary."
 msgstr "Corollary."
+
+#: lib/layouts/beamer.layout:1015 lib/layouts/elsart.layout:347
+#: lib/layouts/foils.layout:264 lib/layouts/heb-article.layout:75
+#: lib/layouts/IEEEtran.layout:153 lib/layouts/ijmpc.layout:131
+#: lib/layouts/ijmpd.layout:128 lib/layouts/llncs.layout:330
+#: lib/layouts/siamltex.layout:121 lib/layouts/svjour.inc:348
+#: lib/layouts/theorems.inc:119 lib/layouts/theorems-ams.inc:119
+#: lib/layouts/theorems-ams-bytype.inc:146 lib/layouts/theorems-bytype.inc:121
+#: lib/layouts/theorems-order.inc:37
+#: lib/layouts/theorems-starred-equivalents.inc:41
+#: lib/layouts/theorems-chap-bytype.module:126
+#: lib/layouts/theorems-sec-bytype.module:102
+msgid "Definition"
+msgstr "Definisi"
 
 #: lib/layouts/beamer.layout:1018 lib/layouts/foils.layout:323
 #: lib/layouts/theorems-starred.inc:121
@@ -5350,6 +5099,19 @@ msgstr "Definitions"
 msgid "Definitions."
 msgstr "Definisi."
 
+#: lib/layouts/beamer.layout:1027 lib/layouts/elsart.layout:368
+#: lib/layouts/IEEEtran.layout:163 lib/layouts/ijmpc.layout:163
+#: lib/layouts/ijmpd.layout:160 lib/layouts/llncs.layout:337
+#: lib/layouts/svjour.inc:355 lib/layouts/theorems.inc:138
+#: lib/layouts/theorems-ams.inc:138 lib/layouts/theorems-ams-bytype.inc:165
+#: lib/layouts/theorems-bytype.inc:140 lib/layouts/theorems-order.inc:43
+#: lib/layouts/theorems-starred-equivalents.inc:48
+#: lib/layouts/theorems-chap-bytype.module:138
+#: lib/layouts/theorems-sec-bytype.module:110
+#: src/frontends/qt4/GuiDocument.cpp:820
+msgid "Example"
+msgstr "Contoh"
+
 #: lib/layouts/beamer.layout:1030 lib/layouts/theorems-starred.inc:140
 msgid "Example."
 msgstr "Contoh."
@@ -5362,9 +5124,27 @@ msgstr "Contoh contoh"
 msgid "Examples."
 msgstr "Contoh-contoh."
 
+#: lib/layouts/beamer.layout:1045 lib/layouts/IEEEtran.layout:133
+#: lib/layouts/theorems.inc:107 lib/layouts/theorems-ams.inc:107
+#: lib/layouts/theorems-ams-bytype.inc:134 lib/layouts/theorems-bytype.inc:109
+#: lib/layouts/theorems-chap-bytype.module:114
+#: lib/layouts/theorems-sec-bytype.module:94
+msgid "Fact"
+msgstr "Fakta"
+
 #: lib/layouts/beamer.layout:1048 lib/layouts/theorems-starred.inc:108
 msgid "Fact."
 msgstr "Fakta."
+
+#: lib/layouts/beamer.layout:1051 lib/layouts/elsart.layout:285
+#: lib/layouts/foils.layout:278 lib/layouts/heb-article.layout:95
+#: lib/layouts/IEEEtran.layout:65 lib/layouts/ijmpc.layout:211
+#: lib/layouts/ijmpd.layout:211 lib/layouts/llncs.layout:371
+#: lib/layouts/siamltex.layout:150 lib/layouts/svjour.inc:394
+#: lib/layouts/theorems-order.inc:76 lib/layouts/theorems-proof.inc:13
+#: lib/layouts/theorems-bytype.module:46 lib/layouts/theorems-std.module:20
+msgid "Proof"
+msgstr "Proof"
 
 #: lib/layouts/beamer.layout:1054 lib/layouts/foils.layout:281
 #: lib/layouts/ijmpc.layout:219 lib/layouts/ijmpd.layout:219
@@ -5372,6 +5152,28 @@ msgstr "Fakta."
 #: lib/layouts/svjour.inc:397 lib/layouts/theorems-proof.inc:30
 msgid "Proof."
 msgstr "Proof."
+
+#: lib/layouts/beamer.layout:1057 lib/layouts/elsart.layout:256
+#: lib/layouts/foils.layout:218 lib/layouts/heb-article.layout:18
+#: lib/layouts/IEEEtran.layout:73 lib/layouts/ijmpc.layout:190
+#: lib/layouts/ijmpd.layout:193 lib/layouts/llncs.layout:412
+#: lib/layouts/siamltex.layout:62 lib/layouts/siamltex.layout:112
+#: lib/layouts/svjour.inc:436 lib/layouts/theorems.inc:24
+#: lib/layouts/theorems.inc:25 lib/layouts/theorems.inc:208
+#: lib/layouts/theorems-ams.inc:24 lib/layouts/theorems-ams.inc:25
+#: lib/layouts/theorems-ams.inc:208 lib/layouts/theorems-ams-bytype.inc:51
+#: lib/layouts/theorems-ams-bytype.inc:52
+#: lib/layouts/theorems-ams-bytype.inc:239 lib/layouts/theorems-bytype.inc:26
+#: lib/layouts/theorems-bytype.inc:27 lib/layouts/theorems-bytype.inc:214
+#: lib/layouts/theorems-order.inc:7 lib/layouts/theorems-proof.inc:14
+#: lib/layouts/theorems-starred.inc:24
+#: lib/layouts/theorems-starred-equivalents.inc:6
+#: lib/layouts/theorems-chap-bytype.module:54
+#: lib/layouts/theorems-chap.module:19
+#: lib/layouts/theorems-sec-bytype.module:54
+#: lib/layouts/theorems-sec.module:18
+msgid "Theorem"
+msgstr "Teorema"
 
 #: lib/layouts/beamer.layout:1060 lib/layouts/foils.layout:295
 #: lib/layouts/theorems-starred.inc:29
@@ -5438,7 +5240,7 @@ msgid "Table"
 msgstr "Tabel"
 
 #: lib/layouts/beamer.layout:1204 lib/layouts/powerdot.layout:382
-#: lib/layouts/tufte-book.layout:134 lib/layouts/stdfloats.inc:15
+#: lib/layouts/tufte-book.layout:195 lib/layouts/stdfloats.inc:15
 msgid "List of Tables"
 msgstr "Daftar Tabel"
 
@@ -5448,7 +5250,7 @@ msgid "Figure"
 msgstr "Gambar"
 
 #: lib/layouts/beamer.layout:1216 lib/layouts/powerdot.layout:392
-#: lib/layouts/tufte-book.layout:145 lib/layouts/stdfloats.inc:27
+#: lib/layouts/tufte-book.layout:206 lib/layouts/stdfloats.inc:27
 msgid "List of Figures"
 msgstr "Daftar Gambar"
 
@@ -5989,8 +5791,8 @@ msgid "Abstract."
 msgstr "Abstrak."
 
 #: lib/layouts/egs.layout:541 lib/layouts/svjour.inc:278
-#: lib/layouts/theorems-ams-extended-bytype.module:235
 #: lib/layouts/theorems-ams-extended.module:203
+#: lib/layouts/theorems-ams-extended-bytype.module:235
 msgid "Acknowledgement."
 msgstr "Ucapan Terima Kasih."
 
@@ -6036,6 +5838,19 @@ msgstr "Theorema \\arabic{theorem}"
 msgid "PROOF."
 msgstr "PROOF."
 
+#: lib/layouts/elsart.layout:312 lib/layouts/foils.layout:243
+#: lib/layouts/heb-article.layout:45 lib/layouts/IEEEtran.layout:83
+#: lib/layouts/ijmpc.layout:238 lib/layouts/ijmpd.layout:243
+#: lib/layouts/llncs.layout:351 lib/layouts/siamltex.layout:82
+#: lib/layouts/svjour.inc:373 lib/layouts/theorems.inc:71
+#: lib/layouts/theorems-ams.inc:71 lib/layouts/theorems-ams-bytype.inc:98
+#: lib/layouts/theorems-bytype.inc:73 lib/layouts/theorems-order.inc:19
+#: lib/layouts/theorems-starred-equivalents.inc:20
+#: lib/layouts/theorems-chap-bytype.module:78
+#: lib/layouts/theorems-sec-bytype.module:70
+msgid "Lemma"
+msgstr "Lemma"
+
 #: lib/layouts/elsart.layout:315
 msgid "Lemma \\arabic{theorem}"
 msgstr "Lemma \\arabic{theorem}"
@@ -6044,9 +5859,28 @@ msgstr "Lemma \\arabic{theorem}"
 msgid "Corollary \\arabic{theorem}"
 msgstr "Corollary \\arabic{theorem}"
 
+#: lib/layouts/elsart.layout:326 lib/layouts/foils.layout:257
+#: lib/layouts/IEEEtran.layout:103 lib/layouts/ijmpc.layout:247
+#: lib/layouts/ijmpd.layout:253 lib/layouts/llncs.layout:385
+#: lib/layouts/siamltex.layout:92 lib/layouts/svjour.inc:408
+#: lib/layouts/theorems.inc:83 lib/layouts/theorems-ams.inc:83
+#: lib/layouts/theorems-ams-bytype.inc:110 lib/layouts/theorems-bytype.inc:85
+#: lib/layouts/theorems-order.inc:25
+#: lib/layouts/theorems-starred-equivalents.inc:27
+#: lib/layouts/theorems-chap-bytype.module:90
+#: lib/layouts/theorems-sec-bytype.module:78
+msgid "Proposition"
+msgstr "Rencana"
+
 #: lib/layouts/elsart.layout:329
 msgid "Proposition \\arabic{theorem}"
 msgstr "Proposisi \\arabic{theorem}"
+
+#: lib/layouts/elsart.layout:333 lib/layouts/IEEEtran.layout:123
+#: lib/layouts/theorems-ams-extended.module:33
+#: lib/layouts/theorems-ams-extended-bytype.module:60
+msgid "Criterion"
+msgstr "Kriteria"
 
 #: lib/layouts/elsart.layout:336
 msgid "Criterion \\arabic{theorem}"
@@ -6054,8 +5888,8 @@ msgstr "Kriteria \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:340 lib/layouts/powerdot.layout:398
 #: lib/layouts/siamltex.layout:111 lib/layouts/stdfloats.inc:34
-#: lib/layouts/theorems-ams-extended-bytype.module:82
 #: lib/layouts/theorems-ams-extended.module:55
+#: lib/layouts/theorems-ams-extended-bytype.module:82
 msgid "Algorithm"
 msgstr "Algoritma"
 
@@ -6067,6 +5901,18 @@ msgstr "Algoritma \\arabic{theorem}"
 msgid "Definition \\arabic{theorem}"
 msgstr "Definisi \\arabic{theorem}"
 
+#: lib/layouts/elsart.layout:361 lib/layouts/IEEEtran.layout:113
+#: lib/layouts/ijmpc.layout:283 lib/layouts/ijmpd.layout:293
+#: lib/layouts/llncs.layout:309 lib/layouts/siamltex.layout:102
+#: lib/layouts/svjour.inc:327 lib/layouts/theorems.inc:95
+#: lib/layouts/theorems-ams.inc:95 lib/layouts/theorems-ams-bytype.inc:122
+#: lib/layouts/theorems-bytype.inc:97 lib/layouts/theorems-order.inc:31
+#: lib/layouts/theorems-starred-equivalents.inc:34
+#: lib/layouts/theorems-chap-bytype.module:102
+#: lib/layouts/theorems-sec-bytype.module:86
+msgid "Conjecture"
+msgstr "Dugaan"
+
 #: lib/layouts/elsart.layout:364
 msgid "Conjecture \\arabic{theorem}"
 msgstr "Conjecture \\arabic{theorem}"
@@ -6075,9 +5921,32 @@ msgstr "Conjecture \\arabic{theorem}"
 msgid "Example \\arabic{theorem}"
 msgstr "Contoh \\arabic{theorem}"
 
+#: lib/layouts/elsart.layout:375 lib/layouts/IEEEtran.layout:183
+#: lib/layouts/llncs.layout:364 lib/layouts/svmono.layout:161
+#: lib/layouts/svjour.inc:387 lib/layouts/theorems.inc:150
+#: lib/layouts/theorems-ams.inc:150 lib/layouts/theorems-ams-bytype.inc:178
+#: lib/layouts/theorems-bytype.inc:153 lib/layouts/theorems-order.inc:49
+#: lib/layouts/theorems-starred-equivalents.inc:55
+#: lib/layouts/theorems-chap-bytype.module:150
+#: lib/layouts/theorems-sec-bytype.module:118
+msgid "Problem"
+msgstr "Masalah"
+
 #: lib/layouts/elsart.layout:378
 msgid "Problem \\arabic{theorem}"
 msgstr "Permasalahan \\arabic{theorem}"
+
+#: lib/layouts/elsart.layout:382 lib/layouts/IEEEtran.layout:203
+#: lib/layouts/ijmpc.layout:172 lib/layouts/ijmpd.layout:170
+#: lib/layouts/llncs.layout:398 lib/layouts/svjour.inc:422
+#: lib/layouts/theorems.inc:174 lib/layouts/theorems-ams.inc:174
+#: lib/layouts/theorems-ams-bytype.inc:204 lib/layouts/theorems-bytype.inc:179
+#: lib/layouts/theorems-order.inc:61
+#: lib/layouts/theorems-starred-equivalents.inc:69
+#: lib/layouts/theorems-chap-bytype.module:174
+#: lib/layouts/theorems-sec-bytype.module:134
+msgid "Remark"
+msgstr "Catatan"
 
 #: lib/layouts/elsart.layout:385
 msgid "Remark \\arabic{theorem}"
@@ -6087,19 +5956,38 @@ msgstr "Catatan \\arabic{theorem}"
 msgid "Note \\arabic{theorem}"
 msgstr "Nota \\arabic{theorem}"
 
+#: lib/layouts/elsart.layout:396 lib/layouts/heb-article.layout:65
+#: lib/layouts/IEEEtran.layout:213 lib/layouts/ijmpc.layout:274
+#: lib/layouts/ijmpd.layout:283 lib/layouts/llncs.layout:302
+#: lib/layouts/svjour.inc:305 lib/layouts/theorems.inc:194
+#: lib/layouts/theorems-ams.inc:194 lib/layouts/theorems-ams-bytype.inc:224
+#: lib/layouts/theorems-bytype.inc:199 lib/layouts/theorems-order.inc:67
+#: lib/layouts/theorems-starred-equivalents.inc:76
+#: lib/layouts/theorems-chap-bytype.module:186
+#: lib/layouts/theorems-sec-bytype.module:142
+msgid "Claim"
+msgstr "Klaim"
+
 #: lib/layouts/elsart.layout:399
 msgid "Claim \\arabic{theorem}"
 msgstr "Klaim \\arabic{theorem}"
 
-#: lib/layouts/elsart.layout:403
+#: lib/layouts/elsart.layout:403 lib/layouts/theorems-ams-extended.module:167
 #: lib/layouts/theorems-ams-extended-bytype.module:197
-#: lib/layouts/theorems-ams-extended.module:167
 msgid "Summary"
 msgstr "Ringkasan"
 
 #: lib/layouts/elsart.layout:407
 msgid "Summary \\arabic{summ}"
 msgstr "Ringkasan \\arabic{summ}"
+
+#: lib/layouts/elsart.layout:411 lib/layouts/IEEEtran.layout:243
+#: lib/layouts/llncs.layout:281 lib/layouts/svmono.layout:155
+#: lib/layouts/svmult.layout:93 lib/layouts/theorems.inc:207
+#: lib/layouts/theorems-ams.inc:207 lib/layouts/theorems-ams-bytype.inc:238
+#: lib/layouts/theorems-bytype.inc:213 lib/layouts/theorems-order.inc:73
+msgid "Case"
+msgstr "Kasus"
 
 #: lib/layouts/elsart.layout:415
 msgid "Case \\arabic{case}"
@@ -6870,6 +6758,10 @@ msgstr "Catatan"
 msgid "Remarks #."
 msgstr "Catatan #."
 
+#: lib/layouts/heb-article.layout:110 lib/layouts/IEEEtran.layout:68
+msgid "Proof:"
+msgstr "Proof:"
+
 #: lib/layouts/hollywood.layout:55
 msgid "More"
 msgstr "More"
@@ -6922,6 +6814,137 @@ msgstr "FADE OUT"
 msgid "Scene"
 msgstr "Scene"
 
+#: lib/layouts/IEEEtran.layout:49
+msgid "TheoremTemplate"
+msgstr "TheoremTemplate"
+
+#: lib/layouts/IEEEtran.layout:76
+msgid "Theorem #:"
+msgstr "Teorema #:"
+
+#: lib/layouts/IEEEtran.layout:86
+msgid "Lemma #:"
+msgstr "Lemma #:"
+
+#: lib/layouts/IEEEtran.layout:96
+msgid "Corollary #:"
+msgstr "Corollary #:"
+
+#: lib/layouts/IEEEtran.layout:106
+msgid "Proposition #:"
+msgstr "Rencana #:"
+
+#: lib/layouts/IEEEtran.layout:116
+msgid "Conjecture #:"
+msgstr "Dugaan #:"
+
+#: lib/layouts/IEEEtran.layout:126
+msgid "Criterion #:"
+msgstr "Kriteria #:"
+
+#: lib/layouts/IEEEtran.layout:136
+msgid "Fact #:"
+msgstr "Fakta #:"
+
+#: lib/layouts/IEEEtran.layout:143 lib/layouts/theorems-ams-extended.module:78
+#: lib/layouts/theorems-ams-extended-bytype.module:105
+msgid "Axiom"
+msgstr "Axiom"
+
+#: lib/layouts/IEEEtran.layout:146
+msgid "Axiom #:"
+msgstr "Axiom #:"
+
+#: lib/layouts/IEEEtran.layout:156
+msgid "Definition #:"
+msgstr "Definisi #:"
+
+#: lib/layouts/IEEEtran.layout:166
+msgid "Example #:"
+msgstr "Contoh #:"
+
+#: lib/layouts/IEEEtran.layout:173
+#: lib/layouts/theorems-ams-extended.module:101
+#: lib/layouts/theorems-ams-extended-bytype.module:128
+msgid "Condition"
+msgstr "Kondisi"
+
+#: lib/layouts/IEEEtran.layout:176
+msgid "Condition #:"
+msgstr "Kondisi #:"
+
+#: lib/layouts/IEEEtran.layout:186
+msgid "Problem #:"
+msgstr "Masalah #:"
+
+#: lib/layouts/IEEEtran.layout:193 lib/layouts/llncs.layout:344
+#: lib/layouts/svjour.inc:362 lib/layouts/theorems.inc:162
+#: lib/layouts/theorems-ams.inc:162 lib/layouts/theorems-ams-bytype.inc:191
+#: lib/layouts/theorems-bytype.inc:166 lib/layouts/theorems-order.inc:55
+#: lib/layouts/theorems-starred-equivalents.inc:62
+#: lib/layouts/theorems-chap-bytype.module:162
+#: lib/layouts/theorems-sec-bytype.module:126
+msgid "Exercise"
+msgstr "Latihan"
+
+#: lib/layouts/IEEEtran.layout:196
+msgid "Exercise #:"
+msgstr "Latihan #:"
+
+#: lib/layouts/IEEEtran.layout:206
+msgid "Remark #:"
+msgstr "Catatan #:"
+
+#: lib/layouts/IEEEtran.layout:216
+msgid "Claim #:"
+msgstr "Klaim #:"
+
+#: lib/layouts/IEEEtran.layout:226
+msgid "Note #:"
+msgstr "Nota #:"
+
+#: lib/layouts/IEEEtran.layout:233 lib/layouts/ijmpc.layout:181
+#: lib/layouts/ijmpd.layout:180 lib/layouts/theorems-ams-extended.module:145
+#: lib/layouts/theorems-ams-extended-bytype.module:174
+msgid "Notation"
+msgstr "Notasi"
+
+#: lib/layouts/IEEEtran.layout:236
+msgid "Notation #:"
+msgstr "Notasi #:"
+
+#: lib/layouts/IEEEtran.layout:246
+msgid "Case #:"
+msgstr "Kasus #:"
+
+#: lib/layouts/IEEEtran.layout:337
+msgid "Abstract---"
+msgstr "Abstrak---"
+
+#: lib/layouts/IEEEtran.layout:362
+msgid "Index Terms---"
+msgstr "Index Terms---"
+
+#: lib/layouts/IEEEtran.layout:406 lib/layouts/IEEEtran.layout:409
+msgid "Appendices"
+msgstr "Lampiran"
+
+#: lib/layouts/IEEEtran.layout:413
+msgid "Biography"
+msgstr "Biografi"
+
+#: lib/layouts/IEEEtran.layout:423
+msgid "BiographyNoPhoto"
+msgstr "BiographyNoPhoto"
+
+#: lib/layouts/IEEEtran.layout:442 lib/layouts/IEEEtran.layout:453
+msgid "Footernote"
+msgstr "Footernote"
+
+#: lib/layouts/IEEEtran.layout:465
+msgid "MarkBoth"
+msgstr "MarkBoth"
+
 #: lib/layouts/ijmpc.layout:88
 msgid "Classification Codes"
 msgstr "Kode Klasifikasi"
@@ -6955,8 +6978,8 @@ msgid "Notation \\thenotation."
 msgstr "Notasi \\thenotation."
 
 #: lib/layouts/ijmpc.layout:200 lib/layouts/ijmpd.layout:203
-#: lib/layouts/theorems-ams-bytype.inc:69 lib/layouts/theorems-ams.inc:42
-#: lib/layouts/theorems-bytype.inc:44 lib/layouts/theorems.inc:42
+#: lib/layouts/theorems.inc:42 lib/layouts/theorems-ams.inc:42
+#: lib/layouts/theorems-ams-bytype.inc:69 lib/layouts/theorems-bytype.inc:44
 msgid "Theorem \\thetheorem."
 msgstr "Teorema \\thetheorem."
 
@@ -7119,8 +7142,9 @@ msgstr "E-mail:"
 #: lib/layouts/llncs.layout:39 lib/layouts/memoir.layout:51
 #: lib/layouts/recipebook.layout:41 lib/layouts/scrbook.layout:16
 #: lib/layouts/svmono.layout:101 lib/layouts/svmult.layout:243
-#: lib/layouts/agu_stdsections.inc:21 lib/layouts/db_stdsections.inc:20
-#: lib/layouts/scrclass.inc:54 lib/layouts/stdsections.inc:36
+#: lib/layouts/tufte-book.layout:38 lib/layouts/agu_stdsections.inc:21
+#: lib/layouts/db_stdsections.inc:20 lib/layouts/scrclass.inc:54
+#: lib/layouts/stdsections.inc:36
 msgid "Chapter"
 msgstr "Bab"
 
@@ -7153,9 +7177,9 @@ msgid "TOC Author:"
 msgstr "Daftar Isi Penulis:"
 
 #: lib/layouts/llncs.layout:295 lib/layouts/svmono.layout:158
-#: lib/layouts/svmult.layout:96 lib/layouts/theorems-ams-bytype.inc:254
-#: lib/layouts/theorems-ams.inc:223 lib/layouts/theorems-bytype.inc:219
-#: lib/layouts/theorems.inc:213
+#: lib/layouts/svmult.layout:96 lib/layouts/theorems.inc:213
+#: lib/layouts/theorems-ams.inc:223 lib/layouts/theorems-ams-bytype.inc:254
+#: lib/layouts/theorems-bytype.inc:219
 msgid "Case #."
 msgstr "Kasus #."
 
@@ -7505,7 +7529,7 @@ msgstr "Alamat Pengirim:"
 msgid "Sender Phone:"
 msgstr "No Telpon Pengirim:"
 
-#: lib/layouts/scrlttr2.layout:189 lib/configure.py:338
+#: lib/layouts/scrlttr2.layout:189 lib/configure.py:350
 msgid "Fax"
 msgstr "Faks"
 
@@ -7602,9 +7626,8 @@ msgstr "[Progress Contents]"
 msgid "Conjecture*"
 msgstr "Dugaan*"
 
-#: lib/layouts/siamltex.layout:117
+#: lib/layouts/siamltex.layout:117 lib/layouts/theorems-ams-extended.module:67
 #: lib/layouts/theorems-ams-extended-bytype.module:94
-#: lib/layouts/theorems-ams-extended.module:67
 msgid "Algorithm*"
 msgstr "Algorithm*"
 
@@ -7815,55 +7838,55 @@ msgstr "Inst"
 msgid "Institute #"
 msgstr "Institut #"
 
-#: lib/layouts/tufte-book.layout:35
+#: lib/layouts/tufte-book.layout:96
 msgid "Sidenote"
 msgstr "Nota samping"
 
-#: lib/layouts/tufte-book.layout:40
+#: lib/layouts/tufte-book.layout:101
 msgid "sidenote"
 msgstr "Nota samping"
 
-#: lib/layouts/tufte-book.layout:54
+#: lib/layouts/tufte-book.layout:115
 msgid "Marginnote"
 msgstr "Nota tepi"
 
-#: lib/layouts/tufte-book.layout:58
+#: lib/layouts/tufte-book.layout:119
 msgid "marginnote"
 msgstr "Nota tepi"
 
-#: lib/layouts/tufte-book.layout:67
+#: lib/layouts/tufte-book.layout:128
 msgid "NewThought"
 msgstr "PemikiranBaru"
 
-#: lib/layouts/tufte-book.layout:71
+#: lib/layouts/tufte-book.layout:132
 msgid "new thought"
 msgstr "PemikiranBaru"
 
-#: lib/layouts/tufte-book.layout:81
+#: lib/layouts/tufte-book.layout:142
 msgid "AllCaps"
 msgstr "SemuaHurufBesar"
 
-#: lib/layouts/tufte-book.layout:84
+#: lib/layouts/tufte-book.layout:145
 msgid "allcaps"
 msgstr "SemuaHurufBesar"
 
-#: lib/layouts/tufte-book.layout:94
+#: lib/layouts/tufte-book.layout:155
 msgid "SmallCaps"
 msgstr "HurufBesarKecil"
 
-#: lib/layouts/tufte-book.layout:97
+#: lib/layouts/tufte-book.layout:158
 msgid "smallcaps"
 msgstr "HurufBesarKecil"
 
-#: lib/layouts/tufte-book.layout:103
+#: lib/layouts/tufte-book.layout:164
 msgid "Full Width"
 msgstr "Lebar Penuh"
 
-#: lib/layouts/tufte-book.layout:129
+#: lib/layouts/tufte-book.layout:190
 msgid "MarginTable"
 msgstr "TabelTepi"
 
-#: lib/layouts/tufte-book.layout:140
+#: lib/layouts/tufte-book.layout:201
 msgid "MarginFigure"
 msgstr "GambarTepi"
 
@@ -8714,6 +8737,50 @@ msgstr "Cetakan lepas"
 msgid "Offprints:"
 msgstr "Cetakan lepas:"
 
+#: lib/layouts/theorems.inc:63 lib/layouts/theorems-ams.inc:63
+msgid "Corollary \\thetheorem."
+msgstr "Corollary \\thetheorem."
+
+#: lib/layouts/theorems.inc:75 lib/layouts/theorems-ams.inc:75
+msgid "Lemma \\thetheorem."
+msgstr "Lemma \\thetheorem."
+
+#: lib/layouts/theorems.inc:87 lib/layouts/theorems-ams.inc:87
+msgid "Proposition \\thetheorem."
+msgstr "Proposisi \\thetheorem."
+
+#: lib/layouts/theorems.inc:99 lib/layouts/theorems-ams.inc:99
+msgid "Conjecture \\thetheorem."
+msgstr "Conjecture \\thetheorem."
+
+#: lib/layouts/theorems.inc:111 lib/layouts/theorems-ams.inc:111
+msgid "Fact \\thetheorem."
+msgstr "Facta \\thetheorem."
+
+#: lib/layouts/theorems.inc:123 lib/layouts/theorems-ams.inc:123
+msgid "Definition \\thetheorem."
+msgstr "Definisi \\thetheorem."
+
+#: lib/layouts/theorems.inc:141 lib/layouts/theorems-ams.inc:141
+msgid "Example \\thetheorem."
+msgstr "Contoh \\thetheorem."
+
+#: lib/layouts/theorems.inc:153 lib/layouts/theorems-ams.inc:153
+msgid "Problem \\thetheorem."
+msgstr "Problem \\thetheorem."
+
+#: lib/layouts/theorems.inc:165 lib/layouts/theorems-ams.inc:165
+msgid "Exercise \\thetheorem."
+msgstr "Latihan \\thetheorem."
+
+#: lib/layouts/theorems.inc:178 lib/layouts/theorems-ams.inc:178
+msgid "Remark \\thetheorem."
+msgstr "Remark \\thetheorem."
+
+#: lib/layouts/theorems.inc:197 lib/layouts/theorems-ams.inc:197
+msgid "Claim \\thetheorem."
+msgstr "Claim \\thetheorem."
+
 #: lib/layouts/theorems-ams-bytype.inc:137 lib/layouts/theorems-bytype.inc:112
 #, fuzzy
 msgid "Fact \\thefact."
@@ -8728,50 +8795,6 @@ msgstr "Problem \\thetheorem."
 #, fuzzy
 msgid "Exercise \\theexercise."
 msgstr "Latihan \\thetheorem."
-
-#: lib/layouts/theorems-ams.inc:63 lib/layouts/theorems.inc:63
-msgid "Corollary \\thetheorem."
-msgstr "Corollary \\thetheorem."
-
-#: lib/layouts/theorems-ams.inc:75 lib/layouts/theorems.inc:75
-msgid "Lemma \\thetheorem."
-msgstr "Lemma \\thetheorem."
-
-#: lib/layouts/theorems-ams.inc:87 lib/layouts/theorems.inc:87
-msgid "Proposition \\thetheorem."
-msgstr "Proposisi \\thetheorem."
-
-#: lib/layouts/theorems-ams.inc:99 lib/layouts/theorems.inc:99
-msgid "Conjecture \\thetheorem."
-msgstr "Conjecture \\thetheorem."
-
-#: lib/layouts/theorems-ams.inc:111 lib/layouts/theorems.inc:111
-msgid "Fact \\thetheorem."
-msgstr "Facta \\thetheorem."
-
-#: lib/layouts/theorems-ams.inc:123 lib/layouts/theorems.inc:123
-msgid "Definition \\thetheorem."
-msgstr "Definisi \\thetheorem."
-
-#: lib/layouts/theorems-ams.inc:141 lib/layouts/theorems.inc:141
-msgid "Example \\thetheorem."
-msgstr "Contoh \\thetheorem."
-
-#: lib/layouts/theorems-ams.inc:153 lib/layouts/theorems.inc:153
-msgid "Problem \\thetheorem."
-msgstr "Problem \\thetheorem."
-
-#: lib/layouts/theorems-ams.inc:165 lib/layouts/theorems.inc:165
-msgid "Exercise \\thetheorem."
-msgstr "Latihan \\thetheorem."
-
-#: lib/layouts/theorems-ams.inc:178 lib/layouts/theorems.inc:178
-msgid "Remark \\thetheorem."
-msgstr "Remark \\thetheorem."
-
-#: lib/layouts/theorems-ams.inc:197 lib/layouts/theorems.inc:197
-msgid "Claim \\thetheorem."
-msgstr "Claim \\thetheorem."
 
 #: lib/layouts/theorems-order.inc:46 lib/layouts/theorems-starred.inc:137
 msgid "Example*"
@@ -9117,6 +9140,164 @@ msgid ""
 "Sections'/'within Chapters' modules, respectively."
 msgstr ""
 
+#: lib/layouts/theorems-ams-extended.module:2
+msgid "Theorems (AMS-Extended)"
+msgstr "Theorema (AMS-Extended)"
+
+#: lib/layouts/theorems-ams-extended.module:8
+#, fuzzy
+msgid ""
+"Defines some additional theorem environments for use with the AMS theorems "
+"packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
+"Summary, Acknowledgement, Conclusion, Fact, Assumption, and Case, in both "
+"numbered and non-numbered forms."
+msgstr ""
+"Mendefinisikan beberapa lingkungan teorema tambahan untuk digunakan dalam "
+"paket Teorema AMS. Paket AMS termasuk Criterion, Algorithm, Axiom, "
+"Condition, Note, Notation, Summary, Acknowledgement, Conclusion, Fact, "
+"Assumption, dan Case, baik dalam bentuk berbintang (starred) atau tanpa "
+"bintang (non-starred)"
+
+#: lib/layouts/theorems-ams-extended.module:37
+msgid "Criterion \\thetheorem."
+msgstr "Kriteria \\thetheorem."
+
+#: lib/layouts/theorems-ams-extended.module:44
+#: lib/layouts/theorems-ams-extended-bytype.module:71
+msgid "Criterion*"
+msgstr "Kriteria*"
+
+#: lib/layouts/theorems-ams-extended.module:47
+#: lib/layouts/theorems-ams-extended-bytype.module:74
+msgid "Criterion."
+msgstr "Kriteria"
+
+#: lib/layouts/theorems-ams-extended.module:59
+msgid "Algorithm \\thetheorem."
+msgstr "Algoritma \\thetheorem."
+
+#: lib/layouts/theorems-ams-extended.module:70
+#: lib/layouts/theorems-ams-extended-bytype.module:97
+msgid "Algorithm."
+msgstr "Algoritma."
+
+#: lib/layouts/theorems-ams-extended.module:82
+msgid "Axiom \\thetheorem."
+msgstr "Aksioma \\thetheorem."
+
+#: lib/layouts/theorems-ams-extended.module:90
+#: lib/layouts/theorems-ams-extended-bytype.module:117
+msgid "Axiom*"
+msgstr "Aksioma*"
+
+#: lib/layouts/theorems-ams-extended.module:93
+#: lib/layouts/theorems-ams-extended-bytype.module:120
+msgid "Axiom."
+msgstr "Aksioma."
+
+#: lib/layouts/theorems-ams-extended.module:104
+msgid "Condition \\thetheorem."
+msgstr "Kondisi \\thetheorem."
+
+#: lib/layouts/theorems-ams-extended.module:112
+#: lib/layouts/theorems-ams-extended-bytype.module:140
+msgid "Condition*"
+msgstr "Kondisi*"
+
+#: lib/layouts/theorems-ams-extended.module:115
+#: lib/layouts/theorems-ams-extended-bytype.module:143
+msgid "Condition."
+msgstr "Kondisi."
+
+#: lib/layouts/theorems-ams-extended.module:126
+msgid "Note \\thetheorem."
+msgstr "Nota \\thetheorem."
+
+#: lib/layouts/theorems-ams-extended.module:134
+#: lib/layouts/theorems-ams-extended-bytype.module:163
+msgid "Note*"
+msgstr "Nota*"
+
+#: lib/layouts/theorems-ams-extended.module:137
+#: lib/layouts/theorems-ams-extended-bytype.module:166
+msgid "Note."
+msgstr "Nota."
+
+#: lib/layouts/theorems-ams-extended.module:148
+msgid "Notation \\thetheorem."
+msgstr "Notasi \\thetheorem."
+
+#: lib/layouts/theorems-ams-extended.module:156
+#: lib/layouts/theorems-ams-extended-bytype.module:186
+msgid "Notation*"
+msgstr "Notasi*"
+
+#: lib/layouts/theorems-ams-extended.module:159
+#: lib/layouts/theorems-ams-extended-bytype.module:189
+msgid "Notation."
+msgstr "Notasi."
+
+#: lib/layouts/theorems-ams-extended.module:170
+msgid "Summary \\thetheorem."
+msgstr "Ringkasan \\thetheorem."
+
+#: lib/layouts/theorems-ams-extended.module:178
+#: lib/layouts/theorems-ams-extended-bytype.module:209
+msgid "Summary*"
+msgstr "Ringkasan*"
+
+#: lib/layouts/theorems-ams-extended.module:181
+#: lib/layouts/theorems-ams-extended-bytype.module:212
+msgid "Summary."
+msgstr "Ringkasan."
+
+#: lib/layouts/theorems-ams-extended.module:192
+msgid "Acknowledgement \\thetheorem."
+msgstr "Acknowledgement \\thetheorem."
+
+#: lib/layouts/theorems-ams-extended.module:200
+#: lib/layouts/theorems-ams-extended-bytype.module:232
+msgid "Acknowledgement*"
+msgstr "Acknowledgement*"
+
+#: lib/layouts/theorems-ams-extended.module:211
+#: lib/layouts/theorems-ams-extended-bytype.module:243
+msgid "Conclusion"
+msgstr "Simpulan"
+
+#: lib/layouts/theorems-ams-extended.module:214
+msgid "Conclusion \\thetheorem."
+msgstr "Simpulan \\thetheorem."
+
+#: lib/layouts/theorems-ams-extended.module:222
+#: lib/layouts/theorems-ams-extended-bytype.module:255
+msgid "Conclusion*"
+msgstr "Simpulan*"
+
+#: lib/layouts/theorems-ams-extended.module:225
+#: lib/layouts/theorems-ams-extended-bytype.module:258
+msgid "Conclusion."
+msgstr "Simpulan."
+
+#: lib/layouts/theorems-ams-extended.module:233
+#: lib/layouts/theorems-ams-extended-bytype.module:266
+msgid "Assumption"
+msgstr "Asumsi"
+
+#: lib/layouts/theorems-ams-extended.module:237
+msgid "Assumption \\thetheorem."
+msgstr "Asumsi \\thetheorem."
+
+#: lib/layouts/theorems-ams-extended.module:245
+#: lib/layouts/theorems-ams-extended-bytype.module:278
+msgid "Assumption*"
+msgstr "Asumsi*"
+
+#: lib/layouts/theorems-ams-extended.module:248
+#: lib/layouts/theorems-ams-extended-bytype.module:281
+msgid "Assumption."
+msgstr "Asumsi."
+
 #: lib/layouts/theorems-ams-extended-bytype.module:2
 #, fuzzy
 msgid "Theorems (AMS-Extended, Numbered by Type)"
@@ -9144,202 +9325,44 @@ msgstr ""
 msgid "Criterion \\thecriterion."
 msgstr "Kriteria \\thetheorem."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:71
-#: lib/layouts/theorems-ams-extended.module:44
-msgid "Criterion*"
-msgstr "Kriteria*"
-
-#: lib/layouts/theorems-ams-extended-bytype.module:74
-#: lib/layouts/theorems-ams-extended.module:47
-msgid "Criterion."
-msgstr "Kriteria"
-
 #: lib/layouts/theorems-ams-extended-bytype.module:85
 #, fuzzy
 msgid "Algorithm \\thealgorithm."
 msgstr "Algoritma \\thetheorem."
-
-#: lib/layouts/theorems-ams-extended-bytype.module:97
-#: lib/layouts/theorems-ams-extended.module:70
-msgid "Algorithm."
-msgstr "Algoritma."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:108
 #, fuzzy
 msgid "Axiom \\theaxiom."
 msgstr "Aksioma \\thetheorem."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:117
-#: lib/layouts/theorems-ams-extended.module:90
-msgid "Axiom*"
-msgstr "Aksioma*"
-
-#: lib/layouts/theorems-ams-extended-bytype.module:120
-#: lib/layouts/theorems-ams-extended.module:93
-msgid "Axiom."
-msgstr "Aksioma."
-
 #: lib/layouts/theorems-ams-extended-bytype.module:131
 #, fuzzy
 msgid "Condition \\thecondition."
 msgstr "Kondisi \\thetheorem."
-
-#: lib/layouts/theorems-ams-extended-bytype.module:140
-#: lib/layouts/theorems-ams-extended.module:112
-msgid "Condition*"
-msgstr "Kondisi*"
-
-#: lib/layouts/theorems-ams-extended-bytype.module:143
-#: lib/layouts/theorems-ams-extended.module:115
-msgid "Condition."
-msgstr "Kondisi."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:154
 #, fuzzy
 msgid "Note \\thenote."
 msgstr "Nota \\thetheorem."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:163
-#: lib/layouts/theorems-ams-extended.module:134
-msgid "Note*"
-msgstr "Nota*"
-
-#: lib/layouts/theorems-ams-extended-bytype.module:166
-#: lib/layouts/theorems-ams-extended.module:137
-msgid "Note."
-msgstr "Nota."
-
-#: lib/layouts/theorems-ams-extended-bytype.module:186
-#: lib/layouts/theorems-ams-extended.module:156
-msgid "Notation*"
-msgstr "Notasi*"
-
-#: lib/layouts/theorems-ams-extended-bytype.module:189
-#: lib/layouts/theorems-ams-extended.module:159
-msgid "Notation."
-msgstr "Notasi."
-
 #: lib/layouts/theorems-ams-extended-bytype.module:200
 #, fuzzy
 msgid "Summary \\thesummary."
 msgstr "Ringkasan \\thetheorem."
-
-#: lib/layouts/theorems-ams-extended-bytype.module:209
-#: lib/layouts/theorems-ams-extended.module:178
-msgid "Summary*"
-msgstr "Ringkasan*"
-
-#: lib/layouts/theorems-ams-extended-bytype.module:212
-#: lib/layouts/theorems-ams-extended.module:181
-msgid "Summary."
-msgstr "Ringkasan."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:223
 #, fuzzy
 msgid "Acknowledgement \\theacknowledgement."
 msgstr "Acknowledgement \\thetheorem."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:232
-#: lib/layouts/theorems-ams-extended.module:200
-msgid "Acknowledgement*"
-msgstr "Acknowledgement*"
-
-#: lib/layouts/theorems-ams-extended-bytype.module:243
-#: lib/layouts/theorems-ams-extended.module:211
-msgid "Conclusion"
-msgstr "Simpulan"
-
 #: lib/layouts/theorems-ams-extended-bytype.module:246
 #, fuzzy
 msgid "Conclusion \\theconclusion."
 msgstr "Simpulan \\thetheorem."
 
-#: lib/layouts/theorems-ams-extended-bytype.module:255
-#: lib/layouts/theorems-ams-extended.module:222
-msgid "Conclusion*"
-msgstr "Simpulan*"
-
-#: lib/layouts/theorems-ams-extended-bytype.module:258
-#: lib/layouts/theorems-ams-extended.module:225
-msgid "Conclusion."
-msgstr "Simpulan."
-
-#: lib/layouts/theorems-ams-extended-bytype.module:266
-#: lib/layouts/theorems-ams-extended.module:233
-msgid "Assumption"
-msgstr "Asumsi"
-
 #: lib/layouts/theorems-ams-extended-bytype.module:269
 #, fuzzy
 msgid "Assumption \\theassumption."
-msgstr "Asumsi \\thetheorem."
-
-#: lib/layouts/theorems-ams-extended-bytype.module:278
-#: lib/layouts/theorems-ams-extended.module:245
-msgid "Assumption*"
-msgstr "Asumsi*"
-
-#: lib/layouts/theorems-ams-extended-bytype.module:281
-#: lib/layouts/theorems-ams-extended.module:248
-msgid "Assumption."
-msgstr "Asumsi."
-
-#: lib/layouts/theorems-ams-extended.module:2
-msgid "Theorems (AMS-Extended)"
-msgstr "Theorema (AMS-Extended)"
-
-#: lib/layouts/theorems-ams-extended.module:8
-#, fuzzy
-msgid ""
-"Defines some additional theorem environments for use with the AMS theorems "
-"packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
-"Summary, Acknowledgement, Conclusion, Fact, Assumption, and Case, in both "
-"numbered and non-numbered forms."
-msgstr ""
-"Mendefinisikan beberapa lingkungan teorema tambahan untuk digunakan dalam "
-"paket Teorema AMS. Paket AMS termasuk Criterion, Algorithm, Axiom, "
-"Condition, Note, Notation, Summary, Acknowledgement, Conclusion, Fact, "
-"Assumption, dan Case, baik dalam bentuk berbintang (starred) atau tanpa "
-"bintang (non-starred)"
-
-#: lib/layouts/theorems-ams-extended.module:37
-msgid "Criterion \\thetheorem."
-msgstr "Kriteria \\thetheorem."
-
-#: lib/layouts/theorems-ams-extended.module:59
-msgid "Algorithm \\thetheorem."
-msgstr "Algoritma \\thetheorem."
-
-#: lib/layouts/theorems-ams-extended.module:82
-msgid "Axiom \\thetheorem."
-msgstr "Aksioma \\thetheorem."
-
-#: lib/layouts/theorems-ams-extended.module:104
-msgid "Condition \\thetheorem."
-msgstr "Kondisi \\thetheorem."
-
-#: lib/layouts/theorems-ams-extended.module:126
-msgid "Note \\thetheorem."
-msgstr "Nota \\thetheorem."
-
-#: lib/layouts/theorems-ams-extended.module:148
-msgid "Notation \\thetheorem."
-msgstr "Notasi \\thetheorem."
-
-#: lib/layouts/theorems-ams-extended.module:170
-msgid "Summary \\thetheorem."
-msgstr "Ringkasan \\thetheorem."
-
-#: lib/layouts/theorems-ams-extended.module:192
-msgid "Acknowledgement \\thetheorem."
-msgstr "Acknowledgement \\thetheorem."
-
-#: lib/layouts/theorems-ams-extended.module:214
-msgid "Conclusion \\thetheorem."
-msgstr "Simpulan \\thetheorem."
-
-#: lib/layouts/theorems-ams-extended.module:237
-msgid "Assumption \\thetheorem."
 msgstr "Asumsi \\thetheorem."
 
 #: lib/layouts/theorems-ams.module:2
@@ -10795,7 +10818,7 @@ msgstr "Konfigurasi LaTeX|L"
 msgid "About LyX|X"
 msgstr "Tentang LyX|X"
 
-#: lib/ui/classic.ui:425 src/frontends/qt4/GuiAbout.cpp:125
+#: lib/ui/classic.ui:425 src/frontends/qt4/GuiAbout.cpp:130
 msgid "About LyX"
 msgstr "Tentang LyX"
 
@@ -14609,300 +14632,300 @@ msgstr "Dia: $$AbsOrRelPathParent$$Basename"
 msgid "Dia diagram.\n"
 msgstr "Diagram dari perangkat lunak Dia.\n"
 
-#: lib/configure.py:253
+#: lib/configure.py:265
 msgid "Tgif"
 msgstr "Tgif"
 
-#: lib/configure.py:256
+#: lib/configure.py:268
 msgid "FIG"
 msgstr "FIG"
 
-#: lib/configure.py:259
+#: lib/configure.py:271
 msgid "DIA"
 msgstr "DIA"
 
-#: lib/configure.py:262
+#: lib/configure.py:274
 msgid "Grace"
 msgstr "Grace"
 
-#: lib/configure.py:265
+#: lib/configure.py:277
 msgid "FEN"
 msgstr "FEN"
 
-#: lib/configure.py:269
+#: lib/configure.py:281
 msgid "BMP"
 msgstr "BMP"
 
-#: lib/configure.py:270
+#: lib/configure.py:282
 msgid "GIF"
 msgstr "GIF"
 
-#: lib/configure.py:271 src/frontends/qt4/GuiClipboard.cpp:138
+#: lib/configure.py:283 src/frontends/qt4/GuiClipboard.cpp:138
 msgid "JPEG"
 msgstr "JPEG"
 
-#: lib/configure.py:272
+#: lib/configure.py:284
 msgid "PBM"
 msgstr "PBM"
 
-#: lib/configure.py:273
+#: lib/configure.py:285
 msgid "PGM"
 msgstr "PGM"
 
-#: lib/configure.py:274 src/frontends/qt4/GuiClipboard.cpp:137
+#: lib/configure.py:286 src/frontends/qt4/GuiClipboard.cpp:137
 msgid "PNG"
 msgstr "PNG"
 
-#: lib/configure.py:275
+#: lib/configure.py:287
 msgid "PPM"
 msgstr "PPM"
 
-#: lib/configure.py:276
+#: lib/configure.py:288
 msgid "TIFF"
 msgstr "TIFF"
 
-#: lib/configure.py:277
+#: lib/configure.py:289
 msgid "XBM"
 msgstr "XBM"
 
-#: lib/configure.py:278
+#: lib/configure.py:290
 msgid "XPM"
 msgstr "XPM"
 
-#: lib/configure.py:283
+#: lib/configure.py:295
 msgid "Plain text (chess output)"
 msgstr "Teks Plain (chess output)"
 
-#: lib/configure.py:284
+#: lib/configure.py:296
 msgid "Plain text (image)"
 msgstr "Teks Plain (image)"
 
-#: lib/configure.py:285
+#: lib/configure.py:297
 msgid "Plain text (Xfig output)"
 msgstr "Teks Plain (Xfig output)"
 
-#: lib/configure.py:286
+#: lib/configure.py:298
 msgid "date (output)"
 msgstr "Tanggal (output)"
 
-#: lib/configure.py:287
+#: lib/configure.py:299
 msgid "DocBook"
 msgstr "DocBook"
 
-#: lib/configure.py:287
+#: lib/configure.py:299
 msgid "DocBook|B"
 msgstr "DocBook|B"
 
-#: lib/configure.py:288
+#: lib/configure.py:300
 msgid "Docbook (XML)"
 msgstr "Docbook (XML)"
 
-#: lib/configure.py:289
+#: lib/configure.py:301
 msgid "Graphviz Dot"
 msgstr "Graphviz Dot"
 
-#: lib/configure.py:290
+#: lib/configure.py:302
 msgid "LaTeX (pLaTeX)"
 msgstr "LaTeX (pLaTeX)"
 
-#: lib/configure.py:291
+#: lib/configure.py:303
 msgid "NoWeb"
 msgstr "NoWeb"
 
-#: lib/configure.py:291
+#: lib/configure.py:303
 msgid "NoWeb|N"
 msgstr "NoWeb|N"
 
-#: lib/configure.py:292
+#: lib/configure.py:304
 msgid "LilyPond music"
 msgstr "LilyPond musik"
 
-#: lib/configure.py:293
+#: lib/configure.py:305
 msgid "LaTeX (plain)"
 msgstr "LaTeX (plain)"
 
-#: lib/configure.py:293
+#: lib/configure.py:305
 msgid "LaTeX (plain)|L"
 msgstr "LaTeX (plain)|L"
 
-#: lib/configure.py:294
+#: lib/configure.py:306
 msgid "LaTeX (pdflatex)"
 msgstr "LaTeX (pdflatex)"
 
-#: lib/configure.py:295 src/frontends/qt4/GuiPrefs.cpp:334
+#: lib/configure.py:307 src/frontends/qt4/GuiPrefs.cpp:334
 msgid "Plain text"
 msgstr "Plain text"
 
-#: lib/configure.py:295
+#: lib/configure.py:307
 msgid "Plain text|a"
 msgstr "Plain text|x"
 
-#: lib/configure.py:296
+#: lib/configure.py:308
 msgid "Plain text (pstotext)"
 msgstr "Plain text (pstotext)"
 
-#: lib/configure.py:297
+#: lib/configure.py:309
 msgid "Plain text (ps2ascii)"
 msgstr "Plain text (ps2ascii)"
 
-#: lib/configure.py:298
+#: lib/configure.py:310
 msgid "Plain text (catdvi)"
 msgstr "Plain text (catdvi)"
 
-#: lib/configure.py:299
+#: lib/configure.py:311
 msgid "Plain Text, Join Lines"
 msgstr "Plain Text, Join Lines"
 
-#: lib/configure.py:306
+#: lib/configure.py:318
 msgid "BibTeX"
 msgstr "BibTeX"
 
-#: lib/configure.py:311
+#: lib/configure.py:323
 msgid "EPS"
 msgstr "EPS"
 
-#: lib/configure.py:312
+#: lib/configure.py:324
 msgid "Postscript"
 msgstr "Postscript"
 
-#: lib/configure.py:312
+#: lib/configure.py:324
 msgid "Postscript|t"
 msgstr "Postscript|o"
 
-#: lib/configure.py:316
+#: lib/configure.py:328
 msgid "PDF (ps2pdf)"
 msgstr "PDF (ps2pdf)"
 
-#: lib/configure.py:316
+#: lib/configure.py:328
 msgid "PDF (ps2pdf)|P"
 msgstr "PDF (ps2pdf)"
 
-#: lib/configure.py:317
+#: lib/configure.py:329
 msgid "PDF (pdflatex)"
 msgstr "PDF (pdflatex)"
 
-#: lib/configure.py:317
+#: lib/configure.py:329
 msgid "PDF (pdflatex)|F"
 msgstr "PDF (pdflatex)|F"
 
-#: lib/configure.py:318
+#: lib/configure.py:330
 msgid "PDF (dvipdfm)"
 msgstr "PDF (dvipdfm)"
 
-#: lib/configure.py:318
+#: lib/configure.py:330
 msgid "PDF (dvipdfm)|m"
 msgstr "PDF (dvipdfm)|m"
 
-#: lib/configure.py:321
+#: lib/configure.py:333
 msgid "DVI"
 msgstr "DVI"
 
-#: lib/configure.py:321
+#: lib/configure.py:333
 msgid "DVI|D"
 msgstr "DVI|D"
 
-#: lib/configure.py:324
+#: lib/configure.py:336
 msgid "DraftDVI"
 msgstr "DraftDVI"
 
-#: lib/configure.py:327
+#: lib/configure.py:339
 msgid "HTML"
 msgstr "HTML"
 
-#: lib/configure.py:327
+#: lib/configure.py:339
 msgid "HTML|H"
 msgstr "HTML|H"
 
-#: lib/configure.py:330
+#: lib/configure.py:342
 msgid "Noteedit"
 msgstr "Noteedit"
 
-#: lib/configure.py:333
+#: lib/configure.py:345
 msgid "OpenDocument"
 msgstr "BukaDokumen"
 
-#: lib/configure.py:336
+#: lib/configure.py:348
 msgid "date command"
 msgstr "Perintah tanggal"
 
-#: lib/configure.py:337
+#: lib/configure.py:349
 msgid "Table (CSV)"
 msgstr "Tabel (CSV)"
 
-#: lib/configure.py:339 src/frontends/qt4/GuiView.cpp:883
+#: lib/configure.py:351 src/frontends/qt4/GuiView.cpp:883
 #: src/frontends/qt4/GuiView.cpp:884 src/mathed/MathMacroTemplate.cpp:537
 msgid "LyX"
 msgstr "LyX"
 
-#: lib/configure.py:340
+#: lib/configure.py:352
 msgid "LyX 1.3.x"
 msgstr "LyX 1.3.x"
 
-#: lib/configure.py:341
+#: lib/configure.py:353
 msgid "LyX 1.4.x"
 msgstr "LyX 1.4.x"
 
-#: lib/configure.py:342
+#: lib/configure.py:354
 msgid "LyX 1.5.x"
 msgstr "LyX 1.5.x"
 
-#: lib/configure.py:343
+#: lib/configure.py:355
 msgid "CJK LyX 1.4.x (big5)"
 msgstr "CJK LyX 1.4.x (big5)"
 
-#: lib/configure.py:344
+#: lib/configure.py:356
 msgid "CJK LyX 1.4.x (euc-jp)"
 msgstr "CJK LyX 1.4.x (euc-jp)"
 
-#: lib/configure.py:345
+#: lib/configure.py:357
 msgid "CJK LyX 1.4.x (euc-kr)"
 msgstr "CJK LyX 1.4.x (euc-kr)"
 
-#: lib/configure.py:346
+#: lib/configure.py:358
 msgid "LyX Preview"
 msgstr "Pra Tampilan LyX"
 
-#: lib/configure.py:347
+#: lib/configure.py:359
 msgid "LyX Preview (pLaTeX)"
 msgstr "Pra Tampilan LyX (pLaTeX)"
 
-#: lib/configure.py:348
+#: lib/configure.py:360
 msgid "PDFTEX"
 msgstr "PDFTEX"
 
-#: lib/configure.py:349
+#: lib/configure.py:361
 msgid "Program"
 msgstr "Program"
 
-#: lib/configure.py:350
+#: lib/configure.py:362
 msgid "PSTEX"
 msgstr "PSTEX"
 
-#: lib/configure.py:351
+#: lib/configure.py:363
 msgid "Rich Text Format"
 msgstr "Rich Text Format"
 
-#: lib/configure.py:352
+#: lib/configure.py:364
 msgid "OpenOffice.Org (sxw)"
 msgstr "OpenOffice.Org (sxw)"
 
-#: lib/configure.py:353 src/frontends/qt4/GuiClipboard.cpp:134
+#: lib/configure.py:365 src/frontends/qt4/GuiClipboard.cpp:134
 msgid "Windows Metafile"
 msgstr "Windows Metafile"
 
-#: lib/configure.py:354 src/frontends/qt4/GuiClipboard.cpp:133
+#: lib/configure.py:366 src/frontends/qt4/GuiClipboard.cpp:133
 msgid "Enhanced Metafile"
 msgstr "Enhanced Metafile"
 
-#: lib/configure.py:355
+#: lib/configure.py:367
 msgid "MS Word"
 msgstr "MS Word"
 
-#: lib/configure.py:355
+#: lib/configure.py:367
 msgid "MS Word|W"
 msgstr "MS Word|W"
 
-#: lib/configure.py:356
+#: lib/configure.py:368
 msgid "HTML (MS Word)"
 msgstr "HTML (MS Word)"
 
@@ -16450,7 +16473,7 @@ msgstr ""
 "\t-version        memberikan informasi versi dan build\n"
 "Silahkan lihat di manual LyX untuk informasi lebih detail."
 
-#: src/LyX.cpp:996
+#: src/LyX.cpp:996 src/support/Package.cpp:552
 msgid "No system directory"
 msgstr "Direktori sistem tidak ada"
 
@@ -17740,7 +17763,7 @@ msgstr "Silahkan install ulang untuk dapat menghargai\n"
 msgid "amount of work other people have done for the LyX project."
 msgstr "betapa besar usaha yang dilakukan mereka untuk LyX."
 
-#: src/frontends/qt4/GuiAbout.cpp:77
+#: src/frontends/qt4/GuiAbout.cpp:82
 #, c-format
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
@@ -17749,7 +17772,7 @@ msgstr ""
 "LyX adalah hak Cipta (C) 1995 dari Matthias Ettrich,\n"
 "1995--%1$s Tim LyX"
 
-#: src/frontends/qt4/GuiAbout.cpp:85
+#: src/frontends/qt4/GuiAbout.cpp:90
 msgid ""
 "This program is free software; you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -17762,7 +17785,7 @@ msgstr ""
 "Software Foundation; dalam Lisensi versi 2, atau (menurut pilihan anda) "
 "versi terbaru yang ada."
 
-#: src/frontends/qt4/GuiAbout.cpp:91
+#: src/frontends/qt4/GuiAbout.cpp:96
 msgid ""
 "LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
@@ -17781,11 +17804,11 @@ msgstr ""
 "Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-"
 "1301, USA."
 
-#: src/frontends/qt4/GuiAbout.cpp:104
+#: src/frontends/qt4/GuiAbout.cpp:109
 msgid "not released yet"
 msgstr "belum dirilis"
 
-#: src/frontends/qt4/GuiAbout.cpp:109
+#: src/frontends/qt4/GuiAbout.cpp:114
 #, c-format
 msgid ""
 "LyX Version %1$s\n"
@@ -17794,11 +17817,11 @@ msgstr ""
 "LyX Versi %1$s\n"
 "(%2$s)"
 
-#: src/frontends/qt4/GuiAbout.cpp:115
+#: src/frontends/qt4/GuiAbout.cpp:120
 msgid "Library directory: "
 msgstr "Direktori pustaka pengguna: "
 
-#: src/frontends/qt4/GuiAbout.cpp:118
+#: src/frontends/qt4/GuiAbout.cpp:123
 msgid "User directory: "
 msgstr "Direktori pengguna: "
 
@@ -21011,11 +21034,6 @@ msgstr "String telah diganti"
 msgid " strings have been replaced."
 msgstr " Berbagai string sudah diganti."
 
-#: src/mathed/InsetFormulaMacro.cpp:120
-#, c-format
-msgid " Macro: %1$s: "
-msgstr " Makro: %1$s: "
-
 #: src/mathed/InsetMathAMSArray.cpp:111 src/mathed/InsetMathHull.cpp:1428
 #: src/mathed/InsetMathSplit.cpp:76 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
@@ -21116,6 +21134,57 @@ msgstr "Abstrak: "
 #: src/output_plaintext.cpp:148
 msgid "References: "
 msgstr "Referensi: "
+
+#: src/support/Package.cpp:433
+#, fuzzy
+msgid "LyX binary not found"
+msgstr "String tidak ditemukan!"
+
+#: src/support/Package.cpp:434
+#, c-format
+msgid ""
+"Unable to determine the path to the LyX binary from the command line %1$s"
+msgstr ""
+
+#: src/support/Package.cpp:553
+#, c-format
+msgid ""
+"Unable to determine the system directory having searched\n"
+"\t%1$s\n"
+"Use the '-sysdir' command line parameter or set the environment variable\n"
+"%2$s to the LyX system directory containing the file `chkconfig.ltx'."
+msgstr ""
+
+#: src/support/Package.cpp:634 src/support/Package.cpp:661
+#, fuzzy
+msgid "File not found"
+msgstr "Modul tidak ditemukan"
+
+#: src/support/Package.cpp:635
+#, c-format
+msgid ""
+"Invalid %1$s switch.\n"
+"Directory %2$s does not contain %3$s."
+msgstr ""
+
+#: src/support/Package.cpp:662
+#, c-format
+msgid ""
+"Invalid %1$s environment variable.\n"
+"Directory %2$s does not contain %3$s."
+msgstr ""
+
+#: src/support/Package.cpp:686
+#, c-format
+msgid ""
+"Invalid %1$s environment variable.\n"
+"%2$s is not a directory."
+msgstr ""
+
+#: src/support/Package.cpp:688
+#, fuzzy
+msgid "Directory not found"
+msgstr "String tidak ditemukan!"
 
 #: src/support/debug.cpp:38
 msgid "No debugging message"
@@ -21286,23 +21355,14 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Pemakai tidak dikenal"
 
+#~ msgid " Macro: %1$s: "
+#~ msgstr " Makro: %1$s: "
+
 #~ msgid "Numbers theorems and the like by section."
 #~ msgstr "Nomor yang ada di modul-modul teorema menurut bagian."
 
 #~ msgid "Latex"
 #~ msgstr "Latex"
-
-#, fuzzy
-#~ msgid "LyX binary not found"
-#~ msgstr "String tidak ditemukan!"
-
-#, fuzzy
-#~ msgid "File not found"
-#~ msgstr "Modul tidak ditemukan"
-
-#, fuzzy
-#~ msgid "Directory not found"
-#~ msgstr "String tidak ditemukan!"
 
 #~ msgid "Close Tab Group|G"
 #~ msgstr "Tutup Grup Tab|G"
