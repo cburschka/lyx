@@ -135,9 +135,9 @@ public:
 	docstring counterLabel(docstring const & format,
 			       std::string const & lang) const;
 	/// Are we in appendix?
-	bool appendix() const { return appendix_; };
+	bool appendix() const { return appendix_; }
 	/// Set the state variable indicating whether we are in appendix.
-	void appendix(bool a) { appendix_ = a; };
+	void appendix(bool a) { appendix_ = a; }
 	/// Returns the current enclosing float.
 	std::string const & current_float() const { return current_float_; }
 	/// Sets the current enclosing float.
@@ -145,7 +145,7 @@ public:
 	/// Are we in a subfloat?
 	bool isSubfloat() const { return subfloat_; }
 	/// Set the state variable indicating whether we are in a subfloat.
-	void isSubfloat(bool s) { subfloat_ = s; };
+	void isSubfloat(bool s) { subfloat_ = s; }
 private:
 	/** expands recusrsively any \\the<counter> macro in the
 	 *  labelstring of \c counter.  The \c lang code is used to
