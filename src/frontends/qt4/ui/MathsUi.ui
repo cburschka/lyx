@@ -22,7 +22,7 @@
    <item>
     <widget class="QCheckBox" name="amsautoCB">
      <property name="toolTip">
-      <string>The AMS LaTeX packages are only used when symbols from the AMS math toolbars are inserted into formulas</string>
+      <string>The AMS LaTeX packages are only used if symbols from the AMS math toolbars are inserted into formulas</string>
      </property>
      <property name="text">
       <string>&amp;Use AMS math package automatically</string>
@@ -45,7 +45,7 @@
    <item>
     <widget class="QCheckBox" name="esintautoCB">
      <property name="toolTip">
-      <string>The LaTeX package esint is only used when special integral symbols are inserted into formulas</string>
+      <string>The LaTeX package esint is only used if special integral symbols are inserted into formulas</string>
      </property>
      <property name="text">
       <string>Use esint package &amp;automatically</string>
