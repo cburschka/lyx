@@ -1914,8 +1914,16 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 		}
 		top().pos() = min(tm.x2pos(pit(), next_row, xo), top().lastpos());
 
-		boundary(tm.x2pos(pit(), next_row, xo) 
-			== tm.x2pos(pit(), next_row, tm.width()));
+		int const xpos = tm.x2pos(pit(), next_row, xo);
+		bool const at_end_row = xpos == tm.x2pos(pit(), next_row, tm.width());
+		bool const at_beg_row = xpos == tm.x2pos(pit(), next_row, 0);
+
+		if (at_end_row && at_beg_row)
+			// make sure the cursor ends up on this row
+			boundary(false);
+		else
+			boundary(at_end_row);
+
 		updateNeeded |= bv().checkDepm(*this, old);
 	}
 
