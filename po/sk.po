@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-11-15 17:19+0100\n"
-"PO-Revision-Date: 2009-11-15 17:16+0100\n"
+"PO-Revision-Date: 2009-11-15 17:27+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenský <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -1921,7 +1921,7 @@ msgid ""
 "inserted into formulas"
 msgstr ""
 "LaTeX balík esint použiť len v prípade, keď sa vo formulách nájdu aj "
-"špeciálne integrálne symboly."
+"špeciálne integrálne symboly"
 
 #: src/frontends/qt4/ui/MathsUi.ui:51
 msgid "Use esint package &automatically"
@@ -9416,14 +9416,14 @@ msgid "Theorems (Numbered by Chapter)"
 msgstr "Teorémy (Číslované podľa Kapitoly)"
 
 #: lib/layouts/theorems-chap.module:7
-#, fuzzy
 msgid ""
 "Numbers theorems and the like by chapter (i.e., the counter is reset at each "
 "chapter start). Use this module only with document classes that provide a "
 "chapter environment."
 msgstr ""
 "Očísluje mat. vety a pod. podľa kapitoly. (čiže číslovanie sa nuluje na "
-"začiatku každej kapitoly). Použite tento modul len s formátom, ktorý "
+"začiatku každej kapitoly). Použite tento modul len s takou triedou "
+"dokumentov, ktorá "
 "podporuje prostredie kapitoly."
 
 #: lib/layouts/theorems-sec-bytype.module:2
