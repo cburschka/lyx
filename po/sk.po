@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-11-15 16:49+0100\n"
-"PO-Revision-Date: 2009-11-15 15:11+0100\n"
+"PO-Revision-Date: 2009-11-15 17:16+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenský <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -1900,6 +1900,8 @@ msgid ""
 "The AMS LaTeX packages are only used if symbols from the AMS math toolbars "
 "are inserted into formulas"
 msgstr ""
+"Balíky pre AMS a Latex sú použité len v prípade, že vo formulách sú vložené "
+"aj symboly z mat. lišty nástrojov AMS"
 
 #: src/frontends/qt4/ui/MathsUi.ui:28
 msgid "&Use AMS math package automatically"
@@ -1907,7 +1909,7 @@ msgstr "&Automaticky používať balík AMS math"
 
 #: src/frontends/qt4/ui/MathsUi.ui:38
 msgid "The AMS LaTeX packages are always used"
-msgstr ""
+msgstr "AMS a LeTeX-ové balíky každopádne použiť"
 
 #: src/frontends/qt4/ui/MathsUi.ui:41
 msgid "Use AMS &math package"
@@ -1918,6 +1920,8 @@ msgid ""
 "The LaTeX package esint is only used if special integral symbols are "
 "inserted into formulas"
 msgstr ""
+"LaTeX balík esint použiť len v prípade, keď sa vo formulách nájdu aj "
+"špeciálne integrálne symboly."
 
 #: src/frontends/qt4/ui/MathsUi.ui:51
 msgid "Use esint package &automatically"
@@ -1925,7 +1929,7 @@ msgstr "Automaticky použiť balík &esint"
 
 #: src/frontends/qt4/ui/MathsUi.ui:61
 msgid "The LaTeX package esint is always used"
-msgstr ""
+msgstr "LaTeX balík esint použiť každopádne"
 
 #: src/frontends/qt4/ui/MathsUi.ui:64
 msgid "Use &esint package"
