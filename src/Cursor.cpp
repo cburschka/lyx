@@ -1301,7 +1301,7 @@ void Cursor::insert(Inset * inset0)
 
 void Cursor::niceInsert(docstring const & t, Parse::flags f)
 {
-	MathData ar;
+	MathData ar(buffer());
 	asArray(t, ar, f);
 	if (ar.size() == 1)
 		niceInsert(ar[0]);
@@ -1322,7 +1322,7 @@ void Cursor::niceInsert(MathAtom const & t)
 		// push the clone, not the original
 		pushBackward(*nextInset());
 		// We may not use niceInsert here (recursion)
-		MathData ar;
+		MathData ar(buffer());
 		asArray(safe, ar);
 		insert(ar);
 	}
@@ -1473,7 +1473,7 @@ bool Cursor::macroModeClose()
 		return false;
 	InsetMathUnknown * p = activeMacro();
 	p->finalize();
-	MathData selection;
+	MathData selection(buffer());
 	asArray(p->selection(), selection);
 	docstring const s = p->name();
 	--pos();
