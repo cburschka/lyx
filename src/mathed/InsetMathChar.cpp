@@ -168,9 +168,9 @@ void InsetMathChar::octave(OctaveStream & os) const
 void InsetMathChar::mathmlize(MathStream & ms) const
 {
 	switch (char_) {
-		case '<': ms << "<mo>&lt;</mo>"; break;
-		case '>': ms << "<mo>&gt;</mo>"; break;
-		case '&': ms << "<mo>&amp;</mo>"; break;
+		case '<': ms << "<mo>&lt;</mo>"; return;
+		case '>': ms << "<mo>&gt;</mo>"; return;
+		case '&': ms << "<mo>&amp;</mo>"; return;
 		default: break;
 	}
 	
