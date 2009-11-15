@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-11-15 16:09+0100\n"
+"POT-Creation-Date: 2009-11-15 17:19+0100\n"
 "PO-Revision-Date: 2009-10-18 17:34+0100\n"
 "Last-Translator:  Roman Maurer <>\n"
 "Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
@@ -2056,7 +2056,7 @@ msgstr "&Vodoravno:"
 
 #: src/frontends/qt4/ui/MathsUi.ui:25
 msgid ""
-"The AMS LaTeX packages are only used when symbols from the AMS math toolbars "
+"The AMS LaTeX packages are only used if symbols from the AMS math toolbars "
 "are inserted into formulas"
 msgstr ""
 
@@ -2076,7 +2076,7 @@ msgstr "Uporabi &matematiko AMS"
 
 #: src/frontends/qt4/ui/MathsUi.ui:48
 msgid ""
-"The LaTeX package esint is only used when special integral symbols are "
+"The LaTeX package esint is only used if special integral symbols are "
 "inserted into formulas"
 msgstr ""
 
@@ -10336,8 +10336,8 @@ msgstr "Izrek"
 #: lib/layouts/theorems-chap.module:7
 msgid ""
 "Numbers theorems and the like by chapter (i.e., the counter is reset at each "
-"chapter start). Use this module only with layouts that provide a chapter "
-"environment."
+"chapter start). Use this module only with document classes that provide a "
+"chapter environment."
 msgstr ""
 
 #: lib/layouts/theorems-sec-bytype.module:2
