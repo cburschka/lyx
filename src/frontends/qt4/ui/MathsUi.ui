@@ -1,7 +1,7 @@
-<ui version="4.0" >
+<ui version="4.0">
  <class>MathsUi</class>
- <widget class="QWidget" name="MathsUi" >
-  <property name="geometry" >
+ <widget class="QWidget" name="MathsUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -9,59 +9,71 @@
     <height>233</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string/>
   </property>
-  <layout class="QVBoxLayout" >
-   <property name="margin" >
-    <number>11</number>
-   </property>
-   <property name="spacing" >
+  <layout class="QVBoxLayout">
+   <property name="spacing">
     <number>6</number>
    </property>
+   <property name="margin">
+    <number>11</number>
+   </property>
    <item>
-    <widget class="QCheckBox" name="amsautoCB" >
-     <property name="text" >
+    <widget class="QCheckBox" name="amsautoCB">
+     <property name="toolTip">
+      <string>The AMS LaTeX packages are only used when symbols from the AMS math toolbars are inserted into formulas</string>
+     </property>
+     <property name="text">
       <string>&amp;Use AMS math package automatically</string>
      </property>
-     <property name="checked" >
+     <property name="checked">
       <bool>false</bool>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QCheckBox" name="amsCB" >
-     <property name="text" >
+    <widget class="QCheckBox" name="amsCB">
+     <property name="toolTip">
+      <string>The AMS LaTeX packages are always used</string>
+     </property>
+     <property name="text">
       <string>Use AMS &amp;math package</string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QCheckBox" name="esintautoCB" >
-     <property name="text" >
+    <widget class="QCheckBox" name="esintautoCB">
+     <property name="toolTip">
+      <string>The LaTeX package esint is only used when special integral commands are inserted into formulas</string>
+     </property>
+     <property name="text">
       <string>Use esint package &amp;automatically</string>
      </property>
-     <property name="checked" >
+     <property name="checked">
       <bool>false</bool>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QCheckBox" name="esintCB" >
-     <property name="text" >
+    <widget class="QCheckBox" name="esintCB">
+     <property name="toolTip">
+      <string>The LaTeX package esint is always used</string>
+     </property>
+     <property name="text">
       <string>Use &amp;esint package</string>
      </property>
     </widget>
    </item>
    <item>
     <spacer>
-     <property name="orientation" >
+     <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
-     <property name="sizeType" >
+     <property name="sizeType">
       <enum>QSizePolicy::Expanding</enum>
      </property>
-     <property name="sizeHint" >
+     <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
        <height>20</height>
@@ -71,14 +83,13 @@
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
- <includes>
-  <include location="local" >qt_i18n.h</include>
- </includes>
  <tabstops>
   <tabstop>amsautoCB</tabstop>
   <tabstop>esintautoCB</tabstop>
  </tabstops>
+ <includes>
+  <include location="local">qt_i18n.h</include>
+ </includes>
  <resources/>
  <connections/>
 </ui>
