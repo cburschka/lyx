@@ -39,7 +39,7 @@
    <item row="2" column="0">
     <widget class="QCheckBox" name="esintautoCB">
      <property name="toolTip">
-      <string>The LaTeX package esint is only used when special integral commands are inserted to formulas</string>
+      <string>The LaTeX package esint is only used when special integral commands are inserted into formulas</string>
      </property>
      <property name="text">
       <string>Use esint package &amp;automatically</string>
@@ -62,7 +62,7 @@
    <item row="4" column="0">
     <widget class="QCheckBox" name="mhchemautoCB">
      <property name="toolTip">
-      <string>The LaTeX package mhchem is only used when either the command \ce or \cf is inserted to formulas</string>
+      <string>The LaTeX package mhchem is only used when either the command \ce or \cf is inserted into formulas</string>
      </property>
      <property name="text">
       <string>Use mhchem &amp;package automatically</string>
