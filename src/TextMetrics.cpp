@@ -1462,7 +1462,7 @@ Row const & TextMetrics::getPitAndRowNearY(int & y, pit_type & pit,
 			if (rit != rlast) {
 				y = yy + rit->height();
 				++rit;
-			} else if (pit != int(par_metrics_.size())) {
+			} else if (pit < int(text_->paragraphs().size()) - 1) {
 				++pit;
 				newParMetricsDown();
 				ParagraphMetrics const & pm2 = par_metrics_[pit];
