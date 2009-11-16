@@ -633,14 +633,14 @@ bool MathMacro::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 		docstring const & unfolded_name = name();
 		if (unfolded_name != name_) {
 			// The macro name was changed
-			Cursor insetCur = old;
-			int macroSlice = insetCur.find(this);
+			Cursor inset_cursor = old;
+			int macroSlice = inset_cursor.find(this);
 			LASSERT(macroSlice != -1, /**/);
-			insetCur.cutOff(macroSlice);
-			insetCur.recordUndoInset();
-			insetCur.pop();
-			insetCur.cell().erase(insetCur.pos());
-			insetCur.cell().insert(insetCur.pos(),
+			inset_cursor.cutOff(macroSlice);
+			inset_cursor.recordUndoInset();
+			inset_cursor.pop();
+			inset_cursor.cell().erase(inset_cursor.pos());
+			inset_cursor.cell().insert(inset_cursor.pos(),
 				createInsetMath(unfolded_name, cur.buffer()));
 			cur.updateFlags(cur.disp_.update() | Update::SinglePar);
 			return true;
