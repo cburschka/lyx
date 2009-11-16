@@ -215,6 +215,8 @@ What's new
 - Fix width definition in the box dialog after a box inset was transformed
   from "Inner Box" type "None" to "Parbox" or "Minipage" (bug 6298).
 
+- Fix crash with autosave on Mac OS X 10.6 (bug 6168).
+
 - Fixed problem involving inability to turn off auto-save (bug 6227).
 
 - Sort document classes case insensitively (bug 1492).

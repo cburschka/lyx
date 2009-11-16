@@ -2392,6 +2392,15 @@ private:
 
 int AutoSaveBuffer::generateChild()
 {
+#if defined(__APPLE__)
+	/* FIXME fork() is not usable for autosave on Mac OS X 10.6 (snow leopard) 
+	 *   We should use something else like threads.
+	 *
+	 * Since I do not know how to determine at run time what is the OS X
+	 * version, I just disable forking altogether for now (JMarc)
+	 */
+	pid_t const pid = -1;
+#else
 	// tmp_ret will be located (usually) in /tmp
 	// will that be a problem?
 	// Note that this calls ForkedCalls::fork(), so it's
@@ -2401,6 +2410,7 @@ int AutoSaveBuffer::generateChild()
 	// you should set pid to -1, and comment out the fork.
 	if (pid != 0 && pid != -1)
 		return pid;
+#endif
 
 	// pid = -1 signifies that lyx was unable
 	// to fork. But we will do the save

@@ -150,7 +150,7 @@ int ForkedProcess::run(Starttype type)
 
 bool ForkedProcess::running() const
 {
-	if (!pid())
+	if (pid() <= 0)
 		return false;
 
 #if !defined (_WIN32)
@@ -170,7 +170,7 @@ bool ForkedProcess::running() const
 void ForkedProcess::kill(int tol)
 {
 	lyxerr << "ForkedProcess::kill(" << tol << ')' << endl;
-	if (pid() == 0) {
+	if (pid() <= 0) {
 		lyxerr << "Can't kill non-existent process!" << endl;
 		return;
 	}
