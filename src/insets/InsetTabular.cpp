@@ -802,6 +802,7 @@ void Tabular::copyColumn(col_type const column)
 
 void Tabular::updateIndexes()
 {
+	setBuffer(buffer());
 	col_type ncols = column_info.size();
 	row_type nrows = row_info.size();
 	numberofcells = 0;
