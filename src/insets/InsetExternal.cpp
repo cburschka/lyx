@@ -718,6 +718,9 @@ void InsetExternal::validate(LaTeXFeatures & features) const
 	case OutputParams::HTML:
 		format = "html";
 		break;
+	case OutputParams::TEXT:
+		format = "text";
+		break;
 	}
 	external::Template::Formats::const_iterator cit =
 		et.formats.find(format);
