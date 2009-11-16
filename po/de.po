@@ -96,8 +96,8 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-11-15 17:16+0100\n"
-"PO-Revision-Date: 2009-11-15 17:21+0100\n"
-"Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
+"PO-Revision-Date: 2009-11-16 09:22+0100\n"
+"Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1773,7 +1773,9 @@ msgstr "&Breite festlegen:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:174
 msgid "Scale image to maximum size not exceeding width and height"
-msgstr "Skalieren Sie das Bild auf die maximale Größe, die sowohl Höhe und Breite nicht überschreitet"
+msgstr ""
+"Skaliert die Grafik auf die maximale Größe, die weder Höhe noch Breite "
+"überschreitet"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:187
 msgid "Rotate Graphics"
@@ -1781,7 +1783,7 @@ msgstr "Grafik drehen"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:202
 msgid "Check to change the order of rotating and scaling"
-msgstr "Auswählen, um die Reihenfolge von Rotieren und Skalieren zu ändern"
+msgstr "Wählen Sie dies, um die Reihenfolge von Rotieren und Skalieren zu ändern"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:205
 msgid "Ro&tate after scaling"
@@ -2000,7 +2002,9 @@ msgstr "Listing-Parameter"
 #: src/frontends/qt4/ui/ListingsUi.ui:507
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:83
 msgid "Check it to enter parameters that are not recognizable by LyX"
-msgstr "Auswählen, wenn Sie Parameter eingeben möchten, die nicht von LyX erkannt werden"
+msgstr ""
+"Wählen Sie dies, wenn Sie Parameter eingeben möchten, die nicht von LyX erkannt "
+"werden"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:69
 #: src/frontends/qt4/ui/ListingsUi.ui:510
@@ -2231,7 +2235,7 @@ msgstr "Platzierung"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:35
 msgid "Check for inline listings"
-msgstr "Auswählen für eingebettete Listings"
+msgstr "Wählen Sie dies für eingebettete Listings"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:38
 msgid "&Inline listing"
@@ -2239,7 +2243,7 @@ msgstr "&Eingebettetes Listing"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:45
 msgid "Check for floating listings"
-msgstr "Auswählen, um Listings gleiten zu lassen"
+msgstr "Wählen Sie dies, um Listings gleiten zu lassen"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:48
 msgid "&Float"
@@ -2546,7 +2550,9 @@ msgstr "||x||"
 
 #: src/frontends/qt4/ui/MathsUi.ui:19
 msgid "The AMS LaTeX packages are only used if symbols from the AMS math toolbars are inserted into formulas"
-msgstr "Die AMS LaTeX-Pakete werden nur verwendet, wenn Symbole der AMS Werkzeugleisten in Formeln eingefügt werden"
+msgstr ""
+"Die AMS-LaTeX-Pakete werden nur verwendet, wenn Symbole der AMS-"
+"Werkzeugleisten in Formeln eingefügt werden"
 
 #: src/frontends/qt4/ui/MathsUi.ui:22
 msgid "&Use AMS math package automatically"
@@ -2554,7 +2560,7 @@ msgstr "&AMS-Mathe-Paket automatisch verwenden"
 
 #: src/frontends/qt4/ui/MathsUi.ui:32
 msgid "The AMS LaTeX packages are always used"
-msgstr "Die AMS LaTeX-Pakete werden immer verwendet"
+msgstr "Die AMS-LaTeX-Pakete werden immer verwendet"
 
 #: src/frontends/qt4/ui/MathsUi.ui:35
 msgid "Use AMS &math package"
@@ -3135,7 +3141,7 @@ msgstr "Absatzenden auf dem Bildschirm mit einem Alinea-Zeichen markieren."
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:117
 msgid "&Mark end of paragraphs"
-msgstr "Ende von Absätzen &markieren"
+msgstr "Absatzenden &markieren"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:33
 #: src/frontends/qt4/GuiPrefs.cpp:226
@@ -3333,7 +3339,9 @@ msgstr "&Babel verwenden"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:106
 msgid "Check to pass the language globally (to the document class), not locally (to the language package)"
-msgstr "Auswählen, um die Sprache global (in der Dokumentklasse) festzulegen, nicht lokal (im Sprachpaket)"
+msgstr ""
+"Wählen Sie dies, um die Sprache global (in der Dokumentklasse) festzulegen, nicht "
+"lokal (im Sprachpaket)"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:109
 msgid "&Global"
@@ -3357,7 +3365,7 @@ msgstr "Au&to-Ende"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:136
 msgid "Check to highlight foreign languages visually in the work area"
-msgstr "Auswählen, um Fremdsprachen im Arbeitsbereich farbig hervorzuheben"
+msgstr "Wählen Sie dies, um Fremdsprachen im Arbeitsbereich farbig hervorzuheben"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:139
 msgid "Mark &foreign languages"
@@ -3668,7 +3676,7 @@ msgstr "Passt die Ausgabe an einen gegebenen Drucker an. Expertenoption!"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:301
 msgid "Normally, this needs to be checked only if you are using dvips as your printer command and you have config.<printer> files installed for all your printers."
-msgstr "Normalweise müssen Sie dies nur auswählen, wenn Sie dvips als Druckbefehl verwenden und 'config.<printer>'-Dateien für alle Ihre Drucker installiert haben."
+msgstr "Normalerweise müssen Sie dies nur auswählen, wenn Sie dvips als Druckbefehl verwenden und 'config.<printer>'-Dateien für alle Ihre Drucker installiert haben."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:304
 msgid "Adapt &output to printer"
@@ -4195,7 +4203,7 @@ msgstr "Ka&tegorie:"
 
 #: src/frontends/qt4/ui/SymbolsUi.ui:116
 msgid "Select this to display all available characters at once"
-msgstr "Dies auswählen, um alle verfügbaren Zeichen auf einmal anzuzeigen"
+msgstr "Wählen Sie dies, um alle verfügbaren Zeichen auf einmal anzuzeigen"
 
 #: src/frontends/qt4/ui/SymbolsUi.ui:119
 msgid "&Display all"
@@ -4731,7 +4739,7 @@ msgstr "Einheiten des Überhangwerts"
 
 #: src/frontends/qt4/ui/WrapUi.ui:280
 msgid "Check this to allow flexible placement"
-msgstr "Auswählen, um flexible Platzierung zu ermöglichen"
+msgstr "Wählen Sie dies, um flexible Platzierung zu ermöglichen"
 
 #: src/frontends/qt4/ui/WrapUi.ui:283
 msgid "Allow &floating"
@@ -9250,7 +9258,7 @@ msgstr "Sachgebiet"
 
 #: lib/layouts/siamltex.layout:308
 msgid "AMS subject classifications:"
-msgstr "AMS Sachgebietsklassifikationen:"
+msgstr "AMS-Sachgebietsklassifikationen:"
 
 #: lib/layouts/sigplanconf.layout:64
 msgid "Conference"
@@ -9411,7 +9419,7 @@ msgstr "Vorwort:"
 #: lib/layouts/svmono.layout:174
 #: lib/layouts/svmult.layout:99
 msgid "Proof(QED)"
-msgstr "Beweis(QED)"
+msgstr "Beweis (QED)"
 
 #: lib/layouts/svmono.layout:183
 #: lib/layouts/svmult.layout:108
@@ -9428,7 +9436,7 @@ msgstr "Titel*"
 
 #: lib/layouts/svmult.layout:55
 msgid "Institute and e-mail: "
-msgstr "Institut und Email:"
+msgstr "Institut und E-Mail: "
 
 #: lib/layouts/svmult.layout:62
 msgid "MiniTOC"
@@ -9440,7 +9448,7 @@ msgstr "Tiefe des Inhaltsverzeichnisses (Zahl angeben):"
 
 #: lib/layouts/svmult.layout:73
 msgid "List of Abbreviations & Symbols"
-msgstr "Liste der Abkürzungen & Symbole"
+msgstr "Liste der Abkürzungen und Symbole"
 
 #: lib/layouts/svmult.layout:120
 #: lib/layouts/svmult.layout:138
@@ -9452,7 +9460,7 @@ msgstr "Liste der Abkürzungen & Symbole"
 #: lib/layouts/svmult.layout:245
 #: lib/layouts/svmult.layout:269
 msgid "For editors"
-msgstr "Für Editoren"
+msgstr "Für Herausgeber"
 
 #: lib/layouts/svmult.layout:137
 msgid "List of Contributors"
@@ -9484,11 +9492,11 @@ msgstr "Randnotiz (nicht numm.)"
 
 #: lib/layouts/tufte-book.layout:131
 msgid "NewThought"
-msgstr "NeuerGedanke"
+msgstr "Neuer Gedanke"
 
 #: lib/layouts/tufte-book.layout:135
 msgid "new thought"
-msgstr "neuer Gedanke"
+msgstr "Neuer Gedanke"
 
 #: lib/layouts/tufte-book.layout:145
 msgid "AllCaps"
@@ -10457,7 +10465,7 @@ msgstr "Beispiel \\thetheorem."
 #: lib/layouts/theorems.inc:200
 #: lib/layouts/theorems-ams.inc:200
 msgid "Problem \\thetheorem."
-msgstr "Problem \\thetheorem.}"
+msgstr "Problem \\thetheorem."
 
 #: lib/layouts/theorems.inc:217
 #: lib/layouts/theorems-ams.inc:217
@@ -10851,7 +10859,7 @@ msgstr "Setzt die Tabellennummerierung am Abschnittsanfang zurück und stellt de
 
 #: lib/layouts/theorems-ams-bytype.module:2
 msgid "Theorems (AMS, Numbered by Type)"
-msgstr "Theoreme (AMS, nummeriert durch Typ)"
+msgstr "Theoreme (AMS, nach Typ nummeriert)"
 
 #: lib/layouts/theorems-ams-bytype.module:11
 msgid "Defines theorem environments and the proof environment using the extended AMS machinery. Both numbered and unnumbered types are provided. Contrary to the plain AMS Theorem module, the different theorem types provided here each have a separate counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, proposition 4, ...). The numbering's scope is the whole document. For chapter- and section-wide numbering, use one of the 'within Sections'/'within Chapters' modules, respectively."
@@ -10969,7 +10977,7 @@ msgstr "Zusammenfassung."
 
 #: lib/layouts/theorems-ams-extended.module:279
 msgid "Acknowledgement \\thetheorem."
-msgstr "Danksagung \\thetheorem"
+msgstr "Danksagung \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:293
 #: lib/layouts/theorems-ams-extended-bytype.module:232
@@ -11036,7 +11044,7 @@ msgstr "Frage."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:2
 msgid "Theorems (AMS-Extended, Numbered by Type)"
-msgstr "Theoreme (AMS-erweitert, nummeriert durch Typ)"
+msgstr "Theoreme (AMS-erweitert, nach Typ nummeriert)"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:12
 msgid "Defines some additional theorem environments for use with the AMS theorems packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, Summary, Acknowledgement, Conclusion, Assumption, and Case, in both numbered and non-numbered forms. Contrary to the plain AMS-Extended module, the different theorem types provided here each have a separate counter (e.g., criterion 1, criterion 2, axiom 1, assumption 1, criterion 3, ..., as opposed to criterion 1, criterion 2, axiom 3, assumption 4, ...)."
@@ -11084,11 +11092,16 @@ msgstr "Theoreme (AMS)"
 
 #: lib/layouts/theorems-ams.module:8
 msgid "Defines theorem environments and the proof environment using the extended AMS machinery. Both numbered and unnumbered types are provided. By default, the theorems are numbered consecutively throughout the document. This can be changed by loading one of the 'Theorems (Numbered by ...)' modules."
-msgstr "Definiert Theorem-Umgebungen und die Beweis-Umgebung für das erweiterte AMS. Sowohl nummerierte als auch nicht-nummerierte Umgebungen werden bereitgestellt. Standardmäßig werden die Theoreme über das gesamte Dokument hinweg durchnummeriert. Das kann durch das Laden anderer Theorem-Module (z.B. 'Theorem (abschnittsweise ...)') geändert werden."
+msgstr ""
+"Definiert Theorem-Umgebungen und die Beweis-Umgebung für das erweiterte AMS. "
+"Sowohl nummerierte als auch nicht-nummerierte Umgebungen werden "
+"bereitgestellt. Standardmäßig werden die Theoreme über das gesamte Dokument "
+"hinweg durchnummeriert. Das kann durch das Laden anderer Theorem-Module (z."
+"B. 'Theorem (abschnittsweise ...)') geändert werden."
 
 #: lib/layouts/theorems-bytype.module:2
 msgid "Theorems (Numbered by Type)"
-msgstr "Theoreme (nummeriert durch Typ)"
+msgstr "Theoreme (nach Typ nummeriert)"
 
 #: lib/layouts/theorems-bytype.module:10
 msgid "Defines some theorem environments for use with non-AMS classes. Contrary to the plain Theorem module, the different theorem types provided here each have a separate counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, proposition 4, ...). The numbering's scope is the whole document. For chapter- and section-wide numbering, use one of the 'within Sections'/'within Chapters' modules, respectively."
@@ -11096,7 +11109,7 @@ msgstr "Definiert Theorem-Umgebungen für Nicht-AMS-Klassen. Im Gegensatz zum no
 
 #: lib/layouts/theorems-chap-bytype.module:2
 msgid "Theorems (Numbered by Type within Chapters)"
-msgstr "Theoreme (nummeriert durch Typ innerhalb Kapitel)"
+msgstr "Theoreme (kapitelweise nach Typ nummeriert)"
 
 #: lib/layouts/theorems-chap-bytype.module:9
 msgid "Defines some theorem environments for use with non-AMS classes. Contrary to the plain Theorem module, the different theorem types provided here each have a separate counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, proposition 4, ...). The numbering is reset at each chapter start."
@@ -11104,15 +11117,18 @@ msgstr "Definiert Theorem-Umgebungen für Nicht-AMS-Klassen. Im Gegensatz zum no
 
 #: lib/layouts/theorems-chap.module:2
 msgid "Theorems (Numbered by Chapter)"
-msgstr "Theoreme (nummeriert durch Kapitel)"
+msgstr "Theoreme (kapitelweise nummeriert)"
 
 #: lib/layouts/theorems-chap.module:7
 msgid "Numbers theorems and the like by chapter (i.e., the counter is reset at each chapter start). Use this module only with document classes that provide a chapter environment."
-msgstr "Nummeriert Theoreme und Ähnliches kapitelweise  (d.h. der Zähler wird am Anfang jedes Kapitels zurückgesetzt). Benutzen Sie dieses Modul nur mit Dokumentklassen die Kapitel verwenden."
+msgstr ""
+"Nummeriert Theoreme und Ähnliches kapitelweise (d.h. der Zähler wird am "
+"Anfang jedes Kapitels zurückgesetzt). Benutzen Sie dieses Modul nur mit "
+"Dokumentklassen die Kapitel verwenden."
 
 #: lib/layouts/theorems-sec-bytype.module:2
 msgid "Theorems (Numbered by Type within Sections)"
-msgstr "Theoreme (nummeriert durch Typ innerhalb Abschnitt)"
+msgstr "Theoreme (abschnittsweise nach Typ nummeriert)"
 
 #: lib/layouts/theorems-sec-bytype.module:9
 msgid "Defines some theorem environments for use with non-AMS classes. Contrary to the plain Theorem module, the different theorem types provided here each have a separate counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, proposition 4, ...). The numbering is reset at each section start."
@@ -11120,15 +11136,17 @@ msgstr "Definiert Theorem-Umgebungen für Nicht-AMS-Klassen. Im Gegensatz zum no
 
 #: lib/layouts/theorems-sec.module:2
 msgid "Theorems (Numbered by Section)"
-msgstr "Theoreme (nummeriert durch Abschnitt)"
+msgstr "Theoreme (abschnittsweise nummeriert)"
 
 #: lib/layouts/theorems-sec.module:6
 msgid "Numbers theorems and the like by section (i.e., the counter is reset at each section start)."
-msgstr "Nummeriert Theoreme und Ähnliches abschnittsweise (d.h. der Zähler wird zu Beginn jedes Abschnittes zurückgesetzt)."
+msgstr ""
+"Nummeriert Theoreme abschnittsweise (d.h. der Zähler wird zu Beginn jedes "
+"Abschnittes zurückgesetzt)."
 
 #: lib/layouts/theorems-starred.module:2
 msgid "Theorems (Unnumbered)"
-msgstr "Theoreme (unnummeriert)"
+msgstr "Theoreme (nicht nummeriert)"
 
 #: lib/layouts/theorems-starred.module:6
 msgid "Defines only unnumbered theorem environments, and the proof environment, using the extended AMS machinery."
@@ -13368,7 +13386,7 @@ msgstr "Fenster schließen|t"
 
 #: lib/ui/stdmenus.inc:75
 msgid "Update local directory from repository|d"
-msgstr "Lokales Verzeichnis mit dem Repositorium aktualisieren|p"
+msgstr "Lokales Verzeichnis aus dem Repositorium aktualisieren|p"
 
 #: lib/ui/stdmenus.inc:76
 msgid "Revert to Repository Version|v"
@@ -14349,7 +14367,7 @@ msgstr "SVN-Dateisperrung verwenden"
 
 #: lib/ui/stdtoolbars.inc:261
 msgid "Update local directory from repository"
-msgstr "Lokales Verzeichnis mit dem Repositorium aktualisieren"
+msgstr "Lokales Verzeichnis aus dem Repositorium aktualisieren"
 
 #: lib/ui/stdtoolbars.inc:264
 msgid "Math Panels"
@@ -14588,9 +14606,7 @@ msgstr "Standard\t\\frac"
 msgid ""
 "Nice fraction (3/4)\t\\n"
 "icefrac"
-msgstr ""
-"Mit (3/4)\t\\n"
-"icefrac"
+msgstr "Mit (3/4)\t\\nicefrac"
 
 #: lib/ui/stdtoolbars.inc:348
 msgid "Unit (km)\t\\unit"
@@ -15720,7 +15736,7 @@ msgstr "bigwedge"
 
 #: lib/ui/stdtoolbars.inc:652
 msgid "AMS Miscellaneous"
-msgstr "AMS Verschiedenes"
+msgstr "Verschiedenes (AMS)"
 
 #: lib/ui/stdtoolbars.inc:653
 msgid "digamma"
@@ -15856,7 +15872,7 @@ msgstr "diagdown"
 
 #: lib/ui/stdtoolbars.inc:690
 msgid "AMS Arrows"
-msgstr "AMS Pfeile"
+msgstr "Pfeile (AMS)"
 
 #: lib/ui/stdtoolbars.inc:691
 msgid "dashleftarrow"
@@ -16004,7 +16020,7 @@ msgstr "multimap"
 
 #: lib/ui/stdtoolbars.inc:730
 msgid "AMS Relations"
-msgstr "AMS Relationen"
+msgstr "Relationen (AMS)"
 
 #: lib/ui/stdtoolbars.inc:731
 msgid "leqq"
@@ -16272,7 +16288,7 @@ msgstr "pitchfork"
 
 #: lib/ui/stdtoolbars.inc:799
 msgid "AMS Negative Relations"
-msgstr "AMS Negierte Relationen"
+msgstr "Negierte Relationen (AMS)"
 
 #: lib/ui/stdtoolbars.inc:800
 msgid "nless"
@@ -16476,7 +16492,7 @@ msgstr "nshortparallel"
 
 #: lib/ui/stdtoolbars.inc:852
 msgid "AMS Operators"
-msgstr "AMS Operatoren"
+msgstr "Operatoren (AMS)"
 
 #: lib/ui/stdtoolbars.inc:853
 msgid "dotplus"
@@ -17509,8 +17525,9 @@ msgid ""
 "Remove emergency file now?\n"
 "(%1$s)"
 msgstr ""
-"Notspeicherungsdatei jetzt löschen?\n"
-"(%1$s)"
+"Notspeicherungsdatei\n"
+"%1$s\n"
+"jetzt löschen?"
 
 #: src/Buffer.cpp:3322
 #: src/Buffer.cpp:3332
@@ -18939,11 +18956,11 @@ msgstr "Verzögerung des Vervollständigungs-Popup"
 
 #: src/LyXRC.cpp:3007
 msgid "Select to display the completion popup in math mode."
-msgstr "Auswählen, um das Vervollständigungs-Popup im Mathe-Modus anzuzeigen."
+msgstr "Wählen Sie dies, um das Vervollständigungs-Popup im Mathe-Modus anzuzeigen."
 
 #: src/LyXRC.cpp:3011
 msgid "Select to display the completion popup in text mode."
-msgstr "Auswählen, um das Vervollständigungs-Popup im Text-Modus anzuzeigen."
+msgstr "Wählen Sie dies, um das Vervollständigungs-Popup im Text-Modus anzuzeigen."
 
 #: src/LyXRC.cpp:3015
 msgid "Show the completion popup without delay after non-unique completion attempt."
@@ -18959,11 +18976,11 @@ msgstr "Verzögerung der Wortvervollständigung"
 
 #: src/LyXRC.cpp:3027
 msgid "Select to display the inline completion in math mode."
-msgstr "Auswählen, um Inline-Vervollständigung im Mathe-Modus anzuzeigen."
+msgstr "Wählen Sie dies, um Inline-Vervollständigung im Mathe-Modus anzuzeigen."
 
 #: src/LyXRC.cpp:3031
 msgid "Select to display the inline completion in text mode."
-msgstr "Auswählen, um Wortvervollständigung im Text-Modus anzuzeigen."
+msgstr "Wählen Sie dies, um Wortvervollständigung im Text-Modus anzuzeigen."
 
 #: src/LyXRC.cpp:3035
 msgid "Use \"...\" to shorten long completions."
@@ -22628,7 +22645,7 @@ msgid ""
 "Please specify the sorting of this entry manually, as\n"
 "explained in the User Guide."
 msgstr ""
-"Das Stichwort '%1$s' konnte nicht\n"
+"Der Stichwortverzeichnis-Eintrag '%1$s' konnte nicht\n"
 "automatisch sortiert werden.\n"
 "Bitte legen Sie die Sortierung manuell fest. Hinweise\n"
 "zum Vorgehen finden Sie im Benutzerhandbuch."
