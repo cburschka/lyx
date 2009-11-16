@@ -379,13 +379,20 @@ void MathData::drawT(TextPainter & pain, int x, int y) const
 
 void MathData::updateMacros(Cursor * cur, MacroContext const & mc)
 {
+	// If we are editing a macro, we cannot update it immediately,
+	// as no undo steps will be recorded (bug 6208).
+	InsetMath const * inmath = cur ? cur->inset().asInsetMath() : 0;
+	MathMacro const * inmacro = inmath ? inmath->asMacro() : 0;
+	docstring const edited_name = inmacro ? inmacro->name() : docstring();
+
 	// go over the array and look for macros
 	for (size_t i = 0; i < size(); ++i) {
 		MathMacro * macroInset = operator[](i).nucleus()->asMacro();
 		if (!macroInset || macroInset->name_[0] == '^'
-				|| macroInset->name_[0] == '_')
+				|| macroInset->name_[0] == '_'
+				|| macroInset->name() == edited_name)
 			continue;
-		
+
 		// get macro
 		macroInset->updateMacro(mc);
 		size_t macroNumArgs = 0;
