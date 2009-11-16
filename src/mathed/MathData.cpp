@@ -380,7 +380,7 @@ void MathData::drawT(TextPainter & pain, int x, int y) const
 void MathData::updateMacros(Cursor * cur, MacroContext const & mc)
 {
 	// If we are editing a macro, we cannot update it immediately,
-	// as no undo steps will be recorded (bug 6208).
+	// otherwise wrong undo steps will be recorded (bug 6208).
 	InsetMath const * inmath = cur ? cur->inset().asInsetMath() : 0;
 	MathMacro const * inmacro = inmath ? inmath->asMacro() : 0;
 	docstring const edited_name = inmacro ? inmacro->name() : docstring();
