@@ -3095,7 +3095,7 @@ msgid ""
 "printer command and you have config.<printer> files installed for all your "
 "printers."
 msgstr ""
-"Normalweise müssen Sie dies nur auswählen, wenn Sie dvips als Druckbefehl "
+"Normalerweise müssen Sie dies nur auswählen, wenn Sie dvips als Druckbefehl "
 "verwenden und 'config.<printer>'-Dateien für alle Ihre Drucker installiert "
 "haben."
 
@@ -16911,8 +16911,8 @@ msgid ""
 "specified, an internal routine is used."
 msgstr ""
 "Hier können Sie ein externes Programm festlegen, das zur Formatierung von "
-"Tabellen in der Text-Ausgabe verwendet wird. Beispiel: \"groff -t -Tlatin1 $"
-"$FName\", wobei $$FName die Eingabedatei ist. Wird \"\" angegeben, verwendet "
+"Tabellen in der Text-Ausgabe verwendet wird. Beispiel: \"groff -t -Tlatin1 "
+"$$FName\", wobei $$FName die Eingabedatei ist. Wird \"\" angegeben, verwendet "
 "LyX eine interne Routine."
 
 #: src/LyXRC.cpp:2497
@@ -20898,8 +20898,7 @@ msgstr "Verfügbare Listing-Parameter sind %1$s"
 #, c-format
 msgid "Available listings parameters containing string \"%1$s\" are %2$s"
 msgstr ""
-"Verfügbare Listing-Parameter, die die Zeichenkette \"%1$s\" enthalten, sind %"
-"2$s"
+"Verfügbare Listing-Parameter, die die Zeichenkette \"%1$s\" enthalten, sind %2$s"
 
 #: src/insets/InsetListingsParams.cpp:652
 #, c-format
