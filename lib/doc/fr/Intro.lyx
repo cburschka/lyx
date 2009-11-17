@@ -1,4 +1,4 @@
-#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -729,7 +729,7 @@ D'accord, un certain nombre de traitements de texte modernes peuvent gérer
  adopté des définitions de style et ont évolué en direction du concept WYSIWYM.
  Cependant, ils ne le font que depuis peu, alors que LyX est construit sur
  le système de préparation de document LaTeX.
- LaTeX est là depuis plus de 15 ans, et 
+ LaTeX est là depuis plus de 20 ans, et 
 \shape slanted
 fonctionne.
 \end_layout
@@ -1086,7 +1086,7 @@ Si certains d'entre vous ont imprimé les manuels, d'autres les lisent en
  dans le corps du document.
  Les notes de bas de page, qui ont l'aspect suivant: 
 \begin_inset Graphics
-	filename clipart/footnoteQt4.png
+	filename /usr/local/share/lyx-1.6.5svn/doc/fr/clipart/footnoteQt4.png
 	scale 75
 
 \end_inset
@@ -2773,9 +2773,18 @@ http://www.devel.lyx.org/
 
 .
  Il y a aussi une site de référence pour les traductions en français, sur
- laquelle vous pouvez télécharger les fichiers les plus récents; l'adresse
- du site étant susceptible de modifications, voyez les archives de la liste
- pour obtenir cette information.
+ laquelle vous pouvez télécharger les fichiers les plus récents 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://lyxfr.free.fr/
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \end_body
