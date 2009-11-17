@@ -1,4 +1,4 @@
-#LyX 1.6.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -13042,6 +13042,34 @@ no_bar
 
 .
  Each of these turns on or off the corresponding attribute.
+\begin_inset Newline newline
+\end_inset
+
+For example, 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+emph
+\end_layout
+
+\end_inset
+
+ turns on emphasis, and no_emph turns it off.
+ If the latter seems puzzling, remember that the font settings for the present
+ context are generally inherited from the surrounding context.
+ So 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+no_emph
+\end_layout
+
+\end_inset
+
+ would turn off the emphasis that was anyway in effect, say, in a theorem
+ environment.
 \end_layout
 
 \begin_layout Description
