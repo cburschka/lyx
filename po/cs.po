@@ -1905,6 +1905,8 @@ msgid ""
 "The AMS LaTeX packages are only used if symbols from the AMS math toolbars "
 "are inserted into formulas"
 msgstr ""
+"LaTeX-ové AMS balíèky jsou pou¾ity pouze pokud jsou vlo¾eny AMS symboly"
+" z panelu nástrojù do mat. formulí."
 
 #: src/frontends/qt4/ui/MathsUi.ui:28
 msgid "&Use AMS math package automatically"
@@ -1912,7 +1914,7 @@ msgstr "&Automaticky pou¾ívat balíèek AMS math"
 
 #: src/frontends/qt4/ui/MathsUi.ui:38
 msgid "The AMS LaTeX packages are always used"
-msgstr ""
+msgstr "LaTeX-ové AMS balíèky jsou pou¾ity v¾dy"
 
 #: src/frontends/qt4/ui/MathsUi.ui:41
 msgid "Use AMS &math package"
@@ -1923,6 +1925,7 @@ msgid ""
 "The LaTeX package esint is only used if special integral symbols are "
 "inserted into formulas"
 msgstr ""
+"LaTeX-ový balíèek esint je pou¾it pouze pokud jsou do formulí vlo¾eny speciální symboly pro integrál."
 
 #: src/frontends/qt4/ui/MathsUi.ui:51
 msgid "Use esint package &automatically"
@@ -1930,7 +1933,7 @@ msgstr "Automaticky pou¾ívat balíèek &esint"
 
 #: src/frontends/qt4/ui/MathsUi.ui:61
 msgid "The LaTeX package esint is always used"
-msgstr ""
+msgstr "LaTeX-ový balíèek esint je pou¾it v¾dy"
 
 #: src/frontends/qt4/ui/MathsUi.ui:64
 msgid "Use &esint package"
@@ -9122,7 +9125,7 @@ msgstr ""
 
 #: lib/layouts/theorems-ams-bytype.module:2
 msgid "Theorems (AMS, Numbered by Type)"
-msgstr "Teorémy (AMS, dle typu)"
+msgstr "Teorémy (AMS, èísla dle typu)"
 
 #: lib/layouts/theorems-ams-bytype.module:11
 msgid ""
@@ -9135,13 +9138,21 @@ msgid ""
 "chapter- and section-wide numbering, use one of the 'within "
 "Sections'/'within Chapters' modules, respectively."
 msgstr ""
+"Definuje nìkterá pøídavná prostøedí pro pou¾ití mat. teorémù a"
+" dùkazù za pou¾ití roz¹íøených vlastností AMS. "
+"Èíslované i neèíslované typy jsou poskytnuty."
+" Na rozdíl od obyèejných modulù pro AMS teorémy, rozdílné typy teorémù "
+"zde mají vlastní èíslování (napø. theorem 1, theorem 2, lemma 1, proposition 1, "
+"theorem 3, lemma 2, ..., na rozdíl od theorem 1, theorem 2, lemma 3, "
+"proposition 4, ...). Èíslování se týká celého dokumentu. Pro èíslování v rámci "
+"kapitol nebo sekcí pou¾ijte patøièné moduly."
+
 
 #: lib/layouts/theorems-ams-extended-bytype.module:2
 msgid "Theorems (AMS-Extended, Numbered by Type)"
-msgstr "Teorémy (roz¹íøení AMS, dle typu)"
+msgstr "Teorémy (roz¹íøení AMS, èísla dle typu)"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:12
-#, fuzzy
 msgid ""
 "Defines some additional theorem environments for use with the AMS theorems "
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
@@ -9151,10 +9162,12 @@ msgid ""
 "criterion 1, criterion 2, axiom 1, assumption 1, criterion 3, ..., as "
 "opposed to criterion 1, criterion 2, axiom 3, assumption 4, ...)."
 msgstr ""
-"Definuje nìkterá pøídavná matematická prostøedí pro pou¾ití s balíèky AMS. "
+"Definuje nìkterá pøídavná prostøedí pro pou¾ití mat. teorémù s balíèky AMS. "
 "Zahrnuje Criterion, Algorithm, Axiom, Condition, Note, Notation, Summary, "
-"Acknowledgement, Conclusion, Fact, Assumption, and Case v obou formách "
-"(èíslované/neèísované)."
+"Acknowledgement, Conclusion, Assumption, Case - v èíslované i neèíslované "
+"verzi. Na rozdíl od obyèejných modulù pro AMS roz¹íøení, rozdílné typy teorémù "
+"zde mají vlastní èíslování (napø. criterion 1, criterion 2, axiom 1, assumption 1,"
+"criterion 3, ..., na rozdíl od criterion 1, criterion 2, axiom 3, assumption 4, ...)."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:63
 msgid "Criterion \\thecriterion."
@@ -9297,16 +9310,15 @@ msgid "Theorems (AMS-Extended)"
 msgstr "Teorémy (roz¹íøení AMS)"
 
 #: lib/layouts/theorems-ams-extended.module:8
-#, fuzzy
 msgid ""
 "Defines some additional theorem environments for use with the AMS theorems "
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
 "Summary, Acknowledgement, Conclusion, Fact, Assumption, and Case, in both "
 "numbered and non-numbered forms."
 msgstr ""
-"Definuje nìkterá pøídavná matematická prostøedí pro pou¾ití s balíèky AMS. "
+"Definuje nìkterá pøídavná matematická prostøedí pro pou¾ití s balíèky AMS pro teorémy. "
 "Zahrnuje Criterion, Algorithm, Axiom, Condition, Note, Notation, Summary, "
-"Acknowledgement, Conclusion, Fact, Assumption, and Case v obou formách "
+"Acknowledgement, Conclusion, Fact, Assumption,  Case v obou formách "
 "(èíslované/neèísované)."
 
 #: lib/layouts/theorems-ams-extended.module:37
@@ -9354,21 +9366,20 @@ msgid "Theorems (AMS)"
 msgstr "Theorems (AMS)"
 
 #: lib/layouts/theorems-ams.module:8
-#, fuzzy
 msgid ""
 "Defines theorem environments and the proof environment using the extended "
 "AMS machinery. Both numbered and unnumbered types are provided. By default, "
 "the theorems are numbered consecutively throughout the document. This can be "
 "changed by loading one of the 'Theorems (Numbered by ...)' modules."
 msgstr ""
-"Definuje prostøedí mat. vìt a dùkazù za pou¾ití ro¹íøení AMS. K dispozici "
+"Definuje prostøedí mat. teorémù a dùkazù za pou¾ití ro¹íøených vlastností AMS. K dispozici "
 "jsou oba èíslované a neoèíslované typy. Implicitnì jsou vìty èíslovány "
 "postupnì bez ohledu na strukturu dokumentu. To lze zmìnit volbou dal¹ích "
 "teorém. modulù."
 
 #: lib/layouts/theorems-bytype.module:2
 msgid "Theorems (Numbered by Type)"
-msgstr "Teorémy (dle typu)"
+msgstr "Teorémy (èísla dle typu)"
 
 #: lib/layouts/theorems-bytype.module:10
 msgid ""
@@ -9380,10 +9391,16 @@ msgid ""
 "chapter- and section-wide numbering, use one of the 'within "
 "Sections'/'within Chapters' modules, respectively."
 msgstr ""
+"Definuje nìkterá prostøedí mat. teorémù pro pou¾ití v tøídách neodvozených od AMS."
+"Na rozdíl od obyèejných modulù pro teorémy, rozdílné typy teorémù"
+" zde mají vlastní èíslování (napø. theorem 1, theorem 2, lemma 1, proposition 1, )"
+"theorem 3, lemma 2, ..., na rozdíl od theorem 1, theorem 2, lemma 3, "
+"proposition 4, ...). Èíslování se týká celého dokumentu. Pro èíslování v rámci "
+"kapitol nebo sekcí pou¾ijte patøièné moduly."
 
 #: lib/layouts/theorems-chap-bytype.module:2
 msgid "Theorems (Numbered by Type within Chapters)"
-msgstr "Teorémy (dle typu v kapitolách)"
+msgstr "Teorémy (èísla dle typu v kapitolách)"
 
 #: lib/layouts/theorems-chap-bytype.module:9
 msgid ""
@@ -9393,20 +9410,25 @@ msgid ""
 "theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, "
 "proposition 4, ...). The numbering is reset at each chapter start."
 msgstr ""
+"Definuje nìkterá prostøedí mat. teorémù pro pou¾ití v tøídách neodvozených od AMS."
+"Na rozdíl od obyèejných modulù pro teorémy, rozdílné typy teorémù"
+" zde mají vlastní èíslování (napø. theorem 1, theorem 2, lemma 1, proposition 1, )"
+"theorem 3, lemma 2, ..., na rozdíl od theorem 1, theorem 2, lemma 3, "
+"proposition 4, ...). Èíslování zaèíná od zaèátku v ka¾dé kapitole."
 
 #: lib/layouts/theorems-chap.module:2
 msgid "Theorems (Numbered by Chapter)"
-msgstr "Teorémy (dle kapitol)"
+msgstr "Teorémy (èísla dle kapitol)"
 
 #: lib/layouts/theorems-chap.module:7
-#, fuzzy
 msgid ""
 "Numbers theorems and the like by chapter (i.e., the counter is reset at each "
 "chapter start). Use this module only with document classes that provide a "
 "chapter environment."
 msgstr ""
-"Oèísluje vìty apod. dle kapitoly. Pou¾ijte tento modul pouze s rozvr¾ením, "
-"je¾ podporuje prostøedí Vìty."
+"Oèísluje mat. teorémy apod. dle kapitoly (tj. èíslování zaèíná znovu v ka¾dé "
+"kapitole. Pou¾ijte tento modul pouze s rozvr¾ením, "
+"je¾ podporuje prostøedí kapitol."
 
 #: lib/layouts/theorems-sec-bytype.module:2
 msgid "Theorems (Numbered by Type within Sections)"
@@ -9420,20 +9442,22 @@ msgid ""
 "theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, "
 "proposition 4, ...). The numbering is reset at each section start."
 msgstr ""
+"Definuje nìkterá prostøedí mat. teorémù pro pou¾ití v tøídách neodvozených od AMS."
+"Na rozdíl od obyèejných modulù pro teorémy, rozdílné typy teorémù"
+" zde mají vlastní èíslování (napø. theorem 1, theorem 2, lemma 1, proposition 1, )"
+"theorem 3, lemma 2, ..., na rozdíl od theorem 1, theorem 2, lemma 3, "
+"proposition 4, ...). Èíslování zaèíná znovu v ka¾dé sekci."
 
 #: lib/layouts/theorems-sec.module:2
-#, fuzzy
 msgid "Theorems (Numbered by Section)"
-msgstr "Teorémy (dle sekcí)"
+msgstr "Teorémy (èísla dle sekcí)"
 
 #: lib/layouts/theorems-sec.module:6
-#, fuzzy
 msgid ""
 "Numbers theorems and the like by section (i.e., the counter is reset at each "
 "section start)."
 msgstr ""
-"Oèísluje vìty apod. dle kapitoly. Pou¾ijte tento modul pouze s rozvr¾ením, "
-"je¾ podporuje prostøedí Vìty."
+"Oèísluje mat. teorémy apod. dle sekcí (tj. èíslování zaèíná znovu v ka¾dé sekci)."
 
 #: lib/layouts/theorems-starred.module:2
 msgid "Theorems (Unnumbered)"
@@ -9448,15 +9472,14 @@ msgstr ""
 "roz¹íøení AMS."
 
 #: lib/layouts/theorems-std.module:7
-#, fuzzy
 msgid ""
 "Defines some theorem environments for use with non-AMS classes. By default, "
 "the theorems are numbered consecutively throughout the document. This can be "
 "changed by loading one of the 'Theorems (Numbered by ...)' modules."
 msgstr ""
-"Definuje nìkterá prostøedí mat. vìt pro pou¾ití v tøídách neodvozených od "
-"AMS.Implicitnì jsou vìty èíslovány postupnì bez ohledu na strukturu "
-"dokumentu.To lze zmìnit volbou dal¹ích teorém. modulù."
+"Definuje nìkterá prostøedí mat. teorémù pro pou¾ití v tøídách neodvozených od "
+"AMS. Implicitnì jsou vìty èíslovány postupnì bez ohledu na strukturu "
+"dokumentu. To lze zmìnit volbou patøièných teorém. modulù."
 
 #: lib/languages:3 src/Font.cpp:51 src/Font.cpp:54 src/Font.cpp:58
 #: src/Font.cpp:63 src/Font.cpp:66
@@ -12298,12 +12321,10 @@ msgid "Functions"
 msgstr "Funkce"
 
 #: lib/ui/stdtoolbars.inc:244
-#, fuzzy
 msgid "Frame decorations"
 msgstr "Dekorace rámù"
 
 #: lib/ui/stdtoolbars.inc:245
-#, fuzzy
 msgid "Big operators"
 msgstr "Velké operátory"
 
@@ -12317,7 +12338,6 @@ msgid "Arrows"
 msgstr "©ipky"
 
 #: lib/ui/stdtoolbars.inc:249
-#, fuzzy
 msgid "AMS arrows"
 msgstr "AMS ¹ipky"
 
@@ -12330,12 +12350,10 @@ msgid "Relations"
 msgstr "Relace"
 
 #: lib/ui/stdtoolbars.inc:252
-#, fuzzy
 msgid "AMS relations"
 msgstr "AMS relace"
 
 #: lib/ui/stdtoolbars.inc:253
-#, fuzzy
 msgid "AMS negative relations"
 msgstr "AMS negované relace"
 
@@ -12344,12 +12362,10 @@ msgid "Dots"
 msgstr "Teèky"
 
 #: lib/ui/stdtoolbars.inc:255
-#, fuzzy
 msgid "AMS operators"
 msgstr "AMS operátory"
 
 #: lib/ui/stdtoolbars.inc:256
-#, fuzzy
 msgid "AMS miscellaneous"
 msgstr "AMS Rùzné"
 
