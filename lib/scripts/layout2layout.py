@@ -52,17 +52,6 @@ def error(message):
     sys.exit(1)
 
 
-def trim_eol(line):
-    " Remove end of line char(s)."
-    if line[-2:-1] == '\r':
-        return line[:-2]
-    elif line[-1:] == '\r' or line[-1:] == '\n':
-        return line[:-1]
-    else:
-        # file with no EOL in last line
-        return line
-
-
 def trim_bom(line):
     " Remove byte order mark."
     if line[0:3] == "\357\273\277":
@@ -71,25 +60,16 @@ def trim_bom(line):
         return line
 
 
-def read(input):
+def read(source):
     " Read input file and strip lineendings."
-    lines = list()
-    first_line = 1
-    while 1:
-        line = input.readline()
-        if not line:
-            break
-        if (first_line):
-            line = trim_bom(line)
-            first_line = 0
-        lines.append(trim_eol(line))
+    lines = source.read().splitlines()
+    lines[0] = trim_bom(lines[0])
     return lines
 
 
 def write(output, lines):
     " Write output file with native lineendings."
-    for line in lines:
-        output.write(line + os.linesep)
+    output.write(os.linesep.join(lines) + os.linesep)
 
 
 # Concatenates old and new in an intelligent way:
@@ -503,16 +483,16 @@ def main(argv):
 
     # Open files
     if len(argv) == 1:
-        input = sys.stdin
+        source = sys.stdin
         output = sys.stdout
     elif len(argv) == 3:
-        input = open(argv[1], 'rb')
+        source = open(argv[1], 'rb')
         output = open(argv[2], 'wb')
     else:
         error(usage(argv[0]))
 
     # Do the real work
-    lines = read(input)
+    lines = read(source)
     format = 1
     while (format < currentFormat):
         format = convert(lines)
@@ -520,7 +500,7 @@ def main(argv):
 
     # Close files
     if len(argv) == 3:
-        input.close()
+        source.close()
         output.close()
 
     return 0
