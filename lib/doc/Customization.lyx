@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 369
+\lyxformat 371
 \begin_document
 \begin_header
 \textclass scrbook
@@ -97,15 +97,21 @@ End
 \use_geometry false
 \use_amsmath 0
 \use_esint 0
+\use_mhchem 1
 \cite_engine basic
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
+\suppress_date false
 \branch OutDated
 \selected 0
 \filename_suffix 0
 \color #f5fae7
 \end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -13680,7 +13686,7 @@ string
 
 \end_inset
 
-] Valid argument are: 
+] Valid arguments are: 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -13742,6 +13748,45 @@ no_bar
 
 .
  Each of these turns on or off the corresponding attribute.
+ For example, 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+emph
+\end_layout
+
+\end_inset
+
+ turns on emphasis, and 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+no_emph
+\end_layout
+
+\end_inset
+
+ turns it off.
+ 
+\begin_inset Newline newline
+\end_inset
+
+If the latter seems puzzling, remember that the font settings for the present
+ context are generally inherited from the surrounding context.
+ So 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+no_emph
+\end_layout
+
+\end_inset
+
+ would turn off the emphasis that was anyway in effect, say, in a theorem
+ environment.
 \end_layout
 
 \begin_layout Description
