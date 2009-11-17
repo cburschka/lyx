@@ -74,6 +74,8 @@ What's new
 - Add tooltips in the Math Options section of the Document Settings
   dialog.
 
+- Fix infinite loop when reading Mac-formatted layout files (bug 3605).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
@@ -95,7 +97,9 @@ What's new
 
 - Revised English LyX Tutorial.
 
-- Updated LyX User's Guide.
+- Updated LyX User's Guide
+
+- Clarify use of layout tags No_Emph, etc (bug 5412).
 
 
 * WINDOWS INSTALLER
