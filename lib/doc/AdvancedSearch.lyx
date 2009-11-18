@@ -1,8 +1,9 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
+\lyxformat 345
 \begin_document
 \begin_header
 \textclass article
+\use_default_options false
 \language english
 \inputencoding auto
 \font_roman default
@@ -13,8 +14,10 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 1
@@ -44,7 +47,12 @@ Introduction to the find advanced feature
 
 \begin_layout Standard
 This is an introduction to the find advanced feature of LyX, that is activated
- through the [C-S-f] sequence (Ctrl+Shift+f).
+ through the [C-S-f] sequence (Ctrl+Shift+f) and can be closed just by hitting
+ [
+\noun on
+Esc
+\noun default
+] unlike other panes.
 \end_layout
 
 \begin_layout Standard
@@ -180,7 +188,7 @@ Now you can try the regular expression based searching facility.
 \begin_inset Foot
 status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 but under the constraint that any subexpression must match a well-formed
  LyX text segment, i.e.
  when matching LaTeX code, no segments with unbalanced {} braces are allowed
@@ -242,10 +250,12 @@ You can use references to subexpressions as usual, enclosing parts of the
 ' key).
  For example, try searching for '
 \begin_inset Formula \regexp{[\^a-z]([a-z]+)}
+
 \end_inset
 
  
 \begin_inset Formula \regexp{\backslash1}
+
 \end_inset
 
 ' in order to find word repetitions, if any.
