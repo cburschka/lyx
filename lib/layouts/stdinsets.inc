@@ -117,9 +117,8 @@ InsetLayout Foot
 			font-weight: bold;
 			text-decoration: underline;
 		}
-		div.foot_inner {
-			display: none;
-		}
+    div.foot { display: inline; }
+		div.foot_inner { display: none; }
 		div.foot:hover div.foot_inner { 
 			display: block; 
 			border: 1px double black; 

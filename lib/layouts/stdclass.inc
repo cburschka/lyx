@@ -35,6 +35,7 @@ Style Standard
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
+	# FIXME This ought to be set dynamically.
 	HTMLStyle
 		div.standard {
 			text-indent: 2em;
