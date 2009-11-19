@@ -497,7 +497,7 @@ int InsetText::docbook(odocstream & os, OutputParams const & runparams) const
 
 docstring InsetText::xhtml(odocstream & os, OutputParams const & runparams) const
 {
-	// FIXME Just a temporary fix, so it will compile.
+	// FIXME XHTMLStream
 	XHTMLStream xs(os);
 	if (undefined()) {
 		xhtmlParagraphs(text_, buffer(), xs, runparams);

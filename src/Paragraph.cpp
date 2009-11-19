@@ -2285,18 +2285,19 @@ pos_type Paragraph::firstWordDocBook(odocstream & os, OutputParams const & runpa
 }
 
 
-pos_type Paragraph::firstWordLyXHTML(odocstream & os, OutputParams const & runparams)
+pos_type Paragraph::firstWordLyXHTML(XHTMLStream & xs, OutputParams const & runparams)
 	const
 {
 	pos_type i;
 	for (i = 0; i < size(); ++i) {
 		if (Inset const * inset = getInset(i)) {
-			inset->xhtml(os, runparams);
+// FIXME XHTMLStream
+//			inset->xhtml(xs, runparams);
 		} else {
 			char_type c = d->text_[i];
 			if (c == ' ')
 				break;
-			os << html::escapeChar(c);
+			xs << html::escapeChar(c);
 		}
 	}
 	return i;
@@ -2375,7 +2376,7 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 
 
 docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
-				    odocstream & os,
+				    XHTMLStream & xs,
 				    OutputParams const & runparams,
 				    Font const & outerfont,
 				    pos_type initial) const
@@ -2399,20 +2400,20 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 		// emphasis
 		if (font_old.emph() != font.fontInfo().emph()) {
 			if (font.fontInfo().emph() == FONT_ON) {
-				os << "<em>";
+				xs << StartTag("em");
 				emph_flag = true;
 			} else if (emph_flag && i != initial) {
-				os << "</em>";
+				xs << EndTag("em");
 				emph_flag = false;
 			}
 		}
 		// bold
 		if (font_old.series() != font.fontInfo().series()) {
 			if (font.fontInfo().series() == BOLD_SERIES) {
-				os << "<strong>";
+				xs << StartTag("strong");
 				bold_flag = true;
 			} else if (bold_flag && i != initial) {
-				os << "</strong>";
+				xs << EndTag("strong");
 				bold_flag = false;
 			}
 		}
@@ -2424,12 +2425,13 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 			OutputParams np = runparams;
 			if (!il.htmlisblock())
 				np.html_in_par = true;
-			retval += inset->xhtml(os, np);
+			// FIXME XHTMLStream
+			// retval += inset->xhtml(xs, np);
 		} else {
 			char_type c = d->text_[i];
 
 			if (style.pass_thru)
-				os.put(c);
+				xs << c;
 			else if (c == '-') {
 				docstring str;
 				int j = i + 1;
@@ -2445,19 +2447,14 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 				}
 				else
 					str += c;
-				os << str;
+				xs << str;
 			} else
-				os << html::escapeChar(c);
+				xs << c;
 		}
 		font_old = font.fontInfo();
 	}
 
-	// FIXME This could be out of order. See above.
-	if (emph_flag)
-		os << "</em>";
-	if (bold_flag)
-		os << "</strong>";
-
+	xs.closeFontTags();
 	return retval;
 }
 

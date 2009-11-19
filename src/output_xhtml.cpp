@@ -296,10 +296,12 @@ XHTMLStream & XHTMLStream::operator<<(EndTag const & etag)
 		TagStack::const_reverse_iterator rit = tag_stack_.rbegin();
 		TagStack::const_reverse_iterator ren = tag_stack_.rend();
 		for (; rit != ren; ++rit) {
+			if (rit->tag_ == etag.tag_)
+				break;
 			if (!html::isFontTag(rit->tag_)) {
 				// we'll just leave it and, presumably, have to close it later.
 				LYXERR0("Unable to close font tag `" << etag.tag_ 
-				        << "' due to open non-font tags.");
+				        << "' due to open non-font tag `" << rit->tag_ << "'.");
 				return *this;
 			}
 		}
@@ -457,8 +459,8 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 			(par == pbegin && runparams.html_in_par) ? false : true;
 		if (opened)
 			openTag(xs, lay);
-		docstring const deferred = from_ascii("");
-//				par->simpleLyXHTMLOnePar(buf, os, runparams, text.outerFont(distance(begin, par)));
+		docstring const deferred = 
+			par->simpleLyXHTMLOnePar(buf, xs, runparams, text.outerFont(distance(begin, par)));
 
 		// We want to issue the closing tag if either:
 		//   (i)  We opened it, and either html_in_par is false,
@@ -588,8 +590,8 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 					else
 						xs << StartTag("span", "class='" + to_utf8(style.name()) + " inneritem'>");
 				}
-//				par->simpleLyXHTMLOnePar(buf, os, runparams, 
-//					text.outerFont(distance(begin, par)), sep);
+				par->simpleLyXHTMLOnePar(buf, xs, runparams, 
+					text.outerFont(distance(begin, par)), sep);
 				if (!isNormalEnv(style) && !labelfirst)
 					xs << EndTag("span");
 				++par;
@@ -663,8 +665,8 @@ void makeCommand(Buffer const & buf,
 	}
 
 	ParagraphList::const_iterator const begin = text.paragraphs().begin();
-//	pbegin->simpleLyXHTMLOnePar(buf, os, runparams,
-//			text.outerFont(distance(begin, pbegin)));
+	pbegin->simpleLyXHTMLOnePar(buf, xs, runparams,
+			text.outerFont(distance(begin, pbegin)));
 	closeTag(xs, style);
 	xs.cr();
 }

@@ -25,6 +25,8 @@ class Text;
 
 struct StartTag {
 	///
+	StartTag(std::string const & tag) : tag_(tag) {}
+	///
 	StartTag(std::string const & tag, std::string const & attr, 
 		bool keepempty = false) 
 		: tag_(tag), attr_(attr), keepempty_(keepempty) {}
