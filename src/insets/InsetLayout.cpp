@@ -354,7 +354,7 @@ InsetLayout::InsetLyXType translateLyXType(std::string const & str)
 string const & InsetLayout::htmltag() const
 {
 	if (htmltag_.empty())
-		htmltag_ = multipar_ ? "div" : "span";
+		htmltag_ = "span";
 	return htmltag_; 
 }
 
