@@ -187,7 +187,11 @@ void XHTMLStream::clearTagDeque()
 XHTMLStream & XHTMLStream::operator<<(docstring const & d)
 {
 	clearTagDeque();
-	os_ << html::htmlize(d);
+	if (nextraw_) {
+		os_ << d;
+		nextraw_ = false;
+	} else
+		os_ << html::htmlize(d);
 	return *this;
 }
 
@@ -195,7 +199,12 @@ XHTMLStream & XHTMLStream::operator<<(docstring const & d)
 XHTMLStream & XHTMLStream::operator<<(const char * s)
 {
 	clearTagDeque();
-	os_ << html::htmlize(from_ascii(s));
+	docstring const d = from_ascii(s);
+	if (nextraw_) {
+		os_ << d;
+		nextraw_ = false;
+	} else
+		os_ << html::htmlize(d);
 	return *this;
 }
 
@@ -203,7 +212,18 @@ XHTMLStream & XHTMLStream::operator<<(const char * s)
 XHTMLStream & XHTMLStream::operator<<(char_type c)
 {
 	clearTagDeque();
-	os_ << html::escapeChar(c);
+	if (nextraw_) {
+		os_ << c;
+		nextraw_ = false;
+	} else
+		os_ << html::escapeChar(c);
+	return *this;
+}
+
+
+XHTMLStream & XHTMLStream::operator<<(NextRaw const &) 
+{ 
+	nextraw_ = true; 
 	return *this;
 }
 

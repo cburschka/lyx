@@ -26,6 +26,7 @@
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
+#include "output_xhtml.h"
 
 #include "support/debug.h"
 #include "support/docstream.h"
@@ -688,31 +689,32 @@ int InsetSpace::docbook(odocstream & os, OutputParams const &) const
 }
 
 
-docstring InsetSpace::xhtml(odocstream & os, OutputParams const &) const
+docstring InsetSpace::xhtml(XHTMLStream & xs, OutputParams const &) const
 {
+	string output;
 	switch (params_.kind) {
 	case InsetSpaceParams::NORMAL:
-		os << " ";
+		output = " ";
 		break;
 	case InsetSpaceParams::ENSKIP:
 	case InsetSpaceParams::ENSPACE:
-		os << "&ensp;";
+		output ="&ensp;";
 		break;
 	case InsetSpaceParams::QQUAD:
-		os << "&emsp;";
+		output ="&emsp;";
 	case InsetSpaceParams::THICK:
 	case InsetSpaceParams::QUAD:
-		os << "&emsp;";
+		output ="&emsp;";
 		break;
 	case InsetSpaceParams::THIN:
-		os << "&thinsp;";
+		output ="&thinsp;";
 		break;
 	case InsetSpaceParams::PROTECTED:
 	case InsetSpaceParams::MEDIUM:
 	case InsetSpaceParams::NEGTHIN:
 	case InsetSpaceParams::NEGMEDIUM:
 	case InsetSpaceParams::NEGTHICK:
-		os << "&nbsp;";
+		output ="&nbsp;";
 		break;
 	case InsetSpaceParams::HFILL:
 	case InsetSpaceParams::HFILL_PROTECTED:
@@ -722,14 +724,17 @@ docstring InsetSpace::xhtml(odocstream & os, OutputParams const &) const
 	case InsetSpaceParams::RIGHTARROWFILL:
 	case InsetSpaceParams::UPBRACEFILL:
 	case InsetSpaceParams::DOWNBRACEFILL:
-		// FIXME Can we do anything with those in HTML?
-		os << '\n';
+		// FIXME XHTML
+		// Can we do anything with those in HTML?
 		break;
 	case InsetSpaceParams::CUSTOM:
 	case InsetSpaceParams::CUSTOM_PROTECTED:
-		// FIXME Probably we could do some sort of blank span?
-		os << '\n';
+		// FIXME XHTML
+		// Probably we could do some sort of blank span?
+		break;
 	}
+	// don't escape the entities!
+	xs << XHTMLStream::NextRaw() << from_ascii(output);
 	return docstring();
 }
 

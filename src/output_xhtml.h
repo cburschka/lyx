@@ -101,6 +101,12 @@ public:
 	XHTMLStream & operator<<(EndTag const &);
 	///
 	XHTMLStream & operator<<(CompTag const &);
+	/// A trivial struct that functions as a stream modifier.
+	/// << NextRaw() causes the next string-like thing sent to the
+	/// stream not to be escaped.
+	struct NextRaw {};
+	///
+	XHTMLStream & operator<<(NextRaw const &);
 private:
 	///
 	void clearTagDeque();
@@ -120,6 +126,8 @@ private:
 	TagDeque pending_tags_;
 	/// remembers the history, so we can make sure we nest properly.
 	TagStack tag_stack_;
+	/// 
+	bool nextraw_;
 };
 
 ///
