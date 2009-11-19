@@ -201,6 +201,8 @@ XHTMLStream & XHTMLStream::operator<<(char_type c)
 
 XHTMLStream & XHTMLStream::operator<<(StartTag const & tag) 
 {
+	if (tag.tag_.empty())
+		return *this;
 	pending_tags_.push_back(tag);
 	if (tag.keepempty_)
 		clearTagDeque();
@@ -210,6 +212,8 @@ XHTMLStream & XHTMLStream::operator<<(StartTag const & tag)
 
 XHTMLStream & XHTMLStream::operator<<(CompTag const & tag) 
 {
+	if (tag.tag_.empty())
+		return *this;
 	clearTagDeque();
 	// tabs?
 	os_ << tag.asTag();
@@ -236,6 +240,8 @@ bool	XHTMLStream::isTagOpen(string const & stag)
 // best to make things work.
 XHTMLStream & XHTMLStream::operator<<(EndTag const & etag)
 {
+	if (etag.tag_.empty())
+		return *this;
 	// first make sure we're not closing an empty tag
 	if (!pending_tags_.empty()) {
 		StartTag const & stag = pending_tags_.back();
