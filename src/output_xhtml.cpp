@@ -336,6 +336,8 @@ XHTMLStream & XHTMLStream::operator<<(EndTag const & etag)
 		}
 		// now close our tag...
 		os_ << etag.asEndTag();
+		tag_stack_.pop_back();
+
 		// ...and restore the other tags.
 		rit = fontstack.rbegin();
 		ren = fontstack.rend();
