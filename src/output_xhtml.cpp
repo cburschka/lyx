@@ -143,6 +143,8 @@ void XHTMLStream::writeError(std::string const & s)
 
 bool XHTMLStream::closeFontTags()
 {
+	if (tag_stack_.empty())
+		return true;
 	// first, we close any open font tags we can close
 	StartTag curtag = tag_stack_.back();
 	while (html::isFontTag(curtag.tag_)) {
