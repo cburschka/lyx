@@ -23,6 +23,9 @@ class Buffer;
 class OutputParams;
 class Text;
 
+// Inspiration for the *Tag structs and for XHTMLStream
+// came from MathStream and its cousins.
+
 struct StartTag {
 	///
 	StartTag(std::string const & tag) : tag_(tag) {}
