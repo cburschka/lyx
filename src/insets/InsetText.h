@@ -79,7 +79,10 @@ public:
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	///
-	docstring xhtml(odocstream &, OutputParams const &) const;
+	docstring xhtml(XHTMLStream &, OutputParams const &) const;
+	// FIXME XHTMLStream to be removed
+	docstring xhtml(odocstream &, OutputParams const &) const 
+		{ return docstring (); }
 	///
 	void validate(LaTeXFeatures & features) const;
 
