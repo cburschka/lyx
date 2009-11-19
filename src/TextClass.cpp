@@ -40,6 +40,15 @@
 #include <fstream>
 #include <sstream>
 
+#ifdef ERROR 
+#undef ERROR
+#endif
+
+#ifdef OK 
+#undef OK
+#endif
+
+
 using namespace std;
 using namespace lyx::support;
 
