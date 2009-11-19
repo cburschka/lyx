@@ -619,15 +619,9 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 					}
 					if (labelfirst)
 						openItemTag(xs, style);
-					else
-						// FIXME This should probalby be put into the layout file rather 
-						// than hardcoded.
-						xs << StartTag("span", "class='" + to_utf8(style.name()) + "_inneritem'");
 				}
 				par->simpleLyXHTMLOnePar(buf, xs, runparams, 
 					text.outerFont(distance(begin, par)), sep);
-				if (!isNormalEnv(style) && !labelfirst)
-					xs << EndTag("span");
 				++par;
 				// We may not want to close the tag yet, in particular,
 				// if we're not at the end...

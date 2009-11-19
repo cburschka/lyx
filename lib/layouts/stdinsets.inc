@@ -77,7 +77,6 @@ InsetLayout Marginal
 	EndFont
 	MultiPar              true
 	NeedProtect           true
-	HTMLTag               div
 	HTMLStyle
 		div.marginal {
 			border: 2px solid black; 
@@ -107,7 +106,6 @@ InsetLayout Foot
 	  Size                Small
 	EndFont
 	MultiPar              true
-	HTMLTag               div
 	HTMLLabel             \arabic{footnote}
 	HTMLInnerTag          div
 	HTMLStyle
@@ -153,7 +151,6 @@ InsetLayout Note:Note
 	  Size                Small
 	EndFont
 	MultiPar              true
-	HTMLTag               div
 	HTMLIsBlock           false
 # FIXME HTML Need CSS
 End
@@ -176,7 +173,6 @@ InsetLayout Note:Greyedout
 			padding-right: 1ex;
 		}
 	EndHTMLStyle
-	HTMLTag               div
 	HTMLIsBlock           false
 End
 
@@ -286,7 +282,6 @@ InsetLayout Float
 	  Size                Small
 	EndFont
 	MultiPar              true
-	HTMLTag               div
 End
 
 InsetLayout Wrap
