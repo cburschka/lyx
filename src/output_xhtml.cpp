@@ -596,7 +596,7 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 					if (labelfirst)
 						openItemTag(xs, style);
 					else
-						xs << StartTag("span", "class='" + to_utf8(style.name()) + " inneritem'>");
+						xs << StartTag("span", "class='" + to_utf8(style.name()) + " inneritem'");
 				}
 				par->simpleLyXHTMLOnePar(buf, xs, runparams, 
 					text.outerFont(distance(begin, par)), sep);
