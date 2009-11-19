@@ -19,6 +19,7 @@
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
+#include "output_xhtml.h"
 
 #include "frontends/Application.h"
 #include "frontends/FontMetrics.h"
@@ -173,9 +174,10 @@ int InsetNewline::docbook(odocstream & os, OutputParams const &) const
 }
 
 
-docstring InsetNewline::xhtml(odocstream & os, OutputParams const &) const
+docstring InsetNewline::xhtml(XHTMLStream & xs, OutputParams const &) const
 {
-	os << "<br />\n";
+	xs << CompTag("br");
+	xs.cr();
 	return docstring();
 }
 

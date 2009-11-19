@@ -60,6 +60,9 @@ struct EndTag {
 // Tags like <img />
 struct CompTag {
 	///
+	CompTag(std::string const & tag)
+		: tag_(tag) {}
+	///
 	CompTag(std::string const & tag, std::string const & attr)
 		: tag_(tag), attr_(attr) {}
 	/// <tag_ attr_ />
