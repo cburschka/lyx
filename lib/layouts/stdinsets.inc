@@ -167,7 +167,7 @@ InsetLayout Note:Greyedout
 	EndFont
 	MultiPar              true
 	HTMLStyle
-		span.note_greyedout { 
+		div.note_greyedout { 
 			background-color: #A0A0A0; 
 			padding-left: 1ex;
 			padding-right: 1ex;
@@ -340,6 +340,7 @@ InsetLayout Info
 	HTMLStyle
 		span.info { font-family: sans-serif; }
 	EndHTMLStyle
+	HTMLTag            span
 	MultiPar           false
 End
 
@@ -354,7 +355,6 @@ InsetLayout Info:menu
 	Font
 	  Family              sans
 	EndFont
-	HTMLTag           span
 	HTMLAttr          "class='info menu'"
 	HTMLStyle
 		span.menu { font-family: sans-serif; }
@@ -372,7 +372,6 @@ InsetLayout Info:shortcut
 	Font
 	  Family              sans
 	EndFont
-	HTMLTag           span
 	HTMLAttr          "class='info shortcut'"
 	HTMLStyle
 		span.shortcut { font-family: sans-serif; }
@@ -390,15 +389,14 @@ InsetLayout Info:shortcuts
 	Font
 	  Family              sans
 	EndFont
-	HTMLTag           span
 	HTMLAttr          "class='info shortcut'"
 	HTMLStyle
-		span.shortcut { font-family: sans-serif; }
+		span.shortcuts { font-family: sans-serif; }
 	EndHTMLStyle
 End
 
 InsetLayout Box
 	HTMLStyle
-		span.Frameless { font-family: sans-serif; }
+		div.Frameless { font-family: sans-serif; }
 	EndHTMLStyle
 End
