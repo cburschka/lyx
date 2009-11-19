@@ -2292,8 +2292,7 @@ pos_type Paragraph::firstWordLyXHTML(XHTMLStream & xs, OutputParams const & runp
 	pos_type i;
 	for (i = 0; i < size(); ++i) {
 		if (Inset const * inset = getInset(i)) {
-// FIXME XHTMLStream
-//			inset->xhtml(xs, runparams);
+			inset->xhtml(xs, runparams);
 		} else {
 			char_type c = d->text_[i];
 			if (c == ' ')
@@ -2426,8 +2425,7 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 			OutputParams np = runparams;
 			if (!il.htmlisblock())
 				np.html_in_par = true;
-			// FIXME XHTMLStream
-			// retval += inset->xhtml(xs, np);
+			retval += inset->xhtml(xs, np);
 		} else {
 			char_type c = d->text_[i];
 
