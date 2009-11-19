@@ -211,6 +211,8 @@ What's new
 
 - Fix an infinite loop when selecting multiple displayed equation right
   after each other with LFUN_SCREEN_UP (bug 6237).
+  
+- Fix a crash when pressing PageUp in an empty document (bug 6327).
 
 - Fix a number of assertions when displaying error messages (bug 6205). 
 
