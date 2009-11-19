@@ -291,7 +291,7 @@ InsetLayout Wrap
 	EndFont
 	MultiPar              true
 	HTMLStyle
-		span.wrap { 
+		div.wrap { 
 			float: right;
 			width: 40%;
 			border: 2px solid black;
