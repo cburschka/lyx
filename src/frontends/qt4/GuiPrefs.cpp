@@ -1892,7 +1892,7 @@ void PrefFileformats::updateEditors()
 		editorCO->setCurrentIndex(pos);
 	} else {
 		editorED->setEnabled(true);
-		editorED->setText(toqstr(f.viewer()));
+		editorED->setText(toqstr(f.editor()));
 		editorCO->setCurrentIndex(editorCO->findData(toqstr("custom editor")));
 	}
 }
@@ -1909,7 +1909,7 @@ void PrefFileformats::on_viewerCO_currentIndexChanged(int i)
 
 void PrefFileformats::on_editorCO_currentIndexChanged(int i)
 {
-	bool const custom = editorCO->itemData(i).toString() == "custom viewer";
+	bool const custom = editorCO->itemData(i).toString() == "custom editor";
 	editorED->setEnabled(custom);
 	if (!custom)
 		currentFormat().setViewer(fromqstr(editorCO->itemData(i).toString()));

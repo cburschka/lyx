@@ -246,6 +246,17 @@ void Formats::setViewer(string const & name, string const & command)
 }
 
 
+void Formats::setEditor(string const & name, string const & command)
+{
+	add(name);
+	FormatList::iterator it =
+		find_if(formatlist.begin(), formatlist.end(),
+			FormatNamesEqual(name));
+	if (it != formatlist.end())
+		it->setEditor(command);
+}
+
+
 bool Formats::view(Buffer const & buffer, FileName const & filename,
 		   string const & format_name) const
 {
