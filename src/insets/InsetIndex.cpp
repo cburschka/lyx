@@ -174,7 +174,7 @@ int InsetIndex::docbook(odocstream & os, OutputParams const & runparams) const
 }
 
 
-docstring InsetIndex::xhtml(odocstream &, OutputParams const &) const
+docstring InsetIndex::xhtml(XHTMLStream &, OutputParams const &) const
 {
 	return docstring();
 }

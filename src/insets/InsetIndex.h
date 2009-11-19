@@ -60,7 +60,7 @@ private:
 	int docbook(odocstream &, OutputParams const &) const;
 	/// At the moment, this does nothing. See development/HTML.notes
 	/// for some remarks on what could be done.
-	docstring xhtml(odocstream &, OutputParams const &) const;
+	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///
 	int latex(odocstream &, OutputParams const &) const;
 	///
