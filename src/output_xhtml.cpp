@@ -174,11 +174,19 @@ void XHTMLStream::clearTagDeque()
 	}
 }
 
+
 XHTMLStream & XHTMLStream::operator<<(docstring const & d)
 {
-	// I'm tempted to make sure here that there are no tags in the input
 	clearTagDeque();
 	os_ << html::htmlize(d);
+	return *this;
+}
+
+
+XHTMLStream & XHTMLStream::operator<<(const char * s)
+{
+	clearTagDeque();
+	os_ << html::htmlize(from_ascii(s));
 	return *this;
 }
 

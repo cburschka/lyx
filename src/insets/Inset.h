@@ -53,6 +53,7 @@ class ParConstIterator;
 class ParIterator;
 class Text;
 class TocList;
+class XHTMLStream;
 
 namespace graphics { class PreviewLoader; }
 
@@ -297,7 +298,13 @@ public:
 	virtual int plaintext(odocstream &, OutputParams const &) const = 0;
 	/// docbook output
 	virtual int docbook(odocstream & os, OutputParams const &) const;
-	/// LyX HTML output
+	/// XHTML output
+	/// the inset is expected to write XHTML to the XHTMLStream
+	/// \return any "deferred" material that should be written outside the
+	/// normal stream, and which will in fact be written after the current
+	/// paragraph closes. this is appropriate e.g. for floats.
+	virtual docstring xhtml(XHTMLStream & xs, OutputParams const &) const;
+	// the old one, to be removed
 	virtual docstring xhtml(odocstream & os, OutputParams const &) const;
 	/// the string that is passed to the TOC
 	virtual void tocString(odocstream &) const {}

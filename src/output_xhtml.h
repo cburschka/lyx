@@ -89,6 +89,8 @@ public:
 	///
 	XHTMLStream & operator<<(docstring const &);
 	///
+	XHTMLStream & operator<<(const char *);
+	///
 	XHTMLStream & operator<<(char_type);
 	///
 	XHTMLStream & operator<<(StartTag const &);

@@ -28,6 +28,7 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "MetricsInfo.h"
+#include "output_xhtml.h"
 #include "Text.h"
 #include "TextClass.h"
 
@@ -405,6 +406,12 @@ int Inset::docbook(odocstream &, OutputParams const &) const
 	return 0;
 }
 
+
+docstring Inset::xhtml(XHTMLStream & xs, OutputParams const &) const
+{
+	xs << "[[Inset: " << from_ascii(insetName(lyxCode())) << "]]";
+	return docstring();
+}
 
 docstring Inset::xhtml(odocstream & od, OutputParams const &) const
 {
