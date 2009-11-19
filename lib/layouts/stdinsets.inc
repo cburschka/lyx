@@ -77,9 +77,9 @@ InsetLayout Marginal
 	EndFont
 	MultiPar              true
 	NeedProtect           true
-	HTMLTag               span
+	HTMLTag               div
 	HTMLStyle
-		span.marginal {
+		div.marginal {
 			border: 2px solid black; 
 			padding: 1ex; 
 			margin: 1ex; 
@@ -107,9 +107,9 @@ InsetLayout Foot
 	  Size                Small
 	EndFont
 	MultiPar              true
-	HTMLTag               span
+	HTMLTag               div
 	HTMLLabel             \arabic{footnote}
-	HTMLInnerTag          span
+	HTMLInnerTag          div
 	HTMLStyle
 		span.foot_label {
 			vertical-align: super;
@@ -117,10 +117,10 @@ InsetLayout Foot
 			font-weight: bold;
 			text-decoration: underline;
 		}
-		span.foot_inner {
+		div.foot_inner {
 			display: none;
 		}
-		span.foot:hover span.foot_inner { 
+		div.foot:hover div.foot_inner { 
 			display: block; 
 			border: 1px double black; 
 			margin: 0em 1em;
@@ -154,6 +154,7 @@ InsetLayout Note:Note
 	  Size                Small
 	EndFont
 	MultiPar              true
+	HTMLTag               div
 	HTMLIsBlock           false
 # FIXME HTML Need CSS
 End
@@ -169,7 +170,6 @@ InsetLayout Note:Greyedout
 	  Size                Small
 	EndFont
 	MultiPar              true
-	HTMLTag               span
 	HTMLStyle
 		span.note_greyedout { 
 			background-color: #A0A0A0; 
@@ -177,6 +177,7 @@ InsetLayout Note:Greyedout
 			padding-right: 1ex;
 		}
 	EndHTMLStyle
+	HTMLTag               div
 	HTMLIsBlock           false
 End
 

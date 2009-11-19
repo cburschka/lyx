@@ -35,7 +35,12 @@ Style Standard
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
-	HTMLTag               p
+	HTMLStyle
+		div.standard {
+			text-indent: 2em;
+			margin-bottom: 2ex;
+		}
+	EndHTMLStyle
 End
 
 #Input stdcharstyles.inc
