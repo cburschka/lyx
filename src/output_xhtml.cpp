@@ -79,7 +79,7 @@ bool isFontTag(string const & s)
 {
 	return s == "em" || s == "strong"; // others?
 }
-
+}
 
 ////////////////////////////////////////////////////////////////
 ///
@@ -103,7 +103,7 @@ bool XHTMLStream::closeFontTags()
 {
 	// first, we close any open font tags we can close
 	StartTag curtag = tag_stack_.back();
-	while (isFontTag(curtag.tag_)) {
+	while (html::isFontTag(curtag.tag_)) {
 		os_ << "</" << curtag.tag_ << ">";
 		tag_stack_.pop_back();
 		if (tag_stack_.empty())
@@ -119,7 +119,7 @@ bool XHTMLStream::closeFontTags()
 	TagStack::const_iterator en = tag_stack_.end();
 	bool noFontTags = true;
 	for (; it != en; ++it) {
-		if (isFontTag(it->tag_)) {
+		if (html::isFontTag(it->tag_)) {
 			LYXERR0("Font tag `" << it->tag_ << "' still open in closeFontTags().");
 			noFontTags = false;
 		}
@@ -143,7 +143,7 @@ XHTMLStream & XHTMLStream::operator<<(docstring const & d)
 {
 	// I'm tempted to make sure here that there are no tags in the input
 	clearTagDeque();
-	os_ << htmlize(d);
+	os_ << html::htmlize(d);
 	return *this;
 }
 
@@ -257,13 +257,13 @@ XHTMLStream & XHTMLStream::operator<<(EndTag const & etag)
 	// so the tag was opened, but other tags have been opened since
 	// and not yet closed.
 	// if it's a font tag, though...
-	if (isFontTag(etag.tag_)) {
+	if (html::isFontTag(etag.tag_)) {
 		// it won't be a problem if the other tags open since this one
 		// are also font tags.
 		TagStack::const_reverse_iterator rit = tag_stack_.rbegin();
 		TagStack::const_reverse_iterator ren = tag_stack_.rend();
 		for (; rit != ren; ++rit) {
-			if (!isFontTag(rit->tag_)) {
+			if (!html::isFontTag(rit->tag_)) {
 				// we'll just leave it and, presumably, have to close it later.
 				LYXERR0("Unable to close font tag `" << etag.tag_ 
 				        << "' due to open non-font tags.");
@@ -315,6 +315,7 @@ XHTMLStream & XHTMLStream::operator<<(EndTag const & etag)
 	return *this;
 }
 
+namespace html {
 
 ///////////////////////////////////////////////////////////////
 // OLD STUFF to be replaced
@@ -350,8 +351,6 @@ bool closeTag(odocstream & os, string const & tag)
 	os << from_ascii("</" + tag + ">");
 	return true;
 }
-
-
 
 } // html
 
@@ -500,13 +499,12 @@ ParagraphList::const_iterator makeBibliography(Buffer const & buf,
 }
 
 
-namespace {
-	bool isNormalEnv(Layout const & lay)
-	{
-		return lay.latextype == LATEX_ENVIRONMENT;
-	}
+bool isNormalEnv(Layout const & lay)
+{
+	return lay.latextype == LATEX_ENVIRONMENT;
 }
 
+	
 ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 					      odocstream & os,
 					      OutputParams const & runparams,

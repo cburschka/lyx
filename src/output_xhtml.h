@@ -23,13 +23,6 @@ class Buffer;
 class OutputParams;
 class Text;
 
-///
-void xhtmlParagraphs(Text const & text,
-		       Buffer const & buf,
-		       odocstream & os,
-		       OutputParams const & runparams);
-
-namespace html {
 struct StartTag {
 	///
 	StartTag(std::string const & tag, std::string const & attr, 
@@ -109,7 +102,13 @@ private:
 	TagStack tag_stack_;
 };
 
+///
+void xhtmlParagraphs(Text const & text,
+		       Buffer const & buf,
+		       odocstream & os,
+		       OutputParams const & runparams);
 
+namespace html {
 ///
 docstring escapeChar(char_type c);
 /// converts a string to a form safe for links, etc
