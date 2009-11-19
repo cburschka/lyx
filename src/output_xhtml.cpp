@@ -31,7 +31,6 @@
 #include "support/debug.h"
 #include "support/lstrings.h"
 
-#include <boost/next_prior.hpp>
 #include <vector>
 
 using namespace std;
@@ -74,6 +73,251 @@ docstring htmlize(docstring const & str) {
 		d << escapeChar(*it);
 	return d.str();
 }
+
+
+bool isFontTag(string const & s)
+{
+	return s == "em" || s == "strong"; // others?
+}
+
+
+////////////////////////////////////////////////////////////////
+///
+/// XHTMLStream
+///
+////////////////////////////////////////////////////////////////
+
+XHTMLStream::XHTMLStream(odocstream & os) 
+		:os_(os)
+{}
+
+
+void XHTMLStream::cr() 
+{
+	// tabs?
+	os_ << std::endl;
+}
+
+
+bool XHTMLStream::closeFontTags()
+{
+	// first, we close any open font tags we can close
+	StartTag curtag = tag_stack_.back();
+	while (isFontTag(curtag.tag_)) {
+		os_ << "</" << curtag.tag_ << ">";
+		tag_stack_.pop_back();
+		if (tag_stack_.empty())
+			// this probably shouldn't happen, since then the
+			// font tags weren't in any other tag. but that
+			// problem will likely be caught elsewhere.
+			return true;
+		curtag = tag_stack_.back();
+	}
+	// so we've hit a non-font tag. let's see if any of the
+	// remaining tags are font tags.
+	TagStack::const_iterator it = tag_stack_.begin();
+	TagStack::const_iterator en = tag_stack_.end();
+	bool noFontTags = true;
+	for (; it != en; ++it) {
+		if (isFontTag(it->tag_)) {
+			LYXERR0("Font tag `" << it->tag_ << "' still open in closeFontTags().");
+			noFontTags = false;
+		}
+	}
+	return noFontTags;
+}
+
+
+void XHTMLStream::clearTagDeque()
+{
+	while (!pending_tags_.empty()) {
+		StartTag const & tag = pending_tags_.front();
+		// tabs?
+		os_ << "<" << tag.tag_ << " " << tag.attr_ << ">";
+		tag_stack_.push_back(tag);
+		pending_tags_.pop_front();
+	}
+}
+
+XHTMLStream & XHTMLStream::operator<<(docstring const & d)
+{
+	// I'm tempted to make sure here that there are no tags in the input
+	clearTagDeque();
+	os_ << htmlize(d);
+	return *this;
+}
+
+
+/*
+XHTMLStream & XHTMLStream::operator<<(char_type c)
+{
+	clearTagDeque();
+	os_ << escapeChar(c);
+	return *this;
+}
+*/
+
+
+XHTMLStream & XHTMLStream::operator<<(StartTag const & tag) 
+{
+	pending_tags_.push_back(tag);
+	if (tag.keepempty_)
+		clearTagDeque();
+	return *this;
+}
+
+
+XHTMLStream & XHTMLStream::operator<<(CompTag const & tag) 
+{
+	clearTagDeque();
+	// tabs?
+	os_ << "<" << tag.tag_ << " " << tag.attr_ << " />";
+	return *this;
+}
+
+
+bool	XHTMLStream::isTagOpen(string const & stag)
+{
+	TagStack::const_iterator sit = tag_stack_.begin();
+	TagStack::const_iterator const sen = tag_stack_.end();
+	for (; sit != sen; ++sit)
+		// we could check for the
+		if (sit->tag_ == stag) 
+			return true;
+	return false;
+}
+
+
+// this is complicated, because we want to make sure that
+// everything is properly nested. the code ought to make 
+// sure of that, but we won't assert (yet) if we run into
+// a problem. we'll just output error messages and try our
+// best to make things work.
+XHTMLStream & XHTMLStream::operator<<(EndTag const & etag)
+{
+	// first make sure we're not closing an empty tag
+	if (!pending_tags_.empty()) {
+		StartTag const & stag = pending_tags_.back();
+		if (etag.tag_ == stag.tag_)  {
+			// we have <tag></tag>, so we discard it and remove it 
+			// from the pending_tags_.
+			pending_tags_.pop_back();
+			return *this;
+		}
+		// there is a pending tag that isn't the one we are trying
+		// to close. 
+		// is this tag itself pending?
+		// non-const iterators because we may call erase().
+		TagDeque::iterator dit = pending_tags_.begin();
+		TagDeque::iterator const den = pending_tags_.end();
+		for (; dit != den; ++dit) {
+			if (dit->tag_ == etag.tag_) {
+				// it was pending, so we just erase it
+				LYXERR0("Tried to close pending tag `" << etag.tag_ 
+				        << "' when other tags were pending. Tag discarded.");
+				pending_tags_.erase(dit);
+				return *this;
+			}
+		}
+		// so etag isn't itself pending. is it even open?
+		if (!isTagOpen(etag.tag_)) {
+			LYXERR0("Tried to close `" << etag.tag_ 
+			         << "' when tag was not open. Tag discarded.");
+			return *this;
+		}
+		// ok, so etag is open.
+		// our strategy will be as below: we will do what we need to 
+		// do to close this tag.
+		LYXERR0("Closing tag `" << etag.tag_ 
+		        << "' when other tags are pending. Discarded pending tags:");
+		for (dit = pending_tags_.begin(); dit != den; ++dit)
+			LYXERR0(dit->tag_);
+		// clear the pending tags...
+		pending_tags_.clear();
+		// ...and then just fall through.
+	}
+
+	// is the tag we are closing the last one we opened?
+	if (etag.tag_ == tag_stack_.back().tag_) {
+		// output it...
+		os_ << "</" << etag.tag_ << ">";
+		// ...and forget about it
+		tag_stack_.pop_back();
+		return *this;
+	} 
+	
+	// we are trying to close a tag other than the one last opened. 
+	// let's first see if this particular tag is still open somehow.
+	if (!isTagOpen(etag.tag_)) {
+		LYXERR0("Tried to close `" << etag.tag_ 
+		        << "' when tag was not open. Tag discarded.");
+		return *this;
+	}
+	
+	// so the tag was opened, but other tags have been opened since
+	// and not yet closed.
+	// if it's a font tag, though...
+	if (isFontTag(etag.tag_)) {
+		// it won't be a problem if the other tags open since this one
+		// are also font tags.
+		TagStack::const_reverse_iterator rit = tag_stack_.rbegin();
+		TagStack::const_reverse_iterator ren = tag_stack_.rend();
+		for (; rit != ren; ++rit) {
+			if (!isFontTag(rit->tag_)) {
+				// we'll just leave it and, presumably, have to close it later.
+				LYXERR0("Unable to close font tag `" << etag.tag_ 
+				        << "' due to open non-font tags.");
+				return *this;
+			}
+		}
+		
+		// so we have e.g.:
+		//    <em>this is <strong>bold
+		// and are being asked to closed em. we want:
+		//    <em>this is <strong>bold</strong></em><strong>
+		// first, we close the intervening tags...
+		StartTag curtag = tag_stack_.back();
+		// ...remembering them in a stack.
+		TagStack fontstack;
+		while (curtag.tag_ != etag.tag_) {
+			os_ << "</" << curtag.tag_ << ">";
+			fontstack.push_back(curtag);
+			tag_stack_.pop_back();
+			curtag = tag_stack_.back();
+		}
+		// now close our tag...
+		os_ << "</" << etag.tag_ << ">";
+		// ...and restore the other tags.
+		rit = fontstack.rbegin();
+		ren = fontstack.rend();
+		for (; rit != ren; ++rit)
+			pending_tags_.push_back(*rit);
+		return *this;
+	}
+	
+	// it wasn't a font tag.
+	// so other tags were opened before this one and not properly closed. 
+	// so we'll close them, too. that may cause other issues later, but it 
+	// at least guarantees proper nesting.
+	LYXERR0("Closing tag `" << etag.tag_ 
+	        << "' when other tags are open, namely:");
+	StartTag curtag = tag_stack_.back();
+	while (curtag.tag_ != etag.tag_) {
+		LYXERR0(curtag.tag_);
+		os_ << "</" << curtag.tag_ << ">";
+		tag_stack_.pop_back();
+		curtag = tag_stack_.back();
+	}
+	// curtag is now the one we actually want.
+	os_ << "</" << curtag.tag_ << ">";
+	tag_stack_.pop_back();
+	
+	return *this;
+}
+
+
+///////////////////////////////////////////////////////////////
+// OLD STUFF to be replaced
 
 // FIXME This needs to be protected somehow.
 static vector<string> taglist;
@@ -147,6 +391,9 @@ bool closeItemTag(odocstream & os, Layout const & lay)
 {
 	return html::closeTag(os, lay.htmlitemtag());
 }
+
+// end of old stuff to be replaced
+///////////////////////////////////////////////////////////////
 
 ParagraphList::const_iterator searchParagraphHtml(
 	ParagraphList::const_iterator p,
