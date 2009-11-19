@@ -286,6 +286,7 @@ InsetLayout Float
 	  Size                Small
 	EndFont
 	MultiPar              true
+	HTMLTag               div
 End
 
 InsetLayout Wrap
@@ -344,9 +345,11 @@ InsetLayout Info
 	HTMLStyle
 		span.info { font-family: sans-serif; }
 	EndHTMLStyle
+	MultiPar           false
 End
 
 InsetLayout Info:menu
+	CopyStyle             Info
 	LatexType             command
 	LatexName             menuitem
 	Preamble
@@ -364,6 +367,7 @@ InsetLayout Info:menu
 End
 
 InsetLayout Info:shortcut
+	CopyStyle             Info
 	LatexType             command
 	LatexName             shortcut
 	Preamble
@@ -381,6 +385,7 @@ InsetLayout Info:shortcut
 End
 
 InsetLayout Info:shortcuts
+	CopyStyle             Info
 	LatexType             command
 	LatexName             shortcut
 	Preamble

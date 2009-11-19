@@ -479,8 +479,10 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 
 		// If we are already in a paragraph, and this is the first one, then we
 		// do not want to open the paragraph tag.
-		bool const opened = 
-			(par == pbegin && runparams.html_in_par) ? false : true;
+		// we also do not want to open it if the current layout does not permit
+		// multiple paragraphs.
+		bool const opened = runparams.html_make_pars &&
+			(par != pbegin || !runparams.html_in_par);
 		if (opened)
 			openTag(xs, lay);
 		docstring const deferred = 

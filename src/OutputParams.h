@@ -214,6 +214,8 @@ public:
 	bool html_disable_captions;
 	/// Are we already in a paragraph?
 	bool html_in_par;
+	/// Does the present context even permit paragraphs?
+	bool html_make_pars;
 };
 
 

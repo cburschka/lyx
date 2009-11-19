@@ -29,7 +29,8 @@ OutputParams::OutputParams(Encoding const * enc)
 	  changeOfDeletedInset(Change::UNCHANGED),
 	  par_begin(0), par_end(0), isLastPar(false),
 	  dryrun(false), verbatim(false), 
-	  html_disable_captions(false), html_in_par(false)
+	  html_disable_captions(false), html_in_par(false),
+    html_make_pars(true)
 {
 	// Note: in PreviewLoader::Impl::dumpPreamble
 	// OutputParams runparams(0); 

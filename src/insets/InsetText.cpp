@@ -522,7 +522,13 @@ docstring InsetText::xhtml(XHTMLStream & xs, OutputParams const & runparams) con
 	}
 
 	xs << StartTag(il.htmlinnertag(), il.htmlinnerattr());
-	xhtmlParagraphs(text_, buffer(), xs, runparams);
+	if (il.isMultiPar())
+		xhtmlParagraphs(text_, buffer(), xs, runparams);
+	else {
+		OutputParams ours = runparams;
+		ours.html_make_pars = false;
+		xhtmlParagraphs(text_, buffer(), xs, ours);
+	}
 	xs << EndTag(il.htmlinnertag());
 	xs << EndTag(il.htmltag());
 	return docstring();
