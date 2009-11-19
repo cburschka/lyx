@@ -477,8 +477,6 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 		if (par != pbegin)
 			xs.cr();
 
-		// FIXME Should we really allow anything other than 'p' here?
-		
 		// If we are already in a paragraph, and this is the first one, then we
 		// do not want to open the paragraph tag.
 		bool const opened = 
@@ -633,7 +631,7 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 				// if we're not at the end...
 				if (par != pend 
 					//  and are doing items...
-					 && style.latextype == LATEX_ITEM_ENVIRONMENT
+					 && !isNormalEnv(style)
 					 // and if the depth has changed...
 					 && par->params().depth() != origdepth) {
 					 // then we'll save this layout for later, and close it when
