@@ -22,6 +22,7 @@
 #include "LyXRC.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
+#include "output_xhtml.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
@@ -314,9 +315,9 @@ int InsetQuotes::docbook(odocstream & os, OutputParams const &) const
 }
 
 
-docstring InsetQuotes::xhtml(odocstream & os, OutputParams const & op) const
+docstring InsetQuotes::xhtml(XHTMLStream & xs, OutputParams const & op) const
 {
-	docbook(os, op);
+	docbook(xs.os(), op);
 	return docstring();
 }
 
