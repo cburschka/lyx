@@ -1445,8 +1445,9 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 		os << "</head>\n<body>\n";
 	}
 
+	XHTMLStream xs(os);
 	params().documentClass().counters().reset();
-	xhtmlParagraphs(text(), *this, os, runparams);
+	xhtmlParagraphs(text(), *this, xs, runparams);
 	if (!only_body)
 		os << "</body>\n</html>\n";
 }

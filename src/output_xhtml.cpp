@@ -79,7 +79,42 @@ bool isFontTag(string const & s)
 {
 	return s == "em" || s == "strong"; // others?
 }
+} // namespace html
+
+
+docstring StartTag::asTag() const
+{
+	string output = "<" + tag_;
+	if (!attr_.empty())
+		output += " " + attr_;
+	output += ">";
+	return from_utf8(output);
 }
+
+
+docstring StartTag::asEndTag() const
+{
+	string output = "</" + tag_ + ">";
+	return from_utf8(output);
+}
+
+
+docstring EndTag::asEndTag() const
+{
+	string output = "</" + tag_ + ">";
+	return from_utf8(output);
+}
+
+
+docstring CompTag::asTag() const
+{
+	string output = "<" + tag_;
+	if (!attr_.empty())
+		output += " " + attr_;
+	output += " />";
+	return from_utf8(output);
+}
+
 
 ////////////////////////////////////////////////////////////////
 ///
@@ -95,7 +130,7 @@ XHTMLStream::XHTMLStream(odocstream & os)
 void XHTMLStream::cr() 
 {
 	// tabs?
-	os_ << std::endl;
+	os_ << from_ascii("\n");
 }
 
 
@@ -104,7 +139,7 @@ bool XHTMLStream::closeFontTags()
 	// first, we close any open font tags we can close
 	StartTag curtag = tag_stack_.back();
 	while (html::isFontTag(curtag.tag_)) {
-		os_ << "</" << curtag.tag_ << ">";
+		os_ << curtag.asEndTag();
 		tag_stack_.pop_back();
 		if (tag_stack_.empty())
 			// this probably shouldn't happen, since then the
@@ -133,7 +168,7 @@ void XHTMLStream::clearTagDeque()
 	while (!pending_tags_.empty()) {
 		StartTag const & tag = pending_tags_.front();
 		// tabs?
-		os_ << "<" << tag.tag_ << " " << tag.attr_ << ">";
+		os_ << tag.asTag();
 		tag_stack_.push_back(tag);
 		pending_tags_.pop_front();
 	}
@@ -148,14 +183,12 @@ XHTMLStream & XHTMLStream::operator<<(docstring const & d)
 }
 
 
-/*
 XHTMLStream & XHTMLStream::operator<<(char_type c)
 {
 	clearTagDeque();
-	os_ << escapeChar(c);
+	os_ << html::escapeChar(c);
 	return *this;
 }
-*/
 
 
 XHTMLStream & XHTMLStream::operator<<(StartTag const & tag) 
@@ -171,7 +204,7 @@ XHTMLStream & XHTMLStream::operator<<(CompTag const & tag)
 {
 	clearTagDeque();
 	// tabs?
-	os_ << "<" << tag.tag_ << " " << tag.attr_ << " />";
+	os_ << tag.asTag();
 	return *this;
 }
 
@@ -240,7 +273,7 @@ XHTMLStream & XHTMLStream::operator<<(EndTag const & etag)
 	// is the tag we are closing the last one we opened?
 	if (etag.tag_ == tag_stack_.back().tag_) {
 		// output it...
-		os_ << "</" << etag.tag_ << ">";
+		os_ << etag.asEndTag();
 		// ...and forget about it
 		tag_stack_.pop_back();
 		return *this;
@@ -280,13 +313,13 @@ XHTMLStream & XHTMLStream::operator<<(EndTag const & etag)
 		// ...remembering them in a stack.
 		TagStack fontstack;
 		while (curtag.tag_ != etag.tag_) {
-			os_ << "</" << curtag.tag_ << ">";
+			os_ << curtag.asEndTag();
 			fontstack.push_back(curtag);
 			tag_stack_.pop_back();
 			curtag = tag_stack_.back();
 		}
 		// now close our tag...
-		os_ << "</" << etag.tag_ << ">";
+		os_ << etag.asEndTag();
 		// ...and restore the other tags.
 		rit = fontstack.rbegin();
 		ren = fontstack.rend();
@@ -304,95 +337,59 @@ XHTMLStream & XHTMLStream::operator<<(EndTag const & etag)
 	StartTag curtag = tag_stack_.back();
 	while (curtag.tag_ != etag.tag_) {
 		LYXERR0(curtag.tag_);
-		os_ << "</" << curtag.tag_ << ">";
+		os_ << curtag.asEndTag();
 		tag_stack_.pop_back();
 		curtag = tag_stack_.back();
 	}
 	// curtag is now the one we actually want.
-	os_ << "</" << curtag.tag_ << ">";
+	os_ << curtag.asEndTag();
 	tag_stack_.pop_back();
 	
 	return *this;
 }
 
-namespace html {
-
-///////////////////////////////////////////////////////////////
-// OLD STUFF to be replaced
-
-// FIXME This needs to be protected somehow.
-static vector<string> taglist;
-
-bool openTag(odocstream & os, string const & tag, string const & attr)
-{
-	if (tag.empty())
-		return false;
-	os << from_ascii("<" + tag + (attr.empty() ? "" : " " + attr) + ">");
-	taglist.push_back(tag);
-	return true;
-}
-
-
-bool closeTag(odocstream & os, string const & tag)
-{
-	if (tag.empty())
-		return false;
-	// FIXME Check for proper nesting
-	if (taglist.empty()){
-		LYXERR0("Last tag not found when closing `" << tag << "'!");
-		return false;
-	}
-	string const & lasttag = taglist.back();
-	if (lasttag != tag)  {
-		LYXERR0("Last tag was `" << lasttag << "' when closing `" << tag << "'!");
-		return false;
-	}
-	taglist.pop_back();
-	os << from_ascii("</" + tag + ">");
-	return true;
-}
-
-} // html
+// End code for XHTMLStream
 
 namespace {
+	
+// convenience functions
 
-bool openTag(odocstream & os, Layout const & lay)
+inline void openTag(XHTMLStream & xs, Layout const & lay)
 {
-	return html::openTag(os, lay.htmltag(), lay.htmlattr());
+	xs << StartTag(lay.htmltag(), lay.htmlattr());
 }
 
 
-bool closeTag(odocstream & os, Layout const & lay)
+inline void closeTag(XHTMLStream & xs, Layout const & lay)
 {
-	return html::closeTag(os, lay.htmltag());
+	xs << EndTag(lay.htmltag());
 }
 
 
-bool openLabelTag(odocstream & os, Layout const & lay)
+inline void openLabelTag(XHTMLStream & xs, Layout const & lay)
 {
-	return html::openTag(os, lay.htmllabeltag(), lay.htmllabelattr());
+	xs << StartTag(lay.htmllabeltag(), lay.htmllabelattr());
 }
 
 
-bool closeLabelTag(odocstream & os, Layout const & lay)
+inline void closeLabelTag(XHTMLStream & xs, Layout const & lay)
 {
-	return html::closeTag(os, lay.htmllabeltag());
+	xs << EndTag(lay.htmllabeltag());
 }
 
 
-bool openItemTag(odocstream & os, Layout const & lay)
+inline void openItemTag(XHTMLStream & xs, Layout const & lay)
 {
-	return html::openTag(os, lay.htmlitemtag(), lay.htmlitemattr());
+	xs << StartTag(lay.htmlitemtag(), lay.htmlitemattr(), true);
 }
 
 
-bool closeItemTag(odocstream & os, Layout const & lay)
+inline void closeItemTag(XHTMLStream & xs, Layout const & lay)
 {
-	return html::closeTag(os, lay.htmlitemtag());
+	xs << EndTag(lay.htmlitemtag());
 }
 
-// end of old stuff to be replaced
-///////////////////////////////////////////////////////////////
+// end of convenience functions
 
 ParagraphList::const_iterator searchParagraphHtml(
 	ParagraphList::const_iterator p,
@@ -435,7 +432,7 @@ ParagraphList::const_iterator searchEnvironmentHtml(
 
 
 ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
-					    odocstream & os,
+					    XHTMLStream & xs,
 					    OutputParams const & runparams,
 					    Text const & text,
 					    ParagraphList::const_iterator const & pbegin,
@@ -450,16 +447,18 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 		// FIXME We should see if there's a label to be output and
 		// do something with it.
 		if (par != pbegin)
-			os << '\n';
+			xs.cr();
 
 		// FIXME Should we really allow anything other than 'p' here?
 		
 		// If we are already in a paragraph, and this is the first one, then we
 		// do not want to open the paragraph tag.
 		bool const opened = 
-			(par == pbegin && runparams.html_in_par) ? false : openTag(os, lay);
-		docstring const deferred = par->simpleLyXHTMLOnePar(buf, os, runparams,
-				text.outerFont(distance(begin, par)));
+			(par == pbegin && runparams.html_in_par) ? false : true;
+		if (opened)
+			openTag(xs, lay);
+		docstring const deferred = from_ascii("");
+//				par->simpleLyXHTMLOnePar(buf, os, runparams, text.outerFont(distance(begin, par)));
 
 		// We want to issue the closing tag if either:
 		//   (i)  We opened it, and either html_in_par is false,
@@ -468,33 +467,37 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 		//        but we are in the first par, and there is a next par.
 		ParagraphList::const_iterator nextpar = par;
 		nextpar++;
-		bool const needClose = 
+		bool const needclose = 
 			(opened && (!runparams.html_in_par || nextpar != pend))
 			|| (!opened && runparams.html_in_par && par == pbegin && nextpar != pend);
-		if (needClose) {
-			closeTag(os, lay);
-			os << '\n';
+		if (needclose) {
+			closeTag(xs, lay);
+			xs.cr();
 		}
-		if (!deferred.empty())
-			os << deferred << '\n';
+		if (!deferred.empty()) {
+			xs << deferred;
+			xs.cr();
+		}
 	}
 	return pend;
 }
 
 
 ParagraphList::const_iterator makeBibliography(Buffer const & buf,
-				odocstream & os,
+				XHTMLStream & xs,
 				OutputParams const & runparams,
 				Text const & text,
 				ParagraphList::const_iterator const & pbegin,
 				ParagraphList::const_iterator const & pend) 
 {
-	os << "<h2 class='bibliography'>" 
-	   << pbegin->layout().labelstring(false) 
-	   << "</h2>\n"
-	   << "<div class='bibliography'>\n";
-			makeParagraphs(buf, os, runparams, text, pbegin, pend);
-	os << "</div>";
+	xs << StartTag("h2", "class='bibliography'");
+	xs << pbegin->layout().labelstring(false);
+	xs << EndTag("h2");
+	xs.cr();
+	xs << StartTag("div", "class='bibliography'");
+	xs.cr();
+	makeParagraphs(buf, xs, runparams, text, pbegin, pend);
+	xs << EndTag("div");
 	return pend;
 }
 
@@ -506,7 +509,7 @@ bool isNormalEnv(Layout const & lay)
 
 	
 ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
-					      odocstream & os,
+					      XHTMLStream & xs,
 					      OutputParams const & runparams,
 					      Text const & text,
 					      ParagraphList::const_iterator const & pbegin,
@@ -517,9 +520,9 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 	Layout const & bstyle = par->layout();
 	depth_type const origdepth = pbegin->params().depth();
 
-	// Open tag for this environment
-	bool const main_tag_opened = openTag(os, bstyle);
-	os << '\n';
+	// open tag for this environment
+	openTag(xs, bstyle);
+	xs.cr();
 
 	// we will on occasion need to remember a layout from before.
 	Layout const * lastlay = 0;
@@ -545,89 +548,82 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 			if (par->params().depth() == origdepth) {
 				LASSERT(bstyle == style, /* */);
 				if (lastlay != 0) {
-					closeItemTag(os, *lastlay);
+					closeItemTag(xs, *lastlay);
 					lastlay = 0;
 				}
-				bool item_tag_opened = false;
 				bool const labelfirst = style.htmllabelfirst();
-				bool madelabel = false;
 				if (isNormalEnv(style)) {
 					// in this case, we print the label only for the first 
 					// paragraph (as in a theorem).
-					item_tag_opened = openItemTag(os, style);
+					openItemTag(xs, style);
 					if (par == pbegin && style.htmllabeltag() != "NONE") {
 						docstring const lbl = 
 								pbegin->expandLabel(style, buf.params(), false);
 						if (!lbl.empty()) {
-							bool const label_tag_opened = openLabelTag(os, style);
-							os << lbl;
-							if (label_tag_opened)
-								closeLabelTag(os, style);
+							openLabelTag(xs, style);
+							xs << lbl;
+							closeLabelTag(xs, style);
 						}
-						os << '\n';
+						xs.cr();
 					}
 				}	else { // some kind of list
 					if (!labelfirst)
-						item_tag_opened = openItemTag(os, style);
+						openItemTag(xs, style);
 					if (style.labeltype == LABEL_MANUAL
 					    && style.htmllabeltag() != "NONE") {
-						madelabel = openLabelTag(os, style);
-						sep = par->firstWordLyXHTML(os, runparams);
-						if (madelabel)
-							closeLabelTag(os, style);
-						os << '\n';
+						openLabelTag(xs, style);
+//						sep = par->firstWordLyXHTML(xs, runparams);
+						closeLabelTag(xs, style);
+						xs.cr();
 					}
 					else if (style.labeltype != LABEL_NO_LABEL
 					         && style.htmllabeltag() != "NONE") {
-						madelabel = openLabelTag(os, style);
-						os << par->expandLabel(style, buf.params(), false);
-						if (madelabel)
-							closeLabelTag(os, style);
-						os << '\n';
+						openLabelTag(xs, style);
+						xs << par->expandLabel(style, buf.params(), false);
+						closeLabelTag(xs, style);
+						xs.cr();
 					}
 					if (labelfirst)
-						item_tag_opened = openItemTag(os, style);
-					else if (madelabel)
-						os << "<span class='" << style.name() << "inneritem'>";
+						openItemTag(xs, style);
+					else
+						xs << StartTag("span", "class='" + to_utf8(style.name()) + " inneritem'>");
 				}
-				par->simpleLyXHTMLOnePar(buf, os, runparams, 
-					text.outerFont(distance(begin, par)), sep);
-				if (!isNormalEnv(style) && !labelfirst && madelabel)
-					os << "</span>";
+//				par->simpleLyXHTMLOnePar(buf, os, runparams, 
+//					text.outerFont(distance(begin, par)), sep);
+				if (!isNormalEnv(style) && !labelfirst)
+					xs << EndTag("span");
 				++par;
-				if (item_tag_opened) {
-					// We may not want to close the tag yet, in particular,
-					// if we're not at the end...
-					if (par != pend 
-				    //  and are doing items...
-				     && style.latextype == LATEX_ITEM_ENVIRONMENT
-				     // and if the depth has changed...
-				     && par->params().depth() != origdepth) {
-				     // then we'll save this layout for later, and close it when
-				     // we get another item.
-						lastlay = &style;
-					} else
-						closeItemTag(os, style);
-					os << '\n';
-				}
+				// We may not want to close the tag yet, in particular,
+				// if we're not at the end...
+				if (par != pend 
+					//  and are doing items...
+					 && style.latextype == LATEX_ITEM_ENVIRONMENT
+					 // and if the depth has changed...
+					 && par->params().depth() != origdepth) {
+					 // then we'll save this layout for later, and close it when
+					 // we get another item.
+					lastlay = &style;
+				} else
+					closeItemTag(xs, style);
+				xs.cr();
 			}
 			// The other possibility is that the depth has increased, in which
 			// case we need to recurse.
 			else {
 				send = searchEnvironmentHtml(par, pend);
-				par = makeEnvironmentHtml(buf, os, runparams, text, par, send);
+				par = makeEnvironmentHtml(buf, xs, runparams, text, par, send);
 			}
 			break;
 		}
 		case LATEX_PARAGRAPH:
 			send = searchParagraphHtml(par, pend);
-			par = makeParagraphs(buf, os, runparams, text, par, send);
+			par = makeParagraphs(buf, xs, runparams, text, par, send);
 			break;
 		// Shouldn't happen
 		case LATEX_BIB_ENVIRONMENT:
 			send = par;
 			++send;
-			par = makeParagraphs(buf, os, runparams, text, par, send);
+			par = makeParagraphs(buf, xs, runparams, text, par, send);
 			break;
 		// Shouldn't happen
 		case LATEX_COMMAND:
@@ -637,16 +633,15 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 	}
 
 	if (lastlay != 0)
-		closeItemTag(os, *lastlay);
-	if (main_tag_opened)
-		closeTag(os, bstyle);
-	os << '\n';
+		closeItemTag(xs, *lastlay);
+	closeTag(xs, bstyle);
+	xs.cr();
 	return pend;
 }
 
 
 void makeCommand(Buffer const & buf,
-					  odocstream & os,
+					  XHTMLStream & xs,
 					  OutputParams const & runparams,
 					  Text const & text,
 					  ParagraphList::const_iterator const & pbegin)
@@ -655,25 +650,23 @@ void makeCommand(Buffer const & buf,
 	if (!style.counter.empty())
 		buf.params().documentClass().counters().step(style.counter);
 
-	bool const main_tag_opened = openTag(os, style);
+	openTag(xs, style);
 
 	// Label around sectioning number:
 	// FIXME Probably need to account for LABEL_MANUAL
 	if (style.labeltype != LABEL_NO_LABEL) {
-		bool const label_tag_opened = openLabelTag(os, style);
-		os << pbegin->expandLabel(style, buf.params(), false);
-		if (label_tag_opened)
-			closeLabelTag(os, style);
+		openLabelTag(xs, style);
+		xs << pbegin->expandLabel(style, buf.params(), false);
+		closeLabelTag(xs, style);
 		// Otherwise the label might run together with the text
-		os << ' ';
+		xs << from_ascii(" ");
 	}
 
 	ParagraphList::const_iterator const begin = text.paragraphs().begin();
-	pbegin->simpleLyXHTMLOnePar(buf, os, runparams,
-			text.outerFont(distance(begin, pbegin)));
-	if (main_tag_opened)
-		closeTag(os, style);
-	os << '\n';
+//	pbegin->simpleLyXHTMLOnePar(buf, os, runparams,
+//			text.outerFont(distance(begin, pbegin)));
+	closeTag(xs, style);
+	xs.cr();
 }
 
 } // end anonymous namespace
@@ -681,7 +674,7 @@ void makeCommand(Buffer const & buf,
 
 void xhtmlParagraphs(Text const & text,
 		       Buffer const & buf,
-		       odocstream & os,
+		       XHTMLStream & xs,
 		       OutputParams const & runparams)
 {
 	ParagraphList const & paragraphs = text.paragraphs();
@@ -705,7 +698,7 @@ void xhtmlParagraphs(Text const & text,
 			// can communicate that back.
 			// FIXME Maybe this fix should be in the routines themselves, in case
 			// they are called from elsewhere.
-			makeCommand(buf, os, ourparams, text, par);
+			makeCommand(buf, xs, ourparams, text, par);
 			++par;
 			break;
 		}
@@ -714,18 +707,18 @@ void xhtmlParagraphs(Text const & text,
 		case LATEX_ITEM_ENVIRONMENT: {
 			// FIXME Same fix here.
 			send = searchEnvironmentHtml(par, pend);
-			par = makeEnvironmentHtml(buf, os, ourparams, text, par, send);
+			par = makeEnvironmentHtml(buf, xs, ourparams, text, par, send);
 			break;
 		}
 		case LATEX_BIB_ENVIRONMENT: {
 			// FIXME Same fix here.
 			send = searchEnvironmentHtml(par, pend);
-			par = makeBibliography(buf, os, ourparams, text, par, send);
+			par = makeBibliography(buf, xs, ourparams, text, par, send);
 			break;
 		}
 		case LATEX_PARAGRAPH:
 			send = searchParagraphHtml(par, pend);
-			par = makeParagraphs(buf, os, ourparams, text, par, send);
+			par = makeParagraphs(buf, xs, ourparams, text, par, send);
 			break;
 		}
 		// FIXME??

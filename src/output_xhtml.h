@@ -28,6 +28,10 @@ struct StartTag {
 	StartTag(std::string const & tag, std::string const & attr, 
 		bool keepempty = false) 
 		: tag_(tag), attr_(attr), keepempty_(keepempty) {}
+	/// <tag_ attr_>
+	docstring asTag() const;
+	/// </tag_>
+	docstring asEndTag() const;
 	///
 	std::string tag_;
 	///
@@ -41,6 +45,8 @@ struct StartTag {
 struct EndTag {
 	///
 	EndTag(std::string tag) : tag_(tag) {}
+	/// </tag_>
+	docstring asEndTag() const;
 	///
 	std::string tag_;
 };
@@ -51,6 +57,8 @@ struct CompTag {
 	///
 	CompTag(std::string const & tag, std::string const & attr)
 		: tag_(tag), attr_(attr) {}
+	/// <tag_ attr_ />
+	docstring asTag() const;
 	///
 	std::string tag_;
 	///
@@ -76,7 +84,7 @@ public:
 	///
 	XHTMLStream & operator<<(docstring const &);
 	///
-	//XHTMLStream & operator<<(char_type);
+	XHTMLStream & operator<<(char_type);
 	///
 	XHTMLStream & operator<<(StartTag const &);
 	///
@@ -105,7 +113,7 @@ private:
 ///
 void xhtmlParagraphs(Text const & text,
 		       Buffer const & buf,
-		       odocstream & os,
+		       XHTMLStream & xs,
 		       OutputParams const & runparams);
 
 namespace html {
@@ -113,6 +121,8 @@ namespace html {
 docstring escapeChar(char_type c);
 /// converts a string to a form safe for links, etc
 docstring htmlize(docstring const & str);
+
+// to be removed
 /// \return true if tag was opened, false if not 
 bool openTag(odocstream & os, std::string const & tag, 
 						 std::string const & attr);

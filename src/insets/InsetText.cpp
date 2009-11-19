@@ -497,13 +497,15 @@ int InsetText::docbook(odocstream & os, OutputParams const & runparams) const
 
 docstring InsetText::xhtml(odocstream & os, OutputParams const & runparams) const
 {
+	// FIXME Just a temporary fix, so it will compile.
+	XHTMLStream xs(os);
 	if (undefined()) {
-		xhtmlParagraphs(text_, buffer(), os, runparams);
+		xhtmlParagraphs(text_, buffer(), xs, runparams);
 		return docstring();
 	}
 
 	InsetLayout const & il = getLayout();
-	bool const opened = html::openTag(os, il.htmltag(), il.htmlattr());
+	xs << StartTag(il.htmltag(), il.htmlattr());
 	if (!il.counter().empty()) {
 		BufferParams const & bp = buffer().masterBuffer()->params();
 		Counters & cntrs = bp.documentClass().counters();
@@ -514,24 +516,17 @@ docstring InsetText::xhtml(odocstream & os, OutputParams const & runparams) cons
 				cntrs.counterLabel(from_utf8(il.htmllabel()), bp.language->code());
 			// FIXME is this check necessary?
 			if (!lbl.empty()) {
-				bool const lopen = html::openTag(os, il.htmllabeltag(), il.htmllabelattr());
-				os << lbl;
-				if (lopen)
-					html::closeTag(os, il.htmllabeltag());
+				xs << StartTag(il.htmllabeltag(), il.htmllabelattr());
+				xs << lbl;
+				xs << EndTag(il.htmllabeltag());
 			}
 		}
 	}
 
-	bool innertag_opened = false;
-	if (!il.htmlinnertag().empty())
-		innertag_opened = html::openTag(os, il.htmlinnertag(), il.htmlinnerattr());
-
-	xhtmlParagraphs(text_, buffer(), os, runparams);
-
-	if (innertag_opened)
-		html::closeTag(os, il.htmlinnertag());
-	if (opened)
-		html::closeTag(os, il.htmltag());
+	xs << StartTag(il.htmlinnertag(), il.htmlinnerattr());
+	xhtmlParagraphs(text_, buffer(), xs, runparams);
+	xs << EndTag(il.htmlinnertag());
+	xs << EndTag(il.htmltag());
 	return docstring();
 }
 
