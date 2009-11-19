@@ -104,6 +104,8 @@ private:
 	///
 	bool isTagOpen(std::string const &);
 	///
+	void writeError(std::string const &);
+	///
 	odocstream & os_;
 	///
 	// int tab_;

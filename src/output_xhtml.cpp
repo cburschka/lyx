@@ -134,6 +134,13 @@ void XHTMLStream::cr()
 }
 
 
+void XHTMLStream::writeError(std::string const & s)
+{
+	LYXERR0(s);
+	os_ << from_utf8("<!-- Output Error: " + s + " -->");
+}
+
+
 bool XHTMLStream::closeFontTags()
 {
 	// first, we close any open font tags we can close
@@ -155,7 +162,7 @@ bool XHTMLStream::closeFontTags()
 	bool noFontTags = true;
 	for (; it != en; ++it) {
 		if (html::isFontTag(it->tag_)) {
-			LYXERR0("Font tag `" << it->tag_ << "' still open in closeFontTags().");
+			writeError("Font tag `" + it->tag_ + "' still open in closeFontTags().");
 			noFontTags = false;
 		}
 	}
@@ -260,25 +267,26 @@ XHTMLStream & XHTMLStream::operator<<(EndTag const & etag)
 		for (; dit != den; ++dit) {
 			if (dit->tag_ == etag.tag_) {
 				// it was pending, so we just erase it
-				LYXERR0("Tried to close pending tag `" << etag.tag_ 
-				        << "' when other tags were pending. Tag discarded.");
+				writeError("Tried to close pending tag `" + etag.tag_ 
+				        + "' when other tags were pending. Tag discarded.");
 				pending_tags_.erase(dit);
 				return *this;
 			}
 		}
 		// so etag isn't itself pending. is it even open?
 		if (!isTagOpen(etag.tag_)) {
-			LYXERR0("Tried to close `" << etag.tag_ 
-			         << "' when tag was not open. Tag discarded.");
+			writeError("Tried to close `" + etag.tag_ 
+			         + "' when tag was not open. Tag discarded.");
 			return *this;
 		}
 		// ok, so etag is open.
 		// our strategy will be as below: we will do what we need to 
 		// do to close this tag.
-		LYXERR0("Closing tag `" << etag.tag_ 
-		        << "' when other tags are pending. Discarded pending tags:");
+		string estr = "Closing tag `" + etag.tag_ 
+		        + "' when other tags are pending. Discarded pending tags:\n";
 		for (dit = pending_tags_.begin(); dit != den; ++dit)
-			LYXERR0(dit->tag_);
+			estr += dit->tag_ + "\n";
+		writeError(estr);
 		// clear the pending tags...
 		pending_tags_.clear();
 		// ...and then just fall through.
@@ -296,8 +304,8 @@ XHTMLStream & XHTMLStream::operator<<(EndTag const & etag)
 	// we are trying to close a tag other than the one last opened. 
 	// let's first see if this particular tag is still open somehow.
 	if (!isTagOpen(etag.tag_)) {
-		LYXERR0("Tried to close `" << etag.tag_ 
-		        << "' when tag was not open. Tag discarded.");
+		writeError("Tried to close `" + etag.tag_ 
+		        + "' when tag was not open. Tag discarded.");
 		return *this;
 	}
 	
@@ -314,8 +322,8 @@ XHTMLStream & XHTMLStream::operator<<(EndTag const & etag)
 				break;
 			if (!html::isFontTag(rit->tag_)) {
 				// we'll just leave it and, presumably, have to close it later.
-				LYXERR0("Unable to close font tag `" << etag.tag_ 
-				        << "' due to open non-font tag `" << rit->tag_ << "'.");
+				writeError("Unable to close font tag `" + etag.tag_ 
+				        + "' due to open non-font tag `" + rit->tag_ + "'.");
 				return *this;
 			}
 		}
@@ -350,11 +358,11 @@ XHTMLStream & XHTMLStream::operator<<(EndTag const & etag)
 	// so other tags were opened before this one and not properly closed. 
 	// so we'll close them, too. that may cause other issues later, but it 
 	// at least guarantees proper nesting.
-	LYXERR0("Closing tag `" << etag.tag_ 
-	        << "' when other tags are open, namely:");
+	writeError("Closing tag `" + etag.tag_ 
+	        + "' when other tags are open, namely:");
 	StartTag curtag = tag_stack_.back();
 	while (curtag.tag_ != etag.tag_) {
-		LYXERR0(curtag.tag_);
+		writeError(curtag.tag_);
 		os_ << curtag.asEndTag();
 		tag_stack_.pop_back();
 		curtag = tag_stack_.back();
@@ -549,7 +557,13 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 		Layout const & style = par->layout();
 		// the counter only gets stepped if we're in some kind of list,
 		// or if it's the first time through.
-		if (!style.counter.empty() && (par == pbegin || !isNormalEnv(style)))
+		// note that enum, etc, are handled automatically.
+		// FIXME There may be a bug here about user defined enumeration
+		// types. If so, then we'll need to take the counter and add "i",
+		// "ii", etc, as with enum.
+		if (!style.counter.empty() && 
+		    (par == pbegin || !isNormalEnv(style))
+		    && style.latextype == LATEX_LIST_ENVIRONMENT)
 			buf.params().documentClass().counters().step(style.counter);
 		ParagraphList::const_iterator send;
 		// this will be positive, if we want to skip the initial word
@@ -604,7 +618,9 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 					if (labelfirst)
 						openItemTag(xs, style);
 					else
-						xs << StartTag("span", "class='" + to_utf8(style.name()) + " inneritem'");
+						// FIXME This should probalby be put into the layout file rather 
+						// than hardcoded.
+						xs << StartTag("span", "class='" + to_utf8(style.name()) + "_inneritem'");
 				}
 				par->simpleLyXHTMLOnePar(buf, xs, runparams, 
 					text.outerFont(distance(begin, par)), sep);
