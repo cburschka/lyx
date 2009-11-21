@@ -320,7 +320,7 @@ Custom Insets
 \emph on
 Custom:Glosse
 \emph default
- provides a glosse that consists of two lines and a translation, the 
+ provides a gloss that consists of two lines and a translation, the 
 \emph on
 Custom:Tri-Glosse
 \emph default
@@ -337,7 +337,7 @@ e., the paragraphs are automatically broken if they exceed the text width.
 \backslash
 glt
 \family default
- which must be inserted verbatim in the glosse inset (TeX mode is not needed,
+ which must be inserted verbatim in the gloss inset (TeX mode is not needed,
  and in fact not even possible).
 \end_layout
 
@@ -382,7 +382,7 @@ Note how the braces hold together multi-word expressions.
 \end_layout
 
 \begin_layout Standard
-In the same vein, we can make a three-line glosse:
+In the same vein, we can make a three-line gloss:
 \end_layout
 
 \begin_layout Standard
@@ -422,7 +422,7 @@ This is a simple example
 
 \begin_layout Standard
 \noindent
-If you want to have numbered glosses, you can simply insert the glosse inset
+If you want to have numbered glosses, you can simply insert the gloss inset
  to a numbered examples paragraph, as follows:
 \end_layout
 
