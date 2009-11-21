@@ -82,7 +82,7 @@ private:
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	/// Makes no sense fof XHTML.
-	docstring xhtml(odocstream &, OutputParams const &) const;
+	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///
