@@ -1230,6 +1230,12 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 		return 0;
 	}
 
+	// if the first character is a separator, we are in RTL
+	// text. This character will not be painted on screen
+	// and thus we should not count it and skip to the next.
+	if (par.isSeparator(bidi.vis2log(vc)))
+		++vc;
+
 	while (vc < end && tmpx <= x) {
 		c = bidi.vis2log(vc);
 		last_tmpx = tmpx;
