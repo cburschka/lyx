@@ -26,6 +26,7 @@
 #include "Length.h"
 #include "LyX.h"
 #include "MetricsInfo.h"
+#include "output_xhtml.h"
 #include "sgml.h"
 
 #include "frontends/FontMetrics.h"
@@ -98,7 +99,7 @@ int InsetNomencl::docbook(odocstream & os, OutputParams const &) const
 }
 
 
-docstring InsetNomencl::xhtml(odocstream &, OutputParams const &) const
+docstring InsetNomencl::xhtml(XHTMLStream &, OutputParams const &) const
 {
 	return docstring();
 }
@@ -198,7 +199,7 @@ bool InsetPrintNomencl::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-docstring InsetPrintNomencl::xhtml(odocstream &, OutputParams const &) const
+docstring InsetPrintNomencl::xhtml(XHTMLStream &, OutputParams const &) const
 {
 	return docstring();
 }

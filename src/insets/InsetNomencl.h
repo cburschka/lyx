@@ -40,7 +40,7 @@ public:
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	/// Does nothing at the moment.
-	docstring xhtml(odocstream &, OutputParams const &) const;
+	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///
 	int docbookGlossary(odocstream &) const;
 	///
@@ -66,7 +66,7 @@ public:
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	/// Does nothing at the moment.
-	docstring xhtml(odocstream &, OutputParams const &) const;
+	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///
 	InsetCode lyxCode() const;
 	///
