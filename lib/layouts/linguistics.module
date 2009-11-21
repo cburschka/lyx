@@ -80,6 +80,7 @@ InsetLayout Custom:Glosse
 	ForcePlain            true
 	PassThru              true
 	FreeSpacing           true
+	ForceLTR              true
 	Requires	      covington
 	Preamble
 		\@ifundefined{linggloss}{%
@@ -106,6 +107,7 @@ InsetLayout Custom:Tri-Glosse
 	ForcePlain            true
 	PassThru              true
 	FreeSpacing           true
+	ForceLTR              true
 	Requires	      covington
 	Preamble
 		\@ifundefined{lingglosss}{%
