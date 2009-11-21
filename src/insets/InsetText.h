@@ -80,6 +80,17 @@ public:
 	int docbook(odocstream &, OutputParams const &) const;
 	///
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
+	///
+	enum XHTMLOptions {
+		JustText = 0,
+		WriteOuterTag = 1,
+		WriteLabel = 2,
+		WriteInnerTag = 4,
+		WriteEverything = 7
+	};
+	///
+	docstring insetAsXHTML(XHTMLStream &, OutputParams const &, 
+	                       XHTMLOptions) const;
 	// FIXME XHTMLStream to be removed
 	docstring xhtml(odocstream &, OutputParams const &) const 
 		{ return docstring (); }

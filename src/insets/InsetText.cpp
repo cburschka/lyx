@@ -497,14 +497,22 @@ int InsetText::docbook(odocstream & os, OutputParams const & runparams) const
 
 docstring InsetText::xhtml(XHTMLStream & xs, OutputParams const & runparams) const
 {
+	return insetAsXHTML(xs, runparams, WriteEverything);
+}
+
+
+docstring InsetText::insetAsXHTML(XHTMLStream & xs, OutputParams const & runparams,
+                                  XHTMLOptions opts) const
+{
 	if (undefined()) {
 		xhtmlParagraphs(text_, buffer(), xs, runparams);
 		return docstring();
 	}
 
 	InsetLayout const & il = getLayout();
-	xs << StartTag(il.htmltag(), il.htmlattr());
-	if (!il.counter().empty()) {
+	if (opts & WriteOuterTag)
+		xs << StartTag(il.htmltag(), il.htmlattr());
+	if ((opts & WriteLabel) && !il.counter().empty()) {
 		BufferParams const & bp = buffer().masterBuffer()->params();
 		Counters & cntrs = bp.documentClass().counters();
 		cntrs.step(il.counter());
@@ -521,7 +529,8 @@ docstring InsetText::xhtml(XHTMLStream & xs, OutputParams const & runparams) con
 		}
 	}
 
-	xs << StartTag(il.htmlinnertag(), il.htmlinnerattr());
+	if (opts & WriteInnerTag)
+		xs << StartTag(il.htmlinnertag(), il.htmlinnerattr());
 	if (il.isMultiPar())
 		xhtmlParagraphs(text_, buffer(), xs, runparams);
 	else {
@@ -529,8 +538,10 @@ docstring InsetText::xhtml(XHTMLStream & xs, OutputParams const & runparams) con
 		ours.html_make_pars = false;
 		xhtmlParagraphs(text_, buffer(), xs, ours);
 	}
-	xs << EndTag(il.htmlinnertag());
-	xs << EndTag(il.htmltag());
+	if (opts & WriteInnerTag)
+		xs << EndTag(il.htmlinnertag());
+	if (opts & WriteOuterTag)
+		xs << EndTag(il.htmltag());
 	return docstring();
 }
 
