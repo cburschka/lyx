@@ -1495,8 +1495,8 @@ Inset * TextMetrics::editXY(Cursor & cur, int x, int y,
 	
 	int yy = y; // is modified by getPitAndRowNearY
 	Row const & row = getPitAndRowNearY(yy, pit, assert_in_view, up);
-	bool bound = false;
 
+	bool bound = false; // is modified by getColumnNearX
 	int xx = x; // is modified by getColumnNearX
 	pos_type const pos = row.pos()
 		+ getColumnNearX(pit, row, xx, bound);
@@ -1518,17 +1518,16 @@ Inset * TextMetrics::editXY(Cursor & cur, int x, int y,
 	}
 
 	ParagraphList const & pars = text_->paragraphs();
-	Inset const * insetBefore = pos ? pars[pit].getInset(pos - 1) : 0;
-	//Inset * insetBehind = pars[pit].getInset(pos);
+	Inset const * inset_before = pos ? pars[pit].getInset(pos - 1) : 0;
 
 	// This should be just before or just behind the
 	// cursor position set above.
-	LASSERT((pos != 0 && inset == insetBefore)
+	LASSERT(inset == inset_before 
 		|| inset == pars[pit].getInset(pos), /**/);
 
 	// Make sure the cursor points to the position before
 	// this inset.
-	if (inset == insetBefore) {
+	if (inset == inset_before) {
 		--cur.pos();
 		cur.boundary(false);
 	}
