@@ -29,6 +29,7 @@
 #include "LyXRC.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
+#include "output_latex.h"
 
 #include "frontends/alert.h"
 #include "frontends/Application.h"
@@ -682,7 +683,7 @@ int InsetExternal::docbook(odocstream & os,
 }
 
 
-docstring InsetExternal::xhtml(odocstream & /*os*/,
+docstring InsetExternal::xhtml(XHTMLStream  & /*xs*/,
 			OutputParams const & /*rp*/) const
 {
 //	external::writeExternal(params_, "XHTML", buffer(), os,

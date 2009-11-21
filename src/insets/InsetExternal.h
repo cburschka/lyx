@@ -135,7 +135,7 @@ private:
 	int docbook(odocstream &, OutputParams const &) const;
 	/// For now, this does nothing. Someone who knows about this
 	/// should see what needs doing for XHTML output.
-	docstring xhtml(odocstream &, OutputParams const &) const;
+	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	/// Update needed features for this inset.
 	void validate(LaTeXFeatures & features) const;
 	///
