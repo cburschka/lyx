@@ -24,6 +24,7 @@
 #include "FuncStatus.h"
 #include "Lexer.h"
 #include "OutputParams.h"
+#include "output_xhtml.h"
 #include "TextClass.h"
 #include "TocBackend.h"
 
@@ -240,10 +241,10 @@ int InsetBranch::docbook(odocstream & os,
 }
 
 
-docstring InsetBranch::xhtml(odocstream & os, OutputParams const & rp) const
+docstring InsetBranch::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 {
 	if (isBranchSelected())
-		 return InsetText::xhtml(os, rp);
+		 return InsetText::xhtml(xs, rp);
 	return docstring();
 }
 
