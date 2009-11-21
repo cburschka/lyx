@@ -27,6 +27,7 @@
 #include "Text.h"
 
 #include "support/debug.h"
+#include "support/docstream.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
 
@@ -234,17 +235,14 @@ int InsetVSpace::docbook(odocstream & os, OutputParams const &) const
 }
 
 
-docstring InsetVSpace::xhtml(XHTMLStream & xs, OutputParams const &) const
+docstring InsetVSpace::xhtml(XHTMLStream &, OutputParams const &) const
 {
-	string len = space_.asHTMLLength();
-	if (len.empty())
-		// we didn't understand it
-		xs << CompTag("br");
-	else {
-		string const attr = "style='height:" + len + "'";
-		xs << StartTag("div", attr, true) << EndTag("div");
-	}
-	return docstring();
+	odocstringstream ods;
+	XHTMLStream xds(ods);
+	string const len = space_.asHTMLLength();
+	string const attr = "style='height:" + (len.empty() ? "1em" : len) + "'";
+	xds << StartTag("div", attr, true) << EndTag("div");
+	return dynamic_cast<odocstringstream &>(xds.os()).str();
 }
 
 

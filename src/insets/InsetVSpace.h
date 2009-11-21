@@ -50,7 +50,11 @@ private:
 	int plaintext(odocstream &, OutputParams const &) const;
 	///
 	int docbook(odocstream &, OutputParams const &) const;
-	///
+	/// Note that this returns the inset rather than writing it,
+	/// so it will actually be written after the present paragraph.
+	/// The normal case is that this inset will be on a line by
+	/// itself, and in that case the present paragraph will not,
+	/// in fact, appear at all.
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///
 	void read(Lexer & lex);
