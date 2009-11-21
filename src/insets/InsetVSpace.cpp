@@ -23,6 +23,7 @@
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
+#include "output_xhtml.h"
 #include "Text.h"
 
 #include "support/debug.h"
@@ -233,14 +234,16 @@ int InsetVSpace::docbook(odocstream & os, OutputParams const &) const
 }
 
 
-docstring InsetVSpace::xhtml(odocstream & os, OutputParams const &) const
+docstring InsetVSpace::xhtml(XHTMLStream & xs, OutputParams const &) const
 {
 	string len = space_.asHTMLLength();
 	if (len.empty())
 		// we didn't understand it
-		os << "<br />\n";
-	else
-		os << "<div style='height:" << from_ascii(len) << "'></div>\n";
+		xs << CompTag("br");
+	else {
+		string const attr = "style='height:" + len + "'";
+		xs << StartTag("div", attr, true) << EndTag("div");
+	}
 	return docstring();
 }
 
