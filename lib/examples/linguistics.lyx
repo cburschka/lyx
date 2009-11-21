@@ -1,4 +1,4 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -320,7 +320,7 @@ Custom Insets
 \emph on
 Custom:Glosse
 \emph default
- provides a glosse that consists of two lines and a translation, the 
+ provides a gloss that consists of two lines and a translation, the 
 \emph on
 Custom:Tri-Glosse
 \emph default
@@ -337,7 +337,7 @@ e., the paragraphs are automatically broken if they exceed the text width.
 \backslash
 glt
 \family default
- which must be inserted verbatim in the glosse inset (TeX mode is not needed,
+ which must be inserted verbatim in the gloss inset (TeX mode is not needed,
  and in fact not even possible).
 \end_layout
 
@@ -350,14 +350,20 @@ Here is a simple example:
 status open
 
 \begin_layout Plain Layout
+
+\lang ngerman
 C'est un exemple simple
 \end_layout
 
 \begin_layout Plain Layout
+
+\lang ngerman
 {This is} an example simple
 \end_layout
 
 \begin_layout Plain Layout
+
+\lang ngerman
 
 \backslash
 glt 
@@ -382,7 +388,7 @@ Note how the braces hold together multi-word expressions.
 \end_layout
 
 \begin_layout Standard
-In the same vein, we can make a three-line glosse:
+In the same vein, we can make a three-line gloss:
 \end_layout
 
 \begin_layout Standard
@@ -390,18 +396,26 @@ In the same vein, we can make a three-line glosse:
 status open
 
 \begin_layout Plain Layout
+
+\lang ngerman
 C'est un exemple simple
 \end_layout
 
 \begin_layout Plain Layout
+
+\lang ngerman
 {Das ist} ein Beispiel einfach
 \end_layout
 
 \begin_layout Plain Layout
+
+\lang ngerman
 {This is} an example simple
 \end_layout
 
 \begin_layout Plain Layout
+
+\lang ngerman
 
 \backslash
 glt 
@@ -422,7 +436,7 @@ This is a simple example
 
 \begin_layout Standard
 \noindent
-If you want to have numbered glosses, you can simply insert the glosse inset
+If you want to have numbered glosses, you can simply insert the gloss inset
  to a numbered examples paragraph, as follows:
 \end_layout
 
@@ -431,18 +445,26 @@ If you want to have numbered glosses, you can simply insert the glosse inset
 status open
 
 \begin_layout Plain Layout
+
+\lang ngerman
 Mein Luftkissenfahrzeug ist voller Aale
 \end_layout
 
 \begin_layout Plain Layout
+
+\lang ngerman
 My skeertuig is vol palings
 \end_layout
 
 \begin_layout Plain Layout
+
+\lang ngerman
 My hovercraft is {full of} eels
 \end_layout
 
 \begin_layout Plain Layout
+
+\lang ngerman
 
 \backslash
 glt 
