@@ -14,7 +14,7 @@ Style Numbered_Example_(multiline)
 	LatexType             Environment
 	LatexName             example
 	NextNoIndent          1
-	LeftMargin            XExample:
+	Margin                Dynamic
 	LabelSep              xx
 	ParSkip               0.0
 	ItemSep               0.2
@@ -36,8 +36,6 @@ End
 # multiple numbered examples with covington.sty
 Style Numbered_Examples_(consecutive)
 	CopyStyle	      Numbered_Example_(multiline)
-	Margin                Static
-	LeftMargin            XExamples:
 	LatexType             Item_Environment
 	LatexName             examples
 	LabelString           "Examples:"
@@ -47,10 +45,8 @@ End
 # multiple numbered example with covington.sty
 Style Subexample
 	CopyStyle	      Numbered_Example_(multiline)
-	Margin                Static
 	LatexType             Item_Environment
 	LatexName             subexample
-	LeftMargin            XSubexample:
 	LabelString           "Subexample:"
 	Requires	      covington,enumitem
 	Preamble
