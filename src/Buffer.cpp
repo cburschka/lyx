@@ -1763,7 +1763,6 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 			lyx::dispatch(FuncRequest(LFUN_DIALOG_SHOW, "sendto"));
 			break;
 		}
-		doExport(argument, false);
 		bool success = doExport(argument, false);
 		dr.setError(success);
 		if (!success)
