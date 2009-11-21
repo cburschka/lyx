@@ -24,6 +24,7 @@
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
+#include "output_latex.h"
 #include "sgml.h"
 #include "TocBackend.h"
 
@@ -560,7 +561,8 @@ bool InsetPrintIndex::hasSettings() const
 	return buffer().masterBuffer()->params().use_indices;
 }
 
-docstring InsetPrintIndex::xhtml(odocstream &, OutputParams const &) const
+
+docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const &) const
 {
 	return docstring();
 }

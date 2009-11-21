@@ -101,13 +101,13 @@ public:
 	///
 	static ParamInfo const & findInfo(std::string const &);
 	///
-	static std::string defaultCommand() { return "printindex"; };
+	static std::string defaultCommand() { return "printindex"; }
 	///
 	static bool isCompatibleCommand(std::string const & s);
 	///
 	int latex(odocstream &, OutputParams const &) const;
 	/// Does nothing yet.
-	docstring xhtml(odocstream &, OutputParams const &) const;
+	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
