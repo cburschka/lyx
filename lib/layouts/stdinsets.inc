@@ -62,14 +62,7 @@ InsetLayout Marginal
 	LatexType             command
 	LatexName             marginpar
 	Font
-	  Color               foreground
 	  Size                Small
-	  Family              Roman
-	  Shape               Up
-	  Series              Medium
-	  Misc                No_Emph
-	  Misc                No_Noun
-	  Misc                No_Bar
 	EndFont
 	LabelFont
 	  Color               marginlabel
@@ -92,14 +85,7 @@ InsetLayout Foot
 	LabelString           foot
 	Counter               footnote
 	Font
-	  Color               foreground
 	  Size                Small
-	  Family              Roman
-	  Shape               Up
-	  Series              Medium
-	  Misc                No_Emph
-	  Misc                No_Noun
-	  Misc                No_Bar
 	EndFont
 	LabelFont
 	  Color               footlabel
@@ -241,14 +227,7 @@ InsetLayout Index
 	LabelString           Idx
 	Decoration            classic
 	Font
-	  Color               foreground
 	  Size                Small
-	  Family              Roman
-	  Shape               Up
-	  Series              Medium
-	  Misc                No_Emph
-	  Misc                No_Noun
-	  Misc                No_Bar
 	EndFont
 	LabelFont
 	  Color               indexlabel

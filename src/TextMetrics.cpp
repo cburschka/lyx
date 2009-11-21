@@ -246,9 +246,9 @@ void TextMetrics::applyOuterFont(Font & font) const
 {
 	Font lf(font_);
 	lf.fontInfo().reduce(bv_->buffer().params().getFont().fontInfo());
-	lf.fontInfo().realize(font.fontInfo());
-	lf.setLanguage(font.language());
-	font = lf;
+	Font tmp(font); 
+	tmp.fontInfo().realize(lf.fontInfo()); 
+	font = tmp;
 }
 
 
