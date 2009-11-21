@@ -41,6 +41,8 @@ private:
 	///
 	bool isLabeled() const { return true; }
 	///
+	bool noFontChange() const { return true; }
+	///
 	InsetCode lyxCode() const { return LISTINGS_CODE; }
 	/// lstinline is inlined, normal listing is displayed
 	DisplayType display() const;
