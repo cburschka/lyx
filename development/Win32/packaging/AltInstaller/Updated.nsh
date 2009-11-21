@@ -67,6 +67,7 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources\examples"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\biblioExample.bib"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\Braille.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\linguistics.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\powerdot-example.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\tufte-book.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\tufte-handout.lyx"
