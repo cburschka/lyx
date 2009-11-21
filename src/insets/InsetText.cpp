@@ -501,6 +501,19 @@ docstring InsetText::xhtml(XHTMLStream & xs, OutputParams const & runparams) con
 }
 
 
+// FIXME XHTML
+// There are cases where we may need to close open fonts and such
+// and then re-open them when we are done. This would be the case, e.g.,
+// if we were otherwise about to write:
+//		<em>word <div class='foot'>footnote text.</div> emph</em>
+// The problem isn't so much that the footnote text will get emphasized:
+// we can handle that with CSS. The problem is that this is invalid XHTML.
+// One solution would be to make the footnote <span>, but the problem is
+// completely general, and so we'd have to make absolutely everything into
+// span. What I think will work is to check if we're about to write "div" and,
+// if so, try to close fonts, etc. 
+// There are probably limits to how well we can do here, though, and we will
+// have to rely upon users not putting footnotes inside noun-type insets.
 docstring InsetText::insetAsXHTML(XHTMLStream & xs, OutputParams const & runparams,
                                   XHTMLOptions opts) const
 {
