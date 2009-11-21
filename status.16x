@@ -214,7 +214,12 @@ What's new
   
 - Fix a crash when pressing PageUp in an empty document (bug 6327).
 
-- Fix a number of assertions when displaying error messages (bug 6205). 
+- Fix crash with autosave on Mac OS X 10.6 (bug 6168).
+
+- Fix a number of assertions when displaying error messages (bug 6205).
+
+- Fix assertion when clicking on left side of inset in RTL text
+  (bug 6165).
 
 - Fix bad allocation exception when displaying long tooltips (bug 6215).
 
@@ -224,11 +229,11 @@ What's new
 - Fix width definition in the box dialog after a box inset was transformed
   from "Inner Box" type "None" to "Parbox" or "Minipage" (bug 6298).
 
-- Fix crash with autosave on Mac OS X 10.6 (bug 6168).
-
 - Fixed problem involving inability to turn off auto-save (bug 6227).
 
 - Sort document classes case insensitively (bug 1492).
+
+- Fix wrong cursor position in RTL text (bug 6161).
 
 - Disable to insert floats into another float when this is not allowed
   (bug 6045).
@@ -301,6 +306,9 @@ What's new
 - Fix double blinking cursors in Graphics/Nomenclature dialogs (bug 3852).
 
 - Fix display of e-mail addresses in the About LyX dialog.
+
+- In the Linguistics module, do not switch to the buffer language in
+  glosses (this was only a cosmetic issue in the LyX window).
 
 
 * DOCUMENTATION AND LOCALIZATION
