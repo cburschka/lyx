@@ -26,6 +26,7 @@
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
+#include "output_xhtml.h"
 #include "TextClass.h"
 
 #include "support/debug.h"
@@ -214,18 +215,17 @@ int InsetWrap::docbook(odocstream & os, OutputParams const & runparams) const
 }
 
 
-docstring InsetWrap::xhtml(odocstream &, OutputParams const & rp) const
+docstring InsetWrap::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 {
 	string const len = params_.width.asHTMLString();
-	docstring retval = from_ascii("<div class='wrap'");
+	string const width = len.empty() ? "50%" : len;
+	string const attr = "class='wrap' style='width: " + len + ";'";
+	xs << StartTag("div", attr);
+	docstring const deferred = 
+		InsetText::insetAsXHTML(xs, rp, InsetText::WriteInnerTag);
 	if (!len.empty())
-		retval += from_ascii(" style='width: " + len + ";");
-	retval += from_ascii("'>");
-	odocstringstream os;
-	docstring const deferred = InsetText::xhtml(os, rp);
-	retval += os.str() + from_ascii("</div>");
-	retval += deferred;
-	return retval;
+		xs << EndTag("div");
+	return deferred;
 }
 
 
