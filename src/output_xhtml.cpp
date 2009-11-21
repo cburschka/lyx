@@ -523,7 +523,7 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 			xs.cr();
 		}
 		if (!deferred.empty()) {
-			xs << deferred;
+			xs << XHTMLStream::NextRaw() << deferred;
 			xs.cr();
 		}
 	}
