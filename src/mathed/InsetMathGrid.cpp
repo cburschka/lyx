@@ -986,11 +986,13 @@ void InsetMathGrid::write(WriteStream & os) const
 	docstring eol;
 	for (row_type row = 0; row < nrows(); ++row) {
 		os << verboseHLine(rowinfo_[row].lines_);
-		// don't write & and empty cells at end of line
+		// don't write & and empty cells at end of line,
+		// unless there are vertical lines
 		col_type lastcol = 0;
 		bool emptyline = true;
 		for (col_type col = 0; col < ncols(); ++col)
-			if (!cell(index(row, col)).empty()) {
+			if (!cell(index(row, col)).empty()
+				  || colinfo_[col + 1].lines_) {
 				lastcol = col + 1;
 				emptyline = false;
 			}
