@@ -1166,6 +1166,8 @@ PrefPaths::PrefPaths(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(pathPrefixED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
+	connect(hunspellDirED, SIGNAL(textChanged(QString)),
+		this, SIGNAL(changed()));
 }
 
 
