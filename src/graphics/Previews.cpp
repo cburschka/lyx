@@ -72,7 +72,7 @@ void Previews::generateBufferPreviews(Buffer const & buffer) const
 	InsetIterator const end = inset_iterator_end(inset);
 
 	for (; it != end; ++it)
-		it->addPreview(ploader);
+		it->addPreview(it, ploader);
 
 	ploader.startLoading();
 }

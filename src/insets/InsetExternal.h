@@ -139,7 +139,7 @@ private:
 	/// Update needed features for this inset.
 	void validate(LaTeXFeatures & features) const;
 	///
-	void addPreview(graphics::PreviewLoader &) const;
+	void addPreview(DocIterator const &, graphics::PreviewLoader &) const;
 	///
 	bool showInsetDialog(BufferView * bv) const;
 	///

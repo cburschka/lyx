@@ -28,6 +28,7 @@
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
 #include "LyXRC.h"
+#include "MacroTable.h"
 #include "sgml.h"
 #include "TextPainter.h"
 #include "TocBackend.h"
@@ -456,22 +457,44 @@ void InsetMathHull::initUnicodeMath() const
 }
 
 
-void InsetMathHull::addPreview(graphics::PreviewLoader & ploader) const
+void InsetMathHull::addPreview(DocIterator const & insetPos,
+	graphics::PreviewLoader & /*ploader*/) const
 {
 	if (RenderPreview::status() == LyXRC::PREVIEW_ON) {
-		docstring const snippet = latexString(*this);
-		preview_->addPreview(snippet, ploader);
+		reloadPreview(insetPos);
 	}
 }
 
 
-bool InsetMathHull::notifyCursorLeaves(Cursor const & /*old*/, Cursor & cur)
+void InsetMathHull::reloadPreview(DocIterator const & pos) const  
+{  
+	Buffer const * buffer = pos.buffer();  
+
+	// collect macros at this position  
+	MacroNameSet macros;  
+	buffer->listMacroNames(macros);  
+	MacroNameSet::iterator it = macros.begin();  
+	MacroNameSet::iterator end = macros.end();  
+	odocstringstream macro_preamble;  
+	for (; it != end; ++it) {  
+		MacroData const * data = buffer->getMacro(*it, pos, true);  
+		if (data) {  
+			data->write(macro_preamble, true);  
+			macro_preamble << endl;  
+		}
+	}  
+
+	// start preview  
+	docstring const snippet = macro_preamble.str() + latexString(*this);  
+	LYXERR(Debug::MACROS, "Preview snippet: " << snippet);  
+	preview_->addPreview(snippet, *buffer);  
+	preview_->startLoading(*buffer);  
+}  
+
+bool InsetMathHull::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 {
 	if (RenderPreview::status() == LyXRC::PREVIEW_ON) {
-		Buffer const * buffer = cur.buffer();
-		docstring const snippet = latexString(*this);
-		preview_->addPreview(snippet, *buffer);
-		preview_->startLoading(*buffer);
+		reloadPreview(old);
 		cur.updateFlags(Update::Force);
 	}
 	return false;

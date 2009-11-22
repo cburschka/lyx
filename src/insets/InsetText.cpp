@@ -641,16 +641,24 @@ void InsetText::appendParagraphs(ParagraphList & plist)
 }
 
 
-void InsetText::addPreview(PreviewLoader & loader) const
+void InsetText::addPreview(DocIterator const & text_inset_pos,
+	PreviewLoader & loader) const
 {
 	ParagraphList::const_iterator pit = paragraphs().begin();
 	ParagraphList::const_iterator pend = paragraphs().end();
+	int pidx = 0;
 
-	for (; pit != pend; ++pit) {
+	DocIterator inset_pos = text_inset_pos;
+	inset_pos.push_back(CursorSlice(*const_cast<InsetText *>(this)));
+
+	for (; pit != pend; ++pit, ++pidx) {
 		InsetList::const_iterator it  = pit->insetList().begin();
 		InsetList::const_iterator end = pit->insetList().end();
-		for (; it != end; ++it)
-			it->inset->addPreview(loader);
+		inset_pos.pit() = pidx;
+		for (; it != end; ++it) {
+			inset_pos.pos() = it->pos;
+			it->inset->addPreview(inset_pos, loader);
+		}
 	}
 }
 

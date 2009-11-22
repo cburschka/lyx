@@ -813,7 +813,8 @@ public:
 	///
 	virtual bool forcePlainLayout(idx_type cell = 0) const;
 	///
-	void addPreview(graphics::PreviewLoader &) const;
+	void addPreview(DocIterator const & inset_pos,
+		graphics::PreviewLoader &) const;
 
 	/// lock cell with given index
 	void edit(Cursor & cur, bool front, EntryDirection entry_from);

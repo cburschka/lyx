@@ -132,7 +132,10 @@ public:
 	///
 	//bool insetAllowed(InsetCode code) const;
 	///
-	void addPreview(graphics::PreviewLoader &) const;
+	void addPreview(DocIterator const & insetPos,
+		graphics::PreviewLoader &) const;
+	/// Recreate the preview if preview is enabled.
+	void reloadPreview(DocIterator const & pos) const;
 	///
 	void initUnicodeMath() const;
 

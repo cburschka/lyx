@@ -757,7 +757,8 @@ void InsetExternal::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetExternal::addPreview(graphics::PreviewLoader & ploader) const
+void InsetExternal::addPreview(DocIterator const & /*inset_pos*/,
+	graphics::PreviewLoader & ploader) const	
 {
 	RenderMonitoredPreview * const ptr = renderer_->asMonitoredPreview();
 	if (!ptr)

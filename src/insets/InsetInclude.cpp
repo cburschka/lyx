@@ -949,7 +949,8 @@ void add_preview(RenderMonitoredPreview & renderer, InsetInclude const & inset,
 } // namespace anon
 
 
-void InsetInclude::addPreview(graphics::PreviewLoader & ploader) const
+void InsetInclude::addPreview(DocIterator const & /*inset_pos*/,
+	graphics::PreviewLoader & ploader) const
 {
 	Buffer const & buffer = ploader.buffer();
 	if (!preview_wanted(params(), buffer))

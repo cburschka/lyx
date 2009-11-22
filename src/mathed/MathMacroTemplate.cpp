@@ -17,6 +17,7 @@
 #include "LaTeXFeatures.h"
 #include "InsetMathBrace.h"
 #include "InsetMathChar.h"
+#include "InsetMathHull.h"
 #include "InsetMathSqrt.h"
 #include "MathMacro.h"
 #include "MathMacroArgument.h"
@@ -33,9 +34,12 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "Lexer.h"
+#include "LyXRC.h" 
 #include "Undo.h"
 
 #include "frontends/Painter.h"
+
+#include "insets/RenderPreview.h"
 
 #include "support/lassert.h"
 #include "support/convert.h"
@@ -619,20 +623,15 @@ void MathMacroTemplate::edit(Cursor & cur, bool front, EntryDirection entry_from
 
 bool MathMacroTemplate::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 {
-	// find this in cursor old
-	Cursor insetCur = old;
-	int scriptSlice	= insetCur.find(this);
-	LASSERT(scriptSlice != -1, /**/);
-	insetCur.cutOff(scriptSlice);
-	
-	commitEditChanges(insetCur);
+	commitEditChanges(cur, old);
 	updateLook();
 	cur.updateFlags(Update::Force);
 	return InsetMathNest::notifyCursorLeaves(old, cur);
 }
 
 
-void MathMacroTemplate::removeArguments(Cursor & cur, int from, int to)
+void MathMacroTemplate::removeArguments(Cursor & cur,
+	DocIterator const & /*insetPos*/, int from, int to)
 {
 	for (DocIterator it = doc_iterator_begin(&buffer(), this); it; it.forwardChar()) {
 		if (!it.nextInset())
@@ -716,98 +715,98 @@ void MathMacroTemplate::insertMissingArguments(int maxArg)
 }
 
 
-void MathMacroTemplate::changeArity(Cursor & cur, int newNumArg)
+void MathMacroTemplate::changeArity(Cursor & cur,
+	DocIterator const & insetPos, int newNumArg)
 {
 	// remove parameter which do not appear anymore in the definition
 	for (int i = numargs_; i > newNumArg; --i)
-		removeParameter(cur, numargs_ - 1, false);
+		removeParameter(cur, insetPos, numargs_ - 1, false);
 	
 	// add missing parameter
 	for (int i = numargs_; i < newNumArg; ++i)
-		insertParameter(cur, numargs_, false, false);
+		insertParameter(cur, insetPos, numargs_, false, false);
 }
 
 
-void MathMacroTemplate::commitEditChanges(Cursor & cur)
+///
+class AddRemoveMacroInstanceFix
 {
-	int argsInDef = maxArgumentInDefinition();
-	if (argsInDef != numargs_) {
-		cur.recordUndoFullDocument();
-		changeArity(cur, argsInDef);
-	}
-	insertMissingArguments(argsInDef);
-}
-
-
-// FIXME: factorize those functions here with a functional style, maybe using Boost's function
-// objects?
-
-void fixMacroInstancesAddRemove(Cursor const & from, docstring const & name, int n, bool insert) {
-	Cursor dit = from;
-
-	for (; dit; dit.forwardPos()) {
-		// only until a macro is redefined
-		if (dit.inset().lyxCode() == MATHMACRO_CODE) {
-			MathMacroTemplate const & macroTemplate
-			= static_cast<MathMacroTemplate const &>(dit.inset());
-			if (macroTemplate.name() == name)
-				break;
-		}
-
-		// in front of macro instance?
-		Inset * inset = dit.nextInset();
-		if (!inset)
-			continue;
-		InsetMath * insetMath = inset->asInsetMath();
-		if (!insetMath)
-			continue;
-
-		MathMacro * macro = insetMath->asMacro();
-		if (macro && macro->name() == name && macro->folded()) {
-			// found macro instance
-			if (insert)
-				macro->insertArgument(n);
+public:
+	///
+	AddRemoveMacroInstanceFix(int n, bool insert) : n_(n), insert_(insert) {}
+	///
+	void operator()(MathMacro * macro) {
+		if (macro->folded()) {
+			if (insert_)
+				macro->insertArgument(n_);
 			else
-				macro->removeArgument(n);
+				macro->removeArgument(n_);
 		}
 	}
-}
+
+private:
+	///
+	int n_;
+	///
+	bool insert_;
+};
 
 
-void fixMacroInstancesOptional(Cursor const & from, docstring const & name, int optionals) {
-	Cursor dit = from;
-
-	for (; dit; dit.forwardPos()) {
-		// only until a macro is redefined
-		if (dit.inset().lyxCode() == MATHMACRO_CODE) {
-			MathMacroTemplate const & macroTemplate
-			= static_cast<MathMacroTemplate const &>(dit.inset());
-			if (macroTemplate.name() == name)
-				break;
-		}
-
-		// in front of macro instance?
-		Inset * inset = dit.nextInset();
-		if (!inset)
-			continue;
-		InsetMath * insetMath = inset->asInsetMath();
-		if (!insetMath)
-			continue;
-		MathMacro * macro = insetMath->asMacro();
-		if (macro && macro->name() == name && macro->folded()) {
-			// found macro instance
-			macro->setOptionals(optionals);
-		}
+///
+class OptionalsMacroInstanceFix
+{
+public:
+	///
+	OptionalsMacroInstanceFix(int optionals) : optionals_(optionals) {}
+	///
+	void operator()(MathMacro * macro) {
+		macro->setOptionals(optionals_);
 	}
-}
+
+private:
+	///
+	int optionals_;
+};
+
+
+///
+class NullMacroInstanceFix
+{
+public:
+	///
+	void operator()(MathMacro * macro) {}
+};
 
 
 template<class F>
-void fixMacroInstancesFunctional(Cursor const & from,
-	docstring const & name, F & fix) {
-	Cursor dit = from;
+void fixMacroInstances(Cursor & cur, DocIterator const & inset_pos,
+	docstring const & name, F & fix)
+{
+	// goto position behind macro template
+	DocIterator dit = inset_pos;
+	dit.pop_back();
+	dit.top().forwardPos();
 
+	// remember hull to trigger preview reload
+	DocIterator hull(dit.buffer());
+	bool preview_reload_needed = false;
+
+	// iterate over all positions until macro is redefined
 	for (; dit; dit.forwardPos()) {
+		// left the outer hull?
+		if (!hull.empty() && dit.depth() == hull.depth()) {
+			// reload the preview if necessary 
+			if (preview_reload_needed) {
+				InsetMathHull * inset_hull =
+					hull.nextInset()->asInsetMath()->asHullInset();
+				LASSERT(inset_hull, /**/);
+				inset_hull->reloadPreview(hull);
+				cur.updateFlags(Update::Force);
+				preview_reload_needed = false;
+			}
+			hull.clear();
+		}
+
 		// only until a macro is redefined
 		if (dit.inset().lyxCode() == MATHMACRO_CODE) {
 			MathMacroTemplate const & macroTemplate
@@ -823,14 +822,42 @@ void fixMacroInstancesFunctional(Cursor const & from,
 		InsetMath * insetMath = inset->asInsetMath();
 		if (!insetMath)
 			continue;
+
+		// in front of outer hull?
+		InsetMathHull * inset_hull = insetMath->asHullInset();
+		if (inset_hull && hull.empty()) {
+			// remember this for later preview reload
+			hull = dit;
+		}
+
 		MathMacro * macro = insetMath->asMacro();
-		if (macro && macro->name() == name && macro->folded())
-			F(macro);
+		if (macro && macro->name() == name && macro->folded()) {
+			fix(macro);
+			if (RenderPreview::status() == LyXRC::PREVIEW_ON)
+				preview_reload_needed = true;
+		}
 	}
 }
 
 
-void MathMacroTemplate::insertParameter(Cursor & cur, int pos, bool greedy, bool addarg)
+void MathMacroTemplate::commitEditChanges(Cursor & cur,
+	DocIterator const & inset_pos)
+{
+	int args_in_def = maxArgumentInDefinition();
+	if (args_in_def != numargs_) {
+		cur.recordUndoFullDocument();
+		changeArity(cur, inset_pos, args_in_def);
+	}
+	insertMissingArguments(args_in_def);
+
+	// make sure the preview are up to date
+	NullMacroInstanceFix fix;
+	fixMacroInstances(cur, inset_pos, name(), fix);
+}
+
+
+void MathMacroTemplate::insertParameter(Cursor & cur,
+	DocIterator const & inset_pos, int pos, bool greedy, bool addarg)
 {
 	if (pos <= numargs_ && pos >= optionals_ && numargs_ < 9) {
 		++numargs_;
@@ -845,13 +872,9 @@ void MathMacroTemplate::insertParameter(Cursor & cur, int pos, bool greedy, bool
 		}
 
 		if (!greedy) {
-			Cursor dit = cur;
-			dit.leaveInset(*this);
-			// TODO: this was dit.forwardPosNoDescend before. Check that this is the same
-			dit.top().forwardPos();
-
 			// fix macro instances
-			fixMacroInstancesAddRemove(dit, name(), pos, true);
+			AddRemoveMacroInstanceFix fix(pos, true);
+			fixMacroInstances(cur, inset_pos, name(), fix);
 		}
 	}
 
@@ -859,11 +882,12 @@ void MathMacroTemplate::insertParameter(Cursor & cur, int pos, bool greedy, bool
 }
 
 
-void MathMacroTemplate::removeParameter(Cursor & cur, int pos, bool greedy)
+void MathMacroTemplate::removeParameter(Cursor & cur,
+	DocIterator const & inset_pos, int pos, bool greedy)
 {
 	if (pos < numargs_ && pos >= 0) {
 		--numargs_;
-		removeArguments(cur, pos, pos);
+		removeArguments(cur, inset_pos, pos, pos);
 		shiftArguments(pos + 1, -1);
 
 		// removed optional parameter?
@@ -886,13 +910,8 @@ void MathMacroTemplate::removeParameter(Cursor & cur, int pos, bool greedy)
 
 		if (!greedy) {
 			// fix macro instances
-			//boost::function<void(MathMacro *)> fix = _1->insertArgument(n);
-			//fixMacroInstancesFunctional(dit, name(), fix);
-			Cursor dit = cur;
-			dit.leaveInset(*this);
-			// TODO: this was dit.forwardPosNoDescend before. Check that this is the same
-			dit.top().forwardPos();
-			fixMacroInstancesAddRemove(dit, name(), pos, false);
+			AddRemoveMacroInstanceFix fix(pos, false);
+			fixMacroInstances(cur, inset_pos, name(), fix);
 		}
 	}
 
@@ -900,7 +919,9 @@ void MathMacroTemplate::removeParameter(Cursor & cur, int pos, bool greedy)
 }
 
 
-void MathMacroTemplate::makeOptional(Cursor & cur) {
+void MathMacroTemplate::makeOptional(Cursor & cur,
+	DocIterator const & inset_pos)
+{
 	if (numargs_ > 0 && optionals_ < numargs_) {
 		++optionals_;
 		cells_.insert(cells_.begin() + optIdx(optionals_ - 1), optionalValues_[optionals_ - 1]);
@@ -910,18 +931,17 @@ void MathMacroTemplate::makeOptional(Cursor & cur) {
 			++cur[macroSlice].idx();
 
 		// fix macro instances
-		Cursor dit = cur;
-		dit.leaveInset(*this);
-		// TODO: this was dit.forwardPosNoDescend before. Check that this is the same
-		dit.top().forwardPos();
-		fixMacroInstancesOptional(dit, name(), optionals_);
+		OptionalsMacroInstanceFix fix(optionals_);
+		fixMacroInstances(cur, inset_pos, name(), fix);
 	}
 
 	updateLook();
 }
 
 
-void MathMacroTemplate::makeNonOptional(Cursor & cur) {
+void MathMacroTemplate::makeNonOptional(Cursor & cur,
+	DocIterator const & inset_pos)
+{
 	if (numargs_ > 0 && optionals_ > 0) {
 		--optionals_;
 
@@ -942,11 +962,8 @@ void MathMacroTemplate::makeNonOptional(Cursor & cur) {
 		}
 
 		// fix macro instances
-		Cursor dit = cur;
-		dit.leaveInset(*this);
-		// TODO: this was dit.forwardPosNoDescend before. Check that this is the same
-		dit.top().forwardPos();
-		fixMacroInstancesOptional(dit, name(), optionals_);
+		OptionalsMacroInstanceFix fix(optionals_);
+		fixMacroInstances(cur, inset_pos, name(), fix);
 	}
 
 	updateLook();
@@ -960,77 +977,77 @@ void MathMacroTemplate::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_MATH_MACRO_ADD_PARAM:
 		if (numargs_ < 9) {
-			commitEditChanges(cur);
+			commitEditChanges(cur, cur);
 			cur.recordUndoFullDocument();
 			size_t pos = numargs_;
 			if (arg.size() != 0)
 				pos = (size_t)convert<int>(arg) - 1; // it is checked for >=0 in getStatus
-			insertParameter(cur, pos);
+			insertParameter(cur, cur, pos);
 		}
 		break;
 
 
 	case LFUN_MATH_MACRO_REMOVE_PARAM:
 		if (numargs_ > 0) {
-			commitEditChanges(cur);
+			commitEditChanges(cur, cur);
 			cur.recordUndoFullDocument();
 			size_t pos = numargs_ - 1;
 			if (arg.size() != 0)
 				pos = (size_t)convert<int>(arg) - 1; // it is checked for >=0 in getStatus
-			removeParameter(cur, pos);
+			removeParameter(cur, cur, pos);
 		}
 		break;
 
 	case LFUN_MATH_MACRO_APPEND_GREEDY_PARAM:
 		if (numargs_ < 9) {
-			commitEditChanges(cur);
+			commitEditChanges(cur, cur);
 			cur.recordUndoFullDocument();
-			insertParameter(cur, numargs_, true);
+			insertParameter(cur, cur, numargs_, true);
 		}
 		break;
 
 	case LFUN_MATH_MACRO_REMOVE_GREEDY_PARAM:
 		if (numargs_ > 0) {
-			commitEditChanges(cur);
+			commitEditChanges(cur, cur);
 			cur.recordUndoFullDocument();
-			removeParameter(cur, numargs_ - 1, true);
+			removeParameter(cur, cur, numargs_ - 1, true);
 		}
 		break;
 
 	case LFUN_MATH_MACRO_MAKE_OPTIONAL:
-		commitEditChanges(cur);
+		commitEditChanges(cur, cur);
 		cur.recordUndoFullDocument();
-		makeOptional(cur);
+		makeOptional(cur, cur);
 		break;
 
 	case LFUN_MATH_MACRO_MAKE_NONOPTIONAL:
-		commitEditChanges(cur);
+		commitEditChanges(cur, cur);
 		cur.recordUndoFullDocument();
-		makeNonOptional(cur);
+		makeNonOptional(cur, cur);
 		break;
 
 	case LFUN_MATH_MACRO_ADD_OPTIONAL_PARAM:
 		if (numargs_ < 9) {
-			commitEditChanges(cur);
+			commitEditChanges(cur, cur);
 			cur.recordUndoFullDocument();
-			insertParameter(cur, optionals_);
-			makeOptional(cur);
+			insertParameter(cur, cur, optionals_);
+			makeOptional(cur, cur);
 		}
 		break;
 
 	case LFUN_MATH_MACRO_REMOVE_OPTIONAL_PARAM:
 		if (optionals_ > 0) {
-			commitEditChanges(cur);
+			commitEditChanges(cur, cur);
 			cur.recordUndoFullDocument();
-			removeParameter(cur, optionals_ - 1);
+			removeParameter(cur, cur, optionals_ - 1);
 		} break;
 
 	case LFUN_MATH_MACRO_ADD_GREEDY_OPTIONAL_PARAM:
 		if (numargs_ == optionals_) {
-			commitEditChanges(cur);
+			commitEditChanges(cur, cur);
 			cur.recordUndoFullDocument();
-			insertParameter(cur, 0, true);
-			makeOptional(cur);
+			insertParameter(cur, cur, 0, true);
+			makeOptional(cur, cur);
 		}
 		break;
 

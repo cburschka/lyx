@@ -84,7 +84,7 @@ public:
 	///
 	void validate(LaTeXFeatures &) const;
 	///
-	void addPreview(graphics::PreviewLoader &) const;
+	void addPreview(DocIterator const &, graphics::PreviewLoader &) const;
 	///
 	void addToToc(DocIterator const &);
 	///
