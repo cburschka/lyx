@@ -1447,8 +1447,8 @@ Row const & TextMetrics::getPitAndRowNearY(int & y, pit_type & pit,
 		if (yy + rit->height() > y)
 			break;
 
-	if (assert_in_view && yy + rit->height() != y) {
-		if (!up) {
+	if (assert_in_view) {
+		if (!up && yy + rit->height() > y) {
 			if (rit != pm.rows().begin()) {
 				y = yy;
 				--rit;
@@ -1460,7 +1460,7 @@ Row const & TextMetrics::getPitAndRowNearY(int & y, pit_type & pit,
 				--rit;
 				y = yy;
 			}
-		} else  {
+		} else if (up && yy != y) {
 			if (rit != rlast) {
 				y = yy + rit->height();
 				++rit;
