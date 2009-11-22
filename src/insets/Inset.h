@@ -449,7 +449,7 @@ public:
 	 *  Most insets have no interest in this capability, so the method
 	 *  defaults to empty.
 	 */
-	virtual void addPreview(DocIterator const & insetPos,
+	virtual void addPreview(DocIterator const &,
 		graphics::PreviewLoader &) const {}
 
 	/** Classifies the unicode characters appearing in a math inset
