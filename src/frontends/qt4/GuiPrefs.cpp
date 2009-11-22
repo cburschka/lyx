@@ -1142,31 +1142,40 @@ PrefPaths::PrefPaths(GuiPreferences * form)
 	: PrefModule(QString(), qt_("Paths"), form)
 {
 	setupUi(this);
-	connect(exampleDirPB, SIGNAL(clicked()), this, SLOT(selectExampledir()));
-	connect(templateDirPB, SIGNAL(clicked()), this, SLOT(selectTemplatedir()));
-	connect(tempDirPB, SIGNAL(clicked()), this, SLOT(selectTempdir()));
-	connect(backupDirPB, SIGNAL(clicked()), this, SLOT(selectBackupdir()));
+
 	connect(workingDirPB, SIGNAL(clicked()), this, SLOT(selectWorkingdir()));
-	connect(lyxserverDirPB, SIGNAL(clicked()), this, SLOT(selectLyxPipe()));
-	connect(thesaurusDirPB, SIGNAL(clicked()), this, SLOT(selectThesaurusdir()));
-	connect(hunspellDirPB, SIGNAL(clicked()), this, SLOT(selectHunspelldir()));
 	connect(workingDirED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(exampleDirED, SIGNAL(textChanged(QString)),
-		this, SIGNAL(changed()));
+
+	connect(templateDirPB, SIGNAL(clicked()), this, SLOT(selectTemplatedir()));
 	connect(templateDirED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
+
+	connect(exampleDirPB, SIGNAL(clicked()), this, SLOT(selectExampledir()));
+	connect(exampleDirED, SIGNAL(textChanged(QString)),
+		this, SIGNAL(changed()));
+
+	connect(backupDirPB, SIGNAL(clicked()), this, SLOT(selectBackupdir()));
 	connect(backupDirED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(tempDirED, SIGNAL(textChanged(QString)),
-		this, SIGNAL(changed()));
+
+	connect(lyxserverDirPB, SIGNAL(clicked()), this, SLOT(selectLyxPipe()));
 	connect(lyxserverDirED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
+
+	connect(thesaurusDirPB, SIGNAL(clicked()), this, SLOT(selectThesaurusdir()));
 	connect(thesaurusDirED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
-	connect(pathPrefixED, SIGNAL(textChanged(QString)),
+
+	connect(tempDirPB, SIGNAL(clicked()), this, SLOT(selectTempdir()));
+	connect(tempDirED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
+
+	connect(hunspellDirPB, SIGNAL(clicked()), this, SLOT(selectHunspelldir()));
 	connect(hunspellDirED, SIGNAL(textChanged(QString)),
+		this, SIGNAL(changed()));
+
+	connect(pathPrefixED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 }
 
