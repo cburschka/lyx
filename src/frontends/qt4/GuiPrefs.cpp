@@ -1685,8 +1685,8 @@ void PrefFileformats::update(LyXRC const & rc)
 	bool const init = defaultFormatCB->currentText().isEmpty();
 	updateView();
 	if (init) {
-		int const pos = defaultFormatCB->findData(toqstr(
-		rc.default_view_format));
+		int const pos =
+			defaultFormatCB->findData(toqstr(rc.default_view_format));
 		defaultFormatCB->setCurrentIndex(pos);
 	}
 }
@@ -1859,10 +1859,12 @@ namespace {
 void PrefFileformats::updateViewers()
 {
 	Format const f = currentFormat();
+	viewerCO->blockSignals(true);
 	viewerCO->clear();
 	viewerCO->addItem(qt_("None"), QString());
 	updateComboBox(viewer_alternatives, f.name(), viewerCO);
 	viewerCO->addItem(qt_("Custom"), QString("custom viewer"));
+	viewerCO->blockSignals(false);
 
 	int pos = viewerCO->findData(toqstr(f.viewer()));
 	if (pos != -1) {
@@ -1880,10 +1882,12 @@ void PrefFileformats::updateViewers()
 void PrefFileformats::updateEditors()
 {
 	Format const f = currentFormat();
+	editorCO->blockSignals(true);
 	editorCO->clear();
 	editorCO->addItem(qt_("None"), QString());
 	updateComboBox(editor_alternatives, f.name(), editorCO);
 	editorCO->addItem(qt_("Custom"), QString("custom editor"));
+	editorCO->blockSignals(false);
 
 	int pos = editorCO->findData(toqstr(f.editor()));
 	if (pos != -1) {
@@ -1912,7 +1916,7 @@ void PrefFileformats::on_editorCO_currentIndexChanged(int i)
 	bool const custom = editorCO->itemData(i).toString() == "custom editor";
 	editorED->setEnabled(custom);
 	if (!custom)
-		currentFormat().setViewer(fromqstr(editorCO->itemData(i).toString()));
+		currentFormat().setEditor(fromqstr(editorCO->itemData(i).toString()));
 }
 
 
