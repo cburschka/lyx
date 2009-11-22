@@ -1744,12 +1744,9 @@ Tabular::idx_type Tabular::setLTCaption(row_type row, bool what)
 		setBottomLine(i, false);
 		setLeftLine(i, false);
 		setRightLine(i, false);
-	} else {
+	} else
 		unsetMultiColumn(i);
-		// FIXME: when unsetting a caption row, also all existing captions
-		// in this row must be dissolved, see (bug 5754)
-		// dispatch(FuncRequest(LFUN_INSET_DISSOLVE, "caption-insert"));
-	}
+
 	row_info[row].caption = what;
 	return i;
 }
@@ -4719,10 +4716,15 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		cur.pit() = 0;
 		cur.pos() = 0;
 		cur.setSelection(false);
-		// When a row is set as caption, then also insert a caption. Otherwise
-		// the LaTeX output is broken, when the user doesn't add a caption.
 		if (set)
+			// When a row is set as caption, then also insert
+			// a caption. Otherwise the LaTeX output is broken.
 			lyx::dispatch(FuncRequest(LFUN_CAPTION_INSERT));
+		else {
+			FuncRequest fr(LFUN_INSET_DISSOLVE);
+			if (lyx::getStatus(fr).enabled())
+				lyx::dispatch(fr);
+		}
 		break;
 	}
 
