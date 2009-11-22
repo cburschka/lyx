@@ -542,7 +542,8 @@ void Text::insertChar(Cursor & cur, char_type c)
 	cur.checkBufferStructure();
 
 //		cur.updateFlags(Update::Force);
-	bool boundary = tm.isRTLBoundary(cur.pit(), cur.pos() + 1);
+	bool const boundary = cur.boundary()
+		|| tm.isRTLBoundary(cur.pit(), cur.pos() + 1);
 	setCursor(cur, cur.pit(), cur.pos() + 1, false, boundary);
 	charInserted(cur);
 }
