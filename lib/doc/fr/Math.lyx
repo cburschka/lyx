@@ -144,14 +144,6 @@
   \setboolean{upgreek}{true}}
  {\setboolean{upgreek}{false}}
 
-% check for package mhchem
-% used for chemical equations
-\newboolean{mhchem}
-\IfFileExists{mhchem.sty}
- {\usepackage{mhchem}
-  \setboolean{mhchem}{true}}
- {\setboolean{mhchem}{false}}
-
 % use normal list environments also in French documents
 \StandardLayout
 \end_preamble
@@ -31076,34 +31068,7 @@ Paquetages ! mhchem
 \end_inset
 
  est installé.
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-ifmhchem 
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Ce qui suit ne sera affiché que si le paquetage LaTeX 
-\series bold
-mhchem
-\series default
- est installé:
-\end_layout
-
-\end_inset
-
-Quand on insère 
+ Quand on insère 
 \series bold
 
 \backslash
@@ -31872,60 +31837,6 @@ key "mhchem"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-else 
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Ce qui suit sera affiché si la paquetage LaTeX 
-\series bold
-mhchem
-\series default
- n'est pas installé:
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Vous avez besoin du paquetage LaTeX 
-\series bold
-mhchem
-\series default
- pour voir le reste de cette sous section dans la sortie finale.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-fi 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -34173,110 +34084,11 @@ droite
 
 \begin_layout Section
 Astuces
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-texorpdfstring{
-\end_layout
-
-\end_inset
-
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-On peut trouver d'autres astuces mathématiques très utiles dans 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Voss"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-texorpdfstring est utilisé pour éviter que la note de bas de page apparaisse
- dans les signets PDF.
-\end_layout
-
-\begin_layout Plain Layout
-Plus d'infos sur 
-\backslash
-texorpdfstring dans la section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:formules-dans-les-entêtes"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
 \begin_inset Index
 status collapsed
 
 \begin_layout Plain Layout
 Astuces
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-Ions|see
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-Symboles chimiques
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -37486,24 +37298,6 @@ target "ftp://ftp.dante.de/tex-archive/info/math/voss/mathmode/Mathmode.pdf"
 \end_inset
 
  des possibilités mathématiques de LaTeX
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "Voss"
-
-\end_inset
-
-
-\begin_inset CommandInset href
-LatexCommand href
-name "Page"
-target "http://tug.org/TeXnik/"
-
-\end_inset
-
- de trucs et astuces LaTeX
 \end_layout
 
 \begin_layout Bibliography
