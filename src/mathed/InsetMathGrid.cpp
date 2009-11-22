@@ -994,13 +994,19 @@ void InsetMathGrid::write(WriteStream & os,
 {
 	MathEnsurer ensurer(os, false);
 	docstring eol;
+	LYXERR0( " " << beg_col << " " << end_col );
+
+	LYXERR0( (colinfo_[beg_col].lines_) );
+	LYXERR0( (colinfo_[end_col].lines_) );
 	for (row_type row = beg_row; row < end_row; ++row) {
 		os << verboseHLine(rowinfo_[row].lines_);
-		// don't write & and empty cells at end of line
+		// don't write & and empty cells at end of line,
+		// unless there are vertical lines
 		col_type lastcol = 0;
 		bool emptyline = true;
 		for (col_type col = beg_col; col < end_col; ++col)
-			if (!cell(index(row, col)).empty()) {
+			if (!cell(index(row, col)).empty()
+				  || colinfo_[col + 1].lines_) {
 				lastcol = col + 1;
 				emptyline = false;
 			}
