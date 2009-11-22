@@ -142,8 +142,6 @@ What's new
 - Assure the author name is encoded correctly in the LaTeX output of
   change tracking markup (bug 6225).
 
-- Do not unnecessarily enquote brackets in the LaTeX output (bug 5988).
-
 - Remove the last '\\' in the output of multiline equations. This caused
   labels to appear twice (bug 2969).
  
