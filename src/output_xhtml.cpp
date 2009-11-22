@@ -123,7 +123,7 @@ docstring CompTag::asTag() const
 ////////////////////////////////////////////////////////////////
 
 XHTMLStream::XHTMLStream(odocstream & os) 
-		:os_(os)
+		: os_(os), nextraw_(false)
 {}
 
 
