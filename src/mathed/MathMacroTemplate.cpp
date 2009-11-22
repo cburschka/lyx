@@ -631,9 +631,10 @@ bool MathMacroTemplate::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 
 
 void MathMacroTemplate::removeArguments(Cursor & cur,
-	DocIterator const & /*insetPos*/, int from, int to)
+	DocIterator const & /*inset_pos*/, int from, int to)
 {
-	for (DocIterator it = doc_iterator_begin(&buffer(), this); it; it.forwardChar()) {
+	DocIterator it = doc_iterator_begin(&buffer(), this);
+	for (; it; it.forwardChar()) {
 		if (!it.nextInset())
 			continue;
 		if (it.nextInset()->lyxCode() != MATH_MACROARG_CODE)
@@ -716,15 +717,15 @@ void MathMacroTemplate::insertMissingArguments(int maxArg)
 
 
 void MathMacroTemplate::changeArity(Cursor & cur,
-	DocIterator const & insetPos, int newNumArg)
+	DocIterator const & inset_pos, int newNumArg)
 {
 	// remove parameter which do not appear anymore in the definition
 	for (int i = numargs_; i > newNumArg; --i)
-		removeParameter(cur, insetPos, numargs_ - 1, false);
+		removeParameter(cur, inset_pos, numargs_ - 1, false);
 	
 	// add missing parameter
 	for (int i = numargs_; i < newNumArg; ++i)
-		insertParameter(cur, insetPos, numargs_, false, false);
+		insertParameter(cur, inset_pos, numargs_, false, false);
 }
 
 

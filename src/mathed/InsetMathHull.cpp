@@ -457,11 +457,11 @@ void InsetMathHull::initUnicodeMath() const
 }
 
 
-void InsetMathHull::addPreview(DocIterator const & insetPos,
+void InsetMathHull::addPreview(DocIterator const & inset_pos,
 	graphics::PreviewLoader & /*ploader*/) const
 {
 	if (RenderPreview::status() == LyXRC::PREVIEW_ON) {
-		reloadPreview(insetPos);
+		reloadPreview(inset_pos);
 	}
 }
 
