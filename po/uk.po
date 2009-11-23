@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: uk-163\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-11-15 18:16+0100\n"
-"PO-Revision-Date: 2009-11-12 11:06+0200\n"
+"PO-Revision-Date: 2009-11-23 19:34+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
-"Language-Team: Ukrainian <translation@linux.org.ua>\n"
+"Language-Team: Ukrainian <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.0\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
+"=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
 msgid "Version"
@@ -1901,6 +1901,8 @@ msgid ""
 "The AMS LaTeX packages are only used if symbols from the AMS math toolbars "
 "are inserted into formulas"
 msgstr ""
+"Пакунки AMS LaTeX буде використано, лише якщо до формул вставлятимуться "
+"символи з математичних панелей інструментів AMS"
 
 #: src/frontends/qt4/ui/MathsUi.ui:28
 msgid "&Use AMS math package automatically"
@@ -1908,7 +1910,7 @@ msgstr "Ви&користовувати пакунок AMS math автомати
 
 #: src/frontends/qt4/ui/MathsUi.ui:38
 msgid "The AMS LaTeX packages are always used"
-msgstr ""
+msgstr "Пакунки AMS LaTeX використовуватимуться завжди"
 
 #: src/frontends/qt4/ui/MathsUi.ui:41
 msgid "Use AMS &math package"
@@ -1919,6 +1921,8 @@ msgid ""
 "The LaTeX package esint is only used if special integral symbols are "
 "inserted into formulas"
 msgstr ""
+"Пакунок LaTeX esint буде використано, лише якщо ви додасте до формули "
+"особливі символи інтегралів"
 
 #: src/frontends/qt4/ui/MathsUi.ui:51
 msgid "Use esint package &automatically"
@@ -1926,7 +1930,7 @@ msgstr "Використовувати пакунок esint &автоматич�
 
 #: src/frontends/qt4/ui/MathsUi.ui:61
 msgid "The LaTeX package esint is always used"
-msgstr ""
+msgstr "Пакунок esint LaTeX використовуватиметься завжди"
 
 #: src/frontends/qt4/ui/MathsUi.ui:64
 msgid "Use &esint package"
@@ -2267,8 +2271,7 @@ msgstr "Автоматичне &завершення у рядку"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:88
 msgid "Show the popup after the set delay in text mode."
-msgstr ""
-"Показувати з встановленою затримкою вікно підказки у текстовому режимі."
+msgstr "Показувати з встановленою затримкою вікно підказки у текстовому режимі."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:91
 msgid "Automatic &popup"
@@ -3101,8 +3104,7 @@ msgstr "&Інша мова:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:74
 msgid "The characters inserted here are ignored by the spellchecker"
-msgstr ""
-"Вказані тут символи буде проігноровано інструментом перевірки правопису"
+msgstr "Вказані тут символи буде проігноровано інструментом перевірки правопису"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:81
 msgid "Specify a personal dictionary file other than the default"
@@ -3391,8 +3393,7 @@ msgstr "Зворотній &пошук"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:42
 msgid "Process the converted file with this command ($$FName = file name)"
-msgstr ""
-"Обробити перетворений файл за допомогою команди ($$FName = назва файла)"
+msgstr "Обробити перетворений файл за допомогою команди ($$FName = назва файла)"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:101
 msgid "&Export formats:"
@@ -3441,7 +3442,7 @@ msgid ""
 "the 'Clear' button"
 msgstr ""
 "Після клацання у цьому полі введіть клавіатурне скорочення. ви можете "
-"спорожнити вміст поля за допомогою кнопки «Очистити»"
+"спорожнити вміст поля за допомогою кнопки «Спорожнити»"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:35
 msgid "Suggestions:"
@@ -8646,7 +8647,7 @@ msgstr "У підвалі"
 
 #: lib/layouts/stdinsets.inc:82
 msgid "foot"
-msgstr "фут"
+msgstr "примітка"
 
 #: lib/layouts/stdinsets.inc:102
 msgid "Note:Comment"
@@ -9445,14 +9446,14 @@ msgid "Theorems (Numbered by Chapter)"
 msgstr "Теореми (нумерація за главами)"
 
 #: lib/layouts/theorems-chap.module:7
-#, fuzzy
 msgid ""
 "Numbers theorems and the like by chapter (i.e., the counter is reset at each "
 "chapter start). Use this module only with document classes that provide a "
 "chapter environment."
 msgstr ""
 "Нумерує теореми і подібні середовища за главами (тобто відлік ведеться у "
-"кожній з глав окремо). Цей модуль використовується лише для форматів з "
+"кожній з глав окремо). Цей модуль використовується лише для класів документів "
+"з "
 "середовищем «chapter»."
 
 #: lib/layouts/theorems-sec-bytype.module:2
@@ -10132,7 +10133,7 @@ msgstr "Знайти і замінити...|З"
 
 #: lib/ui/classic.ui:100
 msgid "Tabular|T"
-msgstr "Таблицю|Т"
+msgstr "Таблиця|Т"
 
 #: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:116 lib/ui/stdmenus.inc:534
 msgid "Math|M"
@@ -10385,7 +10386,7 @@ msgstr "Перехресне посилання...|х"
 
 #: lib/ui/classic.ui:219 lib/ui/stdmenus.inc:344
 msgid "Label...|L"
-msgstr "Мітку...|М"
+msgstr "Мітка...|М"
 
 #: lib/ui/classic.ui:220 lib/ui/stdmenus.inc:353
 msgid "Footnote|F"
@@ -10393,7 +10394,7 @@ msgstr "Зноску|н"
 
 #: lib/ui/classic.ui:221 lib/ui/stdmenus.inc:354
 msgid "Marginal Note|M"
-msgstr "Примітку на полях|л"
+msgstr "Примітка на полях|л"
 
 #: lib/ui/classic.ui:222
 msgid "Short Title"
@@ -10413,7 +10414,7 @@ msgstr "URL...|U"
 
 #: lib/ui/classic.ui:226 lib/ui/stdmenus.inc:336
 msgid "Note|N"
-msgstr "Примітку|у"
+msgstr "Примітка|а"
 
 #: lib/ui/classic.ui:227
 msgid "Lists & TOC|O"
@@ -10433,7 +10434,7 @@ msgstr "Зображення...|З"
 
 #: lib/ui/classic.ui:232
 msgid "Tabular Material...|b"
-msgstr "Таблицю...|Т"
+msgstr "Таблиця...|Т"
 
 #: lib/ui/classic.ui:233
 msgid "Floats|a"
@@ -10688,7 +10689,7 @@ msgstr "Стежити за змінами|т"
 
 #: lib/ui/classic.ui:329 lib/ui/stdmenus.inc:474
 msgid "Merge Changes...|M"
-msgstr "Накласти Зміни...|Н"
+msgstr "Накласти зміни...|Н"
 
 #: lib/ui/classic.ui:330
 msgid "Accept All Changes|A"
@@ -10716,7 +10717,7 @@ msgstr "Документ...|О"
 
 #: lib/ui/classic.ui:342
 msgid "Tabular...|T"
-msgstr "Таблицю...|Т"
+msgstr "Таблиця...|Т"
 
 #: lib/ui/classic.ui:344
 msgid "Emphasize Style|E"
@@ -10776,23 +10777,23 @@ msgstr "Закладки|З"
 
 #: lib/ui/classic.ui:384 lib/ui/stdmenus.inc:496
 msgid "Save Bookmark 1|S"
-msgstr "Закласти закладку 1|З"
+msgstr "Створити закладку 1|т"
 
 #: lib/ui/classic.ui:385 lib/ui/stdmenus.inc:497
 msgid "Save Bookmark 2"
-msgstr "Закласти закладку 2"
+msgstr "Створити закладку 2"
 
 #: lib/ui/classic.ui:386 lib/ui/stdmenus.inc:498
 msgid "Save Bookmark 3"
-msgstr "Закласти закладку 3"
+msgstr "Створити закладку 3"
 
 #: lib/ui/classic.ui:387 lib/ui/stdmenus.inc:499
 msgid "Save Bookmark 4"
-msgstr "Закласти закладку 4"
+msgstr "Створити закладку 4"
 
 #: lib/ui/classic.ui:388 lib/ui/stdmenus.inc:500
 msgid "Save Bookmark 5"
-msgstr "Закласти закладку 5"
+msgstr "Створити закладку 5"
 
 #: lib/ui/classic.ui:390
 msgid "Go to Bookmark 1|1"
@@ -11063,7 +11064,7 @@ msgstr "Подвійна рамка|д"
 
 #: lib/ui/stdcontext.inc:173 lib/ui/stdmenus.inc:443
 msgid "LyX Note|N"
-msgstr "LyX Примітку|П"
+msgstr "LyX-примітка|п"
 
 #: lib/ui/stdcontext.inc:174
 msgid "Comment|m"
@@ -11429,7 +11430,7 @@ msgstr "Вибрати все"
 
 #: lib/ui/stdmenus.inc:115
 msgid "Table|T"
-msgstr "Таблицю|Т"
+msgstr "Таблиця|Т"
 
 #: lib/ui/stdmenus.inc:117
 msgid "Rows & Columns|C"
@@ -11697,7 +11698,7 @@ msgstr "Елемент номенклатури...|Е"
 
 #: lib/ui/stdmenus.inc:349
 msgid "Table...|T"
-msgstr "Таблицю...|Т"
+msgstr "Таблиця...|Т"
 
 #: lib/ui/stdmenus.inc:351
 msgid "URL|U"
@@ -11813,7 +11814,7 @@ msgstr "Наступне перехресне посилання|е"
 
 #: lib/ui/stdmenus.inc:501
 msgid "Clear Bookmarks|C"
-msgstr "Очистити закладки|О"
+msgstr "Спорожнити список закладок|С"
 
 #: lib/ui/stdmenus.inc:503
 msgid "Navigate Back|B"
@@ -12345,12 +12346,10 @@ msgid "Functions"
 msgstr "Функції"
 
 #: lib/ui/stdtoolbars.inc:244
-#, fuzzy
 msgid "Frame decorations"
 msgstr "Обрамлення"
 
 #: lib/ui/stdtoolbars.inc:245
-#, fuzzy
 msgid "Big operators"
 msgstr "Великі оператори"
 
@@ -12364,7 +12363,6 @@ msgid "Arrows"
 msgstr "Стрілки"
 
 #: lib/ui/stdtoolbars.inc:249
-#, fuzzy
 msgid "AMS arrows"
 msgstr "Стрілки AMS"
 
@@ -12377,12 +12375,10 @@ msgid "Relations"
 msgstr "Зв'язки"
 
 #: lib/ui/stdtoolbars.inc:252
-#, fuzzy
 msgid "AMS relations"
 msgstr "Співвідношення AMS"
 
 #: lib/ui/stdtoolbars.inc:253
-#, fuzzy
 msgid "AMS negative relations"
 msgstr "Заперечувальні співвідношення AMS"
 
@@ -12391,14 +12387,12 @@ msgid "Dots"
 msgstr "Крапки"
 
 #: lib/ui/stdtoolbars.inc:255
-#, fuzzy
 msgid "AMS operators"
 msgstr "Оператори AMS"
 
 #: lib/ui/stdtoolbars.inc:256
-#, fuzzy
 msgid "AMS miscellaneous"
-msgstr "Інше AMS"
+msgstr "Інші символи AMS"
 
 #: lib/ui/stdtoolbars.inc:260
 msgid "arccos"
@@ -13706,7 +13700,7 @@ msgstr "bigwedge"
 
 #: lib/ui/stdtoolbars.inc:623
 msgid "AMS Miscellaneous"
-msgstr "Інше AMS"
+msgstr "Інші символи AMS"
 
 #: lib/ui/stdtoolbars.inc:624
 msgid "digamma"
@@ -16800,8 +16794,7 @@ msgstr ""
 "типово після зміни класу."
 
 #: src/LyXRC.cpp:2505
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Проміжок часу між автозбереженнями (в секундах). 0 означає не виконувати "
 "автозбереження."
@@ -17025,8 +17018,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:2662
 msgid "De-select if you do not want LyX to scroll to saved position."
-msgstr ""
-"Не позначайте, якщо ви не бажаєте щоб LyX гортав до збереженої позиції."
+msgstr "Не позначайте, якщо ви не бажаєте щоб LyX гортав до збереженої позиції."
 
 #: src/LyXRC.cpp:2666
 msgid "De-select to prevent loading files opened from the last LyX session."
@@ -17065,8 +17057,7 @@ msgstr "Позначте для показу підказки-доповненн
 #: src/LyXRC.cpp:2695
 msgid ""
 "Show the completion popup without delay after non-unique completion attempt."
-msgstr ""
-"Показувати підказку без затримки після неоднозначної спроби доповнення."
+msgstr "Показувати підказку без затримки після неоднозначної спроби доповнення."
 
 #: src/LyXRC.cpp:2699
 msgid ""
@@ -17106,8 +17097,7 @@ msgstr ""
 "тому вигляді, як прийнято в вашій операційній системі."
 
 #: src/LyXRC.cpp:2731
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 "Вкажіть додатковий особистий словниковий файл. Наприклад, \".ispell_english"
 "\"."
@@ -17204,8 +17194,7 @@ msgstr "Параметр для зазначення програмі друку
 
 #: src/LyXRC.cpp:2807
 msgid "Option to pass to the print program to print on a specific printer."
-msgstr ""
-"Параметр для зазначення програмі друку друкувати на вказаному принтері."
+msgstr "Параметр для зазначення програмі друку друкувати на вказаному принтері."
 
 #: src/LyXRC.cpp:2811
 msgid ""
@@ -17721,8 +17710,7 @@ msgstr "&Зберегти зміни"
 #: src/buffer_funcs.cpp:86
 #, c-format
 msgid "The file %1$s exists but is not readable by the current user."
-msgstr ""
-"Файл %1$s існує, але він недоступний для читання поточним користувачем."
+msgstr "Файл %1$s існує, але він недоступний для читання поточним користувачем."
 
 #: src/buffer_funcs.cpp:89
 msgid "File not readable!"
@@ -18875,8 +18863,7 @@ msgstr "Спадковий документ"
 #: src/frontends/qt4/GuiInclude.cpp:120 src/frontends/qt4/GuiInclude.cpp:182
 #: src/frontends/qt4/GuiListings.cpp:239 src/frontends/qt4/GuiListings.cpp:375
 #: src/frontends/qt4/GuiListings.cpp:450
-msgid ""
-"Input listing parameters on the right. Enter ? for a list of parameters."
+msgid "Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 "Введіть параметри текстів програм праворуч. Введіть «?», щоб побачити список "
 "команд."
@@ -20703,7 +20690,7 @@ msgid ""
 msgstr ""
 "Цей параметр не слід вводити тут. Будь ласка, використовуйте блок "
 "редагування мітки (коли використовуєте діалог дочірнього документа) або "
-"пункт меню Вставити->Мітку (коли визначаєте вставку програмного коду)"
+"пункт меню Вставка->Мітка (коли визначаєте вставку програмного коду)"
 
 #: src/insets/InsetListingsParams.cpp:622
 msgid "Invalid (empty) listing parameter name."
