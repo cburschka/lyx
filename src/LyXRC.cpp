@@ -277,7 +277,13 @@ void LyXRC::setDefaults()
 	backupdir_path.erase();
 	display_graphics = true;
 	// Spellchecker settings:
+#if defined(USE_ASPELL)
 	spellchecker = "aspell";
+#elif defined(USE_HUNSPELL)
+	spellchecker = "hunspell";
+#else
+	spellchecker = "aspell";
+#endif
 	spellchecker_accept_compound = false;
 	spellcheck_continuously = false;
 	use_kbmap = false;

@@ -1293,19 +1293,31 @@ PrefSpellchecker::PrefSpellchecker(GuiPreferences * form)
 {
 	setupUi(this);
 
+#if defined(USE_ASPELL)
 	spellcheckerCB->addItem("aspell");
+#endif
+#if defined(USE_HUNSPELL)
 	spellcheckerCB->addItem("hunspell");
+#endif
 
-	connect(spellcheckerCB, SIGNAL(currentIndexChanged(int)),
-		this, SIGNAL(changed()));
-	connect(altLanguageED, SIGNAL(textChanged(QString)),
-		this, SIGNAL(changed()));
-	connect(escapeCharactersED, SIGNAL(textChanged(QString)),
-		this, SIGNAL(changed()));
-	connect(compoundWordCB, SIGNAL(clicked()),
-		this, SIGNAL(changed()));
-	connect(spellcheckContinuouslyCB, SIGNAL(clicked()),
-		this, SIGNAL(changed()));
+	if (theSpellChecker()) {
+		connect(spellcheckerCB, SIGNAL(currentIndexChanged(int)),
+			this, SIGNAL(changed()));
+		connect(altLanguageED, SIGNAL(textChanged(QString)),
+			this, SIGNAL(changed()));
+		connect(escapeCharactersED, SIGNAL(textChanged(QString)),
+			this, SIGNAL(changed()));
+		connect(compoundWordCB, SIGNAL(clicked()),
+			this, SIGNAL(changed()));
+		connect(spellcheckContinuouslyCB, SIGNAL(clicked()),
+			this, SIGNAL(changed()));
+	} else {
+		spellcheckerCB->setEnabled(false);
+		altLanguageED->setEnabled(false);
+		escapeCharactersED->setEnabled(false);
+		compoundWordCB->setEnabled(false);
+		spellcheckContinuouslyCB->setEnabled(false);
+	}
 }
 
 
