@@ -2563,8 +2563,10 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			int const ret = Alert::prompt(_("Revert to saved document?"),
 				text, 1, 1, _("&Revert"), _("&Cancel"));
 
-			if (ret == 0)
+			if (ret == 0) {
+				doc_buffer->markClean();
 				reloadBuffer();
+			}
 			break;
 		}
 
