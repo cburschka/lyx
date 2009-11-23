@@ -4724,11 +4724,12 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		cur.pit() = 0;
 		cur.pos() = 0;
 		cur.setSelection(false);
-		if (set)
+		if (set) {
 			// When a row is set as caption, then also insert
 			// a caption. Otherwise the LaTeX output is broken.
+			lyx::dispatch(FuncRequest(LFUN_INSET_SELECT_ALL));
 			lyx::dispatch(FuncRequest(LFUN_CAPTION_INSERT));
-		else {
+		} else {
 			FuncRequest fr(LFUN_INSET_DISSOLVE);
 			if (lyx::getStatus(fr).enabled())
 				lyx::dispatch(fr);
