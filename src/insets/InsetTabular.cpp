@@ -4624,6 +4624,14 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		break;
 
 	case Tabular::UNSET_LONGTABULAR:
+		for (row_type i = 0; i < tabular.row_info.size(); ++i) {
+			if (tabular.ltCaption(i)) {
+				cur.idx() = tabular.cellIndex(i, 0);
+				cur.pit() = 0;
+				cur.pos() = 0;
+				tabularFeatures(cur, Tabular::TOGGLE_LTCAPTION);
+			}
+		}
 		tabular.is_long_tabular = false;
 		break;
 

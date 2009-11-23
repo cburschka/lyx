@@ -315,7 +315,8 @@ What's new
 
 - Allow PgUp and PgDown to position the cursor on the first or last row.
 
-- Dissolve the caption when unsetting a longtable caption row (bug 5754).
+- Dissolve the caption when unsetting a longtable caption row (bug 5754),
+  and when converting a longtable into a normal table.
 
 - Correctly position the cursor after pasting to a multi-cell math inset
   (bug 6342).
