@@ -74,7 +74,7 @@ Menuset
 		Item "Show Math-Panels Toolbar" "toolbar-toggle math_panels toggle"
 		Item "Show Table Toolbar" "toolbar-toggle table toggle"
 		Separator
-		Submenu "Use Computer Algebra System|S" "edit_math_extern"
+		Submenu "Use Computer Algebra System|m" "edit_math_extern"
 	End
 
 
