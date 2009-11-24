@@ -73,6 +73,8 @@ Menuset
 		Item "Show Math Toolbar" "toolbar-toggle math toggle"
 		Item "Show Math-Panels Toolbar" "toolbar-toggle math_panels toggle"
 		Item "Show Table Toolbar" "toolbar-toggle table toggle"
+		Separator
+		Submenu "Use Computer Algebra System|S" "edit_math_extern"
 	End
 
 
