@@ -76,6 +76,7 @@
 \output_changes false
 \author "" 
 \author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -124,7 +125,7 @@ Xy
 
 
 \family default
--Pic can be conveniently used inside LyX.
+-pic can be conveniently used inside LyX.
  Diagrams can be edited and displayed inside the main LyX editing window.
  Here, we shall describe how to use the 
 \family typewriter
@@ -192,7 +193,7 @@ xypic
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename xyfigure.png
+	filename ../../../g-free-1.6/lib/examples/xyfigure.png
 	scale 50
 	BoundingBox 0bp 0bp 580bp 440bp
 	clip
@@ -248,7 +249,7 @@ Xy
 
 \end_inset
 
--Pic code inside the LyX-window, select it all and convert it to a graphical
+-pic code inside the LyX-window, select it all and convert it to a graphical
  representation by pressing 
 \family sans
 Ctrl-m
@@ -271,7 +272,7 @@ Xy
 
 \end_inset
 
--Pic more frequently, or if you want to modify your initial figure, you
+-pic more frequently, or if you want to modify your initial figure, you
  will want to assemble and modify your figures using LyX's math editor.
  
 \end_layout
@@ -299,7 +300,7 @@ Xy
 
 \end_inset
 
--Pic features that might be of use for drawing commutative diagrams, graphs
+-pic features that might be of use for drawing commutative diagrams, graphs
  or automata.
  Section 
 \begin_inset CommandInset ref
@@ -321,7 +322,7 @@ Xy
 
 \end_inset
 
--Pic commands inside a math-editing area.
+-pic commands inside a math-editing area.
  
 \end_layout
 
@@ -339,7 +340,7 @@ Xy
 
 \end_inset
 
--Pic, rather our motivation is to give an introduction how the most important
+-pic, rather our motivation is to give an introduction how the most important
  commands work inside LyX, since the keystrokes as explained in the 
 \begin_inset ERT
 status collapsed
@@ -353,7 +354,7 @@ Xy
 
 \end_inset
 
--Pic manual
+-pic manual
 \begin_inset CommandInset citation
 LatexCommand cite
 key "xypic manual"
@@ -396,7 +397,7 @@ key "xypic"
 .
  After freshly installing them, it may be necessary, to run 
 \family sans
-Edit\SpecialChar \menuseparator
+Tools\SpecialChar \menuseparator
 Reconfigure
 \family default
  from the main LyX menu.
@@ -413,10 +414,10 @@ preview
 \begin_layout Enumerate
 Open LyX, choose 
 \family sans
-Edit\SpecialChar \menuseparator
+Tools\SpecialChar \menuseparator
 Preferences\SpecialChar \menuseparator
 Look and Feel\SpecialChar \menuseparator
-Graphics
+Display
 \family default
  and turn 
 \emph on
@@ -486,7 +487,7 @@ Xy
 
 \end_inset
 
--Pic
+-pic
 \family typewriter
 :
 \end_layout
@@ -552,7 +553,7 @@ Xy
 
 \end_inset
 
--Pic
+-pic
 \begin_inset CommandInset citation
 LatexCommand cite
 key "xypic manual"
@@ -927,7 +928,7 @@ beta
 \begin_inset Formula $\beta$
 \end_inset
 
- above the arrow, i.
+ above the arrow, e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -1926,7 +1927,7 @@ Math
  
 \family sans
 \SpecialChar \menuseparator
-Alignment.
+Change Formula Type.
 \end_layout
 
 \begin_layout Subsection
@@ -2149,7 +2150,7 @@ Xy
 
 \end_inset
 
--Pic, entries can obtain a single or a double frame, such as 
+-pic, entries can obtain a single or a double frame, such as 
 \begin_inset Formula $\xymatrix{*+[F]{A}}
 $
 \end_inset
@@ -2573,7 +2574,11 @@ Alt-m c
 Alt-m w
 \family default
  for the row commands.
- 
+ A more direct way uses the icons in the math toolbar once it has been activated
+ via 
+\family sans
+View\SpecialChar \menuseparator
+Toolbars.
 \end_layout
 
 \begin_layout Subsection
@@ -2767,19 +2772,20 @@ lly convert it into graphical output.
 \end_layout
 
 \begin_layout Standard
-A more serious reason could be a syntactical error in your input.
- If necessary, redo the last editing steps, using 
-\emph on
+A more serious reason could be a syntactical error in your input (in that
+ case, the math edition area disappears completely).
+ If necessary, undo the last editing steps, using 
+\family sans
 Ctrl+Z
-\emph default
+\family default
 , or try to translate the LyX-file into 
-\emph on
+\family sans
 DVI
-\emph default
+\family default
  using 
-\emph on
+\family sans
 Ctrl+D
-\emph default
+\family default
  or 
 \family sans
 View\SpecialChar \menuseparator
@@ -3327,7 +3333,7 @@ Xy
 
 
 \family default
--Pic manual 
+-pic manual 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "xypic manual"
@@ -3412,7 +3418,7 @@ Xy
 
 
 \emph on
--Pic User's Guide
+-pic User's Guide
 \emph default
 .
  Version 3.7, Feb.
@@ -3514,7 +3520,7 @@ Xy
 
 
 \emph on
--Pic
+-pic
 \emph default
  
 \emph on
@@ -3557,7 +3563,7 @@ Xy
 
 
 \emph on
--Pic
+-pic
 \emph default
 : 
 \emph on
