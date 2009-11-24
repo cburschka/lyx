@@ -2259,6 +2259,12 @@ static bool ensureBufferClean(Buffer * buffer)
 void GuiView::reloadBuffer()
 {
 	Buffer * buf = &documentBufferView()->buffer();
+	reloadBuffer(buf);
+}
+
+
+void GuiView::reloadBuffer(Buffer * buf)
+{
 	FileName filename = buf->fileName();
 	Buffer const * master = buf->masterBuffer();
 	bool const is_child = master != buf;
@@ -2281,6 +2287,24 @@ void GuiView::reloadBuffer()
 		str = bformat(_("Could not reload document %1$s"), disp_fn);
 	}
 	message(str);
+}
+
+
+void GuiView::checkExternallyModifiedBuffers()
+{
+	BufferList::iterator bit = theBufferList().begin();
+	BufferList::iterator const bend = theBufferList().end();
+	for (; bit != bend; ++bit) {
+		if ((*bit)->isExternallyModified(Buffer::checksum_method)) {
+			docstring text = bformat(_("Document \n%1$s\n has been externally modified."
+					" Reload now? Any local changes will be lost."),
+					from_utf8((*bit)->absFileName()));
+			int const ret = Alert::prompt(_("Reload externally changed document?"),
+						text, 0, 1, _("&Reload"), _("&Cancel"));
+			if (!ret)
+				reloadBuffer(*bit);
+		}
+	}
 }
 
 
@@ -2350,7 +2374,7 @@ void GuiView::dispatchVC(FuncRequest const & cmd)
 		if (ensureBufferClean(buffer)) {
 			string res = buffer->lyxvc().repoUpdate();
 			message(from_utf8(res));
-			reloadBuffer();
+			checkExternallyModifiedBuffers();
 		}
 		break;
 

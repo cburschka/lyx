@@ -126,6 +126,9 @@ public:
 	/// called on timeout
 	void autoSave();
 
+	/// check for external change of any opened buffer, mainly for svn usage
+	void checkExternallyModifiedBuffers();
+
 	/** redraw \c inset in all the BufferViews in which it is currently
 	 *  visible. If successful return a pointer to the owning Buffer.
 	 */
@@ -340,6 +343,7 @@ private:
 	Dialog * build(std::string const & name);
 	///
 	void reloadBuffer();
+	void reloadBuffer(Buffer * buf);
 	///
 	void dispatchVC(FuncRequest const & cmd);
 	///
