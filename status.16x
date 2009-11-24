@@ -127,6 +127,9 @@ What's new
 
 - Fix a crash when loading a document that specifies mutltiple labels
   for an equation (bug 5968).
+  
+- When using the PDF-Pages external inset, copy the included PDF file to
+  the temporary directory, where LaTeX searches it (bug 6345).
 
 - Add encoding "ansinew" as a synonym of "cp1252" for the benefit of 
   tex2lyx (bug 6142).

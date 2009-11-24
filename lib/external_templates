@@ -273,6 +273,7 @@ Template PDFPages
 	HelpTextEnd
 	InputFormat pdf
 	FileFilter "*.pdf"
+	AutomaticProduction true
 	Transform Rotate
 	Transform Resize
 	Transform Extra
