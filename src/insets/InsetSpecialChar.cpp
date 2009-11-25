@@ -19,6 +19,7 @@
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
+#include "output_xhtml.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
@@ -291,26 +292,26 @@ int InsetSpecialChar::docbook(odocstream & os, OutputParams const &) const
 }
 
 
-docstring InsetSpecialChar::xhtml(odocstream & os, OutputParams const &) const
+docstring InsetSpecialChar::xhtml(XHTMLStream & xs, OutputParams const &) const
 {
 	switch (kind_) {
 	case HYPHENATION:
 	case LIGATURE_BREAK:
 		break;
 	case END_OF_SENTENCE:
-		os << '.';
+		xs << '.';
 		break;
 	case LDOTS:
-		os << "&hellip;";
+		xs << "&hellip;";
 		break;
 	case MENU_SEPARATOR:
-		os << "&rArr;";
+		xs << "&rArr;";
 		break;
 	case SLASH:
-		os << "&frasl;";
+		xs << "&frasl;";
 		break;
 	case NOBREAKDASH:
-		os << '-';
+		xs << '-';
 		break;
 	}
 	return docstring();
