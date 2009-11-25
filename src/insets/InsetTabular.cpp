@@ -5299,7 +5299,7 @@ void InsetTabular::addPreview(DocIterator const & inset_pos,
 	cell_pos.push_back(CursorSlice(*const_cast<InsetTabular *>(this)));
 	for (row_type i = 0; i < rows; ++i) {
 		for (col_type j = 0; j < columns; ++j) {
-			cell_pos.top().idx() = index(i, j);
+			cell_pos.top().idx() = tabular.cellIndex(i, j);
 			tabular.cellInset(i, j)->addPreview(cell_pos, loader);
 		}
 	}
