@@ -144,7 +144,7 @@ void InsetRef::updateLabels(ParIterator const & it)
 			break;
 		}
 	}
-	screen_label_ += getParam("reference");
+	screen_label_ += label;
 
 	if (!isLatex && !getParam("name").empty()) {
 		screen_label_ += "||";
