@@ -129,7 +129,9 @@ dist_frexamples_DATA = \
 	examples/fr/ListesPuces.lyx \
 	examples/fr/multicol.lyx \
 	examples/fr/simplecv.lyx \
-	examples/fr/splash.lyx
+	examples/fr/splash.lyx \
+	examples/fr/xyfigure.png \
+	examples/fr/xypic.lyx
 
 glexamplesdir = $(pkgdatadir)/examples/gl
 dist_glexamples_DATA = \

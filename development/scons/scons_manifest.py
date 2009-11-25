@@ -2519,6 +2519,8 @@ lib_examples_fr_files = Split('''
     multicol.lyx
     simplecv.lyx
     splash.lyx
+    xyfigure.png
+    xypic.lyx
 ''')
 
 
