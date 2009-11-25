@@ -27,9 +27,9 @@
 \end_preamble
 \options BCOR7.5mm
 \use_default_options false
-\language english
+\language french
 \inputencoding auto
-\font_roman ae
+\font_roman lmodern
 \font_sans default
 \font_typewriter default
 \font_default_family default
@@ -42,9 +42,9 @@
 \paperfontsize 12
 \spacing single
 \use_hyperref true
-\pdf_title "Using XY-pc in LyX"
+\pdf_title "Utilisation de XY-pic dans LyX"
 \pdf_author "H. Peter Gumm"
-\pdf_subject "LyX's XY-pic manual"
+\pdf_subject "manual de XY-pic"
 \pdf_keywords "LyX, documentation"
 \pdf_bookmarks true
 \pdf_bookmarksnumbered true
@@ -58,7 +58,7 @@
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 \papersize a4paper
 \use_geometry false
-\use_amsmath 1
+\use_amsmath 2
 \use_esint 0
 \cite_engine basic
 \use_bibtopic false
@@ -67,7 +67,7 @@
 \tocdepth 3
 \paragraph_separation indent
 \defskip medskip
-\quotes_language english
+\quotes_language french
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
@@ -80,7 +80,7 @@
 \begin_body
 
 \begin_layout Title
-Using 
+Utilisation de 
 \begin_inset ERT
 status collapsed
 
@@ -93,20 +93,28 @@ Xy
 
 \end_inset
 
--pic in LyX
+-pic dans LyX
 \end_layout
 
 \begin_layout Author
 H.
  Peter Gumm
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Traduction française Jean-Pierre Chrétien, novembre 2009
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Abstract
-With the recent versions of LyX and with the 
-\family typewriter
-preview
-\family default
--style installed in the LaTeX-System, the graph drawing package 
+Avec les versions récentes de LyX et grâce à la possibilité d'afficher un
+ aperçu sur le vif offerte par la distribution LaTeX, le paquetage de tracé
+ de diagrammes 
 \family typewriter
 
 \begin_inset ERT
@@ -123,20 +131,20 @@ Xy
 
 
 \family default
--pic can be conveniently used inside LyX.
- Diagrams can be edited and displayed inside the main LyX editing window.
- Here, we shall describe how to use the 
+-pic peut être utilisé confortablement dans LyX: les diagrammes peuvent
+ être affichés et modifiés dans le fenêtre principale de LyX.
+ Nous décrivons ici comment utiliser la commande 
 \family typewriter
 
 \backslash
 xymatrix
 \family default
- command from 
+ de 
 \family typewriter
 xypic
 \family default
- inside LyX in order to draw, to edit and to preview diagrams as typically
- used in category theory, algebra, and related fields.
+ depuis LyX pour tracer, modifier et visionner des diagrammes utilisés typiqueme
+nt dans la théorie des catégories, l'algèbre et les disciplines voisines.
  
 \end_layout
 
@@ -154,31 +162,39 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-The 
+Le paquetage 
 \family typewriter
 xypic
 \family default
--package has long served as a convenient tool for easily constructing graphs
- and diagrams in LaTeX.
- Unfortunately, its use in LyX had long been restricted to the infamous
- TeX code boxes, meaning that the LyX editor could only display the LaTeX-source
- and not the finished diagram.
- The new 
-\family typewriter
-preview
-\family default
--style of LaTeX which is part of the AUCTeX project
+ est utilisé depuis longtemps comme un outil approprié pour construire facilemen
+t des graphiques et des diagrammes en LaTeX.
+ Malheureusement, son utilisation depuis LyX était limitée par les infâmes
+ boîtes de code TeX, ce qui faisait que la fenêtre LyX ne pouvait afficher
+ que les sources LaTeX et non pas le diagramme résultant.
+ Le mode LaTeX 
+\begin_inset Quotes fld
+\end_inset
+
+Aperçu sur le vif
+\begin_inset Quotes frd
+\end_inset
+
+ (
+\emph on
+preview-style
+\emph default
+), inclus dans le projet AUCTeX
 \begin_inset CommandInset citation
 LatexCommand cite
 key "AUCTeX"
 
 \end_inset
 
-, finally enables the editing and displaying of 
+, permet enfin la modification et l'affichage des diagrammes 
 \family typewriter
 xypic
 \family default
--diagrams, constructed, displayed and interactively edited inside LyX.
+, qui peuvent être construits, modifiés et visionnés depuis LyX.
 \end_layout
 
 \begin_layout Standard
@@ -191,10 +207,9 @@ xypic
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename xyfigure.png
+	filename schemas_xy_figure.png
+	lyxscale 60
 	width 75col%
-	BoundingBox 0bp 0bp 580bp 440bp
-	clip
 
 \end_inset
 
@@ -209,7 +224,7 @@ xypic
 \end_layout
 
 \begin_layout Standard
-In this note, we describe how 
+Dans ce manuel, nous décrivons comment utiliser 
 \begin_inset ERT
 status collapsed
 
@@ -222,19 +237,20 @@ Xy
 
 \end_inset
 
--pic can be used from inside LyX, how diagrams can be created and edited.
- We have tested the following using LyX versions 1.3.7 up to 1.6, running under
+-pic depuis la fenêtre LyX, et comment créer et modifier des diagrammes.
+ Nous avons testé ce qui suit avec LyX (versions 1.3.7 à 1.6), exécuté sur
  Windows
 \begin_inset space \thinspace{}
 \end_inset
 
-XP and under Windows Vista.
+XP ou Windows Vista.
  
 \end_layout
 
 \begin_layout Standard
-There are two modes of operations: For a start, and for some first tests,
- it may be easiest to first enter the 
+Deux façons de procéder sont offertes: pour commencer, et pour quelques
+ tests préliminaires, il peut être plus facile de saisir d'abord le code
+ 
 \begin_inset ERT
 status collapsed
 
@@ -247,17 +263,17 @@ Xy
 
 \end_inset
 
--pic code inside the LyX-window, select it all and convert it to a graphical
- representation by pressing 
+-pic dans la fenêtre LyX, de le sélectionner en entier et de le convertir
+ dans sa représentation graphique en pressant 
 \family sans
 Ctrl-m
 \family default
- or 
+ ou 
 \family sans
 Ctrl-M
 \family default
 .
- If you use 
+ Si vous devez utiliser 
 \begin_inset ERT
 status collapsed
 
@@ -270,22 +286,22 @@ Xy
 
 \end_inset
 
--pic more frequently, or if you want to modify your initial figure, you
- will want to assemble and modify your figures using LyX's math editor.
- 
+-pic plus fréquemment, ou si vous désirez modifier votre diagramme initial,
+ vous préférerez assembler et modifier vos figures à l'aide de l'éditeur
+ mathématique de LyX.
 \end_layout
 
 \begin_layout Standard
-Once the cursor is moved over a diagram, this is displayed as an array of
- nodes and arrow-commands.
- These can be changed interactively.
- When the cursor leaves the editing area, the diagram reappears.
- 
+Lorsque le curseur se trouve superposé à un diagramme, celui-ci est affiché
+ comme une tableau de nœuds et de flèches.
+ Ceux-ci peuvent être modifiés interactivement.
+ Quand le curseur quitte la zone d'édition, le diagramme réapparaît.
 \end_layout
 
 \begin_layout Standard
-In the first two sections of this documentation, we explain how to use LyX
- in the first mentioned mode and we introduce all 
+Dans les deux premiers chapitres de la documentation, nous expliquons comment
+ utiliser LyX dans le premier mode mentionné ci-dessus et nous introduisons
+ toutes le fonctionnalités de 
 \begin_inset ERT
 status collapsed
 
@@ -298,16 +314,16 @@ Xy
 
 \end_inset
 
--pic features that might be of use for drawing commutative diagrams, graphs
- or automata.
- Section 
+-pic qui peuvent être utiles pour tracer des diagrammes commutatifs, des
+ graphes ou de automates.
+ Le chapitre 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:math-editor"
 
 \end_inset
 
- explains how to use the 
+ explique comment utiliser les commandes 
 \begin_inset ERT
 status collapsed
 
@@ -320,12 +336,19 @@ Xy
 
 \end_inset
 
--pic commands inside a math-editing area.
- 
+-pic dans une 
+\begin_inset Quotes fld
+\end_inset
+
+zone d'édition mathématique
+\begin_inset Quotes frd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-It is not our intention to write another introduction to 
+Ce n'est pas notre intention d'écrire une nouvelle introduction à 
 \begin_inset ERT
 status collapsed
 
@@ -338,8 +361,9 @@ Xy
 
 \end_inset
 
--pic, rather our motivation is to give an introduction how the most important
- commands work inside LyX, since the keystrokes as explained in the 
+-pic, notre motivation est plutôt de montrer comment les commandes les plus
+ importantes fonctionnent dans LyX, puisque les combinaisons de saisies
+ décrites dans le manuel 
 \begin_inset ERT
 status collapsed
 
@@ -352,32 +376,31 @@ Xy
 
 \end_inset
 
--pic manual
+-pic 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "xypic manual"
 
 \end_inset
 
- will not always function correctly inside LyX.
- 
+ ne sont pas toutes interprétées dans LyX.
 \end_layout
 
 \begin_layout Section
-Preparation
+Préparation
 \end_layout
 
 \begin_layout Standard
-The following requires that the LaTeX-packages 
+Ce qui suit nécessite que les paquetages LaTeX 
 \family typewriter
 xypic
 \family default
- and 
+ et 
 \family typewriter
 preview
 \family default
- are installed in the LaTeX system.
- They are available from CTAN, see at 
+ fassent partie de la distribution LaTeX.
+ Ils sont disponibles sur CTAN, voir à 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "instant-preview"
@@ -385,7 +408,7 @@ key "instant-preview"
 \end_inset
 
 , resp.
- at 
+ à 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "xypic"
@@ -393,86 +416,73 @@ key "xypic"
 \end_inset
 
 .
- After freshly installing them, it may be necessary, to run 
+ Si vous devez les installer, il est nécessaire d'exécuter 
 \family sans
-Tools\SpecialChar \menuseparator
-Reconfigure
+Outils\SpecialChar \menuseparator
+Reconfigurer
 \family default
- from the main LyX menu.
- The steps to a first diagram output in LyX are then:
+ dans le menu principal de LyX.
+ Les étapes pour créer un premier diagramme dans LyX sont alors les suivantes:
+ 
 \end_layout
 
 \begin_layout Enumerate
-Activate and test 
-\family typewriter
-preview
+Activation et aperçu de test
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-Open LyX, choose 
+Ouvrir LyX, choisir 
 \family sans
-Tools\SpecialChar \menuseparator
-Preferences\SpecialChar \menuseparator
-Look and Feel\SpecialChar \menuseparator
-Display
+Outils\SpecialChar \menuseparator
+Préférences\SpecialChar \menuseparator
+Apparence\SpecialChar \menuseparator
+Affichage écran
 \family default
- and turn 
+ et positionner 
 \emph on
-Instant Preview
+Aperçu sur le vif
 \emph default
- on.
+ sur 
+\emph on
+Activé
+\emph default
+;
 \end_layout
 
 \begin_layout Enumerate
-In 
+Dans 
 \family sans
 Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Math
-\begin_inset space ~
-\end_inset
-
-Options
+Paramètres...\SpecialChar \menuseparator
+Options mode math
 \family default
-, uncheck 
+, décocher 
 \emph on
-Use AMS Math package automatically
+Utiliser automatiquement le paquetage math AMS
 \emph default
- and check 
+ et cocher 
 \emph on
-Use AMS Math package
-\emph default
-.
+Utiliser le paquetage math AMS;
 \end_layout
 
 \begin_layout Enumerate
-Test, if 
-\family typewriter
-instant-preview
-\family default
- works by opening a LyX-document and entering any math-formula, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
- 
+Tester si l'aperçu sur le vif fonctionne en ouvrant un document LyX et en
+ saisissant n'importe quelle formule mathématique, par exemple 
 \begin_inset Formula $a+b=c$
 \end_inset
 
-.
- 
+;
 \end_layout
 
 \begin_layout Enumerate
-Move the cursor out of the formula, and watch it change its appearance to
- look just like in the finished DVI- or PostScript document.
- 
+Déplacer le curseur en-dehors de la formule, et constatez qu'elle prend
+ l'aspect du résultat imprimable DVI, PostScript ou PDF.
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Activate and test 
+Activer et tester 
 \begin_inset ERT
 status collapsed
 
@@ -492,7 +502,7 @@ Xy
 
 \begin_deeper
 \begin_layout Enumerate
-Inside your LyX-Document, enter the text 
+Dans votre document, saisissez le texte
 \family typewriter
 
 \begin_inset Newline newline
@@ -504,27 +514,24 @@ xymatrix{A
 \backslash
 ar[r] & B}
 \family default
- .
+ ;
 \end_layout
 
 \begin_layout Enumerate
-Select the whole text and choose 
+Sélectionner tout ce texte et choisir 
 \family sans
-Insert\SpecialChar \menuseparator
+Insérer\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
-Display Formula
+Formule hors ligne
 \family default
-, or use the corresponding keyboard shortcut 
+, ou pressez le raccourci clavier correspondant 
 \family sans
-Ctrl-M
-\family default
-.
- 
+Ctrl-M;
 \end_layout
 
 \begin_layout Enumerate
-Move the mouse cursor out of the editing box and wait for a split second
- to see an arrow appear: 
+Déplacer le curseur en-dehors de la zone d'édition mathématique et attendre
+ une fraction de seconde pour voir apparaître une flèche:
 \begin_inset Formula $\xymatrix{A\ar[r] & B}
 $
 \end_inset
@@ -534,11 +541,11 @@ $
 
 \end_deeper
 \begin_layout Section
-Commutative diagrams
+Diagrammes commutatifs
 \end_layout
 
 \begin_layout Standard
-The following diagram, which is taken from the documentation of 
+Le diagramme ci-après, qui est extrait de la documentation 
 \begin_inset ERT
 status collapsed
 
@@ -558,10 +565,14 @@ key "xypic manual"
 
 \end_inset
 
- by its creator Kristoffer H.
- Rose, will provide an example for many of the features available with that
- package.
- Its source code is: 
+ écrite par son créateur Kristoffer H.
+ 
+\noun on
+Rose
+\noun default
+, va nous fournir un exemple illustrant de nombreuses fonctionnalités de
+ ce paquetage.
+ Son code source est le suivant: 
 \end_layout
 
 \begin_layout LyX-Code
@@ -619,37 +630,38 @@ ar[r]^g                      &  Z }
 \end_layout
 
 \begin_layout Standard
-Again, to turn this code into a graphical output, select it all at once
- starting from the 
+De nouveau, pour convertir ce code sous forme graphique, le sélectionner
+ en entier depuis 
 \family typewriter
 
 \backslash
 xymatrix{
 \family default
  \SpecialChar \ldots{}
- up to the closing brace \SpecialChar \ldots{}
+ jusqu'à l'accolade fermante \SpecialChar \ldots{}
  
 \family typewriter
 }
 \family default
- and turn it into display-math as explained above.
- A moment after the cursor leaves the math-area, you should see the diagram
- in its full graphical glory as shown below.
- 
+ et le convertir en mode mathématique hors ligne comme expliqué plus haut.
+ Peu après que que le curseur quitte la zone d'édition mathématique, vous
+ devriez voir apparaître le diagramme dans toute sa beauté graphique ci-dessous:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\xymatrix{U\ar@/_{1pc}/[ddr]_{\psi}\ar@/{}^{1pc}/[drr]^{\varphi}\ar@{.>}[dr]|-{(x,y)}\\
+\begin_inset Formula \[
+\xymatrix{U\ar@/_{1pc}/[ddr]_{\psi}\ar@/{}^{1pc}/[drr]^{\varphi}\ar@{.>}[dr]|-{(x,y)}\\
  & X\times_{Z}Y\ar[d]^{q}\ar[r]_{p} & X\ar[d]_{f}\\
  & Y\ar[r]^{g} & Z}
-$
+\]
+
 \end_inset
 
  
 \end_layout
 
 \begin_layout Subsection
-The matrix layout of diagrams
+Le format matriciel des diagrammes
 \end_layout
 
 \begin_layout Standard
@@ -657,12 +669,9 @@ The matrix layout of diagrams
 \family typewriter
 xymatrix
 \family default
- uses a matrix to define the layout of the vertices of a diagram.
- For the above example, we need a 
-\begin_inset Formula $3\times3$
-\end_inset
-
--matrix of which 5 entries are used for the vertices 
+ utilise une matrice pour définir la disposition des sommets d'un diagramme.
+ Pour l'exemple ci-dessus, nous avons besoin d'une matrice 3x3, 5 positions
+ étant utilisées pour les sommets 
 \begin_inset Formula $U$
 \end_inset
 
@@ -682,8 +691,8 @@ xymatrix
 \begin_inset Formula $Z$
 \end_inset
 
-, the other positions remaining empty.
- In this case, the following matrix determines the layout:
+, les autres positions restant vides.
+ Dans ce cas, la matrice suivante définit le format:
 \end_layout
 
 \begin_layout LyX-Code
@@ -715,17 +724,17 @@ times_Z Y   & X
 \end_layout
 
 \begin_layout Standard
-The pattern should be familiar from LaTeX: We see three rows, the first
- two being terminated by the end-of-line-marker 
+La structure semble familière aux connaisseurs de LaTeX: nous voyons trois
+ lignes, les deux premières étant terminées par le marqueur de fin de ligne
 \family typewriter
-
+ 
 \backslash
 
 \backslash
 
 \family default
  .
- Each line consists of entries, separated by the ampersand 
+ Chaque ligne comporte des cellules, séparées par une esperluette 
 \family typewriter
 &
 \family default
@@ -734,45 +743,47 @@ The pattern should be familiar from LaTeX: We see three rows, the first
 \end_layout
 
 \begin_layout Subsection
-Arrows
+Flèches
 \end_layout
 
 \begin_layout Standard
-Having entered the vertices, we add arrows between them.
- The basic 
+Une fois les sommets saisis, nous ajoutons des flèches entre eux.
+ La commande 
 \family typewriter
 xypic
 \family default
--command to produce an arrow is 
+ de base pour produire une flèche est 
 \family typewriter
 
 \backslash
 ar
 \family default
- , it is entered into the cell of the matrix where the arrow is to start.
- The target of the arrow is defined by direction commands 
+ , elle est saisie dans la cellule de la matrice d'où part la flèche.
+ La direction de la flèche est spécifiée par les commandes de direction
+ 
 \family typewriter
 u
 \family default
- (up) 
+ (haut), 
 \family typewriter
 d
 \family default
- (down) 
+ (bas), 
 \family typewriter
 l
 \family default
- (left), or 
+ (gauche), ou 
 \family typewriter
 r
 \family default
- (right).
- These can be combined to a path and enclosed in square brackets.
- As an example, the arrows from the vertex 
+ (droite).
+ Celles-ci peuvent être combinées sous forme d'un chemin et encloses entre
+ crochets.
+ Par exemple, les flèches partant du sommet 
 \begin_inset Formula $U$
 \end_inset
 
- in the upper left corner down and right to the vertices 
+ en haut à gauche allant vers le bas et à droite vers les sommets 
 \begin_inset Formula $X\times_{Z}Y$
 \end_inset
 
@@ -780,11 +791,11 @@ r
 \begin_inset Formula $Y$
 \end_inset
 
-, and 
+, et 
 \begin_inset Formula $X$
 \end_inset
 
- are, respectively, defined as 
+ sont définies respectivement par 
 \family typewriter
 
 \backslash
@@ -796,14 +807,14 @@ ar[dr]
 \backslash
 ar[ddr]
 \family default
- and 
+ et 
 \family typewriter
 
 \backslash
 ar[drr]
 \family default
 .
- Thus the above diagram with all arrows added becomes:
+ Le diagramme ci-dessus enrichi par les flèches devient donc:
 \end_layout
 
 \begin_layout LyX-Code
@@ -849,10 +860,11 @@ ar[r] & Z }
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \xymatrix{ U \ar[ddr] \ar[drr] \ar[dr]\\
- &  X \times_{Z} Y \ar[d] \ar[r]  &  X \ar[d]\\
- &  Y \ar[r]  &  Z }
-
+\begin_inset Formula \[
+\xymatrix{U\ar[ddr]\ar[drr]\ar[dr]\\
+ & X\times_{Z}Y\ar[d]\ar[r] & X\ar[d]\\
+ & Y\ar[r] & Z}
+\]
 
 \end_inset
 
@@ -868,19 +880,19 @@ ar[r] & Z }
 \end_layout
 
 \begin_layout Subsection
-Labels
+Étiquettes
 \end_layout
 
 \begin_layout Standard
-Labels are attached to arrows by affixing them as upper or lower indices
- to the 
+Les étiquettes sont associées aux flèches en les créant en tant qu'exposants
+ et indices des commandes 
 \family typewriter
 
 \backslash
 ar
 \family default
--command.
- Thus, 
+.
+ Ainsi, 
 \family typewriter
 
 \backslash
@@ -888,13 +900,13 @@ ar[drr]^
 \backslash
 varphi
 \family default
- defines an arrow going one cell down, two to the right and having the label
- 
+ définit une flèche allant vers le bas d'une cellule, vers la droite de
+ deux cellules et étiquetée au-dessus par 
 \begin_inset Formula $\varphi$
 \end_inset
 
- attached above.
- To attach a label below the arrow, make it a lower index as in 
+.
+ Pour étiqueter au-dessous, insérer un indice inférieur comme dans 
 \family typewriter
 
 \backslash
@@ -903,12 +915,13 @@ ar[ddr]_
 psi
 \family default
 .
- This explanation is correct only for arrows pointing to the right.
- More precisely, imagine looking along the arrow in the direction it is
- pointing.
- Then an upper index places a label to the left and a lower index places
- it to the right.
- Consequently, an arrow pointing from right to left, such as 
+ Cette explication n'est cependant correcte que pour les flèches pointant
+ vers la droite.
+ Plus précisément, imaginez que vous suivez la flèche dans la direction
+ pointée.
+ Alors un indice supérieur étiquette à gauche et un indice inférieur étiquette
+ à droite.
+ De ce fait, une flèche pointant de droite à gauche, comme 
 \family typewriter
 
 \backslash
@@ -918,46 +931,37 @@ alpha_
 \backslash
 beta
 \family default
- will have label 
+ aura l'étiquette 
 \begin_inset Formula $\alpha$
 \end_inset
 
- below and label 
+ au-dessous et l'étiquette 
 \begin_inset Formula $\beta$
 \end_inset
 
- above the arrow, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-
+ au-dessus de la flèche, c'est-à-dire 
 \begin_inset Formula $\xymatrix{\  & \ \ar[l]_{\beta}^{\alpha}.}
 $
 \end_inset
 
-Using the character | instead of ^ or _ , it is even possible to place the
- label right onto the arrow, obscuring part of its shaft.
- 
+ En utilisant le caractère | au lieu de ^ ou _ , il est même possible de
+ placer l'étiquette sur la flèche, en masquant une partie de son corps.
 \end_layout
 
 \begin_layout Standard
-Normally, a label is placed halfway between an arrow's start and target
- objects.
- In the first diagram, the central arrow starting in 
+Normalement, une étiquette est placée à mi-chemin entre l'objet débutant
+ la flèche et l'objet la terminant.
+ Dans le premier diagramme, la flèche centrale partant de 
 \begin_inset Formula $U$
 \end_inset
 
- has the label 
+ porte l'étiquette 
 \begin_inset Formula $(x,y)$
 \end_inset
 
- in the middle of the arrow's shaft, rather than in the middle between the
- two objects it connects.
- This is achieved by prefixing the label with a minus sign, here: 
+ au milieu du corps de la flèche, plutôt qu'à mi-chemin entre les objets
+ qu'elle connecte.
+ Ceci est obtenu en préfixant l'étiquette par un tiret, ici: 
 \family typewriter
 
 \backslash
@@ -1013,10 +1017,11 @@ ar[r]^g & Z }
 \end_layout
 
 \begin_layout LyX-Code
-\begin_inset Formula \xymatrix{ U \ar[ddr]_{\psi}\ar[drr]^{\varphi}\ar[dr]|-{(x,y)}\\
- &  X \times_{Z} Y \ar[d]^{q} \ar[r]_{p}  &  X \ar[d]_{f}\\
- &  Y \ar[r]^{g}  &  Z }
-
+\begin_inset Formula \[
+\xymatrix{U\ar[ddr]_{\psi}\ar[drr]^{\varphi}\ar[dr]|-{(x,y)}\\
+ & X\times_{Z}Y\ar[d]^{q}\ar[r]_{p} & X\ar[d]_{f}\\
+ & Y\ar[r]^{g} & Z}
+\]
 
 \end_inset
 
@@ -1024,6 +1029,7 @@ ar[r]^g & Z }
 \end_layout
 
 \begin_layout Standard
+Avec 
 \begin_inset ERT
 status collapsed
 
@@ -1036,19 +1042,15 @@ Xy
 
 \end_inset
 
--pic normally permits labels to be shifted towards the tip or towards the
- start of an arrow by prefixing the label with a ratio, such as e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
+-pic, il est possible de décaler les étiquettes vers l'origine ou l'extrémité
+ d'une flèche en préfixant l'étiquette avec un coefficient, comme par exemple
  
 \family typewriter
 (.3)
 \family default
 .
- In LyX this works only for labels which are placed on top of the arrow,
- such as 
+ Avec LyX, ceci ne fonctionne qu'avec les étiquettes placées au-dessus de
+ la flèche, par exemple 
 \family typewriter
 
 \backslash
@@ -1061,9 +1063,8 @@ phi}
 \end_layout
 
 \begin_layout Standard
-For labels placed to the left or to the right of the arrow this does not
- work.
- The corresponding 
+Pour les étiquettes placées sur la gauche ou la droite de la flèche, ceci
+ ne fonctionne pas: le code 
 \begin_inset ERT
 status collapsed
 
@@ -1076,7 +1077,7 @@ Xy
 
 \end_inset
 
--pic code such as e.
+-pic correspondant (e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -1089,7 +1090,7 @@ ar[r]^(.3)
 \backslash
 phi
 \family default
- or 
+ ou 
 \family typewriter
 
 \backslash
@@ -1097,97 +1098,100 @@ ar[r]_(.3)
 \backslash
 psi
 \family default
- is not correctly interpreted by LyX's math editor.
- Two workarounds are suggested in the last section of this note.
+) n'est pas correctement interprété par l'éditeur mathématique de LyX.
+ Deux solutions alternatives sont suggérées dans le dernier chapitre de
+ cette note.
 \end_layout
 
 \begin_layout Subsection
-Arrow modification
+Modifications d'une flèche: apparence
 \end_layout
 
 \begin_layout Standard
-Modification of the design, the form or the positioning of arrows are introduced
- by the 
+La modification de l'apparence, de la forme ou de la position des flèches
+ sont obtenues à l'aide du caractère arobase 
 \family typewriter
 @
 \family default
--character.
- This is followed by a pair of matching brackets, where the form of the
- bracket pair, 
+.
+ Il est suivi d'une paire de symboles appariés, ou la forme de la paire
+ de symboles, 
 \family typewriter
 { }
 \family default
- or 
+ ou 
 \family typewriter
 < >
 \family default
- or 
+ ou 
 \family typewriter
 / /
 \family default
- indicates, whether we want to modify the design, the or the curvature of
- the arrow.
- Various modifications can be applied to an arrow at the same time.
+ indique si l'on veut modifier l'apparence, la forme ou la courbure de la
+ flèche.
+ Plusieurs modifications peuvent être apportées à une flèche en même temps.
 \end_layout
 
 \begin_layout Subsubsection
-Arrow design
+Apparence de la flèche
 \end_layout
 
 \begin_layout Standard
-Various designs such as 
+Différentes apparences comme 
 \emph on
-solid
+solide
 \emph default
 , 
 \emph on
-dotted
+pointillée
 \emph default
 , 
 \emph on
-dashed
+tiretée
 \emph default
- or 
+ ou 
 \emph on
-double
+dédoublée
 \emph default
- are possible for the shaft of an arrow.
- These can be combined with various ends and various tips.
- In general, the design of an arrow is described by following the command
- 
+ sont offertes pour le corps d'une flèche.
+ Ils peuvent être combinés avec des plumages et des dards variés.
+ En général, l'apparence d'une flèche est obtenue en faisant immédiatement
+ suivre la commande 
 \family typewriter
 
 \backslash
 ar
 \family default
- immediately by an 
+ par une arobase 
 \family typewriter
 @
 \family default
--sign and a pair of braces {\SpecialChar \ldots{}
-} containing characters describing the end,
- the shaft and the tip of the arrow.
- These characters are chosen to give some form of ASCII-rendering of the
- real thing.
- For instance 
+ et une paire d'accolades{\SpecialChar \ldots{}
+} contenant des caractères décrivant le plumage,
+ le corps et le dard de la flèche.
+ Ces caractères sont choisis pour évoquer une équivalence ASCII du résultat
+ désiré.
+ Par exemple, 
 \family typewriter
 
 \backslash
 ar@{>..>>}
 \family default
- produces an arrow with split end, a dotted shaft and double head.
- A number of other arrow designs is given in the table below.
- Note that the ends of embedding arrows 
+ produit une flèche avec une plume divisée, un corps pointillé et un dard
+ double.
+ Plusieurs autres apparences sont décrites dans le tableau ci-dessous.
+ Notez que les plumes des flèches inclusives 
 \begin_inset Formula $\xymatrix{A\ar@{^{(}->}[r] & B}
 $
 \end_inset
 
- are described by raising or lowering opening parentheses, such as in 
+ sont obtenues en mettant en indice ou en exposant des parenthèses ouvrantes,
+ comme dans 
 \family typewriter
 
 \backslash
 ar@{^(->}[r].
-\begin_inset Newline newline
+\begin_inset VSpace defskip
 \end_inset
 
 
@@ -1204,7 +1208,7 @@ ar@{^(->}[r].
 \begin_inset Text
 
 \begin_layout Plain Layout
-Result
+Résultat
 \end_layout
 
 \end_inset
@@ -1213,7 +1217,7 @@ Result
 \begin_inset Text
 
 \begin_layout Plain Layout
-Source code in LyX
+Code source LyX
 \end_layout
 
 \end_inset
@@ -1518,17 +1522,38 @@ ar@{|-|}
 
 \begin_layout Standard
 \noindent
-Following the @-character by either a 2, 3, _,or a ^, we can produce arrows
- with double, triple shaft or arrows showing only the lower or upper half
- of their tips and ends.
- Arrows need not have tips nor ends, as the last example shows :
-\begin_inset Newline newline
+\begin_inset VSpace defskip
+\end_inset
+
+En faisant suivre le caractère
+\family typewriter
+
+\begin_inset space ~
+\end_inset
+
+@
+\family default
+ par les chiffres
+\begin_inset space ~
+\end_inset
+
+2, 3, un caractère souligné
+\begin_inset space ~
+\end_inset
+
+_, ou bien un chapeau
+\begin_inset space ~
+\end_inset
+
+^, nous pouvons créer des flèches avec un corps double ou triple, ou des
+ flèches n'affichant que la moitié haute ou la moitié basse de leur dard
+ ou de leur plumage.
+ Les flèches peuvent n'avoir ni dard ni plumage, comme le montre le dernier
+ exemple:
+\begin_inset VSpace defskip
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
 <features islongtable="true">
@@ -1539,7 +1564,7 @@ Following the @-character by either a 2, 3, _,or a ^, we can produce arrows
 \begin_inset Text
 
 \begin_layout Plain Layout
-Result
+Résultat
 \end_layout
 
 \end_inset
@@ -1765,23 +1790,23 @@ ar@2{--}
 \end_layout
 
 \begin_layout Subsubsection
-Designing your own arrows
+Conception de vos propres flèches
 \end_layout
 
 \begin_layout Standard
-Within certain limits there is even a way to design your own arrows.
- Using some the characters 
+Dans une certaine mesure, il vous est possible de concevoir vos propres
+ flèches, à l'aide des caractères 
 \family typewriter
 ><|ox+/()[
 \family default
- one can even design one's own arrow tips using the 
+,en utilisant la commande 
 \family typewriter
 
 \backslash
 newdir
 \family default
- command in the preamble.
- For explanations, we refer to the 
+ dans le préambule.
+ Pour les détails, nous renvoyons au manuel 
 \family typewriter
 
 \begin_inset ERT
@@ -1798,7 +1823,7 @@ Xy
 
 
 \family default
--manual, from which we take the example: 
+-pic, d'où nous extrayons cet exemple:
 \end_layout
 
 \begin_layout Standard
@@ -1813,17 +1838,17 @@ newdir{|>}{!/4.5pt/@{|}*:(1,-.2)@^{>}*:(1,+.2)@_{>}}
 
 \begin_layout Standard
 \noindent
-This defines a new arrow tip, referred to as 
+Ceci définit un nouveau dard, référencé par 
 \family typewriter
 |>
 \family default
- in 
+ dans 
 \family typewriter
 
 \backslash
 ar@{-|>}[r]
 \family default
- and which displays correctly in LyX as:
+, et qui s'affiche correctement dans LyX comme:
 \begin_inset Formula \[
 \xymatrix{A\ar@{-|>}[r] & \ \ B}
 \]
@@ -1834,11 +1859,11 @@ ar@{-|>}[r]
 \end_layout
 
 \begin_layout Subsection
-Arrow positioning
+Positionnement d'une flèche
 \end_layout
 
 \begin_layout Standard
-Arrows are shifted sideways with the modifier 
+Les flèches sont décalées latéralement à l'aide du modificateur 
 \family typewriter
 @<
 \family default
@@ -1850,12 +1875,11 @@ Arrows are shifted sideways with the modifier
 \family typewriter
 >
 \family default
- where the ellipsis is replaced by a positive or negative measure.
- For instance, to design a pair of mutually opposing arrows between two
- nodes, we shift them to see them apart.
- Note that the direction of the shift (positive) is to the left if one looks
- along the arrow.
- Thus
+ où les points de suspension sont remplacés par une valeur positive ou négative.
+ Par exemple, pour obtenir une paire de flèches s'opposant mutuellement
+ entre deux nœuds, nous les décalons pour pouvoir les voir séparément.
+ Notez que la direction du décalage est positive quand on suit la flèche
+ du regard: de ce fait 
 \end_layout
 
 \begin_layout Standard
@@ -1876,7 +1900,7 @@ ar@<1ex>[l]}
 
 \begin_layout Standard
 \noindent
-produces
+produit 
 \begin_inset space ~
 \end_inset
 
@@ -1892,109 +1916,124 @@ produces
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Subsubsection
-Inline or centered diagrams
+Diagramme en ligne ou centrés hors ligne
 \end_layout
 
 \begin_layout Standard
-Arrows and diagrams can be used inline, such as this one: 
+Les flèches et les diagrammes peuvent être utilisés en ligne, comme celui-ci:
+ 
 \begin_inset Formula $\xymatrix{\circ\ar@<1ex>[r] & \circ\ar@<1ex>[l]}
 $
 \end_inset
 
 .
- When their code is written inside LyX as above, select it and choose either
- 
+ Quand, le code est saisi dans LyX comme précédemment, sélectionnez-le et
+ pressez soit 
 \family sans
 Ctrl-m
 \family default
- for inline appearance or 
+ four une disposition en ligne, soit 
 \family sans
 Ctrl-M
 \family default
- for displaystyle.
- Diagrams constructed inline can later be centered, or, conversely, centered
- diagrams can be changed to inline formulas with 
+ pour une disposition centrée hors ligne.
+ Les diagrammes disposés en ligne peuvent être positionnés hors ligne plus
+ tard, via 
 \family sans
-Edit\SpecialChar \menuseparator
+Éditer\SpecialChar \menuseparator
 Math
 \family default
  
 \family sans
 \SpecialChar \menuseparator
-Change Formula Type.
+Changer le type de formule
+\family default
+ (il faut que le curseur soit dans la formeule pour que ce menu apparaisse).
 \end_layout
 
 \begin_layout Subsection
-Bending arrows
+Flèches courbes
 \end_layout
 
 \begin_layout Standard
-There are two simple methods to make arrows bend.
- The first is giving an explicit value by which the midpoint of the arrow's
- shaft is raised or depressed, the other is by forcing the arrow to leave
- its origin in a prescribed compass direction and to make him enter the
- target at another direction.
- The necessary bending of the arrow is determined automatically.
- We describe both methods.
+Il existe deux méthodes simples pour courber les flèches.
+ La première consiste à préciser numériquement de combien le point central
+ du corps est élevé ou abaissé, la seconde consiste à forcer la flèche à
+ quitter son point de départ dans une direction prescrite et à atteindre
+ la cible dans une autre direction prescrite: la courbure nécessaire est
+ alors déterminée automatiquement.
+ Nous décrirons les deux méthodes.
 \end_layout
 
 \begin_layout Subsubsection
-Raising the shaft
+Élever le corps
 \end_layout
 
 \begin_layout Standard
-For bending arrows we use the modifier @/
+Pour courber les flèches nous utilisons le modifieur 
+\family typewriter
+@/
+\family default
+
 \begin_inset Formula $\ldots$
 \end_inset
 
 / .
- The ellipsis stands for a TeX-measure which needs to be entered as a lower
- or upper index.
- Whereas in 
+ Les points de suspension représentent une mesure TeX, qui doit être introduite
+ en exposant ou en indice.
+ Alors que dans 
 \family typewriter
-xypic
-\family default
-, we could simply write, e.
-\begin_inset space \thinspace{}
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy
+\end_layout
+
 \end_inset
 
-g.
- 
+
+\family default
+-
+\family typewriter
+pic
+\family default
+, nous pouvions l'écrire simplement, par exemple 
 \family typewriter
 
 \backslash
 ar@/_1pc/
 \family default
- for an arrow bending 
+, pour obtenir une flèche courbée vers le bas de 
 \family typewriter
 1pc
 \family default
- downwards, this cannot directly be done in LyX.
- It is necessary, to enclose the measure in a pair of braces, such as e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
- 
+, ceci ne peut plus être fait directement dans LyX.
+ Il est nécessaire d'enclore la mesure dans une paire d'accolades, comme
+ par exemple 
 \family typewriter
 
 \backslash
 ar@/_{1pc}/
 \family default
 .
- As an example, here are two opposing arrows between 
+ À titre d'exemple, voici deux flèches opposées entre 
 \begin_inset Formula $A$
 \end_inset
 
- and 
+ et 
 \begin_inset Formula $B$
 \end_inset
 
-, each bending by .5 pica, given by the following source code: 
+, courbées chacune de .5 pica, et produites par le code suivant: 
 \end_layout
 
 \begin_layout Standard
@@ -2010,8 +2049,10 @@ ar@/_{.5pc}/[l]}
 \end_layout
 
 \begin_layout Standard
+
+\family typewriter
 \begin_inset Formula \[
-\xymatrix{A\ar@/{}_{.5pc}/[r] & B\ar@/{}_{.5pc}/[l]}
+\xymatrix{A\ar@/_{.5pc}/[r] & B\ar@/_{.5pc}/[l]}
 \]
 
 \end_inset
@@ -2020,14 +2061,13 @@ ar@/_{.5pc}/[l]}
 \end_layout
 
 \begin_layout Subsubsection
-Specifying exit- and entrance directions
+Spécifier les directions de départ et d'arrivée
 \end_layout
 
 \begin_layout Standard
-An alternative for making arrows bend is by specifying their compass direction
- as they are leaving their source and their direction from which they enter
- their target.
- Instead of north, north-east, east, etc., the directions are named 
+La seconde solution pour courber les flèches consiste à spécifier leur direction
+ géographique lorsqu'elles quittent leur source et atteignent leur objectif.
+ Au lieu de nord, nord-est, est, etc., les directions sont nommées 
 \family typewriter
 u
 \family default
@@ -2059,8 +2099,10 @@ l
 \family typewriter
 ul
 \family default
-, standing for up, up-right, right, down-right, etc..
- A direction is specified as @(
+, pour haut, haut-droite, bas-droite, etc.
+ Une direction est spécifiée par 
+\family typewriter
+@(
 \emph on
 out
 \emph default
@@ -2068,29 +2110,20 @@ out
 \emph on
 in
 \emph default
-) where 
+)
+\family default
+ où 
 \emph on
 out
 \emph default
- stands for the direction the first object is left and 
+ est la direction au départ du premier objet et 
 \emph on
 in
 \emph default
- stands for the direction from which the target is entered.
- As an example, we show some bending arrows and a loop, which arises when
- we do not specify a target for an arrow, just its incoming and outgoing
- direction:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula \[
-\xymatrix{A\ar@(dr,dl)[r]\ar@(dr,dl)[rr] & B\ar@(d,r)[dl] & C\\
-E\ar@(ul,ur)}
-\]
-
-\end_inset
-
-
+ la direction d'arrivée au second.
+ Ci-dessous, nous montrons quelques flèches courbes et une boucle, qui prend
+ naissance quand nous ne spécifions pas d'objectif pour une flèche, juste
+ ses directions de départ et d'arrivée:
 \end_layout
 
 \begin_layout LyX-Code
@@ -2117,25 +2150,32 @@ ar@(d,r)[dl]  &C
             E 
 \backslash
 ar@(ul,ur)}
+\begin_inset Formula \[
+\xymatrix{A\ar@(dr,dl)[r]\ar@(dr,dl)[rr] & B\ar@(d,r)[dl] & C\\
+E\ar@(ul,ur)}
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
-Modifying vertices
+Modification des sommets
 \end_layout
 
 \begin_layout Standard
-The above example is reminiscent of an automata diagram, except that in
- such a diagram states would be enclosed in small circles, with double circles
- denoting final states.
- 
+L'exemple ci-dessus rappelle un diagramme d'automate, sauf que dans un tel
+ diagramme les états seraient entourés d'un petit cercle, les états finaux
+ étant représentés par un cercle double.
 \end_layout
 
 \begin_layout Subsubsection
-Framing objects
+Encadrement d'objets
 \end_layout
 
 \begin_layout Standard
-With 
+Avec 
 \begin_inset ERT
 status collapsed
 
@@ -2148,17 +2188,18 @@ Xy
 
 \end_inset
 
--pic, entries can obtain a single or a double frame, such as 
+-pic, les éléments peuvent être pourvus d'un encadrement simple ou double,
+ comme 
 \begin_inset Formula $\xymatrix{*+[F]{A}}
 $
 \end_inset
 
- or 
+ ou 
 \begin_inset Formula $\xymatrix{*+[F=]{B}}
 $
 \end_inset
 
- by prefixing an entry with 
+ en préfixant l'élément avec 
 \family typewriter
 *[F-]
 \family default
@@ -2166,34 +2207,34 @@ $
 \family typewriter
 *[F=]
 \family default
- and enclosing the portion of the entry to be framed in braces.
- Normally, the frame will be very tight so that it must be widened by prefixing
- with 
+ et en enserrant la partie de l'élément à encadrer entre accolades.
+ Normalement le cadre serait très serré, et il doit être relâché en préfixant
+ par 
 \family typewriter
 +
 \family default
- or with 
+ ou par 
 \family typewriter
 ++
 \family default
 .
- Round frames, such as 
+ Les cadres ronds, comme 
 \begin_inset Formula $\xymatrix{*++[o][F]{A}}
 $
 \end_inset
 
- and 
+ et 
 \begin_inset Formula $\xymatrix{*++[o][F=]{B}}
 $
 \end_inset
 
- are obtained by specifying the shape as 
+ sont obtenus en précisant la forme par 
 \family typewriter
 [o].
 
 \family default
- So the latter figure was constructed as *++[o][F=]{B}.
- This way, the following automaton 
+ Le dernier exemple a donc été construit par le code *++[o][F=]{B}.
+ De cette façon, l'automate suivant
 \end_layout
 
 \begin_layout Standard
@@ -2208,7 +2249,7 @@ $
 
 \begin_layout Standard
 \noindent
-can be typeset as
+peut être obtenu en saisissant
 \end_layout
 
 \begin_layout LyX-Code
@@ -2236,11 +2277,11 @@ ar@(ur,ul)[l]
 \end_layout
 
 \begin_layout LyX-Code
-           }.
+           }
 \end_layout
 
 \begin_layout Standard
-The LaTeX command 
+Les commandes LaTeX 
 \family typewriter
 
 \backslash
@@ -2251,15 +2292,15 @@ entrymodifiers={
 \family typewriter
 }
 \family default
- will make a certain entry style the default, that can, of course be overridden
- for individual entries.
- Thus, after 
+ rendront implicites certains style d'éléments, qui pourront bien entendu
+ être remplacés par des éléments individualisés.
+ Ainsi, après 
 \family typewriter
 
 \backslash
 entrymodifiers={++[o][F-]}
 \family default
-, all following entries inside 
+, tous les éléments des matrices 
 \begin_inset ERT
 status collapsed
 
@@ -2267,21 +2308,33 @@ status collapsed
 
 
 \backslash
-Xy
+Xy{}
 \end_layout
 
 \end_inset
 
--matrices would be encircled.
+ seront entourées d'un cercle.
 \end_layout
 
 \begin_layout Subsubsection
-Framing rectangles
+Encadrement rectangulaires
 \end_layout
 
 \begin_layout Standard
-Framing a whole rectangle inside an xymatrix is done with the macro pair
- 
+Encadrer par un rectangle complet une partie d'une matrice 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy{}
+\end_layout
+
+\end_inset
+
+ est obtenu avec la paire de macro-instructions 
 \family typewriter
 
 \backslash
@@ -2291,22 +2344,15 @@ save ...
 restore
 \family default
 .
- 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-The dimension of the rectangle is given as a dotted pair 
+ La dimension du rectangle est précisé par la paire pointée 
 \begin_inset Formula $P_{0}.P_{1}$
 \end_inset
 
- of points denoting the top left and lower right corners of the rectangle.
- Each point, in turn,is given as a doubly quoted comma separated pair 
-\begin_inset Quotes eld
+ des points dénotant le point en haut à gauche et le point en bas à droite
+ du rectangle.
+ Chaque point, à son tour, est spécifié par une paire d'accolades doubles
+ 
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -2314,20 +2360,20 @@ The dimension of the rectangle is given as a dotted pair
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
- specifying row 
+ précisant la ligne 
 \begin_inset Formula $x$
 \end_inset
 
- and column 
+ et la colonne 
 \begin_inset Formula $y$
 \end_inset
 
 .
- These are followed by the framing commands, to produce figures such as
- the following: 
+ Celles-ci sont suivies des commandes d'encadrement, pour produire par exemple
+ la figure suivante: 
 \begin_inset Formula \[
 \xymatrix{A & B\ar@(d,r)[dl]\sp(0.2)\phi\sp(0.7)\psi\save"1,1"."2,1"*+[F=]\frm{}\restore\,\\
 C & \save"1,1"."1,2"*++[F]\frm{}\restore}
@@ -2335,15 +2381,8 @@ C & \save"1,1"."1,2"*++[F]\frm{}\restore}
 
 \end_inset
 
- Here, the code 
+ Ici, le code 
 \family typewriter
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
 
 \backslash
 save"1,1"."2,1"*+[F=]
@@ -2351,24 +2390,14 @@ save"1,1"."2,1"*+[F=]
 frm{}
 \backslash
 restore
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
- produces the doubly framed rectangle, and the code for the extra wide horizonta
-l rectangle is 
+\family default
+ crée le rectangle doublement encadré, tandis que le code pour le rectangle
+ supplémentaire horizontal est
 \family typewriter
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
+
+\begin_inset Newline newline
+\end_inset
+
 
 \backslash
 save"1,1"."1,2"*++[F]
@@ -2376,21 +2405,13 @@ save"1,1"."1,2"*++[F]
 frm{}
 \backslash
 restore
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
+\family default
 .
- This code can be placed in arbitrary cells of the xymatrix.
- 
+ Ce code peut être placé dans n'importe quelle cellule de la matrice.
 \end_layout
 
 \begin_layout Section
-Using LyX's math editor
+Utilisation de l'éditeur mathématique de LyX
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:math-editor"
@@ -2401,48 +2422,45 @@ name "sec:math-editor"
 \end_layout
 
 \begin_layout Standard
-As an alternative to writing the 
+Au lieu de saisir le code 
 \family typewriter
 xypic
 \family default
- code, then transforming it into a math-editing environment by marking it
- and applying 
+, puis de le transformer en environnement mathématique en le sélectionnant
+ et en pressant 
 \family sans
 Ctrl-m
 \family default
-, or 
+, ou 
 \family sans
 Ctrl-M
 \family default
-, one may construct and modify the whole xypic-diagram inside LyX's math
- editor.
- We describe the editing steps for a figure just like the one above.
+, il est possible de construire et de modifier la totalité d'un diagramme
  
+\family typewriter
+xypic
+\family default
+ en utilisant l'éditeur mathématique.
+ Nous allons décrire les différentes étapes pour une figure comme celle
+ présentée ci-dessus.
 \end_layout
 
 \begin_layout Subsection
-Caveat - how to enter braces
+Attention à la saisie les accolades
 \end_layout
 
 \begin_layout Standard
-Recall that in LyX's math-editor any pair of braces 
-\family typewriter
-{
-\family default
- and 
-\family typewriter
-}
-\family default
- that are to enclose a macro-parameter must be entered by typing just 
+Rappelez-vous que, dans l'éditeur mathématique de LyX, toute paire d'accolades
+ destinée à enclore un paramètre de macro-instruction doit être saisie en
+ ne tapant que 
 \family typewriter
 
 \backslash
 {
 \family default
- .
- The closing brace is automatically supplied and in between a box into which
- to the parameter is entered.
- In connection with 
+ : l'accolade fermante est créée automatiquement et une boîte apparaît entre
+ elles où saisir le paramètre.
+ Avec les diagrammes 
 \begin_inset ERT
 status collapsed
 
@@ -2455,8 +2473,8 @@ Xy
 
 \end_inset
 
--diagrams, this applies in particular to arrow modifications that are normally
- given in the form 
+, ceci s'applique en particulier aux modifications des flèches qui sont
+ normalement saisies par 
 \family typewriter
 @{
 \family default
@@ -2465,32 +2483,32 @@ Xy
 \family typewriter
 }
 \family default
- with the ellipsis standing for the description of end, shaft and tip of
- the arrow.
- Inside the math-editor, enter just 
+, où les points de suspension représentent la description de la forme du
+ plumage, du corps et du dard: dans l'éditeur mathématique, ne saisissez
+ que 
 \family typewriter
 @
 \backslash
 {
 \family default
- and let LyX provide the closing brace and the box into which to enter the
- description of the arrow.
+ et laissez LyX afficher l'accolade fermante et la boîte de saisie destinée
+ à la description de la flèche.
 \end_layout
 
 \begin_layout Standard
-Braces that are entered without the backslash 
+Les accolades saisies sans la barre inclinée
+\begin_inset space ~
+\end_inset
+
+
 \family typewriter
 
 \backslash
 
 \family default
- will just appear as typed, but cannot be used to receive a macro parameter.
- They are useful, for instance to denote sets, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
- 
+ apparaîtront telles quelles, mais ne pourront accueillir de paramètres.
+ Elles seront utiles par contre pour désigner des ensembles, par exemple
+ dans 
 \family typewriter
 {x
 \backslash
@@ -2500,7 +2518,7 @@ mid x
 \backslash
 notin x}
 \family default
- will display as 
+ qui va s'afficher ainsi 
 \begin_inset Formula $\{x\in X\mid x\notin x\}$
 \end_inset
 
@@ -2508,30 +2526,30 @@ notin x}
 \end_layout
 
 \begin_layout Subsection
-Setting up the matrix
+Construction de la matrice
 \end_layout
 
 \begin_layout Standard
-With 
+En pressant 
 \family sans
 Ctrl-m
 \family default
- or 
+ ou 
 \family sans
-Ctrl-M
+Ctrl-M,
 \family default
- open a formula environment and enter: 
+ ouvrez un environnement de formule et saisissez : 
 \family typewriter
 
 \backslash
 xymatrix
 \family default
 .
- This produces a 1
-\begin_inset Formula $\times$
+ Ceci crée une matrice
+\begin_inset space ~
 \end_inset
 
-1- 
+
 \begin_inset ERT
 status collapsed
 
@@ -2544,51 +2562,51 @@ Xy
 
 \end_inset
 
--matrix.
- Add extra rows by typing 
+.
+ Ajoutez des lignes supplémentaires en pressant 
 \family sans
 Ctrl-Enter
 \family default
- and add columns by typing 
+ et ajoutez des colonnes en pressant 
 \family sans
-Alt-m c i.
+Alt-m c i
+\family default
+.
  
 \end_layout
 
 \begin_layout Standard
-At any time, further rows or columns can be entered or deleted using commands
- available from 
+Ensuite, vous pourrez ajouter lignes et colonnes quand vous le désirerez,
+ en utilisant les commandes du menu 
 \family sans
-Edit\SpecialChar \menuseparator
+Éditer\SpecialChar \menuseparator
 Math,
 \family default
- resp.
- their shortcuts, beginning with 
+ leurs raccourcis qui débutent par 
 \family sans
 Alt-m c
 \family default
- for the column commands or 
+ pour les commandes de colonnes ou par 
 \family sans
 Alt-m w
 \family default
- for the row commands.
- A more direct way uses the icons in the math toolbar once it has been activated
- via 
+ pour les commandes de lignes.
+ Plus simplement, il vous suffira d'utiliser les icônes de la palette mathématiq
+ue, en l'activant si ce n'est déjà fait via 
 \family sans
-View\SpecialChar \menuseparator
-Toolbars.
+Visualiser\SpecialChar \menuseparator
+Barres d'outils.
 \end_layout
 
 \begin_layout Subsection
-Entering nodes, arrows and labels
+Saisie des nœuds, des flèches et des étiquettes
 \end_layout
 
 \begin_layout Standard
-Type the nodes into the correct positions of the matrix.
- If you move the cursor out of the matrix, you should see a first rendering
- of the node layout.
- Next, add the arrows at the nodes from where they should emanate by typing
- 
+Saisissez d'abord les nœuds dans les cases appropriées de la matrice.
+ Si vous déplacez le curseur en dehors de la matrice, vous devriez avoir
+ un premier aperçu de l'apparence des nœuds.
+ Ensuite, ajoutez les flèches depuis les nœuds origines en saisissant 
 \family typewriter
 
 \backslash
@@ -2600,11 +2618,15 @@ p
 \emph default
 ]
 \family default
-, where 
+, où 
 \emph on
 p
 \emph default
- can be any path made up from the characters 
+ peut être n'importe quel chemin construit à partir des caractères
+\begin_inset space ~
+\end_inset
+
+
 \family typewriter
 u
 \family default
@@ -2621,33 +2643,44 @@ l
 r
 \family default
 .
- Make sure that the path indeed leads to an existing node within the matrix.
- Otherwise, the figure will not display when the cursor leaves the editing
- area.
+ Vérifiez que le chemin mène bien à un nœud existant dans la matrice, sinon
+ votre figure ne s'affichera pas quand le curseur sortira de la zone d'édition.
 \end_layout
 
 \begin_layout Standard
-Next, label the arrows by attaching a label text as upper or lower indices
- to the end of the arrow's path.
- As always in LyX's math editor, an underscore 
+Ensuite, étiquetez les flèches en associant un texte en tant qu'indice ou
+ d'exposant à la fin du chemin décrivant le flèche.
+ Comme habituellement dans l'éditeur mathématique de LyX, un caractère souligné
+\begin_inset space ~
+\end_inset
+
+
 \family typewriter
 _
 \family default
- opens a box for a lower index and a 
+ ouvre une boîte pour un indice et un caractère accent circonflexe
+\begin_inset space ~
+\end_inset
+
+
 \family typewriter
 ^
 \family default
- followed by a space opens a box for an upper index.
- You can enter any LaTeX-code as a label.
+ (suivi éventuellement d'un espace) ouvre une boîte pour un exposant.
+ Vous pouvez saisir n'importe quel code LaTeX dans une étiquette.
 \end_layout
 
 \begin_layout Subsection
-Modifying arrows
+Modification des flèches
 \end_layout
 
 \begin_layout Standard
-Finally, you can modify the appearance of the arrows by entering @-modifiers
- 
+Finalement, vous pouvez modifier l'apparence des flèches en saisissant les
+ modificateurs
+\begin_inset space ~
+\end_inset
+
+@: 
 \family typewriter
 @{
 \family default
@@ -2677,21 +2710,21 @@ Finally, you can modify the appearance of the arrows by entering @-modifiers
 /
 \family default
 .
- The above caveat applies to the first form only.
- It must be entered as 
+ L'avertissement vu plus haut ne s'applique que dans le premier cas: elle
+ doit être saisie sous la forme 
 \family typewriter
 @
 \backslash
 {
 \family default
- with the arrow description entered inside the LyX-supplied box.
- If this box remains empty, you have specified an empty arrow.
- This is a useful construction, too, as you will see in the next section.
- 
+ avec la description de la flèche saisie dans le boîte LyX.
+ Si cette boîte reste vide, vous aurez spécifié une flèche vide, ce qui
+ est une construction utile également, comme vous le verrez dans la section
+ suivante.
 \end_layout
 
 \begin_layout Standard
-The other modifiers, 
+Les autres modificateurs, 
 \family typewriter
 @<
 \family default
@@ -2710,7 +2743,7 @@ The other modifiers,
 \family typewriter
 ) 
 \family default
-and 
+et 
 \family typewriter
 @/
 \family default
@@ -2719,101 +2752,119 @@ and
 \family typewriter
 / 
 \family default
-are typed as shown with the arrow description replacing the ellipsis.
- The code for bending arrows, which in 
+sont saisis comme indiqué en remplaçant les points de suspension par la
+ description correspondante.
+ Le code pour la courbure des flèches, qui dans 
 \family typewriter
 xypic
 \family default
- is 
+ est 
 \family typewriter
-@/_
+@/_mesure/ 
 \family default
-\emph on
-measure
-\family typewriter
-\emph default
-/ 
-\family default
-or 
+ou 
 \family typewriter
 @/
 \emph on
 ^
-\family default
-measure
-\family typewriter
 \emph default
-/ 
+mesure/ 
 \family default
-where 
+où 
 \emph on
-measure
+mesure
 \emph default
- is any valid TeX-measure that should be entered as upper or lower index
- to the first slash /.
- Make sure that the ending slash does not end up being part of the upper
- or lower index.
+ est n'importe quelle mesure TeX, doit être saisi en LyX comme l'indice
+ ou l'exposant de la première barre inclinée
+\begin_inset space ~
+\end_inset
+
+/: vérifiez bien que la barre inclinée finale ne fait pas partie de l'indice
+ ou de l'exposant.
 \end_layout
 
 \begin_layout Subsection
-What if something goes wrong
+Quoi faire si quelque chose ne va pas
 \end_layout
 
 \begin_layout Standard
-When constructing a diagram, you should at times check it by just moving
- the cursor out of the editing area to see whether instant preview can successfu
-lly convert it into graphical output.
- If this does not happen, it may either be that instant preview for some
- reason is not aware that it should retranslate the graphics.
- Moving the cursor into the editing area and out again sometimes wakes up
- instant preview.
+En construisant un diagramme, vous 
+\series bold
+devez
+\series default
+ vérifier de temps en temps, en déplaçant le curseur hors de la zone d'édition,
+ que l'aperçu la convertit correctement dans sa version graphique.
+ Si cela ne se produit pas, cela peut venir du fait que l'aperçu n'est pas
+ 
+\begin_inset Quotes fld
+\end_inset
+
+conscient
+\begin_inset Quotes frd
+\end_inset
+
+, pour une raison ou une autre, de la nécessité de la conversion graphique.
+ Survoler le zone et ressortir peut 
+\begin_inset Quotes fld
+\end_inset
+
+réveiller
+\begin_inset Quotes frd
+\end_inset
+
+ l'aperçu.
 \end_layout
 
 \begin_layout Standard
-A more serious reason could be a syntactical error in your input (in that
- case, the math edition area disappears completely).
- If necessary, undo the last editing steps, using 
-\family sans
+Une raison plus profonde peut être une erreur de syntaxe dans la saisie:
+ dans de cas, la zone d'édition mathématique disparaît.
+ Si nécessaire, défaites les dernières modifications, en pressant 
+\family typewriter
 Ctrl+Z
 \family default
-, or try to translate the LyX-file into 
-\family sans
+ ou via l'icône de la barre d'outils principale, ou essayez de traduire
+ le fichier LyX en 
+\family typewriter
 DVI
 \family default
- using 
-\family sans
-Ctrl+D
+ en pressant 
+\family typewriter
+Ctrl
+\emph on
++D
 \family default
- or 
+\emph default
+ ou en sélectionnant 
 \family sans
 View\SpecialChar \menuseparator
 DVI
 \family default
-.
- There should be some error generated, which hopefully gives you a hint
- as to the source of the mistake.
-\end_layout
-
-\begin_layout Section
-Hacks
-\end_layout
-
-\begin_layout Standard
-Certain things do not work correctly inside LyX.
- The ones that we (used to) miss most are the horizontal and vertical scaling
- of diagrams, and the correct positioning of arrows.
- There are some workarounds that we are explaining here.
+, ou encore via l'icône de la barre d'outil de création des sorties imprimables.
+ Ceci provoquera un message d'erreur, qui vous donnera probablement une
+ indication sur l'origine de l'erreur.
  
 \end_layout
 
-\begin_layout Subsection
-Horizontal and vertical scaling
+\begin_layout Section
+Astuces
 \end_layout
 
 \begin_layout Standard
-It is often convenient to stretch the horizontal or the vertical dimensions
- of an entire diagram by using spacing commands for rows and/or columns.
- According to the 
+Certaines choses ne fonctionnent pas depuis LyX.
+ Celles qui manquent (manquaient) le plus sont les mises à l'échelle verticale
+ et horizontale des diagrammes, et le positionnement correct des flèches.
+ Nous décrivons ci-après quelques solutions alternatives.
+\end_layout
+
+\begin_layout Subsection
+Mises à l'échelle horizontale et verticale
+\end_layout
+
+\begin_layout Standard
+Il est fréquemment pratique d'étirer ou de comprimer la dimension horizontale
+ ou verticale d'un diagramme entier en utilisant l'espacement des lignes
+ ou des colonnes.
+ Suivant le manuel 
 \begin_inset ERT
 status collapsed
 
@@ -2826,7 +2877,7 @@ Xy
 
 \end_inset
 
--manual, for instance, 
+, par exemple 
 \family typewriter
 
 \backslash
@@ -2837,7 +2888,11 @@ xymatrix@R=1pc{
 \family typewriter
 }
 \family default
- defines an 
+ définit une matrice
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -2845,13 +2900,13 @@ status collapsed
 
 
 \backslash
-Xy
+Xy{}
 \end_layout
 
 \end_inset
 
--matrix with row spacing of 1 pica.
- Similarly, 
+ munie d'un espacement de lignes de 1 pica.
+ De même, 
 \family typewriter
 
 \backslash
@@ -2867,9 +2922,17 @@ xymatrix@C=
 \family typewriter
 }
 \family default
- allows to modify the space between columns.
- Unfortunately, these commands do currently not work inside LyX, as the
- @-character is interpreted by LyX as ending the 
+ permet de modifier l'espacement entre colonnes.
+ Malheureusement, ces commandes ne fonctionnent pas encore dans LyX, du
+ fait que le caractère
+\begin_inset space ~
+\end_inset
+
+
+\family typewriter
+@
+\family default
+ est interprété par LyX comme terminant la macro-instruction matrice-
 \begin_inset ERT
 status collapsed
 
@@ -2882,12 +2945,16 @@ Xy
 
 \end_inset
 
--matrix-macro.
+.
  
 \end_layout
 
 \begin_layout Standard
-Knowing that 
+Sachant que
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -2895,32 +2962,31 @@ status collapsed
 
 
 \backslash
-Xy
+Xy{}
 \end_layout
 
 \end_inset
 
-
-\begin_inset space ~
-\end_inset
-
- stores the values for row-spacing and column-spacing in the variables 
+ range les valeurs d'espacement pour les lignes et les colonnes dans les
+ variables 
 \family typewriter
 
 \backslash
 xymatrixrowsep@
 \family default
- and 
+ et 
 \family typewriter
 
 \backslash
 xymatrixrowsep@
 \family default
-, add the following macro to the preamble (
+, ajoutez la macro suivante au préambule (
 \family sans
-Layout\SpecialChar \menuseparator
 Document\SpecialChar \menuseparator
-Preamble
+Paramètres...\SpecialChar \menuseparator
+
+\family typewriter
+Préambule
 \family default
 ):
 \begin_inset Newpage pagebreak
@@ -2950,28 +3016,32 @@ xymatrixrowsep@{#1}}
 \end_layout
 
 \begin_layout Standard
-A macro 
+Une macro dénommée 
 \family typewriter
 
 \backslash
 xyC
 \family default
- can be defined correspondingly by replacing 
+ peut être définie de la même manière en remplaçant 
 \family typewriter
 
 \backslash
 xymatrixrowsep@
 \family default
- with 
+ par 
 \family typewriter
 
 \backslash
 xymatrixcolsep@
 \family default
 .
- Now, a figure can be scaled by entering 
+ Maintenant, une figure peut être mise à l'échelle en saisissant 
 \backslash
-xyR{...} into the 
+xyR{...} dans la matrice
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -2984,9 +3054,9 @@ Xy
 
 \end_inset
 
--matrix.
- Place the cursor inside the matrix, just before the first entry.
- Then enter 
+.
+ Placez le curseur dans la matrice, juste avant la première cellule, puis
+ saisissez 
 \family typewriter
 
 \backslash
@@ -2994,7 +3064,7 @@ xyR
 \backslash
 {
 \family default
- or 
+ ou 
 \family typewriter
 
 \backslash
@@ -3002,17 +3072,16 @@ xyC
 \backslash
 {
 \family default
- or both.
- Don't forget the backslashes and remember, that the closing brace is automatica
-lly supplied by LyX.
- Inside the braces enter the dimensions.
- The default is 
+ ou les deux.
+ N'oubliez pas les barres inclinées inverses et rappelez-vous que l'accolade
+ fermante est fournie par LyX.
+ Insérez les dimensions entre les accolades, la valeur implicite étant 
 \family typewriter
 2pt
 \family default
 .
- Here you see a diagram which is squashed vertically and stretched horizontally
- with 
+ Vous voyez ici un diagramme qui est compressé verticalement et étiré horizontal
+ement à l'aide de 
 \family typewriter
 
 \backslash
@@ -3025,8 +3094,8 @@ xyC{.5pc}
 
 \begin_layout Standard
 \begin_inset Formula \[
-\xyC{.5pc}\xyC{9pc}\xymatrix{A\ar[r]\ar[d] & B\\
-C\ar@{}[ur]|{\text{{horizontal stretch}}}}
+\xyR{.5pc}\xyC{9pc}\xymatrix{A\ar[r]\ar[d] & B\\
+C\ar@{}[ur]|{\text{{étirement\,\ horizontal}}}}
 \]
 
 \end_inset
@@ -3035,47 +3104,48 @@ C\ar@{}[ur]|{\text{{horizontal stretch}}}}
 \end_layout
 
 \begin_layout Subsection
-Label positioning
+Positionnement des étiquettes
 \end_layout
 
 \begin_layout Standard
-Another useful 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-Xy
-\end_layout
-
-\end_inset
-
--command allows the correct positioning of labels along the shaft of arrows.
- This feature is sometimes necessary, when the default position of a label
- would otherwise clutter the picture, or would even coincide with other
- items, such as the intersection of the arrows in the figure below.
- In order to shift a label position alongside the shaft of an arrow, 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-Xy
-\end_layout
-
-\end_inset
-
-
+Une autre commande
 \begin_inset space ~
 \end_inset
 
- allows to prefix the label by a decimal number in parentheses, specifying
- the fraction of distance alongside the arrow where the label is to be placed.
- For instance, the code 
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy{}
+\end_layout
+
+\end_inset
+
+ utile permet de positionner correctement les étiquettes autour du corps
+ des flèches.
+ Cette fonctionnalité est parfois nécessaire, lorsque le positionnement
+ implicite de l'étiquette perturbe le graphique, ou bien même se superpose
+ à d'autre éléments, comme les intersections de flèches dans l'exemple ci-après.
+ Pour déplacer une étiquette le long du corps d'une flèche, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy{}
+\end_layout
+
+\end_inset
+
+ permet de préfixer l'étiquette par un nombre décimal entre parenthèses,
+ spécifiant la fraction de la distance le long de la flèche où positionner
+ l'étiquette.: par exemple, le code 
 \family typewriter
 
 \backslash
@@ -3083,12 +3153,12 @@ ar[r]|(0.3)
 \backslash
 varphi
 \family default
-, will place the label on the shaft, but only about one third of the way.
- 
+ placera l'étiquette sur le corps, à peu près au tiers du corps de la flèche.
 \end_layout
 
 \begin_layout Standard
-Doing the same with labels above or below arrows as 
+Procéder de même pour les étiquettes au-dessus ou au-dessous des flèches
+ comme avec 
 \family typewriter
 
 \backslash
@@ -3096,7 +3166,7 @@ ar[dr]^(0.3)
 \backslash
 varphi,
 \family default
- respectively 
+ respectivement 
 \family typewriter
 
 \backslash
@@ -3104,9 +3174,17 @@ ar[ur]_(0.3)
 \backslash
 phi
 \family default
-, does not work from inside LyX.
- Instead, one has to replace the hat-symbol ^, resp.
- the underscore _ , by the macros 
+, ne fonctionne pas depuis LyX.
+ 0 la place, il faut remplacer l'accent circonflexe
+\begin_inset space ~
+\end_inset
+
+^, resp.
+ le caractère souligné
+\begin_inset space ~
+\end_inset
+
+_, par les macros 
 \family typewriter
 
 \backslash
@@ -3119,7 +3197,7 @@ sp
 \backslash
 sb
 \family default
-, obtaining 
+, ce qui s'écrit 
 \family typewriter
 
 \backslash
@@ -3129,7 +3207,7 @@ sp(0.3)
 \backslash
 varphi 
 \family default
-and
+et
 \family typewriter
  
 \backslash
@@ -3140,10 +3218,11 @@ sb(0.3)
 phi.
  
 \family default
-It is, in fact, possible to enter several labels this way and those labels
- are placed correctly, even if the arrow bends.
- In the following figure, the bending arrow with its four labels has been
- produced with 
+Il est de ce fait possible d'insérer plusieurs étiquettes le long du chemin
+ par cette méthode et les positionnement des étiquettes est correct, même
+ si la flèche est courbée.
+ Dans la figure suivante, la flèche courbe et ses quatre étiquettes a été
+ créée par 
 \family typewriter
 
 \backslash
@@ -3178,14 +3257,14 @@ phi_{4}}.
 \end_layout
 
 \begin_layout Subsection
-Invisible stretched arrows
+Flèches étirées invisibles
 \end_layout
 
 \begin_layout Standard
-A more general trick uses invisible arrows to place any object almost anywhere
- inside a diagram.
- Produce an invisible arrow, shorten (or prolong) it past its goal by adding
- a decimal stretching ratio, e.
+Une astuce plus générique utilise les flèches invisibles pour placer n'importe
+ quel objet à peu près partout dans un diagramme: créer une flèche invisible,
+ la raccourcir (ou l'allonger) en deçà ou au-delà de sa cible en ajoutant
+ un nombre décimal, e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -3194,32 +3273,43 @@ g.
 \family typewriter
 (0.6)
 \family default
- or 
+ ou 
 \family typewriter
 (1.4)
 \family default
- to its path.
- Attach a label to this invisible arrow.
+, à son chemin, et attacher une étiquette à la flèche.
  
 \end_layout
 
 \begin_layout Standard
-Thus, the down pointing arrow with its label 
+De cette façon, la flèche pointant vers la bas avec son étiquette
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Formula $\varphi$
 \end_inset
 
- at (0.3) of its way along the shaft might as well have been produced by
- adding to the regular arrow 
+ à
+\begin_inset space ~
+\end_inset
+
+(0.3) de sa longueur aurait aussi bien pu être produite en ajoutant à la
+ flèche normale 
 \family typewriter
 
 \backslash
 ar[dr] 
 \family default
-an invisible 
+une flèche invisible étiquetée par
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Formula $\varphi$
 \end_inset
 
--labelled arrow 
+ 
 \family typewriter
 
 \backslash
@@ -3227,49 +3317,56 @@ ar@{}[dr(0.6)]^
 \backslash
 varphi
 \family default
-, reaching only 0.6 of the way.
- Its label will now appear at 0.3 of the way of the original visible arrow.
- 
+, restreinte à 0.6 de sa longueur: son étiquette apparaîtra maintenant à
+ 0.3 de la longueur de la flèche normale.
 \end_layout
 
 \begin_layout Standard
-This workaround has two minor drawbacks: First, it does not work with bending
- arrows.
- Secondly, prolonging an invisible arrow beyond the normal dimension of
- the figure will invisibly extend the figure box, and thereby cause too
- much vertical space between the figure and the preceding or the following
- paragraph.
- 
+Cette astuce a deux inconvénients mineurs: d'abord, elle ne fonctionne pas
+ avec les flèches courbes; ensuite, prolonger une flèche invisible au-delà
+ de la dimension normale de la figure va élargir la boîte contenant la figure,
+ et donc créer trop d'espacement vertical entre la figure et le paragraphe
+ suivant ou le paragraphe précédent (sauf a créer un espacement négatif
+ à l'aide de 
+\family sans
+Insérer\SpecialChar \menuseparator
+Typographie spéciale\SpecialChar \menuseparator
+
+\family typewriter
+Espacement vertical
+\family default
+).
 \end_layout
 
 \begin_layout Standard
-Nevertheless, invisible arrows are an important tool, since they can, in
- principle, be used to place information at any chosen place in a diagram.
- In the above figure, for instance, we have used an invisible arrow to carry
- the 
+Néanmoins, les flèches invisibles constituent un outil très utile puisqu'elles
+ permettent de placer théoriquement des informations n'importe où dans un
+ diagramme.
+ Dans la figure ci-dessus, par exemple, nous avons utilisé une flèche invisible
+ pour importer 
 \family typewriter
 
 \backslash
 vdots
 \family default
- as label and at the earlier figure we had used an invisible arrow to carry
- the text 
-\begin_inset Quotes eld
+ comme étiquette, et dans la figure précédente nous avions utilisé une flèche
+ invisible pour importer le texte 
+\family typewriter
+
+\begin_inset Quotes fld
 \end_inset
 
-
-\family typewriter
-horizontal stretch
+Étirement horizontal
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
- into the center of the figure.
+ au centre de la figure.
 \end_layout
 
 \begin_layout Subsection
-Further 
+Autres astuces pour 
 \family typewriter
 
 \begin_inset ERT
@@ -3285,18 +3382,42 @@ Xy
 \end_inset
 
 
-\family default
--tricks
 \end_layout
 
 \begin_layout Standard
-Here we have focused only on the 
+Nous nous sommes concentrés ici sur la commande 
 \family typewriter
 
 \backslash
 xymatrix
 \family default
- command, which is just one of the features available in Kris Rose's amazing
+, qui n'est qu'une des fonctionnalités disponibles dans le remarquable paquetage
+\begin_inset space ~
+\end_inset
+
+
+\family typewriter
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Xy{}
+\end_layout
+
+\end_inset
+
+
+\family default
+ créé par Kris 
+\noun on
+Rose
+\noun default
+.
+ Le manuel
 \family typewriter
  
 \begin_inset ERT
@@ -3313,34 +3434,16 @@ Xy
 
 
 \family default
--package.
- The 
-\family typewriter
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-Xy
-\end_layout
-
-\end_inset
-
-
-\family default
--pic manual 
+-pic 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "xypic manual"
 
 \end_inset
 
- demonstrates many of the advanced possibilities of that package.
- Beware, that its style is rather terse and you will likely need a lot of
- experimenting and modifying the many worked examples.
+ illustre les nombreuses possibilités de ce paquetage.
+ Attention cependant, son style est laconique et vous devrez sans doute
+ expérimenter en modifiant les nombreux exemples.
  Lauda 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -3348,7 +3451,7 @@ key "Lauda"
 
 \end_inset
 
- explains how to use 
+ explique comment utiliser 
 \begin_inset ERT
 status collapsed
 
@@ -3361,8 +3464,13 @@ Xy
 
 \end_inset
 
--pic to make braids, cobordism, string diagrams, and much more.
- A good and rather systematic introduction to 
+-pic pour créer des tresses, des diagrammes de cobordisme ou de chaînes,
+ et bien plus.
+ Une bonne introduction, assez systématique, aux matrices
+\begin_inset space ~
+\end_inset
+
+
 \family typewriter
 
 \begin_inset ERT
@@ -3372,23 +3480,22 @@ status collapsed
 
 
 \backslash
-Xy
+Xy{}
 \end_layout
 
 \end_inset
 
 
 \family default
--matrix is 
+ est 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Ouvaton"
 
 \end_inset
 
-.
- Even if you share with me the disadvantage of not being fluent in Esperanto,
- you will be able to understand most of it.
+ (même si comme moi vous ne parlez ni ne lisez l'espéranto, vous pourrez
+ comprendre l'essentiel).
  
 \end_layout
 
@@ -3401,7 +3508,11 @@ key "xypic manual"
 \end_inset
 
 Kristoffer H.
- Rose: 
+ 
+\noun on
+Rose
+\noun default
+: 
 \begin_inset ERT
 status collapsed
 
@@ -3421,11 +3532,11 @@ Xy
 .
  Version 3.7, Feb.
  16, 1999.
- Available as part of the 
+ Disponible avec le paquetage LaTeX 
 \family typewriter
 xypic
 \family default
- LaTeX package.
+.
  
 \end_layout
 
@@ -3503,7 +3614,11 @@ key "Lauda"
 
 \end_inset
 
-Aarlon Lauda: 
+Aarlon 
+\noun on
+Lauda
+\noun default
+: 
 \begin_inset ERT
 status collapsed
 
@@ -3546,7 +3661,11 @@ key "Ouvaton"
 
 \end_inset
 
-Filipp Ouvaton: 
+Filipp Ouv
+\noun on
+a
+\noun default
+ton: 
 \begin_inset ERT
 status collapsed
 
