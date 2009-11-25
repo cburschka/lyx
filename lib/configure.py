@@ -573,6 +573,7 @@ def checkFormatEntries(dtl_tools):
 \Format sxw        sxw    "OpenOffice.Org (sxw)"  ""  ""	""	"document,vector"
 \Format wmf        wmf    "Windows Metafile"      "" ""	""	"vector"
 \Format emf        emf    "Enhanced Metafile"     "" ""	""	"vector"
+\Format svg        svg    "Scalable Vector Graphics" "" "" ""	"vector"
 \Format word       doc    "MS Word"               W  ""	""	"document,vector"
 \Format wordhtml   html   "HTML (MS Word)"        "" "" ""	"document"
 ''')
@@ -753,6 +754,15 @@ def checkConverterEntries():
     #
     checkProg('a Dia -> EPS converter', ['dia -e $$o -t eps $$i'],
         rc_entry = [ r'\converter dia        eps        "%%"	""'])
+    #
+    checkProg('a SVG -> PDF converter', ['rsvg-convert -f pdf -o $$o $$i'],
+        rc_entry = [ r'\converter svg        pdf        "%%"	""'])
+    #
+    checkProg('a SVG -> EPS converter', ['rsvg-convert -f ps -o $$o $$i'],
+        rc_entry = [ r'\converter svg        eps        "%%"	""'])
+    #
+    checkProg('a SVG -> EPS converter', ['rsvg-convert -f png -o $$o $$i'],
+        rc_entry = [ r'\converter svg        png        "%%"	""'])
     #
     #
     path, lilypond = checkProg('a LilyPond -> EPS/PDF/PNG converter', ['lilypond'])
