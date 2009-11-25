@@ -17,6 +17,7 @@
 #include "LaTeXFeatures.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
+#include "output_xhtml.h"
 #include "Text.h"
 
 #include "frontends/Painter.h"
@@ -85,9 +86,10 @@ int InsetLine::docbook(odocstream & os, OutputParams const &) const
 }
 
 
-docstring InsetLine::xhtml(odocstream & os, OutputParams const &) const
+docstring InsetLine::xhtml(XHTMLStream & xs, OutputParams const &) const
 {
-	os << "<hr />\n";
+	xs << CompTag("hr");
+	xs.cr();
 	return docstring();
 }
 
