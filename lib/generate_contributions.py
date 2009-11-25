@@ -864,6 +864,14 @@ contributers = [
                  "",
                  u"Hungarian translation and bind file for menu shortcuts"),
 
+     contributer(u'Valeriy Kruchko',
+                 "lerkru () gmail ! com",
+                 "GPL",
+                 "Re: translation in to russian about 68%",
+                 "m=125904983806681",
+                 "24 November 2009",
+                 u"Russian translation of the user interface"),
+
      contributer(u"Peter Kümmel",
                  "syntheticpp () gmx ! net",
                  "GPL",
