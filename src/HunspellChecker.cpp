@@ -15,11 +15,14 @@
 #include "LyXRC.h"
 #include "WordLangTuple.h"
 
+#include "frontends/alert.h"
+
 #include "support/debug.h"
 #include "support/docstring_list.h"
 #include "support/FileName.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
+#include "support/lstrings.h"
 #include "support/os.h"
 
 #include <hunspell/hunspell.hxx>
@@ -64,28 +67,53 @@ HunspellChecker::Private::~Private()
 }
 
 
-Hunspell * HunspellChecker::Private::addSpeller(string const & lang)
+namespace {
+bool haveLanguageFiles(string const & hpath)
 {
-	string hunspell_path = external_path(lyxrc.hunspelldir_path);
-	LYXERR(Debug::FILES, "hunspell path: " << hunspell_path);
-	if (hunspell_path.empty())
-		return false;
-
-	hunspell_path += "/" + lang;
-	// replace '_' with '-' as this is the convention used by hunspell.
-	hunspell_path[hunspell_path.size() - 3] = '-';
-	FileName const affix(hunspell_path + ".aff");
-	FileName const dict(hunspell_path + ".dic");
+	FileName const affix(hpath + ".aff");
+	FileName const dict(hpath + ".dic");
 	if (!affix.isReadableFile()) {
 		// FIXME: We should indicate somehow that this language is not
 		// supported.
 		LYXERR(Debug::FILES, "Hunspell affix file " << affix << " does not exist");
-		return 0;
+		return false;
 	}
 	if (!dict.isReadableFile()) {
 		LYXERR(Debug::FILES, "Hunspell dictionary file " << dict << " does not exist");
-		return 0;
+		return false;
 	}
+	return true;
+}
+}
+
+
+Hunspell * HunspellChecker::Private::addSpeller(string const & lang)
+{
+	string hunspell_path = external_path(lyxrc.hunspelldir_path);
+	LYXERR(Debug::FILES, "hunspell path: " << hunspell_path);
+	if (hunspell_path.empty()) {
+		static bool warned = false;
+		if (!warned) {
+			frontend::Alert::error(_("Hunspell Path Not Found"), 
+					_("You must set the Hunspell dictionary path in Tools>Preferences>Paths."));
+			warned = true;
+		}
+		return false;
+	}
+
+	hunspell_path += "/" + lang;
+	if (!haveLanguageFiles(hunspell_path)) {
+		// try with '_' replaced by '-'
+		hunspell_path = subst(hunspell_path, '_', '-');
+		if (!haveLanguageFiles(hunspell_path)) {
+			// FIXME: We should indicate somehow that this language is not
+			// supported, probably by popping a warning. But we'll need to
+			// remember which warnings we've issued.
+			return 0;
+		}
+	}
+	FileName const affix(hunspell_path + ".aff");
+	FileName const dict(hunspell_path + ".dic");
 	Hunspell * h = new Hunspell(affix.absFilename().c_str(), dict.absFilename().c_str());
 	spellers_[lang] = h;
 	return h;
@@ -146,7 +174,7 @@ void HunspellChecker::insert(WordLangTuple const & wl)
 }
 
 
-void HunspellChecker::accept(WordLangTuple const & word)
+void HunspellChecker::accept(WordLangTuple const &)
 {
 	// FIXME: not implemented!
 }
