@@ -18,7 +18,6 @@
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
-#include "output_xhtml.h"
 #include "Text.h"
 #include "TextMetrics.h"
 
@@ -248,11 +247,9 @@ int InsetNewpage::docbook(odocstream & os, OutputParams const &) const
 }
 
 
-docstring InsetNewpage::xhtml(XHTMLStream & xs, OutputParams const &) const
+docstring InsetNewpage::xhtml(XHTMLStream &, OutputParams const &) const
 {
-	xs << CompTag("br");
-	xs.cr();
-	return docstring();
+	return from_ascii("<br />\n");
 }
 
 
