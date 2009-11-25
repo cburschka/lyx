@@ -761,7 +761,7 @@ def checkConverterEntries():
     checkProg('a SVG -> EPS converter', ['rsvg-convert -f ps -o $$o $$i'],
         rc_entry = [ r'\converter svg        eps        "%%"	""'])
     #
-    checkProg('a SVG -> EPS converter', ['rsvg-convert -f png -o $$o $$i'],
+    checkProg('a SVG -> PNG converter', ['rsvg-convert -f png -o $$o $$i'],
         rc_entry = [ r'\converter svg        png        "%%"	""'])
     #
     #
