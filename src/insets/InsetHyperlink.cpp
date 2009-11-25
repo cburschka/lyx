@@ -17,6 +17,7 @@
 #include "FuncRequest.h"
 #include "LaTeXFeatures.h"
 #include "OutputParams.h"
+#include "output_xhtml.h"
 
 #include "support/docstream.h"
 #include "support/gettext.h"
@@ -181,14 +182,11 @@ int InsetHyperlink::docbook(odocstream & os, OutputParams const &) const
 }
 
 
-docstring InsetHyperlink::xhtml(odocstream & os, OutputParams const &) const
+docstring InsetHyperlink::xhtml(XHTMLStream & xs, OutputParams const &) const
 {
-	os << "<a href=\""
-			// FIXME Do we need to do more escaping than this?
-	   << subst(getParam("target"), from_ascii("&"), from_ascii("&amp;"))
-	   << "\">"
-	   << getParam("name")
-	   << "</a>";
+	xs << StartTag("a", to_utf8("href=\"" + getParam("target") + "\""));
+	xs << getParam("name");
+	xs << EndTag("a");
 	return docstring();
 }
 
