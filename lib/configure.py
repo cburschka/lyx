@@ -456,6 +456,9 @@ def checkFormatEntries(dtl_tools):
     checkViewerEditor('a FEN viewer and editor', ['xboard -lpf $$i -mode EditPosition'],
         rc_entry = [r'\Format fen        fen     FEN                    "" "%%"	"%%"	""'])
     #
+    checkViewerEditor('a SVG viewer and editor', ['inkscape'],
+        rc_entry = [r'\Format svg        svg    "Scalable Vector Graphics" "" "%%" "%%"	"vector"'])
+    #
     path, iv = checkViewerNoRC('a raster image viewer', ['xv', 'kview', 'gimp-remote', 'gimp'],
         rc_entry = [r'''\Format bmp        bmp     BMP                    "" "%s"	"%s"	""
 \Format gif        gif     GIF                    "" "%s"	"%s"	""
@@ -573,7 +576,6 @@ def checkFormatEntries(dtl_tools):
 \Format sxw        sxw    "OpenOffice.Org (sxw)"  ""  ""	""	"document,vector"
 \Format wmf        wmf    "Windows Metafile"      "" ""	""	"vector"
 \Format emf        emf    "Enhanced Metafile"     "" ""	""	"vector"
-\Format svg        svg    "Scalable Vector Graphics" "" "" ""	"vector"
 \Format word       doc    "MS Word"               W  ""	""	"document,vector"
 \Format wordhtml   html   "HTML (MS Word)"        "" "" ""	"document"
 ''')
