@@ -13,6 +13,7 @@
 #define OUTPUT_XHTML_H
 
 #include "support/docstream.h"
+#include "support/strfwd.h"
 
 #include <deque>
 #include <vector>
@@ -26,6 +27,8 @@ class Text;
 // Inspiration for the *Tag structs and for XHTMLStream
 // came from MathStream and its cousins.
 
+/// Attributes will be escaped automatically and so should NOT
+/// be escaped before passing to the constructor.
 struct StartTag {
 	///
 	StartTag(std::string const & tag) : tag_(tag) {}
@@ -57,7 +60,9 @@ struct EndTag {
 };
 
 
-// Tags like <img />
+/// Tags like <img />
+/// Attributes will be escaped automatically and so should NOT
+/// be escaped before passing to the constructor.
 struct CompTag {
 	///
 	CompTag(std::string const & tag)
@@ -141,6 +146,10 @@ namespace html {
 docstring escapeChar(char_type c);
 /// converts a string to a form safe for links, etc
 docstring htmlize(docstring const & str);
+///
+std::string escapeChar(char c);
+/// converts a string to a form safe for links, etc
+std::string htmlize(std::string const & str);
 
 // to be removed
 /// \return true if tag was opened, false if not 

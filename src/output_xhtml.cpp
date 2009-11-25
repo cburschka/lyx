@@ -75,6 +75,41 @@ docstring htmlize(docstring const & str) {
 }
 
 
+string escapeChar(char c)
+{
+	string str;
+	switch (c) {
+	case ' ':
+		str += " ";
+		break;
+	case '&':
+		str += "&amp;";
+		break;
+	case '<':
+		str += "&lt;";
+		break;
+	case '>':
+		str += "&gt;";
+		break;
+	default:
+		str += c;
+		break;
+	}
+	return str;
+}
+
+
+// escape what needs escaping
+string htmlize(string const & str) {
+	ostringstream d;
+	string::const_iterator it = str.begin();
+	string::const_iterator en = str.end();
+	for (; it != en; ++it)
+		d << escapeChar(*it);
+	return d.str();
+}
+
+
 bool isFontTag(string const & s)
 {
 	return s == "em" || s == "strong"; // others?
@@ -86,7 +121,7 @@ docstring StartTag::asTag() const
 {
 	string output = "<" + tag_;
 	if (!attr_.empty())
-		output += " " + attr_;
+		output += " " + html::htmlize(attr_);
 	output += ">";
 	return from_utf8(output);
 }
@@ -110,7 +145,7 @@ docstring CompTag::asTag() const
 {
 	string output = "<" + tag_;
 	if (!attr_.empty())
-		output += " " + attr_;
+		output += " " + html::htmlize(attr_);
 	output += " />";
 	return from_utf8(output);
 }
