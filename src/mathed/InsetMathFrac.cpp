@@ -42,7 +42,9 @@ InsetMathFracBase::InsetMathFracBase(Buffer * buf, idx_type ncells)
 
 bool InsetMathFracBase::idxUpDown(Cursor & cur, bool up) const
 {
-	InsetMath::idx_type target = !up; // up ? 0 : 1, since upper cell has idx 0
+	// If we only have one cell, target = 0, otherwise
+	// target = up ? 0 : 1, since upper cell has idx 0
+	InsetMath::idx_type target = nargs() > 1 ? !up : 0;
 	if (cur.idx() == target)
 		return false;
 	cur.idx() = target;
