@@ -24,6 +24,7 @@
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
+#include "output_xhtml.h"
 #include "TextClass.h"
 
 #include "support/debug.h"
@@ -478,24 +479,24 @@ int InsetBox::docbook(odocstream & os, OutputParams const & runparams) const
 }
 
 
-docstring InsetBox::xhtml(odocstream &, OutputParams const & runparams) const
+docstring InsetBox::xhtml(XHTMLStream & xs, OutputParams const & runparams) const
 {
+	// construct attributes
+	string attrs = "class='" + params_.type + "'";
 	string style;
 	if (!params_.width.empty())
 		style += ("width: " + params_.width.asHTMLString() + ";");
 	if (!params_.height.empty())
 		style += ("height: " + params_.height.asHTMLString() + ";");
-	
-	docstring retval = from_ascii("<div class='" + params_.type + "'");
 	if (!style.empty())
-		retval += from_ascii(" style='" + style + "'");
-	retval += ">\n";
-	odocstringstream os;
-	docstring defer = InsetText::xhtml(os, runparams);
-	retval += os.str();
-	retval += "</div>\n";
-	retval += defer + "\n";
-	return retval;
+		attrs += " style='" + style + "'";
+
+	xs << StartTag("div", attrs);
+	XHTMLOptions const opts = InsetText::WriteLabel | InsetText::WriteInnerTag;
+	docstring defer = InsetText::insetAsXHTML(xs, runparams, opts);
+	xs << EndTag("div");
+	xs << defer;
+	return docstring();
 }
 
 

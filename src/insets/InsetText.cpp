@@ -889,4 +889,9 @@ docstring InsetText::getCaptionHTML(OutputParams const & runparams) const
 }
 
 
+InsetText::XHTMLOptions operator|(InsetText::XHTMLOptions a1, InsetText::XHTMLOptions a2)
+{
+	return static_cast<InsetText::XHTMLOptions>((int)a1 | (int)a2);
+}
+
 } // namespace lyx

@@ -222,6 +222,9 @@ private:
 	mutable Text text_;
 };
 
+
+InsetText::XHTMLOptions operator|(InsetText::XHTMLOptions a1, InsetText::XHTMLOptions a2);
+
 } // namespace lyx
 
 #endif
