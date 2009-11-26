@@ -237,12 +237,15 @@
 # ------------------------------------------------------------------
 # 6 octobre 2009 correction tabulations -> onglets + nombreux fuzzy
 # ------------------------------------------------------------------
+# 18 novembre 2009 corrections suite a la traduction du manuel de linguistique
+# (distinction style de caractere/style de texte, 2 types de listes de tableaux,...)
+# ------------------------------------------------------------------
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-11-15 18:16+0100\n"
-"PO-Revision-Date: 2009-11-17 09:43+0100\n"
+"PO-Revision-Date: 2009-11-24 14:08+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "MIME-Version: 1.0\n"
@@ -5356,11 +5359,11 @@ msgstr "Mots-clés."
 
 #: lib/layouts/aa.layout:379
 msgid "CharStyle:Institute"
-msgstr "Style de texte : institution"
+msgstr "Style de caractères : institution"
 
 #: lib/layouts/aa.layout:389
 msgid "CharStyle:E-Mail"
-msgstr "Style de texte : e-mail"
+msgstr "Style de caractères : e-mail"
 
 #: lib/layouts/aa.layout:400
 #: lib/layouts/aapaper.layout:85
@@ -6246,7 +6249,7 @@ msgstr "Note :"
 
 #: lib/layouts/beamer.layout:1155
 msgid "CharStyle:Alert"
-msgstr "Style de texte : alerte"
+msgstr "Style de caractères : alerte"
 
 #: lib/layouts/beamer.layout:1157
 msgid "Alert"
@@ -6254,7 +6257,7 @@ msgstr "Alerte"
 
 #: lib/layouts/beamer.layout:1166
 msgid "CharStyle:Structure"
-msgstr "Style de texte : structure"
+msgstr "Style de caractères : structure"
 
 #: lib/layouts/beamer.layout:1168
 #: lib/layouts/svmono.layout:29
@@ -6304,7 +6307,7 @@ msgstr "Figure"
 #: lib/layouts/tufte-book.layout:206
 #: lib/layouts/stdfloats.inc:27
 msgid "List of Figures"
-msgstr "Liste des Figures"
+msgstr "Liste des figures"
 
 #: lib/layouts/broadway.layout:31
 #: lib/layouts/hollywood.layout:40
@@ -9736,7 +9739,7 @@ msgstr "Dicton"
 
 #: lib/layouts/stdcharstyles.inc:8
 msgid "CharStyle"
-msgstr "Style de texte"
+msgstr "Style de caractères"
 
 #: lib/layouts/stdcharstyles.inc:10
 #: lib/layouts/stdcustom.inc:10
@@ -10147,23 +10150,23 @@ msgstr "Sous-exemple :"
 
 #: lib/layouts/linguistics.module:69
 msgid "Custom:Glosse"
-msgstr "Personnalisé : glosse"
+msgstr "Personnalisé : glose"
 
 #: lib/layouts/linguistics.module:71
 msgid "Glosse"
-msgstr "Glosse"
+msgstr "Glose"
 
 #: lib/layouts/linguistics.module:95
 msgid "Custom:Tri-Glosse"
-msgstr "Personnalisé : tri-glosse"
+msgstr "Personnalisé : tri-glose"
 
 #: lib/layouts/linguistics.module:97
 msgid "Tri-Glosse"
-msgstr "Tri-glosse"
+msgstr "Tri-glose"
 
 #: lib/layouts/linguistics.module:120
 msgid "CharStyle:Expression"
-msgstr "Style de texte : expression"
+msgstr "Style de caractères : expression"
 
 #: lib/layouts/linguistics.module:122
 msgid "expr."
@@ -10171,7 +10174,7 @@ msgstr "expr."
 
 #: lib/layouts/linguistics.module:134
 msgid "CharStyle:Concepts"
-msgstr "Style de texte : concepts"
+msgstr "Style de caractères : concepts"
 
 #: lib/layouts/linguistics.module:136
 msgid "concept"
@@ -10179,7 +10182,7 @@ msgstr "concept"
 
 #: lib/layouts/linguistics.module:148
 msgid "CharStyle:Meaning"
-msgstr "Style de texte : signification"
+msgstr "Style de caractères : signification"
 
 #: lib/layouts/linguistics.module:150
 msgid "meaning"
@@ -10191,7 +10194,7 @@ msgstr "Tableau"
 
 #: lib/layouts/linguistics.module:168
 msgid "List of Tableaux"
-msgstr "Liste des tableaux"
+msgstr "Liste des tableaux (TO)"
 
 #: lib/layouts/logicalmkup.module:2
 msgid "Logical Markup"
@@ -10203,7 +10206,7 @@ msgstr "Définition de quelques styles de caractères pour le balisage logique: 
 
 #: lib/layouts/logicalmkup.module:10
 msgid "CharStyle:Noun"
-msgstr "Style de texte : nom"
+msgstr "Style de caractères : nom"
 
 # à revoir, accord avec les autres mots incertain
 #: lib/layouts/logicalmkup.module:12
@@ -10212,7 +10215,7 @@ msgstr "nom propre"
 
 #: lib/layouts/logicalmkup.module:22
 msgid "CharStyle:Emph"
-msgstr "Style de texte : en évidence"
+msgstr "Style de caractères : en évidence"
 
 #: lib/layouts/logicalmkup.module:24
 msgid "emph"
@@ -10220,7 +10223,7 @@ msgstr "en évidence"
 
 #: lib/layouts/logicalmkup.module:33
 msgid "CharStyle:Strong"
-msgstr "Style de texte : fort"
+msgstr "Style de caractères : fort"
 
 #: lib/layouts/logicalmkup.module:35
 msgid "strong"
@@ -10228,7 +10231,7 @@ msgstr "fort"
 
 #: lib/layouts/logicalmkup.module:47
 msgid "CharStyle:Code"
-msgstr "Style de texte : code"
+msgstr "Style de caractères : code"
 
 #: lib/layouts/logicalmkup.module:49
 msgid "code"
@@ -13600,7 +13603,7 @@ msgstr "Fonctions"
 
 #: lib/ui/stdtoolbars.inc:244
 msgid "Frame decorations"
-msgstr "Décorations de fenêtre"
+msgstr "Décors de fenêtre"
 
 #: lib/ui/stdtoolbars.inc:245
 msgid "Big operators"
@@ -13974,7 +13977,7 @@ msgstr "ddots"
 
 #: lib/ui/stdtoolbars.inc:357
 msgid "Frame Decorations"
-msgstr "Décorations"
+msgstr "Décors de fenêtre"
 
 #: lib/ui/stdtoolbars.inc:358
 msgid "hat"
@@ -22642,4 +22645,3 @@ msgstr "Utilisateur inconnu"
 #~ "paramètres"
 #~ msgid "Grou&p Name:"
 #~ msgstr "&Nom de groupe :"
-
