@@ -846,7 +846,7 @@ void GuiWorkArea::wheelEvent(QWheelEvent * ev)
 	scroll_value *= delta;
 
 	// Take into account user preference.
-	scroll_value *= lyxrc.mouse_wheel_speed;
+	scroll_value = int(scroll_value * lyxrc.mouse_wheel_speed);
 	LYXERR(Debug::SCROLLING, "wheelScrollLines = " << lines
 			<< " delta = " << delta << " scroll_value = " << scroll_value
 			<< " page_step = " << page_step);
