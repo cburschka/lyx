@@ -344,7 +344,9 @@ What's new
   LyX builds with gcc 4.4 without the need to use --without-included-boost.
 
 - Clarify that we require automake 1.8 (this was already the case, but
-  nobody noticed).
+  nobody noticed). Accept autoconf 2.64 (bug 6352).
+
+- Fix buglet in configure script with recent bash versions.
 
 - The script ext_copy.py can now also copy files in subdirectories.
   (useful for external converters)
