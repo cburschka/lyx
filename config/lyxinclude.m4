@@ -29,7 +29,7 @@ AC_ARG_ENABLE(build-type,
           build_type=prerelease;;
    esac])
 AC_MSG_RESULT([$build_type])
-if test $lyx_devel_version == yes ; then
+if test $lyx_devel_version = yes ; then
            AC_DEFINE(DEVEL_VERSION, 1, [Define if you are building a development version of LyX])
            LYX_DATE="not released yet"
 fi
