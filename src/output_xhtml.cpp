@@ -110,6 +110,31 @@ string htmlize(string const & str) {
 }
 
 
+string cleanAttr(string const & str)
+{
+	string newname;
+	string::const_iterator it = str.begin();
+	string::const_iterator en = str.end();
+	for (; it != en; ++it)
+		newname += isalnum(*it) ? *it : '_';
+	return newname;	
+}
+
+
+docstring cleanAttr(docstring const & str)
+{
+	docstring newname;
+	docstring::const_iterator it = str.begin();
+	docstring::const_iterator en = str.end();
+	for (; it != en; ++it)
+		if (isalnum(*it))
+			newname += *it;
+		else
+			newname += '_';
+	return newname;	
+}
+
+
 bool isFontTag(string const & s)
 {
 	return s == "em" || s == "strong"; // others?

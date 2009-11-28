@@ -116,13 +116,16 @@ int InsetRef::docbook(odocstream & os, OutputParams const & runparams) const
 }
 
 
-docstring InsetRef::xhtml(odocstream & os, OutputParams const &) const
+docstring InsetRef::xhtml(XHTMLStream & xs, OutputParams const &) const
 {
 	// FIXME What we'd really like to do is to be able to output some
 	// appropriate sort of text here. But to do that, we need to associate
 	// some sort of counter with the label, and we don't have that yet.
-	docstring const ref = html::htmlize(getParam("reference"));
-	os << "<a href=\"" << ref << "\">[" << ref << "]</a>";
+	docstring const ref = html::cleanAttr(getParam("reference"));
+	string const attr = "href=\"" + to_utf8(ref) + "\"";
+	xs << StartTag("a", attr);
+	xs << ref;
+	xs << EndTag("a");
 	return docstring();
 }
 

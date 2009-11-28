@@ -31,9 +31,9 @@ class Text;
 /// be escaped before passing to the constructor.
 struct StartTag {
 	///
-	StartTag(std::string const & tag) : tag_(tag) {}
+	explicit StartTag(std::string const & tag) : tag_(tag) {}
 	///
-	StartTag(std::string const & tag, std::string const & attr, 
+	explicit StartTag(std::string const & tag, std::string const & attr, 
 		bool keepempty = false) 
 		: tag_(tag), attr_(attr), keepempty_(keepempty) {}
 	/// <tag_ attr_>
@@ -52,7 +52,7 @@ struct StartTag {
 
 struct EndTag {
 	///
-	EndTag(std::string tag) : tag_(tag) {}
+	explicit EndTag(std::string tag) : tag_(tag) {}
 	/// </tag_>
 	docstring asEndTag() const;
 	///
@@ -65,10 +65,10 @@ struct EndTag {
 /// be escaped before passing to the constructor.
 struct CompTag {
 	///
-	CompTag(std::string const & tag)
+	explicit CompTag(std::string const & tag)
 		: tag_(tag) {}
 	///
-	CompTag(std::string const & tag, std::string const & attr)
+	explicit CompTag(std::string const & tag, std::string const & attr)
 		: tag_(tag), attr_(attr) {}
 	/// <tag_ attr_ />
 	docstring asTag() const;
@@ -146,10 +146,15 @@ namespace html {
 docstring escapeChar(char_type c);
 /// converts a string to a form safe for links, etc
 docstring htmlize(docstring const & str);
+/// cleans \param str for use as an atttribute by replacing
+/// all non-alnum by "_"
+docstring cleanAttr(docstring const & str);
 ///
 std::string escapeChar(char c);
-/// converts a string to a form safe for links, etc
+/// 
 std::string htmlize(std::string const & str);
+/// 
+std::string cleanAttr(std::string const & str);
 
 // to be removed
 /// \return true if tag was opened, false if not 

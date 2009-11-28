@@ -219,10 +219,17 @@ int InsetLabel::docbook(odocstream & os, OutputParams const & runparams) const
 }
 
 
-docstring InsetLabel::xhtml(odocstream & os, OutputParams const &) const
+docstring InsetLabel::xhtml(XHTMLStream & xs, OutputParams const &) const
 {
-	os << "<a name=\"" << html::htmlize(getParam("name")) << "\"></a>";
+	// FIXME XHTML
+	// Unfortunately, the name attribute has been deprecated, so we have to use
+	// id here to get the document to validate as XHTML 1.1. This will cause a 
+	// problem with some browsers, though, I'm sure. (Guess which!) So we will
+	// have to figure out what to do about this later. 
+	string const attr = "id=\"" + html::cleanAttr(to_utf8(getParam("name"))) + "\"";
+	xs << CompTag("a", attr);
 	return docstring();
 }
+
 
 } // namespace lyx
