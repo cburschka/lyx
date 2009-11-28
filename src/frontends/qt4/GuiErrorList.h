@@ -37,8 +37,8 @@ public Q_SLOTS:
 private:
 	///
 	void showEvent(QShowEvent *);
-	/// update contents
-	void updateContents();
+	///
+	void paramsToDialog();
 	///
 	bool isBufferDependent() const { return true; }
 	///

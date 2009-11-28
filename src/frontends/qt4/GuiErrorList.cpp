@@ -55,7 +55,7 @@ GuiErrorList::GuiErrorList(GuiView & lv)
 void GuiErrorList::showEvent(QShowEvent * e)
 {
 	select();
-	updateContents();
+	paramsToDialog();
 	e->accept();
 }
 
@@ -77,7 +77,7 @@ void GuiErrorList::viewLog()
 }
 
 
-void GuiErrorList::updateContents()
+void GuiErrorList::paramsToDialog()
 {
 	setTitle(toqstr(name_));
 	errorsLW->clear();
@@ -111,6 +111,7 @@ bool GuiErrorList::initialiseParams(string const & data)
 		: &bufferview()->buffer();
 	name_ = bformat(_("%1$s Errors (%2$s)"), _(error_type),
 				     from_utf8(buf->absFileName()));
+	paramsToDialog();
 	return true;
 }
 
