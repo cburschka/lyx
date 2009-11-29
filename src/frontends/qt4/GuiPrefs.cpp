@@ -590,6 +590,8 @@ PrefLatex::PrefLatex(GuiPreferences * form)
 	: PrefModule(qt_(catOutput), qt_("LaTeX"), form)
 {
 	setupUi(this);
+	connect(latexEncodingCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
 	connect(latexEncodingED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 	connect(latexChecktexED, SIGNAL(textChanged(QString)),
@@ -620,6 +622,12 @@ PrefLatex::PrefLatex(GuiPreferences * form)
 #else
 	pathCB->setVisible(false);
 #endif
+}
+
+
+void PrefLatex::on_latexEncodingCB_stateChanged(int state)
+{
+	latexEncodingED->setEnabled(state == Qt::Checked);
 }
 
 
@@ -699,7 +707,10 @@ void PrefLatex::apply(LyXRC & rc) const
 	else
 		rc.index_command = fromqstr(index) + " " + fromqstr(idxopt);
 
-	rc.fontenc = fromqstr(latexEncodingED->text());
+	if (latexEncodingCB->isChecked())
+		rc.fontenc = fromqstr(latexEncodingED->text());
+	else
+		rc.fontenc = "default";
 	rc.chktex_command = fromqstr(latexChecktexED->text());
 	rc.jbibtex_command = fromqstr(latexJBibtexED->text());
 	rc.jindex_command = fromqstr(latexJIndexED->text());
@@ -770,7 +781,14 @@ void PrefLatex::update(LyXRC const & rc)
 		latexIndexOptionsLA->setText(qt_("Co&mmand:"));
 	}
 
-	latexEncodingED->setText(toqstr(rc.fontenc));
+	if (rc.fontenc == "default") {
+		latexEncodingCB->setChecked(false);
+		latexEncodingED->setEnabled(false);
+	} else {
+		latexEncodingCB->setChecked(true);
+		latexEncodingED->setEnabled(true);
+		latexEncodingED->setText(toqstr(rc.fontenc));
+	}
 	latexChecktexED->setText(toqstr(rc.chktex_command));
 	latexJBibtexED->setText(toqstr(rc.jbibtex_command));
 	latexJIndexED->setText(toqstr(rc.jindex_command));

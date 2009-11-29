@@ -226,6 +226,7 @@ public:
 	virtual void update(LyXRC const & rc);
 
 private Q_SLOTS:
+	void on_latexEncodingCB_stateChanged(int state);
 	void on_latexBibtexCO_activated(int n);
 	void on_latexIndexCO_activated(int n);
 
