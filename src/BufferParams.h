@@ -157,7 +157,7 @@ public:
 	/// returns the main font for the buffer (document)
 	Font const getFont() const;
 
-	/* this are for the PaperLayout */
+	/* these are for the PaperLayout */
 	/// the papersize
 	PAPER_SIZE papersize;
 	///
@@ -194,6 +194,8 @@ public:
 	std::string bibtex_command;
 	/// customized index processor
 	std::string index_command;
+	/// font encoding
+	std::string fontenc;
 	/// the rm font
 	std::string fontsRoman;
 	/// the sf font
@@ -316,6 +318,8 @@ public:
 
 	/// map of the file's author IDs to AuthorList indexes
 	std::map<unsigned int, int> author_map;
+	/// the buffer's font encoding
+	std::string const font_encoding() const;
 	///
 	std::string const dvips_options() const;
 	/** The return value of paperSizeName() depends on the

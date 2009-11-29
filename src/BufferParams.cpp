@@ -346,6 +346,7 @@ BufferParams::BufferParams()
 	secnumdepth = 3;
 	tocdepth = 3;
 	language = default_language;
+	fontenc = "global";
 	fontsRoman = "default";
 	fontsSans = "default";
 	fontsTypewriter = "default";
@@ -557,6 +558,9 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 	} else if (token == "\\index_command") {
 		lex.eatLine();
 		index_command = lex.getString();
+	} else if (token == "\\fontencoding") {
+		lex.eatLine();
+		fontenc = lex.getString();
 	} else if (token == "\\font_roman") {
 		lex.eatLine();
 		fontsRoman = lex.getString();
@@ -838,6 +842,7 @@ void BufferParams::writeFile(ostream & os) const
 	if (language != ignore_language)
 		os << "\\language " << language->lang() << '\n';
 	os << "\\inputencoding " << inputenc
+	   << "\n\\fontencoding " << fontenc
 	   << "\n\\font_roman " << fontsRoman
 	   << "\n\\font_sans " << fontsSans
 	   << "\n\\font_typewriter " << fontsTypewriter
@@ -1216,19 +1221,18 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		   << from_ascii(fontsDefaultFamily) << "}\n";
 
 	// set font encoding
-	// this one is not per buffer
 	// for arabic_arabi and farsi we also need to load the LAE and
 	// LFE encoding
 	// XeTeX works without fontenc
-	if (lyxrc.fontenc != "default" && language->lang() != "japanese"
+	if (font_encoding() != "default" && language->lang() != "japanese"
 	    && !useXetex) {
 		if (language->lang() == "arabic_arabi"
 		    || language->lang() == "farsi") {
-			os << "\\usepackage[" << from_ascii(lyxrc.fontenc)
+			os << "\\usepackage[" << from_ascii(font_encoding())
 			   << ",LFE,LAE]{fontenc}\n";
 			texrow.newline();
 		} else {
-			os << "\\usepackage[" << from_ascii(lyxrc.fontenc)
+			os << "\\usepackage[" << from_ascii(font_encoding())
 			   << "]{fontenc}\n";
 			texrow.newline();
 		}
@@ -1983,6 +1987,12 @@ string const BufferParams::dvips_options() const
 }
 
 
+string const BufferParams::font_encoding() const
+{
+	return (fontenc == "global") ? lyxrc.fontenc : fontenc;
+}
+
+
 string BufferParams::babelCall(string const & lang_opts) const
 {
 	string lang_pack = lyxrc.language_package;
@@ -2198,7 +2208,7 @@ string const BufferParams::loadFonts(string const & rm,
 	// AE
 	else if (rm == "ae") {
 		// not needed when using OT1 font encoding.
-		if (lyxrc.fontenc != "default")
+		if (font_encoding() != "default")
 			os << "\\usepackage{ae,aecompl}\n";
 	}
 	// Times
@@ -2237,7 +2247,7 @@ string const BufferParams::loadFonts(string const & rm,
 		// fourier supersedes utopia.sty, but does
 		// not work with OT1 encoding.
 		if (LaTeXFeatures::isAvailable("fourier")
-		    && lyxrc.fontenc != "default") {
+		    && font_encoding() != "default") {
 			os << "\\usepackage";
 			if (osf || sc) {
 				os << '[';

@@ -643,6 +643,12 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(ttChanged(int)));
 	connect(fontModule->fontsDefaultCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
+	connect(fontModule->fontencCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(fontModule->fontencCO, SIGNAL(activated(int)),
+		this, SLOT(fontencChanged(int)));
+	connect(fontModule->fontencLE, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
 	connect(fontModule->fontsizeCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 	connect(fontModule->cjkFontLE, SIGNAL(textChanged(const QString &)),
@@ -662,6 +668,10 @@ GuiDocument::GuiDocument(GuiView & lv)
 	fontModule->fontsizeCO->addItem(qt_("10"));
 	fontModule->fontsizeCO->addItem(qt_("11"));
 	fontModule->fontsizeCO->addItem(qt_("12"));
+
+	fontModule->fontencCO->addItem(qt_("Default"));
+	fontModule->fontencCO->addItem(qt_("Custom"));
+	fontModule->fontencCO->addItem(qt_("None (no fontenc)"));
 
 	for (int n = 0; GuiDocument::fontfamilies_gui[n][0]; ++n)
 		fontModule->fontsDefaultCO->addItem(
@@ -1324,6 +1334,10 @@ void GuiDocument::xetexChanged(bool xetex)
 		font = tex_fonts_roman[fontModule->fontsRomanCO->currentIndex()];
 	fontModule->fontScCB->setEnabled(providesSC(font));
 	fontModule->fontOsfCB->setEnabled(providesOSF(font));
+	
+	fontModule->fontencLA->setEnabled(!xetex);
+	fontModule->fontencCO->setEnabled(!xetex);
+	fontModule->fontencLE->setEnabled(!xetex);
 }
 
 
@@ -1385,6 +1399,12 @@ void GuiDocument::updateFontlist()
 			font += qt_(" (not installed)");
 		fontModule->fontsTypewriterCO->addItem(font);
 	}
+}
+
+
+void GuiDocument::fontencChanged(int item)
+{
+	fontModule->fontencLE->setEnabled(item == 1);
 }
 
 
@@ -2067,6 +2087,13 @@ void GuiDocument::applyView()
 			tex_fonts_monospaced[fontModule->fontsTypewriterCO->currentIndex()];
 	}
 
+	if (fontModule->fontencCO->currentIndex() == 0)
+		bp_.fontenc = "global";
+	else if (fontModule->fontencCO->currentIndex() == 1)
+		bp_.fontenc = fromqstr(fontModule->fontencLE->text());
+	else if (fontModule->fontencCO->currentIndex() == 2)
+		bp_.fontenc = "default";
+
 	bp_.fontsCJK =
 		fromqstr(fontModule->cjkFontLE->text());
 
@@ -2421,6 +2448,9 @@ void GuiDocument::paramsToDialog()
 			bp_.fontsize);
 
 	if (bp_.useXetex) {
+		fontModule->fontencLA->setEnabled(false);
+		fontModule->fontencCO->setEnabled(false);
+		fontModule->fontencLE->setEnabled(false);
 		for (int i = 0; i < fontModule->fontsRomanCO->count(); ++i) {
 			if (fontModule->fontsRomanCO->itemText(i) == toqstr(bp_.fontsRoman)) {
 				fontModule->fontsRomanCO->setCurrentIndex(i);
@@ -2442,6 +2472,9 @@ void GuiDocument::paramsToDialog()
 			}
 		}
 	} else {
+		fontModule->fontencLA->setEnabled(true);
+		fontModule->fontencCO->setEnabled(true);
+		fontModule->fontencLE->setEnabled(true);
 		int n = findToken(tex_fonts_roman, bp_.fontsRoman);
 		if (n >= 0) {
 			fontModule->fontsRomanCO->setCurrentIndex(n);
@@ -2475,6 +2508,15 @@ void GuiDocument::paramsToDialog()
 	int nn = findToken(GuiDocument::fontfamilies, bp_.fontsDefaultFamily);
 	if (nn >= 0)
 		fontModule->fontsDefaultCO->setCurrentIndex(nn);
+
+	if (bp_.fontenc == "global")
+		fontModule->fontencCO->setCurrentIndex(0);
+	else if (bp_.fontenc == "default")
+		fontModule->fontencCO->setCurrentIndex(2);
+	else {
+		fontModule->fontencCO->setCurrentIndex(1);
+		fontModule->fontencLE->setText(toqstr(bp_.fontenc));
+	}
 
 	// paper
 	bool const extern_geometry =

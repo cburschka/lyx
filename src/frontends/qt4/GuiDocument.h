@@ -91,6 +91,7 @@ private Q_SLOTS:
 	void papersizeChanged(int);
 	void setColSep();
 	void setCustomMargins(bool);
+	void fontencChanged(int);
 	void romanChanged(int);
 	void sansChanged(int);
 	void ttChanged(int);
