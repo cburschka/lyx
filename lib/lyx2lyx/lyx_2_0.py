@@ -1069,6 +1069,15 @@ def revert_mhchem(document):
     del document.header[k]
 
 
+def revert_fontenc(document):
+    " Remove fontencoding param "
+    i = find_token(document.header, '\\fontencoding', 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\fontencoding.")
+        return
+    del document.header[i]
+
+
 ##
 # Conversion hub
 #
@@ -1099,10 +1108,12 @@ convert = [[346, []],
            [368, []],
            [369, [convert_author_id]],
            [370, []],
-           [371, []]
+           [371, []],
+           [372, []]
           ]
 
-revert =  [[370, [revert_mhchem]],
+revert =  [[371, [revert_fontenc]],
+           [370, [revert_mhchem]],
            [369, [revert_suppress_date]],
            [368, [revert_author_id]],
            [367, [revert_hspace_glue_lengths]],
