@@ -1,9 +1,9 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass article
+\use_default_options false
 \language french
 \inputencoding latin1
 \font_roman default
@@ -14,6 +14,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -35,7 +36,8 @@
 \paperpagestyle plain
 \tracking_changes false
 \output_changes false
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -50,7 +52,7 @@ Informations de révision :
 \end_layout
 
 \begin_layout Plain Layout
-Traduction : Mise à jour, Date: 07/07/2003
+Traduction : Mise à jour, Date: 30/09/2009, JPChrétien
 \end_layout
 
 \begin_layout Plain Layout
@@ -68,7 +70,15 @@ Indication:
 \end_layout
 
 \begin_layout Plain Layout
-Le titre devrait ressembler un peu plus à un titre ("TITLE")
+Le titre devrait ressembler un peu plus à un titre (
+\begin_inset Quotes fld
+\end_inset
+
+Titre
+\begin_inset Quotes frd
+\end_inset
+
+ dans le menu des styles)
 \end_layout
 
 \end_inset
@@ -86,7 +96,15 @@ Indication:
 \end_layout
 
 \begin_layout Plain Layout
-Fée est l'auteur de ce document ("AUTHOR")
+Fée est l'auteur de ce document (
+\begin_inset Quotes fld
+\end_inset
+
+Auteur
+\begin_inset Quotes frd
+\end_inset
+
+)
 \end_layout
 
 \end_inset
@@ -104,7 +122,15 @@ Indication:
 \end_layout
 
 \begin_layout Plain Layout
-Ceci est une "DATE".(NdT: Si si !)
+Ceci est une 
+\begin_inset Quotes fld
+\end_inset
+
+Date
+\begin_inset Quotes frd
+\end_inset
+
+.(NdT: Si si !)
 \end_layout
 
 \end_inset
@@ -126,7 +152,14 @@ Ce serait plus agréable de ne pas avoir à taper la
 \end_layout
 
 \begin_layout Plain Layout
-"Table des Matières" explicitement.
+\begin_inset Quotes fld
+\end_inset
+
+Table des Matières
+\begin_inset Quotes frd
+\end_inset
+
+ explicitement.
 \end_layout
 
 \end_inset
@@ -136,15 +169,15 @@ Ce serait plus agréable de ne pas avoir à taper la
 
 \begin_layout Standard
 1.
- Philosophie Générale.................1
+ Philosophie générale.................1
 \end_layout
 
 \begin_layout Standard
-1.1 Comment LyX le fait...............1
+1.1 Comment LyX procède..............1
 \end_layout
 
 \begin_layout Standard
-1.2 Pourquoi LyX est meilleur....1
+1.2 Pourquoi LyX est mieux....1
 \end_layout
 
 \begin_layout Standard
@@ -168,7 +201,7 @@ Ce serait plus agréable de ne pas avoir à taper la
 
 \begin_layout Standard
 1.
- Philosophie Générale 
+ Philosophie générale 
 \begin_inset Note Note
 status collapsed
 
@@ -177,11 +210,19 @@ Indication:
 \end_layout
 
 \begin_layout Plain Layout
-Les titres de "Sections" ne sont pas assez en valeur, et ne
+Les titres de 
+\begin_inset Quotes fld
+\end_inset
+
+Sections
+\begin_inset Quotes frd
+\end_inset
+
+ ne sont pas assez en valeur, et ne
 \end_layout
 
 \begin_layout Plain Layout
-devraient pas ^etre numérotés manuellement.
+devraient pas être numérotés manuellement.
 \end_layout
 
 \end_inset
@@ -201,8 +242,8 @@ La philosophie générale de LyX est de vous laisser vous concentrer sur le
 \begin_layout Standard
 LyX utilise LaTeX, un système de préparation de documents conçu par Leslie
  Lamport en 1985.
- Il a été construit, à son tour, à partir d'un langage de composition, appelé
- TeX, créé par Donald Knuth en 1984.
+ Il a été construit, à son tour, à partir d'un langage de composition typographi
+que, appelé TeX, créé par Donald Knuth en 1984.
  LaTeX est conçu autour d'une philosophie similaire à celle de LyX.
  Leslie Lamport disait lui-même (voir référence [1]) 
 \begin_inset Note Note
@@ -213,11 +254,19 @@ Indication:
 \end_layout
 
 \begin_layout Plain Layout
-Cette "Citation Bibliographique" ne devrait probablement pas
+Cette 
+\begin_inset Quotes fld
+\end_inset
+
+Citation Bibliographique
+\begin_inset Quotes frd
+\end_inset
+
+ ne devrait probablement pas
 \end_layout
 
 \begin_layout Plain Layout
-^etre écrite en dur.
+être écrite en dur.
  Que se passe-t-il si le livre de Leslie Lamport
 \end_layout
 
@@ -265,7 +314,7 @@ C'est une citation (QUOTE).
 \end_layout
 
 \begin_layout Standard
-1.2 Pourquoi LyX est meilleur
+1.2 Pourquoi LyX est mieux
 \end_layout
 
 \begin_layout Standard
@@ -277,6 +326,17 @@ LyX peut être profitable à un plus grand nombre d'utilisateurs que LaTeX.
 \end_inset
 
 What you see is what you get
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Cette phrase devrait être marquée en langue anglaise pour faciliter la correctio
+n orthographique.
+\end_layout
+
+\end_inset
+
+
 \begin_inset Quotes frd
 \end_inset
 
@@ -312,7 +372,15 @@ Indication:
 \end_layout
 
 \begin_layout Plain Layout
-Cette parenthèse serait bien mieux en "Note de bas de page"
+Cette parenthèse serait bien mieux en 
+\begin_inset Quotes fld
+\end_inset
+
+Note de bas de page
+\begin_inset Quotes frd
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -326,22 +394,37 @@ Indication:
 \end_layout
 
 \begin_layout Plain Layout
-A mettre en "Italique" (ou en "Evidence") plut^ot qu'en majuscules!
+A mettre en 
+\begin_inset Quotes fld
+\end_inset
+
+Italique
+\begin_inset Quotes frd
+\end_inset
+
+ (ou en 
+\begin_inset Quotes fld
+\end_inset
+
+Evidence
+\begin_inset Quotes frd
+\end_inset
+
+) plutôt qu'en majuscules!
 \end_layout
 
 \end_inset
 
  à l'envie de vous les présenter.
- En voici quelques-unes.
- 
+ En voici quelques-unes:
 \end_layout
 
 \begin_layout Standard
-* LyX gère les marges et la numérotation des notes de bas de page pour vous.
+* LyX gère les marges et la numérotation des notes de bas de page pour vous;
 \end_layout
 
 \begin_layout Standard
-* L'écriture de formules mathématiques est un jeu d'enfant avec LyX.
+* l'écriture de formules mathématiques est un jeu d'enfant avec LyX.
 \end_layout
 
 \begin_layout Standard
@@ -354,7 +437,15 @@ Indication:
 \end_layout
 
 \begin_layout Plain Layout
-Cette "Référence Croisée" ne devrait pas ^etre écrite en dur.
+Cette 
+\begin_inset Quotes fld
+\end_inset
+
+Référence Croisée
+\begin_inset Quotes frd
+\end_inset
+
+ ne devrait pas être écrite en dur.
 \end_layout
 
 \begin_layout Plain Layout
@@ -403,7 +494,15 @@ JE SUIS SUPER !
 status collapsed
 
 \begin_layout Plain Layout
-Indication: C'est du source de programme ("CODE").
+Indication: C'est du source de programme (
+\begin_inset Quotes fld
+\end_inset
+
+Lyx-Code
+\begin_inset Quotes frd
+\end_inset
+
+).
 \end_layout
 
 \end_inset
@@ -441,7 +540,15 @@ Pas terrible comme poésie! Mais ce sont quand m^eme
 \end_layout
 
 \begin_layout Plain Layout
-des vers ("VERSE").
+des vers (
+\begin_inset Quotes fld
+\end_inset
+
+Vers
+\begin_inset Quotes frd
+\end_inset
+
+).
 \end_layout
 
 \end_inset
@@ -460,11 +567,19 @@ Indication:
 \end_layout
 
 \begin_layout Plain Layout
-Les mathématiques qui suivent devraient ^etre traitées
+Les mathématiques qui suivent devraient être traitées
 \end_layout
 
 \begin_layout Plain Layout
-en "Mode Mathématique".
+en 
+\begin_inset Quotes fld
+\end_inset
+
+Mode mathématique
+\begin_inset Quotes frd
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -480,9 +595,9 @@ Ma formule préférée est la résolution d'une équation du second degré.
 \end_layout
 
 \begin_layout Standard
-Une autre favorite, la base du calcul différentiel : f'(x) est définie comme
- la limite, quand deltax tend vers zéro, de l'expression f(x+deltax) - f(x)
- divisé par deltax (eq.
+Une autre formule favorite est la base du calcul différentiel : f'(x) est
+ définie comme la limite, quand deltax tend vers zéro, de l'expression f(x+delta
+x) - f(x) divisé par deltax (eq.
  3).
 \end_layout
 
