@@ -1,9 +1,9 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass article
+\use_default_options false
 \language french
 \inputencoding latin1
 \font_roman default
@@ -14,6 +14,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -35,7 +36,8 @@
 \paperpagestyle plain
 \tracking_changes false
 \output_changes false
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -50,7 +52,7 @@ Informations de révision :
 \end_layout
 
 \begin_layout Plain Layout
-Traduction : Mise à jour, Date: 07/07/2003
+Traduction : Mise à jour, Date: 30/09/2009, JPChrétien
 \end_layout
 
 \begin_layout Plain Layout
@@ -80,7 +82,7 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Section
-Philosophie Générale
+Philosophie générale
 \end_layout
 
 \begin_layout Standard
@@ -89,14 +91,14 @@ La philosophie générale de LyX est de vous laisser vous concentrer sur le
 \end_layout
 
 \begin_layout Subsection
-Comment LyX le fait
+Comment LyX procède
 \end_layout
 
 \begin_layout Standard
 LyX utilise LaTeX, un système de préparation de documents conçu par Leslie
  Lamport en 1985.
- Il a été construit, à son tour, à partir d'un langage de composition, appelé
- TeX, créé par Donald Knuth en 1984.
+ Il a été construit, à son tour, à partir d'un langage de composition typographi
+que, appelé TeX, créé par Donald Knuth en 1984.
  LaTeX est conçu autour d'une philosophie similaire à celle de LyX.
  Leslie Lamport disait lui-même (voir référence
 \begin_inset space ~
@@ -126,7 +128,7 @@ Le but de la typographie est d'aider le lecteur à comprendre l'idée de l'auteu
 \end_layout
 
 \begin_layout Subsection
-Pourquoi LyX est meilleur
+Pourquoi LyX est mieux
 \end_layout
 
 \begin_layout Standard
@@ -143,7 +145,11 @@ LyX peut être profitable à un plus grand nombre d'utilisateurs que LaTeX.
 \begin_inset Quotes fld
 \end_inset
 
+
+\lang english
 What you see is what you get
+\lang french
+
 \begin_inset Quotes frd
 \end_inset
 
@@ -151,7 +157,11 @@ What you see is what you get
 \begin_inset Quotes fld
 \end_inset
 
+
+\lang english
 What you see is what you mean
+\lang french
+
 \begin_inset Quotes frd
 \end_inset
 
@@ -187,11 +197,11 @@ ne résiste plus
 \end_layout
 
 \begin_layout Itemize
-LyX gère les marges et la numérotation des notes de bas de page pour vous.
+LyX gère les marges et la numérotation des notes de bas de page pour vous;
 \end_layout
 
 \begin_layout Itemize
-L'écriture de formules mathématiques est un jeu d'enfant avec LyX.
+l'écriture de formules mathématiques est un jeu d'enfant avec LyX.
 \end_layout
 
 \begin_layout Standard
@@ -219,6 +229,16 @@ reference "sec:lyxmeilleur"
 
  pour une discussion plus approfondie sur les avantages de LyX par rapport
  aux autres traitements de texte.
+ Voir aussi le 
+\begin_inset CommandInset href
+LatexCommand href
+name "site web de LyX"
+target "http://www.lyx.org"
+
+\end_inset
+
+ (pour la version francophone, cliquer sur le drapeau).
+ 
 \end_layout
 
 \begin_layout Section
@@ -231,11 +251,19 @@ J'ai écrit un programme ces derniers jours.
 \end_layout
 
 \begin_layout LyX-Code
-5 REMARK MON SUPER PROGRAMME
+5 
+\lang english
+REMARK
+\lang french
+ MON SUPER PROGRAMME
 \end_layout
 
 \begin_layout LyX-Code
-10 PRINT 
+10 
+\lang english
+PRINT
+\lang french
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -247,7 +275,11 @@ JE SUIS SUPER !
 \end_layout
 
 \begin_layout LyX-Code
-20 GOTO 10
+20 
+\lang english
+GOTO
+\lang french
+ 10
 \end_layout
 
 \begin_layout Standard
@@ -272,20 +304,12 @@ Les maths
 \end_layout
 
 \begin_layout Standard
-Ma formule préférée est la résolution d'une équation du second degré.
+Ma formule préférée est la résolution d'une équation du second degré: si
  
-\end_layout
-
-\begin_layout Standard
-Si 
 \begin_inset Formula $ax^{2}+bx+c=0$
 \end_inset
 
- (eq.1), 
-\end_layout
-
-\begin_layout Standard
-alors 
+ (eq.1), alors 
 \begin_inset Formula $x=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}$
 \end_inset
 
@@ -294,10 +318,7 @@ alors
 \end_layout
 
 \begin_layout Standard
-Une autre favorite, la base du calcul différentiel : 
-\end_layout
-
-\begin_layout Standard
+Une autre formule favorite est la base du calcul différentiel : 
 \begin_inset Formula $f'(x)\equiv\lim_{\Delta x\rightarrow0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$
 \end_inset
 
@@ -310,19 +331,31 @@ Notes
 \end_layout
 
 \begin_layout Standard
-Quelques notes à propos de la LyXification de ce fichier :
+Quelques notes à propos de la 
+\begin_inset Quotes fld
+\end_inset
+
+LyXification
+\begin_inset Quotes frd
+\end_inset
+
+ de ce fichier :
 \end_layout
 
 \begin_layout Itemize
-J'ai pu éliminer les lignes de tirets.
+j'ai pu éliminer les lignes de tirets.
  Elles n'étaient là que pour séparer le titre et les références du reste
- du document.
- LyX (ou LaTeX) en sait assez pour les séparer avec de l'espace.
- 
+ du document: LyX (ou LaTeX) en sait assez pour les séparer avec de l'espacement.
+;
 \end_layout
 
 \begin_layout Itemize
-Je ne me suis pas ennuyé à mettre les équations mathématiques en mode affichage.
+je ne me suis pas donné la peine de mettre les équations mathématiques en
+ mode affichage (ou 
+\emph on
+hors ligne
+\emph default
+).
  Je n'ai pas non plus utilisé le mode de numérotation automatique des équations
  de LyX parce qu'il n'est pas décrit dans le 
 \emph on
@@ -330,17 +363,15 @@ Manuel
 \begin_inset space ~
 \end_inset
 
-d'Apprentissage
-\emph default
-.
+d'Apprentissage;
 \end_layout
 
 \begin_layout Itemize
-Je n'ai pas eu à taper le mot 
+je n'ai pas eu à taper le mot 
 \begin_inset Quotes fld
 \end_inset
 
-References
+Références
 \begin_inset Quotes frd
 \end_inset
 
@@ -349,16 +380,15 @@ References
 \begin_inset Quotes fld
 \end_inset
 
-Bibliography
+Bibliographie
 \begin_inset Quotes frd
 \end_inset
 
-, en fonction de la classe du document) lorsque vous sélectionnez l'environnemen
-t 
+, en fonction de la classe du document) lorsque vous sélectionnez l
 \family sans
-Bibliography
+e style Bibliograph
 \family default
-.
+ie.
 \end_layout
 
 \begin_layout Bibliography
@@ -371,10 +401,13 @@ key "lamport"
 Lamport, Leslie.
  
 \emph on
+\lang english
 LaTeX : A Document Preparation System.
 
 \emph default
- Addison-Wesley, Reading, Massachusetts, deuxième édition, 1994.
+ Addison-Wesley, Reading, Massachusetts
+\lang french
+, deuxième édition, 1994.
 \end_layout
 
 \end_body
