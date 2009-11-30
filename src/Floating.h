@@ -48,11 +48,11 @@ public:
 	std::string const & name() const;
 	///
 	std::string const & listName() const;
-	/// 
+	/// style information, for preamble
 	std::string const & htmlStyle() const;
-	///
+	/// class, for css
 	std::string const & htmlClass() const;
-	///
+	/// tag type
 	std::string const & htmlType() const;
 	///
 	bool builtin() const;
