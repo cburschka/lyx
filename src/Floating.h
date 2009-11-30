@@ -50,10 +50,10 @@ public:
 	std::string const & listName() const;
 	/// style information, for preamble
 	std::string const & htmlStyle() const;
-	/// class, for css
+	/// class, for css, defaults to "float-" + type()
 	std::string const & htmlClass() const;
-	/// tag type
-	std::string const & htmlType() const;
+	/// tag type, defaults to "div"
+	std::string const & htmlTag() const;
 	///
 	bool builtin() const;
 private:
@@ -71,11 +71,11 @@ private:
 	std::string name_;
 	///
 	std::string listName_;
-	/// HTML Element type, usually div
-	std::string htmlType_;
-	/// class attribute, e.g., float-table, for CSS
-	std::string htmlClass_;
-	/// CSS information for this element
+	/// 
+	mutable std::string htmlTag_;
+	/// 
+	mutable std::string htmlClass_;
+	/// 
 	std::string htmlStyle_;
 	///
 	bool builtin_;

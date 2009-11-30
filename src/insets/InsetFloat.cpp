@@ -285,10 +285,8 @@ docstring InsetFloat::xhtml(odocstream & os, OutputParams const & rp) const
 {
 	FloatList const & floats = buffer().params().documentClass().floats();
 	Floating const & ftype = floats.getType(params_.type);
-	string const htmltype = ftype.htmlType().empty() ? 
-			"div" : ftype.htmlType();
-	string const htmlclass = ftype.htmlClass().empty() ?
-			"float-" + params_.type : ftype.htmlClass();
+	string const & htmltype = ftype.htmlTag();
+	string const & htmlclass = ftype.htmlClass();
 	docstring const otag = 
 			from_ascii("<" + htmltype + " class='float " + htmlclass + "'>\n");
 	docstring const ctag = from_ascii("</" + htmltype + ">\n");
