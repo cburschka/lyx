@@ -28,6 +28,7 @@
 #include "Language.h"
 #include "MetricsInfo.h"
 #include "output_latex.h"
+#include "output_xhtml.h"
 #include "OutputParams.h"
 #include "Paragraph.h"
 #include "TextClass.h"
@@ -250,16 +251,16 @@ int InsetCaption::docbook(odocstream & os,
 }
 
 
-docstring InsetCaption::xhtml(odocstream & os,
-			  OutputParams const & rp) const
+docstring InsetCaption::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 {
 	if (rp.html_disable_captions)
 		return docstring();
-	os << "<div class='float-caption'>\n";
-	docstring def = getCaptionAsHTML(os, rp);
-	os << "</div>\n";
+	xs << StartTag("div", "class='float-caption'");
+	docstring def = getCaptionAsHTML(xs, rp);
+	xs << EndTag("div");
 	return def;
 }
+
 
 int InsetCaption::getArgument(odocstream & os,
 			OutputParams const & runparams) const
@@ -283,11 +284,13 @@ int InsetCaption::getCaptionAsPlaintext(odocstream & os,
 }
 
 
-docstring InsetCaption::getCaptionAsHTML(odocstream & os,
+docstring InsetCaption::getCaptionAsHTML(XHTMLStream & xs,
 			OutputParams const & runparams) const
 {
-	os << full_label_ << ' ';
-	return InsetText::xhtml(os, runparams);
+	xs << full_label_ << ' ';
+	InsetText::XHTMLOptions const opts = 
+		InsetText::WriteLabel | InsetText::WriteInnerTag;
+	return InsetText::insetAsXHTML(xs, runparams, opts);
 }
 
 

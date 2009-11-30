@@ -31,7 +31,7 @@ public:
 	/// return the caption text
 	int getCaptionAsPlaintext(odocstream & os, OutputParams const &) const;
 	/// return the caption text as HTML
-	docstring getCaptionAsHTML(odocstream & os, OutputParams const &) const;
+	docstring getCaptionAsHTML(XHTMLStream & os, OutputParams const &) const;
 private:
 	///
 	void write(std::ostream & os) const;
@@ -69,7 +69,7 @@ private:
 	///
 	int docbook(odocstream & os, OutputParams const & runparams) const;
 	/// 
-	docstring xhtml(odocstream & os, OutputParams const & runparams) const;
+	docstring xhtml(XHTMLStream & os, OutputParams const & runparams) const;
 	///
 	void setCustomLabel(docstring const & label);
 	///
