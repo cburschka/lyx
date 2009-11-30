@@ -26,7 +26,7 @@ Style Quotation
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
 	HTMLTag               blockquote
-	HTMLItem              p
+	HTMLItem              div
 End
 
 
@@ -45,7 +45,7 @@ Style Quote
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
 	HTMLTag               blockquote
-	HTMLItem              p
+	HTMLItem              div
 End
 
 
