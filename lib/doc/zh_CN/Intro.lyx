@@ -1,0 +1,1382 @@
+#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{indentfirst}
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX}}
+\end_preamble
+\options a4paper,cjk
+\use_default_options true
+\language chinese-simplified
+\inputencoding UTF8
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\font_cjk gbsn
+
+\graphics default
+\float_placement th
+\paperfontsize 12
+\spacing onehalf
+\use_hyperref true
+\pdf_title "The LyX Tutorial"
+\pdf_author "LyX Team"
+\pdf_subject "LyX-documentation Tutorial"
+\pdf_keywords "LyX, documentation"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref section
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 3cm
+\topmargin 3cm
+\rightmargin 2cm
+\bottommargin 2.5cm
+\headheight 2cm
+\headsep 0.75cm
+\footskip 0.75cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+CJKindent
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+LyX 简介
+\end_layout
+
+\begin_layout Author
+LyX 工作组
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+对此文档有任何话想说，请 Email 到 
+\family typewriter
+
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+
+\family default
+。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+LyX 的哲学
+\end_layout
+
+\begin_layout Subsection
+什么是 LyX？
+\end_layout
+
+\begin_layout Standard
+LyX 是一个文档写作系统，除了处理一般文档所需的自动章节编号、自动页码、拼写检查等功能之外，其强项在于包含数学公式、交叉引用、参考文献、附录等东西的复杂科技文
+档的写作。虽然有更简单的软件，但你的确可以用 LyX 给 MM 写信。LyX 不适合制作横幅、传单、广告（后边解释），当然通过一些努力也能达到目的。下边是
+ LyX 应用的一些例子：备忘录、书信、（学位）论文、课程笔记、会议记录、会议论文集、软件文档、书、科技文章、剧本、标书、幻灯片……
+\end_layout
+
+\begin_layout Standard
+LyX 使用现代标记语言书写文档，它颠覆了传统的“打字机概念”。使用 LyX 你可以快捷的得到专业的输出效果，而不需要成为排版专家。计算机会处理大部分的排版工作
+，而作者只需要专心于其写作的内容。
+\end_layout
+
+\begin_layout Standard
+使用 LyX 最初的挑战来自于使用者观念上必需经历的变化。以前用于写作文档的工具就是打字机，我们都会一些使用打字机的小技巧。下划线用于强调；创建表格前需要计算各
+种尺寸并设定之，写信或右对齐的文本也是这样；每行末尾的连字符也需要特别小心。
+\end_layout
+
+\begin_layout Standard
+就是说我们都已经习惯于关心字符排版的细枝末节，几乎所有的字处理软件也都是这种理念。人们还在使用 Tab 键创建空白；你还需要关心什么东西应该出现在页面上的什么位
+置；强调某处文本就是改变一下字体。这就是所见即所得的字处理软件的哲学根基（WYSIWYG： What You See Is What You Get）。不幸的是
+它常常变为“所见到的就是你的所有”。
+\end_layout
+
+\begin_layout Standard
+LyX 的不同之处在于，你不必关心排版的问题。你只需要告诉 LyX 你正在干什么，LyX 会按照预定的样式处理排版的问题
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+多数流行的办公套装早已经支持样式了，只是在实际应用中被使用的很少。（译注：其实主要的原因是，根本不需要使用样式就能满足我们那些少的可怜的需求了。）
+\end_layout
+
+\end_inset
+
+。看一个小例子：
+\end_layout
+
+\begin_layout Standard
+假设你正在写一篇报告，你需要把“简介”作为第 1 节。你通过某个菜单把字体大小设为所需要的，然后再设成黑体，最后输入“1.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+简介”。如果以后你打算把这一节放到其它的地方，或者你在它前边插入一个新的节，你需要修改该小节和后边所有小节的编号以及目录中的相应部分。
+\end_layout
+
+\begin_layout Standard
+在 LyX 中，你需要工具栏左边的下拉列表中选择节，然后输入“简介”。
+\end_layout
+
+\begin_layout Standard
+嗯，就是这么简单。如果你剪切该节到其它地方，节编号会自动重排。如果你在该节中使用了交叉引用，LyX 也会自动处理的，所以你永远不用输入节编号。
+\end_layout
+
+\begin_layout Standard
+现在我们再来看看一致性。5 天后，你继续写报告的第 4 节，但是你忘记了，你应该使用小二号字而不是三号字。这样你第 4 节和第 1 节标题的字体就不同了。这种问
+题在 LyX 中是不存在的，LyX 将会安排什么东西使用什么字体的，毕竟计算机对这些是很在行的。
+\end_layout
+
+\begin_layout Standard
+另一例：假设你正在做一个列表。在其它的字处理软件中，列表就是一堆的 Tab 和新行。你需要确定在什么地方放置列表项的标签、应该使用哪个标签、每个标签项之间需要多
+少个空行……在 LyX 中你只需要关心两件事：使用什么类型的列表；列表放在什么地方。
+\end_layout
+
+\begin_layout Standard
+LyX 的基本理念是：指定你在做什么，而不是怎样做。对应于“所见即所得”，LyX 的模式是“所见即所想”（WYSIWYM）。这种观念非常有效，它大大简化了文档的
+书写过程。这也是为什么 LyX 不适合做海报、传单，这时候你的确需要确定什么东西应该放在什么地方，因为这里没有节、段的概念。这并不是说 LyX
+ 缺少了很酷的功能，而是说 LyX 不是干这些事合适的工具。就像你不会用螺丝刀去砸钉子。
+\end_layout
+
+\begin_layout Subsection
+与众不同的 LyX
+\end_layout
+
+\begin_layout Standard
+下边的东西你不会在 LyX 中找到：
+\end_layout
+
+\begin_layout Itemize
+标尺
+\end_layout
+
+\begin_layout Itemize
+Tab 位
+\end_layout
+
+\begin_layout Itemize
+多余的空白（敲回车或空格两次以上）
+\end_layout
+
+\begin_layout Standard
+Tab 位、标尺标明了页面上各元素的位置，这些东西在 LyX 中没有用处，程序自会处理这些东西，而不是您。空白也是，LyX 会根据上下文情况加上空白。开始时，不
+能输入两个空行会很烦人，但当你能使用所见即所想的方式去思考问题的时候，你会发现这将更有意义。
+\end_layout
+
+\begin_layout Standard
+下边是 LyX 中存在的东西，但它们可能不像你想象的那样：
+\end_layout
+
+\begin_layout Itemize
+缩进控制
+\end_layout
+
+\begin_layout Itemize
+断页
+\end_layout
+
+\begin_layout Itemize
+行间距
+\end_layout
+
+\begin_layout Itemize
+水平（垂直）空白
+\end_layout
+
+\begin_layout Itemize
+字体与字号
+\end_layout
+
+\begin_layout Itemize
+字型
+\end_layout
+
+\begin_layout Standard
+这些东西存在于 LyX 中，但你一般用不到它们。LyX 会根据你正在做的事情帮你处理好它们。文档的不同部分会被设置成为不同的字型与字号。段落的缩进是上下文相关的
+，不同的段落类型会有不同的缩进。断页也是自动进行的。字间、行间、段间的距离是可以通过 LyX 设置的。
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+有多种方法可以调节这些东西（只有一小部分需要 LaTeX 知识），你可以调整整篇文档，也可以调整文档中的某一部分。参见用户指南或 
+\emph on
+Additional Features
+\emph default
+ 。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+最后，有些地方 LyX 比其它字处理软件强：
+\end_layout
+
+\begin_layout Itemize
+断字
+\end_layout
+
+\begin_layout Itemize
+列表
+\end_layout
+
+\begin_layout Itemize
+数学
+\end_layout
+
+\begin_layout Itemize
+表格
+\end_layout
+
+\begin_layout Itemize
+交叉引用
+\end_layout
+
+\begin_layout Standard
+当然很多现代字处理软件都能处理这些，而且有些软件也使用了样式和所见即所想的理念。要知道这些软件也仅仅是最近才开始这么做的，而 LyX 使用的 LaTeX
+ 在 20 年前就开始玩这些了。
+\end_layout
+
+\begin_layout Subsection
+什么是 LaTeX？
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+本节资料来源于《
+\emph on
+A Guide to LaTeX2e
+\emph default
+》，作者：Helmut Kopka 和 Patrick Daly，
+\emph on
+User's Guide
+\emph default
+ 的参考文献中有相关的条目。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+LaTeX 是由 Leslie Lamport 在 1985 年设计的一套基于 TeX 的文档写作系统。TeX 是 Donald Knuth 在
+ 1984 年编写的一种排版语言。TeX 将一系列的排版命令写在角本文件中并执行之。印刷业的很多排版方法都是由 Knuth 用算法实现的并合并到了
+ TeX 中，因此 TeX 的排版效果是非常优秀的。TeX 的输出文件格式为 PDF 或 DVI（device independent）。DVI
+ 文件常被用于预览，还可以被转化为其它的格式，比如 PostScript。
+\end_layout
+
+\begin_layout Standard
+TeX 不仅仅是一个排版引擎，它还可以定义宏。我们通常说的使用 TeX，实际上是在使用 TeX 的宏包，这些宏包隐藏了大部分的排版细节。提到宏包就不能不说
+ Leslie Lamport，他希望有一个宏包能够更加用户友好，有命令集可以一致可靠的排版节、表格和数学公式。这样，LaTeX 宏包诞生了。
+\end_layout
+
+\begin_layout Standard
+现在，在 LaTeX 研发成长的同时，还有些人也建立了他们自己定制的宏包，如为某个数学杂志制作幻灯片、文档等。有的宏包使用了原生的 TeX 工具，有的是在
+ LaTeX 之上修改而来，局面那叫一个混乱。为了一统天下，二十世纪八十年代一个小组开始着手于 LaTeX2e。这个新版本提供了易用的用户界面，方便创建宏包、帮
+助使用新字体等。实际上 LaTeX 是一种可扩展性极强的语言，世界各地的用户编写了大量的插件。
+\end_layout
+
+\begin_layout Standard
+有两种方法对 LaTeX 进行扩展：类和样式。类就是描述一个新文档类型的 LaTeX 宏集，如书籍类、文章类。类还可以用于幻灯、物理、数学期刊……很多大学甚至还
+有学位论文专用的类。样式并不定义新的文档类型，它定义了所有文档都可用的不同行为。例：LyX 使用两个样式文件来控制页边距和行间距。样式文件可以做很多事情：排印标
+签或信封；控制缩进行为；添加字体；复制图片；设计页眉；定制参考文献；改变脚注、表格、图形的位置与外观；定制列表项……
+\end_layout
+
+\begin_layout Standard
+总结：
+\end_layout
+
+\begin_layout Description
+TeX： 有宏扩展能力的排版语言。
+\end_layout
+
+\begin_layout Description
+LaTeX： 基于 TeX 的宏包。
+\end_layout
+
+\begin_layout Description
+文档类： 用 LaTeX 描述文档类型。
+\end_layout
+
+\begin_layout Description
+样式： 改变 LaTeX 的默认行为方式。
+\end_layout
+
+\begin_layout Description
+LyX： LaTeX 的可视化图形前端。
+\end_layout
+
+\begin_layout Standard
+本节历数了 LyX 同其它字处理软件的不同之处。简单说就是：LaTeX。使用 LaTeX 作为其后台程序，LyX 使你更加关注你所写的东西。计算机则去处理它们看
+起来应该是什么样子。
+\end_layout
+
+\begin_layout Section
+文档导航
+\end_layout
+
+\begin_layout Standard
+为了使你能够更容易的找到问题的答案以及更好的描述 LyX 的特性，我们将 LyX 的文档分成了几个不同的文件。每个文件有其特定的目的，后边将会一一描述。在你阅读
+那些文档之前你应该先读一下这一节的内容，它包含了很多有用的信息与评论，这反而会为你节约一些时间。
+\end_layout
+
+\begin_layout Standard
+LyX 的开发不会停止，虽然我们努力使文档跟上开发的节奏，但还是有些文档不完整或者有点过时。与 LyX 的其它部分一样，文档的维护工作是由一群志愿者完成的，他们
+都有自己的工作、家庭。如果你想帮忙，请阅读第 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:为-LyX-项目添砖加瓦"
+
+\end_inset
+
+ 节。
+\end_layout
+
+\begin_layout Standard
+请帮助我们完善文档：如果你发现有什么搞不明白、错误的地方，不要犹豫，发邮件到 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+ 联系当前的文档维护者。如果你有在文档中找不到的问题或需要快速解决的问题，你可以发邮件到 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-users@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Subsection
+手册格式
+\end_layout
+
+\begin_layout Standard
+有的人会把手册打印出来，有的人在 LyX 中阅读。LyX 文档和打印出来的版本有些区别。首先，LyX 文档中标题就只是在文档的最上边，有些手册的打印版中标题是单
+独占一页的。LyX 中脚注、目录并不是完全可见的。脚注看起来是这样：
+\begin_inset Graphics
+	filename ../clipart/footnoteQt4.png
+	scale 70
+
+\end_inset
+
+，单击左键可以打开。要查看目录，你可以点击目录的那个灰色方框或者点击 Navigate 菜单。
+\end_layout
+
+\begin_layout Standard
+在打印版的手册中，交叉引用会显示实际的章节编号。电子版中交叉引用会显示为一个类似 
+\begin_inset Graphics
+	filename ../clipart/referenceQt4.png
+	scale 70
+
+\end_inset
+
+ 的灰色方框。左键单击会出现一个对话框显示文档中所有的交叉引用。在右键菜单中选择 Go to Label 就可以转到引用的节，想返回的话在引用处单击右键选择
+ Go Back 就可以回到你刚才的地方了。
+\end_layout
+
+\begin_layout Standard
+现在我们已经知道一些打印版和 LyX 电子文档之间的区别了，我们再看看本文档的格式。你会注意到一些不同的字体：
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+强调样式
+\shape default
+用于一般的强调、评论、书名、其它手册的章节名或者是作者的注释。
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+打字机字体
+\family default
+用于程序、文档名、LyX 代码与函数。
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Sans Serif 字体用于菜单、按钮、对话框名、按键名。
+\end_layout
+
+\begin_layout Itemize
+
+\noun on
+名称样式
+\noun default
+用于人名。
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+黑体
+\series default
+用于 LaTeX 代码。
+\end_layout
+
+\begin_layout Standard
+按键的表示请参见下表：
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Ctrl-
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 表示 Ctrl。
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Shift-
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 表示 Shift。
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Alt-
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 表示 Alt。
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+F1
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ \SpecialChar \ldots{}
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+F12
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 表示功能键。
+\end_layout
+
+\begin_layout Itemize
+后边的不翻译了，用到的时候看不懂的话，请您补充一下计算机基础知识。
+\end_layout
+
+\begin_layout Standard
+当前快捷键的设置可以在帮助菜单下的 Shortcuts 文档中找到。
+\end_layout
+
+\begin_layout Subsection
+长度单位
+\end_layout
+
+\begin_layout Standard
+表
+\begin_inset Formula $\,$
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:单位"
+
+\end_inset
+
+ 解释了 LyX 中用到的长度单位。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:单位"
+
+\end_inset
+
+单位
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="20" columns="2">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+单位
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+名称（描述）
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+毫米
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+厘米
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+in
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+英寸
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pt
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+点（72.27 点 = 1 英寸）
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pc
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pica（1 pc = 12 pt）
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+sp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+scaled point(65536
+\begin_inset space \thinspace{}
+\end_inset
+
+sp = 1
+\begin_inset space \thinspace{}
+\end_inset
+
+pt)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+big point (72
+\begin_inset space \thinspace{}
+\end_inset
+
+bp = 1
+\begin_inset space \thinspace{}
+\end_inset
+
+in)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+dd
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+didot (72
+\begin_inset space \thinspace{}
+\end_inset
+
+dd 
+\begin_inset Formula $\approx$
+\end_inset
+
+ 37.6
+\begin_inset space \thinspace{}
+\end_inset
+
+mm)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cc
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cicero (1
+\begin_inset space \thinspace{}
+\end_inset
+
+cc = 12
+\begin_inset space \thinspace{}
+\end_inset
+
+dd)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Scale%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+缩放比例
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+文本宽度
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+col%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+列宽度
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+page%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+页面宽度
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+line%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+行宽度
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+theight%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+文本高度
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pheight%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+页面高度
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ex
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+当前字体的字符“x”的高度
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+em
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+当前字体的字符“M”的宽度
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mu
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+计算单位（1
+\begin_inset space \thinspace{}
+\end_inset
+
+mu = 1/18
+\begin_inset space \thinspace{}
+\end_inset
+
+em）
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+手册指南
+\end_layout
+
+\begin_layout Standard
+下边的列表描述了帮助菜单中的手册内容：
+\end_layout
+
+\begin_layout Description
+简介（Introduction） 本文档。
+\end_layout
+
+\begin_layout Description
+简明教程（Tutorial） LyX 新手与没用过 LaTeX 的人从这里读起。用过 LaTeX 的人从简明手册（
+\emph on
+Tutorial
+\emph default
+）的“LyX for LaTeX users”一节读起。
+\end_layout
+
+\begin_layout Description
+用户指南（User's
+\begin_inset space ~
+\end_inset
+
+Guide） 这是主帮助文档。我们将讲解绝大部分的基本操作与 LyX 特性。该手册默认你已经读过了简明教程（
+\emph on
+Tutorial
+\emph default
+）
+\end_layout
+
+\begin_layout Description
+嵌入对象（Embedded
+\begin_inset space ~
+\end_inset
+
+Objects） 用户指南的扩展，包含了表格、图形、浮动体、注释、程序列表与盒子的详细使用方法。另外还包含了一些使用 LaTeX 的技巧。
+\end_layout
+
+\begin_layout Description
+数学（Math） 用户指南的扩展，详细介绍了如何输入各种公式。
+\end_layout
+
+\begin_layout Description
+附加特性（Additional
+\begin_inset space ~
+\end_inset
+
+Features） 用户指南的扩展，介绍了如何使用原生的 LaTeX 指令、附加的页面布局与特殊目的的编辑特性。
+\end_layout
+
+\begin_layout Description
+定制（Customization） 介绍了 LyX 的高级特性：定制 LyX 的所有行为，包括键盘绑定、国际化与配置文件。
+\end_layout
+
+\begin_layout Description
+快捷键（Shortcuts） 默认的 LyX 快捷键列表。
+\end_layout
+
+\begin_layout Description
+LaTeX
+\begin_inset space ~
+\end_inset
+
+配置（LaTeX
+\begin_inset space ~
+\end_inset
+
+configuration） LyX 检查你的系统安装情况，将 LaTeX 的安装情况汇总在该文档中。看看这个文档，没准你会找到些喜欢的东西。
+\end_layout
+
+\begin_layout Standard
+这些手册之间也会互相参考的。比如，用户指南中会提及安装与定制的内容，但它会让读者去看定制手册以获得更多信息的。
+\end_layout
+
+\begin_layout Standard
+我们再次重申一个重要问题：
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+如果你没用过 LyX 请现在就阅读简明教程（Tutorial）。
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+否则你将会给自己添加不必要的挫败感。
+\end_layout
+
+\begin_layout Section
+为 LyX 项目添砖加瓦
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:为-LyX-项目添砖加瓦"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+给 LyX 做贡献
+\end_layout
+
+\begin_layout Standard
+LyX 是一个大项目，大部分代码由 C++ 写成（LaTeX 导入部分是用 Python 写的），所以它免不了会有很多 bug，也需要我们去完善其代码。
+\end_layout
+
+\begin_layout Subsubsection
+报告 bug
+\end_layout
+
+\begin_layout Standard
+使用 LyX 的时候，你没准会发现些你认为是 bug 的问题。崩溃也是有可能发生的。用户界面被开发组认为是 bug 最多的地方。如果你觉得什么地方让你看不懂了，
+就请告诉他们吧，这会对他们帮助很大的。
+\end_layout
+
+\begin_layout Standard
+LyX 有个 bug 跟踪系统，你可以在这找到它：
+\family typewriter
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/trac/wiki/BugTrackerHome
+\end_layout
+
+\end_inset
+
+
+\family default
+。为了避免重复提交 bug，在提交 bug 之前你应该先搜索一下，看看是不是已经有人提交了相同的 bug。你可以在 bug 跟踪系统上对已有 bug
+ 发表评论、提交新 bug，你也可以通过发邮件到：
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-devel@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+ 来完成这些事。该邮件列表的存档链接你可以在 LyX 的网站上找到，
+\family typewriter
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/
+\end_layout
+
+\end_inset
+
+
+\family default
+。
+\end_layout
+
+\begin_layout Standard
+好的 bug 报告至少应该包含 LyX 版本和准确详细的问题描述。要知道，开发者定位 bug 的时间越长，他们用于其它改进的时间就越少。别忘了写上操作系统及其版
+本号，系统上装的函数库的版本号，必要的话还要写上 LyX 使用的外部程序的版本号。如果是编译或配置问题，别忘了写上编译器并附上配置文件（
+\family typewriter
+config.log
+\family default
+）。
+\end_layout
+
+\begin_layout Subsubsection
+提供修正与新功能
+\end_layout
+
+\begin_layout Standard
+如果你希望你对 LyX 源码所做的修改成为 LyX 的一部分的话请将 diff 文件和变更日志一起发到邮件列表 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-devel@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+，再描述一下你的补丁是干什么用的。
+\end_layout
+
+\begin_layout Subsection
+帮助编写文档
+\end_layout
+
+\begin_layout Standard
+LyX 的帮助文档比较多，而且 LyX 的更新也比较快，每一个新的版本都有新的特性。你可能会发现有些文档已经老旧了。本节告诉你，如果你发现错误或改进意见的话应该
+怎么做。
+\end_layout
+
+\begin_layout Subsubsection
+报告文档错误
+\end_layout
+
+\begin_layout Standard
+如果你发现文档中的错误发送 Email 到 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+，文档小组会修正错误的。
+\end_layout
+
+\begin_layout Subsubsection
+加入文档小组
+\end_layout
+
+\begin_layout Standard
+LyX 文档项目任何时候都是需要帮手的，如果你想帮忙的话，你需要做以下几件事：
+\end_layout
+
+\begin_layout Enumerate
+在 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/trac/browser/lyx-devel/trunk/lib/doc
+\end_layout
+
+\end_inset
+
+ 得到 LyX 的最新源码。
+\end_layout
+
+\begin_layout Enumerate
+阅读用户指南和简明教程
+\begin_inset Newline newline
+\end_inset
+
+通常这两个文档都是最新的，阅读它们你会了解到我们对手册的要求和看法。
+\end_layout
+
+\begin_layout Enumerate
+发 Email 到 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+ 和文档小组成员讨论你的想法。
+\end_layout
+
+\begin_layout Standard
+无论你修改文档的想法是什么，只要它能够改善文档质量，我们都是乐于接受的。
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+clearpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

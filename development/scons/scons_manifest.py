@@ -2352,6 +2352,7 @@ lib_doc_uk_clipart_files = Split('''
 
 
 lib_doc_zhCN_files = Split('''
+    Intro.lyx
     Tutorial.lyx
 ''')
 
