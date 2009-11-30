@@ -125,6 +125,7 @@ dist_frexamples_DATA = \
 	examples/fr/Braille.lyx \
 	examples/fr/exemple_brut.lyx \
 	examples/fr/exemple_lyxifie.lyx \
+	examples/fr/exemple_powerdot.lyx \
 	examples/fr/Foils.lyx \
 	examples/fr/ListesPuces.lyx \
 	examples/fr/multicol.lyx \
