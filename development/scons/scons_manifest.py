@@ -2515,7 +2515,7 @@ lib_examples_fr_files = Split('''
     Braille.lyx
     exemple_brut.lyx
     exemple_lyxifie.lyx
-    exemple_powerdot.lyx
+    exemple-powerdot.lyx
     Foils.lyx
     ListesPuces.lyx
     multicol.lyx
