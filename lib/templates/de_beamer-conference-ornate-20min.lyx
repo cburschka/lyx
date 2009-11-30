@@ -1,4 +1,4 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -21,6 +21,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -42,8 +43,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -56,18 +57,18 @@ status open
 Diese Datei enthält eine Lösungsvorlage für:
 \end_layout
 
-\begin_layout Plain Layout
-- Vorträge bei einer (deutschsprachigen) Konferenz/einem Kolloquium.
+\begin_layout Itemize
+Vorträge bei einer (deutschsprachigen) Konferenz/einem Kolloquium.
  
 \end_layout
 
-\begin_layout Plain Layout
-- Vortragslänge von etwa 20 Minuten.
+\begin_layout Itemize
+Vortragslänge von etwa 20 Minuten.
  
 \end_layout
 
-\begin_layout Plain Layout
-- Aussehen des Vortrags ist verschnörkelt/dekorativ.
+\begin_layout Itemize
+Aussehen des Vortrags ist verschnörkelt/dekorativ.
 \end_layout
 
 \end_inset
@@ -102,19 +103,14 @@ In principle, this file can be redistributed and/or modified under the terms
 \end_layout
 
 \begin_layout Title
-Titel wie im Tagunsband angegeben 
-\begin_inset Newline newline
-\end_inset
-
-(u.U.
- also englisch)
+Titel wie im Tagunsband angegeben
 \begin_inset OptArg
 status open
 
 \begin_layout Plain Layout
-Kurzversion des Titels 
+Kurzversion des Titels
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 optional, nur bei langen Titeln nötig
@@ -178,18 +174,22 @@ status collapsed
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
-\begin_layout Plain Layout
-- Namen müssen in derselben Reihenfolge wie im Papier erscheinen.
+\begin_layout Itemize
+Namen müssen in derselben Reihenfolge wie im Papier erscheinen.
  
 \end_layout
 
-\begin_layout Plain Layout
-- Der 
-\backslash
-inst{?} Befehl sollte nur verwendet werden, wenn die Autoren unterschiedlichen
- Instituten angehören.
+\begin_layout Itemize
+Die Institutsfußnotenmarke (
+\family sans
+Einfügen\SpecialChar \menuseparator
+Benutzerdefinierte Einfügungen\SpecialChar \menuseparator
+Institutsfußnotenmarke
+\family default
+) sollte nur verwendet werden, wenn die Autoren unterschiedlichen Instituten
+ angehören.
 \end_layout
 
 \end_inset
@@ -201,14 +201,14 @@ status open
 \begin_layout Plain Layout
 Author, Another
 \begin_inset Note Note
-status open
+status collapsed
 
-\begin_layout Plain Layout
-- optional, nur bei vielen Autoren
+\begin_layout Itemize
+optional, nur bei vielen Autoren
 \end_layout
 
-\begin_layout Plain Layout
-- wenn es wirklich viele Autoren gibt, 
+\begin_layout Itemize
+wenn es sehr viele Autoren gibt, besser 
 \begin_inset Quotes ald
 \end_inset
 
@@ -216,7 +216,7 @@ Autor et al.
 \begin_inset Quotes ard
 \end_inset
 
-
+ verwenden
 \end_layout
 
 \end_inset
@@ -266,24 +266,28 @@ status collapsed
 
 \end_inset
 
-Institut für theoretische Philosophie
+Institut für Theoretische Philosophie
 \begin_inset Newline newline
 \end_inset
 
-Universität Dort
+Universität Da
 \begin_inset Note Note
-status open
+status collapsed
 
-\begin_layout Plain Layout
-- Der 
-\backslash
-inst{?} Befehl sollte nur verwendet werden, wenn die Autoren unterschiedlichen
- Instituten angehören.
+\begin_layout Itemize
+Die Institutsfußnotenmarke (
+\family sans
+Einfügen\SpecialChar \menuseparator
+Benutzerdefinierte Einfügungen\SpecialChar \menuseparator
+Institutsfußnotenmarke
+\family default
+) sollte nur verwendet werden, wenn die Autoren unterschiedlichen Instituten
+ angehören.
  
 \end_layout
 
-\begin_layout Plain Layout
-- Keep it simple, niemand interessiert sich für die genau Adresse.
+\begin_layout Itemize
+Haltn Sie es einfach, niemand interessiert sich für Ihre genau Adresse.
  
 \end_layout
 
@@ -294,9 +298,9 @@ inst{?} Befehl sollte nur verwendet werden, wenn die Autoren unterschiedlichen
 status open
 
 \begin_layout Plain Layout
-Universitäten Hier und Dort
+Universitäten Hier und Da
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 optional, aber oft nötig
@@ -313,18 +317,18 @@ optional, aber oft nötig
 \end_layout
 
 \begin_layout Date
-Konferenz über Präsentationstechniken, 2004
+Konferenz über Präsentationstechniken 2004
 \begin_inset Note Note
-status open
+status collapsed
 
-\begin_layout Plain Layout
-- Voller oder abgekürzter Name sind möglich.
+\begin_layout Itemize
+Voller oder abgekürzter Name sind möglich.
  
 \end_layout
 
-\begin_layout Plain Layout
-- Dieser Eintrag ist nicht für das Publikum gedacht (das weiß nämlich, bei
- welcher Konferenz es ist), sondern für Leute, die die Folien später lesen.
+\begin_layout Itemize
+Dieser Eintrag ist nicht für das Publikum gedacht (das weiß ja, bei welcher
+ Konferenz es ist), sondern für Leute, die die Folien später lesen.
 \end_layout
 
 \end_inset
@@ -334,15 +338,12 @@ status open
 status open
 
 \begin_layout Plain Layout
-KPT 2004
-\end_layout
-
-\begin_layout Plain Layout
+KüP 2004
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
-optional, should be abbreviation of conference name
+optional, möglichst Abkürzung des Konferenznamens verwenden
 \end_layout
 
 \end_inset
@@ -360,9 +361,25 @@ optional, should be abbreviation of conference name
 status open
 
 \begin_layout Plain Layout
-Falls eine Logodatei namens "university-logo-filename.xxx" vorhanden ist,
- wobei xxx ein von latex bzw.
- pdflatex lesbares Graphikformat ist, so kann man wie folgt ein Logo einfügen:
+Falls eine Logodatei namens 
+\begin_inset Quotes ald
+\end_inset
+
+institution-logo-filename.xxx
+\begin_inset Quotes ard
+\end_inset
+
+ vorhanden ist (wobei xxx ein von LaTeX bzw.
+ PDFLaTeX lesbares Grafikformat ist), können Sie ein Logo einfügen, indem
+ Sie das Folgende auskommentieren (
+\begin_inset Quotes ald
+\end_inset
+
+%
+\begin_inset Quotes ard
+\end_inset
+
+ am Anfang entfernen):
 \end_layout
 
 \end_inset
@@ -404,8 +421,8 @@ pgfuseimage{institution-logo}}
 status open
 
 \begin_layout Plain Layout
-Folgendes sollte gelöscht werden, wenn man nicht am Anfang jedes Unterabschnitts
- die Gliederung nochmal sehen möchte.
+Folgendes sollten Sie löschen, wenn nicht am Anfang jedes Unterabschnitts
+ die Gliederung gezeigt werdem soll.
  
 \end_layout
 
@@ -486,8 +503,8 @@ tableofcontents[currentsection,currentsubsection]
 status open
 
 \begin_layout Plain Layout
-Falls Aufzählungen immer schrittweise gezeigt werden sollen, kann folgendes
- Kommando benutzt werden:
+Falls Sie Aufzählungen immer schrittweise zeigen wollen, können Sie folgenden
+ Befehl auskommentieren:
 \end_layout
 
 \end_inset
@@ -529,42 +546,46 @@ LatexCommand tableofcontents
 status open
 
 \begin_layout Plain Layout
-Einen Vortrag zu strukturieren ist nicht immer einfach.
+Einen Vortrag zu strukturieren, ist nicht immer einfach.
  Die nachfolgende Struktur kann unangemessen sein.
  Hier ein paar Regeln, die für diese Lösungsvorlage gelten:
 \end_layout
 
-\begin_layout Plain Layout
-- Es sollte genau zwei oder drei Abschnitte geben (neben der % Zusammenfassung).
+\begin_layout Itemize
+Verwenden Sie zwei oder drei Abschnitte (neben der Zusammenfassung).
  
 \end_layout
 
-\begin_layout Plain Layout
-- *Höchstens* drei Unterabschnitte pro Abschnitt.
+\begin_layout Itemize
+
+\series bold
+Maximal
+\series default
+ drei Unterabschnitte pro Abschnitt.
  
 \end_layout
 
-\begin_layout Plain Layout
-- Pro Rahmen sollte man zwischen 30s und 2min reden.
- Es sollte also 15 bis 30 Rahmen geben.
+\begin_layout Itemize
+Pro Rahmen sollten Sie zwischen 30 Sekunden und zwei Minuten reden.
+ Die Präsentation sollte also 15 bis 30 Rahmen haben.
 \end_layout
 
-\begin_layout Plain Layout
-- Konferenzteilnehmer wissen oft wenig von der Materie des Vortrags.
- Deshalb: vereinfachen! 
+\begin_layout Itemize
+Konferenzteilnehmer wissen oft wenig von der Materie des Vortrags.
+ Also: Vereinfachen Sie! 
 \end_layout
 
-\begin_layout Plain Layout
-- In 20 Minuten ist es schon schwer genug, die Hauptbotschaft zu vermitteln.
- Deshalb sollten Details ausgelassen werden, selbst wenn dies zu Ungenauigkeiten
- oder Halbwahrheiten führt.
+\begin_layout Itemize
+In 20 Minuten ist es schon schwer genug, die Hauptbotschaft zu vermitteln.
+ Deshalb sollten Sie Details auslassen, selbst wenn die Darstellung dann
+ weniger genau ist, als Sie das gerne möchten.
  
 \end_layout
 
-\begin_layout Plain Layout
-- Falls man Details weglässt, die eigentlich wichtig für einen Beweis/Implementa
-tion sind, so sagt man dies einmal nüchtern.
- Alle werden damit glücklich sein.
+\begin_layout Itemize
+Falls Sie Details weglassen, die eigentlich wichtig für einen Beweis/Umsetzung
+ sind, sagen Sie dies den Leuten einmal klar und deutlich.
+ Alle werden damit leben können.
  
 \end_layout
 
@@ -582,21 +603,20 @@ Das behandelte Problem
 \end_layout
 
 \begin_layout BeginFrame
-Überschriften sollten informativ sein.
- 
+Überschriften sollten informativ sein
 \begin_inset Newline newline
 \end_inset
 
-Korrekte Groß-/Kleinschreibung beachten.
+Korrekte Groß-/Kleinschreibung beachten
 \end_layout
 
 \begin_layout FrameSubtitle
-Untertitel sind optional.
+Untertitel sind optional
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-- Eine Überschrift fasst einen Rahmen verständlich zusammen.
+Eine Überschrift fasst einen Rahmen verständlich zusammen.
  Man muss sie verstehen können, selbst wenn man nicht den Rest des Rahmens
  versteht.
  
@@ -608,7 +628,7 @@ status open
 \end_layout
 
 \begin_layout Itemize
-Viel Itemize benutzen.
+Häufig Auflistungen benutzen.
 \end_layout
 
 \begin_deeper
@@ -618,7 +638,7 @@ Viel Itemize benutzen.
 
 \end_deeper
 \begin_layout Itemize
-Sehr kurze Sätze oder Satzglieder verwenden.
+Sehr kurze Sätze oder Phrasen verwenden.
 \end_layout
 
 \begin_deeper
@@ -628,11 +648,19 @@ Sehr kurze Sätze oder Satzglieder verwenden.
 
 \end_deeper
 \begin_layout Itemize
-Diese Overlays werden mit dem Pause Stil erzeugt.
+Diese Overlays werden mit dem Absatzstil 
+\begin_inset Quotes ald
+\end_inset
+
+Pause
+\begin_inset Quotes ard
+\end_inset
+
+ erzeugt.
 \end_layout
 
 \begin_layout BeginFrame
-Überschriften müssen informativ sein.
+Überschriften müssen informativ sein
 \end_layout
 
 \begin_layout Itemize
@@ -660,7 +688,7 @@ status collapsed
 
 \end_inset
 
-Hiermit können, Punkte in beliebiger Reihenfolge präsentiert werden.
+Hiermit können Punkte in beliebiger Reihenfolge präsentiert werden.
 \end_layout
 
 \begin_layout Itemize
@@ -674,11 +702,11 @@ status collapsed
 
 \end_inset
 
-Dies wird als zweites gezeigt.
+Dies wird als Zweites gezeigt.
 \end_layout
 
 \begin_layout BeginFrame
-Überschriften müssen informativ sein.
+Überschriften müssen informativ sein
 \end_layout
 
 \begin_layout Block
@@ -784,7 +812,7 @@ Frühere Arbeiten
 \end_layout
 
 \begin_layout BeginFrame
-Überschriften müssen informativ sein.
+Überschriften müssen informativ sein
 \end_layout
 
 \begin_layout Example
@@ -828,7 +856,7 @@ Hauptresultate
 \end_layout
 
 \begin_layout BeginFrame
-Überschriften müssen informativ sein.
+Überschriften müssen informativ sein
 \end_layout
 
 \begin_layout Theorem
@@ -844,7 +872,7 @@ Auf dem zweiten Overlay.
 \end_layout
 
 \begin_layout BeginFrame
-Überschriften müssen informativ sein.
+Überschriften müssen informativ sein
 \end_layout
 
 \begin_layout ColumnsTopAligned
@@ -894,7 +922,7 @@ Neue Zeile.
 
 \end_deeper
 \begin_layout Subsection
-Beweis-/Implementationsideen
+Ideen für Beweise/Umsetzung
 \end_layout
 
 \begin_layout Section*
@@ -945,7 +973,7 @@ Eventuell noch eine
 \color red
 dritte Botschaft
 \color none
-, aber nicht noch mehr.
+, aber das reicht dann auch.
 \end_layout
 
 \begin_layout Standard
@@ -987,7 +1015,7 @@ Etwas, was wir noch nicht lösen konnten.
 \end_layout
 
 \begin_layout Itemize
-Nochwas, das wir noch nicht lösen konnten.
+Noch etwas, das wir noch nicht lösen konnten.
 \end_layout
 
 \end_deeper
@@ -1001,7 +1029,7 @@ Nochwas, das wir noch nicht lösen konnten.
 status open
 
 \begin_layout Plain Layout
-Alles nachfolgende ist optional und typischerweise nicht nötig.
+Alles Nachfolgende ist optional und üblicherweise nicht nötig.
 \end_layout
 
 \end_inset
@@ -1077,7 +1105,7 @@ newblock
 
  
 \emph on
-Einführung in das Präsentationswese
+Einführung in das Präsentationswesen
 \emph default
 .
  

@@ -1,4 +1,4 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -21,6 +21,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -42,8 +43,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -56,18 +57,18 @@ status open
 This file is a solution template for:
 \end_layout
 
-\begin_layout Plain Layout
-- Talk at a conference/colloquium.
+\begin_layout Itemize
+Talk at a conference/colloquium.
  
 \end_layout
 
-\begin_layout Plain Layout
-- Talk length is about 20min.
+\begin_layout Itemize
+Talk length is about 20min.
  
 \end_layout
 
-\begin_layout Plain Layout
-- Style is ornate.
+\begin_layout Itemize
+Style is ornate.
 \end_layout
 
 \end_inset
@@ -107,9 +108,9 @@ Title As It Is In the Proceedings
 status open
 
 \begin_layout Plain Layout
-Short Paper Title 
+Short Paper Title
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 optional, use only with long paper titles
@@ -173,17 +174,29 @@ status collapsed
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
-\begin_layout Plain Layout
-- Give the names in the same order as the appear in the paper.
+\begin_layout Itemize
+Give the names in the same order as the appear in the paper.
  
 \end_layout
 
-\begin_layout Plain Layout
-- Use the 
-\backslash
-inst{?} command only if the authors have different affiliations.
+\begin_layout Itemize
+Use the 
+\begin_inset Quotes eld
+\end_inset
+
+Institute mark
+\begin_inset Quotes erd
+\end_inset
+
+ inset (
+\family sans
+Insert\SpecialChar \menuseparator
+Custom Insets\SpecialChar \menuseparator
+InstituteMark
+\family default
+) only if the authors have different affiliations.
 \end_layout
 
 \end_inset
@@ -195,14 +208,14 @@ status open
 \begin_layout Plain Layout
 Author, Another
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 - optional, use only with lots of authors
 \end_layout
 
 \begin_layout Plain Layout
-- if there are reallylots of authors, use 
+- if there are really lots of authors, use 
 \begin_inset Quotes eld
 \end_inset
 
@@ -234,9 +247,9 @@ status collapsed
 \end_inset
 
 Department of Computer Science
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Date
 University of Somewhere
 \begin_inset ERT
 status collapsed
@@ -261,21 +274,33 @@ status collapsed
 \end_inset
 
 Department of Theoretical Philosophy
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Date
 University of Elsewhere
 \begin_inset Note Note
-status open
+status collapsed
 
-\begin_layout Plain Layout
-- Use the 
-\backslash
-inst command only if there are several affiliations.
+\begin_layout Itemize
+Use the 
+\begin_inset Quotes eld
+\end_inset
+
+Institute mark
+\begin_inset Quotes erd
+\end_inset
+
+ inset (
+\family sans
+Insert\SpecialChar \menuseparator
+Custom Insets\SpecialChar \menuseparator
+InstituteMark
+\family default
+) only if there are several affiliations.
 \end_layout
 
-\begin_layout Plain Layout
-- Keep it simple, no one is interested in your street address.
+\begin_layout Itemize
+Keep it simple, no one is interested in your street address.
 \end_layout
 
 \end_inset
@@ -287,7 +312,7 @@ status open
 \begin_layout Plain Layout
 Universities of Somewhere and Elsewhere
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 optional, but mostly needed
@@ -306,15 +331,15 @@ optional, but mostly needed
 \begin_layout Date
 Conference on Fabulous Presentations, 2003
 \begin_inset Note Note
-status open
+status collapsed
 
-\begin_layout Plain Layout
-- Either use conference name or its abbreviation.
+\begin_layout Itemize
+Either use conference name or its abbreviation.
  
 \end_layout
 
-\begin_layout Plain Layout
-- Not really informative to the audience, more for people (including yourself)
+\begin_layout Itemize
+Not really informative to the audience, more for people (including yourself)
  who are reading the slides online
 \end_layout
 
@@ -326,11 +351,8 @@ status open
 
 \begin_layout Plain Layout
 CFP 2003
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 optional, should be abbreviation of conference name
@@ -525,35 +547,35 @@ Structuring a talk is a difficult task and the following structure may not
  Here are some rules that apply for this solution: 
 \end_layout
 
-\begin_layout Plain Layout
-- Exactly two or three sections (other than the summary).
+\begin_layout Itemize
+Exactly two or three sections (other than the summary).
  
 \end_layout
 
-\begin_layout Plain Layout
-- At *most* three subsections per section.
+\begin_layout Itemize
+At *most* three subsections per section.
  
 \end_layout
 
-\begin_layout Plain Layout
-- Talk about 30s to 2min per frame.
+\begin_layout Itemize
+Talk about 30s to 2min per frame.
  So there should be between about 15 and 30 frames, all told.
 \end_layout
 
-\begin_layout Plain Layout
-- A conference audience is likely to know very little of what you are going
+\begin_layout Itemize
+A conference audience is likely to know very little of what you are going
  to talk about.
  So *simplify*! 
 \end_layout
 
-\begin_layout Plain Layout
-- In a 20min talk, getting the main ideas across is hard enough.
+\begin_layout Itemize
+In a 20min talk, getting the main ideas across is hard enough.
  Leave out details, even if it means being less precise than you think necessary.
  
 \end_layout
 
-\begin_layout Plain Layout
-- If you omit details that are vital to the proof/implementation, just say
+\begin_layout Itemize
+If you omit details that are vital to the proof/implementation, just say
  so once.
  Everybody will be happy with that.
  
@@ -594,7 +616,7 @@ Frame subtitles are optional.
 status open
 
 \begin_layout Plain Layout
-- A title should summarize the slide in an understandable fashion for anyone
+A title should summarize the slide in an understandable fashion for anyone
  how does not follow everything on the slide itself.
  
 \end_layout
