@@ -27,6 +27,7 @@
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
+#include "output_xhtml.h"
 #include "ParIterator.h"
 #include "TextClass.h"
 
@@ -281,31 +282,32 @@ void InsetFloat::validate(LaTeXFeatures & features) const
 }
 
 
-docstring InsetFloat::xhtml(odocstream & os, OutputParams const & rp) const
+docstring InsetFloat::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 {
 	FloatList const & floats = buffer().params().documentClass().floats();
 	Floating const & ftype = floats.getType(params_.type);
 	string const & htmltype = ftype.htmlTag();
-	string const & htmlclass = ftype.htmlClass();
-	docstring const otag = 
-			from_ascii("<" + htmltype + " class='float " + htmlclass + "'>\n");
-	docstring const ctag = from_ascii("</" + htmltype + ">\n");
+	string const attr = "class='float " + ftype.htmlClass() + "'";
 
-	odocstringstream out;
-
-	out << otag;
-	docstring def = InsetText::xhtml(out, rp);
-	out << ctag;
+	odocstringstream ods;
+	XHTMLStream newxs(ods);
+	newxs << StartTag(htmltype, attr);
+	InsetText::XHTMLOptions const opts = 
+		InsetText::WriteLabel | InsetText::WriteInnerTag;
+	docstring deferred = InsetText::insetAsXHTML(newxs, rp, opts);
+	newxs << EndTag(htmltype);
 
 	if (rp.inFloat == OutputParams::NONFLOAT)
 		// In this case, this float needs to be deferred, but we'll put it
 		// before anything the text itself deferred.
-		def = out.str() + '\n' + def;
+		deferred = ods.str() + '\n' + deferred;
 	else 
 		// In this case, the whole thing is already being deferred, so
 		// we can write to the stream.
-		os << out.str();
-	return def;
+		// Note that things will already have been escaped, so we do not 
+		// want to escape them again.
+		xs << XHTMLStream::NextRaw() << ods.str();
+	return deferred;
 }
 
 

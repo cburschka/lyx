@@ -89,7 +89,7 @@ private:
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	///
-	docstring xhtml(odocstream &, OutputParams const &) const;
+	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///
 	bool insetAllowed(InsetCode) const;
 	/** returns true if, when outputing LaTeX, font changes should
