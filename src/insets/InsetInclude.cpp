@@ -33,6 +33,7 @@
 #include "LyXRC.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
+#include "output_xhtml.h"
 #include "OutputParams.h"
 #include "TextClass.h"
 #include "TocBackend.h"
@@ -631,7 +632,7 @@ int InsetInclude::latex(odocstream & os, OutputParams const & runparams) const
 }
 
 
-docstring InsetInclude::xhtml(odocstream & os, OutputParams const &rp) const
+docstring InsetInclude::xhtml(XHTMLStream & xs, OutputParams const &rp) const
 {
 	if (rp.inComment)
 		 return docstring();
@@ -641,11 +642,11 @@ docstring InsetInclude::xhtml(odocstream & os, OutputParams const &rp) const
 	bool const listing = isListings(params());
 	if (listing || isVerbatim(params())) {
 		if (listing)
-			os << "<pre>\n";
+			xs << StartTag("pre");
 		// FIXME: We don't know the encoding of the file, default to UTF-8.
-		os << includedFilename(buffer(), params()).fileContents("UTF-8");
+		xs << includedFilename(buffer(), params()).fileContents("UTF-8");
 		if (listing)
-			os << "</pre>\n";
+			xs << EndTag("pre");
 		return docstring();
 	}
 
@@ -677,7 +678,7 @@ docstring InsetInclude::xhtml(odocstream & os, OutputParams const &rp) const
 	Buffer const * const ibuf = loadIfNeeded();
 	if (!ibuf)
 		return docstring();
-	ibuf->writeLyXHTMLSource(os, rp, true);
+	ibuf->writeLyXHTMLSource(xs.os(), rp, true);
 	return docstring();
 }
 
