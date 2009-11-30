@@ -269,10 +269,19 @@ void InsetBibitem::updateLabels(ParIterator const & it)
 }
 
 
-docstring InsetBibitem::xhtml(odocstream & os, OutputParams const &) const
+docstring InsetBibitem::xhtml(XHTMLStream & xs, OutputParams const &) const
 {
-	os << "<a name='" << html::htmlize(getParam("key")) << "'></a>";
-	os << "<span class='biblabel'>" << bibLabel() << "</span> "; 
+	// FIXME XHTML
+	// XHTML 1.1 doesn't have the "name" attribute for <a>, so we have to use
+	// the "id" atttribute to get the document to validate. Probably, we will
+	// need to use "name" anyway, eventually, because some browsers do not
+	// handle jumping to ids. If we don't do that, though, we can just put the
+	// id into the span tag.
+	string const attrs = "id='" + to_utf8(getParam("key")) + "'";
+	xs << CompTag("a", attrs);
+	xs << StartTag("span", "class='biblabel'");
+	xs << bibLabel();
+	xs << EndTag("span");
 	return docstring();
 }
 
