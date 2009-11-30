@@ -1,0 +1,700 @@
+#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass powerdot
+\begin_preamble
+\pdsetup{%
+  lf=pied gauche,
+  rf=pied droit
+}
+
+% This is needed to make the example compile
+% with recent versions of frenchb (babel)
+\AtBeginDocument{%
+\@ifundefined{frenchbsetup}{}{\frenchbsetup{StandardLists=true}}
+}
+\end_preamble
+\options style=fyma,display=slidesnotes
+\use_default_options false
+\language french
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize size=10
+\spacing single
+\use_hyperref false
+\papersize letterpaper
+\use_geometry true
+\use_amsmath 1
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation landscape
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Un exemple en LyX
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ Vous ne devez pas utiliser le bouton 
+\begin_inset Quotes fld
+\end_inset
+
+Visionner PDF (pdflatex)
+\begin_inset Quotes frd
+\end_inset
+
+ pour visualiser ce fichier ! Pour visionner et exporter en PDF, utiliser
+ les méthodes 
+\begin_inset Quotes fld
+\end_inset
+
+PDF (ps2pdf)
+\begin_inset Quotes frd
+\end_inset
+
+ ou 
+\begin_inset Quotes fld
+\end_inset
+
+PDF (dvipdfm)
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Pour en avoir plus, lisez le manuel 
+\series bold
+powerdot
+\series default
+.
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ En fonction de votre distribution LaTeX, vous pouvez avoir à ajouter l'option
+ 
+\begin_inset Quotes fld
+\end_inset
+
+dvips
+\begin_inset Quotes frd
+\end_inset
+
+ aux options de classe du document pour obtenir un affichage DVI correct.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Mael Hilléreau 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ Hendri Adriaens 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ Christopher Ellison
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Traduction française Jean-Pierre Chrétien, 
+\family typewriter
+<jeanpierre.chretien@free.fr>
+\family default
+, novembre 2009.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+today
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Slide
+Mon premier transparent
+\end_layout
+
+\begin_layout Standard
+Nous utilisons le style 
+\begin_inset Quotes fld
+\end_inset
+
+Diapo
+\begin_inset Quotes frd
+\end_inset
+
+ (couleur magenta, voyez le texte ci-dessus dans la fenêtre LyX) pour le
+ titre de chaque transparent d'une section ou d'un document.
+\end_layout
+
+\begin_layout WideSlide
+Mon transparent large
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "toc"
+
+\end_inset
+
+Mais nous pouvons aussi utiliser 
+\begin_inset Quotes fld
+\end_inset
+
+DiapoLarge
+\begin_inset Quotes frd
+\end_inset
+
+ pour des transparents larges (couleur verte, voyez le texte ci-dessus dans
+ la fenêtre LyX).
+\end_layout
+
+\begin_layout Standard
+Voyons la Table des Matières:
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Ceci est la première section
+\end_layout
+
+\begin_layout Slide
+\begin_inset OptArg
+status collapsed
+
+\begin_layout Plain Layout
+toc=Cette diapo a \SpecialChar \ldots{}
+
+\end_layout
+
+\end_inset
+
+Ce transparent a un titre très très long
+\end_layout
+
+\begin_layout Standard
+Le titre du transparent est différent dans la TdM, comparer le transparent
+ 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "toc"
+
+\end_inset
+
+ et la colonne de gauche des transparents de cette section.
+\end_layout
+
+\begin_layout Note
+note importante!
+\end_layout
+
+\begin_layout Standard
+N'oubliez pas d'utiliser 
+\family typewriter
+Ins
+\family default
+érer\SpecialChar \menuseparator
+
+\family typewriter
+Titre court
+\family default
+ pour spécifier les options de style.
+\end_layout
+
+\begin_layout Slide
+Utiliser 
+\family typewriter
+
+\backslash
+pause
+\end_layout
+
+\begin_layout Standard
+Faisons une pause! 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\SpecialChar \ldots{}
+ et continuons.
+\end_layout
+
+\begin_layout Section
+Seconde section
+\end_layout
+
+\begin_layout Slide
+Utiliser 
+\family typewriter
+enumerate
+\end_layout
+
+\begin_layout Standard
+Énumérons quelques objets:
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EnumerateType1
+Premier objet;
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EnumerateType1
+Deuxième objet;
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EnumerateType1
+Troisième objet;
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EnumerateType1
+Dernier objet!
+\end_layout
+
+\begin_layout Slide
+Utiliser 
+\family typewriter
+itemize
+\end_layout
+
+\begin_layout Standard
+Nous pouvons aussi créer quelques items et les cascader:
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout ItemizeType1
+<2> Le premier;
+\end_layout
+
+\begin_layout ItemizeType1
+<3> le deuxième;
+\end_layout
+
+\begin_deeper
+\begin_layout ItemizeType1
+<4> un,
+\end_layout
+
+\begin_layout ItemizeType1
+<5> deux
+\end_layout
+
+\begin_layout ItemizeType1
+<6> trois,
+\end_layout
+
+\end_deeper
+\begin_layout ItemizeType1
+<7> le dernier.
+\end_layout
+
+\begin_layout EmptySlide
+\begin_inset OptArg
+status collapsed
+
+\begin_layout Plain Layout
+toc=,randomdots
+\end_layout
+
+\end_inset
+
+Le transparent vide!
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+Ce transparent est vide\SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+Il utilise le style 
+\begin_inset Quotes fld
+\end_inset
+
+DiapoVide
+\begin_inset Quotes frd
+\end_inset
+
+ style pour le titre (voyez la couleur cyan dans la fenêtre LyX).
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+Vous aurez sans doute remarqué l'option de style 
+\begin_inset Quotes fld
+\end_inset
+
+
+\family typewriter
+randomdots
+\begin_inset Quotes frd
+\end_inset
+
+
+\family default
+ qui permet d'afficher
+\begin_inset Newline newline
+\end_inset
+
+ ces points multicolores comme fond de transparent.
+\end_layout
+
+\begin_layout Slide
+\begin_inset OptArg
+status collapsed
+
+\begin_layout Plain Layout
+method=direct
+\end_layout
+
+\end_inset
+
+Exemple de code source LaTeX
+\end_layout
+
+\begin_layout Standard
+Utilisons maintenant le paquetage 
+\begin_inset Quotes fld
+\end_inset
+
+listings
+\begin_inset Quotes frd
+\end_inset
+
+ pour saisir du code source.
+ Voici la commande LaTeX 
+\family typewriter
+
+\backslash
+BonjourLeMonde
+\family default
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={[LaTeX]TeX}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+BonjourLeMonde}{Bonjour, le monde!}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Notez que ce transparent utilise l'option 
+\family typewriter
+method=direct 
+\family default
+(ouvrez la boîte du titre court dans la fenêtre LyX).
+\end_layout
+
+\begin_layout Slide
+\begin_inset OptArg
+status collapsed
+
+\begin_layout Plain Layout
+method=file
+\end_layout
+
+\end_inset
+
+Texte verbatim avec superposition
+\end_layout
+
+\begin_layout Standard
+Voici la fonction C 
+\family typewriter
+BonjourLeMonde()
+\family default
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+void BonjourLeMonde() {
+\end_layout
+
+\begin_layout Plain Layout
+
+printf("Bonjour, le monde!
+\backslash
+n");
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+pause
+\end_layout
+
+\end_inset
+
+ Au contraire du transparent précédent, celui-ci doit utiliser l'option
+ 
+\family typewriter
+method=file, car il comporte deux superpositions.
+\end_layout
+
+\begin_layout Slide
+Fin.
+\end_layout
+
+\begin_layout Standard
+N'oubliez pas d'insérer un style 
+\begin_inset Quotes fld
+\end_inset
+
+FinDiapo
+\begin_inset Quotes frd
+\end_inset
+
+ 
+\family typewriter
+à la fin du documen
+\family default
+t (voyez le symbole noir ci-dessous dans le fenêtre LyX).
+\end_layout
+
+\begin_layout Standard
+Amusez-vous bien!
+\end_layout
+
+\begin_layout EndSlide
+
+\end_layout
+
+\end_body
+\end_document
