@@ -927,7 +927,9 @@ docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 	if (citekeys.empty())
 		return docstring();
 	sort(citekeys.begin(), citekeys.end());
-	unique(citekeys.begin(), citekeys.end());
+	vector<docstring>::iterator uit = 
+		unique(citekeys.begin(), citekeys.end());
+	citekeys.erase(uit, citekeys.end());
 	// We now have a sorted, unique list of the keys used in this document.
 	// We will now convert it to a list of the BibTeXInfo objects used in 
 	// this document...
