@@ -1,14 +1,17 @@
 #% Do not delete the line below; configure depends on this
 #  \DeclareLaTeXClass[powerdot,enumitem.sty,pstricks.sty,xkeyval.sty]{presentation (powerdot)}
 # PowerDot textclass definition file.
-# Created: 29-Aug-05 by Mael Hilléreau
-# Last modified: 20-May-06 by Uwe Stöhr
+# Created: 29-Aug-05 by Mael HillÃ©reau
+# Last modified: 20-May-06 by Uwe StÃ¶hr
 
+Format 11
+
+Input stdcounters.inc
+Input stdinsets.inc
 
 ###
 # General textclass parameters
 ###
-Format 11
 Columns             1
 Sides               1
 Provides url        1
@@ -31,8 +34,6 @@ ClassOptions
   FontSize   size=8|size=9|size=10|size=11|size=12|size=14|size=17|size=20
   PageStyle  ""
 End
-
-Input stdinsets.inc
 
 ###
 # Title style definition
