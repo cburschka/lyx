@@ -72,11 +72,11 @@ private:
 	///
 	std::string listName_;
 	/// 
-	mutable std::string htmlTag_;
+	mutable std::string html_tag_;
 	/// 
-	mutable std::string htmlClass_;
+	mutable std::string html_class_;
 	/// 
-	std::string htmlStyle_;
+	std::string html_style_;
 	///
 	bool builtin_;
 };

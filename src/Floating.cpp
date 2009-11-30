@@ -80,23 +80,23 @@ string const & Floating::listName() const
 
 string const & Floating::htmlStyle() const
 {
-	return htmlStyle_;
+	return html_style_;
 }
 
 
 string const & Floating::htmlClass() const
 {
-	if (htmlClass_.empty())
-		htmlClass_ = "float-" + type_;
-	return htmlClass_;
+	if (html_class_.empty())
+		html_class_ = "float-" + type_;
+	return html_class_;
 }
 
 
 string const & Floating::htmlTag() const
 {
-	if (htmlTag_.empty())
-		htmlTag_ = "div";
-	return htmlTag_;
+	if (html_tag_.empty())
+		html_tag_ = "div";
+	return html_tag_;
 }
 
 
