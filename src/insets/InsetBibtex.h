@@ -52,11 +52,11 @@ public:
 	///
 	void validate(LaTeXFeatures &) const;
 	///
-	docstring xhtml(odocstream &, OutputParams const &) const;
+	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///
 	static ParamInfo const & findInfo(std::string const &);
 	///
-	static std::string defaultCommand() { return "bibtex"; };
+	static std::string defaultCommand() { return "bibtex"; }
 	///
 	static bool isCompatibleCommand(std::string const & s) 
 		{ return s == "bibtex"; }

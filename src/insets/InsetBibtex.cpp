@@ -910,22 +910,19 @@ namespace {
 }
 
 
-docstring InsetBibtex::xhtml(odocstream & os, OutputParams const &) const
+docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 {
 	// We are going to collect all the citation keys used in the document,
 	// getting them from the TOC.
 	Toc const & toc = buffer().tocBackend().toc("citation");
 	Toc::const_iterator it = toc.begin();
-	Toc::const_iterator en = toc.end();
+	Toc::const_iterator const en = toc.end();
 	vector<docstring> citekeys;
 	for (; it != en; ++it) {
 		if (it->str().empty())
 			continue;
-		vector<docstring> keys = getVectorFromString(it->str());
-		vector<docstring>::const_iterator dit = keys.begin();
-		vector<docstring>::const_iterator den = keys.end();
-		for (; dit != den; ++dit)
-			citekeys.push_back(*dit);
+		vector<docstring> const keys = getVectorFromString(it->str());
+		citekeys.insert(citekeys.end(), keys.begin(), keys.end());
 	}
 	if (citekeys.empty())
 		return docstring();
@@ -934,17 +931,18 @@ docstring InsetBibtex::xhtml(odocstream & os, OutputParams const &) const
 	// We now have a sorted, unique list of the keys used in this document.
 	// We will now convert it to a list of the BibTeXInfo objects used in 
 	// this document...
-	// FIXME We need to do something here about cross-references, if we
+	// FIXME XHTML
+	// We need to do something here about cross-references, if we
 	// want to be able to display them AS cross-references. Probably the
 	// easiest thing to do is to loop over the list again and add whatever
 	// cross-references we find, then sort and unique it, planning just to
 	// add the cross-references to the bibliography.
 	vector<BibTeXInfo const *> binfo;
 	vector<docstring>::const_iterator cit = citekeys.begin();
-	vector<docstring>::const_iterator cen = citekeys.end();
+	vector<docstring>::const_iterator const cen = citekeys.end();
 	BiblioInfo const & bi = buffer().masterBibInfo();
 	for (; cit != cen; ++cit) {
-		BiblioInfo::const_iterator bt = bi.find(*cit);
+		BiblioInfo::const_iterator const bt = bi.find(*cit);
 		if (bt == bi.end())
 			continue;
 		binfo.push_back(&(bt->second));
@@ -952,27 +950,36 @@ docstring InsetBibtex::xhtml(odocstream & os, OutputParams const &) const
 	// ...and sort it.
 	sort(binfo.begin(), binfo.end(), lSorter);
 	// Finally, then, we are ready for output.
-	os << "<h2 class='bibliography'>" << _("References") << "</h2>\n";
-	os << "<div class='bibliography'>\n";
-	vector<BibTeXInfo const *>::const_iterator vit = binfo.begin();
-	vector<BibTeXInfo const *>::const_iterator ven = binfo.end();
+	xs << StartTag("h2", "class='bibliography'");
+	xs << _("References");
+	xs << EndTag("h2");
+	xs << StartTag("div", "class='bibliography'");
+
 	// Now we loop over the entries
+	vector<BibTeXInfo const *>::const_iterator vit = binfo.begin();
+	vector<BibTeXInfo const *>::const_iterator const ven = binfo.end();
 	for (; vit != ven; ++vit) {
 		BibTeXInfo const * bip = *vit;
-		os << "<p class='bibliography'>";
-		os << "<a name='" << html::htmlize(bip->key()) << "'></a>";
+		xs << StartTag("div", "class='bibentry'");
+		// FIXME XHTML
+		// The same name/id problem we have elsewhere.
+		string const attr = "id='" + to_utf8(bip->key()) + "'";
+		xs << CompTag("a", attr);
 		docstring label = bip->label();
 		if (label.empty())
 			label = bip->key();
-		os << "<span class='biblabel'>[" << label << "]</span> ";
+		xs << StartTag("span", "class='biblabel'");
+		xs << "[" << label << "]";
+		xs << EndTag("span");
 		// FIXME Right now, we are calling BibInfo::getInfo on the key,
 		// which will give us all the cross-referenced info. But for every
 		// entry.
-		os << "<span class='bibinfo'>" << bi.getInfo(bip->key()) << "</span>";
-		os << "</p>\n";
+		xs << StartTag("span", "class='bibinfo'");
+		xs << bi.getInfo(bip->key());
+		xs << EndTag("span");
+		xs << EndTag("div");
 	}
-		
-	os << "</div>\n";
+	xs << EndTag("div");
 	return docstring();
 }
 
