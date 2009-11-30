@@ -20,6 +20,7 @@
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "LaTeXFeatures.h"
+#include "output_xhtml.h"
 #include "ParIterator.h"
 #include "TocBackend.h"
 
@@ -504,24 +505,24 @@ int InsetCitation::docbook(odocstream & os, OutputParams const &) const
 }
 
 
-docstring InsetCitation::xhtml(odocstream & os, OutputParams const &) const
+docstring InsetCitation::xhtml(XHTMLStream & xs, OutputParams const &) const
 {
 	BiblioInfo const & bi = buffer().masterBibInfo();
-	docstring const & keyList = getParam("key");
-	if (keyList.empty())
+	docstring const & key_list = getParam("key");
+	if (key_list.empty())
 		return docstring();
 
 	// FIXME We shuld do a better job outputing different things for the
 	// different citation styles.	For now, we use square brackets for every
 	// case.
-	os << '[';
+	xs << "[";
 	docstring const & before = getParam("before");
 	if (!before.empty())
-		os << before << " ";
+		xs << before << " ";
 
-	vector<docstring> keys = getVectorFromString(keyList);
+	vector<docstring> const keys = getVectorFromString(key_list);
 	vector<docstring>::const_iterator it = keys.begin();
-	vector<docstring>::const_iterator en = keys.end();
+	vector<docstring>::const_iterator const en = keys.end();
 	bool first = true;
 	for (; it != en; ++it) {
 		BiblioInfo::const_iterator const bt = bi.find(*it);
@@ -529,18 +530,19 @@ docstring InsetCitation::xhtml(odocstream & os, OutputParams const &) const
 			continue;
 		BibTeXInfo const & bibinfo = bt->second;
 		if (!first) {
-			os << ", ";
+			xs << ", ";
 			first = false;
 		}
 		docstring const & label = bibinfo.label();
 		docstring const & target = label.empty() ? *it : label;
-		os << "<a href='#" << *it << "'>" << target << "</a>";
+		string const attr = "href='#" + to_utf8(*it) + "'";
+		xs << StartTag("a", attr) << target << EndTag("a");
 	}
 
 	docstring const & after = getParam("after");
 	if (!after.empty())
-		os << ", " << after;
-	os << "]\n";
+		xs << ", " << after;
+	xs << "]";
 	return docstring();
 }
 
