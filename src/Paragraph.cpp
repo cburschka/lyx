@@ -2383,8 +2383,6 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 {
 	docstring retval;
 
-	// FIXME We really need to manage the tag nesting here.
-	// Probably in the same sort of way as in output_xhtml.
 	bool emph_flag = false;
 	bool bold_flag = false;
 	std::string closing_tag;
