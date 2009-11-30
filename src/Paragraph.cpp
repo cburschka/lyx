@@ -2415,7 +2415,8 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 				bold_flag = false;
 			}
 		}
-		// FIXME Other such tags? 
+		// FIXME XHTML
+		// Other such tags? What about the other text ranges?
 
 		Inset const * inset = getInset(i);
 		if (inset) {
@@ -2444,6 +2445,9 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 				}
 				else
 					str += c;
+				// We don't want to escape the entities. Note that
+				// it is safe to do this, since str can otherwise
+				// only be "-". E.g., it can't be "<".
 				xs << XHTMLStream::NextRaw() << str;
 			} else
 				xs << c;
