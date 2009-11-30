@@ -273,6 +273,7 @@ dist_ukclipartdoc_DATA = \
 
 zhCNdocdir = $(docdir)/zh_CN
 dist_zhCNdoc_DATA = \
+	zh_CN/Intro.lyx \
 	zh_CN/Tutorial.lyx
 
 doc_files = \
