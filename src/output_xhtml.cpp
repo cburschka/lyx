@@ -612,7 +612,8 @@ ParagraphList::const_iterator makeBibliography(Buffer const & buf,
 
 bool isNormalEnv(Layout const & lay)
 {
-	return lay.latextype == LATEX_ENVIRONMENT;
+	return lay.latextype == LATEX_ENVIRONMENT
+	    || lay.latextype == LATEX_BIB_ENVIRONMENT;
 }
 
 	
@@ -644,8 +645,7 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 		// types. If so, then we'll need to take the counter and add "i",
 		// "ii", etc, as with enum.
 		if (!style.counter.empty() && 
-		    (par == pbegin || !isNormalEnv(style))
-		    && style.latextype == LATEX_LIST_ENVIRONMENT)
+		    (par == pbegin || !isNormalEnv(style)))
 			buf.params().documentClass().counters().step(style.counter);
 		ParagraphList::const_iterator send;
 		// this will be positive, if we want to skip the initial word
