@@ -931,12 +931,6 @@ docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 	// We now have a sorted, unique list of the keys used in this document.
 	// We will now convert it to a list of the BibTeXInfo objects used in 
 	// this document...
-	// FIXME XHTML
-	// We need to do something here about cross-references, if we
-	// want to be able to display them AS cross-references. Probably the
-	// easiest thing to do is to loop over the list again and add whatever
-	// cross-references we find, then sort and unique it, planning just to
-	// add the cross-references to the bibliography.
 	vector<BibTeXInfo const *> binfo;
 	vector<docstring>::const_iterator cit = citekeys.begin();
 	vector<docstring>::const_iterator const cen = citekeys.end();
@@ -969,11 +963,11 @@ docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 		if (label.empty())
 			label = bip->key();
 		xs << StartTag("span", "class='biblabel'");
-		xs << "[" << label << "]";
+		xs << "[" << label << "] ";
 		xs << EndTag("span");
 		// FIXME Right now, we are calling BibInfo::getInfo on the key,
 		// which will give us all the cross-referenced info. But for every
-		// entry.
+		// entry, so there's a lot of repitition. This should be fixed.
 		xs << StartTag("span", "class='bibinfo'");
 		xs << bi.getInfo(bip->key());
 		xs << EndTag("span");
