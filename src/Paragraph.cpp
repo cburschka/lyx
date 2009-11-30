@@ -2446,7 +2446,7 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 				}
 				else
 					str += c;
-				xs << str;
+				xs << XHTMLStream::NextRaw() << str;
 			} else
 				xs << c;
 		}
