@@ -15,7 +15,7 @@ AddToHTMLPreamble
 			text-align: center;
 			border: 2px solid black;
 			padding: 1ex;
-			margin-bottom: 1ex;
+			margin: 1ex;
 		}
 	</style>
 EndPreamble
