@@ -31,8 +31,8 @@ Floating::Floating(string const & type, string const & placement,
 		   string const & htmlClass, string const & htmlStyle,
 		   bool builtin)
 	: type_(type), placement_(placement), ext_(ext), within_(within),
-	  style_(style), name_(name), listName_(listName), htmlTag_(htmlTag),
-	  htmlClass_(htmlClass), htmlStyle_(htmlStyle), builtin_(builtin)
+	  style_(style), name_(name), listName_(listName), html_tag_(htmlTag),
+	  html_class_(htmlClass), html_style_(htmlStyle), builtin_(builtin)
 {}
 
 
