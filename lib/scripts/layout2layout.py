@@ -76,7 +76,7 @@ import os, re, string, sys
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
-currentFormat = 18
+currentFormat = 19
 
 
 def usage(prog_name):
