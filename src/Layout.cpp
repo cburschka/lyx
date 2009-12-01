@@ -102,6 +102,7 @@ enum LayoutTags {
 	LT_HTMLPREAMBLE,
 	LT_HTMLSTYLE,
 	LT_HTMLFORCECSS,
+	LT_INPREAMBLE,
 	LT_INTITLE // keep this last!
 };
 
@@ -113,6 +114,7 @@ Layout::Layout()
 	margintype = MARGIN_STATIC;
 	latextype = LATEX_PARAGRAPH;
 	intitle = false;
+	inpreamble = false;
 	optionalargs = 0;
 	needprotect = false;
 	keepempty = false;
@@ -176,6 +178,7 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 		{ "htmltag",        LT_HTMLTAG },
 		{ "innertag",       LT_INNERTAG },
 		{ "intitle",        LT_INTITLE },
+		{ "inpreamble",     LT_INPREAMBLE },
 		{ "itemsep",        LT_ITEMSEP },
 		{ "itemtag",        LT_ITEMTAG },
 		{ "keepempty",      LT_KEEPEMPTY },
@@ -298,6 +301,10 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 
 		case LT_INTITLE:
 			lex >> intitle;
+			break;
+
+		case LT_INPREAMBLE:
+			lex >> inpreamble;
 			break;
 
 		case LT_TOCLEVEL:

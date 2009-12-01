@@ -235,6 +235,8 @@ public:
 	LatexType latextype;
 	/// Does this object belong in the title part of the document?
 	bool intitle;
+	/// Is the content to go in the preamble rather than the body?
+	bool inpreamble;
 	/// Does this layout allow for an optional parameter?
 	int optionalargs;
 	/// Which counter to step

@@ -1072,6 +1072,19 @@ bool Paragraph::Private::latexSpecialPhrase(odocstream & os, pos_type & i,
 
 void Paragraph::Private::validate(LaTeXFeatures & features) const
 {
+	if (layout_->inpreamble && inset_owner_) {
+		Buffer const & buf = inset_owner_->buffer();
+		BufferParams const & bp = buf.params();
+		Font f;
+		TexRow tr;
+		// FIXME We probably would like actually to know about this.
+		odocstringstream ods;
+		owner_->latex(bp, f, ods, tr, features.runparams());
+		docstring d = ods.str();
+		if (!d.empty())
+			features.addPreambleSnippet(to_utf8(d));
+	}
+	
 	// check the params.
 	if (!params_.spacing().isDefault())
 		features.require("setspace");
@@ -1945,6 +1958,9 @@ bool Paragraph::latex(BufferParams const & bparams,
 	int start_pos, int end_pos) const
 {
 	LYXERR(Debug::LATEX, "Paragraph::latex...     " << this);
+
+	if (layout().inpreamble)
+		return true;
 
 	bool return_value = false;
 
