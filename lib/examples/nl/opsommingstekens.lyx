@@ -1,14 +1,11 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass article
-\begin_preamble
-\usepackage{latexsym,pifont,amssymb}
-\end_preamble
+\use_default_options false
 \language dutch
-\inputencoding default
+\inputencoding auto
 \font_roman default
 \font_sans default
 \font_typewriter default
@@ -17,14 +14,15 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 10
 \spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_amsmath 0
-\use_esint 0
+\use_amsmath 1
+\use_esint 1
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -42,7 +40,8 @@
 \bullet 3 0 8 -1
 \tracking_changes false
 \output_changes false
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -181,18 +180,18 @@ Standaard
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-
-\backslash
-normalfont
-\backslash
-bfseries{--}
+\series bold
+–
 \end_layout
 
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\vdash$
 \end_inset
 
 
@@ -204,20 +203,7 @@ bfseries{--}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-vdash
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\dashv$
 \end_inset
 
 
@@ -229,20 +215,7 @@ vdash
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-dashv
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\flat$
 \end_inset
 
 
@@ -254,45 +227,7 @@ dashv
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-flat
-\backslash
-)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-natural
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\natural$
 \end_inset
 
 
@@ -304,20 +239,7 @@ natural
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-sharp
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\sharp$
 \end_inset
 
 
@@ -331,20 +253,7 @@ sharp
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-ast
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\ast$
 \end_inset
 
 
@@ -356,20 +265,7 @@ ast
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-star
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\star$
 \end_inset
 
 
@@ -381,20 +277,7 @@ star
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-bullet
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\bullet$
 \end_inset
 
 
@@ -406,20 +289,7 @@ bullet
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-circ
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\circ$
 \end_inset
 
 
@@ -431,20 +301,7 @@ circ
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-cdot
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\cdot$
 \end_inset
 
 
@@ -456,20 +313,7 @@ cdot
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-dagger
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\dagger$
 \end_inset
 
 
@@ -483,20 +327,7 @@ dagger
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-bigtriangleup
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\bigtriangleup$
 \end_inset
 
 
@@ -508,20 +339,7 @@ bigtriangleup
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-bigtriangledown
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\bigtriangledown$
 \end_inset
 
 
@@ -533,20 +351,7 @@ bigtriangledown
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-triangleleft
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\triangleleft$
 \end_inset
 
 
@@ -558,20 +363,7 @@ triangleleft
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-triangleright
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\triangleright$
 \end_inset
 
 
@@ -583,20 +375,7 @@ triangleright
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-lhd
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\lhd$
 \end_inset
 
 
@@ -608,20 +387,7 @@ lhd
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-rhd
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\rhd$
 \end_inset
 
 
@@ -635,20 +401,7 @@ rhd
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-oplus
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\oplus$
 \end_inset
 
 
@@ -660,20 +413,7 @@ oplus
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-ominus
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\ominus$
 \end_inset
 
 
@@ -685,20 +425,7 @@ ominus
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-otimes
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\otimes$
 \end_inset
 
 
@@ -710,20 +437,7 @@ otimes
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-oslash
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\oslash$
 \end_inset
 
 
@@ -735,20 +449,7 @@ oslash
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-odot
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\odot$
 \end_inset
 
 
@@ -760,20 +461,7 @@ odot
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-spadesuit
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\spadesuit$
 \end_inset
 
 
@@ -787,20 +475,7 @@ spadesuit
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-diamond
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\diamond$
 \end_inset
 
 
@@ -812,20 +487,7 @@ diamond
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-Diamond
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\Diamond$
 \end_inset
 
 
@@ -837,20 +499,7 @@ Diamond
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-Box
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\Box$
 \end_inset
 
 
@@ -862,20 +511,7 @@ Box
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-diamondsuit
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\diamondsuit$
 \end_inset
 
 
@@ -887,20 +523,7 @@ diamondsuit
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-heartsuit
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\heartsuit$
 \end_inset
 
 
@@ -912,20 +535,7 @@ heartsuit
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-clubsuit
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\clubsuit$
 \end_inset
 
 
@@ -939,20 +549,7 @@ clubsuit
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-rightarrow
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\rightarrow$
 \end_inset
 
 
@@ -964,20 +561,7 @@ rightarrow
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-leadsto
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\leadsto$
 \end_inset
 
 
@@ -989,20 +573,7 @@ leadsto
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-rightharpoonup
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\rightharpoonup$
 \end_inset
 
 
@@ -1014,20 +585,7 @@ rightharpoonup
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-rightharpoondown
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\rightharpoondown$
 \end_inset
 
 
@@ -1039,20 +597,7 @@ rightharpoondown
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-Rightarrow
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\Rightarrow$
 \end_inset
 
 
@@ -1064,20 +609,7 @@ Rightarrow
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-succ
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\succ$
 \end_inset
 
 
@@ -1137,20 +669,7 @@ American Mathematical Society
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-Rrightarrow
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\Rrightarrow$
 \end_inset
 
 
@@ -1162,20 +681,7 @@ Rrightarrow
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-rightarrowtail
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\rightarrowtail$
 \end_inset
 
 
@@ -1187,20 +693,7 @@ rightarrowtail
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-twoheadrightarrow
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\twoheadrightarrow$
 \end_inset
 
 
@@ -1212,20 +705,7 @@ twoheadrightarrow
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-rightsquigarrow
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\rightsquigarrow$
 \end_inset
 
 
@@ -1237,20 +717,7 @@ rightsquigarrow
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-looparrowright
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\looparrowright$
 \end_inset
 
 
@@ -1262,20 +729,7 @@ looparrowright
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-multimap
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\multimap$
 \end_inset
 
 
@@ -1289,20 +743,7 @@ multimap
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-boxtimes
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\boxtimes$
 \end_inset
 
 
@@ -1314,20 +755,7 @@ boxtimes
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-boxplus
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\boxplus$
 \end_inset
 
 
@@ -1339,20 +767,7 @@ boxplus
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-boxminus
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\boxminus$
 \end_inset
 
 
@@ -1364,20 +779,7 @@ boxminus
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-boxdot
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\boxdot$
 \end_inset
 
 
@@ -1389,20 +791,7 @@ boxdot
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-divideontimes
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\divideontimes$
 \end_inset
 
 
@@ -1414,20 +803,7 @@ divideontimes
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-Vvdash
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\Vvdash$
 \end_inset
 
 
@@ -1441,20 +817,7 @@ Vvdash
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-lessdot
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\lessdot$
 \end_inset
 
 
@@ -1466,20 +829,7 @@ lessdot
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-gtrdot
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\gtrdot$
 \end_inset
 
 
@@ -1491,20 +841,7 @@ gtrdot
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-maltese
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\maltese$
 \end_inset
 
 
@@ -1516,20 +853,7 @@ maltese
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-bigstar
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\bigstar$
 \end_inset
 
 
@@ -1541,20 +865,7 @@ bigstar
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-checkmark
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\checkmark$
 \end_inset
 
 
@@ -1566,20 +877,7 @@ checkmark
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-Vdash
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\Vdash$
 \end_inset
 
 
@@ -1593,20 +891,7 @@ Vdash
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-backsim
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\backsim$
 \end_inset
 
 
@@ -1618,20 +903,7 @@ backsim
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-thicksim
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\thicksim$
 \end_inset
 
 
@@ -1643,20 +915,7 @@ thicksim
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-centerdot
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\centerdot$
 \end_inset
 
 
@@ -1668,20 +927,7 @@ centerdot
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-circleddash
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\circleddash$
 \end_inset
 
 
@@ -1693,20 +939,7 @@ circleddash
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-circledast
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\circledast$
 \end_inset
 
 
@@ -1718,20 +951,7 @@ circledast
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-circledcirc
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\circledcirc$
 \end_inset
 
 
@@ -1745,20 +965,7 @@ circledcirc
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-vartriangleleft
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\vartriangleleft$
 \end_inset
 
 
@@ -1770,20 +977,7 @@ vartriangleleft
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-vartriangleright
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\vartriangleright$
 \end_inset
 
 
@@ -1795,20 +989,7 @@ vartriangleright
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-vartriangle
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\vartriangle$
 \end_inset
 
 
@@ -1820,20 +1001,7 @@ vartriangle
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-triangledown
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\triangledown$
 \end_inset
 
 
@@ -1845,20 +1013,7 @@ triangledown
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-lozenge
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\lozenge$
 \end_inset
 
 
@@ -1870,20 +1025,7 @@ lozenge
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-square
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\square$
 \end_inset
 
 
@@ -1897,20 +1039,7 @@ square
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-blacktriangleleft
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\blacktriangleleft$
 \end_inset
 
 
@@ -1922,20 +1051,7 @@ blacktriangleleft
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-blacktriangleright
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\blacktriangleright$
 \end_inset
 
 
@@ -1947,20 +1063,7 @@ blacktriangleright
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-blacktriangle
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\blacktriangle$
 \end_inset
 
 
@@ -1972,20 +1075,7 @@ blacktriangle
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-blacktriangledown
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\blacktriangledown$
 \end_inset
 
 
@@ -1997,20 +1087,7 @@ blacktriangledown
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-blacklozenge
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\blacklozenge$
 \end_inset
 
 
@@ -2022,20 +1099,7 @@ blacklozenge
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-(
-\backslash
-blacksquare
-\backslash
-)
-\end_layout
-
+\begin_inset Formula $\blacksquare$
 \end_inset
 
 
