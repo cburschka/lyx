@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 371
+\lyxformat 372
 \begin_document
 \begin_header
 \textclass scrbook
@@ -62,6 +62,7 @@ End
 \end_local_layout
 \language english
 \inputencoding auto
+\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
@@ -7913,11 +7914,9 @@ OutputType
 
 \begin_layout Description
 \begin_inset Flex CharStyle:Code
-status collapsed
+status open
 
 \begin_layout Plain Layout
-
-\series medium
 PageStyle
 \end_layout
 
@@ -7976,7 +7975,7 @@ Settings
 
 \begin_layout Description
 \begin_inset Flex CharStyle:Code
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Preamble
@@ -9516,6 +9515,32 @@ InnerTag
 \end_inset
 
  [[FIXME]] (Used only with XML-type formats.)
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+InPreamble
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+[1, 0]
+\end_layout
+
+\end_inset
+
+ If 1, marks the layout as to be included in the document preamble rather
+ than in the document body.
+ This is useful for document classes that want such information as the title
+ and author to appear in the preamble.
 \end_layout
 
 \begin_layout Description
