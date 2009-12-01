@@ -1,15 +1,7 @@
 The main output routines now more or less work.
 
 Known issues:
-* InsetLine normally appears in a standard environment, which puts <hr /> inside
-	<p>, in violation of the DTD. I guess we could close the paragraph and then do
-	the <hr />, but isn't there a better solution? There's actually a LyX bug here, 
-	I think, since a line surely ought not appear in a normal paragraph?
-  The same issue arises with InsetVSpace, unsurprisingly. And also with the inline
-	version of InsetListings. 
-  The solution to both of these problems, and others, is to use a custom stream,
-	the way Andre does in mathed. Then we can cache the tags and only output them
-	when appropriate.
+* Right now, other than that some things don't work at all, none.
 
 These insets are basically done, though there are probably issues here and there,
 	and there are even some FIXMEs:
@@ -35,7 +27,7 @@ These insets work but still need work:
 			in the way BibTeX does. To do so, we'd need to move the sorting routine out
 			of InsetBibtex so we could do it before we print the citations. See below.
 	InsetBox: The CSS isn't there yet.
-	InsetCitation: This has two limitations as of 11 VI 2009. The first is that we
+	InsetCitation: This has two limitations as of 20 XI 2009. The first is that we
 		ignore the citation style and output square brackets, no matter what. The
 		second is that, with BibTeX, we simply use the BibTeX key as the citation
 		string, thus ignoring numerical, author-year, etc. It will not be too hard
@@ -50,9 +42,9 @@ These insets work but still need work:
 	  and appropriate img tag. But we don't yet do any sort of scaling, rotating, and
 		so forth. That won't be hard, since we can just call ImageMagick to do this for 
 		us, but appropriate routines will need to be written.
-	InsetRef: At present, we just  use the label name as associated text, and put it 
-	into square brackets. It'd be nice to be able to do more, but for that we'd need to 
-	associate counters with the labels, and we don't have that yet.
+	InsetRef: At present, we just use the label name as associated text, and put it 
+		into square brackets. It'd be nice to be able to do more, but for that we'd need to
+		associate counters with the labels, and we don't have that yet.
 
 These insets do not work and are not yet scheduled to work:
 	InsetExternal: It may be that this won't be too hard, but I don't understand 
