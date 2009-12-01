@@ -1,11 +1,11 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass article
-\language german
-\inputencoding latin1
+\use_default_options false
+\language ngerman
+\inputencoding auto
 \font_roman default
 \font_sans default
 \font_typewriter default
@@ -14,7 +14,8 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-\graphics dvips
+
+\graphics default
 \paperfontsize 12
 \spacing single
 \use_hyperref false
@@ -35,8 +36,8 @@
 \paperpagestyle plain
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -58,7 +59,7 @@ Hinweis: der Titel sollte mehr nach einem Titel aussehen
 \begin_layout Standard
 von Fee LyX 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Hinweis: Fee LyX ist der Autor
@@ -73,7 +74,7 @@ Hinweis: Fee LyX ist der Autor
 12.
  Juni 1972 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Hinweis: dies ist ein Datum
@@ -87,7 +88,7 @@ Hinweis: dies ist ein Datum
 \begin_layout Standard
 Inhaltsverzeichnis 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Hinweis: Es wäre schön, wenn wir das Verzeichnis nicht selber schreiben
@@ -138,7 +139,7 @@ müßten
 1.
  Grundidee 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Hinweis:
@@ -170,7 +171,7 @@ LyX benutzt LaTeX, ein Textsatzsystem für Dokumente, das Leslie Lamport
  Die Grundidee von LaTeX ist ähnlich wie die von LyX.
  Leslie Lamport sagte einmal (siehe Referenz [1]):
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Hinweis: dieser Zitat-Verweis sollte nicht fest sein.
@@ -208,7 +209,7 @@ Der Sinn des typographischen Entwurfs ist, daß der Leser die Ideen des Autors
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Hinweis: Dies ist ein Zitat
@@ -263,7 +264,7 @@ Hinweis: Dieser hervorgehobene Satz würde in einer Fußnote besser aussehen
 
 ) Ich bin SEHR AUFGEREGT
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Hinweis: Hervorheben!
@@ -283,7 +284,7 @@ Hinweis: Hervorheben!
 * LyX erleichtert das Schreiben und Bearbeiten von mathematischen Formeln
  
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Hinweis: Dies ist eine Auflistung mit zwei Elementen.
@@ -298,7 +299,7 @@ Hinweis: Dies ist eine Auflistung mit zwei Elementen.
 Für eine mehr philosophische Diskussion, warum LyX besser als viele andere
  Textverarbeitungen ist, lesen Sie bitte Abschnitt 1.2 auf Seite 1.
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Hinweis: Dieser Querverweis sollte nicht fest sein.
@@ -345,7 +346,7 @@ ICH BIN TOLL!
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Hinweis: Dies ist LyX-Code
@@ -375,7 +376,7 @@ Es spart soviel Zeit.
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Hinweis: Es ist nicht sehr gut, aber es ist Poesie, auch als Gedicht
@@ -394,7 +395,7 @@ bekannt
 4.
  Mathematik 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Hinweis: diese mathematischen Dinge sollten im Mathematikmodus gedruckt

@@ -1,14 +1,14 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass article
 \begin_preamble
 %\def\magyarOptions{defaults=over-1.4,footnote=huplain}
 \usepackage{indentfirst}
 \frenchspacing
 \end_preamble
+\use_default_options false
 \language magyar
 \inputencoding auto
 \font_roman default
@@ -19,7 +19,8 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-\graphics dvips
+
+\graphics default
 \paperfontsize 12
 \spacing single
 \use_hyperref false
@@ -40,7 +41,8 @@
 \paperpagestyle plain
 \tracking_changes false
 \output_changes false
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -91,7 +93,7 @@ Tanács: ez lesz a DÁTUM
 \begin_layout Standard
 Tartalomjegyzék
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Tanács: jó lenne nem kellene külön begépelni a tartalomjegyzéket
@@ -138,7 +140,7 @@ Tanács: jó lenne nem kellene külön begépelni a tartalomjegyzéket
 1.
  Alap filozófia
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Tanács: a szakaszcímnek jobban ki kellene tűnnie
@@ -166,7 +168,7 @@ A LyX a LaTeX-et használja, ami egy dokumentum elkészítő rendszer, amit
  A LaTeX-et, a LyX-hez hasonló filozófia miatt készítették.
  Leslie Lamport egyszer azt mondta (lásd a [2] hivatkozásban):
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Tanács: valószínűleg ennek az IDÉZET HIVATKOZÁSNAK nem kellene be betonozva
@@ -250,7 +252,7 @@ amit lát arra gondol
 A LyX rengeteg olyan jellemzővel rendelkezik, amelyek megkönnyítik az írást.
  (Ezek után, miért ne akarná használni? 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Tanács: a zárójelben lévő sokkal jobban mutatna a LÁBJEGYZETben 
@@ -267,7 +269,7 @@ NAGYON IZGATOTT
 \emph default
  
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Tanács: KIEMELÉS!
@@ -292,7 +294,7 @@ A filozófiai értekezést, hogy miért jobb a LyX a többi szövegszerkesztőn�
  megtalálja a 1.2 szakaszban, amit az 1.
  oldalon talál.
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Tanács: ennek a KERESZT-HIVATKOZÁSNAK nem kellene fixnek lennie.
@@ -333,7 +335,7 @@ FELEMETES VAGYOK!
 \begin_layout Standard
 20 GOTO 10
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Tanács: ez egy PROGRAM-KÓD
@@ -360,7 +362,7 @@ Szövegszedő szövegszerkesztő
 
 Sok időt takarít meg
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Tanács: ez így nem túl jó mivel egy költemény, azaz egy VERS
@@ -375,7 +377,7 @@ Tanács: ez így nem túl jó mivel egy költemény, azaz egy VERS
 4.
  Képletes dolgok
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Tanács: ezek a képletek normális módon kellene hogy megjelenjenek.

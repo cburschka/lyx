@@ -1,11 +1,11 @@
-#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
 \textclass article
 \use_default_options false
 \language french
-\inputencoding latin1
+\inputencoding auto
 \font_roman default
 \font_sans default
 \font_typewriter default
@@ -229,11 +229,14 @@ reference "sec:lyxmeilleur"
 
  pour une discussion plus approfondie sur les avantages de LyX par rapport
  aux autres traitements de texte.
- Voir aussi le 
-\begin_inset CommandInset href
-LatexCommand href
-name "site web de LyX"
-target "http://www.lyx.org"
+ Voir aussi le site web de LyX: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org
+\end_layout
 
 \end_inset
 
