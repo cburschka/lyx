@@ -77,6 +77,7 @@ Function UpdateModifiedFiles
  File "${PRODUCT_SOURCEDIR}\Resources\examples\ItemizeBullets.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\linguistics.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\powerdot-example.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\seminar.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\tufte-book.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\tufte-handout.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\xypic.lyx"

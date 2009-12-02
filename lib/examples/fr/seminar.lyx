@@ -9,7 +9,7 @@
 \end_preamble
 \options a4paper, semrot, slidesec
 \use_default_options false
-\language english
+\language french
 \inputencoding auto
 \font_roman lmodern
 \font_sans lmss
@@ -35,7 +35,7 @@
 \tocdepth 3
 \paragraph_separation indent
 \defskip medskip
-\quotes_language english
+\quotes_language french
 \papercolumns 1
 \papersides 1
 \paperpagestyle empty
@@ -56,15 +56,18 @@ status open
 \series bold
 Note:
 \series default
- It turned out that the method 
+ Il s'est avéré que la méthode 
 \family sans
 PDF (dvipdfm)
 \family default
- works on all LaTeX systems as expected when viewing/exporting this file
- as PDF.
- Viewing and exporting seminar documents to DVI and PS can result in an
- unwanted output, depending on your LaTeX system and the DVI or PostScript
- viewer.
+ fonctionne correctement sur toutes les distributions LaTeX pour visionner/expor
+ter en PDF.
+ Visionner et exporter en DVI ou PS les documents 
+\family typewriter
+seminar
+\family default
+ peut produire des résultats incorrects, en fonction de la distribution
+ LaTeX et des visionneurs DVI ou PostScript
 \end_layout
 
 \begin_layout Plain Layout
@@ -72,16 +75,17 @@ PDF (dvipdfm)
 \series bold
 Note:
 \series default
- The 
+ La classe 
 \family sans
 seminar
 \family default
- class is designed to produce transparencies, not powerpoint-like presentations.
- For such presentations, use a presentation document class like
+ est conçue pour produire des transparents, et non pas des présentations
+ à la powerpoint.
+ Pour ces dernières, utiliser une classe appropriée comme 
 \family sans
- beamer
+beamer
 \family default
- or
+ ou
 \family sans
  powerdot
 \family default
@@ -99,18 +103,18 @@ seminar
 
 \begin_deeper
 \begin_layout SlideHeading
-Slides and Notes with the 
+Transparents et notes avec la classe 
 \family sans
 \noun on
 Seminar
 \family default
 \noun default
- class
+
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
-written by Günter Milde
+écrit par Günter Milde, traduction francophone Jean-Pierre Chrétien
 \end_layout
 
 \end_inset
@@ -137,27 +141,27 @@ Harry Testman
 
 \begin_deeper
 \begin_layout SlideHeading
-Some basic points to start with:
+Quelques points essentiels pour commencer:
 \end_layout
 
 \begin_layout Itemize
-Start a slide with an paragraph of type 
+Commencer un transparent par un paragraphe de style 
 \family typewriter
-LandscapeSlide
+DiapoPaysage
 \family default
  or 
 \family typewriter
-PortraitSlide
+DiapoPortrait
 \family default
 .
 \end_layout
 
 \begin_layout Itemize
-It is really helpful to read the seminar handbook: 
+Il est vraiment utile de lire le manuel de seminar: 
 \family typewriter
 sem-user.pdf
 \family default
- (or 
+ (ou 
 \family typewriter
 sem-user.dvi
 \family default
@@ -175,31 +179,37 @@ sem-user.dvi
 
 \begin_deeper
 \begin_layout SlideHeading
-Putting some content in a slide 
+Écrire quelque chose sur un transparent 
 \end_layout
 
 \begin_layout Standard
-If a paragraph shall appear in a slide, it need to be 
+Si un paragraphe doit apparaître dans un transparent, il doit être:
 \end_layout
 
 \begin_layout Itemize
-either inside the opening 
+soit dans le paragraphe d'ouverture 
 \family sans
-LandscapeSlide
+DiapoPaysage
 \family default
- paragraph 
+ 
 \end_layout
 
 \begin_layout Itemize
-or nested inside the 
+soit emboîté à l'intérieur de l'environnement 
 \family sans
-LandscapeSlide
-\family default
- environment
+DiapoPaysage
 \end_layout
 
 \begin_layout Standard
-How to nest things is explained in LyX's User's Guide chapter 3.4.
+Comment emboîter quelque chose est expliqué dans le 
+\emph on
+Guide de l'utilisateur
+\emph default
+, chapitre
+\begin_inset space ~
+\end_inset
+
+3.4.
 \end_layout
 
 \end_deeper
@@ -213,57 +223,58 @@ How to nest things is explained in LyX's User's Guide chapter 3.4.
 
 \begin_deeper
 \begin_layout SlideSubHeading
-What can be part of a slide?
+Que peut-on mettre dans un transparent?
 \end_layout
 
 \begin_layout Standard
-Virtually everything that can appear in normal LaTeX, can also be on a slide.
+Pratiquement tout ce qui peut apparaître en LaTeX ordinaire peut aussi figurer
+ dans un transparent.
 \end_layout
 
 \begin_layout Standard
-(Well, floats are an exception --- who would want them on a slide.)
+(Enfin, sauf les flottants --- qui en souhaiterait dans un transparent?)
 \end_layout
 
 \begin_layout Standard
-Additionally there are the paragraph styles:
+de plus, il y a les styles de paragraphe:
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+TitreDiapo,
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+SousTitreDiapo,
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-SlideHeading,
+ListeDiapos,
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-SlideSubheading,
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-ListOfSlides,
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-SlideContents,
+ContenuDiapo,
 \family default
- and
+ et
 \end_layout
 
 \begin_layout Itemize
 
-\family sans
-ProgressContents
+\family typewriter
+SommaireProgression
 \family default
 .
 \end_layout
 
 \begin_layout Standard
-All of them can be found in the Style pull-down box.
+Ceux-ci figurent dans le menu déroulant des styles.
 \end_layout
 
 \end_deeper
@@ -272,23 +283,24 @@ All of them can be found in the Style pull-down box.
 \end_layout
 
 \begin_layout LandscapeSlide
-Text within the 
+Le texte dans l'environnement 
 \family sans
-LandscapeSlide
+DiapoPaysage
 \family default
- environment will go on top of the slide as a standard paragraph.
+ apparaîtra en haut du transparent comme un paragraphe ordinaire.
+ 
 \end_layout
 
 \begin_deeper
 \begin_layout SlideHeading
-What happens, when you want a List or a Heading first? 
+Que se passe-t-il, si vous voulez une liste ou un titre en premier? 
 \end_layout
 
 \begin_layout Standard
-Normally, LyX does not like empty paragraphs and it kills empty environments
- before you are able to nest something in them (if you don't insert an empty
- command or a note).
- 
+Habituellement,LyX n'apprécie pas les paragraphes vides et les fait disparaître
+ avant que vous ayez le temps d'emboîter quelque chose dedans (si vous ne
+ saisissez pas une commande vide ou une note).
+ Le format 
 \family typewriter
 seminar
 \family default
@@ -296,24 +308,24 @@ seminar
 \family typewriter
 layout
 \family default
- tells LyX to leave an empty 
+ instruit LyX de laisser un environnement 
 \family sans
-LandscapeSlide
+DiapoPaysage
 \family default
  or 
 \family sans
-PortraitSlide
+DiapoPortrait
 \family default
-, so you don't need to use the above workaround.
+, et vous n'avez pas besoin de cette méthode détournée.
 \end_layout
 
 \begin_layout Standard
-The 
+Le style 
 \family sans
---Separator--
+--Séparateur--
 \family default
- paragraph after a slide is needed because LyX will normally merge two environme
-nts if they come immediately one after the other (i.
+ après un transparent est nécessaire car LyX fusionne deux environnements
+ identiques s'ils se succèdent immédiatement (e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -321,11 +333,11 @@ g.
 \begin_inset space \space{}
 \end_inset
 
-two Paragraphs in the 
+deux paragraphes dans l'environnement 
 \family sans
-LandscapeSlide
+DiapoPaysage
 \family default
- environment will go to one slide, if there is nothing else between.)
+ seront sur un seul transparent, s'il n'y a rien entre eux).
 \end_layout
 
 \end_deeper
@@ -334,55 +346,69 @@ LandscapeSlide
 \end_layout
 
 \begin_layout Standard
-The seminar class puts everything that is not nested inside a 
-\family sans
-Slide
+La classe 
+\family typewriter
+seminar
 \family default
- environment on extra pages as 
+ met tout ce qui n'est pas emboîté dans un environnement 
+\family typewriter
+...
+\family sans
+Diapo
+\family default
+ sur des pages supplémentaires en tant que 
 \emph on
 notes
 \emph default
- (see slide 
+ (voir le transparent
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sli:output-options"
 
 \end_inset
 
- for output options).
+ pour les options de sortie).
 \end_layout
 
 \begin_layout Standard
-There is no need for a 
+Le style 
 \family sans
---Separator--
+--Séparateur--
 \family default
- paragraph, if notes follow the slide (or if a 
+ n'est pas nécessaire, si les notes suivent le transparent (ou si une 
 \family sans
-Landscape Slide
+DiapoPaysage
 \family default
- is followed by a 
+ est suivie par une 
 \family sans
-Portrait Slide
+DiapoPortrait
 \family default
-.
+).
 \end_layout
 
 \begin_layout Section
-Outline
+Sommaire
 \end_layout
 
 \begin_layout Standard
-Seminar defines additional content-listing commands, as the Table of Contents
- only lists 
-\begin_inset Quotes eld
+
+\family typewriter
+seminar
+\family default
+ définit des commandes pour créer un sommaire, car la table des matières
+ n'affiche que les titres et sous-titres de section 
+\begin_inset Quotes fld
 \end_inset
 
-normal
-\begin_inset Quotes erd
+normaux
+\begin_inset Quotes frd
 \end_inset
 
- headings and subheadings:
+:
 \end_layout
 
 \begin_layout Standard
@@ -395,25 +421,25 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Subsection
-Slide contents
+Contenu des transparents
 \end_layout
 
 \begin_layout Standard
-The 
+Le style de paragraphe 
 \family sans
-SlideContents
+ContenuDiapo
 \family default
- paragraph style is an analogue to the table of contents but lists only
- 
-\family sans
-SlideHeading
+ est similaire à la table des matières, mais n'affiche que les 
+\family typewriter
+TitreDiapo
 \family default
-s.
- It has problems with 
-\family sans
-SlideSubheading
+.
+ Il a des problèmes avec les 
+\family typewriter
+SousTitreDiapo
 \family default
-s, though which fail to show up in the list (seems to be a bug in 
+, cependant, qui ne s'affichent pas dans la liste (sans doute à cause d'un
+ bogue dans 
 \family typewriter
 slidesec.sty
 \family default
@@ -425,20 +451,21 @@ slidesec.sty
 \end_layout
 
 \begin_layout Subsection
-List of slides
+Liste des transparents
 \end_layout
 
 \begin_layout Standard
-Analogue to a list of tables, the 
+Similaire à la liste des tableaux, la Analogue to a list of tables, le style
+ 
 \family sans
-ListOfSlides
+ListeDiapos
 \family default
- style lists all slides in your document (to produce a slide with the list,
- nest it in a 
-\family sans
-...Slide
+ affiche tous les transparents du document (pour créer un transparent avec
+ la liste, emboîter le style dans un paragraphe 
+\family typewriter
+...Diapo
 \family default
- paragraph):
+):
 \end_layout
 
 \begin_layout ListOfSlides
@@ -446,14 +473,14 @@ ListOfSlides
 \end_layout
 
 \begin_layout Subsection
-Progress Contents
+Progression
 \end_layout
 
 \begin_layout Standard
-If you want to assure the audience, that the presentation is almost over,
- insert a slide with 
-\family sans
-ProgressContents
+Si vous souhaitez assurer à l'auditoire que la présentation est bientôt
+ terminée, insérez un transparent avec 
+\family typewriter
+SommaireProgression
 \family default
 :
 \end_layout
@@ -482,7 +509,7 @@ Configuration
 \end_layout
 
 \begin_layout SlideSubHeading
-Output options
+Options d'impression
 \begin_inset CommandInset label
 LatexCommand label
 name "sli:output-options"
@@ -493,41 +520,75 @@ name "sli:output-options"
 \end_layout
 
 \begin_layout Standard
-The following options can be added to the 
+Les options suivantes peuvent être ajoutées au champ 
 \family sans
 Options
-\family default
- field in the menu 
-\family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Document
 \begin_inset space ~
 \end_inset
 
-Class
+de
+\begin_inset space ~
+\end_inset
+
+classe
+\family default
+ du menu 
+\family sans
+Document\SpecialChar \menuseparator
+Paramètres...\SpecialChar \menuseparator
+Classe
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+document
 \family default
 :
 \end_layout
 
 \begin_layout Description
-slidesonly Only the slides are printed.
+
+\lang english
+slidesonly
+\lang french
+ seuls les transparents sont imprimés
 \end_layout
 
 \begin_layout Description
-notesonly Only the notes are printed
+
+\lang english
+notesonly
+\lang french
+ seules les notes sont imprimées
 \end_layout
 
 \begin_layout Description
-notes Both notes and slides are printed.
+
+\lang english
+notes
+\lang french
+ notes et transparents sont imprimés
 \end_layout
 
 \begin_layout Description
-notesonly* Produces a slide marker for each slide environment
+
+\lang english
+notesonly
+\lang french
+* crée un marqueur de transparent pour chaque environnement 
+\family typewriter
+...Slide
 \end_layout
 
 \begin_layout Description
-article Print as article (two-up).
+
+\lang english
+article
+\lang french
+ imprime comme un article (2 par page)
 \end_layout
 
 \begin_layout Standard
@@ -538,13 +599,17 @@ article Print as article (two-up).
 \end_layout
 
 \begin_layout SlideSubHeading
-Preamble commands 
+Commandes du préambule
 \end_layout
 
 \begin_layout Description
 
+\lang english
+
 \backslash
-onlyslides{8,9,11} print only slides number 8, 9 and 11 (e.
+onlyslides{8,9,11}
+\lang french
+ imprime seulement les transparents numéro 8, 9 et 11 (e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -552,13 +617,17 @@ g.
 \begin_inset space \space{}
 \end_inset
 
-color plots),
+les tracés en couleur)
 \end_layout
 
 \begin_layout Description
 
+\lang english
+
 \backslash
-notslides{4,8,9,11} don't print these slides.
+notslides{4,8,9,11}
+\lang french
+ n'imprime pas ces transparents
 \end_layout
 
 \end_deeper
@@ -566,18 +635,13 @@ notslides{4,8,9,11} don't print these slides.
 
 \end_layout
 
-\begin_layout LandscapeSlide
-
-\end_layout
-
-\begin_deeper
 \begin_layout SlideSubHeading
-Fancier formatting
+Mise en page plus sophistiquée
 \end_layout
 
 \begin_layout Standard
-The LaTeX preamble is the right place for many many options to get fancier
- formatting, e.
+Le préambule LaTeX est l'endroit adéquat pour ajouter de nombreuses options
+ pour sophistiquer la présentation, e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -585,19 +649,17 @@ g.:
 \end_layout
 
 \begin_layout Itemize
-different font sets, e.
+polices différentes, e.
 \begin_inset space \thinspace{}
 \end_inset
 
-g.
-\begin_inset space \space{}
-\end_inset
-
-the Iwona fonts: 
+g.les polices Iwona: 
 \end_layout
 
 \begin_deeper
 \begin_layout LyX-Code
+
+\lang english
 
 \backslash
 usepackage{iwona}
@@ -605,17 +667,21 @@ usepackage{iwona}
 
 \end_deeper
 \begin_layout Itemize
-fancy frames:
+encadrements plus esthétiques:
 \end_layout
 
 \begin_deeper
 \begin_layout LyX-Code
+
+\lang english
 
 \backslash
 usepackage{fancybox}
 \end_layout
 
 \begin_layout LyX-Code
+
+\lang english
 
 \backslash
 setlength{
@@ -625,6 +691,8 @@ slideframewidth}{1pt}
 
 \begin_layout LyX-Code
 
+\lang english
+
 \backslash
 slideframe[
 \backslash
@@ -633,7 +701,6 @@ setlength{
 shadowsize}{1pt}]{shadow} 
 \end_layout
 
-\end_deeper
 \end_deeper
 \begin_layout --Separator--
 
@@ -645,86 +712,115 @@ shadowsize}{1pt}]{shadow}
 
 \begin_deeper
 \begin_layout SlideHeading
-Troubleshooting
+En cas de problèmes\SpecialChar \ldots{}
+
 \end_layout
 
 \begin_layout Itemize
-
+les versions de 
 \family typewriter
 seminar.cls
 \family default
- versions before 1.5 (2008-10-15) contained a bug regarding the a4paper option.
- If you use A4 paper with such a version, set in the menu 
+ antérieures à 1.5 (2008-10-15) comportent un bogue avec l'option 
+\family typewriter
+a4paper
+\family default
+.
+ Si vous utilisez un format A4 avec une telle version, allez dans le menu
+ 
 \family sans
 Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Page
+Paramètres\SpecialChar \menuseparator
+Format
 \begin_inset space ~
 \end_inset
 
-Layout
-\family default
- the 
-\family sans
-Paper
+de
 \begin_inset space ~
 \end_inset
 
-Size
-\family default
- to 
-\begin_inset Quotes eld
+la
+\begin_inset space ~
 \end_inset
 
-
+page
+\family default
+, positionnez
 \family sans
+ Format
+\begin_inset space ~
+\end_inset
+
+papier
+\family default
+ sur 
+\family sans
+
+\begin_inset Quotes fld
+\end_inset
+
 A4
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
- (unless it is the default layout of your LaTeX distribution), and delete
- the option 
-\begin_inset Quotes eld
-\end_inset
-
-
+ (si ce n'est pas le format implicite de votre distribution LaTeX), et supprimez
+ l'option 
 \family sans
+
+\begin_inset Quotes fld
+\end_inset
+
 a4paper
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
- if necessary in the 
+ si nécessaire dans le champ 
 \family sans
 Options
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+classe du 
 \family default
- field in the menu 
+menu 
 \family sans
 Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Document
+Paramètres\SpecialChar \menuseparator
+Classe
 \begin_inset space ~
 \end_inset
 
-Class
-\family default
-.
-\end_layout
-
-\begin_layout Itemize
-If you have problems with the orientation of the slides/page, try the recommenda
-tions in Apppendix
+de
 \begin_inset space ~
 \end_inset
 
-E of the seminar handbook.
+document
 \end_layout
 
 \begin_layout Itemize
-Assure that the document page margins are set to default.
+si vous rencontrez des problèmes d'orientation des transparents, voyez les
+ recommandations dans l'appendice
+\begin_inset space ~
+\end_inset
+
+E du manuel de 
+\family typewriter
+seminar
+\end_layout
+
+\begin_layout Itemize
+assurez-vous que les marges des pages du document sont positionnées sur
+ 
+\family typewriter
+implicite
 \end_layout
 
 \end_deeper
