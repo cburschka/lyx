@@ -2519,6 +2519,7 @@ lib_examples_fr_files = Split('''
     Foils.lyx
     ListesPuces.lyx
     multicol.lyx
+    seminar.lyx
     simplecv.lyx
     splash.lyx
     xyfigure.png

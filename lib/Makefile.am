@@ -129,6 +129,7 @@ dist_frexamples_DATA = \
 	examples/fr/Foils.lyx \
 	examples/fr/ListesPuces.lyx \
 	examples/fr/multicol.lyx \
+	examples/fr/seminar.lyx \
 	examples/fr/simplecv.lyx \
 	examples/fr/splash.lyx \
 	examples/fr/xyfigure.png \
