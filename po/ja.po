@@ -1,20 +1,20 @@
 # translation of ja.po to Japanese
+# Koji Yokota <yokota@res.otaru-uc.ac.jp>, 2007, 2008, 2009.
 # Japanese translation for LyX
 # Copyright (C) 2007 LyX Developers
 # This file is distributed under the same license as the LyX package.
-# Koji Yokota <yokota@res.otaru-uc.ac.jp>, 2007, 2008, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-11-15 18:16+0100\n"
-"PO-Revision-Date: 2009-10-18 17:18+0100\n"
+"PO-Revision-Date: 2009-12-03 00:03+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
-"Language-Team: Japanese <kde-i18n-doc@kde.org>\n"
+"Language-Team: Japanese <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
@@ -193,7 +193,7 @@ msgstr "追加(&A)"
 #: src/LyXFunc.cpp:830 src/buffer_funcs.cpp:107
 #: src/frontends/qt4/ButtonController.cpp:231
 msgid "Cancel"
-msgstr "取消"
+msgstr "取り消し"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:81
 msgid "The BibTeX style"
@@ -1895,6 +1895,8 @@ msgid ""
 "The AMS LaTeX packages are only used if symbols from the AMS math toolbars "
 "are inserted into formulas"
 msgstr ""
+"AMS LaTeXパッケージが、数式にAMS数式ツールバーにある記号が使用されたときに限"
+"り、読み込まれます"
 
 #: src/frontends/qt4/ui/MathsUi.ui:28
 msgid "&Use AMS math package automatically"
@@ -1902,7 +1904,7 @@ msgstr "AMS mathパッケージを自動的に使う(&U)"
 
 #: src/frontends/qt4/ui/MathsUi.ui:38
 msgid "The AMS LaTeX packages are always used"
-msgstr ""
+msgstr "AMS LaTeXパッケージをつねに使用します"
 
 #: src/frontends/qt4/ui/MathsUi.ui:41
 msgid "Use AMS &math package"
@@ -1913,6 +1915,8 @@ msgid ""
 "The LaTeX package esint is only used if special integral symbols are "
 "inserted into formulas"
 msgstr ""
+"LaTeXパッケージesintが、数式に特殊な積分記号が挿入されたときに限り、読み込ま"
+"れます"
 
 #: src/frontends/qt4/ui/MathsUi.ui:51
 msgid "Use esint package &automatically"
@@ -1920,7 +1924,7 @@ msgstr "esintパッケージを自動的に使う(&A)"
 
 #: src/frontends/qt4/ui/MathsUi.ui:61
 msgid "The LaTeX package esint is always used"
-msgstr ""
+msgstr "LaTeXパッケージesintをつねに使用します"
 
 #: src/frontends/qt4/ui/MathsUi.ui:64
 msgid "Use &esint package"
@@ -2390,23 +2394,20 @@ msgid "On"
 msgstr "有効"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:74
-#, fuzzy
 msgid "Preview Si&ze:"
-msgstr "プレビューに失敗しました"
+msgstr "プレビューの大きさ(&Z):"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:92
-#, fuzzy
 msgid "Factor for the preview size"
-msgstr "プレビューの大きさを適合するように合わせます。"
+msgstr "プレビューの大きさの調整因子"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:114
 msgid "Mark end of paragraphs on screen with a pilcrow character."
-msgstr ""
+msgstr "段落の終わりに画面上で段落標を付ける。"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:117
-#, fuzzy
 msgid "&Mark end of paragraphs"
-msgstr "段落の行頭下げ(&I)"
+msgstr "段落の終わりに印(&M)"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:33 src/frontends/qt4/GuiPrefs.cpp:225
 msgid "Editing"
@@ -2518,7 +2519,7 @@ msgstr "キーボード"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:43
 msgid "Use &keyboard map"
-msgstr "キーボード配置表を使用する(&K)"
+msgstr "キーボード配列表を使用する(&K)"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:56
 msgid "&First:"
@@ -3076,7 +3077,7 @@ msgstr "代替言語(&T):"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:74
 msgid "The characters inserted here are ignored by the spellchecker"
-msgstr ""
+msgstr "スペルチェックプログラムは、ここに入力された文字を無視します。"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:81
 msgid "Specify a personal dictionary file other than the default"
@@ -3143,9 +3144,8 @@ msgid "&Maximum last files:"
 msgstr "直近のファイルの数(&M):"
 
 #: src/frontends/qt4/ui/PrefUi.ui:140
-#, fuzzy
 msgid "Backup original documents when saving"
-msgstr "文書バックアップ(&B): 毎"
+msgstr "保存する際に元の文書をバックアップする"
 
 #: src/frontends/qt4/ui/PrefUi.ui:160
 msgid "minutes"
@@ -3161,11 +3161,11 @@ msgstr "文書をタブ内に開く(&O)"
 
 #: src/frontends/qt4/ui/PrefUi.ui:191
 msgid "Whether to place close button on each tab or only one in the top left."
-msgstr ""
+msgstr "タブ閉ボタンを各タブに置くか、右上に一つだけ置くかを選択します。"
 
 #: src/frontends/qt4/ui/PrefUi.ui:194
 msgid "&Single close-tab button"
-msgstr ""
+msgstr "単一タブ閉ボタン"
 
 #: src/frontends/qt4/ui/PrefUi.ui:217
 msgid "Automatic help"
@@ -4609,7 +4609,7 @@ msgstr "日付"
 #: lib/layouts/theorems-ams-extended-bytype.module:220
 #: lib/layouts/theorems-ams-extended.module:189
 msgid "Acknowledgement"
-msgstr "謝辞"
+msgstr "謝辞(Acknowledgement)"
 
 #: lib/layouts/aa.layout:117 lib/layouts/aa.layout:140
 #: lib/layouts/aa.layout:155 lib/layouts/aa.layout:179
@@ -4733,7 +4733,7 @@ msgstr "And"
 #: lib/layouts/svglobal3.layout:83 lib/layouts/svglobal3.layout:87
 #: lib/layouts/aapaper.inc:91 lib/layouts/svjour.inc:250
 msgid "Acknowledgements"
-msgstr "謝辞"
+msgstr "謝辞(Acknowledgements)"
 
 #: lib/layouts/aastex.layout:121 lib/layouts/aastex.layout:475
 #: lib/layouts/aastex.layout:488 lib/layouts/achemso.layout:181
@@ -4973,14 +4973,12 @@ msgid "MainText"
 msgstr "本文"
 
 #: lib/layouts/amsart.layout:80
-#, fuzzy
 msgid "SpecialSection"
 msgstr "特別節"
 
 #: lib/layouts/amsart.layout:89
-#, fuzzy
 msgid "SpecialSection*"
-msgstr "特別節"
+msgstr "特別節*"
 
 #: lib/layouts/amsart.layout:91 lib/layouts/beamer.layout:173
 #: lib/layouts/beamer.layout:216 lib/layouts/svmono.layout:94
@@ -7726,43 +7724,36 @@ msgid "ACKNOWLEDGMENTS"
 msgstr "謝辞"
 
 #: lib/layouts/svglobal3.layout:69 lib/layouts/svglobal3.layout:72
-#, fuzzy
 msgid "Subclass"
-msgstr "分野分類"
+msgstr "サブクラス"
 
 #: lib/layouts/svmono.layout:16 lib/layouts/svmult.layout:80
-#, fuzzy
 msgid "Petit"
-msgstr "詩題"
+msgstr "小字(Petit)"
 
 #: lib/layouts/svmono.layout:28 lib/layouts/svmult.layout:171
-#, fuzzy
 msgid "Front Matter"
 msgstr "文頭辞"
 
 #: lib/layouts/svmono.layout:44 lib/layouts/svmult.layout:187
-#, fuzzy
 msgid "--- Front Matter ---"
-msgstr "文頭辞"
+msgstr "─── 文頭辞 ───"
 
 #: lib/layouts/svmono.layout:54 lib/layouts/svmult.layout:196
-#, fuzzy
 msgid "Main Matter"
-msgstr "文末辞"
+msgstr "本体"
 
 #: lib/layouts/svmono.layout:58 lib/layouts/svmult.layout:200
 msgid "--- Main Matter ---"
-msgstr ""
+msgstr "─── 本体 ───"
 
 #: lib/layouts/svmono.layout:61 lib/layouts/svmult.layout:203
-#, fuzzy
 msgid "Back Matter"
 msgstr "文末辞"
 
 #: lib/layouts/svmono.layout:65 lib/layouts/svmult.layout:207
-#, fuzzy
 msgid "--- Back Matter ---"
-msgstr "文末辞"
+msgstr "─── 文末辞 ───"
 
 #: lib/layouts/svmono.layout:71 lib/layouts/svmult.layout:213
 #: lib/layouts/stdsections.inc:14
@@ -7780,137 +7771,116 @@ msgid "Appendix \\thechapter"
 msgstr "付録 \\thechapter"
 
 #: lib/layouts/svmono.layout:135 lib/layouts/svmult.layout:118
-#, fuzzy
 msgid "Preface"
-msgstr "場所(Place)"
+msgstr "序文(Preface)"
 
 #: lib/layouts/svmono.layout:145 lib/layouts/svmult.layout:128
-#, fuzzy
 msgid "Preface:"
-msgstr "場所(Place):"
+msgstr "序文(Preface):"
 
 #: lib/layouts/svmono.layout:174 lib/layouts/svmult.layout:99
-#, fuzzy
 msgid "Proof(QED)"
-msgstr "証明"
+msgstr "証明(QED)"
 
 #: lib/layouts/svmono.layout:183 lib/layouts/svmult.layout:108
 msgid "Proof(smartQED)"
-msgstr ""
+msgstr "証明(smartQED)"
 
 #: lib/layouts/svmult.layout:24
 msgid "Contributor \\Roman{svmultlsti}:"
-msgstr ""
+msgstr "寄稿者 \\Roman{svmultlsti}:"
 
 #: lib/layouts/svmult.layout:28
-#, fuzzy
 msgid "Title*"
-msgstr "タイトル"
+msgstr "タイトル*"
 
 #: lib/layouts/svmult.layout:55
-#, fuzzy
 msgid "Institute and e-mail: "
-msgstr "所属機関マーク"
+msgstr "所属機関と電子メール: "
 
 #: lib/layouts/svmult.layout:62
 msgid "MiniTOC"
-msgstr ""
+msgstr "MiniTOC"
 
 #: lib/layouts/svmult.layout:67
 msgid "TOC depth (provide a number):"
-msgstr ""
+msgstr "TOC階層(数字を入れてください):"
 
 #: lib/layouts/svmult.layout:73
-#, fuzzy
 msgid "List of Abbreviations & Symbols"
-msgstr "引用一覧"
+msgstr "略語・記号一覧"
 
 #: lib/layouts/svmult.layout:120 lib/layouts/svmult.layout:138
 #: lib/layouts/svmult.layout:172 lib/layouts/svmult.layout:198
 #: lib/layouts/svmult.layout:205 lib/layouts/svmult.layout:211
 #: lib/layouts/svmult.layout:236 lib/layouts/svmult.layout:245
 #: lib/layouts/svmult.layout:269
-#, fuzzy
 msgid "For editors"
-msgstr "著作者"
+msgstr "編集者用"
 
 #: lib/layouts/svmult.layout:137
-#, fuzzy
 msgid "List of Contributors"
-msgstr "チャート一覧"
+msgstr "寄稿者一覧"
 
 #: lib/layouts/svmult.layout:277
-#, fuzzy
 msgid "Inst"
-msgstr "挿入(&I)"
+msgstr "所属機関(Inst)"
 
 #: lib/layouts/svmult.layout:279
-#, fuzzy
 msgid "Institute #"
-msgstr "所属機関"
+msgstr "所属機関 #"
 
 #: lib/layouts/tufte-book.layout:96
-#, fuzzy
 msgid "Sidenote"
-msgstr "文献注釈"
+msgstr "側注"
 
 #: lib/layouts/tufte-book.layout:101
-#, fuzzy
 msgid "sidenote"
-msgstr "文献注釈"
+msgstr "sidenote"
 
 #: lib/layouts/tufte-book.layout:115
-#, fuzzy
 msgid "Marginnote"
-msgstr "傍注(M)|M"
+msgstr "傍注"
 
 #: lib/layouts/tufte-book.layout:119
-#, fuzzy
 msgid "marginnote"
-msgstr "傍注"
+msgstr "marginnote"
 
 #: lib/layouts/tufte-book.layout:128
 msgid "NewThought"
-msgstr ""
+msgstr "NewThought様式"
 
 #: lib/layouts/tufte-book.layout:132
 msgid "new thought"
-msgstr ""
+msgstr "new thought"
 
 #: lib/layouts/tufte-book.layout:142
-#, fuzzy
 msgid "AllCaps"
-msgstr "スモールキャップ体"
+msgstr "オールキャップ体"
 
 #: lib/layouts/tufte-book.layout:145
-#, fuzzy
 msgid "allcaps"
-msgstr "スモールキャップ"
+msgstr "allcaps"
 
 #: lib/layouts/tufte-book.layout:155
-#, fuzzy
 msgid "SmallCaps"
 msgstr "スモールキャップ体"
 
 #: lib/layouts/tufte-book.layout:158
-#, fuzzy
 msgid "smallcaps"
-msgstr "スモールキャップ"
+msgstr "smallcaps"
 
 #: lib/layouts/tufte-book.layout:164
-#, fuzzy
 msgid "Full Width"
-msgstr "ラベルの幅"
+msgstr "全幅"
 
 #: lib/layouts/tufte-book.layout:190
-#, fuzzy
 msgid "MarginTable"
-msgstr "傍注"
+msgstr "傍表"
 
 #: lib/layouts/tufte-book.layout:201
-#, fuzzy
 msgid "MarginFigure"
-msgstr "寸法を調整した図"
+msgstr "傍図"
 
 #: lib/layouts/aapaper.inc:54
 msgid "email:"
@@ -8760,19 +8730,16 @@ msgid "Offprints:"
 msgstr "抜き刷り:"
 
 #: lib/layouts/theorems-ams-bytype.inc:137 lib/layouts/theorems-bytype.inc:112
-#, fuzzy
 msgid "Fact \\thefact."
-msgstr "事実 \\thetheorem."
+msgstr "事実 \\thefact."
 
 #: lib/layouts/theorems-ams-bytype.inc:181 lib/layouts/theorems-bytype.inc:156
-#, fuzzy
 msgid "Problem \\theproblem."
-msgstr "問題 \\thetheorem."
+msgstr "問題 \\theproblem."
 
 #: lib/layouts/theorems-ams-bytype.inc:194 lib/layouts/theorems-bytype.inc:169
-#, fuzzy
 msgid "Exercise \\theexercise."
-msgstr "演習 \\thetheorem."
+msgstr "演習 \\theexercise."
 
 #: lib/layouts/theorems-ams.inc:63 lib/layouts/theorems.inc:63
 msgid "Corollary \\thetheorem."
@@ -8944,24 +8911,27 @@ msgstr "巻末注"
 
 #: lib/layouts/eqs-within-sections.module:2
 msgid "Number Equations by Section"
-msgstr ""
+msgstr "数式番号を節毎に振る"
 
 #: lib/layouts/eqs-within-sections.module:6
 msgid ""
 "Resets the equation number at section start and prepends the section number "
 "to the equation number, as in '(2.1)'."
 msgstr ""
+"数式番号は節の開始毎にリセットされ、「(2.1)」のように数式番号の前には節番号を"
+"付けます。"
 
 #: lib/layouts/figs-within-sections.module:2
-#, fuzzy
 msgid "Number Figures by Section"
-msgstr "定理(節毎)"
+msgstr "図番号を節毎に振る"
 
 #: lib/layouts/figs-within-sections.module:6
 msgid ""
 "Resets the figure number at section start and prepends the section number to "
 "the figure number, as in 'fig. 2.1'."
 msgstr ""
+"図番号は節の開始毎にリセットされ、「図2.1」のように図番号の前には節番号を付け"
+"ます。"
 
 #: lib/layouts/foottoend.module:2
 msgid "Foot to End"
@@ -9127,20 +9097,20 @@ msgid "Redefines several insets (Index, Branch, URL) as being Minimalistic."
 msgstr "いくつかの差込枠（索引・派生枝・URL）を、簡素版に再定義します。"
 
 #: lib/layouts/tabs-within-sections.module:2
-#, fuzzy
 msgid "Number Tables by Section"
-msgstr "定理(節毎)"
+msgstr "表番号を節毎に振る"
 
 #: lib/layouts/tabs-within-sections.module:6
 msgid ""
 "Resets the table number at section start and prepends the section number to "
 "the table number, as in 'Table 2.1'."
 msgstr ""
+"表番号は節の開始毎にリセットされ、「表2.1」のように表番号の前には節番号を付け"
+"ます。"
 
 #: lib/layouts/theorems-ams-bytype.module:2
-#, fuzzy
 msgid "Theorems (AMS, Numbered by Type)"
-msgstr "定理（AMS拡張）"
+msgstr "定理（AMS拡張・種類別連番）"
 
 #: lib/layouts/theorems-ams-bytype.module:11
 msgid ""
@@ -9153,14 +9123,18 @@ msgid ""
 "chapter- and section-wide numbering, use one of the 'within "
 "Sections'/'within Chapters' modules, respectively."
 msgstr ""
+"拡張AMS機構を使う定理環境と証明環境を定義します。連番付きと連番なしの両方の型"
+"が提供されます。素のAMS拡張モジュールとは異なり、このモジュールでは定理の種類"
+"毎に別々のカウンタを有します（例：定理1→定理2→補題3→命題4→…ではなく、定理1→定"
+"理2→補題1→命題1→定理3→補題2→…となります）。連番の及ぶ範囲は文書全体です。章毎"
+"または節毎の連番をお望みであれば、「章毎に…連番」または「節毎に…連番」とある"
+"モジュールを選択してください。"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:2
-#, fuzzy
 msgid "Theorems (AMS-Extended, Numbered by Type)"
-msgstr "定理（AMS拡張）"
+msgstr "定理（AMS拡張・種類別連番）"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:12
-#, fuzzy
 msgid ""
 "Defines some additional theorem environments for use with the AMS theorems "
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
@@ -9170,14 +9144,15 @@ msgid ""
 "criterion 1, criterion 2, axiom 1, assumption 1, criterion 3, ..., as "
 "opposed to criterion 1, criterion 2, axiom 3, assumption 4, ...)."
 msgstr ""
-"AMS定理パッケージを使うように定理環境をいくつか追加定義します。中には、基準・"
-"アルゴリズム・公理・条件・注釈・記法・要約・謝辞・結論・事実・仮定・場合が、"
-"星付きと星なしの両方の形で含まれています。"
+"AMS定理パッケージを使う定理環境をいくつか追加定義します。中には、基準・アルゴ"
+"リズム・公理・条件・注釈・記法・要約・謝辞・結論・事実・仮定・場合が、連番あ"
+"りと連番なしの両方の形で含まれています。素のAMS拡張モジュールとは異なり、この"
+"モジュールでは定理の種類毎に別々のカウンタを有します（例：基準1→基準2→公理3→"
+"仮定4→…ではなく、基準1→基準2→公理1→仮定1→基準3→…となります）。"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:63
-#, fuzzy
 msgid "Criterion \\thecriterion."
-msgstr "基準 \\thetheorem."
+msgstr "基準 \\thecriterion."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:71
 #: lib/layouts/theorems-ams-extended.module:44
@@ -9190,9 +9165,8 @@ msgid "Criterion."
 msgstr "基準."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:85
-#, fuzzy
 msgid "Algorithm \\thealgorithm."
-msgstr "アルゴリズム \\thetheorem."
+msgstr "アルゴリズム \\thealgorithm."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:97
 #: lib/layouts/theorems-ams-extended.module:70
@@ -9200,9 +9174,8 @@ msgid "Algorithm."
 msgstr "アルゴリズム."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:108
-#, fuzzy
 msgid "Axiom \\theaxiom."
-msgstr "公理 \\thetheorem."
+msgstr "公理 \\theaxiom."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:117
 #: lib/layouts/theorems-ams-extended.module:90
@@ -9215,9 +9188,8 @@ msgid "Axiom."
 msgstr "公理."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:131
-#, fuzzy
 msgid "Condition \\thecondition."
-msgstr "条件 \\thetheorem."
+msgstr "条件 \\thecondition."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:140
 #: lib/layouts/theorems-ams-extended.module:112
@@ -9230,9 +9202,8 @@ msgid "Condition."
 msgstr "条件."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:154
-#, fuzzy
 msgid "Note \\thenote."
-msgstr "注釈 \\thetheorem."
+msgstr "注釈 \\thenote."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:163
 #: lib/layouts/theorems-ams-extended.module:134
@@ -9255,9 +9226,8 @@ msgid "Notation."
 msgstr "記法."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:200
-#, fuzzy
 msgid "Summary \\thesummary."
-msgstr "要約 \\thetheorem."
+msgstr "要約 \\thesummary."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:209
 #: lib/layouts/theorems-ams-extended.module:178
@@ -9270,9 +9240,8 @@ msgid "Summary."
 msgstr "要約."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:223
-#, fuzzy
 msgid "Acknowledgement \\theacknowledgement."
-msgstr "謝辞 \\thetheorem."
+msgstr "謝辞 \\theacknowledgement."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:232
 #: lib/layouts/theorems-ams-extended.module:200
@@ -9285,9 +9254,8 @@ msgid "Conclusion"
 msgstr "結論"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:246
-#, fuzzy
 msgid "Conclusion \\theconclusion."
-msgstr "結論 \\thetheorem."
+msgstr "結論 \\theconclusion."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:255
 #: lib/layouts/theorems-ams-extended.module:222
@@ -9305,9 +9273,8 @@ msgid "Assumption"
 msgstr "仮定"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:269
-#, fuzzy
 msgid "Assumption \\theassumption."
-msgstr "仮定 \\thetheorem."
+msgstr "仮定 \\theassumption."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:278
 #: lib/layouts/theorems-ams-extended.module:245
@@ -9324,16 +9291,15 @@ msgid "Theorems (AMS-Extended)"
 msgstr "定理（AMS拡張）"
 
 #: lib/layouts/theorems-ams-extended.module:8
-#, fuzzy
 msgid ""
 "Defines some additional theorem environments for use with the AMS theorems "
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
 "Summary, Acknowledgement, Conclusion, Fact, Assumption, and Case, in both "
 "numbered and non-numbered forms."
 msgstr ""
-"AMS定理パッケージを使うように定理環境をいくつか追加定義します。中には、基準・"
-"アルゴリズム・公理・条件・注釈・記法・要約・謝辞・結論・事実・仮定・場合が、"
-"星付きと星なしの両方の形で含まれています。"
+"AMS定理パッケージを使う定理環境をいくつか追加定義します。中には、基準・アルゴ"
+"リズム・公理・条件・注釈・記法・要約・謝辞・結論・事実・仮定・場合が、連番あ"
+"りと連番なしの両方の形で含まれています。"
 
 #: lib/layouts/theorems-ams-extended.module:37
 msgid "Criterion \\thetheorem."
@@ -9380,21 +9346,20 @@ msgid "Theorems (AMS)"
 msgstr "定理(AMS)"
 
 #: lib/layouts/theorems-ams.module:8
-#, fuzzy
 msgid ""
 "Defines theorem environments and the proof environment using the extended "
 "AMS machinery. Both numbered and unnumbered types are provided. By default, "
 "the theorems are numbered consecutively throughout the document. This can be "
 "changed by loading one of the 'Theorems (Numbered by ...)' modules."
 msgstr ""
-"拡張AMS機構を使う定理環境と証明環境を定義します。番号付きと番号なしの両方の型"
+"拡張AMS機構を使う定理環境と証明環境を定義します。連番付きと連番なしの両方の型"
 "が提供されます。既定では、定理は文書を通じて連番が付されます。これは、「定理"
-"(...毎)」モジュールのうちの一つを読み込むことによって変更することができます。"
+"(…毎…連番)」モジュールのうちの一つを読み込むことによって変更することができま"
+"す。"
 
 #: lib/layouts/theorems-bytype.module:2
-#, fuzzy
 msgid "Theorems (Numbered by Type)"
-msgstr "定理(章毎)"
+msgstr "定理(種類別連番)"
 
 #: lib/layouts/theorems-bytype.module:10
 msgid ""
@@ -9406,11 +9371,16 @@ msgid ""
 "chapter- and section-wide numbering, use one of the 'within "
 "Sections'/'within Chapters' modules, respectively."
 msgstr ""
+"非AMSクラス用にいくつか定理環境を定義します。素の定理モジュールとは違って、こ"
+"のモジュールでは定理の種類毎に別々のカウンタが設定されています（例：定理1→定"
+"理2→補題3→命題4→…のようにはならないで、定理1→定理2→補題1→命題1→定理3→補題2→…"
+"のように進行します）。連番の及ぶ範囲は文書全体です。章毎または節毎の連番をお"
+"望みであれば、「章毎に…連番」または「節毎に…連番」とあるモジュールを選択して"
+"ください。"
 
 #: lib/layouts/theorems-chap-bytype.module:2
-#, fuzzy
 msgid "Theorems (Numbered by Type within Chapters)"
-msgstr "定理(章毎)"
+msgstr "定理(章毎に種類別連番)"
 
 #: lib/layouts/theorems-chap-bytype.module:9
 msgid ""
@@ -9420,26 +9390,27 @@ msgid ""
 "theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, "
 "proposition 4, ...). The numbering is reset at each chapter start."
 msgstr ""
+"非AMSクラス用にいくつか定理環境を定義します。素の定理モジュールとは違って、こ"
+"のモジュールでは定理の種類毎に別々のカウンタが設定されています（例：定理1→定"
+"理2→補題3→定理4→補題5のようにはならないで、定理1→定理2→補題1→定理3→補題2のよ"
+"うに進行します）。連番は、章の開始時にリセットされます。"
 
 #: lib/layouts/theorems-chap.module:2
-#, fuzzy
 msgid "Theorems (Numbered by Chapter)"
-msgstr "定理(章毎)"
+msgstr "定理(章毎連番)"
 
 #: lib/layouts/theorems-chap.module:7
-#, fuzzy
 msgid ""
 "Numbers theorems and the like by chapter (i.e., the counter is reset at each "
 "chapter start). Use this module only with document classes that provide a "
 "chapter environment."
 msgstr ""
-"定理やその類似物を章ごとに付番します。このモジュールは、章環境を提供するレイ"
-"アウトとのみ使用してください。"
+"定理などを章ごとに付番します（つまり章が始まるときにカウンタがリセットされま"
+"す）。このモジュールは、章環境を提供するレイアウトとのみ使用してください。"
 
 #: lib/layouts/theorems-sec-bytype.module:2
-#, fuzzy
 msgid "Theorems (Numbered by Type within Sections)"
-msgstr "定理(節毎)"
+msgstr "定理(節毎に種類別連番)"
 
 #: lib/layouts/theorems-sec-bytype.module:9
 msgid ""
@@ -9449,25 +9420,26 @@ msgid ""
 "theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, "
 "proposition 4, ...). The numbering is reset at each section start."
 msgstr ""
+"非AMSクラス用にいくつか定理環境を定義します。素の定理モジュールとは違って、こ"
+"のモジュールでは定理の種類毎に別々のカウンタが設定されています（例：定理1→定"
+"理2→補題3→命題4→…のようにはならないで、定理1→定理2→補題1→命題1→定理3→補題2→…"
+"のように進行します）。連番は、節の開始時にリセットされます。"
 
 #: lib/layouts/theorems-sec.module:2
-#, fuzzy
 msgid "Theorems (Numbered by Section)"
-msgstr "定理(節毎)"
+msgstr "定理(節毎連番)"
 
 #: lib/layouts/theorems-sec.module:6
-#, fuzzy
 msgid ""
 "Numbers theorems and the like by section (i.e., the counter is reset at each "
 "section start)."
 msgstr ""
-"定理やその類似物を章ごとに付番します。このモジュールは、章環境を提供するレイ"
-"アウトとのみ使用してください。"
+"定理などを節ごとに付番します（つまり節が始まるときにカウンタがリセットされま"
+"す）。"
 
 #: lib/layouts/theorems-starred.module:2
-#, fuzzy
 msgid "Theorems (Unnumbered)"
-msgstr "定理(星付き)"
+msgstr "定理(連番なし)"
 
 #: lib/layouts/theorems-starred.module:6
 msgid ""
@@ -9476,14 +9448,13 @@ msgid ""
 msgstr "拡張AMS機構を用いる、番号なし定理環境と証明環境のみ定義します。"
 
 #: lib/layouts/theorems-std.module:7
-#, fuzzy
 msgid ""
 "Defines some theorem environments for use with non-AMS classes. By default, "
 "the theorems are numbered consecutively throughout the document. This can be "
 "changed by loading one of the 'Theorems (Numbered by ...)' modules."
 msgstr ""
 "非AMSクラス用にいくつか定理環境を定義します。既定では、定理は文書を通じて連番"
-"が付されます。これは、「定理(...順)」モジュールのうちの一つを読み込むことに"
+"が付されます。これは、「定理(...連番)」モジュールのうちの一つを読み込むことに"
 "よって変更することができます。"
 
 #: lib/languages:3 src/Font.cpp:51 src/Font.cpp:54 src/Font.cpp:58
@@ -11322,9 +11293,8 @@ msgid "Remove Last Argument Spitting Out to the Right"
 msgstr "右に吐き出す形で最後の引数を削除"
 
 #: lib/ui/stdcontext.inc:345
-#, fuzzy
 msgid "Reload|R"
-msgstr "復帰(&R)"
+msgstr "再読込(R)|R"
 
 #: lib/ui/stdcontext.inc:347 lib/ui/stdcontext.inc:359
 msgid "Edit Externally...|x"
@@ -11388,7 +11358,7 @@ msgstr "ウィンドウを閉じる(D)|D"
 
 #: lib/ui/stdmenus.inc:74
 msgid "Update local directory from repository|d"
-msgstr ""
+msgstr "ローカル辞書をレポジトリを使って更新(D)|D"
 
 #: lib/ui/stdmenus.inc:78
 msgid "Use Locking Property|L"
@@ -11616,7 +11586,7 @@ msgstr "表示を上下半々に分割(V)|V"
 
 #: lib/ui/stdmenus.inc:310
 msgid "Close Current View|w"
-msgstr ""
+msgstr "現在の表示を閉じる(W)|W"
 
 #: lib/ui/stdmenus.inc:311
 msgid "Fullscreen|l"
@@ -11680,10 +11650,9 @@ msgstr "表(T)...|T"
 
 #: lib/ui/stdmenus.inc:351
 msgid "URL|U"
-msgstr "URL|U"
+msgstr "URL...|U"
 
 #: lib/ui/stdmenus.inc:352
-#, fuzzy
 msgid "Hyperlink...|k"
 msgstr "ハイパーリンク(K)|K"
 
@@ -12297,7 +12266,7 @@ msgstr "SVNファイルロック特性を使用"
 
 #: lib/ui/stdtoolbars.inc:235
 msgid "Update local directory from repository"
-msgstr ""
+msgstr "ローカル辞書をレポジトリを使って更新"
 
 #: lib/ui/stdtoolbars.inc:238
 msgid "Math Panels"
@@ -12325,12 +12294,10 @@ msgid "Functions"
 msgstr "関数"
 
 #: lib/ui/stdtoolbars.inc:244
-#, fuzzy
 msgid "Frame decorations"
 msgstr "上下装飾"
 
 #: lib/ui/stdtoolbars.inc:245
-#, fuzzy
 msgid "Big operators"
 msgstr "大演算子"
 
@@ -12344,7 +12311,6 @@ msgid "Arrows"
 msgstr "矢印"
 
 #: lib/ui/stdtoolbars.inc:249
-#, fuzzy
 msgid "AMS arrows"
 msgstr "AMS矢印"
 
@@ -12357,12 +12323,10 @@ msgid "Relations"
 msgstr "関係子"
 
 #: lib/ui/stdtoolbars.inc:252
-#, fuzzy
 msgid "AMS relations"
 msgstr "AMS関係子"
 
 #: lib/ui/stdtoolbars.inc:253
-#, fuzzy
 msgid "AMS negative relations"
 msgstr "AMS否定関係子"
 
@@ -12371,12 +12335,10 @@ msgid "Dots"
 msgstr "小点"
 
 #: lib/ui/stdtoolbars.inc:255
-#, fuzzy
 msgid "AMS operators"
 msgstr "AMS演算子"
 
 #: lib/ui/stdtoolbars.inc:256
-#, fuzzy
 msgid "AMS miscellaneous"
 msgstr "AMSその他"
 
@@ -15015,12 +14977,11 @@ msgstr ""
 
 #: src/Buffer.cpp:313
 msgid "LyX attempted to close a document that had unsaved changes!\n"
-msgstr ""
+msgstr "LyXは、未保存の変更がある文書を閉じようとしました！\n"
 
 #: src/Buffer.cpp:315
-#, fuzzy
 msgid "Attempting to close changed document!"
-msgstr "LyX: 文書「%1$s」を保存しようとしています\n"
+msgstr "変更のある文書を閉じようとしています！"
 
 #: src/Buffer.cpp:323
 msgid "Could not remove temporary directory"
@@ -15190,19 +15151,17 @@ msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX: 文書「%1$s」を保存しようとしています\n"
 
 #: src/Buffer.cpp:958 src/Buffer.cpp:971 src/Buffer.cpp:985
-#, fuzzy, c-format
+#, c-format
 msgid "  Saved to %1$s. Phew.\n"
-msgstr "  何とか保存できたようです。ひゅぅ。\n"
+msgstr "  %1$sに何とか保存できたようです。ひゅぅ。\n"
 
 #: src/Buffer.cpp:961
-#, fuzzy
 msgid "  Save failed! Trying again...\n"
 msgstr "  保存に失敗しました！再度試みています...\n"
 
 #: src/Buffer.cpp:975
-#, fuzzy
 msgid "  Save failed! Trying yet again...\n"
-msgstr "  保存に失敗しました！再度試みています...\n"
+msgstr "  保存に失敗しました！また再度試みています...\n"
 
 #: src/Buffer.cpp:989
 msgid "  Save failed! Bummer. Document is lost."
@@ -15356,39 +15315,38 @@ msgstr "オリジナルを読み込む(&L):"
 
 #: src/Buffer.cpp:2710
 msgid "Document was successfully recovered."
-msgstr ""
+msgstr "文書を無事に復旧しました。"
 
 #: src/Buffer.cpp:2712
 msgid "Document was NOT successfully recovered."
-msgstr ""
+msgstr "文書を無事に復旧することができませんでした。"
 
 #: src/Buffer.cpp:2713
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Remove emergency file now?\n"
 "(%1$s)"
-msgstr "緊急保存ファイルを読みこみますか？"
+msgstr ""
+"緊急保存ファイルを直ちに削除しますか？\n"
+"(%1$s)"
 
 #: src/Buffer.cpp:2716 src/Buffer.cpp:2726
-#, fuzzy
 msgid "Delete emergency file?"
-msgstr "外部ファイルを選択する"
+msgstr "緊急保存ファイルを削除しますか？"
 
 #: src/Buffer.cpp:2717 src/Buffer.cpp:2728
-#, fuzzy
 msgid "&Keep it"
-msgstr "左右対称(&K)"
+msgstr "削除しない(&K)"
 
 #: src/Buffer.cpp:2720
 msgid "Emergency file deleted"
-msgstr ""
+msgstr "緊急保存ファイルを削除しました"
 
 #: src/Buffer.cpp:2721
 msgid "Do not forget to save your file now!"
-msgstr ""
+msgstr "すぐにファイルを保存するようにしてください！"
 
 #: src/Buffer.cpp:2727
-#, fuzzy
 msgid "Remove emergency file now?"
 msgstr "緊急保存ファイルを読みこみますか？"
 
@@ -15673,9 +15631,8 @@ msgid "uncodable character"
 msgstr "コード化できない文字"
 
 #: src/Changes.cpp:379
-#, fuzzy
 msgid "Uncodable character in author name"
-msgstr "リスト差込枠にコード化できない文字があります"
+msgstr "著者名にコード化できない文字があります"
 
 #: src/Changes.cpp:380
 #, c-format
@@ -15688,6 +15645,13 @@ msgid ""
 "Chose an appropriate document encoding (such as utf8)\n"
 "or change the spelling of the author name."
 msgstr ""
+"変更追跡機能で使用されている著者名「%1$s」には、\n"
+"現在のエンコーディングで表すことのできないグリフが\n"
+"含まれています。書き出したLaTeXファイルでは、\n"
+"これらのグリフは省かれます。\n"
+"\n"
+"（utf8など）適切な文書エンコーディングを選択するか、\n"
+"著者名の綴りを変更してください。"
 
 #: src/Chktex.cpp:63
 #, c-format
@@ -16012,9 +15976,8 @@ msgid "button background under focus"
 msgstr "フォーカスを得ているボタンの背景"
 
 #: src/Color.cpp:218
-#, fuzzy
 msgid "paragraph marker"
-msgstr "小段落"
+msgstr "段落標"
 
 #: src/Color.cpp:219
 msgid "inherit"
@@ -16129,7 +16092,7 @@ msgstr "全て上書き(&A)"
 
 #: src/Exporter.cpp:50
 msgid "&Cancel export"
-msgstr "書き出しを取消(&C)"
+msgstr "書き出しを取り消し(&C)"
 
 #: src/Exporter.cpp:90
 msgid "Couldn't copy file"
@@ -17606,20 +17569,25 @@ msgid ""
 "\n"
 "Continue?"
 msgstr ""
+"作業ディレクトリ%1$sに\n"
+"変更があったことを検出しました。\n"
+"\n"
+"ファイルの衝突がある場合には、ローカルディレクトリのファイルが優先されま"
+"す。\n"
+"\n"
+"続けますか？"
 
 #: src/VCBackend.cpp:727
 msgid "Changes detected"
-msgstr ""
+msgstr "変更が検出されました"
 
 #: src/VCBackend.cpp:728
-#, fuzzy
 msgid "&Yes"
-msgstr "はい"
+msgstr "はい(&Y)"
 
 #: src/VCBackend.cpp:728
-#, fuzzy
 msgid "&No"
-msgstr "いいえ"
+msgstr "いいえ(&N)"
 
 #: src/VCBackend.cpp:788
 msgid "VCN File Locking"
@@ -19210,11 +19178,11 @@ msgstr "LyX UIファイル(*.ui)"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2822
 msgid "Choose keyboard map"
-msgstr "キーボード配置表を選んで下さい"
+msgstr "キーボード配列表を選んで下さい"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2823
 msgid "LyX keyboard maps (*.kmap)"
-msgstr "LyXキーボード配置表(*.kmap)"
+msgstr "LyXキーボード配列表(*.kmap)"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2829
 msgid "Choose personal dictionary"
@@ -20062,9 +20030,9 @@ msgid "Could not update TeX information"
 msgstr "TeX 情報を更新することができませんでした"
 
 #: src/frontends/qt4/qt_helpers.cpp:181
-#, fuzzy, c-format
+#, c-format
 msgid "The script `%1$s' failed."
-msgstr "スクリプト`%s'は失敗しました"
+msgstr "スクリプト`%1$s'は失敗しました"
 
 #: src/frontends/qt4/qt_helpers.cpp:433
 msgid "All Files "
@@ -21325,6 +21293,9 @@ msgstr ""
 msgid "Unknown user"
 msgstr "未知の"
 
+msgid "You cannot paste into a multicell selection."
+msgstr "複数セルを選択しているところに貼り付けることはできません。"
+
 #, fuzzy
 #~ msgid "LyX binary not found"
 #~ msgstr "文字列が見つかりません！"
@@ -21348,6 +21319,3 @@ msgstr "未知の"
 
 #~ msgid "No file open!"
 #~ msgstr "ファイルが開かれていません！"
-
-#~ msgid "You cannot paste into a multicell selection."
-#~ msgstr "複数セルを選択しているところに貼り付けることはできません。"
