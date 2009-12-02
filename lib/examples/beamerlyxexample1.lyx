@@ -1,8 +1,7 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass beamer
 \begin_preamble
 \beamertemplateshadingbackground{red!5}{structure!5}
@@ -150,6 +149,7 @@
 }
 \end_preamble
 \options notes=show
+\use_default_options false
 \language english
 \inputencoding auto
 \font_roman times
@@ -160,6 +160,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
@@ -181,7 +182,8 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -5911,6 +5913,157 @@ status collapsed
 \end_inset
 
 hierarchy
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+When a frame should include a program listing, the frame needs to be marked
+ as 
+\begin_inset Quotes eld
+\end_inset
+
+fragile
+\begin_inset Quotes erd
+\end_inset
+
+.
+ This is not yet supported by LyX, so the the frame is created using TeX
+ code.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}[fragile]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{
+\end_layout
+
+\end_inset
+
+Just a frame with a program code listing
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \hspace{}
+\length 5mm
+\end_inset
+
+This is some program code:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "extendedchars=true,language=Python,numbers=left,stepnumber=3,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+def func(param):
+\end_layout
+
+\begin_layout Plain Layout
+
+    'this is a python function'
+\end_layout
+
+\begin_layout Plain Layout
+
+    pass
+\end_layout
+
+\begin_layout Plain Layout
+
+def func(param):
+\end_layout
+
+\begin_layout Plain Layout
+
+'This is a German word: Tschüß'
+\end_layout
+
+\begin_layout Plain Layout
+
+pass
+\end_layout
+
+\begin_layout Plain Layout
+
+def func(param):
+\end_layout
+
+\begin_layout Plain Layout
+
+'this is a python function'
+\end_layout
+
+\begin_layout Plain Layout
+
+pass
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section*

@@ -69,6 +69,7 @@ Function UpdateModifiedFiles
  File /r "$INSTDIR\Resources\examples\nl"
  File /r "$INSTDIR\Resources\examples\sk"
  File /r "$INSTDIR\Resources\examples\sl"
+ File "${PRODUCT_SOURCEDIR}\Resources\examples\beamerlyxexample1.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\biblioExample.bib"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\Braille.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\example_lyxified.lyx"
