@@ -13,11 +13,14 @@
 #include "FuncRequest.h"
 #include "LyXAction.h"
 
+#include "support/lstrings.h"
+
 #include <iostream>
 #include <sstream>
 #include <vector>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 
@@ -71,10 +74,19 @@ mouse_button::state FuncRequest::button() const
 }
 
 
-void splitArg(vector<string> & args, string const & str)
+namespace {
+
+void splitArg(vector<string> & args, string const & str, unsigned int max)
 {
 	istringstream is(str);
 	while (is) {
+		if (args.size() == max) {
+			string s;
+			getline(is, s);
+			args.push_back(trim(s));
+			return;
+		}		
+
 		char c;
 		string s;
 		is >> c;
@@ -90,11 +102,20 @@ void splitArg(vector<string> & args, string const & str)
 	}
 }
 
+}
 
 string FuncRequest::getArg(unsigned int i) const
 {
 	vector<string> args;
-	splitArg(args, to_utf8(argument_));
+	splitArg(args, to_utf8(argument_), string::npos);
+	return i < args.size() ? args[i] : string();
+}
+
+
+string FuncRequest::getLongArg(unsigned int i) const
+{
+	vector<string> args;
+	splitArg(args, to_utf8(argument_), i);
 	return i < args.size() ? args[i] : string();
 }
 

@@ -64,6 +64,10 @@ public:
 	/// argument parsing, extract argument i as std::string
 	std::string getArg(unsigned int i) const;
 
+	/// argument parsing, extract argument i as std::string,
+	/// eating all characters up to the end of the command line
+	std::string getLongArg(unsigned int i) const;
+
 	/// access the whole argument
 	docstring const & argument() const { return argument_; }
 
