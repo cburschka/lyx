@@ -1171,6 +1171,17 @@ docstring bformat(docstring const & fmt, docstring arg1, docstring arg2)
 
 
 template<>
+docstring bformat(docstring const & fmt, docstring arg1, int arg2)
+{
+	LASSERT(contains(fmt, from_ascii("%1$s")), /**/);
+	LASSERT(contains(fmt, from_ascii("%2$d")), /**/);
+	docstring str = subst(fmt, from_ascii("%1$s"), arg1);
+	str = subst(str, from_ascii("%2$d"), convert<docstring>(arg2));
+	return subst(str, from_ascii("%%"), from_ascii("%"));
+}
+
+
+template<>
 docstring bformat(docstring const & fmt, char const * arg1, docstring arg2)
 {
 	LASSERT(contains(fmt, from_ascii("%1$s")), /**/);

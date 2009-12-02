@@ -282,6 +282,7 @@ template<> docstring bformat(docstring const & fmt, unsigned int arg1);
 template<> docstring bformat(docstring const & fmt, docstring arg1);
 template<> docstring bformat(docstring const & fmt, char * arg1);
 template<> docstring bformat(docstring const & fmt, docstring arg1, docstring arg2);
+template<> docstring bformat(docstring const & fmt, docstring arg1, int arg2);
 template<> docstring bformat(docstring const & fmt, char const * arg1, docstring arg2);
 template<> docstring bformat(docstring const & fmt, int arg1, int arg2);
 template<> docstring bformat(docstring const & fmt, docstring arg1, docstring arg2, docstring arg3);
