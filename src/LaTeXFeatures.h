@@ -74,6 +74,8 @@ public:
 	void showStruct() const;
 	///
 	void addPreambleSnippet(std::string const &);
+	///
+	std::string getPreambleSnippets() const;
 	/// Add a feature name requirements
 	void require(std::string const & name);
 	/// Add a set of feature names requirements
@@ -127,7 +129,7 @@ private:
 	typedef std::set<std::string> Features;
 	///
 	Features features_;
-	/// Static preamble bits from the external material insets
+	/// Static preamble bits, from external templates, or anywhere else
 	typedef std::list<std::string> SnippetList;
 	///
 	SnippetList preamble_snippets_;

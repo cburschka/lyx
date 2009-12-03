@@ -898,6 +898,12 @@ void InsetBibtex::validate(LaTeXFeatures & features) const
 {
 	if (features.bufferParams().use_bibtopic)
 		features.require("bibtopic");
+	if (features.runparams().flavor == OutputParams::HTML)
+		features.addPreambleSnippet("<style type=\"text/css\">\n"
+			"div.bibtexentry { margin-left: 2em; text-indent: -2em; }\n"
+			"span.bibtexlabel:before{ content: \"[\"; }\n"
+			"span.bibtexlabel:after{ content: \"] \"; }\n"
+			"</style>");
 }
 
 
@@ -946,17 +952,17 @@ docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 	// ...and sort it.
 	sort(binfo.begin(), binfo.end(), lSorter);
 	// Finally, then, we are ready for output.
-	xs << StartTag("h2", "class='bibliography'");
-	xs << _("References");
-	xs << EndTag("h2");
-	xs << StartTag("div", "class='bibliography'");
+	xs << StartTag("h2", "class='bibtex'")
+		<< _("References")
+		<< EndTag("h2")
+		<< StartTag("div", "class='bibtex'");
 
 	// Now we loop over the entries
 	vector<BibTeXInfo const *>::const_iterator vit = binfo.begin();
 	vector<BibTeXInfo const *>::const_iterator const ven = binfo.end();
 	for (; vit != ven; ++vit) {
 		BibTeXInfo const * bip = *vit;
-		xs << StartTag("div", "class='bibentry'");
+		xs << StartTag("div", "class='bibtexentry'");
 		// FIXME XHTML
 		// The same name/id problem we have elsewhere.
 		string const attr = "id='" + to_utf8(bip->key()) + "'";
@@ -964,16 +970,16 @@ docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 		docstring label = bip->label();
 		if (label.empty())
 			label = bip->key();
-		xs << StartTag("span", "class='biblabel'");
-		xs << "[" << label << "] ";
-		xs << EndTag("span");
+		xs << StartTag("span", "class='bibtexlabel'")
+			<< label 
+			<< EndTag("span");
 		// FIXME Right now, we are calling BibInfo::getInfo on the key,
 		// which will give us all the cross-referenced info. But for every
 		// entry, so there's a lot of repitition. This should be fixed.
-		xs << StartTag("span", "class='bibinfo'");
-		xs << bi.getInfo(bip->key());
-		xs << EndTag("span");
-		xs << EndTag("div");
+		xs << StartTag("span", "class='bibtexinfo'") 
+			<< bi.getInfo(bip->key())
+			<< EndTag("span")
+			<< EndTag("div");
 	}
 	xs << EndTag("div");
 	return docstring();

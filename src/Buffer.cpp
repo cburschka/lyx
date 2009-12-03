@@ -1432,15 +1432,17 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 		// FIXME Get this during validation? What about other meta-data?
 		os << "<title>TBA</title>\n";
 
-		os << features.getTClassHTMLPreamble();
+		os << "\n<!-- Text Class Preamble -->\n"
+			<< features.getTClassHTMLPreamble()
+			<< "\n<!-- Premable Snippets -->\n"
+			<< from_utf8(features.getPreambleSnippets());
 
-		os << '\n';
-
+		os << "\n<!-- Layout-provided Styles -->\n";
 		docstring const styleinfo = features.getTClassHTMLStyles();
 		if (!styleinfo.empty()) {
-			os << "<style type='text/css'>\n";
-			os << styleinfo;
-			os << "</style>\n";
+			os << "<style type='text/css'>\n"
+				<< styleinfo
+				<< "</style>\n";
 		}
 		os << "</head>\n<body>\n";
 	}
