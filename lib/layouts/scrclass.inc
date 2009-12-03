@@ -17,6 +17,13 @@ Style Standard
 	ParIndent             MM
 	ParSkip               0.4
 	AlignPossible         Block, Left, Right, Center
+	# FIXME This ought to be set dynamically.
+	HTMLStyle
+		div.standard {
+			text-indent: 2em;
+			margin-bottom: 2ex;
+		}
+	EndHTMLStyle
 End
 
 Input stdinsets.inc
