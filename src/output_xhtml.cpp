@@ -644,9 +644,13 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 		// FIXME There may be a bug here about user defined enumeration
 		// types. If so, then we'll need to take the counter and add "i",
 		// "ii", etc, as with enum.
-		if (!style.counter.empty() && 
-		    (par == pbegin || !isNormalEnv(style)))
-			buf.params().documentClass().counters().step(style.counter);
+		Counters & cnts = buf.params().documentClass().counters();
+		docstring const & cntr = style.counter;
+		if (!style.counter.empty() 
+		    && (par == pbegin || !isNormalEnv(style)) 
+				&& cnts.hasCounter(cntr)
+		)
+			cnts.step(cntr);
 		ParagraphList::const_iterator send;
 		// this will be positive, if we want to skip the initial word
 		// (if it's been taken for the label).
