@@ -3576,7 +3576,7 @@ void Buffer::setLabel(ParIterator & it) const
 
 	if (par.params().startOfAppendix()) {
 		// FIXME: only the counter corresponding to toplevel
-		// sectionning should be reset
+		// sectioning should be reset
 		counters.reset();
 		counters.appendix(true);
 	}
