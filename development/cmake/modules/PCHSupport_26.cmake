@@ -177,7 +177,7 @@ MACRO(ADD_PRECOMPILED_HEADER_TO_TARGET _targetName _input _pch_output_to_use )
   
 ENDMACRO(ADD_PRECOMPILED_HEADER_TO_TARGET)
 
-MACRO(ADD_PRECOMPILED_HEADER _targetName _input)
+MACRO(ADD_PRECOMPILED_HEADER _targetName _input _gch)
 
   SET(_PCH_current_target ${_targetName})
   
@@ -225,7 +225,7 @@ MACRO(ADD_PRECOMPILED_HEADER _targetName _input)
   )
   
   #message("_command  ${_input} ${_output}")
-  _PCH_GET_COMPILE_COMMAND(_command  ${CMAKE_CURRENT_BINARY_DIR}/${_name} ${_output} )
+  _PCH_GET_COMPILE_COMMAND(_command  ${CMAKE_CURRENT_BINARY_DIR}/${_name} ${_gch} )
   
   #message(${_input} )
   #message("_output ${_output}")
