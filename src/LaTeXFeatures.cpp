@@ -776,7 +776,7 @@ docstring const LaTeXFeatures::getMacros() const
 	for (; pit != pend; ++pit)
 		macros << *pit << '\n';
 
-        if (mustProvide("papersize")) {
+	if (mustProvide("papersize")) {
 		if (runparams_.flavor == OutputParams::LATEX)
 			macros << papersizedvi_def << '\n';
 		else
