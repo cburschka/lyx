@@ -1077,7 +1077,6 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 		BufferParams const & bp = buf.params();
 		Font f;
 		TexRow tr;
-		// FIXME We probably would like actually to know about this.
 		odocstringstream ods;
 		owner_->latex(bp, f, ods, tr, features.runparams());
 		docstring d = ods.str();
