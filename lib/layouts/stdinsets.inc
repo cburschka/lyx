@@ -77,6 +77,11 @@ InsetLayout Marginal
 			margin: 1ex; 
 			background-color: #F0F0F0; 
 			float:right;
+			font-size: small;
+			font-weight: medium;
+			font-family: serif;
+			font-variant: normal;
+			font-style: normal;
 		}
 	EndHTMLStyle
 End
@@ -101,7 +106,14 @@ InsetLayout Foot
 			font-weight: bold;
 			text-decoration: underline;
 		}
-    div.foot { display: inline; }
+		div.foot { 
+			display: inline; 
+			font-size: small;
+			font-weight: medium;
+			font-family: serif;
+			font-variant: normal;
+			font-style: normal;
+		}
 		div.foot_inner { display: none; }
 		div.foot:hover div.foot_inner { 
 			display: block; 
@@ -244,6 +256,9 @@ InsetLayout Box
 	  Size                Small
 	EndFont
 	MultiPar              true
+	HTMLStyle
+		div.Frameless { font-family: sans-serif; }
+	EndHTMLStyle
 End
 
 InsetLayout Box:Shaded
@@ -370,11 +385,5 @@ InsetLayout Info:shortcuts
 	HTMLAttr          "class='info shortcut'"
 	HTMLStyle
 		span.shortcuts { font-family: sans-serif; }
-	EndHTMLStyle
-End
-
-InsetLayout Box
-	HTMLStyle
-		div.Frameless { font-family: sans-serif; }
 	EndHTMLStyle
 End
