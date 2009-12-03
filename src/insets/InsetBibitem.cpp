@@ -279,7 +279,7 @@ docstring InsetBibitem::xhtml(XHTMLStream & xs, OutputParams const &) const
 	// id into the span tag.
 	string const attrs = "id='" + to_utf8(getParam("key")) + "'";
 	xs << CompTag("a", attrs);
-	xs << StartTag("span", "class='biblabel'");
+	xs << StartTag("span", "class='bibitemlabel'");
 	xs << bibLabel();
 	xs << EndTag("span");
 	return docstring();
