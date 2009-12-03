@@ -71,7 +71,7 @@ add_executable(${_lyx}
 	${vld_files}
 )
 
-lyx_add_gcc_pch(lyx)
+lyx_add_gcc_pch(${_lyx})
 
 target_link_libraries(${_lyx}
 	mathed
