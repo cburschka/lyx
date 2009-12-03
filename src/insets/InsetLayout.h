@@ -105,25 +105,25 @@ public:
 	///
 	bool htmlisblock() const { return htmlisblock_; }
 	///
-	std::set<std::string> requires() const { return requires_; };
+	std::set<std::string> requires() const { return requires_; }
 	///
-	bool isMultiPar() const { return multipar_; };
+	bool isMultiPar() const { return multipar_; }
 	///
 	bool forcePlainLayout() const { return forceplain_; }
 	///
 	bool allowParagraphCustomization() const { return custompars_; }
 	///
-	bool isPassThru() const { return passthru_; };
+	bool isPassThru() const { return passthru_; }
 	///
-	bool isNeedProtect() const { return needprotect_; };
+	bool isNeedProtect() const { return needprotect_; }
 	///
-	bool isFreeSpacing() const { return freespacing_; };
+	bool isFreeSpacing() const { return freespacing_; }
 	///
-	bool isKeepEmpty() const { return keepempty_; };
+	bool isKeepEmpty() const { return keepempty_; }
 	///
-	bool forceLTR() const { return forceltr_; };
+	bool forceLTR() const { return forceltr_; }
 	///
-	bool isInToc() const { return intoc_; };
+	bool isInToc() const { return intoc_; }
 	///
 private:
 	///
@@ -172,7 +172,7 @@ private:
 	mutable std::string htmlinnerattr_;
 	/// A label for this environment, possibly including a reference
 	/// to a counter. E.g., for footnote, it might be:
-	///    <span class='notenum'>\arabic{footnote}</span>
+	///    \arabic{footnote}
 	/// No default.
 	/// FIXME Could we get this from the layout?
 	std::string htmllabel_;
