@@ -954,75 +954,74 @@ def checkLatexConfig(check_config, bool_docbook):
     if not check_config:
         return None
     # the following will generate textclass.lst.tmp, and packages.lst.tmp
-    else:
-        logger.info(msg + '\tauto')
-        removeFiles(['wrap_chkconfig.ltx', 'chkconfig.vars', \
-            'chkconfig.classes', 'chklayouts.tex'])
-        rmcopy = False
-        if not os.path.isfile( 'chkconfig.ltx' ):
-            shutil.copyfile( os.path.join(srcdir, 'chkconfig.ltx'), 'chkconfig.ltx' )
-            rmcopy = True
-        writeToFile('wrap_chkconfig.ltx', '%s\n\\input{chkconfig.ltx}\n' % docbook_cmd)
-        # Construct the list of classes to test for.
-        # build the list of available layout files and convert it to commands
-        # for chkconfig.ltx
-        p1 = re.compile(r'\Declare(LaTeX|DocBook)Class')
-        testclasses = list()
-        for file in glob.glob( os.path.join('layouts', '*.layout') ) + \
-            glob.glob( os.path.join(srcdir, 'layouts', '*.layout' ) ) :
-            if not os.path.isfile(file):
+    logger.info(msg + '\tauto')
+    removeFiles(['wrap_chkconfig.ltx', 'chkconfig.vars', \
+        'chkconfig.classes', 'chklayouts.tex'])
+    rmcopy = False
+    if not os.path.isfile( 'chkconfig.ltx' ):
+        shutil.copyfile( os.path.join(srcdir, 'chkconfig.ltx'), 'chkconfig.ltx' )
+        rmcopy = True
+    writeToFile('wrap_chkconfig.ltx', '%s\n\\input{chkconfig.ltx}\n' % docbook_cmd)
+    # Construct the list of classes to test for.
+    # build the list of available layout files and convert it to commands
+    # for chkconfig.ltx
+    p1 = re.compile(r'\Declare(LaTeX|DocBook)Class')
+    testclasses = list()
+    for file in glob.glob( os.path.join('layouts', '*.layout') ) + \
+        glob.glob( os.path.join(srcdir, 'layouts', '*.layout' ) ) :
+        if not os.path.isfile(file):
+            continue
+        classname = file.split(os.sep)[-1].split('.')[0]
+        for line in open(file).readlines():
+            if p1.search(line) == None:
                 continue
-            classname = file.split(os.sep)[-1].split('.')[0]
-            for line in open(file).readlines():
-                if p1.search(line) == None:
-                    continue
-                if line[0] != '#':
-                    logger.error("Wrong input layout file with line '" + line)
-                    sys.exit(3)
-                testclasses.append("\\TestDocClass{%s}{%s}" % (classname, line[1:].strip()))
-                break
-        testclasses.sort()
-        cl = open('chklayouts.tex', 'w')
-        for line in testclasses:
-            cl.write(line + '\n')
-        cl.close()
-        #
-        # we have chklayouts.tex, then process it
-        fout = os.popen(LATEX + ' wrap_chkconfig.ltx')
-        while True:
-            line = fout.readline()
-            if not line:
-                break;
-            if re.match('^\+', line):
-                logger.info(line.strip())
-        # if the command succeeds, None will be returned
-        ret = fout.close()
-        #
-        # currently, values in chhkconfig are only used to set
-        # \font_encoding
-        values = {}
-        for line in open('chkconfig.vars').readlines():
-            key, val = re.sub('-', '_', line).split('=')
-            val = val.strip()
-            values[key] = val.strip("'")
-        # chk_fontenc may not exist 
-        try:
-            addToRC(r'\font_encoding "%s"' % values["chk_fontenc"])
-        except:
-            pass
-        if rmcopy:   # remove the copied file
-            removeFiles( [ 'chkconfig.ltx' ] )
-        # if configure successed, move textclass.lst.tmp to textclass.lst
-        # and packages.lst.tmp to packages.lst
-        if os.path.isfile('textclass.lst.tmp') and len(open('textclass.lst.tmp').read()) > 0 \
-            and os.path.isfile('packages.lst.tmp') and len(open('packages.lst.tmp').read()) > 0:
-            shutil.move('textclass.lst.tmp', 'textclass.lst')
-            shutil.move('packages.lst.tmp', 'packages.lst')
-        return ret
+            if line[0] != '#':
+                logger.error("Wrong input layout file with line '" + line)
+                sys.exit(3)
+            testclasses.append("\\TestDocClass{%s}{%s}" % (classname, line[1:].strip()))
+            break
+    testclasses.sort()
+    cl = open('chklayouts.tex', 'w')
+    for line in testclasses:
+        cl.write(line + '\n')
+    cl.close()
+    #
+    # we have chklayouts.tex, then process it
+    fout = os.popen(LATEX + ' wrap_chkconfig.ltx')
+    while True:
+        line = fout.readline()
+        if not line:
+            break;
+        if re.match('^\+', line):
+            logger.info(line.strip())
+    # if the command succeeds, None will be returned
+    ret = fout.close()
+    #
+    # currently, values in chhkconfig are only used to set
+    # \font_encoding
+    values = {}
+    for line in open('chkconfig.vars').readlines():
+        key, val = re.sub('-', '_', line).split('=')
+        val = val.strip()
+        values[key] = val.strip("'")
+    # chk_fontenc may not exist 
+    try:
+        addToRC(r'\font_encoding "%s"' % values["chk_fontenc"])
+    except:
+        pass
+    if rmcopy:   # remove the copied file
+        removeFiles( [ 'chkconfig.ltx' ] )
+    # if configure successed, move textclass.lst.tmp to textclass.lst
+    # and packages.lst.tmp to packages.lst
+    if os.path.isfile('textclass.lst.tmp') and len(open('textclass.lst.tmp').read()) > 0 \
+        and os.path.isfile('packages.lst.tmp') and len(open('packages.lst.tmp').read()) > 0:
+        shutil.move('textclass.lst.tmp', 'textclass.lst')
+        shutil.move('packages.lst.tmp', 'packages.lst')
+    return ret
 
 
 def checkModulesConfig():
-  removeFiles(['lyxmodules.lst'])
+  removeFiles(['lyxmodules.lst', 'chkmodules.tex'])
 
   logger.info('+checking list of modules... ')
   tx = open('lyxmodules.lst', 'w')
@@ -1114,6 +1113,19 @@ def processModuleFile(file, bool_docbook):
         catgy = res.group(1)
         continue
     if modname != "":
+        if pkgs != "":
+            # this module has some latex dependencies:
+            # append the dependencies to chkmodules.tex,
+            # which is \input'ed by chkconfig.ltx
+            testpackages = list()
+            for pkg in pkgs.split(","):
+                if pkg.endswith(".sty"):
+                    pkg = pkg[:-4]
+                testpackages.append("\\TestPackage{%s}" % (pkg,))
+            cm = open('chkmodules.tex', 'a')
+            for line in testpackages:
+                cm.write(line + '\n')
+            cm.close()
         return '"%s" "%s" "%s" "%s" "%s" "%s" "%s"\n' % (modname, filename, desc, pkgs, req, excl, catgy)
     logger.warning("Module file without \DeclareLyXModule line. ")
     return ""
@@ -1144,7 +1156,7 @@ def removeTempFiles():
     if not lyx_keep_temps:
         removeFiles(['chkconfig.vars',  \
             'wrap_chkconfig.ltx', 'wrap_chkconfig.log', \
-            'chklayouts.tex', 'missfont.log', 
+            'chklayouts.tex', 'chkmodules.tex', 'missfont.log', 
             'chklatex.ltx', 'chklatex.log'])
 
 
@@ -1203,9 +1215,9 @@ Options:
     if windows_style_tex_paths != '':
         addToRC(r'\tex_expects_windows_paths %s' % windows_style_tex_paths)
     checkOtherEntries()
+    checkModulesConfig()
     # --without-latex-config can disable lyx_check_config
     ret = checkLatexConfig(lyx_check_config and LATEX != '', bool_docbook)
-    checkModulesConfig() #lyx_check_config and LATEX != '')
     removeTempFiles()
     # The return error code can be 256. Because most systems expect an error code
     # in the range 0-127, 256 can be interpretted as 'success'. Because we expect
