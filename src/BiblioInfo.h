@@ -92,6 +92,8 @@ public:
 	docstring const & key() const { return bib_key_; }
 	///
 	docstring entryType() const { return entry_type_; }
+	/// 
+	bool isBibTeX() const { return is_bibtex_; }
 private:
 	/// like operator[], except, if the field is empty, it will attempt
 	/// to get the data from xref BibTeXInfo object, which would normally

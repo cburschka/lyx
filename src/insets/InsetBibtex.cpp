@@ -939,7 +939,7 @@ docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 	BiblioInfo const & bi = buffer().masterBibInfo();
 	for (; cit != cen; ++cit) {
 		BiblioInfo::const_iterator const bt = bi.find(*cit);
-		if (bt == bi.end())
+		if (bt == bi.end() || !bt->second.isBibTeX())
 			continue;
 		binfo.push_back(&(bt->second));
 	}
