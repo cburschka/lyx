@@ -1,16 +1,13 @@
-The main output routines now more or less work.
+TODO:
+1. InsetTabular
+2. InsetTOC
+3. The counter patch, and better output for InsetRef.
+4. Better output for citations, meaning better labels. Numerical, as said below,
+   should be easy, and author-year oughtn't to be THAT hard. But it'll need a 
+	 bit of work.
+5. CSS needs work in several places, mostly floats. Maybe check elyxer on that.
+6. MathML
 
-Known issues:
-* Right now, other than that some things don't work at all, none.
-
-These insets are basically done, though there are probably issues here and there,
-	and there are even some FIXMEs:
-	Bibitem, Branch, Caption, Collapsable, Footnote, Hyperlink, Include, Info, 
-	Label, Line,  Listings, Marginal, Note, Newline, Newpage, Quotes, Space, 
-	SpecialChar, Wrap
-
-These insets do nothing for XHTML:
-	ERT, OptArg, Phantom
 
 These insets work but still need work:
 	InsetBibtex: There are a few issues here. 
