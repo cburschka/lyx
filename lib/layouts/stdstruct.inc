@@ -57,7 +57,12 @@ Style Bibliography
 	  Series              Bold
 	  Size                Larger
 	EndFont
-	HTMLTag               div
-	HTMLItem              p
-# FIXME HTML We should have some CSS here to format the items as hanging.
+	HTMLStyle
+		div.bibliography {
+			margin-left: 2em;
+			text-indent: -2em;
+		}
+		span.bibitemlabel:before { content: "["; }
+		span.bibitemlabel:after { content: "] "; }
+	EndHTMLStyle
 End
