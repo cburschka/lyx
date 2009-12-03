@@ -1256,6 +1256,14 @@ contributers = [
                  "22 February 2005",
                  u"The driving force behind, and maintainer of, the LyX wiki wiki.\nSwedish translation of the Windows installer"),
 
+     contributer(u"Julien Rioux",
+                 "jrioux () physics ! utoronto ! ca",
+                 "GPL",
+                 "Re: #6361: configure.py ignores packages required by user-defined modules",
+                 "m=125986505101722",
+                 "3 December 2009",
+                 u"Bug fix"),
+
      contributer(u"Bernhard Roider",
                  "bernhard.roider () sonnenkinder ! org",
                  "GPL",
