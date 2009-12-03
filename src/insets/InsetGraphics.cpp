@@ -66,6 +66,7 @@ TODO
 #include "MetricsInfo.h"
 #include "Mover.h"
 #include "OutputParams.h"
+#include "output_xhtml.h"
 #include "sgml.h"
 #include "TocBackend.h"
 
@@ -941,20 +942,25 @@ string InsetGraphics::prepareHTMLFile(OutputParams const & runparams) const
 }
 
 
-docstring InsetGraphics::xhtml(odocstream & os, OutputParams const & op) const
+docstring InsetGraphics::xhtml(XHTMLStream & xs, OutputParams const & op) const
 {
-	string output_file = prepareHTMLFile(op);
+	string const output_file = prepareHTMLFile(op);
 	if (output_file.empty()) {
-		LYXERR0("InsetGraphics::xhtml: File `" << params().filename 
-						<< "' not found.");
-		os << "<img src=\"" << params().filename.absFilename() << "\" />";
+		LYXERR0("InsetGraphics::xhtml: Unable to prepare file `" 
+		        << params().filename << "' for output. File missing?");
+		string const attr = "src='" + params().filename.absFilename() 
+		                    + "' alt='image: " + output_file + "'";
+		xs << CompTag("img", attr);
 		return docstring();
 	}
 
-	// FIXME Do we want to do something with the parameters, other than
-	// use them to do another conversion?
-	// FIXME Do the other conversion! Cropping, rotating, etc.
-	os << "<img src=\"" << from_utf8(output_file) << "\" />";
+	// FIXME XHTML 
+	// Do we want to do something with the parameters, other than use them to 
+	// crop, etc, the image?
+	// Speaking of which: Do the cropping, rotating, etc.
+	string const attr = "src='" + output_file + "' alt='image: " 
+	                    + output_file + "'";
+	xs << CompTag("img", attr);
 	return docstring();
 }
 
