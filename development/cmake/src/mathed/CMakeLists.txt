@@ -24,5 +24,7 @@ else()
 	add_library(mathed ${library_type} ${_allinone_files})
 endif()
 
+lyx_add_gcc_pch(mathed)
+
 project_source_group("${GROUP_CODE}" mathed_sources mathed_headers)
 

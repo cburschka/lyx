@@ -21,5 +21,7 @@ else()
 	add_library(graphics ${library_type} ${_allinone_files})
 endif()
 
+lyx_add_gcc_pch(graphics)
+
 project_source_group("${GROUP_CODE}" graphics_sources graphics_headers)
 

@@ -25,5 +25,7 @@ endif()
 
 target_link_libraries(frontends ${Lyx_Boost_Libraries})
 
+lyx_add_gcc_pch(frontends)
+
 project_source_group("${GROUP_CODE}" frontends_sources frontends_headers)
 

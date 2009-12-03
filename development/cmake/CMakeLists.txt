@@ -11,16 +11,19 @@ if(COMMAND cmake_policy)
 	cmake_policy(SET CMP0005 OLD)
 endif(COMMAND cmake_policy)
 
-set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
-
 project(lyx)
 
-option(lyxinstall "Build install projects/rules" ON)
+set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 
 # where to look first for cmake modules, before ${CMAKE_ROOT}/Modules/
 # is checked
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/modules")
 set(EXECUTABLE_OUTPUT_PATH  ${CMAKE_BINARY_DIR}/bin)
+
+
+option(lyxinstall "Build install projects/rules" ON)
+
+
 
 # Supress regeneration
 set(CMAKE_SUPPRESS_REGENERATION TRUE)
@@ -262,29 +265,46 @@ endforeach(_v)
 message(STATUS "")
 
 
-if(MSVC AND NOT disable-pch AND NOT MERGE_FILES)
+# PCHs not supported by cmake: http://www.cmake.org/Bug/view.php?id=1260
+# Not sure if it works for all non-msvc compilers
+include(PCHSupport_26)
+if (MSVC)
+	option(disable-pch "Disable precompiled headers" OFF)
+else()
+	option(disable-pch "Disable precompiled headers" ON)
+endif()
+
+if(NOT disable-pch)
+
 	message(STATUS "-----")
 	message(STATUS "----- using precompiled headers, disable with -Ddisable-pch=1")
 	message(STATUS "-----")
-	configure_file(${CMAKE_SOURCE_DIR}/pcheaders.h
-		${CMAKE_BINARY_DIR}/pcheaders.h)
-	configure_file(${CMAKE_SOURCE_DIR}/config.cpp.cmake
-		${CMAKE_BINARY_DIR}/config_pch.cpp)
-	macro(lyx_add_msvc_pch name_)
-		set_source_files_properties(${${name_}_sources} PROPERTIES
-			COMPILE_FLAGS "/Yuconfig.h /Fp\$(IntDir)/config.pch")
-		set_source_files_properties(${CMAKE_BINARY_DIR}/config_pch.cpp PROPERTIES
-			COMPILE_FLAGS "/Ycconfig.h /Fp\$(IntDir)/config.pch")
-		set(${name_}_sources ${${name_}_sources} ${CMAKE_BINARY_DIR}/config_pch.cpp
-			${CMAKE_BINARY_DIR}/pcheaders.h)
-		add_definitions(/DLYX_ENABLE_PCH)
-	endmacro(lyx_add_msvc_pch)
-	set(CMAKE_CXX_FLAGS_DEBUG
-		"${CMAKE_CXX_FLAGS_DEBUG} /DLYX_PCH_STL /DLYX_PCH_BOOST /DLYX_PCH_QT4")
-	set(CMAKE_CXX_FLAGS_RELEASE
-		"${CMAKE_CXX_FLAGS_RELEASE} /DLYX_PCH_STL /DLYX_PCH_BOOST /DLYX_PCH_QT4")
-	set(CMAKE_CXX_FLAGS_MINSIZEREL
-		"${CMAKE_CXX_FLAGS_MINSIZEREL} /DLYX_PCH_STL /DLYX_PCH_BOOST")
+	configure_file(${CMAKE_SOURCE_DIR}/pcheaders.h ${CMAKE_BINARY_DIR}/pcheaders.h)
+	configure_file(${CMAKE_SOURCE_DIR}/config.cpp.cmake ${CMAKE_BINARY_DIR}/config_pch.cpp)
+
+
+	if(MSVC AND NOT MERGE_FILES)
+		macro(lyx_add_msvc_pch name_)
+			set_source_files_properties(${${name_}_sources} PROPERTIES
+				COMPILE_FLAGS "/Yuconfig.h /Fp\$(IntDir)/config.pch")
+			set_source_files_properties(${CMAKE_BINARY_DIR}/config_pch.cpp PROPERTIES
+				COMPILE_FLAGS "/Ycconfig.h /Fp\$(IntDir)/config.pch")
+			set(${name_}_sources ${${name_}_sources} ${CMAKE_BINARY_DIR}/config_pch.cpp
+				${CMAKE_BINARY_DIR}/pcheaders.h)
+			set(CMAKE_CXX_FLAGS_DEBUG	"${CMAKE_CXX_FLAGS_DEBUG} /DLYX_PCH_STL /DLYX_PCH_BOOST /DLYX_PCH_QT4")
+			set(CMAKE_CXX_FLAGS_RELEASE	"${CMAKE_CXX_FLAGS_RELEASE} /DLYX_PCH_STL /DLYX_PCH_BOOST /DLYX_PCH_QT4")
+			set(CMAKE_CXX_FLAGS_MINSIZEREL	"${CMAKE_CXX_FLAGS_MINSIZEREL} /DLYX_PCH_STL /DLYX_PCH_BOOST")			
+		endmacro(lyx_add_msvc_pch)
+		macro(lyx_add_gcc_pch name_)
+		endmacro()
+	else()
+		macro(lyx_add_msvc_pch name_)
+		endmacro()
+		macro(lyx_add_gcc_pch name_)
+			add_definitions(-DLYX_ENABLE_PCH -DLYX_PCH_STL -DLYX_PCH_BOOST -DLYX_PCH_QT4)
+			ADD_PRECOMPILED_HEADER(${name_} ${CMAKE_BINARY_DIR}/config_pch.cpp ${CMAKE_BINARY_DIR}/config.h.gch)
+		endmacro()
+	endif()
 else()
 	if(MSVC)
 		message(STATUS "-----")
@@ -294,6 +314,8 @@ else()
 	set(disable-pch TRUE CACHE TYPE STRING)
 	macro(lyx_add_msvc_pch)
 	endmacro(lyx_add_msvc_pch)
+	macro(lyx_add_gcc_pch name_)
+	endmacro()
 endif()
 
 if(MSVC)

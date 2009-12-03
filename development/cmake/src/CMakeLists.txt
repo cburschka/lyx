@@ -71,6 +71,8 @@ add_executable(${_lyx}
 	${vld_files}
 )
 
+lyx_add_gcc_pch(lyx)
+
 target_link_libraries(${_lyx}
 	mathed
 	insets
