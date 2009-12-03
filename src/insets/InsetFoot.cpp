@@ -40,14 +40,14 @@ void InsetFoot::updateLabels(ParIterator const & it)
 {
 	BufferParams const & bp = buffer().masterBuffer()->params();
 	Counters & cnts = bp.documentClass().counters();
-	static docstring const foot = from_ascii("footnote");
 	Paragraph const & outer = it.paragraph();
-	if (!outer.layout().intitle && cnts.hasCounter(foot)) {
-		cnts.step(foot);
-		custom_label_= translateIfPossible(getLayout().labelstring()) 
-			+ ' ' + cnts.theCounter(foot, outer.getParLanguage(bp)->code());
-		setLabel(custom_label_);
-	
+	InsetLayout const & il = getLayout();
+	docstring const & count = il.counter();
+	if (!outer.layout().intitle && cnts.hasCounter(count)) {
+		cnts.step(count);
+		custom_label_= translateIfPossible(il.labelstring()) 
+			+ ' ' + cnts.theCounter(count, outer.getParLanguage(bp)->code());
+		setLabel(custom_label_);	
 	}
 	InsetCollapsable::updateLabels(it);
 }
