@@ -4,9 +4,9 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Asger Alstrup
- *
- * Interface cleaned up by
  * \author Angus Leeming
+ * \author Enrico Forestieri
+ * \author Peter Kuemmel
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -20,12 +20,28 @@
 #include "support/SystemcallPrivate.h"
 #include "support/os.h"
 
+
 #include <cstdlib>
 #include <iostream>
 
 #include <QProcess>
+#include <QTime>
+#include <QThread>
+#include <QCoreApplication>
+
 
 #define USE_QPROCESS
+
+
+struct Sleep : QThread
+{
+	static void millisec(unsigned long ms) 
+	{
+		QThread::usleep(ms * 1000);
+	}
+};
+
+
 
 using namespace std;
 
@@ -40,6 +56,9 @@ static void killProcess(QProcess * p)
 	p->close();
 	delete p;
 }
+
+
+
 
 
 // Reuse of instance
@@ -90,48 +109,47 @@ string const parsecmd(string const & cmd, string & outfile)
 } // namespace anon
 
 
+
 int Systemcall::startscript(Starttype how, string const & what)
 {
 	string outfile;
 	QString cmd = toqstr(parsecmd(what, outfile));
 	QProcess * process = new QProcess;
-	ConOut console(process);
+	SystemcallPrivate d(process);
 	if (!outfile.empty()) {
 		// Check whether we have to simply throw away the output.
 		if (outfile != os::nulldev())
 			process->setStandardOutputFile(toqstr(outfile));
 	} else if (os::is_terminal(os::STDOUT))
-		console.showout();
+		d.showout();
 	if (os::is_terminal(os::STDERR))
-		console.showerr();
+		d.showerr();
+	
 
-	process->start(cmd);
-	if (!process->waitForStarted(3000)) {
-		LYXERR0("Qprocess " << cmd << " did not start!");
-		LYXERR0("error " << process->error());
-		LYXERR0("state " << process->state());
-		LYXERR0("status " << process->exitStatus());
+	bool processEvents = false;
+	d.startProcess(cmd);
+	if (!d.waitWhile(SystemcallPrivate::Starting, processEvents, 3000)) {
+		LYXERR0("QProcess " << cmd << " did not start!");
+		LYXERR0("error " << d.errorMessage());
 		return 10;
 	}
+
 	if (how == DontWait) {
 		// TODO delete process later
 		return 0;
 	}
 
-	if (!process->waitForFinished(180000)) {
-		LYXERR0("Qprocess " << cmd << " did not finished!");
-		LYXERR0("error " << process->error());
-		LYXERR0("state " << process->state());
-		LYXERR0("status " << process->exitStatus());
+	if (!d.waitWhile(SystemcallPrivate::Running, processEvents, 180000)) {
+		LYXERR0("QProcess " << cmd << " did not finished!");
+		LYXERR0("error " << d.errorMessage());
+		LYXERR0("status " << d.exitStatusMessage());
 		return 20;
 	}
+
 	int const exit_code = process->exitCode();
 	if (exit_code) {
-		LYXERR0("Qprocess " << cmd << " finished!");
-		LYXERR0("exitCode " << process->exitCode());
-		LYXERR0("error " << process->error());
-		LYXERR0("state " << process->state());
-		LYXERR0("status " << process->exitStatus());
+		LYXERR0("QProcess " << cmd << " finished!");
+		LYXERR0("error " << exit_code << ": " << d.errorMessage()); 
 	}
 
 	// If the output has been redirected, we write it all at once.
@@ -145,19 +163,68 @@ int Systemcall::startscript(Starttype how, string const & what)
 			    process->readAllStandardError().data()));
 
 	killProcess(process);
+
 	return exit_code;
 }
 
 
-ConOut::ConOut(QProcess * proc) : proc_(proc), outindex_(0), errindex_(0),
-				  showout_(false), showerr_(false)
+SystemcallPrivate::SystemcallPrivate(QProcess * proc) : proc_(proc), outindex_(0), 
+				errindex_(0), showout_(false), showerr_(false)
 {
 	connect(proc, SIGNAL(readyReadStandardOutput()), SLOT(stdOut()));
 	connect(proc, SIGNAL(readyReadStandardError()), SLOT(stdErr()));
+	connect(proc, SIGNAL(error(QProcess::ProcessError)), SLOT(processError(QProcess::ProcessError)));
+	connect(proc, SIGNAL(started()), this, SLOT(processStarted()));
+	connect(proc, SIGNAL(finished(int, QProcess::ExitStatus)), SLOT(processFinished(int, QProcess::ExitStatus)));
 }
 
 
-ConOut::~ConOut()
+
+void SystemcallPrivate::startProcess(const QString& cmd)
+{
+	state = SystemcallPrivate::Starting;
+	proc_->start(cmd);
+}
+
+
+void SystemcallPrivate::waitAndProcessEvents()
+{
+	Sleep::millisec(100);
+	QCoreApplication::processEvents(QEventLoop::ExcludeUserInputEvents);
+}
+
+
+bool SystemcallPrivate::waitWhile(State waitwhile, bool processEvents, int timeout)
+{
+	// Block GUI while waiting,
+	// relay on QProcess' wait functions
+	if (!processEvents) {
+		if (waitwhile == Starting)
+			return proc_->waitForStarted(timeout);
+		if (waitwhile == Running)
+			return proc_->waitForFinished(timeout);
+		return false;
+	}
+
+	// process events while waiting, no timeout
+	if (timeout == -1) {
+		while (state == waitwhile && state != Error) {
+			waitAndProcessEvents();
+		}
+		return state != Error;
+	} 
+
+	// process events while waiting whith timeout
+	QTime timer;
+	timer.start();
+	while (state == waitwhile && state != Error && timer.elapsed() < timeout) {
+		waitAndProcessEvents();
+	}
+	return (state != Error) && (timer.elapsed() < timeout);
+}
+
+
+SystemcallPrivate::~SystemcallPrivate()
 {
 	if (outindex_) {
 		outdata_[outindex_] = '\0';
@@ -174,7 +241,7 @@ ConOut::~ConOut()
 }
 
 
-void ConOut::stdOut()
+void SystemcallPrivate::stdOut()
 {
 	if (showout_) {
 		char c;
@@ -191,7 +258,7 @@ void ConOut::stdOut()
 }
 
 
-void ConOut::stdErr()
+void SystemcallPrivate::stdErr()
 {
 	if (showerr_) {
 		char c;
@@ -206,6 +273,76 @@ void ConOut::stdErr()
 		}
 	}
 }
+
+
+void SystemcallPrivate::processError(QProcess::ProcessError err)
+{
+	state = Error;
+}
+
+
+QString SystemcallPrivate::errorMessage() const 
+{
+	QString message;
+	switch (proc_->error()) {
+		case QProcess::FailedToStart:
+			message = "The process failed to start. Either the invoked program is missing, "
+				      "or you may have insufficient permissions to invoke the program.";
+			break;
+		case QProcess::Crashed:
+			message = "The process crashed some time after starting successfully.";
+			break;
+		case QProcess::Timedout:
+			message = "The process timed out. It might be restarted automatically.";
+			break;
+		case QProcess::WriteError:
+			message = "An error occurred when attempting to write to the process-> For example, "
+				      "the process may not be running, or it may have closed its input channel.";
+			break;
+		case QProcess::ReadError:
+			message = "An error occurred when attempting to read from the process-> For example, "
+				      "the process may not be running.";
+			break;
+		case QProcess::UnknownError:
+		default:
+			message = "An unknown error occured.";
+			break;
+	}
+	return message;
+}
+
+
+void SystemcallPrivate::processStarted()
+{
+	state = Running;
+	// why do we get two started signals?
+	//disconnect(proc_, SIGNAL(started()), this, SLOT(processStarted()));
+}
+
+
+void SystemcallPrivate::processFinished(int, QProcess::ExitStatus status)
+{
+	state = Finished;
+}
+
+
+QString SystemcallPrivate::exitStatusMessage() const
+{
+	QString message;
+	switch (proc_->exitStatus()) {
+		case QProcess::NormalExit:
+			message = "The process exited normally.";
+			break;
+		case QProcess::CrashExit:
+			message = "The process crashed.";
+			break;
+		default:
+			message = "Unknown exit state.";
+			break;
+	}
+	return message;
+}
+
 
 #include "moc_SystemcallPrivate.cpp"
 #endif

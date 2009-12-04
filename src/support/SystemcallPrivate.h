@@ -14,28 +14,46 @@
 
 #include <QObject>
 
-class QProcess;
+#include <QProcess>
 
 namespace lyx {
 namespace support {
+
+class Systemcall;
 
 /**
  * Outputs to the console terminal the line buffered standard output and
  * error of a spawned process when there is a controlling terminal and 
  * stdout/stderr have not been redirected.
  */
-class ConOut : public QObject
+class SystemcallPrivate : public QObject
 {
 	Q_OBJECT
 public:
-	ConOut(QProcess * proc);
-	~ConOut();
+	SystemcallPrivate(QProcess * proc);
+	~SystemcallPrivate();
 
 	/// Should the standard output be displayed?
 	void showout() { showout_ = true; }
 
 	/// Should the standard error be displayed?
 	void showerr() { showerr_ = true; }
+
+	enum State {
+		Starting,
+		Running,
+		Finished,
+		Error
+	};
+	State state;
+
+	bool waitWhile(State, bool processEvents, int timeout = -1);
+	void startProcess(const QString& cmd);
+	
+	QString errorMessage() const;
+	QString exitStatusMessage() const;
+
+
 
 private:
 	/// Pointer to the process to monitor.
@@ -55,9 +73,15 @@ private:
 	/// 
 	bool showerr_;
 
+	void waitAndProcessEvents();
+
 public Q_SLOTS:
 	void stdOut();
 	void stdErr();
+	void processError(QProcess::ProcessError);
+	void processStarted();
+	void processFinished(int, QProcess::ExitStatus status);
+
 };
 
 } // namespace support
