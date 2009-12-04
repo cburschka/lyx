@@ -115,7 +115,8 @@ int Systemcall::startscript(Starttype how, string const & what)
 	}
 
 	if (how == DontWait) {
-		// TODO delete process later
+		QProcess* released = d.releaseProcess();
+		(void) released; // TODO who deletes it?
 		return 0;
 	}
 
@@ -131,9 +132,6 @@ int Systemcall::startscript(Starttype how, string const & what)
 		LYXERR0("QProcess " << cmd << " finished!");
 		LYXERR0("error " << exit_code << ": " << d.errorMessage()); 
 	}
-
-	d.flush();
-	d.killProcess();
 
 	return exit_code;
 }
@@ -163,8 +161,10 @@ SystemcallPrivate::SystemcallPrivate(const std::string& of) :
 
 void SystemcallPrivate::startProcess(const QString& cmd)
 {
-	state = SystemcallPrivate::Starting;
-	proc_->start(cmd);
+	if (proc_) {
+		state = SystemcallPrivate::Starting;
+		proc_->start(cmd);
+	}
 }
 
 
@@ -177,6 +177,9 @@ void SystemcallPrivate::waitAndProcessEvents()
 
 bool SystemcallPrivate::waitWhile(State waitwhile, bool processEvents, int timeout)
 {
+	if (!proc_)
+		return false;
+
 	// Block GUI while waiting,
 	// relay on QProcess' wait functions
 	if (!processEvents) {
@@ -208,6 +211,8 @@ bool SystemcallPrivate::waitWhile(State waitwhile, bool processEvents, int timeo
 
 SystemcallPrivate::~SystemcallPrivate()
 {
+	flush();
+
 	if (outindex_) {
 		outdata_[outindex_] = '\0';
 		outindex_ = 0;
@@ -220,25 +225,29 @@ SystemcallPrivate::~SystemcallPrivate()
 		cerr << errdata_;
 	}
 	cerr.flush();
+
+	killProcess();
 }
 
 
 void SystemcallPrivate::flush()
 {
-	// If the output has been redirected, we write it all at once.
-	// Even if we are not running in a terminal, the output could go
-	// to some log file, for example ~/.xsession-errors on *nix.
-	if (!os::is_terminal(os::STDOUT) && outfile.empty())
-		cout << fromqstr(QString::fromLocal8Bit(
-			    proc_->readAllStandardOutput().data()));
-	if (!os::is_terminal(os::STDERR))
-		cerr << fromqstr(QString::fromLocal8Bit(
-			    proc_->readAllStandardError().data()));
+	if (proc_) {
+		// If the output has been redirected, we write it all at once.
+		// Even if we are not running in a terminal, the output could go
+		// to some log file, for example ~/.xsession-errors on *nix.
+		if (!os::is_terminal(os::STDOUT) && outfile.empty())
+			cout << fromqstr(QString::fromLocal8Bit(
+						proc_->readAllStandardOutput().data()));
+		if (!os::is_terminal(os::STDERR))
+			cerr << fromqstr(QString::fromLocal8Bit(
+						proc_->readAllStandardError().data()));
+	}
 }
 
 void SystemcallPrivate::stdOut()
 {
-	if (showout_) {
+	if (proc_ && showout_) {
 		char c;
 		proc_->setReadChannel(QProcess::StandardOutput);
 		while (proc_->getChar(&c)) {
@@ -255,7 +264,7 @@ void SystemcallPrivate::stdOut()
 
 void SystemcallPrivate::stdErr()
 {
-	if (showerr_) {
+	if (proc_ && showerr_) {
 		char c;
 		proc_->setReadChannel(QProcess::StandardError);
 		while (proc_->getChar(&c)) {
@@ -278,6 +287,9 @@ void SystemcallPrivate::processError(QProcess::ProcessError err)
 
 QString SystemcallPrivate::errorMessage() const 
 {
+	if (!proc_)
+		return "No QProcess available";
+
 	QString message;
 	switch (proc_->error()) {
 		case QProcess::FailedToStart:
@@ -323,6 +335,9 @@ void SystemcallPrivate::processFinished(int, QProcess::ExitStatus status)
 
 QString SystemcallPrivate::exitStatusMessage() const
 {
+	if (!proc_)
+		return "No QProcess available";
+
 	QString message;
 	switch (proc_->exitStatus()) {
 		case QProcess::NormalExit:
@@ -340,7 +355,18 @@ QString SystemcallPrivate::exitStatusMessage() const
 
 int SystemcallPrivate::exitCode()
 {
+	if (!proc_)
+		return -1;
+
 	return proc_->exitCode();
+}
+
+
+QProcess* SystemcallPrivate::releaseProcess()
+{
+	QProcess* released = proc_;
+	proc_ = 0;
+	return released;
 }
 
 
@@ -351,11 +377,13 @@ void SystemcallPrivate::killProcess()
 
 void SystemcallPrivate::killProcess(QProcess * p)
 {
-	p->disconnect();
-	p->closeReadChannel(QProcess::StandardOutput);
-	p->closeReadChannel(QProcess::StandardError);
-	p->close();
-	delete p;
+	if (p) {
+		p->disconnect();
+		p->closeReadChannel(QProcess::StandardOutput);
+		p->closeReadChannel(QProcess::StandardError);
+		p->close();
+		delete p;
+	}
 }
 
 

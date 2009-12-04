@@ -56,7 +56,9 @@ public:
 	QString exitStatusMessage() const;
 
 	void flush();
-	void killProcess();
+
+	QProcess* releaseProcess();
+	
 	static void killProcess(QProcess * p);
 
 private:
@@ -80,6 +82,8 @@ private:
 	bool showerr_;
 
 	void waitAndProcessEvents();
+
+	void killProcess();
 
 public Q_SLOTS:
 	void stdOut();
