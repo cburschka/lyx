@@ -92,13 +92,19 @@ Hunspell * HunspellChecker::Private::addSpeller(string const & lang)
 	string hunspell_path = external_path(lyxrc.hunspelldir_path);
 	LYXERR(Debug::FILES, "hunspell path: " << hunspell_path);
 	if (hunspell_path.empty()) {
+		// FIXME We'd like to issue a better error message here, but there seems
+		// to be a problem about thread safety, or something of the sort. If
+		// we issue the message using frontend::Alert, then the code comes
+		// back through here while the box is waiting, and causes some kind
+		// of crash. 
 		static bool warned = false;
 		if (!warned) {
-			frontend::Alert::error(_("Hunspell Path Not Found"), 
-					_("You must set the Hunspell dictionary path in Tools>Preferences>Paths."));
 			warned = true;
+			LYXERR0("Hunspell path not set.");
+			//frontend::Alert::error(_("Hunspell Path Not Found"), 
+			//		_("You must set the Hunspell dictionary path in Tools>Preferences>Paths."));
 		}
-		return false;
+		return 0;
 	}
 
 	hunspell_path += "/" + lang;
