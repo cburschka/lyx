@@ -80,8 +80,10 @@ private:
 	bool showout_;
 	/// 
 	bool showerr_;
+	bool process_events;
 
 	void waitAndProcessEvents();
+	void processEvents();
 
 	void killProcess();
 

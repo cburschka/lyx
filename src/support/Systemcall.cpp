@@ -28,7 +28,7 @@
 #include <QTime>
 #include <QThread>
 #include <QCoreApplication>
-
+#include <QDebug>
 
 #define USE_QPROCESS
 
@@ -138,7 +138,7 @@ int Systemcall::startscript(Starttype how, string const & what)
 
 
 SystemcallPrivate::SystemcallPrivate(const std::string& of) : 
-				proc_(new QProcess), outindex_(0), 
+				proc_(new QProcess), outindex_(0), process_events(false),
 				errindex_(0), outfile(of), showout_(false), showerr_(false)
 {
 	if (!outfile.empty()) {
@@ -167,18 +167,27 @@ void SystemcallPrivate::startProcess(const QString& cmd)
 	}
 }
 
+void SystemcallPrivate::processEvents()
+{
+	if(process_events) {
+		//static int count = 0; qDebug() << count++ << ": waitAndProcessEvents";
+		QCoreApplication::processEvents(QEventLoop::AllEvents);
+	}
+}
 
 void SystemcallPrivate::waitAndProcessEvents()
 {
 	Sleep::millisec(100);
-	QCoreApplication::processEvents(QEventLoop::ExcludeUserInputEvents);
+	processEvents();
 }
 
 
-bool SystemcallPrivate::waitWhile(State waitwhile, bool process_events, int timeout)
+bool SystemcallPrivate::waitWhile(State waitwhile, bool proc_events, int timeout)
 {
 	if (!proc_)
 		return false;
+
+	process_events = proc_events;
 
 	// Block GUI while waiting,
 	// relay on QProcess' wait functions
@@ -259,6 +268,7 @@ void SystemcallPrivate::stdOut()
 			}
 		}
 	}
+	processEvents();
 }
 
 
@@ -276,6 +286,21 @@ void SystemcallPrivate::stdErr()
 			}
 		}
 	}
+	processEvents();
+}
+
+
+void SystemcallPrivate::processStarted()
+{
+	state = Running;
+	// why do we get two started signals?
+	//disconnect(proc_, SIGNAL(started()), this, SLOT(processStarted()));
+}
+
+
+void SystemcallPrivate::processFinished(int, QProcess::ExitStatus status)
+{
+	state = Finished;
 }
 
 
@@ -316,20 +341,6 @@ QString SystemcallPrivate::errorMessage() const
 			break;
 	}
 	return message;
-}
-
-
-void SystemcallPrivate::processStarted()
-{
-	state = Running;
-	// why do we get two started signals?
-	//disconnect(proc_, SIGNAL(started()), this, SLOT(processStarted()));
-}
-
-
-void SystemcallPrivate::processFinished(int, QProcess::ExitStatus status)
-{
-	state = Finished;
 }
 
 
