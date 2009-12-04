@@ -1119,6 +1119,9 @@ def processModuleFile(file, bool_docbook):
             # which is \input'ed by chkconfig.ltx
             testpackages = list()
             for pkg in pkgs.split(","):
+                if "->" in pkg:
+                    # this is a converter dependency: skip
+                    continue
                 if pkg.endswith(".sty"):
                     pkg = pkg[:-4]
                 testpackages.append("\\TestPackage{%s}" % (pkg,))
