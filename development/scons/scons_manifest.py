@@ -2517,6 +2517,7 @@ lib_examples_fr_files = Split('''
     exemple_lyxifie.lyx
     exemple-powerdot.lyx
     Foils.lyx
+    linguistics.lyx
     ListesPuces.lyx
     multicol.lyx
     seminar.lyx
