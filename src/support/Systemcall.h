@@ -42,7 +42,7 @@ public:
 	 *  The string "what" contains a commandline with arguments separated
 	 *  by spaces.
 	 */
-	int startscript(Starttype how, std::string const & what);
+	int startscript(Starttype how, std::string const & what, bool process_events = true);
 };
 
 } // namespace support
