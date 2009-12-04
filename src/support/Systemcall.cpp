@@ -139,7 +139,7 @@ int Systemcall::startscript(Starttype how, string const & what)
 
 SystemcallPrivate::SystemcallPrivate(const std::string& of) : 
 				proc_(new QProcess), outindex_(0), 
-				errindex_(0), showout_(false), showerr_(false), outfile(of)
+				errindex_(0), outfile(of), showout_(false), showerr_(false)
 {
 	if (!outfile.empty()) {
 		// Check whether we have to simply throw away the output.
