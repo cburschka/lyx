@@ -105,10 +105,10 @@ int Systemcall::startscript(Starttype how, string const & what)
 	QString cmd = toqstr(parsecmd(what, outfile));
 	SystemcallPrivate d(outfile);
 
-	bool processEvents = false;
+	bool process_events = false;
 
 	d.startProcess(cmd);
-	if (!d.waitWhile(SystemcallPrivate::Starting, processEvents, 3000)) {
+	if (!d.waitWhile(SystemcallPrivate::Starting, process_events, 3000)) {
 		LYXERR0("QProcess " << cmd << " did not start!");
 		LYXERR0("error " << d.errorMessage());
 		return 10;
@@ -120,7 +120,7 @@ int Systemcall::startscript(Starttype how, string const & what)
 		return 0;
 	}
 
-	if (!d.waitWhile(SystemcallPrivate::Running, processEvents, 180000)) {
+	if (!d.waitWhile(SystemcallPrivate::Running, process_events, 180000)) {
 		LYXERR0("QProcess " << cmd << " did not finished!");
 		LYXERR0("error " << d.errorMessage());
 		LYXERR0("status " << d.exitStatusMessage());
@@ -175,14 +175,14 @@ void SystemcallPrivate::waitAndProcessEvents()
 }
 
 
-bool SystemcallPrivate::waitWhile(State waitwhile, bool processEvents, int timeout)
+bool SystemcallPrivate::waitWhile(State waitwhile, bool process_events, int timeout)
 {
 	if (!proc_)
 		return false;
 
 	// Block GUI while waiting,
 	// relay on QProcess' wait functions
-	if (!processEvents) {
+	if (!process_events) {
 		if (waitwhile == Starting)
 			return proc_->waitForStarted(timeout);
 		if (waitwhile == Running)
