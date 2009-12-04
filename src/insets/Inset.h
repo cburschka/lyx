@@ -466,8 +466,10 @@ public:
 	virtual void addToToc(DocIterator const &) {}
 	/// Fill keys with BibTeX information
 	virtual void fillWithBibKeys(BiblioInfo &, InsetIterator const &) const {}
-	/// Update the counters of this inset and of its contents
-	virtual void updateLabels(ParIterator const &) {}
+	/// Update the counters of this inset and of its contents.
+	/// The boolean indicates whether we are preparing for output, e.g.,
+	/// of XHTML.
+	virtual void updateLabels(ParIterator const &, bool) {}
 
 	/// Updates the inset's dialog
 	virtual Buffer const * updateFrontend() const;

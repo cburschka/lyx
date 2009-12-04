@@ -49,7 +49,7 @@ private:
 	///
 	docstring name() const { return from_ascii("Listings"); }
 	// Update the counters of this inset and of its contents
-	void updateLabels(ParIterator const &);
+	void updateLabels(ParIterator const &, bool);
 	///
 	void write(std::ostream & os) const;
 	///

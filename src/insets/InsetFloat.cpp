@@ -195,7 +195,7 @@ bool InsetFloat::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-void InsetFloat::updateLabels(ParIterator const & it)
+void InsetFloat::updateLabels(ParIterator const & it, bool out)
 {
 	Counters & cnts =
 		buffer().masterBuffer()->params().documentClass().counters();
@@ -213,7 +213,7 @@ void InsetFloat::updateLabels(ParIterator const & it)
 	cnts.current_float(params().type);
 	cnts.isSubfloat(subflt);
 
-	InsetCollapsable::updateLabels(it);
+	InsetCollapsable::updateLabels(it, out);
 
 	//reset afterwards
 	cnts.current_float(saveflt);

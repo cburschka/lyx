@@ -56,7 +56,7 @@ public:
 	///
 	void validate(LaTeXFeatures &) const;
 	///
-	void updateLabels(ParIterator const & it);
+	void updateLabels(ParIterator const & it, bool);
 	///
 	void addToToc(DocIterator const &);
 

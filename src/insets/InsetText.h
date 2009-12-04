@@ -167,7 +167,7 @@ public:
 		{ return getLayout().allowParagraphCustomization(); }
 
 	/// Update the counters of this inset and of its contents
-	virtual void updateLabels(ParIterator const &);
+	virtual void updateLabels(ParIterator const &, bool);
 	/// the string that is passed to the TOC
 	void tocString(odocstream &) const;
 	///

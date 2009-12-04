@@ -105,7 +105,7 @@ docstring InsetLabel::screenLabel() const
 }
 
 
-void InsetLabel::updateLabels(ParIterator const &)
+void InsetLabel::updateLabels(ParIterator const &, bool)
 {
 	docstring const & label = getParam("name");
 	if (buffer().insetLabel(label)) {

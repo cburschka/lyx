@@ -65,7 +65,7 @@ private:
 	///
 	virtual void fillWithBibKeys(BiblioInfo &, InsetIterator const &) const;
 	/// Update the counter of this inset
-	virtual void updateLabels(ParIterator const &);
+	virtual void updateLabels(ParIterator const &, bool);
 	///
 	void updateCommand(docstring const & new_key, bool dummy = false);
 	///

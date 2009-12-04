@@ -1021,18 +1021,18 @@ void InsetInclude::updateCommand()
 	setParams(p);	
 }
 
-void InsetInclude::updateLabels(ParIterator const & it)
+void InsetInclude::updateLabels(ParIterator const & it, bool out)
 {
 	Buffer const * const childbuffer = getChildBuffer();
 	if (childbuffer) {
-		childbuffer->updateLabels(Buffer::UpdateChildOnly);
+		childbuffer->updateLabels(out, Buffer::UpdateChildOnly);
 		return;
 	}
 	if (!isListings(params()))
 		return;
 
 	if (label_)
-		label_->updateLabels(it);
+		label_->updateLabels(it, out);
 
 	InsetListingsParams const par(to_utf8(params()["lstparams"]));
 	if (par.getParamValue("caption").empty()) {

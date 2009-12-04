@@ -90,7 +90,7 @@ public:
 	///
 	void updateCommand();
 	///
-	void updateLabels(ParIterator const &);
+	void updateLabels(ParIterator const &, bool);
 	///
 	static ParamInfo const & findInfo(std::string const &);
 	///

@@ -36,7 +36,7 @@ public:
 	///
 	void setBuffer(Buffer &);
 	///
-	void updateLabels(ParIterator const &);
+	void updateLabels(ParIterator const &, bool);
 	///
 	void addToToc(DocIterator const &);
 	///

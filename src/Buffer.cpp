@@ -3442,7 +3442,7 @@ void Buffer::setBuffersForInsets() const
 }
 
 
-void Buffer::updateLabels(UpdateScope scope) const
+void Buffer::updateLabels(bool out, UpdateScope scope) const
 {
 	// Use the master text class also for child documents
 	Buffer const * const master = masterBuffer();
@@ -3456,7 +3456,7 @@ void Buffer::updateLabels(UpdateScope scope) const
 		// If this is a child document start with the master
 		if (master != this) {
 			bufToUpdate.insert(this);
-			master->updateLabels();
+			master->updateLabels(out);
 			// Do this here in case the master has no gui associated with it. Then, 
 			// the TocModel is not updated and TocModel::toc_ is invalid (bug 5699).
 			if (!master->gui_)
@@ -3484,7 +3484,7 @@ void Buffer::updateLabels(UpdateScope scope) const
 
 	// do the real work
 	ParIterator parit = cbuf.par_iterator_begin();
-	updateLabels(parit);
+	updateLabels(parit, out);
 
 	if (master != this)
 		// TocBackend update will be done later.
@@ -3695,7 +3695,7 @@ void Buffer::setLabel(ParIterator & it) const
 }
 
 
-void Buffer::updateLabels(ParIterator & parit) const
+void Buffer::updateLabels(ParIterator & parit, bool out) const
 {
 	LASSERT(parit.pit() == 0, /**/);
 
@@ -3720,7 +3720,7 @@ void Buffer::updateLabels(ParIterator & parit) const
 		InsetList::const_iterator end = parit->insetList().end();
 		for (; iit != end; ++iit) {
 			parit.pos() = iit->pos;
-			iit->inset->updateLabels(parit);
+			iit->inset->updateLabels(parit, out);
 		}
 	}
 }

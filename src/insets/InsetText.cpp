@@ -675,17 +675,17 @@ ParagraphList & InsetText::paragraphs()
 }
 
 
-void InsetText::updateLabels(ParIterator const & it)
+void InsetText::updateLabels(ParIterator const & it, bool out)
 {
 	ParIterator it2 = it;
 	it2.forwardPos();
 	LASSERT(&it2.inset() == this && it2.pit() == 0, return);
 	if (producesOutput())
-		buffer().updateLabels(it2);
+		buffer().updateLabels(it2, out);
 	else {
 		DocumentClass const & tclass = buffer().masterBuffer()->params().documentClass();
 		Counters const savecnt = tclass.counters();
-		buffer().updateLabels(it2);
+		buffer().updateLabels(it2, out);
 		tclass.counters() = savecnt;
 	}
 }

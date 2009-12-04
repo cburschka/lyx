@@ -526,9 +526,9 @@ public:
 	// clear how to do it just for the individual pieces we need.
 	void setBuffersForInsets() const;
 	///
-	void updateLabels(UpdateScope = UpdateMaster) const;
+	void updateLabels(bool output = false, UpdateScope = UpdateMaster) const;
 	///
-	void updateLabels(ParIterator & parit) const;
+	void updateLabels(ParIterator & parit, bool output = false) const;
 
 	/// Spellcheck starting from \p from.
 	/// \p from initial position, will then points to the next misspelled

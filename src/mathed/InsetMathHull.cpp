@@ -211,7 +211,7 @@ void InsetMathHull::setBuffer(Buffer & buffer)
 }
 
 
-void InsetMathHull::updateLabels(ParIterator const & it)
+void InsetMathHull::updateLabels(ParIterator const & it, bool out)
 {
 	if (!buffer_) {
 		//FIXME: buffer_ should be set at creation for this inset! Problem is
@@ -221,7 +221,7 @@ void InsetMathHull::updateLabels(ParIterator const & it)
 	}
 	for (size_t i = 0; i != label_.size(); ++i) {
 		if (label_[i])
-			label_[i]->updateLabels(it);
+			label_[i]->updateLabels(it, out);
 	}
 }
 

@@ -254,7 +254,7 @@ void InsetBibitem::fillWithBibKeys(BiblioInfo & keys, InsetIterator const & it) 
 
 
 // Update the counters of this inset and of its contents
-void InsetBibitem::updateLabels(ParIterator const & it) 
+void InsetBibitem::updateLabels(ParIterator const & it, bool)
 {
 	BufferParams const & bp = buffer().masterBuffer()->params();
 	Counters & counters = bp.documentClass().counters();

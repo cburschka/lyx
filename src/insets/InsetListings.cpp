@@ -70,7 +70,7 @@ Inset::DisplayType InsetListings::display() const
 }
 
 
-void InsetListings::updateLabels(ParIterator const & it)
+void InsetListings::updateLabels(ParIterator const & it, bool out)
 {
 	Counters & cnts = buffer().masterBuffer()->params().documentClass().counters();
 	string const saveflt = cnts.current_float();
@@ -78,7 +78,7 @@ void InsetListings::updateLabels(ParIterator const & it)
 	// Tell to captions what the current float is
 	cnts.current_float("listing");
 
-	InsetCollapsable::updateLabels(it);
+	InsetCollapsable::updateLabels(it, out);
 
 	//reset afterwards
 	cnts.current_float(saveflt);

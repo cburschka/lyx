@@ -294,7 +294,7 @@ docstring InsetCaption::getCaptionAsHTML(XHTMLStream & xs,
 }
 
 
-void InsetCaption::updateLabels(ParIterator const & it)
+void InsetCaption::updateLabels(ParIterator const & it, bool out)
 {
 	Buffer const & master = *buffer().masterBuffer();
 	DocumentClass const & tclass = master.params().documentClass();
@@ -329,7 +329,7 @@ void InsetCaption::updateLabels(ParIterator const & it)
 	}
 
 	// Do the real work now.
-	InsetText::updateLabels(it);
+	InsetText::updateLabels(it, out);
 }
 
 

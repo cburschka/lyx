@@ -440,7 +440,7 @@ docstring InsetCitation::screenLabel() const
 }
 
 
-void InsetCitation::updateLabels(ParIterator const &)
+void InsetCitation::updateLabels(ParIterator const &, bool)
 {
 	CiteEngine const engine = buffer().params().citeEngine();
 	if (cache.params == params() && cache.engine == engine)
