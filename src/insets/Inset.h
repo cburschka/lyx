@@ -111,7 +111,7 @@ public:
 	/**
 	  * This is typically used after this inset is created interactively.
 	  * Intented purpose is to sanitize internal state with regard to current
-		* Buffer. The default implementation calls buffer().updateLabels() if
+	  * Buffer. The default implementation calls buffer().updateLabels() if
 	  * the inset is labeled.
 	  *
 	  * \sa isLabeled()
