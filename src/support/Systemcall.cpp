@@ -138,8 +138,8 @@ int Systemcall::startscript(Starttype how, string const & what)
 
 
 SystemcallPrivate::SystemcallPrivate(const std::string& of) : 
-				proc_(new QProcess), outindex_(0), process_events(false),
-				errindex_(0), outfile(of), showout_(false), showerr_(false)
+                                proc_(new QProcess), outindex_(0), errindex_(0),
+                                outfile(of), showout_(false), showerr_(false), process_events(false)
 {
 	if (!outfile.empty()) {
 		// Check whether we have to simply throw away the output.
@@ -167,6 +167,7 @@ void SystemcallPrivate::startProcess(const QString& cmd)
 	}
 }
 
+
 void SystemcallPrivate::processEvents()
 {
 	if(process_events) {
@@ -174,6 +175,7 @@ void SystemcallPrivate::processEvents()
 		QCoreApplication::processEvents(QEventLoop::AllEvents);
 	}
 }
+
 
 void SystemcallPrivate::waitAndProcessEvents()
 {
@@ -217,7 +219,6 @@ bool SystemcallPrivate::waitWhile(State waitwhile, bool proc_events, int timeout
 }
 
 
-
 SystemcallPrivate::~SystemcallPrivate()
 {
 	flush();
@@ -253,6 +254,7 @@ void SystemcallPrivate::flush()
 						proc_->readAllStandardError().data()));
 	}
 }
+
 
 void SystemcallPrivate::stdOut()
 {
@@ -364,6 +366,7 @@ QString SystemcallPrivate::exitStatusMessage() const
 	return message;
 }
 
+
 int SystemcallPrivate::exitCode()
 {
 	if (!proc_)
@@ -385,6 +388,7 @@ void SystemcallPrivate::killProcess()
 {
 	killProcess(proc_);
 }
+
 
 void SystemcallPrivate::killProcess(QProcess * p)
 {
