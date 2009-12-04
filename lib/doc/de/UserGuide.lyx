@@ -971,8 +971,7 @@ gen
  speichern sie unter 
 \family sans
 Dokument\SpecialChar \menuseparator
-Einstellungen\SpecialChar \ldots{}
-\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
 Als
 \begin_inset space \space{}
 \end_inset
@@ -1011,15 +1010,14 @@ faults
 .
  Danach wird versucht, in Ihrem Heimatverzeichnis die Datei 
 \family typewriter
-~/.lyx/pre\SpecialChar \-
+pre\SpecialChar \-
 ferences
 \family default
  zu lesen.
  Über das Dialogfenster 
 \family sans
 Werkzeuge\SpecialChar \menuseparator
-Einstellungen\SpecialChar \ldots{}
-
+Einstellungen
 \family default
  können viele LyX-Vor\SpecialChar \-
 einstel\SpecialChar \-
@@ -2891,7 +2889,7 @@ Strg+X
 \family default
  oder 
 \begin_inset Graphics
-	filename ../../images/copy.png
+	filename ../../images/cut.png
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
@@ -2919,7 +2917,7 @@ Strg+C
 \family default
  oder 
 \begin_inset Graphics
-	filename ../../images/cut.png
+	filename ../../images/copy.png
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
