@@ -105,7 +105,7 @@ int Systemcall::startscript(Starttype how, string const & what)
 	QString cmd = toqstr(parsecmd(what, outfile));
 	SystemcallPrivate d(outfile);
 
-	bool process_events = false;
+	bool process_events = true;
 
 	d.startProcess(cmd);
 	if (!d.waitWhile(SystemcallPrivate::Starting, process_events, 3000)) {
