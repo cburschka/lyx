@@ -40,7 +40,8 @@ public:
 
 	/** Start child process.
 	 *  The string "what" contains a commandline with arguments separated
-	 *  by spaces.
+	 *  by spaces. Unset "process_events" in case UI should be blocked while
+	 *  processing the external command.
 	 */
 	int startscript(Starttype how, std::string const & what, bool process_events = true);
 };
