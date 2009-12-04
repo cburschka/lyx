@@ -5924,8 +5924,7 @@ hierarchy
 status open
 
 \begin_layout Plain Layout
-When a frame should include a program listing, the frame needs to be marked
- as 
+If a frame includes a program listing, the frame needs to be marked as 
 \begin_inset Quotes eld
 \end_inset
 
@@ -5934,8 +5933,14 @@ fragile
 \end_inset
 
 .
- This is not yet supported by LyX, so the the frame is created using TeX
- code.
+ This is not yet supported by LyX, so the frame is created using TeX code.
+ Note that the 
+\backslash
+begin{frame}[fragile] needs to be preceeded by an 
+\emph on
+EndFrame
+\emph default
+ environment.
 \end_layout
 
 \end_inset
@@ -5987,10 +5992,6 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-\begin_inset space \hspace{}
-\length 5mm
-\end_inset
-
 This is some program code:
 \end_layout
 
@@ -6022,7 +6023,7 @@ def func(param):
 
 \begin_layout Plain Layout
 
-'This is a German word: Tschüß'
+'This is a German word: Tschüs'
 \end_layout
 
 \begin_layout Plain Layout
