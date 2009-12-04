@@ -30,7 +30,7 @@ class SystemcallPrivate : public QObject
 {
 	Q_OBJECT
 public:
-	SystemcallPrivate(QProcess * proc);
+	SystemcallPrivate(const std::string& outfile);
 	~SystemcallPrivate();
 
 	/// Should the standard output be displayed?
@@ -50,10 +50,14 @@ public:
 	bool waitWhile(State, bool processEvents, int timeout = -1);
 	void startProcess(const QString& cmd);
 	
+	int exitCode();
+
 	QString errorMessage() const;
 	QString exitStatusMessage() const;
 
-
+	void flush();
+	void killProcess();
+	static void killProcess(QProcess * p);
 
 private:
 	/// Pointer to the process to monitor.
@@ -62,6 +66,8 @@ private:
 	size_t outindex_;
 	/// Index to the standard error buffer.
 	size_t errindex_;
+	///
+	std::string outfile;
 	/// Size of buffers.
 	static size_t const bufsize_ = 200;
 	/// Standard output buffer.

@@ -48,17 +48,6 @@ using namespace std;
 namespace lyx {
 namespace support {
 
-static void killProcess(QProcess * p)
-{
-	p->disconnect();
-	p->closeReadChannel(QProcess::StandardOutput);
-	p->closeReadChannel(QProcess::StandardError);
-	p->close();
-	delete p;
-}
-
-
-
 
 
 // Reuse of instance
@@ -114,19 +103,10 @@ int Systemcall::startscript(Starttype how, string const & what)
 {
 	string outfile;
 	QString cmd = toqstr(parsecmd(what, outfile));
-	QProcess * process = new QProcess;
-	SystemcallPrivate d(process);
-	if (!outfile.empty()) {
-		// Check whether we have to simply throw away the output.
-		if (outfile != os::nulldev())
-			process->setStandardOutputFile(toqstr(outfile));
-	} else if (os::is_terminal(os::STDOUT))
-		d.showout();
-	if (os::is_terminal(os::STDERR))
-		d.showerr();
-	
+	SystemcallPrivate d(outfile);
 
 	bool processEvents = false;
+
 	d.startProcess(cmd);
 	if (!d.waitWhile(SystemcallPrivate::Starting, processEvents, 3000)) {
 		LYXERR0("QProcess " << cmd << " did not start!");
@@ -146,36 +126,37 @@ int Systemcall::startscript(Starttype how, string const & what)
 		return 20;
 	}
 
-	int const exit_code = process->exitCode();
+	int const exit_code = d.exitCode();
 	if (exit_code) {
 		LYXERR0("QProcess " << cmd << " finished!");
 		LYXERR0("error " << exit_code << ": " << d.errorMessage()); 
 	}
 
-	// If the output has been redirected, we write it all at once.
-	// Even if we are not running in a terminal, the output could go
-	// to some log file, for example ~/.xsession-errors on *nix.
-	if (!os::is_terminal(os::STDOUT) && outfile.empty())
-		cout << fromqstr(QString::fromLocal8Bit(
-			    process->readAllStandardOutput().data()));
-	if (!os::is_terminal(os::STDERR))
-		cerr << fromqstr(QString::fromLocal8Bit(
-			    process->readAllStandardError().data()));
-
-	killProcess(process);
+	d.flush();
+	d.killProcess();
 
 	return exit_code;
 }
 
 
-SystemcallPrivate::SystemcallPrivate(QProcess * proc) : proc_(proc), outindex_(0), 
-				errindex_(0), showout_(false), showerr_(false)
+SystemcallPrivate::SystemcallPrivate(const std::string& of) : 
+				proc_(new QProcess), outindex_(0), 
+				errindex_(0), showout_(false), showerr_(false), outfile(of)
 {
-	connect(proc, SIGNAL(readyReadStandardOutput()), SLOT(stdOut()));
-	connect(proc, SIGNAL(readyReadStandardError()), SLOT(stdErr()));
-	connect(proc, SIGNAL(error(QProcess::ProcessError)), SLOT(processError(QProcess::ProcessError)));
-	connect(proc, SIGNAL(started()), this, SLOT(processStarted()));
-	connect(proc, SIGNAL(finished(int, QProcess::ExitStatus)), SLOT(processFinished(int, QProcess::ExitStatus)));
+	if (!outfile.empty()) {
+		// Check whether we have to simply throw away the output.
+		if (outfile != os::nulldev())
+			proc_->setStandardOutputFile(toqstr(outfile));
+	} else if (os::is_terminal(os::STDOUT))
+		showout();
+	if (os::is_terminal(os::STDERR))
+		showerr();
+
+	connect(proc_, SIGNAL(readyReadStandardOutput()), SLOT(stdOut()));
+	connect(proc_, SIGNAL(readyReadStandardError()), SLOT(stdErr()));
+	connect(proc_, SIGNAL(error(QProcess::ProcessError)), SLOT(processError(QProcess::ProcessError)));
+	connect(proc_, SIGNAL(started()), this, SLOT(processStarted()));
+	connect(proc_, SIGNAL(finished(int, QProcess::ExitStatus)), SLOT(processFinished(int, QProcess::ExitStatus)));
 }
 
 
@@ -224,6 +205,7 @@ bool SystemcallPrivate::waitWhile(State waitwhile, bool processEvents, int timeo
 }
 
 
+
 SystemcallPrivate::~SystemcallPrivate()
 {
 	if (outindex_) {
@@ -240,6 +222,19 @@ SystemcallPrivate::~SystemcallPrivate()
 	cerr.flush();
 }
 
+
+void SystemcallPrivate::flush()
+{
+	// If the output has been redirected, we write it all at once.
+	// Even if we are not running in a terminal, the output could go
+	// to some log file, for example ~/.xsession-errors on *nix.
+	if (!os::is_terminal(os::STDOUT) && outfile.empty())
+		cout << fromqstr(QString::fromLocal8Bit(
+			    proc_->readAllStandardOutput().data()));
+	if (!os::is_terminal(os::STDERR))
+		cerr << fromqstr(QString::fromLocal8Bit(
+			    proc_->readAllStandardError().data()));
+}
 
 void SystemcallPrivate::stdOut()
 {
@@ -342,6 +337,27 @@ QString SystemcallPrivate::exitStatusMessage() const
 	}
 	return message;
 }
+
+int SystemcallPrivate::exitCode()
+{
+	return proc_->exitCode();
+}
+
+
+void SystemcallPrivate::killProcess()
+{
+	killProcess(proc_);
+}
+
+void SystemcallPrivate::killProcess(QProcess * p)
+{
+	p->disconnect();
+	p->closeReadChannel(QProcess::StandardOutput);
+	p->closeReadChannel(QProcess::StandardError);
+	p->close();
+	delete p;
+}
+
 
 
 #include "moc_SystemcallPrivate.cpp"
