@@ -300,13 +300,13 @@ void SystemcallPrivate::processStarted()
 }
 
 
-void SystemcallPrivate::processFinished(int, QProcess::ExitStatus status)
+void SystemcallPrivate::processFinished(int, QProcess::ExitStatus)
 {
 	state = Finished;
 }
 
 
-void SystemcallPrivate::processError(QProcess::ProcessError err)
+void SystemcallPrivate::processError(QProcess::ProcessError)
 {
 	state = Error;
 }
