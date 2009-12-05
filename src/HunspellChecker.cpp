@@ -107,7 +107,7 @@ Hunspell * HunspellChecker::Private::addSpeller(string const & lang)
 		return 0;
 	}
 
-	hunspell_path += "/" + lang;
+	addName(hunspell_path, lang);
 	if (!haveLanguageFiles(hunspell_path)) {
 		// try with '_' replaced by '-'
 		hunspell_path = subst(hunspell_path, '_', '-');
