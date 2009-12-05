@@ -550,7 +550,7 @@ def convert(lines):
 
             # Add the TocLevel setting for sectioning styles
             if toclevel == "" and toclevels.has_key(style) and maxcounter <= toclevels[style]:
-                lines.insert(i, '%sTocLevel %d' % (space1, toclevels[style]))
+                lines.insert(i, '%s\tTocLevel %d' % (space1, toclevels[style]))
                 i += 1
 
         i += 1
