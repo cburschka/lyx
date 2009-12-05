@@ -134,8 +134,9 @@ public:
 	///
 	void addPreview(DocIterator const & inset_pos,
 		graphics::PreviewLoader &) const;
-	/// Recreate the preview if preview is enabled.
-	void reloadPreview(DocIterator const & pos) const;
+	/// Prepare the preview if preview is enabled. A subsequent
+	/// call to reloadPreview will recreate the preview.
+	void preparePreview(DocIterator const & pos) const;
 	///
 	void initUnicodeMath() const;
 
