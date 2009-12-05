@@ -19,6 +19,7 @@
 
 #include "support/debug.h"
 #include "support/docstring_list.h"
+#include "support/filetools.h"
 #include "support/FileName.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
@@ -89,8 +90,8 @@ bool haveLanguageFiles(string const & hpath)
 
 Hunspell * HunspellChecker::Private::addSpeller(string const & lang)
 {
-	string hunspell_path = external_path(lyxrc.hunspelldir_path);
-	LYXERR(Debug::FILES, "hunspell path: " << hunspell_path);
+	string hunspell_path = lyxrc.hunspelldir_path;
+	LYXERR(Debug::FILES, "hunspell path: " << external_path(hunspell_path));
 	if (hunspell_path.empty()) {
 		// FIXME We'd like to issue a better error message here, but there seems
 		// to be a problem about thread safety, or something of the sort. If
@@ -107,7 +108,7 @@ Hunspell * HunspellChecker::Private::addSpeller(string const & lang)
 		return 0;
 	}
 
-	addName(hunspell_path, lang);
+	hunspell_path = external_path(addName(hunspell_path, lang));
 	if (!haveLanguageFiles(hunspell_path)) {
 		// try with '_' replaced by '-'
 		hunspell_path = subst(hunspell_path, '_', '-');
