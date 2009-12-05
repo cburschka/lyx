@@ -1,4 +1,4 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -22,12 +22,13 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize default
 \spacing single
 \use_hyperref false
 \papersize default
-\use_geometry false
+\use_geometry true
 \use_amsmath 2
 \use_esint 0
 \cite_engine basic
@@ -37,14 +38,14 @@
 \tocdepth 2
 \paragraph_separation indent
 \defskip medskip
-\quotes_language english
+\quotes_language french
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -57,16 +58,16 @@ status open
  Ce fichier est un exemple d'exposé:
 \end_layout
 
-\begin_layout Plain Layout
- - pour des conférences, 
+\begin_layout Itemize
+pour des conférences, 
 \end_layout
 
-\begin_layout Plain Layout
- - d'une durée approximative de 20 minutes, 
+\begin_layout Itemize
+d'une durée approximative de 20 minutes, 
 \end_layout
 
-\begin_layout Plain Layout
-- avec un style ornemental.
+\begin_layout Itemize
+avec un style ornemental.
 \end_layout
 
 \begin_layout Plain Layout
@@ -191,15 +192,25 @@ status collapsed
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Plain Layout
-- composer les noms dans l'ordre dans lequel ils apparaîtrons dans l'article;
+\begin_layout Itemize
+composer les noms dans l'ordre dans lequel ils apparaîtrons dans l'article;
  
 \end_layout
 
-\begin_layout Plain Layout
-- utiliser la commande 
-\backslash
-inst{?} command uniquement si les auteurs ont des affiliations  différentes.
+\begin_layout Itemize
+utiliser l'insert 
+\begin_inset Quotes fld
+\end_inset
+
+MarqueInstitution
+\begin_inset Quotes frd
+\end_inset
+
+ (
+\family typewriter
+Insérer->Inserts personnalisables->MarqueInstitution
+\family default
+) niquement si les auteurs ont des affiliations  différentes.
 \end_layout
 
 \end_inset
@@ -213,12 +224,12 @@ Auteur, Lautre
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Plain Layout
-- facultatif, à utiliser seulement avec plusieurs auteurs;
+\begin_layout Itemize
+facultatif, à utiliser seulement avec plusieurs auteurs;
 \end_layout
 
-\begin_layout Plain Layout
-- s'il y a vraiment beaucoup d'auteurs, utiliser 
+\begin_layout Itemize
+s'il y a vraiment beaucoup d'auteurs, utiliser 
 \begin_inset Quotes eld
 \end_inset
 
@@ -324,12 +335,12 @@ Conférence sur les Présentations Fabuleuses, 2006
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Plain Layout
-- utilisez le nom de la conférence ou son abréviation; 
+\begin_layout Itemize
+utilisez le nom de la conférence ou son abréviation; 
 \end_layout
 
-\begin_layout Plain Layout
-- n'a pas réellement d'importance pour l'assistance qui sera présente lors
+\begin_layout Itemize
+n'a pas réellement d'importance pour l'assistance qui sera présente lors
  de la conférence; mais en a pour les personnes (y compris vous-même) qui
  liront les transparents en ligne.
 \end_layout
@@ -342,9 +353,6 @@ status open
 
 \begin_layout Plain Layout
 CPF 2006
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Note Note
 status collapsed
 
@@ -368,7 +376,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Si vous avez un fichier nommé "université-logo-nomfichier.xxx", où xxxest
- un format graphique accepté par LyX (comme par exemple .png),alors vous
+ un format graphique accepté par LyX (comme par exemple .png), alors vous
  pouvez insérer votre logo ainsi :
 \end_layout
 
@@ -379,7 +387,7 @@ Si vous avez un fichier nommé "université-logo-nomfichier.xxx", où xxxest
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -401,11 +409,11 @@ includegraphics[height=0.5cm]{institution-logo-filename}}
 
 \begin_layout Standard
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
-A noter que la syntaxe pgf n'est pas supportée par LyX pour le moment; si
- vous l'utilisez, il faut mettre un chemin d'accès absolu au fichier
+Avec la syntaxe pgf, construction équivalente, mais format graphique compris
+ par latex ou pdflatex:
 \end_layout
 
 \end_inset
@@ -421,8 +429,7 @@ status open
 
 %
 \backslash
-pgfdeclareimage[height=0.5cm]{institution-logo}{/my/path/to/institution-logo-file
-name}
+pgfdeclareimage[height=0.5cm]{institution-logo}{institution-logo-filename}
 \end_layout
 
 \begin_layout Plain Layout
@@ -444,7 +451,7 @@ pgfuseimage{institution-logo}}
 status collapsed
 
 \begin_layout Plain Layout
-À supprimer si vous ne voulez pas que la table des matières apparaisseau
+À supprimer si vous ne voulez pas que la table des matières apparaisse au
  début de chaque sous-section :
 \end_layout
 
@@ -527,8 +534,8 @@ status collapsed
 
 \begin_layout Plain Layout
 Si vous souhaitez recouvrir vos transparents un à un, utilisez la commande
- suivante (pour plus d'info, voir la page 74 du manueld'utilisation de Beamer
- (version 3.06) par Till Tantau) :
+ suivante (pour plus d'info, voir la page 74 du manuel d'utilisation de
+ Beamer (version 3.06) par Till Tantau) :
 \end_layout
 
 \end_inset
@@ -575,34 +582,38 @@ Structurer l'exposé est une tâche difficile et la structure suivante pourrait
  Voici quelques règles à appliquer pour cet exemple ci :
 \end_layout
 
-\begin_layout Plain Layout
-- avoir exactement deux ou trois sections (autre que le sommaire); 
+\begin_layout Itemize
+avoir exactement deux ou trois sections (autre que le sommaire); 
 \end_layout
 
-\begin_layout Plain Layout
-- tout au plus trois sous-sections par section; 
+\begin_layout Itemize
+tout au plus trois sous-sections par section; 
 \end_layout
 
-\begin_layout Plain Layout
-- parler approximativement entre 30 secondes et 2 minutes par transparent.
+\begin_layout Itemize
+parler approximativement entre 30 secondes et 2 minutes par transparent.
  Il  devrait donc y avoir entre 15 et 30 transparents, pour tout dire;
 \end_layout
 
-\begin_layout Plain Layout
-- le public d'une conférence connaîtra probablement peu de chose sur le
- sujet  que vous serez en train de traiter.
- Donc, *simplifier* !
+\begin_layout Itemize
+le public d'une conférence connaîtra probablement peu de chose sur le sujet
+  que vous serez en train de traiter.
+ Donc, *simplifier*
+\begin_inset space ~
+\end_inset
+
+!
 \end_layout
 
-\begin_layout Plain Layout
-- dans un exposé de 20 minutes, garder à l'esprit les idées principales
- est largement  suffisant pour votre assistance.
+\begin_layout Itemize
+dans un exposé de 20 minutes, garder à l'esprit les idées principales est
+ largement  suffisant pour votre assistance.
  Laissez tomber certains détails, même s'ils vous  semblent nécessaires;
  
 \end_layout
 
-\begin_layout Plain Layout
-- si un détail qui est vital pour une preuve/mise en oeuvre est omis,  le
+\begin_layout Itemize
+si un détail qui est vital pour une preuve/mise en oeuvre est omis,  le
  dire simplement une fois.
  Ce sera suffisant pour l'auditoire.
  
