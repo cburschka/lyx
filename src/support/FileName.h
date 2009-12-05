@@ -78,6 +78,8 @@ public:
 
 	/// returns true if the file exists
 	bool exists() const;
+	/// refreshes the file info
+	void refresh() const;
 	/// \return true if this object points to a symbolic link.
 	bool isSymLink() const;
 	/// \return true if the file is empty.

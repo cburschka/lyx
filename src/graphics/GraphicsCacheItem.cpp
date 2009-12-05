@@ -349,8 +349,7 @@ static string const findTargetFormat(string const & from)
 bool CacheItem::Impl::tryDisplayFormat(FileName & filename, string & from)
 {
 	// First, check that the file exists!
-	// force a refresh.
-	filename_.lastModified();
+	filename_.refresh();
 	if (!filename_.isReadableFile()) {
 		if (status_ != ErrorNoFile) {
 			status_ = ErrorNoFile;
