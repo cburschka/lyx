@@ -487,13 +487,20 @@ void InsetMathHull::preparePreview(DocIterator const & pos) const
 	docstring const snippet = macro_preamble.str() + latexString(*this);  
 	LYXERR(Debug::MACROS, "Preview snippet: " << snippet);  
 	preview_->addPreview(snippet, *buffer);  
-}  
+}
+
+
+void InsetMathHull::reloadPreview(DocIterator const & pos) const
+{
+	preparePreview(pos);
+	preview_->startLoading(*pos.buffer());
+}
+
 
 bool InsetMathHull::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 {
 	if (RenderPreview::status() == LyXRC::PREVIEW_ON) {
-		preparePreview(old);
-		preview_->startLoading(buffer());
+		reloadPreview(old);
 		cur.updateFlags(Update::Force);
 	}
 	return false;
