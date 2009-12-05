@@ -7,7 +7,7 @@
 # This include files contains various standard environments for lists.
 
 
-Format 16
+Format 19
 
 Style Itemize
 	Category              List

@@ -21,6 +21,7 @@
 # - Case (regular only -- defined as an enumeration)
 
 # We need separate counters for each theorem-like style.
+Format 19
 Counter theorem
 End
 Counter corollary
@@ -240,7 +241,7 @@ Style Case
 	Margin                Static
 	LatexType             Item_Environment
 	LatexName             caseenv
-	LabelType             Static
+	LabelType             Itemize
 	NextNoIndent          1
 	LeftMargin            "Case ###."
 	ParSkip               0.0

@@ -4,7 +4,7 @@
 # in most LyX layouts.
 
 
-Format 16
+Format 19
 
 AddToHTMLPreamble
 	<style type="text/css">

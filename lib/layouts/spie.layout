@@ -5,7 +5,7 @@
 # to be used with the spie.cls LaTex-style available at
 # http://public.lanl.gov/kmh/spie/
 
-Format 11
+Format 19
 Input stdclass.inc
 
 NoStyle Chapter
@@ -23,6 +23,7 @@ Style Section
 	  Series              Bold
 	  Size                large
 	EndFont
+	TocLevel 1
 End
 
 

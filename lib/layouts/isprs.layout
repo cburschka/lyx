@@ -8,7 +8,7 @@
 # Heavily modifed and enhanced by serveral developers.
 
 # Input general definitions
-Format 11
+Format 19
 Input stdclass.inc
 Sides			2
 Columns			2
@@ -160,6 +160,7 @@ Style Section
    Series    		Bold
    Size 		Normal
   EndFont
+	TocLevel 1
 End
 
 # Subsection style definition
@@ -169,6 +170,7 @@ Style Subsection
    Series    		Bold
    Size 		Normal
   EndFont
+	TocLevel 2
 End
 
 # Subsubsection style definition
@@ -178,6 +180,7 @@ Style Subsubsection
    Series    		Bold
    Size 		Normal
   EndFont
+	TocLevel 3
 End
 
 # Section* style definition

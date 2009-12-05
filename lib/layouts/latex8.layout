@@ -3,7 +3,7 @@
 # Latex8 textclass definition file.
 # Author : Allan Rae <rae@elec.uq.edu.au>
 
-Format 11
+Format 19
 Preamble
 	\usepackage{latex8}
 	\usepackage{times}
@@ -43,6 +43,7 @@ Style Section
 	BottomSep             1.0
 	ParSep                1.0
 	latexname             "Section"
+	TocLevel 1
 End
 
 
@@ -51,6 +52,7 @@ Style Subsection
 	BottomSep             1.0
 	ParSep                1.0
 	latexname             "SubSection"
+	TocLevel 2
 End
 
 

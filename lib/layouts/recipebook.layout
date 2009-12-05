@@ -26,7 +26,7 @@
 # Another command, \ingred{...}, is defined to typeset a
 # list of ingredients.
 
-Format 11
+Format 19
 Input scrclass.inc
 Input numreport.inc
 
@@ -40,6 +40,7 @@ NoStyle Abstract
 
 Style Chapter
   LabelString		"\thechapter"
+	TocLevel 0
 End
 
 Style Bibliography
@@ -105,6 +106,7 @@ Style Subsubsection
   Font
     Size		Small
   EndFont
+	TocLevel 3
 End
 
 # Inghead style definition

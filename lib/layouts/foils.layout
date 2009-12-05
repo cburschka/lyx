@@ -6,7 +6,7 @@
 # To do: Define class specific options.
 
 
-Format 11
+Format 19
 Columns                 1
 Sides                   1
 
@@ -93,7 +93,7 @@ Style TickList
 	ParSep                0.3
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Static
+	LabelType             Itemize
 	LabelString           "_/"
 	Requires	      pifont
 End
@@ -112,7 +112,7 @@ Style CrossList
 	ParSep                0.3
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Static
+	LabelType             Itemize
 	LabelString           "><"
 	Requires	      pifont
 End

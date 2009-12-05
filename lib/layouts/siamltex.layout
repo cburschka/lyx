@@ -10,7 +10,7 @@
 # Modified from  amsart.layout May '08 by Andrew Corrigan <acorriga@gmu.edu>
 
 
-Format 11
+Format 19
 Columns                 1
 Sides                   2
 PageStyle               Headers
@@ -353,6 +353,7 @@ Style Section
 	  Shape               Smallcaps
 	  Size                Large
 	EndFont
+	TocLevel 1
 End
 
 
@@ -361,6 +362,7 @@ Style Subsection
 	  Series              Bold
 	  Size                Normal
 	EndFont
+	TocLevel 2
 End
 
 
@@ -369,4 +371,5 @@ Style Subsubsection
 	  Shape               Italic
 	  Size                Normal
 	EndFont
+	TocLevel 3
 End

@@ -6,7 +6,7 @@
 # ftp://ftp.agu.org/journals/latex/journals
 
 
-Format 11
+Format 19
 Input stdclass.inc
 
 SecNumDepth             4
@@ -28,6 +28,7 @@ Style Section
 	Font
 	  Size                Large
 	EndFont
+	TocLevel 1
 End
 
 
@@ -42,6 +43,7 @@ Style Subsection
 	Font
 	  Size                Normal
 	EndFont
+	TocLevel 2
 End
 
 
@@ -54,6 +56,7 @@ End
 
 Style Paragraph
 	LatexName             subsubsection
+	TocLevel 4
 End
 
 

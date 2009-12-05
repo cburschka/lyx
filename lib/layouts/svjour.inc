@@ -18,7 +18,7 @@
 # see www.springer.de/author/tex/help-journals.html for class files
 
 
-Format 11
+Format 19
 Columns                 2
 Sides                   1
 PageStyle               Plain
@@ -59,6 +59,7 @@ Style Section
 	  Series              Bold
 	  Size                Normal
 	EndFont
+	TocLevel 1
 End
 
 
@@ -68,6 +69,7 @@ Style Subsection
 	  Shape               Italic
 	  Size                Normal
 	EndFont
+	TocLevel 2
 End
 
 
@@ -77,6 +79,7 @@ Style Subsubsection
 	  Shape               Up
 	  Size                Normal
 	EndFont
+	TocLevel 3
 End
 
 
@@ -86,6 +89,7 @@ Style Paragraph
 	  Shape               Italic
 	  Size                Normal
 	EndFont
+	TocLevel 4
 End
 
 

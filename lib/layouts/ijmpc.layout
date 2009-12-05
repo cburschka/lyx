@@ -9,7 +9,7 @@
 #
 # Version 1  2006-04-09  -  First version, for LyX 1.4.0.
 
-Format 11
+Format 19
 
 Input stdclass.inc
 Input numarticle.inc
@@ -97,6 +97,7 @@ Style Section
 	Font
 	  Size                Normal
 	EndFont
+	TocLevel 1
 End
 
 Style Section*
@@ -112,6 +113,7 @@ Style Subsection
 	  Shape               Italic
 	  Size                Normal
 	EndFont
+	TocLevel 2
 End
 
 Style Subsubsection
@@ -124,9 +126,11 @@ Style Subsubsection
 	  Shape               Italic
 	  Size                Normal
 	EndFont
+	TocLevel 3
 End
 
 Counter definition
+	TocLevel 3
 End
 Style Definition
 	LatexType             Environment

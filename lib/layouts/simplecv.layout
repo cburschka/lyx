@@ -4,7 +4,7 @@
 # Author : Jean-Marc Lasgouttes (Jean-Marc.Lasgouttes@inria.fr)
 
 
-Format 11
+Format 19
 Columns                 1
 Sides                   1
 SecNumDepth             -1
@@ -42,6 +42,7 @@ Style Section
 	  Family              Sans
 	  Series              Bold
 	EndFont
+		TocLevel 1
 End
 
 
@@ -50,6 +51,7 @@ Style Subsection
 	LatexName             subsection
 	Margin                Static
 	LeftMargin            MMM
+	TocLevel 2
 End
 
 Style Topic
@@ -87,7 +89,7 @@ Style Itemize
 	ParSep                0.3
 	Align                 Block
 	AlignPossible         Block, Left
-	LabelType             Static
+	LabelType             Itemize
 	LabelString           "*"
 End
 

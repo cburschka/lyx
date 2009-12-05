@@ -6,7 +6,7 @@
 # It is desirable, as far as possible, to have the same look and feel for
 # related layouts in latex and docbook.
 
-Format 11
+Format 19
 Input stdsections.inc
 
 Style Part
@@ -15,6 +15,7 @@ Style Part
 	InnerTag              head
 	LabelTag              label
 	CommandDepth          0
+	TocLevel 0
 End
 
 
@@ -24,6 +25,7 @@ Style Chapter
 	InnerTag              head
 	LabelTag              label
 	CommandDepth          1
+	TocLevel 0
 End
 
 
@@ -34,6 +36,7 @@ Style Section
 	LabelTag              label
 	CommandDepth          2
 	LatexParam            "id=<s#>"
+	TocLevel 1
 End
 
 
@@ -44,6 +47,7 @@ Style Subsection
 	LabelTag              label
 	CommandDepth          3
 	LatexParam            "id=<s#>"
+	TocLevel 2
 End
 
 
@@ -54,6 +58,7 @@ Style Subsubsection
 	LabelTag              label
 	CommandDepth          4
 	LatexParam            "id=<s#>"
+	TocLevel 3
 End
 
 
@@ -64,6 +69,7 @@ Style Paragraph
 	LabelTag              label
 	CommandDepth          5
 	LatexParam            "id=<s#>"
+	TocLevel 4
 End
 
 
@@ -74,6 +80,7 @@ Style Subparagraph
 	LabelTag              label
 	CommandDepth          6
 	LatexParam            "id=<s#>"
+	TocLevel 5
 End
 
 Style Subsubparagraph

@@ -14,7 +14,7 @@
 # Modified for LyX 12 by Jean-Marc Lasgouttes and MV.
 
 
-Format 11
+Format 19
 Columns                 1
 Sides                   1
 PageStyle               Plain
@@ -39,6 +39,7 @@ Input stdsections.inc
 Style Chapter
 	Align         Center
 	AlignPossible Block,Left,Center
+	TocLevel 0
 End
 
 
@@ -47,6 +48,7 @@ Style Section
 	  Series              Bold
 	  Size                Large
 	EndFont
+	TocLevel 1
 End
 
 
@@ -55,6 +57,7 @@ Style Subsection
 	  Series              Bold
 	  Size                Normal
 	EndFont
+	TocLevel 2
 End
 
 
@@ -63,6 +66,7 @@ Style Subsubsection
 	  Series              Bold
 	  Size                Normal
 	EndFont
+	TocLevel 3
 End
 
 
@@ -72,6 +76,7 @@ Style Paragraph
 	  Shape               Italic
 	  Size                Normal
 	EndFont
+	TocLevel 4
 End
 
 
@@ -81,6 +86,7 @@ Style Subparagraph
 	  Shape               Up
 	  Size                Normal
 	EndFont
+	TocLevel 5
 End
 
 

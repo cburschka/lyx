@@ -14,7 +14,7 @@
 # the author information area.  There is a LaTeX 2.09 IEEEtran.sty available
 # also but LyX doesn't support 2.09 stuff so don't get that one.
 
-Format 11
+Format 19
 Style Standard
 	Margin                Static
 	LatexType             Paragraph
@@ -276,6 +276,7 @@ Style Section
 	   Shape              Smallcaps
 	   Size               Normal
 	EndFont
+	TocLevel 1
 End
 
 
@@ -284,6 +285,7 @@ Style Subsection
 	   Shape              Italic
 	   Size               Normal
 	EndFont
+	TocLevel 2
 End
 
 
@@ -292,6 +294,7 @@ Style Subsubsection
 	   Shape              Up
 	   Size               Normal
 	EndFont
+	TocLevel 3
 End
 
 

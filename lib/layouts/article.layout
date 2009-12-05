@@ -5,7 +5,7 @@
 # Transposed by Pascal André <andre@via.ecp.fr>
 # Heavily modifed and enhanced by serveral developers.
 
-Format 11
+Format 19
 Input stdclass.inc
 
 SecNumDepth             3
@@ -23,6 +23,7 @@ Style Part
 	Font
 	  Size                Larger
 	EndFont
+	TocLevel 0
 End
 
 

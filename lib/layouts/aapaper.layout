@@ -14,7 +14,7 @@
 # and reconfigure LyX (after running texhash, of course).
 
 
-Format 11
+Format 19
 Columns                 2
 Sides                   2
 SecNumDepth             3
@@ -62,12 +62,15 @@ Style LaTeX
 End
 
 Style Section
+	TocLevel 1
 End
 
 Style Subsection
+	TocLevel 2
 End
 
 Style Subsubsection
+	TocLevel 3
 End
 
 Style Title
@@ -133,6 +136,7 @@ Style Section
 	Font
 	  Size                Normal
 	EndFont
+	TocLevel 1
 End
 
 
@@ -144,6 +148,7 @@ Style Subsection
 	  Size                Normal
 	  Shape               Italic
 	EndFont
+	TocLevel 2
 End
 
 
@@ -154,6 +159,7 @@ Style Subsubsection
 	  Series              Medium
 	  Size                Normal
 	EndFont
+	TocLevel 3
 End
 
 

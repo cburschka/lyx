@@ -11,7 +11,7 @@
 # Moved "number within sections" to modules Aug '09 (Paul Rubin <rubin@msu.edu>)
 
 
-Format 11
+Format 19
 Columns                 1
 Sides                   2
 PageStyle               Headers
@@ -54,6 +54,7 @@ Style Section
 	  Series              Bold
 	  Size                Large
 	EndFont
+	TocLevel 1
 End
 
 
@@ -62,6 +63,7 @@ Style Subsection
 	  Series              Bold
 	  Size                Normal
 	EndFont
+	TocLevel 2
 End
 
 
@@ -70,6 +72,7 @@ Style Subsubsection
 	  Shape               Italic
 	  Size                Normal
 	EndFont
+	TocLevel 3
 End
 
 
@@ -124,6 +127,7 @@ Style Paragraph
 	Font
 	  Series Medium
 	EndFont
+	TocLevel 4
 End
 
 

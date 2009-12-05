@@ -10,7 +10,7 @@
 # Modularized Jan '08 by Richard Heck <rgheck@brown.edu>
 # Moved "number within sections" to modules Aug '09 (Paul Rubin <rubin@msu.edu>)
 
-Format 11
+Format 19
 Columns                 1
 Sides                   2
 PageStyle               Headers
@@ -64,6 +64,7 @@ Style Section
 	  Shape               Smallcaps
 	  Size                Normal
 	EndFont
+	TocLevel 1
 End
 
 
@@ -105,6 +106,7 @@ Style Subsection
 	LabelFont
 	  Series	      Medium
 	EndFont
+	TocLevel 2
 End
 
 
@@ -125,6 +127,7 @@ Style Subsubsection
 	  Series	      Medium
 	  Size                Normal
 	EndFont
+	TocLevel 3
 End
 
 

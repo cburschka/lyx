@@ -5,7 +5,7 @@
 
 
 # General textclass parameters
-Format 11
+Format 19
 	Columns			1
 	Sides			1
 	SecNumDepth		-1
@@ -47,6 +47,7 @@ Style Section
 	  Family		Sans
 	  Series		Bold
 	EndFont
+		TocLevel 1
 End
 
 Style Subsection
@@ -59,6 +60,7 @@ Style Subsection
 	  Family		Sans
 	  Series		Medium
 	EndFont
+	TocLevel 2
 End
 
 Style Entry

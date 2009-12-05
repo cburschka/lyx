@@ -10,7 +10,7 @@
 #          Amir Karger (RevTeX 4 beta) 9/1999, 7/2000
 
 
-Format 11
+Format 19
 Columns                 1
 Sides                   1
 PageStyle               Headers
@@ -64,6 +64,7 @@ Style Section
 	  Shape               Smallcaps
 	  Size                Large
 	EndFont
+	TocLevel 1
 End
 
 
@@ -72,6 +73,7 @@ Style Subsection
 	  Series              Bold
 	  Size                Normal
 	EndFont
+	TocLevel 2
 End
 
 
@@ -80,6 +82,7 @@ Style Subsubsection
 	  Shape               Italic
 	  Size                Normal
 	EndFont
+	TocLevel 3
 End
 
 
@@ -90,6 +93,7 @@ Style Paragraph
 	  Shape               Italic
 	  Size                Normal
 	EndFont
+	TocLevel 4
 End
 
 # then define the unumbered sections, based on the numbered ones.

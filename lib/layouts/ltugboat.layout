@@ -5,7 +5,7 @@
 # Author : Herbert Voss <voss@perce.de> 2001/08/13
 
 
-Format 11
+Format 19
 Columns                 2
 Sides                   2
 #SecNumDepth                            # no counting
@@ -58,6 +58,7 @@ Style Section
 	  Series              Bold
 	  Size                Normal
 	EndFont
+	TocLevel 1
 End
 
 
@@ -77,6 +78,7 @@ Style Subsection
 	  Series              Bold
 	  Size                Normal
 	EndFont
+	TocLevel 2
 End
 
 
@@ -96,6 +98,7 @@ Style Subsubsection
 	  Series              Bold
 	  Size                Normal
 	EndFont
+	TocLevel 3
 End
 
 
@@ -115,6 +118,7 @@ Style Paragraph
 	  Series              Bold
 	  Size                Normal
 	EndFont
+	TocLevel 4
 End
 
 

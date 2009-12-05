@@ -5,7 +5,7 @@
 # $Header: /cvsroot/latex-beamer/latex-beamer/lyx/layouts/beamer.layout,v 1.16 2004/10/07 20:53:07 tantau Exp $
 
 # Includes
-Format 11
+Format 19
 Input stdcounters.inc
 Input stdinsets.inc
 
@@ -134,6 +134,7 @@ Style Part
   LabelFont
     Color          Latex
   EndFont
+  	TocLevel 0
 End
 
 # Section style definition

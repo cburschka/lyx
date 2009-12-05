@@ -9,7 +9,7 @@
 #          Amir Karger (LyX v11.34 style modifications - using changes
 #                       made by Jean-Marc Lasgouttes to amsart.layout)
 
-Format 11
+Format 19
 Columns                 1
 Sides                   1
 PageStyle               Headers
@@ -43,6 +43,7 @@ Style Section
 	  Shape               Smallcaps
 	  Size                Large
 	EndFont
+	TocLevel 1
 End
 
 
@@ -51,6 +52,7 @@ Style Subsection
 	  Series              Bold
 	  Size                Normal
 	EndFont
+	TocLevel 2
 End
 
 
@@ -59,6 +61,7 @@ Style Subsubsection
 	  Shape               Italic
 	  Size                Normal
 	EndFont
+	TocLevel 3
 End
 
 
@@ -69,6 +72,7 @@ Style Paragraph
 	  Shape               Italic
 	  Size                Normal
 	EndFont
+	TocLevel 4
 End
 
 

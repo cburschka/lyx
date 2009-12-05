@@ -8,7 +8,7 @@
 # Converted article -> egs Martin Vermeer
 
 
-Format 11
+Format 19
 Columns                 2
 Sides                   1
 PageStyle               Plain
@@ -45,6 +45,7 @@ Style Section
 	LabelFont
 	  Series              Bold
 	EndFont
+	TocLevel 1
 End
 
 
@@ -63,6 +64,7 @@ Style Subsection
 	Font
 	  Shape               Up
 	EndFont
+	TocLevel 2
 End
 
 
@@ -80,6 +82,7 @@ Style Paragraph
 	  Series              Bold
 	  Size                Normal
 	EndFont
+	TocLevel 4
 End
 
 
@@ -88,6 +91,7 @@ Style Subparagraph
 	LatexName             subparagraph
 	NextNoIndent          0
 	LeftMargin            MM
+	TocLevel 5
 End
 
 

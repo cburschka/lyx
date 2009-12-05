@@ -33,7 +33,7 @@
 #                        - new environments for \altaffiltext and \tablenotetext
 
 
-Format 11
+Format 19
 Columns                 1
 Sides                   1
 #SecNumDepth            3
@@ -65,15 +65,19 @@ End
 # Therefore I'll define the entries first, then fill them in
 
 Style Section
+	TocLevel 1
 End
 
 Style Subsection
+	TocLevel 2
 End
 
 Style Subsubsection
+	TocLevel 3
 End
 
 Style Paragraph
+	TocLevel 4
 End
 
 Style Itemize
@@ -176,6 +180,7 @@ Style Section
 	  Series              Bold
 	  Size                Normal
 	EndFont
+	TocLevel 1
 End
 
 
@@ -188,6 +193,7 @@ Style Subsection
 	  Series              Bold
 	  Size                Normal
 	EndFont
+	TocLevel 2
 End
 
 
@@ -201,6 +207,7 @@ Style Subsubsection
 	  Shape               Italic
 	  Size                Normal
 	EndFont
+	TocLevel 3
 End
 
 
