@@ -1,19 +1,19 @@
-Public release of LyX version 1.6.4.1
-=====================================
+Public release of LyX version 1.6.5
+===================================
 
-We are pleased to announce the release of LyX 1.6.4.1. This is a small
-update to LyX 1.6.4, which was the fourth maintenance release in the 1.6.x
-series.
+We are pleased to announce the release of LyX 1.6.5. This is the fifth
+maintenance release in the 1.6.x series.
 
-The only change over release 1.6.4 is the fix of a regression on the Mac,
-which made some dialogs (such as Preferences and About LyX) unaccessible
-via the menu. Other platforms than the Mac were not affected by the issue.
+The release comes with many fixes and improvements. A number of newly
+reported crashes were fixed, new layouts and modules were included and
+some long-standing requests were implemented (e.g., a working LyX
+server on the Windows OS, finally enabling the communication with other
+applications such as JabRef on this platform as well).
 
-A detailed list of changes in 1.6.4 and 1.6.4.1 is appended below, 
-remaining known problems are listed in the file RELEASE-NOTES.
+A detailed list of changes is appended below, remaining known problems
+are listed in the file RELEASE-NOTES.
 
-All Mac users are encouraged to upgrade to this version. For users of
-other platforms, there's no reason to upgrade from LyX 1.6.4.
+All users and distributors are urged to upgrade to this version.
 
 In case you are wondering what LyX is, here is what
 http://www.lyx.org/ has to say on the subject:
@@ -39,33 +39,36 @@ http://www.lyx.org/ has to say on the subject:
    internationalized application running natively on Unix/Linux, the
    Macintosh and modern Windows platforms.
 
-You can download LyX 1.6.4.1 here (the .bz2 are compressed with bzip2,
+You can download LyX 1.6.5 here (the .bz2 are compressed with bzip2,
 which yields smaller files):
 
-	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/lyx-1.6.4.1.tar.gz
-	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/lyx-1.6.4.1.tar.bz2
-	ftp://ftp.devel.lyx.org/pub/lyx/stable/lyx-1.6.4.1.tar.gz
-	ftp://ftp.devel.lyx.org/pub/lyx/stable/lyx-1.6.4.1.tar.bz2
+	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/lyx-1.6.5.tar.gz
+	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/lyx-1.6.5.tar.bz2
+	ftp://ftp.devel.lyx.org/pub/lyx/stable/lyx-1.6.5.tar.gz
+	ftp://ftp.devel.lyx.org/pub/lyx/stable/lyx-1.6.5.tar.bz2
 
 and it should propagate shortly to the following mirrors (which will
 also host the .bz2 versions):
 
-	ftp://ftp.lip6.fr/pub/lyx/stable/1.6.x/lyx-1.6.4.1.tar.gz
-	http://lyx.cybermirror.org/stable/1.6.x/lyx-1.6.4.1.tar.gz
-	ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/1.6.x/lyx-1.6.4.1.tar.gz
-	ftp://ftp.ntua.gr/pub/X11/LyX/stable/1.6.x/lyx-1.6.4.1.tar.gz
-	http://sunsite.icm.edu.pl/pub/unix/editors/lyx/stable/1.6.x/lyx-1.6.4.1.tar.gz
-	http://lyx.mirror.fr/stable/1.6.x/lyx-1.6.4.1.tar.gz
+	ftp://ftp.lip6.fr/pub/lyx/stable/1.6.x/lyx-1.6.5.tar.gz
+	http://lyx.cybermirror.org/stable/1.6.x/lyx-1.6.5.tar.gz
+	ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/1.6.x/lyx-1.6.5.tar.gz
+	ftp://ftp.ntua.gr/pub/X11/LyX/stable/1.6.x/lyx-1.6.5.tar.gz
+	http://sunsite.icm.edu.pl/pub/unix/editors/lyx/stable/1.6.x/lyx-1.6.5.tar.gz
+	http://lyx.mirror.fr/stable/1.6.x/lyx-1.6.5.tar.gz
 
-A prebuilt binary for Mac OS X should soon be available at
-	ftp://ftp.lyx.org/pub/lyx/bin/1.6.4/
+Prebuilt binaries (rpms for Linux distributions, Mac OS X and Windows
+installers) should soon be available at:
 
-If you already have the sources of the previous release, you may want to apply
-one of the following patches instead
-	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/patch-1.6.4.1.gz
-	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/patch-1.6.4.1.bz2
+	ftp://ftp.lyx.org/pub/lyx/bin/1.6.5/
 
-If you find what you think is a bug in LyX 1.6.4.1, you may either
+If you already have the sources of the previous release (1.6.4.2), you may
+want to apply one of the following patches instead:
+
+	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/patch-1.6.5.gz
+	ftp://ftp.lyx.org/pub/lyx/stable/1.6.x/patch-1.6.5.bz2
+
+If you find what you think is a bug in LyX 1.6.5, you may either
 e-mail the LyX developers' mailing list (lyx-devel <at> lists.lyx.org),
 or open a bug report at http://www.lyx.org/trac/
 
@@ -78,22 +81,7 @@ Enjoy!
 The LyX team.
 
 
-What's new in version 1.6.4.1?
-------------------------------
-
-** Bug fixes:
-*************
-
-* USER INTERFACE
-
-- Revert an erroneous bugfix that was introduced with LyX 1.6.4:
-  "Disable some menu entries when the document windows does not have
-  focus on OS X (bug 1720)."
-  This re-enables the access to the Preferences and About LyX dialogs on
-  the Mac menu (other platforms were not affected).
-
-
-What's new in version 1.6.4?
+What's new in version 1.6.5?
 ----------------------------
 
 ** Updates:
@@ -101,106 +89,93 @@ What's new in version 1.6.4?
 
 * DOCUMENT INPUT/OUTPUT
 
-- LaTeX import (tex2lyx) was updated and now also supports:
-  * nomenclature entries
-  * the LaTeX-package esint
-  * the alternative LaTeX document language names "portuguese" and
-    "brazilian"
+- Add support for Extended Greek characters (bug 4997).
 
-- Implement separate chains for Japanese bibliography and index
-  compilation. This allows for proper support for jbibtex and mendex,
-  pLaTeX's bibtex and makeindex replacements (bug 5601).
+- Support GraphicsMagic when ImageMagick is not found (bug 6056).
 
-- Lyx now recognizes dviout as DVI viewer (bug 6103).
+- New layout files for Inderscience journals (bug 6293).
+
+- New layout files for the document classes tufte-book and tufte-handout.
+
+- New layout files and templates for Springer's svmono and svmult document
+  classes (bug 6253).
+
+- Add support for jmakeindex (Japanese version of makeindex).
 
 
 * USER INTERFACE
 
-- Support for chemical formulae via the LaTeX package mhchem. For a
-  description see LyX's Math manual.
+- The LyX server is now available also on Windows. See Chapter 4 in the
+  Additional Features manual for how to enable it.
 
-- LyX's warning about different textclasses in master and child now has a
-  "Do not show this warning again!" checkbox. Checking it will disable the
-  warning for this specific master/child constellation over sessions
-  (bug 3218).
+- Paragraph ends can now be marked by a pilcrow character (bug 6129).
 
-- Tooltips for toolbar buttons now show the main shortcut associated
-  to the action.
+- A "Reload" menu item is added to the Graphics context menu to
+  manually force a reload and conversion of the image (bug 6134).
 
-- Tooltips for footnotes and some other insets now wrap, so they can
-  actually be seen.
+- Handle LFUN_FONT_UNDERLINE in mathed too (bug 2045).
 
-- New commands inset-begin/end (bound to Ctrl-Alt-Home/End) allow to jump
-  to begin/end of insets (and outside of the inset if the cursor is
-  already in place). There are also versions that select text.
+- Emergency file can be deleted after use (bug 2120).
 
-- The LaTeX Log File dialog has a search facility.
+- The size of previews (InstantPreview) can now be specified in the
+  LyX preferences (bug 6176).
 
-- The notes context menu has a new item for toggling all notes.
+- Include new modules to do equation/figure/table numbering sectionwise.
+  These modules are now used in the AMS classes instead of the previous
+  preamble hardcoding (bug 6123).
 
-- The math context menu has a new item for numbering a single line in a
-  formula.
+- Include new modules for more control over theorem numbering (bug 5880).
 
-- The math context menu has now a status flag indicating the type of
-  equation.
+- It is now configurable whether each tab has an own close button
+  (bug 5977).
 
-- Some context menu items haven been stylistically revised.
+- New LFUN inset-select-all allows to select the whole content of
+  an inset (bug 5991).
 
-- The include inset context menu indicates the selected inclusion type.
+- SVN support: synchronization for whole directories (bug 6255).
 
-- Add a graphical user interface for the SVN file locking property.
+- Complete tooltips in Spellchecker preferences (bug 6185).
 
-- Preferences about automatic popup and inline completion are now honoured
-  when pressing Ctrl-L in math mode.
-
-- Make it possible to copy from a deleted section (bug 5390).
-
-- The merge changes dialog has a new button for backwards navigation
-  (bug 2213).
-
-- Copy as Reference is now also implemented for equation labels
-  (bug 5948).
-
-- Visual support for the integral signs \fint and \fintop in formulas was
-  added.
+- Add tooltips in the Math Options section of the Document Settings
+  dialog.
 
 
 * DOCUMENTATION AND LOCALIZATION
 
-- New Slovakian translation of the Introduction manual.
+- New template file "svjour3.lyx" for article submissions
+  to journals published by the Springer group.
 
-- New French translation of the specific manual "How to write Braille
-  with LyX".
+- New Slovak translation of the Splash manual.
 
-- Updated Czech, French, German, Hungarian, Indonesian, Italian, 
-  Norwegian, Polish, Portuguese, Romanian, Russian, Ukrainian and
-  Spanish localizations of the user interface.
+- New Chinese translations of the LyX Intro and Tutorial.
 
-- Updated EmbeddedObjects manual: New section about subfloats.
+- New French translations of the XY-pic manual, the powerdot example
+  document, the linguistics manual and the seminar example document.
+  
+- Revised French translations of the example_raw and example_lyxified
+  documents.
 
-- English Extended manual: Updated section about reverse DVI search.
+- Updated French manual how to write Braille with LyX.
 
-- Updated English Additional Features manual.
+- Updated French Intro manual.
 
-- Updated Intro manual for all languages.
+- Revised appendix A of the Math manual.
 
-- Updated English, French, German, and Spanish Math manual.
+- Revised English LyX Tutorial.
 
-- Updated German and Spanish User's Guide.
+- Revised English, French and German template for 20 min. Beamer
+  conference presentations.
 
-- Updated German and Japanese Tutorial.
+- Demonstrate the use of fragile frames in the Beamer example document.
 
+- Updated LyX User's Guide.
 
-* BUILD/INSTALLATION
-
-- Added a shell script (lyxeditor) for performing reverse DVI/PDF search
-  and a python script (lyxpak.py) for creating archives of a lyx file and
-  all its ancillary files (graphics and so on) to development/tools.
-
-- Take advantage of some bugfixes in Qt 4.5 for internal file handling.
-
-- Added some cygwin-specific scripts and utility programs that are
-  compiled and installed when building on cygwin.
+- Clarify usage of layout tags No_Emph, etc. in the Customization manual
+  (bug 5412).
+  
+- Updated Simplified Chinese, Czech, French, German, Indonesian, Italian,
+  Japanese, Russian, Slovak, Spanish and Ukrainian user interface
+  localizations.
 
 
 ** Bug fixes:
@@ -208,254 +183,238 @@ What's new in version 1.6.4?
 
 * DOCUMENT INPUT/OUTPUT
 
-- Prevent data loss when shutting down Windows (part of bug 5525).
+- Do an emergency save if LyX attempts to destroy a dirty document buffer.
+  This is a last resort to try to avoid data loss.
 
-- Fix conversion of documents from LyX 1.5 with multiple URL insets
-  (bug 6121).
-
-- Fix conversion documents from LyX 1.4 which have multicolumn cells in
-  tabulars with expert border settings (bug 6018).
-
-- Partially resolve bug 5702, "tex2lyx cannot deal with modules". We
-  now treat the "DefaultModule" tag as if it were an "Input" tag. This
-  is not a general solution, but does deal with one of the most serious
-  cases of the bug.
-
-- Fix language settings after an environment (bug 5096).
-
-- Fix layout conversion problem with AMS classes (bug 6140).
-
-- Fix the output of spaces that are at the beginning of a block with
-  a new textcolor (bug 4473).
-
-- Fix output of alignment if default aligment is not justified (bug 5995).
-
-- Fix problem where updates in some child documents were not recognized
-  and no LaTeX update was performed (bug 6024).
-
-- The default eLyXer configuration now handles images correctly on view
-  and export (requires eLyXer >= 0.27).
-
-- Fix loading of UTF-8 encoded files when a byte order mark (BOM) is
-  present (bug 6030).
-
-- Fix reverse DVI/PDF search with child documents (bug 6020).
-
-- Assure that a longtable caption is in a first header even if the table
-  does not have one. This assures the caption is not repeated after a
-  page break and consequently in the list of tables (bug 6057).
-
-- The file encoding is now properly restored after a LaTeX environment
-  or command with local scope (bug 5690).
-
-- Enable the possibility to read documents from a path containing a
-  $-character (bug 4177).
-
-- Enable document margin settings and hyperref settings in the
-  article (beamer) class.
-
-- Fix bug involving incorrect requests to overwrite external files
-  (bug 5522).
-
-- Fix occasional wrong occurrence of theorem style (bug 6036).
-
-- Fix the on-screen representation of headings in the AMS article and
-  AMS book classes.
+- Fix a tex2lyx crash when importing a LaTeX file using an unknown
+  encoding (bug 6142).
   
+- Fix a crash when no external templates are defined (bug 3974).
+
+- Fix a crash when loading a document that specifies mutltiple labels
+  for an equation (bug 5968).
+
+- Fix crash when moving down with the cursor in a Unit inset (bug 6351).
+
+- Fix infinite loop when reading Mac-formatted layout files (bug 3605).
+  
+- When using the PDF-Pages external inset, copy the included PDF file to
+  the temporary directory, where LaTeX searches it (bug 6345).
+
+- Add encoding "ansinew" as a synonym of "cp1252" for the benefit of 
+  tex2lyx (bug 6142).
+
+- Fix support for optional argument of \bibitem in tex2lyx (bug 6249).
+
+- Fix (again!) reading of default modules by tex2lyx (part of bug 5702).
+
+- Fix reading of caption texts, which got broken in 1.6.4 (bug 6276).
+
+- Fix support for polytonic Greek with multiple diacritics (bug 5976).
+
+- Assure the author name is encoded correctly in the LaTeX output of
+  change tracking markup (bug 6225).
+
+- Remove the last '\\' in the output of multiline equations. This caused
+  labels to appear twice (bug 2969).
+ 
+- Put "|" characters in index entries in ERT when converting old documents
+  to LyX 1.6.x format, to assure the character is treated verbatim
+  (bug 6179).
+
+- Properly reset the stream encoding after an environment in order to
+  match the required file encoding when exporting to LaTeX (bug 6216).
+
+- Fixed layout file for the document class svjour3 (bug 6198).
+
+- Add support for \specialsection in amsart layout; improve on-screen
+  appearance of headings.
+
+- Added the separator style to the layout file for the document class
+  elsarticle and adapted the elsarticle.lyx template file accordingly
+  (bug 6189).
+
+- Correctly distinguish warnings from errors when using teTeX with
+  file:line:error style (bug 6258).
+
+- When including a child document whose language is different from
+  the master document language, restore the master language at the
+  end of the child rather than the child language.
+
+- Set the correct document language when importing TeX files.
+
+- Set the correct style for the quotes when importing TeX files which
+  use the new German spelling.
+
+- Do not eat blanks at the beginning of inserted text in change tracking
+  mode's PDF output (bug 6282).
+
+- Include packages for commands used within a \boxed (bug 6297).
+
+- Close font-changing commands before a program listing.
+
+- Ouput empty cells in a matrix with vertical lines. Omitting these 
+  empty cells caused gaps to appear in the vertical lines (bug 6310).
+  
+- Fix counters in powerdot layout.
+
 
 * USER INTERFACE
 
-- Prevent a crash in Qt when scaling images on screen. This could occur
-  only for certain scaling factors and image sizes (bug 5957).
+- Fix crash when finishing certain math macros such as \frac or font
+  changing commands (bug 6110).
 
-- Do not close hidden documents that have unsaved changes without asking
-  whether the changes should be saved (part of bug 5863).
+- Fix crash when undoing changes to an unknown math macro name such that
+  the macro becomes a known user-defined macro (bug 6208).
 
-- Fix bookmark navigation crash when multiple windows are used
-  (bug 6000).
-
-- Disable the "sort" option in the outliner for the Table of Contents
-  which triggered a crash (bug 5983). Sorting the TOC didn't work anyway.
-
-- Fix a crash when closing a LyX window with split views (bug 5998).
-
-- Fix a crash when applying preference changes (bug 6064).
-
-- Fix a crash when accessing the Navigate menu after an empty inset has
-  been dissolved (bug 6003).
+- Fix a crash when searching for a string that is found in a table,
+  while the cursor is in math (bug 6112).
   
-- Fix a crash when performing instant preview on an uncodable character
-  (bug 6116).
+- Fix a crash when closing a window after a document was opened
+  multiple times and each time a new window was opened (bug 6188).
+
+- Fix a crash when navigating to a child's heading with the outliner after
+  the child was reloaded (bug 6233).
+
+- Fix a crash when navigating to a label in a child document (bug 6252).
+
+- Fix a crash when trying to launch the settings dialog of an unknown
+  external inset (bug 6259).
+
+- Fix crash when copying a math inset containing a non-ascii character
+  which is missing a LaTeX command representation in the unicodesymbols
+  file (bug 6250).
+
+- Fix a crash when leaving an empty superscript or subscript (bug 6193).
+
+- Fix an infinite loop when selecting multiple displayed equation right
+  after each other with LFUN_SCREEN_UP (bug 6237).
   
-- Fix a crash when navigating in a table with math insets (bug 6158).
+- Fix a crash when pressing PageUp in an empty document (bug 6327).
+
+- Fix crash with autosave on Mac OS X 10.6 (bug 6168).
+
+- Fix a number of assertions when displaying error messages (bug 6205).
+
+- Fix assertion when clicking on left side of inset in RTL text
+  (bug 6165).
+
+- Fix bad allocation exception when displaying long tooltips (bug 6215).
+
+- Fix shadowing of user-defined math macros by internal ones and make
+  LyX behave as LaTeX, i.e., user macros take precedence (bug 5530).
+
+- Fix width definition in the box dialog after a box inset was transformed
+  from "Inner Box" type "None" to "Parbox" or "Minipage" (bug 6298).
+
+- Fixed problem involving inability to turn off auto-save (bug 6227).
+
+- Sort document classes case insensitively (bug 1492).
+
+- Fix wrong cursor position in RTL text (bug 6161).
+
+- Disable to insert floats into another float when this is not allowed
+  (bug 6045).
   
-- Fix a crash when closing LyX while a master and its child were open.
+- Disable the float positioning dialog for subfloats (bug 6125).
 
-- Fix a crash when documents were hidden, the view was closed, and 
-  the same documents were made visible in another view (bug 6162).
+- Do not close the cross references dialog when selecting an item from the
+  list (UNIX only; bug 6204).
 
-- Fix communication between lyxclient and server, which leads to a
-  crash once CTRL+D is used on the client side (bug 6106).
-  
-- Display the filename suffix in the tab header if it is non-standard
-  (e.g. ".lyx15"). This avoids a crash when loading two files with
-  identical names but different extensions (bug 5646), and disambiguates
-  such files in the user interface.
+- The menu item "Close Tab Group" is renamed to "Close Current View" to
+  better relate this to the action "Split View ..." (bug 5067).
 
-- Disable Symbols dialog for read-only documents. This prevents a
-  potential crash.
-  
-- Fall back to default UI file if the specified one cannot be found
-  (bug 6076).
+- Fix a bug that the keymap settings in the Preferences dialog could
+  not be deleted (bug 6119).
 
-- Fix assertion when a nested math hull appears in a math macro
-  (bug 5996).
-  
-- Fix assertion when pressing down arrow in the command buffer while
-  the history is empty (bug 6001).
+- Fix a number of small issues regarding menu items and menu shortcuts
+  (bug 6164).
 
-- Fix assertion when selecting with Shift-button in math editor (bugs
-  5046 and 6026).
+- Fix a bug that it was possible to request the wrong context menu
+  by moving the mouse during the right-click (bug 5796).
 
-- Fix assertion when starting spellchecker in math mode and clicking 
-  "replace" (bug 6013)
-  
-- Fix assertion in mathed when moving the cursor immediately after
-  pressing Ctrl-L (or '\' with inline completion disabled) in front of
-  another character (bug 6063).
-  
-- Prevent a window resize when applying the Preferences when the 
-  LyX window is maximized (bug 6034).
+- Fix the painting of RTL text. All rows except the last one of a
+  paragraph were painted slightly too far to the left (bug 3997).
 
-- Fix the upward scrolling when selecting with the mouse (bug 4464).
+- Fix the \kern primitive in mathed (bug 6246).
 
-- Make Tools>Statistics ignore Note insets and inactive branches
-  (bug 2566).
+- When pressing <del> at the end of a math formula, do not remove
+  label or numbering when selection is set (bug 6273).
 
-- Take into account file system case sensitivity when checking whether
-  a path starts with a given prefix. This fixes a bug with reverse PDF
-  search when using SumatraPDF as a PDF viewer on Cygwin.
+- Fix Ctrl-Shift-Tab shortcut for tabs (bug 6194).
 
-- Fix the maximum number of the files stored in last-opened-files list
-  (bug 5980).
+- When starting LyX, open each document in a new view when "Open documents
+  in tabs" is unchecked (bug 4906).
+ 
+- Fix the location of context menus requested by the menu key (bug 6108).
 
-- Disable unused functions in the citation dialog (bug 5987).
+- Fix undo of removed script in mathed when both super- and subscript
+  are present (bug 6264).
 
-- Fix display of BibTeX entries in the info field of the citation
-  dialog by only converting text mode latex macros to unicode glyphs.
-  
-- Convert LaTeX macros such as \"{u} to proper unicode characters
-  for the display of authors/editors on the citation inset button.
+- Fix parsing of selection when used as argument of a math macro
+  (bug 6270).
 
-- Fix pop-up of ToC and Source code panels after fresh install (part
-  of bug 5082).
+- Fix inset-[begin|end][-select] when the cursor is at the beginning or
+  end of a paragraph.
 
-- Maintain session settings over version changes (also related to
-  bug 5082).
+- If a static EndLabelString is defined in a layout file it is now 
+  correctly displayed on screen (bug 2972).
 
-- Do not reset toolbar settings after a change of UI files that do not
-  concern toolbars.
+- Do not remember documents for next startup when closing a window 
+  but not closing LyX.
 
-- Fix math-insert lfun behaviour in the absence of a selection or when
-  something outside mathed is selected (bug 6033).
-  
-- Fix casing inconsistencies in the English user interface.
+- Fix the painting of the last character of a paragraph, e.g. 
+  added/deleted paragraph breaks in change tracking.
 
-- Fix context menu for insets inside a branch inset (bug 6022).
+- Do not swallow spaces after a LaTeX macro appearing in text mode
+  inside mathed (bug 6284).
 
-- Fix command "tabular-feature align-(left|right|center)" which was
-  inadvertently disabled for a math matrix (bug 6041).
+- Show the correct context menu for insets nested in closed insets
+  that are opened by the navigate or search functionality (bug 6820).
 
-- Ensure that pasting into the preamble and the nomenclature dialog's
-  description widget resets the font formatting (bug 3936).
+- Fix the positioning of the cursor in some cases with mixed RTL
+  and LTR text (bug 5061).
 
-- Fix wrong labeling as "child only" branch if branches were unknown.
+- Set the correct language after dissolving an inset, which could have
+  given strange effects especially when dissolving an ERT (bug 6292).
 
-- Fix typesetting of chemical equations by adding support for the mhchem
-  package (bugs 6047, 4043, and 5394).
+- Fix the appearance of the combo boxes in the Text Style dialog
+  (bug 5063).
 
-- Fix display of unknown math macros that become known after editing their
-  name. They are now correctly expanded and not left in red (bug 5923).
+- Fix double blinking cursors in Graphics/Nomenclature dialogs (bug 3852).
 
-- Fix display of macros when clicking away (bug 3706).
+- Fix display of e-mail addresses in the About LyX dialog.
 
-- Fix the inconsistent behaviour of the cursor inside math (bug 2034).
+- In the Linguistics module, do not switch to the buffer language in
+  glosses (this was only a cosmetic issue in the LyX window).
 
-- Fix the toggling of the outline-button on the toolbar when closing
-  the outliner with the 'x' (bug 3918).
+- Allow PgUp and PgDown to position the cursor on the first or last row.
 
-- Fix the pasting of multiple cells in a table when a range is selected
-  (bug 4952).
+- Dissolve the caption when unsetting a longtable caption row (bug 5754),
+  and when converting a longtable into a normal table.
 
-- Do not open files during startup that were closed in the previous
-  session by Close View or Close Window (bug 5458).
+- Move the contents of a table row into the caption when setting the row
+  as a longtable caption row.
 
-- Remove empty paragraphs and superfluous spaces when leaving an inset
-  (bug 5435).
-
-- Fix the scrolling problem that when scrolling with PgUp or PgDn, the
-  cursor could end up on a row that is only partly visible. This causes
-  the cursor to end up somewhere else when scrolling back (bug 5944).
-
-- Fix selection of math insets on some archs.
-
-- Fix of painter glitches caused by uninitialized variables (bug 6077).
-
-- Fix uninitialized variable in Dialog code (bug 6081).
-
-- Fix the enabling of the page height and width fields in the Document
-  Settings dialog.
-  
-- The width unit of table cells can be set before entering the
-  value (bug 6070).
-  
-- Re-allow the insertion of glue lengths in the VSpace dialog and the
-  VSkip widget of the Document dialog (bug 6097).
-
-- Fix bug where multimedia keys were intercepted by LyX (bug 6043).
-
-- Disable some menu entries when the document windows does not have
-  focus on OS X (bug 1720).
-
-- Add the emf an wmf graphics format as a parameter of LFUN_PASTE.
-
-- Fix the enabling and disabling of some items in the longtable
-  section of the tabular dialog.
-
-- Remove the black box around the work area that is visible with Qt 4.5.
-
-- Fix middle-button pasting between different tabs (bug 6120).
+- Correctly position the cursor after pasting to a multi-cell math inset
+  (bug 6342).
 
 
 * DOCUMENTATION AND LOCALIZATION
 
-- Fix icon image files so that they appear correctly when the
-  documentation files are converted to DVI (bug 5945).
-
-- Fix encoding of the Hebrew documentation files to make them
-  compilable.
+- Fix the compilation of the example file powerdot-example.lyx with
+  recent versions of the LaTeX package powerdot.
 
 
 * BUILD/INSTALLATION
 
-- Detect multithreaded boost libraries if included boost is not used.
+- The internal boost libraries have been updated to version 1.40. Now
+  LyX builds with gcc 4.4 without the need to use --without-included-boost.
 
-- Fix small documentation bug in configure.py (bug 5881).
+- Clarify that we require automake 1.8 (this was already the case, but
+  nobody noticed). Accept autoconf 2.64 (bug 6352).
 
-- LyX now recognizes both elyxer and elyxer.py.
+- Fix buglet in configure script with recent bash versions.
 
-- SCons: assertions are now always disabled in mode=release and
-  enabled in mode=debug.
-
-- Added support for automake 1.11.
-
-
-* WINDOWS INSTALLER
-
-- All ImageMagick and Ghostscript resources are no longer installed as
-  separate files but included in the applications. This improves 
-  performance and makes maintenance easier.
-
-- Updated download location.
-
-- Fixed compatibility issue with recent NSIS versions.
+- The script ext_copy.py can now also copy files in subdirectories.
+  (useful for external converters)
