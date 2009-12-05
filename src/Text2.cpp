@@ -548,12 +548,12 @@ void Text::setCursor(CursorSlice & cur, pit_type par, pos_type pos)
 
 	// None of these should happen, but we're scaredy-cats
 	if (pos < 0) {
-		lyxerr << "dont like -1" << endl;
+		lyxerr << "don't like -1" << endl;
 		LASSERT(false, /**/);
 	}
 
 	if (pos > para.size()) {
-		lyxerr << "dont like 1, pos: " << pos
+		lyxerr << "don't like 1, pos: " << pos
 		       << " size: " << para.size()
 		       << " par: " << par << endl;
 		LASSERT(false, /**/);
