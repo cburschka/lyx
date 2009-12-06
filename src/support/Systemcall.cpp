@@ -107,7 +107,7 @@ int Systemcall::startscript(Starttype how, string const & what, bool process_eve
 
 
 	d.startProcess(cmd);
-  if (!d.waitWhile(SystemcallPrivate::Starting, process_events, -1)) {
+	if (!d.waitWhile(SystemcallPrivate::Starting, process_events, -1)) {
 		LYXERR0("QProcess " << cmd << " did not start!");
 		LYXERR0("error " << d.errorMessage());
 		return 10;
@@ -128,7 +128,7 @@ int Systemcall::startscript(Starttype how, string const & what, bool process_eve
 
 	int const exit_code = d.exitCode();
 	if (exit_code) {
-    LYXERR0("QProcess cmd: ' " << cmd << "' finished with exit code " << exit_code);
+		LYXERR0("QProcess cmd: ' " << cmd << "' finished with exit code " << exit_code);
 	}
 
 	return exit_code;
