@@ -572,7 +572,7 @@ private:
 	class Impl;
 	/// The pointer never changes although *pimpl_'s contents may.
 	Impl * const d;
-
+	///
 	frontend::GuiBufferDelegate * gui_;
 
 	/// This function is called when the buffer structure is changed.

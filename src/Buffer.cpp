@@ -1417,6 +1417,9 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 {
 	LaTeXFeatures features(*this, params(), runparams);
 	validate(features);
+	// We are going to use some of this stuff ourselves,
+	// so make sure it is up to date.
+	updateLabels();
 
 	d->texrow.reset();
 
