@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-12-04 10:47+0100\n"
+"POT-Creation-Date: 2009-12-07 08:16+0100\n"
 "PO-Revision-Date: 2009-11-22 22:37+0300\n"
 "Last-Translator: Valeriy Kruchko <lerkru@gmail.com>\n"
 "Language-Team: Russian <kruvalig@gmail.com>\n"
@@ -45,7 +45,7 @@ msgstr "Авторское право"
 #: src/frontends/qt4/ui/HSpaceUi.ui:174
 #: src/frontends/qt4/ui/HyperlinkUi.ui:153
 #: src/frontends/qt4/ui/IncludeUi.ui:250 src/frontends/qt4/ui/InfoUi.ui:71
-#: src/frontends/qt4/ui/LogUi.ui:41 src/frontends/qt4/ui/ParagraphUi.ui:102
+#: src/frontends/qt4/ui/LogUi.ui:41 src/frontends/qt4/ui/ParagraphUi.ui:260
 #: src/frontends/qt4/ui/PrefsUi.ui:93 src/frontends/qt4/ui/RefUi.ui:103
 #: src/frontends/qt4/ui/SearchUi.ui:207 src/frontends/qt4/ui/ShowFileUi.ui:55
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:28
@@ -77,7 +77,7 @@ msgstr "&Пустой"
 #: src/frontends/qt4/ui/ListingsUi.ui:539
 #: src/frontends/qt4/ui/MathMatrixUi.ui:167
 #: src/frontends/qt4/ui/NomenclUi.ui:92 src/frontends/qt4/ui/NoteUi.ui:38
-#: src/frontends/qt4/ui/ParagraphUi.ui:82 src/frontends/qt4/ui/RefUi.ui:77
+#: src/frontends/qt4/ui/ParagraphUi.ui:240 src/frontends/qt4/ui/RefUi.ui:77
 #: src/frontends/qt4/ui/SendtoUi.ui:72 src/frontends/qt4/ui/ShortcutUi.ui:52
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
@@ -292,7 +292,7 @@ msgid "Allow &page breaks"
 msgstr "Разрешить разрыв страниц"
 
 #: src/frontends/qt4/ui/BoxUi.ui:38 src/frontends/qt4/ui/MathMatrixUi.ui:199
-#: src/frontends/qt4/ui/ParagraphUi.ui:114
+#: src/frontends/qt4/ui/ParagraphUi.ui:153
 msgid "Alignment"
 msgstr "Выравнивание"
 
@@ -367,7 +367,7 @@ msgstr "Горизонтальное"
 #: src/frontends/qt4/ui/BoxUi.ui:202 src/frontends/qt4/ui/CitationUi.ui:415
 #: src/frontends/qt4/ui/DocumentUi.ui:112 src/frontends/qt4/ui/FloatUi.ui:42
 #: src/frontends/qt4/ui/GraphicsUi.ui:692
-#: src/frontends/qt4/ui/ParagraphUi.ui:59 src/frontends/qt4/ui/PrefsUi.ui:47
+#: src/frontends/qt4/ui/ParagraphUi.ui:217 src/frontends/qt4/ui/PrefsUi.ui:47
 #: src/frontends/qt4/ui/WrapUi.ui:121
 msgid "&Restore"
 msgstr "&Восстановить"
@@ -377,7 +377,7 @@ msgstr "&Восстановить"
 #: src/frontends/qt4/ui/ExternalUi.ui:62 src/frontends/qt4/ui/FloatUi.ui:78
 #: src/frontends/qt4/ui/GraphicsUi.ui:742 src/frontends/qt4/ui/HSpaceUi.ui:164
 #: src/frontends/qt4/ui/ListingsUi.ui:549
-#: src/frontends/qt4/ui/ParagraphUi.ui:92 src/frontends/qt4/ui/PrefsUi.ui:83
+#: src/frontends/qt4/ui/ParagraphUi.ui:250 src/frontends/qt4/ui/PrefsUi.ui:83
 #: src/frontends/qt4/ui/RefUi.ui:90 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/VSpaceUi.ui:49
 #: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1341
@@ -496,7 +496,7 @@ msgid "Si&ze:"
 msgstr "Ра&змер:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:66
-#: src/frontends/qt4/ui/ParagraphUi.ui:241
+#: src/frontends/qt4/ui/ParagraphUi.ui:115
 #: src/frontends/qt4/ui/PrefLatexUi.ui:52
 #: src/frontends/qt4/ui/TabularUi.ui:908 src/frontends/qt4/ui/TabularUi.ui:927
 #: src/frontends/qt4/ui/TabularUi.ui:975 lib/ui/stdtoolbars.inc:98
@@ -2235,70 +2235,39 @@ msgstr "&Двухсторонний документ"
 msgid "I&mmediate Apply"
 msgstr "Применить сейчас"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:129
-msgid "Use the default alignment for this paragraph, whatever it is."
-msgstr "Использовать выравнивание для абзаца по умолчанию, какое оно не было."
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:132
-#, fuzzy
-msgid "Paragraph's &Default"
-msgstr "Установлено размещение абзаца"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:139
-msgid "Ri&ght"
-msgstr "Справа"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:146
-#, fuzzy
-msgid "C&enter"
-msgstr "По середине"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:153
-msgid "&Left"
-msgstr "Слева"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:160
-msgid "&Justified"
-msgstr "Оба края"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:170
-#, fuzzy
-msgid "&Indent Paragraph"
-msgstr "абзаца"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:180
+#: src/frontends/qt4/ui/ParagraphUi.ui:54
 msgid "Label Width"
 msgstr "Ширина метки"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:195
-#: src/frontends/qt4/ui/ParagraphUi.ui:202
+#: src/frontends/qt4/ui/ParagraphUi.ui:69
+#: src/frontends/qt4/ui/ParagraphUi.ui:82
 msgid "This text defines the width of the paragraph label"
 msgstr "Этот текст определяет ширину метки параграфа"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:205
+#: src/frontends/qt4/ui/ParagraphUi.ui:72
 #, fuzzy
 msgid "Lo&ngest label"
 msgstr "Длин&нейшая метка"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:218
+#: src/frontends/qt4/ui/ParagraphUi.ui:92
 msgid "Line &spacing"
 msgstr "Интер&линьяж"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:246 src/Text.cpp:1420
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1420
 #: src/frontends/qt4/GuiDocument.cpp:572
 msgid "Single"
 msgstr "Одинарный"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:251
+#: src/frontends/qt4/ui/ParagraphUi.ui:125
 msgid "1.5"
 msgstr "Полуторный"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:256 src/Text.cpp:1426
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1426
 #: src/frontends/qt4/GuiDocument.cpp:576
 msgid "Double"
 msgstr "Двойной"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:261
+#: src/frontends/qt4/ui/ParagraphUi.ui:135
 #: src/frontends/qt4/ui/TabularUi.ui:913 src/frontends/qt4/ui/TabularUi.ui:932
 #: src/frontends/qt4/ui/TabularUi.ui:980 src/frontends/qt4/ui/VSpaceUi.ui:156
 #: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:578
@@ -2306,6 +2275,37 @@ msgstr "Двойной"
 #: src/frontends/qt4/GuiHSpace.cpp:161
 msgid "Custom"
 msgstr "Пользовательский"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:146
+#, fuzzy
+msgid "&Indent Paragraph"
+msgstr "абзаца"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:168
+msgid "&Justified"
+msgstr "Оба края"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:175
+msgid "&Left"
+msgstr "Слева"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:182
+#, fuzzy
+msgid "C&enter"
+msgstr "По середине"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:189
+msgid "Ri&ght"
+msgstr "Справа"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:196
+msgid "Use the default alignment for this paragraph, whatever it is."
+msgstr "Использовать выравнивание для абзаца по умолчанию, какое оно не было."
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:199
+#, fuzzy
+msgid "Paragraph's &Default"
+msgstr "Установлено размещение абзаца"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
 #, fuzzy
@@ -2745,9 +2745,10 @@ msgid "&Global"
 msgstr "&Глобально"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:136
+#, fuzzy
 msgid ""
-"If checked, the document language is not explicitely set by a language "
-"switch command"
+"If checked, the document language is not explicitly set by a language switch "
+"command"
 msgstr ""
 "Если отмечено, язык документа не задаётся явно командой переключения языка"
 
@@ -2756,8 +2757,9 @@ msgid "Auto &begin"
 msgstr "Автоматически &начинать"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:146
+#, fuzzy
 msgid ""
-"If checked, the document language is not explicitely closed by a language "
+"If checked, the document language is not explicitly closed by a language "
 "switch command"
 msgstr ""
 "Если отмечено, язык документа не задаётся явно командой переключения языка"
@@ -4795,7 +4797,7 @@ msgid "Author"
 msgstr "Автор"
 
 #: lib/layouts/aa.layout:73 lib/layouts/aa.layout:134
-#: lib/layouts/aapaper.layout:82 lib/layouts/dinbrief.layout:247
+#: lib/layouts/aapaper.layout:82 lib/layouts/dinbrief.layout:248
 #: lib/layouts/egs.layout:233 lib/layouts/elsarticle.layout:193
 #: lib/layouts/entcs.layout:59 lib/layouts/g-brief-en.layout:180
 #: lib/layouts/g-brief2.layout:716 lib/layouts/ijmpc.layout:48
@@ -4821,7 +4823,7 @@ msgstr "Почта"
 #: lib/layouts/aa.layout:82 lib/layouts/aa.layout:277
 #: lib/layouts/aapaper.layout:94 lib/layouts/aapaper.layout:182
 #: lib/layouts/aastex.layout:106 lib/layouts/aastex.layout:231
-#: lib/layouts/beamer.layout:860 lib/layouts/dinbrief.layout:149
+#: lib/layouts/beamer.layout:860 lib/layouts/dinbrief.layout:150
 #: lib/layouts/egs.layout:466 lib/layouts/foils.layout:140
 #: lib/layouts/g-brief-en.layout:189 lib/layouts/g-brief2.layout:801
 #: lib/layouts/kluwer.layout:141 lib/layouts/powerdot.layout:86
@@ -5954,325 +5956,350 @@ msgstr "KnightMove"
 msgid "KnightMove:"
 msgstr "KnightMove"
 
-#: lib/layouts/dinbrief.layout:24
+#: lib/layouts/dinbrief.layout:26
 msgid "DinBrief"
 msgstr ""
 
-#: lib/layouts/dinbrief.layout:43 lib/layouts/heb-letter.layout:15
+#: lib/layouts/dinbrief.layout:45 lib/layouts/heb-letter.layout:15
 #: lib/layouts/stdletter.inc:35
 msgid "Send To Address"
 msgstr "Адрес назначения"
 
-#: lib/layouts/dinbrief.layout:45
-#, fuzzy
-msgid "Anschrift:"
-msgstr "Unterschrift"
+#: lib/layouts/dinbrief.layout:47 lib/layouts/elsart.layout:138
+#: lib/layouts/g-brief-de.layout:185 lib/layouts/g-brief-en.layout:185
+#: lib/layouts/g-brief2.layout:727 lib/layouts/revtex.layout:128
+#: lib/layouts/revtex4.layout:181 lib/layouts/scrlettr.layout:142
+#: lib/layouts/scrlttr2.layout:60 lib/layouts/siamltex.layout:285
+#: lib/layouts/amsdefs.inc:135
+msgid "Address:"
+msgstr "Адрес:"
 
-#: lib/layouts/dinbrief.layout:57 lib/layouts/heb-letter.layout:10
+#: lib/layouts/dinbrief.layout:59 lib/layouts/heb-letter.layout:10
 #: lib/layouts/stdletter.inc:24
 msgid "My Address"
 msgstr "Мой адрес"
 
-#: lib/layouts/dinbrief.layout:59
-msgid "Briefkopf:"
-msgstr ""
+#: lib/layouts/dinbrief.layout:61 lib/layouts/scrlttr2.layout:177
+#, fuzzy
+msgid "Sender Address:"
+msgstr "Адрес Отправителя:"
 
-#: lib/layouts/dinbrief.layout:67
+#: lib/layouts/dinbrief.layout:69
 #, fuzzy
 msgid "Return address"
 msgstr "Обратный адрес"
 
-#: lib/layouts/dinbrief.layout:69
+#: lib/layouts/dinbrief.layout:71 lib/layouts/scrlettr.layout:170
+#: lib/layouts/scrlttr2.layout:249
 #, fuzzy
-msgid "Absender:"
-msgstr "Шапка:"
+msgid "Backaddress:"
+msgstr "Обратный адрес:"
 
-#: lib/layouts/dinbrief.layout:77
+#: lib/layouts/dinbrief.layout:79
 #, fuzzy
 msgid "Postal comment"
 msgstr "PostalComment"
 
-#: lib/layouts/dinbrief.layout:79 lib/layouts/g-brief-de.layout:176
+#: lib/layouts/dinbrief.layout:81
 #, fuzzy
-msgid "Postvermerk:"
+msgid "Postal Remark:"
 msgstr "Postvermerk"
 
-#: lib/layouts/dinbrief.layout:84
+#: lib/layouts/dinbrief.layout:86
 #, fuzzy
 msgid "Handling"
 msgstr "Венгерский"
 
-#: lib/layouts/dinbrief.layout:86 lib/layouts/g-brief-de.layout:71
+#: lib/layouts/dinbrief.layout:88
 #, fuzzy
-msgid "Zusatz:"
-msgstr "Zusatz"
+msgid "Handling:"
+msgstr "Венгерский"
 
-#: lib/layouts/dinbrief.layout:91 lib/layouts/g-brief-en.layout:103
+#: lib/layouts/dinbrief.layout:92 lib/layouts/g-brief-en.layout:103
 #: lib/layouts/g-brief2.layout:758
 msgid "YourRef"
 msgstr "Ваша ссылка"
 
-#: lib/layouts/dinbrief.layout:93
+#: lib/layouts/dinbrief.layout:94 lib/layouts/scrlettr.layout:205
+#: lib/layouts/scrlttr2.layout:289
 #, fuzzy
-msgid "Ihre Zeichen:"
-msgstr "IhrZeichen"
+msgid "Your ref.:"
+msgstr "Ваша ссылка:"
 
-#: lib/layouts/dinbrief.layout:97 lib/layouts/g-brief-en.layout:96
+#: lib/layouts/dinbrief.layout:98 lib/layouts/g-brief-en.layout:96
 #: lib/layouts/g-brief2.layout:737
 msgid "MyRef"
 msgstr "MyRef"
 
-#: lib/layouts/dinbrief.layout:99
+#: lib/layouts/dinbrief.layout:100 lib/layouts/scrlettr.layout:226
+#: lib/layouts/scrlttr2.layout:313
 #, fuzzy
-msgid "Unsere Zeichen:"
-msgstr "IhrZeichen"
+msgid "Our ref.:"
+msgstr "Ваша ссылка:"
 
-#: lib/layouts/dinbrief.layout:103
+#: lib/layouts/dinbrief.layout:104
 #, fuzzy
 msgid "Writer"
 msgstr "Принтер"
 
-#: lib/layouts/dinbrief.layout:105
-msgid "Sachbearbeiter:"
-msgstr ""
+#: lib/layouts/dinbrief.layout:106
+#, fuzzy
+msgid "Writer:"
+msgstr "Принтер"
 
-#: lib/layouts/dinbrief.layout:109 lib/layouts/g-brief-en.layout:54
+#: lib/layouts/dinbrief.layout:110 lib/layouts/g-brief-en.layout:54
 #: lib/layouts/g-brief2.layout:892 lib/layouts/scrlettr.layout:132
 #: lib/layouts/scrlttr2.layout:165 lib/layouts/stdletter.inc:71
 msgid "Signature"
 msgstr "Подпись"
 
-#: lib/layouts/dinbrief.layout:111 lib/layouts/g-brief-de.layout:57
+#: lib/layouts/dinbrief.layout:112 lib/layouts/g-brief-de.layout:57
+#: lib/layouts/g-brief-en.layout:57 lib/layouts/g-brief2.layout:902
+#: lib/layouts/scrlettr.layout:135 lib/layouts/scrlttr2.layout:169
+#: lib/layouts/stdletter.inc:83
 #, fuzzy
-msgid "Unterschrift:"
-msgstr "Unterschrift"
+msgid "Signature:"
+msgstr "Подпись"
 
-#: lib/layouts/dinbrief.layout:116
+#: lib/layouts/dinbrief.layout:117
 #, fuzzy
 msgid "Bottomtext"
 msgstr "Левый нижний"
 
-#: lib/layouts/dinbrief.layout:118
-msgid "Fusszeile(n):"
-msgstr ""
+#: lib/layouts/dinbrief.layout:119
+#, fuzzy
+msgid "Bottom text:"
+msgstr "Левый нижний"
 
-#: lib/layouts/dinbrief.layout:126
+#: lib/layouts/dinbrief.layout:127
 #, fuzzy
 msgid "Area code"
 msgstr "Anrede"
 
-#: lib/layouts/dinbrief.layout:128
+#: lib/layouts/dinbrief.layout:129
 #, fuzzy
-msgid "Vorwahl:"
-msgstr "Нормальный:"
+msgid "Area Code:"
+msgstr "Anrede"
 
-#: lib/layouts/dinbrief.layout:132 lib/layouts/scrlettr.layout:146
+#: lib/layouts/dinbrief.layout:133 lib/layouts/scrlettr.layout:146
 #: lib/layouts/scrlttr2.layout:181 lib/layouts/stdletter.inc:126
 msgid "Telephone"
 msgstr "Телефон"
 
-#: lib/layouts/dinbrief.layout:134 lib/layouts/g-brief-de.layout:120
-#, fuzzy
-msgid "Telefon:"
-msgstr "Телефон"
+#: lib/layouts/dinbrief.layout:135 lib/layouts/scrlettr.layout:149
+#: lib/layouts/stdletter.inc:129
+msgid "Telephone:"
+msgstr "Телефон:"
 
-#: lib/layouts/dinbrief.layout:139 lib/layouts/scrlettr.layout:181
+#: lib/layouts/dinbrief.layout:140 lib/layouts/scrlettr.layout:181
 #: lib/layouts/scrlttr2.layout:261 lib/layouts/stdletter.inc:119
 msgid "Location"
 msgstr "Размещение"
 
-#: lib/layouts/dinbrief.layout:141 lib/layouts/g-brief-de.layout:78
+#: lib/layouts/dinbrief.layout:142 lib/layouts/scrlettr.layout:184
+#: lib/layouts/scrlttr2.layout:265 lib/layouts/stdletter.inc:122
 #, fuzzy
-msgid "Ort:"
-msgstr "Ort"
+msgid "Location:"
+msgstr "Размещение:"
 
-#: lib/layouts/dinbrief.layout:151 lib/layouts/g-brief-de.layout:192
-#, fuzzy
-msgid "Datum:"
-msgstr "Дата"
+#: lib/layouts/dinbrief.layout:152 lib/layouts/g-brief-de.layout:192
+#: lib/layouts/g-brief-en.layout:192 lib/layouts/g-brief2.layout:811
+#: lib/layouts/revtex.layout:108 lib/layouts/revtex4.layout:139
+#: lib/layouts/scrlettr.layout:163 lib/layouts/scrlttr2.layout:241
+#: lib/layouts/siamltex.layout:235 lib/layouts/amsdefs.inc:85
+msgid "Date:"
+msgstr "Дата:"
 
-#: lib/layouts/dinbrief.layout:156 lib/layouts/scrlettr.layout:195
+#: lib/layouts/dinbrief.layout:157 lib/layouts/scrlettr.layout:195
 #: lib/layouts/scrlttr2.layout:277 lib/layouts/scrclass.inc:169
 msgid "Subject"
 msgstr "Тема"
 
-#: lib/layouts/dinbrief.layout:158 lib/layouts/g-brief-de.layout:201
-#, fuzzy
-msgid "Betreff:"
-msgstr "Betreff"
+#: lib/layouts/dinbrief.layout:159 lib/layouts/scrlettr.layout:198
+#: lib/layouts/scrlttr2.layout:281
+msgid "Subject:"
+msgstr "Тема:"
 
-#: lib/layouts/dinbrief.layout:172 lib/layouts/g-brief-en.layout:205
+#: lib/layouts/dinbrief.layout:173 lib/layouts/g-brief-en.layout:205
 #: lib/layouts/g-brief2.layout:844 lib/layouts/scrlettr.layout:60
 #: lib/layouts/scrlttr2.layout:92 lib/layouts/stdletter.inc:49
 msgid "Opening"
 msgstr "Вступление"
 
-#: lib/layouts/dinbrief.layout:176 lib/layouts/g-brief-de.layout:210
+#: lib/layouts/dinbrief.layout:177 lib/layouts/g-brief-de.layout:210
+#: lib/layouts/g-brief-en.layout:210 lib/layouts/g-brief2.layout:856
+#: lib/layouts/scrlttr2.layout:103 lib/layouts/stdletter.inc:62
 #, fuzzy
-msgid "Anrede:"
-msgstr "Anrede"
+msgid "Opening:"
+msgstr "Вступление"
 
-#: lib/layouts/dinbrief.layout:188 lib/layouts/g-brief-en.layout:231
+#: lib/layouts/dinbrief.layout:189 lib/layouts/g-brief-en.layout:231
 #: lib/layouts/g-brief2.layout:866 lib/layouts/scrlettr.layout:70
 #: lib/layouts/scrlttr2.layout:112 lib/layouts/stdletter.inc:92
 msgid "Closing"
 msgstr "Эпилог"
 
-#: lib/layouts/dinbrief.layout:190 lib/layouts/g-brief-de.layout:236
+#: lib/layouts/dinbrief.layout:191 lib/layouts/g-brief-de.layout:236
+#: lib/layouts/g-brief-en.layout:236 lib/layouts/g-brief2.layout:877
+#: lib/layouts/scrlttr2.layout:116 lib/layouts/stdletter.inc:95
 #, fuzzy
-msgid "Gruss:"
-msgstr "Gruss"
+msgid "Closing:"
+msgstr "Эпилог"
 
-#: lib/layouts/dinbrief.layout:196 lib/layouts/stdletter.inc:111
+#: lib/layouts/dinbrief.layout:197 lib/layouts/stdletter.inc:111
 msgid "encl"
 msgstr "encl"
 
-#: lib/layouts/dinbrief.layout:198
+#: lib/layouts/dinbrief.layout:199 lib/layouts/scrlettr.layout:108
+#: lib/layouts/scrlttr2.layout:139 lib/layouts/stdletter.inc:114
 #, fuzzy
-msgid "Anlage(n):"
-msgstr "Anlagen"
+msgid "encl:"
+msgstr "encl"
 
-#: lib/layouts/dinbrief.layout:211 lib/layouts/g-brief-en.layout:222
+#: lib/layouts/dinbrief.layout:212 lib/layouts/g-brief-en.layout:222
 #: lib/layouts/g-brief2.layout:933 lib/layouts/stdletter.inc:99
 msgid "cc"
 msgstr "cc"
 
-#: lib/layouts/dinbrief.layout:213 lib/layouts/g-brief-de.layout:227
+#: lib/layouts/dinbrief.layout:214 lib/layouts/g-brief-de.layout:227
+#: lib/layouts/g-brief-en.layout:227 lib/layouts/g-brief2.layout:944
+#: lib/layouts/scrlettr.layout:101 lib/layouts/scrlttr2.layout:132
+#: lib/layouts/stdletter.inc:102
 #, fuzzy
-msgid "Verteiler:"
-msgstr "Verteiler"
+msgid "cc:"
+msgstr "cc"
 
-#: lib/layouts/dinbrief.layout:217 lib/layouts/scrlettr.layout:81
+#: lib/layouts/dinbrief.layout:218 lib/layouts/scrlettr.layout:81
 #: lib/layouts/scrlttr2.layout:120
 msgid "PS"
 msgstr "PS"
 
-#: lib/layouts/dinbrief.layout:219
+#: lib/layouts/dinbrief.layout:220 lib/layouts/scrlttr2.layout:124
 #, fuzzy
-msgid "PS:"
-msgstr "PS"
+msgid "Post Scriptum:"
+msgstr "Драйвер PostScript:"
 
-#: lib/layouts/dinbrief.layout:232 lib/layouts/scrlttr2.layout:173
+#: lib/layouts/dinbrief.layout:233 lib/layouts/scrlttr2.layout:173
 msgid "SenderAddress"
 msgstr "АдресОтправителя"
 
-#: lib/layouts/dinbrief.layout:237 lib/layouts/scrlettr.layout:167
+#: lib/layouts/dinbrief.layout:238 lib/layouts/scrlettr.layout:167
 #: lib/layouts/scrlttr2.layout:245
 msgid "Backaddress"
 msgstr "Обратный адрес"
 
-#: lib/layouts/dinbrief.layout:242 lib/layouts/g-brief-de.layout:89
+#: lib/layouts/dinbrief.layout:243 lib/layouts/g-brief-de.layout:89
 msgid "RetourAdresse"
 msgstr "Обратный адрес"
 
-#: lib/layouts/dinbrief.layout:252 lib/layouts/g-brief-de.layout:180
+#: lib/layouts/dinbrief.layout:253 lib/layouts/g-brief-de.layout:180
 msgid "Adresse"
 msgstr "Адрес"
 
-#: lib/layouts/dinbrief.layout:257 lib/layouts/g-brief-de.layout:173
+#: lib/layouts/dinbrief.layout:258 lib/layouts/g-brief-de.layout:173
 msgid "Postvermerk"
 msgstr "Postvermerk"
 
-#: lib/layouts/dinbrief.layout:262 lib/layouts/g-brief-de.layout:68
+#: lib/layouts/dinbrief.layout:263 lib/layouts/g-brief-de.layout:68
 msgid "Zusatz"
 msgstr "Zusatz"
 
-#: lib/layouts/dinbrief.layout:267 lib/layouts/g-brief-de.layout:103
+#: lib/layouts/dinbrief.layout:268 lib/layouts/g-brief-de.layout:103
 msgid "IhrZeichen"
 msgstr "IhrZeichen"
 
-#: lib/layouts/dinbrief.layout:272 lib/layouts/g-brief-en.layout:110
+#: lib/layouts/dinbrief.layout:273 lib/layouts/g-brief-en.layout:110
 #: lib/layouts/g-brief2.layout:780
 msgid "YourMail"
 msgstr "Ваш почтовый адрес"
 
-#: lib/layouts/dinbrief.layout:277 lib/layouts/g-brief-de.layout:110
+#: lib/layouts/dinbrief.layout:278 lib/layouts/g-brief-de.layout:110
 msgid "IhrSchreiben"
 msgstr "IhrSchreiben"
 
-#: lib/layouts/dinbrief.layout:282 lib/layouts/g-brief-de.layout:96
+#: lib/layouts/dinbrief.layout:283 lib/layouts/g-brief-de.layout:96
 msgid "MeinZeichen"
 msgstr "MeinZeichen"
 
-#: lib/layouts/dinbrief.layout:287 lib/layouts/g-brief-de.layout:54
+#: lib/layouts/dinbrief.layout:288 lib/layouts/g-brief-de.layout:54
 msgid "Unterschrift"
 msgstr "Unterschrift"
 
-#: lib/layouts/dinbrief.layout:292 lib/layouts/g-brief-en.layout:117
+#: lib/layouts/dinbrief.layout:293 lib/layouts/g-brief-en.layout:117
 msgid "Phone"
 msgstr "Телефон"
 
-#: lib/layouts/dinbrief.layout:297 lib/layouts/g-brief-de.layout:117
+#: lib/layouts/dinbrief.layout:298 lib/layouts/g-brief-de.layout:117
 msgid "Telefon"
 msgstr "Телефон"
 
-#: lib/layouts/dinbrief.layout:302 lib/layouts/scrlettr.layout:153
+#: lib/layouts/dinbrief.layout:303 lib/layouts/scrlettr.layout:153
 #: lib/layouts/scrlttr2.layout:229
 msgid "Place"
 msgstr "Размещение"
 
-#: lib/layouts/dinbrief.layout:307
+#: lib/layouts/dinbrief.layout:308
 msgid "Stadt"
 msgstr "Stadt"
 
-#: lib/layouts/dinbrief.layout:312 lib/layouts/g-brief-en.layout:75
+#: lib/layouts/dinbrief.layout:313 lib/layouts/g-brief-en.layout:75
 msgid "Town"
 msgstr "Город"
 
-#: lib/layouts/dinbrief.layout:317 lib/layouts/g-brief-de.layout:75
+#: lib/layouts/dinbrief.layout:318 lib/layouts/g-brief-de.layout:75
 msgid "Ort"
 msgstr "Ort"
 
-#: lib/layouts/dinbrief.layout:322 lib/layouts/g-brief-de.layout:189
+#: lib/layouts/dinbrief.layout:323 lib/layouts/g-brief-de.layout:189
 msgid "Datum"
 msgstr "Дата"
 
-#: lib/layouts/dinbrief.layout:327 lib/layouts/g-brief-en.layout:196
+#: lib/layouts/dinbrief.layout:328 lib/layouts/g-brief-en.layout:196
 #: lib/layouts/g-brief2.layout:821
 msgid "Reference"
 msgstr "Перекрёстная ссылка"
 
-#: lib/layouts/dinbrief.layout:332 lib/layouts/g-brief-de.layout:196
+#: lib/layouts/dinbrief.layout:333 lib/layouts/g-brief-de.layout:196
 msgid "Betreff"
 msgstr "Betreff"
 
-#: lib/layouts/dinbrief.layout:337 lib/layouts/g-brief-de.layout:205
+#: lib/layouts/dinbrief.layout:338 lib/layouts/g-brief-de.layout:205
 msgid "Anrede"
 msgstr "Anrede"
 
-#: lib/layouts/dinbrief.layout:342 lib/layouts/g-brief-en.layout:17
+#: lib/layouts/dinbrief.layout:343 lib/layouts/g-brief-en.layout:17
 #: lib/layouts/g-brief2.layout:39 lib/layouts/iopart.layout:117
 #: lib/layouts/scrlettr.layout:40
 msgid "Letter"
 msgstr "Письмо"
 
-#: lib/layouts/dinbrief.layout:347 lib/layouts/g-brief-de.layout:17
+#: lib/layouts/dinbrief.layout:348 lib/layouts/g-brief-de.layout:17
 msgid "Brieftext"
 msgstr "Brieftext"
 
-#: lib/layouts/dinbrief.layout:352 lib/layouts/g-brief-de.layout:231
+#: lib/layouts/dinbrief.layout:353 lib/layouts/g-brief-de.layout:231
 msgid "Gruss"
 msgstr "Gruss"
 
-#: lib/layouts/dinbrief.layout:356
+#: lib/layouts/dinbrief.layout:357
 msgid "ps"
 msgstr "ps"
 
-#: lib/layouts/dinbrief.layout:361 lib/layouts/g-brief-en.layout:214
+#: lib/layouts/dinbrief.layout:362 lib/layouts/g-brief-en.layout:214
 #: lib/layouts/g-brief2.layout:912
 msgid "Encl."
 msgstr "Encl."
 
-#: lib/layouts/dinbrief.layout:366 lib/layouts/g-brief-de.layout:214
+#: lib/layouts/dinbrief.layout:367 lib/layouts/g-brief-de.layout:214
 msgid "Anlagen"
 msgstr "Anlagen"
 
-#: lib/layouts/dinbrief.layout:371 lib/layouts/scrlettr.layout:91
+#: lib/layouts/dinbrief.layout:372 lib/layouts/scrlettr.layout:91
 #: lib/layouts/scrlttr2.layout:128
 msgid "CC"
 msgstr "CC"
 
-#: lib/layouts/dinbrief.layout:376 lib/layouts/g-brief-de.layout:222
+#: lib/layouts/dinbrief.layout:377 lib/layouts/g-brief-de.layout:222
 msgid "Verteiler"
 msgstr "Verteiler"
 
@@ -6365,14 +6392,6 @@ msgstr "Благодарность"
 #: lib/layouts/elsart.layout:130
 msgid "Author Address"
 msgstr "АдресАвтора"
-
-#: lib/layouts/elsart.layout:138 lib/layouts/g-brief-en.layout:185
-#: lib/layouts/g-brief2.layout:727 lib/layouts/revtex.layout:128
-#: lib/layouts/revtex4.layout:181 lib/layouts/scrlettr.layout:142
-#: lib/layouts/scrlttr2.layout:60 lib/layouts/siamltex.layout:285
-#: lib/layouts/amsdefs.inc:135
-msgid "Address:"
-msgstr "Адрес:"
 
 #: lib/layouts/elsart.layout:146 lib/layouts/revtex4.layout:192
 msgid "Author Email"
@@ -6778,10 +6797,11 @@ msgstr "Предложение."
 msgid "Definition*"
 msgstr "Определение*"
 
-#: lib/layouts/g-brief-de.layout:26
+#: lib/layouts/g-brief-de.layout:26 lib/layouts/g-brief-en.layout:26
+#: lib/layouts/g-brief2.layout:49
 #, fuzzy
-msgid "Text:"
-msgstr "Текст"
+msgid "Letter:"
+msgstr "Письмо"
 
 #: lib/layouts/g-brief-de.layout:35 lib/layouts/g-brief-en.layout:35
 #: lib/layouts/g-brief2.layout:58 lib/layouts/scrlettr.layout:112
@@ -6800,39 +6820,58 @@ msgstr "Название:"
 msgid "Strasse"
 msgstr "Улица"
 
-#: lib/layouts/g-brief-de.layout:64
+#: lib/layouts/g-brief-de.layout:64 lib/layouts/g-brief-en.layout:64
 #, fuzzy
-msgid "Strasse:"
+msgid "Street:"
 msgstr "Улица"
+
+#: lib/layouts/g-brief-de.layout:71 lib/layouts/g-brief-en.layout:71
+#, fuzzy
+msgid "Addition:"
+msgstr "Дополнение"
+
+#: lib/layouts/g-brief-de.layout:78 lib/layouts/g-brief-en.layout:78
+#, fuzzy
+msgid "Town:"
+msgstr "Город"
 
 #: lib/layouts/g-brief-de.layout:82
 msgid "Land"
 msgstr "Land"
 
-#: lib/layouts/g-brief-de.layout:85
+#: lib/layouts/g-brief-de.layout:85 lib/layouts/g-brief-en.layout:85
 #, fuzzy
-msgid "Land:"
-msgstr "Land"
+msgid "State:"
+msgstr "Состояние"
 
-#: lib/layouts/g-brief-de.layout:92
+#: lib/layouts/g-brief-de.layout:92 lib/layouts/g-brief-en.layout:92
+#: lib/layouts/g-brief2.layout:686
 #, fuzzy
-msgid "RetourAdresse:"
+msgid "ReturnAddress:"
 msgstr "Обратный адрес"
 
-#: lib/layouts/g-brief-de.layout:99
+#: lib/layouts/g-brief-de.layout:99 lib/layouts/g-brief-en.layout:99
+#: lib/layouts/g-brief2.layout:748
 #, fuzzy
-msgid "MeinZeichen:"
-msgstr "MeinZeichen"
+msgid "MyRef:"
+msgstr "MyRef"
 
-#: lib/layouts/g-brief-de.layout:106
+#: lib/layouts/g-brief-de.layout:106 lib/layouts/g-brief-en.layout:106
+#: lib/layouts/g-brief2.layout:769
 #, fuzzy
-msgid "IhrZeichen:"
-msgstr "IhrZeichen"
+msgid "YourRef:"
+msgstr "Ваша ссылка"
 
-#: lib/layouts/g-brief-de.layout:113
+#: lib/layouts/g-brief-de.layout:113 lib/layouts/g-brief-en.layout:113
+#: lib/layouts/g-brief2.layout:790
 #, fuzzy
-msgid "IhrSchreiben:"
-msgstr "IhrSchreiben"
+msgid "YourMail:"
+msgstr "Ваш почтовый адрес"
+
+#: lib/layouts/g-brief-de.layout:120 lib/layouts/g-brief-en.layout:120
+#, fuzzy
+msgid "Phone:"
+msgstr "Телефон"
 
 #: lib/layouts/g-brief-de.layout:124 lib/layouts/g-brief-en.layout:124
 msgid "Telefax"
@@ -6885,164 +6924,65 @@ msgstr "Банк"
 msgid "BLZ"
 msgstr "BLZ"
 
-#: lib/layouts/g-brief-de.layout:162
+#: lib/layouts/g-brief-de.layout:162 lib/layouts/g-brief-en.layout:162
 #, fuzzy
-msgid "BLZ:"
-msgstr "BLZ"
+msgid "BankCode:"
+msgstr "Банковский код"
 
 #: lib/layouts/g-brief-de.layout:166
 msgid "Konto"
 msgstr "Konto"
 
-#: lib/layouts/g-brief-de.layout:169
+#: lib/layouts/g-brief-de.layout:169 lib/layouts/g-brief-en.layout:169
 #, fuzzy
-msgid "Konto:"
-msgstr "Konto"
+msgid "BankAccount:"
+msgstr "Банковский счёт"
 
-#: lib/layouts/g-brief-de.layout:185
-msgid "Adresse:"
-msgstr "Адрес:"
-
-#: lib/layouts/g-brief-de.layout:218
+#: lib/layouts/g-brief-de.layout:176 lib/layouts/g-brief-en.layout:176
+#: lib/layouts/g-brief2.layout:706
 #, fuzzy
-msgid "Anlagen:"
-msgstr "Anlagen"
+msgid "PostalComment:"
+msgstr "PostalComment"
 
-#: lib/layouts/g-brief-en.layout:26 lib/layouts/g-brief2.layout:49
+#: lib/layouts/g-brief-de.layout:201 lib/layouts/g-brief-en.layout:201
+#: lib/layouts/g-brief2.layout:833
 #, fuzzy
-msgid "Letter:"
-msgstr "Письмо"
+msgid "Reference:"
+msgstr "Перекрёстная ссылка"
 
-#: lib/layouts/g-brief-en.layout:57 lib/layouts/g-brief2.layout:902
-#: lib/layouts/scrlettr.layout:135 lib/layouts/scrlttr2.layout:169
-#: lib/layouts/stdletter.inc:83
+#: lib/layouts/g-brief-de.layout:218 lib/layouts/g-brief-en.layout:218
+#: lib/layouts/g-brief2.layout:923
 #, fuzzy
-msgid "Signature:"
-msgstr "Подпись"
+msgid "Encl.:"
+msgstr "Encl."
 
 #: lib/layouts/g-brief-en.layout:61 lib/layouts/agu_stdtitle.inc:439
 msgid "Street"
-msgstr "Улица"
-
-#: lib/layouts/g-brief-en.layout:64
-#, fuzzy
-msgid "Street:"
 msgstr "Улица"
 
 #: lib/layouts/g-brief-en.layout:68
 msgid "Addition"
 msgstr "Дополнение"
 
-#: lib/layouts/g-brief-en.layout:71
-#, fuzzy
-msgid "Addition:"
-msgstr "Дополнение"
-
-#: lib/layouts/g-brief-en.layout:78
-#, fuzzy
-msgid "Town:"
-msgstr "Город"
-
 #: lib/layouts/g-brief-en.layout:82 lib/layouts/agu_stdtitle.inc:461
 msgid "State"
-msgstr "Состояние"
-
-#: lib/layouts/g-brief-en.layout:85
-#, fuzzy
-msgid "State:"
 msgstr "Состояние"
 
 #: lib/layouts/g-brief-en.layout:89 lib/layouts/g-brief2.layout:675
 msgid "ReturnAddress"
 msgstr "Обратный адрес"
 
-#: lib/layouts/g-brief-en.layout:92 lib/layouts/g-brief2.layout:686
-#, fuzzy
-msgid "ReturnAddress:"
-msgstr "Обратный адрес"
-
-#: lib/layouts/g-brief-en.layout:99 lib/layouts/g-brief2.layout:748
-#, fuzzy
-msgid "MyRef:"
-msgstr "MyRef"
-
-#: lib/layouts/g-brief-en.layout:106 lib/layouts/g-brief2.layout:769
-#, fuzzy
-msgid "YourRef:"
-msgstr "Ваша ссылка"
-
-#: lib/layouts/g-brief-en.layout:113 lib/layouts/g-brief2.layout:790
-#, fuzzy
-msgid "YourMail:"
-msgstr "Ваш почтовый адрес"
-
-#: lib/layouts/g-brief-en.layout:120
-#, fuzzy
-msgid "Phone:"
-msgstr "Телефон"
-
 #: lib/layouts/g-brief-en.layout:159
 msgid "BankCode"
-msgstr "Банковский код"
-
-#: lib/layouts/g-brief-en.layout:162
-#, fuzzy
-msgid "BankCode:"
 msgstr "Банковский код"
 
 #: lib/layouts/g-brief-en.layout:166
 msgid "BankAccount"
 msgstr "Банковский счёт"
 
-#: lib/layouts/g-brief-en.layout:169
-#, fuzzy
-msgid "BankAccount:"
-msgstr "Банковский счёт"
-
 #: lib/layouts/g-brief-en.layout:173 lib/layouts/g-brief2.layout:696
 msgid "PostalComment"
 msgstr "PostalComment"
-
-#: lib/layouts/g-brief-en.layout:176 lib/layouts/g-brief2.layout:706
-#, fuzzy
-msgid "PostalComment:"
-msgstr "PostalComment"
-
-#: lib/layouts/g-brief-en.layout:192 lib/layouts/g-brief2.layout:811
-#: lib/layouts/revtex.layout:108 lib/layouts/revtex4.layout:139
-#: lib/layouts/scrlettr.layout:163 lib/layouts/scrlttr2.layout:241
-#: lib/layouts/siamltex.layout:235 lib/layouts/amsdefs.inc:85
-msgid "Date:"
-msgstr "Дата:"
-
-#: lib/layouts/g-brief-en.layout:201 lib/layouts/g-brief2.layout:833
-#, fuzzy
-msgid "Reference:"
-msgstr "Перекрёстная ссылка"
-
-#: lib/layouts/g-brief-en.layout:210 lib/layouts/g-brief2.layout:856
-#: lib/layouts/scrlttr2.layout:103 lib/layouts/stdletter.inc:62
-#, fuzzy
-msgid "Opening:"
-msgstr "Вступление"
-
-#: lib/layouts/g-brief-en.layout:218 lib/layouts/g-brief2.layout:923
-#, fuzzy
-msgid "Encl.:"
-msgstr "Encl."
-
-#: lib/layouts/g-brief-en.layout:227 lib/layouts/g-brief2.layout:944
-#: lib/layouts/scrlettr.layout:101 lib/layouts/scrlttr2.layout:132
-#: lib/layouts/stdletter.inc:102
-#, fuzzy
-msgid "cc:"
-msgstr "cc"
-
-#: lib/layouts/g-brief-en.layout:236 lib/layouts/g-brief2.layout:877
-#: lib/layouts/scrlttr2.layout:116 lib/layouts/stdletter.inc:95
-#, fuzzy
-msgid "Closing:"
-msgstr "Эпилог"
 
 #: lib/layouts/g-brief2.layout:78
 #, fuzzy
@@ -7950,25 +7890,10 @@ msgstr "Вкл"
 msgid "Encl"
 msgstr "Encl"
 
-#: lib/layouts/scrlettr.layout:108 lib/layouts/scrlttr2.layout:139
-#: lib/layouts/stdletter.inc:114
-#, fuzzy
-msgid "encl:"
-msgstr "encl"
-
-#: lib/layouts/scrlettr.layout:149 lib/layouts/stdletter.inc:129
-msgid "Telephone:"
-msgstr "Телефон:"
-
 #: lib/layouts/scrlettr.layout:156 lib/layouts/scrlttr2.layout:233
 #, fuzzy
 msgid "Place:"
 msgstr "Размещение:"
-
-#: lib/layouts/scrlettr.layout:170 lib/layouts/scrlttr2.layout:249
-#, fuzzy
-msgid "Backaddress:"
-msgstr "Обратный адрес:"
 
 #: lib/layouts/scrlettr.layout:174 lib/layouts/scrlttr2.layout:253
 msgid "Specialmail"
@@ -7979,28 +7904,13 @@ msgstr "Specialmail"
 msgid "Specialmail:"
 msgstr "Specialmail:"
 
-#: lib/layouts/scrlettr.layout:184 lib/layouts/scrlttr2.layout:265
-#: lib/layouts/stdletter.inc:122
-#, fuzzy
-msgid "Location:"
-msgstr "Размещение:"
-
 #: lib/layouts/scrlettr.layout:191 lib/layouts/scrlttr2.layout:273
 msgid "Title:"
 msgstr "Название:"
 
-#: lib/layouts/scrlettr.layout:198 lib/layouts/scrlttr2.layout:281
-msgid "Subject:"
-msgstr "Тема:"
-
 #: lib/layouts/scrlettr.layout:202 lib/layouts/scrlttr2.layout:285
 msgid "Yourref"
 msgstr "Ваша ссылка"
-
-#: lib/layouts/scrlettr.layout:205 lib/layouts/scrlttr2.layout:289
-#, fuzzy
-msgid "Your ref.:"
-msgstr "Ваша ссылка:"
 
 #: lib/layouts/scrlettr.layout:216 lib/layouts/scrlttr2.layout:301
 msgid "Yourmail"
@@ -8014,11 +7924,6 @@ msgstr "Ваше письмо от:"
 #: lib/layouts/scrlettr.layout:223 lib/layouts/scrlttr2.layout:309
 msgid "Myref"
 msgstr "Myref"
-
-#: lib/layouts/scrlettr.layout:226 lib/layouts/scrlttr2.layout:313
-#, fuzzy
-msgid "Our ref.:"
-msgstr "Ваша ссылка:"
 
 #: lib/layouts/scrlettr.layout:230 lib/layouts/scrlttr2.layout:317
 msgid "Customer"
@@ -8047,19 +7952,9 @@ msgstr "СледующийАдрес"
 msgid "Next Address:"
 msgstr " Следующий Адрес:"
 
-#: lib/layouts/scrlttr2.layout:124
-#, fuzzy
-msgid "Post Scriptum:"
-msgstr "Драйвер PostScript:"
-
 #: lib/layouts/scrlttr2.layout:155
 msgid "Sender Name:"
 msgstr "Имя отправителя"
-
-#: lib/layouts/scrlttr2.layout:177
-#, fuzzy
-msgid "Sender Address:"
-msgstr "Адрес Отправителя:"
 
 #: lib/layouts/scrlttr2.layout:185
 msgid "Sender Phone:"
@@ -16595,7 +16490,7 @@ msgid ""
 "The author name '%1$s',\n"
 "used for change tracking, contains glyphs that cannot be\n"
 "represented in the current encoding. The respective glyphs\n"
-"will be ommitted in the exported LaTeX file.\n"
+"will be omitted in the exported LaTeX file.\n"
 "\n"
 "Chose an appropriate document encoding (such as utf8)\n"
 "or change the spelling of the author name."
@@ -22313,6 +22208,113 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Неизвестный пользователь"
+
+#, fuzzy
+#~ msgid "Anschrift:"
+#~ msgstr "Unterschrift"
+
+#, fuzzy
+#~ msgid "Absender:"
+#~ msgstr "Шапка:"
+
+#, fuzzy
+#~ msgid "Zusatz:"
+#~ msgstr "Zusatz"
+
+#, fuzzy
+#~ msgid "Ihre Zeichen:"
+#~ msgstr "IhrZeichen"
+
+#, fuzzy
+#~ msgid "Unsere Zeichen:"
+#~ msgstr "IhrZeichen"
+
+#, fuzzy
+#~ msgid "Unterschrift:"
+#~ msgstr "Unterschrift"
+
+#, fuzzy
+#~ msgid "Vorwahl:"
+#~ msgstr "Нормальный:"
+
+#, fuzzy
+#~ msgid "Telefon:"
+#~ msgstr "Телефон"
+
+#, fuzzy
+#~ msgid "Ort:"
+#~ msgstr "Ort"
+
+#, fuzzy
+#~ msgid "Datum:"
+#~ msgstr "Дата"
+
+#, fuzzy
+#~ msgid "Betreff:"
+#~ msgstr "Betreff"
+
+#, fuzzy
+#~ msgid "Anrede:"
+#~ msgstr "Anrede"
+
+#, fuzzy
+#~ msgid "Gruss:"
+#~ msgstr "Gruss"
+
+#, fuzzy
+#~ msgid "Anlage(n):"
+#~ msgstr "Anlagen"
+
+#, fuzzy
+#~ msgid "Verteiler:"
+#~ msgstr "Verteiler"
+
+#, fuzzy
+#~ msgid "PS:"
+#~ msgstr "PS"
+
+#, fuzzy
+#~ msgid "Text:"
+#~ msgstr "Текст"
+
+#, fuzzy
+#~ msgid "Strasse:"
+#~ msgstr "Улица"
+
+#, fuzzy
+#~ msgid "Land:"
+#~ msgstr "Land"
+
+#, fuzzy
+#~ msgid "RetourAdresse:"
+#~ msgstr "Обратный адрес"
+
+#, fuzzy
+#~ msgid "MeinZeichen:"
+#~ msgstr "MeinZeichen"
+
+#, fuzzy
+#~ msgid "IhrZeichen:"
+#~ msgstr "IhrZeichen"
+
+#, fuzzy
+#~ msgid "IhrSchreiben:"
+#~ msgstr "IhrSchreiben"
+
+#, fuzzy
+#~ msgid "BLZ:"
+#~ msgstr "BLZ"
+
+#, fuzzy
+#~ msgid "Konto:"
+#~ msgstr "Konto"
+
+#~ msgid "Adresse:"
+#~ msgstr "Адрес:"
+
+#, fuzzy
+#~ msgid "Anlagen:"
+#~ msgstr "Anlagen"
 
 #, fuzzy
 #~ msgid "LyX binary not found"

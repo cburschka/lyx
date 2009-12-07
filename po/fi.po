@@ -69,7 +69,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-12-04 10:47+0100\n"
+"POT-Creation-Date: 2009-12-07 08:16+0100\n"
 "PO-Revision-Date: 2007-07-14 16:48+0100\n"
 "Last-Translator: Martin Vermeer <martin.vermeer@tkk.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -102,7 +102,7 @@ msgstr "Copyright"
 #: src/frontends/qt4/ui/HSpaceUi.ui:174
 #: src/frontends/qt4/ui/HyperlinkUi.ui:153
 #: src/frontends/qt4/ui/IncludeUi.ui:250 src/frontends/qt4/ui/InfoUi.ui:71
-#: src/frontends/qt4/ui/LogUi.ui:41 src/frontends/qt4/ui/ParagraphUi.ui:102
+#: src/frontends/qt4/ui/LogUi.ui:41 src/frontends/qt4/ui/ParagraphUi.ui:260
 #: src/frontends/qt4/ui/PrefsUi.ui:93 src/frontends/qt4/ui/RefUi.ui:103
 #: src/frontends/qt4/ui/SearchUi.ui:207 src/frontends/qt4/ui/ShowFileUi.ui:55
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:28
@@ -134,7 +134,7 @@ msgstr "&Testi"
 #: src/frontends/qt4/ui/ListingsUi.ui:539
 #: src/frontends/qt4/ui/MathMatrixUi.ui:167
 #: src/frontends/qt4/ui/NomenclUi.ui:92 src/frontends/qt4/ui/NoteUi.ui:38
-#: src/frontends/qt4/ui/ParagraphUi.ui:82 src/frontends/qt4/ui/RefUi.ui:77
+#: src/frontends/qt4/ui/ParagraphUi.ui:240 src/frontends/qt4/ui/RefUi.ui:77
 #: src/frontends/qt4/ui/SendtoUi.ui:72 src/frontends/qt4/ui/ShortcutUi.ui:52
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
@@ -350,7 +350,7 @@ msgid "Allow &page breaks"
 msgstr "sivunvaihto"
 
 #: src/frontends/qt4/ui/BoxUi.ui:38 src/frontends/qt4/ui/MathMatrixUi.ui:199
-#: src/frontends/qt4/ui/ParagraphUi.ui:114
+#: src/frontends/qt4/ui/ParagraphUi.ui:153
 msgid "Alignment"
 msgstr "Tasaus"
 
@@ -425,7 +425,7 @@ msgstr "Vaaka"
 #: src/frontends/qt4/ui/BoxUi.ui:202 src/frontends/qt4/ui/CitationUi.ui:415
 #: src/frontends/qt4/ui/DocumentUi.ui:112 src/frontends/qt4/ui/FloatUi.ui:42
 #: src/frontends/qt4/ui/GraphicsUi.ui:692
-#: src/frontends/qt4/ui/ParagraphUi.ui:59 src/frontends/qt4/ui/PrefsUi.ui:47
+#: src/frontends/qt4/ui/ParagraphUi.ui:217 src/frontends/qt4/ui/PrefsUi.ui:47
 #: src/frontends/qt4/ui/WrapUi.ui:121
 msgid "&Restore"
 msgstr "Pala&uta"
@@ -435,7 +435,7 @@ msgstr "Pala&uta"
 #: src/frontends/qt4/ui/ExternalUi.ui:62 src/frontends/qt4/ui/FloatUi.ui:78
 #: src/frontends/qt4/ui/GraphicsUi.ui:742 src/frontends/qt4/ui/HSpaceUi.ui:164
 #: src/frontends/qt4/ui/ListingsUi.ui:549
-#: src/frontends/qt4/ui/ParagraphUi.ui:92 src/frontends/qt4/ui/PrefsUi.ui:83
+#: src/frontends/qt4/ui/ParagraphUi.ui:250 src/frontends/qt4/ui/PrefsUi.ui:83
 #: src/frontends/qt4/ui/RefUi.ui:90 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/VSpaceUi.ui:49
 #: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1341
@@ -553,7 +553,7 @@ msgid "Si&ze:"
 msgstr "K&oko:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:66
-#: src/frontends/qt4/ui/ParagraphUi.ui:241
+#: src/frontends/qt4/ui/ParagraphUi.ui:115
 #: src/frontends/qt4/ui/PrefLatexUi.ui:52
 #: src/frontends/qt4/ui/TabularUi.ui:908 src/frontends/qt4/ui/TabularUi.ui:927
 #: src/frontends/qt4/ui/TabularUi.ui:975 lib/ui/stdtoolbars.inc:98
@@ -2266,72 +2266,40 @@ msgstr "Kaksipu&olinen asiakirja"
 msgid "I&mmediate Apply"
 msgstr ""
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:129
-msgid "Use the default alignment for this paragraph, whatever it is."
-msgstr "Käytä tämän kappaleen oletustasaus, mikä lieneekään."
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:132
-#, fuzzy
-msgid "Paragraph's &Default"
-msgstr "Käytä kappaleen oletustasaus"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:139
-#, fuzzy
-msgid "Ri&ght"
-msgstr "Oikea"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:146
-#, fuzzy
-msgid "C&enter"
-msgstr "Keskellä"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:153
-msgid "&Left"
-msgstr "Vasen"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:160
-msgid "&Justified"
-msgstr "Tasattu"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:170
-#, fuzzy
-msgid "&Indent Paragraph"
-msgstr "Sisennä kappale"
-
-#: src/frontends/qt4/ui/ParagraphUi.ui:180
+#: src/frontends/qt4/ui/ParagraphUi.ui:54
 msgid "Label Width"
 msgstr "Nimikeleveys"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:195
-#: src/frontends/qt4/ui/ParagraphUi.ui:202
+#: src/frontends/qt4/ui/ParagraphUi.ui:69
+#: src/frontends/qt4/ui/ParagraphUi.ui:82
 msgid "This text defines the width of the paragraph label"
 msgstr "Tämä teksti määrittelee kappaleen nimikkeen leveys"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:205
+#: src/frontends/qt4/ui/ParagraphUi.ui:72
 #, fuzzy
 msgid "Lo&ngest label"
 msgstr "&Pisin nimike"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:218
+#: src/frontends/qt4/ui/ParagraphUi.ui:92
 #, fuzzy
 msgid "Line &spacing"
 msgstr "Rivi&välit:"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:246 src/Text.cpp:1420
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1420
 #: src/frontends/qt4/GuiDocument.cpp:572
 msgid "Single"
 msgstr "Yksink."
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:251
+#: src/frontends/qt4/ui/ParagraphUi.ui:125
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:256 src/Text.cpp:1426
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1426
 #: src/frontends/qt4/GuiDocument.cpp:576
 msgid "Double"
 msgstr "Kaksink."
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:261
+#: src/frontends/qt4/ui/ParagraphUi.ui:135
 #: src/frontends/qt4/ui/TabularUi.ui:913 src/frontends/qt4/ui/TabularUi.ui:932
 #: src/frontends/qt4/ui/TabularUi.ui:980 src/frontends/qt4/ui/VSpaceUi.ui:156
 #: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:578
@@ -2339,6 +2307,38 @@ msgstr "Kaksink."
 #: src/frontends/qt4/GuiHSpace.cpp:161
 msgid "Custom"
 msgstr "Määr. oma"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:146
+#, fuzzy
+msgid "&Indent Paragraph"
+msgstr "Sisennä kappale"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:168
+msgid "&Justified"
+msgstr "Tasattu"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:175
+msgid "&Left"
+msgstr "Vasen"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:182
+#, fuzzy
+msgid "C&enter"
+msgstr "Keskellä"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:189
+#, fuzzy
+msgid "Ri&ght"
+msgstr "Oikea"
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:196
+msgid "Use the default alignment for this paragraph, whatever it is."
+msgstr "Käytä tämän kappaleen oletustasaus, mikä lieneekään."
+
+#: src/frontends/qt4/ui/ParagraphUi.ui:199
+#, fuzzy
+msgid "Paragraph's &Default"
+msgstr "Käytä kappaleen oletustasaus"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:50
 #, fuzzy
@@ -2760,8 +2760,8 @@ msgstr "&Yleinen"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:136
 msgid ""
-"If checked, the document language is not explicitely set by a language "
-"switch command"
+"If checked, the document language is not explicitly set by a language switch "
+"command"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:139
@@ -2770,7 +2770,7 @@ msgstr "Automaattinen al&ku"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:146
 msgid ""
-"If checked, the document language is not explicitely closed by a language "
+"If checked, the document language is not explicitly closed by a language "
 "switch command"
 msgstr ""
 
@@ -4762,7 +4762,7 @@ msgid "Author"
 msgstr "Tekijä"
 
 #: lib/layouts/aa.layout:73 lib/layouts/aa.layout:134
-#: lib/layouts/aapaper.layout:82 lib/layouts/dinbrief.layout:247
+#: lib/layouts/aapaper.layout:82 lib/layouts/dinbrief.layout:248
 #: lib/layouts/egs.layout:233 lib/layouts/elsarticle.layout:193
 #: lib/layouts/entcs.layout:59 lib/layouts/g-brief-en.layout:180
 #: lib/layouts/g-brief2.layout:716 lib/layouts/ijmpc.layout:48
@@ -4788,7 +4788,7 @@ msgstr "Posti"
 #: lib/layouts/aa.layout:82 lib/layouts/aa.layout:277
 #: lib/layouts/aapaper.layout:94 lib/layouts/aapaper.layout:182
 #: lib/layouts/aastex.layout:106 lib/layouts/aastex.layout:231
-#: lib/layouts/beamer.layout:860 lib/layouts/dinbrief.layout:149
+#: lib/layouts/beamer.layout:860 lib/layouts/dinbrief.layout:150
 #: lib/layouts/egs.layout:466 lib/layouts/foils.layout:140
 #: lib/layouts/g-brief-en.layout:189 lib/layouts/g-brief2.layout:801
 #: lib/layouts/kluwer.layout:141 lib/layouts/powerdot.layout:86
@@ -5875,314 +5875,339 @@ msgstr "Ratsun siirto"
 msgid "KnightMove:"
 msgstr "Ratsun siirto:"
 
-#: lib/layouts/dinbrief.layout:24
+#: lib/layouts/dinbrief.layout:26
 msgid "DinBrief"
 msgstr ""
 
-#: lib/layouts/dinbrief.layout:43 lib/layouts/heb-letter.layout:15
+#: lib/layouts/dinbrief.layout:45 lib/layouts/heb-letter.layout:15
 #: lib/layouts/stdletter.inc:35
 msgid "Send To Address"
 msgstr "Lähetysosoite"
 
-#: lib/layouts/dinbrief.layout:45
-#, fuzzy
-msgid "Anschrift:"
-msgstr "Allekirjoitus:"
+#: lib/layouts/dinbrief.layout:47 lib/layouts/elsart.layout:138
+#: lib/layouts/g-brief-de.layout:185 lib/layouts/g-brief-en.layout:185
+#: lib/layouts/g-brief2.layout:727 lib/layouts/revtex.layout:128
+#: lib/layouts/revtex4.layout:181 lib/layouts/scrlettr.layout:142
+#: lib/layouts/scrlttr2.layout:60 lib/layouts/siamltex.layout:285
+#: lib/layouts/amsdefs.inc:135
+msgid "Address:"
+msgstr "Osoite:"
 
-#: lib/layouts/dinbrief.layout:57 lib/layouts/heb-letter.layout:10
+#: lib/layouts/dinbrief.layout:59 lib/layouts/heb-letter.layout:10
 #: lib/layouts/stdletter.inc:24
 msgid "My Address"
 msgstr "Osoitteeni"
 
-#: lib/layouts/dinbrief.layout:59
-msgid "Briefkopf:"
-msgstr "Kirjeotsikko:"
+#: lib/layouts/dinbrief.layout:61 lib/layouts/scrlttr2.layout:177
+msgid "Sender Address:"
+msgstr "Lähettäjän osoite:"
 
-#: lib/layouts/dinbrief.layout:67
+#: lib/layouts/dinbrief.layout:69
 #, fuzzy
 msgid "Return address"
 msgstr "Palautusosoite"
 
-#: lib/layouts/dinbrief.layout:69
-#, fuzzy
-msgid "Absender:"
-msgstr "Ylätunniste:"
+#: lib/layouts/dinbrief.layout:71 lib/layouts/scrlettr.layout:170
+#: lib/layouts/scrlttr2.layout:249
+msgid "Backaddress:"
+msgstr "Palautusosoite:"
 
-#: lib/layouts/dinbrief.layout:77
+#: lib/layouts/dinbrief.layout:79
 #, fuzzy
 msgid "Postal comment"
 msgstr "Postihuomautus"
 
-#: lib/layouts/dinbrief.layout:79 lib/layouts/g-brief-de.layout:176
-msgid "Postvermerk:"
+#: lib/layouts/dinbrief.layout:81
+#, fuzzy
+msgid "Postal Remark:"
 msgstr "Postimerkintä:"
 
-#: lib/layouts/dinbrief.layout:84
+#: lib/layouts/dinbrief.layout:86
 #, fuzzy
 msgid "Handling"
 msgstr "reunahuomautus"
 
-#: lib/layouts/dinbrief.layout:86 lib/layouts/g-brief-de.layout:71
-msgid "Zusatz:"
-msgstr "Lisäys:"
+#: lib/layouts/dinbrief.layout:88
+#, fuzzy
+msgid "Handling:"
+msgstr "reunahuomautus"
 
-#: lib/layouts/dinbrief.layout:91 lib/layouts/g-brief-en.layout:103
+#: lib/layouts/dinbrief.layout:92 lib/layouts/g-brief-en.layout:103
 #: lib/layouts/g-brief2.layout:758
 msgid "YourRef"
 msgstr "Viitteesi"
 
-#: lib/layouts/dinbrief.layout:93
-#, fuzzy
-msgid "Ihre Zeichen:"
-msgstr "Merkintönne:"
+#: lib/layouts/dinbrief.layout:94 lib/layouts/scrlettr.layout:205
+#: lib/layouts/scrlttr2.layout:289
+msgid "Your ref.:"
+msgstr "Viitteesi:"
 
-#: lib/layouts/dinbrief.layout:97 lib/layouts/g-brief-en.layout:96
+#: lib/layouts/dinbrief.layout:98 lib/layouts/g-brief-en.layout:96
 #: lib/layouts/g-brief2.layout:737
 msgid "MyRef"
 msgstr "Viitteeni"
 
-#: lib/layouts/dinbrief.layout:99
-#, fuzzy
-msgid "Unsere Zeichen:"
-msgstr "Merkintönne:"
+#: lib/layouts/dinbrief.layout:100 lib/layouts/scrlettr.layout:226
+#: lib/layouts/scrlttr2.layout:313
+msgid "Our ref.:"
+msgstr "Viitteemme:"
 
-#: lib/layouts/dinbrief.layout:103
+#: lib/layouts/dinbrief.layout:104
 #, fuzzy
 msgid "Writer"
 msgstr "Tulostin"
 
-#: lib/layouts/dinbrief.layout:105
-msgid "Sachbearbeiter:"
-msgstr ""
+#: lib/layouts/dinbrief.layout:106
+#, fuzzy
+msgid "Writer:"
+msgstr "Tulostin"
 
-#: lib/layouts/dinbrief.layout:109 lib/layouts/g-brief-en.layout:54
+#: lib/layouts/dinbrief.layout:110 lib/layouts/g-brief-en.layout:54
 #: lib/layouts/g-brief2.layout:892 lib/layouts/scrlettr.layout:132
 #: lib/layouts/scrlttr2.layout:165 lib/layouts/stdletter.inc:71
 msgid "Signature"
 msgstr "Allekirjoitus"
 
-#: lib/layouts/dinbrief.layout:111 lib/layouts/g-brief-de.layout:57
-msgid "Unterschrift:"
+#: lib/layouts/dinbrief.layout:112 lib/layouts/g-brief-de.layout:57
+#: lib/layouts/g-brief-en.layout:57 lib/layouts/g-brief2.layout:902
+#: lib/layouts/scrlettr.layout:135 lib/layouts/scrlttr2.layout:169
+#: lib/layouts/stdletter.inc:83
+msgid "Signature:"
 msgstr "Allekirjoitus:"
 
-#: lib/layouts/dinbrief.layout:116
+#: lib/layouts/dinbrief.layout:117
 #, fuzzy
 msgid "Bottomtext"
 msgstr "Oikea alakulma"
 
-#: lib/layouts/dinbrief.layout:118
-msgid "Fusszeile(n):"
-msgstr ""
+#: lib/layouts/dinbrief.layout:119
+#, fuzzy
+msgid "Bottom text:"
+msgstr "Oikea alakulma"
 
-#: lib/layouts/dinbrief.layout:126
+#: lib/layouts/dinbrief.layout:127
 #, fuzzy
 msgid "Area code"
 msgstr "Puhuttelu"
 
-#: lib/layouts/dinbrief.layout:128
+#: lib/layouts/dinbrief.layout:129
 #, fuzzy
-msgid "Vorwahl:"
-msgstr "Tavallinen:"
+msgid "Area Code:"
+msgstr "Puhuttelu"
 
-#: lib/layouts/dinbrief.layout:132 lib/layouts/scrlettr.layout:146
+#: lib/layouts/dinbrief.layout:133 lib/layouts/scrlettr.layout:146
 #: lib/layouts/scrlttr2.layout:181 lib/layouts/stdletter.inc:126
 msgid "Telephone"
 msgstr "Puhelin"
 
-#: lib/layouts/dinbrief.layout:134 lib/layouts/g-brief-de.layout:120
-msgid "Telefon:"
+#: lib/layouts/dinbrief.layout:135 lib/layouts/scrlettr.layout:149
+#: lib/layouts/stdletter.inc:129
+msgid "Telephone:"
 msgstr "Puhelin:"
 
-#: lib/layouts/dinbrief.layout:139 lib/layouts/scrlettr.layout:181
+#: lib/layouts/dinbrief.layout:140 lib/layouts/scrlettr.layout:181
 #: lib/layouts/scrlttr2.layout:261 lib/layouts/stdletter.inc:119
 msgid "Location"
 msgstr "Sijainti"
 
-#: lib/layouts/dinbrief.layout:141 lib/layouts/g-brief-de.layout:78
-msgid "Ort:"
-msgstr "Postitoimipaikka:"
+#: lib/layouts/dinbrief.layout:142 lib/layouts/scrlettr.layout:184
+#: lib/layouts/scrlttr2.layout:265 lib/layouts/stdletter.inc:122
+msgid "Location:"
+msgstr "Sijainti:"
 
-#: lib/layouts/dinbrief.layout:151 lib/layouts/g-brief-de.layout:192
-msgid "Datum:"
+#: lib/layouts/dinbrief.layout:152 lib/layouts/g-brief-de.layout:192
+#: lib/layouts/g-brief-en.layout:192 lib/layouts/g-brief2.layout:811
+#: lib/layouts/revtex.layout:108 lib/layouts/revtex4.layout:139
+#: lib/layouts/scrlettr.layout:163 lib/layouts/scrlttr2.layout:241
+#: lib/layouts/siamltex.layout:235 lib/layouts/amsdefs.inc:85
+msgid "Date:"
 msgstr "Päiväys:"
 
-#: lib/layouts/dinbrief.layout:156 lib/layouts/scrlettr.layout:195
+#: lib/layouts/dinbrief.layout:157 lib/layouts/scrlettr.layout:195
 #: lib/layouts/scrlttr2.layout:277 lib/layouts/scrclass.inc:169
 msgid "Subject"
 msgstr "Aihe"
 
-#: lib/layouts/dinbrief.layout:158 lib/layouts/g-brief-de.layout:201
-msgid "Betreff:"
+#: lib/layouts/dinbrief.layout:159 lib/layouts/scrlettr.layout:198
+#: lib/layouts/scrlttr2.layout:281
+msgid "Subject:"
 msgstr "Aihe:"
 
-#: lib/layouts/dinbrief.layout:172 lib/layouts/g-brief-en.layout:205
+#: lib/layouts/dinbrief.layout:173 lib/layouts/g-brief-en.layout:205
 #: lib/layouts/g-brief2.layout:844 lib/layouts/scrlettr.layout:60
 #: lib/layouts/scrlttr2.layout:92 lib/layouts/stdletter.inc:49
 msgid "Opening"
 msgstr "Aloitus"
 
-#: lib/layouts/dinbrief.layout:176 lib/layouts/g-brief-de.layout:210
-msgid "Anrede:"
-msgstr "Puhuttelu:"
+#: lib/layouts/dinbrief.layout:177 lib/layouts/g-brief-de.layout:210
+#: lib/layouts/g-brief-en.layout:210 lib/layouts/g-brief2.layout:856
+#: lib/layouts/scrlttr2.layout:103 lib/layouts/stdletter.inc:62
+msgid "Opening:"
+msgstr "Aloitus:"
 
-#: lib/layouts/dinbrief.layout:188 lib/layouts/g-brief-en.layout:231
+#: lib/layouts/dinbrief.layout:189 lib/layouts/g-brief-en.layout:231
 #: lib/layouts/g-brief2.layout:866 lib/layouts/scrlettr.layout:70
 #: lib/layouts/scrlttr2.layout:112 lib/layouts/stdletter.inc:92
 msgid "Closing"
 msgstr "Lopuksi"
 
-#: lib/layouts/dinbrief.layout:190 lib/layouts/g-brief-de.layout:236
-msgid "Gruss:"
-msgstr "Tervehdys:"
+#: lib/layouts/dinbrief.layout:191 lib/layouts/g-brief-de.layout:236
+#: lib/layouts/g-brief-en.layout:236 lib/layouts/g-brief2.layout:877
+#: lib/layouts/scrlttr2.layout:116 lib/layouts/stdletter.inc:95
+msgid "Closing:"
+msgstr "Lopuksi:"
 
-#: lib/layouts/dinbrief.layout:196 lib/layouts/stdletter.inc:111
+#: lib/layouts/dinbrief.layout:197 lib/layouts/stdletter.inc:111
 msgid "encl"
 msgstr "liitteet"
 
-#: lib/layouts/dinbrief.layout:198
-#, fuzzy
-msgid "Anlage(n):"
-msgstr "Laitos"
+#: lib/layouts/dinbrief.layout:199 lib/layouts/scrlettr.layout:108
+#: lib/layouts/scrlttr2.layout:139 lib/layouts/stdletter.inc:114
+msgid "encl:"
+msgstr "liitteet:"
 
-#: lib/layouts/dinbrief.layout:211 lib/layouts/g-brief-en.layout:222
+#: lib/layouts/dinbrief.layout:212 lib/layouts/g-brief-en.layout:222
 #: lib/layouts/g-brief2.layout:933 lib/layouts/stdletter.inc:99
 msgid "cc"
 msgstr "jakelu"
 
-#: lib/layouts/dinbrief.layout:213 lib/layouts/g-brief-de.layout:227
-msgid "Verteiler:"
-msgstr "Jakelija:"
+#: lib/layouts/dinbrief.layout:214 lib/layouts/g-brief-de.layout:227
+#: lib/layouts/g-brief-en.layout:227 lib/layouts/g-brief2.layout:944
+#: lib/layouts/scrlettr.layout:101 lib/layouts/scrlttr2.layout:132
+#: lib/layouts/stdletter.inc:102
+msgid "cc:"
+msgstr "jakelu:"
 
-#: lib/layouts/dinbrief.layout:217 lib/layouts/scrlettr.layout:81
+#: lib/layouts/dinbrief.layout:218 lib/layouts/scrlettr.layout:81
 #: lib/layouts/scrlttr2.layout:120
 msgid "PS"
 msgstr "PS"
 
-#: lib/layouts/dinbrief.layout:219
-msgid "PS:"
-msgstr "PS:"
+#: lib/layouts/dinbrief.layout:220 lib/layouts/scrlttr2.layout:124
+msgid "Post Scriptum:"
+msgstr "Jalkikirjoitus:"
 
-#: lib/layouts/dinbrief.layout:232 lib/layouts/scrlttr2.layout:173
+#: lib/layouts/dinbrief.layout:233 lib/layouts/scrlttr2.layout:173
 msgid "SenderAddress"
 msgstr "Lähettäjän osoite"
 
-#: lib/layouts/dinbrief.layout:237 lib/layouts/scrlettr.layout:167
+#: lib/layouts/dinbrief.layout:238 lib/layouts/scrlettr.layout:167
 #: lib/layouts/scrlttr2.layout:245
 msgid "Backaddress"
 msgstr "Palautusosoite"
 
-#: lib/layouts/dinbrief.layout:242 lib/layouts/g-brief-de.layout:89
+#: lib/layouts/dinbrief.layout:243 lib/layouts/g-brief-de.layout:89
 msgid "RetourAdresse"
 msgstr "Palautusosoite"
 
-#: lib/layouts/dinbrief.layout:252 lib/layouts/g-brief-de.layout:180
+#: lib/layouts/dinbrief.layout:253 lib/layouts/g-brief-de.layout:180
 msgid "Adresse"
 msgstr "Osoite"
 
-#: lib/layouts/dinbrief.layout:257 lib/layouts/g-brief-de.layout:173
+#: lib/layouts/dinbrief.layout:258 lib/layouts/g-brief-de.layout:173
 msgid "Postvermerk"
 msgstr "Postimerkintä"
 
-#: lib/layouts/dinbrief.layout:262 lib/layouts/g-brief-de.layout:68
+#: lib/layouts/dinbrief.layout:263 lib/layouts/g-brief-de.layout:68
 msgid "Zusatz"
 msgstr "Lisäys"
 
-#: lib/layouts/dinbrief.layout:267 lib/layouts/g-brief-de.layout:103
+#: lib/layouts/dinbrief.layout:268 lib/layouts/g-brief-de.layout:103
 msgid "IhrZeichen"
 msgstr "Merkintönne"
 
-#: lib/layouts/dinbrief.layout:272 lib/layouts/g-brief-en.layout:110
+#: lib/layouts/dinbrief.layout:273 lib/layouts/g-brief-en.layout:110
 #: lib/layouts/g-brief2.layout:780
 msgid "YourMail"
 msgstr "Vastaanottajan osoite"
 
-#: lib/layouts/dinbrief.layout:277 lib/layouts/g-brief-de.layout:110
+#: lib/layouts/dinbrief.layout:278 lib/layouts/g-brief-de.layout:110
 msgid "IhrSchreiben"
 msgstr "Kirjoituksenne"
 
-#: lib/layouts/dinbrief.layout:282 lib/layouts/g-brief-de.layout:96
+#: lib/layouts/dinbrief.layout:283 lib/layouts/g-brief-de.layout:96
 msgid "MeinZeichen"
 msgstr "Merkintöni"
 
-#: lib/layouts/dinbrief.layout:287 lib/layouts/g-brief-de.layout:54
+#: lib/layouts/dinbrief.layout:288 lib/layouts/g-brief-de.layout:54
 msgid "Unterschrift"
 msgstr "Allekirjoitus"
 
-#: lib/layouts/dinbrief.layout:292 lib/layouts/g-brief-en.layout:117
+#: lib/layouts/dinbrief.layout:293 lib/layouts/g-brief-en.layout:117
 msgid "Phone"
 msgstr "Puhelin"
 
-#: lib/layouts/dinbrief.layout:297 lib/layouts/g-brief-de.layout:117
+#: lib/layouts/dinbrief.layout:298 lib/layouts/g-brief-de.layout:117
 msgid "Telefon"
 msgstr "Puhelin"
 
-#: lib/layouts/dinbrief.layout:302 lib/layouts/scrlettr.layout:153
+#: lib/layouts/dinbrief.layout:303 lib/layouts/scrlettr.layout:153
 #: lib/layouts/scrlttr2.layout:229
 msgid "Place"
 msgstr "Paikka"
 
-#: lib/layouts/dinbrief.layout:307
+#: lib/layouts/dinbrief.layout:308
 msgid "Stadt"
 msgstr "Kaupunki"
 
-#: lib/layouts/dinbrief.layout:312 lib/layouts/g-brief-en.layout:75
+#: lib/layouts/dinbrief.layout:313 lib/layouts/g-brief-en.layout:75
 msgid "Town"
 msgstr "Kaupunki"
 
-#: lib/layouts/dinbrief.layout:317 lib/layouts/g-brief-de.layout:75
+#: lib/layouts/dinbrief.layout:318 lib/layouts/g-brief-de.layout:75
 msgid "Ort"
 msgstr "Postitoimipaikka"
 
-#: lib/layouts/dinbrief.layout:322 lib/layouts/g-brief-de.layout:189
+#: lib/layouts/dinbrief.layout:323 lib/layouts/g-brief-de.layout:189
 msgid "Datum"
 msgstr "Päiväys"
 
-#: lib/layouts/dinbrief.layout:327 lib/layouts/g-brief-en.layout:196
+#: lib/layouts/dinbrief.layout:328 lib/layouts/g-brief-en.layout:196
 #: lib/layouts/g-brief2.layout:821
 msgid "Reference"
 msgstr "Viite"
 
-#: lib/layouts/dinbrief.layout:332 lib/layouts/g-brief-de.layout:196
+#: lib/layouts/dinbrief.layout:333 lib/layouts/g-brief-de.layout:196
 msgid "Betreff"
 msgstr "Aihe"
 
-#: lib/layouts/dinbrief.layout:337 lib/layouts/g-brief-de.layout:205
+#: lib/layouts/dinbrief.layout:338 lib/layouts/g-brief-de.layout:205
 msgid "Anrede"
 msgstr "Puhuttelu"
 
-#: lib/layouts/dinbrief.layout:342 lib/layouts/g-brief-en.layout:17
+#: lib/layouts/dinbrief.layout:343 lib/layouts/g-brief-en.layout:17
 #: lib/layouts/g-brief2.layout:39 lib/layouts/iopart.layout:117
 #: lib/layouts/scrlettr.layout:40
 msgid "Letter"
 msgstr "Kirje"
 
-#: lib/layouts/dinbrief.layout:347 lib/layouts/g-brief-de.layout:17
+#: lib/layouts/dinbrief.layout:348 lib/layouts/g-brief-de.layout:17
 msgid "Brieftext"
 msgstr "Kirjeteksti"
 
-#: lib/layouts/dinbrief.layout:352 lib/layouts/g-brief-de.layout:231
+#: lib/layouts/dinbrief.layout:353 lib/layouts/g-brief-de.layout:231
 msgid "Gruss"
 msgstr "Lopuksi"
 
-#: lib/layouts/dinbrief.layout:356
+#: lib/layouts/dinbrief.layout:357
 msgid "ps"
 msgstr "ps"
 
-#: lib/layouts/dinbrief.layout:361 lib/layouts/g-brief-en.layout:214
+#: lib/layouts/dinbrief.layout:362 lib/layouts/g-brief-en.layout:214
 #: lib/layouts/g-brief2.layout:912
 msgid "Encl."
 msgstr "Liitteet"
 
-#: lib/layouts/dinbrief.layout:366 lib/layouts/g-brief-de.layout:214
+#: lib/layouts/dinbrief.layout:367 lib/layouts/g-brief-de.layout:214
 msgid "Anlagen"
 msgstr ""
 
-#: lib/layouts/dinbrief.layout:371 lib/layouts/scrlettr.layout:91
+#: lib/layouts/dinbrief.layout:372 lib/layouts/scrlettr.layout:91
 #: lib/layouts/scrlttr2.layout:128
 msgid "CC"
 msgstr "Jakelu"
 
-#: lib/layouts/dinbrief.layout:376 lib/layouts/g-brief-de.layout:222
+#: lib/layouts/dinbrief.layout:377 lib/layouts/g-brief-de.layout:222
 msgid "Verteiler"
 msgstr "Jakelija"
 
@@ -6271,14 +6296,6 @@ msgstr "Kiitos."
 #: lib/layouts/elsart.layout:130
 msgid "Author Address"
 msgstr "Tekijän osoite"
-
-#: lib/layouts/elsart.layout:138 lib/layouts/g-brief-en.layout:185
-#: lib/layouts/g-brief2.layout:727 lib/layouts/revtex.layout:128
-#: lib/layouts/revtex4.layout:181 lib/layouts/scrlettr.layout:142
-#: lib/layouts/scrlttr2.layout:60 lib/layouts/siamltex.layout:285
-#: lib/layouts/amsdefs.inc:135
-msgid "Address:"
-msgstr "Osoite:"
 
 #: lib/layouts/elsart.layout:146 lib/layouts/revtex4.layout:192
 msgid "Author Email"
@@ -6664,9 +6681,10 @@ msgstr "Väittämä."
 msgid "Definition*"
 msgstr "Määritelmä*"
 
-#: lib/layouts/g-brief-de.layout:26
-msgid "Text:"
-msgstr "Teksti:"
+#: lib/layouts/g-brief-de.layout:26 lib/layouts/g-brief-en.layout:26
+#: lib/layouts/g-brief2.layout:49
+msgid "Letter:"
+msgstr "Kirje:"
 
 #: lib/layouts/g-brief-de.layout:35 lib/layouts/g-brief-en.layout:35
 #: lib/layouts/g-brief2.layout:58 lib/layouts/scrlettr.layout:112
@@ -6685,33 +6703,49 @@ msgstr "Nimi:"
 msgid "Strasse"
 msgstr "Katu"
 
-#: lib/layouts/g-brief-de.layout:64
-msgid "Strasse:"
+#: lib/layouts/g-brief-de.layout:64 lib/layouts/g-brief-en.layout:64
+msgid "Street:"
 msgstr "Katu:"
+
+#: lib/layouts/g-brief-de.layout:71 lib/layouts/g-brief-en.layout:71
+msgid "Addition:"
+msgstr "Lisäys:"
+
+#: lib/layouts/g-brief-de.layout:78 lib/layouts/g-brief-en.layout:78
+msgid "Town:"
+msgstr "Kaupunki:"
 
 #: lib/layouts/g-brief-de.layout:82
 msgid "Land"
 msgstr "Maa"
 
-#: lib/layouts/g-brief-de.layout:85
-msgid "Land:"
+#: lib/layouts/g-brief-de.layout:85 lib/layouts/g-brief-en.layout:85
+msgid "State:"
 msgstr "Maa:"
 
-#: lib/layouts/g-brief-de.layout:92
-msgid "RetourAdresse:"
+#: lib/layouts/g-brief-de.layout:92 lib/layouts/g-brief-en.layout:92
+#: lib/layouts/g-brief2.layout:686
+msgid "ReturnAddress:"
 msgstr "Palautusosoite:"
 
-#: lib/layouts/g-brief-de.layout:99
-msgid "MeinZeichen:"
-msgstr "Merkintöni:"
+#: lib/layouts/g-brief-de.layout:99 lib/layouts/g-brief-en.layout:99
+#: lib/layouts/g-brief2.layout:748
+msgid "MyRef:"
+msgstr "Viitteeni:"
 
-#: lib/layouts/g-brief-de.layout:106
-msgid "IhrZeichen:"
-msgstr "Merkintönne:"
+#: lib/layouts/g-brief-de.layout:106 lib/layouts/g-brief-en.layout:106
+#: lib/layouts/g-brief2.layout:769
+msgid "YourRef:"
+msgstr "Viitteesi:"
 
-#: lib/layouts/g-brief-de.layout:113
-msgid "IhrSchreiben:"
-msgstr "Kirjoituksenne:"
+#: lib/layouts/g-brief-de.layout:113 lib/layouts/g-brief-en.layout:113
+#: lib/layouts/g-brief2.layout:790
+msgid "YourMail:"
+msgstr "Vastaanottajan osoite:"
+
+#: lib/layouts/g-brief-de.layout:120 lib/layouts/g-brief-en.layout:120
+msgid "Phone:"
+msgstr "Puhelin:"
 
 #: lib/layouts/g-brief-de.layout:124 lib/layouts/g-brief-en.layout:124
 msgid "Telefax"
@@ -6759,143 +6793,60 @@ msgstr "Pankki:"
 msgid "BLZ"
 msgstr "BLZ"
 
-#: lib/layouts/g-brief-de.layout:162
-msgid "BLZ:"
-msgstr "BLZ:"
+#: lib/layouts/g-brief-de.layout:162 lib/layouts/g-brief-en.layout:162
+msgid "BankCode:"
+msgstr "Pankkikoodi:"
 
 #: lib/layouts/g-brief-de.layout:166
 msgid "Konto"
 msgstr "Tili"
 
-#: lib/layouts/g-brief-de.layout:169
-msgid "Konto:"
-msgstr "Tili:"
+#: lib/layouts/g-brief-de.layout:169 lib/layouts/g-brief-en.layout:169
+msgid "BankAccount:"
+msgstr "Pankkitili:"
 
-#: lib/layouts/g-brief-de.layout:185
-msgid "Adresse:"
-msgstr "Osoite:"
+#: lib/layouts/g-brief-de.layout:176 lib/layouts/g-brief-en.layout:176
+#: lib/layouts/g-brief2.layout:706
+msgid "PostalComment:"
+msgstr "Postihuomautus:"
 
-#: lib/layouts/g-brief-de.layout:218
-#, fuzzy
-msgid "Anlagen:"
-msgstr "Laitos"
+#: lib/layouts/g-brief-de.layout:201 lib/layouts/g-brief-en.layout:201
+#: lib/layouts/g-brief2.layout:833
+msgid "Reference:"
+msgstr "Viite:"
 
-#: lib/layouts/g-brief-en.layout:26 lib/layouts/g-brief2.layout:49
-msgid "Letter:"
-msgstr "Kirje:"
-
-#: lib/layouts/g-brief-en.layout:57 lib/layouts/g-brief2.layout:902
-#: lib/layouts/scrlettr.layout:135 lib/layouts/scrlttr2.layout:169
-#: lib/layouts/stdletter.inc:83
-msgid "Signature:"
-msgstr "Allekirjoitus:"
+#: lib/layouts/g-brief-de.layout:218 lib/layouts/g-brief-en.layout:218
+#: lib/layouts/g-brief2.layout:923
+msgid "Encl.:"
+msgstr "Liitteet:"
 
 #: lib/layouts/g-brief-en.layout:61 lib/layouts/agu_stdtitle.inc:439
 msgid "Street"
 msgstr "Katu"
 
-#: lib/layouts/g-brief-en.layout:64
-msgid "Street:"
-msgstr "Katu:"
-
 #: lib/layouts/g-brief-en.layout:68
 msgid "Addition"
 msgstr "Lisäys"
-
-#: lib/layouts/g-brief-en.layout:71
-msgid "Addition:"
-msgstr "Lisäys:"
-
-#: lib/layouts/g-brief-en.layout:78
-msgid "Town:"
-msgstr "Kaupunki:"
 
 #: lib/layouts/g-brief-en.layout:82 lib/layouts/agu_stdtitle.inc:461
 msgid "State"
 msgstr "Maa"
 
-#: lib/layouts/g-brief-en.layout:85
-msgid "State:"
-msgstr "Maa:"
-
 #: lib/layouts/g-brief-en.layout:89 lib/layouts/g-brief2.layout:675
 msgid "ReturnAddress"
 msgstr "Palautusosoite"
-
-#: lib/layouts/g-brief-en.layout:92 lib/layouts/g-brief2.layout:686
-msgid "ReturnAddress:"
-msgstr "Palautusosoite:"
-
-#: lib/layouts/g-brief-en.layout:99 lib/layouts/g-brief2.layout:748
-msgid "MyRef:"
-msgstr "Viitteeni:"
-
-#: lib/layouts/g-brief-en.layout:106 lib/layouts/g-brief2.layout:769
-msgid "YourRef:"
-msgstr "Viitteesi:"
-
-#: lib/layouts/g-brief-en.layout:113 lib/layouts/g-brief2.layout:790
-msgid "YourMail:"
-msgstr "Vastaanottajan osoite:"
-
-#: lib/layouts/g-brief-en.layout:120
-msgid "Phone:"
-msgstr "Puhelin:"
 
 #: lib/layouts/g-brief-en.layout:159
 msgid "BankCode"
 msgstr "Pankkikoodi"
 
-#: lib/layouts/g-brief-en.layout:162
-msgid "BankCode:"
-msgstr "Pankkikoodi:"
-
 #: lib/layouts/g-brief-en.layout:166
 msgid "BankAccount"
 msgstr "Pankkitili"
 
-#: lib/layouts/g-brief-en.layout:169
-msgid "BankAccount:"
-msgstr "Pankkitili:"
-
 #: lib/layouts/g-brief-en.layout:173 lib/layouts/g-brief2.layout:696
 msgid "PostalComment"
 msgstr "Postihuomautus"
-
-#: lib/layouts/g-brief-en.layout:176 lib/layouts/g-brief2.layout:706
-msgid "PostalComment:"
-msgstr "Postihuomautus:"
-
-#: lib/layouts/g-brief-en.layout:192 lib/layouts/g-brief2.layout:811
-#: lib/layouts/revtex.layout:108 lib/layouts/revtex4.layout:139
-#: lib/layouts/scrlettr.layout:163 lib/layouts/scrlttr2.layout:241
-#: lib/layouts/siamltex.layout:235 lib/layouts/amsdefs.inc:85
-msgid "Date:"
-msgstr "Päiväys:"
-
-#: lib/layouts/g-brief-en.layout:201 lib/layouts/g-brief2.layout:833
-msgid "Reference:"
-msgstr "Viite:"
-
-#: lib/layouts/g-brief-en.layout:210 lib/layouts/g-brief2.layout:856
-#: lib/layouts/scrlttr2.layout:103 lib/layouts/stdletter.inc:62
-msgid "Opening:"
-msgstr "Aloitus:"
-
-#: lib/layouts/g-brief-en.layout:218 lib/layouts/g-brief2.layout:923
-msgid "Encl.:"
-msgstr "Liitteet:"
-
-#: lib/layouts/g-brief-en.layout:227 lib/layouts/g-brief2.layout:944
-#: lib/layouts/scrlettr.layout:101 lib/layouts/scrlttr2.layout:132
-#: lib/layouts/stdletter.inc:102
-msgid "cc:"
-msgstr "jakelu:"
-
-#: lib/layouts/g-brief-en.layout:236 lib/layouts/g-brief2.layout:877
-#: lib/layouts/scrlttr2.layout:116 lib/layouts/stdletter.inc:95
-msgid "Closing:"
-msgstr "Lopuksi:"
 
 #: lib/layouts/g-brief2.layout:78
 msgid "NameRowA"
@@ -7707,22 +7658,9 @@ msgstr "O"
 msgid "Encl"
 msgstr "Liitteet"
 
-#: lib/layouts/scrlettr.layout:108 lib/layouts/scrlttr2.layout:139
-#: lib/layouts/stdletter.inc:114
-msgid "encl:"
-msgstr "liitteet:"
-
-#: lib/layouts/scrlettr.layout:149 lib/layouts/stdletter.inc:129
-msgid "Telephone:"
-msgstr "Puhelin:"
-
 #: lib/layouts/scrlettr.layout:156 lib/layouts/scrlttr2.layout:233
 msgid "Place:"
 msgstr "Paikka:"
-
-#: lib/layouts/scrlettr.layout:170 lib/layouts/scrlttr2.layout:249
-msgid "Backaddress:"
-msgstr "Palautusosoite:"
 
 #: lib/layouts/scrlettr.layout:174 lib/layouts/scrlttr2.layout:253
 msgid "Specialmail"
@@ -7732,26 +7670,13 @@ msgstr "Erikoisposti"
 msgid "Specialmail:"
 msgstr "Erikoisposti:"
 
-#: lib/layouts/scrlettr.layout:184 lib/layouts/scrlttr2.layout:265
-#: lib/layouts/stdletter.inc:122
-msgid "Location:"
-msgstr "Sijainti:"
-
 #: lib/layouts/scrlettr.layout:191 lib/layouts/scrlttr2.layout:273
 msgid "Title:"
 msgstr "Teoksen nimi:"
 
-#: lib/layouts/scrlettr.layout:198 lib/layouts/scrlttr2.layout:281
-msgid "Subject:"
-msgstr "Aihe:"
-
 #: lib/layouts/scrlettr.layout:202 lib/layouts/scrlttr2.layout:285
 msgid "Yourref"
 msgstr "Viitteesi"
-
-#: lib/layouts/scrlettr.layout:205 lib/layouts/scrlttr2.layout:289
-msgid "Your ref.:"
-msgstr "Viitteesi:"
 
 #: lib/layouts/scrlettr.layout:216 lib/layouts/scrlttr2.layout:301
 msgid "Yourmail"
@@ -7764,10 +7689,6 @@ msgstr "Kirjeesi päivältä:"
 #: lib/layouts/scrlettr.layout:223 lib/layouts/scrlttr2.layout:309
 msgid "Myref"
 msgstr "Viitteeni"
-
-#: lib/layouts/scrlettr.layout:226 lib/layouts/scrlttr2.layout:313
-msgid "Our ref.:"
-msgstr "Viitteemme:"
 
 #: lib/layouts/scrlettr.layout:230 lib/layouts/scrlttr2.layout:317
 msgid "Customer"
@@ -7793,17 +7714,9 @@ msgstr "Seuraava osoite"
 msgid "Next Address:"
 msgstr "Seuraava osoite:"
 
-#: lib/layouts/scrlttr2.layout:124
-msgid "Post Scriptum:"
-msgstr "Jalkikirjoitus:"
-
 #: lib/layouts/scrlttr2.layout:155
 msgid "Sender Name:"
 msgstr "Lähettäjän nimi:"
-
-#: lib/layouts/scrlttr2.layout:177
-msgid "Sender Address:"
-msgstr "Lähettäjän osoite:"
 
 #: lib/layouts/scrlttr2.layout:185
 msgid "Sender Phone:"
@@ -16278,7 +16191,7 @@ msgid ""
 "The author name '%1$s',\n"
 "used for change tracking, contains glyphs that cannot be\n"
 "represented in the current encoding. The respective glyphs\n"
-"will be ommitted in the exported LaTeX file.\n"
+"will be omitted in the exported LaTeX file.\n"
 "\n"
 "Chose an appropriate document encoding (such as utf8)\n"
 "or change the spelling of the author name."
@@ -22064,6 +21977,97 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Tuntematon käyttäjä"
+
+#, fuzzy
+#~ msgid "Anschrift:"
+#~ msgstr "Allekirjoitus:"
+
+#~ msgid "Briefkopf:"
+#~ msgstr "Kirjeotsikko:"
+
+#, fuzzy
+#~ msgid "Absender:"
+#~ msgstr "Ylätunniste:"
+
+#~ msgid "Zusatz:"
+#~ msgstr "Lisäys:"
+
+#, fuzzy
+#~ msgid "Ihre Zeichen:"
+#~ msgstr "Merkintönne:"
+
+#, fuzzy
+#~ msgid "Unsere Zeichen:"
+#~ msgstr "Merkintönne:"
+
+#~ msgid "Unterschrift:"
+#~ msgstr "Allekirjoitus:"
+
+#, fuzzy
+#~ msgid "Vorwahl:"
+#~ msgstr "Tavallinen:"
+
+#~ msgid "Telefon:"
+#~ msgstr "Puhelin:"
+
+#~ msgid "Ort:"
+#~ msgstr "Postitoimipaikka:"
+
+#~ msgid "Datum:"
+#~ msgstr "Päiväys:"
+
+#~ msgid "Betreff:"
+#~ msgstr "Aihe:"
+
+#~ msgid "Anrede:"
+#~ msgstr "Puhuttelu:"
+
+#~ msgid "Gruss:"
+#~ msgstr "Tervehdys:"
+
+#, fuzzy
+#~ msgid "Anlage(n):"
+#~ msgstr "Laitos"
+
+#~ msgid "Verteiler:"
+#~ msgstr "Jakelija:"
+
+#~ msgid "PS:"
+#~ msgstr "PS:"
+
+#~ msgid "Text:"
+#~ msgstr "Teksti:"
+
+#~ msgid "Strasse:"
+#~ msgstr "Katu:"
+
+#~ msgid "Land:"
+#~ msgstr "Maa:"
+
+#~ msgid "RetourAdresse:"
+#~ msgstr "Palautusosoite:"
+
+#~ msgid "MeinZeichen:"
+#~ msgstr "Merkintöni:"
+
+#~ msgid "IhrZeichen:"
+#~ msgstr "Merkintönne:"
+
+#~ msgid "IhrSchreiben:"
+#~ msgstr "Kirjoituksenne:"
+
+#~ msgid "BLZ:"
+#~ msgstr "BLZ:"
+
+#~ msgid "Konto:"
+#~ msgstr "Tili:"
+
+#~ msgid "Adresse:"
+#~ msgstr "Osoite:"
+
+#, fuzzy
+#~ msgid "Anlagen:"
+#~ msgstr "Laitos"
 
 #~ msgid "LyX binary not found"
 #~ msgstr "LyXin binääri ei löydy!"
