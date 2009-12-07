@@ -1,4 +1,4 @@
-#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -262,11 +262,24 @@ LatexCommand tableofcontents
 
 \begin_layout Standard
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Para exportar este documento a PDF, PS, o DVI deben estar instalados los
+Para exportar este documento a PDF, PS o DVI deben estar instalados los
  paquetes LaTeX 
+\series bold
+eurosym
+\series default
+, 
+\series bold
+mhchem, multirow
+\series default
+ y 
+\series bold
+was
+\series default
+.
+ Si 
 \series bold
 eurosym
 \series default
@@ -274,13 +287,19 @@ eurosym
 \series bold
 multirow
 \series default
- y 
+ o 
 \series bold
 was
 \series default
-.
- Si no están instalados también puedes exportar el documento pero las secciones
+ no están instalados también puedes exportar el documento pero las secciones
  en que se requieren dichos paquetes no aparecerán en la salida.
+ 
+\lang english
+If 
+\series bold
+mhchem
+\series default
+ is not installed, this file cannot be exported.
 \end_layout
 
 \begin_layout Plain Layout

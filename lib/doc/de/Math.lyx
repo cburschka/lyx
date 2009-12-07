@@ -1,4 +1,4 @@
-#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -280,16 +280,43 @@ eurosym,
 \series default
  
 \series bold
-multirow,
+mhchem, multirow
 \series default
  und 
 \series bold
 was
 \series default
  installiert sein.
- Wenn sie nicht installiert sind, kann das Dokument trotzdem exportiert
- werden, die Abschnitte in denen die Pakete benötigt werden, erscheinen
- dann aber nicht im Ausdruck.
+ Wenn 
+\series bold
+eurosym,
+\series default
+ 
+\series bold
+multirow
+\series default
+ oder 
+\series bold
+was
+\series default
+ nicht installiert sind, kann das Dokument trotzdem exportiert werden, die
+ Abschnitte in denen die Pakete benötigt werden, erscheinen dann aber nicht
+ im Ausdruck.
+ Wenn 
+\series bold
+mhchem
+\series default
+ nicht installiert ist, kann das Dokument nicht exportiert werden.
+\end_layout
+
+\begin_layout Plain Layout
+Die neueste PDF-Version dieses Dokuments ist hier zu finden:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+http://wiki.lyx.org/LyX/DocumentationDevelopment#Math
 \end_layout
 
 \end_inset
@@ -37376,7 +37403,7 @@ Duden Band 1
  Auflage, Duden Verlag 2001
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Standard
 \begin_inset Note Note
 status collapsed
 
