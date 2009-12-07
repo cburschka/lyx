@@ -457,7 +457,7 @@ def checkFormatEntries(dtl_tools):
         rc_entry = [r'\Format fen        fen     FEN                    "" "%%"	"%%"	""'])
     #
     checkViewerEditor('a SVG viewer and editor', ['inkscape'],
-        rc_entry = [r'\Format svg        svg    "Scalable Vector Graphics" "" "%%" "%%"	"vector"'])
+        rc_entry = [r'\Format svg        svg     SVG                    "" "%%" "%%"	"vector"'])
     #
     path, iv = checkViewerNoRC('a raster image viewer', ['xv', 'kview', 'gimp-remote', 'gimp'],
         rc_entry = [r'''\Format bmp        bmp     BMP                    "" "%s"	"%s"	""
@@ -757,15 +757,15 @@ def checkConverterEntries():
     checkProg('a Dia -> EPS converter', ['dia -e $$o -t eps $$i'],
         rc_entry = [ r'\converter dia        eps        "%%"	""'])
     #
-    checkProg('a SVG -> PDF converter', ['rsvg-convert -f pdf -o $$o $$i'],
+    checkProg('a SVG -> PDF converter', ['rsvg-convert -f pdf -o $$o $$i', 'inkscape --file=$$p/$$i --export-area-drawing --without-gui --export-pdf=$$p/$$o'],
         rc_entry = [ r'\converter svg        pdf        "%%"	""'])
     #
-    checkProg('a SVG -> EPS converter', ['rsvg-convert -f ps -o $$o $$i'],
+    checkProg('a SVG -> EPS converter', ['rsvg-convert -f ps -o $$o $$i', 'inkscape --file=$$p/$$i --export-area-drawing --without-gui --export-eps=$$p/$$o'],
         rc_entry = [ r'\converter svg        eps        "%%"	""'])
-    #
-    checkProg('a SVG -> PNG converter', ['rsvg-convert -f png -o $$o $$i'],
+    # the PNG export via Inkscape must not have the full path ($$p) for the file
+    checkProg('a SVG -> PNG converter', ['rsvg-convert -f png -o $$o $$i', 'inkscape --without-gui --file=$$i --export-png=$$o'],
         rc_entry = [ r'\converter svg        png        "%%"	""'])
-    #
+    
     #
     path, lilypond = checkProg('a LilyPond -> EPS/PDF/PNG converter', ['lilypond'])
     if (lilypond != ''):
