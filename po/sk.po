@@ -2625,7 +2625,6 @@ msgid "&Global"
 msgstr "&Globálne"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:136
-#, fuzzy
 msgid ""
 "If checked, the document language is not explicitly set by a language switch "
 "command"
@@ -2638,7 +2637,6 @@ msgid "Auto &begin"
 msgstr "Automatický &začiatok"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:146
-#, fuzzy
 msgid ""
 "If checked, the document language is not explicitly closed by a language "
 "switch command"
@@ -5681,16 +5679,14 @@ msgid "Postal comment"
 msgstr "Poštový záznam"
 
 #: lib/layouts/dinbrief.layout:81
-#, fuzzy
 msgid "Postal Remark:"
-msgstr "Poštový záznam:"
+msgstr "Poštový Záznam:"
 
 #: lib/layouts/dinbrief.layout:86
 msgid "Handling"
 msgstr "Zaobchádzanie"
 
 #: lib/layouts/dinbrief.layout:88
-#, fuzzy
 msgid "Handling:"
 msgstr "Zaobchádzanie"
 
@@ -5719,9 +5715,8 @@ msgid "Writer"
 msgstr "Referenta"
 
 #: lib/layouts/dinbrief.layout:106
-#, fuzzy
 msgid "Writer:"
-msgstr "Referenta"
+msgstr "Referent:"
 
 #: lib/layouts/dinbrief.layout:110 lib/layouts/g-brief-en.layout:54
 #: lib/layouts/g-brief2.layout:892 lib/layouts/scrlettr.layout:132
@@ -5738,21 +5733,19 @@ msgstr "Podpis:"
 
 #: lib/layouts/dinbrief.layout:117
 msgid "Bottomtext"
-msgstr "Podnadpis"
+msgstr "Spodný text"
 
 #: lib/layouts/dinbrief.layout:119
-#, fuzzy
 msgid "Bottom text:"
-msgstr "Podnadpis"
+msgstr "Spodný text:"
 
 #: lib/layouts/dinbrief.layout:127
 msgid "Area code"
 msgstr "Predvoľba"
 
 #: lib/layouts/dinbrief.layout:129
-#, fuzzy
 msgid "Area Code:"
-msgstr "Predvoľba"
+msgstr "Predvoľba:"
 
 #: lib/layouts/dinbrief.layout:133 lib/layouts/scrlettr.layout:146
 #: lib/layouts/scrlttr2.layout:181 lib/layouts/stdletter.inc:126
@@ -15573,7 +15566,7 @@ msgid "Uncodable character in author name"
 msgstr "Nekódovateľný znak v mene autora"
 
 #: src/Changes.cpp:380
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The author name '%1$s',\n"
 "used for change tracking, contains glyphs that cannot be\n"
