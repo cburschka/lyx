@@ -1078,6 +1078,59 @@ def revert_fontenc(document):
     del document.header[i]
 
 
+def merge_gbrief(document):
+    " Merge g-brief-en and g-brief-de to one class "
+
+    if document.textclass != "g-brief-de":
+        if document.textclass == "g-brief-en":
+            document.textclass = "g-brief"
+            document.set_textclass()
+        return
+
+    obsoletedby = { "Brieftext":       "Letter",
+                    "Unterschrift":    "Signature",
+                    "Strasse":         "Street",
+                    "Zusatz":          "Addition",
+                    "Ort":             "Town",
+                    "Land":            "State",
+                    "RetourAdresse":   "ReturnAddress",
+                    "MeinZeichen":     "MyRef",
+                    "IhrZeichen":      "YourRef",
+                    "IhrSchreiben":    "YourMail",
+                    "Telefon":         "Phone",
+                    "BLZ":             "BankCode",
+                    "Konto":           "BankAccount",
+                    "Postvermerk":     "PostalComment",
+                    "Adresse":         "Address",
+                    "Datum":           "Date",
+                    "Betreff":         "Reference",
+                    "Anrede":          "Opening",
+                    "Anlagen":         "Encl.",
+                    "Verteiler":       "cc",
+                    "Gruss":           "Closing"}
+    i = 0
+    while 1:
+        i = find_token(document.body, "\\begin_layout", i)
+        if i == -1:
+            break
+
+        layout = document.body[i][14:]
+        if layout in obsoletedby:
+            document.body[i] = "\\begin_layout " + obsoletedby[layout]
+
+        i += 1
+        
+    document.textclass = "g-brief"
+    document.set_textclass()
+
+
+def revert_gbrief(document):
+    " Revert g-brief to g-brief-en "
+    if document.textclass == "g-brief":
+        document.textclass = "g-brief-en"
+        document.set_textclass()
+
+
 ##
 # Conversion hub
 #
@@ -1109,10 +1162,12 @@ convert = [[346, []],
            [369, [convert_author_id]],
            [370, []],
            [371, []],
-           [372, []]
+           [372, []],
+           [373, [merge_gbrief]]
           ]
 
-revert =  [[371, [revert_fontenc]],
+revert =  [[372, [revert_gbrief]],
+           [371, [revert_fontenc]],
            [370, [revert_mhchem]],
            [369, [revert_suppress_date]],
            [368, [revert_author_id]],

@@ -1,6 +1,12 @@
 LyX file-format changes
 -----------------------
 
+2009-12-07 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 373: merge g-brief-de and g-brief-en
+	  classes into one g-brief class.
+	  All German layout names are replaced by English ones, the
+	  two classes are renamed to g-brief.
+
 2009-11-29 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 372: new buffer param fontencoding.
 	  This param holds a buffer-specific fontencoding (argument

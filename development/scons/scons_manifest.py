@@ -2699,8 +2699,7 @@ lib_layouts_files = Split('''
     extletter.layout
     extreport.layout
     foils.layout
-    g-brief-de.layout
-    g-brief-en.layout
+    g-brief.layout
     g-brief2.layout
     heb-article.layout
     heb-letter.layout

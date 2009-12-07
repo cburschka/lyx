@@ -1056,8 +1056,7 @@ dist_layouts_DATA =\
 	layouts/figs-within-sections.module \
 	layouts/foils.layout \
 	layouts/foottoend.module \
-	layouts/g-brief-de.layout \
-	layouts/g-brief-en.layout \
+	layouts/g-brief.layout \
 	layouts/g-brief2.layout \
 	layouts/hanging.module \
 	layouts/heb-article.layout \
