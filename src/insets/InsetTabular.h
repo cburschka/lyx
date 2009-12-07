@@ -790,7 +790,8 @@ public:
 	///
 	virtual bool usePlainLayout() { return true; }
 	///
-	void addPreview(graphics::PreviewLoader &) const;
+	void addPreview(DocIterator const & inset_pos,
+		graphics::PreviewLoader &) const;
 
 	/// lock cell with given index
 	void edit(Cursor & cur, bool front, EntryDirection entry_from);

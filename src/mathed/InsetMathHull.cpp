@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author André Pönitz
+ * \author AndrÃ© PÃ¶nitz
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -38,6 +38,7 @@
 #include "FuncRequest.h"
 #include "Language.h"
 #include "LyXRC.h"
+#include "MacroTable.h"
 #include "OutputParams.h"
 #include "ParIterator.h"
 #include "sgml.h"
@@ -473,22 +474,50 @@ void InsetMathHull::initUnicodeMath() const
 }
 
 
-void InsetMathHull::addPreview(graphics::PreviewLoader & ploader) const
+void InsetMathHull::addPreview(DocIterator const & inset_pos,
+	graphics::PreviewLoader & ploader) const
 {
 	if (RenderPreview::status() == LyXRC::PREVIEW_ON) {
-		docstring const snippet = latexString(*this);
-		preview_->addPreview(snippet, ploader);
+		preparePreview(inset_pos, ploader.buffer());
 	}
 }
 
 
-bool InsetMathHull::notifyCursorLeaves(Cursor const & /*old*/, Cursor & cur)
+void InsetMathHull::preparePreview(DocIterator const & pos,
+	Buffer const & buffer) const  
+{
+	// collect macros at this position  
+	MacroNameSet macros;  
+	buffer.listMacroNames(macros);  
+	MacroNameSet::iterator it = macros.begin();  
+	MacroNameSet::iterator end = macros.end();  
+	odocstringstream macro_preamble;  
+	for (; it != end; ++it) {  
+		MacroData const * data = buffer.getMacro(*it, pos, true);  
+		if (data) {  
+			data->write(macro_preamble, true);  
+			macro_preamble << endl;  
+		}
+	}  
+
+	docstring const snippet = macro_preamble.str() + latexString(*this);  
+	LYXERR(Debug::MACROS, "Preview snippet: " << snippet);  
+	preview_->addPreview(snippet, buffer);  
+}
+
+
+void InsetMathHull::reloadPreview(DocIterator const & pos,
+	Buffer const & buffer) const
+{
+	preparePreview(pos, buffer);
+	preview_->startLoading(buffer);
+}
+
+
+bool InsetMathHull::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 {
 	if (RenderPreview::status() == LyXRC::PREVIEW_ON) {
-		Buffer const & buffer = cur.buffer();
-		docstring const snippet = latexString(*this);
-		preview_->addPreview(snippet, buffer);
-		preview_->startLoading(buffer);
+		reloadPreview(old, cur.buffer());
 		cur.updateFlags(Update::Force);
 	}
 	return false;

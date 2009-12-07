@@ -4,7 +4,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author André Pönitz
+ * \author AndrÃ© PÃ¶nitz
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -126,7 +126,12 @@ public:
 	///
 	//bool insetAllowed(InsetCode code) const;
 	///
-	void addPreview(graphics::PreviewLoader &) const;
+	void addPreview(DocIterator const & inset_pos,
+		graphics::PreviewLoader &) const;
+	/// Prepare the preview if preview is enabled.
+	void preparePreview(DocIterator const & pos, Buffer const & buffer) const;
+	/// Recreates the preview if preview is enabled.
+	void reloadPreview(DocIterator const & pos, Buffer const & buffer) const;
 	///
 	void initUnicodeMath() const;
 

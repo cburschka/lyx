@@ -116,17 +116,20 @@ private:
 	virtual Inset * clone() const;
 
 	/// remove #n with from<=n<=to
-	void removeArguments(Cursor & cur, int from, int to);
+	void removeArguments(Cursor & cur, DocIterator const & inset_pos,
+		int from, int to);
 	/// shift every #n with from<=n, i.e. #n -> #(n-by)
 	void shiftArguments(size_t from, int by);
 	///
-	void insertParameter(Cursor & cur, int pos, bool greedy = false, bool addarg = true);
+	void insertParameter(Cursor & cur, DocIterator const & inset_pos,
+		int pos, bool greedy = false, bool addarg = true); 
 	///
-	void removeParameter(Cursor & cur, int pos, bool greedy = false);
+	void removeParameter(Cursor & cur, DocIterator const & inset_pos,
+		int pos, bool greedy = false);
 	///
-	void makeOptional(Cursor & cur);
+	void makeOptional(Cursor & cur, DocIterator const & inset_pos);
 	///
-	void makeNonOptional(Cursor & cur);
+	void makeNonOptional(Cursor & cur, DocIterator const & inset_pos);
 	///
 	idx_type defIdx() const { return optionals_ + 1; }
 	/// index of default value cell of optional parameter (#1 -> n=0)
@@ -140,9 +143,10 @@ private:
 	/// add missing #n arguments up to \c maxArg
 	void insertMissingArguments(int maxArg);
 	/// change the arity
-	void changeArity(Cursor & cur, int newNumArg);
+	void changeArity(Cursor & cur, DocIterator const & inset_pos,
+		int newNumArg);
 	/// find arguments in definition and adapt the arity accordingly
-	void commitEditChanges(Cursor & cur);
+	void commitEditChanges(Cursor & cur, DocIterator const & inset_pos);
 	/// The representation of the macro template, with some holes to edit
 	mutable MathData look_;
 	///

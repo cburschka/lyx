@@ -5125,13 +5125,19 @@ bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 }
 
 
-void InsetTabular::addPreview(PreviewLoader & loader) const
+void InsetTabular::addPreview(DocIterator const & inset_pos,
+	PreviewLoader & loader) const
 {
 	row_type const rows = tabular.row_info.size();
 	col_type const columns = tabular.column_info.size();
+	DocIterator cell_pos = inset_pos;
+
+	cell_pos.push_back(CursorSlice(*const_cast<InsetTabular *>(this)));
 	for (row_type i = 0; i < rows; ++i) {
-		for (col_type j = 0; j < columns; ++j)
-			tabular.cellInset(i, j)->addPreview(loader);
+		for (col_type j = 0; j < columns; ++j) {
+			cell_pos.top().idx() = tabular.cellIndex(i, j);
+			tabular.cellInset(i, j)->addPreview(cell_pos, loader);
+		}
 	}
 }
 

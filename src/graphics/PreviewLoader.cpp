@@ -701,15 +701,6 @@ void PreviewLoader::Impl::dumpPreamble(odocstream & os) const
 	   << "\\def\\lyxlock{}\n"
 	   << "\n";
 
-	// Loop over the insets in the buffer and dump all the math-macros.
-	Inset & inset = buffer_.inset();
-	InsetIterator it = inset_iterator_begin(inset);
-	InsetIterator const end = inset_iterator_end(inset);
-
-	for (; it != end; ++it)
-		if (it->lyxCode() == MATHMACRO_CODE)
-			it->latex(os, runparams);
-
 	// All equation labels appear as "(#)" + preview.sty's rendering of
 	// the label name
 	if (lyxrc.preview_hashed_labels)

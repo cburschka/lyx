@@ -113,7 +113,7 @@ public:
 	void appendParagraphs(ParagraphList &);
 
 	///
-	void addPreview(graphics::PreviewLoader &) const;
+	void addPreview(DocIterator const &, graphics::PreviewLoader &) const;
 
 	///
 	void edit(Cursor & cur, bool front, EntryDirection entry_from);
