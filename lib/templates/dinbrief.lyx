@@ -1,8 +1,7 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.6svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
-\use_default_options false
 \textclass dinbrief
 \begin_preamble
 % Erzeugen von Adressaufklebern
@@ -20,6 +19,7 @@
 % \addresshigh
 % \addressstd (default)
 \end_preamble
+\use_default_options false
 \language ngerman
 \inputencoding auto
 \font_roman default
@@ -30,6 +30,7 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -51,8 +52,8 @@
 \paperpagestyle empty
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -62,13 +63,56 @@
 status open
 
 \begin_layout Plain Layout
-Die Datenfelder (Briefkopf, Absender, Betreffzeile, Empfängeradresse, Datum,
- Unterschrift, Fußzeile, ...) müssen vor der Anrede definiert werden!
+Die Datenfelder (
+\emph on
+Briefkopf
+\emph default
+, 
+\emph on
+Absender
+\emph default
+, 
+\emph on
+Betreff
+\emph default
+, 
+\emph on
+Empfängeradresse
+\emph default
+, 
+\emph on
+Datum
+\emph default
+, 
+\emph on
+Unterschrift
+\emph default
+, 
+\emph on
+Fußzeile
+\emph default
+, \SpecialChar \ldots{}
+) müssen vor der 
+\emph on
+Anrede
+\emph default
+ definiert werden!
 \begin_inset Newline newline
 \end_inset
 
-Bei mehrfacher Verwendung in einem Dokument ersetzt die letzten Definition
+Bei mehrfacher Verwendung in einem Dokument ersetzt die letzte Definition
  die jeweils vorhergehende.
+\end_layout
+
+\begin_layout Plain Layout
+Vgl.
+ für weitere Einstellungsmöglichkeiten auch 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+LaTeX-Vorspann
+\family default
+.
 \end_layout
 
 \end_inset
@@ -95,7 +139,7 @@ Meine Straße
 
 Meine Stadt
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 oder individuell gestalteter Briefkopf (z.
@@ -117,7 +161,7 @@ Mein Name, Meine Straße, Meine Stadt
 status open
 
 \begin_layout Plain Layout
-Absenderzeile im Adressfenster 
+Absenderzeile im Adressfenster
 \end_layout
 
 \end_inset
@@ -247,8 +291,15 @@ optional
 status open
 
 \begin_layout Plain Layout
-Erscheint nur, wenn auch Ihre Zeichen oder Unsere Zeichen definiert ist
- (ggf.
+Erscheint nur, wenn auch 
+\emph on
+Ihr Zeichen
+\emph default
+ oder 
+\emph on
+Unser Zeichen
+\emph default
+ definiert ist (ggf.
  mit geschütztem Leerzeichen erzwingen).
 \begin_inset Newline newline
 \end_inset
@@ -257,7 +308,7 @@ Kann auch als Teil der Nummer formatiert werden (z.
 \begin_inset space \thinspace{}
 \end_inset
 
-.B.
+B.
  0351/12312312).
 \end_layout
 
@@ -293,24 +344,20 @@ Beispielstadt
 \end_layout
 
 \begin_layout Date
-21.10.2010
+20.10.2010
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-Wenn das Datum fehlt, wird automatisch das aktuelle Datum gesetzt.
+Wenn das Datum fehlt, wird automatisch das aktuellee Datum eingesetzt.
 \begin_inset Newline newline
 \end_inset
 
 Ein leeres 
-\begin_inset Quotes pld
-\end_inset
-
+\emph on
 Datum
-\begin_inset Quotes prd
-\end_inset
-
- Feld unterdrückt die Ausgabe.
+\emph default
+-Feld unterdrückt die Ausgabe.
 \end_layout
 
 \end_inset
@@ -356,7 +403,7 @@ optionale, alternative Unterschrift
 \end_layout
 
 \begin_layout PS
-PS Text
+PS-Text
 \end_layout
 
 \begin_layout encl
