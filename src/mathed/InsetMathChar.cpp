@@ -178,7 +178,7 @@ void InsetMathChar::mathmlize(MathStream & ms) const
 		(isalpha(char_) || Encodings::isMathAlpha(char_))	
 			? "mi" : "mo";
 	// we don't use MTag and ETag because we do not want the spacing
-	ms << "<" << type << ">" << char_ << "</" << type << ">";	
+	ms << "<" << type << ">" << char(char_) << "</" << type << ">";	
 }
 
 
