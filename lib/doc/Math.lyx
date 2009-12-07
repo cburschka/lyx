@@ -1,4 +1,4 @@
-#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -265,21 +265,38 @@ LatexCommand tableofcontents
 status open
 
 \begin_layout Plain Layout
-To export this document to PDF, PS, or DVI the LaTeX-packages 
+To export this document to PDF, PS or DVI the LaTeX-packages 
 \series bold
 eurosym,
 \series default
  
 \series bold
-multirow,
+mhchem, multirow
 \series default
  and 
 \series bold
 was
 \series default
  must be installed.
- If they are not installed you can export the document anyway but the sections
- where the packages are required won't appear in the output.
+ If 
+\series bold
+eurosym,
+\series default
+ 
+\series bold
+multirow
+\series default
+ or 
+\series bold
+was
+\series default
+ are not installed you can export the document anyway but the sections where
+ the packages are required won't appear in the output.
+ If 
+\series bold
+mhchem
+\series default
+ is not installed, this file cannot be exported.
 \end_layout
 
 \begin_layout Plain Layout
@@ -37371,7 +37388,7 @@ Duden Band 1
  Auflage, Duden 2001
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Standard
 \begin_inset CommandInset index_print
 LatexCommand printindex
 
