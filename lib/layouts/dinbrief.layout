@@ -23,10 +23,12 @@ Preamble
 EndPreamble
 
 # auxiliary style copied by other dinbrief styles
+# the LeftMargin is set to the probably longest string
+# (no typo! the umlaut is delibarately omitted)
 Style DinBrief
 	LatexType	Command
 	Margin		Static
-	LeftMargin	"XXBackaddress:"
+	LeftMargin	"Rucksende-Adresse:"
 	Align		Left
 	AlignPossible	Left
 	LabelType	Static
