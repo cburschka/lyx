@@ -23,7 +23,7 @@ Style Brieftext
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
 	LabelType             Top_Environment
-	LabelString           "Text:"
+	LabelString           "Letter:"
 	LabelFont
 	  Series              Bold
 	  Shape               Italic
@@ -54,70 +54,70 @@ End
 Style Unterschrift
 	CopyStyle             Name
 	LatexName             Unterschrift
-	LabelString           "Unterschrift:"
+	LabelString           "Signature:"
 End
 
 
 Style Strasse
 	CopyStyle             Name
 	LatexName             Strasse
-	LabelString           "Strasse:"
+	LabelString           "Street:"
 End
 
 
 Style Zusatz
 	CopyStyle             Name
 	LatexName             Zusatz
-	LabelString           "Zusatz:"
+	LabelString           "Addition:"
 End
 
 
 Style Ort
 	CopyStyle             Name
 	LatexName             Ort
-	LabelString           "Ort:"
+	LabelString           "Town:"
 End
 
 
 Style Land
 	CopyStyle             Name
 	LatexName             Land
-	LabelString           "Land:"
+	LabelString           "State:"
 End
 
 
 Style RetourAdresse
 	CopyStyle             Name
 	LatexName             RetourAdresse
-	LabelString           "RetourAdresse:"
+	LabelString           "ReturnAddress:"
 End
 
 
 Style MeinZeichen
 	CopyStyle             Name
 	LatexName             MeinZeichen
-	LabelString           "MeinZeichen:"
+	LabelString           "MyRef:"
 End
 
 
 Style IhrZeichen
 	CopyStyle             Name
 	LatexName             IhrZeichen
-	LabelString           "IhrZeichen:"
+	LabelString           "YourRef:"
 End
 
 
 Style IhrSchreiben
 	CopyStyle             Name
 	LatexName             IhrSchreiben
-	LabelString           "IhrSchreiben:"
+	LabelString           "YourMail:"
 End
 
 
 Style Telefon
 	CopyStyle             Name
 	LatexName             Telefon
-	LabelString           "Telefon:"
+	LabelString           "Phone:"
 End
 
 
@@ -159,21 +159,21 @@ End
 Style BLZ
 	CopyStyle             Name
 	LatexName             BLZ
-	LabelString           "BLZ:"
+	LabelString           "BankCode:"
 End
 
 
 Style Konto
 	CopyStyle             Name
 	LatexName             Konto
-	LabelString           "Konto:"
+	LabelString           "BankAccount:"
 End
 
 
 Style Postvermerk
 	CopyStyle             Name
 	LatexName             Postvermerk
-	LabelString           "Postvermerk:"
+	LabelString           "PostalComment:"
 End
 
 
@@ -182,14 +182,14 @@ Style Adresse
 	LatexName             Adresse
 	TopSep                1.5
 	KeepEmpty             1
-	LabelString           "Adresse:"
+	LabelString           "Address:"
 End
 
 
 Style Datum
 	CopyStyle             Name
 	LatexName             Datum
-	LabelString           "Datum:"
+	LabelString           "Date:"
 End
 
 
@@ -198,7 +198,7 @@ Style Betreff
 	LatexName             Betreff
 	TopSep                1.5
 	ParSep                0.4
-	LabelString           "Betreff:"
+	LabelString           "Reference:"
 End
 
 
@@ -207,7 +207,7 @@ Style Anrede
 	LatexName             Anrede
 	TopSep                1.5
 	ParSep                0.4
-	LabelString           "Anrede:"
+	LabelString           "Opening:"
 End
 
 
@@ -215,7 +215,7 @@ Style Anlagen
 	CopyStyle             Name
 	LatexName             Anlagen
 	ParSep                0.4
-	LabelString           "Anlagen:"
+	LabelString           "Encl.:"
 End
 
 
@@ -224,7 +224,7 @@ Style Verteiler
 	LatexName             Verteiler
 	KeepEmpty             1
 	ParSep                0.4
-	LabelString           "Verteiler:"
+	LabelString           "cc:"
 End
 
 
@@ -233,7 +233,7 @@ Style Gruss
 	LatexName             LyxGruss
 	BottomSep             1.5
 	ParSep                0.4
-	LabelString           "Gruss:"
+	LabelString           "Closing:"
 	Preamble
 		\newcommand{\LyxGruss}[1]{\Gruss{#1}{0.5cm}}
 	EndPreamble
