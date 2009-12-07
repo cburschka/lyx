@@ -9,6 +9,8 @@
 #    Additional Styles and twiddeled layout
 #    Many "ObsoletedBy" to ease conversion from g-brief, scrletter,
 #    or letter (see also the update of the dinbrief.lyx template)
+# Modified by: Juergen Spitzmueller <spitz@lyx.org>
+#    use English strings, localization is done by gettext!
 
 Format 11
 
@@ -24,7 +26,7 @@ EndPreamble
 Style DinBrief
 	LatexType	Command
 	Margin		Static
-	LeftMargin	"Unsere Zeichen"
+	LeftMargin	"XXBackaddress:"
 	Align		Left
 	AlignPossible	Left
 	LabelType	Static
@@ -42,7 +44,7 @@ End
 # (see scrlettr2 for an alternative lyx-implementation)
 Style Send_To_Address
 	CopyStyle	DinBrief
-	LabelString	"Anschrift:"
+	LabelString	"Address:"
 	KeepEmpty	1
 	BottomSep	0.1
 	LatexName	letter
@@ -56,7 +58,7 @@ End
 # backaddress in letter head
 Style My_Address
 	CopyStyle	DinBrief
-	LabelString	"Briefkopf:"
+	LabelString	"Sender Address:"
 	LatexName	address
 	KeepEmpty	1
 	BottomSep	0.5
@@ -66,56 +68,55 @@ End
 # backaddress in address window
 Style "Return address"
 	CopyStyle	DinBrief
-	LabelString	"Absender:"
+	LabelString	"Backaddress:"
 	LatexName	backaddress
 	TextFont
 	    Size	Small
 	EndFont
 End
 
-# vor der Emfängeranschrift (Einschreiben, Luftpost)
+# Printed above the address (e.g., Air Mail, Registered Mail)
 Style "Postal comment"
 	CopyStyle	DinBrief
-	LabelString	"Postvermerk:"
+	LabelString	"Postal Remark:"
 	LatexName	postremark
 End
 
-# rechts neben der Emfängeranschrift (Eilt, Persönlich)
+# Printed right next to Receiver (e.g., Urgent, Confidential)
 Style Handling
 	CopyStyle	DinBrief
-	LabelString	"Zusatz:"
+	LabelString	"Handling:"
 	LatexName	handling
 End
 
-# "Ihre Zeichen/Ihre Nachricht vom"
 Style YourRef
 	CopyStyle	DinBrief
-	LabelString	"Ihre Zeichen:"
+	LabelString	"Your ref.:"
 	LatexName	yourmail
 End
 
 Style MyRef
 	CopyStyle	DinBrief
-	LabelString	"Unsere Zeichen:"
+	LabelString	"Our ref.:"
 	LatexName	sign
 End
 
 Style Writer
 	CopyStyle	DinBrief
-	LabelString	"Sachbearbeiter:"
+	LabelString	"Writer:"
 	LatexName	writer
 End
 
 Style Signature
 	CopyStyle	DinBrief
-	LabelString	"Unterschrift:"
+	LabelString	"Signature:"
 	LatexName	signature
 End
 
 # contact info at the bottom of the first page
 Style Bottomtext
 	CopyStyle	DinBrief
-	LabelString	"Fusszeile(n):"
+	LabelString	"Bottom text:"
 	LatexName	bottomtext
 	AlignPossible	Block, Left, Right, Center
 End
@@ -125,20 +126,20 @@ End
 
 Style "Area code"
 	CopyStyle	DinBrief
-	LabelString	"Vorwahl:"
+	LabelString	"Area Code:"
 	LatexName	"renewcommand{\areacode}"
 End
 
 Style Telephone
 	CopyStyle	DinBrief
-	LabelString	"Telefon:"
+	LabelString	"Telephone:"
 	LatexName	phone
 	LatexParam	{\areacode}
 End
 
 Style Location
 	CopyStyle	DinBrief
-	LabelString	"Ort:"
+	LabelString	"Location:"
 	LatexName	place
 	Margin		Right_Address_Box
 	TopSep		0.1
@@ -148,14 +149,14 @@ End
 
 Style Date
 	CopyStyle	Location
-	LabelString	"Datum:"
+	LabelString	"Date:"
 	LatexName	date
 End
 
 # dinbrief does not emphasize the subject line
 Style Subject
 	CopyStyle	DinBrief
-	LabelString	"Betreff:"
+	LabelString	"Subject:"
 	LatexName	subject
 	TopSep		0.4
 	BottomSep	0.4
@@ -173,7 +174,7 @@ Style Opening
 	CopyStyle	DinBrief
 	LabelType	Top_Environment
 	LeftMargin	""
-	LabelString	"Anrede:"
+	LabelString	"Opening:"
 	LatexName	opening
 	KeepEmpty	1
 	TopSep		1.5
@@ -187,7 +188,7 @@ End
 
 Style Closing
 	CopyStyle	Opening
-	LabelString	"Gruss:"
+	LabelString	"Closing:"
 	LatexName	closing
 	OptionalArgs	1
 	KeepEmpty	1
@@ -195,7 +196,7 @@ End
 
 Style encl
 	CopyStyle	Opening
-	LabelString	"Anlage(n):"
+	LabelString	"encl:"
 	LatexName	encl
 	TopSep		0.4
 	BottomSep	0.4
@@ -210,13 +211,13 @@ End
 
 Style cc
 	CopyStyle	encl
-	LabelString	"Verteiler:"
+	LabelString	"cc:"
 	LatexName	cc
 End
 
 Style PS
 	CopyStyle	encl
-	LabelString	"PS:"
+	LabelString	"Post Scriptum:"
 	LatexName	ps
 	Align		Block
 	AlignPossible	Block, Left
@@ -268,7 +269,7 @@ Style IhrZeichen
 	ObsoletedBy	YourRef
 End
 
-# Ihr Schreiben vom ist in Dinbrief identisch mit Ihr Zeichen
+# These are identical in this class
 Style YourMail
 	ObsoletedBy	YourRef
 End
