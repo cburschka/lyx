@@ -3,6 +3,13 @@ LyX file-format changes
 
 2009-11-29 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 372: new buffer param fontencoding.
+	  This param holds a buffer-specific fontencoding (argument
+	  of the fontenc package).
+	  Possible values:
+	  - global: use lyxrc.fontenc
+	  - default: do not load the fontenc package at all
+	  - <ENC>: real encodings such as "T1". Multiple encodings
+	    can be separated by comma.
 
 2009-11-11 Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 371: add option to suppress the LaTeX
