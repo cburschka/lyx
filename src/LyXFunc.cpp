@@ -859,8 +859,10 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			int const ret = Alert::prompt(_("Revert to saved document?"),
 				text, 1, 1, _("&Revert"), _("&Cancel"));
 
-			if (ret == 0)
+			if (ret == 0) {
+				buffer->markClean();
 				reloadBuffer();
+			}
 			break;
 		}
 
