@@ -223,6 +223,7 @@ void InsetGraphics::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_GRAPHICS_RELOAD:
+		params_.filename.refresh();
 		graphic_->reload();
 		break;
 

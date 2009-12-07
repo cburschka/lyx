@@ -474,6 +474,12 @@ FileName FileName::tempPath()
 }
 
 
+void FileName::refresh() const
+{
+	d->refresh();
+}
+
+
 time_t FileName::lastModified() const
 {
 	// QFileInfo caches information about the file. So, in case this file has
