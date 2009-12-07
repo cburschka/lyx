@@ -12,7 +12,7 @@ LyX file-format changes
 	  This param holds a buffer-specific fontencoding (argument
 	  of the fontenc package).
 	  Possible values:
-	  - global: use lyxrc.fontenc
+	  - global: use lyxrc.fontenc [this is the default]
 	  - default: do not load the fontenc package at all
 	  - <ENC>: real encodings such as "T1". Multiple encodings
 	    can be separated by comma.
@@ -32,6 +32,9 @@ LyX file-format changes
 2009-07-21 Jürgen Spitzmüller <spitz@lyx.org>, Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 368: allow to use glue lengths for
 	  horizontal spaces.
+	  We just revert hspaces with glue lengths to ERT, since the
+	  inset didn't support them prior to format 368.
+	  No explicit conversion.
 
 2009-07-20 Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 367: allow to use percent lengths for
@@ -47,6 +50,9 @@ LyX file-format changes
 2009-07-13 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 364: add \filename_suffix parameter
 	  to branches.
+	  Possible values: 0, 1.
+	  If "1", the branch name is appended to the filename on export
+	  (e.g., <filename>-<suffix>.pdf).
 
 2009-07-11 Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 363: support for horizontal longtable
@@ -62,11 +68,23 @@ LyX file-format changes
 
 2009-05-22 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 360: param width for nomencl_print
-	CommandInset.
+	CommandInset. This
+	1.) adds a further value "width" to param set_width
+	(see format 359)
+	and
+	2.) a param width, which takes a length
+	If "width" is chosen, we define the indendation of the nomencl
+	list via the optional argument of \printnomenclature, e.g.
+	\printnomenclature[2cm]{}
 
 2009-05-22 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 359: param set_width for nomencl_print
-	CommandInset.
+	CommandInset. This specifies how wide the longest nomencl label
+	is (i.e., how wide the indendation in the nomencl list is).
+	Possible values:
+	- none: do not specifiy the width (use predefined values)
+	- auto: compute the widest label and specify via
+	  \settowidth{\nomlabelwidth}{<widest label>}
 
 2009-05-22 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 358: support for custom bibtex and
