@@ -48,7 +48,8 @@ Function ConfigureLyX
   Delete "$INSTDIR\Resources\lyxrc.dist"
   FileOpen $R1 "$INSTDIR\Resources\lyxrc.dist" w
   # set some general things
-  FileWrite $R1 '\screen_zoom "120"$\r$\n'
+  FileWrite $R1 '\screen_zoom "120"$\r$\n\
+                 \accept_compound true$\r$\n'
   ${if} "$PathPrefix" != ""
    FileWrite $R1 '\path_prefix "$PathPrefix"$\r$\n'
   ${endif}
@@ -62,8 +63,8 @@ Function ConfigureLyX
   ${if} $SVGPath != ""
    FileWrite $R1 '\format "svg" "svg" "SVG" "" "inkscape --file=$$$$i" "inkscape --file=$$$$i" "vector"$\r$\n\
    		  \converter "svg" "png" "inkscape --without-gui --file=$$$$i --export-png=$$$$o" ""$\r$\n\
-		  \converter "svg" "pdf" "inkscape --file=$$$$i --export-area-drawing --without-gui --export-pdf=$$$$o" ""$\r$\n\
-		  \converter "svg" "pdf2" "inkscape --file=$$$$i --export-area-drawing --without-gui --export-pdf=$$$$o" ""'
+		  \converter "svg" "pdf" "inkscape --file=$$$$p/$$$$i --export-area-drawing --without-gui --export-pdf=$$$$p/$$$$o" ""$\r$\n\
+		  \converter "svg" "eps" "inkscape --file=$$$$p/$$$$i --export-area-drawing --without-gui --export-eps=$$$$p/$$$$o" ""'
   ${endif}
   FileClose $R1
   IfErrors 0 +2
