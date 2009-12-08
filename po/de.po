@@ -98,8 +98,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-12-07 08:16+0100\n"
-"PO-Revision-Date: 2009-12-07 08:20+0100\n"
+"POT-Creation-Date: 2009-12-08 09:37+0100\n"
+"PO-Revision-Date: 2009-12-08 09:37+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -180,8 +180,9 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:890
 #: src/Buffer.cpp:2713 src/Buffer.cpp:2759 src/Buffer.cpp:2794
-#: src/LyXFunc.cpp:721 src/LyXFunc.cpp:860 src/LyXFunc.cpp:1034
-#: src/LyXVC.cpp:196 src/frontends/qt4/GuiClipboard.cpp:208
+#: src/LyXFunc.cpp:721 src/LyXFunc.cpp:860 src/LyXFunc.cpp:1036
+#: src/LyXFunc.cpp:1906 src/LyXVC.cpp:196
+#: src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1266
 #: src/frontends/qt4/GuiParagraph.cpp:69
 #: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1574
@@ -1602,8 +1603,8 @@ msgstr "Input"
 msgid "Verbatim"
 msgstr "Unformatiert"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:974
-#: src/insets/InsetInclude.cpp:980
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:975
+#: src/insets/InsetInclude.cpp:981
 msgid "Program Listing"
 msgstr "Programmlisting"
 
@@ -4711,7 +4712,7 @@ msgid "Author"
 msgstr "Autor"
 
 #: lib/layouts/aa.layout:73 lib/layouts/aa.layout:134
-#: lib/layouts/aapaper.layout:82 lib/layouts/dinbrief.layout:248
+#: lib/layouts/aapaper.layout:82 lib/layouts/dinbrief.layout:250
 #: lib/layouts/egs.layout:233 lib/layouts/elsarticle.layout:193
 #: lib/layouts/entcs.layout:59 lib/layouts/g-brief-en.layout:180
 #: lib/layouts/g-brief2.layout:716 lib/layouts/ijmpc.layout:48
@@ -4737,7 +4738,7 @@ msgstr "Post"
 #: lib/layouts/aa.layout:82 lib/layouts/aa.layout:277
 #: lib/layouts/aapaper.layout:94 lib/layouts/aapaper.layout:182
 #: lib/layouts/aastex.layout:106 lib/layouts/aastex.layout:231
-#: lib/layouts/beamer.layout:860 lib/layouts/dinbrief.layout:150
+#: lib/layouts/beamer.layout:860 lib/layouts/dinbrief.layout:152
 #: lib/layouts/egs.layout:466 lib/layouts/foils.layout:140
 #: lib/layouts/g-brief-en.layout:189 lib/layouts/g-brief2.layout:801
 #: lib/layouts/kluwer.layout:141 lib/layouts/powerdot.layout:86
@@ -5778,16 +5779,16 @@ msgstr "Springerzug"
 msgid "KnightMove:"
 msgstr "Springerzug:"
 
-#: lib/layouts/dinbrief.layout:26
+#: lib/layouts/dinbrief.layout:28
 msgid "DinBrief"
 msgstr "DinBrief"
 
-#: lib/layouts/dinbrief.layout:45 lib/layouts/heb-letter.layout:15
+#: lib/layouts/dinbrief.layout:47 lib/layouts/heb-letter.layout:15
 #: lib/layouts/stdletter.inc:35
 msgid "Send To Address"
 msgstr "Empfänger-Adresse"
 
-#: lib/layouts/dinbrief.layout:47 lib/layouts/elsart.layout:138
+#: lib/layouts/dinbrief.layout:49 lib/layouts/elsart.layout:138
 #: lib/layouts/g-brief-de.layout:185 lib/layouts/g-brief-en.layout:185
 #: lib/layouts/g-brief2.layout:727 lib/layouts/revtex.layout:128
 #: lib/layouts/revtex4.layout:181 lib/layouts/scrlettr.layout:142
@@ -5796,118 +5797,118 @@ msgstr "Empfänger-Adresse"
 msgid "Address:"
 msgstr "Adresse:"
 
-#: lib/layouts/dinbrief.layout:59 lib/layouts/heb-letter.layout:10
+#: lib/layouts/dinbrief.layout:61 lib/layouts/heb-letter.layout:10
 #: lib/layouts/stdletter.inc:24
 msgid "My Address"
 msgstr "Absender-Adresse"
 
-#: lib/layouts/dinbrief.layout:61 lib/layouts/scrlttr2.layout:177
+#: lib/layouts/dinbrief.layout:63 lib/layouts/scrlttr2.layout:177
 msgid "Sender Address:"
 msgstr "Absenderadresse:"
 
-#: lib/layouts/dinbrief.layout:69
+#: lib/layouts/dinbrief.layout:71
 msgid "Return address"
 msgstr "Rücksende-Adresse"
 
-#: lib/layouts/dinbrief.layout:71 lib/layouts/scrlettr.layout:170
+#: lib/layouts/dinbrief.layout:73 lib/layouts/scrlettr.layout:170
 #: lib/layouts/scrlttr2.layout:249
 msgid "Backaddress:"
 msgstr "Rücksende-Adresse:"
 
-#: lib/layouts/dinbrief.layout:79
+#: lib/layouts/dinbrief.layout:81
 msgid "Postal comment"
 msgstr "Postvermerk"
 
-#: lib/layouts/dinbrief.layout:81
+#: lib/layouts/dinbrief.layout:83
 msgid "Postal Remark:"
 msgstr "Postvermerk:"
 
-#: lib/layouts/dinbrief.layout:86
+#: lib/layouts/dinbrief.layout:88
 msgid "Handling"
 msgstr "Handhabung"
 
-#: lib/layouts/dinbrief.layout:88
+#: lib/layouts/dinbrief.layout:90
 msgid "Handling:"
 msgstr "Zusatz:"
 
-#: lib/layouts/dinbrief.layout:92 lib/layouts/g-brief-en.layout:103
+#: lib/layouts/dinbrief.layout:94 lib/layouts/g-brief-en.layout:103
 #: lib/layouts/g-brief2.layout:758
 msgid "YourRef"
 msgstr "Ihr Zeichen"
 
-#: lib/layouts/dinbrief.layout:94 lib/layouts/scrlettr.layout:205
+#: lib/layouts/dinbrief.layout:96 lib/layouts/scrlettr.layout:205
 #: lib/layouts/scrlttr2.layout:289
 msgid "Your ref.:"
 msgstr "Ihr Zeichen:"
 
-#: lib/layouts/dinbrief.layout:98 lib/layouts/g-brief-en.layout:96
+#: lib/layouts/dinbrief.layout:100 lib/layouts/g-brief-en.layout:96
 #: lib/layouts/g-brief2.layout:737
 msgid "MyRef"
 msgstr "Mein Zeichen"
 
-#: lib/layouts/dinbrief.layout:100 lib/layouts/scrlettr.layout:226
+#: lib/layouts/dinbrief.layout:102 lib/layouts/scrlettr.layout:226
 #: lib/layouts/scrlttr2.layout:313
 msgid "Our ref.:"
 msgstr "Unser Zeichen:"
 
-#: lib/layouts/dinbrief.layout:104
+#: lib/layouts/dinbrief.layout:106
 msgid "Writer"
 msgstr "Sachbearbeiter"
 
-#: lib/layouts/dinbrief.layout:106
+#: lib/layouts/dinbrief.layout:108
 msgid "Writer:"
 msgstr "Sachbearbeiter:"
 
-#: lib/layouts/dinbrief.layout:110 lib/layouts/g-brief-en.layout:54
+#: lib/layouts/dinbrief.layout:112 lib/layouts/g-brief-en.layout:54
 #: lib/layouts/g-brief2.layout:892 lib/layouts/scrlettr.layout:132
 #: lib/layouts/scrlttr2.layout:165 lib/layouts/stdletter.inc:71
 msgid "Signature"
 msgstr "Unterschrift"
 
-#: lib/layouts/dinbrief.layout:112 lib/layouts/g-brief-de.layout:57
+#: lib/layouts/dinbrief.layout:114 lib/layouts/g-brief-de.layout:57
 #: lib/layouts/g-brief-en.layout:57 lib/layouts/g-brief2.layout:902
 #: lib/layouts/scrlettr.layout:135 lib/layouts/scrlttr2.layout:169
 #: lib/layouts/stdletter.inc:83
 msgid "Signature:"
 msgstr "Unterschrift:"
 
-#: lib/layouts/dinbrief.layout:117
+#: lib/layouts/dinbrief.layout:119
 msgid "Bottomtext"
 msgstr "Fußzeile"
 
-#: lib/layouts/dinbrief.layout:119
+#: lib/layouts/dinbrief.layout:121
 msgid "Bottom text:"
 msgstr "Fusszeile(n):"
 
-#: lib/layouts/dinbrief.layout:127
+#: lib/layouts/dinbrief.layout:129
 msgid "Area code"
 msgstr "Vorwahl"
 
-#: lib/layouts/dinbrief.layout:129
+#: lib/layouts/dinbrief.layout:131
 msgid "Area Code:"
 msgstr "Vorwahl:"
 
-#: lib/layouts/dinbrief.layout:133 lib/layouts/scrlettr.layout:146
+#: lib/layouts/dinbrief.layout:135 lib/layouts/scrlettr.layout:146
 #: lib/layouts/scrlttr2.layout:181 lib/layouts/stdletter.inc:126
 msgid "Telephone"
 msgstr "Telefon"
 
-#: lib/layouts/dinbrief.layout:135 lib/layouts/scrlettr.layout:149
+#: lib/layouts/dinbrief.layout:137 lib/layouts/scrlettr.layout:149
 #: lib/layouts/stdletter.inc:129
 msgid "Telephone:"
 msgstr "Telefon:"
 
-#: lib/layouts/dinbrief.layout:140 lib/layouts/scrlettr.layout:181
+#: lib/layouts/dinbrief.layout:142 lib/layouts/scrlettr.layout:181
 #: lib/layouts/scrlttr2.layout:261 lib/layouts/stdletter.inc:119
 msgid "Location"
 msgstr "Adresszusatz"
 
-#: lib/layouts/dinbrief.layout:142 lib/layouts/scrlettr.layout:184
+#: lib/layouts/dinbrief.layout:144 lib/layouts/scrlettr.layout:184
 #: lib/layouts/scrlttr2.layout:265 lib/layouts/stdletter.inc:122
 msgid "Location:"
 msgstr "Adresszusatz:"
 
-#: lib/layouts/dinbrief.layout:152 lib/layouts/g-brief-de.layout:192
+#: lib/layouts/dinbrief.layout:154 lib/layouts/g-brief-de.layout:192
 #: lib/layouts/g-brief-en.layout:192 lib/layouts/g-brief2.layout:811
 #: lib/layouts/revtex.layout:108 lib/layouts/revtex4.layout:139
 #: lib/layouts/scrlettr.layout:163 lib/layouts/scrlttr2.layout:241
@@ -5915,191 +5916,191 @@ msgstr "Adresszusatz:"
 msgid "Date:"
 msgstr "Datum:"
 
-#: lib/layouts/dinbrief.layout:157 lib/layouts/scrlettr.layout:195
+#: lib/layouts/dinbrief.layout:159 lib/layouts/scrlettr.layout:195
 #: lib/layouts/scrlttr2.layout:277 lib/layouts/scrclass.inc:169
 msgid "Subject"
 msgstr "Betreff"
 
-#: lib/layouts/dinbrief.layout:159 lib/layouts/scrlettr.layout:198
+#: lib/layouts/dinbrief.layout:161 lib/layouts/scrlettr.layout:198
 #: lib/layouts/scrlttr2.layout:281
 msgid "Subject:"
 msgstr "Betreff:"
 
-#: lib/layouts/dinbrief.layout:173 lib/layouts/g-brief-en.layout:205
+#: lib/layouts/dinbrief.layout:175 lib/layouts/g-brief-en.layout:205
 #: lib/layouts/g-brief2.layout:844 lib/layouts/scrlettr.layout:60
 #: lib/layouts/scrlttr2.layout:92 lib/layouts/stdletter.inc:49
 msgid "Opening"
 msgstr "Anrede"
 
-#: lib/layouts/dinbrief.layout:177 lib/layouts/g-brief-de.layout:210
+#: lib/layouts/dinbrief.layout:179 lib/layouts/g-brief-de.layout:210
 #: lib/layouts/g-brief-en.layout:210 lib/layouts/g-brief2.layout:856
 #: lib/layouts/scrlttr2.layout:103 lib/layouts/stdletter.inc:62
 msgid "Opening:"
 msgstr "Anrede:"
 
-#: lib/layouts/dinbrief.layout:189 lib/layouts/g-brief-en.layout:231
+#: lib/layouts/dinbrief.layout:191 lib/layouts/g-brief-en.layout:231
 #: lib/layouts/g-brief2.layout:866 lib/layouts/scrlettr.layout:70
 #: lib/layouts/scrlttr2.layout:112 lib/layouts/stdletter.inc:92
 msgid "Closing"
 msgstr "Grußformel"
 
-#: lib/layouts/dinbrief.layout:191 lib/layouts/g-brief-de.layout:236
+#: lib/layouts/dinbrief.layout:193 lib/layouts/g-brief-de.layout:236
 #: lib/layouts/g-brief-en.layout:236 lib/layouts/g-brief2.layout:877
 #: lib/layouts/scrlttr2.layout:116 lib/layouts/stdletter.inc:95
 msgid "Closing:"
 msgstr "Grußformel:"
 
-#: lib/layouts/dinbrief.layout:197 lib/layouts/stdletter.inc:111
+#: lib/layouts/dinbrief.layout:199 lib/layouts/stdletter.inc:111
 msgid "encl"
 msgstr "Anlagen"
 
-#: lib/layouts/dinbrief.layout:199 lib/layouts/scrlettr.layout:108
+#: lib/layouts/dinbrief.layout:201 lib/layouts/scrlettr.layout:108
 #: lib/layouts/scrlttr2.layout:139 lib/layouts/stdletter.inc:114
 msgid "encl:"
 msgstr "Anlagen:"
 
-#: lib/layouts/dinbrief.layout:212 lib/layouts/g-brief-en.layout:222
+#: lib/layouts/dinbrief.layout:214 lib/layouts/g-brief-en.layout:222
 #: lib/layouts/g-brief2.layout:933 lib/layouts/stdletter.inc:99
 msgid "cc"
 msgstr "Kopie"
 
-#: lib/layouts/dinbrief.layout:214 lib/layouts/g-brief-de.layout:227
+#: lib/layouts/dinbrief.layout:216 lib/layouts/g-brief-de.layout:227
 #: lib/layouts/g-brief-en.layout:227 lib/layouts/g-brief2.layout:944
 #: lib/layouts/scrlettr.layout:101 lib/layouts/scrlttr2.layout:132
 #: lib/layouts/stdletter.inc:102
 msgid "cc:"
 msgstr "Kopie:"
 
-#: lib/layouts/dinbrief.layout:218 lib/layouts/scrlettr.layout:81
+#: lib/layouts/dinbrief.layout:220 lib/layouts/scrlettr.layout:81
 #: lib/layouts/scrlttr2.layout:120
 msgid "PS"
 msgstr "PS"
 
-#: lib/layouts/dinbrief.layout:220 lib/layouts/scrlttr2.layout:124
+#: lib/layouts/dinbrief.layout:222 lib/layouts/scrlttr2.layout:124
 msgid "Post Scriptum:"
 msgstr "Postscriptum:"
 
-#: lib/layouts/dinbrief.layout:233 lib/layouts/scrlttr2.layout:173
+#: lib/layouts/dinbrief.layout:235 lib/layouts/scrlttr2.layout:173
 msgid "SenderAddress"
 msgstr "Absender-Adresse"
 
-#: lib/layouts/dinbrief.layout:238 lib/layouts/scrlettr.layout:167
+#: lib/layouts/dinbrief.layout:240 lib/layouts/scrlettr.layout:167
 #: lib/layouts/scrlttr2.layout:245
 msgid "Backaddress"
 msgstr "Rücksende-Adresse"
 
-#: lib/layouts/dinbrief.layout:243 lib/layouts/g-brief-de.layout:89
+#: lib/layouts/dinbrief.layout:245 lib/layouts/g-brief-de.layout:89
 msgid "RetourAdresse"
 msgstr "Rücksende-Adresse"
 
-#: lib/layouts/dinbrief.layout:253 lib/layouts/g-brief-de.layout:180
+#: lib/layouts/dinbrief.layout:255 lib/layouts/g-brief-de.layout:180
 msgid "Adresse"
 msgstr "Adresse"
 
-#: lib/layouts/dinbrief.layout:258 lib/layouts/g-brief-de.layout:173
+#: lib/layouts/dinbrief.layout:260 lib/layouts/g-brief-de.layout:173
 msgid "Postvermerk"
 msgstr "Postvermerk"
 
-#: lib/layouts/dinbrief.layout:263 lib/layouts/g-brief-de.layout:68
+#: lib/layouts/dinbrief.layout:265 lib/layouts/g-brief-de.layout:68
 msgid "Zusatz"
 msgstr "Zusatz"
 
-#: lib/layouts/dinbrief.layout:268 lib/layouts/g-brief-de.layout:103
+#: lib/layouts/dinbrief.layout:270 lib/layouts/g-brief-de.layout:103
 msgid "IhrZeichen"
 msgstr "Ihr Zeichen"
 
-#: lib/layouts/dinbrief.layout:273 lib/layouts/g-brief-en.layout:110
+#: lib/layouts/dinbrief.layout:275 lib/layouts/g-brief-en.layout:110
 #: lib/layouts/g-brief2.layout:780
 msgid "YourMail"
 msgstr "Ihr Brief"
 
-#: lib/layouts/dinbrief.layout:278 lib/layouts/g-brief-de.layout:110
+#: lib/layouts/dinbrief.layout:280 lib/layouts/g-brief-de.layout:110
 msgid "IhrSchreiben"
 msgstr "Ihr Schreiben"
 
-#: lib/layouts/dinbrief.layout:283 lib/layouts/g-brief-de.layout:96
+#: lib/layouts/dinbrief.layout:285 lib/layouts/g-brief-de.layout:96
 msgid "MeinZeichen"
 msgstr "Mein Zeichen"
 
-#: lib/layouts/dinbrief.layout:288 lib/layouts/g-brief-de.layout:54
+#: lib/layouts/dinbrief.layout:290 lib/layouts/g-brief-de.layout:54
 msgid "Unterschrift"
 msgstr "Unterschrift"
 
-#: lib/layouts/dinbrief.layout:293 lib/layouts/g-brief-en.layout:117
+#: lib/layouts/dinbrief.layout:295 lib/layouts/g-brief-en.layout:117
 msgid "Phone"
 msgstr "Telefon"
 
-#: lib/layouts/dinbrief.layout:298 lib/layouts/g-brief-de.layout:117
+#: lib/layouts/dinbrief.layout:300 lib/layouts/g-brief-de.layout:117
 msgid "Telefon"
 msgstr "Telefon"
 
-#: lib/layouts/dinbrief.layout:303 lib/layouts/scrlettr.layout:153
+#: lib/layouts/dinbrief.layout:305 lib/layouts/scrlettr.layout:153
 #: lib/layouts/scrlttr2.layout:229
 msgid "Place"
 msgstr "Ort"
 
-#: lib/layouts/dinbrief.layout:308
+#: lib/layouts/dinbrief.layout:310
 msgid "Stadt"
 msgstr "Stadt"
 
-#: lib/layouts/dinbrief.layout:313 lib/layouts/g-brief-en.layout:75
+#: lib/layouts/dinbrief.layout:315 lib/layouts/g-brief-en.layout:75
 msgid "Town"
 msgstr "Stadt"
 
-#: lib/layouts/dinbrief.layout:318 lib/layouts/g-brief-de.layout:75
+#: lib/layouts/dinbrief.layout:320 lib/layouts/g-brief-de.layout:75
 msgid "Ort"
 msgstr "Ort"
 
-#: lib/layouts/dinbrief.layout:323 lib/layouts/g-brief-de.layout:189
+#: lib/layouts/dinbrief.layout:325 lib/layouts/g-brief-de.layout:189
 msgid "Datum"
 msgstr "Datum"
 
-#: lib/layouts/dinbrief.layout:328 lib/layouts/g-brief-en.layout:196
+#: lib/layouts/dinbrief.layout:330 lib/layouts/g-brief-en.layout:196
 #: lib/layouts/g-brief2.layout:821
 msgid "Reference"
 msgstr "Referenz"
 
-#: lib/layouts/dinbrief.layout:333 lib/layouts/g-brief-de.layout:196
+#: lib/layouts/dinbrief.layout:335 lib/layouts/g-brief-de.layout:196
 msgid "Betreff"
 msgstr "Betreff"
 
-#: lib/layouts/dinbrief.layout:338 lib/layouts/g-brief-de.layout:205
+#: lib/layouts/dinbrief.layout:340 lib/layouts/g-brief-de.layout:205
 msgid "Anrede"
 msgstr "Anrede"
 
-#: lib/layouts/dinbrief.layout:343 lib/layouts/g-brief-en.layout:17
+#: lib/layouts/dinbrief.layout:345 lib/layouts/g-brief-en.layout:17
 #: lib/layouts/g-brief2.layout:39 lib/layouts/iopart.layout:117
 #: lib/layouts/scrlettr.layout:40
 msgid "Letter"
 msgstr "Brieftext"
 
-#: lib/layouts/dinbrief.layout:348 lib/layouts/g-brief-de.layout:17
+#: lib/layouts/dinbrief.layout:350 lib/layouts/g-brief-de.layout:17
 msgid "Brieftext"
 msgstr "Brieftext"
 
-#: lib/layouts/dinbrief.layout:353 lib/layouts/g-brief-de.layout:231
+#: lib/layouts/dinbrief.layout:355 lib/layouts/g-brief-de.layout:231
 msgid "Gruss"
 msgstr "Gruß"
 
-#: lib/layouts/dinbrief.layout:357
+#: lib/layouts/dinbrief.layout:359
 msgid "ps"
 msgstr "PS"
 
-#: lib/layouts/dinbrief.layout:362 lib/layouts/g-brief-en.layout:214
+#: lib/layouts/dinbrief.layout:364 lib/layouts/g-brief-en.layout:214
 #: lib/layouts/g-brief2.layout:912
 msgid "Encl."
 msgstr "Anlagen"
 
-#: lib/layouts/dinbrief.layout:367 lib/layouts/g-brief-de.layout:214
+#: lib/layouts/dinbrief.layout:369 lib/layouts/g-brief-de.layout:214
 msgid "Anlagen"
 msgstr "Anlagen"
 
-#: lib/layouts/dinbrief.layout:372 lib/layouts/scrlettr.layout:91
+#: lib/layouts/dinbrief.layout:374 lib/layouts/scrlettr.layout:91
 #: lib/layouts/scrlttr2.layout:128
 msgid "CC"
 msgstr "Kopie"
 
-#: lib/layouts/dinbrief.layout:377 lib/layouts/g-brief-de.layout:222
+#: lib/layouts/dinbrief.layout:379 lib/layouts/g-brief-de.layout:222
 msgid "Verteiler"
 msgstr "Verteiler"
 
@@ -6568,7 +6569,7 @@ msgstr "Brieftext:"
 #: lib/layouts/g-brief-de.layout:35 lib/layouts/g-brief-en.layout:35
 #: lib/layouts/g-brief2.layout:58 lib/layouts/scrlettr.layout:112
 #: lib/layouts/scrlttr2.layout:143 lib/layouts/agu_stdtitle.inc:184
-#: src/mathed/MathMacroTemplate.cpp:482
+#: src/mathed/MathMacroTemplate.cpp:486
 msgid "Name"
 msgstr "Name"
 
@@ -14947,7 +14948,7 @@ msgid "Table (CSV)"
 msgstr "Tabelle (CSV)"
 
 #: lib/configure.py:351 src/frontends/qt4/GuiView.cpp:883
-#: src/frontends/qt4/GuiView.cpp:884 src/mathed/MathMacroTemplate.cpp:538
+#: src/frontends/qt4/GuiView.cpp:884 src/mathed/MathMacroTemplate.cpp:542
 msgid "LyX"
 msgstr "LyX"
 
@@ -15219,7 +15220,7 @@ msgstr ""
 msgid "Overwrite modified file?"
 msgstr "Modifizierte Datei überschreiben?"
 
-#: src/Buffer.cpp:890 src/Exporter.cpp:49 src/LyXFunc.cpp:1034
+#: src/Buffer.cpp:890 src/Exporter.cpp:49 src/LyXFunc.cpp:1036
 #: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1574
 #: src/frontends/qt4/GuiView.cpp:1766
 msgid "&Overwrite"
@@ -16175,7 +16176,7 @@ msgstr ""
 msgid "Undefined flex inset"
 msgstr "Undefinierter Zeichenstil"
 
-#: src/Exporter.cpp:44 src/LyXFunc.cpp:1030
+#: src/Exporter.cpp:44 src/LyXFunc.cpp:1032
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -16186,7 +16187,7 @@ msgstr ""
 "\n"
 "Möchten Sie diese Datei überschreiben?"
 
-#: src/Exporter.cpp:47 src/LyXFunc.cpp:1033
+#: src/Exporter.cpp:47 src/LyXFunc.cpp:1035
 msgid "Overwrite file?"
 msgstr "Datei überschreiben?"
 
@@ -16299,7 +16300,7 @@ msgstr "  Nummer %1$s"
 msgid "Cannot view file"
 msgstr "Die Datei kann nicht betrachtet werden."
 
-#: src/Format.cpp:254 src/Format.cpp:325 src/LyXFunc.cpp:1204
+#: src/Format.cpp:254 src/Format.cpp:325 src/LyXFunc.cpp:1206
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "Die Datei existiert nicht: %1$s"
@@ -16747,61 +16748,81 @@ msgstr "Gespeichertes Dokument wiederherstellen?"
 msgid "&Revert"
 msgstr "&Wiederherstellen"
 
-#: src/LyXFunc.cpp:1071 src/Text3.cpp:1612
+#: src/LyXFunc.cpp:1073 src/Text3.cpp:1612
 msgid "Missing argument"
 msgstr "Fehlendes Argument"
 
-#: src/LyXFunc.cpp:1083
+#: src/LyXFunc.cpp:1085
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Hilfe-Datei %1$s wird geöffnet..."
 
-#: src/LyXFunc.cpp:1135 src/VCBackend.cpp:58 src/VCBackend.cpp:592
-#: src/VCBackend.cpp:658 src/VCBackend.cpp:664 src/VCBackend.cpp:685
+#: src/LyXFunc.cpp:1137 src/VCBackend.cpp:61 src/VCBackend.cpp:595
+#: src/VCBackend.cpp:661 src/VCBackend.cpp:667 src/VCBackend.cpp:688
 msgid "Revision control error."
 msgstr "Fehler der Versionskontrolle."
 
-#: src/LyXFunc.cpp:1136
+#: src/LyXFunc.cpp:1138
 msgid "Error when setting the locking property."
 msgstr "Fehler beim Setzen der Dateisperrung."
 
-#: src/LyXFunc.cpp:1357
+#: src/LyXFunc.cpp:1359
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "Öffne Unterdokument %1$s..."
 
-#: src/LyXFunc.cpp:1519
+#: src/LyXFunc.cpp:1521
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Dokument-Standardeinstellungen gespeichert in %1$s"
 
-#: src/LyXFunc.cpp:1522
+#: src/LyXFunc.cpp:1524
 msgid "Unable to save document defaults"
 msgstr "Die Dokument-Standardeinstellungen können nicht gespeichert werden"
 
-#: src/LyXFunc.cpp:1678 src/LyXVC.cpp:151
+#: src/LyXFunc.cpp:1680 src/LyXVC.cpp:151
 msgid "LyX VC: Log Message"
 msgstr "LyX VK: Protokollmeldung"
 
-#: src/LyXFunc.cpp:1687
+#: src/LyXFunc.cpp:1689
 msgid "Directory is not accessible."
 msgstr "Das Verzeichnis ist nicht lesbar."
 
-#: src/LyXFunc.cpp:1879
+#: src/LyXFunc.cpp:1888
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s neu geladen."
 
-#: src/LyXFunc.cpp:1881
+#: src/LyXFunc.cpp:1890
 #, c-format
 msgid "Could not reload document %1$s"
 msgstr "Kann Dokument %1$s nicht neu laden"
 
-#: src/LyXFunc.cpp:1918
+#: src/LyXFunc.cpp:1902
+#, c-format
+msgid ""
+"Document \n"
+"%1$s\n"
+" has been externally modified. Reload now? Any local changes will be lost."
+msgstr ""
+"Das Dokument\n"
+"%1$s\n"
+"wurde extern verändert. Wollen Sie es erneut laden?\n"
+"Alle lokalen Veränderungen werden dann verworfen."
+
+#: src/LyXFunc.cpp:1905
+msgid "Reload externally changed document?"
+msgstr "Extern geändertes Dokument neu laden?"
+
+#: src/LyXFunc.cpp:1906 src/buffer_funcs.cpp:75
+msgid "&Reload"
+msgstr "Ne&u laden"
+
+#: src/LyXFunc.cpp:1946
 msgid "Welcome to LyX!"
 msgstr "Willkommen bei LyX!"
 
-#: src/LyXFunc.cpp:1939
+#: src/LyXFunc.cpp:1967
 msgid "Converting document to new document class..."
 msgstr "Das Dokument wird an die neue Dokumentklasse angepasst..."
 
@@ -17591,7 +17612,7 @@ msgstr "Nichts zu indizieren!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Es kann nicht mehr als ein Absatz indiziert werden!"
 
-#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1523
+#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1552
 msgid "Math editor mode"
 msgstr "Mathe-Editor-Modus"
 
@@ -17656,7 +17677,7 @@ msgstr ""
 "\n"
 "%1$s."
 
-#: src/VCBackend.cpp:59
+#: src/VCBackend.cpp:62
 #, c-format
 msgid ""
 "Some problem occured while running the command:\n"
@@ -17665,12 +17686,12 @@ msgstr ""
 "Bei der Ausführung des Befehls\n"
 "'%1$s' ist ein Fehler aufgetreten."
 
-#: src/VCBackend.cpp:534 src/VCBackend.cpp:581 src/VCBackend.cpp:675
-#: src/VCBackend.cpp:712 src/VCBackend.cpp:762
+#: src/VCBackend.cpp:537 src/VCBackend.cpp:584 src/VCBackend.cpp:678
+#: src/VCBackend.cpp:715 src/VCBackend.cpp:771
 msgid "Error: Could not generate logfile."
 msgstr "Fehler: Kann Logdatei nicht erstellen!"
 
-#: src/VCBackend.cpp:593
+#: src/VCBackend.cpp:596
 msgid ""
 "Error when committing to repository.\n"
 "You have to manually resolve the problem.\n"
@@ -17681,7 +17702,7 @@ msgstr ""
 "LyX wird das Dokument neu laden, nachdem\n"
 "Sie OK gedrückt haben."
 
-#: src/VCBackend.cpp:659
+#: src/VCBackend.cpp:662
 msgid ""
 "Error when acquiring write lock.\n"
 "Most probably another user is editing\n"
@@ -17693,7 +17714,7 @@ msgstr ""
 "anderer Benutzer das Dokument.\n"
 "Überprüfen Sie auch den Zugang zum Repositorium."
 
-#: src/VCBackend.cpp:665
+#: src/VCBackend.cpp:668
 msgid ""
 "Error when releasing write lock.\n"
 "Check the access to the repository."
@@ -17701,7 +17722,7 @@ msgstr ""
 "Fehler beim Aufheben der Schreibsperre.\n"
 "Überprüfen Sie den Zugang zum Repositorium."
 
-#: src/VCBackend.cpp:686
+#: src/VCBackend.cpp:689
 #, c-format
 msgid ""
 "Error when updating from repository.\n"
@@ -17717,7 +17738,7 @@ msgstr ""
 "LyX wird das Dokument neu zu laden versuchen,\n"
 "nachdem Sie OK gedrückt haben."
 
-#: src/VCBackend.cpp:722
+#: src/VCBackend.cpp:725
 #, c-format
 msgid ""
 "There were detected changes in the working directory:\n"
@@ -17735,31 +17756,35 @@ msgstr ""
 "\n"
 "Fortfahren?"
 
-#: src/VCBackend.cpp:727
+#: src/VCBackend.cpp:730 src/VCBackend.cpp:734
 msgid "Changes detected"
 msgstr "Änderungen gefunden"
 
-#: src/VCBackend.cpp:728
+#: src/VCBackend.cpp:731 src/VCBackend.cpp:735
 msgid "&Yes"
 msgstr "&Ja"
 
-#: src/VCBackend.cpp:728
+#: src/VCBackend.cpp:731 src/VCBackend.cpp:735
 msgid "&No"
 msgstr "&Nein"
 
-#: src/VCBackend.cpp:788
+#: src/VCBackend.cpp:731
+msgid "View &Log ..."
+msgstr "&Logdatei ansehen ..."
+
+#: src/VCBackend.cpp:797
 msgid "VCN File Locking"
 msgstr "Dateisperrung der Versionskontrolle"
 
-#: src/VCBackend.cpp:789
+#: src/VCBackend.cpp:798
 msgid "Locking property unset."
 msgstr "Dateisperrung deaktiviert."
 
-#: src/VCBackend.cpp:789 src/VCBackend.cpp:793
+#: src/VCBackend.cpp:798 src/VCBackend.cpp:802
 msgid "Locking property set."
 msgstr "Dateisperrung aktiviert."
 
-#: src/VCBackend.cpp:790
+#: src/VCBackend.cpp:799
 msgid "Do not forget to commit the locking property into the repository."
 msgstr ""
 "Um wirksam zu werden, muss die Datei-Sperrung ins Repositorium übermittelt "
@@ -17802,10 +17827,6 @@ msgstr ""
 #: src/buffer_funcs.cpp:74
 msgid "Reload saved document?"
 msgstr "Gespeichertes Dokument neu laden?"
-
-#: src/buffer_funcs.cpp:75
-msgid "&Reload"
-msgstr "Ne&u laden"
 
 #: src/buffer_funcs.cpp:75
 msgid "&Keep Changes"
@@ -19934,7 +19955,7 @@ msgstr "LyX-1.6.x-Dokumente (*.lyx16)"
 
 #: src/frontends/qt4/GuiView.cpp:1410 src/frontends/qt4/Validator.cpp:182
 #: src/insets/ExternalSupport.cpp:367 src/insets/InsetBibtex.cpp:286
-#: src/insets/InsetGraphics.cpp:597 src/insets/InsetInclude.cpp:477
+#: src/insets/InsetGraphics.cpp:598 src/insets/InsetInclude.cpp:477
 msgid "Invalid filename"
 msgstr "Ungültiger Dateiname"
 
@@ -20263,7 +20284,7 @@ msgid "List of Changes"
 msgstr "Liste der Änderungen"
 
 #: src/insets/ExternalSupport.cpp:368 src/insets/InsetBibtex.cpp:287
-#: src/insets/InsetGraphics.cpp:598 src/insets/InsetInclude.cpp:478
+#: src/insets/InsetGraphics.cpp:599 src/insets/InsetInclude.cpp:478
 msgid ""
 "The following filename is likely to cause trouble when running the exported "
 "file through LaTeX: "
@@ -20523,7 +20544,7 @@ msgstr "Fußnoten-Einfügung geöffnet"
 msgid "footnote"
 msgstr "Fußnote"
 
-#: src/insets/InsetGraphics.cpp:475 src/insets/InsetInclude.cpp:559
+#: src/insets/InsetGraphics.cpp:476 src/insets/InsetInclude.cpp:559
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -20534,12 +20555,12 @@ msgstr ""
 "%1$s\n"
 "konnte nicht in das temporäre Verzeichnis kopiert werden."
 
-#: src/insets/InsetGraphics.cpp:708
+#: src/insets/InsetGraphics.cpp:709
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr "Es ist keine Konvertierung von %1$s notwendig"
 
-#: src/insets/InsetGraphics.cpp:802
+#: src/insets/InsetGraphics.cpp:803
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Grafikdatei: %1$s"
@@ -21198,7 +21219,7 @@ msgstr " Zeichenketten wurden ersetzt."
 msgid " Macro: %1$s: "
 msgstr " Makro: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1431
+#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1460
 #: src/mathed/InsetMathSplit.cpp:75 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -21237,25 +21258,25 @@ msgstr "Keine vertikale Linie zu löschen"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Unbekanntes Tabellenmerkmal '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1199 src/mathed/InsetMathHull.cpp:1207
+#: src/mathed/InsetMathHull.cpp:1228 src/mathed/InsetMathHull.cpp:1236
 msgid "No number"
 msgstr "Keine Nummer"
 
-#: src/mathed/InsetMathHull.cpp:1199 src/mathed/InsetMathHull.cpp:1207
+#: src/mathed/InsetMathHull.cpp:1228 src/mathed/InsetMathHull.cpp:1236
 msgid "Number"
 msgstr "Nummer"
 
-#: src/mathed/InsetMathHull.cpp:1404
+#: src/mathed/InsetMathHull.cpp:1433
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Die Anzahl der Zeilen in '%1$s' kann nicht geändert werden"
 
-#: src/mathed/InsetMathHull.cpp:1414
+#: src/mathed/InsetMathHull.cpp:1443
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Die Anzahl der Spalten in '%1$s' kann nicht geändert werden"
 
-#: src/mathed/InsetMathHull.cpp:1424
+#: src/mathed/InsetMathHull.cpp:1453
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Es können keine horizontalen Gitterlinien in '%1$s' hinzugefügt werden"
@@ -21272,15 +21293,15 @@ msgstr "Mathe-Textmodus betreten (textrm)"
 msgid "Standard[[mathref]]"
 msgstr "Standard"
 
-#: src/mathed/MathMacroTemplate.cpp:490
+#: src/mathed/MathMacroTemplate.cpp:494
 msgid "optional"
 msgstr "optional"
 
-#: src/mathed/MathMacroTemplate.cpp:533
+#: src/mathed/MathMacroTemplate.cpp:537
 msgid "TeX"
 msgstr "TeX"
 
-#: src/mathed/MathMacroTemplate.cpp:1210
+#: src/mathed/MathMacroTemplate.cpp:1228
 msgid "math macro"
 msgstr "Mathe-Makro"
 
