@@ -1,9 +1,17 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
 \textclass jbook
 \begin_preamble
+% Commands inserted by lyx2lyx for proper underlining
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
+\let\cite@rig\cite
+\newcommand{\b@xcite}[2][\%]{\def\def@pt{\%}\def\pas@pt{#1}
+  \mbox{\ifx\def@pt\pas@pt\cite@rig{#2}\else\cite@rig[#1]{#2}\fi}}
+\renewcommand{\underbar}[1]{{\let\cite\b@xcite\uline{#1}}}
+
 % DO NOT ALTER THIS PREAMBLE!!!
 %
 % This preamble is designed to ensure that the User's Guide prints
@@ -102,7 +110,7 @@
 \color #aa55ff
 \end_branch
 \secnumdepth 3
-\tocdepth 3
+\tocdepth 2
 \paragraph_separation indent
 \defskip medskip
 \quotes_language english
@@ -148,7 +156,7 @@ type "mailto:"
 \begin_inset Newline newline
 \end_inset
 
-第1.6.1版
+第1.6.x版
 \end_layout
 
 \begin_layout Standard
@@ -275,45 +283,7 @@ LyXの外観
 \noun off
 \color none
 他のアプリケーションと同様に、LyXには、ウインドウの上に見慣れたメニューバーがあります。その下には、プルダウンボックスと色々なボタンのついたツールバーがありま
-す。もちろん、垂直スクロールバーと文章を編集するためのワークエリアもあります。いちばん下のあたりには、一行のテキストを表示できる小さなウインドウがあります。これ
-は
-\family default
-\series default
-\shape default
-\size default
-\emph on
-\bar default
-\noun default
-\color inherit
-ミニバッファ
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-と呼ばれますが、実際はコマンドバッファです。
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-ミニバッファにコマンドを入力する必要がある場合には、
-\family sans
-
-\begin_inset Info
-type  "shortcut"
-arg   "command-execute"
-\end_inset
-
-
-\family default
-と打鍵してください。
+す。もちろん、垂直スクロールバーと、文章を編集するための作業領域もあります。
 \end_layout
 
 \begin_layout Standard
@@ -1764,6 +1734,17 @@ Shift+Tab
 を使うと、例えば、第2.5節を第3節にしたり第2.4.1節にしたりという風に、節の階層を変えることができます。
 \end_layout
 
+\begin_layout Standard
+ツールバーボタン
+\begin_inset Graphics
+	filename ../../images/bookmark-goto_0.png
+
+\end_inset
+
+は、文書中であなたが直近に変更を加えた部分に移動します。これは、例えば大きな文書中で、何かを探して文書の他の部分に動いたり、スクロールしたりした後に、元の編集箇
+所に戻りたいときに便利です。
+\end_layout
+
 \begin_layout Section
 入力補完
 \begin_inset CommandInset label
@@ -2701,9 +2682,9 @@ f
 \end_layout
 
 \begin_layout Standard
-
-\family sans
-Alt+
+『
+\emph on
+短絡キー
 \family roman
 \series medium
 \shape up
@@ -2712,22 +2693,16 @@ Alt+
 \bar no
 \noun off
 \color none
-キーには他の機能も割り付けられていますが、詳しくは
-\family default
+』説明書には、
+\family sans
 \series default
 \shape default
 \size default
-\emph on
+\emph default
 \bar default
 \noun default
 \color inherit
-Reference
-\emph default
-\color none
- 
-\emph on
-\color inherit
-manual
+Alt
 \family roman
 \series medium
 \shape up
@@ -2736,7 +2711,7 @@ manual
 \bar no
 \noun off
 \color none
-を参照してください。
+鍵に割り当てられているすべての機能が掲げてあります。
 \end_layout
 
 \end_deeper
@@ -3106,7 +3081,7 @@ Letter
 \bar default
 \noun default
 \color inherit
-拡張機能
+高度な機能篇
 \family roman
 \series medium
 \shape up
@@ -3115,7 +3090,7 @@ Letter
 \bar no
 \noun off
 \color none
-篇』の
+』の
 \family default
 \series default
 \shape default
@@ -3480,7 +3455,7 @@ TUGboat
 \bar no
 \noun off
 \color none
-ここではこれらの文書クラスをどのように使うかについての詳細は説明しません。
+ここではこれらの文書クラスをどのように使うかについての詳細は説明しません。取扱説明書
 \family default
 \series default
 \shape default
@@ -3491,7 +3466,7 @@ TUGboat
 \color inherit
 『
 \emph on
-Extended Editing
+高度な機能篇
 \family roman
 \series medium
 \shape up
@@ -3500,7 +3475,7 @@ Extended Editing
 \bar no
 \noun off
 \color none
-』取扱説明書にこのような標準的でないクラスについての説明があります。ここでは次にすべての文書クラスに共通する性質を説明します。
+』にこのような標準的でないクラスについての説明があります。ここでは次にすべての文書クラスに共通する性質を説明します。
 \end_layout
 
 \begin_layout Subsubsection
@@ -5177,7 +5152,7 @@ ptです。
 \bar no
 \noun off
 \color none
-文章全体ではなく、一つの段落だけに対して段落の分け方を変えることもできます。
+文章全体ではなく、一つの段落だけに対して段落の区切り方を変えることもできます。
 \family default
 \series default
 \shape default
@@ -5216,7 +5191,7 @@ ptです。
 \bar no
 \noun off
 \color none
-オプションを切り替えてください。段落が、行頭下げではなく余白で分けられている場合には、このボタンは無視されます（これを切り替えることによって、個別の段落を字下げ
+オプションを切り替えてください。段落が、行頭下げではなく余白で区切られている場合には、このボタンは無視されます（これを切り替えることによって、個別の段落を字下げ
 することはできません）。
 \end_layout
 
@@ -5383,14 +5358,14 @@ status collapsed
 \backslash
 begin{
 \emph on
-environment
+環境名
 \emph default
 } ...
  
 \backslash
 end{
 \emph on
-environment
+環境名
 \emph default
 }
 \family roman
@@ -8659,7 +8634,7 @@ LyXが項目の数を数えてラベルを自動的につけ、必要ならば�
 \bar default
 \noun default
 \color inherit
-説明書『拡張機能篇』を参照
+説明書『高度な機能篇』を参照
 \family roman
 \series medium
 \shape up
@@ -11428,7 +11403,7 @@ LyXコード
 \bar no
 \noun off
 \color none
-の目的はただ一つ、プログラムソースやシェルスクリプト、rcファイルなどのコードを写植することです。この環境は、タイプライタを使ったような文字列を生成する必要があ
+の目的はただ一つ、プログラムソースやシェルスクリプト、rcファイルなどのコードを植字することです。この環境は、タイプライタを使ったような文字列を生成する必要があ
 るような、非常に特別な場合にのみ使って下さい。
 \begin_inset Index
 status collapsed
@@ -16484,31 +16459,77 @@ status open
 編集\SpecialChar \menuseparator
 段落設定
 \family default
-ダイアログで変更することができます。選択肢は4つあります。
+ダイアログで変更することができます。選択肢は5つあります。
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
 両端揃え
+\family default
+（短絡キー
+\begin_inset Info
+type  "shortcut"
+arg   "paragraph-params \\align block"
+\end_inset
+
+）
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
 左揃え
+\family default
+（短絡キー
+\begin_inset Info
+type  "shortcut"
+arg   "paragraph-params \\align left"
+\end_inset
+
+）
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
 右揃え
+\family default
+（短絡キー
+\begin_inset Info
+type  "shortcut"
+arg   "paragraph-params \\align right"
+\end_inset
+
+）
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
 中央揃え
+\family default
+（短絡キー
+\begin_inset Info
+type  "shortcut"
+arg   "paragraph-params \\align center"
+\end_inset
+
+）
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+既定値
+\family default
+（短絡キー
+\begin_inset Info
+type  "shortcut"
+arg   "paragraph-params \\align default"
+\end_inset
+
+）
 \end_layout
 
 \begin_layout Standard
@@ -16907,8 +16928,8 @@ status collapsed
 \begin_inset Newline newline
 \end_inset
 
-一つのフォント寸法のみを定義して、それを伸縮するだけでいいと思われるかもしれませんが、よい品質を得るために、多くのフォントはいくつかのフォント寸法を定義していま
-す。大きいフォントにおいては、小さいフォントよりも細部の情報を必要とするので、これによって出力を改善することができます。
+すると、一つのフォント寸法のみを定義して、それを伸縮するだけでいいと思われるかもしれませんが、よい品質を得るために、多くのフォントはいくつかのフォント寸法を定義
+しています。大きいフォントにおいては、小さいフォントよりも細部の情報を必要とするので、これによって出力を改善することができます。
 \begin_inset Newline newline
 \end_inset
 
@@ -16926,7 +16947,7 @@ Type
 \begin_inset space ~
 \end_inset
 
-1 PostScript
+1
 \family default
 といった種類のフォントが、ベクターフォントになります。
 \end_layout
@@ -19541,7 +19562,9 @@ LyXを使った文書作成の基本的な操作については、だいたい�
 \bar default
 \noun default
 \color inherit
-、取扱説明書『拡張機能篇
+、取扱説明書『
+\emph on
+高度な機能篇
 \family roman
 \series medium
 \shape up
@@ -19774,33 +19797,10 @@ status collapsed
 .dvi
 \family default
 」です。このファイル型は「デバイス独立型」（DVI）と呼ばれ、ひじょうに高い可搬性を持っています。ひとつのコンピュータから他のコンピュータへ、何の変換も行うこと
-なしに移動することができるのです。このファイル形式が考案されたときには、これは当然のことではありませんでした。DVIは、プレビューや、PostScriptのよう
-な他の出力形式への中間形式として使用されます。
+なしに移動することができるのです。DVIは、プレビューや、PostScriptのような他の出力形式への中間形式として使用されます。
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\family roman
-\series bold
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-備考：
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
 DVI
 \family roman
 \series medium
@@ -19810,13 +19810,17 @@ DVI
 \bar no
 \noun off
 \color none
-ファイルは画像を含んでいるわけではなく、リンクが置かれているだけです。ですから、DVIと一緒に画像ファイルも持ち出すことを忘れないでください。
-\end_layout
-
-\end_inset
-
-この性質は、DVIを見るときにコンピュータを遅くしてしまうかもしれません。DVIをスクロールしている最中に、DVIビューアは、画像を表示するため画像を変換しなく
-てはならないからです。ですから、画像を多用したファイルの場合は、PDFを使用することをおすすめします。
+ファイルは、画像を内部に保持してはおらず、画像にリンクを張るだけです。ですから、DVIと一緒に画像ファイルも持ち出すことを忘れないでください。
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+DVIをスクロールする際には、DVIビューアは、画像を表示する前にバックグラウンドで変換しなくてはならないので、DVIを見る際にはコンピュータが遅くなるかもしれ
+ません。ですから、画像を多用したファイルの場合は、PDFを使用することをおすすめします。
 \end_layout
 
 \begin_layout Standard
@@ -19930,8 +19934,8 @@ Pdf@PDF
 \family typewriter
 Adobe
 \family default
-がPostScriptの派生として開発したものです。PDFは、PostScriptよりも圧縮されていて、ずっと少ないコマンドしか用いません。「可搬」の名の示す通
-り、PDFはどのコンピュータでも処理することができ、印字もまったく同じように出力することができます。
+がPostScriptの派生として開発したものです。PDFは、PostScriptよりも圧縮されていて、少ないコマンドしか用いません。「可搬」の名の示す通り、P
+DFはどのコンピュータでも処理することができ、印字もまったく同じように出力することができます。
 \end_layout
 
 \begin_layout Standard
@@ -20497,11 +20501,40 @@ LyXには、
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="3">
+<lyxtabular version="3" rows="5" columns="3">
 <features>
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
+<row interlinespace="3mm">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+名称
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+出力
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+挿入方法
+\end_layout
+
+\end_inset
+</cell>
+</row>
 <row interlinespace="3mm">
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -20525,7 +20558,7 @@ LyXには、
 \begin_inset Text
 
 \begin_layout Plain Layout
-『
+文字の『
 \family typewriter
 -
 \family default
@@ -20905,9 +20938,9 @@ LaTeXは、ハイフネーションをほとんど完璧にこなしますが、
 \end_layout
 
 \begin_layout Standard
-ときには、単語や複合語がハイフンで区切られることを避けたい場合があるかもしれません。この文書のキー割り当て／短絡キーは、「A-b c」のようにハイフンと空白を含
-む3文字で構成されています。LaTeXは、ハイフン「-」をハイフネーション位置の候補として考えます。しかし、この場所でのハイフネーションは醜悪です。この短絡キー
-表記がハイフンで区切られるのを避けるには、それをLaTeXのボックスコマンド
+ときには、単語や複合語がハイフンで区切られることを避けたい場合があるかもしれません。たとえば文書中で、キー割り当てや短絡キーを「A-b c」のように表すものとし
+ましょう。するとLaTeXは、ハイフン「-」をハイフネーション位置の候補として考えます。しかし、この場所でのハイフネーションは醜悪です。この短絡キー表記がハイフ
+ンで区切られるのを避けるには、それをLaTeXのボックスコマンド
 \backslash
 mboxの引数に入れると、LaTeXボックス内の字句はハイフンネーションの対象とならないので、うまく回避できます。LyXは
 \backslash
@@ -21288,7 +21321,7 @@ This is I\SpecialChar \@.
 \end_layout
 
 \begin_layout Standard
-それでも心配性なあなたのためには、これらのかくれたエラーを捕捉するツールがあります。取扱説明書『拡張機能篇』の
+それでも心配性なあなたのためには、これらのかくれたエラーを捕捉するツールがあります。取扱説明書『高度な機能篇』の
 \emph on
 Checking TeX
 \emph default
@@ -22383,7 +22416,7 @@ name "cha:フロートと注釈"
 \end_layout
 
 \begin_layout Standard
-本章の題材は、取扱説明書『拡張機能篇』に詳細に述べられています。そちらでは、特殊な場合のヒントとテクニックについても述べられています。
+本章の題材は、取扱説明書『高度な機能篇』に詳細に述べられています。そちらでは、特殊な場合のヒントとテクニックについても述べられています。
 \end_layout
 
 \begin_layout Section
@@ -23612,9 +23645,9 @@ reference "sub:表のセル"
 \end_layout
 
 \begin_layout Standard
-LyXは、いまのところ連結「行」セルのサポートはしていません。熟練ユーザーは、特別なLaTeX引数を表に宣言することができます。これは、取扱説明書『拡張機能篇』
-の表の節に説明されているように、連結行セルのように表に特別な整形を行うときに必要になるでしょう。また、現在のセルや表全体を90度左向きに回転させることもできます
-。この回転はLyX上には表示されませんが、出力では正しく表示されます。
+LyXは、いまのところ連結「行」セルのサポートはしていません。熟練ユーザーは、特別なLaTeX引数を表に宣言することができます。これは、取扱説明書『高度な機能篇
+』の表の節に説明されているように、連結行セルのように表に特別な整形を行うときに必要になるでしょう。また、現在のセルや表全体を90度左向きに回転させることもできま
+す。この回転はLyX上には表示されませんが、出力では正しく表示されます。
 \end_layout
 
 \begin_layout Standard
@@ -29334,7 +29367,25 @@ arg   "space-insert protected"
 \bar no
 \noun off
 \color none
-押すか、数式パネルのボタン
+押すか、
+\family sans
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+数式パネル
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+のボタン
 \begin_inset Graphics
 	filename ../../images/math/space.png
 
@@ -29349,7 +29400,7 @@ arg   "space-insert protected"
 \bar default
 \noun default
 \color inherit
-a C+Space b
+a Ctrl+Space b
 \family roman
 \series medium
 \shape up
@@ -29358,7 +29409,7 @@ a C+Space b
 \bar no
 \noun off
 \color none
- というキー列を押すと、
+ というキー列、すなわち
 \family default
 \series default
 \shape default
@@ -29380,14 +29431,14 @@ a C+Space b
 \bar no
 \noun off
 \color none
-のようになります（LyX上では
+は、LyX上では
 \begin_inset Graphics
 	filename ../clipart/SpaceMarker.png
 
 \end_inset
 
-のように表示されます）。空白マーカーの直後にカーソルを置いて空白をさらに何度か押すと、空白を異なる長さに変えることができます。一度空白を押す度に長さが変わります
-。負の長さを持ついくつかの空白は、LyX上では赤色で表示されます。以下に例を二つ上げます。
+のように表示されます。空白マーカーの直後にカーソルを置いて空白をさらに何度か押すと、空白を異なる長さに変えることができます。一度空白を押す度に長さが変わります。
+負の長さを持ついくつかの空白は、LyX上では赤色で表示されます。以下に例を二つ上げます。
 \end_layout
 
 \begin_layout Standard
@@ -30504,58 +30555,8 @@ LyXで使える括弧には、いくつかのものがあります。ほとん�
 をクリックしてください。選択した要素の周りに括弧が描かれます。
 \end_layout
 
-\begin_layout Standard
-次節は、グループ化用のLaTeXの「{」の挿入のしかたを説明します。
-\end_layout
-
 \begin_layout Section
-グループ化
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-すうしき@数式!ぐるーぷか@グループ化
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-一連の記号をグループ化する必要があることがあります。例えば、LaTeXでは、以下に示すように 
-\family typewriter
-{x^y}^z
-\family default
-と 
-\family typewriter
-x^{y^z}
-\family default
-の出力は異なります。
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula \[
-{x^{y}}^{z}\quad\mathrm{differs\; from}\quad x^{{y^{z}}}\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-このグループを生成するには、「
-\series bold
-
-\backslash
-{
-\series default
-」というキー列の後にスペースを入力します。LyXでは、グループ化は赤い中括弧で表示され、括弧の中にグループ化する要素を挿入します。グループ化の括弧は、通常の括弧
-と違って出力には表示されません。
-\end_layout
-
-\begin_layout Section
-配列と複数行数式
+配列と多行数式
 \begin_inset Index
 status collapsed
 
@@ -30715,7 +30716,7 @@ arg   "newline-insert newline"
 編集\SpecialChar \menuseparator
 数式
 \family default
-メニューを使用してください。
+メニューか数式ツールバーを使用してください。
 \end_layout
 
 \begin_layout Standard
@@ -30756,7 +30757,7 @@ f(x)=\begin{cases}
 \bar no
 \noun off
 \color none
-複数行数式は、数式内で
+多行数式は、数式内で
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert newline"
@@ -30774,7 +30775,7 @@ type  "shortcut"
 arg   "newline-insert newline"
 \end_inset
 
-を押すたびに追加されます。複数行数式は、つねに別行建てです。以下がその例です。
+を押すたびに追加されます。多行数式は、つねに別行建てです。以下がその例です。
 \family default
 \series default
 \shape default
@@ -30846,7 +30847,7 @@ Ctrl+Tab
 \bar no
 \noun off
 \color none
-ここで述べた複数行数式の型は
+ここで述べた多行数式の型は
 \family typewriter
 \series default
 \shape default
@@ -30992,7 +30993,7 @@ arg   "math-number-toggle"
 \bar no
 \noun off
 \color none
-複数行数式では、行ごとに番号をつけることができます。
+多行数式では、行ごとに番号をつけることができます。
 \family sans
 \series default
 \shape default
@@ -31229,11 +31230,7 @@ LyXでは、数式用に自前のマクロを定義することができるの�
 \bar default
 \noun default
 \color inherit
-Math
-\begin_inset space ~
-\end_inset
-
-Macros
+数式マクロ
 \family roman
 \series medium
 \shape up
@@ -32632,7 +32629,13 @@ reference "sec:数式番号と参照"
 戻る
 \family default
 に変わりますので、相互参照部にカーソルを戻したいときには、それを使うことができます。相互参照枠を右クリックすることによっても、カーソルを参照されているラベルの直
-前に持っていくことができますが、この場合は元に戻る方法がありません。
+前に持っていくことができ、ツールバーボタンの
+\begin_inset Graphics
+	filename ../../images/bookmark-goto_0.png
+
+\end_inset
+
+を押すと戻ることができます。。
 \end_layout
 
 \begin_layout Standard
@@ -32645,11 +32648,11 @@ reference "sec:数式番号と参照"
 \end_layout
 
 \begin_layout Standard
-相互参照に関しては、取扱説明書
+相互参照に関しては、取扱説明書『
 \emph on
 埋込オブジェクト篇
 \emph default
-に詳述されています。
+』に詳述されています。
 \end_layout
 
 \begin_layout Section
@@ -33259,7 +33262,18 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-このデータベースは、参考文献を特定の体裁で載せた、拡張子が「.bib」のテキストファイルです。体裁は、LaTeX関連書籍（
+このデータベースは、参考文献を特定の形式で載せた、拡張子が「
+\family sans
+.bib
+\family default
+」のテキストファイルです。形式は、
+\begin_inset CommandInset citation
+LatexCommand cite
+key "BibTeX-2"
+
+\end_inset
+
+やLaTeX関連書籍（
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Mittelbach,Kopka,Lamport"
@@ -33311,9 +33325,12 @@ eX参考文献
 \end_layout
 
 \begin_layout Standard
-スタイルファイルは、すべての文献項目のレイアウトを宣言した、ファイル拡張子が「.bst」のテキストファイルです。お使いのLaTeX頒布版には複数のスタイルファイル
-が収められており、出版社の多くが特定のスタイルファイルを提供しているので、それを利用すれば、レイアウトの心配をする必要はありません。もちろん、自作のスタイルファ
-イルを作成することもできますが、それは熟練者向けの仕事です
+スタイルファイルは、すべての文献項目のレイアウトを宣言した、ファイル拡張子が「
+\family sans
+.bst
+\family default
+」のテキストファイルです。お使いのLaTeX頒布版には複数のスタイルファイルが収められており、出版社の多くが特定のスタイルファイルを提供しているので、それを利用
+すれば、レイアウトの心配をする必要はありません。もちろん、自作のスタイルファイルを作成することもできますが、それは熟練者向けの仕事です
 \begin_inset Foot
 status collapsed
 
@@ -33404,9 +33421,9 @@ key "BibTeX"
 \family sans
 節分けされた参考文献
 \family default
-オプションを選択すると、節分けされた複数の参考文献を入れることができます。この件に関しては、取扱説明書『
+オプションを選択すると、節分けされた複数の参考文献を入れることができます。この件と他のオプションに関しては、取扱説明書『
 \emph on
-拡張機能篇
+高度な機能篇
 \emph default
 』の
 \emph on
@@ -34026,6 +34043,74 @@ is@maison
 \begin_layout Standard
 とします。前項目は実際に存在する項目でなくてもかまわないので、LaTeXに項目順序を告げる単語であればどんな単語を使ってもかまいません。例として次の小節を参照し
 てください。
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+索引の生成に
+\family sans
+makeindex
+\family default
+プログラムを使用している場合には、索引項目の順序が正しくないことがあります（第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:索引プログラム"
+
+\end_inset
+
+節を参照）。たとえば、
+\family sans
+makeindex
+\family default
+は、第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:文書フォント"
+
+\end_inset
+
+節のaeguill LaTeXパッケージの索引項目を、他のLaTeXパッケージの索引コマンドも「
+\series bold
+LaTeXパッケージ ! 
+\series default
+」で始まっているにもかかわらず、これらの項目の後に印字してしまいます。そのわけは、aeguillの索引項目が脚注にあるからです。この
+\family sans
+makeindex
+\family default
+のバグを修正するには、使用中の文書のプリアンブルに
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+let
+\backslash
+OrgIndex
+\backslash
+index
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand*{
+\backslash
+index}[1]{
+\backslash
+OrgIndex{#1}}
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+というコマンドを書き加えて下さい。
 \end_layout
 
 \begin_layout Subsection
@@ -34272,7 +34357,7 @@ key "makeindex,xindy"
 \family sans
 makeindex
 \family default
-はひじょうに古く、すでに開発が停止しているうえ、たくさんの落とし穴があります。もっとも特筆すべきは、
+はひじょうに古く、すでに開発が停止しているうえ、たくさんの落とし穴があります。特筆すべきは、
 \family sans
 makeindex
 \family default
@@ -34503,7 +34588,7 @@ sigma$
 \begin_inset Newline newline
 \end_inset
 
-と挿入します。ここで記号「$」は数式の始まりと終わりを示します。ギリシャ文字用のLaTeXコマンドは、バックスラッシュ「
+と挿入します。記号「$」は数式の始まりと終わりを示します。ギリシャ文字用のLaTeXコマンドは、バックスラッシュ「
 \backslash
 」で始まるその文字の名前です。大文字のギリシャ文字は、コマンドを
 \series bold
@@ -35040,8 +35125,8 @@ name "sec:派生枝"
 \end_layout
 
 \begin_layout Standard
-このような場合にLyXは、文を派生枝に分けて置いておくことを勧めます。すると当該文は、その派生枝が有効にされたときのみ出力に現れるようになります。派生枝を作成す
-るには、
+このような場合に、LyXでは、文を派生枝に分けて置いておくことができます。すると当該文は、その派生枝が有効にされたときのみ出力に現れるようになります。派生枝を作
+成するには、
 \family sans
 文書\SpecialChar \menuseparator
 設定
@@ -36140,8 +36225,8 @@ name "sec:類語辞典"
 \end_layout
 
 \begin_layout Standard
-表示されている単語は、多くの場合、現在検査している単語に密接に関係しているとは限らないので、表示されている一覧をスクロールしてみると、関係した単語を見つけられる
-ことがあります。
+表示されている単語は、現在検査している単語に密接に関係しているとは限りません。表示されている一覧をスクロールしてみると、関係した単語を見つけられることがあります
+。
 \end_layout
 
 \begin_layout Standard
@@ -36181,8 +36266,7 @@ name "sec:変更追跡機能"
 \end_layout
 
 \begin_layout Standard
-ひとつの文書を多くの人々とともに作成するときには、他の人々が文書に加えた変更が強調表示され、変更を受け入れるかどうか決めることができると、この上なく便利です。こ
-の機能は、
+ひとつの文書を共同して作成するときには、他の人々が文書に加えた変更が強調表示され、変更を受け入れるかどうか決めることができると、この上なく便利です。この機能は、
 \family sans
 文書\SpecialChar \menuseparator
 変更追跡機能\SpecialChar \menuseparator
@@ -36854,11 +36938,7 @@ name "cap:latin1文字セット"
 
 \end_inset
 
-
-\family sans
-latin1
-\family typewriter
-文字セット
+latin1文字セット
 \end_layout
 
 \end_inset
@@ -36868,8 +36948,6 @@ latin1
 
 \begin_layout Plain Layout
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="17" columns="17">
 <features>
@@ -36906,7 +36984,6 @@ latin1
 \begin_layout Plain Layout
 
 \size tiny
-\lang english
 00
 \end_layout
 
@@ -36918,7 +36995,6 @@ latin1
 \begin_layout Plain Layout
 
 \size tiny
-\lang english
 10
 \end_layout
 
@@ -36930,7 +37006,6 @@ latin1
 \begin_layout Plain Layout
 
 \size tiny
-\lang english
 20
 \end_layout
 
@@ -36942,7 +37017,6 @@ latin1
 \begin_layout Plain Layout
 
 \size tiny
-\lang english
 30
 \end_layout
 
@@ -36954,7 +37028,6 @@ latin1
 \begin_layout Plain Layout
 
 \size tiny
-\lang english
 40
 \end_layout
 
@@ -36966,7 +37039,6 @@ latin1
 \begin_layout Plain Layout
 
 \size tiny
-\lang english
 50
 \end_layout
 
@@ -36978,7 +37050,6 @@ latin1
 \begin_layout Plain Layout
 
 \size tiny
-\lang english
 60
 \end_layout
 
@@ -36990,7 +37061,6 @@ latin1
 \begin_layout Plain Layout
 
 \size tiny
-\lang english
 70
 \end_layout
 
@@ -37002,7 +37072,6 @@ latin1
 \begin_layout Plain Layout
 
 \size tiny
-\lang english
 80
 \end_layout
 
@@ -37014,7 +37083,6 @@ latin1
 \begin_layout Plain Layout
 
 \size tiny
-\lang english
 90
 \end_layout
 
@@ -37026,7 +37094,6 @@ latin1
 \begin_layout Plain Layout
 
 \size tiny
-\lang english
 A0
 \end_layout
 
@@ -37038,7 +37105,6 @@ A0
 \begin_layout Plain Layout
 
 \size tiny
-\lang english
 B0
 \end_layout
 
@@ -37050,7 +37116,6 @@ B0
 \begin_layout Plain Layout
 
 \size tiny
-\lang english
 C0
 \end_layout
 
@@ -37062,7 +37127,6 @@ C0
 \begin_layout Plain Layout
 
 \size tiny
-\lang english
 D0
 \end_layout
 
@@ -37074,7 +37138,6 @@ D0
 \begin_layout Plain Layout
 
 \size tiny
-\lang english
 E0
 \end_layout
 
@@ -37086,7 +37149,6 @@ E0
 \begin_layout Plain Layout
 
 \size tiny
-\lang english
 F0
 \end_layout
 
@@ -37100,7 +37162,6 @@ F0
 \begin_layout Plain Layout
 
 \size tiny
-\lang english
 00
 \end_layout
 
@@ -37137,8 +37198,6 @@ F0
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 0
 \end_layout
 
@@ -37148,8 +37207,6 @@ F0
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 @
 \end_layout
 
@@ -37159,8 +37216,6 @@ F0
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 P
 \end_layout
 
@@ -37170,8 +37225,6 @@ P
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 '
 \end_layout
 
@@ -37181,8 +37234,6 @@ P
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 p
 \end_layout
 
@@ -37219,8 +37270,6 @@ p
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 °
 \end_layout
 
@@ -37230,8 +37279,6 @@ p
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 À
 \end_layout
 
@@ -37241,8 +37288,6 @@ p
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Ð
 \end_layout
 
@@ -37252,8 +37297,6 @@ p
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 à
 \end_layout
 
@@ -37263,8 +37306,6 @@ p
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ð
 \end_layout
 
@@ -37278,7 +37319,6 @@ p
 \begin_layout Plain Layout
 
 \size tiny
-\lang english
 01
 \end_layout
 
@@ -37306,8 +37346,6 @@ p
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 !
 \end_layout
 
@@ -37317,8 +37355,6 @@ p
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 1
 \end_layout
 
@@ -37328,8 +37364,6 @@ p
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 A
 \end_layout
 
@@ -37339,8 +37373,6 @@ A
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Q
 \end_layout
 
@@ -37350,8 +37382,6 @@ Q
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 a
 \end_layout
 
@@ -37361,8 +37391,6 @@ a
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 q
 \end_layout
 
@@ -37390,8 +37418,6 @@ q
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ¡
 \end_layout
 
@@ -37401,8 +37427,6 @@ q
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ±
 \end_layout
 
@@ -37412,8 +37436,6 @@ q
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Á
 \end_layout
 
@@ -37423,8 +37445,6 @@ q
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Ñ
 \end_layout
 
@@ -37434,8 +37454,6 @@ q
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 á
 \end_layout
 
@@ -37445,8 +37463,6 @@ q
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ñ
 \end_layout
 
@@ -37460,7 +37476,6 @@ q
 \begin_layout Plain Layout
 
 \size tiny
-\lang english
 02
 \end_layout
 
@@ -37488,8 +37503,6 @@ q
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Quotes eld
 \end_inset
 
@@ -37502,8 +37515,6 @@ q
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 2
 \end_layout
 
@@ -37513,8 +37524,6 @@ q
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 B
 \end_layout
 
@@ -37524,8 +37533,6 @@ B
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 R
 \end_layout
 
@@ -37535,8 +37542,6 @@ R
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 b
 \end_layout
 
@@ -37546,8 +37551,6 @@ b
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 r
 \end_layout
 
@@ -37575,8 +37578,6 @@ r
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ¢
 \end_layout
 
@@ -37586,8 +37587,6 @@ r
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ²
 \end_layout
 
@@ -37597,8 +37596,6 @@ r
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Â
 \end_layout
 
@@ -37608,8 +37605,6 @@ r
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Ò
 \end_layout
 
@@ -37619,8 +37614,6 @@ r
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 â
 \end_layout
 
@@ -37630,8 +37623,6 @@ r
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ò
 \end_layout
 
@@ -37645,7 +37636,6 @@ r
 \begin_layout Plain Layout
 
 \size tiny
-\lang english
 03
 \end_layout
 
@@ -37673,8 +37663,6 @@ r
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 #
 \end_layout
 
@@ -37684,8 +37672,6 @@ r
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 3
 \end_layout
 
@@ -37695,8 +37681,6 @@ r
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 C
 \end_layout
 
@@ -37706,8 +37690,6 @@ C
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 S
 \end_layout
 
@@ -37717,8 +37699,6 @@ S
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 c
 \end_layout
 
@@ -37728,8 +37708,6 @@ c
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 s
 \end_layout
 
@@ -37757,8 +37735,6 @@ s
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 £
 \end_layout
 
@@ -37768,8 +37744,6 @@ s
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ³
 \end_layout
 
@@ -37779,8 +37753,6 @@ s
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Ã
 \end_layout
 
@@ -37790,8 +37762,6 @@ s
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Ó
 \end_layout
 
@@ -37801,8 +37771,6 @@ s
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ã
 \end_layout
 
@@ -37812,8 +37780,6 @@ s
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ó
 \end_layout
 
@@ -37827,7 +37793,6 @@ s
 \begin_layout Plain Layout
 
 \size tiny
-\lang english
 04
 \end_layout
 
@@ -37855,8 +37820,6 @@ s
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 $
 \end_layout
 
@@ -37866,8 +37829,6 @@ $
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 4
 \end_layout
 
@@ -37877,8 +37838,6 @@ $
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 D
 \end_layout
 
@@ -37888,8 +37847,6 @@ D
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 T
 \end_layout
 
@@ -37899,8 +37856,6 @@ T
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 d
 \end_layout
 
@@ -37910,8 +37865,6 @@ d
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 t
 \end_layout
 
@@ -37939,8 +37892,6 @@ t
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ¤
 \end_layout
 
@@ -37950,8 +37901,6 @@ t
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ´
 \end_layout
 
@@ -37961,8 +37910,6 @@ t
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Ä
 \end_layout
 
@@ -37972,8 +37919,6 @@ t
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Ô
 \end_layout
 
@@ -37983,8 +37928,6 @@ t
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ä
 \end_layout
 
@@ -37994,8 +37937,6 @@ t
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ô
 \end_layout
 
@@ -38009,7 +37950,6 @@ t
 \begin_layout Plain Layout
 
 \size tiny
-\lang english
 05
 \end_layout
 
@@ -38037,8 +37977,6 @@ t
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 %
 \end_layout
 
@@ -38048,8 +37986,6 @@ t
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 5
 \end_layout
 
@@ -38059,8 +37995,6 @@ t
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 E
 \end_layout
 
@@ -38070,8 +38004,6 @@ E
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 U
 \end_layout
 
@@ -38081,8 +38013,6 @@ U
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 e
 \end_layout
 
@@ -38092,8 +38022,6 @@ e
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 u
 \end_layout
 
@@ -38121,8 +38049,6 @@ u
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ¥
 \end_layout
 
@@ -38132,8 +38058,6 @@ u
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 µ
 \end_layout
 
@@ -38143,8 +38067,6 @@ u
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Å
 \end_layout
 
@@ -38154,8 +38076,6 @@ u
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Õ
 \end_layout
 
@@ -38165,8 +38085,6 @@ u
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 å
 \end_layout
 
@@ -38176,8 +38094,6 @@ u
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 õ
 \end_layout
 
@@ -38191,7 +38107,6 @@ u
 \begin_layout Plain Layout
 
 \size tiny
-\lang english
 06
 \end_layout
 
@@ -38219,8 +38134,6 @@ u
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 &
 \end_layout
 
@@ -38230,8 +38143,6 @@ u
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 6
 \end_layout
 
@@ -38241,8 +38152,6 @@ u
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 F
 \end_layout
 
@@ -38252,8 +38161,6 @@ F
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 V
 \end_layout
 
@@ -38263,8 +38170,6 @@ V
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 f
 \end_layout
 
@@ -38274,8 +38179,6 @@ f
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 v
 \end_layout
 
@@ -38303,8 +38206,6 @@ v
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ¦
 \end_layout
 
@@ -38314,8 +38215,6 @@ v
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ¶
 \end_layout
 
@@ -38325,8 +38224,6 @@ v
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Æ
 \end_layout
 
@@ -38336,8 +38233,6 @@ v
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Ö
 \end_layout
 
@@ -38347,8 +38242,6 @@ v
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 æ
 \end_layout
 
@@ -38358,8 +38251,6 @@ v
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ö
 \end_layout
 
@@ -38373,7 +38264,6 @@ v
 \begin_layout Plain Layout
 
 \size tiny
-\lang english
 07
 \end_layout
 
@@ -38401,8 +38291,6 @@ v
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 `
 \end_layout
 
@@ -38412,8 +38300,6 @@ v
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 7
 \end_layout
 
@@ -38423,8 +38309,6 @@ v
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 G
 \end_layout
 
@@ -38434,8 +38318,6 @@ G
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 W
 \end_layout
 
@@ -38445,8 +38327,6 @@ W
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 g
 \end_layout
 
@@ -38456,8 +38336,6 @@ g
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 w
 \end_layout
 
@@ -38485,8 +38363,6 @@ w
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 §
 \end_layout
 
@@ -38496,8 +38372,6 @@ w
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ·
 \end_layout
 
@@ -38507,8 +38381,6 @@ w
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Ç
 \end_layout
 
@@ -38518,8 +38390,6 @@ w
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ×
 \end_layout
 
@@ -38529,8 +38399,6 @@ w
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ç
 \end_layout
 
@@ -38540,8 +38408,6 @@ w
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ÷
 \end_layout
 
@@ -38555,7 +38421,6 @@ w
 \begin_layout Plain Layout
 
 \size tiny
-\lang english
 08
 \end_layout
 
@@ -38583,8 +38448,6 @@ w
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 (
 \end_layout
 
@@ -38594,8 +38457,6 @@ w
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 8
 \end_layout
 
@@ -38605,8 +38466,6 @@ w
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 H
 \end_layout
 
@@ -38616,8 +38475,6 @@ H
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 X
 \end_layout
 
@@ -38627,8 +38484,6 @@ X
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 h
 \end_layout
 
@@ -38638,8 +38493,6 @@ h
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 x
 \end_layout
 
@@ -38667,8 +38520,6 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ¨
 \end_layout
 
@@ -38678,8 +38529,6 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ¸
 \end_layout
 
@@ -38689,8 +38538,6 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 È
 \end_layout
 
@@ -38700,8 +38547,6 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Ø
 \end_layout
 
@@ -38711,8 +38556,6 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 è
 \end_layout
 
@@ -38722,8 +38565,6 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ø
 \end_layout
 
@@ -38737,7 +38578,6 @@ x
 \begin_layout Plain Layout
 
 \size tiny
-\lang english
 09
 \end_layout
 
@@ -38765,8 +38605,6 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 )
 \end_layout
 
@@ -38776,8 +38614,6 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 9
 \end_layout
 
@@ -38787,8 +38623,6 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 I
 \end_layout
 
@@ -38798,8 +38632,6 @@ I
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Y
 \end_layout
 
@@ -38809,8 +38641,6 @@ Y
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 i
 \end_layout
 
@@ -38820,8 +38650,6 @@ i
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 y
 \end_layout
 
@@ -38849,8 +38677,6 @@ y
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ©
 \end_layout
 
@@ -38860,8 +38686,6 @@ y
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ¹
 \end_layout
 
@@ -38871,8 +38695,6 @@ y
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 É
 \end_layout
 
@@ -38882,8 +38704,6 @@ y
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Ù
 \end_layout
 
@@ -38893,8 +38713,6 @@ y
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 é
 \end_layout
 
@@ -38904,8 +38722,6 @@ y
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ù
 \end_layout
 
@@ -38919,7 +38735,6 @@ y
 \begin_layout Plain Layout
 
 \size tiny
-\lang english
 0A
 \end_layout
 
@@ -38947,8 +38762,6 @@ y
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 *
 \end_layout
 
@@ -38958,8 +38771,6 @@ y
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 :
 \end_layout
 
@@ -38969,8 +38780,6 @@ y
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 J
 \end_layout
 
@@ -38980,8 +38789,6 @@ J
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Z
 \end_layout
 
@@ -38991,8 +38798,6 @@ Z
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 j
 \end_layout
 
@@ -39002,8 +38807,6 @@ j
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 z
 \end_layout
 
@@ -39031,8 +38834,6 @@ z
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ª
 \end_layout
 
@@ -39042,8 +38843,6 @@ z
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 º
 \end_layout
 
@@ -39053,8 +38852,6 @@ z
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Ê
 \end_layout
 
@@ -39064,8 +38861,6 @@ z
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Ú
 \end_layout
 
@@ -39075,8 +38870,6 @@ z
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ê
 \end_layout
 
@@ -39086,8 +38879,6 @@ z
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ú
 \end_layout
 
@@ -39101,7 +38892,6 @@ z
 \begin_layout Plain Layout
 
 \size tiny
-\lang english
 0B
 \end_layout
 
@@ -39129,8 +38919,6 @@ z
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 +
 \end_layout
 
@@ -39140,8 +38928,6 @@ z
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ;
 \end_layout
 
@@ -39151,8 +38937,6 @@ z
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 K
 \end_layout
 
@@ -39162,8 +38946,6 @@ K
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 [
 \end_layout
 
@@ -39173,8 +38955,6 @@ K
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 k
 \end_layout
 
@@ -39184,8 +38964,6 @@ k
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 {
 \end_layout
 
@@ -39213,8 +38991,6 @@ k
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 «
 \end_layout
 
@@ -39224,8 +39000,6 @@ k
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 »
 \end_layout
 
@@ -39235,8 +39009,6 @@ k
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Ë
 \end_layout
 
@@ -39246,8 +39018,6 @@ k
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Û
 \end_layout
 
@@ -39257,8 +39027,6 @@ k
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ë
 \end_layout
 
@@ -39268,8 +39036,6 @@ k
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 û
 \end_layout
 
@@ -39283,7 +39049,6 @@ k
 \begin_layout Plain Layout
 
 \size tiny
-\lang english
 0C
 \end_layout
 
@@ -39311,8 +39076,6 @@ k
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ,
 \end_layout
 
@@ -39322,8 +39085,6 @@ k
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 <
 \end_layout
 
@@ -39333,8 +39094,6 @@ k
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 L
 \end_layout
 
@@ -39344,8 +39103,6 @@ L
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 
@@ -39357,8 +39114,6 @@ L
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 l
 \end_layout
 
@@ -39368,8 +39123,6 @@ l
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 |
 \end_layout
 
@@ -39397,8 +39150,6 @@ l
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ¬
 \end_layout
 
@@ -39408,8 +39159,6 @@ l
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ¼
 \end_layout
 
@@ -39419,8 +39168,6 @@ l
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Ì
 \end_layout
 
@@ -39430,8 +39177,6 @@ l
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Ü
 \end_layout
 
@@ -39441,8 +39186,6 @@ l
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ì
 \end_layout
 
@@ -39452,8 +39195,6 @@ l
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ü
 \end_layout
 
@@ -39467,7 +39208,6 @@ l
 \begin_layout Plain Layout
 
 \size tiny
-\lang english
 0D
 \end_layout
 
@@ -39495,8 +39235,6 @@ l
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -
 \end_layout
 
@@ -39506,8 +39244,6 @@ l
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 =
 \end_layout
 
@@ -39517,8 +39253,6 @@ l
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 M
 \end_layout
 
@@ -39528,8 +39262,6 @@ M
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ]
 \end_layout
 
@@ -39539,8 +39271,6 @@ M
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 m
 \end_layout
 
@@ -39550,8 +39280,6 @@ m
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 }
 \end_layout
 
@@ -39579,8 +39307,6 @@ m
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 –
 \end_layout
 
@@ -39590,8 +39316,6 @@ m
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ½
 \end_layout
 
@@ -39601,8 +39325,6 @@ m
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Í
 \end_layout
 
@@ -39612,8 +39334,6 @@ m
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Ý
 \end_layout
 
@@ -39623,8 +39343,6 @@ m
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 í
 \end_layout
 
@@ -39634,8 +39352,6 @@ m
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ý
 \end_layout
 
@@ -39649,7 +39365,6 @@ m
 \begin_layout Plain Layout
 
 \size tiny
-\lang english
 0E
 \end_layout
 
@@ -39677,8 +39392,6 @@ m
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 .
 \end_layout
 
@@ -39688,8 +39401,6 @@ m
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 >
 \end_layout
 
@@ -39699,8 +39410,6 @@ m
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 N
 \end_layout
 
@@ -39710,8 +39419,6 @@ N
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ^
 \end_layout
 
@@ -39721,8 +39428,6 @@ N
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 n
 \end_layout
 
@@ -39732,8 +39437,6 @@ n
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ~
 \end_layout
 
@@ -39761,8 +39464,6 @@ n
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ®
 \end_layout
 
@@ -39772,8 +39473,6 @@ n
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ¾
 \end_layout
 
@@ -39783,8 +39482,6 @@ n
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Î
 \end_layout
 
@@ -39794,8 +39491,6 @@ n
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Þ
 \end_layout
 
@@ -39805,8 +39500,6 @@ n
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 î
 \end_layout
 
@@ -39816,8 +39509,6 @@ n
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 þ
 \end_layout
 
@@ -39831,7 +39522,6 @@ n
 \begin_layout Plain Layout
 
 \size tiny
-\lang english
 0F
 \end_layout
 
@@ -39859,8 +39549,6 @@ n
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 /
 \end_layout
 
@@ -39870,8 +39558,6 @@ n
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ?
 \end_layout
 
@@ -39881,8 +39567,6 @@ n
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 O
 \end_layout
 
@@ -39892,8 +39576,6 @@ O
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 _
 \end_layout
 
@@ -39903,8 +39585,6 @@ _
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 o
 \end_layout
 
@@ -39941,8 +39621,6 @@ o
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ¯
 \end_layout
 
@@ -39952,8 +39630,6 @@ o
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ¿
 \end_layout
 
@@ -39963,8 +39639,6 @@ o
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Ï
 \end_layout
 
@@ -39974,8 +39648,6 @@ o
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ß
 \end_layout
 
@@ -39985,8 +39657,6 @@ o
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ï
 \end_layout
 
@@ -39996,8 +39666,6 @@ o
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ÿ
 \end_layout
 
@@ -40332,7 +40000,7 @@ status collapsed
 \begin_layout Standard
 複数人で同じ文書を作業するときに使用します。取扱説明書
 \emph on
-拡張機能篇
+高度な機能篇
 \emph default
 の
 \emph on
@@ -40760,7 +40428,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-これら二つのメニューは、カーソルが表ないし数式の中にあるときにのみ、有効化されます。当該表ないし数式の特性を、これで変更することができます。表の特性は第
+これら二つのメニューは、カーソルが表ないし数式の中にあるときにのみ、完全に有効化されます。ここでは、当該表ないし数式の特性を、変更することができます。表の特性は
+第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:表"
@@ -42269,7 +41938,7 @@ reference "sub:ツールバー"
 \begin_layout Standard
 また、カスタム・ツールバーを定義することも可能です。この点は、取扱説明書『
 \emph on
-拡張機能篇
+高度な機能篇
 \emph default
 』に説明があります。
 \end_layout
@@ -42373,7 +42042,7 @@ status collapsed
 
 
 \begin_inset Tabular
-<lyxtabular version="3" rows="20" columns="2">
+<lyxtabular version="3" rows="21" columns="2">
 <features islongtable="true">
 <column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0">
@@ -42694,6 +42363,37 @@ status collapsed
 \family sans
 編集\SpecialChar \menuseparator
 検索／置換
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../images/bookmark-goto_0.png
+	BoundingBox 0bp 5bp 20bp 25bp
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+移動\SpecialChar \menuseparator
+しおり\SpecialChar \menuseparator
+戻る
 \end_layout
 
 \end_inset
@@ -46377,7 +46077,7 @@ status collapsed
 
 Xコマンド 取扱説明書『
 \emph on
-拡張機能篇
+高度な機能篇
 \emph default
 』の
 \emph on
@@ -47528,6 +47228,39 @@ status collapsed
 \begin_layout Plain Layout
 
 http://www.ctan.org/get/biblio/bibtex/contrib/doc/btxdoc.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "BibTeX-2"
+
+\end_inset
+
+
+\family sans
+BibTeX
+\family default
+プログラムの使い方を記した
+\begin_inset CommandInset href
+LatexCommand href
+name "取扱説明書"
+target "http://www.ctan.org/tex-archive/info/bibtex/tamethebeast/ttb_en.pdf"
+
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.ctan.org/tex-archive/info/bibtex/tamethebeast/ttb_en.pdf
 \end_layout
 
 \end_inset

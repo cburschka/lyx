@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 370
+\lyxformat 373
 \begin_document
 \begin_header
 \textclass scrbook
@@ -58,6 +58,7 @@
 \use_default_options false
 \language english
 \inputencoding auto
+\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
@@ -93,6 +94,7 @@
 \use_geometry false
 \use_amsmath 1
 \use_esint 1
+\use_mhchem 1
 \cite_engine basic
 \use_bibtopic false
 \use_indices false
@@ -113,7 +115,7 @@
 \color #008000
 \end_index
 \secnumdepth 3
-\tocdepth 3
+\tocdepth 2
 \paragraph_separation indent
 \paragraph_indentation default
 \quotes_language english
