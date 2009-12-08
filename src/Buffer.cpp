@@ -2657,14 +2657,11 @@ void Buffer::updateMacroInstances() const
 	LYXERR(Debug::MACROS, "updateMacroInstances for "
 		<< d->filename.onlyFileName());
 	DocIterator it = doc_iterator_begin(this);
-	DocIterator end = doc_iterator_end(this);
-	for (; it != end; it.forwardPos()) {
-		// look for MathData cells in InsetMathNest insets
-		Inset * inset = it.nextInset();
-		if (!inset)
-			continue;
-
-		InsetMath * minset = inset->asInsetMath();
+	it.forwardInset();
+	DocIterator const end = doc_iterator_end(this);
+	for (; it != end; it.forwardInset()) {
+ 		// look for MathData cells in InsetMathNest insets
+		InsetMath * minset = it.nextInset()->asInsetMath();
 		if (!minset)
 			continue;
 
