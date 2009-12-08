@@ -1667,7 +1667,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			if (ensureBufferClean(view())) {
 				string res = buffer->lyxvc().repoUpdate();
 				setMessage(from_utf8(res));
-				reloadBuffer();
+				checkExternallyModifiedBuffers();
 			}
 			break;
 
@@ -1858,16 +1858,23 @@ void LyXFunc::sendDispatchMessage(docstring const & msg, FuncRequest const & cmd
 
 void LyXFunc::reloadBuffer()
 {
-	FileName filename = lyx_view_->buffer()->fileName();
-	Buffer const * master = lyx_view_->buffer()->masterBuffer();
-	bool const is_child = master != lyx_view_->buffer();
+	Buffer * buf = lyx_view_->buffer();
+	reloadBuffer(buf);
+}
+
+
+void LyXFunc::reloadBuffer(Buffer * buf)
+{
+	FileName filename = buf->fileName();
+	Buffer const * master = buf->masterBuffer();
+	bool const is_child = master != buf;
 	// The user has already confirmed that the changes, if any, should
 	// be discarded. So we just release the Buffer and don't call closeBuffer();
-	theBufferList().release(lyx_view_->buffer());
+	theBufferList().release(buf);
 	// if the lyx_view_ has been destroyed, create a new one
 	if (!lyx_view_)
 		theApp()->dispatch(FuncRequest(LFUN_WINDOW_NEW));
-	Buffer * buf = lyx_view_->loadDocument(filename);
+	buf = lyx_view_->loadDocument(filename);
 	docstring const disp_fn = makeDisplayPath(filename.absFilename());
 	docstring str;
 	if (buf) {
@@ -1884,6 +1891,25 @@ void LyXFunc::reloadBuffer()
 	}
 	lyx_view_->message(str);
 }
+
+
+void LyXFunc::checkExternallyModifiedBuffers()
+{
+	BufferList::iterator bit = theBufferList().begin();
+	BufferList::iterator const bend = theBufferList().end();
+	for (; bit != bend; ++bit) {
+		if ((*bit)->isExternallyModified(Buffer::checksum_method)) {
+			docstring text = bformat(_("Document \n%1$s\n has been externally modified."
+					" Reload now? Any local changes will be lost."),
+					from_utf8((*bit)->absFileName()));
+			int const ret = Alert::prompt(_("Reload externally changed document?"),
+						text, 0, 1, _("&Reload"), _("&Cancel"));
+			if (!ret)
+				reloadBuffer(*bit);
+		}
+	}
+}
+
 
 // Each "lyx_view_" should have it's own message method. lyxview and
 // the minibuffer would use the minibuffer, but lyxserver would

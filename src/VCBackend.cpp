@@ -12,8 +12,11 @@
 
 #include "VCBackend.h"
 #include "Buffer.h"
+#include "LyXFunc.h"
+#include "FuncRequest.h"
 
 #include "frontends/alert.h"
+#include "frontends/Application.h"
 
 #include "support/debug.h"
 #include "support/filetools.h"
@@ -724,9 +727,15 @@ string SVN::repoUpdate()
 				"In case of file conflict version of the local directory files "
 				"will be preferred."
 				"\n\nContinue?"), file);
-		int const ret = frontend::Alert::prompt(_("Changes detected"),
+		int ret = frontend::Alert::prompt(_("Changes detected"),
+				text, 0, 1, _("&Yes"), _("&No"), _("View &Log"));
+		if (ret == 2 ) {
+			dispatch(FuncRequest(LFUN_DIALOG_SHOW, "file " + tmpf.absFilename()));
+			ret = frontend::Alert::prompt(_("Changes detected"),
 				text, 0, 1, _("&Yes"), _("&No"));
-		if (ret) {
+			hideDialogs("file", 0);
+		}
+		if (ret == 1 ) {
 			tmpf.erase();
 			return string();
 		}

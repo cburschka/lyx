@@ -127,10 +127,13 @@ private:
 
 	///
 	void reloadBuffer();
+	void reloadBuffer(Buffer * buf);
 	///
 	bool ensureBufferClean(BufferView * bv);
 	///
 	void updateLayout(DocumentClass const * const oldlayout, Buffer * buffer);
+	/// check for external change of any opened buffer, mainly for svn usage
+	void checkExternallyModifiedBuffers();
 };
 
 /// Implementation is in LyX.cpp
