@@ -2628,7 +2628,6 @@ msgid "&Global"
 msgstr "&Globálnì"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:136
-#, fuzzy
 msgid ""
 "If checked, the document language is not explicitly set by a language switch "
 "command"
@@ -2640,7 +2639,6 @@ msgid "Auto &begin"
 msgstr "Auto. &zaèátek"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:146
-#, fuzzy
 msgid ""
 "If checked, the document language is not explicitly closed by a language "
 "switch command"
@@ -5686,18 +5684,16 @@ msgid "Postal comment"
 msgstr "Postal comment"
 
 #: lib/layouts/dinbrief.layout:83
-#, fuzzy
 msgid "Postal Remark:"
-msgstr "Postvermerk:"
+msgstr "Postal Remark:"
 
 #: lib/layouts/dinbrief.layout:88
 msgid "Handling"
 msgstr "Handling"
 
 #: lib/layouts/dinbrief.layout:90
-#, fuzzy
 msgid "Handling:"
-msgstr "Handling"
+msgstr "Handling:"
 
 #: lib/layouts/dinbrief.layout:94 lib/layouts/g-brief-en.layout:103
 #: lib/layouts/g-brief2.layout:758
@@ -5724,9 +5720,8 @@ msgid "Writer"
 msgstr "Writer"
 
 #: lib/layouts/dinbrief.layout:108
-#, fuzzy
 msgid "Writer:"
-msgstr "Writer"
+msgstr "Writer:"
 
 #: lib/layouts/dinbrief.layout:112 lib/layouts/g-brief-en.layout:54
 #: lib/layouts/g-brief2.layout:892 lib/layouts/scrlettr.layout:132
@@ -5746,18 +5741,16 @@ msgid "Bottomtext"
 msgstr "Bottomtext"
 
 #: lib/layouts/dinbrief.layout:121
-#, fuzzy
 msgid "Bottom text:"
-msgstr "Bottomtext"
+msgstr "Bottom text:"
 
 #: lib/layouts/dinbrief.layout:129
 msgid "Area code"
 msgstr "Area code"
 
 #: lib/layouts/dinbrief.layout:131
-#, fuzzy
 msgid "Area Code:"
-msgstr "Area code"
+msgstr "Area Code:"
 
 #: lib/layouts/dinbrief.layout:135 lib/layouts/scrlettr.layout:146
 #: lib/layouts/scrlttr2.layout:181 lib/layouts/stdletter.inc:126
@@ -15582,7 +15575,7 @@ msgid "Uncodable character in author name"
 msgstr "Nekódovatelné znaky ve jménu autora"
 
 #: src/Changes.cpp:380
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The author name '%1$s',\n"
 "used for change tracking, contains glyphs that cannot be\n"
@@ -16633,18 +16626,19 @@ msgid "Could not reload document %1$s"
 msgstr "Nelze znovunaèíst dokument %1$s"
 
 #: src/LyXFunc.cpp:1902
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Document \n"
 "%1$s\n"
 " has been externally modified. Reload now? Any local changes will be lost."
 msgstr ""
-"Dokument %1$s byl externì modifikován. Opravdu chcete tento soubor pøepsat?"
+"Dokument \n"
+"%1$s \n"
+" byl externì modifikován. Znovu naèíst? Jakékoliv editaèní zmìny budou ztraceny."
 
 #: src/LyXFunc.cpp:1905
-#, fuzzy
 msgid "Reload externally changed document?"
-msgstr "Ulo¾it zmìnìný soubor?"
+msgstr "Znovunaèíst externì modifikovaný dokument?"
 
 #: src/LyXFunc.cpp:1906 src/buffer_funcs.cpp:75
 msgid "&Reload"
@@ -17544,7 +17538,7 @@ msgstr "&Ne"
 
 #: src/VCBackend.cpp:731
 msgid "View &Log ..."
-msgstr ""
+msgstr "Zobraz &Log ..."
 
 #: src/VCBackend.cpp:797
 msgid "VCN File Locking"
