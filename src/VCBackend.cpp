@@ -728,7 +728,7 @@ string SVN::repoUpdate()
 				"will be preferred."
 				"\n\nContinue?"), file);
 		int ret = frontend::Alert::prompt(_("Changes detected"),
-				text, 0, 1, _("&Yes"), _("&No"), _("View &Log"));
+				text, 0, 1, _("&Yes"), _("&No"), _("View &Log ..."));
 		if (ret == 2 ) {
 			dispatch(FuncRequest(LFUN_DIALOG_SHOW, "file " + tmpf.absFilename()));
 			ret = frontend::Alert::prompt(_("Changes detected"),
