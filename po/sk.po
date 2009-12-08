@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-12-08 09:37+0100\n"
-"PO-Revision-Date: 2009-11-15 18:47+0100\n"
+"PO-Revision-Date: 2009-12-08 19:56+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenský <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -16621,18 +16621,18 @@ msgstr "Dokument %1$s znovu nahraný."
 msgid "Could not reload document %1$s"
 msgstr "Nedá sa znova nahrať dokument %1$s"
 
-#: src/LyXFunc.cpp:1902
-#, fuzzy, c-format
+#: src/LyXFunc.cpp:1902, c-format
 msgid ""
 "Document \n"
 "%1$s\n"
 " has been externally modified. Reload now? Any local changes will be lost."
-msgstr "Dokument %1$s bol externe modifikovaný. Naozaj ho chcete prepísať?"
+msgstr ""
+"Dokument %1$s bol externe modifikovaný. Naozaj ho chcete znovu načítať? "
+"Všetky lokálne zmeny sa stratia."
 
 #: src/LyXFunc.cpp:1905
-#, fuzzy
 msgid "Reload externally changed document?"
-msgstr "Uložiť zmenený dokument?"
+msgstr "Znovu načítať externe zmenený dokument?"
 
 #: src/LyXFunc.cpp:1906 src/buffer_funcs.cpp:75
 msgid "&Reload"
@@ -17526,7 +17526,7 @@ msgstr "nie"
 
 #: src/VCBackend.cpp:731
 msgid "View &Log ..."
-msgstr ""
+msgstr "Prehliadnuť zápisný súbor..."
 
 #: src/VCBackend.cpp:797
 msgid "VCN File Locking"
