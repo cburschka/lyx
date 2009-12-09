@@ -239,11 +239,9 @@ int TextMetrics::rightMargin(pit_type const pit) const
 
 void TextMetrics::applyOuterFont(Font & font) const
 {
-	Font lf(font_);
-	lf.fontInfo().reduce(bv_->buffer().params().getFont().fontInfo());
-	lf.fontInfo().realize(font.fontInfo());
-	lf.setLanguage(font.language());
-	font = lf;
+	FontInfo lf(font_.fontInfo());
+	lf.reduce(bv_->buffer().params().getFont().fontInfo());
+	font.fontInfo().realize(lf); 
 }
 
 
