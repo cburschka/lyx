@@ -78,6 +78,9 @@ What's new
 
 - Do not warn or save an emergency file when reverting a document.
 
+- Fix the painting of text with custom font properties in insets
+  that have a default font (bug 6113).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
