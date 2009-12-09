@@ -167,6 +167,7 @@ Inset * InsetCaption::editXY(Cursor & cur, int x, int y)
 bool InsetCaption::insetAllowed(InsetCode code) const
 {
 	switch (code) {
+	// code that is not allowed in a caption
 	case FLOAT_CODE:
 	case TABULAR_CODE:
 	case WRAP_CODE:
