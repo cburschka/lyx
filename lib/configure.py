@@ -276,7 +276,7 @@ def checkFormatEntries(dtl_tools):
     checkViewer('a FEN viewer and editor', ['xboard -lpf $$i -mode EditPosition'],
         rc_entry = [r'\Format fen        fen     FEN                    "" "%%"	"%%"	""'])
     #
-    checkViewerEditor('a SVG viewer and editor', ['inkscape'],
+    checkViewer('an SVG viewer and editor', ['inkscape'],
         rc_entry = [r'\Format svg        svg     SVG                    "" "%%" "%%"	"vector"'])
     #
     path, iv = checkViewer('a raster image viewer', ['xv', 'kview', 'gimp-remote', 'gimp'])
