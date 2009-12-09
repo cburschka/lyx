@@ -77,14 +77,12 @@ public:
 	///
 	Token(docstring const & cs, CatCode cat) : cs_(to_utf8(cs)), cat_(cat) {}
 
-	///
+	/// Returns the token as string
 	std::string const & cs() const { return cs_; }
 	/// Returns the catcode of the token
 	CatCode cat() const { return cat_; }
 	///
 	char character() const { return cs_.empty() ? 0 : cs_[0]; }
-	/// Returns the token as string
-	std::string asString() const;
 	/// Returns the token verbatim
 	std::string asInput() const;
 

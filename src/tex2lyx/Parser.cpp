@@ -110,12 +110,6 @@ ostream & operator<<(ostream & os, Token const & t)
 }
 
 
-string Token::asString() const
-{
-	return cs_;
-}
-
-
 string Token::asInput() const
 {
 	if (cat_ == catComment)
@@ -492,7 +486,7 @@ string Parser::verbatimOption()
 				putback();
 				res += '{' + verbatim_item() + '}';
 			} else
-				res += t.asString();
+				res += t.cs();
 		}
 	}
 	return res;

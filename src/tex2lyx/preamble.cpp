@@ -347,7 +347,7 @@ void handle_package(Parser &p, string const & name, string const & opts,
 		if (opts.find(",") == string::npos && one_language == true) {
 			if (opts == "ascii")
 				//change ascii to auto to be in the unicode range, see
-				//http://bugzilla.lyx.org/show_bug.cgi?id=4719
+				//http://www.lyx.org/trac/ticket/4719
 				h_inputencoding = "auto";
 			else if (!opts.empty())
 				h_inputencoding = opts;
@@ -741,7 +741,7 @@ void parse_preamble(Parser & p, ostream & os,
 		else if (t.cs() == "def") {
 			string name = p.get_token().cs();
 			while (p.next_token().cat() != catBegin)
-				name += p.get_token().asString();
+				name += p.get_token().cs();
 			if (!in_lyx_preamble)
 				h_preamble << "\\def\\" << name << '{'
 					   << p.verbatim_item() << "}";

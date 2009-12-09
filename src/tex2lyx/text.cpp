@@ -1484,9 +1484,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 						else
 							simple = false;
 					} else
-						paramtext += p.get_token().asString();
+						paramtext += p.get_token().cs();
 				} else {
-					paramtext += p.get_token().asString();
+					paramtext += p.get_token().cs();
 					simple = false;
 				}
 			}
@@ -1816,7 +1816,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "listof") {
 			p.skip_spaces(true);
-			string const name = p.get_token().asString();
+			string const name = p.get_token().cs();
 			if (context.textclass.floats().typeExist(name)) {
 				context.check_layout(os);
 				begin_inset(os, "FloatList ");
