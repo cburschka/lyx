@@ -547,7 +547,7 @@ void parse_preamble(Parser & p, ostream & os,
 		     t.cat() == catEnd ||
 		     t.cat() == catAlign ||
 		     t.cat() == catParameter))
-			h_preamble << t.character();
+			h_preamble << t.cs();
 
 		else if (!in_lyx_preamble && 
 			 (t.cat() == catSpace || t.cat() == catNewline))
