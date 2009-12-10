@@ -24,8 +24,10 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-* LyX now supports SVG images when either the program 'rsvg' or 'Inkscape'
+- LyX now supports SVG images when either the program 'rsvg' or 'Inkscape'
   is installed (bug 3349).
+
+- The definition of multi-accented polytonic Greek has been simplified.
 
 
 * USER INTERFACE
@@ -40,7 +42,7 @@ What's new
 
 - The dinbrief template was revised.
 
-- Updated German and Czech user interface localization.
+- Updated German, Czech and Slovak user interface localization.
 
 - The rpm README file was updated.
 
@@ -69,9 +71,6 @@ What's new
 
 * USER INTERFACE
 
-- Fix layout of the Paragraph dialog (particularly within CJK
-  localization).
-
 - Detect user-specified package dependencies for modules (bug 6361).
 
 - Prevent the error dialog from jumping to the first item when
@@ -83,6 +82,9 @@ What's new
 
 - Fix the painting of text with custom font properties in insets
   that have a default font (bug 6113).
+
+- Fix layout of the Paragraph dialog (particularly within CJK
+  localization).
 
 
 * DOCUMENTATION AND LOCALIZATION
