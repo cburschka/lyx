@@ -2405,10 +2405,8 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 
 	Layout const & style = *d->layout_;
 
-	if (!fortoc 
-	    && style.toclevel != Layout::NOT_IN_TOC
-	    && style.toclevel <= buf.params().tocdepth) {
-		// we need to generate a magic label for this paragraph
+	if (!fortoc) {
+		// generate a magic label for this paragraph
 		string const attr = "id='" + magicLabel() + "'";
 		xs << CompTag("a", attr);
 	}
