@@ -318,22 +318,27 @@ void handle_package(Parser &p, string const & name, string const & opts,
 		delete_opt(options, known_languages);
 		if (is_known(h_language, known_brazilian_languages))
 			h_language = "brazilian";
-		else if (is_known(h_language, known_french_languages))
+		else if (is_known(h_language, known_french_languages)) {
 			h_language = "french";
-		else if (is_known(h_language, known_german_languages))
+			h_quotes_language = "french";
+		} else if (is_known(h_language, known_german_languages)) {
 			h_language = "german";
-		else if (is_known(h_language, known_ngerman_languages))
+			h_quotes_language = "german";
+		} else if (is_known(h_language, known_ngerman_languages)) {
 			h_language = "ngerman";
-		else if (is_known(h_language, known_portuguese_languages))
+			h_quotes_language = "german";
+		} else if (is_known(h_language, known_portuguese_languages))
 			h_language = "portuguese";
 		else if (is_known(h_language, known_russian_languages))
 			h_language = "russian";
 		else if (is_known(h_language, known_ukrainian_languages))
 			h_language = "ukrainian";
-		h_quotes_language = h_language;
-		// there is only the quotes language "german"
-		if (h_quotes_language == "ngerman")
-			h_quotes_language = "german";
+		// LyX only knows the following quotes languages:
+		// english, swedish, german, polish, french and danish
+		// french and german are already handled, english is the default
+		if (h_language == "swedish" || h_language == "polish"
+			|| h_language == "danish")
+			h_quotes_language = h_language;
 	}
 
 	else if (name == "fontenc")
@@ -397,26 +402,29 @@ void handle_package(Parser &p, string const & name, string const & opts,
 		  // command. This command is handled below.
 
 	else if (is_known(name, known_languages)) {
-		if (is_known(h_language, known_brazilian_languages))
+		if (is_known(name, known_brazilian_languages))
 				h_language = "brazilian";
 		else if (is_known(name, known_french_languages))
 			h_language = "french";
-		else if (is_known(name, known_german_languages))
+			h_quotes_language = "french";
+		} else if (is_known(name, known_german_languages)) {
 			h_language = "german";
-		else if (is_known(name, known_ngerman_languages))
+			h_quotes_language = "german";
+		} else if (is_known(name, known_ngerman_languages)) {
 			h_language = "ngerman";
-		else if (is_known(h_language, known_portuguese_languages))
-				h_language = "portuguese";
+			h_quotes_language = "german";
+		} else if (is_known(name, known_portuguese_languages))
+			h_language = "portuguese";
 		else if (is_known(name, known_russian_languages))
 			h_language = "russian";
 		else if (is_known(name, known_ukrainian_languages))
 			h_language = "ukrainian";
-		else
-			h_language = name;
-		h_quotes_language = h_language;
-		// there is only the quotes language "german"
-		if (h_quotes_language == "ngerman")
-			h_quotes_language = "german";
+		// LyX only knows the following quotes languages:
+		// english, swedish, german, polish, french and danish
+		// french and german are already handled, english is the default
+		if (name == "swedish" || name == "polish"
+			|| name == "danish")
+			h_quotes_language = name;
 	}
 
 	else if (name == "natbib") {
@@ -660,19 +668,27 @@ void parse_preamble(Parser & p, ostream & os,
 			delete_opt(opts, known_languages);
 			if (is_known(h_language, known_brazilian_languages))
 				h_language = "brazilian";
-			else if (is_known(h_language, known_french_languages))
+			else if (is_known(h_language, known_french_languages)) {
 				h_language = "french";
-			else if (is_known(h_language, known_german_languages))
+				h_quotes_language = "french";
+			} else if (is_known(h_language, known_german_languages)) {
 				h_language = "german";
-			else if (is_known(h_language, known_ngerman_languages))
+				h_quotes_language = "german";
+			} else if (is_known(h_language, known_ngerman_languages)) {
 				h_language = "ngerman";
-			else if (is_known(h_language, known_portuguese_languages))
+				h_quotes_language = "german";
+			} else if (is_known(h_language, known_portuguese_languages))
 				h_language = "portuguese";
 			else if (is_known(h_language, known_russian_languages))
 				h_language = "russian";
 			else if (is_known(h_language, known_ukrainian_languages))
 				h_language = "ukrainian";
-			h_quotes_language = h_language;
+			// LyX only knows the following quotes languages:
+			// english, swedish, german, polish, french and danish
+			// french and german are already handled, english is the default
+			if (h_language == "swedish" || h_language == "polish"
+				|| h_language == "danish")
+				h_quotes_language = h_language;
 			// paper orientation
 			if ((it = find(opts.begin(), opts.end(), "landscape")) != opts.end()) {
 				h_paperorientation = "landscape";
