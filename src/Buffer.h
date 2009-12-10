@@ -525,10 +525,16 @@ public:
 	// FIXME This really shouldn't be needed, but at the moment it's not
 	// clear how to do it just for the individual pieces we need.
 	void setBuffersForInsets() const;
-	///
-	void updateLabels(bool output = false, UpdateScope = UpdateMaster) const;
-	///
-	void updateLabels(ParIterator & parit, bool output = false) const;
+	/// Updates screen labels and some other information associated with
+	/// insets and paragraphs. Actually, it's more like a general "recurse
+	/// through the Buffer" routine, that visits all the insets and paragraphs.
+	void updateLabels() const { updateLabels(UpdateMaster, false); }
+	/// \param scope: whether to start with the master document or just
+	/// do this one.
+	/// \param output: whether we are preparing for output.
+	void updateLabels(UpdateScope scope, bool output) const;
+	/// 
+	void updateLabels(ParIterator & parit, bool output) const;
 
 	/// Spellcheck starting from \p from.
 	/// \p from initial position, will then points to the next misspelled

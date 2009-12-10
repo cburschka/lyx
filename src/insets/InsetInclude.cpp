@@ -1025,7 +1025,7 @@ void InsetInclude::updateLabels(ParIterator const & it, bool out)
 {
 	Buffer const * const childbuffer = getChildBuffer();
 	if (childbuffer) {
-		childbuffer->updateLabels(out, Buffer::UpdateChildOnly);
+		childbuffer->updateLabels(Buffer::UpdateChildOnly, out);
 		return;
 	}
 	if (!isListings(params()))

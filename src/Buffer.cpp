@@ -1417,9 +1417,7 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 {
 	LaTeXFeatures features(*this, params(), runparams);
 	validate(features);
-	// We are going to use some of this stuff ourselves,
-	// so make sure it is up to date.
-	updateLabels();
+	updateLabels(UpdateMaster, true);
 
 	d->texrow.reset();
 
@@ -3442,7 +3440,7 @@ void Buffer::setBuffersForInsets() const
 }
 
 
-void Buffer::updateLabels(bool out, UpdateScope scope) const
+void Buffer::updateLabels(UpdateScope scope, bool out) const
 {
 	// Use the master text class also for child documents
 	Buffer const * const master = masterBuffer();
@@ -3456,7 +3454,7 @@ void Buffer::updateLabels(bool out, UpdateScope scope) const
 		// If this is a child document start with the master
 		if (master != this) {
 			bufToUpdate.insert(this);
-			master->updateLabels(out);
+			master->updateLabels(UpdateMaster, out);
 			// Do this here in case the master has no gui associated with it. Then, 
 			// the TocModel is not updated and TocModel::toc_ is invalid (bug 5699).
 			if (!master->gui_)
