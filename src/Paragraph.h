@@ -424,6 +424,9 @@ public:
 	/// Spellcheck word at position \p pos.
 	/// \return true if pointed word is misspelled.
 	bool isMisspelled(pos_type pos) const;
+	/// an automatically generated identifying label for this paragraph.
+	/// presently used only in the XHTML output routines.
+	std::string magicLabel() const;
 
 private:
 	///

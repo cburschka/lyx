@@ -34,6 +34,12 @@ AddToHTMLPreamble
 	div.lyxtoc-4 { margin: 0em 0em 0em 1em; }
 	div.lyxtoc-5 { margin: 0em 0em 0em 1em; }
 	div.lyxtoc-6 { margin: 0em 0em 0em 1em; }
+	a.tocarrow { 
+		font-weight: bold; 
+		text-decoration: none; 
+		color: #909090; 
+	}
+	a.tocarrow:visited { color: #C0C0C0; }
 </style>
 EndPreamble
 

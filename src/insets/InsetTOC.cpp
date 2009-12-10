@@ -119,8 +119,10 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 	int lastdepth = 0;
 	for (; it != en; ++it) {
 		Paragraph const & par = it->dit().innerParagraph();
-		Font const dummy;
 		int const depth = it->depth();
+		if (depth > buffer().params().tocdepth)
+			continue;
+		Font const dummy;
 		if (depth > lastdepth) {
 			xs.cr();
 			// open as many tags as we need to open to get to this level
@@ -149,7 +151,14 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 			attr << "class='lyxtoc-" << depth << "'";
 			xs << StartTag("div", attr.str());
 		}
+		string const parattr = "href='#" + par.magicLabel() + "' class='tocarrow'";
 		par.simpleLyXHTMLOnePar(buffer(), xs, op, dummy, true);
+		xs << " ";
+		xs << StartTag("a", parattr);
+		// FIXME XHTML 
+		// There ought to be a simple way to customize this.
+		xs << XHTMLStream::NextRaw() << "&seArr;";
+		xs << EndTag("a");		
 	}
 	for (int i = lastdepth; i > 0; --i) 
 		xs << EndTag("div");

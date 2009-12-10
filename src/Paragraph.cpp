@@ -2404,6 +2404,15 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 	std::string closing_tag;
 
 	Layout const & style = *d->layout_;
+
+	if (!fortoc 
+	    && style.toclevel != Layout::NOT_IN_TOC
+	    && style.toclevel <= buf.params().tocdepth) {
+		// we need to generate a magic label for this paragraph
+		string const attr = "id='" + magicLabel() + "'";
+		xs << CompTag("a", attr);
+	}
+
 	FontInfo font_old =
 		style.labeltype == LABEL_MANUAL ? style.labelfont : style.font;
 
@@ -3138,6 +3147,14 @@ bool Paragraph::isMisspelled(pos_type pos) const
 	WordLangTuple wl;
 	docstring_list suggestions;
 	return spellCheck(from, to, wl, suggestions, false);
+}
+
+
+string Paragraph::magicLabel() const
+{
+	stringstream ss;
+	ss << "magicparlabel-" << id();
+	return ss.str();
 }
 
 
