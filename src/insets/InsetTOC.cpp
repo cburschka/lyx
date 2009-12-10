@@ -91,9 +91,10 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 
 	xs << StartTag("div", "class='toc'");
 
-	// we want to figure out look like a chapter, section, or whatever.
+	// we want to look like a chapter, section, or whatever.
 	// so we're going to look for the layout with the minimum toclevel
-	// number. we'll take the first one, just because.
+	// number > 0, because we don't want Part. 
+	// we'll take the first one, just because.
 	DocumentClass const & dc = buffer().params().documentClass();
 	TextClass::LayoutList::const_iterator lit = dc.begin();
 	TextClass::LayoutList::const_iterator len = dc.end();
@@ -101,14 +102,14 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 	Layout const * lay = NULL;
 	for (; lit != len; ++lit) {
 		int const level = lit->toclevel;
-		if (level == Layout::NOT_IN_TOC || level >= minlevel)
+		if (level > 0 && (level == Layout::NOT_IN_TOC || level >= minlevel))
 			continue;
 		lay = &*lit;
 		minlevel = level;
 	}
 	
-	string const tocclass = lay ? lay->defaultCSSClass() + " ": "";
-	string const tocattr = "class='" + tocclass + "tochead'";
+	string const tocclass = lay ? " " + lay->defaultCSSClass(): "";
+	string const tocattr = "class='tochead" + tocclass + "'";
 	
 	xs << StartTag("div", tocattr) 
 	   << _("Table of Contents") 
@@ -156,16 +157,5 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 	return ods.str();
 }
 
-
-void InsetTOC::validate(LaTeXFeatures & features) const
-{
-	if (features.runparams().flavor != OutputParams::HTML)
-		return;
-	features.addPreambleSnippet("<style type=\"text/css\">\n"
-			"div.lyxtoc-1 { margin-left: 2em; text-indent: -2em; }\n"
-			"span.bibtexlabel:before{ content: \"[\"; }\n"
-			"span.bibtexlabel:after{ content: \"] \"; }\n"
-			"</style>");
-}
 
 } // namespace lyx

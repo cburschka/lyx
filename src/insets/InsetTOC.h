@@ -42,8 +42,6 @@ public:
 	///
 	static bool isCompatibleCommand(std::string const & cmd)
 		{ return cmd == defaultCommand(); }
-	///
-	void validate(LaTeXFeatures & features) const;
 private:
 	Inset * clone() const { return new InsetTOC(*this); }
 };

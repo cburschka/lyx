@@ -10,6 +10,34 @@
 
 Format 19
 
+# CSS for the TOC
+AddToHTMLPreamble
+<style type="text/css">
+	div.toc { 
+		margin: 2em 0em; 
+		border-style: solid; 
+		border-width: 2px 0px; 
+		padding: 1em 0em; 
+	}
+	div.tochead { font-size: x-large; font-weight: bold; }
+	div.lyxtoc-1 { 
+		margin: 1em 0em 0em 0em; 
+		font-size: x-large; 
+		font-weight: bold; 
+	}
+	div.lyxtoc-2 { 
+		margin: 0em 0em 0em 1em; 
+		font-size: large; 
+		font-weight: normal; 
+	}
+	div.lyxtoc-3 { margin: 0em 0em 0em 1em; font-size: medium; }
+	div.lyxtoc-4 { margin: 0em 0em 0em 1em; }
+	div.lyxtoc-5 { margin: 0em 0em 0em 1em; }
+	div.lyxtoc-6 { margin: 0em 0em 0em 1em; }
+</style>
+EndPreamble
+
+
 Style Title
 	Margin                Static
 	LatexType             Command
