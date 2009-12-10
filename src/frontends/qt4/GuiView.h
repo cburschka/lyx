@@ -290,6 +290,8 @@ private:
 	bool closeBuffer(Buffer & buf, bool tolastopened = false,
 		bool mark_active = false);
 	///
+	bool closeBufferAll(bool tolastopened = false);
+	///
 	enum NextOrPrevious {
 		NEXTBUFFER,
 		PREVBUFFER

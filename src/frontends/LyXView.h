@@ -66,6 +66,8 @@ public:
 	virtual void setBuffer(Buffer * b) = 0; ///< \c Buffer to set.
 	///
 	virtual bool closeBuffer() = 0;
+	///
+	virtual bool closeBufferAll(bool tolastopened = false) = 0;
 
 	/// load a document into the current workarea.
 	virtual Buffer * loadDocument(

@@ -46,6 +46,7 @@ Menuset
 		Submenu "Open Recent|t" "file_lastfiles"
 		Separator
 		Item "Close|C" "buffer-close"
+		Item "Close All" "buffer-close-all"
 		Item "Save|S" "buffer-write"
 		Item "Save As...|A" "buffer-write-as"
 		Item "Save All|l" "buffer-write-all"

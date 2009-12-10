@@ -851,6 +851,12 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			updateFlags = Update::None;
 			break;
 
+		case LFUN_BUFFER_CLOSE_ALL:
+			lyx_view_->closeBufferAll();
+			buffer = 0;
+			updateFlags = Update::None;
+			break;
+
 		case LFUN_BUFFER_RELOAD: {
 			LASSERT(lyx_view_ && buffer, /**/);
 			docstring const file = makeDisplayPath(buffer->absFileName(), 20);
