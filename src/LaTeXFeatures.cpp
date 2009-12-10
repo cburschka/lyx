@@ -414,7 +414,6 @@ bool LaTeXFeatures::isAvailable(string const & name)
 
 void LaTeXFeatures::addPreambleSnippet(string const & preamble)
 {
-	LYXERR0(preamble);
 	SnippetList::const_iterator begin = preamble_snippets_.begin();
 	SnippetList::const_iterator end   = preamble_snippets_.end();
 	if (find(begin, end, preamble) == end)
@@ -770,11 +769,8 @@ string LaTeXFeatures::getPreambleSnippets() const
 	ostringstream snip;
 	SnippetList::const_iterator pit  = preamble_snippets_.begin();
 	SnippetList::const_iterator pend = preamble_snippets_.end();
-	for (; pit != pend; ++pit) {
-		LYXERR0(*pit);
+	for (; pit != pend; ++pit)
 		snip << *pit << '\n';
-	}
-	LYXERR0(snip.str());
 	return snip.str();
 }
 
