@@ -58,6 +58,12 @@ public:
 	docstring const getFirstNonOptParam() const { return p_.getFirstNonOptParam(); }
 	/// update label and references.
 	virtual void updateCommand(docstring const &, bool) {}
+	/// 
+	virtual InsetCommand * asInsetCommand() { return this; }
+	/// 
+	virtual InsetCommand const * asInsetCommand() const { return this; }
+	/// whether to include this inset in the strings generated for the TOC
+	virtual bool isInToc() const { return false; }
 
 protected:
 	///
@@ -109,8 +115,6 @@ private:
 	virtual docstring screenLabel() const = 0;
 	///
 	bool showInsetDialog(BufferView * bv) const;
-
-private:
 	///
 	InsetCommandParams p_;
 	///

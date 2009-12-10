@@ -2394,6 +2394,7 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 				    XHTMLStream & xs,
 				    OutputParams const & runparams,
 				    Font const & outerfont,
+						bool fortoc,
 				    pos_type initial) const
 {
 	docstring retval;
@@ -2435,11 +2436,14 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 
 		Inset const * inset = getInset(i);
 		if (inset) {
+			InsetCommand const * ic = inset->asInsetCommand();
 			InsetLayout const & il = inset->getLayout();
-			OutputParams np = runparams;
-			if (!il.htmlisblock())
-				np.html_in_par = true;
-			retval += inset->xhtml(xs, np);
+			if (!fortoc || il.isInToc() || (ic && ic->isInToc())) {
+				OutputParams np = runparams;
+				if (!il.htmlisblock())
+					np.html_in_par = true;
+				retval += inset->xhtml(xs, np);
+			}
 		} else {
 			char_type c = d->text_[i];
 

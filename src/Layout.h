@@ -122,6 +122,8 @@ public:
 	/// 
 	std::string const & htmllabelattr() const;
 	///
+	std::string defaultCSSClass() const;
+	///
 	bool htmllabelfirst() const { return htmllabelfirst_; }
 	/// 
 	docstring htmlstyle() const;
@@ -253,8 +255,6 @@ public:
 private:
 	/// generates the default CSS for this layout
 	void makeDefaultCSS() const;
-	///
-	std::string defaultCSSClass() const;
 	///
 	std::string defaultCSSItemClass() const { return defaultCSSClass() + "_item"; }
 	///

@@ -238,6 +238,7 @@ void XHTMLStream::clearTagDeque()
 		StartTag const & tag = pending_tags_.front();
 		// tabs?
 		os_ << tag.asTag();
+		cr();
 		tag_stack_.push_back(tag);
 		pending_tags_.pop_front();
 	}
@@ -306,6 +307,7 @@ XHTMLStream & XHTMLStream::operator<<(CompTag const & tag)
 	clearTagDeque();
 	// tabs?
 	os_ << tag.asTag();
+	cr();
 	return *this;
 }
 
@@ -350,7 +352,8 @@ XHTMLStream & XHTMLStream::operator<<(EndTag const & etag)
 			if (dit->tag_ == etag.tag_) {
 				// it was pending, so we just erase it
 				writeError("Tried to close pending tag `" + etag.tag_ 
-				        + "' when other tags were pending. Tag discarded.");
+				        + "' when other tags were pending. Last pending tag is `"
+				        + pending_tags_.back().tag_ + "'. Tag discarded.");
 				pending_tags_.erase(dit);
 				return *this;
 			}
@@ -378,6 +381,7 @@ XHTMLStream & XHTMLStream::operator<<(EndTag const & etag)
 	if (etag.tag_ == tag_stack_.back().tag_) {
 		// output it...
 		os_ << etag.asEndTag();
+		cr();
 		// ...and forget about it
 		tag_stack_.pop_back();
 		return *this;
@@ -420,12 +424,14 @@ XHTMLStream & XHTMLStream::operator<<(EndTag const & etag)
 		TagStack fontstack;
 		while (curtag.tag_ != etag.tag_) {
 			os_ << curtag.asEndTag();
+			cr();
 			fontstack.push_back(curtag);
 			tag_stack_.pop_back();
 			curtag = tag_stack_.back();
 		}
 		// now close our tag...
 		os_ << etag.asEndTag();
+		cr();
 		tag_stack_.pop_back();
 
 		// ...and restore the other tags.
@@ -705,7 +711,7 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 						openItemTag(xs, style);
 				}
 				par->simpleLyXHTMLOnePar(buf, xs, runparams, 
-					text.outerFont(distance(begin, par)), sep);
+					text.outerFont(distance(begin, par)), false, sep);
 				++par;
 				// We may not want to close the tag yet, in particular,
 				// if we're not at the end...

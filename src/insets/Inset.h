@@ -37,6 +37,7 @@ class DocIterator;
 class FuncRequest;
 class FuncStatus;
 class InsetCollapsable;
+class InsetCommand;
 class InsetIterator;
 class InsetLayout;
 class InsetList;
@@ -138,6 +139,10 @@ public:
 	virtual InsetTabular * asInsetTabular() { return 0; }
 	/// is this inset based on the InsetTabular class?
 	virtual InsetTabular const * asInsetTabular() const { return 0; }
+	/// is this inset based on the InsetCommand class?
+	virtual InsetCommand * asInsetCommand() { return 0; }
+	/// is this inset based on the InsetCommand class?
+	virtual InsetCommand const * asInsetCommand() const { return 0; }
 
 	/// the real dispatcher
 	void dispatch(Cursor & cur, FuncRequest & cmd);

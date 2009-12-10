@@ -47,12 +47,14 @@ public:
 	///
 	static ParamInfo const & findInfo(std::string const &);
 	///
-	static std::string defaultCommand() { return "href"; };
+	static std::string defaultCommand() { return "href"; }
 	///
 	static bool isCompatibleCommand(std::string const & s) 
 		{ return s == "href"; }
 	/// Force inset into LTR environment if surroundings are RTL?
 	bool forceLTR() const { return true; }
+	///
+	virtual bool isInToc() const { return true; }
 private:
 	Inset * clone() const { return new InsetHyperlink(*this); }
 };

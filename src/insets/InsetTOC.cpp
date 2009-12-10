@@ -13,12 +13,18 @@
 #include "InsetTOC.h"
 
 #include "Buffer.h"
+#include "BufferParams.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
+#include "LaTeXFeatures.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
+#include "output_xhtml.h"
+#include "Paragraph.h"
+#include "TextClass.h"
 #include "TocBackend.h"
 
+#include "support/debug.h"
 #include "support/gettext.h"
 
 #include <ostream>
@@ -66,5 +72,100 @@ int InsetTOC::docbook(odocstream & os, OutputParams const &) const
 	return 0;
 }
 
+
+docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
+{
+	// we'll use our own stream, because we are going to defer everything.
+	// that's how we deal with the fact that we're probably inside a standard
+	// paragraph, and we don't want to be.
+	odocstringstream ods;
+	XHTMLStream xs(ods);
+	// FIXME XHTML
+	// This is temporary. We'll get the main TOC working first. The rest will
+	// then be a fairly simple adapation of this code, I hope.
+	if (getCmdName() != "tableofcontents")
+		return docstring();
+	Toc const & toc = buffer().tocBackend().toc("tableofcontents");
+	if (toc.empty())
+		return docstring();
+
+	xs << StartTag("div", "class='toc'");
+
+	// we want to figure out look like a chapter, section, or whatever.
+	// so we're going to look for the layout with the minimum toclevel
+	// number. we'll take the first one, just because.
+	DocumentClass const & dc = buffer().params().documentClass();
+	TextClass::LayoutList::const_iterator lit = dc.begin();
+	TextClass::LayoutList::const_iterator len = dc.end();
+	int minlevel = 1000;
+	Layout const * lay = NULL;
+	for (; lit != len; ++lit) {
+		int const level = lit->toclevel;
+		if (level == Layout::NOT_IN_TOC || level >= minlevel)
+			continue;
+		lay = &*lit;
+		minlevel = level;
+	}
+	
+	string const tocclass = lay ? lay->defaultCSSClass() + " ": "";
+	string const tocattr = "class='" + tocclass + "tochead'";
+	
+	xs << StartTag("div", tocattr) 
+	   << _("Table of Contents") 
+		 << EndTag("div");
+	Toc::const_iterator it = toc.begin();
+	Toc::const_iterator const en = toc.end();
+	int lastdepth = 0;
+	for (; it != en; ++it) {
+		Paragraph const & par = it->dit().innerParagraph();
+		Font const dummy;
+		int const depth = it->depth();
+		if (depth > lastdepth) {
+			xs.cr();
+			// open as many tags as we need to open to get to this level
+			// this includes the tag for the current level
+			for (int i = lastdepth + 1; i <= depth; ++i) {
+				stringstream attr;
+				attr << "class='lyxtoc-" << i << "'";
+				xs << StartTag("div", attr.str());
+			}
+			lastdepth = depth;
+		}
+		else if (depth < lastdepth) {
+			// close as many as we have to close to get back to this level
+			// this includes closing the last tag at this level
+			for (int i = lastdepth; i >= depth; --i) 
+				xs << EndTag("div");
+			// now open our tag
+			stringstream attr;
+			attr << "class='lyxtoc-" << depth << "'";
+			xs << StartTag("div", attr.str());
+			lastdepth = depth;
+		} else {
+			// no change of level, so close and open
+			xs << EndTag("div");
+			stringstream attr;
+			attr << "class='lyxtoc-" << depth << "'";
+			xs << StartTag("div", attr.str());
+		}
+		par.simpleLyXHTMLOnePar(buffer(), xs, op, dummy, true);
+	}
+	for (int i = lastdepth; i > 0; --i) 
+		xs << EndTag("div");
+	xs << EndTag("div");
+	return ods.str();
+}
+
+
+void InsetTOC::validate(LaTeXFeatures & features) const
+{
+	if (features.runparams().flavor != OutputParams::HTML)
+		return;
+	features.addPreambleSnippet("<style type=\"text/css\">\n"
+			"div.lyxtoc-1 { margin-left: 2em; text-indent: -2em; }\n"
+			"span.bibtexlabel:before{ content: \"[\"; }\n"
+			"span.bibtexlabel:after{ content: \"] \"; }\n"
+			"</style>");
+}
 
 } // namespace lyx

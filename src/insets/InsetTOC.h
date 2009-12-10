@@ -34,12 +34,16 @@ public:
 	///
 	int docbook(odocstream &, OutputParams const &) const;
 	///
+	docstring xhtml(XHTMLStream & xs, OutputParams const &) const;
+	///
 	static ParamInfo const & findInfo(std::string const &);
 	///
-	static std::string defaultCommand() { return "tableofcontents"; };
+	static std::string defaultCommand() { return "tableofcontents"; }
 	///
 	static bool isCompatibleCommand(std::string const & cmd)
 		{ return cmd == defaultCommand(); }
+	///
+	void validate(LaTeXFeatures & features) const;
 private:
 	Inset * clone() const { return new InsetTOC(*this); }
 };
