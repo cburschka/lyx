@@ -48,7 +48,7 @@ class ProtectCopy
 protected:
 	ProtectCopy() {}
 	~ProtectCopy() {}
-	ProtectCopy(const ProtectCopy &) {};
+	ProtectCopy(const ProtectCopy &) {}
 private:
 	const ProtectCopy & operator=(const ProtectCopy &);
 };
@@ -77,7 +77,7 @@ private:
 class TextClass : protected ProtectCopy {
 public:
 	///
-	virtual ~TextClass() {};
+	virtual ~TextClass() {}
 	///////////////////////////////////////////////////////////////////
 	// typedefs
 	///////////////////////////////////////////////////////////////////
@@ -126,7 +126,7 @@ public:
 	/// returns a special layout for use when we don't really want one,
 	/// e.g., in table cells
 	Layout const & plainLayout() const 
-			{ return operator[](plain_layout_); };
+			{ return operator[](plain_layout_); }
 	/// the name of the plain layout
 	docstring const & plainLayoutName() const 
 			{ return plain_layout_; }
@@ -139,7 +139,7 @@ public:
 	///
 	Layout const & operator[](docstring const & vname) const;
 	/// Inset layouts of this doc class
-	InsetLayouts const & insetLayouts() const { return insetlayoutlist_; };
+	InsetLayouts const & insetLayouts() const { return insetlayoutlist_; }
 
 	///////////////////////////////////////////////////////////////////
 	// reading routines
@@ -404,9 +404,9 @@ public:
 	/// Text that dictates how wide the right margin is on the screen
 	docstring const & rightmargin() const { return rightmargin_; }
 	/// The type of command used to produce a title
-	TitleLatexType titletype() const { return titletype_; };
+	TitleLatexType titletype() const { return titletype_; }
 	/// The name of the title command
-	std::string const & titlename() const { return titlename_; };
+	std::string const & titlename() const { return titlename_; }
 	///
 	int size() const { return layoutlist_.size(); }
 	/// The minimal TocLevel of sectioning layouts
