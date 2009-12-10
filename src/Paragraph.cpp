@@ -2312,7 +2312,7 @@ pos_type Paragraph::firstWordLyXHTML(XHTMLStream & xs, OutputParams const & runp
 			char_type c = d->text_[i];
 			if (c == ' ')
 				break;
-			xs << html::escapeChar(c);
+			xs << c;
 		}
 	}
 	return i;
