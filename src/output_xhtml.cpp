@@ -696,7 +696,7 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 					if (style.labeltype == LABEL_MANUAL
 					    && style.htmllabeltag() != "NONE") {
 						openLabelTag(xs, style);
-//						sep = par->firstWordLyXHTML(xs, runparams);
+						sep = par->firstWordLyXHTML(xs, runparams);
 						closeLabelTag(xs, style);
 						xs.cr();
 					}
