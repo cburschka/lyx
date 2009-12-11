@@ -1303,7 +1303,7 @@ void Cursor::niceInsert(docstring const & t, Parse::flags f, bool enter)
 {
 	MathData ar(buffer());
 	asArray(t, ar, f);
-	if (ar.size() == 1 && (selection() || enter))
+	if (ar.size() == 1 && (enter || selection()))
 		niceInsert(ar[0]);
 	else
 		insert(ar);
