@@ -111,7 +111,7 @@ Inset * DocIterator::prevInset() const
 		if (cell().empty())
 			// FIXME: this should not happen but it does.
 			// See bug 3189
-			// http://bugzilla.lyx.org/show_bug.cgi?id=3189
+			// http://www.lyx.org/trac/ticket/3189
 			return 0;
 		else
 			return prevAtom().nucleus();

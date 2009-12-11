@@ -1057,7 +1057,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		if (inset) {
 			// FIXME (Abdel 01/02/2006):
 			// What follows would be a partial fix for bug 2154:
-			//   http://bugzilla.lyx.org/show_bug.cgi?id=2154
+			//   http://www.lyx.org/trac/ticket/2154
 			// This automatically put the label inset _after_ a
 			// numbered section. It should be possible to extend the mechanism
 			// to any kind of LateX environement.

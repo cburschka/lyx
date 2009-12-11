@@ -1056,7 +1056,7 @@ void BufferParams::validate(LaTeXFeatures & features) const
 		features.require("hyperref");
 		// due to interferences with babel and hyperref, the color package has to
 		// be loaded after hyperref when hyperref is used with the colorlinks
-		// option, see http://bugzilla.lyx.org/show_bug.cgi?id=5291
+		// option, see http://www.lyx.org/trac/ticket/5291
 		if (pdfoptions().colorlinks)
 			features.require("color");
 	}
@@ -1173,7 +1173,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		size_t mongo = language_options.str().find("mongolian");
 		// if Japanese is used, babel must directly be loaded
 		// with language options, not in the class options, see
-		// http://bugzilla.lyx.org/show_bug.cgi?id=4597#c4
+		// http://www.lyx.org/trac/ticket/4597#c4
 		size_t japan = language_options.str().find("japanese");
 		if (lyxrc.language_global_options && !language_options.str().empty()
 			&& viet == string::npos && japan == string::npos
@@ -1441,7 +1441,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// due to interferences with babel and hyperref, the color package has to
 	// be loaded (when it is not already loaded) before babel when hyperref
 	// is used with the colorlinks option, see
-	// http://bugzilla.lyx.org/show_bug.cgi?id=5291
+	// http://www.lyx.org/trac/ticket/5291
 	// we decided therefore to load color always before babel, see
 	// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg144349.html
 	lyxpreamble += from_ascii(features.getColorOptions());
@@ -2016,7 +2016,7 @@ string BufferParams::babelCall(string const & lang_opts) const
 	size_t mongo = lang_opts.find("mongolian");
 	// If Japanese is used, babel must directly be loaded with the
 	// language options, see
-	// http://bugzilla.lyx.org/show_bug.cgi?id=4597#c4
+	// http://www.lyx.org/trac/ticket/4597#c4
 	size_t japan = lang_opts.find("japanese");
 	if (!lyxrc.language_global_options || viet != string::npos
 		|| japan != string::npos || latvian != string::npos

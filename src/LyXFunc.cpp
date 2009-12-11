@@ -142,7 +142,7 @@ void LyXFunc::gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer)
 	int new_id = cur.paragraph().id();
 
 	// if bottom_pit, bottom_pos or top_id has been changed, update bookmark
-	// see http://bugzilla.lyx.org/show_bug.cgi?id=3092
+	// see http://www.lyx.org/trac/ticket/3092
 	if (bm.bottom_pit != new_pit || bm.bottom_pos != new_pos 
 		|| bm.top_id != new_id) {
 		const_cast<BookmarksSection::Bookmark &>(bm).updatePos(

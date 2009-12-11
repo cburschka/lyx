@@ -640,7 +640,7 @@ string const LaTeXFeatures::getPackages() const
 	// the document does not contain integrals (then isRequired("esint")
 	// is false) or if esint is used, since esint redefines all relevant
 	// integral symbols from wasysym and amsmath.
-	// See http://bugzilla.lyx.org/show_bug.cgi?id=1942
+	// See http://www.lyx.org/trac/ticket/1942
 	if (mustProvide("wasysym") &&
 	    (params_.use_esint != BufferParams::package_off || !isRequired("esint")))
 		packages << "\\usepackage{wasysym}\n";

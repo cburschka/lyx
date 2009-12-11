@@ -504,7 +504,7 @@ unsigned long FileName::checksum() const
 #if QT_VERSION >= 0x999999
 	// First version of checksum uses Qt4.4 mmap support.
 	// FIXME: This code is not ready with Qt4.4.2,
-	// see http://bugzilla.lyx.org/show_bug.cgi?id=5293
+	// see http://www.lyx.org/trac/ticket/5293
 	// FIXME: should we check if the MapExtension extension is supported?
 	// see QAbstractFileEngine::supportsExtension() and 
 	// QAbstractFileEngine::MapExtension)

@@ -30,7 +30,7 @@ class TocItem;
 namespace frontend {
 
 /// A QStandardItemModel that gives access to the reset method.
-/// This is needed in order to fix http://bugzilla.lyx.org/show_bug.cgi?id=3740
+/// This is needed in order to fix http://www.lyx.org/trac/ticket/3740
 class TocTypeModel : public QStandardItemModel
 {
 public:

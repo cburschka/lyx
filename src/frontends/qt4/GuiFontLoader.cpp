@@ -262,7 +262,7 @@ GuiFontInfo::GuiFontInfo(FontInfo const & f)
 			font.setFamily(family);
 #ifdef Q_WS_MACX
 #if QT_VERSION >= 0x040300
-			// Workaround for a Qt bug, see http://bugzilla.lyx.org/show_bug.cgi?id=3684
+			// Workaround for a Qt bug, see http://www.lyx.org/trac/ticket/3684
 			// It is reported to Trolltech at 02/06/07 against 4.3 final.
 			// FIXME: Add an upper version limit as soon as the bug is fixed in Qt.
 			if (family == "Times" && !font.exactMatch())
