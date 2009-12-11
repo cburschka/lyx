@@ -316,20 +316,6 @@ void handle_package(Parser &p, string const & name, string const & opts,
 		// last language in the documentclass options is used.
 		handle_opt(options, known_languages, h_language);
 		delete_opt(options, known_languages);
-		if (is_known(h_language, known_brazilian_languages))
-			h_language = "brazilian";
-		else if (is_known(h_language, known_french_languages))
-			h_language = "french";
-		else if (is_known(h_language, known_german_languages))
-			h_language = "german";
-		else if (is_known(h_language, known_ngerman_languages))
-			h_language = "ngerman";
-		else if (is_known(h_language, known_portuguese_languages))
-			h_language = "portuguese";
-		else if (is_known(h_language, known_russian_languages))
-			h_language = "russian";
-		else if (is_known(h_language, known_ukrainian_languages))
-			h_language = "ukrainian";
 	}
 
 	else if (name == "fontenc")
@@ -392,24 +378,8 @@ void handle_package(Parser &p, string const & name, string const & opts,
 		; // Ignore this, the geometry settings are made by the \geometry
 		  // command. This command is handled below.
 
-	else if (is_known(name, known_languages)) {
-		if (is_known(name, known_brazilian_languages))
-				h_language = "brazilian";
-		else if (is_known(name, known_french_languages))
-			h_language = "french";
-		else if (is_known(name, known_german_languages))
-			h_language = "german";
-		else if (is_known(name, known_ngerman_languages))
-			h_language = "ngerman";
-		else if (is_known(name, known_portuguese_languages))
-			h_language = "portuguese";
-		else if (is_known(name, known_russian_languages))
-			h_language = "russian";
-		else if (is_known(name, known_ukrainian_languages))
-			h_language = "ukrainian";
-		else
-			h_language = name;
-	}
+	else if (is_known(name, known_languages))
+		h_language = name;
 
 	else if (name == "natbib") {
 		h_cite_engine = "natbib_authoryear";
@@ -452,12 +422,27 @@ void handle_package(Parser &p, string const & name, string const & opts,
 
 void end_preamble(ostream & os, TextClass const & /*textclass*/)
 {
-	// set the quote language here to avoid that this is done in
-	// 3 different places in this file where h_language is set.
+	// merge synonym languages
+	if (is_known(h_language, known_brazilian_languages))
+		h_language = "brazilian";
+	else if (is_known(h_language, known_french_languages))
+		h_language = "french";
+	else if (is_known(h_language, known_german_languages))
+		h_language = "german";
+	else if (is_known(h_language, known_ngerman_languages))
+		h_language = "ngerman";
+	else if (is_known(h_language, known_portuguese_languages))
+		h_language = "portuguese";
+	else if (is_known(h_language, known_russian_languages))
+		h_language = "russian";
+	else if (is_known(h_language, known_ukrainian_languages))
+		h_language = "ukrainian";
+
+	// set the quote language
 	// LyX only knows the following quotes languages:
 	// english, swedish, german, polish, french and danish
 	// english is already set as default
-	// FIXME: for a real solution we need a list what languages use
+	// FIXME: for a real solution we need a list what language use
 	// what quote style
 	if (h_language == "swedish" || h_language == "german"
 		|| h_language == "polish" || h_language == "french"
@@ -666,20 +651,7 @@ void parse_preamble(Parser & p, ostream & os,
 			// options.
 			handle_opt(opts, known_languages, h_language);
 			delete_opt(opts, known_languages);
-			if (is_known(h_language, known_brazilian_languages))
-				h_language = "brazilian";
-			else if (is_known(h_language, known_french_languages))
-				h_language = "french";
-			else if (is_known(h_language, known_german_languages))
-				h_language = "german";
-			else if (is_known(h_language, known_ngerman_languages))
-				h_language = "ngerman";
-			else if (is_known(h_language, known_portuguese_languages))
-				h_language = "portuguese";
-			else if (is_known(h_language, known_russian_languages))
-				h_language = "russian";
-			else if (is_known(h_language, known_ukrainian_languages))
-				h_language = "ukrainian";
+			
 			// paper orientation
 			if ((it = find(opts.begin(), opts.end(), "landscape")) != opts.end()) {
 				h_paperorientation = "landscape";
