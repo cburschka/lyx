@@ -646,6 +646,7 @@ ToolbarSet
 		Item "Bbbk" "math-insert \Bbbk"
 		Item "backprime" "math-insert \backprime"
 		Item "varnothing" "math-insert \varnothing"
+		Item "Diamond" "math-insert \Diamond"
 		Item "blacktriangle" "math-insert \blacktriangle"
 		Item "blacktriangledown" "math-insert \blacktriangledown"
 		Item "blacksquare" "math-insert \blacksquare"
