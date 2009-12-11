@@ -174,14 +174,6 @@ bool InsetCaption::insetAllowed(InsetCode code) const
 	case CAPTION_CODE:
 	case NEWPAGE_CODE:
 	case MATHMACRO_CODE:
-	case MATH_AMSARRAY_CODE:
-	case MATH_BOX_CODE:
-	case MATH_ENV_CODE:
-	case MATH_MATRIX_CODE:
-	case MATH_OVERSET_CODE:
-	case MATH_SUBSTACK_CODE:
-	case MATH_UNDERSET_CODE:
-	case MATH_XYMATRIX_CODE:
 		return false;
 	default:
 		return InsetText::insetAllowed(code);
