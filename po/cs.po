@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-12-10 23:55+0100\n"
+"POT-Creation-Date: 2009-12-11 09:30+0100\n"
 "PO-Revision-Date: 2009-11-02 02:01+0100\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -15566,6 +15566,41 @@ msgstr ""
 "zmìnte prosím kódování souboru na\n"
 "UTF-8 jiným programem.\n"
 
+#: src/Changes.cpp:363 src/Paragraph.cpp:2157
+#: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetListings.cpp:185
+#: src/insets/InsetListings.cpp:193 src/insets/InsetListings.cpp:217
+#: src/mathed/InsetMathString.cpp:166
+msgid "LyX Warning: "
+msgstr "Výstraha LyX-u: "
+
+#: src/Changes.cpp:364 src/Paragraph.cpp:2158 src/insets/InsetListings.cpp:186
+#: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:167
+msgid "uncodable character"
+msgstr "nekódovatelný znak"
+
+#: src/Changes.cpp:379
+msgid "Uncodable character in author name"
+msgstr "Nekódovatelné znaky ve jménu autora"
+
+#: src/Changes.cpp:380
+#, c-format
+msgid ""
+"The author name '%1$s',\n"
+"used for change tracking, contains glyphs that cannot be\n"
+"represented in the current encoding. The respective glyphs\n"
+"will be omitted in the exported LaTeX file.\n"
+"\n"
+"Chose an appropriate document encoding (such as utf8)\n"
+"or change the spelling of the author name."
+msgstr ""
+"Jméno autora '%1$s',\n"
+"pou¾ité pro revize, obsahuje znaky, které nelze reprezentovat\n"
+"v aktuálním kódování. Pøíslu¹né znaky budou pøi exportu do LaTeX-u "
+"vynechány.\n"
+"\n"
+"Vyberte vhodné kódování dokumentu (napø. utf8)\n"
+"nebo zmìnte jméno autora."
+
 #: src/Chktex.cpp:63
 #, c-format
 msgid "ChkTeX warning id # %1$d"
@@ -17237,17 +17272,6 @@ msgid ""
 msgstr ""
 "Nové rozvr¾ení nepovoluje pou¾ívané zarovnání.\n"
 "Pøepnuto na standardní."
-
-#: src/Paragraph.cpp:2157 src/frontends/qt4/LaTeXHighlighter.cpp:108
-#: src/insets/InsetListings.cpp:185 src/insets/InsetListings.cpp:193
-#: src/insets/InsetListings.cpp:217 src/mathed/InsetMathString.cpp:166
-msgid "LyX Warning: "
-msgstr "Výstraha LyX-u: "
-
-#: src/Paragraph.cpp:2158 src/insets/InsetListings.cpp:186
-#: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:167
-msgid "uncodable character"
-msgstr "nekódovatelný znak"
 
 #: src/Paragraph.cpp:2523
 msgid "Memory problem"
@@ -21220,26 +21244,6 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámý u¾ivatel"
-
-#~ msgid "Uncodable character in author name"
-#~ msgstr "Nekódovatelné znaky ve jménu autora"
-
-#~ msgid ""
-#~ "The author name '%1$s',\n"
-#~ "used for change tracking, contains glyphs that cannot be\n"
-#~ "represented in the current encoding. The respective glyphs\n"
-#~ "will be omitted in the exported LaTeX file.\n"
-#~ "\n"
-#~ "Chose an appropriate document encoding (such as utf8)\n"
-#~ "or change the spelling of the author name."
-#~ msgstr ""
-#~ "Jméno autora '%1$s',\n"
-#~ "pou¾ité pro revize, obsahuje znaky, které nelze reprezentovat\n"
-#~ "v aktuálním kódování. Pøíslu¹né znaky budou pøi exportu do LaTeX-u "
-#~ "vynechány.\n"
-#~ "\n"
-#~ "Vyberte vhodné kódování dokumentu (napø. utf8)\n"
-#~ "nebo zmìnte jméno autora."
 
 #~ msgid "Anschrift:"
 #~ msgstr "Anschrift:"
