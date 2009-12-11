@@ -541,7 +541,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 			is >> n;
 			topaste = cap::selection(n);
 		}
-		cur.niceInsert(topaste, parseflg);
+		cur.niceInsert(topaste, parseflg, false);
 		cur.clearSelection(); // bug 393
 		cur.finishUndo();
 		break;

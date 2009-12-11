@@ -377,7 +377,8 @@ public:
 	///
 	void niceInsert(MathAtom const & at);
 	///
-	void niceInsert(docstring const & str, Parse::flags f = Parse::NORMAL);
+	void niceInsert(docstring const & str, Parse::flags f = Parse::NORMAL,
+			bool enter = true);
 
 	/// in pixels from top of screen
 	void setScreenPos(int x, int y);

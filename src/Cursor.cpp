@@ -1273,11 +1273,11 @@ void Cursor::insert(Inset * inset0)
 }
 
 
-void Cursor::niceInsert(docstring const & t, Parse::flags f)
+void Cursor::niceInsert(docstring const & t, Parse::flags f, bool enter)
 {
 	MathData ar(&buffer());
 	asArray(t, ar, f);
-	if (ar.size() == 1 && selection())
+	if (ar.size() == 1 && (enter || selection()))
 		niceInsert(ar[0]);
 	else
 		insert(ar);
@@ -1288,10 +1288,9 @@ void Cursor::niceInsert(MathAtom const & t)
 {
 	macroModeClose();
 	docstring const safe = cap::grabAndEraseSelection(*this);
-	// Enter the new inset and, if something is selected,
-	// move the contents of the selection if possible.
 	plainInsert(t);
-	if (!safe.empty() && t->isActive()) {
+	// If possible, enter the new inset and move the contents of the selection
+	if (t->isActive()) {
 		posBackward();
 		// be careful here: don't use 'pushBackward(t)' as this we need to
 		// push the clone, not the original
