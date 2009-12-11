@@ -328,14 +328,8 @@ void handle_package(Parser &p, string const & name, string const & opts,
 		// Therefore check for the "," character.
 		// It is also only set when there is not more then one babel
 		// language option but this is handled in the routine for babel.
-		if (opts.find(",") == string::npos && one_language == true) {
-			if (opts == "ascii")
-				//change ascii to auto to be in the unicode range, see
-				//http://www.lyx.org/trac/ticket/4719
-				h_inputencoding = "auto";
-			else if (!opts.empty())
-				h_inputencoding = opts;
-		}
+		if (opts.find(",") == string::npos && one_language == true)
+			h_inputencoding = opts;
 		if (!options.empty())
 			p.setEncoding(options.back());
 		options.clear();
