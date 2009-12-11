@@ -591,6 +591,7 @@ ToolbarSet
 		Item "spadesuit" "math-insert \spadesuit"
 		Item "textrm \\AA" "math-insert \textrm \AA"
 		Item "textrm \\O" "math-insert \textrm \O"
+		Item "Diamond" "math-insert \Diamond"
 		Item "mathcircumflex" "math-insert \mathcircumflex"
 		Item "_" "math-insert \_"
 		Item "mathrm T" "math-insert \mathrm T"
