@@ -51,21 +51,22 @@ bool one_language = true;
 
 namespace {
 
+//add these to known_languages when updating to lyxformat 268:
+//"chinese-simplified", "chinese-traditional", "japanese", "korean"
 const char * const known_languages[] = { "afrikaans", "american", "arabic",
 "austrian", "bahasa", "basque", "belarusian", "brazil", "brazilian", "breton",
 "british", "bulgarian", "canadian", "canadien", "catalan", "croatian", "czech",
 "danish", "dutch", "english", "esperanto", "estonian", "finnish", "francais",
 "french", "frenchb", "frenchle", "frenchpro", "galician", "german", "germanb",
-"greek", "hebrew", "icelandic", "irish", "italian", "lsorbian", "magyar",
+"greek", "hebrew", "icelandic", "irish", "italian", "kazakh", "lsorbian", "magyar",
 "naustrian", "ngerman", "ngermanb", "norsk", "nynorsk", "polish", "portuges",
 "portuguese", "romanian", "russian", "russianb", "scottish", "serbian", "slovak",
 "slovene", "spanish", "swedish", "thai", "turkish", "ukraineb", "ukrainian",
 "usorbian", "welsh", 0};
 
-//note this when updating to lyxformat 305:
+//add this when updating to lyxformat 305:
 //bahasai, indonesian, and indon = equal to bahasa
 //malay and meyalu = equal to bahasam
-
 const char * const known_brazilian_languages[] = {"brazil", "brazilian", 0};
 const char * const known_french_languages[] = {"french", "frenchb", "francais",
 						"frenchle", "frenchpro", 0};
@@ -74,6 +75,27 @@ const char * const known_ngerman_languages[] = {"ngerman", "ngermanb", 0};
 const char * const known_portuguese_languages[] = {"portuges", "portuguese", 0};
 const char * const known_russian_languages[] = {"russian", "russianb", 0};
 const char * const known_ukrainian_languages[] = {"ukrainian", "ukraineb", 0};
+
+//add these to known_english_quotes_languages when updating to lyxformat 268:
+//"chinese-simplified", "korean"
+const char * const known_english_quotes_languages[] = {"american", "canadian",
+"english", "esperanto", "hebrew", "irish", "scottish", "thai", 0};
+
+//add this to known_french_quotes_languages when updating to lyxformat 327:
+//"spanish-mexico"
+const char * const known_french_quotes_languages[] = {"albanian", "arabic",
+"basque", "canadien", "catalan", "galician", "greek", "italian", "norsk",
+"nynorsk", "spanish", "turkish", 0};
+
+const char * const known_german_quotes_languages[] = {"austrian", "bulgarian",
+"czech", "icelandic", "lithuanian", "lsorbian", "naustrian", "serbian",
+"serbian-latin", "slovak", "slovene", "usorbian",  0};
+
+const char * const known_polish_quotes_languages[] = {"afrikaans", "croatian",
+"dutch", "estonian", "magyar", "polish", "romanian", 0};
+
+const char * const known_swedish_quotes_languages[] = {"bahasa", "finnish", 
+"swedish", 0};
 
 char const * const known_fontsizes[] = { "10pt", "11pt", "12pt", 0 };
 
@@ -435,16 +457,35 @@ void end_preamble(ostream & os, TextClass const & /*textclass*/)
 	// set the quote language
 	// LyX only knows the following quotes languages:
 	// english, swedish, german, polish, french and danish
-	// english is already set as default
-	// FIXME: for a real solution we need a list what language use
-	// what quote style
-	if (h_language == "swedish" || h_language == "german"
-		|| h_language == "polish" || h_language == "french"
-		|| h_language == "danish")
-		h_quotes_language = h_language;
-	// there is only the quotes language "german"
-	if (h_language == "ngerman")
+	// (quotes for "japanese" and "korean" are missing)
+	// conversion list taken from
+	// http://en.wikipedia.org/wiki/Quotation_mark,_non-English_usage
+	// (quotes for kazakh and interlingua are unknown)
+	// danish
+	if (h_language == "danish")
+		h_quotes_language = "danish";
+	// french
+	else if (is_known(h_language, known_french_quotes_languages)
+		|| is_known(h_language, known_french_languages)
+		|| is_known(h_language, known_russian_languages)
+		|| is_known(h_language, known_ukrainian_languages))
+		h_quotes_language = "french";
+	// german
+	else if (is_known(h_language, known_german_quotes_languages)
+		|| is_known(h_language, known_german_languages)
+		|| is_known(h_language, known_ngerman_languages))
 		h_quotes_language = "german";
+	// polish
+	else if (is_known(h_language, known_polish_quotes_languages))
+		h_quotes_language = "polish";
+	// swedish
+	else if (is_known(h_language, known_swedish_quotes_languages))
+		h_quotes_language = "swedish";
+	//english
+	else if (is_known(h_language, known_english_quotes_languages)
+		|| is_known(h_language, known_brazilian_languages)
+		|| is_known(h_language, known_portuguese_languages))
+		h_quotes_language = "english";
 
 	// output the LyX file settings
 	os << "#LyX file created by tex2lyx " << PACKAGE_VERSION << "\n"
