@@ -41,7 +41,7 @@ namespace {
 
 /* codes used to read/write quotes to LyX files
  * e    ``english''
- * s    ''spanish''
+ * s    ''swedish''
  * g    ,,german``
  * p    ,,polish''
  * f    <<french>>
