@@ -1,0 +1,1322 @@
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass tufte-book
+\begin_preamble
+\def\spanishoptions{es-noindentfirst}
+\end_preamble
+\options noindentfirst
+\use_default_options true
+\language spanish
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Ejemplos Tufte
+\end_layout
+
+\begin_layout Author
+Autor Falso
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+autor de este archivo de ejemplo: Jason Waskiewicz
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Características de la clase Tufte-book
+\end_layout
+
+\begin_layout Standard
+En este documento se ha intentado mostrar algunas de las características
+ de la clase 
+\family sans
+Tufte-book
+\family default
+.
+ En el primer capítulo se perfila su uso a grandes rasgos.
+ En el segundo capítulo se muestra su uso aplicado a un folleto para una
+ clase de cálculo.
+\end_layout
+
+\begin_layout Section
+Características
+\end_layout
+
+\begin_layout Standard
+La clase 
+\family sans
+Tufte-book
+\family default
+ se basa en el trabajo de 
+\noun on
+Edward Tufte
+\noun default
+.
+ Proporciona la misma funcionalidad que la clase 
+\family sans
+Tufte-handout
+\family default
+ con adiciones específicas para libros.
+ Los documentos de Tufte constan de una columna de texto más bien estrecha
+ y una amplia columna de margen donde se ponen notas y figuras.
+ Esto tiene como fin mejorar la legibilidad:
+\end_layout
+
+\begin_layout Itemize
+Figuras en el margen
+\end_layout
+
+\begin_layout Itemize
+Figuras ordinarias en el texto con leyendas en el margen
+\end_layout
+
+\begin_layout Itemize
+Figuras y texto de ancho completo cuando hace falta
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+Notas al pie
+\begin_inset Quotes erd
+\end_inset
+
+ en el margen
+\end_layout
+
+\begin_layout Itemize
+Niveles limitados de secciones y subsecciones
+\end_layout
+
+\begin_layout Standard
+En este documento de muestra se ponen de manifiesto algunas de estas característ
+icas.
+ Para una demostración completa, visita el sitio web de tufte-latex: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://code.google.com/p/tufte-latex
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Formato de página
+\end_layout
+
+\begin_layout Standard
+Los márgenes de Tufte son 
+\begin_inset Quotes eld
+\end_inset
+
+irregulares a la derecha
+\begin_inset Quotes erd
+\end_inset
+
+, en vez de justificados.
+\begin_inset Flex Sidenote
+status collapsed
+
+\begin_layout Plain Layout
+Para obtener texto justificado se añade la opción 
+\emph on
+justified
+\emph default
+ en el campo 
+\emph on
+Personalizado
+\emph default
+ en 
+\family sans
+Documento\SpecialChar \menuseparator
+Configuración\SpecialChar \menuseparator
+Clase del documento
+\family default
+.
+\end_layout
+
+\end_inset
+
+ El texto con el margen derecho irregular se usa en la mayoría de sus trabajos,
+ pero se suministra la opción de clase 
+\emph on
+justified
+\emph default
+ por si se desea cambiar esto.
+\end_layout
+
+\begin_layout Standard
+Tufte además da un formato asimétrico a sus páginas.
+ Esto quiere decir que las notas adjuntas aparecen en el lado derecho de
+ cada página, tanto en las pares como en las impares.
+ Si lo prefieres, puedes cambiarlo por un formato simétrico, como es habitual
+ en la tipografía tradicional de libros, usando la opción de clase 
+\emph on
+symmetric
+\emph default
+.
+\begin_inset Flex Sidenote
+status open
+
+\begin_layout Plain Layout
+Para dar formato simétrico, se añade la opción 
+\emph on
+symmetric
+\emph default
+ en el campo 
+\emph on
+Personalizado
+\emph default
+ del menú 
+\family sans
+Documento\SpecialChar \menuseparator
+Configuración\SpecialChar \menuseparator
+Clase del documento
+\family default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por último, Tufte no numera los capítulos o secciones; si quieres hacer
+ referencias a secciones mediante un número, mueve el deslizador 
+\emph on
+Numeración
+\emph default
+ en 
+\family sans
+Documento\SpecialChar \menuseparator
+Configuración\SpecialChar \menuseparator
+Numeación e IG
+\family default
+ al extremo derecho (como se ha hecho en este documento).
+\begin_inset Flex Marginnote
+status open
+
+\begin_layout Plain Layout
+nota marginal
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Figuras
+\end_layout
+
+\begin_layout Standard
+Tufte usa flotantes ordinarios de figuras tal como sigue:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Imagina tu figura favorita dentro de este cuadro en vez de este insulso
+ texto.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Una figura flotante ordinaria.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Además coloca figuras en el margen, como se muestra en la fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:fig-margen"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float marginfigure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Imagina tu foto favorita de una ardilla en este cuadro en vez de este soso
+ texto.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Una figura al margen.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:fig-margen"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+De igual modo, la clase 
+\family sans
+Tufte-book
+\family default
+ permite la inserción de tablas, tanto en el margen como en el texto.
+ Las tablas al margen están recomendadas para pequeños conjuntos de datos
+ para ilustrar conceptos como 
+\begin_inset Quotes eld
+\end_inset
+
+Fíjate, la relación distancia-tiempo en un movimiento de caída es cuadrática
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Por el contrario, conjuntos de datos más detallados, como resultados de
+ tests de llamas y comentarios deberían ponerse en una tabla de anchura
+ total.
+\end_layout
+
+\begin_layout Standard
+Finalmente, 
+\family sans
+Tufte-book
+\family default
+ proporciona figuras de ancho total.
+ Estas toman todo el ancho de la página, es decir, texto y margen.
+ Véase por ejemplo la Fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:fig-ancho-total"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide true
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100line%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Imagina tu foto favorita de una ardilla en este cuadro en vez de este soso
+ texto.
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Una figura de ancho total.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:fig-ancho-total"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Trabajando con texto
+\end_layout
+
+\begin_layout Standard
+Una de las características más destacadas y peculiares de este estilo es
+ el uso exhaustivo de notas al margen.
+ Hay un gran margen para dejar sitio a notas y pequeñas figuras.
+ Las notas al pie se convertirán automáticamente a notas al margen (numeradas).
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Esta nota al margen se introdujo como 
+\family typewriter
+Nota al pie
+\family default
+.
+\end_layout
+
+\end_inset
+
+ Alternativamente se puede usar directamente la inserción como 
+\family typewriter
+nota al margen
+\family default
+; lo encontrarás en el menú
+\family sans
+ Insertar\SpecialChar \menuseparator
+Recuadro personalizado
+\family default
+.
+\begin_inset Flex Sidenote
+status collapsed
+
+\begin_layout Plain Layout
+Esto es una nota al margen insertada con el menú 
+\family typewriter
+Nota al margen
+\family default
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Si quieres poner información complementaria en el margen sin la marca de
+ nota (el voladito), puedes usar la inserción 
+\family typewriter
+Nota marginal
+\family default
+ (éstas no se numeran).
+ 
+\begin_inset Flex Marginnote
+status open
+
+\begin_layout Plain Layout
+Esto es una nota marginal de Tufte.
+ Observa que no hay número antepuesto, y no hay número en el lugar de inserción
+ en el cuerpo del texto.
+\end_layout
+
+\end_inset
+
+ La nota al margen normal también funciona, pero se verá un poco rara.
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+Esto es una nota al margen normal.
+ No la uses.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex NewThought
+status open
+
+\begin_layout Plain Layout
+Otra innovación
+\end_layout
+
+\end_inset
+
+ útil de Tufte es el estilo de texto 
+\family typewriter
+Idea nueva 
+\family default
+(
+\family sans
+Editar\SpecialChar \menuseparator
+Estilo del texto\SpecialChar \menuseparator
+Idea nueva
+\family default
+).
+ Introduce conceptos nuevos mediante el uso de versalitas, como se ve en
+ este párrafo.
+\end_layout
+
+\begin_layout Standard
+Las clases de documento Tufte incluyen dos nuevos estilos de texto y algunas
+ mejoras en los comandos para el espaciado entre tipos.
+\end_layout
+
+\begin_layout Standard
+Cuando se insertan caracteres en 
+\begin_inset Flex AllCaps
+status open
+
+\begin_layout Plain Layout
+MAYÚSCULAS
+\end_layout
+
+\end_inset
+
+ o 
+\begin_inset Flex SmallCaps
+status open
+
+\begin_layout Plain Layout
+Versalitas
+\end_layout
+
+\end_inset
+
+, el espaciado de las letras —o sea, entre ellas— debería ser levemente
+ aumentado.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bringhurst2005"
+
+\end_inset
+
+ El estilo de texto 
+\emph on
+Mayúsculas
+\emph default
+ (
+\family sans
+Editar\SpecialChar \menuseparator
+Estilo del texto\SpecialChar \menuseparator
+M
+\begin_inset space \thinspace{}
+\end_inset
+
+a
+\begin_inset space \thinspace{}
+\end_inset
+
+y
+\begin_inset space \thinspace{}
+\end_inset
+
+ú
+\begin_inset space \thinspace{}
+\end_inset
+
+s
+\begin_inset space \thinspace{}
+\end_inset
+
+c
+\begin_inset space \thinspace{}
+\end_inset
+
+u
+\begin_inset space \thinspace{}
+\end_inset
+
+l
+\begin_inset space \thinspace{}
+\end_inset
+
+a
+\begin_inset space \thinspace{}
+\end_inset
+
+s
+\family default
+) añade el espacio adecuado en cadenas de caracteres 
+\begin_inset Flex AllCaps
+status open
+
+\begin_layout Plain Layout
+EN MAYÚSCULAS
+\end_layout
+
+\end_inset
+
+, y el estilo 
+\emph on
+Versalitas Tufte
+\emph default
+ (
+\family sans
+Editar\SpecialChar \menuseparator
+Estilo del texto\SpecialChar \menuseparator
+V
+\begin_inset space \thinspace{}
+\end_inset
+
+e
+\begin_inset space \thinspace{}
+\end_inset
+
+r
+\begin_inset space \thinspace{}
+\end_inset
+
+s
+\begin_inset space \thinspace{}
+\end_inset
+
+a
+\begin_inset space \thinspace{}
+\end_inset
+
+l
+\begin_inset space \thinspace{}
+\end_inset
+
+i
+\begin_inset space \thinspace{}
+\end_inset
+
+t
+\begin_inset space \thinspace{}
+\end_inset
+
+a
+\begin_inset space \thinspace{}
+\end_inset
+
+s
+\family default
+) lo añade para 
+\begin_inset Flex SmallCaps
+status open
+
+\begin_layout Plain Layout
+letras versalitas
+\end_layout
+
+\end_inset
+
+.
+ Estos comandos también cambiarán automáticamente la caja del texto a mayúscula
+ o minúscula, respectivamente.
+\end_layout
+
+\begin_layout Standard
+La forma normal de 
+\emph on
+Versalitas
+\emph default
+ también se ha redefinido para incluir espacio entre las letras.
+ Su caja se deja tal cual, sin embargo.
+ Esto permite usar tanto letras de caja alta como de caja baja para la misma
+ forma de letra: 
+\noun on
+Las Letras Iniciales De Las Palabras En Esta Frase Son Capitales.
+\end_layout
+
+\begin_layout Standard
+Por último, el entorno de párrafo
+\emph on
+ Ancho total
+\emph default
+ proporciona un formato de párrafo que se extiende a través del bloque de
+ texto principal y del área de notas:
+\end_layout
+
+\begin_layout Full Width
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+ Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis.
+ Curabitur dictum gravida mauris.
+ Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna.
+ Donec vehicula augue eu neque.
+ Pellentesque habitant morbi tristique senectus et netus et malesuada fames
+ ac turpis egestas.
+ Mauris ut leo.
+ Cras viverra metus rhoncus sem.
+ Nulla et lectus vestibulum urna fringilla ultrices.
+ Phasellus eu tellus sit amet tortor gravida placerat.
+ Integer sapien est, iaculis in, pretium quis, viverra ac, nunc.
+ Praesent eget sem vel leo ultrices bibendum.
+ Aenean faucibus.
+ Morbi dolor nulla, malesuada eu, pulvinar at, mollis ac, nulla.
+ Curabitur auctor semper nulla.
+ Donec varius orci eget risus.
+ Duis nibh mi, congue eu, accumsan eleifend, sagittis quis, diam.
+ Duis eget orci sit amet orci dignissim rutrum.
+\end_layout
+
+\begin_layout Section
+Referencias
+\end_layout
+
+\begin_layout Standard
+Las referencias se colocan al lado de sus citas, como las notas al margen.
+ Esto se puede conseguir usando el habitual comando de citas.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+La sección anterior incluye una cita.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La lista completa de referencias se puede además imprimir automáticamente
+ usando 
+\family sans
+Insertar\SpecialChar \menuseparator
+Lista/Índice\SpecialChar \menuseparator
+Bibliografía
+\begin_inset space ~
+\end_inset
+
+BibTeX
+\family default
+ (véase un ejemplo al final del documento).
+ Si no quieres imprimir una bibliografía al final de un documento, inserta
+ la
+\family sans
+ Bibliografía
+\begin_inset space ~
+\end_inset
+
+BibTeX
+\family default
+ dentro de una nota LyX y usa el comando LaTeX 
+\family typewriter
+
+\backslash
+nobibliography
+\family default
+ en el texto.
+\end_layout
+
+\begin_layout Chapter
+Cálculo de volumen: Secciones 2.12–2.13
+\end_layout
+
+\begin_layout Standard
+Supongamos que tomamos una función como 
+\begin_inset Formula $y=\sqrt{x}$
+\end_inset
+
+ y la rotamos en 3 dimensiones alrededor del eje X.
+ La forma resultante debería ser algo como una copa (de costado).
+ Interesante, la integración nos permite hacer eso exactamente y encontrar
+ cuánta agua podría contener esa copa.
+\end_layout
+
+\begin_layout Section
+Visualización de la rotación
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float marginfigure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Aquí tenía una gráfica de la función raíz cuadrada.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "mar:una-grafica"
+
+\end_inset
+
+Una gráfica de of 
+\begin_inset Formula $f(x)=\sqrt{x}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float marginfigure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Aquí giraba la función raíz cuadrada y después dibujaba un disco sobre la
+ gráfica para ilustrar cómo calcular el volumen de la figura.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "mar:girada"
+
+\end_inset
+
+Una gráfica de 
+\begin_inset Formula $f(x)=\sqrt{x}$
+\end_inset
+
+ girada sobre el eje X con notas adicionales para la integración.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La figura
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "mar:una-grafica"
+
+\end_inset
+
+ muestra la gráfica de la función 
+\begin_inset Formula $f(x)=\sqrt{x}.$
+\end_inset
+
+ Ahora imagina que rotamos esa función sobre el eje X: la figura resultante
+ sería algo como la figura
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "mar:girada"
+
+\end_inset
+
+.
+ Esto es semejente a una copa tumbada de lado.
+ En beneficio de la claridad, el artista (yo) dibujó un círculo al final
+ de la gráfica para mostrar que realmente está girada.
+\end_layout
+
+\begin_layout Standard
+Ahora supongamos que queremos averigüar el volumen de la figura.
+ Cuando integramos la función original raíz cuadrada para calcular el área,
+ imaginamos una serie de rectángulos dentro de la figura.
+ Su altura es 
+\begin_inset Formula $h=f(x)$
+\end_inset
+
+ y su anchura 
+\begin_inset Formula $dx$
+\end_inset
+
+.
+ Puesto que la altura multiplicada por la anchura es el área de cada rectángulo,
+ sumamos estas áreas y reescribimos esto como 
+\begin_inset Formula $\int\, f(x)\, dx$
+\end_inset
+
+, o, en este caso concreto, 
+\begin_inset Formula $\int\,\sqrt{x}\, dx$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Para encontrar el volumen de nuestra figura girada el procedimiento es similar.
+ Comenzamos rotando cada rectángulo sobre el eje X, esto da origen a una
+ serie de cilindros.
+\begin_inset Flex Sidenote
+status collapsed
+
+\begin_layout Plain Layout
+El texto se refiere a estos cilindros como "discos".
+ Esto es lo habitual en los libros de Cálculo que he consultado.
+\end_layout
+
+\end_inset
+
+ Después, podemos encontrar el volumen de cada cilindro/disco.
+ La fórmula básica es:
+\begin_inset Formula \[
+V=hA\]
+
+\end_inset
+
+donde 
+\begin_inset Formula $h=dx$
+\end_inset
+
+ es la altura del cilindro (anchura del rectángulo), y el área de cada figura
+ es un círculo siendo 
+\begin_inset Formula $A=\pi r^{2}$
+\end_inset
+
+.
+ El radio en este caso es la función 
+\begin_inset Formula $f(x)$
+\end_inset
+
+.
+ Por sustitución
+\begin_inset Formula \[
+A=\pi f^{2}(x)\]
+
+\end_inset
+
+En nuestro caso concreto,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{eqnarray*}
+A & = & \pi\left(\sqrt{x}\right)^{2}\\
+ & = & \pi x\end{eqnarray*}
+
+\end_inset
+
+Para calcular el volumen de un disco, tenemos
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+V=\pi x\, dx\]
+
+\end_inset
+
+o, en el caso general
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+V=\pi f^{2}(x)\, dx\]
+
+\end_inset
+
+Para encontrar el volumen de la figura entre los puntos 
+\begin_inset Formula $a$
+\end_inset
+
+ y 
+\begin_inset Formula $b$
+\end_inset
+
+ sumamos los volúmenes por medio de la integración:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\int_{a}^{b}\,\pi f^{2}(x)\, dx\end{equation}
+
+\end_inset
+
+En el ejemplo concreto, en el intervalo 
+\begin_inset Formula $[0,4]$
+\end_inset
+
+
+\begin_inset Formula \begin{eqnarray*}
+\int_{0}^{4}\,\pi x\, dx & = & \pi\int_{0}^{4}\, x\, dx\\
+ & = & \pi\left.\left(\frac{x^{2}}{2}\right)\right|_{0}^{4}\\
+ & = & \pi\left(\frac{4^{2}}{2}-0\right)\\
+ & = & 8\pi\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex NewThought
+status open
+
+\begin_layout Plain Layout
+Supongamos que taladro
+\end_layout
+
+\end_inset
+
+ un agujero especial a lo largo de la copa con la que acabamos de trabajar.
+ Se hace con un pedazo de forma cuadrática.
+\begin_inset Flex Sidenote
+status collapsed
+
+\begin_layout Plain Layout
+No tengo ni idea cómo se hace esto en la vida real, pero lo estoy intentando.
+\end_layout
+
+\end_inset
+
+ Encontré que el agujero que hace el trozo puede modelarse con la función
+\begin_inset Formula $g(x)=\frac{x^{2}}{16}$
+\end_inset
+
+.
+ Necesitaría sustraer el volumen del material quitado del volumen de la
+ 
+\begin_inset Quotes eld
+\end_inset
+
+copa
+\begin_inset Quotes erd
+\end_inset
+
+ entera.
+ Cada cilindro individual se convertiría en una arandela.
+ Para obtener el área de una arandela podría usar la fórmula
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float marginfigure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+Aquí usé RLPlot para dibujar la función raíz cuadrada y la función cuadrática.
+ Después usé Inkscape para sombrear la zona entre ellas.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Las funciones 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ y 
+\begin_inset Formula $g(x)$
+\end_inset
+
+ y el área dejada por 
+\begin_inset Formula $f(x)-g(x)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula \begin{eqnarray*}
+A_{arandela} & = & A_{copa}-A_{taladro}\\
+ & = & \pi f^{2}(x)-\pi g^{2}(x)\\
+ & = & \pi\left(f^{2}(x)-g^{2}(x)\right)\end{eqnarray*}
+
+\end_inset
+
+El volumen de cada arandela sería
+\begin_inset Formula \begin{eqnarray*}
+V_{arandela} & = & A_{arandela}\, dx\\
+ & = & \pi\left(f^{2}(x)-g^{2}(x)\right)\, dx\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Después, sumando los volúmenes de todas las arandelas entre los puntos 
+\begin_inset Formula $a$
+\end_inset
+
+ y 
+\begin_inset Formula $b$
+\end_inset
+
+, se obtiene la integral:
+\begin_inset Formula \begin{equation}
+\int_{a}^{b}\,\pi\left(f^{2}(x)-g^{2}(x)\right)\, dx\end{equation}
+
+\end_inset
+
+En el caso de nuestro trozo de taladro cuadrático:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float marginfigure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Esto era el conjunto rotado de 2 funciones.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+La copa con un agujero cuadrático taladrado a lo largo.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula \begin{eqnarray*}
+\int_{0}^{4}\,\pi\left(\left(\sqrt{x}\right)^{2}-\left(\frac{x^{2}}{16}\right)\right)\, dx & = & \pi\int_{0}^{4}\,\left(x-\frac{x^{4}}{256}\right)\, dx\\
+ & = & \pi\left(\int_{0}^{4}\, x\, dx-\int_{0}^{4}\,\frac{x^{4}}{256}\, dx\right)\\
+ & = & \pi\left(\left.\left(\frac{x^{2}}{2}\right)\right|_{0}^{4}-\left.\left(\frac{x^{5}}{1280}\right)\right|_{0}^{4}\right)\\
+ & = & \pi\left(\left(\frac{4^{2}}{2}-0\right)-\left(\frac{4^{5}}{1280}-0\right)\right)\\
+ & = & \pi\left(8-0.8\right)\\
+ & = & 7.2\pi\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Tarea 
+\end_layout
+
+\begin_layout Itemize
+p114: 1, 4, 5, 6, 8, 10, 12, 15
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "biblioExample"
+options "plainnat"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

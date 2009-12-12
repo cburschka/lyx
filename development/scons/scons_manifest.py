@@ -2529,6 +2529,7 @@ lib_examples_fr_files = Split('''
 
 
 lib_examples_es_files = Split('''
+    beamer-conference-ornate20min.lyx
     Braille.lyx
     ejemplo_con_lyx.lyx
     ejemplo_sin_lyx.lyx
@@ -2536,6 +2537,8 @@ lib_examples_es_files = Split('''
     linguistics.lyx
     multicol.lyx
     splash.lyx
+    tufte-book.lyx
+    tufte-handout.lyx
 ''')
 
 
