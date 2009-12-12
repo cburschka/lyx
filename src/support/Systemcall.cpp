@@ -52,7 +52,8 @@ namespace support {
 
 // Reuse of instance
 #ifndef USE_QPROCESS
-int Systemcall::startscript(Starttype how, string const & what)
+int Systemcall::startscript(Starttype how, string const & what,
+							bool /*process_events*/)
 {
 	string command = what;
 
