@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-11-15 17:16+0100\n"
-"PO-Revision-Date: 2009-12-09 01:14+0900\n"
+"PO-Revision-Date: 2009-12-12 13:52+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -185,11 +185,11 @@ msgstr "書誌情報の生成"
 #: src/frontends/qt4/ui/BiblioUi.ui:134 src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:130
 msgid "&Processor:"
-msgstr "処理器(&P):"
+msgstr "処理子(&P):"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:144 src/frontends/qt4/ui/IndicesUi.ui:43
 msgid "Select a processor"
-msgstr "処理器を選んでください"
+msgstr "処理子を選んでください"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:168 src/frontends/qt4/ui/IndicesUi.ui:54
 #: src/frontends/qt4/ui/PrefLatexUi.ui:147 src/frontends/qt4/GuiPrefs.cpp:647
@@ -259,7 +259,7 @@ msgstr "スタイルファイルを選択"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:131 src/frontends/qt4/ui/BibtexUi.ui:144
 msgid "This bibliography section contains..."
-msgstr "この参考文献の節が含むのは..."
+msgstr "この書誌情報節が含むのは..."
 
 #: src/frontends/qt4/ui/BibtexUi.ui:134
 msgid "&Content:"
@@ -707,7 +707,7 @@ msgstr "次の変更点(&N)"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:108
 msgid "Accept this change"
-msgstr "変更を承認する"
+msgstr "この変更を承認する"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:111
 msgid "&Accept"
@@ -1343,7 +1343,7 @@ msgstr "詳細(&V)"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:586
 msgid "Restrict the search horizon to:"
-msgstr "検索範囲を以下の範囲に限定する"
+msgstr "検索範囲を以下の範囲に限定する:"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:592
 msgid "Sco&pe"
@@ -1375,15 +1375,15 @@ msgstr "親文書(&M)"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:687
 msgid "All open documents"
-msgstr "文書を開く"
+msgstr "すべての開かれている文書"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:690
 msgid "&Open Documents"
-msgstr "OpenDocument"
+msgstr "開かれている文書(&O)"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:708
 msgid "All Ma&nuals"
-msgstr "点字用説明書(B)|B"
+msgstr "すべての説明書(&N)"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:729
 msgid "&Expand macros"
@@ -1391,7 +1391,7 @@ msgstr "マクロを展開(&E)"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:747
 msgid "Ignore &Format"
-msgstr "様式を無視(&M)"
+msgstr "書式を無視(&F)"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:13
 #: src/frontends/qt4/ui/OutputUi.ui:13 src/frontends/qt4/ui/PDFSupportUi.ui:13
@@ -1636,11 +1636,11 @@ msgstr "画像グループ"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:637
 msgid "A&ssigned to group:"
-msgstr "所属グループ:"
+msgstr "所属グループ(&S):"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:647
 msgid "Click to define a new graphics group."
-msgstr "新規画像グループを定義するにはクリックして下さい。"
+msgstr "新規画像グループを定義する際にはクリックして下さい。"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:650
 msgid "O&pen new group..."
@@ -1648,7 +1648,7 @@ msgstr "新規グループを開く(&P)..."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:657
 msgid "Select an existing group for the current graphics."
-msgstr "この画像用の定義済みグループを選択して下さい。"
+msgstr "この画像に割り当てる既存グループを選択して下さい。"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:670
 msgid "Draft mode"
@@ -1817,7 +1817,7 @@ msgstr "取り込むファイル名"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:282
 msgid "&Include Type:"
-msgstr "取り込みの型(&I):"
+msgstr "取り込み方法(&I):"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:293 src/insets/InsetInclude.cpp:353
 msgid "Include"
@@ -1856,7 +1856,7 @@ msgstr "この項目を収録する索引を選択してください。"
 msgid ""
 "Here you can define an alternative index processor and specify its options."
 msgstr ""
-"ここでは、別の索引処理器を指定したり、その特定のオプションを指定したりするこ"
+"ここでは、別の索引処理子を指定したり、その特定のオプションを指定したりするこ"
 "とができます。"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
@@ -1866,7 +1866,7 @@ msgstr "索引の生成"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:64
 msgid "Define program options of the selected processor."
-msgstr "選択した処理器のプログラムオプションを指定してください。"
+msgstr "選択した処理子のプログラムオプションを指定してください。"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:89
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
@@ -2053,7 +2053,7 @@ msgstr "行間(&T):"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:132
 msgid "Difference between two numbered lines"
-msgstr "二つの附番行の行間"
+msgstr "付番行どうしの行間"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:148
 msgid "Font si&ze:"
@@ -2210,7 +2210,7 @@ msgstr "更新(&U)"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:28
 msgid "Use the margin settings provided by the document class"
-msgstr "文書クラスで定義されているマージンの設定を使用する"
+msgstr "文書クラスで定義されている余白設定を使用する"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:31
 msgid "&Default Margins"
@@ -2294,11 +2294,11 @@ msgstr "水平(&H):"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:224
 msgid "Decoration"
-msgstr "装飾(&D):"
+msgstr "装飾"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:230
 msgid "&Type:"
-msgstr "種類"
+msgstr "種類(&T):"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:243
 msgid "decoration type / matrix border"
@@ -2362,7 +2362,7 @@ msgstr "LaTeXパッケージesintをつねに使用します"
 
 #: src/frontends/qt4/ui/MathsUi.ui:58
 msgid "Use &esint package"
-msgstr "AMS &esintパッケージを使う"
+msgstr "&esintパッケージを使う"
 
 #: src/frontends/qt4/ui/MathsUi.ui:65
 msgid ""
@@ -2465,7 +2465,7 @@ msgstr "既定の出力形式(&F):"
 
 #: src/frontends/qt4/ui/OutputUi.ui:70
 msgid "Use the XeTeX processing engine"
-msgstr "XeTeXを処理器として使用する"
+msgstr "XeTeXを処理子として使用する"
 
 #: src/frontends/qt4/ui/OutputUi.ui:73
 msgid "Use &XeTeX"
@@ -2540,7 +2540,7 @@ msgstr "直ちに適用(&M)"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:129
 msgid "Use the default alignment for this paragraph, whatever it is."
-msgstr "この段落の既定の配置をともかく使う。"
+msgstr "この段落の既定の揃え方をともかく使う。"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:132
 msgid "Paragraph's &Default"
@@ -2702,11 +2702,11 @@ msgstr "階層数"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:348
 msgid "&Open bookmarks"
-msgstr "開くしおり(&O)"
+msgstr "しおりを展開(&O)"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:388
 msgid "Additional o&ptions"
-msgstr "追加オプション(&P)"
+msgstr "その他のオプション(&P)"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:417
 msgid "e.g.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
@@ -2931,7 +2931,7 @@ msgstr "段落の終わりに画面上で段落標を付ける。"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:117
 msgid "&Mark end of paragraphs"
-msgstr "段落の終わりに印(&M)"
+msgstr "段落の終わりに標識(&M)"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:33 src/frontends/qt4/GuiPrefs.cpp:226
 msgid "Editing"
@@ -2963,7 +2963,7 @@ msgstr "数式マクロをステータスバーに名称を表示しながら本
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:90
 msgid "Edit Math Macros with a parameter list (like in LyX < 1.6)"
-msgstr "数式マクロをパラメーターリストで編集(LyX＜1.6と同様)"
+msgstr "数式マクロをパラメーターリストで編集(LyX < 1.6と同様)"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:101
 msgid "Fullscreen"
@@ -3176,7 +3176,7 @@ msgstr "外国語をマークする(&F)"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:165
 msgid "Right-to-left language support"
-msgstr "右から左書きの言語をサポート"
+msgstr "右から左に書く言語をサポート"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:183 src/LyXRC.cpp:3138
 msgid ""
@@ -3187,11 +3187,11 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:186
 msgid "Enable RTL su&pport"
-msgstr "RTLサポートを有効化(&P)"
+msgstr "右書きサポートを有効化(&P)"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:214
 msgid "Cursor movement:"
-msgstr "カーソルの動き:"
+msgstr "カーソル移動:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:224
 msgid "&Logical"
@@ -3259,7 +3259,7 @@ msgstr "BibTeXコマンドとオプション"
 #: src/frontends/qt4/ui/PrefLatexUi.ui:168
 #: src/frontends/qt4/ui/PrefLatexUi.ui:247
 msgid "Processor for &Japanese:"
-msgstr "日本語用処理器(&J):"
+msgstr "日本語用処理子(&J):"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:178
 msgid "Specific BibTeX command and options for pLaTeX (Japanese)"
@@ -3267,7 +3267,7 @@ msgstr "pLaTeX（日本語）で使用するBibTeXコマンドとオプション
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:209
 msgid "Pr&ocessor:"
-msgstr "処理器(&O):"
+msgstr "処理子(&O):"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:226 src/frontends/qt4/GuiPrefs.cpp:672
 #: src/frontends/qt4/GuiPrefs.cpp:766
@@ -3398,7 +3398,7 @@ msgstr "ファイルに印刷を書き出すときに，印刷プログラムに
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:88
 msgid "Print to &file:"
-msgstr "ファイルに書き出す(&F):"
+msgstr "ファイルへの書き出し(&F):"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:98
 msgid "Option used to print to non-default printer."
@@ -3636,7 +3636,7 @@ msgstr "複合単語を受け入れる(&W)"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:114
 msgid "&Spellchecker engine:"
-msgstr "スペルチェッカー"
+msgstr "スペルチェック・エンジン(&S):"
 
 #: src/frontends/qt4/ui/PrefUi.ui:33
 msgid "Session"
@@ -3644,7 +3644,7 @@ msgstr "セッション"
 
 #: src/frontends/qt4/ui/PrefUi.ui:51
 msgid "Restore window layouts and &geometries"
-msgstr "ウィンドウレイアウトと座標を復帰させる(&G)"
+msgstr "ウィンドウ位置と座標を復元(&G)"
 
 #: src/frontends/qt4/ui/PrefUi.ui:58
 msgid "Restore to the cursor position when the file was last closed"
@@ -3708,11 +3708,11 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefUi.ui:238
 msgid "&Enable tool tips in main work area"
-msgstr "メイン作業領域でツールチップスを有効にする(&E)"
+msgstr "メイン作業領域でヒントを有効にする(&E)"
 
 #: src/frontends/qt4/ui/PrefUi.ui:258
 msgid "&User interface file:"
-msgstr "操作画面設定ファイル(&U):"
+msgstr "操作性設定ファイル(&U):"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:73 src/frontends/qt4/GuiView.cpp:2143
 #: src/frontends/qt4/GuiView.cpp:2150 src/frontends/qt4/GuiView.cpp:2250
@@ -4066,7 +4066,7 @@ msgstr "表の設定(&T)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:137
 msgid "Column settings"
-msgstr "文書の設定"
+msgstr "列設定"
 
 #: src/frontends/qt4/ui/TabularUi.ui:143
 msgid "&Horizontal alignment:"
@@ -4097,7 +4097,7 @@ msgstr "このセルの、行のベースラインに対する相対的な垂直
 
 #: src/frontends/qt4/ui/TabularUi.ui:286
 msgid "Merge cells"
-msgstr "セルを統合"
+msgstr "セルを連結する"
 
 #: src/frontends/qt4/ui/TabularUi.ui:289
 msgid "&Multicolumn"
@@ -4105,7 +4105,7 @@ msgstr "連結列(&M)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:299
 msgid "Cell setting"
-msgstr "子文書設定"
+msgstr "セル設定"
 
 #: src/frontends/qt4/ui/TabularUi.ui:305
 msgid "Rotate this cell by 90 degrees"
@@ -4117,15 +4117,15 @@ msgstr "セルを90度回転させる(&C)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:321
 msgid "Table-wide settings"
-msgstr "表の設定"
+msgstr "表全体の設定"
 
 #: src/frontends/qt4/ui/TabularUi.ui:327
 msgid "Verti&cal alignment:"
-msgstr "垂直揃え"
+msgstr "垂直揃え(&C):"
 
 #: src/frontends/qt4/ui/TabularUi.ui:337
 msgid "Vertical alignment of the table"
-msgstr "垂直揃え"
+msgstr "表の垂直揃え"
 
 #: src/frontends/qt4/ui/TabularUi.ui:381
 msgid "Rotate the table by 90 degrees"
@@ -4217,7 +4217,7 @@ msgstr "長尺表を使う(&U)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1211
 msgid "Row settings"
-msgstr "ボックスの設定"
+msgstr "行の設定"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1217
 msgid "Status"
@@ -4278,7 +4278,7 @@ msgstr "冒頭ヘッダを出力しない"
 #: src/frontends/qt4/ui/TabularUi.ui:1316
 #: src/frontends/qt4/ui/TabularUi.ui:1388
 msgid "is empty"
-msgstr "は空である"
+msgstr "空である"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1323
 msgid "Footer:"
@@ -4314,11 +4314,11 @@ msgstr "現在の行で改頁(&B)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1428
 msgid "Horizontal alignment of the longtable"
-msgstr "ボックスの中身の水平揃え"
+msgstr "長尺表の水平揃え"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1431
 msgid "Longtable alignment"
-msgstr "水平揃え(&H):"
+msgstr "長尺表の揃え"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:55
 msgid "Close this dialog"
@@ -4377,7 +4377,7 @@ msgstr "行頭下げ(&I)"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:89
 msgid "Size of the indentation"
-msgstr "寸法と回転(&Z)"
+msgstr "行頭下げの大きさ"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:152
 msgid "&Vertical space"
@@ -4385,7 +4385,7 @@ msgstr "垂直スペース(&V)"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:162
 msgid "Size of the vertical space"
-msgstr "垂直スペース(&V)"
+msgstr "垂直スペースの大きさ"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:256
 msgid "Spacing"
@@ -4397,11 +4397,11 @@ msgstr "行間(&L):"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:306
 msgid "Spacing type"
-msgstr "空白"
+msgstr "空白の型"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:327
 msgid "Number of lines"
-msgstr "階層数"
+msgstr "行数"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:334
 msgid "Format text into two columns"
@@ -5013,7 +5013,7 @@ msgstr "And"
 #: lib/layouts/svglobal3.layout:83 lib/layouts/svglobal3.layout:87
 #: lib/layouts/aapaper.inc:91 lib/layouts/svjour.inc:250
 msgid "Acknowledgements"
-msgstr "謝辞(Acknowledgement)"
+msgstr "謝辞(Acknowledgements)"
 
 #: lib/layouts/aastex.layout:118 lib/layouts/aastex.layout:443
 #: lib/layouts/IEEEtran.layout:383 lib/layouts/IEEEtran.layout:394
@@ -5090,7 +5090,7 @@ msgstr "第二所属マーク:"
 
 #: lib/layouts/aastex.layout:330
 msgid "Subject headings:"
-msgstr "サブジェクト・ヘッディング:"
+msgstr "サブジェクト・ヘディング:"
 
 #: lib/layouts/aastex.layout:373
 msgid "[Acknowledgements]"
@@ -7919,7 +7919,7 @@ msgstr "見出し"
 
 #: lib/layouts/moderncv.layout:73
 msgid "Entry:"
-msgstr "CV項目:"
+msgstr "見出し:"
 
 #: lib/layouts/moderncv.layout:96
 msgid "ListItem"
@@ -9640,7 +9640,7 @@ msgstr "文字様式:所属機関"
 
 #: lib/layouts/initials.module:12
 msgid "Initial"
-msgstr "不可視"
+msgstr "頭文字"
 
 #: lib/layouts/linguistics.module:2
 msgid "Linguistics"
@@ -9790,7 +9790,7 @@ msgstr "Nowebを文芸的プログラミングツールとして使用するこ�
 
 #: lib/layouts/noweb.module:5 lib/layouts/sweave.module:5
 msgid "literate"
-msgstr "行内列挙(Seriate)"
+msgstr "literate"
 
 #: lib/layouts/sweave.module:2 lib/layouts/sweave.module:18
 #: lib/configure.py:504
@@ -10840,7 +10840,7 @@ msgstr "貼り付け(A)|A"
 
 #: lib/ui/classic.ui:96
 msgid "Paste External Selection|x"
-msgstr "外部の選択を貼り付け(x)|x"
+msgstr "外部の選択を貼り付け(X)|X"
 
 #: lib/ui/classic.ui:98
 msgid "Find & Replace...|F"
@@ -12203,7 +12203,7 @@ msgstr "保存されたバージョンに戻す(R)|R"
 
 #: lib/ui/stdmenus.inc:79
 msgid "Use Locking Property|L"
-msgstr "ロック特性を使用(L)|L"
+msgstr "ロック特性を設定(L)|L"
 
 #: lib/ui/stdmenus.inc:97
 msgid "Redo|R"
@@ -13163,7 +13163,7 @@ msgstr "変更を破棄"
 
 #: lib/ui/stdtoolbars.inc:259
 msgid "Use SVN file locking property"
-msgstr "SVNファイルロック特性を使用"
+msgstr "SVNファイルにロック特性を設定"
 
 #: lib/ui/stdtoolbars.inc:261
 msgid "Update local directory from repository"
@@ -16151,7 +16151,7 @@ msgstr "「%1$s」という派生枝はすでに存在します。"
 #: src/Buffer.cpp:1904
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
-msgstr "「%1$s」という派生枝は存在しません"
+msgstr "「%1$s」という派生枝は存在しません。"
 
 #: src/Buffer.cpp:1961
 #, c-format
@@ -16504,7 +16504,7 @@ msgstr "統計"
 
 #: src/BufferView.cpp:1758
 msgid "Branch name"
-msgstr "派生枝"
+msgstr "派生枝名"
 
 #: src/BufferView.cpp:1765 src/frontends/qt4/GuiBranches.cpp:176
 msgid "Branch already exists"
@@ -16567,8 +16567,9 @@ msgid ""
 msgstr ""
 "このファイルはUTF-8でエンコードされていません。\n"
 "ローカルの8ビットエンコードとして読み込まれます。\n"
-"もし，結果が正しくないならば，ファイルの文字コードを\n"
-"LyX以外のプログラムでUTF-8に変更してください。\n"
+"もし，結果が正しくないならば，\n"
+"ファイルの文字コードをLyX以外のプログラムで\n"
+"UTF-8に変更してください。\n"
 
 #: src/Changes.cpp:363 src/Paragraph.cpp:2168
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetListings.cpp:178
@@ -17252,7 +17253,7 @@ msgstr "LaTeX実行回数: %1$d回"
 
 #: src/LaTeX.cpp:263 src/LaTeX.cpp:352
 msgid "Running Index Processor."
-msgstr "索引処理器を実行しています。"
+msgstr "索引処理子を実行しています。"
 
 #: src/LaTeX.cpp:283 src/LaTeX.cpp:335
 msgid "Running BibTeX."
@@ -18053,7 +18054,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3220
 msgid "Enable the automatic appearance of tool tips in the work area."
-msgstr "作業領域でのツールチップスの自動表示を有効にする。"
+msgstr "作業領域でのヒントの自動表示を有効にする。"
 
 #: src/LyXRC.cpp:3224
 msgid ""
@@ -18255,7 +18256,7 @@ msgstr "正規表現編集モード"
 
 #: src/Text3.cpp:1286
 msgid "Layout "
-msgstr "割り付け"
+msgstr "レイアウト "
 
 #: src/Text3.cpp:1287
 msgid " not known"
@@ -18898,7 +18899,7 @@ msgstr "色彩"
 
 #: src/frontends/qt4/GuiBranches.cpp:52
 msgid "Filename Suffix"
-msgstr "ファイル名"
+msgstr "ファイル名後置詞"
 
 #: src/frontends/qt4/GuiBranches.cpp:99 src/frontends/qt4/GuiBranches.cpp:107
 #: src/frontends/qt4/GuiDocument.cpp:1741
@@ -18912,7 +18913,7 @@ msgstr "いいえ"
 
 #: src/frontends/qt4/GuiBranches.cpp:168
 msgid "Enter new branch name"
-msgstr "新規索引名を入力"
+msgstr "新規派生枝名を入力"
 
 #: src/frontends/qt4/GuiBranches.cpp:173
 #, c-format
@@ -18920,8 +18921,8 @@ msgid ""
 "A branch with the name \"%1$s\" already exists.\n"
 "Do you want to merge branch \"%2$s\" with that one?"
 msgstr ""
-""
-""
+"「%1$s」という派生枝は既に存在します。\n"
+"派生枝「%2$s」をその派生枝に統合しますか？"
 
 #: src/frontends/qt4/GuiBranches.cpp:177
 msgid "&Merge"
@@ -19117,19 +19118,19 @@ msgstr "差異"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:57
 msgid "big[[delimiter size]]"
-msgstr "big[[delimiter size]]"
+msgstr "big"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:58
 msgid "Big[[delimiter size]]"
-msgstr "Big[[delimiter size]]"
+msgstr "Big"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:59
 msgid "bigg[[delimiter size]]"
-msgstr "bigg[[delimiter size]]"
+msgstr "bigg"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:60
 msgid "Bigg[[delimiter size]]"
-msgstr "Bigg[[delimiter size]]"
+msgstr "Bigg"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:165
 msgid "Math Delimiter"
@@ -20151,11 +20152,11 @@ msgstr "利用者情報"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3012
 msgid "Choose bind file"
-msgstr "バインドファイルを選んで下さい"
+msgstr "キー設定ファイルを選んで下さい"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3013
 msgid "LyX bind files (*.bind)"
-msgstr "LyXバインドファイル(*.bind)"
+msgstr "LyXキー設定ファイル(*.bind)"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3019
 msgid "Choose UI file"
@@ -20793,11 +20794,11 @@ msgstr "%1$sを読み込みしています..."
 
 #: src/frontends/qt4/GuiView.cpp:1710
 msgid "imported."
-msgstr "書き出されました。"
+msgstr "読み込まれました。"
 
 #: src/frontends/qt4/GuiView.cpp:1712
 msgid "file not imported!"
-msgstr "ファイルは書き出されませんでした！"
+msgstr "ファイルは読み込まれませんでした！"
 
 #: src/frontends/qt4/GuiView.cpp:1737
 msgid "newfile"
@@ -21508,9 +21509,9 @@ msgid ""
 "Offending file:\n"
 "%1$s"
 msgstr ""
-""
-""
-""
+"HTML出力を生成するに際して、LyXは非LyXファイルのインクルードの仕方がわかりま"
+"せんでした。以下が問題のあるファイルです：\n"
+"%1$s"
 
 #: src/insets/InsetIndex.cpp:143
 msgid "Index sorting failed"
@@ -22445,11 +22446,11 @@ msgstr "ロケール・国際化"
 
 #: src/support/debug.cpp:68
 msgid "Selection copy/paste mechanism"
-msgstr "選択部のコピー/貼り付けの動作"
+msgstr "選択部のコピー・貼り付けの動作"
 
 #: src/support/debug.cpp:69
 msgid "Find and replace mechanism"
-msgstr "検索・置換"
+msgstr "検索・置換の動作"
 
 #: src/support/debug.cpp:70
 msgid "Developers' general debug messages"
