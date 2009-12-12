@@ -101,13 +101,16 @@ dist_deexamples_DATA = \
 
 esexamplesdir = $(pkgdatadir)/examples/es
 dist_esexamples_DATA = \
+	examples/es/beamer-conference-ornate20min.lyx \
 	examples/es/Braille.lyx \
 	examples/es/ejemplo_con_lyx.lyx \
 	examples/es/ejemplo_sin_lyx.lyx \
 	examples/es/ItemizeBullets.lyx \
 	examples/es/linguistics.lyx \
 	examples/es/multicol.lyx \
-	examples/es/splash.lyx
+	examples/es/splash.lyx \
+	examples/es/tufte-book.lyx \
+	examples/es/tufte-handout.lyx
 
 euexamplesdir = $(pkgdatadir)/examples/eu
 dist_euexamples_DATA = \

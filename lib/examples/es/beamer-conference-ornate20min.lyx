@@ -1,0 +1,1211 @@
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass beamer
+\begin_preamble
+\usetheme{Warsaw}
+% or ...
+
+\setbeamercovered{transparent}
+% or whatever (possibly just delete it)
+
+% beamer theorem labels in Spanish (three used here)
+% \newtheorem{defi}{Definición}
+% \renewenvironment{definition}{\begin{defi}}{\end{defi}}
+% \newtheorem{defis}{Definiciones}
+% \renewenvironment{definitions}{\begin{defis}}{\end{defis}}
+% \newtheorem{facte}{Dato}
+% \renewenvironment{fact}{\begin{facte}}{\end{facte}}
+\newtheorem{coro}{Corolario}
+\renewenvironment{corollary}{\begin{coro}}{\end{coro}}
+\newtheorem{theo}{Teorema}
+\renewenvironment{theorem}{\begin{theo}}{\end{theo}}
+\newtheorem{exa}{Ejemplo}
+\renewenvironment{example}{\begin{exa}}{\end{exa}}
+% \newtheorem{exas}{Ejemplos}
+% \renewenvironment{examples}{\begin{exas}}{\end{exas}}
+\end_preamble
+\use_default_options false
+\language spanish
+\inputencoding auto
+\font_roman times
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 2
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Este archivo es una plantilla para:
+\end_layout
+
+\begin_layout Plain Layout
+- Presentar una conferencia-coloquio, 
+\end_layout
+
+\begin_layout Plain Layout
+- de una duración de unos 20min, 
+\end_layout
+
+\begin_layout Plain Layout
+- en estilo ornamental.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+En principio, este archivo puede redistribuirse y/o modificarse bajo los
+ términos de GNU Public License, versión 2.
+ Sin embargo, se supone que este archivo es una plantilla para ser modificada
+ según las necesidades de cada cuál.
+ Por esta razón, si este archivo se utiliza como tal plantilla y no se distribuy
+e específicamente como parte de otro programa/paquete, el autor otorga permiso
+ extra para copiar y modificar libremente este archivo e incluso para suprimir
+ esta nota de copyright.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Título tal como aparecerá en la presentación
+\begin_inset OptArg
+status open
+
+\begin_layout Plain Layout
+Título breve alternativo 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+opcional, sólo para títulos largos
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subtitle
+Entorno sólo para poner un subtítulo al artículo
+\end_layout
+
+\begin_layout Author
+F.
+\begin_inset space ~
+\end_inset
+
+Autor
+\begin_inset Flex InstituteMark
+status open
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ S.
+\begin_inset space ~
+\end_inset
+
+Otro
+\begin_inset Flex InstituteMark
+status collapsed
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+- Componer los nombres en el mismo orden en que aparecen en el artículo.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+- Usar el menú Insertar>Objeto Personalizado>MarcaInstituto sólo si los
+ autores tienen distintas afiliaciones.
+\end_layout
+
+\end_inset
+
+
+\begin_inset OptArg
+status collapsed
+
+\begin_layout Plain Layout
+Autor, Otro
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+- opcional, usar sólo con varios autores
+\end_layout
+
+\begin_layout Plain Layout
+- si realmente son muchos autores, usar 
+\begin_inset Quotes eld
+\end_inset
+
+Autor et al.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Institute
+\begin_inset Flex InstituteMark
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+Departamento de Informática
+\begin_inset Newline newline
+\end_inset
+
+Universidad de Algún Sitio
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex InstituteMark
+status collapsed
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+Departamento de Filosofía Teórica
+\begin_inset Newline newline
+\end_inset
+
+Universidad de Otro Sitio
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+- Usar el comando 
+\backslash
+inst sólo si hay varias afiliaciones.
+\end_layout
+
+\begin_layout Plain Layout
+- Poner algo sencillo, nadie se interesa por la dirección.
+\end_layout
+
+\end_inset
+
+
+\begin_inset OptArg
+status collapsed
+
+\begin_layout Plain Layout
+Universidades de Algún Sitio y de Otro Sitio
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+opcional, aunque generalmente necesario
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+Conferencia sobre Presentaciones Fabulosas, 2003
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+- Usar el nombre de la conferencia o bien su abreviatura.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+- Realmente no es informativo para la audiencia, pero sí para quienes (incluyend
+o Vd.mismo) lean la presentación en línea.
+\end_layout
+
+\end_inset
+
+
+\begin_inset OptArg
+status collapsed
+
+\begin_layout Plain Layout
+CFP 2003
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+opcional, debería ser una abreviatura del nombre de la conferencia
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Si se dispone de un archivo como "institución-logo-nombrearchivo.xxx", donde
+ xxx es un formato gráfico aceptable por latex o pdflatex, entonces se puede
+ añadir un logotipo descomentando lo siguiente:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+pgfdeclareimage[height=0.5cm]{institution-logo}{institution-logo-filename}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+logo{
+\backslash
+pgfuseimage{institution-logo}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Lo siguiente hace que se muestre un índice al inicio de cada subsección.
+ Suprímelo si no lo quieres.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+AtBeginSubsection[]{
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+frame<beamer>{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+frametitle{Índice}   
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+tableofcontents[currentsection,currentsubsection]
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Si se desea una superposición de las transparencias al modo todo If you
+ wish to uncover everything in a step-wise fashion, uncomment the following
+ command:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+beamerdefaultoverlayspecification{<+->}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Índice
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Estructurar una exposición es una tarea difícil y la siguiente estructura
+ podría no ser adecuada.
+ Aquí hay unas reglas aplicadas a este caso: 
+\end_layout
+
+\begin_layout Plain Layout
+- Exactamente dos o tres secciones (además del sumario).
+ 
+\end_layout
+
+\begin_layout Plain Layout
+- Como máximo, tres subsecciones por sección.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+- Hablar entre 30
+\begin_inset space \thinspace{}
+\end_inset
+
+s y 2
+\begin_inset space \thinspace{}
+\end_inset
+
+min por diapositiva.
+ Así que debería haber entre 15 y 30 fotogramas para decirlo todo.
+\end_layout
+
+\begin_layout Plain Layout
+- Es probable que la audiencia sepa bastante poco sobre el tema de la conferenci
+a, así pues, ¡*simplifique*!
+\end_layout
+
+\begin_layout Plain Layout
+- En una exposición de 20min, conseguir transmitir las ideas principales
+ es bastante.
+ Deje fuera los detalles, aunque eso signifique ser menos preciso de lo
+ que podría parecer necesario.
+\end_layout
+
+\begin_layout Plain Layout
+- Si se omiten detalles vitales para una demostración/implementación, dígalo
+ una vez.
+ Para la audiencia será suficiente.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Motivación
+\end_layout
+
+\begin_layout Subsection
+El problema básico que estudiamos
+\begin_inset OptArg
+status collapsed
+
+\begin_layout Plain Layout
+Problema básico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Poner títulos informativos
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+N.
+ del T.
+\emph default
+: En el título original pone además 
+\begin_inset Quotes eld
+\end_inset
+
+Empleo de Mayúsculas
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Esto es Habitual en Inglés pero no en español.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout FrameSubtitle
+Los subtítulos de los fotogramas son opcionales.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+- Un título debería resumir el contenido de la transparencia de modo comprensibl
+e para cualquiera que no conoce lo que ésta contiene.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Usar Enumeración* a discreción.
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Usar oraciones muy cortas o frases cortas.
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Estas transiciones se crean usando el estilo Pausa.
+\end_layout
+
+\begin_layout BeginFrame
+Poner títulos informativos 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+<1->
+\end_layout
+
+\end_inset
+
+Además se pueden usar especificaciones para crear transparencias superpuestas.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+<3->
+\end_layout
+
+\end_inset
+
+Esto permite presentar cosas en cualquier orden.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+<2->
+\end_layout
+
+\end_inset
+
+Ésta se muestra en segundo lugar.
+\end_layout
+
+\begin_layout BeginFrame
+Poner títulos informativos
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+<1->
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Bloque sin título.
+\end_layout
+
+\begin_layout Itemize
+Mostrado en todas las transparencias.
+\end_layout
+
+\end_deeper
+\begin_layout ExampleBlock
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+<2->
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Título de algún Bloque de ejemplo
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $e^{i\pi}=-1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $e^{i\pi/2}=i$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Trabajo previo
+\end_layout
+
+\begin_layout BeginFrame
+Poner títulos informativos
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+N.
+ del T.
+\emph default
+: Para que las etiquetas de 
+\emph on
+Teoremas
+\emph default
+ (Ejemplo, Teorema, Corolario) que se usan en los siguientes fotogramas
+ se impriman en español en la salida PDF, hay que usar comandos en el preámbulo
+ LaTeX: véase en 
+\family sans
+Documento
+\family default
+\SpecialChar \menuseparator
+Configuración.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+<1->
+\end_layout
+
+\end_inset
+
+En la primera diapositiva.
+ 
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Example
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+<2->
+\end_layout
+
+\end_inset
+
+En la segunda diapositiva.
+\end_layout
+
+\begin_layout Section
+Nuestros resultados/Contribución
+\end_layout
+
+\begin_layout Subsection
+Resultados principales
+\end_layout
+
+\begin_layout BeginFrame
+Poner títulos informativos
+\end_layout
+
+\begin_layout Theorem
+En la primera diapositiva.
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Corollary
+En la segunda diapositiva.
+\end_layout
+
+\begin_layout BeginFrame
+Poner títulos informativos 
+\end_layout
+
+\begin_layout ColumnsTopAligned
+
+\end_layout
+
+\begin_deeper
+\begin_layout Column
+5cm
+\end_layout
+
+\begin_layout Theorem
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+<1->
+\end_layout
+
+\end_inset
+
+En la columna de la izquierda.
+\end_layout
+
+\begin_layout Column
+5cm
+\end_layout
+
+\begin_layout Corollary
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+<2->
+\end_layout
+
+\end_inset
+
+En la columna de la derecha.
+\begin_inset Newline newline
+\end_inset
+
+Nueva línea
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Ideas básicas para demostraciones/implementaciones
+\end_layout
+
+\begin_layout Section*
+Sumario
+\end_layout
+
+\begin_layout BeginFrame
+Sumario
+\end_layout
+
+\begin_layout Itemize
+El
+\color none
+ 
+\color red
+primer mensaje principal
+\color none
+ de la exposición en una o dos líneas.
+\end_layout
+
+\begin_layout Itemize
+El
+\color none
+ 
+\color red
+segundo mensaje principal
+\color none
+ de la exposición en una o dos líneas.
+\end_layout
+
+\begin_layout Itemize
+Quizás un
+\color none
+ 
+\color red
+tercer mensaje
+\color none
+, pero no más.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+La perspectiva siempre es opcional.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+vskip0pt plus.5fill
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Perspectiva
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Lo que no hemos hecho todavía.
+\end_layout
+
+\begin_layout Itemize
+Otras cosas pendientes.
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section*
+\start_of_appendix
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Todo lo siguente es opcional y generalmente no es necesario.
+\end_layout
+
+\end_inset
+
+Apéndice
+\end_layout
+
+\begin_layout Subsection*
+Lecturas complementarias
+\end_layout
+
+\begin_layout BeginFrame
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[allowframebreaks]
+\end_layout
+
+\end_inset
+
+Lecturas complementarias
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+beamertemplatebookbibitems
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Empezar con libros generales.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Autor1990"
+
+\end_inset
+
+A.
+ Autor.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+newblock
+\end_layout
+
+\end_inset
+
+
+\emph on
+Manual de Lo que sea
+\emph default
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+newblock
+\end_layout
+
+\end_inset
+
+ Editorial, 1990.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+beamertemplatearticlebibitems
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Y seguir con artículos, una lista breve.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Alguien2002"
+
+\end_inset
+
+S.
+ Alguien.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+newblock
+\end_layout
+
+\end_inset
+
+ Sobre esto y aquello
+\emph on
+.
+
+\emph default
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+newblock
+\end_layout
+
+\end_inset
+
+
+\emph on
+Revista Esto y Aquello
+\emph default
+.
+ 2(1):50--100, 2000.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\end_body
+\end_document
