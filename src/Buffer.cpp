@@ -3735,15 +3735,26 @@ int Buffer::spellCheck(DocIterator & from, DocIterator & to,
 	DocIterator const end = doc_iterator_end(this);
 	for (; from != end; from.forwardPos()) {
 		// We are only interested in text so remove the math CursorSlice.
-		while (from.inMathed())
-			from.forwardInset();
+		while (from.inMathed()) {
+			from.pop_back();
+			from.pos()++;
+		}
+		// If from is at the end of the document (which is possible
+		// when leaving the mathed) LyX will crash later.
+		if (from == end)
+			break;
 		to = from;
 		if (from.paragraph().spellCheck(from.pos(), to.pos(), wl, suggestions)) {
 			word_lang = wl;
 			break;
 		}
-		from = to;
-		++progress;
+
+		// Do not increase progress when from == to, otherwise the word
+		// count will be wrong.
+		if (from != to) {
+			from = to;
+			++progress;
+		}
 	}
 	return progress;
 }
