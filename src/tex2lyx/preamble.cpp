@@ -457,7 +457,8 @@ void end_preamble(ostream & os, TextClass const & /*textclass*/)
 	// set the quote language
 	// LyX only knows the following quotes languages:
 	// english, swedish, german, polish, french and danish
-	// (quotes for "japanese" and "chinese-traditional" are missing)
+	// (quotes for "japanese" and "chinese-traditional" are missing because
+	//  they wouldn't be useful: http://www.lyx.org/trac/ticket/6383)
 	// conversion list taken from
 	// http://en.wikipedia.org/wiki/Quotation_mark,_non-English_usage
 	// (quotes for kazakh and interlingua are unknown)
