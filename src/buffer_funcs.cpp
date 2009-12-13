@@ -76,6 +76,7 @@ Buffer * checkAndLoadLyXFile(FileName const & filename, bool const acceptDirty)
 			return checkBuffer;
 
 		// FIXME: should be LFUN_REVERT
+		checkBuffer->markClean();
 		theBufferList().release(checkBuffer);
 		// Load it again.
 		return checkAndLoadLyXFile(filename);
