@@ -374,11 +374,23 @@ MathAtom createInsetMath(docstring const & s, Buffer * buf)
 	if (s.substr(0, 8) == "xymatrix") {
 		char spacing_code = '\0';
 		Length spacing;
+		bool equal_spacing = false;
 		size_t const len = s.length();
 		size_t i = 8;
 		if (i < len && s[i] == '@') {
 			++i;
-			if (i < len) {
+			if (i < len && s[i] == '!') {
+				equal_spacing = true;
+				++i;
+				if (i < len) {
+					switch (s[i]) {
+					case '0':
+					case 'R':
+					case 'C':
+						spacing_code = static_cast<char>(s[i]);
+					}
+				}
+			} else if (i < len) {
 				switch (s[i]) {
 				case 'R':
 				case 'C':
@@ -390,13 +402,14 @@ MathAtom createInsetMath(docstring const & s, Buffer * buf)
 					++i;
 					break;
 				}
-			}
-			if (i < len && s[i] == '=') {
-				++i;
-				spacing = Length(to_ascii(s.substr(i)));
+				if (i < len && s[i] == '=') {
+					++i;
+					spacing = Length(to_ascii(s.substr(i)));
+				}
 			}
 		}
-		return MathAtom(new InsetMathXYMatrix(buf, spacing, spacing_code));
+		return MathAtom(new InsetMathXYMatrix(buf, spacing, spacing_code,
+			equal_spacing));
 	}
 	if (s == "xrightarrow" || s == "xleftarrow")
 		return MathAtom(new InsetMathXArrow(buf, s));

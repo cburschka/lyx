@@ -22,7 +22,8 @@ namespace lyx {
 class InsetMathXYMatrix : public InsetMathGrid {
 public:
 	///
-	InsetMathXYMatrix(Buffer * buf, Length const & = Length(), char c = '\0');
+	InsetMathXYMatrix(Buffer * buf, Length const & = Length(), char c = '\0',
+		bool equal_spacing = false);
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
@@ -54,6 +55,8 @@ private:
 	Length spacing_;
 	///
 	char spacing_code_;
+	///
+	bool equal_spacing_;
 };
 
 
