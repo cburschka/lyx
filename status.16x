@@ -35,6 +35,8 @@ What's new
 - Checking all opened files for external change after updating from SVN
   repository (bug 5211).
 
+- Add a Close All menu item to the menu (bug 740).
+
 - Toolbar entry for the AMS math symbol \Diamond added.
 
 
@@ -91,9 +93,10 @@ What's new
 - Fix layout of the Paragraph dialog (particularly within CJK
   localization).
 
-- Add a Close All menu item to the menu (bug 740).
-
 - Fix cursor placement in math when inserting 'active' insets (bug 6382).
+
+- Fix display of author names containing a thin space (\,) in the
+  citation inset.
 
 
 * DOCUMENTATION AND LOCALIZATION

@@ -130,10 +130,14 @@ docstring convertLaTeXCommands(docstring const & str)
 				scanning_cmd = false;
 			}
 
-			// was the last character a \? If so, then this is something like: \\,
+			// was the last character a \? If so, then this is something like: \\
 			// or \$, so we'll just output it. That's probably not always right...
 			if (escaped) {
-				ret += ch;
+				// exception: output \, as THIN SPACE
+				if (ch == ',')
+					ret.push_back(0x2009);
+				else
+					ret += ch;
 				val = val.substr(1);
 				escaped = false;
 				continue;
