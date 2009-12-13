@@ -577,8 +577,8 @@ def checkFormatEntries(dtl_tools):
 \Format pdftex     pdftex_t PDFTEX                "" ""	""	""
 \Format program    ""      Program                "" ""	""	""
 \Format pstex      pstex_t PSTEX                  "" ""	""	""
-\Format wmf        wmf    "Windows Metafile"      "" "auto"	"auto"	"vector"
-\Format emf        emf    "Enhanced Metafile"     "" "auto"	"auto"	"vector"
+\Format wmf        wmf    "Windows Metafile"      "" ""	""	"vector"
+\Format emf        emf    "Enhanced Metafile"     "" ""	""	"vector"
 \Format wordhtml   html   "HTML (MS Word)"        "" "" ""	"document"
 ''')
 
