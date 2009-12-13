@@ -1392,6 +1392,14 @@ contributers = [
                  "10 November 2009",
                  u"translation of documentation and user interface to Simplified Chinese"),
 
+     contributer(u'Sergey Tereschenko',
+                 "serg.partizan () gmail ! com",
+                 "GPL",
+                 "my contributions",
+                 "m=126065880524135",
+                 "12 December 2009",
+                 u"Russian translation of the user interface"),
+
      contributer(u"Reuben Thomas",
                  "rrt () sc3d ! org",
                  "GPL",
