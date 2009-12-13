@@ -356,6 +356,17 @@ Buffer::~Buffer()
 }
 
 
+Buffer * Buffer::clone() const
+{
+	Buffer * clone = new Buffer(fileName().absFilename(), false);
+	clone->d->file_fully_loaded = true;
+	clone->d->params = d->params;
+	clone->d->inset = static_cast<InsetText *>(d->inset->clone());
+	clone->d->inset->setBuffer(*clone);
+	return clone;
+}
+
+
 void Buffer::changed() const
 {
 	if (d->wa_)

@@ -102,6 +102,13 @@
 #include <QUrl>
 #include <QScrollBar>
 
+// QtConcurrent was introduced in Qt 4.4
+#if (QT_VERSION >= 0x040400)
+#include <QFuture>
+#include <QFutureWatcher>
+#include <QtConcurrentRun>
+#endif
+
 #include <boost/bind.hpp>
 
 #include <sstream>
@@ -290,6 +297,11 @@ public:
 
 	///
 	TocModels toc_models_;
+
+#if (QT_VERSION >= 0x040400)
+	///
+	QFutureWatcher<bool> autosave_watcher_;
+#endif
 };
 
 
@@ -350,12 +362,27 @@ GuiView::GuiView(int id)
 	// clear session data if any.
 	QSettings settings;
 	settings.remove("views");
+
+#if (QT_VERSION >= 0x040400)
+	connect(&d.autosave_watcher_, SIGNAL(finished()), this,
+		SLOT(autoSaveFinished()));
+#endif
 }
 
 
 GuiView::~GuiView()
 {
 	delete &d;
+}
+
+
+void GuiView::autoSaveFinished()
+{
+#if (QT_VERSION >= 0x040400)
+	docstring const msg = d.autosave_watcher_.result()
+		? _("Automatic save done.") : _("Automatic save failed!");
+	message(msg);
+#endif
 }
 
 
@@ -1195,12 +1222,39 @@ BufferView const * GuiView::currentBufferView() const
 }
 
 
+static bool saveAndDestroyBuffer(Buffer * buffer, FileName const & fname)
+{
+	bool failed = true;
+	FileName const tmp_ret = FileName::tempName("lyxauto");
+	if (!tmp_ret.empty()) {
+		if (buffer->writeFile(tmp_ret))
+			failed = !tmp_ret.moveTo(fname);
+	}
+	if (failed) {
+		// failed to write/rename tmp_ret so try writing direct
+		failed = buffer->writeFile(fname);
+	}
+	delete buffer;
+	return !failed;
+}
+
+
 void GuiView::autoSave()
 {
 	LYXERR(Debug::INFO, "Running autoSave()");
 
-	if (documentBufferView())
-		documentBufferView()->buffer().autoSave();
+	Buffer * buffer = documentBufferView()
+		? &documentBufferView()->buffer() : 0;
+	if (!buffer)
+		return;
+
+#if (QT_VERSION >= 0x040400)
+	QFuture<bool> f = QtConcurrent::run(saveAndDestroyBuffer, buffer->clone(),
+		buffer->getAutosaveFilename());
+	d.autosave_watcher_.setFuture(f);
+#else
+	buffer->autoSave();
+#endif
 }
 
 

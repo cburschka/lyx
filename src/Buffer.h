@@ -130,6 +130,9 @@ public:
 	/// Destructor
 	~Buffer();
 
+	///
+	Buffer * clone() const;
+
 	/** High-level interface to buffer functionality.
 	    This function parses a command string and executes it.
 	*/

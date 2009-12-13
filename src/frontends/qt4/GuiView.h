@@ -180,6 +180,9 @@ private Q_SLOTS:
 	void normalSizedIcons();
 	void bigSizedIcons();
 
+	/// For completion of Buffer autosave thread.
+	void autoSaveFinished();
+
 private:
 	/// Open given child document in current buffer directory.
 	void openChildDocument(std::string const & filename);
