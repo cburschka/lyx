@@ -57,7 +57,7 @@ private:
 	///
 	int latex(odocstream &, OutputParams const &) const;
 	///
-	docstring xhtml(odocstream &, OutputParams const &) const;
+	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures &) const;
 	///

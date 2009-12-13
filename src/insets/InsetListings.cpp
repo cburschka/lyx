@@ -26,6 +26,7 @@
 #include "Language.h"
 #include "MetricsInfo.h"
 #include "output_latex.h"
+#include "output_xhtml.h"
 #include "TextClass.h"
 
 #include "support/debug.h"
@@ -267,34 +268,37 @@ int InsetListings::latex(odocstream & os, OutputParams const & runparams) const
 }
 
 
-docstring InsetListings::xhtml(odocstream & os, OutputParams const & rp) const
+docstring InsetListings::xhtml(XHTMLStream & os, OutputParams const & rp) const
 {
-	odocstringstream out;
+	odocstringstream ods;
+	XHTMLStream out(ods);
 
 	bool const isInline = params().isInline();
 	if (isInline) 
-		out << "<br />\n";
+		out << CompTag("br");
 	else {
-		out << "<div class='float float-listings'>\n";
+		out << StartTag("div", "class='float float-listings'");
 		docstring caption = getCaptionHTML(rp);
 		if (!caption.empty())
-			out << "<div class='float-caption'>" << caption << "</div>\n";
+			out << StartTag("div", "class='float-caption'") 
+			    << caption << EndTag("div");
 	}
 
-	out << "<pre>\n";
+	out << StartTag("pre");
 	OutputParams newrp = rp;
 	newrp.html_disable_captions = true;
 	docstring def = InsetText::xhtml(out, newrp);
-	out << "\n</pre>\n";
+	out << EndTag("pre");
 
 	if (isInline) {
-		out << "<br />\n";
-		os << out.str();
+		out << CompTag("br");
+		// escaping will already have been done
+		os << XHTMLStream::NextRaw() << ods.str();
 	} else {
-		out <<  "</div>";
+		out << EndTag("div");
 		// In this case, this needs to be deferred, but we'll put it
 		// before anything the text itself deferred.
-		def = out.str() + '\n' + def;
+		def = ods.str() + '\n' + def;
 	}
 	return def;
 }
