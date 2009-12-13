@@ -572,11 +572,11 @@ def checkFormatEntries(dtl_tools):
 \Format pdftex     pdftex_t PDFTEX                "" ""	""	""
 \Format program    ""      Program                "" ""	""	""
 \Format pstex      pstex_t PSTEX                  "" ""	""	""
-\Format rtf        rtf    "Rich Text Format"      "" "%s"	""	"document,vector"
-\Format sxw        sxw    "OpenOffice.Org (sxw)"  "" "%s"	""	"document,vector"
-\Format wmf        wmf    "Windows Metafile"      "" "%s"	"%s"	"vector"
-\Format emf        emf    "Enhanced Metafile"     "" "%s"	"%s"	"vector"
-\Format word       doc    "MS Word"               W  "%s"	""	"document,vector"
+\Format rtf        rtf    "Rich Text Format"      "" ""	""	"document,vector"
+\Format sxw        sxw    "OpenOffice.Org (sxw)"  "" ""	""	"document,vector"
+\Format wmf        wmf    "Windows Metafile"      "" "auto"	"auto"	"vector"
+\Format emf        emf    "Enhanced Metafile"     "" "auto"	"auto"	"vector"
+\Format word       doc    "MS Word"               W  ""	""	"document,vector"
 \Format wordhtml   html   "HTML (MS Word)"        "" "" ""	"document"
 ''')
 
