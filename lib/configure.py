@@ -552,8 +552,13 @@ def checkFormatEntries(dtl_tools):
     checkViewerEditor('Noteedit', ['noteedit'],
         rc_entry = [r'\Format noteedit   not     Noteedit               "" "%%"	"%%"	"vector"'])
     #
-    checkViewerEditor('an OpenDocument viewer', ['swriter', 'oowriter'],
-        rc_entry = [r'\Format odt        odt     OpenDocument           "" "%%"	"%%"	"document,vector"'])
+    checkViewerEditor('an OpenDocument/OpenOffice viewer', ['swriter', 'oowriter', 'abiword'],
+        rc_entry = [r'''\Format odt        odt     OpenDocument           "" "%%"	"%%"	"document,vector"
+\Format sxw        sxw    "OpenOffice.Org (sxw)"  "" ""	""	"document,vector"'''])
+    # 
+    checkViewerEditor('a Rich Text and Word viewer', ['swriter', 'oowriter', 'abiword'],
+        rc_entry = [r'''\Format rtf        rtf    "Rich Text Format"      "" ""	""	"document,vector"
+\Format word       doc    "MS Word"               W  ""	""	"document,vector"'''])
     #
     # entried that do not need checkProg
     addToRC(r'''\Format date       ""     "date command"          "" ""	""	""
@@ -572,11 +577,8 @@ def checkFormatEntries(dtl_tools):
 \Format pdftex     pdftex_t PDFTEX                "" ""	""	""
 \Format program    ""      Program                "" ""	""	""
 \Format pstex      pstex_t PSTEX                  "" ""	""	""
-\Format rtf        rtf    "Rich Text Format"      "" ""	""	"document,vector"
-\Format sxw        sxw    "OpenOffice.Org (sxw)"  "" ""	""	"document,vector"
 \Format wmf        wmf    "Windows Metafile"      "" "auto"	"auto"	"vector"
 \Format emf        emf    "Enhanced Metafile"     "" "auto"	"auto"	"vector"
-\Format word       doc    "MS Word"               W  ""	""	"document,vector"
 \Format wordhtml   html   "HTML (MS Word)"        "" "" ""	"document"
 ''')
 
