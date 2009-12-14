@@ -168,8 +168,8 @@ InsetLayout Note:Greyedout
 		div.note_greyedout { 
 			display: inline;
 			background-color: #A0A0A0; 
-			padding: 0.5ex;
-			border: 1px black solid;
+			padding-left: 1ex;
+			padding-right: 1ex;
 		}
 	EndHTMLStyle
 	HTMLIsBlock           false
