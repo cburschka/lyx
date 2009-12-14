@@ -1,11 +1,10 @@
 TODO:
-1. InsetTabular
-2. The counter patch, and better output for InsetRef.
-3. Better output for citations, meaning better labels. Numerical, as said below,
+1. The counter patch, and better output for InsetRef.
+2. Better output for citations, meaning better labels. Numerical, as said below,
    should be easy, and author-year oughtn't to be THAT hard. But it'll need a 
 	 bit of work.
-4. CSS needs work in several places, mostly floats. Maybe check elyxer on that.
-5. MathML
+3. CSS needs work in several places, mostly floats. Maybe check elyxer on that.
+4. MathML
 
 
 These insets work but still need work:
@@ -41,6 +40,9 @@ These insets work but still need work:
 	InsetRef: At present, we just use the label name as associated text, and put it 
 		into square brackets. It'd be nice to be able to do more, but for that we'd need to
 		associate counters with the labels, and we don't have that yet.
+	InsetTabular: Works reasonably well, but we don't do anything with any of the 
+		arguments provided for longtable. There are probably other limitations, too,
+		since I'm very much not an expert with tables.
 	InsetTOC: This now works pretty well, but only for the table of contents, not for
 		any other TOC-like lists. Getting those to work shouldn't be too bad, as we can
 		do almost exactly the same thing. That said, though, we might want to do things
@@ -57,9 +59,6 @@ These insets do not work and are not yet scheduled to work:
 
 May need to make use here of TocWidget::itemInset, which should then be moved
 to TocBackend.
-
-These do not yet work and need some attention:
-	InsetTabular: This shouldn't be too hard, but will need doing.
 
 MATH
 	Regarding math, the view seems to be that we should in the first instance just use what
