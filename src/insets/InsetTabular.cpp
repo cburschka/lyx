@@ -38,6 +38,7 @@
 #include "LyXRC.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
+#include "output_xhtml.h"
 #include "Paragraph.h"
 #include "ParagraphParameters.h"
 #include "ParIterator.h"
@@ -2632,6 +2633,98 @@ int Tabular::docbook(odocstream & os, OutputParams const & runparams) const
 }
 
 
+docstring Tabular::xhtmlRow(XHTMLStream & xs, row_type row,
+			   OutputParams const & runparams) const
+{
+	/* for (col_type i = 0; i < column_info.size(); ++i) {
+		os << "<colspec colname=\"col" << i << "\" align=\"";
+		switch (column_info[i].alignment) {
+		case LYX_ALIGN_LEFT:
+			os << "left";
+			break;
+		case LYX_ALIGN_RIGHT:
+			os << "right";
+			break;
+		default:
+			os << "center";
+			break;
+		}
+		os << '"';
+		if (runparams.flavor == OutputParams::XML)
+			os << '/';
+		os << ">\n";
+		++ret;
+	} */
+	
+	docstring ret;
+	idx_type cell = getFirstCellInRow(row);
+
+	xs << StartTag("tr");
+	for (col_type j = 0; j < column_info.size(); ++j) {
+		if (isPartOfMultiColumn(row, j))
+			continue;
+
+		stringstream attr;
+		attr << "align='";
+		switch (getAlignment(cell)) {
+		case LYX_ALIGN_LEFT:
+			attr << "left";
+			break;
+		case LYX_ALIGN_RIGHT:
+			attr << "right";
+			break;
+		default:
+			attr << "center";
+			break;
+		}
+		attr << "'";
+		attr << " valign='";
+		switch (getVAlignment(cell)) {
+		case LYX_VALIGN_TOP:
+			attr << "top";
+			break;
+		case LYX_VALIGN_BOTTOM:
+			attr << "bottom";
+			break;
+		case LYX_VALIGN_MIDDLE:
+			attr << "middle";
+		}
+		attr << "'";
+
+		if (isMultiColumn(cell))
+			attr << " colspan='" << j + columnSpan(cell) - 1<< "'";
+
+		xs << StartTag("td", attr.str());
+		ret += cellInset(cell)->xhtml(xs, runparams);
+		xs << EndTag("td");
+		++cell;
+	}
+	xs << EndTag("tr");
+	return ret;
+}
+
+
+docstring Tabular::xhtml(XHTMLStream & xs, OutputParams const & runparams) const
+{
+	docstring ret;
+	xs << StartTag("table");
+
+	// It's unclear to me if we need to mess with the long table stuff. 
+	// We can borrow that too from docbook, if so.
+
+	xs << StartTag("tbody");
+	for (row_type i = 0; i < row_info.size(); ++i) {
+		if (isValidRow(i)) {
+			ret += xhtmlRow(xs, i, runparams);
+		}
+	}
+	xs << EndTag("tbody");
+	xs << EndTag("table");
+
+	return ret;
+}
+
+
 bool Tabular::plaintextTopHLine(odocstream & os, row_type row,
 				   vector<unsigned int> const & clen) const
 {
@@ -2953,6 +3046,14 @@ docstring InsetTableCell::asString(bool intoInsets)
 		retval += it->asString(intoInsets ? AS_STR_INSETS : AS_STR_NONE);
 	}
 	return retval;
+}
+
+
+docstring InsetTableCell::xhtml(XHTMLStream & xs, OutputParams const & rp) const
+{
+	if (!isFixedWidth)
+		return InsetText::insetAsXHTML(xs, rp, InsetText::JustText);
+	return InsetText::xhtml(xs, rp);
 }
 
 
@@ -4215,6 +4316,12 @@ int InsetTabular::docbook(odocstream & os, OutputParams const & runparams) const
 		++ret;
 	}
 	return ret;
+}
+
+
+docstring InsetTabular::xhtml(XHTMLStream & xs, OutputParams const & rp) const
+{
+	return tabular.xhtml(xs, rp);
 }
 
 

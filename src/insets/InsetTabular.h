@@ -55,6 +55,7 @@ class InsetTableCell;
 class FuncStatus;
 class Lexer;
 class Paragraph;
+class XHTMLStream;
 
 namespace frontend { class Painter; }
 
@@ -368,8 +369,10 @@ public:
 	void read(Lexer &);
 	///
 	int latex(odocstream &, OutputParams const &) const;
-	//
+	///
 	int docbook(odocstream & os, OutputParams const &) const;
+	///
+	docstring xhtml(XHTMLStream & os, OutputParams const &) const;
 	///
 	void plaintext(odocstream &,
 		       OutputParams const & runparams, int const depth,
@@ -645,6 +648,8 @@ public:
 				bool onlydata) const;
 	/// auxiliary function for docbook
 	int docbookRow(odocstream & os, row_type, OutputParams const &) const;
+	///
+	docstring xhtmlRow(XHTMLStream & xs, row_type, OutputParams const &) const;
 
 	/// change associated Buffer
 	void setBuffer(Buffer & buffer);
@@ -677,6 +682,8 @@ public:
 	/// writes the contents of the cell as a string, optionally
 	/// descending into insets
 	docstring asString(bool intoInsets = true);
+	///
+	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 private:
 	/// unimplemented
 	InsetTableCell();
@@ -772,6 +779,8 @@ public:
 	int plaintext(odocstream &, OutputParams const &) const;
 	///
 	int docbook(odocstream &, OutputParams const &) const;
+	///
+	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
