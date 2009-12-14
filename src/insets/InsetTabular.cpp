@@ -2687,8 +2687,6 @@ docstring Tabular::xhtmlRow(XHTMLStream & xs, row_type row,
 docstring Tabular::xhtml(XHTMLStream & xs, OutputParams const & runparams) const
 {
 	docstring ret;
-	xs << StartTag("table");
-
 	// It's unclear to me if we need to mess with the long table stuff. 
 	// We can borrow that too from docbook, if so.
 
@@ -2699,8 +2697,6 @@ docstring Tabular::xhtml(XHTMLStream & xs, OutputParams const & runparams) const
 		}
 	}
 	xs << EndTag("tbody");
-	xs << EndTag("table");
-
 	return ret;
 }
 
@@ -4301,13 +4297,27 @@ int InsetTabular::docbook(odocstream & os, OutputParams const & runparams) const
 
 docstring InsetTabular::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 {
-	return tabular.xhtml(xs, rp);
+	// FIXME XHTML
+	// It'd be better to be able to get this from an InsetLayout, but at present
+	// InsetLayouts do not seem really to work for things that aren't InsetTexts.
+	xs << StartTag("table");
+	docstring ret = tabular.xhtml(xs, rp);
+	xs << EndTag("table");
+	return ret;
 }
 
 
 void InsetTabular::validate(LaTeXFeatures & features) const
 {
 	tabular.validate(features);
+	// FIXME XHTML
+	// It'd be better to be able to get this from an InsetLayout, but at present
+	// InsetLayouts do not seem really to work for things that aren't InsetTexts.
+	if (features.runparams().flavor == OutputParams::HTML)
+		features.addPreambleSnippet("<style type=\"text/css\">\n"
+      "table { border: 1px solid black; }\n"
+      "td { border: 1px solid black; padding: 0.5ex; }\n"
+      "</style>");
 }
 
 
