@@ -2636,26 +2636,6 @@ int Tabular::docbook(odocstream & os, OutputParams const & runparams) const
 docstring Tabular::xhtmlRow(XHTMLStream & xs, row_type row,
 			   OutputParams const & runparams) const
 {
-	/* for (col_type i = 0; i < column_info.size(); ++i) {
-		os << "<colspec colname=\"col" << i << "\" align=\"";
-		switch (column_info[i].alignment) {
-		case LYX_ALIGN_LEFT:
-			os << "left";
-			break;
-		case LYX_ALIGN_RIGHT:
-			os << "right";
-			break;
-		default:
-			os << "center";
-			break;
-		}
-		os << '"';
-		if (runparams.flavor == OutputParams::XML)
-			os << '/';
-		os << ">\n";
-		++ret;
-	} */
-	
 	docstring ret;
 	idx_type cell = getFirstCellInRow(row);
 
