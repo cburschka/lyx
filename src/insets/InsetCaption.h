@@ -13,6 +13,7 @@
 #define INSETCAPTION_H
 
 #include "InsetText.h"
+#include "support/strfwd.h"
 
 namespace lyx {
 
@@ -24,6 +25,8 @@ public:
 	InsetCaption(Buffer *);
 	///
 	std::string const & type() const { return type_; }
+	///
+	docstring name() const;
 	/// return the mandatory argument (LaTeX format) only
 	int getArgument(odocstream & os, OutputParams const &) const;
 	/// return the optional argument(s) only

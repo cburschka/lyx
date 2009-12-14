@@ -64,6 +64,14 @@ void InsetCaption::write(ostream & os) const
 }
 
 
+docstring InsetCaption::name() const
+{
+	if (type_.empty())
+		return from_ascii("Caption");
+	return from_utf8("Caption:" + type_);
+}
+
+
 void InsetCaption::read(Lexer & lex)
 {
 #if 0
@@ -256,7 +264,11 @@ docstring InsetCaption::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 {
 	if (rp.html_disable_captions)
 		return docstring();
-	xs << StartTag("div", "class='float-caption'");
+	string attr = "class='float-caption";
+	if (!type_.empty())
+		attr += " float-caption-" + type_;
+	attr += "'";
+	xs << StartTag("div", attr);
 	docstring def = getCaptionAsHTML(xs, rp);
 	xs << EndTag("div");
 	return def;
