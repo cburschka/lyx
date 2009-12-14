@@ -2672,7 +2672,7 @@ docstring Tabular::xhtmlRow(XHTMLStream & xs, row_type row,
 		attr << "'";
 
 		if (isMultiColumn(cell))
-			attr << " colspan='" << j + columnSpan(cell) - 1<< "'";
+			attr << " colspan='" << columnSpan(cell) << "'";
 
 		xs << StartTag("td", attr.str());
 		ret += cellInset(cell)->xhtml(xs, runparams);
