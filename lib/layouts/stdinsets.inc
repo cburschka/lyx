@@ -168,8 +168,8 @@ InsetLayout Note:Greyedout
 		div.note_greyedout { 
 			display: inline;
 			background-color: #A0A0A0; 
-			padding-left: 1ex;
-			padding-right: 1ex;
+			padding: 0.5ex;
+			border: 1px black solid;
 		}
 	EndHTMLStyle
 	HTMLIsBlock           false
@@ -277,6 +277,11 @@ InsetLayout Float
 	  Size                Small
 	EndFont
 	MultiPar              true
+	HTMLStyle
+		div.float {
+			border: 2px solid black;
+		}
+	EndHTMLStyle
 End
 
 InsetLayout Wrap
@@ -388,3 +393,15 @@ InsetLayout Info:shortcuts
 		span.shortcuts { font-family: sans-serif; }
 	EndHTMLStyle
 End
+
+InsetLayout Caption
+	HTMLStyle
+		div.float-caption {
+			text-align: center;
+			border: 2px solid black;
+			padding: 1ex;
+			margin: 1ex;
+		}
+	EndHTMLStyle
+End
+

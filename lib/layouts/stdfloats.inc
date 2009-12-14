@@ -6,21 +6,6 @@
 
 Format 19
 
-AddToHTMLPreamble
-	<style type="text/css">
-		div.float {
-			border: 2px solid black;
-		}
-		div.float-caption {
-			text-align: center;
-			border: 2px solid black;
-			padding: 1ex;
-			margin: 1ex;
-		}
-	</style>
-EndPreamble
-
-
 Float
 	Type                  table
 	GuiName               Table
