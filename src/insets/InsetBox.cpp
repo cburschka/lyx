@@ -485,9 +485,9 @@ docstring InsetBox::xhtml(XHTMLStream & xs, OutputParams const & runparams) cons
 	string attrs = "class='" + params_.type + "'";
 	string style;
 	if (!params_.width.empty())
-		style += ("width: " + params_.width.asHTMLString() + ";");
+		style += ("width: " + params_.width.asHTMLString() + "; ");
 	if (!params_.height.empty())
-		style += ("height: " + params_.height.asHTMLString() + ";");
+		style += ("height: " + params_.height.asHTMLString() + "; ");
 	if (!style.empty())
 		attrs += " style='" + style + "'";
 
