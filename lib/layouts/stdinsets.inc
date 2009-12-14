@@ -280,6 +280,7 @@ InsetLayout Float
 	HTMLStyle
 		div.float {
 			border: 2px solid black;
+			text-align: center;
 		}
 	EndHTMLStyle
 End
