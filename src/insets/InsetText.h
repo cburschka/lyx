@@ -91,9 +91,6 @@ public:
 	///
 	docstring insetAsXHTML(XHTMLStream &, OutputParams const &, 
 	                       XHTMLOptions) const;
-	// FIXME XHTMLStream to be removed
-	docstring xhtml(odocstream &, OutputParams const &) const 
-		{ return docstring (); }
 	///
 	void validate(LaTeXFeatures & features) const;
 

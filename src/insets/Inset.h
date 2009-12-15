@@ -309,8 +309,6 @@ public:
 	/// normal stream, and which will in fact be written after the current
 	/// paragraph closes. this is appropriate e.g. for floats.
 	virtual docstring xhtml(XHTMLStream & xs, OutputParams const &) const;
-	// the old one, to be removed
-	virtual docstring xhtml(odocstream & os, OutputParams const &) const;
 	/// the string that is passed to the TOC
 	virtual void tocString(odocstream &) const {}
 

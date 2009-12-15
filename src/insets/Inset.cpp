@@ -413,11 +413,6 @@ docstring Inset::xhtml(XHTMLStream & xs, OutputParams const &) const
 	return docstring();
 }
 
-docstring Inset::xhtml(odocstream & od, OutputParams const &) const
-{
-	od << "[[Inset: " << from_ascii(insetName(lyxCode())) << "]]";
-	return docstring();
-}
 
 bool Inset::directWrite() const
 {
