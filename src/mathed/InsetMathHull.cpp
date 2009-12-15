@@ -29,6 +29,7 @@
 #include "LaTeXFeatures.h"
 #include "LyXRC.h"
 #include "MacroTable.h"
+#include "output_xhtml.h"
 #include "sgml.h"
 #include "TextPainter.h"
 #include "TocBackend.h"
@@ -1764,15 +1765,15 @@ int InsetMathHull::docbook(odocstream & os, OutputParams const & runparams) cons
 }
 
 
-docstring InsetMathHull::xhtml(odocstream & os, OutputParams const &) const
+docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const &) const
 {
 	if (getType() == hullSimple)
-		os << "<math xmlns=\"http://www.w3.org/1998/Math/MathML\">";
+		xs << StartTag("math", "xmlns=\"http://www.w3.org/1998/Math/MathML\"");
 	else 
-		os << "<math display=\"block\" xmlns=\"http://www.w3.org/1998/Math/MathML\">";
-	MathStream ms(os);
+		xs << StartTag("math", "display=\"block\" xmlns=\"http://www.w3.org/1998/Math/MathML\"");
+	MathStream ms(xs.os());
 	InsetMathGrid::mathmlize(ms);
-	os << "</math>";
+	xs << EndTag("math");
 	return docstring();
 }
 
