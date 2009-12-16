@@ -1768,9 +1768,10 @@ int InsetMathHull::docbook(odocstream & os, OutputParams const & runparams) cons
 docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const &) const
 {
 	if (getType() == hullSimple)
-		xs << StartTag("math", "xmlns=\"http://www.w3.org/1998/Math/MathML\"");
+		xs << StartTag("math", "xmlns=\"http://www.w3.org/1998/Math/MathML\"", true);
 	else 
-		xs << StartTag("math", "display=\"block\" xmlns=\"http://www.w3.org/1998/Math/MathML\"");
+		xs << StartTag("math", 
+		        "display=\"block\" xmlns=\"http://www.w3.org/1998/Math/MathML\"", true);
 	MathStream ms(xs.os());
 	InsetMathGrid::mathmlize(ms);
 	xs << EndTag("math");

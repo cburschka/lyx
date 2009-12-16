@@ -73,7 +73,11 @@ void InsetMathLim::mathematica(MathematicaStream & os) const
 
 void InsetMathLim::mathmlize(MathStream & os) const
 {
-	os << "lim(" << cell(0) << ',' << cell(1) << ',' << cell(2) << ')';
+	// FIXME XHTML We need a form of MTag that takes attributes.
+	os << "<munder>"
+	   << "<mo form='prefix'>" << "lim" << "</mo>"
+	   << "<mrow>" << cell(1) << "<mo>&rarr;</mo>" << cell(2) << "</mrow></munder>"
+	   << "<mfenced open='(' close=')'>" << cell(0) << "</mfenced>"; 
 }
 
 
