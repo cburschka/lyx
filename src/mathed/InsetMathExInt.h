@@ -21,7 +21,13 @@
 
 namespace lyx {
 
-// cell(0) is stuff before the 'd', cell(1) the stuff after
+// for integrals, cell(0) is stuff before the 'd', cell(1) the stuff after
+// for sums: 
+//   cell(0) is the main body
+//   cell(1) is the index (e.g., i), if the lower bound is "i = ..."
+//      or the whole lower bound if not
+//   cell(2) is what follows the "=" in the first case
+//   cell(3) is the upper bound
 class InsetMathExInt : public InsetMathNest {
 public:
 	///
