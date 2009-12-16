@@ -386,7 +386,7 @@ void InsetMathFrac::octave(OctaveStream & os) const
 
 void InsetMathFrac::mathmlize(MathStream & os) const
 {
-	os << MTag("mfrac") 
+	os << MTag("mfrac")
 	   << MTag("mrow") << cell(0) << ETag("mrow")
 		 << MTag("mrow") << cell(1) << ETag("mrow")
 		 << ETag("mfrac");
