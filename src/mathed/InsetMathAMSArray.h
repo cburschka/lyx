@@ -46,12 +46,12 @@ public:
 	void validate(LaTeXFeatures & features) const;
 	///
 	InsetCode lyxCode() const { return MATH_AMSARRAY_CODE; }
-private:
-	virtual Inset * clone() const;
 	///
 	char const * name_left() const;
 	///
 	char const * name_right() const;
+private:
+	virtual Inset * clone() const;
 	///
 	docstring name_;
 };

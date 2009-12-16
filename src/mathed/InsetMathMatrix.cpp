@@ -17,8 +17,9 @@
 
 namespace lyx {
 
-InsetMathMatrix::InsetMathMatrix(InsetMathGrid const & p)
-	: InsetMathGrid(p)
+InsetMathMatrix::InsetMathMatrix(InsetMathGrid const & p, 
+			docstring const & left, docstring const & right)
+	: InsetMathGrid(p), left_(left), right_(right)
 {}
 
 
@@ -88,15 +89,10 @@ void InsetMathMatrix::mathematica(MathematicaStream & os) const
 }
 
 
-// FIXME XHTML
-// We need more information here, so we can output the correct
-// delimiters, which will not always be "[". To do this, we need
-// to make some changes to InsetMathMatrix, adding a member to 
-// record the type of delimiter, and then make the extractMatrices 
-// routine in MathExtern give us this information.
 void InsetMathMatrix::mathmlize(MathStream & os) const
 {
-	os << "<mo form='prefix' fence='true' stretchy='true' symmetric='true' lspace='thinmathspace'>[</mo>";
+	os << "<mo form='prefix' fence='true' stretchy='true' symmetric='true' lspace='thinmathspace'>"
+	   << left_ << "</mo>";
 	os << MTag("mtable");
 	for (row_type row = 0; row < nrows(); ++row) {
 		os << MTag("mtr");
@@ -105,7 +101,8 @@ void InsetMathMatrix::mathmlize(MathStream & os) const
 		os << ETag("mtr");
 	}
 	os << ETag("mtable");
-	os << "<mo form='postfix' fence='true' stretchy='true' symmetric='true' lspace='thinmathspace'>]</mo>";
+	os << "<mo form='postfix' fence='true' stretchy='true' symmetric='true' lspace='thinmathspace'>"
+	   << right_ << "</mo>";
 }
 
 

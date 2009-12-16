@@ -16,6 +16,7 @@
 
 #include "MathExtern.h"
 
+#include "InsetMathAMSArray.h"
 #include "InsetMathArray.h"
 #include "InsetMathChar.h"
 #include "InsetMathDelim.h"
@@ -193,20 +194,31 @@ void extractMatrices(MathData & ar)
 	//lyxerr << "\nMatrices from: " << ar << endl;
 	// first pass for explicitly delimited stuff
 	for (size_t i = 0; i < ar.size(); ++i) {
-		if (!ar[i]->asDelimInset())
+		InsetMathDelim const * const inset = ar[i]->asDelimInset();
+		if (!inset)
 			continue;
-		MathData const & arr = ar[i]->asDelimInset()->cell(0);
+		MathData const & arr = inset->cell(0);
 		if (arr.size() != 1)
 			continue;
 		if (!arr.front()->asGridInset())
 			continue;
-		ar[i] = MathAtom(new InsetMathMatrix(*(arr.front()->asGridInset())));
+		ar[i] = MathAtom(new InsetMathMatrix(*(arr.front()->asGridInset()), 
+		                 inset->left_, inset->right_));
 	}
 
 	// second pass for AMS "pmatrix" etc
-	for (size_t i = 0; i < ar.size(); ++i)
-		if (ar[i]->asAMSArrayInset())
-			ar[i] = MathAtom(new InsetMathMatrix(*(ar[i]->asGridInset())));
+	for (size_t i = 0; i < ar.size(); ++i) {
+		InsetMathAMSArray const * const inset = ar[i]->asAMSArrayInset();
+		if (inset) {
+			string left = inset->name_left();
+			if (left == "Vert")
+				left = "[";
+			string right = inset->name_right();
+			if (right == "Vert")
+				right = "]";
+			ar[i] = MathAtom(new InsetMathMatrix(*inset, from_ascii(left), from_ascii(right)));
+		}
+	}
 	//lyxerr << "\nMatrices to: " << ar << endl;
 }
 

@@ -13,6 +13,7 @@
 #define MATH_MATRIXINSET_H
 
 #include "InsetMathGrid.h"
+#include "support/strfwd.h"
 
 
 namespace lyx {
@@ -23,9 +24,8 @@ namespace lyx {
 class InsetMathMatrix : public InsetMathGrid {
 public:
 	///
-	explicit InsetMathMatrix(InsetMathGrid const &);
-	///
-	explicit InsetMathMatrix(Buffer * buf, docstring const & str);
+	explicit InsetMathMatrix(InsetMathGrid const &, 
+			docstring const & left, docstring const & right);
 	/// identifies MatrixInsets
 	InsetMathMatrix const * asMatrixInset() const { return this; }
 
@@ -48,6 +48,10 @@ public:
 
 private:
 	virtual Inset * clone() const;
+	///
+	docstring left_;
+	///
+	docstring right_;
 };
 
 
