@@ -163,8 +163,8 @@ void InsetMathDelim::mathematica(MathematicaStream & os) const
 
 void InsetMathDelim::mathmlize(MathStream & os) const
 {
-	os << "<mo>" << left_ << "</mo>"
-		<< cell(0) << "<mo>" << right_ << "</mo>";
+	os << "<mo fence='true' stretchy='true' symmetric='true'>" << left_ << "</mo>"
+		<< cell(0) << "<mo fence='true' stretchy='true' symmetric='true'>" << right_ << "</mo>";
 }
 
 
