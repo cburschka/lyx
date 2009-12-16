@@ -386,18 +386,10 @@ void InsetMathFrac::octave(OctaveStream & os) const
 
 void InsetMathFrac::mathmlize(MathStream & os) const
 {
-	switch (kind_) {
-	case DFRAC:
-		os << MTag("mdfrac") << cell(0) << cell(1) << ETag("mdfrac");
-		break;
-	case TFRAC:
-		os << MTag("mtfrac") << cell(0) << cell(1) << ETag("mtfrac");
-		break;
-	case FRAC:
-	default:
-		os << MTag("mfrac") << cell(0) << cell(1) << ETag("mfrac");
-		break;
-	}
+	os << MTag("mfrac") 
+	   << MTag("mrow") << cell(0) << ETag("mrow")
+		 << MTag("mrow") << cell(1) << ETag("mrow")
+		 << ETag("mfrac");
 }
 
 
