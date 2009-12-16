@@ -124,7 +124,7 @@ void InsetMathExFunc::mathematica(MathematicaStream & os) const
 
 void InsetMathExFunc::mathmlize(MathStream & os) const
 {
-	os.os() << "<mi>" << name_ << "</mi>" << "&af;";
+	os << "<mi>" << name_ << "</mi><mo>&af;</mo>";
 	os << cell(0);
 }
 

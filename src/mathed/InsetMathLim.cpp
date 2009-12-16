@@ -77,7 +77,7 @@ void InsetMathLim::mathmlize(MathStream & os) const
 	os << "<munder>"
 	   << "<mo form='prefix'>" << "lim" << "</mo>"
 	   << "<mrow>" << cell(1) << "<mo>&rarr;</mo>" << cell(2) << "</mrow></munder>"
-	   << "<mfenced open='(' close=')'>" << cell(0) << "</mfenced>"; 
+	   << "<mo>(</mo>" << cell(0) << "<mo>)</mo>" ; 
 }
 
 
