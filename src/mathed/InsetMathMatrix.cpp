@@ -88,9 +88,24 @@ void InsetMathMatrix::mathematica(MathematicaStream & os) const
 }
 
 
+// FIXME XHTML
+// We need more information here, so we can output the correct
+// delimiters, which will not always be "[". To do this, we need
+// to make some changes to InsetMathMatrix, adding a member to 
+// record the type of delimiter, and then make the extractMatrices 
+// routine in MathExtern give us this information.
 void InsetMathMatrix::mathmlize(MathStream & os) const
 {
-	InsetMathGrid::mathmlize(os);
+	os << "<mo form='prefix' fence='true' stretchy='true' symmetric='true' lspace='thinmathspace'>[</mo>";
+	os << MTag("mtable");
+	for (row_type row = 0; row < nrows(); ++row) {
+		os << MTag("mtr");
+		for (col_type col = 0; col < ncols(); ++col)
+			os << MTag("mtd") << cell(index(row, col)) << ETag("mtd");
+		os << ETag("mtr");
+	}
+	os << ETag("mtable");
+	os << "<mo form='postfix' fence='true' stretchy='true' symmetric='true' lspace='thinmathspace'>]</mo>";
 }
 
 

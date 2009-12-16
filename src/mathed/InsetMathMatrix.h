@@ -18,7 +18,7 @@
 namespace lyx {
 
 
-// "shortcut" for DelimInset("(",ArrayInset,")")
+// "shortcut" for DelimInset("(",ArrayInset,")") used by MathExtern
 
 class InsetMathMatrix : public InsetMathGrid {
 public:
