@@ -967,19 +967,19 @@ void InsetMathGrid::normalize(NormalStream & os) const
 }
 
 
-// FIXME We might want to check here if we actually have any
-// kind of table structure, and only output the surrounding
-// tags if we do, otherwise just outputting <mrow>.
 void InsetMathGrid::mathmlize(MathStream & os) const
 {
-	os << MTag("mtable");
+	bool const havetable = nrows() > 1;
+	if (havetable)
+		os << MTag("mtable");
 	for (row_type row = 0; row < nrows(); ++row) {
-		os << MTag("mtr");
+		os << MTag("mrow");
 		for (col_type col = 0; col < ncols(); ++col)
 			os << cell(index(row, col));
-		os << ETag("mtr");
+		os << ETag("mrow");
 	}
-	os << ETag("mtable");
+	if (havetable)
+		os << ETag("mtable");
 }
 
 
