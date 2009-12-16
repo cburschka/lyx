@@ -85,4 +85,10 @@ void InsetMathDots::validate(LaTeXFeatures & features) const
 }
 
 
+// FIXME XHTML
+void InsetMathDots::mathmlize(MathStream & os) const
+{
+	InsetMath::mathmlize(os);
+}
+
 } // namespace lyx
