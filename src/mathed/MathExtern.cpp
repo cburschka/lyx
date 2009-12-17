@@ -80,6 +80,7 @@ typedef bool TestItemFunc(MathAtom const &);
 typedef MathAtom ReplaceArgumentFunc(const MathData & ar);
 
 
+
 // try to extract a super/subscript
 // modify iterator position to point behind the thing
 bool extractScript(MathData & ar,
@@ -355,7 +356,7 @@ void splitScripts(MathData & ar)
 			// leave alone sums and integrals
 			InsetMathSymbol const * sym =
 				script->nuc().front()->asSymbolInset();
-			if (sym && (InsetMathExInt::isExIntOperator(sym->name()) || sym->name() == "int"))
+			if (sym && (sym->name() == "sum" || sym->name() == "int"))
 				continue;
 		}
 
@@ -704,29 +705,25 @@ bool testEqualSign(MathAtom const & at)
 }
 
 
-bool testSumLikeSymbol(MathAtom const & p)
+bool testSumSymbol(MathAtom const & p)
 {
-	return InsetMathExInt::isExIntOperator(p->name());
+	return testSymbol(p, from_ascii("sum"));
 }
 
 
-docstring testSumLike(MathAtom const & at)
+bool testSum(MathAtom const & at)
 {
-	if (testSumLikeSymbol(at))
-		return at->name();
-	if ( at->asScriptInset()
+	return
+	 testSumSymbol(at) ||
+		( at->asScriptInset()
 		  && at->asScriptInset()->nuc().size()
-			&& testSumLikeSymbol(at->asScriptInset()->nuc().back()) )
-		return at->asScriptInset()->nuc().back()->name();
-	return docstring();
+			&& testSumSymbol(at->asScriptInset()->nuc().back()) );
 }
 
 
 // replace '\sum' ['_^'] f(x) sequences by a real InsetMathExInt
-// and similar things, like \prod. The things we extract are 
-// determined by InsetMathExInt::isExIntOperator().
 // assume 'extractDelims' ran before
-void extractSumLike(MathData & ar)
+void extractSums(MathData & ar)
 {
 	// we need at least two items...
 	if (ar.size() < 2)
@@ -739,12 +736,11 @@ void extractSumLike(MathData & ar)
 		MathData::iterator it = ar.begin() + i;
 
 		// is this a sum name?
-		docstring const opname = testSumLike(ar[i]);
-		if (opname.empty())
+		if (!testSum(ar[i]))
 			continue;
 
 		// create a proper inset as replacement
-		auto_ptr<InsetMathExInt> p(new InsetMathExInt(buf, opname));
+		auto_ptr<InsetMathExInt> p(new InsetMathExInt(buf, from_ascii("sum")));
 
 		// collect lower bound and summation index
 		InsetMathScript const * sub = ar[i]->asScriptInset();
@@ -953,7 +949,7 @@ void extractStructure(MathData & ar, ExternalMath kind)
 	splitScripts(ar);
 	extractDelims(ar);
 	extractIntegrals(ar, kind);
-	extractSumLike(ar);
+	extractSums(ar);
 	extractNumbers(ar);
 	extractMatrices(ar);
 	extractFunctions(ar, kind);

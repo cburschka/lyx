@@ -17,7 +17,7 @@
 // or \sum, \prod...  for interfacing external programs
 
 #include "InsetMathNest.h"
-#include "support/strfwd.h"
+
 
 namespace lyx {
 
@@ -57,13 +57,11 @@ public:
 	void write(WriteStream & os) const;
 	///
 	InsetCode lyxCode() const { return MATH_EXINT_CODE; }
-	/// is this a sum, product, or whatever that we can handle?
-	/// note that this does not include integrals.
-	static bool isExIntOperator(docstring const &);
 private:
 	virtual Inset * clone() const;
 	///
 	bool hasScripts() const;
+
 	///
 	docstring symbol_;
 };
