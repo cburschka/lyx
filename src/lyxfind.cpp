@@ -934,7 +934,7 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv const & match)
 {
 	if (!cur)
 		return 0;
-	int wrap_answer;
+	int wrap_answer = -1;
 	do {
 		while (cur && !match(cur, -1, false)) {
 			if (cur.pit() < cur.lastpit())
@@ -947,12 +947,14 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv const & match)
 			if (match(cur))
 				return findAdvFinalize(cur, match);
 		}
+		if (wrap_answer != -1)
+			break;
 		wrap_answer = frontend::Alert::prompt(
 			_("Wrap search?"),
 			_("End of document reached while searching forward.\n"
 				"\n"
 				"Continue searching from beginning?"),
-			0, 1, _("&Yes"), _("&No"));
+				0, 1, _("&Yes"), _("&No"));
 		cur.clear();
 		cur.push_back(CursorSlice(match.buf.inset()));
 	} while (wrap_answer == 0);
