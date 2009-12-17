@@ -13,7 +13,6 @@
 #define INSET_LISTINGS_H
 
 #include "LaTeXFeatures.h"
-#include "InsetERT.h"
 #include "InsetListingsParams.h"
 
 
