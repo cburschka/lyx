@@ -71,16 +71,8 @@ void InsetMathExInt::draw(PainterInfo &, int, int) const
 }
 
 
-bool InsetMathExInt::isExIntOperator(docstring const & name)
-{
-	std::string const & sname = to_utf8(name);
-	return sname == "sum" || sname == "prod";
-}
-
-
 void InsetMathExInt::maple(MapleStream & os) const
 {
-	// FIXME Products and the like may need special treatment.
 	os << symbol_ << '(';
 	if (cell(0).size())
 		os << cell(0);
@@ -95,7 +87,6 @@ void InsetMathExInt::maple(MapleStream & os) const
 
 void InsetMathExInt::maxima(MaximaStream & os) const
 {
-	// FIXME Products and the like may need special treatment.
 	if (symbol_ == "int")
 		os << "integrate(";
 	else
@@ -111,10 +102,8 @@ void InsetMathExInt::maxima(MaximaStream & os) const
 		os << cell(1) << ')';
 }
 
-
 void InsetMathExInt::mathematica(MathematicaStream & os) const
 {
-	// FIXME Products and the like may need special treatment.
 	if (symbol_ == "int")
 		os << "Integrate[";
 	else if (symbol_ == "sum")
@@ -136,38 +125,6 @@ void InsetMathExInt::mathematica(MathematicaStream & os) const
 void InsetMathExInt::mathmlize(MathStream & os) const
 {
 	InsetMathSymbol sym(symbol_);
-	if (isExIntOperator(symbol_)) {
-		bool const lower = !cell(1).empty();
-		bool const upper = !cell(3).empty();
-		if (lower && upper)
-			os << MTag("msubsup");
-		else if (lower)
-			os << MTag("msub");
-		else if (upper)
-			os << MTag("msup");
-		os << MTag("mrow");
-		sym.mathmlize(os);
-		os << ETag("mrow");
-		if (lower) {
-			os << MTag("mrow");
-			os << cell(1);
-			if (!cell(2).empty())
-				os << MTag("mo") << "=" << ETag("mo") 
-				   << cell(2);
-			os << ETag("mrow");
-		}
-		if (upper)
-			os << MTag("mrow") << cell(3) << ETag("mrow");
-		if (lower && upper)
-			os << ETag("msubsup");
-		else if (lower)
-			os << ETag("msub");
-		else if (upper)
-			os << ETag("msup");
-		os << cell(0);
-		return;
-	}
-	// some kind of integral
 	bool const lower = !cell(2).empty();
 	bool const upper = !cell(3).empty();
 	if (lower && upper)
@@ -199,5 +156,6 @@ void InsetMathExInt::write(WriteStream &) const
 {
 	LYXERR0("should not happen");
 }
+
 
 } // namespace lyx
