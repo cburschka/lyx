@@ -127,7 +127,8 @@ public:
 	///
 	bool setMouseHover(bool mouse_hover);
 	///
-	ColorCode backgroundColor() const { return getLayout().bgcolor(); }
+	ColorCode backgroundColor(PainterInfo const &) const
+		{ return getLayout().bgcolor(); }
 	///
 	ColorCode labelColor() const { return getLayout().labelfont().color(); }
 	///

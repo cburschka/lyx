@@ -104,10 +104,10 @@ docstring const InsetBranch::buttonLabel(BufferView const & bv) const
 }
 
 
-ColorCode InsetBranch::backgroundColor() const
+ColorCode InsetBranch::backgroundColor(PainterInfo const & pi) const
 {
 	if (params_.branch.empty())
-		return Inset::backgroundColor();
+		return Inset::backgroundColor(pi);
 	// FIXME UNICODE
 	ColorCode c = lcolor.getFromLyXName(to_utf8(params_.branch));
 	if (c == Color_none)
