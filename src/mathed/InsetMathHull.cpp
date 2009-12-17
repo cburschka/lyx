@@ -39,6 +39,7 @@
 #include "insets/RenderPreview.h"
 
 #include "graphics/PreviewImage.h"
+#include "graphics/PreviewLoader.h"
 
 #include "frontends/Painter.h"
 
@@ -373,7 +374,7 @@ void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 ColorCode InsetMathHull::backgroundColor(PainterInfo const & pi) const
 {
 	if (previewState(pi.base.bv))
-		return Color_background;
+		return graphics::PreviewLoader::backgroundColor();
 	return Color_mathbg;
 }
 

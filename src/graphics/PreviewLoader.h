@@ -20,6 +20,7 @@
 
 #include <boost/signal.hpp>
 
+#include "ColorCode.h"
 
 namespace lyx {
 
@@ -85,6 +86,10 @@ public:
 
 	/// Which buffer owns this loader.
 	Buffer const & buffer() const;
+	/// The background color used
+	static ColorCode backgroundColor() { return Color_background; }
+	/// The foreground color used
+	static ColorCode foregroundColor() { return Color_preview; }
 
 private:
 	/// noncopyable

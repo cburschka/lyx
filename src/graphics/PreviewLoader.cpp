@@ -595,8 +595,8 @@ void PreviewLoader::Impl::startLoading()
 	cs << pconverter_->command << ' ' << pconverter_->to << ' '
 	   << quoteName(latexfile.toFilesystemEncoding()) << ' '
 	   << int(font_scaling_factor_) << ' '
-	   << theApp()->hexName(Color_preview) << ' '
-	   << theApp()->hexName(Color_background);
+	   << theApp()->hexName(PreviewLoader::foregroundColor()) << ' '
+	   << theApp()->hexName(PreviewLoader::backgroundColor());
 
 	string const command = libScriptSearch(cs.str());
 
