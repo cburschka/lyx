@@ -118,6 +118,8 @@ MathData::iterator extractArgument(MathData & ar,
 	// something delimited _is_ an argument
 	if ((*pos)->asDelimInset()) {
 		// leave out delimiters if this is a function argument
+		// unless we are doing MathML, in which case we do want
+		// the delimiters
 		if (function && kind != MATHML) {
 			MathData const & arg = (*pos)->asDelimInset()->cell(0);
 			MathData::const_iterator cur = arg.begin();
@@ -946,10 +948,12 @@ void extractLims(MathData & ar)
 void extractStructure(MathData & ar, ExternalMath kind)
 {
 	//lyxerr << "\nStructure from: " << ar << endl;
-	splitScripts(ar);
+	if (kind != MATHML)
+		splitScripts(ar);
 	extractDelims(ar);
 	extractIntegrals(ar, kind);
-	extractSums(ar);
+	if (kind != MATHML)
+		extractSums(ar);
 	extractNumbers(ar);
 	extractMatrices(ar);
 	extractFunctions(ar, kind);

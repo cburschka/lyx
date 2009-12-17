@@ -124,6 +124,10 @@ void InsetMathExInt::mathematica(MathematicaStream & os) const
 
 void InsetMathExInt::mathmlize(MathStream & os) const
 {
+	// At the moment, we are not extracting sums and the like for MathML.
+	// If we should decide to do so later, then we'll need to re-merge
+	// r32566 and r32568.
+	// So right now this only handles integrals.
 	InsetMathSymbol sym(symbol_);
 	bool const lower = !cell(2).empty();
 	bool const upper = !cell(3).empty();
