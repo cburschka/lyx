@@ -124,6 +124,7 @@ void InsetMathExInt::mathematica(MathematicaStream & os) const
 
 void InsetMathExInt::mathmlize(MathStream & os) const
 {
+	InsetMathSymbol sym(symbol_);
 	if (symbol_ == "sum") {
 		bool const lower = !cell(1).empty();
 		bool const upper = !cell(3).empty();
@@ -133,7 +134,9 @@ void InsetMathExInt::mathmlize(MathStream & os) const
 			os << MTag("msub");
 		else if (upper)
 			os << MTag("msup");
-		os << MTag("mrow") << MTag("mo") << "&sum;" << ETag("mo") << ETag("mrow");
+		os << MTag("mrow");
+		sym.mathmlize(os);
+		os << ETag("mrow");
 		if (lower) {
 			os << MTag("mrow");
 			os << cell(1);
@@ -154,11 +157,27 @@ void InsetMathExInt::mathmlize(MathStream & os) const
 		return;
 	}
 	// some kind of integral
-	InsetMathSymbol sym(symbol_);
-	//if (hasScripts())
-	//	mathmlize(sym, os);
-	//else
+	bool const lower = !cell(2).empty();
+	bool const upper = !cell(3).empty();
+	if (lower && upper)
+		os << MTag("msubsup");
+	else if (lower)
+		os << MTag("msub");
+	else if (upper)
+		os << MTag("msup");
+	os << MTag("mrow");
 	sym.mathmlize(os);
+	os << ETag("mrow");
+	if (lower)
+		os << MTag("mrow") << cell(2) << ETag("mrow");
+	if (upper)
+		os << MTag("mrow") << cell(3) << ETag("mrow");
+	if (lower && upper)
+		os << ETag("msubsup");
+	else if (lower)
+		os << ETag("msub");
+	else if (upper)
+		os << ETag("msup");
 	os << cell(0) << "<mo> &InvisibleTimes; </mo>"
 	   << MTag("mrow") << "<mo> &DifferentialD; </mo>"
 	   << cell(1) << ETag("mrow");

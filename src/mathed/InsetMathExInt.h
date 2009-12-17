@@ -21,7 +21,11 @@
 
 namespace lyx {
 
-// for integrals, cell(0) is stuff before the 'd', cell(1) the stuff after
+// for integrals:
+//   cell(0) is stuff before the 'd'
+//   cell(1) is the stuff after the 'd'
+//   cell(2) is the lower bound
+//   cell(3) is the upper bound
 // for sums: 
 //   cell(0) is the main body
 //   cell(1) is the index (e.g., i), if the lower bound is "i = ..."
