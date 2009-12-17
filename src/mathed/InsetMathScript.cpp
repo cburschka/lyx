@@ -625,16 +625,18 @@ void InsetMathScript::mathmlize(MathStream & os) const
 		os << MTag("msub");
 
 	if (nuc().size())
-		os << nuc();
+		os << MTag("mrow") << nuc() << ETag("mrow");
 	else
-		os << "<mrow/>";
+		os << "<mrow />";
 
 	if (u && d)
-		os << down() << up() << ETag("msubsup");
+		os << MTag("mrow") << down() << ETag("mrow") 
+		   << MTag("mrow") << up() << ETag("mrow") 
+		   << ETag("msubsup");
 	else if (u)
-		os << up() << ETag("msup");
+		os << MTag("mrow") << up() << ETag("mrow") << ETag("msup");
 	else if (d)
-		os << down() << ETag("msub");
+		os << MTag("mrow") << down() << ETag("mrow") << ETag("msub");
 }
 
 
