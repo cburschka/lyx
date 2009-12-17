@@ -260,6 +260,8 @@ void FindAndReplaceWidget::showEvent(QShowEvent * /* ev */)
 {
 	replace_work_area_->redraw();
 	find_work_area_->setFocus();
+	view_.setCurrentWorkArea(find_work_area_);
+	LYXERR(Debug::FIND, "Selecting entire find buffer");
 	dispatch(FuncRequest(LFUN_BUFFER_BEGIN));
 	dispatch(FuncRequest(LFUN_BUFFER_END_SELECT));
 	find_work_area_->redraw();
@@ -278,11 +280,11 @@ void FindAndReplaceWidget::hideEvent(QHideEvent *ev)
 
 bool FindAndReplaceWidget::initialiseParams(std::string const & /* params */)
 {
-	find_work_area_->redraw();
-	replace_work_area_->redraw();
-	find_work_area_->setFocus();
-	dispatch(FuncRequest(LFUN_BUFFER_BEGIN));
-	dispatch(FuncRequest(LFUN_BUFFER_END_SELECT));
+// 	find_work_area_->redraw();
+// 	replace_work_area_->redraw();
+// 	find_work_area_->setFocus();
+// 	dispatch(FuncRequest(LFUN_BUFFER_BEGIN));
+// 	dispatch(FuncRequest(LFUN_BUFFER_END_SELECT));
 	return true;
 }
 
