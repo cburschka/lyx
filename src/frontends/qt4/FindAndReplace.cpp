@@ -280,11 +280,6 @@ void FindAndReplaceWidget::hideEvent(QHideEvent *ev)
 
 bool FindAndReplaceWidget::initialiseParams(std::string const & /* params */)
 {
-// 	find_work_area_->redraw();
-// 	replace_work_area_->redraw();
-// 	find_work_area_->setFocus();
-// 	dispatch(FuncRequest(LFUN_BUFFER_BEGIN));
-// 	dispatch(FuncRequest(LFUN_BUFFER_END_SELECT));
 	return true;
 }
 
