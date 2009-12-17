@@ -954,7 +954,7 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv const & match)
 			_("End of document reached while searching forward.\n"
 				"\n"
 				"Continue searching from beginning?"),
-				0, 1, _("&Yes"), _("&No"));
+			0, 1, _("&Yes"), _("&No"));
 		cur.clear();
 		cur.push_back(CursorSlice(match.buf.inset()));
 	} while (wrap_answer == 0);
