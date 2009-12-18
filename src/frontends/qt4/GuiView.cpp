@@ -102,6 +102,8 @@
 #include <QUrl>
 #include <QScrollBar>
 
+#define EXPORT_in_THREAD 1
+
 // QtConcurrent was introduced in Qt 4.4
 #if (QT_VERSION >= 0x040400)
 #include <QFuture>
@@ -300,7 +302,8 @@ public:
 
 #if (QT_VERSION >= 0x040400)
 	///
-	QFutureWatcher<bool> autosave_watcher_;
+	QFutureWatcher<docstring> autosave_watcher_;
+	QFutureWatcher<docstring> preview_watcher_;
 #endif
 };
 
@@ -365,7 +368,9 @@ GuiView::GuiView(int id)
 
 #if (QT_VERSION >= 0x040400)
 	connect(&d.autosave_watcher_, SIGNAL(finished()), this,
-		SLOT(autoSaveFinished()));
+		SLOT(threadFinished()));
+	connect(&d.preview_watcher_, SIGNAL(finished()), this,
+		SLOT(threadFinished()));
 #endif
 }
 
@@ -376,12 +381,12 @@ GuiView::~GuiView()
 }
 
 
-void GuiView::autoSaveFinished()
+void GuiView::threadFinished()
 {
 #if (QT_VERSION >= 0x040400)
-	docstring const msg = d.autosave_watcher_.result()
-		? _("Automatic save done.") : _("Automatic save failed!");
-	message(msg);
+	QFutureWatcher<docstring> const * watcher =
+		static_cast<QFutureWatcher<docstring> const *>(sender());
+	message(watcher->result());
 #endif
 }
 
@@ -1222,7 +1227,7 @@ BufferView const * GuiView::currentBufferView() const
 }
 
 
-static bool saveAndDestroyBuffer(Buffer * buffer, FileName const & fname)
+static docstring saveAndDestroyBuffer(Buffer * buffer, FileName const & fname)
 {
 	bool failed = true;
 	FileName const tmp_ret = FileName::tempName("lyxauto");
@@ -1235,7 +1240,9 @@ static bool saveAndDestroyBuffer(Buffer * buffer, FileName const & fname)
 		failed = buffer->writeFile(fname);
 	}
 	delete buffer;
-	return !failed;
+	return failed
+		? _("Automatic save failed!")
+		: _("Automatic save done.");
 }
 
 
@@ -1249,7 +1256,7 @@ void GuiView::autoSave()
 		return;
 
 #if (QT_VERSION >= 0x040400)
-	QFuture<bool> f = QtConcurrent::run(saveAndDestroyBuffer, buffer->clone(),
+	QFuture<docstring> f = QtConcurrent::run(saveAndDestroyBuffer, buffer->clone(),
 		buffer->getAutosaveFilename());
 	d.autosave_watcher_.setFuture(f);
 #else
@@ -1295,6 +1302,24 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	switch(cmd.action) {
 	case LFUN_BUFFER_IMPORT:
 		break;
+
+	case LFUN_MASTER_BUFFER_UPDATE:
+	case LFUN_MASTER_BUFFER_VIEW: 
+		enable = doc_buffer && doc_buffer->parent() != 0;
+		break;
+
+	case LFUN_BUFFER_UPDATE:
+	case LFUN_BUFFER_VIEW: {
+		if (!doc_buffer) {
+			enable = false;
+			break;
+		}
+		string format = to_utf8(cmd.argument());
+		if (cmd.argument().empty())
+			format = doc_buffer->getDefaultOutputFormat();
+		enable = doc_buffer->isExportableFormat(format);
+		break;
+	}
 
 	case LFUN_BUFFER_RELOAD:
 		enable = doc_buffer && !doc_buffer->isUnnamed()
@@ -2585,6 +2610,26 @@ bool GuiView::goToFileRow(string const & argument)
 }
 
 
+static docstring exportAndDestroy(Buffer * buffer, docstring const & format)
+{
+	bool const success = buffer->doExport(to_utf8(format), true);
+	delete buffer;
+	return success
+		? bformat(_("Successful export to format: %1$s."), format)
+		: bformat(_("Error exporting to format: %1$s."), format);
+}
+
+
+static docstring previewAndDestroy(Buffer * buffer, docstring const & format)
+{
+	bool const success = buffer->preview(to_utf8(format));
+	delete buffer;
+	return success
+		? bformat(_("Successful preview of format: %1$s."), format)
+		: bformat(_("Error previewing format: %1$s."), format);
+}
+
+
 bool GuiView::dispatch(FuncRequest const & cmd)
 {
 	BufferView * bv = currentBufferView();
@@ -2603,6 +2648,8 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 		return true;
 	}
 
+	string const argument = to_utf8(cmd.argument());
+
 	switch(cmd.action) {
 		case LFUN_BUFFER_CHILD_OPEN:
 			openChildDocument(to_utf8(cmd.argument()));
@@ -2612,6 +2659,80 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			importDocument(to_utf8(cmd.argument()));
 			break;
 
+		case LFUN_BUFFER_EXPORT: {
+			if (!doc_buffer)
+				break;
+			if (cmd.argument() == "custom") {
+				lyx::dispatch(FuncRequest(LFUN_DIALOG_SHOW, "sendto"));
+				break;
+			}
+			if (doc_buffer->doExport(argument, false)) {
+				message(bformat(_("Error exporting to format: %1$s."),
+					cmd.argument()));
+			}
+			break;
+		}
+
+		case LFUN_BUFFER_UPDATE: {
+			if (!doc_buffer)
+				break;
+			string format = argument;
+			if (argument.empty())
+				format = doc_buffer->getDefaultOutputFormat();
+#if EXPORT_in_THREAD && (QT_VERSION >= 0x040400)
+			QFuture<docstring> f = QtConcurrent::run(exportAndDestroy,
+				doc_buffer->clone(), cmd.argument());
+			d.preview_watcher_.setFuture(f);
+#else
+			doc_buffer->doExport(format, true);
+#endif
+			break;
+		}
+		case LFUN_BUFFER_VIEW: {
+			if (!doc_buffer)
+				break;
+			string format = argument;
+			if (argument.empty())
+				format = doc_buffer->getDefaultOutputFormat();
+#if EXPORT_in_THREAD && (QT_VERSION >= 0x040400)
+			QFuture<docstring> f = QtConcurrent::run(previewAndDestroy,
+				doc_buffer->clone(), cmd.argument());
+			d.preview_watcher_.setFuture(f);
+#else
+			doc_buffer->preview(format);
+#endif
+			break;
+		}
+		case LFUN_MASTER_BUFFER_UPDATE: {
+			if (!doc_buffer)
+				break;
+			string format = argument;
+			Buffer const * master = doc_buffer->masterBuffer();
+			if (argument.empty())
+				format = master->getDefaultOutputFormat();
+#if EXPORT_in_THREAD && (QT_VERSION >= 0x040400)
+			QFuture<docstring> f = QtConcurrent::run(exportAndDestroy,
+				master->clone(), cmd.argument());
+			d.preview_watcher_.setFuture(f);
+#else
+			master->doExport(format, true);
+#endif
+			break;
+		}
+		case LFUN_MASTER_BUFFER_VIEW: {
+			string format = argument;
+			Buffer const * master = doc_buffer->masterBuffer();
+			if (argument.empty())
+				format = master->getDefaultOutputFormat();
+#if EXPORT_in_THREAD && (QT_VERSION >= 0x040400)
+			QFuture<docstring> f = QtConcurrent::run(previewAndDestroy,
+				master->clone(), cmd.argument());
+			d.preview_watcher_.setFuture(f);
+#else
+			master->preview(format);
+#endif
+			break;
+		}
 		case LFUN_BUFFER_SWITCH:
 			if (FileName::isAbsolute(to_utf8(cmd.argument()))) {
 				Buffer * buffer = 

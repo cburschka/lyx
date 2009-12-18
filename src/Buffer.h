@@ -125,7 +125,8 @@ public:
 	};
 
 	/// Constructor
-	explicit Buffer(std::string const & file, bool b = false);
+	explicit Buffer(std::string const & file, bool readonly = false,
+		Buffer const * cloned_buffer = 0);
 
 	/// Destructor
 	~Buffer();
@@ -512,6 +513,8 @@ public:
 	bool isExportable(std::string const & format) const;
 	///
 	std::vector<Format const *> exportableFormats(bool only_viewable) const;
+	///
+	bool isExportableFormat(std::string const & format) const;
 
 	///
 	typedef std::vector<std::pair<InsetRef *, ParIterator> > References;

@@ -180,8 +180,8 @@ private Q_SLOTS:
 	void normalSizedIcons();
 	void bigSizedIcons();
 
-	/// For completion of Buffer autosave thread.
-	void autoSaveFinished();
+	/// For completion of autosave or exporrt threads.
+	void threadFinished();
 
 private:
 	/// Open given child document in current buffer directory.

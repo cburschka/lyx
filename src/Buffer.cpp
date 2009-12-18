@@ -147,7 +147,7 @@ class BufferSet : public std::set<Buffer const *> {};
 class Buffer::Impl
 {
 public:
-	Impl(Buffer & parent, FileName const & file, bool readonly);
+	Impl(Buffer & parent, FileName const & file, bool readonly, Buffer const * cloned_buffer);
 
 	~Impl()
 	{
@@ -258,9 +258,13 @@ public:
 			LYXERR0("Warning: a buffer should not have two parents!");
 		parent_buffer = pb;
 	}
-private:
+
 	/// So we can force access via the accessors.
 	mutable Buffer const * parent_buffer;
+
+	/// If non zero, this buffer is a clone of existing buffer \p cloned_buffer_
+	/// This one is useful for preview detached in a thread.
+	Buffer const * cloned_buffer_;
 };
 
 
@@ -283,22 +287,31 @@ static FileName createBufferTmpDir()
 }
 
 
-Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_)
+Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_,
+	Buffer const * cloned_buffer)
 	: lyx_clean(true), bak_clean(true), unnamed(false),
 	  read_only(readonly_), filename(file), file_fully_loaded(false),
 	  toc_backend(&parent), macro_lock(false), timestamp_(0),
 	  checksum_(0), wa_(0), undo_(parent), bibinfoCacheValid_(false),
-	  parent_buffer(0)
+	  parent_buffer(0), cloned_buffer_(cloned_buffer)
 {
-	temppath = createBufferTmpDir();
-	lyxvc.setBuffer(&parent);
-	if (use_gui)
-		wa_ = new frontend::WorkAreaManager;
+	if (!cloned_buffer_) {
+		temppath = createBufferTmpDir();
+		lyxvc.setBuffer(&parent);
+		if (use_gui)
+			wa_ = new frontend::WorkAreaManager;
+		return;
+	}
+	temppath = cloned_buffer_->d->temppath;
+	file_fully_loaded = true;
+	params = cloned_buffer_->d->params;
+	inset = static_cast<InsetText *>(cloned_buffer_->d->inset->clone());
+	inset->setBuffer(parent);
 }
 
 
-Buffer::Buffer(string const & file, bool readonly)
-	: d(new Impl(*this, FileName(file), readonly)), gui_(0)
+Buffer::Buffer(string const & file, bool readonly, Buffer const * cloned_buffer)
+	: d(new Impl(*this, FileName(file), readonly, cloned_buffer)), gui_(0)
 {
 	LYXERR(Debug::INFO, "Buffer::Buffer()");
 
@@ -343,7 +356,7 @@ Buffer::~Buffer()
 	d->children_positions.clear();
 	d->position_to_children.clear();
 
-	if (!d->temppath.destroyDirectory()) {
+	if (!d->cloned_buffer_ && !d->temppath.destroyDirectory()) {
 		Alert::warning(_("Could not remove temporary directory"),
 			bformat(_("Could not remove the temporary directory %1$s"),
 			from_utf8(d->temppath.absFilename())));
@@ -358,12 +371,7 @@ Buffer::~Buffer()
 
 Buffer * Buffer::clone() const
 {
-	Buffer * clone = new Buffer(fileName().absFilename(), false);
-	clone->d->file_fully_loaded = true;
-	clone->d->params = d->params;
-	clone->d->inset = static_cast<InsetText *>(d->inset->clone());
-	clone->d->inset->setBuffer(*clone);
-	return clone;
+	return new Buffer(fileName().absFilename(), false, this);
 }
 
 
@@ -1652,6 +1660,21 @@ void Buffer::markDepClean(string const & name)
 }
 
 
+bool Buffer::isExportableFormat(string const & format) const
+{
+		typedef vector<Format const *> Formats;
+		Formats formats;
+		formats = exportableFormats(true);
+		Formats::const_iterator fit = formats.begin();
+		Formats::const_iterator end = formats.end();
+		for (; fit != end ; ++fit) {
+			if ((*fit)->name() == format)
+				return true;
+		}
+		return false;
+}
+
+
 bool Buffer::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 {
 	if (isInternal()) {
@@ -1687,27 +1710,6 @@ bool Buffer::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 			break;
 		}
 
-		case LFUN_MASTER_BUFFER_UPDATE:
-		case LFUN_MASTER_BUFFER_VIEW: 
-			enable = parent() != 0;
-			break;
-		case LFUN_BUFFER_UPDATE:
-		case LFUN_BUFFER_VIEW: {
-			string format = to_utf8(cmd.argument());
-			if (cmd.argument().empty())
-				format = getDefaultOutputFormat();
-			typedef vector<Format const *> Formats;
-			Formats formats;
-			formats = exportableFormats(true);
-			Formats::const_iterator fit = formats.begin();
-			Formats::const_iterator end = formats.end();
-			enable = false;
-			for (; fit != end ; ++fit) {
-				if ((*fit)->name() == format)
-					enable = true;
-			}
-			break;
-		}
 		case LFUN_BUFFER_CHKTEX:
 			enable = isLatex() && !lyxrc.chktex_command.empty();
 			break;
@@ -1773,47 +1775,11 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 		break;
 
 	case LFUN_BUFFER_EXPORT: {
-		if (argument == "custom") {
-			lyx::dispatch(FuncRequest(LFUN_DIALOG_SHOW, "sendto"));
-			break;
-		}
 		bool success = doExport(argument, false);
 		dr.setError(success);
 		if (!success)
 			dr.setMessage(bformat(_("Error exporting to format: %1$s."), 
 					      func.argument()));
-		break;
-	}
-
-	case LFUN_BUFFER_UPDATE: {
-		string format = argument;
-		if (argument.empty())
-			format = getDefaultOutputFormat();
-		doExport(format, true);
-		break;
-	}
-
-	case LFUN_BUFFER_VIEW: {
-		string format = argument;
-		if (argument.empty())
-			format = getDefaultOutputFormat();
-		preview(format);
-		break;
-	}
-
-	case LFUN_MASTER_BUFFER_UPDATE: {
-		string format = argument;
-		if (argument.empty())
-			format = masterBuffer()->getDefaultOutputFormat();
-		masterBuffer()->doExport(format, true);
-		break;
-	}
-
-	case LFUN_MASTER_BUFFER_VIEW: {
-		string format = argument;
-		if (argument.empty())
-			format = masterBuffer()->getDefaultOutputFormat();
-		masterBuffer()->preview(format);
 		break;
 	}
 
@@ -3132,14 +3098,18 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 				path = p;
 			}
 		}
-		if (!path.empty())
-			runparams.flavor = theConverters().getFlavor(path);
-		else {
-			Alert::error(_("Couldn't export file"),
-				bformat(_("No information for exporting the format %1$s."),
-				   formats.prettyName(format)));
+		if (path.empty()) {
+			if (!put_in_tempdir) {
+				// Only show this alert if this is an export to a non-temporary
+				// file (not for previewing).
+				Alert::error(_("Couldn't export file"), bformat(
+					_("No information for exporting the format %1$s."),
+					formats.prettyName(format)));
+			}
 			return false;
 		}
+		runparams.flavor = theConverters().getFlavor(path);
+
 	} else {
 		backend_format = format;
 		// FIXME: Don't hardcode format names here, but use a flag
