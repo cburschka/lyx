@@ -142,7 +142,9 @@ string const quoteName(string const & name, quote_style style)
 			'\'' + name + '\'':
 			'"' + name + '"';
 #else
-		return '"' + name + '"';
+		// According to the QProcess parser, a single double
+		// quote is represented by three consecutive ones.
+		return '"' + subst(name, "\"", "\"\"\"") + '"';
 #endif
 	case quote_python:
 		return "\"" + subst(subst(name, "\\", "\\\\"), "\"", "\\\"")
