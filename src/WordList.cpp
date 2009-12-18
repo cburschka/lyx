@@ -12,6 +12,8 @@
 
 #include "WordList.h"
 
+#include "Language.h"
+
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstring.h"
@@ -19,14 +21,23 @@
 
 #include "support/lassert.h"
 
+#include <map>
+
+using namespace std;
+
 namespace lyx {
 
 ///
-WordList theGlobalWordList;
+map<Language, WordList *> theGlobalWordList;
 
-WordList & theWordList()
+WordList * theWordList(Language const & lang)
 {
-	return theGlobalWordList;
+	map<Language, WordList *>::iterator it = theGlobalWordList.find(lang);
+	if (it != theGlobalWordList.end())
+		return it->second;
+	else
+		theGlobalWordList[lang] = new WordList();
+	return theGlobalWordList[lang];
 }
 
 ///

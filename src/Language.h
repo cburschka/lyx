@@ -51,6 +51,8 @@ public:
 	bool internalFontEncoding() const;
 	///
 	bool read(Lexer & lex);
+	// for the use in std::map
+	friend bool operator<(Language const & p, Language const & q);
 private:
 	///
 	std::string lang_;
@@ -69,6 +71,13 @@ private:
 	///
 	std::string latex_options_;
 };
+
+
+inline bool operator<(Language const & p, Language const & q)
+{
+	return q.lang() > p.lang();
+}
+
 
 class Languages
 {

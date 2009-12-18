@@ -208,9 +208,9 @@ public:
 	///
 	TextContainer text_;
 	
-	typedef std::set<docstring> Words;
+	typedef set<docstring> Words;
 	///
-	Words words_;
+	map<Language, Words> words_;
 	///
 	Layout const * layout_;
 };
@@ -2401,7 +2401,7 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 
 	bool emph_flag = false;
 	bool bold_flag = false;
-	std::string closing_tag;
+	string closing_tag;
 
 	Layout const & style = *d->layout_;
 
@@ -3022,10 +3022,13 @@ bool Paragraph::isSeparator(pos_type pos) const
 
 void Paragraph::deregisterWords()
 {
+	map<Language, Private::Words>::const_iterator itl;
 	Private::Words::const_iterator it;
-	WordList & wl = theWordList();
-	for (it = d->words_.begin(); it != d->words_.end(); ++it)
-		wl.remove(*it);
+	for (itl = d->words_.begin(); itl != d->words_.end(); ++itl) {
+		WordList * wl = theWordList(itl->first);
+		for (it = (itl->second).begin(); it != (itl->second).end(); ++it)
+			wl->remove(*it);
+	}
 	d->words_.clear();
 }
 
@@ -3077,7 +3080,11 @@ void Paragraph::collectWords()
 		locateWord(from, pos, WHOLE_WORD);
 		if (pos - from >= 6) {
 			docstring word = asString(from, pos, AS_STR_NONE);
-			d->words_.insert(word);
+			FontList::const_iterator cit = d->fontlist_.fontIterator(pos);
+			if (cit == d->fontlist_.end())
+				return;
+			Language const * lang = cit->font().language();
+			d->words_[*lang].insert(word);
 		}
 	}
 }
@@ -3085,10 +3092,13 @@ void Paragraph::collectWords()
 
 void Paragraph::registerWords()
 {
+	map<Language, Private::Words>::const_iterator itl;
 	Private::Words::const_iterator it;
-	WordList & wl = theWordList();
-	for (it = d->words_.begin(); it != d->words_.end(); ++it)
-		wl.insert(*it);
+	for (itl = d->words_.begin(); itl != d->words_.end(); ++itl) {
+		WordList * wl = theWordList(itl->first);
+		for (it = (itl->second).begin(); it != (itl->second).end(); ++it)
+			wl->insert(*it);
+	}
 }
 
 

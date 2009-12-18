@@ -485,8 +485,8 @@ class TextCompletionList : public CompletionList
 {
 public:
 	///
-	TextCompletionList(Cursor const & cur)
-		: buffer_(cur.buffer()), pos_(0)
+	TextCompletionList(Cursor const & cur, WordList const * list)
+		: buffer_(cur.buffer()), pos_(0), list_(list)
 	{}
 	///
 	virtual ~TextCompletionList() {}
@@ -496,12 +496,12 @@ public:
 	///
 	virtual size_t size() const
 	{
-		return theWordList().size();
+		return list_->size();
 	}
 	///
 	virtual docstring const & data(size_t idx) const
 	{
-		return theWordList().word(idx);
+		return list_->word(idx);
 	}
 	
 private:
@@ -509,6 +509,8 @@ private:
 	Buffer const * buffer_;
 	///
 	size_t pos_;
+	///
+	WordList const * list_;
 };
 
 
@@ -1988,7 +1990,8 @@ bool Text::completionSupported(Cursor const & cur) const
 
 CompletionList const * Text::createCompletionList(Cursor const & cur) const
 {
-	return new TextCompletionList(cur);
+	WordList const * list = theWordList(*cur.getFont().language());
+	return new TextCompletionList(cur, list);
 }
 
 

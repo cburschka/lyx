@@ -14,6 +14,8 @@
 
 #include "support/docstring.h"
 
+#include "Language.h"
+
 namespace lyx {
 
 class WordList {
@@ -37,7 +39,7 @@ private:
 	Impl * d;
 };
 
-WordList & theWordList();
+WordList * theWordList(Language const & lang);
 
 } // namespace lyx
 
