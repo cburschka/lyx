@@ -74,8 +74,6 @@ private:
 	///
 	void addToToc(DocIterator const &);
 	///
-	docstring const buttonLabel(BufferView const & bv) const;
-	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 	/// Updates needed features for this inset.
 	void validate(LaTeXFeatures & features) const;

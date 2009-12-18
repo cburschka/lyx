@@ -246,16 +246,6 @@ bool InsetIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-docstring const InsetIndex::buttonLabel(BufferView const & bv) const
-{
-	docstring s = _("Idx");
-	if (decoration() == InsetLayout::CLASSIC)
-		return isOpen(bv) ? s : getNewLabel(s);
-	else
-		return getNewLabel(s);
-}
-
-
 ColorCode InsetIndex::labelColor() const
 {
 	if (params_.index.empty() || params_.index == from_ascii("idx"))

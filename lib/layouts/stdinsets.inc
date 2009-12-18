@@ -249,6 +249,7 @@ InsetLayout Index
 	MultiPar              false
 	CustomPars            false
 	ForcePlain            true
+	ContentAsLabel        true
 End
 
 InsetLayout Box
