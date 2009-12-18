@@ -375,6 +375,12 @@ Buffer * Buffer::clone() const
 }
 
 
+bool Buffer::isClone() const
+{
+	return d->cloned_buffer_;
+}
+
+
 void Buffer::changed() const
 {
 	if (d->wa_)

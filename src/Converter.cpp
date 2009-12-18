@@ -608,13 +608,13 @@ bool Converters::runLaTeX(Buffer const & buffer, string const & command,
 		buffer.bufferErrors(terr, errorList);
 
 	// check return value from latex.run().
-	if ((result & LaTeX::NO_LOGFILE)) {
+	if ((result & LaTeX::NO_LOGFILE) && !buffer.isClone()) {
 		docstring const str =
 			bformat(_("LaTeX did not run successfully. "
 					       "Additionally, LyX could not locate "
 					       "the LaTeX log %1$s."), from_utf8(name));
 		Alert::error(_("LaTeX failed"), str);
-	} else if (result & LaTeX::NO_OUTPUT) {
+	} else if ((result & LaTeX::NO_OUTPUT) && !buffer.isClone()) {
 		Alert::warning(_("Output is empty"),
 			       _("An empty output file was generated."));
 	}

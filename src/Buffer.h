@@ -133,6 +133,8 @@ public:
 
 	///
 	Buffer * clone() const;
+	///
+	bool isClone() const;
 
 	/** High-level interface to buffer functionality.
 	    This function parses a command string and executes it.
