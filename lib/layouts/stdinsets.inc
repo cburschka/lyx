@@ -305,6 +305,7 @@ InsetLayout URL
 	LyXType               standard
 	Decoration            classic
 	LabelString           URL
+	ContentAsLabel        true
 	LatexName             url
 	LatexType             command
 	Requires              url

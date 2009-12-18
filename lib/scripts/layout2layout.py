@@ -73,10 +73,13 @@ import os, re, string, sys
 # Incremented to format 19, 17 November 2009 by rgh
 # Added InPreamble tag.
 
+# Incremented to format 20, 17 December 2009 by rgh
+# Added ContentAsLabel tag.
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
-currentFormat = 19
+currentFormat = 20
 
 
 def usage(prog_name):
@@ -245,7 +248,7 @@ def convert(lines):
             continue
 
         # This just involved new features, not any changes to old ones
-        if format == 14 or format == 15 or format == 16 or format == 17 or format == 18:
+        if format >= 14 and format <= 19:
           i += 1
           continue
 

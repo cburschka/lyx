@@ -31,8 +31,8 @@ namespace lyx {
 
 InsetLayout::InsetLayout() :
 	name_(from_ascii("undefined")), lyxtype_(STANDARD),
-	labelstring_(from_ascii("UNDEFINED")), decoration_(DEFAULT),
-	latextype_(NOLATEXTYPE), font_(sane_font), 
+	labelstring_(from_ascii("UNDEFINED")), contentaslabel_(false),
+	decoration_(DEFAULT), latextype_(NOLATEXTYPE), font_(sane_font), 
 	labelfont_(sane_font), bgcolor_(Color_error), 
 	htmlforcecss_ (false), htmlisblock_(true),
 	multipar_(true), custompars_(true), forceplain_(false), 
@@ -74,6 +74,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 {
 	enum {
 		IL_BGCOLOR,
+		IL_CONTENTASLABEL,
 		IL_COPYSTYLE,
 		IL_COUNTER,
 		IL_CUSTOMPARS,
@@ -110,6 +111,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 
 	LexerKeyword elementTags[] = {
 		{ "bgcolor", IL_BGCOLOR },
+		{ "contentaslabel", IL_CONTENTASLABEL },
 		{ "copystyle", IL_COPYSTYLE }, 
 		{ "counter", IL_COUNTER},
 		{ "custompars", IL_CUSTOMPARS },
@@ -239,6 +241,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			break;
 		case IL_NEEDPROTECT:
 			lex >> needprotect_;
+			break;
+		case IL_CONTENTASLABEL:
+			lex >> contentaslabel_;
 			break;
 		case IL_COPYSTYLE: {     // initialize with a known style
 			docstring style;

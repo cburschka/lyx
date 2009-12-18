@@ -66,6 +66,8 @@ public:
 	///
 	docstring labelstring() const { return labelstring_; }
 	///
+	bool contentaslabel() const { return contentaslabel_; }
+	///
 	InsetDecoration decoration() const { return decoration_; }
 	///
 	InsetLaTeXType latextype() const { return latextype_; }
@@ -142,6 +144,8 @@ private:
 	InsetLyXType lyxtype_;
 	///
 	docstring labelstring_;
+	///
+	bool contentaslabel_;
 	///
 	InsetDecoration decoration_;
 	///

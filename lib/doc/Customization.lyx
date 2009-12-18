@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 372
+\lyxformat 373
 \begin_document
 \begin_header
 \textclass scrbook
@@ -12869,6 +12869,43 @@ src/ColorCode.h
 status collapsed
 
 \begin_layout Plain Layout
+ContentAsLabel
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] Whether to use the content of the inset as the label, when the inset is
+ closed.
+ Default is false.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 CopyStyle
 \end_layout
 
@@ -13121,6 +13158,7 @@ status collapsed
 
 ] Indicates whether the PlainLayout should be used or, instead, the user
  can change the paragraph style used in the inset.
+ Default is false.
 \end_layout
 
 \begin_layout Description
@@ -13141,6 +13179,7 @@ reference "des:FreeSpacing"
 \end_inset
 
 ).
+ Default is false.
 \end_layout
 
 \begin_layout Description
@@ -13201,6 +13240,7 @@ reference "des:KeepEmpty"
 \end_inset
 
 ).
+ Default is false.
 \end_layout
 
 \begin_layout Description
@@ -13409,13 +13449,43 @@ status collapsed
 \end_inset
 
 ] Whether multiple paragraphs are permitted in this inset.
- This will also set CustomPars to the same value and ForcePlain to the opposite
- value.
+ This will also set 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+CustomPars
+\end_layout
+
+\end_inset
+
+ to the same value and 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+ForcePlain
+\end_layout
+
+\end_inset
+
+ to the opposite value.
  These can be reset to other values, if they are used 
 \emph on
 after
 \emph default
- MultiPar.
+ 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+MultiPar
+\end_layout
+
+\end_inset
+
+.
+ Default is true.
 \end_layout
 
 \begin_layout Description
@@ -13467,7 +13537,7 @@ protect
 \emph on
 not
 \emph default
- whether the command should itself be protected.)
+ whether the command should itself be protected.) Default is false.
 \end_layout
 
 \begin_layout Description
@@ -13504,12 +13574,13 @@ status collapsed
 
 ] As with paragraph styles (see page 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand pageref
 reference "des:PathThru"
 
 \end_inset
 
 ).
+ Default is false.
 \end_layout
 
 \begin_layout Description
