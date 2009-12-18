@@ -82,7 +82,7 @@ string const parsecmd(string const & cmd, string & outfile)
 
 	for (size_t i = 0; i < cmd.length(); ++i) {
 		char c = cmd[i];
-		if (c == '"' && !escaped)
+                if ((c == '"' || c == '\'') && !escaped)
 			inquote = !inquote;
 		else if (c == '\\' && !escaped)
 			escaped = !escaped;
@@ -103,7 +103,12 @@ string const parsecmd(string const & cmd, string & outfile)
 int Systemcall::startscript(Starttype how, string const & what, bool process_events)
 {
 	string outfile;
-	QString cmd = toqstr(parsecmd(what, outfile));
+        QString cmd = toqstr(parsecmd(what, outfile));
+        if (cmd.contains("'")) {
+            LYXERR0("Systemcall: '" << cmd << "' contains single quotes ', please check configuration, ' will be replaced by \"");
+            cmd = cmd.replace("'","\"");
+        }
+
 	SystemcallPrivate d(outfile);
 
 
