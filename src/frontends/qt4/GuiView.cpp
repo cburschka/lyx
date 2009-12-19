@@ -2616,23 +2616,23 @@ bool GuiView::goToFileRow(string const & argument)
 }
 
 
-static docstring exportAndDestroy(Buffer * buffer, docstring const & format)
+static docstring exportAndDestroy(Buffer * buffer, std::string const & format)
 {
-	bool const success = buffer->doExport(to_utf8(format), true);
+	bool const success = buffer->doExport(format, true);
 	delete buffer;
 	return success
-		? bformat(_("Successful export to format: %1$s."), format)
-		: bformat(_("Error exporting to format: %1$s."), format);
+		? bformat(_("Successful export to format: %1$s"), from_utf8(format))
+		: bformat(_("Error exporting to format: %1$s"), from_utf8(format));
 }
 
 
-static docstring previewAndDestroy(Buffer * buffer, docstring const & format)
+static docstring previewAndDestroy(Buffer * buffer, std::string const & format)
 {
-	bool const success = buffer->preview(to_utf8(format));
+	bool const success = buffer->preview(format);
 	delete buffer;
 	return success
-		? bformat(_("Successful preview of format: %1$s."), format)
-		: bformat(_("Error previewing format: %1$s."), format);
+		? bformat(_("Successful preview of format: %1$s"), from_utf8(format))
+		: bformat(_("Error previewing format: %1$s"), from_utf8(format));
 }
 
 
@@ -2687,7 +2687,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 				format = doc_buffer->getDefaultOutputFormat();
 #if EXPORT_in_THREAD && (QT_VERSION >= 0x040400)
 			QFuture<docstring> f = QtConcurrent::run(exportAndDestroy,
-				doc_buffer->clone(), from_utf8(format));
+				doc_buffer->clone(), format);
 			d.setPreviewFuture(f);
 #else
 			doc_buffer->doExport(format, true);
@@ -2702,7 +2702,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 				format = doc_buffer->getDefaultOutputFormat();
 #if EXPORT_in_THREAD && (QT_VERSION >= 0x040400)
 			QFuture<docstring> f = QtConcurrent::run(previewAndDestroy,
-				doc_buffer->clone(), from_utf8(format));
+				doc_buffer->clone(), format);
 			d.setPreviewFuture(f);
 #else
 			doc_buffer->preview(format);
@@ -2718,7 +2718,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 				format = master->getDefaultOutputFormat();
 #if EXPORT_in_THREAD && (QT_VERSION >= 0x040400)
 			QFuture<docstring> f = QtConcurrent::run(exportAndDestroy,
-				master->clone(), from_utf8(format));
+				master->clone(), format);
 			d.setPreviewFuture(f);
 #else
 			master->doExport(format, true);
@@ -2732,7 +2732,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 				format = master->getDefaultOutputFormat();
 #if EXPORT_in_THREAD && (QT_VERSION >= 0x040400)
 			QFuture<docstring> f = QtConcurrent::run(previewAndDestroy,
-				master->clone(), from_utf8(format));
+				master->clone(), format);
 			d.setPreviewFuture(f);
 #else
 			master->preview(format);
