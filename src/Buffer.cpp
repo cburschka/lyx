@@ -305,8 +305,6 @@ Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_,
 	temppath = cloned_buffer_->d->temppath;
 	file_fully_loaded = true;
 	params = cloned_buffer_->d->params;
-	inset = static_cast<InsetText *>(cloned_buffer_->d->inset->clone());
-	inset->setBuffer(parent);
 }
 
 
@@ -314,8 +312,11 @@ Buffer::Buffer(string const & file, bool readonly, Buffer const * cloned_buffer)
 	: d(new Impl(*this, FileName(file), readonly, cloned_buffer)), gui_(0)
 {
 	LYXERR(Debug::INFO, "Buffer::Buffer()");
-
-	d->inset = new InsetText(this);
+	if (cloned_buffer) {
+		d->inset = static_cast<InsetText *>(cloned_buffer->d->inset->clone());
+		d->inset->setBuffer(*this);
+	} else 
+		d->inset = new InsetText(this);
 	d->inset->setAutoBreakRows(true);
 	d->inset->getText(0)->setMacrocontextPosition(par_iterator_begin());
 }
