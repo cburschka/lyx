@@ -175,8 +175,8 @@ typedef boost::shared_ptr<Dialog> DialogPtr;
 
 struct GuiView::GuiViewPrivate
 {
-	GuiViewPrivate()
-		: current_work_area_(0), current_main_work_area_(0),
+	GuiViewPrivate(GuiView * gv)
+		: gv_(gv), current_work_area_(0), current_main_work_area_(0),
 		layout_(0), autosave_timeout_(5000),
 		in_show_(false)
 	{
@@ -265,7 +265,15 @@ struct GuiView::GuiViewPrivate
 		return tabWorkArea(0);
 	}
 
+	void setPreviewFuture(QFuture<docstring> const & f)
+	{
+		preview_watcher_.setFuture(f);
+		connect(&preview_watcher_, SIGNAL(finished()), gv_,
+			SLOT(threadFinished()));
+	}
+
 public:
+	GuiView * gv_;
 	GuiWorkArea * current_work_area_;
 	GuiWorkArea * current_main_work_area_;
 	QSplitter * splitter_;
@@ -309,7 +317,7 @@ public:
 
 
 GuiView::GuiView(int id)
-	: d(*new GuiViewPrivate), id_(id), closing_(false)
+	: d(*new GuiViewPrivate(this)), id_(id), closing_(false)
 {
 	// GuiToolbars *must* be initialised before the menu bar.
 	normalSizedIcons(); // at least on Mac the default is 32 otherwise, which is huge
@@ -368,8 +376,6 @@ GuiView::GuiView(int id)
 
 #if (QT_VERSION >= 0x040400)
 	connect(&d.autosave_watcher_, SIGNAL(finished()), this,
-		SLOT(threadFinished()));
-	connect(&d.preview_watcher_, SIGNAL(finished()), this,
 		SLOT(threadFinished()));
 #endif
 }
@@ -2682,7 +2688,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 #if EXPORT_in_THREAD && (QT_VERSION >= 0x040400)
 			QFuture<docstring> f = QtConcurrent::run(exportAndDestroy,
 				doc_buffer->clone(), cmd.argument());
-			d.preview_watcher_.setFuture(f);
+			d.setPreviewFuture(f);
 #else
 			doc_buffer->doExport(format, true);
 #endif
@@ -2697,7 +2703,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 #if EXPORT_in_THREAD && (QT_VERSION >= 0x040400)
 			QFuture<docstring> f = QtConcurrent::run(previewAndDestroy,
 				doc_buffer->clone(), cmd.argument());
-			d.preview_watcher_.setFuture(f);
+			d.setPreviewFuture(f);
 #else
 			doc_buffer->preview(format);
 #endif
@@ -2713,7 +2719,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 #if EXPORT_in_THREAD && (QT_VERSION >= 0x040400)
 			QFuture<docstring> f = QtConcurrent::run(exportAndDestroy,
 				master->clone(), cmd.argument());
-			d.preview_watcher_.setFuture(f);
+			d.setPreviewFuture(f);
 #else
 			master->doExport(format, true);
 #endif
@@ -2727,7 +2733,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 #if EXPORT_in_THREAD && (QT_VERSION >= 0x040400)
 			QFuture<docstring> f = QtConcurrent::run(previewAndDestroy,
 				master->clone(), cmd.argument());
-			d.preview_watcher_.setFuture(f);
+			d.setPreviewFuture(f);
 #else
 			master->preview(format);
 #endif
