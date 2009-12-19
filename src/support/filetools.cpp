@@ -144,7 +144,9 @@ string const quoteName(string const & name, quote_style style)
 #else
 		// According to the QProcess parser, a single double
 		// quote is represented by three consecutive ones.
-		return '"' + subst(name, "\"", "\"\"\"") + '"';
+		// Here we simply escape the double quote and let our
+		// simple parser in Systemcall.cpp do the substitution.
+		return '"' + subst(name, "\"", "\\\"") + '"';
 #endif
 	case quote_python:
 		return "\"" + subst(subst(name, "\\", "\\\\"), "\"", "\\\"")

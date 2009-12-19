@@ -75,22 +75,83 @@ int Systemcall::startscript(Starttype how, string const & what,
 
 namespace {
 
-string const parsecmd(string const & cmd, string & outfile)
+/*
+ * This is a parser that (mostly) mimics the behavior of a posix shell but
+ * its output is tailored for being processed by QProcess.
+ *
+ * The escape character is the backslash.
+ * A backslash that is not quoted preserves the literal value of the following
+ * character, with the exception of a double-quote '"'. If a double-quote
+ * follows a backslash, it will be replaced by three consecutive double-quotes
+ * (this is how the QProcess parser recognizes a '"' as a simple character
+ * instead of a quoting character). Thus, for example:
+ *     \\  ->  \
+ *     \a  ->  a
+ *     \"  ->  """
+ *
+ * Single-quotes.
+ * Characters enclosed in single-quotes ('') have their literal value preserved.
+ * A single-quote cannot occur within single-quotes. Indeed, a backslash cannot
+ * be used to escape a single-quote in a single-quoted string. In other words,
+ * anything enclosed in single-quotes is passed as is, but the single-quotes
+ * themselves are eliminated. Thus, for example:
+ *    '\'    ->  \
+ *    '\\'   ->  \\
+ *    '\a'   ->  \a
+ *    'a\"b' ->  a\"b
+ *
+ * Double-quotes.
+ * Characters enclosed in double-quotes ("") have their literal value preserved,
+ * with the exception of the backslash. The backslash retains its special
+ * meaning as an escape character only when followed by a double-quote.
+ * Contrarily to the behavior of a posix shell, the double-quotes themselves
+ * are *not* eliminated. Thus, for example:
+ *    "\\"   ->  "\\"
+ *    "\a"   ->  "\a"
+ *    "a\"b" ->  "a"""b"
+ */
+string const parsecmd(string const & inputcmd, string & outfile)
 {
-	bool inquote = false;
+	bool in_single_quote = false;
+	bool in_double_quote = false;
 	bool escaped = false;
+	string cmd;
 
-	for (size_t i = 0; i < cmd.length(); ++i) {
-		char c = cmd[i];
-		if (c == '"' && !escaped)
-			inquote = !inquote;
-		else if (c == '\\' && !escaped)
-			escaped = !escaped;
-		else if (c == '>' && !(inquote || escaped)) {
-			outfile = trim(cmd.substr(i + 1), " \"");
-			return trim(cmd.substr(0, i));
-		} else
+	for (size_t i = 0; i < inputcmd.length(); ++i) {
+		char c = inputcmd[i];
+		if (c == '\'') {
+			if (in_double_quote || escaped) {
+				if (in_double_quote && escaped)
+					cmd += '\\';
+				cmd += c;
+			} else
+				in_single_quote = !in_single_quote;
 			escaped = false;
+			continue;
+		}
+		if (in_single_quote) {
+			cmd += c;
+			continue;
+		}
+		if (c == '"') {
+			if (escaped) {
+				cmd += "\"\"\"";
+				escaped = false;
+			} else {
+				cmd += c;
+				in_double_quote = !in_double_quote;
+			}
+		} else if (c == '\\' && !escaped) {
+			escaped = !escaped;
+		} else if (c == '>' && !(in_double_quote || escaped)) {
+			outfile = trim(inputcmd.substr(i + 1), " \"");
+			return trim(cmd);
+		} else {
+			if (escaped && in_double_quote)
+				cmd += '\\';
+			cmd += c;
+			escaped = false;
+		}
 	}
 	outfile.erase();
 	return cmd;
