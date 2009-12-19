@@ -43,7 +43,7 @@ public:
 	 *  by spaces. Unset "process_events" in case UI should be blocked while
 	 *  processing the external command.
 	 */
-	int startscript(Starttype how, std::string const & what, bool process_events = true);
+	int startscript(Starttype how, std::string const & what, bool process_events = false);
 };
 
 } // namespace support

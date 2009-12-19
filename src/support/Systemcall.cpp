@@ -232,7 +232,6 @@ void SystemcallPrivate::startProcess(const QString& cmd)
 void SystemcallPrivate::processEvents()
 {
 	if(process_events) {
-		//static int count = 0; qDebug() << count++ << ": waitAndProcessEvents";
 		QCoreApplication::processEvents(QEventLoop::AllEvents);
 	}
 }
