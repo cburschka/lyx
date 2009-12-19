@@ -647,9 +647,9 @@ def checkConverterEntries():
         addToRC(r'''\copier    html       "python -tt $$s/scripts/ext_copy.py $$i $$o"''')
 
     # On SuSE the scripts have a .sh suffix, and on debian they are in /usr/share/tex4ht/
-    path, htmlconv = checkProg('a LaTeX -> MS Word converter', ["htlatex $$i html,word symbol/! -cvalidate", \
-        "htlatex.sh $$i html,word symbol/! -cvalidate", \
-        "/usr/share/tex4ht/htlatex $$i html,word symbol/! -cvalidate"],
+    path, htmlconv = checkProg('a LaTeX -> MS Word converter', ["htlatex $$i 'html,word' 'symbol/!' '-cvalidate'", \
+        "htlatex.sh $$i 'html,word' 'symbol/!' '-cvalidate'", \
+        "/usr/share/tex4ht/htlatex $$i 'html,word' 'symbol/!' '-cvalidate'"],
         rc_entry = [ r'\converter latex      wordhtml   "%%"	"needaux"' ])
     if htmlconv.find('htlatex') >= 0:
       addToRC(r'''\copier    wordhtml       "python -tt $$s/scripts/ext_copy.py -e html,png,css $$i $$o"''')
@@ -667,7 +667,7 @@ def checkConverterEntries():
     # Both SuSE and debian have oolatex
     checkProg('a LaTeX -> Open Document converter', [
         'oolatex $$i', 'mk4ht oolatex $$i', 'oolatex.sh $$i', '/usr/share/tex4ht/oolatex $$i',
-        'htlatex $$i xhtml,ooffice ooffice/! -cmozhtf -coo -cvalidate'],
+        'htlatex $$i \'xhtml,ooffice\' \'ooffice/! -cmozhtf\' \'-coo\' \'-cvalidate\''],
         rc_entry = [ r'\converter latex      odt        "%%"	"needaux"' ])
     # On windows it is called latex2rt.exe
     checkProg('a LaTeX -> RTF converter', ['latex2rtf -p -S -o $$o $$i', 'latex2rt -p -S -o $$o $$i'],
