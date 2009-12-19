@@ -130,16 +130,19 @@ string const quoteName(string const & name, quote_style style)
 {
 	switch(style) {
 	case quote_shell:
-		// This does not work for filenames containing " (windows)
-		// or ' (all other OSes). This can't be changed easily, since
-		// we would need to adapt the command line parser in
-		// Forkedcall::generateChild. Therefore we don't pass user
-		// filenames to child processes if possible. We store them in
-		// a python script instead, where we don't have these
-		// limitations.
+		// This does not work on native Windows for filenames
+		// containing the following characters < > : " / \ | ? *
+		// Moreover, it can't be made to work, as, according to
+		// http://msdn.microsoft.com/en-us/library/aa365247(VS.85).aspx
+		// those are reserved characters, and thus are forbidden.
+		// Please, also note that the command-line parser in
+		// ForkedCall::generateChild cannot deal with filenames
+		// containing " or ', therefore we don't pass user filenames
+		// to child processes if possible. We store them in a python
+		// script instead, where we don't have these limitations.
 #ifndef USE_QPROCESS
 		return (os::shell() == os::UNIX) ?
-			'\'' + name + '\'':
+			'\'' + subst(name, "'", "\'\\\'\'") + '\'' :
 			'"' + name + '"';
 #else
 		// According to the QProcess parser, a single double
