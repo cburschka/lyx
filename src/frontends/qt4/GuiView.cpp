@@ -102,7 +102,7 @@
 #include <QUrl>
 #include <QScrollBar>
 
-#define EXPORT_in_THREAD 1
+#define EXPORT_in_THREAD 0
 
 // QtConcurrent was introduced in Qt 4.4
 #if (QT_VERSION >= 0x040400)
