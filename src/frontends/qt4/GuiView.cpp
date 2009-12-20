@@ -268,6 +268,8 @@ struct GuiView::GuiViewPrivate
 
 	void setPreviewFuture(QFuture<docstring> const & f)
 	{
+		if (preview_watcher_.isRunning())
+			preview_watcher_.waitForFinished();
 		preview_watcher_.setFuture(f);
 		connect(&preview_watcher_, SIGNAL(finished()), gv_,
 			SLOT(threadFinished()));
@@ -1312,12 +1314,13 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 
 	case LFUN_MASTER_BUFFER_UPDATE:
 	case LFUN_MASTER_BUFFER_VIEW: 
-		enable = doc_buffer && doc_buffer->parent() != 0;
+		enable = doc_buffer && doc_buffer->parent() != 0
+			&& !d.preview_watcher_.isRunning();
 		break;
 
 	case LFUN_BUFFER_UPDATE:
 	case LFUN_BUFFER_VIEW: {
-		if (!doc_buffer) {
+		if (!doc_buffer || d.preview_watcher_.isRunning()) {
 			enable = false;
 			break;
 		}
