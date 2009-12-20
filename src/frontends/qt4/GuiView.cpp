@@ -167,7 +167,7 @@ private:
 
 
 /// Toolbar store providing access to individual toolbars by name.
-typedef std::map<std::string, GuiToolbar *> ToolbarMap;
+typedef map<string, GuiToolbar *> ToolbarMap;
 
 typedef boost::shared_ptr<Dialog> DialogPtr;
 
@@ -1117,7 +1117,7 @@ void GuiView::updateToolbars()
 
 void GuiView::setBuffer(Buffer * newBuffer)
 {
-	LYXERR(Debug::DEBUG, "Setting buffer: " << newBuffer << std::endl);
+	LYXERR(Debug::DEBUG, "Setting buffer: " << newBuffer << endl);
 	LASSERT(newBuffer, return);
 	setBusy(true);
 
@@ -1176,7 +1176,7 @@ void GuiView::errors(string const & error_type, bool from_master)
 }
 
 
-void GuiView::updateTocItem(std::string const & type, DocIterator const & dit)
+void GuiView::updateTocItem(string const & type, DocIterator const & dit)
 {
 	d.toc_models_.updateItem(toqstr(type), dit);
 }
@@ -2618,7 +2618,7 @@ bool GuiView::goToFileRow(string const & argument)
 }
 
 
-static docstring exportAndDestroy(Buffer * buffer, std::string const & format)
+static docstring exportAndDestroy(Buffer * buffer, string const & format)
 {
 	bool const success = buffer->doExport(format, true);
 	delete buffer;
@@ -2628,7 +2628,7 @@ static docstring exportAndDestroy(Buffer * buffer, std::string const & format)
 }
 
 
-static docstring previewAndDestroy(Buffer * buffer, std::string const & format)
+static docstring previewAndDestroy(Buffer * buffer, string const & format)
 {
 	bool const success = buffer->preview(format);
 	delete buffer;
