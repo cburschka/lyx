@@ -34,10 +34,10 @@ public:
 	~SystemcallPrivate();
 
 	/// Should the standard output be displayed?
-	void showout() { showout_ = true; }
+	void setShowOut(bool val) { showout_ = val; }
 
 	/// Should the standard error be displayed?
-	void showerr() { showerr_ = true; }
+	void setShowErr(bool val) { showerr_ = val; }
 
 	enum State {
 		Starting,
@@ -81,6 +81,7 @@ private:
 	/// 
 	bool showerr_;
 	bool process_events;
+	QString cmd_;
 
 	void waitAndProcessEvents();
 	void processEvents();
@@ -93,6 +94,8 @@ public Q_SLOTS:
 	void processError(QProcess::ProcessError);
 	void processStarted();
 	void processFinished(int, QProcess::ExitStatus status);
+
+Q_SIGNALS:
 
 };
 

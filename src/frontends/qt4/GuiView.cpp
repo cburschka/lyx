@@ -76,6 +76,7 @@
 #include "support/Path.h"
 #include "support/Systemcall.h"
 #include "support/Timeout.h"
+#include "support/ProgressInterface.h"
 
 #include <QAction>
 #include <QApplication>
@@ -1416,6 +1417,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 				|| name == "file" //FIXME: should be removed.
 				|| name == "prefs"
 				|| name == "texinfo"
+				|| name == "progress"
 				|| name == "compare";
 		else if (name == "print")
 			enable = doc_buffer->isExportable("dvi")
@@ -3170,7 +3172,7 @@ char const * const dialognames[] = {
 "mathmatrix", "mathspace", "nomenclature", "nomencl_print", "note",
 "paragraph", "phantom", "prefs", "print", "ref", "sendto", "space",
 "spellchecker", "symbols", "tabular", "tabularcreate", "thesaurus", "texinfo",
-"toc", "view-source", "vspace", "wrap" };
+"toc", "view-source", "vspace", "wrap", "progress" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -3368,7 +3370,7 @@ Dialog * createGuiHyperlink(GuiView & lv);
 Dialog * createGuiVSpace(GuiView & lv);
 Dialog * createGuiViewSource(GuiView & lv);
 Dialog * createGuiWrap(GuiView & lv);
-
+Dialog * createGuiProgress(GuiView & lv);
 
 Dialog * GuiView::build(string const & name)
 {
@@ -3472,6 +3474,8 @@ Dialog * GuiView::build(string const & name)
 		return createGuiVSpace(*this);
 	if (name == "wrap")
 		return createGuiWrap(*this);
+	if (name == "progress") 
+		return createGuiProgress(*this); 
 
 	return 0;
 }

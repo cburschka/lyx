@@ -19,6 +19,7 @@
 #include "support/Systemcall.h"
 #include "support/SystemcallPrivate.h"
 #include "support/os.h"
+#include "support/ProgressInterface.h"
 
 
 #include <cstdlib>
@@ -43,10 +44,43 @@ struct Sleep : QThread
 
 
 
+
 using namespace std;
 
 namespace lyx {
 namespace support {
+
+
+class ProgressDummy : public ProgressInterface 
+{
+public:
+	ProgressDummy() {}
+
+	void processStarted(QString const &) {}
+	void processFinished(QString const &) {}
+	void appendMessage(QString const &) {}
+	void appendError(QString const &) {}
+	void clearMessages() {}
+};
+
+
+static ProgressInterface* progress_instance = 0;
+
+void ProgressInterface::setInstance(ProgressInterface* p)
+{
+	progress_instance = p;
+}
+
+
+ProgressInterface* ProgressInterface::instance()
+{
+	if (!progress_instance) {
+		static ProgressDummy dummy;
+		return &dummy;
+	}
+	return progress_instance;
+}
+
 
 
 
@@ -207,9 +241,9 @@ SystemcallPrivate::SystemcallPrivate(const std::string& of) :
 		if (outfile != os::nulldev())
 			proc_->setStandardOutputFile(toqstr(outfile));
 	} else if (os::is_terminal(os::STDOUT))
-		showout();
+		setShowOut(true);
 	if (os::is_terminal(os::STDERR))
-		showerr();
+		setShowErr(true);
 
 	connect(proc_, SIGNAL(readyReadStandardOutput()), SLOT(stdOut()));
 	connect(proc_, SIGNAL(readyReadStandardError()), SLOT(stdErr()));
@@ -222,18 +256,19 @@ SystemcallPrivate::SystemcallPrivate(const std::string& of) :
 
 void SystemcallPrivate::startProcess(const QString& cmd)
 {
+	cmd_ = cmd;
 	if (proc_) {
 		state = SystemcallPrivate::Starting;
-		proc_->start(cmd);
+		proc_->start(cmd_);
 	}
 }
 
 
 void SystemcallPrivate::processEvents()
 {
-	if(process_events) {
-		QCoreApplication::processEvents(QEventLoop::AllEvents);
-	}
+	//if(process_events) {
+		QCoreApplication::processEvents(QEventLoop::ExcludeUserInputEvents);
+	//}
 }
 
 
@@ -286,13 +321,15 @@ SystemcallPrivate::~SystemcallPrivate()
 	if (outindex_) {
 		outdata_[outindex_] = '\0';
 		outindex_ = 0;
-		cout << outdata_;
+		if (showout_)
+			cout << outdata_;
 	}
 	cout.flush();
 	if (errindex_) {
 		errdata_[errindex_] = '\0';
 		errindex_ = 0;
-		cerr << errdata_;
+		if (showerr_)
+			cerr << errdata_;
 	}
 	cerr.flush();
 
@@ -318,7 +355,7 @@ void SystemcallPrivate::flush()
 
 void SystemcallPrivate::stdOut()
 {
-	if (proc_ && showout_) {
+	if (proc_) {
 		char c;
 		proc_->setReadChannel(QProcess::StandardOutput);
 		while (proc_->getChar(&c)) {
@@ -326,17 +363,21 @@ void SystemcallPrivate::stdOut()
 			if (c == '\n' || outindex_ + 1 == bufsize_) {
 				outdata_[outindex_] = '\0';
 				outindex_ = 0;
-				cout << outdata_;
+				if (showout_)
+					cout << outdata_;
 			}
 		}
 	}
+	const QString data = QString::fromLocal8Bit(outdata_);
+	if (!data.isEmpty())
+		ProgressInterface::instance()->appendMessage(data);
 	processEvents();
 }
 
 
 void SystemcallPrivate::stdErr()
 {
-	if (proc_ && showerr_) {
+	if (proc_) {
 		char c;
 		proc_->setReadChannel(QProcess::StandardError);
 		while (proc_->getChar(&c)) {
@@ -344,10 +385,14 @@ void SystemcallPrivate::stdErr()
 			if (c == '\n' || errindex_ + 1 == bufsize_) {
 				errdata_[errindex_] = '\0';
 				errindex_ = 0;
-				cerr << errdata_;
+				if (showerr_)
+					cerr << errdata_;
 			}
 		}
 	}
+	const QString data = QString::fromLocal8Bit(errdata_);
+	if (!data.isEmpty())
+		ProgressInterface::instance()->appendError(data);
 	processEvents();
 }
 
@@ -355,20 +400,21 @@ void SystemcallPrivate::stdErr()
 void SystemcallPrivate::processStarted()
 {
 	state = Running;
-	// why do we get two started signals?
-	//disconnect(proc_, SIGNAL(started()), this, SLOT(processStarted()));
+	ProgressInterface::instance()->processStarted(cmd_);
 }
 
 
 void SystemcallPrivate::processFinished(int, QProcess::ExitStatus)
 {
 	state = Finished;
+	ProgressInterface::instance()->processFinished(cmd_);
 }
 
 
 void SystemcallPrivate::processError(QProcess::ProcessError)
 {
 	state = Error;
+	ProgressInterface::instance()->appendError(errorMessage());
 }
 
 
