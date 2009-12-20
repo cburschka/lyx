@@ -77,6 +77,7 @@ liblyxsupport_a_SOURCES = \
 	Path.h \
 	Package.cpp \
 	Package.h \
+	ProgressInterface.h \
 	qstring_helpers.cpp \
 	qstring_helpers.h \
 	socktools.cpp \
