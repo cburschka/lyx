@@ -310,6 +310,7 @@ src_support_header_files = Split('''
     os_win32.h
     Package.h
     Path.h
+    ProgressInterface.h
     qstring_helpers.h
     RandomAccessList.h
     SignalSlot.h
@@ -754,6 +755,7 @@ src_frontends_qt4_header_files = Split('''
     GuiPrint.h
     GuiPrintindex.h
     GuiPrintNomencl.h
+    GuiProgress.h
     GuiRef.h
     GuiSearch.h
     GuiSelection.h
@@ -852,6 +854,7 @@ src_frontends_qt4_files = Split('''
     GuiPrint.cpp
     GuiPrintindex.cpp
     GuiPrintNomencl.cpp
+    GuiProgress.cpp
     GuiRef.cpp
     GuiSearch.cpp
     GuiSelection.cpp
