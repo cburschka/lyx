@@ -14,17 +14,18 @@
 
 #include "alert.h"
 
+
 #include "frontends/Application.h"
 
 #include "qt_helpers.h"
 #include "LyX.h" // for lyx::use_gui
 #include "ui_AskForTextUi.h"
-#include "ui_ToggleWarningUi.h"
 #include "support/gettext.h"
 
 #include "support/debug.h"
 #include "support/docstring.h"
 #include "support/lstrings.h"
+#include "support/ProgressInterface.h"
 
 #include <QApplication>
 #include <QCheckBox>
@@ -43,15 +44,6 @@ namespace lyx {
 namespace frontend {
 
 
-class GuiToggleWarningDialog : public QDialog, public Ui::ToggleWarningUi
-{
-public:
-	GuiToggleWarningDialog(QWidget * parent) : QDialog(parent)
-	{
-		Ui::ToggleWarningUi::setupUi(this);
-		QDialog::setModal(true);
-	}
-};
 
 
 static docstring const formatted(docstring const & text)
@@ -114,26 +106,18 @@ static docstring const formatted(docstring const & text)
 }
 
 
-void toggleWarning(docstring const & title, docstring const & msg)
+void noAppDialog(QString const & title, QString const & msg, QMessageBox::Icon mode)
 {
-	if (!use_gui)
-		return;
-
-	QSettings settings;
-	if (settings.value("hidden_warnings/" + toqstr(msg), false).toBool())
-		return;
-
-	GuiToggleWarningDialog * dlg =
-		new GuiToggleWarningDialog(qApp->focusWidget());
-
-	dlg->setWindowTitle(toqstr(title));
-	dlg->messageLA->setText(toqstr(formatted(msg)));
-	dlg->dontShowAgainCB->setChecked(false);
-
-	if (dlg->exec() == QDialog::Accepted)
-		if (dlg->dontShowAgainCB->isChecked())
-			settings.setValue("hidden_warnings/"
-				+ toqstr(msg), true);
+	int argc = 1;
+	char * argv[1];
+	QApplication app(argc, argv);
+	switch (mode)
+	{
+		case QMessageBox::Information: QMessageBox::information(0, title, msg); break;
+		case QMessageBox::Warning: QMessageBox::warning(0, title, msg); break;
+		case QMessageBox::Critical: QMessageBox::critical(0, title, msg); break;
+		default: break;
+	}
 }
 
 
@@ -196,25 +180,22 @@ void warning(docstring const & title0, docstring const & message,
 	docstring const title = bformat(_("LyX: %1$s"), title0);
 
 	if (theApp() == 0) {
-		int argc = 1;
-		char * argv[1];
-		QApplication app(argc, argv);
-		QMessageBox::warning(0,
-			toqstr(title),
-			toqstr(formatted(message)));
+		noAppDialog(toqstr(title), toqstr(formatted(message)), QMessageBox::Warning);
 		return;
 	}
-	if (!askshowagain)
-		QMessageBox::warning(qApp->focusWidget(),
+
+	if (!askshowagain) {
+		ProgressInterface::instance()->warning(
 				toqstr(title),
 				toqstr(formatted(message)));
-	else
-		toggleWarning(title, message);
+	} else {
+		ProgressInterface::instance()->toggleWarning(
+				toqstr(title),
+				toqstr(message),
+				toqstr(formatted(message)));
+	}
 }
 
-
-int argc = 1;
-char * argv[1];
 
 void error(docstring const & title0, docstring const & message)
 {
@@ -226,16 +207,15 @@ void error(docstring const & title0, docstring const & message)
 		return;
 
 	docstring const title = bformat(_("LyX: %1$s"), title0);
+
 	if (theApp() == 0) {
-		QApplication app(argc, argv);
-		QMessageBox::critical(0,
-			toqstr(title),
-			toqstr(formatted(message)));
+		noAppDialog(toqstr(title), toqstr(formatted(message)), QMessageBox::Critical);
 		return;
 	}
-	QMessageBox::critical(qApp->focusWidget(),
-			      toqstr(title),
-			      toqstr(formatted(message)));
+
+	ProgressInterface::instance()->error(
+		toqstr(title),
+		toqstr(formatted(message)));
 }
 
 
@@ -250,9 +230,15 @@ void information(docstring const & title0, docstring const & message)
 		return;
 
 	docstring const title = bformat(_("LyX: %1$s"), title0);
-	QMessageBox::information(qApp->focusWidget(),
-				 toqstr(title),
-				 toqstr(formatted(message)));
+
+	if (theApp() == 0) {
+		noAppDialog(toqstr(title), toqstr(formatted(message)), QMessageBox::Information);
+		return;
+	}
+
+	ProgressInterface::instance()->information(
+		toqstr(title),
+		toqstr(formatted(message)));
 }
 
 

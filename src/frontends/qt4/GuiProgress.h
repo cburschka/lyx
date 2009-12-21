@@ -27,17 +27,15 @@ namespace lyx {
 namespace frontend {
 
 
-class GuiProgress : 
-	public DockView, 
-	public lyx::support::ProgressInterface
+class GuiProgress :
+		public QObject,
+		public lyx::support::ProgressInterface
 {
-
 	Q_OBJECT
+
 public:
-	GuiProgress(
-		GuiView & parent, ///< the main window where to dock.
-		Qt::DockWidgetArea area, ///< Position of the dock (and also drawer)
-		Qt::WindowFlags flags = 0);
+	GuiProgress(GuiView * view);
+
 
 Q_SIGNALS:
 	void processStarted(QString const &);
@@ -46,6 +44,12 @@ Q_SIGNALS:
 	void appendError(QString const &);
 	void clearMessages();
 
+	// Alert interface
+	void warning(QString const & title, QString const & message);
+	void toggleWarning(QString const & title, QString const & msg, QString const & formatted);
+	void error(QString const & title, QString const & message);
+	void information(QString const & title, QString const & message);
+
 private Q_SLOTS:
 	void doProcessStarted(QString const &);
 	void doProcessFinished(QString const &);
@@ -53,25 +57,15 @@ private Q_SLOTS:
 	void doAppendError(QString const &);
 	void doClearMessages();
 
-public:
-	/// Controller inherited method.
-	///@{
-	bool initialiseParams(std::string const &) { return true; }
-	void clearParams() {}
-	void dispatchParams() {}
-	bool isBufferDependent() const { return false; }
-	bool canApply() const { return true; }
-	bool canApplyToReadOnly() const { return true; }
-	void updateView() {}
-	///@}
 
-		
-	void showEvent(QShowEvent*);
-	void hideEvent(QHideEvent*);
+	void doWarning(QString const &, QString const &);
+	void doToggleWarning(QString const & title, QString const & msg, QString const & formatted);
+	void doError(QString const &, QString const &);
+	void doInformation(QString const &, QString const &);
+
 
 private:
-	QTextEdit text_edit;
-
+	GuiView* view_;
 	void appendText(QString const &);
 
 };

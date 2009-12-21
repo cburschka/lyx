@@ -12,51 +12,74 @@
 #include <config.h>
 
 #include "GuiProgress.h"
+#include "ui_ToggleWarningUi.h"
 
 #include "qt_helpers.h"
 
 #include "support/Systemcall.h"
 
 #include <QApplication>
-#include <QDebug>
+#include <QTime>
+#include <QMessageBox>
+
 
 
 namespace lyx {
 namespace frontend {
 
 
-
-GuiProgress::GuiProgress(GuiView & parent, Qt::DockWidgetArea area, 
-	Qt::WindowFlags flags) : DockView(parent, "progress", "External tools", area, flags)
+class GuiToggleWarningDialog : public QDialog, public Ui::ToggleWarningUi
 {
-	setWindowTitle(qt_("Tool monitoring"));
-	setWidget(&text_edit);
-	text_edit.setReadOnly(true);
+public:
+	GuiToggleWarningDialog(QWidget * parent) : QDialog(parent)
+	{
+		Ui::ToggleWarningUi::setupUi(this);
+		QDialog::setModal(true);
+	}
+};
 
+
+
+
+GuiProgress::GuiProgress(GuiView * view) : view_(view)
+{
 	connect(this, SIGNAL(processStarted(QString const &)), SLOT(doProcessStarted(QString const &)));
 	connect(this, SIGNAL(processFinished(QString const &)), SLOT(doProcessFinished(QString const &)));
 	connect(this, SIGNAL(appendMessage(QString const &)), SLOT(doAppendMessage(QString const &)));
 	connect(this, SIGNAL(appendError(QString const &)), SLOT(doAppendError(QString const &)));
 	connect(this, SIGNAL(clearMessages()), SLOT(doClearMessages()));
+	
+	// Alert interface
+	connect(this, SIGNAL(warning(QString const &, QString const &)),
+		SLOT(doWarning(QString const &, QString const &)));
+	connect(this, SIGNAL(toggleWarning(QString const &, QString const &, QString const &)),
+		SLOT(doToggleWarning(QString const &, QString const &, QString const &)));
+	connect(this, SIGNAL(error(QString const &, QString const &)),
+		SLOT(doError(QString const &, QString const &)));
+	connect(this, SIGNAL(information(QString const &, QString const &)),
+		SLOT(doInformation(QString const &, QString const &)));
+
+	support::ProgressInterface::setInstance(this);
 }
 
 
 void GuiProgress::doProcessStarted(QString const & cmd)
 {
-	appendText("Process started : " + cmd + "\n");
+	QString time = QTime::currentTime().toString(Qt::SystemLocaleShortDate);
+	appendText(time + ": <" + cmd + "> started\n");
 }
 
 
 void GuiProgress::doProcessFinished(QString const & cmd)
 {
-	appendText("Process finished: " + cmd + "\n");
+	QString time = QTime::currentTime().toString(Qt::SystemLocaleShortDate);
+	appendText(time + ": <" + cmd + "> done\n");
 }
 
 
 void GuiProgress::doAppendMessage(QString const & msg)
 {
-	// No good messages from the processes
-	//appendText(msg);
+	appendText(msg);
 }
 
 
@@ -68,41 +91,52 @@ void GuiProgress::doAppendError(QString const & msg)
 
 void GuiProgress::doClearMessages()
 {
-	text_edit.clear();
+	view_->message(docstring());
 }
 
 
 void GuiProgress::appendText(QString const & text)
 {
-	text_edit.insertPlainText(text);
-	text_edit.ensureCursorVisible();
+	view_->message(qstring_to_ucs4(text));
 }
 
 
-void GuiProgress::showEvent(QShowEvent*)
+void GuiProgress::doWarning(QString const & title, QString const & message)
 {
-	support::ProgressInterface::setInstance(this);
+	QMessageBox::warning(qApp->focusWidget(), title, message);
 }
 
 
-void GuiProgress::hideEvent(QHideEvent*)
+void GuiProgress::doToggleWarning(QString const & title, QString const & msg, QString const & formatted)
 {
-	support::ProgressInterface::setInstance(0);
+	QSettings settings;
+	if (settings.value("hidden_warnings/" + msg, false).toBool())
+			return;
+
+	GuiToggleWarningDialog * dlg =
+		new GuiToggleWarningDialog(qApp->focusWidget());
+
+	dlg->setWindowTitle(title);
+	dlg->messageLA->setText(formatted);
+	dlg->dontShowAgainCB->setChecked(false);
+
+	if (dlg->exec() == QDialog::Accepted)
+		if (dlg->dontShowAgainCB->isChecked())
+			settings.setValue("hidden_warnings/"
+				+ msg, true);
 }
 
 
-
-Dialog * createGuiProgress(GuiView & lv)
+void GuiProgress::doError(QString const & title, QString const & message)
 {
-	GuiView & guiview = static_cast<GuiView &>(lv);
-#ifdef Q_WS_MACX
-	// TODO where to show up on the Mac?
-	//return new GuiProgress(guiview, Qt::RightDockWidgetArea, Qt::Drawer);
-#else
-	return new GuiProgress(guiview, Qt::BottomDockWidgetArea);
-#endif
+	QMessageBox::critical(qApp->focusWidget(), title, message);
 }
 
+
+void GuiProgress::doInformation(QString const & title, QString const & message)
+{
+	QMessageBox::information(qApp->focusWidget(), title, message);
+}
 
 
 } // namespace frontend

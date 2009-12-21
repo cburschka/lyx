@@ -315,7 +315,6 @@ Menuset
 		OptItem "View Master Document|M" "master-buffer-view"
 		OptItem "Update Master Document|a" "master-buffer-update"
 		Separator
-		Item "Show process messages" "dialog-toggle progress"
 		Item "Split View Into Left and Right Half|i" "split-view horizontal"
 		Item "Split View Into Upper and Lower Half|e" "split-view vertical"
 		Item "Close Current View|w" "close-tab-group"

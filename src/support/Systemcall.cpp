@@ -61,6 +61,11 @@ public:
 	void appendMessage(QString const &) {}
 	void appendError(QString const &) {}
 	void clearMessages() {}
+
+	void warning(QString const &, QString const &) {}
+	void toggleWarning(QString const &, QString const &, QString const &) {}
+	void error(QString const &, QString const &) {}
+	void information(QString const &, QString const &) {}
 };
 
 
@@ -369,8 +374,10 @@ void SystemcallPrivate::stdOut()
 		}
 	}
 	const QString data = QString::fromLocal8Bit(outdata_);
-	if (!data.isEmpty())
-		ProgressInterface::instance()->appendMessage(data);
+	if (!data.isEmpty()) {
+		// TODO No good messages from the processes. Disable batch mode?
+		//ProgressInterface::instance()->appendMessage(data);
+	}
 	processEvents();
 }
 

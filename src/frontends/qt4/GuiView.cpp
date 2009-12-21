@@ -77,6 +77,7 @@
 #include "support/Systemcall.h"
 #include "support/Timeout.h"
 #include "support/ProgressInterface.h"
+#include "GuiProgress.h"
 
 #include <QAction>
 #include <QApplication>
@@ -192,6 +193,7 @@ struct GuiView::GuiViewPrivate
 		stack_widget_->addWidget(bg_widget_);
 		stack_widget_->addWidget(splitter_);
 		setBackground();
+		progress = new GuiProgress(gv);
 	}
 
 	~GuiViewPrivate()
@@ -199,6 +201,7 @@ struct GuiView::GuiViewPrivate
 		delete splitter_;
 		delete bg_widget_;
 		delete stack_widget_;
+		delete progress;
 	}
 
 	QMenu * toolBarPopup(GuiView * parent)
@@ -284,6 +287,7 @@ public:
 	BackgroundWidget * bg_widget_;
 	/// view's toolbars
 	ToolbarMap toolbars_;
+	GuiProgress* progress;
 	/// The main layout box.
 	/** 
 	 * \warning Don't Delete! The layout box is actually owned by
@@ -1420,7 +1424,6 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 				|| name == "file" //FIXME: should be removed.
 				|| name == "prefs"
 				|| name == "texinfo"
-				|| name == "progress"
 				|| name == "compare";
 		else if (name == "print")
 			enable = doc_buffer->isExportable("dvi")
@@ -2691,6 +2694,9 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			if (argument.empty())
 				format = doc_buffer->getDefaultOutputFormat();
 #if EXPORT_in_THREAD && (QT_VERSION >= 0x040400)
+			ProgressInterface::instance()->clearMessages();
+			QString time = QTime::currentTime().toString(Qt::SystemLocaleShortDate);
+			ProgressInterface::instance()->appendMessage(time + ": Exporting ...\n");
 			QFuture<docstring> f = QtConcurrent::run(exportAndDestroy,
 				doc_buffer->clone(), format);
 			d.setPreviewFuture(f);
@@ -2706,6 +2712,9 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			if (argument.empty())
 				format = doc_buffer->getDefaultOutputFormat();
 #if EXPORT_in_THREAD && (QT_VERSION >= 0x040400)
+			ProgressInterface::instance()->clearMessages();
+			QString time = QTime::currentTime().toString(Qt::SystemLocaleShortDate);
+			ProgressInterface::instance()->appendMessage(time + ": Previewing ...\n");
 			QFuture<docstring> f = QtConcurrent::run(previewAndDestroy,
 				doc_buffer->clone(), format);
 			d.setPreviewFuture(f);
@@ -3175,7 +3184,7 @@ char const * const dialognames[] = {
 "mathmatrix", "mathspace", "nomenclature", "nomencl_print", "note",
 "paragraph", "phantom", "prefs", "print", "ref", "sendto", "space",
 "spellchecker", "symbols", "tabular", "tabularcreate", "thesaurus", "texinfo",
-"toc", "view-source", "vspace", "wrap", "progress" };
+"toc", "view-source", "vspace", "wrap"};
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -3373,7 +3382,8 @@ Dialog * createGuiHyperlink(GuiView & lv);
 Dialog * createGuiVSpace(GuiView & lv);
 Dialog * createGuiViewSource(GuiView & lv);
 Dialog * createGuiWrap(GuiView & lv);
-Dialog * createGuiProgress(GuiView & lv);
+
+
 
 Dialog * GuiView::build(string const & name)
 {
@@ -3477,8 +3487,6 @@ Dialog * GuiView::build(string const & name)
 		return createGuiVSpace(*this);
 	if (name == "wrap")
 		return createGuiWrap(*this);
-	if (name == "progress") 
-		return createGuiProgress(*this); 
 
 	return 0;
 }
