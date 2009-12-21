@@ -21,7 +21,7 @@
 #include <QApplication>
 #include <QTime>
 #include <QMessageBox>
-
+#include <QSettings>
 
 
 namespace lyx {
@@ -37,8 +37,6 @@ public:
 		QDialog::setModal(true);
 	}
 };
-
-
 
 
 GuiProgress::GuiProgress(GuiView * view) : view_(view)
