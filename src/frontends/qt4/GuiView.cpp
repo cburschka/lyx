@@ -99,6 +99,7 @@
 #include <QSplitter>
 #include <QStackedWidget>
 #include <QStatusBar>
+#include <QTime>
 #include <QTimer>
 #include <QToolBar>
 #include <QUrl>
