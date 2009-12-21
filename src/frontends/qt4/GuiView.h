@@ -72,7 +72,12 @@ public:
 	BufferView const * documentBufferView() const;
 	void newDocument(std::string const & filename,
 		bool fromTemplate);
+
+	/// could be called from any thread
 	void message(docstring const &);
+	/// must be called from GUI thread
+	void updateMessage(QString const & str);
+
 	bool getStatus(FuncRequest const & cmd, FuncStatus & flag);
 	bool dispatch(FuncRequest const & cmd);
 	void restartCursor();
@@ -158,6 +163,7 @@ public:
 
 Q_SIGNALS:
 	void closing(int);
+	void triggerShowDialog(QString const & qname, QString const & qdata, Inset * inset);
 
 public Q_SLOTS:
 	/// idle timeout.
@@ -182,6 +188,10 @@ private Q_SLOTS:
 
 	/// For completion of autosave or exporrt threads.
 	void threadFinished();
+
+	/// must be called in GUI thread
+	void doShowDialog(QString const & qname, QString const & qdata,
+	Inset * inset);
 
 private:
 	/// Open given child document in current buffer directory.
@@ -243,7 +253,8 @@ public:
 	 */
 	void updateDialogs();
 
-	/** \param name == "bibtex", "citation" etc; an identifier used to
+	/** Show dialog could be called from arbitrary threads.
+	    \param name == "bibtex", "citation" etc; an identifier used to
 	    launch a particular dialog.
 	    \param data is a string representation of the Inset contents.
 	    It is often little more than the output from Inset::write.

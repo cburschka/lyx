@@ -193,7 +193,7 @@ struct GuiView::GuiViewPrivate
 		stack_widget_->addWidget(bg_widget_);
 		stack_widget_->addWidget(splitter_);
 		setBackground();
-		progress = new GuiProgress(gv);
+		progress_ = new GuiProgress(gv);
 	}
 
 	~GuiViewPrivate()
@@ -201,7 +201,7 @@ struct GuiView::GuiViewPrivate
 		delete splitter_;
 		delete bg_widget_;
 		delete stack_widget_;
-		delete progress;
+		delete progress_;
 	}
 
 	QMenu * toolBarPopup(GuiView * parent)
@@ -287,7 +287,7 @@ public:
 	BackgroundWidget * bg_widget_;
 	/// view's toolbars
 	ToolbarMap toolbars_;
-	GuiProgress* progress;
+	ProgressInterface* progress_;
 	/// The main layout box.
 	/** 
 	 * \warning Don't Delete! The layout box is actually owned by
@@ -385,6 +385,9 @@ GuiView::GuiView(int id)
 	connect(&d.autosave_watcher_, SIGNAL(finished()), this,
 		SLOT(threadFinished()));
 #endif
+
+ connect(this, SIGNAL(triggerShowDialog(QString const &, QString const &, Inset *)),
+		SLOT(doShowDialog(QString const &, QString const &, Inset *)));
 }
 
 
@@ -697,8 +700,15 @@ void GuiView::message(docstring const & str)
 {
 	if (ForkedProcess::iAmAChild())
 		return;
+	
+	// call is moved to GUI-thread by GuiProgress
+	d.progress_->appendMessage(toqstr(str));
+}
 
-	statusBar()->showMessage(toqstr(str));
+
+void GuiView::updateMessage(QString const & str)
+{
+	statusBar()->showMessage(str);
 	d.statusbar_timer_.stop();
 	d.statusbar_timer_.start(3000);
 }
@@ -3251,8 +3261,18 @@ Dialog * GuiView::findOrBuild(string const & name, bool hide_it)
 void GuiView::showDialog(string const & name, string const & data,
 	Inset * inset)
 {
+	triggerShowDialog(toqstr(name), toqstr(data), inset);
+}
+
+
+void GuiView::doShowDialog(QString const & qname, QString const & qdata,
+	Inset * inset)
+{
 	if (d.in_show_)
 		return;
+
+	const string name = fromqstr(qname);
+	const string data = fromqstr(qdata);
 
 	d.in_show_ = true;
 	try {

@@ -97,7 +97,7 @@ void GuiProgress::doClearMessages()
 
 void GuiProgress::appendText(QString const & text)
 {
-	view_->message(qstring_to_ucs4(text));
+	view_->updateMessage(text);
 }
 
 

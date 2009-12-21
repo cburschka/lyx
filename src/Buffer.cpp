@@ -350,7 +350,7 @@ Buffer::~Buffer()
 	if (!isClean()) {
 		docstring msg = _("LyX attempted to close a document that had unsaved changes!\n");
 		msg += emergencyWrite();
-		frontend::Alert::warning(_("Attempting to close changed document!"), msg);
+		Alert::warning(_("Attempting to close changed document!"), msg);
 	}
 		
 	// clear references to children in macro tables
