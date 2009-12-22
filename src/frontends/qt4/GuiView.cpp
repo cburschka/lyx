@@ -364,6 +364,14 @@ GuiView::GuiView(int id)
 
 	statusBar()->setSizeGripEnabled(true);
 
+#if (QT_VERSION >= 0x040400)
+	connect(&d.autosave_watcher_, SIGNAL(finished()), this,
+		SLOT(threadFinished()));
+#endif
+
+	connect(this, SIGNAL(triggerShowDialog(QString const &, QString const &, Inset *)),
+		SLOT(doShowDialog(QString const &, QString const &, Inset *)));
+
 	// Forbid too small unresizable window because it can happen
 	// with some window manager under X11.
 	setMinimumSize(300, 200);
@@ -381,14 +389,6 @@ GuiView::GuiView(int id)
 	// clear session data if any.
 	QSettings settings;
 	settings.remove("views");
-
-#if (QT_VERSION >= 0x040400)
-	connect(&d.autosave_watcher_, SIGNAL(finished()), this,
-		SLOT(threadFinished()));
-#endif
-
- connect(this, SIGNAL(triggerShowDialog(QString const &, QString const &, Inset *)),
-		SLOT(doShowDialog(QString const &, QString const &, Inset *)));
 }
 
 
@@ -1435,6 +1435,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 				|| name == "file" //FIXME: should be removed.
 				|| name == "prefs"
 				|| name == "texinfo"
+				|| name == "progress"
 				|| name == "compare";
 		else if (name == "print")
 			enable = doc_buffer->isExportable("dvi")
@@ -3195,7 +3196,7 @@ char const * const dialognames[] = {
 "mathmatrix", "mathspace", "nomenclature", "nomencl_print", "note",
 "paragraph", "phantom", "prefs", "print", "ref", "sendto", "space",
 "spellchecker", "symbols", "tabular", "tabularcreate", "thesaurus", "texinfo",
-"toc", "view-source", "vspace", "wrap"};
+"toc", "view-source", "vspace", "wrap", "progress"};
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -3403,6 +3404,7 @@ Dialog * createGuiHyperlink(GuiView & lv);
 Dialog * createGuiVSpace(GuiView & lv);
 Dialog * createGuiViewSource(GuiView & lv);
 Dialog * createGuiWrap(GuiView & lv);
+Dialog * createGuiProgressView(GuiView & lv);
 
 
 
@@ -3508,6 +3510,8 @@ Dialog * GuiView::build(string const & name)
 		return createGuiVSpace(*this);
 	if (name == "wrap")
 		return createGuiWrap(*this);
+	if (name == "progress")
+		return createGuiProgressView(*this);
 
 	return 0;
 }
