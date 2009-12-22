@@ -107,6 +107,7 @@
 
 #define EXPORT_in_THREAD 1
 
+
 // QtConcurrent was introduced in Qt 4.4
 #if (QT_VERSION >= 0x040400)
 #include <QFuture>
@@ -270,6 +271,7 @@ struct GuiView::GuiViewPrivate
 		return tabWorkArea(0);
 	}
 
+#if (QT_VERSION >= 0x040400)
 	void setPreviewFuture(QFuture<docstring> const & f)
 	{
 		if (preview_watcher_.isRunning())
@@ -278,6 +280,7 @@ struct GuiView::GuiViewPrivate
 		connect(&preview_watcher_, SIGNAL(finished()), gv_,
 			SLOT(threadFinished()));
 	}
+#endif
 
 public:
 	GuiView * gv_;
@@ -320,6 +323,9 @@ public:
 	///
 	QFutureWatcher<docstring> autosave_watcher_;
 	QFutureWatcher<docstring> preview_watcher_;
+#else
+	struct DummyWatcher { bool isRunning(){return false;} }; 
+	DummyWatcher preview_watcher_;
 #endif
 };
 
