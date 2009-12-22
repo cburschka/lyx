@@ -63,14 +63,14 @@ GuiProgress::GuiProgress(GuiView * view) : view_(view)
 
 void GuiProgress::doProcessStarted(QString const & cmd)
 {
-	QString time = QTime::currentTime().toString(Qt::SystemLocaleShortDate);
+	QString time = QTime::currentTime().toString();
 	appendText(time + ": <" + cmd + "> started\n");
 }
 
 
 void GuiProgress::doProcessFinished(QString const & cmd)
 {
-	QString time = QTime::currentTime().toString(Qt::SystemLocaleShortDate);
+	QString time = QTime::currentTime().toString();
 	appendText(time + ": <" + cmd + "> done\n");
 }
 
