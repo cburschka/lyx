@@ -2599,9 +2599,18 @@ bool GuiView::goToFileRow(string const & argument)
 {
 	string file_name;
 	int row;
-	istringstream is(argument);
-	is >> file_name >> row;
-	file_name = os::internal_path(file_name);
+	size_t i = argument.find_last_of(' ');
+	if (i != string::npos) {
+		file_name = os::internal_path(trim(argument.substr(0, i)));
+		istringstream is(argument.substr(i + 1));
+		is >> row;
+		if (is.fail())
+			i = string::npos;
+	}
+	if (i == string::npos) {
+		LYXERR0("Wrong argument: " << argument);
+		return false;
+	}
 	Buffer * buf = 0;
 	string const abstmp = package().temp_dir().absFilename();
 	string const realtmp = package().temp_dir().realPath();
