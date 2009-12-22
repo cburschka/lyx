@@ -15,6 +15,7 @@
 
 #include "qt_helpers.h"
 
+#include <QTime>
 
 
 namespace lyx {
@@ -34,10 +35,10 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 
 	if (progress) {
 		connect(progress, SIGNAL(processStarted(QString const &)), this, SLOT(appendText(QString const &)));
-		connect(progress, SIGNAL(processFinished(QString const &)), this, SLOT(appendText(QString const &)));
+		//connect(progress, SIGNAL(processFinished(QString const &)), this, SLOT(appendText(QString const &)));
 		connect(progress, SIGNAL(appendMessage(QString const &)), this, SLOT(appendText(QString const &)));
 		connect(progress, SIGNAL(appendError(QString const &)), this, SLOT(appendText(QString const &)));
-		connect(progress, SIGNAL(clearMessages()), this, SLOT(clearText(QString const &)));
+		connect(progress, SIGNAL(clearMessages()), this, SLOT(clearText()));
 	}
 }
 
@@ -50,11 +51,12 @@ void GuiProgressView::clearText()
 
 void GuiProgressView::appendText(QString const & text)
 {
-	text_edit.insertPlainText(text);
+	if (text.isEmpty())
+		return;
+	QString time = QTime::currentTime().toString();
+	text_edit.insertPlainText(time + ": " + text + "\n");
 	text_edit.ensureCursorVisible();
 }
-
-
 
 
 

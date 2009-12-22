@@ -2707,8 +2707,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 				format = doc_buffer->getDefaultOutputFormat();
 #if EXPORT_in_THREAD && (QT_VERSION >= 0x040400)
 			ProgressInterface::instance()->clearMessages();
-			QString time = QTime::currentTime().toString();
-			ProgressInterface::instance()->appendMessage(time + ": Exporting ...\n");
+			ProgressInterface::instance()->appendMessage("Exporting ...");
 			QFuture<docstring> f = QtConcurrent::run(exportAndDestroy,
 				doc_buffer->clone(), format);
 			d.setPreviewFuture(f);
@@ -2725,8 +2724,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 				format = doc_buffer->getDefaultOutputFormat();
 #if EXPORT_in_THREAD && (QT_VERSION >= 0x040400)
 			ProgressInterface::instance()->clearMessages();
-			QString time = QTime::currentTime().toString();
-			ProgressInterface::instance()->appendMessage(time + ": Previewing ...\n");
+			ProgressInterface::instance()->appendMessage("Previewing ...");
 			QFuture<docstring> f = QtConcurrent::run(previewAndDestroy,
 				doc_buffer->clone(), format);
 			d.setPreviewFuture(f);
