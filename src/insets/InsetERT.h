@@ -14,7 +14,10 @@
 #define INSETERT_H
 
 #include "InsetCollapsable.h"
+#include "RenderPreview.h"
+#include "graphics/PreviewLoader.h"
 
+#include <boost/scoped_ptr.hpp>
 
 namespace lyx {
 
@@ -34,11 +37,32 @@ public:
 	///
 	InsetERT(Buffer *, CollapseStatus status = Open);
 	///
+	InsetERT(InsetERT const & other);
+	///
 	~InsetERT();
+	//
+	InsetERT & operator=(InsetERT const & other);
 	///
 	static CollapseStatus string2params(std::string const &);
 	///
 	static std::string params2string(CollapseStatus);
+	///
+	void addPreview(DocIterator const & inset_pos,
+		graphics::PreviewLoader & ploader) const;
+	///
+	void preparePreview(DocIterator const & pos) const;
+	///
+	void reloadPreview(DocIterator const & pos) const;
+	///
+	bool notifyCursorLeaves(Cursor const & old, Cursor & cur);
+	///
+	void draw(PainterInfo & pi, int x, int y) const;
+	///
+	Inset * editXY(Cursor & cur, int x, int y);
+	///
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	///
+	bool previewState(BufferView * bv) const;
 private:
 	///
 	InsetCode lyxCode() const { return ERT_CODE; }
@@ -68,6 +92,10 @@ private:
 	docstring const buttonLabel(BufferView const & bv) const;
 	///
 	bool allowSpellCheck() const { return false; }
+	///
+	boost::scoped_ptr<RenderPreview> preview_;
+	///
+	mutable bool use_preview_;
 };
 
 
