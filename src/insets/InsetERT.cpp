@@ -23,17 +23,12 @@
 #include "Language.h"
 #include "Layout.h"
 #include "Lexer.h"
-#include "LyXRC.h"
 #include "LyXAction.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 #include "ParagraphParameters.h"
 #include "Paragraph.h"
 #include "TextClass.h"
-
-#include "graphics/PreviewImage.h"
-
-#include "insets/RenderPreview.h"
 
 #include "frontends/alert.h"
 #include "frontends/Application.h"
@@ -50,26 +45,9 @@ using namespace lyx::support;
 namespace lyx {
 
 InsetERT::InsetERT(Buffer * buf, CollapseStatus status)
-	: InsetCollapsable(buf), preview_(new RenderPreview(this))
+	: InsetCollapsable(buf)
 {
 	status_ = status;
-}
-
-
-InsetERT::InsetERT(InsetERT const & other) : InsetCollapsable(other)
-{
-	operator=(other);
-}
-
-InsetERT & InsetERT::operator=(InsetERT const & other)
-{
-	if (this == &other)
-		return *this;
-	InsetCollapsable::operator=(other);
-	buffer_ = other.buffer_;
-	preview_.reset(new RenderPreview(*other.preview_, this));
-
-	return *this;
 }
 
 
@@ -209,91 +187,6 @@ string InsetERT::params2string(CollapseStatus status)
 docstring InsetERT::xhtml(XHTMLStream &, OutputParams const &) const
 {
 	return docstring();
-}
-
-
-bool InsetERT::previewState(BufferView * bv) const
-{
-	if (!editing(bv) && RenderPreview::status() == LyXRC::PREVIEW_ON) {
-		graphics::PreviewImage const * pimage =
-			preview_->getPreviewImage(bv->buffer());
-		return pimage && pimage->image();
-	}
-	return false;
-}
-
-
-void InsetERT::addPreview(DocIterator const & inset_pos,
-	graphics::PreviewLoader & ploader) const
-{
-	preparePreview(inset_pos);
-}
-
-
-void InsetERT::preparePreview(DocIterator const & pos) const  
-{
-	odocstringstream str;  
-	OutputParams runparams(&pos.buffer()->params().encoding());
-	latex(str, runparams);
-	docstring const snippet = str.str();
-	LYXERR(Debug::MACROS, "Preview snippet: " << snippet);  
-	preview_->addPreview(snippet, *pos.buffer());  
-}
-
-
-void InsetERT::reloadPreview(DocIterator const & pos) const
-{
-	preparePreview(pos);
-	preview_->startLoading(*pos.buffer());
-}
-
-
-bool InsetERT::notifyCursorLeaves(Cursor const & old, Cursor & cur)
-{
-	reloadPreview(old);
-	cur.updateFlags(Update::Force);
-	return InsetCollapsable::notifyCursorLeaves(old, cur);
-}
-
-
-void InsetERT::draw(PainterInfo & pi, int x, int y) const
-{
-	use_preview_ = previewState(pi.base.bv);
-
-	if (use_preview_) {
-		// one pixel gap in front
-		preview_->draw(pi, x + 1, y);
-		setPosCache(pi, x, y);
-		return;
-	}
-	InsetCollapsable::draw(pi, x, y);
-}
-
-
-Inset * InsetERT::editXY(Cursor & cur, int x, int y)
-{
-	if (use_preview_) {
-		edit(cur, true);
-		return this;
-	}
-	return InsetCollapsable::editXY(cur, x, y);
-}
-
-
-void InsetERT::metrics(MetricsInfo & mi, Dimension & dim) const
-{
-	if (previewState(mi.base.bv)) {
-		preview_->metrics(mi, dim);
-		// insert a one pixel gap in front of the formula
-		dim.wid += 1;
-		// Cache the inset dimension.
-		setDimCache(mi, dim);
-		Dimension dim_dummy = dim;
-		MetricsInfo mi_dummy = mi;
-		InsetCollapsable::metrics(mi_dummy, dim_dummy);
-		return;
-	}
-	InsetCollapsable::metrics(mi, dim);
 }
 
 } // namespace lyx
