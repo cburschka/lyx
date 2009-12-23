@@ -2451,6 +2451,8 @@ void GuiView::checkExternallyModifiedBuffers()
 
 void GuiView::dispatchVC(FuncRequest const & cmd)
 {
+	// message for statusbar
+	string msg;
 	Buffer * buffer = documentBufferView()
 		? &(documentBufferView()->buffer()) : 0;
 
@@ -2468,7 +2470,7 @@ void GuiView::dispatchVC(FuncRequest const & cmd)
 		if (!buffer || !ensureBufferClean(buffer))
 			break;
 		if (buffer->lyxvc().inUse() && !buffer->isReadonly()) {
-			message(from_utf8(buffer->lyxvc().checkIn()));
+			msg = buffer->lyxvc().checkIn();
 			reloadBuffer();
 		}
 		break;
@@ -2477,7 +2479,7 @@ void GuiView::dispatchVC(FuncRequest const & cmd)
 		if (!buffer || !ensureBufferClean(buffer))
 			break;
 		if (buffer->lyxvc().inUse()) {
-			message(from_utf8(buffer->lyxvc().checkOut()));
+			msg = buffer->lyxvc().checkOut();
 			reloadBuffer();
 		}
 		break;
@@ -2492,7 +2494,7 @@ void GuiView::dispatchVC(FuncRequest const & cmd)
 				frontend::Alert::error(_("Revision control error."),
 				_("Error when setting the locking property."));
 			} else {
-				message(from_utf8(res));
+				msg = res;
 				reloadBuffer();
 			}
 		}
@@ -2513,8 +2515,7 @@ void GuiView::dispatchVC(FuncRequest const & cmd)
 	case LFUN_VC_REPO_UPDATE:
 		LASSERT(buffer, return);
 		if (ensureBufferClean(buffer)) {
-			string res = buffer->lyxvc().repoUpdate();
-			message(from_utf8(res));
+			msg = buffer->lyxvc().repoUpdate();
 			checkExternallyModifiedBuffers();
 		}
 		break;
@@ -2563,6 +2564,9 @@ void GuiView::dispatchVC(FuncRequest const & cmd)
 	default:
 		break;
 	}
+
+	if (!msg.empty())
+		message(from_utf8(msg));
 }
 
 
