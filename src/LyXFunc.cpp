@@ -1904,7 +1904,8 @@ void LyXFunc::checkExternallyModifiedBuffers()
 	BufferList::iterator bit = theBufferList().begin();
 	BufferList::iterator const bend = theBufferList().end();
 	for (; bit != bend; ++bit) {
-		if ((*bit)->isExternallyModified(Buffer::checksum_method)) {
+		if ((*bit)->fileName().exists()
+		    && (*bit)->isExternallyModified(Buffer::checksum_method)) {
 			docstring text = bformat(_("Document \n%1$s\n has been externally modified."
 					" Reload now? Any local changes will be lost."),
 					from_utf8((*bit)->absFileName()));
