@@ -600,7 +600,7 @@ string SVN::checkIn(string const & msg)
 		fileLock(false, tmpf, log);
 
 	tmpf.erase();
-	return "SVN: " + log;
+	return log.empty() ? string() : "SVN: " + log;
 }
 
 
@@ -695,7 +695,7 @@ string SVN::checkOut()
 	fileLock(true, tmpf, log);
 
 	tmpf.erase();
-	return "SVN: " + log;
+	return log.empty() ? string() : "SVN: " + log;
 }
 
 
