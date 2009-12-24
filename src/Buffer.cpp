@@ -259,12 +259,14 @@ public:
 		parent_buffer = pb;
 	}
 
-	/// So we can force access via the accessors.
-	mutable Buffer const * parent_buffer;
-
 	/// If non zero, this buffer is a clone of existing buffer \p cloned_buffer_
 	/// This one is useful for preview detached in a thread.
 	Buffer const * cloned_buffer_;
+
+private:
+	/// So we can force access via the accessors.
+	mutable Buffer const * parent_buffer;
+
 };
 
 
@@ -293,7 +295,7 @@ Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_,
 	  read_only(readonly_), filename(file), file_fully_loaded(false),
 	  toc_backend(&parent), macro_lock(false), timestamp_(0),
 	  checksum_(0), wa_(0), undo_(parent), bibinfoCacheValid_(false),
-	  parent_buffer(0), cloned_buffer_(cloned_buffer)
+	  cloned_buffer_(cloned_buffer), parent_buffer(0)
 {
 	if (!cloned_buffer_) {
 		temppath = createBufferTmpDir();
