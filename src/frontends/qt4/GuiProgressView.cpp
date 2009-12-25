@@ -56,7 +56,7 @@ void GuiProgressView::appendText(QString const & text)
 	if (text.isEmpty())
 		return;
 	QString time = QTime::currentTime().toString();
-	text_edit.insertPlainText(time + ": " + text + "\n");
+	text_edit.insertPlainText(time + ": " + text.trimmed() + "\n");
 	text_edit.ensureCursorVisible();
 }
 
