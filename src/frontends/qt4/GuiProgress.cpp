@@ -43,8 +43,7 @@ public:
 GuiProgress::GuiProgress(GuiView * view) : view_(view)
 {
 	connect(this, SIGNAL(processStarted(QString const &)), SLOT(doProcessStarted(QString const &)));
-	// Don't overwrite other result messages.
-	//connect(this, SIGNAL(processFinished(QString const &)), SLOT(doProcessFinished(QString const &)));
+	connect(this, SIGNAL(processFinished(QString const &)), SLOT(doProcessFinished(QString const &)));
 	connect(this, SIGNAL(appendMessage(QString const &)), SLOT(doAppendMessage(QString const &)));
 	connect(this, SIGNAL(appendError(QString const &)), SLOT(doAppendError(QString const &)));
 	connect(this, SIGNAL(clearMessages()), SLOT(doClearMessages()));
