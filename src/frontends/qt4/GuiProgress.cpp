@@ -97,7 +97,8 @@ void GuiProgress::doClearMessages()
 
 void GuiProgress::appendText(QString const & text)
 {
-	view_->updateMessage(text);
+	if (!text.isEmpty())
+		view_->updateMessage(text);
 }
 
 
