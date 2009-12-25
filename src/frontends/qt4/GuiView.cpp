@@ -741,8 +741,11 @@ void GuiView::bigSizedIcons()
 
 void GuiView::clearMessage()
 {
-	if (!hasFocus())
-		return;
+	// FIXME: This code was introduced in r19643 to fix bug #4123. However,
+	// the hasFocus function mostly returns false, even if the focus is on
+	// a workarea in this view.
+	//if (!hasFocus())
+	//	return;
 	showMessage();
 	d.statusbar_timer_.stop();
 }
