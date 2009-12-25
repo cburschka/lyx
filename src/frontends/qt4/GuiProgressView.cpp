@@ -15,6 +15,8 @@
 
 #include "qt_helpers.h"
 
+#include "support/debug.h"
+
 #include <QTime>
 
 
