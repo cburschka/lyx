@@ -612,6 +612,10 @@ void InsetMathScript::mathematica(MathematicaStream & os) const
 }
 
 
+// FIXME XHTML
+// It may be worth trying to output munder, mover, and munderover
+// in certain cases, e.g., for display formulas. But then we would
+// need to know if we're in a display formula.
 void InsetMathScript::mathmlize(MathStream & os) const
 {
 	bool d = hasDown() && down().size();
