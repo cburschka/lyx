@@ -22,9 +22,11 @@
 #include "LaTeXFeatures.h"
 
 #include "support/debug.h"
+#include "support/lassert.h"
 
 #include <ostream>
 
+using namespace std;
 
 namespace lyx {
 
@@ -153,6 +155,66 @@ void InsetMathDecoration::validate(LaTeXFeatures & features) const
 	if (!key_->requires.empty())
 		features.require(to_utf8(key_->requires));
 	InsetMathNest::validate(features);
+}
+
+namespace {
+	struct Attributes {
+		Attributes() {}
+		Attributes(bool o, string t)
+			: over(o), tag(t) {}
+		bool over;
+		string tag;
+	};
+
+	typedef map<string, Attributes> Translator;
+
+	void buildTranslator(Translator & t) {
+		// the decorations we need to support are listed in lib/symbols
+		t["acute"] = Attributes(true, "&acute;");
+		t["bar"]   = Attributes(true, "&OverBar;");
+		t["breve"] = Attributes(true, "&breve;");
+		t["check"] = Attributes(true, "&caron;");
+		t["ddddot"] = Attributes(true, "&DotDot;");
+		t["dddot"] = Attributes(true, "&TripleDot;");
+		t["ddot"] = Attributes(true, "&Dot;");
+		t["dot"] = Attributes(true, "&dot;");
+		t["grave"] = Attributes(true, "&grave;");
+		t["hat"] = Attributes(true, "&circ;");
+		t["mathring"] = Attributes(true, "&ring;");
+		t["overbrace"] = Attributes(true, "&OverBrace;");
+		t["overleftarrow"] = Attributes(true, "&xlarr;");
+		t["overleftrightarrow"] = Attributes(true, "&xharr;");
+		t["overrightarrow"] = Attributes(true, "&xrarr;");
+		t["tilde"] = Attributes(true, "&tilde;");
+		t["underbar"] = Attributes(false, "&UnderBar;");
+		t["underbrace"] = Attributes(false, "&UnderBrace;");
+		t["underleftarrow"] = Attributes(false, "&xlarr;");
+		t["underleftrightarrow"] = Attributes(false, "&xharr;");
+		t["underline"] = Attributes(false, "&;");
+		t["underrightarrow"] = Attributes(false, "&xrarr;");
+		t["vec"] = Attributes(true, "&rarr;");
+		t["widehat"] = Attributes(true, "&Hat;");
+		t["widetilde"] = Attributes(true, "&Tilde;");
+	}
+
+	Translator const & translator() {
+		static Translator t;
+		if (t.empty())
+			buildTranslator(t);
+		return t;
+	}
+}
+
+void InsetMathDecoration::mathmlize(MathStream & os) const
+{
+	Translator const & t = translator();
+	Translator::const_iterator cur = t.find(to_utf8(key_->name));
+	LASSERT(cur != t.end(), return);
+	char const * const outag = cur->second.over ? "mover" : "munder";
+	os << MTag(outag)
+		 << MTag("mrow") << cell(0) << ETag("mrow")
+		 << from_ascii("<mo stretchy=\"true\">" + cur->second.tag + "</mo>")
+		 << ETag(outag);
 }
 
 

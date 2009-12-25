@@ -41,6 +41,8 @@ public:
 	void validate(LaTeXFeatures & features) const;
 	///
 	InsetCode lyxCode() const { return MATH_DECORATION_CODE; }
+	///
+	void mathmlize(MathStream &) const;
 
 private:
 	virtual Inset * clone() const;
