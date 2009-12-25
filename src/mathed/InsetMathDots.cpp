@@ -20,7 +20,7 @@
 #include "MetricsInfo.h"
 
 #include "frontends/FontMetrics.h"
-
+#include "support/lassert.h"
 
 namespace lyx {
 
@@ -85,10 +85,27 @@ void InsetMathDots::validate(LaTeXFeatures & features) const
 }
 
 
-// FIXME XHTML
 void InsetMathDots::mathmlize(MathStream & os) const
 {
-	InsetMath::mathmlize(os);
+	// which symbols we support is decided by what is listed in
+	// lib/symbols as generating a dots inset
+	docstring const & n = key_->name;
+	std::string ent;
+	if (n == "dots" || n == "dotsc" || n == "dotso" || n == "ldots")
+		ent = "&hellip;";
+	else if (n == "adots")
+		ent = "&utdot;";
+	else if (n == "cdots" || n == "dotsb" || n == "dotsi" || n == "dotsm")
+		ent = "&ctdot;";
+	else if (n == "ddots")
+		ent = "&dtdot;";
+	else if (n == "iddots")
+		ent = "&utdot;";
+	else if (n == "vdots")
+		ent = "&vellip;";
+	else
+		LASSERT(false, ent = "&hellip;");
+	os << from_ascii(ent);
 }
 
 } // namespace lyx
