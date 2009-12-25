@@ -105,7 +105,7 @@ void InsetMathDots::mathmlize(MathStream & os) const
 		ent = "&vellip;";
 	else
 		LASSERT(false, ent = "&hellip;");
-	os << from_ascii(ent);
+	os << MTag("mi") << from_ascii(ent) << ETag("mi");
 }
 
 } // namespace lyx
