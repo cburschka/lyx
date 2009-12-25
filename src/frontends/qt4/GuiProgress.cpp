@@ -78,8 +78,7 @@ void GuiProgress::doProcessFinished(QString const & cmd)
 
 void GuiProgress::doAppendMessage(QString const & msg)
 {
-	QString time = QTime::currentTime().toString();
-	appendText(time + " : " + msg);
+	appendText(msg);
 }
 
 
