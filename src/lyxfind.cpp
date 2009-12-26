@@ -989,7 +989,11 @@ void findMostBackwards(DocIterator & cur, MatchStringAdv const & match, int & le
 int findBackwardsAdv(DocIterator & cur, MatchStringAdv const & match) {
 	if (! cur)
 		return 0;
+	// Backup of original position (for restoring it in case match not found)
 	DocIterator cur_orig(cur);
+	// Position beyond which match is not considered
+	// (set to end of document after wrap-around question)
+	DocIterator cur_orig2(cur);
 	DocIterator cur_begin = doc_iterator_begin(cur.buffer());
 /* 	if (match(cur_orig)) */
 /* 		findAdvFinalize(cur_orig, match); */
@@ -1020,7 +1024,7 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv const & match) {
 		if (pit_changed)
 			cur.pos() = cur.lastpos();
 		else
-			cur.pos() = cur_orig.pos();
+			cur.pos() = cur_orig2.pos();
 		LYXERR(Debug::FIND, "findBackAdv2: cur: " << cur);
 		DocIterator cur_prev_iter;
 		if (found_match) {
@@ -1031,9 +1035,9 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv const & match) {
 				if (found_match) {
 					int len;
 					findMostBackwards(cur, match, len);
-					if (&cur.inset() != &cur_orig.inset()
-					    || !(cur.pit() == cur_orig.pit())
-					    || cur.pos() < cur_orig.pos())
+					if (&cur.inset() != &cur_orig2.inset()
+					    || !(cur.pit() == cur_orig2.pit())
+					    || cur.pos() < cur_orig2.pos())
 						return len;
 				}
 				// Prevent infinite loop at begin of document
@@ -1051,6 +1055,8 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv const & match) {
 			0, 1, _("&Yes"), _("&No"));
 		cur = doc_iterator_end(&match.buf);
 		cur.backwardPos();
+		LYXERR(Debug::FIND, "findBackAdv5: cur: " << cur);
+		cur_orig2 = cur;
 	} while (wrap_answer == 0);
 	cur = cur_orig;
 	return 0;
