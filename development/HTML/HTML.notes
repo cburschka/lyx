@@ -49,6 +49,42 @@ These insets work but still need work:
 		slightly differently, and have the links target actual *insets*, rather than just
 		target paragraphs. That'd mean doing a bit of work on TocBackend, etc.
 
+Math
+  We have a fair bit of math now working via MathML output, but there are still some 
+  isues, and not all the insets work. Here are the ones I know still need work:
+	  - AMSArray
+    - Array
+    - Big: Not sure if we can actually do anything here. Probably they should
+      just be treated as delimiters.
+    - BoldSymbol: Should be easy.
+    - Box
+    - Cases
+    - Diff: Code exists, but I do not know if it is right.
+    - Font
+    - Binom (in Frac): None of these tags exist in MathML 2.0. We'll
+      just output a fraction with delimiters.
+    - Lefteqn
+    - MBox: Use <mtext>.
+    - Overset: Use <mover>.
+    - Par?
+    - Phantom: There is some support for this in MathML....
+    - Ref: Probably needs to be deferred somehow, which is a hassle, because it
+      means the whole MathML output business needs a new argument.
+    - Size: Unclear if we want to do anything here, though we could. See
+      lib/symbols for the commands supported, of course.
+    - Space: Needs checking.
+    - SpecialChar: Needs checking.
+    - Split
+    - Stackrel: Use <mover>, probably.
+    - Substack: This is a stack of however many cells, all in a smaller style.
+      Probably do something with <mover>, again.
+    - Tabular: This is more or less a text-like table in math. Probably output it
+      as a table, but set the font.
+    - Underset: Use <munder>.
+    - XArrow: Contents above and below an arrow. Use...?
+    - XYMatrix: Not sure how this differs from ordinary ones.
+
+
 These insets do not work and are not yet scheduled to work:
 	InsetExternal: It may be that this won't be too hard, but I don't understand 
 		these so am not sure what to do. For now, it is disabled.
