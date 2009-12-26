@@ -415,8 +415,10 @@ void SystemcallPrivate::processStarted()
 
 void SystemcallPrivate::processFinished(int, QProcess::ExitStatus)
 {
-	state = Finished;
-	ProgressInterface::instance()->processFinished(cmd_);
+	if (state != Finished) {
+		state = Finished;
+		ProgressInterface::instance()->processFinished(cmd_);
+	}
 }
 
 
