@@ -67,6 +67,12 @@ void InsetMathEnsureMath::write(WriteStream & os) const
 }
 
 
+void InsetMathEnsureMath::mathmlize(MathStream & os) const
+{
+	os << cell(0);
+}
+
+
 void InsetMathEnsureMath::infoize(odocstream & os) const
 {
 	os << "EnsureMath";

@@ -36,6 +36,8 @@ public:
 	///
 	void write(WriteStream & os) const;
 	///
+	void mathmlize(MathStream &) const;
+	///
 	void infoize(odocstream & os) const;
 	///
 	InsetCode lyxCode() const { return MATH_ENSUREMATH_CODE; }
