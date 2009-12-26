@@ -369,6 +369,7 @@ GuiView::GuiView(int id)
 	setAcceptDrops(true);
 
 	statusBar()->setSizeGripEnabled(true);
+	updateStatusBar();
 
 #if (QT_VERSION >= 0x040400)
 	connect(&d.autosave_watcher_, SIGNAL(finished()), this,
@@ -798,6 +799,7 @@ void GuiView::on_lastWorkAreaRemoved()
 	updateDialogs();
 
 	resetWindowTitleAndIconText();
+	updateStatusBar();
 
 	if (lyxrc.open_buffers_in_tabs)
 		// Nothing more to do, the window should stay open.
