@@ -1022,6 +1022,7 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv const & match) {
 		else
 			cur.pos() = cur_orig.pos();
 		LYXERR(Debug::FIND, "findBackAdv2: cur: " << cur);
+		DocIterator cur_prev_iter;
 		if (found_match) {
 			while (true) {
 				found_match=match(cur);
@@ -1031,12 +1032,14 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv const & match) {
 					int len;
 					findMostBackwards(cur, match, len);
 					if (&cur.inset() != &cur_orig.inset()
-					    || !(cur.pit()==cur_orig.pit())
+					    || !(cur.pit() == cur_orig.pit())
 					    || cur.pos() < cur_orig.pos())
 						return len;
 				}
-				if (cur == cur_begin)
+				// Prevent infinite loop at begin of document
+				if (cur == cur_begin || cur == cur_prev_iter)
 					break;
+				cur_prev_iter = cur;
 				cur.backwardPos();
 			};
 		}
