@@ -406,8 +406,10 @@ void SystemcallPrivate::stdErr()
 
 void SystemcallPrivate::processStarted()
 {
-	state = Running;
-	ProgressInterface::instance()->processStarted(cmd_);
+	if (state != Running) {
+            state = Running;
+            ProgressInterface::instance()->processStarted(cmd_);
+        }
 }
 
 
