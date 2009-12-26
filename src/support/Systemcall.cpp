@@ -398,8 +398,9 @@ void SystemcallPrivate::stdErr()
 		}
 	}
 	const QString data = QString::fromLocal8Bit(errdata_);
-	if (!data.isEmpty())
+	if (!data.isEmpty()) {
 		ProgressInterface::instance()->appendError(data);
+	}
 	processEvents();
 }
 
@@ -407,9 +408,9 @@ void SystemcallPrivate::stdErr()
 void SystemcallPrivate::processStarted()
 {
 	if (state != Running) {
-            state = Running;
-            ProgressInterface::instance()->processStarted(cmd_);
-        }
+		state = Running;
+		ProgressInterface::instance()->processStarted(cmd_);
+	}
 }
 
 
