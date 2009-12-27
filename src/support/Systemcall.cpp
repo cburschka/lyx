@@ -32,7 +32,7 @@
 #include <QDebug>
 
 #define USE_QPROCESS
-//#define DEBUG_SYSTEMCALL // this macro shows the Qt 4.5 & 4.6 bug on Linux: multiple started() signals
+
 
 struct Sleep : QThread
 {
@@ -407,12 +407,7 @@ void SystemcallPrivate::stdErr()
 
 void SystemcallPrivate::processStarted()
 {
-#ifdef DEBUG_SYSTEMCALL
-	cmd_ = cmd_ + " -- process: " + QString::number((quint64) proc_);
-	if (true) {
-#else
 	if (state != Running) {
-#endif
 		state = Running;
 		ProgressInterface::instance()->processStarted(cmd_);
 	}
@@ -421,12 +416,7 @@ void SystemcallPrivate::processStarted()
 
 void SystemcallPrivate::processFinished(int, QProcess::ExitStatus)
 {
-#ifdef DEBUG_SYSTEMCALL
-	cmd_ = cmd_ + " -- process: " + QString::number((quint64) proc_);
-	if (true) {
-#else
 	if (state != Finished) {
-#endif
 		state = Finished;
 		ProgressInterface::instance()->processFinished(cmd_);
 	}
