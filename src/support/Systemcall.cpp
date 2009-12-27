@@ -32,7 +32,7 @@
 #include <QDebug>
 
 #define USE_QPROCESS
-#define DEBUG_SYSTEMCALL
+//#define DEBUG_SYSTEMCALL // this macro shows the Qt 4.5 & 4.6 bug on Linux: multiple started() signals
 
 struct Sleep : QThread
 {
@@ -348,12 +348,19 @@ void SystemcallPrivate::flush()
 		// If the output has been redirected, we write it all at once.
 		// Even if we are not running in a terminal, the output could go
 		// to some log file, for example ~/.xsession-errors on *nix.
-		if (!os::is_terminal(os::STDOUT) && outfile.empty())
-			cout << fromqstr(QString::fromLocal8Bit(
-						proc_->readAllStandardOutput().data()));
-		if (!os::is_terminal(os::STDERR))
-			cerr << fromqstr(QString::fromLocal8Bit(
-						proc_->readAllStandardError().data()));
+		
+		QString data = QString::fromLocal8Bit(proc_->readAllStandardOutput().data());
+		if (showout_) 
+			ProgressInterface::instance()->appendMessage(data);
+		if (!os::is_terminal(os::STDOUT) && outfile.empty()) 
+			cout << fromqstr(data);
+		
+		data = QString::fromLocal8Bit(proc_->readAllStandardError().data());
+		if (showerr_) 
+			ProgressInterface::instance()->appendError(data);
+		if (!os::is_terminal(os::STDERR)) 
+			cerr << fromqstr(data);			
+		
 	}
 }
 
@@ -368,17 +375,13 @@ void SystemcallPrivate::stdOut()
 			if (c == '\n' || outindex_ + 1 == bufsize_) {
 				outdata_[outindex_] = '\0';
 				outindex_ = 0;
-				if (showout_)
+				if (showout_) {
 					cout << outdata_;
+					ProgressInterface::instance()->appendMessage(QString::fromLocal8Bit(outdata_));		
+				}
 			}
 		}
 	}
-	const QString data = QString::fromLocal8Bit(outdata_);
-	if (!data.isEmpty()) {
-		// TODO No good messages from the processes. Disable batch mode?
-		//ProgressInterface::instance()->appendMessage(data);
-	}
-	processEvents();
 }
 
 
@@ -392,16 +395,13 @@ void SystemcallPrivate::stdErr()
 			if (c == '\n' || errindex_ + 1 == bufsize_) {
 				errdata_[errindex_] = '\0';
 				errindex_ = 0;
-				if (showerr_)
+				if (showerr_) {
 					cerr << errdata_;
+					ProgressInterface::instance()->appendError(QString::fromLocal8Bit(errdata_));
+				}
 			}
 		}
 	}
-	const QString data = QString::fromLocal8Bit(errdata_);
-	if (!data.isEmpty()) {
-		ProgressInterface::instance()->appendError(data);
-	}
-	processEvents();
 }
 
 
