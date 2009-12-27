@@ -277,8 +277,6 @@ struct GuiView::GuiViewPrivate
 		if (preview_watcher_.isRunning())
 			preview_watcher_.waitForFinished();
 		preview_watcher_.setFuture(f);
-		connect(&preview_watcher_, SIGNAL(finished()), gv_,
-			SLOT(threadFinished()));
 	}
 #endif
 
@@ -373,6 +371,8 @@ GuiView::GuiView(int id)
 
 #if (QT_VERSION >= 0x040400)
 	connect(&d.autosave_watcher_, SIGNAL(finished()), this,
+		SLOT(threadFinished()));
+	connect(&d.preview_watcher_, SIGNAL(finished()), this,
 		SLOT(threadFinished()));
 #endif
 
