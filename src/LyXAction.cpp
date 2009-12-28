@@ -2374,6 +2374,14 @@ void LyXAction::init()
  */
 		{ LFUN_ALL_INSETS_TOGGLE, "all-insets-toggle", ReadOnly, Edit },
 /*!
+ * \var lyx::FuncCode lyx::LFUN_GRAPHICS_RELOAD
+ * \li Action: Reloads the image if necessary.
+ * \li Syntax: graphics-reload
+ * \li Origin: vfr, 10 Aug 2009
+ * \endvar
+ */
+		{ LFUN_GRAPHICS_RELOAD, "graphics-reload", ReadOnly | AtPoint, Edit },
+/*!
  * \var lyx::FuncCode lyx::LFUN_SET_GRAPHICS_GROUP
  * \li Action: Set the group for the graphics inset on the cursor position.
  * \li Syntax: set-graphics-group [<GROUP>]
@@ -3228,7 +3236,7 @@ void LyXAction::init()
                         of their combination. 0 is equivalent to disabling all debug
 			events. See lyx -dbg for the current list of debug levels
 			and their numbers.
- * \li Origin: sanda, 28 Dec 2008
+ * \li Origin: sanda, 28 Dec 2009
  * \endvar
  */
 		{ LFUN_DEBUG_LEVEL_SET, "debug-level-set", NoBuffer, System },
@@ -3436,15 +3444,6 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_SECTION_SELECT, "section-select", ReadOnly, Edit },
-
-/*!
- * \var lyx::FuncCode lyx::LFUN_GRAPHICS_RELOAD
- * \li Action: Reloads the image if necessary.
- * \li Syntax: graphics-reload
- * \li Origin: vfr, 10 Aug 2009
- * \endvar
- */
-		{ LFUN_GRAPHICS_RELOAD, "graphics-reload", ReadOnly | AtPoint, Edit },
 
 
 		{ LFUN_NOACTION, "", Noop, Hidden }
