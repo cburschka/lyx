@@ -57,7 +57,8 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 
 void GuiProgressView::clearText()
 {
-	widget_->outTE->clear();
+	if (widget_->autoClearCB->isChecked())
+		widget_->outTE->clear();
 }
 
 
