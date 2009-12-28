@@ -20,9 +20,6 @@
 
 #include <string>
 
-#include <QDockWidget>
-#include "qt_helpers.h" 
-
 namespace lyx {
 namespace frontend {
 
@@ -57,6 +54,8 @@ public:
 	bool canApplyToReadOnly() const { return true; }
 	void updateView() {}
 	bool wantInitialFocus() const { return false; }
+	void restoreSession();
+	void saveSession() const;
 	///@}
 
 private Q_SLOTS:

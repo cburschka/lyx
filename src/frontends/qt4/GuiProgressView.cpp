@@ -17,6 +17,7 @@
 
 #include "support/debug.h"
 
+#include <QSettings>
 #include <QTime>
 
 
@@ -71,6 +72,21 @@ void GuiProgressView::appendText(QString const & text)
 	widget_->outTE->ensureCursorVisible();
 }
 
+void GuiProgressView::saveSession() const
+{
+	Dialog::saveSession();
+	QSettings settings;
+	settings.setValue(
+		sessionKey() + "/autoclear", widget_->autoClearCB->isChecked());
+}
+
+void GuiProgressView::restoreSession()
+{
+	DockView::restoreSession();
+	QSettings settings;
+	widget_->autoClearCB->setChecked(
+		settings.value(sessionKey() + "/autoclear", true).toBool());
+}
 
 
 Dialog * createGuiProgressView(GuiView & guiview)
