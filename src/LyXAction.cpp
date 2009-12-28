@@ -3221,6 +3221,19 @@ void LyXAction::init()
  */
 		{ LFUN_MESSAGE, "message", NoBuffer, System },
 /*!
+ * \var lyx::FuncCode lyx::LFUN_DEBUG_LEVEL_SET
+ * \li Action: Set debug output level.
+ * \li Syntax: debug-level-set <LEVEL>
+ * \li Params: <LEVEL>: comma separated list of levels or the correspondent number
+                        of their combination. 0 is equivalent to disabling all debug
+			events. See lyx -dbg for the current list of debug levels
+			and their numbers.
+ * \li Origin: sanda, 28 Dec 2008
+ * \endvar
+ */
+		{ LFUN_DEBUG_LEVEL_SET, "debug-level-set", NoBuffer, System },
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_PREFERENCES_SAVE
  * \li Action: Save user preferences.
  * \li Syntax: preferences-save

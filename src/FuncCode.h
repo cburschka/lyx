@@ -443,6 +443,8 @@ enum FuncCode
 	LFUN_GRAPHICS_RELOAD,           // vfr 20090810
 	LFUN_SCREEN_SHOW_CURSOR,        // vfr, 20090325
 	LFUN_CURSOR_FOLLOWS_SCROLLBAR_TOGGLE, // ARRae 971202
+	// 345
+	LFUN_DEBUG_LEVEL_SET,
 
 	LFUN_LASTACTION                 // end of the table
 };

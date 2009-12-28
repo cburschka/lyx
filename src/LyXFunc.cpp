@@ -247,6 +247,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_REPEAT:
 	case LFUN_PREFERENCES_SAVE:
 	case LFUN_BUFFER_SAVE_AS_DEFAULT:
+	case LFUN_DEBUG_LEVEL_SET:
 		// these are handled in our dispatch()
 		break;
 
@@ -485,6 +486,10 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_BOOKMARK_CLEAR:
 			theSession().bookmarks().clear();
+			break;
+
+		case LFUN_DEBUG_LEVEL_SET:
+			lyxerr.level(Debug::value(to_utf8(cmd.argument())));
 			break;
 
 		default:
