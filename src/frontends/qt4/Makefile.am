@@ -316,6 +316,7 @@ UIFILES = \
 	PrintUi.ui \
 	PrintindexUi.ui \
 	PrintNomenclUi.ui \
+	ProgressViewUi.ui \
 	RefUi.ui \
 	SearchUi.ui \
 	SendtoUi.ui \

@@ -12,19 +12,29 @@
 #ifndef GUIPROGRESSVIEW_H
 #define GUIPROGRESSVIEW_H
 
+#include "ui_ProgressViewUi.h"
 
 #include "DockView.h"
 
 #include "GuiProgress.h"
 
-#include <QTextEdit>
-
 #include <string>
 
+#include <QDockWidget>
+#include "qt_helpers.h" 
 
 namespace lyx {
 namespace frontend {
 
+class ProgressViewWidget : public QWidget, public Ui::ProgressViewUi
+{
+	Q_OBJECT
+
+public:
+	ProgressViewWidget();
+private:
+	
+};
 
 class GuiProgressView : public DockView
 {
@@ -36,6 +46,7 @@ public:
 		Qt::DockWidgetArea area, ///< Position of the dock (and also drawer)
 		Qt::WindowFlags flags = 0);
 
+	~GuiProgressView();
 	/// Controller inherited method.
 	///@{
 	bool initialiseParams(std::string const &) { return true; }
@@ -45,6 +56,7 @@ public:
 	bool canApply() const { return true; }
 	bool canApplyToReadOnly() const { return true; }
 	void updateView() {}
+	bool wantInitialFocus() const { return false; }
 	///@}
 
 private Q_SLOTS:
@@ -52,7 +64,7 @@ private Q_SLOTS:
 	void clearText();
 
 private:
-	QTextEdit text_edit;
+	ProgressViewWidget * widget_;
 };
 
 

@@ -24,14 +24,24 @@ namespace lyx {
 namespace frontend {
 
 
+ProgressViewWidget::ProgressViewWidget()
+{
+	setupUi(this);
+
+}
+
+
+GuiProgressView::~GuiProgressView()
+{
+	delete widget_;
+}
 
 
 GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area, 
-	Qt::WindowFlags flags) : DockView(parent, "progress", "Progress monitoring", area, flags)
+	Qt::WindowFlags flags) : DockView(parent, "progress", "Debug/Progress window", area, flags)
 {
-	setWindowTitle(qt_("Progress monitoring"));
-	setWidget(&text_edit);
-	text_edit.setReadOnly(true);
+	widget_ = new ProgressViewWidget();
+	setWidget(widget_);
 
 	GuiProgress* progress = dynamic_cast<GuiProgress*>(support::ProgressInterface::instance());
 
@@ -47,7 +57,7 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 
 void GuiProgressView::clearText()
 {
-	text_edit.clear();
+	widget_->outTE->clear();
 }
 
 
@@ -56,8 +66,8 @@ void GuiProgressView::appendText(QString const & text)
 	if (text.isEmpty())
 		return;
 	QString time = QTime::currentTime().toString();
-	text_edit.insertPlainText(time + ": " + text.trimmed() + "\n");
-	text_edit.ensureCursorVisible();
+	widget_->outTE->insertPlainText(time + ": " + text.trimmed() + "\n");
+	widget_->outTE->ensureCursorVisible();
 }
 
 
