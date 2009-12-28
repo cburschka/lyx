@@ -12,6 +12,7 @@
 #include <config.h>
 
 #include "GuiProgressView.h"
+#include "GuiApplication.h"
 
 #include "qt_helpers.h"
 
@@ -43,6 +44,12 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 {
 	widget_ = new ProgressViewWidget();
 	setWidget(widget_);
+
+	QFont font(guiApp->typewriterFontName());
+	font.setKerning(false);
+	font.setFixedPitch(true);
+	font.setStyleHint(QFont::TypeWriter);
+	widget_->outTE->setFont(font);
 
 	GuiProgress* progress = dynamic_cast<GuiProgress*>(support::ProgressInterface::instance());
 
