@@ -756,7 +756,7 @@ src_frontends_qt4_header_files = Split('''
     GuiPrintindex.h
     GuiPrintNomencl.h
     GuiProgress.h
-	GuiProgressView.h
+    GuiProgressView.h
     GuiRef.h
     GuiSearch.h
     GuiSelection.h
@@ -856,7 +856,7 @@ src_frontends_qt4_files = Split('''
     GuiPrintindex.cpp
     GuiPrintNomencl.cpp
     GuiProgress.cpp
-	GuiProgressView.cpp
+    GuiProgressView.cpp
     GuiRef.cpp
     GuiSearch.cpp
     GuiSelection.cpp
@@ -974,6 +974,7 @@ src_frontends_qt4_ui_files = Split('''
     PrintUi.ui
     PrintindexUi.ui
     PrintNomenclUi.ui
+    ProgressViewUi.ui
     RefUi.ui
     SearchUi.ui
     SendtoUi.ui
