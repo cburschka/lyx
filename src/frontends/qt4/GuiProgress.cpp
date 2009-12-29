@@ -100,6 +100,9 @@ void GuiProgress::dolyxerrFlush()
 {
 	appendError(toqstr(lyxerr_stream_.str()));
 	lyxerr_stream_.str("");
+	// give the user a chance to disable error messages because 
+	// showing Debug::ANY messages completely blocks the GUI
+	QApplication::processEvents();
 }
 
 
