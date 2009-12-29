@@ -258,7 +258,8 @@ void FindAndReplaceWidget::on_replaceallPB_clicked()
 
 void FindAndReplaceWidget::showEvent(QShowEvent * /* ev */)
 {
-	replace_work_area_->redraw();
+	view_.currentMainWorkArea()->redraw();
+	replace_work_area_->setFocus();
 	find_work_area_->setFocus();
 	view_.setCurrentWorkArea(find_work_area_);
 	LYXERR(Debug::FIND, "Selecting entire find buffer");
