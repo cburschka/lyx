@@ -11,6 +11,7 @@
  *
  * \author Lars Gullik Bjønnes
  * \author Jean-Marc Lasgouttes
+ * \author Pavel Sanda
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -19,7 +20,7 @@
 #define LYXDEBUG_H
 
 #include "support/strfwd.h"
-
+#include <vector>
 
 namespace std {
 
@@ -107,10 +108,19 @@ namespace Debug {
 		ANY = 0xffffffff
 	};
 
+	const std::vector<Type> levels();
+
 	/** A function to convert symbolic string names on debug levels
 	    to their numerical value.
 	*/
 	Type value(std::string const & val);
+
+	/// Return description of level
+	std::string const description(Type val);
+
+	/// Return name of level
+	std::string const name(Type val);
+
 
 	/** Display the tags and descriptions of the current debug level
 	    of ds
@@ -132,7 +142,7 @@ inline void operator|=(Debug::Type & d1, Debug::Type d2)
 class LyXErr
 {
 public:
-	LyXErr(): enabled_(true) {}
+	LyXErr(): enabled_(true), second_used_(false) {}
 	/// Disable the stream completely
 	void disable();
 	/// Enable the stream after a possible call of disable()
@@ -153,6 +163,13 @@ public:
 	Debug::Type level() const { return dt; }
 	/// Returns stream
 	operator std::ostream &() { return *stream_; }
+	/// Returns second_used_
+	bool second_used() { return second_used_; }
+	// Returns second stream
+	std::ostream & second() { return *second_; };
+	/// Sets the second stream
+	void setSecond(std::ostream * os) { second_used_ = (second_ = os); }
+
 private:
 	/// The current debug level
 	Debug::Type dt;
@@ -160,6 +177,10 @@ private:
 	bool enabled_;
 	/// The real stream
 	std::ostream * stream_;
+	/// Next stream for output duplication
+	std::ostream * second_;
+	/// Is the second stream enabled?
+	bool second_used_;
 };
 
 namespace support { class FileName; }

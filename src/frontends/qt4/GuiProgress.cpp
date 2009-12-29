@@ -5,6 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Peter Kümmel
+ * \author Pavel Sanda
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -47,6 +48,7 @@ GuiProgress::GuiProgress(GuiView * view) : view_(view)
 	connect(this, SIGNAL(appendMessage(QString const &)), SLOT(doAppendMessage(QString const &)));
 	connect(this, SIGNAL(appendError(QString const &)), SLOT(doAppendError(QString const &)));
 	connect(this, SIGNAL(clearMessages()), SLOT(doClearMessages()));
+	connect(this, SIGNAL(lyxerrFlush()), SLOT(dolyxerrFlush()));
 	
 	// Alert interface
 	connect(this, SIGNAL(warning(QString const &, QString const &)),
@@ -78,20 +80,44 @@ void GuiProgress::doProcessFinished(QString const & cmd)
 
 void GuiProgress::doAppendMessage(QString const & msg)
 {
-	appendText(msg);
+	appendText(msg + "\n");
 }
 
 
 void GuiProgress::doAppendError(QString const & msg)
 {
-	QString time = QTime::currentTime().toString();
-	appendText(time + " : " + msg);
+	appendText(msg);
 }
 
 
 void GuiProgress::doClearMessages()
 {
 	view_->message(docstring());
+}
+
+
+void GuiProgress::dolyxerrFlush()
+{
+	appendError(toqstr(lyxerr_stream_.str()));
+	lyxerr_stream_.str("");
+}
+
+
+void GuiProgress::lyxerrConnect()
+{
+	lyxerr.setSecond(&lyxerr_stream_);
+}
+
+
+void GuiProgress::lyxerrDisconnect()
+{
+	lyxerr.setSecond(0);
+}
+
+
+GuiProgress::~GuiProgress()
+{
+	lyxerrDisconnect();
 }
 
 

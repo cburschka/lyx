@@ -5,6 +5,7 @@
  *
  * \author Lars Gullik Bjønnes
  * \author Jean-Marc Lasgouttes
+ * \author Pavel Sanda
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -16,6 +17,7 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/FileName.h"
+#include "support/ProgressInterface.h"
 
 #include <iostream>
 #include <iomanip>
@@ -75,6 +77,35 @@ ErrorItem errorTags[] = {
 int const numErrorTags = sizeof(errorTags)/sizeof(errorTags[0]);
 
 } // namespace anon
+
+
+const std::vector<Debug::Type> Debug::levels()
+{
+	std::vector<Debug::Type> vec;
+	for (int i = 0 ; i < numErrorTags ; ++i) {
+		vec.push_back(errorTags[i].level);
+	}
+	return vec;
+}
+
+string const Debug::description(Debug::Type val)
+{
+	for (int i = 0 ; i < numErrorTags ; ++i) {
+		if (errorTags[i].level == val)
+			return errorTags[i].desc;
+	}
+	return "unknown level";
+}
+
+
+string const Debug::name(Debug::Type val)
+{
+	for (int i = 0 ; i < numErrorTags ; ++i) {
+		if (errorTags[i].level == val)
+			return errorTags[i].name;
+	}
+	return "unknown level";
+}
 
 
 Debug::Type Debug::value(string const & val)
@@ -152,37 +183,54 @@ bool LyXErr::debugging(Debug::Type t) const
 
 void LyXErr::endl()
 {
-	if (enabled_)
+	if (enabled_) {
 		stream() << std::endl;
+		if (second_used_)
+			second() << "\n";
+	}
+}
+
+
+// It seems not possible to instantiate operator template out of class body
+#define STREAM_OPERATOR(t)	\
+{\
+	if (l.enabled()){\
+		l.stream() << t;\
+		if (l.second_used()){\
+			l.second() << t;\
+			ProgressInterface::instance()->lyxerrFlush();\
+		}\
+	}\
+	return l;\
 }
 
 
 LyXErr & operator<<(LyXErr & l, void const * t)
-{ if (l.enabled()) l.stream() << t; return l; }
+STREAM_OPERATOR(t)
 LyXErr & operator<<(LyXErr & l, char const * t)
-{ if (l.enabled()) l.stream() << t; return l; }
+STREAM_OPERATOR(t)
 LyXErr & operator<<(LyXErr & l, char t)
-{ if (l.enabled()) l.stream() << t; return l; }
+STREAM_OPERATOR(t)
 LyXErr & operator<<(LyXErr & l, int t)
-{ if (l.enabled()) l.stream() << t; return l; }
+STREAM_OPERATOR(t)
 LyXErr & operator<<(LyXErr & l, unsigned int t)
-{ if (l.enabled()) l.stream() << t; return l; }
+STREAM_OPERATOR(t)
 LyXErr & operator<<(LyXErr & l, long t)
-{ if (l.enabled()) l.stream() << t; return l; }
+STREAM_OPERATOR(t)
 LyXErr & operator<<(LyXErr & l, unsigned long t)
-{ if (l.enabled()) l.stream() << t; return l; }
+STREAM_OPERATOR(t)
 LyXErr & operator<<(LyXErr & l, double t)
-{ if (l.enabled()) l.stream() << t; return l; }
+STREAM_OPERATOR(t)
 LyXErr & operator<<(LyXErr & l, string const & t)
-{ if (l.enabled()) l.stream() << t; return l; }
+STREAM_OPERATOR(t)
 LyXErr & operator<<(LyXErr & l, docstring const & t)
-{ if (l.enabled()) l.stream() << to_utf8(t); return l; }
+STREAM_OPERATOR(to_utf8(t));
 LyXErr & operator<<(LyXErr & l, FileName const & t)
-{ if (l.enabled()) l.stream() << t; return l; }
+STREAM_OPERATOR(t)
 LyXErr & operator<<(LyXErr & l, ostream &(*t)(ostream &))
-{ if (l.enabled()) l.stream() << t; return l; }
+STREAM_OPERATOR(t)
 LyXErr & operator<<(LyXErr & l, ios_base &(*t)(ios_base &))
-{ if (l.enabled()) l.stream() << t; return l; }
+STREAM_OPERATOR(t)
 
 
 // The global instance

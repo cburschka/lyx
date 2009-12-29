@@ -5,6 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Peter Kümmel
+ * \author Pavel Sanda
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -20,8 +21,14 @@
 
 #include <string>
 
+class QAbstractButton;
+class QHideEvent;
+class QShowEvent;
+
+
 namespace lyx {
 namespace frontend {
+
 
 class ProgressViewWidget : public QWidget, public Ui::ProgressViewUi
 {
@@ -62,8 +69,13 @@ private Q_SLOTS:
 	void appendText(QString const & text);
 	void clearText();
 
+	void levelChanged(QAbstractButton*);
+
 private:
 	ProgressViewWidget * widget_;
+
+	void showEvent(QShowEvent*);
+	void hideEvent(QHideEvent*);
 };
 
 

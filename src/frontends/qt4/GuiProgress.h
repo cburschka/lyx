@@ -5,6 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Peter Kümmel
+ * \author Pavel Sanda
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -20,7 +21,7 @@
 #include <QSplashScreen>
 #include <QTimer>
 
-#include <string>
+#include <sstream>
 
 
 namespace lyx {
@@ -35,7 +36,10 @@ class GuiProgress :
 
 public:
 	GuiProgress(GuiView * view);
+	~GuiProgress();
 
+	void lyxerrConnect();
+	void lyxerrDisconnect();
 
 Q_SIGNALS:
 	void processStarted(QString const &);
@@ -43,6 +47,7 @@ Q_SIGNALS:
 	void appendMessage(QString const &);
 	void appendError(QString const &);
 	void clearMessages();
+	void lyxerrFlush();
 
 	// Alert interface
 	void warning(QString const & title, QString const & message);
@@ -56,6 +61,7 @@ private Q_SLOTS:
 	void doAppendMessage(QString const &);
 	void doAppendError(QString const &);
 	void doClearMessages();
+	void dolyxerrFlush();
 
 
 	void doWarning(QString const &, QString const &);
@@ -67,6 +73,7 @@ private Q_SLOTS:
 private:
 	GuiView* view_;
 	void appendText(QString const &);
+	std::ostringstream lyxerr_stream_;
 
 };
 

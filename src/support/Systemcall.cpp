@@ -61,6 +61,10 @@ public:
 	void appendMessage(QString const &) {}
 	void appendError(QString const &) {}
 	void clearMessages() {}
+	void lyxerrFlush() {}
+
+	void lyxerrConnect() {}
+	void lyxerrDisconnect() {}
 
 	void warning(QString const &, QString const &) {}
 	void toggleWarning(QString const &, QString const &, QString const &) {}
