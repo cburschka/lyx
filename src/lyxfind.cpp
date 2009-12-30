@@ -952,12 +952,12 @@ bool next_document_buffer(Buffer * & p_buf) {
 		LYXERR(Debug::FIND, "p_old=" << p_old << ", p_master=" << p_master);
 	} while (p_master != p_old);
 	LASSERT(p_master != NULL, /**/);
-	std::vector<Buffer *> v_children;
+	vector<Buffer *> v_children;
 	/* Root master added as first buffer in the vector */
 	v_children.push_back(p_master);
 	p_master->getChildren(v_children, true);
 	LYXERR(Debug::FIND, "v_children.size()=" << v_children.size());
-	std::vector<Buffer *>::const_iterator it = std::find(v_children.begin(), v_children.end(), p_buf);
+	vector<Buffer *>::const_iterator it = find(v_children.begin(), v_children.end(), p_buf);
 	LASSERT(it != v_children.end(), /**/)
 	++it;
 	if (it == v_children.end()) {
@@ -986,12 +986,12 @@ bool prev_document_buffer(Buffer * & p_buf) {
 		LYXERR(Debug::FIND, "p_old=" << p_old << ", p_master=" << p_master);
 	} while (p_master != p_old);
 	LASSERT(p_master != NULL, /**/);
-	std::vector<Buffer *> v_children;
+	vector<Buffer *> v_children;
 	/* Root master added as first buffer in the vector */
 	v_children.push_back(p_master);
 	p_master->getChildren(v_children, true);
 	LYXERR(Debug::FIND, "v_children.size()=" << v_children.size());
-	std::vector<Buffer *>::const_iterator it = std::find(v_children.begin(), v_children.end(), p_buf);
+	vector<Buffer *>::const_iterator it = find(v_children.begin(), v_children.end(), p_buf);
 	LASSERT(it != v_children.end(), /**/)
 	if (it == v_children.begin()) {
 		it = v_children.end();
