@@ -1011,15 +1011,8 @@ bool prev_document_buffer(Buffer * & p_buf) {
  ** Return true if restarted from first open buffer.
  **/
 bool next_open_buffer(Buffer * & p_buf) {
-	BufferList::const_iterator it = find(theBufferList().begin(), theBufferList().end(), p_buf);
-	LASSERT(it != theBufferList().end(), /**/)
-	++it;
-	if (it == theBufferList().end()) {
-		p_buf = *theBufferList().begin();
-		return true;
-	}
-	p_buf = *it;
-	return false;
+	p_buf = theBufferList().next(p_buf);
+	return p_buf == *theBufferList().begin();
 }
 
 
@@ -1028,17 +1021,8 @@ bool next_open_buffer(Buffer * & p_buf) {
  ** Return true if restarted from last open buffer.
  **/
 bool prev_open_buffer(Buffer * & p_buf) {
-	BufferList::const_iterator it = find(theBufferList().begin(), theBufferList().end(), p_buf);
-	LASSERT(it != theBufferList().end(), /**/)
-	if (it == theBufferList().begin()) {
-		it = theBufferList().end();
-		--it;
-		p_buf = *it;
-		return true;
-	}
-	--it;
-	p_buf = *it;
-	return false;
+	p_buf = theBufferList().previous(p_buf);
+	return p_buf == *(theBufferList().end() - 1);
 }
 
 
@@ -1062,15 +1046,16 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 		}
 		// No match has been found in current buffer
 		bool prompt = false;
-		if (match.opt.scope == FindAndReplaceOptions::S_BUFFER) {
+		switch (match.opt.scope) {
+		case FindAndReplaceOptions::S_BUFFER:
 			prompt = true;
-		} else if (match.opt.scope == FindAndReplaceOptions::S_DOCUMENT) {
+			break;
+		case FindAndReplaceOptions::S_DOCUMENT:
 			prompt = next_document_buffer(match.p_buf);
-		} else if (match.opt.scope == FindAndReplaceOptions::S_OPEN_BUFFERS) {
+			break;
+		case FindAndReplaceOptions::S_OPEN_BUFFERS:
 			prompt = next_open_buffer(match.p_buf);
-		} else {
-			/* Unimplemented scope */
-			LASSERT(false, /**/);
+			break;
 		}
 		if (prompt) {
 			if (wrap_answer != -1)
@@ -1177,15 +1162,16 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv & match) {
 		}
 		// No match has been found in current buffer
 		bool prompt = false;
-		if (match.opt.scope == FindAndReplaceOptions::S_BUFFER) {
+		switch (match.opt.scope) {
+		case FindAndReplaceOptions::S_BUFFER:
 			prompt = true;
-		} else if (match.opt.scope == FindAndReplaceOptions::S_DOCUMENT) {
+			break;
+		case FindAndReplaceOptions::S_DOCUMENT:
 			prompt = prev_document_buffer(match.p_buf);
-		} else if (match.opt.scope == FindAndReplaceOptions::S_OPEN_BUFFERS) {
+			break;
+		case FindAndReplaceOptions::S_OPEN_BUFFERS:
 			prompt = prev_open_buffer(match.p_buf);
-		} else {
-			/* Unimplemented scope */
-			LASSERT(false, /**/);
+			break;
 		}
 		if (prompt) {
 			wrap_answer = frontend::Alert::prompt(

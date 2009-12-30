@@ -82,7 +82,7 @@ public:
 		S_BUFFER,
 		S_DOCUMENT,
 		S_OPEN_BUFFERS,
-		S_ALL_MANUALS
+		/*S_ALL_MANUALS*/
 	} SearchScope;
 	FindAndReplaceOptions(
 		docstring const & search,
