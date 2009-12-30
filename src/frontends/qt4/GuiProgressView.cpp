@@ -94,7 +94,7 @@ void GuiProgressView::levelChanged()
 {
 	int level = Debug::NONE;
 	Q_FOREACH(const LevelButton* button, level_buttons) {
-		if (button->isChecked())
+		if (button->isChecked()) {
 			// Debug::NONE overwrites other levels
 			if (button->level == Debug::NONE) {
 				level = Debug::NONE;
@@ -102,6 +102,7 @@ void GuiProgressView::levelChanged()
 			} else {
 				level |= button->level;
 			}
+		}
 	}
 	dispatch(FuncRequest(LFUN_DEBUG_LEVEL_SET, convert<std::string>(level)));
 }

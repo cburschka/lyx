@@ -410,7 +410,7 @@ void traverse_snake_forw(DocRangePair & rp)
 /////////////////////////////////////////////////////////////////////
 
 int Compare::Impl::find_middle_snake(DocRangePair const & rp,
-	DocPair & middle_snake)
+	DocPair &)
 {
 	N = rp.o.length();
 	M = rp.n.length();
