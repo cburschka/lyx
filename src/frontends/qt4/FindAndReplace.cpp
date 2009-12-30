@@ -167,6 +167,8 @@ void FindAndReplaceWidget::findAndReplace(
 		scope = FindAndReplaceOptions::S_BUFFER;
 	else if (MasterDocument->isChecked())
 		scope = FindAndReplaceOptions::S_DOCUMENT;
+	else if (OpenDocuments->isChecked())
+		scope = FindAndReplaceOptions::S_OPEN_BUFFERS;
 	else
 		LASSERT(false, /**/);
 	LYXERR(Debug::FIND, "FindAndReplaceOptions: "

@@ -17,6 +17,7 @@
 #include "lyxfind.h"
 
 #include "Buffer.h"
+#include "BufferList.h"
 #include "buffer_funcs.h"
 #include "BufferParams.h"
 #include "BufferView.h"
@@ -1005,6 +1006,42 @@ bool prev_document_buffer(Buffer * & p_buf) {
 }
 
 
+/** Switch p_buf to point to next open buffer.
+ **
+ ** Return true if restarted from first open buffer.
+ **/
+bool next_open_buffer(Buffer * & p_buf) {
+	BufferList::const_iterator it = find(theBufferList().begin(), theBufferList().end(), p_buf);
+	LASSERT(it != theBufferList().end(), /**/)
+	++it;
+	if (it == theBufferList().end()) {
+		p_buf = *theBufferList().begin();
+		return true;
+	}
+	p_buf = *it;
+	return false;
+}
+
+
+/** Switch p_buf to point to previous open buffer.
+ **
+ ** Return true if restarted from last open buffer.
+ **/
+bool prev_open_buffer(Buffer * & p_buf) {
+	BufferList::const_iterator it = find(theBufferList().begin(), theBufferList().end(), p_buf);
+	LASSERT(it != theBufferList().end(), /**/)
+	if (it == theBufferList().begin()) {
+		it = theBufferList().end();
+		--it;
+		p_buf = *it;
+		return true;
+	}
+	--it;
+	p_buf = *it;
+	return false;
+}
+
+
 /// Finds forward
 int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 {
@@ -1029,6 +1066,8 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 			prompt = true;
 		} else if (match.opt.scope == FindAndReplaceOptions::S_DOCUMENT) {
 			prompt = next_document_buffer(match.p_buf);
+		} else if (match.opt.scope == FindAndReplaceOptions::S_OPEN_BUFFERS) {
+			prompt = next_open_buffer(match.p_buf);
 		} else {
 			/* Unimplemented scope */
 			LASSERT(false, /**/);
@@ -1048,6 +1087,7 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 	} while (wrap_answer != 1);
 	return 0;
 }
+
 
 /// Find the most backward consecutive match within same paragraph while searching backwards.
 void findMostBackwards(DocIterator & cur, MatchStringAdv const & match, int & len) {
@@ -1141,6 +1181,8 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv & match) {
 			prompt = true;
 		} else if (match.opt.scope == FindAndReplaceOptions::S_DOCUMENT) {
 			prompt = prev_document_buffer(match.p_buf);
+		} else if (match.opt.scope == FindAndReplaceOptions::S_OPEN_BUFFERS) {
+			prompt = prev_open_buffer(match.p_buf);
 		} else {
 			/* Unimplemented scope */
 			LASSERT(false, /**/);
