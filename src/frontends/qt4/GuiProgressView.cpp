@@ -21,17 +21,17 @@
 
 #include <QSettings>
 #include <QTime>
-#include <QGroupBox>
-#include <QRadioButton>
-#include <QButtonGroup>
+
+#include <QCheckBox>
+
 
 namespace lyx {
 namespace frontend {
 
 
-struct LevelButton : QRadioButton
+struct LevelButton : QCheckBox
 {
-	LevelButton(const QString& name) : QRadioButton(name) {}
+	LevelButton(const QString& name) : QCheckBox(name) {}
 	Debug::Type level;
 };
 
@@ -61,17 +61,18 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 	font.setStyleHint(QFont::TypeWriter);
 	widget_->outTE->setFont(font);
 
-	QButtonGroup* button_group = new QButtonGroup(this);
+
 	const std::vector<Debug::Type> levels = Debug::levels();
-	for (unsigned int i = 0; i < levels.size(); i++) {
+	for (unsigned int i = 1; i < levels.size(); i++) {
 		LevelButton * box = new LevelButton(toqstr(Debug::description(levels[i])));
 		box->level = levels[i];
 		widget_->settingsLayout->addWidget(box);
-		button_group->addButton(box);
+		// TODO settings
+		box->setChecked(false);
+		level_buttons << box;
+		connect(box, SIGNAL(stateChanged(int)), this, SLOT(levelChange()));
 	}
-	connect(button_group, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(levelChanged(QAbstractButton*)));
-	// TODO settings
-	button_group->buttons().front()->setChecked(true);
+
 	
 	GuiProgress* progress = dynamic_cast<GuiProgress*>(support::ProgressInterface::instance());
 
@@ -86,11 +87,14 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 }
 
 
-void GuiProgressView::levelChanged(QAbstractButton* b)
+void GuiProgressView::levelChanged()
 {
-	LevelButton* lb = dynamic_cast<LevelButton*>(b);
-	if (lb)
-		lyxerr.level(lb->level);
+	int level = Debug::NONE;
+	Q_FOREACH(const LevelButton* button, level_buttons) {
+		if (button->isChecked())
+			level |= button->level;
+	}
+	lyxerr.level(static_cast<Debug::Type>(level));
 }
 
 

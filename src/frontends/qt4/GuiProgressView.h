@@ -20,14 +20,17 @@
 #include "GuiProgress.h"
 
 #include <string>
+#include <QList>
 
-class QAbstractButton;
+
 class QHideEvent;
 class QShowEvent;
 
 
 namespace lyx {
 namespace frontend {
+
+struct LevelButton;
 
 
 class ProgressViewWidget : public QWidget, public Ui::ProgressViewUi
@@ -69,13 +72,15 @@ private Q_SLOTS:
 	void appendText(QString const & text);
 	void clearText();
 
-	void levelChanged(QAbstractButton*);
+	void levelChanged();
 
 private:
 	ProgressViewWidget * widget_;
 
 	void showEvent(QShowEvent*);
 	void hideEvent(QHideEvent*);
+
+	QList<LevelButton*> level_buttons;
 };
 
 
