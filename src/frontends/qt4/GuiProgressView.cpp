@@ -16,8 +16,10 @@
 #include "GuiApplication.h"
 
 #include "qt_helpers.h"
+#include "FuncRequest.h"
 
 #include "support/debug.h"
+#include "support/convert.h"
 
 #include <QSettings>
 #include <QTime>
@@ -95,13 +97,13 @@ void GuiProgressView::levelChanged()
 		if (button->isChecked())
 			// Debug::NONE overwrites other levels
 			if (button->level == Debug::NONE) {
-				lyxerr.setLevel(Debug::NONE);
-				return;
+				level = Debug::NONE;
+				break;
 			} else {
 				level |= button->level;
 			}
 	}
-	lyxerr.setLevel(static_cast<Debug::Type>(level));
+	dispatch(FuncRequest(LFUN_DEBUG_LEVEL_SET, convert<std::string>(level)));
 }
 
 
