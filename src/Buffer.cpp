@@ -127,7 +127,7 @@ namespace {
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-int const LYX_FORMAT = 373; // jspitzm: merge g-brief class
+int const LYX_FORMAT = 374; // rgheck: HTML output options
 
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;

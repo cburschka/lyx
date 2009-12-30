@@ -375,6 +375,8 @@ BufferParams::BufferParams()
 	}
 	// default index
 	indiceslist().addDefault(B_("Index"));
+	html_be_strict = true;
+	html_use_mathml = true;
 }
 
 
@@ -768,6 +770,10 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 				toktmp << endl;
 			return toktmp;
 		}
+	} else if (token == "\\html_use_mathml") {
+		lex >> html_use_mathml;
+	} else if (token == "\\html_be_strict") {
+		lex >> html_be_strict;
 	} else {
 		lyxerr << "BufferParams::readToken(): Unknown token: " << 
 			token << endl;
@@ -967,8 +973,10 @@ void BufferParams::writeFile(ostream & os) const
 		}
 	}
 
-	os << "\\tracking_changes " << convert<string>(trackChanges) << "\n";
-	os << "\\output_changes " << convert<string>(outputChanges) << "\n";
+	os << "\\tracking_changes " << convert<string>(trackChanges) << "\n"
+	   << "\\output_changes " << convert<string>(outputChanges) << "\n"
+	   << "\\html_use_mathml " << convert<string>(html_use_mathml) << "\n"
+	   << "\\html_be_strict " << convert<string>(html_be_strict) << "\n";
 
 	os << pimpl_->authorlist;
 }

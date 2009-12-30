@@ -1131,6 +1131,16 @@ def revert_gbrief(document):
         document.set_textclass()
 
 
+def revert_html_options(document):
+    " Remove html options "
+    i = find_token(document.header, '\\html_use_mathml', 0)
+    if i != -1:
+        del document.header[i]
+    i = find_token(document.header, '\\html_be_strict', 0)
+    if i != -1:
+        del document.header[i]
+
+
 ##
 # Conversion hub
 #
@@ -1163,10 +1173,12 @@ convert = [[346, []],
            [370, []],
            [371, []],
            [372, []],
-           [373, [merge_gbrief]]
+           [373, [merge_gbrief]],
+           [374, []]
           ]
 
-revert =  [[372, [revert_gbrief]],
+revert =  [[373, [revert_html_options]],
+           [372, [revert_gbrief]],
            [371, [revert_fontenc]],
            [370, [revert_mhchem]],
            [369, [revert_suppress_date]],

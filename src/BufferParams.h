@@ -361,6 +361,12 @@ public:
 	PDFOptions & pdfoptions();
 	PDFOptions const & pdfoptions() const;
 
+	/// whether to use MathML for math output, or instead images
+	bool html_use_mathml;
+	/// whether to attempt to be XHTML 1.1 compliant or instead be
+	/// a little more mellow
+	bool html_be_strict;
+
 private:
 	///
 	void readPreamble(Lexer &);
