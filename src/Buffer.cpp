@@ -2331,9 +2331,8 @@ DocIterator Buffer::firstChildPosition(Buffer const * child)
 }
 
 
-std::vector<Buffer *> Buffer::getChildren(bool grand_children) const
+void Buffer::getChildren(std::vector<Buffer *> & clist, bool grand_children) const
 {
-	std::vector<Buffer *> clist;
 	// loop over children
 	Impl::BufferPositionMap::iterator it = d->children_positions.begin();
 	Impl::BufferPositionMap::iterator end = d->children_positions.end();
@@ -2348,7 +2347,14 @@ std::vector<Buffer *> Buffer::getChildren(bool grand_children) const
 				clist.push_back(*git);
 		}
 	}
-	return clist;
+}
+
+
+std::vector<Buffer *> Buffer::getChildren(bool grand_children) const
+{
+	std::vector<Buffer *> v;
+	getChildren(v, grand_children);
+	return v;
 }
 
 

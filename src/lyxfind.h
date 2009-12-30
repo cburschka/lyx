@@ -78,6 +78,12 @@ bool findChange(BufferView * bv, bool next);
 
 class FindAndReplaceOptions {
 public:
+	typedef enum {
+		S_BUFFER,
+		S_DOCUMENT,
+		S_OPEN_BUFFERS,
+		S_ALL_MANUALS
+	} SearchScope;
 	FindAndReplaceOptions(
 		docstring const & search,
 		bool casesensitive,
@@ -87,7 +93,8 @@ public:
 		bool ignoreformat,
 		bool regexp,
 		docstring const & replace,
-		bool keep_case
+		bool keep_case,
+		SearchScope scope = S_BUFFER
 	);
 	FindAndReplaceOptions() {  }
 	docstring search;
@@ -99,6 +106,7 @@ public:
 	bool regexp;
 	docstring replace;
 	bool keep_case;
+	SearchScope scope;
 };
 
 /// Write a FindAdvOptions instance to a stringstream

@@ -47,6 +47,9 @@
 #include "support/lstrings.h"
 #include "support/lassert.h"
 
+#include "frontends/Application.h"
+#include "frontends/LyXView.h"
+
 #include <boost/regex.hpp>
 #include <boost/next_prior.hpp>
 
@@ -601,7 +604,7 @@ bool braces_match(string::const_iterator const & beg,
  **/
 class MatchStringAdv {
 public:
-	MatchStringAdv(lyx::Buffer const & buf, FindAndReplaceOptions const & opt);
+	MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & opt);
 
 	/** Tests if text starting at the supplied position matches with the one provided to the MatchStringAdv
 	 ** constructor as opt.search, under the opt.* options settings.
@@ -617,7 +620,9 @@ public:
 
 public:
 	/// buffer
-	lyx::Buffer const & buf;
+	lyx::Buffer * p_buf;
+	/// first buffer on which search was started
+	lyx::Buffer * const p_first_buf;
 	/// options
 	FindAndReplaceOptions const & opt;
 
@@ -650,8 +655,8 @@ private:
 };
 
 
-MatchStringAdv::MatchStringAdv(lyx::Buffer const & buf, FindAndReplaceOptions const & opt)
-  : buf(buf), opt(opt)
+MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & opt)
+	: p_buf(&buf), p_first_buf(&buf), opt(opt)
 {
 	par_as_string = normalize(opt.search);
 	open_braces = 0;
@@ -889,6 +894,7 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 	return ods.str();
 }
 
+
 /** Finalize an advanced find operation, advancing the cursor to the innermost
  ** position that matches, plus computing the length of the matching text to
  ** be selected
@@ -929,8 +935,78 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
 }
 
 
+/** Switch p_buf to point to next document buffer.
+ **
+ ** Return true if restarted from master-document buffer.
+ **
+ ** @note
+ ** Not using p_buf->allRelatives() here, because I'm not sure
+ ** whether or not the returned order is independent of p_buf.
+ **/
+bool next_document_buffer(Buffer * & p_buf) {
+	Buffer *p_master = p_buf;
+	Buffer *p_old;
+	do {
+		p_old = p_master;
+		p_master = const_cast<Buffer *>(p_master->masterBuffer());
+		LYXERR(Debug::FIND, "p_old=" << p_old << ", p_master=" << p_master);
+	} while (p_master != p_old);
+	LASSERT(p_master != NULL, /**/);
+	std::vector<Buffer *> v_children;
+	/* Root master added as first buffer in the vector */
+	v_children.push_back(p_master);
+	p_master->getChildren(v_children, true);
+	LYXERR(Debug::FIND, "v_children.size()=" << v_children.size());
+	std::vector<Buffer *>::const_iterator it = std::find(v_children.begin(), v_children.end(), p_buf);
+	LASSERT(it != v_children.end(), /**/)
+	++it;
+	if (it == v_children.end()) {
+		p_buf = *v_children.begin();
+		return true;
+	}
+	p_buf = *it;
+	return false;
+}
+
+
+/** Switch p_buf to point to previous document buffer.
+ **
+ ** Return true if restarted from last child buffer.
+ **
+ ** @note
+ ** Not using p_buf->allRelatives() here, because I'm not sure
+ ** whether or not the returned order is independent of p_buf.
+ **/
+bool prev_document_buffer(Buffer * & p_buf) {
+	Buffer *p_master = p_buf;
+	Buffer *p_old;
+	do {
+		p_old = p_master;
+		p_master = const_cast<Buffer *>(p_master->masterBuffer());
+		LYXERR(Debug::FIND, "p_old=" << p_old << ", p_master=" << p_master);
+	} while (p_master != p_old);
+	LASSERT(p_master != NULL, /**/);
+	std::vector<Buffer *> v_children;
+	/* Root master added as first buffer in the vector */
+	v_children.push_back(p_master);
+	p_master->getChildren(v_children, true);
+	LYXERR(Debug::FIND, "v_children.size()=" << v_children.size());
+	std::vector<Buffer *>::const_iterator it = std::find(v_children.begin(), v_children.end(), p_buf);
+	LASSERT(it != v_children.end(), /**/)
+	if (it == v_children.begin()) {
+		it = v_children.end();
+		--it;
+		p_buf = *it;
+		return true;
+	}
+	--it;
+	p_buf = *it;
+	return false;
+}
+
+
 /// Finds forward
-int findForwardAdv(DocIterator & cur, MatchStringAdv const & match)
+int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 {
 	if (!cur)
 		return 0;
@@ -947,17 +1023,29 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv const & match)
 			if (match(cur))
 				return findAdvFinalize(cur, match);
 		}
-		if (wrap_answer != -1)
-			break;
-		wrap_answer = frontend::Alert::prompt(
-			_("Wrap search?"),
-			_("End of document reached while searching forward.\n"
-				"\n"
-				"Continue searching from beginning?"),
-			0, 1, _("&Yes"), _("&No"));
+		// No match has been found in current buffer
+		bool prompt = false;
+		if (match.opt.scope == FindAndReplaceOptions::S_BUFFER) {
+			prompt = true;
+		} else if (match.opt.scope == FindAndReplaceOptions::S_DOCUMENT) {
+			prompt = next_document_buffer(match.p_buf);
+		} else {
+			/* Unimplemented scope */
+			LASSERT(false, /**/);
+		}
+		if (prompt) {
+			if (wrap_answer != -1)
+				break;
+			wrap_answer = frontend::Alert::prompt(
+				_("Wrap search?"),
+				_("End of document/scope reached while searching forward.\n"
+					"\n"
+					"Continue searching from beginning?"),
+				0, 1, _("&Yes"), _("&No"));
+		}
 		cur.clear();
-		cur.push_back(CursorSlice(match.buf.inset()));
-	} while (wrap_answer == 0);
+		cur.push_back(CursorSlice(match.p_buf->inset()));
+	} while (wrap_answer != 1);
 	return 0;
 }
 
@@ -986,7 +1074,7 @@ void findMostBackwards(DocIterator & cur, MatchStringAdv const & match, int & le
 }
 
 /// Finds backwards
-int findBackwardsAdv(DocIterator & cur, MatchStringAdv const & match) {
+int findBackwardsAdv(DocIterator & cur, MatchStringAdv & match) {
 	if (! cur)
 		return 0;
 	// Backup of original position (for restoring it in case match not found)
@@ -1047,13 +1135,25 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv const & match) {
 				cur.backwardPos();
 			};
 		}
-		wrap_answer = frontend::Alert::prompt(
-			_("Wrap search?"),
-			_("Beginning of document reached while searching backwards\n"
-			  "\n"
-			  "Continue searching from end?"),
-			0, 1, _("&Yes"), _("&No"));
-		cur = doc_iterator_end(&match.buf);
+		// No match has been found in current buffer
+		bool prompt = false;
+		if (match.opt.scope == FindAndReplaceOptions::S_BUFFER) {
+			prompt = true;
+		} else if (match.opt.scope == FindAndReplaceOptions::S_DOCUMENT) {
+			prompt = prev_document_buffer(match.p_buf);
+		} else {
+			/* Unimplemented scope */
+			LASSERT(false, /**/);
+		}
+		if (prompt) {
+			wrap_answer = frontend::Alert::prompt(
+				_("Wrap search?"),
+				_("Beginning of document/scope reached while searching backwards\n"
+				  "\n"
+				  "Continue searching from end?"),
+				0, 1, _("&Yes"), _("&No"));
+		}
+		cur = doc_iterator_end(match.p_buf);
 		cur.backwardPos();
 		LYXERR(Debug::FIND, "findBackAdv5: cur: " << cur);
 		cur_orig2 = cur;
@@ -1061,6 +1161,7 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv const & match) {
 	cur = cur_orig;
 	return 0;
 }
+
 
 } // anonym namespace
 
@@ -1077,10 +1178,11 @@ docstring stringifyFromForSearch(FindAndReplaceOptions const & opt,
 
 FindAndReplaceOptions::FindAndReplaceOptions(docstring const & search, bool casesensitive,
 	bool matchword, bool forward, bool expandmacros, bool ignoreformat,
-	bool regexp, docstring const & replace, bool keep_case)
+	bool regexp, docstring const & replace, bool keep_case,
+	SearchScope scope)
 	: search(search), casesensitive(casesensitive), matchword(matchword),
 	forward(forward), expandmacros(expandmacros), ignoreformat(ignoreformat),
-	regexp(regexp), replace(replace), keep_case(keep_case)
+	regexp(regexp), replace(replace), keep_case(keep_case), scope(scope)
 {
 }
 
@@ -1153,8 +1255,8 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt)
 // 		return false;
 // 	}
 
+	MatchStringAdv matchAdv(bv->buffer(), opt);
 	try {
-		MatchStringAdv const matchAdv(bv->buffer(), opt);
 		if (opt.forward)
 				match_len = findForwardAdv(cur, matchAdv);
 		else
@@ -1170,7 +1272,12 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt)
 		return false;
 	}
 
-	LYXERR(Debug::FIND, "Putting selection at " << cur << " with len: " << match_len);
+	LYXERR(Debug::FIND, "Putting selection at buf=" << matchAdv.p_buf
+		<< "cur=" << cur << " with len: " << match_len);
+
+	theApp()->currentWindow()->selectDocumentBuffer(matchAdv.p_buf);
+	bv = theApp()->currentWindow()->documentBufferView();
+
 	bv->putSelectionAt(cur, match_len, ! opt.forward);
 	if (opt.replace == docstring(from_utf8(LYX_FR_NULL_STRING))) {
 		bv->message(_("Match found !"));
@@ -1248,7 +1355,8 @@ ostringstream & operator<<(ostringstream & os, lyx::FindAndReplaceOptions const 
 	   << opt.ignoreformat << ' '
 	   << opt.regexp << ' '
 	   << to_utf8(opt.replace) << "\nEOSS\n"
-	   << opt.keep_case;
+	   << opt.keep_case << ' '
+	   << int(opt.scope);
 
 	LYXERR(Debug::FIND, "built: " << os.str());
 
@@ -1284,6 +1392,9 @@ istringstream & operator>>(istringstream & is, lyx::FindAndReplaceOptions & opt)
 		getline(is, line);
 	}
 	is >> opt.keep_case;
+	int i;
+	is >> i;
+	opt.scope = FindAndReplaceOptions::SearchScope(i);
 	LYXERR(Debug::FIND, "parsed: " << opt.casesensitive << ' ' << opt.matchword << ' ' << opt.forward << ' '
 		   << opt.expandmacros << ' ' << opt.ignoreformat << ' ' << opt.regexp << ' ' << opt.keep_case);
 	LYXERR(Debug::FIND, "replacing with: '" << s << "'");

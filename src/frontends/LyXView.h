@@ -57,6 +57,10 @@ public:
 	virtual BufferView const * documentBufferView() const = 0;
 	//@}
 
+	/// Find or create buffer view and WorkArea for supplied document
+	/// buffer, and make it current.
+	virtual void selectDocumentBuffer(Buffer const * p_buf) = 0;
+
 	/// display a message in the view
 	virtual void message(docstring const &) = 0;
 

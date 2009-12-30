@@ -283,6 +283,10 @@ public:
 	///
 	void disconnectDialog(std::string const & name);
 
+	/// Find or create buffer view and WorkArea for supplied document
+	/// buffer and make it current.
+	void selectDocumentBuffer(Buffer const * p_buf);
+
 private:
 	///
 	void saveLayout() const;

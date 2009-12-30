@@ -162,6 +162,13 @@ void FindAndReplaceWidget::findAndReplace(
 	} else {
 		replaceString = from_utf8(LYX_FR_NULL_STRING);
 	}
+	FindAndReplaceOptions::SearchScope scope = FindAndReplaceOptions::S_BUFFER;
+	if (CurrentDocument->isChecked())
+		scope = FindAndReplaceOptions::S_BUFFER;
+	else if (MasterDocument->isChecked())
+		scope = FindAndReplaceOptions::S_DOCUMENT;
+	else
+		LASSERT(false, /**/);
 	LYXERR(Debug::FIND, "FindAndReplaceOptions: "
 	       << "searchstring=" << searchString
 	       << ", casesensitiv=" << casesensitive
@@ -171,9 +178,10 @@ void FindAndReplaceWidget::findAndReplace(
 	       << ", ignoreformat=" << ignoreformat
 	       << ", regexp=" << regexp
 	       << ", replaceString" << replaceString
-	       << ", keep_case=" << keep_case);
+	       << ", keep_case=" << keep_case
+	       << ", scope=" << scope);
 	FindAndReplaceOptions opt(searchString, casesensitive, matchword, ! backwards,
-		  expandmacros, ignoreformat, regexp, replaceString, keep_case);
+		expandmacros, ignoreformat, regexp, replaceString, keep_case, scope);
 	LYXERR(Debug::FIND, "Dispatching LFUN_WORD_FINDADV");
 	std::ostringstream oss;
 	oss << opt;

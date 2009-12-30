@@ -321,6 +321,9 @@ public:
 	/// return a vector with all children (and grandchildren)
 	std::vector<Buffer *> getChildren(bool grand_children = true) const;
 
+	/// Add all children (and grandchildren) to supplied vector
+	void getChildren(std::vector<Buffer *> & children, bool grand_children = true) const;
+
 	/// Is buffer read-only?
 	bool isReadonly() const;
 
