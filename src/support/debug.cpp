@@ -197,45 +197,46 @@ void LyXErr::endl()
 
 
 // It seems not possible to instantiate operator template out of class body
-#define STREAM_OPERATOR(t)	\
-{\
-	if (l.enabled()){\
-		l.stream() << t;\
-		if (l.second_used()){\
-			l.second() << t;\
-			ProgressInterface::instance()->lyxerrFlush();\
-		}\
-	}\
-	return l;\
+template<class T>
+LyXErr & toStream(LyXErr & l, T t)	
+{
+	if (l.enabled()){
+		l.stream() << t;
+		if (l.second_used()){
+			l.second() << t;
+			ProgressInterface::instance()->lyxerrFlush();
+		}
+	}
+	return l;
 }
 
 
 LyXErr & operator<<(LyXErr & l, void const * t)
-STREAM_OPERATOR(t)
+{ return toStream(l, t); }
 LyXErr & operator<<(LyXErr & l, char const * t)
-STREAM_OPERATOR(t)
+{ return toStream(l, t); }
 LyXErr & operator<<(LyXErr & l, char t)
-STREAM_OPERATOR(t)
+{ return toStream(l, t); }
 LyXErr & operator<<(LyXErr & l, int t)
-STREAM_OPERATOR(t)
+{ return toStream(l, t); }
 LyXErr & operator<<(LyXErr & l, unsigned int t)
-STREAM_OPERATOR(t)
+{ return toStream(l, t); }
 LyXErr & operator<<(LyXErr & l, long t)
-STREAM_OPERATOR(t)
+{ return toStream(l, t); }
 LyXErr & operator<<(LyXErr & l, unsigned long t)
-STREAM_OPERATOR(t)
+{ return toStream(l, t); }
 LyXErr & operator<<(LyXErr & l, double t)
-STREAM_OPERATOR(t)
+{ return toStream(l, t); }
 LyXErr & operator<<(LyXErr & l, string const & t)
-STREAM_OPERATOR(t)
+{ return toStream(l, t); }
 LyXErr & operator<<(LyXErr & l, docstring const & t)
-STREAM_OPERATOR(to_utf8(t));
+{ return toStream(l, to_utf8(t)); }
 LyXErr & operator<<(LyXErr & l, FileName const & t)
-STREAM_OPERATOR(t)
+{ return toStream(l, t); }
 LyXErr & operator<<(LyXErr & l, ostream &(*t)(ostream &))
-STREAM_OPERATOR(t)
+{ return toStream(l, t); }
 LyXErr & operator<<(LyXErr & l, ios_base &(*t)(ios_base &))
-STREAM_OPERATOR(t)
+{ return toStream(l, t); }
 
 
 // The global instance
