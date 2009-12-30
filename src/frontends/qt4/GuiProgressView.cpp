@@ -62,15 +62,16 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 	widget_->outTE->setFont(font);
 
 
-	const std::vector<Debug::Type> levels = Debug::levels();
-	for (unsigned int i = 1; i < levels.size(); i++) {
-		LevelButton * box = new LevelButton(toqstr(Debug::description(levels[i])));
-		box->level = levels[i];
+	const int levelCount = Debug::levelCount();
+	for (int i = 0; i < levelCount; i++) {
+		const Debug::Type level = Debug::value(i);
+		LevelButton * box = new LevelButton(toqstr(Debug::description(level)));
+		box->level = level;
 		widget_->settingsLayout->addWidget(box);
 		// TODO settings
 		box->setChecked(false);
 		level_buttons << box;
-		connect(box, SIGNAL(stateChanged(int)), this, SLOT(levelChange()));
+		connect(box, SIGNAL(stateChanged(int)), this, SLOT(levelChanged()));
 	}
 
 	
@@ -92,9 +93,15 @@ void GuiProgressView::levelChanged()
 	int level = Debug::NONE;
 	Q_FOREACH(const LevelButton* button, level_buttons) {
 		if (button->isChecked())
-			level |= button->level;
+			// Debug::NONE overwrites other levels
+			if (button->level == Debug::NONE) {
+				lyxerr.setLevel(Debug::NONE);
+				return;
+			} else {
+				level |= button->level;
+			}
 	}
-	lyxerr.level(static_cast<Debug::Type>(level));
+	lyxerr.setLevel(static_cast<Debug::Type>(level));
 }
 
 

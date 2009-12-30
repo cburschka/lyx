@@ -79,14 +79,19 @@ int const numErrorTags = sizeof(errorTags)/sizeof(errorTags[0]);
 } // namespace anon
 
 
-const std::vector<Debug::Type> Debug::levels()
+int Debug::levelCount()
 {
-	std::vector<Debug::Type> vec;
-	for (int i = 0 ; i < numErrorTags ; ++i) {
-		vec.push_back(errorTags[i].level);
-	}
-	return vec;
+	return numErrorTags;
 }
+
+
+Debug::Type Debug::value(int idx)
+{
+	if (idx > 0 && idx < numErrorTags)
+		return errorTags[idx].level;
+	return Debug::NONE;
+}
+
 
 string const Debug::description(Debug::Type val)
 {

@@ -957,7 +957,7 @@ int parse_dbg(string const & arg, string const &, string &)
 	}
 	lyxerr << to_utf8(bformat(_("Setting debug level to %1$s"), from_utf8(arg))) << endl;
 
-	lyxerr.level(Debug::value(arg));
+	lyxerr.setLevel(Debug::value(arg));
 	Debug::showLevel(lyxerr, lyxerr.level());
 	return 1;
 }

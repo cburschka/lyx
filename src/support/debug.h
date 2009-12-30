@@ -20,7 +20,6 @@
 #define LYXDEBUG_H
 
 #include "support/strfwd.h"
-#include <vector>
 
 namespace std {
 
@@ -108,12 +107,19 @@ namespace Debug {
 		ANY = 0xffffffff
 	};
 
-	const std::vector<Type> levels();
+
+	// Return number of levels
+	int levelCount();
+ 
 
 	/** A function to convert symbolic string names on debug levels
 	    to their numerical value.
 	*/
 	Type value(std::string const & val);
+
+	/** A function to convert index of level to their numerical value.
+	*/
+	Type value(int val);
 
 	/// Return description of level
 	std::string const description(Type val);
@@ -158,7 +164,7 @@ public:
 	/// Sets stream
 	std::ostream & stream() { return *stream_; }
 	/// Sets the debug level to t.
-	void level(Debug::Type t) { dt = t; }
+	void setLevel(Debug::Type t) { dt = t; }
 	/// Returns the current debug level.
 	Debug::Type level() const { return dt; }
 	/// Returns stream

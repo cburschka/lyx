@@ -489,7 +489,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_DEBUG_LEVEL_SET:
-			lyxerr.level(Debug::value(to_utf8(cmd.argument())));
+			lyxerr.setLevel(Debug::value(to_utf8(cmd.argument())));
 			break;
 
 		default:
