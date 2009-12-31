@@ -264,12 +264,12 @@ public:
 	///
 	docstring deferred() const;
 	///
+	bool inText() const { return in_text_; }
+private:
+	///
 	void setTextMode() { in_text_ = true; }
 	///
 	void setMathMode() { in_text_ = false; }
-	///
-	bool inText() const { return in_text_; }
-private:
 	///
 	odocstream & os_;
 	///
@@ -282,6 +282,8 @@ private:
 	bool in_text_;
 	///
 	odocstringstream deferred_;
+	///
+	friend class SetMode;
 };
 
 ///
@@ -307,11 +309,13 @@ class SetMode {
 public:
 	///
 	explicit SetMode(MathStream & os, bool text, docstring attrs);
-	// not clear yet precisely what we need...
-	// explicit SetMode(MathStream & os, bool text);
+	///
+	explicit SetMode(MathStream & os, bool text);
 	///
 	~SetMode();
 private:
+	///
+	void init(bool, docstring);
 	///
 	MathStream & os_;
 	///

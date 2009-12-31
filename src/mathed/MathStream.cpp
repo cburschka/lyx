@@ -337,22 +337,35 @@ MathStream & operator<<(MathStream & ms, docstring const & s)
 }
 
 
-SetMode::SetMode(MathStream & os, bool text, docstring attrs)
-		: os_(os)
+SetMode::SetMode(MathStream & os, bool text)
+	: os_(os)
 {
-	was_text_ = os.inText();
+	init(text, from_ascii(""));
+}
+
+
+SetMode::SetMode(MathStream & os, bool text, docstring attrs)
+	: os_(os)
+{
+	init(text, attrs);
+}
+
+
+void SetMode::init(bool text, docstring attrs)
+{
+	was_text_ = os_.inText();
 	if (was_text_)
-		os << "</mtext>";
+		os_ << "</mtext>";
 	if (text) {
-		os.setTextMode();
-		os << "<mtext";
+		os_.setTextMode();
+		os_ << "<mtext";
 		if (!attrs.empty())
-			os << " " << attrs;
-		os << ">";
+			os_ << " " << attrs;
+		os_ << ">";
 	} else {
 		if (!attrs.empty())
-			os << "<mstyle " << attrs << ">";
-		os.setMathMode();
+			os_ << "<mstyle " << attrs << ">";
+		os_.setMathMode();
 	}
 }
 

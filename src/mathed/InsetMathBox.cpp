@@ -54,12 +54,8 @@ void InsetMathBox::normalize(NormalStream & os) const
 
 void InsetMathBox::mathmlize(MathStream & ms) const
 {	
-	// FIXME This doesn't actually work yet. We need to be able to signal 
-	// that we are in text mode and then just call ms << cell(0). So we
-	// need something like ModeSpecifier for MathStream.
-	ms << MTag("mtext");
-	ms.os() << cell(0);
-	ms << ETag("mtext");
+	SetMode textmode(ms, true);
+	ms << cell(0);
 }
 
 
