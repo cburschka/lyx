@@ -129,6 +129,7 @@ docstring InsetRef::xhtml(XHTMLStream & xs, OutputParams const &) const
 	return docstring();
 }
 
+
 void InsetRef::tocString(odocstream & os) const
 {
 	plaintext(os, OutputParams(0));
