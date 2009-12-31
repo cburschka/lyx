@@ -56,7 +56,6 @@ These insets work but still need work:
 Math
   We have a fair bit of math now working via MathML output, but there are still some 
   isues, and not all the insets work. Here are the ones I know still need work:
-	- AMSArray
 	- Array
 	- Box: There is a general issue here with text mode nesting. See the FIXME attached
 		to the SetMode class.
@@ -68,7 +67,7 @@ Math
 		lib/symbols for the commands supported, of course.
 	- Space: Needs checking.
 	- SpecialChar: Needs checking.
-	- Split: See lib/symbols, for split insets.
+	- Split: There are some alignment issues here, but it basically works.
 	- Substack: This is a stack of however many cells, all in a smaller style.
 		Probably do something with <mover>, again.
 	- Tabular: This is more or less a text-like table in math. Probably output it

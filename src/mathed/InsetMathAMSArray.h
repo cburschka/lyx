@@ -42,6 +42,9 @@ public:
 	void infoize(odocstream & os) const;
 	///
 	void normalize(NormalStream &) const;
+	// Don't need mathmlize as it is handled by InsetMathMatrix,
+	// after being extracted in MathExtern.
+	// void mathmlize(MathStream &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
