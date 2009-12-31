@@ -502,9 +502,9 @@ public:
 	/// set the change for the entire inset
 	virtual void setChange(Change const &) {}
 	/// accept the changes within the inset
-	virtual void acceptChanges() {};
+	virtual void acceptChanges() {}
 	/// reject the changes within the inset
-	virtual void rejectChanges() {};
+	virtual void rejectChanges() {}
 
 	///
 	virtual Dimension const dimension(BufferView const &) const;
