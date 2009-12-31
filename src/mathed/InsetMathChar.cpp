@@ -172,6 +172,11 @@ void InsetMathChar::mathmlize(MathStream & ms) const
 		case '<': entity = "&lt;"; break;
 		case '>': entity = "&gt;"; break;
 		case '&': entity = "&amp;"; break;
+		case ' ': 
+			if (!ms.inText())
+				break;
+			entity = "&ThinSpace;";
+			break;
 		default: break;
 	}
 	
