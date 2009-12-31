@@ -33,6 +33,8 @@ public:
 	///
 	void infoize(odocstream & os) const;
 	///
+	void mathmlize(MathStream &) const;
+	///
 	void validate(LaTeXFeatures & features) const;
 	///
 	int defaultColSpace(col_type) { return 0; }

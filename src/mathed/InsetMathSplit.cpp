@@ -111,6 +111,20 @@ void InsetMathSplit::infoize(odocstream & os) const
 }
 
 
+void InsetMathSplit::mathmlize(MathStream & ms) const
+{
+	// split, gathered, aligned, alignedat
+	// At the moment, those seem to display just fine without any
+	// special treatment.
+	// FIXME
+	// lgathered and rgathered could use the proper alignment, but
+	// it's not clear how to do that without copying a lot of code.
+	// One idea would be to wrap the table in an <mrow>, and set the
+	// alignment there via CSS.
+	InsetMathGrid::mathmlize(ms);
+}
+
+
 void InsetMathSplit::validate(LaTeXFeatures & features) const
 {
 	if (name_ == "split" || name_ == "gathered" || name_ == "aligned" ||
