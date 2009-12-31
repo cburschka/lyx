@@ -242,6 +242,7 @@ public:
 	char const * const tag_;
 };
 
+
 class MathStream {
 public:
 	///
@@ -262,6 +263,12 @@ public:
 	void defer(std::string const &);
 	///
 	docstring deferred() const;
+	///
+	void setTextMode() { in_text_ = true; }
+	///
+	void setMathMode() { in_text_ = false; }
+	///
+	bool inText() const { return in_text_; }
 private:
 	///
 	odocstream & os_;
@@ -271,6 +278,8 @@ private:
 	int line_;
 	///
 	char lastchar_;
+	///
+	bool in_text_;
 	///
 	odocstringstream deferred_;
 };
@@ -292,6 +301,34 @@ MathStream & operator<<(MathStream &, MTag const &);
 ///
 MathStream & operator<<(MathStream &, ETag const &);
 
+
+// A simpler version of ModeSpecifier, for MathML
+class SetMode {
+public:
+	///
+	explicit SetMode(MathStream & os, bool text)
+		: os_(os)
+	{
+		was_text_ = os.inText();
+		if (text)
+			os.setTextMode();
+		else
+			os.setMathMode();
+	}
+	///
+	~SetMode()
+	{
+		if (was_text_)
+			os_.setTextMode();
+		else
+			os_.setMathMode();
+	}
+private:
+	///
+	MathStream & os_;
+	///
+	bool was_text_;
+};
 
 
 //
