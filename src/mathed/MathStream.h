@@ -286,6 +286,8 @@ MathStream & operator<<(MathStream &, char const *);
 ///
 MathStream & operator<<(MathStream &, char);
 ///
+MathStream & operator<<(MathStream &, char_type);
+///
 MathStream & operator<<(MathStream &, MTag const &);
 ///
 MathStream & operator<<(MathStream &, ETag const &);

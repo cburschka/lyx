@@ -250,6 +250,32 @@ MathStream::MathStream(odocstream & os)
 {}
 
 
+void MathStream::cr()
+{
+	os() << '\n';
+	for (int i = 0; i < tab(); ++i)
+		os() << ' ';
+}
+
+
+void MathStream::defer(docstring const & s)
+{
+	deferred_ << s;
+}
+
+
+void MathStream::defer(string const & s)
+{
+	deferred_ << from_utf8(s);
+}
+
+
+docstring MathStream::deferred() const
+{ 
+	return deferred_.str();
+}
+
+
 MathStream & operator<<(MathStream & ms, MathAtom const & at)
 {
 	at->mathmlize(ms);
@@ -278,6 +304,13 @@ MathStream & operator<<(MathStream & ms, char c)
 }
 
 
+MathStream & operator<<(MathStream & ms, char_type c)
+{
+	ms.os() << c;
+	return ms;
+}
+
+
 MathStream & operator<<(MathStream & ms, MTag const & t)
 {
 	++ms.tab();
@@ -294,32 +327,6 @@ MathStream & operator<<(MathStream & ms, ETag const & t)
 		--ms.tab();
 	ms.os() << "</" << from_ascii(t.tag_) << '>';
 	return ms;
-}
-
-
-void MathStream::cr()
-{
-	os() << '\n';
-	for (int i = 0; i < tab(); ++i)
-		os() << ' ';
-}
-
-
-void MathStream::defer(docstring const & s)
-{
-	deferred_ << s;
-}
-
-
-void MathStream::defer(string const & s)
-{
-	deferred_ << from_utf8(s);
-}
-
-
-docstring MathStream::deferred() const
-{ 
-	return deferred_.str();
 }
 
 
