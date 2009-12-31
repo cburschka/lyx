@@ -54,13 +54,13 @@ Math
   isues, and not all the insets work. Here are the ones I know still need work:
 	- AMSArray
 	- Array
+	- Box: There is a general issue here with text mode nesting. See the FIXME attached
+		to the SetMode class.
 	- Cases
 	- Diff: Code exists, but I do not know if it is right.
 	- Binom (in Frac): None of these tags exist in MathML 2.0. We'll
 		just output a fraction with delimiters.
 	- Lefteqn
-	- MBox: There is a general issue here with text mode nesting. See the FIXME attached
-		to the SetMode class.
 	- Overset: Use <mover>.
 	- Par?
 	- Phantom: There is some support for this in MathML....

@@ -118,4 +118,10 @@ void InsetMathMBox::cursorPos(BufferView const & bv,
 }
 
 
+void InsetMathMBox::mathmlize(MathStream & ms) const
+{	
+	SetMode textmode(ms, true, from_ascii("class='mbox'"));
+	ms << cell(0);
+}
+
 } // namespace lyx

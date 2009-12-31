@@ -48,6 +48,8 @@ public:
 	///
 	int latex(odocstream & os, OutputParams const & runparams) const;
 	///
+	void mathmlize(MathStream &) const;
+	///
 	Text * getText(int) const;
 	///
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,
