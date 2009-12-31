@@ -535,18 +535,30 @@ void InsetMathBinom::normalize(NormalStream & os) const
 
 void InsetMathBinom::mathmlize(MathStream & os) const
 {
+	char ldelim = ' ';
+	char rdelim = ' ';
 	switch (kind_) {
 	case BINOM:
-		os << MTag("mbinom") << cell(0) << cell(1) << ETag("mbinom");
-		break;
 	case TBINOM:
-		os << MTag("mtbinom") << cell(0) << cell(1) << ETag("mtbinom");
-		break;
 	case DBINOM:
-	default:
-		os << MTag("mdbinom") << cell(0) << cell(1) << ETag("mdbinom");
+	case CHOOSE:
+		ldelim = '(';
+		rdelim = ')';
+		break;
+	case BRACE:
+		ldelim = '{';
+		rdelim = '}';
+		break;
+	case BRACK:
+		ldelim = '[';
+		rdelim = ']';
 		break;
 	}
+	os << "<mo fence='true' stretchy='true' form='prefix'>" << ldelim << "</mo>"
+	   << "<mfrac linethickness='0'>"
+	   << cell(0) << cell(1)
+	   << "</mfrac>"
+	   << "<mo fence='true' stretchy='true' form='postfix'>" << rdelim << "</mo>";
 }
 
 
