@@ -106,6 +106,12 @@ void InsetMathBoldSymbol::write(WriteStream & os) const
 }
 
 
+void InsetMathBoldSymbol::mathmlize(MathStream & os) const
+{
+	os << "<mstyle mathvariant='bold'>" << cell(0) << "</mstyle>";
+}
+
+
 void InsetMathBoldSymbol::infoize(odocstream & os) const
 {
 	switch (kind_) {

@@ -17,7 +17,6 @@
 
 namespace lyx {
 
-
 /// Inset for AMSTeX's \boldsymbol
 class InsetMathBoldSymbol : public InsetMathNest {
 public:
@@ -42,6 +41,8 @@ public:
 	void validate(LaTeXFeatures & features) const;
 	///
 	void write(WriteStream & os) const;
+	///
+	void mathmlize(MathStream &) const;
 	///
 	void infoize(odocstream & os) const;
 	///
