@@ -13,7 +13,6 @@
 
 #include "InsetMathRoot.h"
 #include "MathData.h"
-#include "MathExtern.h"
 #include "MathStream.h"
 #include "Cursor.h"
 
@@ -113,13 +112,9 @@ void InsetMathRoot::octave(OctaveStream & os) const
 }
 
 
-docstring InsetMathRoot::mathmlize(MathStream & os) const
+void InsetMathRoot::mathmlize(MathStream & os) const
 {
-	os << MTag("mroot");
-	docstring rv = lyx::mathmlize(cell(1), os);
-	rv += lyx::mathmlize(cell(0), os);
-	os << ETag("mroot");
-	return rv;
+	os << MTag("mroot") << cell(1) << cell(0) << ETag("mroot");
 }
 
 

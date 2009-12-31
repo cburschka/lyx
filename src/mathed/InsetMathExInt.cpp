@@ -12,7 +12,6 @@
 
 #include "InsetMathExInt.h"
 #include "MathData.h"
-#include "MathExtern.h"
 #include "MathStream.h"
 #include "MathStream.h"
 #include "InsetMathSymbol.h"
@@ -123,7 +122,7 @@ void InsetMathExInt::mathematica(MathematicaStream & os) const
 }
 
 
-docstring InsetMathExInt::mathmlize(MathStream & os) const
+void InsetMathExInt::mathmlize(MathStream & os) const
 {
 	// At the moment, we are not extracting sums and the like for MathML.
 	// If we should decide to do so later, then we'll need to re-merge
@@ -151,11 +150,9 @@ docstring InsetMathExInt::mathmlize(MathStream & os) const
 		os << ETag("msub");
 	else if (upper)
 		os << ETag("msup");
-	docstring rv = lyx::mathmlize(cell(0), os);
-	os << "<mo> &InvisibleTimes; </mo>"
+	os << cell(0) << "<mo> &InvisibleTimes; </mo>"
 	   << MTag("mrow") << "<mo> &DifferentialD; </mo>"
 	   << cell(1) << ETag("mrow");
-	return rv;
 }
 
 

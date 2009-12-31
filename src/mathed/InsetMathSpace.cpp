@@ -192,11 +192,11 @@ void InsetMathSpace::octave(OctaveStream & os) const
 }
 
 
-docstring InsetMathSpace::mathmlize(MathStream & ms) const
+void InsetMathSpace::mathmlize(MathStream & ms) const
 {
 	SpaceInfo const & si = space_info[space_];
 	if (si.negative || !si.visible)
-		return docstring();
+		return;
 	string l;
 	if (si.custom)
 		l = length_.asHTMLString();
@@ -210,7 +210,6 @@ docstring InsetMathSpace::mathmlize(MathStream & ms) const
 	if (!l.empty())
 		ms << " width=\"" << from_ascii(l) << "\"";
 	ms << " />";
-	return docstring();
 }
 
 	

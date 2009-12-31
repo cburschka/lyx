@@ -89,6 +89,13 @@ void InsetMathString::octave(OctaveStream & os) const
 }
 
 
+void InsetMathString::mathmlize(MathStream & /*os*/) const
+{
+	// useless, no doubt, but we should not be here
+	LASSERT(false, /* */);
+}
+
+
 void InsetMathString::write(WriteStream & os) const
 {
 	if (!os.latex() || os.lockedMode()) {

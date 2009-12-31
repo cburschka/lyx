@@ -102,7 +102,7 @@ void InsetMathBig::normalize(NormalStream & os) const
 }
 
 
-docstring InsetMathBig::mathmlize(MathStream & os) const
+void InsetMathBig::mathmlize(MathStream & os) const
 {
 	os << "<mo form='prefix' fence='true' stretchy='true' symmetric='true'>";
 	if (delim_ == "(" || delim_ == ")"
@@ -146,7 +146,6 @@ docstring InsetMathBig::mathmlize(MathStream & os) const
 	else if (delim_ == "\\Updownarrow")
 		os << "&vArr;";
 	os << "</mo>";
-	return docstring();;
 }
 
 

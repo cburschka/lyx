@@ -52,7 +52,7 @@ public:
 	///
 	void octave(OctaveStream &) const;
 	///
-	docstring mathmlize(MathStream & ms) const;
+	void mathmlize(MathStream & ms) const;
 	///
 	void write(WriteStream & os) const;
 	/// generate something that will be understood by the Dialogs.

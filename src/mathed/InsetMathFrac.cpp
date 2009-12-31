@@ -17,7 +17,6 @@
 #include "Cursor.h"
 #include "LaTeXFeatures.h"
 #include "MathData.h"
-#include "MathExtern.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 #include "MetricsInfo.h"
@@ -385,14 +384,12 @@ void InsetMathFrac::octave(OctaveStream & os) const
 }
 
 
-docstring InsetMathFrac::mathmlize(MathStream & os) const
+void InsetMathFrac::mathmlize(MathStream & os) const
 {
-	os << MTag("mfrac") << MTag("mrow");
-	docstring rv = lyx::mathmlize(cell(0), os);
-	os << ETag("mrow") << MTag("mrow");
-	rv += lyx::mathmlize(cell(1), os);
-	os << ETag("mrow") << ETag("mfrac");
-	return rv;
+	os << MTag("mfrac")
+	   << MTag("mrow") << cell(0) << ETag("mrow")
+		 << MTag("mrow") << cell(1) << ETag("mrow")
+		 << ETag("mfrac");
 }
 
 
@@ -536,9 +533,8 @@ void InsetMathBinom::normalize(NormalStream & os) const
 }
 
 
-docstring InsetMathBinom::mathmlize(MathStream & os) const
+void InsetMathBinom::mathmlize(MathStream & os) const
 {
-	// FIXME This all needs fixing
 	switch (kind_) {
 	case BINOM:
 		os << MTag("mbinom") << cell(0) << cell(1) << ETag("mbinom");
@@ -551,7 +547,6 @@ docstring InsetMathBinom::mathmlize(MathStream & os) const
 		os << MTag("mdbinom") << cell(0) << cell(1) << ETag("mdbinom");
 		break;
 	}
-	return docstring();
 }
 
 

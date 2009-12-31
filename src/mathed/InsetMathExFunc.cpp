@@ -13,7 +13,6 @@
 #include "InsetMathExFunc.h"
 
 #include "MathData.h"
-#include "MathExtern.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 #include "MetricsInfo.h"
@@ -123,10 +122,10 @@ void InsetMathExFunc::mathematica(MathematicaStream & os) const
 }
 
 
-docstring InsetMathExFunc::mathmlize(MathStream & os) const
+void InsetMathExFunc::mathmlize(MathStream & os) const
 {
 	os << "<mi>" << name_ << "</mi><mo>&af;</mo>";
-	return lyx::mathmlize(cell(0), os);
+	os << cell(0);
 }
 
 

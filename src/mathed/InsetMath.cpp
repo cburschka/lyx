@@ -120,13 +120,12 @@ void InsetMath::mathematica(MathematicaStream & os) const
 }
 
 
-docstring InsetMath::mathmlize(MathStream & os) const
+void InsetMath::mathmlize(MathStream & os) const
 {
 	os << MTag("mi");
 	NormalStream ns(os.os());
 	normalize(ns);
 	os << ETag("mi");
-	return docstring();
 }
 
 

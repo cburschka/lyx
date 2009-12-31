@@ -219,7 +219,7 @@ public:
 	///
 	//void maple(MapleStream &) const;
 	///
-	docstring mathmlize(MathStream &) const;
+	void mathmlize(MathStream &) const;
 	///
 	//void octave(OctaveStream &) const;
 

@@ -13,9 +13,8 @@
 
 #include "InsetMathEnsureMath.h"
 
-#include "MathExtern.h"
-#include "MathData.h"
 #include "MathStream.h"
+#include "MathData.h"
 
 #include <ostream>
 
@@ -68,9 +67,9 @@ void InsetMathEnsureMath::write(WriteStream & os) const
 }
 
 
-docstring InsetMathEnsureMath::mathmlize(MathStream & os) const
+void InsetMathEnsureMath::mathmlize(MathStream & os) const
 {
-	return lyx::mathmlize(cell(0), os);
+	os << cell(0);
 }
 
 

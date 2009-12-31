@@ -187,7 +187,7 @@ public:
 	/// write content as something readable by Mathematica
 	virtual void mathematica(MathematicaStream &) const;
 	/// write content as something resembling MathML
-	virtual docstring mathmlize(MathStream &) const;
+	virtual void mathmlize(MathStream &) const;
 	/// write content as something readable by Octave
 	virtual void octave(OctaveStream &) const;
 

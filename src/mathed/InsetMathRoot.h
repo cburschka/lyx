@@ -36,7 +36,7 @@ public:
 	///
 	void normalize(NormalStream &) const;
 	///
-	docstring mathmlize(MathStream &) const;
+	void mathmlize(MathStream &) const;
 	///
 	void maple(MapleStream &) const;
 	///

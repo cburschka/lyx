@@ -12,7 +12,6 @@
 
 #include "InsetMathLim.h"
 #include "MathData.h"
-#include "MathExtern.h"
 #include "MathStream.h"
 
 #include "support/debug.h"
@@ -72,16 +71,13 @@ void InsetMathLim::mathematica(MathematicaStream & os) const
 }
 
 
-docstring	InsetMathLim::mathmlize(MathStream & os) const
+void InsetMathLim::mathmlize(MathStream & os) const
 {
 	// FIXME XHTML We need a form of MTag that takes attributes.
 	os << "<munder>"
 	   << "<mo form='prefix'>" << "lim" << "</mo>"
-		 << "<mrow>" << cell(1) << "<mo>&rarr;</mo>" << cell(2)
-		 << "</mrow></munder>" << "<mo>(</mo>";
-	docstring const rv = lyx::mathmlize(cell(0), os);
-	os << "<mo>)</mo>";
-	return rv;
+	   << "<mrow>" << cell(1) << "<mo>&rarr;</mo>" << cell(2) << "</mrow></munder>"
+	   << "<mo>(</mo>" << cell(0) << "<mo>)</mo>" ; 
 }
 
 

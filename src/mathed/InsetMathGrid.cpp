@@ -14,7 +14,6 @@
 #include "InsetMathGrid.h"
 
 #include "MathData.h"
-#include "MathExtern.h"
 #include "MathParser.h"
 #include "MathStream.h"
 #include "MetricsInfo.h"
@@ -968,21 +967,19 @@ void InsetMathGrid::normalize(NormalStream & os) const
 }
 
 
-docstring InsetMathGrid::mathmlize(MathStream & os) const
+void InsetMathGrid::mathmlize(MathStream & os) const
 {
 	bool const havetable = nrows() > 1;
 	if (havetable)
 		os << MTag("mtable");
-	docstring rv;
 	for (row_type row = 0; row < nrows(); ++row) {
 		os << MTag("mrow");
 		for (col_type col = 0; col < ncols(); ++col)
-			rv += lyx::mathmlize(cell(index(row, col)), os);
+			os << cell(index(row, col));
 		os << ETag("mrow");
 	}
 	if (havetable)
 		os << ETag("mtable");
-	return rv;
 }
 
 

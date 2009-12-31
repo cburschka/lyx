@@ -147,7 +147,7 @@ void InsetMathSpecialChar::octave(OctaveStream & os) const
 }
 
 
-docstring InsetMathSpecialChar::mathmlize(MathStream & ms) const
+void InsetMathSpecialChar::mathmlize(MathStream & ms) const
 {
 	switch (char_) {
 	case '&':
@@ -157,7 +157,6 @@ docstring InsetMathSpecialChar::mathmlize(MathStream & ms) const
 		ms.os().put(char_);
 		break;
 	}
-	return docstring();
 }
 
 

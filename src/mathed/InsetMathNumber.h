@@ -43,7 +43,7 @@ public:
 	///
 	void mathematica(MathematicaStream &) const;
 	///
-	docstring mathmlize(MathStream &) const;
+	void mathmlize(MathStream &) const;
 	///
 	void write(WriteStream & os) const;
 	///

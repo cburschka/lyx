@@ -82,7 +82,7 @@ public:
 	///
 	void octave(OctaveStream &) const;
 	///
-	docstring mathmlize(MathStream &) const;
+	void mathmlize(MathStream &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 public:
@@ -121,7 +121,7 @@ public:
 	///
 	bool extraBraces() const;
 	///
-	docstring mathmlize(MathStream &) const;
+	void mathmlize(MathStream &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 	///

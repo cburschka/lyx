@@ -85,7 +85,7 @@ void InsetMathDots::validate(LaTeXFeatures & features) const
 }
 
 
-docstring InsetMathDots::mathmlize(MathStream & os) const
+void InsetMathDots::mathmlize(MathStream & os) const
 {
 	// which symbols we support is decided by what is listed in
 	// lib/symbols as generating a dots inset
@@ -106,7 +106,6 @@ docstring InsetMathDots::mathmlize(MathStream & os) const
 	else
 		LASSERT(false, ent = "&hellip;");
 	os << MTag("mi") << from_ascii(ent) << ETag("mi");
-	return docstring();
 }
 
 } // namespace lyx

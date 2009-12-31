@@ -39,7 +39,7 @@ public:
 	///
 	void mathematica(MathematicaStream &) const;
 	///
-	docstring mathmlize(MathStream &) const;
+	void mathmlize(MathStream &) const;
 	///
 	void maxima(MaximaStream &) const;
 	///

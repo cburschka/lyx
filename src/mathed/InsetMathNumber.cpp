@@ -67,10 +67,9 @@ void InsetMathNumber::octave(OctaveStream & os) const
 }
 
 
-docstring InsetMathNumber::mathmlize(MathStream & os) const
+void InsetMathNumber::mathmlize(MathStream & os) const
 {
 	os << "<mn> " << str_ << " </mn>";
-	return docstring();
 }
 
 

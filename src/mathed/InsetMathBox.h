@@ -35,7 +35,7 @@ public:
 	///
 	void normalize(NormalStream & ns) const;
 	///
-	docstring mathmlize(MathStream & ms) const;
+	void mathmlize(MathStream & ms) const;
 	///
 	void infoize(odocstream & os) const;
 	///
@@ -66,7 +66,7 @@ public:
 	/// write normalized content
 	void normalize(NormalStream & ns) const;
 	///
-	//docstring mathmlize(MathStream & ms) const;
+	//void mathmlize(MathStream & ms) const;
 	///
 	void infoize(odocstream & os) const;
 private:
@@ -89,7 +89,7 @@ public:
 	/// write normalized content
 	void normalize(NormalStream & ns) const;
 	///
-	//docstring mathmlize(MathStream & ms) const;
+	//void mathmlize(MathStream & ms) const;
 	///
 	mode_type currentMode() const { return TEXT_MODE; }
 	///
@@ -116,7 +116,7 @@ public:
 	///
 	void write(WriteStream & os) const;
 	///
-	//docstring mathmlize(MathStream & ms) const;
+	//void mathmlize(MathStream & ms) const;
 	/// write normalized content
 	void normalize(NormalStream & ns) const;
 	///
