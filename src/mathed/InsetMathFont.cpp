@@ -113,33 +113,39 @@ void InsetMathFont::mathmlize(MathStream & os) const
 	// correctly. A proper fix would presumably involve tracking
 	// the fonts already in effect.
 	std::string variant;
-	if (key_->name == "mathnormal" || key_->name == "mathrm"
-	    || key_->name == "text" || key_->name == "textnormal"
-	    || key_->name == "textrm" || key_->name == "textup"
-	    || key_->name == "textmd")
+	docstring const & tag = key_->name;
+	if (tag == "mathnormal" || tag == "mathrm"
+	    || tag == "text" || tag == "textnormal"
+	    || tag == "textrm" || tag == "textup"
+	    || tag == "textmd")
 		variant = "normal";
-	else if (key_->name == "frak" || key_->name == "mathfrak")
+	else if (tag == "frak" || tag == "mathfrak")
 		variant = "fraktur";
-	else if (key_->name == "mathbb" || key_->name == "mathbf"
-	         || key_->name == "textbf")
+	else if (tag == "mathbb" || tag == "mathbf"
+	         || tag == "textbf")
 		variant = "bold";
-	else if (key_->name == "mathcal")
+	else if (tag == "mathcal")
 		variant == "script";
-	else if (key_->name == "mathit" || key_->name == "textsl"
-	         || key_->name == "emph")
+	else if (tag == "mathit" || tag == "textsl"
+	         || tag == "emph")
 		variant = "italic";
-	else if (key_->name == "mathsf" || key_->name == "textit"
-	         || key_->name == "textsf")
+	else if (tag == "mathsf" || tag == "textit"
+	         || tag == "textsf")
 		variant = "sans-serif";
-	else if (key_->name == "mathtt" || key_->name == "texttt")
+	else if (tag == "mathtt" || tag == "texttt")
 		variant = "monospace";
 	// no support at present for textipa, textsc, noun
 	
 	// FIXME We need some kind of "mode tracker", so we can
 	// just output verbatim text in some cases.
-	if (!variant.empty())
-		os << "<mstyle mathvariant='" << from_utf8(variant) << "'>"
-		   << cell(0) << "</mstyle>";
+	docstring const beg = (tag.size() < 4) ? from_ascii("") : tag.substr(0, 4);
+	bool const textmode = (beg == "text");
+	if (!variant.empty()) {
+		os << "<mstyle mathvariant='" << from_utf8(variant) << "'>";
+		SetMode sm(os, textmode);
+		os << cell(0);
+		os << "</mstyle>";
+	}
 }
 
 

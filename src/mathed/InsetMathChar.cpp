@@ -167,13 +167,27 @@ void InsetMathChar::octave(OctaveStream & os) const
 // Worst case: We get bad spacing, or bad italics.
 void InsetMathChar::mathmlize(MathStream & ms) const
 {
+	std::string entity;
 	switch (char_) {
-		case '<': ms << "<mo>&lt;</mo>"; return;
-		case '>': ms << "<mo>&gt;</mo>"; return;
-		case '&': ms << "<mo>&amp;</mo>"; return;
+		case '<': entity = "&lt;"; break;
+		case '>': entity = "&gt;"; break;
+		case '&': entity = "&amp;"; break;
 		default: break;
 	}
 	
+	if (ms.inText()) {
+		if (entity.empty())
+			ms << char_type(char_);
+		else 
+			ms << from_ascii(entity);
+		return;
+	}
+	
+	if (!entity.empty()) {
+		ms << "<mo>" << from_ascii(entity) << "</mo>";
+		return;
+	}		
+
 	char const * type = 
 		(isalpha(char_) || Encodings::isMathAlpha(char_))
 			? "mi" : "mo";
