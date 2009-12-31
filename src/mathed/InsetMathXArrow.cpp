@@ -76,6 +76,16 @@ void InsetMathXArrow::normalize(NormalStream & os) const
 }
 
 
+void InsetMathXArrow::mathmlize(MathStream & ms) const
+{
+	char const * const arrow = name_ == "xleftarrow" 
+			? "&larr;" : "&rarr;";
+	ms << "<munderover accent='false' accentunder='false'>"
+	   << arrow << cell(1) << cell(0)
+	   << "</munderover>";
+}
+
+
 void InsetMathXArrow::validate(LaTeXFeatures & features) const
 {
 	features.require("amsmath");

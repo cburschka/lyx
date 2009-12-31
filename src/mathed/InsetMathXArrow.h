@@ -32,6 +32,8 @@ public:
 	///
 	void normalize(NormalStream & os) const;
 	///
+	void mathmlize(MathStream &) const;
+	///
 	void validate(LaTeXFeatures & features) const;
 	///
 	InsetCode lyxCode() const { return MATH_XARROW_CODE; }
