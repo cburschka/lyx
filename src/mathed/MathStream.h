@@ -306,23 +306,11 @@ MathStream & operator<<(MathStream &, ETag const &);
 class SetMode {
 public:
 	///
-	explicit SetMode(MathStream & os, bool text)
-		: os_(os)
-	{
-		was_text_ = os.inText();
-		if (text)
-			os.setTextMode();
-		else
-			os.setMathMode();
-	}
+	explicit SetMode(MathStream & os, bool text, docstring attrs);
+	// not clear yet precisely what we need...
+	// explicit SetMode(MathStream & os, bool text);
 	///
-	~SetMode()
-	{
-		if (was_text_)
-			os_.setTextMode();
-		else
-			os_.setMathMode();
-	}
+	~SetMode();
 private:
 	///
 	MathStream & os_;

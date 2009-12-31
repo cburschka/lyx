@@ -127,25 +127,22 @@ void InsetMathFont::mathmlize(MathStream & os) const
 	else if (tag == "mathcal")
 		variant == "script";
 	else if (tag == "mathit" || tag == "textsl"
-	         || tag == "emph")
+	         || tag == "emph" || tag == "textit")
 		variant = "italic";
-	else if (tag == "mathsf" || tag == "textit"
-	         || tag == "textsf")
+	else if (tag == "mathsf" || tag == "textsf")
 		variant = "sans-serif";
 	else if (tag == "mathtt" || tag == "texttt")
 		variant = "monospace";
 	// no support at present for textipa, textsc, noun
 	
-	// FIXME We need some kind of "mode tracker", so we can
-	// just output verbatim text in some cases.
 	docstring const beg = (tag.size() < 4) ? from_ascii("") : tag.substr(0, 4);
 	bool const textmode = (beg == "text");
 	if (!variant.empty()) {
-		os << "<mstyle mathvariant='" << from_utf8(variant) << "'>";
-		SetMode sm(os, textmode);
+		docstring const attrs = from_ascii("mathvariant='" + variant + "'");
+		SetMode sm(os, textmode, attrs);
 		os << cell(0);
-		os << "</mstyle>";
-	}
+	} else
+		os << cell(0);
 }
 
 

@@ -1423,10 +1423,12 @@ void mathmlize(MathData const & dat, MathStream & os)
 	} else if (ar.size() == 1)
 		os << ar.front();
 	else {
-		os << (os.inText() ? MTag("mtext") : MTag("mrow"));
+		if (!os.inText())
+			os << MTag("mrow");
 		for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
 			(*it)->mathmlize(os);
-		os << (os.inText() ? ETag("mtext") : ETag("mrow"));
+		if (!os.inText())
+			os << ETag("mrow");
 	}
 }
 

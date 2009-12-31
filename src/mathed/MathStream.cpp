@@ -337,6 +337,39 @@ MathStream & operator<<(MathStream & ms, docstring const & s)
 }
 
 
+SetMode::SetMode(MathStream & os, bool text, docstring attrs)
+		: os_(os)
+{
+	was_text_ = os.inText();
+	if (was_text_)
+		os << "</mtext>";
+	if (text) {
+		os.setTextMode();
+		os << "<mtext";
+		if (!attrs.empty())
+			os << " " << attrs;
+		os << ">";
+	} else {
+		if (!attrs.empty())
+			os << "<mstyle " << attrs << ">";
+		os.setMathMode();
+	}
+}
+
+
+SetMode::~SetMode()
+{
+	if (os_.inText())
+		os_ << "</mtext>";
+	if (was_text_) {
+		os_.setTextMode();
+		os_ << "<mtext>";
+	} else {
+		os_.setMathMode();
+	}
+}
+
+
 //////////////////////////////////////////////////////////////////////
 
 
