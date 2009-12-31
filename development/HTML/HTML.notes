@@ -53,13 +53,16 @@ These insets work but still need work:
 		as an InsetMathGrid, from which it inherits, and so as a simple table. I don't know
 		how much more we can do.
 
+
 Math
   We have a fair bit of math now working via MathML output, but there are still some 
   isues, and not all the insets work. Here are the ones I know still need work:
-	- Array
+	- Array: Should be able to use alignment information via appropriate attributes, for
+		mtable, mrow, and mtd.
 	- Box: There is a general issue here with text mode nesting. See the FIXME attached
 		to the SetMode class.
-	- Lefteqn
+	- Lefteqn: For this, and numbering in general, probably need mlabeledtr, which may
+		mean we always need to output <mtable>.
 	- Par?
 	- Phantom: There is some support for this in MathML....
 	- Ref: Needs to be deferred.
