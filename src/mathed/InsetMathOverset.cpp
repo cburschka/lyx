@@ -86,7 +86,7 @@ void InsetMathOverset::normalize(NormalStream & os) const
 
 void InsetMathOverset::mathmlize(MathStream & ms) const
 {
-	ms << "<mover accent='false'>" << cell(0) << cell(1) << "</mover>";
+	ms << "<mover accent='false'>" << cell(1) << cell(0) << "</mover>";
 }
 
 

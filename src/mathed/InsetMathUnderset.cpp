@@ -95,6 +95,12 @@ void InsetMathUnderset::normalize(NormalStream & os) const
 }
 
 
+void InsetMathUnderset::mathmlize(MathStream & ms) const
+{
+	ms << "<munder accent='false'>" << cell(1) << cell(0) << "</munder>";
+}
+
+
 void InsetMathUnderset::validate(LaTeXFeatures & features) const
 {
 	features.require("amsmath");

@@ -38,6 +38,8 @@ public:
 	///
 	void normalize(NormalStream & ns) const;
 	///
+	void mathmlize(MathStream &) const;
+	///
 	void validate(LaTeXFeatures & features) const;
 	///
 	InsetCode lyxCode() const { return MATH_UNDERSET_CODE; }
