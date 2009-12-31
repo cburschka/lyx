@@ -583,7 +583,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			&& flag.enabled()
 		    && !lyxaction.funcHasFlag(action, LyXAction::NoBuffer)
 		    && !lyxaction.funcHasFlag(action, LyXAction::ReadOnly))
-			doc_buffer->markDirty();			
+			lv->currentBufferView()->buffer().markDirty();			
 
 		if (lv && lv->currentBufferView()) {
 			// BufferView::update() updates the ViewMetricsInfo and
