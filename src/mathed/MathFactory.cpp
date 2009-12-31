@@ -413,7 +413,7 @@ MathAtom createInsetMath(docstring const & s, Buffer * buf)
 	}
 	if (s == "xrightarrow" || s == "xleftarrow")
 		return MathAtom(new InsetMathXArrow(buf, s));
-	if (s == "split" || s == "gathered" || s == "aligned" || s == "alignedat")
+	if (s == "split" || s == "alignedat")
 		return MathAtom(new InsetMathSplit(buf, s));
 	if (s == "cases")
 		return MathAtom(new InsetMathCases(buf));
