@@ -1417,17 +1417,19 @@ void mathmlize(MathData const & dat, MathStream & os)
 {
 	MathData ar = dat;
 	extractStructure(ar, MATHML);
-	if (ar.size() == 0)
-		os << "<mrow/>";
-	else if (ar.size() == 1)
+	if (ar.size() == 0) {
+		if (!os.inText())
+			os << "<mrow/>";
+	} else if (ar.size() == 1)
 		os << ar.front();
 	else {
-		os << MTag("mrow");
+		os << (os.inText() ? MTag("mtext") : MTag("mrow"));
 		for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
 			(*it)->mathmlize(os);
-		os << ETag("mrow");
+		os << (os.inText() ? ETag("mtext") : ETag("mrow"));
 	}
 }
+
 
 // convert this inset somehow to a number
 bool extractNumber(MathData const & ar, int & i)
