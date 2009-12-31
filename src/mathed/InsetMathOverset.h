@@ -36,6 +36,8 @@ public:
 	///
 	void normalize(NormalStream &) const;
 	///
+	void mathmlize(MathStream &) const;
+	///
 	void validate(LaTeXFeatures & features) const;
 	///
 	InsetCode lyxCode() const { return MATH_OVERSET_CODE; }
