@@ -17,12 +17,6 @@
 
 namespace lyx {
 
-
-/** Stackrel objects
- *  \author André Pönitz
- *
- * Full author contact details are available in file CREDITS.
- */
 class InsetMathStackrel : public InsetMathFracBase {
 public:
 	///
@@ -43,8 +37,6 @@ public:
 private:
 	virtual Inset * clone() const;
 };
-
-
 
 } // namespace lyx
 #endif
