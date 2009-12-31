@@ -33,6 +33,7 @@ public:
 	void dispatchParams() {}
 	void enableView(bool enable);
 	bool isBufferDependent() const { return true; }
+	bool canApply() const { return true; }
 	//@}
 
 private Q_SLOTS:
