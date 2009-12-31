@@ -1092,9 +1092,9 @@ void InsetMathHull::normalize(NormalStream & os) const
 }
 
 
-void InsetMathHull::mathmlize(MathStream & os) const
+docstring InsetMathHull::mathmlize(MathStream & os) const
 {
-	InsetMathGrid::mathmlize(os);
+	return InsetMathGrid::mathmlize(os);
 }
 
 
@@ -1782,9 +1782,9 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const &) const
 		xs << StartTag("math", 
 		        "display=\"block\" xmlns=\"http://www.w3.org/1998/Math/MathML\"", true);
 	MathStream ms(xs.os());
-	InsetMathGrid::mathmlize(ms);
+	docstring const rv = InsetMathGrid::mathmlize(ms);
 	xs << EndTag("math");
-	return docstring();
+	return rv;
 }
 
 

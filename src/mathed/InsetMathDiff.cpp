@@ -12,6 +12,7 @@
 
 #include "InsetMathDiff.h"
 #include "MathData.h"
+#include "MathExtern.h"
 #include "MathStream.h"
 
 #include "support/debug.h"
@@ -95,15 +96,17 @@ void InsetMathDiff::mathematica(MathematicaStream & os) const
 }
 
 
-void InsetMathDiff::mathmlize(MathStream & os) const
+docstring InsetMathDiff::mathmlize(MathStream & os) const
 {
 	os << "diff(";
+	docstring rv;
 	for (idx_type idx = 0; idx < nargs(); ++idx) {
 		if (idx != 0)
 			os << ',';
-		os << cell(idx);
+		rv += lyx::mathmlize(cell(idx), os);
 	}
 	os << ')';
+	return rv;
 }
 
 

@@ -30,7 +30,7 @@ void normalize(MathData const &, NormalStream &);
 void maple(MathData const &, MapleStream &);
 void maxima(MathData const &, MaximaStream &);
 void mathematica(MathData const &, MathematicaStream &);
-void mathmlize(MathData const &, MathStream &);
+docstring mathmlize(MathData const &, MathStream &);
 void octave(MathData const &, OctaveStream &);
 
 bool extractNumber(MathData const & ar, int & i);

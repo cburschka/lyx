@@ -165,12 +165,12 @@ void InsetMathChar::octave(OctaveStream & os) const
 // mathalpha, then we'll treat it as an identifier, otherwise as an 
 // operator.
 // Worst case: We get bad spacing, or bad italics.
-void InsetMathChar::mathmlize(MathStream & ms) const
+docstring InsetMathChar::mathmlize(MathStream & ms) const
 {
 	switch (char_) {
-		case '<': ms << "<mo>&lt;</mo>"; return;
-		case '>': ms << "<mo>&gt;</mo>"; return;
-		case '&': ms << "<mo>&amp;</mo>"; return;
+		case '<': ms << "<mo>&lt;</mo>"; return docstring();
+		case '>': ms << "<mo>&gt;</mo>"; return docstring();
+		case '&': ms << "<mo>&amp;</mo>"; return docstring();
 		default: break;
 	}
 	
@@ -179,6 +179,7 @@ void InsetMathChar::mathmlize(MathStream & ms) const
 			? "mi" : "mo";
 	// we don't use MTag and ETag because we do not want the spacing
 	ms << "<" << type << ">" << char(char_) << "</" << type << ">";	
+	return docstring();
 }
 
 

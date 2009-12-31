@@ -12,6 +12,7 @@
 
 #include "InsetMathSqrt.h"
 #include "MathData.h"
+#include "MathExtern.h"
 #include "MathStream.h"
 #include "TextPainter.h"
 #include "frontends/Painter.h"
@@ -107,9 +108,12 @@ void InsetMathSqrt::octave(OctaveStream & os) const
 }
 
 
-void InsetMathSqrt::mathmlize(MathStream & os) const
+docstring InsetMathSqrt::mathmlize(MathStream & os) const
 {
-	os << MTag("msqrt") << cell(0) << ETag("msqrt");
+	os << MTag("msqrt");
+	docstring const rv = lyx::mathmlize(cell(0), os);
+	os << ETag("msqrt");
+	return rv;
 }
 
 

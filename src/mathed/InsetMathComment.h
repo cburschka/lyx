@@ -44,7 +44,7 @@ public:
 	///
 	void octave(OctaveStream &) const;
 	///
-	void mathmlize(MathStream &) const;
+	docstring mathmlize(MathStream &) const;
 	///
 	void infoize(odocstream & os) const;
 	///

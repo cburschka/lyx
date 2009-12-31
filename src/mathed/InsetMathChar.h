@@ -41,7 +41,7 @@ public:
 	///
 	void octave(OctaveStream & os) const;
 	///
-	void mathmlize(MathStream & ms) const;
+	docstring mathmlize(MathStream & ms) const;
 	/// identifies Charinsets
 	InsetMathChar const * asCharInset() const { return this; }
 	///

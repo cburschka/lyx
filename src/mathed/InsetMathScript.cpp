@@ -18,6 +18,7 @@
 #include "InsetMathScript.h"
 #include "InsetMathSymbol.h"
 #include "MathData.h"
+#include "MathExtern.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 
@@ -616,7 +617,7 @@ void InsetMathScript::mathematica(MathematicaStream & os) const
 // It may be worth trying to output munder, mover, and munderover
 // in certain cases, e.g., for display formulas. But then we would
 // need to know if we're in a display formula.
-void InsetMathScript::mathmlize(MathStream & os) const
+docstring InsetMathScript::mathmlize(MathStream & os) const
 {
 	bool d = hasDown() && down().size();
 	bool u = hasUp() && up().size();
@@ -628,9 +629,12 @@ void InsetMathScript::mathmlize(MathStream & os) const
 	else if (d)
 		os << MTag("msub");
 
-	if (nuc().size())
-		os << MTag("mrow") << nuc() << ETag("mrow");
-	else
+	docstring rv;
+	if (nuc().size()) {
+		os << MTag("mrow");
+		rv = lyx::mathmlize(nuc(), os);
+		os << ETag("mrow");
+	} else
 		os << "<mrow />";
 
 	if (u && d)
@@ -641,6 +645,7 @@ void InsetMathScript::mathmlize(MathStream & os) const
 		os << MTag("mrow") << up() << ETag("mrow") << ETag("msup");
 	else if (d)
 		os << MTag("mrow") << down() << ETag("mrow") << ETag("msub");
+	return rv;
 }
 
 

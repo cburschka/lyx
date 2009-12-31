@@ -86,9 +86,10 @@ void InsetMathComment::octave(OctaveStream &) const
 {}
 
 
-void InsetMathComment::mathmlize(MathStream & os) const
+docstring InsetMathComment::mathmlize(MathStream & os) const
 {
 	os << MTag("comment") << cell(0) << cell(1) << ETag("comment");
+	return docstring();
 }
 
 

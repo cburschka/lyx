@@ -1413,20 +1413,22 @@ void mathematica(MathData const & dat, MathematicaStream & os)
 }
 
 
-void mathmlize(MathData const & dat, MathStream & os)
+docstring mathmlize(MathData const & dat, MathStream & os)
 {
 	MathData ar = dat;
 	extractStructure(ar, MATHML);
+	docstring retval;
 	if (ar.size() == 0)
 		os << "<mrow/>";
 	else if (ar.size() == 1)
-		os << ar.front();
+		retval = ar.front()->mathmlize(os);
 	else {
 		os << MTag("mrow");
 		for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
-			(*it)->mathmlize(os);
+			retval += (*it)->mathmlize(os);
 		os << ETag("mrow");
 	}
+	return retval;
 }
 
 // convert this inset somehow to a number

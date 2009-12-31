@@ -13,6 +13,7 @@
 #include "InsetMathBrace.h"
 
 #include "MathData.h"
+#include "MathExtern.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 #include "MetricsInfo.h"
@@ -94,9 +95,12 @@ void InsetMathBrace::octave(OctaveStream & os) const
 }
 
 
-void InsetMathBrace::mathmlize(MathStream & os) const
+docstring InsetMathBrace::mathmlize(MathStream & os) const
 {
-	os << MTag("mrow") << cell(0) << ETag("mrow");
+	os << MTag("mrow");
+	docstring const rv = lyx::mathmlize(cell(0), os);
+	os << ETag("mrow");
+	return rv;
 }
 
 

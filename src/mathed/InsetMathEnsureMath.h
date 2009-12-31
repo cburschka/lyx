@@ -36,7 +36,7 @@ public:
 	///
 	void write(WriteStream & os) const;
 	///
-	void mathmlize(MathStream &) const;
+	docstring mathmlize(MathStream &) const;
 	///
 	void infoize(odocstream & os) const;
 	///

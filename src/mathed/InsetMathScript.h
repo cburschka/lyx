@@ -61,7 +61,7 @@ public:
 	/// write content as something readable by Mathematica
 	void mathematica(MathematicaStream &) const;
 	/// write content as something resembling MathML
-	void mathmlize(MathStream &) const;
+	docstring mathmlize(MathStream &) const;
 	/// write content as something readable by Octave
 	void octave(OctaveStream &) const;
 

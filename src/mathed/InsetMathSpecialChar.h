@@ -45,7 +45,7 @@ public:
 	///
 	void mathematica(MathematicaStream &) const;
 	///
-	void mathmlize(MathStream & ms) const;
+	docstring mathmlize(MathStream & ms) const;
 	/// identifies SpecialChar insets
 	InsetMathSpecialChar const * asSpecialCharInset() const { return this; }
 	///

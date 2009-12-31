@@ -39,7 +39,7 @@ public:
 	///
 	void normalize(NormalStream & ns) const;
 	///
-	void mathmlize(MathStream &) const { }
+	docstring mathmlize(MathStream &) const;
 	///
 	InsetCode lyxCode() const { return MATH_KERN_CODE; }
 

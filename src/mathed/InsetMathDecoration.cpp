@@ -14,6 +14,7 @@
 #include "InsetMathDecoration.h"
 
 #include "MathData.h"
+#include "MathExtern.h"
 #include "MathParser.h"
 #include "MathSupport.h"
 #include "MathStream.h"
@@ -205,16 +206,18 @@ namespace {
 	}
 }
 
-void InsetMathDecoration::mathmlize(MathStream & os) const
+docstring InsetMathDecoration::mathmlize(MathStream & os) const
 {
 	Translator const & t = translator();
 	Translator::const_iterator cur = t.find(to_utf8(key_->name));
-	LASSERT(cur != t.end(), return);
+	LASSERT(cur != t.end(), return docstring());
 	char const * const outag = cur->second.over ? "mover" : "munder";
-	os << MTag(outag)
-		 << MTag("mrow") << cell(0) << ETag("mrow")
+	os << MTag(outag) << MTag("mrow");
+	docstring const rv = lyx::mathmlize(cell(0), os);
+	os << ETag("mrow")
 		 << from_ascii("<mo stretchy=\"true\">" + cur->second.tag + "</mo>")
 		 << ETag(outag);
+	return rv;
 }
 
 

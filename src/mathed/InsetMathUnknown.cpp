@@ -86,9 +86,10 @@ void InsetMathUnknown::mathematica(MathematicaStream & os) const
 }
 
 
-void InsetMathUnknown::mathmlize(MathStream & os) const
+docstring InsetMathUnknown::mathmlize(MathStream & os) const
 {
 	os << MTag("mi") << name_ << ETag("mi");
+	return docstring();
 }
 
 

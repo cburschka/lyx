@@ -35,7 +35,7 @@ public:
 	///
 	InsetCode lyxCode() const { return MATH_DOTS_CODE; }
 	///
-	void mathmlize(MathStream & os) const;
+	docstring mathmlize(MathStream & os) const;
 protected:
 	/// cache for the thing's height
 	mutable int dh_;

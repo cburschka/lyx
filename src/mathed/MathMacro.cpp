@@ -73,7 +73,10 @@ public:
 	}
 	// FIXME Other external things need similar treatment.
 	///
-	void mathmlize(MathStream & ms) const { ms << mathMacro_.cell(idx_); }
+	docstring mathmlize(MathStream & ms) const {
+		ms << mathMacro_.cell(idx_);
+		return docstring();
+	}
 	///
 	void draw(PainterInfo & pi, int x, int y) const {
 		if (mathMacro_.editMetrics(pi.base.bv)) {
@@ -740,9 +743,10 @@ void MathMacro::maple(MapleStream & os) const
 }
 
 
-void MathMacro::mathmlize(MathStream & os) const
+docstring MathMacro::mathmlize(MathStream & os) const
 {
 	os << expanded_.cell(0);
+	return docstring();
 }
 
 

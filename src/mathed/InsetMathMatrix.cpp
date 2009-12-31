@@ -12,6 +12,7 @@
 
 #include "InsetMathMatrix.h"
 #include "MathData.h"
+#include "MathExtern.h"
 #include "MathStream.h"
 
 
@@ -89,20 +90,25 @@ void InsetMathMatrix::mathematica(MathematicaStream & os) const
 }
 
 
-void InsetMathMatrix::mathmlize(MathStream & os) const
+docstring InsetMathMatrix::mathmlize(MathStream & os) const
 {
 	os << "<mo form='prefix' fence='true' stretchy='true' symmetric='true' lspace='thinmathspace'>"
 	   << left_ << "</mo>";
 	os << MTag("mtable");
+	docstring rv;
 	for (row_type row = 0; row < nrows(); ++row) {
 		os << MTag("mtr");
-		for (col_type col = 0; col < ncols(); ++col)
-			os << MTag("mtd") << cell(index(row, col)) << ETag("mtd");
+		for (col_type col = 0; col < ncols(); ++col) {
+			os << MTag("mtd");
+			rv += lyx::mathmlize(cell(index(row, col)), os);
+			os << ETag("mtd");
+		}
 		os << ETag("mtr");
 	}
 	os << ETag("mtable");
 	os << "<mo form='postfix' fence='true' stretchy='true' symmetric='true' lspace='thinmathspace'>"
 	   << right_ << "</mo>";
+	return rv;
 }
 
 

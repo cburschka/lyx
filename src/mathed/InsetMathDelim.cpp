@@ -14,6 +14,7 @@
 #include "InsetMathDelim.h"
 
 #include "MathData.h"
+#include "MathExtern.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 #include "MetricsInfo.h"
@@ -161,10 +162,12 @@ void InsetMathDelim::mathematica(MathematicaStream & os) const
 }
 
 
-void InsetMathDelim::mathmlize(MathStream & os) const
+docstring InsetMathDelim::mathmlize(MathStream & os) const
 {
-	os << "<mo form='prefix' fence='true' stretchy='true' symmetric='true'>" << left_ << "</mo>"
-		<< cell(0) << "<mo form='postfix' fence='true' stretchy='true' symmetric='true'>" << right_ << "</mo>";
+	os << "<mo form='prefix' fence='true' stretchy='true' symmetric='true'>" << left_ << "</mo>";
+	docstring const rv = lyx::mathmlize(cell(0),os);
+	os << "<mo form='postfix' fence='true' stretchy='true' symmetric='true'>" << right_ << "</mo>";
+	return rv;
 }
 
 

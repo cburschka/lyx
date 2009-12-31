@@ -44,7 +44,7 @@ public:
 	///
 	void octave(OctaveStream &) const;
 	///
-	void mathmlize(MathStream &) const;
+	docstring mathmlize(MathStream &) const;
 	///
 	InsetCode lyxCode() const { return MATH_SQRT_CODE; }
 

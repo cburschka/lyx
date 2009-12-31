@@ -73,4 +73,10 @@ void InsetMathKern::normalize(NormalStream & os) const
 }
 
 
+docstring InsetMathKern::mathmlize(MathStream &) const
+{
+	return docstring();
+}
+
+
 } // namespace lyx

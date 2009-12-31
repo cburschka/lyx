@@ -102,7 +102,7 @@ public:
 	///
 	void write(WriteStream & os) const;
 	///
-	void mathmlize(MathStream &) const;
+	docstring mathmlize(MathStream &) const;
 	///
 	void normalize(NormalStream &) const;
 	///
