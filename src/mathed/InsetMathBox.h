@@ -66,9 +66,11 @@ public:
 	/// write normalized content
 	void normalize(NormalStream & ns) const;
 	///
-	//void mathmlize(MathStream & ms) const;
+	void mathmlize(MathStream & ms) const;
 	///
 	void infoize(odocstream & os) const;
+	///
+	void validate(LaTeXFeatures & features) const;
 private:
 	///
 	Inset * clone() const { return new InsetMathFBox(*this); }
@@ -89,11 +91,13 @@ public:
 	/// write normalized content
 	void normalize(NormalStream & ns) const;
 	///
-	//void mathmlize(MathStream & ms) const;
+	void mathmlize(MathStream & ms) const;
 	///
 	mode_type currentMode() const { return TEXT_MODE; }
 	///
 	void infoize(odocstream & os) const;
+	///
+	void validate(LaTeXFeatures & features) const;
 private:
 	Inset * clone() const { return new InsetMathMakebox(*this); }
 	///
@@ -116,7 +120,7 @@ public:
 	///
 	void write(WriteStream & os) const;
 	///
-	//void mathmlize(MathStream & ms) const;
+	void mathmlize(MathStream & ms) const;
 	/// write normalized content
 	void normalize(NormalStream & ns) const;
 	///

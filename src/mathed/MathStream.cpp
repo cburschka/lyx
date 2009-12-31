@@ -338,14 +338,14 @@ MathStream & operator<<(MathStream & ms, docstring const & s)
 
 
 SetMode::SetMode(MathStream & os, bool text)
-	: os_(os)
+	: os_(os), opened_(false)
 {
 	init(text, from_ascii(""));
 }
 
 
 SetMode::SetMode(MathStream & os, bool text, docstring attrs)
-	: os_(os)
+	: os_(os), opened_(false)
 {
 	init(text, attrs);
 }
@@ -362,9 +362,12 @@ void SetMode::init(bool text, docstring attrs)
 		if (!attrs.empty())
 			os_ << " " << attrs;
 		os_ << ">";
+		opened_ = true;
 	} else {
-		if (!attrs.empty())
+		if (!attrs.empty()) {
 			os_ << "<mstyle " << attrs << ">";
+			opened_ = true;
+		}
 		os_.setMathMode();
 	}
 }
@@ -372,8 +375,12 @@ void SetMode::init(bool text, docstring attrs)
 
 SetMode::~SetMode()
 {
-	if (os_.inText())
-		os_ << "</mtext>";
+	if (opened_) {
+		if (os_.inText())
+			os_ << "</mtext>";
+		else
+			os_ << "</mstyle>";
+	}
 	if (was_text_) {
 		os_.setTextMode();
 		os_ << "<mtext>";

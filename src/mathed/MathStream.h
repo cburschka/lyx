@@ -304,7 +304,15 @@ MathStream & operator<<(MathStream &, MTag const &);
 MathStream & operator<<(MathStream &, ETag const &);
 
 
-// A simpler version of ModeSpecifier, for MathML
+/// A simpler version of ModeSpecifier, for MathML
+// FIXME There are still problems here with nesting, at least
+// potentially. The problem is that true nesting of text mode isn't
+// actually possible. I.e., we can't have: 
+//		<mtext><mtext></mtext></mtext>
+// So we have to have:
+//		<mtext></mtext><mtext></mtext><mtext></mtext>
+// instead, where the last is really a continuation of the first.
+// We'll need some kind of stack to remember all that.
 class SetMode {
 public:
 	///
@@ -318,6 +326,8 @@ private:
 	void init(bool, docstring);
 	///
 	MathStream & os_;
+	///
+	bool opened_;
 	///
 	bool was_text_;
 };
