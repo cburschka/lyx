@@ -957,8 +957,10 @@ void extractStructure(MathData & ar, ExternalMath kind)
 	extractNumbers(ar);
 	extractMatrices(ar);
 	extractFunctions(ar, kind);
-	extractDets(ar);
-	extractDiff(ar);
+	if (kind != MATHML) {
+		extractDets(ar);
+		extractDiff(ar);
+	}
 	extractExps(ar);
 	extractLims(ar);
 	if (kind != MATHML)

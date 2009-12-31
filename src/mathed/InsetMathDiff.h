@@ -39,8 +39,6 @@ public:
 	///
 	void mathematica(MathematicaStream &) const;
 	///
-	void mathmlize(MathStream &) const;
-	///
 	void maxima(MaximaStream &) const;
 	///
 	void write(WriteStream & os) const;

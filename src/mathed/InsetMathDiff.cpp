@@ -95,18 +95,6 @@ void InsetMathDiff::mathematica(MathematicaStream & os) const
 }
 
 
-void InsetMathDiff::mathmlize(MathStream & os) const
-{
-	os << "diff(";
-	for (idx_type idx = 0; idx < nargs(); ++idx) {
-		if (idx != 0)
-			os << ',';
-		os << cell(idx);
-	}
-	os << ')';
-}
-
-
 void InsetMathDiff::write(WriteStream &) const
 {
 	LYXERR0("should not happen");
