@@ -106,6 +106,41 @@ void InsetMathFont::validate(LaTeXFeatures & features) const
 }
 
 
+// The fonts we want to support are listed in lib/symbols
+void InsetMathFont::mathmlize(MathStream & os) const
+{
+	// FIXME These are not quite right, because they do not nest
+	// correctly. A proper fix would presumably involve tracking
+	// the fonts already in effect.
+	std::string variant;
+	if (key_->name == "mathnormal" || key_->name == "mathrm"
+	    || key_->name == "text" || key_->name == "textnormal"
+	    || key_->name == "textrm" || key_->name == "textup"
+	    || key_->name == "textmd")
+		variant = "normal";
+	else if (key_->name == "frak" || key_->name == "mathfrak")
+		variant = "fraktur";
+	else if (key_->name == "mathbb" || key_->name == "mathbf"
+	         || key_->name == "textbf")
+		variant = "bold";
+	else if (key_->name == "mathcal")
+		variant == "script";
+	else if (key_->name == "mathit" || key_->name == "textsl"
+	         || key_->name == "emph")
+		variant = "italic";
+	else if (key_->name == "mathsf" || key_->name == "textit"
+	         || key_->name == "textsf")
+		variant = "sans-serif";
+	else if (key_->name == "mathtt" || key_->name == "texttt")
+		variant = "monospace";
+	// no support at present for textipa, textsc, noun
+	
+	if (!variant.empty())
+		os << "<mstyle mathvariant='" << from_utf8(variant) << "'>"
+		   << cell(0) << "</mstyle>";
+}
+
+
 void InsetMathFont::infoize(odocstream & os) const
 {
 	os << "Font: " << key_->name;

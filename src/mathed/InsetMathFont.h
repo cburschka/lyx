@@ -46,6 +46,8 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
+	void mathmlize(MathStream &) const;
+	///
 	void infoize(odocstream & os) const;
 	///
 	int kerning(BufferView const * bv) const { return cell(0).kerning(bv); }
