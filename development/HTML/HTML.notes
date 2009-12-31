@@ -58,9 +58,7 @@ Math
 	- Cases
 	- Diff: Code exists, but I do not know if it is right.
 	- Binom (in Frac): None of these tags exist in MathML 2.0. We'll
-		just output a fraction with delimiters.		
-	- Font: Need to add mode awareness to MathStream, so as to output the right thing
-    when we are in text mode.
+		just output a fraction with delimiters.
 	- Lefteqn
 	- MBox: Use <mtext>.
 	- Overset: Use <mover>.
