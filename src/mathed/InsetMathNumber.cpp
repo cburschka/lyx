@@ -69,7 +69,10 @@ void InsetMathNumber::octave(OctaveStream & os) const
 
 void InsetMathNumber::mathmlize(MathStream & os) const
 {
-	os << "<mn> " << str_ << " </mn>";
+	if (os.inText())
+		os << str_;
+	else
+		os << "<mn> " << str_ << " </mn>";
 }
 
 
