@@ -969,14 +969,20 @@ void InsetMathGrid::normalize(NormalStream & os) const
 
 void InsetMathGrid::mathmlize(MathStream & os) const
 {
-	bool const havetable = nrows() > 1;
+	bool const havetable = nrows() > 1 || ncols() > 1;
 	if (havetable)
 		os << MTag("mtable");
+	char const * const celltag = havetable ? "mtd" : "mrow";
 	for (row_type row = 0; row < nrows(); ++row) {
-		os << MTag("mrow");
-		for (col_type col = 0; col < ncols(); ++col)
+		if (havetable)
+			os << MTag("mtr");;
+		for (col_type col = 0; col < ncols(); ++col) {
+			os << MTag(celltag);
 			os << cell(index(row, col));
-		os << ETag("mrow");
+			os << ETag(celltag);
+		}
+		if (havetable)
+			os << ETag("mtr");;
 	}
 	if (havetable)
 		os << ETag("mtable");
