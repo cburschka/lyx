@@ -1421,7 +1421,7 @@ void GuiApplication::setGuiLanguage()
 	setRcGuiLanguage();
 
 	QString const default_language = toqstr(Messages::defaultLanguage());
-	LYXERR(Debug::LOCALE, "Tring to set default locale to: " << default_language);
+	LYXERR(Debug::LOCALE, "Trying to set default locale to: " << default_language);
 	QLocale const default_locale(default_language);
 	QLocale::setDefault(default_locale);
 
@@ -1434,7 +1434,7 @@ void GuiApplication::setGuiLanguage()
 	// c.f. http://doc.trolltech.com/4.1/qtranslator.html#load
 	if (!d->qt_trans_.load(language_name,
 			QLibraryInfo::location(QLibraryInfo::TranslationsPath))) {
-		LYXERR(Debug::LOCALE, "Could not find  Qt translations for locale "
+		LYXERR(Debug::LOCALE, "Could not find Qt translations for locale "
 			<< language_name);
 	} else {
 		LYXERR(Debug::LOCALE, "Successfully installed Qt translations for locale "
