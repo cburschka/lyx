@@ -135,6 +135,8 @@ void InsetMathFont::mathmlize(MathStream & os) const
 		variant = "monospace";
 	// no support at present for textipa, textsc, noun
 	
+	// FIXME We need some kind of "mode tracker", so we can
+	// just output verbatim text in some cases.
 	if (!variant.empty())
 		os << "<mstyle mathvariant='" << from_utf8(variant) << "'>"
 		   << cell(0) << "</mstyle>";
