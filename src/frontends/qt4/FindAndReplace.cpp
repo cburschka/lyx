@@ -207,7 +207,6 @@ void FindAndReplaceWidget::findAndReplace(bool backwards, bool replace)
 		ignoreFormatCB->isChecked(),
 		replace,
 		keepCaseCB->isChecked());
-	view_.currentMainWorkArea()->redraw();
 }
 
 
@@ -268,14 +267,10 @@ void FindAndReplaceWidget::on_replaceallPB_clicked()
 
 void FindAndReplaceWidget::showEvent(QShowEvent * /* ev */)
 {
-	view_.currentMainWorkArea()->redraw();
-	replace_work_area_->setFocus();
-	find_work_area_->setFocus();
 	view_.setCurrentWorkArea(find_work_area_);
 	LYXERR(Debug::FIND, "Selecting entire find buffer");
 	dispatch(FuncRequest(LFUN_BUFFER_BEGIN));
 	dispatch(FuncRequest(LFUN_BUFFER_END_SELECT));
-	find_work_area_->redraw();
 	find_work_area_->installEventFilter(this);
 	replace_work_area_->installEventFilter(this);
 }
