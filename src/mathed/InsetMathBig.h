@@ -35,6 +35,8 @@ public:
 	///
 	void normalize(NormalStream & os) const;
 	///
+	docstring mathmlize(MathStream &) const;
+	///
 	void infoize2(odocstream & os) const;
 	///
 	static bool isBigInsetDelim(docstring const &);
