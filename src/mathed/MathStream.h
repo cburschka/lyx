@@ -256,6 +256,12 @@ public:
 	int & tab() { return tab_; }
 	///
 	friend MathStream & operator<<(MathStream &, char const *);
+	///
+	void defer(docstring const &);
+	///
+	void defer(std::string const &);
+	///
+	docstring deferred() const;
 private:
 	///
 	odocstream & os_;
@@ -265,6 +271,8 @@ private:
 	int line_;
 	///
 	char lastchar_;
+	///
+	odocstringstream deferred_;
 };
 
 ///

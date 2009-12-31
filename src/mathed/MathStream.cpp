@@ -305,11 +305,30 @@ void MathStream::cr()
 }
 
 
+void MathStream::defer(docstring const & s)
+{
+	deferred_ << s;
+}
+
+
+void MathStream::defer(string const & s)
+{
+	deferred_ << from_utf8(s);
+}
+
+
+docstring MathStream::deferred() const
+{ 
+	return deferred_.str();
+}
+
+
 MathStream & operator<<(MathStream & ms, docstring const & s)
 {
 	ms.os() << s;
 	return ms;
 }
+
 
 //////////////////////////////////////////////////////////////////////
 
