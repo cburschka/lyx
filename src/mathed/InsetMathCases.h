@@ -43,6 +43,8 @@ public:
 	///
 	void maple(MapleStream &) const;
 	///
+	void mathmlize(MathStream &) const;
+	///
 	void write(WriteStream & os) const;
 	///
 	void validate(LaTeXFeatures & features) const;

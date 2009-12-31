@@ -143,6 +143,13 @@ void InsetMathCases::maple(MapleStream & os) const
 }
 
 
+void InsetMathCases::mathmlize(MathStream & ms) const
+{
+	ms << "<mo form='prefix' fence='true' stretchy='true' symmetric='true'>{</mo>";
+	InsetMathGrid::mathmlize(ms);
+}
+
+
 void InsetMathCases::infoize(odocstream & os) const
 {
 	os << "Cases ";
