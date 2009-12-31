@@ -70,25 +70,25 @@ public:
 	/// Unlock and commit changes. Returns log.
 	std::string checkIn();
 	/// Does the current VC supports this operation?
-	bool checkInEnabled();
+	bool checkInEnabled() const;
 
 	/// Lock/update and prepare to edit document. Returns log.
 	std::string checkOut();
 	/// Does the current VC supports this operation?
-	bool checkOutEnabled();
+	bool checkOutEnabled() const;
 
 	/// Synchronize the whole archive with repository
 	std::string repoUpdate();
 	/// Does the current VC supports this operation?
-	bool repoUpdateEnabled();
+	bool repoUpdateEnabled() const;
 
 	/**
 	 * Toggle locking property of the edited file,
 	 * i.e. whether the file uses locking mechanism.
 	 */
 	std::string lockingToggle();
-	/// Does the current VC supports this operation?
-	bool lockingToggleEnabled();
+	/// Does the current VC support this operation?
+	bool lockingToggleEnabled() const;
 
 	/// Revert to last version
 	void revert();
@@ -96,7 +96,7 @@ public:
 	/// Undo last check-in.
 	void undoLast();
 	/// Does the current VC supports this operation?
-	bool undoLastEnabled();
+	bool undoLastEnabled() const;
 
 	/**
 	 * Generate a log file and return the filename.
@@ -109,7 +109,7 @@ public:
 	void toggleReadOnly();
 
 	/// Is the document under administration by VCS?
-	bool inUse();
+	bool inUse() const;
 
 	/// Returns the version number.
 	//std::string const & version() const;

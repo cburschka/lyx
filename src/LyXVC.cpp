@@ -226,7 +226,7 @@ void LyXVC::toggleReadOnly()
 }
 
 
-bool LyXVC::inUse()
+bool LyXVC::inUse() const
 {
 	if (vcs)
 		return true;
@@ -268,25 +268,25 @@ string const LyXVC::getLogFile() const
 }
 
 
-bool LyXVC::checkOutEnabled()
+bool LyXVC::checkOutEnabled() const
 {
 	return vcs && vcs->checkOutEnabled();
 }
 
 
-bool LyXVC::checkInEnabled()
+bool LyXVC::checkInEnabled() const
 {
 	return vcs && vcs->checkInEnabled();
 }
 
 
-bool LyXVC::lockingToggleEnabled()
+bool LyXVC::lockingToggleEnabled() const
 {
 	return vcs && vcs->lockingToggleEnabled();
 }
 
 
-bool LyXVC::undoLastEnabled()
+bool LyXVC::undoLastEnabled() const
 {
 	return vcs && vcs->undoLastEnabled();
 }
