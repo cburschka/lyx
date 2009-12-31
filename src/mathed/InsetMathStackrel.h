@@ -31,11 +31,12 @@ public:
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
-
 	///
 	void write(WriteStream & os) const;
 	///
 	void normalize(NormalStream &) const;
+	///
+	void mathmlize(MathStream &) const;
 	///
 	InsetCode lyxCode() const { return MATH_STACKREL_CODE; }
 

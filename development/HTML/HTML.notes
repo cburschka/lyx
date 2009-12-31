@@ -57,7 +57,6 @@ Math
 	- Box: There is a general issue here with text mode nesting. See the FIXME attached
 		to the SetMode class.
 	- Lefteqn
-	- Overset: Use <mover>.
 	- Par?
 	- Phantom: There is some support for this in MathML....
 	- Ref: Needs to be deferred.
@@ -66,12 +65,10 @@ Math
 	- Space: Needs checking.
 	- SpecialChar: Needs checking.
 	- Split
-	- Stackrel: Use <mover>, probably.
 	- Substack: This is a stack of however many cells, all in a smaller style.
 		Probably do something with <mover>, again.
 	- Tabular: This is more or less a text-like table in math. Probably output it
 		as a table, but set the font.
-	- Underset: Use <munder>.
 	- XArrow: Contents above and below an arrow. Use...?
 	- XYMatrix: Not sure how this differs from ordinary ones.
 

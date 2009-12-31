@@ -69,4 +69,9 @@ void InsetMathStackrel::normalize(NormalStream & os) const
 }
 
 
+void InsetMathStackrel::mathmlize(MathStream & ms) const
+{
+	ms << "<mover accent='false'>" << cell(1) << cell(0) << "</mover>";
+}
+
 } // namespace lyx
