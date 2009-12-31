@@ -972,8 +972,10 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 	if (need_resize_) {
 		screen_ = QPixmap(viewport()->width(), viewport()->height());
 		resizeBufferView();
-		hideCursor();
-		showCursor();
+		if (cursor_visible_) {
+			hideCursor();
+			showCursor();
+		}
 	}
 
 	QPainter pain(viewport());
