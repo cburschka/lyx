@@ -122,6 +122,7 @@ void InsetMath::mathematica(MathematicaStream & os) const
 
 void InsetMath::mathmlize(MathStream & os) const
 {
+	os << "<!-- " << from_utf8(insetName(lyxCode())) << " -->";
 	os << MTag("mi");
 	NormalStream ns(os.os());
 	normalize(ns);
