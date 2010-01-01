@@ -33,6 +33,7 @@ These insets work but still need work:
 		the bbl file, which of course is the only fully general solution.
 	InsetFlex: I think this one is OK, but it needs some testing.
 	InsetFloat: This seems to work OK, but it will need testing and tweaking.
+	InsetFloatList: Seems to work well, but may need testing.
 	InsetGraphics: This works in a pretty primitive way, in that it outputs the graphic
 	  and appropriate img tag. But we don't yet do any sort of scaling, rotating, and
 		so forth. That won't be hard, since we can just call ImageMagick to do this for 
@@ -43,11 +44,6 @@ These insets work but still need work:
 	InsetTabular: Works reasonably well, but we don't do anything with any of the 
 		arguments provided for longtable. There are probably other limitations, too,
 		since I'm very much not an expert with tables.
-	InsetTOC: This now works pretty well, but only for the table of contents, not for
-		any other TOC-like lists. Getting those to work shouldn't be too bad, as we can
-		do almost exactly the same thing. That said, though, we might want to do things
-		slightly differently, and have the links target actual *insets*, rather than just
-		target paragraphs. That'd mean doing a bit of work on TocBackend, etc.
 
 
 Math
