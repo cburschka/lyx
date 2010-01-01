@@ -1303,7 +1303,8 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt)
 	LYXERR(Debug::FIND, "Putting selection at buf=" << matchAdv.p_buf
 		<< "cur=" << cur << " with len: " << match_len);
 
-	theApp()->currentWindow()->selectDocumentBuffer(matchAdv.p_buf);
+	lyx::dispatch(FuncRequest(LFUN_BUFFER_SWITCH,
+				  matchAdv.p_buf->absFileName()));
 	bv = theApp()->currentWindow()->documentBufferView();
 
 	bv->putSelectionAt(cur, match_len, ! opt.forward);

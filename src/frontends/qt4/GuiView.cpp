@@ -3542,11 +3542,6 @@ Dialog * GuiView::build(string const & name)
 }
 
 
-void GuiView::selectDocumentBuffer(Buffer const * p_buf) {
-	setBuffer(const_cast<Buffer *>(p_buf));
-}
-
-
 } // namespace frontend
 } // namespace lyx
 
