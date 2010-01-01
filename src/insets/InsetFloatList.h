@@ -43,11 +43,13 @@ public:
 	///
 	int plaintext(odocstream &, OutputParams const & runparams) const;
 	///
+	docstring xhtml(XHTMLStream &, OutputParams const &) const;
+	///
 	void validate(LaTeXFeatures & features) const;
 	///
 	static ParamInfo const & findInfo(std::string const &);
 	///
-	static std::string defaultCommand() { return "listoftables"; };
+	static std::string defaultCommand() { return "listoftables"; }
 	///
 	static bool isCompatibleCommand(std::string const & s);
 private:
