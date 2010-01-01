@@ -697,7 +697,7 @@ void GuiView::dropEvent(QDropEvent * event)
 			cmd = FuncRequest(LFUN_FILE_OPEN, file);
 		}
 
-		// Asynchronously post the event. DropEvent usually come
+		// Asynchronously post the event. DropEvent usually comes
 		// from the BufferView. But reloading a file might close
 		// the BufferView from within its own event handler.
 		guiApp->dispatchDelayed(cmd);
@@ -2413,8 +2413,8 @@ void GuiView::reloadBuffer()
 void GuiView::reloadBuffer(Buffer * buf)
 {
 	FileName filename = buf->fileName();
-	Buffer const * master = buf->masterBuffer();
-	bool const is_child = master != buf;
+	Buffer const * parent = buf->parent();
+	bool const is_child = parent != buf;
 	// The user has already confirmed that the changes, if any, should
 	// be discarded. So we just release the Buffer and don't call closeBuffer();
 	theBufferList().release(buf);
@@ -2423,9 +2423,9 @@ void GuiView::reloadBuffer(Buffer * buf)
 	docstring str;
 	if (buf) {
 		// re-allocate master if necessary
-		if (is_child && theBufferList().isLoaded(master)
-		    && buf->masterBuffer() != master)
-			buf->setParent(master);
+		if (is_child && theBufferList().isLoaded(parent)
+		      && buf->parent() != parent)
+			buf->setParent(parent);
 		buf->updateLabels();
 		setBuffer(buf);
 		buf->errors("Parse");
