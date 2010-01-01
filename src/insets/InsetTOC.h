@@ -19,6 +19,9 @@ namespace lyx {
 
 
 /// Used to insert table of contents and similar lists
+/// at present, supports only \tableofcontents. Other
+/// such commands, such as \listoffigures, are supported
+/// by InsetFloatList.
 class InsetTOC : public InsetCommand {
 public:
 	///

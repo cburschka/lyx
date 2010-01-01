@@ -102,13 +102,13 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 	odocstringstream ods;
 	XHTMLStream xs(ods);
 
-	if (getCmdName() == "tableofcontents") {
+	string const & cmdname = getCmdName();
+	if (cmdname == "tableofcontents") {
 		Toc const & toc = buffer().tocBackend().toc("tableofcontents");
 		if (toc.empty())
 			return docstring();
 	
 		xs << StartTag("div", "class='toc'");
-	
 		xs << StartTag("div", tocattr) 
 			 << _("Table of Contents") 
 			 << EndTag("div");
