@@ -1533,7 +1533,8 @@ void GuiDocument::browseMaster()
 	QString file = browseRelFile(old, docpath, title, filter, false,
 		qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
 
-	latexModule->childDocLE->setText(file);
+	if (!file.isEmpty())
+		latexModule->childDocLE->setText(file);
 }
 
 
