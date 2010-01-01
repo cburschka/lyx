@@ -303,9 +303,9 @@ private:
 		return dynamic_cast<GuiIdListModel *>(selectedModel);
 	}
 	/// keeps a list of the modules the text class provides
-	std::list<std::string> provided_modules_;
+	list<string> provided_modules_;
 	/// similarly...
-	std::list<std::string> excluded_modules_;
+	list<string> excluded_modules_;
 	/// 
 	GuiDocument const * container_;
 };
@@ -434,26 +434,26 @@ void ModuleSelectionManager::updateDelPB()
 		// required module. There would be more flexible ways to proceed,
 		// but that would be a lot more complicated, and the logic here is
 		// already complicated. (That's why I've left the debugging code.)
-		// lyxerr << "Testing " << thisMod << std::endl;
+		// lyxerr << "Testing " << thisMod << endl;
 		bool foundone = false;
 		for (int j = 0; j < curRow; ++j) {
 			string const mod = getSelectedModel()->getIDString(j);
-			// lyxerr << "In loop: Testing " << mod << std::endl;
+			// lyxerr << "In loop: Testing " << mod << endl;
 			// do we satisfy the require? 
 			if (find(reqs.begin(), reqs.end(), mod) != reqs.end()) {
-				// lyxerr << mod << " does the trick." << std::endl;
+				// lyxerr << mod << " does the trick." << endl;
 				foundone = true;
 				break;
 			}
 		}
 		// did we find a module to satisfy the require?
 		if (!foundone) {
-			// lyxerr << "No matching module found." << std::endl;
+			// lyxerr << "No matching module found." << endl;
 			deletePB->setEnabled(false);
 			return;
 		}
 	}
-	// lyxerr << "All's well that ends well." << std::endl;	
+	// lyxerr << "All's well that ends well." << endl;
 	deletePB->setEnabled(true);
 }
 
