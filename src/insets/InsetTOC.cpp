@@ -75,26 +75,11 @@ int InsetTOC::docbook(odocstream & os, OutputParams const &) const
 
 docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 {
-	// we'll use our own stream, because we are going to defer everything.
-	// that's how we deal with the fact that we're probably inside a standard
-	// paragraph, and we don't want to be.
-	odocstringstream ods;
-	XHTMLStream xs(ods);
-	// FIXME XHTML
-	// This is temporary. We'll get the main TOC working first. The rest will
-	// then be a fairly simple adapation of this code, I hope.
-	if (getCmdName() != "tableofcontents")
-		return docstring();
-	Toc const & toc = buffer().tocBackend().toc("tableofcontents");
-	if (toc.empty())
-		return docstring();
-
-	xs << StartTag("div", "class='toc'");
-
 	// we want to look like a chapter, section, or whatever.
 	// so we're going to look for the layout with the minimum toclevel
 	// number > 0, because we don't want Part. 
 	// we'll take the first one, just because.
+	// FIXME This could be specified in the layout file.
 	DocumentClass const & dc = buffer().params().documentClass();
 	TextClass::LayoutList::const_iterator lit = dc.begin();
 	TextClass::LayoutList::const_iterator len = dc.end();
@@ -111,58 +96,72 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 	string const tocclass = lay ? " " + lay->defaultCSSClass(): "";
 	string const tocattr = "class='tochead" + tocclass + "'";
 	
-	xs << StartTag("div", tocattr) 
-	   << _("Table of Contents") 
-		 << EndTag("div");
-	Toc::const_iterator it = toc.begin();
-	Toc::const_iterator const en = toc.end();
-	int lastdepth = 0;
-	for (; it != en; ++it) {
-		Paragraph const & par = it->dit().innerParagraph();
-		int const depth = it->depth();
-		if (depth > buffer().params().tocdepth)
-			continue;
-		Font const dummy;
-		if (depth > lastdepth) {
-			xs.cr();
-			// open as many tags as we need to open to get to this level
-			// this includes the tag for the current level
-			for (int i = lastdepth + 1; i <= depth; ++i) {
+	// we'll use our own stream, because we are going to defer everything.
+	// that's how we deal with the fact that we're probably inside a standard
+	// paragraph, and we don't want to be.
+	odocstringstream ods;
+	XHTMLStream xs(ods);
+
+	if (getCmdName() == "tableofcontents") {
+		Toc const & toc = buffer().tocBackend().toc("tableofcontents");
+		if (toc.empty())
+			return docstring();
+	
+		xs << StartTag("div", "class='toc'");
+	
+		xs << StartTag("div", tocattr) 
+			 << _("Table of Contents") 
+			 << EndTag("div");
+		Toc::const_iterator it = toc.begin();
+		Toc::const_iterator const en = toc.end();
+		int lastdepth = 0;
+		for (; it != en; ++it) {
+			Paragraph const & par = it->dit().innerParagraph();
+			int const depth = it->depth();
+			if (depth > buffer().params().tocdepth)
+				continue;
+			Font const dummy;
+			if (depth > lastdepth) {
+				xs.cr();
+				// open as many tags as we need to open to get to this level
+				// this includes the tag for the current level
+				for (int i = lastdepth + 1; i <= depth; ++i) {
+					stringstream attr;
+					attr << "class='lyxtoc-" << i << "'";
+					xs << StartTag("div", attr.str());
+				}
+				lastdepth = depth;
+			}
+			else if (depth < lastdepth) {
+				// close as many as we have to close to get back to this level
+				// this includes closing the last tag at this level
+				for (int i = lastdepth; i >= depth; --i) 
+					xs << EndTag("div");
+				// now open our tag
 				stringstream attr;
-				attr << "class='lyxtoc-" << i << "'";
+				attr << "class='lyxtoc-" << depth << "'";
+				xs << StartTag("div", attr.str());
+				lastdepth = depth;
+			} else {
+				// no change of level, so close and open
+				xs << EndTag("div");
+				stringstream attr;
+				attr << "class='lyxtoc-" << depth << "'";
 				xs << StartTag("div", attr.str());
 			}
-			lastdepth = depth;
+			string const parattr = "href='#" + par.magicLabel() + "' class='tocarrow'";
+			par.simpleLyXHTMLOnePar(buffer(), xs, op, dummy, true);
+			xs << " ";
+			xs << StartTag("a", parattr);
+			// FIXME XHTML 
+			// There ought to be a simple way to customize this.
+			xs << XHTMLStream::NextRaw() << "&seArr;";
+			xs << EndTag("a");		
 		}
-		else if (depth < lastdepth) {
-			// close as many as we have to close to get back to this level
-			// this includes closing the last tag at this level
-			for (int i = lastdepth; i >= depth; --i) 
-				xs << EndTag("div");
-			// now open our tag
-			stringstream attr;
-			attr << "class='lyxtoc-" << depth << "'";
-			xs << StartTag("div", attr.str());
-			lastdepth = depth;
-		} else {
-			// no change of level, so close and open
+		for (int i = lastdepth; i > 0; --i) 
 			xs << EndTag("div");
-			stringstream attr;
-			attr << "class='lyxtoc-" << depth << "'";
-			xs << StartTag("div", attr.str());
-		}
-		string const parattr = "href='#" + par.magicLabel() + "' class='tocarrow'";
-		par.simpleLyXHTMLOnePar(buffer(), xs, op, dummy, true);
-		xs << " ";
-		xs << StartTag("a", parattr);
-		// FIXME XHTML 
-		// There ought to be a simple way to customize this.
-		xs << XHTMLStream::NextRaw() << "&seArr;";
-		xs << EndTag("a");		
-	}
-	for (int i = lastdepth; i > 0; --i) 
 		xs << EndTag("div");
-	xs << EndTag("div");
+	}
 	return ods.str();
 }
 
