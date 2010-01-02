@@ -1,0 +1,3 @@
+(DISPLAY=:1 import -window root /tmp/:1.png)
+#gwenview /tmp/:1.png
+eog /tmp/:1.png

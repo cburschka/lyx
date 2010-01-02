@@ -18,7 +18,7 @@ kill_all_children () {
 	kill -9 `listall "$*"`
 }
 
-if [ "$1"="$kill"  ]
+if [ "$1" = "kill"  ]
 then
 	shift
 	kill_all_children "$*"

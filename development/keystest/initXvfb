@@ -1,0 +1,26 @@
+if [ -z "$1" ]
+then
+	d=1
+else
+	d=$1
+fi
+
+#Xvfb :1 -screen 1 800x600x24 -fbdir /tmp &
+#Xvfb :1 -screen 1 800x600x24 -pixdepths "1 8 16 24 32"  &
+#Xvfb :$d -ac -screen 0 800x600x24 -wr
+echo 1
+Xvfb :$d -ac -screen 0 800x600x24 -wr &
+
+echo 2
+export DISPLAY=:$d
+echo 3
+icewm&
+echo 4
+#metacity&
+echo 5
+while true
+do
+	sleep 300 
+	icewm &
+done &
+echo 6

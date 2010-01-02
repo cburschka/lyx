@@ -1,5 +1,8 @@
 #!/bin/bash
-KT=`dirname $0`
+KT=`dirname "$0"`
+
+. "$KT/shared_functions.sh"
+
 N=$1
 shift
 
@@ -13,8 +16,11 @@ do
 	if ! "$@"
 	then
 		echo TRIES_REQUIRED: $i
+		kill_all_children $$
 		exit 1
 	fi
 done
 
+kill_all_children $$
 echo DONE $N TIMES
+

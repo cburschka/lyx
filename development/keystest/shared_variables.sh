@@ -1,0 +1,3 @@
+DIRNAME0=`dirname "$0"`
+OUT_NAME=out.2
+ROOT_OUTDIR="$DIRNAME0/$OUT_NAME"

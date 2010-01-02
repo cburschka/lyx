@@ -137,6 +137,8 @@ class CommandSourceFromFile(CommandSource):
             os._exit(0)
         if self.i >= len(self.lines):
             self.loops = self.loops + 1
+            if self.loops > 3:
+                os._exit(0)
             self.i = 0
             return 'Loop'
         line = self.lines[self.i]
@@ -181,18 +183,31 @@ def sendKeystring(keystr, LYX_PID):
         while not lyx_sleeping():
             time.sleep(0.02)
             print '.',
-        print 'Making Screenshot: ' + screenshot_out
+        print 'Making Screenshot: ' + screenshot_out + ' OF ' + infilename
         time.sleep(0.2)
         os.system('import -window root '+screenshot_out+str(x.count)+".png")
         time.sleep(0.1)
     sys.stdout.flush()
     subprocess.call(["xvkbd", "-xsendevent", "-delay", DELAY, "-text", keystr])
 
+def system_retry(num_retry, cmd):
+    i = 0
+    rtn = os.system(cmd)
+    while ( ( i < num_retry ) and ( rtn != 0) ):
+        i = i + 1
+	rtn=os.system(cmd)
+        time.sleep(1)
+    if ( rtn != 0 ):
+        print "Command Failed: "+cmd
+        print " EXITING!\n"
+        os._exit(1)
+
 def RaiseWindow():
     os.system("echo x-session-manager PID: $X_PID.")
     os.system("echo x-session-manager open files: `lsof -p $X_PID | grep ICE-unix | wc -l`")
-    os.system("wmctrl -l | ( grep '"+lyx_window_name+"' || ( killall lyx ; sleep 1 ; killall -9 lyx ))")
-    os.system("wmctrl -R '"+lyx_window_name+"' ;sleep 0.1")
+    ####os.system("wmctrl -l | ( grep '"+lyx_window_name+"' || ( killall lyx ; sleep 1 ; killall -9 lyx ))")
+    #os.system("wmctrl -R '"+lyx_window_name+"' ;sleep 0.1")
+    system_retry(30, "wmctrl -R '"+lyx_window_name+"'")
 
 
 lyx_pid = os.environ.get('LYX_PID')
@@ -253,7 +268,7 @@ while True:
         if os.path.exists('/proc/' + lyx_pid + '/status'):
             sendKeystring(c[4:], lyx_pid)
         else:
-            os.system('killall lyx; sleep 2 ; killall -9 lyx')
+            ##os.system('killall lyx; sleep 2 ; killall -9 lyx')
             print 'No path /proc/' + lyx_pid + '/status, exiting'
             os._exit(1)
     elif c[0:4] == 'KD: ':
