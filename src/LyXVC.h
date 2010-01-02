@@ -107,7 +107,7 @@ public:
 
 	/**
 	 * We do not support this generally. In RCS/SVN file read-only flag
-         * is often connected with locking state and one has to be careful to
+	 * is often connected with locking state and one has to be careful to
 	 * keep things in synchro once we would allow user to toggle
 	 * read-only flags.
 	 */
