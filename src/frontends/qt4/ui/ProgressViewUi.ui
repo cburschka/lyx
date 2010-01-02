@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ui version="4.0">
+<ui version="4.0" >
  <class>ProgressViewUi</class>
- <widget class="QWidget" name="ProgressViewUi">
-  <property name="geometry">
+ <widget class="QWidget" name="ProgressViewUi" >
+  <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
@@ -10,131 +9,121 @@
     <height>518</height>
    </rect>
   </property>
-  <property name="windowTitle">
+  <property name="windowTitle" >
    <string/>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_2">
+  <layout class="QVBoxLayout" name="verticalLayout_2" >
    <item>
-    <widget class="QTabWidget" name="tabWidget">
-     <property name="enabled">
+    <widget class="QTabWidget" name="tabWidget" >
+     <property name="enabled" >
       <bool>true</bool>
      </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Ignored">
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Ignored" hsizetype="Expanding" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <property name="baseSize">
+     <property name="baseSize" >
       <size>
        <width>0</width>
        <height>0</height>
       </size>
      </property>
-     <property name="acceptDrops">
+     <property name="acceptDrops" >
       <bool>false</bool>
      </property>
-     <property name="layoutDirection">
+     <property name="layoutDirection" >
       <enum>Qt::LeftToRight</enum>
      </property>
-     <property name="autoFillBackground">
+     <property name="autoFillBackground" >
       <bool>false</bool>
      </property>
-     <property name="tabPosition">
+     <property name="tabPosition" >
       <enum>QTabWidget::East</enum>
      </property>
-     <property name="tabShape">
+     <property name="tabShape" >
       <enum>QTabWidget::Rounded</enum>
      </property>
-     <property name="currentIndex">
+     <property name="currentIndex" >
       <number>1</number>
      </property>
-     <property name="iconSize">
+     <property name="iconSize" >
       <size>
        <width>16</width>
        <height>16</height>
       </size>
      </property>
-     <property name="usesScrollButtons">
+     <property name="usesScrollButtons" >
       <bool>true</bool>
      </property>
-     <widget class="QWidget" name="tab">
-      <attribute name="title">
+     <widget class="QWidget" name="tab" >
+      <attribute name="title" >
        <string>Output</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_2">
-       <item row="0" column="0">
-        <widget class="QTextEdit" name="outTE">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Ignored">
+      <layout class="QGridLayout" name="gridLayout_2" >
+       <item row="0" column="0" >
+        <widget class="QTextEdit" name="outTE" >
+         <property name="sizePolicy" >
+          <sizepolicy vsizetype="Ignored" hsizetype="Expanding" >
            <horstretch>1</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <property name="maximumSize">
+         <property name="maximumSize" >
           <size>
            <width>16777215</width>
            <height>16777215</height>
           </size>
          </property>
-         <property name="frameShape">
+         <property name="frameShape" >
           <enum>QFrame::StyledPanel</enum>
          </property>
-         <property name="frameShadow">
+         <property name="frameShadow" >
           <enum>QFrame::Sunken</enum>
          </property>
-         <property name="lineWidth">
+         <property name="lineWidth" >
           <number>1</number>
          </property>
-         <property name="readOnly">
+         <property name="readOnly" >
           <bool>true</bool>
          </property>
         </widget>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab_2">
-      <attribute name="title">
+     <widget class="QWidget" name="tab_2" >
+      <attribute name="title" >
        <string>Settings</string>
       </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout">
+      <layout class="QVBoxLayout" name="verticalLayout" >
        <item>
-        <widget class="QScrollArea" name="scrollArea">
-         <property name="widgetResizable">
+        <widget class="QScrollArea" name="scrollArea" >
+         <property name="widgetResizable" >
           <bool>true</bool>
          </property>
-         <widget class="QWidget" name="scrollAreaWidgetContents">
-          <property name="geometry">
+         <widget class="QWidget" name="scrollAreaWidgetContents" >
+          <property name="geometry" >
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>482</width>
+            <width>480</width>
             <height>474</height>
            </rect>
           </property>
-          <layout class="QVBoxLayout" name="verticalLayout_4">
+          <layout class="QVBoxLayout" name="verticalLayout_4" >
            <item>
-            <layout class="QVBoxLayout" name="settingsLayout">
+            <layout class="QVBoxLayout" name="settingsLayout" >
              <item>
-              <widget class="QCheckBox" name="autoClearCB">
-               <property name="toolTip">
+              <widget class="QCheckBox" name="autoClearCB" >
+               <property name="toolTip" >
                 <string>Automatic cleanup of the window before LaTeX compilation proceeds</string>
                </property>
-               <property name="text">
+               <property name="text" >
                 <string>&amp;Automatic clear</string>
                </property>
-               <property name="checked">
+               <property name="checked" >
                 <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="updatePB">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
-               <property name="text">
-                <string>&amp;Update</string>
                </property>
               </widget>
              </item>
@@ -151,7 +140,7 @@
   </layout>
  </widget>
  <includes>
-  <include location="local">qt_i18n.h</include>
+  <include location="local" >qt_i18n.h</include>
  </includes>
  <resources/>
  <connections/>
