@@ -105,7 +105,12 @@ public:
 	 */
 	const std::string getLogFile() const;
 
-	///
+	/**
+	 * We do not support this generally. In RCS/SVN file read-only flag
+         * is often connected with locking state and one has to be careful to
+	 * keep things in synchro once we would allow user to toggle
+	 * read-only flags.
+	 */
 	void toggleReadOnly();
 
 	/// Is the document under administration by VCS?
