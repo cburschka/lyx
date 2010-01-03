@@ -48,6 +48,7 @@ Q_SIGNALS:
 	void appendError(QString const &);
 	void clearMessages();
 	void lyxerrFlush();
+	void appendLyXErrMessage(QString const & text);
 
 	// Alert interface
 	void warning(QString const & title, QString const & message);

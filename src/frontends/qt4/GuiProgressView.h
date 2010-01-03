@@ -70,6 +70,7 @@ public:
 
 private Q_SLOTS:
 	void appendText(QString const & text);
+	void appendLyXErrText(QString const & text);
 	void clearText();
 
 	void levelChanged();

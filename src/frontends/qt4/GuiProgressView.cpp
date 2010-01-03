@@ -84,6 +84,7 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 		connect(progress, SIGNAL(processStarted(QString const &)), this, SLOT(appendText(QString const &)));
 		//connect(progress, SIGNAL(processFinished(QString const &)), this, SLOT(appendText(QString const &)));
 		connect(progress, SIGNAL(appendMessage(QString const &)), this, SLOT(appendText(QString const &)));
+		connect(progress, SIGNAL(appendLyXErrMessage(QString const &)), this, SLOT(appendLyXErrText(QString const &)));
 		connect(progress, SIGNAL(appendError(QString const &)), this, SLOT(appendText(QString const &)));
 		connect(progress, SIGNAL(clearMessages()), this, SLOT(clearText()));
 		progress->lyxerrConnect();
@@ -116,16 +117,23 @@ void GuiProgressView::clearText()
 }
 
 
+void GuiProgressView::appendLyXErrText(QString const & text)
+{
+	widget_->outTE->insertPlainText(text);
+	widget_->outTE->ensureCursorVisible();
+}
+
+
 void GuiProgressView::appendText(QString const & text)
 {
 	if (text.isEmpty())
 		return;
-	QString time = QTime::currentTime().toString();
-	if (text.endsWith("\n"))
-		widget_->outTE->insertPlainText(time + ": " + text);
-	else
-		widget_->outTE->insertPlainText(text);
+	QString str = QTime::currentTime().toString();
+	str += ": " + text;
+	if (!text.endsWith("\n"))
+		str += "\n";
 
+	widget_->outTE->insertPlainText(str);
 	widget_->outTE->ensureCursorVisible();
 }
 
