@@ -62,15 +62,17 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 	font.setFixedPitch(true);
 	font.setStyleHint(QFont::TypeWriter);
 	widget_->outTE->setFont(font);
-	widget_->tabWidget->widget(0)->setContentsMargins(-5,-7,0,-7);
+	widget_->tabWidget->widget(0)->setContentsMargins(-5, -7, 0, -7);
 
 
+	// number of initial items in settings tab
+	int shift = 3;
 	const int levelCount = Debug::levelCount();
-	for (int i = 1; i <= levelCount; i++) {
+	for (int i = 0 ; i < levelCount; i++) {
 		const Debug::Type level = Debug::value(i);
 		LevelButton * box = new LevelButton(toqstr(Debug::description(level)));
 		box->level = level;
-		widget_->settingsLayout->addWidget(box,i%10,i/10);
+		widget_->settingsLayout->addWidget(box, (i + shift) % 10, (i + shift) / 10);
 		// TODO settings
 		box->setChecked(false);
 		level_buttons << box;
