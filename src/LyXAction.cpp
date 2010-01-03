@@ -3233,8 +3233,8 @@ void LyXAction::init()
  * \li Syntax: debug-level-set <LEVEL>
  * \li Params: <LEVEL>: comma separated list of levels or the correspondent number
                         of their combination. 0 is equivalent to disabling all debug
-			events. See lyx -dbg for the current list of debug levels
-			and their numbers.
+                        events. See lyx -dbg for the current list of debug levels
+                        and their numbers.
  * \li Origin: sanda, 28 Dec 2009
  * \endvar
  */
