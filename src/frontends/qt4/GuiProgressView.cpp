@@ -135,7 +135,7 @@ void GuiProgressView::appendLyXErrText(QString const & text)
 
 void GuiProgressView::appendText(QString const & text)
 {
-	if (text.isEmpty())
+	if (text.isEmpty() || !widget_->sbarCB->isChecked())
 		return;
 	QString str = QTime::currentTime().toString();
 	str += ": " + text;
@@ -153,6 +153,8 @@ void GuiProgressView::saveSession() const
 	QSettings settings;
 	settings.setValue(
 		sessionKey() + "/autoclear", widget_->autoClearCB->isChecked());
+	settings.setValue(
+		sessionKey() + "/statusbarmsgs", widget_->sbarCB->isChecked());
 }
 
 
@@ -162,6 +164,8 @@ void GuiProgressView::restoreSession()
 	QSettings settings;
 	widget_->autoClearCB->setChecked(
 		settings.value(sessionKey() + "/autoclear", true).toBool());
+	widget_->sbarCB->setChecked(
+		settings.value(sessionKey() + "/statusbarmsgs", true).toBool());
 }
 
 
