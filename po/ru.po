@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-12-04 10:47+0100\n"
-"PO-Revision-Date: 2009-12-13 18:06+0300\n"
+"PO-Revision-Date: 2009-12-24 14:00+0300\n"
 "Last-Translator: Sergey Tereschenko <serg.partizan@gmail.com>\n"
 "Language-Team: Russian <kruvalig@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -2703,7 +2703,7 @@ msgstr "Укажите язык по умолчанию для ваших док
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:65
 msgid "Language pac&kage:"
-msgstr "Языковой &пакет:"
+msgstr "Языковый &пакет:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:75
 msgid "Enter the command to load the language package (default: babel)"
@@ -2780,7 +2780,7 @@ msgstr "Разрешить поддержку &RTL"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:234
 msgid "Cursor movement:"
-msgstr "Перемещения курсора:"
+msgstr "Перемещение курсора:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:244
 msgid "&Logical"
@@ -3170,7 +3170,7 @@ msgstr "Показать &привязки клавиш, содержащие:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:64
 msgid "Al&ternative language:"
-msgstr "&Другой язык:"
+msgstr "&Другие языки:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:74
 msgid "The characters inserted here are ignored by the spellchecker"
@@ -3198,7 +3198,7 @@ msgstr "Подменить язык используемый для провер
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:128
 msgid "Use input encod&ing"
-msgstr "Входная ко&дировка"
+msgstr "Использовать &кодировку ввода"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:135
 msgid "Accept words such as \"diskdrive\""
@@ -5549,7 +5549,7 @@ msgstr "СпецРаздел*"
 #: lib/layouts/stdstarsections.inc:69
 #: lib/layouts/stdstarsections.inc:80
 msgid "Unnumbered"
-msgstr "Нумерованный"
+msgstr "Ненумерованный"
 
 #: lib/layouts/amsbook.layout:131
 msgid "Chapter Exercises"
@@ -6114,7 +6114,7 @@ msgstr "Список таблиц"
 #: lib/layouts/powerdot.layout:389
 #: lib/layouts/stdfloats.inc:22
 msgid "Figure"
-msgstr "Изображение"
+msgstr "Рисунок"
 
 #: lib/layouts/beamer.layout:1216
 #: lib/layouts/powerdot.layout:393
@@ -11867,7 +11867,7 @@ msgstr "Разрыв страницы"
 #: lib/ui/classic.ui:266
 #: lib/ui/stdmenus.inc:397
 msgid "Display Formula|D"
-msgstr "Формула|В"
+msgstr "Выключная формула|В"
 
 # ?
 #: lib/ui/classic.ui:267
@@ -13139,7 +13139,7 @@ msgstr "Форматирование"
 
 #: lib/ui/stdmenus.inc:334
 msgid "List / TOC|i"
-msgstr "Список / содержание|с"
+msgstr "Списки / содержание|с"
 
 #: lib/ui/stdmenus.inc:335
 msgid "Float|a"
@@ -13163,7 +13163,7 @@ msgstr "Блок[[Меню]]"
 
 #: lib/ui/stdmenus.inc:343
 msgid "Cross-Reference...|R"
-msgstr "Перекрёстную ссылку...|к"
+msgstr "Перекрёстная ссылка...|к"
 
 #: lib/ui/stdmenus.inc:345
 msgid "Caption"
@@ -13179,7 +13179,7 @@ msgstr "Запись в списке обозначений..."
 
 #: lib/ui/stdmenus.inc:349
 msgid "Table...|T"
-msgstr "Таблицу...|Т"
+msgstr "Таблица...|Т"
 
 #: lib/ui/stdmenus.inc:351
 msgid "URL|U"
@@ -21762,7 +21762,7 @@ msgstr "Открытая вкладка подписи"
 #: src/insets/InsetCaption.cpp:304
 #, c-format
 msgid "Sub-%1$s"
-msgstr ""
+msgstr "Под-%1$s"
 
 #: src/insets/InsetCitation.cpp:191
 msgid "not cited"
