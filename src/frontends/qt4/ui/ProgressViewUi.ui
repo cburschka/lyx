@@ -113,8 +113,8 @@
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_4" >
            <item>
-            <layout class="QVBoxLayout" name="settingsLayout" >
-             <item>
+            <layout class="QGridLayout" name="settingsLayout" >
+             <item row="0" column="0" >
               <widget class="QCheckBox" name="autoClearCB" >
                <property name="toolTip" >
                 <string>Automatic cleanup of the window before LaTeX compilation proceeds</string>

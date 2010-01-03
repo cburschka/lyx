@@ -65,11 +65,11 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 
 
 	const int levelCount = Debug::levelCount();
-	for (int i = 0; i < levelCount; i++) {
+	for (int i = 1; i <= levelCount; i++) {
 		const Debug::Type level = Debug::value(i);
 		LevelButton * box = new LevelButton(toqstr(Debug::description(level)));
 		box->level = level;
-		widget_->settingsLayout->addWidget(box);
+		widget_->settingsLayout->addWidget(box,i%10,i/10);
 		// TODO settings
 		box->setChecked(false);
 		level_buttons << box;
