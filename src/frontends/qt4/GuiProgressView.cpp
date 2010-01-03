@@ -62,6 +62,7 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 	font.setFixedPitch(true);
 	font.setStyleHint(QFont::TypeWriter);
 	widget_->outTE->setFont(font);
+	widget_->tabWidget->widget(0)->setContentsMargins(-5,-7,0,-7);
 
 
 	const int levelCount = Debug::levelCount();
