@@ -57,7 +57,7 @@
 \begin_body
 
 \begin_layout Section*
-LFUNs documentation automatically generated 2009-10-20
+LFUNs documentation automatically generated 2010-01-03
 \end_layout
 
 \begin_layout Standard
@@ -3588,6 +3588,19 @@ Origin leeming, 30 Mar 2004
 \end_layout
 
 \begin_layout Subsection*
+LFUN_GRAPHICS_RELOAD
+\end_layout
+\begin_layout Description
+Action Reloads the image if necessary.
+\end_layout
+\begin_layout Description
+Syntax graphics-reload
+\end_layout
+\begin_layout Description
+Origin vfr, 10 Aug 2009
+\end_layout
+
+\begin_layout Subsection*
 LFUN_SET_GRAPHICS_GROUP
 \end_layout
 \begin_layout Description
@@ -3800,7 +3813,7 @@ LFUN_TOOLBAR_TOGGLE
 Action Toggles visibility of a given toolbar between on/off/auto.
 \end_layout
 \begin_layout Description
-Notion Skiping "auto" when allowauto is false.
+Notion Skipping "auto" when allowauto is false.
 \end_layout
 \begin_layout Description
 Syntax toolbar-toggle <NAME> [allowauto]
@@ -3942,11 +3955,11 @@ Params <NAME>: aboutlyx|bibitem|bibtex|box|branch|changes|character|citation|
 \begin_inset Newline newline
 \end_inset
 
-document|errorlist|ert|external|file|findreplace|findreplaceadv|float|graphics|
+compare|document|errorlist|ert|external|file|findreplace|findreplaceadv|float|
 \begin_inset Newline newline
 \end_inset
 
-href|include|index|index_print|info|label|listings|log|mathdelimiter|
+graphics|href|include|index|index_print|info|label|listings|log|mathdelimiter|
 \begin_inset Newline newline
 \end_inset
 
@@ -4531,11 +4544,7 @@ LFUN_BUFFER_TOGGLE_READ_ONLY
 Action Toggle editing mode of the current document between read/write and read-only.
 \end_layout
 \begin_layout Description
-Notion In the ->Readonly mode checks-in/commits the data if the file is under version control. In the Readonly-> mode checkouts the data from repository.
-\begin_inset Newline newline
-\end_inset
-
-If these operations fail, buffer won't be toggled.
+Notion This function is not allowed if the file is under version control, since read-only flag is often used in version control file locking.
 \end_layout
 \begin_layout Description
 Syntax buffer-toggle-read-only
@@ -4840,7 +4849,7 @@ Syntax cancel
 LFUN_COMMAND_EXECUTE
 \end_layout
 \begin_layout Description
-Action Opens the minibuffer toolbar so that the user can type in there.
+Action Switches the focus to the minibuffer so that the user can type in there. If necessary, it opens the minibuffer toolbar.
 \end_layout
 \begin_layout Description
 Notion Usually bound to M-x shortcut.
@@ -4920,6 +4929,22 @@ Syntax message <STRING>
 \end_layout
 \begin_layout Description
 Origin Lgb, 8 Apr 2001
+\end_layout
+
+\begin_layout Subsection*
+LFUN_DEBUG_LEVEL_SET
+\end_layout
+\begin_layout Description
+Action Set debug output level.
+\end_layout
+\begin_layout Description
+Syntax debug-level-set <LEVEL>
+\end_layout
+\begin_layout Description
+Params <LEVEL>: comma separated list of levels or the correspondent number of their combination. 0 is equivalent to disabling all debug 			events. See lyx -dbg for the current list of debug levels 			and their numbers.
+\end_layout
+\begin_layout Description
+Origin sanda, 28 Dec 2009
 \end_layout
 
 \begin_layout Subsection*
@@ -5233,19 +5258,6 @@ Syntax section-select
 \end_layout
 \begin_layout Description
 Origin vfr, 05 May 2009
-\end_layout
-
-\begin_layout Subsection*
-LFUN_GRAPHICS_RELOAD
-\end_layout
-\begin_layout Description
-Action Reloads the image if necessary.
-\end_layout
-\begin_layout Description
-Syntax graphics-reload
-\end_layout
-\begin_layout Description
-Origin vfr, 10 Aug 2009
 \end_layout
 
 \end_body
