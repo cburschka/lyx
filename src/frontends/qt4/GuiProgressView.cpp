@@ -121,6 +121,13 @@ void GuiProgressView::appendLyXErrText(QString const & text)
 {
 	widget_->outTE->insertPlainText(text);
 	widget_->outTE->ensureCursorVisible();
+
+	// Give the user a chance to disable debug messages because
+	// showing Debug::ANY messages completely blocks the GUI.
+	// Text is not always send as the whole line, so we must be
+	// careful about eolns.
+	if (text.endsWith("\n"))
+		QApplication::processEvents();
 }
 
 

@@ -67,20 +67,20 @@ GuiProgress::GuiProgress(GuiView * view) : view_(view)
 void GuiProgress::doProcessStarted(QString const & cmd)
 {
 	QString time = QTime::currentTime().toString();
-	appendText(time + ": <" + cmd + "> started\n");
+	appendText(time + ": <" + cmd + "> started");
 }
 
 
 void GuiProgress::doProcessFinished(QString const & cmd)
 {
 	QString time = QTime::currentTime().toString();
-	appendText(time + ": <" + cmd + "> done\n");
+	appendText(time + ": <" + cmd + "> done");
 }
 
 
 void GuiProgress::doAppendMessage(QString const & msg)
 {
-	appendText(msg + "\n");
+	appendText(msg);
 }
 
 
@@ -100,9 +100,6 @@ void GuiProgress::dolyxerrFlush()
 {
 	appendLyXErrMessage(toqstr(lyxerr_stream_.str()));
 	lyxerr_stream_.str("");
-	// give the user a chance to disable debug messages because 
-	// showing Debug::ANY messages completely blocks the GUI
-	QApplication::processEvents();
 }
 
 
