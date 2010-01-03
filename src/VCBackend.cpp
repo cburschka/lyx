@@ -273,7 +273,11 @@ void RCS::getLog(FileName const & tmpf)
 
 bool RCS::toggleReadOnlyEnabled()
 {
-	return true;
+	// This got broken somewhere along lfuns dispatch reorganization.
+	// reloadBuffer would be needed after this, but thats problematic
+	// since we are inside Buffer::dispatch.
+	// return true;
+	return false;
 }
 
 
