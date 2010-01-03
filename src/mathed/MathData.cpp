@@ -415,6 +415,9 @@ void MathData::updateMacros(Cursor * cur, MacroContext const & mc)
 			|| newDisplayMode == MathMacro::DISPLAY_UNFOLDED)) {
 
 			detachMacroParameters(cur, i);
+			// FIXME: proper anchor handling, this removes the selection
+			if (cur)
+				cur->clearSelection();
 		}
 
 		// the macro could have been copied while resizing this
@@ -473,10 +476,9 @@ void MathData::updateMacros(Cursor * cur, MacroContext const & mc)
 }
 
 
-void MathData::detachMacroParameters(Cursor * cur, const size_type macroPos)
+void MathData::detachMacroParameters(DocIterator * cur, const size_type macroPos)
 {
 	MathMacro * macroInset = operator[](macroPos).nucleus()->asMacro();
-	Buffer * buf = cur->buffer();
 	
 	// detach all arguments
 	vector<MathData> detachedArgs;
@@ -531,7 +533,7 @@ void MathData::detachMacroParameters(Cursor * cur, const size_type macroPos)
 		for (size_t q = 0; q < arg.size(); ++q) {
 			if (arg[q]->getChar() == ']') {
 				// put brace
-				brace = new InsetMathBrace(buf);
+				brace = new InsetMathBrace(buffer_);
 				break;
 			}
 		}
@@ -592,11 +594,8 @@ void MathData::detachMacroParameters(Cursor * cur, const size_type macroPos)
 			++(*cur)[curMacroSlice - 1].pos();
 	}
 	
-	if (cur) {
-		// FIXME: proper anchor handling, this removes the selection
-		cur->clearSelection();
+	if (cur)
 		cur->updateInsets(&cur->bottom().inset());
-	}
 }
 
 
