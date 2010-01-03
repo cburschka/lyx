@@ -37,7 +37,7 @@ struct ErrorItem {
 
 
 ErrorItem errorTags[] = {
-	{ Debug::NONE,      "none",      N_("No debugging message")},
+	{ Debug::NONE,      "none",      N_("No debugging messages")},
 	{ Debug::INFO,      "info",      N_("General information")},
 	{ Debug::INIT,      "init",      N_("Program initialisation")},
 	{ Debug::KEY,       "key",       N_("Keyboard events handling")},
