@@ -184,13 +184,15 @@ namespace {
 		t["overbrace"] = Attributes(true, "&OverBrace;");
 		t["overleftarrow"] = Attributes(true, "&xlarr;");
 		t["overleftrightarrow"] = Attributes(true, "&xharr;");
+		t["overline"] = Attributes(false, "&macr;");
 		t["overrightarrow"] = Attributes(true, "&xrarr;");
 		t["tilde"] = Attributes(true, "&tilde;");
 		t["underbar"] = Attributes(false, "&UnderBar;");
 		t["underbrace"] = Attributes(false, "&UnderBrace;");
 		t["underleftarrow"] = Attributes(false, "&xlarr;");
 		t["underleftrightarrow"] = Attributes(false, "&xharr;");
-		t["underline"] = Attributes(false, "&;");
+		// this is the macron, again, but it works
+		t["underline"] = Attributes(false, "&macr;");
 		t["underrightarrow"] = Attributes(false, "&xrarr;");
 		t["vec"] = Attributes(true, "&rarr;");
 		t["widehat"] = Attributes(true, "&Hat;");
