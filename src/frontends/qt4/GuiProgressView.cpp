@@ -65,6 +65,7 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 	widget_->tabWidget->widget(0)->setContentsMargins(-5, -7, 0, -7);
 
 
+	Debug::Type levels = lyxerr.level();
 	// number of initial items in settings tab
 	int shift = 3;
 	const int levelCount = Debug::levelCount();
@@ -73,8 +74,14 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 		LevelButton * box = new LevelButton(toqstr(Debug::description(level)));
 		box->level = level;
 		widget_->settingsLayout->addWidget(box, (i + shift) % 10, (i + shift) / 10);
-		// TODO settings
 		box->setChecked(false);
+
+		if ((levels == Debug::ANY) && (levels == level))
+			box->setChecked(true);
+		else
+			if ((level != Debug::ANY) && (levels & level))
+				box->setChecked(true);
+
 		level_buttons << box;
 		connect(box, SIGNAL(stateChanged(int)), this, SLOT(levelChanged()));
 	}
