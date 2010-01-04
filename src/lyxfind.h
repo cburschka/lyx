@@ -115,9 +115,6 @@ std::ostringstream & operator<<(std::ostringstream & os, lyx::FindAndReplaceOpti
 /// Read a FindAdvOptions instance from a stringstream
 std::istringstream & operator>>(std::istringstream & is, lyx::FindAndReplaceOptions & opt);
 
-/// Dispatch a LFUN_WORD_FINDADV command request
-void findAdv(BufferView * bv, FuncRequest const & ev);
-
 /// Perform a FindAdv operation.
 bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt);
 	

@@ -19,12 +19,14 @@
 
 #include "buffer_funcs.h"
 #include "BufferParams.h"
+#include "BufferList.h"
 #include "Cursor.h"
 #include "FuncRequest.h"
 #include "lyxfind.h"
 #include "OutputParams.h"
 #include "output_latex.h"
 #include "TexRow.h"
+#include "alert.h"
 
 #include "support/debug.h"
 #include "support/FileName.h"
@@ -62,9 +64,6 @@ FindAndReplaceWidget::FindAndReplaceWidget(GuiView & view)
 
 bool FindAndReplaceWidget::eventFilter(QObject *obj, QEvent *event)
 {
-	LYXERR(Debug::FIND, "FindAndReplace::eventFilter(): obj=" << obj
-	       << ", fwa=" << find_work_area_ << ", rwa=" << replace_work_area_
-	       << "fsa=" << find_scroll_area_ << ", rsa=" << replace_scroll_area_);
 	if (obj == find_work_area_ && event->type() == QEvent::KeyPress) {
 		QKeyEvent *e = static_cast<QKeyEvent *> (event);
 		if (e->key() == Qt::Key_Escape && e->modifiers() == Qt::NoModifier) {
@@ -125,6 +124,184 @@ static docstring buffer_to_latex(Buffer & buffer) {
 	return os.str();
 }
 
+
+/** Switch p_buf to point to next document buffer.
+ **
+ ** Return true if restarted from master-document buffer.
+ **
+ ** @note
+ ** Not using p_buf->allRelatives() here, because I'm not sure
+ ** whether or not the returned order is independent of p_buf.
+ **/
+static bool next_document_buffer(Buffer * & p_buf) {
+	Buffer *p_master = p_buf;
+	Buffer *p_old;
+	do {
+		p_old = p_master;
+		p_master = const_cast<Buffer *>(p_master->masterBuffer());
+		LYXERR(Debug::FIND, "p_old=" << p_old << ", p_master=" << p_master);
+	} while (p_master != p_old);
+	LASSERT(p_master != NULL, /**/);
+	vector<Buffer *> v_children;
+	/* Root master added as first buffer in the vector */
+	v_children.push_back(p_master);
+	p_master->getChildren(v_children, true);
+	LYXERR(Debug::FIND, "v_children.size()=" << v_children.size());
+	vector<Buffer *>::const_iterator it = find(v_children.begin(), v_children.end(), p_buf);
+	LASSERT(it != v_children.end(), /**/)
+	++it;
+	if (it == v_children.end()) {
+		p_buf = *v_children.begin();
+		return true;
+	}
+	p_buf = *it;
+	return false;
+}
+
+
+/** Switch p_buf to point to previous document buffer.
+ **
+ ** Return true if restarted from last child buffer.
+ **
+ ** @note
+ ** Not using p_buf->allRelatives() here, because I'm not sure
+ ** whether or not the returned order is independent of p_buf.
+ **/
+static bool prev_document_buffer(Buffer * & p_buf) {
+	Buffer *p_master = p_buf;
+	Buffer *p_old;
+	do {
+		p_old = p_master;
+		p_master = const_cast<Buffer *>(p_master->masterBuffer());
+		LYXERR(Debug::FIND, "p_old=" << p_old << ", p_master=" << p_master);
+	} while (p_master != p_old);
+	LASSERT(p_master != NULL, /**/);
+	vector<Buffer *> v_children;
+	/* Root master added as first buffer in the vector */
+	v_children.push_back(p_master);
+	p_master->getChildren(v_children, true);
+	LYXERR(Debug::FIND, "v_children.size()=" << v_children.size());
+	vector<Buffer *>::const_iterator it = find(v_children.begin(), v_children.end(), p_buf);
+	LASSERT(it != v_children.end(), /**/)
+	if (it == v_children.begin()) {
+		it = v_children.end();
+		--it;
+		p_buf = *it;
+		return true;
+	}
+	--it;
+	p_buf = *it;
+	return false;
+}
+
+
+/** Switch buf to point to next or previous buffer in search scope.
+ **
+ ** Return true if restarted from scratch.
+ **/
+static bool next_prev_buffer(Buffer * & buf, FindAndReplaceOptions const & opt) {
+	bool restarted = false;
+	switch (opt.scope) {
+	case FindAndReplaceOptions::S_BUFFER:
+		restarted = true;
+		break;
+	case FindAndReplaceOptions::S_DOCUMENT:
+		if (opt.forward)
+			restarted = next_document_buffer(buf);
+		else
+			restarted = prev_document_buffer(buf);
+		break;
+	case FindAndReplaceOptions::S_OPEN_BUFFERS:
+		if (opt.forward) {
+			buf = theBufferList().next(buf);
+			restarted = buf == *theBufferList().begin();
+		} else {
+			buf = theBufferList().previous(buf);
+			restarted = buf == *(theBufferList().end() - 1);
+		}
+		break;
+	}
+	return restarted;
+}
+
+
+/** Find the finest question message to post to the user */
+docstring question_string(FindAndReplaceOptions const & opt)
+{
+	docstring cur_pos = opt.forward ? _("End") : _("Begin");
+	docstring new_pos = opt.forward ? _("begin") : _("end");
+	docstring scope;
+	switch (opt.scope) {
+	case FindAndReplaceOptions::S_BUFFER:
+		scope = _("file");
+		break;
+	case FindAndReplaceOptions::S_DOCUMENT:
+		scope = _("master document");
+		break;
+	case FindAndReplaceOptions::S_OPEN_BUFFERS:
+		scope = _("open files");
+		break;
+	}
+	docstring dir = opt.forward ? _("forward") : _("backwards");
+	return cur_pos + _(" of ") + scope
+		+ _(" reached while searching ") + dir + ".\n"
+		+ "\n"
+		+ _("Continue searching from ") + new_pos + " ?";
+}
+
+
+void FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt) {
+	int wrap_answer = -1;
+	ostringstream oss;
+	oss << opt;
+	FuncRequest cmd(LFUN_WORD_FINDADV, from_utf8(oss.str()));
+	BufferView * bv = view_.documentBufferView();
+	Buffer * buf = &bv->buffer();
+
+	Buffer * buf_orig = &bv->buffer();
+	Cursor cur_orig(bv->cursor());
+
+	do {
+		LYXERR(Debug::FIND, "Dispatching LFUN_WORD_FINDADV");
+		dispatch(cmd);
+		if (bv->cursor().result().dispatched()) {
+			// Match found, selected and replaced if needed
+			return;
+		}
+
+		// No match found in current buffer: select next buffer in scope, if any
+		bool prompt = next_prev_buffer(buf, opt);
+		if (prompt) {
+			if (wrap_answer != -1)
+				break;
+			docstring q = question_string(opt);
+			wrap_answer = frontend::Alert::prompt(
+				_("Wrap search?"), q,
+				0, 1, _("&Yes"), _("&No"));
+			if (wrap_answer == 1)
+				break;
+		}
+		lyx::dispatch(FuncRequest(LFUN_BUFFER_SWITCH,
+					  buf->absFileName()));
+		bv = view_.documentBufferView();
+		if (opt.forward) {
+			bv->cursor().clear();
+			bv->cursor().push_back(CursorSlice(buf->inset()));
+		} else {
+			lyx::dispatch(FuncRequest(LFUN_BUFFER_END));
+			bv->cursor().setCursor(doc_iterator_end(buf));
+			bv->cursor().backwardPos();
+			LYXERR(Debug::FIND, "findBackAdv5: cur: " << bv->cursor());
+		}
+		bv->clearSelection();
+	} while (wrap_answer != 1);
+	lyx::dispatch(FuncRequest(LFUN_BUFFER_SWITCH,
+				  buf_orig->absFileName()));
+	bv = view_.documentBufferView();
+	bv->cursor() = cur_orig;
+}
+
+
 void FindAndReplaceWidget::findAndReplace(
 	bool casesensitive, bool matchword, bool backwards,
 	bool expandmacros, bool ignoreformat, bool replace,
@@ -184,11 +361,7 @@ void FindAndReplaceWidget::findAndReplace(
 	       << ", scope=" << scope);
 	FindAndReplaceOptions opt(searchString, casesensitive, matchword, ! backwards,
 		expandmacros, ignoreformat, regexp, replaceString, keep_case, scope);
-	LYXERR(Debug::FIND, "Dispatching LFUN_WORD_FINDADV");
-	std::ostringstream oss;
-	oss << opt;
-	LYXERR(Debug::FIND, "Dispatching LFUN_WORD_FINDADV");
-	dispatch(FuncRequest(LFUN_WORD_FINDADV, from_utf8(oss.str())));
+	findAndReplaceScope(opt);
 }
 
 

@@ -936,146 +936,29 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
 }
 
 
-/** Switch p_buf to point to next document buffer.
- **
- ** Return true if restarted from master-document buffer.
- **
- ** @note
- ** Not using p_buf->allRelatives() here, because I'm not sure
- ** whether or not the returned order is independent of p_buf.
- **/
-bool next_document_buffer(Buffer * & p_buf) {
-	Buffer *p_master = p_buf;
-	Buffer *p_old;
-	do {
-		p_old = p_master;
-		p_master = const_cast<Buffer *>(p_master->masterBuffer());
-		LYXERR(Debug::FIND, "p_old=" << p_old << ", p_master=" << p_master);
-	} while (p_master != p_old);
-	LASSERT(p_master != NULL, /**/);
-	vector<Buffer *> v_children;
-	/* Root master added as first buffer in the vector */
-	v_children.push_back(p_master);
-	p_master->getChildren(v_children, true);
-	LYXERR(Debug::FIND, "v_children.size()=" << v_children.size());
-	vector<Buffer *>::const_iterator it = find(v_children.begin(), v_children.end(), p_buf);
-	LASSERT(it != v_children.end(), /**/)
-	++it;
-	if (it == v_children.end()) {
-		p_buf = *v_children.begin();
-		return true;
-	}
-	p_buf = *it;
-	return false;
-}
-
-
-/** Switch p_buf to point to previous document buffer.
- **
- ** Return true if restarted from last child buffer.
- **
- ** @note
- ** Not using p_buf->allRelatives() here, because I'm not sure
- ** whether or not the returned order is independent of p_buf.
- **/
-bool prev_document_buffer(Buffer * & p_buf) {
-	Buffer *p_master = p_buf;
-	Buffer *p_old;
-	do {
-		p_old = p_master;
-		p_master = const_cast<Buffer *>(p_master->masterBuffer());
-		LYXERR(Debug::FIND, "p_old=" << p_old << ", p_master=" << p_master);
-	} while (p_master != p_old);
-	LASSERT(p_master != NULL, /**/);
-	vector<Buffer *> v_children;
-	/* Root master added as first buffer in the vector */
-	v_children.push_back(p_master);
-	p_master->getChildren(v_children, true);
-	LYXERR(Debug::FIND, "v_children.size()=" << v_children.size());
-	vector<Buffer *>::const_iterator it = find(v_children.begin(), v_children.end(), p_buf);
-	LASSERT(it != v_children.end(), /**/)
-	if (it == v_children.begin()) {
-		it = v_children.end();
-		--it;
-		p_buf = *it;
-		return true;
-	}
-	--it;
-	p_buf = *it;
-	return false;
-}
-
-
-/** Switch p_buf to point to next open buffer.
- **
- ** Return true if restarted from first open buffer.
- **/
-bool next_open_buffer(Buffer * & p_buf) {
-	p_buf = theBufferList().next(p_buf);
-	return p_buf == *theBufferList().begin();
-}
-
-
-/** Switch p_buf to point to previous open buffer.
- **
- ** Return true if restarted from last open buffer.
- **/
-bool prev_open_buffer(Buffer * & p_buf) {
-	p_buf = theBufferList().previous(p_buf);
-	return p_buf == *(theBufferList().end() - 1);
-}
-
-
 /// Finds forward
 int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 {
 	if (!cur)
 		return 0;
-	int wrap_answer = -1;
-	do {
-		while (cur && !match(cur, -1, false)) {
-			if (cur.pit() < cur.lastpit())
-				cur.forwardPar();
-			else {
-				cur.forwardPos();
-			}
+	while (cur && !match(cur, -1, false)) {
+		if (cur.pit() < cur.lastpit())
+			cur.forwardPar();
+		else {
+			cur.forwardPos();
 		}
-		for (; cur; cur.forwardPos()) {
-			if (match(cur))
-				return findAdvFinalize(cur, match);
-		}
-		// No match has been found in current buffer
-		bool prompt = false;
-		switch (match.opt.scope) {
-		case FindAndReplaceOptions::S_BUFFER:
-			prompt = true;
-			break;
-		case FindAndReplaceOptions::S_DOCUMENT:
-			prompt = next_document_buffer(match.p_buf);
-			break;
-		case FindAndReplaceOptions::S_OPEN_BUFFERS:
-			prompt = next_open_buffer(match.p_buf);
-			break;
-		}
-		if (prompt) {
-			if (wrap_answer != -1)
-				break;
-			wrap_answer = frontend::Alert::prompt(
-				_("Wrap search?"),
-				_("End of document/scope reached while searching forward.\n"
-					"\n"
-					"Continue searching from beginning?"),
-				0, 1, _("&Yes"), _("&No"));
-		}
-		cur.clear();
-		cur.push_back(CursorSlice(match.p_buf->inset()));
-	} while (wrap_answer != 1);
+	}
+	for (; cur; cur.forwardPos()) {
+		if (match(cur))
+			return findAdvFinalize(cur, match);
+	}
 	return 0;
 }
 
 
 /// Find the most backward consecutive match within same paragraph while searching backwards.
-void findMostBackwards(DocIterator & cur, MatchStringAdv const & match, int & len) {
+void findMostBackwards(DocIterator & cur, MatchStringAdv const & match, int & len)
+{
 	DocIterator cur_begin = doc_iterator_begin(cur.buffer());
 	len = findAdvFinalize(cur, match);
 	if (cur != cur_begin) {
@@ -1098,59 +981,38 @@ void findMostBackwards(DocIterator & cur, MatchStringAdv const & match, int & le
 	LYXERR(Debug::FIND, "findMostBackwards(): cur=" << cur);
 }
 
+
 /// Finds backwards
 int findBackwardsAdv(DocIterator & cur, MatchStringAdv & match) {
 	if (! cur)
 		return 0;
-	// Backup of original position (for restoring it in case match not found)
+	// Backup of original position
 	DocIterator cur_orig(cur);
-	// Position beyond which match is not considered
-	// (set to end of document after wrap-around question)
-	DocIterator cur_orig2(cur);
 	DocIterator cur_begin = doc_iterator_begin(cur.buffer());
-/* 	if (match(cur_orig)) */
-/* 		findAdvFinalize(cur_orig, match); */
-	int wrap_answer = 0;
+	if (cur == cur_begin)
+		return 0;
 	bool found_match;
+	bool pit_changed = false;
+	found_match = false;
 	do {
-		bool pit_changed = false;
-		found_match = false;
-		// Search in current par occurs from start to end, 
-		// but in next loop match is discarded if pos > original pos
 		cur.pos() = 0;
 		found_match = match(cur, -1, false);
-		LYXERR(Debug::FIND, "findBackAdv0: found_match=" << found_match << ", cur: " << cur);
-		while (cur != cur_begin) {
-			if (found_match)
-				break;
-			if (cur.pit() > 0)
-				--cur.pit();
-			else
-				cur.backwardPos();
-			pit_changed = true;
-			// Search in previous pars occurs from start to end
-			cur.pos() = 0;
-			found_match = match(cur, -1, false);
-			LYXERR(Debug::FIND, "findBackAdv1: found_match=" 
-				<< found_match << ", cur: " << cur);
-		}
-		if (pit_changed)
-			cur.pos() = cur.lastpos();
-		else
-			cur.pos() = cur_orig2.pos();
-		LYXERR(Debug::FIND, "findBackAdv2: cur: " << cur);
-		DocIterator cur_prev_iter;
+
 		if (found_match) {
+			if (pit_changed)
+				cur.pos() = cur.lastpos();
+			else
+				cur.pos() = cur_orig.pos();
+			LYXERR(Debug::FIND, "findBackAdv2: cur: " << cur);
+			DocIterator cur_prev_iter;
 			while (true) {
-				found_match=match(cur);
+				found_match = match(cur);
 				LYXERR(Debug::FIND, "findBackAdv3: found_match=" 
-					<< found_match << ", cur: " << cur);
+				       << found_match << ", cur: " << cur);
 				if (found_match) {
 					int len;
 					findMostBackwards(cur, match, len);
-					if (&cur.inset() != &cur_orig2.inset()
-					    || !(cur.pit() == cur_orig2.pit())
-					    || cur.pos() < cur_orig2.pos())
+					if (cur < cur_orig)
 						return len;
 				}
 				// Prevent infinite loop at begin of document
@@ -1158,35 +1020,16 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv & match) {
 					break;
 				cur_prev_iter = cur;
 				cur.backwardPos();
-			};
+			}
 		}
-		// No match has been found in current buffer
-		bool prompt = false;
-		switch (match.opt.scope) {
-		case FindAndReplaceOptions::S_BUFFER:
-			prompt = true;
+		if (cur == cur_begin)
 			break;
-		case FindAndReplaceOptions::S_DOCUMENT:
-			prompt = prev_document_buffer(match.p_buf);
-			break;
-		case FindAndReplaceOptions::S_OPEN_BUFFERS:
-			prompt = prev_open_buffer(match.p_buf);
-			break;
-		}
-		if (prompt) {
-			wrap_answer = frontend::Alert::prompt(
-				_("Wrap search?"),
-				_("Beginning of document/scope reached while searching backwards\n"
-				  "\n"
-				  "Continue searching from end?"),
-				0, 1, _("&Yes"), _("&No"));
-		}
-		cur = doc_iterator_end(match.p_buf);
-		cur.backwardPos();
-		LYXERR(Debug::FIND, "findBackAdv5: cur: " << cur);
-		cur_orig2 = cur;
-	} while (wrap_answer == 0);
-	cur = cur_orig;
+		if (cur.pit() > 0)
+			--cur.pit();
+		else
+			cur.backwardPos();
+		pit_changed = true;
+	} while (true);
 	return 0;
 }
 
@@ -1278,10 +1121,6 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt)
 			bv->message(_("Search text is empty!"));
 			return false;
 	}
-// 	if (! bv->buffer()) {
-// 		bv->message(_("No open document !"));
-// 		return false;
-// 	}
 
 	MatchStringAdv matchAdv(bv->buffer(), opt);
 	try {
@@ -1303,13 +1142,9 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt)
 	LYXERR(Debug::FIND, "Putting selection at buf=" << matchAdv.p_buf
 		<< "cur=" << cur << " with len: " << match_len);
 
-	lyx::dispatch(FuncRequest(LFUN_BUFFER_SWITCH,
-				  matchAdv.p_buf->absFileName()));
-	bv = theApp()->currentWindow()->documentBufferView();
-
 	bv->putSelectionAt(cur, match_len, ! opt.forward);
 	if (opt.replace == docstring(from_utf8(LYX_FR_NULL_STRING))) {
-		bv->message(_("Match found !"));
+		bv->message(_("Match found!"));
 	} else {
 		string lyx = to_utf8(opt.replace);
 		// FIXME: Seems so stupid to me to rebuild a buffer here,
@@ -1355,22 +1190,9 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt)
 			bv->message(_("Match found and replaced !"));
 		} else
 			LASSERT(false, /**/);
-		// dispatch(FuncRequest(LFUN_SELF_INSERT, opt.replace));
 	}
 
 	return true;
-}
-
-
-void findAdv(BufferView * bv, FuncRequest const & ev)
-{
-	if (!bv || ev.action != LFUN_WORD_FINDADV)
-		return;
-
-	FindAndReplaceOptions opt;
-	istringstream iss(to_utf8(ev.argument()));
-	iss >> opt;
-	findAdv(bv, opt);
 }
 
 

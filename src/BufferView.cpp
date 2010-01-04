@@ -1503,9 +1503,16 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		break;
 	}
 
-	case LFUN_WORD_FINDADV:
-		findAdv(this, cmd);
+	case LFUN_WORD_FINDADV: {
+		FindAndReplaceOptions opt;
+		istringstream iss(to_utf8(cmd.argument()));
+		iss >> opt;
+		if (findAdv(this, opt))
+			cur.dispatched();
+		else
+			cur.undispatched();
 		break;
+	}
 
 	case LFUN_MARK_OFF:
 		cur.clearSelection();

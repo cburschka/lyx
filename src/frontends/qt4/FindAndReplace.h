@@ -22,6 +22,7 @@
 #include "LyX.h"
 #include "LyXFunc.h"
 #include "Text.h"
+#include "lyxfind.h"
 
 #include <QDialog>
 
@@ -42,15 +43,20 @@ private:
 	///
 	GuiView & view_;
 
-	// add a string to the combo if needed
+	/// add a string to the combo if needed
 	void remember(std::string const & find, QComboBox & combo);
+
+	/// FIXME Probably to be merged with findAndReplace(bool, bool)
 	void findAndReplace(
 		bool casesensitive, bool matchword, bool backwards,
 		bool expandmacros, bool ignoreformat, bool replace,
 		bool keep_case
 	);
-// 	void find(docstring const & str, int len, bool casesens,
-// 		  bool words, bool backwards, bool expandmacros);
+
+	/// Perform the scope-related buffer switch while searching
+	void findAndReplaceScope(FindAndReplaceOptions & opt);
+
+	/// Collect options from the GUI elements, then perform the search
 	void findAndReplace(bool backwards, bool replace);
 
 	bool eventFilter(QObject *obj, QEvent *event);
