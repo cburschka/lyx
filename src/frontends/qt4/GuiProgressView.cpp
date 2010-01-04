@@ -26,6 +26,8 @@
 
 #include <QCheckBox>
 
+using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 namespace frontend {
@@ -64,17 +66,14 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 	widget_->outTE->setFont(font);
 	widget_->tabWidget->widget(0)->setContentsMargins(-5, -7, 0, -7);
 
-
-	Debug::Type levels = lyxerr.level();
+	Debug::Type const levels = lyxerr.level();
 	// number of initial items in settings tab
-	int shift = 3;
-	const int levelCount = Debug::levelCount();
-	for (int i = 0 ; i < levelCount; i++) {
-		const Debug::Type level = Debug::value(i);
+	int const level_count = Debug::levelCount();
+	for (int i = 0 ; i < level_count; i++) {
+		Debug::Type const level = Debug::value(i);
 		LevelButton * box = new LevelButton(toqstr(Debug::description(level)));
 		box->level = level;
-		widget_->settingsLayout->addWidget(box, (i + shift) % 10, (i + shift) / 10);
-		box->setChecked(false);
+		widget_->settingsLayout->addWidget(box, (i + 3) % 10, (i + 3) / 10);
 
 		if ((levels == Debug::ANY) && (levels == level))
 			box->setChecked(true);
@@ -86,15 +85,21 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 		connect(box, SIGNAL(stateChanged(int)), this, SLOT(levelChanged()));
 	}
 
-	
-	GuiProgress* progress = dynamic_cast<GuiProgress*>(support::ProgressInterface::instance());
+
+	GuiProgress * progress =
+		dynamic_cast<GuiProgress *>(ProgressInterface::instance());
 
 	if (progress) {
-		connect(progress, SIGNAL(processStarted(QString const &)), this, SLOT(appendText(QString const &)));
-		//connect(progress, SIGNAL(processFinished(QString const &)), this, SLOT(appendText(QString const &)));
-		connect(progress, SIGNAL(appendMessage(QString const &)), this, SLOT(appendText(QString const &)));
-		connect(progress, SIGNAL(appendLyXErrMessage(QString const &)), this, SLOT(appendLyXErrText(QString const &)));
-		connect(progress, SIGNAL(appendError(QString const &)), this, SLOT(appendText(QString const &)));
+		connect(progress, SIGNAL(processStarted(QString const &)),
+			this, SLOT(appendText(QString const &)));
+		//connect(progress, SIGNAL(processFinished(QString const &)),
+		//	this, SLOT(appendText(QString const &)));
+		connect(progress, SIGNAL(appendMessage(QString const &)),
+			this, SLOT(appendText(QString const &)));
+		connect(progress, SIGNAL(appendLyXErrMessage(QString const &)),
+			this, SLOT(appendLyXErrText(QString const &)));
+		connect(progress, SIGNAL(appendError(QString const &)),
+			this, SLOT(appendText(QString const &)));
 		connect(progress, SIGNAL(clearMessages()), this, SLOT(clearText()));
 		progress->lyxerrConnect();
 	}
@@ -115,7 +120,7 @@ void GuiProgressView::levelChanged()
 			}
 		}
 	}
-	dispatch(FuncRequest(LFUN_DEBUG_LEVEL_SET, convert<std::string>(level)));
+	dispatch(FuncRequest(LFUN_DEBUG_LEVEL_SET, convert<string>(level)));
 }
 
 
@@ -178,13 +183,13 @@ void GuiProgressView::restoreSession()
 
 void GuiProgressView::showEvent(QShowEvent*)
 {
-	support::ProgressInterface::instance()->lyxerrConnect();
+	ProgressInterface::instance()->lyxerrConnect();
 }
 
 
 void GuiProgressView::hideEvent(QHideEvent*)
 {
-	support::ProgressInterface::instance()->lyxerrDisconnect();
+	ProgressInterface::instance()->lyxerrDisconnect();
 }
 
 
