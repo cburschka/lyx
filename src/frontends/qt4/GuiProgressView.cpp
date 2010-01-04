@@ -75,10 +75,12 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 		box->level = level;
 		widget_->settingsLayout->addWidget(box, (i + 3) % 10, (i + 3) / 10);
 
-		if (level == Debug::ANY)
-			box->setChecked(levels == level);
+		box->setChecked(false);
+		if ((levels == Debug::ANY) && (levels == level))
+			box->setChecked(true);
 		else
-			box->setChecked(levels & level);
+			if ((level != Debug::ANY) && (levels & level))
+				box->setChecked(true);
 
 		level_buttons << box;
 		connect(box, SIGNAL(stateChanged(int)), this, SLOT(levelChanged()));
