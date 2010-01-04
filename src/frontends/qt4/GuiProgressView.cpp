@@ -84,7 +84,7 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 		level_buttons << box;
 		connect(box, SIGNAL(stateChanged(int)), this, SLOT(levelChanged()));
 	}
-
+	widget_->settingsLayout->activate();
 
 	GuiProgress * progress =
 		dynamic_cast<GuiProgress *>(ProgressInterface::instance());
