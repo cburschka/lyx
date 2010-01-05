@@ -97,7 +97,8 @@ void LyXAction::init()
 	// magnitudes faster.
 
 	static bool init;
-	if (init) return;
+	if (init) 
+		return;
 
 	struct ev_item {
 		FuncCode action;
@@ -3449,9 +3450,8 @@ void LyXAction::init()
 #ifndef DOXYGEN_SHOULD_SKIP_THIS
 	};
 
-	for (int i = 0; items[i].action != LFUN_NOACTION; ++i) {
+	for (int i = 0; items[i].action != LFUN_NOACTION; ++i)
 		newFunc(items[i].action, items[i].name, items[i].attrib, items[i].type);
-	}
 
 	init = true;
 }
