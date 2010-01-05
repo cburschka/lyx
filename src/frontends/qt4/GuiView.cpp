@@ -274,8 +274,11 @@ struct GuiView::GuiViewPrivate
 #if (QT_VERSION >= 0x040400)
 	void setPreviewFuture(QFuture<docstring> const & f)
 	{
-		if (preview_watcher_.isRunning())
-			preview_watcher_.waitForFinished();
+		if (preview_watcher_.isRunning()) {
+			// we prefer to cancel this preview in order to keep a snappy
+			// interface.
+			return;
+		}
 		preview_watcher_.setFuture(f);
 	}
 #endif
