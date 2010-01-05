@@ -486,14 +486,14 @@ KeyMap::BindingList KeyMap::listBindings(bool unbound, KeyMap::ItemType tag) con
 	listBindings(list, KeySequence(0, 0), tag);
 	if (unbound) {
 		LyXAction::const_iterator fit = lyxaction.func_begin();
-		LyXAction::const_iterator fit_end = lyxaction.func_end();
-		for (; fit != fit_end; ++fit) {
+		LyXAction::const_iterator const fen = lyxaction.func_end();
+		for (; fit != fen; ++fit) {
 			FuncCode action = fit->second;
 			bool has_action = false;
-			BindingList::const_iterator it = list.begin();
-			BindingList::const_iterator it_end = list.end();
-			for (; it != it_end; ++it)
-				if (it->request.action == action) {
+			BindingList::const_iterator bit = list.begin();
+			BindingList::const_iterator const ben = list.end();
+			for (; bit != ben; ++bit)
+				if (bit->request.action == action) {
 					has_action = true;
 					break;
 				}
