@@ -79,7 +79,7 @@ namespace {
 
 // Extracts arguments from str into args. Arguments are delimted by
 // whitespace or by double quotes.
-// We extract at most max arguments, treating the last argument as 
+// We extract at most max + 1 arguments, treating args[max] as 
 // continuing to eol.
 void splitArg(vector<string> & args, string const & str, 
 		unsigned int max = UINT_MAX)
