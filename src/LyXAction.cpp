@@ -3467,16 +3467,17 @@ FuncRequest LyXAction::lookupFunc(string const & func) const
 {
 	string const func2 = trim(func);
 
-	if (func2.empty()) {
+	if (func2.empty())
 		return FuncRequest(LFUN_NOACTION);
-	}
 
 	string cmd;
 	string const arg = split(func2, cmd, ' ');
 
-	FuncMap::const_iterator fit = lyx_func_map.find(cmd);
+	FuncMap::const_iterator const fit = lyx_func_map.find(cmd);
 
-	return fit != lyx_func_map.end() ? FuncRequest(fit->second, arg) : FuncRequest(LFUN_UNKNOWN_ACTION);
+	return fit != lyx_func_map.end() 
+			? FuncRequest(fit->second, arg) 
+			: FuncRequest(LFUN_UNKNOWN_ACTION);
 }
 
 
