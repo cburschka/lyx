@@ -317,8 +317,8 @@ Buffer::Buffer(string const & file, bool readonly, Buffer const * cloned_buffer)
 	if (cloned_buffer) {
 		d->inset = new InsetText(*cloned_buffer->d->inset);
 		d->inset->setBuffer(*this);
-		// FIXME 1: optimize this loop somewhat, maybe by creatinga new
-		// greneral recursive Inset::setId().
+		// FIXME: optimize this loop somewhat, maybe by creating a new
+		// general recursive Inset::setId().
 		DocIterator it = doc_iterator_begin(this);
 		DocIterator cloned_it = doc_iterator_begin(cloned_buffer);
 		for (; !it.atEnd(); it.forwardPar(), cloned_it.forwardPar())
