@@ -15,6 +15,7 @@
 
 #include "support/lstrings.h"
 
+#include <climits>
 #include <iostream>
 #include <sstream>
 #include <vector>
@@ -76,7 +77,12 @@ mouse_button::state FuncRequest::button() const
 
 namespace {
 
-void splitArg(vector<string> & args, string const & str, unsigned int max)
+// Extracts arguments from str into args. Arguments are delimted by
+// whitespace or by double quotes.
+// We extract at most max arguments, treating the last argument as 
+// continuing to eol.
+void splitArg(vector<string> & args, string const & str, 
+		unsigned int max = UINT_MAX)
 {
 	istringstream is(str);
 	while (is) {
@@ -92,8 +98,10 @@ void splitArg(vector<string> & args, string const & str, unsigned int max)
 		is >> c;
 		if (is) {
 			if (c == '"')
+				// get quote delimited argument
 				getline(is, s, '"');
 			else {
+				// get whitespace delimited argument
 				is.putback(c);
 				is >> s;
 			}
@@ -107,7 +115,7 @@ void splitArg(vector<string> & args, string const & str, unsigned int max)
 string FuncRequest::getArg(unsigned int i) const
 {
 	vector<string> args;
-	splitArg(args, to_utf8(argument_), string::npos);
+	splitArg(args, to_utf8(argument_));
 	return i < args.size() ? args[i] : string();
 }
 
