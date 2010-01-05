@@ -74,6 +74,7 @@ private Q_SLOTS:
 	void clearText();
 
 	void levelChanged();
+  void tristateChanged(int state);
 
 private:
 	ProgressViewWidget * widget_;
@@ -82,6 +83,8 @@ private:
 	void hideEvent(QHideEvent*);
 
 	QList<LevelButton*> level_buttons;
+	QList<LevelButton*> checked_buttons;
+	LevelButton* toggle_button;
 };
 
 
