@@ -380,6 +380,8 @@ Buffer::~Buffer()
 
 Buffer * Buffer::clone() const
 {
+	// FIXME for asynchronous export and preview: We must also clone all
+	// the child buffers!
 	return new Buffer(fileName().absFilename(), false, this);
 }
 
