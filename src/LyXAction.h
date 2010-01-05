@@ -45,7 +45,7 @@ private:
 	struct FuncInfo {
 		/// the action name
 		std::string name;
-		/// the func_attrib values set
+		/// the FuncAttribs values set
 		unsigned int attrib;
 		/// the category of this func
 		FuncType type;
