@@ -377,7 +377,7 @@ bool findChange(BufferView * bv, bool next)
 	// clear the selection and search the other way around (see the end
 	// of this function). This will avoid changes to be selected half.
 	bool search_both_sides = false;
-	if (cur.pos() > 1) {
+	if (cur.pos() > 0) {
 		Change change_next_pos
 			= cur.paragraph().lookupChange(cur.pos());
 		Change change_prev_pos
