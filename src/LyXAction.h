@@ -108,16 +108,19 @@ private:
 	void newFunc(FuncCode, std::string const & name, unsigned int attrib, FuncType type);
 
 	/**
-	 * This is a list of all the LyXFunc names with the
-	 * coresponding action number. It is usually only used by the
-	 * minibuffer or when assigning commands to keys during init.
+	 * This maps LyX function names to function codes, e.g.:
+	 *   lyx_func_map["ert-insert"] == LFUN_ERT_INSERT
 	 */
 	FuncMap lyx_func_map;
 
 	/**
-	 * This is a mapping from action number to an object holding
-	 * info about this action. f.ex. command name (string),
-	 * command attributes (ro)
+	 * This maps function codes to objects holding info about the corresponding
+	 * action. E.g., if
+	 *   FuncInfo const & ert = lyx_info_map[LFUN_ERT_INSERT];
+	 * then:
+	 *   ert.name   == "ert-insert"'
+	 *   ert.attrib == Noop
+	 *   ert.type   == Edit
 	 */
 	InfoMap lyx_info_map;
 };
