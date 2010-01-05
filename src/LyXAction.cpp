@@ -74,7 +74,7 @@ LyXAction lyxaction;
 
 
 void LyXAction::newFunc(FuncCode action, string const & name,
-			unsigned int attrib, LyXAction::func_type type)
+			unsigned int attrib, LyXAction::FuncType type)
 {
 	lyx_func_map[name] = action;
 	FuncInfo tmpinfo;
@@ -103,7 +103,7 @@ void LyXAction::init()
 		FuncCode action;
 		char const * name;
 		unsigned int attrib;
-		func_type type;
+		FuncType type;
 	};
 
 	ev_item const items[] = {
@@ -3474,7 +3474,7 @@ FuncRequest LyXAction::lookupFunc(string const & func) const
 	string cmd;
 	string const arg = split(func2, cmd, ' ');
 
-	func_map::const_iterator fit = lyx_func_map.find(cmd);
+	FuncMap::const_iterator fit = lyx_func_map.find(cmd);
 
 	return fit != lyx_func_map.end() ? FuncRequest(fit->second, arg) : FuncRequest(LFUN_UNKNOWN_ACTION);
 }
@@ -3482,22 +3482,22 @@ FuncRequest LyXAction::lookupFunc(string const & func) const
 
 string const LyXAction::getActionName(FuncCode action) const
 {
-	info_map::const_iterator const it = lyx_info_map.find(action);
+	InfoMap::const_iterator const it = lyx_info_map.find(action);
 	return it != lyx_info_map.end() ? it->second.name : string();
 }
 
 
-LyXAction::func_type LyXAction::getActionType(FuncCode action) const
+LyXAction::FuncType LyXAction::getActionType(FuncCode action) const
 {
-	info_map::const_iterator const it = lyx_info_map.find(action);
+	InfoMap::const_iterator const it = lyx_info_map.find(action);
 	return it != lyx_info_map.end() ? it->second.type : Hidden;
 }
 
 
 bool LyXAction::funcHasFlag(FuncCode action,
-			    LyXAction::func_attrib flag) const
+			    LyXAction::FuncAttribs flag) const
 {
-	info_map::const_iterator ici = lyx_info_map.find(action);
+	InfoMap::const_iterator ici = lyx_info_map.find(action);
 
 	if (ici == lyx_info_map.end()) {
 		LYXERR0("action: " << action << " is not known.");
