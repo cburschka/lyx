@@ -75,20 +75,17 @@ using graphics::PreviewLoader;
 /////////////////////////////////////////////////////////////////////
 
 InsetText::InsetText(Buffer * buf, UsePlain type)
-	: Inset(buf), drawFrame_(false), frame_color_(Color_insetframe), text_(this)
+	: Inset(buf), drawFrame_(false), frame_color_(Color_insetframe),
+	text_(this, type == DefaultLayout)
 {
-	initParagraphs(type);
 }
 
 
 InsetText::InsetText(InsetText const & in)
-	: Inset(in), text_(this)
+	: Inset(in), text_(this, in.text_)
 {
-	text_.autoBreakRows_ = in.text_.autoBreakRows_;
 	drawFrame_ = in.drawFrame_;
 	frame_color_ = in.frame_color_;
-	text_.paragraphs() = in.text_.paragraphs();
-	setParagraphOwner();
 }
 
 
@@ -98,27 +95,6 @@ void InsetText::setBuffer(Buffer & buf)
 	for (ParagraphList::iterator it = paragraphs().begin(); it != end; ++it)
 		it->setBuffer(buf);
 	Inset::setBuffer(buf);
-}
-
-
-void InsetText::initParagraphs(UsePlain type)
-{
-	LASSERT(paragraphs().empty(), /**/);
-	paragraphs().push_back(Paragraph());
-	Paragraph & ourpar = paragraphs().back();
-	ourpar.setInsetOwner(this);
-	DocumentClass const & dc = buffer_->params().documentClass();
-	if (type == DefaultLayout)
-		ourpar.setDefaultLayout(dc);
-	else
-		ourpar.setPlainLayout(dc);
-}
-
-
-void InsetText::setParagraphOwner()
-{
-	for_each(paragraphs().begin(), paragraphs().end(),
-		 bind(&Paragraph::setInsetOwner, _1, this));
 }
 
 

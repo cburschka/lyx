@@ -206,10 +206,6 @@ protected:
 	docstring getCaptionHTML(OutputParams const &) const;
 private:
 	///
-	void initParagraphs(UsePlain type);
-	///
-	void setParagraphOwner();
-	///
 	bool drawFrame_;
 	///
 	ColorCode frame_color_;

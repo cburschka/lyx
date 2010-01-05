@@ -189,9 +189,8 @@ public:
 	FontList fontlist_;
 
 	///
-	unsigned int id_;
-	///
-	static unsigned int paragraph_id;
+	int id_;
+
 	///
 	ParagraphParameters params_;
 
@@ -216,9 +215,6 @@ public:
 };
 
 
-// Initialization of the counter for the paragraph id's,
-unsigned int Paragraph::Private::paragraph_id = 0;
-
 namespace {
 
 struct special_phrase {
@@ -240,20 +236,18 @@ size_t const phrases_nr = sizeof(special_phrases)/sizeof(special_phrase);
 
 
 Paragraph::Private::Private(Paragraph * owner, Layout const & layout)
-	: owner_(owner), inset_owner_(0), begin_of_body_(0), layout_(&layout)
+	: owner_(owner), inset_owner_(0), id_(-1), begin_of_body_(0), layout_(&layout)
 {
-	id_ = paragraph_id++;
 	text_.reserve(100);
 }
 
 
 Paragraph::Private::Private(Private const & p, Paragraph * owner)
 	: owner_(owner), inset_owner_(p.inset_owner_), fontlist_(p.fontlist_), 
-	  params_(p.params_), changes_(p.changes_), insetlist_(p.insetlist_),
+	  id_(p.id_), params_(p.params_), changes_(p.changes_), insetlist_(p.insetlist_),
 	  begin_of_body_(p.begin_of_body_), text_(p.text_), words_(p.words_),
 	  layout_(p.layout_)
 {
-	id_ = paragraph_id++;
 }
 
 
@@ -265,7 +259,6 @@ Paragraph::Private::Private(Private const & p, Paragraph * owner,
 	  begin_of_body_(p.begin_of_body_), words_(p.words_),
 	  layout_(p.layout_)
 {
-	id_ = paragraph_id++;
 	if (beg >= pos_type(p.text_.size()))
 		return;
 	text_ = p.text_.substr(beg, end - beg);
@@ -2651,6 +2644,12 @@ void Paragraph::setInsetOwner(Inset const * inset)
 int Paragraph::id() const
 {
 	return d->id_;
+}
+
+
+void Paragraph::setId(int id)
+{
+	d->id_ = id;
 }
 
 

@@ -315,9 +315,15 @@ Buffer::Buffer(string const & file, bool readonly, Buffer const * cloned_buffer)
 {
 	LYXERR(Debug::INFO, "Buffer::Buffer()");
 	if (cloned_buffer) {
-		d->inset = static_cast<InsetText *>(cloned_buffer->d->inset->clone());
+		d->inset = new InsetText(*cloned_buffer->d->inset);
 		d->inset->setBuffer(*this);
-	} else 
+		// FIXME 1: optimize this loop somewhat, maybe by creatinga new
+		// greneral recursive Inset::setId().
+		DocIterator it = doc_iterator_begin(this);
+		DocIterator cloned_it = doc_iterator_begin(cloned_buffer);
+		for (; !it.atEnd(); it.forwardPar(), cloned_it.forwardPar())
+			it.paragraph().setId(cloned_it.paragraph().id());
+	} else
 		d->inset = new InsetText(this);
 	d->inset->setAutoBreakRows(true);
 	d->inset->getText(0)->setMacrocontextPosition(par_iterator_begin());

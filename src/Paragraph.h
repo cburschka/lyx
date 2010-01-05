@@ -92,7 +92,7 @@ class Paragraph
 public:
 	///
 	Paragraph();
-	///
+	/// Copy constructor.
 	Paragraph(Paragraph const &);
 	/// Partial copy constructor.
 	/// Copy the Paragraph contents from \p beg to \p end (without end).
@@ -103,6 +103,8 @@ public:
 	~Paragraph();
 	///
 	int id() const;
+	///
+	void setId(int id);
 
 	///
 	void addChangesToToc(DocIterator const & cdit, Buffer const & buf) const;

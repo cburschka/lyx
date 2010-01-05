@@ -36,14 +36,17 @@ class Lexer;
 class PainterInfo;
 class Spacing;
 
-/// This class encapsulates the main text data and operations in LyX
+/// This class encapsulates the main text data and operations in LyX.
+/// This is more or less the private implementation of InsetText.
 class Text {
-public:
-	/// constructor
-	explicit Text(InsetText * owner)
-		: owner_(owner), autoBreakRows_(false), undo_counter_(0)
-	{}
+private:
+	/// Default constructor.
+	Text(InsetText * owner, bool use_default_layout);
 
+	/// Copy constructor.
+	Text(InsetText * owner, Text const & text);
+
+public:
 	/// \return true if there's no content at all.
 	/// \warning a non standard layout on an empty paragraph doesn't
 	// count as empty.
