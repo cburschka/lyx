@@ -93,13 +93,13 @@ public:
 	bool funcHasFlag(FuncCode action, FuncAttribs flag) const;
 
 	/// iterator across all real actions
-	typedef FuncMap::const_iterator const_func_iterator;
+	typedef FuncMap::const_iterator const_iterator;
 
 	/// return an iterator to the start of all real actions
-	const_func_iterator func_begin() const;
+	const_iterator func_begin() const;
 
 	/// return an iterator to the end of all real actions
-	const_func_iterator func_end() const;
+	const_iterator func_end() const;
 
 private:
 	/// populate the action container with our actions

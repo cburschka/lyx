@@ -3508,13 +3508,13 @@ bool LyXAction::funcHasFlag(FuncCode action,
 }
 
 
-LyXAction::const_func_iterator LyXAction::func_begin() const
+LyXAction::const_iterator LyXAction::func_begin() const
 {
 	return lyx_func_map.begin();
 }
 
 
-LyXAction::const_func_iterator LyXAction::func_end() const
+LyXAction::const_iterator LyXAction::func_end() const
 {
 	return lyx_func_map.end();
 }
