@@ -76,13 +76,15 @@ public:
 	LyXAction();
 
 	/**
-	 * Returns an pseudoaction from a string
-	 * If you include arguments in func_name, a new pseudoaction
-	 * will be created if needed.
+	 * Creates a FuncRequest from a string of the form:
+	 *   lyx-function [argument]
+	 * where the argument is optional and "lyx-function" is in the form you'd
+	 * enter it in the mini-buffer. 
 	 */
 	FuncRequest lookupFunc(std::string const & func_name) const;
 
-	/// Return the name (and argument) associated with the given (pseudo) action
+	/// Return the command name associated with the given action
+	/// Thus: getActionName(LFUN_ERT_INSERT) --> "ert-insert".
 	std::string const getActionName(FuncCode action) const;
 	///
 	func_type getActionType(FuncCode action) const;

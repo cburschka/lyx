@@ -3463,7 +3463,6 @@ LyXAction::LyXAction()
 }
 
 
-// Returns an action tag from a string.
 FuncRequest LyXAction::lookupFunc(string const & func) const
 {
 	string const func2 = trim(func);
