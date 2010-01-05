@@ -55,12 +55,7 @@ private:
 	/// type for map between an action and its info
 	typedef std::map<FuncCode, FuncInfo> InfoMap;
 
-
 public:
-	/// noncopyable
-	LyXAction(LyXAction const &);
-	void operator=(LyXAction const &);
-
 	/// possible "permissions" for an action
 	enum FuncAttribs {
 		Noop = 0, //< Nothing special about this func
@@ -102,6 +97,10 @@ public:
 	const_iterator func_end() const;
 
 private:
+	/// noncopyable
+	LyXAction(LyXAction const &);
+	void operator=(LyXAction const &);
+
 	/// populate the action container with our actions
 	void init();
 	/// add the given action
