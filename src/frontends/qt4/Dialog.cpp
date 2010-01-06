@@ -221,7 +221,7 @@ Inset const * Dialog::inset(InsetCode code) const
 
 void Dialog::checkStatus()
 {
-	// buffer independant dialogs are always active.
+	// buffer independent dialogs are always active.
 	// This check allows us leave canApply unimplemented for some dialogs.
 	if (!isBufferDependent()) {
 		updateView();
@@ -241,9 +241,7 @@ void Dialog::checkStatus()
 		// refreshReadOnly() is too generous in _enabling_ widgets
 		// update dialog to disable disabled widgets again
 
-		if (!readonly || canApplyToReadOnly())
-			updateView();
-
+		updateView();
 	} else
 		enableView(false);
 }

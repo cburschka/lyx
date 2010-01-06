@@ -47,6 +47,10 @@ private:
 	void dispatchParams();
 	///
 	bool isBufferDependent() const { return true; }
+	///
+	void enableView(bool enable);
+	///
+	bool canApply() const { return true; }
 
 private:
 	///

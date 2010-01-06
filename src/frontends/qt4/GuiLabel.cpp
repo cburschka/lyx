@@ -79,6 +79,13 @@ void GuiLabel::applyView()
 }
 
 
+
+void GuiLabel::enableView(bool enable)
+{
+	keywordED->setEnabled(enable);
+}
+
+
 bool GuiLabel::isValid()
 {
 	return !keywordED->text().isEmpty();
