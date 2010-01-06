@@ -19199,6 +19199,206 @@ Control
  client program from a command prompt.
 \end_layout
 
+\begin_layout Subsubsection
+SSH tunel used with SVN under Windows
+\end_layout
+
+\begin_layout Standard
+Compared to linux setting svn client to communicate over ssh under Windows
+ is rather troublesome task.
+ We will at least make some hints how to setup client side but former knowledge
+ about ssh and Windows command line is needed, also be prepared for a great
+ deal of frustration...
+\end_layout
+
+\begin_layout Enumerate
+Get svn client for windows, as described in previous sections.
+ When it is fresh install run some svn command (e.g.
+ 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+svn --version
+\end_layout
+
+\end_inset
+
+) to have created config files, which you will need to change later on.
+\end_layout
+
+\begin_layout Enumerate
+Choose ssh client for Windows.
+ There are more possibilities, we will use the one from Putty tools
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ You will need to automatize connection, so client doesn't ask for any password
+ from you.
+ To keep things easy we will use only keys without any additional password
+ protection etc.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Generate keys by 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+puttygen
+\end_layout
+
+\end_inset
+
+.
+ Save your private .ppk key file and put the public one on the server side.
+ In case the SVN server runs on linux, note that the format of the public
+ key is not compatible with linux openssh and you will need to direcly copy-past
+e the key from the “
+\emph on
+Public key for pasting into OpenSSH authorized_keys file:
+\emph default
+” edit field into the server's 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+~/.ssh/authorized_keys
+\end_layout
+
+\end_inset
+
+ / 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+authorized_keys2
+\end_layout
+
+\end_inset
+
+ file.
+\end_layout
+
+\begin_layout Enumerate
+Get the Putty's plink.
+ In the SVN config file
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Exact path depends on Windows version, usually somewhere around 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+c:
+\backslash
+Documents and Settings
+\backslash
+user
+\backslash
+Application Data
+\backslash
+Subversion
+\backslash
+config 
+\end_layout
+
+\end_inset
+
+/ 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+AppData
+\backslash
+Roaming
+\backslash
+Subversion
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+, section 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+[tunnels]
+\end_layout
+
+\end_inset
+
+, setup ssh command, e.g.
+ 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+ssh=c:/path/plink.exe -i c:/path/private_key.ppk
+\end_layout
+
+\end_inset
+
+.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+It will usually take a lot of time to get exact command right and it depends
+ on many things.
+ For example do not have some remote server saved as a default session in
+ Putty etc.
+ If things fail, try to connect via plink without SVN first.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Checkout the SVN archive, e.g.
+ 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+svn co svn+ssh://user@server/repository_path
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Subsection
 Further tuning
 \end_layout
