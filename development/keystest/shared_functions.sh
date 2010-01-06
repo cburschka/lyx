@@ -4,9 +4,6 @@ OUTDIR="$ROOT_OUTDIR"
 #OUTDIR="$DIRNAME0/out"
 THIS_PID=$$
 
-SRC_DIR=lyx/src
-EXE_TO_TEST=$SRC_DIR/lyx
-
 #kill(){
 #	echo kill
 #}
@@ -109,7 +106,7 @@ get_pid () {
 	sleep 3
 	echo getting pidof "$1" 1>&2
 	#PID=`ps "-u$USER" "$2" | grep "$1" | grep -v grep | sed 's/^ *//g'|  sed 's/ .*$//'`
-	PID=`ps x | grep "$1" | grep -v grep | sed 's/^ *//g'|  sed 's/ .*$//'`
+	PID=`ps x | grep "$1" | grep -v grep | grep -v "gdb " | sed 's/^ *//g'|  sed 's/ .*$//'`
 	echo "$PID" | ( grep " " > /dev/null && ( echo ERROR too many PIDs 1>&2 ; ps x ; full_exit ) )
 	nPIDs=`echo PID "$PID" | wc -l`
 	echo nPIDs $nPIDs 1>&2
@@ -167,7 +164,7 @@ run_gdb () {
   bt
   #shell kill $CHILD_PID
   shell wmctrl -l
-  #shell sleep 1
+  shell sleep 1
   #shell kill -9 $CHILD_PID
 " ; yes q) | HOME="$NEWHOME" gdb $EXE_TO_TEST 2>&1 | strings|  tee $GDB
   echo "end run_gdb ($KILLER_PID)"
@@ -201,7 +198,9 @@ try_replay () {
 		echo This bug appears not to have been reproduced before
 		echo Will try to reproduce now
 		echo
-		do_replay
+	        echo WANT_CRASH_ID=$WANT_CRASH_ID
+		WANT_CRASH_ID="$id" do_replay
+	        echo _WANT_CRASH_ID=$WANT_CRASH_ID
 		echo 
 		echo Finished attempt at replay
 	else
@@ -266,6 +265,11 @@ echo done queued_replays
   done
   echo done queued_reproduce
 )
+}
+
+interesting_crash () {
+(grep " signal SIG[^TK]" $GDB || grep KILL_FREEZE $KEYCODE) &&
+   ( test -z "$WANT_CRASH_ID" || test "$WANT_CRASH_ID" = `get_crash_id` )
 }
 
 #get_pid() {
@@ -374,7 +378,8 @@ do_one_test() {
   echo will erase "$NEWHOME"
   sleep 2
   rm -rf $NEWHOME
-  if (grep " signal SIG[^TK]" $GDB || grep KILL_FREEZE $KEYCODE)
+  #if (grep " signal SIG[^TK]" $GDB || grep KILL_FREEZE $KEYCODE)
+  if interesting_crash
   then
     extras_save
     mkdirp $OUTDIR/save && (

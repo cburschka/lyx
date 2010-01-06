@@ -15,6 +15,8 @@ import subprocess
 
 print 'Beginning keytest.py'
 
+FNULL = open('/dev/null', 'w')
+
 DELAY = '59'
 
 class CommandSource:
@@ -103,7 +105,7 @@ class CommandSourceFromFile(CommandSource):
 
         drop = random.randint(0, len(self.lines) - 1)
         del self.lines[drop]
-        p = p - 1 / len(self.lines)
+        #p = p - 1 / len(self.lines)
         origlines = self.lines
         self.lines = []
         for l in origlines:
@@ -144,7 +146,8 @@ class CommandSourceFromFile(CommandSource):
         line = self.lines[self.i]
         self.count = self.count + 1
         self.i = self.i + 1
-        print 'Line read: <<' + line + '>>\n'
+        #print 'Line read: <<' + line + '>>\n'
+        sys.stdout.write('r')
         return line.rstrip('\n').rstrip()
 
 
@@ -171,7 +174,7 @@ def sendKeystring(keystr, LYX_PID):
     before_secs = time.time()
     while not lyx_sleeping():
         time.sleep(0.02)
-        print '.',
+        sys.stdout.write('.')
         if time.time() - before_secs > 180:
             print 'Killing due to freeze (KILL_FREEZE)'
 
@@ -188,7 +191,13 @@ def sendKeystring(keystr, LYX_PID):
         os.system('import -window root '+screenshot_out+str(x.count)+".png")
         time.sleep(0.1)
     sys.stdout.flush()
-    subprocess.call(["xvkbd", "-xsendevent", "-delay", DELAY, "-text", keystr])
+    if (subprocess.call(
+            ["xvkbd", "-xsendevent", "-delay", DELAY, "-text", keystr],
+            stdout=FNULL,stderr=FNULL
+            ) == 0):
+        sys.stdout.write('*')
+    else:
+        sys.stdout.write('X')
 
 def system_retry(num_retry, cmd):
     i = 0
@@ -253,7 +262,7 @@ sendKeystring("\Afn", lyx_pid)
 write_commands = True
 
 while True:
-    os.system('echo -n LOADAVG:; cat /proc/loadavg')
+    #os.system('echo -n LOADAVG:; cat /proc/loadavg')
     c = x.getCommand()
     if c == 'Loop':
         outfile.close()

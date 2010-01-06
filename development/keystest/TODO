@@ -1,3 +1,14 @@
+Short Term
+
+Fix gdb PID bug, use readlink -f lyx/src/lyx
+Make WANT_CRASH_ID optional
+Force all Titles to start with lyx::
+Start moving out lyx specific stuff
+Make variables customisable
+
+Longer Term
+
+Move all temporary files to a single dir which can be mounted as a tmpfs to reduce HDD writes 
 HTML out with links.
 Try to get KEYCODES to be repeatible and useable (DONE)
 semi protect home dir for repeatibility.
@@ -9,4 +20,5 @@ If come across different bug when trying to reproduce another, reproduce *both* 
 Add report as to how easy bug is to reproduce
 Try e.g. electric fence
 Automatically update from svn every 24 hours, recheck if bugs have been fixed.
-Make it easy to use Xvfb instead of VM.
+Make it easy to use Xvfb instead of VM. (Done)
+Automatically add bisect to bug report.

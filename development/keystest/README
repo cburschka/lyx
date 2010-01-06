@@ -27,11 +27,17 @@ maketar.sh: Makes this tar file :)
 keytest.py: Sends randomly generated keypresses to the LyX window.
 killtest: stop the testing
 stock_text: The stock test to add to each bug report.
+watch_keytest.sh: Dumps various info on what keytest is doing, often run as "watch watch_keytest.sh"
 
 OUTPUTS:
 
 autolyx: Outputs out/*.GDB, a log of all output, including backtraces.
 keytest.py: Outputs out/*.KEYCODES, a list of all keycodes sent to LyX
+
+TIPS:
+To reduce the degree to which keytest writes to your HDD, you may want to run 
+   mount -t tmpfs -o size=50m tmpfs /home/keytest/kt.dir
+as root
 
 AUTHOR:
 Copyright (C) 2009 John McCabe-Dansted, gmatht at gmail dot com.

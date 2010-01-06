@@ -32,10 +32,16 @@ cat $LT/$OUT_NAME/list | sed 's/0x[^ )]*[ )]/.*/g'  | sort | uniq | tee $LT/$OUT
 echo '<html>' >> $OUT/indexreport.html
 
 list_keycode_files () {
-echo for f in  $OUT_NAME/*y/last_crash_sec $OUT_NAME/toreplay/replayed/*y/last_crash_sec
-for f in  $OUT_NAME/*y/last_crash_sec $OUT_NAME/toreplay/replayed/*y/last_crash_sec  $OUT_NAME/toreplay/*y/last_crash_sec $OUT_NAME/toreplay/final/*y/last_crash_sec
+#echo for f in  $OUT_NAME/*y/last_crash_sec $OUT_NAME/toreplay/replayed/*y/last_crash_sec
+for f in  $OUT_NAME/*y/last_crash_sec $OUT_NAME/toreplay/replayed/*y/last_crash_sec $OUT_NAME/toreproduce/replayed/*y/last_crash_sec  $OUT_NAME/toreplay/*y/last_crash_sec $OUT_NAME/toreplay/final/*y/last_crash_sec
+#for f in  $OUT_NAME/*y/*y/last_crash_sec $OUT_NAME/toreplay/replayed/*y/*y/last_crash_sec  $OUT_NAME/toreplay/*y/*y/last_crash_sec $OUT_NAME/toreplay/final/*y/last_crash_sec
 do
         keycode_file=$(echo $f | sed s/last_crash_sec/$(cat $f).KEYCODEpure/)
+	if test -e $keycode_file.replay/last_crash_sec
+	then
+		f=$keycode_file.replay/last_crash_sec
+        	keycode_file=$(echo $f | sed s/last_crash_sec/$(cat $f).KEYCODEpure/)
+	fi
         echo $keycode_file
 done
 }
@@ -134,8 +140,8 @@ do
 		echo cpp $cpp
 		lineno=`echo "$c" | sed 's/.*://g'`
 		echo $cpp,$lineno 1>&2
-		#if [ -e "$CPP_HTML_DIR/$cpp.html" ]
-		if true
+		if [ -e "$CPP_HTML_DIR/$cpp.html" ]
+		#if true
 		then
 			#echo "$l" | sed "s/$c/<a href=$CPP_HTML_DIR_REL\/$cpp.html\#line$lineno>$c<\/a>/"
 			echo "$l" | sed "s?$c?<a href=$CPP_HTML_DIR_REL\/$cpp.html\#line$lineno>$c<\/a>?"
@@ -174,7 +180,7 @@ if ! test -e $ROOT_OUTDIR/html/cpp_html
 then 
 	(mkdir -p $ROOT_OUTDIR/html/cpp_html/ &&
 	cd $ROOT_OUTDIR/html/cpp_html/ &&
-	for f in `f ../../../src/ .cpp$` ; do  g=`basename $f`; c2html -n < $f > $g.html ; echo $f  ; done)
+	for f in `find ../../../src/ -iname '*.cpp' ; find ../../../src/ -iname '*.h'` ; do  g=`basename $f`; c2html -n < $f > $g.html ; echo $f  ; done)
 fi
 }
 
@@ -215,18 +221,23 @@ do
  echo f_base $f_base
  NUM_KEYCODES=`wc -l < "$f_base.KEYCODEpure"`
  echo NUM_KEYCODES=$NUM_KEYCODES...
- if [ "$NUM_KEYCODES" -lt 10 ]  
+ if [ "$NUM_KEYCODES" -lt 20 ]  
  then
   echo f_base $f_base
   f=$f_base.GDB
   echo $f
   g=$f.short
-  egrep '([Ii][Nn] .*[:[:alnum:]][:][0-9]*[^0-9]|#0 | signal SIG[^T])' -A9999  <$f >$g
+  #egrep '([Ii][Nn] .*[:[:alnum:]][:][0-9]*[^0-9]|#0 | signal SIG[^T]| ASSERTION .* VIOLATED IN )' -A9999  <$f >$g
+  egrep '([Ii][Nn] .*[:[:alnum:]][:][0-9]*[^0-9]|#0 | signal SIG[^T]| ASSERTION .* VIOLATED IN )' -A9999  <$f >$g
   if true
   then
 	IN_AT=`egrep -o '([Ii][Nn]|at) ([:lower:]* )?[:_[:alnum:]]*(::[:_[:alnum:]]*|:[0-9]*)' <$f | grep -v lyx_exit | grep -v [Aa]ssert | head -n 1  `
 	SIGNAL=`grep -o ' signal SIG[[:alnum:]_]*[, ]' <$g | sed s/[^[:upper:]]//g | head -n 1`
 	TITLE="$SIGNAL $IN_AT"
+	if grep ' ASSERTION .* VIOLATED IN ' $g
+	then
+		TITLE=`grep -o ' ASSERTION .* VIOLATED IN .*$' $g`
+	fi
 	TITLE_=`echo $TITLE|sed s/[^[:alnum:]]/_/g`
 	INDEX="index.html"
 	HTML_NAME=$SEC.html # name of html report for this bug
@@ -236,11 +247,13 @@ do
 	echo '<html>' >> $LT/$OUT_NAME/$INDEX
 	(echo -n "<br/><a href=\"$SEC.html\">$TITLE</a> " 
 	html_keycode 
-	echo " [<a href=\"`search_bug_url`\">search</a>] [<a href=\"`report_bug_url`\">report</a>] <a href=\"$SEC.screenshot.html\">screenshots</a>" 
-	#if ls $f_base.s*.png 
-	#then
-	#	echo "<a href=\"$SEC.screenshot.html\">screenshots</a>" 
-	#fi
+	#echo -n " [<a href=\"`search_bug_url`\">search</a>] [<a href=\"`report_bug_url`\">report</a>] <a href=\"$SEC.screenshot.html\">screenshots</a>" 
+	echo -n " [<a href=\"`search_bug_url`\">search</a>] [<a href=\"`report_bug_url`\">report</a>]" 
+	if ls $f_base.s*.png > /dev/null
+	then
+		echo -n " <a href=\"$SEC.screenshot.html\">screenshots</a>" 
+	fi
+	echo 
 	#echo -n '<br/> '
 	echo ) >> $OUT/indexreport.html
 	echo -n '<br> '>> $LT/$OUT_NAME/$INDEX

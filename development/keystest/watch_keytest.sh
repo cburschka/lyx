@@ -36,7 +36,9 @@ echo $LATEST_FILE | (
 	echo $SEC $(($NOW_SEC-$SEC))
 	ls -l $LATEST_FILE/$SEC.KEYCODEpure | head -n4
 	echo `cat $LATEST_FILE/$SEC.KEYCODEpure | sed s/KK:\//g`
-	cat $LATEST_FILE/$SEC.GDB | grep "signal SIG" -A 10
+	cat $LATEST_FILE/$SEC.GDB | grep "VIOLATED" #-A 15 -B 5
+	cat $LATEST_FILE/$SEC.GDB | grep "signal SIG" #-A 15 -B 5
+	cat $LATEST_FILE/$SEC.GDB | grep "lyx::" | head -n5 #-A 15 -B 5
   else
 	ls $LATEST_FILE -lot | head
 	cat `echo $LATEST_FILE | sed s/KEYCODEpure.replay/GDB/` | grep "signal SIG" -A 19
@@ -55,7 +57,7 @@ X_PID
 x-session" $ROOT_OUTDIR/log | grep -v kill | grep -v Terminated | tail -n 9
 #exit
 echo autolyx crashes ---------
-grep autolyx: $ROOT_OUTDIR/log | grep -v kill | grep -v Terminated #-A 5
+grep autolyx: $ROOT_OUTDIR/log | grep -v kill | grep -v Terminated | grep -v grep #-A 5
 echo python crashes ---------
 grep -i -a Trace $ROOT_OUTDIR/log -A 7 | tail -n8
 #echo misc ----
