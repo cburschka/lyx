@@ -87,13 +87,13 @@ public:
 	/// True if the command has `flag' set
 	bool funcHasFlag(FuncCode action, FuncAttribs flag) const;
 
-	/// iterator across all real actions
+	/// iterator across all LFUNs
 	typedef FuncMap::const_iterator const_iterator;
 
-	/// return an iterator to the start of all real actions
+	/// return an iterator to the start of the list of LFUNs
 	const_iterator func_begin() const;
 
-	/// return an iterator to the end of all real actions
+	/// return an iterator to one past the end of the list of LFUNs
 	const_iterator func_end() const;
 
 private:
