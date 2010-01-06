@@ -2416,6 +2416,8 @@ void GuiView::reloadBuffer()
 void GuiView::reloadBuffer(Buffer * buf)
 {
 	FileName filename = buf->fileName();
+	// e.g., read-only status could have changed due to version control
+	filename.refresh();
 	Buffer const * parent = buf->parent();
 	bool const is_child = parent != buf;
 	// The user has already confirmed that the changes, if any, should
