@@ -672,7 +672,6 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 					closeItemTag(xs, *lastlay);
 					lastlay = 0;
 				}
-				bool const labelfirst = style.htmllabelfirst();
 				if (isNormalEnv(style)) {
 					// in this case, we print the label only for the first 
 					// paragraph (as in a theorem).
@@ -688,6 +687,7 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 						xs.cr();
 					}
 				}	else { // some kind of list
+				bool const labelfirst = style.htmllabelfirst();
 					if (!labelfirst)
 						openItemTag(xs, style);
 					if (style.labeltype == LABEL_MANUAL
