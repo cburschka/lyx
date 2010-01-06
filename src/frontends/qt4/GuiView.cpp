@@ -663,13 +663,42 @@ void GuiView::dropEvent(QDropEvent * event)
 	for (int i = 0; i != files.size(); ++i) {
 		string const file = os::internal_path(fromqstr(
 			files.at(i).toLocalFile()));
-		if (!file.empty()) {
-			// Asynchronously post the event. DropEvent usually come
-			// from the BufferView. But reloading a file might close
-			// the BufferView from within its own event handler.
-			guiApp->dispatchDelayed(FuncRequest(LFUN_FILE_OPEN, file));
-			event->accept();
+		if (file.empty())
+			continue;
+
+		string const ext = support::getExtension(file);
+		vector<const Format *> found_formats;
+
+		// Find all formats that have the correct extension.
+		vector<const Format *> const & import_formats 
+			= theConverters().importableFormats();
+		vector<const Format *>::const_iterator it = import_formats.begin();
+		for (; it != import_formats.end(); ++it)
+			if ((*it)->extension() == ext)
+				found_formats.push_back(*it);
+
+		FuncRequest cmd;
+		if (found_formats.size() >= 1) {
+			if (found_formats.size() > 1) {
+				//FIXME: show a dialog to choose the correct importable format
+				LYXERR(Debug::FILES,
+					"Multiple importable formats found, selecting first");
+			}
+			string const arg = found_formats[0]->name() + " " + file;
+			cmd = FuncRequest(LFUN_BUFFER_IMPORT, arg);
+		} 
+		else {
+			//FIXME: do we have to explicitly check whether it's a lyx file?
+			LYXERR(Debug::FILES,
+				"No formats found, trying to open it as a lyx file");
+			cmd = FuncRequest(LFUN_FILE_OPEN, file);
 		}
+
+		// Asynchronously post the event. DropEvent usually come
+		// from the BufferView. But reloading a file might close
+		// the BufferView from within its own event handler.
+		guiApp->dispatchDelayed(cmd);
+		event->accept();
 	}
 }
 
