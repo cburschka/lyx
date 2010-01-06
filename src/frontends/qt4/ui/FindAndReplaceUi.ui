@@ -51,8 +51,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>307</width>
-        <height>503</height>
+        <width>289</width>
+        <height>532</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout">
@@ -175,8 +175,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>239</width>
-                      <height>79</height>
+                      <width>221</width>
+                      <height>80</height>
                      </rect>
                     </property>
                     <property name="sizePolicy">
@@ -359,8 +359,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>239</width>
-                      <height>80</height>
+                      <width>221</width>
+                      <height>79</height>
                      </rect>
                     </property>
                     <property name="sizePolicy">
@@ -372,7 +372,7 @@
                    </widget>
                   </widget>
                  </item>
-                 <item row="1" column="0">
+                 <item row="1" column="0" colspan="2">
                   <widget class="QCheckBox" name="caseCB">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
@@ -388,7 +388,7 @@
                    </property>
                   </widget>
                  </item>
-                 <item row="2" column="0" colspan="2">
+                 <item row="3" column="0" colspan="2">
                   <widget class="QComboBox" name="regexpInsertCombo">
                    <property name="enabled">
                     <bool>true</bool>
@@ -434,7 +434,7 @@
                    </item>
                   </widget>
                  </item>
-                 <item row="3" column="0">
+                 <item row="4" column="0">
                   <widget class="QPushButton" name="findNextPB">
                    <property name="enabled">
                     <bool>true</bool>
@@ -456,7 +456,7 @@
                    </property>
                   </widget>
                  </item>
-                 <item row="3" column="1">
+                 <item row="4" column="1">
                   <widget class="QPushButton" name="findPrevPB">
                    <property name="enabled">
                     <bool>true</bool>
@@ -478,7 +478,7 @@
                    </property>
                   </widget>
                  </item>
-                 <item row="1" column="1">
+                 <item row="2" column="0" colspan="2">
                   <widget class="QCheckBox" name="wordsCB">
                    <property name="enabled">
                     <bool>false</bool>
