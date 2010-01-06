@@ -3232,6 +3232,7 @@ void InsetTabular::edit(Cursor & cur, bool front, EntryDirection)
 		cur.pit() = 0;
 		cur.pos() = cur.lastpos(); // FIXME crude guess
 	}
+	cur.setCurrentFont();
 	// FIXME: this accesses the position cache before it is initialized
 	//resetPos(cur);
 	//cur.bv().fitCursor();
@@ -3486,6 +3487,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 				TextMetrics const & tm =
 					cur.bv().textMetrics(cell(cur.idx())->getText(0));
 				cur.pos() = tm.x2pos(cur.pit(), 0, cur.targetX());
+				cur.setCurrentFont();
 			}
 		}
 		if (sl == cur.top()) {
@@ -3497,6 +3499,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (cur.selIsMultiCell()) {
 			cur.pit() = cur.lastpit();
 			cur.pos() = cur.lastpos();
+			cur.setCurrentFont();
 			return;
 		}
 		break;
@@ -3519,6 +3522,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 				ParagraphMetrics const & pm =
 					tm.parMetrics(cur.lastpit());
 				cur.pos() = tm.x2pos(cur.pit(), pm.rows().size()-1, cur.targetX());
+				cur.setCurrentFont();
 			}
 		}
 		if (sl == cur.top()) {
@@ -3528,6 +3532,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (cur.selIsMultiCell()) {
 			cur.pit() = 0;
 			cur.pos() = cur.lastpos();
+			cur.setCurrentFont();
 			return;
 		}
 		break;
@@ -4286,7 +4291,7 @@ void InsetTabular::moveNextCell(Cursor & cur, EntryDirection entry_from)
 		break;
 
 	}
-
+	cur.setCurrentFont();
 	resetPos(cur);
 }
 
@@ -4336,7 +4341,7 @@ void InsetTabular::movePrevCell(Cursor & cur, EntryDirection entry_from)
 		break;
 
 	}
-
+	cur.setCurrentFont();
 	resetPos(cur);
 }
 
