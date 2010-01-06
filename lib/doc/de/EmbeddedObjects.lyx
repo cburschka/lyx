@@ -1,4 +1,4 @@
-#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.6svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -32529,64 +32529,51 @@ Include
 \end_layout
 
 \begin_layout Standard
-Mit dem LaTeX-Befehl 
-\series bold
+Wenn Sie nur an einem Kapitel eines großen Dokuments arbeiten und Zeit sparen
+ wollen, können Sie eingefügte Dateien in einen Zweig setzen.
+\begin_inset Foot
+status collapsed
 
-\backslash
-includeonly 
+\begin_layout Plain Layout
+Zweige sind im Kapitel 
+\emph on
+Zweige
+\emph default
+ des LyX 
+\emph on
+Benutzerhandbuchs
+\emph default
+ erklärt.
+\end_layout
+
+\end_inset
+
+ Durch das de/aktivieren der Zweige können Sie festlegen, welche eingefügte
+ Dateien in der Ausgabe erscheinen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Achtung:
 \series default
-können Sie festlegen, für welche eingebundenen Unterdokumente eine Druckausgabe
- erstellt werden soll.
- Das ist nützlich, wenn Sie nur ein Kapitel bearbeiten und deren Auswirkungen
- sehen wollen, und es geht schneller.
- 
+ Aufgrund eines Fehlers in LyX kann der LaTeX-Befehl 
 \series bold
 
 \backslash
 includeonly
 \series default
- wird in den LaTeX-Vorspann des Hauptdokuments eingefügt.
- Im folgenden Beispiel
+ momentan nicht als Alternative benutzt werden um festzulegen, welche eingefügte
+ Dateien in der Ausgabe erscheinen.
 \end_layout
 
-\begin_layout Standard
-
-\series bold
-
-\backslash
-includeonly{Kapitel1,Kapitel5}
-\end_layout
-
-\begin_layout Standard
-werden nur die Dateien 
-\begin_inset Quotes gld
-\end_inset
-
-Kapitel1.lyx
-\begin_inset Quotes grd
-\end_inset
-
- (oder 
-\begin_inset Quotes gld
-\end_inset
-
-Kapitel1.tex
-\begin_inset Quotes grd
-\end_inset
-
-) und 
-\begin_inset Quotes gld
-\end_inset
-
-Kapitel5.lyx
-\begin_inset Quotes grd
 \end_inset
 
 
-\series bold
- 
-\series default
-eingebunden.
 \end_layout
 
 \begin_layout Standard

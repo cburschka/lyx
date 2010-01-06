@@ -1,4 +1,4 @@
-#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.6svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -32194,64 +32194,51 @@ The preamble of the child document is ignored, only the preamble of the
 \end_layout
 
 \begin_layout Standard
-With the LaTeX-command 
-\series bold
+In case you are only working on a certain chapter of a large document and
+ want to save compiling time, you can put each included file into a branch.
+\begin_inset Foot
+status collapsed
 
-\backslash
-includeonly 
+\begin_layout Plain Layout
+Branches are described in section 
+\emph on
+Branches
+\emph default
+ of the LyX 
+\emph on
+Userguide
+\emph default
+.
+\end_layout
+
+\end_inset
+
+ By enabling/disabling branches you can decide what included files will
+ appear in the output.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
 \series default
-you can specify which included child documents are processed when the output
- is generated.
- This is useful when you are perhaps only working on a certain chapter of
- your large document as this saves compiling time.
- 
+ Due to a bug in LyX the LaTeX command 
 \series bold
 
 \backslash
 includeonly
 \series default
- is inserted to the master document preamble.
- It takes a comma-separated list of the filenames as argument, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
+ can currently not be used as alternative to decide what files should be
+ included.
 \end_layout
 
-\begin_layout Standard
-
-\series bold
-
-\backslash
-includeonly{chapter1,chapter5}
-\end_layout
-
-\begin_layout Standard
-will only process the included files named 
-\begin_inset Quotes eld
 \end_inset
 
-chapter1.lyx
-\begin_inset Quotes erd
-\end_inset
 
- (or 
-\begin_inset Quotes eld
-\end_inset
-
-chapter1.tex
-\begin_inset Quotes erd
-\end_inset
-
-) and 
-\begin_inset Quotes eld
-\end_inset
-
-chapter5.lyx
-\begin_inset Quotes erd
-\end_inset
-
- .
 \end_layout
 
 \begin_layout Standard
