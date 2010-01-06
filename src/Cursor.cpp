@@ -483,8 +483,14 @@ void Cursor::resetAnchor()
 
 void Cursor::setCursorToAnchor()
 {
-	if (selection())
-		setCursor(anchor_);
+	if (selection()) {
+		DocIterator normal = anchor_;
+		while (depth() < normal.depth())
+			normal.pop_back();
+		if (depth() < anchor_.depth() && top() <= anchor_[depth() - 1])
+			++normal.pos();
+		setCursor(normal);
+	}
 }
 
 
