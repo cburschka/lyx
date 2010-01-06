@@ -1,6 +1,11 @@
 LyX file-format changes
 -----------------------
 
+2009-12-30 Richard Heck <rgheck@comcast.net>
+	* Format incremented to 374: add html output options.
+		\html_use_mathml (boolean): whether to use MathML or images
+		\html_be_strict (boolean): whether to be XHTML 1.1 compliant
+
 2009-12-07 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 373: merge g-brief-de and g-brief-en
 	  classes into one g-brief class.
