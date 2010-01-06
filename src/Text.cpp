@@ -170,19 +170,12 @@ void mergeParagraph(BufferParams const & bparams,
 	pars.erase(boost::next(pars.begin(), par_offset + 1));
 }
 
-// Initialization of the counter for the paragraph id's,
-//
-// FIXME: There should be a more intelligent way to generate and use the
-// paragraph ids per buffer instead a global static counter for all InsetText
-// in the running program.
-static int paragraph_id = -1;
 
 Text::Text(InsetText * owner, bool use_default_layout)
 	: owner_(owner), autoBreakRows_(false), undo_counter_(0)
 {
 	pars_.push_back(Paragraph());
 	Paragraph & par = pars_.back();
-	par.setId(++paragraph_id);
 	par.setInsetOwner(owner);
 	DocumentClass const & dc = owner->buffer().params().documentClass();
 	if (use_default_layout)
@@ -198,10 +191,8 @@ Text::Text(InsetText * owner, Text const & text)
 	pars_ = text.pars_;
 	ParagraphList::iterator const end = pars_.end();
 	ParagraphList::iterator it = pars_.begin();
-	for (; it != end; ++it) {
-		it->setId(++paragraph_id);
+	for (; it != end; ++it)
 		it->setInsetOwner(owner);
-	}
 }
 
 

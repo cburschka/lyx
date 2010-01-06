@@ -242,12 +242,20 @@ Paragraph::Private::Private(Paragraph * owner, Layout const & layout)
 }
 
 
+// Initialization of the counter for the paragraph id's,
+//
+// FIXME: There should be a more intelligent way to generate and use the
+// paragraph ids per buffer instead a global static counter for all InsetText
+// in the running program.
+static int paragraph_id = -1;
+
 Paragraph::Private::Private(Private const & p, Paragraph * owner)
 	: owner_(owner), inset_owner_(p.inset_owner_), fontlist_(p.fontlist_), 
-	  id_(p.id_), params_(p.params_), changes_(p.changes_), insetlist_(p.insetlist_),
+	  params_(p.params_), changes_(p.changes_), insetlist_(p.insetlist_),
 	  begin_of_body_(p.begin_of_body_), text_(p.text_), words_(p.words_),
 	  layout_(p.layout_)
 {
+	id_ = ++paragraph_id;
 }
 
 
@@ -259,6 +267,7 @@ Paragraph::Private::Private(Private const & p, Paragraph * owner,
 	  begin_of_body_(p.begin_of_body_), words_(p.words_),
 	  layout_(p.layout_)
 {
+	id_ = ++paragraph_id;
 	if (beg >= pos_type(p.text_.size()))
 		return;
 	text_ = p.text_.substr(beg, end - beg);
