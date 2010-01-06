@@ -243,8 +243,6 @@ private:
 	PreviewLoader & parent_;
 	///
 	Buffer const & buffer_;
-	///
-	double font_scaling_factor_;
 
 	/// We don't own this
 	static lyx::Converter const * pconverter_;
@@ -387,14 +385,8 @@ namespace lyx {
 namespace graphics {
 
 PreviewLoader::Impl::Impl(PreviewLoader & p, Buffer const & b)
-	: parent_(p), buffer_(b), font_scaling_factor_(0.0)
+	: parent_(p), buffer_(b)
 {
-	font_scaling_factor_ = 0.01 * lyxrc.dpi * lyxrc.zoom *
-		lyxrc.preview_scale_factor;
-
-	LYXERR(Debug::GRAPHICS, "The font scaling factor is "
-				<< font_scaling_factor_);
-
 	if (!pconverter_){
 		if (b.params().encoding().package() == Encoding::japanese)
 			pconverter_ = setConverter("lyxpreview-platex");
@@ -590,11 +582,14 @@ void PreviewLoader::Impl::startLoading()
 		return;
 	}
 
+	double font_scaling_factor = 0.01 * lyxrc.dpi * lyxrc.zoom
+		* lyxrc.preview_scale_factor;
+
 	// The conversion command.
 	ostringstream cs;
 	cs << pconverter_->command << ' ' << pconverter_->to << ' '
 	   << quoteName(latexfile.toFilesystemEncoding()) << ' '
-	   << int(font_scaling_factor_) << ' '
+	   << int(font_scaling_factor) << ' '
 	   << theApp()->hexName(Color_preview) << ' '
 	   << theApp()->hexName(Color_background);
 

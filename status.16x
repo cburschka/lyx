@@ -33,7 +33,7 @@ What's new
 * USER INTERFACE
 
 - Checking all opened files for external change after updating from SVN
-  repository (bug 5211).
+  repository (part of bug 5211).
 
 - Add a Close All menu item to the menu (bug 740).
 
@@ -99,6 +99,9 @@ What's new
 
 - Fix display of author names containing a thin space (\,) in the
   citation inset.
+
+- Take into account the current zoom factor, dip, or preview scale
+  factor when an instant preview is generated.
 
 
 * DOCUMENTATION AND LOCALIZATION
