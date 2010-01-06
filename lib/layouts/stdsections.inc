@@ -125,7 +125,6 @@ Style Paragraph
 	TopSep                0.4
 	BottomSep             0
 	HTMLTag               span
-	HTMLAttr              class='paragraph'
 End
 
 
