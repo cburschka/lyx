@@ -38,6 +38,12 @@ struct LevelButton : QCheckBox
 {
 	LevelButton(const QString& name) : QCheckBox(name) {}
 	Debug::Type level;
+	
+	void setCheckStatusSilent(Qt::CheckState state) {
+		blockSignals(true);
+		setCheckState(state);
+		blockSignals(false);	
+	}
 };
 
 
@@ -119,9 +125,7 @@ void GuiProgressView::levelChanged()
 	}
 	dispatch(FuncRequest(LFUN_DEBUG_LEVEL_SET, convert<string>(level)));
 	
-	toggle_button->blockSignals(true);
-	toggle_button->setCheckState (Qt::PartiallyChecked);
-	toggle_button->blockSignals(false);
+	toggle_button->setCheckStatusSilent (Qt::PartiallyChecked);
 }
 
 
@@ -129,17 +133,13 @@ void GuiProgressView::tristateChanged(int state)
 {
 	if (state != Qt::PartiallyChecked) {
 		Q_FOREACH(LevelButton* button, level_buttons) {
-			button->blockSignals(true);
-			button->setChecked(toggle_button->checkState());
-			button->blockSignals(false);
+			button->setCheckStatusSilent(toggle_button->checkState());
 		}
 		int level = (state == Qt::Checked ? Debug::ANY : Debug::NONE);
 		dispatch(FuncRequest(LFUN_DEBUG_LEVEL_SET, convert<string>(level)));
 	} else {
 		Q_FOREACH(LevelButton* button, checked_buttons) {
-			button->blockSignals(true);
-			button->setChecked(true);
-			button->blockSignals(false);
+			button->setCheckStatusSilent(Qt::Checked);
 		}
 		levelChanged();
 	}
