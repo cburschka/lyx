@@ -687,7 +687,7 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 						xs.cr();
 					}
 				}	else { // some kind of list
-				bool const labelfirst = style.htmllabelfirst();
+					bool const labelfirst = style.htmllabelfirst();
 					if (!labelfirst)
 						openItemTag(xs, style);
 					if (style.labeltype == LABEL_MANUAL
