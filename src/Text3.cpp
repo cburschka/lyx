@@ -243,16 +243,31 @@ static bool doInsertInset(Cursor & cur, Text * text,
 	cur.clearSelection(); // bug 393
 	cur.finishUndo();
 	InsetText * insetText = dynamic_cast<InsetText *>(inset);
-	if (insetText && (!insetText->allowMultiPar() || cur.lastpit() == 0)) {
-		// reset first par to default
-		cur.text()->paragraphs().begin()
-			->setPlainOrDefaultLayout(bparams.documentClass());
-		cur.pos() = 0;
-		cur.pit() = 0;
-		// Merge multiple paragraphs -- hack
-		while (cur.lastpit() > 0)
-			mergeParagraph(bparams, cur.text()->paragraphs(), 0);
-		cur.leaveInset(*inset);
+	if (insetText) {
+		if (insetText->getLayout(bparams).isPassThru()) {
+			// Fix the font of all paragraphs
+			Font font(inherit_font, bparams.language);
+			font.setLanguage(latex_language);
+			ParagraphList::iterator par = insetText->paragraphs().begin();
+			ParagraphList::iterator const end = insetText->paragraphs().end();
+			while (par != end) {
+				par->resetFonts(font);
+				par->params().clear();
+				++par;
+			}
+		}
+
+		if (!insetText->allowMultiPar() || cur.lastpit() == 0) {
+			// reset first par to default
+			cur.text()->paragraphs().begin()
+				->setPlainOrDefaultLayout(bparams.documentClass());
+			cur.pos() = 0;
+			cur.pit() = 0;
+			// Merge multiple paragraphs -- hack
+			while (cur.lastpit() > 0)
+				mergeParagraph(bparams, cur.text()->paragraphs(), 0);
+			cur.leaveInset(*inset);
+		}
 	} else {
 		cur.leaveInset(*inset);
 		// reset surrounding par to default
@@ -262,7 +277,6 @@ static bool doInsertInset(Cursor & cur, Text * text,
 			: dc.defaultLayoutName();
 		text->setLayout(cur, layoutname);
 	}
-
 	return true;
 }
 
