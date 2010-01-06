@@ -377,11 +377,18 @@ bool findChange(BufferView * bv, bool next)
 	// clear the selection and search the other way around (see the end
 	// of this function). This will avoid changes to be selected half.
 	bool search_both_sides = false;
-	if (cur.pos() > 0) {
-		Change change_next_pos
-			= cur.paragraph().lookupChange(cur.pos());
+	DocIterator tmpcur = cur;
+	// Leave math first
+	while (tmpcur.inMathed())
+		tmpcur.pop_back();
+	Change change_next_pos
+		= tmpcur.paragraph().lookupChange(tmpcur.pos());
+	if (change_next_pos.changed() && cur.inMathed()) {
+		cur = tmpcur;
+		search_both_sides = true;
+	} else if (tmpcur.pos() > 0 && tmpcur.inTexted()) {
 		Change change_prev_pos
-			= cur.paragraph().lookupChange(cur.pos() - 1);
+			= tmpcur.paragraph().lookupChange(tmpcur.pos() - 1);
 		if (change_next_pos.isSimilarTo(change_prev_pos))
 			search_both_sides = true;
 	}
