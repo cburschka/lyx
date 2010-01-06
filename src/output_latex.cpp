@@ -681,7 +681,7 @@ TeXOnePar(Buffer const & buf,
 					(nextpit == paragraphs.end()
 					 && runparams.master_language)
 						? runparams.master_language
-						: prev_language;
+						: outer_language;
 				if (!current_language->babel().empty()) {
 					os << from_ascii(subst(
 						lyxrc.language_command_begin,
