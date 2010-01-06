@@ -1,4 +1,4 @@
-#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.6svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -32572,61 +32572,56 @@ Le préambule du sous-document est tout simplement ignoré, seul le préambule
 \end_layout
 
 \begin_layout Standard
-Avec la commande LaTeX 
-\series bold
 
-\backslash
-includeonly 
+\lang english
+In case you are only working on a certain chapter of a large document and
+ want to save compiling time, you can put each included file into a branch.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Branches are described in section 
+\emph on
+Branches
+\emph default
+ of the LyX 
+\emph on
+Userguide
+\emph default
+.
+\end_layout
+
+\end_inset
+
+ By enabling/disabling branches you can decide what included files will
+ appear in the output.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\lang english
+Note:
 \series default
-vous pouvez préciser quels sous-documents seront traités pour générer la
- sortie imprimée.
- C'est utile quand vous ne travaillez que sur quelques chapitres d'un document
- important puisque cela vous fait économiser du temps de compilation.
- La commande 
+ Due to a bug in LyX the LaTeX command 
 \series bold
 
 \backslash
 includeonly
 \series default
- est insérée dans le préambule du document maître.
- Elle prend comme arguments une liste de noms de fichiers séparés par des
- virgules, par exemple :
+ can currently not be used as alternative to decide what files should be
+ included.
 \end_layout
 
-\begin_layout Standard
-
-\series bold
-
-\backslash
-includeonly{chapitre1,chapitre5}
-\end_layout
-
-\begin_layout Standard
-fera que seuls les fichiers nommés 
-\begin_inset Quotes eld
 \end_inset
 
-chapitre1.lyx
-\begin_inset Quotes erd
-\end_inset
 
- (ou 
-\begin_inset Quotes eld
-\end_inset
-
-chapitre1.tex
-\begin_inset Quotes erd
-\end_inset
-
-) et 
-\begin_inset Quotes eld
-\end_inset
-
-chapitre5.lyx
-\begin_inset Quotes erd
-\end_inset
-
- seront traités lors de la compilation.
 \end_layout
 
 \begin_layout Standard
