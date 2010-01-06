@@ -324,6 +324,7 @@ GuiView::GuiView(int id)
 	setAcceptDrops(true);
 
 	statusBar()->setSizeGripEnabled(true);
+	updateStatusBar();
 
 	// Forbid too small unresizable window because it can happen
 	// with some window manager under X11.
@@ -759,6 +760,7 @@ void GuiView::on_lastWorkAreaRemoved()
 	updateDialogs();
 
 	resetWindowTitleAndIconText();
+	updateStatusBar();
 
 	if (lyxrc.open_buffers_in_tabs)
 		// Nothing more to do, the window should stay open.
