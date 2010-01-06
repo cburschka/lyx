@@ -753,9 +753,11 @@ void Text::selectWord(Cursor & cur, word_location loc)
 		setCursor(cur, from.pit(), from.pos());
 	if (to == from)
 		return;
-	cur.resetAnchor();
+	if (!cur.selection())
+		cur.resetAnchor();
 	setCursor(cur, to.pit(), to.pos());
 	cur.setSelection();
+	cur.setWordSelection(true);
 }
 
 

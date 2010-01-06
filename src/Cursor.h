@@ -82,6 +82,10 @@ public:
 	/// do we have a multiline selection?
 	bool selIsMultiLine() const 
 		{ return selection_ && selBegin().pit() != selEnd().pit(); }
+	/// 
+	void setWordSelection(bool set) { word_selection_ = set; }
+	///
+	bool wordSelection() { return word_selection_; }
 	/// did we place the anchor?
 	bool mark() const { return mark_; }
 	/// did we place the anchor?
@@ -312,6 +316,8 @@ private:
 	bool selection_;
 	/// are we on the way to get one?
 	bool mark_;
+	/// are we in word-selection mode? This is set when double clicking.
+	bool word_selection_;
 	/// If true, we are behind the previous char, otherwise we are in front
 	// of the next char. This only make a difference when we are in front
 	// of a big inset spanning a whole row and computing coordinates for

@@ -1284,14 +1284,17 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	// Single-click on work area
-	case LFUN_MOUSE_PRESS:
+	case LFUN_MOUSE_PRESS: {
 		// We are not marking a selection with the keyboard in any case.
-		cur.bv().cursor().setMark(false);
+		Cursor & bvcur = cur.bv().cursor();
+		bvcur.setMark(false);
 		switch (cmd.button()) {
 		case mouse_button::button1:
 			// Set the cursor
 			if (!bv->mouseSetCursor(cur, cmd.argument() == "region-select"))
 				cur.updateFlags(Update::SinglePar | Update::FitCursor);
+			if (bvcur.wordSelection())
+				selectWord(bvcur, WHOLE_WORD);
 			break;
 
 		case mouse_button::button2:
@@ -1304,7 +1307,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			break;
 
 		case mouse_button::button3: {
-			Cursor const & bvcur = cur.bv().cursor();
 			// Don't do anything if we right-click a
 			// selection, a context menu will popup.
 			if (bvcur.selection() && cur >= bvcur.selectionBegin()
@@ -1321,7 +1323,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			break;
 		} // switch (cmd.button())
 		break;
-
+	}
 	case LFUN_MOUSE_MOTION: {
 		// Mouse motion with right or middle mouse do nothing for now.
 		if (cmd.button() != mouse_button::button1) {

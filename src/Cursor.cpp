@@ -265,8 +265,8 @@ docstring parbreak(Paragraph const & par)
 // bv functions are not yet available!
 Cursor::Cursor(BufferView & bv)
 	: DocIterator(), bv_(&bv), anchor_(), x_target_(-1), textTargetOffset_(0),
-	  selection_(false), mark_(false), logicalpos_(false),
-	  current_font(inherit_font)
+	  selection_(false), mark_(false), word_selection_(false),
+	  logicalpos_(false), current_font(inherit_font)
 {}
 
 
@@ -1033,6 +1033,7 @@ void Cursor::setSelection(DocIterator const & where, int n)
 void Cursor::clearSelection()
 {
 	setSelection(false);
+	setWordSelection(false);
 	setMark(false);
 	resetAnchor();
 }
