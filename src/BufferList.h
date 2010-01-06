@@ -108,6 +108,9 @@ public:
 	/// reset current author for all buffers
 	void setCurrentAuthor(docstring const & name, docstring const & email);
 
+	/// Call changed() on all buffers, internal or not
+	void changed() const;
+
 private:
 	/// noncopiable
 	BufferList(BufferList const &);
