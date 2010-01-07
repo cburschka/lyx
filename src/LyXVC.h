@@ -123,7 +123,7 @@ public:
 	/// Is the document under administration by VCS?
 	bool inUse() const;
 
-	/// FIXME ressurect version once we add version info
+	/// FIXME resurrect version once we add version info
 	/// into SVN. RCS parser is already prepared.
 	/// Returns the version number.
 	//std::string const & version() const;
