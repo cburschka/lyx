@@ -66,7 +66,6 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 	widget_ = new ProgressViewWidget();
 	setWidget(widget_);
 
-#if (QT_VERSION >= 0x040500)
 	QFont font(guiApp->typewriterFontName());
 	font.setKerning(false);
 	font.setFixedPitch(true);
@@ -93,7 +92,6 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 		connect(box, SIGNAL(stateChanged(int)), this, SLOT(levelChanged()));
 	}
 	widget_->settingsLayout->activate();
-#endif
 	
 	GuiProgress * progress =
 		dynamic_cast<GuiProgress *>(ProgressInterface::instance());
@@ -207,11 +205,7 @@ void GuiProgressView::restoreSession()
 
 void GuiProgressView::showEvent(QShowEvent*)
 {
-#if (QT_VERSION >= 0x040500)
 	ProgressInterface::instance()->lyxerrConnect();
-#else
-	hide();
-#endif
 }
 
 

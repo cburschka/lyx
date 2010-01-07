@@ -19,7 +19,9 @@
       <bool>true</bool>
      </property>
      <property name="sizePolicy" >
-      <sizepolicy vsizetype="Ignored" hsizetype="Expanding" >
+      <sizepolicy>
+       <vsizetype>13</vsizetype>
+       <hsizetype>7</hsizetype>
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -65,7 +67,9 @@
        <item row="0" column="0" >
         <widget class="QTextEdit" name="outTE" >
          <property name="sizePolicy" >
-          <sizepolicy vsizetype="Ignored" hsizetype="Expanding" >
+          <sizepolicy>
+           <vsizetype>13</vsizetype>
+           <hsizetype>7</hsizetype>
            <horstretch>1</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>

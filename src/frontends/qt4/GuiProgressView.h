@@ -13,6 +13,10 @@
 #ifndef GUIPROGRESSVIEW_H
 #define GUIPROGRESSVIEW_H
 
+#if QT_VERSION < 0x040400
+#define settingsLayout gridLayout1
+#endif
+
 #include "ui_ProgressViewUi.h"
 
 #include "DockView.h"
