@@ -287,7 +287,7 @@ docstring InsetFloat::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 	FloatList const & floats = buffer().params().documentClass().floats();
 	Floating const & ftype = floats.getType(params_.type);
 	string const & htmltype = ftype.htmlTag();
-	string const attr = "class='float " + ftype.htmlClass() + "'";
+	string const & attr = ftype.htmlAttrib();
 
 	odocstringstream ods;
 	XHTMLStream newxs(ods);

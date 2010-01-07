@@ -852,7 +852,7 @@ void TextClass::readFloat(Lexer & lexrc)
 		FT_LISTNAME,
 		FT_BUILTIN,
 		FT_HTMLSTYLE,
-		FT_HTMLCLASS,
+		FT_HTMLATTR,
 		FT_HTMLTAG,
 		FT_END
 	};
@@ -861,7 +861,7 @@ void TextClass::readFloat(Lexer & lexrc)
 		{ "end", FT_END },
 		{ "extension", FT_EXT },
 		{ "guiname", FT_NAME },
-		{ "htmlclass", FT_HTMLCLASS },
+		{ "htmlattr", FT_HTMLATTR },
 		{ "htmlstyle", FT_HTMLSTYLE },
 		{ "htmltag", FT_HTMLTAG },
 		{ "latexbuiltin", FT_BUILTIN },
@@ -875,7 +875,7 @@ void TextClass::readFloat(Lexer & lexrc)
 	lexrc.pushTable(floatTags);
 
 	string ext;
-	string htmlclass;
+	string htmlattr;
 	string htmlstyle;
 	string htmltag;
 	string listName;
@@ -940,9 +940,9 @@ void TextClass::readFloat(Lexer & lexrc)
 			lexrc.next();
 			builtin = lexrc.getBool();
 			break;
-		case FT_HTMLCLASS:
+		case FT_HTMLATTR:
 			lexrc.next();
-			htmlclass = lexrc.getString();
+			htmlattr = lexrc.getString();
 			break;
 		case FT_HTMLSTYLE:
 			lexrc.next();
@@ -961,7 +961,7 @@ void TextClass::readFloat(Lexer & lexrc)
 	// Here if have a full float if getout == true
 	if (getout) {
 		Floating fl(type, placement, ext, within, style, name, 
-				listName, htmltag, htmlclass, htmlstyle, builtin);
+				listName, htmltag, htmlattr, htmlstyle, builtin);
 		floatlist_.newFloat(fl);
 		// each float has its own counter
 		counters_.newCounter(from_ascii(type), from_ascii(within),

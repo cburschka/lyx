@@ -14,6 +14,8 @@
 
 #include "Floating.h"
 
+#include "support/lstrings.h"
+
 using namespace std;
 
 
@@ -28,11 +30,11 @@ Floating::Floating(string const & type, string const & placement,
 		   string const & ext, string const & within,
 		   string const & style, string const & name,
 		   string const & listName, string const & htmlTag,
-		   string const & htmlClass, string const & htmlStyle,
+		   string const & htmlAttrib, string const & htmlStyle,
 		   bool builtin)
 	: type_(type), placement_(placement), ext_(ext), within_(within),
 	  style_(style), name_(name), listName_(listName), html_tag_(htmlTag),
-	  html_class_(htmlClass), html_style_(htmlStyle), builtin_(builtin)
+	  html_attrib_(htmlAttrib), html_style_(htmlStyle), builtin_(builtin)
 {}
 
 
@@ -84,11 +86,11 @@ string const & Floating::htmlStyle() const
 }
 
 
-string const & Floating::htmlClass() const
+string const & Floating::htmlAttrib() const
 {
-	if (html_class_.empty())
-		html_class_ = "float-" + type_;
-	return html_class_;
+	if (html_attrib_.empty())
+		html_attrib_ = "class='float " + defaultCSSClass() + "'";
+	return html_attrib_;
 }
 
 
@@ -97,6 +99,28 @@ string const & Floating::htmlTag() const
 	if (html_tag_.empty())
 		html_tag_ = "div";
 	return html_tag_;
+}
+
+
+string Floating::defaultCSSClass() const
+{ 
+	if (!defaultcssclass_.empty())
+		return defaultcssclass_;
+	string d;
+	string n = type_;
+	string::const_iterator it = n.begin();
+	string::const_iterator en = n.end();
+	for (; it != en; ++it) {
+		if (!isalpha(*it))
+			d += "_";
+		else if (islower(*it))
+			d += *it;
+		else
+			d += support::lowercase(*it);
+	}
+	// are there other characters we need to remove?
+	defaultcssclass_ = "float-" + d;
+	return defaultcssclass_;
 }
 
 

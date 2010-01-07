@@ -51,12 +51,14 @@ public:
 	/// style information, for preamble
 	std::string const & htmlStyle() const;
 	/// class, for css, defaults to "float-" + type()
-	std::string const & htmlClass() const;
+	std::string const & htmlAttrib() const;
 	/// tag type, defaults to "div"
 	std::string const & htmlTag() const;
 	///
 	bool builtin() const;
 private:
+	///
+	std::string defaultCSSClass() const;
 	///
 	std::string type_;
 	///
@@ -74,7 +76,9 @@ private:
 	/// 
 	mutable std::string html_tag_;
 	/// 
-	mutable std::string html_class_;
+	mutable std::string html_attrib_;
+	///
+	mutable std::string defaultcssclass_;
 	/// 
 	std::string html_style_;
 	///
