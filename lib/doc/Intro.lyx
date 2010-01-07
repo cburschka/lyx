@@ -1,4 +1,4 @@
-#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.6svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -653,7 +653,7 @@ dvi
 \end_layout
 
 \begin_layout Standard
-TeX isn't only a typesetting engine, it also allows you to define macros.
+TeX isn't only a typesetting engine; it also allows you to define macros.
  Most people who use TeX are actually using a macro package which Knuth
  created to hide a lot of the typesetting details.
  This is where Leslie Lamport enters our story.
@@ -1905,6 +1905,9 @@ Customization A description of advanced LyX features, including how to customize
  the overall behavior of LyX\SpecialChar \@.
  This includes such things as keybindings, internati
 onalization, and configuration files.
+ 
+ It also includes information about layout files, which are needed to get
+ LyX to support LaTeX classes or packages.
 \end_layout
 
 \begin_layout Description

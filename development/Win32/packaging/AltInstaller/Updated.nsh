@@ -21,6 +21,7 @@ Function UpdateModifiedFiles
  #File "${PRODUCT_SOURCEDIR}\Resources\bind\cua.bind"
  File "${PRODUCT_SOURCEDIR}\Resources\bind\mac.bind"
  SetOutPath "$INSTDIR\Resources\doc"
+ File "${PRODUCT_SOURCEDIR}\Resources\doc\Intro.lyx"
  #File "${PRODUCT_SOURCEDIR}\Resources\doc\Customization.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\EmbeddedObjects.lyx"
  File "${PRODUCT_SOURCEDIR}\Resources\doc\Extended.lyx"
