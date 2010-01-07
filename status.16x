@@ -84,6 +84,9 @@ What's new
 - Reset the language at the end of the document to the correct
   language (bug 6387).
 
+- Make reverse dvi/pdf search work even when the temporary dir contains
+  spaces (common to all platforms, but particularly important on Windows).
+
 
 * USER INTERFACE
 

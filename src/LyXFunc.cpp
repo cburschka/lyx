@@ -1178,9 +1178,19 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			LASSERT(lyx_view_, /**/);
 			string file_name;
 			int row;
-			istringstream is(argument);
-			is >> file_name >> row;
-			file_name = os::internal_path(file_name);
+			size_t i = argument.find_last_of(' ');
+			if (i != string::npos) {
+				file_name = os::internal_path(trim(
+							argument.substr(0, i)));
+				istringstream is(argument.substr(i + 1));
+				is >> row;
+				if (is.fail())
+					i = string::npos;
+			}
+			if (i == string::npos) {
+				LYXERR0("Wrong argument: " << argument);
+				break;
+			}
 			Buffer * buf = 0;
 			bool loaded = false;
 			string const abstmp = package().temp_dir().absFilename();

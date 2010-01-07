@@ -1,4 +1,4 @@
-#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.6svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -4137,12 +4137,7 @@ UserDir
 
 \end_inset
 
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-On Windows, 
+ (except on Windows, where 
 \emph on
 local
 \emph default
@@ -4162,12 +4157,7 @@ pipe
 
 \end_inset
 
-.
-\end_layout
-
-\end_inset
-
- and have the names 
+) and have the names 
 \begin_inset Quotes eld
 \end_inset
 
@@ -5619,19 +5609,6 @@ lyxeditor.bat
 \end_inset
 
  wrapper accordingly.
- You are advised to select in 
-\begin_inset Flex CharStyle:MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-Preferences\SpecialChar \menuseparator
-Paths
-\end_layout
-
-\end_inset
-
- a temporary directory whose name does not contain spaces, otherwise inverse
- search will fail.
 \end_layout
 
 \begin_layout Standard
@@ -5678,8 +5655,6 @@ lyxeditor.bat
 
  is the previous wrapper.
  If SumatraPDF.exe is not in your command PATH, use its full file name.
- Again, make sure that the LyX temporary directory name does not contain
- spaces, otherwise inverse search will fail.
 \end_layout
 
 \begin_layout Standard
