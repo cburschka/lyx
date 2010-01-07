@@ -67,6 +67,8 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 #if QT_VERSION < 0x040400
 	widget_->scrollArea->setWidget(widget_->scrollAreaWidgetContents);
 #endif
+	widget_->setMinimumHeight(150);
+	widget_->adjustSize();
 	setWidget(widget_);
 
 	QFont font(guiApp->typewriterFontName());
