@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 374
+\lyxformat 375
 \begin_document
 \begin_header
 \textclass scrbook
@@ -12487,6 +12487,20 @@ string
 status collapsed
 
 \begin_layout Plain Layout
+HTML*
+\end_layout
+
+\end_inset
+
+ These are used for XHTML output.
+ See 
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
 LaTeXBuiltin
 \end_layout
 
@@ -16421,6 +16435,199 @@ span
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Subsection
+Float XHTML
+\end_layout
+
+\begin_layout Standard
+The XHTML output for floats too can be controlled by layout information.
+ The output has the following form:
+\end_layout
+
+\begin_layout LyX-Code
+<tag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+>
+\end_layout
+
+\begin_layout LyX-Code
+Contents of the float.
+\end_layout
+
+\begin_layout LyX-Code
+</tag>
+\end_layout
+
+\begin_layout Standard
+The caption, if there is one, is a separate inset and will be output as
+ such.
+ Its appearance can be controlled via the InsetLayout for caption insets.
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+HTMLAttr
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Specifies attribute information to be output with the main tag.
+ For example, 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+class=`myfloat' onclick=`\SpecialChar \ldots{}
+'
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ By default, LyX will output 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+class=`float float-floattype'
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+, where 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+floattype
+\end_layout
+
+\end_inset
+
+ is LyX's name for this type of float, as determined by the float delcaration
+ (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Floats"
+
+\end_inset
+
+), though made lowercase and with non-alphanumeric characters converted
+ to underscores, for example: float-table.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+HTMLStyle
+\end_layout
+
+\end_inset
+
+ CSS style information to be included when this float is used.
+ Note that this will automatically be wrapped in a layout-generated 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+<style>
+\end_layout
+
+\end_inset
+
+ block, so only the CSS itself need be included.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+HTMLTag
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] The tag to be used for this float, replacing 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+tag
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ in the example above.
+ The default is 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+div
+\end_layout
+
+\end_inset
+
+ and will rarely need changing.
 \end_layout
 
 \begin_layout Description
