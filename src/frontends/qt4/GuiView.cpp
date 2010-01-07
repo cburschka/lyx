@@ -1267,6 +1267,7 @@ BufferView const * GuiView::currentBufferView() const
 }
 
 
+#if (QT_VERSION >= 0x040400)
 static docstring saveAndDestroyBuffer(Buffer * buffer, FileName const & fname)
 {
 	bool failed = true;
@@ -1284,6 +1285,7 @@ static docstring saveAndDestroyBuffer(Buffer * buffer, FileName const & fname)
 		? _("Automatic save failed!")
 		: _("Automatic save done.");
 }
+#endif
 
 
 void GuiView::autoSave()
@@ -2668,6 +2670,7 @@ bool GuiView::goToFileRow(string const & argument)
 }
 
 
+#if (QT_VERSION >= 0x040400)
 static docstring exportAndDestroy(Buffer * buffer, string const & format)
 {
 	bool const success = buffer->doExport(format, true);
@@ -2686,6 +2689,7 @@ static docstring previewAndDestroy(Buffer * buffer, string const & format)
 		? bformat(_("Successful preview of format: %1$s"), from_utf8(format))
 		: bformat(_("Error previewing format: %1$s"), from_utf8(format));
 }
+#endif
 
 
 bool GuiView::dispatch(FuncRequest const & cmd)
