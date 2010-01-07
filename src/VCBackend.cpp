@@ -567,9 +567,8 @@ bool SVN::checkLockMode()
 
 bool SVN::isLocked() const
 {
-	//refresh file info
-	FileName file(file_.absFilename());
-	return !file.isReadOnly();
+	file_.refresh();
+	return !file_.isReadOnly();
 }
 
 
@@ -648,7 +647,7 @@ void SVN::fileLock(bool lock, FileName const & tmpf, string &status)
 	if (!locked_mode_ || (isLocked() == lock))
 		return;
 
-	string arg = lock ? "lock " : "unlock ";
+	string const arg = lock ? "lock " : "unlock ";
 	doVCCommand("svn "+ arg + quoteName(onlyFilename(owner_->absFileName()))
 		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
 		    FileName(owner_->filePath()));
@@ -693,7 +692,7 @@ string SVN::checkOut()
 		frontend::Alert::error(_("Revision control error."),
 			bformat(_("Error when updating from repository.\n"
 				"You have to manually resolve the conflicts NOW!\n'%1$s'.\n\n"
-				"After pressing OK, LyX will try to reopen resolved document."),
+				"After pressing OK, LyX will try to reopen the resolved document."),
 			from_local8bit(res)));
 
 	fileLock(true, tmpf, log);
