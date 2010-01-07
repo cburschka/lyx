@@ -346,7 +346,7 @@ sim                cmsy        187 126 mathrel  &sim;
 simeq              cmsy         39   0 mathrel  &sime;
 perp               cmsy         63   0 mathrel  &perp;
 equiv              cmsy        180 186 mathrel  &equiv;
-asymp              cmsy        179   0 mathrel  x
+asymp              cmsy        179   0 mathrel  &asymp;
 smile              cmm          94   0 mathrel  &smile;
 frown              cmm          95   0 mathrel  &frown;
 leftharpoonup      cmm          40   0 mathrel  &lharu;
@@ -462,164 +462,164 @@ triangleq          msa          44   0 mathrel  &trie;
 precsim            msa          45   0 mathrel  &prsim;
 lesssim            msa          46   0 mathrel  &lsim;
 lessapprox         msa          47   0 mathrel  &lap;
-eqslantless        msa          48   0 mathrel  x
-eqslantgtr         msa          49   0 mathrel  x
-curlyeqprec        msa          50   0 mathrel  x
-curlyeqsucc        msa          51   0 mathrel  x
-preccurlyeq        msa          52   0 mathrel  x
-leqq               msa          53   0 mathrel  x
-leqslant           msa          54   0 mathrel  x
-lessgtr            msa          55   0 mathrel  x
-backprime          msa          56   0 mathord  x
-risingdotseq       msa          58   0 mathrel  x
-fallingdotseq      msa          59   0 mathrel  x
-succcurlyeq        msa          60   0 mathrel  x
-geqq               msa          61   0 mathrel  x
-geqslant           msa          62   0 mathrel  x
-gtrless            msa          63   0 mathrel  x
-bigstar            msa          70   0 mathord  x
-between            msa          71   0 mathrel  x
-blacktriangledown  msa          72   0 mathord  x
-blacktriangleright msa          73   0 mathrel  x
-blacktriangleleft  msa          74   0 mathrel  x
+eqslantless        msa          48   0 mathrel  &els;
+eqslantgtr         msa          49   0 mathrel  &egs;
+curlyeqprec        msa          50   0 mathrel  &cuepr;
+curlyeqsucc        msa          51   0 mathrel  &cuesc;
+preccurlyeq        msa          52   0 mathrel  &prcue;
+leqq               msa          53   0 mathrel  &lE;
+leqslant           msa          54   0 mathrel  &les;
+lessgtr            msa          55   0 mathrel  &lg;
+backprime          msa          56   0 mathord  &bprime;
+risingdotseq       msa          58   0 mathrel  &erDot;
+fallingdotseq      msa          59   0 mathrel  &efDot;
+succcurlyeq        msa          60   0 mathrel  &sccue;
+geqq               msa          61   0 mathrel  &gE;
+geqslant           msa          62   0 mathrel  &ges;
+gtrless            msa          63   0 mathrel  &gl;
+bigstar            msa          70   0 mathord  &starf;
+between            msa          71   0 mathrel  &twixt;
+blacktriangledown  msa          72   0 mathord  &dtrif;
+blacktriangleright msa          73   0 mathrel  &rtrif;
+blacktriangleleft  msa          74   0 mathrel  &ltrif;
 vartriangle        msa          77   0 mathrel  x
-blacktriangle      msa          78   0 mathord  x
-triangledown       msa          79   0 mathord  x
-eqcirc             msa          80   0 mathrel  x
-lesseqgtr          msa          81   0 mathrel  x
-gtreqless          msa          82   0 mathrel  x
-lesseqqgtr         msa          83   0 mathrel  x
-gtreqqless         msa          84   0 mathrel  x
-Rrightarrow        msa          86   0 mathrel  x
-Lleftarrow         msa          87   0 mathrel  x
-veebar             msa          89   0 mathbin  x
-barwedge           msa          90   0 mathbin  x
-doublebarwedge     msa          91   0 mathbin  x
-measuredangle      msa          93   0 mathord  x
-sphericalangle     msa          94   0 mathord  x
-varpropto          msa          95   0 mathrel  x
-smallsmile         msa          96   0 mathrel  x
-smallfrown         msa          97   0 mathrel  x
-Subset             msa          98   0 mathrel  x
-Supset             msa          99   0 mathrel  x
+blacktriangle      msa          78   0 mathord  &utrif;
+triangledown       msa          79   0 mathord  &dtri;
+eqcirc             msa          80   0 mathrel  &ecir;
+lesseqgtr          msa          81   0 mathrel  &leg;
+gtreqless          msa          82   0 mathrel  &gel;
+lesseqqgtr         msa          83   0 mathrel  &lEg;
+gtreqqless         msa          84   0 mathrel  &gEl;
+Rrightarrow        msa          86   0 mathrel  &rAarr;
+Lleftarrow         msa          87   0 mathrel  &lAarr;
+veebar             msa          89   0 mathbin  &veebar;
+barwedge           msa          90   0 mathbin  &barwed;
+doublebarwedge     msa          91   0 mathbin  &Barwed;
+measuredangle      msa          93   0 mathord  &angmsd;
+sphericalangle     msa          94   0 mathord  &angsph;
+varpropto          msa          95   0 mathrel  &vprop;
+smallsmile         msa          96   0 mathrel  &ssmile;
+smallfrown         msa          97   0 mathrel  &sfrown;
+Subset             msa          98   0 mathrel  &Sub;
+Supset             msa          99   0 mathrel  &Sup;
 Cup                msa         100   0 mathbin  x
-doublecup          msa         100   0 mathbin  x
+doublecup          msa         100   0 mathbin  &Cup;
 Cap                msa         101   0 mathbin  x
-doublecap          msa         101   0 mathbin  x
-curlywedge         msa         102   0 mathbin  x
-curlyvee           msa         103   0 mathbin  x
-leftthreetimes     msa         104   0 mathbin  x
-rightthreetimes    msa         105   0 mathbin  x
-subseteqq          msa         106   0 mathrel  x
-supseteqq          msa         107   0 mathrel  x
-bumpeq             msa         108   0 mathrel  x
-Bumpeq             msa         109   0 mathrel  x
+doublecap          msa         101   0 mathbin  &Cap;
+curlywedge         msa         102   0 mathbin  &cuwed;
+curlyvee           msa         103   0 mathbin  &cuvee;
+leftthreetimes     msa         104   0 mathbin  &lthree;
+rightthreetimes    msa         105   0 mathbin  &rthree;
+subseteqq          msa         106   0 mathrel  &subE;
+supseteqq          msa         107   0 mathrel  &supE;
+bumpeq             msa         108   0 mathrel  &bumpe;
+Bumpeq             msa         109   0 mathrel  &bump;
 lll                msa         110   0 mathrel  x
 llltr              msa         110   0 mathrel  x
 ggg                msa         111   0 mathrel  x
-gggtr              msa         111   0 mathrel  x
-circledS           msa         115   0 mathord  x
-pitchfork          msa         116   0 mathrel  x
-dotplus            msa         117   0 mathbin  x
-backsim            msa         118   0 mathrel  x
-backsimeq          msa         119   0 mathrel  x
-complement         msa         123   0 mathord  x
-intercal           msa         124   0 mathbin  x
-circledcirc        msa         125   0 mathbin  x
-circledast         msa         126   0 mathbin  x
-circleddash        msa         127   0 mathbin  x
+gggtr              msa         111   0 mathrel  &Gg;
+circledS           msa         115   0 mathord  &oS;
+pitchfork          msa         116   0 mathrel  &fork;
+dotplus            msa         117   0 mathbin  &plusdo;
+backsim            msa         118   0 mathrel  &bsim;
+backsimeq          msa         119   0 mathrel  &bsime;
+complement         msa         123   0 mathord  &comp;
+intercal           msa         124   0 mathbin  &intcal;
+circledcirc        msa         125   0 mathbin  &ocir;
+circledast         msa         126   0 mathbin  &oast;
+circleddash        msa         127   0 mathbin  &odash;
 lvertneqq          msb         161   0 mathrel  x
 gvertneqq          msb         162   0 mathrel  x
-nleq               msb         163   0 mathrel  x
-ngeq               msb         164   0 mathrel  x
-nless              msb         165   0 mathrel  x
-ngtr               msb         166   0 mathrel  x
-nprec              msb         167   0 mathrel  x
-nsucc              msb         168   0 mathrel  x
-lneqq              msb         169   0 mathrel  x
-gneqq              msb         170   0 mathrel  x
+nleq               msb         163   0 mathrel  &nle;
+ngeq               msb         164   0 mathrel  &nge;
+nless              msb         165   0 mathrel  &nlt;
+ngtr               msb         166   0 mathrel  &ngt;
+nprec              msb         167   0 mathrel  &npr;
+nsucc              msb         168   0 mathrel  &nsc;
+lneqq              msb         169   0 mathrel  &lnE;
+gneqq              msb         170   0 mathrel  &gnE;
 nleqslant          msb         173   0 mathrel  x
 ngeqslant          msb         174   0 mathrel  x
-lneq               msb         175   0 mathrel  x
-gneq               msb         176   0 mathrel  x
+lneq               msb         175   0 mathrel  &lne;
+gneq               msb         176   0 mathrel  &gne;
 npreceq            msb         177   0 mathrel  x
 nsucceq            msb         178   0 mathrel  x
-precnsim           msb         179   0 mathrel  x
-succnsim           msb         180   0 mathrel  x
-lnsim              msb         181   0 mathrel  x
-gnsim              msb         182   0 mathrel  x
+precnsim           msb         179   0 mathrel  &prnsim;
+succnsim           msb         180   0 mathrel  &scnsim;
+lnsim              msb         181   0 mathrel  &lnsim;
+gnsim              msb         182   0 mathrel  &gnsim;
 nleqq              msb         183   0 mathrel  x
 ngeqq              msb         184   0 mathrel  x
-precneqq           msb         185   0 mathrel  x
-succneqq           msb         186   0 mathrel  x
-precnapprox        msb         187   0 mathrel  x
-succnapprox        msb         188   0 mathrel  x
-lnapprox           msb         189   0 mathrel  x
-gnapprox           msb         190   0 mathrel  x
-nsim               msb         191   0 mathrel  x
-ncong              msb         192   0 mathrel  x
+precneqq           msb         185   0 mathrel  &prnE;
+succneqq           msb         186   0 mathrel  &scnE;
+precnapprox        msb         187   0 mathrel  &prnap;
+succnapprox        msb         188   0 mathrel  &scnap;
+lnapprox           msb         189   0 mathrel  &lnap;
+gnapprox           msb         190   0 mathrel  &gnap;
+nsim               msb         191   0 mathrel  &nsim;
+ncong              msb         192   0 mathrel  &ncong;
 diagup             msb         193   0 mathord  x
 diagdown           msb         194   0 mathord  x
 varsubsetneq       msb         195   0 mathrel  x
 varsupsetneq       msb          33   0 mathrel  x
 nsubseteqq         msb          34   0 mathrel  x
 nsupseteqq         msb          35   0 mathrel  x
-subsetneqq         msb          36   0 mathrel  x
-supsetneqq         msb          37   0 mathrel  x
+subsetneqq         msb          36   0 mathrel  &subnE;
+supsetneqq         msb          37   0 mathrel  &supnE;
 varsubsetneqq      msb          38   0 mathrel  x
 varsupsetneqq      msb          39   0 mathrel  x
-subsetneq          msb          40   0 mathrel  x
-supsetneq          msb          41   0 mathrel  x
-nsubseteq          msb          42   0 mathrel  x
-nsupseteq          msb          43   0 mathrel  x
-nparallel          msb          44   0 mathrel  x
-nmid               msb          45   0 mathrel  x
-nshortmid          msb          46   0 mathrel  x
-nshortparallel     msb          47   0 mathrel  x
-nvdash             msb          48   0 mathrel  x
-nVdash             msb          49   0 mathrel  x
-nvDash             msb          50   0 mathrel  x
-nVDash             msb          51   0 mathrel  x
-ntrianglerighteq   msb          52   0 mathrel  x
-ntrianglelefteq    msb          53   0 mathrel  x
-ntriangleleft      msb          54   0 mathrel  x
-ntriangleright     msb          55   0 mathrel  x
-nleftarrow         msb          56   0 mathrel  x
-nrightarrow        msb          57   0 mathrel  x
-nLeftarrow         msb          58   0 mathrel  x
-nRightarrow        msb          59   0 mathrel  x
-nLeftrightarrow    msb          60   0 mathrel  x
-nleftrightarrow    msb          61   0 mathrel  x
-divideontimes      msb          62   0 mathbin  x
-varnothing         msb          63   0 mathord  x
-nexists            msb          64   0 mathord  x
+subsetneq          msb          40   0 mathrel  &subne;
+supsetneq          msb          41   0 mathrel  &supne;
+nsubseteq          msb          42   0 mathrel  &nsube;
+nsupseteq          msb          43   0 mathrel  &nsupe;
+nparallel          msb          44   0 mathrel  &npar;
+nmid               msb          45   0 mathrel  &rnmid;
+nshortmid          msb          46   0 mathrel  &nsmid;
+nshortparallel     msb          47   0 mathrel  &nspar;
+nvdash             msb          48   0 mathrel  &nvdash;
+nVdash             msb          49   0 mathrel  &nVdash;
+nvDash             msb          50   0 mathrel  &nvDash;
+nVDash             msb          51   0 mathrel  &nVDash;
+ntrianglerighteq   msb          52   0 mathrel  &nrtrie;
+ntrianglelefteq    msb          53   0 mathrel  &nltrie;
+ntriangleleft      msb          54   0 mathrel  &nltri;
+ntriangleright     msb          55   0 mathrel  &nrtri;
+nleftarrow         msb          56   0 mathrel  &nlarr;
+nrightarrow        msb          57   0 mathrel  &nrarr;
+nLeftarrow         msb          58   0 mathrel  &nlArr;
+nRightarrow        msb          59   0 mathrel  &nrArr;
+nLeftrightarrow    msb          60   0 mathrel  &nhArr;
+nleftrightarrow    msb          61   0 mathrel  &nharr;
+divideontimes      msb          62   0 mathbin  &divonx;
+varnothing         msb          63   0 mathord  &emptyv;
+nexists            msb          64   0 mathord  &nexist;
 Finv               msb          96   0 mathord  x
 Game               msb          97   0 mathord  x
 eth                msb         103   0 mathord  x
 eqsim              msb         104   0 mathrel  x
-beth               msb         105   0 mathord  x
-gimel              msb         106   0 mathord  x
-daleth             msb         107   0 mathord  x
-lessdot            msb         108   0 mathbin  x
-gtrdot             msb         109   0 mathbin  x
-ltimes             msb         110   0 mathbin  x
-rtimes             msb         111   0 mathbin  x
-shortmid           msb         112   0 mathrel  x
-shortparallel      msb         113   0 mathrel  x
-smallsetminus      msb         114   0 mathbin  x
-thicksim           msb         115   0 mathrel  x
-thickapprox        msb         116   0 mathrel  x
-approxeq           msb         117   0 mathrel  x
-succapprox         msb         118   0 mathrel  x
-precapprox         msb         119   0 mathrel  x
-curvearrowleft     msb         120   0 mathrel  x
-curvearrowright    msb         121   0 mathrel  x
-digamma            msb         122   0 mathord  x
-varkappa           msb         123   0 mathord  x
+beth               msb         105   0 mathord  &beth;
+gimel              msb         106   0 mathord  &gimel;
+daleth             msb         107   0 mathord  &daleth;
+lessdot            msb         108   0 mathbin  &ltdot;
+gtrdot             msb         109   0 mathbin  &gtdot;
+ltimes             msb         110   0 mathbin  &ltimes;
+rtimes             msb         111   0 mathbin  &rtimes;
+shortmid           msb         112   0 mathrel  &smid;
+shortparallel      msb         113   0 mathrel  &spar;
+smallsetminus      msb         114   0 mathbin  &ssetmn;
+thicksim           msb         115   0 mathrel  &thksim;
+thickapprox        msb         116   0 mathrel  &thkap;
+approxeq           msb         117   0 mathrel  &ape;
+succapprox         msb         118   0 mathrel  &scap;
+precapprox         msb         119   0 mathrel  &prap;
+curvearrowleft     msb         120   0 mathrel  &cularr;
+curvearrowright    msb         121   0 mathrel  &curarr;
+digamma            msb         122   0 mathord  &gammad;
+varkappa           msb         123   0 mathord  &kappav;
 Bbbk               msb         124   0 mathord  x
-hslash             msb         125   0 mathord  x
-hbar               msb         126   0 mathord  x
-backepsilon        msb         127   0 mathrel  x
+hslash             msb         125   0 mathord  &plankv;
+hbar               msb         126   0 mathord  &planck;
+backepsilon        msb         127   0 mathrel  &bepsi;
 
 lyxbar             cmsy        161   0 mathord  x
 lyxeq              cmr          61   0 mathord  x
@@ -752,13 +752,13 @@ Thorn              wasy         106   0 x        x
 openo              wasy         108   0 x        x
 inve               wasy          85   0 x        x
 
-#mho               wasy          48    0  mathord x
+mho               wasy          48    0  mathord &mho;
 #Join              wasy          49    0  mathrel x
 #Box               wasy          50    0  mathord x
 #Diamond           wasy          51    0  mathord x
 leadsto            wasy          59    0  mathrel x
-#sqsubset          wasy          60    0  mathrel x
-#sqsupset          wasy          61    0  mathrel x
+sqsubset          wasy          60    0  mathrel &sqsub;
+sqsupset          wasy          61    0  mathrel &sqsup;
 #lhd               wasy           1    0  mathbin x
 #unlhd             wasy           2    0  mathbin x
 LHD                wasy          16    0  mathbin x
@@ -798,11 +798,14 @@ int                esint        001    0  mathop  &int;  esint
 intop              esint        001    0  mathop  &int;  esint
 iint               esint        003    0  mathop  x      esintoramsmath
 iintop             esint        003    0  mathop  x      esint
-iiint              esint        005    0  mathop  x      esintoramsmath
+iiint              esint        005    0  mathop  &tint;      esintoramsmath
+
 iiintop            esint        005    0  mathop  x      esint
-iiiint             esint        007    0  mathop  x      esintoramsmath
+iiiint             esint        007    0  mathop  &qint;      esintoramsmath
+
 iiiintop           esint        007    0  mathop  x      esint
-oint               esint        011    0  mathop  x      esint
+oint               esint        011    0  mathop  &conint;      esint
+
 ointop             esint        011    0  mathop  x      esint
 oiint              esint        013    0  mathop  x      esint
 oiintop            esint        013    0  mathop  x      esint
@@ -821,13 +824,15 @@ int                cmex          82  242  mathop  &int;  esint
 intop              cmex          82  242  mathop  &int;  esint
 iint               wasy         115    0  mathop  x      esintoramsmath
 iintop             wasy         115    0  mathop  x      esint
-iiint              wasy         116    0  mathop  x      esintoramsmath
+iiint              wasy         116    0  mathop  &tint;      esintoramsmath
+
 iiintop            wasy         116    0  mathop  x      esint
 \def\iiiint{\int\kern-6mu\int\kern-6mu\int\kern-6mu\int}        esintoramsmath
 \def\iiiintop{\int\kern-6mu\int\kern-6mu\int\kern-6mu\int}      esint
 \def\dotsint{\int\kern-3mu\cdots\kern-3mu\int}                  esint
 \def\dotsintop{\int\kern-3mu\cdots\kern-3mu\int}                esint
-oint               cmex          72    0  mathop  x      esint
+oint               cmex          72    0  mathop  &conint;      esint
+
 ointop             cmex          72    0  mathop  x      esint
 oiint              wasy         118    0  mathop  x      esint
 oiintop            wasy         118    0  mathop  x      esint
@@ -944,8 +949,8 @@ lyxsurd               cmsy        112 0 mathord  x
 \def\surd{^\lyxsurd}
 \def\textdegree{\kern-1mu^{\circ}\kern-4mu}
 else
-cong               lyxsymbol             64  0 mathrel  x
-surd               lyxsymbol             214 0 mathord  x
+cong               lyxsymbol             64  0 mathrel  &cong;
+surd               lyxsymbol             214 0 mathord  &radic;
 textdegree         lyxsymbol             176 0 mathord  x
 endif
 
