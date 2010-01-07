@@ -338,18 +338,14 @@ void handle_package(Parser &p, string const & name, string const & opts,
 		 ;// ignore this
 
 	else if (name == "inputenc") {
-		// only set when there is not more than one inputenc
-		// option therefore check for the "," character also
-		// only set when there is not more then one babel
-		// language option
-		if (opts.find(",") == string::npos && one_language == true) {
-			if (opts == "ascii")
-				//change ascii to auto to be in the unicode range, see
-				//http://bugzilla.lyx.org/show_bug.cgi?id=4719
-				h_inputencoding = "auto";
-			else if (!opts.empty())
-				h_inputencoding = opts;
-		}
+		// h_inputencoding is only set when there is not more than one
+		// inputenc option because otherwise h_inputencoding must be
+		// set to "auto" (the default encoding of the document language)
+		// Therefore check for the "," character.
+		// It is also only set when there is not more then one babel
+		// language option but this is handled in the routine for babel.
+		if (opts.find(",") == string::npos && one_language == true)
+			h_inputencoding = opts;
 		if (!options.empty())
 			p.setEncoding(options.back());
 		options.clear();
