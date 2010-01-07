@@ -62,13 +62,12 @@ import os, re, string, sys
 #   HTMLTag, HTMLAttr, HTMLStyle, and HTMLPreamble
 # For Floats:
 #   HTMLType, HTMLClass, HTMLStyle
-# These are still to be documented, once everything stabilizes.
 
 # Incremented to format 17, 12 August 2009 by rgh
 # Add IfStyle and IfCounter tags for layout.
 
 # Incremented to format 18, 27 October 2009 by rgh
-# Added some new tags for HTML output. Documentation still to follow.
+# Added some new tags for HTML output.
 
 # Incremented to format 19, 17 November 2009 by rgh
 # Added InPreamble tag.
