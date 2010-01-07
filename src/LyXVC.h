@@ -67,6 +67,13 @@ public:
 	/// Register the document as an VC file.
 	bool registrer();
 
+
+	// std::string used as a return value in fucntions below are
+	// workaround to defer messages to be displayed in UI. If message()
+	// is used directly, message string is immediately overwritten
+	// by the next multiple messages on the top of the processed dispatch
+	// machinery.
+
 	/// Unlock and commit changes. Returns log.
 	std::string checkIn();
 	/// Does the current VC supports this operation?
