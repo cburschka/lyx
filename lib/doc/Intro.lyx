@@ -1,5 +1,5 @@
-#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 375
 \begin_document
 \begin_header
 \textclass article
@@ -39,16 +39,21 @@
 \use_default_options false
 \language english
 \inputencoding auto
+\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
+\use_xetex false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
 
 \graphics default
+\default_output_format default
+\bibtex_command default
+\index_command default
 \paperfontsize 12
 \spacing single
 \use_hyperref true
@@ -70,21 +75,29 @@
 \use_geometry false
 \use_amsmath 1
 \use_esint 0
+\use_mhchem 1
 \cite_engine basic
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\index Index
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 3
 \tocdepth 2
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
-\author "" 
-\author "" 
+\html_use_mathml true
+\html_be_strict true
+\author 1 "Richard Heck" 
 \end_header
 
 \begin_body
@@ -304,8 +317,8 @@ Introduction\SpecialChar \@.
 
 \begin_layout Standard
 Yes, that's all.
- If you cut and paste the section, it will automatically be renumbered —
- everywhere.
+ If you cut and paste the section, it will automatically be renumbered---everywh
+ere.
  And if you enter references to that section correctly (by inserting cross-refer
 ence tags), LyX will automatically update them all throughout the file so
  that you never, ever type a section number.
@@ -653,7 +666,7 @@ dvi
 \end_layout
 
 \begin_layout Standard
-TeX isn't only a typesetting engine, it also allows you to define macros.
+TeX isn't only a typesetting engine; it also allows you to define macros.
  Most people who use TeX are actually using a macro package which Knuth
  created to hide a lot of the typesetting details.
  This is where Leslie Lamport enters our story.
@@ -1326,7 +1339,7 @@ Units
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="20" columns="2">
-<features>
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
@@ -1905,6 +1918,12 @@ Customization A description of advanced LyX features, including how to customize
  the overall behavior of LyX\SpecialChar \@.
  This includes such things as keybindings, internati
 onalization, and configuration files.
+ 
+\change_inserted 1 1262886910
+It also includes LyX's layout files, which are what you will need to create
+ or modify to get LyX to support new LaTeX classes or packages.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
