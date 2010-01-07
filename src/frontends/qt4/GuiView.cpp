@@ -21,10 +21,10 @@
 #include "GuiApplication.h"
 #include "GuiCommandBuffer.h"
 #include "GuiCompleter.h"
-#include "GuiWorkArea.h"
 #include "GuiKeySymbol.h"
 #include "GuiToc.h"
 #include "GuiToolbar.h"
+#include "GuiWorkArea.h"
 #include "LayoutBox.h"
 #include "Menus.h"
 #include "TocModel.h"
@@ -2421,7 +2421,6 @@ void GuiView::reloadBuffer(Buffer * buf)
 	// e.g., read-only status could have changed due to version control
 	filename.refresh();
 	Buffer const * parent = buf->parent();
-	bool const is_child = parent != buf;
 	// The user has already confirmed that the changes, if any, should
 	// be discarded. So we just release the Buffer and don't call closeBuffer();
 	theBufferList().release(buf);
@@ -2430,7 +2429,7 @@ void GuiView::reloadBuffer(Buffer * buf)
 	docstring str;
 	if (buf) {
 		// re-allocate master if necessary
-		if (is_child && theBufferList().isLoaded(parent)
+		if (parent && theBufferList().isLoaded(parent)
 		      && buf->parent() != parent)
 			buf->setParent(parent);
 		buf->updateLabels();
