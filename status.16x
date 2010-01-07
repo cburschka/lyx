@@ -29,6 +29,10 @@ What's new
 
 - The definition of multi-accented polytonic Greek has been simplified.
 
+- LaTeX import (tex2lyx) now recognizes the types of quotes dependent
+  on the document language. (When importing e.g. a Spanish document,
+  LyX will use comillas latinas as quotes.)
+
 
 * USER INTERFACE
 
