@@ -282,6 +282,7 @@ UIFILES = \
 	ListingsSettingsUi.ui \
 	LogUi.ui \
 	MarginsUi.ui \
+	MasterChildUi.ui \
 	MathMatrixUi.ui \
 	MathsUi.ui \
 	ModulesUi.ui \

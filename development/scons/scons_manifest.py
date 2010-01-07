@@ -940,6 +940,7 @@ src_frontends_qt4_ui_files = Split('''
     ListingsSettingsUi.ui
     LogUi.ui
     MarginsUi.ui
+    MasterChildUi.ui
     MathMatrixUi.ui
     MathsUi.ui
     ModulesUi.ui

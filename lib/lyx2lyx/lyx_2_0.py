@@ -1141,6 +1141,19 @@ def revert_html_options(document):
         del document.header[i]
 
 
+def revert_includeonly(document):
+    i = 0
+    while True:
+        i = find_token(document.header, "\\begin_includeonly", i)
+        if i == -1:
+            return
+        j = find_end_of(document.header, i, "\\begin_includeonly", "\\end_includeonly")
+        if j == -1:
+            # this should not happen
+            break
+        document.header[i : j + 1] = []
+
+
 ##
 # Conversion hub
 #
@@ -1174,10 +1187,12 @@ convert = [[346, []],
            [371, []],
            [372, []],
            [373, [merge_gbrief]],
-           [374, []]
+           [374, []],
+           [375, []]
           ]
 
-revert =  [[373, [revert_html_options]],
+revert =  [[374, [revert_includeonly]],
+           [373, [revert_html_options]],
            [372, [revert_gbrief]],
            [371, [revert_fontenc]],
            [370, [revert_mhchem]],

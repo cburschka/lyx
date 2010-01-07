@@ -536,6 +536,8 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		readModules(lex);
 	} else if (token == "\\begin_removed_modules") {
 		readRemovedModules(lex);
+	} else if (token == "\\begin_includeonly") {
+		readIncludeonly(lex);
 	} else if (token == "\\options") {
 		lex.eatLine();
 		options = lex.getString();
@@ -834,7 +836,17 @@ void BufferParams::writeFile(ostream & os) const
 			os << *it << '\n';
 		os << "\\end_modules" << '\n';
 	}
-	
+
+	// includeonly
+	if (!includedChildren_.empty()) {
+		os << "\\begin_includeonly" << '\n';
+		list<string>::const_iterator it = includedChildren_.begin();
+		list<string>::const_iterator en = includedChildren_.end();
+		for (; it != en; it++)
+			os << *it << '\n';
+		os << "\\end_includeonly" << '\n';
+	}
+
 	// local layout information
 	if (!local_layout.empty()) {
 		// remove '\n' from the end 
@@ -1080,7 +1092,7 @@ void BufferParams::validate(LaTeXFeatures & features) const
 
 
 bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
-			      TexRow & texrow) const
+			      TexRow & texrow, FileName const & filepath) const
 {
 	os << "\\documentclass";
 
@@ -1248,6 +1260,31 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 
 	// handle inputenc etc.
 	writeEncodingPreamble(os, features, texrow);
+
+	// includeonly
+	if (!includedChildren_.empty()) {
+		os << "\\includeonly{";
+		list<string>::const_iterator it = includedChildren_.begin();
+		bool first = true;
+		for (; it != includedChildren_.end() ; ++it) {
+			string incfile = *it;
+			FileName inc = makeAbsPath(incfile, filepath.absFilename());
+			string mangled = DocFileName(changeExtension(inc.absFilename(), ".tex")).
+			mangledFilename();
+			if (!features.runparams().nice)
+				incfile = mangled;
+			// \includeonly doesn't want an extension 
+			incfile = changeExtension(incfile, string());
+			incfile = latex_path(incfile);
+			if (!incfile.empty()) {
+				if (!first)
+					os << ",";
+				os << from_utf8(incfile);
+			}
+			first = false;
+		}
+		os << "}\n";
+	}
 
 	if (!listings_params.empty() || features.isRequired("listings")) {
 		os << "\\usepackage{listings}\n";
@@ -1899,6 +1936,23 @@ void BufferParams::readRemovedModules(Lexer & lex)
 		if (found == men)
 			continue;
 		layoutModules_.erase(found);
+	}
+}
+
+
+void BufferParams::readIncludeonly(Lexer & lex)
+{
+	if (!lex.eatLine()) {
+		lyxerr << "Error (BufferParams::readIncludeonly):"
+				"Unexpected end of input." << endl;
+		return;
+	}
+	while (true) {
+		string child = lex.getString();
+		if (child == "\\end_includeonly")
+			break;
+		includedChildren_.push_back(child);
+		lex.eatLine();
 	}
 }
 

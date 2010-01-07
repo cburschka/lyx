@@ -23,6 +23,7 @@
 #include "insets/InsetQuotes.h"
 
 #include "support/copied_ptr.h"
+#include "support/FileName.h"
 
 #include <list>
 #include <map>
@@ -84,7 +85,8 @@ public:
 	 *  the BufferParams and a LyXRC variable).
 	 *  This returned value can then be passed to the insets...
 	 */
-	bool writeLaTeX(odocstream &, LaTeXFeatures &, TexRow &) const;
+	bool writeLaTeX(odocstream &, LaTeXFeatures &, TexRow &,
+			support::FileName const &) const;
 
 	///
 	void useClassDefaults();
@@ -153,6 +155,15 @@ public:
 	void clearLayoutModules() { layoutModules_.clear(); }
 	/// Clear the removed module list
 	void clearRemovedModules() { removedModules_.clear(); }
+
+	/// List of included children (for includeonly)
+	std::list<std::string> const & getIncludedChildren() const 
+			{ return includedChildren_; }
+	///
+	void addIncludedChildren(std::string const & child) 
+			{ includedChildren_.push_back(child); }
+	/// Clear the list of included children
+	void clearIncludedChildren() { includedChildren_.clear(); }
 
 	/// returns the main font for the buffer (document)
 	Font const getFont() const;
@@ -384,6 +395,8 @@ private:
 	void readModules(Lexer &);
 	///
 	void readRemovedModules(Lexer &);
+	///
+	void readIncludeonly(Lexer &);
 	/// for use with natbib
 	CiteEngine cite_engine_;
 	///
@@ -393,6 +406,9 @@ private:
 	/// this is for modules that are required by the document class but that
 	/// the user has chosen not to use
 	std::list<std::string> removedModules_;
+
+	/// the list of included children (for includeonly)
+	std::list<std::string> includedChildren_;
 
 	/** Use the Pimpl idiom to hide those member variables that would otherwise
 	 *  drag in other header files.

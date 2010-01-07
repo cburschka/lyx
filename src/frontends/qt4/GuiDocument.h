@@ -23,6 +23,7 @@
 #include "ui_DocumentUi.h"
 #include "ui_FontUi.h"
 #include "ui_TextLayoutUi.h"
+#include "ui_MasterChildUi.h"
 #include "ui_MathsUi.h"
 #include "ui_LaTeXUi.h"
 #include "ui_PageLayoutUi.h"
@@ -75,6 +76,7 @@ public:
 	void updateFontlist();
 	void updateDefaultFormat();
 	void updatePagestyle(std::string const &, std::string const &);
+	bool isChildIncluded(std::string const &);
 
 	void showPreamble();
 	///
@@ -83,6 +85,7 @@ public:
 private Q_SLOTS:
 	void updateNumbering();
 	void change_adaptor();
+	void includeonlyClicked(QTreeWidgetItem * item, int);
 	void setListingsMessage();
 	void saveDefaultClicked();
 	void useDefaultsClicked();
@@ -115,6 +118,7 @@ private:
 	QString validateListingsParameters();
 
 	UiWidget<Ui::TextLayoutUi> *textLayoutModule;
+	UiWidget<Ui::MasterChildUi> *masterChildModule;
 	UiWidget<Ui::FontUi> *fontModule;
 	UiWidget<Ui::PageLayoutUi> *pageLayoutModule;
 	UiWidget<Ui::MarginsUi> *marginsModule;
@@ -150,6 +154,8 @@ private:
 	void updateAvailableModules();
 	///
 	void updateSelectedModules();
+	///
+	void updateIncludeonlys();
 	/// save as default template
 	void saveDocDefault();
 	/// reset to default params
@@ -232,6 +238,8 @@ private:
 	std::list<modInfoStruct> moduleNames_;
 	///
 	std::map<docstring, docstring> changedBranches_;
+	///
+	std::list<std::string> includeonlys_;
 };
 
 

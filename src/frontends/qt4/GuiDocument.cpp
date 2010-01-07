@@ -617,6 +617,23 @@ GuiDocument::GuiDocument(GuiView & lv)
 	bc().addCheckedLineEdit(textLayoutModule->indentLE);
 	bc().addCheckedLineEdit(textLayoutModule->skipLE);
 
+	// master/child handling
+	masterChildModule = new UiWidget<Ui::MasterChildUi>;
+
+	connect(masterChildModule->childrenTW, SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)),
+		this, SLOT(includeonlyClicked(QTreeWidgetItem *, int)));
+	connect(masterChildModule->includeonlyRB, SIGNAL(toggled(bool)),
+		masterChildModule->childrenTW, SLOT(setEnabled(bool)));
+	connect(masterChildModule->includeallRB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(masterChildModule->includeonlyRB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	masterChildModule->childrenTW->setColumnCount(2);
+	masterChildModule->childrenTW->headerItem()->setText(0, qt_("Child Document"));
+	masterChildModule->childrenTW->headerItem()->setText(1, qt_("Include to Output"));
+	masterChildModule->childrenTW->resizeColumnToContents(1);
+	masterChildModule->childrenTW->resizeColumnToContents(2);
+
 	// output
 	outputModule = new UiWidget<Ui::OutputUi>;
 
@@ -1065,6 +1082,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		qt_("Input listings parameters below. Enter ? for a list of parameters."));
 
 	docPS->addPanel(latexModule, qt_("Document Class"));
+	docPS->addPanel(masterChildModule, qt_("Child Documents"));
 	docPS->addPanel(modulesModule, qt_("Modules"));
 	docPS->addPanel(fontModule, qt_("Fonts"));
 	docPS->addPanel(textLayoutModule, qt_("Text Layout"));
@@ -1111,6 +1129,26 @@ void GuiDocument::useDefaultsClicked()
 
 void GuiDocument::change_adaptor()
 {
+	changed();
+}
+
+
+void GuiDocument::includeonlyClicked(QTreeWidgetItem * item, int)
+{
+	if (item == 0)
+		return;
+
+	string child = fromqstr(item->text(0));
+	if (child.empty())
+		return;
+
+	if (std::find(includeonlys_.begin(),
+		      includeonlys_.end(), child) != includeonlys_.end())
+		includeonlys_.remove(child);
+	else
+		includeonlys_.push_back(child);
+	
+	updateIncludeonlys();
 	changed();
 }
 
@@ -1805,6 +1843,15 @@ void GuiDocument::updateDefaultFormat()
 }
 
 
+bool GuiDocument::isChildIncluded(string const & child)
+{
+	if (includeonlys_.empty())
+		return false;
+	return (std::find(includeonlys_.begin(),
+			  includeonlys_.end(), child) != includeonlys_.end());
+}
+
+
 void GuiDocument::applyView()
 {
 	// preamble
@@ -2042,6 +2089,15 @@ void GuiDocument::applyView()
 			fromqstr(latexModule->childDocLE->text());
 	else
 		bp_.master = string();
+
+	// Master/Child
+	bp_.clearIncludedChildren();
+	if (masterChildModule->includeonlyRB->isChecked()) {
+		list<string>::const_iterator it = includeonlys_.begin();
+		for (; it != includeonlys_.end() ; ++it) {
+			bp_.addIncludedChildren(*it);
+		}
+	}
 
 	// Float Placement
 	bp_.float_placement = floatModule->get();
@@ -2422,6 +2478,17 @@ void GuiDocument::paramsToDialog()
 		latexModule->childDocGB->setChecked(false);
 	}
 
+	// Master/Child
+	std::vector<Buffer *> children = buffer().getChildren(false);
+	if (children.empty()) {
+		masterChildModule->setEnabled(false);
+		includeonlys_.clear();
+	} else {
+		masterChildModule->setEnabled(true);
+		includeonlys_ = bp_.getIncludedChildren();
+		updateIncludeonlys();
+	}
+
 	// Float Settings
 	floatModule->set(bp_.float_placement);
 
@@ -2646,6 +2713,52 @@ void GuiDocument::updateSelectedModules()
 	for (int i = 0; mit != men; ++mit, ++i)
 		modules_sel_model_.insertRow(i, mit->name, mit->id, 
 				mit->description);
+}
+
+
+void GuiDocument::updateIncludeonlys()
+{
+	masterChildModule->childrenTW->clear();
+	QString const no = qt_("No");
+	QString const yes = qt_("Yes");
+
+	if (includeonlys_.empty()) {
+		masterChildModule->includeallRB->setChecked(true);
+		masterChildModule->childrenTW->setEnabled(false);
+	} else {
+		masterChildModule->includeonlyRB->setChecked(true);
+		masterChildModule->childrenTW->setEnabled(true);
+	}
+	QTreeWidgetItem * item = 0;
+	std::vector<Buffer *> children = buffer().getChildren(false);
+	vector<Buffer *>::const_iterator it  = children.begin();
+	vector<Buffer *>::const_iterator end = children.end();
+	bool has_unincluded = false;
+	bool all_unincluded = true;
+	for (; it != end; ++it) {
+		item = new QTreeWidgetItem(masterChildModule->childrenTW);
+		// FIXME Unicode
+		string const name =
+			to_utf8(makeRelPath(from_utf8((*it)->fileName().absFilename()),
+							from_utf8(buffer().filePath())));
+		item->setText(0, toqstr(name));
+		item->setText(1, isChildIncluded(name) ? yes : no);
+		if (!isChildIncluded(name))
+			has_unincluded = true;
+		else
+			all_unincluded = false;
+	}
+	// Both if all childs are included and if none is included
+	// is equal to "include all" (i.e., ommit \includeonly).
+	// Thus, reset the GUI.
+	if (!has_unincluded || all_unincluded) {
+		masterChildModule->includeallRB->setChecked(true);
+		masterChildModule->childrenTW->setEnabled(false);
+		includeonlys_.clear();
+	}
+	// If all are included, we need to update again.
+	if (!has_unincluded)
+		updateIncludeonlys();
 }
 
 

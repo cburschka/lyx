@@ -127,7 +127,7 @@ namespace {
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-int const LYX_FORMAT = 374; // rgheck: HTML output options
+int const LYX_FORMAT = 375; // jspitzm: includeonly support
 
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;
@@ -607,6 +607,7 @@ int Buffer::readHeader(Lexer & lex)
 	params().listings_params.clear();
 	params().clearLayoutModules();
 	params().clearRemovedModules();
+	params().clearIncludedChildren();
 	params().pdfoptions().clear();
 	params().indiceslist().clear();
 	params().backgroundcolor = lyx::rgbFromHexName("#ffffff");
@@ -1259,7 +1260,9 @@ void Buffer::writeLaTeXSource(odocstream & os,
 		listParentMacros(parentMacros, features);
 
 		// Write the preamble
-		runparams.use_babel = params().writeLaTeX(os, features, d->texrow);
+		runparams.use_babel = params().writeLaTeX(os, features,
+							  d->texrow,
+							  d->filename.onlyPath());
 
 		runparams.use_japanese = features.isRequired("japanese");
 

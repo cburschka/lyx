@@ -1,6 +1,15 @@
 LyX file-format changes
 -----------------------
 
+2010-01-06 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 375: add support for \includeonly
+	  This adds a new buffer param list of relative filenames
+	  which are output as \includeonly arguments, like this:
+	  \begin_includeonly
+	  child1.lyx
+	  child2.lyx
+	  \end_includeonly
+
 2009-12-30 Richard Heck <rgheck@comcast.net>
 	* Format incremented to 374: add html output options.
 		\html_use_mathml (boolean): whether to use MathML or images
