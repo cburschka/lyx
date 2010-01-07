@@ -50,7 +50,6 @@ namespace os = support::os;
 //   different way.
 // - the makeindex style files should be taken care of with
 //   the dependency mechanism.
-// - somewhere support viewing of bibtex and makeindex log files.
 // - we should perhaps also scan the bibtex log file
 
 namespace {
@@ -147,7 +146,7 @@ int LaTeX::run(TeXErrors & terr)
 	// We know that this function will only be run if the lyx buffer
 	// has been changed. We also know that a newly written .tex file
 	// is always different from the previous one because of the date
-	// in it. However it seems safe to run latex (at least) on time
+	// in it. However it seems safe to run latex (at least) one time
 	// each time the .tex file changes.
 {
 	int scanres = NO_ERRORS;
