@@ -1777,7 +1777,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		processUpdateFlags(Update::Force);
 
 		if (iterations >= max_iter)
-			cur.errorMessage(bformat(_("`inset-forall' interrupted because number of actions is larger than %1$s"), max_iter));
+			cur.errorMessage(bformat(_("`inset-forall' interrupted because number of actions is larger than %1$d"), max_iter));
 		else
 			cur.message(bformat(_("Applied \"%1$s\" to %2$d insets"), from_utf8(commandstr), iterations));
 		break;
