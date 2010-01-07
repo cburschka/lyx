@@ -3451,15 +3451,15 @@ void LyXAction::init()
 
  * \li Action: Apply the given commands on insets of a given name. WARNING: use
                at your own risks; this function gives you too many ways of
-	       shooting yourself in the foot. A typical example is
+               shooting yourself in the foot. A typical example is
                    inset-forall Note note-insert
                which starts an infinite loop. This is mitigated by the fact 
                that the number of actions is arbitrarily limited to 1000.
  * \li Syntax: inset-forall <NAME> <LFUN-COMMAND>
-               If <NAME> is *, all insets are matched.
+               <NAME>: Type of Inset. If <NAME> is *, all insets are matched.
  * \li Sample: The name is used like for InsetLayout in layout files: "Note" 
                matches all note insets, while "Note:Note" only matches LyX 
-	       yellow note insets. The following command closes all note insets
+               yellow note insets. The following command closes all note insets \n
                    inset-forall Note inset-toggle close
  * \li Origin: lasgouttes, 27 Nov 2009
  * \endvar
