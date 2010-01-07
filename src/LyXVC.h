@@ -68,7 +68,7 @@ public:
 	bool registrer();
 
 
-	// std::string used as a return value in fucntions below are
+	// std::string used as a return value in functions below are
 	// workaround to defer messages to be displayed in UI. If message()
 	// is used directly, message string is immediately overwritten
 	// by the next multiple messages on the top of the processed dispatch
@@ -123,6 +123,8 @@ public:
 	/// Is the document under administration by VCS?
 	bool inUse() const;
 
+	/// FIXME ressurect version once we add version info
+	/// into SVN. RCS parser is already prepared.
 	/// Returns the version number.
 	//std::string const & version() const;
 	/// Returns the version number.
