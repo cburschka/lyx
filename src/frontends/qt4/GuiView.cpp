@@ -759,7 +759,8 @@ void GuiView::clearMessage()
 
 void GuiView::updateWindowTitle(GuiWorkArea * wa)
 {
-	if (wa != d.current_work_area_)
+	if (wa != d.current_work_area_
+	    || wa->bufferView().buffer().isInternal())
 		return;
 	setWindowTitle(qt_("LyX: ") + wa->windowTitle());
 	setWindowIconText(wa->windowIconText());
