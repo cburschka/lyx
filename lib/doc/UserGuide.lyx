@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 374
+\lyxformat 375
 \begin_document
 \begin_header
 \textclass scrbook
@@ -122,10 +122,11 @@
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_use_mathml true
 \html_be_strict true
+\author 1 "Richard Heck" 
 \end_header
 
 \begin_body
@@ -13051,6 +13052,91 @@ pdftex
 dvipdfm
 \family default
  is no longer under development and therefore a bit outdated.
+\change_inserted 1 1262887469
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted 1 1262887469
+XHTML
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1 1262887469
+FileFormats! XHTML
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1 1262887469
+HTML
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1 1262888147
+This file type has the extension 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+.xhtml
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ It is a file suitable for viewing in web browsers.
+ It does not itself contain images and the like but only links them, and
+ when LyX produces XHTML, it also generates corresponding images in formats
+ suitable for the purpose.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1 1262888092
+As of this writing, LyX's `native' XHTML output remains somewhat `experimental',
+ and not all LyX features work properly.
+ It is our hope, however, that native output will solve many of the problems
+ users have encountered when using third-party LyX- or LaTeX-to-HTML converters.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1 1262888116
+Math is output as MathML, which renders nicely in browsers that support
+ it, but not all do.
+ Eventually, we will offer the option of instead outputing math as images.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1 1262888178
+You can export your document as an XHTML file using the menu item 
+\family sans
+File\SpecialChar \menuseparator
+Export\SpecialChar \menuseparator
+LyXHTML
+\family default
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -34634,8 +34720,9 @@ You can export your document to various file formats.
 \end_layout
 
 \begin_layout Standard
-Here is a list of all available entries; they are explained in detail in
- section
+Here is a list of all available entries
+\change_deleted 1 1262887786
+; they are explained in detail in section
 \begin_inset space ~
 \end_inset
 
@@ -34647,6 +34734,10 @@ reference "sub:Output-file-formats"
 \end_inset
 
 :
+\change_inserted 1 1262887786
+:
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -34659,7 +34750,25 @@ CJK
 LyX 
 \family default
 format of the special LyX 1.4.x versions for Chinese, Japanese, and Korean
- (CJK); (Since LyX 1.5.0 CJK support is fully integrated to LyX.)
+ (CJK)
+\change_deleted 1 1262887560
+;
+\change_inserted 1 1262887561
+
+\begin_inset Newline newline
+\end_inset
+
+
+\change_unchanged
+ 
+\change_deleted 1 1262887562
+(
+\change_unchanged
+Since LyX 1.5.0 CJK support is fully integrated to LyX.
+\change_deleted 1 1262887564
+)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -34668,11 +34777,61 @@ format of the special LyX 1.4.x versions for Chinese, Japanese, and Korean
 DVI
 \family default
  DVI-format
+\change_inserted 1 1262887797
+ (see 
+\begin_inset CommandInset ref
+LatexCommand prettyref
+reference "sub:Output-file-formats"
+
+\end_inset
+
+)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
-HTML HTML-format (the HTML-converter is a third-party product and doesn't
- work in all cases)
+HTML HTML-format
+\change_inserted 1 1262887568
+
+\begin_inset Newline newline
+\end_inset
+
+
+\change_deleted 1 1262887572
+ (t
+\change_inserted 1 1262887573
+T
+\change_unchanged
+he HTML
+\change_inserted 1 1262887602
+ 
+\change_deleted 1 1262887603
+-
+\change_unchanged
+conver
+\change_inserted 1 1262887606
+sion
+\change_deleted 1 1262887609
+ter
+\change_unchanged
+ is 
+\change_inserted 1 1262887612
+performed by 
+\change_unchanged
+a third-party product and 
+\change_inserted 1 1262887674
+may 
+\change_deleted 1 1262887617
+doesn't 
+\change_unchanged
+work in all cases
+\change_inserted 1 1262887618
+.
+\change_deleted 1 1262887618
+)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -34767,6 +34926,23 @@ y
 \end_inset
 
  is replaced by the version number)
+\change_inserted 1 1262887695
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 1 1262887844
+LyXHTML HTML-format, using LyX's internal XHTML engine (see 
+\begin_inset CommandInset ref
+LatexCommand prettyref
+reference "sub:Output-file-formats"
+
+\end_inset
+
+)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -34783,8 +34959,46 @@ KOffice
 Abiword
 \family default
 , etc.
- (the OpenDocument-converter is a third-party product and doesn't work in
- all cases)
+\change_inserted 1 1262887646
+
+\begin_inset Newline newline
+\end_inset
+
+
+\change_deleted 1 1262887649
+ (t
+\change_inserted 1 1262887649
+T
+\change_unchanged
+he OpenDocument
+\change_inserted 1 1262887652
+ 
+\change_deleted 1 1262887652
+-
+\change_unchanged
+conver
+\change_inserted 1 1262887656
+sion
+\change_deleted 1 1262887654
+ter
+\change_unchanged
+ is 
+\change_inserted 1 1262887659
+performed by 
+\change_unchanged
+a third-party product and 
+\change_inserted 1 1262887665
+may not 
+\change_deleted 1 1262887667
+doesn't 
+\change_unchanged
+work in all cases
+\change_inserted 1 1262887669
+.
+\change_deleted 1 1262887670
+)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -34799,6 +35013,19 @@ PDF
  PDF-format using the program 
 \family typewriter
 dvipdfm
+\change_inserted 1 1262887911
+ 
+\family default
+(see 
+\begin_inset CommandInset ref
+LatexCommand prettyref
+reference "sub:Output-file-formats"
+
+\end_inset
+
+)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -34813,6 +35040,19 @@ PDF
  PDF-format using the program 
 \family typewriter
 pdflatex
+\change_inserted 1 1262887913
+ 
+\family default
+(see 
+\begin_inset CommandInset ref
+LatexCommand prettyref
+reference "sub:Output-file-formats"
+
+\end_inset
+
+)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -34827,6 +35067,19 @@ PDF
  PDF-format using the program 
 \family typewriter
 ps2pdf
+\change_inserted 1 1262887914
+ 
+\family default
+(see 
+\begin_inset CommandInset ref
+LatexCommand prettyref
+reference "sub:Output-file-formats"
+
+\end_inset
+
+)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -34868,6 +35121,19 @@ Postscript
  PostScript format using the program 
 \family typewriter
 dvips
+\change_inserted 1 1262887921
+ 
+\family default
+(see 
+\begin_inset CommandInset ref
+LatexCommand prettyref
+reference "sub:Output-file-formats"
+
+\end_inset
+
+)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
