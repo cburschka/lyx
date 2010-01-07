@@ -482,7 +482,7 @@ between            msa          71   0 mathrel  &twixt;
 blacktriangledown  msa          72   0 mathord  &dtrif;
 blacktriangleright msa          73   0 mathrel  &rtrif;
 blacktriangleleft  msa          74   0 mathrel  &ltrif;
-vartriangle        msa          77   0 mathrel  x
+vartriangle        msa          77   0 mathrel  &#x25b5;
 blacktriangle      msa          78   0 mathord  &utrif;
 triangledown       msa          79   0 mathord  &dtri;
 eqcirc             msa          80   0 mathrel  &ecir;
@@ -502,9 +502,9 @@ smallsmile         msa          96   0 mathrel  &ssmile;
 smallfrown         msa          97   0 mathrel  &sfrown;
 Subset             msa          98   0 mathrel  &Sub;
 Supset             msa          99   0 mathrel  &Sup;
-Cup                msa         100   0 mathbin  x
+Cup                msa         100   0 mathbin  &Cup;
 doublecup          msa         100   0 mathbin  &Cup;
-Cap                msa         101   0 mathbin  x
+Cap                msa         101   0 mathbin  &Cap;
 doublecap          msa         101   0 mathbin  &Cap;
 curlywedge         msa         102   0 mathbin  &cuwed;
 curlyvee           msa         103   0 mathbin  &cuvee;
@@ -514,9 +514,9 @@ subseteqq          msa         106   0 mathrel  &subE;
 supseteqq          msa         107   0 mathrel  &supE;
 bumpeq             msa         108   0 mathrel  &bumpe;
 Bumpeq             msa         109   0 mathrel  &bump;
-lll                msa         110   0 mathrel  x
-llltr              msa         110   0 mathrel  x
-ggg                msa         111   0 mathrel  x
+lll                msa         110   0 mathrel  &Ll;
+llltr              msa         110   0 mathrel  &Ll;
+ggg                msa         111   0 mathrel  &Gg;
 gggtr              msa         111   0 mathrel  &Gg;
 circledS           msa         115   0 mathord  &oS;
 pitchfork          msa         116   0 mathrel  &fork;
@@ -528,8 +528,8 @@ intercal           msa         124   0 mathbin  &intcal;
 circledcirc        msa         125   0 mathbin  &ocir;
 circledast         msa         126   0 mathbin  &oast;
 circleddash        msa         127   0 mathbin  &odash;
-lvertneqq          msb         161   0 mathrel  x
-gvertneqq          msb         162   0 mathrel  x
+lvertneqq          msb         161   0 mathrel  &lvnE;
+gvertneqq          msb         162   0 mathrel  &gvnE;
 nleq               msb         163   0 mathrel  &nle;
 ngeq               msb         164   0 mathrel  &nge;
 nless              msb         165   0 mathrel  &nlt;
@@ -538,18 +538,18 @@ nprec              msb         167   0 mathrel  &npr;
 nsucc              msb         168   0 mathrel  &nsc;
 lneqq              msb         169   0 mathrel  &lnE;
 gneqq              msb         170   0 mathrel  &gnE;
-nleqslant          msb         173   0 mathrel  x
-ngeqslant          msb         174   0 mathrel  x
-lneq               msb         175   0 mathrel  &lne;
+nleqslant          msb         173   0 mathrel  &nles;
+ngeqslant          msb         174   0 mathrel  &nges;
+lneq               msb         175   0 mathrel  &nle;
 gneq               msb         176   0 mathrel  &gne;
-npreceq            msb         177   0 mathrel  x
-nsucceq            msb         178   0 mathrel  x
+npreceq            msb         177   0 mathrel  &nprcue;
+nsucceq            msb         178   0 mathrel  &nsccue;
 precnsim           msb         179   0 mathrel  &prnsim;
 succnsim           msb         180   0 mathrel  &scnsim;
 lnsim              msb         181   0 mathrel  &lnsim;
 gnsim              msb         182   0 mathrel  &gnsim;
-nleqq              msb         183   0 mathrel  x
-ngeqq              msb         184   0 mathrel  x
+nleqq              msb         183   0 mathrel  &nlE;
+ngeqq              msb         184   0 mathrel  &ngE;
 precneqq           msb         185   0 mathrel  &prnE;
 succneqq           msb         186   0 mathrel  &scnE;
 precnapprox        msb         187   0 mathrel  &prnap;
@@ -560,14 +560,14 @@ nsim               msb         191   0 mathrel  &nsim;
 ncong              msb         192   0 mathrel  &ncong;
 diagup             msb         193   0 mathord  x
 diagdown           msb         194   0 mathord  x
-varsubsetneq       msb         195   0 mathrel  x
-varsupsetneq       msb          33   0 mathrel  x
-nsubseteqq         msb          34   0 mathrel  x
-nsupseteqq         msb          35   0 mathrel  x
-subsetneqq         msb          36   0 mathrel  &subnE;
-supsetneqq         msb          37   0 mathrel  &supnE;
-varsubsetneqq      msb          38   0 mathrel  x
-varsupsetneqq      msb          39   0 mathrel  x
+varsubsetneq       msb         195   0 mathrel  &vsubne;
+varsupsetneq       msb          33   0 mathrel  &vsupne;
+nsubseteqq         msb          34   0 mathrel  &nsube;
+nsupseteqq         msb          35   0 mathrel  &nsupe;
+subsetneqq         msb          36   0 mathrel  &nsubE;
+supsetneqq         msb          37   0 mathrel  &nsupE;
+varsubsetneqq      msb          38   0 mathrel  &vsubnE;
+varsupsetneqq      msb          39   0 mathrel  &vsupnE;
 subsetneq          msb          40   0 mathrel  &subne;
 supsetneq          msb          41   0 mathrel  &supne;
 nsubseteq          msb          42   0 mathrel  &nsube;
@@ -596,7 +596,7 @@ nexists            msb          64   0 mathord  &nexist;
 Finv               msb          96   0 mathord  x
 Game               msb          97   0 mathord  x
 eth                msb         103   0 mathord  x
-eqsim              msb         104   0 mathrel  x
+eqsim              msb         104   0 mathrel  &esim;
 beth               msb         105   0 mathord  &beth;
 gimel              msb         106   0 mathord  &gimel;
 daleth             msb         107   0 mathord  &daleth;
@@ -621,19 +621,19 @@ hslash             msb         125   0 mathord  &plankv;
 hbar               msb         126   0 mathord  &planck;
 backepsilon        msb         127   0 mathrel  &bepsi;
 
-lyxbar             cmsy        161   0 mathord  x
-lyxeq              cmr          61   0 mathord  x
-lyxdabar           msa          57   0 mathord  x
-lyxright           msa          75   0 mathord  x
-lyxleft            msa          76   0 mathord  x
+lyxbar             cmsy        161   0 mathord  &mdash;
+lyxeq              cmr          61   0 mathord  =
+lyxdabar           msa          57   0 mathord  &ndash;
+lyxright           msa          75   0 mathord  &rarr;
+lyxleft            msa          76   0 mathord  &larr;
 
-male               wasy          26  0 x        x
-female             wasy          25  0 x        x
-currency           wasy          27  0 x        x
-phone              wasy          7   0 x        x
-recorder           wasy          6   0 x        x
-clock              wasy          28  0 x        x
-lightning          wasy          18  0 x        x
+male               wasy          26  0 x        &male;
+female             wasy          25  0 x        &female;
+currency           wasy          27  0 x        &curren;
+phone              wasy          7   0 x        &phone;
+recorder           wasy          6   0 x        &telrec;
+clock              wasy          28  0 x        &clock;
+lightning          wasy          18  0 x        &#x2607;
 pointer            wasy          9   0 x        x
 RIGHTarrow         wasy          17  0 x        x
 LEFTarrow          wasy          16  0 x        x
@@ -644,37 +644,37 @@ DOWNarrow          wasy          76  0 x        x
 #   \lower0.9pt\hbox to 0pt{\kern0.5pt\wasyfamily\char58\hss}%
 #   \raise0.9pt\hbox{\kern0.5pt\wasyfamily\char58\kern0.5pt}}
 #VHF                wasy          64  0 x        x
-Square             wasy          50  0 x        x
+Square             wasy          50  0 x        &square;
 #CheckedBox         wasy          50\hss}\hbox{\wasyfamily\char8  0 x
-XBox               wasy          52  0 x        x
-hexagon            wasy          55  0 x        x
-pentagon           wasy          68  0 x        x
+XBox               wasy          52  0 x        &timesb;
+hexagon            wasy          55  0 x        &#x2b21;
+pentagon           wasy          68  0 x        &#x2b20;
 octagon            wasy          56  0 x        x
-varhexagon         wasy          57  0 x        x
-hexstar            wasy          65  0 x        x
-varhexstar         wasy          66  0 x        x
-davidsstar         wasy          67  0 x        x
-diameter           wasy          31  0 x        x
+varhexagon         wasy          57  0 x        &#x2b21;
+hexstar            wasy          65  0 x        &sext;
+varhexstar         wasy          66  0 x        &sext;
+davidsstar         wasy          67  0 x        &#x2721;
+diameter           wasy          31  0 x        &#x2300;
 invdiameter        wasy          21  0 x        x
-varangle           wasy          30  0 x        x
-wasylozenge        wasy          53  0 x        x
-kreuz              wasy          54  0 x        x
-smiley             wasy          44  0 x        x
-frownie            wasy          47  0 x        x
+varangle           wasy          30  0 x        &angsph;
+wasylozenge        wasy          53  0 x        &#x2311;
+kreuz              wasy          54  0 x        &#x2720;
+smiley             wasy          44  0 x        &#x263A;
+frownie            wasy          47  0 x        &#x2639;
 blacksmiley        wasy          45  0 x        x
-sun                wasy          46  0 x        x
-checked            wasy          8   0 x        x
-bell               wasy          10  0 x        x
-eighthnote         wasy          11  0 x        x
-quarternote        wasy          12  0 x        x
-halfnote           wasy          13  0 x        x
-fullnote           wasy          14  0 x        x
+sun                wasy          46  0 x        &#x263C;
+checked            wasy          8   0 x        &#x2713;
+bell               wasy          10  0 x        &#x237E;
+eighthnote         wasy          11  0 x        &#x266E;
+quarternote        wasy          12  0 x        &#x2669;
+halfnote           wasy          13  0 x        &#x1d15e;
+fullnote           wasy          14  0 x        &#x1d15d;
 twonotes           wasy          15  0 x        x
-brokenvert         wasy          124 0 x        x
+brokenvert         wasy          124 0 x        &brvbar;
 ataribox           wasy          109 0 x        x
-wasytherefore      wasy          5   0 x        x
-Circle             wasy          35  0 x        x
-CIRCLE             wasy          32  0 x        x
+wasytherefore      wasy          5   0 x        &there4;
+Circle             wasy          35  0 x        &cir;
+CIRCLE             wasy          32  0 x        &#x25cF;
 Leftcircle         wasy          73  0 x        x
 LEFTCIRCLE         wasy          71  0 x        x
 Rightcircle        wasy          74  0 x        x
@@ -796,46 +796,46 @@ tbond              cmsy        180 186 mathord  x
 iffont esint
 int                esint        001    0  mathop  &int;  esint
 intop              esint        001    0  mathop  &int;  esint
-iint               esint        003    0  mathop  x      esintoramsmath
-iintop             esint        003    0  mathop  x      esint
+iint               esint        003    0  mathop  &Int;      esintoramsmath
+iintop             esint        003    0  mathop  &Int;      esint
 iiint              esint        005    0  mathop  &tint;      esintoramsmath
 
-iiintop            esint        005    0  mathop  x      esint
+iiintop            esint        005    0  mathop  &tint;      esint
 iiiint             esint        007    0  mathop  &qint;      esintoramsmath
 
-iiiintop           esint        007    0  mathop  x      esint
+iiiintop           esint        007    0  mathop  &qint;      esint
 oint               esint        011    0  mathop  &conint;      esint
 
-ointop             esint        011    0  mathop  x      esint
-oiint              esint        013    0  mathop  x      esint
-oiintop            esint        013    0  mathop  x      esint
+ointop             esint        011    0  mathop  &conint;      esint
+oiint              esint        013    0  mathop  &Conint;      esint
+oiintop            esint        013    0  mathop  &Conint;      esint
 sqint              esint        015    0  mathop  x      esint
 sqintop            esint        015    0  mathop  x      esint
 sqiint             esint        017    0  mathop  x      esint
 sqiintop           esint        017    0  mathop  x      esint
-dotsint            esint        019    0  mathop  x      esint
-dotsintop          esint        019    0  mathop  x      esint
-ointctrclockwise   esint        023    0  mathop  x      esint
-ointctrclockwiseop esint        023    0  mathop  x      esint
-ointclockwise      esint        025    0  mathop  x      esint
-ointclockwiseop    esint        025    0  mathop  x      esint
+dotsint            esint        019    0  mathop  &int;&ctdot;&int;      esint
+dotsintop          esint        019    0  mathop  &int;&ctdot;&int;      esint
+ointctrclockwise   esint        023    0  mathop  &awconint;      esint
+ointctrclockwiseop esint        023    0  mathop  &awconint;      esint
+ointclockwise      esint        025    0  mathop  &cwconint;      esint
+ointclockwiseop    esint        025    0  mathop  &cwconint;      esint
 else
 int                cmex          82  242  mathop  &int;  esint
 intop              cmex          82  242  mathop  &int;  esint
-iint               wasy         115    0  mathop  x      esintoramsmath
-iintop             wasy         115    0  mathop  x      esint
+iint               wasy         115    0  mathop  &Int;      esintoramsmath
+iintop             wasy         115    0  mathop  &Int      esint
 iiint              wasy         116    0  mathop  &tint;      esintoramsmath
 
-iiintop            wasy         116    0  mathop  x      esint
+iiintop            wasy         116    0  mathop  &tint;      esint
 \def\iiiint{\int\kern-6mu\int\kern-6mu\int\kern-6mu\int}        esintoramsmath
 \def\iiiintop{\int\kern-6mu\int\kern-6mu\int\kern-6mu\int}      esint
 \def\dotsint{\int\kern-3mu\cdots\kern-3mu\int}                  esint
 \def\dotsintop{\int\kern-3mu\cdots\kern-3mu\int}                esint
 oint               cmex          72    0  mathop  &conint;      esint
 
-ointop             cmex          72    0  mathop  x      esint
-oiint              wasy         118    0  mathop  x      esint
-oiintop            wasy         118    0  mathop  x      esint
+ointop             cmex          72    0  mathop  &conint;      esint
+oiint              wasy         118    0  mathop  &Conint;      esint
+oiintop            wasy         118    0  mathop  &Conint;      esint
 \def\sqint{\square\kern-17mu\int\kern6mu}                       esint
 \def\sqintop{\square\kern-17mu\int\kern6mu}                     esint
 \def\sqiint{\square\kern-20mu\iint\kern3mu}                     esint
@@ -846,14 +846,14 @@ oiintop            wasy         118    0  mathop  x      esint
 \def\ointclockwiseop{\circlearrowright\kern-21mu\int\kern6mu}   esint
 endif
 
-varointclockwise   esint        027    0  mathop  x      esint
-varointclockwiseop esint        027    0  mathop  x      esint
-varointctrclockwise esint       029    0  mathop  x      esint
-varointctrclockwiseop esint     029    0  mathop  x      esint
-fint               esint        031    0  mathop  x      esint
-fintop             esint        031    0  mathop  x      esint
-varoiint           esint        033    0  mathop  x      esint
-varoiintop         esint        033    0  mathop  x      esint
+varointclockwise   esint        027    0  mathop  &cwconint;      esint
+varointclockwiseop esint        027    0  mathop  &cwconint;      esint
+varointctrclockwise esint       029    0  mathop  &awconint;      esint
+varointctrclockwiseop esint     029    0  mathop  &awconint;      esint
+fint               esint        031    0  mathop  &#x2a0f;      esint
+fintop             esint        031    0  mathop  &#x2a0f;      esint
+varoiint           esint        033    0  mathop  &Conint;      esint
+varoiintop         esint        033    0  mathop  &Conint;      esint
 landupint          esint        035    0  mathop  x      esint
 landupintop        esint        035    0  mathop  x      esint
 landdownint        esint        037    0  mathop  x      esint
@@ -945,13 +945,13 @@ endif
 iffont cmsy
 # The \sim is placed too high...
 \def\cong{\stackrel{_\sim}{=}}
-lyxsurd               cmsy        112 0 mathord  x
+lyxsurd               cmsy        112 0 mathord  &radic;
 \def\surd{^\lyxsurd}
 \def\textdegree{\kern-1mu^{\circ}\kern-4mu}
 else
 cong               lyxsymbol             64  0 mathrel  &cong;
 surd               lyxsymbol             214 0 mathord  &radic;
-textdegree         lyxsymbol             176 0 mathord  x
+textdegree         lyxsymbol             176 0 mathord  &deg;
 endif
 
 #"{\hat{}}
