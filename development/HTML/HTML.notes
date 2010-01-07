@@ -32,7 +32,8 @@ These insets work but still need work:
 		the like, but calculating labels will be more complex---unless we just parse
 		the bbl file, which of course is the only fully general solution.
 	InsetFlex: I think this one is OK, but it needs some testing.
-	InsetFloat: This seems to work OK, but it will need testing and tweaking.
+	InsetFloat: This seems to work OK, but it will need testing and tweaking. There is
+		also no CSS yet for these.
 	InsetFloatList: Seems to work well, but may need testing.
 	InsetGraphics: This works in a pretty primitive way, in that it outputs the graphic
 	  and appropriate img tag. But we don't yet do any sort of scaling, rotating, and
