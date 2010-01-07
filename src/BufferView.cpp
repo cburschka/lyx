@@ -1090,6 +1090,7 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_SCROLL:
 	case LFUN_SCREEN_UP_SELECT:
 	case LFUN_SCREEN_DOWN_SELECT:
+	case LFUN_INSET_FORALL:
 		flag.setEnabled(true);
 		break;
 
@@ -1735,6 +1736,53 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		}
 		break;
 	}
+
+
+	// This would be in Buffer class if only Cursor did not
+	// require a bufferview
+	case LFUN_INSET_FORALL: {
+		docstring const name = from_utf8(cmd.getArg(0));
+		string const commandstr = cmd.getLongArg(1);
+		FuncRequest const fr = lyxaction.lookupFunc(commandstr);
+
+		// an arbitrary number to limit number of iterations
+		const int max_iter = 1000;
+		int iterations = 0;
+		Cursor & cur = d->cursor_;
+		cur.reset();
+		if (!cur.nextInset())
+			cur.forwardInset();
+		cur.beginUndoGroup();
+		while(cur && iterations < max_iter) {
+			Inset * ins = cur.nextInset();
+			if (!ins)
+				break;
+			docstring insname = ins->name();
+			while (!insname.empty()) {
+				if (insname == name || name == from_utf8("*")) {
+					cur.recordUndo();
+					lyx::dispatch(fr);
+					++iterations;
+					break;
+				}
+				size_t const i = insname.rfind(':');
+				if (i == string::npos)
+					break;
+				insname = insname.substr(0, i);
+			}
+			cur.forwardInset();
+		}
+		cur.endUndoGroup();
+		cur.reset();
+		processUpdateFlags(Update::Force);
+
+		if (iterations >= max_iter)
+			cur.errorMessage(bformat(_("`inset-forall' interrupted because number of actions is larger than %1$s"), max_iter));
+		else
+			cur.message(bformat(_("Applied \"%1$s\" to %2$d insets"), from_utf8(commandstr), iterations));
+		break;
+	}
+
 
 	case LFUN_ALL_INSETS_TOGGLE: {
 		string action;

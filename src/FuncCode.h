@@ -445,6 +445,7 @@ enum FuncCode
 	LFUN_CURSOR_FOLLOWS_SCROLLBAR_TOGGLE, // ARRae 971202
 	// 345
 	LFUN_DEBUG_LEVEL_SET,
+	LFUN_INSET_FORALL,		// lasgouttes, 20091127
 
 	LFUN_LASTACTION                 // end of the table
 };
