@@ -51,21 +51,22 @@ bool one_language = true;
 
 namespace {
 
+//add these to known_languages when updating to lyxformat 268:
+//"chinese-simplified", "chinese-traditional", "japanese", "korean"
 const char * const known_languages[] = { "afrikaans", "american", "arabic",
 "austrian", "bahasa", "basque", "belarusian", "brazil", "brazilian", "breton",
 "british", "bulgarian", "canadian", "canadien", "catalan", "croatian", "czech",
 "danish", "dutch", "english", "esperanto", "estonian", "finnish", "francais",
 "french", "frenchb", "frenchle", "frenchpro", "galician", "german", "germanb",
-"greek", "hebrew", "icelandic", "irish", "italian", "lsorbian", "magyar",
+"greek", "hebrew", "icelandic", "irish", "italian", "kazakh", "lsorbian", "magyar",
 "naustrian", "ngerman", "ngermanb", "norsk", "nynorsk", "polish", "portuges",
 "portuguese", "romanian", "russian", "russianb", "scottish", "serbian", "slovak",
 "slovene", "spanish", "swedish", "thai", "turkish", "ukraineb", "ukrainian",
 "usorbian", "welsh", 0};
 
-//note this when updating to lyxformat 305:
+//add this when updating to lyxformat 305:
 //bahasai, indonesian, and indon = equal to bahasa
 //malay and meyalu = equal to bahasam
-
 const char * const known_brazilian_languages[] = {"brazil", "brazilian", 0};
 const char * const known_french_languages[] = {"french", "frenchb", "francais",
 						"frenchle", "frenchpro", 0};
@@ -308,7 +309,7 @@ void handle_package(Parser &p, string const & name, string const & opts,
 			one_language = false;
 			h_inputencoding = "auto";
 		}
-		// babel takes the the last language of the option of its \usepackage
+		// babel takes the last language of the option of its \usepackage
 		// call as document language. If there is no such language option, the
 		// last language in the documentclass options is used.
 		handle_opt(options, known_languages, h_language);
@@ -455,6 +456,7 @@ void handle_package(Parser &p, string const & name, string const & opts,
 
 void end_preamble(ostream & os, TextClass const & /*textclass*/)
 {
+	// output the LyX file settings
 	os << "#LyX file created by tex2lyx " << PACKAGE_VERSION << "\n"
 	   << "\\lyxformat 264\n"
 	   << "\\begin_document\n"
