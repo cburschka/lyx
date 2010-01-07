@@ -16630,15 +16630,11 @@ div
  and will rarely need changing.
 \end_layout
 
-\begin_layout Description
-\begin_inset Note Note
-status open
-
 \begin_layout Subsection
 LyX-generated CSS
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 We have several times mentioned that LyX will generate default CSS style
  rules for both insets and paragraph styles, based upon the other layout
  information that is provided.
@@ -16646,13 +16642,137 @@ We have several times mentioned that LyX will generate default CSS style
  uses and how.
 \end_layout
 
+\begin_layout Standard
+At present, LyX auto-generates CSS only for font information, making use
+ of the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Family
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Series
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Shape
+\end_layout
+
+\end_inset
+
+, and 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Size
+\end_layout
+
+\end_inset
+
+ specified in the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Font
+\end_layout
+
+\end_inset
+
+ declaration.
+ (See 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Font-description"
+
+\end_inset
+
+.) The translation is mostly straightforward and obvious.
+ For example, 
+\begin_inset Quotes eld
 \end_inset
 
 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Family Sans
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ becomes 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+font-family: sans-serif;
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ The correspondence of LyX sizes and CSS sizes is a little less obvious
+ but nonetheless intuitive.
+ See the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+getSizeCSS()
+\end_layout
+
+\end_inset
+
+ function in 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+src/FontInfo.cpp
+\end_layout
+
+\end_inset
+
+ for the details.
+ 
 \end_layout
 
 \begin_layout Chapter
-Including External Material
+Includin
+\begin_inset Quotes erd
+\end_inset
+
+g External Material
 \end_layout
 
 \begin_layout Standard
