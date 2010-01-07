@@ -355,7 +355,7 @@ rightharpoonup     cmm          42   0 mathrel  &rharu;
 rightharpoondown   cmm          43   0 mathrel  &rhard;
 lhook              cmm          44   0 mathrel  x
 rhook              cmm          45   0 mathrel  x
-ldotp              cmm          58   0 mathpunct  x
+ldotp              cmm          58   0 mathpunct  <mo>.</mo>
 cdotp              cmsy        162   0 mathpunct  &sdot;
 colon              cmr          58  58 mathpunct  &colon;
 arrowvert          cmsy        106   0 mathord  &verbar;
@@ -558,8 +558,8 @@ lnapprox           msb         189   0 mathrel  &lnap;
 gnapprox           msb         190   0 mathrel  &gnap;
 nsim               msb         191   0 mathrel  &nsim;
 ncong              msb         192   0 mathrel  &ncong;
-diagup             msb         193   0 mathord  x
-diagdown           msb         194   0 mathord  x
+diagup             msb         193   0 mathord  &#x2571;
+diagdown           msb         194   0 mathord  &#x2572;
 varsubsetneq       msb         195   0 mathrel  &vsubne;
 varsupsetneq       msb          33   0 mathrel  &vsupne;
 nsubseteqq         msb          34   0 mathrel  &nsube;
@@ -593,9 +593,9 @@ nleftrightarrow    msb          61   0 mathrel  &nharr;
 divideontimes      msb          62   0 mathbin  &divonx;
 varnothing         msb          63   0 mathord  &emptyv;
 nexists            msb          64   0 mathord  &nexist;
-Finv               msb          96   0 mathord  x
-Game               msb          97   0 mathord  x
-eth                msb         103   0 mathord  x
+Finv               msb          96   0 mathord  &#x2132;
+Game               msb          97   0 mathord  &#x2141;
+eth                msb         103   0 mathord  &#x00F0;
 eqsim              msb         104   0 mathrel  &esim;
 beth               msb         105   0 mathord  &beth;
 gimel              msb         106   0 mathord  &gimel;
@@ -616,7 +616,8 @@ curvearrowleft     msb         120   0 mathrel  &cularr;
 curvearrowright    msb         121   0 mathrel  &curarr;
 digamma            msb         122   0 mathord  &gammad;
 varkappa           msb         123   0 mathord  &kappav;
-Bbbk               msb         124   0 mathord  x
+# Note: Other blackboard symbols are in the same unicode range
+Bbbk               msb         124   0 mathord  &#x1d55c;
 hslash             msb         125   0 mathord  &plankv;
 hbar               msb         126   0 mathord  &planck;
 backepsilon        msb         127   0 mathrel  &bepsi;
@@ -635,10 +636,10 @@ recorder           wasy          6   0 x        &telrec;
 clock              wasy          28  0 x        &clock;
 lightning          wasy          18  0 x        &#x2607;
 pointer            wasy          9   0 x        x
-RIGHTarrow         wasy          17  0 x        x
-LEFTarrow          wasy          16  0 x        x
-UParrow            wasy          75  0 x        x
-DOWNarrow          wasy          76  0 x        x
+RIGHTarrow         wasy          17  0 x        &#x25B6;
+LEFTarrow          wasy          16  0 x        &#x25C0;
+UParrow            wasy          75  0 x        &#x25B2;
+DOWNarrow          wasy          76  0 x        &#x25BC;
 #AC                 wasy          n0.5pt\wasyfamily\char58\kern0.5pt}}
 #HF         {\leavevmode
 #   \lower0.9pt\hbox to 0pt{\kern0.5pt\wasyfamily\char58\hss}%
@@ -655,13 +656,14 @@ hexstar            wasy          65  0 x        &sext;
 varhexstar         wasy          66  0 x        &sext;
 davidsstar         wasy          67  0 x        &#x2721;
 diameter           wasy          31  0 x        &#x2300;
-invdiameter        wasy          21  0 x        x
+# Unicode is wrong, but a true alternate doesn't seem available.
+invdiameter        wasy          21  0 x        &#x2300;
 varangle           wasy          30  0 x        &angsph;
 wasylozenge        wasy          53  0 x        &#x2311;
 kreuz              wasy          54  0 x        &#x2720;
 smiley             wasy          44  0 x        &#x263A;
 frownie            wasy          47  0 x        &#x2639;
-blacksmiley        wasy          45  0 x        x
+blacksmiley        wasy          45  0 x        &#x263B;
 sun                wasy          46  0 x        &#x263C;
 checked            wasy          8   0 x        &#x2713;
 bell               wasy          10  0 x        &#x237E;
@@ -669,16 +671,16 @@ eighthnote         wasy          11  0 x        &#x266E;
 quarternote        wasy          12  0 x        &#x2669;
 halfnote           wasy          13  0 x        &#x1d15e;
 fullnote           wasy          14  0 x        &#x1d15d;
-twonotes           wasy          15  0 x        x
+twonotes           wasy          15  0 x        &#x266B;
 brokenvert         wasy          124 0 x        &brvbar;
 ataribox           wasy          109 0 x        x
 wasytherefore      wasy          5   0 x        &there4;
 Circle             wasy          35  0 x        &cir;
 CIRCLE             wasy          32  0 x        &#x25cF;
 Leftcircle         wasy          73  0 x        x
-LEFTCIRCLE         wasy          71  0 x        x
+LEFTCIRCLE         wasy          71  0 x        &#x25D6;
 Rightcircle        wasy          74  0 x        x
-RIGHTCIRCLE        wasy          72  0 x        x
+RIGHTCIRCLE        wasy          72  0 x        &#x25D7;
 #LEFTcircle {\hbox to 0pt{\wasyfamily\char71\hss}\hbox{\wasyfamily\char35}}
 #RIGHTcircle{\hbox to 0pt{\wasyfamily\char72\hss}\hbox{\wasyfamily\char35}}
 
@@ -686,93 +688,93 @@ RIGHTCIRCLE        wasy          72  0 x        x
 # wasy astronomy
 #
 
-vernal             wasy          23  0 x        x
-ascnode            wasy          19  0 x        x
-descnode           wasy          20  0 x        x
-fullmoon           wasy          35  0 x        x
-newmoon            wasy          32  0 x        x
-leftmoon           wasy          36  0 x        x
-rightmoon          wasy          37  0 x        x
-astrosun           cmsy         175  0 mathbin  x
-mercury            wasy          39  0 x        x
-venus              wasy          25  0 x        x
-earth              wasy          38  0 x        x
-mars               wasy          26  0 x        x
-jupiter            wasy          88  0 x        x
-saturn             wasy          89  0 x        x
-uranus             wasy          90  0 x        x
-neptune            wasy          91  0 x        x
-pluto              wasy          92  0 x        x
+vernal             wasy          23  0 x        &#x2648;
+ascnode            wasy          19  0 x        &#x260A;
+descnode           wasy          20  0 x        &#x260B;
+fullmoon           wasy          35  0 x        &circ;
+newmoon            wasy          32  0 x        &#x25CF;
+leftmoon           wasy          36  0 x        &#x263E;
+rightmoon          wasy          37  0 x        &#x263D;
+astrosun           cmsy         175  0 mathbin  &#x2609;
+mercury            wasy          39  0 x        &#x263F;
+venus              wasy          25  0 x        &#x2640;
+earth              wasy          38  0 x        &#x2641;
+mars               wasy          26  0 x        &#x2642;
+jupiter            wasy          88  0 x        &#x2643;
+saturn             wasy          89  0 x        &#x2644;
+uranus             wasy          90  0 x        &#x2645;
+neptune            wasy          91  0 x        &#x2646;
+pluto              wasy          92  0 x        &#x2647;
 
 #
 # wasy zodiac
 #
-aries              wasy          23  0 x        x
-taurus             wasy          93  0 x        x
-gemini             wasy          94  0 x        x
-cancer             wasy          95  0 x        x
-leo                wasy          19  0 x        x
-virgo              wasy          96  0 x        x
-libra              wasy          97  0 x        x
-scorpio            wasy          98  0 x        x
-sagittarius        wasy          99  0 x        x
-capricornus        wasy          100 0 x        x
-aquarius           wasy          101 0 x        x
-pisces             wasy          102 0 x        x
-conjunction        wasy          86  0 x        x
-opposition         wasy          87  0 x        x
+aries              wasy          23  0 x        &#x2648;
+taurus             wasy          93  0 x        &#x2649;
+gemini             wasy          94  0 x        &#x264A;
+cancer             wasy          95  0 x        &#x264B;
+leo                wasy          19  0 x        &#x264C;
+virgo              wasy          96  0 x        &#x264D;
+libra              wasy          97  0 x        &#x264E;
+scorpio            wasy          98  0 x        &#x264F;
+sagittarius        wasy          99  0 x        &#x2650;
+capricornus        wasy          100 0 x        &#x2651;
+aquarius           wasy          101 0 x        &#x2652;
+pisces             wasy          102 0 x        &#x2653;
+conjunction        wasy          86  0 x        &#x260C;
+opposition         wasy          87  0 x        &#x260D;
 # APL characters
-APLstar            wasy          69  0 x        x
+APLstar            wasy          69  0 x        &#x235F;
 APLlog             wasy          22  0 x        x
-APLbox             wasy          126 0 x        x
+APLbox             wasy          126 0 x        &#x2395;
 APLup              wasy          0   0 x        x
 APLdown            wasy          70  0 x        x
 APLinput           wasy          125 0 x        x
 APLcomment         wasy          127 0 x        x
 #APLinv     {{\hbox to 0pt{$\div$\hss}\APLbox}}
-APLuparrowbox      wasy         110  0 x        x
-APLdownarrowbox    wasy         111  0 x        x
-APLleftarrowbox    wasy         112  0 x        x
-APLrightarrowbox   wasy         113  0 x        x
+APLuparrowbox      wasy         110  0 x        &#x2350;
+APLdownarrowbox    wasy         111  0 x        &#x2357;
+APLleftarrowbox    wasy         112  0 x        &#x2347;
+APLrightarrowbox   wasy         113  0 x        &#x2348;
 
 # math characters
-Bowtie             wasy          49  0 x        x
-leftturn           wasy          34  0 x        x
-rightturn          wasy          33  0 x        x
+Bowtie             wasy          49  0 x        &#x22C8;
+leftturn           wasy          34  0 x        &#x27F2;
+rightturn          wasy          33  0 x        &#x27F3;
 # diagrams
 #photon             wasy          58\char58\char58\char58}}
 #gluon              wasy          81\char80\char80\char80%
 #char80\char80\char80\char82}}
 # special characters
-cent               wasy         103   0 x        x
-permil             wasy         104   0 x        x
-agemO              wasy          48   0 x        x
-thorn              wasy         105   0 x        x
-Thorn              wasy         106   0 x        x
-openo              wasy         108   0 x        x
-inve               wasy          85   0 x        x
+cent               wasy         103   0 x        &#00A2;
+permil             wasy         104   0 x        &#x2030;
+agemO              wasy          48   0 x        &mho;
+thorn              wasy         105   0 x        &#x00FE;
+Thorn              wasy         106   0 x        &#x00DE;
+openo              wasy         108   0 x        &#x0254;
+inve               wasy          85   0 x        &#x0259;
 
 mho               wasy          48    0  mathord &mho;
 #Join              wasy          49    0  mathrel x
 #Box               wasy          50    0  mathord x
 #Diamond           wasy          51    0  mathord x
-leadsto            wasy          59    0  mathrel x
+leadsto            wasy          59    0  mathrel &#x2933;
 sqsubset          wasy          60    0  mathrel &sqsub;
 sqsupset          wasy          61    0  mathrel &sqsup;
 #lhd               wasy           1    0  mathbin x
 #unlhd             wasy           2    0  mathbin x
-LHD                wasy          16    0  mathbin x
+LHD                wasy          16    0  mathbin &#x2C50;
 #rhd               wasy           3    0  mathbin x
 #unrhd             wasy           4    0  mathbin x
-RHD                wasy          17    0  mathbin x
-apprle             wasy          62    0  mathrel x
-apprge             wasy          63    0  mathrel x
-wasypropto         wasy          29    0  mathrel x
-invneg             wasy          24    0  mathrel x
-ocircle            wasy          35    0  mathbin x
+RHD                wasy          17    0  mathbin &#x25B6;
+apprle             wasy          62    0  mathrel &lsim;
+apprge             wasy          63    0  mathrel &gsim;
+wasypropto         wasy          29    0  mathrel &prop;
+invneg             wasy          24    0  mathrel &#x2310;
+ocircle            wasy          35    0  mathbin &#x229A;
 logof              wasy          22    0  mathrel x
-varint             wasy         114    0  mathop  x
-varoint            wasy         117    0  mathop  x
+varint             wasy         114    0  mathop  &int;
+varoint            wasy         117    0  mathop  &int;
 
 # symbols from the mhchem package, all of them are equivalent to a math symbol
 # mhchem is not loaded because these commands can only be used inside
