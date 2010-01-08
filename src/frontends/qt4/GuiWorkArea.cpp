@@ -334,7 +334,7 @@ void GuiWorkArea::setGuiView(GuiView & gv)
 void GuiWorkArea::setBuffer(Buffer & buffer)
 {
 	delete buffer_view_;
-	buffer_view_ = new BufferView(buffer),
+	buffer_view_ = new BufferView(buffer);
 	buffer.workAreaManager().add(this);
 
 	// HACK: Prevents an additional redraw when the scrollbar pops up
