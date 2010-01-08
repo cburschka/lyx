@@ -134,7 +134,7 @@ string asValidLatexCommand(string const & input, CiteEngine const engine)
 
 
 docstring complexLabel(Buffer const & buffer,
-			    string const & citeType, docstring const & keyList,
+			    string const & citetype, docstring const & keylist,
 			    docstring const & before, docstring const & after,
 			    CiteEngine engine)
 {
@@ -158,7 +158,7 @@ docstring complexLabel(Buffer const & buffer,
 	// CITE:	author/<before field>
 
 	// We don't currently use the full or forceUCase fields.
-	string cite_type = asValidLatexCommand(citeType, engine);
+	string cite_type = asValidLatexCommand(citetype, engine);
 	if (cite_type[0] == 'C')
 		// If we were going to use them, this would mean ForceUCase
 		cite_type = string(1, 'c') + cite_type.substr(1);
@@ -212,7 +212,7 @@ docstring complexLabel(Buffer const & buffer,
 	docstring const sep_str = from_ascii(sep) + ' ';
 
 	docstring label;
-	vector<docstring> keys = getVectorFromString(keyList);
+	vector<docstring> keys = getVectorFromString(keylist);
 	vector<docstring>::const_iterator it  = keys.begin();
 	vector<docstring>::const_iterator end = keys.end();
 	for (; it != end; ++it) {
