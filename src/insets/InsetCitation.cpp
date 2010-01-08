@@ -533,10 +533,14 @@ docstring InsetCitation::xhtml(XHTMLStream & xs, OutputParams const &) const
 			xs << ", ";
 			first = false;
 		}
-		docstring const & label = bibinfo.label();
-		docstring const & target = label.empty() ? *it : label;
+		docstring citekey = bibinfo.citeKey();
+		if (citekey.empty()) {
+			citekey = bibinfo.label();
+			if (citekey.empty())
+				citekey = *it;
+		}
 		string const attr = "href='#" + to_utf8(*it) + "'";
-		xs << StartTag("a", attr) << target << EndTag("a");
+		xs << StartTag("a", attr) << citekey << EndTag("a");
 	}
 
 	docstring const & after = getParam("after");

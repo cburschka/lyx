@@ -1458,7 +1458,7 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 	validate(features);
 	updateLabels(UpdateMaster, true);
 	checkBibInfoCache();
-	d->bibinfo_.collectCitedEntries(*this);
+	d->bibinfo_.makeCitationLabels(*this);
 
 	if (!only_body) {
 		os << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
