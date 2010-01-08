@@ -238,7 +238,6 @@ void XHTMLStream::clearTagDeque()
 		StartTag const & tag = pending_tags_.front();
 		// tabs?
 		os_ << tag.asTag();
-		cr();
 		tag_stack_.push_back(tag);
 		pending_tags_.pop_front();
 	}
