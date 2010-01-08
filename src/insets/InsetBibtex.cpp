@@ -931,11 +931,14 @@ docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 		// The same name/id problem we have elsewhere.
 		string const attr = "id='" + to_utf8(entry.key()) + "'";
 		xs << CompTag("a", attr);
-		docstring label = entry.label();
-		if (label.empty())
-			label = entry.key();
+		docstring citekey = entry.citeKey();
+		if (citekey.empty()) {
+			citekey = entry.label();
+			if (citekey.empty())
+				citekey = entry.key();
+		}
 		xs << StartTag("span", "class='bibtexlabel'")
-			<< label 
+			<< citekey
 			<< EndTag("span");
 		// FIXME Right now, we are calling BibInfo::getInfo on the key,
 		// which will give us all the cross-referenced info. But for every
