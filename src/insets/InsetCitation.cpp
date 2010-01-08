@@ -507,6 +507,10 @@ int InsetCitation::docbook(odocstream & os, OutputParams const &) const
 
 docstring InsetCitation::xhtml(XHTMLStream & xs, OutputParams const &) const
 {
+	string const & cmd = getCmdName();
+	if (cmd == "nocite")
+		return docstring();
+
 	BiblioInfo const & bi = buffer().masterBibInfo();
 	docstring const & key_list = getParam("key");
 	if (key_list.empty())
