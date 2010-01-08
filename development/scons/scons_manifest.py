@@ -903,7 +903,6 @@ src_frontends_qt4_extra_files = Split('''
 
 src_frontends_qt4_ui_files = Split('''
     AboutUi.ui
-    AskForTextUi.ui
     BibitemUi.ui
     BiblioUi.ui
     BibtexAddUi.ui
