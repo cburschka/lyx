@@ -92,14 +92,14 @@
 #   wrap                 -> umflossenes Gleitobjekt
 #
 # Jürgen Spitzmüller <juergen.sp@t-online.de>, 2009.
-# Jürgen Spitzmüller <spitz@lyx.org>, 2009.
+# Jürgen Spitzmüller <spitz@lyx.org>, 2009, 2010.
 # Jürgen Spitzmüller <spitzmueller@ds.uzh.ch>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-12-12 10:44+0100\n"
-"PO-Revision-Date: 2009-12-12 12:24+0100\n"
+"PO-Revision-Date: 2010-01-08 14:24+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -1651,7 +1651,7 @@ msgid ""
 "select/deselect."
 msgstr ""
 "Die Optionen, die in der Formatdatei vordefiniert sind. Mit dem "
-"Kontrollkästchen links können diese an/ausgeschaltet werden."
+"Kontrollkästchen links können diese an-/ausgeschaltet werden."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:100
 msgid "Enable to use the options that are predefined in the layout file"
@@ -3477,9 +3477,7 @@ msgstr "Ersetzen &durch:"
 
 #: src/frontends/qt4/ui/SearchUi.ui:105
 msgid "Case &sensitive"
-msgstr ""
-"&Groß-/Kleinschreibung\n"
-"beachten"
+msgstr "&Groß-/Kleinschreibung beachten"
 
 #: src/frontends/qt4/ui/SearchUi.ui:112
 msgid "Match whole words onl&y"
@@ -12286,7 +12284,7 @@ msgstr "Änderung innerhalb Auswahl verwerfen"
 
 #: lib/ui/stdtoolbars.inc:209
 msgid "Merge changes"
-msgstr "Änderungen zusammenfassen"
+msgstr "Änderungen akzeptieren oder verwerfen"
 
 #: lib/ui/stdtoolbars.inc:210
 msgid "Accept all changes"
