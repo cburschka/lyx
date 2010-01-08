@@ -3203,6 +3203,14 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 	if (!success)
 		return false;
 
+	if (d->cloned_buffer_) {
+		// Enable reverse dvi or pdf to work by copying back the texrow
+		// object to the cloned buffer.
+		// FIXME: There is a possibility of concurrent access to texrow
+		// here from the main GUI thread that should be securized.
+		d->cloned_buffer_->d->texrow = d->texrow;
+	}
+
 	if (put_in_tempdir) {
 		result_file = tmp_result_file.absFilename();
 		return true;
