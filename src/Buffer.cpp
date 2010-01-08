@@ -1647,18 +1647,16 @@ BiblioInfo const & Buffer::localBibInfo() const
 
 void Buffer::checkBibInfoCache() const 
 {
-	if (d->bibinfoCacheValid_) {
-		support::FileNameList const & bibfilesCache = getBibfilesCache();
-		// compare the cached timestamps with the actual ones.
-		support::FileNameList::const_iterator ei = bibfilesCache.begin();
-		support::FileNameList::const_iterator en = bibfilesCache.end();
-		for (; ei != en; ++ ei) {
-			time_t lastw = ei->lastModified();
-			if (lastw != d->bibfileStatus_[*ei]) {
-				d->bibinfoCacheValid_ = false;
-				d->bibfileStatus_[*ei] = lastw;
-				break;
-			}
+	support::FileNameList const & bibfilesCache = getBibfilesCache();
+	// compare the cached timestamps with the actual ones.
+	support::FileNameList::const_iterator ei = bibfilesCache.begin();
+	support::FileNameList::const_iterator en = bibfilesCache.end();
+	for (; ei != en; ++ ei) {
+		time_t lastw = ei->lastModified();
+		time_t prevw = d->bibfileStatus_[*ei];
+		if (lastw != prevw) {
+			d->bibinfoCacheValid_ = false;
+			d->bibfileStatus_[*ei] = lastw;
 		}
 	}
 
