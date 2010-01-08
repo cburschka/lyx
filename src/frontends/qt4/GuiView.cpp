@@ -154,6 +154,7 @@ public:
 		font.setPointSize(int(toqstr(lyxrc.font_sizes[FONT_SIZE_LARGE]).toDouble()));
 		pain.setFont(font);
 		pain.drawText(260, 15, text);
+		setFocusPolicy(Qt::StrongFocus);
 	}
 
 	void paintEvent(QPaintEvent *)
@@ -162,6 +163,18 @@ public:
 		int y = (height() - splash_.height()) / 2;
 		QPainter pain(this);
 		pain.drawPixmap(x, y, splash_);
+	}
+
+	void keyPressEvent(QKeyEvent * ev)
+	{
+		KeySymbol sym;
+		setKeySymbol(&sym, ev);
+		if (sym.isOK()) {
+			guiApp->processKeySym(sym, q_key_state(ev->modifiers()));
+			ev->accept();
+		} else {
+			ev->ignore();
+		}
 	}
 
 private:
@@ -248,6 +261,7 @@ struct GuiView::GuiViewPrivate
 	{
 		stack_widget_->setCurrentWidget(bg_widget_);
 		bg_widget_->setUpdatesEnabled(true);
+		bg_widget_->setFocus();
 	}
 
 	TabWorkArea * tabWorkArea(int i)
@@ -576,6 +590,8 @@ void GuiView::setFocus()
 	QMainWindow::setFocus();
 	if (d.current_work_area_)
 		d.current_work_area_->setFocus();
+	else
+		d.bg_widget_->setFocus();
 }
 
 
@@ -913,25 +929,7 @@ bool GuiView::event(QEvent * e)
 			}
 		}
 #endif
-
-		if (d.current_work_area_)
-			// Nothing special to do.
-			return QMainWindow::event(e);
-
-		QKeyEvent * ke = static_cast<QKeyEvent*>(e);
-		// Let Qt handle menu access and the Tab keys to navigate keys to navigate
-		// between controls.
-		if (ke->modifiers() & Qt::AltModifier || ke->key() == Qt::Key_Tab 
-			|| ke->key() == Qt::Key_Backtab)
-			return QMainWindow::event(e);
-
-		// Allow processing of shortcuts that are allowed even when no Buffer
-		// is viewed.
-		KeySymbol sym;
-		setKeySymbol(&sym, ke);
-		guiApp->processKeySym(sym, q_key_state(ke->modifiers()));
-		e->accept();
-		return true;
+		return QMainWindow::event(e);
 	}
 
 	default:
