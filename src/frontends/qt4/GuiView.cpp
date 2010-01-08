@@ -2127,6 +2127,7 @@ bool GuiView::closeWorkArea(GuiWorkArea * wa)
 bool GuiView::closeBuffer()
 {
 	GuiWorkArea * wa = currentMainWorkArea();
+	setCurrentWorkArea(wa);
 	Buffer & buf = wa->bufferView().buffer();
 	return wa && closeWorkArea(wa, !buf.parent());
 }
