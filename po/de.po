@@ -90,13 +90,13 @@
 #   view(er)             -> ansehen / Ansicht / Betrachter
 #   wrap                 -> umflossenes Gleitobjekt
 #
-# Jürgen Spitzmüller <spitz@lyx.org>, 2009.
+# Jürgen Spitzmüller <spitz@lyx.org>, 2009, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2009-11-15 17:16+0100\n"
-"PO-Revision-Date: 2009-11-16 09:22+0100\n"
+"PO-Revision-Date: 2010-01-08 10:15+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -1256,7 +1256,7 @@ msgstr "Ge&öffnet"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:36
 msgid "For more information, refer to the complete log."
-msgstr ""
+msgstr "Das LaTeX-Protokoll bietet ausführlichere Informationen."
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:43
 msgid "&Errors:"
@@ -1268,11 +1268,11 @@ msgstr "Beschreibung:"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:83
 msgid "Open the LaTeX Log File dialog"
-msgstr ""
+msgstr "LaTeX-Protokoll öffnen"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:86
 msgid "View Complete &Log..."
-msgstr ""
+msgstr "&Vollständiges Protokoll ansehen..."
 
 #: src/frontends/qt4/ui/ExternalUi.ui:35
 msgid "F&ile"
@@ -1506,9 +1506,7 @@ msgstr "Suche unter Beachtung der Groß-/Kleinschreibung"
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:413
 #: src/frontends/qt4/ui/SearchUi.ui:105
 msgid "Case &sensitive"
-msgstr ""
-"&Groß-/Kleinschreibung\n"
-"beachten"
+msgstr "&Groß-/Kleinschreibung beachten"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:431
 msgid "Choose one of the pre-arranged regular expressions."
@@ -2164,7 +2162,7 @@ msgstr "Klassenoptionen"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:77
 msgid "The options that are predefined in the layout file. Click to the left to select/deselect."
-msgstr "Die Optionen, die in der Formatdatei vordefiniert sind. Mit dem Kontrollkästchen links können diese an/ausgeschaltet werden."
+msgstr "Die Optionen, die in der Formatdatei vordefiniert sind. Mit dem Kontrollkästchen links können diese an-/ausgeschaltet werden."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:92
 msgid "Enable to use the options that are predefined in the layout file"
@@ -3295,7 +3293,7 @@ msgstr "Mausrad-S&crollgeschwindigkeit:"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:150
 msgid "1.0 is the standard scrolling speed with the mouse wheel. Higher values will speed it up, low values slow it down."
-msgstr "1.0 ist die Standardscrollgeschwindigkeit mit dem Mausrad. Größere Werte erhöhen die Geschwindigkeit, kleinere verringern sie."
+msgstr "1,0 ist die Standardscrollgeschwindigkeit mit dem Mausrad. Größere Werte erhöhen die Geschwindigkeit, kleinere verringern sie."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:25
 msgid "User &interface language:"
@@ -13366,11 +13364,11 @@ msgstr "Zuletzt geöffnet|Z"
 
 #: lib/ui/stdmenus.inc:49
 msgid "Close All"
-msgstr "Alles schließen"
+msgstr "Alle schließen|A"
 
 #: lib/ui/stdmenus.inc:52
 msgid "Save All|l"
-msgstr "Alle Speichern|l"
+msgstr "Alle speichern|l"
 
 #: lib/ui/stdmenus.inc:53
 msgid "Revert to Saved|R"
@@ -20200,7 +20198,7 @@ msgstr "Fehler beim Vergleichen von Dokumenten."
 
 #: src/frontends/qt4/GuiCompare.cpp:249
 msgid "(cancelling)"
-msgstr ""
+msgstr "(breche ab)"
 
 #: src/frontends/qt4/GuiCompare.cpp:284
 msgid "differences"
@@ -21919,7 +21917,7 @@ msgstr "Datei wurde nicht importiert!"
 
 #: src/frontends/qt4/GuiView.cpp:1737
 msgid "newfile"
-msgstr ""
+msgstr "Neues_Dokument"
 
 #: src/frontends/qt4/GuiView.cpp:1775
 msgid "Select LyX document to insert"
