@@ -38,7 +38,6 @@ Style Standard
 	# FIXME This ought to be set dynamically.
 	HTMLStyle
 		div.standard {
-			text-indent: 2em;
 			margin-bottom: 2ex;
 		}
 	EndHTMLStyle
