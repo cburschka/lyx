@@ -2315,7 +2315,7 @@ bool GuiView::saveBufferIfNeeded(Buffer & buf, bool hiding)
 		buf.removeAutosaveFile();
 		if (hiding)
 			// revert all changes
-			buf.loadLyXFile(buf.fileName());
+			buf.reload();
 		buf.markClean();
 		break;
 	case 2:
@@ -2412,35 +2412,7 @@ static bool ensureBufferClean(Buffer * buffer)
 void GuiView::reloadBuffer()
 {
 	Buffer * buf = &documentBufferView()->buffer();
-	reloadBuffer(buf);
-}
-
-
-void GuiView::reloadBuffer(Buffer * buf)
-{
-	FileName filename = buf->fileName();
-	// e.g., read-only status could have changed due to version control
-	filename.refresh();
-	Buffer const * parent = buf->parent();
-	// The user has already confirmed that the changes, if any, should
-	// be discarded. So we just release the Buffer and don't call closeBuffer();
-	theBufferList().release(buf);
-	buf = loadDocument(filename);
-	docstring const disp_fn = makeDisplayPath(filename.absFilename());
-	docstring str;
-	if (buf) {
-		// re-allocate master if necessary
-		if (parent && theBufferList().isLoaded(parent)
-		      && buf->parent() != parent)
-			buf->setParent(parent);
-		buf->updateLabels();
-		setBuffer(buf);
-		buf->errors("Parse");
-		str = bformat(_("Document %1$s reloaded."), disp_fn);
-	} else {
-		str = bformat(_("Could not reload document %1$s"), disp_fn);
-	}
-	message(str);
+	buf->reload();
 }
 
 
@@ -2457,7 +2429,7 @@ void GuiView::checkExternallyModifiedBuffers()
 			int const ret = Alert::prompt(_("Reload externally changed document?"),
 						text, 0, 1, _("&Reload"), _("&Cancel"));
 			if (!ret)
-				reloadBuffer(*bit);
+				(*bit)->reload();
 		}
 	}
 }

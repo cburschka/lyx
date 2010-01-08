@@ -357,7 +357,6 @@ private:
 	Dialog * build(std::string const & name);
 	///
 	void reloadBuffer();
-	void reloadBuffer(Buffer * buf);
 	///
 	void dispatchVC(FuncRequest const & cmd);
 	///

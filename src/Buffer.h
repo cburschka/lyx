@@ -186,6 +186,8 @@ public:
 
 	/// Loads LyX file \c filename into buffer, *  and return success
 	bool loadLyXFile(support::FileName const & s);
+	/// Reloads the LyX file
+	bool reload();
 
 	/// Fill in the ErrorList with the TeXErrors
 	void bufferErrors(TeXErrors const &, ErrorList &) const;

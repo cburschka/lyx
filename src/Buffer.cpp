@@ -3766,4 +3766,26 @@ int Buffer::spellCheck(DocIterator & from, DocIterator & to,
 	return progress;
 }
 
+
+bool Buffer::reload()
+{
+	setBusy(true);
+	// e.g., read-only status could have changed due to version control
+	d->filename.refresh();
+	docstring const disp_fn = makeDisplayPath(d->filename.absFilename());
+
+	bool const success = loadLyXFile(d->filename);
+	if (success) {
+		updateLabels();
+		changed(true);
+		errors("Parse");
+		message(bformat(_("Document %1$s reloaded."), disp_fn));
+	} else {
+		message(bformat(_("Could not reload document %1$s."), disp_fn));
+	}	
+	setBusy(false);
+	return success;
+}
+
+
 } // namespace lyx
