@@ -2456,8 +2456,7 @@ void GuiView::dispatchVC(FuncRequest const & cmd)
 			break;
 		if (buffer->lyxvc().inUse() && !buffer->isReadonly()) {
 			msg = buffer->lyxvc().checkIn();
-			if (!msg.empty())
-				reloadBuffer();
+			reloadBuffer();
 		}
 		break;
 
