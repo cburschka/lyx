@@ -1744,9 +1744,10 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		FuncRequest const fr = lyxaction.lookupFunc(commandstr);
 
 		// an arbitrary number to limit number of iterations
-		const int max_iter = 1000;
+		const int max_iter = 10000;
 		int iterations = 0;
 		Cursor & cur = d->cursor_;
+		Cursor const savecur = cur;
 		cur.reset();
 		if (!cur.nextInset())
 			cur.forwardInset();
@@ -1771,7 +1772,8 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 			cur.forwardInset();
 		}
 		cur.endUndoGroup();
-		cur.reset();
+		cur = savecur;
+		cur.fixIfBroken();
 		processUpdateFlags(Update::Force);
 
 		if (iterations >= max_iter)

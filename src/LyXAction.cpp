@@ -3454,7 +3454,7 @@ void LyXAction::init()
                shooting yourself in the foot. A typical example is
                    inset-forall Note note-insert
                which starts an infinite loop. This is mitigated by the fact 
-               that the number of actions is arbitrarily limited to 1000.
+               that the number of actions is arbitrarily limited to 10000.
  * \li Syntax: inset-forall <NAME> <LFUN-COMMAND>
                <NAME>: Type of Inset. If <NAME> is *, all insets are matched.
  * \li Sample: The name is used like for InsetLayout in layout files: "Note" 
