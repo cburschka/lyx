@@ -245,7 +245,6 @@ MOCHEADER = \
 
 UIFILES = \
 	AboutUi.ui \
-	AskForTextUi.ui \
 	BibitemUi.ui \
 	BiblioUi.ui \
 	BibtexAddUi.ui \
