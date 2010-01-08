@@ -160,10 +160,10 @@ docstring complexLabel(Buffer const & buffer,
 	// We don't currently use the full or forceUCase fields.
 	string cite_type = asValidLatexCommand(citeType, engine);
 	if (cite_type[0] == 'C')
-		//If we were going to use them, this would mean ForceUCase
+		// If we were going to use them, this would mean ForceUCase
 		cite_type = string(1, 'c') + cite_type.substr(1);
 	if (cite_type[cite_type.size() - 1] == '*')
-		//and this would mean FULL
+		// and this would mean FULL
 		cite_type = cite_type.substr(0, cite_type.size() - 1);
 
 	docstring before_str;
@@ -512,7 +512,7 @@ docstring InsetCitation::xhtml(XHTMLStream & xs, OutputParams const &) const
 	if (key_list.empty())
 		return docstring();
 
-	// FIXME We shuld do a better job outputing different things for the
+	// FIXME We should do a better job outputing different things for the
 	// different citation styles.	For now, we use square brackets for every
 	// case.
 	xs << "[";
