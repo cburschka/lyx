@@ -424,7 +424,7 @@ void BufferView::processUpdateFlags(Update::flags flags)
 
 	if (flags == Update::Decoration) {
 		d->update_strategy_ = DecorationUpdate;
-		buffer_.changed();
+		buffer_.changed(false);
 		return;
 	}
 
@@ -437,7 +437,7 @@ void BufferView::processUpdateFlags(Update::flags flags)
 		}
 		if (flags & Update::Decoration) {
 			d->update_strategy_ = DecorationUpdate;
-			buffer_.changed();
+			buffer_.changed(false);
 			return;
 		}
 		// no screen update is needed.
@@ -453,13 +453,13 @@ void BufferView::processUpdateFlags(Update::flags flags)
 
 	if (!(flags & Update::FitCursor)) {
 		// Nothing to do anymore. Trigger a redraw and return
-		buffer_.changed();
+		buffer_.changed(false);
 		return;
 	}
 
 	// updateMetrics() does not update paragraph position
 	// This is done at draw() time. So we need a redraw!
-	buffer_.changed();
+	buffer_.changed(false);
 
 	if (fitCursor()) {
 		// The cursor is off screen so ensure it is visible.
@@ -573,8 +573,7 @@ void BufferView::scrollDocView(int value)
 	// If the offset is less than 2 screen height, prefer to scroll instead.
 	if (abs(offset) <= 2 * height_) {
 		d->anchor_ypos_ -= offset;
-		updateMetrics();
-		buffer_.changed();
+		buffer_.changed(true);
 		return;
 	}
 
@@ -765,7 +764,7 @@ bool BufferView::moveToPosition(pit_type bottom_pit, pos_type bottom_pos,
 		// To center the screen on this new position we need the
 		// paragraph position which is computed at draw() time.
 		// So we need a redraw!
-		buffer_.changed();
+		buffer_.changed(false);
 		if (fitCursor())
 			showCursor();
 	}
@@ -811,7 +810,7 @@ void BufferView::showCursor()
 void BufferView::showCursor(DocIterator const & dit, bool recenter)
 {
 	if (scrollToCursor(dit, recenter))
-		buffer_.changed();
+		buffer_.changed(false);
 }
 
 
@@ -1675,8 +1674,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		Cursor old = cur;
 		bool const in_texted = cur.inTexted();
 		cur.reset();
-		updateMetrics();
-		buffer_.changed();
+		buffer_.changed(true);
 		d->text_metrics_[&buffer_.text()].editXY(cur, p.x_, p.y_,
 			true, cmd.action == LFUN_SCREEN_UP); 
 		//FIXME: what to do with cur.x_target()?
@@ -1939,7 +1937,7 @@ void BufferView::clearSelection()
 	d->xsel_cache_.set = false;
 	// The buffer did not really change, but this causes the
 	// redraw we need because we cleared the selection above.
-	buffer_.changed();
+	buffer_.changed(false);
 }
 
 
@@ -2034,7 +2032,7 @@ void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 
 		// This event (moving without mouse click) is not passed further.
 		// This should be changed if it is further utilized.
-		buffer_.changed();
+		buffer_.changed(false);
 		return;
 	}
 
@@ -2095,8 +2093,7 @@ void BufferView::lfunScroll(FuncRequest const & cmd)
 		if (scroll_value)
 			scroll(scroll_step * scroll_value);
 	}
-	updateMetrics();
-	buffer_.changed();
+	buffer_.changed(true);
 }
 
 
@@ -2282,9 +2279,7 @@ bool BufferView::checkDepm(Cursor & cur, Cursor & old)
 	d->cursor_ = cur;
 
 	buffer_.updateLabels();
-
-	updateMetrics();
-	buffer_.changed();
+	buffer_.changed(true);
 	return true;
 }
 
@@ -2518,8 +2513,7 @@ void BufferView::insertLyXFile(FileName const & fname)
 		res = _("Could not insert document %1$s");
 	}
 
-	updateMetrics();
-	buffer_.changed();
+	buffer_.changed(true);
 	// emit message signal.
 	message(bformat(res, disp_fn));
 	buffer_.errors("Parse");
@@ -2826,8 +2820,7 @@ void BufferView::insertPlaintextFile(FileName const & f, bool asParagraph)
 	else
 		cur.innerText()->insertStringAsLines(cur, tmpstr, cur.current_font);
 
-	updateMetrics();
-	buffer_.changed();
+	buffer_.changed(true);
 }
 
 

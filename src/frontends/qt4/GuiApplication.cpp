@@ -949,7 +949,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		// Set current_view_ to zero to forbid GuiWorkArea::redraw()
 		// to skip the refresh.
 		current_view_ = 0;
-		theBufferList().changed();
+		theBufferList().changed(false);
 		// Restore current_view_
 		current_view_ = view;
 		break;

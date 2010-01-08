@@ -35,7 +35,7 @@ public:
 	///
 	void remove(WorkArea * wa);
 	///
-	void redrawAll();
+	void redrawAll(bool update_metrics);
 	///
 	void closeAll();
 	/// This function is called when the buffer readonly status change.

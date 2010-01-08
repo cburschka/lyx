@@ -126,7 +126,7 @@ public:
 	///
 	BufferView const & bufferView() const;
 	///
-	void redraw();
+	void redraw(bool update_metrics);
 	///
 	void stopBlinkingCursor();
 	///

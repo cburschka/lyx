@@ -392,10 +392,10 @@ bool Buffer::isClone() const
 }
 
 
-void Buffer::changed() const
+void Buffer::changed(bool update_metrics) const
 {
 	if (d->wa_)
-		d->wa_->redrawAll();
+		d->wa_->redrawAll(update_metrics);
 }
 
 

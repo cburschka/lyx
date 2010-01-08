@@ -109,7 +109,7 @@ public:
 	void setCurrentAuthor(docstring const & name, docstring const & email);
 
 	/// Call changed() on all buffers, internal or not
-	void changed() const;
+	void changed(bool update_metrics) const;
 
 private:
 	/// noncopiable

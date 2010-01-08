@@ -470,7 +470,7 @@ public:
 	Undo & undo();
 
 	/// This function is called when the buffer is changed.
-	void changed() const;
+	void changed(bool update_metrics) const;
 	///
 	void updateTocItem(std::string const &, DocIterator const &) const;
 	/// This function is called when the buffer structure is changed.

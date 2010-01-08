@@ -406,7 +406,7 @@ void GuiWorkArea::startBlinkingCursor()
 }
 
 
-void GuiWorkArea::redraw()
+void GuiWorkArea::redraw(bool update_metrics)
 {
 	if (!isVisible())
 		// No need to redraw in this case.
@@ -414,7 +414,7 @@ void GuiWorkArea::redraw()
 
 	// No need to do anything if this is the current view. The BufferView
 	// metrics are already up to date.
-	if (lyx_view_ != guiApp->currentView()
+	if (update_metrics || lyx_view_ != guiApp->currentView()
 		|| lyx_view_->currentWorkArea() != this) {
 		// FIXME: it would be nice to optimize for the off-screen case.
 		buffer_view_->updateMetrics();
@@ -1503,17 +1503,14 @@ void TabWorkArea::on_currentTabChanged(int i)
 		return;
 	GuiWorkArea * wa = dynamic_cast<GuiWorkArea *>(widget(i));
 	LASSERT(wa, return);
-	BufferView & bv = wa->bufferView();
-	bv.cursor().fixIfBroken();
-	bv.updateMetrics();
 	wa->setUpdatesEnabled(true);
-	wa->redraw();
+	wa->redraw(true);
 	wa->setFocus();
 	///
 	currentWorkAreaChanged(wa);
 
 	LYXERR(Debug::GUI, "currentTabChanged " << i
-		<< "File" << bv.buffer().absFileName());
+		<< "File" << wa->bufferView().buffer().absFileName());
 }
 
 

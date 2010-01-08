@@ -336,16 +336,16 @@ bool BufferList::releaseChild(Buffer * parent, Buffer * child)
 }
 
 
-void BufferList::changed() const
+void BufferList::changed(bool update_metrics) const
 {
 	BufferStorage::const_iterator it = bstore.begin();
 	BufferStorage::const_iterator end = bstore.end();
 	for (; it != end; ++it)
-		(*it)->changed();
+		(*it)->changed(update_metrics);
 	it = binternal.begin();
 	end = binternal.end();
 	for (; it != end; ++it)
-		(*it)->changed();
+		(*it)->changed(update_metrics);
 }
 
 

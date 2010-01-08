@@ -286,7 +286,7 @@ int GuiCompare::run()
 	if (!new_buffer_ || !old_buffer_ || !dest_buffer_)
 		return 0;
 
-	dest_buffer_->changed();
+	dest_buffer_->changed(true);
 	dest_buffer_->markDirty();
 
 	// get the options from the dialog

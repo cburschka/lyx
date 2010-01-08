@@ -100,8 +100,7 @@ void GuiInfo::applyView()
 	// FIXME: update the inset contents
 	bufferview()->buffer().updateLabels();
 	BufferView * bv = const_cast<BufferView *>(bufferview());
-	bv->updateMetrics();
-	bv->buffer().changed();
+	bv->buffer().changed(true);
 	bv->buffer().markDirty();
 }
 
