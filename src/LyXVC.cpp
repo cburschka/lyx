@@ -79,8 +79,22 @@ bool LyXVC::file_not_found_hook(FileName const & fn)
 	// file on disk, but existent in ,v version.
 	// Seems there is no reasonable scenario for adding implementation
 	// of retrieve for cvs or svn.
-	if (!RCS::findFile(fn).empty())
-		return true;
+	if (!RCS::findFile(fn).empty()) {	
+		docstring const file = makeDisplayPath(fn.absFilename(), 20);
+		docstring const text =
+			bformat(_("Do you want to retrieve the document"
+						   " %1$s from version control?"), file);
+		int const ret = Alert::prompt(_("Retrieve from version control?"),
+			text, 0, 1, _("&Retrieve"), _("&Cancel"));
+
+		if (ret == 0) {
+			// How can we know _how_ to do the checkout?
+			// With the current VC support it has to be an RCS
+			// file since CVS and SVN do not have special ,v files.
+			RCS::retrieve(fn);
+			return true;
+		}
+	}
 	return false;
 }
 

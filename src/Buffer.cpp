@@ -3399,31 +3399,17 @@ bool Buffer::readFileHelper(FileName const & s)
 
 bool Buffer::loadLyXFile(FileName const & s)
 {
-	if (s.isReadableFile()) {
-		if (readFileHelper(s)) {
-			lyxvc().file_found_hook(s);
-			if (!s.isWritable())
-				setReadonly(true);
-			return true;
-		}
-	} else {
-		docstring const file = makeDisplayPath(s.absFilename(), 20);
-		// Here we probably should run
-		if (LyXVC::file_not_found_hook(s)) {
-			docstring const text =
-				bformat(_("Do you want to retrieve the document"
-						       " %1$s from version control?"), file);
-			int const ret = Alert::prompt(_("Retrieve from version control?"),
-				text, 0, 1, _("&Retrieve"), _("&Cancel"));
-
-			if (ret == 0) {
-				// How can we know _how_ to do the checkout?
-				// With the current VC support it has to be,
-				// a RCS file since CVS do not have special ,v files.
-				RCS::retrieve(s);
-				return loadLyXFile(s);
-			}
-		}
+	// If the file is not readable, we try to
+	// retrieve the file from version control.
+	if (!s.isReadableFile()
+		  && !LyXVC::file_not_found_hook(s))
+		return false;
+	
+	if (s.isReadableFile()
+		  && readFileHelper(s)) {
+		lyxvc().file_found_hook(s);
+		setReadonly(!s.isWritable());
+		return true;
 	}
 	return false;
 }
@@ -3790,12 +3776,13 @@ bool Buffer::reload()
 	if (success) {
 		updateLabels();
 		changed(true);
-		errors("Parse");
+		markClean();
 		message(bformat(_("Document %1$s reloaded."), disp_fn));
 	} else {
 		message(bformat(_("Could not reload document %1$s."), disp_fn));
 	}	
 	setBusy(false);
+	errors("Parse");
 	return success;
 }
 
