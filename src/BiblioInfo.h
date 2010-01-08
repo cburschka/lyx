@@ -170,6 +170,11 @@ public:
 		*/
 	std::vector<docstring> const
 			getAuthorYearStrings(docstring const & key, Buffer const & buf) const;
+	/// Collects the cited entries from buf.
+	void collectCitedEntries(Buffer const & buf);
+	/// A list of BibTeX keys cited in the current document, sorted by
+	/// the last name of the author.
+	std::vector<docstring> const & citedEntries() const { return cited_entries_; }
 	///
 	const_iterator begin() const { return bimap_.begin(); }
 	///
@@ -195,6 +200,10 @@ private:
 	std::set<docstring> entry_types_;
 	/// our map: keys --> BibTeXInfo
 	std::map<docstring, BibTeXInfo> bimap_;
+	/// a possibly sorted list of entries cited in our Buffer.
+	/// do not try to make this a vector<BibTeXInfo *> or anything of
+	/// the sort, because reloads will invalidate those pointers. 
+	std::vector<docstring> cited_entries_;
 };
 
 } // namespace lyx

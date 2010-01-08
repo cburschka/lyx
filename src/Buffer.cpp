@@ -1457,8 +1457,8 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 	LaTeXFeatures features(*this, params(), runparams);
 	validate(features);
 	updateLabels(UpdateMaster, true);
-
-	d->texrow.reset();
+	checkBibInfoCache();
+	d->bibinfo_.collectCitedEntries(*this);
 
 	if (!only_body) {
 		os << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
@@ -1640,6 +1640,13 @@ BiblioInfo const & Buffer::masterBibInfo() const
 
 BiblioInfo const & Buffer::localBibInfo() const
 {
+	checkBibInfoCache();
+	return d->bibinfo_;
+}
+
+
+void Buffer::checkBibInfoCache() const 
+{
 	if (d->bibinfoCacheValid_) {
 		support::FileNameList const & bibfilesCache = getBibfilesCache();
 		// compare the cached timestamps with the actual ones.
@@ -1660,8 +1667,7 @@ BiblioInfo const & Buffer::localBibInfo() const
 		for (InsetIterator it = inset_iterator_begin(inset()); it; ++it)
 			it->fillWithBibKeys(d->bibinfo_, it);
 		d->bibinfoCacheValid_ = true;
-	}
-	return d->bibinfo_;
+	}	
 }
 
 

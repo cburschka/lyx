@@ -568,6 +568,8 @@ private:
 	void updateMacros(DocIterator & it,
 				     DocIterator & scope) const;
 	///
+	void checkBibInfoCache() const;
+	///
 	void setLabel(ParIterator & it) const;
 	///
 	void collectRelatives(BufferSet & bufs) const;

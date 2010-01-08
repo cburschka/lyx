@@ -25,7 +25,6 @@
 #include "output_xhtml.h"
 #include "OutputParams.h"
 #include "TextClass.h"
-#include "TocBackend.h"
 
 #include "frontends/alert.h"
 
@@ -910,69 +909,31 @@ void InsetBibtex::validate(LaTeXFeatures & features) const
 }
 
 
-namespace {
-	// used in xhtml to sort a list of BibTeXInfo objects
-	bool lSorter(BibTeXInfo const * lhs, BibTeXInfo const * rhs)
-	{
-		return lhs->getAbbreviatedAuthor() < rhs->getAbbreviatedAuthor();
-	}
-}
-
-
 docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 {
-	// We are going to collect all the citation keys used in the document,
-	// getting them from the TOC.
-	Toc const & toc = buffer().tocBackend().toc("citation");
-	Toc::const_iterator it = toc.begin();
-	Toc::const_iterator const en = toc.end();
-	vector<docstring> citekeys;
-	for (; it != en; ++it) {
-		if (it->str().empty())
-			continue;
-		vector<docstring> const keys = getVectorFromString(it->str());
-		citekeys.insert(citekeys.end(), keys.begin(), keys.end());
-	}
-	if (citekeys.empty())
-		return docstring();
-	sort(citekeys.begin(), citekeys.end());
-	vector<docstring>::iterator uit = 
-		unique(citekeys.begin(), citekeys.end());
-	citekeys.erase(uit, citekeys.end());
-	// We now have a sorted, unique list of the keys used in this document.
-	// We will now convert it to a list of the BibTeXInfo objects used in 
-	// this document...
-	vector<BibTeXInfo const *> binfo;
-	vector<docstring>::const_iterator cit = citekeys.begin();
-	vector<docstring>::const_iterator const cen = citekeys.end();
-	BiblioInfo const & bi = buffer().masterBibInfo();
-	for (; cit != cen; ++cit) {
-		BiblioInfo::const_iterator const bt = bi.find(*cit);
-		if (bt == bi.end() || !bt->second.isBibTeX())
-			continue;
-		binfo.push_back(&(bt->second));
-	}
-	// ...and sort it.
-	sort(binfo.begin(), binfo.end(), lSorter);
-	// Finally, then, we are ready for output.
+	BiblioInfo const & bibinfo = buffer().masterBibInfo();
+	vector<docstring> const & cites = bibinfo.citedEntries();
 	xs << StartTag("h2", "class='bibtex'")
 		<< _("References")
 		<< EndTag("h2")
 		<< StartTag("div", "class='bibtex'");
 
 	// Now we loop over the entries
-	vector<BibTeXInfo const *>::const_iterator vit = binfo.begin();
-	vector<BibTeXInfo const *>::const_iterator const ven = binfo.end();
+	vector<docstring>::const_iterator vit = cites.begin();
+	vector<docstring>::const_iterator const ven = cites.end();
 	for (; vit != ven; ++vit) {
-		BibTeXInfo const * bip = *vit;
+		BiblioInfo::const_iterator const biit = bibinfo.find(*vit);
+		if (biit == bibinfo.end())
+			continue;
+		BibTeXInfo const & entry = biit->second;
 		xs << StartTag("div", "class='bibtexentry'");
 		// FIXME XHTML
 		// The same name/id problem we have elsewhere.
-		string const attr = "id='" + to_utf8(bip->key()) + "'";
+		string const attr = "id='" + to_utf8(entry.key()) + "'";
 		xs << CompTag("a", attr);
-		docstring label = bip->label();
+		docstring label = entry.label();
 		if (label.empty())
-			label = bip->key();
+			label = entry.key();
 		xs << StartTag("span", "class='bibtexlabel'")
 			<< label 
 			<< EndTag("span");
@@ -980,7 +941,7 @@ docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 		// which will give us all the cross-referenced info. But for every
 		// entry, so there's a lot of repitition. This should be fixed.
 		xs << StartTag("span", "class='bibtexinfo'") 
-			<< bi.getInfo(bip->key())
+			<< bibinfo.getInfo(entry.key())
 			<< EndTag("span")
 			<< EndTag("div");
 	}

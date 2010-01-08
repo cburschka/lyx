@@ -19,6 +19,7 @@
 #include "Encoding.h"
 #include "InsetIterator.h"
 #include "Paragraph.h"
+#include "TocBackend.h"
 
 #include "insets/Inset.h"
 #include "insets/InsetBibitem.h"
@@ -32,6 +33,8 @@
 #include "support/textutils.h"
 
 #include "boost/regex.hpp"
+
+#include <set>
 
 using namespace std;
 using namespace lyx::support;
@@ -599,6 +602,58 @@ vector<docstring> const BiblioInfo::getAuthorYearStrings(
 void BiblioInfo::mergeBiblioInfo(BiblioInfo const & info)
 {
 	bimap_.insert(info.begin(), info.end());
+}
+
+
+namespace {
+	// used in xhtml to sort a list of BibTeXInfo objects
+	bool lSorter(BibTeXInfo const * lhs, BibTeXInfo const * rhs)
+	{
+		return lhs->getAbbreviatedAuthor() < rhs->getAbbreviatedAuthor();
+	}
+}
+
+
+void BiblioInfo::collectCitedEntries(Buffer const & buf)
+{
+	cited_entries_.clear();
+	// We are going to collect all the citation keys used in the document,
+	// getting them from the TOC.
+	// FIXME We may want to collect these differently, in the first case,
+	// so that we might have them in order of appearance.
+	set<docstring> citekeys;
+	Toc const & toc = buf.tocBackend().toc("citation");
+	Toc::const_iterator it = toc.begin();
+	Toc::const_iterator const en = toc.end();
+	for (; it != en; ++it) {
+		if (it->str().empty())
+			continue;
+		vector<docstring> const keys = getVectorFromString(it->str());
+		citekeys.insert(keys.begin(), keys.end());
+	}
+	if (citekeys.empty())
+		return;
+	
+	// We have a set of the keys used in this document.
+	// We will now convert it to a list of the BibTeXInfo objects used in 
+	// this document...
+	vector<BibTeXInfo const *> bi;
+	set<docstring>::const_iterator cit = citekeys.begin();
+	set<docstring>::const_iterator const cen = citekeys.end();
+	for (; cit != cen; ++cit) {
+		BiblioInfo::const_iterator const bt = find(*cit);
+		if (bt == end() || !bt->second.isBibTeX())
+			continue;
+		bi.push_back(&(bt->second));
+	}
+	// ...and sort it.
+	sort(bi.begin(), bi.end(), lSorter);
+	
+	// Now we can write the sorted keys
+	vector<BibTeXInfo const *>::const_iterator bit = bi.begin();
+	vector<BibTeXInfo const *>::const_iterator ben = bi.end();
+	for (; bit != ben; ++bit)
+		cited_entries_.push_back((*bit)->key());
 }
 
 
