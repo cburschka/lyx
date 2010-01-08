@@ -91,6 +91,10 @@ public:
 	///
 	docstring const & key() const { return bib_key_; }
 	///
+	docstring citeKey() const { return cite_key_; }
+	///
+	void setCiteKey(docstring const & k) { cite_key_ = k; }
+	///
 	docstring entryType() const { return entry_type_; }
 	/// 
 	bool isBibTeX() const { return is_bibtex_; }
@@ -114,6 +118,9 @@ private:
 	docstring entry_type_;
 	/// a cache for getInfo()
 	mutable docstring info_;
+	/// key to use when citing this entry 
+	/// currently used only by XHTML output routines
+	docstring cite_key_;
 	/// our map: <field, value>
 	std::map <docstring, docstring> bimap_;
 };
@@ -175,6 +182,8 @@ public:
 	/// A list of BibTeX keys cited in the current document, sorted by
 	/// the last name of the author.
 	std::vector<docstring> const & citedEntries() const { return cited_entries_; }
+	///
+	void makeCitationLabels(Buffer const & buf);
 	///
 	const_iterator begin() const { return bimap_.begin(); }
 	///

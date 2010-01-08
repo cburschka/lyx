@@ -26,6 +26,7 @@
 #include "insets/InsetBibtex.h"
 #include "insets/InsetInclude.h"
 
+#include "support/convert.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
@@ -654,6 +655,26 @@ void BiblioInfo::collectCitedEntries(Buffer const & buf)
 	vector<BibTeXInfo const *>::const_iterator ben = bi.end();
 	for (; bit != ben; ++bit)
 		cited_entries_.push_back((*bit)->key());
+}
+
+
+void BiblioInfo::makeCitationLabels(Buffer const & buf)
+{
+	collectCitedEntries(buf);
+	// FIXME It'd be nice to do author-year as well as numerical
+	// and maybe even some other sorts of labels.
+	vector<docstring>::const_iterator it = cited_entries_.begin();
+	vector<docstring>::const_iterator const en = cited_entries_.end();
+	int keynumber = 0;
+	for (; it != en; ++it) {
+		map<docstring, BibTeXInfo>::iterator const biit = bimap_.find(*it);
+		// this shouldn't happen, but...
+		if (biit == bimap_.end())
+			continue;
+		BibTeXInfo & entry = biit->second;
+		docstring const key = convert<docstring>(++keynumber);
+		entry.setCiteKey(key);
+	}
 }
 
 
