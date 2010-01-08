@@ -1277,7 +1277,6 @@ void EmbeddedWorkArea::disable()
 	stopBlinkingCursor();
 	if (view().currentWorkArea() != this)
 		return;
-	LASSERT(view().currentMainWorkArea(), /* */);
 	view().setCurrentWorkArea(view().currentMainWorkArea());
 }
 
