@@ -15,8 +15,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
+#include <cygwin/version.h>
 #include <sys/cygwin.h>
 #include <windows.h>
+
+void convert_to_full_posix_path(char const * from, char *to)
+{
+#if CYGWIN_VERSION_DLL_MAJOR >= 1007
+    cygwin_conv_path(CCP_WIN_A_TO_POSIX, from, to, PATH_MAX);
+#else
+    cygwin_conv_to_full_posix_path(from, to);
+#endif
+}
 
 int main(int ac, char **av)
 {
@@ -30,11 +40,11 @@ int main(int ac, char **av)
 	}
 
 	if (ac == 3) {
-		cygwin_conv_to_full_posix_path(av[1], posixpath);
+		convert_to_full_posix_path(av[1], posixpath);
 		sprintf(buf, "lyxeditor.sh" PROGRAM_SUFFIX " '%s' %s",
 				posixpath, av[2]);
 	} else {
-		cygwin_conv_to_full_posix_path(av[2], posixpath);
+		convert_to_full_posix_path(av[2], posixpath);
 		sprintf(buf, "lyxclient" PROGRAM_SUFFIX " %s '%s' %s",
 				av[1], posixpath, av[3]);
 	}

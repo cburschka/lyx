@@ -154,26 +154,40 @@ void init(int /* argc */, char * argv[])
 	 * lyx is invoked as a parameter of hidecmd.exe.
 	 */
 
-	// If cygwin is detected, query the cygdrive prefix
+	// If Cygwin is detected, query the cygdrive prefix
 	HKEY regKey;
-	char buf[MAX_PATH];
-	DWORD bufSize = sizeof(buf);
 	LONG retVal;
 
+	// Check for Cygwin 1.7 or later
 	retVal = RegOpenKeyEx(HKEY_LOCAL_MACHINE,
-			"Software\\Cygnus Solutions\\Cygwin\\mounts v2",
+			"Software\\Cygwin\\setup",
 			0, KEY_QUERY_VALUE, &regKey);
-	if (retVal != ERROR_SUCCESS) {
+	if (retVal != ERROR_SUCCESS)
 		retVal = RegOpenKeyEx(HKEY_CURRENT_USER,
+				"Software\\Cygwin\\setup",
+				0, KEY_QUERY_VALUE, &regKey);
+
+	// Check for older Cygwin versions
+	if (retVal != ERROR_SUCCESS)
+		retVal = RegOpenKeyEx(HKEY_LOCAL_MACHINE,
 				"Software\\Cygnus Solutions\\Cygwin\\mounts v2",
 				0, KEY_QUERY_VALUE, &regKey);
-	}
+	if (retVal != ERROR_SUCCESS)
+			retVal = RegOpenKeyEx(HKEY_CURRENT_USER,
+				"Software\\Cygnus Solutions\\Cygwin\\mounts v2",
+				0, KEY_QUERY_VALUE, &regKey);
+
 	if (retVal == ERROR_SUCCESS) {
-		retVal = RegQueryValueEx(regKey, "cygdrive prefix", NULL, NULL,
-				(LPBYTE) buf, &bufSize);
 		RegCloseKey(regKey);
-		if ((retVal == ERROR_SUCCESS) && (bufSize <= MAX_PATH))
-			cygdrive = rtrim(string(buf), "/");
+		cmd_ret const p = runCommand("mount --show-cygdrive-prefix");
+		// The output of the mount command is as follows:
+		// Prefix              Type         Flags
+		// /cygdrive           system       binmode
+		// So, we use the inner split to pass the second line to the
+		// outer split which sets cygdrive with its contents until
+		// the first blank, discarding the unneeded return value.
+		if (p.first != -1 && prefixIs(p.second, "Prefix"))
+			split(split(p.second, '\n'), cygdrive, ' ');
 	}
 
 	// Catch shutdown events.

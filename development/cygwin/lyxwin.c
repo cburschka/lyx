@@ -22,8 +22,18 @@
 #include <process.h>
 #include <string.h>
 #include <limits.h>
+#include <cygwin/version.h>
 #include <sys/cygwin.h>
 #include <windows.h>
+
+void convert_to_posix_path(char const * from, char *to)
+{
+#if CYGWIN_VERSION_DLL_MAJOR >= 1007
+    cygwin_conv_path(CCP_WIN_A_TO_POSIX | CCP_RELATIVE, from, to, PATH_MAX);
+#else
+    cygwin_conv_to_posix_path(from, to);
+#endif
+}
 
 int main (int argc, char **argv, char **environ)
 {
@@ -44,7 +54,7 @@ int main (int argc, char **argv, char **environ)
 				&& strcasecmp(s, ".lyx") == 0;
 		/* Add initial quote */
 		strcat(cmd, "\"");
-		cygwin_conv_to_posix_path(argv[i], posixpath) ;
+		convert_to_posix_path(argv[i], posixpath) ;
 		/* Hack to account for shares */
 		if (lyxfile && argv[i][0] == '\\' && argv[i][1] != '\\')
 			strcat(cmd, "/");
