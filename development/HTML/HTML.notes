@@ -10,27 +10,17 @@ TODO:
 These insets work but still need work:
 	InsetBibtex: There are a few issues here. 
 		- One is that the output is not very nice. This will be solved, though, by 
-			a patch of mine I seem to have forgotten to finish. To get output that 
-			accorded with the BibTeX style, of course, we'd have to parse the bbl file. 
-			I don't know if that's worth it.
+			a patch of mine I seem to have forgotten to finish. 
 		- Another issue concerns cross-references. At the moment, we simply use the
 			xref information for every entry, rather than listing the xref separately and
 			then referencing it. That should not be terribly hard, but it would take a bit
 			of work.
-		- A third issue concerns the labels. At present, we use the BibTeX key as the 
-			citation label. It would not be too hard, I think, to use numerical labels,
-			in the way BibTeX does. To do so, we'd need to move the sorting routine out
-			of InsetBibtex so we could do it before we print the citations. See below.
 	InsetBox: The CSS isn't there yet.
 	InsetCitation: This has two limitations as of 20 XI 2009. The first is that we
 		ignore the citation style and output square brackets, no matter what. The
-		second is that, with BibTeX, we simply use the BibTeX key as the citation
-		string, thus ignoring numerical, author-year, etc. It will not be too hard
-		to make numerical work. To do this, we need to collect information on the
-		used citations, alphabetize them, and then assign numerical labels via the
-		BibTeXInfo::label() method. A similar strategy will work for author-year and
-		the like, but calculating labels will be more complex---unless we just parse
-		the bbl file, which of course is the only fully general solution.
+		second is that we only do numerical citations. It will not be terribly hard 
+		to do author-year citations, but the complexLabel() routine in InsetCitation
+		will need adapting before that is possible.
 	InsetFlex: I think this one is OK, but it needs some testing.
 	InsetFloat: This seems to work OK, but it will need testing and tweaking. There is
 		also no CSS yet for these.
