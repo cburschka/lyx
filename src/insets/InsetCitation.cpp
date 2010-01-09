@@ -37,6 +37,29 @@ using namespace lyx::support;
 
 namespace lyx {
 
+ParamInfo InsetCitation::param_info_;
+
+
+InsetCitation::InsetCitation(Buffer * buf, InsetCommandParams const & p)
+	: InsetCommand(buf, p, "citation")
+{}
+
+
+ParamInfo const & InsetCitation::findInfo(string const & /* cmdName */)
+{
+	// standard cite does only take one argument if jurabib is
+	// not used, but jurabib extends this to two arguments, so
+	// we have to allow both here. InsetCitation takes care that
+	// LaTeX output is nevertheless correct.
+	if (param_info_.empty()) {
+		param_info_.add("after", ParamInfo::LATEX_OPTIONAL);
+		param_info_.add("before", ParamInfo::LATEX_OPTIONAL);
+		param_info_.add("key", ParamInfo::LATEX_REQUIRED);
+	}
+	return param_info_;
+}
+
+
 namespace {
 
 vector<string> const init_possible_cite_commands()
@@ -65,6 +88,50 @@ vector<string> const & possibleCiteCommands()
 }
 
 
+} // anon namespace
+
+
+bool InsetCitation::isCompatibleCommand(string const & cmd)
+{
+	vector<string> const & possibles = possibleCiteCommands();
+	vector<string>::const_iterator const end = possibles.end();
+	return find(possibles.begin(), end, cmd) != end;
+}
+
+
+docstring InsetCitation::toolTip(BufferView const & bv, int, int) const
+{
+	Buffer const & buf = bv.buffer();
+	// Only after the buffer is loaded from file...
+	if (!buf.isFullyLoaded())
+		return docstring();
+
+	BiblioInfo const & bi = buf.masterBibInfo();
+	if (bi.empty())
+		return _("No bibliography defined!");
+
+	docstring const & key = getParam("key");
+	if (key.empty())
+		return _("No citations selected!");
+
+	vector<docstring> keys = getVectorFromString(key);
+	vector<docstring>::const_iterator it = keys.begin();
+	vector<docstring>::const_iterator en = keys.end();
+	docstring tip;
+	for (; it != en; ++it) {
+		docstring const key_info = bi.getInfo(*it);
+		if (key_info.empty())
+			continue;
+		if (!tip.empty())
+			tip += "\n";
+		tip += wrap(key_info, -4);
+	}
+	return tip;
+}
+
+
+namespace {
+	
 // FIXME See the header for the issue.
 string defaultCiteCommand(CiteEngine engine)
 {
@@ -132,72 +199,7 @@ string asValidLatexCommand(string const & input, CiteEngine const engine)
 	return output;
 }
 
-
-} // anon namespace
-
-
-ParamInfo InsetCitation::param_info_;
-
-
-InsetCitation::InsetCitation(Buffer * buf, InsetCommandParams const & p)
-	: InsetCommand(buf, p, "citation")
-{}
-
-
-ParamInfo const & InsetCitation::findInfo(string const & /* cmdName */)
-{
-	// standard cite does only take one argument if jurabib is
-	// not used, but jurabib extends this to two arguments, so
-	// we have to allow both here. InsetCitation takes care that
-	// LaTeX output is nevertheless correct.
-	if (param_info_.empty()) {
-		param_info_.add("after", ParamInfo::LATEX_OPTIONAL);
-		param_info_.add("before", ParamInfo::LATEX_OPTIONAL);
-		param_info_.add("key", ParamInfo::LATEX_REQUIRED);
-	}
-	return param_info_;
-}
-
-
-bool InsetCitation::isCompatibleCommand(string const & cmd)
-{
-	vector<string> const & possibles = possibleCiteCommands();
-	vector<string>::const_iterator const end = possibles.end();
-	return find(possibles.begin(), end, cmd) != end;
-}
-
-
-docstring InsetCitation::toolTip(BufferView const & bv, int, int) const
-{
-	Buffer const & buf = bv.buffer();
-	// Only after the buffer is loaded from file...
-	if (!buf.isFullyLoaded())
-		return docstring();
-
-	BiblioInfo const & bi = buf.masterBibInfo();
-	if (bi.empty())
-		return _("No bibliography defined!");
-
-	docstring const & key = getParam("key");
-	if (key.empty())
-		return _("No citations selected!");
-
-	vector<docstring> keys = getVectorFromString(key);
-	vector<docstring>::const_iterator it = keys.begin();
-	vector<docstring>::const_iterator en = keys.end();
-	docstring tip;
-	for (; it != en; ++it) {
-		docstring const key_info = bi.getInfo(*it);
-		if (key_info.empty())
-			continue;
-		if (!tip.empty())
-			tip += "\n";
-		tip += wrap(key_info, -4);
-	}
-	return tip;
-}
-
-
+} // anonymous namespace
 
 docstring InsetCitation::generateLabel() const
 {
