@@ -28,7 +28,10 @@
 #include <limits.h>
 #include <stdlib.h>
 
+#include <cygwin/version.h>
 #include <sys/cygwin.h>
+
+#include <ostream>
 
 using namespace std;
 
@@ -60,6 +63,63 @@ bool is_windows_path(string const & p)
 	return p.empty() || (!contains(p, '\\') && p[0] != '/');
 }
 
+
+// Starting from Cygwin 1.7, new APIs for path conversions were introduced.
+// The old ones are now deprecated, so avoid them if we detect a modern Cygwin.
+
+#if CYGWIN_VERSION_DLL_MAJOR >= 1007
+
+enum PathStyle {
+	posix = CCP_WIN_A_TO_POSIX | CCP_RELATIVE,
+	windows = CCP_POSIX_TO_WIN_A | CCP_RELATIVE
+};
+
+
+/// Convert a path to or from posix style.
+/// \p p is encoded in local 8bit encoding or utf8.
+/// The result is returned in the same encoding as \p p.
+string convert_path(string const & p, PathStyle const & target)
+{
+	if ((target == posix && is_posix_path(p)) ||
+	    (target == windows && is_windows_path(p)))
+		return p;
+
+	char path_buf[PATH_MAX];
+
+	// cygwin_conv_path does not care about the encoding.
+	if (cygwin_conv_path(target, p.c_str(), path_buf, sizeof(path_buf))) {
+		lyxerr << "LyX: Cannot convert path: " << p << endl;
+		return subst(p, '\\', '/');
+	}
+	return subst(path_buf, '\\', '/');
+}
+
+
+/// Convert a path list to or from posix style.
+/// \p p is encoded in local 8bit encoding or utf8.
+/// The result is returned in the same encoding as \p p.
+string convert_path_list(string const & p, PathStyle const & target)
+{
+	if (p.empty())
+		return p;
+
+	char const * const pc = p.c_str();
+	PathStyle const actual = cygwin_posix_path_list_p(pc) ? posix : windows;
+
+	if (target != actual) {
+		int const size = cygwin_conv_path_list(target, pc, NULL, 0);
+		char * ptr = new char[size];
+		if (ptr && cygwin_conv_path_list(target, pc, ptr, size) == 0) {
+			string const path_list = subst(ptr, '\\', '/');
+			delete ptr;
+			return path_list;
+		} else
+			lyxerr << "LyX: Cannot convert path list: " << p << endl;
+	}
+	return subst(p, '\\', '/');
+}
+
+#else
 
 enum PathStyle {
 	posix,
@@ -124,6 +184,8 @@ string convert_path_list(string const & p, PathStyle const & target)
 
 	return subst(p, '\\', '/');
 }
+
+#endif
 
 
 BOOL terminate_handler(DWORD event)
