@@ -31806,31 +31806,28 @@ El preámbulo del documento hijo se ignora, sólo se utiliza el preámbulo
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In case you are only working on a certain chapter of a large document and
- want to save compiling time, you can put each included file into a branch.
+En caso de estar trabajando solo en un capítulo determinado de un documento
+ extenso, y con el fin de ahorrar tiempo de compilación, se puede poner
+ cada archivo incluido en una rama.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Branches are described in section 
+Las ramas se describen en la sección
 \emph on
-Branches
+ Ramas
 \emph default
- of the LyX 
+ de la  
 \emph on
-Userguide
+Guía del usuario
 \emph default
-.
+ de LyX.
 \end_layout
 
 \end_inset
 
- By enabling/disabling branches you can decide what included files will
- appear in the output.
+ Habilitando/deshabilitando las ramas puedes decidir qué archivos incluidos
+ aparecerán en la salida.
 \end_layout
 
 \begin_layout Standard
@@ -31840,17 +31837,16 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Note:
+Nota:
 \series default
- Due to a bug in LyX the LaTeX command 
+ Debido a un fallo de LyX, el comando LaTeX 
 \series bold
 
 \backslash
 includeonly
 \series default
- can currently not be used as alternative to decide what files should be
- included.
+ no se puede usar por el momento como alternativa para decidir qué archivos
+ deberían ser incluidos.
 \end_layout
 
 \end_inset
