@@ -76,12 +76,11 @@ DocIterator DocIterator::clone(Buffer * buffer) const
 {
 	LASSERT(buffer->isClone(), return DocIterator());
 	Inset * inset = &buffer->inset();
-	DocIterator dit = *this;
-	dit.buffer_ = buffer;
-	dit.inset_ = inset;
+	DocIterator dit(buffer);
 	size_t const n = slices_.size();
 	for (size_t i = 0 ; i != n; ++i) {
 		LASSERT(inset, /**/);
+		dit.push_back(slices_[i]);
 		dit.top().inset_ = inset;
 		if (i + 1 != n)
 			inset = dit.nextInset();
