@@ -34,34 +34,21 @@ enum Direction {
 };
 
 
-void step_forward(DocIterator & dit)
+static void step(DocIterator & dit, Direction direction)
 {
-	dit.top().forwardPos();
+	if (direction == Forward)
+		dit.top().forwardPos();
+	else
+		dit.top().backwardPos();
 }
 
 
-void step_backward(DocIterator & dit)
+static void step(DocIterator & dit, DocIterator const & end, Direction direction)
 {
-	dit.top().backwardPos();
+	if (dit != end)
+		step(dit, direction);
 }
 
-
-bool step_forward(DocIterator & dit, DocIterator const & end)
-{
-	if (dit == end)
-		return false;
-	step_forward(dit);
-	return true;
-}
-
-
-bool step_backward(DocIterator & dit, DocIterator const & beg)
-{
-	if (dit == beg)
-		return false;
-	step_backward(dit);
-	return true;
-}
 
 /**
  * A pair of two DocIterators that form a range.
@@ -138,15 +125,15 @@ public:
 
 	DocPair & operator++()
 	{
-		step_forward(o);
-		step_forward(n);
+		step(o, Forward);
+		step(n, Forward);
 		return *this;
 	}
 
 	DocPair & operator--()
 	{
-		step_backward(o);
-		step_backward(n);
+		step(o, Backward);
+		step(n, Backward);
 		return *this;
 	}
 	///
@@ -188,8 +175,8 @@ DocRangePair stepIntoInset(DocPair const & inset_location)
 	DocRangePair rp(inset_location, inset_location);
 	rp.o.from.forwardPos();
 	rp.n.from.forwardPos();
-	step_forward(rp.o.to);
-	step_forward(rp.n.to);
+	step(rp.o.to, Forward);
+	step(rp.n.to, Forward);
 	rp.o.to.backwardPos();
 	rp.n.to.backwardPos();
 	return rp;
