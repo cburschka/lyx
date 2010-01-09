@@ -27,6 +27,13 @@ using namespace lyx::support;
 
 namespace lyx {
 
+
+enum Direction {
+	Forward = 0,
+	Backward
+};
+
+
 void step_forward(DocIterator & dit)
 {
 	dit.top().forwardPos();
@@ -386,19 +393,19 @@ bool equal(DocIterator & o, DocIterator & n) {
 }
 
 
-bool traverse_snake(DocPair & p, DocRangePair const & rp, bool forward)
+bool traverse_snake(DocPair & p, DocRangePair const & rp, Direction direction)
 {
 	bool ret = false;
-	DocPair const & p_end = forward ? rp.to() : rp.from();
+	DocPair const & p_end = direction == Forward ? rp.to() : rp.from();
 	while (p != p_end) {
-		if (!forward)
+		if (direction == Backward)
 			--p;
 		if (!equal(p.o, p.n)) {
-			if (!forward)
+			if (direction == Backward)
 				++p;
 			return ret;
 		}
-		if (forward)
+		if (direction == Forward)
 			++p;
 		ret = true;
 	}
@@ -439,7 +446,7 @@ bool Compare::Impl::diff(Buffer const * new_buf, Buffer const * old_buf,
 	DocRangePair rp(old_buf_, new_buf_);
 
 	DocPair from = rp.from();
-	traverse_snake(from, rp, true);
+	traverse_snake(from, rp, Forward);
 	DocRangePair const snake(rp.from(), from);
 	process_snake(snake);
 	
@@ -484,11 +491,11 @@ void Compare::Impl::diff_i(DocRangePair const & rp)
 	} else {
 		// Retrieve the complete snake
 		DocPair first_part_end = middle_snake;
-		traverse_snake(first_part_end, rp, false);
+		traverse_snake(first_part_end, rp, Backward);
 		DocRangePair first_part(rp.from(), first_part_end);
 			
 		DocPair second_part_begin = middle_snake;
-		traverse_snake(second_part_begin, rp, true);
+		traverse_snake(second_part_begin, rp, Forward);
 		DocRangePair second_part(second_part_begin, rp.to());
 				
 		// Split the string in three parts:
