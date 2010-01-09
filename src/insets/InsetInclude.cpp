@@ -200,6 +200,12 @@ void InsetInclude::setBuffer(Buffer & buffer)
 }
 
 
+void InsetInclude::setChildBuffer(Buffer * buffer)
+{
+	child_buffer_ = buffer;
+}
+
+
 ParamInfo const & InsetInclude::findInfo(string const & /* cmdName */)
 {
 	// FIXME
@@ -382,6 +388,11 @@ Buffer * InsetInclude::getChildBuffer() const
 
 Buffer * InsetInclude::loadIfNeeded() const
 {
+	// This is for background export and preview. We don't want to load the
+	// cloned child document again.
+	if (child_buffer_ && child_buffer_->isClone())
+		return child_buffer_;
+
 	// Don't try to load it again if we failed before.
 	if (failedtoload_ || isVerbatim(params()) || isListings(params()))
 		return 0;

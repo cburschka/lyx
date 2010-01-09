@@ -50,6 +50,10 @@ public:
 	DisplayType display() const;
 	///
 	InsetCode lyxCode() const { return INCLUDE_CODE; }
+
+	///
+	void setChildBuffer(Buffer * buffer);
+
 	/** Fills \c keys
 	 *  \param buffer the Buffer containing this inset.
 	 *  \param keys the list of bibkeys in the child buffer.

@@ -474,6 +474,8 @@ public:
 	/// This function is called when the buffer is changed.
 	void changed(bool update_metrics) const;
 	///
+	void setChild(DocIterator const & dit, Buffer * child);
+	///
 	void updateTocItem(std::string const &, DocIterator const &) const;
 	/// This function is called when the buffer structure is changed.
 	void structureChanged() const;

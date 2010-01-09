@@ -72,6 +72,24 @@ DocIterator doc_iterator_end(const Buffer * buf0, const Inset * inset0)
 }
 
 
+DocIterator DocIterator::clone(Buffer * buffer) const
+{
+	LASSERT(buffer->isClone(), return DocIterator());
+	Inset * inset = &buffer->inset();
+	DocIterator dit = *this;
+	dit.buffer_ = buffer;
+	dit.inset_ = inset;
+	size_t const n = slices_.size();
+	for (size_t i = 0 ; i != n; ++i) {
+		LASSERT(inset, /**/);
+		dit.top().inset_ = inset;
+		if (i + 1 != n)
+			inset = dit.nextInset();
+	}
+	return dit;
+}
+
+
 bool DocIterator::inRegexped() const
 {
 	InsetMathHull * i = dynamic_cast<InsetMathHull *>(inset().asInsetMath());

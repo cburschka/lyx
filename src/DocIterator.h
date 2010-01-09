@@ -51,6 +51,10 @@ public:
 	/// access to owning buffer
 	void setBuffer(Buffer * buf) { buffer_ = buf; }
 
+	/// Clone this for given \p buffer.
+	/// \p buffer must be a clone of buffer_.
+	DocIterator clone(Buffer * buffer) const;
+
 	/// access slice at position \p i
 	CursorSlice const & operator[](size_t i) const { return slices_[i]; }
 	/// access slice at position \p i

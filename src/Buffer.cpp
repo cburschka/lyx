@@ -380,9 +380,28 @@ Buffer::~Buffer()
 
 Buffer * Buffer::clone() const
 {
-	// FIXME for asynchronous export and preview: We must also clone all
-	// the child buffers!
-	return new Buffer(fileName().absFilename(), false, this);
+	Buffer * buffer_clone = new Buffer(fileName().absFilename(), false, this);
+	buffer_clone->d->macro_lock = true;
+	buffer_clone->d->children_positions.clear();
+	// FIXME (Abdel 09/01/2010): this is too complicated. The whole children_positions and
+	// math macro caches need to be rethought and simplified.
+	// I am not sure wether we should handle Buffer cloning here or in BufferList.
+	// Right now BufferList knows nothing about buffer clones.
+	Impl::BufferPositionMap::iterator it = d->children_positions.begin();
+	Impl::BufferPositionMap::iterator end = d->children_positions.end();
+	for (; it != end; ++it) {
+		DocIterator dit = it->second.clone(buffer_clone);
+		dit.setBuffer(buffer_clone);
+		Buffer * child = const_cast<Buffer *>(it->first);
+		Buffer * child_clone = child->clone();
+		Inset * inset = dit.nextInset();
+		LASSERT(inset && inset->lyxCode() == INCLUDE_CODE, continue);
+		InsetInclude * inset_inc = static_cast<InsetInclude *>(inset);
+		inset_inc->setChildBuffer(child_clone);
+		child_clone->d->setParent(buffer_clone);
+		buffer_clone->setChild(dit, child_clone);
+	}
+	return buffer_clone;
 }
 
 
@@ -481,6 +500,12 @@ TocBackend & Buffer::tocBackend() const
 Undo & Buffer::undo()
 {
 	return d->undo_;
+}
+
+
+void Buffer::setChild(DocIterator const & dit, Buffer * child)
+{
+	d->children_positions[child] = dit;
 }
 
 
