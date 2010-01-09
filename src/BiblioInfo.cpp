@@ -208,12 +208,6 @@ BibTeXInfo::BibTeXInfo(docstring const & key, docstring const & type)
 {}
 
 
-bool BibTeXInfo::hasField(docstring const & field) const
-{
-	return count(field) == 1;
-}
-
-
 docstring const BibTeXInfo::getAbbreviatedAuthor() const
 {
 	if (!is_bibtex_) {

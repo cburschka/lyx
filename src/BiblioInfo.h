@@ -53,8 +53,6 @@ public:
 	BibTeXInfo(bool ib) : is_bibtex_(ib) {}
 	/// constructor that sets the entryType
 	BibTeXInfo(docstring const & key, docstring const & type);
-	///
-	bool hasField(docstring const & field) const;
 	/// \return the short form of an authorlist
 	docstring const getAbbreviatedAuthor() const;
 	/// 
@@ -64,8 +62,6 @@ public:
 	/// \return formatted BibTeX data suitable for framing.
 	/// \param pointer to crossref information
 	docstring const & getInfo(BibTeXInfo const * const xref = 0) const;
-	///
-	int count(docstring const & f) const { return bimap_.count(f); }
 	///
 	const_iterator find(docstring const & f) const { return bimap_.find(f); }
 	///

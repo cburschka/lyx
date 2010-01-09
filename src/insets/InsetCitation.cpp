@@ -217,8 +217,8 @@ docstring complexLabel(Buffer const & buffer,
 	vector<docstring>::const_iterator end = keys.end();
 	for (; it != end; ++it) {
 		// get the bibdata corresponding to the key
-		docstring const author(biblist.getAbbreviatedAuthor(*it));
-		docstring const year(biblist.getYear(*it));
+		docstring const author = biblist.getAbbreviatedAuthor(*it);
+		docstring const year = biblist.getYear(*it);
 
 		// Something isn't right. Fail safely.
 		if (author.empty() || year.empty())
