@@ -133,16 +133,93 @@ string asValidLatexCommand(string const & input, CiteEngine const engine)
 }
 
 
-docstring complexLabel(Buffer const & buffer,
-			    string const & citetype, docstring const & keylist,
-			    docstring const & before, docstring const & after,
-			    CiteEngine engine)
+} // anon namespace
+
+
+ParamInfo InsetCitation::param_info_;
+
+
+InsetCitation::InsetCitation(Buffer * buf, InsetCommandParams const & p)
+	: InsetCommand(buf, p, "citation")
+{}
+
+
+ParamInfo const & InsetCitation::findInfo(string const & /* cmdName */)
 {
-	// Only start the process off after the buffer is loaded from file.
-	if (!buffer.isFullyLoaded())
+	// standard cite does only take one argument if jurabib is
+	// not used, but jurabib extends this to two arguments, so
+	// we have to allow both here. InsetCitation takes care that
+	// LaTeX output is nevertheless correct.
+	if (param_info_.empty()) {
+		param_info_.add("after", ParamInfo::LATEX_OPTIONAL);
+		param_info_.add("before", ParamInfo::LATEX_OPTIONAL);
+		param_info_.add("key", ParamInfo::LATEX_REQUIRED);
+	}
+	return param_info_;
+}
+
+
+bool InsetCitation::isCompatibleCommand(string const & cmd)
+{
+	vector<string> const & possibles = possibleCiteCommands();
+	vector<string>::const_iterator const end = possibles.end();
+	return find(possibles.begin(), end, cmd) != end;
+}
+
+
+docstring InsetCitation::toolTip(BufferView const & bv, int, int) const
+{
+	Buffer const & buf = bv.buffer();
+	// Only after the buffer is loaded from file...
+	if (!buf.isFullyLoaded())
 		return docstring();
 
-	BiblioInfo const & biblist = buffer.masterBibInfo();
+	BiblioInfo const & bi = buf.masterBibInfo();
+	if (bi.empty())
+		return _("No bibliography defined!");
+
+	docstring const & key = getParam("key");
+	if (key.empty())
+		return _("No citations selected!");
+
+	vector<docstring> keys = getVectorFromString(key);
+	vector<docstring>::const_iterator it = keys.begin();
+	vector<docstring>::const_iterator en = keys.end();
+	docstring tip;
+	for (; it != en; ++it) {
+		docstring const key_info = bi.getInfo(*it);
+		if (key_info.empty())
+			continue;
+		if (!tip.empty())
+			tip += "\n";
+		tip += wrap(key_info, -4);
+	}
+	return tip;
+}
+
+
+
+docstring InsetCitation::generateLabel() const
+{
+	docstring label;
+	label = complexLabel();
+
+	// Fallback to fail-safe
+	if (label.empty())
+		label = basicLabel();
+
+	return label;
+}
+
+
+docstring InsetCitation::complexLabel() const
+{
+	Buffer const & buf = buffer();
+	// Only start the process off after the buffer is loaded from file.
+	if (!buf.isFullyLoaded())
+		return docstring();
+
+	BiblioInfo const & biblist = buf.masterBibInfo();
 	if (biblist.empty())
 		return docstring();
 
@@ -157,8 +234,9 @@ docstring complexLabel(Buffer const & buffer,
 	// jurabib supports these plus
 	// CITE:	author/<before field>
 
+	CiteEngine const engine = buffer().params().citeEngine();
 	// We don't currently use the full or forceUCase fields.
-	string cite_type = asValidLatexCommand(citetype, engine);
+	string cite_type = asValidLatexCommand(getCmdName(), engine);
 	if (cite_type[0] == 'C')
 		// If we were going to use them, this would mean ForceUCase
 		cite_type = string(1, 'c') + cite_type.substr(1);
@@ -166,6 +244,7 @@ docstring complexLabel(Buffer const & buffer,
 		// and this would mean FULL
 		cite_type = cite_type.substr(0, cite_type.size() - 1);
 
+	docstring const & before = getParam("before");
 	docstring before_str;
 	if (!before.empty()) {
 		// In CITET and CITEALT mode, the "before" string is
@@ -186,6 +265,7 @@ docstring complexLabel(Buffer const & buffer,
 			before_str = '/' + before;
 	}
 
+	docstring const & after = getParam("after");
 	docstring after_str;
 	// The "after" key is appended only to the end of the whole.
 	if (cite_type == "nocite")
@@ -212,7 +292,7 @@ docstring complexLabel(Buffer const & buffer,
 	docstring const sep_str = from_ascii(sep) + ' ';
 
 	docstring label;
-	vector<docstring> keys = getVectorFromString(keylist);
+	vector<docstring> keys = getVectorFromString(getParam("key"));
 	vector<docstring>::const_iterator it  = keys.begin();
 	vector<docstring>::const_iterator end = keys.end();
 	for (; it != end; ++it) {
@@ -327,9 +407,9 @@ docstring complexLabel(Buffer const & buffer,
 }
 
 
-docstring basicLabel(docstring const & keyList, docstring const & after)
+docstring InsetCitation::basicLabel() const
 {
-	docstring keys = keyList;
+	docstring keys = getParam("key");
 	docstring label;
 
 	if (contains(keys, ',')) {
@@ -344,95 +424,12 @@ docstring basicLabel(docstring const & keyList, docstring const & after)
 		label = keys;
 	}
 
+	docstring const & after = getParam("after");
 	if (!after.empty())
 		label += ", " + after;
 
 	return '[' + label + ']';
 }
-
-} // anon namespace
-
-
-ParamInfo InsetCitation::param_info_;
-
-
-InsetCitation::InsetCitation(Buffer * buf, InsetCommandParams const & p)
-	: InsetCommand(buf, p, "citation")
-{}
-
-
-ParamInfo const & InsetCitation::findInfo(string const & /* cmdName */)
-{
-	// standard cite does only take one argument if jurabib is
-	// not used, but jurabib extends this to two arguments, so
-	// we have to allow both here. InsetCitation takes care that
-	// LaTeX output is nevertheless correct.
-	if (param_info_.empty()) {
-		param_info_.add("after", ParamInfo::LATEX_OPTIONAL);
-		param_info_.add("before", ParamInfo::LATEX_OPTIONAL);
-		param_info_.add("key", ParamInfo::LATEX_REQUIRED);
-	}
-	return param_info_;
-}
-
-
-bool InsetCitation::isCompatibleCommand(string const & cmd)
-{
-	vector<string> const & possibles = possibleCiteCommands();
-	vector<string>::const_iterator const end = possibles.end();
-	return find(possibles.begin(), end, cmd) != end;
-}
-
-
-docstring InsetCitation::toolTip(BufferView const & bv, int, int) const
-{
-	Buffer const & buf = bv.buffer();
-	// Only after the buffer is loaded from file...
-	if (!buf.isFullyLoaded())
-		return docstring();
-
-	BiblioInfo const & bi = buf.masterBibInfo();
-	if (bi.empty())
-		return _("No bibliography defined!");
-
-	docstring const & key = getParam("key");
-	if (key.empty())
-		return _("No citations selected!");
-
-	vector<docstring> keys = getVectorFromString(key);
-	vector<docstring>::const_iterator it = keys.begin();
-	vector<docstring>::const_iterator en = keys.end();
-	docstring tip;
-	for (; it != en; ++it) {
-		docstring const key_info = bi.getInfo(*it);
-		if (key_info.empty())
-			continue;
-		if (!tip.empty())
-			tip += "\n";
-		tip += wrap(key_info, -4);
-	}
-	return tip;
-}
-
-
-
-docstring InsetCitation::generateLabel() const
-{
-	docstring const & before = getParam("before");
-	docstring const & after  = getParam("after");
-
-	docstring label;
-	CiteEngine const engine = buffer().params().citeEngine();
-	label = complexLabel(buffer(), getCmdName(), getParam("key"),
-			       before, after, engine);
-
-	// Fallback to fail-safe
-	if (label.empty())
-		label = basicLabel(getParam("key"), after);
-
-	return label;
-}
-
 
 docstring InsetCitation::screenLabel() const
 {
