@@ -307,6 +307,10 @@ Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_,
 	temppath = cloned_buffer_->d->temppath;
 	file_fully_loaded = true;
 	params = cloned_buffer_->d->params;
+	bibfiles_cache_ = cloned_buffer_->d->bibfiles_cache_;
+	bibinfo_ = cloned_buffer_->d->bibinfo_;
+	bibinfo_cache_valid_ = cloned_buffer_->d->bibinfo_cache_valid_;
+	bibfile_status_ = cloned_buffer_->d->bibfile_status_;
 }
 
 
