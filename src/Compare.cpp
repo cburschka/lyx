@@ -170,7 +170,7 @@ public:
 };
 
 
-DocRangePair stepIntoInset(DocPair const & inset_location)
+static DocRangePair stepIntoInset(DocPair const & inset_location)
 {
 	DocRangePair rp(inset_location, inset_location);
 	rp.o.from.forwardPos();
@@ -236,9 +236,9 @@ private:
 	void writeToDestBuffer(ParagraphList const & copy_pars) const;
 
 	/// The length of the old chunk currently processed
-	int N;
+	int N_;
 	/// The length of the new chunk currently processed
-	int M;
+	int M_;
 
 	/// The thread object, used to emit signals to the GUI
 	Compare const & compare_;
@@ -307,7 +307,7 @@ void Compare::abort()
 }
 
 
-void get_paragraph_list(DocRange const & range,
+static void get_paragraph_list(DocRange const & range,
 	ParagraphList & pars)
 {
 	// Clone the paragraphs within the selection.
@@ -329,7 +329,7 @@ void get_paragraph_list(DocRange const & range,
 }
 
 
-bool equal(Inset const * i_o, Inset const * i_n)
+static bool equal(Inset const * i_o, Inset const * i_n)
 {
 	if (!i_o || !i_n)
 		return false;
@@ -357,7 +357,7 @@ bool equal(Inset const * i_o, Inset const * i_n)
 }
 
 
-bool equal(DocIterator & o, DocIterator & n) {
+static bool equal(DocIterator & o, DocIterator & n) {
 	Paragraph const & old_par = o.text()->getPar(o.pit());
 	Paragraph const & new_par = n.text()->getPar(n.pit());
 
@@ -380,10 +380,17 @@ bool equal(DocIterator & o, DocIterator & n) {
 }
 
 
-bool traverse_snake(DocPair & p, DocRangePair const & rp, Direction direction)
+/// Traverses a snake in a certain direction. p points to a 
+/// position in the old and new file and they are synchronously
+/// moved along the snake. The function returns true if a snake
+/// was found.
+static bool traverse_snake(DocPair & p, DocRangePair const & range,
+	Direction direction)
 {
 	bool ret = false;
-	DocPair const & p_end = direction == Forward ? rp.to() : rp.from();
+	DocPair const & p_end = 
+		direction == Forward ? range.to() : range.from();
+
 	while (p != p_end) {
 		if (direction == Backward)
 			--p;
@@ -409,9 +416,9 @@ bool traverse_snake(DocPair & p, DocRangePair const & rp, Direction direction)
 int Compare::Impl::find_middle_snake(DocRangePair const & rp,
 	DocPair &)
 {
-	N = rp.o.length();
-	M = rp.n.length();
-	return M+N;
+	N_ = rp.o.length();
+	M_ = rp.n.length();
+	return M_ + N_;
 }
 
 
