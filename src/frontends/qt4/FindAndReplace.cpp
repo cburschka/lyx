@@ -32,6 +32,7 @@
 #include "support/FileName.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
+#include "support/filetools.h"
 
 #include <QCloseEvent>
 #include <QLineEdit>
@@ -122,6 +123,23 @@ static docstring buffer_to_latex(Buffer & buffer) {
 		LYXERR(Debug::FIND, "searchString up to here: " << os.str());
 	}
 	return os.str();
+}
+
+
+static vector<string> const & allManualsFiles() {
+	static vector<string> v;
+	static const char * files[] = {
+		"Intro", "UserGuide", "Tutorial", "Additional", "EmbeddedObjects",
+		"Math", "Customization", "Shortcuts", "LFUNs", "LaTeXConfig"
+	};
+	if (v.empty()) {
+		FileName fname;
+		for (size_t i = 0; i < sizeof(files) / sizeof(files[0]); ++i) {
+			fname = i18nLibFileSearch("doc", files[i], "lyx");
+			v.push_back(fname.absFilename());
+		}
+	}
+	return v;
 }
 
 
@@ -220,6 +238,29 @@ static bool next_prev_buffer(Buffer * & buf, FindAndReplaceOptions const & opt) 
 			restarted = buf == *(theBufferList().end() - 1);
 		}
 		break;
+	case FindAndReplaceOptions::S_ALL_MANUALS:
+		vector<string> const & v = allManualsFiles();
+		vector<string>::const_iterator it = find(v.begin(), v.end(), buf->absFileName());
+		if (it == v.end()) {
+			it = v.begin();
+		} else if (opt.forward) {
+			++it;
+			if (it == v.end()) {
+				it = v.begin();
+				restarted = true;
+			}
+		} else {
+			if (it == v.begin()) {
+				it = v.end();
+				restarted = true;
+			}
+			--it;
+		}
+		FileName const & fname = FileName(*it);
+		if (!theBufferList().exists(fname))
+			guiApp->currentView()->loadDocument(fname, false);
+		buf = theBufferList().getBuffer(fname);
+		break;
 	}
 	return restarted;
 }
@@ -241,6 +282,9 @@ docstring question_string(FindAndReplaceOptions const & opt)
 	case FindAndReplaceOptions::S_OPEN_BUFFERS:
 		scope = _("open files");
 		break;
+	case FindAndReplaceOptions::S_ALL_MANUALS:
+		scope = _("manuals");
+		break;
 	}
 	docstring dir = opt.forward ? _("forward") : _("backwards");
 	return cur_pos + _(" of ") + scope
@@ -260,6 +304,21 @@ void FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt) {
 
 	Buffer * buf_orig = &bv->buffer();
 	Cursor cur_orig(bv->cursor());
+
+	if (opt.scope == FindAndReplaceOptions::S_ALL_MANUALS) {
+		vector<string> const & v = allManualsFiles();
+		if (std::find(v.begin(), v.end(), buf->absFileName()) == v.end()) {
+			FileName const & fname = FileName(*v.begin());
+			if (!theBufferList().exists(fname))
+				guiApp->currentView()->loadDocument(fname, false);
+			buf = theBufferList().getBuffer(fname);
+			lyx::dispatch(FuncRequest(LFUN_BUFFER_SWITCH,
+						  buf->absFileName()));
+			bv = view_.documentBufferView();
+			bv->cursor().clear();
+			bv->cursor().push_back(CursorSlice(buf->inset()));
+		}
+	}
 
 	do {
 		LYXERR(Debug::FIND, "Dispatching LFUN_WORD_FINDADV");
@@ -346,6 +405,8 @@ void FindAndReplaceWidget::findAndReplace(
 		scope = FindAndReplaceOptions::S_DOCUMENT;
 	else if (OpenDocuments->isChecked())
 		scope = FindAndReplaceOptions::S_OPEN_BUFFERS;
+	else if (AllManualsRB->isChecked())
+		scope = FindAndReplaceOptions::S_ALL_MANUALS;
 	else
 		LASSERT(false, /**/);
 	LYXERR(Debug::FIND, "FindAndReplaceOptions: "

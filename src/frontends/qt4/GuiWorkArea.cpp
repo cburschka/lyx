@@ -1277,6 +1277,9 @@ void EmbeddedWorkArea::disable()
 	stopBlinkingCursor();
 	if (view().currentWorkArea() != this)
 		return;
+	// No problem if currentMainWorkArea() is 0 (setCurrentWorkArea()
+	// tolerates it and shows the background logo), what happens if
+	// an EmbeddedWorkArea is closed after closing all document WAs
 	view().setCurrentWorkArea(view().currentMainWorkArea());
 }
 
