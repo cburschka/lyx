@@ -224,7 +224,7 @@ public:
 
 	/// A cache for the bibfiles (including bibfiles of loaded child
 	/// documents), needed for appropriate update of natbib labels.
-	mutable support::FileNameList bibfilesCache_;
+	mutable support::FileNameList bibfiles_cache_;
 
 	// FIXME The caching mechanism could be improved. At present, we have a
 	// cache for each Buffer, that caches all the bibliography info for that
@@ -233,9 +233,9 @@ public:
 	/// A cache for bibliography info
 	mutable BiblioInfo bibinfo_;
 	/// whether the bibinfo cache is valid
-	bool bibinfoCacheValid_;
+	bool bibinfo_cache_valid_;
 	/// Cache of timestamps of .bib files
-	map<FileName, time_t> bibfileStatus_;
+	map<FileName, time_t> bibfile_status_;
 
 	mutable RefCache ref_cache_;
 
@@ -294,7 +294,7 @@ Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_,
 	: lyx_clean(true), bak_clean(true), unnamed(false),
 	  read_only(readonly_), filename(file), file_fully_loaded(false),
 	  toc_backend(&parent), macro_lock(false), timestamp_(0),
-	  checksum_(0), wa_(0), undo_(parent), bibinfoCacheValid_(false),
+	  checksum_(0), wa_(0), undo_(parent), bibinfo_cache_valid_(false),
 	  cloned_buffer_(cloned_buffer), parent_buffer(0)
 {
 	if (!cloned_buffer_) {
@@ -1605,13 +1605,13 @@ void Buffer::updateBibfilesCache(UpdateScope scope) const
 		return;
 	}
 
-	d->bibfilesCache_.clear();
+	d->bibfiles_cache_.clear();
 	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
 		if (it->lyxCode() == BIBTEX_CODE) {
 			InsetBibtex const & inset =
 				static_cast<InsetBibtex const &>(*it);
 			support::FileNameList const bibfiles = inset.getBibFiles();
-			d->bibfilesCache_.insert(d->bibfilesCache_.end(),
+			d->bibfiles_cache_.insert(d->bibfiles_cache_.end(),
 				bibfiles.begin(),
 				bibfiles.end());
 		} else if (it->lyxCode() == INCLUDE_CODE) {
@@ -1620,19 +1620,19 @@ void Buffer::updateBibfilesCache(UpdateScope scope) const
 			inset.updateBibfilesCache();
 			support::FileNameList const & bibfiles =
 					inset.getBibfilesCache();
-			d->bibfilesCache_.insert(d->bibfilesCache_.end(),
+			d->bibfiles_cache_.insert(d->bibfiles_cache_.end(),
 				bibfiles.begin(),
 				bibfiles.end());
 		}
 	}
 	// the bibinfo cache is now invalid
-	d->bibinfoCacheValid_ = false;
+	d->bibinfo_cache_valid_ = false;
 }
 
 
 void Buffer::invalidateBibinfoCache()
 {
-	d->bibinfoCacheValid_ = false;
+	d->bibinfo_cache_valid_ = false;
 }
 
 
@@ -1644,10 +1644,10 @@ support::FileNameList const & Buffer::getBibfilesCache(UpdateScope scope) const
 		return pbuf->getBibfilesCache();
 
 	// We update the cache when first used instead of at loading time.
-	if (d->bibfilesCache_.empty())
+	if (d->bibfiles_cache_.empty())
 		const_cast<Buffer *>(this)->updateBibfilesCache(scope);
 
-	return d->bibfilesCache_;
+	return d->bibfiles_cache_;
 }
 
 
@@ -1678,18 +1678,18 @@ void Buffer::checkBibInfoCache() const
 	support::FileNameList::const_iterator en = bibfilesCache.end();
 	for (; ei != en; ++ ei) {
 		time_t lastw = ei->lastModified();
-		time_t prevw = d->bibfileStatus_[*ei];
+		time_t prevw = d->bibfile_status_[*ei];
 		if (lastw != prevw) {
-			d->bibinfoCacheValid_ = false;
-			d->bibfileStatus_[*ei] = lastw;
+			d->bibinfo_cache_valid_ = false;
+			d->bibfile_status_[*ei] = lastw;
 		}
 	}
 
-	if (!d->bibinfoCacheValid_) {
+	if (!d->bibinfo_cache_valid_) {
 		d->bibinfo_.clear();
 		for (InsetIterator it = inset_iterator_begin(inset()); it; ++it)
 			it->fillWithBibKeys(d->bibinfo_, it);
-		d->bibinfoCacheValid_ = true;
+		d->bibinfo_cache_valid_ = true;
 	}	
 }
 
