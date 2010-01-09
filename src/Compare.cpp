@@ -354,17 +354,22 @@ bool equal(DocIterator & o, DocIterator & n) {
 	Paragraph const & old_par = o.text()->getPar(o.pit());
 	Paragraph const & new_par = n.text()->getPar(n.pit());
 
-	Inset const * i_o = old_par.getInset(o.pos());
-	Inset const * i_n = new_par.getInset(n.pos());
+	char_type const c_o = old_par.getChar(o.pos());
+	char_type const c_n = new_par.getChar(n.pos());
+	if (c_o != c_n)
+		return false;
 
-	if (i_o && i_n)
-		return equal(i_o, i_n);
-	
-	char_type c_o = old_par.getChar(o.pos());
-	char_type c_n = new_par.getChar(n.pos());
+	if (old_par.isInset(o.pos())) {
+		Inset const * i_o = old_par.getInset(o.pos());
+		Inset const * i_n = new_par.getInset(n.pos());
+
+		if (i_o && i_n)
+			return equal(i_o, i_n);
+	}	
+
 	Font fo = old_par.getFontSettings(o.buffer()->params(), o.pos());
 	Font fn = new_par.getFontSettings(n.buffer()->params(), n.pos());
-	return c_o == c_n && fo == fn;
+	return fo == fn;
 }
 
 
