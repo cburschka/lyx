@@ -12,7 +12,6 @@
 
 #include "Compare.h"
 
-#include "Buffer.h"
 #include "BufferParams.h"
 #include "Changes.h"
 
@@ -201,13 +200,13 @@ public:
 	bool abort_;
 
 private:
-	// Finds the middle snake and returns the length of the
-	// shortest edit script.
+	/// Finds the middle snake and returns the length of the
+	/// shortest edit script.
 	int find_middle_snake(DocRangePair const & rp, DocPair & middle_snake);
 
-	// This function is called recursively by a divide and conquer
-	// algorithm. Each time, the string is divided into two split
-	// around the middle snake.
+	/// This function is called recursively by a divide and conquer
+	/// algorithm. Each time, the string is divided into two split
+	/// around the middle snake.
 	void diff_i(DocRangePair const & rp);
 
 	/// Processes the splitted chunks. It either adds them as deleted,
@@ -218,8 +217,8 @@ private:
 	/// and adds the result to /c pars.
 	void diff_inset(Inset * inset, DocPair const & p);
 
-	// Adds the snake to the destination buffer. The algorithm will
-	// recursively be applied to any InsetTexts that are within the snake.
+	/// Adds the snake to the destination buffer. The algorithm will
+	/// recursively be applied to any InsetTexts that are within the snake.
 	void process_snake(DocRangePair const & rp);
 
 	/// Writes the range to the destination buffer
@@ -229,9 +228,9 @@ private:
 	/// Writes the paragraph list to the destination buffer
 	void writeToDestBuffer(ParagraphList const & copy_pars) const;
 
-	/// The length of the first chunk currently processed
+	/// The length of the old chunk currently processed
 	int N;
-	/// The length of the second chunk currently processed
+	/// The length of the new chunk currently processed
 	int M;
 
 	/// The thread object, used to emit signals to the GUI
