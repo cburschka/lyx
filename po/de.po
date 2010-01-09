@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-01-09 13:39+0100\n"
-"PO-Revision-Date: 2010-01-09 10:14+0100\n"
+"PO-Revision-Date: 2010-01-09 14:03+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -1538,13 +1538,12 @@ msgid "FontUi"
 msgstr "FontUi"
 
 #: src/frontends/qt4/ui/FontUi.ui:28
-#, fuzzy
 msgid "LaTe&X font encoding:"
-msgstr "&TeX-Kodierung:"
+msgstr "La&TeX-Fontkodierung:"
 
 #: src/frontends/qt4/ui/FontUi.ui:38 src/frontends/qt4/ui/PrefLatexUi.ui:51
 msgid "Specify the font encoding (e.g., T1)."
-msgstr ""
+msgstr "Spezifizieren Sie die Fontkodierung (fontenc, bspw. T1)"
 
 #: src/frontends/qt4/ui/FontUi.ui:45
 msgid "&Default Family:"
@@ -2298,9 +2297,8 @@ msgid "&Find:"
 msgstr "&Suchen:"
 
 #: src/frontends/qt4/ui/LogUi.ui:45
-#, fuzzy
 msgid "Log &Type:"
-msgstr "&Art:"
+msgstr "Protokollt&yp:"
 
 #: src/frontends/qt4/ui/LogUi.ui:74
 msgid "Update the display"
@@ -2372,27 +2370,24 @@ msgid "&Column Sep:"
 msgstr "&Spaltenabstand:"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:25
-#, fuzzy
 msgid "Master Document Output"
-msgstr "Hauptdokument"
+msgstr "Ausgabe des Hauptdokuments"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:40
-#, fuzzy
 msgid "Include all included subdocuments in the output"
-msgstr "Leerzeichen in der erzeugten Ausgabe unterstreichen"
+msgstr "Alle eingebundenen Unterdokumente ausgeben"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:43
-#, fuzzy
 msgid "&Include all children"
-msgstr "Datei einbinden"
+msgstr "&Alle Unterdokumente einbinden"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:50
 msgid "Include only the selected subdocuments in the output"
-msgstr ""
+msgstr "Nur die ausgewählten Unterdokumente ausgeben"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:53
 msgid "Include &only selected children"
-msgstr ""
+msgstr "Nur ausge&wählte Unterdokumente einbinden"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:30
 #: src/frontends/qt4/ui/MathMatrixUi.ui:43
@@ -3307,7 +3302,6 @@ msgid "&Global"
 msgstr "&Global"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:116
-#, fuzzy
 msgid ""
 "If checked, the document language is not explicitly set by a language switch "
 "command"
@@ -3320,7 +3314,6 @@ msgid "Auto &begin"
 msgstr "A&uto-Beginn"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:126
-#, fuzzy
 msgid ""
 "If checked, the document language is not explicitly closed by a language "
 "switch command"
@@ -3372,11 +3365,12 @@ msgstr "&Visuell"
 msgid ""
 "Enable if a specific font encoding (such as T1) should be used (via fontenc)"
 msgstr ""
+"Aktivieren Sie dies, wenn eine spezifische Fontkodierung (wie z.B. T1) "
+"verwendet werden soll (via fontenc)."
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:28
-#, fuzzy
 msgid "Use LaTe&X font encoding:"
-msgstr "&TeX-Kodierung:"
+msgstr "LaTe&X-Fontkodierung verwenden:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:58
 msgid "Default paper si&ze:"
@@ -6581,7 +6575,6 @@ msgid "Postal comment"
 msgstr "Postvermerk"
 
 #: lib/layouts/dinbrief.layout:83
-#, fuzzy
 msgid "Postal Remark:"
 msgstr "Postvermerk:"
 
@@ -6590,9 +6583,8 @@ msgid "Handling"
 msgstr "Handhabung"
 
 #: lib/layouts/dinbrief.layout:90
-#, fuzzy
 msgid "Handling:"
-msgstr "Handhabung"
+msgstr "Zusatz:"
 
 #: lib/layouts/dinbrief.layout:94 lib/layouts/g-brief.layout:103
 #: lib/layouts/g-brief2.layout:759
@@ -6619,9 +6611,8 @@ msgid "Writer"
 msgstr "Sachbearbeiter"
 
 #: lib/layouts/dinbrief.layout:108
-#, fuzzy
 msgid "Writer:"
-msgstr "Sachbearbeiter"
+msgstr "Sachbearbeiter:"
 
 #: lib/layouts/dinbrief.layout:112 lib/layouts/g-brief.layout:54
 #: lib/layouts/g-brief2.layout:893 lib/layouts/scrlettr.layout:132
@@ -6640,18 +6631,16 @@ msgid "Bottomtext"
 msgstr "Fußzeile"
 
 #: lib/layouts/dinbrief.layout:121
-#, fuzzy
 msgid "Bottom text:"
-msgstr "Fußzeile"
+msgstr "Fusszeile(n):"
 
 #: lib/layouts/dinbrief.layout:129
 msgid "Area code"
 msgstr "Vorwahl"
 
 #: lib/layouts/dinbrief.layout:131
-#, fuzzy
 msgid "Area Code:"
-msgstr "Vorwahl"
+msgstr "Vorwahl:"
 
 #: lib/layouts/dinbrief.layout:135 lib/layouts/scrlettr.layout:146
 #: lib/layouts/scrlttr2.layout:181 lib/layouts/stdletter.inc:126
@@ -11815,7 +11804,6 @@ msgid "Show Table Toolbar"
 msgstr "Tabellen-Werkzeugleiste anzeigen"
 
 #: lib/ui/stdcontext.inc:77
-#, fuzzy
 msgid "Use Computer Algebra System|m"
 msgstr "Computer-Algebra-System verwenden|C"
 
@@ -12343,7 +12331,6 @@ msgid "Close Window|d"
 msgstr "Fenster schließen|t"
 
 #: lib/ui/stdmenus.inc:75
-#, fuzzy
 msgid "Update Local Directory From Repository|d"
 msgstr "Lokales Verzeichnis aus dem Repositorium aktualisieren|p"
 
@@ -12596,9 +12583,8 @@ msgid "Fold Math Macro|d"
 msgstr "Mathe-Makro zuklappen|z"
 
 #: lib/ui/stdmenus.inc:312
-#, fuzzy
 msgid "Show progress messages"
-msgstr "(keine Protokollmeldung)"
+msgstr "Fortschrittsmeldungen anzeigen"
 
 #: lib/ui/stdmenus.inc:313
 msgid "View Source|S"
@@ -13348,12 +13334,10 @@ msgid "Functions"
 msgstr "Funktionen"
 
 #: lib/ui/stdtoolbars.inc:270
-#, fuzzy
 msgid "Frame decorations"
 msgstr "Rahmen-Verzierungen"
 
 #: lib/ui/stdtoolbars.inc:271
-#, fuzzy
 msgid "Big operators"
 msgstr "Große Operatoren"
 
@@ -13367,7 +13351,6 @@ msgid "Arrows"
 msgstr "Pfeile"
 
 #: lib/ui/stdtoolbars.inc:275
-#, fuzzy
 msgid "AMS arrows"
 msgstr "Pfeile (AMS)"
 
@@ -13380,12 +13363,10 @@ msgid "Relations"
 msgstr "Relationen"
 
 #: lib/ui/stdtoolbars.inc:278
-#, fuzzy
 msgid "AMS relations"
 msgstr "Relationen (AMS)"
 
 #: lib/ui/stdtoolbars.inc:279
-#, fuzzy
 msgid "AMS negative relations"
 msgstr "Negierte Relationen (AMS)"
 
@@ -13394,12 +13375,10 @@ msgid "Dots"
 msgstr "Punkte"
 
 #: lib/ui/stdtoolbars.inc:281
-#, fuzzy
 msgid "AMS operators"
 msgstr "Operatoren (AMS)"
 
 #: lib/ui/stdtoolbars.inc:282
-#, fuzzy
 msgid "AMS miscellaneous"
 msgstr "Verschiedenes (AMS)"
 
@@ -14809,9 +14788,8 @@ msgid "varnothing"
 msgstr "varnothing"
 
 #: lib/ui/stdtoolbars.inc:678
-#, fuzzy
 msgid "Diamond"
-msgstr "diamond"
+msgstr "Diamond"
 
 #: lib/ui/stdtoolbars.inc:679
 msgid "blacktriangle"
@@ -15732,7 +15710,7 @@ msgstr "FEN"
 
 #: lib/configure.py:460
 msgid "SVG"
-msgstr ""
+msgstr "SVG"
 
 #: lib/configure.py:463 lib/configure.py:474 lib/configure.py:484
 msgid "BMP"
@@ -15869,14 +15847,12 @@ msgid "Plain Text, Join Lines"
 msgstr "Einfacher Text, Zeilen verbinden"
 
 #: lib/configure.py:519 lib/configure.py:521
-#, fuzzy
 msgid "LyXHTML"
-msgstr "LyX HTML"
+msgstr "LyX-HTML"
 
 #: lib/configure.py:519 lib/configure.py:521
-#, fuzzy
 msgid "LyXHTML|X"
-msgstr "LyX HTML"
+msgstr "LyX-HTML|X"
 
 #: lib/configure.py:528 src/frontends/qt4/GuiLog.cpp:230
 msgid "BibTeX"
@@ -16576,9 +16552,9 @@ msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s neu geladen."
 
 #: src/Buffer.cpp:3792
-#, fuzzy, c-format
+#, c-format
 msgid "Could not reload document %1$s."
-msgstr "Kann Dokument %1$s nicht neu laden"
+msgstr "Kann Dokument %1$s nicht neu laden."
 
 #: src/BufferParams.cpp:522
 #, c-format
@@ -16730,11 +16706,12 @@ msgstr "Statistik"
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr ""
+"'inset-forall' wurde abgebrochen, da die Zahl der Aktionen %1$d übersteigt"
 
 #: src/BufferView.cpp:1780
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
-msgstr ""
+msgstr "Der Befehl \"%1$s\" wurde auf %2$d Einfügungen angewandt"
 
 #: src/BufferView.cpp:1811
 msgid "Branch name"
@@ -16822,7 +16799,7 @@ msgid "Uncodable character in author name"
 msgstr "Unkodierbares Zeichen im Autornamen"
 
 #: src/Changes.cpp:380
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The author name '%1$s',\n"
 "used for change tracking, contains glyphs that cannot be\n"
@@ -18682,7 +18659,7 @@ msgstr ""
 "Überprüfen Sie den Zugang zum Repositorium."
 
 #: src/VCBackend.cpp:695
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Error when updating from repository.\n"
 "You have to manually resolve the conflicts NOW!\n"
@@ -18730,9 +18707,8 @@ msgid "&No"
 msgstr "&Nein"
 
 #: src/VCBackend.cpp:737
-#, fuzzy
 msgid "View &Log ..."
-msgstr "&Vollständiges Protokoll ansehen..."
+msgstr "&Logdatei ansehen ..."
 
 #: src/VCBackend.cpp:803
 msgid "VCN File Locking"
@@ -18890,7 +18866,6 @@ msgid "file"
 msgstr "Neues_Dokument"
 
 #: src/frontends/qt4/FindAndReplace.cpp:239
-#, fuzzy
 msgid "master document"
 msgstr "Hauptdokument"
 
@@ -19630,9 +19605,8 @@ msgid "Child Document"
 msgstr "Unterdokument"
 
 #: src/frontends/qt4/GuiDocument.cpp:633
-#, fuzzy
 msgid "Include to Output"
-msgstr "Datum (Ausgabe)"
+msgstr "In Ausgabe einbinden"
 
 #: src/frontends/qt4/GuiDocument.cpp:685
 msgid "10"
@@ -19648,7 +19622,7 @@ msgstr "12"
 
 #: src/frontends/qt4/GuiDocument.cpp:691
 msgid "None (no fontenc)"
-msgstr ""
+msgstr "Keine (kein fontenc)"
 
 #: src/frontends/qt4/GuiDocument.cpp:730
 msgid "empty"
@@ -20275,9 +20249,8 @@ msgid "Literate"
 msgstr "literarisch"
 
 #: src/frontends/qt4/GuiLog.cpp:240
-#, fuzzy
 msgid "LyX2LyX"
-msgstr "LyX"
+msgstr "LyX2LyX"
 
 #: src/frontends/qt4/GuiLog.cpp:267
 msgid "Literate Programming Build Log"
@@ -20292,9 +20265,8 @@ msgid "Version Control Log"
 msgstr "Protokoll der Versionskontrolle"
 
 #: src/frontends/qt4/GuiLog.cpp:297
-#, fuzzy
 msgid "Log file not found."
-msgstr "Datei nicht gefunden"
+msgstr "Protokolldatei nicht gefunden"
 
 #: src/frontends/qt4/GuiLog.cpp:300
 msgid "No literate programming build log file found."
@@ -21079,14 +21051,12 @@ msgid "Welcome to LyX!"
 msgstr "Willkommen bei LyX!"
 
 #: src/frontends/qt4/GuiView.cpp:1286
-#, fuzzy
 msgid "Automatic save failed!"
 msgstr "Die automatische Speicherung ist fehlgeschlagen!"
 
 #: src/frontends/qt4/GuiView.cpp:1287
-#, fuzzy
 msgid "Automatic save done."
-msgstr "Automatische Aktualisierung"
+msgstr "Automatische Speicherung abgeschlossen."
 
 #: src/frontends/qt4/GuiView.cpp:1329
 msgid "Command not allowed without any document open"
@@ -21300,19 +21270,20 @@ msgstr ""
 "Möchten Sie das Dokument speichern?"
 
 #: src/frontends/qt4/GuiView.cpp:2426
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Document \n"
 "%1$s\n"
 " has been externally modified. Reload now? Any local changes will be lost."
 msgstr ""
-"Dokument %1$s wurde extern verändert. Sind Sie sicher, dass die Datei "
-"überschrieben werden soll?"
+"Dokument\n"
+"%1$s\n"
+"wurde extern verändert. Wollen Sie sie neu laden?\n"
+"Alle lokalen Änderungen werden dabei überschrieben."
 
 #: src/frontends/qt4/GuiView.cpp:2429
-#, fuzzy
 msgid "Reload externally changed document?"
-msgstr "Gespeichertes Dokument neu laden?"
+msgstr "Extern geändertes Dokument neu laden?"
 
 #: src/frontends/qt4/GuiView.cpp:2481
 msgid "Error when setting the locking property."
@@ -21328,34 +21299,32 @@ msgid "Opening child document %1$s..."
 msgstr "Öffne Unterdokument %1$s..."
 
 #: src/frontends/qt4/GuiView.cpp:2651
-#, fuzzy, c-format
+#, c-format
 msgid "Successful export to format: %1$s"
-msgstr "Keine Informationen vorhanden, um in das Format %1$s zu exportieren."
+msgstr "Export in das Format %1$s erfolgreich"
 
 #: src/frontends/qt4/GuiView.cpp:2652
-#, fuzzy, c-format
+#, c-format
 msgid "Error exporting to format: %1$s"
-msgstr "Keine Informationen vorhanden, um in das Format %1$s zu exportieren."
+msgstr "Fehler beim Export in das Format %1$s"
 
 #: src/frontends/qt4/GuiView.cpp:2661
 #, c-format
 msgid "Successful preview of format: %1$s"
-msgstr ""
+msgstr "Erfolgreiche Vorschau des Formats %1$s"
 
 #: src/frontends/qt4/GuiView.cpp:2662
-#, fuzzy, c-format
+#, c-format
 msgid "Error previewing format: %1$s"
-msgstr "Keine Informationen vorhanden, um in das Format %1$s zu exportieren."
+msgstr "Fehler bei der Vorschau des Formats %1$s"
 
 #: src/frontends/qt4/GuiView.cpp:2718
-#, fuzzy
 msgid "Exporting ..."
-msgstr "Importiere %1$s..."
+msgstr "Exportiere ..."
 
 #: src/frontends/qt4/GuiView.cpp:2735
-#, fuzzy
 msgid "Previewing ..."
-msgstr "Laden der Vorschau"
+msgstr "Generiere Vorschau ..."
 
 #: src/frontends/qt4/GuiView.cpp:2781
 msgid "Document not loaded"
@@ -22564,7 +22533,6 @@ msgid "Match not found!"
 msgstr "Die Zeichenkette wurde nicht gefunden!"
 
 #: src/lyxfind.cpp:1154
-#, fuzzy
 msgid "Match found!"
 msgstr "Die Zeichenkette wurde gefunden!"
 
@@ -22689,9 +22657,8 @@ msgid "References: "
 msgstr "Referenzen: "
 
 #: src/support/debug.cpp:40
-#, fuzzy
 msgid "No debugging messages"
-msgstr "Keine Testmeldung"
+msgstr "Keine Testmeldungen"
 
 #: src/support/debug.cpp:41
 msgid "General information"
