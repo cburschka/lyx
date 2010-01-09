@@ -123,10 +123,23 @@ public:
 		: o(o_), n(n_)
 	{}
 
+	bool operator!=(DocPair const & rhs) {
+		// this might not be intuitive but correct for our purpose
+		return o != rhs.o && n != rhs.n;
+	}
+	
+
 	DocPair & operator++()
 	{
 		step_forward(o);
 		step_forward(n);
+		return *this;
+	}
+
+	DocPair & operator--()
+	{
+		step_backward(o);
+		step_backward(n);
 		return *this;
 	}
 	///
@@ -373,39 +386,25 @@ bool equal(DocIterator & o, DocIterator & n) {
 }
 
 
-void traverse_snake_back(DocRangePair & rp)
+bool traverse_snake(DocPair & p, DocRangePair const & rp, bool forward)
 {
-	while (true) {
-		// Traverse snake
-		if (!step_backward(rp.o.to, rp.o.from))
-			break;
-
-		if (!step_backward(rp.n.to, rp.n.from)) {
-			step_forward(rp.o.to);
-			break;
+	bool ret = false;
+	DocPair const & p_end = forward ? rp.to() : rp.from();
+	while (p != p_end) {
+		if (!forward)
+			--p;
+		if (!equal(p.o, p.n)) {
+			if (!forward)
+				++p;
+			return ret;
 		}
-
-		if (!equal(rp.o.to, rp.n.to)) {
-			step_forward(rp.o.to);
-			step_forward(rp.n.to);
-			break;
-		}
+		if (forward)
+			++p;
+		ret = true;
 	}
+	return ret;
 }
 
-
-void traverse_snake_forw(DocRangePair & rp)
-{
-	while (equal(rp.o.from, rp.n.from)) {
-		if (!step_forward(rp.o.from, rp.o.to))
-			break;
-
-		if (!step_forward(rp.n.from, rp.n.to)) {
-			step_backward(rp.o.from);
-			break;
-		}
-	}
-}
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -440,8 +439,8 @@ bool Compare::Impl::diff(Buffer const * new_buf, Buffer const * old_buf,
 	DocRangePair rp(old_buf_, new_buf_);
 
 	DocPair from = rp.from();
-	traverse_snake_forw(rp);
-	DocRangePair const snake(from, rp.from());
+	traverse_snake(from, rp, true);
+	DocRangePair const snake(rp.from(), from);
 	process_snake(snake);
 	
 	// Start the recursive algorithm
@@ -484,12 +483,14 @@ void Compare::Impl::diff_i(DocRangePair const & rp)
 
 	} else {
 		// Retrieve the complete snake
-		DocRangePair first_part(rp.from(), middle_snake);
-		traverse_snake_back(first_part);
+		DocPair first_part_end = middle_snake;
+		traverse_snake(first_part_end, rp, false);
+		DocRangePair first_part(rp.from(), first_part_end);
 			
-		DocRangePair second_part(middle_snake, rp.to());
-		traverse_snake_forw(second_part);
-			
+		DocPair second_part_begin = middle_snake;
+		traverse_snake(second_part_begin, rp, true);
+		DocRangePair second_part(second_part_begin, rp.to());
+				
 		// Split the string in three parts:
 		// 1. in front of the snake
 		diff_part(first_part);
