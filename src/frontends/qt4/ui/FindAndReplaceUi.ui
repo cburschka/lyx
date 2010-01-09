@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>FindAndReplaceUi</class>
  <widget class="QWidget" name="FindAndReplaceUi">
@@ -10,9 +11,7 @@
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy>
-    <hsizetype>1</hsizetype>
-    <vsizetype>7</vsizetype>
+   <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -60,9 +59,7 @@
        <item row="0" column="0">
         <widget class="QTabWidget" name="tabWidget">
          <property name="sizePolicy">
-          <sizepolicy>
-           <hsizetype>7</hsizetype>
-           <vsizetype>7</vsizetype>
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -84,9 +81,7 @@
          </property>
          <widget class="QWidget" name="tab_3">
           <property name="sizePolicy">
-           <sizepolicy>
-            <hsizetype>5</hsizetype>
-            <vsizetype>7</vsizetype>
+           <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -104,9 +99,7 @@
            <item row="2" column="0">
             <widget class="QFrame" name="replace_frame">
              <property name="sizePolicy">
-              <sizepolicy>
-               <hsizetype>7</hsizetype>
-               <vsizetype>7</vsizetype>
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
@@ -130,9 +123,7 @@
               <item row="1" column="0">
                <widget class="QGroupBox" name="groupBox_3">
                 <property name="sizePolicy">
-                 <sizepolicy>
-                  <hsizetype>7</hsizetype>
-                  <vsizetype>7</vsizetype>
+                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
@@ -189,9 +180,7 @@
                      </rect>
                     </property>
                     <property name="sizePolicy">
-                     <sizepolicy>
-                      <hsizetype>7</hsizetype>
-                      <vsizetype>7</vsizetype>
+                     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                       <horstretch>0</horstretch>
                       <verstretch>0</verstretch>
                      </sizepolicy>
@@ -205,9 +194,7 @@
                     <bool>true</bool>
                    </property>
                    <property name="sizePolicy">
-                    <sizepolicy>
-                     <hsizetype>7</hsizetype>
-                     <vsizetype>1</vsizetype>
+                    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
                      <horstretch>1</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
@@ -226,9 +213,7 @@
                     <bool>true</bool>
                    </property>
                    <property name="sizePolicy">
-                    <sizepolicy>
-                     <hsizetype>7</hsizetype>
-                     <vsizetype>1</vsizetype>
+                    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
                      <horstretch>1</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
@@ -247,9 +232,7 @@
                     <bool>false</bool>
                    </property>
                    <property name="sizePolicy">
-                    <sizepolicy>
-                     <hsizetype>7</hsizetype>
-                     <vsizetype>1</vsizetype>
+                    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
                      <horstretch>0</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
@@ -262,9 +245,7 @@
                  <item row="1" column="0" colspan="2">
                   <widget class="QCheckBox" name="keepCaseCB">
                    <property name="sizePolicy">
-                    <sizepolicy>
-                     <hsizetype>7</hsizetype>
-                     <vsizetype>1</vsizetype>
+                    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
                      <horstretch>1</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
@@ -280,9 +261,7 @@
                  <item row="3" column="1">
                   <widget class="QPushButton" name="closePB">
                    <property name="sizePolicy">
-                    <sizepolicy>
-                     <hsizetype>7</hsizetype>
-                     <vsizetype>1</vsizetype>
+                    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
                      <horstretch>1</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
@@ -304,9 +283,7 @@
            <item row="0" column="0">
             <widget class="QFrame" name="find_frame">
              <property name="sizePolicy">
-              <sizepolicy>
-               <hsizetype>7</hsizetype>
-               <vsizetype>7</vsizetype>
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
@@ -324,9 +301,7 @@
               <item row="0" column="0">
                <widget class="QGroupBox" name="groupBox">
                 <property name="sizePolicy">
-                 <sizepolicy>
-                  <hsizetype>7</hsizetype>
-                  <vsizetype>7</vsizetype>
+                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
@@ -389,9 +364,7 @@
                      </rect>
                     </property>
                     <property name="sizePolicy">
-                     <sizepolicy>
-                      <hsizetype>7</hsizetype>
-                      <vsizetype>7</vsizetype>
+                     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                       <horstretch>0</horstretch>
                       <verstretch>0</verstretch>
                      </sizepolicy>
@@ -402,9 +375,7 @@
                  <item row="1" column="0" colspan="2">
                   <widget class="QCheckBox" name="caseCB">
                    <property name="sizePolicy">
-                    <sizepolicy>
-                     <hsizetype>7</hsizetype>
-                     <vsizetype>1</vsizetype>
+                    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
                      <horstretch>0</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
@@ -423,9 +394,7 @@
                     <bool>true</bool>
                    </property>
                    <property name="sizePolicy">
-                    <sizepolicy>
-                     <hsizetype>7</hsizetype>
-                     <vsizetype>1</vsizetype>
+                    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
                      <horstretch>0</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
@@ -471,9 +440,7 @@
                     <bool>true</bool>
                    </property>
                    <property name="sizePolicy">
-                    <sizepolicy>
-                     <hsizetype>7</hsizetype>
-                     <vsizetype>1</vsizetype>
+                    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
                      <horstretch>0</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
@@ -495,9 +462,7 @@
                     <bool>true</bool>
                    </property>
                    <property name="sizePolicy">
-                    <sizepolicy>
-                     <hsizetype>7</hsizetype>
-                     <vsizetype>1</vsizetype>
+                    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
                      <horstretch>0</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
@@ -516,12 +481,10 @@
                  <item row="2" column="0" colspan="2">
                   <widget class="QCheckBox" name="wordsCB">
                    <property name="enabled">
-                    <bool>false</bool>
+                    <bool>true</bool>
                    </property>
                    <property name="sizePolicy">
-                    <sizepolicy>
-                     <hsizetype>7</hsizetype>
-                     <vsizetype>1</vsizetype>
+                    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
                      <horstretch>0</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
@@ -544,9 +507,7 @@
          </widget>
          <widget class="QWidget" name="tab_4">
           <property name="sizePolicy">
-           <sizepolicy>
-            <hsizetype>7</hsizetype>
-            <vsizetype>7</vsizetype>
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -572,9 +533,7 @@
                 <bool>true</bool>
                </property>
                <property name="sizePolicy">
-                <sizepolicy>
-                 <hsizetype>7</hsizetype>
-                 <vsizetype>1</vsizetype>
+                <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
@@ -610,9 +569,7 @@
                    <bool>false</bool>
                   </property>
                   <property name="sizePolicy">
-                   <sizepolicy>
-                    <hsizetype>1</hsizetype>
-                    <vsizetype>1</vsizetype>
+                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
@@ -634,9 +591,7 @@
                    <bool>true</bool>
                   </property>
                   <property name="sizePolicy">
-                   <sizepolicy>
-                    <hsizetype>1</hsizetype>
-                    <vsizetype>1</vsizetype>
+                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
@@ -658,9 +613,7 @@
                    <bool>true</bool>
                   </property>
                   <property name="sizePolicy">
-                   <sizepolicy>
-                    <hsizetype>1</hsizetype>
-                    <vsizetype>1</vsizetype>
+                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
@@ -679,9 +632,7 @@
                    <bool>true</bool>
                   </property>
                   <property name="sizePolicy">
-                   <sizepolicy>
-                    <hsizetype>1</hsizetype>
-                    <vsizetype>1</vsizetype>
+                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
@@ -700,9 +651,7 @@
                    <bool>false</bool>
                   </property>
                   <property name="sizePolicy">
-                   <sizepolicy>
-                    <hsizetype>1</hsizetype>
-                    <vsizetype>1</vsizetype>
+                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
@@ -721,9 +670,7 @@
                 <bool>false</bool>
                </property>
                <property name="sizePolicy">
-                <sizepolicy>
-                 <hsizetype>7</hsizetype>
-                 <vsizetype>1</vsizetype>
+                <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
@@ -739,9 +686,7 @@
                 <bool>true</bool>
                </property>
                <property name="sizePolicy">
-                <sizepolicy>
-                 <hsizetype>7</hsizetype>
-                 <vsizetype>1</vsizetype>
+                <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>

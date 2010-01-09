@@ -635,6 +635,9 @@ public:
 	FindAndReplaceOptions const & opt;
 
 private:
+	/// Auxiliary find method (does not account for opt.matchword)
+	int findAux(DocIterator const & cur, int len = -1, bool at_begin = true) const;
+
 	/** Normalize a stringified or latexified LyX paragraph.
 	 **
 	 ** Normalize means:
@@ -722,7 +725,7 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 }
 
 
-int MatchStringAdv::operator()(DocIterator const & cur, int len, bool at_begin) const
+int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) const
 {
 	docstring docstr = stringifyFromForSearch(opt, cur, len);
 	LYXERR(Debug::FIND, "Matching against     '" << lyx::to_utf8(docstr) << "'");
@@ -761,6 +764,26 @@ int MatchStringAdv::operator()(DocIterator const & cur, int len, bool at_begin) 
 				return m[m.size() - close_wildcards].first - m[0].first;
 		}
 	}
+	return 0;
+}
+
+
+int MatchStringAdv::operator()(DocIterator const & cur, int len, bool at_begin) const
+{
+	int res = findAux(cur, len, at_begin);
+	if (res == 0 || !at_begin || !opt.matchword || !cur.inTexted())
+		return res;
+	Paragraph const & par = cur.paragraph();
+	bool ws_left = cur.pos() > 0 ?
+		par.isWordSeparator(cur.pos() - 1) : true;
+	bool ws_right = cur.pos() + res < par.size() ?
+		par.isWordSeparator(cur.pos() + res) : true;
+	LYXERR(Debug::FIND,
+	       "cur.pos()=" << cur.pos() << ", res=" << res
+	       << ", separ: " << ws_left << ", " << ws_right
+	       << endl);
+	if (ws_left && ws_right)
+		return res;
 	return 0;
 }
 
