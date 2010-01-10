@@ -206,36 +206,13 @@ public:
 		Vn_.clear();
 	}
 
-
-	/// Gets the value at index. If it is not in the vector
-	/// the default value is returned.
-	T & get(int index) {
-		if (-index <= int(Vn_.size()) && index < int(Vp_.size()))
-			return index >= 0 ? Vp_[index] : Vn_[-index-1];
-		else
-			return default_;
-	}
-
-	/// Sets the value at index if it already
-	/// is in the vector. Otherwise it will be added to the
-	/// end padded with the default value.
-	void set(int index, T const & t) {
-		if (index >= -int(Vn_.size()) && index < int(Vp_.size())) {
-			if (index >= 0)
-				Vp_[index] = t;
-			else 
-				Vn_[-index-1] = t;
-		} else {
-			while (index > int(Vp_.size()))
-				Vp_.push_back(default_);
-			while (index < -int(Vn_.size()) - 1)
-				Vn_.push_back(default_);
-
-			if (index >= 0)
-				Vp_.push_back(t);
-			else
-				Vn_.push_back(t);
-		}
+	T & operator[](int index) {
+		vector<T> & V = index >= 0 ? Vp_ : Vn_;
+		if (index < 0)
+			index = -index-1;
+		while (index >= V.size())
+			V.push_back(default_);
+		return V[index];
 	}
 
 private:
@@ -519,22 +496,21 @@ static bool traverse_snake(DocPair & p, DocRangePair const & range,
 void Compare::Impl::furthest_Dpath_kdiagonal(int D, int k,
 	 DocRangePair const & rp, Direction direction)
 {
-	compl_vector<DocIterator> * op = direction == Forward ? &ofp : &orp;
-	compl_vector<DocIterator> * np = direction == Forward ? &nfp : &nrp;
-	compl_vector<DocIterator> * os = direction == Forward ? &ofs : &ors;
-	compl_vector<DocIterator> * ns = direction == Forward ? &nfs : &nrs;
+	compl_vector<DocIterator> & op = direction == Forward ? ofp : orp;
+	compl_vector<DocIterator> & np = direction == Forward ? nfp : nrp;
+	compl_vector<DocIterator> & os = direction == Forward ? ofs : ors;
+	compl_vector<DocIterator> & ns = direction == Forward ? nfs : nrs;
 
 	// A vertical step means stepping one character in the new document.
 	bool vertical_step = k == -D;
 	if (!vertical_step && k != D) {
 		vertical_step = direction == Forward
-			? op->get(k - 1) < op->get(k + 1)
-			: op->get(k - 1) > op->get(k + 1);
+			? op[k - 1] < op[k + 1] : op[k - 1] > op[k + 1];
 	}
 
 	// Where do we take the step from ?
 	int const kk = vertical_step ? k + 1 : k - 1;
-	DocPair p(op->get(kk), np->get(kk));
+	DocPair p(op[kk], np[kk]);
 
 	// If D==0 we simulate a vertical step from (0,-1) by doing nothing.
 	if (D != 0) {
@@ -552,17 +528,17 @@ void Compare::Impl::furthest_Dpath_kdiagonal(int D, int k,
 	// Traverse snake
 	if (traverse_snake(p, rp, direction)) {
 		// Record last snake
-		os->set(k, p.o);
-		ns->set(k, p.n);
+		os[k] = p.o;
+		ns[k] = p.n;
 	} else {
 		// Copy last snake from the previous step
-		os->set(k, os->get(kk));
-		ns->set(k, ns->get(kk));
+		os[k] = os[kk];
+		ns[k] = ns[kk];
 	}
 
 	//Record new position
-	op->set(k, p.o);
-	np->set(k, p.n);
+	op[k] = p.o;
+	np[k] = p.n;
 }
 
 
@@ -575,9 +551,9 @@ bool Compare::Impl::overlap(int k, int D)
 	if (kk <= D && kk >= -D) {
 		// Do we have overlap ?
 		if (odd_offset_)
-			return ofp.get(k) >= orp.get(kk) && nfp.get(k) >= nrp.get(kk);
+			return ofp[k] >= orp[kk] && nfp[k] >= nrp[kk];
 		else
-			return ofp.get(kk) >= orp.get(k) && nfp.get(kk) >= nrp.get(k);
+			return ofp[kk] >= orp[k] && nfp[kk] >= nrp[k];
 	}
 	return false;
 }
@@ -586,32 +562,32 @@ bool Compare::Impl::overlap(int k, int D)
 Compare::Impl::SnakeResult Compare::Impl::retrieve_middle_snake(
 	int k, int D, Direction direction, DocPair & middle_snake)
 {
-	compl_vector<DocIterator> * os = direction == Forward ? &ofs : &ors;
-	compl_vector<DocIterator> * ns = direction == Forward ? &nfs : &nrs;
-	compl_vector<DocIterator> * os_r = direction == Forward ? &ors : &ofs;
-	compl_vector<DocIterator> * ns_r = direction == Forward ? &nrs : &nfs;
+	compl_vector<DocIterator> & os = direction == Forward ? ofs : ors;
+	compl_vector<DocIterator> & ns = direction == Forward ? nfs : nrs;
+	compl_vector<DocIterator> & os_r = direction == Forward ? ors : ofs;
+	compl_vector<DocIterator> & ns_r = direction == Forward ? nrs : nfs;
 
 	// The diagonal while doing the backward search
 	int kk = -k + offset_reverse_diagonal_;
 
 	// Did we find a snake ?
-	if (os->get(k).empty() && os_r->get(kk).empty()) {
+	if (os[k].empty() && os_r[kk].empty()) {
 		// No, there is no snake at all, in which case
 		// the length of the shortest edit script is M+N.
 		LASSERT(2 * D - odd_offset_ == M_ + N_, /**/);
 		return NoSnake;
 	} 
 	
-	if (os->get(k).empty()) {
+	if (os[k].empty()) {
 		// Yes, but there is only 1 snake and we found it in the
 		// reverse path.
-		middle_snake.o = os_r->get(kk);
-		middle_snake.n = ns_r->get(kk);
+		middle_snake.o = os_r[kk];
+		middle_snake.n = ns_r[kk];
 		return SingleSnake;
 	}
 
-	middle_snake.o = os->get(k);
-	middle_snake.n = ns->get(k);
+	middle_snake.o = os[k];
+	middle_snake.n = ns[k];
 	return NormalSnake;
 }
 
