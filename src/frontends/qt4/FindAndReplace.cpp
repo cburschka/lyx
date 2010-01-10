@@ -258,8 +258,11 @@ static bool next_prev_buffer(Buffer * & buf, FindAndReplaceOptions const & opt) 
 			--it;
 		}
 		FileName const & fname = FileName(*it);
-		if (!theBufferList().exists(fname))
+		if (!theBufferList().exists(fname)) {
+			guiApp->currentView()->setBusy(false);
 			guiApp->currentView()->loadDocument(fname, false);
+			guiApp->currentView()->setBusy(true);
+		}
 		buf = theBufferList().getBuffer(fname);
 		break;
 	}
@@ -310,8 +313,11 @@ void FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt) {
 		vector<string> const & v = allManualsFiles();
 		if (std::find(v.begin(), v.end(), buf->absFileName()) == v.end()) {
 			FileName const & fname = FileName(*v.begin());
-			if (!theBufferList().exists(fname))
+			if (!theBufferList().exists(fname)) {
+				guiApp->currentView()->setBusy(false);
 				guiApp->currentView()->loadDocument(fname, false);
+				guiApp->currentView()->setBusy(true);
+			}
 			buf = theBufferList().getBuffer(fname);
 			lyx::dispatch(FuncRequest(LFUN_BUFFER_SWITCH,
 						  buf->absFileName()));
@@ -423,7 +429,9 @@ void FindAndReplaceWidget::findAndReplace(
 	       << ", scope=" << scope);
 	FindAndReplaceOptions opt(searchString, casesensitive, matchword, ! backwards,
 		expandmacros, ignoreformat, regexp, replaceString, keep_case, scope);
+	view_.setBusy(true);
 	findAndReplaceScope(opt);
+	view_.setBusy(false);
 }
 
 
