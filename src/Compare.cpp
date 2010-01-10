@@ -275,6 +275,26 @@ private:
 	/// shortest edit script.
 	int find_middle_snake(DocRangePair const & rp, DocPair & middle_snake);
 
+	enum SnakeResult {
+		NoSnake,
+		SingleSnake,
+		NormalSnake
+	};
+
+	/// Retrieve the middle snake when there is overlap between
+	/// the forward and backward path.
+	SnakeResult retrieve_middle_snake(int k, int D, Direction direction,
+		DocPair & middle_snake);
+	
+	/// Find the the furthest reaching D-path (number of horizontal
+	/// and vertical steps; differences between the old and new
+	/// document) in the k-diagonal (vertical minus horizontal steps).
+	void furthest_Dpath_kdiagonal(int D, int k,
+		DocRangePair const & rp, Direction direction);
+
+	/// Is there overlap between the forward and backward path
+	bool overlap(int k, int D);
+	
 	/// This function is called recursively by a divide and conquer
 	/// algorithm. Each time, the string is divided into two split
 	/// around the middle snake.
@@ -303,6 +323,11 @@ private:
 	int N_;
 	/// The length of the new chunk currently processed
 	int M_;
+	/// The offset diagonal of the reverse path of the
+	/// currently processed chunk
+	int offset_reverse_diagonal_;
+	/// Is the offset odd or even ?
+	bool odd_offset_;
 
 	/// The thread object, used to emit signals to the GUI
 	Compare const & compare_;
@@ -322,6 +347,17 @@ private:
 
 	/// The number of nested insets at this level
 	int nested_inset_level_;
+
+	/// The position/snake in the old/new document
+	/// of the forward/reverse search
+	compl_vector<DocIterator> ofp;
+	compl_vector<DocIterator> nfp;
+	compl_vector<DocIterator> ofs;
+	compl_vector<DocIterator> nfs;
+	compl_vector<DocIterator> orp;
+	compl_vector<DocIterator> nrp;
+	compl_vector<DocIterator> ors;
+	compl_vector<DocIterator> nrs;
 };
 
 /////////////////////////////////////////////////////////////////////
@@ -477,12 +513,166 @@ static bool traverse_snake(DocPair & p, DocRangePair const & range,
 //
 /////////////////////////////////////////////////////////////////////
 
-int Compare::Impl::find_middle_snake(DocRangePair const & rp,
-	DocPair &)
+
+void Compare::Impl::furthest_Dpath_kdiagonal(int D, int k,
+	 DocRangePair const & rp, Direction direction)
 {
+		++furthest_Dpath_kdiagonal_count;
+	compl_vector<DocIterator> * op = direction == Forward ? &ofp : &orp;
+	compl_vector<DocIterator> * np = direction == Forward ? &nfp : &nrp;
+	compl_vector<DocIterator> * os = direction == Forward ? &ofs : &ors;
+	compl_vector<DocIterator> * ns = direction == Forward ? &nfs : &nrs;
+
+	// A vertical step means stepping one character in the new document.
+	bool vertical_step = k == -D;
+	if (!vertical_step && k != D) {
+		vertical_step = direction == Forward
+			? op->get(k - 1) < op->get(k + 1)
+			: op->get(k - 1) > op->get(k + 1);
+	}
+
+	// Where do we take the step from ?
+	int const kk = vertical_step ? k + 1 : k - 1;
+	DocPair p(op->get(kk), np->get(kk));
+
+	// If D==0 we simulate a vertical step from (0,-1) by doing nothing.
+	if (D != 0) {
+		// Take a step
+		if (vertical_step && direction == Forward)
+			step(p.n, rp.n.to, direction);
+		else if (vertical_step && direction == Backward)
+			step(p.n, rp.n.from, direction);
+		else if (!vertical_step && direction == Forward)
+			step(p.o, rp.o.to, direction);
+		else if (!vertical_step && direction == Backward)
+			step(p.o, rp.o.from, direction);
+	}	
+	
+	// Traverse snake
+	if (traverse_snake(p, rp, direction)) {
+		// Record last snake
+		os->set(k, p.o);
+		ns->set(k, p.n);
+	} else {
+		// Copy last snake from the previous step
+		os->set(k, os->get(kk));
+		ns->set(k, ns->get(kk));
+	}
+
+	//Record new position
+	op->set(k, p.o);
+	np->set(k, p.n);
+}
+
+
+bool Compare::Impl::overlap(int k, int D)
+{
+		++overlap_count;
+	// To generalize for the forward and reverse checks
+	int kk = offset_reverse_diagonal_ - k;
+
+	// Can we have overlap ?
+	if (kk <= D && kk >= -D) {
+		// Do we have overlap ?
+		if (odd_offset_)
+			return ofp.get(k) >= orp.get(kk) && nfp.get(k) >= nrp.get(kk);
+		else
+			return ofp.get(kk) >= orp.get(k) && nfp.get(kk) >= nrp.get(k);
+	}
+	return false;
+}
+
+
+Compare::Impl::SnakeResult Compare::Impl::retrieve_middle_snake(
+	int k, int D, Direction direction, DocPair & middle_snake)
+{
+		++middle_snake_count;
+	compl_vector<DocIterator> * os = direction == Forward ? &ofs : &ors;
+	compl_vector<DocIterator> * ns = direction == Forward ? &nfs : &nrs;
+	compl_vector<DocIterator> * os_r = direction == Forward ? &ors : &ofs;
+	compl_vector<DocIterator> * ns_r = direction == Forward ? &nrs : &nfs;
+
+	// The diagonal while doing the backward search
+	int kk = -k + offset_reverse_diagonal_;
+
+	// Did we find a snake ?
+	if (os->get(k).empty() && os_r->get(kk).empty()) {
+		// No, there is no snake at all, in which case
+		// the length of the shortest edit script is M+N.
+		LASSERT(2 * D - odd_offset_ == M_ + N_, /**/);
+		return NoSnake;
+	} 
+	
+	if (os->get(k).empty()) {
+		// Yes, but there is only 1 snake and we found it in the
+		// reverse path.
+		middle_snake.o = os_r->get(kk);
+		middle_snake.n = ns_r->get(kk);
+		return SingleSnake;
+	}
+
+	middle_snake.o = os->get(k);
+	middle_snake.n = ns->get(k);
+	return NormalSnake;
+}
+
+
+int Compare::Impl::find_middle_snake(DocRangePair const & rp,
+	DocPair & middle_snake)
+{
+	// The lengths of the old and new chunks.
 	N_ = rp.o.length();
 	M_ = rp.n.length();
-	return M_ + N_;
+
+	// Forward paths are centered around the 0-diagonal; reverse paths
+	// are centered around the diagonal N - M. (Delta in the article)
+	offset_reverse_diagonal_ = N_ - M_;
+
+	// If the offset is odd, only check for overlap while extending forward
+    // paths, otherwise only check while extending reverse paths.
+	odd_offset_ = (offset_reverse_diagonal_ % 2 != 0);
+
+	ofp.reset(rp.o.from);
+	nfp.reset(rp.n.from);
+	ofs.reset(DocIterator());
+	nfs.reset(DocIterator());
+	orp.reset(rp.o.to);
+	nrp.reset(rp.n.to);
+	ors.reset(DocIterator());
+	nrs.reset(DocIterator());
+
+	// D is the number of horizontal and vertical steps, i.e.
+	// different characters in the old and new chunk.
+	int const D_max = ceil(((double)M_ + N_)/2);
+	for (int D = 0; D <= D_max; ++D) {
+
+		// Forward and reverse paths
+		for (int f = 0; f < 2; ++f) {
+			Direction direction = f == 0 ? Forward : Backward;
+
+			// Diagonals between -D and D can be reached by a D-path
+			for (int k = -D; k <= D; k += 2) {			
+				// Find the furthest reaching D-path on this diagonal
+				furthest_Dpath_kdiagonal(D, k, rp, direction);
+
+				// Only check for overlap for forward paths if the offset is odd
+				// and only for reverse paths if the offset is even.
+				if (odd_offset_ == (direction == Forward)) {
+
+					// Do the forward and backward paths overlap ?
+					if (overlap(k, D - odd_offset_)) {
+						retrieve_middle_snake(k, D, direction, middle_snake);
+							LYXERR0("overlap_count " << overlap_count);
+							LYXERR0("middle_snake_count " << middle_snake_count);
+							LYXERR0("furthest_Dpath_kdiagonal_count " << furthest_Dpath_kdiagonal_count);
+						return 2 * D - odd_offset_;
+					}
+				}
+			}
+		}
+	}
+	// This should never be reached
+	return -2;
 }
 
 
