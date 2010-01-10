@@ -16,11 +16,11 @@
 
 #include "support/FileName.h"
 
-#include <string>
-
 #include <QObject>
 #include <QThread>
 #include <QWaitCondition>
+
+#include <string>
 
 
 namespace lyx {

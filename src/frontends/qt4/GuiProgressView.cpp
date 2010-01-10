@@ -13,19 +13,19 @@
 #include <config.h>
 
 #include "GuiProgressView.h"
-#include "GuiApplication.h"
 
+#include "GuiApplication.h"
 #include "qt_helpers.h"
+
 #include "FuncRequest.h"
 
-#include "support/debug.h"
 #include "support/convert.h"
-
-#include <QSettings>
-#include <QTime>
+#include "support/debug.h"
 
 #include <QCheckBox>
 #include <QDebug>
+#include <QSettings>
+#include <QTime>
 
 using namespace std;
 using namespace lyx::support;

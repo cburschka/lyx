@@ -17,39 +17,35 @@
 #include "lyxfind.h"
 
 #include "Buffer.h"
-#include "BufferList.h"
 #include "buffer_funcs.h"
+#include "BufferList.h"
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "Changes.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
 #include "FuncRequest.h"
-#include "OutputParams.h"
+#include "LyXFunc.h"
 #include "output_latex.h"
+#include "OutputParams.h"
 #include "Paragraph.h"
 #include "ParIterator.h"
 #include "TexRow.h"
 #include "Text.h"
-#include "FuncRequest.h"
-#include "LyXFunc.h"
+
+#include "frontends/alert.h"
 
 #include "mathed/InsetMath.h"
 #include "mathed/InsetMathGrid.h"
 #include "mathed/InsetMathHull.h"
 #include "mathed/MathStream.h"
 
-#include "frontends/alert.h"
-
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
-#include "support/lstrings.h"
 #include "support/lassert.h"
-
-#include "frontends/Application.h"
-#include "frontends/LyXView.h"
+#include "support/lstrings.h"
 
 #include <boost/regex.hpp>
 #include <boost/next_prior.hpp>
@@ -1226,7 +1222,7 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt)
 }
 
 
-ostringstream & operator<<(ostringstream & os, lyx::FindAndReplaceOptions const & opt)
+ostringstream & operator<<(ostringstream & os, FindAndReplaceOptions const & opt)
 {
 	os << to_utf8(opt.search) << "\nEOSS\n"
 	   << opt.casesensitive << ' '
@@ -1244,7 +1240,7 @@ ostringstream & operator<<(ostringstream & os, lyx::FindAndReplaceOptions const 
 	return os;
 }
 
-istringstream & operator>>(istringstream & is, lyx::FindAndReplaceOptions & opt)
+istringstream & operator>>(istringstream & is, FindAndReplaceOptions & opt)
 {
 	LYXERR(Debug::FIND, "parsing");
 	string s;

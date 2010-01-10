@@ -13,9 +13,9 @@
 #include "FindAndReplace.h"
 
 #include "GuiApplication.h"
-#include "qt_helpers.h"
 #include "GuiView.h"
 #include "GuiWorkArea.h"
+#include "qt_helpers.h"
 
 #include "buffer_funcs.h"
 #include "BufferParams.h"
@@ -23,16 +23,17 @@
 #include "Cursor.h"
 #include "FuncRequest.h"
 #include "lyxfind.h"
-#include "OutputParams.h"
 #include "output_latex.h"
+#include "OutputParams.h"
 #include "TexRow.h"
-#include "alert.h"
+
+#include "frontends/alert.h"
 
 #include "support/debug.h"
+#include "support/filetools.h"
 #include "support/FileName.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
-#include "support/filetools.h"
 
 #include <QCloseEvent>
 #include <QLineEdit>
