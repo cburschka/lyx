@@ -342,6 +342,18 @@ void InsetInclude::setParams(InsetCommandParams const & p)
 }
 
 
+bool InsetInclude::isChildIncluded() const
+{
+	std::list<std::string> includeonlys =
+		buffer().params().getIncludedChildren();
+	if (includeonlys.empty())
+		return true;
+	return (std::find(includeonlys.begin(),
+			  includeonlys.end(),
+			  to_utf8(params()["filename"])) != includeonlys.end());
+}
+
+
 docstring InsetInclude::screenLabel() const
 {
 	docstring temp;
@@ -357,7 +369,10 @@ docstring InsetInclude::screenLabel() const
 			temp = buffer().B_("Verbatim Input*");
 			break;
 		case INCLUDE:
-			temp = buffer().B_("Include");
+			if (isChildIncluded())
+				temp = buffer().B_("Include");
+			else
+				temp += buffer().B_("Include (excluded)");
 			break;
 		case LISTINGS:
 			temp = listings_label_;

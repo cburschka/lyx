@@ -129,6 +129,8 @@ private:
 	docstring screenLabel() const;
 	/// holds the entity name that defines the file location (SGML)
 	docstring const include_label;
+	///
+	bool isChildIncluded() const;
 
 	/// The pointer never changes although *preview_'s contents may.
 	boost::scoped_ptr<RenderMonitoredPreview> const preview_;
