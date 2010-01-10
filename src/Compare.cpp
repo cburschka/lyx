@@ -206,13 +206,14 @@ public:
 		Vn_.clear();
 	}
 
+	/// Gets the value at index. If it is not in the vector
+	/// the default value is inserted and returned.
 	T & operator[](int index) {
 		vector<T> & V = index >= 0 ? Vp_ : Vn_;
-		if (index < 0)
-			index = -index-1;
-		while (index >= V.size())
+		unsigned int const ii = index >= 0 ? index : -index - 1;
+		while (ii >= V.size())
 			V.push_back(default_);
-		return V[index];
+		return V[ii];
 	}
 
 private:
