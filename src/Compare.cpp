@@ -184,6 +184,70 @@ static DocRangePair stepIntoInset(DocPair const & inset_location)
 
 
 /**
+ *  This class is designed to hold a vector that has both positive as
+ *  negative indices. It is internally represented as two vectors, one
+ *  for non-zero indices and one for negative indices. In this way, the
+ *  vector can grow in both directions.
+ *    If an index is not available in the vector, the default value is
+ *  returned. If an object is put in the vector beyond its size, the
+ *  empty spots in between are also filled with the default value.
+ */
+template<class T>
+class compl_vector {
+public:
+	compl_vector() {}
+
+	void reset(T const & def)
+	{
+		default_ = def;
+		Vp_.clear();
+		Vn_.clear();
+	}
+
+
+	/// Gets the value at index. If it is not in the vector
+	/// the default value is returned.
+	T & get(int index) {
+		if (-index <= int(Vn_.size()) && index < int(Vp_.size()))
+			return index >= 0 ? Vp_[index] : Vn_[-index-1];
+		else
+			return default_;
+	}
+
+	/// Sets the value at index if it already
+	/// is in the vector. Otherwise it will be added to the
+	/// end padded with the default value.
+	void set(int index, T const & t) {
+		if (index >= -int(Vn_.size()) && index < int(Vp_.size())) {
+			if (index >= 0)
+				Vp_[index] = t;
+			else 
+				Vn_[-index-1] = t;
+		} else {
+			while (index > int(Vp_.size()))
+				Vp_.push_back(default_);
+			while (index < -int(Vn_.size()) - 1)
+				Vn_.push_back(default_);
+
+			if (index >= 0)
+				Vp_.push_back(t);
+			else
+				Vn_.push_back(t);
+		}
+	}
+
+private:
+	/// The vector for positive indices
+	vector<T> Vp_;
+	/// The vector for negative indices
+	vector<T> Vn_;
+	/// The default value that is inserted in the vector
+	/// if more space is needed
+	T default_;
+};
+
+
+/**
  * The implementation of the algorithm that does the comparison
  * between two documents.
  */
