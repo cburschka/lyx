@@ -3448,19 +3448,24 @@ void LyXAction::init()
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_INSET_FORALL
-
- * \li Action: Apply the given commands on insets of a given name. WARNING: use
-               at your own risks; this function gives you too many ways of
-               shooting yourself in the foot. A typical example is
+ * \li Action: Apply the given commands on insets of a given name.
+ * \li Notion: WARNING: use at your own risks; this function gives
+               you too many ways of shooting yourself in the foot.
+               A typical example is
                    inset-forall Note note-insert
                which starts an infinite loop. This is mitigated by the fact 
                that the number of actions is arbitrarily limited to 10000.
- * \li Syntax: inset-forall <NAME> <LFUN-COMMAND>
+ * \li Syntax: inset-forall <NAME> <LFUN-COMMAND> \n
                <NAME>: Type of Inset. If <NAME> is *, all insets are matched.
- * \li Sample: The name is used like for InsetLayout in layout files: "Note" 
-               matches all note insets, while "Note:Note" only matches LyX 
-               yellow note insets. The following command closes all note insets \n
-                   inset-forall Note inset-toggle close
+               The name is used like for InsetLayout in layout files: "Note"
+               matches all note insets, while "Note:Note" only matches LyX
+               yellow note insets.
+ * \li Sample: Remove all index insets: \n
+	           inset-forall Index delete-char-forward \n
+               Close all Notes (also works for a particular branch, for example): \n
+	           inset-forall Note inset-toggle close \n
+               Try to put LyX in an infinite loop if there is at least a Note: \n
+	           inset-forall Note char-backward
  * \li Origin: lasgouttes, 27 Nov 2009
  * \endvar
  */
