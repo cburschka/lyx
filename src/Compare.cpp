@@ -517,7 +517,6 @@ static bool traverse_snake(DocPair & p, DocRangePair const & range,
 void Compare::Impl::furthest_Dpath_kdiagonal(int D, int k,
 	 DocRangePair const & rp, Direction direction)
 {
-		++furthest_Dpath_kdiagonal_count;
 	compl_vector<DocIterator> * op = direction == Forward ? &ofp : &orp;
 	compl_vector<DocIterator> * np = direction == Forward ? &nfp : &nrp;
 	compl_vector<DocIterator> * os = direction == Forward ? &ofs : &ors;
@@ -567,7 +566,6 @@ void Compare::Impl::furthest_Dpath_kdiagonal(int D, int k,
 
 bool Compare::Impl::overlap(int k, int D)
 {
-		++overlap_count;
 	// To generalize for the forward and reverse checks
 	int kk = offset_reverse_diagonal_ - k;
 
@@ -586,7 +584,6 @@ bool Compare::Impl::overlap(int k, int D)
 Compare::Impl::SnakeResult Compare::Impl::retrieve_middle_snake(
 	int k, int D, Direction direction, DocPair & middle_snake)
 {
-		++middle_snake_count;
 	compl_vector<DocIterator> * os = direction == Forward ? &ofs : &ors;
 	compl_vector<DocIterator> * ns = direction == Forward ? &nfs : &nrs;
 	compl_vector<DocIterator> * os_r = direction == Forward ? &ors : &ofs;
@@ -662,9 +659,6 @@ int Compare::Impl::find_middle_snake(DocRangePair const & rp,
 					// Do the forward and backward paths overlap ?
 					if (overlap(k, D - odd_offset_)) {
 						retrieve_middle_snake(k, D, direction, middle_snake);
-							LYXERR0("overlap_count " << overlap_count);
-							LYXERR0("middle_snake_count " << middle_snake_count);
-							LYXERR0("furthest_Dpath_kdiagonal_count " << furthest_Dpath_kdiagonal_count);
 						return 2 * D - odd_offset_;
 					}
 				}
