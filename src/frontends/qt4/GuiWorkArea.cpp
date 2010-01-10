@@ -239,7 +239,7 @@ GuiWorkArea::GuiWorkArea(QWidget *)
 	: buffer_view_(0), lyx_view_(0),
 	cursor_visible_(false),
 	need_resize_(false), schedule_redraw_(false),
-	preedit_lines_(1), completer_(new GuiCompleter(this)),
+	preedit_lines_(1), completer_(new GuiCompleter(this, this)),
 	context_target_pos_()
 {
 }
@@ -249,7 +249,7 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & gv)
 	: buffer_view_(0), lyx_view_(0),
 	cursor_visible_(false),
 	need_resize_(false), schedule_redraw_(false),
-	preedit_lines_(1), completer_(new GuiCompleter(this)),
+	preedit_lines_(1), completer_(new GuiCompleter(this, this)),
 	context_target_pos_()
 {
 	setGuiView(gv);
