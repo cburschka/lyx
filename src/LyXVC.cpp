@@ -160,13 +160,18 @@ bool LyXVC::registrer()
 string LyXVC::checkIn()
 {
 	LYXERR(Debug::LYXVC, "LyXVC: checkIn");
+	docstring empty(_("(no log message)"));
 	docstring response;
 	string log;
 	bool ok = Alert::askForText(response, _("LyX VC: Log Message"));
 	if (ok) {
 		if (response.empty())
-			response = _("(no log message)");
+			response = empty;
 		log = vcs->checkIn(to_utf8(response));
+
+		// Reserve empty string for cancel button
+		if (log.empty())
+			log = to_utf8(empty);
 	} else {
 		LYXERR(Debug::LYXVC, "LyXVC: user cancelled");
 	}
