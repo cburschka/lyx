@@ -585,11 +585,20 @@ TocModels & GuiView::tocModels()
 void GuiView::setFocus()
 {
 	LYXERR(Debug::DEBUG, "GuiView::setFocus()" << this);
+	QMainWindow::setFocus();
+}
+
+
+void GuiView::focusInEvent(QFocusEvent * e)
+{
+	LYXERR(Debug::DEBUG, "GuiView::focusInEvent()" << this);
+	QMainWindow::focusInEvent(e);
 	// Make sure LyXFunc points to the correct view.
 	guiApp->setCurrentView(this);
-	QMainWindow::setFocus();
-	if (d.current_work_area_)
-		d.current_work_area_->setFocus();
+	if (currentMainWorkArea())
+		currentMainWorkArea()->setFocus();
+	else if (currentWorkArea())
+		currentWorkArea()->setFocus();
 	else
 		d.bg_widget_->setFocus();
 }
