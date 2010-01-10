@@ -600,7 +600,7 @@ string SVN::checkIn(string const & msg)
 		frontend::Alert::error(_("Revision control error."),
 				_("Error when committing to repository.\n"
 				"You have to manually resolve the problem.\n"
-				"After pressing OK, LyX will reopen the document."));
+				"LyX will reopen the document after you press OK."));
 	else
 		fileLock(false, tmpf, log);
 
@@ -628,8 +628,9 @@ string SVN::scanLogFile(FileName const & f, string & status)
 
 	while (ifs) {
 		getline(ifs, line);
-		lyxerr << line << "\n";
-		if (!line.empty()) status += line + "; ";
+		LYXERR(Debug::LYXVC, line << "\n");
+		if (!line.empty()) 
+			status += line + "; ";
 		if (prefixIs(line, "C ") || contains(line, "Commit failed")) {
 			ifs.close();
 			return line;
@@ -753,7 +754,7 @@ string SVN::repoUpdate()
 	// FileName(owner_->filePath()));
 	// res = "Revert log:\n" + tmpf.fileContents("UTF-8");
 	doVCCommand("svn update --accept mine-full " + quoteName(owner_->filePath())
-	+ " > " + quoteName(tmpf.toFilesystemEncoding()),
+		+ " > " + quoteName(tmpf.toFilesystemEncoding()),
 	FileName(owner_->filePath()));
 	res += "Update log:\n" + tmpf.fileContents("UTF-8");
 
