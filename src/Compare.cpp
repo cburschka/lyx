@@ -237,7 +237,7 @@ public:
 private:
 	/// Finds the middle snake and returns the length of the
 	/// shortest edit script.
-	int find_middle_snake(DocRangePair const & rp, DocPair & middle_snake);
+	int findMiddleSnake(DocRangePair const & rp, DocPair & middle_snake);
 
 	enum SnakeResult {
 		NoSnake,
@@ -247,13 +247,13 @@ private:
 
 	/// Retrieve the middle snake when there is overlap between
 	/// the forward and backward path.
-	SnakeResult retrieve_middle_snake(int k, int D, Direction direction,
+	SnakeResult retrieveMiddleSnake(int k, int D, Direction direction,
 		DocPair & middle_snake);
 	
 	/// Find the the furthest reaching D-path (number of horizontal
 	/// and vertical steps; differences between the old and new
 	/// document) in the k-diagonal (vertical minus horizontal steps).
-	void furthest_Dpath_kdiagonal(int D, int k,
+	void furthestDpathKdiagonal(int D, int k,
 		DocRangePair const & rp, Direction direction);
 
 	/// Is there overlap between the forward and backward path
@@ -266,15 +266,15 @@ private:
 
 	/// Processes the splitted chunks. It either adds them as deleted,
 	/// as added, or call diff_i for further processing.
-	void diff_part(DocRangePair const & rp);
+	void diffPart(DocRangePair const & rp);
 
 	/// Runs the algorithm for the inset located at /c it and /c it_n 
 	/// and adds the result to /c pars.
-	void diff_inset(Inset * inset, DocPair const & p);
+	void diffInset(Inset * inset, DocPair const & p);
 
 	/// Adds the snake to the destination buffer. The algorithm will
 	/// recursively be applied to any InsetTexts that are within the snake.
-	void process_snake(DocRangePair const & rp);
+	void processSnake(DocRangePair const & rp);
 
 	/// Writes the range to the destination buffer
 	void writeToDestBuffer(DocRange const & range,
@@ -371,7 +371,7 @@ void Compare::abort()
 }
 
 
-static void get_paragraph_list(DocRange const & range,
+static void getParagraphList(DocRange const & range,
 	ParagraphList & pars)
 {
 	// Clone the paragraphs within the selection.
@@ -448,7 +448,7 @@ static bool equal(DocIterator & o, DocIterator & n) {
 /// position in the old and new file and they are synchronously
 /// moved along the snake. The function returns true if a snake
 /// was found.
-static bool traverse_snake(DocPair & p, DocRangePair const & range,
+static bool traverseSnake(DocPair & p, DocRangePair const & range,
 	Direction direction)
 {
 	bool ret = false;
@@ -478,7 +478,7 @@ static bool traverse_snake(DocPair & p, DocRangePair const & range,
 /////////////////////////////////////////////////////////////////////
 
 
-void Compare::Impl::furthest_Dpath_kdiagonal(int D, int k,
+void Compare::Impl::furthestDpathKdiagonal(int D, int k,
 	 DocRangePair const & rp, Direction direction)
 {
 	compl_vector<DocIterator> & op = direction == Forward ? ofp : orp;
@@ -511,7 +511,7 @@ void Compare::Impl::furthest_Dpath_kdiagonal(int D, int k,
 	}	
 	
 	// Traverse snake
-	if (traverse_snake(p, rp, direction)) {
+	if (traverseSnake(p, rp, direction)) {
 		// Record last snake
 		os[k] = p.o;
 		ns[k] = p.n;
@@ -544,7 +544,7 @@ bool Compare::Impl::overlap(int k, int D)
 }
 
 
-Compare::Impl::SnakeResult Compare::Impl::retrieve_middle_snake(
+Compare::Impl::SnakeResult Compare::Impl::retrieveMiddleSnake(
 	int k, int D, Direction direction, DocPair & middle_snake)
 {
 	compl_vector<DocIterator> & os = direction == Forward ? ofs : ors;
@@ -577,7 +577,7 @@ Compare::Impl::SnakeResult Compare::Impl::retrieve_middle_snake(
 }
 
 
-int Compare::Impl::find_middle_snake(DocRangePair const & rp,
+int Compare::Impl::findMiddleSnake(DocRangePair const & rp,
 	DocPair & middle_snake)
 {
 	// The lengths of the old and new chunks.
@@ -613,7 +613,7 @@ int Compare::Impl::find_middle_snake(DocRangePair const & rp,
 			// Diagonals between -D and D can be reached by a D-path
 			for (int k = -D; k <= D; k += 2) {			
 				// Find the furthest reaching D-path on this diagonal
-				furthest_Dpath_kdiagonal(D, k, rp, direction);
+				furthestDpathKdiagonal(D, k, rp, direction);
 
 				// Only check for overlap for forward paths if the offset is odd
 				// and only for reverse paths if the offset is even.
@@ -621,7 +621,7 @@ int Compare::Impl::find_middle_snake(DocRangePair const & rp,
 
 					// Do the forward and backward paths overlap ?
 					if (overlap(k, D - odd_offset_)) {
-						retrieve_middle_snake(k, D, direction, middle_snake);
+						retrieveMiddleSnake(k, D, direction, middle_snake);
 						return 2 * D - odd_offset_;
 					}
 				}
@@ -651,9 +651,9 @@ bool Compare::Impl::diff(Buffer const * new_buf, Buffer const * old_buf,
 	DocRangePair rp(old_buf_, new_buf_);
 
 	DocPair from = rp.from();
-	traverse_snake(from, rp, Forward);
+	traverseSnake(from, rp, Forward);
 	DocRangePair const snake(rp.from(), from);
-	process_snake(snake);
+	processSnake(snake);
 	
 	// Start the recursive algorithm
 	diff_i(rp);
@@ -674,7 +674,7 @@ void Compare::Impl::diff_i(DocRangePair const & rp)
 
 	// Divides the problem into two smaller problems, split around
 	// the snake in the middle.
-	int const L_ses = find_middle_snake(rp, middle_snake);
+	int const L_ses = findMiddleSnake(rp, middle_snake);
 
 	// Set maximum of progress bar
 	if (++recursion_level_ == 1)
@@ -696,29 +696,29 @@ void Compare::Impl::diff_i(DocRangePair const & rp)
 	} else {
 		// Retrieve the complete snake
 		DocPair first_part_end = middle_snake;
-		traverse_snake(first_part_end, rp, Backward);
+		traverseSnake(first_part_end, rp, Backward);
 		DocRangePair first_part(rp.from(), first_part_end);
 			
 		DocPair second_part_begin = middle_snake;
-		traverse_snake(second_part_begin, rp, Forward);
+		traverseSnake(second_part_begin, rp, Forward);
 		DocRangePair second_part(second_part_begin, rp.to());
 				
 		// Split the string in three parts:
 		// 1. in front of the snake
-		diff_part(first_part);
+		diffPart(first_part);
 
 		// 2. the snake itself, and
 		DocRangePair const snake(first_part.to(), second_part.from());
-		process_snake(snake);
+		processSnake(snake);
 
 		// 3. behind the snake.
-		diff_part(second_part);
+		diffPart(second_part);
 	}
 	--recursion_level_;
 }
 
 
-void Compare::Impl::diff_part(DocRangePair const & rp)
+void Compare::Impl::diffPart(DocRangePair const & rp)
 {
 	// Is there a finite length string in both buffers, if not there
 	// is an empty string and we write the other one to the buffer.
@@ -733,7 +733,7 @@ void Compare::Impl::diff_part(DocRangePair const & rp)
 }
 
 
-void Compare::Impl::diff_inset(Inset * inset, DocPair const & p)
+void Compare::Impl::diffInset(Inset * inset, DocPair const & p)
 {
 	// Find the dociterators for the beginning and the
 	// end of the inset, for the old and new document.
@@ -753,10 +753,10 @@ void Compare::Impl::diff_inset(Inset * inset, DocPair const & p)
 }
 
 
-void Compare::Impl::process_snake(DocRangePair const & rp)
+void Compare::Impl::processSnake(DocRangePair const & rp)
 {
 	ParagraphList pars;
-	get_paragraph_list(rp.o, pars);
+	getParagraphList(rp.o, pars);
 
 	// Find insets in this paragaph list
 	DocPair it = rp.from();
@@ -770,7 +770,7 @@ void Compare::Impl::process_snake(DocRangePair const & rp)
 			pos_type const pos = pit ? it.o.pos() : it.o.pos() - rp.o.from.pos();
 			inset = pars[pit].getInset(pos);
 			LASSERT(inset, /**/);
-			diff_inset(inset, it);
+			diffInset(inset, it);
 		}
 	}
 	writeToDestBuffer(pars);
@@ -781,7 +781,7 @@ void Compare::Impl::writeToDestBuffer(DocRange const & range,
 	Change::Type type)
 {
 	ParagraphList pars;
-	get_paragraph_list(range, pars);
+	getParagraphList(range, pars);
 
 	pos_type size = 0;
 
