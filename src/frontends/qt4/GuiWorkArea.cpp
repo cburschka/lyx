@@ -321,6 +321,7 @@ GuiWorkArea::~GuiWorkArea()
 	delete buffer_view_;
 	delete cursor_;
 	// Completer has a QObject parent and is thus automatically destroyed.
+	// See #4758.
 	// delete completer_;
 }
 
