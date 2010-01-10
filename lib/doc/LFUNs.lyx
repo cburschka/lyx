@@ -57,7 +57,7 @@
 \begin_body
 
 \begin_layout Section*
-LFUNs documentation automatically generated 2010-01-03
+LFUNs documentation automatically generated 2010-01-10
 \end_layout
 
 \begin_layout Standard
@@ -1506,6 +1506,22 @@ Syntax inset-select-all
 \end_layout
 \begin_layout Description
 Origin vfr, 22 Aug 2009
+\end_layout
+
+\begin_layout Subsection*
+LFUN_SECTION_SELECT
+\end_layout
+\begin_layout Description
+Action Selects the whole section.
+\end_layout
+\begin_layout Description
+Notion The cursor should be in a section heading before calling this lfun.
+\end_layout
+\begin_layout Description
+Syntax section-select
+\end_layout
+\begin_layout Description
+Origin vfr, 05 May 2009
 \end_layout
 
 \begin_layout Subsection*
@@ -3588,6 +3604,49 @@ Origin leeming, 30 Mar 2004
 \end_layout
 
 \begin_layout Subsection*
+LFUN_INSET_FORALL
+\end_layout
+\begin_layout Description
+Action Apply the given commands on insets of a given name.
+\end_layout
+\begin_layout Description
+Notion WARNING: use at your own risks; this function gives you too many ways of shooting yourself in the foot. A typical example is inset-forall Note note-insert which starts an infinite loop. This is mitigated by the fact that the number of actions is arbitrarily limited to 10000.
+\end_layout
+\begin_layout Description
+Syntax inset-forall <NAME> <LFUN-COMMAND>
+\begin_inset Newline newline
+\end_inset
+
+<NAME>: Type of Inset. If <NAME> is *, all insets are matched. The name is used like for InsetLayout in layout files: "Note" matches all note insets, while "Note:Note" only matches LyX yellow note insets.
+\end_layout
+\begin_layout Description
+Sample Remove all index insets:
+\begin_inset Newline newline
+\end_inset
+
+	           inset-forall Index delete-char-forward
+\begin_inset Newline newline
+\end_inset
+
+Close all Notes (also works for a particular branch, for example):
+\begin_inset Newline newline
+\end_inset
+
+	           inset-forall Note inset-toggle close
+\begin_inset Newline newline
+\end_inset
+
+Try to put LyX in an infinite loop if there is at least a Note:
+\begin_inset Newline newline
+\end_inset
+
+	           inset-forall Note char-backward
+\end_layout
+\begin_layout Description
+Origin lasgouttes, 27 Nov 2009
+\end_layout
+
+\begin_layout Subsection*
 LFUN_GRAPHICS_RELOAD
 \end_layout
 \begin_layout Description
@@ -5242,22 +5301,6 @@ Params <ZOOM>: The zoom in %, the default is 20.
 \end_layout
 \begin_layout Description
 Origin vfr, 30 Mar 2009
-\end_layout
-
-\begin_layout Subsection*
-LFUN_SECTION_SELECT
-\end_layout
-\begin_layout Description
-Action Selects the whole section.
-\end_layout
-\begin_layout Description
-Notion The cursor should be in a section heading before calling this lfun.
-\end_layout
-\begin_layout Description
-Syntax section-select
-\end_layout
-\begin_layout Description
-Origin vfr, 05 May 2009
 \end_layout
 
 \end_body
