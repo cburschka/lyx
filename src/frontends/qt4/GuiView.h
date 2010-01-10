@@ -64,7 +64,7 @@ public:
 
 	/// LyXView inherited methods.
 	///@{
-	int id() const { return id_; };
+	int id() const { return id_; }
 	void setBusy(bool);
 	BufferView * currentBufferView();
 	BufferView const * currentBufferView() const;
@@ -85,6 +85,8 @@ public:
 	void setFocus();
 	///@}
 
+	///
+	void focusInEvent(QFocusEvent * e);
 	/// set a buffer to the current workarea.
 	void setBuffer(Buffer * b); ///< \c Buffer to set.
 
