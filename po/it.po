@@ -3838,7 +3838,7 @@ msgstr "Ripristina la posi&zione del cursore"
 
 #: src/frontends/qt4/ui/PrefUi.ui:68
 msgid "&Load opened files from last session"
-msgstr "Carica i file aper&ti nell'ultima sessione"
+msgstr "Riapri i file aper&ti nell'ultima sessione"
 
 #: src/frontends/qt4/ui/PrefUi.ui:75
 msgid "Clear all session &information"
@@ -6057,7 +6057,7 @@ msgstr "Affiliazione"
 #: lib/layouts/aastex.layout:107
 #: lib/layouts/aastex.layout:390
 msgid "And"
-msgstr "E"
+msgstr "Congiunzione"
 
 #: lib/layouts/aastex.layout:119
 #: lib/layouts/aastex.layout:370
@@ -6124,7 +6124,7 @@ msgstr "Lettere matematiche"
 #: lib/layouts/aastex.layout:144
 #: lib/layouts/aastex.layout:509
 msgid "NoteToEditor"
-msgstr "Nota per il redattore"
+msgstr "Nota per il curatore"
 
 #: lib/layouts/aastex.layout:147
 #: lib/layouts/aastex.layout:622
@@ -6143,7 +6143,7 @@ msgstr "Gruppo di dati"
 
 #: lib/layouts/aastex.layout:286
 msgid "Altaffilation"
-msgstr "Affiilazione alt."
+msgstr "Affiliazione alt."
 
 #: lib/layouts/aastex.layout:295
 msgid "Alternative affiliation:"
@@ -6187,7 +6187,7 @@ msgstr "[Appendice]"
 
 #: lib/layouts/aastex.layout:521
 msgid "Note to Editor:"
-msgstr "Nota per il redattore:"
+msgstr "Nota per il curatore:"
 
 #: lib/layouts/aastex.layout:542
 msgid "References. ---"
@@ -7043,11 +7043,11 @@ msgstr "Sottovariazione(5):"
 
 #: lib/layouts/chess.layout:116
 msgid "HideMoves"
-msgstr "HideMoves"
+msgstr "Mosse nascoste"
 
 #: lib/layouts/chess.layout:121
 msgid "HideMoves:"
-msgstr "HideMoves:"
+msgstr "Mosse nascoste:"
 
 #: lib/layouts/chess.layout:126
 msgid "ChessBoard"
@@ -7071,7 +7071,7 @@ msgstr "Evidenzia"
 
 #: lib/layouts/chess.layout:159
 msgid "Highlights:"
-msgstr "Evidenze:"
+msgstr "Evidenziate:"
 
 #: lib/layouts/chess.layout:174
 msgid "Arrow"
@@ -7083,11 +7083,11 @@ msgstr "Freccia:"
 
 #: lib/layouts/chess.layout:185
 msgid "KnightMove"
-msgstr "KnightMove"
+msgstr "Mossa cavallo"
 
 #: lib/layouts/chess.layout:190
 msgid "KnightMove:"
-msgstr "KnightMove:"
+msgstr "Mossa cavallo:"
 
 #: lib/layouts/dinbrief.layout:28
 msgid "DinBrief"
@@ -7595,7 +7595,7 @@ msgstr "URL:"
 #: lib/layouts/revtex4.layout:189
 #: lib/layouts/amsdefs.inc:173
 msgid "Thanks"
-msgstr "Grazie"
+msgstr "Ringraziamenti"
 
 #: lib/layouts/elsart.layout:272
 msgid "Theorem \\arabic{theorem}"
@@ -8523,12 +8523,12 @@ msgstr "Prop \\theprop."
 #: lib/layouts/theorems-ams-extended.module:404
 #: lib/layouts/theorems-ams-extended.module:407
 msgid "Question"
-msgstr "Domanda"
+msgstr "Questione"
 
 #: lib/layouts/ijmpc.layout:273
 #: lib/layouts/ijmpd.layout:281
 msgid "Question \\thequestion."
-msgstr "Domanda \\thequestion."
+msgstr "Questione \\thequestion."
 
 #: lib/layouts/ijmpc.layout:282
 #: lib/layouts/ijmpd.layout:291
@@ -8769,7 +8769,7 @@ msgstr "Proprietà #."
 #: lib/layouts/llncs.layout:400
 #: lib/layouts/svjour.inc:422
 msgid "Question #."
-msgstr "Domanda #."
+msgstr "Questione #."
 
 #: lib/layouts/llncs.layout:407
 #: lib/layouts/svjour.inc:429
@@ -9159,11 +9159,11 @@ msgstr "AMS"
 #: lib/layouts/siamltex.layout:305
 #: lib/layouts/amsdefs.inc:194
 msgid "Subjectclass"
-msgstr "Classe soggetto"
+msgstr "Classificazione"
 
 #: lib/layouts/siamltex.layout:308
 msgid "AMS subject classifications:"
-msgstr "Classificazioni di soggetto AMS:"
+msgstr "Classificazioni a soggetto AMS:"
 
 #: lib/layouts/sigplanconf.layout:64
 msgid "Conference"
@@ -9442,12 +9442,12 @@ msgstr "La ricerca lessicale non è supportata nel recente A&A:"
 #: lib/layouts/agu_stdclass.inc:34
 #: lib/layouts/db_stdcharstyles.inc:35
 msgid "Element:Firstname"
-msgstr "Primo nome"
+msgstr "Nome"
 
 #: lib/layouts/agu_stdclass.inc:36
 #: lib/layouts/db_stdcharstyles.inc:37
 msgid "Firstname"
-msgstr "Primo nome"
+msgstr "Nome"
 
 #: lib/layouts/agu_stdclass.inc:48
 msgid "Element:Fname"
@@ -9934,7 +9934,7 @@ msgstr "Parole e frasi chiavi:"
 
 #: lib/layouts/amsdefs.inc:180
 msgid "Dedicatory"
-msgstr "Dedicatorio"
+msgstr "Dedica"
 
 #: lib/layouts/amsdefs.inc:183
 #: lib/layouts/svjour.inc:123
@@ -9951,7 +9951,7 @@ msgstr "Traduttore:"
 
 #: lib/layouts/amsdefs.inc:197
 msgid "2000 Mathematics Subject Classification:"
-msgstr "Classificazione Soggetto Matematica 2000:"
+msgstr "Classificazione a soggetto Matematica 2000:"
 
 #: lib/layouts/db_stdcharstyles.inc:20
 msgid "Element:Directory"
@@ -10044,7 +10044,7 @@ msgstr "Commento revisione"
 
 #: lib/layouts/db_stdtitle.inc:94
 msgid "FirstName"
-msgstr "Primo nome"
+msgstr "Nome"
 
 #: lib/layouts/literate-scrap.inc:12
 #: lib/layouts/noweb.module:19
