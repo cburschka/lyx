@@ -1084,6 +1084,17 @@ void LyXAction::init()
 		{ LFUN_INSET_SELECT_ALL, "inset-select-all", ReadOnly, Edit },
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_SECTION_SELECT
+ * \li Action: Selects the whole section.
+ * \li Notion: The cursor should be in a section heading
+               before calling this lfun.
+ * \li Syntax: section-select
+ * \li Origin: vfr, 05 May 2009
+ * \endvar
+ */
+		{ LFUN_SECTION_SELECT, "section-select", ReadOnly, Edit },
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_LINE_BEGIN
  * \li Action: Move the cursor to the begining of the (screen) line.
  * \li Syntax: line-begin
@@ -2375,6 +2386,31 @@ void LyXAction::init()
  */
 		{ LFUN_ALL_INSETS_TOGGLE, "all-insets-toggle", ReadOnly, Edit },
 /*!
+ * \var lyx::FuncCode lyx::LFUN_INSET_FORALL
+ * \li Action: Apply the given commands on insets of a given name.
+ * \li Notion: WARNING: use at your own risks; this function gives
+               you too many ways of shooting yourself in the foot.
+               A typical example is
+                   inset-forall Note note-insert
+               which starts an infinite loop. This is mitigated by the fact
+               that the number of actions is arbitrarily limited to 10000.
+ * \li Syntax: inset-forall <NAME> <LFUN-COMMAND> \n
+               <NAME>: Type of Inset. If <NAME> is *, all insets are matched.
+               The name is used like for InsetLayout in layout files: "Note"
+               matches all note insets, while "Note:Note" only matches LyX
+               yellow note insets.
+ * \li Sample: Remove all index insets: \n
+	           inset-forall Index delete-char-forward \n
+               Close all Notes (also works for a particular branch, for example): \n
+	           inset-forall Note inset-toggle close \n
+               Try to put LyX in an infinite loop if there is at least a Note: \n
+	           inset-forall Note char-backward
+ * \li Origin: lasgouttes, 27 Nov 2009
+ * \endvar
+ */
+		{ LFUN_INSET_FORALL, "inset-forall", ReadOnly, Edit },
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_GRAPHICS_RELOAD
  * \li Action: Reloads the image if necessary.
  * \li Syntax: graphics-reload
@@ -3434,42 +3470,6 @@ void LyXAction::init()
  */
 		{ LFUN_BUFFER_ZOOM_OUT, "buffer-zoom-out", ReadOnly, Buffer },
 
-/*!
- * \var lyx::FuncCode lyx::LFUN_SECTION_SELECT
- * \li Action: Selects the whole section.
- * \li Notion: The cursor should be in a section heading 
-               before calling this lfun.
- * \li Syntax: section-select
- * \li Origin: vfr, 05 May 2009
- * \endvar
- */
-		{ LFUN_SECTION_SELECT, "section-select", ReadOnly, Edit },
-
-
-/*!
- * \var lyx::FuncCode lyx::LFUN_INSET_FORALL
- * \li Action: Apply the given commands on insets of a given name.
- * \li Notion: WARNING: use at your own risks; this function gives
-               you too many ways of shooting yourself in the foot.
-               A typical example is
-                   inset-forall Note note-insert
-               which starts an infinite loop. This is mitigated by the fact 
-               that the number of actions is arbitrarily limited to 10000.
- * \li Syntax: inset-forall <NAME> <LFUN-COMMAND> \n
-               <NAME>: Type of Inset. If <NAME> is *, all insets are matched.
-               The name is used like for InsetLayout in layout files: "Note"
-               matches all note insets, while "Note:Note" only matches LyX
-               yellow note insets.
- * \li Sample: Remove all index insets: \n
-	           inset-forall Index delete-char-forward \n
-               Close all Notes (also works for a particular branch, for example): \n
-	           inset-forall Note inset-toggle close \n
-               Try to put LyX in an infinite loop if there is at least a Note: \n
-	           inset-forall Note char-backward
- * \li Origin: lasgouttes, 27 Nov 2009
- * \endvar
- */
-		{ LFUN_INSET_FORALL, "inset-forall", ReadOnly, Edit },
 
 
 		{ LFUN_NOACTION, "", Noop, Hidden }
