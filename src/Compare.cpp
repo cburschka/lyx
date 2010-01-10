@@ -20,6 +20,7 @@
 #include "support/lassert.h"	
 
 #include <boost/next_prior.hpp>
+#include <math.h>
 
 using namespace std;
 using namespace lyx::support;
