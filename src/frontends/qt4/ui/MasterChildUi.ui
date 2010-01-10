@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>348</width>
-    <height>327</height>
+    <height>355</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -34,16 +34,6 @@
       <property name="spacing" >
        <number>6</number>
       </property>
-      <item row="0" column="0" >
-       <widget class="QRadioButton" name="includeallRB" >
-        <property name="toolTip" >
-         <string>Include all included subdocuments in the output</string>
-        </property>
-        <property name="text" >
-         <string>&amp;Include all children</string>
-        </property>
-       </widget>
-      </item>
       <item row="1" column="0" >
        <widget class="QRadioButton" name="includeonlyRB" >
         <property name="toolTip" >
@@ -55,7 +45,27 @@
        </widget>
       </item>
       <item row="2" column="0" >
+       <widget class="QCheckBox" name="maintainAuxCB" >
+        <property name="toolTip" >
+         <string>Assure counters and references are as in the complete document (prolonges compilation)</string>
+        </property>
+        <property name="text" >
+         <string>&amp;Maintain counters and references</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" >
        <widget class="QTreeWidget" name="childrenTW" />
+      </item>
+      <item row="0" column="0" >
+       <widget class="QRadioButton" name="includeallRB" >
+        <property name="toolTip" >
+         <string>Include all included subdocuments in the output</string>
+        </property>
+        <property name="text" >
+         <string>&amp;Include all children</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>

@@ -624,9 +624,13 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(includeonlyClicked(QTreeWidgetItem *, int)));
 	connect(masterChildModule->includeonlyRB, SIGNAL(toggled(bool)),
 		masterChildModule->childrenTW, SLOT(setEnabled(bool)));
+	connect(masterChildModule->includeonlyRB, SIGNAL(toggled(bool)),
+		masterChildModule->maintainAuxCB, SLOT(setEnabled(bool)));
 	connect(masterChildModule->includeallRB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
 	connect(masterChildModule->includeonlyRB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(masterChildModule->maintainAuxCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
 	masterChildModule->childrenTW->setColumnCount(2);
 	masterChildModule->childrenTW->headerItem()->setText(0, qt_("Child Document"));
@@ -2098,6 +2102,8 @@ void GuiDocument::applyView()
 			bp_.addIncludedChildren(*it);
 		}
 	}
+	bp_.maintain_unincluded_children =
+		masterChildModule->maintainAuxCB->isChecked();
 
 	// Float Placement
 	bp_.float_placement = floatModule->get();
@@ -2481,13 +2487,17 @@ void GuiDocument::paramsToDialog()
 	// Master/Child
 	std::vector<Buffer *> children = buffer().getChildren(false);
 	if (children.empty()) {
+		masterChildModule->childrenTW->clear();
 		masterChildModule->setEnabled(false);
+		masterChildModule->includeallRB->setChecked(true);
 		includeonlys_.clear();
 	} else {
 		masterChildModule->setEnabled(true);
 		includeonlys_ = bp_.getIncludedChildren();
 		updateIncludeonlys();
 	}
+	masterChildModule->maintainAuxCB->setChecked(
+		bp_.maintain_unincluded_children);
 
 	// Float Settings
 	floatModule->set(bp_.float_placement);
@@ -2725,9 +2735,11 @@ void GuiDocument::updateIncludeonlys()
 	if (includeonlys_.empty()) {
 		masterChildModule->includeallRB->setChecked(true);
 		masterChildModule->childrenTW->setEnabled(false);
+		masterChildModule->maintainAuxCB->setEnabled(false);
 	} else {
 		masterChildModule->includeonlyRB->setChecked(true);
 		masterChildModule->childrenTW->setEnabled(true);
+		masterChildModule->maintainAuxCB->setEnabled(true);
 	}
 	QTreeWidgetItem * item = 0;
 	std::vector<Buffer *> children = buffer().getChildren(false);

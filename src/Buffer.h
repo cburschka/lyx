@@ -513,11 +513,12 @@ public:
 
 	///
 	bool doExport(std::string const & format, bool put_in_tempdir,
-		std::string & result_file) const;
+		bool includeall, std::string & result_file) const;
 	///
-	bool doExport(std::string const & format, bool put_in_tempdir) const;
+	bool doExport(std::string const & format, bool put_in_tempdir,
+		      bool includeall = false) const;
 	///
-	bool preview(std::string const & format) const;
+	bool preview(std::string const & format, bool includeall = false) const;
 	///
 	bool isExportable(std::string const & format) const;
 	///

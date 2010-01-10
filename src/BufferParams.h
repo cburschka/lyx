@@ -165,6 +165,9 @@ public:
 	/// Clear the list of included children
 	void clearIncludedChildren() { includedChildren_.clear(); }
 
+	/// update aux files of unincluded children (with \includeonly)
+	bool maintain_unincluded_children;
+
 	/// returns the main font for the buffer (document)
 	Font const getFont() const;
 

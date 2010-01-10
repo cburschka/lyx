@@ -343,6 +343,7 @@ BufferParams::BufferParams()
 	trackChanges = false;
 	outputChanges = false;
 	use_default_options = true;
+	maintain_unincluded_children = false;
 	secnumdepth = 3;
 	tocdepth = 3;
 	language = default_language;
@@ -538,6 +539,8 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		readRemovedModules(lex);
 	} else if (token == "\\begin_includeonly") {
 		readIncludeonly(lex);
+	} else if (token == "\\maintain_unincluded_children") {
+		lex >> maintain_unincluded_children;
 	} else if (token == "\\options") {
 		lex.eatLine();
 		options = lex.getString();
@@ -846,6 +849,8 @@ void BufferParams::writeFile(ostream & os) const
 			os << *it << '\n';
 		os << "\\end_includeonly" << '\n';
 	}
+	os << "\\maintain_unincluded_children "
+	   << convert<string>(maintain_unincluded_children) << '\n';
 
 	// local layout information
 	if (!local_layout.empty()) {
@@ -1262,7 +1267,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	writeEncodingPreamble(os, features, texrow);
 
 	// includeonly
-	if (!includedChildren_.empty()) {
+	if (!features.runparams().includeall && !includedChildren_.empty()) {
 		os << "\\includeonly{";
 		list<string>::const_iterator it = includedChildren_.begin();
 		bool first = true;

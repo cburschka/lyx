@@ -1,6 +1,12 @@
 LyX file-format changes
 -----------------------
 
+2010-01-10 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 376: new buffer param
+	  \maintain_unincluded_children. If true, the aux files of
+	  non-included children (with \includeonly) are updated to
+	  keep the counters and refs correct.
+
 2010-01-06 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 375: add support for \includeonly
 	  This adds a new buffer param list of relative filenames

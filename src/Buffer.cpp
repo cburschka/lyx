@@ -127,7 +127,7 @@ namespace {
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-int const LYX_FORMAT = 375; // jspitzm: includeonly support
+int const LYX_FORMAT = 376; // jspitzm: support for unincluded file maintenance
 
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;
@@ -1830,7 +1830,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 		break;
 
 	case LFUN_BUFFER_EXPORT: {
-		bool success = doExport(argument, false);
+		bool success = doExport(argument, false, false);
 		dr.setError(success);
 		if (!success)
 			dr.setMessage(bformat(_("Error exporting to format: %1$s."), 
@@ -1839,7 +1839,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 	}
 
 	case LFUN_BUILD_PROGRAM:
-		doExport("program", true);
+		doExport("program", true, false);
 		break;
 
 	case LFUN_BUFFER_CHKTEX:
@@ -1871,7 +1871,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 				break;
 
 		} else {
-			doExport(format_name, true, filename);
+			doExport(format_name, true, false, filename);
 		}
 
 		// Substitute $$FName for filename
@@ -2005,7 +2005,10 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 			break;
 		}
 
-		if (!doExport("dvi", true)) {
+		bool const update_unincluded =
+				params().maintain_unincluded_children
+				&& !params().getIncludedChildren().empty();
+		if (!doExport("dvi", true, update_unincluded)) {
 			showPrintError(absFileName());
 			dr.setMessage(_("Error exporting to DVI."));
 			break;
@@ -3141,12 +3144,13 @@ string Buffer::getDefaultOutputFormat() const
 
 
 bool Buffer::doExport(string const & format, bool put_in_tempdir,
-	string & result_file) const
+	bool includeall, string & result_file) const
 {
 	string backend_format;
 	OutputParams runparams(&params().encoding());
 	runparams.flavor = OutputParams::LATEX;
 	runparams.linelen = lyxrc.plaintext_linelen;
+	runparams.includeall = includeall;
 	vector<string> backs = backends();
 	if (find(backs.begin(), backs.end(), format) == backs.end()) {
 		// Get shortest path to format
@@ -3286,17 +3290,26 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 }
 
 
-bool Buffer::doExport(string const & format, bool put_in_tempdir) const
+bool Buffer::doExport(string const & format, bool put_in_tempdir,
+		      bool includeall) const
 {
 	string result_file;
-	return doExport(format, put_in_tempdir, result_file);
+	// (1) export with all included children (omit \includeonly)
+	if (includeall && !doExport(format, put_in_tempdir, true, result_file))
+		return false;
+	// (2) export with included children only
+	return doExport(format, put_in_tempdir, false, result_file);
 }
 
 
-bool Buffer::preview(string const & format) const
+bool Buffer::preview(string const & format, bool includeall) const
 {
 	string result_file;
-	if (!doExport(format, true, result_file))
+	// (1) export with all included children (omit \includeonly)
+	if (includeall && !doExport(format, true, true))
+		return false;
+	// (2) export with included children only
+	if (!doExport(format, true, false, result_file))
 		return false;
 	return formats.view(*this, FileName(result_file), format);
 }

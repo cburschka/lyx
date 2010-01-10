@@ -216,6 +216,8 @@ public:
 	bool html_in_par;
 	/// Does the present context even permit paragraphs?
 	bool html_make_pars;
+	/// Include all children notwithstanding the use of \includeonly
+	bool includeall;
 };
 
 

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # This file is part of lyx2lyx
 # -*- coding: utf-8 -*-
 # Copyright (C) 2008 José Matos  <jamatos@lyx.org>
@@ -1154,6 +1155,13 @@ def revert_includeonly(document):
         document.header[i : j + 1] = []
 
 
+def revert_includeall(document):
+    " Remove maintain_unincluded_children param "
+    i = find_token(document.header, '\\maintain_unincluded_children', 0)
+    if i != -1:
+        del document.header[i]
+
+
 ##
 # Conversion hub
 #
@@ -1188,10 +1196,12 @@ convert = [[346, []],
            [372, []],
            [373, [merge_gbrief]],
            [374, []],
-           [375, []]
+           [375, []],
+           [376, []]
           ]
 
-revert =  [[374, [revert_includeonly]],
+revert =  [[375, [revert_includeall]],
+           [374, [revert_includeonly]],
            [373, [revert_html_options]],
            [372, [revert_gbrief]],
            [371, [revert_fontenc]],

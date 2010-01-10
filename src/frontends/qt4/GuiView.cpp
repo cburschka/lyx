@@ -2644,7 +2644,10 @@ bool GuiView::goToFileRow(string const & argument)
 #if (QT_VERSION >= 0x040400)
 static docstring exportAndDestroy(Buffer * buffer, string const & format)
 {
-	bool const success = buffer->doExport(format, true);
+	bool const update_unincluded =
+				buffer->params().maintain_unincluded_children
+				&& !buffer->params().getIncludedChildren().empty();
+	bool const success = buffer->doExport(format, true, update_unincluded);
 	delete buffer;
 	return success
 		? bformat(_("Successful export to format: %1$s"), from_utf8(format))
@@ -2654,7 +2657,10 @@ static docstring exportAndDestroy(Buffer * buffer, string const & format)
 
 static docstring previewAndDestroy(Buffer * buffer, string const & format)
 {
-	bool const success = buffer->preview(format);
+	bool const update_unincluded =
+				buffer->params().maintain_unincluded_children
+				&& !buffer->params().getIncludedChildren().empty();
+	bool const success = buffer->preview(format, update_unincluded);
 	delete buffer;
 	return success
 		? bformat(_("Successful preview of format: %1$s"), from_utf8(format))
@@ -2719,7 +2725,10 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 				doc_buffer->clone(), format);
 			d.setPreviewFuture(f);
 #else
-			doc_buffer->doExport(format, true);
+			bool const update_unincluded =
+				doc_buffer->params().maintain_unincluded_children
+				&& !doc_buffer->params().getIncludedChildren().empty();
+			doc_buffer->doExport(format, true, update_unincluded);
 #endif
 			break;
 		}
@@ -2736,7 +2745,10 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 				doc_buffer->clone(), format);
 			d.setPreviewFuture(f);
 #else
-			doc_buffer->preview(format);
+			bool const update_unincluded =
+				doc_buffer->params().maintain_unincluded_children
+				&& !doc_buffer->params().getIncludedChildren().empty();
+			doc_buffer->preview(format, update_unincluded);
 #endif
 			break;
 		}
@@ -2752,6 +2764,9 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 				master->clone(), format);
 			d.setPreviewFuture(f);
 #else
+			bool const update_unincluded =
+				master->params().maintain_unincluded_children
+				&& !master->params().getIncludedChildren().empty();
 			master->doExport(format, true);
 #endif
 			break;
