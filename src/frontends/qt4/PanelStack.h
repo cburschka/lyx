@@ -36,8 +36,12 @@ public:
 	/// add a widget panel with a given name, under the given parent
 	void addPanel(QWidget * panel, QString const & name,
 		QString const & parent = QString());
+	/// show or hide panel
+	void showPanel(QString const & name, bool show);
 	/// set current panel by logical name
 	void setCurrentPanel(QString const &);
+	///
+	bool isCurrentPanel(QString const & name) const;
 	///
 	QSize sizeHint() const;
 

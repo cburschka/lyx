@@ -94,6 +94,15 @@ void PanelStack::addPanel(QWidget * panel, QString const & name, QString const &
 }
 
 
+void PanelStack::showPanel(QString const & name, bool show)
+{
+	QTreeWidgetItem * item = panel_map_.value(name, 0);
+	LASSERT(item, return);
+
+	item->setHidden(!show);
+}
+
+
 void PanelStack::setCurrentPanel(QString const & name)
 {
 	QTreeWidgetItem * item = panel_map_.value(name, 0);
@@ -104,6 +113,15 @@ void PanelStack::setCurrentPanel(QString const & name)
 		switchPanel(item);
 
 	list_->setCurrentItem(item);
+}
+
+
+bool PanelStack::isCurrentPanel(QString const & name) const
+{
+	QTreeWidgetItem * item = panel_map_.value(name, 0);
+	LASSERT(item, return false);
+
+	return (list_->currentItem() == item);
 }
 
 

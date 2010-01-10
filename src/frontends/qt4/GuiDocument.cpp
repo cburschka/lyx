@@ -2488,10 +2488,12 @@ void GuiDocument::paramsToDialog()
 	std::vector<Buffer *> children = buffer().getChildren(false);
 	if (children.empty()) {
 		masterChildModule->childrenTW->clear();
-		masterChildModule->setEnabled(false);
-		masterChildModule->includeallRB->setChecked(true);
 		includeonlys_.clear();
+		docPS->showPanel(qt_("Child Documents"), false);
+		if (docPS->isCurrentPanel(qt_("Child Documents")))
+			docPS->setCurrentPanel(qt_("Document Class"));
 	} else {
+		docPS->showPanel(qt_("Child Documents"), true);
 		masterChildModule->setEnabled(true);
 		includeonlys_ = bp_.getIncludedChildren();
 		updateIncludeonlys();
