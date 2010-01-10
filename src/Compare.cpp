@@ -84,30 +84,14 @@ public:
 
 size_t DocRange::length() const
 {
-	pit_type startpit = from.pit();
-	pit_type endpit = to.pit();
-	ParagraphList const & ps_ = from.text()->paragraphs();
-
-	ParagraphList pars(boost::next(ps_.begin(), startpit),
-				boost::next(ps_.begin(), endpit + 1));
-
-	// Remove the end of the last paragraph; afterwards, remove the
-	// beginning of the first paragraph.
-	Paragraph & back = pars.back();
-	back.eraseChars(to.pos(), back.size(), false);
-	Paragraph & front = pars.front();
-	front.eraseChars(0, from.pos(), false);
-
-	ParagraphList::const_iterator pit = pars.begin();
-	ParagraphList::const_iterator end_it = pars.end();
-
+	ParagraphList const & ps = from.text()->paragraphs();
 	size_t length = 0;
-	for (; pit != end_it; ++pit)
-		length += pit->size() + 1;
-
-	// The last paragraph has no paragraph-end
-	--length;
-	return length;	
+	pit_type pit = from.pit();
+	pit_type const endpit = to.pit();
+	for (; pit < endpit; ++pit)
+		length += ps[pit].size() + 1;
+	length += to.pos() - from.pos();
+	return length;
 }
 
 
