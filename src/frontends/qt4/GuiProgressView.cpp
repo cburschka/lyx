@@ -84,7 +84,7 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 	for (int i = 1 ; i < level_count; i++) {
 		item = new QTreeWidgetItem(widget_->debugMessagesTW);
 		Debug::Type const level = Debug::value(i);
-		item->setText(0, toqstr(Debug::description(level)));
+		item->setText(0, qt_(Debug::description(level)));
 		item->setData(0, Qt::UserRole, int(level));
 		item->setText(1, qt_("No"));
 	}
