@@ -1271,12 +1271,12 @@ void MenuDefinition::expandIndicesContext(Buffer const * buf, bool listof)
 			p["type"] = cit->shortcut();
 			string const data = InsetCommand::params2string("index_print", p);
 			addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(cit->index()),
-					   FuncRequest(LFUN_NEXT_INSET_MODIFY, data)));
+					   FuncRequest(LFUN_INSET_MODIFY, data)));
 		} else {
 			docstring label = _("Index Entry");
 			label += " (" + cit->index() + ")";
 			addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(label),
-					   FuncRequest(LFUN_NEXT_INSET_MODIFY,
+					   FuncRequest(LFUN_INSET_MODIFY,
 						  from_ascii("changetype ") + cit->shortcut())));
 		}
 	}
@@ -1317,7 +1317,7 @@ void MenuDefinition::expandCiteStyles(BufferView const * bv)
 		CiteStyle cst = citeStyleList[ii - 1];
 		cs.style = cst;
 		addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(label),
-				    FuncRequest(LFUN_NEXT_INSET_MODIFY,
+				    FuncRequest(LFUN_INSET_MODIFY,
 						"changetype " + from_utf8(citationStyleToString(cs)))));
 	}
 }

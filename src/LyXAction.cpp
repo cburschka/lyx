@@ -2316,28 +2316,17 @@ void LyXAction::init()
 		{ LFUN_INSET_INSERT, "inset-insert", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_INSET_MODIFY
- * \li Action: Modify existing inset.
+ * \li Action: Modify some properties of an inset.
  * \li Notion: Used for bibitem, bibtex, box, branch, command, ert, external,
-                        floats, graphics, include, label, listings, note,
-                        phantom, ref, space, tabular, vspace, wrap insets.
+                        floats, graphics, include, index, info, label, 
+                        listings, newline, newpage, nomencl, note, phantom, 
+                        ref, space, tabular, vspace, wrap insets.
  * \li Syntax: inset-modify <INSET> <ARGS>
+ * \li Syntax: inset-modify changetype <TYPE>
  * \li Params: See #LFUN_INSET_INSERT for further details.
  * \endvar
  */
-		{ LFUN_INSET_MODIFY, "", Noop, Hidden },
-/*!
- * \var lyx::FuncCode lyx::LFUN_NEXT_INSET_MODIFY
- * \li Action: Modify the inset at cursor position, if there is one.
- * \li Notion: Used for bibitem, bibtex, box, branch, command, ert, external,
-                        floats, graphics, include, label, listings, note,
-                        phantom, ref, space, tabular, vspace, wrap insets.
- * \li Syntax: next-inset-modify <INSET> <ARGS>
- * \li Syntax: next-inset-modify changetype <TYPE>
- * \li Params: See #LFUN_INSET_INSERT for further details.
- * \li Origin: JSpitzm, 23 Mar 2008
- * \endvar
- */
-		{ LFUN_NEXT_INSET_MODIFY, "next-inset-modify", Noop, Edit },
+		{ LFUN_INSET_MODIFY, "inset-modify", AtPoint, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_INSET_DIALOG_UPDATE
  * \li Action: Updates the values inside the dialog from the inset.

@@ -85,12 +85,12 @@ Menuset
 		Item "Next Cross-Reference|N" "reference-next"
 		Item "Go to Label|G" "label-goto"
 		Separator
-		Item "<Reference>|R" "next-inset-modify changetype ref"
-		Item "(<Reference>)|e" "next-inset-modify changetype eqref"
-		Item "<Page>|P" "next-inset-modify changetype pageref"
-		Item "On Page <Page>|O" "next-inset-modify changetype vpageref"
-		Item "<Reference> on Page <Page>|f" "next-inset-modify changetype vref"
-		Item "Formatted Reference|t" "next-inset-modify changetype prettyref"
+		Item "<Reference>|R" "inset-modify changetype ref"
+		Item "(<Reference>)|e" "inset-modify changetype eqref"
+		Item "<Page>|P" "inset-modify changetype pageref"
+		Item "On Page <Page>|O" "inset-modify changetype vpageref"
+		Item "<Reference> on Page <Page>|f" "inset-modify changetype vref"
+		Item "Formatted Reference|t" "inset-modify changetype prettyref"
 		Separator
 		Item "Settings...|S" "inset-settings"
 	End
@@ -151,14 +151,14 @@ Menuset
 #
 
 	Menu "context-box"
-		Item "Frameless|l" "next-inset-modify changetype Frameless"
-		Item "Simple Frame|F" "next-inset-modify changetype Boxed"
-		Item "Simple Frame, Page Breaks|P" "next-inset-modify changetype Framed"
-		Item "Oval, Thin|a" "next-inset-modify changetype ovalbox"
-		Item "Oval, Thick|v" "next-inset-modify changetype Ovalbox"
-		Item "Drop Shadow|w" "next-inset-modify changetype Shadowbox"
-		Item "Shaded Background|B" "next-inset-modify changetype Shaded"
-		Item "Double Frame|u" "next-inset-modify changetype Doublebox"
+		Item "Frameless|l" "inset-modify changetype Frameless"
+		Item "Simple Frame|F" "inset-modify changetype Boxed"
+		Item "Simple Frame, Page Breaks|P" "inset-modify changetype Framed"
+		Item "Oval, Thin|a" "inset-modify changetype ovalbox"
+		Item "Oval, Thick|v" "inset-modify changetype Ovalbox"
+		Item "Drop Shadow|w" "inset-modify changetype Shadowbox"
+		Item "Shaded Background|B" "inset-modify changetype Shaded"
+		Item "Double Frame|u" "inset-modify changetype Doublebox"
 		Separator
 		OptItem "Open Inset|O" "inset-toggle open"
 		OptItem "Close Inset|C" "inset-toggle close"
@@ -172,9 +172,9 @@ Menuset
 #
 
 	Menu "context-note"
-		Item "LyX Note|N" "next-inset-modify note Note Note"
-		Item "Comment|m" "next-inset-modify note Note Comment"
-		Item "Greyed Out|G" "next-inset-modify note Note Greyedout"
+		Item "LyX Note|N" "inset-modify note Note Note"
+		Item "Comment|m" "inset-modify note Note Comment"
+		Item "Greyed Out|G" "inset-modify note Note Greyedout"
 		Separator
 		OptItem "Open Inset|O" "inset-toggle open"
 		OptItem "Close Inset|C" "inset-toggle close"
@@ -190,9 +190,9 @@ Menuset
 #
 
 	Menu "context-phantom"
-		Item "Phantom" "next-inset-modify phantom Phantom Phantom"
-		Item "Horiz. Phantom" "next-inset-modify phantom Phantom HPhantom"
-		Item "Vert. Phantom" "next-inset-modify phantom Phantom VPhantom"
+		Item "Phantom" "inset-modify phantom Phantom Phantom"
+		Item "Horiz. Phantom" "inset-modify phantom Phantom HPhantom"
+		Item "Vert. Phantom" "inset-modify phantom Phantom VPhantom"
 		Separator
 		Item "Dissolve Inset|D" "inset-dissolve"
 	End
@@ -201,23 +201,23 @@ Menuset
 # InsetSpace context menu
 #
 	Menu "context-space"
-		Item "Interword Space|w" "next-inset-modify space \space{}"
-		Item "Protected Space|o" "next-inset-modify space ~"
-		Item "Thin Space|T" "next-inset-modify space \thinspace{}"
-		Item "Negative Thin Space|N" "next-inset-modify space \negthinspace{}"
-		Item "Half Quad Space (Enskip)|k" "next-inset-modify space \enskip{}"
-		Item "Protected Half Quad Space (Enspace)|E" "next-inset-modify space \enspace{}"
-		Item "Quad Space|Q" "next-inset-modify space \quad{}"
-		Item "Double Quad Space|u" "next-inset-modify space \qquad{}"
-		Item "Horizontal Fill|F" "next-inset-modify space \hfill{}"
-		Item "Protected Horizontal Fill|i" "next-inset-modify space \hspace*{\fill}"
-		Item "Horizontal Fill (Dots)|D" "next-inset-modify space \dotfill{}"
-		Item "Horizontal Fill (Rule)|R" "next-inset-modify space \hrulefill{}"
-		Item "Horizontal Fill (Left Arrow)|L" "next-inset-modify space \leftarrowfill{}"
-		Item "Horizontal Fill (Right Arrow)|g" "next-inset-modify space \rightarrowfill{}"
-		Item "Horizontal Fill (Up Brace)|p" "next-inset-modify space \upbracefill{}"
-		Item "Horizontal Fill (Down Brace)|B" "next-inset-modify space \downbracefill{}"
-		Item "Custom Length|C" "command-sequence next-inset-modify space \hspace{} \length 1in; inset-settings"
+		Item "Interword Space|w" "inset-modify space \space{}"
+		Item "Protected Space|o" "inset-modify space ~"
+		Item "Thin Space|T" "inset-modify space \thinspace{}"
+		Item "Negative Thin Space|N" "inset-modify space \negthinspace{}"
+		Item "Half Quad Space (Enskip)|k" "inset-modify space \enskip{}"
+		Item "Protected Half Quad Space (Enspace)|E" "inset-modify space \enspace{}"
+		Item "Quad Space|Q" "inset-modify space \quad{}"
+		Item "Double Quad Space|u" "inset-modify space \qquad{}"
+		Item "Horizontal Fill|F" "inset-modify space \hfill{}"
+		Item "Protected Horizontal Fill|i" "inset-modify space \hspace*{\fill}"
+		Item "Horizontal Fill (Dots)|D" "inset-modify space \dotfill{}"
+		Item "Horizontal Fill (Rule)|R" "inset-modify space \hrulefill{}"
+		Item "Horizontal Fill (Left Arrow)|L" "inset-modify space \leftarrowfill{}"
+		Item "Horizontal Fill (Right Arrow)|g" "inset-modify space \rightarrowfill{}"
+		Item "Horizontal Fill (Up Brace)|p" "inset-modify space \upbracefill{}"
+		Item "Horizontal Fill (Down Brace)|B" "inset-modify space \downbracefill{}"
+		Item "Custom Length|C" "command-sequence inset-modify space \hspace{} \length 1in; inset-settings"
 		Separator
 		Item "Settings...|S" "inset-settings"
 	End
@@ -226,16 +226,16 @@ Menuset
 # InsetMathSpace context menu
 #
 	Menu "context-mathspace"
-		Item "Thin Space|T" "next-inset-modify mathspace \thinspace{}"
-		Item "Medium Space|M" "next-inset-modify mathspace \medspace{}"
-		Item "Thick Space|h" "next-inset-modify mathspace \thickspace{}"
-		Item "Negative Thin Space|N" "next-inset-modify mathspace \negthinspace{}"
-		Item "Negative Medium Space|u" "next-inset-modify mathspace \negmedspace{}"
-		Item "Negative Thick Space|i" "next-inset-modify mathspace \negthickspace{}"
-		Item "Half Quad Space (Enskip)|k" "next-inset-modify mathspace \enskip{}"
-		Item "Quad Space|Q" "next-inset-modify mathspace \quad{}"
-		Item "Double Quad Space|u" "next-inset-modify mathspace \qquad{}"
-		Item "Custom Length|C" "command-sequence next-inset-modify mathspace \hspace{} \length 1in; inset-settings"
+		Item "Thin Space|T" "inset-modify mathspace \thinspace{}"
+		Item "Medium Space|M" "inset-modify mathspace \medspace{}"
+		Item "Thick Space|h" "inset-modify mathspace \thickspace{}"
+		Item "Negative Thin Space|N" "inset-modify mathspace \negthinspace{}"
+		Item "Negative Medium Space|u" "inset-modify mathspace \negmedspace{}"
+		Item "Negative Thick Space|i" "inset-modify mathspace \negthickspace{}"
+		Item "Half Quad Space (Enskip)|k" "inset-modify mathspace \enskip{}"
+		Item "Quad Space|Q" "inset-modify mathspace \quad{}"
+		Item "Double Quad Space|u" "inset-modify mathspace \qquad{}"
+		Item "Custom Length|C" "command-sequence inset-modify mathspace \hspace{} \length 1in; inset-settings"
 		Separator
 		Item "Settings...|S" "inset-settings"
 	End
@@ -244,12 +244,12 @@ Menuset
 # InsetVSpace context menu
 #
 	Menu "context-vspace"
-		Item "DefSkip|D" "next-inset-modify vspace defskip"
-		Item "SmallSkip|S" "next-inset-modify vspace smallskip"
-		Item "MedSkip|M" "next-inset-modify vspace medskip"
-		Item "BigSkip|B" "next-inset-modify vspace bigskip"
-		Item "VFill|F" "next-inset-modify vspace vfill"
-		Item "Custom|C" "command-sequence next-inset-modify vspace 1in; inset-settings"
+		Item "DefSkip|D" "inset-modify vspace defskip"
+		Item "SmallSkip|S" "inset-modify vspace smallskip"
+		Item "MedSkip|M" "inset-modify vspace medskip"
+		Item "BigSkip|B" "inset-modify vspace bigskip"
+		Item "VFill|F" "inset-modify vspace vfill"
+		Item "Custom|C" "command-sequence inset-modify vspace 1in; inset-settings"
 		Separator
 		Item "Settings...|e" "inset-settings"
 	End
@@ -258,11 +258,11 @@ Menuset
 # InsetInclude context menu
 #
 	Menu "context-include"
-		Item "Include|c" "next-inset-modify changetype include"
-		Item "Input|p" "next-inset-modify changetype input"
-		Item "Verbatim|V" "next-inset-modify changetype verbatiminput"
-		Item "Verbatim (marked blanks)|b" "next-inset-modify changetype verbatiminput*"
-		Item "Listing|L" "next-inset-modify changetype lstinputlisting"
+		Item "Include|c" "inset-modify changetype include"
+		Item "Input|p" "inset-modify changetype input"
+		Item "Verbatim|V" "inset-modify changetype verbatiminput"
+		Item "Verbatim (marked blanks)|b" "inset-modify changetype verbatiminput*"
+		Item "Listing|L" "inset-modify changetype lstinputlisting"
 		Separator
 		Item "Settings...|S" "inset-settings"
 		Separator
@@ -273,18 +273,18 @@ Menuset
 # InsetNewpage context menu
 #
 	Menu "context-newpage"
-		Item "New Page|N" "next-inset-modify newpage newpage"
-		Item "Page Break|a" "next-inset-modify newpage pagebreak"
-		Item "Clear Page|C" "next-inset-modify newpage clearpage"
-		Item "Clear Double Page|D" "next-inset-modify newpage cleardoublepage"
+		Item "New Page|N" "inset-modify newpage newpage"
+		Item "Page Break|a" "inset-modify newpage pagebreak"
+		Item "Clear Page|C" "inset-modify newpage clearpage"
+		Item "Clear Double Page|D" "inset-modify newpage cleardoublepage"
 	End
 
 #
 # InsetNewline context menu
 #
 	Menu "context-newline"
-		Item "Ragged Line Break|R" "next-inset-modify newline newline"
-		Item "Justified Line Break|J" "next-inset-modify newline linebreak"
+		Item "Ragged Line Break|R" "inset-modify newline newline"
+		Item "Justified Line Break|J" "inset-modify newline linebreak"
 	End
 
 #
@@ -541,10 +541,10 @@ Menuset
 #
 
 	Menu "context-indexprint"
-		Item "All Indexes|A" "next-inset-modify check-printindex*"
+		Item "All Indexes|A" "inset-modify check-printindex*"
 		IndicesListsContext
 		Separator
-		Item "Subindex|b" "next-inset-modify toggle-subindex"
+		Item "Subindex|b" "inset-modify toggle-subindex"
 		Separator
 		OptItem "Settings...|S" "inset-settings"
 	End

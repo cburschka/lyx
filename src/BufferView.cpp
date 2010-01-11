@@ -1039,18 +1039,6 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 	}
 
-	case LFUN_NEXT_INSET_MODIFY: {
-		// this is the real function we want to invoke
-		FuncRequest tmpcmd = cmd;
-		tmpcmd.action = LFUN_INSET_MODIFY;
-		// if there is an inset at cursor, see whether it
-		// handles the lfun, other start from scratch
-		Inset * inset = cur.nextInset();
-		if (!inset || !inset->getStatus(cur, tmpcmd, flag))
-			flag = lyx::getStatus(tmpcmd);
-		break;
-	}
-
 	case LFUN_LABEL_GOTO: {
 		flag.setEnabled(!cmd.argument().empty()
 		    || getInsetByCode<InsetRef>(cur, REF_CODE));
@@ -1627,31 +1615,6 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 			break;
 		cur.clearSelection();
 		processUpdateFlags(Update::SinglePar | Update::FitCursor);
-		break;
-	}
-
-	case LFUN_NEXT_INSET_MODIFY: {
-		// create the the real function we want to invoke
-		FuncRequest tmpcmd = cmd;
-		tmpcmd.action = LFUN_INSET_MODIFY;
-		// if there is an inset at cursor, see whether it
-		// can be modified.
-		Inset * inset = cur.nextInset();
-		if (inset) {
-			cur.recordUndo();
-			inset->dispatch(cur, tmpcmd);
-		}
-		// if it did not work, try the underlying inset.
-		if (!inset || !cur.result().dispatched()) {
-			cur.recordUndo();
-			cur.dispatch(tmpcmd);
-		}
-
-		if (!cur.result().dispatched())
-			// It did not work too; no action needed.
-			break;
-		cur.clearSelection();
-		processUpdateFlags(Update::Force | Update::FitCursor);
 		break;
 	}
 
