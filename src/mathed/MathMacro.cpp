@@ -287,7 +287,7 @@ int MathMacro::kerning(BufferView const * bv) const {
 void MathMacro::updateMacro(MacroContext const & mc) 
 {
 	if (validName()) {
-		macro_ = mc.get(name());	    
+		macro_ = mc.get(name());    
 		if (macro_ && macroBackup_ != *macro_) {
 			macroBackup_ = *macro_;
 			needsUpdate_ = true;
