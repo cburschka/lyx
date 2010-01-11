@@ -74,12 +74,12 @@ public:
 private:
 	///
 	Inset * clone() const { return new InsetCitation(*this); }
-	/// This function does the donkey work of creating the pretty label
-	docstring generateLabel() const;
-	///
-	docstring complexLabel() const;
-	///
-	docstring basicLabel() const;
+	/// tries to make a pretty label and makes a basic one if not
+	docstring generateLabel(bool for_xhtml = false) const;
+	/// makes a pretty label
+	docstring complexLabel(bool for_xhtml = false) const;
+	/// makes a very basic label, in case we can't make a pretty one
+	docstring basicLabel(bool for_xhtml = false) const;
 	/// we'll eventually want to be able to get info on this from the 
 	/// various CiteEngines
 	static ParamInfo param_info_;

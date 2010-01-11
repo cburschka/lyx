@@ -204,7 +204,8 @@ docstring convertLaTeXCommands(docstring const & str)
 //////////////////////////////////////////////////////////////////////
 
 BibTeXInfo::BibTeXInfo(docstring const & key, docstring const & type)
-	: is_bibtex_(true), bib_key_(key), entry_type_(type), info_()
+	: is_bibtex_(true), bib_key_(key), entry_type_(type), info_(),
+	  modifier_(0)
 {}
 
 
@@ -423,25 +424,37 @@ docstring const BiblioInfo::getAbbreviatedAuthor(docstring const & key) const
 }
 
 
-docstring const BiblioInfo::getYear(docstring const & key) const
+docstring const BiblioInfo::getCiteNumber(docstring const & key) const
+{
+	BiblioInfo::const_iterator it = find(key);
+	if (it == end())
+		return docstring();
+	BibTeXInfo const & data = it->second;
+	return data.citeNumber();
+}
+
+
+docstring const BiblioInfo::getYear(docstring const & key, bool use_modifier) const
 {
 	BiblioInfo::const_iterator it = find(key);
 	if (it == end())
 		return docstring();
 	BibTeXInfo const & data = it->second;
 	docstring year = data.getYear();
-	if (!year.empty())
-		return year;
-	// let's try the crossref
-	docstring const xref = data.getXRef();
-	if (xref.empty())
-		return _("No year"); // no luck
-	BiblioInfo::const_iterator const xrefit = find(xref);
-	if (xrefit == end())
-		return _("No year"); // no luck again
-	BibTeXInfo const & xref_data = xrefit->second;
-	return xref_data.getYear();
-	return data.getYear();
+	if (year.empty()) {
+		// let's try the crossref
+		docstring const xref = data.getXRef();
+		if (xref.empty())
+			return _("No year"); // no luck
+		BiblioInfo::const_iterator const xrefit = find(xref);
+		if (xrefit == end())
+			return _("No year"); // no luck again
+		BibTeXInfo const & xref_data = xrefit->second;
+		year = xref_data.getYear();
+	}
+	if (use_modifier && data.modifier() != 0)
+		year += data.modifier();
+	return year;
 }
 
 
@@ -604,7 +617,15 @@ namespace {
 	// used in xhtml to sort a list of BibTeXInfo objects
 	bool lSorter(BibTeXInfo const * lhs, BibTeXInfo const * rhs)
 	{
-		return lhs->getAbbreviatedAuthor() < rhs->getAbbreviatedAuthor();
+		docstring const lauth = lhs->getAbbreviatedAuthor();
+		docstring const rauth = rhs->getAbbreviatedAuthor();
+		docstring const lyear = lhs->getYear();
+		docstring const ryear = rhs->getYear();
+		docstring const ltitl = lhs->operator[]("title");
+		docstring const rtitl = rhs->operator[]("title");
+		return  (lauth < rauth)
+				|| (lauth == rauth && lyear < ryear)
+				|| (lauth == rauth && lyear == ryear && ltitl < rtitl);
 	}
 }
 
@@ -655,19 +676,50 @@ void BiblioInfo::collectCitedEntries(Buffer const & buf)
 void BiblioInfo::makeCitationLabels(Buffer const & buf)
 {
 	collectCitedEntries(buf);
-	// FIXME It'd be nice to do author-year as well as numerical
-	// and maybe even some other sorts of labels.
+	CiteEngine const engine = buf.params().citeEngine();
+	bool const numbers = 
+		(engine == ENGINE_BASIC || engine == ENGINE_NATBIB_NUMERICAL);
+
+	int keynumber = 0;
+	char modifier = 0;
+	// used to remember the last one we saw
+	// we'll be comparing entries to see if we need to add
+	// modifiers, like "1984a"
+	map<docstring, BibTeXInfo>::iterator last;
+
 	vector<docstring>::const_iterator it = cited_entries_.begin();
 	vector<docstring>::const_iterator const en = cited_entries_.end();
-	int keynumber = 0;
 	for (; it != en; ++it) {
 		map<docstring, BibTeXInfo>::iterator const biit = bimap_.find(*it);
 		// this shouldn't happen, but...
 		if (biit == bimap_.end())
+			// ...fail gracefully, anyway.
 			continue;
 		BibTeXInfo & entry = biit->second;
-		docstring const key = convert<docstring>(++keynumber);
-		entry.setCiteKey(key);
+		if (numbers) {
+			docstring const num = convert<docstring>(++keynumber);
+			entry.setCiteNumber(num);
+		} else {
+			if (it != cited_entries_.begin()
+			    && entry.getAbbreviatedAuthor() == last->second.getAbbreviatedAuthor()
+			    // we access the year via getYear() so as to get it from the xref,
+			    // if we need to do so
+			    && getYear(entry.key()) == getYear(last->second.key())) {
+				if (modifier == 0) {
+					// so the last one should have been 'a'
+					last->second.setModifier('a');
+					modifier = 'b';
+				} else if (modifier == 'z')
+					modifier = 'A';
+				else
+					modifier++;
+			} else {
+				modifier = 0;
+			}
+			entry.setModifier(modifier);				
+			// remember the last one
+			last = biit;
+		}
 	}
 }
 

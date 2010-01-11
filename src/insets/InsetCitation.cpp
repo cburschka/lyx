@@ -199,22 +199,33 @@ string asValidLatexCommand(string const & input, CiteEngine const engine)
 	return output;
 }
 
+
+inline docstring wrapCitation(docstring const & key, 
+		docstring const & content, bool for_xhtml)
+{
+	if (!for_xhtml)
+		return content;
+	// we have to do the escaping here, because we will ultimately
+	// write this as a raw string, so as not to escape the tags.
+	return "<a href='#" + key + "'>" + html::htmlize(content) + "</a>";
+}
+
 } // anonymous namespace
 
-docstring InsetCitation::generateLabel() const
+docstring InsetCitation::generateLabel(bool for_xhtml) const
 {
 	docstring label;
-	label = complexLabel();
+	label = complexLabel(for_xhtml);
 
 	// Fallback to fail-safe
 	if (label.empty())
-		label = basicLabel();
+		label = basicLabel(for_xhtml);
 
 	return label;
 }
 
 
-docstring InsetCitation::complexLabel() const
+docstring InsetCitation::complexLabel(bool for_xhtml) const
 {
 	Buffer const & buf = buffer();
 	// Only start the process off after the buffer is loaded from file.
@@ -300,83 +311,90 @@ docstring InsetCitation::complexLabel() const
 	for (; it != end; ++it) {
 		// get the bibdata corresponding to the key
 		docstring const author = biblist.getAbbreviatedAuthor(*it);
-		docstring const year = biblist.getYear(*it);
+		docstring const year = biblist.getYear(*it, for_xhtml);
+		docstring const citenum = for_xhtml ? biblist.getCiteNumber(*it) : *it;
 
-		// Something isn't right. Fail safely.
 		if (author.empty() || year.empty())
+			// We can't construct a "complex" label without that info.
+			// So fail safely.
 			return docstring();
 
 		// authors1/<before>;  ... ;
 		//  authors_last, <after>
 		if (cite_type == "cite") {
 			if (engine == ENGINE_BASIC) {
-				label += *it + sep_str;
+				label += wrapCitation(*it, citenum, for_xhtml) + sep_str;
 			} else if (engine == ENGINE_JURABIB) {
 				if (it == keys.begin())
-					label += author + before_str + sep_str;
+					label += wrapCitation(*it, author, for_xhtml) + before_str + sep_str;
 				else
-					label += author + sep_str;
+					label += wrapCitation(*it, author, for_xhtml) + sep_str;
 			}
-
+		} 
 		// nocite
-		} else if (cite_type == "nocite") {
+		else if (cite_type == "nocite") {
 			label += *it + sep_str;
-
+		} 
 		// (authors1 (<before> year);  ... ;
 		//  authors_last (<before> year, <after>)
-		} else if (cite_type == "citet") {
+		else if (cite_type == "citet") {
 			switch (engine) {
 			case ENGINE_NATBIB_AUTHORYEAR:
 				label += author + op_str + before_str +
-					year + cp + sep_str;
+					wrapCitation(*it, year, for_xhtml) + cp + sep_str;
 				break;
 			case ENGINE_NATBIB_NUMERICAL:
-				label += author + op_str + before_str + '#' + *it + cp + sep_str;
+				label += author + op_str + before_str + 
+					wrapCitation(*it, citenum, for_xhtml) + cp + sep_str;
 				break;
 			case ENGINE_JURABIB:
 				label += before_str + author + op_str +
-					year + cp + sep_str;
+					wrapCitation(*it, year, for_xhtml) + cp + sep_str;
 				break;
 			case ENGINE_BASIC:
 				break;
 			}
-
-		// author, year; author, year; ...
-		} else if (cite_type == "citep" ||
+		} 
+		// author, year; author, year; ...	
+		else if (cite_type == "citep" ||
 			   cite_type == "citealp") {
 			if (engine == ENGINE_NATBIB_NUMERICAL) {
-				label += *it + sep_str;
+				label += wrapCitation(*it, citenum, for_xhtml) + sep_str;
 			} else {
-				label += author + ", " + year + sep_str;
+				label += wrapCitation(*it, author + ", " + year, for_xhtml) + sep_str;
 			}
 
+		} 
 		// (authors1 <before> year;
 		//  authors_last <before> year, <after>)
-		} else if (cite_type == "citealt") {
+		else if (cite_type == "citealt") {
 			switch (engine) {
 			case ENGINE_NATBIB_AUTHORYEAR:
 				label += author + ' ' + before_str +
-					year + sep_str;
+					wrapCitation(*it, year, for_xhtml) + sep_str;
 				break;
 			case ENGINE_NATBIB_NUMERICAL:
-				label += author + ' ' + before_str + '#' + *it + sep_str;
+				label += author + ' ' + before_str + '#' + 
+					wrapCitation(*it, citenum, for_xhtml) + sep_str;
 				break;
 			case ENGINE_JURABIB:
-				label += before_str + author + ' ' +
-					year + sep_str;
+				label += before_str + 
+					wrapCitation(*it, author + ' ' + year, for_xhtml) + sep_str;
 				break;
 			case ENGINE_BASIC:
 				break;
 			}
 
+		
+		} 
 		// author; author; ...
-		} else if (cite_type == "citeauthor") {
-			label += author + sep_str;
-
+		else if (cite_type == "citeauthor") {
+			label += wrapCitation(*it, author, for_xhtml) + sep_str;
+		}
 		// year; year; ...
-		} else if (cite_type == "citeyear" ||
+		else if (cite_type == "citeyear" ||
 			   cite_type == "citeyearpar") {
-			label += year + sep_str;
+			label += wrapCitation(*it, year, for_xhtml) + sep_str;
 		}
 	}
 	label = rtrim(rtrim(label), sep);
@@ -409,7 +427,7 @@ docstring InsetCitation::complexLabel() const
 }
 
 
-docstring InsetCitation::basicLabel() const
+docstring InsetCitation::basicLabel(bool for_xhtml) const
 {
 	docstring keys = getParam("key");
 	docstring label;
@@ -420,10 +438,10 @@ docstring InsetCitation::basicLabel() const
 		while (contains(keys, ',')) {
 			docstring key;
 			keys = ltrim(split(keys, key, ','));
-			label += ", " + key;
+			label += ", " + wrapCitation(key, key, for_xhtml);
 		}
 	} else {
-		label = keys;
+		label = wrapCitation(keys, keys, for_xhtml);
 	}
 
 	docstring const & after = getParam("after");
@@ -510,46 +528,9 @@ docstring InsetCitation::xhtml(XHTMLStream & xs, OutputParams const &) const
 	if (cmd == "nocite")
 		return docstring();
 
-	BiblioInfo const & bi = buffer().masterBibInfo();
-	docstring const & key_list = getParam("key");
-	if (key_list.empty())
-		return docstring();
+	// have to output this raw, because generateLabel() will include tags
+	xs << XHTMLStream::NextRaw() << generateLabel(true);
 
-	// FIXME We should do a better job outputing different things for the
-	// different citation styles.	For now, we use square brackets for every
-	// case.
-	xs << "[";
-	docstring const & before = getParam("before");
-	if (!before.empty())
-		xs << before << " ";
-
-	vector<docstring> const keys = getVectorFromString(key_list);
-	vector<docstring>::const_iterator it = keys.begin();
-	vector<docstring>::const_iterator const en = keys.end();
-	bool first = true;
-	for (; it != en; ++it) {
-		BiblioInfo::const_iterator const bt = bi.find(*it);
-		if (bt == bi.end())
-			continue;
-		BibTeXInfo const & bibinfo = bt->second;
-		if (!first) {
-			xs << ", ";
-			first = false;
-		}
-		docstring citekey = bibinfo.citeKey();
-		if (citekey.empty()) {
-			citekey = bibinfo.label();
-			if (citekey.empty())
-				citekey = *it;
-		}
-		string const attr = "href='#" + to_utf8(*it) + "'";
-		xs << StartTag("a", attr) << citekey << EndTag("a");
-	}
-
-	docstring const & after = getParam("after");
-	if (!after.empty())
-		xs << ", " << after;
-	xs << "]";
 	return docstring();
 }
 

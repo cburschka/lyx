@@ -909,10 +909,17 @@ void InsetBibtex::validate(LaTeXFeatures & features) const
 }
 
 
+// FIXME 
+// docstring InsetBibtex::entriesAsXHTML(vector<docstring> const & entries)
+// And then here just: entriesAsXHTML(buffer().masterBibInfo().citedEntries())
 docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 {
 	BiblioInfo const & bibinfo = buffer().masterBibInfo();
 	vector<docstring> const & cites = bibinfo.citedEntries();
+	CiteEngine const engine = buffer().params().citeEngine();
+	bool const numbers = 
+		(engine == ENGINE_BASIC || engine == ENGINE_NATBIB_NUMERICAL);
+
 	xs << StartTag("h2", "class='bibtex'")
 		<< _("References")
 		<< EndTag("h2")
@@ -931,7 +938,17 @@ docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 		// The same name/id problem we have elsewhere.
 		string const attr = "id='" + to_utf8(entry.key()) + "'";
 		xs << CompTag("a", attr);
-		docstring citekey = entry.citeKey();
+		docstring citekey;
+		if (numbers)
+			citekey = entry.citeNumber();
+		else {
+			docstring const auth = entry.getAbbreviatedAuthor();
+			// we do it this way so as to access the xref, if necessary
+			// note that this also gives us the modifier
+			docstring const year = bibinfo.getYear(*vit, true);
+			if (!auth.empty() && !year.empty())
+				citekey = auth + ' ' + year;
+		}
 		if (citekey.empty()) {
 			citekey = entry.label();
 			if (citekey.empty())
@@ -947,6 +964,7 @@ docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 			<< bibinfo.getInfo(entry.key())
 			<< EndTag("span")
 			<< EndTag("div");
+		xs.cr();
 	}
 	xs << EndTag("div");
 	return docstring();

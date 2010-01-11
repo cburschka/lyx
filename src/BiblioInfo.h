@@ -86,10 +86,16 @@ public:
 	docstring const & label() const { return label_; }
 	///
 	docstring const & key() const { return bib_key_; }
+	/// numerical key for citing this entry. currently used only
+	/// by XHTML output routines.
+	docstring citeNumber() const { return cite_number_; }
 	///
-	docstring citeKey() const { return cite_key_; }
+	void setCiteNumber(docstring const & num) { cite_number_ = num; }
+	/// a,b,c, etc, for author-year. currently used only by XHTML 
+	/// output routines.
+	char modifier() const { return modifier_; }
 	///
-	void setCiteKey(docstring const & k) { cite_key_ = k; }
+	void setModifier(char c) { modifier_ = c; }
 	///
 	docstring entryType() const { return entry_type_; }
 	/// 
@@ -114,9 +120,10 @@ private:
 	docstring entry_type_;
 	/// a cache for getInfo()
 	mutable docstring info_;
-	/// key to use when citing this entry 
-	/// currently used only by XHTML output routines
-	docstring cite_key_;
+	/// 
+	docstring cite_number_;
+	///
+	char modifier_;
 	/// our map: <field, value>
 	std::map <docstring, docstring> bimap_;
 };
@@ -136,10 +143,15 @@ public:
 	std::vector<docstring> const getEntries() const;
 	/// \return the short form of an authorlist
 	docstring const getAbbreviatedAuthor(docstring const & key) const;
-	/// \return the year from the bibtex data record
+	/// \return the year from the bibtex data record for \param key
+	/// if \param use_modifier is true, then we will also append any
+	/// modifier for this entry (e.g., 1998b).
 	/// Note that this will get the year from the crossref if it's
-	/// not present in the record itself
-	docstring const getYear(docstring const & key) const;
+	/// not present in the record itself.	
+	docstring const getYear(docstring const & key,
+			bool use_modifier = false) const;
+	///
+	docstring const getCiteNumber(docstring const & key) const;
 	/// \return formatted BibTeX data associated with a given key.
 	/// Empty if no info exists. 
 	/// Note that this will retrieve data from the crossref as needed.
@@ -177,7 +189,10 @@ public:
 	void collectCitedEntries(Buffer const & buf);
 	/// A list of BibTeX keys cited in the current document, sorted by
 	/// the last name of the author.
-	std::vector<docstring> const & citedEntries() const { return cited_entries_; }
+	/// Make sure you have called collectCitedEntries() before you try to 
+	/// use this. You should probably call it just before you use this.
+	std::vector<docstring> const & citedEntries() const 
+		{ return cited_entries_; }
 	///
 	void makeCitationLabels(Buffer const & buf);
 	///
