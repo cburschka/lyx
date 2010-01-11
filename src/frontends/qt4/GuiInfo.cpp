@@ -99,9 +99,6 @@ void GuiInfo::applyView()
 	dispatch(FuncRequest(LFUN_INSET_MODIFY, argument));
 	// FIXME: update the inset contents
 	bufferview()->buffer().updateLabels();
-	BufferView * bv = const_cast<BufferView *>(bufferview());
-	bv->buffer().changed(true);
-	bv->buffer().markDirty();
 }
 
 
