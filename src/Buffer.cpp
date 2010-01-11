@@ -1671,7 +1671,6 @@ BiblioInfo const & Buffer::masterBibInfo() const
 
 BiblioInfo const & Buffer::localBibInfo() const
 {
-	checkBibInfoCache();
 	return d->bibinfo_;
 }
 
@@ -2822,6 +2821,7 @@ void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to,
 	// Check if the label 'from' appears more than once
 	vector<docstring> labels;
 	string paramName;
+	checkBibInfoCache();
 	BiblioInfo const & keys = masterBibInfo();
 	BiblioInfo::const_iterator bit  = keys.begin();
 	BiblioInfo::const_iterator bend = keys.end();
@@ -3494,6 +3494,10 @@ void Buffer::updateLabels(UpdateScope scope, bool out) const
 	// Use the master text class also for child documents
 	Buffer const * const master = masterBuffer();
 	DocumentClass const & textclass = master->params().documentClass();
+	
+	// do this only if we are the top-level Buffer
+	if (scope != UpdateMaster || master == this)
+		checkBibInfoCache();
 
 	// keep the buffers to be children in this set. If the call from the
 	// master comes back we can see which of them were actually seen (i.e.

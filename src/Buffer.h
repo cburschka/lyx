@@ -350,15 +350,23 @@ public:
 	*/
 	void validate(LaTeXFeatures &) const;
 
-	/// Update the cache with all bibfiles in use (including bibfiles
+	/// Update the list of all bibfiles in use (including bibfiles
 	/// of loaded child documents).
 	void updateBibfilesCache(UpdateScope scope = UpdateMaster) const;
-	///
-	void invalidateBibinfoCache();
-	/// Return the cache with all bibfiles in use (including bibfiles
+	/// Return the list with all bibfiles in use (including bibfiles
 	/// of loaded child documents).
 	support::FileNameList const & 
 		getBibfilesCache(UpdateScope scope = UpdateMaster) const;
+	/// Information from BibTeX databases is cached in the Buffer, so
+	/// we do not have to read the file over and over. 
+	/// Calling this method invalidates the cache and so requires a
+	/// re-read.
+	void invalidateBibinfoCache();
+	/// Updates the cached bibliography information.
+	/// Note that you MUST call this method to update the cache. It will
+	/// not happen otherwise. (Currently, it is called at the start of
+	/// updateLabels() and from GuiCitation.)
+	void checkBibInfoCache() const;
 	/// \return the bibliography information for this buffer's master,
 	/// or just for it, if it isn't a child.
 	BiblioInfo const & masterBibInfo() const;
@@ -570,8 +578,6 @@ private:
 	*/
 	void updateMacros(DocIterator & it,
 				     DocIterator & scope) const;
-	///
-	void checkBibInfoCache() const;
 	///
 	void setLabel(ParIterator & it) const;
 	///
