@@ -1,159 +1,228 @@
-<ui version="4.0">
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
  <class>ProgressViewUi</class>
- <widget class="QWidget" name="ProgressViewUi">
-  <property name="geometry">
+ <widget class="QWidget" name="ProgressViewUi" >
+  <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>544</width>
-    <height>518</height>
+    <width>543</width>
+    <height>298</height>
    </rect>
   </property>
-  <property name="windowTitle">
+  <property name="sizePolicy" >
+   <sizepolicy>
+    <hsizetype>7</hsizetype>
+    <vsizetype>7</vsizetype>
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize" >
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="sizeIncrement" >
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="baseSize" >
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="windowTitle" >
    <string/>
   </property>
-  <layout class="QGridLayout" name="gridLayout_4">
-   <item row="0" column="0">
-    <widget class="QTabWidget" name="tabWidget">
-     <property name="enabled">
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>9</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item row="0" column="0" >
+    <widget class="QTabWidget" name="tabWidget" >
+     <property name="enabled" >
       <bool>true</bool>
      </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Ignored">
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>7</hsizetype>
+       <vsizetype>7</vsizetype>
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <property name="baseSize">
+     <property name="baseSize" >
       <size>
        <width>0</width>
        <height>0</height>
       </size>
      </property>
-     <property name="acceptDrops">
+     <property name="acceptDrops" >
       <bool>false</bool>
      </property>
-     <property name="layoutDirection">
+     <property name="layoutDirection" >
       <enum>Qt::LeftToRight</enum>
      </property>
-     <property name="autoFillBackground">
+     <property name="autoFillBackground" >
       <bool>false</bool>
      </property>
-     <property name="tabPosition">
+     <property name="tabPosition" >
       <enum>QTabWidget::East</enum>
      </property>
-     <property name="tabShape">
+     <property name="tabShape" >
       <enum>QTabWidget::Rounded</enum>
      </property>
-     <property name="currentIndex">
-      <number>0</number>
+     <property name="currentIndex" >
+      <number>1</number>
      </property>
-     <property name="iconSize">
-      <size>
-       <width>16</width>
-       <height>16</height>
-      </size>
-     </property>
-     <property name="usesScrollButtons">
-      <bool>true</bool>
-     </property>
-     <widget class="QWidget" name="tab">
-      <attribute name="title">
+     <widget class="QWidget" name="tab" >
+      <attribute name="title" >
        <string>Output</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_2">
-       <item row="0" column="0">
-        <widget class="QTextEdit" name="outTE">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Ignored">
+      <layout class="QGridLayout" >
+       <property name="margin" >
+        <number>9</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item row="0" column="0" >
+        <widget class="QTextEdit" name="outTE" >
+         <property name="sizePolicy" >
+          <sizepolicy>
+           <hsizetype>7</hsizetype>
+           <vsizetype>7</vsizetype>
            <horstretch>1</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <property name="maximumSize">
+         <property name="maximumSize" >
           <size>
            <width>16777215</width>
            <height>16777215</height>
           </size>
          </property>
-         <property name="frameShape">
+         <property name="frameShape" >
           <enum>QFrame::StyledPanel</enum>
          </property>
-         <property name="frameShadow">
+         <property name="frameShadow" >
           <enum>QFrame::Sunken</enum>
          </property>
-         <property name="lineWidth">
+         <property name="lineWidth" >
           <number>1</number>
          </property>
-         <property name="readOnly">
+         <property name="readOnly" >
           <bool>true</bool>
          </property>
         </widget>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab_2">
-      <attribute name="title">
+     <widget class="QWidget" name="tab_2" >
+      <attribute name="title" >
        <string>Settings</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_3">
-       <item row="0" column="0">
-        <widget class="QCheckBox" name="sbarCB">
-         <property name="toolTip">
-          <string>Display statusbar messages?</string>
-         </property>
-         <property name="text">
-          <string>&amp;Statusbar messages</string>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1" rowspan="4">
-        <widget class="QTreeWidget" name="debugMessagesTW">
-         <property name="toolTip">
+      <layout class="QGridLayout" >
+       <property name="margin" >
+        <number>9</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item rowspan="4" row="0" column="1" >
+        <widget class="QTreeWidget" name="debugMessagesTW" >
+         <property name="toolTip" >
           <string>Select the debug messages that should be displayed</string>
          </property>
          <column>
-          <property name="text">
-           <string notr="true">1</string>
+          <property name="text" >
+           <string>1</string>
           </property>
          </column>
         </widget>
        </item>
-       <item row="1" column="0">
-        <widget class="QGroupBox" name="groupBox">
-         <property name="title">
+       <item row="2" column="0" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType" >
+          <enum>QSizePolicy::Preferred</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>187</width>
+           <height>3</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="3" column="0" >
+        <widget class="QCheckBox" name="autoClearCB" >
+         <property name="toolTip" >
+          <string>Automatic cleanup of the window before LaTeX compilation proceeds</string>
+         </property>
+         <property name="text" >
+          <string>&amp;Clear automatically</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" >
+        <widget class="QGroupBox" name="groupBox" >
+         <property name="sizePolicy" >
+          <sizepolicy>
+           <hsizetype>5</hsizetype>
+           <vsizetype>0</vsizetype>
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="title" >
           <string>Debug messages</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout">
-          <item row="0" column="0">
-           <widget class="QRadioButton" name="debugNoneRB">
-            <property name="toolTip">
+         <layout class="QGridLayout" >
+          <property name="margin" >
+           <number>9</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item row="0" column="0" >
+           <widget class="QRadioButton" name="debugNoneRB" >
+            <property name="toolTip" >
              <string>Display no debug messages</string>
             </property>
-            <property name="text">
+            <property name="text" >
              <string>&amp;None</string>
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
-           <widget class="QRadioButton" name="debugSelectedRB">
-            <property name="toolTip">
+          <item row="0" column="1" >
+           <widget class="QRadioButton" name="debugSelectedRB" >
+            <property name="toolTip" >
              <string>Display the debug messages selected to the right</string>
             </property>
-            <property name="text">
+            <property name="text" >
              <string>S&amp;elected</string>
             </property>
            </widget>
           </item>
-          <item row="2" column="0">
-           <widget class="QRadioButton" name="debugAnyRB">
-            <property name="toolTip">
+          <item row="0" column="2" >
+           <widget class="QRadioButton" name="debugAnyRB" >
+            <property name="toolTip" >
              <string>Display all debug messages</string>
             </property>
-            <property name="text">
+            <property name="text" >
              <string>&amp;All</string>
             </property>
            </widget>
@@ -161,26 +230,16 @@
          </layout>
         </widget>
        </item>
-       <item row="2" column="0">
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
+       <item row="0" column="0" >
+        <widget class="QCheckBox" name="sbarCB" >
+         <property name="toolTip" >
+          <string>Display statusbar messages?</string>
          </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>187</width>
-           <height>404</height>
-          </size>
+         <property name="text" >
+          <string>&amp;Statusbar messages</string>
          </property>
-        </spacer>
-       </item>
-       <item row="3" column="0">
-        <widget class="QCheckBox" name="autoClearCB">
-         <property name="toolTip">
-          <string>Automatic cleanup of the window before LaTeX compilation proceeds</string>
-         </property>
-         <property name="text">
-          <string>&amp;Clear automatically</string>
+         <property name="checked" >
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -190,8 +249,9 @@
    </item>
   </layout>
  </widget>
+ <pixmapfunction></pixmapfunction>
  <includes>
-  <include location="local">qt_i18n.h</include>
+  <include location="local" >qt_i18n.h</include>
  </includes>
  <resources/>
  <connections/>
