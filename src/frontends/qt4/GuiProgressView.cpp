@@ -162,6 +162,7 @@ void GuiProgressView::clearText()
 
 void GuiProgressView::appendLyXErrText(QString const & text)
 {
+	widget_->outTE->moveCursor(QTextCursor::End);
 	widget_->outTE->insertPlainText(text);
 	widget_->outTE->ensureCursorVisible();
 
@@ -183,6 +184,7 @@ void GuiProgressView::appendText(QString const & text)
 	if (!text.endsWith("\n"))
 		str += "\n";
 
+	widget_->outTE->moveCursor(QTextCursor::End);
 	widget_->outTE->insertPlainText(str);
 	widget_->outTE->ensureCursorVisible();
 }
