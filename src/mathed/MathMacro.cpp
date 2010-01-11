@@ -307,14 +307,11 @@ void MathMacro::updateRepresentation()
 	// update requires
 	requires_ = macro_->requires();
 	
-	// non-normal mode? We are done!
-	if (displayMode_ != DISPLAY_NORMAL)
+	if (!needsUpdate_
+		// non-normal mode? We are done!
+		|| (displayMode_ != DISPLAY_NORMAL))
 		return;
 
-	// macro changed?
-	if (!needsUpdate_)
-		return;
-	
 	needsUpdate_ = false;
 	
 	// get default values of macro
