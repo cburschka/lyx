@@ -2323,6 +2323,8 @@ void LyXAction::init()
                         ref, space, tabular, vspace, wrap insets.
  * \li Syntax: inset-modify <INSET> <ARGS>
  * \li Syntax: inset-modify changetype <TYPE>
+ * \li Sample: inset-modify note Note Comment
+ * \li Sample: inset-modify changetype Ovalbox
  * \li Params: See #LFUN_INSET_INSERT for further details.
  * \endvar
  */
