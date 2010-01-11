@@ -1178,6 +1178,9 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt)
 		Buffer repl_buffer("", false);
 		repl_buffer.setUnnamed(true);
 		if (repl_buffer.readString(lyx)) {
+			repl_buffer.changeLanguage(
+				repl_buffer.language(),
+				bv->cursor().getFont().language());
 			if (opt.keep_case && match_len >= 2) {
 				if (cur.inTexted()) {
 					if (firstUppercase(cur))
