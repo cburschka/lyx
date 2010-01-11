@@ -52,9 +52,6 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 	: DockView(parent, "progress", "Debug/Progress window", area, flags)
 {
 	widget_ = new ProgressViewWidget();
-#if QT_VERSION < 0x040400
-	widget_->scrollArea->setWidget(widget_->scrollAreaWidgetContents);
-#endif
 	widget_->setMinimumHeight(150);
 	widget_->adjustSize();
 	setWidget(widget_);
