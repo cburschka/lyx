@@ -62,6 +62,8 @@ The following new LyX functions have been introduced:
 
 - LFUN_FONT_UWAVE ("font-underwave").
 
+//FIXME kill this before release unless Rob comes
+//with something new.
 - LFUN_OUTLINE_DRAGMOVE ("outline-dragmove").
 
 - LFUN_BRANCHES_RENAME ("branches-rename").
@@ -69,6 +71,14 @@ The following new LyX functions have been introduced:
 - LFUN_BRANCH_ADD_INSERT ("branch-add-insert").
 
 - LFUN_BUFFER_CLOSE_ALL ("buffer-close-all").
+
+- LFUN_INSET_FORALL ("inset-forall").
+
+- LFUN_DEBUG_LEVEL_SET ("debug-level-set").
+
+- LFUN_INSET_SELECT_ALL ("inset-select-all").
+
+- LFUN_MATH_AMS_MATRIX ("math-ams matrix").
 
 
 The following LyX functions have been removed:
