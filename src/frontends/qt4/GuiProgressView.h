@@ -34,8 +34,6 @@ class QShowEvent;
 namespace lyx {
 namespace frontend {
 
-struct LevelButton;
-
 
 class ProgressViewWidget : public QWidget, public Ui::ProgressViewUi
 {
@@ -76,19 +74,15 @@ private Q_SLOTS:
 	void appendText(QString const & text);
 	void appendLyXErrText(QString const & text);
 	void clearText();
-
-	void levelChanged();
-  void tristateChanged(int state);
+	void debugMessageActivated(QTreeWidgetItem *, int);
+	void debugSelectionChanged();
 
 private:
 	ProgressViewWidget * widget_;
 
+	void levelChanged();
 	void showEvent(QShowEvent*);
 	void hideEvent(QHideEvent*);
-
-	QList<LevelButton*> level_buttons;
-	QList<LevelButton*> checked_buttons;
-	LevelButton* toggle_button;
 };
 
 

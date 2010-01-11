@@ -6,6 +6,7 @@
  *
  * \author Peter Kümmel
  * \author Pavel Sanda
+ * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -34,23 +35,9 @@ namespace lyx {
 namespace frontend {
 
 
-struct LevelButton : QCheckBox
-{
-	LevelButton(const QString& name) : QCheckBox(name) {}
-	Debug::Type level;
-	
-	void setCheckStatusSilent(Qt::CheckState state) {
-		blockSignals(true);
-		setCheckState(state);
-		blockSignals(false);	
-	}
-};
-
-
 ProgressViewWidget::ProgressViewWidget()
 {
 	setupUi(this);
-
 }
 
 
@@ -61,7 +48,8 @@ GuiProgressView::~GuiProgressView()
 
 
 GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area, 
-	Qt::WindowFlags flags) : DockView(parent, "progress", "Debug/Progress window", area, flags)
+	Qt::WindowFlags flags)
+	: DockView(parent, "progress", "Debug/Progress window", area, flags)
 {
 	widget_ = new ProgressViewWidget();
 #if QT_VERSION < 0x040400
@@ -78,26 +66,33 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 	widget_->outTE->setFont(font);
 	widget_->tabWidget->widget(0)->setContentsMargins(-5, -7, 0, -7);
 
-	toggle_button = new LevelButton("Toggle ALL messages");
-	toggle_button->level = Debug::ANY;
-	toggle_button->setTristate(true);
-	toggle_button->setCheckState(Qt::PartiallyChecked);
-	widget_->settingsLayout->addWidget(toggle_button);
-	connect(toggle_button, SIGNAL(stateChanged(int)), this, SLOT(tristateChanged(int)));
+	connect(widget_->debugNoneRB, SIGNAL(clicked()),
+		this, SLOT(debugSelectionChanged()));
+	connect(widget_->debugSelectedRB, SIGNAL(clicked()),
+		this, SLOT(debugSelectionChanged()));
+	connect(widget_->debugAnyRB, SIGNAL(clicked()),
+		this, SLOT(debugSelectionChanged()));
+	widget_->debugMessagesTW->setEnabled(false);
+	widget_->debugNoneRB->setChecked(true);
 
 	// ignore Debug::NONE and Debug::ANY
 	int const level_count = Debug::levelCount() - 1;
+	QTreeWidgetItem * item = 0;
+	widget_->debugMessagesTW->setColumnCount(2);
+	widget_->debugMessagesTW->headerItem()->setText(0, qt_("Debug Level"));
+	widget_->debugMessagesTW->headerItem()->setText(1, qt_("Display"));
 	for (int i = 1 ; i < level_count; i++) {
+		item = new QTreeWidgetItem(widget_->debugMessagesTW);
 		Debug::Type const level = Debug::value(i);
-		LevelButton * box = new LevelButton(toqstr(Debug::description(level)));
-		box->level = level;
-		widget_->settingsLayout->addWidget(box, (i + 3) % 10, (i + 3) / 10);
-		box->setChecked(false);
-		level_buttons << box;
-		connect(box, SIGNAL(stateChanged(int)), this, SLOT(levelChanged()));
+		item->setText(0, toqstr(Debug::description(level)));
+		item->setData(0, Qt::UserRole, int(level));
+		item->setText(1, qt_("No"));
 	}
-	widget_->settingsLayout->activate();
-	
+	widget_->debugMessagesTW->resizeColumnToContents(0);
+	connect(widget_->debugMessagesTW,
+		SIGNAL(itemActivated(QTreeWidgetItem *, int)),
+		this, SLOT(debugMessageActivated(QTreeWidgetItem *, int)));
+  
 	GuiProgress * progress =
 		dynamic_cast<GuiProgress *>(ProgressInterface::instance());
 
@@ -118,36 +113,46 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 }
 
 
-void GuiProgressView::levelChanged()
+void GuiProgressView::debugMessageActivated(QTreeWidgetItem * item, int)
 {
-	int level = Debug::NONE;
-	checked_buttons.clear();
-	Q_FOREACH(LevelButton* button, level_buttons) {
-		if (button->isChecked()) {
-			level |= button->level;
-			checked_buttons << button;
-		}
-	}
-	dispatch(FuncRequest(LFUN_DEBUG_LEVEL_SET, convert<string>(level)));
-	
-	toggle_button->setCheckStatusSilent (Qt::PartiallyChecked);
+	if (item == 0)
+		return;
+
+	QString const no = qt_("No");
+	QString const yes = qt_("Yes");
+
+	bool selected = (item->text(1) == yes);
+	item->setText(1, selected ? no : yes);
+
+	levelChanged();
 }
 
 
-void GuiProgressView::tristateChanged(int state)
+void GuiProgressView::levelChanged()
 {
-	if (state != Qt::PartiallyChecked) {
-		Q_FOREACH(LevelButton* button, level_buttons) {
-			button->setCheckStatusSilent(toggle_button->checkState());
-		}
-		int level = (state == Qt::Checked ? Debug::ANY : Debug::NONE);
-		dispatch(FuncRequest(LFUN_DEBUG_LEVEL_SET, convert<string>(level)));
-	} else {
-		Q_FOREACH(LevelButton* button, checked_buttons) {
-			button->setCheckStatusSilent(Qt::Checked);
-		}
-		levelChanged();
+	int level = Debug::NONE;
+	QTreeWidgetItemIterator it(widget_->debugMessagesTW);
+	while (*it) {
+		if ((*it)->text(1) == qt_("Yes"))
+			level |= (*it)->data(0, Qt::UserRole).toInt();
+		++it;
 	}
+	dispatch(FuncRequest(LFUN_DEBUG_LEVEL_SET, convert<string>(level)));
+}
+
+
+void GuiProgressView::debugSelectionChanged()
+{
+	int level = Debug::NONE;
+	if (widget_->debugAnyRB->isChecked())
+		level = Debug::ANY;
+	else if (widget_->debugSelectedRB->isChecked()) {
+		widget_->debugMessagesTW->setEnabled(true);
+		levelChanged();
+		return;
+	}
+	widget_->debugMessagesTW->setEnabled(false);
+	dispatch(FuncRequest(LFUN_DEBUG_LEVEL_SET, convert<string>(level)));
 }
 
 
@@ -218,8 +223,6 @@ void GuiProgressView::hideEvent(QHideEvent*)
 {
 	ProgressInterface::instance()->lyxerrDisconnect();
 }
-
-
 
 
 Dialog * createGuiProgressView(GuiView & guiview)
