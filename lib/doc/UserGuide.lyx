@@ -2377,9 +2377,26 @@ Letter for US-style letters
 
 \begin_layout Standard
 There are also some non-standard classes, which LyX only uses if you have
- installed them.
- Here are some of the classes, the full list with detailed explanations
- can be found in chapter 
+ installed the
+\change_deleted 1 1263338271
+m
+\change_inserted 1 1263338359
+ corresponding LaTeX class files, though most TeX distributions will include
+ many of these
+\change_unchanged
+.
+ Here are some of the classes
+\change_inserted 1 1263338393
+.
+ 
+\change_unchanged
+, 
+\change_deleted 1 1263338396
+t
+\change_inserted 1 1263338397
+T
+\change_unchanged
+he full list with detailed explanations can be found in chapter 
 \emph on
 Special Document Classes
 \emph default
@@ -2597,8 +2614,11 @@ Document ! Modules
 \begin_layout Standard
 Modules load additional features to a document that are not by default available
  in the chosen document class.
- For example you might want to use write Braille (embossed printing) in
- a document.
+ For example you might want to 
+\change_deleted 1 1263338413
+use 
+\change_unchanged
+write Braille (embossed printing) in a document.
  This is of course not available in any document class, so you have to load
  the corresponding module in the 
 \family sans
@@ -2652,6 +2672,11 @@ status open
 Note also:
 \series default
  Some modules require other modules, and some pairs of modules are incompatible.
+
+\change_inserted 1 1263338440
+ LyX will also advise you about these things.
+\change_unchanged
+
 \end_layout
 
 \end_inset
