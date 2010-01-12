@@ -1276,15 +1276,14 @@ Layout const & DocumentClass::htmlTOCLayout() const
 {
 	if (html_toc_section_.empty()) {
 		// we're going to look for the layout with the minimum toclevel
-		// number > 0, because we don't want Part. 
-		// we'll take the first one, just because.
 		TextClass::LayoutList::const_iterator lit = begin();
 		TextClass::LayoutList::const_iterator const len = end();
 		int minlevel = 1000;
 		Layout const * lay = NULL;
 		for (; lit != len; ++lit) {
 			int const level = lit->toclevel;
-			if (level > 0 && (level == Layout::NOT_IN_TOC || level >= minlevel))
+			// we don't want Part
+			if (level == Layout::NOT_IN_TOC || level < 0 || level >= minlevel)
 				continue;
 			lay = &*lit;
 			minlevel = level;
