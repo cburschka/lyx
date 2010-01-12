@@ -27,8 +27,9 @@
 #include "Text.h"
 #include "TextClass.h"
 
-#include "support/lassert.h"
+#include "support/convert.h"
 #include "support/debug.h"
+#include "support/lassert.h"
 #include "support/lstrings.h"
 
 #include <vector>
@@ -277,6 +278,15 @@ XHTMLStream & XHTMLStream::operator<<(char_type c)
 		nextraw_ = false;
 	} else
 		os_ << html::escapeChar(c);
+	return *this;
+}
+
+
+XHTMLStream & XHTMLStream::operator<<(int i)
+{
+	clearTagDeque();
+	os_ << i;
+	nextraw_ = false;
 	return *this;
 }
 

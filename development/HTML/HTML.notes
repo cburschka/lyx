@@ -21,6 +21,11 @@ These insets work but still need work:
 	  and appropriate img tag. But we don't yet do any sort of scaling, rotating, and
 		so forth. That won't be hard, since we can just call ImageMagick to do this for 
 		us, but appropriate routines will need to be written.
+	InsetIndex and InsetPrintIndex: Just need to sort out some ordering issues and the
+		like.
+	InsetNomencl and InsetPrintNomencl: Do not work at all yet, but would be easy to do.
+		First, Nomencl would need to go to the TOC, which it should do anyway. Then just
+		do as for TOC and Index, more or less.
 	InsetRef: At present, we just use the label name as associated text, and put it 
 		into square brackets. It'd be nice to be able to do more, but for that we'd need to
 		associate counters with the labels, and we don't have that yet.
@@ -67,10 +72,6 @@ Other math notes:
 These insets do not work and are not yet scheduled to work:
 	InsetExternal: It may be that this won't be too hard, but I don't understand 
 		these so am not sure what to do. For now, it is disabled.
-	InsetIndex and InsetPrintIndex: An "advanced" case. What really would be cool 
-		would be to collect all of these and then write the index as a series of links 
-		back to the occurrences. But not now.
-	InsetNomencl and InsetPrintNomencl: Also "advanced".
 
 May need to make use here of TocWidget::itemInset, which should then be moved
 to TocBackend.

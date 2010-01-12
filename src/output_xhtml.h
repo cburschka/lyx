@@ -60,6 +60,10 @@ struct EndTag {
 };
 
 
+// FIXME XHTML
+// We need to allow these to be deferrable, which means it should
+// inherit from StartTag. This is probably better, anyway, but we'll
+// need to re-work a bit of code....
 /// Tags like <img />
 /// Attributes will be escaped automatically and so should NOT
 /// be escaped before passing to the constructor.
@@ -100,6 +104,8 @@ public:
 	XHTMLStream & operator<<(const char *);
 	///
 	XHTMLStream & operator<<(char_type);
+	///
+	XHTMLStream & operator<<(int);
 	///
 	XHTMLStream & operator<<(StartTag const &);
 	///

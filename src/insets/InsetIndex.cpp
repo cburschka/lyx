@@ -605,16 +605,35 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 	for (; it != en; ++it)
 		entries.push_back(IndexEntry(it->str(), it->dit()));
 	stable_sort(entries.begin(), entries.end());
+
 	vector<IndexEntry>::const_iterator eit = entries.begin();
-	vector<IndexEntry>::const_iterator een = entries.end();
+	vector<IndexEntry>::const_iterator const een = entries.end();
+	vector<IndexEntry>::const_iterator last = een;
+	int entry_number = 0;
 	for (; eit != een; ++eit) {
 		Paragraph const & par = eit->dit.innerParagraph();
+		if (last == een) {
+			// first time through the loop
+			xs << StartTag("div", "class='index_entry'");
+			par.simpleLyXHTMLOnePar(buffer(), xs, op, dummy, true);
+		}
+		else if (last->idx != eit->idx) {
+			// this is a new entry
+			xs << EndTag("div");
+			xs.cr();
+			xs << StartTag("div", "class='index_entry'");
+			par.simpleLyXHTMLOnePar(buffer(), xs, op, dummy, true);
+			entry_number = 0;
+		}
+		if (!entry_number)
+			xs << ",";
 		string const parattr = "href='#" + par.magicLabel() + "'";
-		xs << CompTag("br") << StartTag("a", parattr);
-		par.simpleLyXHTMLOnePar(buffer(), xs, op, dummy, true);
+		xs << " " << StartTag("a", parattr);
+		xs << ++entry_number;
 		xs << EndTag("a");
+		last = eit;
 	}
-
+	xs << EndTag("div"); // last entry
 	xs << EndTag("div");
 	return ods.str();
 }
