@@ -407,6 +407,7 @@ Buffer * Buffer::clone() const
 		child_clone->d->setParent(buffer_clone);
 		buffer_clone->setChild(dit, child_clone);
 	}
+	buffer_clone->d->macro_lock = false;
 	return buffer_clone;
 }
 
@@ -1490,6 +1491,8 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 	updateLabels(UpdateMaster, true);
 	checkBibInfoCache();
 	d->bibinfo_.makeCitationLabels(*this);
+	updateMacros();
+	updateMacroInstances();
 
 	if (!only_body) {
 		os << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
@@ -2555,7 +2558,7 @@ MacroData const * Buffer::getMacro(docstring const & name,
 
 void Buffer::updateMacros(DocIterator & it, DocIterator & scope) const
 {
-	pit_type lastpit = it.lastpit();
+	pit_type const lastpit = it.lastpit();
 
 	// look for macros in each paragraph
 	while (it.pit() <= lastpit) {
