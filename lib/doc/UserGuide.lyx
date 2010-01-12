@@ -10626,6 +10626,20 @@ Special Character\SpecialChar \menuseparator
 Symbols
 \family default
 .
+
+\change_inserted 1 1263338624
+ You can also enter some sorts of accented characters by using the mini-buffer.
+ For example, entering 
+\begin_inset Quotes eld
+\end_inset
+
+accent-umlaut e
+\begin_inset Quotes erd
+\end_inset
+
+ will produce the character: ë.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
