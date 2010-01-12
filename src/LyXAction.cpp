@@ -2384,6 +2384,8 @@ void LyXAction::init()
 	           inset-forall Index delete-char-forward \n
                Close all Notes (also works for a particular branch, for example): \n
 	           inset-forall Note inset-toggle close \n
+               Transform all yellow notes to comments \n
+                   inset-forall Note:Note inset-modify note Note Comment \n
                Try to put LyX in an infinite loop if there is at least a Note: \n
 	           inset-forall Note char-backward
  * \li Origin: lasgouttes, 27 Nov 2009

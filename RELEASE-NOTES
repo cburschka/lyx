@@ -92,7 +92,7 @@ The following LyX functions have been removed:
 - LFUN_NOTES_MUTATE ("notes-mutate"): replace
     notes-mutate <SOURCE> <TARGET>
   with the more general function inset-forall
-    inset-forall Note:<SOURCE> inset-modify changetype <TARGET>
+    inset-forall Note:<SOURCE> inset-modify note Note <TARGET>
 
 The following LyX functions have been changed:
 
