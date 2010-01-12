@@ -123,7 +123,7 @@
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_use_mathml true
 \html_be_strict true
@@ -3589,16 +3589,34 @@ everything
 \emph default
  into the new class.
  That includes the paragraph environments.
- Some paragraph environments are standard; all of the document classes have
- them; but some classes have special paragraph environments.
- If this is the case, and you change the document class, LyX sets the missing
- paragraph environments to 
+ Some paragraph environments are standard, in so far as all of the document
+ classes have them; but some classes have special paragraph environments.
+ If this is the case, and you change the document class, LyX 
+\change_inserted 1 1263335989
+will mark the paragraphs whose styles it no longer understands as 
+\begin_inset Quotes eld
+\end_inset
+
+unknown
+\begin_inset Quotes erd
+\end_inset
+
+.
+ The name of the style is retained, in case you should want to go back to
+ the old class.
+ But these paragraphs will be output with no special formatting, so you
+ will either need to create a new style yourself or else to convert these
+ paragraphs manually to a style present in your new document class.
+\change_deleted 1 1263335996
+sets the missing paragraph environments to 
 \family sans
 Standard
 \family default
  and places an error box at the beginning of the paragraph.
  Just click on them and you'll get a message dialog that tells you about
  the conversion and why it failed.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
