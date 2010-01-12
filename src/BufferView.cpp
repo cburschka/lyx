@@ -1014,7 +1014,6 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_SCREEN_SHOW_CURSOR:
 	case LFUN_BIBTEX_DATABASE_ADD:
 	case LFUN_BIBTEX_DATABASE_DEL:
-	case LFUN_NOTES_MUTATE:
 	case LFUN_ALL_INSETS_TOGGLE:
 	case LFUN_STATISTICS:
 	case LFUN_BRANCH_ADD_INSERT:
@@ -1683,18 +1682,6 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 
 		cur.finishUndo();
 		processUpdateFlags(Update::SinglePar | Update::FitCursor);
-		break;
-	}
-
-	// This could be rewriten using some command like forall <insetname> <command>
-	// once the insets refactoring is done.
-	case LFUN_NOTES_MUTATE: {
-		if (cmd.argument().empty())
-			break;
-
-		if (mutateNotes(cur, cmd.getArg(0), cmd.getArg(1))) {
-			processUpdateFlags(Update::Force);
-		}
 		break;
 	}
 

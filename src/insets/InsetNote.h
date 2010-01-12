@@ -111,12 +111,6 @@ private:
 	InsetNoteParams params_;
 };
 
-/**
- * Mutate all NoteInsets of "source" type to the "target" type in the document.
- * Returns true when some inset was changed.
- */
-bool mutateNotes(lyx::Cursor & cur, std::string const & source, std::string const &target);
-
 } // namespace lyx
 
 #endif // INSET_NOTE_H

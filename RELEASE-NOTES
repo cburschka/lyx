@@ -89,6 +89,10 @@ The following LyX functions have been removed:
 
 - LFUN_PARAGRAPH_SPACING ("paragraph-spacing"): use "paragraph-params" instead.
 
+- LFUN_NOTES_MUTATE ("notes-mutate"): replace
+    notes-mutate <SOURCE> <TARGET>
+  with the more general function inset-forall
+    inset-forall Note:<SOURCE> inset-modify changetype <TARGET>
 
 The following LyX functions have been changed:
 

@@ -576,16 +576,6 @@ void LyXAction::init()
  */
 		{ LFUN_NOTE_NEXT, "note-next", ReadOnly, Edit },
 /*!
- * \var lyx::FuncCode lyx::LFUN_NOTES_MUTATE
- * \li Action: Changes all Note insets of a particular type (source)
-               to a different type (target) fot the current document.
- * \li Syntax: notes-mutate <SOURCE> <TARGET>
- * \li Params: <SOURCE/TARGET>: Note|Comment|Greyedout
- * \li Origin: sanda, 18 Jun 2008
- * \endvar
- */
-		{ LFUN_NOTES_MUTATE, "notes-mutate", Argument, Edit },
-/*!
  * \var lyx::FuncCode lyx::LFUN_PHANTOM_INSERT
  * \li Action: Inserts phantom on the current cursor postion,
                move selection inside the inset.
