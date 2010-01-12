@@ -75,26 +75,9 @@ int InsetTOC::docbook(odocstream & os, OutputParams const &) const
 
 docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 {
-	// we want to look like a chapter, section, or whatever.
-	// so we're going to look for the layout with the minimum toclevel
-	// number > 0, because we don't want Part. 
-	// we'll take the first one, just because.
-	// FIXME This could be specified in the layout file.
-	DocumentClass const & dc = buffer().params().documentClass();
-	TextClass::LayoutList::const_iterator lit = dc.begin();
-	TextClass::LayoutList::const_iterator len = dc.end();
-	int minlevel = 1000;
-	Layout const * lay = NULL;
-	for (; lit != len; ++lit) {
-		int const level = lit->toclevel;
-		if (level > 0 && (level == Layout::NOT_IN_TOC || level >= minlevel))
-			continue;
-		lay = &*lit;
-		minlevel = level;
-	}
-	
-	string const tocclass = lay ? " " + lay->defaultCSSClass(): "";
-	string const tocattr = "class='tochead" + tocclass + "'";
+	Layout const & lay = buffer().params().documentClass().htmlTOCLayout();
+	string const & tocclass = lay.defaultCSSClass();
+	string const tocattr = "class='tochead " + tocclass + "'";
 	
 	// we'll use our own stream, because we are going to defer everything.
 	// that's how we deal with the fact that we're probably inside a standard
