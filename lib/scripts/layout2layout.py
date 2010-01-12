@@ -250,7 +250,7 @@ def convert(lines):
             continue
 
         # This just involved new features, not any changes to old ones
-        if format >= 14 and format <= 19:
+        if format >= 14 and format <= 20:
           i += 1
           continue
 
