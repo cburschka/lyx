@@ -2806,7 +2806,7 @@ void LyXAction::init()
  * \li Origin: Edmar, 23 Dec 1998
  * \endvar
  */
-		{ LFUN_SERVER_GOTO_FILE_ROW, "server-goto-file-row", ReadOnly, System },
+		{ LFUN_SERVER_GOTO_FILE_ROW, "server-goto-file-row", ReadOnly | NoBuffer, System },
 /*!
  * \var lyx::FuncCode lyx::LFUN_SERVER_NOTIFY
  * \li Action: Sends notify message about the last key-sequence to client.
