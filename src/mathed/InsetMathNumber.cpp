@@ -72,7 +72,7 @@ void InsetMathNumber::mathmlize(MathStream & os) const
 	if (os.inText())
 		os << str_;
 	else
-		os << "<mn> " << str_ << " </mn>";
+		os << "<mn>" << str_ << "</mn>";
 }
 
 
