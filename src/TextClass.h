@@ -257,6 +257,8 @@ protected:
 	/// same, but for HTML output
 	/// this is output as is to the header
 	docstring htmlpreamble_;
+	/// the paragraph style to use for TOCs, Bibliography, etc
+	mutable docstring html_toc_section_;
 	/// latex packages loaded by document class.
 	std::set<std::string> provides_;
 	/// latex packages requested by document class.
@@ -385,6 +387,9 @@ public:
 	docstring const & preamble() const { return preamble_; }
 	///
 	docstring const & htmlpreamble() const { return htmlpreamble_; }
+	/// the paragraph style to use for TOCs, Bibliography, etc
+	/// we will attempt to calculate this if it was not given
+	Layout const & htmlTOCLayout() const;
 	/// is this feature already provided by the class?
 	bool provides(std::string const & p) const;
 	/// features required by the class?

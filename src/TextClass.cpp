@@ -66,7 +66,7 @@ private:
 };
 
 // Keep the changes documented in the Customization manual. 
-int const FORMAT = 20;
+int const FORMAT = 21;
 
 
 bool layout2layout(FileName const & filename, FileName const & tempfile)
@@ -196,7 +196,8 @@ enum TextClassTags {
 	TC_ADDTOHTMLPREAMBLE,
 	TC_DEFAULTMODULE,
 	TC_PROVIDESMODULE,
-	TC_EXCLUDESMODULE
+	TC_EXCLUDESMODULE,
+	TC_HTMLTOCSECTION
 };
 
 
@@ -215,6 +216,7 @@ namespace {
 		{ "float",             TC_FLOAT },
 		{ "format",            TC_FORMAT },
 		{ "htmlpreamble",      TC_HTMLPREAMBLE },
+		{ "htmltocsection",    TC_HTMLTOCSECTION },
 		{ "ifcounter",         TC_IFCOUNTER },
 		{ "ifstyle",           TC_IFSTYLE },
 		{ "input",             TC_INPUT },
@@ -528,6 +530,10 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 
 		case TC_HTMLPREAMBLE:
 			htmlpreamble_ = from_utf8(lexrc.getLongString("EndPreamble"));
+			break;
+		
+		case TC_HTMLTOCSECTION:
+			html_toc_section_ = from_utf8(trim(lexrc.getString()));
 			break;
 
 		case TC_ADDTOPREAMBLE:
@@ -1166,6 +1172,7 @@ Layout TextClass::createBasicLayout(docstring const & name, bool unknown) const
 	return *defaultLayout;
 }
 
+
 /////////////////////////////////////////////////////////////////////////
 //
 // DocumentClassBundle
@@ -1262,6 +1269,33 @@ bool DocumentClass::provides(string const & p) const
 bool DocumentClass::hasTocLevels() const
 {
 	return min_toclevel_ != Layout::NOT_IN_TOC;
+}
+
+
+Layout const & DocumentClass::htmlTOCLayout() const
+{
+	if (html_toc_section_.empty()) {
+		// we're going to look for the layout with the minimum toclevel
+		// number > 0, because we don't want Part. 
+		// we'll take the first one, just because.
+		TextClass::LayoutList::const_iterator lit = begin();
+		TextClass::LayoutList::const_iterator const len = end();
+		int minlevel = 1000;
+		Layout const * lay = NULL;
+		for (; lit != len; ++lit) {
+			int const level = lit->toclevel;
+			if (level > 0 && (level == Layout::NOT_IN_TOC || level >= minlevel))
+				continue;
+			lay = &*lit;
+			minlevel = level;
+		}
+		if (lay)
+			html_toc_section_ = lay->name();
+		else
+			// hmm. that is very odd, so we'll do our best
+			html_toc_section_ = defaultLayoutName();
+	}
+	return operator[](html_toc_section_);
 }
 
 

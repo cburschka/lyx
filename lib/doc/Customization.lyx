@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 375
+\lyxformat 376
 \begin_document
 \begin_header
 \textclass scrbook
@@ -45,6 +45,7 @@
 \begin_modules
 logicalmkup
 \end_modules
+\maintain_unincluded_children false
 \begin_local_layout
 Format 7
 InsetLayout CharStyle:MenuItem
@@ -6415,7 +6416,7 @@ DeclareLyXModule{My Package}
 \end_layout
 
 \begin_layout LyX-Code
-Format 20
+Format 21
 \begin_inset Newline newline
 \end_inset
 
@@ -7505,12 +7506,12 @@ int
 This tag was introduced with LyX 1.4.0.
  Layout files from LyX 1.3.x and earlier don't have an explicit file format
  and are considered to be of format 1.
- The format for the present version of LyX is format 20.
+ The format for the present version of LyX is format 21.
  But each version of LyX is capable of reading earlier versions' layout
  files, just as they are capable of reading files produced by earlier versions
  of LyX.
  There is, however, no provision for converting to earlier formats.
- So LyX 1.6.x will not read layout files in format 20 but only files in format
+ So LyX 1.6.x will not read layout files in format 21 but only files in format
  11 or earlier.
 \end_layout
 
@@ -8075,6 +8076,33 @@ EndPreamble
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+HTMLTOCSection
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] The layout to use for the table of contents, bibliography, and so forth,
+ when the document is output to HTML.
+ For articles, this should normally be Section; for books, Chapter.
+ If it is not given, then LyX will attempt to figure out which layout to
+ use.
 \end_layout
 
 \begin_layout Description
