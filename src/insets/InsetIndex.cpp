@@ -25,6 +25,7 @@
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "output_latex.h"
+#include "output_xhtml.h"
 #include "sgml.h"
 #include "TocBackend.h"
 
@@ -175,8 +176,13 @@ int InsetIndex::docbook(odocstream & os, OutputParams const & runparams) const
 }
 
 
-docstring InsetIndex::xhtml(XHTMLStream &, OutputParams const &) const
+docstring InsetIndex::xhtml(XHTMLStream & xs, OutputParams const &) const
 {
+	// we just print an anchor, taking the paragraph ID from 
+	// our own interior paragraph, which doesn't get printed
+	std::string const magic = paragraphs().front().magicLabel();
+	std::string const attr = "id='" + magic + "'";
+	xs << CompTag("a", attr);
 	return docstring();
 }
 
@@ -552,9 +558,65 @@ bool InsetPrintIndex::hasSettings() const
 }
 
 
-docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const &) const
+namespace {
+
+struct IndexEntry
 {
-	return docstring();
+	IndexEntry(docstring const & s, DocIterator const & d) 
+			: idx(s), dit(d)
+	{}
+	
+	docstring idx;
+	DocIterator dit;
+};
+
+bool operator<(IndexEntry const & lhs, IndexEntry const & rhs)
+{
+	return lhs.idx < rhs.idx;
+}
+
+} // anon namespace
+
+
+docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
+{
+	Layout const & lay = buffer().params().documentClass().htmlTOCLayout();
+	string const & tocclass = lay.defaultCSSClass();
+	string const tocattr = "class='tochead " + tocclass + "'";
+
+	// we'll use our own stream, because we are going to defer everything.
+	// that's how we deal with the fact that we're probably inside a standard
+	// paragraph, and we don't want to be.
+	odocstringstream ods;
+	XHTMLStream xs(ods);
+
+	Toc const & toc = buffer().tocBackend().toc("index");
+	if (toc.empty())
+		return docstring();
+
+	xs << StartTag("div", "class='index'");
+	xs << StartTag("div", tocattr) 
+		 << _("Index") 
+		 << EndTag("div");
+	Toc::const_iterator it = toc.begin();
+	Toc::const_iterator const en = toc.end();
+	Font const dummy;
+	vector<IndexEntry> entries;
+	for (; it != en; ++it)
+		entries.push_back(IndexEntry(it->str(), it->dit()));
+	stable_sort(entries.begin(), entries.end());
+	vector<IndexEntry>::const_iterator eit = entries.begin();
+	vector<IndexEntry>::const_iterator een = entries.end();
+	for (; eit != een; ++eit) {
+		Paragraph const & par = eit->dit.innerParagraph();
+		string const parattr = "href='#" + par.magicLabel() + "'";
+		xs << CompTag("br") << StartTag("a", parattr);
+		par.simpleLyXHTMLOnePar(buffer(), xs, op, dummy, true);
+		xs << EndTag("a");
+	}
+
+	xs << EndTag("div");
+	return ods.str();
 }
 
 } // namespace lyx
