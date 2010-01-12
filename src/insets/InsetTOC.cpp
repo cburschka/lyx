@@ -85,66 +85,63 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 	odocstringstream ods;
 	XHTMLStream xs(ods);
 
-	string const & cmdname = getCmdName();
-	if (cmdname == "tableofcontents") {
-		Toc const & toc = buffer().tocBackend().toc("tableofcontents");
-		if (toc.empty())
-			return docstring();
-	
-		xs << StartTag("div", "class='toc'");
-		xs << StartTag("div", tocattr) 
-			 << _("Table of Contents") 
-			 << EndTag("div");
-		Toc::const_iterator it = toc.begin();
-		Toc::const_iterator const en = toc.end();
-		int lastdepth = 0;
-		for (; it != en; ++it) {
-			Paragraph const & par = it->dit().innerParagraph();
-			int const depth = it->depth();
-			if (depth > buffer().params().tocdepth)
-				continue;
-			Font const dummy;
-			if (depth > lastdepth) {
-				xs.cr();
-				// open as many tags as we need to open to get to this level
-				// this includes the tag for the current level
-				for (int i = lastdepth + 1; i <= depth; ++i) {
-					stringstream attr;
-					attr << "class='lyxtoc-" << i << "'";
-					xs << StartTag("div", attr.str());
-				}
-				lastdepth = depth;
-			}
-			else if (depth < lastdepth) {
-				// close as many as we have to close to get back to this level
-				// this includes closing the last tag at this level
-				for (int i = lastdepth; i >= depth; --i) 
-					xs << EndTag("div");
-				// now open our tag
+	Toc const & toc = buffer().tocBackend().toc("tableofcontents");
+	if (toc.empty())
+		return docstring();
+
+	xs << StartTag("div", "class='toc'");
+	xs << StartTag("div", tocattr) 
+		 << _("Table of Contents") 
+		 << EndTag("div");
+	Toc::const_iterator it = toc.begin();
+	Toc::const_iterator const en = toc.end();
+	int lastdepth = 0;
+	for (; it != en; ++it) {
+		Paragraph const & par = it->dit().innerParagraph();
+		int const depth = it->depth();
+		if (depth > buffer().params().tocdepth)
+			continue;
+		Font const dummy;
+		if (depth > lastdepth) {
+			xs.cr();
+			// open as many tags as we need to open to get to this level
+			// this includes the tag for the current level
+			for (int i = lastdepth + 1; i <= depth; ++i) {
 				stringstream attr;
-				attr << "class='lyxtoc-" << depth << "'";
-				xs << StartTag("div", attr.str());
-				lastdepth = depth;
-			} else {
-				// no change of level, so close and open
-				xs << EndTag("div");
-				stringstream attr;
-				attr << "class='lyxtoc-" << depth << "'";
+				attr << "class='lyxtoc-" << i << "'";
 				xs << StartTag("div", attr.str());
 			}
-			string const parattr = "href='#" + par.magicLabel() + "' class='tocarrow'";
-			par.simpleLyXHTMLOnePar(buffer(), xs, op, dummy, true);
-			xs << " ";
-			xs << StartTag("a", parattr);
-			// FIXME XHTML 
-			// There ought to be a simple way to customize this.
-			xs << XHTMLStream::NextRaw() << "&seArr;";
-			xs << EndTag("a");		
+			lastdepth = depth;
 		}
-		for (int i = lastdepth; i > 0; --i) 
+		else if (depth < lastdepth) {
+			// close as many as we have to close to get back to this level
+			// this includes closing the last tag at this level
+			for (int i = lastdepth; i >= depth; --i) 
+				xs << EndTag("div");
+			// now open our tag
+			stringstream attr;
+			attr << "class='lyxtoc-" << depth << "'";
+			xs << StartTag("div", attr.str());
+			lastdepth = depth;
+		} else {
+			// no change of level, so close and open
 			xs << EndTag("div");
-		xs << EndTag("div");
+			stringstream attr;
+			attr << "class='lyxtoc-" << depth << "'";
+			xs << StartTag("div", attr.str());
+		}
+		string const parattr = "href='#" + par.magicLabel() + "' class='tocarrow'";
+		par.simpleLyXHTMLOnePar(buffer(), xs, op, dummy, true);
+		xs << " ";
+		xs << StartTag("a", parattr);
+		// FIXME XHTML 
+		// There ought to be a simple way to customize this.
+		xs << XHTMLStream::NextRaw() << "&seArr;";
+		xs << EndTag("a");		
 	}
+	for (int i = lastdepth; i > 0; --i) 
+		xs << EndTag("div");
+	xs << EndTag("div");
 	return ods.str();
 }
 
