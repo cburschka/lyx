@@ -161,10 +161,9 @@ int prompt(docstring const & title0, docstring const & question,
 
 	docstring const title = bformat(_("LyX: %1$s"), title0);
 
-	// For some reason, sometimes Qt uses an hourglass or watch cursor when
+	// For some reason, sometimes Qt uses a hourglass or watch cursor when
 	// displaying the alert. Hence, we ask for the standard cursor shape.
-	// This call has no effect if the cursor has not been overridden.
-	qApp->changeOverrideCursor(Qt::ArrowCursor);
+	qApp->setOverrideCursor(Qt::ArrowCursor);
 
 	// FIXME replace that with guiApp->currentView()
 	//LYXERR0("FOCUS: " << qApp->focusWidget());
@@ -175,6 +174,8 @@ int prompt(docstring const & title0, docstring const & question,
 					   toqstr(b2),
 					   b3.empty() ? QString::null : toqstr(b3),
 					   default_button, cancel_button);
+
+	qApp->restoreOverrideCursor();
 
 	// Qt bug: can return -1 on cancel or WM close, despite the docs.
 	if (res == -1)
@@ -204,12 +205,18 @@ void warning(docstring const & title0, docstring const & message,
 			toqstr(formatted(message)));
 		return;
 	}
+
+	// Don't use a hourglass cursor while displaying the alert
+	qApp->setOverrideCursor(Qt::ArrowCursor);
+
 	if (!askshowagain)
 		QMessageBox::warning(qApp->focusWidget(),
 				toqstr(title),
 				toqstr(formatted(message)));
 	else
 		toggleWarning(title, message);
+
+	qApp->restoreOverrideCursor();
 }
 
 
@@ -232,9 +239,15 @@ void error(docstring const & title0, docstring const & message)
 			toqstr(formatted(message)));
 		return;
 	}
+
+	// Don't use a hourglass cursor while displaying the alert
+	qApp->setOverrideCursor(Qt::ArrowCursor);
+
 	QMessageBox::critical(qApp->focusWidget(),
 			      toqstr(title),
 			      toqstr(formatted(message)));
+
+	qApp->restoreOverrideCursor();
 }
 
 
@@ -249,9 +262,15 @@ void information(docstring const & title0, docstring const & message)
 		return;
 
 	docstring const title = bformat(_("LyX: %1$s"), title0);
+
+	// Don't use a hourglass cursor while displaying the alert
+	qApp->setOverrideCursor(Qt::ArrowCursor);
+
 	QMessageBox::information(qApp->focusWidget(),
 				 toqstr(title),
 				 toqstr(formatted(message)));
+
+	qApp->restoreOverrideCursor();
 }
 
 
