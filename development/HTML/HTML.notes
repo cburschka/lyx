@@ -1,10 +1,7 @@
 TODO:
 1. The counter patch, and better output for InsetRef.
-2. Better output for citations, meaning better labels. Numerical, as said below,
-   should be easy, and author-year oughtn't to be THAT hard. But it'll need a 
-	 bit of work.
-3. CSS needs work in several places, mostly floats. Maybe check elyxer on that.
-4. MathML
+2. CSS needs work in several places, mostly floats. Maybe check elyxer on that.
+3. MathML
 
 
 These insets work but still need work:
@@ -16,11 +13,6 @@ These insets work but still need work:
 			then referencing it. That should not be terribly hard, but it would take a bit
 			of work.
 	InsetBox: The CSS isn't there yet.
-	InsetCitation: This has two limitations as of 20 XI 2009. The first is that we
-		ignore the citation style and output square brackets, no matter what. The
-		second is that we only do numerical citations. It will not be terribly hard 
-		to do author-year citations, but the complexLabel() routine in InsetCitation
-		will need adapting before that is possible.
 	InsetFlex: I think this one is OK, but it needs some testing.
 	InsetFloat: This seems to work OK, but it will need testing and tweaking. There is
 		also no CSS yet for these.
