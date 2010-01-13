@@ -77,7 +77,7 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 	QTreeWidgetItem * item = 0;
 	widget_->debugMessagesTW->setColumnCount(2);
 	widget_->debugMessagesTW->headerItem()->setText(0, qt_("Debug Level"));
-	widget_->debugMessagesTW->headerItem()->setText(1, qt_("Display"));
+	widget_->debugMessagesTW->headerItem()->setText(1, qt_("Set"));
 	for (int i = 1 ; i < level_count; i++) {
 		item = new QTreeWidgetItem(widget_->debugMessagesTW);
 		Debug::Type const level = Debug::value(i);
@@ -86,6 +86,7 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 		item->setText(1, qt_("No"));
 	}
 	widget_->debugMessagesTW->resizeColumnToContents(0);
+	widget_->debugMessagesTW->resizeColumnToContents(1);
 	connect(widget_->debugMessagesTW,
 		SIGNAL(itemActivated(QTreeWidgetItem *, int)),
 		this, SLOT(debugMessageActivated(QTreeWidgetItem *, int)));
