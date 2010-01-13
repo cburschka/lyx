@@ -1,5 +1,5 @@
-#LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 376
+#LyX 1.6.6svn created this file. For more info see http://www.lyx.org/
+\lyxformat 345
 \begin_document
 \begin_header
 \textclass book
@@ -39,24 +39,18 @@
 \begin_modules
 logicalmkup
 \end_modules
-\maintain_unincluded_children false
 \language english
 \inputencoding auto
-\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_xetex false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
 
 \graphics default
-\default_output_format default
-\bibtex_command default
-\index_command default
 \paperfontsize 12
 \spacing single
 \use_hyperref true
@@ -78,29 +72,21 @@ logicalmkup
 \use_geometry false
 \use_amsmath 0
 \use_esint 0
-\use_mhchem 1
 \cite_engine basic
 \use_bibtopic false
-\use_indices false
 \paperorientation portrait
-\suppress_date false
-\index Index
-\shortcut idx
-\color #008000
-\end_index
 \secnumdepth 3
 \tocdepth 2
 \paragraph_separation indent
-\paragraph_indentation default
+\defskip medskip
 \quotes_language english
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes true
+\tracking_changes false
 \output_changes false
-\html_use_mathml true
-\html_be_strict true
-\author 2 "Richard Heck" 
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -1799,7 +1785,7 @@ Additional Features
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features tabularvalignment="middle">
+<features>
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -4057,8 +4043,7 @@ Environment
 f(x)=\left\{ \begin{array}{cc}
 \log_{8}x & x>0\\
 0 & x=0\\
-\sum_{i=1}^{5}\alpha_{i}+\sqrt{-\frac{1}{x}} & x<0
-\end{array}\right.\]
+\sum_{i=1}^{5}\alpha_{i}+\sqrt{-\frac{1}{x}} & x<0\end{array}\right.\]
 
 \end_inset
 
@@ -4466,13 +4451,7 @@ reference "sec:preamble"
 \end_layout
 
 \begin_layout Subsection
-Importing LaTeX Documents
-\change_deleted 2 1263335457
- — 
-\change_inserted 2 1263335459
----
-\change_unchanged
-
+Importing LaTeX Documents — 
 \family typewriter
 tex2lyx
 \family default
@@ -4499,162 +4478,57 @@ LaTeX
 \family default
  menu in LyX.
  This will call the program 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
+\family typewriter
 tex2lyx
-\end_layout
-
-\end_inset
-
- which will create a file 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-foo.lyx
-\end_layout
-
-\end_inset
-
- from the file 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-foo.tex
-\end_layout
-
-\end_inset
-
-
-\change_inserted 2 1263337184
-; LyX will 
-\change_deleted 2 1263337185
- and 
-\change_unchanged
-then open that file.
+\family default
+ which will create a file foo.lyx from the file foo.tex.
+ LyX will then open that file.
  If the translation does not work, you can try calling 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
+\family typewriter
 tex2lyx
-\end_layout
-
-\end_inset
-
+\family default
  from the command line, possibly using fancier options.
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 2 1263337199
 Even when the translation does work, 
-\change_unchanged
-
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
+\family typewriter
 tex2lyx
-\end_layout
-
-\end_inset
-
- 
-\change_inserted 2 1263337202
-may not 
-\change_deleted 2 1263337203
-will 
-\change_unchanged
-translate 
-\change_deleted 2 1263337205
-most legal LaTeX, but not 
-\change_unchanged
-everything
-\change_inserted 2 1263337217
-, though it does handle most legal LaTeX
-\change_unchanged
-.
+\family default
+ may not translate everything, though it does handle most legal LaTeX.
  It will leave things it does not understand in TeX mode; so, after translating
  a file with 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
+\family typewriter
 tex2lyx
-\end_layout
-
-\end_inset
-
+\family default
 , you can look for the red text and manually edit it to get it right.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex CharStyle:Code
-status collapsed
 
-\begin_layout Plain Layout
+\family typewriter
 tex2lyx
-\end_layout
-
+\family default
+ has its own documentation (manpage), which Unix/Linux users can access
+ via the console command 
+\family typewriter
+man
+\begin_inset space ~
 \end_inset
 
- has its own 
-\change_inserted 2 1263337255
-documentation
-\change_deleted 2 1263337260
-manpage.
-\change_inserted 2 1263337293
-, which *nix users can access via 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted 2 1263337285
-man tex2lyx
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
+tex2lyx
+\family default
 .
- The manpage describes 
-\change_deleted 2 1263337296
- Read it to find out 
-\change_unchanged
-which LaTeX commands and environments are not supported, 
-\change_inserted 2 1263335470
-what bugs you might run into 
-\change_deleted 2 1263335471
-bugs 
-\change_unchanged
-(and how to get around them), and how to use the various options.
-\change_inserted 2 1263335473
-
+ The manpage describes which LaTeX commands and environments are not supported,
+ what bugs you might run into (and how to get around them), and how to use
+ the various options.
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 2 1263337717
-It is extremely important to understand that 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted 2 1263335502
+It is important to understand that 
+\family typewriter
 tex2lyx
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
+\family default
  can only translate files whose document class is 
 \begin_inset Quotes eld
 \end_inset
@@ -4663,86 +4537,26 @@ known
 \begin_inset Quotes erd
 \end_inset
 
- to LyX, that is, for which there is a corresponding LyX `layout file'.
+ to LyX, that is, for which there is a corresponding LyX 
+\family sans
+layout file
+\family default
+.
  If there is no layout file, then you will get an error saying that the
  conversion could not be performed.
- The reason for this is that, in a sense, LyX doesn't know anything about
- LaTeX: very little of the information LyX has about LaTeX is contained
- in the program itself.
- That information is instead contained in layout files.
- You can think of the layout file for a document class as a translation
- manual between LyX constructs---paragraphs with their corresponding styles,
- etc---and the corresponding LaTeX commands and environments.
- So, unless you have a layout for 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted 2 1263336322
-foo.tex
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-'s document class, 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted 2 1263336331
+ So, unless you have a layout for the document class of your LaTeX file,
+ 
+\family typewriter
 tex2lyx
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
+\family default
  simply will not now how to translate the LaTeX that it finds there into
  things LyX understands.
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 2 1263337784
-When you installed LyX, you also installed layout files for almost 100 different
- document types (though some of these are DocBook, rather than LaTeX).
- Still, there are many, many more document classes than that, and new ones
- are probably invented every day.
- There is no way that LyX itself can include layout files for every document
- class you might want to use.
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 2 1263337857
-So what can you do if LyX does not include a layout file for your fancy
- new document class? Create your own.
- If your new document class is based upon, or very similar to, one for which
- there already is a layout file, which is true in many cases, then creating
- a new layout file may be as easy as copying a file and changing a few lines.
- In the other cases, you may have more work to do.
- But while you will have to learn a bit, it is not really that difficult,
- and many of the people who contribute to the users' mailing list have a
- great deal of experience they are willing to share.
-\change_unchanged
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 2 1263337162
-The format of LyX's layout files and the process of creating new ones are
- discussed in detail in Chapter 5 of the 
+ More about layout files and how they are created is explained in detail
+ in Chapter 5 of the 
 \emph on
 Customization
 \emph default
  manual.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
