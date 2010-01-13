@@ -40,6 +40,7 @@ public:
 
 	void lyxerrConnect();
 	void lyxerrDisconnect();
+	void lyxerrFlush();
 
 Q_SIGNALS:
 	void processStarted(QString const &);
@@ -47,7 +48,6 @@ Q_SIGNALS:
 	void appendMessage(QString const &);
 	void appendError(QString const &);
 	void clearMessages();
-	void lyxerrFlush();
 	void appendLyXErrMessage(QString const & text);
 
 	// Alert interface
@@ -62,8 +62,6 @@ private Q_SLOTS:
 	void doAppendMessage(QString const &);
 	void doAppendError(QString const &);
 	void doClearMessages();
-	void dolyxerrFlush();
-
 
 	void doWarning(QString const &, QString const &);
 	void doToggleWarning(QString const & title, QString const & msg, QString const & formatted);

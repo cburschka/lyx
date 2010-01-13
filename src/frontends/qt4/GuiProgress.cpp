@@ -48,7 +48,6 @@ GuiProgress::GuiProgress(GuiView * view) : view_(view)
 	connect(this, SIGNAL(appendMessage(QString const &)), SLOT(doAppendMessage(QString const &)));
 	connect(this, SIGNAL(appendError(QString const &)), SLOT(doAppendError(QString const &)));
 	connect(this, SIGNAL(clearMessages()), SLOT(doClearMessages()));
-	connect(this, SIGNAL(lyxerrFlush()), SLOT(dolyxerrFlush()));
 	
 	// Alert interface
 	connect(this, SIGNAL(warning(QString const &, QString const &)),
@@ -96,7 +95,7 @@ void GuiProgress::doClearMessages()
 }
 
 
-void GuiProgress::dolyxerrFlush()
+void GuiProgress::lyxerrFlush()
 {
 	appendLyXErrMessage(toqstr(lyxerr_stream_.str()));
 	lyxerr_stream_.str("");
