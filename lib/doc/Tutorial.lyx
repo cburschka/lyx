@@ -1,4 +1,4 @@
-#LyX 1.6.5svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.6svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -36,6 +36,9 @@
   {LyX}}
 \end_preamble
 \use_default_options false
+\begin_modules
+logicalmkup
+\end_modules
 \language english
 \inputencoding auto
 \font_roman default
@@ -4478,15 +4481,8 @@ LaTeX
 \family typewriter
 tex2lyx
 \family default
- which will create a file 
-\family typewriter
-foo.lyx
-\family default
- from the file 
-\family typewriter
-foo.tex
-\family default
- and then open that file.
+ which will create a file foo.lyx from the file foo.tex.
+ LyX will then open that file.
  If the translation does not work, you can try calling 
 \family typewriter
 tex2lyx
@@ -4495,11 +4491,11 @@ tex2lyx
 \end_layout
 
 \begin_layout Standard
-
+Even when the translation does work, 
 \family typewriter
 tex2lyx
 \family default
- will translate most legal LaTeX, but not everything.
+ may not translate everything, though it does handle most legal LaTeX.
  It will leave things it does not understand in TeX mode; so, after translating
  a file with 
 \family typewriter
@@ -4513,9 +4509,54 @@ tex2lyx
 \family typewriter
 tex2lyx
 \family default
- has its own manpage.
- Read it to find out which LaTeX commands and environments are not supported,
- bugs (and how to get around them), and how to use the various options.
+ has its own documentation (manpage), which Unix/Linux users can access
+ via the console command 
+\family typewriter
+man
+\begin_inset space ~
+\end_inset
+
+tex2lyx
+\family default
+.
+ The manpage describes which LaTeX commands and environments are not supported,
+ what bugs you might run into (and how to get around them), and how to use
+ the various options.
+\end_layout
+
+\begin_layout Standard
+It is important to understand that 
+\family typewriter
+tex2lyx
+\family default
+ can only translate files whose document class is 
+\begin_inset Quotes eld
+\end_inset
+
+known
+\begin_inset Quotes erd
+\end_inset
+
+ to LyX, that is, for which there is a corresponding LyX 
+\family sans
+layout file
+\family default
+.
+ If there is no layout file, then you will get an error saying that the
+ conversion could not be performed.
+ So, unless you have a layout for the document class of your LaTeX file,
+ 
+\family typewriter
+tex2lyx
+\family default
+ simply will not now how to translate the LaTeX that it finds there into
+ things LyX understands.
+ More about layout files and how they are created is explained in detail
+ in Chapter 5 of the 
+\emph on
+Customization
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Subsection

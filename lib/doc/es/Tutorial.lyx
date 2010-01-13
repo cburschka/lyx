@@ -1,4 +1,4 @@
-#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.6svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -4906,6 +4906,43 @@ tex2lyx
  tiene su propia página de manual.
  Léela si quieres conocer las instrucciones y entornos de LaTeX que no admite,
  fallos (y cómo evitarlos), y cómo usar las distintas opciones.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+It is important to understand that 
+\family typewriter
+tex2lyx
+\family default
+ can only translate files whose document class is 
+\begin_inset Quotes eld
+\end_inset
+
+known
+\begin_inset Quotes erd
+\end_inset
+
+ to LyX, that is, for which there is a corresponding LyX 
+\family sans
+layout file
+\family default
+.
+ If there is no layout file, then you will get an error saying that the
+ conversion could not be performed.
+ So, unless you have a layout for the document class of your LaTeX file,
+ 
+\family typewriter
+tex2lyx
+\family default
+ simply will not now how to translate the LaTeX that it finds there into
+ things LyX understands.
+ More about layout files and how they are created is explained in detail
+ in Chapter 5 of the 
+\emph on
+Customization
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Subsection
