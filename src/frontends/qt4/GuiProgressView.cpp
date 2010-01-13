@@ -53,6 +53,8 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 {
 	widget_ = new ProgressViewWidget();
 	widget_->setMinimumHeight(150);
+	widget_->debugMessagesTW->setSizePolicy(QSizePolicy::Ignored,
+						QSizePolicy::Expanding);
 	widget_->adjustSize();
 	setWidget(widget_);
 
