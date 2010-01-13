@@ -154,40 +154,47 @@ void init(int /* argc */, char * argv[])
 	 * lyx is invoked as a parameter of hidecmd.exe.
 	 */
 
-	// If Cygwin is detected, query the cygdrive prefix
-	HKEY regKey;
-	LONG retVal;
-
-	// Check for Cygwin 1.7 or later
-	retVal = RegOpenKeyEx(HKEY_LOCAL_MACHINE,
-			"Software\\Cygwin\\setup",
-			0, KEY_QUERY_VALUE, &regKey);
-	if (retVal != ERROR_SUCCESS)
-		retVal = RegOpenKeyEx(HKEY_CURRENT_USER,
-				"Software\\Cygwin\\setup",
-				0, KEY_QUERY_VALUE, &regKey);
-
-	// Check for older Cygwin versions
-	if (retVal != ERROR_SUCCESS)
-		retVal = RegOpenKeyEx(HKEY_LOCAL_MACHINE,
-				"Software\\Cygnus Solutions\\Cygwin\\mounts v2",
-				0, KEY_QUERY_VALUE, &regKey);
-	if (retVal != ERROR_SUCCESS)
-			retVal = RegOpenKeyEx(HKEY_CURRENT_USER,
-				"Software\\Cygnus Solutions\\Cygwin\\mounts v2",
-				0, KEY_QUERY_VALUE, &regKey);
-
-	if (retVal == ERROR_SUCCESS) {
-		RegCloseKey(regKey);
-		cmd_ret const p = runCommand("mount --show-cygdrive-prefix");
-		// The output of the mount command is as follows:
-		// Prefix              Type         Flags
-		// /cygdrive           system       binmode
-		// So, we use the inner split to pass the second line to the
-		// outer split which sets cygdrive with its contents until
-		// the first blank, discarding the unneeded return value.
-		if (p.first != -1 && prefixIs(p.second, "Prefix"))
-			split(split(p.second, '\n'), cygdrive, ' ');
+	// If Cygwin is detected, query the cygdrive prefix.
+	// The cygdrive prefix is needed for translating windows style paths
+	// to posix style paths in LaTeX files when the Cygwin teTeX is used.
+	int i;
+	HKEY hkey;
+	char buf[MAX_PATH];
+	DWORD bufsize = sizeof(buf);
+	LONG retval = ERROR_FILE_NOT_FOUND;
+	HKEY const mainkey[2] = { HKEY_LOCAL_MACHINE, HKEY_CURRENT_USER };
+	char const * const subkey[2] = {
+		"Software\\Cygwin\\setup",                         // Cygwin 1.7
+		"Software\\Cygnus Solutions\\Cygwin\\mounts v2\\/" // Prev. ver.
+	};
+	char const * const valuename[2] = {
+		"rootdir", // Cygwin 1.7 or later
+		"native"   // Previous versions
+	};
+	// Check for newer Cygwin versions first, then older ones
+	for (i = 0; i < 2 && retval != ERROR_SUCCESS; ++i) {
+		for (int k = 0; k < 2 && retval != ERROR_SUCCESS; ++k)
+			retval = RegOpenKey(mainkey[k], subkey[i], &hkey);
+	}
+	if (retval == ERROR_SUCCESS) {
+		// Query the Cygwin root directory
+		retval = RegQueryValueEx(hkey, valuename[i - 1],
+				NULL, NULL, (LPBYTE) buf, &bufsize);
+		RegCloseKey(hkey);
+		string const mount = string(buf) + "\\bin\\mount.exe";
+		if (retval == ERROR_SUCCESS && FileName(mount).exists()) {
+			cmd_ret const p =
+				runCommand(mount + " --show-cygdrive-prefix");
+			// The output of the mount command is as follows:
+			// Prefix              Type         Flags
+			// /cygdrive           system       binmode
+			// So, we use the inner split to pass the second line
+			// to the outer split which sets cygdrive with its
+			// contents until the first blank, discarding the
+			// unneeded return value.
+			if (p.first != -1 && prefixIs(p.second, "Prefix"))
+				split(split(p.second, '\n'), cygdrive, ' ');
+		}
 	}
 
 	// Catch shutdown events.
