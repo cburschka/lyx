@@ -29,12 +29,8 @@ using std::vector;
 
 namespace lyx {
 
-InsetLayout::InsetLayout()
-{}
-
-
-InsetLayout::InsetLayout(docstring const & name) :
-	name_(name), lyxtype_(STANDARD),
+InsetLayout::InsetLayout() :
+	name_(from_ascii("undefined")), lyxtype_(STANDARD),
 	labelstring_(from_ascii("UNDEFINED")), contentaslabel_(false),
 	decoration_(DEFAULT), latextype_(NOLATEXTYPE), font_(sane_font), 
 	labelfont_(sane_font), bgcolor_(Color_error), 
