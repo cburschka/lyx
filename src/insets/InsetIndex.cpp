@@ -560,19 +560,84 @@ bool InsetPrintIndex::hasSettings() const
 
 namespace {
 
+void parseItem(docstring & s, bool for_output)
+{
+	// this does not yet check for escaped things
+	size_type loc = s.find(from_ascii("@"));
+	if (loc != string::npos) {
+		if (for_output)
+			s.erase(0, loc + 1);
+		else
+			s.erase(loc);
+	}
+	loc = s.find(from_ascii("|"));
+	if (loc != string::npos)
+		s.erase(loc);
+}
+
+	
+void extractSubentries(docstring const & entry, docstring & main,
+		docstring & sub1, docstring & sub2)
+{
+	if (entry.empty())
+		return;
+	size_type const loc = entry.find(from_ascii(" ! "));
+	if (loc == string::npos)
+		main = entry;
+	else {
+		main = trim(entry.substr(0, loc));
+		size_t const locend = loc + 3;
+		size_type const loc2 = entry.find(from_ascii(" ! "), locend);
+		if (loc2 == string::npos) {
+			sub1 = trim(entry.substr(locend));
+		} else {
+			sub1 = trim(entry.substr(locend, loc2 - locend));
+			sub2 = trim(entry.substr(loc2 + 3));
+		}
+	}
+}
+
+
 struct IndexEntry
 {
-	IndexEntry(docstring const & s, DocIterator const & d) 
-			: idx(s), dit(d)
+	IndexEntry() 
 	{}
 	
-	docstring idx;
+	IndexEntry(docstring const & s, DocIterator const & d) 
+			: dit(d)
+	{
+		extractSubentries(s, main, sub, subsub);
+		parseItem(main, false);
+		parseItem(sub, false);
+		parseItem(subsub, false);
+	}
+	
+	bool equal(IndexEntry const & rhs) const
+	{
+		return main == rhs.main && sub == rhs.sub && subsub == rhs.subsub;
+	}
+	
+	bool same_sub(IndexEntry const & rhs) const
+	{
+		return main == rhs.main && sub == rhs.sub;
+	}
+	
+	bool same_main(IndexEntry const & rhs) const
+	{
+		return main == rhs.main;
+	}
+	
+	docstring main;
+	docstring sub;
+	docstring subsub;
 	DocIterator dit;
 };
 
 bool operator<(IndexEntry const & lhs, IndexEntry const & rhs)
 {
-	return lhs.idx < rhs.idx;
+	return lhs.main < rhs.main
+			|| (lhs.main == rhs.main && lhs.sub < rhs.sub)
+			|| (lhs.main == rhs.main && lhs.sub == rhs.sub && lhs.subsub < rhs.subsub);
 }
 
 } // anon namespace
@@ -580,7 +645,30 @@ bool operator<(IndexEntry const & lhs, IndexEntry const & rhs)
 
 docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 {
-	Layout const & lay = buffer().params().documentClass().htmlTOCLayout();
+	BufferParams const & bp = buffer().masterBuffer()->params();
+
+	// we do not presently support multiple indices, so we refuse to print
+	// anything but the main index, so as not to generate multiple indices.
+	// NOTE Multiple index support would require some work. The reason
+	// is that the TOC does not know about multiple indices. Either it would
+	// need to be told about them (not a bad idea), or else the index entries
+	// would need to be collected differently, say, during validation.
+	if (bp.use_indices && getParam("type") != from_ascii("idx"))
+		return docstring();
+	
+	Toc const & toc = buffer().tocBackend().toc("index");
+	if (toc.empty())
+		return docstring();
+
+	// Collection the index entries in a form we can use them.
+	Toc::const_iterator it = toc.begin();
+	Toc::const_iterator const en = toc.end();
+	vector<IndexEntry> entries;
+	for (; it != en; ++it)
+		entries.push_back(IndexEntry(it->str(), it->dit()));
+	stable_sort(entries.begin(), entries.end());
+
+	Layout const & lay = bp.documentClass().htmlTOCLayout();
 	string const & tocclass = lay.defaultCSSClass();
 	string const tocattr = "class='tochead " + tocclass + "'";
 
@@ -590,51 +678,159 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 	odocstringstream ods;
 	XHTMLStream xs(ods);
 
-	Toc const & toc = buffer().tocBackend().toc("index");
-	if (toc.empty())
-		return docstring();
-
 	xs << StartTag("div", "class='index'");
-	xs << StartTag("div", tocattr) 
+	xs << StartTag(lay.htmltag(), lay.htmlattr()) 
 		 << _("Index") 
-		 << EndTag("div");
-	Toc::const_iterator it = toc.begin();
-	Toc::const_iterator const en = toc.end();
+		 << EndTag(lay.htmltag());
+	xs << StartTag("ul", "class='main'");
 	Font const dummy;
-	vector<IndexEntry> entries;
-	for (; it != en; ++it)
-		entries.push_back(IndexEntry(it->str(), it->dit()));
-	stable_sort(entries.begin(), entries.end());
 
 	vector<IndexEntry>::const_iterator eit = entries.begin();
 	vector<IndexEntry>::const_iterator const een = entries.end();
-	vector<IndexEntry>::const_iterator last = een;
-	int entry_number = 0;
+	// tracks whether we are already inside a main entry (1),
+	// a sub-entry (2), or a sub-sub-entry (3). see below for the
+	// details.
+	int level = 1;
+	// the last one we saw
+	IndexEntry last;
+	int entry_number = -1;
 	for (; eit != een; ++eit) {
 		Paragraph const & par = eit->dit.innerParagraph();
-		if (last == een) {
-			// first time through the loop
-			xs << StartTag("div", "class='index_entry'");
-			par.simpleLyXHTMLOnePar(buffer(), xs, op, dummy, true);
-		}
-		else if (last->idx != eit->idx) {
-			// this is a new entry
-			xs << EndTag("div");
-			xs.cr();
-			xs << StartTag("div", "class='index_entry'");
-			par.simpleLyXHTMLOnePar(buffer(), xs, op, dummy, true);
+		if (entry_number == -1 || !eit->equal(last)) {
+			if (entry_number != -1) {
+				// not the first time through the loop, so
+				// close last entry or entries, depending.
+				if (level == 3) {
+					// close this sub-sub-entry
+					xs << EndTag("li");
+					xs.cr();
+					// is this another sub-sub-entry within the same sub-entry?
+					if (!eit->same_sub(last)) {
+						// close this level
+						xs << EndTag("ul");
+						xs.cr();
+						level = 2;
+					}
+				}
+				// the point of the second test here is that we might get
+				// here two ways: (i) by falling through from above; (ii) because,
+				// though the sub-entry hasn't changed, the sub-sub-entry has,
+				// which means that it is the first sub-sub-entry within this
+				// sub-entry. In that case, we do not want to close anything.
+				if (level == 2 && !eit->same_sub(last)) {
+					// close sub-entry 
+					xs << EndTag("li");
+					xs.cr();
+					// is this another sub-entry with the same main entry?
+					if (!eit->same_main(last)) {
+						// close this level
+						xs << EndTag("ul");
+						xs.cr();
+						level = 1;
+					}
+				}
+				// again, we can get here two ways: from above, or because we have
+				// found the first sub-entry. in the latter case, we do not want to
+				// close the entry.
+				if (level == 1 && !eit->same_main(last)) {
+					// close entry
+					xs << EndTag("li");
+					xs.cr();
+				}
+			}
+
+			// we'll be starting new entries
 			entry_number = 0;
+
+			// We need to use our own stream, since we will have to
+			// modify what we get back.
+			odocstringstream ent;
+			XHTMLStream entstream(ent);
+			par.simpleLyXHTMLOnePar(buffer(), entstream, op, dummy, true);
+	
+			// these will contain XHTML versions of the main entry, etc
+			// remember that everything will already have been escaped,
+			// so we'll need to use NextRaw() during output.
+			docstring main;
+			docstring sub;
+			docstring subsub;
+			extractSubentries(ent.str(), main, sub, subsub);
+			parseItem(main, true);
+			parseItem(sub, true);
+			parseItem(subsub, true);
+	
+			if (level == 3) {
+				// another subsubentry
+				xs << StartTag("li", "class='subsubentry'") 
+				   << XHTMLStream::NextRaw() << subsub;
+			} else if (level == 2) {
+				// there are two ways we can be here: 
+				// (i) we can actually be inside a sub-entry already and be about
+				//     to output the first sub-sub-entry. in this case, our sub
+				//     and the last sub will be the same.
+				// (ii) we can just have closed a sub-entry, possibly after also
+				//     closing a list of sub-sub-entries. here our sub and the last
+				//     sub are different.
+				// only in the latter case do we need to output the new sub-entry.
+				// note that in this case, too, though, the sub-entry might already
+				// have a sub-sub-entry.
+				if (eit->sub != last.sub)
+					xs << StartTag("li", "class='subentry'") 
+					   << XHTMLStream::NextRaw() << sub;
+				if (!subsub.empty()) {
+					// it's actually a subsubentry, so we need to start that list
+					xs.cr();
+					xs << StartTag("ul", "class='subsubentry'") 
+					   << StartTag("li", "class='subsubentry'") 
+					   << XHTMLStream::NextRaw() << subsub;
+					level = 3;
+				} 
+			} else {
+				// there are also two ways we can be here: 
+				// (i) we can actually be inside an entry already and be about
+				//     to output the first sub-entry. in this case, our main
+				//     and the last main will be the same.
+				// (ii) we can just have closed an entry, possibly after also
+				//     closing a list of sub-entries. here our main and the last
+				//     main are different.
+				// only in the latter case do we need to output the new main entry.
+				// note that in this case, too, though, the main entry might already
+				// have a sub-entry, or even a sub-sub-entry.
+				if (eit->main != last.main)
+					xs << StartTag("li", "class='main'") << main;
+				if (!sub.empty()) {
+					// there's a sub-entry, too
+					xs.cr();
+					xs << StartTag("ul", "class='subentry'") 
+					   << StartTag("li", "class='subentry'") 
+					   << XHTMLStream::NextRaw() << sub;
+					level = 2;
+					if (!subsub.empty()) {
+						// and a sub-sub-entry
+						xs.cr();
+						xs << StartTag("ul", "class='subsubentry'") 
+						   << StartTag("li", "class='subsubentry'") 
+						   << XHTMLStream::NextRaw() << subsub;
+						level = 3;
+					}
+				} 
+			}
 		}
-		if (!entry_number)
-			xs << ",";
+		// finally, then, we can output the index link itself
 		string const parattr = "href='#" + par.magicLabel() + "'";
-		xs << " " << StartTag("a", parattr);
-		xs << ++entry_number;
-		xs << EndTag("a");
-		last = eit;
+		xs << (entry_number == 0 ? ":" : ",");
+		xs << " " << StartTag("a", parattr)
+		   << ++entry_number << EndTag("a");
+		last = *eit;
 	}
-	xs << EndTag("div"); // last entry
+	// now we have to close all the open levels
+	while (level > 0) {
+		xs << EndTag("li") << EndTag("ul");
+		xs.cr();
+		--level;
+	}
 	xs << EndTag("div");
+	xs.cr();
 	return ods.str();
 }
 
