@@ -631,7 +631,8 @@ string SVN::scanLogFile(FileName const & f, string & status)
 		LYXERR(Debug::LYXVC, line << "\n");
 		if (!line.empty()) 
 			status += line + "; ";
-		if (prefixIs(line, "C ") || contains(line, "Commit failed")) {
+		if (prefixIs(line, "C ") || prefixIs(line, "CU ")
+					 || contains(line, "Commit failed")) {
 			ifs.close();
 			return line;
 		}
