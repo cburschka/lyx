@@ -913,10 +913,17 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 
 		cmd_ret const ret = runCommand(command_str);
 		if (ret.first != 0) {
-			Alert::error(_("Conversion script failed"),
-				     bformat(_("%1$s is from a different version"
+			if (file_format < LYX_FORMAT)
+				Alert::error(_("Conversion script failed"),
+				     bformat(_("%1$s is from an older version"
 					      " of LyX, but the lyx2lyx script"
 					      " failed to convert it."),
+					      from_utf8(filename.absFilename())));
+			else
+				Alert::error(_("Conversion script failed"),
+				     bformat(_("%1$s is from a newer version"
+					      " of LyX and cannot be converted by the"
+								" lyx2lyx script."),
 					      from_utf8(filename.absFilename())));
 			return failure;
 		} else {
