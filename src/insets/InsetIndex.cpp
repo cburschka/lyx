@@ -746,7 +746,9 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 			// modify what we get back.
 			odocstringstream ent;
 			XHTMLStream entstream(ent);
-			par.simpleLyXHTMLOnePar(buffer(), entstream, op, dummy, true);
+			OutputParams ours = op;
+			ours.for_toc = true;
+			par.simpleLyXHTMLOnePar(buffer(), entstream, ours, dummy);
 	
 			// these will contain XHTML versions of the main entry, etc
 			// remember that everything will already have been escaped,

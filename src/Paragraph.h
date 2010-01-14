@@ -168,7 +168,6 @@ public:
 				 XHTMLStream & xs,
 				 OutputParams const & runparams,
 				 Font const & outerfont,
-         bool fortoc = false,
 				 pos_type initial = 0) const;
 
 	///

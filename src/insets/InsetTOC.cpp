@@ -131,7 +131,9 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 			xs << StartTag("div", attr.str());
 		}
 		string const parattr = "href='#" + par.magicLabel() + "' class='tocarrow'";
-		par.simpleLyXHTMLOnePar(buffer(), xs, op, dummy, true);
+		OutputParams ours = op;
+		ours.for_toc = true;
+		par.simpleLyXHTMLOnePar(buffer(), xs, ours, dummy);
 		xs << " ";
 		xs << StartTag("a", parattr);
 		// FIXME XHTML 

@@ -225,7 +225,8 @@ bool XHTMLStream::closeFontTags()
 	bool noFontTags = true;
 	for (; it != en; ++it) {
 		if (html::isFontTag(it->tag_)) {
-			writeError("Font tag `" + it->tag_ + "' still open in closeFontTags().");
+			writeError("Font tag `" + it->tag_ + "' still open in closeFontTags().\n"
+				"This is likely not a problem, but you might want to check.");
 			noFontTags = false;
 		}
 	}
@@ -725,7 +726,7 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 						openItemTag(xs, style);
 				}
 				par->simpleLyXHTMLOnePar(buf, xs, runparams, 
-					text.outerFont(distance(begin, par)), false, sep);
+					text.outerFont(distance(begin, par)), sep);
 				++par;
 				// We may not want to close the tag yet, in particular,
 				// if we're not at the end...

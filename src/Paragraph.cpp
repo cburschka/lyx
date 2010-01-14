@@ -2396,7 +2396,6 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 				    XHTMLStream & xs,
 				    OutputParams const & runparams,
 				    Font const & outerfont,
-						bool fortoc,
 				    pos_type initial) const
 {
 	docstring retval;
@@ -2407,7 +2406,7 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 
 	Layout const & style = *d->layout_;
 
-	if (!fortoc) {
+	if (!runparams.for_toc) {
 		// generate a magic label for this paragraph
 		string const attr = "id='" + magicLabel() + "'";
 		xs << CompTag("a", attr);
@@ -2448,7 +2447,8 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 			InsetCommand const * ic = inset->asInsetCommand();
 			InsetLayout const & il = inset->getLayout();
 			InsetMath const * im = inset->asInsetMath();
-			if (!fortoc || im || il.isInToc() || (ic && ic->isInToc())) {
+			if (!runparams.for_toc 
+			    || im || il.isInToc() || (ic && ic->isInToc())) {
 				OutputParams np = runparams;
 				if (!il.htmlisblock())
 					np.html_in_par = true;

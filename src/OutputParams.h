@@ -203,19 +203,28 @@ public:
 
 	/// is this the last paragraph in the current buffer/inset?
 	bool isLastPar;
+	
 
 	/** whether or not do actual file copying and image conversion
 	 *  This mode will be used to preview the source code
 	 */
 	bool dryrun;
+	
 	/// Should we output verbatim or escape LaTeX's special chars?
 	bool verbatim;
+	
 	/// Should we output captions?
 	bool html_disable_captions;
+	
 	/// Are we already in a paragraph?
 	bool html_in_par;
+	
 	/// Does the present context even permit paragraphs?
 	bool html_make_pars;
+	
+	/// Are we generating this material for inclusion in a TOC-like entity?
+	bool for_toc;
+	
 	/// Include all children notwithstanding the use of \includeonly
 	bool includeall;
 };
