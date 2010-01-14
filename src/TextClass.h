@@ -322,8 +322,6 @@ private:
 	///
 	void readClassOptions(Lexer &);
 	///
-	void readCharStyle(Lexer &, std::string const &);
-	///
 	void readFloat(Lexer &);
 };
 

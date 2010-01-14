@@ -622,8 +622,7 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 				InsetLayout & il = insetlayoutlist_[name];
 				error = !il.read(lexrc, *this);
 			} else {
-				InsetLayout il;
-				il.setName(name);
+				InsetLayout il(name);
 				error = !il.read(lexrc, *this);
 				if (!error)
 					insetlayoutlist_[name] = il;

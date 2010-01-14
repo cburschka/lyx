@@ -30,8 +30,11 @@ class TextClass;
 ///
 class InsetLayout {
 public:
-	///
+	// just so these can be put in containers
+	// it should not really be used
 	InsetLayout();
+	///
+	InsetLayout(docstring const & name);
 	///
 	enum InsetDecoration {
 		CLASSIC,
@@ -59,8 +62,6 @@ public:
 	bool read(Lexer & lexrc, TextClass const & tclass);
 	///
 	docstring name() const { return name_; }
-	///
-	void setName(docstring const & n) { name_ = n; }
 	///
 	InsetLyXType lyxtype() const { return lyxtype_; }
 	///
