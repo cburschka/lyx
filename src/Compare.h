@@ -18,6 +18,7 @@
 
 #include <QObject>
 #include <QThread>
+#include <QTimer>
 #include <QWaitCondition>
 
 #include <string>
@@ -73,6 +74,13 @@ Q_SIGNALS:
 	/// Sets the maximum value of the progress bar in the dialog.
 	void progressMax(int max) const;
 
+	/// A message describing the process
+	void statusMessage(QString msg) const;
+
+public Q_SLOTS:
+	/// Emits the status message signal
+	void doStatusMessage();
+
 public:
 	/// QThread inherited methods
 	//@{
@@ -98,6 +106,9 @@ private:
 
 	///
 	QWaitCondition condition_;
+
+	/// Emit a statusMessage signal from time to time
+	QTimer status_timer_;
 
 	/// Use the Pimpl idiom to hide the internals.
 	class Impl;

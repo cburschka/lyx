@@ -18,6 +18,7 @@
 #include "insets/InsetText.h"
 
 #include "support/lassert.h"	
+#include "support/qstring_helpers.h"
 
 #include <boost/next_prior.hpp>
 
@@ -219,7 +220,7 @@ class Compare::Impl {
 public:
 	///
 	Impl(Compare const & compare) 
-		: abort_(false), compare_(compare)
+		: abort_(false), compare_(compare), recursion_level_(0), D_(0)
 	{}
 
 	///
@@ -233,6 +234,14 @@ public:
 
 	/// Set to true to cancel the algorithm
 	bool abort_;
+
+	///
+	QString status() {
+		QString status;
+		status += toqstr("recursion level:") + " " + QString::number(recursion_level_)
+			+ " " + toqstr("differences:") + " " + QString::number(D_);
+		return status;
+	}
 
 private:
 	/// Finds the middle snake and returns the length of the
@@ -322,6 +331,10 @@ private:
 	compl_vector<DocIterator> nrp;
 	compl_vector<DocIterator> ors;
 	compl_vector<DocIterator> nrs;
+	
+	/// The number of differences in the path the algorithm
+	/// is currently processing.
+	int D_;
 };
 
 /////////////////////////////////////////////////////////////////////
@@ -335,6 +348,15 @@ Compare::Compare(Buffer const * new_buf, Buffer const * old_buf,
 	: new_buffer(new_buf), old_buffer(old_buf), dest_buffer(dest_buf),
 	  options_(options), pimpl_(new Impl(*this))
 {
+	connect(&status_timer_, SIGNAL(timeout()),
+		this, SLOT(doStatusMessage()));
+	status_timer_.start(1000);
+}
+
+
+void Compare::doStatusMessage()
+{
+	statusMessage(pimpl_->status());
 }
 
 
@@ -347,6 +369,8 @@ void Compare::run()
 	dest_buffer->params() = options_.settings_from_new
 		? new_buffer->params() : old_buffer->params();
 	
+	doStatusMessage();
+
 	// do the real work
 	if (!doCompare())
 		return;
@@ -605,6 +629,8 @@ int Compare::Impl::findMiddleSnake(DocRangePair const & rp,
 	// different characters in the old and new chunk.
 	int const D_max = ceil(((double)M_ + N_)/2);
 	for (int D = 0; D <= D_max; ++D) {
+		// to be used in the status messages
+		D_ = D; 
 
 		// Forward and reverse paths
 		for (int f = 0; f < 2; ++f) {

@@ -106,6 +106,7 @@ void GuiCompare::updateContents()
 	newFileCB->clear();
 	oldFileCB->clear();
 	progressBar->setValue(0);
+	statusBar->clearMessage();
 	BufferList::iterator it = theBufferList().begin();
 	BufferList::iterator const end = theBufferList().end();
 	for (; it != end; ++it) {
@@ -211,6 +212,7 @@ void GuiCompare::finished(bool aborted)
 		}
 		setWindowTitle(window_title_);
 		progressBar->setValue(0);
+		statusBar->showMessage(qt_("Aborted"));
 	} else {
 		hideView();
 		bc().ok();
@@ -218,6 +220,7 @@ void GuiCompare::finished(bool aborted)
 			dispatch(FuncRequest(LFUN_BUFFER_SWITCH,
 				dest_buffer_->absFileName()));
 		}
+		statusBar->showMessage(qt_("Finished"));
 	}
 }
 
@@ -234,6 +237,13 @@ void GuiCompare::progressMax(int max) const
 }
 	
 
+
+void GuiCompare::setStatusMessage(QString msg)
+{
+	statusBar->showMessage(msg);
+}
+
+
 void GuiCompare::slotOK()
 {
 	enableControls(false);
@@ -247,10 +257,12 @@ void GuiCompare::slotCancel()
 	if (compare_ && compare_->isRunning()) {
 		window_title_ = windowTitle();
 		setWindowTitle(window_title_ + " " + qt_("(cancelling)"));
+		statusBar->showMessage(qt_("Aborting process..."));
 		compare_->abort();
 	} else {
 		GuiDialog::slotClose();
 		progressBar->setValue(0);
+		statusBar->clearMessage();
 	}
 }
 
@@ -299,6 +311,8 @@ int GuiCompare::run()
 	connect(compare_, SIGNAL(finished(bool)), this, SLOT(finished(bool)));
 	connect(compare_, SIGNAL(progress(int)), this, SLOT(progress(int)));
 	connect(compare_, SIGNAL(progressMax(int)), this, SLOT(progressMax(int)));
+	connect(compare_, SIGNAL(statusMessage(QString)),
+		this, SLOT(setStatusMessage(QString)));
 	compare_->start(QThread::LowPriority);
 	return 1;
 }
