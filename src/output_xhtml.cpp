@@ -342,6 +342,14 @@ XHTMLStream & XHTMLStream::operator<<(EndTag const & etag)
 {
 	if (etag.tag_.empty())
 		return *this;
+
+	// make sure there are tags to be closed
+	if (tag_stack_.empty()) {
+		writeError("Tried to close `" + etag.tag_
+		         + "' when no tags were open!");
+		return *this;		
+	}
+
 	// first make sure we're not closing an empty tag
 	if (!pending_tags_.empty()) {
 		StartTag const & stag = pending_tags_.back();
