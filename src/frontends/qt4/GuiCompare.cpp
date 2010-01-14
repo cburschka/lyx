@@ -192,7 +192,6 @@ void GuiCompare::enableControls(bool enable) const
 void GuiCompare::error()
 {
 	Alert::error(_("Error"), _("Error while comparing documents."));
-	window_title_ = windowTitle();
 	finished(true);
 }
 
@@ -210,7 +209,6 @@ void GuiCompare::finished(bool aborted)
 			dest_buffer_->markClean();
 			theBufferList().release(dest_buffer_);
 		}
-		setWindowTitle(window_title_);
 		progressBar->setValue(0);
 		statusBar->showMessage(qt_("Aborted"), 5000);
 	} else {
@@ -235,7 +233,6 @@ void GuiCompare::progressMax(int max) const
 {
 	progressBar->setMaximum(max);
 }
-	
 
 
 void GuiCompare::setStatusMessage(QString msg)
@@ -255,8 +252,6 @@ void GuiCompare::slotOK()
 void GuiCompare::slotCancel()
 {
 	if (compare_ && compare_->isRunning()) {
-		window_title_ = windowTitle();
-		setWindowTitle(window_title_ + " " + qt_("(cancelling)"));
 		statusBar->showMessage(qt_("Aborting process..."));
 		compare_->abort();
 	} else {
