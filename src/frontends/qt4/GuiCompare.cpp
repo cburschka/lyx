@@ -212,7 +212,7 @@ void GuiCompare::finished(bool aborted)
 		}
 		setWindowTitle(window_title_);
 		progressBar->setValue(0);
-		statusBar->showMessage(qt_("Aborted"));
+		statusBar->showMessage(qt_("Aborted"), 5000);
 	} else {
 		hideView();
 		bc().ok();
@@ -220,7 +220,7 @@ void GuiCompare::finished(bool aborted)
 			dispatch(FuncRequest(LFUN_BUFFER_SWITCH,
 				dest_buffer_->absFileName()));
 		}
-		statusBar->showMessage(qt_("Finished"));
+		statusBar->showMessage(qt_("Finished"), 5000);
 	}
 }
 
