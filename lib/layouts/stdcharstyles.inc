@@ -2,7 +2,7 @@
 # Author : Martin vermeer <martin.vermeer@hut.fi>
 # Character Styles definition
 
-Format 19
+Format 21
 
 # Error fallback:
 InsetLayout CharStyle

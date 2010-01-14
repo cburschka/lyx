@@ -21,7 +21,7 @@
 # - Proof
 # - Case (regular only -- defined as an enumeration)
 
-Format 19
+Format 21
 
 Style Theorem
 	Category              Theorem
