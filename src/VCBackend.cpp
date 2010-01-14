@@ -686,7 +686,7 @@ string SVN::checkOut()
 		return N_("Error: Could not generate logfile.");
 	}
 
-	doVCCommand("svn update " + quoteName(onlyFilename(owner_->absFileName()))
+	doVCCommand("svn update --non-interactive " + quoteName(onlyFilename(owner_->absFileName()))
 		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
 		    FileName(owner_->filePath()));
 
