@@ -309,7 +309,7 @@ Menuset
 		Item "Unfold Math Macro|n" "math-macro-unfold"
 		Item "Fold Math Macro|d" "math-macro-fold"
 		Separator
-		Item "View Messages" "dialog-toggle progress"
+		Item "View Messages|M" "dialog-toggle progress"
 		Item "View Source|S" "dialog-toggle view-source"
 		ViewFormats
 		UpdateFormats
