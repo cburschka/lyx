@@ -13921,7 +13921,7 @@ reference "des:LatexType"
 status collapsed
 
 \begin_layout Plain Layout
-LyxType 
+LyxType
 \end_layout
 
 \end_inset
@@ -13969,6 +13969,62 @@ end
  (indicating a dummy definition ending definitions of charstyles, etc).
  This entry is required in and is only meaningful for Flex insets.
  Among other things, it determines on which menu this inset will appear.
+ Setting 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+LyXType
+\end_layout
+
+\end_inset
+
+ to 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+charstyle
+\end_layout
+
+\end_inset
+
+ will set 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+MultiPar
+\end_layout
+
+\end_inset
+
+ to false.
+ 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+MultiPar
+\end_layout
+
+\end_inset
+
+ can be set to true for charstyle insets, if you wish, by setting it 
+\emph on
+after
+\emph default
+ you set the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+LyXType
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description

@@ -180,6 +180,8 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			lyxtype_ = translateLyXType(lt);
 			if (lyxtype_  == NOLYXTYPE)
 				LYXERR0("Unknown LyXType `" << lt << "'.");
+			if (lyxtype_ == CHARSTYLE)
+				multipar_ = false;
 			break;
 		}
 		case IL_LATEXTYPE:  {
