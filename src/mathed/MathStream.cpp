@@ -306,7 +306,7 @@ MathStream & operator<<(MathStream & ms, char c)
 
 MathStream & operator<<(MathStream & ms, char_type c)
 {
-	ms.os() << c;
+	ms.os().put(c);
 	return ms;
 }
 

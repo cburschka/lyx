@@ -182,7 +182,7 @@ void InsetMathChar::mathmlize(MathStream & ms) const
 	
 	if (ms.inText()) {
 		if (entity.empty())
-			ms << char_type(char_);
+			ms.os().put(char_);
 		else 
 			ms << from_ascii(entity);
 		return;
