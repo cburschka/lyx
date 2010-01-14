@@ -4473,6 +4473,129 @@ begriff.sty
  or images, and it will offer this choice on a case by case basis.
 \end_layout
 
+\begin_layout Standard
+The remainder of this chapter contains more detailed information on XHTML
+ output, its limitations, and ways around those limitations.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This is very imcomplete at this point!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Indexes
+\end_layout
+
+\begin_layout Standard
+LyX will happily export indexes as XHTML, but with certain limitations at
+ the moment.
+\end_layout
+
+\begin_layout Standard
+Index export will be most reliable when you do not attempt to use the fancy
+ constructs that are described in the section on indexes in the 
+\emph on
+User's Guide
+\emph default
+.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+The main issue here is that LyX itself does not really handle these.
+ It just lets you enter what you would have to enter in raw LaTeX.
+\end_layout
+
+\end_inset
+
+ We'll describe how they are handled using the subsection headings from
+ that section.
+\end_layout
+
+\begin_layout Itemize
+Grouping Index Entries (aka, sub-entries): LyX makes an effort to support
+ these, but the entries must be separated by 
+\begin_inset Quotes eld
+\end_inset
+
+ ! 
+\begin_inset Quotes erd
+\end_inset
+
+, that is, there must be spaces around the exclamation point.
+ This is because it is otherwise too difficult to check for escaped exclamation
+ points, ones in math, and so forth.
+\end_layout
+
+\begin_layout Itemize
+Page Ranges: There is no support at all for page ranges, since these make
+ no sense with XHMTL.
+ Instead, you will just get two index entries, one at either end.
+\end_layout
+
+\begin_layout Itemize
+Cross-referencing: There is no support for cross-referencing.
+ If LyX finds an entry containing the 
+\begin_inset Quotes eld
+\end_inset
+
+|see\SpecialChar \ldots{}
+
+\begin_inset Quotes erd
+\end_inset
+
+ construct, it is just dropped, and the rest is treated as an ordinary index
+ entry.
+\end_layout
+
+\begin_layout Itemize
+Index Entry Order: LyX does support attempts to fix the sorting order.
+ It will take what is before the first `@' it finds and use that for sorting,
+ taking what follows the first `@' to be the actual entry.
+ At present, LyX does not check for escaped `@', so do not try to index
+ email addresses.
+\end_layout
+
+\begin_layout Itemize
+Index Entry Layout: You can format entries by using the text style dialog,
+ or by using any other method available within LyX itself.
+ There is no support for constructs like: 
+\begin_inset Quotes eld
+\end_inset
+
+entry|textbf
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Indeed, if LyX finds a pipe symbol, `|', in an entry, it will delete it
+ and everything that follows it.
+\end_layout
+
+\begin_layout Itemize
+Multiple Indexes: There is no support for multiple indexes.
+ Rather, all index entries will be printed as one large index.
+ To avoid our printing several versions of the index, we print only the
+ main index, so make sure you have one.
+\end_layout
+
+\begin_layout Section
+Nomenclature and Glossary
+\end_layout
+
+\begin_layout Standard
+There is at present no support for glossaries.
+\end_layout
+
 \begin_layout Chapter
 The LyX Server
 \end_layout
