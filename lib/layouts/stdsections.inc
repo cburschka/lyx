@@ -124,7 +124,6 @@ Style Paragraph
 	LatexName             paragraph
 	TopSep                0.4
 	BottomSep             0
-	HTMLTag               span
 End
 
 
@@ -135,7 +134,6 @@ Style Subparagraph
 	LatexName             subparagraph
 	NextNoIndent          0
 	LeftMargin            MM
-	HTMLTag               span
 End
 
 Input numarticle.inc
