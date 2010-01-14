@@ -651,6 +651,8 @@ int Compare::Impl::findMiddleSnake(DocRangePair const & rp,
 						return 2 * D - odd_offset_;
 					}
 				}
+				if (abort_)
+					return 0;
 			}
 		}
 	}
@@ -695,6 +697,9 @@ bool Compare::Impl::diff(Buffer const * new_buf, Buffer const * old_buf,
 
 void Compare::Impl::diff_i(DocRangePair const & rp)
 {
+	if (abort_)
+		return;
+
 	// The middle snake
 	DocPair middle_snake;
 
