@@ -19691,16 +19691,10 @@ puttygen
  In case the SVN server runs on linux, note that the format of the public
  key is not compatible with linux openssh and you will need to direcly copy-past
 e the key from the “
-\begin_inset Flex CharStyle:Emph
-status collapsed
-
-\begin_layout Plain Layout
-Public key for pasting into OpenSSH authorized_keys file:
-\end_layout
-
-\end_inset
-
-” edit field into the server's 
+\emph on
+Public key for pasting into OpenSSH authorized_keys file
+\emph default
+:” edit field into the server's 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
