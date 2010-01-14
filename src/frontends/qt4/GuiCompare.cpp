@@ -66,6 +66,8 @@ GuiCompare::GuiCompare(GuiView & lv)
 	progressBar->setValue(0);
 	progressBar->setEnabled(false);
 
+	closePB->setCursor(Qt::ArrowCursor);
+
 	bc().setPolicy(ButtonPolicy::OkApplyCancelPolicy);
 	bc().setOK(okPB);
 }
@@ -170,8 +172,12 @@ QString GuiCompare::browse(QString const & in_name) const
 }
 
 
-void GuiCompare::enableControls(bool enable) const
+void GuiCompare::enableControls(bool enable)
 {
+	// Set the hourglass cursor for the dialog, but
+	// never for the cancel button.
+	setCursor(enable ? Qt::ArrowCursor : Qt::WaitCursor);
+
 	newFileLA->setEnabled(enable);
 	newFilePB->setEnabled(enable);
 	newFileCB->setEnabled(enable);

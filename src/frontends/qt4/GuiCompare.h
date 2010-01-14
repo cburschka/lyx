@@ -74,7 +74,7 @@ private:
 
 
 	/// enable or disable all controls and rename the Close/Cancel button
-	void enableControls(bool enable) const;
+	void enableControls(bool enable);
 	
 	/// browse for a file
 	QString browse(QString const & in_name) const;
@@ -94,9 +94,6 @@ private:
 	Buffer const * old_buffer_;
 	/// the buffer that will contain the result
 	Buffer const * new_buffer_;
-
-	/// the window title
-	mutable QString window_title_;
 };
 
 
