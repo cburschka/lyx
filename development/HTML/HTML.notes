@@ -21,8 +21,8 @@ These insets work but still need work:
 	  and appropriate img tag. But we don't yet do any sort of scaling, rotating, and
 		so forth. That won't be hard, since we can just call ImageMagick to do this for 
 		us, but appropriate routines will need to be written.
-	InsetIndex and InsetPrintIndex: Just need to sort out some ordering issues and the
-		like.
+	InsetIndex and InsetPrintIndex: These work with limitations, as noted in the 
+		Additional Features manual.
 	InsetNomencl and InsetPrintNomencl: Do not work at all yet, but would be easy to do.
 		First, Nomencl would need to go to the TOC, which it should do anyway. Then just
 		do as for TOC and Index, more or less.
