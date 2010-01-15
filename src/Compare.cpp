@@ -22,8 +22,6 @@
 
 #include <boost/next_prior.hpp>
 
-#include <cmath>
-
 using namespace std;
 using namespace lyx::support;
 
@@ -625,9 +623,10 @@ int Compare::Impl::findMiddleSnake(DocRangePair const & rp,
 	ors.reset(DocIterator());
 	nrs.reset(DocIterator());
 
+	// In the formula below, the "+ 1" ensures we round like ceil()
+	int const D_max = (M_ + N_ + 1)/2;
 	// D is the number of horizontal and vertical steps, i.e.
 	// different characters in the old and new chunk.
-	int const D_max = ceil(((double)M_ + N_)/2);
 	for (int D = 0; D <= D_max; ++D) {
 		// to be used in the status messages
 		D_ = D; 
