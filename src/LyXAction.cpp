@@ -2008,25 +2008,6 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_OUTLINE_OUT, "outline-out", Noop, Edit },
-		
-/*!
- * \var lyx::FuncCode lyx::LFUN_OUTLINE_DRAGMOVE
- * \li Action: Moves the document section associated with the specified
-               heading to a specified location. Both the heading and the
-               target paragraph are specified by the paragraph ID numbers.
- * \li Notion: The heading is a paragraph with style Part/Chapter/Section/
-               etc. Id number of the paragraph is not the sequential number
-               seen on the screen, but an internal number that is unique
-               for all opened buffers (documents).
- * \li Syntax: outline-dragmove <PAR_ID_SECTION> <PAR_ID_DROP_POSITION>
- * \li Params: <PAR_ID_SECTION>: paragraph id of the section heading which
-                                 is to be moved. \n
-               <PAR_ID_DROP_POSITION>: the paragraph id where the section
-                                       will be moved to.
- * \li Origin: Rob Oakes, 22 June 2009
- * \endvar
- */
-		{ LFUN_OUTLINE_DRAGMOVE, "outline-dragmove", Noop, Edit },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_INSET_EDIT
@@ -2038,7 +2019,6 @@ void LyXAction::init()
  * \li Origin: JSpitzm, 27 Apr 2006
  * \endvar
  */
- 
 		{ LFUN_INSET_EDIT, "inset-edit", ReadOnly, Edit },
 
 /*!
