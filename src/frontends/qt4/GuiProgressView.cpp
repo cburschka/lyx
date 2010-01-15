@@ -173,6 +173,8 @@ void GuiProgressView::appendLyXErrText(QString const & text)
 	// showing Debug::ANY messages completely blocks the GUI.
 	// Text is not always send as the whole line, so we must be
 	// careful about eolns.
+	// WARNING: processing events could cause crashes!
+	// TODO: find a better solution
 	if (text.endsWith("\n"))
 		QApplication::processEvents();
 }
