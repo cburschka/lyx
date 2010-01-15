@@ -17,7 +17,6 @@
 #include "FontInfo.h"
 
 #include "support/docstring.h"
-#include "support/debug.h"
 
 #include <set>
 #include <string>
