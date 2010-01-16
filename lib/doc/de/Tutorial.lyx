@@ -4401,7 +4401,7 @@ Mathe-Werkzeugleiste
  einfügen, wie etwa Wurzeln, Brüche oder sogar weitere Matrizen.
  Sie können auch einzelne Felder ganz leer lassen.
 \begin_inset Formula $\begin{array}{ccccc}
-\\\\\end{array}$
+\\\end{array}$
 \end_inset
 
 
@@ -5471,40 +5471,42 @@ te nicht unterstützt werden, welche Fehler (noch) vorhanden sind und wie
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-It is important to understand that 
-\family typewriter
-tex2lyx
-\family default
- can only translate files whose document class is 
-\begin_inset Quotes eld
-\end_inset
-
-known
-\begin_inset Quotes erd
-\end_inset
-
- to LyX, that is, for which there is a corresponding LyX 
+Es ist wichtig zu verstehen, d
 \family sans
-layout file
+ass 
+\family typewriter
+tex2lyx
+\family sans
+ nur
 \family default
-.
- If there is no layout file, then you will get an error saying that the
- conversion could not be performed.
- So, unless you have a layout for the document class of your LaTeX file,
- 
+ Dateien umwandeln kann, deren Dokumentklasse LyX 
+\begin_inset Quotes gld
+\end_inset
+
+bekannt
+\begin_inset Quotes grd
+\end_inset
+
+ ist.
+ Dazu muss eine LyX 
+\family sans
+Layout-Datei
+\family default
+ für die Dokumentklasse vorhanden sein.
+ Gibt es keine Layout-Datei, erhalten Sie eine Fehlermeldung, dass die Konvertie
+rung fehlgeschlagen ist.
+ Ohne Layout-Datei weiß 
 \family typewriter
 tex2lyx
 \family default
- simply will not now how to translate the LaTeX that it finds there into
- things LyX understands.
- More about layout files and how they are created is explained in detail
- in Chapter 5 of the 
+ also nicht wie es die einzelnen LaTeX-Befehle übersetzen soll, so dass
+ LyX diese erkennt.
+ Mehr über Layout-Dateien und wie man diese erstellt, ist in Kapitel 5 des
+ Handbuchs 
 \emph on
-Customization
+Anpassung
 \emph default
- manual.
+ detailliert erklärt.
 \end_layout
 
 \begin_layout Subsection
