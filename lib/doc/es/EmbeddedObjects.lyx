@@ -198,7 +198,7 @@
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
-\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,  pdfpagelayout=OneColumn, pdfnewwindow=true,  pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize default
 \use_geometry false
 \use_amsmath 2
@@ -16817,6 +16817,7 @@ o más pequeño al comienzo de la última columna para conseguir el espacio
 
 \begin_layout Standard
 \begin_inset Float table
+placement h
 wide false
 sideways false
 status open
@@ -17201,6 +17202,13 @@ dcolumn
 \end_layout
 
 \begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float table
 placement h
 wide false
@@ -17249,7 +17257,7 @@ dcolumn
 <features>
 <column alignment="center" valignment="top" width="0" special="D{x}{\times}{4.9}">
 <column alignment="center" valignment="top" width="0" special="D{x}{\times}{4.9}">
-<column alignment="center" valignment="top" width="0" special="D{~}{\,}{9.7}">
+<column alignment="center" valignment="top" width="0" special="D{+}{\,}{9.7}">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -17327,7 +17335,7 @@ times
 
 \end_inset
 
-24~
+24+
 \begin_inset Formula $\mbox{bottles}$
 \end_inset
 
@@ -17385,7 +17393,7 @@ times
 
 \end_inset
 
-768~
+768+
 \begin_inset Formula $\mbox{Pixels}$
 \end_inset
 
@@ -17443,7 +17451,7 @@ times
 
 \end_inset
 
-6~
+6+
 \begin_inset Formula $\mbox{cm}$
 \end_inset
 
