@@ -444,6 +444,13 @@ static bool equal(Inset const * i_o, Inset const * i_n)
 
 
 static bool equal(DocIterator & o, DocIterator & n) {
+	// Explicitly check for this, so we won't call
+	// Paragraph::getChar for the last pos.
+	bool const o_lastpos = o.pos() == o.lastpos();
+	bool const n_lastpos = n.pos() == n.lastpos();
+	if (o_lastpos || n_lastpos)
+		return o_lastpos && n_lastpos;
+
 	Paragraph const & old_par = o.text()->getPar(o.pit());
 	Paragraph const & new_par = n.text()->getPar(n.pit());
 
