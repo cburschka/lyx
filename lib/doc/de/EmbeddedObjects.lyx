@@ -191,7 +191,7 @@
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
-\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,  pdfpagelayout=OneColumn, pdfnewwindow=true,  pdfstartview=XYZ, plainpages=false, pdfpagelabels"
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize a4paper
 \use_geometry false
 \use_amsmath 2
@@ -17626,9 +17626,9 @@ reference "tab:Verschiedene-Ausrichtungen"
 \end_inset
 
  wird mit 
-\family typewriter
+\series bold
 dcolumn
-\family default
+\series default
  wie die erste Spalte von Tabelle
 \begin_inset space ~
 \end_inset
@@ -17657,6 +17657,13 @@ reference "tab:Verschiedene-Ausrichtungen"
 dcolumn
 \series default
  nicht möglich.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -17709,7 +17716,7 @@ dcolumn
 <features>
 <column alignment="center" valignment="top" width="0" special="D{x}{\times}{-1}">
 <column alignment="center" valignment="top" width="0" special="D{x}{\times}{4.9}">
-<column alignment="center" valignment="top" width="0" special="D{~}{\,}{9.7}">
+<column alignment="center" valignment="top" width="0" special="D{+}{\,}{9.7}">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
@@ -17748,11 +17755,7 @@ Einheiten
 \begin_inset space \thinspace{}
 \end_inset
 
-
-\begin_inset Formula $\mbox{Flaschen}$
-\end_inset
-
-
+Flaschen
 \end_layout
 
 \end_inset
@@ -17791,7 +17794,7 @@ times
 
 \end_inset
 
-24~
+24+
 \begin_inset Formula $\mbox{Flaschen}$
 \end_inset
 
@@ -17810,11 +17813,7 @@ times
 \begin_inset space \thinspace{}
 \end_inset
 
-
-\begin_inset Formula $\mbox{Pixel}$
-\end_inset
-
-
+Pixel
 \end_layout
 
 \end_inset
@@ -17853,7 +17852,7 @@ times
 
 \end_inset
 
-768~
+768+
 \begin_inset Formula $\mbox{Pixel}$
 \end_inset
 
@@ -17872,11 +17871,7 @@ times
 \begin_inset space \thinspace{}
 \end_inset
 
-
-\begin_inset Formula $\mbox{cm}$
-\end_inset
-
-
+cm
 \end_layout
 
 \end_inset
@@ -17915,7 +17910,7 @@ times
 
 \end_inset
 
-6~
+6+
 \begin_inset Formula $\mbox{cm}$
 \end_inset
 
