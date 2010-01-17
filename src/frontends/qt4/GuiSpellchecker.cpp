@@ -41,6 +41,7 @@
 #include "support/textutils.h"
 
 #include <QListWidgetItem>
+#include <QKeyEvent>
 
 #include "SpellChecker.h"
 
@@ -77,6 +78,8 @@ GuiSpellchecker::GuiSpellchecker(GuiView & lv)
 		this, SLOT(on_replacePB_clicked()));
 
 	d->ui.wordED->setReadOnly(true);
+
+	d->ui.suggestionsLW->installEventFilter(this);
 }
 
 
@@ -89,6 +92,24 @@ GuiSpellchecker::~GuiSpellchecker()
 void GuiSpellchecker::on_closePB_clicked()
 {
 	close();
+}
+
+
+bool GuiSpellchecker::eventFilter(QObject *obj, QEvent *event)
+{
+	if (obj == d->ui.suggestionsLW && event->type() == QEvent::KeyPress) {
+		QKeyEvent *e = static_cast<QKeyEvent *> (event);
+		if (e->key() == Qt::Key_Enter || e->key() == Qt::Key_Return) {
+			on_suggestionsLW_itemClicked(d->ui.suggestionsLW->currentItem());
+			on_replacePB_clicked();
+			return true;
+		} else if (e->key() == Qt::Key_Right) {
+			on_suggestionsLW_itemClicked(d->ui.suggestionsLW->currentItem());
+			return true;
+		}
+	}
+	// standard event processing
+	return QWidget::eventFilter(obj, event);
 }
 
 

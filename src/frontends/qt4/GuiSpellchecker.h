@@ -62,6 +62,8 @@ private:
 	/// show count of checked words at normal exit
 	void showSummary();
 
+	bool eventFilter(QObject *obj, QEvent *event);
+
 	struct Private;
 	Private * const d;
 };
