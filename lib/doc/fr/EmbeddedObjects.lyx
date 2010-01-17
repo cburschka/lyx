@@ -12492,7 +12492,7 @@ c
 
 \begin_layout Plain Layout
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -12539,7 +12539,7 @@ f
 </cell>
 </row>
 <row>
-<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -12593,9 +12593,11 @@ raggedright}
 
 \begin_layout Standard
 créez un tableau 3×3.
- Pour se débarrasser de la bordure au dessus de la dernière cellule de la
- première colonne, la cellule est marquée comme étant une multicolonne et
- la bordure supérieure est désactivée.
+ 
+\lang english
+Unset the upper border of the last cell in the first column.
+
+\lang french
  La cellule multi-ligne est ensuite créée dans la deuxième cellule de la
  première colonne en y insérant la commande
 \end_layout

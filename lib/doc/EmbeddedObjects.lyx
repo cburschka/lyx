@@ -12254,7 +12254,7 @@ f
 </cell>
 </row>
 <row>
-<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -12308,8 +12308,7 @@ raggedright}
 
 \begin_layout Standard
 create a 3×3 table.
- To get rid of the line above the last cell in the first column, the cell
- is marked as multicolumn and the upper border is unset.
+ Unset the upper border of the last cell in the first column.
  The multirow is now created in the second row of the first column by inserting
  there the command
 \end_layout

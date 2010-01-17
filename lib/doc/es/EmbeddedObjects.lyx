@@ -12109,7 +12109,7 @@ f
 </cell>
 </row>
 <row>
-<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -12163,8 +12163,11 @@ raggedright}
 
 \begin_layout Standard
 crea una tabla 3×3.
- Para quitar la línea sobre la última celda en la primera columna, se marca
- la celda como multicolumna y se quita el borde superior.
+ 
+\lang english
+Unset the upper border of the last cell in the first column.
+
+\lang spanish
  Ahora se crea la multifila en la segunda fila de la primera columna insertando
  ahí el comando
 \end_layout
