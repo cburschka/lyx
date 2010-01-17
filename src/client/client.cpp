@@ -66,7 +66,7 @@ using ::boost::scoped_ptr;
 namespace lyx {
 
 // Keep the linker happy on Windows
-void emergencyCleanup()
+void lyx_exit(int)
 {}
 
 namespace support {

@@ -57,7 +57,7 @@ Messages & getGuiMessages()
 
 
 // Keep the linker happy on Windows
-void emergencyCleanup()
+void lyx_exit(int)
 {}
 
 

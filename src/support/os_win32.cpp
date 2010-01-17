@@ -72,7 +72,7 @@ using namespace std;
 
 namespace lyx {
 
-void emergencyCleanup();
+void lyx_exit(int);
 
 namespace support {
 namespace os {
@@ -88,7 +88,7 @@ BOOL terminate_handler(DWORD event)
 	if (event == CTRL_CLOSE_EVENT
 	    || event == CTRL_LOGOFF_EVENT
 	    || event == CTRL_SHUTDOWN_EVENT) {
-		lyx::emergencyCleanup();
+		lyx::lyx_exit(1);
 		return TRUE;
 	}
 	return FALSE;
