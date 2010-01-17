@@ -32,7 +32,7 @@
    <item row="4" column="0" >
     <widget class="QLabel" name="TextLabel2" >
      <property name="text" >
-      <string>Suggestions:</string>
+      <string>Su&amp;ggestions:</string>
      </property>
      <property name="buddy" >
       <cstring>suggestionsLW</cstring>
@@ -55,7 +55,7 @@
       <string>Add the word to your personal dictionary</string>
      </property>
      <property name="text" >
-      <string>A&amp;dd</string>
+      <string>&amp;Add</string>
      </property>
     </widget>
    </item>
@@ -98,7 +98,7 @@
    <item row="2" column="0" >
     <widget class="QLabel" name="TextLabel1" >
      <property name="text" >
-      <string>Replacement:</string>
+      <string>Re&amp;placement:</string>
      </property>
      <property name="buddy" >
       <cstring>replaceCO</cstring>
@@ -167,10 +167,6 @@
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
- <includes>
-  <include location="local" >qt_i18n.h</include>
- </includes>
  <tabstops>
   <tabstop>wordED</tabstop>
   <tabstop>replaceCO</tabstop>
@@ -181,6 +177,9 @@
   <tabstop>addPB</tabstop>
   <tabstop>closePB</tabstop>
  </tabstops>
+ <includes>
+  <include location="local" >qt_i18n.h</include>
+ </includes>
  <resources/>
  <connections/>
 </ui>
