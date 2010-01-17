@@ -13,7 +13,13 @@
    <string>DockWidget</string>
   </property>
   <widget class="QWidget" name="dockWidgetContents" >
-   <layout class="QGridLayout" name="gridLayout" >
+   <layout class="QGridLayout" >
+    <property name="margin" >
+     <number>9</number>
+    </property>
+    <property name="spacing" >
+     <number>6</number>
+    </property>
     <item row="0" column="0" >
      <widget class="QLabel" name="TextLabel3" >
       <property name="text" >
@@ -44,7 +50,7 @@
     <item row="2" column="0" >
      <widget class="QLabel" name="TextLabel1" >
       <property name="text" >
-       <string>Replacement:</string>
+       <string>Re&amp;placement:</string>
       </property>
       <property name="buddy" >
        <cstring>replaceCO</cstring>
@@ -54,7 +60,9 @@
     <item row="3" column="0" >
      <widget class="QComboBox" name="replaceCO" >
       <property name="sizePolicy" >
-       <sizepolicy vsizetype="Fixed" hsizetype="MinimumExpanding" >
+       <sizepolicy>
+        <hsizetype>0</hsizetype>
+        <vsizetype>0</vsizetype>
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
@@ -92,7 +100,7 @@
     <item row="4" column="0" >
      <widget class="QLabel" name="TextLabel2" >
       <property name="text" >
-       <string>Suggestions:</string>
+       <string>S&amp;uggestions:</string>
       </property>
       <property name="buddy" >
        <cstring>suggestionsLW</cstring>
@@ -143,14 +151,14 @@
      </widget>
     </item>
     <item row="9" column="1" >
-     <spacer name="spacer" >
+     <spacer>
       <property name="orientation" >
        <enum>Qt::Vertical</enum>
       </property>
       <property name="sizeType" >
        <enum>QSizePolicy::Expanding</enum>
       </property>
-      <property name="sizeHint" stdset="0" >
+      <property name="sizeHint" >
        <size>
         <width>74</width>
         <height>98</height>
