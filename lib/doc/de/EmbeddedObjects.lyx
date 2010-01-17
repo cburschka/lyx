@@ -12385,8 +12385,8 @@ multirow{Zeilenzahl}{Zellenbreite}{Zelleninhalt}
 \end_layout
 
 \begin_layout Standard
-In der folgenden 3×3-Tabelle wurde die letzte Zelle  der ersten Spalte als
- Mehrfachspalte definiert und die obere Linie entfernt.
+In der folgenden 3×3-Tabelle wurde obere Linie der letzten Zelle der ersten
+ Spalte entfernt.
 \end_layout
 
 \begin_layout Standard
@@ -12460,8 +12460,7 @@ multirow{2}{2.5cm}{
 
 \end_inset
 
-Mehrfach\SpecialChar \-
-zeilen-Text
+mehrzeiliger Text
 \begin_inset ERT
 status collapsed
 
@@ -12497,7 +12496,7 @@ f
 </cell>
 </row>
 <row>
-<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -12592,7 +12591,13 @@ cm.
 multirow
 \series default
  richtet seinen Inhalt standardmäßig linksbündig aus.
- Das wurde mit dem Befehl
+ Um die Ausrichtung zu Ändern, erneuern Sie den Befehl 
+\series bold
+
+\backslash
+multirowsetup
+\series default
+ mit dem Befehl
 \end_layout
 
 \begin_layout Standard
@@ -12608,30 +12613,31 @@ centering}
 \end_layout
 
 \begin_layout Standard
-als TeX-Code  vor der (Gleitobjekt-)Tabelle überschrieben und durch
-\end_layout
-
-\begin_layout Standard
-
+im LaTeX-Vorspann.
+ Es werden dann die Inhalte aller Mehrfachzeilen-Zellen des Dokuments zentriert.
+ Wenn diese Ausrichtung nur für einige Tabellen gelten soll, kann der Befehl
+ auch mittels TeX-Code vor der jeweiligen Tabelle, statt im LaTeX-Vorspann,
+ erneuert werden.
+ Für rechtsbündigen Text ersetzt man 
 \series bold
 
 \backslash
-renewcommand{
-\backslash
-multirowsetup}{
-\backslash
-raggedright}
-\end_layout
-
-\begin_layout Standard
-zurückgesetzt.
- Für rechtsbündigen Text benutzt man 
+centering
+\series default
+ durch 
 \series bold
 
 \backslash
 raggedleft
 \series default
 .
+ Um zur linksbündigen Ausrichtung zurückzukehren, wird 
+\series bold
+
+\backslash
+raggedright
+\series default
+ verwendet.
 \end_layout
 
 \begin_layout Section
