@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2009-12-12 10:44+0100\n"
+"POT-Creation-Date: 2010-01-17 11:55+0100\n"
 "PO-Revision-Date: 2008-09-29 17:28+0100\n"
 "Last-Translator: Hatim Alahmadi <Dr.Hatim@hotmail.com>\n"
 "Language-Team: LyX team <Dr.Hatim@hotmail.com>\n"
@@ -90,13 +90,13 @@ msgstr "موافق"
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:890
 #: src/Buffer.cpp:2713 src/Buffer.cpp:2759 src/Buffer.cpp:2794
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:866 src/LyXFunc.cpp:1042
-#: src/LyXFunc.cpp:1912 src/LyXVC.cpp:196
+#: src/LyXFunc.cpp:1923 src/LyXVC.cpp:196
 #: src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1266
 #: src/frontends/qt4/GuiParagraph.cpp:69
-#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1593
-#: src/frontends/qt4/GuiView.cpp:1785 src/frontends/qt4/GuiView.cpp:1837
-#: src/frontends/qt4/GuiView.cpp:1897 src/insets/InsetBibtex.cpp:143
+#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:1624
+#: src/frontends/qt4/GuiView.cpp:1816 src/frontends/qt4/GuiView.cpp:1868
+#: src/frontends/qt4/GuiView.cpp:1928 src/insets/InsetBibtex.cpp:143
 msgid "&Cancel"
 msgstr "الغاء"
 
@@ -185,6 +185,7 @@ msgstr "ادخل اسم قاعدة بيانات BibTeX"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:114
 #: src/frontends/qt4/ui/BranchesUi.ui:50
 #: src/frontends/qt4/ui/CitationUi.ui:550
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:58
 msgid "&Add"
 msgstr "اضافة"
 
@@ -192,7 +193,7 @@ msgstr "اضافة"
 #: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:91
 #: src/frontends/qt4/ui/LabelUi.ui:92 src/frontends/qt4/ui/NomenclUi.ui:105
 #: src/frontends/qt4/ui/SendtoUi.ui:92 src/frontends/qt4/ui/ShortcutUi.ui:65
-#: src/LyXFunc.cpp:830 src/buffer_funcs.cpp:107
+#: src/LyXFunc.cpp:830 src/buffer_funcs.cpp:108
 #: src/frontends/qt4/ButtonController.cpp:231
 msgid "Cancel"
 msgstr "الغاء"
@@ -376,8 +377,8 @@ msgstr "استعادة"
 #: src/frontends/qt4/ui/ParagraphUi.ui:250 src/frontends/qt4/ui/PrefsUi.ui:83
 #: src/frontends/qt4/ui/RefUi.ui:90 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/VSpaceUi.ui:49
-#: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1341
-#: src/frontends/qt4/GuiDocument.cpp:2239
+#: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1342
+#: src/frontends/qt4/GuiDocument.cpp:2240
 msgid "&Apply"
 msgstr "تطبيق"
 
@@ -501,7 +502,7 @@ msgstr "الحجم:"
 #: src/frontends/qt4/GuiDocument.cpp:668 src/frontends/qt4/GuiDocument.cpp:680
 #: src/frontends/qt4/GuiDocument.cpp:1176
 #: src/frontends/qt4/GuiDocument.cpp:1221
-#: src/frontends/qt4/GuiDocument.cpp:2280 src/frontends/qt4/GuiExternal.cpp:75
+#: src/frontends/qt4/GuiDocument.cpp:2281 src/frontends/qt4/GuiExternal.cpp:75
 #: src/frontends/qt4/GuiGraphics.cpp:71 src/frontends/qt4/GuiListings.cpp:152
 #: src/frontends/qt4/GuiListings.cpp:159 src/frontends/qt4/GuiPrefs.cpp:1801
 msgid "Default"
@@ -1935,7 +1936,6 @@ msgstr "المتاح:"
 
 #: src/frontends/qt4/ui/ModulesUi.ui:108
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:187
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:58
 msgid "A&dd"
 msgstr "اضافة"
 
@@ -2165,7 +2165,7 @@ msgstr "ملصق طويل"
 msgid "Line &spacing"
 msgstr "تباعد الاسطر"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1420
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1419
 #: src/frontends/qt4/GuiDocument.cpp:572
 msgid "Single"
 msgstr "مفرد"
@@ -2174,7 +2174,7 @@ msgstr "مفرد"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1426
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1425
 #: src/frontends/qt4/GuiDocument.cpp:576
 msgid "Double"
 msgstr "مزدوج"
@@ -3206,7 +3206,7 @@ msgid "&User interface file:"
 msgstr "ملف واجهة المستخدم:"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:73 src/LyXFunc.cpp:721
-#: src/frontends/qt4/GuiView.cpp:1897
+#: src/frontends/qt4/GuiView.cpp:1928
 msgid "&Save"
 msgstr "حفظ"
 
@@ -3430,8 +3430,9 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:35
-msgid "Suggestions:"
-msgstr ""
+#, fuzzy
+msgid "Su&ggestions:"
+msgstr "سؤال"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:45
 msgid "Replace word with current choice"
@@ -3458,7 +3459,8 @@ msgid "I&gnore All"
 msgstr "تجاهل الكل"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:101
-msgid "Replacement:"
+#, fuzzy
+msgid "Re&placement:"
 msgstr "البديل:"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:111
@@ -4827,10 +4829,10 @@ msgstr ""
 msgid "[Acknowledgements]"
 msgstr ""
 
-#: lib/layouts/aastex.layout:394 src/frontends/qt4/GuiDocument.cpp:1382
-#: src/frontends/qt4/GuiDocument.cpp:1393
-#: src/frontends/qt4/GuiDocument.cpp:1480
-#: src/frontends/qt4/GuiDocument.cpp:1499
+#: lib/layouts/aastex.layout:394 src/frontends/qt4/GuiDocument.cpp:1383
+#: src/frontends/qt4/GuiDocument.cpp:1394
+#: src/frontends/qt4/GuiDocument.cpp:1481
+#: src/frontends/qt4/GuiDocument.cpp:1500
 msgid "and"
 msgstr "و"
 
@@ -5132,7 +5134,7 @@ msgid "Seriate"
 msgstr ""
 
 #: lib/layouts/apa.layout:406 lib/layouts/apa.layout:407
-#: src/buffer_funcs.cpp:420
+#: src/buffer_funcs.cpp:421
 msgid "(\\alph{enumii})"
 msgstr ""
 
@@ -11196,19 +11198,19 @@ msgid "Justified Line Break|J"
 msgstr ""
 
 #: lib/ui/stdcontext.inc:281 lib/ui/stdcontext.inc:327 lib/ui/stdmenus.inc:99
-#: lib/ui/stdtoolbars.inc:78 src/Text3.cpp:1102
+#: lib/ui/stdtoolbars.inc:78 src/Text3.cpp:1116
 #: src/mathed/InsetMathNest.cpp:553
 msgid "Cut"
 msgstr "قص"
 
 #: lib/ui/stdcontext.inc:282 lib/ui/stdcontext.inc:328 lib/ui/stdmenus.inc:100
-#: lib/ui/stdtoolbars.inc:79 src/Text3.cpp:1107
+#: lib/ui/stdtoolbars.inc:79 src/Text3.cpp:1121
 #: src/mathed/InsetMathNest.cpp:561
 msgid "Copy"
 msgstr "نسخ"
 
 #: lib/ui/stdcontext.inc:283 lib/ui/stdcontext.inc:329 lib/ui/stdmenus.inc:101
-#: lib/ui/stdtoolbars.inc:80 src/Text3.cpp:1055
+#: lib/ui/stdtoolbars.inc:80 src/Text3.cpp:1069
 #: src/mathed/InsetMathGrid.cpp:1259 src/mathed/InsetMathNest.cpp:533
 msgid "Paste"
 msgstr "لصق"
@@ -14900,8 +14902,8 @@ msgstr ""
 msgid "Table (CSV)"
 msgstr "جدول (CSV)"
 
-#: lib/configure.py:354 src/frontends/qt4/GuiView.cpp:886
-#: src/frontends/qt4/GuiView.cpp:887 src/mathed/MathMacroTemplate.cpp:542
+#: lib/configure.py:354 src/frontends/qt4/GuiView.cpp:917
+#: src/frontends/qt4/GuiView.cpp:918 src/mathed/MathMacroTemplate.cpp:542
 msgid "LyX"
 msgstr "ليك"
 
@@ -14977,33 +14979,33 @@ msgstr "مس وورد"
 msgid "HTML (MS Word)"
 msgstr "HTML (MS Word)"
 
-#: src/BiblioInfo.cpp:235 src/frontends/qt4/GuiDocument.cpp:1381
+#: src/BiblioInfo.cpp:239 src/frontends/qt4/GuiDocument.cpp:1382
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s و %2$s"
 
-#: src/BiblioInfo.cpp:239
+#: src/BiblioInfo.cpp:243
 #, c-format
 msgid "%1$s et al."
 msgstr ""
 
-#: src/BiblioInfo.cpp:296
+#: src/BiblioInfo.cpp:300
 msgid "Ch. "
 msgstr ""
 
-#: src/BiblioInfo.cpp:298
+#: src/BiblioInfo.cpp:302
 msgid "pp. "
 msgstr ""
 
-#: src/BiblioInfo.cpp:437 src/BiblioInfo.cpp:440
+#: src/BiblioInfo.cpp:441 src/BiblioInfo.cpp:444
 msgid "No year"
 msgstr "لا عام"
 
-#: src/BiblioInfo.cpp:499 src/BiblioInfo.cpp:559
+#: src/BiblioInfo.cpp:503 src/BiblioInfo.cpp:563
 msgid "Add to bibliography only."
 msgstr "اضافة للبابلوغرافيا فقط."
 
-#: src/BiblioInfo.cpp:555
+#: src/BiblioInfo.cpp:559
 msgid "before"
 msgstr "قبل"
 
@@ -15152,8 +15154,8 @@ msgid "Overwrite modified file?"
 msgstr "استبدال الملف المعدل؟"
 
 #: src/Buffer.cpp:890 src/Exporter.cpp:49 src/LyXFunc.cpp:1042
-#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1593
-#: src/frontends/qt4/GuiView.cpp:1785
+#: src/frontends/qt4/GuiClipboard.cpp:208 src/frontends/qt4/GuiView.cpp:1624
+#: src/frontends/qt4/GuiView.cpp:1816
 msgid "&Overwrite"
 msgstr "استبدال"
 
@@ -15554,22 +15556,22 @@ msgstr ""
 msgid "Statistics"
 msgstr "احصاءات"
 
-#: src/BufferView.cpp:2172
+#: src/BufferView.cpp:2173
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr ""
 
-#: src/BufferView.cpp:2183
+#: src/BufferView.cpp:2184
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "المستند %1$s ادرج."
 
-#: src/BufferView.cpp:2185
+#: src/BufferView.cpp:2186
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "لم يدرج المستند %1$s"
 
-#: src/BufferView.cpp:2447
+#: src/BufferView.cpp:2448
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15577,26 +15579,26 @@ msgid ""
 "due to the error: %2$s"
 msgstr ""
 
-#: src/BufferView.cpp:2449
+#: src/BufferView.cpp:2450
 msgid "Could not read file"
 msgstr "لم يُقرأ الملف"
 
-#: src/BufferView.cpp:2456
+#: src/BufferView.cpp:2457
 #, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr ""
 
-#: src/BufferView.cpp:2457 src/output.cpp:39
+#: src/BufferView.cpp:2458 src/output.cpp:39
 msgid "Could not open file"
 msgstr "لم يتم فتح الملف"
 
-#: src/BufferView.cpp:2464
+#: src/BufferView.cpp:2465
 msgid "Reading not UTF-8 encoded file"
 msgstr ""
 
-#: src/BufferView.cpp:2465
+#: src/BufferView.cpp:2466
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -16087,19 +16089,19 @@ msgid "Copying %1$s to %2$s failed."
 msgstr ""
 
 #: src/Font.cpp:49 src/frontends/qt4/GuiCharacter.cpp:118
-#: src/frontends/qt4/GuiDocument.cpp:2280
+#: src/frontends/qt4/GuiDocument.cpp:2281
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Roman"
 msgstr "Roman"
 
 #: src/Font.cpp:49 src/frontends/qt4/GuiCharacter.cpp:119
-#: src/frontends/qt4/GuiDocument.cpp:2280
+#: src/frontends/qt4/GuiDocument.cpp:2281
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Sans Serif"
 msgstr ""
 
 #: src/Font.cpp:49 src/frontends/qt4/GuiCharacter.cpp:120
-#: src/frontends/qt4/GuiDocument.cpp:2280
+#: src/frontends/qt4/GuiDocument.cpp:2281
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Typewriter"
 msgstr ""
@@ -16178,7 +16180,7 @@ msgstr "رقم %1$s"
 msgid "Cannot view file"
 msgstr "فشل عرض ملف"
 
-#: src/Format.cpp:254 src/Format.cpp:325 src/LyXFunc.cpp:1212
+#: src/Format.cpp:254 src/Format.cpp:325 src/LyXFunc.cpp:1222
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr ""
@@ -16344,7 +16346,7 @@ msgstr "استخدام افتراضي"
 msgid "&Exit LyX"
 msgstr "خروج"
 
-#: src/LyX.cpp:643 src/frontends/qt4/GuiView.cpp:719
+#: src/LyX.cpp:643 src/frontends/qt4/GuiView.cpp:749
 msgid "LyX: "
 msgstr "ليك:"
 
@@ -16523,7 +16525,7 @@ msgid ""
 "Do you want to save the document?"
 msgstr ""
 
-#: src/LyXFunc.cpp:713 src/frontends/qt4/GuiView.cpp:1896
+#: src/LyXFunc.cpp:713 src/frontends/qt4/GuiView.cpp:1927
 msgid "Save changed document?"
 msgstr "حفظ المستند المغير؟"
 
@@ -16569,7 +16571,7 @@ msgstr "عودة للمستند المحفوظ؟"
 msgid "&Revert"
 msgstr "عودة"
 
-#: src/LyXFunc.cpp:1079 src/Text3.cpp:1612
+#: src/LyXFunc.cpp:1079 src/Text3.cpp:1628
 msgid "Missing argument"
 msgstr ""
 
@@ -16579,7 +16581,7 @@ msgid "Opening help file %1$s..."
 msgstr "فتح ملف المساعدة %1$s..."
 
 #: src/LyXFunc.cpp:1143 src/VCBackend.cpp:61 src/VCBackend.cpp:595
-#: src/VCBackend.cpp:661 src/VCBackend.cpp:667 src/VCBackend.cpp:688
+#: src/VCBackend.cpp:662 src/VCBackend.cpp:668 src/VCBackend.cpp:689
 #, fuzzy
 msgid "Revision control error."
 msgstr "تحكم الاصدار"
@@ -16588,40 +16590,40 @@ msgstr "تحكم الاصدار"
 msgid "Error when setting the locking property."
 msgstr ""
 
-#: src/LyXFunc.cpp:1365
+#: src/LyXFunc.cpp:1375
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr ""
 
-#: src/LyXFunc.cpp:1527
+#: src/LyXFunc.cpp:1537
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "المستند يحفظ افتراضياً في %1$s"
 
-#: src/LyXFunc.cpp:1530
+#: src/LyXFunc.cpp:1540
 msgid "Unable to save document defaults"
 msgstr ""
 
-#: src/LyXFunc.cpp:1686 src/LyXVC.cpp:151
+#: src/LyXFunc.cpp:1696 src/LyXVC.cpp:151
 msgid "LyX VC: Log Message"
 msgstr ""
 
-#: src/LyXFunc.cpp:1695
+#: src/LyXFunc.cpp:1705
 #, fuzzy
 msgid "Directory is not accessible."
 msgstr "ملف غير قابل للقراءة!"
 
-#: src/LyXFunc.cpp:1894
+#: src/LyXFunc.cpp:1904
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "المستند %1$s حمل"
 
-#: src/LyXFunc.cpp:1896
+#: src/LyXFunc.cpp:1906
 #, c-format
 msgid "Could not reload document %1$s"
 msgstr "لم يعد تحميل المستند %1$s"
 
-#: src/LyXFunc.cpp:1908
+#: src/LyXFunc.cpp:1919
 #, c-format
 msgid ""
 "Document \n"
@@ -16629,20 +16631,20 @@ msgid ""
 " has been externally modified. Reload now? Any local changes will be lost."
 msgstr ""
 
-#: src/LyXFunc.cpp:1911
+#: src/LyXFunc.cpp:1922
 #, fuzzy
 msgid "Reload externally changed document?"
 msgstr "حفظ المستند المغير؟"
 
-#: src/LyXFunc.cpp:1912 src/buffer_funcs.cpp:75
+#: src/LyXFunc.cpp:1923 src/buffer_funcs.cpp:75
 msgid "&Reload"
 msgstr "اعادة تحميل"
 
-#: src/LyXFunc.cpp:1952
+#: src/LyXFunc.cpp:1963
 msgid "Welcome to LyX!"
 msgstr "أهلاً بك في ليك"
 
-#: src/LyXFunc.cpp:1973
+#: src/LyXFunc.cpp:1984
 msgid "Converting document to new document class..."
 msgstr ""
 
@@ -17206,61 +17208,61 @@ msgstr ""
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 
-#: src/Text.cpp:1386
+#: src/Text.cpp:1385
 msgid "[Change Tracking] "
 msgstr ""
 
-#: src/Text.cpp:1392
+#: src/Text.cpp:1391
 msgid "Change: "
 msgstr "التغيير:"
 
-#: src/Text.cpp:1396
+#: src/Text.cpp:1395
 msgid " at "
 msgstr "عند"
 
-#: src/Text.cpp:1406
+#: src/Text.cpp:1405
 #, c-format
 msgid "Font: %1$s"
 msgstr "الخط: %1$s"
 
-#: src/Text.cpp:1411
+#: src/Text.cpp:1410
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ""
 
-#: src/Text.cpp:1417
+#: src/Text.cpp:1416
 msgid ", Spacing: "
 msgstr ""
 
-#: src/Text.cpp:1423 src/frontends/qt4/GuiDocument.cpp:574
+#: src/Text.cpp:1422 src/frontends/qt4/GuiDocument.cpp:574
 msgid "OneHalf"
 msgstr "واحد ونصف"
 
-#: src/Text.cpp:1429
+#: src/Text.cpp:1428
 msgid "Other ("
 msgstr ""
 
-#: src/Text.cpp:1438
+#: src/Text.cpp:1437
 msgid ", Inset: "
 msgstr ""
 
-#: src/Text.cpp:1439
+#: src/Text.cpp:1438
 msgid ", Paragraph: "
 msgstr ", الفصل: "
 
-#: src/Text.cpp:1440
+#: src/Text.cpp:1439
 msgid ", Id: "
 msgstr ""
 
-#: src/Text.cpp:1441
+#: src/Text.cpp:1440
 msgid ", Position: "
 msgstr ", الموقع: "
 
-#: src/Text.cpp:1447
+#: src/Text.cpp:1446
 msgid ", Char: 0x"
 msgstr ""
 
-#: src/Text.cpp:1449
+#: src/Text.cpp:1448
 msgid ", Boundary: "
 msgstr ""
 
@@ -17284,23 +17286,23 @@ msgstr "نظام تحرير الرياضيات"
 msgid "No valid math formula"
 msgstr ""
 
-#: src/Text3.cpp:884
+#: src/Text3.cpp:898
 msgid "Unknown spacing argument: "
 msgstr ""
 
-#: src/Text3.cpp:1167
+#: src/Text3.cpp:1181
 msgid "Layout "
 msgstr "نسق"
 
-#: src/Text3.cpp:1168
+#: src/Text3.cpp:1182
 msgid " not known"
 msgstr "مجهول"
 
-#: src/Text3.cpp:1730 src/Text3.cpp:1742
+#: src/Text3.cpp:1746 src/Text3.cpp:1758
 msgid "Character set"
 msgstr ""
 
-#: src/Text3.cpp:1890 src/Text3.cpp:1901
+#: src/Text3.cpp:1906 src/Text3.cpp:1917
 msgid "Paragraph layout set"
 msgstr ""
 
@@ -17343,8 +17345,8 @@ msgid ""
 "'%1$s'."
 msgstr ""
 
-#: src/VCBackend.cpp:537 src/VCBackend.cpp:584 src/VCBackend.cpp:678
-#: src/VCBackend.cpp:715 src/VCBackend.cpp:771
+#: src/VCBackend.cpp:537 src/VCBackend.cpp:584 src/VCBackend.cpp:679
+#: src/VCBackend.cpp:716 src/VCBackend.cpp:772
 #, fuzzy
 msgid "Error: Could not generate logfile."
 msgstr "لم يتم كتابة الملف!"
@@ -17356,7 +17358,7 @@ msgid ""
 "After pressing OK, LyX will reopen the document."
 msgstr ""
 
-#: src/VCBackend.cpp:662
+#: src/VCBackend.cpp:663
 msgid ""
 "Error when acquiring write lock.\n"
 "Most probably another user is editing\n"
@@ -17364,13 +17366,13 @@ msgid ""
 "Also check the access to the repository."
 msgstr ""
 
-#: src/VCBackend.cpp:668
+#: src/VCBackend.cpp:669
 msgid ""
 "Error when releasing write lock.\n"
 "Check the access to the repository."
 msgstr ""
 
-#: src/VCBackend.cpp:689
+#: src/VCBackend.cpp:690
 #, c-format
 msgid ""
 "Error when updating from repository.\n"
@@ -17380,7 +17382,7 @@ msgid ""
 "After pressing OK, LyX will try to reopen resolved document."
 msgstr ""
 
-#: src/VCBackend.cpp:725
+#: src/VCBackend.cpp:726
 #, c-format
 msgid ""
 "There were detected changes in the working directory:\n"
@@ -17392,37 +17394,37 @@ msgid ""
 "Continue?"
 msgstr ""
 
-#: src/VCBackend.cpp:730 src/VCBackend.cpp:734
+#: src/VCBackend.cpp:731 src/VCBackend.cpp:735
 msgid "Changes detected"
 msgstr ""
 
-#: src/VCBackend.cpp:731 src/VCBackend.cpp:735
+#: src/VCBackend.cpp:732 src/VCBackend.cpp:736
 #, fuzzy
 msgid "&Yes"
 msgstr "نعم"
 
-#: src/VCBackend.cpp:731 src/VCBackend.cpp:735
+#: src/VCBackend.cpp:732 src/VCBackend.cpp:736
 #, fuzzy
 msgid "&No"
 msgstr "لا"
 
-#: src/VCBackend.cpp:731
+#: src/VCBackend.cpp:732
 msgid "View &Log ..."
 msgstr ""
 
-#: src/VCBackend.cpp:797
+#: src/VCBackend.cpp:798
 msgid "VCN File Locking"
 msgstr ""
 
-#: src/VCBackend.cpp:798
+#: src/VCBackend.cpp:799
 msgid "Locking property unset."
 msgstr ""
 
-#: src/VCBackend.cpp:798 src/VCBackend.cpp:802
+#: src/VCBackend.cpp:799 src/VCBackend.cpp:803
 msgid "Locking property set."
 msgstr ""
 
-#: src/VCBackend.cpp:799
+#: src/VCBackend.cpp:800
 msgid "Do not forget to commit the locking property into the repository."
 msgstr ""
 
@@ -17465,16 +17467,16 @@ msgstr "اعادة تحميل المستند المحفوظ؟"
 msgid "&Keep Changes"
 msgstr ""
 
-#: src/buffer_funcs.cpp:86
+#: src/buffer_funcs.cpp:87
 #, c-format
 msgid "The file %1$s exists but is not readable by the current user."
 msgstr ""
 
-#: src/buffer_funcs.cpp:89
+#: src/buffer_funcs.cpp:90
 msgid "File not readable!"
 msgstr "ملف غير قابل للقراءة!"
 
-#: src/buffer_funcs.cpp:103
+#: src/buffer_funcs.cpp:104
 #, c-format
 msgid ""
 "The document %1$s does not yet exist.\n"
@@ -17482,15 +17484,15 @@ msgid ""
 "Do you want to create a new document?"
 msgstr ""
 
-#: src/buffer_funcs.cpp:106
+#: src/buffer_funcs.cpp:107
 msgid "Create new document?"
 msgstr "انشاء مستند جديد؟"
 
-#: src/buffer_funcs.cpp:107
+#: src/buffer_funcs.cpp:108
 msgid "&Create"
 msgstr "انشاء"
 
-#: src/buffer_funcs.cpp:135
+#: src/buffer_funcs.cpp:136
 #, c-format
 msgid ""
 "The specified document template\n"
@@ -17498,23 +17500,23 @@ msgid ""
 "could not be read."
 msgstr ""
 
-#: src/buffer_funcs.cpp:137
+#: src/buffer_funcs.cpp:138
 msgid "Could not read template"
 msgstr ""
 
-#: src/buffer_funcs.cpp:417
+#: src/buffer_funcs.cpp:418
 msgid "\\arabic{enumi}."
 msgstr ".\\arabic{enumi}"
 
-#: src/buffer_funcs.cpp:423
+#: src/buffer_funcs.cpp:424
 msgid "\\roman{enumiii}."
 msgstr ".\\roman{enumiii}"
 
-#: src/buffer_funcs.cpp:426
+#: src/buffer_funcs.cpp:427
 msgid "\\Alph{enumiv}."
 msgstr ".\\Alph{enumiv}"
 
-#: src/buffer_funcs.cpp:443 src/insets/InsetCaption.cpp:292
+#: src/buffer_funcs.cpp:444 src/insets/InsetCaption.cpp:292
 msgid "Senseless!!! "
 msgstr ""
 
@@ -17603,9 +17605,9 @@ msgstr "مسار المكتبة:"
 msgid "User directory: "
 msgstr "مسار المستخدم:"
 
-#: src/frontends/qt4/GuiAlert.cpp:162 src/frontends/qt4/GuiAlert.cpp:196
-#: src/frontends/qt4/GuiAlert.cpp:225 src/frontends/qt4/GuiAlert.cpp:251
-#: src/frontends/qt4/GuiAlert.cpp:272
+#: src/frontends/qt4/GuiAlert.cpp:162 src/frontends/qt4/GuiAlert.cpp:197
+#: src/frontends/qt4/GuiAlert.cpp:232 src/frontends/qt4/GuiAlert.cpp:264
+#: src/frontends/qt4/GuiAlert.cpp:291
 #, c-format
 msgid "LyX: %1$s"
 msgstr "ليك: %1$s"
@@ -17708,9 +17710,9 @@ msgstr ""
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
 #: src/frontends/qt4/GuiDocument.cpp:1308
 #: src/frontends/qt4/GuiExternal.cpp:672 src/frontends/qt4/GuiGraphics.cpp:849
-#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1338
-#: src/frontends/qt4/GuiView.cpp:1396 src/frontends/qt4/GuiView.cpp:1543
-#: src/frontends/qt4/GuiView.cpp:1671 src/frontends/qt4/GuiView.cpp:1755
+#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1369
+#: src/frontends/qt4/GuiView.cpp:1427 src/frontends/qt4/GuiView.cpp:1574
+#: src/frontends/qt4/GuiView.cpp:1702 src/frontends/qt4/GuiView.cpp:1786
 msgid "Documents|#o#O"
 msgstr ""
 
@@ -17796,11 +17798,11 @@ msgid "Color"
 msgstr "اللون"
 
 #: src/frontends/qt4/GuiBranches.cpp:72 src/frontends/qt4/GuiBranches.cpp:146
-#: src/frontends/qt4/GuiDocument.cpp:1525
+#: src/frontends/qt4/GuiDocument.cpp:1526
 msgid "Yes"
 msgstr "نعم"
 
-#: src/frontends/qt4/GuiBranches.cpp:72 src/frontends/qt4/GuiDocument.cpp:1524
+#: src/frontends/qt4/GuiBranches.cpp:72 src/frontends/qt4/GuiDocument.cpp:1525
 msgid "No"
 msgstr "لا"
 
@@ -17913,10 +17915,10 @@ msgstr "ملفات %1$s"
 msgid "Choose a filename to save the pasted graphic as"
 msgstr "سم الملف لحفظ الصورة الملصقة كـ"
 
-#: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1415
-#: src/frontends/qt4/GuiView.cpp:1563 src/frontends/qt4/GuiView.cpp:1579
-#: src/frontends/qt4/GuiView.cpp:1596 src/frontends/qt4/GuiView.cpp:1688
-#: src/frontends/qt4/GuiView.cpp:1731
+#: src/frontends/qt4/GuiClipboard.cpp:176 src/frontends/qt4/GuiView.cpp:1446
+#: src/frontends/qt4/GuiView.cpp:1594 src/frontends/qt4/GuiView.cpp:1610
+#: src/frontends/qt4/GuiView.cpp:1627 src/frontends/qt4/GuiView.cpp:1719
+#: src/frontends/qt4/GuiView.cpp:1762
 msgid "Canceled."
 msgstr "الغي."
 
@@ -18247,8 +18249,8 @@ msgid "&Set Layout"
 msgstr "تعيين نسق"
 
 #: src/frontends/qt4/GuiDocument.cpp:1279
-#: src/frontends/qt4/GuiDocument.cpp:1353
-#: src/frontends/qt4/GuiDocument.cpp:2247
+#: src/frontends/qt4/GuiDocument.cpp:1354
+#: src/frontends/qt4/GuiDocument.cpp:2248
 msgid "Error"
 msgstr "خطأ"
 
@@ -18264,89 +18266,89 @@ msgstr "حدد المستند الرئيسي"
 msgid "LyX Files (*.lyx)"
 msgstr "ملفات ليك (*.lyx)"
 
-#: src/frontends/qt4/GuiDocument.cpp:1338
-#: src/frontends/qt4/GuiDocument.cpp:2236
+#: src/frontends/qt4/GuiDocument.cpp:1339
+#: src/frontends/qt4/GuiDocument.cpp:2237
 msgid "Unapplied changes"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1339
-#: src/frontends/qt4/GuiDocument.cpp:2237
+#: src/frontends/qt4/GuiDocument.cpp:1340
+#: src/frontends/qt4/GuiDocument.cpp:2238
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
 "If you do not apply now, they will be lost after this action."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1341
-#: src/frontends/qt4/GuiDocument.cpp:2239
+#: src/frontends/qt4/GuiDocument.cpp:1342
+#: src/frontends/qt4/GuiDocument.cpp:2240
 msgid "&Dismiss"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1353
-#: src/frontends/qt4/GuiDocument.cpp:2247
+#: src/frontends/qt4/GuiDocument.cpp:1354
+#: src/frontends/qt4/GuiDocument.cpp:2248
 msgid "Unable to set document class."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1387
+#: src/frontends/qt4/GuiDocument.cpp:1388
 #, c-format
 msgid "%1$s, %2$s"
 msgstr "%1$s, %2$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:1392
+#: src/frontends/qt4/GuiDocument.cpp:1393
 #, c-format
 msgid "%1$s, %2$s, and %3$s"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1476
+#: src/frontends/qt4/GuiDocument.cpp:1477
 msgid "Module provided by document class."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1484
+#: src/frontends/qt4/GuiDocument.cpp:1485
 #, c-format
 msgid "Package(s) required: %1$s."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1490
+#: src/frontends/qt4/GuiDocument.cpp:1491
 msgid "or"
 msgstr "أو"
 
-#: src/frontends/qt4/GuiDocument.cpp:1493
+#: src/frontends/qt4/GuiDocument.cpp:1494
 #, c-format
 msgid "Module required: %1$s."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1502
+#: src/frontends/qt4/GuiDocument.cpp:1503
 #, c-format
 msgid "Modules excluded: %1$s."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1508
+#: src/frontends/qt4/GuiDocument.cpp:1509
 #, fuzzy
 msgid "WARNING: Some required packages are unavailable!"
 msgstr "تحذير: بعض المجموعات غير متاحة"
 
-#: src/frontends/qt4/GuiDocument.cpp:2046
+#: src/frontends/qt4/GuiDocument.cpp:2047
 #, fuzzy
 msgid "[No options predefined]"
 msgstr "لا اجراء محدد"
 
-#: src/frontends/qt4/GuiDocument.cpp:2259
+#: src/frontends/qt4/GuiDocument.cpp:2260
 msgid "Can't set layout!"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:2260
+#: src/frontends/qt4/GuiDocument.cpp:2261
 #, c-format
 msgid "Unable to set layout for ID: %1$s"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:2337
+#: src/frontends/qt4/GuiDocument.cpp:2338
 msgid "Not Found"
 msgstr "غير موجود"
 
-#: src/frontends/qt4/GuiDocument.cpp:2391
+#: src/frontends/qt4/GuiDocument.cpp:2392
 msgid "Assigned master does not include this file"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:2392
+#: src/frontends/qt4/GuiDocument.cpp:2393
 #, c-format
 msgid ""
 "You must include this file in the document\n"
@@ -18354,12 +18356,12 @@ msgid ""
 "feature."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:2396
+#: src/frontends/qt4/GuiDocument.cpp:2397
 #, fuzzy
 msgid "Could not load master"
 msgstr "لم تحمل الصنف"
 
-#: src/frontends/qt4/GuiDocument.cpp:2397
+#: src/frontends/qt4/GuiDocument.cpp:2398
 #, fuzzy, c-format
 msgid ""
 "The master document '%1$s'\n"
@@ -19459,61 +19461,61 @@ msgstr "رموز عادية"
 msgid "Big-sized icons"
 msgstr "رموز كبيرة"
 
-#: src/frontends/qt4/GuiView.cpp:420
+#: src/frontends/qt4/GuiView.cpp:421
 #, c-format
 msgid "Unknown toolbar \"%1$s\""
 msgstr "شريط ادوات مجهول \"%1$s\""
 
-#: src/frontends/qt4/GuiView.cpp:1337
+#: src/frontends/qt4/GuiView.cpp:1368
 msgid "Select template file"
 msgstr "حدد ملف القالب"
 
-#: src/frontends/qt4/GuiView.cpp:1339 src/frontends/qt4/GuiView.cpp:1756
+#: src/frontends/qt4/GuiView.cpp:1370 src/frontends/qt4/GuiView.cpp:1787
 msgid "Templates|#T#t"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1342 src/frontends/qt4/GuiView.cpp:1400
-#: src/frontends/qt4/GuiView.cpp:1677 src/frontends/qt4/GuiView.cpp:1763
+#: src/frontends/qt4/GuiView.cpp:1373 src/frontends/qt4/GuiView.cpp:1431
+#: src/frontends/qt4/GuiView.cpp:1708 src/frontends/qt4/GuiView.cpp:1794
 msgid "LyX Documents (*.lyx)"
 msgstr "مستندات ليك (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1359
+#: src/frontends/qt4/GuiView.cpp:1390
 msgid "Document not loaded."
 msgstr "لم يحمل المستند."
 
-#: src/frontends/qt4/GuiView.cpp:1395
+#: src/frontends/qt4/GuiView.cpp:1426
 msgid "Select document to open"
 msgstr "حدد المستند لفتحه"
 
-#: src/frontends/qt4/GuiView.cpp:1397 src/frontends/qt4/GuiView.cpp:1544
-#: src/frontends/qt4/GuiView.cpp:1672
+#: src/frontends/qt4/GuiView.cpp:1428 src/frontends/qt4/GuiView.cpp:1575
+#: src/frontends/qt4/GuiView.cpp:1703
 msgid "Examples|#E#e"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1401
+#: src/frontends/qt4/GuiView.cpp:1432
 msgid "LyX-1.3.x Documents (*.lyx13)"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1402
+#: src/frontends/qt4/GuiView.cpp:1433
 msgid "LyX-1.4.x Documents (*.lyx14)"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1403
+#: src/frontends/qt4/GuiView.cpp:1434
 msgid "LyX-1.5.x Documents (*.lyx15)"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1404
+#: src/frontends/qt4/GuiView.cpp:1435
 #, fuzzy
 msgid "LyX-1.6.x Documents (*.lyx16)"
 msgstr "مستندات ليك (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1429 src/frontends/qt4/Validator.cpp:182
+#: src/frontends/qt4/GuiView.cpp:1460 src/frontends/qt4/Validator.cpp:182
 #: src/insets/ExternalSupport.cpp:367 src/insets/InsetBibtex.cpp:286
 #: src/insets/InsetGraphics.cpp:598 src/insets/InsetInclude.cpp:477
 msgid "Invalid filename"
 msgstr "اسم ملف غير صالح"
 
-#: src/frontends/qt4/GuiView.cpp:1430
+#: src/frontends/qt4/GuiView.cpp:1461
 #, c-format
 msgid ""
 "The directory in the given path\n"
@@ -19521,41 +19523,41 @@ msgid ""
 "does not exist."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1444
+#: src/frontends/qt4/GuiView.cpp:1475
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "فتح المستند %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1453
+#: src/frontends/qt4/GuiView.cpp:1484
 #, c-format
 msgid "Document %1$s opened."
 msgstr "المستند %1$s تم فتحه."
 
-#: src/frontends/qt4/GuiView.cpp:1456
+#: src/frontends/qt4/GuiView.cpp:1487
 #, fuzzy
 msgid "Version control detected."
 msgstr "تحكم الاصدار"
 
-#: src/frontends/qt4/GuiView.cpp:1458
+#: src/frontends/qt4/GuiView.cpp:1489
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "لم يتم فتح المستند %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:1487
+#: src/frontends/qt4/GuiView.cpp:1518
 msgid "Couldn't import file"
 msgstr "لم يتم استيراد ملف"
 
-#: src/frontends/qt4/GuiView.cpp:1488
+#: src/frontends/qt4/GuiView.cpp:1519
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr "لا معلومات لاستيراد الهيئة  %1$s."
 
-#: src/frontends/qt4/GuiView.cpp:1539
+#: src/frontends/qt4/GuiView.cpp:1570
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "حدد الملف  %1$s  لاستيراده"
 
-#: src/frontends/qt4/GuiView.cpp:1590 src/frontends/qt4/GuiView.cpp:1780
+#: src/frontends/qt4/GuiView.cpp:1621 src/frontends/qt4/GuiView.cpp:1811
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -19563,49 +19565,49 @@ msgid ""
 "Do you want to overwrite that document?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1592 src/frontends/qt4/GuiView.cpp:1784
+#: src/frontends/qt4/GuiView.cpp:1623 src/frontends/qt4/GuiView.cpp:1815
 msgid "Overwrite document?"
 msgstr "استبدال المستند؟"
 
-#: src/frontends/qt4/GuiView.cpp:1601
+#: src/frontends/qt4/GuiView.cpp:1632
 #, c-format
 msgid "Importing %1$s..."
 msgstr "استيراد %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1604
+#: src/frontends/qt4/GuiView.cpp:1635
 msgid "imported."
 msgstr "استورد."
 
-#: src/frontends/qt4/GuiView.cpp:1606
+#: src/frontends/qt4/GuiView.cpp:1637
 msgid "file not imported!"
 msgstr "لم يستورد الملف!"
 
-#: src/frontends/qt4/GuiView.cpp:1670
+#: src/frontends/qt4/GuiView.cpp:1701
 msgid "Select LyX document to insert"
 msgstr "حدد مستند ليك لادراجه"
 
-#: src/frontends/qt4/GuiView.cpp:1704
+#: src/frontends/qt4/GuiView.cpp:1735
 msgid "Absolute filename expected."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1716
+#: src/frontends/qt4/GuiView.cpp:1747
 msgid "Select file to insert"
 msgstr "حدد الملف لادراجه"
 
-#: src/frontends/qt4/GuiView.cpp:1720
+#: src/frontends/qt4/GuiView.cpp:1751
 #, fuzzy
 msgid "All Files (*)"
 msgstr "كل الملفات"
 
-#: src/frontends/qt4/GuiView.cpp:1753
+#: src/frontends/qt4/GuiView.cpp:1784
 msgid "Choose a filename to save document as"
 msgstr "سم الملف لحفظه كـ "
 
-#: src/frontends/qt4/GuiView.cpp:1785 src/frontends/qt4/GuiView.cpp:1837
+#: src/frontends/qt4/GuiView.cpp:1816 src/frontends/qt4/GuiView.cpp:1868
 msgid "&Rename"
 msgstr "تسمية"
 
-#: src/frontends/qt4/GuiView.cpp:1833
+#: src/frontends/qt4/GuiView.cpp:1864
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -19613,15 +19615,15 @@ msgid ""
 "Do you want to rename the document and try again?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1836
+#: src/frontends/qt4/GuiView.cpp:1867
 msgid "Rename and save?"
 msgstr "تسمية وحفظ؟"
 
-#: src/frontends/qt4/GuiView.cpp:1837
+#: src/frontends/qt4/GuiView.cpp:1868
 msgid "&Retry"
 msgstr "محاولة"
 
-#: src/frontends/qt4/GuiView.cpp:1894
+#: src/frontends/qt4/GuiView.cpp:1925
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -19632,24 +19634,24 @@ msgstr ""
 "\n"
 "هل ترغب بحفظ المستند أم تجاهل التغيير؟"
 
-#: src/frontends/qt4/GuiView.cpp:1897
+#: src/frontends/qt4/GuiView.cpp:1928
 msgid "&Discard"
 msgstr "تجاهل"
 
-#: src/frontends/qt4/GuiView.cpp:1971
+#: src/frontends/qt4/GuiView.cpp:2002
 #, fuzzy
 msgid "Document not loaded"
 msgstr "لم يحمل المستند."
 
-#: src/frontends/qt4/GuiView.cpp:2029
+#: src/frontends/qt4/GuiView.cpp:2060
 msgid "Saving all documents..."
 msgstr "حفظ كل المستندات..."
 
-#: src/frontends/qt4/GuiView.cpp:2039
+#: src/frontends/qt4/GuiView.cpp:2070
 msgid "All documents saved."
 msgstr "حفظت كل المستندات."
 
-#: src/frontends/qt4/GuiView.cpp:2286
+#: src/frontends/qt4/GuiView.cpp:2317
 #, c-format
 msgid "%1$s unknown command!"
 msgstr "%1$s أمر مجهول!"
@@ -19667,32 +19669,32 @@ msgstr ""
 msgid "Literate Source"
 msgstr ""
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1135
+#: src/frontends/qt4/GuiWorkArea.cpp:1137
 msgid " (version control)"
 msgstr " (تحكم الاصدار)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1137
+#: src/frontends/qt4/GuiWorkArea.cpp:1139
 #, fuzzy
 msgid " (version control, locking)"
 msgstr " (تحكم الاصدار)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1140
+#: src/frontends/qt4/GuiWorkArea.cpp:1142
 msgid " (changed)"
 msgstr ""
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1144
+#: src/frontends/qt4/GuiWorkArea.cpp:1146
 msgid " (read only)"
 msgstr "(للقراءة فقط)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1234
+#: src/frontends/qt4/GuiWorkArea.cpp:1236
 msgid "Close File"
 msgstr "اغلاق الملف"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1642
+#: src/frontends/qt4/GuiWorkArea.cpp:1644
 msgid "Hide tab"
 msgstr "اخفاء علامة التبويب"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1644
+#: src/frontends/qt4/GuiWorkArea.cpp:1646
 msgid "Close tab"
 msgstr "اغلاق علامة التبويب"
 
@@ -20560,7 +20562,7 @@ msgstr ""
 msgid "Opened table"
 msgstr "فتح جدول"
 
-#: src/insets/InsetTabular.cpp:4020
+#: src/insets/InsetTabular.cpp:4025
 msgid "Selection size should match clipboard content."
 msgstr ""
 
@@ -20966,25 +20968,25 @@ msgstr ""
 msgid "Debugging `%1$s' (%2$s)"
 msgstr ""
 
-#: src/support/filetools.cpp:247
+#: src/support/filetools.cpp:250
 msgid "[[Replace with the code of your language]]"
 msgstr ""
 
-#: src/support/os_win32.cpp:372
+#: src/support/os_win32.cpp:393
 msgid "System file not found"
 msgstr "ملف النظام غير موجود"
 
-#: src/support/os_win32.cpp:373
+#: src/support/os_win32.cpp:394
 msgid ""
 "Unable to load shfolder.dll\n"
 "Please install."
 msgstr ""
 
-#: src/support/os_win32.cpp:378
+#: src/support/os_win32.cpp:399
 msgid "System function not found"
 msgstr "دالة النظام غير موجودة"
 
-#: src/support/os_win32.cpp:379
+#: src/support/os_win32.cpp:400
 msgid ""
 "Unable to find SHGetFolderPathA in shfolder.dll\n"
 "Don't know how to proceed. Sorry."
