@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-01-17 11:55+0100\n"
-"PO-Revision-Date: 2010-01-17 13:55+0100\n"
+"PO-Revision-Date: 2010-01-17 18:39+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenský <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -17073,8 +17073,9 @@ msgid ""
 "a separate print spooling program on that file with the given name and "
 "arguments."
 msgstr ""
-"Keď nastavené, touto voľbou tlačiareň automaticky tlačí do súboru a potom "
-"volá oddelený spool program pre tlač tohto súboru s parametrami."
+"Keď nastavené, táto voľba automaticky tlačí do súboru a potom "
+"pre tlač tohto súboru volá \"spool\" program s daným menom a "
+"s danými  parametrami."
 
 #: src/LyXRC.cpp:2799
 msgid ""
@@ -17082,21 +17083,22 @@ msgid ""
 "prepended along with the printer name after the spool command."
 msgstr ""
 "Ak špecifikujete názov tlačiarne v dialógu pre tlač, tak nasledujúci "
-"argument sa spolu s názvom tlačiarne použije po spool príkaze."
+"argument sa spolu s názvom tlačiarne pridá k spool-príkazu."
 
 #: src/LyXRC.cpp:2803
 msgid "Option to pass to the print program to print to a file."
-msgstr "Voľba, ktorá bude odoslaná programu na tlač pri tlači do súboru."
+msgstr "Voľba, aby program na tlač tlačil do súboru."
 
 #: src/LyXRC.cpp:2807
 msgid "Option to pass to the print program to print on a specific printer."
-msgstr "Voľba, ktorá bude odoslaná programu na tlač pre konkrétnu tlačiareň."
+msgstr "Voľba, aby program na tlač tlačil na konkrétnej tlačiarni."
 
 #: src/LyXRC.cpp:2811
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
-msgstr "Vyberte, keď má LyX poslať názov tlačiarne príkazu pre tlač."
+msgstr ""
+"Vyberte, keď chcete aby LyX preniesol názov tlačiarne ku programu pre tlač."
 
 #: src/LyXRC.cpp:2815
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
