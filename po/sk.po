@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-01-17 11:55+0100\n"
-"PO-Revision-Date: 2010-01-17 12:30+0100\n"
+"PO-Revision-Date: 2010-01-17 13:55+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenský <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -106,12 +106,12 @@ msgstr "Kľúč literatúry"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:54 src/frontends/qt4/ui/BibitemUi.ui:61
 msgid "The label as it appears in the document"
-msgstr "Návestie ako sa zobrazí v dokumente"
+msgstr "Značka ako sa zobrazí v dokumente"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:64 src/frontends/qt4/ui/LabelUi.ui:39
 #: src/frontends/qt4/ui/RefUi.ui:151
 msgid "&Label:"
-msgstr "&Návestie:"
+msgstr "Z&načka:"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:77
 msgid "&Key:"
@@ -585,7 +585,7 @@ msgstr "Prejsť k ďalšej zmene"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:65
 msgid "&Next change"
-msgstr "&Nasledujúca zmena"
+msgstr "&Ďalšia zmena"
 
 #: src/frontends/qt4/ui/ChangesUi.ui:108
 msgid "Accept this change"
@@ -2159,7 +2159,7 @@ msgstr "Okamžite použiť"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:54
 msgid "Label Width"
-msgstr "Šírka návestia"
+msgstr "Šírka značky"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:69
 #: src/frontends/qt4/ui/ParagraphUi.ui:82
@@ -2168,7 +2168,7 @@ msgstr "Tento text definuje šírku návestia odstavca"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:72
 msgid "Lo&ngest label"
-msgstr "Naj&dlhšie návestie"
+msgstr "Naj&dlhšia značka"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:92
 msgid "Line &spacing"
@@ -3291,7 +3291,7 @@ msgstr "Poslať výstup do súboru"
 
 #: src/frontends/qt4/ui/RefUi.ui:43
 msgid "La&bels in:"
-msgstr "Označenia v:"
+msgstr "&Značky v:"
 
 #: src/frontends/qt4/ui/RefUi.ui:172
 msgid "Cross-reference as it appears in output"
@@ -3323,7 +3323,7 @@ msgstr "Formátovaná referencia"
 
 #: src/frontends/qt4/ui/RefUi.ui:212
 msgid "Sort labels in alphabetical order"
-msgstr "Triediť návestia v abecednom poradí"
+msgstr "Triediť značky v abecednom poradí"
 
 #: src/frontends/qt4/ui/RefUi.ui:215
 msgid "&Sort"
@@ -3331,15 +3331,15 @@ msgstr "Triedenie"
 
 #: src/frontends/qt4/ui/RefUi.ui:238
 msgid "Update the label list"
-msgstr "Aktualizovať prehľad návestí"
+msgstr "Aktualizovať prehľad značiek"
 
 #: src/frontends/qt4/ui/RefUi.ui:256
 msgid "Jump to the label"
-msgstr "Skok na návestie"
+msgstr "Skok na značku"
 
 #: src/frontends/qt4/ui/RefUi.ui:259 src/frontends/qt4/GuiRef.cpp:284
 msgid "&Go to Label"
-msgstr "&Prejsť na návestie"
+msgstr "Pre&jsť na značku"
 
 #: src/frontends/qt4/ui/SearchUi.ui:68
 msgid "Replace &with:"
@@ -9888,7 +9888,7 @@ msgstr "Upraviť|U"
 
 #: lib/ui/classic.ui:34 lib/ui/stdmenus.inc:31
 msgid "Insert|I"
-msgstr "Vložiť|i"
+msgstr "Vložiť|V"
 
 #: lib/ui/classic.ui:35
 msgid "Layout|L"
@@ -10273,7 +10273,7 @@ msgstr "Krížová referencia...|r"
 
 #: lib/ui/classic.ui:219 lib/ui/stdmenus.inc:345
 msgid "Label...|L"
-msgstr "Návestie...|N"
+msgstr "Značka...|Z"
 
 #: lib/ui/classic.ui:220 lib/ui/stdmenus.inc:354
 msgid "Footnote|F"
@@ -10656,11 +10656,11 @@ msgstr "Ďalšia poznámka|p"
 
 #: lib/ui/classic.ui:379 lib/ui/stdmenus.inc:491
 msgid "Go to Label|L"
-msgstr "Prejsť na Návestie|N"
+msgstr "Prejsť na Značku|j"
 
 #: lib/ui/classic.ui:380 lib/ui/stdmenus.inc:487
 msgid "Bookmarks|B"
-msgstr "Záložky"
+msgstr "Záložky|l"
 
 #: lib/ui/classic.ui:384 lib/ui/stdmenus.inc:497
 msgid "Save Bookmark 1|S"
@@ -10844,11 +10844,11 @@ msgstr "Zobraz lištu nástrojov pre tabuľku"
 
 #: lib/ui/stdcontext.inc:83 lib/ui/stdcontext.inc:100
 msgid "Next Cross-Reference|N"
-msgstr "Ďalšia krížová referencia|f"
+msgstr "Ďalšia krížová referencia|r"
 
 #: lib/ui/stdcontext.inc:84
 msgid "Go to Label|G"
-msgstr "Prejsť na Návestie|P"
+msgstr "Prejsť na Značku|P"
 
 #: lib/ui/stdcontext.inc:86
 msgid "<Reference>|R"
@@ -11269,7 +11269,7 @@ msgstr "Dokument|D"
 
 #: lib/ui/stdmenus.inc:34
 msgid "Tools|T"
-msgstr "Nástroje|t"
+msgstr "Nástroje|N"
 
 #: lib/ui/stdmenus.inc:44
 msgid "New from Template...|m"
@@ -11277,7 +11277,7 @@ msgstr "Nový zo šablóny..."
 
 #: lib/ui/stdmenus.inc:46
 msgid "Open Recent|t"
-msgstr "Otvoriť nedávne"
+msgstr "Otvoriť nedávne|d"
 
 #: lib/ui/stdmenus.inc:49
 msgid "Close All"
@@ -11293,7 +11293,7 @@ msgstr "Obnoviť na uložené|u"
 
 #: lib/ui/stdmenus.inc:61
 msgid "New Window|W"
-msgstr "Nové okno|N"
+msgstr "Nové okno|é"
 
 #: lib/ui/stdmenus.inc:62
 msgid "Close Window|d"
@@ -11697,11 +11697,11 @@ msgstr "Odhoď všetky zmeny"
 
 #: lib/ui/stdmenus.inc:489
 msgid "Next Change|C"
-msgstr "Nasledujúca zmena|z"
+msgstr "Ďalšia zmena|z"
 
 #: lib/ui/stdmenus.inc:490
 msgid "Next Cross-Reference|R"
-msgstr "Ďalšia krížová referencia|f"
+msgstr "Ďalšia krížová referencia|r"
 
 #: lib/ui/stdmenus.inc:502
 msgid "Clear Bookmarks|C"
@@ -11861,7 +11861,7 @@ msgstr "Vložiť plávajúcu tabuľku"
 
 #: lib/ui/stdtoolbars.inc:108
 msgid "Insert label"
-msgstr "Vložiť návestie"
+msgstr "Vložiť značku"
 
 #: lib/ui/stdtoolbars.inc:109
 msgid "Insert cross-reference"
@@ -12125,7 +12125,7 @@ msgstr "Zobraz zmeny vo výstupe"
 
 #: lib/ui/stdtoolbars.inc:205
 msgid "Next change"
-msgstr "Nasledujúca zmena"
+msgstr "Ďalšia zmena"
 
 #: lib/ui/stdtoolbars.inc:206
 msgid "Accept change inside selection"
@@ -18817,7 +18817,7 @@ msgstr "Príkaz-"
 
 #: src/frontends/qt4/GuiLabel.cpp:37
 msgid "Label"
-msgstr "Návestie"
+msgstr "Značka"
 
 #: src/frontends/qt4/GuiListings.cpp:60
 msgid "No language"
@@ -19172,7 +19172,7 @@ msgstr "Skok späť"
 
 #: src/frontends/qt4/GuiRef.cpp:286
 msgid "Jump to label"
-msgstr "Skok na návestie"
+msgstr "Skok na značku"
 
 #: src/frontends/qt4/GuiSearch.cpp:41
 msgid "Find and Replace"
@@ -20029,7 +20029,7 @@ msgstr "Zoznam citácií"
 
 #: src/frontends/qt4/qt_helpers.cpp:526
 msgid "Labels and References"
-msgstr "Návestia a Referencie"
+msgstr "Značky a Referencie"
 
 #: src/frontends/qt4/qt_helpers.cpp:528
 msgid "List of Branches"
@@ -20408,7 +20408,7 @@ msgstr "Neznáma informácia pre zásobník"
 
 #: src/insets/InsetLabel.cpp:66
 msgid "Label names must be unique!"
-msgstr "Mená návestí musia byť unikátne!"
+msgstr "Mená značiek musia byť unikátne!"
 
 #: src/insets/InsetLabel.cpp:67
 #, c-format
@@ -20416,7 +20416,7 @@ msgid ""
 "The label %1$s already exists,\n"
 "it will be changed to %2$s."
 msgstr ""
-"Návestie %1$s už existuje,\n"
+"Značka %1$s už existuje,\n"
 "bude premenované na %2$s."
 
 #: src/insets/InsetLabel.cpp:112
