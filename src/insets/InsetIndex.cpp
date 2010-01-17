@@ -287,6 +287,29 @@ docstring InsetIndex::toolTip(BufferView const &, int, int) const
 }
 
 
+docstring const InsetIndex::buttonLabel(BufferView const & bv) const
+{
+	InsetLayout const & il = getLayout();
+	docstring label = translateIfPossible(il.labelstring());
+
+	if (buffer().params().use_indices && !params_.index.empty()) {
+		Buffer const & realbuffer = *buffer().masterBuffer();
+		IndicesList const & indiceslist = realbuffer.params().indiceslist();
+		label += " (";
+		Index const * index = indiceslist.findShortcut(params_.index);
+		if (!index)
+			label += _("unknown type!");
+		else
+			label += index->index();
+		label += ")";
+	}
+
+	if (!il.contentaslabel() || geometry(bv) != ButtonOnly)
+		return label;
+	return getNewLabel(label);
+}
+
+
 void InsetIndex::write(ostream & os) const
 {
 	os << to_utf8(name());
