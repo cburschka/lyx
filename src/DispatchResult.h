@@ -23,9 +23,11 @@ namespace lyx {
 class DispatchResult {
 public:
 	///
-	DispatchResult() : dispatched_(false), update_(Update::None) {}
+	DispatchResult() : dispatched_(false), error_(false), 
+			   update_(Update::None) {}
 	///
-	DispatchResult(bool disp, Update::flags f) : dispatched_(disp), update_(f) {}
+	DispatchResult(bool disp, Update::flags f) 
+		: dispatched_(disp), error_(false), update_(f) {}
 	///
 	bool dispatched() const { return dispatched_; }
 	///
