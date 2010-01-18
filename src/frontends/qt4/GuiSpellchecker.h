@@ -53,6 +53,9 @@ private:
 	void updateContents();
 
 	///
+	bool eventFilter(QObject *obj, QEvent *event);
+
+	///
 	enum State {
 		SPELL_PROGRESSED, //< update progress bar
 		SPELL_FOUND_WORD //< found a bad word

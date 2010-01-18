@@ -27,8 +27,6 @@ What's new
 - LyX now supports SVG images when either the librsvg library or
   or Inkscape (version 0.47 recommended) is installed (bug 3349).
 
-- The definition of multi-accented polytonic Greek has been simplified.
-
 - LaTeX import (tex2lyx) now recognizes the types of quotes dependent
   on the document language. (When importing e.g. a Spanish document,
   LyX will use comillas latinas as quotes.)
@@ -57,8 +55,8 @@ What's new
 
 - The dinbrief template was revised.
 
-- Updated Czech, German, Indonesian, Italian, Russian, Slovak and Spanish
-  user interface localization.
+- Updated Czech, French, German, Indonesian, Italian, Russian, Slovak
+  and Spanish user interface localization.
 
 - The rpm README file was updated.
 
@@ -70,7 +68,6 @@ What's new
 * BUILD/INSTALLATION
 
 - Add support for Cygwin 1.7.
-
 
 
 ** Bug fixes:
@@ -96,8 +93,6 @@ What's new
 
 - LaTeX import (tex2lyx) now also recognizes the document language Kazakh.
 
-- Fix polytonic Greek macro definition.
-
 
 * USER INTERFACE
 
@@ -118,8 +113,8 @@ What's new
 
 - Fix cursor placement in math when inserting 'active' insets (bug 6382).
 
-- Fix display of author names containing a thin space (\,) in the
-  citation inset.
+- Fix on-screen display of author names containing a thin space
+  (such as W.\,H. Auden).
 
 - Take into account the current zoom factor, dip, or preview scale
   factor when an instant preview is generated.
@@ -146,8 +141,7 @@ What's new
 
 - Better detection and response on svn conflicts.
 
-- Add more keyboard accelerators to the spellchecker dialog
-  (part of bug 6460).
+- Enable full keyboard navigation in the spellchecker dialog (bug 6460).
 
 
 * DOCUMENTATION AND LOCALIZATION

@@ -30,6 +30,7 @@
 #include "support/lstrings.h"
 #include "support/textutils.h"
 
+#include <QKeyEvent>
 #include <QListWidgetItem>
 
 #if defined(USE_ASPELL)
@@ -74,6 +75,8 @@ GuiSpellchecker::GuiSpellchecker(GuiView & lv)
 
 	wordED->setReadOnly(true);
 
+	suggestionsLW->installEventFilter(this);
+
 	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	bc().setCancel(closePB);
 }
@@ -82,6 +85,24 @@ GuiSpellchecker::GuiSpellchecker(GuiView & lv)
 GuiSpellchecker::~GuiSpellchecker()
 {
 	delete speller_;
+}
+
+
+bool GuiSpellchecker::eventFilter(QObject *obj, QEvent *event)
+{
+	if (obj == suggestionsLW && event->type() == QEvent::KeyPress) {
+		QKeyEvent *e = static_cast<QKeyEvent *> (event);
+		if (e->key() == Qt::Key_Enter || e->key() == Qt::Key_Return) {
+			suggestionChanged(suggestionsLW->currentItem());
+			replace();
+			return true;
+		} else if (e->key() == Qt::Key_Right) {
+			suggestionChanged(suggestionsLW->currentItem());
+			return true;
+		}
+	}
+	// standard event processing
+	return QWidget::eventFilter(obj, event);
 }
 
 
