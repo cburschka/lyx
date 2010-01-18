@@ -665,11 +665,13 @@ void Text::breakParagraph(Cursor & cur, bool inverse_logic)
 	DocumentClass const & tclass = cur.buffer()->params().documentClass();
 	Layout const & layout = cpar.layout();
 
-	// this is only allowed, if the current paragraph is not empty
-	// or caption and if it has not the keepempty flag active
-	if (cur.lastpos() == 0 && !cpar.allowEmpty() &&
-	    layout.labeltype != LABEL_SENSITIVE)
+	if (cur.lastpos() == 0 && !cpar.allowEmpty()) {
+		if (changeDepthAllowed(cur, DEC_DEPTH))
+			changeDepth(cur, DEC_DEPTH);
+		else 
+			setLayout(cur, tclass.defaultLayoutName());
 		return;
+	}
 
 	// a layout change may affect also the following paragraph
 	recUndo(cur, cur.pit(), undoSpan(cur.pit()) - 1);
