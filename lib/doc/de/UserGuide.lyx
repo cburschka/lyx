@@ -1,4 +1,4 @@
-#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.6svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -33282,7 +33282,7 @@ LyX selber besitzt keine Rechtschreibprüfung, sondern benutzt wahlweise
 \family typewriter
 aspell
 \family default
-,
+
 \begin_inset Foot
 status collapsed
 
@@ -33303,13 +33303,9 @@ http://aspell.sourceforge.net
 
 \end_inset
 
- 
-\family typewriter
-hspell
-\family default
  oder 
 \family typewriter
-ispell.
+ispell
 \family default
 
 \begin_inset Foot
@@ -33332,36 +33328,36 @@ http://fmg-www.cs.ucla.edu/fmg-members/geoff/ispell.html
 
 \end_inset
 
+, für hebräische Dokumente außerdem noch 
+\family typewriter
+hspell.
+
+\family default
  
 \family typewriter
-aspell
+Aspell
 \family default
  ist neuer und generell besser als 
 \family typewriter
 ispell
 \family default
+ (bspw.
+ unterstützt es die Prüfung mehrsprachiger Dokumente).
+ Sie sollten also möglichst 
+\family typewriter
+aspell
+\family default
+ verwenden (unter Windows ist dies ohnehin die einzige Möglichkeit).
+ Installationsanweisungen und Hinweise zu Wörterbüchern finden Sie in der
+ Dokumentation von 
+\family typewriter
+aspell
+\family default
+ und 
+\family typewriter
+ispell
+\family default
 .
- In der 
-\family typewriter
-ispell
-\family default
--Dokumentation finden Sie Installationsanweisungen und Hinweise zu Wörterbüchern.
- Sorgen Sie dafür, dass 
-\family typewriter
-\shape up
-ispell
-\family default
-\shape default
- in Ihrem 
-\begin_inset Quotes pld
-\end_inset
-
-PATH
-\begin_inset Quotes grd
-\end_inset
-
- erreichbar ist.
- 
 \end_layout
 
 \begin_layout Standard
@@ -33377,7 +33373,7 @@ F7
 \family default
  oder 
 \begin_inset Graphics
-	filename ../../images/dialog-show_spellchecker.png
+	filename /home/juergen/lyx/lyx-stable/lib/images/dialog-show_spellchecker.png
 	scale 70
 	scaleBeforeRotation
 	BoundingBox 0bp 6bp 20bp 20bp
@@ -33590,12 +33586,24 @@ Die verwendete
 \family typewriter
 aspell/hspell/ispell
 \family default
--Datei hängt von der Sprache ab, die im zu prüfenden Dokument verwendet
- wird.
- Diese wiederum wurde im Dialogfenster 
+-Datei hängt von der Sprache ab, die im zu prüfenden Dokument bzw.
+ (bei 
+\family typewriter
+aspell
+\family default
+) der zu prüfenden Passage verwendet wird.
+ Diese wiederum wurde entweder im Dialogfenster 
 \family sans
 Dokument\SpecialChar \menuseparator
 Einstellungen\SpecialChar \menuseparator
+Sprache
+\family default
+ oder aber, falls es sich um fremdsprachige Passagen handelt, in 
+\family sans
+Bearbeiten\SpecialChar \menuseparator
+Textstil\SpecialChar \menuseparator
+Benutzerdefiniert\SpecialChar \ldots{}
+\SpecialChar \menuseparator
 Sprache
 \family default
  festgelegt.
@@ -33604,11 +33612,71 @@ fung erst gar nicht gestartet.
 \end_layout
 
 \begin_layout Standard
-Für 
+Wenn Sie 
 \family typewriter
 ispell
 \family default
- kann man auch einen 
+ verwenden, müssen Sie darauf achten, dass die 
+\family typewriter
+ispell
+\family default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+"=
+\end_layout
+
+\end_inset
+
+Wörterbücher Namen haben, die LyX kennt.
+ LyX gibt an 
+\family typewriter
+ispell
+\family default
+ den englischen Namen weiter, der vom LaTeX-Babel-Paket benutzt wird (z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ 
+\emph on
+ngerman
+\emph default
+ für neue und 
+\emph on
+german
+\emph default
+ für alte deutsche Rechtschreibung).
+ Die 
+\family typewriter
+ispell
+\family default
+-Dateien hingegen haben häufig Namen in der Muttersprache (bspw.
+
+\emph on
+ deutsch
+\emph default
+).
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Bitte lesen Sie den folgenden Abschnitt für Hinweise zur Einrichtung des
+ richtigen Wörterbuchs für alte\SpecialChar \slash{}
+neue deutsche Rechtschreibung.
+\end_layout
+
+\end_inset
+
+ Sie müssen also, falls das richtige Wörterbuch nicht gefunden wird, gegebenenfa
+lls in dem Ordner, in dem sich die 
+\family typewriter
+ispell
+\family default
+-Wörterbücher befinden, einen 
 \emph on
 Link
 \emph default
@@ -33626,28 +33694,9 @@ hash
 \family default
  nach 
 \family typewriter
-[n]
+german.(aff|hash)
 \family default
-ger\SpecialChar \-
-man
-\family typewriter
-.(aff|hash)
-\family default
-, oder was auch immer auf Ihre Sprache zutrifft, definieren.
- Das ist nötig, weil die 
-\family typewriter
-ispell
-\family default
--Dateien normalerweise Namen in der Muttersprache haben (
-\emph on
-deutsch
-\emph default
-), während 
-\family typewriter
-ispell
-\family default
-, wenn es von LyX aus gestartet wird, nach dem englischen Namen der Datei
- sucht, der vom LaTeX-Babel-Paket benutzt wird ([n]german).
+ setzen oder die Dateien entsprechend umbenennen.
 \end_layout
 
 \begin_layout Standard
@@ -33788,6 +33837,151 @@ ispell
 \begin_layout Enumerate
 Die vierte Möglichkeit ist, dass der Pfleger des Wörterbuchs das Problem
  löst.
+\end_layout
+
+\begin_layout Subsubsection*
+Alte vs.
+ neue deutsche Rechtschreibung
+\end_layout
+
+\begin_layout Standard
+Sowohl für 
+\family typewriter
+aspell
+\family default
+ als auch für 
+\family typewriter
+ispell
+\family default
+ liegen spezifische Wörterbücher für die alte und die neue Rechtschreibung
+ vor, LyX unterstützt also beide Varianten (im Fall von
+\family typewriter
+ aspell
+\family default
+ auch gleichzeitig, etwa wenn Sie in einem Dokument mit neuer Rechtschreibung
+ aus Dokumenten mit alter Rechtschreibung zitieren
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+In diesem Fall sollten Sie die Zitate wie fremdsprachigen Text behandeln,
+ in 
+\family sans
+Bearbeiten\SpecialChar \menuseparator
+Textstil\SpecialChar \menuseparator
+Benutzerdefiniert\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+Sprache 
+\family default
+also 
+\begin_inset Quotes gld
+\end_inset
+
+Deutsch (alte Rechtschreibung)
+\begin_inset Quotes grd
+\end_inset
+
+ für die Zitate auswählen.
+\end_layout
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Wenn Sie 
+\family typewriter
+ispell
+\family default
+ verwenden, ist es wichtig, dass die Wörterbuchdateien richtig bezeichnet
+ sind.
+ Das 
+\family typewriter
+ispell
+\family default
+-Wörterbuch für alte Rechtschreibung (das üblicherweise 
+\emph on
+deutsch
+\emph default
+ heißt), sucht LyX unter dem Namen 
+\emph on
+german
+\emph default
+; das 
+\family typewriter
+ispell
+\family default
+-Wörterbuch für neue Rechtschreibung (das üblicherweise 
+\emph on
+german
+\emph default
+ heißt), sucht LyX unter dem Namen 
+\emph on
+ngerman
+\emph default
+.
+ Für eine funktionierende 
+\family typewriter
+ispell
+\family default
+-Rechtschreibprüfung für alte und neue Rechtschreibung müssen Sie also folgendes
+ tun:
+\end_layout
+
+\begin_layout Enumerate
+Benennen Sie die Dateien 
+\family typewriter
+german.(aff|hash)
+\family default
+ um in
+\family typewriter
+ ngerman.(aff|hash)
+\end_layout
+
+\begin_layout Enumerate
+Setzen Sie, wie oben beschrieben, einen Link von 
+\family typewriter
+deutsch.(aff|hash)
+\family default
+ nach 
+\family typewriter
+german.(aff|hash) 
+\family default
+oder benennen Sie alternativ die Dateien 
+\family typewriter
+deutsch.*
+\family default
+ um in
+\family typewriter
+ german.*
+\end_layout
+
+\begin_layout Standard
+Bitte beachten Sie, dass 
+\family typewriter
+ispell
+\family default
+ fälschlicherweise das Wörterbuch für neue Rechtschreibung bei alter Rechtschrei
+bung verwenden wird, wenn Sie den ersten Schritt vergessen!
+\end_layout
+
+\begin_layout Standard
+Wenn Sie 
+\family typewriter
+aspell
+\family default
+ verwenden, ist die Situation weit weniger verwirrend.
+ Vorausgesetzt, die Wörterbücher heißen 
+\emph on
+de_DE
+\emph default
+ (neue Rechtschreibung) und 
+\emph on
+de-alt
+\emph default
+ (alte Rechtschreibung), was normalerweise der Fall ist, funktioniert sowohl
+ neue als auch alte Rechtschreibung von vorneherein.
 \end_layout
 
 \begin_layout Subsubsection
