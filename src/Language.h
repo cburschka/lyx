@@ -46,6 +46,8 @@ public:
 	///
 	std::string const & code() const { return code_; }
 	///
+	std::string const & variety() const { return variety_; }
+	///
 	std::string const & latex_options() const { return latex_options_; }
 	///
 	bool internalFontEncoding() const;
@@ -67,7 +69,11 @@ private:
 	///
 	Encoding const * encoding_;
 	///
+	std::string codeStr_;
+	///
 	std::string code_;
+	///
+	std::string variety_;
 	///
 	std::string latex_options_;
 };

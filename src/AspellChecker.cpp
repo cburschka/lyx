@@ -45,11 +45,17 @@ struct AspellChecker::Private
 
 	~Private();
 
-	/// add a speller of the given language
-	AspellSpeller * addSpeller(string const & lang);
+	/// add a speller of the given language and variety
+	AspellSpeller * addSpeller(string const & lang,
+				   string const & variety = string());
 
 	///
-	AspellSpeller * speller(string const & lang);
+	AspellSpeller * speller(string const & lang,
+				string const & variety);
+
+	/// create a unique ID from lang code and variety
+	string const spellerID(string const & lang,
+			       string const & variety);
 
 	/// the spellers
 	Spellers spellers_;
@@ -77,11 +83,16 @@ AspellChecker::Private::~Private()
 }
 
 
-AspellSpeller * AspellChecker::Private::addSpeller(string const & lang)
+AspellSpeller * AspellChecker::Private::addSpeller(string const & lang,
+						   string const & variety)
 {
 	AspellConfig * config = new_aspell_config();
-	// FIXME The aspell documentation says to use "lang"
-	aspell_config_replace(config, "language-tag", lang.c_str());
+	// Aspell supports both languages and varieties (such as German
+	// old vs. new spelling). The respective naming convention is
+	// lang_REGION-variety (e.g. de_DE-alt).
+	aspell_config_replace(config, "lang", lang.c_str());
+	if (!variety.empty())
+		aspell_config_replace(config, "variety", variety.c_str());
 	// Set the encoding to utf-8.
 	// aspell does also understand "ucs-4", so we would not need a
 	// conversion in theory, but if this is used it expects all
@@ -110,18 +121,28 @@ AspellSpeller * AspellChecker::Private::addSpeller(string const & lang)
 	Speller m;
 	m.speller = to_aspell_speller(err);
 	m.config = config;
-	spellers_[lang] = m;
+	spellers_[spellerID(lang, variety)] = m;
 	return m.speller;
 }
 
 
-AspellSpeller * AspellChecker::Private::speller(string const & lang)
+AspellSpeller * AspellChecker::Private::speller(string const & lang,
+						string const & variety)
 {
-	Spellers::iterator it = spellers_.find(lang);
+	Spellers::iterator it = spellers_.find(spellerID(lang, variety));
 	if (it != spellers_.end())
 		return it->second.speller;
 	
-	return addSpeller(lang);
+	return addSpeller(lang, variety);
+}
+
+
+string const AspellChecker::Private::spellerID(string const & lang,
+					string const & variety)
+{
+	if (variety.empty())
+		return lang;
+	return lang + "-" + variety;
 }
 
 
@@ -138,7 +159,10 @@ AspellChecker::~AspellChecker()
 
 SpellChecker::Result AspellChecker::check(WordLangTuple const & word)
 {
-	AspellSpeller * m = d->speller(word.lang_code());
+  
+	AspellSpeller * m =
+		d->speller(word.lang_code(), word.lang_variety());
+
 	if (!m)
 		return OK;
 
@@ -155,7 +179,8 @@ SpellChecker::Result AspellChecker::check(WordLangTuple const & word)
 
 void AspellChecker::insert(WordLangTuple const & word)
 {
-	Spellers::iterator it = d->spellers_.find(word.lang_code());
+	Spellers::iterator it = d->spellers_.find(
+		d->spellerID(word.lang_code(), word.lang_variety()));
 	if (it != d->spellers_.end())
 		aspell_speller_add_to_personal(it->second.speller, to_utf8(word.word()).c_str(), -1);
 }
@@ -163,7 +188,8 @@ void AspellChecker::insert(WordLangTuple const & word)
 
 void AspellChecker::accept(WordLangTuple const & word)
 {
-	Spellers::iterator it = d->spellers_.find(word.lang_code());
+	Spellers::iterator it = d->spellers_.find(
+		d->spellerID(word.lang_code(), word.lang_variety()));
 	if (it != d->spellers_.end())
 		aspell_speller_add_to_session(it->second.speller, to_utf8(word.word()).c_str(), -1);
 }
@@ -173,7 +199,9 @@ void AspellChecker::suggest(WordLangTuple const & wl,
 	docstring_list & suggestions)
 {
 	suggestions.clear();
-	AspellSpeller * m = d->speller(wl.lang_code());
+	AspellSpeller * m =
+		d->speller(wl.lang_code(), wl.lang_variety());
+
 	if (!m)
 		return;
 
