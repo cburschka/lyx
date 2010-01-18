@@ -28308,13 +28308,14 @@ aspell
 \family typewriter
 ispell
 \family default
-, so that it is recommended to use aspell.
+, and contrary to ispell, it supports multiple languages in parallel, so
+ that it is recommended to use aspell.
  
 \family typewriter
 hspell
 \family default
  is a Hebrew spell-checker.
- The used spell checker ind its settings are specified in LyX's preferences
+ The used spell checker and its settings are specified in LyX's preferences
  under 
 \family sans
 Language Settings
