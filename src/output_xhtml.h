@@ -29,7 +29,7 @@ class Text;
 
 namespace html {
 /// Attributes will be escaped automatically and so should NOT
-/// be escaped before passing to the constructor.
+/// be escaped before being passed to the constructor.
 struct StartTag {
 	///
 	explicit StartTag(std::string const & tag) : tag_(tag) {}
@@ -67,7 +67,7 @@ struct EndTag {
 // need to re-work a bit of code....
 /// Tags like <img />
 /// Attributes will be escaped automatically and so should NOT
-/// be escaped before passing to the constructor.
+/// be escaped before being passed to the constructor.
 struct CompTag {
 	///
 	explicit CompTag(std::string const & tag)
@@ -83,7 +83,7 @@ struct CompTag {
 	std::string attr_;
 };
 
-} // namespace HTML
+} // namespace html
 
 class XHTMLStream {
 public:
@@ -164,13 +164,7 @@ std::string htmlize(std::string const & str);
 /// 
 std::string cleanAttr(std::string const & str);
 
-// to be removed
-/// \return true if tag was opened, false if not 
-bool openTag(odocstream & os, std::string const & tag, 
-						 std::string const & attr);
-/// \return true if tag was opened, false if not 
-bool closeTag(odocstream & os, std::string const & tag);
-}
+} // namespace html
 } // namespace lyx
 
 #endif
