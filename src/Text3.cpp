@@ -2375,6 +2375,8 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_MATH_MATRIX:
 	case LFUN_MATH_DELIM:
 	case LFUN_MATH_BIGDELIM:
+	case LFUN_MATH_SUBSCRIPT:
+	case LFUN_MATH_SUPERSCRIPT:
 		// not allowed in ERT, for example.
 		enable = cur.inset().insetAllowed(MATH_CODE);
 		break;
@@ -2436,8 +2438,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_MATH_DISPLAY:
 	case LFUN_MATH_MODE:
 	case LFUN_MATH_MACRO:
-	case LFUN_MATH_SUBSCRIPT:
-	case LFUN_MATH_SUPERSCRIPT:
 	case LFUN_FONT_DEFAULT:
 	case LFUN_FONT_UNDERLINE:
 	case LFUN_FONT_SIZE:

@@ -96,6 +96,9 @@ What's new
 
 * USER INTERFACE
 
+- While in ERT, disable non-functional sub- and superscript functions that
+  crashed LyX (bug 6459).
+
 - Detect user-specified package dependencies for modules (bug 6361).
 
 - Prevent the error dialog from jumping to the first item when
