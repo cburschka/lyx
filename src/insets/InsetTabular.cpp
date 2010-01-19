@@ -2639,7 +2639,7 @@ docstring Tabular::xhtmlRow(XHTMLStream & xs, row_type row,
 	docstring ret;
 	idx_type cell = getFirstCellInRow(row);
 
-	xs << StartTag("tr");
+	xs << html::StartTag("tr");
 	for (col_type j = 0; j < column_info.size(); ++j) {
 		if (isPartOfMultiColumn(row, j))
 			continue;
@@ -2674,12 +2674,12 @@ docstring Tabular::xhtmlRow(XHTMLStream & xs, row_type row,
 		if (isMultiColumn(cell))
 			attr << " colspan='" << columnSpan(cell) << "'";
 
-		xs << StartTag("td", attr.str());
+		xs << html::StartTag("td", attr.str());
 		ret += cellInset(cell)->xhtml(xs, runparams);
-		xs << EndTag("td");
+		xs << html::EndTag("td");
 		++cell;
 	}
-	xs << EndTag("tr");
+	xs << html::EndTag("tr");
 	return ret;
 }
 
@@ -2690,13 +2690,13 @@ docstring Tabular::xhtml(XHTMLStream & xs, OutputParams const & runparams) const
 	// It's unclear to me if we need to mess with the long table stuff. 
 	// We can borrow that too from docbook, if so.
 
-	xs << StartTag("tbody");
+	xs << html::StartTag("tbody");
 	for (row_type i = 0; i < row_info.size(); ++i) {
 		if (isValidRow(i)) {
 			ret += xhtmlRow(xs, i, runparams);
 		}
 	}
-	xs << EndTag("tbody");
+	xs << html::EndTag("tbody");
 	return ret;
 }
 
@@ -4305,9 +4305,9 @@ docstring InsetTabular::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 	// FIXME XHTML
 	// It'd be better to be able to get this from an InsetLayout, but at present
 	// InsetLayouts do not seem really to work for things that aren't InsetTexts.
-	xs << StartTag("table");
+	xs << html::StartTag("table");
 	docstring ret = tabular.xhtml(xs, rp);
-	xs << EndTag("table");
+	xs << html::EndTag("table");
 	return ret;
 }
 

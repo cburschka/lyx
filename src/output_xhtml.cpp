@@ -140,7 +140,6 @@ bool isFontTag(string const & s)
 {
 	return s == "em" || s == "strong"; // others?
 }
-} // namespace html
 
 
 docstring StartTag::asTag() const
@@ -176,6 +175,9 @@ docstring CompTag::asTag() const
 	return from_utf8(output);
 }
 
+} // namespace html
+
+
 
 ////////////////////////////////////////////////////////////////
 ///
@@ -207,7 +209,7 @@ bool XHTMLStream::closeFontTags()
 	if (tag_stack_.empty())
 		return true;
 	// first, we close any open font tags we can close
-	StartTag curtag = tag_stack_.back();
+	html::StartTag curtag = tag_stack_.back();
 	while (html::isFontTag(curtag.tag_)) {
 		os_ << curtag.asEndTag();
 		tag_stack_.pop_back();
@@ -237,7 +239,7 @@ bool XHTMLStream::closeFontTags()
 void XHTMLStream::clearTagDeque()
 {
 	while (!pending_tags_.empty()) {
-		StartTag const & tag = pending_tags_.front();
+		html::StartTag const & tag = pending_tags_.front();
 		// tabs?
 		os_ << tag.asTag();
 		tag_stack_.push_back(tag);
@@ -299,7 +301,7 @@ XHTMLStream & XHTMLStream::operator<<(NextRaw const &)
 }
 
 
-XHTMLStream & XHTMLStream::operator<<(StartTag const & tag) 
+XHTMLStream & XHTMLStream::operator<<(html::StartTag const & tag) 
 {
 	if (tag.tag_.empty())
 		return *this;
@@ -310,7 +312,7 @@ XHTMLStream & XHTMLStream::operator<<(StartTag const & tag)
 }
 
 
-XHTMLStream & XHTMLStream::operator<<(CompTag const & tag) 
+XHTMLStream & XHTMLStream::operator<<(html::CompTag const & tag) 
 {
 	if (tag.tag_.empty())
 		return *this;
@@ -339,7 +341,7 @@ bool XHTMLStream::isTagOpen(string const & stag)
 // sure of that, but we won't assert (yet) if we run into
 // a problem. we'll just output error messages and try our
 // best to make things work.
-XHTMLStream & XHTMLStream::operator<<(EndTag const & etag)
+XHTMLStream & XHTMLStream::operator<<(html::EndTag const & etag)
 {
 	if (etag.tag_.empty())
 		return *this;
@@ -353,7 +355,7 @@ XHTMLStream & XHTMLStream::operator<<(EndTag const & etag)
 
 	// first make sure we're not closing an empty tag
 	if (!pending_tags_.empty()) {
-		StartTag const & stag = pending_tags_.back();
+		html::StartTag const & stag = pending_tags_.back();
 		if (etag.tag_ == stag.tag_)  {
 			// we have <tag></tag>, so we discard it and remove it 
 			// from the pending_tags_.
@@ -436,7 +438,7 @@ XHTMLStream & XHTMLStream::operator<<(EndTag const & etag)
 		// and are being asked to closed em. we want:
 		//    <em>this is <strong>bold</strong></em><strong>
 		// first, we close the intervening tags...
-		StartTag curtag = tag_stack_.back();
+		html::StartTag curtag = tag_stack_.back();
 		// ...remembering them in a stack.
 		TagStack fontstack;
 		while (curtag.tag_ != etag.tag_) {
@@ -463,7 +465,7 @@ XHTMLStream & XHTMLStream::operator<<(EndTag const & etag)
 	// at least guarantees proper nesting.
 	writeError("Closing tag `" + etag.tag_ 
 	        + "' when other tags are open, namely:");
-	StartTag curtag = tag_stack_.back();
+	html::StartTag curtag = tag_stack_.back();
 	while (curtag.tag_ != etag.tag_) {
 		writeError(curtag.tag_);
 		os_ << curtag.asEndTag();
@@ -485,37 +487,37 @@ namespace {
 
 inline void openTag(XHTMLStream & xs, Layout const & lay)
 {
-	xs << StartTag(lay.htmltag(), lay.htmlattr());
+	xs << html::StartTag(lay.htmltag(), lay.htmlattr());
 }
 
 
 inline void closeTag(XHTMLStream & xs, Layout const & lay)
 {
-	xs << EndTag(lay.htmltag());
+	xs << html::EndTag(lay.htmltag());
 }
 
 
 inline void openLabelTag(XHTMLStream & xs, Layout const & lay)
 {
-	xs << StartTag(lay.htmllabeltag(), lay.htmllabelattr());
+	xs << html::StartTag(lay.htmllabeltag(), lay.htmllabelattr());
 }
 
 
 inline void closeLabelTag(XHTMLStream & xs, Layout const & lay)
 {
-	xs << EndTag(lay.htmllabeltag());
+	xs << html::EndTag(lay.htmllabeltag());
 }
 
 
 inline void openItemTag(XHTMLStream & xs, Layout const & lay)
 {
-	xs << StartTag(lay.htmlitemtag(), lay.htmlitemattr(), true);
+	xs << html::StartTag(lay.htmlitemtag(), lay.htmlitemattr(), true);
 }
 
 
 inline void closeItemTag(XHTMLStream & xs, Layout const & lay)
 {
-	xs << EndTag(lay.htmlitemtag());
+	xs << html::EndTag(lay.htmlitemtag());
 }
 
 // end of convenience functions
@@ -619,14 +621,14 @@ ParagraphList::const_iterator makeBibliography(Buffer const & buf,
 				ParagraphList::const_iterator const & pbegin,
 				ParagraphList::const_iterator const & pend) 
 {
-	xs << StartTag("h2", "class='bibliography'");
+	xs << html::StartTag("h2", "class='bibliography'");
 	xs << pbegin->layout().labelstring(false);
-	xs << EndTag("h2");
+	xs << html::EndTag("h2");
 	xs.cr();
-	xs << StartTag("div", "class='bibliography'");
+	xs << html::StartTag("div", "class='bibliography'");
 	xs.cr();
 	makeParagraphs(buf, xs, runparams, text, pbegin, pend);
-	xs << EndTag("div");
+	xs << html::EndTag("div");
 	return pend;
 }
 

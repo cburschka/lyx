@@ -220,11 +220,11 @@ docstring InsetWrap::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 	string const len = params_.width.asHTMLString();
 	string const width = len.empty() ? "50%" : len;
 	string const attr = "class='wrap' style='width: " + len + ";'";
-	xs << StartTag("div", attr);
+	xs << html::StartTag("div", attr);
 	docstring const deferred = 
 		InsetText::insetAsXHTML(xs, rp, InsetText::WriteInnerTag);
 	if (!len.empty())
-		xs << EndTag("div");
+		xs << html::EndTag("div");
 	return deferred;
 }
 

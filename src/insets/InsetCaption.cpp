@@ -268,9 +268,9 @@ docstring InsetCaption::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 	if (!type_.empty())
 		attr += " float-caption-" + type_;
 	attr += "'";
-	xs << StartTag("div", attr);
+	xs << html::StartTag("div", attr);
 	docstring def = getCaptionAsHTML(xs, rp);
-	xs << EndTag("div");
+	xs << html::EndTag("div");
 	return def;
 }
 

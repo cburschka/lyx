@@ -920,10 +920,10 @@ docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 	bool const numbers = 
 		(engine == ENGINE_BASIC || engine == ENGINE_NATBIB_NUMERICAL);
 
-	xs << StartTag("h2", "class='bibtex'")
+	xs << html::StartTag("h2", "class='bibtex'")
 		<< _("References")
-		<< EndTag("h2")
-		<< StartTag("div", "class='bibtex'");
+		<< html::EndTag("h2")
+		<< html::StartTag("div", "class='bibtex'");
 
 	// Now we loop over the entries
 	vector<docstring>::const_iterator vit = cites.begin();
@@ -933,11 +933,11 @@ docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 		if (biit == bibinfo.end())
 			continue;
 		BibTeXInfo const & entry = biit->second;
-		xs << StartTag("div", "class='bibtexentry'");
+		xs << html::StartTag("div", "class='bibtexentry'");
 		// FIXME XHTML
 		// The same name/id problem we have elsewhere.
 		string const attr = "id='" + to_utf8(entry.key()) + "'";
-		xs << CompTag("a", attr);
+		xs << html::CompTag("a", attr);
 		docstring citekey;
 		if (numbers)
 			citekey = entry.citeNumber();
@@ -954,19 +954,19 @@ docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 			if (citekey.empty())
 				citekey = entry.key();
 		}
-		xs << StartTag("span", "class='bibtexlabel'")
+		xs << html::StartTag("span", "class='bibtexlabel'")
 			<< citekey
-			<< EndTag("span");
+			<< html::EndTag("span");
 		// FIXME Right now, we are calling BibInfo::getInfo on the key,
 		// which will give us all the cross-referenced info. But for every
 		// entry, so there's a lot of repitition. This should be fixed.
-		xs << StartTag("span", "class='bibtexinfo'") 
+		xs << html::StartTag("span", "class='bibtexinfo'") 
 			<< bibinfo.getInfo(entry.key())
-			<< EndTag("span")
-			<< EndTag("div");
+			<< html::EndTag("span")
+			<< html::EndTag("div");
 		xs.cr();
 	}
-	xs << EndTag("div");
+	xs << html::EndTag("div");
 	return docstring();
 }
 

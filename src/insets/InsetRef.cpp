@@ -123,9 +123,9 @@ docstring InsetRef::xhtml(XHTMLStream & xs, OutputParams const &) const
 	// some sort of counter with the label, and we don't have that yet.
 	docstring const ref = html::cleanAttr(getParam("reference"));
 	string const attr = "href=\"#" + to_utf8(ref) + "\"";
-	xs << StartTag("a", attr);
+	xs << html::StartTag("a", attr);
 	xs << ref;
-	xs << EndTag("a");
+	xs << html::EndTag("a");
 	return docstring();
 }
 

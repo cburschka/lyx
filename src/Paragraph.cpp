@@ -2414,7 +2414,7 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 	if (!runparams.for_toc && runparams.html_make_pars) {
 		// generate a magic label for this paragraph
 		string const attr = "id='" + magicLabel() + "'";
-		xs << CompTag("a", attr);
+		xs << html::CompTag("a", attr);
 	}
 
 	FontInfo font_old =
@@ -2427,20 +2427,20 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 		// emphasis
 		if (font_old.emph() != font.fontInfo().emph()) {
 			if (font.fontInfo().emph() == FONT_ON) {
-				xs << StartTag("em");
+				xs << html::StartTag("em");
 				emph_flag = true;
 			} else if (emph_flag && i != initial) {
-				xs << EndTag("em");
+				xs << html::EndTag("em");
 				emph_flag = false;
 			}
 		}
 		// bold
 		if (font_old.series() != font.fontInfo().series()) {
 			if (font.fontInfo().series() == BOLD_SERIES) {
-				xs << StartTag("strong");
+				xs << html::StartTag("strong");
 				bold_flag = true;
 			} else if (bold_flag && i != initial) {
-				xs << EndTag("strong");
+				xs << html::EndTag("strong");
 				bold_flag = false;
 			}
 		}

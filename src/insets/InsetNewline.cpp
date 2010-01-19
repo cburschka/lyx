@@ -176,7 +176,7 @@ int InsetNewline::docbook(odocstream & os, OutputParams const &) const
 
 docstring InsetNewline::xhtml(XHTMLStream & xs, OutputParams const &) const
 {
-	xs << CompTag("br");
+	xs << html::CompTag("br");
 	xs.cr();
 	return docstring();
 }

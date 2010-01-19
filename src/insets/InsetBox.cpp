@@ -492,10 +492,10 @@ docstring InsetBox::xhtml(XHTMLStream & xs, OutputParams const & runparams) cons
 	if (!style.empty())
 		attrs += " style='" + style + "'";
 
-	xs << StartTag("div", attrs);
+	xs << html::StartTag("div", attrs);
 	XHTMLOptions const opts = InsetText::WriteLabel | InsetText::WriteInnerTag;
 	docstring defer = InsetText::insetAsXHTML(xs, runparams, opts);
-	xs << EndTag("div");
+	xs << html::EndTag("div");
 	xs << defer;
 	return docstring();
 }

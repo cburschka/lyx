@@ -250,7 +250,7 @@ int InsetNewpage::docbook(odocstream & os, OutputParams const &) const
 
 docstring InsetNewpage::xhtml(XHTMLStream & xs, OutputParams const &) const
 {
-	xs << CompTag("br");
+	xs << html::CompTag("br");
 	return docstring();
 }
 

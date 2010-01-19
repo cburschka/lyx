@@ -227,7 +227,7 @@ docstring InsetLabel::xhtml(XHTMLStream & xs, OutputParams const &) const
 	// problem with some browsers, though, I'm sure. (Guess which!) So we will
 	// have to figure out what to do about this later. 
 	string const attr = "id=\"" + html::cleanAttr(to_utf8(getParam("name"))) + "\"";
-	xs << CompTag("a", attr);
+	xs << html::CompTag("a", attr);
 	return docstring();
 }
 

@@ -214,10 +214,10 @@ docstring InsetFloatList::xhtml(XHTMLStream &, OutputParams const &) const {
 	odocstringstream ods;
 	XHTMLStream xs(ods);
 
-	xs << StartTag("div", "class='toc'");
-	xs << StartTag("div", tocattr) 
+	xs << html::StartTag("div", "class='toc'");
+	xs << html::StartTag("div", tocattr) 
 		 << toclabel 
-		 << EndTag("div");
+		 << html::EndTag("div");
 	
 	Toc::const_iterator it = toc.begin();
 	Toc::const_iterator const en = toc.end();
@@ -225,17 +225,17 @@ docstring InsetFloatList::xhtml(XHTMLStream &, OutputParams const &) const {
 		Paragraph const & par = it->dit().innerParagraph();
 		string const attr = "class='lyxtoc-" + toctype + "'";
 		Font const dummy;
-		xs << StartTag("div", attr);
+		xs << html::StartTag("div", attr);
 		string const parattr = "href='#" + par.magicLabel() + "' class='tocarrow'";
 		xs << it->str() << " "
-		   << StartTag("a", parattr)
+		   << html::StartTag("a", parattr)
 		   // FIXME XHTML 
 		   // There ought to be a simple way to customize this.
 		   << XHTMLStream::NextRaw() << "&seArr;"
-		   << EndTag("a");
-		xs << EndTag("div");
+		   << html::EndTag("a");
+		xs << html::EndTag("div");
 	}
-	xs << EndTag("div");
+	xs << html::EndTag("div");
 	return ods.str();
 }
 

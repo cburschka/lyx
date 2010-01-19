@@ -951,7 +951,7 @@ docstring InsetGraphics::xhtml(XHTMLStream & xs, OutputParams const & op) const
 		        << params().filename << "' for output. File missing?");
 		string const attr = "src='" + params().filename.absFilename() 
 		                    + "' alt='image: " + output_file + "'";
-		xs << CompTag("img", attr);
+		xs << html::CompTag("img", attr);
 		return docstring();
 	}
 
@@ -961,7 +961,7 @@ docstring InsetGraphics::xhtml(XHTMLStream & xs, OutputParams const & op) const
 	// Speaking of which: Do the cropping, rotating, etc.
 	string const attr = "src='" + output_file + "' alt='image: " 
 	                    + output_file + "'";
-	xs << CompTag("img", attr);
+	xs << html::CompTag("img", attr);
 	return docstring();
 }
 

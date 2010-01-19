@@ -668,11 +668,11 @@ docstring InsetInclude::xhtml(XHTMLStream & xs, OutputParams const &rp) const
 	bool const listing = isListings(params());
 	if (listing || isVerbatim(params())) {
 		if (listing)
-			xs << StartTag("pre");
+			xs << html::StartTag("pre");
 		// FIXME: We don't know the encoding of the file, default to UTF-8.
 		xs << includedFilename(buffer(), params()).fileContents("UTF-8");
 		if (listing)
-			xs << EndTag("pre");
+			xs << html::EndTag("pre");
 		return docstring();
 	}
 

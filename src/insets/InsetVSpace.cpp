@@ -241,7 +241,7 @@ docstring InsetVSpace::xhtml(XHTMLStream &, OutputParams const &) const
 	XHTMLStream xds(ods);
 	string const len = space_.asHTMLLength();
 	string const attr = "style='height:" + (len.empty() ? "1em" : len) + "'";
-	xds << StartTag("div", attr, true) << EndTag("div");
+	xds << html::StartTag("div", attr, true) << html::EndTag("div");
 	return ods.str();
 }
 

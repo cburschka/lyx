@@ -500,7 +500,7 @@ docstring InsetText::insetAsXHTML(XHTMLStream & xs, OutputParams const & runpara
 
 	InsetLayout const & il = getLayout();
 	if (opts & WriteOuterTag)
-		xs << StartTag(il.htmltag(), il.htmlattr());
+		xs << html::StartTag(il.htmltag(), il.htmlattr());
 	if ((opts & WriteLabel) && !il.counter().empty()) {
 		BufferParams const & bp = buffer().masterBuffer()->params();
 		Counters & cntrs = bp.documentClass().counters();
@@ -511,23 +511,23 @@ docstring InsetText::insetAsXHTML(XHTMLStream & xs, OutputParams const & runpara
 				cntrs.counterLabel(from_utf8(il.htmllabel()), bp.language->code());
 			// FIXME is this check necessary?
 			if (!lbl.empty()) {
-				xs << StartTag(il.htmllabeltag(), il.htmllabelattr());
+				xs << html::StartTag(il.htmllabeltag(), il.htmllabelattr());
 				xs << lbl;
-				xs << EndTag(il.htmllabeltag());
+				xs << html::EndTag(il.htmllabeltag());
 			}
 		}
 	}
 
 	if (opts & WriteInnerTag)
-		xs << StartTag(il.htmlinnertag(), il.htmlinnerattr());
+		xs << html::StartTag(il.htmlinnertag(), il.htmlinnerattr());
 	OutputParams ours = runparams;
 	if (!il.isMultiPar() || opts == JustText)
 		ours.html_make_pars = false;
 	xhtmlParagraphs(text_, buffer(), xs, ours);
 	if (opts & WriteInnerTag)
-		xs << EndTag(il.htmlinnertag());
+		xs << html::EndTag(il.htmlinnertag());
 	if (opts & WriteOuterTag)
-		xs << EndTag(il.htmltag());
+		xs << html::EndTag(il.htmltag());
 	return docstring();
 }
 

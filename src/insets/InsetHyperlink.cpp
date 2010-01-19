@@ -186,9 +186,9 @@ docstring InsetHyperlink::xhtml(XHTMLStream & xs, OutputParams const &) const
 {
 	docstring const & target = getParam("target");
 	docstring const & name   = getParam("name");
-	xs << StartTag("a", to_utf8("href=\"" + target + "\""));
+	xs << html::StartTag("a", to_utf8("href=\"" + target + "\""));
 	xs << (name.empty() ? target : name);
-	xs << EndTag("a");
+	xs << html::EndTag("a");
 	return docstring();
 }
 

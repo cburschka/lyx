@@ -89,10 +89,10 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 	if (toc.empty())
 		return docstring();
 
-	xs << StartTag("div", "class='toc'");
-	xs << StartTag("div", tocattr) 
+	xs << html::StartTag("div", "class='toc'");
+	xs << html::StartTag("div", tocattr) 
 		 << _("Table of Contents") 
-		 << EndTag("div");
+		 << html::EndTag("div");
 	Toc::const_iterator it = toc.begin();
 	Toc::const_iterator const en = toc.end();
 	int lastdepth = 0;
@@ -109,7 +109,7 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 			for (int i = lastdepth + 1; i <= depth; ++i) {
 				stringstream attr;
 				attr << "class='lyxtoc-" << i << "'";
-				xs << StartTag("div", attr.str());
+				xs << html::StartTag("div", attr.str());
 			}
 			lastdepth = depth;
 		}
@@ -117,33 +117,33 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 			// close as many as we have to close to get back to this level
 			// this includes closing the last tag at this level
 			for (int i = lastdepth; i >= depth; --i) 
-				xs << EndTag("div");
+				xs << html::EndTag("div");
 			// now open our tag
 			stringstream attr;
 			attr << "class='lyxtoc-" << depth << "'";
-			xs << StartTag("div", attr.str());
+			xs << html::StartTag("div", attr.str());
 			lastdepth = depth;
 		} else {
 			// no change of level, so close and open
-			xs << EndTag("div");
+			xs << html::EndTag("div");
 			stringstream attr;
 			attr << "class='lyxtoc-" << depth << "'";
-			xs << StartTag("div", attr.str());
+			xs << html::StartTag("div", attr.str());
 		}
 		string const parattr = "href='#" + par.magicLabel() + "' class='tocarrow'";
 		OutputParams ours = op;
 		ours.for_toc = true;
 		par.simpleLyXHTMLOnePar(buffer(), xs, ours, dummy);
 		xs << " ";
-		xs << StartTag("a", parattr);
+		xs << html::StartTag("a", parattr);
 		// FIXME XHTML 
 		// There ought to be a simple way to customize this.
 		xs << XHTMLStream::NextRaw() << "&seArr;";
-		xs << EndTag("a");		
+		xs << html::EndTag("a");		
 	}
 	for (int i = lastdepth; i > 0; --i) 
-		xs << EndTag("div");
-	xs << EndTag("div");
+		xs << html::EndTag("div");
+	xs << html::EndTag("div");
 	return ods.str();
 }
 

@@ -27,6 +27,7 @@ class Text;
 // Inspiration for the *Tag structs and for XHTMLStream
 // came from MathStream and its cousins.
 
+namespace html {
 /// Attributes will be escaped automatically and so should NOT
 /// be escaped before passing to the constructor.
 struct StartTag {
@@ -82,6 +83,7 @@ struct CompTag {
 	std::string attr_;
 };
 
+} // namespace HTML
 
 class XHTMLStream {
 public:
@@ -107,11 +109,11 @@ public:
 	///
 	XHTMLStream & operator<<(int);
 	///
-	XHTMLStream & operator<<(StartTag const &);
+	XHTMLStream & operator<<(html::StartTag const &);
 	///
-	XHTMLStream & operator<<(EndTag const &);
+	XHTMLStream & operator<<(html::EndTag const &);
 	///
-	XHTMLStream & operator<<(CompTag const &);
+	XHTMLStream & operator<<(html::CompTag const &);
 	/// A trivial struct that functions as a stream modifier.
 	/// << NextRaw() causes the next string-like thing sent to the
 	/// stream not to be escaped.
@@ -130,9 +132,9 @@ private:
 	///
 	// int tab_;
 	///
-	typedef std::deque<StartTag> TagDeque;
+	typedef std::deque<html::StartTag> TagDeque;
 	///
-	typedef std::vector<StartTag> TagStack;
+	typedef std::vector<html::StartTag> TagStack;
 	/// holds start tags until we know there is content in them.
 	TagDeque pending_tags_;
 	/// remembers the history, so we can make sure we nest properly.

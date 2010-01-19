@@ -275,27 +275,27 @@ docstring InsetListings::xhtml(XHTMLStream & os, OutputParams const & rp) const
 
 	bool const isInline = params().isInline();
 	if (isInline) 
-		out << CompTag("br");
+		out << html::CompTag("br");
 	else {
-		out << StartTag("div", "class='float float-listings'");
+		out << html::StartTag("div", "class='float float-listings'");
 		docstring caption = getCaptionHTML(rp);
 		if (!caption.empty())
-			out << StartTag("div", "class='float-caption'") 
-			    << caption << EndTag("div");
+			out << html::StartTag("div", "class='float-caption'") 
+			    << caption << html::EndTag("div");
 	}
 
-	out << StartTag("pre");
+	out << html::StartTag("pre");
 	OutputParams newrp = rp;
 	newrp.html_disable_captions = true;
 	docstring def = InsetText::insetAsXHTML(out, newrp, InsetText::JustText);
-	out << EndTag("pre");
+	out << html::EndTag("pre");
 
 	if (isInline) {
-		out << CompTag("br");
+		out << html::CompTag("br");
 		// escaping will already have been done
 		os << XHTMLStream::NextRaw() << ods.str();
 	} else {
-		out << EndTag("div");
+		out << html::EndTag("div");
 		// In this case, this needs to be deferred, but we'll put it
 		// before anything the text itself deferred.
 		def = ods.str() + '\n' + def;

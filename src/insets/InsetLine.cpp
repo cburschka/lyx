@@ -88,7 +88,7 @@ int InsetLine::docbook(odocstream & os, OutputParams const &) const
 
 docstring InsetLine::xhtml(XHTMLStream & xs, OutputParams const &) const
 {
-	xs << CompTag("hr");
+	xs << html::CompTag("hr");
 	xs.cr();
 	return docstring();
 }

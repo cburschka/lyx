@@ -182,7 +182,7 @@ docstring InsetIndex::xhtml(XHTMLStream & xs, OutputParams const &) const
 	// our own interior paragraph, which doesn't get printed
 	std::string const magic = paragraphs().front().magicLabel();
 	std::string const attr = "id='" + magic + "'";
-	xs << CompTag("a", attr);
+	xs << html::CompTag("a", attr);
 	return docstring();
 }
 
@@ -701,11 +701,11 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 	odocstringstream ods;
 	XHTMLStream xs(ods);
 
-	xs << StartTag("div", "class='index'");
-	xs << StartTag(lay.htmltag(), lay.htmlattr()) 
+	xs << html::StartTag("div", "class='index'");
+	xs << html::StartTag(lay.htmltag(), lay.htmlattr()) 
 		 << _("Index") 
-		 << EndTag(lay.htmltag());
-	xs << StartTag("ul", "class='main'");
+		 << html::EndTag(lay.htmltag());
+	xs << html::StartTag("ul", "class='main'");
 	Font const dummy;
 
 	vector<IndexEntry>::const_iterator eit = entries.begin();
@@ -725,12 +725,12 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 				// close last entry or entries, depending.
 				if (level == 3) {
 					// close this sub-sub-entry
-					xs << EndTag("li");
+					xs << html::EndTag("li");
 					xs.cr();
 					// is this another sub-sub-entry within the same sub-entry?
 					if (!eit->same_sub(last)) {
 						// close this level
-						xs << EndTag("ul");
+						xs << html::EndTag("ul");
 						xs.cr();
 						level = 2;
 					}
@@ -742,12 +742,12 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 				// sub-entry. In that case, we do not want to close anything.
 				if (level == 2 && !eit->same_sub(last)) {
 					// close sub-entry 
-					xs << EndTag("li");
+					xs << html::EndTag("li");
 					xs.cr();
 					// is this another sub-entry with the same main entry?
 					if (!eit->same_main(last)) {
 						// close this level
-						xs << EndTag("ul");
+						xs << html::EndTag("ul");
 						xs.cr();
 						level = 1;
 					}
@@ -757,7 +757,7 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 				// close the entry.
 				if (level == 1 && !eit->same_main(last)) {
 					// close entry
-					xs << EndTag("li");
+					xs << html::EndTag("li");
 					xs.cr();
 				}
 			}
@@ -786,7 +786,7 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 	
 			if (level == 3) {
 				// another subsubentry
-				xs << StartTag("li", "class='subsubentry'") 
+				xs << html::StartTag("li", "class='subsubentry'") 
 				   << XHTMLStream::NextRaw() << subsub;
 			} else if (level == 2) {
 				// there are two ways we can be here: 
@@ -800,13 +800,13 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 				// note that in this case, too, though, the sub-entry might already
 				// have a sub-sub-entry.
 				if (eit->sub != last.sub)
-					xs << StartTag("li", "class='subentry'") 
+					xs << html::StartTag("li", "class='subentry'") 
 					   << XHTMLStream::NextRaw() << sub;
 				if (!subsub.empty()) {
 					// it's actually a subsubentry, so we need to start that list
 					xs.cr();
-					xs << StartTag("ul", "class='subsubentry'") 
-					   << StartTag("li", "class='subsubentry'") 
+					xs << html::StartTag("ul", "class='subsubentry'") 
+					   << html::StartTag("li", "class='subsubentry'") 
 					   << XHTMLStream::NextRaw() << subsub;
 					level = 3;
 				} 
@@ -822,19 +822,19 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 				// note that in this case, too, though, the main entry might already
 				// have a sub-entry, or even a sub-sub-entry.
 				if (eit->main != last.main)
-					xs << StartTag("li", "class='main'") << main;
+					xs << html::StartTag("li", "class='main'") << main;
 				if (!sub.empty()) {
 					// there's a sub-entry, too
 					xs.cr();
-					xs << StartTag("ul", "class='subentry'") 
-					   << StartTag("li", "class='subentry'") 
+					xs << html::StartTag("ul", "class='subentry'") 
+					   << html::StartTag("li", "class='subentry'") 
 					   << XHTMLStream::NextRaw() << sub;
 					level = 2;
 					if (!subsub.empty()) {
 						// and a sub-sub-entry
 						xs.cr();
-						xs << StartTag("ul", "class='subsubentry'") 
-						   << StartTag("li", "class='subsubentry'") 
+						xs << html::StartTag("ul", "class='subsubentry'") 
+						   << html::StartTag("li", "class='subsubentry'") 
 						   << XHTMLStream::NextRaw() << subsub;
 						level = 3;
 					}
@@ -844,17 +844,17 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 		// finally, then, we can output the index link itself
 		string const parattr = "href='#" + par.magicLabel() + "'";
 		xs << (entry_number == 0 ? ":" : ",");
-		xs << " " << StartTag("a", parattr)
-		   << ++entry_number << EndTag("a");
+		xs << " " << html::StartTag("a", parattr)
+		   << ++entry_number << html::EndTag("a");
 		last = *eit;
 	}
 	// now we have to close all the open levels
 	while (level > 0) {
-		xs << EndTag("li") << EndTag("ul");
+		xs << html::EndTag("li") << html::EndTag("ul");
 		xs.cr();
 		--level;
 	}
-	xs << EndTag("div");
+	xs << html::EndTag("div");
 	xs.cr();
 	return ods.str();
 }

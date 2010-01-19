@@ -291,11 +291,11 @@ docstring InsetFloat::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 
 	odocstringstream ods;
 	XHTMLStream newxs(ods);
-	newxs << StartTag(htmltype, attr);
+	newxs << html::StartTag(htmltype, attr);
 	InsetText::XHTMLOptions const opts = 
 		InsetText::WriteLabel | InsetText::WriteInnerTag;
 	docstring deferred = InsetText::insetAsXHTML(newxs, rp, opts);
-	newxs << EndTag(htmltype);
+	newxs << html::EndTag(htmltype);
 
 	if (rp.inFloat == OutputParams::NONFLOAT)
 		// In this case, this float needs to be deferred, but we'll put it
