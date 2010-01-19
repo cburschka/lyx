@@ -620,6 +620,8 @@ ParagraphList::const_iterator makeBibliography(Buffer const & buf,
 				ParagraphList::const_iterator const & pbegin,
 				ParagraphList::const_iterator const & pend) 
 {
+	// FIXME XHTML
+	// Use TextClass::htmlTOCLayout() to figure out how we should look.
 	xs << html::StartTag("h2", "class='bibliography'");
 	xs << pbegin->layout().labelstring(false);
 	xs << html::EndTag("h2");
