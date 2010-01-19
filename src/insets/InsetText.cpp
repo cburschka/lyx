@@ -520,13 +520,10 @@ docstring InsetText::insetAsXHTML(XHTMLStream & xs, OutputParams const & runpara
 
 	if (opts & WriteInnerTag)
 		xs << StartTag(il.htmlinnertag(), il.htmlinnerattr());
-	if (il.isMultiPar())
-		xhtmlParagraphs(text_, buffer(), xs, runparams);
-	else {
-		OutputParams ours = runparams;
+	OutputParams ours = runparams;
+	if (!il.isMultiPar() || opts == JustText)
 		ours.html_make_pars = false;
-		xhtmlParagraphs(text_, buffer(), xs, ours);
-	}
+	xhtmlParagraphs(text_, buffer(), xs, ours);
 	if (opts & WriteInnerTag)
 		xs << EndTag(il.htmlinnertag());
 	if (opts & WriteOuterTag)

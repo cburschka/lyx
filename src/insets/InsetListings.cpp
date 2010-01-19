@@ -287,7 +287,7 @@ docstring InsetListings::xhtml(XHTMLStream & os, OutputParams const & rp) const
 	out << StartTag("pre");
 	OutputParams newrp = rp;
 	newrp.html_disable_captions = true;
-	docstring def = InsetText::xhtml(out, newrp);
+	docstring def = InsetText::insetAsXHTML(out, newrp, InsetText::JustText);
 	out << EndTag("pre");
 
 	if (isInline) {
