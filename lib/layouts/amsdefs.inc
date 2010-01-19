@@ -46,6 +46,7 @@ Style Title
 	  Series              Bold
 	  Size                Larger
 	EndFont
+	HTMLTitle             true
 End
 
 

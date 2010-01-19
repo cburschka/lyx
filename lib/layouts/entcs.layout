@@ -43,6 +43,7 @@ Style Title
 	Preamble
 		\newcommand{\settitle}[1]{\def\theTitle{#1}}
 	EndPreamble
+	HTMLTitle             true
 End
 
 

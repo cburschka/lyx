@@ -61,6 +61,7 @@ Style Title
 	  Size                Largest
 	EndFont
 	HTMLTag               h1
+	HTMLTitle             true
 End
 
 

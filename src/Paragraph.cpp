@@ -1086,6 +1086,11 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 			features.addPreambleSnippet(to_utf8(d));
 	}
 	
+	if (features.runparams().flavor == OutputParams::HTML 
+	    && layout_->htmltitle()) {
+		features.setHTMLTitle(owner_->asString(AS_STR_INSETS));
+	}
+	
 	// check the params.
 	if (!params_.spacing().isDefault())
 		features.require("setspace");

@@ -1506,12 +1506,10 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 		os << "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN\" \"http://www.w3.org/TR/MathML2/dtd/xhtml-math11-f.dtd\">\n";
 		// FIXME Language should be set properly.
 		os << "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n";
-		// FIXME Header
 		os << "<head>\n";
 		// FIXME Presumably need to set this right
 		os << "<meta http-equiv=\"Content-type\" content=\"text/html;charset=UTF-8\" />\n";
-		// FIXME Get this during validation? What about other meta-data?
-		os << "<title>TBA</title>\n";
+		os << "<title>" << features.htmlTitle() << "</title>\n";
 
 		os << "\n<!-- Text Class Preamble -->\n"
 			<< features.getTClassHTMLPreamble()

@@ -130,6 +130,8 @@ public:
 	/// 
 	docstring const & htmlpreamble() const { return htmlpreamble_; }
 	///
+	bool htmltitle() const { return htmltitle_; }
+	///
 	bool isParagraph() const { return latextype == LATEX_PARAGRAPH; }
 	///
 	bool isCommand() const { return latextype == LATEX_COMMAND; }
@@ -347,6 +349,8 @@ private:
 	mutable docstring htmldefaultstyle_;
 	/// Any other info for the HTML header.
 	docstring htmlpreamble_;
+	/// Whether this is the <title> paragraph.
+	bool htmltitle_;
 	/// calculating this is expensive, so we cache it.
 	mutable std::string defaultcssclass_;
 	/// This is the `category' for this layout. The following are

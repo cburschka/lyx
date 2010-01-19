@@ -103,6 +103,7 @@ enum LayoutTags {
 	LT_HTMLSTYLE,
 	LT_HTMLFORCECSS,
 	LT_INPREAMBLE,
+	LT_HTMLTITLE,
 	LT_INTITLE // keep this last!
 };
 
@@ -144,6 +145,7 @@ Layout::Layout()
 	commanddepth = 0;
 	htmllabelfirst_ = false;
 	htmlforcecss_ = false;
+	htmltitle_ = false;
 }
 
 
@@ -176,6 +178,7 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 		{ "htmlpremable",   LT_HTMLPREAMBLE },
 		{ "htmlstyle",      LT_HTMLSTYLE },
 		{ "htmltag",        LT_HTMLTAG },
+		{ "htmltitle",      LT_HTMLTITLE },
 		{ "innertag",       LT_INNERTAG },
 		{ "inpreamble",     LT_INPREAMBLE },
 		{ "intitle",        LT_INTITLE },
@@ -530,7 +533,10 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 		case LT_HTMLPREAMBLE:
 			htmlpreamble_ = from_utf8(lex.getLongString("EndPreamble"));
 			break;
-
+		
+		case LT_HTMLTITLE:
+			lex >> htmltitle_;
+			break;
 		}
 	}
 	lex.popTable();

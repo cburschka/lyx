@@ -119,6 +119,10 @@ public:
 	void inFloat(bool const b) { in_float_ = b; }
 	/// Runparams that will be used for exporting this file.
 	OutputParams const & runparams() const { return runparams_; }
+	///
+	void setHTMLTitle(docstring const & t) { htmltitle_ = t; }
+	///
+	docstring const & htmlTitle() const { return htmltitle_; }
 
 private:
 	///
@@ -163,6 +167,8 @@ private:
 	OutputParams const & runparams_;
 	///
 	bool in_float_;
+	///
+	docstring htmltitle_;
 };
 
 

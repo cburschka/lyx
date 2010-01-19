@@ -76,7 +76,7 @@ import os, re, string, sys
 # Added ContentAsLabel tag.
 
 # Incremented to format 21, 12 January 2010 by rgh
-# Added HTMLTocLayout tag.
+# Added HTMLTocLayout and HTMLTitle tags.
 
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").

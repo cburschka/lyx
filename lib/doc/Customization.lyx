@@ -15600,7 +15600,11 @@ HTMLForceCSS
 status collapsed
 
 \begin_layout Plain Layout
-0,1
+
+\emph on
+0
+\emph default
+,1
 \end_layout
 
 \end_inset
@@ -15830,7 +15834,11 @@ HTMLLabelFirst
 status collapsed
 
 \begin_layout Plain Layout
-0,1
+
+\emph on
+0
+\emph default
+,1
 \end_layout
 
 \end_inset
@@ -15974,6 +15982,66 @@ div
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+HTMLTitle
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\emph default
+,1
+\end_layout
+
+\end_inset
+
+] Marks this style as the one to be used to generate the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+<title>
+\end_layout
+
+\end_inset
+
+ tag for the XHTML file.
+ By default, it is false.
+ The 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+stdtitle.inc
+\end_layout
+
+\end_inset
+
+ file sets it to true for the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+title
+\end_layout
+
+\end_inset
+
+ environment.
+ 
 \end_layout
 
 \begin_layout Subsection
