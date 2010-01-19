@@ -981,6 +981,28 @@ void LyXAction::init()
  */
 		{ LFUN_WORD_LOWCASE, "word-lowcase", Noop, Edit },
 /*!
+ * \var lyx::FuncCode lyx::LFUN_SPELLING_ADD
+ * \li Action: Add the word under the cursor to the respective
+ *             spell checker dictionary.
+ * \li Syntax: spelling-add [<STRING>] [<LANG>]
+ * \li Params: <WORD>: word to add
+               <LANG>: language code (see file languages)
+ * \li Origin: JSpitzm, 18 Jan 2010
+ * \endvar
+ */
+		{ LFUN_SPELLING_ADD, "spelling-add", ReadOnly, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_SPELLING_IGNORE
+ * \li Action: Let the spell checker ignore the word under the cursor
+ *             in the current session for the given language.
+ * \li Syntax: spelling-ignore [<WORD>] [<LANG>]
+ * \li Params: <WORD>: word to ignore
+               <LANG>: language code (see file languages)
+ * \li Origin: JSpitzm, 18 Jan 2010
+ * \endvar
+ */
+		{ LFUN_SPELLING_IGNORE, "spelling-ignore", ReadOnly, Edit },
+/*!
  * \var lyx::FuncCode lyx::LFUN_THESAURUS_ENTRY
  * \li Action: Look up thesaurus entries with respect to the word under the cursor.
  * \li Syntax: thesaurus-entry [<STRING>] [lang=<LANG>]

@@ -42,9 +42,11 @@
 #include "LyXRC.h"
 #include "Paragraph.h"
 #include "ParagraphParameters.h"
+#include "SpellChecker.h"
 #include "TextClass.h"
 #include "TextMetrics.h"
 #include "VSpace.h"
+#include "WordLangTuple.h"
 
 #include "frontends/Application.h"
 #include "frontends/Clipboard.h"
@@ -1996,6 +1998,48 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
+	case LFUN_SPELLING_ADD: {
+		docstring word = from_utf8(cmd.getArg(0));
+		string code;
+		string variety;
+		if (word.empty()) {
+			word = cur.selectionAsString(false);
+			// FIXME
+			if (word.size() > 100 || word.empty()) {
+				// Get word or selection
+				selectWordWhenUnderCursor(cur, WHOLE_WORD);
+				word = cur.selectionAsString(false);
+			}
+			code = cur.getFont().language()->code();
+			variety = cur.getFont().language()->variety();
+		} else
+			variety = split(cmd.getArg(1), code, '-');
+		WordLangTuple wl(word, code, variety);
+		theSpellChecker()->insert(wl);
+		break;
+	}
+
+	case LFUN_SPELLING_IGNORE: {
+		docstring word = from_utf8(cmd.getArg(0));
+		string code;
+		string variety;
+		if (word.empty()) {
+			word = cur.selectionAsString(false);
+			// FIXME
+			if (word.size() > 100 || word.empty()) {
+				// Get word or selection
+				selectWordWhenUnderCursor(cur, WHOLE_WORD);
+				word = cur.selectionAsString(false);
+			}
+			code = cur.getFont().language()->code();
+			variety = cur.getFont().language()->variety();
+		} else
+			variety = split(cmd.getArg(1), code, '-');
+		WordLangTuple wl(word, code, variety);
+		theSpellChecker()->accept(wl);
+		break;
+	}
+
 	case LFUN_PARAGRAPH_PARAMS_APPLY: {
 		// Given data, an encoding of the ParagraphParameters
 		// generated in the Paragraph dialog, this function sets
@@ -2504,6 +2548,11 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_BREAK_PARAGRAPH:
 		enable = cur.inset().getLayout().isMultiPar();
+		break;
+	
+	case LFUN_SPELLING_ADD:
+	case LFUN_SPELLING_IGNORE:
+		enable = theSpellChecker();
 		break;
 
 	case LFUN_WORD_DELETE_FORWARD:

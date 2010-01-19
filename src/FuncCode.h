@@ -442,7 +442,9 @@ enum FuncCode
 	LFUN_BUFFER_CLOSE_ALL,          // vfr 20090806
 	LFUN_GRAPHICS_RELOAD,           // vfr 20090810
 	LFUN_SCREEN_SHOW_CURSOR,        // vfr, 20090325
+	LFUN_SPELLING_ADD,              // spitz 20100118
 	// 345
+	LFUN_SPELLING_IGNORE,           // spitz 20100118
 
 	LFUN_LASTACTION                 // end of the table
 };
