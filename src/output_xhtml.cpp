@@ -329,7 +329,6 @@ bool XHTMLStream::isTagOpen(string const & stag)
 	TagStack::const_iterator sit = tag_stack_.begin();
 	TagStack::const_iterator const sen = tag_stack_.end();
 	for (; sit != sen; ++sit)
-		// we could check for the
 		if (sit->tag_ == stag) 
 			return true;
 	return false;
