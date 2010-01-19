@@ -72,6 +72,3 @@ Other math notes:
 These insets do not work and are not yet scheduled to work:
 	InsetExternal: It may be that this won't be too hard, but I don't understand 
 		these so am not sure what to do. For now, it is disabled.
-
-May need to make use here of TocWidget::itemInset, which should then be moved
-to TocBackend.
