@@ -31,9 +31,11 @@ class BufferParams;
 class ASpell : public SpellBase {
 public:
 	/**
-	 * Initialise the spellchecker with the given buffer params and language.
+	 * Initialise the spellchecker with the given buffer params, language
+	 * and variety.
 	 */
-	ASpell(BufferParams const & params, std::string const & lang);
+	ASpell(BufferParams const & params, std::string const & lang,
+	       std::string const & variety = std::string());
 
 	virtual ~ASpell();
 
@@ -59,8 +61,9 @@ public:
 	virtual docstring const error();
 
 private:
-	/// add a speller of the given language
-	void addSpeller(std::string const & lang);
+	/// add a speller of the given language and variety
+	void addSpeller(std::string const & lang,
+			std::string const & variety);
 
 	struct Speller {
 		AspellSpeller * speller;
@@ -76,6 +79,9 @@ private:
 	AspellStringEnumeration * els;
 	/// FIXME
 	AspellCanHaveError * spell_error_object;
+	///
+	std::string const spellerID(std::string const & lang,
+				    std::string const & variety);
 };
 
 

@@ -4,10 +4,10 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Lars Gullik Bjønnes
+ * \author Lars Gullik BjÃ¸nnes
  * \author Jean-Marc Lasgouttes
  * \author Dekel Tsur
- * \author Jürgen Vigna
+ * \author JÃ¼rgen Vigna
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -46,6 +46,8 @@ public:
 	///
 	std::string const & code() const { return code_; }
 	///
+	std::string const & variety() const { return variety_; }
+	///
 	std::string const & latex_options() const { return latex_options_; }
 	///
 	bool internalFontEncoding() const;
@@ -65,7 +67,11 @@ private:
 	///
 	Encoding const * encoding_;
 	///
+	std::string codeStr_;
+	///
 	std::string code_;
+	///
+	std::string variety_;
 	///
 	std::string latex_options_;
 };

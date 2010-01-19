@@ -20,6 +20,7 @@
 
 #include "support/debug.h"
 #include "support/FileName.h"
+#include "support/lstrings.h"
 
 using namespace std;
 using namespace lyx::support;
@@ -44,10 +45,12 @@ bool Language::read(Lexer & lex)
 	lex >> display_;
 	lex >> rightToLeft_;
 	lex >> encodingStr_;
-	lex >> code_;
+	lex >> codeStr_;
 	lex >> latex_options_;
 	if (!lex)
 		return false;
+
+	variety_ = split(codeStr_, code_, '-');
 
 	encoding_ = encodings.fromLyXName(encodingStr_);
 	if (!encoding_ && !encodingStr_.empty()) {

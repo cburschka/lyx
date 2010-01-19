@@ -19,15 +19,17 @@ namespace lyx {
 
 
 /**
- * A word and its given language code ("en_US").
+ * A word and its given language code ("en_US")
+ * plus a variety if needed.
  * This is used for spellchecking.
  */
 class WordLangTuple {
 public:
 	WordLangTuple() {}
 
-	WordLangTuple(docstring const & w, std::string const & c)
-		: word_(w), code_(c)
+	WordLangTuple(docstring const & w, std::string const & c,
+		      std::string const & v = std::string())
+		: word_(w), code_(c), variety_(v)
 	{}
 
 	/// return the word
@@ -40,11 +42,18 @@ public:
 		return code_;
 	}
 
+	/// return the language variety
+	std::string const & lang_variety() const {
+		return variety_;
+	}
+
 private:
 	/// the word
 	docstring word_;
 	/// language code of word
 	std::string code_;
+	/// language variety of word
+	std::string variety_;
 };
 
 

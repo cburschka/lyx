@@ -222,13 +222,18 @@ void GuiSpellchecker::partialUpdate(int state)
 
 static SpellBase * createSpeller(BufferParams const & bp)
 {
-	string lang = (lyxrc.isp_use_alt_lang)
-		      ? lyxrc.isp_alt_lang
-		      : bp.language->code();
+	string lang;
+	string variety;
+	if (lyxrc.isp_use_alt_lang)
+		variety = split(lyxrc.isp_alt_lang, lang, '-');
+	else {
+	      lang = bp.language->code();
+	      variety = bp.language->variety();
+	}
 
 #if defined(USE_ASPELL)
 	if (lyxrc.use_spell_lib)
-		return new ASpell(bp, lang);
+		return new ASpell(bp, lang, variety);
 #elif defined(USE_PSPELL)
 	if (lyxrc.use_spell_lib)
 		return new PSpell(bp, lang);
@@ -301,6 +306,7 @@ static WordLangTuple nextWord(Cursor & cur, ptrdiff_t & progress)
 	cur.resetAnchor();
 	docstring word;
 	string lang_code;
+	string lang_variety;
 
 	while (cur.depth()) {
 		if (isLetter(cur)) {
@@ -309,7 +315,10 @@ static WordLangTuple nextWord(Cursor & cur, ptrdiff_t & progress)
 				ignoreword = false;
 				cur.resetAnchor();
 				word.clear();
-				lang_code = cur.paragraph().getFontSettings(bp, cur.pos()).language()->code();
+				lang_code = cur.paragraph().getFontSettings(
+					bp, cur.pos()).language()->code();
+				lang_variety = cur.paragraph().getFontSettings(
+					bp, cur.pos()).language()->variety();
 			}
 			// Insets like optional hyphens and ligature
 			// break are part of a word.
@@ -323,7 +332,7 @@ static WordLangTuple nextWord(Cursor & cur, ptrdiff_t & progress)
 			if (inword)
 				if (!word.empty() && !ignoreword) {
 					cur.setSelection();
-					return WordLangTuple(word, lang_code);
+					return WordLangTuple(word, lang_code, lang_variety);
 				}
 				inword = false;
 		}

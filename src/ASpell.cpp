@@ -25,10 +25,11 @@ using namespace std;
 
 namespace lyx {
 
-ASpell::ASpell(BufferParams const &, string const & lang)
+ASpell::ASpell(BufferParams const &, string const & lang,
+	       string const & variety)
 	: els(0), spell_error_object(0)
 {
-	addSpeller(lang);
+	addSpeller(lang, variety);
 }
 
 
@@ -53,11 +54,15 @@ ASpell::~ASpell()
 }
 
 
-void ASpell::addSpeller(string const & lang)
+void ASpell::addSpeller(string const & lang, string const & variety)
 {
 	AspellConfig * config = new_aspell_config();
-	// FIXME The aspell documentation says to use "lang"
-	aspell_config_replace(config, "language-tag", lang.c_str());
+	// Aspell supports both languages and varieties (such as German
+	// old vs. new spelling). The respective naming convention is
+	// lang_REGION-variety (e.g. de_DE-alt).
+	aspell_config_replace(config, "lang", lang.c_str());
+	if (!variety.empty())
+		aspell_config_replace(config, "variety", variety.c_str());
 	// Set the encoding to utf-8.
 	// aspell does also understand "ucs-4", so we would not need a
 	// conversion in theory, but if this is used it expects all
@@ -81,7 +86,7 @@ void ASpell::addSpeller(string const & lang)
 		Speller m;
 		m.speller = to_aspell_speller(err);
 		m.config = config;
-		spellers_[lang] = m;
+		spellers_[spellerID(lang, variety)] = m;
 	} else {
 		spell_error_object = err;
 	}
@@ -92,10 +97,13 @@ ASpell::Result ASpell::check(WordLangTuple const & word)
 {
 	Result res = UNKNOWN_WORD;
 
-	Spellers::iterator it = spellers_.find(word.lang_code());
+	string const speller =
+		spellerID(word.lang_code(), word.lang_variety());
+	
+	Spellers::iterator it = spellers_.find(speller);
 	if (it == spellers_.end()) {
-		addSpeller(word.lang_code());
-		it = spellers_.find(word.lang_code());
+		addSpeller(word.lang_code(), word.lang_variety());
+		it = spellers_.find(speller);
 		// FIXME
 		if (it == spellers_.end())
 			return res;
@@ -124,17 +132,21 @@ ASpell::Result ASpell::check(WordLangTuple const & word)
 
 void ASpell::insert(WordLangTuple const & word)
 {
-	Spellers::iterator it = spellers_.find(word.lang_code());
+	Spellers::iterator it =
+		spellers_.find(spellerID(word.lang_code(), word.lang_variety()));
 	if (it != spellers_.end())
-		aspell_speller_add_to_personal(it->second.speller, to_utf8(word.word()).c_str(), -1);
+		aspell_speller_add_to_personal(
+			it->second.speller, to_utf8(word.word()).c_str(), -1);
 }
 
 
 void ASpell::accept(WordLangTuple const & word)
 {
-	Spellers::iterator it = spellers_.find(word.lang_code());
+	Spellers::iterator it =
+		spellers_.find(spellerID(word.lang_code(), word.lang_variety()));
 	if (it != spellers_.end())
-		aspell_speller_add_to_session(it->second.speller, to_utf8(word.word()).c_str(), -1);
+		aspell_speller_add_to_session(
+			it->second.speller, to_utf8(word.word()).c_str(), -1);
 }
 
 
@@ -158,6 +170,14 @@ docstring const ASpell::error()
 
 	// FIXME UNICODE: err is not in UTF8, but probably the locale encoding
 	return (err ? from_utf8(err) : docstring());
+}
+
+
+string const ASpell::spellerID(string const & lang, string const & variety)
+{
+	if (variety.empty())
+		return lang;
+	return lang + "-" + variety;
 }
 
 

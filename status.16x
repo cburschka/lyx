@@ -31,6 +31,10 @@ What's new
   on the document language. (When importing e.g. a Spanish document,
   LyX will use comillas latinas as quotes.)
 
+- Add support for Aspell language varieties. This enables proper support
+  of German old and new spelling in parallel when "aspell (library)" is
+  used (bug 4657).
+
 
 * USER INTERFACE
 
