@@ -3,21 +3,17 @@ if [ -z "${HOME}" ]; then
   USER=`id -un`
   HOME=`grep "^${USER}:" /etc/passwd | cut -d: -f6`
   if [ -z "${HOME}" -o ! -d "${HOME}" ]; then
-    DOCSFOLDER=`regtool -q get '\HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders\Personal'`
-    test -n "${DOCSFOLDER}" && HOME=`cygpath -u "${DOCSFOLDER}"` || HOME=/tmp
+    HOME="/home/${USER}"
+    test -d "${HOME}" || HOME=/tmp
   fi
 fi
 export HOME
 
 # Set up your Language (if you do not want English) by
 # replacing C (for C locale) with your country code in
-# the following line.
-export LANG=C
-
-# Set up the output charset for your locale.
-# You may need to experiment with this if you get garbage
-# in menus ("`a" instead of "à", for example).
-export OUTPUT_CHARSET=iso-8859-1
+# the following line for system-wide settings or in
+# ~/.lyxprofile for per-user settings.
+export LANG=C.UTF-8
 
 # Set up Hostname/IP address where LyX can find an X-server.
 export DISPLAY=localhost:0.0
@@ -49,4 +45,4 @@ else
   cd "${HOME}"
 fi
 
-test -f "${HOME}/.bashrc" && . "${HOME}/.bashrc"
+test -f "${HOME}/.lyxprofile" && . "${HOME}/.lyxprofile"
