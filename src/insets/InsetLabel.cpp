@@ -16,17 +16,20 @@
 
 #include "buffer_funcs.h"
 #include "Buffer.h"
+#include "BufferParams.h"
 #include "BufferView.h"
 #include "CutAndPaste.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "InsetIterator.h"
+#include "Language.h"
 #include "LyXFunc.h"
 #include "output_xhtml.h"
 #include "ParIterator.h"
 #include "sgml.h"
 #include "Text.h"
+#include "TextClass.h"
 #include "TocBackend.h"
 
 #include "frontends/alert.h"
@@ -105,7 +108,7 @@ docstring InsetLabel::screenLabel() const
 }
 
 
-void InsetLabel::updateLabels(ParIterator const &, bool)
+void InsetLabel::updateLabels(ParIterator const & par, bool out)
 {
 	docstring const & label = getParam("name");
 	if (buffer().insetLabel(label)) {
@@ -115,6 +118,18 @@ void InsetLabel::updateLabels(ParIterator const &, bool)
 	}
 	buffer().setInsetLabel(label, this);
 	screen_label_ = label;
+
+	if (out) {
+		// save info on the active counter
+		Counters const & cnts = 
+			buffer().masterBuffer()->params().documentClass().counters();
+		active_counter_ = cnts.currentCounter();
+		Language const * lang = par->getParLanguage(buffer().params());
+		if (lang && !active_counter_.empty())
+			counter_value_ = cnts.theCounter(active_counter_, lang->code());
+		else 
+			counter_value_ = _("(unknown)");
+	}
 }
 
 

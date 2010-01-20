@@ -119,6 +119,10 @@ void InsetWrap::updateLabels(ParIterator const & it, bool out)
 	setLabel(_("wrap: ") + floatName(params_.type));
 	Counters & cnts =
 		buffer().masterBuffer()->params().documentClass().counters();
+	if (out) {
+		// counters are local to the wrap
+		cnts.saveLastCounter();
+	}
 	string const saveflt = cnts.current_float();
 
 	// Tell to captions what the current float is
@@ -128,6 +132,8 @@ void InsetWrap::updateLabels(ParIterator const & it, bool out)
 
 	// reset afterwards
 	cnts.current_float(saveflt);
+	if (out)
+		cnts.restoreLastCounter();
 }
 
 

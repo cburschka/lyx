@@ -15,6 +15,7 @@
 #include "Cursor.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
+#include "InsetLabel.h"
 #include "LaTeXFeatures.h"
 #include "LyXFunc.h"
 #include "OutputParams.h"
@@ -118,13 +119,37 @@ int InsetRef::docbook(odocstream & os, OutputParams const & runparams) const
 
 docstring InsetRef::xhtml(XHTMLStream & xs, OutputParams const &) const
 {
+	docstring const & ref = getParam("reference");
+	InsetLabel const * il = buffer().insetLabel(ref);
+	string const & cmd = params().getCmdName();
+	docstring display_string;
+
+	if (il && !il->counterValue().empty()) {
+		// Try to construct a label from the InsetLabel we reference.
+		docstring const & cntr = il->activeCounter();
+		docstring const & value = il->counterValue();
+		if (cmd == "ref")
+			display_string = value;
+		else if (cmd == "vref")
+			display_string = bformat(from_ascii("%1$s on page ##"), value);
+		else if (cmd == "pageref" || cmd == "vpageref")
+			display_string = _("on page ##");
+		else if (cmd == "eqref")
+			display_string = bformat(from_ascii("equation (%1$s)"), value);
+		else { // "prettyref"
+			docstring cntrname = translateIfPossible(cntr);
+			// FIXME Use the label string, if we have it. Otherwise, do this.
+			display_string = bformat(from_ascii("%1$s %2$s"), cntrname, value);
+		}
+	} else 
+			display_string = ref;
+
 	// FIXME What we'd really like to do is to be able to output some
 	// appropriate sort of text here. But to do that, we need to associate
 	// some sort of counter with the label, and we don't have that yet.
-	docstring const ref = html::cleanAttr(getParam("reference"));
-	string const attr = "href=\"#" + to_utf8(ref) + "\"";
+	string const attr = "href=\"#" + html::cleanAttr(to_utf8(ref)) + "\"";
 	xs << html::StartTag("a", attr);
-	xs << ref;
+	xs << display_string;
 	xs << html::EndTag("a");
 	return docstring();
 }

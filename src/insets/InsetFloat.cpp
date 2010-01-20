@@ -199,6 +199,10 @@ void InsetFloat::updateLabels(ParIterator const & it, bool out)
 {
 	Counters & cnts =
 		buffer().masterBuffer()->params().documentClass().counters();
+	if (out) {
+		// counters are local to the float
+		cnts.saveLastCounter();
+	}
 	string const saveflt = cnts.current_float();
 	bool const savesubflt = cnts.isSubfloat();
 
@@ -217,6 +221,8 @@ void InsetFloat::updateLabels(ParIterator const & it, bool out)
 
 	//reset afterwards
 	cnts.current_float(saveflt);
+	if (out)
+		cnts.restoreLastCounter();
 	cnts.isSubfloat(savesubflt);
 }
 

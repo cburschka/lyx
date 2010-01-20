@@ -1,7 +1,6 @@
 TODO:
-1. The counter patch, and better output for InsetRef.
-2. CSS needs work in several places, mostly floats. Maybe check elyxer on that.
-3. MathML
+1. CSS needs work in several places, mostly floats. Maybe check elyxer on that.
+2. MathML
 
 
 These insets work but still need work:
@@ -26,9 +25,6 @@ These insets work but still need work:
 	InsetNomencl and InsetPrintNomencl: Do not work at all yet, but would be easy to do.
 		First, Nomencl would need to go to the TOC, which it should do anyway. Then just
 		do as for TOC and Index, more or less.
-	InsetRef: At present, we just use the label name as associated text, and put it 
-		into square brackets. It'd be nice to be able to do more, but for that we'd need to
-		associate counters with the labels, and we don't have that yet.
 	InsetTabular: Works reasonably well, but we don't do anything with any of the 
 		arguments provided for longtable. There are probably other limitations, too,
 		since I'm very much not an expert with tables.

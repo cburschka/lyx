@@ -18,11 +18,13 @@
 #include "support/docstring.h"
 
 #include <map>
+#include <deque>
 #include <vector>
 
 
 namespace lyx {
 
+class Layout;
 class Lexer;
 
 /// This represents a single counter.
@@ -111,10 +113,10 @@ public:
 	int value(docstring const & ctr) const;
 	/// Increment by one counter named by arg, and zeroes slave
 	/// counter(s) for which it is the master.
-	/** Sub-slaves not zeroed! That happens at slave's first step
-	 *  0->1. Seems to be sufficient.
-	 */
-	void step(docstring const & ctr);
+	/// Sub-slaves are not zeroed! That happens at slave's first 
+	/// step 0->1. Seems to be sufficient.
+	/// \param for_output: whether to track the counters
+	void step(docstring const & ctr, bool track_counters = false);
 	/// Reset all counters.
 	void reset();
 	/// Reset counters matched by match string.
@@ -146,8 +148,30 @@ public:
 	bool isSubfloat() const { return subfloat_; }
 	/// Set the state variable indicating whether we are in a subfloat.
 	void isSubfloat(bool s) { subfloat_ = s; }
+	
+	/// \name refstepcounter	
+	// @{
+	/// The currently active counter, so far as references go.
+	/// We're trying to track \refstepcounter in LaTeX, more or less.
+	/// Note that this may be empty.
+	docstring currentCounter() const;
+	/// Called during update labels as we go through various paragraphs,
+	/// to track the layouts as we go through.
+	void setActiveLayout(Layout const & lay);
+	/// Also for updateLabels().
+	/// Call this when entering things like footnotes, where there is now
+	/// no "last layout" and we want to restore the "last layout" on exit.
+	void clearLastLayout() { layout_stack_.push_back(0); }
+	/// Call then when existing things like footnotes.
+	void restoreLastLayout() { layout_stack_.pop_back(); }
+	/// 
+	void saveLastCounter()
+		{ counter_stack_.push_back(counter_stack_.back()); }
+	/// 
+	void restoreLastCounter() { counter_stack_.pop_back(); }
+	// @}
 private:
-	/** expands recusrsively any \\the<counter> macro in the
+	/** expands recursively any \\the<counter> macro in the
 	 *  labelstring of \c counter.  The \c lang code is used to
 	 *  translate the string.
 	 */
@@ -162,6 +186,11 @@ private:
 	 */
 	docstring labelItem(docstring const & ctr,
 			    docstring const & numbertype) const;
+	/// Used for managing the counter_stack_.
+	// @{
+	void beginEnvironment();
+	void endEnvironment();
+	// @}
 	/// Maps counter (layout) names to actual counters.
 	typedef std::map<docstring, Counter> CounterList;
 	/// Instantiate.
@@ -172,8 +201,11 @@ private:
 	std::string current_float_;
 	/// Are we in a subfloat?
 	bool subfloat_;
+	/// Used to keep track of active counters.
+	std::deque<docstring> counter_stack_;
+	/// Same, but for last layout.
+	std::deque<Layout const *> layout_stack_;
 };
-
 
 } // namespace lyx
 

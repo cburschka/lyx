@@ -17,6 +17,8 @@
 
 namespace lyx {
 
+class Counter;
+
 class InsetLabel : public InsetCommand {
 public:
 	///
@@ -60,6 +62,10 @@ public:
 	void updateCommand(docstring const & new_label, bool updaterefs = true);
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus & status) const;
+	///
+	docstring const & activeCounter() const { return active_counter_; }
+	///
+	docstring const & counterValue() const { return counter_value_; }
 protected:
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
@@ -68,6 +74,10 @@ private:
 	Inset * clone() const { return new InsetLabel(*this); }
 	///
 	docstring screen_label_;
+	///
+	docstring active_counter_;
+	///
+	docstring counter_value_;
 };
 
 

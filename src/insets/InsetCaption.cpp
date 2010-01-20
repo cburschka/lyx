@@ -314,6 +314,10 @@ void InsetCaption::updateLabels(ParIterator const & it, bool out)
 	string const & lang = it.paragraph().getParLanguage(master.params())->code();
 	Counters & cnts = tclass.counters();
 	string const & type = cnts.current_float();
+	if (out) {
+		// counters are local to the caption
+		cnts.saveLastCounter();
+	}
 	// Memorize type for addToToc().
 	type_ = type;
 	if (type.empty())
@@ -333,7 +337,7 @@ void InsetCaption::updateLabels(ParIterator const & it, bool out)
 				       master.B_(tclass.floats().getType(type).name()));
 		}
 		if (cnts.hasCounter(counter)) {
-			cnts.step(counter);
+			cnts.step(counter, out);
 			full_label_ = bformat(from_ascii("%1$s %2$s:"), 
 					      name,
 					      cnts.theCounter(counter, lang));
@@ -343,6 +347,8 @@ void InsetCaption::updateLabels(ParIterator const & it, bool out)
 
 	// Do the real work now.
 	InsetText::updateLabels(it, out);
+	if (out)
+		cnts.restoreLastCounter();
 }
 
 

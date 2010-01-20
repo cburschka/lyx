@@ -40,16 +40,22 @@ void InsetFoot::updateLabels(ParIterator const & it, bool out)
 {
 	BufferParams const & bp = buffer().masterBuffer()->params();
 	Counters & cnts = bp.documentClass().counters();
+	if (out) {
+		// the footnote counter is local to this inset
+		cnts.saveLastCounter();
+	}
 	Paragraph const & outer = it.paragraph();
 	InsetLayout const & il = getLayout();
 	docstring const & count = il.counter();
 	if (!outer.layout().intitle && cnts.hasCounter(count)) {
-		cnts.step(count);
+		cnts.step(count, out);
 		custom_label_= translateIfPossible(il.labelstring()) 
 			+ ' ' + cnts.theCounter(count, outer.getParLanguage(bp)->code());
 		setLabel(custom_label_);	
 	}
 	InsetCollapsable::updateLabels(it, out);
+	if (out)
+		cnts.restoreLastCounter();	
 }
 
 

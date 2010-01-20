@@ -14,6 +14,7 @@
 #include <config.h>
 
 #include "Counters.h"
+#include "Layout.h"
 #include "Lexer.h"
 
 #include "support/convert.h"
@@ -37,8 +38,8 @@ Counter::Counter()
 }
 
 
-Counter::Counter(docstring const & mc, docstring const & ls, 
-		 docstring const & lsa)
+Counter::Counter(docstring const & mc, docstring const & ls,  
+                docstring const & lsa)
 	: master_(mc), labelstring_(ls), labelstringappendix_(lsa)
 {
 	reset();
@@ -226,7 +227,7 @@ int Counters::value(docstring const & ctr) const
 }
 
 
-void Counters::step(docstring const & ctr)
+void Counters::step(docstring const & ctr, bool track_counters)
 {
 	CounterList::iterator it = counterList_.find(ctr);
 	if (it == counterList_.end()) {
@@ -236,6 +237,11 @@ void Counters::step(docstring const & ctr)
 	}
 
 	it->second.step();
+	if (track_counters) {
+		LASSERT(!counter_stack_.empty(), /* */);
+		counter_stack_.pop_back();
+		counter_stack_.push_back(ctr);
+	}
 	it = counterList_.begin();
 	CounterList::iterator const end = counterList_.end();
 	for (; it != end; ++it) {
@@ -255,6 +261,9 @@ void Counters::reset()
 	CounterList::iterator const end = counterList_.end();
 	for (; it != end; ++it)
 		it->second.reset();
+	counter_stack_.clear();
+	counter_stack_.push_back(from_ascii(""));
+	layout_stack_.push_back(0);
 }
 
 
@@ -527,6 +536,67 @@ docstring Counters::counterLabel(docstring const & format,
 	}
 	//lyxerr << "DONE! label=" << label << endl;
 	return label;
+}
+
+
+docstring Counters::currentCounter() const
+{ 
+	LASSERT(!counter_stack_.empty(), /* */);
+	return counter_stack_.back(); 
+}
+
+
+void Counters::setActiveLayout(Layout const & lay)
+{
+	LASSERT(!layout_stack_.empty(), return);
+	Layout const * const lastlay = layout_stack_.back();
+	// we want to check whether the layout has changed and, if so,
+	// whether we are coming out of or going into an environment.
+	if (!lastlay) { 
+		layout_stack_.pop_back();
+		layout_stack_.push_back(&lay);
+		if (lay.isEnvironment())
+			beginEnvironment();
+	} else if (lastlay->name() != lay.name()) {
+		layout_stack_.pop_back();
+		layout_stack_.push_back(&lay);
+		if (lastlay->isEnvironment()) {
+			// we are coming out of an environment
+			// LYXERR0("Out: " << lastlay->name());
+			endEnvironment();
+		}
+		if (lay.isEnvironment()) {
+			// we are going into a new environment
+			// LYXERR0("In: " << lay.name());
+			beginEnvironment();
+		}
+	} 
+}
+
+
+void Counters::beginEnvironment()
+{
+	docstring cnt = counter_stack_.back();
+	counter_stack_.push_back(cnt);
+	deque<docstring>::const_iterator it = counter_stack_.begin();
+	deque<docstring>::const_iterator en = counter_stack_.end();
+//	docstring d;
+//	for (; it != en; ++it)
+//		d += " --> " + *it;
+//	LYXERR0(counter_stack_.size() << ": " << d);
+}
+
+
+void Counters::endEnvironment()
+{
+	LASSERT(!counter_stack_.empty(), return);
+	counter_stack_.pop_back();
+	deque<docstring>::const_iterator it = counter_stack_.begin();
+	deque<docstring>::const_iterator en = counter_stack_.end();
+//	docstring d;
+//	for (; it != en; ++it)
+//		d += " --> " + *it;
+//	LYXERR0(counter_stack_.size() << ": " << d);
 }
 
 

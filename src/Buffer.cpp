@@ -3628,7 +3628,7 @@ static bool needEnumCounterReset(ParIterator const & it)
 
 
 // set the label of a paragraph. This includes the counters.
-void Buffer::setLabel(ParIterator & it) const
+void Buffer::setLabel(ParIterator & it, bool for_output) const
 {
 	BufferParams const & bp = this->masterBuffer()->params();
 	DocumentClass const & textclass = bp.documentClass();
@@ -3660,7 +3660,7 @@ void Buffer::setLabel(ParIterator & it) const
 		if (layout.toclevel <= bp.secnumdepth
 		    && (layout.latextype != LATEX_ENVIRONMENT
 			|| it.text()->isFirstInSequence(it.pit()))) {
-			counters.step(layout.counter);
+			counters.step(layout.counter, for_output);
 			par.params().labelString(
 				par.expandLabel(layout, bp));
 		} else
@@ -3714,7 +3714,7 @@ void Buffer::setLabel(ParIterator & it) const
 		// Maybe we have to reset the enumeration counter.
 		if (needEnumCounterReset(it))
 			counters.reset(enumcounter);
-		counters.step(enumcounter);
+		counters.step(enumcounter, for_output);
 
 		string const & lang = par.getParLanguage(bp)->code();
 		par.params().labelString(counters.theCounter(enumcounter, lang));
@@ -3731,7 +3731,7 @@ void Buffer::setLabel(ParIterator & it) const
 			docstring name = this->B_(textclass.floats().getType(type).name());
 			if (counters.hasCounter(from_utf8(type))) {
 				string const & lang = par.getParLanguage(bp)->code();
-				counters.step(from_utf8(type));
+				counters.step(from_utf8(type), for_output);
 				full_label = bformat(from_ascii("%1$s %2$s:"), 
 						     name, 
 						     counters.theCounter(from_utf8(type), lang));
@@ -3774,10 +3774,18 @@ void Buffer::updateLabels(ParIterator & parit, bool out) const
 		parit->params().depth(min(parit->params().depth(), maxdepth));
 		maxdepth = parit->getMaxDepthAfter();
 
+		if (out) {
+			// track the active counters
+			// we have to do this for the master buffer, since the local
+			// buffer isn't tracking anything.
+			masterBuffer()->params().documentClass().counters().
+					setActiveLayout(parit->layout());
+		}
+		
 		// set the counter for this paragraph
-		setLabel(parit);
+		setLabel(parit, out);
 
-		// Now the insets
+		// now the insets
 		InsetList::const_iterator iit = parit->insetList().begin();
 		InsetList::const_iterator end = parit->insetList().end();
 		for (; iit != end; ++iit) {
