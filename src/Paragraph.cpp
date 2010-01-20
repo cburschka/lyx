@@ -2422,6 +2422,10 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 
 	// parsing main loop
 	for (pos_type i = initial; i < size(); ++i) {
+		// let's not show deleted material in the output
+		if (isDeleted(i))
+			continue;
+	
 		Font font = getFont(buf.params(), i, outerfont);
 
 		// emphasis
