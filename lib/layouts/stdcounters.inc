@@ -7,7 +7,7 @@
 Format 21
 Counter part
 	LabelString	         "\Roman{part}"
-	PrettyFormat         Part \Roman{part}
+	PrettyFormat         "Part \Roman{part}"
 End
 
 Counter chapter
@@ -16,27 +16,27 @@ End
 
 Counter section
 	Within               chapter
-	PrettyFormat         Section \arabic{section}
+	PrettyFormat         "Section \arabic{section}"
 End
 
 Counter subsection
 	Within               section
-	PrettyFormat         Section \arabic{subsection}
+	PrettyFormat         "Section \arabic{subsection}"
 End
 
 Counter subsubsection
 	Within               subsection
-	PrettyFormat         Section \arabic{subsubsection}
+	PrettyFormat         "Section \arabic{subsubsection}"
 End
 
 Counter paragraph
 	Within               subsubsection
-	PrettyFormat         Paragraph \arabic{paragraph}
+	PrettyFormat         "Paragraph \arabic{paragraph}"
 End
 
 Counter subparagraph
 	Within               paragraph
-	PrettyFormat         Paragraph \arabic{subparagraph}
+	PrettyFormat         "Paragraph \arabic{subparagraph}"
 End
 
 Counter enumi
@@ -65,9 +65,9 @@ Counter listing
 End
 
 Counter equation
-	PrettyFormat         Equation \arabic{equation}
+	PrettyFormat         "Equation \arabic{equation}"
 End
 
 Counter footnote
-	PrettyFormat         Footnote \arabic{footnote}
+	PrettyFormat         "Footnote \arabic{footnote}"
 End
