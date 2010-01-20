@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 375
+\lyxformat 376
 \begin_document
 \begin_header
 \textclass amsart
@@ -9,6 +9,7 @@ theorems-ams
 eqs-within-sections
 figs-within-sections
 \end_modules
+\maintain_unincluded_children false
 \language english
 \inputencoding auto
 \fontencoding global
@@ -260,10 +261,6 @@ The Advanced Find&Replace Dialog.
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -506,7 +503,7 @@ func()
 ;
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 performing a notation rework of mathematical symbols, for example replacing
  occurrences of 
 \begin_inset Quotes eld
@@ -532,14 +529,26 @@ performing a notation rework of mathematical symbols, for example replacing
 \begin_inset Quotes erd
 \end_inset
 
- (you may want to disable the 
+ (you may want to enable the 
+\noun on
+whole-words
+\noun default
+ and 
+\noun on
+case-sensitive
+\noun default
+ options and disable the 
 \family typewriter
+\noun on
 Ignore Format
 \family default
+\noun default
  option in the 
 \family typewriter
+\noun on
 Advanced
 \family default
+\noun default
  pane, in order to avoid replacing all 
 \begin_inset Quotes eld
 \end_inset
