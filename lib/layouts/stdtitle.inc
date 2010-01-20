@@ -8,7 +8,7 @@
 # a document, like title, author and such.
 
 
-Format 21
+Format 22
 
 # CSS for the TOC
 AddToHTMLPreamble
