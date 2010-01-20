@@ -9,7 +9,3 @@ Counter section
 	LabelString	          "\arabic{section}"
 	LabelStringAppendix   "\Alph{section}"
 End
-
-
-
-
