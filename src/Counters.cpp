@@ -52,6 +52,7 @@ bool Counter::read(Lexer & lex)
 		CT_WITHIN = 1,
 		CT_LABELSTRING,
 		CT_LABELSTRING_APPENDIX,
+		CT_PRETTYFORMAT,
 		CT_END
 	};
 
@@ -59,6 +60,7 @@ bool Counter::read(Lexer & lex)
 		{ "end", CT_END },
 		{ "labelstring", CT_LABELSTRING },
 		{ "labelstringappendix", CT_LABELSTRING_APPENDIX },
+		{ "prettyformat", CT_PRETTYFORMAT },
 		{ "within", CT_WITHIN }
 	};
 
@@ -80,6 +82,10 @@ bool Counter::read(Lexer & lex)
 				master_ = lex.getDocString();
 				if (master_ == "none")
 					master_.erase();
+				break;
+			case CT_PRETTYFORMAT:
+				lex.next();
+				prettyformat_ = lex.getDocString();
 				break;
 			case CT_LABELSTRING:
 				lex.next();
@@ -536,6 +542,22 @@ docstring Counters::counterLabel(docstring const & format,
 	}
 	//lyxerr << "DONE! label=" << label << endl;
 	return label;
+}
+
+
+docstring Counters::prettyCounter(docstring const & counter,
+			       string const & lang) const
+{
+	CounterList::const_iterator it = counterList_.find(counter); 
+	if (it == counterList_.end())
+		return from_ascii("??");
+	Counter const & ctr = it->second;
+	docstring const & format = ctr.prettyFormat();
+	if (format.empty()) {
+		docstring cntrname = translateIfPossible(counter, lang);
+		return	cntrname + " " + theCounter(counter, lang);
+	}
+	return counterLabel(format, lang);
 }
 
 

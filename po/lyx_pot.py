@@ -77,7 +77,7 @@ def ui_l10n(input_files, output, base):
 def layouts_l10n(input_files, output, base):
     '''Generate pot file from lib/layouts/*.{layout,inc,module}'''
     out = open(output, 'w')
-    Style = re.compile(r'^Style\s+(.*)')
+    Style = re.compile(r'^Style\s+(.*)', re.IGNORECASE)
     # include ???LabelString???, but exclude comment lines
     LabelString = re.compile(r'^[^#]*LabelString\S*\s+(.*)')
     GuiName = re.compile(r'\s*GuiName\s+(.*)')
@@ -91,6 +91,7 @@ def layouts_l10n(input_files, output, base):
     I18nPreamble = re.compile(r'\s*(Lang)|(Babel)Preamble\s*$')
     EndI18nPreamble = re.compile(r'\s*End(Lang)|(Babel)Preamble\s*$')
     I18nString = re.compile(r'_\(([^\)]+)\)')
+    CounterFormat = re.compile(r'\s*PrettyFormat\s+(.*)')
 
     for src in input_files:
         readingDescription = False
@@ -169,6 +170,11 @@ def layouts_l10n(input_files, output, base):
                 writeString(out, src, base, lineno, string)
                 continue
             res = Category.search(line)
+            if res != None:
+                string = res.group(1)
+                writeString(out, src, base, lineno, string)
+                continue
+            res = CounterFormat.search(line)
             if res != None:
                 string = res.group(1)
                 writeString(out, src, base, lineno, string)

@@ -77,6 +77,9 @@ import os, re, string, sys
 
 # Incremented to format 21, 12 January 2010 by rgh
 # Added HTMLTocLayout and HTMLTitle tags.
+	
+# Incremented to format 22, 20 January 2010 by rgh
+# Added HTMLFormat tag to Counters.
 
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
@@ -85,7 +88,7 @@ import os, re, string, sys
 # development/tools/updatelayouts.sh script to update all
 # layout files to the new format.
 
-currentFormat = 21
+currentFormat = 22
 
 
 def usage(prog_name):
@@ -254,7 +257,7 @@ def convert(lines):
             continue
 
         # This just involved new features, not any changes to old ones
-        if format >= 14 and format <= 20:
+        if format >= 14 and format <= 21:
           i += 1
           continue
 

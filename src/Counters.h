@@ -57,6 +57,10 @@ public:
 	 *  want the version shown in an appendix.
 	 */
 	docstring const & labelString(bool in_appendix) const;
+	/// Similar, but used for formatted references in XHTML output.
+	/// E.g., for a section counter it might be "section \thesection"
+	docstring const & prettyFormat() const { return prettyformat_; }
+	
 	/// Returns a map of LaTeX-like strings to format the counter. 
 	/** For each language, the string is similar to what one gets
 	 *  in LaTeX when using "\the<counter>". The \c in_appendix
@@ -79,6 +83,8 @@ private:
 	docstring labelstring_;
 	/// The same as labelstring_, but in appendices.
 	docstring labelstringappendix_;
+	/// Similar, but used for formatted references in XHTML output
+	docstring prettyformat_;
 	/// Cache of the labelstring with \\the<counter> expressions expanded, 
 	/// indexed by language
 	mutable StringMap flatlabelstring_;
@@ -137,6 +143,10 @@ public:
 	 * string.
 	 */
 	docstring counterLabel(docstring const & format,
+			       std::string const & lang) const;
+	/// returns a formatted version of the counter, using the 
+	/// format given by Counter::prettyFormat().
+	docstring prettyCounter(docstring const & cntr,
 			       std::string const & lang) const;
 	/// Are we in appendix?
 	bool appendix() const { return appendix_; }

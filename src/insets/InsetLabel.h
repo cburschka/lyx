@@ -66,6 +66,8 @@ public:
 	docstring const & activeCounter() const { return active_counter_; }
 	///
 	docstring const & counterValue() const { return counter_value_; }
+	///
+	docstring const & prettyCounter() const { return pretty_counter_; }
 protected:
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
@@ -78,6 +80,8 @@ private:
 	docstring active_counter_;
 	///
 	docstring counter_value_;
+	///
+	docstring pretty_counter_;
 };
 
 

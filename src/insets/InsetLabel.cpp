@@ -125,10 +125,13 @@ void InsetLabel::updateLabels(ParIterator const & par, UpdateType utype)
 			buffer().masterBuffer()->params().documentClass().counters();
 		active_counter_ = cnts.currentCounter();
 		Language const * lang = par->getParLanguage(buffer().params());
-		if (lang && !active_counter_.empty())
+		if (lang && !active_counter_.empty()) {
 			counter_value_ = cnts.theCounter(active_counter_, lang->code());
-		else 
-			counter_value_ = _("(unknown)");
+			pretty_counter_ = cnts.prettyCounter(active_counter_, lang->code());
+		} else {
+			counter_value_ = from_ascii("??");
+			pretty_counter_ = from_ascii("??");
+		}
 	}
 }
 

@@ -126,20 +126,19 @@ docstring InsetRef::xhtml(XHTMLStream & xs, OutputParams const &) const
 
 	if (il && !il->counterValue().empty()) {
 		// Try to construct a label from the InsetLabel we reference.
-		docstring const & cntr = il->activeCounter();
 		docstring const & value = il->counterValue();
 		if (cmd == "ref")
 			display_string = value;
 		else if (cmd == "vref")
-			display_string = bformat(from_ascii("%1$s on page ##"), value);
+			// normally, would be "ref on page #", but we have no pages
+			display_string = value;
 		else if (cmd == "pageref" || cmd == "vpageref")
-			display_string = _("on page ##");
+			// normally would be "on page #", but we have no pages
+			display_string = _("elsewhere");
 		else if (cmd == "eqref")
 			display_string = bformat(from_ascii("equation (%1$s)"), value);
 		else { // "prettyref"
-			docstring cntrname = translateIfPossible(cntr);
-			// FIXME Use the label string, if we have it. Otherwise, do this.
-			display_string = bformat(from_ascii("%1$s %2$s"), cntrname, value);
+			display_string = il->prettyCounter();
 		}
 	} else 
 			display_string = ref;
