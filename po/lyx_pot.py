@@ -91,7 +91,7 @@ def layouts_l10n(input_files, output, base):
     I18nPreamble = re.compile(r'\s*(Lang)|(Babel)Preamble\s*$')
     EndI18nPreamble = re.compile(r'\s*End(Lang)|(Babel)Preamble\s*$')
     I18nString = re.compile(r'_\(([^\)]+)\)')
-    CounterFormat = re.compile(r'\s*PrettyFormat\s+(.*)')
+    CounterFormat = re.compile(r'\s*PrettyFormat\s+"?(.*)"?')
 
     for src in input_files:
         readingDescription = False
