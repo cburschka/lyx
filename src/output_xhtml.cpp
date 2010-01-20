@@ -794,7 +794,7 @@ void makeCommand(Buffer const & buf,
 	// FIXME Probably need to account for LABEL_MANUAL
 	if (style.labeltype != LABEL_NO_LABEL) {
 		openLabelTag(xs, style);
-		xs << pbegin->expandLabel(style, buf.params(), false);
+		xs << pbegin->expandLabel(style, buf.params());
 		closeLabelTag(xs, style);
 		// Otherwise the label might run together with the text
 		xs << from_ascii(" ");
@@ -821,6 +821,13 @@ void xhtmlParagraphs(Text const & text,
 
 	OutputParams ourparams = runparams;
 	while (par != pend) {
+		if (par->params().startOfAppendix()) {
+			// FIXME: only the counter corresponding to toplevel
+			// sectioning should be reset
+			Counters & cnts = buf.masterBuffer()->params().documentClass().counters();
+			cnts.reset();
+			cnts.appendix(true);
+		}
 		Layout const & style = par->layout();
 		ParagraphList::const_iterator lastpar = par;
 		ParagraphList::const_iterator send;
