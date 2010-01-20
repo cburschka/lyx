@@ -545,21 +545,19 @@ docstring Counters::counterLabel(docstring const & format,
 }
 
 
-docstring Counters::prettyCounter(docstring const & counter,
+docstring Counters::prettyCounter(docstring const & name,
 			       string const & lang) const
 {
-	CounterList::const_iterator it = counterList_.find(counter); 
+	CounterList::const_iterator it = counterList_.find(name); 
 	if (it == counterList_.end())
 		return from_ascii("??");
 	Counter const & ctr = it->second;
+
+	docstring const value = theCounter(name, lang);
 	docstring const & format = ctr.prettyFormat();
-	// FIXME We need to "flatten" the format to get proper output, 
-	// but doing so will take a bit of work.
-	if (true || format.empty()) {
-		docstring cntrname = translateIfPossible(counter, lang);
-		return	cntrname + " " + theCounter(counter, lang);
-	}
-	return counterLabel(format, lang);
+	if (format.empty())
+		return value;
+	return subst(format, from_ascii("##"), value);
 }
 
 

@@ -11,32 +11,32 @@ Counter part
 End
 
 Counter chapter
-	PrettyFormat         "Chapter \arabic{chapter}"
+	PrettyFormat         "Chapter ##"
 End
 
 Counter section
 	Within               chapter
-	PrettyFormat         "Section \arabic{section}"
+	PrettyFormat         "Section ##"
 End
 
 Counter subsection
 	Within               section
-	PrettyFormat         "Section \arabic{subsection}"
+	PrettyFormat         "Section ##"
 End
 
 Counter subsubsection
 	Within               subsection
-	PrettyFormat         "Section \arabic{subsubsection}"
+	PrettyFormat         "Section ##"
 End
 
 Counter paragraph
 	Within               subsubsection
-	PrettyFormat         "Paragraph \arabic{paragraph}"
+	PrettyFormat         "Paragraph ##"
 End
 
 Counter subparagraph
 	Within               paragraph
-	PrettyFormat         "Paragraph \arabic{subparagraph}"
+	PrettyFormat         "Paragraph ##"
 End
 
 Counter enumi
@@ -65,9 +65,9 @@ Counter listing
 End
 
 Counter equation
-	PrettyFormat         "Equation \arabic{equation}"
+	PrettyFormat         "Equation ##"
 End
 
 Counter footnote
-	PrettyFormat         "Footnote \arabic{footnote}"
+	PrettyFormat         "Footnote ##"
 End
