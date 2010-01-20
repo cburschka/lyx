@@ -84,26 +84,37 @@ public:
 	docstring preamble() const { return preamble_; }
 	///
 	docstring counter() const { return counter_; }
-	///
+	/// The tag enclosing all the material in this inset. Default is "span".
 	std::string const & htmltag() const;
-	/// 
+	/// Additional attributes for inclusion with the start tag. Default (if
+	/// a tag is provided) is: class="name".
 	std::string const & htmlattr() const;
-	/// 
+	/// Tag for individual paragraphs in the inset. Default is none.
 	std::string const & htmlinnertag() const { return htmlinnertag_; }
-	/// 
+	/// Attributes for that tag. Default (if a tag is provided) is: 
+	/// class="name_inner".
 	std::string const & htmlinnerattr() const;
-	///
+	/// A label for this environment, possibly including a reference
+	/// to a counter. E.g., for footnote, it might be:
+	///    \arabic{footnote}
+	/// No default.
+	/// FIXME Could we get this from the layout?
 	std::string const & htmllabel() const { return htmllabel_; }
 	///
 	inline std::string htmllabeltag() const { return "span"; }
 	///
 	std::string htmllabelattr() const 
 		{ return "class=\"" + defaultCSSClass() + "_label\""; }
-	/// 
+	/// CSS associated with this inset.
 	docstring htmlstyle() const;
-	/// 
+	/// Additional material for the header.
 	docstring htmlpreamble() const { return htmlpreamble_; }
-	///
+	/// Whether this inset represents a "block" of material, i.e., a set
+	/// of paragraphs of its own (true), or should be run into the previous
+	/// paragraph (false). Examples:
+	///   For branches, this is false.
+	///   For footnotes, this is true.
+	/// Defaults to true.
 	bool htmlisblock() const { return htmlisblock_; }
 	///
 	std::set<std::string> requires() const { return requires_; }
@@ -163,39 +174,28 @@ private:
 	docstring counter_;
 	///
 	docstring preamble_;
-	/// The tag enclosing all the material in this inset. Default is "span".
+	///
 	mutable std::string htmltag_;
-	/// Additional attributes for inclusion with the start tag. Default (if
-	/// a tag is provided) is: class="name".
+	///
 	mutable std::string htmlattr_;
-	/// Tag for individual paragraphs in the inset. Default is none.
+	///
 	std::string htmlinnertag_;
-	/// Attributes for that tag. Default (if a tag is provided) is: 
-	/// class="name_inner".
+	///
 	mutable std::string htmlinnerattr_;
-	/// A label for this environment, possibly including a reference
-	/// to a counter. E.g., for footnote, it might be:
-	///    \arabic{footnote}
-	/// No default.
-	/// FIXME Could we get this from the layout?
+	///
 	std::string htmllabel_;
-	/// CSS associated with this inset.
+	///
 	docstring htmlstyle_;
 	/// Cache for default CSS info for this inset.
 	mutable docstring htmldefaultstyle_;
-	/// 
+	/// Cache for default CSS class.
 	mutable std::string defaultcssclass_;
 	/// Whether to force generation of default CSS even if some is given.
 	/// False by default.
 	bool htmlforcecss_;
-	/// Additional material for the header.
+	///
 	docstring htmlpreamble_;
-	/// Whether this inset represents a "block" of material, i.e., a set
-	/// of paragraphs of its own (true), or should be run into the previous
-	/// paragraph (false). Examples:
-	///   For branches, this is false.
-	///   For footnotes, this is true.
-	/// Defaults to true.
+	///
 	bool htmlisblock_;
 	///
 	std::set<std::string> requires_;
