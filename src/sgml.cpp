@@ -220,10 +220,12 @@ void sgml::openTag(Buffer const & buf, odocstream & os,
 		if (param.find('#') != string::npos) {
 			// FIXME UNICODE
 			if (!style.counter.empty())
-				// NOTE This could use OutputUpdate and track the counters.
-				counters.step(style.counter);
+				// This uses InternalUpdate at the moment becuase sgml output
+				// does not do anything with tracked counters, and it would need
+				// to track layouts if it did want to use them.
+				counters.step(style.counter, InternalUpdate);
 			else
-				counters.step(from_ascii(name));
+				counters.step(from_ascii(name), InternalUpdate);
 			int i = counters.value(from_ascii(name));
 			attribute = subst(param, "#", convert<string>(i));
 		} else {

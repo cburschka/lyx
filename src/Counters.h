@@ -117,8 +117,8 @@ public:
 	/// counter(s) for which it is the master.
 	/// Sub-slaves are not zeroed! That happens at slave's first 
 	/// step 0->1. Seems to be sufficient.
-	/// \param for_output: whether to track the counters
-	void step(docstring const & ctr, UpdateType = InternalUpdate);
+	/// \param utype determines whether we track the counters.
+	void step(docstring const & ctr, UpdateType utype);
 	/// Reset all counters.
 	void reset();
 	/// Reset counters matched by match string.
