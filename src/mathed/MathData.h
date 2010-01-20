@@ -179,7 +179,7 @@ private:
 	bool find1(MathData const & ar, size_type pos) const;
 
 	///
-	void detachMacroParameters(Cursor * cur, const size_type macroPos);
+	void detachMacroParameters(DocIterator * dit, const size_type macroPos);
 	///
 	void attachMacroParameters(Cursor * cur, const size_type macroPos, 
 		const size_type macroNumArgs, const int macroOptionals,

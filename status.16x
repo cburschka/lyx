@@ -83,6 +83,9 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fix crash when vieving files that contain math macros as PDF
+  (bug 6388).
+
 - Export the image when generating a preview, after an image
   reload (bug 6356).
 
