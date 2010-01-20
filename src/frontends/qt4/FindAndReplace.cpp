@@ -361,8 +361,9 @@ void FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt) {
 		}
 		bv->clearSelection();
 	} while (wrap_answer != 1);
-	lyx::dispatch(FuncRequest(LFUN_BUFFER_SWITCH,
-				  buf_orig->absFileName()));
+	if (buf != buf_orig)
+		lyx::dispatch(FuncRequest(LFUN_BUFFER_SWITCH,
+					  buf_orig->absFileName()));
 	bv = view_.documentBufferView();
 	bv->cursor() = cur_orig;
 }
