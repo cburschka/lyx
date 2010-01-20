@@ -248,7 +248,10 @@ public:
 		// if parent_buffer is not loaded, then it has been unloaded,
 		// which means that parent_buffer is an invalid pointer. So we
 		// set it to null in that case.
-		if (!theBufferList().isLoaded(parent_buffer))
+		// however, the BufferList doesn't know about cloned buffers, so
+		// they will always be regarded as unloaded. in that case, we hope
+		// for the best.
+		if (!cloned_buffer_ && !theBufferList().isLoaded(parent_buffer))
 			parent_buffer = 0;
 		return parent_buffer; 
 	}
