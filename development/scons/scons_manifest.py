@@ -106,6 +106,7 @@ src_header_files = Split('''
     output_latex.h
     output_plaintext.h
     output_xhtml.h
+    OutputEnums.h
     OutputParams.h
     paper.h
     ParIterator.h

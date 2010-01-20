@@ -245,6 +245,7 @@ HEADERFILESCORE = \
 	Mover.h \
 	output_docbook.h \
 	output.h \
+	OutputEnums.h \
 	output_latex.h \
 	output_xhtml.h \
 	OutputParams.h \
