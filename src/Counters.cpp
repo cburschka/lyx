@@ -553,7 +553,9 @@ docstring Counters::prettyCounter(docstring const & counter,
 		return from_ascii("??");
 	Counter const & ctr = it->second;
 	docstring const & format = ctr.prettyFormat();
-	if (format.empty()) {
+	// FIXME We need to "flatten" the format to get proper output, 
+	// but doing so will take a bit of work.
+	if (true || format.empty()) {
 		docstring cntrname = translateIfPossible(counter, lang);
 		return	cntrname + " " + theCounter(counter, lang);
 	}
