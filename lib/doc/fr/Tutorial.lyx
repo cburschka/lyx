@@ -5515,40 +5515,35 @@ r), et comment utiliser les différentes options.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-It is important to understand that 
+Il faut bien comprendre que 
 \family typewriter
 tex2lyx
 \family default
- can only translate files whose document class is 
-\begin_inset Quotes eld
+ ne peut convertir que des document dont la classe est 
+\begin_inset Quotes fld
 \end_inset
 
-known
-\begin_inset Quotes erd
+connue
+\begin_inset Quotes frd
 \end_inset
 
- to LyX, that is, for which there is a corresponding LyX 
-\family sans
-layout file
-\family default
-.
- If there is no layout file, then you will get an error saying that the
- conversion could not be performed.
- So, unless you have a layout for the document class of your LaTeX file,
- 
+ de LyX, c'est-à-dire pour laquelle il existe un fichier de format pour
+ LyX ( fichier .layout ).
+ S'il n'y a pas de fichier de format, vous aurez un message d'erreur disant
+ que la conversion ne peut avoir lieu.
+ Ce qui fait que, si vous n'avez pas de fichier de format pour la classe
+ de votre document LaTeX, 
 \family typewriter
 tex2lyx
 \family default
- simply will not know how to translate the LaTeX that it finds there into
- things LyX understands.
- More about layout files and how they are created is explained in detail
- in Chapter 5 of the 
+ ne saura tout simplement pas comment convertir les commandes LaTeX en quelquech
+ose que LyX comprenne.
+ Vous trouverez plus d'information sur les fichiers de format et la façon
+ de les créer dans le chapitre 5 du manuel 
 \emph on
-Customization
+Personnalisation
 \emph default
- manual.
+.
 \end_layout
 
 \begin_layout Subsection
