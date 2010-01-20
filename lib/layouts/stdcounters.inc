@@ -11,7 +11,7 @@ Counter part
 End
 
 Counter chapter
-	PrettyFormat         Chapter \arabic{chapter}
+	PrettyFormat         "Chapter \arabic{chapter}"
 End
 
 Counter section
