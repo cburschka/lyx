@@ -14325,12 +14325,30 @@ End
 status collapsed
 
 \begin_layout Plain Layout
-LabelString [string=""]
+LabelString
 \end_layout
 
 \end_inset
 
- when this is defined, this string defines how the counter is displayed.
+ [
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+=
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+] When defined, this string defines how the counter is displayed.
  Setting this value sets 
 \begin_inset Flex CharStyle:Code
 status collapsed
@@ -14589,12 +14607,30 @@ arabic{counter}
 status collapsed
 
 \begin_layout Plain Layout
-LabelStringAppendix [string=""]
+LabelStringAppendix
 \end_layout
 
 \end_inset
 
- Same as 
+ [
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+=
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+] Same as 
 \begin_inset Flex CharStyle:Code
 status collapsed
 
@@ -14605,6 +14641,58 @@ LabelString
 \end_inset
 
 , but for use in the Appendix.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+PrettyFormat
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+=
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+] A format for use with formatted references to this counter.
+ For example, one might want to have references to section numbers appear
+ as 
+\begin_inset Quotes eld
+\end_inset
+
+Section 2.4
+\begin_inset Quotes erd
+\end_inset
+
+.
+ The string should contain 
+\begin_inset Quotes eld
+\end_inset
+
+##
+\begin_inset Quotes erd
+\end_inset
+
+.
+ This will be replaced by the counter number itself.
+ So, for sections, it would be: Section ##.
 \end_layout
 
 \begin_layout Description
