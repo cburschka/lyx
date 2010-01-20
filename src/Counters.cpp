@@ -227,7 +227,7 @@ int Counters::value(docstring const & ctr) const
 }
 
 
-void Counters::step(docstring const & ctr, bool track_counters)
+void Counters::step(docstring const & ctr, UpdateType utype)
 {
 	CounterList::iterator it = counterList_.find(ctr);
 	if (it == counterList_.end()) {
@@ -237,7 +237,7 @@ void Counters::step(docstring const & ctr, bool track_counters)
 	}
 
 	it->second.step();
-	if (track_counters) {
+	if (utype == OutputUpdate) {
 		LASSERT(!counter_stack_.empty(), /* */);
 		counter_stack_.pop_back();
 		counter_stack_.push_back(ctr);

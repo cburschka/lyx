@@ -504,7 +504,7 @@ docstring InsetText::insetAsXHTML(XHTMLStream & xs, OutputParams const & runpara
 	if ((opts & WriteLabel) && !il.counter().empty()) {
 		BufferParams const & bp = buffer().masterBuffer()->params();
 		Counters & cntrs = bp.documentClass().counters();
-		cntrs.step(il.counter(), true);
+		cntrs.step(il.counter(), OutputUpdate);
 		// FIXME: translate to paragraph language
 		if (!il.htmllabel().empty()) {
 			docstring const lbl = 
@@ -648,23 +648,21 @@ ParagraphList & InsetText::paragraphs()
 }
 
 
-void InsetText::updateLabels(ParIterator const & it, bool out)
+void InsetText::updateLabels(ParIterator const & it, UpdateType utype)
 {
 	ParIterator it2 = it;
 	it2.forwardPos();
 	LASSERT(&it2.inset() == this && it2.pit() == 0, return);
 	if (producesOutput()) {
-		// FIXME We only want to do this, in fact, for some insets.
-		// But we'll need layout info for that.
 		InsetLayout const & il = getLayout();
-		bool const save_layouts = out && il.htmlisblock();
+		bool const save_layouts = utype == OutputUpdate && il.htmlisblock();
 		Counters & cnt = buffer().masterBuffer()->params().documentClass().counters();
 		if (save_layouts) {
 			// LYXERR0("Entering " << name());
 			cnt.clearLastLayout();
 			// FIXME cnt.saveLastCounter()?
 		}
-		buffer().updateLabels(it2, out);
+		buffer().updateLabels(it2, utype);
 		if (save_layouts) {
 			// LYXERR0("Exiting " << name());
 			cnt.restoreLastLayout();
@@ -676,7 +674,7 @@ void InsetText::updateLabels(ParIterator const & it, bool out)
 		//	tclass.counters().clearLastLayout()
 		// since we are saving and restoring the existing counters, etc.
 		Counters const savecnt = tclass.counters();
-		buffer().updateLabels(it2, out);
+		buffer().updateLabels(it2, utype);
 		tclass.counters() = savecnt;
 	}
 }

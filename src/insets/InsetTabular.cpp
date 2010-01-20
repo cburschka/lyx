@@ -3398,7 +3398,7 @@ void InsetTabular::edit(Cursor & cur, bool front, EntryDirection)
 }
 
 
-void InsetTabular::updateLabels(ParIterator const & it, bool out)
+void InsetTabular::updateLabels(ParIterator const & it, UpdateType utype)
 {
 	// In a longtable, tell captions what the current float is
 	Counters & cnts = buffer().masterBuffer()->params().documentClass().counters();
@@ -3410,7 +3410,7 @@ void InsetTabular::updateLabels(ParIterator const & it, bool out)
 	it2.forwardPos();
 	size_t const end = it2.nargs();
 	for ( ; it2.idx() < end; it2.top().forwardIdx())
-		buffer().updateLabels(it2, out);
+		buffer().updateLabels(it2, utype);
 
 	//reset afterwards
 	if (tabular.is_long_tabular)

@@ -1498,7 +1498,7 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 {
 	LaTeXFeatures features(*this, params(), runparams);
 	validate(features);
-	updateLabels(UpdateMaster, true);
+	updateLabels(UpdateMaster, OutputUpdate);
 	checkBibInfoCache();
 	d->bibinfo_.makeCitationLabels(*this);
 	updateMacros();
@@ -3500,7 +3500,7 @@ void Buffer::setBuffersForInsets() const
 }
 
 
-void Buffer::updateLabels(UpdateScope scope, bool out) const
+void Buffer::updateLabels(UpdateScope scope, UpdateType utype) const
 {
 	// Use the master text class also for child documents
 	Buffer const * const master = masterBuffer();
@@ -3518,7 +3518,7 @@ void Buffer::updateLabels(UpdateScope scope, bool out) const
 		// If this is a child document start with the master
 		if (master != this) {
 			bufToUpdate.insert(this);
-			master->updateLabels(UpdateMaster, out);
+			master->updateLabels(UpdateMaster, utype);
 			// Do this here in case the master has no gui associated with it. Then, 
 			// the TocModel is not updated and TocModel::toc_ is invalid (bug 5699).
 			if (!master->gui_)
@@ -3546,7 +3546,7 @@ void Buffer::updateLabels(UpdateScope scope, bool out) const
 
 	// do the real work
 	ParIterator parit = cbuf.par_iterator_begin();
-	updateLabels(parit, out);
+	updateLabels(parit, utype);
 
 	if (master != this)
 		// TocBackend update will be done later.
@@ -3628,7 +3628,7 @@ static bool needEnumCounterReset(ParIterator const & it)
 
 
 // set the label of a paragraph. This includes the counters.
-void Buffer::setLabel(ParIterator & it, bool for_output) const
+void Buffer::setLabel(ParIterator & it, UpdateType utype) const
 {
 	BufferParams const & bp = this->masterBuffer()->params();
 	DocumentClass const & textclass = bp.documentClass();
@@ -3660,7 +3660,7 @@ void Buffer::setLabel(ParIterator & it, bool for_output) const
 		if (layout.toclevel <= bp.secnumdepth
 		    && (layout.latextype != LATEX_ENVIRONMENT
 			|| it.text()->isFirstInSequence(it.pit()))) {
-			counters.step(layout.counter, for_output);
+			counters.step(layout.counter, utype);
 			par.params().labelString(
 				par.expandLabel(layout, bp));
 		} else
@@ -3714,7 +3714,7 @@ void Buffer::setLabel(ParIterator & it, bool for_output) const
 		// Maybe we have to reset the enumeration counter.
 		if (needEnumCounterReset(it))
 			counters.reset(enumcounter);
-		counters.step(enumcounter, for_output);
+		counters.step(enumcounter, utype);
 
 		string const & lang = par.getParLanguage(bp)->code();
 		par.params().labelString(counters.theCounter(enumcounter, lang));
@@ -3731,7 +3731,7 @@ void Buffer::setLabel(ParIterator & it, bool for_output) const
 			docstring name = this->B_(textclass.floats().getType(type).name());
 			if (counters.hasCounter(from_utf8(type))) {
 				string const & lang = par.getParLanguage(bp)->code();
-				counters.step(from_utf8(type), for_output);
+				counters.step(from_utf8(type), utype);
 				full_label = bformat(from_ascii("%1$s %2$s:"), 
 						     name, 
 						     counters.theCounter(from_utf8(type), lang));
@@ -3757,7 +3757,7 @@ void Buffer::setLabel(ParIterator & it, bool for_output) const
 }
 
 
-void Buffer::updateLabels(ParIterator & parit, bool out) const
+void Buffer::updateLabels(ParIterator & parit, UpdateType utype) const
 {
 	LASSERT(parit.pit() == 0, /**/);
 
@@ -3774,7 +3774,7 @@ void Buffer::updateLabels(ParIterator & parit, bool out) const
 		parit->params().depth(min(parit->params().depth(), maxdepth));
 		maxdepth = parit->getMaxDepthAfter();
 
-		if (out) {
+		if (utype == OutputUpdate) {
 			// track the active counters
 			// we have to do this for the master buffer, since the local
 			// buffer isn't tracking anything.
@@ -3783,14 +3783,14 @@ void Buffer::updateLabels(ParIterator & parit, bool out) const
 		}
 		
 		// set the counter for this paragraph
-		setLabel(parit, out);
+		setLabel(parit, utype);
 
 		// now the insets
 		InsetList::const_iterator iit = parit->insetList().begin();
 		InsetList::const_iterator end = parit->insetList().end();
 		for (; iit != end; ++iit) {
 			parit.pos() = iit->pos;
-			iit->inset->updateLabels(parit, out);
+			iit->inset->updateLabels(parit, utype);
 		}
 	}
 }

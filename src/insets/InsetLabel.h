@@ -55,7 +55,7 @@ public:
 	static bool isCompatibleCommand(std::string const & s) 
 		{ return s == "label"; }
 	///
-	void updateLabels(ParIterator const & it, bool);
+	void updateLabels(ParIterator const & it, UpdateType);
 	///
 	void addToToc(DocIterator const &);
 	///

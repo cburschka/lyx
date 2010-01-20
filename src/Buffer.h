@@ -12,6 +12,7 @@
 #ifndef BUFFER_H
 #define BUFFER_H
 
+#include "OutputEnums.h"
 #include "update_flags.h"
 
 #include "insets/InsetCode.h"
@@ -552,13 +553,13 @@ public:
 	/// Updates screen labels and some other information associated with
 	/// insets and paragraphs. Actually, it's more like a general "recurse
 	/// through the Buffer" routine, that visits all the insets and paragraphs.
-	void updateLabels() const { updateLabels(UpdateMaster, false); }
+	void updateLabels() const { updateLabels(UpdateMaster, InternalUpdate); }
 	/// \param scope: whether to start with the master document or just
 	/// do this one.
 	/// \param output: whether we are preparing for output.
-	void updateLabels(UpdateScope scope, bool output) const;
+	void updateLabels(UpdateScope scope, UpdateType utype) const;
 	/// 
-	void updateLabels(ParIterator & parit, bool output) const;
+	void updateLabels(ParIterator & parit, UpdateType utype) const;
 
 	/// Spellcheck starting from \p from.
 	/// \p from initial position, will then points to the next misspelled
@@ -579,7 +580,7 @@ private:
 	void updateMacros(DocIterator & it,
 				     DocIterator & scope) const;
 	///
-	void setLabel(ParIterator & it) const;
+	void setLabel(ParIterator & it, UpdateType utype) const;
 	///
 	void collectRelatives(BufferSet & bufs) const;
 

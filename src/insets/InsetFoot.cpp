@@ -36,11 +36,11 @@ InsetFoot::InsetFoot(Buffer * buf)
 {}
 
 
-void InsetFoot::updateLabels(ParIterator const & it, bool out)
+void InsetFoot::updateLabels(ParIterator const & it, UpdateType utype)
 {
 	BufferParams const & bp = buffer().masterBuffer()->params();
 	Counters & cnts = bp.documentClass().counters();
-	if (out) {
+	if (utype == OutputUpdate) {
 		// the footnote counter is local to this inset
 		cnts.saveLastCounter();
 	}
@@ -48,13 +48,13 @@ void InsetFoot::updateLabels(ParIterator const & it, bool out)
 	InsetLayout const & il = getLayout();
 	docstring const & count = il.counter();
 	if (!outer.layout().intitle && cnts.hasCounter(count)) {
-		cnts.step(count, out);
+		cnts.step(count, utype);
 		custom_label_= translateIfPossible(il.labelstring()) 
 			+ ' ' + cnts.theCounter(count, outer.getParLanguage(bp)->code());
 		setLabel(custom_label_);	
 	}
-	InsetCollapsable::updateLabels(it, out);
-	if (out)
+	InsetCollapsable::updateLabels(it, utype);
+	if (utype == OutputUpdate)
 		cnts.restoreLastCounter();	
 }
 

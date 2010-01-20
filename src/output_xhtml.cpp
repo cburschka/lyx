@@ -573,7 +573,7 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 	for (; par != pend; ++par) {
 		Layout const & lay = par->layout();
 		if (!lay.counter.empty())
-			buf.params().documentClass().counters().step(lay.counter);
+			buf.params().documentClass().counters().step(lay.counter, OutputUpdate);
 		// FIXME We should see if there's a label to be output and
 		// do something with it.
 		if (par != pbegin)
@@ -674,7 +674,7 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 		    && (par == pbegin || !isNormalEnv(style)) 
 				&& cnts.hasCounter(cntr)
 		)
-			cnts.step(cntr);
+			cnts.step(cntr, OutputUpdate);
 		ParagraphList::const_iterator send;
 		// this will be positive, if we want to skip the initial word
 		// (if it's been taken for the label).
@@ -786,7 +786,7 @@ void makeCommand(Buffer const & buf,
 {
 	Layout const & style = pbegin->layout();
 	if (!style.counter.empty())
-		buf.params().documentClass().counters().step(style.counter);
+		buf.params().documentClass().counters().step(style.counter, OutputUpdate);
 
 	openTag(xs, style);
 

@@ -114,12 +114,12 @@ bool InsetWrap::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-void InsetWrap::updateLabels(ParIterator const & it, bool out)
+void InsetWrap::updateLabels(ParIterator const & it, UpdateType utype)
 {
 	setLabel(_("wrap: ") + floatName(params_.type));
 	Counters & cnts =
 		buffer().masterBuffer()->params().documentClass().counters();
-	if (out) {
+	if (utype == OutputUpdate) {
 		// counters are local to the wrap
 		cnts.saveLastCounter();
 	}
@@ -128,11 +128,11 @@ void InsetWrap::updateLabels(ParIterator const & it, bool out)
 	// Tell to captions what the current float is
 	cnts.current_float(params().type);
 
-	InsetCollapsable::updateLabels(it, out);
+	InsetCollapsable::updateLabels(it, utype);
 
 	// reset afterwards
 	cnts.current_float(saveflt);
-	if (out)
+	if (utype == OutputUpdate)
 		cnts.restoreLastCounter();
 }
 

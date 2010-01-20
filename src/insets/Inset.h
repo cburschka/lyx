@@ -18,6 +18,7 @@
 #include "ColorCode.h"
 #include "InsetCode.h"
 #include "Layout.h"
+#include "OutputEnums.h"
 
 #include "support/strfwd.h"
 #include "support/types.h"
@@ -472,7 +473,7 @@ public:
 	/// Update the counters of this inset and of its contents.
 	/// The boolean indicates whether we are preparing for output, e.g.,
 	/// of XHTML.
-	virtual void updateLabels(ParIterator const &, bool) {}
+	virtual void updateLabels(ParIterator const &, UpdateType) {}
 
 	/// Updates the inset's dialog
 	virtual Buffer const * updateFrontend() const;

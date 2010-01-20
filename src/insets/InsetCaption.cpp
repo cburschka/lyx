@@ -307,14 +307,14 @@ docstring InsetCaption::getCaptionAsHTML(XHTMLStream & xs,
 }
 
 
-void InsetCaption::updateLabels(ParIterator const & it, bool out)
+void InsetCaption::updateLabels(ParIterator const & it, UpdateType utype)
 {
 	Buffer const & master = *buffer().masterBuffer();
 	DocumentClass const & tclass = master.params().documentClass();
 	string const & lang = it.paragraph().getParLanguage(master.params())->code();
 	Counters & cnts = tclass.counters();
 	string const & type = cnts.current_float();
-	if (out) {
+	if (utype == OutputUpdate) {
 		// counters are local to the caption
 		cnts.saveLastCounter();
 	}
@@ -337,7 +337,7 @@ void InsetCaption::updateLabels(ParIterator const & it, bool out)
 				       master.B_(tclass.floats().getType(type).name()));
 		}
 		if (cnts.hasCounter(counter)) {
-			cnts.step(counter, out);
+			cnts.step(counter, utype);
 			full_label_ = bformat(from_ascii("%1$s %2$s:"), 
 					      name,
 					      cnts.theCounter(counter, lang));
@@ -346,8 +346,8 @@ void InsetCaption::updateLabels(ParIterator const & it, bool out)
 	}
 
 	// Do the real work now.
-	InsetText::updateLabels(it, out);
-	if (out)
+	InsetText::updateLabels(it, utype);
+	if (utype == OutputUpdate)
 		cnts.restoreLastCounter();
 }
 

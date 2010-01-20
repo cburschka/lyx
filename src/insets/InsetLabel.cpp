@@ -108,7 +108,7 @@ docstring InsetLabel::screenLabel() const
 }
 
 
-void InsetLabel::updateLabels(ParIterator const & par, bool out)
+void InsetLabel::updateLabels(ParIterator const & par, UpdateType utype)
 {
 	docstring const & label = getParam("name");
 	if (buffer().insetLabel(label)) {
@@ -119,7 +119,7 @@ void InsetLabel::updateLabels(ParIterator const & par, bool out)
 	buffer().setInsetLabel(label, this);
 	screen_label_ = label;
 
-	if (out) {
+	if (utype) {
 		// save info on the active counter
 		Counters const & cnts = 
 			buffer().masterBuffer()->params().documentClass().counters();

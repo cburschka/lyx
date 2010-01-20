@@ -836,7 +836,7 @@ public:
 	/// can we go further down on mouse click?
 	bool descendable(BufferView const &) const { return true; }
 	// Update the counters of this inset and of its contents
-	void updateLabels(ParIterator const &, bool);
+	void updateLabels(ParIterator const &, UpdateType);
 
 	///
 	bool completionSupported(Cursor const &) const;

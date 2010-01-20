@@ -15,6 +15,8 @@
 #ifndef COUNTERS_H
 #define COUNTERS_H
 
+#include "OutputEnums.h"
+
 #include "support/docstring.h"
 
 #include <map>
@@ -116,7 +118,7 @@ public:
 	/// Sub-slaves are not zeroed! That happens at slave's first 
 	/// step 0->1. Seems to be sufficient.
 	/// \param for_output: whether to track the counters
-	void step(docstring const & ctr, bool track_counters = false);
+	void step(docstring const & ctr, UpdateType = InternalUpdate);
 	/// Reset all counters.
 	void reset();
 	/// Reset counters matched by match string.

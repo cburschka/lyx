@@ -14,6 +14,8 @@
 
 #include "InsetMathGrid.h"
 
+#include "OutputEnums.h"
+
 #include <boost/scoped_ptr.hpp>
 
 
@@ -36,7 +38,7 @@ public:
 	///
 	void setBuffer(Buffer &);
 	///
-	void updateLabels(ParIterator const &, bool);
+	void updateLabels(ParIterator const &, UpdateType);
 	///
 	void addToToc(DocIterator const &);
 	///
