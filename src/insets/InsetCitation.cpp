@@ -435,6 +435,7 @@ docstring InsetCitation::basicLabel(bool for_xhtml) const
 	if (contains(keys, ',')) {
 		// Final comma allows while loop to cover all keys
 		keys = ltrim(split(keys, label, ',')) + ',';
+		label = wrapCitation(label, label, for_xhtml);
 		while (contains(keys, ',')) {
 			docstring key;
 			keys = ltrim(split(keys, key, ','));
