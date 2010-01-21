@@ -30,6 +30,7 @@
 
 #include <map>
 #include <string>
+#include <vector>
 
 using namespace std;
 using namespace lyx::support;
@@ -40,6 +41,7 @@ namespace lyx {
 namespace {
 
 typedef map<std::string, Hunspell *> Spellers;
+typedef vector<WordLangTuple> IgnoreList;
 
 } // anon namespace
 
@@ -51,9 +53,13 @@ struct HunspellChecker::Private
 
 	Hunspell * addSpeller(string const & lang);
 	Hunspell * speller(string const & lang);
+	/// ignored words
+	bool isIgnored(WordLangTuple const & wl) const;
 
 	/// the spellers
 	Spellers spellers_;
+	///
+	IgnoreList ignored_;
 };
 
 
@@ -137,6 +143,19 @@ Hunspell * HunspellChecker::Private::speller(string const & lang)
 }
 
 
+bool HunspellChecker::Private::isIgnored(WordLangTuple const & wl) const
+{
+	IgnoreList::const_iterator it = ignored_.begin();
+	for (; it != ignored_.end(); ++it) {
+		if ((*it).lang_code() != wl.lang_code())
+			continue;
+		if ((*it).word() == wl.word())
+			return true;
+	}
+	return false;
+}
+
+
 HunspellChecker::HunspellChecker(): d(new Private)
 {
 }
@@ -150,6 +169,9 @@ HunspellChecker::~HunspellChecker()
 
 SpellChecker::Result HunspellChecker::check(WordLangTuple const & wl)
 {
+	if (d->isIgnored(wl))
+		return OK;
+
 	string const word_to_check = to_utf8(wl.word());
 	Hunspell * h = d->speller(wl.lang_code());
 	if (!h)
@@ -181,9 +203,9 @@ void HunspellChecker::insert(WordLangTuple const & wl)
 }
 
 
-void HunspellChecker::accept(WordLangTuple const &)
+void HunspellChecker::accept(WordLangTuple const & wl)
 {
-	// FIXME: not implemented!
+	d->ignored_.push_back(wl);
 }
 
 
