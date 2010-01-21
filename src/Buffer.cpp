@@ -3273,13 +3273,16 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 		runparams.exportdata->externalFiles(format);
 	string const dest = onlyPath(result_file);
 	CopyStatus status = SUCCESS;
-	for (vector<ExportedFile>::const_iterator it = files.begin();
-		it != files.end() && status != CANCEL; ++it) {
+	
+	vector<ExportedFile>::const_iterator it = files.begin();
+	vector<ExportedFile>::const_iterator const en = files.end();
+	for (; it != en && status != CANCEL; ++it) {
 		string const fmt = formats.getFormatFromFile(it->sourceName);
 		status = copyFile(fmt, it->sourceName,
 			makeAbsPath(it->exportName, dest),
 			it->exportName, status == FORCE);
 	}
+
 	if (status == CANCEL) {
 		message(_("Document export cancelled."));
 	} else if (tmp_result_file.exists()) {
