@@ -43,7 +43,8 @@ Math
 	- Phantom: There is some support for this in MathML....
 	- Ref: Needs to be deferred.
 	- Size: Unclear if we want to do anything here, though we could. See
-		lib/symbols for the commands supported, of course.
+		lib/symbols for the commands supported, of course. At least, we have to output
+		the cell.
 	- Space: Needs checking.
 	- SpecialChar: Needs checking.
 	- Split: There are some alignment issues here, but it basically works.
