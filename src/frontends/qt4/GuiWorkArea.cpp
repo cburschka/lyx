@@ -698,14 +698,7 @@ void GuiWorkArea::contextMenuEvent(QContextMenuEvent * e)
 
 void GuiWorkArea::focusInEvent(QFocusEvent * e)
 {
-	/*
-	LYXERR(Debug::DEBUG, "GuiWorkArea::focusInEvent(): " << this << std::endl);
-	GuiWorkArea * old_gwa = theGuiApp()->currentView()->currentWorkArea();
-	if (old_gwa)
-		old_gwa->stopBlinkingCursor();
-	lyx_view_->setCurrentWorkArea(this);
-	*/
-
+	LYXERR(Debug::DEBUG, "GuiWorkArea::focusInEvent(): " << this << endl);
 	if (lyx_view_->currentWorkArea() != this)
 		lyx_view_->setCurrentWorkArea(this);
 
@@ -716,7 +709,7 @@ void GuiWorkArea::focusInEvent(QFocusEvent * e)
 
 void GuiWorkArea::focusOutEvent(QFocusEvent * e)
 {
-	LYXERR(Debug::DEBUG, "GuiWorkArea::focusOutEvent(): " << this << std::endl);
+	LYXERR(Debug::DEBUG, "GuiWorkArea::focusOutEvent(): " << this << endl);
 	stopBlinkingCursor();
 	QAbstractScrollArea::focusOutEvent(e);
 }
