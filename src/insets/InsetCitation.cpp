@@ -432,18 +432,16 @@ docstring InsetCitation::basicLabel(bool for_xhtml) const
 	docstring keys = getParam("key");
 	docstring label;
 
-	if (contains(keys, ',')) {
-		// Final comma allows while loop to cover all keys
-		keys = ltrim(split(keys, label, ',')) + ',';
-		label = wrapCitation(label, label, for_xhtml);
-		while (contains(keys, ',')) {
-			docstring key;
-			keys = ltrim(split(keys, key, ','));
-			label += ", " + wrapCitation(key, key, for_xhtml);
-		}
-	} else {
-		label = wrapCitation(keys, keys, for_xhtml);
-	}
+	docstring key;
+	do {
+		// if there is no comma, then everything goes into key
+		// and keys will be empty.
+		keys = trim(split(keys, key, ','));
+		key = trim(key);
+		if (!label.empty())
+			label += ", ";
+		label += wrapCitation(key, key, for_xhtml);
+	} while (!keys.empty());
 
 	docstring const & after = getParam("after");
 	if (!after.empty())
