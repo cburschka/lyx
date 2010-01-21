@@ -960,9 +960,7 @@ void extractStructure(MathData & ar, ExternalMath kind)
 	if (kind != MATHML) {
 		extractDets(ar);
 		extractDiff(ar);
-	}
-	extractExps(ar);
-	if (kind != MATHML) {
+		extractExps(ar);
 		extractLims(ar);
 		extractStrings(ar);
 	}
