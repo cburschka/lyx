@@ -699,7 +699,7 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 					openItemTag(xs, style);
 					if (par == pbegin && style.htmllabeltag() != "NONE") {
 						docstring const lbl = 
-								pbegin->expandLabel(style, buf.params());
+								pbegin->params().labelString();
 						if (!lbl.empty()) {
 							openLabelTag(xs, style);
 							xs << lbl;
@@ -721,7 +721,7 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 					else if (style.labeltype != LABEL_NO_LABEL
 					         && style.htmllabeltag() != "NONE") {
 						openLabelTag(xs, style);
-						xs << par->expandLabel(style, buf.params());
+						xs << par->params().labelString();
 						closeLabelTag(xs, style);
 						xs.cr();
 					}
@@ -794,7 +794,7 @@ void makeCommand(Buffer const & buf,
 	// FIXME Probably need to account for LABEL_MANUAL
 	if (style.labeltype != LABEL_NO_LABEL) {
 		openLabelTag(xs, style);
-		xs << pbegin->expandLabel(style, buf.params());
+		xs << pbegin->params().labelString();
 		closeLabelTag(xs, style);
 		// Otherwise the label might run together with the text
 		xs << from_ascii(" ");
