@@ -336,8 +336,10 @@ void Cursor::dispatch(FuncRequest const & cmd0)
 		LYXERR(Debug::DEBUG, "Cursor::dispatch: (AtPoint) cmd: "
 			<< cmd0 << endl << *this);
 		nextInset()->dispatch(*this, tmpcmd);
-		if (result().dispatched())
+		if (result().dispatched()) {
+			buffer()->undo().endUndoGroup();
 			return;
+		}
 	}
 
 	// store some values to be used inside of the handlers
