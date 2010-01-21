@@ -22,6 +22,7 @@
 #include "OutputParams.h"
 #include "output_xhtml.h"
 #include "Paragraph.h"
+#include "ParagraphParameters.h"
 #include "TextClass.h"
 #include "TocBackend.h"
 
@@ -91,6 +92,8 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 		return docstring();
 
 	xs << html::StartTag("div", "class='toc'");
+
+	// Title of TOC
 	Language const * lang = buffer().params().language;
 	static string toctitle = N_("Table of Contents");
 	docstring title = lang 
@@ -99,15 +102,19 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 	xs << html::StartTag("div", tocattr)
 		 << title
 		 << html::EndTag("div");
+
+	// Output of TOC
 	Toc::const_iterator it = toc.begin();
 	Toc::const_iterator const en = toc.end();
 	int lastdepth = 0;
 	for (; it != en; ++it) {
-		Paragraph const & par = it->dit().innerParagraph();
+		// First, we need to manage increases and decreases of depth
 		int const depth = it->depth();
+		
+		// Ignore stuff above the tocdepth
 		if (depth > buffer().params().tocdepth)
 			continue;
-		Font const dummy;
+		
 		if (depth > lastdepth) {
 			xs.cr();
 			// open as many tags as we need to open to get to this level
@@ -136,14 +143,25 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 			attr << "class='lyxtoc-" << depth << "'";
 			xs << html::StartTag("div", attr.str());
 		}
-		string const parattr = "href='#" + par.magicLabel() + "' class='tocarrow'";
+		
+		// Now output TOC info for this entry
+		Paragraph const & par = it->dit().innerParagraph();
+		// First the label, if there is one
+		docstring const & label = par.params().labelString();
+		if (!label.empty())
+			xs << label << " ";
+		// Now the content of the TOC entry, taken from the paragraph itself
 		OutputParams ours = op;
 		ours.for_toc = true;
+		Font const dummy;
 		par.simpleLyXHTMLOnePar(buffer(), xs, ours, dummy);
 		xs << " ";
+		// Now a link to that paragraph
+		string const parattr = "href='#" + par.magicLabel() + "' class='tocarrow'";
 		xs << html::StartTag("a", parattr);
 		// FIXME XHTML 
 		// There ought to be a simple way to customize this.
+		// Maybe if we had an InsetLayout for TOC...
 		xs << XHTMLStream::NextRaw() << "&seArr;";
 		xs << html::EndTag("a");		
 	}
