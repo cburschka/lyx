@@ -15,11 +15,14 @@
 #include "MathData.h"
 #include "MathParser.h"
 #include "MathStream.h"
+#include "output_xhtml.h"
 
 #include "support/convert.h"
 
+#include <string>
 #include <ostream>
 
+using namespace std;
 
 namespace lyx {
 
@@ -54,6 +57,30 @@ void InsetMathSize::write(WriteStream & os) const
 {
 	MathEnsurer ensurer(os);
 	os << "{\\" << key_->name << ' ' << cell(0) << '}';
+}
+
+
+// From the MathML documentation:
+//	MathML uses two attributes, displaystyle and scriptlevel, to control 
+//	orthogonal presentation features that TeX encodes into one "style" 
+//	attribute with values \displaystyle, \textstyle, \scriptstyle, and 
+//	\scriptscriptstyle. The corresponding values of displaystyle and scriptlevel 
+//	for those TeX styles would be "true" and "0", "false" and "0", "false" and "1", 
+//	and "false" and "2", respectively. 
+void InsetMathSize::mathmlize(MathStream & ms) const
+{
+	string const & name = to_utf8(key_->name);
+	bool dispstyle = (name == "displaystyle");
+	int scriptlevel = 0;
+	if (name == "scriptstyle")
+		scriptlevel = 1;
+	else if (name == "scriptscriptstyle")
+		scriptlevel = 2;
+	stringstream attrs;
+	attrs << "displaystyle='" << (dispstyle ? "true" : "false")
+		<< "' scriptlevel='" << scriptlevel << "'";
+	ms << "<mstyle " << from_ascii(attrs.str()) << ">"
+	   << cell(0) << "</mstyle>";
 }
 
 

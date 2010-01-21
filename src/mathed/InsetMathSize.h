@@ -40,6 +40,8 @@ public:
 	///
 	void infoize(odocstream & os) const;
 	///
+	void mathmlize(MathStream &) const;
+	///
 	InsetCode lyxCode() const { return MATH_SIZE_CODE; }
 
 private:
