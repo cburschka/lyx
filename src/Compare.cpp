@@ -525,6 +525,7 @@ void Compare::Impl::furthestDpathKdiagonal(int D, int k,
 	// Where do we take the step from ?
 	int const kk = vertical_step ? k + 1 : k - 1;
 	DocPair p(op[kk], np[kk]);
+	DocPair const s(os[kk], ns[kk]);
 
 	// If D==0 we simulate a vertical step from (0,-1) by doing nothing.
 	if (D != 0) {
@@ -546,8 +547,8 @@ void Compare::Impl::furthestDpathKdiagonal(int D, int k,
 		ns[k] = p.n;
 	} else {
 		// Copy last snake from the previous step
-		os[k] = os[kk];
-		ns[k] = ns[kk];
+		os[k] = s.o;
+		ns[k] = s.n;
 	}
 
 	//Record new position
