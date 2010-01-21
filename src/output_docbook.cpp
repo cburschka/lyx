@@ -260,7 +260,7 @@ ParagraphList::const_iterator makeCommand(Buffer const & buf,
 	if (!bstyle.labeltag().empty()) {
 		sgml::openTag(os, bstyle.labeltag());
 		// We don't care about appendix in DOCBOOK.
-		os << par->expandLabel(bstyle, buf.params(), false);
+		os << par->expandDocBookLabel(bstyle, buf.params());
 		sgml::closeTag(os, bstyle.labeltag());
 	}
 

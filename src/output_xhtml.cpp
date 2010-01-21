@@ -699,7 +699,7 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 					openItemTag(xs, style);
 					if (par == pbegin && style.htmllabeltag() != "NONE") {
 						docstring const lbl = 
-								pbegin->expandLabel(style, buf.params(), false);
+								pbegin->expandLabel(style, buf.params());
 						if (!lbl.empty()) {
 							openLabelTag(xs, style);
 							xs << lbl;
@@ -721,7 +721,7 @@ ParagraphList::const_iterator makeEnvironmentHtml(Buffer const & buf,
 					else if (style.labeltype != LABEL_NO_LABEL
 					         && style.htmllabeltag() != "NONE") {
 						openLabelTag(xs, style);
-						xs << par->expandLabel(style, buf.params(), false);
+						xs << par->expandLabel(style, buf.params());
 						closeLabelTag(xs, style);
 						xs.cr();
 					}

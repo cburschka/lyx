@@ -243,15 +243,15 @@ public:
 	void setBeginOfBody();
 
 	///
+	docstring expandLabel(Layout const &, BufferParams const &) const;
+	///
+	docstring expandDocBookLabel(Layout const &, BufferParams const &) const;
+	///
 	docstring const & labelString() const;
-
 	/// the next two functions are for the manual labels
 	docstring const getLabelWidthString() const;
 	/// Set label width string.
 	void setLabelWidthString(docstring const & s);
-	/// Expand the counters for the labelstring of \c layout
-	docstring expandLabel(Layout const &, BufferParams const &,
-		bool process_appendix = true) const;
 	/// Actual paragraph alignment used
 	char getAlign() const;
 	/// The nesting depth of a paragraph
@@ -430,6 +430,9 @@ public:
 	std::string magicLabel() const;
 
 private:
+	/// Expand the counters for the labelstring of \c layout
+	docstring expandParagraphLabel(Layout const &, BufferParams const &,
+		bool process_appendix) const;
 	///
 	void deregisterWords();
 	///

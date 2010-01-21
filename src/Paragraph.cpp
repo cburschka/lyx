@@ -1656,7 +1656,21 @@ void Paragraph::setLabelWidthString(docstring const & s)
 }
 
 
-docstring Paragraph::expandLabel(Layout const & layout,
+docstring Paragraph::expandLabel(Layout const & layout, 
+		BufferParams const & bparams) const
+{ 
+	return expandParagraphLabel(layout, bparams, true); 
+}
+
+
+docstring Paragraph::expandDocBookLabel(Layout const & layout, 
+		BufferParams const & bparams) const
+{
+	return expandParagraphLabel(layout, bparams, false);
+}
+
+
+docstring Paragraph::expandParagraphLabel(Layout const & layout,
 		BufferParams const & bparams, bool process_appendix) const
 {
 	DocumentClass const & tclass = bparams.documentClass();
@@ -1677,7 +1691,7 @@ docstring Paragraph::expandLabel(Layout const & layout,
 			docstring parent(fmt, i + 1, j - i - 1);
 			docstring label = from_ascii("??");
 			if (tclass.hasLayout(parent))
-				docstring label = expandLabel(tclass[parent], bparams,
+				docstring label = expandParagraphLabel(tclass[parent], bparams,
 						      process_appendix);
 			fmt = docstring(fmt, 0, i) + label 
 				+ docstring(fmt, j + 1, docstring::npos);
