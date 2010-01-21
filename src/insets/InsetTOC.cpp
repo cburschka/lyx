@@ -16,6 +16,7 @@
 #include "BufferParams.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
+#include "Language.h"
 #include "LaTeXFeatures.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
@@ -90,8 +91,13 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 		return docstring();
 
 	xs << html::StartTag("div", "class='toc'");
-	xs << html::StartTag("div", tocattr) 
-		 << _("Table of Contents") 
+	Language const * lang = buffer().params().language;
+	static string toctitle = N_("Table of Contents");
+	docstring title = lang 
+			? translateIfPossible(from_ascii(toctitle), lang->code())
+			: translateIfPossible(from_ascii(toctitle));
+	xs << html::StartTag("div", tocattr)
+		 << title
 		 << html::EndTag("div");
 	Toc::const_iterator it = toc.begin();
 	Toc::const_iterator const en = toc.end();
