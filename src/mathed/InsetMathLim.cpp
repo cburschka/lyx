@@ -71,16 +71,6 @@ void InsetMathLim::mathematica(MathematicaStream & os) const
 }
 
 
-void InsetMathLim::mathmlize(MathStream & os) const
-{
-	// FIXME XHTML We need a form of MTag that takes attributes.
-	os << "<munder>"
-	   << "<mo form='prefix'>" << "lim" << "</mo>"
-	   << "<mrow>" << cell(1) << "<mo>&rarr;</mo>" << cell(2) << "</mrow></munder>"
-	   << "<mo>(</mo>" << cell(0) << "<mo>)</mo>" ; 
-}
-
-
 void InsetMathLim::write(WriteStream &) const
 {
 	LYXERR0("should not happen");

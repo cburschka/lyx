@@ -962,9 +962,10 @@ void extractStructure(MathData & ar, ExternalMath kind)
 		extractDiff(ar);
 	}
 	extractExps(ar);
-	extractLims(ar);
-	if (kind != MATHML)
+	if (kind != MATHML) {
+		extractLims(ar);
 		extractStrings(ar);
+	}
 	//lyxerr << "\nStructure to: " << ar << endl;
 }
 
