@@ -315,7 +315,10 @@ MathStream & operator<<(MathStream & ms, MTag const & t)
 {
 	++ms.tab();
 	ms.cr();
-	ms.os() << '<' << from_ascii(t.tag_) << '>';
+	ms.os() << '<' << from_ascii(t.tag_);
+	if (!t.attr_.empty())
+		ms.os() << " " << from_ascii(t.attr_);
+	ms << '>';
 	return ms;
 }
 

@@ -229,9 +229,12 @@ private:
 class MTag {
 public:
 	///
-	MTag(char const * const tag) : tag_(tag) {}
+	MTag(char const * const tag, std::string attr = "") 
+		: tag_(tag), attr_(attr) {}
 	///
 	char const * const tag_;
+	///
+	std::string attr_;
 };
 
 class ETag {
