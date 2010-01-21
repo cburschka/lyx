@@ -17,7 +17,7 @@
 #define PARAGRAPH_H
 
 #include "FontEnums.h"
-#include "Layout.h"
+//#include "Layout.h"
 
 #include "insets/InsetCode.h"
 
@@ -42,6 +42,7 @@ class LaTeXFeatures;
 class Inset_code;
 class InsetList;
 class Language;
+class Layout;
 class Font;
 class Font_size;
 class MetricsInfo;
