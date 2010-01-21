@@ -167,7 +167,7 @@ InsetLayout Note:Greyedout
 	HTMLStyle
 		div.note_greyedout { 
 			display: inline;
-			background-color: #A0A0A0; 
+			color: #A0A0A0; 
 			padding-left: 1ex;
 			padding-right: 1ex;
 		}
