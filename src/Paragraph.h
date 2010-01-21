@@ -17,7 +17,6 @@
 #define PARAGRAPH_H
 
 #include "FontEnums.h"
-//#include "Layout.h"
 
 #include "insets/InsetCode.h"
 
