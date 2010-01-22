@@ -545,6 +545,7 @@ dist_imagesmath_DATA = \
 	images/math/diagdown.png \
 	images/math/diagup.png \
 	images/math/diamond.png \
+	images/math/diamond2.png \
 	images/math/diamondsuit.png \
 	images/math/digamma.png \
 	images/math/div.png \
