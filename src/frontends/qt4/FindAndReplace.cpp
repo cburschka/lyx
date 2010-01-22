@@ -34,6 +34,7 @@
 #include "support/FileName.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
+#include "support/lstrings.h"
 
 #include <QCloseEvent>
 #include <QLineEdit>
@@ -291,10 +292,10 @@ docstring question_string(FindAndReplaceOptions const & opt)
 		break;
 	}
 	docstring dir = opt.forward ? _("forward") : _("backwards");
-	return cur_pos + _(" of ") + scope
-		+ _(" reached while searching ") + dir + ".\n"
-		+ "\n"
-		+ _("Continue searching from ") + new_pos + " ?";
+
+	return bformat(_("%1$s of %2$s reached while searching %3$s.\n\n"
+			  "Continue searching from %4$s?"),
+		      cur_pos, scope, dir, new_pos);
 }
 
 
