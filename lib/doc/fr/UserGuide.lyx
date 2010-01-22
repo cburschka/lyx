@@ -34379,15 +34379,11 @@ Ferme le document courant.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Close All
+Fermer tout
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Closes all opened documents.
+Ferme tous les documents ouverts.
 \end_layout
 
 \begin_layout Subsection
@@ -34823,13 +34819,9 @@ Fax
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This menu entry will only appear when you have a fax program installed (on
- Windows you additionally need to register its program path to LyX's PATH
- prefix, see section
-\lang french
-
+Cette entrée de menu n'apparaît que si un programme de fax est installé
+ ( sous Windows, vous devez en plus ajouter le chemin vers ce programme
+ au préfixe PATH de LyX, voir section
 \begin_inset space ~
 \end_inset
 
@@ -34841,21 +34833,19 @@ reference "sec:Répertoires"
 \end_inset
 
 ).
- 
-\lang english
-With this menu entry you can send your document to a fax program like 
+ Avec cette entrée de menu, vous pouvez envoyer votre document à un programme
+ de fax comme 
 \family typewriter
 hylapex
 \family default
- or 
+ ou 
 \family typewriter
 kdeprintfax
 \family default
 .
- The default format of the sent file is PostScript.
- The format can be changed in LyX's preferences as described in section
-\lang french
-
+ Le format utilisé par défaut pour le fichier qui est envoyé est le PostScript.
+ Ce format peut être changé dans les préférences de LyX comme cela est décrit
+ dans la 
 \begin_inset space ~
 \end_inset
 
@@ -41053,25 +41043,31 @@ reference "sec:Aperçu-de-morceaux"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The option 
+L'option 
 \family sans
-Mark
+Marquer
 \begin_inset space ~
 \end_inset
 
-end
+la
 \begin_inset space ~
 \end_inset
 
-of
+fin
 \begin_inset space ~
 \end_inset
 
-paragraphs
+des
+\begin_inset space ~
+\end_inset
+
+paragraphes 
 \family default
- displays a pilcrow (¶) at the end of every paragraph.
+affiche un pied-de-mouche ( ¶, 
+\emph on
+pilcrow
+\emph default
+ en anglais ) à la fin de chaque paragraphe.
 \end_layout
 
 \begin_layout Section
@@ -41331,7 +41327,7 @@ Alt+Q
  dans la partie courant du document.
  L'association pour la fontion
 \family sans
-command-alter
+ command-alter
 \family default
  en est un exemple.
 \end_layout
