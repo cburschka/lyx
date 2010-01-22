@@ -1001,7 +1001,7 @@ contributers = [
                  u"Keys-test module, bug fixing"),
  
       contributer(u"Caolán McNamara",
-                 "caolanm () redhat ! com>",
+                 "caolanm () redhat ! com",
                  "GPL",
                  "Statement for enchant integration",
                  "m=126389593805123",
