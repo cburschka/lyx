@@ -219,7 +219,11 @@ docstring const BibTeXInfo::getAbbreviatedAuthor() const
 			return docstring();
 
 		docstring authors;
-		split(opt, authors, '(');
+		docstring const remainder = trim(split(opt, authors, '('));
+		if (remainder.empty())
+			// in this case, we didn't find a "(", 
+			// so we don't have author (year)
+			return docstring();
 		return authors;
 	}
 
@@ -256,9 +260,12 @@ docstring const BibTeXInfo::getYear() const
 		return docstring();
 
 	docstring authors;
-	docstring const tmp = split(opt, authors, '(');
+	docstring tmp = split(opt, authors, '(');
+	if (tmp.empty()) 
+		// we don't have author (year)
+		return docstring();
 	docstring year;
-	split(tmp, year, ')');
+	tmp = split(tmp, year, ')');
 	return year;
 }
 
