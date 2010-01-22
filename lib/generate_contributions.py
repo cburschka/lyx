@@ -999,6 +999,14 @@ contributers = [
                  "m=124515770509946",
                  "15 June 2009",
                  u"Keys-test module, bug fixing"),
+ 
+      contributer(u"Caolán McNamara",
+                 "caolanm () redhat ! com>",
+                 "GPL",
+                 "Statement for enchant integration",
+                 "m=126389593805123",
+                 "19 January 2010",
+                 u"Support for the enchant spell checking library"),
 
      contributer(u"Tino Meinen",
                  "a.t.meinen () chello ! nl",
