@@ -4,7 +4,7 @@ include $(top_srcdir)/config/common.am
 
 DISTCLEANFILES += config.h libintl.h
 
-AM_CPPFLAGS += $(PCH_FLAGS) -I$(top_srcdir)/src $(BOOST_INCLUDES)
+AM_CPPFLAGS += $(PCH_FLAGS) -I$(top_srcdir)/src $(BOOST_INCLUDES) $(ENCHANT_CFLAGS)
 AM_CPPFLAGS += $(QT4_CPPFLAGS) $(QT4_CORE_INCLUDES)
 
 if BUILD_CLIENT_SUBDIR
@@ -21,7 +21,7 @@ EXTRA_DIST = Section.h \
 	pch.h
 
 OTHERLIBS = $(BOOST_LIBS) $(INTLLIBS) $(MYTHES_LIBS) $(AIKSAURUS_LIBS) \
-		@LIBS@ $(SOCKET_LIBS) $(LIBSHLWAPI) $(LIBPSAPI)
+		 $(ENCHANT_LIBS) @LIBS@ $(SOCKET_LIBS) $(LIBSHLWAPI) $(LIBPSAPI)
 
 noinst_LIBRARIES = liblyxcore.a
 bin_PROGRAMS = lyx
@@ -52,6 +52,10 @@ if USE_ASPELL
 ASPELL = AspellChecker.cpp AspellChecker.h
 endif
 
+if USE_ENCHANT
+ENCHANT = EnchantChecker.cpp EnchantChecker.h
+endif
+
 if USE_HUNSPELL
 HUNSPELL = HunspellChecker.cpp HunspellChecker.h
 endif
@@ -71,6 +75,7 @@ lyx_SOURCES = \
 	Compare.h \
 	Dimension.cpp \
 	Dimension.h \
+	$(ENCHANT) \
 	$(HUNSPELL) \
 	PrinterParams.cpp \
 	PrinterParams.h \

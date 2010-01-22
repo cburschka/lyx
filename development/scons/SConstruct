@@ -136,7 +136,7 @@ opts.AddVariables(
             ) ),
     #
     EnumVariable('spell', 'Choose spell checker to use.', 'auto',
-		allowed_values = ('aspell', 'hunspell', 'auto', 'no') ),
+		allowed_values = ('aspell', 'enchant', 'hunspell', 'auto', 'no') ),
     # packaging method
     EnumVariable('packaging', 'Packaging method to use.', default_packaging_method,
         allowed_values = ('windows', 'posix', 'macosx')),
@@ -810,8 +810,14 @@ else:
 # determine headers to use
 spell_opt = ARGUMENTS.get('spell', 'auto')
 env['USE_ASPELL'] = False
+env['USE_ENCHANT'] = False
+env['USE_HUNSPELL'] = False
 if spell_opt in ['auto', 'aspell'] and conf.CheckLib(aspell_lib):
     spell_engine = 'USE_ASPELL'
+elif spell_opt in ['auto', 'enchant'] and conf.CheckLib('enchant'):
+    spell_engine = 'USE_ENCHANT'
+elif spell_opt in ['auto', 'hunspell'] and conf.CheckLib('enchant'):
+    spell_engine = 'USE_HUNSPELL'
 else:
     spell_engine = None
 
@@ -1069,7 +1075,7 @@ char * strerror(int n);
 )
 
 # these keys are needed in env
-for key in ['USE_ASPELL', 'HAVE_FCNTL',\
+for key in ['USE_ASPELL', 'USE_ENCHANT', 'USE_HUNSPELL', 'HAVE_FCNTL',\
     'HAVE_LIBGDI32', 'HAVE_LIBAIKSAURUS', 'AIKSAURUS_LIB']:
     # USE_ASPELL etc does not go through result
     if result.has_key(key):
@@ -1227,6 +1233,8 @@ libs = [
     ('HAVE_LIBGDI32', 'gdi32'),
     ('HAVE_LIBAIKSAURUS', env['AIKSAURUS_LIB']),
     ('USE_ASPELL', aspell_lib),
+    ('USE_ENCHANT', 'enchant'),
+    ('USE_HUNSPELL', 'hunspell')
 ]
 
 for lib in libs:
@@ -1547,6 +1555,10 @@ Alias('tex2lyx', tex2lyx)
 #
 if env.has_key('USE_ASPELL') and env['USE_ASPELL']:
     src_post_files.append('AspellChecker.cpp')
+elif env.has_key('USE_ENCHANT') and env['USE_ENCHANT']:
+    src_post_files.append('EnchantChecker.cpp')
+elif env.has_key('USE_HUNSPELL') and env['USE_HUNSPELL']:
+    src_post_files.append('HunspellChecker.cpp')
 
 # tells scons how to get these moced files, although not all moced files are needed
 # (or are actually generated).

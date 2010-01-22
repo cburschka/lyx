@@ -25,6 +25,7 @@
 #include "ConverterCache.h"
 #include "Converter.h"
 #include "CutAndPaste.h"
+#include "EnchantChecker.h"
 #include "Encoding.h"
 #include "ErrorList.h"
 #include "Format.h"
@@ -122,7 +123,7 @@ void reconfigureUserLyXDir()
 /// The main application class private implementation.
 struct LyX::Impl
 {
-	Impl() : spell_checker_(0), aspell_checker_(0), hunspell_checker_(0)
+	Impl() : spell_checker_(0), aspell_checker_(0), enchant_checker_(0), hunspell_checker_(0)
 	{
 		// Set the default User Interface language as soon as possible.
 		// The language used will be derived from the environment
@@ -133,6 +134,7 @@ struct LyX::Impl
 	~Impl()
 	{
 		delete aspell_checker_;
+		delete enchant_checker_;
 		delete hunspell_checker_;
 	}
 
@@ -181,6 +183,8 @@ struct LyX::Impl
 	SpellChecker * spell_checker_;
 	///
 	SpellChecker * aspell_checker_;
+	///
+	SpellChecker * enchant_checker_;
 	///
 	SpellChecker * hunspell_checker_;
 };
@@ -1285,6 +1289,14 @@ void setSpellChecker()
 		if (!singleton_->pimpl_->aspell_checker_)
 			singleton_->pimpl_->aspell_checker_ = new AspellChecker();
 		singleton_->pimpl_->spell_checker_ = singleton_->pimpl_->aspell_checker_;
+		return;
+	}
+#endif
+#if defined(USE_ENCHANT)
+	if (lyxrc.spellchecker == "enchant") {
+		if (!singleton_->pimpl_->enchant_checker_)
+			singleton_->pimpl_->enchant_checker_ = new EnchantChecker();
+		singleton_->pimpl_->spell_checker_ = singleton_->pimpl_->enchant_checker_;
 		return;
 	}
 #endif

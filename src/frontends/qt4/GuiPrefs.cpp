@@ -1312,10 +1312,13 @@ PrefSpellchecker::PrefSpellchecker(GuiPreferences * form)
 	setupUi(this);
 
 #if defined(USE_ASPELL)
-	spellcheckerCB->addItem("aspell");
+	spellcheckerCB->addItem(qt_("aspell"), QString("aspell"));
+#endif
+#if defined(USE_ENCHANT)
+	spellcheckerCB->addItem(qt_("enchant"), QString("enchant"));
 #endif
 #if defined(USE_HUNSPELL)
-	spellcheckerCB->addItem("hunspell");
+	spellcheckerCB->addItem(qt_("hunspell"), QString("hunspell"));
 #endif
 
 	if (theSpellChecker()) {
@@ -1341,7 +1344,8 @@ PrefSpellchecker::PrefSpellchecker(GuiPreferences * form)
 
 void PrefSpellchecker::apply(LyXRC & rc) const
 {
-	rc.spellchecker = fromqstr(spellcheckerCB->currentText());
+	rc.spellchecker = fromqstr(spellcheckerCB->itemData(
+			spellcheckerCB->currentIndex()).toString());
 	rc.spellchecker_alt_lang = fromqstr(altLanguageED->text());
 	rc.spellchecker_esc_chars = fromqstr(escapeCharactersED->text());
 	rc.spellchecker_accept_compound = compoundWordCB->isChecked();
@@ -1351,8 +1355,8 @@ void PrefSpellchecker::apply(LyXRC & rc) const
 
 void PrefSpellchecker::update(LyXRC const & rc)
 {
-	spellcheckerCB->setCurrentIndex(spellcheckerCB->findText(
-		toqstr(rc.spellchecker)));
+	spellcheckerCB->setCurrentIndex(
+		spellcheckerCB->findData(toqstr(rc.spellchecker)));
 	altLanguageED->setText(toqstr(rc.spellchecker_alt_lang));
 	escapeCharactersED->setText(toqstr(rc.spellchecker_esc_chars));
 	compoundWordCB->setChecked(rc.spellchecker_accept_compound);

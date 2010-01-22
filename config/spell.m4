@@ -23,6 +23,26 @@ AC_DEFUN([CHECK_WITH_ASPELL],
 	fi
 	])
 
+# Macro to add for using enchant spellchecker libraries!     -*- sh -*-
+AC_DEFUN([CHECK_WITH_ENCHANT],
+[
+	lyx_use_enchant=true
+	AC_ARG_WITH(enchant, AC_HELP_STRING([--without-enchant],[do not check for Enchant library]))
+	test "$with_enchant" = "no" && lyx_use_enchant=false
+
+	if $lyx_use_enchant; then
+	PKG_CHECK_MODULES([ENCHANT], [enchant], [], [lyx_use_enchant=false])
+	AC_MSG_CHECKING([whether to use enchant])
+	if $lyx_use_enchant ; then
+	    AC_MSG_RESULT(yes)
+	    AC_DEFINE(USE_ENCHANT, 1, [Define as 1 to use the enchant library])
+	    lyx_flags="$lyx_flags use-enchant"
+	else
+	    AC_MSG_RESULT(no)
+	fi
+    fi
+    ])
+
 # Macro to add for using hunspell spellchecker libraries!     -*- sh -*-
 AC_DEFUN([CHECK_WITH_HUNSPELL],
 [
@@ -54,6 +74,11 @@ AC_DEFUN([LYX_CHECK_SPELL_ENGINES],
 	CHECK_WITH_ASPELL
 
 	AM_CONDITIONAL(USE_ASPELL, $lyx_use_aspell)
+
+	lyx_use_enchant=false
+	CHECK_WITH_ENCHANT
+
+	AM_CONDITIONAL(USE_ENCHANT, $lyx_use_enchant)
 
 	lyx_use_hunspell=false
 	CHECK_WITH_HUNSPELL

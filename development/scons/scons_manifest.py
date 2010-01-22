@@ -60,6 +60,7 @@ src_header_files = Split('''
     Dimension.h
     DispatchResult.h
     DocIterator.h
+    EnchantChecker.h
     Encoding.h
     ErrorList.h
     Exporter.h
@@ -251,6 +252,7 @@ src_post_files = Split('''
 
 src_extra_src_files = Split('''
     AspellChecker.cpp
+    EnchantChecker.cpp
     HunspellChecker.cpp
     main.cpp
     Section.cpp
