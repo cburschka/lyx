@@ -1,4 +1,4 @@
-#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.6svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -301,19 +301,15 @@ was
  ne sont pas installés, vous pouvez quand même exporter votre document,
  mais les sections où ces paquetages sont nécessaires ne seront pas visibles
  sur la sortie finale.
-
-\lang english
- If 
+ Si 
 \series bold
 mhchem
 \series default
- is not installed, this file cannot be exported.
+ n'est pas installé, on ne peut pas exporter ce fichier.
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
-The latest PDF-version of this document can be found here:
+On peut trouver la dernière version de ce document ici:
 \begin_inset Newline newline
 \end_inset
 
@@ -31768,12 +31764,8 @@ Na2SO4
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To create multiline chemical equations first a multiline formula is created
- as described in
-\lang french
- 
+Pour créer des équations chimiques multilignes, on crée d'abord une formule
+ multiligne comme cela est décrit dans 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Formules-multi-lignes"
@@ -31781,17 +31773,13 @@ reference "sec:Formules-multi-lignes"
 \end_inset
 
 .
- 
-\lang english
-Afterwards the command 
+ Ensuite on utilise la commande 
 \series bold
 
 \backslash
 ce
 \series default
- is used in every small blue box of the formula.
-
-\lang french
+ dans chaque petite boîte bleue de la formule.
  
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -31806,11 +31794,8 @@ reference "eq:TEOS-reaction-2"
 
 \end_inset
 
- sont un exemple 
-\lang english
-of a multi-stage chemical reaction where every equation has its own number.
-\lang french
-
+ sont un exemple d'une réaction chimique multi-étape où chaque équation
+ a son propre numéro.
 \begin_inset Formula \begin{eqnarray}
 \ce{TEOS + 4O} & \ce{->} & \ce{Si(OH)4 + 4C2H4O}\label{eq:TEOS-reaction-1}\\
 \ce{Si(OH)4} & \ce{->} & \ce{SiO2 + 2H2O}\label{eq:TEOS-reaction-2}\end{eqnarray}
@@ -36443,17 +36428,13 @@ cm on utilise le signe de la multiplication
 \end_inset
 
  .
- 
-\lang english
-It is available either via the command 
+ Il est accessible soit par la commande 
 \series bold
 
 \backslash
 times
 \series default
- or via
-\lang french
- le menu 
+ ou par le menu 
 \family sans
 Insérer\SpecialChar \menuseparator
 Caractère
@@ -36461,7 +36442,7 @@ Caractère
 \end_inset
 
 spécial\SpecialChar \menuseparator
-Symbole,
+Symboles,
 \family default
  mais il peut aussi être accessible directement sur certains claviers.
 \begin_inset Foot
@@ -36516,15 +36497,8 @@ L'opérateur 'd' de différentiation/intégration, la constante d'Euler 'e',
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-The character that denotes a 
-\noun on
-Fourier
-\noun default
- transformation is inserted either by the command
-\lang french
- 
+Le caractère qui représente une transmormation de Fourier peut être obtenu
+ soit avec la commande 
 \series bold
 
 \backslash
@@ -36557,47 +36531,28 @@ mathscr
 
 \end_inset
 
- 
-\lang english
-or via
-\lang french
- le menu
-\lang english
- 
+, soit avec le menu 
 \family sans
-\lang french
 Insérer\SpecialChar \menuseparator
 Caractère
 \begin_inset space ~
 \end_inset
 
 spécial\SpecialChar \menuseparator
-Symbole\SpecialChar \menuseparator
-
-\lang english
-Letterlike
-\begin_inset space ~
-\end_inset
-
-Symbols
+Symboles\SpecialChar \menuseparator
+Symboles de type lettre
 \family default
-: 
-\begin_inset Formula $\mathscr{F}$
-\end_inset
-
-
+:
 \begin_inset Newline newline
 \end_inset
 
-To be able to use the command 
+Pour pouvoir utiliser la commande 
 \series bold
 
 \backslash
 mathscr
 \series default
-, the LaTeX package
-\lang french
- 
+, on doit charger le paquetage LaTeX 
 \series bold
 mathrsfs
 \series default
@@ -36611,11 +36566,7 @@ Paquetages ! mathrsfs
 
 \end_inset
 
- 
-\lang english
-needs to be loaded with the LaTeX-preamble line
-\lang french
- 
+ avec la commande suivante dans le préambule LaTeX : 
 \series bold
 
 \backslash
