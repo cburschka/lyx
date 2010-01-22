@@ -23,12 +23,14 @@ file(GLOB lyx_sources ${TOP_SRC_DIR}/src/${LYX_CPP_FILES})
 file(GLOB lyx_headers ${TOP_SRC_DIR}/src/${LYX_HPP_FILES})
 
 list(REMOVE_ITEM lyx_sources
+	${TOP_SRC_DIR}/src/EnchantChecker.cpp
 	${TOP_SRC_DIR}/src/AspellChecker.cpp
 	${TOP_SRC_DIR}/src/HunspellChecker.cpp
 	${TOP_SRC_DIR}/src/Variables.cpp
 	${TOP_SRC_DIR}/src/Section.cpp)
 
 list(REMOVE_ITEM lyx_headers
+	${TOP_SRC_DIR}/src/EnchantChecker.h
 	${TOP_SRC_DIR}/src/AspellChecker.h
 	${TOP_SRC_DIR}/src/HunspellChecker.h
 	${TOP_SRC_DIR}/src/Variables.h
@@ -43,6 +45,12 @@ if (ASPELL_FOUND)
 	include_directories(${ASPELL_INCLUDE_DIR})
 	list(APPEND lyx_sources ${TOP_SRC_DIR}/src/AspellChecker.cpp)
 	list(APPEND lyx_headers ${TOP_SRC_DIR}/src/AspellChecker.h)
+endif()
+
+if (ENCHANT_FOUND)
+  include_directories("${ENCHANT_INCLUDE_DIR}")
+  list(APPEND lyx_sources ${TOP_SRC_DIR}/src/EnchantChecker.cpp)
+  list(APPEND lyx_headers ${TOP_SRC_DIR}/src/EnchantChecker.h)
 endif()
 
 lyx_automoc(${TOP_SRC_DIR}/src/Compare.cpp ${TOP_SRC_DIR}/src/Server.cpp)
@@ -90,6 +98,9 @@ if (HUNSPELL_FOUND)
 endif()
 if (ASPELL_FOUND)
 	target_link_libraries(${_lyx} ${ASPELL_LIBRARY})
+endif()
+if (ENCHANT_FOUND)
+    target_link_libraries(${_lyx} ${ENCHANT_LIBRARY})
 endif()
 
 if (APPLE)
