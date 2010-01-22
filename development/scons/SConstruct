@@ -816,7 +816,7 @@ if spell_opt in ['auto', 'aspell'] and conf.CheckLib(aspell_lib):
     spell_engine = 'USE_ASPELL'
 elif spell_opt in ['auto', 'enchant'] and conf.CheckLib('enchant'):
     spell_engine = 'USE_ENCHANT'
-elif spell_opt in ['auto', 'hunspell'] and conf.CheckLib('enchant'):
+elif spell_opt in ['auto', 'hunspell'] and conf.CheckLib('hunspell'):
     spell_engine = 'USE_HUNSPELL'
 else:
     spell_engine = None
