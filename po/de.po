@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-01-14 19:02+0100\n"
-"PO-Revision-Date: 2010-01-22 17:31+0100\n"
+"PO-Revision-Date: 2010-01-22 18:39+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -1164,7 +1164,7 @@ msgstr "&Altes Dokument:"
 #: src/frontends/qt4/ui/CompareUi.ui:101
 #: src/frontends/qt4/ui/PrefUi.ui:248
 msgid "Bro&wse..."
-msgstr "&Durchsuchen..."
+msgstr "Du&rchsuchen..."
 
 #: src/frontends/qt4/ui/CompareUi.ui:119
 msgid "Options"
@@ -1172,11 +1172,11 @@ msgstr "Optionen"
 
 #: src/frontends/qt4/ui/CompareUi.ui:131
 msgid "New Document"
-msgstr "Neues Dokument"
+msgstr "Neuem Dokument"
 
 #: src/frontends/qt4/ui/CompareUi.ui:144
 msgid "Old Document"
-msgstr "Altes Dokument"
+msgstr "Altem Dokument"
 
 #: src/frontends/qt4/ui/CompareUi.ui:163
 msgid "Copy Document Settings from:"
@@ -2484,12 +2484,11 @@ msgstr "Nur ausge&wählte Unterdokumente einbinden"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:50
 msgid "Assure counters and references are as in the complete document (prolonges compilation)"
-msgstr ""
+msgstr "Sicherstellen, dass alle Zähler und Querverweise des Hauptdokuments erhalten bleiben (verlängert Ausgabezeit)"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:53
-#, fuzzy
 msgid "&Maintain counters and references"
-msgstr "alle nicht zitierten Literatureinträge"
+msgstr "&Zähler und Querverweise wahren"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:63
 msgid "Include all included subdocuments in the output"
@@ -4050,56 +4049,48 @@ msgid "Settings"
 msgstr "Einstellungen"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:145
-#, fuzzy
 msgid "Select the debug messages that should be displayed"
-msgstr "Wählen Sie den Index, zu dem dieser Eintrag hinzugefügt werden soll."
+msgstr "Wählen Sie die Fehlermeldungen, die angezeigt werden sollen"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:173
 msgid "Automatic cleanup of the window before LaTeX compilation proceeds"
-msgstr ""
+msgstr "Das Fenster automatisch aufräumen, bevor die LaTeX-Ausgabe fortgesetzt wird"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:176
-#, fuzzy
 msgid "&Clear automatically"
-msgstr "automatisch"
+msgstr "Au&tomatisch aufräumen"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:191
-#, fuzzy
 msgid "Debug messages"
-msgstr "Keine Testmeldungen"
+msgstr "Testmeldungen"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:203
-#, fuzzy
 msgid "Display no debug messages"
-msgstr "Keine Testmeldungen"
+msgstr "Keine Testmeldungen anzeigen"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:206
-#, fuzzy
 msgid "&None"
-msgstr "Keine"
+msgstr "&Keine"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:213
 msgid "Display the debug messages selected to the right"
-msgstr ""
+msgstr "Die rechts ausgewählten Testmeldungen anzeigen"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:216
 msgid "S&elected"
-msgstr "Ausg&ewählt"
+msgstr "Ausg&ewählte"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:223
-#, fuzzy
 msgid "Display all debug messages"
-msgstr "Alle Testmeldungen"
+msgstr "Alle Testmeldungen anzeigen"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:236
-#, fuzzy
 msgid "Display statusbar messages?"
-msgstr "Meldungen von Insettext/tabular"
+msgstr "Statusmeldungen anzeigen?"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:239
-#, fuzzy
 msgid "&Statusbar messages"
-msgstr "Meldungen von Insettext/tabular"
+msgstr "&Statusmeldungen"
 
 #: src/frontends/qt4/ui/RefUi.ui:22
 msgid "La&bels in:"
@@ -13596,7 +13587,7 @@ msgstr "Mathe-Makro zuklappen|z"
 
 #: lib/ui/stdmenus.inc:312
 msgid "View Messages|g"
-msgstr ""
+msgstr "Meldungen anzeigen|e"
 
 #: lib/ui/stdmenus.inc:313
 msgid "View Source|S"
@@ -19478,7 +19469,6 @@ msgid "Error: Could not generate logfile."
 msgstr "Fehler: Kann Logdatei nicht erstellen!"
 
 #: src/VCBackend.cpp:601
-#, fuzzy
 msgid ""
 "Error when committing to repository.\n"
 "You have to manually resolve the problem.\n"
@@ -22330,12 +22320,12 @@ msgstr "Andere Formate aktualisieren|n"
 #: src/frontends/qt4/Menus.cpp:895
 #, c-format
 msgid "View [%1$s]|V"
-msgstr "[%1$s] ansehen|h"
+msgstr "Ansehen [%1$s]|h"
 
 #: src/frontends/qt4/Menus.cpp:896
 #, c-format
 msgid "Update [%1$s]|U"
-msgstr "[%1$s] aktualisieren|u"
+msgstr "Aktualisieren [%1$s]|u"
 
 #: src/frontends/qt4/Menus.cpp:989
 msgid "No Custom Insets Defined!"
@@ -22747,9 +22737,8 @@ msgid "Verbatim Input*"
 msgstr "Unformatiert*"
 
 #: src/insets/InsetInclude.cpp:375
-#, fuzzy
 msgid "Include (excluded)"
-msgstr "Datei einbinden"
+msgstr "Include (ausgeschlossen)"
 
 #: src/insets/InsetInclude.cpp:476
 #: src/insets/InsetInclude.cpp:698
