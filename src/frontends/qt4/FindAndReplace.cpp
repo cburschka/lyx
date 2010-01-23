@@ -274,28 +274,30 @@ static bool next_prev_buffer(Buffer * & buf, FindAndReplaceOptions const & opt) 
 /** Find the finest question message to post to the user */
 docstring question_string(FindAndReplaceOptions const & opt)
 {
-	docstring cur_pos = opt.forward ? _("End") : _("Begin");
-	docstring new_pos = opt.forward ? _("begin") : _("end");
 	docstring scope;
 	switch (opt.scope) {
 	case FindAndReplaceOptions::S_BUFFER:
-		scope = _("file");
+		scope = _("file[[scope]]");
 		break;
 	case FindAndReplaceOptions::S_DOCUMENT:
-		scope = _("master document");
+		scope = _("master document[[scope]]");
 		break;
 	case FindAndReplaceOptions::S_OPEN_BUFFERS:
-		scope = _("open files");
+		scope = _("open files[[scope]]");
 		break;
 	case FindAndReplaceOptions::S_ALL_MANUALS:
-		scope = _("manuals");
+		scope = _("manuals[[scope]]");
 		break;
 	}
-	docstring dir = opt.forward ? _("forward") : _("backwards");
+	docstring message = opt.forward ?
+		bformat(_("End of %1$s reached while searching forward.\n"
+			  "Continue searching from begin?"),
+			scope) : 
+		bformat(_("Beginning of %1$s reached while searching backwards.\n"
+			  "Continue searching from end?"),
+			scope);
 
-	return bformat(_("%1$s of %2$s reached while searching %3$s.\n\n"
-			  "Continue searching from %4$s?"),
-		      cur_pos, scope, dir, new_pos);
+	return message;
 }
 
 
