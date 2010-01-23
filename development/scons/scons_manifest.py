@@ -1593,6 +1593,7 @@ lib_images_math_files = Split('''
     diagdown.png
     diagup.png
     diamond.png
+    diamond2.png
     diamondsuit.png
     digamma.png
     div.png

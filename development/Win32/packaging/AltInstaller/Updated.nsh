@@ -59,7 +59,7 @@ Function UpdateModifiedFiles
  SetOutPath "$INSTDIR\Resources\examples\sk"
  File "${PRODUCT_SOURCEDIR}\Resources\examples\sk\splash.lyx"
  SetOutPath "$INSTDIR\Resources\images"
- #File "${PRODUCT_SOURCEDIR}\Resources\images\vc-repo-update.png"
+ File "${PRODUCT_SOURCEDIR}\Resources\images\math\diamond2.png"
  SetOutPath "$INSTDIR\Resources\layouts"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\dinbrief.layout"
  File "${PRODUCT_SOURCEDIR}\Resources\layouts\g-brief-de.layout"
