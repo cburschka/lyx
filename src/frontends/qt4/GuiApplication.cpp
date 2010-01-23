@@ -215,6 +215,7 @@ PngMap sorted_png_map[] = {
 	{ "Cap", "cap2" },
 	{ "Cup", "cup2" },
 	{ "Delta", "delta2" },
+	{ "Diamond", "diamond2" },
 	{ "Downarrow", "downarrow2" },
 	{ "Gamma", "gamma2" },
 	{ "Lambda", "lambda2" },
