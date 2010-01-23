@@ -804,8 +804,19 @@ docstring const LaTeXFeatures::getMacros() const
 	if (mustProvide("lyxarrow"))
 		macros << lyxarrow_def << '\n';
 
-	if (mustProvide("textgreek"))
-		macros << textgreek_def << '\n';
+	if (mustProvide("textgreek")) {
+		// Avoid a LaTeX error if times fonts are used and the grtimes
+		// package is installed but actual fonts are not (bug 6469).
+		if (params_.fontsRoman == "times")
+			macros << subst(textgreek_def,
+					from_ascii("\\greektext #1"),
+					from_ascii("%\n  \\IfFileExists"
+						   "{grtm10.tfm}{}{\\fontfamily"
+						   "{cmr}}\\greektext #1"))
+			       << '\n';
+		else
+			macros << textgreek_def << '\n';
+	}
 
 	if (mustProvide("textcyr"))
 		macros << textcyr_def << '\n';
