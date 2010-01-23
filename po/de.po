@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-01-23 10:24+0100\n"
-"PO-Revision-Date: 2010-01-22 18:53+0100\n"
+"PO-Revision-Date: 2010-01-23 10:38+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -4241,18 +4241,16 @@ msgid "&Find Next"
 msgstr "&Nächstes suchen"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:53
-#, fuzzy
 msgid "Re&placement:"
-msgstr "Ersetzung:"
+msgstr "E&rsetzung:"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:74
 msgid "Replace with selected word"
 msgstr "Ersetze durch das ausgewählte Wort"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:103
-#, fuzzy
 msgid "S&uggestions:"
-msgstr "Vorschläge:"
+msgstr "&Vorschläge:"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:126
 msgid "Ignore this word"
@@ -9385,25 +9383,21 @@ msgid "\\Roman{part}"
 msgstr "\\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:10
-#, fuzzy
 msgid "Part \\Roman{part}"
-msgstr "\\Roman{part}"
+msgstr "Teil \\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:14
-#, fuzzy
 msgid "Chapter ##"
-msgstr "Kapitel"
+msgstr "Kapitel ##"
 
 #: lib/layouts/stdcounters.inc:19 lib/layouts/stdcounters.inc:24
 #: lib/layouts/stdcounters.inc:29
-#, fuzzy
 msgid "Section ##"
-msgstr "Abschnitt"
+msgstr "Abschnitt ##"
 
 #: lib/layouts/stdcounters.inc:34 lib/layouts/stdcounters.inc:39
-#, fuzzy
 msgid "Paragraph ##"
-msgstr "Paragraph"
+msgstr "Paragraph ##"
 
 #: lib/layouts/stdcounters.inc:43
 msgid "\\arabic{enumi}."
@@ -9418,14 +9412,12 @@ msgid "\\Alph{enumiv}."
 msgstr "\\Alph{enumiv}."
 
 #: lib/layouts/stdcounters.inc:68
-#, fuzzy
 msgid "Equation ##"
-msgstr "Gleichung"
+msgstr "Gleichung ##"
 
 #: lib/layouts/stdcounters.inc:72
-#, fuzzy
 msgid "Footnote ##"
-msgstr "Fußnote"
+msgstr "Fußnote ##"
 
 #: lib/layouts/stdinsets.inc:60
 msgid "Marginal"
@@ -18923,41 +18915,36 @@ msgstr "Verzeichnisse"
 
 #: src/frontends/qt4/FindAndReplace.cpp:280
 msgid "file[[scope]]"
-msgstr ""
+msgstr "der Datei"
 
 #: src/frontends/qt4/FindAndReplace.cpp:283
-#, fuzzy
 msgid "master document[[scope]]"
-msgstr "Hauptdokument"
+msgstr "des Hauptdokuments"
 
 #: src/frontends/qt4/FindAndReplace.cpp:286
-#, fuzzy
 msgid "open files[[scope]]"
-msgstr "Vergleiche LyX-Dateien"
+msgstr "der geöffneten Dateien"
 
 #: src/frontends/qt4/FindAndReplace.cpp:289
-#, fuzzy
 msgid "manuals[[scope]]"
-msgstr "Handbücher"
+msgstr "der Handbücher"
 
 #: src/frontends/qt4/FindAndReplace.cpp:293
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "End of %1$s reached while searching forward.\n"
 "Continue searching from begin?"
 msgstr ""
-"Dokumentende bei der Vorwärtssuche erreicht\n"
-"\n"
+"Ende %1$s bei der Vorwärtssuche erreicht\n"
 "Suche am Anfang fortsetzen?"
 
 #: src/frontends/qt4/FindAndReplace.cpp:296
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Beginning of %1$s reached while searching backwards.\n"
 "Continue searching from end?"
 msgstr ""
-"Dokumentanfang bei der Rückwärtssuche erreicht\n"
-"\n"
+"Anfang %1$s bei der Rückwärtssuche erreicht.\n"
 "Suche am Ende fortsetzen?"
 
 #: src/frontends/qt4/FindAndReplace.cpp:348
@@ -20485,14 +20472,12 @@ msgid "aspell"
 msgstr "aspell"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1318
-#, fuzzy
 msgid "enchant"
-msgstr "Zeichnung"
+msgstr "enchant"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1321
-#, fuzzy
 msgid "hunspell"
-msgstr "hspell"
+msgstr "hunspell"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1376
 msgid "Converters"
@@ -20664,19 +20649,16 @@ msgid "<All indexes>"
 msgstr "<Alle Indexe>"
 
 #: src/frontends/qt4/GuiProgressView.cpp:52
-#, fuzzy
 msgid "Progress/Debug Messages"
-msgstr "Testmeldungen"
+msgstr "Fortschritts-/Testmeldungen"
 
 #: src/frontends/qt4/GuiProgressView.cpp:81
-#, fuzzy
 msgid "Debug Level"
-msgstr "Testmeldungen"
+msgstr "Testebene"
 
 #: src/frontends/qt4/GuiProgressView.cpp:82
-#, fuzzy
 msgid "Set"
-msgstr "&Festlegen"
+msgstr "Aktiv"
 
 #: src/frontends/qt4/GuiRef.cpp:43
 msgid "Cross-reference"
@@ -21535,14 +21517,12 @@ msgid "More Spelling Suggestions"
 msgstr "Weitere Rechtschreibvorschläge"
 
 #: src/frontends/qt4/Menus.cpp:749
-#, fuzzy
 msgid "Add to personal dictionary|c"
-msgstr "Wählen Sie ein persönliches Wörterbuch"
+msgstr "Ins persönliche Wörterbuch|W"
 
 #: src/frontends/qt4/Menus.cpp:751
-#, fuzzy
 msgid "Ignore all|I"
-msgstr "&Alle ignorieren"
+msgstr "Alle ignorieren|i"
 
 #: src/frontends/qt4/Menus.cpp:780 src/frontends/qt4/Menus.cpp:781
 msgid "Invisible"
@@ -22358,9 +22338,8 @@ msgid "vphantom"
 msgstr "vphantom"
 
 #: src/insets/InsetRef.cpp:137
-#, fuzzy
 msgid "elsewhere"
-msgstr "Mormonen-Alphabet"
+msgstr "woanders"
 
 #: src/insets/InsetRef.cpp:192
 msgid "BROKEN: "
