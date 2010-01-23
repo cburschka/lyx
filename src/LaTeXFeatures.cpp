@@ -200,7 +200,8 @@ static docstring const textgreek_def = from_ascii(
 	"  \\fontencoding{LGR}\\selectfont\\def\\encodingdefault{LGR}%\n"
 	"  \\renewcommand{\\~}{\\perispomeni}%\n"
 	"}}\n"
-	"\\DeclareRobustCommand{\\textgreek}[1]{\\leavevmode{\\greektext #1}}\n"
+	"\\DeclareRobustCommand{\\textgreek}[1]{\\leavevmode{%\n"
+	"  \\IfFileExists{grtm10.tfm}{}{\\fontfamily{cmr}}\\greektext #1}}\n"
 	"\\DeclareFontEncoding{LGR}{}{}\n");
 
 static docstring const textcyr_def = from_ascii(
