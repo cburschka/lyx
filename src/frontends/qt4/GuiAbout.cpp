@@ -12,6 +12,8 @@
 
 #include "GuiAbout.h"
 
+#include "ui_AboutUi.h"
+
 #include "qt_helpers.h"
 #include "version.h"
 
@@ -126,21 +128,32 @@ static QString version()
 }
 
 
-GuiAbout::GuiAbout(GuiView & lv)
-	: GuiDialog(lv, "aboutlyx", qt_("About LyX"))
+struct GuiAbout::Private
 {
-	setupUi(this);
+	Ui::AboutUi ui;
+};
 
-	connect(closePB, SIGNAL(clicked()), this, SLOT(reject()));
 
-	copyrightTB->setPlainText(copyright());
-	copyrightTB->append(QString());
-	copyrightTB->append(license());
-	copyrightTB->append(QString());
-	copyrightTB->append(disclaimer());
+GuiAbout::GuiAbout(GuiView & lv)
+	: DialogView(lv, "aboutlyx", qt_("About LyX")),
+	d(new GuiAbout::Private)
+{
+	d->ui.setupUi(this);
 
-	versionLA->setText(version());
-	creditsTB->setHtml(credits());
+	d->ui.copyrightTB->setPlainText(copyright());
+	d->ui.copyrightTB->append(QString());
+	d->ui.copyrightTB->append(license());
+	d->ui.copyrightTB->append(QString());
+	d->ui.copyrightTB->append(disclaimer());
+
+	d->ui.versionLA->setText(version());
+	d->ui.creditsTB->setHtml(credits());
+}
+
+
+void GuiAbout::on_closePB_clicked()
+{
+	close();
 }
 
 
