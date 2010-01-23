@@ -106,6 +106,9 @@ What's new
 
 - Fixed detection of "Author (Year)" references when not using BibTeX.
 
+- Quit LyX when shutting down Windows in order to not interrupt the
+  shutdown sequence (bug 5525).
+
 
 * USER INTERFACE
 

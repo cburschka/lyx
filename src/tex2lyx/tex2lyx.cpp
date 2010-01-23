@@ -42,7 +42,7 @@ using namespace lyx::support::os;
 namespace lyx {
 
 // Keep the linker happy on Windows
-void emergencyCleanup()
+void lyx_exit(int)
 {}
 
 
