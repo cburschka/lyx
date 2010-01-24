@@ -2978,11 +2978,9 @@ void LyXAction::init()
 		{ LFUN_BUFFER_RELOAD, "buffer-reload", ReadOnly, Buffer },
 /*!
  * \var lyx::FuncCode lyx::LFUN_BUFFER_SWITCH
- * \li Action: Switch to the given buffer.
- * \li Notion: This is useful also in case you need simultaneously more views of the edited
-               document in different LyX windows.
- * \li Syntax: buffer-new-template <BUFFER>
- * \li Params: <BUFFER>: already opened document which is to be shown.
+ * \li Action: Display/switch to the given buffer.
+ * \li Syntax: buffer-switch <BUFFER>
+ * \li Params: <BUFFER>: already opened (but possibly hidden) document which is to be shown.
  * \endvar
  */
 		{ LFUN_BUFFER_SWITCH, "buffer-switch", NoBuffer | ReadOnly, Buffer },
