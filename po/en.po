@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-01-17 11:55+0100\n"
+"POT-Creation-Date: 2010-01-24 11:16+0100\n"
 "PO-Revision-Date: 2008-08-04 17:40+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -500,7 +500,7 @@ msgstr ""
 #: src/frontends/qt4/GuiDocument.cpp:1221
 #: src/frontends/qt4/GuiDocument.cpp:2281 src/frontends/qt4/GuiExternal.cpp:75
 #: src/frontends/qt4/GuiGraphics.cpp:71 src/frontends/qt4/GuiListings.cpp:152
-#: src/frontends/qt4/GuiListings.cpp:159 src/frontends/qt4/GuiPrefs.cpp:1801
+#: src/frontends/qt4/GuiListings.cpp:159 src/frontends/qt4/GuiPrefs.cpp:1805
 msgid "Default"
 msgstr ""
 
@@ -626,7 +626,7 @@ msgstr ""
 #: src/frontends/qt4/ui/CharacterUi.ui:145
 #: src/frontends/qt4/ui/ListingsUi.ui:339 lib/layouts/europecv.layout:118
 #: lib/layouts/moderncv.layout:114 src/frontends/qt4/GuiDocument.cpp:987
-#: src/frontends/qt4/GuiPrefs.cpp:1759
+#: src/frontends/qt4/GuiPrefs.cpp:1763
 msgid "Language"
 msgstr ""
 
@@ -2147,7 +2147,7 @@ msgstr ""
 msgid "Line &spacing"
 msgstr ""
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1419
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1422
 #: src/frontends/qt4/GuiDocument.cpp:572
 msgid "Single"
 msgstr ""
@@ -2156,7 +2156,7 @@ msgstr ""
 msgid "1.5"
 msgstr ""
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1425
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1428
 #: src/frontends/qt4/GuiDocument.cpp:576
 msgid "Double"
 msgstr ""
@@ -2322,7 +2322,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:209
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:61
-#: src/frontends/qt4/GuiPrefs.cpp:2375 src/frontends/qt4/GuiPrefs.cpp:2439
+#: src/frontends/qt4/GuiPrefs.cpp:2379 src/frontends/qt4/GuiPrefs.cpp:2443
 msgid "Remo&ve"
 msgstr ""
 
@@ -9395,10 +9395,6 @@ msgstr ""
 msgid "Galician"
 msgstr ""
 
-#: lib/languages:42
-msgid "German (old spelling)"
-msgstr ""
-
 #: lib/languages:43
 msgid "German"
 msgstr ""
@@ -14720,33 +14716,33 @@ msgstr ""
 msgid "HTML (MS Word)"
 msgstr ""
 
-#: src/BiblioInfo.cpp:239 src/frontends/qt4/GuiDocument.cpp:1382
+#: src/BiblioInfo.cpp:243 src/frontends/qt4/GuiDocument.cpp:1382
 #, c-format
 msgid "%1$s and %2$s"
 msgstr ""
 
-#: src/BiblioInfo.cpp:243
+#: src/BiblioInfo.cpp:247
 #, c-format
 msgid "%1$s et al."
 msgstr ""
 
-#: src/BiblioInfo.cpp:300
+#: src/BiblioInfo.cpp:307
 msgid "Ch. "
 msgstr ""
 
-#: src/BiblioInfo.cpp:302
+#: src/BiblioInfo.cpp:309
 msgid "pp. "
 msgstr ""
 
-#: src/BiblioInfo.cpp:441 src/BiblioInfo.cpp:444
+#: src/BiblioInfo.cpp:448 src/BiblioInfo.cpp:451
 msgid "No year"
 msgstr ""
 
-#: src/BiblioInfo.cpp:503 src/BiblioInfo.cpp:563
+#: src/BiblioInfo.cpp:510 src/BiblioInfo.cpp:570
 msgid "Add to bibliography only."
 msgstr ""
 
-#: src/BiblioInfo.cpp:559
+#: src/BiblioInfo.cpp:566
 msgid "before"
 msgstr ""
 
@@ -15237,77 +15233,77 @@ msgstr ""
 msgid "String not found!"
 msgstr ""
 
-#: src/BufferView.cpp:1287
+#: src/BufferView.cpp:1288
 msgid "Mark off"
 msgstr ""
 
-#: src/BufferView.cpp:1294
+#: src/BufferView.cpp:1295
 msgid "Mark on"
 msgstr ""
 
-#: src/BufferView.cpp:1301
+#: src/BufferView.cpp:1302
 msgid "Mark removed"
 msgstr ""
 
-#: src/BufferView.cpp:1304
+#: src/BufferView.cpp:1305
 msgid "Mark set"
 msgstr ""
 
-#: src/BufferView.cpp:1355
+#: src/BufferView.cpp:1356
 msgid "Statistics for the selection:"
 msgstr ""
 
-#: src/BufferView.cpp:1357
+#: src/BufferView.cpp:1358
 msgid "Statistics for the document:"
 msgstr ""
 
-#: src/BufferView.cpp:1360
+#: src/BufferView.cpp:1361
 #, c-format
 msgid "%1$d words"
 msgstr ""
 
-#: src/BufferView.cpp:1362
+#: src/BufferView.cpp:1363
 msgid "One word"
 msgstr ""
 
-#: src/BufferView.cpp:1365
+#: src/BufferView.cpp:1366
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1368
+#: src/BufferView.cpp:1369
 msgid "One character (including blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1371
+#: src/BufferView.cpp:1372
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1374
+#: src/BufferView.cpp:1375
 msgid "One character (excluding blanks)"
 msgstr ""
 
-#: src/BufferView.cpp:1376
+#: src/BufferView.cpp:1377
 msgid "Statistics"
 msgstr ""
 
-#: src/BufferView.cpp:2173
+#: src/BufferView.cpp:2174
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr ""
 
-#: src/BufferView.cpp:2184
+#: src/BufferView.cpp:2185
 #, c-format
 msgid "Document %1$s inserted."
 msgstr ""
 
-#: src/BufferView.cpp:2186
+#: src/BufferView.cpp:2187
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr ""
 
-#: src/BufferView.cpp:2448
+#: src/BufferView.cpp:2449
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15315,26 +15311,26 @@ msgid ""
 "due to the error: %2$s"
 msgstr ""
 
-#: src/BufferView.cpp:2450
+#: src/BufferView.cpp:2451
 msgid "Could not read file"
 msgstr ""
 
-#: src/BufferView.cpp:2457
+#: src/BufferView.cpp:2458
 #, c-format
 msgid ""
 "%1$s\n"
 " is not readable."
 msgstr ""
 
-#: src/BufferView.cpp:2458 src/output.cpp:39
+#: src/BufferView.cpp:2459 src/output.cpp:39
 msgid "Could not open file"
 msgstr ""
 
-#: src/BufferView.cpp:2465
+#: src/BufferView.cpp:2466
 msgid "Reading not UTF-8 encoded file"
 msgstr ""
 
-#: src/BufferView.cpp:2466
+#: src/BufferView.cpp:2467
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -16924,61 +16920,61 @@ msgstr ""
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 
-#: src/Text.cpp:1385
+#: src/Text.cpp:1388
 msgid "[Change Tracking] "
 msgstr ""
 
-#: src/Text.cpp:1391
+#: src/Text.cpp:1394
 msgid "Change: "
 msgstr ""
 
-#: src/Text.cpp:1395
+#: src/Text.cpp:1398
 msgid " at "
 msgstr ""
 
-#: src/Text.cpp:1405
+#: src/Text.cpp:1408
 #, c-format
 msgid "Font: %1$s"
 msgstr ""
 
-#: src/Text.cpp:1410
+#: src/Text.cpp:1413
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ""
 
-#: src/Text.cpp:1416
+#: src/Text.cpp:1419
 msgid ", Spacing: "
 msgstr ""
 
-#: src/Text.cpp:1422 src/frontends/qt4/GuiDocument.cpp:574
+#: src/Text.cpp:1425 src/frontends/qt4/GuiDocument.cpp:574
 msgid "OneHalf"
 msgstr ""
 
-#: src/Text.cpp:1428
+#: src/Text.cpp:1431
 msgid "Other ("
 msgstr ""
 
-#: src/Text.cpp:1437
+#: src/Text.cpp:1440
 msgid ", Inset: "
 msgstr ""
 
-#: src/Text.cpp:1438
+#: src/Text.cpp:1441
 msgid ", Paragraph: "
 msgstr ""
 
-#: src/Text.cpp:1439
+#: src/Text.cpp:1442
 msgid ", Id: "
 msgstr ""
 
-#: src/Text.cpp:1440
+#: src/Text.cpp:1443
 msgid ", Position: "
 msgstr ""
 
-#: src/Text.cpp:1446
+#: src/Text.cpp:1449
 msgid ", Char: 0x"
 msgstr ""
 
-#: src/Text.cpp:1448
+#: src/Text.cpp:1451
 msgid ", Boundary: "
 msgstr ""
 
@@ -17325,41 +17321,41 @@ msgstr ""
 msgid "LyX: %1$s"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:440
+#: src/frontends/qt4/GuiApplication.cpp:441
 msgid "About %1"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:440
-#: src/frontends/qt4/GuiPrefs.cpp:2644
+#: src/frontends/qt4/GuiApplication.cpp:441
+#: src/frontends/qt4/GuiPrefs.cpp:2648
 msgid "Preferences"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:441
+#: src/frontends/qt4/GuiApplication.cpp:442
 msgid "Reconfigure"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:441
+#: src/frontends/qt4/GuiApplication.cpp:442
 msgid "Quit %1"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:838
+#: src/frontends/qt4/GuiApplication.cpp:839
 msgid "Exiting."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:905
+#: src/frontends/qt4/GuiApplication.cpp:906
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:921
+#: src/frontends/qt4/GuiApplication.cpp:922
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1308
+#: src/frontends/qt4/GuiApplication.cpp:1309
 msgid "The current document was closed."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1318
+#: src/frontends/qt4/GuiApplication.cpp:1319
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -17367,23 +17363,23 @@ msgid ""
 "Exception: "
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1322
-#: src/frontends/qt4/GuiApplication.cpp:1328
+#: src/frontends/qt4/GuiApplication.cpp:1323
+#: src/frontends/qt4/GuiApplication.cpp:1329
 msgid "Software exception Detected"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1326
+#: src/frontends/qt4/GuiApplication.cpp:1327
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1488
-#: src/frontends/qt4/GuiApplication.cpp:1493
+#: src/frontends/qt4/GuiApplication.cpp:1489
+#: src/frontends/qt4/GuiApplication.cpp:1494
 msgid "Could not find UI definition file"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1489
+#: src/frontends/qt4/GuiApplication.cpp:1490
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -17391,7 +17387,7 @@ msgid ""
 "Please check your installation."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1494
+#: src/frontends/qt4/GuiApplication.cpp:1495
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -17401,11 +17397,11 @@ msgid ""
 "check which user interface file you are using."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1502
+#: src/frontends/qt4/GuiApplication.cpp:1503
 msgid "Could not find default UI file"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1503
+#: src/frontends/qt4/GuiApplication.cpp:1504
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -18478,7 +18474,7 @@ msgid "Give a filename for the LyX server pipe"
 msgstr ""
 
 #: src/frontends/qt4/GuiPrefs.cpp:1126
-#: src/frontends/qt4/GuiSpellchecker.cpp:57
+#: src/frontends/qt4/GuiSpellchecker.cpp:60
 msgid "Spellchecker"
 msgstr ""
 
@@ -18495,109 +18491,113 @@ msgid "hspell"
 msgstr ""
 
 #: src/frontends/qt4/GuiPrefs.cpp:1152
-msgid "pspell (library)"
+msgid "enchant"
 msgstr ""
 
 #: src/frontends/qt4/GuiPrefs.cpp:1155
+msgid "pspell (library)"
+msgstr ""
+
+#: src/frontends/qt4/GuiPrefs.cpp:1158
 msgid "aspell (library)"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:1235
+#: src/frontends/qt4/GuiPrefs.cpp:1239
 msgid "Converters"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:1540
+#: src/frontends/qt4/GuiPrefs.cpp:1544
 msgid "File formats"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:1738
+#: src/frontends/qt4/GuiPrefs.cpp:1742
 msgid "Format in use"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:1739
+#: src/frontends/qt4/GuiPrefs.cpp:1743
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:1813
+#: src/frontends/qt4/GuiPrefs.cpp:1817
 msgid "LyX needs to be restarted!"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:1814
+#: src/frontends/qt4/GuiPrefs.cpp:1818
 msgid ""
 "The change of user interface language will be fully effective only after a "
 "restart."
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:1872
+#: src/frontends/qt4/GuiPrefs.cpp:1876
 msgid "Printer"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:1970 src/frontends/qt4/GuiPrefs.cpp:2684
+#: src/frontends/qt4/GuiPrefs.cpp:1974 src/frontends/qt4/GuiPrefs.cpp:2688
 msgid "User interface"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2071
+#: src/frontends/qt4/GuiPrefs.cpp:2075
 msgid "Control"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2143
+#: src/frontends/qt4/GuiPrefs.cpp:2147
 msgid "Shortcuts"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2148
+#: src/frontends/qt4/GuiPrefs.cpp:2152
 msgid "Function"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2149
+#: src/frontends/qt4/GuiPrefs.cpp:2153
 msgid "Shortcut"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2230
+#: src/frontends/qt4/GuiPrefs.cpp:2234
 msgid "Cursor, Mouse and Editing functions"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2234
+#: src/frontends/qt4/GuiPrefs.cpp:2238
 msgid "Mathematical Symbols"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2238
+#: src/frontends/qt4/GuiPrefs.cpp:2242
 msgid "Document and Window"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2242
+#: src/frontends/qt4/GuiPrefs.cpp:2246
 msgid "Font, Layouts and Textclasses"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2246
+#: src/frontends/qt4/GuiPrefs.cpp:2250
 msgid "System and Miscellaneous"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2373 src/frontends/qt4/GuiPrefs.cpp:2419
+#: src/frontends/qt4/GuiPrefs.cpp:2377 src/frontends/qt4/GuiPrefs.cpp:2423
 msgid "Res&tore"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2529 src/frontends/qt4/GuiPrefs.cpp:2536
-#: src/frontends/qt4/GuiPrefs.cpp:2547 src/frontends/qt4/GuiPrefs.cpp:2560
-#: src/frontends/qt4/GuiPrefs.cpp:2579
+#: src/frontends/qt4/GuiPrefs.cpp:2533 src/frontends/qt4/GuiPrefs.cpp:2540
+#: src/frontends/qt4/GuiPrefs.cpp:2551 src/frontends/qt4/GuiPrefs.cpp:2564
+#: src/frontends/qt4/GuiPrefs.cpp:2583
 msgid "Failed to create shortcut"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2530
+#: src/frontends/qt4/GuiPrefs.cpp:2534
 msgid "Unknown or invalid LyX function"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2537
+#: src/frontends/qt4/GuiPrefs.cpp:2541
 msgid "Invalid or empty key sequence"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2548
+#: src/frontends/qt4/GuiPrefs.cpp:2552
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to:\n"
 "%2$s"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2561
+#: src/frontends/qt4/GuiPrefs.cpp:2565
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to:\n"
@@ -18605,47 +18605,47 @@ msgid ""
 "You need to remove that binding before creating a new one."
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2580
+#: src/frontends/qt4/GuiPrefs.cpp:2584
 msgid "Can not insert shortcut to the list"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2611
+#: src/frontends/qt4/GuiPrefs.cpp:2615
 msgid "Identity"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2808
+#: src/frontends/qt4/GuiPrefs.cpp:2812
 msgid "Choose bind file"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2809
+#: src/frontends/qt4/GuiPrefs.cpp:2813
 msgid "LyX bind files (*.bind)"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2815
+#: src/frontends/qt4/GuiPrefs.cpp:2819
 msgid "Choose UI file"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2816
+#: src/frontends/qt4/GuiPrefs.cpp:2820
 msgid "LyX UI files (*.ui)"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2822
+#: src/frontends/qt4/GuiPrefs.cpp:2826
 msgid "Choose keyboard map"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2823
+#: src/frontends/qt4/GuiPrefs.cpp:2827
 msgid "LyX keyboard maps (*.kmap)"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2829
+#: src/frontends/qt4/GuiPrefs.cpp:2833
 msgid "Choose personal dictionary"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2830
+#: src/frontends/qt4/GuiPrefs.cpp:2834
 msgid "*.pws"
 msgstr ""
 
-#: src/frontends/qt4/GuiPrefs.cpp:2830
+#: src/frontends/qt4/GuiPrefs.cpp:2834
 msgid "*.ispell"
 msgstr ""
 
@@ -18693,38 +18693,38 @@ msgstr ""
 msgid "Error -> Cannot load file!"
 msgstr ""
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:243
+#: src/frontends/qt4/GuiSpellchecker.cpp:274
 msgid "Spellchecker error"
 msgstr ""
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:244
+#: src/frontends/qt4/GuiSpellchecker.cpp:275
 msgid "The spellchecker could not be started\n"
 msgstr ""
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:398
+#: src/frontends/qt4/GuiSpellchecker.cpp:433
 msgid ""
 "The spellchecker has died for some reason.\n"
 "Maybe it has been killed."
 msgstr ""
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:401
+#: src/frontends/qt4/GuiSpellchecker.cpp:436
 msgid "The spellchecker has failed.\n"
 msgstr ""
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:405
+#: src/frontends/qt4/GuiSpellchecker.cpp:440
 msgid "The spellchecker has failed"
 msgstr ""
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:419
+#: src/frontends/qt4/GuiSpellchecker.cpp:454
 #, c-format
 msgid "%1$d words checked."
 msgstr ""
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:421
+#: src/frontends/qt4/GuiSpellchecker.cpp:456
 msgid "One word checked."
 msgstr ""
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:424
+#: src/frontends/qt4/GuiSpellchecker.cpp:459
 msgid "Spelling check completed"
 msgstr ""
 
