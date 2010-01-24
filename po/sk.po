@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-01-24 11:16+0100\n"
-"PO-Revision-Date: 2010-01-17 18:39+0100\n"
+"PO-Revision-Date: 2010-01-24 11:01+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenský <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -3190,7 +3190,7 @@ msgstr "Zobrazuje komentáre s nápovedou pre vložky v editovanom dokumente"
 
 #: src/frontends/qt4/ui/PrefUi.ui:238
 msgid "&Enable tool tips in main work area"
-msgstr "Zapnúť bublinkovú nápovedu na pracovnej ploche"
+msgstr "Umožniť bublinové nápovede na hlavnej pracovnej ploche"
 
 #: src/frontends/qt4/ui/PrefUi.ui:248
 msgid "Bro&wse..."
@@ -9956,7 +9956,7 @@ msgstr "Fax...|F"
 
 #: lib/ui/classic.ui:62 lib/ui/stdmenus.inc:64
 msgid "Exit|x"
-msgstr "Koniec|c"
+msgstr "Ukončiť|U"
 
 #: lib/ui/classic.ui:68 lib/ui/stdmenus.inc:72
 msgid "Register...|R"
@@ -9992,7 +9992,7 @@ msgstr "Späť|S"
 
 #: lib/ui/classic.ui:91
 msgid "Redo|d"
-msgstr "Opäť|O"
+msgstr "Opakovať|O"
 
 #: lib/ui/classic.ui:93
 msgid "Cut|C"
@@ -11269,7 +11269,7 @@ msgstr "Nástroje|N"
 
 #: lib/ui/stdmenus.inc:44
 msgid "New from Template...|m"
-msgstr "Nový zo šablóny..."
+msgstr "Nový zo šablóny...|b"
 
 #: lib/ui/stdmenus.inc:46
 msgid "Open Recent|t"
@@ -11305,7 +11305,7 @@ msgstr "Použ blokovanie súborov"
 
 #: lib/ui/stdmenus.inc:97
 msgid "Redo|R"
-msgstr "Opäť|O"
+msgstr "Opakovať|O"
 
 #: lib/ui/stdmenus.inc:103
 msgid "Paste Special"
@@ -17197,7 +17197,7 @@ msgstr ""
 #: src/LyXRC.cpp:2905
 msgid "Enable the automatic appearance of tool tips in the work area."
 msgstr ""
-"Aktivuje automatické zobrazovanie bublinových nápovedí na pracovnej ploche."
+"Umožniť automatické zobrazovanie bublinových nápovedí na pracovnej ploche."
 
 #: src/LyXRC.cpp:2909
 msgid ""
@@ -20446,7 +20446,7 @@ msgid ""
 "must investigate!"
 msgstr ""
 "Pre výpisy zdrojového kódu vkladané priamo do textu, musí zostať aspoň jedno "
-"miesto volné pre oddeľovač.\n"
+"miesto voľné pre oddeľovač.\n"
 "Jeden z výpisov však používa všetky dostupné znaky, takže nezostalo miesto "
 "pre oddeľovač.\n"
 "Zatiaľ som znak '!' nahradil varovaním, ale musíte to vyšetriť."
