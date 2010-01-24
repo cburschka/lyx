@@ -1648,6 +1648,14 @@ contributers = [
                  "22 February 2005",
                  u"rotation of wysiwyg figures"),
 
+     contributer(u"Ziegler & Partner GmbH",
+                 "info () transsib ! com",
+                 "GPL",
+                 "RE: Trans-Siberian Railroad pictures - question",
+                 "m=126385210219932",
+                 "19 January 2009",
+                 u"photo for banner"),
+
      contributer(u"Xiaokun Zhu",
                  "xiaokun () aero ! gla ! ac ! uk",
                  "",
