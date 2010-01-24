@@ -967,6 +967,14 @@ contributers = [
                  "m=110952616722307",
                  "27 February 2005",
                  u"Slovenian translation coordinator"),
+ 
+       contributer(u"Caolán McNamara",
+                 "caolanm () redhat ! com",
+                 "GPL",
+                 "Statement for enchant integration",
+                 "m=126389593805123",
+                 "19 January 2010",
+                 u"Support for the enchant spell checking library"),
 
      contributer(u"Tino Meinen",
                  "a.t.meinen () chello ! nl",
