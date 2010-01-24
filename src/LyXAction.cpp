@@ -2980,7 +2980,8 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_BUFFER_SWITCH
  * \li Action: Display/switch to the given buffer.
  * \li Syntax: buffer-switch <BUFFER>
- * \li Params: <BUFFER>: already opened (but possibly hidden) document which is to be shown.
+ * \li Params: <BUFFER>: path and filename of already opened (but possibly hidden)
+                         document which is to be shown.
  * \endvar
  */
 		{ LFUN_BUFFER_SWITCH, "buffer-switch", NoBuffer | ReadOnly, Buffer },
