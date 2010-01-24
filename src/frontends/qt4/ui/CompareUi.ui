@@ -15,16 +15,19 @@
   <property name="sizeGripEnabled">
    <bool>true</bool>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_1">
+  <layout class="QGridLayout">
    <property name="margin">
     <number>0</number>
    </property>
-   <item>
-    <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item row="0" column="0">
+    <layout class="QGridLayout">
      <property name="margin">
       <number>9</number>
      </property>
-     <item>
+     <property name="spacing">
+      <number>6</number>
+     </property>
+     <item row="0" column="0">
       <widget class="QLabel" name="newFileLA">
        <property name="text">
         <string>&amp;New Document:</string>
@@ -34,12 +37,14 @@
        </property>
       </widget>
      </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout">
+     <item row="1" column="0">
+      <layout class="QHBoxLayout">
        <item>
         <widget class="QComboBox" name="newFileCB">
          <property name="sizePolicy">
-          <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
+          <sizepolicy>
+           <hsizetype>7</hsizetype>
+           <vsizetype>0</vsizetype>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -51,6 +56,14 @@
        </item>
        <item>
         <widget class="QPushButton" name="newFilePB">
+         <property name="sizePolicy">
+          <sizepolicy>
+           <hsizetype>5</hsizetype>
+           <vsizetype>0</vsizetype>
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="text">
           <string>&amp;Browse...</string>
          </property>
@@ -61,7 +74,7 @@
        </item>
       </layout>
      </item>
-     <item>
+     <item row="2" column="0">
       <widget class="QLabel" name="oldFileLA">
        <property name="text">
         <string>&amp;Old Document:</string>
@@ -71,12 +84,14 @@
        </property>
       </widget>
      </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item row="3" column="0">
+      <layout class="QHBoxLayout">
        <item>
         <widget class="QComboBox" name="oldFileCB">
          <property name="sizePolicy">
-          <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
+          <sizepolicy>
+           <hsizetype>7</hsizetype>
+           <vsizetype>0</vsizetype>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -88,6 +103,14 @@
        </item>
        <item>
         <widget class="QPushButton" name="oldFilePB">
+         <property name="sizePolicy">
+          <sizepolicy>
+           <hsizetype>5</hsizetype>
+           <vsizetype>0</vsizetype>
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="text">
           <string>Bro&amp;wse...</string>
          </property>
@@ -98,10 +121,12 @@
        </item>
       </layout>
      </item>
-     <item>
+     <item row="4" column="0">
       <widget class="QGroupBox" name="groupBox">
        <property name="sizePolicy">
-        <sizepolicy vsizetype="Expanding" hsizetype="Expanding" >
+        <sizepolicy>
+         <hsizetype>7</hsizetype>
+         <vsizetype>0</vsizetype>
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -109,64 +134,59 @@
        <property name="title">
         <string>Options</string>
        </property>
-       <widget class="QRadioButton" name="newSettingsRB">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>40</y>
-          <width>151</width>
-          <height>18</height>
-         </rect>
+       <layout class="QGridLayout">
+        <property name="margin"> 
+         <number>9</number>
         </property>
-        <property name="text">
-         <string>New Document</string>
+        <property name="spacing">
+         <number>6</number>
         </property>
-       </widget>
-       <widget class="QRadioButton" name="oldSettingsRB">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>60</y>
-          <width>151</width>
-          <height>18</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Old Document</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>20</y>
-          <width>237</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="sizePolicy">
-         <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>Copy Document Settings from:</string>
-        </property>
-        <property name="scaledContents">
-         <bool>true</bool>
-        </property>
-       </widget>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label">
+          <property name="sizePolicy">
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Copy Document Settings from:</string>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QRadioButton" name="newSettingsRB">
+          <property name="text">
+           <string>N&amp;ew Document</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QRadioButton" name="oldSettingsRB">
+          <property name="text">
+           <string>Ol&amp;d Document</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </widget>
      </item>
-     <item>
+     <item row="5" column="0">
       <widget class="QProgressBar" name="progressBar">
        <property name="value">
         <number>24</number>
        </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
       </widget>
      </item>
-     <item>
+     <item row="6" column="0" >
       <layout class="QHBoxLayout">
        <property name="spacing">
         <number>6</number>
@@ -182,7 +202,7 @@
          <property name="sizeType">
           <enum>QSizePolicy::Expanding</enum>
          </property>
-         <property name="sizeHint" stdset="0">
+         <property name="sizeHint">
           <size>
            <width>20</width>
            <height>20</height>
@@ -220,7 +240,7 @@
      </item>
     </layout>
    </item>
-   <item>
+   <item row="1" column="0" >
     <widget class="QStatusBar" name="statusBar"/>
    </item>
   </layout>
@@ -231,3 +251,4 @@
  <resources/>
  <connections/>
 </ui>
+
