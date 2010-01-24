@@ -592,7 +592,7 @@
                 </size>
                </property>
                <property name="toolTip">
-                <string>Restrict the search horizon to:</string>
+                <string>The scope to which the search horizon is restricted</string>
                </property>
                <property name="autoFillBackground">
                 <bool>false</bool>
@@ -627,7 +627,7 @@
                    <string>Current paragraph</string>
                   </property>
                   <property name="text">
-                   <string>Current &amp;Paragraph</string>
+                   <string>Current &amp;paragraph</string>
                   </property>
                   <property name="checked">
                    <bool>false</bool>
@@ -647,11 +647,8 @@
                     <verstretch>0</verstretch>
                    </sizepolicy>
                   </property>
-                  <property name="toolTip">
-                   <string>Document in current file</string>
-                  </property>
                   <property name="text">
-                   <string>Current &amp;Document</string>
+                   <string>Current &amp;document</string>
                   </property>
                   <property name="checked">
                    <bool>true</bool>
@@ -672,10 +669,10 @@
                    </sizepolicy>
                   </property>
                   <property name="toolTip">
-                   <string>Current file and all other files belonging to the same Master Document</string>
+                   <string>Current document and all related documents belonging to the same master document</string>
                   </property>
                   <property name="text">
-                   <string>&amp;Master Document</string>
+                   <string>&amp;Master document</string>
                   </property>
                  </widget>
                 </item>
@@ -696,7 +693,7 @@
                    <string>All open documents</string>
                   </property>
                   <property name="text">
-                   <string>&amp;Open Documents</string>
+                   <string>&amp;Open documents</string>
                   </property>
                  </widget>
                 </item>
@@ -714,7 +711,7 @@
                    </sizepolicy>
                   </property>
                   <property name="text">
-                   <string>All Ma&amp;nuals</string>
+                   <string>All ma&amp;nuals</string>
                   </property>
                  </widget>
                 </item>
@@ -753,7 +750,7 @@
                 </sizepolicy>
                </property>
                <property name="text">
-                <string>Ignore &amp;Format</string>
+                <string>Ignore &amp;format</string>
                </property>
                <property name="checked">
                 <bool>true</bool>

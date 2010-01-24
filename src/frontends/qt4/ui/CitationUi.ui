@@ -50,7 +50,7 @@
      <item>
       <widget class="QLabel" name="selectedKeysLA">
        <property name="text">
-        <string>&amp;Selected Citations:</string>
+        <string>S&amp;elected Citations:</string>
        </property>
        <property name="buddy">
         <cstring>selectedLV</cstring>
@@ -69,7 +69,7 @@
    <item row="1" column="1">
     <widget class="QPushButton" name="addPB">
      <property name="toolTip">
-      <string>The Enter key works, too</string>
+      <string>Click or press Enter to add the selected citation to the list</string>
      </property>
      <property name="text">
       <string>&amp;Add</string>
@@ -89,10 +89,10 @@
    <item row="2" column="1">
     <widget class="QPushButton" name="deletePB">
      <property name="toolTip">
-      <string>The delete key works, too</string>
+      <string>Click or press Delete to delete the selected citation from the list</string>
      </property>
      <property name="text">
-      <string>D&amp;elete</string>
+      <string>&amp;Delete</string>
      </property>
      <property name="autoDefault">
       <bool>false</bool>
@@ -121,7 +121,7 @@
       </sizepolicy>
      </property>
      <property name="toolTip">
-      <string>Move the selected citation up (try Ctrl-Up)</string>
+      <string>Move the selected citation up (Ctrl-Up)</string>
      </property>
      <property name="text">
       <string>&amp;Up</string>
@@ -145,7 +145,7 @@
       </sizepolicy>
      </property>
      <property name="toolTip">
-      <string>Move the selected citation down (try Ctrl-Down)</string>
+      <string>Move the selected citation down (Ctrl-Down)</string>
      </property>
      <property name="text">
       <string>&amp;Down</string>
@@ -188,7 +188,7 @@
       <item row="0" column="0">
        <widget class="QLabel" name="findKeysLA">
         <property name="text">
-         <string>F&amp;ind:</string>
+         <string>Searc&amp;h:</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -201,7 +201,7 @@
       <item row="0" column="1" colspan="5">
        <widget class="QLineEdit" name="findLE">
         <property name="toolTip">
-         <string>Hit Enter to search, or click Go!</string>
+         <string>Enter the text to search for and press Enter or click the button to search</string>
         </property>
         <property name="text">
          <string/>
@@ -214,10 +214,10 @@
          <bool>false</bool>
         </property>
         <property name="toolTip">
-         <string>You can also hit Enter in the search box</string>
+         <string>Click or press Enter in the search box to search</string>
         </property>
         <property name="text">
-         <string>&amp;Go!</string>
+         <string>&amp;Search</string>
         </property>
         <property name="autoDefault">
          <bool>false</bool>
@@ -227,7 +227,7 @@
       <item row="1" column="0">
        <widget class="QLabel" name="fieldsLA">
         <property name="text">
-         <string>Search Field:</string>
+         <string>Search field:</string>
         </property>
         <property name="buddy">
          <cstring>fieldsCO</cstring>
@@ -247,7 +247,7 @@
         </property>
         <item>
          <property name="text">
-          <string>All Fields</string>
+          <string>All fields</string>
          </property>
         </item>
        </widget>
@@ -268,21 +268,21 @@
       <item row="1" column="3" colspan="2">
        <widget class="QCheckBox" name="regexCB">
         <property name="text">
-         <string>Regular E&amp;xpression</string>
+         <string>Regular e&amp;xpression</string>
         </property>
        </widget>
       </item>
       <item row="1" column="5" colspan="2">
        <widget class="QCheckBox" name="caseCB">
         <property name="text">
-         <string>Case Se&amp;nsitive</string>
+         <string>Case se&amp;nsitive</string>
         </property>
        </widget>
       </item>
       <item row="2" column="0">
        <widget class="QLabel" name="entriesLA">
         <property name="text">
-         <string>Entry Types:</string>
+         <string>Entry types:</string>
         </property>
         <property name="buddy">
          <cstring>entriesCO</cstring>
@@ -299,7 +299,7 @@
         </property>
         <item>
          <property name="text">
-          <string>All Entry Types</string>
+          <string>All entry types</string>
          </property>
         </item>
        </widget>
@@ -320,7 +320,7 @@
       <item row="2" column="5" colspan="2">
        <widget class="QCheckBox" name="asTypeCB">
         <property name="text">
-         <string>Search As You &amp;Type</string>
+         <string>Search as you &amp;type</string>
         </property>
        </widget>
       </item>

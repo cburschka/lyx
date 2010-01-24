@@ -321,7 +321,7 @@ void GuiCitation::fillFields(BiblioInfo const & bi)
 	int const oldIndex = fieldsCO->currentIndex();
 	fieldsCO->clear();
 	QStringList const fields = to_qstring_list(bi.getFields());
-	fieldsCO->insertItem(0, qt_("All Fields"));
+	fieldsCO->insertItem(0, qt_("All fields"));
 	fieldsCO->insertItem(1, qt_("Keys"));
 	fieldsCO->insertItems(2, fields);
 	if (oldIndex != -1 && oldIndex < fieldsCO->count())
@@ -336,7 +336,7 @@ void GuiCitation::fillEntries(BiblioInfo const & bi)
 	int const oldIndex = entriesCO->currentIndex();
 	entriesCO->clear();
 	QStringList const entries = to_qstring_list(bi.getEntries());
-	entriesCO->insertItem(0, qt_("All Entry Types"));
+	entriesCO->insertItem(0, qt_("All entry types"));
 	entriesCO->insertItems(1, entries);
 	if (oldIndex != -1 && oldIndex < entriesCO->count())
 		entriesCO->setCurrentIndex(oldIndex);
