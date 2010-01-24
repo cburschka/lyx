@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-01-23 10:24+0100\n"
-"PO-Revision-Date: 2010-01-24 00:36+0100\n"
+"PO-Revision-Date: 2010-01-24 18:48+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@lyx.org>\n"
 "Language-Team: italiano <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -4067,7 +4067,7 @@ msgstr "Mostra tutti i messaggi di verifica"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:236
 msgid "Display statusbar messages?"
-msgstr "Mostrare i messaggi della barra di stato?"
+msgstr "Mostra anche i messaggi della barra di stato"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:239
 msgid "&Statusbar messages"
@@ -4225,7 +4225,7 @@ msgstr "Sostituisce il termine con la scelta attuale"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:46
 msgid "&Find Next"
-msgstr "Trova &successivo"
+msgstr "Tro&va successivo"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:53
 msgid "Re&placement:"
@@ -4253,7 +4253,7 @@ msgstr "Ignora tale termine per questa sessione"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:139
 msgid "I&gnore All"
-msgstr "I&gnora tutto"
+msgstr "Ig&nora tutto"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:146
 msgid "Add the word to your personal dictionary"
@@ -21436,7 +21436,7 @@ msgstr "Livello di verifica"
 
 #: src/frontends/qt4/GuiProgressView.cpp:82
 msgid "Set"
-msgstr "Imposta"
+msgstr "Attivo"
 
 #: src/frontends/qt4/GuiRef.cpp:43
 msgid "Cross-reference"
