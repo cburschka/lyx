@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-01-23 10:24+0100\n"
-"PO-Revision-Date: 2010-01-24 18:48+0100\n"
+"POT-Creation-Date: 2010-01-24 23:34+0100\n"
+"PO-Revision-Date: 2010-01-25 00:54+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@lyx.org>\n"
 "Language-Team: italiano <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -39,7 +39,7 @@ msgstr "Copyright"
 #: src/frontends/qt4/ui/BibitemUi.ui:121
 #: src/frontends/qt4/ui/BoxUi.ui:260
 #: src/frontends/qt4/ui/BranchUi.ui:68
-#: src/frontends/qt4/ui/CompareUi.ui:209
+#: src/frontends/qt4/ui/CompareUi.ui:229
 #: src/frontends/qt4/ui/DelimiterUi.ui:286
 #: src/frontends/qt4/ui/ErrorListUi.ui:60
 #: src/frontends/qt4/ui/ExternalUi.ui:619
@@ -92,7 +92,7 @@ msgstr "&Chiave:"
 #: src/frontends/qt4/ui/BranchUi.ui:78
 #: src/frontends/qt4/ui/CharacterUi.ui:357
 #: src/frontends/qt4/ui/CitationUi.ui:470
-#: src/frontends/qt4/ui/CompareUi.ui:199
+#: src/frontends/qt4/ui/CompareUi.ui:219
 #: src/frontends/qt4/ui/DocumentUi.ui:67
 #: src/frontends/qt4/ui/ERTUi.ui:90
 #: src/frontends/qt4/ui/ExternalUi.ui:599
@@ -176,13 +176,11 @@ msgstr "Generazione bibliografia"
 #: src/frontends/qt4/ui/BiblioUi.ui:134
 #: src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:108
-#: src/frontends/qt4/ui_IndicesUi.h:193
 msgid "&Processor:"
 msgstr "&Processore:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:144
 #: src/frontends/qt4/ui/IndicesUi.ui:43
-#: src/frontends/qt4/ui_IndicesUi.h:195
 msgid "Select a processor"
 msgstr "Selezionare un processore"
 
@@ -191,13 +189,12 @@ msgstr "Selezionare un processore"
 #: src/frontends/qt4/ui/PrefLatexUi.ui:131
 #: src/frontends/qt4/GuiPrefs.cpp:655
 #: src/frontends/qt4/GuiPrefs.cpp:750
-#: src/frontends/qt4/ui_IndicesUi.h:197
 msgid "&Options:"
 msgstr "&Opzioni:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:178
-msgid "Define options such as --min-crossrefs (see man bibtex)."
-msgstr "Per definire opzioni quali --min-crossrefs (vedere il manuale di bibtex)."
+msgid "Define options such as --min-crossrefs (see the documentation of BibTeX)"
+msgstr "Per definire opzioni quali --min-crossrefs (vedere il manuale di BibTeX)."
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:21
 msgid "LyX: Add BibTeX Database"
@@ -216,7 +213,7 @@ msgstr "&Riesamina"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:46
 #: src/frontends/qt4/ui/BibtexUi.ui:97
-#: src/frontends/qt4/ui/CompareUi.ui:55
+#: src/frontends/qt4/ui/CompareUi.ui:68
 #: src/frontends/qt4/ui/ExternalUi.ui:70
 #: src/frontends/qt4/ui/GraphicsUi.ui:58
 #: src/frontends/qt4/ui/IncludeUi.ui:335
@@ -235,9 +232,8 @@ msgstr "Inserire il nome del catalogo BibTeX da usare"
 #: src/frontends/qt4/ui/CitationUi.ui:75
 #: src/frontends/qt4/ui/IndicesUi.ui:134
 #: src/CutAndPaste.cpp:295
-#: src/frontends/qt4/ui_IndicesUi.h:212
 msgid "&Add"
-msgstr "&Aggiungi"
+msgstr "A&ggiungi"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:127
 #: src/frontends/qt4/ui/BibtexUi.ui:213
@@ -248,7 +244,7 @@ msgstr "&Aggiungi"
 #: src/frontends/qt4/ui/ShortcutUi.ui:65
 #: src/buffer_funcs.cpp:108
 #: src/frontends/qt4/ButtonController.cpp:239
-#: src/frontends/qt4/GuiApplication.cpp:1094
+#: src/frontends/qt4/GuiApplication.cpp:1095
 #: src/frontends/qt4/GuiCompare.cpp:194
 msgid "Cancel"
 msgstr "Cancella"
@@ -339,6 +335,7 @@ msgid "Remove the selected database"
 msgstr "Rimuovi il catalogo selezionato"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:282
+#: src/frontends/qt4/ui/CitationUi.ui:95
 msgid "&Delete"
 msgstr "&Elimina"
 
@@ -559,7 +556,6 @@ msgstr "Selezionare un ramo"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25
 #: src/frontends/qt4/ui/IndicesUi.ui:114
-#: src/frontends/qt4/ui_IndicesUi.h:205
 msgid "&New:"
 msgstr "&Nuovo:"
 
@@ -592,8 +588,6 @@ msgid "(&De)activate"
 msgstr "(&Dis)attiva"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:107
-#: src/frontends/qt4/ui/IndicesUi.ui:131
-#: src/frontends/qt4/ui_IndicesUi.h:210
 msgid "Add a new branch to the list"
 msgstr "Aggiunge un nuovo ramo alla lista"
 
@@ -603,7 +597,6 @@ msgstr "Definisce o cambia il colore dello sfondo"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:123
 #: src/frontends/qt4/ui/IndicesUi.ui:185
-#: src/frontends/qt4/ui_IndicesUi.h:227
 msgid "Alter Co&lor..."
 msgstr "Modifica colore..."
 
@@ -615,7 +608,6 @@ msgstr "Rimuove il ramo selezionato"
 #: src/frontends/qt4/ui/IndicesUi.ui:165
 #: src/Buffer.cpp:3410
 #: src/Buffer.cpp:3421
-#: src/frontends/qt4/ui_IndicesUi.h:219
 msgid "&Remove"
 msgstr "&Rimuovi"
 
@@ -945,28 +937,24 @@ msgid "A&vailable Citations:"
 msgstr "Citazioni diponi&bili:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:53
-msgid "&Selected Citations:"
+msgid "S&elected Citations:"
 msgstr "Citazioni &selezionate:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:72
-msgid "The Enter key works, too"
-msgstr "Funziona anche il tasto Enter"
+msgid "Click or press Enter to add the selected citation to the list"
+msgstr "Cliccare o premere Enter per aggiungere alla lista la voce selezionata"
 
 #: src/frontends/qt4/ui/CitationUi.ui:92
-msgid "The delete key works, too"
-msgstr "Funziona anche il tasto delete"
-
-#: src/frontends/qt4/ui/CitationUi.ui:95
-msgid "D&elete"
-msgstr "&Elimina"
+msgid "Click or press Delete to delete the selected citation from the list"
+msgstr "Cliccare o premere Delete per rimuovere dalla lista la voce selezionata"
 
 #: src/frontends/qt4/ui/CitationUi.ui:124
-msgid "Move the selected citation up (try Ctrl-Up)"
-msgstr "Sposta la citazione selezionata in alto (provate Ctrl-Sù)"
+msgid "Move the selected citation up (Ctrl-Up)"
+msgstr "Sposta la voce selezionata verso l'alto (Ctrl-Up)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:148
-msgid "Move the selected citation down (try Ctrl-Down)"
-msgstr "Sposta la citazione selezionata in basso (provate Ctrl-Giù)"
+msgid "Move the selected citation down (Ctrl-Down)"
+msgstr "Sposta la voce selezionata verso il basso (Ctrl-Down)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:151
 msgid "&Down"
@@ -977,51 +965,49 @@ msgid "Search Citation"
 msgstr "Cerca citazione"
 
 #: src/frontends/qt4/ui/CitationUi.ui:191
-msgid "F&ind:"
-msgstr "&Trova:"
+msgid "Searc&h:"
+msgstr "Testo da tro&vare:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:204
-#: src/frontends/qt4/ui/LogUi.ui:38
-msgid "Hit Enter to search, or click Go!"
-msgstr "Premere Enter per iniziare la ricerca o cliccare su Vai!"
+msgid "Enter the text to search for and press Enter or click the button to search"
+msgstr "Inserire il testo da trovare e premere Enter o cliccare sul pulsante Cerca"
 
 #: src/frontends/qt4/ui/CitationUi.ui:217
-msgid "You can also hit Enter in the search box"
-msgstr "Si può anche premere Enter nel campo di ricerca"
+msgid "Click or press Enter in the search box to search"
+msgstr "Cliccare o premere Enter nel campo di ricerca"
 
 #: src/frontends/qt4/ui/CitationUi.ui:220
-#: src/frontends/qt4/ui/LogUi.ui:130
-msgid "&Go!"
-msgstr "&Vai!"
+msgid "&Search"
+msgstr "Cerca"
 
 #: src/frontends/qt4/ui/CitationUi.ui:230
-msgid "Search Field:"
+msgid "Search field:"
 msgstr "Campo di ricerca:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:250
 #: src/frontends/qt4/GuiCitation.cpp:324
-msgid "All Fields"
+msgid "All fields"
 msgstr "Tutti i campi"
 
 #: src/frontends/qt4/ui/CitationUi.ui:271
-msgid "Regular E&xpression"
+msgid "Regular e&xpression"
 msgstr "Espress&ione regolare"
 
 #: src/frontends/qt4/ui/CitationUi.ui:278
-msgid "Case Se&nsitive"
+msgid "Case se&nsitive"
 msgstr "Maiusco&lo/minuscolo"
 
 #: src/frontends/qt4/ui/CitationUi.ui:285
-msgid "Entry Types:"
+msgid "Entry types:"
 msgstr "Tipi di voce:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:302
 #: src/frontends/qt4/GuiCitation.cpp:339
-msgid "All Entry Types"
+msgid "All entry types"
 msgstr "Tutti i tipi di voce"
 
 #: src/frontends/qt4/ui/CitationUi.ui:323
-msgid "Search As You &Type"
+msgid "Search as you &type"
 msgstr "Cerca &mentre si digita"
 
 #: src/frontends/qt4/ui/CitationUi.ui:333
@@ -1030,7 +1016,7 @@ msgstr "Formattazione"
 
 #: src/frontends/qt4/ui/CitationUi.ui:342
 msgid "Citation st&yle:"
-msgstr "Stile &citazione:"
+msgstr "S&tile citazione:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:352
 msgid "Natbib citation style to use"
@@ -1072,34 +1058,34 @@ msgstr "For&za maiuscolo"
 msgid "App&ly"
 msgstr "&Applica"
 
-#: src/frontends/qt4/ui/CompareUi.ui:30
+#: src/frontends/qt4/ui/CompareUi.ui:33
 msgid "&New Document:"
-msgstr "Documento nuovo:"
+msgstr "Documento &nuovo:"
 
-#: src/frontends/qt4/ui/CompareUi.ui:67
+#: src/frontends/qt4/ui/CompareUi.ui:80
 msgid "&Old Document:"
 msgstr "Documento &vecchio:"
 
-#: src/frontends/qt4/ui/CompareUi.ui:92
+#: src/frontends/qt4/ui/CompareUi.ui:115
 #: src/frontends/qt4/ui/PrefUi.ui:248
 msgid "Bro&wse..."
 msgstr "Sfogl&ia..."
 
-#: src/frontends/qt4/ui/CompareUi.ui:110
+#: src/frontends/qt4/ui/CompareUi.ui:135
 msgid "Options"
 msgstr "Opzioni"
 
-#: src/frontends/qt4/ui/CompareUi.ui:122
-msgid "New Document"
-msgstr "Documento nuovo"
-
-#: src/frontends/qt4/ui/CompareUi.ui:135
-msgid "Old Document"
-msgstr "Documento vecchio"
-
-#: src/frontends/qt4/ui/CompareUi.ui:154
+#: src/frontends/qt4/ui/CompareUi.ui:155
 msgid "Copy Document Settings from:"
 msgstr "Copia le impostazioni del documento da:"
+
+#: src/frontends/qt4/ui/CompareUi.ui:165
+msgid "N&ew Document"
+msgstr "Documento n&uovo"
+
+#: src/frontends/qt4/ui/CompareUi.ui:172
+msgid "Ol&d Document"
+msgstr "Documento v&ecchio"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:143
 #: src/frontends/qt4/GuiDelimiter.cpp:275
@@ -1470,8 +1456,8 @@ msgid "Ad&vanced"
 msgstr "A&vanzato"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:595
-msgid "Restrict the search horizon to:"
-msgstr "Limita la ricerca a:"
+msgid "The scope to which the search horizon is restricted"
+msgstr "Campo a cui estendere la ricerca"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:601
 msgid "Sco&pe"
@@ -1482,43 +1468,39 @@ msgid "Current paragraph"
 msgstr "Paragrafo attuale"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:630
-msgid "Current &Paragraph"
-msgstr "&Paragrafo attuale"
+msgid "Current &paragraph"
+msgstr "Para&grafo attuale"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:651
-msgid "Document in current file"
-msgstr "Documento nel file attuale"
-
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:654
-msgid "Current &Document"
+msgid "Current &document"
 msgstr "&Documento attuale"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:675
-msgid "Current file and all other files belonging to the same Master Document"
-msgstr "Documento attuale e tutti gli altri file dello stesso documento padre"
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:672
+msgid "Current document and all related documents belonging to the same master document"
+msgstr "Documento attuale e tutti gli altri documenti relativi allo stesso documento padre"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:678
-msgid "&Master Document"
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:675
+msgid "&Master document"
 msgstr "Documento &padre"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:696
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:693
 msgid "All open documents"
 msgstr "Tutti i documenti aperti"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:699
-msgid "&Open Documents"
-msgstr "&Documenti aperti"
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:696
+msgid "&Open documents"
+msgstr "Documenti &aperti"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:717
-msgid "All Ma&nuals"
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:714
+msgid "All ma&nuals"
 msgstr "Tutti i ma&nuali"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:738
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:735
 msgid "&Expand macros"
 msgstr "&Espandi macro"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:756
-msgid "Ignore &Format"
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:753
+msgid "Ignore &format"
 msgstr "Ignora for&mato"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:13
@@ -2000,64 +1982,56 @@ msgid "Select the index this entry should be listed in."
 msgstr "Selezionare l'indice dove deve apparire questa voce."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:19
-#: src/frontends/qt4/ui_IndicesUi.h:190
 msgid "Here you can define an alternative index processor and specify its options."
 msgstr "Qui si può specificare un processore di indice alternativo e le sue opzioni."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:180
-#: src/frontends/qt4/ui_IndicesUi.h:192
 msgid "Index generation"
 msgstr "Generazione indice"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:64
-#: src/frontends/qt4/ui_IndicesUi.h:199
 msgid "Define program options of the selected processor."
 msgstr "Opzioni di programma del processore selezionato."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:89
-#: src/frontends/qt4/ui_IndicesUi.h:202
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
 msgstr "Verificare se si vogliono indici multipli (ad es. un Indice dei nomi)"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:92
-#: src/frontends/qt4/ui_IndicesUi.h:204
 msgid "&Use multiple indexes"
 msgstr "&Usa indici multipli"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:124
-#: src/frontends/qt4/ui_IndicesUi.h:207
 msgid "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
 msgstr "Immettere il nome dell'indice desiderato (ad es. \"Indice dei nomi\") e premere \"Aggiungi\""
 
+#: src/frontends/qt4/ui/IndicesUi.ui:131
+msgid "Add a new index to the list"
+msgstr "Aggiunge un nuovo indice alla lista"
+
 #: src/frontends/qt4/ui/IndicesUi.ui:143
-#: src/frontends/qt4/ui_IndicesUi.h:213
 msgid "A&vailable Indexes:"
 msgstr "&Indici disponibili:"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
 #: src/frontends/qt4/ui/ProgressViewUi.ui:149
-#: src/frontends/qt4/ui_IndicesUi.h:215
 msgid "1"
 msgstr "1"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:162
-#: src/frontends/qt4/ui_IndicesUi.h:217
 msgid "Remove the selected index"
 msgstr "Rimuovi l'indice selezionato"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:172
-#: src/frontends/qt4/ui_IndicesUi.h:221
 msgid "Rename the selected index"
 msgstr "Rinomina l'indice selezionato"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:175
-#: src/frontends/qt4/ui_IndicesUi.h:223
 msgid "R&ename..."
 msgstr "&Rinomina..."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:182
-#: src/frontends/qt4/ui_IndicesUi.h:225
 msgid "Define or change button color"
 msgstr "Definisce o cambia il colore del pulsante"
 
@@ -2329,6 +2303,10 @@ msgstr "Inserire qui i parametri per il listato. Digitare ? per una lista dei pa
 msgid "&Find:"
 msgstr "&Trova:"
 
+#: src/frontends/qt4/ui/LogUi.ui:38
+msgid "Hit Enter to search, or click Go!"
+msgstr "Premere Enter per iniziare la ricerca o cliccare su Vai!"
+
 #: src/frontends/qt4/ui/LogUi.ui:45
 msgid "Log &Type:"
 msgstr "&Tipo registro:"
@@ -2346,6 +2324,10 @@ msgstr "&Aggiorna"
 #: src/frontends/qt4/ui/LogUi.ui:110
 msgid "Copy to Clip&board"
 msgstr "Copia negli appunti"
+
+#: src/frontends/qt4/ui/LogUi.ui:130
+msgid "&Go!"
+msgstr "&Vai!"
 
 #: src/frontends/qt4/ui/LogUi.ui:137
 msgid "Jump to the next warning message."
@@ -12608,7 +12590,7 @@ msgid "About LyX|X"
 msgstr "Informazioni su LyX|X"
 
 #: lib/ui/classic.ui:425
-#: src/frontends/qt4/GuiAbout.cpp:130
+#: src/frontends/qt4/GuiAbout.cpp:138
 msgid "About LyX"
 msgstr "Informazioni su LyX"
 
@@ -17689,96 +17671,96 @@ msgstr "Nessun altra operazione da rifare"
 msgid "String not found!"
 msgstr "Stringa non trovata!"
 
-#: src/BufferView.cpp:1506
+#: src/BufferView.cpp:1507
 msgid "Mark off"
 msgstr "Evidenziazione disattivata"
 
-#: src/BufferView.cpp:1512
+#: src/BufferView.cpp:1513
 msgid "Mark on"
 msgstr "Evidenziazione attivata"
 
-#: src/BufferView.cpp:1519
+#: src/BufferView.cpp:1520
 msgid "Mark removed"
 msgstr "Evidenziazione rimossa"
 
-#: src/BufferView.cpp:1522
+#: src/BufferView.cpp:1523
 msgid "Mark set"
 msgstr "Evidenziazione impostata"
 
-#: src/BufferView.cpp:1573
+#: src/BufferView.cpp:1574
 msgid "Statistics for the selection:"
 msgstr "Statistiche per la selezione:"
 
-#: src/BufferView.cpp:1575
+#: src/BufferView.cpp:1576
 msgid "Statistics for the document:"
 msgstr "Statistiche per il documento:"
 
-#: src/BufferView.cpp:1578
+#: src/BufferView.cpp:1579
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d parole"
 
-#: src/BufferView.cpp:1580
+#: src/BufferView.cpp:1581
 msgid "One word"
 msgstr "Una parola"
 
-#: src/BufferView.cpp:1583
+#: src/BufferView.cpp:1584
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d caratteri (spazi inclusi)"
 
-#: src/BufferView.cpp:1586
+#: src/BufferView.cpp:1587
 msgid "One character (including blanks)"
 msgstr "Un carattere (spazi inclusi)"
 
-#: src/BufferView.cpp:1589
+#: src/BufferView.cpp:1590
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d caratteri (spazi esclusi)"
 
-#: src/BufferView.cpp:1592
+#: src/BufferView.cpp:1593
 msgid "One character (excluding blanks)"
 msgstr "Un carattere (spazi esclusi)"
 
-#: src/BufferView.cpp:1594
+#: src/BufferView.cpp:1595
 msgid "Statistics"
 msgstr "Statistiche"
 
-#: src/BufferView.cpp:1730
+#: src/BufferView.cpp:1731
 #, c-format
 msgid "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr "`inset-forall' è stato interrotto perché il numero di azioni è maggiore di %1$d"
 
-#: src/BufferView.cpp:1732
+#: src/BufferView.cpp:1733
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr "Ho applicato \"%1$s\" a %2$d inserti"
 
-#: src/BufferView.cpp:1763
+#: src/BufferView.cpp:1764
 msgid "Branch name"
 msgstr "Nome ramo"
 
-#: src/BufferView.cpp:1770
+#: src/BufferView.cpp:1771
 #: src/frontends/qt4/GuiBranches.cpp:176
 msgid "Branch already exists"
 msgstr "Il ramo esiste già"
 
-#: src/BufferView.cpp:2452
+#: src/BufferView.cpp:2453
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Sto inserendo il documento %1$s..."
 
-#: src/BufferView.cpp:2463
+#: src/BufferView.cpp:2464
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Documento %1$s inserito."
 
-#: src/BufferView.cpp:2465
+#: src/BufferView.cpp:2466
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Non riesco ad inserire il documento %1$s"
 
-#: src/BufferView.cpp:2730
+#: src/BufferView.cpp:2731
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -17789,11 +17771,11 @@ msgstr ""
 "%1$s\n"
 "a causa dell'errore: %2$s"
 
-#: src/BufferView.cpp:2732
+#: src/BufferView.cpp:2733
 msgid "Could not read file"
 msgstr "Non riesco a leggere il file"
 
-#: src/BufferView.cpp:2739
+#: src/BufferView.cpp:2740
 #, c-format
 msgid ""
 "%1$s\n"
@@ -17802,16 +17784,16 @@ msgstr ""
 "%1$s\n"
 "non può essere letto."
 
-#: src/BufferView.cpp:2740
+#: src/BufferView.cpp:2741
 #: src/output.cpp:39
 msgid "Could not open file"
 msgstr "Non riesco ad aprire il file"
 
-#: src/BufferView.cpp:2747
+#: src/BufferView.cpp:2748
 msgid "Reading not UTF-8 encoded file"
 msgstr "Lettura di un file non codificato UTF-8"
 
-#: src/BufferView.cpp:2748
+#: src/BufferView.cpp:2749
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -17826,7 +17808,7 @@ msgstr ""
 "UTF-8 usando un programma esterno a LyX.\n"
 
 #: src/Changes.cpp:363
-#: src/Paragraph.cpp:2203
+#: src/Paragraph.cpp:2205
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108
 #: src/insets/InsetListings.cpp:179
 #: src/insets/InsetListings.cpp:187
@@ -17836,7 +17818,7 @@ msgid "LyX Warning: "
 msgstr "Avviso di LyX: "
 
 #: src/Changes.cpp:364
-#: src/Paragraph.cpp:2204
+#: src/Paragraph.cpp:2206
 #: src/insets/InsetListings.cpp:180
 #: src/insets/InsetListings.cpp:188
 #: src/mathed/InsetMathString.cpp:160
@@ -19240,11 +19222,11 @@ msgstr ""
 "Il nuovo layout non permette l'allineamento usato in precedenza.\n"
 "Uso quello predefinito."
 
-#: src/Paragraph.cpp:2725
+#: src/Paragraph.cpp:2727
 msgid "Memory problem"
 msgstr "Problema di memoria"
 
-#: src/Paragraph.cpp:2725
+#: src/Paragraph.cpp:2727
 msgid "Paragraph not properly initialized"
 msgstr "Paragrafo non correttamente inizializzato"
 
@@ -19371,7 +19353,7 @@ msgid " not known"
 msgstr " sconosciuto"
 
 #: src/Text3.cpp:1700
-#: src/frontends/qt4/GuiApplication.cpp:1005
+#: src/frontends/qt4/GuiApplication.cpp:1006
 msgid "Missing argument"
 msgstr "Argomento mancante"
 
@@ -19738,19 +19720,19 @@ msgstr "Nessun documento aperto in cui cercare"
 msgid "Find LyX Dialog"
 msgstr "Trova testo LyX"
 
-#: src/frontends/qt4/GuiAbout.cpp:49
+#: src/frontends/qt4/GuiAbout.cpp:51
 msgid "ERROR: LyX wasn't able to read CREDITS file\n"
 msgstr "ERRORE! LyX non è stato in grado di leggere il file CREDITS\n"
 
-#: src/frontends/qt4/GuiAbout.cpp:50
+#: src/frontends/qt4/GuiAbout.cpp:52
 msgid "Please install correctly to estimate the great\n"
 msgstr "Per favore, installate LyX correttamente per avere un'idea dell'enorme\n"
 
-#: src/frontends/qt4/GuiAbout.cpp:51
+#: src/frontends/qt4/GuiAbout.cpp:53
 msgid "amount of work other people have done for the LyX project."
 msgstr "mole di lavoro che altre persone hanno fatto e stanno facendo per il progetto LyX!"
 
-#: src/frontends/qt4/GuiAbout.cpp:82
+#: src/frontends/qt4/GuiAbout.cpp:84
 #, c-format
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
@@ -19759,11 +19741,11 @@ msgstr ""
 "LyX è Copyright (C) 1995 di Matthias Ettrich,\n"
 "1995-%1$s LyX Team"
 
-#: src/frontends/qt4/GuiAbout.cpp:90
+#: src/frontends/qt4/GuiAbout.cpp:92
 msgid "This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version."
 msgstr "Questo programma è software libero; può essere ridistribuito e/o modificato secondo i termini della GNU General Public License così come pubblicata dalla Free Software Foundation; sia secondo la versione 2 della Licenza, o (a vostra discrezione) qualsiasi altra versione successiva."
 
-#: src/frontends/qt4/GuiAbout.cpp:96
+#: src/frontends/qt4/GuiAbout.cpp:98
 msgid ""
 "LyX is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"
 "See the GNU General Public License for more details.\n"
@@ -19773,11 +19755,11 @@ msgstr ""
 "Consultate la GNU General Public License (GPL) per ulteriori dettagli.\n"
 "Dovreste aver ricevuto una copia della GNU General Public License (GPL) insieme a questo programma; se non così non fosse, scrivete alla Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
 
-#: src/frontends/qt4/GuiAbout.cpp:109
+#: src/frontends/qt4/GuiAbout.cpp:111
 msgid "not released yet"
 msgstr "non ancora rilasciato"
 
-#: src/frontends/qt4/GuiAbout.cpp:114
+#: src/frontends/qt4/GuiAbout.cpp:116
 #, c-format
 msgid ""
 "LyX Version %1$s\n"
@@ -19786,11 +19768,11 @@ msgstr ""
 "LyX Versione %1$s\n"
 "(%2$s)"
 
-#: src/frontends/qt4/GuiAbout.cpp:120
+#: src/frontends/qt4/GuiAbout.cpp:122
 msgid "Library directory: "
 msgstr "Cartella di sistema: "
 
-#: src/frontends/qt4/GuiAbout.cpp:123
+#: src/frontends/qt4/GuiAbout.cpp:125
 msgid "User directory: "
 msgstr "Cartella utente: "
 
@@ -19803,36 +19785,36 @@ msgstr "Cartella utente: "
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:460
+#: src/frontends/qt4/GuiApplication.cpp:461
 msgid "About %1"
 msgstr "Informazioni su %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:460
+#: src/frontends/qt4/GuiApplication.cpp:461
 #: src/frontends/qt4/GuiPrefs.cpp:2897
 msgid "Preferences"
 msgstr "Preferenze"
 
-#: src/frontends/qt4/GuiApplication.cpp:461
+#: src/frontends/qt4/GuiApplication.cpp:462
 msgid "Reconfigure"
 msgstr "Riconfigura"
 
-#: src/frontends/qt4/GuiApplication.cpp:461
+#: src/frontends/qt4/GuiApplication.cpp:462
 msgid "Quit %1"
 msgstr "Chiudi %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:886
+#: src/frontends/qt4/GuiApplication.cpp:887
 msgid "Running configure..."
 msgstr "Sto configurando il sistema..."
 
-#: src/frontends/qt4/GuiApplication.cpp:897
+#: src/frontends/qt4/GuiApplication.cpp:898
 msgid "Reloading configuration..."
 msgstr "Sto caricando di nuovo la configurazione..."
 
-#: src/frontends/qt4/GuiApplication.cpp:903
+#: src/frontends/qt4/GuiApplication.cpp:904
 msgid "System reconfiguration failed"
 msgstr "Riconfigurazione non riuscita"
 
-#: src/frontends/qt4/GuiApplication.cpp:904
+#: src/frontends/qt4/GuiApplication.cpp:905
 msgid ""
 "The system reconfiguration has failed.\n"
 "Default textclass is used but LyX may not be able to work properly.\n"
@@ -19843,11 +19825,11 @@ msgstr ""
 "ma LyX potrebbe non funzionare correttamente.\n"
 "Si consiglia di riprovare a riconfigurare il sistema."
 
-#: src/frontends/qt4/GuiApplication.cpp:910
+#: src/frontends/qt4/GuiApplication.cpp:911
 msgid "System reconfigured"
 msgstr "Il sistema è stato riconfigurato"
 
-#: src/frontends/qt4/GuiApplication.cpp:911
+#: src/frontends/qt4/GuiApplication.cpp:912
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -19857,33 +19839,33 @@ msgstr ""
 "Occorre riavviare LyX per potere usare tutte le\n"
 "specifiche aggiornate delle classi di documento."
 
-#: src/frontends/qt4/GuiApplication.cpp:939
+#: src/frontends/qt4/GuiApplication.cpp:940
 msgid "Exiting."
 msgstr "Esco."
 
-#: src/frontends/qt4/GuiApplication.cpp:1017
+#: src/frontends/qt4/GuiApplication.cpp:1018
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Sto aprendo il file d'aiuto %1$s..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1033
+#: src/frontends/qt4/GuiApplication.cpp:1034
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Sintassi: set-color <nome_lyx> <nome_X11>"
 
-#: src/frontends/qt4/GuiApplication.cpp:1049
+#: src/frontends/qt4/GuiApplication.cpp:1050
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr "L'impostazione del colore \"%1$s\" è fallita: il colore non è definito o non può essere ridefinito."
 
-#: src/frontends/qt4/GuiApplication.cpp:1245
+#: src/frontends/qt4/GuiApplication.cpp:1246
 msgid "Unknown function."
 msgstr "Funzione sconosciuta."
 
-#: src/frontends/qt4/GuiApplication.cpp:1633
+#: src/frontends/qt4/GuiApplication.cpp:1634
 msgid "The current document was closed."
 msgstr "Il documento corrente è stato chiuso."
 
-#: src/frontends/qt4/GuiApplication.cpp:1643
+#: src/frontends/qt4/GuiApplication.cpp:1644
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved documents and exit.\n"
 "\n"
@@ -19893,21 +19875,21 @@ msgstr ""
 "\n"
 "Eccezione: "
 
-#: src/frontends/qt4/GuiApplication.cpp:1647
-#: src/frontends/qt4/GuiApplication.cpp:1653
+#: src/frontends/qt4/GuiApplication.cpp:1648
+#: src/frontends/qt4/GuiApplication.cpp:1654
 msgid "Software exception Detected"
 msgstr "Rilevato problema software"
 
-#: src/frontends/qt4/GuiApplication.cpp:1651
+#: src/frontends/qt4/GuiApplication.cpp:1652
 msgid "LyX has caught some really weird exception, it will now attempt to save all unsaved documents and exit."
 msgstr "LyX ha rilevato una strana eccezione. Verrà tentato il salvataggio dei documenti modificati prima di terminare."
 
-#: src/frontends/qt4/GuiApplication.cpp:1797
-#: src/frontends/qt4/GuiApplication.cpp:1809
+#: src/frontends/qt4/GuiApplication.cpp:1798
+#: src/frontends/qt4/GuiApplication.cpp:1810
 msgid "Could not find UI definition file"
 msgstr "Non riesco a trovare il file UI delle definizioni"
 
-#: src/frontends/qt4/GuiApplication.cpp:1798
+#: src/frontends/qt4/GuiApplication.cpp:1799
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -19918,11 +19900,11 @@ msgstr ""
 "%1$s.\n"
 "Per favore, controllate l'installazione."
 
-#: src/frontends/qt4/GuiApplication.cpp:1804
+#: src/frontends/qt4/GuiApplication.cpp:1805
 msgid "Could not find default UI file"
 msgstr "Non riesco a trovare il file UI di default"
 
-#: src/frontends/qt4/GuiApplication.cpp:1805
+#: src/frontends/qt4/GuiApplication.cpp:1806
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -19930,7 +19912,7 @@ msgstr ""
 "Non trovo il file UI di default!\n"
 "Per favore, controllate l'installazione."
 
-#: src/frontends/qt4/GuiApplication.cpp:1810
+#: src/frontends/qt4/GuiApplication.cpp:1811
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -23718,6 +23700,18 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Utente sconosciuto"
 
+#~ msgid "The Enter key works, too"
+#~ msgstr "Funziona anche il tasto Enter"
+#~ msgid "The delete key works, too"
+#~ msgstr "Funziona anche il tasto delete"
+#~ msgid "D&elete"
+#~ msgstr "&Elimina"
+#~ msgid "F&ind:"
+#~ msgstr "&Trova:"
+#~ msgid "Current &Paragraph"
+#~ msgstr "&Paragrafo attuale"
+#~ msgid "Document in current file"
+#~ msgstr "Documento nel file attuale"
 #~ msgid "German (old spelling)"
 #~ msgstr "Tedesco (vecchia sillabazione)"
 #~ msgid "End"
