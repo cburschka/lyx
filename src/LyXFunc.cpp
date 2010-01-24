@@ -1882,6 +1882,8 @@ void LyXFunc::reloadBuffer()
 void LyXFunc::reloadBuffer(Buffer * buf)
 {
 	FileName filename = buf->fileName();
+	// e.g., read-only status could have changed due to version control
+	filename.refresh();
 	Buffer const * master = buf->masterBuffer();
 	bool const is_child = master != buf;
 	// The user has already confirmed that the changes, if any, should
