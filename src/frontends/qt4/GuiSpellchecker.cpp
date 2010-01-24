@@ -33,7 +33,9 @@
 #include <QKeyEvent>
 #include <QListWidgetItem>
 
-#if defined(USE_ASPELL)
+#if defined(USE_ENCHANT)
+# include "Enchant.h"
+#elif defined(USE_ASPELL)
 # include "ASpell_local.h"
 #elif defined(USE_PSPELL)
 # include "PSpell.h"
@@ -231,7 +233,10 @@ static SpellBase * createSpeller(BufferParams const & bp)
 	      variety = bp.language->variety();
 	}
 
-#if defined(USE_ASPELL)
+#if defined(USE_ENCHANT)
+	if (lyxrc.use_spell_lib)
+		return new Enchant(bp, lang);
+#elif defined(USE_ASPELL)
 	if (lyxrc.use_spell_lib)
 		return new ASpell(bp, lang, variety);
 #elif defined(USE_PSPELL)

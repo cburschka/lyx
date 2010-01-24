@@ -1148,11 +1148,15 @@ PrefSpellchecker::PrefSpellchecker(GuiPreferences * form)
 	spellCommandCO->addItem(qt_("ispell"));
 	spellCommandCO->addItem(qt_("aspell"));
 	spellCommandCO->addItem(qt_("hspell"));
+#ifdef USE_ENCHANT
+	spellCommandCO->addItem(qt_("enchant"));
+#else
 #ifdef USE_PSPELL
 	spellCommandCO->addItem(qt_("pspell (library)"));
 #else
 #ifdef USE_ASPELL
 	spellCommandCO->addItem(qt_("aspell (library)"));
+#endif
 #endif
 #endif
 }
@@ -1199,7 +1203,7 @@ void PrefSpellchecker::update(LyXRC const & rc)
 	}
 
 	if (rc.use_spell_lib) {
-#if defined(USE_ASPELL) || defined(USE_PSPELL)
+#if defined(USE_ENCHANT) || defined(USE_ASPELL) || defined(USE_PSPELL)
 		spellCommandCO->setCurrentIndex(3);
 #endif
 	}

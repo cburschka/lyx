@@ -4,7 +4,7 @@ include $(top_srcdir)/config/common.am
 
 DISTCLEANFILES += config.h libintl.h
 
-AM_CPPFLAGS += $(PCH_FLAGS) -I$(top_srcdir)/src $(BOOST_INCLUDES)
+AM_CPPFLAGS += $(PCH_FLAGS) -I$(top_srcdir)/src $(BOOST_INCLUDES) $(ENCHANT_CFLAGS)
 AM_CPPFLAGS += $(QT4_CPPFLAGS) $(QT4_CORE_INCLUDES)
 
 if BUILD_CLIENT_SUBDIR
@@ -20,7 +20,7 @@ EXTRA_DIST = Section.h \
 	paper.h \
 	pch.h
 
-OTHERLIBS = $(BOOST_LIBS) $(INTLLIBS) $(MYTHES_LIBS) $(AIKSAURUS_LIBS) @LIBS@ $(SOCKET_LIBS) $(LIBPSAPI)
+OTHERLIBS = $(BOOST_LIBS) $(INTLLIBS) $(MYTHES_LIBS) $(AIKSAURUS_LIBS) $(ENCHANT_LIBS) @LIBS@ $(SOCKET_LIBS) $(LIBPSAPI)
 
 noinst_LTLIBRARIES = liblyxcore.la
 bin_PROGRAMS = lyx
@@ -46,6 +46,9 @@ endif
 
 BUILT_SOURCES = $(PCH_FILE)
 
+if USE_ENCHANT
+ENCHANT = Enchant.cpp Enchant.h
+endif
 if USE_ASPELL
 ASPELL = ASpell.cpp ASpell_local.h
 endif
@@ -62,7 +65,7 @@ endif
 # and in fact libtools seems not able to do that.
 lyx_SOURCES = \
 	main.cpp \
-	$(ASPELL) $(PSPELL) $(ISPELL) SpellBase.cpp \
+	$(ENCHANT) $(ASPELL) $(PSPELL) $(ISPELL) SpellBase.cpp \
 	BiblioInfo.h \
 	BiblioInfo.cpp \
 	Box.cpp \

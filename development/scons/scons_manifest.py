@@ -58,6 +58,7 @@ src_header_files = Split('''
     Dimension.h
     DispatchResult.h
     DocIterator.h
+    Enchant.h
     Encoding.h
     ErrorList.h
     Exporter.h
@@ -244,6 +245,7 @@ src_post_files = Split('''
 
 src_extra_src_files = Split('''
     ASpell.cpp
+    Enchant.cpp
     ISpell.cpp
     main.cpp
     PSpell.cpp

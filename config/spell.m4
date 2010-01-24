@@ -24,6 +24,26 @@ AC_DEFUN([CHECK_WITH_ASPELL],
     ])
 
 
+# Macro to add for using enchant spellchecker libraries!     -*- sh -*-
+AC_DEFUN([CHECK_WITH_ENCHANT],
+[
+    lyx_use_enchant=false
+    AC_ARG_WITH(enchant,	AC_HELP_STRING([--with-enchant],[use Enchant libraries]))
+    test "$with_enchant" = "yes" && lyx_use_enchant=true
+
+    if $lyx_use_enchant; then
+        PKG_CHECK_MODULES([ENCHANT], [enchant], [], [lyx_use_enchant=false])
+	AC_MSG_CHECKING([whether to use enchant])
+	if $lyx_use_enchant ; then
+	    AC_MSG_RESULT(yes)
+	    AC_DEFINE(USE_ENCHANT, 1, [Define as 1 to use the enchant library])
+	    lyx_flags="$lyx_flags use-enchant"
+	else
+	    AC_MSG_RESULT(no)
+	fi
+    fi
+    ])
+
 # Macro to add for using pspell spellchecker libraries!     -*- sh -*-
 # @author@: Jürgen Vigna
 AC_DEFUN([CHECK_WITH_PSPELL],
@@ -50,14 +70,19 @@ AC_DEFUN([CHECK_WITH_PSPELL],
 ### Check if we want spell libraries, prefer new aspell
 AC_DEFUN([LYX_CHECK_SPELL_ENGINES],
 [
+    lyx_use_enchant=false
     lyx_use_aspell=false
     lyx_use_pspell=false
     lyx_use_ispell=false
 
-    dnl Prefer use of the aspell library over pspell.
-    CHECK_WITH_ASPELL
-    if $lyx_use_aspell ; then : ; else
-        CHECK_WITH_PSPELL
+    dnl Prefer aspell over pspell
+    dnl enchant is only used if --with-enchant is set
+    CHECK_WITH_ENCHANT
+    if $lyx_use_enchant ; then : ; else
+        CHECK_WITH_ASPELL
+        if $lyx_use_aspell ; then : ; else
+            CHECK_WITH_PSPELL
+        fi
     fi
 
     dnl check for the ability to communicate through unix pipes
@@ -76,6 +101,7 @@ AC_DEFUN([LYX_CHECK_SPELL_ENGINES],
       AC_MSG_RESULT(no)
     fi
 
+    AM_CONDITIONAL(USE_ENCHANT, $lyx_use_enchant)
     AM_CONDITIONAL(USE_ASPELL, $lyx_use_aspell)
     AM_CONDITIONAL(USE_PSPELL, $lyx_use_pspell)
     AM_CONDITIONAL(USE_ISPELL, $lyx_use_ispell)

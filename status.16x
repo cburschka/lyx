@@ -35,6 +35,9 @@ What's new
   of German old and new spelling in parallel when "aspell (library)" is
   used (bug 4657).
 
+- Add support for the enchant spellchecker (bug 6226). LyX needs to be
+  compiled --with-enchant in order to use this feature.
+
 
 * USER INTERFACE
 
