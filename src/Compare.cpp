@@ -691,7 +691,9 @@ bool Compare::Impl::diff(Buffer const * new_buf, Buffer const * old_buf,
 	processSnake(snake);
 	
 	// Start the recursive algorithm
-	diff_i(rp);
+	DocRangePair rp_new(from, rp.to());
+	if (!rp_new.o.empty() || !rp_new.n.empty())
+		diff_i(rp_new);
 
 	for (pit_type p = 0; p < (pit_type)dest_pars_->size(); ++p) {
 		(*dest_pars_)[p].setBuffer(const_cast<Buffer &>(*dest_buf));
