@@ -13,8 +13,9 @@
 #define SYSTEMCALLPRIVATE_H
 
 #include <QObject>
-
 #include <QProcess>
+
+#include <string>
 
 namespace lyx {
 namespace support {
@@ -30,7 +31,7 @@ class SystemcallPrivate : public QObject
 {
 	Q_OBJECT
 public:
-	SystemcallPrivate(const std::string& outfile);
+	SystemcallPrivate(std::string const & outfile);
 	~SystemcallPrivate();
 
 	/// Should the standard output be displayed?
