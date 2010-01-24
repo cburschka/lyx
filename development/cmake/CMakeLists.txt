@@ -1,7 +1,7 @@
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 #
-# Copyright (c) 2006, Peter KÃ¼mmel, <syntheticpp@gmx.net>
+# Copyright (c) 2006, Peter Kümmel, <syntheticpp@gmx.net>
 #
 
 cmake_minimum_required(VERSION 2.4)
@@ -187,6 +187,22 @@ else()
 	find_package(ASPELL)
 endif()
 set(aspell)
+
+if(WIN32)
+  find_library(ENCHANT_LIBRARY "libenchant")
+  find_path(ENCHANT_INCLUDE_DIR "enchant++.h")
+else()
+  find_library(ENCHANT_LIBRARY "enchant"  "/usr/local/lib" "/usr/lib")
+  find_path(ENCHANT_INCLUDE_DIR "enchant++.h" PATHS /usr/local/include /usr/local/include/enchant /usr/include /usr/include/enchant)
+endif()
+if (ENCHANT_LIBRARY AND ENCHANT_INCLUDE_DIR)
+  set(ENCHANT_FOUND TRUE)
+  add_definitions(-DUSE_ENCHANT=1)
+  message(STATUS "----- Building with USE_ENCHANT")
+else()
+  message(STATUS "----- Enchant not found, building without enchant support")
+endif()
+
 
 set(use_external_libintl TRUE)
 

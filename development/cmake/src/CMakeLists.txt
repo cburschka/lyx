@@ -23,15 +23,23 @@ file(GLOB lyx_sources ${TOP_SRC_DIR}/src/${LYX_CPP_FILES})
 file(GLOB lyx_headers ${TOP_SRC_DIR}/src/${LYX_HPP_FILES})
 
 list(REMOVE_ITEM lyx_sources
-	${TOP_SRC_DIR}/src/ASpell.cpp
 	${TOP_SRC_DIR}/src/PSpell.cpp
 	${TOP_SRC_DIR}/src/ISpell.cpp
 	${TOP_SRC_DIR}/src/Variables.cpp
 	${TOP_SRC_DIR}/src/Section.cpp)
 
 if (ASPELL_FOUND)
-	include_directories(${ASPELL_INCLUDE_DIR})
-	set(lyx_sources ${lyx_sources} ${TOP_SRC_DIR}/src/ASpell.cpp)
+  include_directories(${ASPELL_INCLUDE_DIR})
+else()
+  list(REMOVE_ITEM lyx_sources ${TOP_SRC_DIR}/src/ASpell.cpp)
+  list(REMOVE_ITEM lyx_headers ${TOP_SRC_DIR}/src/ASpell.h)
+endif()
+
+if (ENCHANT_FOUND)
+  include_directories("${ENCHANT_INCLUDE_DIR}")
+else()
+  list(REMOVE_ITEM lyx_sources ${TOP_SRC_DIR}/src/Enchant.cpp)
+  list(REMOVE_ITEM lyx_headers ${TOP_SRC_DIR}/src/Enchant.h)
 endif()
 
 lyx_automoc(${TOP_SRC_DIR}/src/Server.cpp)
@@ -76,6 +84,10 @@ target_link_libraries(${_lyx}
 
 if (ASPELL_FOUND)
 	target_link_libraries(${_lyx} ${ASPELL_LIBRARY})
+endif()
+
+if (ENCHANT_FOUND)
+        target_link_libraries(${_lyx} ${ENCHANT_LIBRARY})
 endif()
 
 if (APPLE)
