@@ -32,7 +32,7 @@ if (ASPELL_FOUND)
   include_directories(${ASPELL_INCLUDE_DIR})
 else()
   list(REMOVE_ITEM lyx_sources ${TOP_SRC_DIR}/src/ASpell.cpp)
-  list(REMOVE_ITEM lyx_headers ${TOP_SRC_DIR}/src/ASpell.h)
+  list(REMOVE_ITEM lyx_headers ${TOP_SRC_DIR}/src/ASpell_local.h)
 endif()
 
 if (ENCHANT_FOUND)
