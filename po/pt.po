@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-01-24 23:34+0100\n"
+"POT-Creation-Date: 2010-01-25 08:24+0100\n"
 "PO-Revision-Date: 2009-12-03 21:22+0000\n"
 "Last-Translator: Susana Barbosa <susanabarb@gmail.com>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -42,7 +42,7 @@ msgstr "Copyright"
 #: src/frontends/qt4/ui/DelimiterUi.ui:286
 #: src/frontends/qt4/ui/ErrorListUi.ui:60
 #: src/frontends/qt4/ui/ExternalUi.ui:619
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:300
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:303
 #: src/frontends/qt4/ui/FloatUi.ui:85 src/frontends/qt4/ui/HSpaceUi.ui:174
 #: src/frontends/qt4/ui/HyperlinkUi.ui:153
 #: src/frontends/qt4/ui/IncludeUi.ui:250 src/frontends/qt4/ui/InfoUi.ui:71
@@ -95,6 +95,7 @@ msgstr "C&have:"
 #: src/frontends/qt4/ui/SendtoUi.ui:72 src/frontends/qt4/ui/ShortcutUi.ui:52
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:65
+#: src/frontends/qt4/ui/TabularUi.ui:1457
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:90
 #: src/frontends/qt4/ui/VSpaceUi.ui:24 src/frontends/qt4/ui/WrapUi.ui:150
 msgid "&OK"
@@ -156,16 +157,18 @@ msgstr "Geração de bibliografia"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:134 src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:108
+#: src/frontends/qt4/ui_IndicesUi.h:193
 msgid "&Processor:"
 msgstr "&Processador:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:144 src/frontends/qt4/ui/IndicesUi.ui:43
+#: src/frontends/qt4/ui_IndicesUi.h:195
 msgid "Select a processor"
 msgstr "Selecionar um processador"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:168 src/frontends/qt4/ui/IndicesUi.ui:54
 #: src/frontends/qt4/ui/PrefLatexUi.ui:131 src/frontends/qt4/GuiPrefs.cpp:655
-#: src/frontends/qt4/GuiPrefs.cpp:750
+#: src/frontends/qt4/GuiPrefs.cpp:750 src/frontends/qt4/ui_IndicesUi.h:197
 msgid "&Options:"
 msgstr "&Opções:"
 
@@ -203,7 +206,7 @@ msgstr "Inserir nome da base de dados BibTeX"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:114
 #: src/frontends/qt4/ui/BranchesUi.ui:110
 #: src/frontends/qt4/ui/CitationUi.ui:75 src/frontends/qt4/ui/IndicesUi.ui:134
-#: src/CutAndPaste.cpp:295
+#: src/CutAndPaste.cpp:295 src/frontends/qt4/ui_IndicesUi.h:212
 msgid "&Add"
 msgstr "&Adicionar"
 
@@ -317,23 +320,23 @@ msgid "Horizontal alignment of the content inside the box"
 msgstr "Alinhamento horizontal do conteúdo dentro da caixa"
 
 #: src/frontends/qt4/ui/BoxUi.ui:65 src/frontends/qt4/ui/ListingsUi.ui:103
-#: src/frontends/qt4/ui/TabularUi.ui:162
-#: src/frontends/qt4/ui/TabularUi.ui:1437 src/frontends/qt4/ui/WrapUi.ui:209
-#: src/frontends/qt4/GuiParagraph.cpp:109 src/frontends/qt4/GuiTabular.cpp:786
+#: src/frontends/qt4/ui/TabularUi.ui:269
+#: src/frontends/qt4/ui/TabularUi.ui:1395 src/frontends/qt4/ui/WrapUi.ui:209
+#: src/frontends/qt4/GuiParagraph.cpp:109 src/frontends/qt4/GuiTabular.cpp:751
 msgid "Left"
 msgstr "Esquerda"
 
-#: src/frontends/qt4/ui/BoxUi.ui:70 src/frontends/qt4/ui/TabularUi.ui:167
-#: src/frontends/qt4/ui/TabularUi.ui:1444 src/frontends/qt4/GuiExternal.cpp:77
+#: src/frontends/qt4/ui/BoxUi.ui:70 src/frontends/qt4/ui/TabularUi.ui:274
+#: src/frontends/qt4/ui/TabularUi.ui:1402 src/frontends/qt4/GuiExternal.cpp:77
 #: src/frontends/qt4/GuiGraphics.cpp:73 src/frontends/qt4/GuiParagraph.cpp:111
-#: src/frontends/qt4/GuiTabular.cpp:787
+#: src/frontends/qt4/GuiTabular.cpp:752
 msgid "Center"
 msgstr "Centro"
 
 #: src/frontends/qt4/ui/BoxUi.ui:75 src/frontends/qt4/ui/ListingsUi.ui:108
-#: src/frontends/qt4/ui/TabularUi.ui:172
-#: src/frontends/qt4/ui/TabularUi.ui:1454 src/frontends/qt4/ui/WrapUi.ui:214
-#: src/frontends/qt4/GuiParagraph.cpp:110 src/frontends/qt4/GuiTabular.cpp:788
+#: src/frontends/qt4/ui/TabularUi.ui:279
+#: src/frontends/qt4/ui/TabularUi.ui:1412 src/frontends/qt4/ui/WrapUi.ui:214
+#: src/frontends/qt4/GuiParagraph.cpp:110 src/frontends/qt4/GuiTabular.cpp:753
 msgid "Right"
 msgstr "Direita"
 
@@ -347,19 +350,19 @@ msgstr "Alinhamento vertical do conteúdo dentro da caixa"
 
 #: src/frontends/qt4/ui/BoxUi.ui:100 src/frontends/qt4/ui/BoxUi.ui:127
 #: src/frontends/qt4/ui/MathMatrixUi.ui:167
-#: src/frontends/qt4/ui/TabularUi.ui:252 src/frontends/qt4/ui/TabularUi.ui:344
+#: src/frontends/qt4/ui/TabularUi.ui:101 src/frontends/qt4/ui/TabularUi.ui:174
 msgid "Top"
 msgstr "Topo"
 
 #: src/frontends/qt4/ui/BoxUi.ui:105 src/frontends/qt4/ui/BoxUi.ui:132
 #: src/frontends/qt4/ui/MathMatrixUi.ui:172
-#: src/frontends/qt4/ui/TabularUi.ui:257 src/frontends/qt4/ui/TabularUi.ui:349
+#: src/frontends/qt4/ui/TabularUi.ui:106 src/frontends/qt4/ui/TabularUi.ui:179
 msgid "Middle"
 msgstr "Meio"
 
 #: src/frontends/qt4/ui/BoxUi.ui:110 src/frontends/qt4/ui/BoxUi.ui:137
 #: src/frontends/qt4/ui/MathMatrixUi.ui:177
-#: src/frontends/qt4/ui/TabularUi.ui:262 src/frontends/qt4/ui/TabularUi.ui:354
+#: src/frontends/qt4/ui/TabularUi.ui:111 src/frontends/qt4/ui/TabularUi.ui:184
 msgid "Bottom"
 msgstr "Baixo"
 
@@ -387,7 +390,7 @@ msgstr "Horizontal"
 #: src/frontends/qt4/ui/DocumentUi.ui:44 src/frontends/qt4/ui/FloatUi.ui:42
 #: src/frontends/qt4/ui/GraphicsUi.ui:692
 #: src/frontends/qt4/ui/ParagraphUi.ui:217 src/frontends/qt4/ui/PrefsUi.ui:47
-#: src/frontends/qt4/ui/WrapUi.ui:121
+#: src/frontends/qt4/ui/TabularUi.ui:1434 src/frontends/qt4/ui/WrapUi.ui:121
 msgid "&Restore"
 msgstr "&Restaurar"
 
@@ -399,8 +402,9 @@ msgstr "&Restaurar"
 #: src/frontends/qt4/ui/ParagraphUi.ui:250 src/frontends/qt4/ui/PrefsUi.ui:83
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:101
 #: src/frontends/qt4/ui/RefUi.ui:249 src/frontends/qt4/ui/SendtoUi.ui:85
-#: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/VSpaceUi.ui:37
-#: src/frontends/qt4/ui/WrapUi.ui:163 src/frontends/qt4/GuiDocument.cpp:1610
+#: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/TabularUi.ui:1467
+#: src/frontends/qt4/ui/VSpaceUi.ui:37 src/frontends/qt4/ui/WrapUi.ui:163
+#: src/frontends/qt4/GuiDocument.cpp:1610
 #: src/frontends/qt4/GuiDocument.cpp:2792
 msgid "&Apply"
 msgstr "Ap&licar"
@@ -420,7 +424,7 @@ msgstr "&Decoração:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:330 src/frontends/qt4/ui/ExternalUi.ui:431
 #: src/frontends/qt4/ui/PageLayoutUi.ui:99
-#: src/frontends/qt4/ui/TabularUi.ui:196 src/frontends/qt4/ui/WrapUi.ui:85
+#: src/frontends/qt4/ui/TabularUi.ui:234 src/frontends/qt4/ui/WrapUi.ui:85
 msgid "&Width:"
 msgstr "&Largura:"
 
@@ -439,9 +443,8 @@ msgstr "Caixa interior -- necessário para largura fixa e quebra de linhas"
 #: src/frontends/qt4/ui/BoxUi.ui:361 src/frontends/qt4/ui/HSpaceUi.ui:32
 #: src/frontends/qt4/ui/ListingsUi.ui:98
 #: src/frontends/qt4/ui/MathMatrixUi.ui:247
-#: src/frontends/qt4/ui/TabularUi.ui:1087
-#: src/frontends/qt4/ui/TabularUi.ui:1106
-#: src/frontends/qt4/ui/TabularUi.ui:1154 src/frontends/qt4/GuiBox.cpp:158
+#: src/frontends/qt4/ui/TabularUi.ui:407 src/frontends/qt4/ui/TabularUi.ui:426
+#: src/frontends/qt4/ui/TabularUi.ui:474 src/frontends/qt4/GuiBox.cpp:158
 #: src/frontends/qt4/GuiBox.cpp:303 src/frontends/qt4/GuiBox.cpp:384
 #: src/frontends/qt4/GuiDocument.cpp:112 src/frontends/qt4/GuiGraphics.cpp:580
 #: src/frontends/qt4/GuiPrefs.cpp:1909 src/frontends/qt4/GuiPrefs.cpp:1932
@@ -472,6 +475,7 @@ msgid "Select your branch"
 msgstr "Selecione o seu ramo"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25 src/frontends/qt4/ui/IndicesUi.ui:114
+#: src/frontends/qt4/ui_IndicesUi.h:205
 msgid "&New:"
 msgstr "&Novo:"
 
@@ -516,7 +520,7 @@ msgid "Define or change background color"
 msgstr "Definir ou modificar côr de fundo"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:123
-#: src/frontends/qt4/ui/IndicesUi.ui:185
+#: src/frontends/qt4/ui/IndicesUi.ui:185 src/frontends/qt4/ui_IndicesUi.h:227
 msgid "Alter Co&lor..."
 msgstr "Alterar &côr"
 
@@ -526,7 +530,7 @@ msgstr "Remover o ramo seleccionado"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
 #: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3410
-#: src/Buffer.cpp:3421
+#: src/Buffer.cpp:3421 src/frontends/qt4/ui_IndicesUi.h:219
 msgid "&Remove"
 msgstr "&Remover"
 
@@ -558,7 +562,8 @@ msgstr "Addicional T&udo"
 #: src/frontends/qt4/ui/CitationUi.ui:493
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
-#: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:989
+#: src/frontends/qt4/ui/PrintindexUi.ui:28
+#: src/frontends/qt4/ui/TabularUi.ui:1477 src/Buffer.cpp:989
 #: src/Buffer.cpp:2089 src/Buffer.cpp:3394 src/Buffer.cpp:3440
 #: src/LyXVC.cpp:88 src/LyXVC.cpp:215 src/frontends/qt4/GuiBranches.cpp:177
 #: src/frontends/qt4/GuiClipboard.cpp:208
@@ -593,9 +598,8 @@ msgstr "Ta&manho:"
 #: src/frontends/qt4/ui/BulletsUi.ui:66
 #: src/frontends/qt4/ui/ParagraphUi.ui:115
 #: src/frontends/qt4/ui/PrefLatexUi.ui:339
-#: src/frontends/qt4/ui/TabularUi.ui:1092
-#: src/frontends/qt4/ui/TabularUi.ui:1111
-#: src/frontends/qt4/ui/TabularUi.ui:1159 lib/ui/stdtoolbars.inc:99
+#: src/frontends/qt4/ui/TabularUi.ui:412 src/frontends/qt4/ui/TabularUi.ui:431
+#: src/frontends/qt4/ui/TabularUi.ui:479 lib/ui/stdtoolbars.inc:99
 #: src/Font.cpp:178 src/HSpace.cpp:117 src/frontends/qt4/GuiDocument.cpp:108
 #: src/frontends/qt4/GuiDocument.cpp:126 src/frontends/qt4/GuiDocument.cpp:142
 #: src/frontends/qt4/GuiDocument.cpp:155 src/frontends/qt4/GuiDocument.cpp:602
@@ -803,7 +807,6 @@ msgstr "Aplicar alterações &imediatamente"
 #: src/frontends/qt4/ui/MathMatrixUi.ui:314 src/frontends/qt4/ui/NoteUi.ui:28
 #: src/frontends/qt4/ui/PhantomUi.ui:28 src/frontends/qt4/ui/PrintUi.ui:243
 #: src/frontends/qt4/ui/TabularCreateUi.ui:72
-#: src/frontends/qt4/ui/TabularUi.ui:109
 #: src/frontends/qt4/ButtonController.cpp:241
 #: src/frontends/qt4/GuiCompare.cpp:192
 msgid "Close"
@@ -1023,7 +1026,9 @@ msgstr "Gravar configurações como configurações por omissão de documentos L
 msgid "Save as Document Defaults"
 msgstr "Gravar como pré-definições de documento"
 
-#: src/frontends/qt4/ui/ERTUi.ui:31 src/frontends/qt4/GuiPrefs.cpp:1087
+#: src/frontends/qt4/ui/ERTUi.ui:31
+#: src/frontends/qt4/ui/ProgressViewOldUi.ui:134
+#: src/frontends/qt4/GuiPrefs.cpp:1087
 msgid "Display"
 msgstr "Mostrar"
 
@@ -1244,8 +1249,8 @@ msgid "Find next occurrence and replace it [Enter]"
 msgstr "Procurar proxima ocurrencia e substituí-la [Enter]"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:225
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:491
-msgid "Next"
+#, fuzzy
+msgid "Ne&xt"
 msgstr "Próximo"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:243
@@ -1253,17 +1258,22 @@ msgid "Find previous occurrence and replace it [Shift+Enter]"
 msgstr "Procurar ocorrência prévia e sunstituí-la  [Shift+Enter]"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:246
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:515
-msgid "Prev"
-msgstr "Prev"
+#, fuzzy
+msgid "Pre&vious"
+msgstr "Alteração &Anterior"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:264
+#, fuzzy
+msgid "Replace all occurences at once"
+msgstr "Substituir palavra por escolha actual"
+
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:267
 #: src/frontends/qt4/ui/SearchUi.ui:193
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:116
 msgid "Replace &All"
 msgstr "Substituir T&udo"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:279
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:282
 msgid ""
 "Keep the case of the replacement's first letter as in each matching text "
 "first letter"
@@ -1271,28 +1281,28 @@ msgstr ""
 "Manter a maiúscula/minúscula da primeira letra da substituição como na "
 "primeira letra do texto"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:282
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:285
 msgid "&Keep case"
 msgstr "&Manter maiúscula/minúscula"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:297
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:300
 msgid "Close this panel"
 msgstr "Fechar este painel"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:359
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:383
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:362
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:386
 msgid "Enter the text to search for in this full-featured LyX editing area"
 msgstr "Inserir o text a procurar nesta área de edição LyX"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:362
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:365
 msgid "&Find..."
 msgstr "&Procurar..."
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:419
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:422
 msgid "Perform a case-sensitive search"
 msgstr "Efectuar uma pesquisa que diferencia maiúsculas e minúsculas"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:422
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:425
 #: src/frontends/qt4/ui/SearchUi.ui:105
 msgid "Case &sensitive"
 msgstr "Minusculas e maiusculas i&mportam"
@@ -1301,75 +1311,66 @@ msgstr "Minusculas e maiusculas i&mportam"
 msgid "Choose one of the pre-arranged regular expressions."
 msgstr "Escolher uma das expressões regulares pré-arranjadas."
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:444
-msgid "Match..."
-msgstr "Corresponder..."
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:443
+#, fuzzy
+msgid "Insert Re&gular Expression..."
+msgstr "E&xpressão regular"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:449
-msgid "Anything"
-msgstr "Qualquer coisa"
-
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:454
-msgid "Any non-empty"
-msgstr "Qualquer não-vazio"
-
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:459
-msgid "Any word"
-msgstr "Qualquer palavra"
-
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:464
-msgid "Any number"
-msgstr "Qualquer número"
-
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:469
-msgid "User-defined"
-msgstr "Definido pelo utilizador"
-
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:488
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:461
 msgid "Find next occurrence [Enter]"
 msgstr "Encontrar próxima ocorrência [Enter]"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:512
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:464
+#, fuzzy
+msgid "&Next"
+msgstr "Próximo"
+
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:485
 msgid "Find previous occurrence [Shift+Enter]"
 msgstr "Encontrar ocorrência anterior [Shift+Enter]"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:536
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:488
+#, fuzzy
+msgid "&Previous"
+msgstr "Alteração &Anterior"
+
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:509
 msgid "Restrict search to whole words only"
 msgstr "Restringir procura apenas a palavras completas"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:539
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:512
 msgid "Whole &words"
 msgstr "&Palavras completas"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:567
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:540
 #: src/frontends/qt4/ui/ListingsUi.ui:444
 msgid "Ad&vanced"
 msgstr "A&vançado"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:595
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:568
 #, fuzzy
 msgid "The scope to which the search horizon is restricted"
 msgstr "Restringir o horizonte de procura a:"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:601
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:574
 msgid "Sco&pe"
 msgstr "Ambi&to"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:627
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:600
 msgid "Current paragraph"
 msgstr "Parágrafo actual"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:630
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:603
 #, fuzzy
 msgid "Current &paragraph"
 msgstr "Parágrafo actual"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:651
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:624
 #, fuzzy
 msgid "Current &document"
 msgstr "&Documento Actual"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:672
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:645
 #, fuzzy
 msgid ""
 "Current document and all related documents belonging to the same master "
@@ -1378,30 +1379,30 @@ msgstr ""
 "Ficheiro actual e todos os outros ficheiros pertencentes ao mesmo Documento "
 "Principal"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:675
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:648
 #, fuzzy
 msgid "&Master document"
 msgstr "Documento &Principal"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:693
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:666
 msgid "All open documents"
 msgstr "Todos os documentos abertos"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:696
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:669
 #, fuzzy
 msgid "&Open documents"
 msgstr "Documentos &Abertos"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:714
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:687
 #, fuzzy
 msgid "All ma&nuals"
 msgstr "Todos os Ma&nuais"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:735
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:708
 msgid "&Expand macros"
 msgstr "&Expandir macros"
 
-#: src/frontends/qt4/ui/FindAndReplaceUi.ui:753
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:726
 #, fuzzy
 msgid "Ignore &format"
 msgstr "Ignorar &Formato"
@@ -1881,7 +1882,7 @@ msgstr "Índices &disponíveis:"
 msgid "Select the index this entry should be listed in."
 msgstr "Seleccionar o index em que esta entrada deve estar incluída"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:19
+#: src/frontends/qt4/ui/IndicesUi.ui:19 src/frontends/qt4/ui_IndicesUi.h:190
 msgid ""
 "Here you can define an alternative index processor and specify its options."
 msgstr ""
@@ -1890,56 +1891,58 @@ msgstr ""
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:180
+#: src/frontends/qt4/ui_IndicesUi.h:192
 msgid "Index generation"
 msgstr "Geração de índice"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:64
+#: src/frontends/qt4/ui/IndicesUi.ui:64 src/frontends/qt4/ui_IndicesUi.h:199
 msgid "Define program options of the selected processor."
 msgstr "Definir opções de programa do processador seleccionado."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:89
+#: src/frontends/qt4/ui/IndicesUi.ui:89 src/frontends/qt4/ui_IndicesUi.h:202
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
 msgstr ""
 "Assinalar se necessitar de multiplos índices (por exemplo um índice de Nomes)"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:92
+#: src/frontends/qt4/ui/IndicesUi.ui:92 src/frontends/qt4/ui_IndicesUi.h:204
 msgid "&Use multiple indexes"
 msgstr "&Usar índices multiplos"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:124
+#: src/frontends/qt4/ui/IndicesUi.ui:124 src/frontends/qt4/ui_IndicesUi.h:207
 msgid ""
 "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
 msgstr ""
 "Entrar o nome do índice desejado (ex \"Indice de Nomes\") e premir \"Adiciona"
 "\""
 
-#: src/frontends/qt4/ui/IndicesUi.ui:131
+#: src/frontends/qt4/ui/IndicesUi.ui:131 src/frontends/qt4/ui_IndicesUi.h:210
 #, fuzzy
 msgid "Add a new index to the list"
 msgstr "Adicionar um ramo novo à lista"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:143
+#: src/frontends/qt4/ui/IndicesUi.ui:143 src/frontends/qt4/ui_IndicesUi.h:213
 msgid "A&vailable Indexes:"
 msgstr "Índices &disponíveis:"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
 #: src/frontends/qt4/ui/ProgressViewUi.ui:149
+#: src/frontends/qt4/ui_IndicesUi.h:215
 msgid "1"
 msgstr "1"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:162
+#: src/frontends/qt4/ui/IndicesUi.ui:162 src/frontends/qt4/ui_IndicesUi.h:217
 msgid "Remove the selected index"
 msgstr "Remover o índice seleccionado"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:172
+#: src/frontends/qt4/ui/IndicesUi.ui:172 src/frontends/qt4/ui_IndicesUi.h:221
 msgid "Rename the selected index"
 msgstr "Remover o índice seleccionado"
 
-#: src/frontends/qt4/ui/IndicesUi.ui:175
+#: src/frontends/qt4/ui/IndicesUi.ui:175 src/frontends/qt4/ui_IndicesUi.h:223
 msgid "R&ename..."
 msgstr "R&enomear..."
 
-#: src/frontends/qt4/ui/IndicesUi.ui:182
+#: src/frontends/qt4/ui/IndicesUi.ui:182 src/frontends/qt4/ui_IndicesUi.h:225
 msgid "Define or change button color"
 msgstr "Definir ou alterar a côr do botão"
 
@@ -2108,7 +2111,7 @@ msgid "Choose the font size for line numbers"
 msgstr "Escolher o tamanho da letra para os números de linha"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:188
-#: src/frontends/qt4/ui/TabularUi.ui:991
+#: src/frontends/qt4/ui/TabularUi.ui:527
 msgid "Style"
 msgstr "Estilo"
 
@@ -2760,9 +2763,8 @@ msgid "Double"
 msgstr "Duplo"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:135
-#: src/frontends/qt4/ui/TabularUi.ui:1097
-#: src/frontends/qt4/ui/TabularUi.ui:1116
-#: src/frontends/qt4/ui/TabularUi.ui:1164 src/frontends/qt4/ui/VSpaceUi.ui:144
+#: src/frontends/qt4/ui/TabularUi.ui:417 src/frontends/qt4/ui/TabularUi.ui:436
+#: src/frontends/qt4/ui/TabularUi.ui:484 src/frontends/qt4/ui/VSpaceUi.ui:144
 #: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:603
 #: src/frontends/qt4/GuiDocument.cpp:607 src/frontends/qt4/GuiDocument.cpp:615
 #: src/frontends/qt4/GuiDocument.cpp:694 src/frontends/qt4/GuiDocument.cpp:746
@@ -3970,23 +3972,42 @@ msgstr "Índices &disponíveis:"
 msgid "Select the index that shall be printed at this place of the document."
 msgstr "Seleccionar  o índice que deve ser impresso neste sítio do documento."
 
+#: src/frontends/qt4/ui/ProgressViewOldUi.ui:70
 #: src/frontends/qt4/ui/ProgressViewUi.ui:90
 #: src/frontends/qt4/GuiDocument.cpp:1105 src/frontends/qt4/GuiPrefs.cpp:228
 msgid "Output"
 msgstr "Resultado"
 
+#: src/frontends/qt4/ui/ProgressViewOldUi.ui:113
 #: src/frontends/qt4/ui/ProgressViewUi.ui:133
 msgid "Settings"
 msgstr "Configurações"
+
+#: src/frontends/qt4/ui/ProgressViewOldUi.ui:152
+#: src/frontends/qt4/ui/ProgressViewUi.ui:239
+#, fuzzy
+msgid "&Statusbar messages"
+msgstr "Mensagens textoinserto/tabular"
+
+#: src/frontends/qt4/ui/ProgressViewOldUi.ui:170
+#, fuzzy
+msgid "&Debug messages"
+msgstr "Sem mensagem de compilação"
+
+#: src/frontends/qt4/ui/ProgressViewOldUi.ui:188
+#: src/frontends/qt4/ui/ProgressViewUi.ui:173
+msgid "Automatic cleanup of the window before LaTeX compilation proceeds"
+msgstr ""
+
+#: src/frontends/qt4/ui/ProgressViewOldUi.ui:191
+#, fuzzy
+msgid "Clear &automatically"
+msgstr "Ajuda automática"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:145
 #, fuzzy
 msgid "Select the debug messages that should be displayed"
 msgstr "Seleccionar o index em que esta entrada deve estar incluída"
-
-#: src/frontends/qt4/ui/ProgressViewUi.ui:173
-msgid "Automatic cleanup of the window before LaTeX compilation proceeds"
-msgstr ""
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:176
 #, fuzzy
@@ -4025,11 +4046,6 @@ msgstr "Todas as mensagens de compilação"
 #: src/frontends/qt4/ui/ProgressViewUi.ui:236
 #, fuzzy
 msgid "Display statusbar messages?"
-msgstr "Mensagens textoinserto/tabular"
-
-#: src/frontends/qt4/ui/ProgressViewUi.ui:239
-#, fuzzy
-msgid "&Statusbar messages"
 msgstr "Mensagens textoinserto/tabular"
 
 #: src/frontends/qt4/ui/RefUi.ui:22
@@ -4147,7 +4163,7 @@ msgid "Clear current shortcut"
 msgstr "Limpar atalho actual"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:100
-#: src/frontends/qt4/ui/TabularUi.ui:981
+#: src/frontends/qt4/ui/TabularUi.ui:593
 msgid "C&lear"
 msgstr "&Limpar"
 
@@ -4246,48 +4262,44 @@ msgstr ""
 msgid "&Display all"
 msgstr "&Visualizar tudo"
 
-#: src/frontends/qt4/ui/TabularUi.ui:36
-msgid "Current cell:"
-msgstr "Célula actual:"
-
-#: src/frontends/qt4/ui/TabularUi.ui:58
-msgid "Current row position"
-msgstr "Posição da linha actual"
-
-#: src/frontends/qt4/ui/TabularUi.ui:80
-msgid "Current column position"
-msgstr "Posição da coluna actual"
-
-#: src/frontends/qt4/ui/TabularUi.ui:131
+#: src/frontends/qt4/ui/TabularUi.ui:38
 msgid "&Table Settings"
 msgstr "Configurações de &tabela"
 
-#: src/frontends/qt4/ui/TabularUi.ui:137
+#: src/frontends/qt4/ui/TabularUi.ui:53
+#, fuzzy
+msgid "Table-wide settings"
+msgstr "Configurações de Tabela"
+
+#: src/frontends/qt4/ui/TabularUi.ui:84
+msgid "Rotate the table by 90 degrees"
+msgstr "Rodar a tabela 90 graus"
+
+#: src/frontends/qt4/ui/TabularUi.ui:87
+msgid "&Rotate table 90 degrees"
+msgstr "&Rodar tabela 90 graus"
+
+#: src/frontends/qt4/ui/TabularUi.ui:94
+msgid "Vertical alignment of the table"
+msgstr "Alinhamento vertical da tabela"
+
+#: src/frontends/qt4/ui/TabularUi.ui:119
+msgid "Verti&cal alignment:"
+msgstr "Alinhamento verti&cal:"
+
+#: src/frontends/qt4/ui/TabularUi.ui:132
 msgid "Column settings"
 msgstr "Configurações de coluna"
 
-#: src/frontends/qt4/ui/TabularUi.ui:143
-msgid "&Horizontal alignment:"
-msgstr "Alinhamento &horizontal:"
+#: src/frontends/qt4/ui/TabularUi.ui:144
+msgid "Merge cells"
+msgstr "Juntar células"
 
-#: src/frontends/qt4/ui/TabularUi.ui:153
-msgid "Horizontal alignment in column"
-msgstr "Alinhamento horizontal na coluna"
+#: src/frontends/qt4/ui/TabularUi.ui:147
+msgid "&Multicolumn"
+msgstr "&Multi-coluna"
 
-#: src/frontends/qt4/ui/TabularUi.ui:157
-#: src/frontends/qt4/GuiParagraph.cpp:108 src/frontends/qt4/GuiTabular.cpp:790
-msgid "Justified"
-msgstr "Justificado"
-
-#: src/frontends/qt4/ui/TabularUi.ui:209
-msgid "Fixed width of the column"
-msgstr "Largura fixa de coluna"
-
-#: src/frontends/qt4/ui/TabularUi.ui:238
-msgid "&Vertical alignment in row:"
-msgstr "Alinhamento &vertical na linha:"
-
-#: src/frontends/qt4/ui/TabularUi.ui:248
+#: src/frontends/qt4/ui/TabularUi.ui:170
 msgid ""
 "Specifies the vertical alignment of this cell in relation to the baseline of "
 "the row."
@@ -4295,234 +4307,238 @@ msgstr ""
 "Especifica o alinhamento vertical desta célula em relação à linha de "
 "referência da linha."
 
-#: src/frontends/qt4/ui/TabularUi.ui:286
-msgid "Merge cells"
-msgstr "Juntar células"
+#: src/frontends/qt4/ui/TabularUi.ui:192
+msgid "&Vertical alignment in row:"
+msgstr "Alinhamento &vertical na linha:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:289
-msgid "&Multicolumn"
-msgstr "&Multi-coluna"
+#: src/frontends/qt4/ui/TabularUi.ui:224
+msgid "Fixed width of the column"
+msgstr "Largura fixa de coluna"
 
-#: src/frontends/qt4/ui/TabularUi.ui:299
+#: src/frontends/qt4/ui/TabularUi.ui:260
+msgid "Horizontal alignment in column"
+msgstr "Alinhamento horizontal na coluna"
+
+#: src/frontends/qt4/ui/TabularUi.ui:264
+#: src/frontends/qt4/GuiParagraph.cpp:108 src/frontends/qt4/GuiTabular.cpp:755
+msgid "Justified"
+msgstr "Justificado"
+
+#: src/frontends/qt4/ui/TabularUi.ui:287
+msgid "&Horizontal alignment:"
+msgstr "Alinhamento &horizontal:"
+
+#: src/frontends/qt4/ui/TabularUi.ui:300
 msgid "Cell setting"
 msgstr "Configuração de célula"
 
-#: src/frontends/qt4/ui/TabularUi.ui:305
+#: src/frontends/qt4/ui/TabularUi.ui:312
 msgid "Rotate this cell by 90 degrees"
 msgstr "Rodar esta célula 90 graus"
 
-#: src/frontends/qt4/ui/TabularUi.ui:308
+#: src/frontends/qt4/ui/TabularUi.ui:315
 msgid "Rotate &cell 90 degrees"
 msgstr "Rodar &célula 90 graus"
 
-#: src/frontends/qt4/ui/TabularUi.ui:321
-#, fuzzy
-msgid "Table-wide settings"
-msgstr "Configurações de Tabela"
-
-#: src/frontends/qt4/ui/TabularUi.ui:327
-msgid "Verti&cal alignment:"
-msgstr "Alinhamento verti&cal:"
-
-#: src/frontends/qt4/ui/TabularUi.ui:337
-msgid "Vertical alignment of the table"
-msgstr "Alinhamento vertical da tabela"
-
-#: src/frontends/qt4/ui/TabularUi.ui:381
-msgid "Rotate the table by 90 degrees"
-msgstr "Rodar a tabela 90 graus"
-
-#: src/frontends/qt4/ui/TabularUi.ui:384
-msgid "&Rotate table 90 degrees"
-msgstr "&Rodar tabela 90 graus"
-
-#: src/frontends/qt4/ui/TabularUi.ui:396
+#: src/frontends/qt4/ui/TabularUi.ui:333
 msgid "LaTe&X argument:"
 msgstr "Argument LaTe&X:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:406
+#: src/frontends/qt4/ui/TabularUi.ui:343
 msgid "Custom column format (LaTeX)"
 msgstr "Personalizar formato da coluna (LaTeX)"
 
-#: src/frontends/qt4/ui/TabularUi.ui:429
+#: src/frontends/qt4/ui/TabularUi.ui:353
 msgid "&Borders"
 msgstr "&Contornos"
 
-#: src/frontends/qt4/ui/TabularUi.ui:435
-msgid "Set Borders"
-msgstr "Definir Contornos"
+#: src/frontends/qt4/ui/TabularUi.ui:378
+msgid "Additional Space"
+msgstr "Espaço Adicional"
 
-#: src/frontends/qt4/ui/TabularUi.ui:943
-msgid "Set borders of the current (selected) cell(s)"
-msgstr "Definir contornos da (s) célula(s) (seleccionada(s)) actualmente"
+#: src/frontends/qt4/ui/TabularUi.ui:390
+msgid "T&op of row:"
+msgstr "&Topo da linha:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:956
-msgid "All Borders"
-msgstr "Todos os contornos"
+#: src/frontends/qt4/ui/TabularUi.ui:450
+msgid "Botto&m of row:"
+msgstr "&Baixo da linha:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:968
-msgid "Set all borders of the current (selected) cell(s)"
-msgstr "Definir todos os contornos da(s) célula(s) seleccionada(s)"
+#: src/frontends/qt4/ui/TabularUi.ui:463
+msgid "Bet&ween rows:"
+msgstr "Entr&e linhas:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:971
-msgid "&Set"
-msgstr "&Definir"
-
-#: src/frontends/qt4/ui/TabularUi.ui:978
-msgid "Unset all borders of the current (selected) cell(s)"
-msgstr "Desactivar todos os contornos da(s) célula(s) seleccionada(s)"
-
-#: src/frontends/qt4/ui/TabularUi.ui:1003
+#: src/frontends/qt4/ui/TabularUi.ui:539
 msgid "Use formal (a.k.a. booktabs) border style (no vertical borders)"
 msgstr ""
 "Usar estilo de contorno (a.k.a booktabs) formal (sem contornos verticais)"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1006
+#: src/frontends/qt4/ui/TabularUi.ui:542
 msgid "Fo&rmal"
 msgstr "Fo&rmal"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1016
+#: src/frontends/qt4/ui/TabularUi.ui:552
 msgid "Use default (grid-like) border style"
 msgstr "Usar estilo de contorno pré-definido (tipo grelha) "
 
-#: src/frontends/qt4/ui/TabularUi.ui:1019
+#: src/frontends/qt4/ui/TabularUi.ui:555
 msgid "De&fault"
 msgstr "&Pré-definido"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1058
-msgid "Additional Space"
-msgstr "Espaço Adicional"
+#: src/frontends/qt4/ui/TabularUi.ui:565
+msgid "All Borders"
+msgstr "Todos os contornos"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1070
-msgid "T&op of row:"
-msgstr "&Topo da linha:"
+#: src/frontends/qt4/ui/TabularUi.ui:577
+msgid "Set all borders of the current (selected) cell(s)"
+msgstr "Definir todos os contornos da(s) célula(s) seleccionada(s)"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1130
-msgid "Botto&m of row:"
-msgstr "&Baixo da linha:"
+#: src/frontends/qt4/ui/TabularUi.ui:580
+msgid "&Set"
+msgstr "&Definir"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1143
-msgid "Bet&ween rows:"
-msgstr "Entr&e linhas:"
+#: src/frontends/qt4/ui/TabularUi.ui:590
+msgid "Unset all borders of the current (selected) cell(s)"
+msgstr "Desactivar todos os contornos da(s) célula(s) seleccionada(s)"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1192
+#: src/frontends/qt4/ui/TabularUi.ui:606
+msgid "Set Borders"
+msgstr "Definir Contornos"
+
+#: src/frontends/qt4/ui/TabularUi.ui:1118
+msgid "Set borders of the current (selected) cell(s)"
+msgstr "Definir contornos da (s) célula(s) (seleccionada(s)) actualmente"
+
+#: src/frontends/qt4/ui/TabularUi.ui:1132
 msgid "&Longtable"
 msgstr "Tabela lo&nga"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1198
+#: src/frontends/qt4/ui/TabularUi.ui:1144
 msgid "Select for tables that span multiple pages"
 msgstr "Seleccionar para tabelas que se estendem por mais do que uma página"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1201
+#: src/frontends/qt4/ui/TabularUi.ui:1147
 msgid "&Use long table"
 msgstr "&Usar tabela longa"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1211
+#: src/frontends/qt4/ui/TabularUi.ui:1157
 msgid "Row settings"
 msgstr "Configurações de Linha"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1217
+#: src/frontends/qt4/ui/TabularUi.ui:1169
 msgid "Status"
 msgstr "Estado"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1224
+#: src/frontends/qt4/ui/TabularUi.ui:1176
 msgid "Border above"
 msgstr "Contorno cima"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1231
+#: src/frontends/qt4/ui/TabularUi.ui:1183
 msgid "Border below"
 msgstr "Contorno baixo"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1238
+#: src/frontends/qt4/ui/TabularUi.ui:1190
 msgid "Contents"
 msgstr "Índice"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1245
+#: src/frontends/qt4/ui/TabularUi.ui:1197
 msgid "Header:"
 msgstr "Cabeçalho:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1252
+#: src/frontends/qt4/ui/TabularUi.ui:1204
 msgid "Repeat this row as header on every (except the first) page"
 msgstr "Repetir esta linha como cabeçalho em cada (excepto a primeira) página"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1255
-#: src/frontends/qt4/ui/TabularUi.ui:1292
-#: src/frontends/qt4/ui/TabularUi.ui:1333
-#: src/frontends/qt4/ui/TabularUi.ui:1364
-#: src/frontends/qt4/ui/TabularUi.ui:1402 src/frontends/qt4/GuiToolbar.cpp:350
+#: src/frontends/qt4/ui/TabularUi.ui:1207
+#: src/frontends/qt4/ui/TabularUi.ui:1244
+#: src/frontends/qt4/ui/TabularUi.ui:1285
+#: src/frontends/qt4/ui/TabularUi.ui:1316
+#: src/frontends/qt4/ui/TabularUi.ui:1354 src/frontends/qt4/GuiToolbar.cpp:350
 #: src/frontends/qt4/GuiToolbar.cpp:359
 msgid "on"
 msgstr "ligado"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1265
-#: src/frontends/qt4/ui/TabularUi.ui:1272
+#: src/frontends/qt4/ui/TabularUi.ui:1217
+#: src/frontends/qt4/ui/TabularUi.ui:1224
+#: src/frontends/qt4/ui/TabularUi.ui:1251
+#: src/frontends/qt4/ui/TabularUi.ui:1258
+#: src/frontends/qt4/ui/TabularUi.ui:1292
 #: src/frontends/qt4/ui/TabularUi.ui:1299
-#: src/frontends/qt4/ui/TabularUi.ui:1306
-#: src/frontends/qt4/ui/TabularUi.ui:1340
-#: src/frontends/qt4/ui/TabularUi.ui:1347
-#: src/frontends/qt4/ui/TabularUi.ui:1371
-#: src/frontends/qt4/ui/TabularUi.ui:1378
+#: src/frontends/qt4/ui/TabularUi.ui:1323
+#: src/frontends/qt4/ui/TabularUi.ui:1330
 msgid "double"
 msgstr "duplo"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1279
+#: src/frontends/qt4/ui/TabularUi.ui:1231
 msgid "First header:"
 msgstr "Primeiro cabeçalho:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1286
+#: src/frontends/qt4/ui/TabularUi.ui:1238
 msgid "This row is the header of the first page"
 msgstr "Esta linha é o cabeçalho da primeira página"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1313
+#: src/frontends/qt4/ui/TabularUi.ui:1265
 msgid "Don't output the first header"
 msgstr "Não escrever o primeiro cabeçalho"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1316
-#: src/frontends/qt4/ui/TabularUi.ui:1388
+#: src/frontends/qt4/ui/TabularUi.ui:1268
+#: src/frontends/qt4/ui/TabularUi.ui:1340
 msgid "is empty"
 msgstr "está vazio"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1323
+#: src/frontends/qt4/ui/TabularUi.ui:1275
 msgid "Footer:"
 msgstr "Rodapé:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1330
+#: src/frontends/qt4/ui/TabularUi.ui:1282
 msgid "Repeat this row as footer on every (except the last) page"
 msgstr "Repetir esta linha como rodapé em cada (excepto a última) página"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1354
+#: src/frontends/qt4/ui/TabularUi.ui:1306
 msgid "Last footer:"
 msgstr "Último rodapé:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1361
+#: src/frontends/qt4/ui/TabularUi.ui:1313
 msgid "This row is the footer of the last page"
 msgstr "Esta linha é o rodapé da ultima página"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1385
+#: src/frontends/qt4/ui/TabularUi.ui:1337
 msgid "Don't output the last footer"
 msgstr "Não escrever o último rodapé"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1395
+#: src/frontends/qt4/ui/TabularUi.ui:1347
 msgid "Caption:"
 msgstr "Legenda:"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1412
+#: src/frontends/qt4/ui/TabularUi.ui:1364
 msgid "Set a page break on the current row"
 msgstr "Define uma quebra de página na linha actual"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1415
+#: src/frontends/qt4/ui/TabularUi.ui:1367
 msgid "Page &break on current row"
 msgstr "&Quebra de página na linha actual"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1428
+#: src/frontends/qt4/ui/TabularUi.ui:1380
 #, fuzzy
 msgid "Horizontal alignment of the longtable"
 msgstr "Alinhamento horizontal do conteúdo dentro da caixa"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1431
+#: src/frontends/qt4/ui/TabularUi.ui:1383
 #, fuzzy
 msgid "Longtable alignment"
 msgstr "Alinhamento &horizontal:"
+
+#: src/frontends/qt4/ui/TabularUi.ui:1497
+msgid "Current cell:"
+msgstr "Célula actual:"
+
+#: src/frontends/qt4/ui/TabularUi.ui:1521
+msgid "Current row position"
+msgstr "Posição da linha actual"
+
+#: src/frontends/qt4/ui/TabularUi.ui:1545
+msgid "Current column position"
+msgstr "Posição da coluna actual"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:55
 msgid "Close this dialog"
@@ -18964,13 +18980,13 @@ msgid "Changes detected"
 msgstr ""
 
 #: src/VCBackend.cpp:739 src/VCBackend.cpp:743
-#: src/frontends/qt4/FindAndReplace.cpp:349
+#: src/frontends/qt4/FindAndReplace.cpp:365
 #, fuzzy
 msgid "&Yes"
 msgstr "Sim"
 
 #: src/VCBackend.cpp:739 src/VCBackend.cpp:743
-#: src/frontends/qt4/FindAndReplace.cpp:349
+#: src/frontends/qt4/FindAndReplace.cpp:365
 #, fuzzy
 msgid "&No"
 msgstr "Não"
@@ -19116,57 +19132,82 @@ msgstr "Dings 4"
 msgid "Directories"
 msgstr "Pastas"
 
-#: src/frontends/qt4/FindAndReplace.cpp:280
+#: src/frontends/qt4/FindAndReplace.cpp:68
+#, fuzzy
+msgid "&Anything"
+msgstr "Qualquer coisa"
+
+#: src/frontends/qt4/FindAndReplace.cpp:70
+#, fuzzy
+msgid "Any non-&empty"
+msgstr "Qualquer não-vazio"
+
+#: src/frontends/qt4/FindAndReplace.cpp:72
+#, fuzzy
+msgid "Any &word"
+msgstr "Qualquer palavra"
+
+#: src/frontends/qt4/FindAndReplace.cpp:74
+#, fuzzy
+msgid "Any &number"
+msgstr "Qualquer número"
+
+#: src/frontends/qt4/FindAndReplace.cpp:76
+#, fuzzy
+msgid "&User-defined"
+msgstr "Definido pelo utilizador"
+
+#: src/frontends/qt4/FindAndReplace.cpp:296
 msgid "file[[scope]]"
 msgstr ""
 
-#: src/frontends/qt4/FindAndReplace.cpp:283
+#: src/frontends/qt4/FindAndReplace.cpp:299
 #, fuzzy
 msgid "master document[[scope]]"
 msgstr "Documento Principal"
 
-#: src/frontends/qt4/FindAndReplace.cpp:286
+#: src/frontends/qt4/FindAndReplace.cpp:302
 #, fuzzy
 msgid "open files[[scope]]"
 msgstr "Ficheiros e&xemplo:"
 
-#: src/frontends/qt4/FindAndReplace.cpp:289
+#: src/frontends/qt4/FindAndReplace.cpp:305
 #, fuzzy
 msgid "manuals[[scope]]"
 msgstr "Todos os Ma&nuais"
 
-#: src/frontends/qt4/FindAndReplace.cpp:293
+#: src/frontends/qt4/FindAndReplace.cpp:309
 #, c-format
 msgid ""
 "End of %1$s reached while searching forward.\n"
 "Continue searching from begin?"
 msgstr ""
 
-#: src/frontends/qt4/FindAndReplace.cpp:296
+#: src/frontends/qt4/FindAndReplace.cpp:312
 #, c-format
 msgid ""
 "Beginning of %1$s reached while searching backwards.\n"
 "Continue searching from end?"
 msgstr ""
 
-#: src/frontends/qt4/FindAndReplace.cpp:348
+#: src/frontends/qt4/FindAndReplace.cpp:364
 msgid "Wrap search?"
 msgstr ""
 
-#: src/frontends/qt4/FindAndReplace.cpp:399
+#: src/frontends/qt4/FindAndReplace.cpp:415
 #, fuzzy
 msgid "Nothing to search"
 msgstr "Nada a fazer"
 
-#: src/frontends/qt4/FindAndReplace.cpp:445
+#: src/frontends/qt4/FindAndReplace.cpp:461
 #, fuzzy
 msgid "No open document(s) in which to search"
 msgstr "Abrir documentos em &tabs"
 
-#: src/frontends/qt4/FindAndReplace.cpp:542
+#: src/frontends/qt4/FindAndReplace.cpp:553
 #, fuzzy
-msgid "Find LyX Dialog"
-msgstr "Procurar &Próximo"
+msgid "Advanced Find and Replace"
+msgstr "Procurar e Substituir"
 
 #: src/frontends/qt4/GuiAbout.cpp:51
 msgid "ERROR: LyX wasn't able to read CREDITS file\n"
@@ -23214,6 +23255,16 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Utilizador desconhecido"
 
+#~ msgid "Prev"
+#~ msgstr "Prev"
+
+#~ msgid "Match..."
+#~ msgstr "Corresponder..."
+
+#, fuzzy
+#~ msgid "Find LyX Dialog"
+#~ msgstr "Procurar &Próximo"
+
 #~ msgid "The Enter key works, too"
 #~ msgstr "A tecla Enter também funciona"
 
@@ -23447,10 +23498,6 @@ msgstr "Utilizador desconhecido"
 
 #~ msgid "Latex"
 #~ msgstr "Latex"
-
-#, fuzzy
-#~ msgid "Regular Expression"
-#~ msgstr "E&xpressão regular"
 
 #, fuzzy
 #~ msgid "View Output|V"
