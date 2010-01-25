@@ -722,6 +722,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="toolTip">
+                   <string>If unchecked, the search will be limited to occurrences of the selected text and paragraph style</string>
+                  </property>
                <property name="text">
                 <string>Ignore &amp;format</string>
                </property>
