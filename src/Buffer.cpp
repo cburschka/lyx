@@ -218,6 +218,8 @@ public:
 
 	///
 	frontend::WorkAreaManager * wa_;
+	///
+	frontend::GuiBufferDelegate * gui_;
 
 	///
 	Undo undo_;
@@ -297,7 +299,7 @@ Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_,
 	: lyx_clean(true), bak_clean(true), unnamed(false),
 	  read_only(readonly_), filename(file), file_fully_loaded(false),
 	  toc_backend(&parent), macro_lock(false), timestamp_(0),
-	  checksum_(0), wa_(0), undo_(parent), bibinfo_cache_valid_(false),
+	  checksum_(0), wa_(0), gui_(0), undo_(parent), bibinfo_cache_valid_(false),
 	  cloned_buffer_(cloned_buffer), parent_buffer(0)
 {
 	if (!cloned_buffer_) {
@@ -318,7 +320,7 @@ Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_,
 
 
 Buffer::Buffer(string const & file, bool readonly, Buffer const * cloned_buffer)
-	: d(new Impl(*this, FileName(file), readonly, cloned_buffer)), gui_(0)
+	: d(new Impl(*this, FileName(file), readonly, cloned_buffer))
 {
 	LYXERR(Debug::INFO, "Buffer::Buffer()");
 	if (cloned_buffer) {
@@ -344,7 +346,7 @@ Buffer::~Buffer()
 	// saved properly, before it goes into the void.
 
 	// GuiView already destroyed
-	gui_ = 0;
+	d->gui_ = 0;
 
 	if (isInternal()) {
 		// No need to do additional cleanups for internal buffer.
@@ -2907,36 +2909,36 @@ ErrorList & Buffer::errorList(string const & type) const
 void Buffer::updateTocItem(std::string const & type,
 	DocIterator const & dit) const
 {
-	if (gui_)
-		gui_->updateTocItem(type, dit);
+	if (d->gui_)
+		d->gui_->updateTocItem(type, dit);
 }
 
 
 void Buffer::structureChanged() const
 {
-	if (gui_)
-		gui_->structureChanged();
+	if (d->gui_)
+		d->gui_->structureChanged();
 }
 
 
 void Buffer::errors(string const & err, bool from_master) const
 {
-	if (gui_)
-		gui_->errors(err, from_master);
+	if (d->gui_)
+		d->gui_->errors(err, from_master);
 }
 
 
 void Buffer::message(docstring const & msg) const
 {
-	if (gui_)
-		gui_->message(msg);
+	if (d->gui_)
+		d->gui_->message(msg);
 }
 
 
 void Buffer::setBusy(bool on) const
 {
-	if (gui_)
-		gui_->setBusy(on);
+	if (d->gui_)
+		d->gui_->setBusy(on);
 }
 
 
@@ -2949,20 +2951,20 @@ void Buffer::updateTitles() const
 
 void Buffer::resetAutosaveTimers() const
 {
-	if (gui_)
-		gui_->resetAutosaveTimers();
+	if (d->gui_)
+		d->gui_->resetAutosaveTimers();
 }
 
 
 bool Buffer::hasGuiDelegate() const
 {
-	return gui_;
+	return d->gui_;
 }
 
 
 void Buffer::setGuiDelegate(frontend::GuiBufferDelegate * gui)
 {
-	gui_ = gui;
+	d->gui_ = gui;
 }
 
 
@@ -3506,7 +3508,7 @@ void Buffer::updateLabels(UpdateScope scope, UpdateType utype) const
 			master->updateLabels(UpdateMaster, utype);
 			// Do this here in case the master has no gui associated with it. Then, 
 			// the TocModel is not updated and TocModel::toc_ is invalid (bug 5699).
-			if (!master->gui_)
+			if (!master->d->gui_)
 				structureChanged();
 
 			// was buf referenced from the master (i.e. not in bufToUpdate anymore)?
