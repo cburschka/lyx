@@ -77,18 +77,22 @@ FindAndReplaceWidget::FindAndReplaceWidget(GuiView & view)
 	regCustom->setData("");
 	regexpInsertPB->setMenu(menu);
 
-	connect(menu, SIGNAL(triggered(QAction *)), this, SLOT(insertRegexp(QAction *)));
+	connect(menu, SIGNAL(triggered(QAction *)),
+		this, SLOT(insertRegexp(QAction *)));
 }
 
 
 bool FindAndReplaceWidget::eventFilter(QObject *obj, QEvent *event)
 {
-	if (obj == find_work_area_ && event->type() == QEvent::KeyPress) {
+	if (obj == find_work_area_
+	    && event->type() == QEvent::KeyPress) {
 		QKeyEvent *e = static_cast<QKeyEvent *> (event);
-		if (e->key() == Qt::Key_Escape && e->modifiers() == Qt::NoModifier) {
+		if (e->key() == Qt::Key_Escape
+		    && e->modifiers() == Qt::NoModifier) {
 			on_closePB_clicked();
 			return true;
-		} else if (e->key() == Qt::Key_Enter || e->key() == Qt::Key_Return) {
+		} else if (e->key() == Qt::Key_Enter
+			   || e->key() == Qt::Key_Return) {
 			if (e->modifiers() == Qt::ShiftModifier) {
 				on_findPrevPB_clicked();
 				return true;
@@ -96,18 +100,22 @@ bool FindAndReplaceWidget::eventFilter(QObject *obj, QEvent *event)
 				on_findNextPB_clicked();
 				return true;
 			}
-		} else if (e->key() == Qt::Key_Tab && e->modifiers() == Qt::NoModifier) {
+		} else if (e->key() == Qt::Key_Tab
+			   && e->modifiers() == Qt::NoModifier) {
 			LYXERR(Debug::FIND, "Focusing replace WA");
 			replace_work_area_->setFocus();
 			return true;
 		}
 	}
-	if (obj == replace_work_area_ && event->type() == QEvent::KeyPress) {
+	if (obj == replace_work_area_
+	    && event->type() == QEvent::KeyPress) {
 		QKeyEvent *e = static_cast<QKeyEvent *> (event);
-		if (e->key() == Qt::Key_Escape && e->modifiers() == Qt::NoModifier) {
+		if (e->key() == Qt::Key_Escape
+		    && e->modifiers() == Qt::NoModifier) {
 			on_closePB_clicked();
 			return true;
-		} else if (e->key() == Qt::Key_Enter || e->key() == Qt::Key_Return) {
+		} else if (e->key() == Qt::Key_Enter
+			   || e->key() == Qt::Key_Return) {
 			if (e->modifiers() == Qt::ShiftModifier) {
 				on_replacePrevPB_clicked();
 				return true;
@@ -137,8 +145,10 @@ static docstring buffer_to_latex(Buffer & buffer) {
 	ParagraphList::const_iterator pit = buffer.paragraphs().begin();
 	ParagraphList::const_iterator const end = buffer.paragraphs().end();
 	for (; pit != end; ++pit) {
-		TeXOnePar(buffer, buffer.text(), pit, os, buffer.texrow(), runparams);
-		LYXERR(Debug::FIND, "searchString up to here: " << os.str());
+		TeXOnePar(buffer, buffer.text(),
+			  pit, os, buffer.texrow(), runparams);
+		LYXERR(Debug::FIND, "searchString up to here: "
+			<< os.str());
 	}
 	return os.str();
 }
@@ -147,8 +157,9 @@ static docstring buffer_to_latex(Buffer & buffer) {
 static vector<string> const & allManualsFiles() {
 	static vector<string> v;
 	static const char * files[] = {
-		"Intro", "UserGuide", "Tutorial", "Additional", "EmbeddedObjects",
-		"Math", "Customization", "Shortcuts", "LFUNs", "LaTeXConfig"
+		"Intro", "UserGuide", "Tutorial", "Additional",
+		"EmbeddedObjects", "Math", "Customization", "Shortcuts",
+		"LFUNs", "LaTeXConfig"
 	};
 	if (v.empty()) {
 		FileName fname;
@@ -175,7 +186,10 @@ static bool next_document_buffer(Buffer * & p_buf) {
 	do {
 		p_old = p_master;
 		p_master = const_cast<Buffer *>(p_master->masterBuffer());
-		LYXERR(Debug::FIND, "p_old=" << p_old << ", p_master=" << p_master);
+		LYXERR(Debug::FIND, "p_old="
+			<< p_old 
+			<< ", p_master=" 
+			<< p_master);
 	} while (p_master != p_old);
 	LASSERT(p_master != NULL, /**/);
 	vector<Buffer *> v_children;
@@ -183,7 +197,8 @@ static bool next_document_buffer(Buffer * & p_buf) {
 	v_children.push_back(p_master);
 	p_master->getChildren(v_children, true);
 	LYXERR(Debug::FIND, "v_children.size()=" << v_children.size());
-	vector<Buffer *>::const_iterator it = find(v_children.begin(), v_children.end(), p_buf);
+	vector<Buffer *>::const_iterator it =
+		find(v_children.begin(), v_children.end(), p_buf);
 	LASSERT(it != v_children.end(), /**/)
 	++it;
 	if (it == v_children.end()) {
@@ -209,7 +224,9 @@ static bool prev_document_buffer(Buffer * & p_buf) {
 	do {
 		p_old = p_master;
 		p_master = const_cast<Buffer *>(p_master->masterBuffer());
-		LYXERR(Debug::FIND, "p_old=" << p_old << ", p_master=" << p_master);
+		LYXERR(Debug::FIND, 
+			"p_old=" << p_old 
+			<< ", p_master=" << p_master);
 	} while (p_master != p_old);
 	LASSERT(p_master != NULL, /**/);
 	vector<Buffer *> v_children;
@@ -217,7 +234,8 @@ static bool prev_document_buffer(Buffer * & p_buf) {
 	v_children.push_back(p_master);
 	p_master->getChildren(v_children, true);
 	LYXERR(Debug::FIND, "v_children.size()=" << v_children.size());
-	vector<Buffer *>::const_iterator it = find(v_children.begin(), v_children.end(), p_buf);
+	vector<Buffer *>::const_iterator it =
+		find(v_children.begin(), v_children.end(), p_buf);
 	LASSERT(it != v_children.end(), /**/)
 	if (it == v_children.begin()) {
 		it = v_children.end();
@@ -235,7 +253,9 @@ static bool prev_document_buffer(Buffer * & p_buf) {
  **
  ** Return true if restarted from scratch.
  **/
-static bool next_prev_buffer(Buffer * & buf, FindAndReplaceOptions const & opt) {
+static bool next_prev_buffer(Buffer * & buf,
+			     FindAndReplaceOptions const & opt)
+{
 	bool restarted = false;
 	switch (opt.scope) {
 	case FindAndReplaceOptions::S_BUFFER:
@@ -258,7 +278,8 @@ static bool next_prev_buffer(Buffer * & buf, FindAndReplaceOptions const & opt) 
 		break;
 	case FindAndReplaceOptions::S_ALL_MANUALS:
 		vector<string> const & v = allManualsFiles();
-		vector<string>::const_iterator it = find(v.begin(), v.end(), buf->absFileName());
+		vector<string>::const_iterator it =
+			find(v.begin(), v.end(), buf->absFileName());
 		if (it == v.end()) {
 			it = v.begin();
 		} else if (opt.forward) {
@@ -317,7 +338,8 @@ docstring question_string(FindAndReplaceOptions const & opt)
 }
 
 
-void FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt) {
+void FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt)
+{
 	int wrap_answer = -1;
 	ostringstream oss;
 	oss << opt;
@@ -354,7 +376,8 @@ void FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt) {
 			return;
 		}
 
-		// No match found in current buffer: select next buffer in scope, if any
+		// No match found in current buffer:
+		// select next buffer in scope, if any
 		bool prompt = next_prev_buffer(buf, opt);
 		if (prompt) {
 			if (wrap_answer != -1)
@@ -376,7 +399,8 @@ void FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt) {
 			lyx::dispatch(FuncRequest(LFUN_BUFFER_END));
 			bv->cursor().setCursor(doc_iterator_end(buf));
 			bv->cursor().backwardPos();
-			LYXERR(Debug::FIND, "findBackAdv5: cur: " << bv->cursor());
+			LYXERR(Debug::FIND, "findBackAdv5: cur: "
+				<< bv->cursor());
 		}
 		bv->clearSelection();
 	} while (wrap_answer != 1);
@@ -407,25 +431,33 @@ void FindAndReplaceWidget::findAndReplace(
 		runparams.linelen = 100000; //lyxrc.plaintext_linelen;
 		runparams.dryrun = true;
 		for (; it != end; ++it) {
-			LYXERR(Debug::FIND, "Adding to search string: '" << it->asString(false) << "'");
-			searchString += it->stringify(pos_type(0), it->size(), AS_STR_INSETS, runparams);
+			LYXERR(Debug::FIND, "Adding to search string: '"
+				<< it->asString(false)
+				<< "'");
+			searchString +=
+				it->stringify(pos_type(0), it->size(),
+					      AS_STR_INSETS, runparams);
 		}
 	}
 	if (to_utf8(searchString).empty()) {
 		buffer.message(_("Nothing to search"));
 		return;
 	}
-	bool const regexp = to_utf8(searchString).find("\\regexp") != std::string::npos;
+	bool const regexp =
+		to_utf8(searchString).find("\\regexp") != std::string::npos;
 	docstring replaceString;
 	if (replace) {
-		Buffer & repl_buffer = replace_work_area_->bufferView().buffer();
+		Buffer & repl_buffer =
+			replace_work_area_->bufferView().buffer();
 		ostringstream oss;
 		repl_buffer.write(oss);
-		replaceString = from_utf8(oss.str()); //buffer_to_latex(replace_buffer);
+		//buffer_to_latex(replace_buffer);
+		replaceString = from_utf8(oss.str());
 	} else {
 		replaceString = from_utf8(LYX_FR_NULL_STRING);
 	}
-	FindAndReplaceOptions::SearchScope scope = FindAndReplaceOptions::S_BUFFER;
+	FindAndReplaceOptions::SearchScope scope =
+		FindAndReplaceOptions::S_BUFFER;
 	if (CurrentDocument->isChecked())
 		scope = FindAndReplaceOptions::S_BUFFER;
 	else if (MasterDocument->isChecked())
@@ -447,8 +479,9 @@ void FindAndReplaceWidget::findAndReplace(
 	       << ", replaceString" << replaceString
 	       << ", keep_case=" << keep_case
 	       << ", scope=" << scope);
-	FindAndReplaceOptions opt(searchString, casesensitive, matchword, ! backwards,
-		expandmacros, ignoreformat, regexp, replaceString, keep_case, scope);
+	FindAndReplaceOptions opt(searchString, casesensitive, matchword,
+				  !backwards, expandmacros, ignoreformat,
+				  regexp, replaceString, keep_case, scope);
 	view_.setBusy(true);
 	findAndReplaceScope(opt);
 	view_.setBusy(false);
@@ -461,7 +494,8 @@ void FindAndReplaceWidget::findAndReplace(bool backwards, bool replace)
 		view_.message(_("No open document(s) in which to search"));
 		return;
 	}
-	// FIXME: create a Dialog::returnFocus() or something instead of this:
+	// FIXME: create a Dialog::returnFocus()
+	// or something instead of this:
 	view_.setCurrentWorkArea(view_.currentMainWorkArea());
 	findAndReplace(caseCB->isChecked(),
 		wordsCB->isChecked(),
@@ -542,7 +576,7 @@ void FindAndReplaceWidget::hideEvent(QHideEvent *ev)
 }
 
 
-bool FindAndReplaceWidget::initialiseParams(std::string const & /* params */)
+bool FindAndReplaceWidget::initialiseParams(std::string const & /*params*/)
 {
 	return true;
 }
@@ -550,7 +584,8 @@ bool FindAndReplaceWidget::initialiseParams(std::string const & /* params */)
 
 FindAndReplace::FindAndReplace(GuiView & parent,
 		Qt::DockWidgetArea area, Qt::WindowFlags flags)
-	: DockView(parent, "Find LyX", qt_("Advanced Find and Replace"), area, flags)
+	: DockView(parent, "Find LyX", qt_("Advanced Find and Replace"),
+		   area, flags)
 {
 	widget_ = new FindAndReplaceWidget(parent);
 	setWidget(widget_);
