@@ -246,7 +246,7 @@ GuiWorkArea::GuiWorkArea(QWidget *)
 
 
 GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & gv)
-	: buffer_view_(0), lyx_view_(0),
+	: buffer_view_(0), read_only_(buffer.isReadonly()), lyx_view_(0),
 	cursor_visible_(false),
 	need_resize_(false), schedule_redraw_(false),
 	preedit_lines_(1), completer_(new GuiCompleter(this, this)),
@@ -440,6 +440,8 @@ void GuiWorkArea::redraw(bool update_metrics)
 
 	if (lyxerr.debugging(Debug::WORKAREA))
 		buffer_view_->coordCache().dump();
+
+	setReadOnly(buffer_view_->buffer().isReadonly());
 }
 
 
@@ -1213,8 +1215,11 @@ void GuiWorkArea::updateWindowTitle()
 }
 
 
-void GuiWorkArea::setReadOnly(bool)
+void GuiWorkArea::setReadOnly(bool read_only)
 {
+	if (read_only_ == read_only)
+		return;
+	read_only_ = read_only;
 	updateWindowTitle();
 	if (this == lyx_view_->currentWorkArea())
 		lyx_view_->updateDialogs();

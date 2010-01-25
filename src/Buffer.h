@@ -492,8 +492,6 @@ public:
 	void errors(std::string const & err, bool from_master = false) const;
 	/// This function is called when the buffer busy status change.
 	void setBusy(bool on) const;
-	/// This function is called when the buffer readonly status change.
-	void setReadOnly(bool on) const;
 	/// Update window titles of all users.
 	void updateTitles() const;
 	/// Reset autosave timers for all users.

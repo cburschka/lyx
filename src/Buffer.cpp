@@ -603,7 +603,7 @@ void Buffer::setReadonly(bool const flag)
 {
 	if (d->read_only != flag) {
 		d->read_only = flag;
-		setReadOnly(flag);
+		changed(false);
 	}
 }
 
@@ -2949,13 +2949,6 @@ void Buffer::setBusy(bool on) const
 {
 	if (gui_)
 		gui_->setBusy(on);
-}
-
-
-void Buffer::setReadOnly(bool on) const
-{
-	if (d->wa_)
-		d->wa_->setReadOnly(on);
 }
 
 

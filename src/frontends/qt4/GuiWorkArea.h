@@ -184,7 +184,7 @@ private:
 	/// hide the cursor
 	virtual void removeCursor();
 
-	/// This function is called when the buffer readonly status change.
+	/// This function should be called to update the buffer readonly status.
 	void setReadOnly(bool);
 
 	/// Update window titles of all users.
@@ -231,6 +231,8 @@ private:
 
 	///
 	BufferView * buffer_view_;
+	/// Read only Buffer status cache.
+	bool read_only_;
 	///
 	GuiView * lyx_view_;
 	/// is the cursor currently displayed

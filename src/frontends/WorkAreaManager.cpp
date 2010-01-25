@@ -46,13 +46,6 @@ void WorkAreaManager::closeAll()
 }
 
 
-void WorkAreaManager::setReadOnly(bool on)
-{
-	for (iterator it = work_areas_.begin(); it != work_areas_.end(); ++it)
-		(*it)->setReadOnly(on);
-}
-
-
 void WorkAreaManager::updateTitles()
 {
 	for (iterator it = work_areas_.begin(); it != work_areas_.end(); ++it)
