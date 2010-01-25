@@ -65,15 +65,15 @@ FindAndReplaceWidget::FindAndReplaceWidget(GuiView & view)
 	replace_work_area_->stopBlinkingCursor();
 
 	QMenu * menu = new QMenu();
-	QAction * regAny = menu->addAction("&Anything");
+	QAction * regAny = menu->addAction(qt_("&Anything"));
 	regAny->setData(".*");
-	QAction * regAnyNonEmpty = menu->addAction("Any non-&empty");
+	QAction * regAnyNonEmpty = menu->addAction(qt_("Any non-&empty"));
 	regAnyNonEmpty->setData(".+");
-	QAction * regAnyWord = menu->addAction("Any &word");
+	QAction * regAnyWord = menu->addAction(qt_("Any &word"));
 	regAnyWord->setData("[a-z]+");
-	QAction * regAnyNumber = menu->addAction("Any &number");
+	QAction * regAnyNumber = menu->addAction(qt_("Any &number"));
 	regAnyNumber->setData("[0-9]+");
-	QAction * regCustom = menu->addAction("&User-defined");
+	QAction * regCustom = menu->addAction(qt_("&User-defined"));
 	regCustom->setData("");
 	regexpInsertPB->setMenu(menu);
 
