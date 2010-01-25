@@ -563,19 +563,6 @@ public:
 		WordLangTuple & word_lang, docstring_list & suggestions) const;
 
 private:
-	/// search for macro in local (buffer) table or in children
-	MacroData const * getBufferMacro(docstring const & name,
-					 DocIterator const & pos) const;
-	/** Update macro table starting with position of it
-	    \param it in some text inset
-	*/
-	void updateMacros(DocIterator & it,
-				     DocIterator & scope) const;
-	///
-	void setLabel(ParIterator & it, UpdateType utype) const;
-	///
-	void collectRelatives(BufferSet & bufs) const;
-
 	///
 	bool readFileHelper(support::FileName const & s);
 	///
@@ -585,11 +572,6 @@ private:
 	*/
 	ReadStatus readFile(Lexer &, support::FileName const & filename,
 			    bool fromString = false);
-
-	/** If we have branches that use the file suffix
-	    feature, return the file name with suffix appended.
-	*/
-	support::FileName exportFileName() const;
 
 	/// Use the Pimpl idiom to hide the internals.
 	class Impl;

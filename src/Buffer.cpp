@@ -147,7 +147,7 @@ class BufferSet : public std::set<Buffer const *> {};
 class Buffer::Impl
 {
 public:
-	Impl(Buffer & parent, FileName const & file, bool readonly, Buffer const * cloned_buffer);
+	Impl(Buffer * owner, FileName const & file, bool readonly, Buffer const * cloned_buffer);
 
 	~Impl()
 	{
@@ -157,6 +157,25 @@ public:
 		}
 		delete inset;
 	}
+
+	/// search for macro in local (buffer) table or in children
+	MacroData const * getBufferMacro(docstring const & name,
+		DocIterator const & pos) const;
+
+	/// Update macro table starting with position of it \param it in some
+	/// text inset.
+	void updateMacros(DocIterator & it, DocIterator & scope);
+	///
+	void setLabel(ParIterator & it, UpdateType utype) const;
+	///
+	void collectRelatives(BufferSet & bufs) const;
+
+	/** If we have branches that use the file suffix
+	    feature, return the file name with suffix appended.
+	*/
+	support::FileName exportFileName() const;
+
+	Buffer * owner_;
 
 	BufferParams params;
 	LyXVC lyxvc;
@@ -197,7 +216,8 @@ public:
 	/// map from the macro name to the position map,
 	/// which maps the macro definition position to the scope and the MacroData.
 	NamePositionScopeMacroMap macros;
-	bool macro_lock;
+	/// This seem to change the way Buffer::getMacro() works
+	mutable bool macro_lock;
 
 	/// positions of child buffers in the buffer
 	typedef map<Buffer const * const, DocIterator> BufferPositionMap;
@@ -294,17 +314,17 @@ static FileName createBufferTmpDir()
 }
 
 
-Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_,
+Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	Buffer const * cloned_buffer)
-	: lyx_clean(true), bak_clean(true), unnamed(false),
+	: owner_(owner), lyx_clean(true), bak_clean(true), unnamed(false),
 	  read_only(readonly_), filename(file), file_fully_loaded(false),
-	  toc_backend(&parent), macro_lock(false), timestamp_(0),
-	  checksum_(0), wa_(0), gui_(0), undo_(parent), bibinfo_cache_valid_(false),
+	  toc_backend(owner), macro_lock(false), timestamp_(0),
+	  checksum_(0), wa_(0), gui_(0), undo_(*owner), bibinfo_cache_valid_(false),
 	  cloned_buffer_(cloned_buffer), parent_buffer(0)
 {
 	if (!cloned_buffer_) {
 		temppath = createBufferTmpDir();
-		lyxvc.setBuffer(&parent);
+		lyxvc.setBuffer(owner_);
 		if (use_gui)
 			wa_ = new frontend::WorkAreaManager;
 		return;
@@ -320,7 +340,7 @@ Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_,
 
 
 Buffer::Buffer(string const & file, bool readonly, Buffer const * cloned_buffer)
-	: d(new Impl(*this, FileName(file), readonly, cloned_buffer))
+	: d(new Impl(this, FileName(file), readonly, cloned_buffer))
 {
 	LYXERR(Debug::INFO, "Buffer::Buffer()");
 	if (cloned_buffer) {
@@ -524,23 +544,23 @@ void Buffer::setChild(DocIterator const & dit, Buffer * child)
 string Buffer::latexName(bool const no_path) const
 {
 	FileName latex_name =
-		makeLatexName(exportFileName());
+		makeLatexName(d->exportFileName());
 	return no_path ? latex_name.onlyFileName()
 		: latex_name.absFilename();
 }
 
 
-FileName Buffer::exportFileName() const
+FileName Buffer::Impl::exportFileName() const
 {
 	docstring const branch_suffix =
-		params().branchlist().getFilenameSuffix();
+		params.branchlist().getFilenameSuffix();
 	if (branch_suffix.empty())
-		return fileName();
+		return filename;
 
-	string const name = fileName().onlyFileNameWithoutExt()
+	string const name = filename.onlyFileNameWithoutExt()
 		+ to_utf8(branch_suffix);
-	FileName res(fileName().onlyPath().absFilename() + "/" + name);
-	res.changeExtension(fileName().extension());
+	FileName res(filename.onlyPath().absFilename() + "/" + name);
+	res.changeExtension(filename.extension());
 
 	return res;
 }
@@ -2328,15 +2348,15 @@ Buffer const * Buffer::parent() const
 }
 
 
-void Buffer::collectRelatives(BufferSet & bufs) const
+void Buffer::Impl::collectRelatives(BufferSet & bufs) const
 {
-	bufs.insert(this);
+	bufs.insert(owner_);
 	if (parent())
-		parent()->collectRelatives(bufs);
+		parent()->d->collectRelatives(bufs);
 
 	// loop over children
-	Impl::BufferPositionMap::iterator it = d->children_positions.begin();
-	Impl::BufferPositionMap::iterator end = d->children_positions.end();
+	BufferPositionMap::const_iterator it = children_positions.begin();
+	BufferPositionMap::const_iterator end = children_positions.end();
 	for (; it != end; ++it)
 		bufs.insert(const_cast<Buffer *>(it->first));
 }
@@ -2345,7 +2365,7 @@ void Buffer::collectRelatives(BufferSet & bufs) const
 std::vector<Buffer const *> Buffer::allRelatives() const
 {
 	BufferSet bufs;
-	collectRelatives(bufs);
+	d->collectRelatives(bufs);
 	BufferSet::iterator it = bufs.begin();
 	std::vector<Buffer const *> ret;
 	for (; it != bufs.end(); ++it)
@@ -2408,12 +2428,12 @@ std::vector<Buffer *> Buffer::getChildren(bool grand_children) const
 
 
 template<typename M>
-typename M::iterator greatest_below(M & m, typename M::key_type const & x)
+typename M::const_iterator greatest_below(M & m, typename M::key_type const & x)
 {
 	if (m.empty())
 		return m.end();
 
-	typename M::iterator it = m.lower_bound(x);
+	typename M::const_iterator it = m.lower_bound(x);
 	if (it == m.begin())
 		return m.end();
 
@@ -2422,7 +2442,7 @@ typename M::iterator greatest_below(M & m, typename M::key_type const & x)
 }
 
 
-MacroData const * Buffer::getBufferMacro(docstring const & name,
+MacroData const * Buffer::Impl::getBufferMacro(docstring const & name,
 					 DocIterator const & pos) const
 {
 	LYXERR(Debug::MACROS, "Searching for " << to_ascii(name) << " at " << pos);
@@ -2432,15 +2452,14 @@ MacroData const * Buffer::getBufferMacro(docstring const & name,
 		return 0;
 
 	// we haven't found anything yet
-	DocIterator bestPos = par_iterator_begin();
+	DocIterator bestPos = owner_->par_iterator_begin();
 	MacroData const * bestData = 0;
 
 	// find macro definitions for name
-	Impl::NamePositionScopeMacroMap::iterator nameIt
-		= d->macros.find(name);
-	if (nameIt != d->macros.end()) {
+	NamePositionScopeMacroMap::const_iterator nameIt = macros.find(name);
+	if (nameIt != macros.end()) {
 		// find last definition in front of pos or at pos itself
-		Impl::PositionScopeMacroMap::const_iterator it
+		PositionScopeMacroMap::const_iterator it
 			= greatest_below(nameIt->second, pos);
 		if (it != nameIt->second.end()) {
 			while (true) {
@@ -2463,9 +2482,9 @@ MacroData const * Buffer::getBufferMacro(docstring const & name,
 	}
 
 	// find macros in included files
-	Impl::PositionScopeBufferMap::const_iterator it
-		= greatest_below(d->position_to_children, pos);
-	if (it == d->position_to_children.end())
+	PositionScopeBufferMap::const_iterator it
+		= greatest_below(position_to_children, pos);
+	if (it == position_to_children.end())
 		// no children before
 		return bestData;
 
@@ -2477,10 +2496,10 @@ MacroData const * Buffer::getBufferMacro(docstring const & name,
 		// scope ends behind pos?
 		if (pos < it->second.first) {
 			// look for macro in external file
-			d->macro_lock = true;
+			macro_lock = true;
 			MacroData const * data
-			= it->second.second->getMacro(name, false);
-			d->macro_lock = false;
+				= it->second.second->getMacro(name, false);
+			macro_lock = false;
 			if (data) {
 				bestPos = it->first;
 				bestData = data;
@@ -2489,7 +2508,7 @@ MacroData const * Buffer::getBufferMacro(docstring const & name,
 		}
 
 		// try previous file if there is one
-		if (it == d->position_to_children.begin())
+		if (it == position_to_children.begin())
 			break;
 		--it;
 	}
@@ -2506,7 +2525,7 @@ MacroData const * Buffer::getMacro(docstring const & name,
 		return 0;
 
 	// query buffer macros
-	MacroData const * data = getBufferMacro(name, pos);
+	MacroData const * data = d->getBufferMacro(name, pos);
 	if (data != 0)
 		return data;
 
@@ -2554,7 +2573,7 @@ MacroData const * Buffer::getMacro(docstring const & name,
 }
 
 
-void Buffer::updateMacros(DocIterator & it, DocIterator & scope) const
+void Buffer::Impl::updateMacros(DocIterator & it, DocIterator & scope)
 {
 	pit_type const lastpit = it.lastpit();
 
@@ -2591,20 +2610,20 @@ void Buffer::updateMacros(DocIterator & it, DocIterator & scope) const
 				// get buffer of external file
 				InsetInclude const & inset =
 					static_cast<InsetInclude const &>(*iit->inset);
-				d->macro_lock = true;
+				macro_lock = true;
 				Buffer * child = inset.getChildBuffer();
-				d->macro_lock = false;
+				macro_lock = false;
 				if (!child)
 					continue;
 
 				// register its position, but only when it is
 				// included first in the buffer
-				if (d->children_positions.find(child) ==
-					d->children_positions.end())
-						d->children_positions[child] = it;
+				if (children_positions.find(child) ==
+					children_positions.end())
+						children_positions[child] = it;
 
 				// register child with its scope
-				d->position_to_children[it] = Impl::ScopeBuffer(scope, child);
+				position_to_children[it] = Impl::ScopeBuffer(scope, child);
 				continue;
 			}
 
@@ -2614,7 +2633,7 @@ void Buffer::updateMacros(DocIterator & it, DocIterator & scope) const
 			// get macro data
 			MathMacroTemplate & macroTemplate =
 				static_cast<MathMacroTemplate &>(*iit->inset);
-			MacroContext mc(this, it);
+			MacroContext mc(owner_, it);
 			macroTemplate.updateToContext(mc);
 
 			// valid?
@@ -2628,8 +2647,8 @@ void Buffer::updateMacros(DocIterator & it, DocIterator & scope) const
 			// register macro
 			// FIXME (Abdel), I don't understandt why we pass 'it' here
 			// instead of 'macroTemplate' defined above... is this correct?
-			d->macros[macroTemplate.name()][it] =
-				Impl::ScopeMacro(scope, MacroData(const_cast<Buffer *>(this), it));
+			macros[macroTemplate.name()][it] =
+				Impl::ScopeMacro(scope, MacroData(const_cast<Buffer *>(owner_), it));
 		}
 
 		// next paragraph
@@ -2658,7 +2677,7 @@ void Buffer::updateMacros() const
 	DocIterator it = par_iterator_begin();
 	DocIterator outerScope = it;
 	outerScope.pit() = outerScope.lastpit() + 2;
-	updateMacros(it, outerScope);
+	d->updateMacros(it, outerScope);
 }
 
 
@@ -3250,7 +3269,7 @@ bool Buffer::doExport(string const & format, bool put_in_tempdir,
 		return true;
 	}
 
-	result_file = changeExtension(exportFileName().absFilename(), ext);
+	result_file = changeExtension(d->exportFileName().absFilename(), ext);
 	// We need to copy referenced files (e. g. included graphics
 	// if format == "dvi") to the result dir.
 	vector<ExportedFile> const files =
@@ -3615,9 +3634,9 @@ static bool needEnumCounterReset(ParIterator const & it)
 
 
 // set the label of a paragraph. This includes the counters.
-void Buffer::setLabel(ParIterator & it, UpdateType utype) const
+void Buffer::Impl::setLabel(ParIterator & it, UpdateType utype) const
 {
-	BufferParams const & bp = this->masterBuffer()->params();
+	BufferParams const & bp = owner_->masterBuffer()->params();
 	DocumentClass const & textclass = bp.documentClass();
 	Paragraph & par = it.paragraph();
 	Layout const & layout = par.layout();
@@ -3713,9 +3732,9 @@ void Buffer::setLabel(ParIterator & it, UpdateType utype) const
 		string const & type = counters.current_float();
 		docstring full_label;
 		if (type.empty())
-			full_label = this->B_("Senseless!!! ");
+			full_label = owner_->B_("Senseless!!! ");
 		else {
-			docstring name = this->B_(textclass.floats().getType(type).name());
+			docstring name = owner_->B_(textclass.floats().getType(type).name());
 			if (counters.hasCounter(from_utf8(type))) {
 				string const & lang = par.getParLanguage(bp)->code();
 				counters.step(from_utf8(type), utype);
@@ -3770,7 +3789,7 @@ void Buffer::updateLabels(ParIterator & parit, UpdateType utype) const
 		}
 		
 		// set the counter for this paragraph
-		setLabel(parit, utype);
+		d->setLabel(parit, utype);
 
 		// now the insets
 		InsetList::const_iterator iit = parit->insetList().begin();
