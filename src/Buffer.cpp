@@ -2214,12 +2214,6 @@ bool Buffer::isClean() const
 }
 
 
-bool Buffer::isBakClean() const
-{
-	return d->bak_clean;
-}
-
-
 bool Buffer::isExternallyModified(CheckMethod method) const
 {
 	LASSERT(d->filename.exists(), /**/);
@@ -2251,12 +2245,6 @@ void Buffer::markClean() const
 	}
 	// if the .lyx file has been saved, we don't need an
 	// autosave
-	d->bak_clean = true;
-}
-
-
-void Buffer::markBakClean() const
-{
 	d->bak_clean = true;
 }
 
@@ -3097,7 +3085,7 @@ void Buffer::moveAutosaveFile(support::FileName const & oldauto) const
 // Perfect target for a thread...
 void Buffer::autoSave() const
 {
-	if (isBakClean() || isReadonly()) {
+	if (d->bak_clean || isReadonly()) {
 		// We don't save now, but we'll try again later
 		resetAutosaveTimers();
 		return;
@@ -3108,7 +3096,8 @@ void Buffer::autoSave() const
 	AutoSaveBuffer autosave(*this, getAutosaveFilename());
 	autosave.start();
 
-	markBakClean();
+	d->bak_clean = true;
+
 	resetAutosaveTimers();
 }
 

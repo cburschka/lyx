@@ -250,8 +250,6 @@ public:
 	/// return true if the main lyx file does not need saving
 	bool isClean() const;
 	///
-	bool isBakClean() const;
-	///
 	bool isDepClean(std::string const & name) const;
 
 	/// whether or not disk file has been externally modified
@@ -262,9 +260,6 @@ public:
 
 	/// mark the main lyx file as not needing saving
 	void markClean() const;
-
-	///
-	void markBakClean() const;
 
 	///
 	void markDepClean(std::string const & name);
