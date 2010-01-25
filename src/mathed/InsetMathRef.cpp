@@ -13,11 +13,12 @@
 #include "InsetMathRef.h"
 
 #include "BufferView.h"
-#include "LaTeXFeatures.h"
 #include "Buffer.h"
 #include "Cursor.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
+#include "LaTeXFeatures.h"
+#include "LyXFunc.h"
 #include "MathData.h"
 #include "MathFactory.h"
 #include "MathSupport.h"
@@ -80,7 +81,8 @@ void InsetMathRef::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_MOUSE_RELEASE:
 		if (cmd.button() == mouse_button::button3) {
 			LYXERR0("trying to goto ref '" << to_utf8(asString(cell(0))) << "'");
-			cur.bv().dispatch(FuncRequest(LFUN_LABEL_GOTO, asString(cell(0))));
+			//FIXME: use DispatchResult argument
+			lyx::dispatch(FuncRequest(LFUN_LABEL_GOTO, asString(cell(0))));
 			break;
 		}
 		if (cmd.button() == mouse_button::button1) {

@@ -31,6 +31,7 @@ class Buffer;
 class Change;
 class CoordCache;
 class Cursor;
+class DispatchResult;
 class DocIterator;
 class DocumentClass;
 class FuncRequest;
@@ -199,8 +200,7 @@ public:
 	/// \return true if we've made a decision
 	bool getStatus(FuncRequest const & cmd, FuncStatus & flag);
 	/// execute the given function.
-	/// \return true if the function has been processed.
-	bool dispatch(FuncRequest const & argument);
+	void dispatch(FuncRequest const & cmd, DispatchResult & dr);
 
 	/// request an X11 selection.
 	/// \return the selected string.

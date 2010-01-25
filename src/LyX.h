@@ -21,6 +21,7 @@ namespace lyx {
 class BufferList;
 class CmdDef;
 class Converters;
+class DispatchResult;
 class ErrorItem;
 class FuncRequest;
 class FuncStatus;
@@ -121,6 +122,7 @@ private:
 
 	friend FuncStatus getStatus(FuncRequest const & action);
 	friend void dispatch(FuncRequest const & action);
+	friend void dispatch(FuncRequest const & action, DispatchResult & dr);
 	friend BufferList & theBufferList();
 	friend LyXFunc & theLyXFunc();
 	friend Server & theServer();

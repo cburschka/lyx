@@ -24,6 +24,7 @@ namespace lyx {
 
 class Buffer;
 class BufferView;
+class DispatchResult;
 class DocumentClass;
 class FuncRequest;
 class FuncStatus;
@@ -46,7 +47,11 @@ public:
 	///
 	explicit LyXFunc();
 
-	/// LyX dispatcher, executes lyx actions.
+	/// LyX dispatcher: executes lyx actions and returns result.
+	void dispatch(FuncRequest const &, DispatchResult &);
+
+	/// LyX dispatcher: executes lyx actions and does necessary
+	/// screen updates depending on results.
 	void dispatch(FuncRequest const &);
 
 	///
@@ -93,6 +98,9 @@ extern FuncStatus getStatus(FuncRequest const & action);
 
 /// Implementation is in LyX.cpp
 extern void dispatch(FuncRequest const & action);
+
+/// Implementation is in LyX.cpp
+extern void dispatch(FuncRequest const & action, DispatchResult & dr);
 
 } // namespace lyx
 

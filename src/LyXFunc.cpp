@@ -340,6 +340,32 @@ static docstring sendDispatchMessage(docstring const & msg, FuncRequest const & 
 
 void LyXFunc::dispatch(FuncRequest const & cmd)
 {
+	DispatchResult dr;
+	// redraw the screen at the end (first of the two drawing steps).
+	//This is done unless explicitely requested otherwise
+	dr.update(Update::FitCursor);
+	dispatch(cmd, dr);
+
+	LyXView * lv = theApp()->currentWindow();
+	if (lv && lv->currentBufferView()) {
+		// BufferView::update() updates the ViewMetricsInfo and
+		// also initializes the position cache for all insets in
+		// (at least partially) visible top-level paragraphs.
+		// We will redraw the screen only if needed.
+		lv->currentBufferView()->processUpdateFlags(dr.update());
+		
+		// Do we have a selection?
+		theSelection().haveSelection(
+			lv->currentBufferView()->cursor().selection());
+		
+		// update gui
+			lv->restartCursor();
+	}
+}
+
+
+void LyXFunc::dispatch(FuncRequest const & cmd, DispatchResult & dr)
+{
 	string const argument = to_utf8(cmd.argument());
 	FuncCode const action = cmd.action;
 
@@ -350,10 +376,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 	errorstat = false;
 	dispatch_buffer.erase();
 
-	// redraw the screen at the end (first of the two drawing steps).
-	//This is done unless explicitely requested otherwise
-	Update::flags updateFlags = Update::FitCursor;
-
 	LyXView * lv = theApp()->currentWindow();
 
 	FuncStatus const flag = getStatus(cmd);
@@ -362,9 +384,12 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		LYXERR(Debug::ACTION, "LyXFunc::dispatch: "
 		       << lyxaction.getActionName(action)
 		       << " [" << action << "] is disabled at this location");
+		//FIXME: pass this using the DispatchResult object
 		setErrorMessage(flag.message());
 		if (lv)
 			lv->restartCursor();
+		dr.dispatched(false);
+		dr.update(Update::None);
 	} else {
 		switch (action) {
 
@@ -481,7 +506,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_BOOKMARK_GOTO:
 			// go to bookmark, open unopened file and switch to buffer if necessary
 			gotoBookmark(convert<unsigned int>(to_utf8(cmd.argument())), true, true);
-			updateFlags = Update::FitCursor;
+			dr.update(Update::FitCursor);
 			break;
 
 		case LFUN_BOOKMARK_CLEAR:
@@ -493,8 +518,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		default:
-			DispatchResult dr;
-
 			LASSERT(theApp(), /**/);
 			// Let the frontend dispatch its own actions.
 			theApp()->dispatch(cmd, dr);
@@ -507,10 +530,11 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				break;
 
 			// Let the current LyXView dispatch its own actions.
+			//FIXME: pass dr to LyXView::dispatch
 			if (lv->dispatch(cmd)) {
 				BufferView * bv = lv->currentBufferView();
 				if (bv)
-					updateFlags = bv->cursor().result().update();
+					dr = bv->cursor().result();
 				break;
 			}
 
@@ -518,32 +542,28 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			LASSERT(bv, /**/);
 
 			// Let the current BufferView dispatch its own actions.
-			if (bv->dispatch(cmd)) {
-				// The BufferView took care of its own updates if needed.
-				updateFlags = Update::None;
+			bv->dispatch(cmd, dr);
+			if (dr.dispatched())
 				break;
-			}
 
 			BufferView * doc_bv = lv->documentBufferView();
 			// Try with the document BufferView dispatch if any.
-			if (doc_bv && doc_bv->dispatch(cmd)) {
-				updateFlags = Update::None;
-				break;
+			if (doc_bv) {
+				doc_bv->dispatch(cmd, dr);
+				if (dr.dispatched())
+					break;
 			}
 
 			// OK, so try the current Buffer itself...
 			bv->buffer().dispatch(cmd, dr);
-			if (dr.dispatched()) {
-				updateFlags = dr.update();
+			if (dr.dispatched())
 				break;
-			}
+
 			// and with the document Buffer.
 			if (doc_bv) {
 				doc_bv->buffer().dispatch(cmd, dr);
-				if (dr.dispatched()) {
-					updateFlags = dr.update();
+				if (dr.dispatched())
 					break;
-				}
 			}
 
 			// Let the current Cursor dispatch its own actions.
@@ -573,7 +593,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 					lv->updateCompletion(bv->cursor(), false, false);
 			}
 
-			updateFlags = bv->cursor().result().update();
+			dr = bv->cursor().result();
 		}
 
 		// if we executed a mutating lfun, mark the buffer as dirty
@@ -584,21 +604,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		    && !lyxaction.funcHasFlag(action, LyXAction::NoBuffer)
 		    && !lyxaction.funcHasFlag(action, LyXAction::ReadOnly))
 			lv->currentBufferView()->buffer().markDirty();			
-
-		if (lv && lv->currentBufferView()) {
-			// BufferView::update() updates the ViewMetricsInfo and
-			// also initializes the position cache for all insets in
-			// (at least partially) visible top-level paragraphs.
-			// We will redraw the screen only if needed.
-			lv->currentBufferView()->processUpdateFlags(updateFlags);
-
-			// Do we have a selection?
-			theSelection().haveSelection(
-				lv->currentBufferView()->cursor().selection());
-			
-			// update gui
-			lv->restartCursor();
-		}
 	}
 	if (lv) {
 		// Some messages may already be translated, so we cannot use _()

@@ -1158,6 +1158,13 @@ void dispatch(FuncRequest const & action)
 }
 
 
+void dispatch(FuncRequest const & action, DispatchResult & dr)
+{
+	LASSERT(singleton_, /**/);
+	singleton_->pimpl_->lyxfunc_.dispatch(action, dr);
+}
+
+
 BufferList & theBufferList()
 {
 	LASSERT(singleton_, /**/);

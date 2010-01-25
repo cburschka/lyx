@@ -1148,7 +1148,7 @@ void BufferView::editInset(string const & name, Inset * inset)
 }
 
 
-bool BufferView::dispatch(FuncRequest const & cmd)
+void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 {
 	//lyxerr << [ cmd = " << cmd << "]" << endl;
 
@@ -1165,7 +1165,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 	// Don't dispatch function that does not apply to internal buffers.
 	if (buffer_.isInternal() 
 	    && lyxaction.funcHasFlag(cmd.action, LyXAction::NoInternal))
-		return false;
+		return;
 
 	// We'll set this back to false if need be.
 	bool dispatched = true;
@@ -1190,7 +1190,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		// We are most certainly here because of a change in the document
 		// It is then better to make sure that all dialogs are in sync with
 		// current document settings.
-		processUpdateFlags(Update::Force | Update::FitCursor);
+		dr.update(Update::Force | Update::FitCursor);
 		break;
 	}
 		
@@ -1201,7 +1201,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		buffer_.params().clearLayoutModules();
 		buffer_.params().makeDocumentClass();
 		updateLayout(oldClass);
-		processUpdateFlags(Update::Force | Update::FitCursor);
+		dr.update(Update::Force | Update::FitCursor);
 		break;
 	}
 
@@ -1218,7 +1218,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		buffer_.params().addLayoutModule(argument);
 		buffer_.params().makeDocumentClass();
 		updateLayout(oldClass);
-		processUpdateFlags(Update::Force | Update::FitCursor);
+		dr.update(Update::Force | Update::FitCursor);
 		break;
 	}
 
@@ -1241,7 +1241,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		buffer_.params().setBaseClass(argument);
 		buffer_.params().makeDocumentClass();
 		updateLayout(oldDocClass);
-		processUpdateFlags(Update::Force | Update::FitCursor);
+		dr.update(Update::Force | Update::FitCursor);
 		break;
 	}
 
@@ -1257,30 +1257,30 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		buffer_.params().setBaseClass(bc);
 		buffer_.params().makeDocumentClass();
 		updateLayout(oldClass);
-		processUpdateFlags(Update::Force | Update::FitCursor);
+		dr.update(Update::Force | Update::FitCursor);
 		break;
 	}
 
 	case LFUN_UNDO:
-		cur.message(_("Undo"));
+		dr.setMessage(_("Undo"));
 		cur.clearSelection();
 		if (!cur.textUndo())
-			cur.message(_("No further undo information"));
+			dr.setMessage(_("No further undo information"));
 		else
-			processUpdateFlags(Update::Force | Update::FitCursor);
+			dr.update(Update::Force | Update::FitCursor);
 		break;
 
 	case LFUN_REDO:
-		cur.message(_("Redo"));
+		dr.setMessage(_("Redo"));
 		cur.clearSelection();
 		if (!cur.textRedo())
-			cur.message(_("No further redo information"));
+			dr.setMessage(_("No further redo information"));
 		else
-			processUpdateFlags(Update::Force | Update::FitCursor);
+			dr.update(Update::Force | Update::FitCursor);
 		break;
 
 	case LFUN_FONT_STATE:
-		cur.message(cur.currentState());
+		dr.setMessage(cur.currentState());
 		break;
 
 	case LFUN_BOOKMARK_SAVE:
@@ -1343,7 +1343,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 				// Set the cursor
 				dit.pos() = pos;
 				setCursor(dit);
-				processUpdateFlags(Update::Force | Update::FitCursor);
+				dr.update(Update::Force | Update::FitCursor);
 			} else {
 				// Switch to other buffer view and resend cmd
 				theLyXFunc().dispatch(FuncRequest(
@@ -1397,18 +1397,18 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 	case LFUN_CHANGE_NEXT:
 		findNextChange(this);
 		// FIXME: Move this LFUN to Buffer so that we don't have to do this:
-		processUpdateFlags(Update::Force | Update::FitCursor);
+		dr.update(Update::Force | Update::FitCursor);
 		break;
 	
 	case LFUN_CHANGE_PREVIOUS:
 		findPreviousChange(this);
 		// FIXME: Move this LFUN to Buffer so that we don't have to do this:
-		processUpdateFlags(Update::Force | Update::FitCursor);
+		dr.update(Update::Force | Update::FitCursor);
 		break;
 
 	case LFUN_CHANGES_MERGE:
 		if (findNextChange(this) || findPreviousChange(this)) {
-			processUpdateFlags(Update::Force | Update::FitCursor);
+			dr.update(Update::Force | Update::FitCursor);
 			showDialog("changes");
 		}
 		break;
@@ -1421,7 +1421,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		// accept everything in a single step to support atomic undo
 		buffer_.text().acceptOrRejectChanges(cur, Text::ACCEPT);
 		// FIXME: Move this LFUN to Buffer so that we don't have to do this:
-		processUpdateFlags(Update::Force | Update::FitCursor);
+		dr.update(Update::Force | Update::FitCursor);
 		break;
 
 	case LFUN_ALL_CHANGES_REJECT:
@@ -1433,7 +1433,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		// Note: reject does not work recursively; the user may have to repeat the operation
 		buffer_.text().acceptOrRejectChanges(cur, Text::REJECT);
 		// FIXME: Move this LFUN to Buffer so that we don't have to do this:
-		processUpdateFlags(Update::Force | Update::FitCursor);
+		dr.update(Update::Force | Update::FitCursor);
 		break;
 
 	case LFUN_WORD_FIND_FORWARD:
@@ -1504,23 +1504,23 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 
 	case LFUN_MARK_OFF:
 		cur.clearSelection();
-		cur.message(from_utf8(N_("Mark off")));
+		dr.setMessage(from_utf8(N_("Mark off")));
 		break;
 
 	case LFUN_MARK_ON:
 		cur.clearSelection();
 		cur.setMark(true);
-		cur.message(from_utf8(N_("Mark on")));
+		dr.setMessage(from_utf8(N_("Mark on")));
 		break;
 
 	case LFUN_MARK_TOGGLE:
 		cur.setSelection(false);
 		if (cur.mark()) {
 			cur.setMark(false);
-			cur.message(from_utf8(N_("Mark removed")));
+			dr.setMessage(from_utf8(N_("Mark removed")));
 		} else {
 			cur.setMark(true);
-			cur.message(from_utf8(N_("Mark set")));
+			dr.setMessage(from_utf8(N_("Mark set")));
 		}
 		cur.resetAnchor();
 		break;
@@ -1614,7 +1614,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 			// It did not work too; no action needed.
 			break;
 		cur.clearSelection();
-		processUpdateFlags(Update::SinglePar | Update::FitCursor);
+		dr.update(Update::SinglePar | Update::FitCursor);
 		break;
 	}
 
@@ -1644,7 +1644,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		bool update = in_texted && cur.bv().checkDepm(cur, old);
 		cur.finishUndo();
 		if (update)
-			processUpdateFlags(Update::Force | Update::FitCursor);
+			dr.update(Update::Force | Update::FitCursor);
 		break;
 	}
 
@@ -1665,7 +1665,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 			y = getPos(cur, cur.boundary()).y_;
 
 		cur.finishUndo();
-		processUpdateFlags(Update::SinglePar | Update::FitCursor);
+		dr.update(Update::SinglePar | Update::FitCursor);
 		break;
 	}
 
@@ -1682,7 +1682,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 			y = getPos(cur, cur.boundary()).y_;
 
 		cur.finishUndo();
-		processUpdateFlags(Update::SinglePar | Update::FitCursor);
+		dr.update(Update::SinglePar | Update::FitCursor);
 		break;
 	}
 
@@ -1725,12 +1725,13 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		cur.endUndoGroup();
 		cur = savecur;
 		cur.fixIfBroken();
-		processUpdateFlags(Update::Force);
+		dr.update(Update::Force);
 
-		if (iterations >= max_iter)
-			cur.errorMessage(bformat(_("`inset-forall' interrupted because number of actions is larger than %1$d"), max_iter));
-		else
-			cur.message(bformat(_("Applied \"%1$s\" to %2$d insets"), from_utf8(commandstr), iterations));
+		if (iterations >= max_iter) {
+			dr.setError(true);
+			dr.setMessage(bformat(_("`inset-forall' interrupted because number of actions is larger than %1$d"), max_iter));
+		} else
+			dr.setMessage(bformat(_("Applied \"%1$s\" to %2$d insets"), from_utf8(commandstr), iterations));
 		break;
 	}
 
@@ -1754,7 +1755,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 				it->dispatch(tmpcur, fr);
 			}
 		}
-		processUpdateFlags(Update::Force | Update::FitCursor);
+		dr.update(Update::Force | Update::FitCursor);
 		break;
 	}
 
@@ -1842,7 +1843,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		cur.recordUndo();
 		FuncRequest fr(LFUN_INSET_MODIFY, cmd.argument());
 		inset->dispatch(cur, fr);
-		processUpdateFlags(Update::SinglePar | Update::FitCursor);
+		dr.update(Update::SinglePar | Update::FitCursor);
 		break;
 	}
 
@@ -1852,7 +1853,8 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 	}
 
 	buffer_.undo().endUndoGroup();
-	return dispatched;
+	dr.dispatched(dispatched);
+	return;
 }
 
 
@@ -2163,7 +2165,7 @@ void BufferView::gotoLabel(docstring const & label)
 		TocIterator end = toc.end();
 		for (; toc_it != end; ++toc_it) {
 			if (label == toc_it->str()) {
-				dispatch(toc_it->action());
+				lyx::dispatch(toc_it->action());
 				return;
 			}
 		}
