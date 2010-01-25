@@ -38,6 +38,7 @@
 
 #include <QCloseEvent>
 #include <QLineEdit>
+#include <QMenu>
 
 #include <iostream>
 
@@ -62,6 +63,21 @@ FindAndReplaceWidget::FindAndReplaceWidget(GuiView & view)
 	replace_work_area_->init();
 	// We don't want two cursors blinking.
 	replace_work_area_->stopBlinkingCursor();
+
+	QMenu * menu = new QMenu();
+	QAction * regAny = menu->addAction("&Anything");
+	regAny->setData(".*");
+	QAction * regAnyNonEmpty = menu->addAction("Any non-&empty");
+	regAnyNonEmpty->setData(".+");
+	QAction * regAnyWord = menu->addAction("Any &word");
+	regAnyWord->setData("[a-z]+");
+	QAction * regAnyNumber = menu->addAction("Any &number");
+	regAnyNumber->setData("[0-9]+");
+	QAction * regCustom = menu->addAction("&User-defined");
+	regCustom->setData("");
+	regexpInsertPB->setMenu(menu);
+
+	connect(menu, SIGNAL(triggered(QAction *)), this, SLOT(insertRegexp(QAction *)));
 }
 
 
@@ -457,20 +473,15 @@ void FindAndReplaceWidget::findAndReplace(bool backwards, bool replace)
 }
 
 
-void FindAndReplaceWidget::on_regexpInsertCombo_currentIndexChanged(int index)
+void FindAndReplaceWidget::insertRegexp(QAction * action)
 {
-	static char const * regexps[] = {
-		".*", ".+", "[a-z]+", "[0-9]+", ""
-	};
-	LYXERR(Debug::FIND, "Index: " << index);
-	if (index >= 1 && index < 1 + int(sizeof(regexps)/sizeof(regexps[0]))) {
-		find_work_area_->setFocus();
-		Cursor & cur = find_work_area_->bufferView().cursor();
-		if (! cur.inRegexped())
-			dispatch(FuncRequest(LFUN_REGEXP_MODE));
-		dispatch(FuncRequest(LFUN_SELF_INSERT, regexps[index - 1]));
-		regexpInsertCombo->setCurrentIndex(0);
-	}
+	string const regexp = fromqstr(action->data().toString());
+	LYXERR(Debug::FIND, "Regexp: " << regexp);
+	find_work_area_->setFocus();
+	Cursor & cur = find_work_area_->bufferView().cursor();
+	if (!cur.inRegexped())
+		dispatch(FuncRequest(LFUN_REGEXP_MODE));
+	dispatch(FuncRequest(LFUN_SELF_INSERT, regexp));
 }
 
 
@@ -539,7 +550,7 @@ bool FindAndReplaceWidget::initialiseParams(std::string const & /* params */)
 
 FindAndReplace::FindAndReplace(GuiView & parent,
 		Qt::DockWidgetArea area, Qt::WindowFlags flags)
-	: DockView(parent, "Find LyX", qt_("Find LyX Dialog"), area, flags)
+	: DockView(parent, "Find LyX", qt_("Advanced Find and Replace"), area, flags)
 {
 	widget_ = new FindAndReplaceWidget(parent);
 	setWidget(widget_);

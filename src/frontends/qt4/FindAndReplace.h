@@ -71,7 +71,7 @@ protected Q_SLOTS:
 	void on_replacePrevPB_clicked();
 	void on_replaceallPB_clicked();
 	void on_closePB_clicked();
-	void on_regexpInsertCombo_currentIndexChanged(int index);
+	void insertRegexp(QAction *);
 };
 
 

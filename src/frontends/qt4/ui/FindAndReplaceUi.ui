@@ -205,7 +205,7 @@
                    </widget>
                   </widget>
                  </item>
-                 <item row="2" column="0">
+                 <item row="2" column="1">
                   <widget class="QPushButton" name="replaceNextPB">
                    <property name="enabled">
                     <bool>true</bool>
@@ -222,11 +222,11 @@
                     <string>Find next occurrence and replace it [Enter]</string>
                    </property>
                    <property name="text">
-                    <string>Next</string>
+                    <string>Ne&amp;xt</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="2" column="1">
+                 <item row="2" column="0">
                   <widget class="QPushButton" name="replacePrevPB">
                    <property name="enabled">
                     <bool>true</bool>
@@ -243,7 +243,7 @@
                     <string>Find previous occurrence and replace it [Shift+Enter]</string>
                    </property>
                    <property name="text">
-                    <string>Prev</string>
+                    <string>Pre&amp;vious</string>
                    </property>
                   </widget>
                  </item>
@@ -259,6 +259,9 @@
                      <horstretch>0</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
+                   </property>
+                   <property name="toolTip">
+                    <string>Replace all occurences at once</string>
                    </property>
                    <property name="text">
                     <string>Replace &amp;All</string>
@@ -424,14 +427,11 @@
                   </widget>
                  </item>
                  <item row="3" column="0" colspan="2">
-                  <widget class="QComboBox" name="regexpInsertCombo">
-                   <property name="enabled">
-                    <bool>true</bool>
-                   </property>
+                  <widget class="QPushButton" name="regexpInsertPB">
                    <property name="sizePolicy">
                     <sizepolicy>
-                     <hsizetype>7</hsizetype>
-                     <vsizetype>1</vsizetype>
+                     <hsizetype>3</hsizetype>
+                     <vsizetype>0</vsizetype>
                      <horstretch>0</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
@@ -439,39 +439,12 @@
                    <property name="toolTip">
                     <string>Choose one of the pre-arranged regular expressions.</string>
                    </property>
-                   <item>
-                    <property name="text">
-                     <string>Match...</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Anything</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Any non-empty</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Any word</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Any number</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>User-defined</string>
-                    </property>
-                   </item>
+                   <property name="text">
+                    <string>Insert Re&amp;gular Expression...</string>
+                   </property>
                   </widget>
                  </item>
-                 <item row="4" column="0">
+                 <item row="4" column="1">
                   <widget class="QPushButton" name="findNextPB">
                    <property name="enabled">
                     <bool>true</bool>
@@ -488,14 +461,14 @@
                     <string>Find next occurrence [Enter]</string>
                    </property>
                    <property name="text">
-                    <string>Next</string>
+                    <string>&amp;Next</string>
                    </property>
                    <property name="default">
                     <bool>true</bool>
                    </property>
                   </widget>
                  </item>
-                 <item row="4" column="1">
+                 <item row="4" column="0">
                   <widget class="QPushButton" name="findPrevPB">
                    <property name="enabled">
                     <bool>true</bool>
@@ -512,7 +485,7 @@
                     <string>Find previous occurrence [Shift+Enter]</string>
                    </property>
                    <property name="text">
-                    <string>Prev</string>
+                    <string>&amp;Previous</string>
                    </property>
                    <property name="default">
                     <bool>true</bool>
