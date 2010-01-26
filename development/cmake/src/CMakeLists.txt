@@ -20,6 +20,8 @@ if (UNIX)
 endif()
 
 file(GLOB lyx_sources ${TOP_SRC_DIR}/src/${LYX_CPP_FILES})
+file(GLOB moc_files ${TOP_SRC_DIR}/src/${LYX_MOC_FILES})
+list(REMOVE_ITEM  lyx_sources ${moc_files} .)
 file(GLOB lyx_headers ${TOP_SRC_DIR}/src/${LYX_HPP_FILES})
 
 list(REMOVE_ITEM lyx_sources

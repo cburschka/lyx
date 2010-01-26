@@ -108,6 +108,7 @@ endif()
 # lyx's source files
 set(LYX_CPP_FILES *.cpp)
 set(LYX_HPP_FILES *.h)
+set(LYX_MOC_FILES moc_*.cpp)
 
 include(LyXMacros)
 include(ProjectSourceGroup)

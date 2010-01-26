@@ -8,6 +8,9 @@ project(frontend_qt4)
 
 file(GLOB frontends_qt4_sources
 	${TOP_SRC_DIR}/src/frontends/qt4/${LYX_CPP_FILES})
+file(GLOB moc_files ${TOP_SRC_DIR}/src/frontends/qt4/${LYX_MOC_FILES})
+list(REMOVE_ITEM frontends_qt4_sources ${moc_files} .)
+
 file(GLOB frontends_qt4_headers
 	${TOP_SRC_DIR}/src/frontends/qt4/${LYX_HPP_FILES})
 file(GLOB frontend_qt4_UI

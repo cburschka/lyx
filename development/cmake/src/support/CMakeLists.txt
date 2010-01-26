@@ -7,6 +7,9 @@
 project(support)
 
 file(GLOB support_sources ${TOP_SRC_DIR}/src/support/${LYX_CPP_FILES})
+file(GLOB moc_files ${TOP_SRC_DIR}/src/support/${LYX_MOC_FILES})
+list(REMOVE_ITEM support_sources ${moc_files} .)
+
 file(GLOB support_headers ${TOP_SRC_DIR}/src/support/${LYX_HPP_FILES})
 
 file(GLOB support_mythes_sources ${TOP_SRC_DIR}/src/support/mythes/*.cxx)
