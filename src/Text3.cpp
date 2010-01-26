@@ -2509,6 +2509,10 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_OUTLINE_DOWN:
 	case LFUN_OUTLINE_IN:
 	case LFUN_OUTLINE_OUT:
+		// FIXME: LyX is not ready for outlining within inset.
+		enable = isMainText()
+			&& cur.paragraph().layout().toclevel != Layout::NOT_IN_TOC;
+		break;
 
 	case LFUN_NEWLINE_INSERT:
 		// LaTeX restrictions (labels or empty par)
