@@ -549,7 +549,8 @@ void GuiView::initToolbars()
 		if (visibility & Toolbars::BOTTOM) {
 			// Qt < 4.2.2 cannot handle ToolBarBreak on non-TOP dock.
 #if (QT_VERSION >= 0x040202)
-			addToolBarBreak(Qt::BottomToolBarArea);
+			if (newline)
+				addToolBarBreak(Qt::BottomToolBarArea);
 #endif
 			addToolBar(Qt::BottomToolBarArea, tb);
 		}
@@ -557,7 +558,8 @@ void GuiView::initToolbars()
 		if (visibility & Toolbars::LEFT) {
 			// Qt < 4.2.2 cannot handle ToolBarBreak on non-TOP dock.
 #if (QT_VERSION >= 0x040202)
-			addToolBarBreak(Qt::LeftToolBarArea);
+			if (newline)
+				addToolBarBreak(Qt::LeftToolBarArea);
 #endif
 			addToolBar(Qt::LeftToolBarArea, tb);
 		}
@@ -565,7 +567,8 @@ void GuiView::initToolbars()
 		if (visibility & Toolbars::RIGHT) {
 			// Qt < 4.2.2 cannot handle ToolBarBreak on non-TOP dock.
 #if (QT_VERSION >= 0x040202)
-			addToolBarBreak(Qt::RightToolBarArea);
+			if (newline)
+				addToolBarBreak(Qt::RightToolBarArea);
 #endif
 			addToolBar(Qt::RightToolBarArea, tb);
 		}
