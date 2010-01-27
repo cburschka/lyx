@@ -358,6 +358,8 @@ void Toolbars::readToolbarSettings(Lexer & lex)
 				flag = RIGHT;
 			else if (!compare_ascii_no_case(*cit, "auto"))
 				flag = AUTO;
+			else if (!compare_ascii_no_case(*cit, "samerow"))
+				flag = SAMEROW;
 			else {
 				LYXERR(Debug::ANY,
 					"Toolbars::readToolbarSettings: unrecognised token:`"

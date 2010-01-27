@@ -95,6 +95,16 @@ ToolbarSet
 		Item "Toggle table toolbar" "toolbar-toggle table"
 	End
 
+	Toolbar "view/update" "View/Update"
+		Item "View" "buffer-view"
+		Item "Update" "buffer-update"
+		Item "View master document" "master-buffer-view"
+		Item "Update master document" "master-buffer-update"
+		Separator
+		StickyPopupMenu "view-others" "View other formats"
+		StickyPopupMenu "update-others" "Update other formats"
+	End
+
 	Toolbar "extra" "Extra"
 		Item "Default" "layout"
 		Item "Numbered list" "layout Enumerate"
@@ -213,16 +223,6 @@ ToolbarSet
 		Separator
 		Item "Insert note" "note-insert"
 		Item "Next note" "note-next"
-	End
-	
-	Toolbar "view/update" "View/Update"
-		Item "View" "buffer-view"
-		Item "Update" "buffer-update"
-		Item "View master document" "master-buffer-view"
-		Item "Update master document" "master-buffer-update"
-		Separator
-		StickyPopupMenu "view-others" "View other formats"
-		StickyPopupMenu "update-others" "Update other formats"
 	End
 	
 	Toolbar "view-others" "View Other Formats"

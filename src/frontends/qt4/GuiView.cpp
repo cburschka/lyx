@@ -536,7 +536,7 @@ void GuiView::initToolbars()
 		if (!tb)
 			continue;
 		int const visibility = guiApp->toolbars().defaultVisibility(cit->name);
-		bool newline = true;
+		bool newline = !(visibility & Toolbars::SAMEROW);
 		tb->setVisible(false);
 		tb->setVisibility(visibility);
 

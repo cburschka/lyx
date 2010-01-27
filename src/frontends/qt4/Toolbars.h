@@ -107,7 +107,8 @@ public:
 		MATH = 128, //< show when in math
 		TABLE = 256, //< show when in table
 		REVIEW = 512, //< show when change tracking is enabled
-		MATHMACROTEMPLATE = 1024 //< show in math macro template
+		MATHMACROTEMPLATE = 1024, //< show in math macro template
+		SAMEROW = 2048 //place to the current row, no new line
 	};
 
 	typedef std::vector<ToolbarInfo> Infos;

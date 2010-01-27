@@ -39,10 +39,13 @@ Include "stdtoolbars.inc"
 # left: the toolbar should be at the left of the window
 # right: the toolbar should be at the right of the window
 #
+# samerow: do not create new line for this toolbar
+#        (note that order of toolbars is defined in stdtoolbars.inc)
+#
 Toolbars
 	"standard" "on,top"
 	"view/update" "on,top"
-	"extra" "on,top"
+	"extra" "on,top,samerow"
 	"review" "auto,review,top"
 	"vcs" "off,top"
 	"table" "auto,table,bottom"
