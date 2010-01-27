@@ -129,7 +129,7 @@ void LengthCombo::reset()
 	for (int i = 0; i < lyx::num_units; i++) {
 		// mu does not make sense usually
 		// so it must be added manually, if needed
-		if (lyx::unit_name[i] == "mu")
+		if (QString(lyx::unit_name[i]) == "mu")
 			continue;
 		QComboBox::addItem(lyx::qt_(lyx::unit_name_gui[i]),
 			lyx::toqstr(lyx::unit_name[i]));
