@@ -82,56 +82,63 @@ FindAndReplaceWidget::FindAndReplaceWidget(GuiView & view)
 }
 
 
-bool FindAndReplaceWidget::eventFilter(QObject *obj, QEvent *event)
+bool FindAndReplaceWidget::eventFilter(QObject * obj, QEvent * event)
 {
-	if (obj == find_work_area_
-	    && event->type() == QEvent::KeyPress) {
-		QKeyEvent *e = static_cast<QKeyEvent *> (event);
-		if (e->key() == Qt::Key_Escape
-		    && e->modifiers() == Qt::NoModifier) {
+	if (event->type() != QEvent::KeyPress
+		  || (obj != find_work_area_ && obj != replace_work_area_))
+		return QWidget::eventFilter(obj, event);
+
+	QKeyEvent * e = static_cast<QKeyEvent *> (event);
+	switch (e->key()) {
+	case Qt::Key_Escape:
+		if (e->modifiers() == Qt::NoModifier) {
 			hideDialog();
-			return true;
-		} else if (e->key() == Qt::Key_Enter
-			   || e->key() == Qt::Key_Return) {
-			if (e->modifiers() == Qt::ShiftModifier) {
-				on_findPrevPB_clicked();
-				return true;
-			} else if (e->modifiers() == Qt::NoModifier) {
-				on_findNextPB_clicked();
-				return true;
-			}
-		} else if (e->key() == Qt::Key_Tab
-			   && e->modifiers() == Qt::NoModifier) {
-			LYXERR(Debug::FIND, "Focusing replace WA");
-			replace_work_area_->setFocus();
 			return true;
 		}
-	}
-	if (obj == replace_work_area_
-	    && event->type() == QEvent::KeyPress) {
-		QKeyEvent *e = static_cast<QKeyEvent *> (event);
-		if (e->key() == Qt::Key_Escape
-		    && e->modifiers() == Qt::NoModifier) {
-			hideDialog();
-			return true;
-		} else if (e->key() == Qt::Key_Enter
-			   || e->key() == Qt::Key_Return) {
-			if (e->modifiers() == Qt::ShiftModifier) {
+		break;
+
+	case Qt::Key_Enter:
+	case Qt::Key_Return:
+		if (e->modifiers() == Qt::ShiftModifier) {
+			if (obj == find_work_area_)
+				on_findPrevPB_clicked();
+			else
 				on_replacePrevPB_clicked();
-				return true;
-			} else if (e->modifiers() == Qt::NoModifier) {
+			return true;
+		} else if (e->modifiers() == Qt::NoModifier) {
+			if (obj == find_work_area_)
+				on_findNextPB_clicked();
+			else
 				on_replaceNextPB_clicked();
+			return true;
+		}
+		break;
+
+	case Qt::Key_Tab:
+		if (e->modifiers() == Qt::NoModifier) {
+			if (obj == find_work_area_){
+				LYXERR(Debug::FIND, "Focusing replace WA");
+				replace_work_area_->setFocus();
 				return true;
 			}
-		} else if (e->key() == Qt::Key_Backtab) {
+		}
+		break;
+
+	case Qt::Key_Backtab:
+		if (obj == replace_work_area_) {
 			LYXERR(Debug::FIND, "Focusing find WA");
 			find_work_area_->setFocus();
 			return true;
 		}
+		break;
+
+	default:
+		break;
 	}
 	// standard event processing
 	return QWidget::eventFilter(obj, event);
 }
+
 
 static docstring buffer_to_latex(Buffer & buffer) {
 	OutputParams runparams(&buffer.params().encoding());
