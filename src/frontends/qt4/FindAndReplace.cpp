@@ -89,7 +89,7 @@ bool FindAndReplaceWidget::eventFilter(QObject *obj, QEvent *event)
 		QKeyEvent *e = static_cast<QKeyEvent *> (event);
 		if (e->key() == Qt::Key_Escape
 		    && e->modifiers() == Qt::NoModifier) {
-			on_closePB_clicked();
+			hideDialog();
 			return true;
 		} else if (e->key() == Qt::Key_Enter
 			   || e->key() == Qt::Key_Return) {
@@ -112,7 +112,7 @@ bool FindAndReplaceWidget::eventFilter(QObject *obj, QEvent *event)
 		QKeyEvent *e = static_cast<QKeyEvent *> (event);
 		if (e->key() == Qt::Key_Escape
 		    && e->modifiers() == Qt::NoModifier) {
-			on_closePB_clicked();
+			hideDialog();
 			return true;
 		} else if (e->key() == Qt::Key_Enter
 			   || e->key() == Qt::Key_Return) {
@@ -519,7 +519,7 @@ void FindAndReplaceWidget::insertRegexp(QAction * action)
 }
 
 
-void FindAndReplaceWidget::on_closePB_clicked()
+void FindAndReplaceWidget::hideDialog()
 {
 	dispatch(FuncRequest(LFUN_DIALOG_TOGGLE, "findreplaceadv"));
 }

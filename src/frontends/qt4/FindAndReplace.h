@@ -64,13 +64,14 @@ private:
 	void virtual showEvent(QShowEvent *ev);
 	void virtual hideEvent(QHideEvent *ev);
 
+	void hideDialog();
+
 protected Q_SLOTS:
 	void on_findNextPB_clicked();
 	void on_findPrevPB_clicked();
 	void on_replaceNextPB_clicked();
 	void on_replacePrevPB_clicked();
 	void on_replaceallPB_clicked();
-	void on_closePB_clicked();
 	void insertRegexp(QAction *);
 };
 
