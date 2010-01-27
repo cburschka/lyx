@@ -60,6 +60,8 @@ public:
 	///
 	void label(row_type row, docstring const & label);
 	///
+	std::vector<InsetLabel *> getLabels() { return label_; }
+	///
 	ColorCode backgroundColor(PainterInfo const &) const;
 	///
 	void numbered(row_type row, bool num);
