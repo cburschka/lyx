@@ -56,7 +56,7 @@ public:
 	/// Clear all session information.
 	void clearSession();
 
-	/// Method inherited from \c Application class
+	/// \name Methods inherited from Application class
 	//@{
 	LyXView * currentWindow();
 	bool getStatus(FuncRequest const & cmd, FuncStatus & flag) const;
@@ -85,7 +85,8 @@ public:
 	Toolbars & toolbars();
 	Menus const & menus() const;
 	Menus & menus();
-	/// Methods inherited from \c QApplication class
+
+	/// \name Methods inherited from QApplication class
 	//@{
 	bool notify(QObject * receiver, QEvent * event);
 	void commitData(QSessionManager & sm);

@@ -62,8 +62,8 @@ public:
 
 	~GuiView();
 
-	/// LyXView inherited methods.
-	///@{
+	/// \name LyXView inherited methods.
+	//@{
 	int id() const { return id_; }
 	void setBusy(bool);
 	BufferView * currentBufferView();
@@ -83,7 +83,7 @@ public:
 	void restartCursor();
 	void updateCompletion(Cursor & cur, bool start, bool keep);
 	void setFocus();
-	///@}
+	//@}
 
 	///
 	void focusInEvent(QFocusEvent * e);
@@ -119,13 +119,13 @@ public:
 	///
 	void importDocument(std::string const &);
 
-	/// GuiBufferDelegate.
-	///@{
+	/// \name GuiBufferDelegate.
+	//@{
 	void resetAutosaveTimers();
 	void errors(std::string const &, bool from_master = false);
 	void structureChanged();
 	void updateTocItem(std::string const &, DocIterator const &);
-	///@}
+	//@}
 
 	///
 	TocModels & tocModels();

@@ -45,9 +45,7 @@ public:
 	~ButtonController();
 
 	//@{
-	/** Methods to set and get the ButtonPolicy.
-	 *  \param ptr is owned by the ButtonController.
-	 */
+	/// Methods to set and get the ButtonPolicy.
 	void setPolicy(ButtonPolicy::Policy policy);
 	ButtonPolicy const & policy() const;
 	ButtonPolicy & policy();
@@ -83,8 +81,9 @@ public:
 	 */
 	bool setReadOnly(bool);
 
-	/** \param validity Tell the BC that the data is, or is not, valid.
+	/**
 	 *  Sets the activation state of the buttons immediately.
+	 * \param validity Tell the BC that the data is, or is not, valid.
 	 */
 	void setValid(bool);
 
@@ -93,8 +92,7 @@ public:
 	//
 
 	//@{
-	/** Store pointers to these widgets.
-	 */
+	/// Store pointers to these widgets.
 	void setOK(QPushButton * obj);
 	void setApply(QPushButton * obj);
 	void setCancel(QPushButton * obj);

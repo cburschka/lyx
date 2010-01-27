@@ -66,7 +66,7 @@ protected Q_SLOTS:
 	void change_adaptor();
 
 private:
-	/// Dialog inherited methods
+	/// \name Dialog inherited methods
 	//@{
 	void applyView();
 	void updateContents();

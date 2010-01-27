@@ -47,8 +47,8 @@ public:
 	///
 	virtual ~LyXView() {}
 
-	//@{ generic accessor functions
-
+	/// \name Generic accessor functions
+	//@{
 	/// \return the currently selected buffer view.
 	virtual BufferView * currentBufferView() = 0;
 	virtual BufferView const * currentBufferView() const = 0;

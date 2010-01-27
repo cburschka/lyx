@@ -41,8 +41,8 @@ class Color
 public:
 	///
 	Color(ColorCode base_color = Color_none);
-	
-	/// comparison operators.
+
+	/// \name Comparison operators
 	//@{
 	bool operator==(Color const & color) const;
 	bool operator!=(Color const & color) const;

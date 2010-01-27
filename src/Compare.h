@@ -82,7 +82,7 @@ public Q_SLOTS:
 	void doStatusMessage();
 
 public:
-	/// QThread inherited methods
+	/// \name QThread inherited methods
 	//@{
 	void run();
 	//@}

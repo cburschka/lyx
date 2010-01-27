@@ -26,7 +26,7 @@ class GuiInfo : public DialogView, public Ui::InfoUi
 public:
 	GuiInfo(GuiView & lv);
 
-	/// Dialog inherited methods
+	/// \name Dialog inherited methods
 	//@{
 	void applyView();
 	void updateView();

@@ -38,11 +38,11 @@ class Paragraph;
 
 class CursorSlice {
 public:
-	/// Those needs inset_ access.
-	///@{
+	/// \name Those needs inset_ access.
+	//@{
 	friend class DocIterator;
 	friend class StableDocIterator;
-	///@}
+	//@}
 
 	/// type for cell number in inset
 	typedef size_t idx_type;
@@ -56,7 +56,7 @@ public:
 	///
 	explicit CursorSlice(Inset &);
 
-	/// comparison operators.
+	/// \name Comparison operators.
 	//@{
 	friend bool operator==(CursorSlice const &, CursorSlice const &);
 	friend bool operator!=(CursorSlice const &, CursorSlice const &);

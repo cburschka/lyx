@@ -23,14 +23,14 @@ public:
 	AspellChecker();
 	~AspellChecker();
 
-	/// SpellChecker inherited methods.
-	///@{
+	/// \name SpellChecker inherited methods
+	//@{
 	enum Result check(WordLangTuple const &);
 	void suggest(WordLangTuple const &, docstring_list &);
 	void insert(WordLangTuple const &);
 	void accept(WordLangTuple const &);
 	docstring const error();
-	///@}
+	//@}
 
 private:
 	struct Private;

@@ -80,9 +80,9 @@ public:
 	/// get notification when the cursor leaves this inset
 	bool notifyCursorLeaves(Cursor const & old, Cursor & cur);
 
-	/// direct access to the cell.
-	/// inlined because shows in profile.
 	//@{
+	/// direct access to the cell.
+	/// Inlined because of performance reasons.
 	MathData & cell(idx_type i) { return cells_[i]; }
 	MathData const & cell(idx_type i) const { return cells_[i]; }
 	//@}

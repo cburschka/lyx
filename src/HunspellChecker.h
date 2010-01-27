@@ -23,7 +23,7 @@ public:
 	HunspellChecker();
 	~HunspellChecker();
 
-	/// SpellChecker inherited methods.
+	/// \name SpellChecker inherited methods.
 	///@{
 	enum Result check(WordLangTuple const &);
 	void suggest(WordLangTuple const &, docstring_list &);

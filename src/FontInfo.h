@@ -56,8 +56,8 @@ public:
 	/// Increases font size by one
 	FontInfo & incSize();
 
-	/// Accessor methods.
-	///@{
+	/// \name Accessor methods
+	//@{
 	FontFamily family() const { return family_; }
 	void setFamily(FontFamily f) { family_ = f; }
 	FontSeries series() const { return series_; }
@@ -84,7 +84,7 @@ public:
 	void setColor(ColorCode c) { color_ = c; }
 	ColorCode background() const { return background_; }
 	void setBackground(ColorCode b) { background_ = b; }
-	///@}
+	//@}
 
 	///
 	void update(FontInfo const & newfont, bool toggleall);

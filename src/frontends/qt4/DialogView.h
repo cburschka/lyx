@@ -36,7 +36,7 @@ public:
 	virtual QWidget const * asQWidget() const { return this; }
 
 protected:
-	/// Dialog inherited methods
+	/// \name Dialog inherited methods
 	//@{
 	void applyView() {}
 	bool initialiseParams(std::string const & /*data*/) { return true; }

@@ -112,11 +112,11 @@ public:
 	 */
 	FileName const & system_temp_dir() const { return system_temp_dir_; }
 
-	/** The path to the temporary directory used by LyX.
+	//@{
+	/** The path to the temporary directory used by %LyX.
 	 *  (Eg /tmp/lyx_tmpdir800nBI1z9 on *nix.)
 	 *  Can be reset by LyXRC.
 	 */
-	//@{
 	FileName const & temp_dir() const { return temp_dir_; }
 	void set_temp_dir(FileName const & temp_dir) const;
 	//@}
