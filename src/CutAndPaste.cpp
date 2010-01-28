@@ -267,7 +267,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 			lab.updateCommand(oldname, false);
 			docstring const newname = lab.getParam("name");
 			if (oldname == newname)
-				continue;
+				break;
 			// adapt the references
 			for (InsetIterator itt = inset_iterator_begin(in);
 			     itt != i_end; ++itt) {
@@ -294,7 +294,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 			bib.updateCommand(oldkey, false);
 			docstring const newkey = bib.getParam("key");
 			if (oldkey == newkey)
-				continue;
+				break;
 			// adapt the references
 			for (InsetIterator itt = inset_iterator_begin(in);
 			     itt != i_end; ++itt) {
