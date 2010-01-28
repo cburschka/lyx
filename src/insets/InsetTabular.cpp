@@ -3424,7 +3424,7 @@ void InsetTabular::addToToc(DocIterator const & cpit)
 	dit.forwardPos();
 	size_t const end = dit.nargs();
 	for ( ; dit.idx() < end; dit.top().forwardIdx())
-		cell(dit.idx())->addToToc(cpit);
+		cell(dit.idx())->addToToc(dit);
 }
 
 
