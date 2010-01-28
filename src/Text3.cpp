@@ -200,7 +200,7 @@ void regexpDispatch(Cursor & cur, FuncRequest const & cmd)
 {
 	BOOST_ASSERT(cmd.action == LFUN_REGEXP_MODE);
 	if (cur.inRegexped()) {
-		cur.message(_("Already in regexp mode"));
+		cur.message(_("Already in regular expression mode"));
 		return;
 	}
 	cur.recordUndo();
