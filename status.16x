@@ -120,6 +120,8 @@ What's new
 
 - While in ERT, disable non-functional sub- and superscript functions that
   crashed LyX (bug 6459).
+  
+- Resolve duplicate labels in mathed on pasting (bug 6218).
 
 - Detect user-specified package dependencies for modules (bug 6361).
 

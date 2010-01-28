@@ -42,10 +42,12 @@
 #include "insets/InsetGraphics.h"
 #include "insets/InsetGraphicsParams.h"
 #include "insets/InsetInclude.h"
+#include "insets/InsetLabel.h"
 #include "insets/InsetTabular.h"
 
 #include "mathed/MathData.h"
 #include "mathed/InsetMath.h"
+#include "mathed/InsetMathHull.h"
 #include "mathed/MathSupport.h"
 
 #include "support/debug.h"
@@ -231,6 +233,33 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 
 		switch (it->lyxCode()) {
  
+		case MATH_CODE: {
+			// check for equation labels and resolve duplicates
+			InsetMathHull & ins = static_cast<InsetMathHull &>(*it);
+			std::vector<InsetLabel *> labels = ins.getLabels();
+			for (size_t i = 0; i != labels.size(); ++i) {
+				if (!labels[i])
+					continue;
+				InsetLabel * lab = labels[i];
+				docstring const oldname = lab->getParam("name");
+				lab->updateCommand(oldname, false);
+				docstring const newname = lab->getParam("name");
+				if (oldname != newname) {
+					// adapt the references
+					for (InsetIterator itt = inset_iterator_begin(in);
+					     itt != i_end; ++itt) {
+						if (itt->lyxCode() == REF_CODE) {
+							InsetCommand & ref =
+								dynamic_cast<InsetCommand &>(*itt);
+							if (ref.getParam("reference") == oldname)
+								ref.setParam("reference", newname);
+						}
+					}
+				}
+			}
+			break;
+		}
+		
 		case LABEL_CODE: {
 			// check for duplicates
 			InsetCommand & lab = static_cast<InsetCommand &>(*it);
