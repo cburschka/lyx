@@ -1006,7 +1006,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_REGEXP_MODE: {
 		InsetMathHull * i = dynamic_cast<InsetMathHull *>(cur.inset().asInsetMath());
 		if (i && i->getType() == hullRegexp) {
-			cur.message(_("Already in regulare expression mode"));
+			cur.message(_("Already in regular expression mode"));
 			break;
 		}
 		cur.macroModeClose();
@@ -1018,7 +1018,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.niceInsert(save_selection);
 		cur.message(_("Regular expression editor mode"));
 		break;
-	
+	}
 
 	case LFUN_MATH_FONT_STYLE: {
 		FuncRequest fr = FuncRequest(LFUN_MATH_INSERT, '\\' + cmd.argument());
