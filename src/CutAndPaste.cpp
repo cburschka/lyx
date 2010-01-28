@@ -244,16 +244,16 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 				docstring const oldname = lab->getParam("name");
 				lab->updateCommand(oldname, false);
 				docstring const newname = lab->getParam("name");
-				if (oldname != newname) {
-					// adapt the references
-					for (InsetIterator itt = inset_iterator_begin(in);
-					     itt != i_end; ++itt) {
-						if (itt->lyxCode() == REF_CODE) {
-							InsetCommand & ref =
-								dynamic_cast<InsetCommand &>(*itt);
-							if (ref.getParam("reference") == oldname)
-								ref.setParam("reference", newname);
-						}
+				if (oldname == newname)
+					continue;
+				// adapt the references
+				for (InsetIterator itt = inset_iterator_begin(in);
+				      itt != i_end; ++itt) {
+					if (itt->lyxCode() == REF_CODE) {
+						InsetCommand & ref =
+							dynamic_cast<InsetCommand &>(*itt);
+						if (ref.getParam("reference") == oldname)
+							ref.setParam("reference", newname);
 					}
 				}
 			}
@@ -266,14 +266,16 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 			docstring const oldname = lab.getParam("name");
 			lab.updateCommand(oldname, false);
 			docstring const newname = lab.getParam("name");
-			if (oldname != newname) {
-				// adapt the references
-				for (InsetIterator itt = inset_iterator_begin(in); itt != i_end; ++itt) {
-					if (itt->lyxCode() == REF_CODE) {
-						InsetCommand & ref = dynamic_cast<InsetCommand &>(*itt);
-						if (ref.getParam("reference") == oldname)
-							ref.setParam("reference", newname);
-					}
+			if (oldname == newname)
+					continue;
+			// adapt the references
+			for (InsetIterator itt = inset_iterator_begin(in);
+			     itt != i_end; ++itt) {
+				if (itt->lyxCode() == REF_CODE) {
+					InsetCommand & ref =
+						dynamic_cast<InsetCommand &>(*itt);
+					if (ref.getParam("reference") == oldname)
+						ref.setParam("reference", newname);
 				}
 			}
 			break;
