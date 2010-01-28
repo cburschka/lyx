@@ -27,6 +27,8 @@ public:
 	///
 	explicit InsetMathRef(Buffer * buf, docstring const & data);
 	///
+	void updateLabels(ParIterator const &, UpdateType);
+	///
 	//void write(WriteStream & os) const;
 	///
 	void infoize(odocstream & os) const;
@@ -34,6 +36,8 @@ public:
 	docstring const screenLabel() const;
 	///
 	void validate(LaTeXFeatures & features) const;
+	///
+	void changeTarget(docstring const & target);
 	///
 	virtual InsetMathRef * asRefInset() { return this; }
 
@@ -55,6 +59,8 @@ public:
 	static int getType(docstring const & name);
 	///
 	static docstring const & getName(int type);
+	///
+	docstring const getTarget() const;
 	///
 	InsetCode lyxCode() const { return MATH_REF_CODE; }
 

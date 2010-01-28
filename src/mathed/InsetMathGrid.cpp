@@ -18,6 +18,7 @@
 #include "MathStream.h"
 #include "MetricsInfo.h"
 
+#include "Buffer.h"
 #include "BufferView.h"
 #include "CutAndPaste.h"
 #include "FuncStatus.h"
@@ -631,6 +632,14 @@ void InsetMathGrid::drawT(TextPainter & /*pain*/, int /*x*/, int /*y*/) const
 {
 //	for (idx_type idx = 0; idx < nargs(); ++idx)
 //		cell(idx).drawT(pain, x + cellXOffset(idx), y + cellYOffset(idx));
+}
+
+
+void InsetMathGrid::updateLabels(ParIterator const & it, UpdateType utype)
+{
+	// pass down
+	for (idx_type idx = 0; idx < nargs(); ++idx)
+		cell(idx).updateLabels(it, utype);
 }
 
 
@@ -1322,6 +1331,10 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 					cell(i).append(grid.cell(grid.index(r, c)));
 		}
 		cur.clearSelection(); // bug 393
+		// FIXME audit setBuffer/updateLabels calls
+		cur.inset().setBuffer(*buffer_);
+		// FIXME audit setBuffer/updateLabels calls
+		cur.buffer()->updateLabels();
 		cur.finishUndo();
 		break;
 	}

@@ -225,6 +225,8 @@ void InsetMathHull::updateLabels(ParIterator const & it, UpdateType utype)
 		if (label_[i])
 			label_[i]->updateLabels(it, utype);
 	}
+	// pass down
+	InsetMathGrid::updateLabels(it, utype);
 }
 
 

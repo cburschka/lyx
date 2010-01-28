@@ -377,6 +377,16 @@ void MathData::drawT(TextPainter & pain, int x, int y) const
 }
 
 
+void MathData::updateLabels(ParIterator const & it, UpdateType utype)
+{
+	// pass down
+	for (size_t i = 0, n = size(); i != n; ++i) {
+		MathAtom & at = operator[](i);
+		at.nucleus()->updateLabels(it, utype);
+	}
+}
+
+
 void MathData::updateMacros(Cursor * cur, MacroContext const & mc)
 {
 	// If we are editing a macro, we cannot update it immediately,

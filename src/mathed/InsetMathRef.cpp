@@ -23,6 +23,7 @@
 #include "MathFactory.h"
 #include "MathSupport.h"
 #include "OutputParams.h"
+#include "ParIterator.h"
 #include "sgml.h"
 
 #include "insets/InsetCommand.h"
@@ -175,6 +176,17 @@ int InsetMathRef::docbook(odocstream & os, OutputParams const & runparams) const
 }
 
 
+void InsetMathRef::updateLabels(ParIterator const & it, UpdateType /*utype*/)
+{
+	if (!buffer_) {
+		LYXERR0("InsetMathRef::updateLabels: no buffer_!");
+		return;
+	}
+	// register this inset into the buffer reference cache.
+	buffer().references(getTarget()).push_back(make_pair(this, it));
+}
+
+
 string const InsetMathRef::createDialogStr(string const & name) const
 {
 	InsetCommandParams icp(REF_CODE, to_ascii(commandname()));
@@ -182,6 +194,29 @@ string const InsetMathRef::createDialogStr(string const & name) const
 	if (!cell(1).empty())
 		icp["name"] = asString(cell(1));
 	return InsetCommand::params2string(name, icp);
+}
+
+
+docstring const InsetMathRef::getTarget() const
+{
+	return asString(cell(0));
+}
+
+
+void InsetMathRef::changeTarget(docstring const & target)
+{
+	InsetCommandParams icp(REF_CODE, to_ascii(commandname()));
+	icp["reference"] = target;
+	if (!cell(1).empty())
+		icp["name"] = asString(cell(1));
+	MathData ar;
+	Buffer & buf = buffer();
+	if (createInsetMath_fromDialogStr(
+	    from_utf8(InsetCommand::params2string("ref", icp)), ar)) {
+		*this = *ar[0].nucleus()->asRefInset();
+		// FIXME audit setBuffer/updateLabels calls
+		setBuffer(buf);
+	}
 }
 
 

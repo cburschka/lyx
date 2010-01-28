@@ -32,6 +32,9 @@
 #include "TextClass.h"
 #include "TocBackend.h"
 
+#include "mathed/InsetMathHull.h"
+#include "mathed/InsetMathRef.h"
+
 #include "frontends/alert.h"
 
 #include "support/convert.h"
@@ -82,7 +85,15 @@ void InsetLabel::updateCommand(docstring const & new_label, bool updaterefs)
 		Buffer::References::iterator end = refs.end();
 		for (; it != end; ++it) {
 			buffer().undo().recordUndo(it->second);
-			it->first->setParam("reference", label);
+			if (it->first->lyxCode() == MATH_REF_CODE) {
+				InsetMathHull * mi =
+					static_cast<InsetMathHull *>(it->first);
+				mi->asRefInset()->changeTarget(label);
+			} else {
+				InsetCommand * ref =
+					static_cast<InsetCommand *>(it->first);
+				ref->setParam("reference", label);
+			}
 		}
 	}
 	buffer().undo().endUndoGroup();
@@ -150,7 +161,13 @@ void InsetLabel::addToToc(DocIterator const & cpit)
 	Buffer::References::const_iterator end = refs.end();
 	for (; it != end; ++it) {
 		DocIterator const ref_pit(it->second);
-		toc.push_back(TocItem(ref_pit, 1, it->first->screenLabel()));
+		if (it->first->lyxCode() == MATH_REF_CODE)
+			toc.push_back(TocItem(ref_pit, 1,
+				static_cast<InsetMathHull *>(it->first)->asRefInset()
+					->screenLabel()));
+		else
+			toc.push_back(TocItem(ref_pit, 1,
+				static_cast<InsetRef *>(it->first)->screenLabel()));
 	}
 }
 

@@ -528,7 +528,7 @@ public:
 	bool isExportableFormat(std::string const & format) const;
 
 	///
-	typedef std::vector<std::pair<InsetRef *, ParIterator> > References;
+	typedef std::vector<std::pair<Inset *, ParIterator> > References;
 	References & references(docstring const & label);
 	References const & references(docstring const & label) const;
 	void clearReferenceCache() const;

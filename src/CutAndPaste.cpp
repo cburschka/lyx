@@ -49,6 +49,7 @@
 #include "mathed/MathData.h"
 #include "mathed/InsetMath.h"
 #include "mathed/InsetMathHull.h"
+#include "mathed/InsetMathRef.h"
 #include "mathed/MathSupport.h"
 
 #include "support/debug.h"
@@ -242,16 +243,25 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 				docstring const oldname = lab->getParam("name");
 				lab->updateCommand(oldname, false);
 				docstring const newname = lab->getParam("name");
-				if (oldname != newname) {
-					// adapt the references
-					for (InsetIterator itt = inset_iterator_begin(in);
-					     itt != i_end; ++itt) {
-						if (itt->lyxCode() == REF_CODE) {
-							InsetCommand & ref =
-								dynamic_cast<InsetCommand &>(*itt);
-							if (ref.getParam("reference") == oldname)
-								ref.setParam("reference", newname);
-						}
+				if (oldname == newname)
+					continue;
+				// adapt the references
+				for (InsetIterator itt = inset_iterator_begin(in);
+				      itt != i_end; ++itt) {
+					if (itt->lyxCode() == REF_CODE) {
+						InsetCommand & ref =
+							static_cast<InsetCommand &>(*itt);
+						if (ref.getParam("reference") == oldname)
+							ref.setParam("reference", newname);
+					} else if (itt->lyxCode() == MATH_REF_CODE) {
+						InsetMathHull & mi =
+							static_cast<InsetMathHull &>(*itt);
+						// this is necessary to prevent an uninitialized
+						// buffer when the RefInset is in a MathBox.
+						// FIXME audit setBuffer/updateLabels calls
+						mi.setBuffer(const_cast<Buffer &>(buffer));
+						if (mi.asRefInset()->getTarget() == oldname)
+							mi.asRefInset()->changeTarget(newname);
 					}
 				}
 			}
@@ -264,14 +274,23 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 			docstring const oldname = lab.getParam("name");
 			lab.updateCommand(oldname, false);
 			docstring const newname = lab.getParam("name");
-			if (oldname != newname) {
-				// adapt the references
-				for (InsetIterator itt = inset_iterator_begin(in); itt != i_end; ++itt) {
-					if (itt->lyxCode() == REF_CODE) {
-						InsetCommand & ref = dynamic_cast<InsetCommand &>(*itt);
-						if (ref.getParam("reference") == oldname)
-							ref.setParam("reference", newname);
-					}
+			if (oldname == newname)
+				break;
+			// adapt the references
+			for (InsetIterator itt = inset_iterator_begin(in); itt != i_end; ++itt) {
+				if (itt->lyxCode() == REF_CODE) {
+					InsetCommand & ref = static_cast<InsetCommand &>(*itt);
+					if (ref.getParam("reference") == oldname)
+						ref.setParam("reference", newname);
+				} else if (itt->lyxCode() == MATH_REF_CODE) {
+					InsetMathHull & mi =
+						static_cast<InsetMathHull &>(*itt);
+					// this is necessary to prevent an uninitialized
+					// buffer when the RefInset is in a MathBox.
+					// FIXME audit setBuffer/updateLabels calls
+					mi.setBuffer(const_cast<Buffer &>(buffer));
+					if (mi.asRefInset()->getTarget() == oldname)
+						mi.asRefInset()->changeTarget(newname);
 				}
 			}
 			break;
@@ -289,14 +308,16 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 			docstring const oldkey = bib.getParam("key");
 			bib.updateCommand(oldkey, false);
 			docstring const newkey = bib.getParam("key");
-			if (oldkey != newkey) {
-				// adapt the references
-				for (InsetIterator itt = inset_iterator_begin(in); itt != i_end; ++itt) {
-					if (itt->lyxCode() == CITE_CODE) {
-						InsetCommand & ref = dynamic_cast<InsetCommand &>(*itt);
-						if (ref.getParam("key") == oldkey)
-							ref.setParam("key", newkey);
-					}
+			if (oldkey == newkey)
+				break;
+			// adapt the references
+			for (InsetIterator itt = inset_iterator_begin(in);
+			     itt != i_end; ++itt) {
+				if (itt->lyxCode() == CITE_CODE) {
+					InsetCommand & ref =
+						static_cast<InsetCommand &>(*itt);
+					if (ref.getParam("key") == oldkey)
+						ref.setParam("key", newkey);
 				}
 			}
 			break;

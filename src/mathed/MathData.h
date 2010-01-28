@@ -18,6 +18,8 @@
 #include "Dimension.h"
 #include "MathAtom.h"
 
+#include "OutputEnums.h"
+
 #include "support/strfwd.h"
 
 #include <vector>
@@ -35,6 +37,7 @@ class MacroContext;
 class MathMacro;
 class MetricsInfo;
 class PainterInfo;
+class ParIterator;
 class TextMetricsInfo;
 class TextPainter;
 
@@ -164,6 +167,8 @@ public:
 	/// attach/detach arguments to macros, updating the cur to 
 	/// stay visually at the same position (cur==0 is allowed)
 	void updateMacros(Cursor * cur, MacroContext const & mc);
+	///
+	void updateLabels(ParIterator const &, UpdateType);
 
 protected:
 	/// cached values for super/subscript placement
