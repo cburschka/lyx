@@ -251,7 +251,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 				      itt != i_end; ++itt) {
 					if (itt->lyxCode() == REF_CODE) {
 						InsetCommand & ref =
-							dynamic_cast<InsetCommand &>(*itt);
+							static_cast<InsetCommand &>(*itt);
 						if (ref.getParam("reference") == oldname)
 							ref.setParam("reference", newname);
 					}
@@ -273,7 +273,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 			     itt != i_end; ++itt) {
 				if (itt->lyxCode() == REF_CODE) {
 					InsetCommand & ref =
-						dynamic_cast<InsetCommand &>(*itt);
+						static_cast<InsetCommand &>(*itt);
 					if (ref.getParam("reference") == oldname)
 						ref.setParam("reference", newname);
 				}
@@ -293,14 +293,16 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 			docstring const oldkey = bib.getParam("key");
 			bib.updateCommand(oldkey, false);
 			docstring const newkey = bib.getParam("key");
-			if (oldkey != newkey) {
-				// adapt the references
-				for (InsetIterator itt = inset_iterator_begin(in); itt != i_end; ++itt) {
-					if (itt->lyxCode() == CITE_CODE) {
-						InsetCommand & ref = dynamic_cast<InsetCommand &>(*itt);
-						if (ref.getParam("key") == oldkey)
-							ref.setParam("key", newkey);
-					}
+			if (oldkey == newkey)
+				continue;
+			// adapt the references
+			for (InsetIterator itt = inset_iterator_begin(in);
+			     itt != i_end; ++itt) {
+				if (itt->lyxCode() == CITE_CODE) {
+					InsetCommand & ref =
+						static_cast<InsetCommand &>(*itt);
+					if (ref.getParam("key") == oldkey)
+						ref.setParam("key", newkey);
 				}
 			}
 			break;
