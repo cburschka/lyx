@@ -835,8 +835,10 @@ public:
 	Inset * editXY(Cursor & cur, int x, int y);
 	/// can we go further down on mouse click?
 	bool descendable(BufferView const &) const { return true; }
-	// Update the counters of this inset and of its contents
+	/// Update the counters of this inset and of its contents
 	void updateLabels(ParIterator const &, UpdateType);
+	///
+	void addToToc(DocIterator const &);
 
 	///
 	bool completionSupported(Cursor const &) const;
