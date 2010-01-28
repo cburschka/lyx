@@ -267,7 +267,7 @@ pasteSelectionHelper(Cursor & cur, ParagraphList const & parlist,
 			lab.updateCommand(oldname, false);
 			docstring const newname = lab.getParam("name");
 			if (oldname == newname)
-					continue;
+				continue;
 			// adapt the references
 			for (InsetIterator itt = inset_iterator_begin(in);
 			     itt != i_end; ++itt) {
