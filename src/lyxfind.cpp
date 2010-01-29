@@ -805,8 +805,8 @@ string MatchStringAdv::normalize(docstring const & s) const
 	LYXERR(Debug::FIND, "Removing stale empty \\emph{}, \\textbf{}, \\*section{} macros from: " << t);
 	while (regex_replace(t, t, "\\\\(emph|textbf|subsubsection|subsection|section|subparagraph|paragraph)(\\{\\})+", ""))
 		LYXERR(Debug::FIND, "  further removing stale empty \\emph{}, \\textbf{} macros from: " << t);
-	regex_replace(t, t, "\\{", "@##@(");
-	regex_replace(t, t, "\\}", "@##@)");
+	regex_replace(t, t, "\\{", "@##£$%@(");
+	regex_replace(t, t, "\\}", "@##£$%@)");
 	return t;
 }
 
