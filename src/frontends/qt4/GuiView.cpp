@@ -380,6 +380,12 @@ GuiView::GuiView(int id)
 	setWindowIcon(getPixmap("images/", "lyx", "png"));
 #endif
 
+#if (QT_VERSION >= 0x040300)
+	// use tabbed dock area for multiple docks
+	// (such as "source" and "messages")
+	setDockOptions(QMainWindow::ForceTabbedDocks);
+#endif
+
 	// For Drag&Drop.
 	setAcceptDrops(true);
 
