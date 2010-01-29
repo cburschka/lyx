@@ -3259,6 +3259,16 @@ void InsetTabular::updateLabels(ParIterator const & it)
 }
 
 
+void InsetTabular::addToToc(DocIterator const & cpit)
+{
+	DocIterator dit = cpit;
+	dit.forwardPos();
+	size_t const end = dit.nargs();
+	for ( ; dit.idx() < end; dit.top().forwardIdx())
+		cell(dit.idx())->addToToc(dit);
+}
+
+
 void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	LYXERR(Debug::DEBUG, "# InsetTabular::doDispatch: cmd: " << cmd
