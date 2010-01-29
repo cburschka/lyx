@@ -377,7 +377,7 @@ bool TextMetrics::isRTLBoundary(pit_type pit, pos_type pos,
 bool TextMetrics::redoParagraph(pit_type const pit)
 {
 	Paragraph & par = text_->getPar(pit);
-	// IMPORTANT NOTE: We pass 'false' explicitely in order to not call
+	// IMPORTANT NOTE: We pass 'false' explicitly in order to not call
 	// redoParagraph() recursively inside parMetrics.
 	Dimension old_dim = parMetrics(pit, false).dim();
 	ParagraphMetrics & pm = par_metrics_[pit];

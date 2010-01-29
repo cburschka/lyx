@@ -95,7 +95,7 @@ void PDFOptions::writeLaTeX(odocstream & os, bool hyperref_already_provided) con
 	opt += "unicode=true, ";
 	
 	// try to extract author and title from document when none is
-	// explicitely given
+	// explicitly given
 	if (pdfusetitle && title.empty() && author.empty())
 		opt += "pdfusetitle,";
 	opt += "\n ";

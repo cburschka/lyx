@@ -1534,7 +1534,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	//   before hyperref. Then hyperref has a chance to detect babel.
 	// * Has to be loaded before the "LyX specific LaTeX commands" to
 	//   avoid errors with algorithm floats.
-	// use hyperref explicitely when it is required
+	// use hyperref explicitly when it is required
 	if (features.isRequired("hyperref")) {
 		odocstringstream oss;
 		pdfoptions().writeLaTeX(oss, documentClass().provides("hyperref"));
@@ -2261,7 +2261,7 @@ string const BufferParams::loadFonts(string const & rm,
 	}
 
 	// ROMAN FONTS
-	// Computer Modern (must be explicitely selectable -- there might be classes
+	// Computer Modern (must be explicitly selectable -- there might be classes
 	// that define a different default font!
 	if (rm == "cmr") {
 		os << "\\renewcommand{\\rmdefault}{cmr}\n";

@@ -829,7 +829,7 @@ void latexParagraphs(Buffer const & buf,
 		texrow.newline();
 		open_encoding_ = CJK;
 	}
-	// if "auto begin" is switched off, explicitely switch the
+	// if "auto begin" is switched off, explicitly switch the
 	// language on at start
 	if (maintext && !lyxrc.language_auto_begin &&
 	    !bparams.language->babel().empty()) {
@@ -903,7 +903,7 @@ void latexParagraphs(Buffer const & buf,
 		texrow.newline();
 	}
 
-	// if "auto end" is switched off, explicitely close the language at the end
+	// if "auto end" is switched off, explicitly close the language at the end
 	// but only if the last par is in a babel language
 	if (maintext && !lyxrc.language_auto_end && !bparams.language->babel().empty() &&
 		lastpar->getParLanguage(bparams)->encoding()->package() != Encoding::CJK) {
