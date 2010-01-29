@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-01-24 11:16+0100\n"
-"PO-Revision-Date: 2010-01-24 15:21+0100\n"
+"PO-Revision-Date: 2010-01-29 19:09+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenský <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -60,7 +60,7 @@ msgstr "LyX: Vlož text"
 
 #: src/frontends/qt4/ui/AskForTextUi.ui:47
 msgid "&Dummy"
-msgstr "&Dummy"
+msgstr "&Atrapa"
 
 #: src/frontends/qt4/ui/AskForTextUi.ui:84
 #: src/frontends/qt4/ui/BibitemUi.ui:111 src/frontends/qt4/ui/BibtexUi.ui:200
@@ -18982,9 +18982,8 @@ msgid "hspell"
 msgstr "hspell"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1152
-#, fuzzy
 msgid "enchant"
-msgstr "nákres"
+msgstr "enchant"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1155
 msgid "pspell (library)"
