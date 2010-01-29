@@ -335,10 +335,10 @@ docstring question_string(FindAndReplaceOptions const & opt)
 	}
 	docstring message = opt.forward ?
 		bformat(_("End of %1$s reached while searching forward.\n"
-			  "Continue searching from begin?"),
+			  "Continue searching from the beginning?"),
 			scope) : 
-		bformat(_("Beginning of %1$s reached while searching backwards.\n"
-			  "Continue searching from end?"),
+		bformat(_("Beginning of %1$s reached while searching backward.\n"
+			  "Continue searching from the end?"),
 			scope);
 
 	return message;
