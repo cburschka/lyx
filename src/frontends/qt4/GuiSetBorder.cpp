@@ -119,7 +119,7 @@ void GuiSetBorder::drawLeft(bool draw)
 {
 	QColor col(draw ? Qt::black : Qt::white);
 	if (!left_.enabled)
-		col = QColor(Qt::lightGray);
+		col = QColor("grey");
 	drawLine(col, m + l, m + l + 2, m + l, h - m - l - 1);
 }
 
@@ -128,7 +128,7 @@ void GuiSetBorder::drawRight(bool draw)
 {
 	QColor col(draw ? Qt::black : Qt::white);
 	if (!right_.enabled)
-		col = QColor(Qt::lightGray);
+		col = QColor("grey");
 	drawLine(col, h - m - l + 1, m + l + 2, h - m - l + 1, h - m - l - 1);
 }
 
@@ -137,7 +137,7 @@ void GuiSetBorder::drawTop(bool draw)
 {
 	QColor col(draw ? Qt::black : Qt::white);
 	if (!top_.enabled)
-		col = QColor(Qt::lightGray);
+		col = QColor("grey");
 	drawLine(col, m + l + 2, m + l, w - m - l - 1, m + l);
 }
 
@@ -146,7 +146,7 @@ void GuiSetBorder::drawBottom(bool draw)
 {
 	QColor col(draw ? Qt::black : Qt::white);
 	if (!bottom_.enabled)
-		col = QColor(Qt::lightGray);
+		col = QColor("grey");
 	drawLine(col, m + l + 2, w - m - l + 1, w - m - l - 1, w - m - l + 1);
 }
 
