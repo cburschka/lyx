@@ -67,18 +67,16 @@ Buffer * checkAndLoadLyXFile(FileName const & filename, bool const acceptDirty)
 		if (checkBuffer->isClean() || acceptDirty)
 			return checkBuffer;
 		docstring const file = makeDisplayPath(filename.absFilename(), 20);
-		docstring text = bformat(_(
+		docstring const text = bformat(_(
 				"The document %1$s is already loaded and has unsaved changes.\n"
 				"Do you want to abandon your changes and reload the version on disk?"), file);
-		if (Alert::prompt(_("Reload saved document?"),
-				text, 0, 1,  _("&Reload"), _("&Keep Changes")))
-			return checkBuffer;
-
-		// FIXME: should be LFUN_REVERT
-		checkBuffer->markClean();
-		theBufferList().release(checkBuffer);
-		// Load it again.
-		return checkAndLoadLyXFile(filename);
+		if (!Alert::prompt(_("Reload saved document?"),
+			  text, 0, 1,  _("&Reload"), _("&Keep Changes"))) {
+			// reload the document
+			if (!checkBuffer->reload())
+				return 0;
+		}
+		return checkBuffer;
 	}
 
 	if (filename.exists()) {
