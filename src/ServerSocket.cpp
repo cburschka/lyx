@@ -16,6 +16,7 @@
 
 #include "ServerSocket.h"
 
+#include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "LyXAction.h"
 #include "LyXFunc.h"
@@ -141,13 +142,13 @@ void ServerSocket::dataCallback(int fd)
 		string const key = line.substr(0, pos);
 		if (key == "LYXCMD") {
 			string const cmd = line.substr(pos + 1);
-			func->dispatch(lyxaction.lookupFunc(cmd));
-			string const rval = to_utf8(func->getMessage());
-			if (func->errorStat()) {
+			DispatchResult dr;
+			func->dispatch(lyxaction.lookupFunc(cmd), dr);
+			string const rval = to_utf8(dr.message());
+			if (dr.error())
 				client->writeln("ERROR:" + cmd + ':' + rval);
-			} else {
+			else
 				client->writeln("INFO:" + cmd + ':' + rval);
-			}
 		} else if (key == "HELLO") {
 			// no use for client name!
 			client->writeln("HELLO:");

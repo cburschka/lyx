@@ -41,6 +41,8 @@
 #include <config.h>
 
 #include "Server.h"
+
+#include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "LyXAction.h"
 #include "LyXFunc.h"
@@ -1111,14 +1113,16 @@ void Server::callback(string const & msg)
 			// connect to the lyxfunc in the single LyXView we
 			// support currently. (Lgb)
 
-			func_->dispatch(FuncRequest(lyxaction.lookupFunc(cmd), arg));
-			string const rval = to_utf8(func_->getMessage());
+			FuncRequest const fr(lyxaction.lookupFunc(cmd), arg);
+			DispatchResult dr;
+			func_->dispatch(fr, dr);
+			string const rval = to_utf8(dr.message());
 
 			// all commands produce an INFO or ERROR message
 			// in the output pipe, even if they do not return
 			// anything. See chapter 4 of Customization doc.
 			string buf;
-			if (func_->errorStat())
+			if (dr.error())
 				buf = "ERROR:";
 			else
 				buf = "INFO:";

@@ -57,14 +57,6 @@ public:
 	///
 	FuncStatus getStatus(FuncRequest const & action) const;
 
-	/// True if lyxfunc reports an error
-	bool errorStat() const { return errorstat; }
-	/// Buffer to store result messages
-	void setMessage(docstring const & m) const;
-	/// Buffer to store result messages
-	void setErrorMessage(docstring const &) const;
-	/// Buffer to store result messages
-	docstring const getMessage() const { return dispatch_buffer; }
 	/// goto a bookmark
 	/// openFile: whether or not open a file if the file is not opened
 	/// switchToBuffer: whether or not switch to buffer if the buffer is
@@ -80,14 +72,6 @@ private:
 	/// cursor position before dispatch started
 	int cursorPosBeforeDispatchX_;
 	int cursorPosBeforeDispatchY_;
-
-	/// Error status, only Dispatch can change this flag
-	mutable bool errorstat;
-
-	/** Buffer to store messages and result data. Is there a
-	    good reason to have this one as static in Dispatch? (Ale)
-	*/
-	mutable docstring dispatch_buffer;
 };
 
 /// Implementation is in LyX.cpp

@@ -292,7 +292,7 @@ public:
 	DocIterator anchor_;
 	
 	///
-	DispatchResult disp_;
+	mutable DispatchResult disp_;
 	///
 	DocIterator const & beforeDispatchCursor() { return beforeDispatchCursor_; }
 	

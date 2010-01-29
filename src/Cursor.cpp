@@ -27,7 +27,7 @@
 #include "FuncRequest.h"
 #include "Language.h"
 #include "LyXAction.h"
-#include "LyXFunc.h" // only for setMessage()
+#include "LyXFunc.h"
 #include "LyXRC.h"
 #include "Paragraph.h"
 #include "ParIterator.h"
@@ -1983,13 +1983,14 @@ void Cursor::handleFont(string const & font)
 
 void Cursor::message(docstring const & msg) const
 {
-	theLyXFunc().setMessage(msg);
+	disp_.setMessage(msg);
 }
 
 
 void Cursor::errorMessage(docstring const & msg) const
 {
-	theLyXFunc().setErrorMessage(msg);
+	disp_.setMessage(msg);
+	disp_.setError(true);
 }
 
 

@@ -295,8 +295,9 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	return flag;
 }
 
-/// send a post-dispatch status message
-static docstring sendDispatchMessage(docstring const & msg, FuncRequest const & cmd)
+/// make a post-dispatch status message
+static docstring makeDispatchMessage(docstring const & msg, 
+				     FuncRequest const & cmd)
 {
 	const bool verbose = (cmd.origin == FuncRequest::MENU
 			      || cmd.origin == FuncRequest::TOOLBAR
@@ -370,11 +371,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	FuncCode const action = cmd.action;
 
 	LYXERR(Debug::ACTION, "\nLyXFunc::dispatch: cmd: " << cmd);
-	//lyxerr << "LyXFunc::dispatch: cmd: " << cmd << endl;
 
 	// we have not done anything wrong yet.
-	errorstat = false;
-	dispatch_buffer.erase();
+	dr.setError(false);
 
 	LyXView * lv = theApp()->currentWindow();
 
@@ -384,10 +383,10 @@ void LyXFunc::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		LYXERR(Debug::ACTION, "LyXFunc::dispatch: "
 		       << lyxaction.getActionName(action)
 		       << " [" << action << "] is disabled at this location");
-		//FIXME: pass this using the DispatchResult object
-		setErrorMessage(flag.message());
 		if (lv)
 			lv->restartCursor();
+		dr.setMessage(flag.message());
+		dr.setError(true);
 		dr.dispatched(false);
 		dr.update(Update::None);
 	} else {
@@ -496,10 +495,12 @@ void LyXFunc::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			}
 
 			if (defaults.writeFile(FileName(defaults.absFileName())))
-				setMessage(bformat(_("Document defaults saved in %1$s"),
+				dr.setMessage(bformat(_("Document defaults saved in %1$s"),
 						   makeDisplayPath(fname)));
-			else
-				setErrorMessage(from_ascii(N_("Unable to save document defaults")));
+			else {
+				dr.setError(true);
+				dr.setMessage(from_ascii(N_("Unable to save document defaults")));
+			}
 			break;
 		}
 
@@ -601,29 +602,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	}
 	if (lv) {
 		// Some messages may already be translated, so we cannot use _()
-		lv->message(sendDispatchMessage(
-			translateIfPossible(getMessage()), cmd));
+		lv->message(makeDispatchMessage(translateIfPossible(dr.message()), cmd));
 	}
 }
-
-
-// Each LyXView should have it's own message method. lyxview and
-// the minibuffer would use the minibuffer, but lyxserver would
-// send an ERROR signal to its client.  Alejandro 970603
-// This function is bit problematic when it comes to NLS, to make the
-// lyx servers client be language indepenent we must not translate
-// strings sent to this func.
-void LyXFunc::setErrorMessage(docstring const & m) const
-{
-	dispatch_buffer = m;
-	errorstat = true;
-}
-
-
-void LyXFunc::setMessage(docstring const & m) const
-{
-	dispatch_buffer = m;
-}
-
 
 } // namespace lyx
