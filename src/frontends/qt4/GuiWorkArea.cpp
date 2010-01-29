@@ -466,7 +466,8 @@ void GuiWorkArea::dispatch(FuncRequest const & cmd0, KeyModifier mod)
 {
 	// Handle drag&drop
 	if (cmd0.action == LFUN_FILE_OPEN) {
-		lyx_view_->dispatch(cmd0);
+		DispatchResult dr;
+		lyx_view_->dispatch(cmd0, dr);
 		return;
 	}
 

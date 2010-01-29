@@ -22,6 +22,7 @@ namespace support { class FileName; }
 class Buffer;
 class BufferView;
 class Cursor;
+class DispatchResult;
 class FuncStatus;
 class FuncRequest;
 class Inset;
@@ -64,7 +65,7 @@ public:
 	virtual bool getStatus(FuncRequest const & cmd, FuncStatus & flag) = 0;
 	/// dispatch command.
 	/// \return true if the \c FuncRequest has been dispatched.
-	virtual bool dispatch(FuncRequest const & cmd) = 0;
+	virtual void dispatch(FuncRequest const & cmd, DispatchResult & dr) = 0;
 
 	///
 	virtual void restartCursor() = 0;

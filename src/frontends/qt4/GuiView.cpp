@@ -16,6 +16,7 @@
 #include "GuiView.h"
 
 #include "Dialog.h"
+#include "DispatchResult.h"
 #include "FileDialog.h"
 #include "FontLoader.h"
 #include "GuiApplication.h"
@@ -2452,6 +2453,7 @@ void GuiView::checkExternallyModifiedBuffers()
 }
 
 
+//FIXME use a DispatchResult object to transmit messages
 void GuiView::dispatchVC(FuncRequest const & cmd)
 {
 	// message for statusbar
@@ -2688,22 +2690,22 @@ static docstring previewAndDestroy(Buffer * buffer, string const & format)
 #endif
 
 
-bool GuiView::dispatch(FuncRequest const & cmd)
+void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 {
 	BufferView * bv = currentBufferView();
 	// By default we won't need any update.
-	if (bv)
-		bv->cursor().updateFlags(Update::None);
+	dr.update(Update::None);
+	// assume cmd will be dispatched
+	dr.dispatched(true);
 
 	Buffer * doc_buffer = documentBufferView()
 		? &(documentBufferView()->buffer()) : 0;
 
-	bool dispatched = true;
-
 	if (cmd.origin == FuncRequest::TOC) {
 		GuiToc * toc = static_cast<GuiToc*>(findOrBuild("toc", false));
+		// FIXME: do we need to pass a DispatchResult object here?
 		toc->doDispatch(bv->cursor(), cmd);
-		return true;
+		return;
 	}
 
 	string const argument = to_utf8(cmd.argument());
@@ -2721,11 +2723,13 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			if (!doc_buffer)
 				break;
 			if (cmd.argument() == "custom") {
-				lyx::dispatch(FuncRequest(LFUN_DIALOG_SHOW, "sendto"));
+				dispatch(FuncRequest(LFUN_DIALOG_SHOW, "sendto"), 
+					 dr);
 				break;
 			}
 			if (doc_buffer->doExport(argument, false)) {
-				message(bformat(_("Error exporting to format: %1$s."),
+				dr.setError(true);
+				dr.setMessage(bformat(_("Error exporting to format: %1$s."),
 					cmd.argument()));
 			}
 			break;
@@ -2810,8 +2814,10 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 					theBufferList().getBuffer(FileName(to_utf8(cmd.argument())));
 				if (buffer)
 					setBuffer(buffer);
-				else
-					message(_("Document not loaded"));
+				else {
+					dr.setError(true);
+					dr.setMessage(_("Document not loaded"));
+				}
 			}
 			break;
 
@@ -2922,6 +2928,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 				// FIXME: get rid of this indirection; GuiView ask the inset
 				// if he is kind enough to update itself...
 				FuncRequest fr(LFUN_INSET_DIALOG_UPDATE, cmd.argument());
+				//FIXME: pass DispatchResult here?
 				inset->dispatch(currentBufferView()->cursor(), fr);
 			} else if (name == "paragraph") {
 				lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
@@ -2933,9 +2940,9 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 
 		case LFUN_DIALOG_TOGGLE: {
 			if (isDialogVisible(cmd.getArg(0)))
-				dispatch(FuncRequest(LFUN_DIALOG_HIDE, cmd.argument()));
+				dispatch(FuncRequest(LFUN_DIALOG_HIDE, cmd.argument()), dr);
 			else
-				dispatch(FuncRequest(LFUN_DIALOG_SHOW, cmd.argument()));
+				dispatch(FuncRequest(LFUN_DIALOG_SHOW, cmd.argument()), dr);
 			break;
 		}
 
@@ -3088,7 +3095,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			break;
 
 		default:
-			dispatched = false;
+			dr.dispatched(false);
 			break;
 	}
 
@@ -3100,7 +3107,7 @@ bool GuiView::dispatch(FuncRequest const & cmd)
 			statusBar()->hide();
 	}
 
-	return dispatched;
+	return;
 }
 
 

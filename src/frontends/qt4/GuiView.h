@@ -79,7 +79,7 @@ public:
 	void updateMessage(QString const & str);
 
 	bool getStatus(FuncRequest const & cmd, FuncStatus & flag);
-	bool dispatch(FuncRequest const & cmd);
+	void dispatch(FuncRequest const & cmd, DispatchResult & dr);
 	void restartCursor();
 	void updateCompletion(Cursor & cur, bool start, bool keep);
 	void setFocus();

@@ -530,13 +530,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				break;
 
 			// Let the current LyXView dispatch its own actions.
-			//FIXME: pass dr to LyXView::dispatch
-			if (lv->dispatch(cmd)) {
-				BufferView * bv = lv->currentBufferView();
-				if (bv)
-					dr = bv->cursor().result();
-				break;
-			}
+			lv->dispatch(cmd, dr);
 
 			BufferView * bv = lv->currentBufferView();
 			LASSERT(bv, /**/);
