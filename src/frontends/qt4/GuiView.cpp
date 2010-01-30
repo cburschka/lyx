@@ -2994,8 +2994,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 					showDialog("symbols", data);
 			// bug 5274
 			} else if (name == "prefs" && isFullScreen()) {
-				FuncRequest fr(LFUN_INSET_INSERT, "fullscreen");
-				lfunUiToggle(fr);
+				lfunUiToggle("fullscreen");
 				showDialog("prefs", data);
 			} else
 				showDialog(name, data);
@@ -3006,11 +3005,16 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			dr.setMessage(cmd.argument());
 			break;
 
-		case LFUN_UI_TOGGLE:
-			lfunUiToggle(cmd);
+		case LFUN_UI_TOGGLE: {
+			string arg = cmd.getArg(0);
+			if (!lfunUiToggle(arg)) {
+				docstring const msg = "ui-toggle " + _("%1$s unknown command!");
+				dr.setMessage(bformat(msg, from_utf8(arg)));
+			}
 			// Make sure the keyboard focus stays in the work area.
 			setFocus();
 			break;
+		}
 
 		case LFUN_SPLIT_VIEW: {
 			LASSERT(doc_buffer, break);
@@ -3119,10 +3123,9 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 }
 
 
-void GuiView::lfunUiToggle(FuncRequest const & cmd)
+bool GuiView::lfunUiToggle(string const & ui_component)
 {
-	string const arg = cmd.getArg(0);
-	if (arg == "scrollbar") {
+	if (ui_component == "scrollbar") {
 		// hide() is of no help
 		if (d.current_work_area_->verticalScrollBarPolicy() ==
 			Qt::ScrollBarAlwaysOff)
@@ -3132,18 +3135,13 @@ void GuiView::lfunUiToggle(FuncRequest const & cmd)
 		else
 			d.current_work_area_->setVerticalScrollBarPolicy(
 				Qt::ScrollBarAlwaysOff);
-		return;
-	}
-	if (arg == "statusbar") {
+	} else if (ui_component == "statusbar") {
 		statusBar()->setVisible(!statusBar()->isVisible());
-		return;
-	}
-	if (arg == "menubar") {
+	} else if (ui_component == "menubar") {
 		menuBar()->setVisible(!menuBar()->isVisible());
-		return;
-	}
+	} else
 #if QT_VERSION >= 0x040300
-	if (arg == "frame") {
+	if (ui_component == "frame") {
 		int l, t, r, b;
 		getContentsMargins(&l, &t, &r, &b);
 		//are the frames in default state?
@@ -3153,15 +3151,13 @@ void GuiView::lfunUiToggle(FuncRequest const & cmd)
 		} else {
 			setContentsMargins(0, 0, 0, 0);
 		}
-		return;
-	}
+	} else
 #endif
-	if (arg == "fullscreen") {
+	if (ui_component == "fullscreen") {
 		toggleFullScreen();
-		return;
-	}
-
-	message(bformat("LFUN_UI_TOGGLE " + _("%1$s unknown command!"), from_utf8(arg)));
+	} else
+		return false;
+	return true;
 }
 
 
