@@ -507,7 +507,6 @@ GuiToolbar * GuiView::toolbar(string const & name)
 		return it->second;
 
 	LYXERR(Debug::GUI, "Toolbar::display: no toolbar named " << name);
-	message(bformat(_("Unknown toolbar \"%1$s\""), from_utf8(name)));
 	return 0;
 }
 
@@ -1441,10 +1440,18 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		enable = d.currentTabWorkArea();
 		break;
 
-	case LFUN_TOOLBAR_TOGGLE:
-		if (GuiToolbar * t = toolbar(cmd.getArg(0)))
+	case LFUN_TOOLBAR_TOGGLE: {
+		string const name = cmd.getArg(0);
+		if (GuiToolbar * t = toolbar(name))
 			flag.setOnOff(t->isVisible());
+		else {
+			enable = false;
+			docstring const msg = 
+				bformat(_("Unknown toolbar \"%1$s\""), from_utf8(name));
+			flag.message(msg);
+		}
 		break;
+	}
 
 	case LFUN_DROP_LAYOUTS_CHOICE:
 		enable = buf; 
