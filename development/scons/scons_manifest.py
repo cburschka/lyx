@@ -782,7 +782,7 @@ src_frontends_qt4_header_files = Split('''
     GuiWrap.h
     IconPalette.h
     InsertTableWidget.h
-	InsetDialog.h
+    InsetDialog.h
     LaTeXHighlighter.h
     LayoutBox.h
     LengthCombo.h
@@ -883,7 +883,7 @@ src_frontends_qt4_files = Split('''
     GuiWrap.cpp
     IconPalette.cpp
     InsertTableWidget.cpp
-	InsetDialog.cpp
+    InsetDialog.cpp
     LengthCombo.cpp
     LaTeXHighlighter.cpp
     LayoutBox.cpp
