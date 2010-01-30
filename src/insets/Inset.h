@@ -291,6 +291,9 @@ public:
 	/// request "external features"
 	virtual void validate(LaTeXFeatures &) const {}
 
+	/// Validate LFUN_INSET_MODIFY argument.
+	virtual bool validateModifyArgument(docstring const &) const { return true; }
+
 	/// describe content if cursor inside
 	virtual void infoize(odocstream &) const {}
 	/// describe content if cursor behind

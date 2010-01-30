@@ -132,6 +132,7 @@ SOURCEFILES = \
 	GuiWrap.cpp \
 	IconPalette.cpp \
 	InsertTableWidget.cpp \
+	InsetDialog.cpp \
 	LengthCombo.cpp \
 	LyXFileDialog.cpp \
 	LaTeXHighlighter.cpp \
@@ -234,6 +235,7 @@ MOCHEADER = \
 	GuiWrap.h \
 	IconPalette.h \
 	InsertTableWidget.h \
+	InsetDialog.h \
 	LayoutBox.h \
 	LengthCombo.h \
 	LyXFileDialog.h \

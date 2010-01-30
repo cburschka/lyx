@@ -110,7 +110,7 @@ public:
 	///
 	std::string infoName() const { return name_; }
 	///
-	bool validate(docstring const & argument) const;
+	bool validateModifyArgument(docstring const & argument) const;
 	///
 	bool showInsetDialog(BufferView * bv) const;
 	///

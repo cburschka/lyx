@@ -48,7 +48,7 @@ char const * info_types_gui[] =
 
 
 GuiInfo::GuiInfo(GuiView & lv)
-	: DialogView(lv, "info", qt_("Info"))
+	: InsetDialog(lv, INFO_CODE, "info", qt_("Info"))
 {
 	setupUi(this);
 
@@ -61,15 +61,10 @@ GuiInfo::GuiInfo(GuiView & lv)
 
 void GuiInfo::on_newPB_clicked()
 {
-	dialogToParams();
-	docstring const argument = qstring_to_ucs4(type_ + ' ' + name_);
+	// FIXME: if we used a standard LFUN_INSET_INSERT command,
+	// This slot could be transferred to InsetDialog.
+	docstring const argument = dialogToParams();
 	dispatch(FuncRequest(LFUN_INFO_INSERT, argument));
-}
-
-
-void GuiInfo::on_closePB_clicked()
-{
-	hide();
 }
 
 
@@ -85,58 +80,32 @@ void GuiInfo::on_nameLE_textChanged(QString const &)
 }
 
 
-void GuiInfo::applyView()
+void GuiInfo::paramsToDialog(Inset const * inset)
 {
-	InsetInfo const * ii = dynamic_cast<InsetInfo const *>(inset(INFO_CODE));
-	if (!ii)
-		return;
-	
-	dialogToParams();
-	docstring const argument = qstring_to_ucs4(type_ + ' ' + name_);
-	if (!ii->validate(argument))
-		return;
-
-	dispatch(FuncRequest(LFUN_INSET_MODIFY, argument));
-	// FIXME: update the inset contents
-	bufferview()->buffer().updateLabels();
-}
-
-
-void GuiInfo::updateView()
-{
-	InsetInfo const * ii = dynamic_cast<InsetInfo const *>(inset(INFO_CODE));
-	if (!ii) {
-		enableView(false);
-		return;
-	}
-
-	type_ = toqstr(ii->infoType());
-	name_ = toqstr(ii->infoName());
-	paramsToDialog();
-}
-
-
-void GuiInfo::paramsToDialog()
-{
+	InsetInfo const * ii = static_cast<InsetInfo const *>(inset);
+	QString const type = toqstr(ii->infoType());
+	QString const name = toqstr(ii->infoName());
 	typeCO->blockSignals(true);
 	nameLE->blockSignals(true);
-	int type = findToken(info_types, fromqstr(type_));
-	typeCO->setCurrentIndex(type >= 0 ? type : 0);
-	// Without this test, 'math-insert' (name_) will replace 'math-insert '
+	int type_index = findToken(info_types, fromqstr(type));
+	typeCO->setCurrentIndex(type_index >= 0 ? type_index : 0);
+	// Without this test, 'math-insert' (name) will replace 'math-insert '
 	// in nameLE and effectively disallow the input of spaces after a LFUN.
-	if (nameLE->text().trimmed() != name_)
-		nameLE->setText(name_);
+	if (nameLE->text().trimmed() != name)
+		nameLE->setText(name);
 	typeCO->blockSignals(false);
 	nameLE->blockSignals(false);
 }
 
 
-void GuiInfo::dialogToParams()
+docstring GuiInfo::dialogToParams() const
 {
-	int type = typeCO->currentIndex();
-	if (type != -1)
-		type_ = info_types[type];
-	name_ = nameLE->text();
+	int type_index = typeCO->currentIndex();
+	QString type;
+	if (type_index != -1)
+		type = info_types[type_index];
+	QString const name = nameLE->text();
+	return qstring_to_ucs4(type + ' ' + name);
 }
 
 

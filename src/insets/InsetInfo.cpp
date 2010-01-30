@@ -150,7 +150,7 @@ void InsetInfo::write(ostream & os) const
 }
 
 
-bool InsetInfo::validate(docstring const & arg) const
+bool InsetInfo::validateModifyArgument(docstring const & arg) const
 {
 	string type;
 	string const name = trim(split(to_utf8(arg), type, ' '));

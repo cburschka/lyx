@@ -12,14 +12,16 @@
 #ifndef GUI_INFO_H
 #define GUI_INFO_H
 
-#include "DialogView.h"
+#include "InsetDialog.h"
 #include "ui_InfoUi.h"
 
 namespace lyx {
 
+class Inset;
+
 namespace frontend {
 
-class GuiInfo : public DialogView, public Ui::InfoUi
+class GuiInfo : public InsetDialog, public Ui::InfoUi
 {
 	Q_OBJECT
 
@@ -28,25 +30,20 @@ public:
 
 	/// \name Dialog inherited methods
 	//@{
-	void applyView();
-	void updateView();
-	void dispatchParams() {}
 	void enableView(bool enable);
-	bool isBufferDependent() const { return true; }
-	bool canApply() const { return true; }
 	//@}
 
 private Q_SLOTS:
 	void on_newPB_clicked();
-	void on_closePB_clicked();
 	void on_typeCO_currentIndexChanged(int);
 	void on_nameLE_textChanged(QString const &);
 
 private:
-	void paramsToDialog();
-	void dialogToParams();
-	QString type_;
-	QString name_;
+	/// \name InsetDialog inherited methods
+	//@{
+	void paramsToDialog(Inset const *);
+	docstring dialogToParams() const;
+	//@}
 };
 
 } // namespace frontend
