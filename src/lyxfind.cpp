@@ -1139,19 +1139,88 @@ static void changeFirstCase(Buffer & buffer, TextCase first_case, TextCase other
 }
 
 
+///
+static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, MatchStringAdv & matchAdv)
+{
+	Cursor & cur = bv->cursor();
+	if (opt.replace == docstring(from_utf8(LYX_FR_NULL_STRING)))
+		return;
+	DocIterator sel_beg = cur.selectionBegin();
+	DocIterator sel_end = cur.selectionEnd();
+	LASSERT(&sel_beg.inset() == &sel_end.inset(), /**/);
+	int sel_len = sel_end.pos() - sel_beg.pos();
+	LYXERR(Debug::FIND, "sel_beg: " << sel_beg << ", sel_end: " << sel_end << ", sel_len: " << sel_len << endl);
+	if (sel_len == 0)
+		return;
+	LASSERT(sel_len > 0, /**/);
+
+	if (!matchAdv(sel_beg, sel_len))
+		return;
+
+	string lyx = to_utf8(opt.replace);
+	// FIXME: Seems so stupid to me to rebuild a buffer here,
+	// when we already have one (replace_work_area_.buffer())
+	Buffer repl_buffer("", false);
+	repl_buffer.setUnnamed(true);
+	LASSERT(repl_buffer.readString(lyx), /**/);
+	repl_buffer.changeLanguage(
+		repl_buffer.language(),
+		cur.getFont().language());
+	if (opt.keep_case && sel_len >= 2) {
+		if (cur.inTexted()) {
+			if (firstUppercase(cur))
+				changeFirstCase(repl_buffer, text_uppercase, text_lowercase);
+			else if (allNonLowercase(cur, sel_len))
+				changeFirstCase(repl_buffer, text_uppercase, text_uppercase);
+		}
+	}
+	cap::cutSelection(cur, false, false);
+	if (!cur.inMathed()) {
+		LYXERR(Debug::FIND, "Replacing by pasteParagraphList()ing repl_buffer");
+		cap::pasteParagraphList(cur, repl_buffer.paragraphs(),
+					repl_buffer.params().documentClassPtr(),
+					bv->buffer().errorList("Paste"));
+	} else {
+		odocstringstream ods;
+		OutputParams runparams(&repl_buffer.params().encoding());
+		runparams.nice = false;
+		runparams.flavor = OutputParams::LATEX;
+		runparams.linelen = 8000; //lyxrc.plaintext_linelen;
+		runparams.dryrun = true;
+		TexRow texrow;
+		TeXOnePar(repl_buffer, repl_buffer.text(), 
+			  repl_buffer.paragraphs().begin(), ods, texrow, runparams);
+		//repl_buffer.getSourceCode(ods, 0, repl_buffer.paragraphs().size(), false);
+		docstring repl_latex = ods.str();
+		LYXERR(Debug::FIND, "Latexified replace_buffer: '" << repl_latex << "'");
+		string s;
+		regex_replace(to_utf8(repl_latex), s, "\\$(.*)\\$", "$1");
+		regex_replace(s, s, "\\\\\\[(.*)\\\\\\]", "$1");
+		repl_latex = from_utf8(s);
+		LYXERR(Debug::FIND, "Replacing by niceInsert()ing latex: '" << repl_latex << "'");
+		cur.niceInsert(repl_latex);
+	}
+	bv->buffer().markDirty();
+	cur.pos() -= repl_buffer.paragraphs().begin()->size();
+	bv->putSelectionAt(DocIterator(cur), repl_buffer.paragraphs().begin()->size(), !opt.forward);
+}
+
+
 /// Perform a FindAdv operation.
 bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt)
 {
-	DocIterator cur = bv->cursor();
-	int match_len = 0;
+	DocIterator cur;
+	int match_len;
 
 	if (opt.search.empty()) {
-			bv->message(_("Search text is empty!"));
-			return false;
+		bv->message(_("Search text is empty!"));
+		return false;
 	}
 
-	MatchStringAdv matchAdv(bv->buffer(), opt);
 	try {
+		MatchStringAdv matchAdv(bv->buffer(), opt);
+		findAdvReplace(bv, opt, matchAdv);
+		cur = bv->cursor();
 		if (opt.forward)
 				match_len = findForwardAdv(cur, matchAdv);
 		else
@@ -1167,61 +1236,10 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt)
 		return false;
 	}
 
-	LYXERR(Debug::FIND, "Putting selection at buf=" << matchAdv.p_buf
-		<< "cur=" << cur << " with len: " << match_len);
+	bv->message(_("Match found!"));
 
-	bv->putSelectionAt(cur, match_len, ! opt.forward);
-	if (opt.replace == docstring(from_utf8(LYX_FR_NULL_STRING))) {
-		bv->message(_("Match found!"));
-	} else {
-		string lyx = to_utf8(opt.replace);
-		// FIXME: Seems so stupid to me to rebuild a buffer here,
-		// when we already have one (replace_work_area_.buffer())
-		Buffer repl_buffer("", false);
-		repl_buffer.setUnnamed(true);
-		if (repl_buffer.readString(lyx)) {
-			repl_buffer.changeLanguage(
-				repl_buffer.language(),
-				bv->cursor().getFont().language());
-			if (opt.keep_case && match_len >= 2) {
-				if (cur.inTexted()) {
-					if (firstUppercase(cur))
-						changeFirstCase(repl_buffer, text_uppercase, text_lowercase);
-					else if (allNonLowercase(cur, match_len))
-						changeFirstCase(repl_buffer, text_uppercase, text_uppercase);
-				}
-			}
-			cap::cutSelection(bv->cursor(), false, false);
-			if (! cur.inMathed()) {
-				LYXERR(Debug::FIND, "Replacing by pasteParagraphList()ing repl_buffer");
-				cap::pasteParagraphList(bv->cursor(), repl_buffer.paragraphs(),
-							repl_buffer.params().documentClassPtr(),
-							bv->buffer().errorList("Paste"));
-			} else {
-				odocstringstream ods;
-				OutputParams runparams(&repl_buffer.params().encoding());
-				runparams.nice = false;
-				runparams.flavor = OutputParams::LATEX;
-				runparams.linelen = 8000; //lyxrc.plaintext_linelen;
-				runparams.dryrun = true;
-				TexRow texrow;
-				TeXOnePar(repl_buffer, repl_buffer.text(), 
-					  repl_buffer.paragraphs().begin(), ods, texrow, runparams);
-				//repl_buffer.getSourceCode(ods, 0, repl_buffer.paragraphs().size(), false);
-				docstring repl_latex = ods.str();
-				LYXERR(Debug::FIND, "Latexified replace_buffer: '" << repl_latex << "'");
-				string s;
-				regex_replace(to_utf8(repl_latex), s, "\\$(.*)\\$", "$1");
-				regex_replace(s, s, "\\\\\\[(.*)\\\\\\]", "$1");
-				repl_latex = from_utf8(s);
-				LYXERR(Debug::FIND, "Replacing by niceInsert()ing latex: '" << repl_latex << "'");
-				bv->cursor().niceInsert(repl_latex);
-			}
-			bv->putSelectionAt(cur, repl_buffer.paragraphs().begin()->size(), ! opt.forward);
-			bv->message(_("Match found and replaced !"));
-		} else
-			LASSERT(false, /**/);
-	}
+	LYXERR(Debug::FIND, "Putting selection at cur=" << cur << " with len: " << match_len);
+	bv->putSelectionAt(cur, match_len, !opt.forward);
 
 	return true;
 }
