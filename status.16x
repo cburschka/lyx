@@ -120,6 +120,9 @@ What's new
 
 - Fix a crash when closing a document with a pending autocompletion popup
   (bug 6431).
+ 
+- Fix a crash when trying to select a whole empty math inset. This causes
+  the empty inset to disappear and the anchor to be invalid (bug 6448).
 
 - While in ERT, disable non-functional sub- and superscript functions that
   crashed LyX (bug 6459).

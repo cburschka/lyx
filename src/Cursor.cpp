@@ -2109,9 +2109,12 @@ Font Cursor::getFont() const
 
 bool Cursor::fixIfBroken()
 {
-	if (DocIterator::fixIfBroken()) {
-			clearSelection();
-			return true;
+	bool const broken_cursor = DocIterator::fixIfBroken();
+	bool const broken_anchor = anchor_.fixIfBroken();
+	
+	if (broken_cursor || broken_anchor) {
+		clearSelection();
+		return true;
 	}
 	return false;
 }
