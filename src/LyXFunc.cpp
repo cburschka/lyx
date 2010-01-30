@@ -532,6 +532,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 			// Let the current LyXView dispatch its own actions.
 			lv->dispatch(cmd, dr);
+			if (dr.dispatched())
+				break;
 
 			BufferView * bv = lv->currentBufferView();
 			LASSERT(bv, /**/);
