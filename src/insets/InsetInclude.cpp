@@ -405,7 +405,8 @@ Buffer * InsetInclude::loadIfNeeded() const
 {
 	// This is for background export and preview. We don't want to load the
 	// cloned child document again.
-	if (child_buffer_ && child_buffer_->isClone())
+	if (child_buffer_ && theBufferList().isLoaded(child_buffer_)
+		  && child_buffer_->isClone())
 		return child_buffer_;
 
 	// Don't try to load it again if we failed before.
