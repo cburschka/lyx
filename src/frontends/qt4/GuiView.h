@@ -297,7 +297,7 @@ private:
 	///
 	void initToolbars();
 	///
-	void lfunUiToggle(FuncRequest const & cmd);
+	bool lfunUiToggle(std::string const & ui_component);
 	///
 	void toggleFullScreen();
 	///
