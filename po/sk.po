@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-01-24 11:16+0100\n"
-"PO-Revision-Date: 2010-01-29 19:09+0100\n"
+"PO-Revision-Date: 2010-01-30 13:54+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenský <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -2368,7 +2368,7 @@ msgstr "Definície konvertoru"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:252
 msgid "Converter File Cache"
-msgstr "Cache pre súbor konvertoru"
+msgstr "Vyrovnávacia pamäť pre konvertor súborov"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:272
 msgid "&Enabled"
@@ -17190,8 +17190,10 @@ msgid ""
 "if you cannot check the spelling of words containing accented letters. This "
 "may not work with all dictionaries."
 msgstr ""
-"Špecifikujte či poslať -T ako voľbu vstupného kódovania pre ispell. Povoľte "
-"to ak nemôžte kontrolovať pravopis slov s medzinárodnými znakmi. Nemusí to "
+"Špecifikujte či poslať -T ako voľbu vstupného kódovania pre ispell. "
+"Pravdepodobne "
+"to potrebujete, ak sa pravopis slov s medzinárodnými znakmi nedá kontrolovať."
+" Nemusí to "
 "fungovať s každým slovníkom."
 
 #: src/LyXRC.cpp:2905
@@ -17203,7 +17205,8 @@ msgstr ""
 msgid ""
 "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
-"Zapnúť vyrovnávací pamäť pro pixmap, ktorá môže zlepšiť výkonnosť na Mac-u a "
+"Zapnúť rýchlu vyrovnávaciu pamäť pre pixmap, ktorá môže zlepšiť výkonnosť na "
+"Mac-u a "
 "Windows."
 
 #: src/LyXRC.cpp:2916
