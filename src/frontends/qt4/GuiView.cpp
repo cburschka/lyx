@@ -2900,7 +2900,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				}
 				b = theBufferList().next(b);
 			} while (b != first); 
-			message(_("All documents saved."));
+			dr.setMessage(_("All documents saved."));
 			break;
 		}
 
@@ -2996,7 +2996,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		}
 
 		case LFUN_MESSAGE:
-			message(cmd.argument());
+			dr.setMessage(cmd.argument());
 			break;
 
 		case LFUN_UI_TOGGLE:
