@@ -48,7 +48,7 @@ char const * info_types_gui[] =
 
 
 GuiInfo::GuiInfo(GuiView & lv)
-	: InsetDialog(lv, INFO_CODE, "info", qt_("Info"))
+	: InsetDialog(lv, INFO_CODE, LFUN_INFO_INSERT, "info", "Info")
 {
 	setupUi(this);
 
@@ -56,15 +56,6 @@ GuiInfo::GuiInfo(GuiView & lv)
 	for (int n = 0; info_types[n][0]; ++n)
 		typeCO->addItem(qt_(info_types_gui[n]));
 	typeCO->blockSignals(false);
-}
-
-
-void GuiInfo::on_newPB_clicked()
-{
-	// FIXME: if we used a standard LFUN_INSET_INSERT command,
-	// This slot could be transferred to InsetDialog.
-	docstring const argument = dialogToParams();
-	dispatch(FuncRequest(LFUN_INFO_INSERT, argument));
 }
 
 

@@ -34,7 +34,6 @@ public:
 	//@}
 
 private Q_SLOTS:
-	void on_newPB_clicked();
 	void on_typeCO_currentIndexChanged(int);
 	void on_nameLE_textChanged(QString const &);
 

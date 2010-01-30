@@ -14,19 +14,22 @@
 
 #include "DialogView.h"
 
+#include "qt_i18n.h"
+
 namespace lyx {
 
 class Inset;
 
 namespace frontend {
 
+
 class InsetDialog : public DialogView
 {
 	Q_OBJECT
 
 public:
-	InsetDialog(GuiView & lv, InsetCode code, 
-		QString const & name, QString const & title);
+	InsetDialog(GuiView & lv, InsetCode code, FuncCode creation_code,
+		char const * name, char const * display_name);
 
 	/// \name DialogView inherited methods
 	//@{
@@ -38,6 +41,7 @@ public:
 	//@}
 
 protected Q_SLOTS:
+	void on_newPB_clicked();
 	void on_closePB_clicked();
 
 protected:
@@ -45,8 +49,12 @@ protected:
 	virtual void paramsToDialog(Inset const *) = 0;
 	///
 	virtual docstring dialogToParams() const = 0;
+
+private:
 	///
-	InsetCode const code_;
+	InsetCode inset_code_;
+	///
+	FuncCode creation_code_;
 };
 
 } // namespace frontend
