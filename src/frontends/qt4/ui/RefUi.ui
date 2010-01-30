@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>386</width>
-    <height>423</height>
+    <height>479</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -16,35 +16,108 @@
    <bool>true</bool>
   </property>
   <layout class="QGridLayout" >
-   <item row="0" column="0" colspan="2" >
-    <widget class="QLabel" name="refsL" >
-     <property name="text" >
-      <string>La&amp;bels in:</string>
-     </property>
-     <property name="buddy" >
-      <cstring>bufferCO</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="2" >
-    <widget class="QComboBox" name="bufferCO" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>7</hsizetype>
-       <vsizetype>0</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" colspan="3" >
-    <widget class="QListWidget" name="refsLW" />
-   </item>
-   <item row="2" column="0" colspan="3" >
+   <property name="margin" >
+    <number>9</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item row="7" column="0" colspan="3" >
     <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QPushButton" name="updatePB" >
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>3</hsizetype>
+         <vsizetype>0</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip" >
+        <string>Update the label list</string>
+       </property>
+       <property name="text" >
+        <string>&amp;Update</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>31</width>
+         <height>30</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="okPB" >
+       <property name="text" >
+        <string>&amp;OK</string>
+       </property>
+       <property name="autoDefault" >
+        <bool>true</bool>
+       </property>
+       <property name="default" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="applyPB" >
+       <property name="text" >
+        <string>&amp;Apply</string>
+       </property>
+       <property name="autoDefault" >
+        <bool>false</bool>
+       </property>
+       <property name="default" >
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="closePB" >
+       <property name="text" >
+        <string>&amp;Close</string>
+       </property>
+       <property name="autoDefault" >
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="3" column="0" colspan="3" >
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
      <item>
       <layout class="QHBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
        <item>
         <widget class="QCheckBox" name="sortCB" >
          <property name="toolTip" >
@@ -68,64 +141,94 @@
          </property>
         </widget>
        </item>
+       <item>
+        <widget class="QCheckBox" name="groupCB" >
+         <property name="toolTip" >
+          <string>Group labels by prefix (e.g. "sec:")</string>
+         </property>
+         <property name="text" >
+          <string>Grou&amp;p</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </item>
      <item>
-      <layout class="QHBoxLayout" >
-       <item>
-        <widget class="QPushButton" name="updatePB" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>3</hsizetype>
-           <vsizetype>0</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="toolTip" >
-          <string>Update the label list</string>
-         </property>
-         <property name="text" >
-          <string>&amp;Update</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="gotoPB" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>3</hsizetype>
-           <vsizetype>0</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="text" >
-          <string>&amp;Go to Label</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="gotoPB" >
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>3</hsizetype>
+         <vsizetype>0</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text" >
+        <string>&amp;Go to Label</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
-   <item row="3" column="0" >
-    <widget class="QLabel" name="referenceL" >
+   <item row="0" column="0" colspan="2" >
+    <widget class="QLabel" name="refsL" >
      <property name="text" >
-      <string>&amp;Label:</string>
+      <string>La&amp;bels in:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>bufferCO</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2" >
+    <widget class="QComboBox" name="bufferCO" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>7</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0" >
+    <widget class="QLabel" name="nameL" >
+     <property name="enabled" >
+      <bool>false</bool>
+     </property>
+     <property name="text" >
+      <string>&amp;Name:</string>
      </property>
      <property name="alignment" >
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
      <property name="buddy" >
-      <cstring>referenceED</cstring>
+      <cstring>nameED</cstring>
      </property>
     </widget>
    </item>
-   <item row="3" column="1" colspan="2" >
-    <widget class="QLineEdit" name="referenceED" />
+   <item row="6" column="1" colspan="2" >
+    <widget class="QLineEdit" name="nameED" >
+     <property name="enabled" >
+      <bool>false</bool>
+     </property>
+    </widget>
    </item>
-   <item row="4" column="0" >
+   <item row="5" column="0" >
     <widget class="QLabel" name="typeLA" >
      <property name="text" >
       <string>&amp;Format:</string>
@@ -138,7 +241,7 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="1" colspan="2" >
+   <item row="5" column="1" colspan="2" >
     <widget class="QComboBox" name="typeCO" >
      <property name="sizePolicy" >
       <sizepolicy>
@@ -183,96 +286,93 @@
      </item>
     </widget>
    </item>
-   <item row="5" column="0" >
-    <widget class="QLabel" name="nameL" >
-     <property name="enabled" >
-      <bool>false</bool>
-     </property>
+   <item row="4" column="0" >
+    <widget class="QLabel" name="referenceL" >
      <property name="text" >
-      <string>&amp;Name:</string>
+      <string>&amp;Label:</string>
      </property>
      <property name="alignment" >
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
      <property name="buddy" >
-      <cstring>nameED</cstring>
+      <cstring>referenceED</cstring>
      </property>
     </widget>
    </item>
-   <item row="5" column="1" colspan="2" >
-    <widget class="QLineEdit" name="nameED" >
-     <property name="enabled" >
-      <bool>false</bool>
-     </property>
-    </widget>
+   <item row="4" column="1" colspan="2" >
+    <widget class="QLineEdit" name="referenceED" />
    </item>
-   <item row="6" column="0" colspan="3" >
-    <layout class="QHBoxLayout" >
-     <property name="spacing" >
-      <number>6</number>
+   <item row="1" column="0" colspan="3" >
+    <widget class="QTreeWidget" name="refsTW" />
+   </item>
+   <item row="2" column="0" colspan="3" >
+    <widget class="QFrame" name="frame" >
+     <property name="frameShape" >
+      <enum>QFrame::StyledPanel</enum>
      </property>
-     <property name="margin" >
-      <number>0</number>
+     <property name="frameShadow" >
+      <enum>QFrame::Plain</enum>
      </property>
-     <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType" >
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" stdset="0" >
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="okPB" >
-       <property name="text" >
-        <string>&amp;OK</string>
-       </property>
-       <property name="autoDefault">
-        <bool>true</bool>
-       </property>
-       <property name="default" >
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="applyPB" >
-       <property name="text" >
-        <string>&amp;Apply</string>
-       </property>
-       <property name="autoDefault" >
-        <bool>false</bool>
-       </property>
-       <property name="default">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="closePB" >
-       <property name="text" >
-        <string>&amp;Close</string>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-    </layout>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="1" column="1" >
+       <widget class="QCheckBox" name="csFindCB" >
+        <property name="text" >
+         <string>Case-sensiti&amp;ve</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <widget class="QLineEdit" name="findLE" >
+        <property name="toolTip" >
+         <string>Enter the text to search for and press Enter or click the button to search</string>
+        </property>
+        <property name="text" >
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2" >
+       <widget class="QPushButton" name="searchPB" >
+        <property name="enabled" >
+         <bool>false</bool>
+        </property>
+        <property name="toolTip" >
+         <string>Click or press Enter in the search box to search</string>
+        </property>
+        <property name="text" >
+         <string>&amp;Search</string>
+        </property>
+        <property name="autoDefault" >
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="findKeysLA" >
+        <property name="text" >
+         <string>Searc&amp;h:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+        <property name="buddy" >
+         <cstring>findLE</cstring>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
    </item>
   </layout>
  </widget>
  <tabstops>
   <tabstop>bufferCO</tabstop>
-  <tabstop>refsLW</tabstop>
   <tabstop>sortCB</tabstop>
   <tabstop>updatePB</tabstop>
   <tabstop>gotoPB</tabstop>

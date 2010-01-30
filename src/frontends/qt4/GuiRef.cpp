@@ -27,8 +27,8 @@
 
 #include <QLineEdit>
 #include <QCheckBox>
-#include <QListWidget>
-#include <QListWidgetItem>
+#include <QTreeWidget>
+#include <QTreeWidgetItem>
 #include <QPushButton>
 #include <QToolTip>
 #include <QCloseEvent>
@@ -52,8 +52,11 @@ GuiRef::GuiRef(GuiView & lv)
 	sortCB->setEnabled(false);
 	caseSensitiveCB->setEnabled(false);
 	caseSensitiveCB->setChecked(false);
-	refsLW->setEnabled(false);
+	refsTW->setEnabled(false);
 	gotoPB->setEnabled(false);
+
+	refsTW->setColumnCount(1);
+	refsTW->header()->setVisible(false);
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
@@ -65,18 +68,24 @@ GuiRef::GuiRef(GuiView & lv)
 		this, SLOT(changed_adaptor()));
 	connect(referenceED, SIGNAL(textChanged(QString)),
 		this, SLOT(changed_adaptor()));
+	connect(findLE, SIGNAL(returnPressed()), 
+		this, SLOT(on_searchPB_clicked()));
+	connect(csFindCB, SIGNAL(clicked()), 
+		this, SLOT(on_searchPB_clicked()));
 	connect(nameED, SIGNAL(textChanged(QString)),
 		this, SLOT(changed_adaptor()));
-	connect(refsLW, SIGNAL(itemClicked(QListWidgetItem *)),
-		this, SLOT(refHighlighted(QListWidgetItem *)));
-	connect(refsLW, SIGNAL(itemSelectionChanged()),
+	connect(refsTW, SIGNAL(itemClicked(QTreeWidgetItem *, int)),
+		this, SLOT(refHighlighted(QTreeWidgetItem *)));
+	connect(refsTW, SIGNAL(itemSelectionChanged()),
 		this, SLOT(selectionChanged()));
-	connect(refsLW, SIGNAL(itemDoubleClicked(QListWidgetItem *)),
-		this, SLOT(refSelected(QListWidgetItem *)));
+	connect(refsTW, SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)),
+		this, SLOT(refSelected(QTreeWidgetItem *)));
 	connect(sortCB, SIGNAL(clicked()),
 		this, SLOT(sortToggled()));
 	connect(caseSensitiveCB, SIGNAL(clicked()),
 		this, SLOT(caseSensitiveToggled()));
+	connect(groupCB, SIGNAL(clicked()),
+		this, SLOT(groupToggled()));
 	connect(gotoPB, SIGNAL(clicked()),
 		this, SLOT(gotoClicked()));
 	connect(updatePB, SIGNAL(clicked()),
@@ -88,7 +97,7 @@ GuiRef::GuiRef(GuiView & lv)
 	bc().setOK(okPB);
 	bc().setApply(applyPB);
 	bc().setCancel(closePB);
-	bc().addReadOnly(refsLW);
+	bc().addReadOnly(refsTW);
 	bc().addReadOnly(sortCB);
 	bc().addReadOnly(caseSensitiveCB);
 	bc().addReadOnly(nameED);
@@ -118,50 +127,55 @@ void GuiRef::selectionChanged()
 	if (isBufferReadonly())
 		return;
 
-	QList<QListWidgetItem *> selections = refsLW->selectedItems();
+	QList<QTreeWidgetItem *> selections = refsTW->selectedItems();
 	if (selections.isEmpty())
 		return;
-	QListWidgetItem * sel = selections.first();
+	QTreeWidgetItem * sel = selections.first();
 	refHighlighted(sel);
 	return;
 }
 
 
-void GuiRef::refHighlighted(QListWidgetItem * sel)
+void GuiRef::refHighlighted(QTreeWidgetItem * sel)
 {
 	if (isBufferReadonly())
 		return;
 
-/*	int const cur_item = refsLW->currentRow();
+	if (sel->childCount() > 0) {
+		sel->setExpanded(true);
+		return;
+	}
+
+/*	int const cur_item = refsTW->currentRow();
 	bool const cur_item_selected = cur_item >= 0 ?
 		refsLB->isSelected(cur_item) : false;*/
-	bool const cur_item_selected = refsLW->isItemSelected(sel);
+	bool const cur_item_selected = refsTW->isItemSelected(sel);
 
 	if (cur_item_selected)
-		referenceED->setText(sel->text());
+		referenceED->setText(sel->text(0));
 
 	if (at_ref_)
 		gotoRef();
 	gotoPB->setEnabled(true);
 	if (typeAllowed())
 		typeCO->setEnabled(true);
-	if (nameAllowed())
-		nameED->setEnabled(true);
+	nameED->setHidden(!nameAllowed());
+	nameL->setHidden(!nameAllowed());
 }
 
 
-void GuiRef::refSelected(QListWidgetItem * sel)
+void GuiRef::refSelected(QTreeWidgetItem * sel)
 {
 	if (isBufferReadonly())
 		return;
 
-/*	int const cur_item = refsLW->currentRow();
+/*	int const cur_item = refsTW->currentRow();
 	bool const cur_item_selected = cur_item >= 0 ?
 		refsLB->isSelected(cur_item) : false;*/
-	bool const cur_item_selected = refsLW->isItemSelected(sel);
+	bool const cur_item_selected = refsTW->isItemSelected(sel);
 
 	if (cur_item_selected)
-		referenceED->setText(sel->text());
+		referenceED->setText(sel->text(0));
 	// <enter> or double click, inserts ref and closes dialog
 	slotOK();
 }
@@ -180,8 +194,15 @@ void GuiRef::caseSensitiveToggled()
 }
 
 
+void GuiRef::groupToggled()
+{
+	redoRefs();
+}
+
+
 void GuiRef::updateClicked()
 {
+	findLE->clear();
 	updateRefs();
 }
 
@@ -217,7 +238,8 @@ void GuiRef::updateContents()
 	referenceED->setText(toqstr(params_["reference"]));
 
 	nameED->setText(toqstr(params_["name"]));
-	nameED->setReadOnly(!nameAllowed() && !isBufferReadonly());
+	nameED->setHidden(!nameAllowed() && !isBufferReadonly());
+	nameL->setHidden(!nameAllowed() && !isBufferReadonly());
 
 	// restore type settings for new insets
 	if (params_["reference"].empty())
@@ -321,20 +343,29 @@ void GuiRef::redoRefs()
 {
 	// Prevent these widgets from emitting any signals whilst
 	// we modify their state.
-	refsLW->blockSignals(true);
+	refsTW->blockSignals(true);
 	referenceED->blockSignals(true);
-	refsLW->setUpdatesEnabled(false);
+	refsTW->setUpdatesEnabled(false);
 
-	refsLW->clear();
+	refsTW->clear();
 
 	// need this because Qt will send a highlight() here for
 	// the first item inserted
 	QString const oldSelection(referenceED->text());
 
 	QStringList refsStrings;
+	QStringList refsCategories;
+	refsCategories.append(qt_("No prefix"));
 	vector<docstring>::const_iterator iter;
-	for (iter = refs_.begin(); iter != refs_.end(); ++iter)
-		refsStrings.append(toqstr(*iter));
+	for (iter = refs_.begin(); iter != refs_.end(); ++iter) {
+		QString const lab = toqstr(*iter);
+		refsStrings.append(lab);
+		if (groupCB->isChecked() && lab.contains(":")) {
+			QString const pref = lab.split(':')[0];
+			if (!pref.isEmpty() && !refsCategories.contains(pref))
+				  refsCategories.append(pref);
+		}
+	}
 
 	if (sortCB->isEnabled() && sortCB->isChecked()) {
 		if(caseSensitiveCB->isEnabled() && caseSensitiveCB->isChecked())
@@ -343,8 +374,36 @@ void GuiRef::redoRefs()
 			qSort(refsStrings.begin(), refsStrings.end(),
 			      caseInsensitiveLessThan /*defined above*/);
 	}
-
-	refsLW->addItems(refsStrings);
+	
+	if (groupCB->isChecked()) {
+		QList<QTreeWidgetItem *> refsCats;
+		for (int i = 0; i < refsCategories.size(); ++i) {
+			QString const cat = refsCategories.at(i);
+			QTreeWidgetItem * item = new QTreeWidgetItem(refsTW);
+			item->setText(0, cat);
+			for (int i = 0; i < refsStrings.size(); ++i) {
+				QString const ref = refsStrings.at(i);
+				if ((ref.startsWith(cat + QString(":")))
+				    || (cat == qt_("No prefix")
+				        && !ref.contains(":"))) {
+					QTreeWidgetItem * child =
+						new QTreeWidgetItem(item);
+					child->setText(0, ref);
+					item->addChild(child);
+				}
+			}
+			refsCats.append(item);
+		}
+		refsTW->addTopLevelItems(refsCats);
+	} else {
+		QList<QTreeWidgetItem *> refsItems;
+		for (int i = 0; i < refsStrings.size(); ++i) {
+			QTreeWidgetItem * item = new QTreeWidgetItem(refsTW);
+			item->setText(0, refsStrings.at(i));
+			refsItems.append(item);
+		}
+		refsTW->addTopLevelItems(refsItems);
+	}
 
 	referenceED->setText(oldSelection);
 
@@ -354,23 +413,24 @@ void GuiRef::redoRefs()
 		bool const newInset = oldSelection.isEmpty();
 		QString textToFind = newInset ? last_reference_ : oldSelection;
 		last_reference_.clear();
-		for (int i = 0; i != refsLW->count(); ++i) {
-			QListWidgetItem * item = refsLW->item(i);
-			if (textToFind == item->text()) {
-				refsLW->setCurrentItem(item);
-				refsLW->setItemSelected(item, !newInset);
+		QTreeWidgetItemIterator it(refsTW);
+		while (*it) {
+			if ((*it)->text(0) == textToFind) {
+ 				refsTW->setCurrentItem(*it);
+				refsTW->setItemSelected(*it, !newInset);
 				//Make sure selected item is visible
-				refsLW->scrollToItem(item);
+				refsTW->scrollToItem(*it);
 				last_reference_ = textToFind;
 				break;
 			}
+			++it;
 		}
 	}
-	refsLW->setUpdatesEnabled(true);
-	refsLW->update();
+	refsTW->setUpdatesEnabled(true);
+	refsTW->update();
 
 	// Re-activate the emission of signals by these widgets.
-	refsLW->blockSignals(false);
+	refsTW->blockSignals(false);
 	referenceED->blockSignals(false);
 }
 
@@ -386,9 +446,9 @@ void GuiRef::updateRefs()
 	}	
 	sortCB->setEnabled(!refs_.empty());
 	caseSensitiveCB->setEnabled(sortCB->isEnabled() && sortCB->isChecked());
-	refsLW->setEnabled(!refs_.empty());
-	// refsLW should only be the focus proxy when it is enabled
-	setFocusProxy(refs_.empty() ? 0 : refsLW);
+	refsTW->setEnabled(!refs_.empty());
+	// refsTW should only be the focus proxy when it is enabled
+	setFocusProxy(refs_.empty() ? 0 : refsTW);
 	gotoPB->setEnabled(!refs_.empty());
 	redoRefs();
 }
@@ -410,6 +470,27 @@ void GuiRef::gotoRef(string const & ref)
 void GuiRef::gotoBookmark()
 {
 	dispatch(FuncRequest(LFUN_BOOKMARK_GOTO, "0"));
+}
+
+
+void GuiRef::on_findLE_textChanged(const QString & text)
+{
+	searchPB->setDisabled(text.isEmpty());
+}
+
+
+void GuiRef::on_searchPB_clicked()
+{
+	QTreeWidgetItemIterator it(refsTW);
+	Qt::CaseSensitivity cs = csFindCB->isChecked() ?
+		Qt::CaseSensitive : Qt::CaseInsensitive;
+	while (*it) {
+		(*it)->setHidden(
+			(*it)->childCount() == 0
+			&& !(*it)->text(0).contains(findLE->text(), cs)
+		);
+		++it;
+	}
 }
 
 

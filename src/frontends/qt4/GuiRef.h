@@ -19,7 +19,7 @@
 
 #include <vector>
 
-class QListWidgetItem;
+class QTreeWidgetItem;
 
 namespace lyx {
 namespace frontend {
@@ -34,11 +34,14 @@ public:
 private Q_SLOTS:
 	void changed_adaptor();
 	void gotoClicked();
-	void refHighlighted(QListWidgetItem *);
+	void on_findLE_textChanged(const QString &);
+	void on_searchPB_clicked();
+	void refHighlighted(QTreeWidgetItem *);
 	void selectionChanged();
-	void refSelected(QListWidgetItem *);
+	void refSelected(QTreeWidgetItem *);
 	void sortToggled();
 	void caseSensitiveToggled();
+	void groupToggled();
 	void updateClicked();
 	void resetDialog();
 	void dialogRejected();

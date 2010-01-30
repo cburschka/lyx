@@ -205,7 +205,7 @@ public:
 	Kind kind() const { return kind_; }
 	/// the action (if relevant)
 	FuncRequest const & func() const { return func_; }
-	/// returns true if the entry should be ommited when disabled
+	/// returns true if the entry should be omitted when disabled
 	bool optional() const { return optional_; }
 	/// returns the status of the lfun associated with this entry
 	FuncStatus const & status() const { return status_; }
