@@ -354,7 +354,6 @@ void GuiRef::redoRefs()
 
 	QStringList refsStrings;
 	QStringList refsCategories;
-	refsCategories.append(qt_("No prefix"));
 	vector<docstring>::const_iterator iter;
 	for (iter = refs_.begin(); iter != refs_.end(); ++iter) {
 		QString const lab = toqstr(*iter);
@@ -365,6 +364,10 @@ void GuiRef::redoRefs()
 				  refsCategories.append(pref);
 		}
 	}
+	// sort categories case-intensively
+	qSort(refsCategories.begin(), refsCategories.end(),
+	      caseInsensitiveLessThan /*defined above*/);
+	refsCategories.insert(0, qt_("<No prefix>"));
 
 	if (sortCB->isEnabled() && sortCB->isChecked()) {
 		if(caseSensitiveCB->isEnabled() && caseSensitiveCB->isChecked())
@@ -383,7 +386,7 @@ void GuiRef::redoRefs()
 			for (int i = 0; i < refsStrings.size(); ++i) {
 				QString const ref = refsStrings.at(i);
 				if ((ref.startsWith(cat + QString(":")))
-				    || (cat == qt_("No prefix")
+				    || (cat == qt_("<No prefix>")
 				        && !ref.contains(":"))) {
 					QTreeWidgetItem * child =
 						new QTreeWidgetItem(item);
