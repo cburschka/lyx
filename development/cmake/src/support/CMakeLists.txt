@@ -54,13 +54,16 @@ if(NOT MERGE_FILES)
 	set(support_headers ${support_headers} ${support_mythes_headers} ${support_linkback_headers})
 	add_library(support ${library_type} ${support_sources} ${support_headers} ${dont_merge})
 else()
+	# GCC bug: gcc resolves ::bind as boost::bind
+	list(REMOVE_ITEM support_sources ${TOP_SRC_DIR}/src/support/socktools.cpp)
+	set(support_separate ${TOP_SRC_DIR}/src/support/socktools.cpp)
 	lyx_const_touched_files(_allinone  support_sources)
-		set(depends_moc ${support_headers})
+	set(depends_moc ${support_headers})
 	set_source_files_properties(_allinone_const.C
 		PROPERTIES OBJECT_DEPENDS "${depends_moc}")
 	set_source_files_properties(_allinone_touched.C
 		PROPERTIES OBJECT_DEPENDS "${depends_moc}")
-	add_library(support ${library_type} ${_allinone_files}
+	add_library(support ${library_type} ${_allinone_files} ${support_separate}
 		${support_mythes_sources} ${support_linkback_sources} ${support_headers} ${dont_merge})
 endif()
 

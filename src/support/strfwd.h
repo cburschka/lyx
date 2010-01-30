@@ -69,6 +69,7 @@ extern odocstream & operator<<(odocstream &, char);
 
 docstring const & empty_docstring();
 std::string const & empty_string();
+bool operator==(docstring const &, char const *);
 
 } // namespace lyx
 

@@ -2722,7 +2722,8 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		case LFUN_BUFFER_EXPORT: {
 			if (!doc_buffer)
 				break;
-			if (cmd.argument() == "custom") {
+			// GCC only sees strfwd.h when building merged
+			if (::lyx::operator==(cmd.argument(), "custom")) {
 				dispatch(FuncRequest(LFUN_DIALOG_SHOW, "sendto"), 
 					 dr);
 				break;

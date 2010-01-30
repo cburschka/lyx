@@ -1,3 +1,4 @@
+
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 #
@@ -19,9 +20,11 @@ set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 # is checked
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/modules")
 set(EXECUTABLE_OUTPUT_PATH  ${CMAKE_BINARY_DIR}/bin)
+set(LIBRARY_OUTPUT_PATH  ${CMAKE_BINARY_DIR}/lib)
 
 
 option(lyxinstall "Build install projects/rules" ON)
+
 
 
 
@@ -119,6 +122,7 @@ if(merge OR merge_rebuild)
 	message(STATUS "")
 	message(STATUS "All *.cpp files of a project are merged into two files, disable with -Dmerge=0")
 	message(STATUS "")
+	add_definitions(-DLYX_MERGED_BUILD)
 else()
 	set(merge 0 CACHE TYPE STRING FORCE)
 	set(MERGE_FILES 0 CACHE TYPE STRING FORCE)

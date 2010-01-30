@@ -44,7 +44,7 @@ namespace frontend {
 /////////////////////////////////////////////////////////////////////
 
 
-char const * languages[] =
+char const * languages_supported[] =
 { "no language", "ABAP", "ACSL", "Ada", "ALGOL", "Assembler", "Awk", "bash", "Basic", "C",
   "C++", "Caml", "Clean", "Cobol", "Comal 80", "command.com", "Comsol", "csh", "Delphi",
   "Eiffel", "Elan", "erlang", "Euphoria", "Fortran", "Gnuplot", "Haskell", "HTML", "IDL", "inform",
@@ -213,7 +213,7 @@ GuiListings::GuiListings(GuiView & lv)
 	connect(bypassCB, SIGNAL(clicked()),
 		this, SLOT(setListingsMsg()));
 
-	for (int n = 0; languages[n][0]; ++n)
+	for (int n = 0; languages_supported[n][0]; ++n)
 		languageCO->addItem(qt_(languages_gui[n]));
 
 	for (int n = 0; font_styles[n][0]; ++n)
@@ -251,7 +251,7 @@ void GuiListings::change_adaptor()
 
 string GuiListings::construct_params()
 {
-	string language = languages[qMax(0, languageCO->currentIndex())];
+	string language = languages_supported[qMax(0, languageCO->currentIndex())];
 	string dialect;
 	string const dialect_gui = fromqstr(dialectCO->currentText());
 	if (dialectCO->currentIndex() > 0) {
@@ -412,7 +412,7 @@ void GuiListings::on_languageCO_currentIndexChanged(int index)
 	// 0 is "no dialect"
 	int default_dialect = 0;
 	dialectCO->addItem(qt_("No dialect"));
-	string const language = languages[index];
+	string const language = languages_supported[index];
 
 	for (size_t i = 0; i != nr_dialects; ++i) {
 		if (language == dialects[i].language) {
@@ -448,7 +448,7 @@ void GuiListings::updateContents()
 	// set default values
 	listingsTB->setPlainText(
 		qt_("Input listing parameters on the right. Enter ? for a list of parameters."));
-	languageCO->setCurrentIndex(findToken(languages, "no language"));
+	languageCO->setCurrentIndex(findToken(languages_supported, "no language"));
 	dialectCO->setCurrentIndex(0);
 	floatCB->setChecked(false);
 	placementLE->clear();
@@ -489,7 +489,7 @@ void GuiListings::updateContents()
 			} else {
 				language = arg;
 			}
-			int n = findToken(languages, language);
+			int n = findToken(languages_supported, language);
 			if (n >= 0) {
 				languageCO->setCurrentIndex(n);
 				in_gui = true;

@@ -21,7 +21,7 @@ target_link_libraries(${_lyxclient}
 	support
 	${Lyx_Boost_Libraries}
 	${LIBINTL_LIBRARIES}
-        ${ICONV_LIBRARY}
+	${ICONV_LIBRARY}
 	${QT_QTCORE_LIBRARY}
 	${QT_QTGUI_LIBRARY}
 	)

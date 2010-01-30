@@ -42,3 +42,38 @@
 #cmakedefine PATH_MAX ${PATH_MAX}
 
 #endif
+
+
+// cleanup global namespace
+#ifdef ColorMode
+#undef ColorMode
+#endif
+
+#ifdef FocusOut
+#undef FocusOut
+#endif
+
+#ifdef FocusIn
+#undef FocusIn
+#endif
+
+#ifdef KeyRelease
+#undef KeyRelease
+#endif
+
+#ifdef CursorShape
+#undef CursorShape
+#endif
+
+#ifdef IGNORE
+#undef IGNORE
+#endif
+
+#ifdef GrayScale
+#undef GrayScale
+#endif
+
+#ifdef Status
+#undef Status
+#endif
+
