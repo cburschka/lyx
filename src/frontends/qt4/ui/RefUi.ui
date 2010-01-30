@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>386</width>
-    <height>479</height>
+    <height>443</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -22,6 +22,49 @@
    <property name="spacing" >
     <number>6</number>
    </property>
+   <item row="2" column="0" colspan="3" >
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="findKeysLA" >
+       <property name="text" >
+        <string>Fil&amp;ter:</string>
+       </property>
+       <property name="alignment" >
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+       <property name="buddy" >
+        <cstring>findLE</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="findLE" >
+       <property name="toolTip" >
+        <string>Enter string to filter the label list</string>
+       </property>
+       <property name="text" >
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="csFindCB" >
+       <property name="toolTip" >
+        <string>Filter case-sensitively</string>
+       </property>
+       <property name="text" >
+        <string>Case-sensiti&amp;ve</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
    <item row="7" column="0" colspan="3" >
     <layout class="QHBoxLayout" >
      <property name="margin" >
@@ -304,70 +347,6 @@
    </item>
    <item row="1" column="0" colspan="3" >
     <widget class="QTreeWidget" name="refsTW" />
-   </item>
-   <item row="2" column="0" colspan="3" >
-    <widget class="QFrame" name="frame" >
-     <property name="frameShape" >
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow" >
-      <enum>QFrame::Plain</enum>
-     </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
-       <number>9</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
-      <item row="1" column="1" >
-       <widget class="QCheckBox" name="csFindCB" >
-        <property name="text" >
-         <string>Case-sensiti&amp;ve</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1" >
-       <widget class="QLineEdit" name="findLE" >
-        <property name="toolTip" >
-         <string>Enter the text to search for and press Enter or click the button to search</string>
-        </property>
-        <property name="text" >
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="2" >
-       <widget class="QPushButton" name="searchPB" >
-        <property name="enabled" >
-         <bool>false</bool>
-        </property>
-        <property name="toolTip" >
-         <string>Click or press Enter in the search box to search</string>
-        </property>
-        <property name="text" >
-         <string>&amp;Search</string>
-        </property>
-        <property name="autoDefault" >
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0" >
-       <widget class="QLabel" name="findKeysLA" >
-        <property name="text" >
-         <string>Searc&amp;h:</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-        </property>
-        <property name="buddy" >
-         <cstring>findLE</cstring>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
    </item>
   </layout>
  </widget>

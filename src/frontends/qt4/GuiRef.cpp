@@ -68,10 +68,10 @@ GuiRef::GuiRef(GuiView & lv)
 		this, SLOT(changed_adaptor()));
 	connect(referenceED, SIGNAL(textChanged(QString)),
 		this, SLOT(changed_adaptor()));
-	connect(findLE, SIGNAL(returnPressed()), 
-		this, SLOT(on_searchPB_clicked()));
+	connect(findLE, SIGNAL(textEdited(QString)), 
+		this, SLOT(filterLabels()));
 	connect(csFindCB, SIGNAL(clicked()), 
-		this, SLOT(on_searchPB_clicked()));
+		this, SLOT(filterLabels()));
 	connect(nameED, SIGNAL(textChanged(QString)),
 		this, SLOT(changed_adaptor()));
 	connect(refsTW, SIGNAL(itemClicked(QTreeWidgetItem *, int)),
@@ -202,7 +202,6 @@ void GuiRef::groupToggled()
 
 void GuiRef::updateClicked()
 {
-	findLE->clear();
 	updateRefs();
 }
 
@@ -429,6 +428,9 @@ void GuiRef::redoRefs()
 	refsTW->setUpdatesEnabled(true);
 	refsTW->update();
 
+	// redo filter
+	filterLabels();
+
 	// Re-activate the emission of signals by these widgets.
 	refsTW->blockSignals(false);
 	referenceED->blockSignals(false);
@@ -473,17 +475,11 @@ void GuiRef::gotoBookmark()
 }
 
 
-void GuiRef::on_findLE_textChanged(const QString & text)
+void GuiRef::filterLabels()
 {
-	searchPB->setDisabled(text.isEmpty());
-}
-
-
-void GuiRef::on_searchPB_clicked()
-{
-	QTreeWidgetItemIterator it(refsTW);
 	Qt::CaseSensitivity cs = csFindCB->isChecked() ?
 		Qt::CaseSensitive : Qt::CaseInsensitive;
+	QTreeWidgetItemIterator it(refsTW);
 	while (*it) {
 		(*it)->setHidden(
 			(*it)->childCount() == 0

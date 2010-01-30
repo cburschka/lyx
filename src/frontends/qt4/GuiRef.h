@@ -34,8 +34,7 @@ public:
 private Q_SLOTS:
 	void changed_adaptor();
 	void gotoClicked();
-	void on_findLE_textChanged(const QString &);
-	void on_searchPB_clicked();
+	void filterLabels();
 	void refHighlighted(QTreeWidgetItem *);
 	void selectionChanged();
 	void refSelected(QTreeWidgetItem *);
