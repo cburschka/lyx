@@ -239,7 +239,7 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & lv)
 	: buffer_view_(new BufferView(buffer)), lyx_view_(&lv),
 	cursor_visible_(false),
 	need_resize_(false), schedule_redraw_(false),
-	preedit_lines_(1), completer_(new GuiCompleter(this)),
+	preedit_lines_(1), completer_(new GuiCompleter(this, this)),
 	context_target_pos_()
 {
 	buffer.workAreaManager().add(this);

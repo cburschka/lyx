@@ -115,8 +115,11 @@ What's new
 
 * USER INTERFACE
 
-- Fix crash when performing word-replace while the cursor has a selection
+- Fix a crash when performing word-replace while the cursor has a selection
   in mathed (bug 6437).
+
+- Fix a crash when closing a document with a pending autocompletion popup
+  (bug 6431).
 
 - While in ERT, disable non-functional sub- and superscript functions that
   crashed LyX (bug 6459).
