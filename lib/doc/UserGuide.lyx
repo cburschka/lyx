@@ -127,7 +127,6 @@
 \output_changes false
 \html_use_mathml true
 \html_be_strict true
-\author 1 "Richard Heck" 
 \end_header
 
 \begin_body
@@ -308,7 +307,7 @@ Like most applications, LyX has the familiar menu bar across the top of
 \end_layout
 
 \begin_layout Standard
-Note that there is no horizontal scroll bar.
+Note that there is no horizontal scrollbar.
  This is not a bug or an oversight, but intentional.
  When you read a book, you expect the end of a line to wrap around to the
  next line.
@@ -2377,26 +2376,10 @@ Letter for US-style letters
 
 \begin_layout Standard
 There are also some non-standard classes, which LyX only uses if you have
- installed the
-\change_deleted 1 1263338271
-m
-\change_inserted 1 1263338359
- corresponding LaTeX class files, though most TeX distributions will include
- many of these
-\change_unchanged
-.
- Here are some of the classes
-\change_inserted 1 1263338393
-.
- 
-\change_unchanged
-, 
-\change_deleted 1 1263338396
-t
-\change_inserted 1 1263338397
-T
-\change_unchanged
-he full list with detailed explanations can be found in chapter 
+ installed the corresponding LaTeX class files, though most LaTeX distributions
+ will include many of these.
+ Here are some of the classes.
+ , The full list with detailed explanations can be found in chapter 
 \emph on
 Special Document Classes
 \emph default
@@ -2515,7 +2498,7 @@ Kluwer Layout for journals of the Kluwer publishing group
 \end_layout
 
 \begin_layout Description
-koma-script a replacement for the standard classes, offers many useful features
+KOMA-Script a replacement for the standard classes, offers many useful features
  like caption formatting, automatic print space calculation etc.
 \end_layout
 
@@ -2614,11 +2597,7 @@ Document ! Modules
 \begin_layout Standard
 Modules load additional features to a document that are not by default available
  in the chosen document class.
- For example you might want to 
-\change_deleted 1 1263338413
-use 
-\change_unchanged
-write Braille (embossed printing) in a document.
+ For example you might want to write Braille (embossed printing) in a document.
  This is of course not available in any document class, so you have to load
  the corresponding module in the 
 \family sans
@@ -2672,11 +2651,7 @@ status open
 Note also:
 \series default
  Some modules require other modules, and some pairs of modules are incompatible.
-
-\change_inserted 1 1263338440
- LyX will also advise you about these things.
-\change_unchanged
-
+ LyX will advise you about these things.
 \end_layout
 
 \end_inset
@@ -3598,8 +3573,8 @@ Document ! Settings
 \end_layout
 
 \begin_layout Standard
-If you use a koma-script document class, you can use the default settings.
- Because koma-script calculates then the printspace automatically by taking
+If you use a KOMA-Script document class, you can use the default settings.
+ Because KOMA-Script calculates then the printspace automatically by taking
  the paper format and the font size into account.
 \end_layout
 
@@ -3616,9 +3591,8 @@ everything
  That includes the paragraph environments.
  Some paragraph environments are standard, in so far as all of the document
  classes have them; but some classes have special paragraph environments.
- If this is the case, and you change the document class, LyX 
-\change_inserted 1 1263335989
-will mark the paragraphs whose styles it no longer understands as 
+ If this is the case, and you change the document class, LyX will mark the
+ paragraphs whose styles it no longer understands as 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3632,16 +3606,6 @@ unknown
  But these paragraphs will be output with no special formatting, so you
  will either need to create a new style yourself or else to convert these
  paragraphs manually to a style present in your new document class.
-\change_deleted 1 1263335996
-sets the missing paragraph environments to 
-\family sans
-Standard
-\family default
- and places an error box at the beginning of the paragraph.
- Just click on them and you'll get a message dialog that tells you about
- the conversion and why it failed.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Section
@@ -10626,20 +10590,6 @@ Special Character\SpecialChar \menuseparator
 Symbols
 \family default
 .
-
-\change_inserted 1 1263338624
- You can also enter some sorts of accented characters by using the mini-buffer.
- For example, entering 
-\begin_inset Quotes eld
-\end_inset
-
-accent-umlaut e
-\begin_inset Quotes erd
-\end_inset
-
- will produce the character: ë.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
@@ -10939,8 +10889,8 @@ cm
 \family typewriter
 ec
 \family default
- are bitmap fonts, they often looks pixeled in PDF output, especially when
- you read the PDF in a zoomed size.
+ are bitmap fonts, they often looks pixelated in PDF output, especially
+ when you read the PDF in a zoomed size.
 \begin_inset Foot
 status collapsed
 
@@ -10959,7 +10909,7 @@ Reader
 
 \end_inset
 
- To get rid of pixeled fonts, you have to use a vector font.
+ To get rid of pixelated fonts, you have to use a vector font.
  There are three ways to use one:
 \end_layout
 
@@ -12780,7 +12730,7 @@ device-independent
 \end_layout
 
 \begin_layout Standard
-DVI files doen't contain images, they only link them.
+DVI files do not contain images, they only link them.
  So don't forget to deliver the images together with your DVIs.
  Because the DVI-viewer has to convert the image in the background to make
  it visible when you scroll the DVI, this can slow down your computer when
@@ -15725,7 +15675,7 @@ reference "sub:Output-file-formats"
 , every output document format allows only a few image formats.
  LyX uses therefore the program 
 \family typewriter
-Imagemagick
+ImageMagick
 \family default
  in the background to convert the images to the right format.
  To increase your workflow by avoiding these conversions in the background,
@@ -15753,7 +15703,7 @@ Bitmap
 \end_inset
 
 images consist of pixel values, often in a compressed form.
- They are therefore not fully scalable and look pixeled in large zooms.
+ They are therefore not fully scalable and look pixelated in large zooms.
  Well-known bitmap image formats are 
 \begin_inset Quotes eld
 \end_inset
@@ -25222,7 +25172,7 @@ reference "sub:Biblio_environment"
 
 .
  If you want anything other than numerical citations that are used in this
- document, like author-year cituations, then you must
+ document, like author-year citations, then you must
 \emph on
  
 \emph default
@@ -28355,7 +28305,7 @@ Note that some document classes have built-in solutions for well known problems
  like your case.
  For example if you use a 
 \family sans
-koma-script
+KOMA-Script
 \family default
  class, you don't need the package 
 \series bold
@@ -34779,9 +34729,8 @@ You can export your document to various file formats.
 \end_layout
 
 \begin_layout Standard
-Here is a list of all available entries
-\change_deleted 1 1262887786
-; they are explained in detail in section
+Here is a list of all available entries; some of them are explained in detail
+ in section
 \begin_inset space ~
 \end_inset
 
@@ -34793,10 +34742,6 @@ reference "sub:Output-file-formats"
 \end_inset
 
 :
-\change_inserted 1 1262887786
-:
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
@@ -34810,24 +34755,10 @@ LyX
 \family default
 format of the special LyX 1.4.x versions for Chinese, Japanese, and Korean
  (CJK)
-\change_deleted 1 1262887560
-;
-\change_inserted 1 1262887561
-
 \begin_inset Newline newline
 \end_inset
 
-
-\change_unchanged
- 
-\change_deleted 1 1262887562
-(
-\change_unchanged
-Since LyX 1.5.0 CJK support is fully integrated to LyX.
-\change_deleted 1 1262887564
-)
-\change_unchanged
-
+ Since LyX 1.5.0 CJK support is fully integrated to LyX.
 \end_layout
 
 \begin_layout Description
@@ -34836,61 +34767,11 @@ Since LyX 1.5.0 CJK support is fully integrated to LyX.
 DVI
 \family default
  DVI-format
-\change_inserted 1 1262887797
- (see 
-\begin_inset CommandInset ref
-LatexCommand prettyref
-reference "sub:Output-file-formats"
-
-\end_inset
-
-)
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
-HTML HTML-format
-\change_inserted 1 1262887568
-
-\begin_inset Newline newline
-\end_inset
-
-
-\change_deleted 1 1262887572
- (t
-\change_inserted 1 1262887573
-T
-\change_unchanged
-he HTML
-\change_inserted 1 1262887602
- 
-\change_deleted 1 1262887603
--
-\change_unchanged
-conver
-\change_inserted 1 1262887606
-sion
-\change_deleted 1 1262887609
-ter
-\change_unchanged
- is 
-\change_inserted 1 1262887612
-performed by 
-\change_unchanged
-a third-party product and 
-\change_inserted 1 1262887674
-may 
-\change_deleted 1 1262887617
-doesn't 
-\change_unchanged
-work in all cases
-\change_inserted 1 1262887618
-.
-\change_deleted 1 1262887618
-)
-\change_unchanged
-
+HTML HTML-format (the HTML-converter is a third-party product and may not
+ work in all cases)
 \end_layout
 
 \begin_layout Description
@@ -34985,23 +34866,10 @@ y
 \end_inset
 
  is replaced by the version number)
-\change_inserted 1 1262887695
-
 \end_layout
 
 \begin_layout Description
-
-\change_inserted 1 1262887844
-LyXHTML HTML-format, using LyX's internal XHTML engine (see 
-\begin_inset CommandInset ref
-LatexCommand prettyref
-reference "sub:Output-file-formats"
-
-\end_inset
-
-)
-\change_unchanged
-
+LyXHTML HTML-format, using LyX's internal XHTML engine
 \end_layout
 
 \begin_layout Description
@@ -35018,46 +34886,8 @@ KOffice
 Abiword
 \family default
 , etc.
-\change_inserted 1 1262887646
-
-\begin_inset Newline newline
-\end_inset
-
-
-\change_deleted 1 1262887649
- (t
-\change_inserted 1 1262887649
-T
-\change_unchanged
-he OpenDocument
-\change_inserted 1 1262887652
- 
-\change_deleted 1 1262887652
--
-\change_unchanged
-conver
-\change_inserted 1 1262887656
-sion
-\change_deleted 1 1262887654
-ter
-\change_unchanged
- is 
-\change_inserted 1 1262887659
-performed by 
-\change_unchanged
-a third-party product and 
-\change_inserted 1 1262887665
-may not 
-\change_deleted 1 1262887667
-doesn't 
-\change_unchanged
-work in all cases
-\change_inserted 1 1262887669
-.
-\change_deleted 1 1262887670
-)
-\change_unchanged
-
+ (The OpenDocument-converter is a third-party product and may not work in
+ all cases)
 \end_layout
 
 \begin_layout Description
@@ -35072,19 +34902,6 @@ PDF
  PDF-format using the program 
 \family typewriter
 dvipdfm
-\change_inserted 1 1262887911
- 
-\family default
-(see 
-\begin_inset CommandInset ref
-LatexCommand prettyref
-reference "sub:Output-file-formats"
-
-\end_inset
-
-)
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
@@ -35099,19 +34916,6 @@ PDF
  PDF-format using the program 
 \family typewriter
 pdflatex
-\change_inserted 1 1262887913
- 
-\family default
-(see 
-\begin_inset CommandInset ref
-LatexCommand prettyref
-reference "sub:Output-file-formats"
-
-\end_inset
-
-)
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
@@ -35126,19 +34930,6 @@ PDF
  PDF-format using the program 
 \family typewriter
 ps2pdf
-\change_inserted 1 1262887914
- 
-\family default
-(see 
-\begin_inset CommandInset ref
-LatexCommand prettyref
-reference "sub:Output-file-formats"
-
-\end_inset
-
-)
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
@@ -35180,19 +34971,6 @@ Postscript
  PostScript format using the program 
 \family typewriter
 dvips
-\change_inserted 1 1262887921
- 
-\family default
-(see 
-\begin_inset CommandInset ref
-LatexCommand prettyref
-reference "sub:Output-file-formats"
-
-\end_inset
-
-)
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
