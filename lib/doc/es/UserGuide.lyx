@@ -2328,7 +2328,7 @@ Kluwer
 \end_layout
 
 \begin_layout Description
-Koma-script Una revisión de las clases estándar, ofrece varias características
+KOMA-Script Una revisión de las clases estándar, ofrece varias características
  útiles como formato de encabezados, cálculo automático de espacio de impresión
  etc.
 \end_layout
@@ -3449,8 +3449,8 @@ Documentos ! Configuración
 \end_layout
 
 \begin_layout Standard
-Si usas la clase de documento koma-script, puedes dejar los valores predetermina
-dos, porque koma-script calcula automáticamente el espacio de impresión
+Si usas la clase de documento KOMA-Script, puedes dejar los valores predetermina
+dos, porque KOMA-Script calcula automáticamente el espacio de impresión
  en función del formato del papel y el tamaño de fuente.
 \end_layout
 
@@ -3467,15 +3467,14 @@ todo
  Esto incluye los entornos de párrafo, algunos de los cuáles son estándar,
  los tienen todas las clases de documento; pero algunas clases tienen entornos
  de párrafo específicos.
- En ese caso, si cambias la clase del documento, LyX transforma los entornos
- de párrafo ausentes a 
-\family sans
-Normal
-\family default
- y abre un cuadro de errores.
- Pulsando sobre ellos verás un mensaje que te informa de la conversión realizada
- y la causa del fallo.
- 
+ En ese caso, si cambias la clase del documento, 
+\lang english
+LyX will mark the paragraphs whose styles it no longer understands as “unknown”.
+ The name of the style is retained, in case you should want to go back to
+ the old class.
+ But these paragraphs will be output with no special formatting, so you
+ will either need to create a new style yourself or else to convert these
+ paragraphs manually to a style present in your new document class.
 \end_layout
 
 \begin_layout Standard
@@ -15773,7 +15772,7 @@ reference "sub:Formatos-de-salida"
  de archivo de imagen.
  Por eso LyX usa el programa 
 \family sans
-Imagemagick
+ImageMagick
 \family default
  en segundo plano para convertir imágenes al formato adecuado.
  Para aumentar el rendimiento evitando estas conversiones, puedes usar sólo
@@ -28514,9 +28513,9 @@ Ten en cuenta que algunas clases de documento llevan incorporadas soluciones
  para problemas habituales como el de este caso.
  Por ejemplo, si usas la clase 
 \family typewriter
-koma-scrip
+KOMA-Script
 \family default
-t, no necesitas el paquete 
+, no necesitas el paquete 
 \series bold
 caption
 \series default

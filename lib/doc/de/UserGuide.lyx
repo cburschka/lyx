@@ -177,8 +177,8 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 10.
- Dezember 2009
+letzte Änderung: 31.
+ Januar 2010
 \end_layout
 
 \begin_layout Standard
@@ -3084,7 +3084,7 @@ article[
 \begin_inset space \space{}
 \end_inset
 
-(koma-script)] für Standardartikel
+(KOMA-Script)] für Standardartikel
 \end_layout
 
 \begin_layout Description
@@ -3092,7 +3092,7 @@ book[
 \begin_inset space \space{}
 \end_inset
 
-(koma-script)] für Bücher
+(KOMA-Script)] für Bücher
 \end_layout
 
 \begin_layout Description
@@ -3100,7 +3100,7 @@ letter[
 \begin_inset space \space{}
 \end_inset
 
-(DIN-Brief/german/koma-script)] für Briefe im deutschen Stil
+(DIN-Brief/german/KOMA-Script)] für Briefe im deutschen Stil
 \end_layout
 
 \begin_layout Description
@@ -3108,14 +3108,14 @@ report[
 \begin_inset space \space{}
 \end_inset
 
-(koma-script)] für Standardberichte
+(KOMA-Script)] für Standardberichte
 \end_layout
 
 \begin_layout Standard
 
 \family sans
 \series bold
-koma-script
+KOMA-Script
 \family default
 \series default
  ersetzt die Standardklassen und bietet viele nützliche Funktionen wie das
@@ -3123,7 +3123,7 @@ koma-script
  Weitere Hinweise zu 
 \family sans
 \series bold
-koma-script
+KOMA-Script
 \family default
 \series default
  finden Sie in den 
@@ -3630,7 +3630,7 @@ höchste Abschnittsstufe
 \begin_inset Text
 
 \begin_layout Plain Layout
-article[ (koma-script)]
+article[ (KOMA-Script)]
 \end_layout
 
 \end_inset
@@ -3740,7 +3740,7 @@ Abschnitt
 \begin_inset Text
 
 \begin_layout Plain Layout
-book[ (koma-script)]
+book[ (KOMA-Script)]
 \end_layout
 
 \end_inset
@@ -3795,7 +3795,7 @@ Kapitel
 \begin_inset Text
 
 \begin_layout Plain Layout
-letter[ (german/koma-script)]
+letter[ (german/KOMA-Script)]
 \end_layout
 
 \end_inset
@@ -3848,7 +3848,7 @@ keine
 \begin_inset Text
 
 \begin_layout Plain Layout
-report[ (koma-script)]
+report[ (KOMA-Script)]
 \end_layout
 
 \end_inset
@@ -5175,13 +5175,21 @@ alles
  in die neue Klasse umwandeln, einschließlich der Absatzumgebungen.
  Einige Absatzumgebungen sind Standard; alle Dokumentklassen haben sie.
  Einige Klassen jedoch haben besondere Absatzumgebungen.
- Wenn Sie in so einem Fall die Dokumentklasse ändern, setzt LyX die fehlenden
- Absatzumgebungen auf 
-\family sans
-Standard
-\family default
- und platziert ein Fehlerkästchen an den Anfang des Absatzes.
- Wenn Sie draufklicken, sehen Sie eine Meldung, warum die Umwandlung fehlschlug.
+ Wenn Sie in so einem Fall die Dokumentklasse ändern, markiert LyX die Absätze,
+ deren Umgebungen es nicht mehr kennt, als 
+\begin_inset Quotes gld
+\end_inset
+
+unbekannt
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Der Name der Umgebung wird beibehalten für den Fall, dass Sie zur vorigen
+ Dokumentklasse zurückwechseln wollen.
+ Absätze mit unbekannter Umgebung werden ohne spezielle Formatierung ausgegeben,
+ so dass Sie entweder eine eigene Formatierung festlegen oder für den Absatz
+ eine bekannte Umgebung der aktuellen Dokumentklasse ändern müssen.
 \end_layout
 
 \begin_layout Section
@@ -8752,7 +8760,7 @@ Zusammenfassung
 \series default
  zentriert über den Text gesetzt (allerdings nicht bei der 
 \family sans
-KOMA-script
+KOMA-Script
 \family default
 -Version).
  Die Marke und der Text werden durch zusätzlichen Leerraum getrennt.
@@ -8799,7 +8807,7 @@ book
 \begin_inset space ~
 \end_inset
 
-(KOMA-script
+(KOMA-Script
 \family default
 )-Klasse benutzt.
  Wenn Sie noch nie von einer Zusammenfassung gehört haben, können Sie diese
@@ -9051,7 +9059,7 @@ Legende unten
 \family default
  in der 
 \family sans
-KOMA-script
+KOMA-Script
 \family default
 -Version.
 \end_layout
@@ -33090,7 +33098,7 @@ Manche Dokumentklassen haben eingebaute Lösungen für bekannte Probleme wie
  das obige.
  Wenn Sie zum Beispiel die Klasse 
 \family sans
-KOMA-script
+KOMA-Script
 \family default
  benutzen, benötigen Sie das Paket 
 \family typewriter

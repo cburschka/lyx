@@ -292,7 +292,7 @@ Like most applications, LyX has the familiar menu bar across the top of
 \end_layout
 
 \begin_layout Standard
-Note that there is no horizontal scroll bar.
+Note that there is no horizontal scrollbar.
  This is not a bug or an oversight, but intentional.
  When you read a book, you expect the end of a line to wrap around to the
  next line.
@@ -2482,7 +2482,7 @@ Kluwer Layout for journals of the Kluwer publishing group
 \end_layout
 
 \begin_layout Description
-koma-script a replacement for the standard classes, offers many useful features
+KOMA-Script a replacement for the standard classes, offers many useful features
  like caption formatting, automatic print space calculation etc.
 \end_layout
 
@@ -2581,8 +2581,7 @@ Document ! Modules
 \begin_layout Standard
 Modules load additional features to a document that are not by default available
  in the chosen document class.
- For example you might want to use write Braille (embossed printing) in
- a document.
+ For example you might want to write Braille (embossed printing) in a document.
  This is of course not available in any document class, so you have to load
  the corresponding module in the 
 \family sans
@@ -2636,6 +2635,7 @@ status open
 Note also:
 \series default
  Some modules require other modules, and some pairs of modules are incompatible.
+ LyX will advise you about these things.
 \end_layout
 
 \end_inset
@@ -3557,8 +3557,8 @@ Document ! Settings
 \end_layout
 
 \begin_layout Standard
-If you use a koma-script document class, you can use the default settings.
- Because koma-script calculates then the printspace automatically by taking
+If you use a KOMA-Script document class, you can use the default settings.
+ Because KOMA-Script calculates then the printspace automatically by taking
  the paper format and the font size into account.
 \end_layout
 
@@ -3575,14 +3575,13 @@ everything
  That includes the paragraph environments.
  Some paragraph environments are standard; all of the document classes have
  them; but some classes have special paragraph environments.
- If this is the case, and you change the document class, LyX sets the missing
- paragraph environments to 
-\family sans
-Standard
-\family default
- and places an error box at the beginning of the paragraph.
- Just click on them and you'll get a message dialog that tells you about
- the conversion and why it failed.
+ If this is the case, and you change the document class, LyX will mark the
+ paragraphs whose styles it no longer understands as “unknown”.
+ The name of the style is retained, in case you should want to go back to
+ the old class.
+ But these paragraphs will be output with no special formatting, so you
+ will either need to create a new style yourself or else to convert these
+ paragraphs manually to a style present in your new document class.
 \end_layout
 
 \begin_layout Section
@@ -10866,8 +10865,8 @@ cm
 \family typewriter
 ec
 \family default
- are bitmap fonts, they often looks pixeled in PDF output, especially when
- you read the PDF in a zoomed size.
+ are bitmap fonts, they often looks pixelated in PDF output, especially
+ when you read the PDF in a zoomed size.
 \begin_inset Foot
 status collapsed
 
@@ -10886,7 +10885,7 @@ Reader
 
 \end_inset
 
- To get rid of pixeled fonts, you have to use a vector font.
+ To get rid of pixelated fonts, you have to use a vector font.
  There are three ways to use one:
 \end_layout
 
@@ -12707,7 +12706,7 @@ device-independent
 \end_layout
 
 \begin_layout Standard
-DVI files doen't contain images, they only link them.
+DVI files do not contain images, they only link them.
  So don't forget to deliver the images together with your DVIs.
  Because the DVI-viewer has to convert the image in the background to make
  it visible when you scroll the DVI, this can slow down your computer when
@@ -15571,7 +15570,7 @@ reference "sub:Output-file-formats"
 , every output document format allows only a few image formats.
  LyX uses therefore the program 
 \family typewriter
-Imagemagick
+ImageMagick
 \family default
  in the background to convert the images to the right format.
  To increase your workflow by avoiding these conversions in the background,
@@ -15599,7 +15598,7 @@ Bitmap
 \end_inset
 
 images consist of pixel values, often in a compressed form.
- They are therefore not fully scalable and look pixeled in large zooms.
+ They are therefore not fully scalable and look pixelated in large zooms.
  Well-known bitmap image formats are 
 \begin_inset Quotes eld
 \end_inset
@@ -25056,7 +25055,7 @@ reference "sub:Biblio_environment"
 
 .
  If you want anything other than numerical citations that are used in this
- document, like author-year cituations, then you must
+ document, like author-year citations, then you must
 \emph on
  
 \emph default
@@ -28017,7 +28016,7 @@ Note that some document classes have built-in solutions for well known problems
  like your case.
  For example if you use a 
 \family sans
-koma-script
+KOMA-Script
 \family default
  class, you don't need the package 
 \series bold
@@ -28571,13 +28570,13 @@ Thesaurus
 \end_inset
 
 .
- A dialog pops up showing you prossibly related words that you can use as
+ A dialog pops up showing you possibly related words that you can use as
  replacement.
 \end_layout
 
 \begin_layout Standard
 The related words shown may not really be related to the word you are currently
- checking; scrolling in the poposal list might help in some cases to find
+ checking; scrolling in the proposal list might help in some cases to find
  related words.
 \end_layout
 
@@ -34265,8 +34264,8 @@ You can export your document to various file formats.
 \end_layout
 
 \begin_layout Standard
-Here is a list of all available entries; they are explained in detail in
- section
+Here is a list of all available entries; some of them are explained in detail
+ in section
 \begin_inset space ~
 \end_inset
 
