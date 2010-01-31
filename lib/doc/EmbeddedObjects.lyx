@@ -209,9 +209,10 @@
 \bullet 1 1 34 -1
 \bullet 2 2 35 -1
 \bullet 3 2 7 -1
-\tracking_changes true
+\tracking_changes false
 \output_changes false
-\author "Vincent" vfr@lyx.org
+\author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -14999,7 +15000,7 @@ as LaTeX-argument for this column.
 \series bold
 
 \backslash
-rowcolow{cyan}
+rowcolor{cyan}
 \end_layout
 
 \begin_layout Standard
@@ -26723,17 +26724,8 @@ reference "sec:Parboxes"
 \end_layout
 
 \begin_layout Standard
-Boxes are
-\change_inserted 0 1264349164
- 
-\change_unchanged
-n
-\change_inserted 0 1264349165
-o
-\change_deleted 0 1264349164
-'
-\change_unchanged
-t numbered and can therefore not be referenced like floats or footnotes.
+Boxes aren't numbered and can therefore not be referenced like floats or
+ footnotes.
 \end_layout
 
 \begin_layout Standard
@@ -26869,15 +26861,7 @@ reference "tab:Units"
 .
  The field 
 \family sans
-Heig
-\change_deleted 0 1264349254
-t
-\change_unchanged
-h
-\change_inserted 0 1264349253
-t
-\change_unchanged
-
+Heigth
 \family default
  offers the following additional sizes:
 \end_layout
@@ -26940,15 +26924,7 @@ Depth
 \end_layout
 
 \begin_layout Description
-Height This is the heig
-\change_inserted 0 1264349040
-h
-\change_unchanged
-t
-\change_deleted 0 1264349041
-h
-\change_unchanged
- of the text that is inside the box.
+Height This is the heigth of the text that is inside the box.
  A value of e.
 \begin_inset space \thinspace{}
 \end_inset
@@ -26957,15 +26933,7 @@ g.
 \begin_inset space \space{}
 \end_inset
 
-2 for this size will set the box heig
-\change_deleted 0 1264349019
-t
-\change_unchanged
-h
-\change_inserted 0 1264349028
-t
-\change_unchanged
- to 2 times the text height: 
+2 for this size will set the box heigth to 2 times the text height: 
 \begin_inset Box Boxed
 position "c"
 hor_pos "c"
@@ -27037,15 +27005,7 @@ Height
 \end_layout
 
 \begin_layout Description
-Width This sets the width of the box as heig
-\change_inserted 0 1264349059
-h
-\change_unchanged
-t
-\change_deleted 0 1264349061
-h
-\change_unchanged
-: 
+Width This sets the width of the box as heigth: 
 \begin_inset Box Boxed
 position "c"
 hor_pos "c"
@@ -27182,12 +27142,8 @@ status open
 \series bold
 Note:
 \series default
- The vertical box alig
-\change_inserted 0 1264349304
-n
-\change_unchanged
-ment can be lost in the output when you have two boxes in a line and one
- has e.
+ The vertical box aligment can be lost in the output when you have two boxes
+ in a line and one has e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -27220,11 +27176,7 @@ Inner
 
 Box
 \family default
-, the box content can be vertical
-\change_inserted 0 1264349345
-ly
-\change_unchanged
- aligned to:
+, the box content can be vertical aligned to:
 \end_layout
 
 \begin_layout Description
@@ -27393,17 +27345,7 @@ stretched.
 \end_layout
 
 \begin_layout Standard
-If you have
-\change_inserted 0 1264349404
- 
-\change_unchanged
-n
-\change_inserted 0 1264349405
-o
-\change_deleted 0 1264349404
-'
-\change_unchanged
-t set an 
+If you haven't set an 
 \family sans
 Inner
 \begin_inset space ~
@@ -27460,13 +27402,8 @@ Boxes ! Decoration
 \end_layout
 
 \begin_layout Standard
-The type of the box can be specified in the box
-\change_inserted 0 1264349426
- 
-\change_deleted 0 1264349425
--
-\change_unchanged
-dialog in the drop-down list 
+The type of the box can be specified in the box-dialog in the drop-down
+ list 
 \family sans
 Decoration
 \family default
@@ -27483,13 +27420,7 @@ rectangular
 \begin_inset space ~
 \end_inset
 
-frame This draws a 
-\change_deleted 0 1264349464
-rectangle
-\change_inserted 0 1264349464
-rectangular
-\change_unchanged
- frame around the box.
+frame This draws a rectangle frame around the box.
  The frame line thickness has the size of 
 \series bold
 
@@ -27547,13 +27478,7 @@ fboxrule
 \backslash
 fboxsep
 \series default
- ha
-\change_deleted 0 1264349516
-s
-\change_inserted 0 1264349516
-ve
-\change_unchanged
- no effect on this box type.
+ has no effect on this box type.
  The frame line thickness has the size of 
 \series bold
 
@@ -27664,13 +27589,7 @@ Drop
 \begin_inset space ~
 \end_inset
 
-shadow This draws a 
-\change_deleted 0 1264349586
-rectangle
-\change_inserted 0 1264349586
-rectangular
-\change_unchanged
- frame with a shadow around the box.
+shadow This draws a rectangle frame with a shadow around the box.
  The frame line thickness has the size of 
 \series bold
 
@@ -27764,13 +27683,7 @@ rectangular
 \begin_inset space ~
 \end_inset
 
-frame This draws a double-line 
-\change_deleted 0 1264349612
-rectangle
-\change_inserted 0 1264349612
-rectangular
-\change_unchanged
- frame around the box.
+frame This draws a double-line rectangle frame around the box.
  The line thickness of the inner frame is 0.75
 \begin_inset space \thinspace{}
 \end_inset
@@ -27861,13 +27774,7 @@ LaTeX-packages ! fancybox
 \end_layout
 
 \begin_layout Section
-Box 
-\change_deleted 0 1264349661
-c
-\change_inserted 0 1264349661
-C
-\change_unchanged
-ustomization
+Box customization
 \begin_inset Index
 status collapsed
 
@@ -28361,10 +28268,6 @@ FrameSep
 box
 \family default
  is set with the TeX-Code commands
-\change_inserted 0 1264350396
-:
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
@@ -28549,21 +28452,8 @@ reference "sec:Colored-Boxes"
 
 \end_inset
 
- For example the appearance of the following 
-\family sans
-shaded background
-\family default
- 
-\change_deleted 0 1264349764
-note
-\change_inserted 0 1264349764
-box
-\change_unchanged
- is set with the TeX-Code commands
-\change_inserted 0 1264349836
-:
-\change_unchanged
-
+ For example the appearance of the following shaded background note is set
+ with the TeX-Code commands
 \end_layout
 
 \begin_layout Standard
