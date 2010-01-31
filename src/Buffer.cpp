@@ -964,6 +964,7 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 			     bformat(_("%1$s ended unexpectedly, which means"
 						    " that it is probably corrupted."),
 				       from_utf8(filename.absFilename())));
+		return failure;
 	}
 
 	d->file_fully_loaded = true;
