@@ -62,7 +62,6 @@
 #include "insets/InsetRef.h"
 #include "insets/InsetText.h"
 #include "insets/InsetNote.h"
-#include "insets/InsetERT.h"
 
 #include "frontends/alert.h"
 #include "frontends/Application.h"
@@ -1027,7 +1026,8 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 
 	case LFUN_REGEXP_MODE:
 		// FIXME: Test if current WorkArea is the search WorkArea
-		flag.setEnabled(buffer().isInternal() && !cur.inRegexped() && !dynamic_cast<InsetERT*>(&cur.inset()));
+		flag.setEnabled(buffer().isInternal() && !cur.inRegexped()
+				&& cur.inset().lyxCode() != ERT_CODE);
 		break;
 
 	case LFUN_LABEL_COPY_AS_REF: {
