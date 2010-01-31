@@ -1025,7 +1025,6 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 
 	case LFUN_REGEXP_MODE:
-		// FIXME: Test if current WorkArea is the search WorkArea
 		flag.setEnabled(buffer().isInternal() && !cur.inRegexped()
 				&& cur.inset().lyxCode() != ERT_CODE);
 		break;
