@@ -93,8 +93,8 @@ InsetInfo::InsetInfo(Buffer * buf, string const & name)
 
 Inset * InsetInfo::editXY(Cursor & cur, int x, int y)
 {
-	cur.push(*this);
-	return InsetCollapsable::editXY(cur, x, y);
+	// do not allow the cursor to be set in this Inset
+	return Inset::editXY(cur, x, y);
 }
 
 
