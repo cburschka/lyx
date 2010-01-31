@@ -26724,7 +26724,7 @@ reference "sec:Parboxes"
 \end_layout
 
 \begin_layout Standard
-Boxes aren't numbered and can therefore not be referenced like floats or
+Boxes are not numbered and can therefore not be referenced like floats or
  footnotes.
 \end_layout
 
@@ -26861,7 +26861,7 @@ reference "tab:Units"
 .
  The field 
 \family sans
-Heigth
+Height
 \family default
  offers the following additional sizes:
 \end_layout
@@ -26924,7 +26924,7 @@ Depth
 \end_layout
 
 \begin_layout Description
-Height This is the heigth of the text that is inside the box.
+Height This is the height of the text that is inside the box.
  A value of e.
 \begin_inset space \thinspace{}
 \end_inset
@@ -26933,7 +26933,11 @@ g.
 \begin_inset space \space{}
 \end_inset
 
-2 for this size will set the box heigth to 2 times the text height: 
+2 for this size will set the box height to 2
+\begin_inset space ~
+\end_inset
+
+times the text height: 
 \begin_inset Box Boxed
 position "c"
 hor_pos "c"
@@ -27005,7 +27009,7 @@ Height
 \end_layout
 
 \begin_layout Description
-Width This sets the width of the box as heigth: 
+Width This sets the width of the box as height: 
 \begin_inset Box Boxed
 position "c"
 hor_pos "c"
@@ -27142,8 +27146,8 @@ status open
 \series bold
 Note:
 \series default
- The vertical box aligment can be lost in the output when you have two boxes
- in a line and one has e.
+ The vertical box alignment can be lost in the output when you have two
+ boxes in a line and one has e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -27176,7 +27180,7 @@ Inner
 
 Box
 \family default
-, the box content can be vertical aligned to:
+, the box content can be aligned vertically to:
 \end_layout
 
 \begin_layout Description
@@ -27345,7 +27349,7 @@ stretched.
 \end_layout
 
 \begin_layout Standard
-If you haven't set an 
+If you have not set an 
 \family sans
 Inner
 \begin_inset space ~
@@ -27402,7 +27406,7 @@ Boxes ! Decoration
 \end_layout
 
 \begin_layout Standard
-The type of the box can be specified in the box-dialog in the drop-down
+The type of the box can be specified in the box dialog in the drop-down
  list 
 \family sans
 Decoration
@@ -27420,7 +27424,7 @@ rectangular
 \begin_inset space ~
 \end_inset
 
-frame This draws a rectangle frame around the box.
+frame This draws a rectangular frame around the box.
  The frame line thickness has the size of 
 \series bold
 
@@ -27478,7 +27482,7 @@ fboxrule
 \backslash
 fboxsep
 \series default
- has no effect on this box type.
+ have no effect on this box type.
  The frame line thickness has the size of 
 \series bold
 
@@ -27589,7 +27593,7 @@ Drop
 \begin_inset space ~
 \end_inset
 
-shadow This draws a rectangle frame with a shadow around the box.
+shadow This draws a rectangular frame with a shadow around the box.
  The frame line thickness has the size of 
 \series bold
 
@@ -27683,7 +27687,7 @@ rectangular
 \begin_inset space ~
 \end_inset
 
-frame This draws a double-line rectangle frame around the box.
+frame This draws a double-line rectangular frame around the box.
  The line thickness of the inner frame is 0.75
 \begin_inset space \thinspace{}
 \end_inset
@@ -27774,7 +27778,7 @@ LaTeX-packages ! fancybox
 \end_layout
 
 \begin_layout Section
-Box customization
+Box Customization
 \begin_inset Index
 status collapsed
 
@@ -28452,7 +28456,7 @@ reference "sec:Colored-Boxes"
 
 \end_inset
 
- For example the appearance of the following shaded background note is set
+ For example the appearance of the following shaded background box is set
  with the TeX-Code commands
 \end_layout
 
