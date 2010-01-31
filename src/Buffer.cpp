@@ -1118,6 +1118,13 @@ docstring Buffer::emergencyWrite()
 
 bool Buffer::write(ostream & ofs) const
 {
+	// Do not try to save the buffer if it is for some
+	// reason not fully loaded.
+	if (!d->file_fully_loaded) {
+		LYXERR0("WARNING: file was not fully loaded when trying to save.");
+		LASSERT(d->file_fully_loaded, return false);
+	}
+
 #ifdef HAVE_LOCALE
 	// Use the standard "C" locale for file output.
 	ofs.imbue(locale::classic());
