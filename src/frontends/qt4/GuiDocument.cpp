@@ -1823,6 +1823,8 @@ void GuiDocument::updateNumbering()
 
 void GuiDocument::updateDefaultFormat()
 {
+	if (!bufferview())
+		return;
 	// make a copy in order to consider unapplied changes
 	Buffer * tmpbuf = const_cast<Buffer *>(&buffer());
 	tmpbuf->params().useXetex = outputModule->xetexCB->isChecked();
@@ -2485,7 +2487,9 @@ void GuiDocument::paramsToDialog()
 	}
 
 	// Master/Child
-	std::vector<Buffer *> children = buffer().getChildren(false);
+	std::vector<Buffer *> children;
+	if (bufferview())
+		children = buffer().getChildren(false);
 	if (children.empty()) {
 		masterChildModule->childrenTW->clear();
 		includeonlys_.clear();
@@ -3100,6 +3104,8 @@ void GuiDocument::loadModuleInfo()
 
 void GuiDocument::updateUnknownBranches()
 {
+	if (!bufferview())
+		return;
 	list<docstring> used_branches;
 	buffer().getUsedBranches(used_branches);
 	list<docstring>::const_iterator it = used_branches.begin();
