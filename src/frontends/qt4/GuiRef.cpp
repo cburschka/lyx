@@ -32,6 +32,7 @@
 #include <QPushButton>
 #include <QToolTip>
 #include <QCloseEvent>
+#include <QtGui>
 
 using namespace std;
 using namespace lyx::support;
