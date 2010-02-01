@@ -50,9 +50,16 @@ public:
 
 	/// \name Generic accessor functions
 	//@{
+	/// The current BufferView refers to the BufferView that has the focus,
+	/// including for example the one that is created when you use the
+	/// advanced search and replace pane.
 	/// \return the currently selected buffer view.
 	virtual BufferView * currentBufferView() = 0;
 	virtual BufferView const * currentBufferView() const = 0;
+
+	/// The document BufferView always refers to the view's main document
+	/// BufferView. So, even if the BufferView in e.g., the advanced
+	/// search and replace pane has the focus.
 	/// \return the current document buffer view.
 	virtual BufferView * documentBufferView() = 0;
 	virtual BufferView const * documentBufferView() const = 0;
