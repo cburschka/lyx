@@ -70,18 +70,12 @@ AC_DEFUN([CHECK_WITH_HUNSPELL],
 ### Check if we want spell libraries, prefer new aspell or hunspell
 AC_DEFUN([LYX_CHECK_SPELL_ENGINES],
 [
-	lyx_use_aspell=false
 	CHECK_WITH_ASPELL
-
 	AM_CONDITIONAL(USE_ASPELL, $lyx_use_aspell)
 
-	lyx_use_enchant=false
 	CHECK_WITH_ENCHANT
-
 	AM_CONDITIONAL(USE_ENCHANT, $lyx_use_enchant)
 
-	lyx_use_hunspell=false
 	CHECK_WITH_HUNSPELL
-
 	AM_CONDITIONAL(USE_HUNSPELL, $lyx_use_hunspell)
 	])
