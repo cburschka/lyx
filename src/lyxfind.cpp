@@ -946,6 +946,8 @@ int findAdvFinalize(DocIterator & cur, MatchStringAdv const & match)
 
 	// Compute the match length
 	int len = 1;
+	if (cur.pos() + len > cur.lastpos())
+		return 0;
 	LYXERR(Debug::FIND, "verifying unmatch with len = " << len);
 	while (cur.pos() + len <= cur.lastpos() && match(cur, len) == 0) {
 		++len;
