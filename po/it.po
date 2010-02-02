@@ -273,7 +273,7 @@ msgstr "Questa sezione bibliografica contiene..."
 
 #: src/frontends/qt4/ui/BibtexUi.ui:134
 msgid "&Content:"
-msgstr "&Contenuto:"
+msgstr "C&ontenuto:"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:148
 #: src/insets/InsetBibtex.cpp:207
@@ -297,7 +297,7 @@ msgstr "Selezionare per aggiungere la bibliografia all'indice generale"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:169
 msgid "Add bibliography to &TOC"
-msgstr "Aggiungi bibliografia all'&Indice generale"
+msgstr "Aggiungi bibliografia all'&indice generale"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:225
 msgid "Move the selected database downwards in the list"
@@ -320,11 +320,11 @@ msgstr "S&u"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:253
 msgid "BibTeX database to use"
-msgstr "Catalogo BibTeX da usare"
+msgstr "Cataloghi BibTeX da usare"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:256
 msgid "Databa&ses"
-msgstr "Ba&si di dati"
+msgstr "&Cataloghi"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:269
 msgid "Add a BibTeX database file"
@@ -380,7 +380,7 @@ msgstr "A sinistra"
 #: src/frontends/qt4/GuiParagraph.cpp:111
 #: src/frontends/qt4/GuiTabular.cpp:752
 msgid "Center"
-msgstr "Centrato"
+msgstr "Al centro"
 
 #: src/frontends/qt4/ui/BoxUi.ui:75
 #: src/frontends/qt4/ui/ListingsUi.ui:108
@@ -1655,11 +1655,11 @@ msgstr "Imposta l'altezza. Non selezionare per impostazione automatica."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:144
 msgid "Set &height:"
-msgstr "&Altezza:"
+msgstr "Al&tezza:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:151
 msgid "&Scale Graphics (%):"
-msgstr "&Scala (%):"
+msgstr "S&cala (%):"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:161
 msgid "Sets width of graphic. Leave unchecked to set automatically."
@@ -4148,11 +4148,11 @@ msgstr "Sostituisci &con:"
 
 #: src/frontends/qt4/ui/SearchUi.ui:112
 msgid "Match whole words onl&y"
-msgstr "Sol&o parole intere"
+msgstr "Solo &parole intere"
 
 #: src/frontends/qt4/ui/SearchUi.ui:170
 msgid "Find &Next"
-msgstr "Trova &successivo"
+msgstr "Tro&va successivo"
 
 #: src/frontends/qt4/ui/SearchUi.ui:183
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:96
@@ -4235,7 +4235,7 @@ msgstr "Sostituisce il termine con la scelta attuale"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:46
 msgid "&Find Next"
-msgstr "Tro&va successivo"
+msgstr "Trova succ&essivo"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:53
 msgid "Re&placement:"
@@ -4255,7 +4255,7 @@ msgstr "Ignora questo termine"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:129
 msgid "&Ignore"
-msgstr "&Ignora"
+msgstr "Ig&nora"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:136
 msgid "Ignore this word throughout this session"
@@ -4263,7 +4263,7 @@ msgstr "Ignora tale termine per questa sessione"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:139
 msgid "I&gnore All"
-msgstr "Ig&nora tutto"
+msgstr "Igno&ra tutto"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:146
 msgid "Add the word to your personal dictionary"
@@ -20798,22 +20798,22 @@ msgstr "In basso a sinistra"
 #: src/frontends/qt4/GuiExternal.cpp:76
 #: src/frontends/qt4/GuiGraphics.cpp:72
 msgid "Baseline left"
-msgstr "A sinistra della linea di base"
+msgstr "Linea di base a sinistra"
 
 #: src/frontends/qt4/GuiExternal.cpp:77
 #: src/frontends/qt4/GuiGraphics.cpp:73
 msgid "Top center"
-msgstr "Centrato in alto"
+msgstr "In alto al centro"
 
 #: src/frontends/qt4/GuiExternal.cpp:77
 #: src/frontends/qt4/GuiGraphics.cpp:73
 msgid "Bottom center"
-msgstr "Centrato in basso"
+msgstr "In basso al centro"
 
 #: src/frontends/qt4/GuiExternal.cpp:77
 #: src/frontends/qt4/GuiGraphics.cpp:73
 msgid "Baseline center"
-msgstr "Al centro della linea di base"
+msgstr "Linea di base al centro"
 
 #: src/frontends/qt4/GuiExternal.cpp:78
 #: src/frontends/qt4/GuiGraphics.cpp:74
@@ -20828,7 +20828,7 @@ msgstr "In basso a destra"
 #: src/frontends/qt4/GuiExternal.cpp:78
 #: src/frontends/qt4/GuiGraphics.cpp:74
 msgid "Baseline right"
-msgstr "A destra della linea di base"
+msgstr "Linea di base a destra"
 
 #: src/frontends/qt4/GuiExternal.cpp:95
 msgid "External Material"
@@ -20848,7 +20848,7 @@ msgstr "Impostazioni oggetti flottanti"
 
 #: src/frontends/qt4/GuiGraphics.cpp:78
 msgid "automatically"
-msgstr "automaticamente"
+msgstr "automatica"
 
 #: src/frontends/qt4/GuiGraphics.cpp:113
 msgid "Graphics"
