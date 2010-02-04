@@ -278,7 +278,8 @@ bool ensureMath(WriteStream & os, bool needs_math_mode, bool macro)
 }
 
 
-int ensureMode(WriteStream & os, InsetMath::mode_type mode, bool locked)
+int ensureMode(WriteStream & os, InsetMath::mode_type mode,
+		bool locked, bool ascii)
 {
 	bool textmode = mode == InsetMath::TEXT_MODE;
 	if (os.latex() && textmode && os.pendingBrace()) {
@@ -287,10 +288,12 @@ int ensureMode(WriteStream & os, InsetMath::mode_type mode, bool locked)
 		os.pendingSpace(false);
 		os.textMode(true);
 	}
-	int oldmodes = os.textMode() ? 1 : 0;
+	int oldmodes = os.textMode() ? 0x01 : 0;
 	os.textMode(textmode);
-	oldmodes |= os.lockedMode() ? 2 : 0;
+	oldmodes |= os.lockedMode() ? 0x02 : 0;
 	os.lockedMode(locked);
+	oldmodes |= os.asciiOnly() ? 0x04 : 0;
+	os.asciiOnly(ascii);
 	return oldmodes;
 }
 
