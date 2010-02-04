@@ -72,6 +72,7 @@ Function UpdateModifiedFiles
  #File "${PRODUCT_SOURCEDIR}\Resources\scripts\layout2layout.py"
  SetOutPath "$INSTDIR\Resources\templates"
  File "${PRODUCT_SOURCEDIR}\Resources\templates\dinbrief.lyx"
+ File "${PRODUCT_SOURCEDIR}\Resources\templates\elsarticle.lyx"
  SetOutPath "$INSTDIR\Resources\ui"
  #File "${PRODUCT_SOURCEDIR}\Resources\ui\stdcontext.inc"
  File "${PRODUCT_SOURCEDIR}\Resources\ui\stdmenus.inc"
