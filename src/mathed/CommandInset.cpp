@@ -65,11 +65,15 @@ void CommandInset::draw(PainterInfo & pi, int x, int y) const
 
 void CommandInset::write(WriteStream & os) const
 {
+	ModeSpecifier specifier(os, currentMode(), lockedMode());
 	MathEnsurer ensurer(os, needs_math_mode_);
-	os << '\\' << name_.c_str();
+	bool const ascii = os.asciiOnly();
+	os.asciiOnly(asciiOnly());
+	os << '\\' << name_;
 	if (cell(1).size())
 		os << '[' << cell(1) << ']';
 	os << '{' << cell(0) << '}';
+	os.asciiOnly(ascii);
 }
 
 

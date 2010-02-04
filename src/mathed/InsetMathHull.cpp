@@ -1069,7 +1069,8 @@ docstring InsetMathHull::eolString(row_type row, bool fragile) const
 	docstring res;
 	if (numberedType()) {
 		if (label_[row] && !nonum_[row])
-			res += "\\label{" + label_[row]->getParam("name") + '}';
+			res += "\\label{" +
+			    escape(label_[row]->getParam("name")) + '}';
 		if (nonum_[row] && (type_ != hullMultline))
 			res += "\\nonumber ";
 	}

@@ -33,6 +33,12 @@ public:
 	///
 	void infoize(odocstream & os) const;
 	///
+	mode_type currentMode() const { return TEXT_MODE; }
+	///
+	bool lockedMode() const { return true; }
+	///
+	bool asciiOnly() const { return true; }
+	///
 	docstring const screenLabel() const;
 	///
 	void validate(LaTeXFeatures & features) const;

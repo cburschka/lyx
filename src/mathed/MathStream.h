@@ -75,6 +75,10 @@ public:
 	void lockedMode(bool locked);
 	/// tell whether we are allowed to switch mode when producing latex code
 	bool lockedMode() const { return locked_; }
+	/// tell whether to use only ascii chars when producing latex code
+	void asciiOnly(bool ascii);
+	/// tell whether to use only ascii chars when producing latex code
+	bool asciiOnly() const { return ascii_; }
 	/// LaTeX encoding
 	Encoding const * encoding() const { return encoding_; }
 private:
@@ -96,6 +100,8 @@ private:
 	bool textmode_;
 	/// are we allowed to switch mode when producing latex code?
 	bool locked_;
+	/// should we use only ascii chars when producing latex code?
+	bool ascii_;
 	///
 	int line_;
 	///
