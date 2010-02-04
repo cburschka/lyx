@@ -20594,7 +20594,7 @@ Une liste avec tous les symboles de la plupart des paquetages LaTeX peut
  être trouvée dans 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Symbole"
+key "Symbols"
 
 \end_inset
 
@@ -36294,6 +36294,49 @@ Typographiques, conseils
 
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+This section is a summary of the most important typographic rules, listed
+ in ISO norms.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+This collection was partly taken from the German semi-official dictionary
+ called 
+\begin_inset Quotes eld
+\end_inset
+
+Duden
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Duden"
+
+\end_inset
+
+ that lists some of the ISO rules.
+ More rules are listed in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Checklist"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 Les symboles d'unités sont 
 \emph on
@@ -36316,6 +36359,10 @@ reference "sub:Styles-de-polices"
 
 \end_inset
 
+, 
+\lang english
+no matter if they appear in italic text
+\lang french
 : 30
 \begin_inset space \thinspace{}
 \end_inset
@@ -37316,7 +37363,7 @@ AmS
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "Symbole"
+key "Symbols"
 
 \end_inset
 
@@ -37452,6 +37499,26 @@ Duden Band 1
 .
  22.
  Auflage, Duden 2001
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Checklist"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Check list"
+target "http://physics.nist.gov/Document/checklist.pdf"
+
+\end_inset
+
+ 
+\lang english
+for reviewing manuscripts
 \end_layout
 
 \begin_layout Standard

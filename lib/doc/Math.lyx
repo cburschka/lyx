@@ -1,4 +1,4 @@
-#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.6svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -20646,7 +20646,7 @@ status collapsed
 A list with all symbols of most of the LaTeX-packages can be found in 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Symbole"
+key "Symbols"
 
 \end_inset
 
@@ -36238,6 +36238,14 @@ key "Duden"
 \end_inset
 
  that lists some of the ISO rules.
+ More rules are listed in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Checklist"
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -36267,7 +36275,7 @@ reference "sub:Font-Styles"
 
 \end_inset
 
-: 30
+, no matter if they appear in italic text: 30
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -37250,7 +37258,7 @@ AmS
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "Symbole"
+key "Symbols"
 
 \end_inset
 
@@ -37386,6 +37394,24 @@ Duden Band 1
 .
  22.
  Auflage, Duden 2001
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Checklist"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Check list"
+target "http://physics.nist.gov/Document/checklist.pdf"
+
+\end_inset
+
+ for reviewing manuscripts
 \end_layout
 
 \begin_layout Standard
