@@ -2160,7 +2160,8 @@ void LyXAction::init()
                         R - Reload - ensure that the document is saved and reload it after command execution \n
                         M - Message - ask for input string (commit message)\n
                 <PATH>: path where to start. $$p will be replaced by the current document path.\n
-                <COMMAND>: command to execute. $$i/$$p/$$m will be replaced by the current document/path/message.
+                <COMMAND>: command to execute. $$i/$$p/$$m will be replaced by the current
+                           document(with absolute path)/path/message.
  * \li Sample: vc-command DR $$p "svn up"
  * \li Origin: sanda, 13 Jan 2009
  * \endvar
