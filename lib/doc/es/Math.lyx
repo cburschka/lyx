@@ -1,4 +1,4 @@
-#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.6svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -20738,7 +20738,7 @@ Se puede encontrar una lista con todos los símbolos de la mayoría de paquetes
  LaTeX en 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Symbole"
+key "Symbols"
 
 \end_inset
 
@@ -36854,6 +36854,10 @@ reference "sub:Estilos-de-fuentes"
 
 \end_inset
 
+, 
+\lang english
+no matter if they appear in italic text
+\lang spanish
 : 30
 \begin_inset space \thinspace{}
 \end_inset
@@ -37854,7 +37858,7 @@ AmS
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "Symbole"
+key "Symbols"
 
 \end_inset
 

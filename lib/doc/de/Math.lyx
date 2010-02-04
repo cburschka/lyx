@@ -1,4 +1,4 @@
-#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.6svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -36244,6 +36244,14 @@ key "Duden"
 Textverarbeitung
 \family default
  aufgelistet sind.
+ Weitere Regeln sind in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Checklist"
+
+\end_inset
+
+ zu finden.
 \end_layout
 
 \begin_layout Itemize
@@ -36268,7 +36276,7 @@ reference "sub:Schriftstile"
 
 \end_inset
 
-: 30
+, egal ob sie sich in einem kursiven Text befinden: 30
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -37401,6 +37409,24 @@ Duden Band 1
 .
  22.
  Auflage, Duden Verlag 2001
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Checklist"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Prüfliste"
+target "http://physics.nist.gov/Document/checklist.pdf"
+
+\end_inset
+
+ für das Rezensieren von Manuskripten
 \end_layout
 
 \begin_layout Standard
