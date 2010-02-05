@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-01-24 11:16+0100\n"
+"POT-Creation-Date: 2010-02-05 18:11+0100\n"
 "PO-Revision-Date: 2008-08-04 17:40+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -86,7 +86,7 @@ msgstr ""
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:890
 #: src/Buffer.cpp:2713 src/Buffer.cpp:2759 src/Buffer.cpp:2794
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:866 src/LyXFunc.cpp:1042
-#: src/LyXFunc.cpp:1923 src/LyXVC.cpp:196
+#: src/LyXFunc.cpp:1925 src/LyXVC.cpp:196
 #: src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1266
 #: src/frontends/qt4/GuiParagraph.cpp:69
@@ -2147,7 +2147,7 @@ msgstr ""
 msgid "Line &spacing"
 msgstr ""
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1422
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1424
 #: src/frontends/qt4/GuiDocument.cpp:572
 msgid "Single"
 msgstr ""
@@ -2156,7 +2156,7 @@ msgstr ""
 msgid "1.5"
 msgstr ""
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1428
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1430
 #: src/frontends/qt4/GuiDocument.cpp:576
 msgid "Double"
 msgstr ""
@@ -9395,6 +9395,10 @@ msgstr ""
 msgid "Galician"
 msgstr ""
 
+#: lib/languages:42
+msgid "German (old spelling)"
+msgstr ""
+
 #: lib/languages:43
 msgid "German"
 msgstr ""
@@ -15768,14 +15772,14 @@ msgstr ""
 msgid "An empty output file was generated."
 msgstr ""
 
-#: src/CutAndPaste.cpp:566
+#: src/CutAndPaste.cpp:599
 #, c-format
 msgid ""
 "Flex inset %1$s is undefined because of class conversion from\n"
 "%2$s to %3$s"
 msgstr ""
 
-#: src/CutAndPaste.cpp:573
+#: src/CutAndPaste.cpp:606
 msgid "Undefined flex inset"
 msgstr ""
 
@@ -16326,17 +16330,17 @@ msgstr ""
 msgid "Directory is not accessible."
 msgstr ""
 
-#: src/LyXFunc.cpp:1904
+#: src/LyXFunc.cpp:1906
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr ""
 
-#: src/LyXFunc.cpp:1906
+#: src/LyXFunc.cpp:1908
 #, c-format
 msgid "Could not reload document %1$s"
 msgstr ""
 
-#: src/LyXFunc.cpp:1919
+#: src/LyXFunc.cpp:1921
 #, c-format
 msgid ""
 "Document \n"
@@ -16344,19 +16348,19 @@ msgid ""
 " has been externally modified. Reload now? Any local changes will be lost."
 msgstr ""
 
-#: src/LyXFunc.cpp:1922
+#: src/LyXFunc.cpp:1924
 msgid "Reload externally changed document?"
 msgstr ""
 
-#: src/LyXFunc.cpp:1923 src/buffer_funcs.cpp:75
+#: src/LyXFunc.cpp:1925 src/buffer_funcs.cpp:75
 msgid "&Reload"
 msgstr ""
 
-#: src/LyXFunc.cpp:1963
+#: src/LyXFunc.cpp:1965
 msgid "Welcome to LyX!"
 msgstr ""
 
-#: src/LyXFunc.cpp:1984
+#: src/LyXFunc.cpp:1986
 msgid "Converting document to new document class..."
 msgstr ""
 
@@ -16910,71 +16914,71 @@ msgstr ""
 msgid "Unknown token"
 msgstr ""
 
-#: src/Text.cpp:522
+#: src/Text.cpp:524
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr ""
 
-#: src/Text.cpp:533
+#: src/Text.cpp:535
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 
-#: src/Text.cpp:1388
+#: src/Text.cpp:1390
 msgid "[Change Tracking] "
 msgstr ""
 
-#: src/Text.cpp:1394
+#: src/Text.cpp:1396
 msgid "Change: "
 msgstr ""
 
-#: src/Text.cpp:1398
+#: src/Text.cpp:1400
 msgid " at "
 msgstr ""
 
-#: src/Text.cpp:1408
+#: src/Text.cpp:1410
 #, c-format
 msgid "Font: %1$s"
 msgstr ""
 
-#: src/Text.cpp:1413
+#: src/Text.cpp:1415
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ""
 
-#: src/Text.cpp:1419
+#: src/Text.cpp:1421
 msgid ", Spacing: "
 msgstr ""
 
-#: src/Text.cpp:1425 src/frontends/qt4/GuiDocument.cpp:574
+#: src/Text.cpp:1427 src/frontends/qt4/GuiDocument.cpp:574
 msgid "OneHalf"
 msgstr ""
 
-#: src/Text.cpp:1431
+#: src/Text.cpp:1433
 msgid "Other ("
 msgstr ""
 
-#: src/Text.cpp:1440
+#: src/Text.cpp:1442
 msgid ", Inset: "
 msgstr ""
 
-#: src/Text.cpp:1441
+#: src/Text.cpp:1443
 msgid ", Paragraph: "
 msgstr ""
 
-#: src/Text.cpp:1442
+#: src/Text.cpp:1444
 msgid ", Id: "
 msgstr ""
 
-#: src/Text.cpp:1443
+#: src/Text.cpp:1445
 msgid ", Position: "
 msgstr ""
 
-#: src/Text.cpp:1449
+#: src/Text.cpp:1451
 msgid ", Char: 0x"
 msgstr ""
 
-#: src/Text.cpp:1451
+#: src/Text.cpp:1453
 msgid ", Boundary: "
 msgstr ""
 
@@ -20241,7 +20245,7 @@ msgstr ""
 msgid "Opened table"
 msgstr ""
 
-#: src/insets/InsetTabular.cpp:4025
+#: src/insets/InsetTabular.cpp:4035
 msgid "Selection size should match clipboard content."
 msgstr ""
 

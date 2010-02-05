@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-01-24 11:16+0100\n"
+"POT-Creation-Date: 2010-02-05 18:11+0100\n"
 "PO-Revision-Date: 2009-12-17 21:34+0730\n"
 "Last-Translator: Waluyo Adi Siswanto <was.uthm@gmail.com>\n"
 "Language-Team: \n"
@@ -87,7 +87,7 @@ msgstr "&Setuju"
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:890
 #: src/Buffer.cpp:2713 src/Buffer.cpp:2759 src/Buffer.cpp:2794
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:866 src/LyXFunc.cpp:1042
-#: src/LyXFunc.cpp:1923 src/LyXVC.cpp:196
+#: src/LyXFunc.cpp:1925 src/LyXVC.cpp:196
 #: src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1266
 #: src/frontends/qt4/GuiParagraph.cpp:69
@@ -2164,7 +2164,7 @@ msgstr "&Label terpanjang"
 msgid "Line &spacing"
 msgstr "Spasi &Baris"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1422
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1424
 #: src/frontends/qt4/GuiDocument.cpp:572
 msgid "Single"
 msgstr "Satu"
@@ -2173,7 +2173,7 @@ msgstr "Satu"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1428
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1430
 #: src/frontends/qt4/GuiDocument.cpp:576
 msgid "Double"
 msgstr "Dua"
@@ -9541,6 +9541,10 @@ msgstr "Perancis"
 msgid "Galician"
 msgstr "Galician"
 
+#: lib/languages:42
+msgid "German (old spelling)"
+msgstr "Jerman (old spelling)"
+
 #: lib/languages:43
 msgid "German"
 msgstr "Jerman"
@@ -16017,7 +16021,7 @@ msgstr "Output kosong"
 msgid "An empty output file was generated."
 msgstr "Menghasilkan berkas output yang kosong"
 
-#: src/CutAndPaste.cpp:566
+#: src/CutAndPaste.cpp:599
 #, c-format
 msgid ""
 "Flex inset %1$s is undefined because of class conversion from\n"
@@ -16026,7 +16030,7 @@ msgstr ""
 "Sisipan flex  %1$s tidak terdefinisi karena konversi class dari\n"
 " %2$s to %3$s"
 
-#: src/CutAndPaste.cpp:573
+#: src/CutAndPaste.cpp:606
 msgid "Undefined flex inset"
 msgstr "Sisipan flex tidak terdefinisi"
 
@@ -16640,17 +16644,17 @@ msgstr "LyX KV: Catatan Pesan"
 msgid "Directory is not accessible."
 msgstr "Direktori ditak bisa diakses"
 
-#: src/LyXFunc.cpp:1904
+#: src/LyXFunc.cpp:1906
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokumen %1$s dimuat ulang."
 
-#: src/LyXFunc.cpp:1906
+#: src/LyXFunc.cpp:1908
 #, c-format
 msgid "Could not reload document %1$s"
 msgstr "Tidak bisa memuat ulang dokumen %1$s"
 
-#: src/LyXFunc.cpp:1919
+#: src/LyXFunc.cpp:1921
 #, c-format
 msgid ""
 "Document \n"
@@ -16662,19 +16666,19 @@ msgstr ""
 " telah dimodifikasi dengan program luar. Apakah dokumen ini akan ditindih? "
 "Perubahan lokal akan dihapus."
 
-#: src/LyXFunc.cpp:1922
+#: src/LyXFunc.cpp:1924
 msgid "Reload externally changed document?"
 msgstr "Memuat ulang dokumen yang sudah diubah program luar?"
 
-#: src/LyXFunc.cpp:1923 src/buffer_funcs.cpp:75
+#: src/LyXFunc.cpp:1925 src/buffer_funcs.cpp:75
 msgid "&Reload"
 msgstr "&Muat Ulang"
 
-#: src/LyXFunc.cpp:1963
+#: src/LyXFunc.cpp:1965
 msgid "Welcome to LyX!"
 msgstr "Selamat Datang di LyX!"
 
-#: src/LyXFunc.cpp:1984
+#: src/LyXFunc.cpp:1986
 msgid "Converting document to new document class..."
 msgstr "Mengkonversi dokumen ke class dokumen baru..."
 
@@ -17349,74 +17353,74 @@ msgstr "Indeks pengarang yang ingin dihapus tidak dikenal: %1$d\n"
 msgid "Unknown token"
 msgstr "Token tidak dikenal"
 
-#: src/Text.cpp:522
+#: src/Text.cpp:524
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr ""
 "Anda tidak dapat menyisipkan spasi di awal paragraf. Silahkan baca tutorial."
 
-#: src/Text.cpp:533
+#: src/Text.cpp:535
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Anda tidak diijinkan membuat dua spasi dengan cara ini. Silahkan baca "
 "Tutorial."
 
-#: src/Text.cpp:1388
+#: src/Text.cpp:1390
 msgid "[Change Tracking] "
 msgstr "[Pelacakan Perubahan] "
 
-#: src/Text.cpp:1394
+#: src/Text.cpp:1396
 msgid "Change: "
 msgstr "Perubahan: "
 
-#: src/Text.cpp:1398
+#: src/Text.cpp:1400
 msgid " at "
 msgstr " pada "
 
-#: src/Text.cpp:1408
+#: src/Text.cpp:1410
 #, c-format
 msgid "Font: %1$s"
 msgstr "Huruf: %1$s"
 
-#: src/Text.cpp:1413
+#: src/Text.cpp:1415
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Masuk: %1$d"
 
-#: src/Text.cpp:1419
+#: src/Text.cpp:1421
 msgid ", Spacing: "
 msgstr ", Spasi: "
 
-#: src/Text.cpp:1425 src/frontends/qt4/GuiDocument.cpp:574
+#: src/Text.cpp:1427 src/frontends/qt4/GuiDocument.cpp:574
 msgid "OneHalf"
 msgstr "SatuSetengah"
 
-#: src/Text.cpp:1431
+#: src/Text.cpp:1433
 msgid "Other ("
 msgstr "Other ("
 
-#: src/Text.cpp:1440
+#: src/Text.cpp:1442
 msgid ", Inset: "
 msgstr ", Sisipan: "
 
-#: src/Text.cpp:1441
+#: src/Text.cpp:1443
 msgid ", Paragraph: "
 msgstr ", Paragraf: "
 
-#: src/Text.cpp:1442
+#: src/Text.cpp:1444
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/Text.cpp:1443
+#: src/Text.cpp:1445
 msgid ", Position: "
 msgstr ", Posisi: "
 
-#: src/Text.cpp:1449
+#: src/Text.cpp:1451
 msgid ", Char: 0x"
 msgstr ", Kar: 0x"
 
-#: src/Text.cpp:1451
+#: src/Text.cpp:1453
 msgid ", Boundary: "
 msgstr ", Batas: "
 
@@ -20860,7 +20864,7 @@ msgstr "Tipe Daftar Isi tidak dikenal"
 msgid "Opened table"
 msgstr "Tabel dibuka"
 
-#: src/insets/InsetTabular.cpp:4025
+#: src/insets/InsetTabular.cpp:4035
 msgid "Selection size should match clipboard content."
 msgstr "Ukuran pilihan harus sesuai dengan isi dari klipboard."
 
@@ -21298,9 +21302,6 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Pemakai tidak dikenal"
-
-#~ msgid "German (old spelling)"
-#~ msgstr "Jerman (old spelling)"
 
 #~ msgid "Anschrift:"
 #~ msgstr "Anschrift:"

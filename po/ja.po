@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-01-24 11:16+0100\n"
+"POT-Creation-Date: 2010-02-05 18:11+0100\n"
 "PO-Revision-Date: 2009-12-03 00:03+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <>\n"
@@ -89,7 +89,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:890
 #: src/Buffer.cpp:2713 src/Buffer.cpp:2759 src/Buffer.cpp:2794
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:866 src/LyXFunc.cpp:1042
-#: src/LyXFunc.cpp:1923 src/LyXVC.cpp:196
+#: src/LyXFunc.cpp:1925 src/LyXVC.cpp:196
 #: src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1266
 #: src/frontends/qt4/GuiParagraph.cpp:69
@@ -2166,7 +2166,7 @@ msgstr "最長のラベル(&N)"
 msgid "Line &spacing"
 msgstr "行間(&S)"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1422
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1424
 #: src/frontends/qt4/GuiDocument.cpp:572
 msgid "Single"
 msgstr "なし"
@@ -2175,7 +2175,7 @@ msgstr "なし"
 msgid "1.5"
 msgstr "半行"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1428
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1430
 #: src/frontends/qt4/GuiDocument.cpp:576
 msgid "Double"
 msgstr "一行"
@@ -9516,6 +9516,10 @@ msgstr "フランス語"
 msgid "Galician"
 msgstr "ガリシア語"
 
+#: lib/languages:42
+msgid "German (old spelling)"
+msgstr "ドイツ語(旧綴方)"
+
 #: lib/languages:43
 msgid "German"
 msgstr "ドイツ語"
@@ -15994,7 +15998,7 @@ msgstr "出力が空です"
 msgid "An empty output file was generated."
 msgstr "空の出力ファイルが生成されました。"
 
-#: src/CutAndPaste.cpp:566
+#: src/CutAndPaste.cpp:599
 #, c-format
 msgid ""
 "Flex inset %1$s is undefined because of class conversion from\n"
@@ -16003,7 +16007,7 @@ msgstr ""
 "クラスを%2$sから%3$sに変えたため\n"
 "自由差込枠%1$sは未定義になりました"
 
-#: src/CutAndPaste.cpp:573
+#: src/CutAndPaste.cpp:606
 msgid "Undefined flex inset"
 msgstr "未定義の自由差込枠"
 
@@ -16614,17 +16618,17 @@ msgstr "LyX VC: ログメッセージ"
 msgid "Directory is not accessible."
 msgstr "ディレクトリはアクセス不可です。"
 
-#: src/LyXFunc.cpp:1904
+#: src/LyXFunc.cpp:1906
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "文書%1$sを再読み込みしました。"
 
-#: src/LyXFunc.cpp:1906
+#: src/LyXFunc.cpp:1908
 #, c-format
 msgid "Could not reload document %1$s"
 msgstr "文書%1$sを読み込むことができませんでした"
 
-#: src/LyXFunc.cpp:1919
+#: src/LyXFunc.cpp:1921
 #, fuzzy, c-format
 msgid ""
 "Document \n"
@@ -16634,20 +16638,20 @@ msgstr ""
 "文書 %1$s は他のプログラムによって修正されています。本当にこのファイルに上書"
 "きしますか？"
 
-#: src/LyXFunc.cpp:1922
+#: src/LyXFunc.cpp:1924
 #, fuzzy
 msgid "Reload externally changed document?"
 msgstr "変更した文書を保存しますか？"
 
-#: src/LyXFunc.cpp:1923 src/buffer_funcs.cpp:75
+#: src/LyXFunc.cpp:1925 src/buffer_funcs.cpp:75
 msgid "&Reload"
 msgstr "復帰(&R)"
 
-#: src/LyXFunc.cpp:1963
+#: src/LyXFunc.cpp:1965
 msgid "Welcome to LyX!"
 msgstr "LyXへようこそ！"
 
-#: src/LyXFunc.cpp:1984
+#: src/LyXFunc.cpp:1986
 msgid "Converting document to new document class..."
 msgstr "文書を新しい文書クラスに変換しています..."
 
@@ -17307,74 +17311,74 @@ msgstr "削除する著者インデックスが見つかりません: %1$d\n"
 msgid "Unknown token"
 msgstr "未知のトークン"
 
-#: src/Text.cpp:522
+#: src/Text.cpp:524
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr ""
 "空白を段落の先頭に挿入することはできません。LyX入門篇を読んでください。"
 
-#: src/Text.cpp:533
+#: src/Text.cpp:535
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "二つの空白をこのようにして入力することはできません。LyX入門篇を読んでくださ"
 "い。"
 
-#: src/Text.cpp:1388
+#: src/Text.cpp:1390
 msgid "[Change Tracking] "
 msgstr "[変更追跡機能] "
 
-#: src/Text.cpp:1394
+#: src/Text.cpp:1396
 msgid "Change: "
 msgstr "変更: "
 
-#: src/Text.cpp:1398
+#: src/Text.cpp:1400
 msgid " at "
 msgstr " at "
 
-#: src/Text.cpp:1408
+#: src/Text.cpp:1410
 #, c-format
 msgid "Font: %1$s"
 msgstr "フォント: %1$s"
 
-#: src/Text.cpp:1413
+#: src/Text.cpp:1415
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", 階層: %1$d"
 
-#: src/Text.cpp:1419
+#: src/Text.cpp:1421
 msgid ", Spacing: "
 msgstr ", 行間: "
 
-#: src/Text.cpp:1425 src/frontends/qt4/GuiDocument.cpp:574
+#: src/Text.cpp:1427 src/frontends/qt4/GuiDocument.cpp:574
 msgid "OneHalf"
 msgstr "半行"
 
-#: src/Text.cpp:1431
+#: src/Text.cpp:1433
 msgid "Other ("
 msgstr "その他 ("
 
-#: src/Text.cpp:1440
+#: src/Text.cpp:1442
 msgid ", Inset: "
 msgstr ", 差込枠: "
 
-#: src/Text.cpp:1441
+#: src/Text.cpp:1443
 msgid ", Paragraph: "
 msgstr ", 段落: "
 
-#: src/Text.cpp:1442
+#: src/Text.cpp:1444
 msgid ", Id: "
 msgstr ", ID: "
 
-#: src/Text.cpp:1443
+#: src/Text.cpp:1445
 msgid ", Position: "
 msgstr ", 位置: "
 
-#: src/Text.cpp:1449
+#: src/Text.cpp:1451
 msgid ", Char: 0x"
 msgstr ", 文字: 0x"
 
-#: src/Text.cpp:1451
+#: src/Text.cpp:1453
 msgid ", Boundary: "
 msgstr ", 境界: "
 
@@ -20814,7 +20818,7 @@ msgstr "未知の目次型"
 msgid "Opened table"
 msgstr "展開された表"
 
-#: src/insets/InsetTabular.cpp:4025
+#: src/insets/InsetTabular.cpp:4035
 msgid "Selection size should match clipboard content."
 msgstr "選択した大きさが、クリップボードの内容と一致していなくてはなりません。"
 
@@ -21252,9 +21256,6 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "未知の"
-
-#~ msgid "German (old spelling)"
-#~ msgstr "ドイツ語(旧綴方)"
 
 #~ msgid "Anschrift:"
 #~ msgstr "Anschrift:"

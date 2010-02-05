@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-01-24 11:16+0100\n"
+"POT-Creation-Date: 2010-02-05 18:11+0100\n"
 "PO-Revision-Date: 2009-11-02 02:01+0100\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -87,7 +87,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:890
 #: src/Buffer.cpp:2713 src/Buffer.cpp:2759 src/Buffer.cpp:2794
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:866 src/LyXFunc.cpp:1042
-#: src/LyXFunc.cpp:1923 src/LyXVC.cpp:196
+#: src/LyXFunc.cpp:1925 src/LyXVC.cpp:196
 #: src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1266
 #: src/frontends/qt4/GuiParagraph.cpp:69
@@ -2179,7 +2179,7 @@ msgstr "&Nejdel¹í znaèka"
 msgid "Line &spacing"
 msgstr "Øá&dkování"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1422
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1424
 #: src/frontends/qt4/GuiDocument.cpp:572
 msgid "Single"
 msgstr "Jedna"
@@ -2188,7 +2188,7 @@ msgstr "Jedna"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1428
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1430
 #: src/frontends/qt4/GuiDocument.cpp:576
 msgid "Double"
 msgstr "Dva"
@@ -9532,6 +9532,10 @@ msgstr "Francouz¹tina"
 msgid "Galician"
 msgstr "Gal¹tina"
 
+#: lib/languages:42
+msgid "German (old spelling)"
+msgstr "Nìmèina (starý pravopis)"
+
 #: lib/languages:43
 msgid "German"
 msgstr "Nìmèina"
@@ -16005,7 +16009,7 @@ msgstr "Výstup je prázdný"
 msgid "An empty output file was generated."
 msgstr "Byl vygenerován prázdný výstupní soubor."
 
-#: src/CutAndPaste.cpp:566
+#: src/CutAndPaste.cpp:599
 #, c-format
 msgid ""
 "Flex inset %1$s is undefined because of class conversion from\n"
@@ -16014,7 +16018,7 @@ msgstr ""
 "Flexibilní vlo¾ka %1$s není definována kvùli konverzi tøídy z\n"
 "%2$s na %3$s"
 
-#: src/CutAndPaste.cpp:573
+#: src/CutAndPaste.cpp:606
 msgid "Undefined flex inset"
 msgstr "Nedefinovaná flexibilní vlo¾ka"
 
@@ -16623,17 +16627,17 @@ msgstr "LyX SV: Zpráva Log-u"
 msgid "Directory is not accessible."
 msgstr "Adresáø není pøístupný."
 
-#: src/LyXFunc.cpp:1904
+#: src/LyXFunc.cpp:1906
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s znovunaèten."
 
-#: src/LyXFunc.cpp:1906
+#: src/LyXFunc.cpp:1908
 #, c-format
 msgid "Could not reload document %1$s"
 msgstr "Nelze znovunaèíst dokument %1$s"
 
-#: src/LyXFunc.cpp:1919
+#: src/LyXFunc.cpp:1921
 #, c-format
 msgid ""
 "Document \n"
@@ -16645,19 +16649,19 @@ msgstr ""
 " byl externì modifikován. Znovu naèíst? Jakékoliv editaèní zmìny budou "
 "ztraceny."
 
-#: src/LyXFunc.cpp:1922
+#: src/LyXFunc.cpp:1924
 msgid "Reload externally changed document?"
 msgstr "Znovunaèíst externì modifikovaný dokument?"
 
-#: src/LyXFunc.cpp:1923 src/buffer_funcs.cpp:75
+#: src/LyXFunc.cpp:1925 src/buffer_funcs.cpp:75
 msgid "&Reload"
 msgstr "&Znovunaèíst"
 
-#: src/LyXFunc.cpp:1963
+#: src/LyXFunc.cpp:1965
 msgid "Welcome to LyX!"
 msgstr "Vítejte v LyXu!"
 
-#: src/LyXFunc.cpp:1984
+#: src/LyXFunc.cpp:1986
 msgid "Converting document to new document class..."
 msgstr "Konverze dokumentu do nové tøídy dokumentu..."
 
@@ -17307,7 +17311,7 @@ msgstr "Neznámý index autora pro výmaz: %1$d\n"
 msgid "Unknown token"
 msgstr "Neznámý symbol"
 
-#: src/Text.cpp:522
+#: src/Text.cpp:524
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
@@ -17315,66 +17319,66 @@ msgstr ""
 "Nelze vlo¾it mezeru na zaèátek odstavce. Pøeètìte si prosím pøíruèku "
 "(tutorial)."
 
-#: src/Text.cpp:533
+#: src/Text.cpp:535
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Dvì mezery nelze psát tímto zpùsobem. Pøeètìte si prosím pøíruèku(tutorial)."
 
-#: src/Text.cpp:1388
+#: src/Text.cpp:1390
 msgid "[Change Tracking] "
 msgstr "[Zmìna revize] "
 
-#: src/Text.cpp:1394
+#: src/Text.cpp:1396
 msgid "Change: "
 msgstr "Zmìna: "
 
-#: src/Text.cpp:1398
+#: src/Text.cpp:1400
 msgid " at "
 msgstr " na "
 
-#: src/Text.cpp:1408
+#: src/Text.cpp:1410
 #, c-format
 msgid "Font: %1$s"
 msgstr "Font: %1$s"
 
-#: src/Text.cpp:1413
+#: src/Text.cpp:1415
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Hloubka: %1$d"
 
-#: src/Text.cpp:1419
+#: src/Text.cpp:1421
 msgid ", Spacing: "
 msgstr ", Mezery: "
 
-#: src/Text.cpp:1425 src/frontends/qt4/GuiDocument.cpp:574
+#: src/Text.cpp:1427 src/frontends/qt4/GuiDocument.cpp:574
 msgid "OneHalf"
 msgstr "Jedna a pùl"
 
-#: src/Text.cpp:1431
+#: src/Text.cpp:1433
 msgid "Other ("
 msgstr "Dal¹í ("
 
-#: src/Text.cpp:1440
+#: src/Text.cpp:1442
 msgid ", Inset: "
 msgstr ", Vlo¾ka: "
 
-#: src/Text.cpp:1441
+#: src/Text.cpp:1443
 msgid ", Paragraph: "
 msgstr ", Odstavec: "
 
-#: src/Text.cpp:1442
+#: src/Text.cpp:1444
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/Text.cpp:1443
+#: src/Text.cpp:1445
 msgid ", Position: "
 msgstr ", Pozice: "
 
-#: src/Text.cpp:1449
+#: src/Text.cpp:1451
 msgid ", Char: 0x"
 msgstr ", Znak: 0x"
 
-#: src/Text.cpp:1451
+#: src/Text.cpp:1453
 msgid ", Boundary: "
 msgstr ", Okraj: "
 
@@ -20811,7 +20815,7 @@ msgstr "Neznámý typ Obsahu"
 msgid "Opened table"
 msgstr "Otevøená tabulka"
 
-#: src/insets/InsetTabular.cpp:4025
+#: src/insets/InsetTabular.cpp:4035
 msgid "Selection size should match clipboard content."
 msgstr "Velikost výbìru by mìla odpovídat obsahu schránky."
 
@@ -21249,9 +21253,6 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámý u¾ivatel"
-
-#~ msgid "German (old spelling)"
-#~ msgstr "Nìmèina (starý pravopis)"
 
 #~ msgid "Anschrift:"
 #~ msgstr "Anschrift:"

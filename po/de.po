@@ -96,7 +96,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-01-24 11:16+0100\n"
+"POT-Creation-Date: 2010-02-05 18:11+0100\n"
 "PO-Revision-Date: 2010-01-24 11:17+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
@@ -179,7 +179,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:890
 #: src/Buffer.cpp:2713 src/Buffer.cpp:2759 src/Buffer.cpp:2794
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:866 src/LyXFunc.cpp:1042
-#: src/LyXFunc.cpp:1923 src/LyXVC.cpp:196
+#: src/LyXFunc.cpp:1925 src/LyXVC.cpp:196
 #: src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1266
 #: src/frontends/qt4/GuiParagraph.cpp:69
@@ -2274,7 +2274,7 @@ msgstr "Längste &Marke"
 msgid "Line &spacing"
 msgstr "Zeilen&abstand"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1422
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1424
 #: src/frontends/qt4/GuiDocument.cpp:572
 msgid "Single"
 msgstr "Einfach"
@@ -2283,7 +2283,7 @@ msgstr "Einfach"
 msgid "1.5"
 msgstr "1,5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1428
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1430
 #: src/frontends/qt4/GuiDocument.cpp:576
 msgid "Double"
 msgstr "Doppelt"
@@ -9670,6 +9670,10 @@ msgstr "Französisch"
 msgid "Galician"
 msgstr "Galizisch"
 
+#: lib/languages:42
+msgid "German (old spelling)"
+msgstr "Deutsch (alte Rechtschreibung)"
+
 #: lib/languages:43
 msgid "German"
 msgstr "Deutsch"
@@ -16167,7 +16171,7 @@ msgstr "Die Ausgabe ist leer"
 msgid "An empty output file was generated."
 msgstr "Eine leere Ausgabedatei wurde erzeugt."
 
-#: src/CutAndPaste.cpp:566
+#: src/CutAndPaste.cpp:599
 #, c-format
 msgid ""
 "Flex inset %1$s is undefined because of class conversion from\n"
@@ -16176,7 +16180,7 @@ msgstr ""
 "Der Zeichenstil %1$s ist aufgrund einer Klassenkonvertierung von\n"
 "%2$s nach %3$s undefiniert"
 
-#: src/CutAndPaste.cpp:573
+#: src/CutAndPaste.cpp:606
 msgid "Undefined flex inset"
 msgstr "Undefinierter Zeichenstil"
 
@@ -16792,17 +16796,17 @@ msgstr "LyX VK: Protokollmeldung"
 msgid "Directory is not accessible."
 msgstr "Das Verzeichnis ist nicht lesbar."
 
-#: src/LyXFunc.cpp:1904
+#: src/LyXFunc.cpp:1906
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s neu geladen."
 
-#: src/LyXFunc.cpp:1906
+#: src/LyXFunc.cpp:1908
 #, c-format
 msgid "Could not reload document %1$s"
 msgstr "Kann Dokument %1$s nicht neu laden"
 
-#: src/LyXFunc.cpp:1919
+#: src/LyXFunc.cpp:1921
 #, c-format
 msgid ""
 "Document \n"
@@ -16814,19 +16818,19 @@ msgstr ""
 "wurde extern verändert. Wollen Sie es erneut laden?\n"
 "Alle lokalen Veränderungen werden dann verworfen."
 
-#: src/LyXFunc.cpp:1922
+#: src/LyXFunc.cpp:1924
 msgid "Reload externally changed document?"
 msgstr "Extern geändertes Dokument neu laden?"
 
-#: src/LyXFunc.cpp:1923 src/buffer_funcs.cpp:75
+#: src/LyXFunc.cpp:1925 src/buffer_funcs.cpp:75
 msgid "&Reload"
 msgstr "Ne&u laden"
 
-#: src/LyXFunc.cpp:1963
+#: src/LyXFunc.cpp:1965
 msgid "Welcome to LyX!"
 msgstr "Willkommen bei LyX!"
 
-#: src/LyXFunc.cpp:1984
+#: src/LyXFunc.cpp:1986
 msgid "Converting document to new document class..."
 msgstr "Das Dokument wird an die neue Dokumentklasse angepasst..."
 
@@ -17532,7 +17536,7 @@ msgstr "Unbekannter Autor-Index für die Löschung: %1$d\n"
 msgid "Unknown token"
 msgstr "Unbekanntes Token"
 
-#: src/Text.cpp:522
+#: src/Text.cpp:524
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
@@ -17540,67 +17544,67 @@ msgstr ""
 "Sie können am Anfang eines Absatzes kein Leerzeichen einfügen. Bitte lesen "
 "Sie das Tutorium."
 
-#: src/Text.cpp:533
+#: src/Text.cpp:535
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Sie können zwei Leerzeichen nicht auf diese Weise eingeben. Bitte lesen Sie "
 "das Tutorium."
 
-#: src/Text.cpp:1388
+#: src/Text.cpp:1390
 msgid "[Change Tracking] "
 msgstr "[Änderungsverfolgung] "
 
-#: src/Text.cpp:1394
+#: src/Text.cpp:1396
 msgid "Change: "
 msgstr "Änderung: "
 
-#: src/Text.cpp:1398
+#: src/Text.cpp:1400
 msgid " at "
 msgstr " am "
 
-#: src/Text.cpp:1408
+#: src/Text.cpp:1410
 #, c-format
 msgid "Font: %1$s"
 msgstr "Schrift: %1$s"
 
-#: src/Text.cpp:1413
+#: src/Text.cpp:1415
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Tiefe: %1$d"
 
-#: src/Text.cpp:1419
+#: src/Text.cpp:1421
 msgid ", Spacing: "
 msgstr ", Abstand: "
 
-#: src/Text.cpp:1425 src/frontends/qt4/GuiDocument.cpp:574
+#: src/Text.cpp:1427 src/frontends/qt4/GuiDocument.cpp:574
 msgid "OneHalf"
 msgstr "Eineinhalb"
 
-#: src/Text.cpp:1431
+#: src/Text.cpp:1433
 msgid "Other ("
 msgstr "Andere ("
 
-#: src/Text.cpp:1440
+#: src/Text.cpp:1442
 msgid ", Inset: "
 msgstr ", Einfügung: "
 
-#: src/Text.cpp:1441
+#: src/Text.cpp:1443
 msgid ", Paragraph: "
 msgstr ", Absatz: "
 
-#: src/Text.cpp:1442
+#: src/Text.cpp:1444
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/Text.cpp:1443
+#: src/Text.cpp:1445
 msgid ", Position: "
 msgstr ", Position: "
 
-#: src/Text.cpp:1449
+#: src/Text.cpp:1451
 msgid ", Char: 0x"
 msgstr ", Zeichen: 0x"
 
-#: src/Text.cpp:1451
+#: src/Text.cpp:1453
 msgid ", Boundary: "
 msgstr ", Grenze: "
 
@@ -21056,7 +21060,7 @@ msgstr "Unbekannter Inhaltsverzeichnis-Typ"
 msgid "Opened table"
 msgstr "Tabelle geöffnet"
 
-#: src/insets/InsetTabular.cpp:4025
+#: src/insets/InsetTabular.cpp:4035
 msgid "Selection size should match clipboard content."
 msgstr ""
 "Die Anzahl der ausgewählten Zellen stimmt nicht mit dem Inhalt der "
@@ -21498,9 +21502,6 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
-
-#~ msgid "German (old spelling)"
-#~ msgstr "Deutsch (alte Rechtschreibung)"
 
 #~ msgid "Anschrift:"
 #~ msgstr "Anschrift:"

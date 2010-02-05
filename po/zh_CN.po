@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zh_CN\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-01-24 11:16+0100\n"
+"POT-Creation-Date: 2010-02-05 18:11+0100\n"
 "PO-Revision-Date: 2009-10-18 22:58+0000\n"
 "Last-Translator: mgc <mgcgogo@gmail.com>\n"
 "Language-Team: 简体中文 <lyx-docs@lists.lyx.org>\n"
@@ -91,7 +91,7 @@ msgstr "确认(&O)"
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:890
 #: src/Buffer.cpp:2713 src/Buffer.cpp:2759 src/Buffer.cpp:2794
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:866 src/LyXFunc.cpp:1042
-#: src/LyXFunc.cpp:1923 src/LyXVC.cpp:196
+#: src/LyXFunc.cpp:1925 src/LyXVC.cpp:196
 #: src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1266
 #: src/frontends/qt4/GuiParagraph.cpp:69
@@ -2158,7 +2158,7 @@ msgstr "最长标签(&n)"
 msgid "Line &spacing"
 msgstr "行间距(&s)"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1422
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1424
 #: src/frontends/qt4/GuiDocument.cpp:572
 msgid "Single"
 msgstr "单倍行距"
@@ -2167,7 +2167,7 @@ msgstr "单倍行距"
 msgid "1.5"
 msgstr "1.5倍行距"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1428
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1430
 #: src/frontends/qt4/GuiDocument.cpp:576
 msgid "Double"
 msgstr "两倍行距"
@@ -9701,6 +9701,11 @@ msgstr "法语"
 msgid "Galician"
 msgstr "Galician"
 
+#: lib/languages:42
+#, fuzzy
+msgid "German (old spelling)"
+msgstr "德语 (新拼写)"
+
 #: lib/languages:43
 msgid "German"
 msgstr "德语"
@@ -16383,7 +16388,7 @@ msgstr "空白输出"
 msgid "An empty output file was generated."
 msgstr "产生了空白输出"
 
-#: src/CutAndPaste.cpp:566
+#: src/CutAndPaste.cpp:599
 #, fuzzy, c-format
 msgid ""
 "Flex inset %1$s is undefined because of class conversion from\n"
@@ -16392,7 +16397,7 @@ msgstr ""
 "Character style %1$s is undefined because of class conversion from\n"
 "%2$s to %3$s"
 
-#: src/CutAndPaste.cpp:573
+#: src/CutAndPaste.cpp:606
 #, fuzzy
 msgid "Undefined flex inset"
 msgstr "打开的文本嵌入项"
@@ -16997,17 +17002,17 @@ msgstr "LyX VC: 记录消息"
 msgid "Directory is not accessible."
 msgstr "无法读取 %1$s"
 
-#: src/LyXFunc.cpp:1904
+#: src/LyXFunc.cpp:1906
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "文档 %1$s 已打开"
 
-#: src/LyXFunc.cpp:1906
+#: src/LyXFunc.cpp:1908
 #, fuzzy, c-format
 msgid "Could not reload document %1$s"
 msgstr "无法读取文档"
 
-#: src/LyXFunc.cpp:1919
+#: src/LyXFunc.cpp:1921
 #, fuzzy, c-format
 msgid ""
 "Document \n"
@@ -17015,21 +17020,21 @@ msgid ""
 " has been externally modified. Reload now? Any local changes will be lost."
 msgstr "文件 %1$s 已被其它程序修改，您要覆盖它吗？"
 
-#: src/LyXFunc.cpp:1922
+#: src/LyXFunc.cpp:1924
 #, fuzzy
 msgid "Reload externally changed document?"
 msgstr "保存改变的文档?"
 
-#: src/LyXFunc.cpp:1923 src/buffer_funcs.cpp:75
+#: src/LyXFunc.cpp:1925 src/buffer_funcs.cpp:75
 #, fuzzy
 msgid "&Reload"
 msgstr "替换(&R)"
 
-#: src/LyXFunc.cpp:1963
+#: src/LyXFunc.cpp:1965
 msgid "Welcome to LyX!"
 msgstr "欢迎使用LyX!"
 
-#: src/LyXFunc.cpp:1984
+#: src/LyXFunc.cpp:1986
 msgid "Converting document to new document class..."
 msgstr "转换文档至新文档类..."
 
@@ -17678,71 +17683,71 @@ msgstr "Unknown author index for deletion: %1$d\n"
 msgid "Unknown token"
 msgstr "未知关键词"
 
-#: src/Text.cpp:522
+#: src/Text.cpp:524
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr "您不能在段首输入空格。请参阅功能简介。"
 
-#: src/Text.cpp:533
+#: src/Text.cpp:535
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "您不能如此输入两个空格。请参阅功能简介。"
 
-#: src/Text.cpp:1388
+#: src/Text.cpp:1390
 msgid "[Change Tracking] "
 msgstr "[追踪改变] "
 
-#: src/Text.cpp:1394
+#: src/Text.cpp:1396
 msgid "Change: "
 msgstr "改变: "
 
-#: src/Text.cpp:1398
+#: src/Text.cpp:1400
 msgid " at "
 msgstr "在"
 
-#: src/Text.cpp:1408
+#: src/Text.cpp:1410
 #, c-format
 msgid "Font: %1$s"
 msgstr "字体: %1$s"
 
-#: src/Text.cpp:1413
+#: src/Text.cpp:1415
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", 深度: %1$d"
 
-#: src/Text.cpp:1419
+#: src/Text.cpp:1421
 msgid ", Spacing: "
 msgstr ", 间隔: "
 
-#: src/Text.cpp:1425 src/frontends/qt4/GuiDocument.cpp:574
+#: src/Text.cpp:1427 src/frontends/qt4/GuiDocument.cpp:574
 msgid "OneHalf"
 msgstr "OneHalf"
 
-#: src/Text.cpp:1431
+#: src/Text.cpp:1433
 msgid "Other ("
 msgstr "其他 ("
 
-#: src/Text.cpp:1440
+#: src/Text.cpp:1442
 msgid ", Inset: "
 msgstr ", 嵌入项: "
 
-#: src/Text.cpp:1441
+#: src/Text.cpp:1443
 msgid ", Paragraph: "
 msgstr ", 段落: "
 
-#: src/Text.cpp:1442
+#: src/Text.cpp:1444
 msgid ", Id: "
 msgstr ", Id:"
 
-#: src/Text.cpp:1443
+#: src/Text.cpp:1445
 msgid ", Position: "
 msgstr ", 位置:　"
 
-#: src/Text.cpp:1449
+#: src/Text.cpp:1451
 msgid ", Char: 0x"
 msgstr ", Char: 0x"
 
-#: src/Text.cpp:1451
+#: src/Text.cpp:1453
 msgid ", Boundary: "
 msgstr ", 边界: "
 
@@ -21315,7 +21320,7 @@ msgstr "未知目录项"
 msgid "Opened table"
 msgstr "打开的表格"
 
-#: src/insets/InsetTabular.cpp:4025
+#: src/insets/InsetTabular.cpp:4035
 msgid "Selection size should match clipboard content."
 msgstr ""
 
@@ -21757,10 +21762,6 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "未知用户"
-
-#, fuzzy
-#~ msgid "German (old spelling)"
-#~ msgstr "德语 (新拼写)"
 
 #, fuzzy
 #~ msgid "Anschrift:"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.6.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-01-24 11:16+0100\n"
+"POT-Creation-Date: 2010-02-05 18:11+0100\n"
 "PO-Revision-Date: 2009-08-19 17:52+0100\n"
 "Last-Translator: Helge Hafting <helge.hafting@aitel.hist.no>\n"
 "Language-Team: norsk <no@li.org>\n"
@@ -86,7 +86,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:890
 #: src/Buffer.cpp:2713 src/Buffer.cpp:2759 src/Buffer.cpp:2794
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:866 src/LyXFunc.cpp:1042
-#: src/LyXFunc.cpp:1923 src/LyXVC.cpp:196
+#: src/LyXFunc.cpp:1925 src/LyXVC.cpp:196
 #: src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1266
 #: src/frontends/qt4/GuiParagraph.cpp:69
@@ -2155,7 +2155,7 @@ msgstr "&Lengste listeetikett"
 msgid "Line &spacing"
 msgstr "L&injeavstand"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1422
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1424
 #: src/frontends/qt4/GuiDocument.cpp:572
 msgid "Single"
 msgstr "Enkel"
@@ -2164,7 +2164,7 @@ msgstr "Enkel"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1428
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1430
 #: src/frontends/qt4/GuiDocument.cpp:576
 msgid "Double"
 msgstr "Dobbel"
@@ -9655,6 +9655,10 @@ msgstr "Fransk"
 msgid "Galician"
 msgstr "Gælisk"
 
+#: lib/languages:42
+msgid "German (old spelling)"
+msgstr "Tysk (gammel stavemåte)"
+
 #: lib/languages:43
 msgid "German"
 msgstr "Tysk"
@@ -16168,7 +16172,7 @@ msgstr "Ingen utdata"
 msgid "An empty output file was generated."
 msgstr "Det ble produsert en tom fil"
 
-#: src/CutAndPaste.cpp:566
+#: src/CutAndPaste.cpp:599
 #, fuzzy, c-format
 msgid ""
 "Flex inset %1$s is undefined because of class conversion from\n"
@@ -16177,7 +16181,7 @@ msgstr ""
 "Tekststilen %1$s er udefinert på grunn av konvertering fra\n"
 "%2$s til %3$s"
 
-#: src/CutAndPaste.cpp:573
+#: src/CutAndPaste.cpp:606
 #, fuzzy
 msgid "Undefined flex inset"
 msgstr "Åpnet text inset"
@@ -16791,17 +16795,17 @@ msgstr "LyX VC: Logg melding"
 msgid "Directory is not accessible."
 msgstr ""
 
-#: src/LyXFunc.cpp:1904
+#: src/LyXFunc.cpp:1906
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s åpnet."
 
-#: src/LyXFunc.cpp:1906
+#: src/LyXFunc.cpp:1908
 #, fuzzy, c-format
 msgid "Could not reload document %1$s"
 msgstr "Kunne ikke åpne dokumentet"
 
-#: src/LyXFunc.cpp:1919
+#: src/LyXFunc.cpp:1921
 #, fuzzy, c-format
 msgid ""
 "Document \n"
@@ -16810,21 +16814,21 @@ msgid ""
 msgstr ""
 "Dokumentet %1$s er endret utenfor LyX. Sikker på at du vil skrive over filen?"
 
-#: src/LyXFunc.cpp:1922
+#: src/LyXFunc.cpp:1924
 #, fuzzy
 msgid "Reload externally changed document?"
 msgstr "Lagre dokumentet?"
 
-#: src/LyXFunc.cpp:1923 src/buffer_funcs.cpp:75
+#: src/LyXFunc.cpp:1925 src/buffer_funcs.cpp:75
 #, fuzzy
 msgid "&Reload"
 msgstr "&Erstatt"
 
-#: src/LyXFunc.cpp:1963
+#: src/LyXFunc.cpp:1965
 msgid "Welcome to LyX!"
 msgstr "Velkommen til LyX!"
 
-#: src/LyXFunc.cpp:1984
+#: src/LyXFunc.cpp:1986
 msgid "Converting document to new document class..."
 msgstr "Konverterer dokument til ny tekstklasse..."
 
@@ -17420,75 +17424,75 @@ msgstr ""
 msgid "Unknown token"
 msgstr "Ukjent operasjon"
 
-#: src/Text.cpp:522
+#: src/Text.cpp:524
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr ""
 "Det er ikke mulig å bruke to mellomrom på denne måten. Les 'Innføring.'"
 
-#: src/Text.cpp:533
+#: src/Text.cpp:535
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Det er ikke mulig å bruke to mellomrom på denne måten. Les 'Innføring.'"
 
-#: src/Text.cpp:1388
+#: src/Text.cpp:1390
 msgid "[Change Tracking] "
 msgstr "[Endringssporing] "
 
-#: src/Text.cpp:1394
+#: src/Text.cpp:1396
 msgid "Change: "
 msgstr "Endring: "
 
-#: src/Text.cpp:1398
+#: src/Text.cpp:1400
 #, fuzzy
 msgid " at "
 msgstr "Del "
 
-#: src/Text.cpp:1408
+#: src/Text.cpp:1410
 #, c-format
 msgid "Font: %1$s"
 msgstr "Font: %1$s"
 
-#: src/Text.cpp:1413
+#: src/Text.cpp:1415
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Dybde: %1$d"
 
-#: src/Text.cpp:1419
+#: src/Text.cpp:1421
 msgid ", Spacing: "
 msgstr ", Linjeavstand: "
 
-#: src/Text.cpp:1425 src/frontends/qt4/GuiDocument.cpp:574
+#: src/Text.cpp:1427 src/frontends/qt4/GuiDocument.cpp:574
 msgid "OneHalf"
 msgstr "Halvannen"
 
-#: src/Text.cpp:1431
+#: src/Text.cpp:1433
 msgid "Other ("
 msgstr "Annet ("
 
-#: src/Text.cpp:1440
+#: src/Text.cpp:1442
 #, fuzzy
 msgid ", Inset: "
 msgstr ", Id: "
 
-#: src/Text.cpp:1441
+#: src/Text.cpp:1443
 msgid ", Paragraph: "
 msgstr ", Avsnitt: "
 
-#: src/Text.cpp:1442
+#: src/Text.cpp:1444
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/Text.cpp:1443
+#: src/Text.cpp:1445
 msgid ", Position: "
 msgstr ", Posisjon : "
 
-#: src/Text.cpp:1449
+#: src/Text.cpp:1451
 msgid ", Char: 0x"
 msgstr ""
 
-#: src/Text.cpp:1451
+#: src/Text.cpp:1453
 msgid ", Boundary: "
 msgstr ""
 
@@ -20922,7 +20926,7 @@ msgstr "Innholdsfortegnelse av ukjent type"
 msgid "Opened table"
 msgstr "Åpen tabell"
 
-#: src/insets/InsetTabular.cpp:4025
+#: src/insets/InsetTabular.cpp:4035
 msgid "Selection size should match clipboard content."
 msgstr ""
 
@@ -21365,9 +21369,6 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Ukjent bruker"
-
-#~ msgid "German (old spelling)"
-#~ msgstr "Tysk (gammel stavemåte)"
 
 #, fuzzy
 #~ msgid "Anschrift:"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-01-24 11:16+0100\n"
+"POT-Creation-Date: 2010-02-05 18:11+0100\n"
 "PO-Revision-Date: 2009-08-20 17:06+0100\n"
 "Last-Translator: Marius Ionescu <felijohn@gmail.com>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
@@ -90,7 +90,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:890
 #: src/Buffer.cpp:2713 src/Buffer.cpp:2759 src/Buffer.cpp:2794
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:866 src/LyXFunc.cpp:1042
-#: src/LyXFunc.cpp:1923 src/LyXVC.cpp:196
+#: src/LyXFunc.cpp:1925 src/LyXVC.cpp:196
 #: src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1266
 #: src/frontends/qt4/GuiParagraph.cpp:69
@@ -2185,7 +2185,7 @@ msgstr "Cea mai &lungă etichetă"
 msgid "Line &spacing"
 msgstr "Spaţiere &linie"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1422
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1424
 #: src/frontends/qt4/GuiDocument.cpp:572
 msgid "Single"
 msgstr "Simplu"
@@ -2194,7 +2194,7 @@ msgstr "Simplu"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1428
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1430
 #: src/frontends/qt4/GuiDocument.cpp:576
 msgid "Double"
 msgstr "Dublu"
@@ -9684,6 +9684,10 @@ msgstr "Franceză"
 msgid "Galician"
 msgstr "Galică"
 
+#: lib/languages:42
+msgid "German (old spelling)"
+msgstr "Germană (vechea ortografie)"
+
 #: lib/languages:43
 msgid "German"
 msgstr "Germană"
@@ -16327,7 +16331,7 @@ msgstr "Fişierul generat este vid"
 msgid "An empty output file was generated."
 msgstr "Fişierul generat este vid."
 
-#: src/CutAndPaste.cpp:566
+#: src/CutAndPaste.cpp:599
 #, fuzzy, c-format
 msgid ""
 "Flex inset %1$s is undefined because of class conversion from\n"
@@ -16338,7 +16342,7 @@ msgstr ""
 "datorită conversiei de clasă de la\n"
 "%3$s la %4$s"
 
-#: src/CutAndPaste.cpp:573
+#: src/CutAndPaste.cpp:606
 #, fuzzy
 msgid "Undefined flex inset"
 msgstr "Deschidere"
@@ -16944,17 +16948,17 @@ msgstr ""
 msgid "Directory is not accessible."
 msgstr "Documentul nu poate fi citit"
 
-#: src/LyXFunc.cpp:1904
+#: src/LyXFunc.cpp:1906
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "Documente"
 
-#: src/LyXFunc.cpp:1906
+#: src/LyXFunc.cpp:1908
 #, fuzzy, c-format
 msgid "Could not reload document %1$s"
 msgstr "Nu pot insera documentul"
 
-#: src/LyXFunc.cpp:1919
+#: src/LyXFunc.cpp:1921
 #, c-format
 msgid ""
 "Document \n"
@@ -16962,21 +16966,21 @@ msgid ""
 " has been externally modified. Reload now? Any local changes will be lost."
 msgstr ""
 
-#: src/LyXFunc.cpp:1922
+#: src/LyXFunc.cpp:1924
 #, fuzzy
 msgid "Reload externally changed document?"
 msgstr "Salvare &documente"
 
-#: src/LyXFunc.cpp:1923 src/buffer_funcs.cpp:75
+#: src/LyXFunc.cpp:1925 src/buffer_funcs.cpp:75
 #, fuzzy
 msgid "&Reload"
 msgstr "În&locuieşte"
 
-#: src/LyXFunc.cpp:1963
+#: src/LyXFunc.cpp:1965
 msgid "Welcome to LyX!"
 msgstr ""
 
-#: src/LyXFunc.cpp:1984
+#: src/LyXFunc.cpp:1986
 #, fuzzy
 msgid "Converting document to new document class..."
 msgstr "Inserez documentul %1$s..."
@@ -17553,81 +17557,81 @@ msgstr ""
 msgid "Unknown token"
 msgstr "necunoscut"
 
-#: src/Text.cpp:522
+#: src/Text.cpp:524
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr ""
 "Nu puteţi introduce un spaţiu la începutul unui paragraf. Citiţi tutorialul."
 
-#: src/Text.cpp:533
+#: src/Text.cpp:535
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Nu puteţi introduce două spaţii în acest fel. Citiţi tutorialul."
 
-#: src/Text.cpp:1388
+#: src/Text.cpp:1390
 #, fuzzy
 msgid "[Change Tracking] "
 msgstr "Modifică limbajul"
 
-#: src/Text.cpp:1394
+#: src/Text.cpp:1396
 #, fuzzy
 msgid "Change: "
 msgstr "Pagini"
 
-#: src/Text.cpp:1398
+#: src/Text.cpp:1400
 #, fuzzy
 msgid " at "
 msgstr " la "
 
-#: src/Text.cpp:1408
+#: src/Text.cpp:1410
 #, fuzzy, c-format
 msgid "Font: %1$s"
 msgstr "Mărime font"
 
-#: src/Text.cpp:1413
+#: src/Text.cpp:1415
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ""
 
-#: src/Text.cpp:1419
+#: src/Text.cpp:1421
 #, fuzzy
 msgid ", Spacing: "
 msgstr ", Spaţiere: "
 
-#: src/Text.cpp:1425 src/frontends/qt4/GuiDocument.cpp:574
+#: src/Text.cpp:1427 src/frontends/qt4/GuiDocument.cpp:574
 msgid "OneHalf"
 msgstr ""
 
-#: src/Text.cpp:1431
+#: src/Text.cpp:1433
 #, fuzzy
 msgid "Other ("
 msgstr "Altul ("
 
-#: src/Text.cpp:1440
+#: src/Text.cpp:1442
 #, fuzzy
 msgid ", Inset: "
 msgstr "Inserează URL"
 
-#: src/Text.cpp:1441
+#: src/Text.cpp:1443
 #, fuzzy
 msgid ", Paragraph: "
 msgstr "Paragraf"
 
-#: src/Text.cpp:1442
+#: src/Text.cpp:1444
 #, fuzzy
 msgid ", Id: "
 msgstr "Index"
 
-#: src/Text.cpp:1443
+#: src/Text.cpp:1445
 #, fuzzy
 msgid ", Position: "
 msgstr "Afirmaţie"
 
-#: src/Text.cpp:1449
+#: src/Text.cpp:1451
 msgid ", Char: 0x"
 msgstr ""
 
-#: src/Text.cpp:1451
+#: src/Text.cpp:1453
 msgid ", Boundary: "
 msgstr ""
 
@@ -21307,7 +21311,7 @@ msgstr "necunoscut"
 msgid "Opened table"
 msgstr "Deschide un fişier"
 
-#: src/insets/InsetTabular.cpp:4025
+#: src/insets/InsetTabular.cpp:4035
 msgid "Selection size should match clipboard content."
 msgstr ""
 
@@ -21794,9 +21798,6 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Cuvînt necunoscut:"
-
-#~ msgid "German (old spelling)"
-#~ msgstr "Germană (vechea ortografie)"
 
 #, fuzzy
 #~ msgid "Anschrift:"

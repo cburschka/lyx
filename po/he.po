@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-01-24 11:16+0100\n"
+"POT-Creation-Date: 2010-02-05 18:11+0100\n"
 "PO-Revision-Date: 2009-01-12 17:51+0100\n"
 "Last-Translator: Ran Rutenberg <ran.rutenberg@gmail.com>\n"
 "Language-Team: Hebrew <en@li.org>\n"
@@ -94,7 +94,7 @@ msgstr "אישור"
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:890
 #: src/Buffer.cpp:2713 src/Buffer.cpp:2759 src/Buffer.cpp:2794
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:866 src/LyXFunc.cpp:1042
-#: src/LyXFunc.cpp:1923 src/LyXVC.cpp:196
+#: src/LyXFunc.cpp:1925 src/LyXVC.cpp:196
 #: src/frontends/qt4/GuiClipboard.cpp:208
 #: src/frontends/qt4/GuiDocument.cpp:1266
 #: src/frontends/qt4/GuiParagraph.cpp:69
@@ -2227,7 +2227,7 @@ msgstr "ה&תווית הארוכה ביותר"
 msgid "Line &spacing"
 msgstr "מרווח &בין שורות:"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1422
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1424
 #: src/frontends/qt4/GuiDocument.cpp:572
 msgid "Single"
 msgstr "יחיד"
@@ -2236,7 +2236,7 @@ msgstr "יחיד"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1428
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1430
 #: src/frontends/qt4/GuiDocument.cpp:576
 msgid "Double"
 msgstr "כפול"
@@ -9803,6 +9803,11 @@ msgstr "צרפתית"
 msgid "Galician"
 msgstr "גליסית"
 
+#: lib/languages:42
+#, fuzzy
+msgid "German (old spelling)"
+msgstr "גרמנית (איות חדש)"
+
 #: lib/languages:43
 msgid "German"
 msgstr "גרמנית"
@@ -16459,14 +16464,14 @@ msgstr "הפלט ריק"
 msgid "An empty output file was generated."
 msgstr "קובץ פלט ריק נוצר."
 
-#: src/CutAndPaste.cpp:566
+#: src/CutAndPaste.cpp:599
 #, c-format
 msgid ""
 "Flex inset %1$s is undefined because of class conversion from\n"
 "%2$s to %3$s"
 msgstr ""
 
-#: src/CutAndPaste.cpp:573
+#: src/CutAndPaste.cpp:606
 #, fuzzy
 msgid "Undefined flex inset"
 msgstr "תוסף טקסט פתוח"
@@ -17059,17 +17064,17 @@ msgstr ""
 msgid "Directory is not accessible."
 msgstr "לא יכול לקרוא את הקובץ %1$s."
 
-#: src/LyXFunc.cpp:1904
+#: src/LyXFunc.cpp:1906
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "המסמך %1$s פתוח."
 
-#: src/LyXFunc.cpp:1906
+#: src/LyXFunc.cpp:1908
 #, fuzzy, c-format
 msgid "Could not reload document %1$s"
 msgstr "לא יכול לקרוא את המסמך"
 
-#: src/LyXFunc.cpp:1919
+#: src/LyXFunc.cpp:1921
 #, fuzzy, c-format
 msgid ""
 "Document \n"
@@ -17077,21 +17082,21 @@ msgid ""
 " has been externally modified. Reload now? Any local changes will be lost."
 msgstr "המסמך %1$s שונה באופן חיצוני. האם אתה בטוח שאתה רוצה להחליף אותו?"
 
-#: src/LyXFunc.cpp:1922
+#: src/LyXFunc.cpp:1924
 #, fuzzy
 msgid "Reload externally changed document?"
 msgstr "האם לשמור את המסמך שעבר שינוי?"
 
-#: src/LyXFunc.cpp:1923 src/buffer_funcs.cpp:75
+#: src/LyXFunc.cpp:1925 src/buffer_funcs.cpp:75
 #, fuzzy
 msgid "&Reload"
 msgstr "החלף"
 
-#: src/LyXFunc.cpp:1963
+#: src/LyXFunc.cpp:1965
 msgid "Welcome to LyX!"
 msgstr "ברוכים הבאים ל- LyX!"
 
-#: src/LyXFunc.cpp:1984
+#: src/LyXFunc.cpp:1986
 msgid "Converting document to new document class..."
 msgstr "ממיר מסמך למחלקת מסמך חדשה..."
 
@@ -17662,71 +17667,71 @@ msgstr ""
 msgid "Unknown token"
 msgstr ""
 
-#: src/Text.cpp:522
+#: src/Text.cpp:524
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr "אינך יכול לכתוב רווח בתחילת פסקה. אנא קרא את \"השיעור המודרך\"."
 
-#: src/Text.cpp:533
+#: src/Text.cpp:535
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "אינך יכול להקליד שני רווחים רצופים. אנא קרא את \"השיעור המודרך\"."
 
-#: src/Text.cpp:1388
+#: src/Text.cpp:1390
 msgid "[Change Tracking] "
 msgstr "[מעקב אחר שינויים]"
 
-#: src/Text.cpp:1394
+#: src/Text.cpp:1396
 msgid "Change: "
 msgstr "שינוי: "
 
-#: src/Text.cpp:1398
+#: src/Text.cpp:1400
 msgid " at "
 msgstr "בתוך "
 
-#: src/Text.cpp:1408
+#: src/Text.cpp:1410
 #, c-format
 msgid "Font: %1$s"
 msgstr "גופן: %1$s"
 
-#: src/Text.cpp:1413
+#: src/Text.cpp:1415
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", עומק: %1$d"
 
-#: src/Text.cpp:1419
+#: src/Text.cpp:1421
 msgid ", Spacing: "
 msgstr ", ריווח: "
 
-#: src/Text.cpp:1425 src/frontends/qt4/GuiDocument.cpp:574
+#: src/Text.cpp:1427 src/frontends/qt4/GuiDocument.cpp:574
 msgid "OneHalf"
 msgstr "אחד וחצי"
 
-#: src/Text.cpp:1431
+#: src/Text.cpp:1433
 msgid "Other ("
 msgstr "אחר ("
 
-#: src/Text.cpp:1440
+#: src/Text.cpp:1442
 msgid ", Inset: "
 msgstr ", תוסף טקסט: "
 
-#: src/Text.cpp:1441
+#: src/Text.cpp:1443
 msgid ", Paragraph: "
 msgstr ", פסקה: "
 
-#: src/Text.cpp:1442
+#: src/Text.cpp:1444
 msgid ", Id: "
 msgstr ""
 
-#: src/Text.cpp:1443
+#: src/Text.cpp:1445
 msgid ", Position: "
 msgstr ", מיקום:"
 
-#: src/Text.cpp:1449
+#: src/Text.cpp:1451
 msgid ", Char: 0x"
 msgstr ", תו: 0x"
 
-#: src/Text.cpp:1451
+#: src/Text.cpp:1453
 msgid ", Boundary: "
 msgstr ", גבול:"
 
@@ -21259,7 +21264,7 @@ msgstr "סוג תוכן עניינים לא ידוע"
 msgid "Opened table"
 msgstr "טבלה פתוחה"
 
-#: src/insets/InsetTabular.cpp:4025
+#: src/insets/InsetTabular.cpp:4035
 msgid "Selection size should match clipboard content."
 msgstr ""
 
@@ -21701,10 +21706,6 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "משתמש לא מוכר"
-
-#, fuzzy
-#~ msgid "German (old spelling)"
-#~ msgstr "גרמנית (איות חדש)"
 
 #, fuzzy
 #~ msgid "Absender:"
