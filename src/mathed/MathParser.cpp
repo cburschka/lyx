@@ -58,6 +58,7 @@ following hack as starting point to write some macros:
 #include "InsetMathSpace.h"
 #include "InsetMathSplit.h"
 #include "InsetMathSqrt.h"
+#include "InsetMathString.h"
 #include "InsetMathTabular.h"
 #include "MathMacroTemplate.h"
 #include "MathFactory.h"
@@ -1394,8 +1395,14 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		else if (t.cs() == "ref" || t.cs() == "eqref" || t.cs() == "prettyref"
 			  || t.cs() == "pageref" || t.cs() == "vpageref" || t.cs() == "vref") {
 			cell->push_back(MathAtom(new InsetMathRef(buf, t.cs())));
-			parse(cell->back().nucleus()->cell(1), FLAG_OPTION, mode);
-			parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
+			docstring const opt = parse_verbatim_option();
+			docstring const ref = parse_verbatim_item();
+			if (!opt.empty()) {
+				cell->back().nucleus()->cell(1).push_back(
+					MathAtom(new InsetMathString(opt)));
+			}
+			cell->back().nucleus()->cell(0).push_back(
+					MathAtom(new InsetMathString(ref)));
 		}
 
 		else if (t.cs() == "left") {

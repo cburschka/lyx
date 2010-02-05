@@ -135,6 +135,9 @@ What's new
   
 - Resolve duplicate labels in mathed on pasting (bug 6218).
 
+- Allow labels containing an underscore or caret to be referenced in
+  math insets instead of only outside math (bug 2872).
+
 - Detect user-specified package dependencies for modules (bug 6361).
 
 - Prevent the error dialog from jumping to the first item when
