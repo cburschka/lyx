@@ -196,6 +196,8 @@ enum ColorCode
 
 	/// Color is inherited
 	Color_inherit,
+	/// Color for regexp frame
+	Color_regexpframe,
 	/// For ignoring updates of a color
 	Color_ignore
 };

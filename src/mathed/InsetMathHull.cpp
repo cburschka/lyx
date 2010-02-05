@@ -312,7 +312,18 @@ int InsetMathHull::defaultColSpace(col_type col)
 
 docstring InsetMathHull::standardFont() const
 {
-	return from_ascii(type_ == hullNone ? "lyxnochange" : "mathnormal");
+	const char *font_name;
+	switch (type_) {
+	case hullRegexp:
+		font_name = "texttt";
+		break;
+	case hullNone:
+		font_name = "lyxnochange";
+		break;
+	default:
+		font_name = "mathnormal";
+	}
+	return from_ascii(font_name);
 }
 
 
@@ -393,6 +404,11 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 {
 	use_preview_ = previewState(pi.base.bv);
 
+	if (type_ == hullRegexp) {
+		Dimension const dim = dimension(*pi.base.bv);
+		pi.pain.rectangle(x + 1, y - dim.ascent() + 1,
+			dim.width() - 2, dim.height() - 2, Color_regexpframe);
+	}
 	if (use_preview_) {
 		// one pixel gap in front
 		preview_->draw(pi, x + 1, y);
@@ -619,6 +635,10 @@ void InsetMathHull::validate(LaTeXFeatures & features) const
 {
 	if (ams())
 		features.require("amsmath");
+
+	if (type_ == hullRegexp)
+		features.addPreambleSnippet(
+			"\\newcommand{\\regexp}[1]{\\fbox{\\texttt{#1}}}");
 
 	// Validation is necessary only if not using AMS math.
 	// To be safe, we will always run mathedvalidate.
