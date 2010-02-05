@@ -22,6 +22,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
+#include "ColorSet.h"
 #include "CutAndPaste.h"
 #include "Encoding.h"
 #include "FuncRequest.h"
@@ -636,9 +637,15 @@ void InsetMathHull::validate(LaTeXFeatures & features) const
 	if (ams())
 		features.require("amsmath");
 
-	if (type_ == hullRegexp)
+	if (type_ == hullRegexp) {
+		features.require("color");
+		string frcol = lcolor.getLaTeXName(Color_regexpframe);
+		string bgcol = "white";
 		features.addPreambleSnippet(
-			"\\newcommand{\\regexp}[1]{\\fbox{\\texttt{#1}}}");
+			string("\\newcommand{\\regexp}[1]{\\fcolorbox{")
+			+ frcol + string("}{")
+			+ bgcol + string("}{\\texttt{#1}}}"));
+	}
 
 	// Validation is necessary only if not using AMS math.
 	// To be safe, we will always run mathedvalidate.
