@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-02-05 18:11+0100\n"
-"PO-Revision-Date: 2010-01-30 13:54+0100\n"
+"PO-Revision-Date: 2010-02-06 21:07+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenský <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -98,7 +98,7 @@ msgstr "&OK"
 #: src/frontends/qt4/GuiView.cpp:1816 src/frontends/qt4/GuiView.cpp:1868
 #: src/frontends/qt4/GuiView.cpp:1928 src/insets/InsetBibtex.cpp:143
 msgid "&Cancel"
-msgstr "&Zrušiť"
+msgstr "Z&rušiť"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:39 src/frontends/qt4/ui/BibitemUi.ui:74
 msgid "The bibliography key"
@@ -168,7 +168,7 @@ msgstr "hľadať nové databázy a štýle"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:39 src/frontends/qt4/ui/BibtexUi.ui:50
 #: src/frontends/qt4/ui/TexinfoUi.ui:94
 msgid "&Rescan"
-msgstr "&Znovu prehľadať"
+msgstr "Z&novu prehľadať"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:46 src/frontends/qt4/ui/BibtexUi.ui:97
 #: src/frontends/qt4/ui/ExternalUi.ui:129
@@ -176,7 +176,7 @@ msgstr "&Znovu prehľadať"
 #: src/frontends/qt4/ui/LaTeXUi.ui:184 src/frontends/qt4/ui/PrefInputUi.ui:109
 #: src/frontends/qt4/ui/PrintUi.ui:313
 msgid "&Browse..."
-msgstr "&Prechádzať..."
+msgstr "Pr&echádzať..."
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:83
 msgid "Enter BibTeX database name"
@@ -187,7 +187,7 @@ msgstr "Vložte názov BibTeX databázy"
 #: src/frontends/qt4/ui/CitationUi.ui:550
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:58
 msgid "&Add"
-msgstr "&Pridať"
+msgstr "Prid&ať"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:127
 #: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:91
@@ -204,7 +204,7 @@ msgstr "BibTeX štýl"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:84
 msgid "St&yle"
-msgstr "&Štýl"
+msgstr "Š&týl"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:94 src/frontends/qt4/ui/BibtexUi.ui:107
 msgid "Choose a style file"
@@ -237,7 +237,7 @@ msgstr "Pridať literatúru do obsahu"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:169
 msgid "Add bibliography to &TOC"
-msgstr "Pridať literatúru do o&bsahu"
+msgstr "Pridať &literatúru do obsahu"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:225
 msgid "Move the selected database downwards in the list"
@@ -262,7 +262,7 @@ msgstr "BibTeX databáza na použitie"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:256
 msgid "Databa&ses"
-msgstr "Databá&zy"
+msgstr "&Databázy"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:269
 msgid "Add a BibTeX database file"
@@ -270,7 +270,7 @@ msgstr "Pridať súbor s BibTeX databázou"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:272
 msgid "&Add..."
-msgstr "&Pridať..."
+msgstr "Prid&ať..."
 
 #: src/frontends/qt4/ui/BibtexUi.ui:279
 msgid "Remove the selected database"
@@ -278,7 +278,7 @@ msgstr "Odstrániť vybranú databázu"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:282
 msgid "&Delete"
-msgstr "&Zmazať"
+msgstr "Z&mazať"
 
 #: src/frontends/qt4/ui/BoxUi.ui:28
 msgid "Check this if the box should break across pages"
@@ -11549,7 +11549,7 @@ msgstr "Formátovanie|F"
 
 #: lib/ui/stdmenus.inc:335
 msgid "List / TOC|i"
-msgstr "Listiny / Obsah|i"
+msgstr "Listiny / Obsah|L"
 
 #: lib/ui/stdmenus.inc:336
 msgid "Float|a"
@@ -18380,7 +18380,7 @@ msgstr "Voľby Matematiky"
 
 #: src/frontends/qt4/GuiDocument.cpp:992
 msgid "Float Placement"
-msgstr "Umiestnenie plávajúceho objektu"
+msgstr "Umiestnenie plávajúcich objektov"
 
 #: src/frontends/qt4/GuiDocument.cpp:993
 msgid "Bullets"
@@ -18910,7 +18910,7 @@ msgstr "Vzhľad"
 
 #: src/frontends/qt4/GuiPrefs.cpp:226
 msgid "Language Settings"
-msgstr "Jazyk Nastavenia"
+msgstr "Jazykové Nastavenia"
 
 #: src/frontends/qt4/GuiPrefs.cpp:227
 msgid "Output"
