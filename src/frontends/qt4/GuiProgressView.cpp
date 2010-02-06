@@ -151,6 +151,12 @@ void GuiProgressView::debugSelectionChanged()
 		levelChanged();
 		return;
 	}
+	QTreeWidgetItemIterator it(widget_->debugMessagesTW);
+	while (*it) {
+		(*it)->setText(1, level == Debug::NONE ?
+				qt_("No") : qt_("Yes"));
+		++it;
+	}
 	widget_->debugMessagesTW->setEnabled(false);
 	dispatch(FuncRequest(LFUN_DEBUG_LEVEL_SET, convert<string>(level)));
 }
