@@ -272,7 +272,11 @@ eurosym
 \series default
 , 
 \series bold
-mhchem, multirow
+mhchem
+\series default
+,
+\series bold
+ multirow
 \series default
  y 
 \series bold
@@ -293,13 +297,11 @@ was
 \series default
  no están instalados también puedes exportar el documento pero las secciones
  en que se requieren dichos paquetes no aparecerán en la salida.
- 
-\lang english
-If 
+ Si  
 \series bold
 mhchem
 \series default
- is not installed, this file cannot be exported.
+ no está instalado, este archivo no se puede exportar.
 \end_layout
 
 \begin_layout Plain Layout
@@ -36854,11 +36856,7 @@ reference "sub:Estilos-de-fuentes"
 
 \end_inset
 
-, 
-\lang english
-no matter if they appear in italic text
-\lang spanish
-: 30
+, aunque aparezcan en un texto en cursiva: 30
 \begin_inset space \thinspace{}
 \end_inset
 
