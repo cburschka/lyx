@@ -3467,14 +3467,21 @@ todo
  Esto incluye los entornos de párrafo, algunos de los cuáles son estándar,
  los tienen todas las clases de documento; pero algunas clases tienen entornos
  de párrafo específicos.
- En ese caso, si cambias la clase del documento, 
-\lang english
-LyX will mark the paragraphs whose styles it no longer understands as “unknown”.
- The name of the style is retained, in case you should want to go back to
- the old class.
- But these paragraphs will be output with no special formatting, so you
- will either need to create a new style yourself or else to convert these
- paragraphs manually to a style present in your new document class.
+ En ese caso, si cambias la clase del documento, LyX marcará los párrafos
+ cuyo estilo no es reconocido como 
+\begin_inset Quotes fld
+\end_inset
+
+desconocido
+\begin_inset Quotes frd
+\end_inset
+
+.
+ El nombre del estilo es retenido por si se deseara volver a la clase original.
+ No obstante, esos párrafos se mostrarán en la salida sin formato especial,
+ de modo que necesitarás crear un nuevo estilo o bien convertirlos manualmente
+ a uno de los estilos presentes en la nueva clase de documento.
+ 
 \end_layout
 
 \begin_layout Standard
