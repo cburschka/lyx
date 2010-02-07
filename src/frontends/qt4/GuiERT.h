@@ -12,43 +12,30 @@
 #ifndef GUIERT_H
 #define GUIERT_H
 
-#include "GuiDialog.h"
+#include "InsetDialog.h"
 #include "ui_ERTUi.h"
-#include "insets/InsetERT.h" // InsetERT::ERTStatus
 
 namespace lyx {
 namespace frontend {
 
-class GuiERT : public GuiDialog, public Ui::ERTUi
+class GuiERT : public InsetDialog, public Ui::ERTUi
 {
 	Q_OBJECT
 
 public:
 	GuiERT(GuiView & lv);
 
-private Q_SLOTS:
-	void change_adaptor();
+private:
+	/// \name Dialog inerited methods
+	//@{
+	void enableView(bool enable);
+	//@}
 
-private:
-	/// Apply changes
-	void applyView();
-	/// update
-	void updateContents();
-	///
-	InsetCollapsable::CollapseStatus status() const { return status_; }
-	///
-	void setStatus(InsetCollapsable::CollapseStatus status) { status_ = status; }
-	///
-	bool initialiseParams(std::string const & data);
-	/// clean-up on hide.
-	void clearParams();
-	/// clean-up on hide.
-	void dispatchParams();
-	///
-	bool isBufferDependent() const { return true; }
-private:
-	///
-	InsetCollapsable::CollapseStatus status_;
+	/// \name InsetDialog inherited methods
+	//@{
+	void paramsToDialog(Inset const *);
+	docstring dialogToParams() const;
+	//@}
 };
 
 } // namespace frontend

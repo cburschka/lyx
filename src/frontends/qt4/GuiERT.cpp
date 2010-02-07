@@ -13,6 +13,9 @@
 #include <config.h>
 
 #include "GuiERT.h"
+
+#include "insets/InsetERT.h"
+
 #include "FuncRequest.h"
 
 #include "support/gettext.h"
@@ -26,61 +29,38 @@ namespace lyx {
 namespace frontend {
 
 GuiERT::GuiERT(GuiView & lv)
-	: GuiDialog(lv, "ert", qt_("TeX Code Settings")), status_(InsetCollapsable::Collapsed)
+	: InsetDialog(lv, ERT_CODE, LFUN_INSET_INSERT, "ert", "TeX Code Settings")
 {
 	setupUi(this);
 
-	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
-	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
-	connect(collapsedRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-	connect(openRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
-
-	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
-	bc().setOK(okPB);
-	bc().setCancel(closePB);
+	connect(collapsedRB, SIGNAL(clicked()), this, SLOT(applyView()));
+	connect(openRB, SIGNAL(clicked()), this, SLOT(applyView()));
 }
 
 
-void GuiERT::change_adaptor()
+void GuiERT::enableView(bool enable)
 {
-	changed();
+	collapsedRB->setEnabled(enable);
+	openRB->setEnabled(enable);
 }
 
 
-void GuiERT::applyView()
+docstring GuiERT::dialogToParams() const
 {
-	if (openRB->isChecked())
-		status_ = InsetCollapsable::Open;
-	else
-		status_ = InsetCollapsable::Collapsed;
+	InsetCollapsable::CollapseStatus status = openRB->isChecked()
+		? InsetCollapsable::Open : InsetCollapsable::Collapsed;
+	return from_ascii(InsetERT::params2string(status));
 }
 
 
-void GuiERT::updateContents()
+void GuiERT::paramsToDialog(Inset const * inset)
 {
-	switch (status_) {
+	InsetERT const * ert = static_cast<InsetERT const *>(inset);
+	InsetCollapsable::CollapseStatus status = ert->status(*bufferview());
+	switch (status) {
 		case InsetCollapsable::Open: openRB->setChecked(true); break;
 		case InsetCollapsable::Collapsed: collapsedRB->setChecked(true); break;
 	}
-}
-
-
-bool GuiERT::initialiseParams(string const & data)
-{
-	status_ = InsetERT::string2params(data);
-	return true;
-}
-
-
-void GuiERT::clearParams()
-{
-	status_ = InsetCollapsable::Collapsed;
-}
-
-
-void GuiERT::dispatchParams()
-{
-	dispatch(FuncRequest(getLfun(), InsetERT::params2string(status_)));
 }
 
 
