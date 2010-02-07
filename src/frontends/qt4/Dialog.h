@@ -85,9 +85,6 @@ public:
 	virtual QWidget * asQWidget() = 0;
 	virtual QWidget const * asQWidget() const = 0;
 
-	///
-	void addCheckedWidget(QLineEdit * input, QWidget * label);
-
 	/// Session key.
 	/**
 	 * This key must be used for any session setting.
@@ -282,6 +279,9 @@ protected:
 	void setTitle(QString const & title) { title_ = title; }
 	///
 	virtual void apply();
+	/// Add a widget to the list of all widgets whose validity should
+	/// be checked explicitly when the buttons are refreshed.
+	void addCheckedWidget(QLineEdit * input, QWidget * label = 0);
 	/// \return true if all CheckedWidgets are in a valid state.
 	bool checkWidgets() const;
 
