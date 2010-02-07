@@ -78,8 +78,6 @@ public:
 	///
 	InsetBox(Buffer *, std::string const &);
 	///
-	~InsetBox();
-	///
 	static std::string params2string(InsetBoxParams const &);
 	///
 	static void string2params(std::string const &, InsetBoxParams &);

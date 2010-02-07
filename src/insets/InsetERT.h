@@ -34,8 +34,6 @@ public:
 	///
 	InsetERT(Buffer *, CollapseStatus status = Open);
 	///
-	~InsetERT();
-	///
 	static CollapseStatus string2params(std::string const &);
 	///
 	static std::string params2string(CollapseStatus);

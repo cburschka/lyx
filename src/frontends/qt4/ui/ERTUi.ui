@@ -1,10 +1,8 @@
-<ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>ERTUi</class>
- <widget class="QDialog" name="ERTUi" >
-  <property name="geometry" >
+ <widget class="QDialog" name="ERTUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -12,47 +10,47 @@
     <height>135</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string/>
   </property>
-  <property name="sizeGripEnabled" >
+  <property name="sizeGripEnabled">
    <bool>true</bool>
   </property>
-  <layout class="QVBoxLayout" >
-   <property name="margin" >
-    <number>11</number>
-   </property>
-   <property name="spacing" >
+  <layout class="QVBoxLayout">
+   <property name="spacing">
     <number>6</number>
    </property>
+   <property name="margin">
+    <number>11</number>
+   </property>
    <item>
-    <widget class="QGroupBox" name="ertBG" >
-     <property name="title" >
+    <widget class="QGroupBox" name="ertBG">
+     <property name="title">
       <string>Display</string>
      </property>
-     <layout class="QVBoxLayout" >
-      <property name="margin" >
-       <number>11</number>
-      </property>
-      <property name="spacing" >
+     <layout class="QVBoxLayout">
+      <property name="spacing">
        <number>6</number>
       </property>
-     <item>
-       <widget class="QRadioButton" name="collapsedRB" >
-        <property name="toolTip" >
+      <property name="margin">
+       <number>11</number>
+      </property>
+      <item>
+       <widget class="QRadioButton" name="collapsedRB">
+        <property name="toolTip">
          <string>Show ERT button only</string>
         </property>
-        <property name="text" >
+        <property name="text">
          <string>&amp;Collapsed</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="openRB" >
-        <property name="toolTip" >
+       <widget class="QRadioButton" name="openRB">
+        <property name="toolTip">
          <string>Show ERT contents</string>
         </property>
-        <property name="text" >
+        <property name="text">
          <string>O&amp;pen</string>
         </property>
        </widget>
@@ -61,22 +59,22 @@
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
+    <layout class="QHBoxLayout">
+     <property name="spacing">
       <number>6</number>
+     </property>
+     <property name="margin">
+      <number>0</number>
      </property>
      <item>
       <spacer>
-       <property name="orientation" >
+       <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeType" >
+       <property name="sizeType">
         <enum>QSizePolicy::Expanding</enum>
        </property>
-       <property name="sizeHint" >
+       <property name="sizeHint" stdset="0">
         <size>
          <width>20</width>
          <height>20</height>
@@ -85,21 +83,27 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="okPB" >
-       <property name="text" >
-        <string>&amp;OK</string>
+      <widget class="QPushButton" name="newPB">
+       <property name="toolTip">
+        <string/>
        </property>
-       <property name="default" >
+       <property name="text">
+        <string>&amp;New</string>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+       <property name="default">
         <bool>false</bool>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="closePB" >
-       <property name="text" >
+      <widget class="QPushButton" name="closePB">
+       <property name="text">
         <string>Close</string>
        </property>
-       <property name="default" >
+       <property name="default">
         <bool>true</bool>
        </property>
       </widget>
@@ -108,9 +112,8 @@
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
  <includes>
-  <include location="local" >qt_i18n.h</include>
+  <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
  <connections/>

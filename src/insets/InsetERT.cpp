@@ -51,12 +51,6 @@ InsetERT::InsetERT(Buffer * buf, CollapseStatus status)
 }
 
 
-InsetERT::~InsetERT()
-{
-	hideDialogs("ert", this);
-}
-
-
 void InsetERT::write(ostream & os) const
 {
 	os << "ERT" << "\n";
@@ -155,8 +149,7 @@ docstring const InsetERT::buttonLabel(BufferView const & bv) const
 
 bool InsetERT::showInsetDialog(BufferView * bv) const
 {
-	bv->showDialog("ert", params2string(status(*bv)), 
-		const_cast<InsetERT *>(this));
+	bv->showDialog("ert");
 	return true;
 }
 

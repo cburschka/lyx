@@ -102,12 +102,6 @@ InsetBox::InsetBox(Buffer * buffer, string const & label)
 {}
 
 
-InsetBox::~InsetBox()
-{
-	hideDialogs("box", this);
-}
-
-
 docstring InsetBox::name() const 
 {
 	// FIXME: UNICODE
@@ -192,8 +186,7 @@ bool InsetBox::forcePlainLayout(idx_type) const
 
 bool InsetBox::showInsetDialog(BufferView * bv) const
 {
-	bv->showDialog("box", params2string(params_),
-		const_cast<InsetBox *>(this));
+	bv->showDialog("box");
 	return true;
 }
 
