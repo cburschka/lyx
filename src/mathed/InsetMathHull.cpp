@@ -699,7 +699,7 @@ void InsetMathHull::header_write(WriteStream & os) const
 		break;
 
 	case hullRegexp:
-		os << "\\regexp{";
+		os << "\\regexp{{{";
 		break;
 
 	default:
@@ -744,7 +744,7 @@ void InsetMathHull::footer_write(WriteStream & os) const
 		break;
 
 	case hullRegexp:
-		os << "}";
+		os << "}}}";
 		break;
 
 	default:
