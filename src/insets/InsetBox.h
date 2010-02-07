@@ -83,6 +83,8 @@ public:
 	static std::string params2string(InsetBoxParams const &);
 	///
 	static void string2params(std::string const &, InsetBoxParams &);
+	///
+	InsetBoxParams const & params() const { return params_; }
 private:
 	///
 	friend class InsetBoxParams;
@@ -120,8 +122,6 @@ private:
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures &) const;
-	///
-	InsetBoxParams const & params() const { return params_; }
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///

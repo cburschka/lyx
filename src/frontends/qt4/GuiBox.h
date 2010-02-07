@@ -13,7 +13,7 @@
 #ifndef GUIBOX_H
 #define GUIBOX_H
 
-#include "GuiDialog.h"
+#include "InsetDialog.h"
 #include "ui_BoxUi.h"
 #include "insets/InsetBox.h"
 
@@ -21,7 +21,7 @@
 namespace lyx {
 namespace frontend {
 
-class GuiBox : public GuiDialog, public Ui::BoxUi
+class GuiBox : public InsetDialog, public Ui::BoxUi
 {
 	Q_OBJECT
 
@@ -29,33 +29,29 @@ public:
 	GuiBox(GuiView & lv);
 
 private Q_SLOTS:
-	void change_adaptor();
-	void innerBoxChanged(QString const &);
-	void typeChanged(int);
-	void restoreClicked();
-	void pagebreakClicked();
+	void on_innerBoxCO_activated(QString const &);
+	void on_typeCO_activated(int);
+	void initDialog();
+	void on_heightCB_stateChanged(int state);
+	void on_pagebreakCB_stateChanged();
 
 private:
+	/// \name Dialog inerited methods
+	//@{
+	void enableView(bool enable);
+	//@}
+
+	/// \name InsetDialog inherited methods
+	//@{
+	void paramsToDialog(Inset const *);
+	docstring dialogToParams() const;
+	//@}
+
 	/// add and remove special lengths
 	void setSpecial(bool ibox);
 	/// only show valid inner box items
 	void setInnerType(bool frameless, int i);
 
-	/// Apply changes
-	void applyView();
-	/// update
-	void updateContents();
-
-	///
-	bool initialiseParams(std::string const & data);
-	///
-	void clearParams();
-	///
-	void dispatchParams();
-	///
-	bool isBufferDependent() const { return true; }
-
-	///
 	QStringList ids_;
 	///
 	QStringList gui_names_;
@@ -63,9 +59,6 @@ private:
 	QStringList ids_spec_;
 	///
 	QStringList gui_names_spec_;
-
-	///
-	InsetBoxParams params_;
 };
 
 } // namespace frontend
