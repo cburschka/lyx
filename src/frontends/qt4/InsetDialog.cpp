@@ -70,10 +70,7 @@ void InsetDialog::on_closePB_clicked()
 
 void InsetDialog::on_newPB_clicked()
 {
-	docstring argument;
-	if (d->creation_code_ == LFUN_INSET_INSERT)
-		argument = from_ascii(insetName(d->inset_code_)) + " ";
-	argument += dialogToParams();
+	docstring const argument = dialogToParams();
 	dispatch(FuncRequest(d->creation_code_, argument));
 }
 
@@ -102,6 +99,14 @@ void InsetDialog::updateView()
 		paramsToDialog(i);
 	else
 		enableView(false);
+
+	//FIXME: the newPB push button cannot be accessed here and so cannot be
+	// disabled...
+	/*
+	docstring const argument = dialogToParams();
+	newPB->setEnabled(
+		getStatus(FuncRequest(LFUN_INSET_MODIFY, argument).enabled());
+	*/
 }
 
 } // namespace frontend
