@@ -56,18 +56,9 @@ GuiInfo::GuiInfo(GuiView & lv)
 	for (int n = 0; info_types[n][0]; ++n)
 		typeCO->addItem(qt_(info_types_gui[n]));
 	typeCO->blockSignals(false);
-}
 
-
-void GuiInfo::on_typeCO_currentIndexChanged(int)
-{
-	applyView();
-}
-
-
-void GuiInfo::on_nameLE_textChanged(QString const &)
-{
-	applyView();
+	connect(typeCO, SIGNAL(currentIndexChanged(int)), this, SLOT(applyView()));
+	connect(nameLE, SIGNAL(textChanged(QString)), this, SLOT(applyView()));
 }
 
 

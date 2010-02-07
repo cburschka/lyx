@@ -33,10 +33,6 @@ public:
 	void enableView(bool enable);
 	//@}
 
-private Q_SLOTS:
-	void on_typeCO_currentIndexChanged(int);
-	void on_nameLE_textChanged(QString const &);
-
 private:
 	/// \name InsetDialog inherited methods
 	//@{
