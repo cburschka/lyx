@@ -18,9 +18,11 @@
 
 #include "support/strfwd.h"
 
+#include <QList>
 #include <QString>
 
 class QWidget;
+class QLineEdit;
 
 namespace lyx {
 
@@ -44,6 +46,27 @@ enum KernelDocType
 	DOCBOOK
 };
 
+/// CheckedLineEdit
+// FIXME: Get rid of CheckedLineEdit in ButtonController and rename this one
+// to it.
+class CheckedLineEdit2
+{
+public:
+	CheckedLineEdit2(QLineEdit * input, QWidget * label = 0)
+	: input_(input), label_(label)
+	{}
+	///	
+	bool check() const;
+
+private:
+	// non-owned
+	QLineEdit * input_;
+	QWidget * label_;
+};
+
+
+typedef QList<CheckedLineEdit2> CheckedLineEdits;
+
 
 /** \c Dialog collects the different parts of a Model-Controller-View
  *  split of a generic dialog together.
@@ -61,6 +84,9 @@ public:
 
 	virtual QWidget * asQWidget() = 0;
 	virtual QWidget const * asQWidget() const = 0;
+
+	///
+	void addCheckedWidget(QLineEdit * input, QWidget * label);
 
 	/// Session key.
 	/**
@@ -256,6 +282,8 @@ protected:
 	void setTitle(QString const & title) { title_ = title; }
 	///
 	virtual void apply();
+	/// \return true if all CheckedWidgets are in a valid state.
+	bool checkWidgets() const;
 
 private:
 	/** The Dialog's name is the means by which a dialog identifies
@@ -271,6 +299,8 @@ private:
 	Dialog(Dialog const &);
 	void operator=(Dialog const &);
 
+	///
+	CheckedLineEdits checked_line_edits_;
 };
 
 

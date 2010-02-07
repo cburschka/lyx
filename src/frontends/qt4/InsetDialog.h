@@ -33,7 +33,6 @@ public:
 
 	/// \name DialogView inherited methods
 	//@{
-	void applyView();
 	void updateView();
 	void dispatchParams() {}
 	bool isBufferDependent() const { return true; }
@@ -41,6 +40,7 @@ public:
 	//@}
 
 protected Q_SLOTS:
+	void applyView();
 	void on_newPB_clicked();
 	void on_closePB_clicked();
 
@@ -51,10 +51,9 @@ protected:
 	virtual docstring dialogToParams() const = 0;
 
 private:
-	///
-	InsetCode inset_code_;
-	///
-	FuncCode creation_code_;
+	/// pimpl
+	struct Private;
+	Private * d;
 };
 
 } // namespace frontend

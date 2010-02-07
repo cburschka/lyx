@@ -24,7 +24,6 @@
 #include "support/debug.h"
 #include "support/lstrings.h"
 
-
 using namespace std;
 using namespace lyx::support;
 
@@ -33,15 +32,32 @@ namespace frontend {
 
 /////////////////////////////////////////////////////////////////
 //
+// InsetDialog::Private
+//
+/////////////////////////////////////////////////////////////////
+
+struct InsetDialog::Private
+{
+	Private(InsetCode code, FuncCode creation_code)
+		: inset_code_(code), creation_code_(creation_code)
+	{
+	}
+
+	///
+	InsetCode inset_code_;
+	///
+	FuncCode creation_code_;
+};
+
+/////////////////////////////////////////////////////////////////
+//
 // InsetDialog
 //
 /////////////////////////////////////////////////////////////////
 
-
 InsetDialog::InsetDialog(GuiView & lv, InsetCode code, FuncCode creation_code,
 		char const * name, char const * display_name)
-	: DialogView(lv, name, qt_(display_name)), inset_code_(code),
-	creation_code_(creation_code)
+	: DialogView(lv, name, qt_(display_name)), d(new Private(code, creation_code))
 {
 }
 
@@ -55,13 +71,16 @@ void InsetDialog::on_closePB_clicked()
 void InsetDialog::on_newPB_clicked()
 {
 	docstring const argument = dialogToParams();
-	dispatch(FuncRequest(creation_code_, argument));
+	dispatch(FuncRequest(d->creation_code_, argument));
 }
 
 
 void InsetDialog::applyView()
 {
-	Inset const * i = inset(inset_code_);
+	if (!checkWidgets())
+		return;
+
+	Inset const * i = inset(d->inset_code_);
 	if (!i)
 		return;
 	
@@ -75,7 +94,7 @@ void InsetDialog::applyView()
 
 void InsetDialog::updateView()
 {
-	Inset const * i = inset(inset_code_);
+	Inset const * i = inset(d->inset_code_);
 	if (i)
 		paramsToDialog(i);
 	else
