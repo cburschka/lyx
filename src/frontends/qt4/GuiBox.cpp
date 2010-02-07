@@ -95,12 +95,9 @@ GuiBox::GuiBox(GuiView & lv)
 	connect(widthUnitsLC, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(applyView()));
 	connect(valignCO, SIGNAL(highlighted(QString)), this, SLOT(applyView()));
-	connect(heightCB, SIGNAL(stateChanged(int)), this, SLOT(applyView()));
 	connect(heightED, SIGNAL(textChanged(QString)), this, SLOT(applyView()));
 	connect(heightUnitsLC, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SLOT(applyView()));
-	connect(innerBoxCO, SIGNAL(activated(int)), this, SLOT(applyView()));
-	connect(typeCO, SIGNAL(activated(int)), this, SLOT(applyView()));
 	connect(halignCO, SIGNAL(activated(int)), this, SLOT(applyView()));
 	connect(ialignCO, SIGNAL(activated(int)), this, SLOT(applyView()));
 
@@ -184,6 +181,7 @@ void GuiBox::on_heightCB_stateChanged(int state)
 		&& (state == Qt::Checked);
 	heightED->setEnabled(enable);
 	heightUnitsLC->setEnabled(enable);
+	applyView();
 }
 
 
@@ -193,17 +191,17 @@ void GuiBox::on_pagebreakCB_stateChanged()
 	innerBoxCO->setEnabled(!pbreak);
 	widthED->setEnabled(!pbreak);
 	widthUnitsLC->setEnabled(!pbreak);
-	if (pbreak) {
-		valignCO->setEnabled(false);
-		ialignCO->setEnabled(false);
-		halignCO->setEnabled(false);
-		heightCB->setEnabled(false);
-		heightED->setEnabled(false);
-		heightUnitsLC->setEnabled(false);
-		setSpecial(false);
-	} else {
+	if (!pbreak) {
 		on_typeCO_activated(typeCO->currentIndex());
+		return;
 	}
+	valignCO->setEnabled(false);
+	ialignCO->setEnabled(false);
+	halignCO->setEnabled(false);
+	heightCB->setEnabled(false);
+	heightED->setEnabled(false);
+	heightUnitsLC->setEnabled(false);
+	setSpecial(false);
 	applyView();
 }
 
