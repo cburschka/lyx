@@ -549,6 +549,8 @@ Pour afficher des parties d'une formule en ligne avec la même taille qu'une
 
 \backslash
 displaystyle
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -560,8 +562,6 @@ displaystyle
 
 \end_inset
 
-
-\series default
  dans la formule.
  Une nouvelle boîte bleue apparaît alors dans laquelle on peut insérer les
  parties de formules qui doivent avoir la taille hors ligne.
@@ -819,6 +819,8 @@ Mathématique, texte
 
 \backslash
 text
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -830,8 +832,6 @@ text
 
 \end_inset
 
-
-\series default
 .
  Dans LyX, le texte apparaît en noir et peut donc être distingué des autres
  parties de la formule qui apparaissent en bleu.
@@ -1495,7 +1495,9 @@ status collapsed
 \series bold
 
 \backslash
-raisebox est seulement utilisée pour faire de la place
+raisebox
+\series default
+ est seulement utilisée pour faire de la place
 \end_layout
 
 \end_inset
@@ -1767,7 +1769,9 @@ status collapsed
 \series bold
 
 \backslash
-raisebox est seulement utilisée pour faire de la place
+raisebox
+\series default
+ est seulement utilisée pour faire de la place
 \end_layout
 
 \end_inset
@@ -2381,7 +2385,9 @@ status collapsed
 \series bold
 
 \backslash
-raisebox est seulement utilisée pour faire de la place
+raisebox
+\series default
+ est seulement utilisée pour faire de la place
 \end_layout
 
 \end_inset
@@ -2776,7 +2782,9 @@ status collapsed
 \series bold
 
 \backslash
-raisebox est seulement utilisée pour faire de la place
+raisebox
+\series default
+ est seulement utilisée pour faire de la place
 \end_layout
 
 \end_inset
@@ -3536,7 +3544,9 @@ status collapsed
 \series bold
 
 \backslash
-raisebox est là pour faire de la place
+raisebox
+\series default
+ est là pour faire de la place
 \end_layout
 
 \end_inset
@@ -3629,7 +3639,9 @@ status collapsed
 \series bold
 
 \backslash
-raisebox est seulement utilisée pour faire de la place
+raisebox
+\series default
+ est seulement utilisée pour faire de la place
 \end_layout
 
 \end_inset
@@ -4046,7 +4058,9 @@ status collapsed
 \series bold
 
 \backslash
-raisebox est seulement utilisée pour faire de la place
+raisebox
+\series default
+ est seulement utilisée pour faire de la place
 \end_layout
 
 \end_inset
@@ -5233,7 +5247,9 @@ status collapsed
 \series bold
 
 \backslash
-raisebox est seulement utilisée pour faire de la place
+raisebox
+\series default
+ est seulement utilisée pour faire de la place
 \end_layout
 
 \end_inset
@@ -6432,10 +6448,11 @@ status collapsed
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 
 \backslash
 raisebox
+\series default
+ est seulement utilisée pour faire de la place
 \end_layout
 
 \end_inset
@@ -6652,7 +6669,9 @@ status collapsed
 \series bold
 
 \backslash
-raisebox est seulement utilisée pour faire de la place
+raisebox
+\series default
+ est seulement utilisée pour faire de la place
 \end_layout
 
 \end_inset
@@ -7225,14 +7244,16 @@ Accolades ! horizontales
 \begin_layout Plain Layout
 Commande
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
 \series bold
 
 \backslash
-raisebox est seulement utilisée pour faire de la place
+raisebox
+\series default
+ est seulement utilisée pour faire de la place
 \end_layout
 
 \end_inset
@@ -8702,7 +8723,9 @@ status collapsed
 \series bold
 
 \backslash
-raisebox est seulement utilisée pour faire de la place
+raisebox
+\series default
+ est seulement utilisée pour faire de la place
 \end_layout
 
 \end_inset
@@ -9348,7 +9371,9 @@ status collapsed
 \series bold
 
 \backslash
-raisebox est seulement utilisée pour faire de la place
+raisebox
+\series default
+ est seulement utilisée pour faire de la place
 \end_layout
 
 \end_inset
@@ -10406,7 +10431,9 @@ status collapsed
 \series bold
 
 \backslash
-raisebox est seulement utilisée pour faire de la place
+raisebox
+\series default
+ est seulement utilisée pour faire de la place
 \end_layout
 
 \end_inset
@@ -11370,14 +11397,16 @@ Commande
 \begin_layout Plain Layout
 Résultat
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
 \series bold
 
 \backslash
-raisebox est seulement utilisée pour faire de la place
+raisebox
+\series default
+ est seulement utilisée pour faire de la place
 \end_layout
 
 \end_inset
@@ -11525,10 +11554,11 @@ status collapsed
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 
 \backslash
 raisebox
+\series default
+ est seulement utilisée pour faire de la place
 \end_layout
 
 \end_inset
@@ -12572,10 +12602,11 @@ status collapsed
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 
 \backslash
 raisebox
+\series default
+ est seulement utilisée pour faire de la place
 \end_layout
 
 \end_inset
@@ -13527,7 +13558,9 @@ status collapsed
 \series bold
 
 \backslash
-raisebox est seulement utilisée pour faire de la place
+raisebox
+\series default
+ est seulement utilisée pour faire de la place
 \end_layout
 
 \end_inset
@@ -15570,7 +15603,9 @@ status collapsed
 \series bold
 
 \backslash
-raisebox est seulement utilisée pour faire de la place
+raisebox
+\series default
+ est seulement utilisée pour faire de la place
 \end_layout
 
 \end_inset
@@ -15831,7 +15866,9 @@ status collapsed
 \series bold
 
 \backslash
-raisebox est seulement utilisée pour faire de la place
+raisebox
+\series default
+ est seulement utilisée pour faire de la place
 \end_layout
 
 \end_inset
@@ -16406,7 +16443,9 @@ status collapsed
 \series bold
 
 \backslash
-raisebox est seulement utilisée pour faire de la place
+raisebox
+\series default
+ est seulement utilisée pour faire de la place
 \end_layout
 
 \end_inset
@@ -18839,7 +18878,7 @@ footnotesize
 \backslash
 scriptsize
 \series default
-, et 
+ et 
 \series bold
 
 \backslash
@@ -18908,10 +18947,190 @@ normalsize
 \end_layout
 
 \begin_layout Standard
-À l'intérieur de la formule, on ne peut changer la taille que des caractères
- ou des symboles qui sont en mode texte mathématique.
- Pour le faire, on insère la commande de changement de taille en mode texte
- mathématique.
+
+\lang english
+Within a formula the size can be changed using the following size commands:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="2">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Commande
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Résultat
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\series bold
+
+\backslash
+raisebox
+\series default
+ est seulement utilisée pour faire de la place
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+displaystyle
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Commandes ! D ! 
+\backslash
+displaystyle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{6.5mm}{}{\displaystyle E_{\mathrm{pot_{1}}}=\frac{K}{l+\frac{m}{n_{2}}}}\raisebox{-5.5mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+textstyle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{4.5mm}{}{\textstyle E_{\mathrm{pot_{1}}}=\frac{K}{l+\frac{m}{n_{2}}}}\raisebox{-4mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+scriptstyle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{4.5mm}{}{\scriptstyle E_{\mathrm{pot_{1}}}=\frac{K}{l+\frac{m}{n_{2}}}}\raisebox{-3.5mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+scriptscriptstyle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{4.5mm}{}{\scriptscriptstyle E_{\mathrm{pot_{1}}}=\frac{K}{l+\frac{m}{n_{2}}}}\raisebox{-3.5mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+After entering these commands, a blue box appears in which the formula parts
+ are inserted.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+There is a further method to change the font size, that though only works
+ for symbols or letters in mathematical text.
+ To use it, one of the above text size commands is inserted in mathematical
+ text.
+
+\lang french
  Tous les caractères qui suivent jusqu'à la fin du texte mathématique ou
  jusqu'à ce que la taille soit de nouveau modifiée, auront la taille choisie.
  Deux exemples:
@@ -20985,7 +21204,9 @@ status collapsed
 \series bold
 
 \backslash
-raisebox est seulement utilisée pour faire de la place
+raisebox
+\series default
+ est seulement utilisée pour faire de la place
 \end_layout
 
 \end_inset
@@ -21510,6 +21731,13 @@ bot
 
 
 \begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -22691,6 +22919,13 @@ status collapsed
 fi 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -24157,7 +24392,9 @@ status collapsed
 \series bold
 
 \backslash
-raisebox est seulement utilisée pour faire de la place
+raisebox
+\series default
+ est seulement utilisée pour faire de la place
 \end_layout
 
 \end_inset
@@ -25147,7 +25384,9 @@ status collapsed
 \series bold
 
 \backslash
-raisebox est seulement utilisée pour faire de la place
+raisebox
+\series default
+ est seulement utilisée pour faire de la place
 \end_layout
 
 \end_inset
@@ -25435,6 +25674,13 @@ Les variantes pour une formule hors ligne:
 \begin_layout Standard
 Dans une formule en ligne, il y a moins d'espace inséré avant le nom de
  la fonction, quelque soit la variante.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -26899,7 +27145,9 @@ status collapsed
 \series bold
 
 \backslash
-raisebox est seulement utilisée pour faire de la place
+raisebox
+\series default
+ est seulement utilisée pour faire de la place
 \end_layout
 
 \end_inset
@@ -29199,6 +29447,10 @@ intertext
  doit être au début d'une ligne pour se trouver dans la sortie final au
  dessus de celle-ci.
  Un exemple où le texte a été inséré au début de la deuxième ligne:
+\begin_inset Newpage newpage
+\end_inset
+
+
 \begin_inset Formula \begin{align}
 I & =a\sqrt{2}\int_{0}^{2\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\\
 \intertext{\text{l'intégrande est symétrique autour de \ensuremath{\phi=\pi}, donc}} & =2a\sqrt{2}\int_{0}^{\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\end{align}
@@ -29342,7 +29594,11 @@ cette
 
 ligne
 \family default
- (raccourci 
+ (raccourci
+\begin_inset Newline newline
+\end_inset
+
+
 \family sans
 Alt+M
 \begin_inset space ~
@@ -30786,13 +31042,6 @@ Note:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -31853,13 +32102,6 @@ key "mhchem"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -36685,7 +36927,9 @@ status collapsed
 \series bold
 
 \backslash
-raisebox est seulement utilisée pour faire de la place
+raisebox
+\series default
+ est seulement utilisée pour faire de la place
 \end_layout
 
 \end_inset

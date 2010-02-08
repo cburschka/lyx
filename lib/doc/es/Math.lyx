@@ -19046,15 +19046,194 @@ Un comando de tamaño se inserta en modo TeX antes de la ecuación, y se aplica
 normalsize
 \series default
  en modo TeX detrás de la ecuación.
- 
 \end_layout
 
 \begin_layout Standard
-Dentro de una fórmula el tamaño sólo se puede cambiar para símbolos o letras
- en texto matemático.
- Para hacerlo se inserta el comando en texto matemático.
- Todos los caracteres siguientes, hasta el final del texto matemático o
- hasta otro comando de tamaño, tendrán el tamaño seleccionado.
+
+\lang english
+Within a formula the size can be changed using the following size commands:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="2">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Comando
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Resultado
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\series bold
+
+\backslash
+raisebox
+\series default
+ se usa sólo como espaciador
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+displaystyle
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Comandos ! D ! 
+\backslash
+displaystyle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{6.5mm}{}{\displaystyle E_{\mathrm{pot_{1}}}=\frac{K}{l+\frac{m}{n_{2}}}}\raisebox{-5.5mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+textstyle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{4.5mm}{}{\textstyle E_{\mathrm{pot_{1}}}=\frac{K}{l+\frac{m}{n_{2}}}}\raisebox{-4mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+scriptstyle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{4.5mm}{}{\scriptstyle E_{\mathrm{pot_{1}}}=\frac{K}{l+\frac{m}{n_{2}}}}\raisebox{-3.5mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+scriptscriptstyle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{4.5mm}{}{\scriptscriptstyle E_{\mathrm{pot_{1}}}=\frac{K}{l+\frac{m}{n_{2}}}}\raisebox{-3.5mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+After entering these commands, a blue box appears in which the formula parts
+ are inserted.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+There is a further method to change the font size, that though only works
+ for symbols or letters in mathematical text.
+ To use it, one of the above text size commands is inserted in mathematical
+ text.
+\lang spanish
+Todos los caracteres siguientes, hasta el final del texto matemático o hasta
+ otro comando de tamaño, tendrán el tamaño seleccionado.
  Dos ejemplos:
 \end_layout
 
@@ -22849,6 +23028,13 @@ fi
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Relaciones
 \begin_inset CommandInset label
@@ -25916,6 +26102,13 @@ En una ecuación en línea se pone menos espacio delante del nombre de la
  función para todas las variantes.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Caracteres especiales
 \begin_inset Index
@@ -27818,6 +28011,13 @@ else
 textdegree
 \backslash
 fi}
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
