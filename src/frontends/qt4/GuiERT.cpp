@@ -47,7 +47,7 @@ void GuiERT::enableView(bool enable)
 
 docstring GuiERT::dialogToParams() const
 {
-	InsetCollapsable::CollapseStatus status = openRB->isChecked()
+	InsetCollapsable::CollapseStatus const status = openRB->isChecked()
 		? InsetCollapsable::Open : InsetCollapsable::Collapsed;
 	return from_ascii(InsetERT::params2string(status));
 }
