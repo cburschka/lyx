@@ -2172,6 +2172,27 @@ bool Buffer::isMultiLingual() const
 }
 
 
+std::set<Language const *> Buffer::getLanguages() const
+{
+	std::set<Language const *> languages;
+	getLanguages(languages);
+	return languages;
+}
+
+
+void Buffer::getLanguages(std::set<Language const *> & languages) const
+{
+	ParConstIterator end = par_iterator_end();
+	for (ParConstIterator it = par_iterator_begin(); it != end; ++it)
+		it->getLanguages(languages);
+	// also children
+	std::vector<Buffer *> clist = getChildren();
+	for (vector<Buffer *>::const_iterator cit = clist.begin();
+	     cit != clist.end(); ++cit)
+		(*cit)->getLanguages(languages);
+}
+
+
 DocIterator Buffer::getParFromID(int const id) const
 {
 	Buffer * buf = const_cast<Buffer *>(this);

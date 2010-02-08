@@ -23,6 +23,8 @@
 #include "support/strfwd.h"
 #include "support/types.h"
 
+#include <set>
+
 namespace lyx {
 
 class AuthorList;
@@ -117,6 +119,8 @@ public:
 			    Language const * from, Language const * to);
 	///
 	bool isMultiLingual(BufferParams const &) const;
+	///
+	void getLanguages(std::set<Language const *> &) const;
 
 	/// Convert the paragraph to a string.
 	/// \param AsStringParameter options. This can contain any combination of

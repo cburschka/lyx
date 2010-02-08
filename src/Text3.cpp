@@ -2560,6 +2560,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_LANGUAGE:
 		enable = !cur.inset().getLayout().isPassThru();
+		flag.setOnOff(to_utf8(cmd.argument()) == cur.real_current_font.language()->lang());
 		break;
 
 	case LFUN_BREAK_PARAGRAPH:

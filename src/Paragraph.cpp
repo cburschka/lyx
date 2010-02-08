@@ -2603,7 +2603,7 @@ void Paragraph::changeLanguage(BufferParams const & bparams,
 
 bool Paragraph::isMultiLingual(BufferParams const & bparams) const
 {
-	Language const * doc_language =	bparams.language;
+	Language const * doc_language = bparams.language;
 	FontList::const_iterator cit = d->fontlist_.begin();
 	FontList::const_iterator end = d->fontlist_.end();
 
@@ -2613,6 +2613,20 @@ bool Paragraph::isMultiLingual(BufferParams const & bparams) const
 		    cit->font().language() != doc_language)
 			return true;
 	return false;
+}
+
+
+void Paragraph::getLanguages(std::set<Language const *> & languages) const
+{
+	FontList::const_iterator cit = d->fontlist_.begin();
+	FontList::const_iterator end = d->fontlist_.end();
+
+	for (; cit != end; ++cit) {
+		Language const * lang = cit->font().language();
+		if (lang != ignore_language &&
+		    lang != latex_language)
+			languages.insert(lang);
+	}
 }
 
 

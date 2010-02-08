@@ -315,6 +315,7 @@ Menuset
 		Item "Apply Last Text Style|A" "textstyle-apply"
 		Submenu "Text Style|S" "edit_textstyles"
 		Item "Paragraph Settings...|P" "layout-paragraph"
+		LanguageSelector
 		Separator
 		Item "Fullscreen Mode" "ui-toggle fullscreen"
 	End

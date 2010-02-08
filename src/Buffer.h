@@ -375,6 +375,8 @@ public:
 
 	///
 	bool isMultiLingual() const;
+	///
+	std::set<Language const *> getLanguages() const;
 
 	///
 	BufferParams & params();
@@ -572,6 +574,8 @@ private:
 	*/
 	ReadStatus readFile(Lexer &, support::FileName const & filename,
 			    bool fromString = false);
+	///
+	void getLanguages(std::set<Language const *> &) const;
 
 	/// Use the Pimpl idiom to hide the internals.
 	class Impl;

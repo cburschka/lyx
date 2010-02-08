@@ -111,6 +111,7 @@ Menuset
 		Item "Move Paragraph Down|v" "paragraph-move-down"
 		Separator
 		Submenu "Text Style|S" "edit_textstyles"
+		LanguageSelector
 		Item "Paragraph Settings...|P" "layout-paragraph"
 		Separator
 # Mathed b0rkage means these don't work properly
@@ -125,7 +126,7 @@ Menuset
 # obvious what the context is for the others)
 		OptItem "Increase List Depth|I" "depth-increment"
 		OptItem "Decrease List Depth|D" "depth-decrement"
-		OptItem "Dissolve Inset|l" "inset-dissolve"
+		OptItem "Dissolve Inset" "inset-dissolve"
 		OptItem "TeX Code Settings...|C" "inset-settings ert"
 # 'a' shortcut to match Insert entry, shouldn't clash with Table Settings
 		OptItem "Float Settings...|a" "inset-settings float"

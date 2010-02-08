@@ -38,6 +38,7 @@
 #include "FuncStatus.h"
 #include "IndicesList.h"
 #include "KeyMap.h"
+#include "Language.h"
 #include "Lexer.h"
 #include "LyXAction.h"
 #include "LyX.h" // for lastfiles
@@ -164,7 +165,9 @@ public:
 		/** Available graphics groups */
 		GraphicsGroups,
 		/// Words suggested by the spellchecker.
-		SpellingSuggestions
+		SpellingSuggestions,
+		/** Used Languages */
+		LanguageSelector
 	};
 
 	explicit MenuItem(Kind kind) : kind_(kind), optional_(false) {}
@@ -322,6 +325,7 @@ public:
 	void expandCiteStyles(BufferView const *);
 	void expandGraphicsGroups(BufferView const *);
 	void expandSpellingSuggestions(BufferView const *);
+	void expandLanguageSelector(Buffer const * buf);
 	///
 	ItemList items_;
 	///
@@ -428,7 +432,8 @@ void MenuDefinition::read(Lexer & lex)
 		md_pasterecent,
 		md_toolbars,
 		md_graphicsgroups,
-		md_spellingsuggestions
+		md_spellingsuggestions,
+		md_languageselector
 	};
 
 	LexerKeyword menutags[] = {
@@ -450,6 +455,7 @@ void MenuDefinition::read(Lexer & lex)
 		{ "indiceslists", md_indiceslists },
 		{ "indiceslistscontext", md_indiceslistscontext },
 		{ "item", md_item },
+		{ "languageselector", md_languageselector },
 		{ "lastfiles", md_lastfiles },
 		{ "optitem", md_optitem },
 		{ "optsubmenu", md_optsubmenu },
@@ -566,6 +572,10 @@ void MenuDefinition::read(Lexer & lex)
 
 		case md_spellingsuggestions:
 			add(MenuItem(MenuItem::SpellingSuggestions));
+			break;
+
+		case md_languageselector:
+			add(MenuItem(MenuItem::LanguageSelector));
 			break;
 
 		case md_indices:
@@ -751,6 +761,36 @@ void MenuDefinition::expandSpellingSuggestions(BufferView const * bv)
 	add(MenuItem(MenuItem::Command, qt_("Ignore all|I"),
 			FuncRequest(LFUN_SPELLING_IGNORE, arg)));
 	
+}
+
+
+void MenuDefinition::expandLanguageSelector(Buffer const * buf)
+{
+	if (!buf)
+		return;
+
+	std::set<Language const *> languages =
+		buf->masterBuffer()->getLanguages();
+
+	if (languages.size() < 2) {
+		add(MenuItem(MenuItem::Command, qt_("Language ...|L"),
+			FuncRequest(LFUN_DIALOG_SHOW, "character")));
+		return;
+	}
+
+	MenuItem item(MenuItem::Submenu, qt_("Language|L"));
+	item.setSubmenu(MenuDefinition(qt_("Language")));
+	std::set<Language const *>::const_iterator const begin = languages.begin();
+	for (std::set<Language const *>::const_iterator cit = begin;
+	     cit != languages.end(); ++cit) {
+		MenuItem w(MenuItem::Command, qt_((*cit)->display()),
+			FuncRequest(LFUN_LANGUAGE, (*cit)->lang()));
+		item.submenu().addWithStatusCheck(w);
+	}
+	item.submenu().add(MenuItem(MenuItem::Separator));
+	item.submenu().add(MenuItem(MenuItem::Command, qt_("More Languages ..."),
+			FuncRequest(LFUN_DIALOG_SHOW, "character")));
+	add(item);
 }
 
 
@@ -1650,6 +1690,10 @@ void Menus::Impl::expand(MenuDefinition const & frommenu,
 
 		case MenuItem::SpellingSuggestions:
 			tomenu.expandSpellingSuggestions(bv);
+			break;
+
+		case MenuItem::LanguageSelector:
+			tomenu.expandLanguageSelector(buf);
 			break;
 
 		case MenuItem::Submenu: {
