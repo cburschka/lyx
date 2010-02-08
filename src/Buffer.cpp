@@ -1341,8 +1341,11 @@ void Buffer::writeLaTeXSource(odocstream & os,
 		// output the parent macros
 		MacroSet::iterator it = parentMacros.begin();
 		MacroSet::iterator end = parentMacros.end();
-		for (; it != end; ++it)
-			(*it)->write(os, true);
+		for (; it != end; ++it) {
+			int num_lines = (*it)->write(os, true);
+			d->texrow.newlines(num_lines);
+		}
+		
 	} // output_preamble
 
 	d->texrow.start(paragraphs().begin()->id(), 0);

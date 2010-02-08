@@ -49,7 +49,7 @@ public:
 	void write(WriteStream & os) const;
 	/// Output LaTeX code, but assume that the macro is not definied yet
 	/// if overwriteRedefinition is true
-	void write(WriteStream & os, bool overwriteRedefinition) const;
+	int write(WriteStream & os, bool overwriteRedefinition) const;
 	///
 	int plaintext(odocstream &, OutputParams const &) const;
 	///

@@ -37,6 +37,9 @@ public:
 	/// Insert node when line is completed
 	void newline();
 
+	/// Insert multiple nodes when zero or more lines are completed
+	void newlines(int num_lines);
+
 	/**
 	 * getIdFromRow - find pid and position for a given row
 	 * @param row row number to find

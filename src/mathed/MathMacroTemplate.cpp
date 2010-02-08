@@ -1154,8 +1154,10 @@ void MathMacroTemplate::write(WriteStream & os) const
 }
 
 
-void MathMacroTemplate::write(WriteStream & os, bool overwriteRedefinition) const
+int MathMacroTemplate::write(WriteStream & os, bool overwriteRedefinition) const
 {
+	int num_lines = 0;
+
 	if (os.latex()) {
 		if (optionals_ > 0) {
 			// macros with optionals use the xargs package, e.g.:
@@ -1218,11 +1220,16 @@ void MathMacroTemplate::write(WriteStream & os, bool overwriteRedefinition) cons
 	if (os.latex()) {
 		// writing .tex. done.
 		os << "\n";
+		++num_lines;
 	} else {
 		// writing .lyx, write special .tex export only if necessary
-		if (!cell(displayIdx()).empty())
+		if (!cell(displayIdx()).empty()) {
 			os << "\n{" << cell(displayIdx()) << '}';
+			++num_lines;
+		}
 	}
+
+	return num_lines;
 }
 
 

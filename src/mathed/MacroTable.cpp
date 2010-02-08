@@ -152,7 +152,7 @@ void MacroData::updateData() const
 }
 	
 
-void MacroData::write(odocstream & os, bool overwriteRedefinition) const
+int MacroData::write(odocstream & os, bool overwriteRedefinition) const
 {
 	updateData();
 
@@ -160,14 +160,14 @@ void MacroData::write(odocstream & os, bool overwriteRedefinition) const
 	Inset * inset = pos_.nextInset();
 	if (inset == 0 || inset->lyxCode() != MATHMACRO_CODE) {
 		lyxerr << "BUG: No macro template found by MacroData" << endl;
-		return;
+		return 0;
 	}
 		
 	// output template
 	MathMacroTemplate const & tmpl =
 		static_cast<MathMacroTemplate const &>(*inset);
 	WriteStream wi(os, false, true, WriteStream::wsDefault);
-	tmpl.write(wi, overwriteRedefinition);
+	return tmpl.write(wi, overwriteRedefinition);
 }
 
 
