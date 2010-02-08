@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-01-29 09:59+0100\n"
-"PO-Revision-Date: 2010-01-29 11:04+0100\n"
+"PO-Revision-Date: 2010-02-08 14:51+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -346,7 +346,7 @@ msgstr "Literaturverzeichnis im Inhaltsverzeichnis aufführen"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:169
 msgid "Add bibliography to &TOC"
-msgstr "Literaturverzeichnis ins &Inhaltsverzeichnis"
+msgstr "Literatur&verzeichnis ins Inhaltsverzeichnis"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:225
 msgid "Move the selected database downwards in the list"
@@ -371,7 +371,7 @@ msgstr "Zu verwendende BibTeX-Datenbank"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:256
 msgid "Databa&ses"
-msgstr "&Datenbanken"
+msgstr "Daten&banken"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:269
 msgid "Add a BibTeX database file"
@@ -12844,7 +12844,7 @@ msgstr "Komprimiert|K"
 
 #: lib/ui/stdmenus.inc:491
 msgid "Accept Change|A"
-msgstr "Änderung akzeptieren|a"
+msgstr "Änderung akzeptieren|k"
 
 #: lib/ui/stdmenus.inc:493
 msgid "Accept All Changes|c"
@@ -20744,7 +20744,7 @@ msgstr "Ein Wort wurde geprüft."
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:309
 msgid "Spelling check completed"
-msgstr "Die Rechtschreibprüfung ist abgeschlossen"
+msgstr "Rechtschreibprüfung abgeschlossen"
 
 #: src/frontends/qt4/GuiSymbols.cpp:54
 msgid "Basic Latin"
@@ -21406,10 +21406,10 @@ msgid ""
 "%1$s\n"
 " has been externally modified. Reload now? Any local changes will be lost."
 msgstr ""
-"Dokument\n"
+"Das Dokument\n"
 "%1$s\n"
-"wurde extern verändert. Wollen Sie sie neu laden?\n"
-"Alle lokalen Änderungen werden dabei überschrieben."
+"wurde extern verändert. Wollen Sie es erneut laden?\n"
+"Alle lokalen Veränderungen werden dann verworfen."
 
 #: src/frontends/qt4/GuiView.cpp:2446
 msgid "Reload externally changed document?"
