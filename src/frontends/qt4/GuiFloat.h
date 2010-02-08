@@ -12,41 +12,32 @@
 #ifndef GUIFLOAT_H
 #define GUIFLOAT_H
 
-#include "GuiDialog.h"
+#include "InsetDialog.h"
+
 #include "ui_FloatUi.h"
-#include "insets/InsetFloat.h"
 
 
 namespace lyx {
 namespace frontend {
 
-class GuiFloat : public GuiDialog, public Ui::FloatUi
+class GuiFloat : public InsetDialog, public Ui::FloatUi
 {
 	Q_OBJECT
 
 public:
 	GuiFloat(GuiView & lv);
 
-private Q_SLOTS:
-	void change_adaptor();
-
 private:
-	/// Apply changes
-	void applyView();
-	/// update
-	void updateContents();
-	///
-	bool initialiseParams(std::string const & data);
-	/// clean-up on hide.
-	void clearParams();
-	/// clean-up on hide.
-	void dispatchParams();
-	///
-	bool isBufferDependent() const { return true; }
+	/// \name Dialog inerited methods
+	//@{
+	void enableView(bool enable);
+	//@}
 
-private:
-	///
-	InsetFloatParams params_;
+	/// \name InsetDialog inherited methods
+	//@{
+	void paramsToDialog(Inset const *);
+	docstring dialogToParams() const;
+	//@}
 };
 
 } // namespace frontend

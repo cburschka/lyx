@@ -14,13 +14,14 @@
 #define FLOATPLACEMENT_H
 
 #include "ui_FloatPlacementUi.h"
+
 #include <QWidget>
 
-#include <string>
-
+#include "support/docstring.h"
 
 namespace lyx {
 
+class Inset;
 class InsetFloatParams;
 
 class FloatPlacement : public QWidget, public Ui::FloatPlacementUi {
@@ -28,10 +29,15 @@ class FloatPlacement : public QWidget, public Ui::FloatPlacementUi {
 public:
 	FloatPlacement(QWidget * parent = 0);
 
+	///
+	void paramsToDialog(Inset const *);
+	///
+	docstring dialogToParams() const;
+	///
 	void useWide();
+	///
 	void useSideways();
 
-	void set(lyx::InsetFloatParams const & params);
 	void set(std::string const & placement);
 	void checkAllowed();
 

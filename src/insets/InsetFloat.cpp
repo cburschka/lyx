@@ -110,18 +110,12 @@ namespace lyx {
 //
 // Lgb
 
-
+//FIXME: why do we set in stone the type here?
 InsetFloat::InsetFloat(Buffer * buf, string const & type)
 	: InsetCollapsable(buf), name_(from_utf8(type))
 {
 	setLabel(_("float: ") + floatName(type));
 	params_.type = type;
-}
-
-
-InsetFloat::~InsetFloat()
-{
-	hideDialogs("float", this);
 }
 
 
@@ -229,7 +223,7 @@ void InsetFloat::updateLabels(ParIterator const & it, UpdateType utype)
 
 void InsetFloatParams::write(ostream & os) const
 {
-	os << "Float " << type << '\n';
+	os << type << '\n';
 
 	if (!placement.empty())
 		os << "placement " << placement << "\n";
@@ -258,6 +252,7 @@ void InsetFloatParams::read(Lexer & lex)
 
 void InsetFloat::write(ostream & os) const
 {
+	os << "Float ";
 	params_.write(os);
 	InsetCollapsable::write(os);
 }
@@ -426,8 +421,7 @@ bool InsetFloat::insetAllowed(InsetCode code) const
 bool InsetFloat::showInsetDialog(BufferView * bv) const
 {
 	if (!InsetText::showInsetDialog(bv))
-		bv->showDialog("float", params2string(params()),
-			const_cast<InsetFloat *>(this));
+		bv->showDialog("float");
 	return true;
 }
 
@@ -503,7 +497,6 @@ void InsetFloat::string2params(string const & in, InsetFloatParams & params)
 	Lexer lex;
 	lex.setStream(data);
 	lex.setContext("InsetFloat::string2params");
-	lex >> "float" >> "Float";
 	lex >> params.type; // We have to read the type here!
 	params.read(lex);
 }
@@ -512,7 +505,6 @@ void InsetFloat::string2params(string const & in, InsetFloatParams & params)
 string InsetFloat::params2string(InsetFloatParams const & params)
 {
 	ostringstream data;
-	data << "float" << ' ';
 	params.write(data);
 	return data.str();
 }

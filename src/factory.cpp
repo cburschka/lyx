@@ -150,10 +150,13 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 
 		case LFUN_FLOAT_INSERT: {
 			// check if the float type exists
-			string const argument = to_utf8(cmd.argument());
-			if (params.documentClass().floats().typeExist(argument))
-				return new InsetFloat(buf, argument);
-			lyxerr << "Non-existent float type: " << argument << endl;
+			string const type = cmd.getArg(0);
+			//FIXME: only the float type (the first argument) is transmitted
+			// because of the InsetFloat ctor.
+			if (params.documentClass().floats().typeExist(type))
+				return new InsetFloat(buf, type);
+			lyxerr << "Non-existent float type: " << type << endl;
+			return 0;
 		}
 
 		case LFUN_FLOAT_WIDE_INSERT: {

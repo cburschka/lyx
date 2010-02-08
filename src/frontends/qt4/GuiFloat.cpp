@@ -13,9 +13,8 @@
 #include "GuiFloat.h"
 
 #include "FloatPlacement.h"
-#include "FuncRequest.h"
 
-#include "insets/InsetFloat.h"
+#include "FuncRequest.h"
 
 #include <QPushButton>
 
@@ -25,72 +24,37 @@ namespace lyx {
 namespace frontend {
 
 GuiFloat::GuiFloat(GuiView & lv)
-	: GuiDialog(lv, "float", qt_("Float Settings"))
+	: InsetDialog(lv, FLOAT_CODE, LFUN_FLOAT_INSERT, "float", "Float Settings")
 {
 	setupUi(this);
 	
-	connect(restorePB, SIGNAL(clicked()), this, SLOT(slotRestore()));
-	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
-	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
-	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
-
 	// enable span columns checkbox
 	floatFP->useWide();
 	// enable sideways checkbox
 	floatFP->useSideways();
 
-	connect(floatFP, SIGNAL(changed()), this, SLOT(change_adaptor()));
-
-	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
-
-	bc().setCancel(closePB);
-	bc().setApply(applyPB);
-	bc().setOK(okPB);
-	bc().setRestore(restorePB);
-
-	bc().addReadOnly(floatFP);
+	connect(floatFP, SIGNAL(changed()), this, SLOT(applyView()));
 }
 
 
-void GuiFloat::change_adaptor()
+void GuiFloat::enableView(bool enable)
 {
-	changed();
+	floatFP->setEnabled(enable);
 }
 
 
-void GuiFloat::updateContents()
+void GuiFloat::paramsToDialog(Inset const * inset)
 {
-	floatFP->set(params_);
+	floatFP->paramsToDialog(inset);
 }
 
 
-void GuiFloat::applyView()
+docstring GuiFloat::dialogToParams() const
 {
-	params_.placement = floatFP->get(params_.wide, params_.sideways);
+	return floatFP->dialogToParams();
 }
-
-
-bool GuiFloat::initialiseParams(string const & data)
-{
-	InsetFloat::string2params(data, params_);
-	return true;
-}
-
-
-void GuiFloat::clearParams()
-{
-	params_ = InsetFloatParams();
-}
-
-
-void GuiFloat::dispatchParams()
-{
-	dispatch(FuncRequest(getLfun(), InsetFloat::params2string(params_)));
-}
-
 
 Dialog * createGuiFloat(GuiView & lv) { return new GuiFloat(lv); }
-
 
 } // namespace frontend
 } // namespace lyx
