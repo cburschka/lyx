@@ -543,6 +543,8 @@ To display parts of an inline formula in the size of a display style formula,
 
 \backslash
 displaystyle
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -554,8 +556,6 @@ displaystyle
 
 \end_inset
 
-
-\series default
  to a formula.
  Then a new blue box appears in which the desired formula part is inserted.
 \end_layout
@@ -682,7 +682,7 @@ proper names
 \begin_inset Quotes erd
 \end_inset
 
- that appear in the output with sub- and superscript letters: TeX, LaTeX,
+ that appear in the output with sub- and superscript letters: TeX, LaTeX
  and LyX
 \end_layout
 
@@ -732,7 +732,7 @@ Preamble
 \end_layout
 
 \begin_layout Standard
-To edit matrices, case differentiations, and multiline formulas subsequently,
+To edit matrices, case differentiations and multiline formulas subsequently,
  the menus 
 \family sans
 Edit\SpecialChar \menuseparator
@@ -823,6 +823,8 @@ arg   "font-default"
 
 \backslash
 text
+\series default
+
 \begin_inset Index
 status collapsed
 
@@ -834,8 +836,6 @@ text
 
 \end_inset
 
-
-\series default
 .
  The text appears black in LyX and can therefore be distinguished from the
  other formula parts that appear blue.
@@ -5067,7 +5067,7 @@ Math\SpecialChar \menuseparator
 Matrix
 \family default
 .
- You will be asked for the number of matrix columns and rows, and the alignment.
+ You will be asked for the number of matrix columns and rows and the alignment.
  The vertical alignment is hereby only of importance for matrices in inline
  formulas:
 \end_layout
@@ -5087,7 +5087,7 @@ B & E & H & K\\
 C & F & I & L\end{array}$
 \end_inset
 
-, and the third bottom 
+ and the third bottom 
 \begin_inset Formula $\begin{array}[b]{cccc}
 A & D & G & J\\
 B & E & H & K\\
@@ -5108,7 +5108,7 @@ l
 \emph on
 c
 \emph default
- centered, and 
+ centered and 
 \emph on
 r
 \emph default
@@ -5122,7 +5122,7 @@ r
 \end_inset
 
 matrix where the first column is left aligned, the second and third are
- centered, and the last one is right aligned, one enters for the horizontal
+ centered and the last one is right aligned, one enters for the horizontal
  alignment 
 \series bold
 lccr
@@ -6434,7 +6434,7 @@ Big
 \backslash
 bigg
 \series default
-, and 
+ and 
 \series bold
 
 \backslash
@@ -13131,7 +13131,7 @@ makebox
 
 \end_inset
 
-, and 
+ and 
 \series bold
 
 \backslash
@@ -13599,7 +13599,7 @@ red
 \series bold
 white
 \series default
-, and 
+ and 
 \series bold
 yellow
 \end_layout
@@ -14092,7 +14092,7 @@ magenta
 \series bold
 yellow
 \series default
-, and 
+ and 
 \series bold
 black
 \series default
@@ -14129,7 +14129,7 @@ red
 \series bold
 green
 \series default
-, and 
+ and 
 \series bold
 blue
 \series default
@@ -14771,7 +14771,7 @@ reference "sec:Formula-Styles"
 
 \end_inset
 
- Then the description follows as normal text, and finally 
+ Then the description follows as normal text and finally 
 \series bold
 }}
 \backslash
@@ -18907,7 +18907,7 @@ footnotesize
 \backslash
 scriptsize
 \series default
-, and 
+ and 
 \series bold
 
 \backslash
@@ -18964,9 +18964,189 @@ normalsize
 \end_layout
 
 \begin_layout Standard
-Within a formula the size can only be changed for symbols or letters in
- mathematical text.
- To do this, the size command is inserted in mathematical text.
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Within a formula the size can be changed using the following size commands:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="2">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Command
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Result
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\series bold
+
+\backslash
+raisebox
+\series default
+ is only used as spacer.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+displaystyle
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+Commands ! D ! 
+\backslash
+displaystyle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{6.5mm}{}{\displaystyle E_{\mathrm{pot_{1}}}=\frac{K}{l+\frac{m}{n_{2}}}}\raisebox{-5.5mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+textstyle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{4.5mm}{}{\textstyle E_{\mathrm{pot_{1}}}=\frac{K}{l+\frac{m}{n_{2}}}}\raisebox{-4mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+scriptstyle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{4.5mm}{}{\scriptstyle E_{\mathrm{pot_{1}}}=\frac{K}{l+\frac{m}{n_{2}}}}\raisebox{-3.5mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+scriptscriptstyle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{4.5mm}{}{\scriptscriptstyle E_{\mathrm{pot_{1}}}=\frac{K}{l+\frac{m}{n_{2}}}}\raisebox{-3.5mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+After entering these commands, a blue box appears in which the formula parts
+ are inserted.
+\end_layout
+
+\begin_layout Standard
+There is a further method to change the font size, that though only works
+ for symbols or letters in mathematical text.
+ To use it, one of the above text size commands is inserted in mathematical
+ text.
  All following characters until the end of the mathematical text or until
  another size command will have the selected size.
  Two examples:
@@ -19166,6 +19346,13 @@ A
 \begin_layout Standard
 If a symbol cannot be displayed in different sizes, it will always be displayed
  in the default size.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -22747,13 +22934,6 @@ fi
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Relations
 \begin_inset CommandInset label
@@ -25482,13 +25662,6 @@ In an inline formula less space is set before the function names for all
  variants.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Special Characters
 \begin_inset Index
@@ -26801,7 +26974,7 @@ The accents
 \series bold
 '
 \series default
- , and 
+ and 
 \series bold
 ^
 \series default
@@ -26879,8 +27052,8 @@ u
 \backslash
 v
 \series default
-, and accents inserted directly with the keyboard are also available in
- mathematical text.
+ and accents that are inserted directly with the keyboard are also available
+ in mathematical text.
  For the other accents there are special math commands to be used in formulas,
  see 
 \begin_inset CommandInset ref
@@ -27382,13 +27555,6 @@ else
 textdegree
 \backslash
 fi}
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -30869,13 +31035,6 @@ Note:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -31949,6 +32108,13 @@ key "mhchem"
 .
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Diagrams
 \end_layout
@@ -32037,7 +32203,7 @@ To create the relations there are the following commands:
 \series bold
 @>>>
 \series default
- a right arrow, and 
+ a right arrow and 
 \series bold
 @=
 \series default
@@ -32053,7 +32219,7 @@ To create the relations there are the following commands:
 \series bold
 @VVV
 \series default
- an down arrow, and 
+ an down arrow and 
 \series bold
 @|
 \series default
@@ -32285,13 +32451,6 @@ XY-pic
 Manual
 \family default
 .
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -33010,7 +33169,7 @@ To define a command for the solution formula where only the three parameters
 \begin_inset Formula $p$
 \end_inset
 
-, and 
+ and 
 \begin_inset Formula $q$
 \end_inset
 
@@ -33326,7 +33485,7 @@ Here is our macro example with the arguments
 \begin_inset Formula $\ln(x)$
 \end_inset
 
-, and 
+ and 
 \begin_inset Formula $B$
 \end_inset
 
@@ -35824,7 +35983,7 @@ reference "eq:within"
 \end_inset
 
  consists of five columns whereas in the first two columns contain the equation,
- the third the matrix, and the last one an empty TeX-brace.
+ the third the matrix and the last one an empty TeX-brace.
 \begin_inset Formula \begin{flalign}
 \hspace{30pt}F_{A} & =\rho·V·g & \footnotesize\begin{array}{ll}
 \rho & \textrm{density}\\
@@ -36428,7 +36587,7 @@ Components of matrices are set italic:
 \end_layout
 
 \begin_layout Itemize
-The differentiation/integration operator 'd', the Euler's number 'e', and
+The differentiation/integration operator 'd', the Euler's number 'e' and
  the imaginary unit 'i' should be set upright, to avoid mixing them up with
  other variables.
 \end_layout
