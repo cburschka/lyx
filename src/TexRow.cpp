@@ -44,6 +44,12 @@ void TexRow::newline()
 	rowlist.push_back(tmp);
 }
 
+void TexRow::newlines(int num_lines)
+{
+	for (int i = 0; i < num_lines; ++i) {
+		newline();
+	}
+}
 
 bool TexRow::getIdFromRow(int row, int & id, int & pos) const
 {

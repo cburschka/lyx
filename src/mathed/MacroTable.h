@@ -81,7 +81,7 @@ public:
 	MacroType & type() { return type_; }
 	
 	/// output as TeX macro, only works for lazy MacroData!!!
-	void write(odocstream & os, bool overwriteRedefinition) const;
+	int write(odocstream & os, bool overwriteRedefinition) const;
 
 	///
 	bool operator==(MacroData const & x) const {
