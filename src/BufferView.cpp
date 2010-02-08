@@ -1024,11 +1024,6 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		flag.setEnabled(true);
 		break;
 
-	case LFUN_REGEXP_MODE:
-		flag.setEnabled(buffer().isInternal() && !cur.inRegexped()
-				&& cur.inset().lyxCode() != ERT_CODE);
-		break;
-
 	case LFUN_LABEL_COPY_AS_REF: {
 		// if there is an inset at cursor, see whether it
 		// handles the lfun

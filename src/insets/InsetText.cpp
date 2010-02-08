@@ -298,17 +298,6 @@ bool InsetText::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
 	switch (cmd.action) {
-	case LFUN_LAYOUT:
-		status.setEnabled(!forcePlainLayout());
-		return true;
-
-	case LFUN_LAYOUT_PARAGRAPH:
-	case LFUN_PARAGRAPH_PARAMS:
-	case LFUN_PARAGRAPH_PARAMS_APPLY:
-	case LFUN_PARAGRAPH_UPDATE:
-		status.setEnabled(allowParagraphCustomization());
-		return true;
-
 	case LFUN_INSET_DISSOLVE: {
 		bool const main_inset = &buffer().inset() == this;
 		bool const target_inset = cmd.argument().empty() 

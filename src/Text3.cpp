@@ -2393,6 +2393,11 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		code = MATH_HULL_CODE;
 		break;
 
+	case LFUN_REGEXP_MODE:
+		code = MATH_HULL_CODE;
+		enable = cur.buffer()->isInternal() && !cur.inRegexped();
+		break;
+
 	case LFUN_INSET_MODIFY:
 		// We need to disable this, because we may get called for a
 		// tabular cell via
@@ -2403,31 +2408,38 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_FONT_EMPH:
 		flag.setOnOff(fontinfo.emph() == FONT_ON);
+		enable = !cur.inset().getLayout().isPassThru();
 		break;
 
 	case LFUN_FONT_ITAL:
 		flag.setOnOff(fontinfo.shape() == ITALIC_SHAPE);
+		enable = !cur.inset().getLayout().isPassThru();
 		break;
 
 	case LFUN_FONT_NOUN:
 		flag.setOnOff(fontinfo.noun() == FONT_ON);
+		enable = !cur.inset().getLayout().isPassThru();
 		break;
 
 	case LFUN_FONT_BOLD:
 	case LFUN_FONT_BOLDSYMBOL:
 		flag.setOnOff(fontinfo.series() == BOLD_SERIES);
+		enable = !cur.inset().getLayout().isPassThru();
 		break;
 
 	case LFUN_FONT_SANS:
 		flag.setOnOff(fontinfo.family() == SANS_FAMILY);
+		enable = !cur.inset().getLayout().isPassThru();
 		break;
 
 	case LFUN_FONT_ROMAN:
 		flag.setOnOff(fontinfo.family() == ROMAN_FAMILY);
+		enable = !cur.inset().getLayout().isPassThru();
 		break;
 
 	case LFUN_FONT_TYPEWRITER:
 		flag.setOnOff(fontinfo.family() == TYPEWRITER_FAMILY);
+		enable = !cur.inset().getLayout().isPassThru();
 		break;
 
 	case LFUN_CUT:
@@ -2559,6 +2571,47 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		enable = theSpellChecker();
 		break;
 
+	case LFUN_LAYOUT:
+		enable = !cur.inset().forcePlainLayout();
+		break;
+		
+	case LFUN_LAYOUT_PARAGRAPH:
+	case LFUN_PARAGRAPH_PARAMS:
+	case LFUN_PARAGRAPH_PARAMS_APPLY:
+	case LFUN_PARAGRAPH_UPDATE:
+		enable = cur.inset().allowParagraphCustomization();
+		break;
+
+	// FIXME: why are accent lfuns forbidden with pass_thru layouts?
+	case LFUN_ACCENT_ACUTE:
+	case LFUN_ACCENT_BREVE:
+	case LFUN_ACCENT_CARON:
+	case LFUN_ACCENT_CEDILLA:
+	case LFUN_ACCENT_CIRCLE:
+	case LFUN_ACCENT_CIRCUMFLEX:
+	case LFUN_ACCENT_DOT:
+	case LFUN_ACCENT_GRAVE:
+	case LFUN_ACCENT_HUNGARIAN_UMLAUT:
+	case LFUN_ACCENT_MACRON:
+	case LFUN_ACCENT_OGONEK:
+	case LFUN_ACCENT_TIE:
+	case LFUN_ACCENT_TILDE:
+	case LFUN_ACCENT_UMLAUT:
+	case LFUN_ACCENT_UNDERBAR:
+	case LFUN_ACCENT_UNDERDOT:
+	case LFUN_FONT_DEFAULT:
+	case LFUN_FONT_FRAK:
+	case LFUN_FONT_SIZE:
+	case LFUN_FONT_STATE:
+	case LFUN_FONT_UNDERLINE:
+	case LFUN_FONT_STRIKEOUT:
+	case LFUN_FONT_UULINE:
+	case LFUN_FONT_UWAVE:
+	case LFUN_TEXTSTYLE_APPLY:
+	case LFUN_TEXTSTYLE_UPDATE:
+		enable = !cur.inset().getLayout().isPassThru();
+		break;
+
 	case LFUN_WORD_DELETE_FORWARD:
 	case LFUN_WORD_DELETE_BACKWARD:
 	case LFUN_LINE_DELETE:
@@ -2588,6 +2641,15 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_WORD_LEFT_SELECT:
 	case LFUN_WORD_SELECT:
 	case LFUN_SECTION_SELECT:
+	case LFUN_BUFFER_BEGIN:
+	case LFUN_BUFFER_END:
+	case LFUN_BUFFER_BEGIN_SELECT:
+	case LFUN_BUFFER_END_SELECT:
+	case LFUN_INSET_BEGIN:
+	case LFUN_INSET_END:
+	case LFUN_INSET_BEGIN_SELECT:
+	case LFUN_INSET_END_SELECT:
+	case LFUN_INSET_SELECT_ALL:
 	case LFUN_PARAGRAPH_UP:
 	case LFUN_PARAGRAPH_DOWN:
 	case LFUN_LINE_BEGIN:
@@ -2602,48 +2664,10 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_SERVER_GET_XY:
 	case LFUN_SERVER_SET_XY:
 	case LFUN_SERVER_GET_LAYOUT:
-	case LFUN_LAYOUT:
 	case LFUN_SELF_INSERT:
-	case LFUN_FONT_DEFAULT:
-	case LFUN_FONT_UNDERLINE:
-	case LFUN_FONT_STRIKEOUT:
-	case LFUN_FONT_UULINE:
-	case LFUN_FONT_UWAVE:
-	case LFUN_FONT_SIZE:
-	case LFUN_TEXTSTYLE_APPLY:
-	case LFUN_TEXTSTYLE_UPDATE:
-	case LFUN_LAYOUT_PARAGRAPH:
-	case LFUN_PARAGRAPH_UPDATE:
-	case LFUN_ACCENT_UMLAUT:
-	case LFUN_ACCENT_CIRCUMFLEX:
-	case LFUN_ACCENT_GRAVE:
-	case LFUN_ACCENT_ACUTE:
-	case LFUN_ACCENT_TILDE:
-	case LFUN_ACCENT_CEDILLA:
-	case LFUN_ACCENT_MACRON:
-	case LFUN_ACCENT_DOT:
-	case LFUN_ACCENT_UNDERDOT:
-	case LFUN_ACCENT_UNDERBAR:
-	case LFUN_ACCENT_CARON:
-	case LFUN_ACCENT_BREVE:
-	case LFUN_ACCENT_TIE:
-	case LFUN_ACCENT_HUNGARIAN_UMLAUT:
-	case LFUN_ACCENT_CIRCLE:
-	case LFUN_ACCENT_OGONEK:
-	case LFUN_THESAURUS_ENTRY:
-	case LFUN_PARAGRAPH_PARAMS_APPLY:
-	case LFUN_PARAGRAPH_PARAMS:
-	case LFUN_ESCAPE:
-	case LFUN_BUFFER_BEGIN:
-	case LFUN_BUFFER_END:
-	case LFUN_BUFFER_BEGIN_SELECT:
-	case LFUN_BUFFER_END_SELECT:
-	case LFUN_INSET_BEGIN:
-	case LFUN_INSET_END:
-	case LFUN_INSET_BEGIN_SELECT:
-	case LFUN_INSET_END_SELECT:
-	case LFUN_INSET_SELECT_ALL:
 	case LFUN_UNICODE_INSERT:
+	case LFUN_THESAURUS_ENTRY:
+	case LFUN_ESCAPE:
 		// these are handled in our dispatch()
 		enable = true;
 		break;
@@ -2657,48 +2681,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		|| !cur.inset().insetAllowed(code)
 		|| cur.paragraph().layout().pass_thru))
 		enable = false;
-
-	switch (cmd.action) {
-	case LFUN_ACCENT_ACUTE:
-	case LFUN_ACCENT_BREVE:
-	case LFUN_ACCENT_CARON:
-	case LFUN_ACCENT_CEDILLA:
-	case LFUN_ACCENT_CIRCLE:
-	case LFUN_ACCENT_CIRCUMFLEX:
-	case LFUN_ACCENT_DOT:
-	case LFUN_ACCENT_GRAVE:
-	case LFUN_ACCENT_HUNGARIAN_UMLAUT:
-	case LFUN_ACCENT_MACRON:
-	case LFUN_ACCENT_OGONEK:
-	case LFUN_ACCENT_TIE:
-	case LFUN_ACCENT_TILDE:
-	case LFUN_ACCENT_UMLAUT:
-	case LFUN_ACCENT_UNDERBAR:
-	case LFUN_ACCENT_UNDERDOT:
-	case LFUN_FONT_BOLD:
-	case LFUN_FONT_BOLDSYMBOL:
-	case LFUN_FONT_TYPEWRITER:
-	case LFUN_FONT_DEFAULT:
-	case LFUN_FONT_EMPH:
-	case LFUN_FONT_NOUN:
-	case LFUN_FONT_ROMAN:
-	case LFUN_FONT_SANS:
-	case LFUN_FONT_FRAK:
-	case LFUN_FONT_ITAL:
-	case LFUN_FONT_SIZE:
-	case LFUN_FONT_STATE:
-	case LFUN_FONT_UNDERLINE:
-	case LFUN_FONT_STRIKEOUT:
-	case LFUN_FONT_UULINE:
-	case LFUN_FONT_UWAVE:
-	case LFUN_TEXTSTYLE_APPLY:
-	case LFUN_TEXTSTYLE_UPDATE:
-		if (cur.inset().getLayout().isPassThru())
-			enable = false;
-		break;
-	default:
-		break;
-	}
 
 	flag.setEnabled(enable);
 	return true;
