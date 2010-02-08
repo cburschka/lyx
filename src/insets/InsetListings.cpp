@@ -24,6 +24,7 @@
 #include "FuncStatus.h"
 #include "InsetCaption.h"
 #include "Language.h"
+#include "Lexer.h"
 #include "MetricsInfo.h"
 #include "output_latex.h"
 #include "output_xhtml.h"

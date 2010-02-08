@@ -14,7 +14,6 @@
 
 #include <map>
 #include <exception>
-#include "Lexer.h"
 #include "InsetCollapsable.h"
 
 namespace lyx {
