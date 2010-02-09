@@ -2641,8 +2641,8 @@ docstring Paragraph::asString(pos_type beg, pos_type end, int options) const
 	odocstringstream os;
 
 	if (beg == 0 
-		&& options & AS_STR_LABEL
-		&& !d->params_.labelString().empty())
+	    && options & AS_STR_LABEL
+	    && !d->params_.labelString().empty())
 		os << d->params_.labelString() << ' ';
 
 	for (pos_type i = beg; i < end; ++i) {
