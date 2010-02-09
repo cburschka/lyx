@@ -26,7 +26,7 @@
 #include "Cursor.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "LyXFunc.h"
+#include "LyX.h"
 #include "LyXRC.h"
 #include "Paragraph.h"
 #include "TextClass.h"

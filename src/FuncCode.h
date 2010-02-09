@@ -22,7 +22,7 @@ namespace lyx {
  * through which the frontends communicate with the core.
  *
  * They are managed in LyXAction.cpp and handled in various
- * ::dispatch() functions, starting with LyXFunc.C:dispatch(),
+ * ::dispatch() functions, starting with Application::dispatch(),
  * BufferView::dispatch(), Cursor::dispatch() and
  * Inset*::doDispatch();
  */

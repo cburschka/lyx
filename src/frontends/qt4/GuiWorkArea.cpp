@@ -32,7 +32,7 @@
 #include "GuiView.h"
 #include "KeySymbol.h"
 #include "Language.h"
-#include "LyXFunc.h"
+#include "LyX.h"
 #include "LyXRC.h"
 #include "LyXVC.h"
 #include "MetricsInfo.h"

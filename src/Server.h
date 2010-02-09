@@ -25,7 +25,6 @@
 
 namespace lyx {
 
-class LyXFunc;
 class Server;
 
 
@@ -188,15 +187,12 @@ public:
 	// FIXME IN 0.13
 	// Hack! This should be changed in 0.13
 
-	// The lyx server should not take an argument "LyXFunc" but this is
-	// how it will be done for 0.12. In 0.13 we must write a non-gui
-	// bufferview.
 	// IMO lyxserver is atypical, and for the moment the only one, non-gui
 	// bufferview. We just have to find a way to handle situations like if
 	// lyxserver is using a buffer that is being edited with a bufferview.
 	// With a common buffer list this is not a problem, maybe. (Alejandro)
 	///
-	Server(LyXFunc * f, std::string const & pip);
+	Server(std::string const & pip);
 	///
 	~Server();
 	///
@@ -219,13 +215,11 @@ private:
 	///
 	int numclients_;
 	///
-	LyXFunc * func_;
-	///
 	LyXComm pipes_;
 };
 
 /// Implementation is in LyX.cpp
-extern Server & theServer();
+Server & theServer();
 
 
 } // namespace lyx

@@ -29,7 +29,6 @@
 #include "LayoutFile.h"
 #include "LayoutModuleList.h"
 #include "LyX.h"
-#include "LyXFunc.h"
 #include "LyXRC.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"

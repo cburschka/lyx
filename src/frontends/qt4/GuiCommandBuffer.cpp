@@ -21,7 +21,7 @@
 
 #include "BufferView.h"
 #include "Cursor.h"
-#include "LyXFunc.h"
+#include "LyX.h"
 #include "LyXAction.h"
 #include "FuncRequest.h"
 #include "Session.h"

@@ -20,7 +20,7 @@
 #include "FuncRequest.h"
 #include "GuiWorkArea.h"
 #include "GuiView.h"
-#include "LyXFunc.h"
+#include "LyX.h"
 #include "LyXRC.h"
 #include "Paragraph.h"
 #include "version.h"

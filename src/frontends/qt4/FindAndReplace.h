@@ -20,7 +20,6 @@
 #include "BufferView.h"
 #include "Buffer.h"
 #include "LyX.h"
-#include "LyXFunc.h"
 #include "Text.h"
 #include "lyxfind.h"
 

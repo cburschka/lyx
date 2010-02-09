@@ -26,7 +26,6 @@ class ErrorItem;
 class FuncRequest;
 class FuncStatus;
 class KeyMap;
-class LyXFunc;
 class Messages;
 class Mover;
 class Movers;
@@ -124,7 +123,6 @@ private:
 	friend void dispatch(FuncRequest const & action);
 	friend void dispatch(FuncRequest const & action, DispatchResult & dr);
 	friend BufferList & theBufferList();
-	friend LyXFunc & theLyXFunc();
 	friend Server & theServer();
 	friend ServerSocket & theServerSocket();
 	friend Converters & theConverters();
@@ -159,6 +157,12 @@ void lyx_exit(int exit_code);
 void setRcGuiLanguage();
 /// Execute batch commands if available.
 void execBatchCommands();
+
+///
+FuncStatus getStatus(FuncRequest const & action);
+
+///
+void dispatch(FuncRequest const & action);
 
 } // namespace lyx
 

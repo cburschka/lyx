@@ -15,7 +15,7 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "GuiView.h"
-#include "LyXFunc.h"
+#include "LyX.h"
 #include "qt_helpers.h"
 
 #include "support/debug.h"
@@ -61,7 +61,7 @@ void Action::update()
 
 void Action::action()
 {
-	//LYXERR(Debug::ACTION, "calling LyXFunc::dispatch: func_: ");
+	//LYXERR(Debug::ACTION, "calling lyx::dispatch: func_: ");
 
 	lyx::dispatch(func_);
 	triggered(this);

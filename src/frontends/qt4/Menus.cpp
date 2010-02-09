@@ -41,8 +41,7 @@
 #include "Language.h"
 #include "Lexer.h"
 #include "LyXAction.h"
-#include "LyX.h" // for lastfiles
-#include "LyXFunc.h"
+#include "LyX.h"
 #include "LyXRC.h"
 #include "Paragraph.h"
 #include "ParIterator.h"

@@ -44,8 +44,8 @@
 
 #include "DispatchResult.h"
 #include "FuncRequest.h"
+#include "LyX.h"
 #include "LyXAction.h"
-#include "LyXFunc.h"
 
 #include "frontends/Application.h"
 
@@ -988,8 +988,8 @@ void ServerCallback(Server * server, string const & msg)
 	server->callback(msg);
 }
 
-Server::Server(LyXFunc * f, string const & pipes)
-	: numclients_(0), func_(f), pipes_(pipes, this, &ServerCallback)
+Server::Server(string const & pipes)
+	: numclients_(0), pipes_(pipes, this, &ServerCallback)
 {}
 
 
@@ -1115,7 +1115,7 @@ void Server::callback(string const & msg)
 
 			FuncRequest const fr(lyxaction.lookupFunc(cmd), arg);
 			DispatchResult dr;
-			func_->dispatch(fr, dr);
+			theApp()->dispatch(fr, dr);
 			string const rval = to_utf8(dr.message());
 
 			// all commands produce an INFO or ERROR message

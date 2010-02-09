@@ -18,8 +18,8 @@
 
 #include "DispatchResult.h"
 #include "FuncRequest.h"
+#include "LyX.h"
 #include "LyXAction.h"
-#include "LyXFunc.h"
 
 #include "frontends/Application.h"
 
@@ -47,9 +47,8 @@ namespace lyx {
 // Address is the unix address for the socket.
 // MAX_CLIENTS is the maximum number of clients
 // that can connect at the same time.
-ServerSocket::ServerSocket(LyXFunc * f, FileName const & addr)
-	: func(f),
-	  fd_(socktools::listen(addr, 3)),
+ServerSocket::ServerSocket(FileName const & addr)
+	: fd_(socktools::listen(addr, 3)),
 	  address_(addr)
 {
 	if (fd_ == -1) {
@@ -143,7 +142,7 @@ void ServerSocket::dataCallback(int fd)
 		if (key == "LYXCMD") {
 			string const cmd = line.substr(pos + 1);
 			DispatchResult dr;
-			func->dispatch(lyxaction.lookupFunc(cmd), dr);
+			theApp()->dispatch(lyxaction.lookupFunc(cmd), dr);
 			string const rval = to_utf8(dr.message());
 			if (dr.error())
 				client->writeln("ERROR:" + cmd + ':' + rval);

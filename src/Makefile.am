@@ -141,7 +141,6 @@ SOURCEFILESCORE = \
 	LyX.cpp \
 	LyXAction.cpp \
 	lyxfind.cpp \
-	LyXFunc.cpp \
 	LyXRC.cpp \
 	LyXVC.cpp \
 	MetricsInfo.cpp \
@@ -241,7 +240,6 @@ HEADERFILESCORE = \
 	Lexer.h \
 	LyXAction.h \
 	lyxfind.h \
-	LyXFunc.h \
 	LyX.h \
 	LyXRC.h \
 	LyXVC.h \

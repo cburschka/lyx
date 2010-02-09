@@ -34,7 +34,7 @@
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
-#include "LyXFunc.h"
+#include "LyX.h"
 #include "LyXRC.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"

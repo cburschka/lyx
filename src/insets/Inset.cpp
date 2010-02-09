@@ -330,7 +330,7 @@ bool Inset::getStatus(Cursor &, FuncRequest const & cmd,
 	// be applied. This is either changed to LFUN_INSET_MODIFY (if the
 	// dialog belongs to us) or LFUN_INSET_INSERT (if the dialog does
 	// not belong to us, i. e. the dialog was open, and the user moved
-	// the cursor in our inset) in LyXFunc::getStatus().
+	// the cursor in our inset) in lyx::getStatus().
 	// Dialogs::checkStatus() ensures that the dialog is deactivated if
 	// LFUN_INSET_APPLY is disabled.
 

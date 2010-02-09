@@ -35,8 +35,8 @@
 #include "Language.h"
 #include "LayoutFile.h"
 #include "Lexer.h"
+#include "LyX.h"
 #include "LyXAction.h"
-#include "LyXFunc.h"
 #include "LyXRC.h"
 #include "ModuleList.h"
 #include "Mover.h"
@@ -138,8 +138,6 @@ struct LyX::Impl
 		delete hunspell_checker_;
 	}
 
-	/// our function handler
-	LyXFunc lyxfunc_;
 	///
 	BufferList buffer_list_;
 	///
@@ -354,8 +352,8 @@ int LyX::exec(int & argc, char * argv[])
 	*/
 	// Note: socket callback must be registered after init(argc, argv)
 	// such that package().temp_dir() is properly initialized.
-	pimpl_->lyx_server_.reset(new Server(&pimpl_->lyxfunc_, lyxrc.lyxpipes));
-	pimpl_->lyx_socket_.reset(new ServerSocket(&pimpl_->lyxfunc_,
+	pimpl_->lyx_server_.reset(new Server(lyxrc.lyxpipes));
+	pimpl_->lyx_socket_.reset(new ServerSocket(
 			FileName(package().temp_dir().absFilename() + "/lyxsocket")));
 
 	// Start the real execution loop.
@@ -517,27 +515,27 @@ void LyX::execCommands()
 		{
 		case 0:
 			// regular reconfigure
-			pimpl_->lyxfunc_.dispatch(FuncRequest(LFUN_RECONFIGURE, ""));
+			lyx::dispatch(FuncRequest(LFUN_RECONFIGURE, ""));
 			break;
 		case 1:
 			// reconfigure --without-latex-config
-			pimpl_->lyxfunc_.dispatch(FuncRequest(LFUN_RECONFIGURE,
+			lyx::dispatch(FuncRequest(LFUN_RECONFIGURE,
 				" --without-latex-config"));
 			break;
 		default:
-			pimpl_->lyxfunc_.dispatch(FuncRequest(LFUN_LYX_QUIT));
+			lyx::dispatch(FuncRequest(LFUN_LYX_QUIT));
 			return;
 		}
 	}
 	
 	// create the first main window
-	pimpl_->lyxfunc_.dispatch(FuncRequest(LFUN_WINDOW_NEW, geometryArg));
+	lyx::dispatch(FuncRequest(LFUN_WINDOW_NEW, geometryArg));
 
 	if (!pimpl_->files_to_load_.empty()) {
 		// if some files were specified at command-line we assume that the
 		// user wants to edit *these* files and not to restore the session.
 		for (size_t i = 0; i != pimpl_->files_to_load_.size(); ++i) {
-			pimpl_->lyxfunc_.dispatch(
+			lyx::dispatch(
 				FuncRequest(LFUN_FILE_OPEN, pimpl_->files_to_load_[i]));
 		}
 		// clear this list to save a few bytes of RAM
@@ -553,7 +551,7 @@ void LyX::execCommands()
 	vector<string>::const_iterator bcend = pimpl_->batch_commands.end();
 	for (; bcit != bcend; bcit++) {
 		LYXERR(Debug::INIT, "About to handle -x '" << *bcit << '\'');
-		pimpl_->lyxfunc_.dispatch(lyxaction.lookupFunc(*bcit));
+		lyx::dispatch(lyxaction.lookupFunc(*bcit));
 	}
 }
 
@@ -1146,22 +1144,22 @@ void LyX::easyParse(int & argc, char * argv[])
 
 FuncStatus getStatus(FuncRequest const & action)
 {
-	LASSERT(singleton_, /**/);
-	return singleton_->pimpl_->lyxfunc_.getStatus(action);
+	LASSERT(theApp(), /**/);
+	return theApp()->getStatus(action);
 }
 
 
 void dispatch(FuncRequest const & action)
 {
-	LASSERT(singleton_, /**/);
-	singleton_->pimpl_->lyxfunc_.dispatch(action);
+	LASSERT(theApp(), /**/);
+	return theApp()->dispatch(action);
 }
 
 
 void dispatch(FuncRequest const & action, DispatchResult & dr)
 {
-	LASSERT(singleton_, /**/);
-	singleton_->pimpl_->lyxfunc_.dispatch(action, dr);
+	LASSERT(theApp(), /**/);
+	return theApp()->dispatch(action, dr);
 }
 
 
@@ -1169,13 +1167,6 @@ BufferList & theBufferList()
 {
 	LASSERT(singleton_, /**/);
 	return singleton_->pimpl_->buffer_list_;
-}
-
-
-LyXFunc & theLyXFunc()
-{
-	LASSERT(singleton_, /**/);
-	return singleton_->pimpl_->lyxfunc_;
 }
 
 

@@ -29,7 +29,7 @@
 #include "InsetIterator.h"
 #include "InsetList.h"
 #include "Language.h"
-#include "LyXFunc.h"
+#include "LyX.h"
 #include "LyXRC.h"
 #include "Text.h"
 #include "Paragraph.h"

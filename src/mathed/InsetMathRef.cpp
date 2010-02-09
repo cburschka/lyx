@@ -18,7 +18,7 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
-#include "LyXFunc.h"
+#include "LyX.h"
 #include "MathData.h"
 #include "MathFactory.h"
 #include "MathSupport.h"

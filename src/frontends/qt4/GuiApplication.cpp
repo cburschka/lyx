@@ -33,6 +33,7 @@
 #include "Buffer.h"
 #include "BufferList.h"
 #include "BufferView.h"
+#include "CmdDef.h"
 #include "Color.h"
 #include "Font.h"
 #include "FuncRequest.h"
@@ -44,14 +45,14 @@
 #include "Lexer.h"
 #include "LyX.h"
 #include "LyXAction.h"
-#include "LyXFunc.h"
 #include "LyXRC.h"
+#include "Paragraph.h"
 #include "Server.h"
 #include "Session.h"
 #include "SpellChecker.h"
 #include "version.h"
 
-#include "support/lassert.h"
+#include "support/convert.h"
 #include "support/debug.h"
 #include "support/ExceptionMessage.h"
 #include "support/FileName.h"
@@ -59,6 +60,7 @@
 #include "support/foreach.h"
 #include "support/ForkedCalls.h"
 #include "support/gettext.h"
+#include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/lyxalgo.h" // sorted
 #include "support/Messages.h"
@@ -830,11 +832,104 @@ LyXView * GuiApplication::currentWindow()
 }
 
 
-bool GuiApplication::getStatus(FuncRequest const & cmd, FuncStatus & flag) const
+FuncStatus GuiApplication::getStatus(FuncRequest const & cmd) const
 {
-	bool enable = true;
+	FuncStatus flag;
 
-	switch(cmd.action) {
+	if (cmd.action == LFUN_NOACTION) {
+		flag.message(from_utf8(N_("Nothing to do")));
+		flag.setEnabled(false);
+		return flag;
+	}
+
+	if (cmd.action == LFUN_UNKNOWN_ACTION) {
+		flag.unknown(true);
+		flag.setEnabled(false);
+		flag.message(from_utf8(N_("Unknown action")));
+		return flag;
+	}
+
+	// I would really like to avoid having this switch and rather try to
+	// encode this in the function itself.
+	// -- And I'd rather let an inset decide which LFUNs it is willing
+	// to handle (Andre')
+	bool enable = true;
+	switch (cmd.action) {
+
+	// This could be used for the no-GUI version. The GUI version is handled in
+	// LyXView::getStatus(). See above.
+	/*
+	case LFUN_BUFFER_WRITE:
+	case LFUN_BUFFER_WRITE_AS: {
+		Buffer * b = theBufferList().getBuffer(FileName(cmd.getArg(0)));
+		enable = b && (b->isUnnamed() || !b->isClean());
+		break;
+	}
+	*/
+
+	case LFUN_BOOKMARK_GOTO: {
+		const unsigned int num = convert<unsigned int>(to_utf8(cmd.argument()));
+		enable = theSession().bookmarks().isValid(num);
+		break;
+	}
+
+	case LFUN_BOOKMARK_CLEAR:
+		enable = theSession().bookmarks().hasValid();
+		break;
+
+	// this one is difficult to get right. As a half-baked
+	// solution, we consider only the first action of the sequence
+	case LFUN_COMMAND_SEQUENCE: {
+		// argument contains ';'-terminated commands
+		string const firstcmd = token(to_utf8(cmd.argument()), ';', 0);
+		FuncRequest func(lyxaction.lookupFunc(firstcmd));
+		func.origin = cmd.origin;
+		flag = getStatus(func);
+		break;
+	}
+
+	// we want to check if at least one of these is enabled
+	case LFUN_COMMAND_ALTERNATIVES: {
+		// argument contains ';'-terminated commands
+		string arg = to_utf8(cmd.argument());
+		while (!arg.empty()) {
+			string first;
+			arg = split(arg, first, ';');
+			FuncRequest func(lyxaction.lookupFunc(first));
+			func.origin = cmd.origin;
+			flag = getStatus(func);
+			// if this one is enabled, the whole thing is
+			if (flag.enabled())
+				break;
+		}
+		break;
+	}
+
+	case LFUN_CALL: {
+		FuncRequest func;
+		string name = to_utf8(cmd.argument());
+		if (theTopLevelCmdDef().lock(name, func)) {
+			func.origin = cmd.origin;
+			flag = getStatus(func);
+			theTopLevelCmdDef().release(name);
+		} else {
+			// catch recursion or unknown command
+			// definition. all operations until the
+			// recursion or unknown command definition
+			// occurs are performed, so set the state to
+			// enabled
+			enable = true;
+		}
+		break;
+	}
+
+	case LFUN_CURSOR_FOLLOWS_SCROLLBAR_TOGGLE:
+	case LFUN_REPEAT:
+	case LFUN_PREFERENCES_SAVE:
+	case LFUN_BUFFER_SAVE_AS_DEFAULT:
+	case LFUN_DEBUG_LEVEL_SET:
+		// these are handled in our dispatch()
+		break;
 
 	case LFUN_WINDOW_CLOSE:
 		enable = d->views_.size() > 0;
@@ -859,15 +954,190 @@ bool GuiApplication::getStatus(FuncRequest const & cmd, FuncStatus & flag) const
 		break;
 
 	default:
-		return false;
+		// Does the view know something?
+		if (!current_view_) {
+			enable = false;
+			break;
+		}
+
+		if (current_view_->getStatus(cmd, flag))
+			break;
+
+		// In LyX/Mac, when a dialog is open, the menus of the
+		// application can still be accessed without giving focus to
+		// the main window. In this case, we want to disable the menu
+		// entries that are buffer or view-related.
+		//FIXME: Abdel (09/02/10) This has very bad effect on Linux, don't know why...
+		/*
+		if (cmd.origin == FuncRequest::MENU && !current_view_->hasFocus()) {
+			enable = false;
+			break;
+		}
+		*/
+
+		BufferView * bv = current_view_->currentBufferView();
+		BufferView * doc_bv = current_view_->documentBufferView();
+		// If we do not have a BufferView, then other functions are disabled
+		if (!bv) {
+			enable = false;
+			break;
+		}
+		// try the BufferView
+		bool decided = bv->getStatus(cmd, flag);
+		if (!decided)
+			// try the Buffer
+			decided = bv->buffer().getStatus(cmd, flag);
+		if (!decided && doc_bv)
+			// try the Document Buffer
+			decided = doc_bv->buffer().getStatus(cmd, flag);
 	}
 
 	if (!enable)
 		flag.setEnabled(false);
 
-	return true;
+	// the default error message if we disable the command
+	if (!flag.enabled() && flag.message().empty())
+		flag.message(from_utf8(N_("Command disabled")));
+
+	return flag;
 }
 
+/// make a post-dispatch status message
+static docstring makeDispatchMessage(docstring const & msg,
+				     FuncRequest const & cmd)
+{
+	const bool verbose = (cmd.origin == FuncRequest::MENU
+			      || cmd.origin == FuncRequest::TOOLBAR
+			      || cmd.origin == FuncRequest::COMMANDBUFFER);
+
+	if (cmd.action == LFUN_SELF_INSERT || !verbose) {
+		LYXERR(Debug::ACTION, "dispatch msg is " << msg);
+		return msg;
+	}
+
+	docstring dispatch_msg = msg;
+	if (!dispatch_msg.empty())
+		dispatch_msg += ' ';
+
+	docstring comname = from_utf8(lyxaction.getActionName(cmd.action));
+
+	bool argsadded = false;
+
+	if (!cmd.argument().empty()) {
+		if (cmd.action != LFUN_UNKNOWN_ACTION) {
+			comname += ' ' + cmd.argument();
+			argsadded = true;
+		}
+	}
+	docstring const shortcuts = theTopLevelKeymap().
+		printBindings(cmd, KeySequence::ForGui);
+
+	if (!shortcuts.empty())
+		comname += ": " + shortcuts;
+	else if (!argsadded && !cmd.argument().empty())
+		comname += ' ' + cmd.argument();
+
+	if (!comname.empty()) {
+		comname = rtrim(comname);
+		dispatch_msg += '(' + rtrim(comname) + ')';
+	}
+	LYXERR(Debug::ACTION, "verbose dispatch msg " << to_utf8(dispatch_msg));
+	return dispatch_msg;
+}
+
+
+void GuiApplication::dispatch(FuncRequest const & cmd)
+{
+	if (current_view_ && current_view_->currentBufferView())
+		current_view_->currentBufferView()->cursor().saveBeforeDispatchPosXY();
+
+	DispatchResult dr;
+	// redraw the screen at the end (first of the two drawing steps).
+	//This is done unless explicitly requested otherwise
+	dr.update(Update::FitCursor);
+	dispatch(cmd, dr);
+
+	if (!current_view_)
+		return;
+
+	BufferView * bv = current_view_->currentBufferView();
+	if (bv) {
+		// BufferView::update() updates the ViewMetricsInfo and
+		// also initializes the position cache for all insets in
+		// (at least partially) visible top-level paragraphs.
+		// We will redraw the screen only if needed.
+		bv->processUpdateFlags(dr.update());
+
+		// Do we have a selection?
+		theSelection().haveSelection(bv->cursor().selection());
+
+		// update gui
+		current_view_->restartCursor();
+	}
+	// Some messages may already be translated, so we cannot use _()
+	current_view_->message(makeDispatchMessage(
+			translateIfPossible(dr.message()), cmd));
+}
+
+
+void GuiApplication::gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer)
+{
+	LyXView * lv = current_view_;
+	LASSERT(lv, /**/);
+	if (!theSession().bookmarks().isValid(idx))
+		return;
+	BookmarksSection::Bookmark const & bm = theSession().bookmarks().bookmark(idx);
+	LASSERT(!bm.filename.empty(), /**/);
+	string const file = bm.filename.absFilename();
+	// if the file is not opened, open it.
+	if (!theBufferList().exists(bm.filename)) {
+		if (openFile)
+			dispatch(FuncRequest(LFUN_FILE_OPEN, file));
+		else
+			return;
+	}
+	// open may fail, so we need to test it again
+	if (!theBufferList().exists(bm.filename))
+		return;
+
+	// bm can be changed when saving
+	BookmarksSection::Bookmark tmp = bm;
+
+	// Special case idx == 0 used for back-from-back jump navigation
+	if (idx == 0)
+		dispatch(FuncRequest(LFUN_BOOKMARK_SAVE, "0"));
+
+	// if the current buffer is not that one, switch to it.
+	if (!lv->documentBufferView()
+		|| lv->documentBufferView()->buffer().fileName() != tmp.filename) {
+		if (!switchToBuffer)
+			return;
+		dispatch(FuncRequest(LFUN_BUFFER_SWITCH, file));
+	}
+
+	// moveToPosition try paragraph id first and then paragraph (pit, pos).
+	if (!lv->documentBufferView()->moveToPosition(
+		tmp.bottom_pit, tmp.bottom_pos, tmp.top_id, tmp.top_pos))
+		return;
+
+	// bm changed
+	if (idx == 0)
+		return;
+
+	// Cursor jump succeeded!
+	Cursor const & cur = lv->documentBufferView()->cursor();
+	pit_type new_pit = cur.pit();
+	pos_type new_pos = cur.pos();
+	int new_id = cur.paragraph().id();
+
+	// if bottom_pit, bottom_pos or top_id has been changed, update bookmark
+	// see http://www.lyx.org/trac/ticket/3092
+	if (bm.bottom_pit != new_pit || bm.bottom_pos != new_pos
+		|| bm.top_id != new_id) {
+		const_cast<BookmarksSection::Bookmark &>(bm).updatePos(
+			new_pit, new_pos, new_id);
+	}
+}
 
 // This function runs "configure" and then rereads lyx.defaults to
 // reconfigure the automatic settings.
@@ -906,8 +1176,35 @@ static void reconfigure(GuiView * lv, string const & option)
 }
 
 
+
 void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 {
+	string const argument = to_utf8(cmd.argument());
+	FuncCode const action = cmd.action;
+
+	LYXERR(Debug::ACTION, "cmd: " << cmd);
+
+	// we have not done anything wrong yet.
+	dr.setError(false);
+
+	FuncStatus const flag = getStatus(cmd);
+	if (!flag.enabled()) {
+		// We cannot use this function here
+		LYXERR(Debug::ACTION, "action "
+		       << lyxaction.getActionName(action)
+		       << " [" << action << "] is disabled at this location");
+		if (current_view_)
+			current_view_->restartCursor();
+		dr.setMessage(flag.message());
+		dr.setError(true);
+		dr.dispatched(false);
+		dr.update(Update::None);
+		return;
+	};
+
+	// Assumes that the action will be dispatched.
+	dr.dispatched(true);
+
 	switch (cmd.action) {
 
 	case LFUN_WINDOW_NEW:
@@ -917,7 +1214,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	case LFUN_WINDOW_CLOSE:
 		// update bookmark pit of the current buffer before window close
 		for (size_t i = 0; i < theSession().bookmarks().size(); ++i)
-			theLyXFunc().gotoBookmark(i+1, false, false);
+			gotoBookmark(i+1, false, false);
 		// clear the last opened list, because
 		// maybe this will end the session
 		theSession().lastOpened().clear();
@@ -934,22 +1231,22 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		break;
 
 	case LFUN_SCREEN_FONT_UPDATE: {
-		// handle the screen font changes.
-		d->font_loader_.update();
-		// Backup current_view_
-		GuiView * view = current_view_;
-		// Set current_view_ to zero to forbid GuiWorkArea::redraw()
-		// to skip the refresh.
-		current_view_ = 0;
-		theBufferList().changed(false);
-		// Restore current_view_
-		current_view_ = view;
-		break;
-	}
+			// handle the screen font changes.
+			d->font_loader_.update();
+			// Backup current_view_
+			GuiView * view = current_view_;
+			// Set current_view_ to zero to forbid GuiWorkArea::redraw()
+			// to skip the refresh.
+			current_view_ = 0;
+			theBufferList().changed(false);
+			// Restore current_view_
+			current_view_ = view;
+			break;
+		}
 
 	case LFUN_BUFFER_NEW:
 		if (d->views_.empty()
-		    || (!lyxrc.open_buffers_in_tabs && current_view_->documentBufferView() != 0)) {
+			|| (!lyxrc.open_buffers_in_tabs && current_view_->documentBufferView() != 0)) {
 			createView(QString(), false); // keep hidden
 			current_view_->newDocument(to_utf8(cmd.argument()), false);
 			current_view_->show();
@@ -961,7 +1258,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 	case LFUN_BUFFER_NEW_TEMPLATE:
 		if (d->views_.empty()
-		    || (!lyxrc.open_buffers_in_tabs && current_view_->documentBufferView() != 0)) {
+			|| (!lyxrc.open_buffers_in_tabs && current_view_->documentBufferView() != 0)) {
 			createView();
 			current_view_->newDocument(to_utf8(cmd.argument()), true);
 			if (!current_view_->documentBufferView())
@@ -974,7 +1271,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	case LFUN_FILE_OPEN:
 		// FIXME: create a new method shared with LFUN_HELP_OPEN.
 		if (d->views_.empty()
-		    || (!lyxrc.open_buffers_in_tabs && current_view_->documentBufferView() != 0)) {
+			|| (!lyxrc.open_buffers_in_tabs && current_view_->documentBufferView() != 0)) {
 			string const fname = to_utf8(cmd.argument());
 			// We want the ui session to be saved per document and not per
 			// window number. The filename crc is a good enough identifier.
@@ -998,16 +1295,16 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			break;
 		}
 		FileName fname = i18nLibFileSearch("doc", arg, "lyx");
-		if (fname.empty()) 
+		if (fname.empty())
 			fname = i18nLibFileSearch("examples", arg, "lyx");
 
 		if (fname.empty()) {
 			lyxerr << "LyX: unable to find documentation file `"
-				<< arg << "'. Bad installation?" << endl;
+					<< arg << "'. Bad installation?" << endl;
 			break;
 		}
 		current_view_->message(bformat(_("Opening help file %1$s..."),
-			makeDisplayPath(fname.absFilename())));
+					       makeDisplayPath(fname.absFilename())));
 		Buffer * buf = current_view_->loadDocument(fname, false);
 		if (buf) {
 			current_view_->setBuffer(buf);
@@ -1023,13 +1320,13 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		string const x11_name = split(to_utf8(cmd.argument()), lyx_name, ' ');
 		if (lyx_name.empty() || x11_name.empty()) {
 			current_view_->message(
-				_("Syntax: set-color <lyx_name> <x11_name>"));
+					_("Syntax: set-color <lyx_name> <x11_name>"));
 			break;
 		}
 
 		string const graphicsbg = lcolor.getLyXName(Color_graphicsbg);
 		bool const graphicsbg_changed = lyx_name == graphicsbg
-			&& x11_name != graphicsbg;
+						&& x11_name != graphicsbg;
 		if (graphicsbg_changed) {
 			// FIXME: The graphics cache no longer has a changeDisplay method.
 #if 0
@@ -1040,9 +1337,9 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		if (!lcolor.setColor(lyx_name, x11_name)) {
 			current_view_->message(
 					bformat(_("Set-color \"%1$s\" failed "
-							       "- color is undefined or "
-							       "may not be redefined"),
-								   from_utf8(lyx_name)));
+						  "- color is undefined or "
+						  "may not be redefined"),
+						from_utf8(lyx_name)));
 			break;
 		}
 		// Make sure we don't keep old colors in cache.
@@ -1061,8 +1358,8 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 		if (!success) {
 			lyxerr << "Warning in LFUN_LYXRC_APPLY!\n"
-				<< "Unable to read lyxrc data"
-				<< endl;
+					<< "Unable to read lyxrc data"
+					<< endl;
 			break;
 		}
 
@@ -1074,7 +1371,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	}
 
 	case LFUN_COMMAND_PREFIX:
-		lyx::dispatch(FuncRequest(LFUN_MESSAGE, d->keyseq.printOptions(true)));
+		dispatch(FuncRequest(LFUN_MESSAGE, d->keyseq.printOptions(true)));
 		break;
 
 	case LFUN_CANCEL: {
@@ -1103,7 +1400,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		GuiView * lv = currentView();
 		LASSERT(lv && lv->documentBufferView(), return);
 		docstring const fname = from_utf8(
-			lv->documentBufferView()->buffer().absFileName());
+				lv->documentBufferView()->buffer().absFileName());
 		dr.setMessage(fname);
 		LYXERR(Debug::INFO, "FNAME[" << fname << ']');
 		break;
@@ -1114,14 +1411,214 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		theServer().notifyClient(to_utf8(dispatch_buffer));
 		break;
 	}
+
+	case LFUN_CURSOR_FOLLOWS_SCROLLBAR_TOGGLE:
+		lyxrc.cursor_follows_scrollbar = !lyxrc.cursor_follows_scrollbar;
+		break;
+
+	case LFUN_REPEAT: {
+		// repeat command
+		string countstr;
+		string rest = split(argument, countstr, ' ');
+		istringstream is(countstr);
+		int count = 0;
+		is >> count;
+		//lyxerr << "repeat: count: " << count << " cmd: " << rest << endl;
+		for (int i = 0; i < count; ++i)
+			dispatch(lyxaction.lookupFunc(rest));
+		break;
+	}
+
+	case LFUN_COMMAND_SEQUENCE: {
+		// argument contains ';'-terminated commands
+		string arg = argument;
+		// FIXME: this LFUN should also work without any view.
+		Buffer * buffer = (current_view_ && current_view_->documentBufferView())
+				  ? &(current_view_->documentBufferView()->buffer()) : 0;
+		if (buffer)
+			buffer->undo().beginUndoGroup();
+		while (!arg.empty()) {
+			string first;
+			arg = split(arg, first, ';');
+			FuncRequest func(lyxaction.lookupFunc(first));
+			func.origin = cmd.origin;
+			dispatch(func);
+		}
+		// the buffer may have been closed by one action
+		if (theBufferList().isLoaded(buffer))
+			buffer->undo().endUndoGroup();
+		break;
+	}
+
+	case LFUN_COMMAND_ALTERNATIVES: {
+		// argument contains ';'-terminated commands
+		string arg = argument;
+		while (!arg.empty()) {
+			string first;
+			arg = split(arg, first, ';');
+			FuncRequest func(lyxaction.lookupFunc(first));
+			func.origin = cmd.origin;
+			FuncStatus stat = getStatus(func);
+			if (stat.enabled()) {
+				dispatch(func);
+				break;
+			}
+		}
+		break;
+	}
+
+	case LFUN_CALL: {
+		FuncRequest func;
+		if (theTopLevelCmdDef().lock(argument, func)) {
+			func.origin = cmd.origin;
+			dispatch(func);
+			theTopLevelCmdDef().release(argument);
+		} else {
+			if (func.action == LFUN_UNKNOWN_ACTION) {
+				// unknown command definition
+				lyxerr << "Warning: unknown command definition `"
+						<< argument << "'"
+						<< endl;
+			} else {
+				// recursion detected
+				lyxerr << "Warning: Recursion in the command definition `"
+						<< argument << "' detected"
+						<< endl;
+			}
+		}
+		break;
+	}
+
+	case LFUN_PREFERENCES_SAVE:
+		lyxrc.write(support::makeAbsPath("preferences",
+			package().user_support().absFilename()), false);
+		break;
+
+	case LFUN_BUFFER_SAVE_AS_DEFAULT: {
+		string const fname = addName(addPath(package().user_support().absFilename(),
+			"templates/"), "defaults.lyx");
+		Buffer defaults(fname);
+
+		istringstream ss(argument);
+		Lexer lex;
+		lex.setStream(ss);
+		int const unknown_tokens = defaults.readHeader(lex);
+
+		if (unknown_tokens != 0) {
+			lyxerr << "Warning in LFUN_BUFFER_SAVE_AS_DEFAULT!\n"
+					<< unknown_tokens << " unknown token"
+					<< (unknown_tokens == 1 ? "" : "s")
+					<< endl;
+		}
+
+		if (defaults.writeFile(FileName(defaults.absFileName())))
+			dr.setMessage(bformat(_("Document defaults saved in %1$s"),
+					      makeDisplayPath(fname)));
+		else {
+			dr.setError(true);
+			dr.setMessage(from_ascii(N_("Unable to save document defaults")));
+		}
+		break;
+	}
+
+	case LFUN_BOOKMARK_GOTO:
+		// go to bookmark, open unopened file and switch to buffer if necessary
+		gotoBookmark(convert<unsigned int>(to_utf8(cmd.argument())), true, true);
+		dr.update(Update::FitCursor);
+		break;
+
+	case LFUN_BOOKMARK_CLEAR:
+		theSession().bookmarks().clear();
+		break;
+
+	case LFUN_DEBUG_LEVEL_SET:
+		lyxerr.setLevel(Debug::value(to_utf8(cmd.argument())));
+		break;
+
 	default:
 		// Notify the caller that the action has not been dispatched.
 		dr.dispatched(false);
-		return;
+		break;
 	}
 
-	// The action has been dispatched.
-	dr.dispatched(true);
+	// The action has been dispatched in this method, nothing more to do.
+	if (dr.dispatched())
+		return;
+
+	GuiView * lv = current_view_;
+
+	// Everything below is only for active window
+	if (lv == 0)
+		return;
+
+	// Let the current LyXView dispatch its own actions.
+	lv->dispatch(cmd, dr);
+	if (dr.dispatched() && lv )
+		return;
+
+	BufferView * bv = lv->currentBufferView();
+	LASSERT(bv, /**/);
+
+	// Let the current BufferView dispatch its own actions.
+	bv->dispatch(cmd, dr);
+	if (dr.dispatched())
+		return;
+
+	BufferView * doc_bv = lv->documentBufferView();
+	// Try with the document BufferView dispatch if any.
+	if (doc_bv) {
+		doc_bv->dispatch(cmd, dr);
+		if (dr.dispatched())
+			return;
+	}
+
+	// OK, so try the current Buffer itself...
+	bv->buffer().dispatch(cmd, dr);
+	if (dr.dispatched())
+		return;
+
+	// and with the document Buffer.
+	if (doc_bv) {
+		doc_bv->buffer().dispatch(cmd, dr);
+		if (dr.dispatched())
+			return;
+	}
+
+	// Let the current Cursor dispatch its own actions.
+	Cursor old = bv->cursor();
+	bv->cursor().dispatch(cmd);
+
+	// notify insets we just left
+	if (bv->cursor() != old) {
+		old.fixIfBroken();
+		bool badcursor = notifyCursorLeavesOrEnters(old, bv->cursor());
+		if (badcursor)
+			bv->cursor().fixIfBroken();
+	}
+
+	// update completion. We do it here and not in
+	// processKeySym to avoid another redraw just for a
+	// changed inline completion
+	if (cmd.origin == FuncRequest::KEYBOARD) {
+		if (cmd.action == LFUN_SELF_INSERT
+		    || (cmd.action == LFUN_ERT_INSERT && bv->cursor().inMathed()))
+			lv->updateCompletion(bv->cursor(), true, true);
+		else if (cmd.action == LFUN_CHAR_DELETE_BACKWARD)
+			lv->updateCompletion(bv->cursor(), false, true);
+		else
+			lv->updateCompletion(bv->cursor(), false, false);
+	}
+
+	dr = bv->cursor().result();
+
+	// if we executed a mutating lfun, mark the buffer as dirty
+	Buffer * doc_buffer = (lv && lv->documentBufferView())
+		      ? &(lv->documentBufferView()->buffer()) : 0;
+	if (doc_buffer && theBufferList().isLoaded(doc_buffer)
+		&& flag.enabled()
+		&& !lyxaction.funcHasFlag(action, LyXAction::NoBuffer)
+		&& !lyxaction.funcHasFlag(action, LyXAction::ReadOnly))
+		lv->currentBufferView()->buffer().markDirty();
 }
 
 

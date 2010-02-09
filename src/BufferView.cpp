@@ -39,7 +39,6 @@
 #include "LyX.h"
 #include "LyXAction.h"
 #include "lyxfind.h"
-#include "LyXFunc.h"
 #include "Layout.h"
 #include "LyXRC.h"
 #include "MetricsInfo.h"

@@ -26,7 +26,6 @@
 namespace lyx {
 
 class LyXDataSocket;
-class LyXFunc;
 
 
 /** Sockets can be in two states: listening and connected.
@@ -41,7 +40,7 @@ class LyXFunc;
 class ServerSocket {
 public:
 	///
-	ServerSocket(LyXFunc *, support::FileName const &);
+	ServerSocket(support::FileName const &);
 	///
 	~ServerSocket();
 	/// Address of the local socket
@@ -53,8 +52,6 @@ public:
 private:
 	///
 	void writeln(std::string const &);
-	///
-	LyXFunc * func;
 	/// File descriptor for the server socket
 	int fd_;
 	/// Stores the socket filename

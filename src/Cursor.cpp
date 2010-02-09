@@ -26,6 +26,7 @@
 #include "FuncCode.h"
 #include "FuncRequest.h"
 #include "Language.h"
+#include "LyX.h"
 #include "LyXAction.h"
 #include "LyXRC.h"
 #include "Paragraph.h"
@@ -1668,7 +1669,7 @@ bool Cursor::upDownInMath(bool up)
 	int yo = 0;
 	getPos(xo, yo);
 	xo = beforeDispatchPosX_;
-	
+
 	// check if we had something else in mind, if not, this is the future
 	// target
 	if (x_target_ == -1)

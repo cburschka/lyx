@@ -20,7 +20,7 @@
 #include "Cursor.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "LyXFunc.h"
+#include "LyX.h"
 
 #include "insets/Inset.h"
 

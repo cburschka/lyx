@@ -24,7 +24,7 @@
 #include "FuncStatus.h"
 #include "InsetIterator.h"
 #include "Language.h"
-#include "LyXFunc.h"
+#include "LyX.h"
 #include "output_xhtml.h"
 #include "ParIterator.h"
 #include "sgml.h"

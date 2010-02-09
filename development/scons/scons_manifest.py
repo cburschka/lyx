@@ -96,7 +96,6 @@ src_header_files = Split('''
     LyX.h
     LyXAction.h
     lyxfind.h
-    LyXFunc.h
     LyXRC.h
     LyXVC.h
     MetricsInfo.h
@@ -200,7 +199,6 @@ src_pre_files = Split('''
     LyX.cpp
     LyXAction.cpp
     lyxfind.cpp
-    LyXFunc.cpp
     LyXRC.cpp
     LyXVC.cpp
     MetricsInfo.cpp

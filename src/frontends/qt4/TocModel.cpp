@@ -18,7 +18,7 @@
 #include "Cursor.h"
 #include "DocIterator.h"
 #include "FuncRequest.h"
-#include "LyXFunc.h"
+#include "LyX.h"
 #include "TocBackend.h"
 
 #include "support/debug.h"

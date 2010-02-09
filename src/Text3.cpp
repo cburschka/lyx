@@ -37,7 +37,7 @@
 #include "Language.h"
 #include "Layout.h"
 #include "LyXAction.h"
-#include "LyXFunc.h"
+#include "LyX.h"
 #include "Lexer.h"
 #include "LyXRC.h"
 #include "Paragraph.h"

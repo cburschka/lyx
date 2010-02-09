@@ -51,7 +51,6 @@
 #include "Layout.h"
 #include "Lexer.h"
 #include "LyXAction.h"
-#include "LyXFunc.h"
 #include "LyX.h"
 #include "LyXRC.h"
 #include "LyXVC.h"
@@ -602,7 +601,7 @@ void GuiView::focusInEvent(QFocusEvent * e)
 {
 	LYXERR(Debug::DEBUG, "GuiView::focusInEvent()" << this);
 	QMainWindow::focusInEvent(e);
-	// Make sure LyXFunc points to the correct view.
+	// Make sure guiApp points to the correct view.
 	guiApp->setCurrentView(this);
 	if (currentMainWorkArea())
 		currentMainWorkArea()->setFocus();
@@ -2262,7 +2261,7 @@ bool GuiView::closeBuffer(Buffer & buf)
 	//FIXME: we should update only the bookmarks related to this buffer!
 	LYXERR(Debug::DEBUG, "GuiView::closeBuffer()");
 	for (size_t i = 0; i < theSession().bookmarks().size(); ++i)
-		theLyXFunc().gotoBookmark(i+1, false, false);
+		guiApp->gotoBookmark(i+1, false, false);
 
 	if (saveBufferIfNeeded(buf, false)) {
 		theBufferList().release(&buf);

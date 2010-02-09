@@ -12,7 +12,7 @@
 
 #include "VCBackend.h"
 #include "Buffer.h"
-#include "LyXFunc.h"
+#include "LyX.h"
 #include "FuncRequest.h"
 
 #include "frontends/alert.h"

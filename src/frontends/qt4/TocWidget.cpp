@@ -23,7 +23,7 @@
 #include "CutAndPaste.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "LyXFunc.h"
+#include "LyX.h"
 #include "Menus.h"
 #include "TocBackend.h"
 

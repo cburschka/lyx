@@ -17,7 +17,7 @@
 #include "FuncRequest.h"
 #include "InsetLabel.h"
 #include "LaTeXFeatures.h"
-#include "LyXFunc.h"
+#include "LyX.h"
 #include "OutputParams.h"
 #include "output_xhtml.h"
 #include "ParIterator.h"

@@ -18,7 +18,7 @@
 
 #include "FuncStatus.h"
 #include "FuncRequest.h"
-#include "LyXFunc.h"
+#include "LyX.h"
 
 #include <QMouseEvent>
 #include <QPainter>

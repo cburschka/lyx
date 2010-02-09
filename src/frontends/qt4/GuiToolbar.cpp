@@ -30,7 +30,7 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "KeyMap.h"
-#include "LyXFunc.h"
+#include "LyX.h"
 #include "LyXRC.h"
 
 #include "support/debug.h"

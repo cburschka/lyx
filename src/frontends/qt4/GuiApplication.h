@@ -58,9 +58,10 @@ public:
 
 	/// \name Methods inherited from Application class
 	//@{
-	LyXView * currentWindow();
-	bool getStatus(FuncRequest const & cmd, FuncStatus & flag) const;
+	void dispatch(FuncRequest const &);
 	void dispatch(FuncRequest const &, DispatchResult & dr);
+	FuncStatus getStatus(FuncRequest const & cmd) const;
+	LyXView * currentWindow();
 	void dispatchDelayed(FuncRequest const &);
 	void resetGui();
 	void restoreGuiSession();
@@ -133,6 +134,12 @@ public:
 	/// return the status bar state string
 	docstring viewStatusMessage();
 
+	/// goto a bookmark
+	/// openFile: whether or not open a file if the file is not opened
+	/// switchToBuffer: whether or not switch to buffer if the buffer is
+	///		not the current buffer
+	void gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer);
+
 private Q_SLOTS:
 	///
 	void execBatchCommands();
@@ -157,6 +164,7 @@ private:
 	/// This LyXView is the one receiving Clipboard and Selection
 	/// events
 	GuiView * current_view_;
+
 	///
 	struct Private;
 	Private * const d;
