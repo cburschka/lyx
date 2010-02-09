@@ -3170,6 +3170,10 @@ bool Paragraph::spellCheck(pos_type & from, pos_type & to, WordLangTuple & wl,
 		return false;
 
 	docstring word = asString(from, to, AS_STR_INSETS);
+	// Ignore words with digits
+	// FIXME: make this customizable
+	// (note that hunspell ignores words with digits by default)
+	bool const ignored = hasDigit(word);
 	Language * lang = const_cast<Language *>(getFontSettings(
 		    d->inset_owner_->buffer().params(), from).language());
 	if (lang == d->inset_owner_->buffer().params().language
@@ -3181,7 +3185,8 @@ bool Paragraph::spellCheck(pos_type & from, pos_type & to, WordLangTuple & wl,
 		lang->setVariety(lang_variety);
 	}
 	wl = WordLangTuple(word, lang);
-	SpellChecker::Result res = speller->check(wl);
+	SpellChecker::Result res = ignored ?
+		SpellChecker::OK : speller->check(wl);
 #if 0
 // FIXME: the code below makes aspell abort if a word in an unknown
 //	  language is checked.

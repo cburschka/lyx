@@ -315,6 +315,26 @@ bool isStrDbl(string const & str)
 }
 
 
+bool hasDigit(docstring const & str)
+{
+	if (str.empty())
+		return false;
+
+	// Remove leading and trailing white space chars.
+	docstring const tmpstr = trim(str);
+	if (tmpstr.empty())
+		return false;
+
+	docstring::const_iterator cit = tmpstr.begin();
+	docstring::const_iterator end = tmpstr.end();
+	for (; cit != end; ++cit)
+		if (isdigit((*cit)))
+			return true;
+
+	return false;
+}
+
+
 static bool isHexChar(char_type c)
 {
 	return c == '0' ||
