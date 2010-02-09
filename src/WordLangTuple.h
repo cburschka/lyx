@@ -30,10 +30,8 @@ public:
 	WordLangTuple() {}
 
 	WordLangTuple(docstring const & w, Language * l)
-		: word_(w)
-	{
-		lang_ = l;
-	}
+		: word_(w), lang_(l)
+	{}
 
 	/// return the word
 	docstring const & word() const {
