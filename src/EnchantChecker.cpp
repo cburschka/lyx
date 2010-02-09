@@ -69,6 +69,11 @@ EnchantChecker::Private::~Private()
 enchant::Dict * EnchantChecker::Private::addSpeller(string const & lang)
 {
 	enchant::Broker * instance = enchant::Broker::instance();
+
+	if (!instance->dict_exists(lang))
+		// FIXME error handling?
+		return 0;
+
 	enchant::Dict * dict = instance->request_dict(lang);
 
 	if (dict) {
