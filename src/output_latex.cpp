@@ -323,6 +323,15 @@ TeXOnePar(Buffer const & buf,
 	OutputParams runparams = runparams_in;
 	runparams.isLastPar = nextpit == paragraphs.end();
 
+	bool const maintext = text.isMainText(buf);
+	// we are at the beginning of an inset and CJK is already open;
+	// we count inheritation levels to get the inset nesting right.
+	if (pit == paragraphs.begin() && !maintext
+	    && (cjk_inherited_ > 0 || open_encoding_ == CJK)) {
+		cjk_inherited_ += 1;
+		open_encoding_ = none;
+	}
+
 	if (runparams.verbatim) {
 		int const dist = distance(paragraphs.begin(), pit);
 		Font const outerfont = outerFont(dist, paragraphs);
@@ -344,15 +353,6 @@ TeXOnePar(Buffer const & buf,
 		bparams.documentClass().plainLayout() : pit->layout();
 
 	runparams.moving_arg |= style.needprotect;
-
-	bool const maintext = text.isMainText(buf);
-	// we are at the beginning of an inset and CJK is already open;
-	// we count inheritation levels to get the inset nesting right.
-	if (pit == paragraphs.begin() && !maintext
-	    && (cjk_inherited_ > 0 || open_encoding_ == CJK)) {
-		cjk_inherited_ += 1;
-		open_encoding_ = none;
-	}
 
 	// This paragraph's language
 	Language const * const par_language = pit->getParLanguage(bparams);

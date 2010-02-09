@@ -108,6 +108,9 @@ What's new
 - Allow using greek symbols also when the package grtimes is installed but
   actual fonts are not and "Times Roman" glyphs are requested (bug 6469).
 
+- Fix premature closing of the CJK environment after ERT or URL insets
+  nested in other insets (bug 6510).
+
 - Reset the language at the end of the document to the correct
   language (bug 6387).
 
