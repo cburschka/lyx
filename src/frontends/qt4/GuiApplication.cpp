@@ -2454,7 +2454,7 @@ bool GuiApplication::x11EventFilter(XEvent * xev)
 void hideDialogs(std::string const & name, Inset * inset)
 {
 	if (theApp())
-		theApp()->hideDialogs(name, inset);
+		frontend::guiApp->hideDialogs(name, inset);
 }
 
 

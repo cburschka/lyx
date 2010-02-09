@@ -61,7 +61,6 @@ public:
 	void dispatch(FuncRequest const &, DispatchResult & dr);
 	FuncStatus getStatus(FuncRequest const & cmd) const;
 	void dispatchDelayed(FuncRequest const &);
-	void resetGui();
 	void restoreGuiSession();
 	Clipboard & clipboard();
 	Selection & selection();
@@ -75,10 +74,13 @@ public:
 	void unregisterSocketCallback(int fd);
 	bool searchMenu(FuncRequest const & func, docstring_list & names) const;
 	docstring iconName(FuncRequest const & f, bool unknown);
-	void hideDialogs(std::string const & name, Inset * inset) const;
 	Buffer const * updateInset(Inset const * inset) const;
 	void handleKeyFunc(FuncCode action);
 	//@}
+	///
+	void hideDialogs(std::string const & name, Inset * inset) const;
+	///
+	void resetGui();
 
 	Toolbars const & toolbars() const;
 	Toolbars & toolbars();

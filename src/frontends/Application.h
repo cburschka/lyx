@@ -185,14 +185,9 @@ public:
 	///
 	virtual FuncStatus getStatus(FuncRequest const & cmd) const = 0;
 
-	///
-	virtual void resetGui() = 0;
-
 	/// Load files and restore GUI Session.
 	virtual void restoreGuiSession() = 0;
 
-	///
-	virtual void hideDialogs(std::string const & name, Inset * inset) const = 0;
 	///
 	virtual Buffer const * updateInset(Inset const * inset) const = 0;
 
