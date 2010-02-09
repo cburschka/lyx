@@ -26,7 +26,6 @@
 #include "FuncCode.h"
 #include "FuncRequest.h"
 #include "Language.h"
-#include "LyX.h"
 #include "LyXAction.h"
 #include "LyXRC.h"
 #include "Paragraph.h"
