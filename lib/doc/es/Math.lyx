@@ -899,10 +899,6 @@ Un espacio protegido se inserta con
 Ctrl+Espacio
 \family default
 .
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection*
@@ -13939,11 +13935,8 @@ Un ejemplo:
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-
 \color green
+
 \begin_inset Formula \begin{equation}
 {\color{green}{\color{red}\int A=B}}\label{eq:rojoverde}\end{equation}
 
@@ -19049,9 +19042,8 @@ normalsize
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Within a formula the size can be changed using the following size commands:
+Dentro de una ecuación, el tamaño se puede cambiar usando los siguientes
+ comandos de tamaño:
 \end_layout
 
 \begin_layout Standard
@@ -19218,26 +19210,18 @@ scriptscriptstyle
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-After entering these commands, a blue box appears in which the formula parts
- are inserted.
+Después de introcucir estos comandos, aparece un marco azul en el que se
+ insertan las partes de la fórmula.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-There is a further method to change the font size, that though only works
- for symbols or letters in mathematical text.
- To use it, one of the above text size commands is inserted in mathematical
- text.
-\lang spanish
-Todos los caracteres siguientes, hasta el final del texto matemático o hasta
- otro comando de tamaño, tendrán el tamaño seleccionado.
+Hay un método más para cambiar el tamaño de fuente, aunque solo funciona
+ para símbolos o letras en texto matemático.
+ Para usarlo se inserta en texto matemático uno de los comandos de tamaño
+ de texto anteriores.
+ Todos los caracteres siguientes, hasta el final del texto matemático o
+ hasta otro comando de tamaño, tendrán el tamaño seleccionado.
  Dos ejemplos:
-\end_layout
-
-\begin_layout Standard
 \begin_inset VSpace -2mm
 \end_inset
 
@@ -29950,6 +29934,13 @@ intertext
 I & =a\sqrt{2}\int_{0}^{2\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\\
 \intertext{\text{el integrando es simétrico para \ensuremath{\phi=\pi}, por tanto}} & =2a\sqrt{2}\int_{0}^{\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\end{align}
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
