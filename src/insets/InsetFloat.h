@@ -52,8 +52,6 @@ class InsetFloat : public InsetCollapsable
 public:
 	///
 	InsetFloat(Buffer *, std::string const &);
-	///
-	~InsetFloat();
 
 	///
 	static void string2params(std::string const &, InsetFloatParams &);
