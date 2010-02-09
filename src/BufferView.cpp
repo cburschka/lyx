@@ -1341,9 +1341,9 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				dr.update(Update::Force | Update::FitCursor);
 			} else {
 				// Switch to other buffer view and resend cmd
-				theLyXFunc().dispatch(FuncRequest(
+				lyx::dispatch(FuncRequest(
 					LFUN_BUFFER_SWITCH, b->absFileName()));
-				theLyXFunc().dispatch(cmd);
+				lyx::dispatch(cmd);
 			}
 			break;
 		}
@@ -1458,7 +1458,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		if (cmd.argument().empty() && !d->search_request_cache_.argument().empty())
 			req = d->search_request_cache_;
 		if (req.argument().empty()) {
-			theLyXFunc().dispatch(FuncRequest(LFUN_DIALOG_SHOW, "findreplace"));
+			lyx::dispatch(FuncRequest(LFUN_DIALOG_SHOW, "findreplace"));
 			break;
 		}
 		if (find(this, req))
