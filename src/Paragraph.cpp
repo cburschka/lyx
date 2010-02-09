@@ -3192,7 +3192,7 @@ bool Paragraph::spellCheck(pos_type & from, pos_type & to, WordLangTuple & wl,
 		return false;
 #endif
 
-	bool misspelled = res != SpellChecker::OK
+	bool const misspelled = res != SpellChecker::OK
 		&& res != SpellChecker::IGNORED_WORD;
 
 	if (lyxrc.spellcheck_continuously)
