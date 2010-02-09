@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-02-09 19:21+0100\n"
-"PO-Revision-Date: 2010-02-08 14:51+0100\n"
+"PO-Revision-Date: 2010-02-09 20:01+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -1329,18 +1329,16 @@ msgid "&Replace with..."
 msgstr "&Ersetzen durch..."
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:222
-#, fuzzy
 msgid "Replace and find next occurrence [Enter]"
-msgstr "Nächster Treffer [Eingabe]"
+msgstr "Ersetze und finde nächsten Treffer [Eingabe]"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:225
 msgid "Ne&xt"
 msgstr "N&ächstes"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:243
-#, fuzzy
 msgid "Replace and find previous occurrence [Shift+Enter]"
-msgstr "Vorhergehender Treffer [Umschalt+Eingabe]"
+msgstr "Ersetze und finde vorhergehenden Treffer [Umschalt+Eingabe]"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:246
 msgid "Pre&vious"
@@ -1486,14 +1484,12 @@ msgid "Form"
 msgstr "Form"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:23
-#, fuzzy
 msgid "Float Type:"
-msgstr "Protokollt&yp:"
+msgstr "Gleitobjekt-Typ:"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:28
-#, fuzzy
 msgid "TextLabel"
-msgstr "Marke"
+msgstr "TextLabel"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:49
 msgid "Use &default placement"
@@ -2393,7 +2389,6 @@ msgid "Include only the selected subdocuments in the output"
 msgstr "Nur die ausgewählten Unterdokumente ausgeben"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:43
-#, fuzzy
 msgid "Include only &selected children"
 msgstr "Nur ausge&wählte Unterdokumente einbinden"
 
@@ -2410,7 +2405,6 @@ msgid "&Maintain counters and references"
 msgstr "&Zähler und Querverweise wahren"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:63
-#, fuzzy
 msgid "Include all subdocuments in the output"
 msgstr "Alle eingebundenen Unterdokumente ausgeben"
 
@@ -4106,28 +4100,20 @@ msgid "&Statusbar messages"
 msgstr "&Statusmeldungen"
 
 #: src/frontends/qt4/ui/RefUi.ui:36
-#, fuzzy
 msgid "Fil&ter:"
-msgstr "&Datei:"
+msgstr "Fil&ter:"
 
 #: src/frontends/qt4/ui/RefUi.ui:49
-#, fuzzy
 msgid "Enter string to filter the label list"
-msgstr "Geben Sie Zeichen zum Filtern der Absatzformatliste ein."
+msgstr "Geben Sie eine Zeichenkette zum Filtern der Markenliste ein."
 
 #: src/frontends/qt4/ui/RefUi.ui:59
-#, fuzzy
 msgid "Filter case-sensitively"
-msgstr ""
-"&Groß-/Kleinschreibung\n"
-"beachten"
+msgstr "Groß-/Kleinschreibung beim Filtern beachten"
 
 #: src/frontends/qt4/ui/RefUi.ui:62
-#, fuzzy
 msgid "Case-sensiti&ve"
-msgstr ""
-"&Groß-/Kleinschreibung\n"
-"beachten"
+msgstr "Groß-/&Kleinschreibung beachten"
 
 #: src/frontends/qt4/ui/RefUi.ui:87
 msgid "Update the label list"
@@ -4157,12 +4143,11 @@ msgstr ""
 
 #: src/frontends/qt4/ui/RefUi.ui:190
 msgid "Group labels by prefix (e.g. \"sec:\")"
-msgstr ""
+msgstr "Marken nach Präfix (bspw. \"sec:\") gruppieren"
 
 #: src/frontends/qt4/ui/RefUi.ui:193
-#, fuzzy
 msgid "Grou&p"
-msgstr "Keine Gruppe"
+msgstr "Gru&ppieren"
 
 #: src/frontends/qt4/ui/RefUi.ui:223 src/frontends/qt4/GuiRef.cpp:314
 msgid "&Go to Label"
@@ -4285,6 +4270,8 @@ msgstr "DockWidget"
 msgid ""
 "The checked language. Switching this alters the language of the checked word."
 msgstr ""
+"Die überprüfte Sprache. Hier können Sie die Sprache des überprüften Worts "
+"ändern."
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:43
 msgid "Current word"
@@ -12288,7 +12275,7 @@ msgstr "Kurztitel einfügen|z"
 
 #: lib/ui/stdcontext.inc:312 lib/ui/stdcontext.inc:567
 msgid "Accept Change|c"
-msgstr "Änderung akzeptieren|a"
+msgstr "Änderung akzeptieren|k"
 
 #: lib/ui/stdcontext.inc:313
 msgid "Reject Change|j"
@@ -12504,9 +12491,8 @@ msgid "Decrease List Depth|D"
 msgstr "Listentiefe verringern|i"
 
 #: lib/ui/stdmenus.inc:129
-#, fuzzy
 msgid "Dissolve Inset"
-msgstr "Einfügung auflösen|E"
+msgstr "Einfügung auflösen"
 
 #: lib/ui/stdmenus.inc:130
 msgid "TeX Code Settings...|C"
@@ -12890,7 +12876,7 @@ msgstr "Komprimiert|K"
 
 #: lib/ui/stdmenus.inc:492
 msgid "Accept Change|A"
-msgstr "Änderung akzeptieren|k"
+msgstr "Änderung akzeptieren|a"
 
 #: lib/ui/stdmenus.inc:494
 msgid "Accept All Changes|c"
@@ -17274,9 +17260,8 @@ msgid "inherit"
 msgstr "übernehmen"
 
 #: src/Color.cpp:244
-#, fuzzy
 msgid "regexp frame"
-msgstr "Einfügung (Rahmen)"
+msgstr "Regulärer Ausdruck (Rahmen)"
 
 #: src/Color.cpp:245
 msgid "ignore"
@@ -20760,7 +20745,7 @@ msgstr "Springe zur Marke"
 
 #: src/frontends/qt4/GuiRef.cpp:371 src/frontends/qt4/GuiRef.cpp:390
 msgid "<No prefix>"
-msgstr ""
+msgstr "<Ohne Präfix>"
 
 #: src/frontends/qt4/GuiSearch.cpp:41
 msgid "Find and Replace"
@@ -21611,19 +21596,16 @@ msgid "Ignore all|I"
 msgstr "Alle ignorieren|i"
 
 #: src/frontends/qt4/Menus.cpp:773
-#, fuzzy
 msgid "Language ...|L"
-msgstr "Sprache"
+msgstr "Sprache ...|p"
 
 #: src/frontends/qt4/Menus.cpp:778
-#, fuzzy
 msgid "Language|L"
-msgstr "Sprache"
+msgstr "Sprache|p"
 
 #: src/frontends/qt4/Menus.cpp:788
-#, fuzzy
 msgid "More Languages ..."
-msgstr "Änderungen akzeptieren oder verwerfen...|z"
+msgstr "Weitere Sprachen ..."
 
 #: src/frontends/qt4/Menus.cpp:817 src/frontends/qt4/Menus.cpp:818
 msgid "Invisible"
