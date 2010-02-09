@@ -147,7 +147,7 @@ bool HunspellChecker::Private::isIgnored(WordLangTuple const & wl) const
 {
 	IgnoreList::const_iterator it = ignored_.begin();
 	for (; it != ignored_.end(); ++it) {
-		if ((*it).lang_code() != wl.lang_code())
+		if ((*it).lang()->code() != wl.lang()->code())
 			continue;
 		if ((*it).word() == wl.word())
 			return true;
@@ -173,7 +173,7 @@ SpellChecker::Result HunspellChecker::check(WordLangTuple const & wl)
 		return OK;
 
 	string const word_to_check = to_utf8(wl.word());
-	Hunspell * h = d->speller(wl.lang_code());
+	Hunspell * h = d->speller(wl.lang()->code());
 	if (!h)
 		return OK;
 	int info;
@@ -196,7 +196,7 @@ SpellChecker::Result HunspellChecker::check(WordLangTuple const & wl)
 void HunspellChecker::insert(WordLangTuple const & wl)
 {
 	string const word_to_check = to_utf8(wl.word());
-	Hunspell * h = d->speller(wl.lang_code());
+	Hunspell * h = d->speller(wl.lang()->code());
 	if (!h)
 		return;
 	h->add(word_to_check.c_str());
@@ -214,7 +214,7 @@ void HunspellChecker::suggest(WordLangTuple const & wl,
 {
 	suggestions.clear();
 	string const word_to_check = to_utf8(wl.word());
-	Hunspell * h = d->speller(wl.lang_code());
+	Hunspell * h = d->speller(wl.lang()->code());
 	if (!h)
 		return;
 	char ** suggestion_list;

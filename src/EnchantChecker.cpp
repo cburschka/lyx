@@ -105,7 +105,7 @@ EnchantChecker::~EnchantChecker()
 
 SpellChecker::Result EnchantChecker::check(WordLangTuple const & word)
 {
-	enchant::Dict * m = d->speller(word.lang_code());
+	enchant::Dict * m = d->speller(word.lang()->code());
 
 	if (!m)
 		return OK;
@@ -121,7 +121,7 @@ SpellChecker::Result EnchantChecker::check(WordLangTuple const & word)
 
 void EnchantChecker::insert(WordLangTuple const & word)
 {
-	Spellers::iterator it = d->spellers_.find(word.lang_code());
+	Spellers::iterator it = d->spellers_.find(word.lang()->code());
 	if (it != d->spellers_.end())
 		it->second.speller->add(to_utf8(word.word()));
 }
@@ -129,7 +129,7 @@ void EnchantChecker::insert(WordLangTuple const & word)
 
 void EnchantChecker::accept(WordLangTuple const & word)
 {
-	Spellers::iterator it = d->spellers_.find(word.lang_code());
+	Spellers::iterator it = d->spellers_.find(word.lang()->code());
 	if (it != d->spellers_.end())
 		it->second.speller->add_to_session(to_utf8(word.word()));
 }
@@ -139,7 +139,7 @@ void EnchantChecker::suggest(WordLangTuple const & wl,
 	docstring_list & suggestions)
 {
 	suggestions.clear();
-	enchant::Dict * m = d->speller(wl.lang_code());
+	enchant::Dict * m = d->speller(wl.lang()->code());
 
 	if (!m)
 		return;

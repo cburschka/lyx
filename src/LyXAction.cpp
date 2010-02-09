@@ -986,7 +986,7 @@ void LyXAction::init()
  *             spell checker dictionary.
  * \li Syntax: spelling-add [<STRING>] [<LANG>]
  * \li Params: <WORD>: word to add
-               <LANG>: language code (see file languages)
+               <LANG>: language name (see file languages)
  * \li Origin: JSpitzm, 18 Jan 2010
  * \endvar
  */
@@ -997,7 +997,7 @@ void LyXAction::init()
  *             in the current session for the given language.
  * \li Syntax: spelling-ignore [<WORD>] [<LANG>]
  * \li Params: <WORD>: word to ignore
-               <LANG>: language code (see file languages)
+               <LANG>: language name (see file languages)
  * \li Origin: JSpitzm, 18 Jan 2010
  * \endvar
  */

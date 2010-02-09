@@ -3170,17 +3170,17 @@ bool Paragraph::spellCheck(pos_type & from, pos_type & to, WordLangTuple & wl,
 		return false;
 
 	docstring word = asString(from, to, AS_STR_INSETS);
-	string lang_code;
-	string lang_variety;
-	if (!lyxrc.spellchecker_alt_lang.empty())
-		lang_variety = split(lyxrc.spellchecker_alt_lang, lang_code, '-');
-	else {
-	      lang_code = getFontSettings(
-		    d->inset_owner_->buffer().params(), from).language()->code();
-	      lang_variety = getFontSettings(
-		    d->inset_owner_->buffer().params(), from).language()->variety();
+	Language * lang = const_cast<Language *>(getFontSettings(
+		    d->inset_owner_->buffer().params(), from).language());
+	if (lang == d->inset_owner_->buffer().params().language
+	    && !lyxrc.spellchecker_alt_lang.empty()) {
+		string lang_code;
+		string const lang_variety =
+			split(lyxrc.spellchecker_alt_lang, lang_code, '-');
+		lang->setCode(lang_code);
+		lang->setVariety(lang_variety);
 	}
-	wl = WordLangTuple(word, lang_code, lang_variety);
+	wl = WordLangTuple(word, lang);
 	SpellChecker::Result res = speller->check(wl);
 	// Just ignore any error that the spellchecker reports.
 	// FIXME: we should through out an exception and catch it in the GUI to

@@ -12,6 +12,8 @@
 #ifndef WORD_LANG_TUPLE_H
 #define WORD_LANG_TUPLE_H
 
+#include "Language.h"
+
 #include "support/docstring.h"
 
 
@@ -19,18 +21,19 @@ namespace lyx {
 
 
 /**
- * A word and its given language code ("en_US")
- * plus a variety if needed.
- * This is used for spellchecking.
+ * A word and its given language.
+ * This is used for spellchecking
+ * and thesaurus.
  */
 class WordLangTuple {
 public:
 	WordLangTuple() {}
 
-	WordLangTuple(docstring const & w, std::string const & c,
-		      std::string const & v = std::string())
-		: word_(w), code_(c), variety_(v)
-	{}
+	WordLangTuple(docstring const & w, Language * l)
+		: word_(w)
+	{
+		lang_ = l;
+	}
 
 	/// return the word
 	docstring const & word() const {
@@ -38,22 +41,15 @@ public:
 	}
 
 	/// return its language code
-	std::string const & lang_code() const {
-		return code_;
-	}
-
-	/// return the language variety
-	std::string const & lang_variety() const {
-		return variety_;
+	Language const * lang() const {
+		return lang_;
 	}
 
 private:
 	/// the word
 	docstring word_;
-	/// language code of word
-	std::string code_;
-	/// language variety of word
-	std::string variety_;
+	/// language of word
+	Language * lang_;
 };
 
 

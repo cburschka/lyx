@@ -2000,8 +2000,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_SPELLING_ADD: {
 		docstring word = from_utf8(cmd.getArg(0));
-		string code;
-		string variety;
+		Language * lang;
 		if (word.empty()) {
 			word = cur.selectionAsString(false);
 			// FIXME
@@ -2010,19 +2009,17 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				selectWordWhenUnderCursor(cur, WHOLE_WORD);
 				word = cur.selectionAsString(false);
 			}
-			code = cur.getFont().language()->code();
-			variety = cur.getFont().language()->variety();
+			lang = const_cast<Language *>(cur.getFont().language());
 		} else
-			variety = split(cmd.getArg(1), code, '-');
-		WordLangTuple wl(word, code, variety);
+			lang = const_cast<Language *>(languages.getLanguage(cmd.getArg(1)));
+		WordLangTuple wl(word, lang);
 		theSpellChecker()->insert(wl);
 		break;
 	}
 
 	case LFUN_SPELLING_IGNORE: {
 		docstring word = from_utf8(cmd.getArg(0));
-		string code;
-		string variety;
+		Language * lang;
 		if (word.empty()) {
 			word = cur.selectionAsString(false);
 			// FIXME
@@ -2031,11 +2028,10 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				selectWordWhenUnderCursor(cur, WHOLE_WORD);
 				word = cur.selectionAsString(false);
 			}
-			code = cur.getFont().language()->code();
-			variety = cur.getFont().language()->variety();
+			lang = const_cast<Language *>(cur.getFont().language());
 		} else
-			variety = split(cmd.getArg(1), code, '-');
-		WordLangTuple wl(word, code, variety);
+			lang = const_cast<Language *>(languages.getLanguage(cmd.getArg(1)));
+		WordLangTuple wl(word, lang);
 		theSpellChecker()->accept(wl);
 		break;
 	}

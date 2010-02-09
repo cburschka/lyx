@@ -45,8 +45,12 @@ public:
 	std::string const & encodingStr() const { return encodingStr_; }
 	///
 	std::string const & code() const { return code_; }
+	/// set code (needed for rc.spellchecker_alt_lang)
+	void setCode(std::string const c) { code_ = c; }
 	///
 	std::string const & variety() const { return variety_; }
+	/// set variety (needed for rc.spellchecker_alt_lang)
+	void setVariety(std::string const v) { variety_ = v; }
 	///
 	std::string const & latex_options() const { return latex_options_; }
 	///

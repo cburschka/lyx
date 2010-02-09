@@ -161,7 +161,7 @@ SpellChecker::Result AspellChecker::check(WordLangTuple const & word)
 {
   
 	AspellSpeller * m =
-		d->speller(word.lang_code(), word.lang_variety());
+		d->speller(word.lang()->code(), word.lang()->variety());
 
 	if (!m)
 		return OK;
@@ -180,7 +180,7 @@ SpellChecker::Result AspellChecker::check(WordLangTuple const & word)
 void AspellChecker::insert(WordLangTuple const & word)
 {
 	Spellers::iterator it = d->spellers_.find(
-		d->spellerID(word.lang_code(), word.lang_variety()));
+		d->spellerID(word.lang()->code(), word.lang()->variety()));
 	if (it != d->spellers_.end())
 		aspell_speller_add_to_personal(it->second.speller, to_utf8(word.word()).c_str(), -1);
 }
@@ -189,7 +189,7 @@ void AspellChecker::insert(WordLangTuple const & word)
 void AspellChecker::accept(WordLangTuple const & word)
 {
 	Spellers::iterator it = d->spellers_.find(
-		d->spellerID(word.lang_code(), word.lang_variety()));
+		d->spellerID(word.lang()->code(), word.lang()->variety()));
 	if (it != d->spellers_.end())
 		aspell_speller_add_to_session(it->second.speller, to_utf8(word.word()).c_str(), -1);
 }
@@ -200,7 +200,7 @@ void AspellChecker::suggest(WordLangTuple const & wl,
 {
 	suggestions.clear();
 	AspellSpeller * m =
-		d->speller(wl.lang_code(), wl.lang_variety());
+		d->speller(wl.lang()->code(), wl.lang()->variety());
 
 	if (!m)
 		return;
