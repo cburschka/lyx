@@ -39,6 +39,7 @@ private Q_SLOTS:
 	void on_replaceAllPB_clicked();
 	void on_suggestionsLW_itemClicked(QListWidgetItem *);
 	void on_replaceCO_highlighted(const QString & str);
+	void on_languageCO_activated(int index);
 	void on_ignoreAllPB_clicked();
 	void on_addPB_clicked();
 	void on_ignorePB_clicked();

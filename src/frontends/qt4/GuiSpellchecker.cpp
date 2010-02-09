@@ -13,6 +13,7 @@
 #include <config.h>
 
 #include "GuiSpellchecker.h"
+#include "GuiApplication.h"
 
 #include "qt_helpers.h"
 
@@ -76,6 +77,12 @@ GuiSpellchecker::GuiSpellchecker(GuiView & lv)
 
 	connect(d->ui.suggestionsLW, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
 		this, SLOT(on_replacePB_clicked()));
+
+	// language
+	QAbstractItemModel * language_model = guiApp->languageModel();
+	// FIXME: it would be nice if sorting was enabled/disabled via a checkbox.
+	language_model->sort(0);
+	d->ui.languageCO->setModel(language_model);
 
 	d->ui.wordED->setReadOnly(true);
 
@@ -143,6 +150,18 @@ void GuiSpellchecker::updateView()
 {
 	if (hasFocus())
 		check();
+}
+
+
+void GuiSpellchecker::on_languageCO_activated(int index)
+{
+	string const lang =
+		fromqstr(d->ui.languageCO->itemData(index).toString());
+	if (d->word_.lang()->lang() == lang)
+		// nothing changed
+		return;
+	dispatch(FuncRequest(LFUN_LANGUAGE, lang));
+	check();
 }
 
 
@@ -283,6 +302,10 @@ void GuiSpellchecker::check()
 	d->ui.spellcheckPR->setValue(progress_bar);
 	// set suggestions
 	updateSuggestions(suggestions);
+	// set language
+	int const pos = d->ui.languageCO->findData(toqstr(word_lang.lang()->lang()));
+	if (pos != -1)
+		d->ui.languageCO->setCurrentIndex(pos);
 
 	// FIXME: if we used a lfun like in find/replace, dispatch would do
 	// that for us
