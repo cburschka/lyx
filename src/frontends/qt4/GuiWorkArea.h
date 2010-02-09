@@ -117,7 +117,7 @@ public:
 	void setGuiView(GuiView &);
 	///
 	void setFullScreen(bool full_screen);
-	/// is LyXView in fullscreen mode?
+	/// is GuiView in fullscreen mode?
 	bool isFullScreen();
 	///
 	void scheduleRedraw() { schedule_redraw_ = true; }

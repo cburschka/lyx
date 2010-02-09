@@ -287,7 +287,7 @@ protected:
 
 private:
 	/** The Dialog's name is the means by which a dialog identifies
-	 *  itself to the LyXView.
+	 *  itself to the GuiView.
 	 */
 	QString const name_;
 	///

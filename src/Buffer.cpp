@@ -971,7 +971,7 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 }
 
 
-// Should probably be moved to somewhere else: BufferView? LyXView?
+// Should probably be moved to somewhere else: BufferView? GuiView?
 bool Buffer::save() const
 {
 	// We don't need autosaves in the immediate future. (Asger)

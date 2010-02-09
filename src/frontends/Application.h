@@ -39,8 +39,6 @@ namespace frontend {
 
 class Clipboard;
 class FontLoader;
-class Gui;
-class LyXView;
 class Selection;
 
 /// The main application class
@@ -59,7 +57,7 @@ initialisation should be done before the instanciation of this class.
 
  Application (this is the frontend really, should probably be renamed).
    |
-   LyXView-1 (one or more in case of split-view mode).
+   GuiView-1 (one or more in case of split-view mode).
    |  |
    |  <tab-widget-1-1> 
    |  |  |
@@ -77,7 +75,7 @@ initialisation should be done before the instanciation of this class.
    |  |
    |  <tab-widget-1-2> 
    |
-   LyXView-2 (one or more in case of split-view mode).
+   GuiView-2 (one or more in case of split-view mode).
    |  |
    |  <tab-widget-2-1>
    |  |  |
@@ -136,14 +134,14 @@ initialisation should be done before the instanciation of this class.
  - etc.
 
 
- 4) The Window: \c LyXView (and its qt4 specialisation \c GuiView)
+ 4) The Window: \c GuiView
 
  This is a full window containing a menubar, toolbars and a central
- widget. A LyXView is in charge of creating and closing a View for a
+ widget. A GuiView is in charge of creating and closing a View for a
  given Buffer.
  In the qt4 specialisation, \c GuiView, the central widget is a tab
  widget. Each tab is reverved to the visualisation of one Buffer and
- contains one WorkArea. In the qt4 frontend, one LyXView thus contains
+ contains one WorkArea. In the qt4 frontend, one GuiView thus contains
  multiple WorkAreas but this number can limited to one for another
  frontend. The idea is that the kernel should not know how a Buffer
  is displayed on screen; it's the frontend business.
@@ -171,8 +169,6 @@ public:
 	Application() {}
 	///
 	virtual ~Application() {}
-	///
-	virtual LyXView * currentWindow() = 0;
 
 	/// LyX dispatcher: executes lyx actions and does necessary
 	/// screen updates depending on results.

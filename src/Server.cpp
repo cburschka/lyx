@@ -1110,7 +1110,7 @@ void Server::callback(string const & msg)
 			// The correct solution would be to have a
 			// specialized (non-gui) BufferView. But how do
 			// we do it now? Probably we should just let it
-			// connect to the lyxfunc in the single LyXView we
+			// connect to the lyxfunc in the single GuiView we
 			// support currently. (Lgb)
 
 			FuncRequest const fr(lyxaction.lookupFunc(cmd), arg);

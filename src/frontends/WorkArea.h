@@ -15,7 +15,6 @@
 #define BASE_WORKAREA_H
 
 #include "frontends/KeyModifier.h"
-#include "frontends/LyXView.h"
 
 namespace lyx {
 

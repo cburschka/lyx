@@ -3272,7 +3272,7 @@ bool isValidName(string const & name)
 
 void GuiView::resetDialogs()
 {
-	// Make sure that no LFUN uses any LyXView.
+	// Make sure that no LFUN uses any GuiView.
 	guiApp->setCurrentView(0);
 	saveLayout();
 	menuBar()->clear();

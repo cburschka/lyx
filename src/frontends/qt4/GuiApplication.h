@@ -33,7 +33,6 @@ class KeySymbol;
 namespace frontend {
 
 class GuiView;
-class LyXView;
 class GlobalMenuBar;
 class GuiWorkArea;
 class Menus;
@@ -61,7 +60,6 @@ public:
 	void dispatch(FuncRequest const &);
 	void dispatch(FuncRequest const &, DispatchResult & dr);
 	FuncStatus getStatus(FuncRequest const & cmd) const;
-	LyXView * currentWindow();
 	void dispatchDelayed(FuncRequest const &);
 	void resetGui();
 	void restoreGuiSession();
@@ -161,7 +159,7 @@ private:
 	///
 	void setGuiLanguage();
 
-	/// This LyXView is the one receiving Clipboard and Selection
+	/// This GuiView is the one receiving Clipboard and Selection
 	/// events
 	GuiView * current_view_;
 

@@ -38,7 +38,6 @@ extern bool use_gui;
 
 namespace frontend {
 class Application;
-class LyXView;
 }
 
 namespace graphics {
@@ -54,9 +53,6 @@ public:
 
 	/// Execute LyX.
 	int exec(int & argc, char * argv[]);
-
-	///
-	frontend::LyXView * newLyXView();
 
 private:
 	/// noncopyable

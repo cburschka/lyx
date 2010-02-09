@@ -16,7 +16,6 @@
 #define GUI_VIEW_H
 
 #include "frontends/Delegates.h"
-#include "frontends/LyXView.h"
 
 #include "support/strfwd.h"
 
@@ -31,7 +30,15 @@ class QShowEvent;
 
 namespace lyx {
 
+namespace support { class FileName; }
+
+class Buffer;
+class BufferView;
 class Cursor;
+class DispatchResult;
+class FuncStatus;
+class FuncRequest;
+class Inset;
 
 namespace frontend {
 
@@ -44,15 +51,16 @@ class TocModels;
 class ToolbarInfo;
 
 /**
- * GuiView - Qt4 implementation of LyXView
+ * GuiView - Qt4 main LyX window
  *
- * qt4-private implementation of the main LyX window.
+ * This class represents the main LyX window and provides
+ * accessor functions to its content.
  *
  * Note: a QObject emits a destroyed(QObject *) Qt signal when it
  * is deleted. This might be useful for closing other dialogs
  * depending on a given GuiView.
  */
-class GuiView : public QMainWindow, public LyXView, public GuiBufferViewDelegate,
+class GuiView : public QMainWindow, public GuiBufferViewDelegate,
 	public GuiBufferDelegate
 {
 	Q_OBJECT
@@ -62,28 +70,50 @@ public:
 
 	~GuiView();
 
-	/// \name LyXView inherited methods.
-	//@{
 	int id() const { return id_; }
+
 	void setBusy(bool);
+
+	/// \name Generic accessor functions
+	//@{
+	/// The current BufferView refers to the BufferView that has the focus,
+	/// including for example the one that is created when you use the
+	/// advanced search and replace pane.
+	/// \return the currently selected buffer view.
 	BufferView * currentBufferView();
 	BufferView const * currentBufferView() const;
+
+	/// The document BufferView always refers to the view's main document
+	/// BufferView. So, even if the BufferView in e.g., the advanced
+	/// search and replace pane has the focus.
+	/// \return the current document buffer view.
 	BufferView * documentBufferView();
 	BufferView const * documentBufferView() const;
+
 	void newDocument(std::string const & filename,
 		bool fromTemplate);
 
+	/// display a message in the view
 	/// could be called from any thread
 	void message(docstring const &);
 	/// must be called from GUI thread
 	void updateMessage(QString const & str);
 
 	bool getStatus(FuncRequest const & cmd, FuncStatus & flag);
+	/// dispatch command.
+	/// \return true if the \c FuncRequest has been dispatched.
 	void dispatch(FuncRequest const & cmd, DispatchResult & dr);
+
 	void restartCursor();
+	/// Update the completion popup and the inline completion state.
+	/// If \c start is true, then a new completion might be started.
+	/// If \c keep is true, an active completion will be kept active
+	/// even though the cursor moved. The update flags of \c cur might
+	/// be changed.
 	void updateCompletion(Cursor & cur, bool start, bool keep);
+
+	///
 	void setFocus();
-	//@}
 
 	///
 	void focusInEvent(QFocusEvent * e);

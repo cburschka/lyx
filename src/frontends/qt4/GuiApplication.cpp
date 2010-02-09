@@ -826,12 +826,6 @@ docstring GuiApplication::iconName(FuncRequest const & f, bool unknown)
 }
 
 
-LyXView * GuiApplication::currentWindow() 
-{
-	return current_view_;
-}
-
-
 FuncStatus GuiApplication::getStatus(FuncRequest const & cmd) const
 {
 	FuncStatus flag;
@@ -857,7 +851,7 @@ FuncStatus GuiApplication::getStatus(FuncRequest const & cmd) const
 	switch (cmd.action) {
 
 	// This could be used for the no-GUI version. The GUI version is handled in
-	// LyXView::getStatus(). See above.
+	// GuiView::getStatus(). See above.
 	/*
 	case LFUN_BUFFER_WRITE:
 	case LFUN_BUFFER_WRITE_AS: {
@@ -1082,7 +1076,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd)
 
 void GuiApplication::gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer)
 {
-	LyXView * lv = current_view_;
+	GuiView * lv = current_view_;
 	LASSERT(lv, /**/);
 	if (!theSession().bookmarks().isValid(idx))
 		return;
@@ -1551,7 +1545,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	if (lv == 0)
 		return;
 
-	// Let the current LyXView dispatch its own actions.
+	// Let the current GuiView dispatch its own actions.
 	lv->dispatch(cmd, dr);
 	if (dr.dispatched() && lv )
 		return;

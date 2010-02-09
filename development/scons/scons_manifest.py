@@ -653,7 +653,6 @@ src_frontends_header_files = Split('''
     FontMetrics.h
     KeyModifier.h
     KeySymbol.h
-    LyXView.h
     mouse_state.h
     Painter.h
     Selection.h
