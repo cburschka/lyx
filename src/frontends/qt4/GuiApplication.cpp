@@ -1231,22 +1231,22 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		break;
 
 	case LFUN_SCREEN_FONT_UPDATE: {
-			// handle the screen font changes.
-			d->font_loader_.update();
-			// Backup current_view_
-			GuiView * view = current_view_;
-			// Set current_view_ to zero to forbid GuiWorkArea::redraw()
-			// to skip the refresh.
-			current_view_ = 0;
-			theBufferList().changed(false);
-			// Restore current_view_
-			current_view_ = view;
-			break;
-		}
+		// handle the screen font changes.
+		d->font_loader_.update();
+		// Backup current_view_
+		GuiView * view = current_view_;
+		// Set current_view_ to zero to forbid GuiWorkArea::redraw()
+		// to skip the refresh.
+		current_view_ = 0;
+		theBufferList().changed(false);
+		// Restore current_view_
+		current_view_ = view;
+		break;
+	}
 
 	case LFUN_BUFFER_NEW:
 		if (d->views_.empty()
-			|| (!lyxrc.open_buffers_in_tabs && current_view_->documentBufferView() != 0)) {
+		   || (!lyxrc.open_buffers_in_tabs && current_view_->documentBufferView() != 0)) {
 			createView(QString(), false); // keep hidden
 			current_view_->newDocument(to_utf8(cmd.argument()), false);
 			current_view_->show();
@@ -1258,7 +1258,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 	case LFUN_BUFFER_NEW_TEMPLATE:
 		if (d->views_.empty()
-			|| (!lyxrc.open_buffers_in_tabs && current_view_->documentBufferView() != 0)) {
+		   || (!lyxrc.open_buffers_in_tabs && current_view_->documentBufferView() != 0)) {
 			createView();
 			current_view_->newDocument(to_utf8(cmd.argument()), true);
 			if (!current_view_->documentBufferView())
@@ -1300,7 +1300,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 		if (fname.empty()) {
 			lyxerr << "LyX: unable to find documentation file `"
-					<< arg << "'. Bad installation?" << endl;
+			       << arg << "'. Bad installation?" << endl;
 			break;
 		}
 		current_view_->message(bformat(_("Opening help file %1$s..."),
@@ -1325,8 +1325,8 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		}
 
 		string const graphicsbg = lcolor.getLyXName(Color_graphicsbg);
-		bool const graphicsbg_changed = lyx_name == graphicsbg
-						&& x11_name != graphicsbg;
+		bool const graphicsbg_changed = 
+				lyx_name == graphicsbg && x11_name != graphicsbg;
 		if (graphicsbg_changed) {
 			// FIXME: The graphics cache no longer has a changeDisplay method.
 #if 0
@@ -1336,10 +1336,10 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 		if (!lcolor.setColor(lyx_name, x11_name)) {
 			current_view_->message(
-					bformat(_("Set-color \"%1$s\" failed "
-						  "- color is undefined or "
-						  "may not be redefined"),
-						from_utf8(lyx_name)));
+				bformat(_("Set-color \"%1$s\" failed "
+				        "- color is undefined or "
+				        "may not be redefined"),
+				        from_utf8(lyx_name)));
 			break;
 		}
 		// Make sure we don't keep old colors in cache.
@@ -1506,9 +1506,9 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 		if (unknown_tokens != 0) {
 			lyxerr << "Warning in LFUN_BUFFER_SAVE_AS_DEFAULT!\n"
-					<< unknown_tokens << " unknown token"
-					<< (unknown_tokens == 1 ? "" : "s")
-					<< endl;
+			       << unknown_tokens << " unknown token"
+			       << (unknown_tokens == 1 ? "" : "s")
+			       << endl;
 		}
 
 		if (defaults.writeFile(FileName(defaults.absFileName())))
