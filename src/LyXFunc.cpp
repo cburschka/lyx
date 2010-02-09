@@ -341,13 +341,16 @@ static docstring makeDispatchMessage(docstring const & msg,
 
 void LyXFunc::dispatch(FuncRequest const & cmd)
 {
+	LyXView * lv = theApp()->currentWindow();
+	if (lv && lv->currentBufferView())
+		lv->currentBufferView()->cursor().saveBeforeDispatchPosXY();
+
 	DispatchResult dr;
 	// redraw the screen at the end (first of the two drawing steps).
 	//This is done unless explicitly requested otherwise
 	dr.update(Update::FitCursor);
 	dispatch(cmd, dr);
 
-	LyXView * lv = theApp()->currentWindow();
 	if (lv && lv->currentBufferView()) {
 		// BufferView::update() updates the ViewMetricsInfo and
 		// also initializes the position cache for all insets in
@@ -565,8 +568,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 			// Let the current Cursor dispatch its own actions.
 			Cursor old = bv->cursor();
-			bv->cursor().getPos(cursorPosBeforeDispatchX_,
-						cursorPosBeforeDispatchY_);
 			bv->cursor().dispatch(cmd);
 
 			// notify insets we just left

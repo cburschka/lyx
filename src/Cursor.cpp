@@ -27,7 +27,6 @@
 #include "FuncRequest.h"
 #include "Language.h"
 #include "LyXAction.h"
-#include "LyXFunc.h"
 #include "LyXRC.h"
 #include "Paragraph.h"
 #include "ParIterator.h"
@@ -312,6 +311,12 @@ bool Cursor::getStatus(FuncRequest const & cmd, FuncStatus & status) const
 		}
 	}
 	return res;
+}
+
+
+void Cursor::saveBeforeDispatchPosXY()
+{
+	getPos(beforeDispatchPosX_, beforeDispatchPosY_);
 }
 
 
@@ -1662,7 +1667,7 @@ bool Cursor::upDownInMath(bool up)
 	int xo = 0;
 	int yo = 0;
 	getPos(xo, yo);
-	xo = theLyXFunc().cursorBeforeDispatchX();
+	xo = beforeDispatchPosX_;
 	
 	// check if we had something else in mind, if not, this is the future
 	// target
@@ -1712,7 +1717,7 @@ bool Cursor::upDownInMath(bool up)
 				int x;
 				int y;
 				getPos(x, y);
-				int oy = theLyXFunc().cursorBeforeDispatchY();
+				int oy = beforeDispatchPosY_;
 				if ((!up && y <= oy) ||
 						(up && y >= oy))
 					operator=(old);
@@ -1733,7 +1738,7 @@ bool Cursor::upDownInMath(bool up)
 				int x;
 				int y;
 				getPos(x, y);
-				int oy = theLyXFunc().cursorBeforeDispatchY();
+				int oy = beforeDispatchPosY_;
 				if ((!up && y <= oy) ||
 						(up && y >= oy))
 					operator=(old);
@@ -1757,7 +1762,7 @@ bool Cursor::upDownInMath(bool up)
 		//lyxerr << "updown: popBackward succeeded" << endl;
 		int xnew;
 		int ynew;
-		int yold = theLyXFunc().cursorBeforeDispatchY();
+		int yold = beforeDispatchPosY_;
 		getPos(xnew, ynew);
 		if (up ? ynew < yold : ynew > yold)
 			return true;
@@ -1799,7 +1804,7 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 	int xo = 0;
 	int yo = 0;
 	getPos(xo, yo);
-	xo = theLyXFunc().cursorBeforeDispatchX();
+	xo = beforeDispatchPosX_;
 
 	// update the targetX - this is here before the "return false"
 	// to set a new target which can be used by InsetTexts above

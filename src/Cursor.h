@@ -294,8 +294,10 @@ public:
 	///
 	mutable DispatchResult disp_;
 	///
-	DocIterator const & beforeDispatchCursor() { return beforeDispatchCursor_; }
-	
+	DocIterator const & beforeDispatchCursor() const { return beforeDispatchCursor_; }
+	///
+	void saveBeforeDispatchPosXY();
+
 private:
 	/**
 	 * The target x position of the cursor. This is used for when
@@ -325,6 +327,10 @@ private:
 	bool logicalpos_;
 	/// position before dispatch started
 	DocIterator beforeDispatchCursor_;
+	/// cursor screen coordinates before dispatch started
+	int beforeDispatchPosX_;
+	int beforeDispatchPosY_;
+
 
 // FIXME: make them private.
 public:

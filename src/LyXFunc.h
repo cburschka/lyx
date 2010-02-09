@@ -41,6 +41,8 @@ class FileName;
     keyboard or from the GUI. All GUI objects, including buttons and
     menus should use this class and never call kernel functions directly.
 */
+
+//FIXME: this should not be a class anymore
 class LyXFunc
 {
 public:
@@ -63,15 +65,6 @@ public:
 	///		not the current buffer
 	void gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer);
 
-	/// cursor x position before dispatch started
-	int cursorBeforeDispatchX() const { return cursorPosBeforeDispatchX_; }
-	/// cursor y position before dispatch started
-	int cursorBeforeDispatchY() const { return cursorPosBeforeDispatchY_; }
-
-private:
-	/// cursor position before dispatch started
-	int cursorPosBeforeDispatchX_;
-	int cursorPosBeforeDispatchY_;
 };
 
 /// Implementation is in LyX.cpp
