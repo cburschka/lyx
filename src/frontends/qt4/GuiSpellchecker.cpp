@@ -183,6 +183,7 @@ void GuiSpellchecker::on_addPB_clicked()
 
 void GuiSpellchecker::on_ignorePB_clicked()
 {
+	dispatch(FuncRequest(LFUN_ESCAPE));
 	dispatch(FuncRequest(LFUN_CHAR_FORWARD));
 	check();
 }
