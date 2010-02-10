@@ -57,6 +57,14 @@ docstring const from_filesystem8bit(std::string const & s);
 /// convert \p s from ucs4 to the encoding of the file system.
 std::string const to_filesystem8bit(docstring const & s);
 
+/// convert \p s from ucs4 to the \p encoding.
+std::string const to_iconv_encoding(docstring const & s,
+				    std::string const & encoding);
+
+/// convert \p s from \p encoding to ucs4.
+docstring const from_iconv_encoding(std::string const & s,
+				    std::string const & encoding);
+
 /// normalize \p s to precomposed form c
 docstring const normalize_c(docstring const & s);
 

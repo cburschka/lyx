@@ -183,11 +183,14 @@ SpellChecker::Result HunspellChecker::check(WordLangTuple const & wl)
 	if (d->isIgnored(wl))
 		return OK;
 
-	string const word_to_check = to_utf8(wl.word());
 	Hunspell * h = d->speller(wl.lang()->code());
 	if (!h)
 		return OK;
 	int info;
+
+	string const encoding = h->get_dic_encoding();
+	string const word_to_check = to_iconv_encoding(wl.word(), encoding);
+	
 	if (h->spell(word_to_check.c_str(), &info))
 		return OK;
 
@@ -224,16 +227,17 @@ void HunspellChecker::suggest(WordLangTuple const & wl,
 	docstring_list & suggestions)
 {
 	suggestions.clear();
-	string const word_to_check = to_utf8(wl.word());
 	Hunspell * h = d->speller(wl.lang()->code());
 	if (!h)
 		return;
+	string const encoding = h->get_dic_encoding();
+	string const word_to_check = to_iconv_encoding(wl.word(), encoding);
 	char ** suggestion_list;
 	int const suggestion_number = h->suggest(&suggestion_list, word_to_check.c_str());
 	if (suggestion_number <= 0)
 		return;
 	for (int i = 0; i != suggestion_number; ++i)
-		suggestions.push_back(from_utf8(suggestion_list[i]));
+		suggestions.push_back(from_iconv_encoding(suggestion_list[i], encoding));
 	h->free_list(&suggestion_list, suggestion_number);
 }
 

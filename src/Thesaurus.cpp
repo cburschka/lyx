@@ -21,7 +21,6 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/os.h"
-#include "support/unicode.h"
 
 #include "support/mythes/mythes.hxx"
 
@@ -37,21 +36,6 @@ using namespace lyx::support::os;
 namespace lyx {
 
 namespace {
-
-string const to_iconv_encoding(docstring const & s, string const & encoding)
-{
-	std::vector<char> const encoded =
-		ucs4_to_eightbit(s.data(), s.length(), encoding);
-	return string(encoded.begin(), encoded.end());
-}
-
-
-docstring const from_iconv_encoding(string const & s, string const & encoding)
-{
-	std::vector<char_type> const ucs4 =
-		eightbit_to_ucs4(s.data(), s.length(), encoding);
-	return docstring(ucs4.begin(), ucs4.end());
-}
 
 typedef std::map<docstring, MyThes *> Thesauri;
 
