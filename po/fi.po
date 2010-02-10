@@ -69,7 +69,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-02-05 18:11+0100\n"
+"POT-Creation-Date: 2010-02-10 12:45+0100\n"
 "PO-Revision-Date: 2007-07-14 16:48+0100\n"
 "Last-Translator: Martin Vermeer <martin.vermeer@tkk.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -147,7 +147,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/CitationUi.ui:461
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:890
-#: src/Buffer.cpp:2713 src/Buffer.cpp:2759 src/Buffer.cpp:2794
+#: src/Buffer.cpp:2716 src/Buffer.cpp:2762 src/Buffer.cpp:2797
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:866 src/LyXFunc.cpp:1042
 #: src/LyXFunc.cpp:1925 src/LyXVC.cpp:196
 #: src/frontends/qt4/GuiClipboard.cpp:208
@@ -524,8 +524,8 @@ msgstr "Uu&si:"
 msgid "Remove the selected branch"
 msgstr "Poista valittu haara"
 
-#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2729
-#: src/Buffer.cpp:2740
+#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2732
+#: src/Buffer.cpp:2743
 msgid "&Remove"
 msgstr "&Poista"
 
@@ -4903,7 +4903,7 @@ msgid "email"
 msgstr "Sähköposti:"
 
 #: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:612 lib/languages:4
-#: src/frontends/qt4/GuiPrefs.cpp:589
+#: src/frontends/qt4/GuiErrorList.cpp:45 src/frontends/qt4/GuiPrefs.cpp:589
 msgid "LaTeX"
 msgstr "LaTeX"
 
@@ -15262,7 +15262,7 @@ msgstr ""
 msgid "date (output)"
 msgstr "&Mukauta tuloste"
 
-#: lib/configure.py:302
+#: lib/configure.py:302 src/frontends/qt4/GuiErrorList.cpp:39
 msgid "DocBook"
 msgstr "DocBook"
 
@@ -15772,77 +15772,77 @@ msgstr "Muuntaminen epäonnistui"
 msgid "conversion failed"
 msgstr "Muuntaminen epäonnistui"
 
-#: src/Buffer.cpp:1384
+#: src/Buffer.cpp:1387
 msgid "Running chktex..."
 msgstr "chktex on käynnissä..."
 
-#: src/Buffer.cpp:1397
+#: src/Buffer.cpp:1400
 msgid "chktex failure"
 msgstr "chktex epäonnistui"
 
-#: src/Buffer.cpp:1398
+#: src/Buffer.cpp:1401
 msgid "Could not run chktex successfully."
 msgstr "Chktex-ajo epäonnistui"
 
-#: src/Buffer.cpp:2253
+#: src/Buffer.cpp:2256
 msgid "Preview source code"
 msgstr "Lähdekoodin esikatselu"
 
-#: src/Buffer.cpp:2267
+#: src/Buffer.cpp:2270
 #, fuzzy, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Kappaleen %1$s lähdekoodin esikatselu"
 
-#: src/Buffer.cpp:2271
+#: src/Buffer.cpp:2274
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Lähdekoodin esikatselu, kappaleet %1$s -- %2$s"
 
-#: src/Buffer.cpp:2380
+#: src/Buffer.cpp:2383
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "%1$s tallentuu itsestään"
 
-#: src/Buffer.cpp:2434
+#: src/Buffer.cpp:2437
 msgid "Autosave failed!"
 msgstr "Automaattinen tallennus epäonnistui!"
 
-#: src/Buffer.cpp:2490
+#: src/Buffer.cpp:2493
 msgid "Autosaving current document..."
 msgstr "Asiakirjan automaattinen tallennus käynnissä..."
 
-#: src/Buffer.cpp:2533
+#: src/Buffer.cpp:2536
 msgid "Couldn't export file"
 msgstr "Ei voitu viedä tiedostoa"
 
-#: src/Buffer.cpp:2534
+#: src/Buffer.cpp:2537
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Ei tietoa, miten tuoda formaattia %1$s"
 
-#: src/Buffer.cpp:2571
+#: src/Buffer.cpp:2574
 msgid "File name error"
 msgstr "Tiedostonimessä virhe"
 
-#: src/Buffer.cpp:2572
+#: src/Buffer.cpp:2575
 msgid "The directory path to the document cannot contain spaces."
 msgstr "LyX-tiedoston polussa ei voi olla välilyöntejä."
 
-#: src/Buffer.cpp:2614
+#: src/Buffer.cpp:2617
 msgid "Document export cancelled."
 msgstr "Asiakirja vienti peruutettu."
 
-#: src/Buffer.cpp:2620
+#: src/Buffer.cpp:2623
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Asiakirja viety nimellä %1$s tiedostoon `%2$s'"
 
-#: src/Buffer.cpp:2626
+#: src/Buffer.cpp:2629
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Asiakirja viety nimellä %1$s"
 
-#: src/Buffer.cpp:2696
+#: src/Buffer.cpp:2699
 #, c-format
 msgid ""
 "The specified document\n"
@@ -15852,11 +15852,11 @@ msgstr ""
 "Asiakirjan %1$s\n"
 "lukeminen epäonnistui"
 
-#: src/Buffer.cpp:2698
+#: src/Buffer.cpp:2701
 msgid "Could not read document"
 msgstr "Asiakirjan lukeminen epäonnistui"
 
-#: src/Buffer.cpp:2708
+#: src/Buffer.cpp:2711
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -15866,58 +15866,58 @@ msgstr ""
 "Asiakirjasta %1$s on olemassa hätätallennusversio.\n"
 "Ladataanko hätätallennus?"
 
-#: src/Buffer.cpp:2711
+#: src/Buffer.cpp:2714
 msgid "Load emergency save?"
 msgstr "Ladataanko hätätallennus?"
 
-#: src/Buffer.cpp:2712
+#: src/Buffer.cpp:2715
 msgid "&Recover"
 msgstr "Pelasta"
 
-#: src/Buffer.cpp:2712
+#: src/Buffer.cpp:2715
 #, fuzzy
 msgid "&Load Original"
 msgstr "Lataa alkuperäinen"
 
-#: src/Buffer.cpp:2722
+#: src/Buffer.cpp:2725
 msgid "Document was successfully recovered."
 msgstr ""
 
-#: src/Buffer.cpp:2724
+#: src/Buffer.cpp:2727
 msgid "Document was NOT successfully recovered."
 msgstr ""
 
-#: src/Buffer.cpp:2725
+#: src/Buffer.cpp:2728
 #, fuzzy, c-format
 msgid ""
 "Remove emergency file now?\n"
 "(%1$s)"
 msgstr "Ladataanko hätätallennus?"
 
-#: src/Buffer.cpp:2728 src/Buffer.cpp:2738
+#: src/Buffer.cpp:2731 src/Buffer.cpp:2741
 #, fuzzy
 msgid "Delete emergency file?"
 msgstr "Valitse ulkoinen tiedosto"
 
-#: src/Buffer.cpp:2729 src/Buffer.cpp:2740
+#: src/Buffer.cpp:2732 src/Buffer.cpp:2743
 #, fuzzy
 msgid "&Keep it"
 msgstr "&Säilytä vastaavat"
 
-#: src/Buffer.cpp:2732
+#: src/Buffer.cpp:2735
 msgid "Emergency file deleted"
 msgstr ""
 
-#: src/Buffer.cpp:2733
+#: src/Buffer.cpp:2736
 msgid "Do not forget to save your file now!"
 msgstr ""
 
-#: src/Buffer.cpp:2739
+#: src/Buffer.cpp:2742
 #, fuzzy
 msgid "Remove emergency file now?"
 msgstr "Ladataanko hätätallennus?"
 
-#: src/Buffer.cpp:2754
+#: src/Buffer.cpp:2757
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -15928,28 +15928,28 @@ msgstr ""
 "\n"
 "Ladataanko mieluummin varmuuskopio?"
 
-#: src/Buffer.cpp:2757
+#: src/Buffer.cpp:2760
 msgid "Load backup?"
 msgstr "Ladataanko varmuuskopio?"
 
-#: src/Buffer.cpp:2758
+#: src/Buffer.cpp:2761
 msgid "&Load backup"
 msgstr "Lataa varmuuskopio"
 
-#: src/Buffer.cpp:2758
+#: src/Buffer.cpp:2761
 msgid "Load &original"
 msgstr "Lataa alkuperäinen"
 
-#: src/Buffer.cpp:2791
+#: src/Buffer.cpp:2794
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "Haluatko palauttaa asiakirjan %1$s versionhallinnasta?"
 
-#: src/Buffer.cpp:2793
+#: src/Buffer.cpp:2796
 msgid "Retrieve from version control?"
 msgstr "Palautetaanko versionhallinnasta?"
 
-#: src/Buffer.cpp:2794
+#: src/Buffer.cpp:2797
 msgid "&Retrieve"
 msgstr "Palauta"
 
@@ -19196,12 +19196,22 @@ msgstr ""
 msgid "TeX Code Settings"
 msgstr "LaTeX-asetukset"
 
-#: src/frontends/qt4/GuiErrorList.cpp:38
+#: src/frontends/qt4/GuiErrorList.cpp:41
+#, fuzzy
+msgid "Literate"
+msgstr "Sanatarkasti"
+
+#: src/frontends/qt4/GuiErrorList.cpp:43
+#, fuzzy
+msgid "pLaTeX"
+msgstr "LaTeX"
+
+#: src/frontends/qt4/GuiErrorList.cpp:55
 #, fuzzy
 msgid "Error List"
 msgstr "Ohjelmalistaus"
 
-#: src/frontends/qt4/GuiErrorList.cpp:95
+#: src/frontends/qt4/GuiErrorList.cpp:112
 #, fuzzy, c-format
 msgid "%1$s Errors (%2$s)"
 msgstr "%1$s ja %2$s"
@@ -21826,7 +21836,7 @@ msgstr "Vaaka"
 msgid "TeX"
 msgstr "TeX"
 
-#: src/mathed/MathMacroTemplate.cpp:1228
+#: src/mathed/MathMacroTemplate.cpp:1235
 msgid "math macro"
 msgstr "matematiikamakro"
 

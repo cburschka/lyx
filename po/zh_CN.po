@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zh_CN\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-02-05 18:11+0100\n"
+"POT-Creation-Date: 2010-02-10 12:45+0100\n"
 "PO-Revision-Date: 2009-10-18 22:58+0000\n"
 "Last-Translator: mgc <mgcgogo@gmail.com>\n"
 "Language-Team: 简体中文 <lyx-docs@lists.lyx.org>\n"
@@ -89,7 +89,7 @@ msgstr "确认(&O)"
 #: src/frontends/qt4/ui/CitationUi.ui:461
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:890
-#: src/Buffer.cpp:2713 src/Buffer.cpp:2759 src/Buffer.cpp:2794
+#: src/Buffer.cpp:2716 src/Buffer.cpp:2762 src/Buffer.cpp:2797
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:866 src/LyXFunc.cpp:1042
 #: src/LyXFunc.cpp:1925 src/LyXVC.cpp:196
 #: src/frontends/qt4/GuiClipboard.cpp:208
@@ -462,8 +462,8 @@ msgstr "新建(&N)："
 msgid "Remove the selected branch"
 msgstr "删除选中分支"
 
-#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2729
-#: src/Buffer.cpp:2740
+#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2732
+#: src/Buffer.cpp:2743
 msgid "&Remove"
 msgstr "删除(&R)"
 
@@ -4684,7 +4684,7 @@ msgid "email"
 msgstr "电子邮件"
 
 #: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:612 lib/languages:4
-#: src/frontends/qt4/GuiPrefs.cpp:589
+#: src/frontends/qt4/GuiErrorList.cpp:45 src/frontends/qt4/GuiPrefs.cpp:589
 msgid "LaTeX"
 msgstr "LaTeX"
 
@@ -15033,7 +15033,7 @@ msgstr "纯文本(Xfig output)"
 msgid "date (output)"
 msgstr "Adapt outp&ut"
 
-#: lib/configure.py:302
+#: lib/configure.py:302 src/frontends/qt4/GuiErrorList.cpp:39
 msgid "DocBook"
 msgstr "DocBook"
 
@@ -15531,77 +15531,77 @@ msgstr "转换出错"
 msgid "conversion failed"
 msgstr "转换出错"
 
-#: src/Buffer.cpp:1384
+#: src/Buffer.cpp:1387
 msgid "Running chktex..."
 msgstr "执行 chktex..."
 
-#: src/Buffer.cpp:1397
+#: src/Buffer.cpp:1400
 msgid "chktex failure"
 msgstr "chktex执行出错"
 
-#: src/Buffer.cpp:1398
+#: src/Buffer.cpp:1401
 msgid "Could not run chktex successfully."
 msgstr "无法正确执行chktex"
 
-#: src/Buffer.cpp:2253
+#: src/Buffer.cpp:2256
 msgid "Preview source code"
 msgstr "预览源文件"
 
-#: src/Buffer.cpp:2267
+#: src/Buffer.cpp:2270
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "预览段落 %1$d 的源代码"
 
-#: src/Buffer.cpp:2271
+#: src/Buffer.cpp:2274
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "预览段落  %1$s 至  %2$s 段落之源代码"
 
-#: src/Buffer.cpp:2380
+#: src/Buffer.cpp:2383
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "自动保存 %1$s"
 
-#: src/Buffer.cpp:2434
+#: src/Buffer.cpp:2437
 msgid "Autosave failed!"
 msgstr "自动保存失败!"
 
-#: src/Buffer.cpp:2490
+#: src/Buffer.cpp:2493
 msgid "Autosaving current document..."
 msgstr "自动保存当前文档..."
 
-#: src/Buffer.cpp:2533
+#: src/Buffer.cpp:2536
 msgid "Couldn't export file"
 msgstr "无法导出文件"
 
-#: src/Buffer.cpp:2534
+#: src/Buffer.cpp:2537
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "无导出格式 %1$s 的信息."
 
-#: src/Buffer.cpp:2571
+#: src/Buffer.cpp:2574
 msgid "File name error"
 msgstr "文件名出错"
 
-#: src/Buffer.cpp:2572
+#: src/Buffer.cpp:2575
 msgid "The directory path to the document cannot contain spaces."
 msgstr "文档路径不能有空格"
 
-#: src/Buffer.cpp:2614
+#: src/Buffer.cpp:2617
 msgid "Document export cancelled."
 msgstr "取消导出文档"
 
-#: src/Buffer.cpp:2620
+#: src/Buffer.cpp:2623
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "文档 %1$s 导出为 `%2$s'"
 
-#: src/Buffer.cpp:2626
+#: src/Buffer.cpp:2629
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "文档导出为 %1$s"
 
-#: src/Buffer.cpp:2696
+#: src/Buffer.cpp:2699
 #, c-format
 msgid ""
 "The specified document\n"
@@ -15612,11 +15612,11 @@ msgstr ""
 "%1$s\n"
 "could not be read."
 
-#: src/Buffer.cpp:2698
+#: src/Buffer.cpp:2701
 msgid "Could not read document"
 msgstr "无法读取文档"
 
-#: src/Buffer.cpp:2708
+#: src/Buffer.cpp:2711
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -15627,54 +15627,54 @@ msgstr ""
 "\n"
 "使用此紧急版本吧?"
 
-#: src/Buffer.cpp:2711
+#: src/Buffer.cpp:2714
 msgid "Load emergency save?"
 msgstr "读入紧急保存的版本吗"
 
-#: src/Buffer.cpp:2712
+#: src/Buffer.cpp:2715
 msgid "&Recover"
 msgstr "恢复(&R)"
 
-#: src/Buffer.cpp:2712
+#: src/Buffer.cpp:2715
 msgid "&Load Original"
 msgstr "读取原版本(&L)"
 
-#: src/Buffer.cpp:2722
+#: src/Buffer.cpp:2725
 msgid "Document was successfully recovered."
 msgstr "文档已被成功修复。"
 
-#: src/Buffer.cpp:2724
+#: src/Buffer.cpp:2727
 msgid "Document was NOT successfully recovered."
 msgstr "文档未被成功修复。"
 
-#: src/Buffer.cpp:2725
+#: src/Buffer.cpp:2728
 #, fuzzy, c-format
 msgid ""
 "Remove emergency file now?\n"
 "(%1$s)"
 msgstr "现在删除紧急保存的文件吗？"
 
-#: src/Buffer.cpp:2728 src/Buffer.cpp:2738
+#: src/Buffer.cpp:2731 src/Buffer.cpp:2741
 msgid "Delete emergency file?"
 msgstr "删除紧急保存的文件吗？"
 
-#: src/Buffer.cpp:2729 src/Buffer.cpp:2740
+#: src/Buffer.cpp:2732 src/Buffer.cpp:2743
 msgid "&Keep it"
 msgstr "保留(&K)"
 
-#: src/Buffer.cpp:2732
+#: src/Buffer.cpp:2735
 msgid "Emergency file deleted"
 msgstr "紧急保存的文件已删除。"
 
-#: src/Buffer.cpp:2733
+#: src/Buffer.cpp:2736
 msgid "Do not forget to save your file now!"
 msgstr "别忘了现在就保存你分文件。"
 
-#: src/Buffer.cpp:2739
+#: src/Buffer.cpp:2742
 msgid "Remove emergency file now?"
 msgstr "现在删除紧急保存的文件吗？"
 
-#: src/Buffer.cpp:2754
+#: src/Buffer.cpp:2757
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -15685,28 +15685,28 @@ msgstr ""
 "\n"
 "读取备份版本?"
 
-#: src/Buffer.cpp:2757
+#: src/Buffer.cpp:2760
 msgid "Load backup?"
 msgstr "读取备份版本?"
 
-#: src/Buffer.cpp:2758
+#: src/Buffer.cpp:2761
 msgid "&Load backup"
 msgstr "读取备份(&L)"
 
-#: src/Buffer.cpp:2758
+#: src/Buffer.cpp:2761
 msgid "Load &original"
 msgstr "读取原版本(&o)"
 
-#: src/Buffer.cpp:2791
+#: src/Buffer.cpp:2794
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "您希望从版本控制程序中读取文档 %1$s 吗?"
 
-#: src/Buffer.cpp:2793
+#: src/Buffer.cpp:2796
 msgid "Retrieve from version control?"
 msgstr "从版本控制程序中读取文档?"
 
-#: src/Buffer.cpp:2794
+#: src/Buffer.cpp:2797
 msgid "&Retrieve"
 msgstr "获取(&R)"
 
@@ -18935,12 +18935,22 @@ msgstr ""
 msgid "TeX Code Settings"
 msgstr "TeX Code Settings"
 
-#: src/frontends/qt4/GuiErrorList.cpp:38
+#: src/frontends/qt4/GuiErrorList.cpp:41
+#, fuzzy
+msgid "Literate"
+msgstr "Literal"
+
+#: src/frontends/qt4/GuiErrorList.cpp:43
+#, fuzzy
+msgid "pLaTeX"
+msgstr "LaTeX"
+
+#: src/frontends/qt4/GuiErrorList.cpp:55
 #, fuzzy
 msgid "Error List"
 msgstr "程序列表"
 
-#: src/frontends/qt4/GuiErrorList.cpp:95
+#: src/frontends/qt4/GuiErrorList.cpp:112
 #, c-format
 msgid "%1$s Errors (%2$s)"
 msgstr "%1$s 错误 (%2$s)"
@@ -21571,7 +21581,7 @@ msgstr "水平"
 msgid "TeX"
 msgstr "LaTeX"
 
-#: src/mathed/MathMacroTemplate.cpp:1228
+#: src/mathed/MathMacroTemplate.cpp:1235
 msgid "math macro"
 msgstr "数学宏"
 

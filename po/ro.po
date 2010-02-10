@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-02-05 18:11+0100\n"
+"POT-Creation-Date: 2010-02-10 12:45+0100\n"
 "PO-Revision-Date: 2009-08-20 17:06+0100\n"
 "Last-Translator: Marius Ionescu <felijohn@gmail.com>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
@@ -88,7 +88,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/CitationUi.ui:461
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:890
-#: src/Buffer.cpp:2713 src/Buffer.cpp:2759 src/Buffer.cpp:2794
+#: src/Buffer.cpp:2716 src/Buffer.cpp:2762 src/Buffer.cpp:2797
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:866 src/LyXFunc.cpp:1042
 #: src/LyXFunc.cpp:1925 src/LyXVC.cpp:196
 #: src/frontends/qt4/GuiClipboard.cpp:208
@@ -462,8 +462,8 @@ msgstr "&Nou"
 msgid "Remove the selected branch"
 msgstr "Şterge versiunea de document selectată"
 
-#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2729
-#: src/Buffer.cpp:2740
+#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2732
+#: src/Buffer.cpp:2743
 msgid "&Remove"
 msgstr "&Elimină"
 
@@ -4800,7 +4800,7 @@ msgid "email"
 msgstr "email"
 
 #: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:612 lib/languages:4
-#: src/frontends/qt4/GuiPrefs.cpp:589
+#: src/frontends/qt4/GuiErrorList.cpp:45 src/frontends/qt4/GuiPrefs.cpp:589
 msgid "LaTeX"
 msgstr "LaTeX"
 
@@ -14961,7 +14961,7 @@ msgstr ""
 msgid "date (output)"
 msgstr "A&daptează rezultatul"
 
-#: lib/configure.py:302
+#: lib/configure.py:302 src/frontends/qt4/GuiErrorList.cpp:39
 msgid "DocBook"
 msgstr "DocBook"
 
@@ -15458,86 +15458,86 @@ msgstr "Conversie fişier"
 msgid "conversion failed"
 msgstr "Conversie fişier"
 
-#: src/Buffer.cpp:1384
+#: src/Buffer.cpp:1387
 #, fuzzy
 msgid "Running chktex..."
 msgstr "Running_LaTeX_Title"
 
-#: src/Buffer.cpp:1397
+#: src/Buffer.cpp:1400
 #, fuzzy
 msgid "chktex failure"
 msgstr "Cale fişiere de rezervă:#B"
 
-#: src/Buffer.cpp:1398
+#: src/Buffer.cpp:1401
 #, fuzzy
 msgid "Could not run chktex successfully."
 msgstr "Listă de slide-uri"
 
-#: src/Buffer.cpp:2253
+#: src/Buffer.cpp:2256
 #, fuzzy
 msgid "Preview source code"
 msgstr "Previzualizează|#P"
 
-#: src/Buffer.cpp:2267
+#: src/Buffer.cpp:2270
 #, fuzzy, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Previzualizează|#P"
 
-#: src/Buffer.cpp:2271
+#: src/Buffer.cpp:2274
 #, fuzzy, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Previzualizează|#P"
 
-#: src/Buffer.cpp:2380
+#: src/Buffer.cpp:2383
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr ""
 
-#: src/Buffer.cpp:2434
+#: src/Buffer.cpp:2437
 #, fuzzy
 msgid "Autosave failed!"
 msgstr "Interval de salvare automată:"
 
-#: src/Buffer.cpp:2490
+#: src/Buffer.cpp:2493
 #, fuzzy
 msgid "Autosaving current document..."
 msgstr "Formatez documentul..."
 
-#: src/Buffer.cpp:2533
+#: src/Buffer.cpp:2536
 #, fuzzy
 msgid "Couldn't export file"
 msgstr "Înlocuieşte"
 
-#: src/Buffer.cpp:2534
+#: src/Buffer.cpp:2537
 #, fuzzy, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Nu decomprimă imaginea înainte de exportare în LaTeX"
 
-#: src/Buffer.cpp:2571
+#: src/Buffer.cpp:2574
 #, fuzzy
 msgid "File name error"
 msgstr "Nume de fişier"
 
-#: src/Buffer.cpp:2572
+#: src/Buffer.cpp:2575
 msgid "The directory path to the document cannot contain spaces."
 msgstr ""
 
-#: src/Buffer.cpp:2614
+#: src/Buffer.cpp:2617
 #, fuzzy
 msgid "Document export cancelled."
 msgstr "&Modele de documente:"
 
-#: src/Buffer.cpp:2620
+#: src/Buffer.cpp:2623
 #, fuzzy, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "&Modele de documente:"
 
-#: src/Buffer.cpp:2626
+#: src/Buffer.cpp:2629
 #, fuzzy, c-format
 msgid "Document exported as %1$s"
 msgstr "&Modele de documente:"
 
-#: src/Buffer.cpp:2696
+#: src/Buffer.cpp:2699
 #, fuzzy, c-format
 msgid ""
 "The specified document\n"
@@ -15545,12 +15545,12 @@ msgid ""
 "could not be read."
 msgstr "Documentul nu poate fi citit"
 
-#: src/Buffer.cpp:2698
+#: src/Buffer.cpp:2701
 #, fuzzy
 msgid "Could not read document"
 msgstr "Nu pot insera documentul"
 
-#: src/Buffer.cpp:2708
+#: src/Buffer.cpp:2711
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -15558,58 +15558,58 @@ msgid ""
 "Recover emergency save?"
 msgstr ""
 
-#: src/Buffer.cpp:2711
+#: src/Buffer.cpp:2714
 msgid "Load emergency save?"
 msgstr ""
 
-#: src/Buffer.cpp:2712
+#: src/Buffer.cpp:2715
 #, fuzzy
 msgid "&Recover"
 msgstr "&Elimină"
 
-#: src/Buffer.cpp:2712
+#: src/Buffer.cpp:2715
 #, fuzzy
 msgid "&Load Original"
 msgstr "&Origine:"
 
-#: src/Buffer.cpp:2722
+#: src/Buffer.cpp:2725
 msgid "Document was successfully recovered."
 msgstr ""
 
-#: src/Buffer.cpp:2724
+#: src/Buffer.cpp:2727
 msgid "Document was NOT successfully recovered."
 msgstr ""
 
-#: src/Buffer.cpp:2725
+#: src/Buffer.cpp:2728
 #, fuzzy, c-format
 msgid ""
 "Remove emergency file now?\n"
 "(%1$s)"
 msgstr "Selectaţi fişierul de ieşire"
 
-#: src/Buffer.cpp:2728 src/Buffer.cpp:2738
+#: src/Buffer.cpp:2731 src/Buffer.cpp:2741
 #, fuzzy
 msgid "Delete emergency file?"
 msgstr "Selectaţi fişierul de ieşire"
 
-#: src/Buffer.cpp:2729 src/Buffer.cpp:2740
+#: src/Buffer.cpp:2732 src/Buffer.cpp:2743
 #, fuzzy
 msgid "&Keep it"
 msgstr "&Păstrează potrivirile"
 
-#: src/Buffer.cpp:2732
+#: src/Buffer.cpp:2735
 msgid "Emergency file deleted"
 msgstr ""
 
-#: src/Buffer.cpp:2733
+#: src/Buffer.cpp:2736
 msgid "Do not forget to save your file now!"
 msgstr ""
 
-#: src/Buffer.cpp:2739
+#: src/Buffer.cpp:2742
 msgid "Remove emergency file now?"
 msgstr ""
 
-#: src/Buffer.cpp:2754
+#: src/Buffer.cpp:2757
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -15617,31 +15617,31 @@ msgid ""
 "Load the backup instead?"
 msgstr ""
 
-#: src/Buffer.cpp:2757
+#: src/Buffer.cpp:2760
 #, fuzzy
 msgid "Load backup?"
 msgstr "&Global"
 
-#: src/Buffer.cpp:2758
+#: src/Buffer.cpp:2761
 #, fuzzy
 msgid "&Load backup"
 msgstr "&Global"
 
-#: src/Buffer.cpp:2758
+#: src/Buffer.cpp:2761
 msgid "Load &original"
 msgstr ""
 
-#: src/Buffer.cpp:2791
+#: src/Buffer.cpp:2794
 #, fuzzy, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "Înregistrează documentul sub controlul versiunii"
 
-#: src/Buffer.cpp:2793
+#: src/Buffer.cpp:2796
 #, fuzzy
 msgid "Retrieve from version control?"
 msgstr "Înregistrează documentul sub controlul versiunii"
 
-#: src/Buffer.cpp:2794
+#: src/Buffer.cpp:2797
 #, fuzzy
 msgid "&Retrieve"
 msgstr "&Reface"
@@ -18852,12 +18852,22 @@ msgstr "Documentul nu poate fi citit"
 msgid "TeX Code Settings"
 msgstr "Setări LaTeX"
 
-#: src/frontends/qt4/GuiErrorList.cpp:38
+#: src/frontends/qt4/GuiErrorList.cpp:41
+#, fuzzy
+msgid "Literate"
+msgstr "Literal"
+
+#: src/frontends/qt4/GuiErrorList.cpp:43
+#, fuzzy
+msgid "pLaTeX"
+msgstr "LaTeX"
+
+#: src/frontends/qt4/GuiErrorList.cpp:55
 #, fuzzy
 msgid "Error List"
 msgstr "Listare program"
 
-#: src/frontends/qt4/GuiErrorList.cpp:95
+#: src/frontends/qt4/GuiErrorList.cpp:112
 #, c-format
 msgid "%1$s Errors (%2$s)"
 msgstr ""
@@ -21592,7 +21602,7 @@ msgstr "&Orizontal:"
 msgid "TeX"
 msgstr "TeX"
 
-#: src/mathed/MathMacroTemplate.cpp:1228
+#: src/mathed/MathMacroTemplate.cpp:1235
 #, fuzzy
 msgid "math macro"
 msgstr "fundal mod matematic"

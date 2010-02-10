@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: uk-163\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-02-05 18:11+0100\n"
+"POT-Creation-Date: 2010-02-10 12:45+0100\n"
 "PO-Revision-Date: 2009-11-23 19:34+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-doc@kde.org>\n"
@@ -88,7 +88,7 @@ msgstr "&Гаразд"
 #: src/frontends/qt4/ui/CitationUi.ui:461
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:890
-#: src/Buffer.cpp:2713 src/Buffer.cpp:2759 src/Buffer.cpp:2794
+#: src/Buffer.cpp:2716 src/Buffer.cpp:2762 src/Buffer.cpp:2797
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:866 src/LyXFunc.cpp:1042
 #: src/LyXFunc.cpp:1925 src/LyXVC.cpp:196
 #: src/frontends/qt4/GuiClipboard.cpp:208
@@ -461,8 +461,8 @@ msgstr "&Нові:"
 msgid "Remove the selected branch"
 msgstr "Вилучити обрану базу даних"
 
-#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2729
-#: src/Buffer.cpp:2740
+#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2732
+#: src/Buffer.cpp:2743
 msgid "&Remove"
 msgstr "Ви&лучити"
 
@@ -4738,7 +4738,7 @@ msgid "email"
 msgstr "електронна пошта"
 
 #: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:612 lib/languages:4
-#: src/frontends/qt4/GuiPrefs.cpp:589
+#: src/frontends/qt4/GuiErrorList.cpp:45 src/frontends/qt4/GuiPrefs.cpp:589
 msgid "LaTeX"
 msgstr "LaTeX"
 
@@ -14708,7 +14708,7 @@ msgstr "Звичайний текст (вивід Xfig)"
 msgid "date (output)"
 msgstr "date (вивід)"
 
-#: lib/configure.py:302
+#: lib/configure.py:302 src/frontends/qt4/GuiErrorList.cpp:39
 msgid "DocBook"
 msgstr "DocBook"
 
@@ -15199,77 +15199,77 @@ msgstr "Спроба перетворення iconv зазнала невдач�
 msgid "conversion failed"
 msgstr "невдале перетворення"
 
-#: src/Buffer.cpp:1384
+#: src/Buffer.cpp:1387
 msgid "Running chktex..."
 msgstr "Запуск chktex..."
 
-#: src/Buffer.cpp:1397
+#: src/Buffer.cpp:1400
 msgid "chktex failure"
 msgstr "chktex помилка"
 
-#: src/Buffer.cpp:1398
+#: src/Buffer.cpp:1401
 msgid "Could not run chktex successfully."
 msgstr "Chktex закінчив роботу успішно."
 
-#: src/Buffer.cpp:2253
+#: src/Buffer.cpp:2256
 msgid "Preview source code"
 msgstr "Попередній перегляд джерела"
 
-#: src/Buffer.cpp:2267
+#: src/Buffer.cpp:2270
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Перегляд коду джерела для абзацу %1$d"
 
-#: src/Buffer.cpp:2271
+#: src/Buffer.cpp:2274
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Попередній перегляд коду джерела з параграфа %1$s до %2$s"
 
-#: src/Buffer.cpp:2380
+#: src/Buffer.cpp:2383
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Автоматичне збереження %1$s"
 
-#: src/Buffer.cpp:2434
+#: src/Buffer.cpp:2437
 msgid "Autosave failed!"
 msgstr "Автозбереження не вдалося!"
 
-#: src/Buffer.cpp:2490
+#: src/Buffer.cpp:2493
 msgid "Autosaving current document..."
 msgstr "Автозбереження поточного документа..."
 
-#: src/Buffer.cpp:2533
+#: src/Buffer.cpp:2536
 msgid "Couldn't export file"
 msgstr "Неможливо експортувати файл"
 
-#: src/Buffer.cpp:2534
+#: src/Buffer.cpp:2537
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Немає інформації для імпортування з %1$s"
 
-#: src/Buffer.cpp:2571
+#: src/Buffer.cpp:2574
 msgid "File name error"
 msgstr "Помилкова назва файла"
 
-#: src/Buffer.cpp:2572
+#: src/Buffer.cpp:2575
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Шлях до файлу LyX не повинен містити пробілів."
 
-#: src/Buffer.cpp:2614
+#: src/Buffer.cpp:2617
 msgid "Document export cancelled."
 msgstr "Експорт документа скасовано."
 
-#: src/Buffer.cpp:2620
+#: src/Buffer.cpp:2623
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Документ експортовано як %1$s у файл `%2$s'"
 
-#: src/Buffer.cpp:2626
+#: src/Buffer.cpp:2629
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Документ експортовано як %1$s"
 
-#: src/Buffer.cpp:2696
+#: src/Buffer.cpp:2699
 #, c-format
 msgid ""
 "The specified document\n"
@@ -15280,11 +15280,11 @@ msgstr ""
 "%1$s\n"
 "не може бути прочитаним."
 
-#: src/Buffer.cpp:2698
+#: src/Buffer.cpp:2701
 msgid "Could not read document"
 msgstr "Неможливо прочитати документ"
 
-#: src/Buffer.cpp:2708
+#: src/Buffer.cpp:2711
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -15295,27 +15295,27 @@ msgstr ""
 "\n"
 "Відновити?"
 
-#: src/Buffer.cpp:2711
+#: src/Buffer.cpp:2714
 msgid "Load emergency save?"
 msgstr "Завантажити аварійну копію?"
 
-#: src/Buffer.cpp:2712
+#: src/Buffer.cpp:2715
 msgid "&Recover"
 msgstr "&Відновити"
 
-#: src/Buffer.cpp:2712
+#: src/Buffer.cpp:2715
 msgid "&Load Original"
 msgstr "&Завантажити оригінал"
 
-#: src/Buffer.cpp:2722
+#: src/Buffer.cpp:2725
 msgid "Document was successfully recovered."
 msgstr "Документ було успішно відновлено."
 
-#: src/Buffer.cpp:2724
+#: src/Buffer.cpp:2727
 msgid "Document was NOT successfully recovered."
 msgstr "Не вдалося відновити документ."
 
-#: src/Buffer.cpp:2725
+#: src/Buffer.cpp:2728
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -15324,27 +15324,27 @@ msgstr ""
 "Вилучити аварійну копію?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:2728 src/Buffer.cpp:2738
+#: src/Buffer.cpp:2731 src/Buffer.cpp:2741
 msgid "Delete emergency file?"
 msgstr "Вилучити файл аварійної копії?"
 
-#: src/Buffer.cpp:2729 src/Buffer.cpp:2740
+#: src/Buffer.cpp:2732 src/Buffer.cpp:2743
 msgid "&Keep it"
 msgstr "&Не вилучати"
 
-#: src/Buffer.cpp:2732
+#: src/Buffer.cpp:2735
 msgid "Emergency file deleted"
 msgstr "Аварійну копію вилучено"
 
-#: src/Buffer.cpp:2733
+#: src/Buffer.cpp:2736
 msgid "Do not forget to save your file now!"
 msgstr "Не забудьте зберегти ваш файл!"
 
-#: src/Buffer.cpp:2739
+#: src/Buffer.cpp:2742
 msgid "Remove emergency file now?"
 msgstr "Вилучити аварійну копію?"
 
-#: src/Buffer.cpp:2754
+#: src/Buffer.cpp:2757
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -15355,28 +15355,28 @@ msgstr ""
 "\n"
 "Завантажити її?"
 
-#: src/Buffer.cpp:2757
+#: src/Buffer.cpp:2760
 msgid "Load backup?"
 msgstr "Повернутися до резервної?"
 
-#: src/Buffer.cpp:2758
+#: src/Buffer.cpp:2761
 msgid "&Load backup"
 msgstr "&Завантажити резервну"
 
-#: src/Buffer.cpp:2758
+#: src/Buffer.cpp:2761
 msgid "Load &original"
 msgstr "Завантажити &оригінал"
 
-#: src/Buffer.cpp:2791
+#: src/Buffer.cpp:2794
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "Бажаєте відкрити документ %1$s в режимі керування версіями?"
 
-#: src/Buffer.cpp:2793
+#: src/Buffer.cpp:2796
 msgid "Retrieve from version control?"
 msgstr "Бажаєте відкрити документ в режимі керування версіями?"
 
-#: src/Buffer.cpp:2794
+#: src/Buffer.cpp:2797
 msgid "&Retrieve"
 msgstr "&Отримати"
 
@@ -18629,11 +18629,21 @@ msgstr ""
 msgid "TeX Code Settings"
 msgstr "Параметри LaTeX"
 
-#: src/frontends/qt4/GuiErrorList.cpp:38
+#: src/frontends/qt4/GuiErrorList.cpp:41
+#, fuzzy
+msgid "Literate"
+msgstr "Буквально"
+
+#: src/frontends/qt4/GuiErrorList.cpp:43
+#, fuzzy
+msgid "pLaTeX"
+msgstr "LaTeX"
+
+#: src/frontends/qt4/GuiErrorList.cpp:55
 msgid "Error List"
 msgstr "Список помилок"
 
-#: src/frontends/qt4/GuiErrorList.cpp:95
+#: src/frontends/qt4/GuiErrorList.cpp:112
 #, c-format
 msgid "%1$s Errors (%2$s)"
 msgstr "%1$s помилок %2$s"
@@ -21133,7 +21143,7 @@ msgstr "необов'язковий"
 msgid "TeX"
 msgstr "TeX"
 
-#: src/mathed/MathMacroTemplate.cpp:1228
+#: src/mathed/MathMacroTemplate.cpp:1235
 msgid "math macro"
 msgstr "математичний макрос"
 
