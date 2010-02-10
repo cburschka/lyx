@@ -51,7 +51,7 @@ class InsetFloat : public InsetCollapsable
 {
 public:
 	///
-	InsetFloat(Buffer *, std::string const &);
+	InsetFloat(Buffer * buffer, std::string params_str);
 
 	///
 	static void string2params(std::string const &, InsetFloatParams &);
@@ -108,8 +108,6 @@ private:
 	docstring getCaption(OutputParams const &) const;
 	///
 	InsetFloatParams params_;
-	///
-	docstring name_;
 };
 
 

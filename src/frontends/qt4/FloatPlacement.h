@@ -21,6 +21,7 @@
 
 namespace lyx {
 
+class FloatList;
 class Inset;
 class InsetFloatParams;
 
@@ -54,11 +55,13 @@ private:
 	void checkAllowed();
 	///
 	std::string const get(bool & wide, bool & sideways) const;
+	///
+	void initFloatTypeCO(FloatList const & floats);
 
 	/// one of figure or table?
 	bool standardfloat_;
 	///
-	std::string float_type_;
+	FloatList const * float_list_;
 };
 
 } // namespace lyx

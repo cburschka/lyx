@@ -14,6 +14,10 @@
 #include "FloatPlacement.h"
 #include "qt_helpers.h"
 
+#include "Buffer.h"
+#include "BufferParams.h"
+#include "FloatList.h"
+
 #include "insets/InsetFloat.h"
 #include "support/lstrings.h"
 
@@ -24,10 +28,11 @@ using namespace lyx::support;
 namespace lyx {
 
 FloatPlacement::FloatPlacement(bool show_options, QWidget * parent)
-	: QWidget(parent)
+	: QWidget(parent), float_list_(0)
 {
 	setupUi(this);
 
+	connect(floatTypeCO, SIGNAL(activated(int)), this, SLOT(changedSlot()));
 	connect(topCB, SIGNAL(clicked()), this, SLOT(changedSlot()));
 	connect(bottomCB, SIGNAL(clicked()), this, SLOT(changedSlot()));
 	connect(pageCB, SIGNAL(clicked()), this, SLOT(changedSlot()));
@@ -45,7 +50,7 @@ FloatPlacement::FloatPlacement(bool show_options, QWidget * parent)
 docstring FloatPlacement::dialogToParams() const
 {
 	InsetFloatParams params;
-	params.type = float_type_;
+	params.type = fromqstr(floatTypeCO->itemData(floatTypeCO->currentIndex()).toString());
 	params.placement = get(params.wide, params.sideways);
 	return from_ascii(InsetFloat::params2string(params));
 }
@@ -106,13 +111,32 @@ void FloatPlacement::set(string const & placement)
 }
 
 
+void FloatPlacement::initFloatTypeCO(FloatList const & floats)
+{
+	if (float_list_ == &floats)
+		return;
+
+	float_list_ = &floats;
+	floatTypeCO->clear();
+	FloatList::const_iterator it = floats.begin();
+	FloatList::const_iterator const end = floats.end();
+	for (; it != end; ++it) {
+		floatTypeCO->addItem(qt_(it->second.name()),
+				     toqstr(it->second.type()));
+	}
+}
+
+
 void FloatPlacement::paramsToDialog(Inset const * inset)
 {
 	InsetFloat const * fl = static_cast<InsetFloat const *>(inset);
 	InsetFloatParams const & params = fl->params();
 
-	float_type_ = params.type;
-	floatType->setText(toqstr(fl->floatName(float_type_)));
+	BufferParams const & bp = fl->buffer().params();
+	initFloatTypeCO(bp.documentClass().floats());
+
+	int const item = floatTypeCO->findData(toqstr(params.type));
+	floatTypeCO->setCurrentIndex(item);
 
 	set(params.placement);
 

@@ -77,8 +77,6 @@ namespace Alert = frontend::Alert;
 
 Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 {
-	BufferParams const & params = buf->params();
-
 	try {
 
 		switch (cmd.action) {
@@ -148,27 +146,13 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 		case LFUN_OPTIONAL_INSERT:
 			return new InsetOptArg(buf);
 
-		case LFUN_FLOAT_INSERT: {
-			// check if the float type exists
-			string const type = cmd.getArg(0);
-			//FIXME: only the float type (the first argument) is transmitted
-			// because of the InsetFloat ctor.
-			if (params.documentClass().floats().typeExist(type))
-				return new InsetFloat(buf, type);
-			lyxerr << "Non-existent float type: " << type << endl;
-			return 0;
-		}
+		case LFUN_FLOAT_INSERT:
+			return new InsetFloat(buf, to_utf8(cmd.argument()));
 
 		case LFUN_FLOAT_WIDE_INSERT: {
-			// check if the float type exists
-			string const argument = to_utf8(cmd.argument());
-			if (params.documentClass().floats().typeExist(argument)) {
-				auto_ptr<InsetFloat> p(new InsetFloat(buf, argument));
-				p->setWide(true);
-				return p.release();
-			}
-			lyxerr << "Non-existent float type: " << argument << endl;
-			return 0;
+			InsetFloat * fl = new InsetFloat(buf, to_utf8(cmd.argument()));
+			fl->setWide(true);
+			return fl;
 		}
 
 		case LFUN_WRAP_INSERT: {
@@ -574,9 +558,7 @@ Inset * readInset(Lexer & lex, Buffer * buf)
 		} else if (tmptok == "OptArg") {
 			inset.reset(new InsetOptArg(buf));
 		} else if (tmptok == "Float") {
-			lex.next();
-			string tmptok = lex.getString();
-			inset.reset(new InsetFloat(buf, tmptok));
+			inset.reset(new InsetFloat(buf, string()));
 		} else if (tmptok == "Wrap") {
 			lex.next();
 			string tmptok = lex.getString();

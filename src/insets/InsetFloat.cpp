@@ -39,6 +39,7 @@
 #include "frontends/Application.h"
 
 using namespace std;
+using namespace lyx::support;
 
 
 namespace lyx {
@@ -111,17 +112,16 @@ namespace lyx {
 // Lgb
 
 //FIXME: why do we set in stone the type here?
-InsetFloat::InsetFloat(Buffer * buf, string const & type)
-	: InsetCollapsable(buf), name_(from_utf8(type))
+InsetFloat::InsetFloat(Buffer * buf, string params_str)
+	: InsetCollapsable(buf)
 {
-	setLabel(_("float: ") + floatName(type));
-	params_.type = type;
+	string2params(params_str, params_);
 }
 
 
 docstring InsetFloat::name() const 
 { 
-	return "Float:" + name_; 
+	return "Float:" + from_utf8(params_.type);
 }
 
 
@@ -149,8 +149,11 @@ void InsetFloat::doDispatch(Cursor & cur, FuncRequest & cmd)
 			params_.wide      = params.wide;
 			params_.sideways  = params.sideways;
 		}
-
 		setNewLabel();
+		if (params_.type != params.type) {
+			params_.type = params.type;
+			buffer().updateLabels();
+		}
 		break;
 	}
 
@@ -243,6 +246,7 @@ void InsetFloatParams::write(ostream & os) const
 void InsetFloatParams::read(Lexer & lex)
 {
 	lex.setContext("InsetFloatParams::read");
+	lex >> type;
 	if (lex.checkFor("placement"))
 		lex >> placement;
 	lex >> "wide" >> wide;
@@ -262,6 +266,11 @@ void InsetFloat::read(Lexer & lex)
 {
 	params_.read(lex);
 	InsetCollapsable::read(lex);
+	// check if the float type exists
+	if (buffer().params().documentClass().floats().typeExist(params_.type))
+		setLabel(_("float: ") + floatName(params_.type));
+	else
+		setLabel(bformat(_("ERROR: Unknown float type: %1$s"), from_utf8(params_.type)));
 }
 
 
@@ -497,7 +506,6 @@ void InsetFloat::string2params(string const & in, InsetFloatParams & params)
 	Lexer lex;
 	lex.setStream(data);
 	lex.setContext("InsetFloat::string2params");
-	lex >> params.type; // We have to read the type here!
 	params.read(lex);
 }
 
