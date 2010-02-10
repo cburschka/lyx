@@ -48,7 +48,7 @@ FloatPlacement::FloatPlacement(QWidget *)
 docstring FloatPlacement::dialogToParams() const
 {
 	InsetFloatParams params;
-	params.type = fromqstr(floatType->text());
+	params.type = float_type_;
 	params.placement = get(params.wide, params.sideways);
 	return from_ascii(InsetFloat::params2string(params));
 }
@@ -122,7 +122,8 @@ void FloatPlacement::paramsToDialog(Inset const * inset)
 	InsetFloat const * fl = static_cast<InsetFloat const *>(inset);
 	InsetFloatParams const & params = fl->params();
 
-	floatType->setText(toqstr(params.type));
+	float_type_ = params.type;
+	floatType->setText(qt_(float_type_));
 
 	set(params.placement);
 

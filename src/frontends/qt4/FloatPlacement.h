@@ -57,7 +57,8 @@ Q_SIGNALS:
 private:
 	/// one of figure or table?
 	bool standardfloat_;
-
+	///
+	std::string float_type_;
 };
 
 } // namespace lyx
