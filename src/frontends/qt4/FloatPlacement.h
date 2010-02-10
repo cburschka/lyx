@@ -27,7 +27,7 @@ class InsetFloatParams;
 class FloatPlacement : public QWidget, public Ui::FloatPlacementUi {
 	Q_OBJECT
 public:
-	FloatPlacement(QWidget * parent = 0);
+	FloatPlacement(bool show_options = false, QWidget * parent = 0);
 
 	///
 	void paramsToDialog(Inset const *);
@@ -37,24 +37,24 @@ public:
 	void useWide();
 	///
 	void useSideways();
-
+	///
 	void set(std::string const & placement);
-	void checkAllowed();
-
-	std::string const get(bool & wide, bool & sideways) const;
+	///
 	std::string const get() const;
 
-public Q_SLOTS:
-	void tbhpClicked();
+private Q_SLOTS:
+	void on_defaultsCB_stateChanged(int state);
 	void changedSlot();
-	void on_spanCB_clicked();
-	void on_heredefinitelyCB_clicked();
-	void on_sidewaysCB_clicked();
 
 Q_SIGNALS:
 	void changed();
 
 private:
+	///
+	void checkAllowed();
+	///
+	std::string const get(bool & wide, bool & sideways) const;
+
 	/// one of figure or table?
 	bool standardfloat_;
 	///

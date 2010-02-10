@@ -23,25 +23,22 @@ using namespace lyx::support;
 
 namespace lyx {
 
-FloatPlacement::FloatPlacement(QWidget *)
+FloatPlacement::FloatPlacement(bool show_options, QWidget * parent)
+	: QWidget(parent)
 {
 	setupUi(this);
 
-	connect(topCB, SIGNAL(clicked()), this, SLOT(tbhpClicked()));
-	connect(bottomCB, SIGNAL(clicked()), this, SLOT(tbhpClicked()));
-	connect(pageCB, SIGNAL(clicked()), this, SLOT(tbhpClicked()));
-	connect(herepossiblyCB, SIGNAL(clicked()), this, SLOT(tbhpClicked()));
-	connect(defaultsCB, SIGNAL(clicked()), this, SLOT(tbhpClicked()));
-	connect(defaultsCB, SIGNAL(clicked()), this, SLOT(changedSlot()));
-	connect(ignoreCB, SIGNAL(clicked()), this, SLOT(changedSlot()));
-	connect(pageCB, SIGNAL(clicked()), this, SLOT(changedSlot()));
-	connect(heredefinitelyCB, SIGNAL(clicked()), this, SLOT(changedSlot()));
-	connect(herepossiblyCB, SIGNAL(clicked()), this, SLOT(changedSlot()));
-	connect(bottomCB, SIGNAL(clicked()), this, SLOT(changedSlot()));
 	connect(topCB, SIGNAL(clicked()), this, SLOT(changedSlot()));
+	connect(bottomCB, SIGNAL(clicked()), this, SLOT(changedSlot()));
+	connect(pageCB, SIGNAL(clicked()), this, SLOT(changedSlot()));
+	connect(herepossiblyCB, SIGNAL(clicked()), this, SLOT(changedSlot()));
+	connect(heredefinitelyCB, SIGNAL(clicked()), this, SLOT(changedSlot()));
+	connect(ignoreCB, SIGNAL(clicked()), this, SLOT(changedSlot()));
+	connect(spanCB, SIGNAL(clicked()), this, SLOT(changedSlot()));
+	connect(sidewaysCB, SIGNAL(clicked()), this, SLOT(changedSlot()));
 
-	spanCB->hide();
-	sidewaysCB->hide();
+	spanCB->setVisible(show_options);
+	sidewaysCB->setVisible(show_options);
 }
 
 
@@ -63,13 +60,6 @@ void FloatPlacement::useWide()
 void FloatPlacement::useSideways()
 {
 	sidewaysCB->show();
-}
-
-
-void FloatPlacement::changedSlot()
-{
-	// emit signal
-	changed();
 }
 
 
@@ -111,7 +101,6 @@ void FloatPlacement::set(string const & placement)
 	pageCB->setChecked(page);
 	herepossiblyCB->setChecked(here);
 	ignoreCB->setChecked(force);
-	ignoreCB->setEnabled(top || bottom || page || here);
 	heredefinitelyCB->setChecked(here_definitely);
 	checkAllowed();
 }
@@ -183,41 +172,19 @@ string const FloatPlacement::get() const
 }
 
 
-void FloatPlacement::tbhpClicked()
-{
-	heredefinitelyCB->setChecked(false);
-	checkAllowed();
-}
-
-
-void FloatPlacement::on_heredefinitelyCB_clicked()
-{
-	if (heredefinitelyCB->isChecked())
-		ignoreCB->setEnabled(false);
-
-	topCB->setChecked(false);
-	bottomCB->setChecked(false);
-	pageCB->setChecked(false);
-	herepossiblyCB->setChecked(false);
-	ignoreCB->setChecked(false);
-}
-
-
-void FloatPlacement::on_spanCB_clicked()
+void FloatPlacement::on_defaultsCB_stateChanged(int state)
 {
 	checkAllowed();
-	changed();
-
-	if (!spanCB->isChecked())
+	if (state == Qt::Checked)
 		return;
-
-	herepossiblyCB->setChecked(false);
-	heredefinitelyCB->setChecked(false);
-	bottomCB->setChecked(false);
+	if (topCB->isChecked() || bottomCB->isChecked()
+	   || pageCB->isChecked() || herepossiblyCB->isChecked()
+	   || heredefinitelyCB->isChecked() || ignoreCB->isChecked())
+		changed();
 }
 
 
-void FloatPlacement::on_sidewaysCB_clicked()
+void FloatPlacement::changedSlot()
 {
 	checkAllowed();
 	changed();
@@ -227,30 +194,29 @@ void FloatPlacement::on_sidewaysCB_clicked()
 void FloatPlacement::checkAllowed()
 {
 	bool const defaults = defaultsCB->isChecked();
-	bool ignore = topCB->isChecked();
-	ignore |= bottomCB->isChecked();
-	ignore |= pageCB->isChecked();
-	ignore |= herepossiblyCB->isChecked();
+	bool const ignore = topCB->isChecked() || bottomCB->isChecked()
+		      || pageCB->isChecked() || herepossiblyCB->isChecked();
+	bool const heredefinitely = heredefinitelyCB->isChecked();
 
 	// float or document dialog?
 	if (spanCB->isVisible()) {
 		bool const span = spanCB->isChecked();
 		bool const sideways = sidewaysCB->isChecked();
 		defaultsCB->setEnabled(!sideways);
-		topCB->setEnabled(!sideways && !defaults);
-		bottomCB->setEnabled(!sideways && !defaults && !span);
-		pageCB->setEnabled(!sideways && !defaults);
-		ignoreCB->setEnabled(!sideways && !defaults && ignore);
-		herepossiblyCB->setEnabled(!sideways && !defaults && !span);
+		topCB->setEnabled(!sideways && !defaults && !heredefinitely);
+		bottomCB->setEnabled(!sideways && !defaults && !span && !heredefinitely);
+		pageCB->setEnabled(!sideways && !defaults && !heredefinitely);
+		herepossiblyCB->setEnabled(!sideways && !defaults && !span && !heredefinitely);
 		heredefinitelyCB->setEnabled(!sideways && !defaults && !span);
+		ignoreCB->setEnabled(!sideways && !defaults && ignore && !heredefinitely);
 		spanCB->setEnabled(!sideways || standardfloat_);
 	} else {
-		topCB->setEnabled(!defaults);
-		bottomCB->setEnabled(!defaults);
-		pageCB->setEnabled(!defaults);
-		ignoreCB->setEnabled(!defaults && ignore);
-		herepossiblyCB->setEnabled(!defaults);
+		topCB->setEnabled(!defaults && !heredefinitely);
+		bottomCB->setEnabled(!defaults && !heredefinitely);
+		pageCB->setEnabled(!defaults && !heredefinitely);
+		herepossiblyCB->setEnabled(!defaults && !heredefinitely);
 		heredefinitelyCB->setEnabled(!defaults);
+		ignoreCB->setEnabled(!defaults && ignore && !heredefinitely);
 	}
 }
 
