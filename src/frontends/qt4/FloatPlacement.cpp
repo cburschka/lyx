@@ -112,7 +112,7 @@ void FloatPlacement::paramsToDialog(Inset const * inset)
 	InsetFloatParams const & params = fl->params();
 
 	float_type_ = params.type;
-	floatType->setText(qt_(float_type_));
+	floatType->setText(toqstr(fl->floatName(float_type_)));
 
 	set(params.placement);
 

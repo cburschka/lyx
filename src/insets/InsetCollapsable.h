@@ -138,6 +138,8 @@ public:
 	virtual bool usePlainLayout() const { return true; }
 	///
 	virtual docstring contextMenu(BufferView const & bv, int x, int y) const;
+	///
+	docstring floatName(std::string const & type) const;
 protected:
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
@@ -146,8 +148,6 @@ protected:
 		EntryDirection entry_from = ENTRY_DIRECTION_IGNORE);
 	///
 	Inset * editXY(Cursor & cur, int x, int y);
-	///
-	docstring floatName(std::string const & type) const;
 	///
 	mutable CollapseStatus status_;
 private:
