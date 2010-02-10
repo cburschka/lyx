@@ -31,6 +31,23 @@
 using namespace std;
 using namespace lyx::support;
 
+namespace {
+  
+string const guiErrorType(string const s)
+{
+	if (s == "docbook")
+		return N_("DocBook");
+	else if (s == "literate")
+		return N_("Literate");
+	else if (s == "platex")
+		return N_("pLaTeX");
+	else if (s == "latex")
+		return N_("LaTeX");
+	return s;
+}
+
+} // namespace anon
+
 namespace lyx {
 namespace frontend {
 
@@ -92,8 +109,9 @@ bool GuiErrorList::initialiseParams(string const & error_type)
 {
 	error_type_ = error_type;
 	Buffer const & buf = bufferview()->buffer();
-	name_ = bformat(_("%1$s Errors (%2$s)"), _(error_type),
-				     from_utf8(buf.absFileName()));
+	name_ = bformat(_("%1$s Errors (%2$s)"),
+			_(guiErrorType(error_type)),
+			from_utf8(buf.absFileName()));
 	paramsToDialog();
 	return true;
 }
