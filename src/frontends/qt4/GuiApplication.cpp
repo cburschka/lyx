@@ -1302,7 +1302,9 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		Buffer * buf = current_view_->loadDocument(fname, false);
 		if (buf) {
 			current_view_->setBuffer(buf);
+#ifndef DEVEL_VERSION
 			buf->setReadonly(true);
+#endif
 			buf->updateLabels();
 			buf->errors("Parse");
 		}
