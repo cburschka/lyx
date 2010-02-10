@@ -39,8 +39,12 @@ public:
 	 * look up some text in the thesaurus
 	 */
 	Meanings lookup(docstring const & text, docstring const & lang);
-	/// check if a thesaurus for a given language \p lang is available
+	/** check if a thesaurus for a given language \p lang is available
+	 *  (installed and loaded)
+	 */
 	bool thesaurusAvailable(docstring const & lang) const;
+	/// check if a thesaurus for a given language \p lang is installed
+	bool thesaurusInstalled(docstring const & lang) const;
 
 private:
 	struct Private;

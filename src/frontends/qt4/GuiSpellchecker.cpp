@@ -83,6 +83,7 @@ GuiSpellchecker::GuiSpellchecker(GuiView & lv)
 	// FIXME: it would be nice if sorting was enabled/disabled via a checkbox.
 	language_model->sort(0);
 	d->ui.languageCO->setModel(language_model);
+	d->ui.languageCO->setModelColumn(1);
 
 	d->ui.wordED->setReadOnly(true);
 

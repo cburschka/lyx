@@ -77,6 +77,7 @@ GuiThesaurus::GuiThesaurus(GuiView & lv)
 	// FIXME: it would be nice if sorting was enabled/disabled via a checkbox.
 	language_model->sort(0);
 	languageCO->setModel(language_model);
+	languageCO->setModelColumn(2);
 
 	bc().setCancel(closePB);
 	bc().setApply(replacePB);

@@ -50,6 +50,7 @@
 #include "Server.h"
 #include "Session.h"
 #include "SpellChecker.h"
+#include "Thesaurus.h"
 #include "version.h"
 
 #include "support/convert.h"
@@ -1973,16 +1974,28 @@ QAbstractItemModel * GuiApplication::languageModel()
 		return d->language_model_;
 
 	QStandardItemModel * lang_model = new QStandardItemModel(this);
-	lang_model->insertColumns(0, 1);
+	lang_model->insertColumns(0, 3);
 	int current_row;
+	QIcon speller(getPixmap("images/", "dialog-show_spellchecker", "png"));
+	QIcon saurus(getPixmap("images/", "thesaurus-entry", "png"));
 	Languages::const_iterator it = lyx::languages.begin();
 	Languages::const_iterator end = lyx::languages.end();
 	for (; it != end; ++it) {
 		current_row = lang_model->rowCount();
 		lang_model->insertRows(current_row, 1);
-		QModelIndex item = lang_model->index(current_row, 0);
-		lang_model->setData(item, qt_(it->second.display()), Qt::DisplayRole);
-		lang_model->setData(item, toqstr(it->second.lang()), Qt::UserRole);
+		QModelIndex pl_item = lang_model->index(current_row, 0);
+		QModelIndex sp_item = lang_model->index(current_row, 1);
+		QModelIndex th_item = lang_model->index(current_row, 2);
+		lang_model->setData(pl_item, qt_(it->second.display()), Qt::DisplayRole);
+		lang_model->setData(pl_item, toqstr(it->second.lang()), Qt::UserRole);
+		lang_model->setData(sp_item, qt_(it->second.display()), Qt::DisplayRole);
+		lang_model->setData(sp_item, toqstr(it->second.lang()), Qt::UserRole);
+		if (theSpellChecker()->hasDictionary(&it->second))
+			lang_model->setData(sp_item, speller, Qt::DecorationRole);
+		lang_model->setData(th_item, qt_(it->second.display()), Qt::DisplayRole);
+		lang_model->setData(th_item, toqstr(it->second.lang()), Qt::UserRole);
+		if (thesaurus.thesaurusInstalled(from_ascii(it->second.code())))
+			lang_model->setData(th_item, saurus, Qt::DecorationRole);
 	}
 	d->language_model_ = new QSortFilterProxyModel(this);
 	d->language_model_->setSourceModel(lang_model);

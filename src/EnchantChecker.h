@@ -35,6 +35,7 @@ public:
 	void suggest(WordLangTuple const &, docstring_list &);
 	void insert(WordLangTuple const &);
 	void accept(WordLangTuple const &);
+	bool hasDictionary(Language const * lang) const;
 	docstring const error();
 	///@}
 

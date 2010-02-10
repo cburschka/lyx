@@ -19,6 +19,7 @@
 namespace lyx {
 
 class BufferParams;
+class Language;
 class WordLangTuple;
 class docstring_list;
 
@@ -55,6 +56,9 @@ public:
 
 	/// accept the given word temporarily
 	virtual void accept(WordLangTuple const &) = 0;
+
+	/// check if dictionary exists
+	virtual bool hasDictionary(Language const *) const = 0;
 
 	/// give an error message on messy exit
 	virtual docstring const error() = 0;

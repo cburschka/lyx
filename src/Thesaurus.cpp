@@ -79,6 +79,10 @@ struct Thesaurus::Private
 		return false;
 	}
 
+	///
+	typedef std::pair<std::string, std::string> ThesFiles;
+	///
+	ThesFiles getThesaurus(docstring const & lang);
 	/// add a thesaurus to the list
 	bool addThesaurus(docstring const & lang);
 
@@ -86,15 +90,16 @@ struct Thesaurus::Private
 	Thesauri thes_;
 };
 
-bool Thesaurus::Private::addThesaurus(docstring const & lang)
+
+pair<string, string> Thesaurus::Private::getThesaurus(docstring const & lang)
 {
 	string const thes_path = external_path(lyxrc.thesaurusdir_path);
 	LYXERR(Debug::FILES, "thesaurus path: " << thes_path);
 	if (thes_path.empty())
-		return false;
+		return make_pair(string(), string());
 
 	if (thesaurusAvailable(lang))
-		return true;
+		return make_pair(string(), string());
 
 	FileNameList const idx_files = FileName(thes_path).dirList("idx");
 	FileNameList const data_files = FileName(thes_path).dirList("dat");
@@ -121,6 +126,16 @@ bool Thesaurus::Private::addThesaurus(docstring const & lang)
 			}
 		}
 
+	return make_pair(idx, data);
+}
+
+
+bool Thesaurus::Private::addThesaurus(docstring const & lang)
+{
+	ThesFiles files = getThesaurus(lang);
+	string const idx = files.first;
+	string const data = files.second;
+
 	if (idx.empty() || data.empty())
 		return false;
 
@@ -134,6 +149,13 @@ bool Thesaurus::Private::addThesaurus(docstring const & lang)
 bool Thesaurus::thesaurusAvailable(docstring const & lang) const
 {
 	return d->thesaurusAvailable(lang);
+}
+
+
+bool Thesaurus::thesaurusInstalled(docstring const & lang) const
+{
+	pair<string, string> files = d->getThesaurus(lang);
+	return (!files.first.empty() && !files.second.empty());
 }
 
 

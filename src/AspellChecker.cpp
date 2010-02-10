@@ -223,6 +223,42 @@ void AspellChecker::suggest(WordLangTuple const & wl,
 }
 
 
+bool AspellChecker::hasDictionary(Language const * lang) const
+{
+	if (!lang)
+		return false;
+	// code taken from aspell's list-dicts example
+	AspellConfig * config;
+	AspellDictInfoList * dlist;
+	AspellDictInfoEnumeration * dels;
+	const AspellDictInfo * entry;
+
+	config = new_aspell_config();
+
+	/* the returned pointer should _not_ need to be deleted */
+	dlist = get_aspell_dict_info_list(config);
+
+	/* config is no longer needed */
+	delete_aspell_config(config);
+
+	dels = aspell_dict_info_list_elements(dlist);
+
+	bool have = false;
+	while ((entry = aspell_dict_info_enumeration_next(dels)) != 0)
+	{
+		if (entry->code == lang->code()
+		    && (lang->variety().empty() || entry->jargon == lang->variety())) {
+			have = true;
+			break;
+		}
+	}
+
+	delete_aspell_dict_info_enumeration(dels);
+
+	return have;
+}
+
+
 docstring const AspellChecker::error()
 {
 	char const * err = 0;

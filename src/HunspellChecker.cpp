@@ -51,6 +51,7 @@ struct HunspellChecker::Private
 
 	~Private();
 
+	bool haveDictionary(string const & lang) const;
 	Hunspell * addSpeller(string const & lang);
 	Hunspell * speller(string const & lang);
 	/// ignored words
@@ -94,7 +95,7 @@ bool haveLanguageFiles(string const & hpath)
 }
 
 
-Hunspell * HunspellChecker::Private::addSpeller(string const & lang)
+bool HunspellChecker::Private::haveDictionary(string const & lang) const
 {
 	string hunspell_path = lyxrc.hunspelldir_path;
 	LYXERR(Debug::FILES, "hunspell path: " << external_path(hunspell_path));
@@ -111,7 +112,7 @@ Hunspell * HunspellChecker::Private::addSpeller(string const & lang)
 			//frontend::Alert::error(_("Hunspell Path Not Found"), 
 			//		_("You must set the Hunspell dictionary path in Tools>Preferences>Paths."));
 		}
-		return 0;
+		return false;
 	}
 
 	hunspell_path = external_path(addName(hunspell_path, lang));
@@ -122,9 +123,20 @@ Hunspell * HunspellChecker::Private::addSpeller(string const & lang)
 			// FIXME: We should indicate somehow that this language is not
 			// supported, probably by popping a warning. But we'll need to
 			// remember which warnings we've issued.
-			return 0;
+			return false;
 		}
 	}
+	return true;
+}
+
+
+Hunspell * HunspellChecker::Private::addSpeller(string const & lang)
+{
+	string hunspell_path = lyxrc.hunspelldir_path;
+
+	if (!haveDictionary(lang))
+		return 0;
+
 	FileName const affix(hunspell_path + ".aff");
 	FileName const dict(hunspell_path + ".dic");
 	Hunspell * h = new Hunspell(affix.absFilename().c_str(), dict.absFilename().c_str());
@@ -224,6 +236,14 @@ void HunspellChecker::suggest(WordLangTuple const & wl,
 	for (int i = 0; i != suggestion_number; ++i)
 		suggestions.push_back(from_utf8(suggestion_list[i]));
 	h->free_list(&suggestion_list, suggestion_number);
+}
+
+
+bool HunspellChecker::hasDictionary(Language const * lang) const
+{
+	if (!lang)
+		return false;
+	return (d->haveDictionary(lang->code()));
 }
 
 

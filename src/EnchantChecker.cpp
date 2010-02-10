@@ -159,6 +159,15 @@ void EnchantChecker::suggest(WordLangTuple const & wl,
 }
 
 
+bool EnchantChecker::hasDictionary(Language const * lang) const
+{
+	if (!lang)
+		return false;
+	enchant::Broker * instance = enchant::Broker::instance();
+	return (instance->dict_exists(lang->code()));
+}
+
+
 docstring const EnchantChecker::error()
 {
 	return docstring();

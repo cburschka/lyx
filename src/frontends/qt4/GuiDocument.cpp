@@ -852,6 +852,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	// FIXME: it would be nice if sorting was enabled/disabled via a checkbox.
 	language_model->sort(0);
 	langModule->languageCO->setModel(language_model);
+	langModule->languageCO->setModelColumn(0);
 
 	// Always put the default encoding in the first position.
 	langModule->encodingCO->addItem(qt_("Language Default (no inputenc)"));
