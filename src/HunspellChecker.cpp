@@ -51,7 +51,7 @@ struct HunspellChecker::Private
 
 	~Private();
 
-	bool haveDictionary(string const & lang) const;
+	bool haveDictionary(string const & lang, string & hpath);
 	Hunspell * addSpeller(string const & lang);
 	Hunspell * speller(string const & lang);
 	/// ignored words
@@ -95,9 +95,8 @@ bool haveLanguageFiles(string const & hpath)
 }
 
 
-bool HunspellChecker::Private::haveDictionary(string const & lang) const
+bool HunspellChecker::Private::haveDictionary(string const & lang, string & hunspell_path)
 {
-	string hunspell_path = lyxrc.hunspelldir_path;
 	LYXERR(Debug::FILES, "hunspell path: " << external_path(hunspell_path));
 	if (hunspell_path.empty()) {
 		// FIXME We'd like to issue a better error message here, but there seems
@@ -134,7 +133,7 @@ Hunspell * HunspellChecker::Private::addSpeller(string const & lang)
 {
 	string hunspell_path = lyxrc.hunspelldir_path;
 
-	if (!haveDictionary(lang))
+	if (!haveDictionary(lang, hunspell_path))
 		return 0;
 
 	FileName const affix(hunspell_path + ".aff");
@@ -243,7 +242,8 @@ bool HunspellChecker::hasDictionary(Language const * lang) const
 {
 	if (!lang)
 		return false;
-	return (d->haveDictionary(lang->code()));
+	string hunspell_path = lyxrc.hunspelldir_path;
+	return (d->haveDictionary(lang->code(), hunspell_path));
 }
 
 
