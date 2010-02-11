@@ -33,15 +33,15 @@ using namespace lyx::support;
 
 namespace {
   
-string const guiErrorType(string const s)
+string const guiErrorType(string const & s)
 {
 	if (s == "docbook")
 		return N_("DocBook");
-	else if (s == "literate")
+	if (s == "literate")
 		return N_("Literate");
-	else if (s == "platex")
+	if (s == "platex")
 		return N_("pLaTeX");
-	else if (s == "latex")
+	if (s == "latex")
 		return N_("LaTeX");
 	return s;
 }
