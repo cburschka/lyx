@@ -2805,8 +2805,7 @@ void PrefShortcuts::shortcutOkPressed()
 	
 	// make sure this key isn't already bound---and, if so, not unbound
 	FuncCode const unbind = user_unbind_.getBinding(k).action;
-	if (oldBinding.action != LFUN_UNKNOWN_ACTION && unbind == LFUN_UNKNOWN_ACTION
-		&& toqstr(makeCmdString(oldBinding)) != save_lfun_)
+	if (oldBinding.action != LFUN_UNKNOWN_ACTION && unbind == LFUN_UNKNOWN_ACTION)
 	{
 		// FIXME Perhaps we should offer to over-write the old shortcut?
 		// If so, we'll need to remove it from our list, etc.
@@ -2818,7 +2817,7 @@ void PrefShortcuts::shortcutOkPressed()
 		return;
 	}
 
-	if (!save_lfun_.isEmpty())
+	if (!save_lfun_.isEmpty() && new_lfun == save_lfun_)
 		// real modification of the lfun's shortcut,
 		// so remove the previous one
 		removeShortcut();
