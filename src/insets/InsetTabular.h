@@ -8,19 +8,16 @@
  * \author Matthias Ettrich
  * \author André Pönitz
  * \author Jürgen Vigna
+ * \author Edwin Leuven
+ * \author Uwe Stöhr
  *
  * Full author contact details are available in file CREDITS.
  */
-
-// This is Juergen's rewrite of the tabular (table) support.
 
 // Things to think of when designing the new tabular support:
 // - color support (colortbl, color)
 // - decimal alignment (dcloumn)
 // - custom lines (hhline)
-// - rotation
-// - multicolumn
-// - multirow
 // - column styles
 
 #ifndef INSET_TABULAR_H
