@@ -229,7 +229,7 @@ void GuiTabular::booktabsChanged(bool)
 {
 	changed();
 	booktabs(booktabsRB->isChecked());
-	update_borders();
+	updateBorders(tabular_);
 }
 
 
@@ -328,7 +328,7 @@ void GuiTabular::interlinespace_changed()
 
 void GuiTabular::close_clicked()
 {
-	closeGUI();
+	closeGUI(tabular_);
 	slotClose();
 }
 
@@ -336,7 +336,7 @@ void GuiTabular::close_clicked()
 void GuiTabular::borderSet_clicked()
 {
 	set(Tabular::SET_ALL_LINES);
-	update_borders();
+	updateBorders(tabular_);
 	changed();
 }
 
@@ -344,7 +344,7 @@ void GuiTabular::borderSet_clicked()
 void GuiTabular::borderUnset_clicked()
 {
 	set(Tabular::UNSET_ALL_LINES);
-	update_borders();
+	updateBorders(tabular_);
 	changed();
 }
 
@@ -380,7 +380,7 @@ void GuiTabular::bottomBorder_changed()
 void GuiTabular::specialAlignment_changed()
 {
 	string special = fromqstr(specialAlignmentED->text());
-	setSpecial(special);
+	setSpecial(tabular_, special);
 	changed();
 }
 
@@ -389,7 +389,7 @@ void GuiTabular::width_changed()
 {
 	changed();
 	string const width = widgetsToLength(widthED, widthUnitCB);
-	setWidth(width);
+	setWidth(tabular_, width);
 }
 
 
@@ -431,7 +431,7 @@ void GuiTabular::hAlign_changed(int align)
 		case 3: h = GuiTabular::BLOCK; break;
 	}
 
-	halign(h);
+	halign(tabular_, h);
 }
 
 
@@ -445,7 +445,7 @@ void GuiTabular::vAlign_changed(int align)
 		case 2: v = GuiTabular::BOTTOM; break;
 	}
 
-	valign(v);
+	valign(tabular_, v);
 }
 
 
@@ -641,13 +641,13 @@ void GuiTabular::ltAlignment_clicked()
 }
 
 
-void GuiTabular::update_borders()
+void GuiTabular::updateBorders(Tabular const & tabular)
 {
 	Tabular::idx_type const cell = getActiveCell();
-	borders->setTop(tabular_.topLine(cell));
-	borders->setBottom(tabular_.bottomLine(cell));
-	borders->setLeft(tabular_.leftLine(cell));
-	borders->setRight(tabular_.rightLine(cell));
+	borders->setTop(tabular.topLine(cell));
+	borders->setBottom(tabular.bottomLine(cell));
+	borders->setLeft(tabular.leftLine(cell));
+	borders->setRight(tabular.rightLine(cell));
 	// repaint the setborder widget
 	borders->update();
 }
@@ -683,43 +683,48 @@ docstring getAlignSpecial(Tabular const & t, size_t cell, int what)
 void GuiTabular::updateContents()
 {
 	initialiseParams(string());
+	paramsToDialog(tabular_);
+}
 
+
+void GuiTabular::paramsToDialog(Tabular const & tabular)
+{
 	size_t const cell = getActiveCell();
 
-	Tabular::row_type const row = tabular_.cellRow(cell);
-	Tabular::col_type const col = tabular_.cellColumn(cell);
+	Tabular::row_type const row = tabular.cellRow(cell);
+	Tabular::col_type const col = tabular.cellColumn(cell);
 
 	tabularRowED->setText(QString::number(row + 1));
 	tabularColumnED->setText(QString::number(col + 1));
 
-	bool const multicol(tabular_.isMultiColumn(cell));
+	bool const multicol(tabular.isMultiColumn(cell));
 	multicolumnCB->setChecked(multicol);
 
-	bool const multirow(tabular_.isMultiRow(cell));
+	bool const multirow(tabular.isMultiRow(cell));
 	multirowCB->setChecked(multirow);
 
-	rotateCellCB->setChecked(tabular_.getRotateCell(cell));
-	rotateTabularCB->setChecked(tabular_.rotate);
+	rotateCellCB->setChecked(tabular.getRotateCell(cell));
+	rotateTabularCB->setChecked(tabular.rotate);
 
-	longTabularCB->setChecked(tabular_.is_long_tabular);
+	longTabularCB->setChecked(tabular.is_long_tabular);
 
-	update_borders();
+	updateBorders(tabular);
 
 	Length pwidth;
 	docstring special;
 
 	if (multicol) {
-		special = getAlignSpecial(tabular_, cell,
+		special = getAlignSpecial(tabular, cell,
 			Tabular::SET_SPECIAL_MULTICOLUMN);
-		pwidth = getMColumnPWidth(tabular_, cell);
+		pwidth = getMColumnPWidth(tabular, cell);
 	} else if (multirow) {
-		special = getAlignSpecial(tabular_, cell,
+		special = getAlignSpecial(tabular, cell,
 			Tabular::SET_SPECIAL_MULTIROW);
-		pwidth = getMColumnPWidth(tabular_, cell);
+		pwidth = getMColumnPWidth(tabular, cell);
 	} else {
-		special = getAlignSpecial(tabular_, cell,
+		special = getAlignSpecial(tabular, cell,
 			Tabular::SET_SPECIAL_COLUMN);
-		pwidth = getColumnPWidth(tabular_, cell);
+		pwidth = getColumnPWidth(tabular, cell);
 	}
 
 	specialAlignmentED->setText(toqstr(special));
@@ -729,19 +734,19 @@ void GuiTabular::updateContents()
 
 	Length::UNIT const default_unit = Length::defaultUnit();
 
-	borderDefaultRB->setChecked(!tabular_.use_booktabs);
-	booktabsRB->setChecked(tabular_.use_booktabs);
+	borderDefaultRB->setChecked(!tabular.use_booktabs);
+	booktabsRB->setChecked(tabular.use_booktabs);
 
-	if (tabular_.row_info[row].top_space.empty()
-	    && !tabular_.row_info[row].top_space_default) {
+	if (tabular.row_info[row].top_space.empty()
+	    && !tabular.row_info[row].top_space_default) {
 		topspaceCO->setCurrentIndex(0);
-	} else if (tabular_.row_info[row].top_space_default) {
+	} else if (tabular.row_info[row].top_space_default) {
 		topspaceCO->setCurrentIndex(1);
 	} else {
 		topspaceCO->setCurrentIndex(2);
 		lengthToWidgets(topspaceED,
 				topspaceUnit,
-				tabular_.row_info[row].top_space.asString(),
+				tabular.row_info[row].top_space.asString(),
 				default_unit);
 	}
 	topspaceED->setEnabled(!isReadonly
@@ -750,16 +755,16 @@ void GuiTabular::updateContents()
 		&& (topspaceCO->currentIndex() == 2));
 	topspaceCO->setEnabled(!isReadonly);
 
-	if (tabular_.row_info[row].bottom_space.empty()
-	    && !tabular_.row_info[row].bottom_space_default) {
+	if (tabular.row_info[row].bottom_space.empty()
+	    && !tabular.row_info[row].bottom_space_default) {
 		bottomspaceCO->setCurrentIndex(0);
-	} else if (tabular_.row_info[row].bottom_space_default) {
+	} else if (tabular.row_info[row].bottom_space_default) {
 		bottomspaceCO->setCurrentIndex(1);
 	} else {
 		bottomspaceCO->setCurrentIndex(2);
 		lengthToWidgets(bottomspaceED,
 				bottomspaceUnit,
-				tabular_.row_info[row].bottom_space.asString(),
+				tabular.row_info[row].bottom_space.asString(),
 				default_unit);
 	}
 	bottomspaceED->setEnabled(!isReadonly
@@ -768,16 +773,16 @@ void GuiTabular::updateContents()
 		&& (bottomspaceCO->currentIndex() == 2));
 	bottomspaceCO->setEnabled(!isReadonly);
 
-	if (tabular_.row_info[row].interline_space.empty()
-	    && !tabular_.row_info[row].interline_space_default) {
+	if (tabular.row_info[row].interline_space.empty()
+	    && !tabular.row_info[row].interline_space_default) {
 		interlinespaceCO->setCurrentIndex(0);
-	} else if (tabular_.row_info[row].interline_space_default) {
+	} else if (tabular.row_info[row].interline_space_default) {
 		interlinespaceCO->setCurrentIndex(1);
 	} else {
 		interlinespaceCO->setCurrentIndex(2);
 		lengthToWidgets(interlinespaceED,
 				interlinespaceUnit,
-				tabular_.row_info[row].interline_space.asString(),
+				tabular.row_info[row].interline_space.asString(),
 				default_unit);
 	}
 	interlinespaceED->setEnabled(!isReadonly
@@ -805,7 +810,7 @@ void GuiTabular::updateContents()
 		hAlignCB->addItem(qt_("Justified"));
 
 	int align = 0;
-	switch (tabular_.getAlignment(cell)) {
+	switch (tabular.getAlignment(cell)) {
 	case LYX_ALIGN_LEFT:
 		align = 0;
 		break;
@@ -828,7 +833,7 @@ void GuiTabular::updateContents()
 	hAlignCB->setCurrentIndex(align);
 
 	int valign = 0;
-	switch (tabular_.getVAlignment(cell)) {
+	switch (tabular.getVAlignment(cell)) {
 	case Tabular::LYX_VALIGN_TOP:
 		valign = 0;
 		break;
@@ -851,7 +856,7 @@ void GuiTabular::updateContents()
 	vAlignCB->setEnabled(true);
 
 	int tableValign = 1;
-	switch (tabular_.tabular_valignment) {
+	switch (tabular.tabular_valignment) {
 	case Tabular::LYX_VALIGN_TOP:
 		tableValign = 0;
 		break;
@@ -867,7 +872,7 @@ void GuiTabular::updateContents()
 	}
 	TableAlignCB->setCurrentIndex(tableValign);
 
-	if (!tabular_.is_long_tabular) {
+	if (!tabular.is_long_tabular) {
 		headerStatusCB->setChecked(false);
 		headerBorderAboveCB->setChecked(false);
 		headerBorderBelowCB->setChecked(false);
@@ -892,7 +897,7 @@ void GuiTabular::updateContents()
 		// longtables cannot have a vertical alignment
 		TableAlignCB->setCurrentIndex(Tabular::LYX_VALIGN_MIDDLE);
 
-	switch (tabular_.longtabular_alignment) {
+	switch (tabular.longtabular_alignment) {
 	case Tabular::LYX_LONGTABULAR_ALIGN_LEFT:
 		leftRB->setChecked(true);
 		break;
@@ -907,7 +912,7 @@ void GuiTabular::updateContents()
 		break;
 	}
 	captionStatusCB->blockSignals(true);
-	captionStatusCB->setChecked(tabular_.ltCaption(row));
+	captionStatusCB->setChecked(tabular.ltCaption(row));
 	captionStatusCB->blockSignals(false);
 
 	// FIXME: shouldn't this be handled by GuiDialog?
@@ -917,8 +922,8 @@ void GuiTabular::updateContents()
 	firstheaderBorderBelowCB->setEnabled(
 		funcEnabled(Tabular::SET_LTFIRSTHEAD));
 	// first header can only be suppressed when there is a header
-	firstheaderNoContentsCB->setEnabled(tabular_.haveLTHead()
-		&& !tabular_.haveLTFirstHead());
+	firstheaderNoContentsCB->setEnabled(tabular.haveLTHead()
+		&& !tabular.haveLTFirstHead());
 
 	//firstheaderStatusCB->setEnabled(
 	//	!firstheaderNoContentsCB->isChecked());
@@ -935,8 +940,8 @@ void GuiTabular::updateContents()
 	lastfooterBorderBelowCB->setEnabled(
 		funcEnabled(Tabular::SET_LTLASTFOOT));
 	// last footer can only be suppressed when there is a footer
-	lastfooterNoContentsCB->setEnabled(tabular_.haveLTFoot()
-		&& !tabular_.haveLTLastFoot());
+	lastfooterNoContentsCB->setEnabled(tabular.haveLTFoot()
+		&& !tabular.haveLTLastFoot());
 
 	captionStatusCB->setEnabled(
 		funcEnabled(Tabular::TOGGLE_LTCAPTION));
@@ -947,7 +952,7 @@ void GuiTabular::updateContents()
 
 	Tabular::ltType ltt;
 	bool use_empty;
-	bool row_set = tabular_.getRowOfLTHead(row, ltt);
+	bool row_set = tabular.getRowOfLTHead(row, ltt);
 	headerStatusCB->setChecked(row_set);
 	if (ltt.set) {
 		headerBorderAboveCB->setChecked(ltt.topDL);
@@ -963,7 +968,7 @@ void GuiTabular::updateContents()
 		use_empty = false;
 	}
 
-	row_set = tabular_.getRowOfLTFirstHead(row, ltt);
+	row_set = tabular.getRowOfLTFirstHead(row, ltt);
 	// check if setting a first header is allowed
 	// additionally check firstheaderNoContentsCB because when this is
 	// the case a first header makes no sense
@@ -985,7 +990,7 @@ void GuiTabular::updateContents()
 		}
 	}
 
-	row_set = tabular_.getRowOfLTFoot(row, ltt);
+	row_set = tabular.getRowOfLTFoot(row, ltt);
 	footerStatusCB->setChecked(row_set);
 	if (ltt.set) {
 		footerBorderAboveCB->setChecked(ltt.topDL);
@@ -1001,7 +1006,7 @@ void GuiTabular::updateContents()
 		use_empty = false;
 	}
 
-	row_set = tabular_.getRowOfLTLastFoot(row, ltt);
+	row_set = tabular.getRowOfLTLastFoot(row, ltt);
 	// check if setting a last footer is allowed
 	// additionally check lastfooterNoContentsCB because when this is
 	// the case a last footer makes no sense
@@ -1022,11 +1027,11 @@ void GuiTabular::updateContents()
 				lastfooterStatusCB->setEnabled(false);
 		}
 	}
-	newpageCB->setChecked(tabular_.getLTNewPage(row));
+	newpageCB->setChecked(tabular.getLTNewPage(row));
 }
 
 
-void GuiTabular::closeGUI()
+void GuiTabular::closeGUI(Tabular const & tabular)
 {
 	// ugly hack to auto-apply the stuff that hasn't been
 	// yet. don't let this continue to exist ...
@@ -1037,13 +1042,13 @@ void GuiTabular::closeGUI()
 	//
 	// apply the fixed width values
 	size_t const cell = getActiveCell();
-	bool const multicol = tabular_.isMultiColumn(cell);
-	bool const multirow = tabular_.isMultiRow(cell);
+	bool const multicol = tabular.isMultiColumn(cell);
+	bool const multirow = tabular.isMultiRow(cell);
 	string width = widgetsToLength(widthED, widthUnitCB);
 	string width2;
 
-	Length llen = getColumnPWidth(tabular_, cell);
-	Length llenMulti = getMColumnPWidth(tabular_, cell);
+	Length llen = getColumnPWidth(tabular, cell);
+	Length llenMulti = getMColumnPWidth(tabular, cell);
 
 	if (multicol && multirow && !llenMulti.zero())
 		width2 = llenMulti.asString();
@@ -1055,13 +1060,13 @@ void GuiTabular::closeGUI()
 	docstring sa2;
 
 	if (multicol)
-		sa2 = getAlignSpecial(tabular_, cell,
+		sa2 = getAlignSpecial(tabular, cell,
 			Tabular::SET_SPECIAL_MULTICOLUMN);
 	else if (multirow)
-		sa2 = getAlignSpecial(tabular_, cell,
+		sa2 = getAlignSpecial(tabular, cell,
 			Tabular::SET_SPECIAL_MULTIROW);
 	else
-		sa2 = getAlignSpecial(tabular_, cell,
+		sa2 = getAlignSpecial(tabular, cell,
 			Tabular::SET_SPECIAL_COLUMN);
 
 	if (sa1 != sa2) {
@@ -1182,20 +1187,20 @@ void GuiTabular::set(Tabular::Feature f, string const & arg)
 }
 
 
-void GuiTabular::setSpecial(string const & special)
+void GuiTabular::setSpecial(Tabular const & tabular, string const & special)
 {
-	if (tabular_.isMultiColumn(getActiveCell()))
+	if (tabular.isMultiColumn(getActiveCell()))
 		set(Tabular::SET_SPECIAL_MULTICOLUMN, special);
-	else if (tabular_.isMultiRow(getActiveCell()))
+	else if (tabular.isMultiRow(getActiveCell()))
 		set(Tabular::SET_SPECIAL_MULTIROW, special);
 	else
 		set(Tabular::SET_SPECIAL_COLUMN, special);
 }
 
 
-void GuiTabular::setWidth(string const & width)
+void GuiTabular::setWidth(Tabular const & tabular, string const & width)
 {
-	if (tabular_.isMultiColumn(getActiveCell()))
+	if (tabular.isMultiColumn(getActiveCell()))
 		set(Tabular::SET_MPWIDTH, width);
 	else
 		set(Tabular::SET_PWIDTH, width);
@@ -1236,7 +1241,7 @@ void GuiTabular::rotateCell(bool yes)
 }
 
 
-void GuiTabular::halign(GuiTabular::HALIGN h)
+void GuiTabular::halign(Tabular const & tabular, GuiTabular::HALIGN h)
 {
 	Tabular::Feature num = Tabular::ALIGN_LEFT;
 	Tabular::Feature multi_num = Tabular::M_ALIGN_LEFT;
@@ -1260,14 +1265,14 @@ void GuiTabular::halign(GuiTabular::HALIGN h)
 			break;
 	}
 
-	if (tabular_.isMultiColumn(getActiveCell()))
+	if (tabular.isMultiColumn(getActiveCell()))
 		set(multi_num);
 	else
 		set(num);
 }
 
 
-void GuiTabular::valign(GuiTabular::VALIGN v)
+void GuiTabular::valign(Tabular const & tabular, GuiTabular::VALIGN v)
 {
 	Tabular::Feature num = Tabular::VALIGN_MIDDLE;
 	Tabular::Feature multi_num = Tabular::M_VALIGN_MIDDLE;
@@ -1287,8 +1292,8 @@ void GuiTabular::valign(GuiTabular::VALIGN v)
 			break;
 	}
 
-	if (tabular_.isMultiColumn(getActiveCell())
-		|| tabular_.isMultiRow(getActiveCell()))
+	if (tabular.isMultiColumn(getActiveCell())
+		|| tabular.isMultiRow(getActiveCell()))
 		set(multi_num);
 	else
 		set(num);

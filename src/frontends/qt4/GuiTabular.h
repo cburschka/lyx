@@ -76,11 +76,13 @@ private:
 	///
 	bool isValid() { return true; }
 	/// update borders
-	void update_borders();
+	void updateBorders(Tabular const & tabular);
 	/// update
 	void updateContents();
+	///
+	void paramsToDialog(Tabular const & tabular);
 	/// save some values before closing the gui
-	void closeGUI();
+	void closeGUI(Tabular const & tabular);
 	///
 	bool initialiseParams(std::string const & data);
 	/// clean-up on hide.
@@ -97,9 +99,9 @@ private:
 	/// set a parameter
 	void set(Tabular::Feature, std::string const & arg = std::string());
 
-	void setSpecial(std::string const & special);
+	void setSpecial(Tabular const & tabular, std::string const & special);
 
-	void setWidth(std::string const & width);
+	void setWidth(Tabular const & tabular, std::string const & width);
 
 	void toggleMultiColumn();
 	void toggleMultiRow();
@@ -109,11 +111,11 @@ private:
 
 	enum HALIGN { LEFT, RIGHT, CENTER, BLOCK };
 
-	void halign(HALIGN h);
+	void halign(Tabular const & tabular, HALIGN h);
 
 	enum VALIGN { TOP, MIDDLE, BOTTOM };
 
-	void valign(VALIGN h);
+	void valign(Tabular const & tabular, VALIGN h);
 
 	void booktabs(bool yes);
 
