@@ -255,9 +255,9 @@ def revert_tabularvalign(document):
        i = find_token(document.body, "\\begin_inset Tabular", i)
        if i == -1:
            return
-       j = find_end_of_inset(document.body, i)
+       j = find_token(document.body, "</cell>", i)
        if j == -1:
-           document.warning("Malformed LyX document: Could not find end of tabular.")
+           document.warning("Malformed LyX document: Could not find end of tabular cell.")
            i = j
            continue
        # don't set a box for longtables, only delete tabularvalignment
@@ -291,7 +291,7 @@ def revert_tabularvalign(document):
              i = j
              continue
          subst = ['\\end_layout', '\\end_inset']
-         document.body[j+1:j+1] = subst # just inserts those lines
+         document.body[j:j] = subst # just inserts those lines
          subst = ['\\begin_inset Box Frameless',
              'position "' + tabularvalignment +'"',
              'hor_pos "c"',
@@ -772,6 +772,7 @@ def revert_nomencl_cwidth(document):
             continue
       width = get_value(document.body, "width", i, j).strip('"')
       del document.body[l]
+      add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
       add_to_preamble(document, ["\\setlength{\\nomlabelwidth}{" + width + "}"])
       i = i + 1
 
@@ -1162,6 +1163,44 @@ def revert_includeall(document):
         del document.header[i]
 
 
+def revert_multirow(document):
+    " Revert multirow cells in tables "
+    i = 0
+    multirow = False
+    while True:
+      # cell type 3 is multirow begin cell
+      i = find_token(document.body, '<cell multirow="3"', i)
+      if i == -1:
+          break
+      # a multirow cell was found
+      multirow = True
+      # remove the multirow tag, set the valignment to top
+      # and remove the bottom line
+      document.body[i] = document.body[i].replace(' multirow="3" ', ' ')
+      document.body[i] = document.body[i].replace('valignment="middle"', 'valignment="top"')
+      document.body[i] = document.body[i].replace(' bottomline="true" ', ' ')
+      # write ERT to create the multirow cell
+      # use 2 rows and 2cm as default with because the multirow span
+      # and the column width is only hardly accessible
+      subst = [put_cmd_in_ert("\\multirow{2}{2cm}{")]
+      document.body[i + 4:i + 4] = subst
+      subst = [put_cmd_in_ert("}")]
+      document.body[i + 6:i + 6] = subst
+      # cell type 4 is multirow part cell
+      i = find_token(document.body, '<cell multirow="4"', i)
+      if i == -1:
+          break
+      # remove the multirow tag, set the valignment to top
+      # and remove the bottom line
+      document.body[i] = document.body[i].replace(' multirow="4" ', ' ')
+      document.body[i] = document.body[i].replace('valignment="middle"', 'valignment="top"')
+      document.body[i] = document.body[i].replace(' topline="true" ', ' ')
+      i = i + 1
+    if multirow == True:
+        add_to_preamble(document, ["% this command was inserted by lyx2lyx"])
+        add_to_preamble(document, ["\\usepackage{multirow}"])
+
+
 ##
 # Conversion hub
 #
@@ -1201,7 +1240,7 @@ convert = [[346, []],
            [377, []]
           ]
 
-revert =  [[376, []],
+revert =  [[376, [revert_multirow]],
            [375, [revert_includeall]],
            [374, [revert_includeonly]],
            [373, [revert_html_options]],
