@@ -12,7 +12,6 @@
  * Full author contact details are available in file CREDITS.
  */
 
-
 // This is Juergen's rewrite of the tabular (table) support.
 
 // Things to think of when designing the new tabular support:
@@ -23,14 +22,6 @@
 // - multicolumn
 // - multirow
 // - column styles
-
-// This is what I have written about tabular support in the LyX3-Tasks file:
-//
-//  o rewrite of table code. Should probably be written as some
-//    kind of an inset. [Done]
-// o enhance longtable support
-
-// Lgb
 
 #ifndef INSET_TABULAR_H
 #define INSET_TABULAR_H
@@ -120,6 +111,8 @@ public:
 		///
 		MULTICOLUMN,
 		///
+		MULTIROW,
+		///
 		SET_ALL_LINES,
 		///
 		UNSET_ALL_LINES,
@@ -164,7 +157,9 @@ public:
 		///
 		SET_SPECIAL_COLUMN,
 		///
-		SET_SPECIAL_MULTI,
+		SET_SPECIAL_MULTICOLUMN,
+		///
+		SET_SPECIAL_MULTIROW,
 		///
 		SET_BOOKTABS,
 		///
@@ -199,7 +194,11 @@ public:
 		///
 		CELL_BEGIN_OF_MULTICOLUMN,
 		///
-		CELL_PART_OF_MULTICOLUMN
+		CELL_PART_OF_MULTICOLUMN,
+		///
+		CELL_BEGIN_OF_MULTIROW,
+		///
+		CELL_PART_OF_MULTIROW
 	};
 
 	///
@@ -277,13 +276,15 @@ public:
 
 	/// return space occupied by the second horizontal line and
 	/// interline space above row \p row in pixels
-	int getAdditionalHeight(row_type row) const;
+	int interRowSpace(row_type row) const;
 	///
-	int getAdditionalWidth(idx_type cell) const;
+	int interColumnSpace(idx_type cell) const;
 
 	/* returns the maximum over all rows */
 	///
 	int columnWidth(idx_type cell) const;
+	///
+	int rowHeight(idx_type cell) const;
 	///
 	int width() const;
 	///
@@ -340,7 +341,9 @@ public:
 	///
 	int cellWidth(idx_type cell) const;
 	///
-	int getBeginningOfTextInCell(idx_type cell) const;
+	int textHOffset(idx_type cell) const;
+	///
+	int textVOffset(idx_type cell) const;
 	///
 	void appendRow(idx_type cell);
 	///
@@ -353,8 +356,6 @@ public:
 	void deleteColumn(col_type column);
 	///
 	void copyColumn(col_type);
-	///
-	bool isFirstCellInRow(idx_type cell) const;
 	///
 	idx_type getFirstCellInRow(row_type row) const;
 	///
@@ -384,9 +385,17 @@ public:
 	///
 	void setMultiColumn(idx_type cell, idx_type number);
 	///
-	idx_type unsetMultiColumn(idx_type cell); // returns number of new cells
+	void unsetMultiColumn(idx_type cell);
 	///
 	bool isPartOfMultiColumn(row_type row, col_type column) const;
+	///
+	bool isPartOfMultiRow(row_type row, col_type column) const;
+	///
+	bool isMultiRow(idx_type cell) const;
+	///
+	void setMultiRow(idx_type cell, idx_type number);
+	///
+	void unsetMultiRow(idx_type cell);
 	///
 	row_type cellRow(idx_type cell) const;
 	///
@@ -481,6 +490,8 @@ public:
 		int width;
 		///
 		int multicolumn;
+		///
+		int multirow;
 		///
 		LyXAlignment alignment;
 		///
@@ -614,6 +625,8 @@ public:
 	///
 	idx_type columnSpan(idx_type cell) const;
 	///
+	idx_type rowSpan(idx_type cell) const;
+	///
 	BoxType useParbox(idx_type cell) const;
 	///
 	// helper function for Latex returns number of newlines
@@ -622,9 +635,9 @@ public:
 	///
 	int TeXBottomHLine(odocstream &, row_type row, std::string const lang) const;
 	///
-	int TeXCellPreamble(odocstream &, idx_type cell, bool & ismulticol) const;
+	int TeXCellPreamble(odocstream &, idx_type cell, bool & ismulticol, bool & ismultirow) const;
 	///
-	int TeXCellPostamble(odocstream &, idx_type cell, bool ismulticol) const;
+	int TeXCellPostamble(odocstream &, idx_type cell, bool ismulticol, bool ismultirow) const;
 	///
 	int TeXLongtableHeaderFooter(odocstream &, OutputParams const &) const;
 	///

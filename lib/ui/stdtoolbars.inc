@@ -161,6 +161,7 @@ ToolbarSet
 		Item "Rotate cell" "tabular-feature toggle-rotate-cell"
 		Item "Rotate table" "tabular-feature toggle-rotate-tabular"
 		Item "Set multi-column" "tabular-feature multicolumn"
+		Item "Set multi-row" "tabular-feature multirow"
 	End
 	
 	Toolbar "math" "Math"

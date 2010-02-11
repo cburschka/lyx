@@ -45,6 +45,7 @@ private Q_SLOTS:
 	void topBorder_changed();
 	void bottomBorder_changed();
 	void multicolumn_clicked();
+	void multirow_clicked();
 	void rotateTabular();
 	void rotateCell();
 	void hAlign_changed(int align);
@@ -101,6 +102,7 @@ private:
 	void setWidth(std::string const & width);
 
 	void toggleMultiColumn();
+	void toggleMultiRow();
 
 	void rotateTabular(bool yes);
 	void rotateCell(bool yes);

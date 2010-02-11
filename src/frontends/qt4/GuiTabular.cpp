@@ -96,6 +96,8 @@ GuiTabular::GuiTabular(GuiView & lv)
 		this, SLOT(vAlign_changed(int)));
 	connect(multicolumnCB, SIGNAL(clicked()),
 		this, SLOT(multicolumn_clicked()));
+	connect(multirowCB, SIGNAL(clicked()),
+		this, SLOT(multirow_clicked()));
 	connect(newpageCB, SIGNAL(clicked()),
 		this, SLOT(ltNewpage_clicked()));
 	connect(headerStatusCB, SIGNAL(clicked()),
@@ -172,6 +174,7 @@ GuiTabular::GuiTabular(GuiView & lv)
 	bc().addReadOnly(booktabsRB);
 
 	bc().addReadOnly(multicolumnCB);
+	bc().addReadOnly(multirowCB);
 	bc().addReadOnly(rotateCellCB);
 	bc().addReadOnly(rotateTabularCB);
 	bc().addReadOnly(specialAlignmentED);
@@ -393,6 +396,12 @@ void GuiTabular::width_changed()
 void GuiTabular::multicolumn_clicked()
 {
 	toggleMultiColumn();
+	changed();
+}
+
+void GuiTabular::multirow_clicked()
+{
+	toggleMultiRow();
 	changed();
 }
 
@@ -654,7 +663,7 @@ Length getColumnPWidth(Tabular const & t, size_t cell)
 
 Length getMColumnPWidth(Tabular const & t, size_t cell)
 {
-	if (t.isMultiColumn(cell))
+	if (t.isMultiColumn(cell) || t.isMultiRow(cell))
 		return t.cellInfo(cell).p_width;
 	return Length();
 }
@@ -662,13 +671,13 @@ Length getMColumnPWidth(Tabular const & t, size_t cell)
 
 docstring getAlignSpecial(Tabular const & t, size_t cell, int what)
 {
-	if (what == Tabular::SET_SPECIAL_MULTI)
+	if (what == Tabular::SET_SPECIAL_MULTICOLUMN
+		|| what == Tabular::SET_SPECIAL_MULTIROW)
 		return t.cellInfo(cell).align_special;
 	return t.column_info[t.cellColumn(cell)].align_special;
 }
 
 }
-
 
 
 void GuiTabular::updateContents()
@@ -684,8 +693,10 @@ void GuiTabular::updateContents()
 	tabularColumnED->setText(QString::number(col + 1));
 
 	bool const multicol(tabular_.isMultiColumn(cell));
-
 	multicolumnCB->setChecked(multicol);
+
+	bool const multirow(tabular_.isMultiRow(cell));
+	multirowCB->setChecked(multirow);
 
 	rotateCellCB->setChecked(tabular_.getRotateCell(cell));
 	rotateTabularCB->setChecked(tabular_.rotate);
@@ -699,7 +710,11 @@ void GuiTabular::updateContents()
 
 	if (multicol) {
 		special = getAlignSpecial(tabular_, cell,
-			Tabular::SET_SPECIAL_MULTI);
+			Tabular::SET_SPECIAL_MULTICOLUMN);
+		pwidth = getMColumnPWidth(tabular_, cell);
+	} else if (multirow) {
+		special = getAlignSpecial(tabular_, cell,
+			Tabular::SET_SPECIAL_MULTIROW);
 		pwidth = getMColumnPWidth(tabular_, cell);
 	} else {
 		special = getAlignSpecial(tabular_, cell,
@@ -832,7 +847,8 @@ void GuiTabular::updateContents()
 	vAlignCB->setCurrentIndex(valign);
 
 	hAlignCB->setEnabled(true);
-	vAlignCB->setEnabled(!pwidth.zero());
+	if (!multirow && !pwidth.zero())
+	vAlignCB->setEnabled(true);
 
 	int tableValign = 1;
 	switch (tabular_.tabular_valignment) {
@@ -927,6 +943,7 @@ void GuiTabular::updateContents()
 	// When a row is set as longtable caption, it must not be allowed
 	// to unset that this row is a multicolumn.
 	multicolumnCB->setEnabled(funcEnabled(Tabular::MULTICOLUMN));
+	multirowCB->setEnabled(funcEnabled(Tabular::MULTIROW));
 
 	Tabular::ltType ltt;
 	bool use_empty;
@@ -1021,15 +1038,16 @@ void GuiTabular::closeGUI()
 	// apply the fixed width values
 	size_t const cell = getActiveCell();
 	bool const multicol = tabular_.isMultiColumn(cell);
+	bool const multirow = tabular_.isMultiRow(cell);
 	string width = widgetsToLength(widthED, widthUnitCB);
 	string width2;
 
 	Length llen = getColumnPWidth(tabular_, cell);
 	Length llenMulti = getMColumnPWidth(tabular_, cell);
 
-	if (multicol && !llenMulti.zero())
+	if (multicol && multirow && !llenMulti.zero())
 		width2 = llenMulti.asString();
-	else if (!multicol && !llen.zero())
+	else if (!multicol && !multirow && !llen.zero())
 		width2 = llen.asString();
 
 	// apply the special alignment
@@ -1038,14 +1056,19 @@ void GuiTabular::closeGUI()
 
 	if (multicol)
 		sa2 = getAlignSpecial(tabular_, cell,
-			Tabular::SET_SPECIAL_MULTI);
+			Tabular::SET_SPECIAL_MULTICOLUMN);
+	else if (multirow)
+		sa2 = getAlignSpecial(tabular_, cell,
+			Tabular::SET_SPECIAL_MULTIROW);
 	else
 		sa2 = getAlignSpecial(tabular_, cell,
 			Tabular::SET_SPECIAL_COLUMN);
 
 	if (sa1 != sa2) {
 		if (multicol)
-			set(Tabular::SET_SPECIAL_MULTI, to_utf8(sa1));
+			set(Tabular::SET_SPECIAL_MULTICOLUMN, to_utf8(sa1));
+		if (multirow)
+			set(Tabular::SET_SPECIAL_MULTIROW, to_utf8(sa1));
 		else
 			set(Tabular::SET_SPECIAL_COLUMN, to_utf8(sa1));
 	}
@@ -1162,7 +1185,9 @@ void GuiTabular::set(Tabular::Feature f, string const & arg)
 void GuiTabular::setSpecial(string const & special)
 {
 	if (tabular_.isMultiColumn(getActiveCell()))
-		set(Tabular::SET_SPECIAL_MULTI, special);
+		set(Tabular::SET_SPECIAL_MULTICOLUMN, special);
+	else if (tabular_.isMultiRow(getActiveCell()))
+		set(Tabular::SET_SPECIAL_MULTIROW, special);
 	else
 		set(Tabular::SET_SPECIAL_COLUMN, special);
 }
@@ -1182,6 +1207,13 @@ void GuiTabular::setWidth(string const & width)
 void GuiTabular::toggleMultiColumn()
 {
 	set(Tabular::MULTICOLUMN);
+	updateView();
+}
+
+
+void GuiTabular::toggleMultiRow()
+{
+	set(Tabular::MULTIROW);
 	updateView();
 }
 
@@ -1255,7 +1287,8 @@ void GuiTabular::valign(GuiTabular::VALIGN v)
 			break;
 	}
 
-	if (tabular_.isMultiColumn(getActiveCell()))
+	if (tabular_.isMultiColumn(getActiveCell())
+		|| tabular_.isMultiRow(getActiveCell()))
 		set(multi_num);
 	else
 		set(num);

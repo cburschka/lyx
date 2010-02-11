@@ -130,8 +130,8 @@
       <attribute name="title">
        <string>&amp;Table Settings</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_6">
-       <item row="0" column="0">
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0" colspan="2">
         <widget class="QGroupBox" name="GroupBox12">
          <property name="title">
           <string>Column settings</string>
@@ -283,7 +283,7 @@
           <item row="3" column="0">
            <widget class="QCheckBox" name="multicolumnCB">
             <property name="toolTip">
-             <string>Merge cells</string>
+             <string>Merge cells of different columns</string>
             </property>
             <property name="text">
              <string>&amp;Multicolumn</string>
@@ -296,9 +296,28 @@
        <item row="1" column="0">
         <widget class="QGroupBox" name="groupBox">
          <property name="title">
-          <string>Cell setting</string>
+          <string>Row setting</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_3">
+          <item row="0" column="0">
+           <widget class="QCheckBox" name="multirowCB">
+            <property name="toolTip">
+             <string>Merge cells of different rows</string>
+            </property>
+            <property name="text">
+             <string>M&amp;ultirow</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QGroupBox" name="groupBox_2">
+         <property name="title">
+          <string>Cell setting</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_6">
           <item row="0" column="0">
            <widget class="QCheckBox" name="rotateCellCB">
             <property name="toolTip">
@@ -312,7 +331,7 @@
          </layout>
         </widget>
        </item>
-       <item row="2" column="0">
+       <item row="2" column="0" colspan="2">
         <widget class="QGroupBox" name="tabAlignmentGB">
          <property name="enabled">
           <bool>true</bool>
@@ -388,7 +407,7 @@
          </layout>
         </widget>
        </item>
-       <item row="3" column="0">
+       <item row="3" column="0" colspan="2">
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
           <widget class="QLabel" name="specialAlignmentLA">
@@ -409,15 +428,15 @@
          </item>
         </layout>
        </item>
-       <item row="4" column="0">
+       <item row="4" column="1">
         <spacer name="verticalSpacer_2">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
-           <width>20</width>
-           <height>68</height>
+           <width>17</width>
+           <height>0</height>
           </size>
          </property>
         </spacer>
@@ -1497,6 +1516,7 @@
   <tabstop>vAlignCB</tabstop>
   <tabstop>multicolumnCB</tabstop>
   <tabstop>rotateTabularCB</tabstop>
+  <tabstop>multirowCB</tabstop>
   <tabstop>rotateCellCB</tabstop>
   <tabstop>specialAlignmentED</tabstop>
   <tabstop>closePB</tabstop>

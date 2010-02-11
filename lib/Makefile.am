@@ -415,6 +415,7 @@ dist_images_DATA = \
 	images/tabular-feature_delete-column.png \
 	images/tabular-feature_delete-row.png \
 	images/tabular-feature_multicolumn.png \
+	images/tabular-feature_multirow.png \
 	images/tabular-feature_set-all-lines.png \
 	images/tabular-feature_set-longtabular.png \
 	images/tabular-feature_set-rotate-cell.png \

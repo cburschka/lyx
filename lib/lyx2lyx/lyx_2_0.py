@@ -1197,10 +1197,12 @@ convert = [[346, []],
            [373, [merge_gbrief]],
            [374, []],
            [375, []],
-           [376, []]
+           [376, []],
+           [377, []]
           ]
 
-revert =  [[375, [revert_includeall]],
+revert =  [[376, []],
+           [375, [revert_includeall]],
            [374, [revert_includeonly]],
            [373, [revert_html_options]],
            [372, [revert_gbrief]],

@@ -1517,6 +1517,7 @@ lib_images_files = Split('''
     tabular-feature_delete-column.png
     tabular-feature_delete-row.png
     tabular-feature_multicolumn.png
+    tabular-feature_multirow.png
     tabular-feature_set-all-lines.png
     tabular-feature_set-border-lines.png
     tabular-feature_set-longtabular.png
