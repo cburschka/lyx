@@ -123,10 +123,7 @@ public:
 	/// Is the document under administration by VCS?
 	bool inUse() const;
 
-	/// FIXME Either rename or kill, we have revisionInfo now.
-	/// Returns the version number.
-	//std::string const & version() const;
-	/// Returns the version number.
+	/// Returns the RCS + version number for messages
 	std::string const versionString() const;
 
 	/**

@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Lars Gullik Bjønnes
+ * \author Pavel Sanda
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -240,7 +241,7 @@ bool RCS::lockingToggleEnabled()
 
 void RCS::revert()
 {
-	doVCCommand("co -f -u" + version() + " "
+	doVCCommand("co -f -u" + version_ + " "
 		    + quoteName(onlyFilename(owner_->absFileName())),
 		    FileName(owner_->filePath()));
 	// We ignore changes and just reload!
@@ -251,7 +252,7 @@ void RCS::revert()
 void RCS::undoLast()
 {
 	LYXERR(Debug::LYXVC, "LyXVC: undoLast");
-	doVCCommand("rcs -o" + version() + " "
+	doVCCommand("rcs -o" + version_ + " "
 		    + quoteName(onlyFilename(owner_->absFileName())),
 		    FileName(owner_->filePath()));
 }
@@ -483,8 +484,10 @@ bool CVS::toggleReadOnlyEnabled()
 }
 
 
-string CVS::revisionInfo(LyXVC::RevisionInfo const)
+string CVS::revisionInfo(LyXVC::RevisionInfo const info)
 {
+	if (info == LyXVC::File)
+		return version_;
 	return string();
 }
 

@@ -5,6 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Lars Gullik Bjønnes
+ * \author Pavel Sanda
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -66,8 +67,6 @@ public:
 	virtual void getLog(support::FileName const &) = 0;
 	/// return the current version description
 	virtual std::string const versionString() const = 0;
-	/// return the current version
-	std::string const & version() const { return version_; }
 	/// return the user who has locked the file
 	std::string const & locker() const { return locker_; }
 	/// set the owning buffer
@@ -103,12 +102,6 @@ protected:
 
 	/// The status of the VC controlled file.
 	VCStatus vcstatus;
-
-	/**
-	 * The version of the VC file. I am not sure if this can be a
-	 * string or if it must be a float/int.
-	 */
-	std::string version_;
 
 	/// The user currently keeping the lock on the VC file.
 	std::string locker_;
@@ -165,6 +158,12 @@ public:
 
 protected:
 	virtual void scanMaster();
+private:
+	/**
+	 * The version of the VC file. I am not sure if this can be a
+	 * string or if it must be a float/int.
+	 */
+	std::string version_;
 };
 
 
@@ -217,6 +216,8 @@ protected:
 
 private:
 	support::FileName file_;
+	// revision number from scanMaster
+	std::string version_;
 };
 
 
@@ -257,7 +258,7 @@ public:
 	virtual void getLog(support::FileName const &);
 
 	virtual std::string const versionString() const {
-		return "SVN: " + version_;
+		return "SVN: " + rev_file_cache_;
 	}
 
 	virtual bool toggleReadOnlyEnabled();
