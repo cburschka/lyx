@@ -67,8 +67,6 @@ public:
 	virtual void getLog(support::FileName const &) = 0;
 	/// return the current version description
 	virtual std::string const versionString() const = 0;
-	/// return the user who has locked the file
-	std::string const & locker() const { return locker_; }
 	/// set the owning buffer
 	void owner(Buffer * b) { owner_ = b; }
 	/// return the owning buffer
@@ -103,8 +101,6 @@ protected:
 	/// The status of the VC controlled file.
 	VCStatus vcstatus;
 
-	/// The user currently keeping the lock on the VC file.
-	std::string locker_;
 	/// The buffer using this VC
 	Buffer * owner_;
 };
@@ -164,6 +160,8 @@ private:
 	 * string or if it must be a float/int.
 	 */
 	std::string version_;
+	/// The user currently keeping the lock on the VC file (or "Unlocked").
+	std::string locker_;
 };
 
 
@@ -218,6 +216,8 @@ private:
 	support::FileName file_;
 	// revision number from scanMaster
 	std::string version_;
+	/// The user currently keeping the lock on the VC file.
+	std::string locker_;
 };
 
 

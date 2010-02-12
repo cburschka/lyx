@@ -127,18 +127,9 @@ public:
 	std::string const versionString() const;
 
 	/**
-	 * Returns the userid of the person who has locked the doc.
-	 * FIXME This property is descendant from the original VCS
-	 * and used in RCS for user id or "unlocked" strings.
-	 * It would be problem to use this under SVN since getting
-	 * the locker would need connection to server any time we
-	 * load document. SVN currently (mis)uses this as a signal
-	 * for locking state, as we do not have API for vcstatus().
-	 * The RCS code for user id parsing is working but we don't display
-	 * it anywhere. One possibility is to provide proper vcstatus()
-	 * interface and kill the whole locker thing.
+	 * Returns whether we use locking for the given file.
 	 */
-	std::string const & locker() const;
+	bool locking() const;
 
 	// type of the revision information
 	enum RevisionInfo {

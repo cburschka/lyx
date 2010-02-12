@@ -536,16 +536,13 @@ FileName const SVN::findFile(FileName const & file)
 
 void SVN::scanMaster()
 {
-	locker_.clear();
 	// vcstatus code is somewhat superflous, until we want
 	// to implement read-only toggle for svn.
 	vcstatus = NOLOCKING;
 	if (checkLockMode()) {
 		if (isLocked()) {
-			locker_ = "Locked";
 			vcstatus = LOCKED;
 		} else {
-			locker_ = "Unlocked";
 			vcstatus = UNLOCKED;
 		}
 	}

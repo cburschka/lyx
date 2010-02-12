@@ -1583,7 +1583,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_VC_LOCKING_TOGGLE:
 		enable = doc_buffer && !doc_buffer->isReadonly()
 			&& doc_buffer->lyxvc().lockingToggleEnabled();
-		flag.setOnOff(enable && !doc_buffer->lyxvc().locker().empty());
+		flag.setOnOff(enable && doc_buffer->lyxvc().locking());
 		break;
 	case LFUN_VC_REVERT:
 		enable = doc_buffer && doc_buffer->lyxvc().inUse();

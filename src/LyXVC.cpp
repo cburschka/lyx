@@ -259,9 +259,9 @@ string const LyXVC::versionString() const
 }
 
 
-string const & LyXVC::locker() const
+bool LyXVC::locking() const
 {
-	return vcs->locker();
+	return vcs->status() != VCS::NOLOCKING;
 }
 
 
