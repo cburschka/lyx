@@ -1184,14 +1184,18 @@ def revert_multirow(document):
       # and the column width is only hardly accessible
       subst = [put_cmd_in_ert("\\multirow{2}{2cm}{")]
       document.body[i + 4:i + 4] = subst
+      i = find_token(document.body, "</cell>", i)
+      if i == -1:
+           document.warning("Malformed LyX document: Could not find end of tabular cell.")
+           break
       subst = [put_cmd_in_ert("}")]
-      document.body[i + 6:i + 6] = subst
+      document.body[i - 3:i - 3] = subst
       # cell type 4 is multirow part cell
       i = find_token(document.body, '<cell multirow="4"', i)
       if i == -1:
           break
       # remove the multirow tag, set the valignment to top
-      # and remove the bottom line
+      # and remove the top line
       document.body[i] = document.body[i].replace(' multirow="4" ', ' ')
       document.body[i] = document.body[i].replace('valignment="middle"', 'valignment="top"')
       document.body[i] = document.body[i].replace(' topline="true" ', ' ')
