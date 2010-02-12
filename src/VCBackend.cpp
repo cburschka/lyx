@@ -860,32 +860,41 @@ bool SVN::undoLastEnabled()
 
 string SVN::revisionInfo(LyXVC::RevisionInfo const info)
 {
-	switch (info) {
-		case LyXVC::File:
-			if (rev_file_cache_.empty())
-				rev_file_cache_ = getFileRevisionInfo();
-			if (rev_file_cache_.empty())
-				rev_file_cache_ = "?";
-			if (rev_file_cache_ == "?")
-				return string();
-
-			return rev_file_cache_;
-
-		case LyXVC::Tree:
+	if (info == LyXVC::Tree) {
 			if (rev_tree_cache_.empty())
-				rev_tree_cache_ = getTreeRevisionInfo();
-			if (rev_tree_cache_.empty())
-				rev_tree_cache_ = "?";
+				if (!getTreeRevisionInfo())
+					rev_tree_cache_ = "?";
 			if (rev_tree_cache_ == "?")
 				return string();
 
 			return rev_tree_cache_;
 	}
+
+	// fill the rest of the attributes for a single file
+	if (rev_file_cache_.empty())
+		if (!getFileRevisionInfo())
+			rev_file_cache_ = "?";
+
+	switch (info) {
+		case LyXVC::File:
+			if (rev_file_cache_ == "?")
+				return string();
+			return rev_file_cache_;
+		case LyXVC::Author:
+			return rev_author_cache_;
+		case LyXVC::Date:
+			return rev_date_cache_;
+		case LyXVC::Time:
+			return rev_time_cache_;
+		default: ;
+
+	}
+
 	return string();
 }
 
 
-std::string SVN::getFileRevisionInfo()
+bool SVN::getFileRevisionInfo()
 {
 	FileName tmpf = FileName::tempName("lyxvcout");
 
@@ -894,7 +903,7 @@ std::string SVN::getFileRevisionInfo()
 		    FileName(owner_->filePath()));
 
 	if (tmpf.empty())
-		return string();
+		return false;
 
 	ifstream ifs(tmpf.toFilesystemEncoding().c_str());
 	string line;
@@ -911,16 +920,30 @@ std::string SVN::getFileRevisionInfo()
 			string l1 = subst(line, "revision=\"", "");
 			string l2 = trim(subst(l1, "\">", ""));
 			if (isStrInt(l2))
-				rev = l2;
+				rev_file_cache_ = rev = l2;
+		}
+		if (c && prefixIs(line, "<author>") && suffixIs(line, "</author>")) {
+			string l1 = subst(line, "<author>", "");
+			string l2 = subst(l1, "</author>", "");
+			rev_author_cache_ = l2;
+		}
+		if (c && prefixIs(line, "<date>") && suffixIs(line, "</date>")) {
+			string l1 = subst(line, "<date>", "");
+			string l2 = subst(l1, "</date>", "");
+			l2 = split(l2, l1, 'T');
+			rev_date_cache_ = l1;
+			l2 = split(l2, l1, '.');
+			rev_time_cache_ = l1;
 		}
 	}
+
 	ifs.close();
 	tmpf.erase();
-	return rev;
+	return !rev.empty();
 }
 
 
-std::string SVN::getTreeRevisionInfo()
+bool SVN::getTreeRevisionInfo()
 {
 	FileName tmpf = FileName::tempName("lyxvcout");
 
@@ -928,7 +951,7 @@ std::string SVN::getTreeRevisionInfo()
 		    FileName(owner_->filePath()));
 
 	if (tmpf.empty())
-		return string();
+		return false;
 
 	// only first line in case something bad happens.
 	ifstream ifs(tmpf.toFilesystemEncoding().c_str());
@@ -936,7 +959,9 @@ std::string SVN::getTreeRevisionInfo()
 	getline(ifs, line);
 	ifs.close();
 	tmpf.erase();
-	return line;
+
+	rev_tree_cache_ = line;
+	return !line.empty();
 }
 
 

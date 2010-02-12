@@ -279,12 +279,23 @@ private:
 	support::FileName file_;
 	/// is the loaded file under locking policy?
 	bool locked_mode_;
-	/// real code for obtaining file revision info
-	std::string getFileRevisionInfo();
+	/**
+	 * Real code for obtaining file revision info. Fills all file-related caches
+	 * and returns true if successfull.
+	 * "?" is stored in rev_file_cache_ as a signal if request for obtaining info
+	 * was already unsuccessful.
+	 */
+	bool getFileRevisionInfo();
 	/// cache for file revision number, "?" if already unsuccessful
 	std::string rev_file_cache_;
-	/// real code for obtaining file revision info
-	std::string getTreeRevisionInfo();
+	/// cache for author of last commit
+	std::string rev_author_cache_;
+	/// cache for date of last commit
+	std::string rev_date_cache_;
+	/// cache for time of last commit
+	std::string rev_time_cache_;
+	/// fills rev_tree_cache_, returns true if successfull.
+	bool getTreeRevisionInfo();
 	/// cache for tree revision number, "?" if already unsuccessful
 	std::string rev_tree_cache_;
 };

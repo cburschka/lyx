@@ -175,7 +175,8 @@ bool InsetInfo::validateModifyArgument(docstring const & arg) const
 		return true;
 	case BUFFER_INFO:
 		return name == "name" || name == "path" || name == "class" ||
-		       name == "vcs-revision" || name == "vcs-tree-revision";
+		       name == "vcs-revision" || name == "vcs-tree-revision" ||
+		       name == "vcs-author" || name == "vcs-date" || name == "vcs-time";
 	}
 	return false;
 }
@@ -379,6 +380,15 @@ void InsetInfo::updateInfo()
 		else if (name_ == "vcs-tree-revision" && buffer().lyxvc().inUse() &&
 			 !buffer().lyxvc().revisionInfo(LyXVC::Tree).empty())
 			setText(from_utf8(buffer().lyxvc().revisionInfo(LyXVC::Tree)));
+		else if (name_ == "vcs-author" && buffer().lyxvc().inUse() &&
+			 !buffer().lyxvc().revisionInfo(LyXVC::Author).empty())
+			setText(from_utf8(buffer().lyxvc().revisionInfo(LyXVC::Author)));
+		else if (name_ == "vcs-time" && buffer().lyxvc().inUse() &&
+			 !buffer().lyxvc().revisionInfo(LyXVC::Time).empty())
+			setText(from_utf8(buffer().lyxvc().revisionInfo(LyXVC::Time)));
+		else if (name_ == "vcs-date" && buffer().lyxvc().inUse() &&
+			 !buffer().lyxvc().revisionInfo(LyXVC::Date).empty())
+			setText(from_utf8(buffer().lyxvc().revisionInfo(LyXVC::Date)));
 		else
 			setText(_("Unknown buffer info"));
 		break;
