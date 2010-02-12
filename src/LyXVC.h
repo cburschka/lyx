@@ -153,7 +153,7 @@ public:
 	 * Its safe to call it regardless VCS is in usage or this
 	 * info is (un)available. Returns empty string in such a case.
 	 */
-	std::string const revisionInfo(RevisionInfo const info);
+	std::string revisionInfo(RevisionInfo const info);
 
 private:
 	///

@@ -287,7 +287,7 @@ string const LyXVC::getLogFile() const
 }
 
 
-std::string const LyXVC::revisionInfo(RevisionInfo const info)
+std::string LyXVC::revisionInfo(RevisionInfo const info)
 {
 	if (!vcs)
 		return string();

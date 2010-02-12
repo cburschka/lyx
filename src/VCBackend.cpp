@@ -281,7 +281,7 @@ bool RCS::toggleReadOnlyEnabled()
 }
 
 // FIXME This could be implemented with cache from scanMaster
-string const RCS::revisionInfo(LyXVC::RevisionInfo const)
+string RCS::revisionInfo(LyXVC::RevisionInfo const)
 {
 	return string();
 }
@@ -482,7 +482,7 @@ bool CVS::toggleReadOnlyEnabled()
 }
 
 
-string const CVS::revisionInfo(LyXVC::RevisionInfo const)
+string CVS::revisionInfo(LyXVC::RevisionInfo const)
 {
 	return string();
 }
@@ -857,18 +857,18 @@ bool SVN::undoLastEnabled()
 }
 
 
-string const SVN::revisionInfo(LyXVC::RevisionInfo const info)
+string SVN::revisionInfo(LyXVC::RevisionInfo const info)
 {
 	switch (info) {
 		case LyXVC::File:
-			if (_rev_file_cache.empty())
-				_rev_file_cache = getFileRevisionInfo();
-			if (_rev_file_cache.empty())
-				_rev_file_cache = "?";
-			if (_rev_file_cache == "?")
+			if (rev_file_cache_.empty())
+				rev_file_cache_ = getFileRevisionInfo();
+			if (rev_file_cache_.empty())
+				rev_file_cache_ = "?";
+			if (rev_file_cache_ == "?")
 				return string();
 
-			return _rev_file_cache;
+			return rev_file_cache_;
 	}
 	return string();
 }
