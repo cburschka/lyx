@@ -1990,7 +1990,7 @@ QAbstractItemModel * GuiApplication::languageModel()
 		lang_model->setData(pl_item, toqstr(it->second.lang()), Qt::UserRole);
 		lang_model->setData(sp_item, qt_(it->second.display()), Qt::DisplayRole);
 		lang_model->setData(sp_item, toqstr(it->second.lang()), Qt::UserRole);
-		if (theSpellChecker()->hasDictionary(&it->second))
+		if (theSpellChecker() && theSpellChecker()->hasDictionary(&it->second))
 			lang_model->setData(sp_item, speller, Qt::DecorationRole);
 		lang_model->setData(th_item, qt_(it->second.display()), Qt::DisplayRole);
 		lang_model->setData(th_item, toqstr(it->second.lang()), Qt::UserRole);
