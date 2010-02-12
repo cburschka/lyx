@@ -1,6 +1,12 @@
 LyX file-format changes
 -----------------------
 
+2010-02-12 Pavel Sanda <sanda@lyx.org>
+	* Format incremented to 378: support for revision InsetInfo.
+	  Various "vcs-*" strings could be argument of arg parameter
+	  in InsetInfo. This entry is a safety measure, no lyx2lyx
+	  conversion is needed in fact.
+
 2010-02-11 Uwe Stöhr <uwestoehr@web.de> and Edwin Leuven <e.leuven@uva.nl>
 	* Format incremented to 377: support for multirow cells in
 	  tables

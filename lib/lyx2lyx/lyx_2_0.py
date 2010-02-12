@@ -1241,10 +1241,12 @@ convert = [[346, []],
            [374, []],
            [375, []],
            [376, []],
-           [377, []]
+           [377, []],
+           [378, []]
           ]
 
-revert =  [[376, [revert_multirow]],
+revert =  [[377, []],
+           [376, [revert_multirow]],
            [375, [revert_includeall]],
            [374, [revert_includeonly]],
            [373, [revert_html_options]],
