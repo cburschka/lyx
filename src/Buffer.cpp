@@ -3124,7 +3124,7 @@ void Buffer::moveAutosaveFile(support::FileName const & oldauto) const
 	FileName const newauto = getAutosaveFilename();
 	oldauto.refresh();
 	if (newauto != oldauto && oldauto.exists())
-		if (!oldauto.moveTo(newauto)))
+		if (!oldauto.moveTo(newauto))
 			LYXERR0("Unable to move autosave file `" << oldauto << "'!");
 }
 
