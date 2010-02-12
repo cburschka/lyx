@@ -254,7 +254,7 @@ class LyX_base:
         " Emits a warning and exits if not in try_hard mode."
         self.warning(message)
         if not self.try_hard:
-            self.warning("Quiting.")
+            self.warning("Quitting.")
             sys.exit(1)
 
         self.status = 2
