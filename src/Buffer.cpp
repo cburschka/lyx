@@ -3494,7 +3494,7 @@ bool Buffer::loadLyXFile(FileName const & s)
 		// InsetInfo needs to know if file is under VCS
 		lyxvc().file_found_hook(s);
 		if (readFileHelper(s)) {
-			setReadonly(!s.isWritable());
+			d->read_only = !s.isWritable();
 			return true;
 		}
 	}
