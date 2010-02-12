@@ -738,8 +738,8 @@ string SVN::repoUpdate()
 	}
 
 	doVCCommand("svn diff " + quoteName(owner_->filePath())
-	+ " > " + quoteName(tmpf.toFilesystemEncoding()),
-	FileName(owner_->filePath()));
+		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
+		FileName(owner_->filePath()));
 	docstring res = tmpf.fileContents("UTF-8");
 	if (!res.empty()) {
 		LYXERR(Debug::LYXVC, "Diff detected:\n" << res);
