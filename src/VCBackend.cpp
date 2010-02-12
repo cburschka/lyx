@@ -897,6 +897,10 @@ string SVN::revisionInfo(LyXVC::RevisionInfo const info)
 bool SVN::getFileRevisionInfo()
 {
 	FileName tmpf = FileName::tempName("lyxvcout");
+	if (tmpf.empty()) {
+		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
+		return N_("Error: Could not generate logfile.");
+	}
 
 	doVCCommand("svn info --xml " + quoteName(onlyFilename(owner_->absFileName()))
 		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
@@ -946,6 +950,10 @@ bool SVN::getFileRevisionInfo()
 bool SVN::getTreeRevisionInfo()
 {
 	FileName tmpf = FileName::tempName("lyxvcout");
+	if (tmpf.empty()) {
+		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
+		return N_("Error: Could not generate logfile.");
+	}
 
 	doVCCommand("svnversion -n . > " + quoteName(tmpf.toFilesystemEncoding()),
 		    FileName(owner_->filePath()));
