@@ -1,4 +1,4 @@
-#LyX 1.6.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.6.6svn created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -184,5 +184,79 @@ http://www.lyx.org/
  mehr.
 \end_layout
 
+\begin_layout Enumerate
+
+\color red
+Installationshinweis für LyX unter Linux
+\color inherit
+: Wenn Ihre Linux-Distribution zusammen mit LyX die LaTeX-Distribution 
+\family typewriter
+Te
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X
+\begin_inset space ~
+\end_inset
+
+Live
+\family default
+ installiert hat, oder 
+\family typewriter
+Te
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+X
+\begin_inset space ~
+\end_inset
+
+Live
+\family default
+ bereits installiert war, prüfen Sie ob das deutsche Sprachpaket installiert
+ wurde.
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+(K,X)Ubuntu stellt dafür das Paket 
+\family typewriter
+texlive-lang-german
+\family default
+ zur Verfügung.
+\end_layout
+
+\begin_layout Standard
+Nach der Installation führen Sie das Menü
+\family sans
+ Werkzeuge
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Neu
+\begin_inset space \space{}
+\end_inset
+
+konfigurieren
+\family default
+ aus.
+\end_layout
+
+\end_deeper
 \end_body
 \end_document
