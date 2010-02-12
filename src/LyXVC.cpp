@@ -253,12 +253,6 @@ bool LyXVC::inUse() const
 }
 
 
-//string const & LyXVC::version() const
-//{
-//	return vcs->version();
-//}
-
-
 string const LyXVC::versionString() const
 {
 	return vcs->versionString();
