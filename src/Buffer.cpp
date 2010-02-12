@@ -3490,11 +3490,13 @@ bool Buffer::loadLyXFile(FileName const & s)
 		  && !LyXVC::file_not_found_hook(s))
 		return false;
 	
-	if (s.isReadableFile()
-		  && readFileHelper(s)) {
+	if (s.isReadableFile()){
+		// InsetInfo needs to know if file is under VCS
 		lyxvc().file_found_hook(s);
-		setReadonly(!s.isWritable());
-		return true;
+		if (readFileHelper(s)) {
+			setReadonly(!s.isWritable());
+			return true;
+		}
 	}
 	return false;
 }

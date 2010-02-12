@@ -23,6 +23,7 @@
 #include "LayoutFile.h"
 #include "LyXAction.h"
 #include "LyXRC.h"
+#include "LyXVC.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "ParagraphParameters.h"
@@ -173,7 +174,8 @@ bool InsetInfo::validateModifyArgument(docstring const & arg) const
 	case TEXTCLASS_INFO:
 		return true;
 	case BUFFER_INFO:
-		return name == "name" || name == "path" || name == "class";
+		return name == "name" || name == "path" || name == "class" ||
+		       name == "file-revision";
 	}
 	return false;
 }
@@ -371,6 +373,9 @@ void InsetInfo::updateInfo()
 			setText(from_utf8(buffer().filePath()));
 		else if (name_ == "class")
 			setText(from_utf8(bp.documentClass().name()));
+		else if (name_ == "file-revision" && buffer().lyxvc().inUse() &&
+			 !buffer().lyxvc().revisionInfo(LyXVC::File).empty())
+			setText(from_utf8(buffer().lyxvc().revisionInfo(LyXVC::File)));
 		else
 			setText(_("Unknown buffer info"));
 		break;
