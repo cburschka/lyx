@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 376
+\lyxformat 378
 \begin_document
 \begin_header
 \textclass scrbook
@@ -18479,9 +18479,9 @@ Version Control in LyX
 \begin_layout Standard
 by
 \noun on
- Lars Gullik Bjønnes, 
+ Lars Gullik Bjønnes 
 \noun default
-updated by 
+and 
 \noun on
 Pavel Sanda
 \end_layout
@@ -18499,7 +18499,7 @@ A friend of mine wanted to try LyX for a group project.
  This has now been done.
  LyX now supports some of the most basic RCS commands.
  If you need to something a bit more sophisticated you will have to do that
- manually in an xterm.
+ manually in a terminal.
 \end_layout
 
 \begin_layout Standard
@@ -18530,7 +18530,7 @@ man rcsintro
 Later basic CVS/SVN support was added.
  You should be familiar with CVS/SVN usage before start using it under LyX.
  Most of the log messages are not currently displayed after operations -
- you can check them in terminal window if unsure.
+ you can check them in Messages pane if unsure.
 \end_layout
 
 \begin_layout Standard
@@ -18726,6 +18726,21 @@ man rlog
  for more info.
 \end_layout
 
+\begin_layout Subsubsection
+Revision info
+\end_layout
+
+\begin_layout Standard
+LyX supports RCS version number information (only), see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:VCS-Revision-Information"
+
+\end_inset
+
+ for details.
+\end_layout
+
 \begin_layout Subsection
 CVS commands in LyX
 \end_layout
@@ -18742,6 +18757,8 @@ Version
 Control
 \family default
  submenu.
+ Focus of the development moved to SVN support, so please use it instead
+ of CVS if possible.
 \end_layout
 
 \begin_layout Subsubsection
@@ -19408,18 +19425,301 @@ svn propdel svn:needs-lock "<file-name>"
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:VCS-Revision-Information"
+
+\end_inset
+
 Revision Information in Documents
 \end_layout
 
 \begin_layout Standard
-Currently there is no way how to provide such kind of information directly
- from LyX.
- There are possibilities how to activate it with the help of svn features,
- but each has its own drawbacks.
+There are more possibilities how to activate revision information in our
+ document.
+\end_layout
+
+\begin_layout Itemize
+LyX supports directly:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+tree revision information (
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+vcs-tree-revision
+\end_layout
+
+\end_inset
+
+).
+ The result is the output of the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+svnversion
+\end_layout
+
+\end_inset
+
+ command, the following table gives you an idea, how to read the results.
 \end_layout
 
 \begin_layout Standard
-One possibility is to use svn keywords
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Output
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Meaning
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4123:4168
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mixed revision working copy
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4168M
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+modified working copy
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4123S
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+switched working copy
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4123P
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+partial working copy, from a sparse checkout
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4123:4168MS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mixed revision, modified, switched working copy
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+file revision information.
+ The result comes from parsing the output of 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+svn
+\begin_inset space ~
+\end_inset
+
+info
+\begin_inset space ~
+\end_inset
+
+--xml
+\begin_inset space ~
+\end_inset
+
+file.lyx
+\end_layout
+
+\end_inset
+
+.
+ Supported flags are:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+version number of the last commit (
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+vcs-revision
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+author of the last commit (
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+vcs-author
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+date of the last commit (
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+vcs-date
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+time of the last commit (
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+vcs-time
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+You can obtain this info via InsetInfo (e.g.
+ 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+info-insert buffer vcs-date
+\end_layout
+
+\end_inset
+
+).
+ The information will be available only when you have the file stored under
+ svn managment (i.e.
+ the 
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+.svn
+\end_layout
+
+\end_inset
+
+ directory is available with your document).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Another---a hacking one---possibility is to use svn keywords
 \begin_inset Foot
 status collapsed
 
@@ -19489,32 +19789,7 @@ $Rev: 59 $
  Thirdly you get the whole 'Rev: 59' string in your document instead of
  the plain number.
  Until subversion implements user's custom keywords it will be hard to use
- this approach reliably or let LyX to support it directly .
-\end_layout
-
-\begin_layout Standard
-The second possibility would be to write your own external-material template
- which calls either 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-svnversion
-\end_layout
-
-\end_inset
-
- utility or parses the output of 
-\begin_inset Flex CharStyle:Code
-status collapsed
-
-\begin_layout Plain Layout
-svn info file.lyx
-\end_layout
-
-\end_inset
-
- command and returns the result back, when typeseting the document.
+ this approach reliably or let LyX to support it directly.
 \end_layout
 
 \begin_layout Subsection
