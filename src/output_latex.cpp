@@ -181,7 +181,7 @@ TeXEnvironment(Buffer const & buf,
 			   << "}\n";
 		} else if (style.labeltype == LABEL_BIBLIO) {
 			if (pit->params().labelWidthString().empty())
-				os << '{' << bibitemWidest(buf) << "}\n";
+				os << '{' << bibitemWidest(buf, runparams) << "}\n";
 			else
 				os << '{'
 				  << pit->params().labelWidthString()
