@@ -356,11 +356,9 @@ public:
 	///
 	idx_type getFirstCellInRow(row_type row) const;
 	///
-	bool isLastCellInRow(idx_type cell) const;
-	///
 	idx_type getLastCellInRow(row_type row) const;
 	///
-	idx_type numberOfCellsInRow(idx_type cell) const;
+	idx_type numberOfCellsInRow(row_type row) const;
 	///
 	void write(std::ostream &) const;
 	///

@@ -835,9 +835,8 @@ void Tabular::updateIndexes()
 }
 
 
-Tabular::idx_type Tabular::numberOfCellsInRow(idx_type const cell) const
+Tabular::idx_type Tabular::numberOfCellsInRow(row_type const row) const
 {
-	row_type const row = cellRow(cell);
 	idx_type result = 0;
 	for (col_type i = 0; i < column_info.size(); ++i)
 		if (cell_info[row][i].multicolumn != Tabular::CELL_PART_OF_MULTICOLUMN)
@@ -1303,28 +1302,19 @@ int Tabular::textVOffset(idx_type cell) const
 
 Tabular::idx_type Tabular::getFirstCellInRow(row_type row) const
 {
-	if (row > row_info.size() - 1)
-		row = row_info.size() - 1;
-
 	col_type c = 0;
 	while (cell_info[row][c].multirow == CELL_PART_OF_MULTIROW)
 		++c;
-
-	return cell_info[row][0].cellno;
-}
-
-
-bool Tabular::isLastCellInRow(idx_type cell) const
-{
-	return cellRightColumn(cell) == column_info.size() - 1;
+	return cell_info[row][c].cellno;
 }
 
 
 Tabular::idx_type Tabular::getLastCellInRow(row_type row) const
 {
-	if (row > row_info.size() - 1)
-		row = row_info.size() - 1;
-	return cell_info[row][column_info.size() - 1].cellno;
+	col_type c = column_info.size() - 1;
+	while (cell_info[row][c].multirow == CELL_PART_OF_MULTIROW)
+		--c;
+	return cell_info[row][c].cellno;
 }
 
 
@@ -1654,7 +1644,6 @@ Tabular::idx_type Tabular::rowSpan(idx_type cell) const
 {
 	row_type const nrows = row_info.size();
 	col_type const column = cellColumn(cell);
-	idx_type result = 1;
 	col_type row = cellRow(cell) + 1;
 	while (row < nrows && isPartOfMultiRow(row, column))
 		++row;
@@ -1888,7 +1877,7 @@ Tabular::idx_type Tabular::setLTCaption(row_type row, bool what)
 {
 	idx_type i = getFirstCellInRow(row);
 	if (what) {
-		setMultiColumn(i, numberOfCellsInRow(i));
+		setMultiColumn(i, numberOfCellsInRow(row));
 		setTopLine(i, false);
 		setBottomLine(i, false);
 		setLeftLine(i, false);
@@ -2441,7 +2430,7 @@ int Tabular::TeXRow(odocstream & os, row_type i,
 			os << '}';
 
 		ret += TeXCellPostamble(os, cell, ismulticol, ismultirow);
-		if (!isLastCellInRow(cell)) { // not last cell in row
+		if (cell != getLastCellInRow(i)) { // not last cell in row
 			os << " & ";
 		}
 	}
@@ -2842,7 +2831,7 @@ bool Tabular::plaintextTopHLine(odocstream & os, row_type row,
 				   vector<unsigned int> const & clen) const
 {
 	idx_type const fcell = getFirstCellInRow(row);
-	idx_type const n = numberOfCellsInRow(fcell) + fcell;
+	idx_type const n = numberOfCellsInRow(row) + fcell;
 	idx_type tmp = 0;
 
 	for (idx_type i = fcell; i < n; ++i) {
@@ -2890,7 +2879,7 @@ bool Tabular::plaintextBottomHLine(odocstream & os, row_type row,
 				      vector<unsigned int> const & clen) const
 {
 	idx_type const fcell = getFirstCellInRow(row);
-	idx_type const n = numberOfCellsInRow(fcell) + fcell;
+	idx_type const n = numberOfCellsInRow(row) + fcell;
 	idx_type tmp = 0;
 
 	for (idx_type i = fcell; i < n; ++i) {
@@ -4647,7 +4636,7 @@ void InsetTabular::moveNextCell(Cursor & cur, EntryDirection entry_from)
 	} else {
 		if (tabular.isLastCell(cur.idx()))
 			return;
-		if (tabular.isLastCellInRow(cur.idx()))
+		if (cur.idx() == tabular.getLastCellInRow(row))
 			cur.idx() = tabular.cellIndex(row + 1, 0);
 		else
 			cur.idx() = tabular.cellIndex(row, col + 1);
@@ -4691,7 +4680,7 @@ void InsetTabular::movePrevCell(Cursor & cur, EntryDirection entry_from)
 	col_type const col = tabular.cellColumn(cur.idx());
 
 	if (isRightToLeft(cur)) {
-		if (tabular.isLastCellInRow(cur.idx())) {
+		if (cur.idx() == tabular.getLastCellInRow(row)) {
 			if (row == 0)
 				return;
 			cur.idx() = tabular.getFirstCellInRow(row);
@@ -4699,7 +4688,7 @@ void InsetTabular::movePrevCell(Cursor & cur, EntryDirection entry_from)
 		} else {
 			if (tabular.isLastCell(cur.idx()))
 				return;
-			if (tabular.isLastCellInRow(cur.idx()))
+			if (cur.idx() == tabular.getLastCellInRow(row))
 				cur.idx() = tabular.cellIndex(row + 1, 0);
 			else
 				cur.idx() = tabular.cellIndex(row, col + 1);
@@ -4992,9 +4981,9 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		// we have a selection so this means we just add all this
 		// cells to form a multicolumn cell
 		idx_type const s_start = cur.selBegin().idx();
-		row_type const row_start = tabular.cellRow(s_start);
-		row_type const row_end = tabular.cellRow(cur.selEnd().idx());
-		tabular.setMultiRow(s_start, row_end - row_start + 1);
+		row_type const col_start = tabular.cellColumn(s_start);
+		row_type const col_end = tabular.cellColumn(cur.selEnd().idx());
+		tabular.setMultiColumn(s_start, col_end - col_start + 1);
 		cur.idx() = s_start;
 		cur.pit() = 0;
 		cur.pos() = 0;
@@ -5015,12 +5004,9 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		// we have a selection so this means we just add all this
 		// cells to form a multirow cell
 		idx_type const s_start = cur.selBegin().idx();
-		idx_type const s_end = cur.selEnd().idx();
-		// the cell index is counted from left to right, we therefore
-		// need to know the number of columns of the table to calculate
-		// the number of selected rows
-		idx_type const ncolumns = tabular.column_info.size();
-		tabular.setMultiRow(s_start, (s_end - s_start)/ncolumns + 1);
+		row_type const row_start = tabular.cellRow(s_start);
+		row_type const row_end = tabular.cellRow(cur.selEnd().idx());
+		tabular.setMultiRow(s_start, row_end - row_start + 1);
 		cur.idx() = s_start;
 		cur.pit() = 0;
 		cur.pos() = 0;
