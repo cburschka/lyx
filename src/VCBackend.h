@@ -78,6 +78,11 @@ public:
 	virtual bool toggleReadOnlyEnabled() = 0;
 	/// Return revision info specified by the argument.
 	virtual std::string revisionInfo(LyXVC::RevisionInfo const info) = 0;
+
+	virtual bool prepareFileRevision(int rev, std::string & f) = 0;
+
+	virtual bool prepareFileRevisionEnabled() = 0;
+
 protected:
 	/// parse information from the version file
 	virtual void scanMaster() = 0;
@@ -152,6 +157,10 @@ public:
 
 	virtual std::string revisionInfo(LyXVC::RevisionInfo const info);
 
+	virtual bool prepareFileRevision(int rev, std::string & f);
+
+	virtual bool prepareFileRevisionEnabled();
+
 protected:
 	virtual void scanMaster();
 private:
@@ -209,6 +218,10 @@ public:
 
 	virtual std::string revisionInfo(LyXVC::RevisionInfo const info);
 
+	virtual bool prepareFileRevision(int rev, std::string & f);
+
+	virtual bool prepareFileRevisionEnabled();
+
 protected:
 	virtual void scanMaster();
 
@@ -265,6 +278,10 @@ public:
 
 	virtual std::string revisionInfo(LyXVC::RevisionInfo const info);
 
+	virtual bool prepareFileRevision(int rev, std::string & f);
+
+	virtual bool prepareFileRevisionEnabled();
+
 protected:
 	virtual void scanMaster();
 	/// Check for messages in svn output. Returns error.
@@ -275,14 +292,6 @@ protected:
 	bool isLocked() const;
 	/// acquire/release write lock for the current file
 	void fileLock(bool lock, support::FileName const & tmpf, std::string & status);
-	/**
-	 * Prepare revision rev of the file into newly created temporary file
-	 * and save the filename into parameter f.
-	 * Parameter rev can be either revision number or negative number
-	 * which is interpreted as how many revision back from the current
-	 * one do we want. rev=0 is reserved for the last (committed) revision.
-	 */
-	bool prepareFileRevision(int rev, std::string & f);
 
 private:
 	support::FileName file_;

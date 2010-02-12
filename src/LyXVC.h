@@ -104,6 +104,16 @@ public:
 	void undoLast();
 	/// Does the current VC supports this operation?
 	bool undoLastEnabled() const;
+	/**
+	 * Prepare revision rev of the file into newly created temporary file
+	 * and save the filename into parameter f.
+	 * Parameter rev can be either revision number or negative number
+	 * which is interpreted as how many revision back from the current
+	 * one do we want. rev=0 is reserved for the last (committed) revision.
+	 */
+	bool prepareFileRevision(int rev, std::string & f);
+	/// Does the current VC supports this operation?
+	bool prepareFileRevisionEnabled();
 
 	/**
 	 * Generate a log file and return the filename.

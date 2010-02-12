@@ -290,6 +290,18 @@ string RCS::revisionInfo(LyXVC::RevisionInfo const info)
 }
 
 
+bool RCS::prepareFileRevision(int, std::string &)
+{
+	return false;
+}
+
+
+bool RCS::prepareFileRevisionEnabled()
+{
+	return false;
+}
+
+
 /////////////////////////////////////////////////////////////////////
 //
 // CVS
@@ -490,6 +502,18 @@ string CVS::revisionInfo(LyXVC::RevisionInfo const info)
 	if (info == LyXVC::File)
 		return version_;
 	return string();
+}
+
+
+bool CVS::prepareFileRevision(int, std::string &)
+{
+	return false;
+}
+
+
+bool CVS::prepareFileRevisionEnabled()
+{
+	return false;
 }
 
 
@@ -1012,6 +1036,13 @@ bool SVN::prepareFileRevision(int rev, string & f)
 	f = tmpf.absFilename();
 	return true;
 }
+
+
+bool SVN::prepareFileRevisionEnabled()
+{
+	return true;
+}
+
 
 
 bool SVN::toggleReadOnlyEnabled()
