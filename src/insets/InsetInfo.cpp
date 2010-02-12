@@ -175,7 +175,7 @@ bool InsetInfo::validateModifyArgument(docstring const & arg) const
 		return true;
 	case BUFFER_INFO:
 		return name == "name" || name == "path" || name == "class" ||
-		       name == "vcs-revision";
+		       name == "vcs-revision" || name == "vcs-tree-revision";
 	}
 	return false;
 }
@@ -376,6 +376,9 @@ void InsetInfo::updateInfo()
 		else if (name_ == "vcs-revision" && buffer().lyxvc().inUse() &&
 			 !buffer().lyxvc().revisionInfo(LyXVC::File).empty())
 			setText(from_utf8(buffer().lyxvc().revisionInfo(LyXVC::File)));
+		else if (name_ == "vcs-tree-revision" && buffer().lyxvc().inUse() &&
+			 !buffer().lyxvc().revisionInfo(LyXVC::Tree).empty())
+			setText(from_utf8(buffer().lyxvc().revisionInfo(LyXVC::Tree)));
 		else
 			setText(_("Unknown buffer info"));
 		break;

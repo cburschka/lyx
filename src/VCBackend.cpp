@@ -869,6 +869,16 @@ string SVN::revisionInfo(LyXVC::RevisionInfo const info)
 				return string();
 
 			return rev_file_cache_;
+
+		case LyXVC::Tree:
+			if (rev_tree_cache_.empty())
+				rev_tree_cache_ = getTreeRevisionInfo();
+			if (rev_tree_cache_.empty())
+				rev_tree_cache_ = "?";
+			if (rev_tree_cache_ == "?")
+				return string();
+
+			return rev_tree_cache_;
 	}
 	return string();
 }
@@ -906,6 +916,26 @@ std::string SVN::getFileRevisionInfo()
 	ifs.close();
 	tmpf.erase();
 	return rev;
+}
+
+
+std::string SVN::getTreeRevisionInfo()
+{
+	FileName tmpf = FileName::tempName("lyxvcout");
+
+	doVCCommand("svnversion -n . > " + quoteName(tmpf.toFilesystemEncoding()),
+		    FileName(owner_->filePath()));
+
+	if (tmpf.empty())
+		return string();
+
+	// only first line in case something bad happens.
+	ifstream ifs(tmpf.toFilesystemEncoding().c_str());
+	string line;
+	getline(ifs, line);
+	ifs.close();
+	tmpf.erase();
+	return line;
 }
 
 

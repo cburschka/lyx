@@ -283,6 +283,10 @@ private:
 	std::string getFileRevisionInfo();
 	/// cache for file revision number, "?" if already unsuccessful
 	std::string rev_file_cache_;
+	/// real code for obtaining file revision info
+	std::string getTreeRevisionInfo();
+	/// cache for tree revision number, "?" if already unsuccessful
+	std::string rev_tree_cache_;
 };
 
 } // namespace lyx

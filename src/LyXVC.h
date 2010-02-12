@@ -145,7 +145,8 @@ public:
 
 	// type of the revision information
 	enum RevisionInfo {
-		File = 1
+		File = 1,
+		Tree = 2
 	};
 
 	/**
