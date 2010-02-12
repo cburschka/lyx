@@ -16,6 +16,8 @@
 
 #include <string>
 
+#include "LyXVC.h"
+
 
 namespace lyx {
 
@@ -77,6 +79,8 @@ public:
 	/// do we need special handling for read-only toggling?
 	/// (also used for check-out operation)
 	virtual bool toggleReadOnlyEnabled() = 0;
+	/// Return revision info specified by the argument.
+	virtual std::string const revisionInfo(LyXVC::RevisionInfo const info) = 0;
 protected:
 	/// parse information from the version file
 	virtual void scanMaster() = 0;
@@ -157,6 +161,8 @@ public:
 
 	virtual bool toggleReadOnlyEnabled();
 
+	virtual std::string const revisionInfo(LyXVC::RevisionInfo const info);
+
 protected:
 	virtual void scanMaster();
 };
@@ -203,6 +209,8 @@ public:
 	}
 
 	virtual bool toggleReadOnlyEnabled();
+
+	virtual std::string const revisionInfo(LyXVC::RevisionInfo const info);
 
 protected:
 	virtual void scanMaster();
@@ -254,7 +262,7 @@ public:
 
 	virtual bool toggleReadOnlyEnabled();
 
-	std::string getFileRevisionInfo();
+	virtual std::string const revisionInfo(LyXVC::RevisionInfo const info);
 
 protected:
 	virtual void scanMaster();
@@ -271,6 +279,10 @@ private:
 	support::FileName file_;
 	/// is the loaded file under locking policy?
 	bool locked_mode_;
+	/// real code for obtaining file revision info
+	std::string getFileRevisionInfo();
+	/// cache for file revision number, "?" if already unsuccessful
+	std::string _rev_file_cache;
 };
 
 } // namespace lyx

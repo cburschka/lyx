@@ -123,8 +123,7 @@ public:
 	/// Is the document under administration by VCS?
 	bool inUse() const;
 
-	/// FIXME resurrect version once we add version info
-	/// into SVN. RCS parser is already prepared.
+	/// FIXME Either rename or kill, we have revisionInfo now.
 	/// Returns the version number.
 	//std::string const & version() const;
 	/// Returns the version number.
@@ -143,6 +142,18 @@ public:
 	 * interface and kill the whole locker thing.
 	 */
 	std::string const & locker() const;
+
+	// type of the revision information
+	enum RevisionInfo {
+		File = 1
+	};
+
+	/**
+	 * Return revision info specified by the argument.
+	 * Its safe to call it regardless VCS is in usage or this
+	 * info is (un)available. Returns empty string in such a case.
+	 */
+	std::string const revisionInfo(RevisionInfo const info);
 
 private:
 	///

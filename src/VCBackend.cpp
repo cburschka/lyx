@@ -280,6 +280,12 @@ bool RCS::toggleReadOnlyEnabled()
 	return false;
 }
 
+// FIXME This could be implemented with cache from scanMaster
+string const RCS::revisionInfo(LyXVC::RevisionInfo const)
+{
+	return string();
+}
+
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -474,6 +480,13 @@ bool CVS::toggleReadOnlyEnabled()
 {
 	return false;
 }
+
+
+string const CVS::revisionInfo(LyXVC::RevisionInfo const)
+{
+	return string();
+}
+
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -844,7 +857,25 @@ bool SVN::undoLastEnabled()
 }
 
 
-string SVN::getFileRevisionInfo(){
+string const SVN::revisionInfo(LyXVC::RevisionInfo const info)
+{
+	switch (info) {
+		case LyXVC::File:
+			if (_rev_file_cache.empty())
+				_rev_file_cache = getFileRevisionInfo();
+			if (_rev_file_cache.empty())
+				_rev_file_cache = "?";
+			if (_rev_file_cache == "?")
+				return string();
+
+			return _rev_file_cache;
+	}
+	return string();
+}
+
+
+std::string SVN::getFileRevisionInfo()
+{
 	FileName tmpf = FileName::tempName("lyxvcout");
 
 	doVCCommand("svn info --xml " + quoteName(onlyFilename(owner_->absFileName()))

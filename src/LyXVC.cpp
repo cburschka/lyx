@@ -287,6 +287,15 @@ string const LyXVC::getLogFile() const
 }
 
 
+std::string const LyXVC::revisionInfo(RevisionInfo const info)
+{
+	if (!vcs)
+		return string();
+
+	return vcs->revisionInfo(info);
+}
+
+
 bool LyXVC::checkOutEnabled() const
 {
 	return vcs && vcs->checkOutEnabled();
