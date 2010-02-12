@@ -898,7 +898,7 @@ std::string SVN::getFileRevisionInfo()
 			c = true;
 		if (c && prefixIs(line, "   revision=\"") && suffixIs(line, "\">")) {
 			string l1 = subst(line, "revision=\"", "");
-			string l2 = subst(l1, "\">", "");
+			string l2 = trim(subst(l1, "\">", ""));
 			if (isStrInt(l2))
 				rev = l2;
 		}
