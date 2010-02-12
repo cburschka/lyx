@@ -280,9 +280,10 @@ bool RCS::toggleReadOnlyEnabled()
 	return false;
 }
 
-// FIXME This could be implemented with cache from scanMaster
-string RCS::revisionInfo(LyXVC::RevisionInfo const)
+string RCS::revisionInfo(LyXVC::RevisionInfo const info)
 {
+	if (info == LyXVC::File)
+		return version_;
 	return string();
 }
 
