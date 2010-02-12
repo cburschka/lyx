@@ -229,7 +229,7 @@ enum FuncCode
 	LFUN_VC_LOCKING_TOGGLE,
 	// 165
 	LFUN_VC_REPO_UPDATE,
-	LFUN_BUFFER_CHKTEX,             // Asger 971030
+	LFUN_VC_COMPARE,
 	LFUN_HYPERLINK_INSERT,          // CFO-G 971121
 	LFUN_WORD_FIND_FORWARD,         // Etienne 980216
 	LFUN_WORD_FIND_BACKWARD,        // Etienne 980220
@@ -445,6 +445,7 @@ enum FuncCode
 	LFUN_SPELLING_ADD,              // spitz 20100118
 	// 345
 	LFUN_SPELLING_IGNORE,           // spitz 20100118
+	LFUN_BUFFER_CHKTEX,             // Asger 971030
 
 	LFUN_LASTACTION                 // end of the table
 };

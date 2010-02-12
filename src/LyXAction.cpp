@@ -2190,6 +2190,26 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_VC_REPO_UPDATE, "vc-repo-update", ReadOnly, System },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_VC_COMPARE
+ * \li Action: Compares two revisions of the same file under version control.
+ * \li Notion: This is currently implemented only for SVN.
+ * \li Syntax: vc-compare <REV1> [<REV2>]
+ * \li Params: Revision number either points directly to commit in history
+               or - if negative number -x - it points to last commit - x.
+               Special case "0" is reserved for the last committed revision.\n
+               <REV1>: Older file.\n
+	       <REV2>: Newer file. Used only if REV1 > 0.
+ * \li Sample: Compare current document against last commit\n
+               vc-compare 0
+ * \li Sample: Compare current document against current revision - 5 commits\n
+               vc-compare -5
+ * \li Sample: Compare revisions 120 and 155\n
+               vc-compare 120 155
+ * \li Origin: sanda, 12 Feb 2010
+ * \endvar
+ */
+		{ LFUN_VC_COMPARE, "vc-compare", ReadOnly, System },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_CHANGES_TRACK
