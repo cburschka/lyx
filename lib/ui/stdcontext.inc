@@ -384,18 +384,19 @@ Menuset
 
 	Menu "context-tabular"
 		Item "Multicolumn|M" "tabular-feature multicolumn"
+		Item "Multirow|i" "tabular-feature multirow"
 		Separator
 		Item "Top Line|T" "tabular-feature toggle-line-top"
 		Item "Bottom Line|B" "tabular-feature toggle-line-bottom"
 		Item "Left Line|L" "tabular-feature toggle-line-left"
 		Item "Right Line|R" "tabular-feature toggle-line-right"
 		Separator
-		Item "Left|L" "tabular-feature align-left"
+		Item "Left|f" "tabular-feature align-left"
 		Item "Center|C" "tabular-feature align-center"
-		Item "Right|R" "tabular-feature align-right"
+		Item "Right|h" "tabular-feature align-right"
 		Separator
 		Item "Top|T" "tabular-feature valign-top"
-		Item "Middle|M" "tabular-feature valign-middle"
+		Item "Middle|d" "tabular-feature valign-middle"
 		Item "Bottom|B" "tabular-feature valign-bottom"
 		Separator
 		Item "Add Row|A" "tabular-feature append-row"
@@ -408,7 +409,7 @@ Menuset
 		Item "Copy Column|p" "tabular-feature copy-column"
 		# Item "Swap Columns|w" "tabular-feature swap-column" # currently broken
 		Separator
-		Item "Settings...|S" "inset-settings tabular"
+		Item "Settings...|g" "inset-settings tabular"
 	End
 
 
