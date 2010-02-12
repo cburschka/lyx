@@ -57,6 +57,8 @@ namespace lyx {
  *
  * Doxygen template below. Some notes: Parameters should be set in uppercase
  * and put in <BRACKETS>, [<PARAM>] means optional one.
+ *
+ * Use spaces for indentation (doxy -> .lyx generator is tab-sensitive).
  */
 
 /*!
