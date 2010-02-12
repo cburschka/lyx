@@ -725,7 +725,7 @@ void MenuDefinition::expandGraphicsGroups(BufferView const * bv)
 
 void MenuDefinition::expandSpellingSuggestions(BufferView const * bv)
 {
-	if (!bv)
+	if (!bv || !lyxrc.spellcheck_continuously)
 		return;
 	WordLangTuple wl;
 	docstring_list suggestions;
