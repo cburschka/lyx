@@ -275,6 +275,14 @@ protected:
 	bool isLocked() const;
 	/// acquire/release write lock for the current file
 	void fileLock(bool lock, support::FileName const & tmpf, std::string & status);
+	/**
+	 * Prepare revision rev of the file into newly created temporary file
+	 * and save the filename into parameter f.
+	 * Parameter rev can be either revision number or negative number
+	 * which is interpreted as how many revision back from the current
+	 * one do we want. rev=0 is reserved for the last (committed) revision.
+	 */
+	bool prepareFileRevision(int rev, std::string & f);
 
 private:
 	support::FileName file_;
@@ -287,7 +295,7 @@ private:
 	 * was already unsuccessful.
 	 */
 	bool getFileRevisionInfo();
-	/// cache for file revision number, "?" if already unsuccessful
+	/// cache for file revision number, "?" if already unsuccessful, isNumber==true
 	std::string rev_file_cache_;
 	/// cache for author of last commit
 	std::string rev_author_cache_;

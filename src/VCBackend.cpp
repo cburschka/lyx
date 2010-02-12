@@ -19,6 +19,7 @@
 #include "frontends/alert.h"
 #include "frontends/Application.h"
 
+#include "support/convert.h"
 #include "support/debug.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
@@ -978,6 +979,38 @@ void SVN::getLog(FileName const & tmpf)
 	doVCCommand("svn log " + quoteName(onlyFilename(owner_->absFileName()))
 		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
 		    FileName(owner_->filePath()));
+}
+
+
+bool SVN::prepareFileRevision(int rev, string & f)
+{
+	if (rev <= 0)
+		if (!getFileRevisionInfo())
+			return false;
+	if (rev == 0)
+		rev = convert<int>(rev_file_cache_);
+	// go back for minus rev
+	else if (rev < 0) {
+		rev = rev + convert<int>(rev_file_cache_);
+		if (rev < 1)
+			return false;
+	}
+
+	FileName tmpf = FileName::tempName("lyxvcrev");
+	if (tmpf.empty()) {
+		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
+		return N_("Error: Could not generate logfile.");
+	}
+
+	doVCCommand("svn cat -r " + convert<string>(rev) + " "
+	              + quoteName(onlyFilename(owner_->absFileName()))
+		      + " > " + quoteName(tmpf.toFilesystemEncoding()),
+		FileName(owner_->filePath()));
+	if (tmpf.isFileEmpty())
+		return false;
+
+	f = tmpf.absFilename();
+	return true;
 }
 
 
