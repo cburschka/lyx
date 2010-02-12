@@ -844,6 +844,40 @@ bool SVN::undoLastEnabled()
 }
 
 
+string SVN::getFileRevisionInfo(){
+	FileName tmpf = FileName::tempName("lyxvcout");
+
+	doVCCommand("svn info --xml " + quoteName(onlyFilename(owner_->absFileName()))
+		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
+		    FileName(owner_->filePath()));
+
+	if (tmpf.empty())
+		return string();
+
+	ifstream ifs(tmpf.toFilesystemEncoding().c_str());
+	string line;
+	// commit log part
+	bool c = false;
+	string rev;
+
+	while (ifs) {
+		getline(ifs, line);
+		LYXERR(Debug::LYXVC, line);
+		if (prefixIs(line, "<commit"))
+			c = true;
+		if (c && prefixIs(line, "   revision=\"") && suffixIs(line, "\">")) {
+			string l1 = subst(line, "revision=\"", "");
+			string l2 = subst(l1, "\">", "");
+			if (isStrInt(l2))
+				rev = l2;
+		}
+	}
+	ifs.close();
+	tmpf.erase();
+	return rev;
+}
+
+
 void SVN::getLog(FileName const & tmpf)
 {
 	doVCCommand("svn log " + quoteName(onlyFilename(owner_->absFileName()))

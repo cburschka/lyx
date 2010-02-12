@@ -254,6 +254,8 @@ public:
 
 	virtual bool toggleReadOnlyEnabled();
 
+	std::string getFileRevisionInfo();
+
 protected:
 	virtual void scanMaster();
 	/// Check for messages in svn output. Returns error.
