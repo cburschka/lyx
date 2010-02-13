@@ -114,6 +114,8 @@ What's new
 - Fix premature closing of the CJK environment after ERT or URL insets
   nested in other insets (bug 6510).
 
+- Allow using labels with non-ascii characters in mathed (bug 3325).
+
 - Reset the language at the end of the document to the correct
   language (bug 6387).
 

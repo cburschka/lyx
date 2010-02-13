@@ -113,14 +113,14 @@ WriteStream::WriteStream(odocstream & os, bool fragile, bool latex, OutputType o
 			Encoding const * encoding)
 	: os_(os), fragile_(fragile), firstitem_(false), latex_(latex),
 	  output_(output), pendingspace_(false), pendingbrace_(false),
-	  textmode_(false), locked_(0), line_(0), encoding_(encoding)
+	  textmode_(false), locked_(0), ascii_(0), line_(0), encoding_(encoding)
 {}
 
 
 WriteStream::WriteStream(odocstream & os)
 	: os_(os), fragile_(false), firstitem_(false), latex_(false),
 	  output_(wsDefault), pendingspace_(false), pendingbrace_(false),
-	  textmode_(false), locked_(0), line_(0), encoding_(0)
+	  textmode_(false), locked_(0), ascii_(0), line_(0), encoding_(0)
 {}
 
 
@@ -160,6 +160,12 @@ void WriteStream::textMode(bool textmode)
 void WriteStream::lockedMode(bool locked)
 {
 	locked_ = locked;
+}
+
+
+void WriteStream::asciiOnly(bool ascii)
+{
+	ascii_ = ascii;
 }
 
 

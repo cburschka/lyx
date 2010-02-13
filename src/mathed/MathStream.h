@@ -75,6 +75,10 @@ public:
 	void lockedMode(bool locked);
 	/// tell whether we are allowed to switch mode when producing latex code
 	bool lockedMode() const { return locked_; }
+	/// tell whether to use only ascii chars when producing latex code
+	void asciiOnly(bool ascii);
+	/// tell whether to use only ascii chars when producing latex code
+	bool asciiOnly() const { return ascii_; }
 	/// LaTeX encoding
 	Encoding const * encoding() const { return encoding_; }
 private:
@@ -96,6 +100,8 @@ private:
 	bool textmode_;
 	/// are we allowed to switch mode when producing latex code?
 	bool locked_;
+	/// should we use only ascii chars when producing latex code?
+	bool ascii_;
 	///
 	int line_;
 	///
@@ -121,7 +127,7 @@ WriteStream & operator<<(WriteStream &, unsigned int);
 bool ensureMath(WriteStream & os, bool needs_math_mode = true, bool macro = false);
 
 /// ensure the requested mode, possibly by closing \ensuremath
-int ensureMode(WriteStream & os, InsetMath::mode_type mode, bool locked);
+int ensureMode(WriteStream & os, InsetMath::mode_type mode, bool locked, bool ascii);
 
 
 /**
@@ -185,6 +191,8 @@ private:
  * the mode needs being temporarily switched when a command would not work
  * in the current mode. As there are cases where this switching is to be
  * avoided, the optional third parameter can be used to lock the mode.
+ * When the mode is locked, the optional fourth parameter specifies whether
+ * strings are to be output by using a suitable ascii representation.
  *
  * Example 1:
  *
@@ -198,6 +206,13 @@ private:
  *
  * Sets the current mode to text mode and disallows mode switching.
  *
+ * Example 3:
+ *
+ *      ModeSpecifier specifier(os, TEXT_MODE, true, true);
+ *
+ * Sets the current mode to text mode, disallows mode switching, and outputs
+ * strings as ascii only.
+ *
  * At the end of specifier's scope the mode is reset to its previous value.
  */
 class ModeSpecifier
@@ -205,13 +220,14 @@ class ModeSpecifier
 public:
 	///
 	explicit ModeSpecifier(WriteStream & os, InsetMath::mode_type mode,
-				bool locked = false)
-		: os_(os), oldmodes_(ensureMode(os, mode, locked)) {}
+				bool locked = false, bool ascii = false)
+		: os_(os), oldmodes_(ensureMode(os, mode, locked, ascii)) {}
 	///
 	~ModeSpecifier()
 	{
-		os_.textMode(oldmodes_ & 1);
-		os_.lockedMode(oldmodes_ & 2);
+		os_.textMode(oldmodes_ & 0x01);
+		os_.lockedMode(oldmodes_ & 0x02);
+		os_.asciiOnly(oldmodes_ & 0x04);
 	}
 private:
 	///

@@ -473,6 +473,8 @@ public:
 	virtual mode_type currentMode() const { return UNDECIDED_MODE; }
 	/// returns whether changing mode during latex export is forbidden
 	virtual bool lockedMode() const { return false; }
+	/// returns whether only ascii chars are allowed during latex export
+	virtual bool asciiOnly() const { return false; }
 	/// returns whether this inset is allowed in other insets of given mode
 	virtual bool allowedIn(mode_type) const { return true; }
 	/**

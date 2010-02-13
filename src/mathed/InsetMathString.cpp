@@ -22,6 +22,8 @@
 #include "support/lstrings.h"
 #include "support/textutils.h"
 
+using lyx::support::escape;
+
 
 namespace lyx {
 
@@ -106,7 +108,7 @@ void InsetMathString::mathmlize(MathStream & os) const
 void InsetMathString::write(WriteStream & os) const
 {
 	if (!os.latex() || os.lockedMode()) {
-		os << str_;
+		os << (os.asciiOnly() ? escape(str_) : str_);
 		return;
 	}
 
