@@ -18,6 +18,7 @@
 #include "Buffer.h"
 #include "DispatchResult.h"
 #include "Font.h"
+#include "Encoding.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "InsetIterator.h"
@@ -26,6 +27,7 @@
 #include "Length.h"
 #include "LyX.h"
 #include "MetricsInfo.h"
+#include "OutputParams.h"
 #include "output_xhtml.h"
 #include "sgml.h"
 
@@ -58,8 +60,10 @@ ParamInfo const & InsetNomencl::findInfo(string const & /* cmdName */)
 	static ParamInfo param_info_;
 	if (param_info_.empty()) {
 		param_info_.add("prefix", ParamInfo::LATEX_OPTIONAL);
-		param_info_.add("symbol", ParamInfo::LATEX_REQUIRED);
-		param_info_.add("description", ParamInfo::LATEX_REQUIRED);
+		param_info_.add("symbol", ParamInfo::LATEX_REQUIRED,
+				ParamInfo::HANDLING_LATEXIFY);
+		param_info_.add("description", ParamInfo::LATEX_REQUIRED,
+				ParamInfo::HANDLING_LATEXIFY);
 	}
 	return param_info_;
 }
@@ -230,7 +234,7 @@ int InsetPrintNomencl::docbook(odocstream & os, OutputParams const &) const
 
 
 namespace {
-docstring nomenclWidest(Buffer const & buffer)
+docstring nomenclWidest(Buffer const & buffer, OutputParams const & runparams)
 {
 	// nomenclWidest() determines and returns the widest used
 	// nomenclature symbol in the document
@@ -265,6 +269,22 @@ docstring nomenclWidest(Buffer const & buffer)
 		}
 	}
 	// return the widest (or an empty) string
+	if (!symb.empty()) {
+		docstring latex_symb;
+		for (size_t n = 0; n < symb.size(); ++n) {
+			try {
+				latex_symb += runparams.encoding->latexChar(symb[n]);
+			} catch (EncodingException & /* e */) {
+				if (runparams.dryrun) {
+					latex_symb += "<" + _("LyX Warning: ")
+						   + _("uncodable character") + " '";
+					latex_symb += docstring(1, symb[n]);
+					latex_symb += "'>";
+				}
+			}
+		}
+		return latex_symb;
+	}
 	return symb;
 }
 }
@@ -272,9 +292,10 @@ docstring nomenclWidest(Buffer const & buffer)
 
 int InsetPrintNomencl::latex(odocstream & os, OutputParams const & runparams_in) const
 {
+	OutputParams runparams = runparams_in;
 	int lines = 0;
 	if (getParam("set_width") == "auto") {
-		docstring widest = nomenclWidest(buffer());
+		docstring widest = nomenclWidest(buffer(), runparams);
 		// Set the label width via nomencl's command \nomlabelwidth.
 		// This must be output before the command \printnomenclature
 		if (!widest.empty()) {
@@ -295,7 +316,6 @@ int InsetPrintNomencl::latex(odocstream & os, OutputParams const & runparams_in)
 		return lines;
 	}
 	// output the command \printnomenclature
-	OutputParams runparams = runparams_in;
 	os << getCommand(runparams);
 	return lines;
 }
