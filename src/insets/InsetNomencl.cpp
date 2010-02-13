@@ -269,25 +269,25 @@ docstring nomenclWidest(Buffer const & buffer, OutputParams const & runparams)
 		}
 	}
 	// return the widest (or an empty) string
-	if (!symb.empty()) {
-		docstring latex_symb;
-		for (size_t n = 0; n < symb.size(); ++n) {
-			try {
-				latex_symb += runparams.encoding->latexChar(symb[n]);
-			} catch (EncodingException & /* e */) {
-				if (runparams.dryrun) {
-					latex_symb += "<" + _("LyX Warning: ")
-						   + _("uncodable character") + " '";
-					latex_symb += docstring(1, symb[n]);
-					latex_symb += "'>";
-				}
+	if (symb.empty())
+		return symb;
+	
+	docstring latex_symb;
+	for (size_t n = 0; n < symb.size(); ++n) {
+		try {
+			latex_symb += runparams.encoding->latexChar(symb[n]);
+		} catch (EncodingException & /* e */) {
+			if (runparams.dryrun) {
+				latex_symb += "<" + _("LyX Warning: ")
+					   + _("uncodable character") + " '";
+				latex_symb += docstring(1, symb[n]);
+				latex_symb += "'>";
 			}
 		}
-		return latex_symb;
 	}
-	return symb;
+	return latex_symb;
 }
-}
+} // namespace anon
 
 
 int InsetPrintNomencl::latex(odocstream & os, OutputParams const & runparams_in) const
