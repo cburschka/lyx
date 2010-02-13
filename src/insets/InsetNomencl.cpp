@@ -271,7 +271,8 @@ docstring nomenclWidest(Buffer const & buffer, OutputParams const & runparams)
 	// return the widest (or an empty) string
 	if (symb.empty())
 		return symb;
-	
+
+	// we have to encode the string properly
 	docstring latex_symb;
 	for (size_t n = 0; n < symb.size(); ++n) {
 		try {
