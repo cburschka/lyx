@@ -63,6 +63,7 @@ protected Q_SLOTS:
 	void on_moveDownTB_clicked();
 	void on_moveInTB_clicked();
 	void on_moveOutTB_clicked();
+	void filterContents();
 
 	void showContextMenu(const QPoint & pos);
 

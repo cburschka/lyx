@@ -82,6 +82,8 @@ TocWidget::TocWidget(GuiView & gui_view, QWidget * parent)
 		this, SLOT(showContextMenu(const QPoint &)));
 	connect(tocTV, SIGNAL(customContextMenuRequested(const QPoint &)),
 		this, SLOT(showContextMenu(const QPoint &)));
+	connect(filterLE, SIGNAL(textEdited(QString)), 
+		this, SLOT(filterContents()));
 
 	init(QString());
 }
@@ -440,7 +442,6 @@ void TocWidget::updateView()
 		&& gui_view_.tocModels().isSorted(current_type_));
 	sortCB->blockSignals(false);
 
-	
 	bool const can_navigate_ = canNavigate(current_type_);
 	persistentCB->setEnabled(can_navigate_);
 
@@ -456,8 +457,35 @@ void TocWidget::updateView()
 		persistentCB->setChecked(persistent_);
 		select(gui_view_.tocModels().currentIndex(current_type_));
 	}
+	filterContents();
 	tocTV->setEnabled(true);
 	tocTV->setUpdatesEnabled(true);
+}
+
+
+void TocWidget::filterContents()
+{
+	QModelIndexList indices = tocTV->model()->match(
+		tocTV->model()->index(0, 0),
+		Qt::DisplayRole, "*", -1,
+		Qt::MatchFlags(Qt::MatchWildcard|Qt::MatchRecursive));
+
+	int size = indices.size();
+	for (int i = 0; i < size; i++) {
+		QModelIndex index = indices[i];
+		bool const matches =
+			index.data().toString().contains(
+				filterLE->text(), Qt::CaseSensitive);
+		tocTV->setRowHidden(index.row(), index.parent(), !matches);
+	}
+	// recursively unhide parents of unhidden children 
+	for (int i = size - 1; i >= 0; i--) {
+		QModelIndex index = indices[i];
+		if (!tocTV->isRowHidden(index.row(), index.parent())
+		    && index.parent() != QModelIndex())
+			tocTV->setRowHidden(index.parent().row(),
+					    index.parent().parent(), false);
+	}
 }
 
 
