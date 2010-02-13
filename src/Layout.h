@@ -253,6 +253,9 @@ public:
 	/// until it has proper support for the caption inset (JMarc)
 	static Layout * forCaption();
 
+	/// Is this spellchecked?
+	bool spellcheck;
+
 
 private:
 	/// generates the default CSS for this layout

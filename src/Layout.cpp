@@ -104,6 +104,7 @@ enum LayoutTags {
 	LT_HTMLFORCECSS,
 	LT_INPREAMBLE,
 	LT_HTMLTITLE,
+	LT_SPELLCHECK,
 	LT_INTITLE // keep this last!
 };
 
@@ -146,6 +147,7 @@ Layout::Layout()
 	htmllabelfirst_ = false;
 	htmlforcecss_ = false;
 	htmltitle_ = false;
+	spellcheck = true;
 }
 
 
@@ -213,6 +215,7 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 		{ "requires",       LT_REQUIRES },
 		{ "rightmargin",    LT_RIGHTMARGIN },
 		{ "spacing",        LT_SPACING },
+		{ "spellcheck",     LT_SPELLCHECK },
 		{ "textfont",       LT_TEXTFONT },
 		{ "toclevel",       LT_TOCLEVEL },
 		{ "topsep",         LT_TOPSEP }
@@ -536,6 +539,10 @@ bool Layout::read(Lexer & lex, TextClass const & tclass)
 		
 		case LT_HTMLTITLE:
 			lex >> htmltitle_;
+			break;
+
+		case LT_SPELLCHECK:
+			lex >> spellcheck;
 			break;
 		}
 	}
