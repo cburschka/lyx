@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-02-10 12:45+0100\n"
+"POT-Creation-Date: 2010-02-13 09:41+0100\n"
 "PO-Revision-Date: 2007-06-26 17:10+0100\n"
 "Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -15465,12 +15465,12 @@ msgstr ""
 msgid "No year"
 msgstr "沒有年份"
 
-#: src/BiblioInfo.cpp:510 src/BiblioInfo.cpp:570
+#: src/BiblioInfo.cpp:520 src/BiblioInfo.cpp:580
 #, fuzzy
 msgid "Add to bibliography only."
 msgstr "加入文獻目錄到內容表(&T)"
 
-#: src/BiblioInfo.cpp:566
+#: src/BiblioInfo.cpp:576
 msgid "before"
 msgstr "之前"
 
@@ -16126,14 +16126,16 @@ msgstr ""
 "將檔案的編碼變更為 UTF-8。\n"
 
 #: src/Changes.cpp:363 src/Paragraph.cpp:2157
-#: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetListings.cpp:185
+#: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:189
+#: src/insets/InsetBibitem.cpp:282 src/insets/InsetListings.cpp:185
 #: src/insets/InsetListings.cpp:193 src/insets/InsetListings.cpp:217
 #: src/mathed/InsetMathString.cpp:166
 #, fuzzy
 msgid "LyX Warning: "
 msgstr "LyX 版本 "
 
-#: src/Changes.cpp:364 src/Paragraph.cpp:2158 src/insets/InsetListings.cpp:186
+#: src/Changes.cpp:364 src/Paragraph.cpp:2158 src/insets/InsetBibitem.cpp:190
+#: src/insets/InsetBibitem.cpp:283 src/insets/InsetListings.cpp:186
 #: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:167
 #, fuzzy
 msgid "uncodable character"
@@ -20696,15 +20698,28 @@ msgstr "透過 LaTeX 執行匯出檔案時，下列檔名似乎會造成麻煩�
 msgid "Opened inset"
 msgstr "開啟的內欄"
 
-#: src/insets/InsetBibitem.cpp:87
+#: src/insets/InsetBibitem.cpp:90
 msgid "Keys must be unique!"
 msgstr ""
 
-#: src/insets/InsetBibitem.cpp:88
+#: src/insets/InsetBibitem.cpp:91
 #, c-format
 msgid ""
 "The key %1$s already exists,\n"
 "it will be changed to %2$s."
+msgstr ""
+
+#: src/insets/InsetBibitem.cpp:206
+#, fuzzy
+msgid "Uncodable characters in bibliography item"
+msgstr "特殊字元"
+
+#: src/insets/InsetBibitem.cpp:207
+#, c-format
+msgid ""
+"The following characters in one of the bibliography items are\n"
+"not representable in the current encoding and have been omitted:\n"
+"%1$s."
 msgstr ""
 
 #: src/insets/InsetBibtex.cpp:139

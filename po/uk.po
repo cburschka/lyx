@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: uk-163\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-02-10 12:45+0100\n"
+"POT-Creation-Date: 2010-02-13 09:41+0100\n"
 "PO-Revision-Date: 2009-11-23 19:34+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-doc@kde.org>\n"
@@ -14951,11 +14951,11 @@ msgstr "С. "
 msgid "No year"
 msgstr "Немає року"
 
-#: src/BiblioInfo.cpp:510 src/BiblioInfo.cpp:570
+#: src/BiblioInfo.cpp:520 src/BiblioInfo.cpp:580
 msgid "Add to bibliography only."
 msgstr "Додати лише до бібліографії."
 
-#: src/BiblioInfo.cpp:566
+#: src/BiblioInfo.cpp:576
 msgid "before"
 msgstr "перед"
 
@@ -15616,13 +15616,15 @@ msgstr ""
 "UTF-8 за допомогою програми відмінної від LyX.\n"
 
 #: src/Changes.cpp:363 src/Paragraph.cpp:2157
-#: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetListings.cpp:185
+#: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:189
+#: src/insets/InsetBibitem.cpp:282 src/insets/InsetListings.cpp:185
 #: src/insets/InsetListings.cpp:193 src/insets/InsetListings.cpp:217
 #: src/mathed/InsetMathString.cpp:166
 msgid "LyX Warning: "
 msgstr "Попередження LyX: "
 
-#: src/Changes.cpp:364 src/Paragraph.cpp:2158 src/insets/InsetListings.cpp:186
+#: src/Changes.cpp:364 src/Paragraph.cpp:2158 src/insets/InsetBibitem.cpp:190
+#: src/insets/InsetBibitem.cpp:283 src/insets/InsetListings.cpp:186
 #: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:167
 msgid "uncodable character"
 msgstr "непридатний для кодування символ"
@@ -20146,11 +20148,11 @@ msgstr ""
 msgid "Opened inset"
 msgstr "Відкрита вкладка"
 
-#: src/insets/InsetBibitem.cpp:87
+#: src/insets/InsetBibitem.cpp:90
 msgid "Keys must be unique!"
 msgstr "Ключі не можуть повторюватися!"
 
-#: src/insets/InsetBibitem.cpp:88
+#: src/insets/InsetBibitem.cpp:91
 #, c-format
 msgid ""
 "The key %1$s already exists,\n"
@@ -20158,6 +20160,22 @@ msgid ""
 msgstr ""
 "Ключ %1$s вже існує,\n"
 "його буде замінено на %2$s."
+
+#: src/insets/InsetBibitem.cpp:206
+#, fuzzy
+msgid "Uncodable characters in bibliography item"
+msgstr "Непридатні для кодування символи у вкладці тексту програми"
+
+#: src/insets/InsetBibitem.cpp:207
+#, fuzzy, c-format
+msgid ""
+"The following characters in one of the bibliography items are\n"
+"not representable in the current encoding and have been omitted:\n"
+"%1$s."
+msgstr ""
+"Наведені нижче символи у одному з текстів програм неможливо\n"
+"представити у поточному кодуванні, ці символи буде вилучено:\n"
+"%1$s."
 
 #: src/insets/InsetBibtex.cpp:139
 #, c-format

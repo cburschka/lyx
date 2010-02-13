@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-02-10 12:45+0100\n"
+"POT-Creation-Date: 2010-02-13 09:41+0100\n"
 "PO-Revision-Date: 2010-02-07 09:36+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenský <lyx-docs@lists.lyx.org>\n"
@@ -14908,11 +14908,11 @@ msgstr "str. "
 msgid "No year"
 msgstr "Bez roku"
 
-#: src/BiblioInfo.cpp:510 src/BiblioInfo.cpp:570
+#: src/BiblioInfo.cpp:520 src/BiblioInfo.cpp:580
 msgid "Add to bibliography only."
 msgstr "Pridať len do bibliografie."
 
-#: src/BiblioInfo.cpp:566
+#: src/BiblioInfo.cpp:576
 msgid "before"
 msgstr "pred"
 
@@ -15563,13 +15563,15 @@ msgstr ""
 "UTF-8 iným programom.\n"
 
 #: src/Changes.cpp:363 src/Paragraph.cpp:2157
-#: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetListings.cpp:185
+#: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:189
+#: src/insets/InsetBibitem.cpp:282 src/insets/InsetListings.cpp:185
 #: src/insets/InsetListings.cpp:193 src/insets/InsetListings.cpp:217
 #: src/mathed/InsetMathString.cpp:166
 msgid "LyX Warning: "
 msgstr "LyX varovanie: "
 
-#: src/Changes.cpp:364 src/Paragraph.cpp:2158 src/insets/InsetListings.cpp:186
+#: src/Changes.cpp:364 src/Paragraph.cpp:2158 src/insets/InsetBibitem.cpp:190
+#: src/insets/InsetBibitem.cpp:283 src/insets/InsetListings.cpp:186
 #: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:167
 msgid "uncodable character"
 msgstr "Nekódovatelný znak"
@@ -20065,11 +20067,11 @@ msgstr ""
 msgid "Opened inset"
 msgstr "Otvorená vložka"
 
-#: src/insets/InsetBibitem.cpp:87
+#: src/insets/InsetBibitem.cpp:90
 msgid "Keys must be unique!"
 msgstr "Kľúče musia byť unikátne!"
 
-#: src/insets/InsetBibitem.cpp:88
+#: src/insets/InsetBibitem.cpp:91
 #, c-format
 msgid ""
 "The key %1$s already exists,\n"
@@ -20077,6 +20079,22 @@ msgid ""
 msgstr ""
 "Kľúč %1$s už existuje,\n"
 "bude zmenený na %2$s."
+
+#: src/insets/InsetBibitem.cpp:206
+#, fuzzy
+msgid "Uncodable characters in bibliography item"
+msgstr "Nekódovateľné znaky vo výpise zdrojového kódu"
+
+#: src/insets/InsetBibitem.cpp:207
+#, fuzzy, c-format
+msgid ""
+"The following characters in one of the bibliography items are\n"
+"not representable in the current encoding and have been omitted:\n"
+"%1$s."
+msgstr ""
+"Nasledujúce znaky vo výpisoch zdrojových kódov sú nereprezentovateľné\n"
+"vo zvolenom kódovaní a boli vynechané:\n"
+"%1$s."
 
 #: src/insets/InsetBibtex.cpp:139
 #, c-format

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-02-10 12:45+0100\n"
+"POT-Creation-Date: 2010-02-13 09:41+0100\n"
 "PO-Revision-Date: 2009-12-17 21:34+0730\n"
 "Last-Translator: Waluyo Adi Siswanto <was.uthm@gmail.com>\n"
 "Language-Team: \n"
@@ -14920,11 +14920,11 @@ msgstr "pp. "
 msgid "No year"
 msgstr "No year"
 
-#: src/BiblioInfo.cpp:510 src/BiblioInfo.cpp:570
+#: src/BiblioInfo.cpp:520 src/BiblioInfo.cpp:580
 msgid "Add to bibliography only."
 msgstr "Tambahkan hanya pada bibliografi."
 
-#: src/BiblioInfo.cpp:566
+#: src/BiblioInfo.cpp:576
 msgid "before"
 msgstr "sebelum"
 
@@ -15582,13 +15582,15 @@ msgstr ""
 "ke UTF-8 denga program lain bukan LyX.\n"
 
 #: src/Changes.cpp:363 src/Paragraph.cpp:2157
-#: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetListings.cpp:185
+#: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:189
+#: src/insets/InsetBibitem.cpp:282 src/insets/InsetListings.cpp:185
 #: src/insets/InsetListings.cpp:193 src/insets/InsetListings.cpp:217
 #: src/mathed/InsetMathString.cpp:166
 msgid "LyX Warning: "
 msgstr "Peringatan LyX: "
 
-#: src/Changes.cpp:364 src/Paragraph.cpp:2158 src/insets/InsetListings.cpp:186
+#: src/Changes.cpp:364 src/Paragraph.cpp:2158 src/insets/InsetBibitem.cpp:190
+#: src/insets/InsetBibitem.cpp:283 src/insets/InsetListings.cpp:186
 #: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:167
 msgid "uncodable character"
 msgstr "Karakter tidak bisa di encode"
@@ -20126,11 +20128,11 @@ msgstr ""
 msgid "Opened inset"
 msgstr "Sisipan Dibuka"
 
-#: src/insets/InsetBibitem.cpp:87
+#: src/insets/InsetBibitem.cpp:90
 msgid "Keys must be unique!"
 msgstr "Kunci seharusnya unik!"
 
-#: src/insets/InsetBibitem.cpp:88
+#: src/insets/InsetBibitem.cpp:91
 #, c-format
 msgid ""
 "The key %1$s already exists,\n"
@@ -20138,6 +20140,23 @@ msgid ""
 msgstr ""
 "Kunci %1$s sudah ada,\n"
 "akan diubah nama menjadi %2$s."
+
+#: src/insets/InsetBibitem.cpp:206
+#, fuzzy
+msgid "Uncodable characters in bibliography item"
+msgstr ""
+"Karakter dalam sisipan pemrograman mempunyai karakter yang bisa di encoding"
+
+#: src/insets/InsetBibitem.cpp:207
+#, fuzzy, c-format
+msgid ""
+"The following characters in one of the bibliography items are\n"
+"not representable in the current encoding and have been omitted:\n"
+"%1$s."
+msgstr ""
+"Karakter berikut di salah satu daftar pemrograman\n"
+"tidak terwakili di encoding sekarang sehingga tidak diperhitungkan:\n"
+"%1$s."
 
 #: src/insets/InsetBibtex.cpp:139
 #, c-format

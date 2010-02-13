@@ -96,8 +96,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-02-10 12:45+0100\n"
-"PO-Revision-Date: 2010-02-10 12:46+0100\n"
+"POT-Creation-Date: 2010-02-13 09:41+0100\n"
+"PO-Revision-Date: 2010-02-13 09:44+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -15054,11 +15054,11 @@ msgstr "S. "
 msgid "No year"
 msgstr "Kein Jahr"
 
-#: src/BiblioInfo.cpp:510 src/BiblioInfo.cpp:570
+#: src/BiblioInfo.cpp:520 src/BiblioInfo.cpp:580
 msgid "Add to bibliography only."
 msgstr "Nur zum Literaturverzeichnis hinzufügen"
 
-#: src/BiblioInfo.cpp:566
+#: src/BiblioInfo.cpp:576
 msgid "before"
 msgstr "davor"
 
@@ -15726,13 +15726,15 @@ msgstr ""
 "nach UTF-8 mit einem externen Programm.\n"
 
 #: src/Changes.cpp:363 src/Paragraph.cpp:2157
-#: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetListings.cpp:185
+#: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:189
+#: src/insets/InsetBibitem.cpp:282 src/insets/InsetListings.cpp:185
 #: src/insets/InsetListings.cpp:193 src/insets/InsetListings.cpp:217
 #: src/mathed/InsetMathString.cpp:166
 msgid "LyX Warning: "
 msgstr "LyX-Warnung: "
 
-#: src/Changes.cpp:364 src/Paragraph.cpp:2158 src/insets/InsetListings.cpp:186
+#: src/Changes.cpp:364 src/Paragraph.cpp:2158 src/insets/InsetBibitem.cpp:190
+#: src/insets/InsetBibitem.cpp:283 src/insets/InsetListings.cpp:186
 #: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:167
 msgid "uncodable character"
 msgstr "unkodierbares Zeichen"
@@ -20316,11 +20318,11 @@ msgstr ""
 msgid "Opened inset"
 msgstr "Einfügung geöffnet"
 
-#: src/insets/InsetBibitem.cpp:87
+#: src/insets/InsetBibitem.cpp:90
 msgid "Keys must be unique!"
 msgstr "Schlüssel müssen eindeutig sein!"
 
-#: src/insets/InsetBibitem.cpp:88
+#: src/insets/InsetBibitem.cpp:91
 #, c-format
 msgid ""
 "The key %1$s already exists,\n"
@@ -20328,6 +20330,22 @@ msgid ""
 msgstr ""
 "Der Schlüssel %1$s existiert bereits,\n"
 "er wird zu %2$s geändert."
+
+#: src/insets/InsetBibitem.cpp:206
+msgid "Uncodable characters in bibliography item"
+msgstr "Unkodierbare Zeichen in Literaturmarke"
+
+#: src/insets/InsetBibitem.cpp:207
+#, c-format
+msgid ""
+"The following characters in one of the bibliography items are\n"
+"not representable in the current encoding and have been omitted:\n"
+"%1$s."
+msgstr ""
+"Die folgenden Zeichen in einer der Marken im Literaturverzeichnis sind in "
+"der\n"
+"aktuellen Zeichenkodierung nicht darstellbar und wurden daher weggelassen:\n"
+"%1$s."
 
 #: src/insets/InsetBibtex.cpp:139
 #, c-format
