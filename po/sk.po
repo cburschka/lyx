@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-02-13 09:41+0100\n"
-"PO-Revision-Date: 2010-02-07 09:36+0100\n"
+"PO-Revision-Date: 2010-02-13 13:33+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenský <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -20081,18 +20081,16 @@ msgstr ""
 "bude zmenený na %2$s."
 
 #: src/insets/InsetBibitem.cpp:206
-#, fuzzy
 msgid "Uncodable characters in bibliography item"
-msgstr "Nekódovateľné znaky vo výpise zdrojového kódu"
+msgstr "Nekódovateľné znaky v prvku bibliografie"
 
-#: src/insets/InsetBibitem.cpp:207
-#, fuzzy, c-format
+#: src/insets/InsetBibitem.cpp:207, c-format
 msgid ""
 "The following characters in one of the bibliography items are\n"
 "not representable in the current encoding and have been omitted:\n"
 "%1$s."
 msgstr ""
-"Nasledujúce znaky vo výpisoch zdrojových kódov sú nereprezentovateľné\n"
+"Nasledujúce znaky v jednom z prvkov bibliografie sú nereprezentovateľné\n"
 "vo zvolenom kódovaní a boli vynechané:\n"
 "%1$s."
 
