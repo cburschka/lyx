@@ -158,7 +158,7 @@ public:
 	docstring const getInfo(docstring const & key) const;
 	/// Is this a reference from a bibtex database
 	/// or from a bibliography environment?
-	bool const isBibtex(docstring const & key) const;
+	bool isBibtex(docstring const & key) const;
 	/**
 	  * "Translates" the available Citation Styles into strings for a given key,
 	  * either numerical or author-year depending upon the active engine. (See
