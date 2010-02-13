@@ -189,7 +189,7 @@ TeXEnvironment(Buffer const & buf,
 			   << "}\n";
 		} else if (style.labeltype == LABEL_BIBLIO) {
 			// ale970405
-			os << '{' << bibitemWidest(buf) << "}\n";
+			os << '{' << bibitemWidest(buf, runparams) << "}\n";
 		} else
 			os << from_ascii(style.latexparam()) << '\n';
 		texrow.newline();

@@ -61,6 +61,8 @@ private:
 	///
 	int plaintext(odocstream &, OutputParams const &) const;
 	///
+	int latex(odocstream &, OutputParams const &) const;
+	///
 	virtual void fillWithBibKeys(BiblioInfo &, InsetIterator const &) const;
 	/// Update the counter of this inset
 	virtual void updateLabels(ParIterator const &);
@@ -71,7 +73,7 @@ private:
 	///
 	Inset * clone() const { return new InsetBibitem(*this); }
 
-	friend docstring bibitemWidest(Buffer const & buffer);
+	friend docstring bibitemWidest(Buffer const & buffer, OutputParams const &);
 	/// The label that is set by updateLabels
 	docstring autolabel_;
 	///
@@ -80,7 +82,7 @@ private:
 
 
 /// Return the widest label in the Bibliography.
-docstring bibitemWidest(Buffer const &);
+docstring bibitemWidest(Buffer const &, OutputParams const &);
 
 } // namespace lyx
 

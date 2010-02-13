@@ -517,6 +517,7 @@ void InsetCitation::tocString(odocstream & os) const
 int InsetCitation::latex(odocstream & os, OutputParams const &) const
 {
 	CiteEngine cite_engine = buffer().params().citeEngine();
+	BiblioInfo const & bi = buffer().masterBibInfo();
 	// FIXME UNICODE
 	docstring const cite_str = from_utf8(
 		asValidLatexCommand(getCmdName(), cite_engine));
@@ -530,7 +531,11 @@ int InsetCitation::latex(odocstream & os, OutputParams const &) const
 	else if (!after.empty())
 		os << '[' << after << ']';
 
-	os << '{' << cleanupWhitespace(getParam("key")) << '}';
+	if (!bi.isBibtex(getParam("key")))
+		// escape chars with bibitems
+		os << '{' << escape(cleanupWhitespace(getParam("key"))) << '}';
+	else
+		os << '{' << cleanupWhitespace(getParam("key")) << '}';
 
 	return 0;
 }

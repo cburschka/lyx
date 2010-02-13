@@ -53,6 +53,8 @@ public:
 	/// constructor that sets the entryType
 	BibTeXInfo(docstring const & key, docstring const & type);
 	///
+	bool isBibtex() const { return is_bibtex_; }
+	///
 	bool hasField(docstring const & field) const;
 	/// return the short form of an authorlist
 	docstring const getAbbreviatedAuthor() const;
@@ -126,6 +128,9 @@ public:
 	/// Empty if no info exists. 
 	/// Note that this will retrieve data from the crossref as needed.
 	docstring const getInfo(docstring const & key) const;
+	/// Is this a reference from a bibtex database
+	/// or from a bibliography environment?
+	bool const isBibtex(docstring const & key) const;
 	
 	/**
 	  * "Translates" the available Citation Styles into strings for a given key,

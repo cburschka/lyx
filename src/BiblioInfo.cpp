@@ -472,6 +472,16 @@ docstring const BiblioInfo::getInfo(docstring const & key) const
 }
 
 
+bool const BiblioInfo::isBibtex(docstring const & key) const
+{
+	BiblioInfo::const_iterator it = find(key);
+	if (it == end())
+		return false;
+	return it->second.isBibtex();
+}
+
+
+
 vector<docstring> const BiblioInfo::getCiteStrings(
 	docstring const & key, Buffer const & buf) const
 {

@@ -20,10 +20,12 @@
 #include "BufferView.h"
 #include "Counters.h"
 #include "DispatchResult.h"
+#include "Encoding.h"
 #include "FuncRequest.h"
 #include "InsetIterator.h"
 #include "InsetList.h"
 #include "Lexer.h"
+#include "OutputParams.h"
 #include "Paragraph.h"
 #include "ParagraphList.h"
 #include "TextClass.h"
@@ -31,6 +33,7 @@
 #include "frontends/alert.h"
 
 #include "support/convert.h"
+#include "support/debug.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
@@ -170,8 +173,48 @@ int InsetBibitem::plaintext(odocstream & os, OutputParams const &) const
 }
 
 
+int InsetBibitem::latex(odocstream & os, OutputParams const & runparams) const
+{
+	docstring cmd = '\\' + from_ascii(defaultCommand());
+	docstring uncodable;
+	if (!getParam("label").empty()) {
+		cmd += '[';
+		docstring orig = getParam("label");
+		for (size_t n = 0; n < orig.size(); ++n) {
+			try {
+				cmd += runparams.encoding->latexChar(orig[n]);
+			} catch (EncodingException & /* e */) {
+				LYXERR0("Uncodable character in bibitem!");
+				if (runparams.dryrun) {
+					cmd += "<" + _("LyX Warning: ")
+					    + _("uncodable character") + " '";
+					cmd += docstring(1, orig[n]);
+					cmd += "'>";
+				} else
+					uncodable += orig[n];
+			}
+		}
+		cmd += ']';
+	}
+	cmd += '{' + escape(getParam("key")) + '}';
+
+	os << cmd;
+
+	if (!uncodable.empty()) {
+		// issue a warning about omitted characters
+		// FIXME: should be passed to the error dialog
+		frontend::Alert::warning(_("Uncodable characters in bibliography item"),
+			bformat(_("The following characters in one of the bibliography items are\n"
+				  "not representable in the current encoding and have been omitted:\n%1$s."),
+			uncodable));
+	}
+	
+	return 0;
+}
+
+
 // ale070405
-docstring bibitemWidest(Buffer const & buffer)
+docstring bibitemWidest(Buffer const & buffer, OutputParams const & runparams)
 {
 	int w = 0;
 
@@ -228,8 +271,23 @@ docstring bibitemWidest(Buffer const & buffer)
 			w = wx;
 	}
 
-	if (bitem && !bitem->bibLabel().empty())
-		return bitem->bibLabel();
+	if (bitem && !bitem->bibLabel().empty()) {
+		docstring lbl = bitem->bibLabel();
+		docstring latex_lbl;
+		for (size_t n = 0; n < lbl.size(); ++n) {
+		try {
+			latex_lbl += runparams.encoding->latexChar(lbl[n]);
+		} catch (EncodingException & /* e */) {
+			if (runparams.dryrun) {
+				latex_lbl += "<" + _("LyX Warning: ")
+					  + _("uncodable character") + " '";
+				latex_lbl += docstring(1, lbl[n]);
+				latex_lbl += "'>";
+ 			}
+		}
+	}
+		return latex_lbl;
+	}
 
 	return from_ascii("99");
 }

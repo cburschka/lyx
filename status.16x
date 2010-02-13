@@ -100,6 +100,9 @@ What's new
 
 - Fix the import of tex files with multi-byte characters in
   the preamble (bug 6365).
+  
+- Fix encoding problem in bibliography items that broke the compilation
+  of documents (bug 6534).
 
 - Allow using single quotes in filenames (bug 4063).
 
