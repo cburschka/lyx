@@ -37,7 +37,7 @@ InsetLayout::InsetLayout() :
 	htmlforcecss_ (false), htmlisblock_(true),
 	multipar_(true), custompars_(true), forceplain_(false), 
 	passthru_(false), needprotect_(false), freespacing_(false), 
-	keepempty_(false), forceltr_(false), intoc_(false)
+	keepempty_(false), forceltr_(false), intoc_(false), spellcheck_(true)
 { 
 	labelfont_.setColor(Color_error);
 }
@@ -105,6 +105,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		IL_PASSTHRU,
 		IL_PREAMBLE,
 		IL_REQUIRES,
+		IL_SPELLCHECK,
 		IL_END
 	};
 
@@ -142,7 +143,8 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		{ "needprotect", IL_NEEDPROTECT },
 		{ "passthru", IL_PASSTHRU },
 		{ "preamble", IL_PREAMBLE },
-		{ "requires", IL_REQUIRES }
+		{ "requires", IL_REQUIRES },
+		{ "spellcheck", IL_SPELLCHECK }
 	};
 
 	lex.pushTable(elementTags);
@@ -322,6 +324,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			requires_.insert(req.begin(), req.end());
 			break;
 		}
+		case IL_SPELLCHECK:
+			lex >> spellcheck_;
+			break;
 		case IL_END:
 			getout = true;
 			break;

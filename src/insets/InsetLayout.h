@@ -137,6 +137,7 @@ public:
 	///
 	bool isInToc() const { return intoc_; }
 	///
+	bool spellcheck() const { return spellcheck_; }
 private:
 	///
 	void makeDefaultCSS() const;
@@ -217,6 +218,8 @@ private:
 	bool forceltr_;
 	/// should the contents be written to TOC strings?
 	bool intoc_;
+	/// check spelling of this inset?
+	bool spellcheck_;
 };
 
 ///

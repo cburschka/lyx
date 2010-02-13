@@ -66,7 +66,7 @@ private:
 };
 
 // Keep the changes documented in the Customization manual. 
-int const FORMAT = 22;
+int const FORMAT = 23;
 
 
 bool layout2layout(FileName const & filename, FileName const & tempfile)

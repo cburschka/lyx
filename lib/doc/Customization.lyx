@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 376
+\lyxformat 378
 \begin_document
 \begin_header
 \textclass scrbook
@@ -14199,7 +14199,7 @@ reference "des:Preamble"
 status collapsed
 
 \begin_layout Plain Layout
-Requires 
+Requires
 \end_layout
 
 \end_inset
@@ -14222,6 +14222,42 @@ reference "des:Requires"
 \end_inset
 
 ).
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+Spellcheck
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset Flex CharStyle:Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+1
+\end_layout
+
+\end_inset
+
+] Spellcheck the contents of this inset.
+ Default is true.
 \end_layout
 
 \begin_layout Subsection

@@ -3165,6 +3165,9 @@ bool Paragraph::spellCheck(pos_type & from, pos_type & to, WordLangTuple & wl,
 	if (!speller)
 		return false;
 
+	if (!inInset().allowSpellCheck())
+		return false;
+
 	locateWord(from, to, WHOLE_WORD);
 	if (from == to || from >= pos_type(d->text_.size()))
 		return false;
