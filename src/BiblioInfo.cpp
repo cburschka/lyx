@@ -482,7 +482,7 @@ docstring const BiblioInfo::getInfo(docstring const & key) const
 }
 
 
-bool const BiblioInfo::isBibtex(docstring const & key) const
+bool BiblioInfo::isBibtex(docstring const & key) const
 {
 	BiblioInfo::const_iterator it = find(key);
 	if (it == end())
