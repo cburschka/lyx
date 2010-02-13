@@ -174,6 +174,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\sort_layouts", LyXRC::RC_SORT_LAYOUTS },
 	{ "\\spell_command", LyXRC::RC_SPELL_COMMAND },
 	{ "\\spellcheck_continuously", LyXRC::RC_SPELLCHECK_CONTINUOUSLY },
+	{ "\\spellcheck_notes", LyXRC::RC_SPELLCHECK_NOTES },
 	{ "\\spellchecker", LyXRC::RC_SPELLCHECKER },
 	{ "\\splitindex_command", LyXRC::RC_SPLITINDEX_COMMAND },
 	{ "\\tempdir_path", LyXRC::RC_TEMPDIRPATH },
@@ -286,6 +287,7 @@ void LyXRC::setDefaults()
 #endif
 	spellchecker_accept_compound = false;
 	spellcheck_continuously = false;
+	spellcheck_notes = true;
 	use_kbmap = false;
 	rtl_support = true;
 	visual_cursor = false;
@@ -914,6 +916,9 @@ int LyXRC::read(Lexer & lexrc)
 			break;
 		case RC_SPELLCHECK_CONTINUOUSLY:
 			lexrc >> spellcheck_continuously;
+			break;
+		case RC_SPELLCHECK_NOTES:
+			lexrc >> spellcheck_notes;
 			break;
 		case RC_MAKE_BACKUP:
 			lexrc >> make_backup;
@@ -2333,6 +2338,15 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		if (tag != RC_LAST)
 			break;
 
+	case RC_SPELLCHECK_NOTES:
+		if (ignore_system_lyxrc ||
+		    spellcheck_notes != system_lyxrc.spellcheck_notes) {
+			os << "\\spellcheck_notes " << convert<string>(spellcheck_notes)
+			   << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+
 	case RC_RTL_SUPPORT:
 		if (ignore_system_lyxrc ||
 		    rtl_support != system_lyxrc.rtl_support) {
@@ -2755,6 +2769,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_SPELL_COMMAND:
 	case LyXRC::RC_SPELLCHECKER:
 	case LyXRC::RC_SPELLCHECK_CONTINUOUSLY:
+	case LyXRC::RC_SPELLCHECK_NOTES:
 	case LyXRC::RC_SPLITINDEX_COMMAND:
 	case LyXRC::RC_TEMPDIRPATH:
 	case LyXRC::RC_TEMPLATEPATH:

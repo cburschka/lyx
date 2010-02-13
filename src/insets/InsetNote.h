@@ -73,6 +73,8 @@ private:
 	 */
 	bool producesOutput() const { return false; }
 	///
+	bool allowSpellCheck() const;
+	///
 	void write(std::ostream &) const;
 	///
 	void read(Lexer & lex);

@@ -27,6 +27,7 @@
 #include "InsetIterator.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
+#include "LyXRC.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 #include "ParIterator.h"
@@ -349,6 +350,11 @@ void InsetNote::validate(LaTeXFeatures & features) const
 docstring InsetNote::contextMenu(BufferView const &, int, int) const
 {
 	return from_ascii("context-note");
+}
+
+bool InsetNote::allowSpellCheck() const
+{
+	return (params_.type == InsetNoteParams::Greyedout || lyxrc.spellcheck_notes);
 }
 
 

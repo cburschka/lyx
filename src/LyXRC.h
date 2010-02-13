@@ -159,6 +159,7 @@ public:
 		RC_SORT_LAYOUTS,
 		RC_SPELL_COMMAND,
 		RC_SPELLCHECK_CONTINUOUSLY,
+		RC_SPELLCHECK_NOTES,
 		RC_SPELLCHECKER,
 		RC_SPLITINDEX_COMMAND,
 		RC_TEMPDIRPATH,
@@ -353,6 +354,8 @@ public:
 	std::string spellchecker_esc_chars;
 	/// spellcheck continuously?
 	bool spellcheck_continuously;
+	/// spellcheck notes and comments?
+	bool spellcheck_notes;
 	///
 	bool use_kbmap;
 	///

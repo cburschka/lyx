@@ -1332,12 +1332,15 @@ PrefSpellchecker::PrefSpellchecker(GuiPreferences * form)
 			this, SIGNAL(changed()));
 		connect(spellcheckContinuouslyCB, SIGNAL(clicked()),
 			this, SIGNAL(changed()));
+		connect(spellcheckNotesCB, SIGNAL(clicked()),
+			this, SIGNAL(changed()));
 	} else {
 		spellcheckerCB->setEnabled(false);
 		altLanguageED->setEnabled(false);
 		escapeCharactersED->setEnabled(false);
 		compoundWordCB->setEnabled(false);
 		spellcheckContinuouslyCB->setEnabled(false);
+		spellcheckNotesCB->setEnabled(false);
 	}
 }
 
@@ -1350,6 +1353,7 @@ void PrefSpellchecker::apply(LyXRC & rc) const
 	rc.spellchecker_esc_chars = fromqstr(escapeCharactersED->text());
 	rc.spellchecker_accept_compound = compoundWordCB->isChecked();
 	rc.spellcheck_continuously = spellcheckContinuouslyCB->isChecked();
+	rc.spellcheck_notes = spellcheckNotesCB->isChecked();
 }
 
 
@@ -1361,6 +1365,7 @@ void PrefSpellchecker::update(LyXRC const & rc)
 	escapeCharactersED->setText(toqstr(rc.spellchecker_esc_chars));
 	compoundWordCB->setChecked(rc.spellchecker_accept_compound);
 	spellcheckContinuouslyCB->setChecked(rc.spellcheck_continuously);
+	spellcheckNotesCB->setChecked(rc.spellcheck_notes);
 }
 
 
