@@ -63,8 +63,6 @@ private:
 	///
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///
-	int latex(odocstream &, OutputParams const &) const;
-	///
 	virtual void fillWithBibKeys(BiblioInfo &, InsetIterator const &) const;
 	/// Update the counter of this inset
 	void updateLabels(ParIterator const &, UpdateType);

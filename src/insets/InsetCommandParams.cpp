@@ -27,7 +27,11 @@
 #include "InsetRef.h"
 #include "InsetTOC.h"
 
+#include "Encoding.h"
 #include "Lexer.h"
+#include "OutputParams.h"
+
+#include "frontends/alert.h"
 
 #include "support/debug.h"
 #include "support/docstream.h"
@@ -88,8 +92,9 @@ static ParamInfo const & findInfo(InsetCode code, string const & cmdName)
 //
 /////////////////////////////////////////////////////////////////////
 
-ParamInfo::ParamData::ParamData(std::string const & s, ParamType t)
-	: name_(s), type_(t)
+ParamInfo::ParamData::ParamData(std::string const & s, ParamType t,
+				ParamHandling h)
+	: name_(s), type_(t), handling_(h)
 {}
 
 
@@ -101,7 +106,8 @@ bool ParamInfo::ParamData::isOptional() const
 
 bool ParamInfo::ParamData::operator==(ParamInfo::ParamData const & rhs) const
 {
-	return name() == rhs.name() && type() == rhs.type();
+	return name() == rhs.name() && type() == rhs.type()
+		&& handling() == rhs.handling();
 }
 
 
@@ -117,9 +123,10 @@ bool ParamInfo::hasParam(std::string const & name) const
 }
 
 
-void ParamInfo::add(std::string const & name, ParamType type)
+void ParamInfo::add(std::string const & name, ParamType type,
+		    ParamHandling handling)
 { 
-	info_.push_back(ParamData(name, type)); 
+	info_.push_back(ParamData(name, type, handling)); 
 }
 
 
@@ -351,7 +358,46 @@ bool InsetCommandParams::writeEmptyOptional(ParamInfo::const_iterator ci) const
 }
 
 
-docstring InsetCommandParams::getCommand() const
+
+docstring InsetCommandParams::prepareCommand(OutputParams const & runparams,
+					     docstring const & command,
+					     ParamInfo::ParamHandling handling) const
+{
+	docstring result;
+	if (handling == ParamInfo::HANDLING_LATEXIFY) {
+		docstring uncodable;
+		for (size_t n = 0; n < command.size(); ++n) {
+			try {
+				result += runparams.encoding->latexChar(command[n]);
+			} catch (EncodingException & /* e */) {
+				LYXERR0("Uncodable character in command inset!");
+				if (runparams.dryrun) {
+					result += "<" + _("LyX Warning: ")
+						+ _("uncodable character") + " '";
+					result += docstring(1, command[n]);
+					result += "'>";
+				} else
+					uncodable += command[n];
+			}
+		}
+		if (!uncodable.empty()) {
+			// issue a warning about omitted characters
+			// FIXME: should be passed to the error dialog
+			frontend::Alert::warning(_("Uncodable characters"),
+				bformat(_("The following characters that are used in an inset (%1$s) are\n"
+					  "not representable in the current encoding and have been omitted:\n%2$s."),
+					from_utf8(insetType()), uncodable));
+		}
+	} else if (handling == ParamInfo::HANDLING_ESCAPE)
+		result = escape(command);
+	else
+		result = command;
+
+	return result;
+}
+
+
+docstring InsetCommandParams::getCommand(OutputParams const & runparams) const
 {
 	docstring s = '\\' + from_ascii(cmdName_);
 	bool noparam = true;
@@ -364,13 +410,15 @@ docstring InsetCommandParams::getCommand() const
 			break;
 
 		case ParamInfo::LATEX_REQUIRED: {
-			docstring const & data = (*this)[name];
+			docstring const & data =
+				prepareCommand(runparams, (*this)[name], it->handling());
 			s += '{' + data + '}';
 			noparam = false;
 			break;
 		}
 		case ParamInfo::LATEX_OPTIONAL: {
-			docstring const & data = (*this)[name];
+			docstring const & data =
+				prepareCommand(runparams, (*this)[name], it->handling());
 			if (!data.empty()) {
 				s += '[' + data + ']';
 				noparam = false;

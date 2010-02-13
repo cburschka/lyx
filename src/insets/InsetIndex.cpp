@@ -548,14 +548,15 @@ bool InsetPrintIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-int InsetPrintIndex::latex(odocstream & os, OutputParams const &) const
+int InsetPrintIndex::latex(odocstream & os, OutputParams const & runparams_in) const
 {
 	if (!buffer().masterBuffer()->params().use_indices) {
 		if (getParam("type") == from_ascii("idx"))
 			os << "\\printindex{}";
 		return 0;
 	}
-	os << getCommand();
+	OutputParams runparams = runparams_in;
+	os << getCommand(runparams);
 	return 0;
 }
 

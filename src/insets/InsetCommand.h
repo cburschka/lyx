@@ -75,7 +75,7 @@ protected:
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 	///
-	docstring const getCommand() const { return p_.getCommand(); }
+	docstring const getCommand(OutputParams & rp) const { return p_.getCommand(rp); }
 	///
 	std::string const & getCmdName() const { return p_.getCmdName(); }
 	///

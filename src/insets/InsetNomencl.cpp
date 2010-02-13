@@ -270,7 +270,7 @@ docstring nomenclWidest(Buffer const & buffer)
 }
 
 
-int InsetPrintNomencl::latex(odocstream & os, OutputParams const &) const
+int InsetPrintNomencl::latex(odocstream & os, OutputParams const & runparams_in) const
 {
 	int lines = 0;
 	if (getParam("set_width") == "auto") {
@@ -295,7 +295,8 @@ int InsetPrintNomencl::latex(odocstream & os, OutputParams const &) const
 		return lines;
 	}
 	// output the command \printnomenclature
-	os << getCommand();
+	OutputParams runparams = runparams_in;
+	os << getCommand(runparams);
 	return lines;
 }
 

@@ -103,8 +103,10 @@ ParamInfo const & InsetBibitem::findInfo(string const & /* cmdName */)
 {
 	static ParamInfo param_info_;
 	if (param_info_.empty()) {
-		param_info_.add("label", ParamInfo::LATEX_OPTIONAL);
-		param_info_.add("key", ParamInfo::LATEX_REQUIRED);
+		param_info_.add("label", ParamInfo::LATEX_OPTIONAL,
+				ParamInfo::HANDLING_LATEXIFY);
+		param_info_.add("key", ParamInfo::LATEX_REQUIRED,
+				ParamInfo::HANDLING_ESCAPE);
 	}
 	return param_info_;
 }
@@ -172,46 +174,6 @@ int InsetBibitem::plaintext(odocstream & os, OutputParams const &) const
 	os << str;
 
 	return str.size();
-}
-
-
-int InsetBibitem::latex(odocstream & os, OutputParams const & runparams) const
-{
-	docstring cmd = '\\' + from_ascii(defaultCommand());
-	docstring uncodable;
-	if (!getParam("label").empty()) {
-		cmd += '[';
-		docstring orig = getParam("label");
-		for (size_t n = 0; n < orig.size(); ++n) {
-			try {
-				cmd += runparams.encoding->latexChar(orig[n]);
-			} catch (EncodingException & /* e */) {
-				LYXERR0("Uncodable character in bibitem!");
-				if (runparams.dryrun) {
-					cmd += "<" + _("LyX Warning: ")
-					    + _("uncodable character") + " '";
-					cmd += docstring(1, orig[n]);
-					cmd += "'>";
-				} else
-					uncodable += orig[n];
-			}
-		}
-		cmd += ']';
-	}
-	cmd += '{' + escape(getParam("key")) + '}';
-
-	os << cmd;
-
-	if (!uncodable.empty()) {
-		// issue a warning about omitted characters
-		// FIXME: should be passed to the error dialog
-		frontend::Alert::warning(_("Uncodable characters in bibliography item"),
-			bformat(_("The following characters in one of the bibliography items are\n"
-				  "not representable in the current encoding and have been omitted:\n%1$s."),
-			uncodable));
-	}
-	
-	return 0;
 }
 
 

@@ -40,8 +40,6 @@ public:
 	///
 	InsetCode lyxCode() const { return LABEL_CODE; }
 	///
-	int latex(odocstream &, OutputParams const &) const;
-	///
 	int plaintext(odocstream &, OutputParams const &) const;
 	///
 	int docbook(odocstream &, OutputParams const &) const;

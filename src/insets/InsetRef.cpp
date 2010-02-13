@@ -61,7 +61,8 @@ ParamInfo const & InsetRef::findInfo(string const & /* cmdName */)
 	static ParamInfo param_info_;
 	if (param_info_.empty()) {
 		param_info_.add("name", ParamInfo::LATEX_OPTIONAL);
-		param_info_.add("reference", ParamInfo::LATEX_REQUIRED);
+		param_info_.add("reference", ParamInfo::LATEX_REQUIRED,
+				ParamInfo::HANDLING_ESCAPE);
 	}
 	return param_info_;
 }
@@ -73,13 +74,13 @@ docstring InsetRef::screenLabel() const
 }
 
 
-int InsetRef::latex(odocstream & os, OutputParams const &) const
+int InsetRef::latex(odocstream & os, OutputParams const & runparams) const
 {
 	// We don't want to output p_["name"], since that is only used 
 	// in docbook. So we construct new params, without it, and use that.
 	InsetCommandParams p(REF_CODE, getCmdName());
 	p["reference"] = getParam("reference");
-	os << escape(p.getCommand());
+	os << p.getCommand(runparams);
 	return 0;
 }
 

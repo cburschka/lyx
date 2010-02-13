@@ -16,6 +16,8 @@
 
 #include "InsetCode.h"
 
+#include "OutputParams.h"
+
 #include "support/docstring.h"
 
 #include <string>
@@ -35,17 +37,25 @@ public:
 		LATEX_REQUIRED,    /// normal required argument
 		LYX_INTERNAL       /// a parameter used internally by LyX
 	};
+	/// Special handling on output
+	enum ParamHandling {
+		HANDLING_NONE,    /// no special handling
+		HANDLING_ESCAPE,  /// escape special characters
+		HANDLING_LATEXIFY /// transform special characters to LaTeX macros
+	};
 	///
 	class ParamData {
 	// No parameter may be named "preview", because that is a required
 	// flag for all commands.
 	public:
 		///
-		ParamData(std::string const &, ParamType);
+		ParamData(std::string const &, ParamType, ParamHandling = HANDLING_NONE);
 		///
 		std::string name() const { return name_; }
 		///
 		ParamType type() const { return type_; }
+		///
+		ParamHandling handling() const { return handling_; }
 		/// whether this is an optional LaTeX argument
 		bool isOptional() const;
 		///
@@ -58,10 +68,13 @@ public:
 		std::string name_;
 		///
 		ParamType type_;
+		/// do we need special handling on latex output?
+		ParamHandling handling_;
 	};
 
 	/// adds a new parameter
-	void add(std::string const & name, ParamType type);
+	void add(std::string const & name, ParamType type,
+		 ParamHandling = HANDLING_NONE);
 	///
 	bool empty() const { return info_.empty(); }
 	///
@@ -103,7 +116,7 @@ public:
 	///
 	void write(std::ostream &) const;
 	/// Build the complete LaTeX command
-	docstring getCommand() const;
+	docstring getCommand(OutputParams const &) const;
 	/// Return the command name
 	std::string const & getCmdName() const { return cmdName_; }
 	/// Set the name to \p n. This must be a known name. All parameters
@@ -133,6 +146,10 @@ private:
 	/// checks whether we need to write an empty optional parameter
 	/// \return true if a non-empty optional parameter follows ci
 	bool writeEmptyOptional(ParamInfo::const_iterator ci) const;
+	///
+	docstring prepareCommand(OutputParams const & runparams,
+					     docstring const & command,
+					     ParamInfo::ParamHandling handling) const;
 
 	/// Description of all command properties
 	ParamInfo info_;

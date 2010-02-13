@@ -108,7 +108,8 @@ ParamInfo const & InsetLabel::findInfo(string const & /* cmdName */)
 {
 	static ParamInfo param_info_;
 	if (param_info_.empty())
-		param_info_.add("name", ParamInfo::LATEX_REQUIRED);
+		param_info_.add("name", ParamInfo::LATEX_REQUIRED,
+				ParamInfo::HANDLING_ESCAPE);
 	return param_info_;
 }
 
@@ -227,13 +228,6 @@ void InsetLabel::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetCommand::doDispatch(cur, cmd);
 		break;
 	}
-}
-
-
-int InsetLabel::latex(odocstream & os, OutputParams const &) const
-{
-	os << escape(getCommand());
-	return 0;
 }
 
 
