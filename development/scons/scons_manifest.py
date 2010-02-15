@@ -728,7 +728,6 @@ src_frontends_qt4_header_files = Split('''
     GuiErrorList.h
     GuiERT.h
     GuiExternal.h
-    GuiFloat.h
     GuiFontExample.h
     GuiFontLoader.h
     GuiGraphics.h
@@ -779,7 +778,8 @@ src_frontends_qt4_header_files = Split('''
     GuiWrap.h
     IconPalette.h
     InsertTableWidget.h
-    InsetDialog.h
+    InsetParamsDialog.h
+    InsetParamsWidget.h
     LaTeXHighlighter.h
     LayoutBox.h
     LengthCombo.h
@@ -829,7 +829,6 @@ src_frontends_qt4_files = Split('''
     GuiErrorList.cpp
     GuiERT.cpp
     GuiExternal.cpp
-    GuiFloat.cpp
     GuiFontExample.cpp
     GuiFontLoader.cpp
     GuiFontMetrics.cpp
@@ -880,7 +879,8 @@ src_frontends_qt4_files = Split('''
     GuiWrap.cpp
     IconPalette.cpp
     InsertTableWidget.cpp
-    InsetDialog.cpp
+    InsetParamsDialog.cpp
+    InsetParamsWidget.cpp
     LengthCombo.cpp
     LaTeXHighlighter.cpp
     LayoutBox.cpp
@@ -925,7 +925,6 @@ src_frontends_qt4_ui_files = Split('''
     ExternalUi.ui
     FindAndReplaceUi.ui
     FloatPlacementUi.ui
-    FloatUi.ui
     FontUi.ui
     GraphicsUi.ui
     HSpaceUi.ui
@@ -934,6 +933,7 @@ src_frontends_qt4_ui_files = Split('''
     IndexUi.ui
     IndicesUi.ui
     InfoUi.ui
+    InsetParamsUi.ui
     LabelUi.ui
     LaTeXUi.ui
     LanguageUi.ui
