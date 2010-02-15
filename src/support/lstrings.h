@@ -205,7 +205,7 @@ std::string const ltrim(std::string const & a, char const * p = " ");
 docstring const ltrim(docstring const & a, char const * p = " ");
 
 /** Splits the string given in the first argument at the first occurence 
-    of the third argumnent, delim.
+    of the third argument, delim.
     What precedes delim is returned in the second argument, piece; this
     will be the whole of the string if no delimiter is found.
     The return value is what follows delim, if anything. So the return
