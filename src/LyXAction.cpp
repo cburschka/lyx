@@ -2193,10 +2193,11 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_VC_COMPARE
  * \li Action: Compares two revisions of the same file under version control.
- * \li Notion: This is currently implemented only for SVN.
+ * \li Notion: This is currently implemented only for SVN and RCS.
  * \li Syntax: vc-compare <REV1> [<REV2>]
  * \li Params: Revision number either points directly to commit in history
-               or - if negative number -x - it points to last commit - x.
+               or if negative number -x it points to last commit - x.\n
+	       In RCS we subtract only in the last part of revision specification.
                Special case "0" is reserved for the last committed revision.\n
                <REV1>: Older file.\n
 	       <REV2>: Newer file. Used only if REV1 > 0.

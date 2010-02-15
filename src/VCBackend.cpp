@@ -290,15 +290,52 @@ string RCS::revisionInfo(LyXVC::RevisionInfo const info)
 }
 
 
-bool RCS::prepareFileRevision(string const &, string &)
+bool RCS::prepareFileRevision(string const &revis, string & f)
 {
-	return false;
+	string rev = revis;
+
+	if (isStrInt(rev)) {
+		int back = convert<int>(rev);
+		if (back > 0)
+			return false;
+		if (back == 0)
+			rev = version_;
+		// we care about the last number from revision string
+		// in case of backward indexing
+		if (back < 0) {
+			string cur, base;
+			cur = rsplit(version_, base , '.' );
+			if (!isStrInt(cur))
+				return false;
+			int want = convert<int>(cur) + back;
+			if (want <= 0)
+				return false;
+
+			rev = base + "." + convert<string>(want);
+		}
+	}
+
+	FileName tmpf = FileName::tempName("lyxvcrev");
+	if (tmpf.empty()) {
+		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
+		return N_("Error: Could not generate logfile.");
+	}
+
+	doVCCommand("co -p" + rev + " "
+	              + quoteName(onlyFilename(owner_->absFileName()))
+		      + " > " + quoteName(tmpf.toFilesystemEncoding()),
+		FileName(owner_->filePath()));
+	if (tmpf.isFileEmpty())
+		return false;
+
+	f = tmpf.absFilename();
+	return true;
 }
 
 
 bool RCS::prepareFileRevisionEnabled()
 {
-	return false;
+	return true;
 }
 
 
