@@ -170,6 +170,7 @@ void openpipe()
 	if (pipein<0 || pipeout<0) {
 	    perror("monitor: Couldn't open the pipes");
 	    pipein = pipeout = -1;
+	    free(pipename);
 	    return;
 	}
 	fl_add_io_callback(pipeout, FL_READ, io_cb, 0);
