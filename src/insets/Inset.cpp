@@ -50,129 +50,122 @@ namespace lyx {
 
 class InsetName {
 public:
-	InsetName(string const & n, InsetCode c) : name(n), code(c) {}
+	InsetName(string const & n = string(), docstring const & dn = docstring())
+		: name(n), display_name(dn) {}
 	string name;
-	InsetCode code;
+	docstring display_name;
 };
 
 
-typedef map<string, InsetCode> TranslatorMap;
+static InsetName insetnames[INSET_CODE_SIZE];
 
 
-static TranslatorMap const build_translator()
+static void build_translator()
 {
-	InsetName const insetnames[] = {
-		InsetName("toc", TOC_CODE),
-		InsetName("quote", QUOTE_CODE),
-		InsetName("ref", REF_CODE),
-		InsetName("href", HYPERLINK_CODE),
-		InsetName("separator", SEPARATOR_CODE),
-		InsetName("ending", ENDING_CODE),
-		InsetName("label", LABEL_CODE),
-		InsetName("note", NOTE_CODE),
-		InsetName("phantom", PHANTOM_CODE),
-		InsetName("accent", ACCENT_CODE),
-		InsetName("math", MATH_CODE),
-		InsetName("index", INDEX_CODE),
-		InsetName("nomenclature", NOMENCL_CODE),
-		InsetName("include", INCLUDE_CODE),
-		InsetName("graphics", GRAPHICS_CODE),
-		InsetName("bibitem", BIBITEM_CODE),
-		InsetName("bibtex", BIBTEX_CODE),
-		InsetName("text", TEXT_CODE),
-		InsetName("ert", ERT_CODE),
-		InsetName("foot", FOOT_CODE),
-		InsetName("margin", MARGIN_CODE),
-		InsetName("float", FLOAT_CODE),
-		InsetName("wrap", WRAP_CODE),
-		InsetName("specialchar", SPECIALCHAR_CODE),
-		InsetName("tabular", TABULAR_CODE),
-		InsetName("external", EXTERNAL_CODE),
-		InsetName("caption", CAPTION_CODE),
-		InsetName("mathmacro", MATHMACRO_CODE),
-		InsetName("citation", CITE_CODE),
-		InsetName("floatlist", FLOAT_LIST_CODE),
-		InsetName("index_print", INDEX_PRINT_CODE),
-		InsetName("nomencl_print", NOMENCL_PRINT_CODE),
-		InsetName("optarg", OPTARG_CODE),
-		InsetName("newline", NEWLINE_CODE),
-		InsetName("line", LINE_CODE),
-		InsetName("branch", BRANCH_CODE),
-		InsetName("box", BOX_CODE),
-		InsetName("flex", FLEX_CODE),
-		InsetName("space", SPACE_CODE),
-		InsetName("vspace", VSPACE_CODE),
-		InsetName("mathmacroarg", MATH_MACROARG_CODE),
-		InsetName("listings", LISTINGS_CODE),
-		InsetName("info", INFO_CODE),
-		InsetName("collapsable", COLLAPSABLE_CODE),
-		InsetName("newpage", NEWPAGE_CODE),
-		InsetName("tablecell", CELL_CODE),
-		InsetName("mathamsarray", MATH_AMSARRAY_CODE),
-		InsetName("matharray", MATH_ARRAY_CODE),
-		InsetName("mathbig", MATH_BIG_CODE),
-		InsetName("mathboldsymbol", MATH_BOLDSYMBOL_CODE),
-		InsetName("mathbox", MATH_BOX_CODE),
-		InsetName("mathbrace", MATH_BRACE_CODE),
-		InsetName("mathcases", MATH_CASES_CODE),
-		InsetName("mathchar", MATH_CHAR_CODE),
-		InsetName("mathcolor", MATH_COLOR_CODE),
-		InsetName("mathcomment", MATH_COMMENT_CODE),
-		InsetName("mathdecoration", MATH_DECORATION_CODE),
-		InsetName("mathdelim", MATH_DELIM_CODE),
-		InsetName("mathdiff", MATH_DIFF_CODE),
-		InsetName("mathdots", MATH_DOTS_CODE),
-		InsetName("mathensuremath", MATH_ENSUREMATH_CODE),
-		InsetName("mathenv", MATH_ENV_CODE),
-		InsetName("mathexfunc", MATH_EXFUNC_CODE),
-		InsetName("mathexint", MATH_EXINT_CODE),
-		InsetName("mathfont", MATH_FONT_CODE),
-		InsetName("mathfontold", MATH_FONTOLD_CODE),
-		InsetName("mathfrac", MATH_FRAC_CODE),
-		InsetName("mathgrid", MATH_GRID_CODE),
-		InsetName("math", MATH_CODE),
-		InsetName("mathhull", MATH_HULL_CODE),
-		InsetName("mathkern", MATH_KERN_CODE),
-		InsetName("mathlefteqn", MATH_LEFTEQN_CODE),
-		InsetName("mathlim", MATH_LIM_CODE),
-		InsetName("mathmatrix", MATH_MATRIX_CODE),
-		InsetName("mathmbox", MATH_MBOX_CODE),
-		InsetName("mathnest", MATH_NEST_CODE),
-		InsetName("mathnumber", MATH_NUMBER_CODE),
-		InsetName("mathoverset", MATH_OVERSET_CODE),
-		InsetName("mathpar", MATH_PAR_CODE),
-		InsetName("mathphantom", MATH_PHANTOM_CODE),
-		InsetName("mathref", MATH_REF_CODE),
-		InsetName("mathroot", MATH_ROOT_CODE),
-		InsetName("mathscript", MATH_SCRIPT_CODE),
-		InsetName("mathsize", MATH_SIZE_CODE),
-		InsetName("mathspace", MATH_SPACE_CODE),
-		InsetName("mathspecialchar", MATH_SPECIALCHAR_CODE),
-		InsetName("mathsplit", MATH_SPLIT_CODE),
-		InsetName("mathsqrt", MATH_SQRT_CODE),
-		InsetName("mathstackrel", MATH_STACKREL_CODE),
-		InsetName("mathstring", MATH_STRING_CODE),
-		InsetName("mathsubstack", MATH_SUBSTACK_CODE),
-		InsetName("mathsymbol", MATH_SYMBOL_CODE),
-		InsetName("mathtabular", MATH_TABULAR_CODE),
-		InsetName("mathunderset", MATH_UNDERSET_CODE),
-		InsetName("mathunknown", MATH_UNKNOWN_CODE),
-		InsetName("mathxarrow", MATH_XARROW_CODE),
-		InsetName("mathxyarrow", MATH_XYARROW_CODE),
-		InsetName("mathxymatrix", MATH_XYMATRIX_CODE),
-		InsetName("mathmacro", MATH_MACRO_CODE),
-	};
+	static bool passed = false;
+	if (passed)
+		return;
+	insetnames[TOC_CODE] = InsetName("toc");
+	insetnames[QUOTE_CODE] = InsetName("quote");
+	insetnames[REF_CODE] = InsetName("ref");
+	insetnames[HYPERLINK_CODE] = InsetName("href");
+	insetnames[SEPARATOR_CODE] = InsetName("separator");
+	insetnames[ENDING_CODE] = InsetName("ending");
+	insetnames[LABEL_CODE] = InsetName("label");
+	insetnames[NOTE_CODE] = InsetName("note");
+	insetnames[PHANTOM_CODE] = InsetName("phantom");
+	insetnames[ACCENT_CODE] = InsetName("accent");
+	insetnames[MATH_CODE] = InsetName("math");
+	insetnames[INDEX_CODE] = InsetName("index");
+	insetnames[NOMENCL_CODE] = InsetName("nomenclature");
+	insetnames[INCLUDE_CODE] = InsetName("include");
+	insetnames[GRAPHICS_CODE] = InsetName("graphics");
+	insetnames[BIBITEM_CODE] = InsetName("bibitem");
+	insetnames[BIBTEX_CODE] = InsetName("bibtex");
+	insetnames[TEXT_CODE] = InsetName("text");
+	insetnames[ERT_CODE] = InsetName("ert", _("TeX Code"));
+	insetnames[FOOT_CODE] = InsetName("foot");
+	insetnames[MARGIN_CODE] = InsetName("margin");
+	insetnames[FLOAT_CODE] = InsetName("float", _("Float"));
+	insetnames[WRAP_CODE] = InsetName("wrap");
+	insetnames[SPECIALCHAR_CODE] = InsetName("specialchar");
+	insetnames[TABULAR_CODE] = InsetName("tabular");
+	insetnames[EXTERNAL_CODE] = InsetName("external");
+	insetnames[CAPTION_CODE] = InsetName("caption");
+	insetnames[MATHMACRO_CODE] = InsetName("mathmacro");
+	insetnames[CITE_CODE] = InsetName("citation");
+	insetnames[FLOAT_LIST_CODE] = InsetName("floatlist");
+	insetnames[INDEX_PRINT_CODE] = InsetName("index_print");
+	insetnames[NOMENCL_PRINT_CODE] = InsetName("nomencl_print");
+	insetnames[OPTARG_CODE] = InsetName("optarg");
+	insetnames[NEWLINE_CODE] = InsetName("newline");
+	insetnames[LINE_CODE] = InsetName("line");
+	insetnames[BRANCH_CODE] = InsetName("branch");
+	insetnames[BOX_CODE] = InsetName("box", _("Box"));
+	insetnames[FLEX_CODE] = InsetName("flex");
+	insetnames[SPACE_CODE] = InsetName("space");
+	insetnames[VSPACE_CODE] = InsetName("vspace", _("Vertical Space"));
+	insetnames[MATH_MACROARG_CODE] = InsetName("mathmacroarg");
+	insetnames[LISTINGS_CODE] = InsetName("listings");
+	insetnames[INFO_CODE] = InsetName("info", _("Info"));
+	insetnames[COLLAPSABLE_CODE] = InsetName("collapsable");
+	insetnames[NEWPAGE_CODE] = InsetName("newpage");
+	insetnames[CELL_CODE] = InsetName("tablecell");
+	insetnames[MATH_AMSARRAY_CODE] = InsetName("mathamsarray");
+	insetnames[MATH_ARRAY_CODE] = InsetName("matharray");
+	insetnames[MATH_BIG_CODE] = InsetName("mathbig");
+	insetnames[MATH_BOLDSYMBOL_CODE] = InsetName("mathboldsymbol");
+	insetnames[MATH_BOX_CODE] = InsetName("mathbox");
+	insetnames[MATH_BRACE_CODE] = InsetName("mathbrace");
+	insetnames[MATH_CASES_CODE] = InsetName("mathcases");
+	insetnames[MATH_CHAR_CODE] = InsetName("mathchar");
+	insetnames[MATH_COLOR_CODE] = InsetName("mathcolor");
+	insetnames[MATH_COMMENT_CODE] = InsetName("mathcomment");
+	insetnames[MATH_DECORATION_CODE] = InsetName("mathdecoration");
+	insetnames[MATH_DELIM_CODE] = InsetName("mathdelim");
+	insetnames[MATH_DIFF_CODE] = InsetName("mathdiff");
+	insetnames[MATH_DOTS_CODE] = InsetName("mathdots");
+	insetnames[MATH_ENSUREMATH_CODE] = InsetName("mathensuremath");
+	insetnames[MATH_ENV_CODE] = InsetName("mathenv");
+	insetnames[MATH_EXFUNC_CODE] = InsetName("mathexfunc");
+	insetnames[MATH_EXINT_CODE] = InsetName("mathexint");
+	insetnames[MATH_FONT_CODE] = InsetName("mathfont");
+	insetnames[MATH_FONTOLD_CODE] = InsetName("mathfontold");
+	insetnames[MATH_FRAC_CODE] = InsetName("mathfrac");
+	insetnames[MATH_GRID_CODE] = InsetName("mathgrid");
+	insetnames[MATH_CODE] = InsetName("math");
+	insetnames[MATH_HULL_CODE] = InsetName("mathhull");
+	insetnames[MATH_KERN_CODE] = InsetName("mathkern");
+	insetnames[MATH_LEFTEQN_CODE] = InsetName("mathlefteqn");
+	insetnames[MATH_LIM_CODE] = InsetName("mathlim");
+	insetnames[MATH_MATRIX_CODE] = InsetName("mathmatrix");
+	insetnames[MATH_MBOX_CODE] = InsetName("mathmbox");
+	insetnames[MATH_NEST_CODE] = InsetName("mathnest");
+	insetnames[MATH_NUMBER_CODE] = InsetName("mathnumber");
+	insetnames[MATH_OVERSET_CODE] = InsetName("mathoverset");
+	insetnames[MATH_PAR_CODE] = InsetName("mathpar");
+	insetnames[MATH_PHANTOM_CODE] = InsetName("mathphantom");
+	insetnames[MATH_REF_CODE] = InsetName("mathref");
+	insetnames[MATH_ROOT_CODE] = InsetName("mathroot");
+	insetnames[MATH_SCRIPT_CODE] = InsetName("mathscript");
+	insetnames[MATH_SIZE_CODE] = InsetName("mathsize");
+	insetnames[MATH_SPACE_CODE] = InsetName("mathspace");
+	insetnames[MATH_SPECIALCHAR_CODE] = InsetName("mathspecialchar");
+	insetnames[MATH_SPLIT_CODE] = InsetName("mathsplit");
+	insetnames[MATH_SQRT_CODE] = InsetName("mathsqrt");
+	insetnames[MATH_STACKREL_CODE] = InsetName("mathstackrel");
+	insetnames[MATH_STRING_CODE] = InsetName("mathstring");
+	insetnames[MATH_SUBSTACK_CODE] = InsetName("mathsubstack");
+	insetnames[MATH_SYMBOL_CODE] = InsetName("mathsymbol");
+	insetnames[MATH_TABULAR_CODE] = InsetName("mathtabular");
+	insetnames[MATH_UNDERSET_CODE] = InsetName("mathunderset");
+	insetnames[MATH_UNKNOWN_CODE] = InsetName("mathunknown");
+	insetnames[MATH_XARROW_CODE] = InsetName("mathxarrow");
+	insetnames[MATH_XYARROW_CODE] = InsetName("mathxyarrow");
+	insetnames[MATH_XYMATRIX_CODE] = InsetName("mathxymatrix");
+	insetnames[MATH_MACRO_CODE] = InsetName("mathmacro");
 
-	size_t const insetnames_size =
-		sizeof(insetnames) / sizeof(insetnames[0]);
-
-	map<string, InsetCode> data;
-	for (size_t i = 0; i != insetnames_size; ++i) {
-		InsetName const & var = insetnames[i];
-		data[var.name] = var.code;
-	}
-
-	return data;
+	passed = true;
 }
 
 
@@ -260,24 +253,26 @@ Dimension const Inset::dimension(BufferView const & bv) const
 
 InsetCode insetCode(string const & name)
 {
-	static TranslatorMap const translator = build_translator();
-
-	TranslatorMap::const_iterator it = translator.find(name);
-	return it == translator.end() ? NO_CODE : it->second;
+	build_translator();
+	for (int i = 1; i != int(INSET_CODE_SIZE); ++i) {
+		if (insetnames[i].name == name)
+			return InsetCode(i);
+	}
+	return NO_CODE;
 }
 
 
 string insetName(InsetCode c) 
 {
-	static TranslatorMap const translator = build_translator();
+	build_translator();
+	return insetnames[c].name;
+}
 
-	TranslatorMap::const_iterator it =  translator.begin();
-	TranslatorMap::const_iterator end = translator.end();
-	for (; it != end; ++it) {
-		if (it->second == c)
-			return it->first;
-	}
-	return string();
+
+docstring insetDisplayName(InsetCode c) 
+{
+	build_translator();
+	return insetnames[c].display_name;
 }
 
 

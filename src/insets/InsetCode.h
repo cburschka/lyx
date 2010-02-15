@@ -220,6 +220,8 @@ enum InsetCode {
 	MATH_MACRO_CODE,
 	///
 	ARGUMENT_PROXY_CODE, // 100
+	///
+	INSET_CODE_SIZE,
 };
 
 } // namespace lyx

@@ -60,13 +60,15 @@ class XHTMLStream;
 namespace graphics { class PreviewLoader; }
 
 
-/** returns the InsetCode corresponding to the \c name.
-*   Eg, insetCode("branch") == BRANCH_CODE
-*   Implemented in 'Inset.cpp'.
-*/
+/// returns the InsetCode corresponding to the \c name.
+/// Eg, insetCode("branch") == BRANCH_CODE
 InsetCode insetCode(std::string const & name);
-/// the other way
+/// returns the Inset name corresponding to the \c InsetCode.
+/// Eg, insetName(BRANCH_CODE) == "branch"
 std::string insetName(InsetCode);
+/// returns the Inset name corresponding to the \c InsetCode.
+/// Eg, insetDisplayName(BRANCH_CODE) == _("Branch")
+docstring insetDisplayName(InsetCode);
 
 /// Common base class to all insets
 
