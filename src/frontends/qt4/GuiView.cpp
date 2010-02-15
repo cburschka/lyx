@@ -2591,7 +2591,7 @@ void GuiView::dispatchVC(FuncRequest const & cmd)
 			f2 = buffer->absFileName();
 		} else {
 			string rev2 = cmd.getArg(1);
-			if (rev2.empty() || !isStrInt(rev2))
+			if (rev2.empty())
 				break;
 			// f2
 			if (!buffer->lyxvc().prepareFileRevision(rev2, f2))
@@ -2600,6 +2600,7 @@ void GuiView::dispatchVC(FuncRequest const & cmd)
 		// FIXME We need to call comparison feature here
 		// I'm not sure whether with or without dialog.
 		// (Gui)Compare::compare(f1, f2);
+		break;
 	}
 
 	default:
@@ -3127,6 +3128,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		case LFUN_VC_REVERT:
 		case LFUN_VC_UNDO_LAST:
 		case LFUN_VC_COMMAND:
+		case LFUN_VC_COMPARE:
 			dispatchVC(cmd);
 			break;
 
