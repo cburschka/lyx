@@ -2197,7 +2197,7 @@ void LyXAction::init()
  * \li Syntax: vc-compare <REV1> [<REV2>]
  * \li Params: Revision number either points directly to commit in history
                or if negative number -x it points to last commit - x.\n
-	       In RCS we subtract only in the last part of revision specification.
+	       In RCS we subtract only in the last number of revision specification.
                Special case "0" is reserved for the last committed revision.\n
                <REV1>: Older file.\n
 	       <REV2>: Newer file. Used only if REV1 > 0.
