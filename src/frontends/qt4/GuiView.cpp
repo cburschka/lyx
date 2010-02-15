@@ -2579,22 +2579,20 @@ void GuiView::dispatchVC(FuncRequest const & cmd)
 		}
 
 	case LFUN_VC_COMPARE: {
-		if (!isStrInt(cmd.getArg(0)))
-			break;
-		int rev1 = convert<int>(cmd.getArg(0));
+
+		string rev1 = cmd.getArg(0);
 		string f1, f2;
 
 		// f1
 		if (!buffer->lyxvc().prepareFileRevision(rev1, f1))
 			break;
 
-		if (rev1 <= 0) {
+		if (isStrInt(rev1) && convert<int>(rev1) <= 0) {
 			f2 = buffer->absFileName();
 		} else {
-			string arg2 = cmd.getArg(1);
-			if (arg2.empty() || !isStrInt(arg2))
+			string rev2 = cmd.getArg(1);
+			if (rev2.empty() || !isStrInt(rev2))
 				break;
-			int rev2 = convert<int>(arg2);
 			// f2
 			if (!buffer->lyxvc().prepareFileRevision(rev2, f2))
 				break;

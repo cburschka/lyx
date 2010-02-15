@@ -290,7 +290,7 @@ string RCS::revisionInfo(LyXVC::RevisionInfo const info)
 }
 
 
-bool RCS::prepareFileRevision(int, std::string &)
+bool RCS::prepareFileRevision(string const &, string &)
 {
 	return false;
 }
@@ -505,7 +505,7 @@ string CVS::revisionInfo(LyXVC::RevisionInfo const info)
 }
 
 
-bool CVS::prepareFileRevision(int, std::string &)
+bool CVS::prepareFileRevision(string const &, string &)
 {
 	return false;
 }
@@ -1006,8 +1006,12 @@ void SVN::getLog(FileName const & tmpf)
 }
 
 
-bool SVN::prepareFileRevision(int rev, string & f)
+bool SVN::prepareFileRevision(string const & revis, string & f)
 {
+	if (!isStrInt(revis))
+		return false;
+
+	int rev = convert<int>(revis);
 	if (rev <= 0)
 		if (!getFileRevisionInfo())
 			return false;

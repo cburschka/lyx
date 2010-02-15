@@ -79,7 +79,7 @@ public:
 	/// Return revision info specified by the argument.
 	virtual std::string revisionInfo(LyXVC::RevisionInfo const info) = 0;
 
-	virtual bool prepareFileRevision(int rev, std::string & f) = 0;
+	virtual bool prepareFileRevision(std::string const & rev, std::string & f) = 0;
 
 	virtual bool prepareFileRevisionEnabled() = 0;
 
@@ -157,7 +157,7 @@ public:
 
 	virtual std::string revisionInfo(LyXVC::RevisionInfo const info);
 
-	virtual bool prepareFileRevision(int rev, std::string & f);
+	virtual bool prepareFileRevision(std::string const & rev, std::string & f);
 
 	virtual bool prepareFileRevisionEnabled();
 
@@ -218,7 +218,7 @@ public:
 
 	virtual std::string revisionInfo(LyXVC::RevisionInfo const info);
 
-	virtual bool prepareFileRevision(int rev, std::string & f);
+	virtual bool prepareFileRevision(std::string const & rev, std::string & f);
 
 	virtual bool prepareFileRevisionEnabled();
 
@@ -278,7 +278,7 @@ public:
 
 	virtual std::string revisionInfo(LyXVC::RevisionInfo const info);
 
-	virtual bool prepareFileRevision(int rev, std::string & f);
+	virtual bool prepareFileRevision(std::string const & rev, std::string & f);
 
 	virtual bool prepareFileRevisionEnabled();
 

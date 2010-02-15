@@ -313,7 +313,7 @@ bool LyXVC::undoLastEnabled() const
 	return vcs && vcs->undoLastEnabled();
 }
 
-bool LyXVC::prepareFileRevision(int rev, std::string & f)
+bool LyXVC::prepareFileRevision(string const & rev, std::string & f)
 {
 	return vcs && vcs->prepareFileRevision(rev, f);
 }

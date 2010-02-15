@@ -110,8 +110,9 @@ public:
 	 * Parameter rev can be either revision number or negative number
 	 * which is interpreted as how many revision back from the current
 	 * one do we want. rev=0 is reserved for the last (committed) revision.
+	 * We need rev to be string, since in various VCS revision is not integer.
 	 */
-	bool prepareFileRevision(int rev, std::string & f);
+	bool prepareFileRevision(std::string const & rev, std::string & f);
 	/// Does the current VC supports this operation?
 	bool prepareFileRevisionEnabled();
 
