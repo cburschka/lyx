@@ -27,8 +27,10 @@ using namespace lyx::support;
 
 namespace lyx {
 
+namespace frontend {
+
 FloatPlacement::FloatPlacement(bool show_options, QWidget * parent)
-	: QWidget(parent), float_list_(0)
+	: InsetParamsWidget(parent), float_list_(0)
 {
 	setupUi(this);
 
@@ -244,6 +246,7 @@ void FloatPlacement::checkAllowed()
 	}
 }
 
+} // namespace frontend
 } // namespace lyx
 
 #include "moc_FloatPlacement.cpp"

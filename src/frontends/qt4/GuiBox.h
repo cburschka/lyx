@@ -13,20 +13,19 @@
 #ifndef GUIBOX_H
 #define GUIBOX_H
 
-#include "InsetDialog.h"
+#include "InsetParamsWidget.h"
 #include "ui_BoxUi.h"
-#include "insets/InsetBox.h"
 
 
 namespace lyx {
 namespace frontend {
 
-class GuiBox : public InsetDialog, public Ui::BoxUi
+class GuiBox : public InsetParamsWidget, public Ui::BoxUi
 {
 	Q_OBJECT
 
 public:
-	GuiBox(GuiView & lv);
+	GuiBox(QWidget * parent = 0);
 
 private Q_SLOTS:
 	void on_innerBoxCO_activated(QString const &);
@@ -36,13 +35,10 @@ private Q_SLOTS:
 	void on_pagebreakCB_stateChanged();
 
 private:
-	/// \name Dialog inerited methods
+	/// \name DialogView inherited methods
 	//@{
-	void enableView(bool enable);
-	//@}
-
-	/// \name InsetDialog inherited methods
-	//@{
+	InsetCode insetCode() { return BOX_CODE; }
+	FuncCode creationCode() { return LFUN_BOX_INSERT; }
 	void paramsToDialog(Inset const *);
 	docstring dialogToParams() const;
 	//@}

@@ -13,9 +13,8 @@
 #ifndef FLOATPLACEMENT_H
 #define FLOATPLACEMENT_H
 
+#include "InsetParamsWidget.h"
 #include "ui_FloatPlacementUi.h"
-
-#include <QWidget>
 
 #include "support/docstring.h"
 
@@ -25,15 +24,20 @@ class FloatList;
 class Inset;
 class InsetFloatParams;
 
-class FloatPlacement : public QWidget, public Ui::FloatPlacementUi {
+namespace frontend {
+
+class FloatPlacement : public InsetParamsWidget, public Ui::FloatPlacementUi {
 	Q_OBJECT
 public:
 	FloatPlacement(bool show_options = false, QWidget * parent = 0);
 
-	///
+	/// \name DialogView inherited methods
+	//@{
+	InsetCode insetCode() { return FLOAT_CODE; }
+	FuncCode creationCode() { return LFUN_FLOAT_INSERT; }
 	void paramsToDialog(Inset const *);
-	///
 	docstring dialogToParams() const;
+	//@}
 	///
 	void useWide();
 	///
@@ -46,9 +50,6 @@ public:
 private Q_SLOTS:
 	void on_defaultsCB_stateChanged(int state);
 	void changedSlot();
-
-Q_SIGNALS:
-	void changed();
 
 private:
 	///
@@ -64,6 +65,7 @@ private:
 	FloatList const * float_list_;
 };
 
+} // namespace frontend
 } // namespace lyx
 
 #endif // FLOATPLACEMENT_H

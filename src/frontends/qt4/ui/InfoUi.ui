@@ -1,86 +1,50 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>InfoUi</class>
- <widget class="QDialog" name="InfoUi" >
-  <property name="geometry" >
+ <widget class="QWidget" name="InfoUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>320</width>
-    <height>131</height>
+    <height>75</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string/>
   </property>
-  <property name="sizeGripEnabled" >
+  <property name="sizeGripEnabled" stdset="0">
    <bool>true</bool>
   </property>
-  <layout class="QVBoxLayout" >
+  <layout class="QVBoxLayout">
    <item>
-    <layout class="QGridLayout" >
-     <item row="0" column="0" >
-      <widget class="QLabel" name="typeLBL" >
-       <property name="text" >
+    <layout class="QGridLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="typeLBL">
+       <property name="text">
         <string>Information Type:</string>
        </property>
       </widget>
      </item>
-     <item row="0" column="1" >
-      <widget class="QComboBox" name="typeCO" />
+     <item row="0" column="1">
+      <widget class="QComboBox" name="typeCO"/>
      </item>
-     <item row="1" column="0" >
-      <widget class="QLabel" name="nameLBL" >
-       <property name="text" >
+     <item row="1" column="0">
+      <widget class="QLabel" name="nameLBL">
+       <property name="text">
         <string>Information Name:</string>
        </property>
       </widget>
      </item>
-     <item row="1" column="1" >
-      <widget class="QLineEdit" name="nameLE" />
-     </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" >
-     <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType" >
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" stdset="0" >
-        <size>
-         <width>84</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="newPB" >
-       <property name="text" >
-        <string>&amp;New</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="closePB" >
-       <property name="text" >
-        <string>&amp;Close</string>
-       </property>
-       <property name="default" >
-        <bool>true</bool>
-       </property>
-      </widget>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="nameLE"/>
      </item>
     </layout>
    </item>
   </layout>
  </widget>
  <includes>
-  <include location="local" >qt_i18n.h</include>
+  <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
  <connections/>

@@ -3437,12 +3437,12 @@ void GuiView::updateDialogs()
 	updateLayoutList();
 }
 
+Dialog * createDialog(GuiView & lv, string const & name);
 
 // will be replaced by a proper factory...
 Dialog * createGuiAbout(GuiView & lv);
 Dialog * createGuiBibitem(GuiView & lv);
 Dialog * createGuiBibtex(GuiView & lv);
-Dialog * createGuiBox(GuiView & lv);
 Dialog * createGuiBranch(GuiView & lv);
 Dialog * createGuiChanges(GuiView & lv);
 Dialog * createGuiCharacter(GuiView & lv);
@@ -3451,13 +3451,10 @@ Dialog * createGuiCompare(GuiView & lv);
 Dialog * createGuiDelimiter(GuiView & lv);
 Dialog * createGuiDocument(GuiView & lv);
 Dialog * createGuiErrorList(GuiView & lv);
-Dialog * createGuiERT(GuiView & lv);
 Dialog * createGuiExternal(GuiView & lv);
-Dialog * createGuiFloat(GuiView & lv);
 Dialog * createGuiGraphics(GuiView & lv);
 Dialog * createGuiInclude(GuiView & lv);
 Dialog * createGuiIndex(GuiView & lv);
-Dialog * createGuiInfo(GuiView & lv);
 Dialog * createGuiLabel(GuiView & lv);
 Dialog * createGuiListings(GuiView & lv);
 Dialog * createGuiLog(GuiView & lv);
@@ -3485,7 +3482,6 @@ Dialog * createGuiTextHSpace(GuiView & lv);
 Dialog * createGuiToc(GuiView & lv);
 Dialog * createGuiThesaurus(GuiView & lv);
 Dialog * createGuiHyperlink(GuiView & lv);
-Dialog * createGuiVSpace(GuiView & lv);
 Dialog * createGuiViewSource(GuiView & lv);
 Dialog * createGuiWrap(GuiView & lv);
 Dialog * createGuiProgressView(GuiView & lv);
@@ -3496,14 +3492,16 @@ Dialog * GuiView::build(string const & name)
 {
 	LASSERT(isValidName(name), return 0);
 
+	Dialog * dialog = createDialog(*this, name);
+	if (dialog)
+		return dialog;
+
 	if (name == "aboutlyx")
 		return createGuiAbout(*this);
 	if (name == "bibitem")
 		return createGuiBibitem(*this);
 	if (name == "bibtex")
 		return createGuiBibtex(*this);
-	if (name == "box")
-		return createGuiBox(*this);
 	if (name == "branch")
 		return createGuiBranch(*this);
 	if (name == "changes")
@@ -3518,8 +3516,6 @@ Dialog * GuiView::build(string const & name)
 		return createGuiDocument(*this);
 	if (name == "errorlist")
 		return createGuiErrorList(*this);
-	if (name == "ert")
-		return createGuiERT(*this);
 	if (name == "external")
 		return createGuiExternal(*this);
 	if (name == "file")
@@ -3528,8 +3524,6 @@ Dialog * GuiView::build(string const & name)
 		return createGuiSearch(*this);
 	if (name == "findreplaceadv")
 		return createGuiSearchAdv(*this);
-	if (name == "float")
-		return createGuiFloat(*this);
 	if (name == "graphics")
 		return createGuiGraphics(*this);
 	if (name == "href")
@@ -3540,8 +3534,6 @@ Dialog * GuiView::build(string const & name)
 		return createGuiIndex(*this);
 	if (name == "index_print")
 		return createGuiPrintindex(*this);
-	if (name == "info")
-		return createGuiInfo(*this);
 	if (name == "label")
 		return createGuiLabel(*this);
 	if (name == "listings")
@@ -3590,8 +3582,6 @@ Dialog * GuiView::build(string const & name)
 		return createGuiToc(*this);
 	if (name == "view-source")
 		return createGuiViewSource(*this);
-	if (name == "vspace")
-		return createGuiVSpace(*this);
 	if (name == "wrap")
 		return createGuiWrap(*this);
 	if (name == "progress")

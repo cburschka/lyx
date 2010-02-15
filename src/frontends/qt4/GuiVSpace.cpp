@@ -21,8 +21,9 @@
 #include "qt_helpers.h"
 #include "Validator.h"
 
-#include "Spacing.h"
 #include "FuncRequest.h"
+#include "Spacing.h"
+#include "VSpace.h"
 
 #include "insets/InsetVSpace.h"
 
@@ -39,48 +40,24 @@ using namespace std;
 namespace lyx {
 namespace frontend {
 
-GuiVSpace::GuiVSpace(GuiView & lv)
-	: GuiDialog(lv, "vspace", qt_("Vertical Space Settings"))
+GuiVSpace::GuiVSpace(QWidget * parent) : InsetParamsWidget(parent)
 {
 	setupUi(this);
 
-	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
-	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
-	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
-
-	connect(spacingCO, SIGNAL(highlighted(QString)),
-		this, SLOT(change_adaptor()));
 	connect(valueLE, SIGNAL(textChanged(QString)),
-		this, SLOT(change_adaptor()));
+		this, SIGNAL(changed()));
+	connect(keepCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
+	connect(unitCO, SIGNAL(selectionChanged(lyx::Length::UNIT)),
+		this, SIGNAL(changed()));
+
 	connect(spacingCO, SIGNAL(activated(int)),
 		this, SLOT(enableCustom(int)));
-	connect(keepCB, SIGNAL(clicked()),
-		this, SLOT(change_adaptor()));
-	connect(unitCO, SIGNAL(selectionChanged(lyx::Length::UNIT)),
-		this, SLOT(change_adaptor()));
 
 	valueLE->setValidator(unsignedGlueLengthValidator(valueLE));
 
-	// Manage the ok, apply, restore and cancel/close buttons
-	bc().setPolicy(ButtonPolicy::OkApplyCancelReadOnlyPolicy);
-	bc().setOK(okPB);
-	bc().setApply(applyPB);
-	bc().setCancel(closePB);
-
-	// disable for read-only documents
-	bc().addReadOnly(spacingCO);
-	bc().addReadOnly(valueLE);
-	bc().addReadOnly(unitCO);
-	bc().addReadOnly(keepCB);
-
 	// initialize the length validator
-	bc().addCheckedLineEdit(valueLE, valueL);
-}
-
-
-void GuiVSpace::change_adaptor()
-{
-	changed();
+	addCheckedWidget(valueLE, valueL);
 }
 
 
@@ -144,46 +121,25 @@ static VSpace setVSpaceFromWidgets(int spacing,
 }
 
 
-void GuiVSpace::applyView()
+docstring GuiVSpace::dialogToParams() const
 {
 	// If a vspace choice is "Length" but there's no text in
 	// the input field, do not insert a vspace at all.
 	if (spacingCO->currentIndex() == 5 && valueLE->text().isEmpty())
-		return;
+		return docstring();
 
-	params_ = setVSpaceFromWidgets(spacingCO->currentIndex(),
-			valueLE, unitCO, keepCB->isChecked()); 
+	VSpace const params = setVSpaceFromWidgets(spacingCO->currentIndex(),
+			valueLE, unitCO, keepCB->isChecked());
+	return from_ascii(InsetVSpace::params2string(params));
 }
 
 
-void GuiVSpace::updateContents()
+void GuiVSpace::paramsToDialog(Inset const * inset)
 {
-	setWidgetsFromVSpace(params_, spacingCO, valueLE, unitCO, keepCB);
+	InsetVSpace const * vs = static_cast<InsetVSpace const *>(inset);
+	VSpace const & params = vs->space();
+	setWidgetsFromVSpace(params, spacingCO, valueLE, unitCO, keepCB);
 }
-
-
-bool GuiVSpace::initialiseParams(string const & data)
-{
-	InsetVSpace::string2params(data, params_);
-	setButtonsValid(true);
-	return true;
-}
-
-
-void GuiVSpace::clearParams()
-{
-	params_ = VSpace();
-}
-
-
-void GuiVSpace::dispatchParams()
-{
-	dispatch(FuncRequest(getLfun(), InsetVSpace::params2string(params_)));
-}
-
-
-Dialog * createGuiVSpace(GuiView & lv) { return new GuiVSpace(lv); }
-
 
 } // namespace frontend
 } // namespace lyx

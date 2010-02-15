@@ -132,7 +132,8 @@ SOURCEFILES = \
 	GuiWrap.cpp \
 	IconPalette.cpp \
 	InsertTableWidget.cpp \
-	InsetDialog.cpp \
+	InsetParamsDialog.cpp \
+	InsetParamsWidget.cpp \
 	LengthCombo.cpp \
 	LyXFileDialog.cpp \
 	LaTeXHighlighter.cpp \
@@ -235,7 +236,8 @@ MOCHEADER = \
 	GuiWrap.h \
 	IconPalette.h \
 	InsertTableWidget.h \
-	InsetDialog.h \
+	InsetParamsDialog.h \
+	InsetParamsWidget.h \
 	LayoutBox.h \
 	LengthCombo.h \
 	LyXFileDialog.h \
@@ -267,7 +269,6 @@ UIFILES = \
 	ExternalUi.ui \
 	FindAndReplaceUi.ui \
 	FloatPlacementUi.ui \
-	FloatUi.ui \
 	FontUi.ui \
 	GraphicsUi.ui \
 	HSpaceUi.ui \
@@ -276,6 +277,7 @@ UIFILES = \
 	IndexUi.ui \
 	IndicesUi.ui \
 	InfoUi.ui \
+	InsetParamsUi.ui \
 	LabelUi.ui \
 	LanguageUi.ui \
 	LaTeXUi.ui \

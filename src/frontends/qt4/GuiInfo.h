@@ -12,7 +12,7 @@
 #ifndef GUI_INFO_H
 #define GUI_INFO_H
 
-#include "InsetDialog.h"
+#include "InsetParamsWidget.h"
 #include "ui_InfoUi.h"
 
 namespace lyx {
@@ -21,21 +21,18 @@ class Inset;
 
 namespace frontend {
 
-class GuiInfo : public InsetDialog, public Ui::InfoUi
+class GuiInfo : public InsetParamsWidget, public Ui::InfoUi
 {
 	Q_OBJECT
 
 public:
-	GuiInfo(GuiView & lv);
-
-	/// \name Dialog inherited methods
-	//@{
-	void enableView(bool enable);
-	//@}
+	GuiInfo(QWidget * parent = 0);
 
 private:
-	/// \name InsetDialog inherited methods
+	/// \name InsetParamsWidget inherited methods
 	//@{
+	InsetCode insetCode() { return INFO_CODE; }
+	FuncCode creationCode() { return LFUN_INFO_INSERT; }
 	void paramsToDialog(Inset const *);
 	docstring dialogToParams() const;
 	//@}

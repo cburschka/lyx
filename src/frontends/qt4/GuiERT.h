@@ -12,27 +12,24 @@
 #ifndef GUIERT_H
 #define GUIERT_H
 
-#include "InsetDialog.h"
+#include "InsetParamsWidget.h"
 #include "ui_ERTUi.h"
 
 namespace lyx {
 namespace frontend {
 
-class GuiERT : public InsetDialog, public Ui::ERTUi
+class GuiERT : public InsetParamsWidget, public Ui::ERTUi
 {
 	Q_OBJECT
 
 public:
-	GuiERT(GuiView & lv);
+	GuiERT(QWidget * parent = 0);
 
 private:
-	/// \name Dialog inerited methods
+	/// \name InsetParamsWidget inherited methods
 	//@{
-	void enableView(bool enable);
-	//@}
-
-	/// \name InsetDialog inherited methods
-	//@{
+	InsetCode insetCode() { return ERT_CODE; }
+	FuncCode creationCode() { return LFUN_INSET_INSERT; }
 	void paramsToDialog(Inset const *);
 	docstring dialogToParams() const;
 	//@}

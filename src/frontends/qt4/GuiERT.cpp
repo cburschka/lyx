@@ -14,6 +14,9 @@
 
 #include "GuiERT.h"
 
+#include "GuiApplication.h"
+#include "GuiView.h"
+
 #include "insets/InsetERT.h"
 
 #include "FuncRequest.h"
@@ -28,20 +31,12 @@ using namespace std;
 namespace lyx {
 namespace frontend {
 
-GuiERT::GuiERT(GuiView & lv)
-	: InsetDialog(lv, ERT_CODE, LFUN_INSET_INSERT, "ert", "TeX Code Settings")
+GuiERT::GuiERT(QWidget * parent) : InsetParamsWidget(parent)
 {
 	setupUi(this);
 
-	connect(collapsedRB, SIGNAL(clicked()), this, SLOT(applyView()));
-	connect(openRB, SIGNAL(clicked()), this, SLOT(applyView()));
-}
-
-
-void GuiERT::enableView(bool enable)
-{
-	collapsedRB->setEnabled(enable);
-	openRB->setEnabled(enable);
+	connect(collapsedRB, SIGNAL(clicked()), this, SIGNAL(changed()));
+	connect(openRB, SIGNAL(clicked()), this, SIGNAL(changed()));
 }
 
 
@@ -56,16 +51,14 @@ docstring GuiERT::dialogToParams() const
 void GuiERT::paramsToDialog(Inset const * inset)
 {
 	InsetERT const * ert = static_cast<InsetERT const *>(inset);
-	InsetCollapsable::CollapseStatus status = ert->status(*bufferview());
+	// FIXME: This dialog has absolutely no value...
+	BufferView const * bv = guiApp->currentView()->currentBufferView();
+	InsetCollapsable::CollapseStatus status = ert->status(*bv);
 	switch (status) {
 		case InsetCollapsable::Open: openRB->setChecked(true); break;
 		case InsetCollapsable::Collapsed: collapsedRB->setChecked(true); break;
 	}
 }
-
-
-Dialog * createGuiERT(GuiView & lv) { return new GuiERT(lv); }
-
 
 } // namespace frontend
 } // namespace lyx

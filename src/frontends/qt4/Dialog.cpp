@@ -42,17 +42,6 @@ using namespace lyx::support;
 namespace lyx {
 namespace frontend {
 
-bool CheckedLineEdit2::check() const
-{
-	bool const valid = input_->hasAcceptableInput();
-	// Visual feedback.
-	setValid(input_, valid);
-	if (label_)
-		setValid(label_, valid);
-	return valid;
-}
-
-
 Dialog::Dialog(GuiView & lv, QString const & name, QString const & title)
 	: name_(name), title_(title), lyxview_(&lv)
 {}
@@ -60,21 +49,6 @@ Dialog::Dialog(GuiView & lv, QString const & name, QString const & title)
 
 Dialog::~Dialog()
 {}
-
-
-void Dialog::addCheckedWidget(QLineEdit * input, QWidget * label)
-{
-	checked_line_edits_.append(CheckedLineEdit2(input, label));
-}
-
-
-bool Dialog::checkWidgets() const
-{
-	bool valid = true;
-	Q_FOREACH(CheckedLineEdit2 const & le, checked_line_edits_)
-			valid &= le.check();
-	return valid;
-}
 
 
 bool Dialog::canApply() const

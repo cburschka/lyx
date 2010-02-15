@@ -47,8 +47,7 @@ char const * info_types_gui[] =
   N_("menu"), N_("icon"), N_("buffer"), ""};
 
 
-GuiInfo::GuiInfo(GuiView & lv)
-	: InsetDialog(lv, INFO_CODE, LFUN_INFO_INSERT, "info", "Info")
+GuiInfo::GuiInfo(QWidget * parent) : InsetParamsWidget(parent)
 {
 	setupUi(this);
 
@@ -57,8 +56,8 @@ GuiInfo::GuiInfo(GuiView & lv)
 		typeCO->addItem(qt_(info_types_gui[n]));
 	typeCO->blockSignals(false);
 
-	connect(typeCO, SIGNAL(currentIndexChanged(int)), this, SLOT(applyView()));
-	connect(nameLE, SIGNAL(textChanged(QString)), this, SLOT(applyView()));
+	connect(typeCO, SIGNAL(currentIndexChanged(int)), this, SIGNAL(changed()));
+	connect(nameLE, SIGNAL(textChanged(QString)), this, SIGNAL(changed()));
 }
 
 
@@ -89,17 +88,6 @@ docstring GuiInfo::dialogToParams() const
 	QString const name = nameLE->text();
 	return qstring_to_ucs4(type + ' ' + name);
 }
-
-
-void GuiInfo::enableView(bool enable)
-{
-	typeCO->setEnabled(enable);
-	nameLE->setEnabled(enable);
-	newPB->setEnabled(!enable);
-}
-
-
-Dialog * createGuiInfo(GuiView & lv) { return new GuiInfo(lv); }
 
 
 } // namespace frontend

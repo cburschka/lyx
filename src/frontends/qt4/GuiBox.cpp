@@ -73,8 +73,7 @@ static QStringList boxGuiSpecialLengthNames()
 }
 
 
-GuiBox::GuiBox(GuiView & lv)
-	: InsetDialog(lv, BOX_CODE, LFUN_BOX_INSERT, "box", "Box Settings")
+GuiBox::GuiBox(QWidget * parent) : InsetParamsWidget(parent)
 {
 	setupUi(this);
 
@@ -91,15 +90,15 @@ GuiBox::GuiBox(GuiView & lv)
 	for (int i = 0; i != ids_spec_.size(); ++i)
 		heightUnitsLC->addItem(gui_names_spec_[i], ids_spec_[i]);
 
-	connect(widthED, SIGNAL(textChanged(QString)), this, SLOT(applyView()));
+	connect(widthED, SIGNAL(textChanged(QString)), this, SIGNAL(changed()));
 	connect(widthUnitsLC, SIGNAL(selectionChanged(lyx::Length::UNIT)),
-		this, SLOT(applyView()));
-	connect(valignCO, SIGNAL(highlighted(QString)), this, SLOT(applyView()));
-	connect(heightED, SIGNAL(textChanged(QString)), this, SLOT(applyView()));
+		this, SIGNAL(changed()));
+	connect(valignCO, SIGNAL(highlighted(QString)), this, SIGNAL(changed()));
+	connect(heightED, SIGNAL(textChanged(QString)), this, SIGNAL(changed()));
 	connect(heightUnitsLC, SIGNAL(selectionChanged(lyx::Length::UNIT)),
-		this, SLOT(applyView()));
-	connect(halignCO, SIGNAL(activated(int)), this, SLOT(applyView()));
-	connect(ialignCO, SIGNAL(activated(int)), this, SLOT(applyView()));
+		this, SIGNAL(changed()));
+	connect(halignCO, SIGNAL(activated(int)), this, SIGNAL(changed()));
+	connect(ialignCO, SIGNAL(activated(int)), this, SIGNAL(changed()));
 
 	heightED->setValidator(unsignedLengthValidator(heightED));
 	widthED->setValidator(unsignedLengthValidator(widthED));
@@ -112,22 +111,6 @@ GuiBox::GuiBox(GuiView & lv)
 }
 
 
-void GuiBox::enableView(bool enable)
-{
-	typeCO->setEnabled(enable);
-	innerBoxCO->setEnabled(enable);
-	valignCO->setEnabled(enable);
-	ialignCO->setEnabled(enable);
-	halignCO->setEnabled(enable);
-	widthED->setEnabled(enable);
-	widthUnitsLC->setEnabled(enable);
-	heightCB->setEnabled(enable);
-	heightED->setEnabled(enable);
-	heightUnitsLC->setEnabled(enable);
-	pagebreakCB->setEnabled(enable);
-}
-
-
 void GuiBox::on_innerBoxCO_activated(QString const & str)
 {
 	bool const ibox = (str != qt_("None"));
@@ -137,7 +120,7 @@ void GuiBox::on_innerBoxCO_activated(QString const & str)
 	heightCB->setEnabled(ibox);
 	pagebreakCB->setEnabled(!ibox && typeCO->currentIndex() == 1);
 	setSpecial(ibox);
-	applyView();
+	changed();
 }
 
 
@@ -160,7 +143,7 @@ void GuiBox::on_typeCO_activated(int index)
 	widthED->setEnabled(index != 5);
 	widthUnitsLC->setEnabled(index != 5);
 	setInnerType(frameless, itype);
-	applyView();
+	changed();
 }
 
 
@@ -181,7 +164,7 @@ void GuiBox::on_heightCB_stateChanged(int state)
 		&& (state == Qt::Checked);
 	heightED->setEnabled(enable);
 	heightUnitsLC->setEnabled(enable);
-	applyView();
+	changed();
 }
 
 
@@ -202,7 +185,7 @@ void GuiBox::on_pagebreakCB_stateChanged()
 	heightED->setEnabled(false);
 	heightUnitsLC->setEnabled(false);
 	setSpecial(false);
-	applyView();
+	changed();
 }
 
 
@@ -377,10 +360,6 @@ void GuiBox::setInnerType(bool frameless, int i)
 		innerBoxCO->setCurrentIndex(i);
 	}
 }
-
-
-Dialog * createGuiBox(GuiView & lv) { return new GuiBox(lv); }
-
 
 } // namespace frontend
 } // namespace lyx

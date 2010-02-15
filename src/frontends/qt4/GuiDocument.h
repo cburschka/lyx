@@ -43,12 +43,12 @@
 namespace lyx {
 
 class BufferParams;
-class FloatPlacement;
 class LayoutModuleList;
 class TextClass;
 
 namespace frontend {
 
+class FloatPlacement;
 class GuiBranches;
 class GuiIndices;
 class ModuleSelectionManager;

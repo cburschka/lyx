@@ -22,7 +22,6 @@
 #include <QString>
 
 class QWidget;
-class QLineEdit;
 
 namespace lyx {
 
@@ -45,28 +44,6 @@ enum KernelDocType
 	LITERATE,
 	DOCBOOK
 };
-
-/// CheckedLineEdit
-// FIXME: Get rid of CheckedLineEdit in ButtonController and rename this one
-// to it.
-class CheckedLineEdit2
-{
-public:
-	CheckedLineEdit2(QLineEdit * input, QWidget * label = 0)
-	: input_(input), label_(label)
-	{}
-	///	
-	bool check() const;
-
-private:
-	// non-owned
-	QLineEdit * input_;
-	QWidget * label_;
-};
-
-
-typedef QList<CheckedLineEdit2> CheckedLineEdits;
-
 
 /** \c Dialog collects the different parts of a Model-Controller-View
  *  split of a generic dialog together.
@@ -279,11 +256,6 @@ protected:
 	void setTitle(QString const & title) { title_ = title; }
 	///
 	virtual void apply();
-	/// Add a widget to the list of all widgets whose validity should
-	/// be checked explicitly when the buttons are refreshed.
-	void addCheckedWidget(QLineEdit * input, QWidget * label = 0);
-	/// \return true if all CheckedWidgets are in a valid state.
-	bool checkWidgets() const;
 
 private:
 	/** The Dialog's name is the means by which a dialog identifies
@@ -298,9 +270,6 @@ private:
 	/// intentionally unimplemented, therefore uncopiable
 	Dialog(Dialog const &);
 	void operator=(Dialog const &);
-
-	///
-	CheckedLineEdits checked_line_edits_;
 };
 
 

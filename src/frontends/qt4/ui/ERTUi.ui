@@ -1,18 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>ERTUi</class>
- <widget class="QDialog" name="ERTUi">
+ <widget class="QWidget" name="ERTUi">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>197</width>
-    <height>135</height>
+    <width>175</width>
+    <height>99</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string/>
   </property>
-  <property name="sizeGripEnabled">
+  <property name="sizeGripEnabled" stdset="0">
    <bool>true</bool>
   </property>
   <layout class="QVBoxLayout">
@@ -56,58 +57,6 @@
       </item>
      </layout>
     </widget>
-   </item>
-   <item>
-    <layout class="QHBoxLayout">
-     <property name="spacing">
-      <number>6</number>
-     </property>
-     <property name="margin">
-      <number>0</number>
-     </property>
-     <item>
-      <spacer>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="newPB">
-       <property name="toolTip">
-        <string/>
-       </property>
-       <property name="text">
-        <string>&amp;New</string>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
-       </property>
-       <property name="default">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="closePB">
-       <property name="text">
-        <string>Close</string>
-       </property>
-       <property name="default">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-    </layout>
    </item>
   </layout>
  </widget>
