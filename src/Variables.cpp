@@ -77,7 +77,6 @@ int main() {
 	cout << vars.expand("${x}") << endl;
 }
 
-#endif
-
-
 } // namespace lyx
+
+#endif
