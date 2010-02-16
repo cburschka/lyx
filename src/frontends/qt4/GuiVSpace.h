@@ -33,7 +33,7 @@ private Q_SLOTS:
 	void enableCustom(int);
 
 private:
-	/// \name DialogView inherited methods
+	/// \name InsetParamsWidget inherited methods
 	//@{
 	InsetCode insetCode() { return VSPACE_CODE; }
 	FuncCode creationCode() { return LFUN_INSET_INSERT; }

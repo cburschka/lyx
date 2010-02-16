@@ -51,6 +51,8 @@ private:
 	bool isBufferDependent() const { return true; }
 	bool canApply() const { return true; }
 	//@}
+	///
+	void newInset();
 	/// pimpl
 	struct Private;
 	Private * d;

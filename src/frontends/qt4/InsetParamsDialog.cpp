@@ -15,6 +15,7 @@
 #include "GuiBox.h"
 #include "GuiERT.h"
 #include "GuiInfo.h"
+#include "GuiTabular.h"
 #include "GuiVSpace.h"
 #include "FloatPlacement.h"
 
@@ -89,19 +90,28 @@ void InsetParamsDialog::on_restorePB_clicked()
 
 void InsetParamsDialog::on_okPB_clicked()
 {
-	applyView();
+	Inset const * i = inset(d->widget_->insetCode());
+	if (i)
+		applyView();
+	else
+		newInset();
 	hide();
+}
+
+
+void InsetParamsDialog::newInset()
+{
+	docstring const argument = d->widget_->dialogToParams();
+	dispatch(FuncRequest(d->widget_->creationCode(), argument));
 }
 
 
 void InsetParamsDialog::on_applyPB_clicked()
 {
-	if (synchronizedViewCB->isChecked()) {
-		docstring const argument = d->widget_->dialogToParams();
-		dispatch(FuncRequest(d->widget_->creationCode(), argument));
-	} else {
+	if (synchronizedViewCB->isChecked())
+		newInset();
+	else
 		applyView();
-	}
 }
 
 
@@ -116,12 +126,15 @@ void InsetParamsDialog::on_synchronizedViewCB_stateChanged(int state)
 	bool const sync = (state == Qt::Checked);
 	QString const label = sync ? qt_("&New") :  qt_("&Apply");
 	applyPB->setText(label);
-	okPB->setEnabled(!sync);
+	okPB->setEnabled(!sync && d->widget_->checkWidgets());
 	restorePB->setEnabled(!sync);
 	if (sync)
 		connect(d->widget_, SIGNAL(changed()), this, SLOT(applyView()));
-	else
+	else {
+		applyPB->setEnabled(d->widget_->checkWidgets());
+		d->widget_->setEnabled(!buffer().isReadonly());
 		QObject::disconnect(d->widget_, SIGNAL(changed()), this, SLOT(applyView()));
+	}
 }
 
 
@@ -137,12 +150,10 @@ void InsetParamsDialog::applyView()
 	docstring const argument = d->widget_->dialogToParams();
 
 	if (argument.empty() || !i->validateModifyArgument(argument)) {
-		//FIXME: newPB is not accessible
-		//newPB->setEnabled(false);
+		applyPB->setEnabled(false);
 		return;
 	}
-	//FIXME: newPB is not accessible
-	//newPB->setEnabled(true);
+	applyPB->setEnabled(true);
 	dispatch(FuncRequest(LFUN_INSET_MODIFY, argument));
 }
 
@@ -179,6 +190,12 @@ Dialog * createDialog(GuiView & lv, InsetCode code)
 	case INFO_CODE:
 		widget = new GuiInfo;
 		break;
+	//FIXME: not ready yet.
+	/*
+	case TABULAR_CODE:
+		widget = new GuiTabular;
+		break;
+	*/
 	case VSPACE_CODE:
 		widget = new GuiVSpace;
 		break;
