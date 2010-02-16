@@ -89,7 +89,7 @@ static void build_translator()
 	insetnames[FLOAT_CODE] = InsetName("float", _("Float"));
 	insetnames[WRAP_CODE] = InsetName("wrap");
 	insetnames[SPECIALCHAR_CODE] = InsetName("specialchar");
-	insetnames[TABULAR_CODE] = InsetName("tabular");
+	insetnames[TABULAR_CODE] = InsetName("tabular", _("Table"));
 	insetnames[EXTERNAL_CODE] = InsetName("external");
 	insetnames[CAPTION_CODE] = InsetName("caption");
 	insetnames[MATHMACRO_CODE] = InsetName("mathmacro");
@@ -286,6 +286,26 @@ void Inset::dispatch(Cursor & cur, FuncRequest & cmd)
 	cur.updateFlags(Update::Force | Update::FitCursor);
 	cur.dispatched();
 	doDispatch(cur, cmd);
+}
+
+
+bool Inset::showInsetDialog(BufferView * bv) const
+{
+	InsetCode const code = lyxCode();
+	switch (code){
+	case ERT_CODE:
+	case FLOAT_CODE:
+	case BOX_CODE:
+	case INFO_CODE:
+	//FIXME: not ready yet.
+	//case TABULAR_CODE:
+	case VSPACE_CODE:
+		bv->showDialog(insetName(code));
+		break;
+	default:
+		return false;
+	}
+	return true;
 }
 
 

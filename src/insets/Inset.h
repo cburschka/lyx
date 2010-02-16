@@ -190,7 +190,7 @@ public:
 	///
 	virtual bool editing(BufferView const * bv) const;
 	///
-	virtual bool showInsetDialog(BufferView *) const { return false; }
+	virtual bool showInsetDialog(BufferView *) const;
 
 	/// draw inset decoration if necessary.
 	/// This can use \c drawMarkers() for example.

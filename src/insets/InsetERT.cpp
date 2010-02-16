@@ -147,13 +147,6 @@ docstring const InsetERT::buttonLabel(BufferView const & bv) const
 }
 
 
-bool InsetERT::showInsetDialog(BufferView * bv) const
-{
-	bv->showDialog("ert");
-	return true;
-}
-
-
 InsetCollapsable::CollapseStatus InsetERT::string2params(string const & in)
 {
 	if (in.empty())

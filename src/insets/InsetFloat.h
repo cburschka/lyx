@@ -95,8 +95,6 @@ private:
 	    insets that may contain several paragraphs */
 	bool noFontChange() const { return true; }
 	///
-	bool showInsetDialog(BufferView *) const;
-	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	// Update the counters of this inset and of its contents
 	void updateLabels(ParIterator const &, UpdateType);

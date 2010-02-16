@@ -98,8 +98,6 @@ private:
 	void setButtonLabel();
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
-	/// show the Box dialog
-	bool showInsetDialog(BufferView * bv) const;
 	///
 	DisplayType display() const { return Inline; }
 	///

@@ -52,8 +52,6 @@ private:
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures &) const {}
-	///
-	bool showInsetDialog(BufferView *) const;
 	/// should paragraph indendation be omitted in any case?
 	bool neverIndent() const { return true; }
 	///

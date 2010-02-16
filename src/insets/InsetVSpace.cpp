@@ -53,12 +53,6 @@ InsetVSpace::InsetVSpace(VSpace const & space)
 {}
 
 
-InsetVSpace::~InsetVSpace()
-{
-	hideDialogs("vspace", this);
-}
-
-
 void InsetVSpace::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
@@ -92,14 +86,6 @@ bool InsetVSpace::getStatus(Cursor & cur, FuncRequest const & cmd,
 	default:
 		return Inset::getStatus(cur, cmd, status);
 	}
-}
-
-
-bool InsetVSpace::showInsetDialog(BufferView * bv) const
-{
-	bv->showDialog("vspace", params2string(space()),
-		const_cast<InsetVSpace *>(this));
-	return true;
 }
 
 

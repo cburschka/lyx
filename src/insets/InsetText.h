@@ -112,8 +112,6 @@ public:
 	///
 	void setFrameColor(ColorCode);
 	///
-	bool showInsetDialog(BufferView *) const;
-	///
 	Text * getText(int i) const {
 		return (i == 0) ? const_cast<Text*>(&text_) : 0;
 	}

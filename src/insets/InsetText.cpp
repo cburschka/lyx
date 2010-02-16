@@ -529,12 +529,6 @@ void InsetText::cursorPos(BufferView const & bv,
 }
 
 
-bool InsetText::showInsetDialog(BufferView *) const
-{
-	return false;
-}
-
-
 void InsetText::setText(docstring const & data, Font const & font, bool trackChanges)
 {
 	clear();

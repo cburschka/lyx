@@ -25,8 +25,6 @@ public:
 	InsetVSpace() : Inset(0) {}
 	///
 	InsetVSpace(VSpace const &);
-	///
-	~InsetVSpace();
 	/// How much?
 	VSpace const & space() const { return space_; }
 	///
@@ -70,8 +68,6 @@ private:
 	Inset * clone() const { return new InsetVSpace(*this); }
 	///
 	docstring const label() const;
-	///
-	bool showInsetDialog(BufferView * bv) const;
 
 	///
 	VSpace space_;

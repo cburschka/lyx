@@ -184,13 +184,6 @@ bool InsetBox::forcePlainLayout(idx_type) const
 }
 
 
-bool InsetBox::showInsetDialog(BufferView * bv) const
-{
-	bv->showDialog("box");
-	return true;
-}
-
-
 void InsetBox::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {

@@ -427,14 +427,6 @@ bool InsetFloat::insetAllowed(InsetCode code) const
 }
 
 
-bool InsetFloat::showInsetDialog(BufferView * bv) const
-{
-	if (!InsetText::showInsetDialog(bv))
-		bv->showDialog("float");
-	return true;
-}
-
-
 void InsetFloat::setWide(bool w, bool update_label)
 {
 	params_.wide = w;
