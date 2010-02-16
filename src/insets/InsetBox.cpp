@@ -201,12 +201,9 @@ void InsetBox::doDispatch(Cursor & cur, FuncRequest & cmd)
 			params_.type = cmd.getArg(1);
 		else
 			string2params(to_utf8(cmd.argument()), params_);
+		setButtonLabel();
 		break;
 	}
-
-	case LFUN_INSET_DIALOG_UPDATE:
-		cur.bv().updateDialog("box", params2string(params_));
-		break;
 
 	default:
 		InsetCollapsable::doDispatch(cur, cmd);
