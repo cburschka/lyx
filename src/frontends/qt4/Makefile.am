@@ -81,7 +81,6 @@ SOURCEFILES = \
 	GuiErrorList.cpp \
 	GuiERT.cpp \
 	GuiExternal.cpp \
-	GuiFloat.cpp \
 	GuiFontExample.cpp \
 	GuiFontLoader.cpp \
 	GuiFontMetrics.cpp \
@@ -192,7 +191,6 @@ MOCHEADER = \
 	GuiErrorList.h \
 	GuiERT.h \
 	GuiExternal.h \
-	GuiFloat.h \
 	GuiGraphics.h \
 	GuiHSpace.h \
 	GuiHyperlink.h \
