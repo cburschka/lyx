@@ -79,6 +79,7 @@ void InsetParamsDialog::setInsetParamsWidget(InsetParamsWidget * widget)
 	d->widget_ = widget;
 	stackedWidget->addWidget(widget);
 	stackedWidget->setCurrentWidget(widget);
+	connect(d->widget_, SIGNAL(changed()), this, SLOT(onWidget_changed()));
 }
 
 
@@ -126,34 +127,42 @@ void InsetParamsDialog::on_synchronizedViewCB_stateChanged(int state)
 	bool const sync = (state == Qt::Checked);
 	QString const label = sync ? qt_("&New") :  qt_("&Apply");
 	applyPB->setText(label);
-	okPB->setEnabled(!sync && d->widget_->checkWidgets());
-	restorePB->setEnabled(!sync);
-	if (sync)
-		connect(d->widget_, SIGNAL(changed()), this, SLOT(applyView()));
-	else {
-		applyPB->setEnabled(d->widget_->checkWidgets());
-		d->widget_->setEnabled(!buffer().isReadonly());
-		QObject::disconnect(d->widget_, SIGNAL(changed()), this, SLOT(applyView()));
-	}
+	checkWidgets(sync);
+}
+
+
+docstring InsetParamsDialog::checkWidgets(bool synchronized_view)
+{
+	bool const widget_ok = d->widget_->checkWidgets();
+	Inset const * ins = inset(d->widget_->insetCode());
+	docstring const argument = d->widget_->dialogToParams();
+	bool valid_argument = !argument.empty();
+	if (ins)
+		valid_argument &= ins->validateModifyArgument(argument);
+	FuncCode const code = synchronized_view
+		? d->widget_->creationCode() : LFUN_INSET_MODIFY;
+	bool const lfun_ok = lyx::getStatus(FuncRequest(code, argument)).enabled();
+	bool const read_only = buffer().isReadonly();
+
+	okPB->setEnabled(!synchronized_view && widget_ok && !read_only && valid_argument);
+	restorePB->setEnabled(!synchronized_view && ins && !read_only);
+	applyPB->setEnabled(lfun_ok && widget_ok && !read_only && valid_argument);
+	d->widget_->setEnabled(!read_only);
+	return argument;
+}
+
+
+void InsetParamsDialog::onWidget_changed()
+{
+	docstring const argument = checkWidgets(synchronizedViewCB->isChecked());
+	if (synchronizedViewCB->isChecked())
+		dispatch(FuncRequest(LFUN_INSET_MODIFY, argument));
 }
 
 
 void InsetParamsDialog::applyView()
 {
-	if (!d->widget_->checkWidgets())
-		return;
-
-	Inset const * i = inset(d->widget_->insetCode());
-	if (!i)
-		return;
-	
-	docstring const argument = d->widget_->dialogToParams();
-
-	if (argument.empty() || !i->validateModifyArgument(argument)) {
-		applyPB->setEnabled(false);
-		return;
-	}
-	applyPB->setEnabled(true);
+	docstring const argument = checkWidgets(synchronizedViewCB->isChecked());
 	dispatch(FuncRequest(LFUN_INSET_MODIFY, argument));
 }
 
@@ -161,16 +170,12 @@ void InsetParamsDialog::applyView()
 void InsetParamsDialog::updateView()
 {
 	Inset const * i = inset(d->widget_->insetCode());
-	if (i)
+	if (i) {
+		d->widget_->blockSignals(true);
 		d->widget_->paramsToDialog(i);
-	else
-		d->widget_->setEnabled(false);
-
-	docstring const argument = d->widget_->dialogToParams();
-	FuncCode const code = synchronizedViewCB->isChecked()
-		? d->widget_->creationCode() : LFUN_INSET_MODIFY;
-	applyPB->setEnabled(
-		lyx::getStatus(FuncRequest(code, argument)).enabled());
+		d->widget_->blockSignals(false);
+	}
+	checkWidgets(synchronizedViewCB->isChecked());
 }
 
 

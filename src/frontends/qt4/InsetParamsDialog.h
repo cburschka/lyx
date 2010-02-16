@@ -36,6 +36,7 @@ public:
 	void setInsetParamsWidget(InsetParamsWidget * widget);
 
 protected Q_SLOTS:
+	void onWidget_changed();
 	void applyView();
 	void on_restorePB_clicked();
 	void on_okPB_clicked();
@@ -53,6 +54,8 @@ private:
 	//@}
 	///
 	void newInset();
+	///
+	docstring checkWidgets(bool synchronized_view);
 	/// pimpl
 	struct Private;
 	Private * d;
