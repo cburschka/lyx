@@ -1161,11 +1161,16 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_TABULAR_FEATURE: {
+	case LFUN_INSET_MODIFY: {
 		cur.recordUndoInset();
 		//lyxerr << "handling tabular-feature " << to_utf8(cmd.argument()) << endl;
 		istringstream is(to_utf8(cmd.argument()));
 		string s;
+		is >> s;
+		if (s != "tabular") {
+			InsetMathNest::doDispatch(cur, cmd);
+			return;
+		}
 		is >> s;
 		if (s == "valign-top")
 			setVerticalAlignment('t');
@@ -1398,8 +1403,13 @@ bool InsetMathGrid::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & status) const
 {
 	switch (cmd.action) {
-	case LFUN_TABULAR_FEATURE: {
-		string const s = cmd.getArg(0);
+	case LFUN_INSET_MODIFY: {
+		istringstream is(to_utf8(cmd.argument()));
+		string s;
+		is >> s;
+		if (s != "tabular")
+			return InsetMathNest::getStatus(cur, cmd, status);
+		is >> s;
 		if (nrows() <= 1 && (s == "delete-row" || s == "swap-row")) {
 			status.setEnabled(false);
 			status.message(from_utf8(N_("Only one row")));

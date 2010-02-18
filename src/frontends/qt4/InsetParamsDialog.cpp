@@ -195,12 +195,9 @@ Dialog * createDialog(GuiView & lv, InsetCode code)
 	case INFO_CODE:
 		widget = new GuiInfo;
 		break;
-	//FIXME: not ready yet.
-	/*
 	case TABULAR_CODE:
 		widget = new GuiTabular;
 		break;
-	*/
 	case VSPACE_CODE:
 		widget = new GuiVSpace;
 		break;

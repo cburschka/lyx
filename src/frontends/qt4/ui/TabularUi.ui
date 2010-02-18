@@ -1,18 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>TabularUi</class>
- <widget class="QDialog" name="TabularUi">
+ <widget class="QWidget" name="TabularUi">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>378</width>
-    <height>401</height>
+    <width>397</width>
+    <height>429</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string/>
   </property>
-  <property name="sizeGripEnabled">
+  <property name="sizeGripEnabled" stdset="0">
    <bool>true</bool>
   </property>
   <layout class="QGridLayout">
@@ -96,22 +97,6 @@
         </size>
        </property>
       </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="closePB">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text">
-        <string>Close</string>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
-       </property>
-      </widget>
      </item>
     </layout>
    </item>
@@ -1519,7 +1504,6 @@
   <tabstop>multirowCB</tabstop>
   <tabstop>rotateCellCB</tabstop>
   <tabstop>specialAlignmentED</tabstop>
-  <tabstop>closePB</tabstop>
   <tabstop>borderSetPB</tabstop>
   <tabstop>borderUnsetPB</tabstop>
   <tabstop>borderDefaultRB</tabstop>

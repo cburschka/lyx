@@ -63,9 +63,14 @@ bool InsetMathSubstack::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	switch (cmd.action) {
-	case LFUN_TABULAR_FEATURE: {
+	case LFUN_INSET_MODIFY: {
+		istringstream is(to_utf8(cmd.argument()));
+		string s;
+		is >> s;
+		if (s != "tabular")
+			break;
+		is >> s;
 		string const name = "substack";
-		docstring const & s = cmd.argument();
 		if (s == "add-vline-left" || s == "add-vline-right") {
 			flag.message(bformat(
 				from_utf8(N_("Can't add vertical grid lines in '%1$s'")),
@@ -73,11 +78,12 @@ bool InsetMathSubstack::getStatus(Cursor & cur, FuncRequest const & cmd,
 			flag.setEnabled(false);
 			return true;
 		}
-		return InsetMathGrid::getStatus(cur, cmd, flag);
+		break;
 	}
 	default:
-		return InsetMathGrid::getStatus(cur, cmd, flag);
+		break;
 	}
+	return InsetMathGrid::getStatus(cur, cmd, flag);
 }
 
 

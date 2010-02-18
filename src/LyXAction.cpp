@@ -2080,7 +2080,10 @@ void LyXAction::init()
  * \li Origin: Jug, 28 Jul 2000
  * \endvar
  */
-		{ LFUN_TABULAR_FEATURE, "tabular-feature", Noop, Edit },
+// FIXME: This LFUN has been replaced with LFUN_INSET_MODIFY with the
+// "tabular" argument. How to insert above documentation into LFUN_INSET_MODIFY doc?
+//		{ LFUN_TABULAR_FEATURE, "tabular-feature", Noop, Edit },
+
 /*!
  * \var lyx::FuncCode lyx::LFUN_CELL_BACKWARD
  * \li Action: Moves the cursor to the previous cell inside the table.

@@ -298,7 +298,7 @@ bool Inset::showInsetDialog(BufferView * bv) const
 	case BOX_CODE:
 	case INFO_CODE:
 	//FIXME: not ready yet.
-	//case TABULAR_CODE:
+	case TABULAR_CODE:
 	case VSPACE_CODE:
 		bv->showDialog(insetName(code));
 		break;

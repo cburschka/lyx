@@ -258,7 +258,7 @@ enum FuncCode
 	LFUN_CAPTION_INSERT,            // Lgb 20000718; inactive as of 20060905
 	LFUN_BUFFER_SWITCH,
 	// 190
-	LFUN_TABULAR_FEATURE,           // Jug 20000728
+	LFUN_BUFFER_CHKTEX,             // Asger 971030
 	LFUN_LAYOUT_TABULAR,            // Jug 20000731
 	LFUN_BUFFER_UPDATE,             // Dekel 20000805
 	LFUN_INDEX_INSERT,              // Angus 20000803
@@ -445,7 +445,6 @@ enum FuncCode
 	LFUN_SPELLING_ADD,              // spitz 20100118
 	// 345
 	LFUN_SPELLING_IGNORE,           // spitz 20100118
-	LFUN_BUFFER_CHKTEX,             // Asger 971030
 
 	LFUN_LASTACTION                 // end of the table
 };

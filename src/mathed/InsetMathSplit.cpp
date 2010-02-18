@@ -70,19 +70,25 @@ bool InsetMathSplit::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	switch (cmd.action) {
-	case LFUN_TABULAR_FEATURE: {
-		docstring const & s = cmd.argument();
+	case LFUN_INSET_MODIFY: {
+		istringstream is(to_utf8(cmd.argument()));
+		string s;
+		is >> s;
+		if (s != "tabular")
+			break;
+		is >> s;
 		if (s == "add-vline-left" || s == "add-vline-right") {
 			flag.message(bformat(
 				from_utf8(N_("Can't add vertical grid lines in '%1$s'")),	name_));
 			flag.setEnabled(false);
 			return true;
 		}
-		return InsetMathGrid::getStatus(cur, cmd, flag);
+		break;
 	}
 	default:
-		return InsetMathGrid::getStatus(cur, cmd, flag);
+		break;
 	}
+	return InsetMathGrid::getStatus(cur, cmd, flag);
 }
 
 

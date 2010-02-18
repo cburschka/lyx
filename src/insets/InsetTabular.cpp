@@ -101,75 +101,76 @@ boost::scoped_ptr<Tabular> paste_tabular;
 struct TabularFeature {
 	Tabular::Feature action;
 	string feature;
+	bool need_value;
 };
 
 
 TabularFeature tabularFeature[] =
 {
-	{ Tabular::APPEND_ROW, "append-row" },
-	{ Tabular::APPEND_COLUMN, "append-column" },
-	{ Tabular::DELETE_ROW, "delete-row" },
-	{ Tabular::DELETE_COLUMN, "delete-column" },
-	{ Tabular::COPY_ROW, "copy-row" },
-	{ Tabular::COPY_COLUMN, "copy-column" },
-	{ Tabular::TOGGLE_LINE_TOP, "toggle-line-top" },
-	{ Tabular::TOGGLE_LINE_BOTTOM, "toggle-line-bottom" },
-	{ Tabular::TOGGLE_LINE_LEFT, "toggle-line-left" },
-	{ Tabular::TOGGLE_LINE_RIGHT, "toggle-line-right" },
-	{ Tabular::ALIGN_LEFT, "align-left" },
-	{ Tabular::ALIGN_RIGHT, "align-right" },
-	{ Tabular::ALIGN_CENTER, "align-center" },
-	{ Tabular::ALIGN_BLOCK, "align-block" },
-	{ Tabular::VALIGN_TOP, "valign-top" },
-	{ Tabular::VALIGN_BOTTOM, "valign-bottom" },
-	{ Tabular::VALIGN_MIDDLE, "valign-middle" },
-	{ Tabular::M_ALIGN_LEFT, "m-align-left" },
-	{ Tabular::M_ALIGN_RIGHT, "m-align-right" },
-	{ Tabular::M_ALIGN_CENTER, "m-align-center" },
-	{ Tabular::M_VALIGN_TOP, "m-valign-top" },
-	{ Tabular::M_VALIGN_BOTTOM, "m-valign-bottom" },
-	{ Tabular::M_VALIGN_MIDDLE, "m-valign-middle" },
-	{ Tabular::MULTICOLUMN, "multicolumn" },
-	{ Tabular::MULTIROW, "multirow" },
-	{ Tabular::SET_ALL_LINES, "set-all-lines" },
-	{ Tabular::UNSET_ALL_LINES, "unset-all-lines" },
-	{ Tabular::SET_LONGTABULAR, "set-longtabular" },
-	{ Tabular::UNSET_LONGTABULAR, "unset-longtabular" },
-	{ Tabular::SET_PWIDTH, "set-pwidth" },
-	{ Tabular::SET_MPWIDTH, "set-mpwidth" },
-	{ Tabular::SET_ROTATE_TABULAR, "set-rotate-tabular" },
-	{ Tabular::UNSET_ROTATE_TABULAR, "unset-rotate-tabular" },
-	{ Tabular::TOGGLE_ROTATE_TABULAR, "toggle-rotate-tabular" },
-	{ Tabular::SET_ROTATE_CELL, "set-rotate-cell" },
-	{ Tabular::UNSET_ROTATE_CELL, "unset-rotate-cell" },
-	{ Tabular::TOGGLE_ROTATE_CELL, "toggle-rotate-cell" },
-	{ Tabular::SET_USEBOX, "set-usebox" },
-	{ Tabular::SET_LTHEAD, "set-lthead" },
-	{ Tabular::UNSET_LTHEAD, "unset-lthead" },
-	{ Tabular::SET_LTFIRSTHEAD, "set-ltfirsthead" },
-	{ Tabular::UNSET_LTFIRSTHEAD, "unset-ltfirsthead" },
-	{ Tabular::SET_LTFOOT, "set-ltfoot" },
-	{ Tabular::UNSET_LTFOOT, "unset-ltfoot" },
-	{ Tabular::SET_LTLASTFOOT, "set-ltlastfoot" },
-	{ Tabular::UNSET_LTLASTFOOT, "unset-ltlastfoot" },
-	{ Tabular::SET_LTNEWPAGE, "set-ltnewpage" },
-	{ Tabular::TOGGLE_LTCAPTION, "toggle-ltcaption" },
-	{ Tabular::SET_SPECIAL_COLUMN, "set-special-column" },
-	{ Tabular::SET_SPECIAL_MULTICOLUMN, "set-special-multicolumn" },
-	{ Tabular::SET_SPECIAL_MULTIROW, "set-special-multirow" },
-	{ Tabular::SET_BOOKTABS, "set-booktabs" },
-	{ Tabular::UNSET_BOOKTABS, "unset-booktabs" },
-	{ Tabular::SET_TOP_SPACE, "set-top-space" },
-	{ Tabular::SET_BOTTOM_SPACE, "set-bottom-space" },
-	{ Tabular::SET_INTERLINE_SPACE, "set-interline-space" },
-	{ Tabular::SET_BORDER_LINES, "set-border-lines" },
+	{ Tabular::APPEND_ROW, "append-row", false },
+	{ Tabular::APPEND_COLUMN, "append-column", false },
+	{ Tabular::DELETE_ROW, "delete-row", false },
+	{ Tabular::DELETE_COLUMN, "delete-column", false },
+	{ Tabular::COPY_ROW, "copy-row", false },
+	{ Tabular::COPY_COLUMN, "copy-column", false },
+	{ Tabular::TOGGLE_LINE_TOP, "toggle-line-top", false },
+	{ Tabular::TOGGLE_LINE_BOTTOM, "toggle-line-bottom", false },
+	{ Tabular::TOGGLE_LINE_LEFT, "toggle-line-left", false },
+	{ Tabular::TOGGLE_LINE_RIGHT, "toggle-line-right", false },
+	{ Tabular::ALIGN_LEFT, "align-left", false },
+	{ Tabular::ALIGN_RIGHT, "align-right", false },
+	{ Tabular::ALIGN_CENTER, "align-center", false },
+	{ Tabular::ALIGN_BLOCK, "align-block", false },
+	{ Tabular::VALIGN_TOP, "valign-top", false },
+	{ Tabular::VALIGN_BOTTOM, "valign-bottom", false },
+	{ Tabular::VALIGN_MIDDLE, "valign-middle", false },
+	{ Tabular::M_ALIGN_LEFT, "m-align-left", false },
+	{ Tabular::M_ALIGN_RIGHT, "m-align-right", false },
+	{ Tabular::M_ALIGN_CENTER, "m-align-center", false },
+	{ Tabular::M_VALIGN_TOP, "m-valign-top", false },
+	{ Tabular::M_VALIGN_BOTTOM, "m-valign-bottom", false },
+	{ Tabular::M_VALIGN_MIDDLE, "m-valign-middle", false },
+	{ Tabular::MULTICOLUMN, "multicolumn", false },
+	{ Tabular::MULTIROW, "multirow", false },
+	{ Tabular::SET_ALL_LINES, "set-all-lines", false },
+	{ Tabular::UNSET_ALL_LINES, "unset-all-lines", false },
+	{ Tabular::SET_LONGTABULAR, "set-longtabular", false },
+	{ Tabular::UNSET_LONGTABULAR, "unset-longtabular", false },
+	{ Tabular::SET_PWIDTH, "set-pwidth", true },
+	{ Tabular::SET_MPWIDTH, "set-mpwidth", true },
+	{ Tabular::SET_ROTATE_TABULAR, "set-rotate-tabular", false },
+	{ Tabular::UNSET_ROTATE_TABULAR, "unset-rotate-tabular", false },
+	{ Tabular::TOGGLE_ROTATE_TABULAR, "toggle-rotate-tabular", false },
+	{ Tabular::SET_ROTATE_CELL, "set-rotate-cell", false },
+	{ Tabular::UNSET_ROTATE_CELL, "unset-rotate-cell", false },
+	{ Tabular::TOGGLE_ROTATE_CELL, "toggle-rotate-cell", false },
+	{ Tabular::SET_USEBOX, "set-usebox", true },
+	{ Tabular::SET_LTHEAD, "set-lthead", true },
+	{ Tabular::UNSET_LTHEAD, "unset-lthead", true },
+	{ Tabular::SET_LTFIRSTHEAD, "set-ltfirsthead", true },
+	{ Tabular::UNSET_LTFIRSTHEAD, "unset-ltfirsthead", true },
+	{ Tabular::SET_LTFOOT, "set-ltfoot", true },
+	{ Tabular::UNSET_LTFOOT, "unset-ltfoot", true },
+	{ Tabular::SET_LTLASTFOOT, "set-ltlastfoot", true },
+	{ Tabular::UNSET_LTLASTFOOT, "unset-ltlastfoot", true },
+	{ Tabular::SET_LTNEWPAGE, "set-ltnewpage", false },
+	{ Tabular::TOGGLE_LTCAPTION, "toggle-ltcaption", false },
+	{ Tabular::SET_SPECIAL_COLUMN, "set-special-column", true },
+	{ Tabular::SET_SPECIAL_MULTICOLUMN, "set-special-multicolumn", true },
+	{ Tabular::SET_SPECIAL_MULTIROW, "set-special-multirow", false },
+	{ Tabular::SET_BOOKTABS, "set-booktabs", false },
+	{ Tabular::UNSET_BOOKTABS, "unset-booktabs", false },
+	{ Tabular::SET_TOP_SPACE, "set-top-space", true },
+	{ Tabular::SET_BOTTOM_SPACE, "set-bottom-space", true },
+	{ Tabular::SET_INTERLINE_SPACE, "set-interline-space", true },
+	{ Tabular::SET_BORDER_LINES, "set-border-lines", false },
 	{ Tabular::TABULAR_VALIGN_TOP, "tabular-valign-top"},
 	{ Tabular::TABULAR_VALIGN_MIDDLE, "tabular-valign-middle"},
 	{ Tabular::TABULAR_VALIGN_BOTTOM, "tabular-valign-bottom"},
-	{ Tabular::LONGTABULAR_ALIGN_LEFT, "longtabular-align-left" },
-	{ Tabular::LONGTABULAR_ALIGN_CENTER, "longtabular-align-center" },
-	{ Tabular::LONGTABULAR_ALIGN_RIGHT, "longtabular-align-right" },	
-	{ Tabular::LAST_ACTION, "" }
+	{ Tabular::LONGTABULAR_ALIGN_LEFT, "longtabular-align-left", false },
+	{ Tabular::LONGTABULAR_ALIGN_CENTER, "longtabular-align-center", false },
+	{ Tabular::LONGTABULAR_ALIGN_RIGHT, "longtabular-align-right", false },
+	{ Tabular::LAST_ACTION, "", false }
 };
 
 
@@ -3858,14 +3859,10 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 //	}
 
 	case LFUN_LAYOUT_TABULAR:
-		cur.bv().showDialog("tabular", params2string(*this), this);
+		cur.bv().showDialog("tabular");
 		break;
 
-	case LFUN_INSET_DIALOG_UPDATE:
-		cur.bv().updateDialog("tabular", params2string(*this));
-		break;
-
-	case LFUN_TABULAR_FEATURE:
+	case LFUN_INSET_MODIFY:
 		if (!tabularFeatures(cur, to_utf8(cmd.argument())))
 			cur.undispatched();
 		break;
@@ -4032,12 +4029,22 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
 	switch (cmd.action) {
-	case LFUN_TABULAR_FEATURE: {
+	case LFUN_INSET_MODIFY: {
+		istringstream is(to_utf8(cmd.argument()));
+		string s;
+		is >> s;
+		if (insetCode(s) != TABULAR_CODE) {
+			status.clear();
+			status.setEnabled(false);
+			break;
+		}
+		is >> s;
+		// FIXME: We only check for the very first argument...
 		int action = Tabular::LAST_ACTION;
 		int i = 0;
 		for (; tabularFeature[i].action != Tabular::LAST_ACTION; ++i) {
 			string const tmp = tabularFeature[i].feature;
-			if (tmp == to_utf8(cmd.argument()).substr(0, tmp.length())) {
+			if (tmp == s.substr(0, tmp.length())) {
 				action = tabularFeature[i].action;
 				break;
 			}
@@ -4049,7 +4056,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 		}
 
 		string const argument
-			= ltrim(to_utf8(cmd.argument()).substr(tabularFeature[i].feature.length()));
+			= ltrim(s.substr(tabularFeature[i].feature.length()));
 
 		row_type sel_row_start = 0;
 		row_type sel_row_end = 0;
@@ -4365,17 +4372,11 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 		// relay this lfun to Inset, not to the cell.
 		return Inset::getStatus(cur, cmd, status);
 
-	case LFUN_INSET_MODIFY:
-		if (insetCode(cmd.getArg(0)) == TABULAR_CODE) {
-			status.setEnabled(true);
-			return true;
-		}
-		// Fall through
-
 	default:
 		// we try to handle this event in the insets dispatch function.
 		return cell(cur.idx())->getStatus(cur, cmd, status);
 	}
+	return false;
 }
 
 
@@ -4732,27 +4733,45 @@ void InsetTabular::movePrevCell(Cursor & cur, EntryDirection entry_from)
 }
 
 
-bool InsetTabular::tabularFeatures(Cursor & cur, string const & what)
+bool InsetTabular::tabularFeatures(Cursor & cur, string const & argument)
 {
-	Tabular::Feature action = Tabular::LAST_ACTION;
+	istringstream is(argument);
+	string s;
+	is >> s;
+	if (insetCode(s) != TABULAR_CODE)
+		return false;
 
-	int i = 0;
-	for (; tabularFeature[i].action != Tabular::LAST_ACTION; ++i) {
-		string const tmp = tabularFeature[i].feature;
+	// Safe guard.
+	size_t safe_guard = 0;
+	for (;;) {
+		safe_guard++;
+		if (safe_guard > 1000) {
+			LYXERR0("parameter max count reached!");
+			break;
+		}
+		is >> s;
+		if (is.eof())
+			break;
+		Tabular::Feature action = Tabular::LAST_ACTION;
 
-		if (tmp == what.substr(0, tmp.length())) {
-			//if (!compare(tabularFeatures[i].feature.c_str(), what.c_str(),
-			//tabularFeatures[i].feature.length()))
+		size_t i = 0;
+		for (; tabularFeature[i].action != Tabular::LAST_ACTION; ++i) {
+			if (s != tabularFeature[i].feature)
+				continue;
+
 			action = tabularFeature[i].action;
 			break;
 		}
+		if (action == Tabular::LAST_ACTION) {
+			LYXERR0("Feature not found " << s);
+			continue;
+		}
+		string val;
+		if (tabularFeature[i].need_value)
+			is >> val;
+		LYXERR(Debug::DEBUG, "Feature: " << s << "\t\tvalue: " << val);
+		tabularFeatures(cur, action, val);
 	}
-	if (action == Tabular::LAST_ACTION)
-		return false;
-
-	string const val =
-		ltrim(what.substr(tabularFeature[i].feature.length()));
-	tabularFeatures(cur, action, val);
 	return true;
 }
 
@@ -4866,7 +4885,10 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 
 	case Tabular::SET_SPECIAL_COLUMN:
 	case Tabular::SET_SPECIAL_MULTICOLUMN:
-		tabular.setAlignSpecial(cur.idx(), from_utf8(value), feature);
+		if (value == "none")
+			tabular.setAlignSpecial(cur.idx(), docstring(), feature);
+		else
+			tabular.setAlignSpecial(cur.idx(), from_utf8(value), feature);
 		break;
 
 	case Tabular::APPEND_ROW:
@@ -5192,12 +5214,12 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		if (value == "default")
 			for (row_type i = sel_row_start; i <= sel_row_end; ++i)
 				tabular.row_info[i].top_space_default = true;
-		else if (isValidLength(value, &len))
+		else if (value == "none")
 			for (row_type i = sel_row_start; i <= sel_row_end; ++i) {
 				tabular.row_info[i].top_space_default = false;
 				tabular.row_info[i].top_space = len;
 			}
-		else
+		else if (isValidLength(value, &len))
 			for (row_type i = sel_row_start; i <= sel_row_end; ++i) {
 				tabular.row_info[i].top_space_default = false;
 				tabular.row_info[i].top_space = len;
@@ -5210,12 +5232,12 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		if (value == "default")
 			for (row_type i = sel_row_start; i <= sel_row_end; ++i)
 				tabular.row_info[i].bottom_space_default = true;
-		else if (isValidLength(value, &len))
+		else if (value == "none")
 			for (row_type i = sel_row_start; i <= sel_row_end; ++i) {
 				tabular.row_info[i].bottom_space_default = false;
 				tabular.row_info[i].bottom_space = len;
 			}
-		else
+		else if (isValidLength(value, &len))
 			for (row_type i = sel_row_start; i <= sel_row_end; ++i) {
 				tabular.row_info[i].bottom_space_default = false;
 				tabular.row_info[i].bottom_space = len;
@@ -5228,12 +5250,12 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		if (value == "default")
 			for (row_type i = sel_row_start; i <= sel_row_end; ++i)
 				tabular.row_info[i].interline_space_default = true;
-		else if (isValidLength(value, &len))
+		else if (value == "none")
 			for (row_type i = sel_row_start; i <= sel_row_end; ++i) {
 				tabular.row_info[i].interline_space_default = false;
 				tabular.row_info[i].interline_space = len;
 			}
-		else
+		else if (isValidLength(value, &len))
 			for (row_type i = sel_row_start; i <= sel_row_end; ++i) {
 				tabular.row_info[i].interline_space_default = false;
 				tabular.row_info[i].interline_space = len;
@@ -5245,21 +5267,6 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	case Tabular::LAST_ACTION:
 		break;
 	}
-}
-
-
-bool InsetTabular::showInsetDialog(BufferView * bv) const
-{
-	bv->showDialog("tabular", params2string(*this),
-		const_cast<InsetTabular *>(this));
-	return true;
-}
-
-
-void InsetTabular::openLayoutDialog(BufferView * bv) const
-{
-	bv->showDialog("tabular", params2string(*this),
-		const_cast<InsetTabular *>(this));
 }
 
 

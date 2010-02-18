@@ -71,19 +71,25 @@ void InsetMathCases::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "*** InsetMathCases: request: " << cmd << endl;
 	switch (cmd.action) {
-	case LFUN_TABULAR_FEATURE: {
-		docstring const & s = cmd.argument();
+	case LFUN_INSET_MODIFY: {
+		istringstream is(to_utf8(cmd.argument()));
+		string s;
+		is >> s;
+		if (s != "tabular")
+			break;
+		is >> s;
 		// vertical lines and adding/deleting columns is not allowed for \cases
 		if (s == "append-column" || s == "delete-column"
-			|| s == "add-vline-left" || s == "add-vline-right") {
+		    || s == "add-vline-left" || s == "add-vline-right") {
 			cur.undispatched();
 			break;
 		}
 		cur.recordUndo();
 	}
 	default:
-		InsetMathGrid::doDispatch(cur, cmd);
+		break;
 	}
+	InsetMathGrid::doDispatch(cur, cmd);
 }
 
 
@@ -91,26 +97,33 @@ bool InsetMathCases::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	switch (cmd.action) {
-	case LFUN_TABULAR_FEATURE: {
-		docstring const & s = cmd.argument();
+	case LFUN_INSET_MODIFY: {
+		istringstream is(to_utf8(cmd.argument()));
+		string s;
+		is >> s;
+		if (s != "tabular")
+			break;
+		is >> s;
 		if (s == "add-vline-left" || s == "add-vline-right") {
 			flag.setEnabled(false);
 			flag.message(bformat(
 				from_utf8(N_("No vertical grid lines in 'cases': feature %1$s")),
-				s));
+				from_utf8(s)));
 			return true;
 		}
 		if (s == "append-column" || s == "delete-column") {
 			flag.setEnabled(false);
 			flag.message(bformat(
 				from_utf8(N_("Changing number of columns not allowed in "
-					     "'cases': feature %1$s")), s));
+					     "'cases': feature %1$s")), from_utf8(s)));
 			return true;
 		}
+		break;
 	}
 	default:
-		return InsetMathGrid::getStatus(cur, cmd, flag);
+		break;
 	}
+	return InsetMathGrid::getStatus(cur, cmd, flag);
 }
 
 

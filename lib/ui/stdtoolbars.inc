@@ -137,31 +137,31 @@ ToolbarSet
 	End
 	
 	Toolbar "table" "Table"
-		Item "Add row" "tabular-feature append-row"
-		Item "Add column" "tabular-feature append-column"
-		Item "Delete row" "tabular-feature delete-row"
-		Item "Delete column" "tabular-feature delete-column"
+		Item "Add row" "inset-modify tabular append-row"
+		Item "Add column" "inset-modify tabular append-column"
+		Item "Delete row" "inset-modify tabular delete-row"
+		Item "Delete column" "inset-modify tabular delete-column"
 		Separator
-		Item "Set top line" "tabular-feature toggle-line-top"
-		Item "Set bottom line" "tabular-feature toggle-line-bottom"
-		Item "Set left line" "tabular-feature toggle-line-left"
-		Item "Set right line" "tabular-feature toggle-line-right"
-		Item "Set border lines" "tabular-feature set-border-lines"
-		Item "Set all lines" "tabular-feature set-all-lines"
-		Item "Unset all lines" "tabular-feature unset-all-lines"
+		Item "Set top line" "inset-modify tabular toggle-line-top"
+		Item "Set bottom line" "inset-modify tabular toggle-line-bottom"
+		Item "Set left line" "inset-modify tabular toggle-line-left"
+		Item "Set right line" "inset-modify tabular toggle-line-right"
+		Item "Set border lines" "inset-modify tabular set-border-lines"
+		Item "Set all lines" "inset-modify tabular set-all-lines"
+		Item "Unset all lines" "inset-modify tabular unset-all-lines"
 		Separator
-		Item "Align left" "command-alternatives tabular-feature m-align-left;tabular-feature align-left"
-		Item "Align center" "command-alternatives tabular-feature m-align-center;tabular-feature align-center"
-		Item "Align right" "command-alternatives tabular-feature m-align-right;tabular-feature align-right"
+		Item "Align left" "command-alternatives inset-modify tabular m-align-left;inset-modify tabular align-left"
+		Item "Align center" "command-alternatives inset-modify tabular m-align-center;inset-modify tabular align-center"
+		Item "Align right" "command-alternatives inset-modify tabular m-align-right;inset-modify tabular align-right"
 		Separator
-		Item "Align top" "command-alternatives tabular-feature m-valign-top;tabular-feature valign-top"
-		Item "Align middle" "command-alternatives tabular-feature m-valign-middle;tabular-feature valign-middle"
-		Item "Align bottom" "command-alternatives tabular-feature m-valign-bottom;tabular-feature valign-bottom"
+		Item "Align top" "command-alternatives inset-modify tabular m-valign-top;inset-modify tabular valign-top"
+		Item "Align middle" "command-alternatives inset-modify tabular m-valign-middle;inset-modify tabular valign-middle"
+		Item "Align bottom" "command-alternatives inset-modify tabular m-valign-bottom;inset-modify tabular valign-bottom"
 		Separator
-		Item "Rotate cell" "tabular-feature toggle-rotate-cell"
-		Item "Rotate table" "tabular-feature toggle-rotate-tabular"
-		Item "Set multi-column" "tabular-feature multicolumn"
-		Item "Set multi-row" "tabular-feature multirow"
+		Item "Rotate cell" "inset-modify tabular toggle-rotate-cell"
+		Item "Rotate table" "inset-modify tabular toggle-rotate-tabular"
+		Item "Set multi-column" "inset-modify tabular multicolumn"
+		Item "Set multi-row" "inset-modify tabular multirow"
 	End
 	
 	Toolbar "math" "Math"
@@ -183,10 +183,10 @@ ToolbarSet
 		Separator
 		Item "Insert matrix" "dialog-show mathmatrix"
 		Item "Insert cases environment" "math-insert \cases"
-		Item "Add row" "tabular-feature append-row"
-		Item "Add column" "tabular-feature append-column"
-		Item "Delete row" "tabular-feature delete-row"
-		Item "Delete column" "tabular-feature delete-column"
+		Item "Add row" "inset-modify tabular append-row"
+		Item "Add column" "inset-modify tabular append-column"
+		Item "Delete row" "inset-modify tabular delete-row"
+		Item "Delete column" "inset-modify tabular delete-column"
 		Separator
 		Item "Toggle math panels" "toolbar-toggle math_panels"
 	End

@@ -1487,9 +1487,12 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 		}
 		return InsetMathGrid::getStatus(cur, cmd, status);
 
-	case LFUN_TABULAR_FEATURE: {
+	case LFUN_INSET_MODIFY: {
 		istringstream is(to_utf8(cmd.argument()));
 		string s;
+		is >> s;
+		if (s != "tabular")
+			return InsetMathGrid::getStatus(cur, cmd, status);
 		is >> s;
 		if (!rowChangeOK()
 		    && (s == "append-row"

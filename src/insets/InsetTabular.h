@@ -803,10 +803,6 @@ public:
 	///
 	void tabularFeatures(Cursor & cur, Tabular::Feature feature,
 			     std::string const & val = std::string());
-	///
-	void openLayoutDialog(BufferView *) const;
-	///
-	bool showInsetDialog(BufferView *) const;
 	/// number of cells
 	size_t nargs() const { return tabular.numberofcells; }
 	///

@@ -3476,7 +3476,6 @@ Dialog * createGuiShowFile(GuiView & lv);
 Dialog * createGuiSpellchecker(GuiView & lv);
 Dialog * createGuiSymbols(GuiView & lv);
 Dialog * createGuiTabularCreate(GuiView & lv);
-Dialog * createGuiTabular(GuiView & lv);
 Dialog * createGuiTexInfo(GuiView & lv);
 Dialog * createGuiTextHSpace(GuiView & lv);
 Dialog * createGuiToc(GuiView & lv);
@@ -3570,8 +3569,6 @@ Dialog * GuiView::build(string const & name)
 		return createGuiSpellchecker(*this);
 	if (name == "symbols")
 		return createGuiSymbols(*this);
-	if (name == "tabular")
-		return createGuiTabular(*this);
 	if (name == "tabularcreate")
 		return createGuiTabularCreate(*this);
 	if (name == "texinfo")

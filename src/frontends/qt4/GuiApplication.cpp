@@ -331,8 +331,23 @@ QString iconName(FuncRequest const & f, bool unknown)
 		docstring firstcom;
 		docstring dummy = split(f.argument(), firstcom, ';');
 		name1 = toqstr(firstcom);
+		// FIXME: we should rename the icons to tabular-xxx instead of
+		// "tabular-feature-xxx"
+		name1.replace("inset-modify tabular", "tabular-feature");
 		name1.replace(' ', '_');
 		break;
+	}
+	case LFUN_INSET_MODIFY: {
+		// FIXME: we should rename the icons to tabular-xxx instead of
+		// "tabular-feature-xxx" and generalize this naming to all
+		// insets, not to tabular using ones.
+		string inset_name;
+		string const command = split(to_utf8(f.argument()), inset_name, ' ');
+		if (insetCode(inset_name) == TABULAR_CODE) {
+			name1 = "tabular-feature "+ toqstr(command);
+			name1.replace(' ', '_');
+			break;
+		}
 	}
 	default:
 		name2 = toqstr(lyxaction.getActionName(f.action));
