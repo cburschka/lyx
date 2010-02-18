@@ -34,7 +34,7 @@
 	   received LyX will inform the client that it's listening its
 	   messages, and 'bye' will inform that lyx is closing.
 
-	   See development/server_monitor.c for an example client.
+	   See development/lyxserver/server_monitor.cpp for an example client.
   Purpose: implement a client/server lib for LyX
 */
 
