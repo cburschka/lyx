@@ -2049,40 +2049,14 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_TABULAR_INSERT
  * \li Action: Inserts table into the document.
+ * \li Notion: See #LFUN_INSET_MODIFY for some more details
+               about tabular modifications.
  * \li Syntax: tabular-insert [<ROWS> <COLUMNS>]
  * \li Params: In case no arguments are given show insert dialog.
  * \li Origin: Jug, 12 Apr 2000
  * \endvar
  */
 		{ LFUN_TABULAR_INSERT, "tabular-insert", Noop, Edit },
-/*!
- * \var lyx::FuncCode lyx::LFUN_TABULAR_FEATURE
- * \li Action: Sets various features to the table/cell on the current cursor position.
- * \li Notion: Various math-environment features are handled here as well, e.g.
-               add-vline-left/right for the Grid/Array environment
- * \li Syntax: tabular-feature <FEATURE> [<ARG>]
- * \li Params: <FEATURE>: append-row|append-column|delete-row|delete-column|copy-row|copy-column|
-                       toggle-line-top|toggle-line-bottom|toggle-line-left|toggle-line-right|
-                       align-left|align-right|align-center|align-block|valign-top|valign-bottom|
-                       valign-middle|longtabular-align-left|longtabular-align-center|
-                       longtabular-align-right|m-align-left|m-align-right|m-align-center|
-                       m-valign-top|m-valign-bottom|m-valign-middle|multicolumn|set-all-lines|
-                       unset-all-lines|set-longtabular|unset-longtabular|set-pwidth|set-mpwidth|
-                       set-rotate-tabular|unset-rotate-tabular|toggle-rotate-tabular|
-                       set-rotate-cell|unset-rotate-cell|toggle-rotate-cell|set-usebox|set-lthead|
-                       unset-lthead|set-ltfirsthead|unset-ltfirsthead|set-ltfoot|unset-ltfoot|
-                       set-ltlastfoot|unset-ltlastfoot|set-ltnewpage|toggle-ltcaption|
-                       set-special-column|set-special-multicolumn|set-special-multirow|
-                       set-booktabs|unset-booktabs|set-top-space|set-bottom-space|
-                       set-interline-space|set-border-lines|tabular-valign-top|
-                       tabular-valign-middle|tabular-valign-bottom \n
-               <ARG>: additional argument for some commands, use debug mode to explore its values.
- * \li Origin: Jug, 28 Jul 2000
- * \endvar
- */
-// FIXME: This LFUN has been replaced with LFUN_INSET_MODIFY with the
-// "tabular" argument. How to insert above documentation into LFUN_INSET_MODIFY doc?
-//		{ LFUN_TABULAR_FEATURE, "tabular-feature", Noop, Edit },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_CELL_BACKWARD
@@ -2320,7 +2294,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_INSET_INSERT
  * \li Action: Insert new inset (type given by the parameters).
  * \li Syntax: inset-insert <INSET> <ARGS>
- * \li Params: <INSET>: <bibitem|bibtex|cite|ert|listings|external|graphics|
+ * \li Params: <INSET>: <bibitem|bibtex|cite|ert|listings|external|graphics|tabular
                          hyperlink|include|index|label|nomencl|vspace|ref|toc>\n
                <ARGS>: depends on the given inset. Use "lyx -dbg action" to explore.
  * \li Sample: inset-insert ref LatexCommand <Format> reference "<label name>"\end_inset \n
@@ -2344,9 +2318,28 @@ void LyXAction::init()
                         ref, space, tabular, vspace, wrap insets.
  * \li Syntax: inset-modify <INSET> <ARGS>
  * \li Syntax: inset-modify changetype <TYPE>
+ * \li Syntax: inset-modify tabular <FEATURE> [<ARG>]
+ * \li Params: Generally see #LFUN_INSET_INSERT for further details.\n
+               In case that <INSET> is "tabular" various math-environment features
+               are handled as well, e.g. add-vline-left/right for the Grid/Array environment.\n
+               <FEATURE>: append-row|append-column|delete-row|delete-column|copy-row|copy-column|
+                       toggle-line-top|toggle-line-bottom|toggle-line-left|toggle-line-right|
+                       align-left|align-right|align-center|align-block|valign-top|valign-bottom|
+                       valign-middle|longtabular-align-left|longtabular-align-center|
+                       longtabular-align-right|m-align-left|m-align-right|m-align-center|
+                       m-valign-top|m-valign-bottom|m-valign-middle|multicolumn|set-all-lines|
+                       unset-all-lines|set-longtabular|unset-longtabular|set-pwidth|set-mpwidth|
+                       set-rotate-tabular|unset-rotate-tabular|toggle-rotate-tabular|
+                       set-rotate-cell|unset-rotate-cell|toggle-rotate-cell|set-usebox|set-lthead|
+                       unset-lthead|set-ltfirsthead|unset-ltfirsthead|set-ltfoot|unset-ltfoot|
+                       set-ltlastfoot|unset-ltlastfoot|set-ltnewpage|toggle-ltcaption|
+                       set-special-column|set-special-multicolumn|set-special-multirow|
+                       set-booktabs|unset-booktabs|set-top-space|set-bottom-space|
+                       set-interline-space|set-border-lines|tabular-valign-top|
+                       tabular-valign-middle|tabular-valign-bottom \n
+               <ARG>: additional argument for some commands, use debug mode to explore its values.
  * \li Sample: inset-modify note Note Comment
  * \li Sample: inset-modify changetype Ovalbox
- * \li Params: See #LFUN_INSET_INSERT for further details.
  * \endvar
  */
 		{ LFUN_INSET_MODIFY, "inset-modify", AtPoint, Edit },
