@@ -30,8 +30,9 @@ void convert_to_full_posix_path(char const * from, char *to)
 
 int main(int ac, char **av)
 {
-	char buf[2 * PATH_MAX];
-	char posixpath[PATH_MAX + 1];
+	char * buf;
+	int bufsize;
+	char posixpath[PATH_MAX];
 
 	if (ac < 3 || ac > 4) {
 		MessageBox(0, "Usage: lyxeditor [-g] <file.tex> <lineno>",
@@ -40,14 +41,24 @@ int main(int ac, char **av)
 	}
 
 	if (ac == 3) {
+		char const * fmt = "lyxeditor.sh" PROGRAM_SUFFIX " '%s' %s";
 		convert_to_full_posix_path(av[1], posixpath);
-		sprintf(buf, "lyxeditor.sh" PROGRAM_SUFFIX " '%s' %s",
-				posixpath, av[2]);
+		bufsize = snprintf(0, 0, fmt, posixpath, av[2]) + 1;
+		if ((buf = malloc(bufsize)))
+			snprintf(buf, bufsize, fmt, posixpath, av[2]);
 	} else {
+		char const * fmt = "lyxclient" PROGRAM_SUFFIX " %s '%s' %s";
 		convert_to_full_posix_path(av[2], posixpath);
-		sprintf(buf, "lyxclient" PROGRAM_SUFFIX " %s '%s' %s",
-				av[1], posixpath, av[3]);
+		bufsize = snprintf(0, 0, fmt, av[1], posixpath, av[3]) + 1;
+		if ((buf = malloc(bufsize)))
+			snprintf(buf, bufsize, fmt, av[1], posixpath, av[3]);
+	}
+
+	if (!buf) {
+		MessageBox(0, "Too long arguments", "lyxeditor", 0);
+		return 1;
 	}
 	system(buf);
+	free(buf);
 	return 0;
 }
