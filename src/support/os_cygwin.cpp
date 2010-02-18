@@ -111,7 +111,7 @@ string convert_path_list(string const & p, PathStyle const & target)
 		char * ptr = new char[size];
 		if (ptr && cygwin_conv_path_list(target, pc, ptr, size) == 0) {
 			string const path_list = subst(ptr, '\\', '/');
-			delete ptr;
+			delete [] ptr;
 			return path_list;
 		} else
 			lyxerr << "LyX: Cannot convert path list: " << p << endl;
@@ -177,7 +177,7 @@ string convert_path_list(string const & p, PathStyle const & target)
 				cygwin_posix_to_win32_path_list(pc, ptr);
 
 			string path_list = subst(ptr, '\\', '/');
-			delete ptr;
+			delete [] ptr;
 			return path_list;
 		}
 	}

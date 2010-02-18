@@ -225,3 +225,5 @@ What's new
 * BUILD/INSTALLATION
 
 - Fix compiler warnings about comparisons with string literals.
+
+- Fix code in some places such that to avoid possible runtime problems.
