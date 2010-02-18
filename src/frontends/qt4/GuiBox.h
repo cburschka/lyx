@@ -37,8 +37,8 @@ private Q_SLOTS:
 private:
 	/// \name DialogView inherited methods
 	//@{
-	InsetCode insetCode() { return BOX_CODE; }
-	FuncCode creationCode() { return LFUN_BOX_INSERT; }
+	InsetCode insetCode() const { return BOX_CODE; }
+	FuncCode creationCode() const { return LFUN_BOX_INSERT; }
 	void paramsToDialog(Inset const *);
 	docstring dialogToParams() const;
 	//@}

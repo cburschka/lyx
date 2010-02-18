@@ -58,9 +58,9 @@ public:
 	/// This is a base class; destructor must exist and be virtual.
 	virtual ~InsetParamsWidget() {}
 	///
-	virtual InsetCode insetCode() = 0;
+	virtual InsetCode insetCode() const = 0;
 	///
-	virtual FuncCode creationCode() = 0;
+	virtual FuncCode creationCode() const = 0;
 	///
 	virtual void paramsToDialog(Inset const *) = 0;
 	///

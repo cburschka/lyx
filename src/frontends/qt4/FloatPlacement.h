@@ -33,8 +33,8 @@ public:
 
 	/// \name DialogView inherited methods
 	//@{
-	InsetCode insetCode() { return FLOAT_CODE; }
-	FuncCode creationCode() { return LFUN_FLOAT_INSERT; }
+	InsetCode insetCode() const { return FLOAT_CODE; }
+	FuncCode creationCode() const { return LFUN_FLOAT_INSERT; }
 	void paramsToDialog(Inset const *);
 	docstring dialogToParams() const;
 	//@}

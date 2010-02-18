@@ -28,8 +28,8 @@ public:
 private:
 	/// \name InsetParamsWidget inherited methods
 	//@{
-	InsetCode insetCode() { return ERT_CODE; }
-	FuncCode creationCode() { return LFUN_INSET_INSERT; }
+	InsetCode insetCode() const { return ERT_CODE; }
+	FuncCode creationCode() const { return LFUN_INSET_INSERT; }
 	void paramsToDialog(Inset const *);
 	docstring dialogToParams() const;
 	//@}

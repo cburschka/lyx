@@ -35,8 +35,8 @@ private Q_SLOTS:
 private:
 	/// \name InsetParamsWidget inherited methods
 	//@{
-	InsetCode insetCode() { return VSPACE_CODE; }
-	FuncCode creationCode() { return LFUN_INSET_INSERT; }
+	InsetCode insetCode() const { return VSPACE_CODE; }
+	FuncCode creationCode() const { return LFUN_INSET_INSERT; }
 	void paramsToDialog(Inset const *);
 	docstring dialogToParams() const;
 	//@}
