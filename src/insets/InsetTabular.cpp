@@ -4891,6 +4891,10 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 			tabular.setAlignSpecial(cur.idx(), from_utf8(value), feature);
 		break;
 
+	case Tabular::SET_SPECIAL_MULTIROW:
+		//FIXME: noting to do here?
+		break;
+
 	case Tabular::APPEND_ROW:
 		// append the row into the tabular
 		tabular.appendRow(cur.idx());
