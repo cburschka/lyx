@@ -117,34 +117,34 @@ Menuset
 	End
 
 	Menu "edit_tabular"
-		Item "Multicolumn|M" "tabular-feature multicolumn"
+		Item "Multicolumn|M" "inset-modify tabular multicolumn"
 		Separator
-		Item "Line Top|T" "tabular-feature toggle-line-top"
-		Item "Line Bottom|B" "tabular-feature toggle-line-bottom"
-		Item "Line Left|L" "tabular-feature toggle-line-left"
-		Item "Line Right|R" "tabular-feature toggle-line-right"
+		Item "Line Top|T" "inset-modify tabular toggle-line-top"
+		Item "Line Bottom|B" "inset-modify tabular toggle-line-bottom"
+		Item "Line Left|L" "inset-modify tabular toggle-line-left"
+		Item "Line Right|R" "inset-modify tabular toggle-line-right"
 		Separator
 		Submenu "Alignment|i" "edit_align"
 		Separator
-		Item "Add Row|A" "tabular-feature append-row"
-		Item "Delete Row|w" "tabular-feature delete-row"
-		Item "Copy Row" "tabular-feature copy-row"
-		Item "Swap Rows" "tabular-feature swap-row"
+		Item "Add Row|A" "inset-modify tabular append-row"
+		Item "Delete Row|w" "inset-modify tabular delete-row"
+		Item "Copy Row" "inset-modify tabular copy-row"
+		Item "Swap Rows" "inset-modify tabular swap-row"
 		Separator
-		Item "Add Column|u" "tabular-feature append-column"
-		Item "Delete Column|D" "tabular-feature delete-column"
-		Item "Copy Column" "tabular-feature copy-column"
-		Item "Swap Columns" "tabular-feature swap-column"
+		Item "Add Column|u" "inset-modify tabular append-column"
+		Item "Delete Column|D" "inset-modify tabular delete-column"
+		Item "Copy Column" "inset-modify tabular copy-column"
+		Item "Swap Columns" "inset-modify tabular swap-column"
 	End
 
 	Menu "edit_align"
-		Item "Left|L" "tabular-feature align-left"
-		Item "Center|C" "tabular-feature align-center"
-		Item "Right|R" "tabular-feature align-right"
+		Item "Left|L" "inset-modify tabular align-left"
+		Item "Center|C" "inset-modify tabular align-center"
+		Item "Right|R" "inset-modify tabular align-right"
 		Separator
-		Item "Top|T" "tabular-feature valign-top"
-		Item "Middle|M" "tabular-feature valign-middle"
-		Item "Bottom|B" "tabular-feature valign-bottom"
+		Item "Top|T" "inset-modify tabular valign-top"
+		Item "Middle|M" "inset-modify tabular valign-middle"
+		Item "Bottom|B" "inset-modify tabular valign-bottom"
 	End
 
 	Menu "edit_math"
@@ -167,15 +167,15 @@ Menuset
 		Separator
 		Submenu "Alignment|A" "edit_align"
 		Separator
-		Item "Add Row|R" "tabular-feature append-row"
-		Item "Delete Row|D" "tabular-feature delete-row"
-		Item "Copy Row" "tabular-feature copy-row"
-		Item "Swap Rows" "tabular-feature swap-row"
+		Item "Add Row|R" "inset-modify tabular append-row"
+		Item "Delete Row|D" "inset-modify tabular delete-row"
+		Item "Copy Row" "inset-modify tabular copy-row"
+		Item "Swap Rows" "inset-modify tabular swap-row"
 		Separator
-		Item "Add Column|C" "tabular-feature append-column"
-		Item "Delete Column|e" "tabular-feature delete-column"
-		Item "Copy Column" "tabular-feature copy-column"
-		Item "Swap Columns" "tabular-feature swap-column"
+		Item "Add Column|C" "inset-modify tabular append-column"
+		Item "Delete Column|e" "inset-modify tabular delete-column"
+		Item "Copy Column" "inset-modify tabular copy-column"
+		Item "Swap Columns" "inset-modify tabular swap-column"
 	End
 
 	Menu "edit_math_limits"
@@ -275,7 +275,7 @@ Menuset
 	Separator
 		Item "Array Environment|y" "math-matrix 2 2"
 		Item "Cases Environment|C" "math-insert \cases"
-		Item "Split Environment|S" "command-sequence math-insert \split; tabular-feature append-column"
+		Item "Split Environment|S" "command-sequence math-insert \split; inset-modify tabular append-column"
 	Separator
 		Submenu "Font Change|o" "insert_math_font"
 	End
