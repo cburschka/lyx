@@ -72,12 +72,20 @@ public:
 		///
 		COPY_COLUMN,
 		///
+		SET_LINE_TOP,
+		///
+		SET_LINE_BOTTOM,
+		///
+		SET_LINE_LEFT,
+		///
+		SET_LINE_RIGHT,
+		///FIXME: remove
 		TOGGLE_LINE_TOP,
-		///
+		///FIXME: remove
 		TOGGLE_LINE_BOTTOM,
-		///
+		///FIXME: remove
 		TOGGLE_LINE_LEFT,
-		///
+		///FIXME: remove
 		TOGGLE_LINE_RIGHT,
 		///
 		ALIGN_LEFT,

@@ -113,6 +113,11 @@ TabularFeature tabularFeature[] =
 	{ Tabular::DELETE_COLUMN, "delete-column", false },
 	{ Tabular::COPY_ROW, "copy-row", false },
 	{ Tabular::COPY_COLUMN, "copy-column", false },
+	{ Tabular::SET_LINE_TOP, "set-line-top", true },
+	{ Tabular::SET_LINE_BOTTOM, "set-line-bottom", true },
+	{ Tabular::SET_LINE_LEFT, "set-line-left", true },
+	{ Tabular::SET_LINE_RIGHT, "set-line-right", true },
+	//FIXME: get rid of those 4 TOGGLE actions in favor of the 4 above.
 	{ Tabular::TOGGLE_LINE_TOP, "toggle-line-top", false },
 	{ Tabular::TOGGLE_LINE_BOTTOM, "toggle-line-bottom", false },
 	{ Tabular::TOGGLE_LINE_LEFT, "toggle-line-left", false },
@@ -4095,6 +4100,13 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.setEnabled(!tabular.ltCaption(tabular.cellRow(cur.idx())));
 			break;
 
+		case Tabular::SET_LINE_TOP:
+		case Tabular::SET_LINE_BOTTOM:
+		case Tabular::SET_LINE_LEFT:
+		case Tabular::SET_LINE_RIGHT:
+			status.setEnabled(!tabular.ltCaption(tabular.cellRow(cur.idx())));
+			break;
+
 		case Tabular::TOGGLE_LINE_TOP:
 			status.setEnabled(!tabular.ltCaption(tabular.cellRow(cur.idx())));
 			status.setOnOff(tabular.topLine(cur.idx()));
@@ -4925,32 +4937,40 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		cur.idx() = tabular.cellIndex(row, column);
 		break;
 
+	case Tabular::SET_LINE_TOP:
 	case Tabular::TOGGLE_LINE_TOP: {
-		bool lineSet = !tabular.topLine(cur.idx());
+		bool lineSet = (feature == Tabular::SET_LINE_TOP)
+			       ? (value == "true") : !tabular.topLine(cur.idx());
 		for (row_type i = sel_row_start; i <= sel_row_end; ++i)
 			for (col_type j = sel_col_start; j <= sel_col_end; ++j)
 				tabular.setTopLine(tabular.cellIndex(i, j), lineSet);
 		break;
 	}
 
+	case Tabular::SET_LINE_BOTTOM:
 	case Tabular::TOGGLE_LINE_BOTTOM: {
-		bool lineSet = !tabular.bottomLine(cur.idx());
+		bool lineSet = (feature == Tabular::SET_LINE_BOTTOM)
+			       ? (value == "true") : !tabular.bottomLine(cur.idx());
 		for (row_type i = sel_row_start; i <= sel_row_end; ++i)
 			for (col_type j = sel_col_start; j <= sel_col_end; ++j)
 				tabular.setBottomLine(tabular.cellIndex(i, j), lineSet);
 		break;
 	}
 
+	case Tabular::SET_LINE_LEFT:
 	case Tabular::TOGGLE_LINE_LEFT: {
-		bool lineSet = !tabular.leftLine(cur.idx());
+		bool lineSet = (feature == Tabular::SET_LINE_LEFT)
+			       ? (value == "true") : !tabular.leftLine(cur.idx());
 		for (row_type i = sel_row_start; i <= sel_row_end; ++i)
 			for (col_type j = sel_col_start; j <= sel_col_end; ++j)
 				tabular.setLeftLine(tabular.cellIndex(i, j), lineSet);
 		break;
 	}
 
+	case Tabular::SET_LINE_RIGHT:
 	case Tabular::TOGGLE_LINE_RIGHT: {
-		bool lineSet = !tabular.rightLine(cur.idx());
+		bool lineSet = (feature == Tabular::SET_LINE_RIGHT)
+			       ? (value == "true") : !tabular.rightLine(cur.idx());
 		for (row_type i = sel_row_start; i <= sel_row_end; ++i)
 			for (col_type j = sel_col_start; j <= sel_col_end; ++j)
 				tabular.setRightLine(tabular.cellIndex(i, j), lineSet);
