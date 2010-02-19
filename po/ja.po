@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-02-13 09:41+0100\n"
+"POT-Creation-Date: 2010-02-19 15:33+0100\n"
 "PO-Revision-Date: 2009-12-03 00:03+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <>\n"
@@ -87,7 +87,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/CitationUi.ui:461
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:890
-#: src/Buffer.cpp:2716 src/Buffer.cpp:2762 src/Buffer.cpp:2797
+#: src/Buffer.cpp:2747 src/Buffer.cpp:2793 src/Buffer.cpp:2828
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:866 src/LyXFunc.cpp:1042
 #: src/LyXFunc.cpp:1925 src/LyXVC.cpp:196
 #: src/frontends/qt4/GuiClipboard.cpp:208
@@ -460,8 +460,8 @@ msgstr "新規(&N):"
 msgid "Remove the selected branch"
 msgstr "選択した派生枝を削除"
 
-#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2732
-#: src/Buffer.cpp:2743
+#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2763
+#: src/Buffer.cpp:2774
 msgid "&Remove"
 msgstr "削除(&R)"
 
@@ -15145,77 +15145,102 @@ msgstr "iconvが変換に失敗しました"
 msgid "conversion failed"
 msgstr "変換に失敗しました"
 
-#: src/Buffer.cpp:1387
+#: src/Buffer.cpp:1208
+#, fuzzy
+msgid "Uncodable character in path"
+msgstr "著者名にコード化できない文字があります"
+
+#: src/Buffer.cpp:1209
+#, fuzzy, c-format
+msgid ""
+"The path of your document\n"
+"(%1$s)\n"
+"contains glyphs that are unknown in the\n"
+"current document encoding (namely %2$s).\n"
+"This will likely result in incomplete output.\n"
+"\n"
+"Chose an appropriate document encoding (such as utf8)\n"
+"or change the path name."
+msgstr ""
+"変更追跡機能で使用されている著者名「%1$s」には、\n"
+"現在のエンコーディングで表すことのできないグリフが\n"
+"含まれています。書き出したLaTeXファイルでは、\n"
+"これらのグリフは省かれます。\n"
+"\n"
+"（utf8など）適切な文書エンコーディングを選択するか、\n"
+"著者名の綴りを変更してください。"
+
+#: src/Buffer.cpp:1418
 msgid "Running chktex..."
 msgstr "chktexを実行しています..."
 
-#: src/Buffer.cpp:1400
+#: src/Buffer.cpp:1431
 msgid "chktex failure"
 msgstr "chktexに失敗"
 
-#: src/Buffer.cpp:1401
+#: src/Buffer.cpp:1432
 msgid "Could not run chktex successfully."
 msgstr "Chktexをうまく実行することができませんでした。"
 
-#: src/Buffer.cpp:2256
+#: src/Buffer.cpp:2287
 msgid "Preview source code"
 msgstr "ソースコードをプレビューする"
 
-#: src/Buffer.cpp:2270
+#: src/Buffer.cpp:2301
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "段落%1$dのソースコードをプレビューする"
 
-#: src/Buffer.cpp:2274
+#: src/Buffer.cpp:2305
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "段落%1$sから%2$sまでのソースコードをプレビューする"
 
-#: src/Buffer.cpp:2383
+#: src/Buffer.cpp:2414
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "%1$sを自動保存しています"
 
-#: src/Buffer.cpp:2437
+#: src/Buffer.cpp:2468
 msgid "Autosave failed!"
 msgstr "自動保存に失敗しました！"
 
-#: src/Buffer.cpp:2493
+#: src/Buffer.cpp:2524
 msgid "Autosaving current document..."
 msgstr "現在の文書を自動保存しています..."
 
-#: src/Buffer.cpp:2536
+#: src/Buffer.cpp:2567
 msgid "Couldn't export file"
 msgstr "ファイルを書き出すことができませんでした"
 
-#: src/Buffer.cpp:2537
+#: src/Buffer.cpp:2568
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "%1$sというフォーマットを書き出すのに必要な情報がありません"
 
-#: src/Buffer.cpp:2574
+#: src/Buffer.cpp:2605
 msgid "File name error"
 msgstr "ファイル名エラー"
 
-#: src/Buffer.cpp:2575
+#: src/Buffer.cpp:2606
 msgid "The directory path to the document cannot contain spaces."
 msgstr "文書のパスには空白が含まれていてはなりません。"
 
-#: src/Buffer.cpp:2617
+#: src/Buffer.cpp:2648
 msgid "Document export cancelled."
 msgstr "文書の書き出しは取り消されました。"
 
-#: src/Buffer.cpp:2623
+#: src/Buffer.cpp:2654
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "文書は%1$sとしてファイル「%2$s」に書き出されました。"
 
-#: src/Buffer.cpp:2629
+#: src/Buffer.cpp:2660
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "文書は%1$sとして書き出されました。"
 
-#: src/Buffer.cpp:2699
+#: src/Buffer.cpp:2730
 #, c-format
 msgid ""
 "The specified document\n"
@@ -15226,11 +15251,11 @@ msgstr ""
 "%1$s\n"
 "は，読むことができませんでした。"
 
-#: src/Buffer.cpp:2701
+#: src/Buffer.cpp:2732
 msgid "Could not read document"
 msgstr "文書を読むことができませんでした"
 
-#: src/Buffer.cpp:2711
+#: src/Buffer.cpp:2742
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -15241,27 +15266,27 @@ msgstr ""
 "\n"
 "緊急保存ファイルから復旧しますか？"
 
-#: src/Buffer.cpp:2714
+#: src/Buffer.cpp:2745
 msgid "Load emergency save?"
 msgstr "緊急保存ファイルを読みこみますか？"
 
-#: src/Buffer.cpp:2715
+#: src/Buffer.cpp:2746
 msgid "&Recover"
 msgstr "復旧(&R)"
 
-#: src/Buffer.cpp:2715
+#: src/Buffer.cpp:2746
 msgid "&Load Original"
 msgstr "オリジナルを読み込む(&L):"
 
-#: src/Buffer.cpp:2725
+#: src/Buffer.cpp:2756
 msgid "Document was successfully recovered."
 msgstr "文書を無事に復旧しました。"
 
-#: src/Buffer.cpp:2727
+#: src/Buffer.cpp:2758
 msgid "Document was NOT successfully recovered."
 msgstr "文書を無事に復旧することができませんでした。"
 
-#: src/Buffer.cpp:2728
+#: src/Buffer.cpp:2759
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -15270,27 +15295,27 @@ msgstr ""
 "緊急保存ファイルを直ちに削除しますか？\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:2731 src/Buffer.cpp:2741
+#: src/Buffer.cpp:2762 src/Buffer.cpp:2772
 msgid "Delete emergency file?"
 msgstr "緊急保存ファイルを削除しますか？"
 
-#: src/Buffer.cpp:2732 src/Buffer.cpp:2743
+#: src/Buffer.cpp:2763 src/Buffer.cpp:2774
 msgid "&Keep it"
 msgstr "削除しない(&K)"
 
-#: src/Buffer.cpp:2735
+#: src/Buffer.cpp:2766
 msgid "Emergency file deleted"
 msgstr "緊急保存ファイルを削除しました"
 
-#: src/Buffer.cpp:2736
+#: src/Buffer.cpp:2767
 msgid "Do not forget to save your file now!"
 msgstr "すぐにファイルを保存するようにしてください！"
 
-#: src/Buffer.cpp:2742
+#: src/Buffer.cpp:2773
 msgid "Remove emergency file now?"
 msgstr "緊急保存ファイルを読みこみますか？"
 
-#: src/Buffer.cpp:2757
+#: src/Buffer.cpp:2788
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -15301,28 +15326,28 @@ msgstr ""
 "\n"
 "代わりにバックアップファイルを読み込みますか？"
 
-#: src/Buffer.cpp:2760
+#: src/Buffer.cpp:2791
 msgid "Load backup?"
 msgstr "バックアップを読み込みますか？"
 
-#: src/Buffer.cpp:2761
+#: src/Buffer.cpp:2792
 msgid "&Load backup"
 msgstr "バックアップを読み込む(&L)"
 
-#: src/Buffer.cpp:2761
+#: src/Buffer.cpp:2792
 msgid "Load &original"
 msgstr "オリジナルを読み込む(&O)"
 
-#: src/Buffer.cpp:2794
+#: src/Buffer.cpp:2825
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "バージョン管理から文書%1$sを復元しますか？"
 
-#: src/Buffer.cpp:2796
+#: src/Buffer.cpp:2827
 msgid "Retrieve from version control?"
 msgstr "バージョン管理から復元しますか？"
 
-#: src/Buffer.cpp:2797
+#: src/Buffer.cpp:2828
 msgid "&Retrieve"
 msgstr "復元(&R)"
 
@@ -15562,13 +15587,13 @@ msgstr ""
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:189
 #: src/insets/InsetBibitem.cpp:282 src/insets/InsetListings.cpp:185
 #: src/insets/InsetListings.cpp:193 src/insets/InsetListings.cpp:217
-#: src/mathed/InsetMathString.cpp:166
+#: src/mathed/InsetMathString.cpp:168
 msgid "LyX Warning: "
 msgstr "LyX警告: "
 
 #: src/Changes.cpp:364 src/Paragraph.cpp:2158 src/insets/InsetBibitem.cpp:190
 #: src/insets/InsetBibitem.cpp:283 src/insets/InsetListings.cpp:186
-#: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:167
+#: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:169
 msgid "uncodable character"
 msgstr "コード化できない文字"
 
@@ -17396,7 +17421,7 @@ msgstr "索引にするものがありません！"
 msgid "Cannot index more than one paragraph!"
 msgstr "一段落以上は索引にすることができません！"
 
-#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1552
+#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1553
 msgid "Math editor mode"
 msgstr "数式編集モード"
 
@@ -21016,7 +21041,7 @@ msgstr "個の文字列が置換されました。"
 msgid " Macro: %1$s: "
 msgstr " マクロ: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1460
+#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1461
 #: src/mathed/InsetMathSplit.cpp:75 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -21053,25 +21078,25 @@ msgstr "削除する vline はありません"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "「%1$s」は未知の表の特性です"
 
-#: src/mathed/InsetMathHull.cpp:1228 src/mathed/InsetMathHull.cpp:1236
+#: src/mathed/InsetMathHull.cpp:1229 src/mathed/InsetMathHull.cpp:1237
 msgid "No number"
 msgstr "番号なし"
 
-#: src/mathed/InsetMathHull.cpp:1228 src/mathed/InsetMathHull.cpp:1236
+#: src/mathed/InsetMathHull.cpp:1229 src/mathed/InsetMathHull.cpp:1237
 msgid "Number"
 msgstr "番号あり"
 
-#: src/mathed/InsetMathHull.cpp:1433
+#: src/mathed/InsetMathHull.cpp:1434
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "「%1$s」の行数を変えることができません。"
 
-#: src/mathed/InsetMathHull.cpp:1443
+#: src/mathed/InsetMathHull.cpp:1444
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "「%1$s」の列数を変えることができません。"
 
-#: src/mathed/InsetMathHull.cpp:1453
+#: src/mathed/InsetMathHull.cpp:1454
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "「%1$s」に水平境界線を加えることができません。"

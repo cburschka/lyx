@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: uk-163\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-02-13 09:41+0100\n"
+"POT-Creation-Date: 2010-02-19 15:33+0100\n"
 "PO-Revision-Date: 2009-11-23 19:34+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-doc@kde.org>\n"
@@ -88,7 +88,7 @@ msgstr "&Гаразд"
 #: src/frontends/qt4/ui/CitationUi.ui:461
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:890
-#: src/Buffer.cpp:2716 src/Buffer.cpp:2762 src/Buffer.cpp:2797
+#: src/Buffer.cpp:2747 src/Buffer.cpp:2793 src/Buffer.cpp:2828
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:866 src/LyXFunc.cpp:1042
 #: src/LyXFunc.cpp:1925 src/LyXVC.cpp:196
 #: src/frontends/qt4/GuiClipboard.cpp:208
@@ -461,8 +461,8 @@ msgstr "&Нові:"
 msgid "Remove the selected branch"
 msgstr "Вилучити обрану базу даних"
 
-#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2732
-#: src/Buffer.cpp:2743
+#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2763
+#: src/Buffer.cpp:2774
 msgid "&Remove"
 msgstr "Ви&лучити"
 
@@ -15199,77 +15199,102 @@ msgstr "Спроба перетворення iconv зазнала невдач�
 msgid "conversion failed"
 msgstr "невдале перетворення"
 
-#: src/Buffer.cpp:1387
+#: src/Buffer.cpp:1208
+#, fuzzy
+msgid "Uncodable character in path"
+msgstr "Непридатні для кодування символи у імені автора"
+
+#: src/Buffer.cpp:1209
+#, fuzzy, c-format
+msgid ""
+"The path of your document\n"
+"(%1$s)\n"
+"contains glyphs that are unknown in the\n"
+"current document encoding (namely %2$s).\n"
+"This will likely result in incomplete output.\n"
+"\n"
+"Chose an appropriate document encoding (such as utf8)\n"
+"or change the path name."
+msgstr ""
+"Ім’я автора, «%1$s»,\n"
+"використане для стеження за змінами, містить символи, які\n"
+"неможливо показати за поточного кодування. Відповідні\n"
+"символи буде пропущено під час експортування до файла LaTeX.\n"
+"\n"
+"Оберіть відповідне кодування документа (наприклад, utf8)\n"
+"або змініть запис імені автора."
+
+#: src/Buffer.cpp:1418
 msgid "Running chktex..."
 msgstr "Запуск chktex..."
 
-#: src/Buffer.cpp:1400
+#: src/Buffer.cpp:1431
 msgid "chktex failure"
 msgstr "chktex помилка"
 
-#: src/Buffer.cpp:1401
+#: src/Buffer.cpp:1432
 msgid "Could not run chktex successfully."
 msgstr "Chktex закінчив роботу успішно."
 
-#: src/Buffer.cpp:2256
+#: src/Buffer.cpp:2287
 msgid "Preview source code"
 msgstr "Попередній перегляд джерела"
 
-#: src/Buffer.cpp:2270
+#: src/Buffer.cpp:2301
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Перегляд коду джерела для абзацу %1$d"
 
-#: src/Buffer.cpp:2274
+#: src/Buffer.cpp:2305
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Попередній перегляд коду джерела з параграфа %1$s до %2$s"
 
-#: src/Buffer.cpp:2383
+#: src/Buffer.cpp:2414
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Автоматичне збереження %1$s"
 
-#: src/Buffer.cpp:2437
+#: src/Buffer.cpp:2468
 msgid "Autosave failed!"
 msgstr "Автозбереження не вдалося!"
 
-#: src/Buffer.cpp:2493
+#: src/Buffer.cpp:2524
 msgid "Autosaving current document..."
 msgstr "Автозбереження поточного документа..."
 
-#: src/Buffer.cpp:2536
+#: src/Buffer.cpp:2567
 msgid "Couldn't export file"
 msgstr "Неможливо експортувати файл"
 
-#: src/Buffer.cpp:2537
+#: src/Buffer.cpp:2568
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Немає інформації для імпортування з %1$s"
 
-#: src/Buffer.cpp:2574
+#: src/Buffer.cpp:2605
 msgid "File name error"
 msgstr "Помилкова назва файла"
 
-#: src/Buffer.cpp:2575
+#: src/Buffer.cpp:2606
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Шлях до файлу LyX не повинен містити пробілів."
 
-#: src/Buffer.cpp:2617
+#: src/Buffer.cpp:2648
 msgid "Document export cancelled."
 msgstr "Експорт документа скасовано."
 
-#: src/Buffer.cpp:2623
+#: src/Buffer.cpp:2654
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Документ експортовано як %1$s у файл `%2$s'"
 
-#: src/Buffer.cpp:2629
+#: src/Buffer.cpp:2660
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Документ експортовано як %1$s"
 
-#: src/Buffer.cpp:2699
+#: src/Buffer.cpp:2730
 #, c-format
 msgid ""
 "The specified document\n"
@@ -15280,11 +15305,11 @@ msgstr ""
 "%1$s\n"
 "не може бути прочитаним."
 
-#: src/Buffer.cpp:2701
+#: src/Buffer.cpp:2732
 msgid "Could not read document"
 msgstr "Неможливо прочитати документ"
 
-#: src/Buffer.cpp:2711
+#: src/Buffer.cpp:2742
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -15295,27 +15320,27 @@ msgstr ""
 "\n"
 "Відновити?"
 
-#: src/Buffer.cpp:2714
+#: src/Buffer.cpp:2745
 msgid "Load emergency save?"
 msgstr "Завантажити аварійну копію?"
 
-#: src/Buffer.cpp:2715
+#: src/Buffer.cpp:2746
 msgid "&Recover"
 msgstr "&Відновити"
 
-#: src/Buffer.cpp:2715
+#: src/Buffer.cpp:2746
 msgid "&Load Original"
 msgstr "&Завантажити оригінал"
 
-#: src/Buffer.cpp:2725
+#: src/Buffer.cpp:2756
 msgid "Document was successfully recovered."
 msgstr "Документ було успішно відновлено."
 
-#: src/Buffer.cpp:2727
+#: src/Buffer.cpp:2758
 msgid "Document was NOT successfully recovered."
 msgstr "Не вдалося відновити документ."
 
-#: src/Buffer.cpp:2728
+#: src/Buffer.cpp:2759
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -15324,27 +15349,27 @@ msgstr ""
 "Вилучити аварійну копію?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:2731 src/Buffer.cpp:2741
+#: src/Buffer.cpp:2762 src/Buffer.cpp:2772
 msgid "Delete emergency file?"
 msgstr "Вилучити файл аварійної копії?"
 
-#: src/Buffer.cpp:2732 src/Buffer.cpp:2743
+#: src/Buffer.cpp:2763 src/Buffer.cpp:2774
 msgid "&Keep it"
 msgstr "&Не вилучати"
 
-#: src/Buffer.cpp:2735
+#: src/Buffer.cpp:2766
 msgid "Emergency file deleted"
 msgstr "Аварійну копію вилучено"
 
-#: src/Buffer.cpp:2736
+#: src/Buffer.cpp:2767
 msgid "Do not forget to save your file now!"
 msgstr "Не забудьте зберегти ваш файл!"
 
-#: src/Buffer.cpp:2742
+#: src/Buffer.cpp:2773
 msgid "Remove emergency file now?"
 msgstr "Вилучити аварійну копію?"
 
-#: src/Buffer.cpp:2757
+#: src/Buffer.cpp:2788
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -15355,28 +15380,28 @@ msgstr ""
 "\n"
 "Завантажити її?"
 
-#: src/Buffer.cpp:2760
+#: src/Buffer.cpp:2791
 msgid "Load backup?"
 msgstr "Повернутися до резервної?"
 
-#: src/Buffer.cpp:2761
+#: src/Buffer.cpp:2792
 msgid "&Load backup"
 msgstr "&Завантажити резервну"
 
-#: src/Buffer.cpp:2761
+#: src/Buffer.cpp:2792
 msgid "Load &original"
 msgstr "Завантажити &оригінал"
 
-#: src/Buffer.cpp:2794
+#: src/Buffer.cpp:2825
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "Бажаєте відкрити документ %1$s в режимі керування версіями?"
 
-#: src/Buffer.cpp:2796
+#: src/Buffer.cpp:2827
 msgid "Retrieve from version control?"
 msgstr "Бажаєте відкрити документ в режимі керування версіями?"
 
-#: src/Buffer.cpp:2797
+#: src/Buffer.cpp:2828
 msgid "&Retrieve"
 msgstr "&Отримати"
 
@@ -15619,13 +15644,13 @@ msgstr ""
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:189
 #: src/insets/InsetBibitem.cpp:282 src/insets/InsetListings.cpp:185
 #: src/insets/InsetListings.cpp:193 src/insets/InsetListings.cpp:217
-#: src/mathed/InsetMathString.cpp:166
+#: src/mathed/InsetMathString.cpp:168
 msgid "LyX Warning: "
 msgstr "Попередження LyX: "
 
 #: src/Changes.cpp:364 src/Paragraph.cpp:2158 src/insets/InsetBibitem.cpp:190
 #: src/insets/InsetBibitem.cpp:283 src/insets/InsetListings.cpp:186
-#: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:167
+#: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:169
 msgid "uncodable character"
 msgstr "непридатний для кодування символ"
 
@@ -17459,7 +17484,7 @@ msgstr "Нема чого індексувати!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Не можна індексувати більше ніж один абзац!"
 
-#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1552
+#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1553
 msgid "Math editor mode"
 msgstr "Математичний режим"
 
@@ -21081,7 +21106,7 @@ msgstr " рядків було замінено."
 msgid " Macro: %1$s: "
 msgstr "Макрос: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1460
+#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1461
 #: src/mathed/InsetMathSplit.cpp:75 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -21118,25 +21143,25 @@ msgstr "Нічого вилучати"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Невідома властивість таблиці '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1228 src/mathed/InsetMathHull.cpp:1236
+#: src/mathed/InsetMathHull.cpp:1229 src/mathed/InsetMathHull.cpp:1237
 msgid "No number"
 msgstr "Без номеру"
 
-#: src/mathed/InsetMathHull.cpp:1228 src/mathed/InsetMathHull.cpp:1236
+#: src/mathed/InsetMathHull.cpp:1229 src/mathed/InsetMathHull.cpp:1237
 msgid "Number"
 msgstr "Номер"
 
-#: src/mathed/InsetMathHull.cpp:1433
+#: src/mathed/InsetMathHull.cpp:1434
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Не можу змінити число рядків в '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1443
+#: src/mathed/InsetMathHull.cpp:1444
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Не можу змінити кількість колонок до '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1453
+#: src/mathed/InsetMathHull.cpp:1454
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Не можу додати горизонтальні лінії ґратки '%1$s'"

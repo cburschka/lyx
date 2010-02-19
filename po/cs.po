@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-02-13 09:41+0100\n"
+"POT-Creation-Date: 2010-02-19 15:33+0100\n"
 "PO-Revision-Date: 2009-11-02 02:01+0100\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -85,7 +85,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/CitationUi.ui:461
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:890
-#: src/Buffer.cpp:2716 src/Buffer.cpp:2762 src/Buffer.cpp:2797
+#: src/Buffer.cpp:2747 src/Buffer.cpp:2793 src/Buffer.cpp:2828
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:866 src/LyXFunc.cpp:1042
 #: src/LyXFunc.cpp:1925 src/LyXVC.cpp:196
 #: src/frontends/qt4/GuiClipboard.cpp:208
@@ -458,8 +458,8 @@ msgstr "&Nová:"
 msgid "Remove the selected branch"
 msgstr "Smazat vybranou vìtev"
 
-#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2732
-#: src/Buffer.cpp:2743
+#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2763
+#: src/Buffer.cpp:2774
 msgid "&Remove"
 msgstr "&Smazat"
 
@@ -15156,77 +15156,102 @@ msgstr "iconv konverze se nezdaøila"
 msgid "conversion failed"
 msgstr "konverze se nezdaøila"
 
-#: src/Buffer.cpp:1387
+#: src/Buffer.cpp:1208
+#, fuzzy
+msgid "Uncodable character in path"
+msgstr "Nekódovatelné znaky ve jménu autora"
+
+#: src/Buffer.cpp:1209
+#, fuzzy, c-format
+msgid ""
+"The path of your document\n"
+"(%1$s)\n"
+"contains glyphs that are unknown in the\n"
+"current document encoding (namely %2$s).\n"
+"This will likely result in incomplete output.\n"
+"\n"
+"Chose an appropriate document encoding (such as utf8)\n"
+"or change the path name."
+msgstr ""
+"Jméno autora '%1$s',\n"
+"pou¾ité pro revize, obsahuje znaky, které nelze reprezentovat\n"
+"v aktuálním kódování. Pøíslu¹né znaky budou pøi exportu do LaTeX-u "
+"vynechány.\n"
+"\n"
+"Vyberte vhodné kódování dokumentu (napø. utf8)\n"
+"nebo zmìnte jméno autora."
+
+#: src/Buffer.cpp:1418
 msgid "Running chktex..."
 msgstr "Spou¹tím chktex..."
 
-#: src/Buffer.cpp:1400
+#: src/Buffer.cpp:1431
 msgid "chktex failure"
 msgstr "chktex selhal"
 
-#: src/Buffer.cpp:1401
+#: src/Buffer.cpp:1432
 msgid "Could not run chktex successfully."
 msgstr "chktex nelze úspì¹nì spustit."
 
-#: src/Buffer.cpp:2256
+#: src/Buffer.cpp:2287
 msgid "Preview source code"
 msgstr "Náhled zdrojového kódu"
 
-#: src/Buffer.cpp:2270
+#: src/Buffer.cpp:2301
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Náhled zdrojového kódu pro odstavec %1$d"
 
-#: src/Buffer.cpp:2274
+#: src/Buffer.cpp:2305
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Náhled zdrojového kódu pro odstavce %1$s - %2$s"
 
-#: src/Buffer.cpp:2383
+#: src/Buffer.cpp:2414
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Automatické ulo¾ení %1$s"
 
-#: src/Buffer.cpp:2437
+#: src/Buffer.cpp:2468
 msgid "Autosave failed!"
 msgstr "Automatické ulo¾ení selhalo!"
 
-#: src/Buffer.cpp:2493
+#: src/Buffer.cpp:2524
 msgid "Autosaving current document..."
 msgstr "Automatické ulo¾ení souèasného dokumentu"
 
-#: src/Buffer.cpp:2536
+#: src/Buffer.cpp:2567
 msgid "Couldn't export file"
 msgstr "Nelze exportovat soubor"
 
-#: src/Buffer.cpp:2537
+#: src/Buffer.cpp:2568
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "®ádná informace pro export formátu %1$s."
 
-#: src/Buffer.cpp:2574
+#: src/Buffer.cpp:2605
 msgid "File name error"
 msgstr "Chyba ve jménì souboru"
 
-#: src/Buffer.cpp:2575
+#: src/Buffer.cpp:2606
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Cesta k dokumentu nesmí obsahovat mezery."
 
-#: src/Buffer.cpp:2617
+#: src/Buffer.cpp:2648
 msgid "Document export cancelled."
 msgstr "Export dokumentu zru¹en."
 
-#: src/Buffer.cpp:2623
+#: src/Buffer.cpp:2654
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokument exportován jako %1$s do souboru `%2$s'"
 
-#: src/Buffer.cpp:2629
+#: src/Buffer.cpp:2660
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokument exportován jako %1$s"
 
-#: src/Buffer.cpp:2699
+#: src/Buffer.cpp:2730
 #, c-format
 msgid ""
 "The specified document\n"
@@ -15237,11 +15262,11 @@ msgstr ""
 "%1$s\n"
 "nelze pøeèíst."
 
-#: src/Buffer.cpp:2701
+#: src/Buffer.cpp:2732
 msgid "Could not read document"
 msgstr "Nelze pøeèíst dokument"
 
-#: src/Buffer.cpp:2711
+#: src/Buffer.cpp:2742
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -15252,27 +15277,27 @@ msgstr ""
 "\n"
 "Obnovit z nouzového ulo¾ení ?"
 
-#: src/Buffer.cpp:2714
+#: src/Buffer.cpp:2745
 msgid "Load emergency save?"
 msgstr "Naèíst nouzové ulo¾ení ?"
 
-#: src/Buffer.cpp:2715
+#: src/Buffer.cpp:2746
 msgid "&Recover"
 msgstr "&Obnovit"
 
-#: src/Buffer.cpp:2715
+#: src/Buffer.cpp:2746
 msgid "&Load Original"
 msgstr "&Naèíst pùvodní"
 
-#: src/Buffer.cpp:2725
+#: src/Buffer.cpp:2756
 msgid "Document was successfully recovered."
 msgstr "Dokument byl úspì¹nì obnoven."
 
-#: src/Buffer.cpp:2727
+#: src/Buffer.cpp:2758
 msgid "Document was NOT successfully recovered."
 msgstr "Dokument NEBYL úspì¹nì obnoven."
 
-#: src/Buffer.cpp:2728
+#: src/Buffer.cpp:2759
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -15281,27 +15306,27 @@ msgstr ""
 "Smazat nyní soubor s nouzovým ulo¾ením ?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:2731 src/Buffer.cpp:2741
+#: src/Buffer.cpp:2762 src/Buffer.cpp:2772
 msgid "Delete emergency file?"
 msgstr "Smazat nouzové ulo¾ení ?"
 
-#: src/Buffer.cpp:2732 src/Buffer.cpp:2743
+#: src/Buffer.cpp:2763 src/Buffer.cpp:2774
 msgid "&Keep it"
 msgstr "&Ponechat"
 
-#: src/Buffer.cpp:2735
+#: src/Buffer.cpp:2766
 msgid "Emergency file deleted"
 msgstr "Soubor s nouzovým ulo¾ením smazán."
 
-#: src/Buffer.cpp:2736
+#: src/Buffer.cpp:2767
 msgid "Do not forget to save your file now!"
 msgstr "Nezapomeòte ulo¾it nyní vá¹ soubor!"
 
-#: src/Buffer.cpp:2742
+#: src/Buffer.cpp:2773
 msgid "Remove emergency file now?"
 msgstr "Smazat nyní soubor s nouzovým ulo¾ením ?"
 
-#: src/Buffer.cpp:2757
+#: src/Buffer.cpp:2788
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -15312,28 +15337,28 @@ msgstr ""
 "\n"
 "Naèíst místo toho zálohu ?"
 
-#: src/Buffer.cpp:2760
+#: src/Buffer.cpp:2791
 msgid "Load backup?"
 msgstr "Naèíst zálohu ?"
 
-#: src/Buffer.cpp:2761
+#: src/Buffer.cpp:2792
 msgid "&Load backup"
 msgstr "&Naèíst zálohu"
 
-#: src/Buffer.cpp:2761
+#: src/Buffer.cpp:2792
 msgid "Load &original"
 msgstr "Naèíst &pùvodní"
 
-#: src/Buffer.cpp:2794
+#: src/Buffer.cpp:2825
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "Chcete obdr¾et dokument %1$s ze správy verzí ?"
 
-#: src/Buffer.cpp:2796
+#: src/Buffer.cpp:2827
 msgid "Retrieve from version control?"
 msgstr "Obdr¾et ze správy verzí"
 
-#: src/Buffer.cpp:2797
+#: src/Buffer.cpp:2828
 msgid "&Retrieve"
 msgstr "&Obdr¾et"
 
@@ -15574,13 +15599,13 @@ msgstr ""
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:189
 #: src/insets/InsetBibitem.cpp:282 src/insets/InsetListings.cpp:185
 #: src/insets/InsetListings.cpp:193 src/insets/InsetListings.cpp:217
-#: src/mathed/InsetMathString.cpp:166
+#: src/mathed/InsetMathString.cpp:168
 msgid "LyX Warning: "
 msgstr "Výstraha LyX-u: "
 
 #: src/Changes.cpp:364 src/Paragraph.cpp:2158 src/insets/InsetBibitem.cpp:190
 #: src/insets/InsetBibitem.cpp:283 src/insets/InsetListings.cpp:186
-#: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:167
+#: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:169
 msgid "uncodable character"
 msgstr "nekódovatelný znak"
 
@@ -17396,7 +17421,7 @@ msgstr "Nic k indexaci !"
 msgid "Cannot index more than one paragraph!"
 msgstr "Nelze indexovat víc ne¾ jeden odstavec !"
 
-#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1552
+#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1553
 msgid "Math editor mode"
 msgstr "Mód matematického editoru"
 
@@ -21012,7 +21037,7 @@ msgstr " øetìzcù bylo nahrazeno."
 msgid " Macro: %1$s: "
 msgstr " Makro: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1460
+#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1461
 #: src/mathed/InsetMathSplit.cpp:75 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -21049,25 +21074,25 @@ msgstr "®ádná vertikální linka (vline) ke smazání"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Neznámá vlastnost tabulky '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1228 src/mathed/InsetMathHull.cpp:1236
+#: src/mathed/InsetMathHull.cpp:1229 src/mathed/InsetMathHull.cpp:1237
 msgid "No number"
 msgstr "®ádné èíslo"
 
-#: src/mathed/InsetMathHull.cpp:1228 src/mathed/InsetMathHull.cpp:1236
+#: src/mathed/InsetMathHull.cpp:1229 src/mathed/InsetMathHull.cpp:1237
 msgid "Number"
 msgstr "Èíslo"
 
-#: src/mathed/InsetMathHull.cpp:1433
+#: src/mathed/InsetMathHull.cpp:1434
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Nelze zmìnit poèet øádkù v '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1443
+#: src/mathed/InsetMathHull.cpp:1444
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Nelze zmìnit poèet sloupcù v '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1453
+#: src/mathed/InsetMathHull.cpp:1454
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Nelze pøidat horizontální linky møí¾ky v '%1$s'"

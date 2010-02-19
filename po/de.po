@@ -96,8 +96,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2010-02-13 09:41+0100\n"
-"PO-Revision-Date: 2010-02-13 09:44+0100\n"
+"POT-Creation-Date: 2010-02-19 15:33+0100\n"
+"PO-Revision-Date: 2010-02-19 15:45+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -177,7 +177,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/CitationUi.ui:461
 #: src/frontends/qt4/ui/DocumentUi.ui:152
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/Buffer.cpp:890
-#: src/Buffer.cpp:2716 src/Buffer.cpp:2762 src/Buffer.cpp:2797
+#: src/Buffer.cpp:2747 src/Buffer.cpp:2793 src/Buffer.cpp:2828
 #: src/LyXFunc.cpp:721 src/LyXFunc.cpp:866 src/LyXFunc.cpp:1042
 #: src/LyXFunc.cpp:1925 src/LyXVC.cpp:196
 #: src/frontends/qt4/GuiClipboard.cpp:208
@@ -552,8 +552,8 @@ msgstr "&Neu:"
 msgid "Remove the selected branch"
 msgstr "Den ausgewählten Zweig entfernen"
 
-#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2732
-#: src/Buffer.cpp:2743
+#: src/frontends/qt4/ui/BranchesUi.ui:83 src/Buffer.cpp:2763
+#: src/Buffer.cpp:2774
 msgid "&Remove"
 msgstr "&Entfernen"
 
@@ -15307,77 +15307,102 @@ msgstr "iconv-Konvertierung fehlgeschlagen"
 msgid "conversion failed"
 msgstr "Konvertierung fehlgeschlagen"
 
-#: src/Buffer.cpp:1387
+#: src/Buffer.cpp:1208
+msgid "Uncodable character in path"
+msgstr "Unkodierbares Zeichen im Dateipfad"
+
+#: src/Buffer.cpp:1209
+#, c-format
+msgid ""
+"The path of your document\n"
+"(%1$s)\n"
+"contains glyphs that are unknown in the\n"
+"current document encoding (namely %2$s).\n"
+"This will likely result in incomplete output.\n"
+"\n"
+"Chose an appropriate document encoding (such as utf8)\n"
+"or change the path name."
+msgstr ""
+"Der Dateipfad Ihres Dokuments\n"
+"(%1$s)\n"
+"enthält Zeichen, die in der aktuellen Kodierung\n"
+"unbekannt sind (nämlich: %2$s).\n"
+"Die Ausgabe wird vermutlich unvollständig sein.\n"
+"\n"
+"Wählen Sie eine passende Kodierung (bspw. utf8)\n"
+"oder ändern Sie den Namen des Pfads."
+
+#: src/Buffer.cpp:1418
 msgid "Running chktex..."
 msgstr "ChkTeX wird ausgeführt..."
 
-#: src/Buffer.cpp:1400
+#: src/Buffer.cpp:1431
 msgid "chktex failure"
 msgstr "ChkTeX ist fehlgeschlagen"
 
-#: src/Buffer.cpp:1401
+#: src/Buffer.cpp:1432
 msgid "Could not run chktex successfully."
 msgstr "Chktex konnte nicht erfolgreich ausgeführt werden."
 
-#: src/Buffer.cpp:2256
+#: src/Buffer.cpp:2287
 msgid "Preview source code"
 msgstr "Quellcode vorschauen"
 
-#: src/Buffer.cpp:2270
+#: src/Buffer.cpp:2301
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Quellcode für Absatz %1$d vorschauen"
 
-#: src/Buffer.cpp:2274
+#: src/Buffer.cpp:2305
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Quellcode von Absatz %1$s bis %2$s vorschauen"
 
-#: src/Buffer.cpp:2383
+#: src/Buffer.cpp:2414
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Automatische Speicherung von %1$s"
 
-#: src/Buffer.cpp:2437
+#: src/Buffer.cpp:2468
 msgid "Autosave failed!"
 msgstr "Die automatische Speicherung ist fehlgeschlagen!"
 
-#: src/Buffer.cpp:2493
+#: src/Buffer.cpp:2524
 msgid "Autosaving current document..."
 msgstr "Automatisches Speichern des aktuellen Dokuments..."
 
-#: src/Buffer.cpp:2536
+#: src/Buffer.cpp:2567
 msgid "Couldn't export file"
 msgstr "Die Datei konnte nicht exportiert werden"
 
-#: src/Buffer.cpp:2537
+#: src/Buffer.cpp:2568
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Keine Informationen vorhanden, um das Format %1$s zu exportieren."
 
-#: src/Buffer.cpp:2574
+#: src/Buffer.cpp:2605
 msgid "File name error"
 msgstr "Fehler im Dateinamen"
 
-#: src/Buffer.cpp:2575
+#: src/Buffer.cpp:2606
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Der Verzeichnispfad zum Dokument darf keine Leerzeichen enthalten."
 
-#: src/Buffer.cpp:2617
+#: src/Buffer.cpp:2648
 msgid "Document export cancelled."
 msgstr "Der Export des Dokuments wurde abgebrochen."
 
-#: src/Buffer.cpp:2623
+#: src/Buffer.cpp:2654
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokument als %1$s in die Datei `%2$s' exportiert"
 
-#: src/Buffer.cpp:2629
+#: src/Buffer.cpp:2660
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokument als %1$s exportiert"
 
-#: src/Buffer.cpp:2699
+#: src/Buffer.cpp:2730
 #, c-format
 msgid ""
 "The specified document\n"
@@ -15388,11 +15413,11 @@ msgstr ""
 "%1$s\n"
 "konnte nicht gelesen werden."
 
-#: src/Buffer.cpp:2701
+#: src/Buffer.cpp:2732
 msgid "Could not read document"
 msgstr "Das Dokument konnte nicht gelesen werden"
 
-#: src/Buffer.cpp:2711
+#: src/Buffer.cpp:2742
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -15403,27 +15428,27 @@ msgstr ""
 "\n"
 "Soll die Notspeicherung wiederhergestellt werden?"
 
-#: src/Buffer.cpp:2714
+#: src/Buffer.cpp:2745
 msgid "Load emergency save?"
 msgstr "Notspeicherung laden?"
 
-#: src/Buffer.cpp:2715
+#: src/Buffer.cpp:2746
 msgid "&Recover"
 msgstr "&Wiederherstellen"
 
-#: src/Buffer.cpp:2715
+#: src/Buffer.cpp:2746
 msgid "&Load Original"
 msgstr "&Original laden"
 
-#: src/Buffer.cpp:2725
+#: src/Buffer.cpp:2756
 msgid "Document was successfully recovered."
 msgstr "Dokument wurde erfolgreich wiederhergestellt."
 
-#: src/Buffer.cpp:2727
+#: src/Buffer.cpp:2758
 msgid "Document was NOT successfully recovered."
 msgstr "Dokument wurde NICHT erfolgreich wiederhergestellt."
 
-#: src/Buffer.cpp:2728
+#: src/Buffer.cpp:2759
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -15433,27 +15458,27 @@ msgstr ""
 "%1$s\n"
 "jetzt löschen?"
 
-#: src/Buffer.cpp:2731 src/Buffer.cpp:2741
+#: src/Buffer.cpp:2762 src/Buffer.cpp:2772
 msgid "Delete emergency file?"
 msgstr "Notspeicherung löschen?"
 
-#: src/Buffer.cpp:2732 src/Buffer.cpp:2743
+#: src/Buffer.cpp:2763 src/Buffer.cpp:2774
 msgid "&Keep it"
 msgstr "&Nicht löschen"
 
-#: src/Buffer.cpp:2735
+#: src/Buffer.cpp:2766
 msgid "Emergency file deleted"
 msgstr "Notspeicherung gelöscht"
 
-#: src/Buffer.cpp:2736
+#: src/Buffer.cpp:2767
 msgid "Do not forget to save your file now!"
 msgstr "Vergessen Sie nicht, ihre Datei jetzt zu speichern!"
 
-#: src/Buffer.cpp:2742
+#: src/Buffer.cpp:2773
 msgid "Remove emergency file now?"
 msgstr "Notspeicherungsdatei jetzt löschen?"
 
-#: src/Buffer.cpp:2757
+#: src/Buffer.cpp:2788
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -15464,28 +15489,28 @@ msgstr ""
 "\n"
 "Stattdessen die Sicherung laden?"
 
-#: src/Buffer.cpp:2760
+#: src/Buffer.cpp:2791
 msgid "Load backup?"
 msgstr "Sicherung laden?"
 
-#: src/Buffer.cpp:2761
+#: src/Buffer.cpp:2792
 msgid "&Load backup"
 msgstr "&Sicherung laden"
 
-#: src/Buffer.cpp:2761
+#: src/Buffer.cpp:2792
 msgid "Load &original"
 msgstr "&Original laden"
 
-#: src/Buffer.cpp:2794
+#: src/Buffer.cpp:2825
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "Möchten Sie das Dokument %1$s aus der Versionskontrolle abrufen?"
 
-#: src/Buffer.cpp:2796
+#: src/Buffer.cpp:2827
 msgid "Retrieve from version control?"
 msgstr "Von der Versionskontrolle abrufen?"
 
-#: src/Buffer.cpp:2797
+#: src/Buffer.cpp:2828
 msgid "&Retrieve"
 msgstr "&Abrufen"
 
@@ -15729,13 +15754,13 @@ msgstr ""
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetBibitem.cpp:189
 #: src/insets/InsetBibitem.cpp:282 src/insets/InsetListings.cpp:185
 #: src/insets/InsetListings.cpp:193 src/insets/InsetListings.cpp:217
-#: src/mathed/InsetMathString.cpp:166
+#: src/mathed/InsetMathString.cpp:168
 msgid "LyX Warning: "
 msgstr "LyX-Warnung: "
 
 #: src/Changes.cpp:364 src/Paragraph.cpp:2158 src/insets/InsetBibitem.cpp:190
 #: src/insets/InsetBibitem.cpp:283 src/insets/InsetListings.cpp:186
-#: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:167
+#: src/insets/InsetListings.cpp:194 src/mathed/InsetMathString.cpp:169
 msgid "uncodable character"
 msgstr "unkodierbares Zeichen"
 
@@ -15759,7 +15784,7 @@ msgstr ""
 "die in der aktuellen Kodierung nicht dargestellt werden können.\n"
 "Die betroffenen Zeichen werden in der LaTeX-Ausgabe unterdrückt.\n"
 "\n"
-"Wählen Sie eine passende Kodierung (bspw. UTF-8)\n"
+"Wählen Sie eine passende Kodierung (bspw. utf8)\n"
 "oder ändern Sie die Schreibung des betroffenen Namens."
 
 #: src/Chktex.cpp:63
@@ -17622,7 +17647,7 @@ msgstr "Nichts zu indizieren!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Es kann nicht mehr als ein Absatz indiziert werden!"
 
-#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1552
+#: src/Text3.cpp:188 src/mathed/InsetMathHull.cpp:1553
 msgid "Math editor mode"
 msgstr "Mathe-Editor-Modus"
 
@@ -21257,7 +21282,7 @@ msgstr " Zeichenketten wurden ersetzt."
 msgid " Macro: %1$s: "
 msgstr " Makro: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1460
+#: src/mathed/InsetMathAMSArray.cpp:112 src/mathed/InsetMathHull.cpp:1461
 #: src/mathed/InsetMathSplit.cpp:75 src/mathed/InsetMathSubstack.cpp:71
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -21296,25 +21321,25 @@ msgstr "Keine vertikale Linie zu löschen"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Unbekanntes Tabellenmerkmal '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1228 src/mathed/InsetMathHull.cpp:1236
+#: src/mathed/InsetMathHull.cpp:1229 src/mathed/InsetMathHull.cpp:1237
 msgid "No number"
 msgstr "Keine Nummer"
 
-#: src/mathed/InsetMathHull.cpp:1228 src/mathed/InsetMathHull.cpp:1236
+#: src/mathed/InsetMathHull.cpp:1229 src/mathed/InsetMathHull.cpp:1237
 msgid "Number"
 msgstr "Nummer"
 
-#: src/mathed/InsetMathHull.cpp:1433
+#: src/mathed/InsetMathHull.cpp:1434
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Die Anzahl der Zeilen in '%1$s' kann nicht geändert werden"
 
-#: src/mathed/InsetMathHull.cpp:1443
+#: src/mathed/InsetMathHull.cpp:1444
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Die Anzahl der Spalten in '%1$s' kann nicht geändert werden"
 
-#: src/mathed/InsetMathHull.cpp:1453
+#: src/mathed/InsetMathHull.cpp:1454
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Es können keine horizontalen Gitterlinien in '%1$s' hinzugefügt werden"
