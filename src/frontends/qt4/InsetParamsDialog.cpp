@@ -74,6 +74,12 @@ InsetParamsDialog::~InsetParamsDialog()
 }
 
 
+bool InsetParamsDialog::initialiseParams(std::string const &)
+{
+	on_restorePB_clicked();
+	return true;
+}
+
 void InsetParamsDialog::setInsetParamsWidget(InsetParamsWidget * widget)
 {
 	d->widget_ = widget;

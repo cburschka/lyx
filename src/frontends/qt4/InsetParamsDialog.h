@@ -51,6 +51,7 @@ private:
 	void dispatchParams() {}
 	bool isBufferDependent() const { return true; }
 	bool canApply() const { return true; }
+	bool initialiseParams(std::string const &);
 	//@}
 	///
 	void newInset();
