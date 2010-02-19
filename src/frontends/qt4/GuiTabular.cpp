@@ -377,13 +377,13 @@ docstring GuiTabular::dialogToParams() const
 		&& !borders->getRight())
 		setParam(param_str, Tabular::UNSET_ALL_LINES);
 	else {
-		if (borders->getLeft())
+		if (borders->getLeft() != left_border_set_)
 			setParam(param_str, Tabular::TOGGLE_LINE_LEFT);
-		if (borders->getRight())
+		if (borders->getRight() != right_border_set_)
 			setParam(param_str, Tabular::TOGGLE_LINE_RIGHT);
-		if (borders->getTop())
+		if (borders->getTop() != top_border_set_)
 			setParam(param_str, Tabular::TOGGLE_LINE_TOP);
-		if (borders->getBottom())
+		if (borders->getBottom() != bottom_border_set_)
 			setParam(param_str, Tabular::TOGGLE_LINE_BOTTOM);
 	}
 
@@ -555,10 +555,14 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 	longTabularCB->setChecked(tabular.is_long_tabular);
 
 	//
-	borders->setTop(tabular.topLine(cell));
-	borders->setBottom(tabular.bottomLine(cell));
-	borders->setLeft(tabular.leftLine(cell));
-	borders->setRight(tabular.rightLine(cell));
+	top_border_set_ = tabular.topLine(cell);
+	bottom_border_set_ = tabular.bottomLine(cell);
+	left_border_set_ = tabular.leftLine(cell);
+	right_border_set_ = tabular.rightLine(cell);
+	borders->setTop(top_border_set_);
+	borders->setBottom(bottom_border_set_);
+	borders->setLeft(left_border_set_);
+	borders->setRight(right_border_set_);
 	// repaint the setborder widget
 	borders->update();
 

@@ -48,6 +48,11 @@ private:
 	void setVAlign(std::string & param_str) const;
 	///
 	void setTableAlignment(std::string & param_str) const;
+	///
+	bool left_border_set_;
+	bool right_border_set_;
+	bool top_border_set_;
+	bool bottom_border_set_;
 };
 
 } // namespace frontend
