@@ -272,13 +272,6 @@ public:
 	/// Returns true if there is a topline, returns false if not
 	bool rightLine(idx_type cell) const;
 
-	///
-	bool topAlreadyDrawn(idx_type cell) const;
-	///
-	bool leftAlreadyDrawn(idx_type cell) const;
-	///
-	bool isLastRow(idx_type cell) const;
-
 	/// return space occupied by the second horizontal line and
 	/// interline space above row \p row in pixels
 	int interRowSpace(row_type row) const;

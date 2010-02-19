@@ -867,32 +867,6 @@ bool Tabular::rightLine(idx_type cell) const
 }
 
 
-bool Tabular::topAlreadyDrawn(idx_type cell) const
-{
-	row_type const row = cellRow(cell);
-	if (row == 0)
-		return false;
-	
-	return !rowTopLine(row) && bottomLine(cellAbove(cell));
-}
-
-
-bool Tabular::leftAlreadyDrawn(idx_type cell) const
-{
-	col_type col = cellColumn(cell);
-	if (col == 0)
-		return false;
-	idx_type i = cellIndex(cellRow(cell), col - 1);
-	return rightLine(i) && !leftLine(cell);
-}
-
-
-bool Tabular::isLastRow(idx_type cell) const
-{
-	return cellRow(cell) == row_info.size() - 1;
-}
-
-
 int Tabular::interRowSpace(row_type row) const
 {
 	if (!row || row >= row_info.size())
@@ -3460,7 +3434,10 @@ void InsetTabular::drawCellLines(Painter & pain, int x, int y,
 		onoffcol = change.color();
 	}
 
-	if (!tabular.topAlreadyDrawn(cell)) {
+	bool topalreadydrawn = row > 0 && !tabular.rowTopLine(row) 
+		&& tabular.bottomLine(tabular.cellAbove(cell));
+
+	if (!topalreadydrawn) {
 		on_off = !tabular.topLine(cell);
 		pain.line(x, y, x + w, y,
 			on_off ? onoffcol : col,
@@ -3470,7 +3447,12 @@ void InsetTabular::drawCellLines(Painter & pain, int x, int y,
 	pain.line(x, y + h, x + w, y + h,
 		on_off ? onoffcol : col,
 		on_off ? Painter::line_onoffdash : Painter::line_solid);
-	if (!tabular.leftAlreadyDrawn(cell)) {
+
+	col_type const column = tabular.cellColumn(cell);
+	bool leftalreadydrawn = column > 0  && !tabular.leftLine(cell)
+		&& tabular.rightLine(tabular.cellIndex(row, column - 1));
+
+	if (!leftalreadydrawn) {
 		on_off = !tabular.leftLine(cell);
 		pain.line(x, y, x, y + h,
 			on_off ? onoffcol : col,
