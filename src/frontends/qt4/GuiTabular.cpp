@@ -561,9 +561,12 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 	// repaint the setborder widget
 	borders->update();
 
+	Length::UNIT const default_unit = Length::defaultUnit();
+
+	///////////////////////////////////
+	// Set width and alignment
 	Length pwidth;
 	docstring special;
-
 	if (multicol) {
 		special = getAlignSpecial(tabular, cell,
 			Tabular::SET_SPECIAL_MULTICOLUMN);
@@ -577,10 +580,17 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 			Tabular::SET_SPECIAL_COLUMN);
 		pwidth = getColumnPWidth(tabular, cell);
 	}
-
+	string colwidth;
+	if (pwidth.zero())
+		widthED->clear();
+	else {
+		colwidth = pwidth.asString();
+		lengthToWidgets(widthED, widthUnitCB,
+			colwidth, default_unit);
+	}
 	specialAlignmentED->setText(toqstr(special));
+	///////////////////////////////////
 
-	Length::UNIT const default_unit = Length::defaultUnit();
 
 	borderDefaultRB->setChecked(!tabular.use_booktabs);
 	booktabsRB->setChecked(tabular.use_booktabs);
@@ -622,13 +632,6 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 				interlinespaceUnit,
 				tabular.row_info[row].interline_space.asString(),
 				default_unit);
-	}
-	string colwidth;
-	if (!pwidth.zero()) {
-		colwidth = pwidth.asString();
-
-		lengthToWidgets(widthED, widthUnitCB,
-			colwidth, default_unit);
 	}
 
 	hAlignCB->clear();
