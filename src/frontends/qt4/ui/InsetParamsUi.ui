@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>438</width>
-    <height>292</height>
+    <width>464</width>
+    <height>225</height>
    </rect>
   </property>
   <property name="focusPolicy">
@@ -57,6 +57,16 @@
       <widget class="QPushButton" name="restorePB">
        <property name="text">
         <string>&amp;Restore</string>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="newPB">
+       <property name="text">
+        <string>New Inset</string>
        </property>
        <property name="autoDefault">
         <bool>false</bool>
@@ -121,7 +131,7 @@
      </property>
     </spacer>
    </item>
-   <item row="0" column="0" colspan="2">
+   <item row="0" column="0" colspan="3">
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="currentIndex">
       <number>1</number>

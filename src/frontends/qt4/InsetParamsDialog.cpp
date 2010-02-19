@@ -114,12 +114,15 @@ void InsetParamsDialog::newInset()
 }
 
 
+void InsetParamsDialog::on_newPB_clicked()
+{
+	newInset();
+}
+
+
 void InsetParamsDialog::on_applyPB_clicked()
 {
-	if (synchronizedViewCB->isChecked())
-		newInset();
-	else
-		applyView();
+	applyView();
 }
 
 
@@ -131,10 +134,7 @@ void InsetParamsDialog::on_closePB_clicked()
 
 void InsetParamsDialog::on_synchronizedViewCB_stateChanged(int state)
 {
-	bool const sync = (state == Qt::Checked);
-	QString const label = sync ? qt_("&New") :  qt_("&Apply");
-	applyPB->setText(label);
-	checkWidgets(sync);
+	checkWidgets(state == Qt::Checked);
 }
 
 

@@ -39,6 +39,7 @@ protected Q_SLOTS:
 	void onWidget_changed();
 	void applyView();
 	void on_restorePB_clicked();
+	void on_newPB_clicked();
 	void on_okPB_clicked();
 	void on_applyPB_clicked();
 	void on_closePB_clicked();
