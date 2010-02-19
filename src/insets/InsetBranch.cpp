@@ -46,12 +46,6 @@ InsetBranch::InsetBranch(Buffer * buf, InsetBranchParams const & params)
 {}
 
 
-InsetBranch::~InsetBranch()
-{
-	hideDialogs("branch", this);
-}
-
-
 void InsetBranch::write(ostream & os) const
 {
 	params_.write(os);
@@ -116,14 +110,6 @@ ColorCode InsetBranch::backgroundColor(PainterInfo const & pi) const
 }
 
 
-bool InsetBranch::showInsetDialog(BufferView * bv) const
-{
-	bv->showDialog("branch", params2string(params()),
-			const_cast<InsetBranch *>(this));
-	return true;
-}
-
-
 void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
@@ -133,11 +119,6 @@ void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 		params_.branch = params.branch;
 		break;
 	}
-
-	case LFUN_INSET_DIALOG_UPDATE:
-		cur.bv().updateDialog("branch", params2string(params()));
-		break;
-
 	case LFUN_BRANCH_ACTIVATE:
 	case LFUN_BRANCH_DEACTIVATE: {
 		// FIXME: I do not like this cast, but have no other idea...
@@ -153,7 +134,6 @@ void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 		our_branch->setSelected(cmd.action == LFUN_BRANCH_ACTIVATE);
 		break;
 	}
-
 	case LFUN_INSET_TOGGLE:
 		if (cmd.argument() == "assign")
 			setStatus(cur, isBranchSelected() ? Open : Collapsed);
@@ -173,7 +153,6 @@ bool InsetBranch::getStatus(Cursor & cur, FuncRequest const & cmd,
 {
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY:
-	case LFUN_INSET_DIALOG_UPDATE:
 		flag.setEnabled(true);
 		break;
 

@@ -14,40 +14,27 @@
 #ifndef GUIBRANCH_H
 #define GUIBRANCH_H
 
-#include "GuiDialog.h"
+#include "InsetParamsWidget.h"
 #include "ui_BranchUi.h"
-#include "insets/InsetBranch.h"
-
 
 namespace lyx {
 namespace frontend {
 
-class GuiBranch : public GuiDialog, public Ui::BranchUi
+class GuiBranch : public InsetParamsWidget, public Ui::BranchUi
 {
 	Q_OBJECT
 
 public:
-	GuiBranch(GuiView & lv);
-
-private Q_SLOTS:
-	void change_adaptor();
+	GuiBranch(QWidget * parent = 0);
 
 private:
-	///  Apply changes
-	void applyView();
-	/// Update dialog before showing it
-	void updateContents();
-	///
-	bool initialiseParams(std::string const & data);
-	///
-	void clearParams();
-	///
-	void dispatchParams();
-	///
-	bool isBufferDependent() const { return true; }
-
-	///
-	InsetBranchParams params_;
+	/// \name DialogView inherited methods
+	//@{
+	InsetCode insetCode() const { return BRANCH_CODE; }
+	FuncCode creationCode() const { return LFUN_BRANCH_INSERT; }
+	void paramsToDialog(Inset const *);
+	docstring dialogToParams() const;
+	//@}
 };
 
 } // namespace frontend

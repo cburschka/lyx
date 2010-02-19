@@ -100,7 +100,7 @@ static void build_translator()
 	insetnames[OPTARG_CODE] = InsetName("optarg");
 	insetnames[NEWLINE_CODE] = InsetName("newline");
 	insetnames[LINE_CODE] = InsetName("line");
-	insetnames[BRANCH_CODE] = InsetName("branch");
+	insetnames[BRANCH_CODE] = InsetName("branch", _("Branch"));
 	insetnames[BOX_CODE] = InsetName("box", _("Box"));
 	insetnames[FLEX_CODE] = InsetName("flex");
 	insetnames[SPACE_CODE] = InsetName("space");
@@ -296,8 +296,8 @@ bool Inset::showInsetDialog(BufferView * bv) const
 	case ERT_CODE:
 	case FLOAT_CODE:
 	case BOX_CODE:
+	case BRANCH_CODE:
 	case INFO_CODE:
-	//FIXME: not ready yet.
 	case TABULAR_CODE:
 	case VSPACE_CODE:
 		bv->showDialog(insetName(code));

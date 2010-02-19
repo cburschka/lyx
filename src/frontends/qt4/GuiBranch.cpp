@@ -19,7 +19,6 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BranchList.h"
-#include "FuncRequest.h"
 
 #include "insets/InsetBranch.h"
 
@@ -30,36 +29,21 @@ using namespace std;
 namespace lyx {
 namespace frontend {
 
-GuiBranch::GuiBranch(GuiView & lv)
-	: GuiDialog(lv, "branch", qt_("Branch Settings"))
+GuiBranch::GuiBranch(QWidget * parent) : InsetParamsWidget(parent)
 {
 	setupUi(this);
-
-	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
-	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
-	connect(branchCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-
-	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
-	bc().setOK(okPB);
-	bc().setCancel(closePB);
+	connect(branchCO, SIGNAL(activated(int)), this, SIGNAL(changed()));
 }
 
 
-void GuiBranch::change_adaptor()
+void GuiBranch::paramsToDialog(Inset const * inset)
 {
-	changed();
-}
-
-
-void GuiBranch::updateContents()
-{
+	InsetBranch const * ib = static_cast<InsetBranch const *>(inset);
 	typedef BranchList::const_iterator const_iterator;
-
-	BranchList const & branchlist = buffer().params().branchlist();
-	docstring const cur_branch = params_.branch;
+	BranchList const & branchlist = ib->buffer().params().branchlist();
+	docstring const cur_branch = ib->branch();
 
 	branchCO->clear();
-
 	const_iterator const begin = branchlist.begin();
 	const_iterator const end = branchlist.end();
 	int id = 0;
@@ -67,7 +51,6 @@ void GuiBranch::updateContents()
 	for (const_iterator it = begin; it != end; ++it, ++count) {
 		docstring const & branch = it->branch();
 		branchCO->addItem(toqstr(branch));
-
 		if (cur_branch == branch)
 			id = count;
 	}
@@ -75,33 +58,11 @@ void GuiBranch::updateContents()
 }
 
 
-void GuiBranch::applyView()
+docstring GuiBranch::dialogToParams() const
 {
-	params_.branch = qstring_to_ucs4(branchCO->currentText());
+	InsetBranchParams params(qstring_to_ucs4(branchCO->currentText()));
+	return from_utf8(InsetBranch::params2string(params));
 }
-
-
-bool GuiBranch::initialiseParams(string const & data)
-{
-	InsetBranch::string2params(data, params_);
-	return true;
-}
-
-
-void GuiBranch::clearParams()
-{
-	params_ = InsetBranchParams();
-}
-
-
-void GuiBranch::dispatchParams()
-{
-	dispatch(FuncRequest(getLfun(), InsetBranch::params2string(params_)));
-}
-
-
-Dialog * createGuiBranch(GuiView & lv) { return new GuiBranch(lv); }
-
 
 } // namespace frontend
 } // namespace lyx

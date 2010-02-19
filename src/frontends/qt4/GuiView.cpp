@@ -3443,7 +3443,6 @@ Dialog * createDialog(GuiView & lv, string const & name);
 Dialog * createGuiAbout(GuiView & lv);
 Dialog * createGuiBibitem(GuiView & lv);
 Dialog * createGuiBibtex(GuiView & lv);
-Dialog * createGuiBranch(GuiView & lv);
 Dialog * createGuiChanges(GuiView & lv);
 Dialog * createGuiCharacter(GuiView & lv);
 Dialog * createGuiCitation(GuiView & lv);
@@ -3501,8 +3500,6 @@ Dialog * GuiView::build(string const & name)
 		return createGuiBibitem(*this);
 	if (name == "bibtex")
 		return createGuiBibtex(*this);
-	if (name == "branch")
-		return createGuiBranch(*this);
 	if (name == "changes")
 		return createGuiChanges(*this);
 	if (name == "character")

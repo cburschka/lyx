@@ -14,7 +14,6 @@
 
 #include "InsetCollapsable.h"
 
-
 namespace lyx {
 
 class InsetBranchParams {
@@ -44,8 +43,6 @@ class InsetBranch : public InsetCollapsable
 public:
 	///
 	InsetBranch(Buffer *, InsetBranchParams const &);
-	///
-	~InsetBranch();
 
 	///
 	static std::string params2string(InsetBranchParams const &);
@@ -67,8 +64,6 @@ private:
 	docstring const buttonLabel(BufferView const & bv) const;
 	///
 	ColorCode backgroundColor(PainterInfo const &) const;
-	///
-	bool showInsetDialog(BufferView *) const;
 	///
 	int latex(odocstream &, OutputParams const &) const;
 	///

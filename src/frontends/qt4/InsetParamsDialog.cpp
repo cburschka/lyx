@@ -13,6 +13,7 @@
 #include "InsetParamsDialog.h"
 
 #include "GuiBox.h"
+#include "GuiBranch.h"
 #include "GuiERT.h"
 #include "GuiInfo.h"
 #include "GuiTabular.h"
@@ -203,6 +204,9 @@ Dialog * createDialog(GuiView & lv, InsetCode code)
 		break;
 	case FLOAT_CODE:
 		widget = new FloatPlacement(true);
+		break;
+	case BRANCH_CODE:
+		widget = new GuiBranch;
 		break;
 	case BOX_CODE:
 		widget = new GuiBox;
