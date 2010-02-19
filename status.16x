@@ -104,6 +104,8 @@ What's new
 - Fix encoding problem in bibliography items that broke the compilation
   of documents (bug 6534).
 
+- Issue a warning if a path contains uncodable characters (bug 6301).
+
 - Allow using single quotes in filenames (bug 4063).
 
 - Do not insert \foreignlanguage in ERTs (bug 6426).

@@ -1184,13 +1184,44 @@ void Buffer::writeLaTeXSource(odocstream & os,
 			// FIXME UNICODE
 			// We don't know the encoding of inputpath
 			docstring const inputpath = from_utf8(latex_path(original_path));
-			os << "\\makeatletter\n"
-			   << "\\def\\input@path{{"
-			   << inputpath << "/}}\n"
-			   << "\\makeatother\n";
-			d->texrow.newline();
-			d->texrow.newline();
-			d->texrow.newline();
+			docstring uncodable_glyphs;
+			for (size_t n = 0; n < inputpath.size(); ++n) {
+				docstring const glyph = docstring(1, inputpath[n]);
+				try {
+					if (runparams.encoding
+					    && runparams.encoding->latexChar(inputpath[n]) != glyph) {
+						LYXERR0("Uncodable character '"
+							<< glyph
+							<< "' in input path!");
+						uncodable_glyphs += glyph;
+					}
+				} catch (EncodingException & /* e */) {
+					LYXERR0("Uncodable character '"
+						<< glyph
+						<< "' in input path!");
+					uncodable_glyphs += glyph;
+				}
+			}
+
+			// warn user if we found uncodable glyphs.
+			if (!uncodable_glyphs.empty()) {
+				frontend::Alert::warning(_("Uncodable character in path"),
+						support::bformat(_("The path of your document\n"
+						  "(%1$s)\n"
+						  "contains glyphs that are unknown in the\n"
+						  "current document encoding (namely %2$s).\n"
+						  "This will likely result in incomplete output.\n\n"
+						  "Chose an appropriate document encoding (such as utf8)\n"
+						  "or change the path name."), inputpath, uncodable_glyphs));
+			} else {
+				os << "\\makeatletter\n"
+				  << "\\def\\input@path{{"
+				  << inputpath << "/}}\n"
+				  << "\\makeatother\n";
+				d->texrow.newline();
+				d->texrow.newline();
+				d->texrow.newline();
+			}
 		}
 
 		// get parent macros (if this buffer has a parent) which will be
