@@ -1185,21 +1185,17 @@ void Buffer::writeLaTeXSource(odocstream & os,
 			// We don't know the encoding of inputpath
 			docstring const inputpath = from_utf8(latex_path(original_path));
 			docstring uncodable_glyphs;
-			for (size_t n = 0; n < inputpath.size(); ++n) {
-				docstring const glyph = docstring(1, inputpath[n]);
-				try {
-					if (runparams.encoding
-					    && runparams.encoding->latexChar(inputpath[n]) != glyph) {
+			Encoding const * const enc = runparams.encoding;
+			if (enc) {
+				for (size_t n = 0; n < inputpath.size(); ++n) {
+					docstring const glyph =
+						docstring(1, inputpath[n]);
+					if (enc->latexChar(inputpath[n], true) != glyph) {
 						LYXERR0("Uncodable character '"
 							<< glyph
 							<< "' in input path!");
 						uncodable_glyphs += glyph;
 					}
-				} catch (EncodingException & /* e */) {
-					LYXERR0("Uncodable character '"
-						<< glyph
-						<< "' in input path!");
-					uncodable_glyphs += glyph;
 				}
 			}
 
@@ -1215,9 +1211,9 @@ void Buffer::writeLaTeXSource(odocstream & os,
 						  "or change the path name."), inputpath, uncodable_glyphs));
 			} else {
 				os << "\\makeatletter\n"
-				  << "\\def\\input@path{{"
-				  << inputpath << "/}}\n"
-				  << "\\makeatother\n";
+				   << "\\def\\input@path{{"
+				   << inputpath << "/}}\n"
+				   << "\\makeatother\n";
 				d->texrow.newline();
 				d->texrow.newline();
 				d->texrow.newline();

@@ -75,7 +75,7 @@ public:
 	 * LaTeX macro is known, a warning is given of lyxerr, and the
 	 * character is returned.
 	 */
-	docstring latexChar(char_type c, bool for_mathed = false) const;
+	docstring latexChar(char_type c, bool no_commands = false) const;
 	/// Which LaTeX package handles this encoding?
 	Package package() const { return package_; }
 	/// A list of all characters usable in this encoding
