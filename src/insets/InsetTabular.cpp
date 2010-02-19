@@ -174,18 +174,6 @@ TabularFeature tabularFeature[] =
 };
 
 
-class FeatureEqual : public unary_function<TabularFeature, bool> {
-public:
-	FeatureEqual(Tabular::Feature feature)
-		: feature_(feature) {}
-	bool operator()(TabularFeature const & tf) const {
-		return tf.action == feature_;
-	}
-private:
-	Tabular::Feature feature_;
-};
-
-
 template <class T>
 string const write_attribute(string const & name, T const & t)
 {
@@ -500,13 +488,13 @@ void l_getline(istream & is, string & str)
 } // namespace
 
 
-string const featureAsString(Tabular::Feature feature)
+string const featureAsString(Tabular::Feature action)
 {
-	TabularFeature * end = tabularFeature +
-		sizeof(tabularFeature) / sizeof(TabularFeature);
-	TabularFeature * it = find_if(tabularFeature, end,
-					   FeatureEqual(feature));
-	return (it == end) ? string() : it->feature;
+	for (size_t i = 0; i != Tabular::LAST_ACTION; ++i) {
+		if (tabularFeature[i].action == action)
+			return tabularFeature[i].feature;
+	}
+	return string();
 }
 
 
