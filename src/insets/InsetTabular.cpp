@@ -4744,14 +4744,14 @@ bool InsetTabular::tabularFeatures(Cursor & cur, string const & argument)
 	// Safe guard.
 	size_t safe_guard = 0;
 	for (;;) {
+		if (is.eof())
+			break;
 		safe_guard++;
 		if (safe_guard > 1000) {
 			LYXERR0("parameter max count reached!");
 			break;
 		}
 		is >> s;
-		if (is.eof())
-			break;
 		Tabular::Feature action = Tabular::LAST_ACTION;
 
 		size_t i = 0;
