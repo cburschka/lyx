@@ -85,7 +85,8 @@ void InsetParamsDialog::setInsetParamsWidget(InsetParamsWidget * widget)
 
 void InsetParamsDialog::on_restorePB_clicked()
 {
-	updateView();
+	updateView(true);
+	restorePB->setEnabled(false);
 }
 
 
@@ -167,15 +168,23 @@ void InsetParamsDialog::applyView()
 }
 
 
-void InsetParamsDialog::updateView()
+void InsetParamsDialog::updateView(bool update_widget)
 {
-	Inset const * i = inset(d->widget_->insetCode());
-	if (i) {
-		d->widget_->blockSignals(true);
-		d->widget_->paramsToDialog(i);
-		d->widget_->blockSignals(false);
+	if (update_widget) {
+		Inset const * i = inset(d->widget_->insetCode());
+		if (i) {
+			d->widget_->blockSignals(true);
+			d->widget_->paramsToDialog(i);
+			d->widget_->blockSignals(false);
+		}
 	}
 	checkWidgets(synchronizedViewCB->isChecked());
+}
+
+
+void InsetParamsDialog::updateView()
+{
+	updateView(synchronizedViewCB->isChecked());
 }
 
 

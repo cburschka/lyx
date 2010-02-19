@@ -48,6 +48,8 @@ private:
 	void setVAlign(std::string & param_str) const;
 	///
 	void setTableAlignment(std::string & param_str) const;
+	///
+	void setWidthAndAlignment();
 };
 
 } // namespace frontend

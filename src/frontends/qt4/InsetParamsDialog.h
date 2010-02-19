@@ -55,6 +55,8 @@ private:
 	///
 	void newInset();
 	///
+	void updateView(bool update_widget);
+	///
 	docstring checkWidgets(bool synchronized_view);
 	/// pimpl
 	struct Private;
