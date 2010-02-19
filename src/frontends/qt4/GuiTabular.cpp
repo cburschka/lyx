@@ -376,15 +376,16 @@ docstring GuiTabular::dialogToParams() const
 	else if (!borders->getTop() && !borders->getBottom() && !borders->getLeft()
 		&& !borders->getRight())
 		setParam(param_str, Tabular::UNSET_ALL_LINES);
-	else if (borders->getLeft())
-		setParam(param_str, Tabular::TOGGLE_LINE_LEFT);
-	else if (borders->getRight())
-		setParam(param_str, Tabular::TOGGLE_LINE_RIGHT);
-	else if (borders->getTop())
-		setParam(param_str, Tabular::TOGGLE_LINE_TOP);
-	else if (borders->getBottom())
-		setParam(param_str, Tabular::TOGGLE_LINE_BOTTOM);
-
+	else {
+		if (borders->getLeft())
+			setParam(param_str, Tabular::TOGGLE_LINE_LEFT);
+		if (borders->getRight())
+			setParam(param_str, Tabular::TOGGLE_LINE_RIGHT);
+		if (borders->getTop())
+			setParam(param_str, Tabular::TOGGLE_LINE_TOP);
+		if (borders->getBottom())
+			setParam(param_str, Tabular::TOGGLE_LINE_BOTTOM);
+	}
 
 	// apply the special alignment
 	string special = fromqstr(specialAlignmentED->text());
