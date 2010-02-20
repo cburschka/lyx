@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: LyX-1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-02-19 15:33+0100\n"
-"PO-Revision-Date: 2010-02-13 13:33+0100\n"
+"PO-Revision-Date: 2010-02-20 08:08+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovenský <lyx-docs@lists.lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -15149,12 +15149,10 @@ msgid "conversion failed"
 msgstr "Konverzia zlyhala"
 
 #: src/Buffer.cpp:1208
-#, fuzzy
 msgid "Uncodable character in path"
-msgstr "Nekódovateľný znak v mene autora"
+msgstr "Nekódovateľný znak v ceste"
 
-#: src/Buffer.cpp:1209
-#, fuzzy, c-format
+#: src/Buffer.cpp:1209, c-format
 msgid ""
 "The path of your document\n"
 "(%1$s)\n"
@@ -15165,13 +15163,14 @@ msgid ""
 "Chose an appropriate document encoding (such as utf8)\n"
 "or change the path name."
 msgstr ""
-"Meno autora '%1$s',\n"
-"použité na sledovanie zmien, obsahuje znaky,\n"
-"ktoré sa v aktuálnom kódovaní nedajú reprezentovať.\n"
-"Príslušné znaky budú pri exporte do LaTeX-u vynechané.\n"
+"Cesta vášho dokumentu\n"
+"(%1$s)\n"
+"obsahuje neznáme znaky v kódovaní\n"
+"aktuálneho dokumentu (menovite %2$s).\n"
+"Výsledok pravdepodobne nebude úplný.\n"
 "\n"
 "Vyberte vhodné kódovanie dokumentu (napr. utf8)\n"
-"alebo zmeňte písanie mena autora."
+"alebo zmeňte meno cesty."
 
 #: src/Buffer.cpp:1418
 msgid "Running chktex..."
