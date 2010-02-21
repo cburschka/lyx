@@ -531,7 +531,7 @@ unsigned long FileName::checksum() const
 
 #else // QT_VERSION
 
-	string const encoded = toFilesystemEncoding();
+	string const encoded = toSafeFilesystemEncoding();
 	char const * file = encoded.c_str();
 
  #ifdef SUM_WITH_MMAP

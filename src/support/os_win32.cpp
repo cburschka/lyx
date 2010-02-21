@@ -507,7 +507,7 @@ bool autoOpenFile(string const & filename, auto_open_mode const mode)
 string real_path(string const & path)
 {
 	// See http://msdn.microsoft.com/en-us/library/aa366789(VS.85).aspx
-	QString qpath = get_long_path(toqstr(path));
+	QString const qpath = get_long_path(toqstr(path));
 	HANDLE hpath = CreateFileW((wchar_t *) qpath.utf16(), GENERIC_READ,
 				FILE_SHARE_READ, NULL, OPEN_EXISTING, 0, NULL);
 
