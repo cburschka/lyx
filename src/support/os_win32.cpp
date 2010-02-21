@@ -32,25 +32,6 @@
 
 #include <QString>
 
-/* The GetLongPathName macro may be defined on the compiling machine,
- * but we must use a bit of trickery if the resulting executable is
- * to run on a Win95 machine.
- * Fortunately, Microsoft provide the trickery. All we need is the
- * NewAPIs.h header file, available for download from Microsoft as
- * part of the Platform SDK.
- */
-#if defined (HAVE_NEWAPIS_H)
-// This should be defined already to keep Boost.Filesystem happy.
-# if !defined (WANT_GETFILEATTRIBUTESEX_WRAPPER)
-#   error Expected WANT_GETFILEATTRIBUTESEX_WRAPPER to be defined!
-# endif
-# define WANT_GETLONGPATHNAME_WRAPPER 1
-# define COMPILE_NEWAPIS_STUBS
-# include <NewAPIs.h>
-# undef COMPILE_NEWAPIS_STUBS
-# undef WANT_GETLONGPATHNAME_WRAPPER
-#endif
-
 #include <io.h>
 #include <direct.h> // _getdrive
 #include <shlobj.h>  // SHGetFolderPath

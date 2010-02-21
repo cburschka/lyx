@@ -740,7 +740,6 @@ utils.createConfigFile(conf,
         ('ostream', 'HAVE_OSTREAM', 'cxx'),
         ('locale', 'HAVE_LOCALE', 'cxx'),
         ('sstream', 'HAVE_SSTREAM', 'cxx'),
-        #('newapis.h', 'HAVE_NEWAPIS_H', 'c'),
     ],
     custom_tests = [
         (env.has_key('assertions') and env['assertions'] and mode == 'debug',
@@ -774,10 +773,6 @@ utils.createConfigFile(conf,
 #endif
 
 #define BOOST_ALL_NO_LIB 1
-
-#if defined(HAVE_NEWAPIS_H)
-#  define WANT_GETFILEATTRIBUTESEX_WRAPPER 1
-#endif
 
 /*
  * the FreeBSD libc uses UCS4, but libstdc++ has no proper wchar_t

@@ -169,7 +169,7 @@ AC_LANG_POP(C)
 
 # some standard header files
 AC_HEADER_MAJOR
-AC_CHECK_HEADERS(sys/time.h sys/types.h sys/select.h locale.h NewAPIs.h utime.h sys/utime.h)
+AC_CHECK_HEADERS(sys/time.h sys/types.h sys/select.h locale.h utime.h sys/utime.h)
 
 # some standard structures
 AC_HEADER_STAT
@@ -294,10 +294,6 @@ char * strerror(int n);
 #  define BOOST_POSIX 1
 #  define BOOST_POSIX_API 1
 #  define BOOST_POSIX_PATH 1
-#endif
-
-#if defined(HAVE_NEWAPIS_H)
-#  define WANT_GETFILEATTRIBUTESEX_WRAPPER 1
 #endif
 
 /*
