@@ -72,9 +72,23 @@ public:
 
 	/**
 	 * Get the file name in the encoding used by the file system.
-	 * Only use this for accessing the file, e.g. with an fstream.
+	 * Only use this for passing file names to external commands.
+	 * Warning: On Windows this is not unicode safe and should not
+	 * be used for accessing files with an fstream, for example.
 	 */
 	std::string toFilesystemEncoding() const;
+
+	/**
+	 * Get the file name in a unicode safe encoding used by the file system.
+	 * Only use this for accessing the file with standard I/O functions
+	 * non explicitly unicode aware, e.g. with an fstream. This can also
+	 * be used for passing file names to external commands, but only if
+	 * you are sure that the stem of the name will not be used for
+	 * producing derivative files. For example, don't use this for passing
+	 * file names to LaTeX, as the stem of the .dvi file will not correspond
+	 * to the stem of the .tex file anymore.
+	 */
+	std::string toSafeFilesystemEncoding() const;
 
 	/// returns true if the file exists
 	bool exists() const;

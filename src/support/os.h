@@ -73,6 +73,13 @@ std::string external_path(std::string const & p);
 /// \p p and the return value are encoded in utf8.
 std::string internal_path(std::string const & p);
 
+/// Converts a host OS style path to a unicode safe unix style.
+/// On Windows, this is achieved by using the short form of the path,
+/// which can be safely passed to standard I/O functions expecting narrow
+/// char paths even when the path contains non-ascii chars.
+/// \p p and the return value are encoded in utf8.
+std::string safe_internal_path(std::string const & p);
+
 /// Converts a unix style path list to host OS style.
 /// \p p and the return value are encoded in utf8.
 std::string external_path_list(std::string const & p);
@@ -129,8 +136,7 @@ bool canAutoOpenFile(std::string const & ext, auto_open_mode const mode = VIEW);
 bool autoOpenFile(std::string const & filename, auto_open_mode const mode = VIEW);
 
 /** Resolves a path such that it does not contain '.', '..', or symbolic links.
-  * \warning the path must already be in the filesystem encoding.
-  * \returns the resolved path in utf8 encoding.
+  * \p path and the return value are encoded in utf8.
   */
 std::string real_path(std::string const & path);
 

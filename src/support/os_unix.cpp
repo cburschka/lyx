@@ -130,6 +130,12 @@ string internal_path(string const & p)
 }
 
 
+string safe_internal_path(string const & p)
+{
+	return p;
+}
+
+
 string external_path_list(string const & p)
 {
 	return p;

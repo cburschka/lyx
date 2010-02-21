@@ -66,6 +66,7 @@
 #endif // SUM_WITH_MMAP
 
 using namespace std;
+using namespace lyx::support;
 
 // OK, this is ugly, but it is the only workaround I found to compile
 // with gcc (any version) on a system which uses a non-GNU toolchain.
@@ -190,7 +191,7 @@ string FileName::absFilename() const
 
 string FileName::realPath() const
 {
-	return os::real_path(toFilesystemEncoding());
+	return os::real_path(absFilename());
 }
 
 
@@ -270,9 +271,17 @@ bool FileName::changePermission(unsigned long int mode) const
 
 string FileName::toFilesystemEncoding() const
 {
-	// FIXME: This doesn't work on Windows for non ascii file names with Qt < 4.4.
-	// Provided that Windows package uses Qt4.4, this isn't a problem.
+	// This doesn't work on Windows for non ascii file names.
 	QByteArray const encoded = QFile::encodeName(d->fi.absoluteFilePath());
+	return string(encoded.begin(), encoded.end());
+}
+
+
+string FileName::toSafeFilesystemEncoding() const
+{
+	// This will work on Windows for non ascii file names.
+	QString const safe_path = toqstr(os::safe_internal_path(absFilename()));
+	QByteArray const encoded = QFile::encodeName(safe_path);
 	return string(encoded.begin(), encoded.end());
 }
 

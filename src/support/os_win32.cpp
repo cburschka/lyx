@@ -23,11 +23,14 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/ExceptionMessage.h"
+#include "support/qstring_helpers.h"
 
 #include "support/lassert.h"
 
 #include <cstdlib>
 #include <vector>
+
+#include <QString>
 
 /* The GetLongPathName macro may be defined on the compiling machine,
  * but we must use a bit of trickery if the resulting executable is
@@ -278,29 +281,51 @@ string external_path(string const & p)
 }
 
 
-static string const get_long_path(string const & short_path)
+static QString const get_long_path(QString const & short_path)
 {
-	// GetLongPathName needs the path in file system encoding.
-	// We can use to_local8bit, since file system encoding and the
-	// local 8 bit encoding are identical on windows.
-	vector<char> long_path(MAX_PATH);
-	DWORD result = GetLongPathName(to_local8bit(from_utf8(short_path)).c_str(),
+	// GetLongPathNameW needs the path in utf16 encoding.
+	vector<wchar_t> long_path(MAX_PATH);
+	DWORD result = GetLongPathNameW((wchar_t *) short_path.utf16(),
 				       &long_path[0], long_path.size());
 
 	if (result > long_path.size()) {
 		long_path.resize(result);
-		result = GetLongPathName(short_path.c_str(),
+		result = GetLongPathNameW((wchar_t *) short_path.utf16(),
 					 &long_path[0], long_path.size());
 		LASSERT(result <= long_path.size(), /**/);
 	}
 
-	return (result == 0) ? short_path : to_utf8(from_filesystem8bit(&long_path[0]));
+	return (result == 0) ? short_path : QString::fromWCharArray(&long_path[0]);
+}
+
+
+static QString const get_short_path(QString const & long_path)
+{
+	// GetShortPathNameW needs the path in utf16 encoding.
+	vector<wchar_t> short_path(MAX_PATH);
+	DWORD result = GetShortPathNameW((wchar_t *) long_path.utf16(),
+				       &short_path[0], short_path.size());
+
+	if (result > short_path.size()) {
+		short_path.resize(result);
+		result = GetShortPathNameW((wchar_t *) long_path.utf16(),
+					 &short_path[0], short_path.size());
+		LASSERT(result <= short_path.size(), /**/);
+	}
+
+	return (result == 0) ? long_path : QString::fromWCharArray(&short_path[0]);
 }
 
 
 string internal_path(string const & p)
 {
-	return subst(get_long_path(p), "\\", "/");
+	return subst(fromqstr(get_long_path(toqstr(p))), "\\", "/");
+}
+
+
+string safe_internal_path(string const & p)
+{
+	return subst(fromqstr(get_short_path(toqstr(p))), "\\", "/");
 }
 
 
@@ -482,12 +507,13 @@ bool autoOpenFile(string const & filename, auto_open_mode const mode)
 string real_path(string const & path)
 {
 	// See http://msdn.microsoft.com/en-us/library/aa366789(VS.85).aspx
-	HANDLE hpath = CreateFile(subst(path, '/', '\\').c_str(), GENERIC_READ,
+	QString qpath = get_long_path(toqstr(path));
+	HANDLE hpath = CreateFileW((wchar_t *) qpath.utf16(), GENERIC_READ,
 				FILE_SHARE_READ, NULL, OPEN_EXISTING, 0, NULL);
 
 	if (hpath == INVALID_HANDLE_VALUE) {
 		// The file cannot be accessed.
-		return FileName::fromFilesystemEncoding(path).absFilename();
+		return path;
 	}
 
 	// Get the file size.
@@ -497,7 +523,7 @@ string real_path(string const & path)
 	if (size_lo == 0 && size_hi == 0) {
 		// A zero-length file cannot be mapped.
 		CloseHandle(hpath);
-		return FileName::fromFilesystemEncoding(path).absFilename();
+		return path;
 	}
 
 	// Create a file mapping object.
@@ -505,7 +531,7 @@ string real_path(string const & path)
 
 	if (!hmap) {
 		CloseHandle(hpath);
-		return FileName::fromFilesystemEncoding(path).absFilename();
+		return path;
 	}
 
 	// Create a file mapping to get the file name.
@@ -514,7 +540,7 @@ string real_path(string const & path)
 	if (!pmem) {
 		CloseHandle(hmap);
 		CloseHandle(hpath);
-		return FileName::fromFilesystemEncoding(path).absFilename();
+		return path;
 	}
 
 	TCHAR realpath[MAX_PATH + 1];
@@ -523,7 +549,7 @@ string real_path(string const & path)
 		UnmapViewOfFile(pmem);
 		CloseHandle(hmap);
 		CloseHandle(hpath);
-		return FileName::fromFilesystemEncoding(path).absFilename();
+		return path;
 	}
 
 	// Translate device name to UNC prefix or drive letters.

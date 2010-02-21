@@ -290,6 +290,12 @@ string internal_path(string const & p)
 }
 
 
+string safe_internal_path(string const & p)
+{
+	return convert_path(p, PathStyle(posix));
+}
+
+
 string external_path_list(string const & p)
 {
 	return convert_path_list(p, PathStyle(posix));
