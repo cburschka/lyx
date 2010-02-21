@@ -18,6 +18,7 @@
 
 namespace lyx {
 
+struct InsetSpaceParams;
 
 /// Smart spaces
 class InsetMathSpace : public InsetMath {
@@ -28,8 +29,6 @@ public:
 	explicit InsetMathSpace(std::string const & name, std::string const & length);
 	///
 	explicit InsetMathSpace(Length const & length);
-	///
-	~InsetMathSpace();
 	///
 	InsetMathSpace const * asSpaceInset() const { return this; }
 	///
@@ -56,7 +55,7 @@ public:
 	///
 	void write(WriteStream & os) const;
 	/// generate something that will be understood by the Dialogs.
-	std::string const createDialogStr() const;
+	InsetSpaceParams params() const;
 	///
 	bool hasSettings() const { return true; }
 	///

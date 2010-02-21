@@ -23,8 +23,7 @@ namespace lyx {
 
 class LaTeXFeatures;
 
-class InsetSpaceParams {
-public:
+struct InsetSpaceParams {
 	/// The different kinds of spaces we support
 	enum Kind {
 		/// Normal space ('\ ')
@@ -99,11 +98,9 @@ public:
 	///
 	explicit InsetSpace(InsetSpaceParams const & par);
 	///
-	InsetSpaceParams params() const { return params_; }
+	InsetSpaceParams const & params() const { return params_; }
 	///
 	InsetSpaceParams::Kind kind() const;
-	///
-	~InsetSpace();
 
 	///
 	static void string2params(std::string const &, InsetSpaceParams &);
@@ -160,8 +157,6 @@ public:
 	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 
 private:
-	///
-	bool showInsetDialog(BufferView * bv) const;
 	///
 	InsetSpaceParams params_;
 };

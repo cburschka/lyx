@@ -12,48 +12,38 @@
 #ifndef GUIHSPACE_H
 #define GUIHSPACE_H
 
-#include "GuiDialog.h"
+#include "InsetParamsWidget.h"
 #include "ui_HSpaceUi.h"
-#include "insets/InsetSpace.h"
 
 namespace lyx {
 namespace frontend {
 
-class GuiHSpace : public GuiDialog, public Ui::HSpaceUi
+class GuiHSpace : public InsetParamsWidget, public Ui::HSpaceUi
 {
 	Q_OBJECT
 
 public:
-	GuiHSpace(GuiView & lv, bool math);
+	GuiHSpace(bool math_mode, QWidget * parent = 0);
 
 private Q_SLOTS:
 	///
-	void change_adaptor();
+	void changedSlot();
 	///
-	void enableWidgets(int);
-	///
-	void patternChanged();
+	void enableWidgets();
 
 private:
+	/// \name InsetParamsWidget inherited methods
+	//@{
+	InsetCode insetCode() const { return SPACE_CODE; }
+	FuncCode creationCode() const { return LFUN_INSET_INSERT; }
+	void paramsToDialog(Inset const *);
+	docstring dialogToParams() const;
+	bool checkWidgets() const;
+	//@}
 	///
-	void setMath(bool custom);
-	/// Apply from dialog
-	void applyView();
-	/// Update the dialog
-	void updateContents();
+	docstring dialogToMathParams() const;
 	///
-	bool isValid();
-	///
-	bool initialiseParams(std::string const & data);
-	/// clean-up on hide.
-	void clearParams();
-	/// clean-up on hide.
-	void dispatchParams();
-	///
-	bool isBufferDependent() const { return true; }
-
-	///
-	InsetSpaceParams params_;
+	bool const math_mode_;
 };
 
 } // namespace frontend

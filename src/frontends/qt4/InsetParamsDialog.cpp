@@ -16,6 +16,7 @@
 #include "GuiBranch.h"
 #include "GuiERT.h"
 #include "GuiInfo.h"
+#include "GuiHSpace.h"
 #include "GuiTabular.h"
 #include "GuiVSpace.h"
 #include "FloatPlacement.h"
@@ -213,6 +214,12 @@ Dialog * createDialog(GuiView & lv, InsetCode code)
 		break;
 	case INFO_CODE:
 		widget = new GuiInfo;
+		break;
+	case MATH_SPACE_CODE:
+		widget = new GuiHSpace(true);
+		break;
+	case SPACE_CODE:
+		widget = new GuiHSpace(false);
 		break;
 	case TABULAR_CODE:
 		widget = new GuiTabular;

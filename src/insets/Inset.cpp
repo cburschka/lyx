@@ -103,7 +103,7 @@ static void build_translator()
 	insetnames[BRANCH_CODE] = InsetName("branch", _("Branch"));
 	insetnames[BOX_CODE] = InsetName("box", _("Box"));
 	insetnames[FLEX_CODE] = InsetName("flex");
-	insetnames[SPACE_CODE] = InsetName("space");
+	insetnames[SPACE_CODE] = InsetName("space", _("Horizontal Space"));
 	insetnames[VSPACE_CODE] = InsetName("vspace", _("Vertical Space"));
 	insetnames[MATH_MACROARG_CODE] = InsetName("mathmacroarg");
 	insetnames[LISTINGS_CODE] = InsetName("listings");
@@ -149,7 +149,7 @@ static void build_translator()
 	insetnames[MATH_ROOT_CODE] = InsetName("mathroot");
 	insetnames[MATH_SCRIPT_CODE] = InsetName("mathscript");
 	insetnames[MATH_SIZE_CODE] = InsetName("mathsize");
-	insetnames[MATH_SPACE_CODE] = InsetName("mathspace");
+	insetnames[MATH_SPACE_CODE] = InsetName("mathspace", _("Horizontal Math Space"));
 	insetnames[MATH_SPECIALCHAR_CODE] = InsetName("mathspecialchar");
 	insetnames[MATH_SPLIT_CODE] = InsetName("mathsplit");
 	insetnames[MATH_SQRT_CODE] = InsetName("mathsqrt");
@@ -298,6 +298,8 @@ bool Inset::showInsetDialog(BufferView * bv) const
 	case BOX_CODE:
 	case BRANCH_CODE:
 	case INFO_CODE:
+	case MATH_SPACE_CODE:
+	case SPACE_CODE:
 	case TABULAR_CODE:
 	case VSPACE_CODE:
 		bv->showDialog(insetName(code));

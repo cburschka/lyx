@@ -67,7 +67,7 @@ public:
 	virtual docstring dialogToParams() const = 0;
 
 	/// \return true if all CheckedWidgets are in a valid state.
-	bool checkWidgets() const;
+	virtual bool checkWidgets() const;
 
 protected:
 	/// Add a widget to the list of all widgets whose validity should

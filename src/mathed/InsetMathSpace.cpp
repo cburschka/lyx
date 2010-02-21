@@ -104,12 +104,6 @@ InsetMathSpace::InsetMathSpace(Length const & length)
 }
 
 
-InsetMathSpace::~InsetMathSpace()
-{
-	hideDialogs("mathspace", this);
-}
-
-
 Inset * InsetMathSpace::clone() const
 {
 	return new InsetMathSpace(*this);
@@ -230,13 +224,13 @@ void InsetMathSpace::write(WriteStream & os) const
 }
 
 
-string const InsetMathSpace::createDialogStr() const
+InsetSpaceParams InsetMathSpace::params() const
 {
 	LASSERT(space_info[space_].visible, /**/);
 	InsetSpaceParams isp(true);
 	isp.kind = space_info[space_].kind;
 	isp.length = GlueLength(length_);
-	return InsetSpace::params2string(isp);
+	return isp;
 }
 
 
@@ -279,14 +273,9 @@ void InsetMathSpace::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.undispatched();
 		break;
 
-	case LFUN_INSET_DIALOG_UPDATE:
-		cur.bv().updateDialog("mathspace", createDialogStr());
-		break;
-
 	case LFUN_MOUSE_RELEASE:
 		if (cmd.button() == mouse_button::button1) {
-			string const data = createDialogStr();
-			cur.bv().showDialog("mathspace", data, this);
+			showInsetDialog(&cur.bv());
 			break;
 		}
 		cur.undispatched();

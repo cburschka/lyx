@@ -3457,7 +3457,6 @@ Dialog * createGuiIndex(GuiView & lv);
 Dialog * createGuiLabel(GuiView & lv);
 Dialog * createGuiListings(GuiView & lv);
 Dialog * createGuiLog(GuiView & lv);
-Dialog * createGuiMathHSpace(GuiView & lv);
 Dialog * createGuiMathMatrix(GuiView & lv);
 Dialog * createGuiNomenclature(GuiView & lv);
 Dialog * createGuiNote(GuiView & lv);
@@ -3476,7 +3475,6 @@ Dialog * createGuiSpellchecker(GuiView & lv);
 Dialog * createGuiSymbols(GuiView & lv);
 Dialog * createGuiTabularCreate(GuiView & lv);
 Dialog * createGuiTexInfo(GuiView & lv);
-Dialog * createGuiTextHSpace(GuiView & lv);
 Dialog * createGuiToc(GuiView & lv);
 Dialog * createGuiThesaurus(GuiView & lv);
 Dialog * createGuiHyperlink(GuiView & lv);
@@ -3538,8 +3536,6 @@ Dialog * GuiView::build(string const & name)
 		return createGuiLog(*this);
 	if (name == "mathdelimiter")
 		return createGuiDelimiter(*this);
-	if (name == "mathspace")
-		return createGuiMathHSpace(*this);
 	if (name == "mathmatrix")
 		return createGuiMathMatrix(*this);
 	if (name == "nomenclature")
@@ -3560,8 +3556,6 @@ Dialog * GuiView::build(string const & name)
 		return createGuiRef(*this);
 	if (name == "sendto")
 		return createGuiSendTo(*this);
-	if (name == "space")
-		return createGuiTextHSpace(*this);
 	if (name == "spellchecker")
 		return createGuiSpellchecker(*this);
 	if (name == "symbols")
