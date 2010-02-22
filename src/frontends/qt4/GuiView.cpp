@@ -100,6 +100,7 @@
 #include <QSplitter>
 #include <QStackedWidget>
 #include <QStatusBar>
+#include <QThread>
 #include <QTime>
 #include <QTimer>
 #include <QToolBar>
@@ -107,6 +108,14 @@
 #include <QScrollBar>
 
 #define EXPORT_in_THREAD 1
+
+struct Sleep : QThread
+{
+	static void millisec(unsigned long ms) 
+	{
+		QThread::usleep(ms * 1000);
+	}
+};
 
 
 // QtConcurrent was introduced in Qt 4.4
@@ -2606,7 +2615,7 @@ void GuiView::dispatchVC(FuncRequest const & cmd)
 		CompareOptions options;
 		Compare * compare = new Compare(loadIfNeeded(FileName(f1)), loadIfNeeded(FileName(f2)), dest, options);
 		compare->start(QThread::LowPriority);
-		sleep(2);
+		Sleep::millisec(200);
 		lyx::dispatch(FuncRequest(LFUN_BUFFER_SWITCH, dest->absFileName()));
 		break;
 	}
