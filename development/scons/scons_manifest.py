@@ -118,7 +118,6 @@ src_header_files = Split('''
     PrinterParams.h
     Row.h
     rowpainter.h
-    Section.h
     Server.h
     ServerSocket.h
     Session.h
@@ -136,7 +135,6 @@ src_header_files = Split('''
     update_flags.h
     VCBackend.h
     VSpace.h
-    Variables.h
     version.h
     WordLangTuple.h
     WordList.h
@@ -253,8 +251,6 @@ src_extra_src_files = Split('''
     EnchantChecker.cpp
     HunspellChecker.cpp
     main.cpp
-    Section.cpp
-    Variables.cpp
 ''')
 
 
