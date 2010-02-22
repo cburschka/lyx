@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Lyx 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2010-02-19 15:33+0100\n"
-"PO-Revision-Date: 2009-11-02 02:01+0100\n"
+"PO-Revision-Date: 2010-02-19 02:01+0100\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -15157,12 +15157,11 @@ msgid "conversion failed"
 msgstr "konverze se nezdaøila"
 
 #: src/Buffer.cpp:1208
-#, fuzzy
 msgid "Uncodable character in path"
-msgstr "Nekódovatelné znaky ve jménu autora"
+msgstr "Nekódovatelné znaky v cestì"
 
 #: src/Buffer.cpp:1209
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The path of your document\n"
 "(%1$s)\n"
@@ -15173,13 +15172,14 @@ msgid ""
 "Chose an appropriate document encoding (such as utf8)\n"
 "or change the path name."
 msgstr ""
-"Jméno autora '%1$s',\n"
-"pou¾ité pro revize, obsahuje znaky, které nelze reprezentovat\n"
-"v aktuálním kódování. Pøíslu¹né znaky budou pøi exportu do LaTeX-u "
-"vynechány.\n"
+"Cesta k va¹emu souboru\n"
+"(%1$s)\n"
+"obsahuje znaky, které nejsou pou¾itelné v\n"
+"v aktuálním kódování dokumentu (jmenovitì %2$s).\n\n"
+"To pravdìpodobnì zpùsobí problémy pøi sazbì dokumentu.\n"
 "\n"
 "Vyberte vhodné kódování dokumentu (napø. utf8)\n"
-"nebo zmìnte jméno autora."
+"nebo zmìnte cestu k souboru."
 
 #: src/Buffer.cpp:1418
 msgid "Running chktex..."
@@ -18587,14 +18587,12 @@ msgid "TeX Code Settings"
 msgstr "Nastavení pro Kód TeX-u"
 
 #: src/frontends/qt4/GuiErrorList.cpp:41
-#, fuzzy
 msgid "Literate"
-msgstr "Literal"
+msgstr "Literate"
 
 #: src/frontends/qt4/GuiErrorList.cpp:43
-#, fuzzy
 msgid "pLaTeX"
-msgstr "LaTeX"
+msgstr "pLaTeX"
 
 #: src/frontends/qt4/GuiErrorList.cpp:55
 msgid "Error List"
@@ -19029,9 +19027,8 @@ msgid "hspell"
 msgstr "hspell"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1152
-#, fuzzy
 msgid "enchant"
-msgstr "chart"
+msgstr "enchant"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1155
 msgid "pspell (library)"
@@ -20115,18 +20112,17 @@ msgstr ""
 "bude zmìnìn na %2$s."
 
 #: src/insets/InsetBibitem.cpp:206
-#, fuzzy
 msgid "Uncodable characters in bibliography item"
-msgstr "Nekódovatelné znaky ve výpisu zdrojového kódu"
+msgstr "Nekódovatelné znaky v polo¾ce bibliografie"
 
 #: src/insets/InsetBibitem.cpp:207
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The following characters in one of the bibliography items are\n"
 "not representable in the current encoding and have been omitted:\n"
 "%1$s."
 msgstr ""
-"Následující znaky ve výpisech zdrojových kódù nejsou reprezentovatelné\n"
+"Následující znaky v jedné z polo¾ek bibliografie nejsou reprezentovatelné\n"
 "ve zvoleném kódování a byly vynechány:\n"
 "%1$s."
 
