@@ -38,6 +38,11 @@ enum path_case {
 	CASE_ADJUSTED
 };
 
+enum file_access {
+	EXISTING,
+	CREATE
+};
+
 /// Do some work just once.
 void init(int argc, char * argv[]);
 
@@ -77,8 +82,10 @@ std::string internal_path(std::string const & p);
 /// On Windows, this is achieved by using the short form of the path,
 /// which can be safely passed to standard I/O functions expecting narrow
 /// char paths even when the path contains non-ascii chars.
+/// As the short form is only available for existing files, if the file is
+/// to be accessed for writing, \param how should be set to CREATE.
 /// \p p and the return value are encoded in utf8.
-std::string safe_internal_path(std::string const & p);
+std::string safe_internal_path(std::string const & p, file_access how = EXISTING);
 
 /// Converts a unix style path list to host OS style.
 /// \p p and the return value are encoded in utf8.

@@ -280,9 +280,17 @@ static QString const get_long_path(QString const & short_path)
 }
 
 
-static QString const get_short_path(QString const & long_path)
+static QString const get_short_path(QString const & long_path, file_access how)
 {
-	// GetShortPathNameW needs the path in utf16 encoding.
+	// CreateFileW and GetShortPathNameW needs the path in utf16 encoding.
+	if (how == CREATE) {
+		HANDLE h = CreateFileW((wchar_t *) long_path.utf16(),
+				GENERIC_WRITE, 0, NULL, CREATE_NEW,
+				FILE_ATTRIBUTE_NORMAL, NULL);
+		if (h == INVALID_HANDLE_VALUE)
+			return long_path;
+		CloseHandle(h);
+	}
 	vector<wchar_t> short_path(MAX_PATH);
 	DWORD result = GetShortPathNameW((wchar_t *) long_path.utf16(),
 				       &short_path[0], short_path.size());
@@ -304,9 +312,9 @@ string internal_path(string const & p)
 }
 
 
-string safe_internal_path(string const & p)
+string safe_internal_path(string const & p, file_access how)
 {
-	return subst(fromqstr(get_short_path(toqstr(p))), "\\", "/");
+	return subst(fromqstr(get_short_path(toqstr(p), how)), "\\", "/");
 }
 
 

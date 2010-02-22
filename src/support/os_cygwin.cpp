@@ -290,7 +290,7 @@ string internal_path(string const & p)
 }
 
 
-string safe_internal_path(string const & p)
+string safe_internal_path(string const & p, file_access)
 {
 	return convert_path(p, PathStyle(posix));
 }

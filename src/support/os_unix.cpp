@@ -130,7 +130,7 @@ string internal_path(string const & p)
 }
 
 
-string safe_internal_path(string const & p)
+string safe_internal_path(string const & p, file_access)
 {
 	return p;
 }

@@ -277,10 +277,11 @@ string FileName::toFilesystemEncoding() const
 }
 
 
-string FileName::toSafeFilesystemEncoding() const
+string FileName::toSafeFilesystemEncoding(os::file_access how) const
 {
 	// This will work on Windows for non ascii file names.
-	QString const safe_path = toqstr(os::safe_internal_path(absFilename()));
+	QString const safe_path =
+		toqstr(os::safe_internal_path(absFilename(), how));
 	QByteArray const encoded = QFile::encodeName(safe_path);
 	return string(encoded.begin(), encoded.end());
 }

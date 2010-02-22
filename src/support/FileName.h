@@ -12,6 +12,7 @@
 #ifndef FILENAME_H
 #define FILENAME_H
 
+#include "support/os.h"
 #include "support/strfwd.h"
 
 #include <ctime>
@@ -87,8 +88,9 @@ public:
 	 * producing derivative files. For example, don't use this for passing
 	 * file names to LaTeX, as the stem of the .dvi file will not correspond
 	 * to the stem of the .tex file anymore.
+	 * Use os::CREATE if the file is to be accessed for writing.
 	 */
-	std::string toSafeFilesystemEncoding() const;
+	std::string toSafeFilesystemEncoding(os::file_access how = os::EXISTING) const;
 
 	/// returns true if the file exists
 	bool exists() const;

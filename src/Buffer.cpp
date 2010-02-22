@@ -1034,11 +1034,13 @@ bool Buffer::writeFile(FileName const & fname) const
 		makeDisplayPath(fname.absFilename()));
 	message(str);
 
+	string const encoded_fname = fname.toSafeFilesystemEncoding(os::CREATE);
+
 	if (params().compressed) {
-		gz::ogzstream ofs(fname.toSafeFilesystemEncoding().c_str(), ios::out|ios::trunc);
+		gz::ogzstream ofs(encoded_fname.c_str(), ios::out|ios::trunc);
 		retval = ofs && write(ofs);
 	} else {
-		ofstream ofs(fname.toSafeFilesystemEncoding().c_str(), ios::out|ios::trunc);
+		ofstream ofs(encoded_fname.c_str(), ios::out|ios::trunc);
 		retval = ofs && write(ofs);
 	}
 
