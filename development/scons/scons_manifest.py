@@ -1464,6 +1464,7 @@ lib_images_files = Split('''
     href-insert.png
     hidetab.png
     index-insert.png
+    info-insert_buffer_vcs-revision.png
     label-insert.png
     layout-document.png
     layout-paragraph.png
@@ -1543,6 +1544,8 @@ lib_images_files = Split('''
     up.png
     update-others.png
     url-insert.png
+    vc-compare.png
+    vc-compare_0.png
     vc-check-in.png
     vc-check-out.png
     vc-locking-toggle.png

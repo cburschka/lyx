@@ -362,6 +362,7 @@ dist_images_DATA = \
 	images/href-insert.png \
 	images/hidetab.png \
 	images/index-insert.png \
+	images/info-insert_buffer_vcs-revision.png \
 	images/label-insert.png \
 	images/layout.png \
 	images/layout-document.png \
@@ -443,6 +444,8 @@ dist_images_DATA = \
 	images/url-insert.png \
 	images/vc-check-in.png \
 	images/vc-check-out.png \
+	images/vc-compare.png \
+	images/vc-compare_0.png \
 	images/vc-locking-toggle.png \
 	images/vc-register.png \
 	images/vc-repo-update.png \
