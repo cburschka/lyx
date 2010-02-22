@@ -39,6 +39,7 @@
 #include "BufferList.h"
 #include "BufferParams.h"
 #include "BufferView.h"
+#include "Compare.h"
 #include "Converter.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
@@ -2597,9 +2598,16 @@ void GuiView::dispatchVC(FuncRequest const & cmd)
 			if (!buffer->lyxvc().prepareFileRevision(rev2, f2))
 				break;
 		}
-		// FIXME We need to call comparison feature here
-		// I'm not sure whether with or without dialog.
-		// (Gui)Compare::compare(f1, f2);
+		// FIXME We need to call comparison feature here.
+		// This is quick and dirty code for testing VC.
+		// We need that comparison feature has some LFUN_COMPARE <FLAG> file1 file1
+		FileName initpath(lyxrc.document_path);
+		Buffer * dest = newUnnamedFile(initpath, to_utf8(_("differences")));
+		CompareOptions options;
+		Compare * compare = new Compare(loadIfNeeded(FileName(f1)), loadIfNeeded(FileName(f2)), dest, options);
+		compare->start(QThread::LowPriority);
+		sleep(2);
+		lyx::dispatch(FuncRequest(LFUN_BUFFER_SWITCH, dest->absFileName()));
 		break;
 	}
 
