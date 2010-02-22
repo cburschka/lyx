@@ -412,12 +412,30 @@ Menuset
 		Item "Settings...|g" "inset-settings tabular"
 	End
 
+#
+# InsetInfo context menu
+#
+
+	Menu "buffer-info"
+		Item "File|F" "inset-modify buffer name"
+		Item "Path|P" "inset-modify buffer path"
+		Item "Class|C" "inset-modify buffer class"
+		Separator
+		Item "File Revision|R" "inset-modify buffer vcs-revision"
+		Item "Tree Revision|T" "inset-modify buffer vcs-tree-revision"
+		Item "Revision Author|A" "inset-modify buffer vcs-author"
+		Item "Revision Date|D" "inset-modify buffer vcs-date"
+		Item "Revision Time|i" "inset-modify buffer vcs-time"
+	End
+
 
 #
 # InsetInfo context menu
 #
 
 	Menu "context-info"
+		Submenu "Document Info|D" "buffer-info"
+		Separator
 		Item "Settings...|S" "inset-settings info"
 	End
 
