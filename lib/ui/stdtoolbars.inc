@@ -258,6 +258,7 @@ ToolbarSet
 		Item "Revert changes" "vc-revert"
 		Item "Compare with older revision" "vc-compare"
 		Item "Compare with last revision" "vc-compare 0"
+		Item "Insert Version Info" "info-insert buffer vcs-revision"
 		Separator
 		Item "Use SVN file locking property" "vc-locking-toggle"
 		Separator
