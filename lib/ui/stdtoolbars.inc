@@ -256,6 +256,8 @@ ToolbarSet
 		Item "Check-in changes" "vc-check-in"
 		Item "View revision log" "dialog-show vclog"
 		Item "Revert changes" "vc-revert"
+		Item "Compare with older revision" "vc-compare"
+		Item "Compare with last revision" "vc-compare 0"
 		Separator
 		Item "Use SVN file locking property" "vc-locking-toggle"
 		Separator
