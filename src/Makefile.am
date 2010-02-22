@@ -13,11 +13,7 @@ endif
 
 SUBDIRS = support frontends . $(CLIENT) tex2lyx
 
-EXTRA_DIST = Section.h \
-	Section.cpp \
-	Variables.cpp \
-	Variables.h \
-	paper.h \
+EXTRA_DIST = paper.h \
 	pch.h
 
 OTHERLIBS = $(BOOST_LIBS) $(INTLLIBS) $(MYTHES_LIBS) $(AIKSAURUS_LIBS) \
