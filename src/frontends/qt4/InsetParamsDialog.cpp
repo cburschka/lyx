@@ -14,6 +14,7 @@
 
 #include "GuiBox.h"
 #include "GuiBranch.h"
+#include "GuiBibitem.h"
 #include "GuiERT.h"
 #include "GuiInfo.h"
 #include "GuiHSpace.h"
@@ -205,6 +206,9 @@ Dialog * createDialog(GuiView & lv, InsetCode code)
 		break;
 	case FLOAT_CODE:
 		widget = new FloatPlacement(true);
+		break;
+	case BIBITEM_CODE:
+		widget = new GuiBibitem;
 		break;
 	case BRANCH_CODE:
 		widget = new GuiBranch;

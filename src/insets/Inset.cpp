@@ -80,7 +80,7 @@ static void build_translator()
 	insetnames[NOMENCL_CODE] = InsetName("nomenclature");
 	insetnames[INCLUDE_CODE] = InsetName("include");
 	insetnames[GRAPHICS_CODE] = InsetName("graphics");
-	insetnames[BIBITEM_CODE] = InsetName("bibitem");
+	insetnames[BIBITEM_CODE] = InsetName("bibitem", _("Bibliography Entry"));
 	insetnames[BIBTEX_CODE] = InsetName("bibtex");
 	insetnames[TEXT_CODE] = InsetName("text");
 	insetnames[ERT_CODE] = InsetName("ert", _("TeX Code"));
@@ -296,6 +296,7 @@ bool Inset::showInsetDialog(BufferView * bv) const
 	case ERT_CODE:
 	case FLOAT_CODE:
 	case BOX_CODE:
+	case BIBITEM_CODE:
 	case BRANCH_CODE:
 	case INFO_CODE:
 	case MATH_SPACE_CODE:

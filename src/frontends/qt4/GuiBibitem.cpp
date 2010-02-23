@@ -11,8 +11,8 @@
 #include <config.h>
 
 #include "GuiBibitem.h"
+
 #include "qt_helpers.h"
-#include "FuncRequest.h"
 
 #include "insets/InsetCommand.h"
 
@@ -24,72 +24,41 @@ namespace lyx {
 namespace frontend {
 
 
-GuiBibitem::GuiBibitem(GuiView & lv)
-	: GuiDialog(lv, "bibitem", qt_("Bibliography Entry Settings")),
-	  params_(insetCode("bibitem"))
+GuiBibitem::GuiBibitem(QWidget * parent) : InsetParamsWidget(parent)
 {
 	setupUi(this);
 
-	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
-	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
-
 	connect(keyED, SIGNAL(textChanged(QString)),
-		this, SLOT(change_adaptor()));
+		this, SIGNAL(changed()));
 	connect(labelED, SIGNAL(textChanged(QString)),
-		this, SLOT(change_adaptor()));
-
-	bc().setPolicy(ButtonPolicy::OkCancelReadOnlyPolicy);
-	bc().setOK(okPB);
-	bc().setCancel(closePB);
-	bc().addReadOnly(keyED);
-	bc().addReadOnly(labelED);
+		this, SIGNAL(changed()));
 }
 
 
-void GuiBibitem::change_adaptor()
+void GuiBibitem::paramsToDialog(Inset const * inset)
 {
-	changed();
+	InsetCommand const * ic = static_cast<InsetCommand const *>(inset);
+	InsetCommandParams const & params = ic->params();
+	keyED->setText(toqstr(params["key"]));
+	labelED->setText(toqstr(params["label"]));
 }
 
 
-void GuiBibitem::updateContents()
+docstring GuiBibitem::dialogToParams() const
 {
-	keyED->setText(toqstr(params_["key"]));
-	labelED->setText(toqstr(params_["label"]));
+	InsetCommandParams params(insetCode());
+	params["key"] = qstring_to_ucs4(keyED->text());
+	params["label"] = qstring_to_ucs4(labelED->text());
+	return from_utf8(InsetCommand::params2string("bibitem", params));
 }
 
 
-void GuiBibitem::applyView()
+bool GuiBibitem::checkWidgets() const
 {
-	params_["key"] = qstring_to_ucs4(keyED->text());
-	params_["label"] = qstring_to_ucs4(labelED->text());
-}
-
-
-bool GuiBibitem::isValid()
-{
+	if (!InsetParamsWidget::checkWidgets())
+		return false;
 	return !keyED->text().isEmpty();
 }
-
-
-bool GuiBibitem::initialiseParams(std::string const & data)
-{
-	// The name passed with LFUN_INSET_APPLY is also the name
-	// used to identify the mailer.
-	InsetCommand::string2params("bibitem", data, params_);
-	return true;
-}
-
-
-void GuiBibitem::dispatchParams()
-{
-	std::string const lfun = InsetCommand::params2string("bibitem", params_);
-	dispatch(FuncRequest(getLfun(), lfun));
-}
-
-
-Dialog * createGuiBibitem(GuiView & lv) { return new GuiBibitem(lv); }
-
 
 } // namespace frontend
 } // namespace lyx

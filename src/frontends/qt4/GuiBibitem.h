@@ -13,44 +13,30 @@
 #ifndef GUIBIBITEM_H
 #define GUIBIBITEM_H
 
-#include "GuiDialog.h"
+#include "InsetParamsWidget.h"
 #include "ui_BibitemUi.h"
 
-#include "insets/InsetCommandParams.h"
 
 namespace lyx {
 namespace frontend {
 
-class GuiBibitem : public GuiDialog, public Ui::BibitemUi
+class GuiBibitem : public InsetParamsWidget, public Ui::BibitemUi
 {
 	Q_OBJECT
 
 public:
 	/// Constructor
-	GuiBibitem(GuiView & lv);
-
-private Q_SLOTS:
-	void change_adaptor();
+	GuiBibitem(QWidget * parent = 0);
 
 private:
-	///
-	bool isValid();
-	/// Apply changes
-	void applyView();
-	/// update
-	void updateContents();
-	///
-	bool initialiseParams(std::string const & data);
-	/// clean-up on hide.
-	void clearParams() { params_.clear(); }
-	/// clean-up on hide.
-	void dispatchParams();
-	///
-	bool isBufferDependent() const { return true; }
-
-private:
-	///
-	InsetCommandParams params_;
+	/// \name DialogView inherited methods
+	//@{
+	InsetCode insetCode() const { return BIBITEM_CODE; }
+	FuncCode creationCode() const { return LFUN_INSET_INSERT; }
+	void paramsToDialog(Inset const *);
+	docstring dialogToParams() const;
+	bool checkWidgets() const;
+	//@}
 };
 
 } // namespace frontend

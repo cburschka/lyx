@@ -3452,7 +3452,6 @@ Dialog * createDialog(GuiView & lv, string const & name);
 
 // will be replaced by a proper factory...
 Dialog * createGuiAbout(GuiView & lv);
-Dialog * createGuiBibitem(GuiView & lv);
 Dialog * createGuiBibtex(GuiView & lv);
 Dialog * createGuiChanges(GuiView & lv);
 Dialog * createGuiCharacter(GuiView & lv);
@@ -3505,8 +3504,6 @@ Dialog * GuiView::build(string const & name)
 
 	if (name == "aboutlyx")
 		return createGuiAbout(*this);
-	if (name == "bibitem")
-		return createGuiBibitem(*this);
 	if (name == "bibtex")
 		return createGuiBibtex(*this);
 	if (name == "changes")
