@@ -406,6 +406,12 @@ if(MSVC)
 			"${CMAKE_CXX_FLAGS_MINSIZEREL} ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
 
 	endif()
+	set(CMAKE_CXX_FLAGS_DEBUG
+		"${CMAKE_CXX_FLAGS_DEBUG} /Zc:wchar_t-")
+	set(CMAKE_CXX_FLAGS_RELEASE
+		"${CMAKE_CXX_FLAGS_RELEASE} /Zc:wchar_t-")
+	set(CMAKE_CXX_FLAGS_MINSIZEREL
+		"${CMAKE_CXX_FLAGS_MINSIZEREL} /Zc:wchar_t-")
 
 	message(STATUS "----- Warning level      : ${CMAKE_CXX_WARNING_LEVEL}  ${WARNING_LEVEL_MESSAGE}")
 	message(STATUS "----- Warnings as errors : ${MSVC_W_ERROR}")
