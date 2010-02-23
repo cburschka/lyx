@@ -287,7 +287,8 @@ static QString const get_short_path(QString const & long_path, file_access how)
 		HANDLE h = CreateFileW((wchar_t *) long_path.utf16(),
 				GENERIC_WRITE, 0, NULL, CREATE_NEW,
 				FILE_ATTRIBUTE_NORMAL, NULL);
-		if (h == INVALID_HANDLE_VALUE)
+		if (h == INVALID_HANDLE_VALUE
+		    && GetLastError() != ERROR_FILE_EXISTS)
 			return long_path;
 		CloseHandle(h);
 	}
