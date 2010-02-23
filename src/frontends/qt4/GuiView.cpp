@@ -100,7 +100,6 @@
 #include <QSplitter>
 #include <QStackedWidget>
 #include <QStatusBar>
-#include <QThread>
 #include <QTime>
 #include <QTimer>
 #include <QToolBar>
@@ -108,15 +107,6 @@
 #include <QScrollBar>
 
 #define EXPORT_in_THREAD 1
-
-struct Sleep : QThread
-{
-	static void millisec(unsigned long ms) 
-	{
-		QThread::usleep(ms * 1000);
-	}
-};
-
 
 // QtConcurrent was introduced in Qt 4.4
 #if (QT_VERSION >= 0x040400)
@@ -2610,6 +2600,9 @@ void GuiView::dispatchVC(FuncRequest const & cmd)
 		// FIXME We need to call comparison feature here.
 		// This is quick and dirty code for testing VC.
 		// We need that comparison feature has some LFUN_COMPARE <FLAG> file1 file1
+		// where <FLAG> specifies whether we want GUI dialog or just launch
+		// running with defaults.
+		/*
 		FileName initpath(lyxrc.document_path);
 		Buffer * dest = newUnnamedFile(initpath, to_utf8(_("differences")));
 		CompareOptions options;
@@ -2617,6 +2610,7 @@ void GuiView::dispatchVC(FuncRequest const & cmd)
 		compare->start(QThread::LowPriority);
 		Sleep::millisec(200);
 		lyx::dispatch(FuncRequest(LFUN_BUFFER_SWITCH, dest->absFileName()));
+		*/
 		break;
 	}
 
