@@ -2362,7 +2362,7 @@ Letter for US-style letters
 \begin_layout Standard
 There are also some non-standard classes, which LyX only uses if you have
  installed them.
- Here are some of the classes, the full list with detailed explanations
+ Here are some of the classes; the full list with detailed explanations
  can be found in chapter 
 \emph on
 Special Document Classes
@@ -6320,6 +6320,7 @@ Abstract
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h
 wide false
 sideways false
 status open
@@ -10986,7 +10987,7 @@ AE
 \begin_inset Quotes eld
 \end_inset
 
-rève
+brève
 \begin_inset Quotes erd
 \end_inset
 
@@ -18950,7 +18951,7 @@ To have multi-line entries in table cells, you have to declare a fixed width
 \bar no
 \noun off
 \color none
-This is a multiline entry in a table.
+This is a multi-line entry in a table.
 \end_layout
 
 \end_inset
@@ -19062,7 +19063,7 @@ This is longer now.
 \bar no
 \noun off
 \color none
-This is a multiline entry in a table.
+This is a multi-line entry in a table.
  This is longer now.
 \end_layout
 
@@ -20235,7 +20236,7 @@ sideways
 
 \begin_layout Standard
 Rotated floats are always placed on their own pages (or columns, when you
- have a multi-column document).
+ have a multicolumn document).
  You can let them span several columns using the float settings option 
 \family sans
 Span
