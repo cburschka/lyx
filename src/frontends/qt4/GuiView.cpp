@@ -2775,7 +2775,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 					 dr);
 				break;
 			}
-			if (doc_buffer->doExport(argument, false)) {
+			if (!doc_buffer->doExport(argument, false)) {
 				dr.setError(true);
 				dr.setMessage(bformat(_("Error exporting to format: %1$s."),
 					cmd.argument()));

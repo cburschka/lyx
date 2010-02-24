@@ -1891,9 +1891,10 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 			setReadonly(!isReadonly());
 		break;
 
+	//FIXME: This is now handled in GuiView
 	case LFUN_BUFFER_EXPORT: {
 		bool success = doExport(argument, false, false);
-		dr.setError(success);
+		dr.setError(!success);
 		if (!success)
 			dr.setMessage(bformat(_("Error exporting to format: %1$s."), 
 					      func.argument()));
