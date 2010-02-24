@@ -784,6 +784,8 @@ void MenuDefinition::expandLanguageSelector(Buffer const * buf)
 		QString label = qt_((*cit)->display());
 		// try to add an accelerator
 		for (int i = 0; i < label.size(); ++i) {
+			if (label[i].isSpace())
+				continue;
 			QString const ch = QString(label[i]);
 			if (!accelerators.contains(ch, Qt::CaseInsensitive)) {
 				label = label + toqstr("|") + ch;
