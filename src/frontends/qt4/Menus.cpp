@@ -777,10 +777,21 @@ void MenuDefinition::expandLanguageSelector(Buffer const * buf)
 
 	MenuItem item(MenuItem::Submenu, qt_("Language|L"));
 	item.setSubmenu(MenuDefinition(qt_("Language")));
+	QStringList accelerators;
 	std::set<Language const *>::const_iterator const begin = languages.begin();
 	for (std::set<Language const *>::const_iterator cit = begin;
 	     cit != languages.end(); ++cit) {
-		MenuItem w(MenuItem::Command, qt_((*cit)->display()),
+		QString label = qt_((*cit)->display());
+		// try to add an accelerator
+		for (int i = 0; i < label.size(); ++i) {
+			QString const ch = QString(label[i]);
+			if (!accelerators.contains(ch, Qt::CaseInsensitive)) {
+				label = label + toqstr("|") + ch;
+				accelerators.append(ch);
+				break;
+			}
+		}
+		MenuItem w(MenuItem::Command, label,
 			FuncRequest(LFUN_LANGUAGE, (*cit)->lang()));
 		item.submenu().addWithStatusCheck(w);
 	}
