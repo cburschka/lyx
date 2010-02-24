@@ -411,6 +411,7 @@ if platform_name == 'win32':
 # hard-coded options are required and will always be there
 # default options can be replaced by enviromental variables or command line options
 CCFLAGS_required = []
+CXXFLAGS_required = []
 LINKFLAGS_required = []
 CCFLAGS_default = []
 
@@ -420,6 +421,7 @@ if use_vc:
     #   in the current code page (number)
     # C4996: foo was decleared deprecated
     CCFLAGS_required.append('/EHsc')
+    CXXFLAGS_required.append('/Zc:wchar_t-')
     if mode == 'debug':
         CCFLAGS_default.extend(['/wd4819', '/wd4996', '/nologo', '/MDd'])
     else:
@@ -514,7 +516,7 @@ setEnvVariable(env, 'CPP')
 setEnvVariable(env, 'CXX')
 setEnvVariable(env, 'CXXCPP')
 setEnvVariable(env, 'CCFLAGS', CCFLAGS_required, CCFLAGS_default)
-setEnvVariable(env, 'CXXFLAGS')
+setEnvVariable(env, 'CXXFLAGS', CXXFLAGS_required)
 setEnvVariable(env, 'CPPFLAGS')
 setEnvVariable(env, 'LINKFLAGS', LINKFLAGS_required)
 
@@ -832,10 +834,10 @@ else:
 # check the size of wchar_t
 sizeof_wchar_t = conf.CheckSizeOfWChar()
 # something wrong
-if sizeof_wchar_t == 0:
-    print 'Error: Can not determine the size of wchar_t.'
-    print 'Please check config.log for more information.'
-    Exit(1)
+#if sizeof_wchar_t == 0:
+#    print 'Error: Can not determine the size of wchar_t.'
+#    print 'Please check config.log for more information.'
+#    Exit(1)
 
 
 # fill in the version info
