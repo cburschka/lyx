@@ -30,13 +30,14 @@
 # Example usage:
 # lyxpreview2bitmap.py png 0lyxpreview.tex 128 000000 faf0e6
 
-# This script takes five arguments:
+# This script takes six arguments:
 # FORMAT:   The desired output format. Either 'png' or 'ppm'.
 # TEXFILE:  the name of the .tex file to be converted.
 # DPI:      a scale factor, used to ascertain the resolution of the
 #           generated image which is then passed to gs.
 # FG_COLOR: the foreground color as a hexadecimal string, eg '000000'.
 # BG_COLOR: the background color as a hexadecimal string, eg 'faf0e6'.
+# CONVERTER: the converter (optional). Default is latex.
 
 # Decomposing TEXFILE's name as DIR/BASE.tex, this script will,
 # if executed successfully, leave in DIR:
@@ -154,7 +155,7 @@ def convert_to_ppm_format(pngtopnm, basename):
 
 def main(argv):
     # Parse and manipulate the command line arguments.
-    if len(argv) != 6:
+    if len(argv) != 6 and len(argv) != 7:
         error(usage(argv[0]))
 
     output_format = string.lower(argv[1])
@@ -171,7 +172,10 @@ def main(argv):
 
     # External programs used by the script.
     path = string.split(os.environ["PATH"], os.pathsep)
-    latex = find_exe_or_terminate(["latex", "pplatex", "platex", "latex2e"], path)
+    if len(argv) == 7:
+        latex = argv[6]
+    else:
+        latex = find_exe_or_terminate(["latex", "pplatex", "platex", "latex2e"], path)
 
     # This can go once dvipng becomes widespread.
     dvipng = find_exe(["dvipng"], path)
@@ -179,7 +183,7 @@ def main(argv):
         # The data is input to legacy_conversion in as similar
         # as possible a manner to that input to the code used in
         # LyX 1.3.x.
-        vec = [ argv[0], argv[2], argv[3], argv[1], argv[4], argv[5] ]
+        vec = [ argv[0], argv[2], argv[3], argv[1], argv[4], argv[5], argv[6] ]
         return legacy_conversion(vec)
 
     pngtopnm = ""
@@ -198,6 +202,11 @@ def main(argv):
         warning("%s failed to compile %s" \
               % (os.path.basename(latex), latex_file))
 
+    if latex == "xelatex":
+        warning("Using XeTeX")
+        # FIXME: skip unnecessary dvips trial in legacy_conversion_step2
+        return legacy_conversion_step2(latex_file, dpi, output_format)
+
     # Run the dvi file through dvipng.
     dvi_file = latex_file_re.sub(".dvi", latex_file)
     dvipng_call = '%s -Ttight -depth -height -D %d -fg "%s" -bg "%s" "%s"' \
@@ -207,6 +216,7 @@ def main(argv):
     if dvipng_status != None:
         warning("%s failed to generate images from %s ... looking for PDF" \
               % (os.path.basename(dvipng), dvi_file))
+        # FIXME: skip unnecessary dvips trial in legacy_conversion_step2
         return legacy_conversion_step2(latex_file, dpi, output_format)
 
     # Extract metrics info from dvipng_stdout.
