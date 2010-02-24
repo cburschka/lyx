@@ -1,5 +1,5 @@
 #LyX 2.0.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 376
+\lyxformat 378
 \begin_document
 \begin_header
 \textclass scrbook
@@ -19055,7 +19055,7 @@ To have multi-line entries in table cells, you have to declare a fixed width
 \bar no
 \noun off
 \color none
-This is a multiline entry in a table.
+This is a multi-line entry in a table.
 \end_layout
 
 \end_inset
@@ -19167,7 +19167,7 @@ This is longer now.
 \bar no
 \noun off
 \color none
-This is a multiline entry in a table.
+This is a multi-line entry in a table.
  This is longer now.
 \end_layout
 
@@ -20341,7 +20341,7 @@ sideways
 
 \begin_layout Standard
 Rotated floats are always placed on their own pages (or columns, when you
- have a multi-column document).
+ have a multicolumn document).
  You can let them span several columns using the float settings option 
 \family sans
 Span
@@ -26541,7 +26541,7 @@ key "makeindex,xindy"
 
 \begin_layout Standard
 If you need specific options or an alternative index program only for a
- given document, you can define the programm and\SpecialChar \slash{}
+ given document, you can define the program and\SpecialChar \slash{}
 or the options in 
 \family sans
 Document\SpecialChar \menuseparator
