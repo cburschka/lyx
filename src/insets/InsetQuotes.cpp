@@ -185,12 +185,13 @@ void InsetQuotes::parseString(string const & s)
 
 docstring InsetQuotes::displayString() const
 {
-	Language const * loclang = buffer().params().language;
+	Language const * loclang = isBufferValid() ? buffer().params().language : 0;
 	int const index = quote_index[side_][language_];
 	docstring retdisp = docstring(1, display_quote_char[times_][index]);
 
 	// in french, spaces are added inside double quotes
-	if (times_ == DoubleQuotes && prefixIs(loclang->code(), "fr")) {
+	// FIXME: this should be done by a separate quote type.
+	if (times_ == DoubleQuotes && loclang && prefixIs(loclang->code(), "fr")) {
 		if (side_ == LeftQuote)
 			retdisp += ' ';
 		else
