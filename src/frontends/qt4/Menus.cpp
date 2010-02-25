@@ -769,11 +769,8 @@ void MenuDefinition::expandLanguageSelector(Buffer const * buf)
 	std::set<Language const *> languages =
 		buf->masterBuffer()->getLanguages();
 
-	if (languages.size() < 2) {
-		add(MenuItem(MenuItem::Command, qt_("Language ...|L"),
-			FuncRequest(LFUN_DIALOG_SHOW, "character")));
+	if (languages.size() < 2)
 		return;
-	}
 
 	MenuItem item(MenuItem::Submenu, qt_("Language|L"));
 	item.setSubmenu(MenuDefinition(qt_("Language")));
