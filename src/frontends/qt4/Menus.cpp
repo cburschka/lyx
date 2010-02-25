@@ -780,14 +780,30 @@ void MenuDefinition::expandLanguageSelector(Buffer const * buf)
 	     cit != languages.end(); ++cit) {
 		QString label = qt_((*cit)->display());
 		// try to add an accelerator
+		bool success = false;
+		// try capitals first
 		for (int i = 0; i < label.size(); ++i) {
-			if (label[i].isSpace())
+			if (!label[i].isUpper())
 				continue;
 			QString const ch = QString(label[i]);
 			if (!accelerators.contains(ch, Qt::CaseInsensitive)) {
 				label = label + toqstr("|") + ch;
 				accelerators.append(ch);
+				success = true;
 				break;
+			}
+		}
+		// if all capitals are taken, try the rest
+		if (!success) {
+			for (int i = 0; i < label.size(); ++i) {
+				if (label[i].isSpace())
+					continue;
+				QString const ch = QString(label[i]);
+				if (!accelerators.contains(ch, Qt::CaseInsensitive)) {
+					label = label + toqstr("|") + ch;
+					accelerators.append(ch);
+					break;
+				}
 			}
 		}
 		MenuItem w(MenuItem::Command, label,
