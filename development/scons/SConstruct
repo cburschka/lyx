@@ -834,10 +834,10 @@ else:
 # check the size of wchar_t
 sizeof_wchar_t = conf.CheckSizeOfWChar()
 # something wrong
-#if sizeof_wchar_t == 0:
-#    print 'Error: Can not determine the size of wchar_t.'
-#    print 'Please check config.log for more information.'
-#    Exit(1)
+if sizeof_wchar_t == 0:
+    print 'Error: Can not determine the size of wchar_t.'
+    print 'Please check config.log for more information.'
+    Exit(1)
 
 
 # fill in the version info
