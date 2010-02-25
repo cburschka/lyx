@@ -273,7 +273,7 @@ int LyX::exec(int & argc, char * argv[])
 	easyParse(argc, argv);
 
 	try {
-		init_package(to_utf8(from_local8bit(argv[0])),
+		init_package(os::utf8_argv(0),
 			      cl_system_support, cl_user_support,
 			      top_build_dir_is_one_level_up);
 	} catch (ExceptionMessage const & message) {
@@ -431,7 +431,7 @@ int LyX::init(int & argc, char * argv[])
 		if (argv[argi][0] == '-') {
 			lyxerr << to_utf8(
 				bformat(_("Wrong command line option `%1$s'. Exiting."),
-				from_utf8(argv[argi]))) << endl;
+				from_utf8(os::utf8_argv(argi)))) << endl;
 			return EXIT_FAILURE;
 		}
 	}
@@ -445,7 +445,7 @@ int LyX::init(int & argc, char * argv[])
 
 	// Remaining arguments are assumed to be files to load.
 	for (int argi = argc - 1; argi >= 1; --argi)
-		pimpl_->files_to_load_.push_back(to_utf8(from_local8bit(argv[argi])));
+		pimpl_->files_to_load_.push_back(os::utf8_argv(argi));
 
 	if (first_start) {
 		pimpl_->files_to_load_.push_back(
@@ -1121,9 +1121,9 @@ void LyX::easyParse(int & argc, char * argv[])
 			continue;
 
 		string const arg =
-			(i + 1 < argc) ? to_utf8(from_local8bit(argv[i + 1])) : string();
+			(i + 1 < argc) ? os::utf8_argv(i + 1) : string();
 		string const arg2 =
-			(i + 2 < argc) ? to_utf8(from_local8bit(argv[i + 2])) : string();
+			(i + 2 < argc) ? os::utf8_argv(i + 2) : string();
 
 		string batch;
 		int const remove = 1 + it->second(arg, arg2, batch);

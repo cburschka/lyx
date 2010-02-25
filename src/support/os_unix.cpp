@@ -16,6 +16,7 @@
 #include "support/docstring.h"
 #include "support/FileName.h"
 #include "support/lstrings.h"
+#include "support/lassert.h"
 
 #include <limits.h>
 #include <stdlib.h>
@@ -30,8 +31,25 @@ namespace lyx {
 namespace support {
 namespace os {
 
-void init(int, char *[])
-{}
+namespace {
+
+int argc_ = 0;
+char ** argv_ = 0;
+
+} // namespace anon
+
+void init(int argc, char * argv[])
+{
+	argc_ = argc;
+	argv_ = argv;
+}
+
+
+string utf8_argv(int i)
+{
+	LASSERT(i < argc_, /**/);
+	return to_utf8(from_local8bit(argv_[i]));
+}
 
 
 string current_root()

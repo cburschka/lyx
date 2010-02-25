@@ -6,6 +6,7 @@
  * \author Ruurd A. Reitsma
  * \author Claus Hentschel
  * \author Angus Leeming
+ * \author Enrico Forestieri
  *
  * Full author contact details are available in file CREDITS.
  *
@@ -52,6 +53,11 @@
 #define ASSOCF_INIT_IGNOREUNKNOWN 0
 #endif
 
+extern "C" {
+extern void __wgetmainargs(int * argc, wchar_t *** argv, wchar_t *** envp,
+			   int expand_wildcards, int * new_mode);
+}
+
 using namespace std;
 
 namespace lyx {
@@ -62,6 +68,9 @@ namespace support {
 namespace os {
 
 namespace {
+
+int argc_ = 0;
+wchar_t ** argv_ = 0;
 
 bool windows_style_tex_paths_ = true;
 
@@ -80,7 +89,7 @@ BOOL terminate_handler(DWORD event)
 
 } // namespace anon
 
-void init(int /* argc */, char * argv[])
+void init(int argc, char * argv[])
 {
 	/* Note from Angus, 17 Jan 2005:
 	 *
@@ -138,6 +147,13 @@ void init(int /* argc */, char * argv[])
 	 * lyx is invoked as a parameter of hidecmd.exe.
 	 */
 
+
+	// Get the wide program arguments array
+	wchar_t ** envp = 0;
+	int newmode = 0;
+	__wgetmainargs(&argc_, &argv_, &envp, -1, &newmode);
+	LASSERT(argc == argc_, /**/);
+
 	// If Cygwin is detected, query the cygdrive prefix.
 	// The cygdrive prefix is needed for translating windows style paths
 	// to posix style paths in LaTeX files when the Cygwin teTeX is used.
@@ -183,6 +199,13 @@ void init(int /* argc */, char * argv[])
 
 	// Catch shutdown events.
 	SetConsoleCtrlHandler((PHANDLER_ROUTINE)terminate_handler, TRUE);
+}
+
+
+string utf8_argv(int i)
+{
+	LASSERT(i < argc_, /**/);
+	return fromqstr(QString::fromWCharArray(argv_[i]));
 }
 
 
@@ -282,7 +305,7 @@ static QString const get_long_path(QString const & short_path)
 
 static QString const get_short_path(QString const & long_path, file_access how)
 {
-	// CreateFileW and GetShortPathNameW needs the path in utf16 encoding.
+	// CreateFileW and GetShortPathNameW need the path in utf16 encoding.
 	if (how == CREATE) {
 		HANDLE h = CreateFileW((wchar_t *) long_path.utf16(),
 				GENERIC_WRITE, 0, NULL, CREATE_NEW,
