@@ -2212,6 +2212,9 @@ std::set<Language const *> Buffer::getLanguages() const
 void Buffer::getLanguages(std::set<Language const *> & languages) const
 {
 	ParConstIterator end = par_iterator_end();
+	// add the buffer language, even if it's not actively used
+	languages.insert(language());
+	// iterate over the paragraphs
 	for (ParConstIterator it = par_iterator_begin(); it != end; ++it)
 		it->getLanguages(languages);
 	// also children
