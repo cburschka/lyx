@@ -32,8 +32,16 @@ enum path_case {
 	CASE_ADJUSTED
 };
 
+enum file_access {
+	EXISTING,
+	CREATE
+};
+
 /// Do some work just once.
 void init(int argc, char * argv[]);
+
+/// Returns the i-th program argument in utf8 encoding.
+std::string utf8_argv(int i);
 
 /// Returns the name of the NULL device (/dev/null, null).
 std::string const & nulldev();
@@ -63,6 +71,15 @@ std::string external_path(std::string const & p);
 /// Converts a host OS style path to unix style.
 /// \p p and the return value are encoded in utf8.
 std::string internal_path(std::string const & p);
+
+/// Converts a host OS style path to a unicode safe unix style.
+/// On Windows, this is achieved by using the short form of the path,
+/// which can be safely passed to standard I/O functions expecting narrow
+/// char paths even when the path contains non-ascii chars.
+/// As the short form is only available for existing files, if the file is
+/// to be accessed for writing, \param how should be set to CREATE.
+/// \p p and the return value are encoded in utf8.
+std::string safe_internal_path(std::string const & p, file_access how = EXISTING);
 
 /// Converts a unix style path list to host OS style.
 /// \p p and the return value are encoded in utf8.
@@ -120,8 +137,7 @@ bool canAutoOpenFile(std::string const & ext, auto_open_mode const mode = VIEW);
 bool autoOpenFile(std::string const & filename, auto_open_mode const mode = VIEW);
 
 /** Resolves a path such that it does not contain '.', '..', or symbolic links.
-  * \warning the path must already be in the filesystem encoding.
-  * \returns the resolved path in utf8 encoding.
+  * \p path and the return value are encoded in utf8.
   */
 std::string real_path(std::string const & path);
 

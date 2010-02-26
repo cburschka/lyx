@@ -137,6 +137,9 @@ What's new
 - Fix positioning of error dialog in child documents with parent macros
   (bug 6502).
 
+- On Windows, allow loading and saving files whose path and/or name contains
+  characters not encodable in the current code page (bug 5238).
+
 
 * USER INTERFACE
 

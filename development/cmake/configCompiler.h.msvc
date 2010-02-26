@@ -146,10 +146,6 @@
 #  define BOOST_POSIX_PATH 1
 #endif
 
-#ifndef HAVE_NEWAPIS_H
-#  define WANT_GETFILEATTRIBUTESEX_WRAPPER 1
-#endif
-
 /*
  * the FreeBSD libc uses UCS4, but libstdc++ has no proper wchar_t
  * support compiled in:

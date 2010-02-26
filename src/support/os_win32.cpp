@@ -6,6 +6,7 @@
  * \author Ruurd A. Reitsma
  * \author Claus Hentschel
  * \author Angus Leeming
+ * \author Enrico Forestieri
  *
  * Full author contact details are available in file CREDITS.
  *
@@ -23,30 +24,14 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/ExceptionMessage.h"
+#include "support/qstring_helpers.h"
 
 #include "support/lassert.h"
 
 #include <cstdlib>
 #include <vector>
 
-/* The GetLongPathName macro may be defined on the compiling machine,
- * but we must use a bit of trickery if the resulting executable is
- * to run on a Win95 machine.
- * Fortunately, Microsoft provide the trickery. All we need is the
- * NewAPIs.h header file, available for download from Microsoft as
- * part of the Platform SDK.
- */
-#if defined (HAVE_NEWAPIS_H)
-// This should be defined already to keep Boost.Filesystem happy.
-# if !defined (WANT_GETFILEATTRIBUTESEX_WRAPPER)
-#   error Expected WANT_GETFILEATTRIBUTESEX_WRAPPER to be defined!
-# endif
-# define WANT_GETLONGPATHNAME_WRAPPER 1
-# define COMPILE_NEWAPIS_STUBS
-# include <NewAPIs.h>
-# undef COMPILE_NEWAPIS_STUBS
-# undef WANT_GETLONGPATHNAME_WRAPPER
-#endif
+#include <QString>
 
 #include <io.h>
 #include <direct.h> // _getdrive
@@ -68,6 +53,11 @@
 #define ASSOCF_INIT_IGNOREUNKNOWN 0
 #endif
 
+extern "C" {
+extern void __wgetmainargs(int * argc, wchar_t *** argv, wchar_t *** envp,
+			   int expand_wildcards, int * new_mode);
+}
+
 using namespace std;
 
 namespace lyx {
@@ -78,6 +68,9 @@ namespace support {
 namespace os {
 
 namespace {
+
+int argc_ = 0;
+wchar_t ** argv_ = 0;
 
 bool windows_style_tex_paths_ = true;
 
@@ -96,7 +89,7 @@ BOOL terminate_handler(DWORD event)
 
 } // namespace anon
 
-void init(int /* argc */, char * argv[])
+void init(int argc, char * argv[])
 {
 	/* Note from Angus, 17 Jan 2005:
 	 *
@@ -154,6 +147,13 @@ void init(int /* argc */, char * argv[])
 	 * lyx is invoked as a parameter of hidecmd.exe.
 	 */
 
+
+	// Get the wide program arguments array
+	wchar_t ** envp = 0;
+	int newmode = 0;
+	__wgetmainargs(&argc_, &argv_, &envp, -1, &newmode);
+	LASSERT(argc == argc_, /**/);
+
 	// If Cygwin is detected, query the cygdrive prefix.
 	// The cygdrive prefix is needed for translating windows style paths
 	// to posix style paths in LaTeX files when the Cygwin teTeX is used.
@@ -199,6 +199,13 @@ void init(int /* argc */, char * argv[])
 
 	// Catch shutdown events.
 	SetConsoleCtrlHandler((PHANDLER_ROUTINE)terminate_handler, TRUE);
+}
+
+
+string utf8_argv(int i)
+{
+	LASSERT(i < argc_, /**/);
+	return fromqstr(QString::fromWCharArray(argv_[i]));
 }
 
 
@@ -278,29 +285,60 @@ string external_path(string const & p)
 }
 
 
-static string const get_long_path(string const & short_path)
+static QString const get_long_path(QString const & short_path)
 {
-	// GetLongPathName needs the path in file system encoding.
-	// We can use to_local8bit, since file system encoding and the
-	// local 8 bit encoding are identical on windows.
-	vector<char> long_path(MAX_PATH);
-	DWORD result = GetLongPathName(to_local8bit(from_utf8(short_path)).c_str(),
+	// GetLongPathNameW needs the path in utf16 encoding.
+	vector<wchar_t> long_path(MAX_PATH);
+	DWORD result = GetLongPathNameW((wchar_t *) short_path.utf16(),
 				       &long_path[0], long_path.size());
 
 	if (result > long_path.size()) {
 		long_path.resize(result);
-		result = GetLongPathName(short_path.c_str(),
+		result = GetLongPathNameW((wchar_t *) short_path.utf16(),
 					 &long_path[0], long_path.size());
 		LASSERT(result <= long_path.size(), /**/);
 	}
 
-	return (result == 0) ? short_path : to_utf8(from_filesystem8bit(&long_path[0]));
+	return (result == 0) ? short_path : QString::fromWCharArray(&long_path[0]);
+}
+
+
+static QString const get_short_path(QString const & long_path, file_access how)
+{
+	// CreateFileW and GetShortPathNameW need the path in utf16 encoding.
+	if (how == CREATE) {
+		HANDLE h = CreateFileW((wchar_t *) long_path.utf16(),
+				GENERIC_WRITE, 0, NULL, CREATE_NEW,
+				FILE_ATTRIBUTE_NORMAL, NULL);
+		if (h == INVALID_HANDLE_VALUE
+		    && GetLastError() != ERROR_FILE_EXISTS)
+			return long_path;
+		CloseHandle(h);
+	}
+	vector<wchar_t> short_path(MAX_PATH);
+	DWORD result = GetShortPathNameW((wchar_t *) long_path.utf16(),
+				       &short_path[0], short_path.size());
+
+	if (result > short_path.size()) {
+		short_path.resize(result);
+		result = GetShortPathNameW((wchar_t *) long_path.utf16(),
+					 &short_path[0], short_path.size());
+		LASSERT(result <= short_path.size(), /**/);
+	}
+
+	return (result == 0) ? long_path : QString::fromWCharArray(&short_path[0]);
 }
 
 
 string internal_path(string const & p)
 {
-	return subst(get_long_path(p), "\\", "/");
+	return subst(fromqstr(get_long_path(toqstr(p))), "\\", "/");
+}
+
+
+string safe_internal_path(string const & p, file_access how)
+{
+	return subst(fromqstr(get_short_path(toqstr(p), how)), "\\", "/");
 }
 
 
@@ -462,12 +500,13 @@ bool autoOpenFile(string const & filename, auto_open_mode const mode)
 string real_path(string const & path)
 {
 	// See http://msdn.microsoft.com/en-us/library/aa366789(VS.85).aspx
-	HANDLE hpath = CreateFile(subst(path, '/', '\\').c_str(), GENERIC_READ,
+	QString const qpath = get_long_path(toqstr(path));
+	HANDLE hpath = CreateFileW((wchar_t *) qpath.utf16(), GENERIC_READ,
 				FILE_SHARE_READ, NULL, OPEN_EXISTING, 0, NULL);
 
 	if (hpath == INVALID_HANDLE_VALUE) {
 		// The file cannot be accessed.
-		return FileName::fromFilesystemEncoding(path).absFilename();
+		return path;
 	}
 
 	// Get the file size.
@@ -477,7 +516,7 @@ string real_path(string const & path)
 	if (size_lo == 0 && size_hi == 0) {
 		// A zero-length file cannot be mapped.
 		CloseHandle(hpath);
-		return FileName::fromFilesystemEncoding(path).absFilename();
+		return path;
 	}
 
 	// Create a file mapping object.
@@ -485,7 +524,7 @@ string real_path(string const & path)
 
 	if (!hmap) {
 		CloseHandle(hpath);
-		return FileName::fromFilesystemEncoding(path).absFilename();
+		return path;
 	}
 
 	// Create a file mapping to get the file name.
@@ -494,7 +533,7 @@ string real_path(string const & path)
 	if (!pmem) {
 		CloseHandle(hmap);
 		CloseHandle(hpath);
-		return FileName::fromFilesystemEncoding(path).absFilename();
+		return path;
 	}
 
 	TCHAR realpath[MAX_PATH + 1];
@@ -503,7 +542,7 @@ string real_path(string const & path)
 		UnmapViewOfFile(pmem);
 		CloseHandle(hmap);
 		CloseHandle(hpath);
-		return FileName::fromFilesystemEncoding(path).absFilename();
+		return path;
 	}
 
 	// Translate device name to UNC prefix or drive letters.

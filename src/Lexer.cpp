@@ -264,7 +264,7 @@ bool Lexer::Pimpl::setFile(FileName const & filename)
 			LYXERR(Debug::LYXLEX, "Error in Lexer::setFile: "
 				"file or stream already set.");
 		}
-		fb_.open(filename.toFilesystemEncoding().c_str(), ios::in);
+		fb_.open(filename.toSafeFilesystemEncoding().c_str(), ios::in);
 		is.rdbuf(&fb_);
 		name = filename.absFilename();
 		lineno = 0;

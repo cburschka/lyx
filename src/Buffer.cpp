@@ -817,7 +817,7 @@ Buffer::ReadStatus Buffer::readFile(Lexer & lex, FileName const & filename,
 			<< ' ' << quoteName(lyx2lyx.toFilesystemEncoding())
 			<< " -t " << convert<string>(LYX_FORMAT)
 			<< " -o " << quoteName(tmpfile.toFilesystemEncoding())
-			<< ' ' << quoteName(filename.toFilesystemEncoding());
+			<< ' ' << quoteName(filename.toSafeFilesystemEncoding());
 		string const command_str = command.str();
 
 		LYXERR(Debug::INFO, "Running '" << command_str << '\'');
@@ -855,8 +855,6 @@ bool Buffer::save() const
 {
 	// We don't need autosaves in the immediate future. (Asger)
 	resetAutosaveTimers();
-
-	string const encodedFilename = d->filename.toFilesystemEncoding();
 
 	FileName backupName;
 	bool madeBackup = false;
@@ -915,11 +913,13 @@ bool Buffer::writeFile(FileName const & fname) const
 		makeDisplayPath(fname.absFilename()));
 	message(str);
 
+	string const encoded_fname = fname.toSafeFilesystemEncoding(os::CREATE);
+
 	if (params().compressed) {
-		gz::ogzstream ofs(fname.toFilesystemEncoding().c_str(), ios::out|ios::trunc);
+		gz::ogzstream ofs(encoded_fname.c_str(), ios::out|ios::trunc);
 		retval = ofs && write(ofs);
 	} else {
-		ofstream ofs(fname.toFilesystemEncoding().c_str(), ios::out|ios::trunc);
+		ofstream ofs(encoded_fname.c_str(), ios::out|ios::trunc);
 		retval = ofs && write(ofs);
 	}
 

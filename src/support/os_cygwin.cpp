@@ -17,6 +17,7 @@
 #include "support/os.h"
 
 #include "support/FileName.h"
+#include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/debug.h"
 
@@ -43,6 +44,9 @@ namespace support {
 namespace os {
 
 namespace {
+
+int argc_ = 0;
+char ** argv_ = 0;
 
 bool windows_style_tex_paths_ = false;
 
@@ -201,8 +205,11 @@ BOOL terminate_handler(DWORD event)
 
 } // namespace anon
 
-void init(int, char *[])
+void init(int argc, char * argv[])
 {
+	argc_ = argc;
+	argv_ = argv;
+
 	// Make sure that the TEMP variable is set
 	// and sync the Windows environment.
 	setenv("TEMP", "/tmp", false);
@@ -210,6 +217,13 @@ void init(int, char *[])
 
 	// Catch shutdown events.
 	SetConsoleCtrlHandler((PHANDLER_ROUTINE)terminate_handler, TRUE);
+}
+
+
+string utf8_argv(int i)
+{
+	LASSERT(i < argc_, /**/);
+	return to_utf8(from_local8bit(argv_[i]));
 }
 
 
@@ -284,6 +298,12 @@ string external_path(string const & p)
 
 
 string internal_path(string const & p)
+{
+	return convert_path(p, PathStyle(posix));
+}
+
+
+string safe_internal_path(string const & p, file_access)
 {
 	return convert_path(p, PathStyle(posix));
 }

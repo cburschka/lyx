@@ -440,6 +440,7 @@ int main() {
 def checkSizeOfWChar(conf):
     ''' check the size of wchar '''
     check_sizeof_wchar = '''
+#include <wchar.h>
 int i[ ( sizeof(wchar_t)==%d ? 1 : -1 ) ];
 int main()
 {
