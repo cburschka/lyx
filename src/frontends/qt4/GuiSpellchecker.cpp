@@ -158,7 +158,7 @@ void GuiSpellchecker::on_languageCO_activated(int index)
 {
 	string const lang =
 		fromqstr(d->ui.languageCO->itemData(index).toString());
-	if (d->word_.lang()->lang() == lang)
+	if (!d->word_.lang() || d->word_.lang()->lang() == lang)
 		// nothing changed
 		return;
 	dispatch(FuncRequest(LFUN_LANGUAGE, lang));
