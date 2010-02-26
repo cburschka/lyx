@@ -321,7 +321,6 @@ void TocWidget::on_typeCO_currentIndexChanged(int index)
 
 void TocWidget::outline(FuncCode func_code)
 {
-	enableControls(false);
 	QModelIndexList const & list = tocTV->selectionModel()->selectedIndexes();
 	if (list.isEmpty())
 		return;
