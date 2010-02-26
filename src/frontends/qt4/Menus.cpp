@@ -783,9 +783,9 @@ void MenuDefinition::expandLanguageSelector(Buffer const * buf)
 		bool success = false;
 		// try capitals first
 		for (int i = 0; i < label.size(); ++i) {
-			if (!label[i].isUpper())
+			QChar const ch = label[i];
+			if (!ch.isUpper())
 				continue;
-			QString const ch = QString(label[i]);
 			if (!accelerators.contains(ch, Qt::CaseInsensitive)) {
 				label = label + toqstr("|") + ch;
 				accelerators.append(ch);
