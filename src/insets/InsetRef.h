@@ -41,7 +41,10 @@ public:
 	///
 	bool isLabeled() const { return true; }
 	///
-	docstring screenLabel() const;
+	docstring screenLabel() const { return screen_label_; }
+	///
+	docstring toolTip(BufferView const &, int, int) const
+		{ return tooltip_; }
 	///
 	bool hasSettings() const { return true; }
 	///
@@ -80,6 +83,8 @@ private:
 	bool isLatex;
 	///
 	mutable docstring screen_label_;
+	///
+	mutable docstring tooltip_;
 };
 
 } // namespace lyx
