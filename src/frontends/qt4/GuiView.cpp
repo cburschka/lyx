@@ -1032,16 +1032,16 @@ GuiWorkArea * GuiView::currentWorkArea()
 
 GuiWorkArea const * GuiView::currentMainWorkArea() const
 {
-	if (d.currentTabWorkArea() == NULL)
-		return NULL;
+	if (!d.currentTabWorkArea())
+		return 0;
 	return d.currentTabWorkArea()->currentWorkArea();
 }
 
 
 GuiWorkArea * GuiView::currentMainWorkArea()
 {
-	if (d.currentTabWorkArea() == NULL)
-		return NULL;
+	if (!d.currentTabWorkArea())
+		return 0;
 	return d.currentTabWorkArea()->currentWorkArea();
 }
 
@@ -1049,13 +1049,17 @@ GuiWorkArea * GuiView::currentMainWorkArea()
 void GuiView::setCurrentWorkArea(GuiWorkArea * wa)
 {
 	LYXERR(Debug::DEBUG, "Setting current wa: " << wa << endl);
-	if (wa == NULL) {
-		d.current_work_area_ = NULL;
+	if (!wa) {
+		d.current_work_area_ = 0;
 		d.setBackground();
 		return;
 	}
-	GuiWorkArea * old_gwa = theGuiApp()->currentView()->currentWorkArea();
-	if (old_gwa == wa)
+
+	// FIXME: I've no clue why this is here and why it accesses
+	//  theGuiApp()->currentView, which might be 0 (bug 6464).
+	//  See also 27525 (vfr).
+	if (theGuiApp()->currentView() == this 
+		  && theGuiApp()->currentView()->currentWorkArea() == wa) 
 		return;
 
 	if (currentBufferView())
