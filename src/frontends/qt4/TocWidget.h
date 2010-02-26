@@ -16,6 +16,7 @@
 #include "ui_TocUi.h"
 
 #include "Cursor.h"
+#include "FuncCode.h"
 
 #include <QWidget>
 
@@ -85,7 +86,7 @@ private:
 	///
 	void setTreeDepth(int depth);
 	///
-	void outline(int func_code);
+	void outline(FuncCode func_code);
 	/// finds the inset that is connected to the current item,
 	/// if any, otherwise return null
 	Inset * itemInset() const;

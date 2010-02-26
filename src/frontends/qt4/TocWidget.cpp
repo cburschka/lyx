@@ -319,7 +319,7 @@ void TocWidget::on_typeCO_currentIndexChanged(int index)
 }
 
 
-void TocWidget::outline(int func_code)
+void TocWidget::outline(FuncCode func_code)
 {
 	enableControls(false);
 	QModelIndexList const & list = tocTV->selectionModel()->selectedIndexes();
@@ -327,7 +327,7 @@ void TocWidget::outline(int func_code)
 		return;
 	enableControls(false);
 	goTo(list[0]);
-	dispatch(FuncRequest(static_cast<FuncCode>(func_code)));
+	dispatch(FuncRequest(func_code));
 	enableControls(true);
 	gui_view_.setFocus();
 }
