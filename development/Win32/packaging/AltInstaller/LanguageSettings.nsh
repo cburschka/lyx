@@ -59,6 +59,7 @@
   ${endif}
 
   ${if} ${LangISOCode} = 1032
+   StrCpy ${LangNme} "Greek"
    StrCpy ${LangCdeSys} "el"
    StrCpy ${LangNmeSys} "Greek"
    StrCpy ${LangSysEnc} "1253"
@@ -581,6 +582,11 @@
   ${if} ${Name} == "Galego"
    StrCpy ${LangCde} "gl_ES"
    StrCpy ${LangEnc} "cp-1252"
+  ${endif}
+
+  ${if} ${Name} == "Greek"
+   StrCpy ${LangCde} "el_GR"
+   StrCpy ${LangEnc} "cp-1253"
   ${endif}
 
   ${if} ${Name} == "Hebrew"
