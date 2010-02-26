@@ -370,42 +370,17 @@ void TocWidget::select(QModelIndex const & index)
 }
 
 
-/// Test whether outlining operation is possible
-static bool canOutline(QString const & type)
-{
-	return type == "tableofcontents";
-}
-
-
 void TocWidget::enableControls(bool enable)
 {
 	updateTB->setEnabled(enable);
 
-	if (!canOutline(current_type_))
+	if (!canOutline())
 		enable = false;
 
 	moveUpTB->setEnabled(enable);
 	moveDownTB->setEnabled(enable);
 	moveInTB->setEnabled(enable);
 	moveOutTB->setEnabled(enable);
-}
-
-
-/// Test whether synchronized navigation is possible
-static bool canNavigate(QString const & type)
-{
-	// It is not possible to have synchronous navigation in a correct
-	// and efficient way with the label and change type because Toc::item()
-	// does a linear search. Even when fixed, it might even not be desirable
-	// to do so if we want to support drag&drop of labels and references.
-	return type != "label" && type != "change";
-}
-
-
-/// Test whether sorting is possible
-static bool isSortable(QString const & type)
-{
-	return type != "tableofcontents";
 }
 
 
@@ -423,7 +398,8 @@ void TocWidget::updateView()
 		depthSL->setEnabled(false);
 		return;
 	}
-	sortCB->setEnabled(isSortable(current_type_));
+	bool const is_sortable = isSortable();
+	sortCB->setEnabled(is_sortable);
 	depthSL->setEnabled(true);
 	typeCO->setEnabled(true);
 	tocTV->setEnabled(false);
@@ -438,11 +414,11 @@ void TocWidget::updateView()
 	}
 
 	sortCB->blockSignals(true);
-	sortCB->setChecked(isSortable(current_type_)
+	sortCB->setChecked(is_sortable
 		&& gui_view_.tocModels().isSorted(current_type_));
 	sortCB->blockSignals(false);
 
-	bool const can_navigate_ = canNavigate(current_type_);
+	bool const can_navigate_ = canNavigate();
 	persistentCB->setEnabled(can_navigate_);
 
 	bool controls_enabled = toc_model && toc_model->rowCount() > 0

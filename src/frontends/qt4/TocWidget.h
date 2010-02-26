@@ -71,6 +71,18 @@ private:
 	///
 	void enableControls(bool enable = true);
 	///
+	bool canOutline() 
+		{ return current_type_ == "tableofcontents"; }
+	/// It is not possible to have synchronous navigation in a correct
+	/// and efficient way with the label and change type because Toc::item()
+	/// does a linear search. Even when fixed, it might even not be desirable
+	/// to do so if we want to support drag&drop of labels and references.
+	bool canNavigate() 
+		{ return current_type_ != "label" && current_type_ != "change"; }
+	/// 
+	bool isSortable()
+		{ return current_type_ != "tableofcontents"; }
+	///
 	void setTreeDepth(int depth);
 	///
 	void outline(int func_code);
