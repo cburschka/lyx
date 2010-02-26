@@ -469,7 +469,7 @@ void InsetCitation::updateLabels(ParIterator const &, UpdateType)
 
 	docstring label = glabel;
 	if (label.size() > maxLabelChars) {
-		label.erase(maxLabelChars-3);
+		label.erase(maxLabelChars - 3);
 		label += "...";
 	}
 
